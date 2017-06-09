@@ -72,7 +72,7 @@ ms.lasthandoff: 05/18/2017
 
 数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 例如，将数据从源复制到目标数据存储的复制活动，以及运行 Hive 脚本，将输入数据转换为产品输出数据的 HDInsight Hive 活动。 首先，在此步骤中创建数据工厂。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)后，在左侧菜单上单击“新建”，然后单击“数据 + 分析”，再单击“数据工厂”。**** 
+1. 登录到 [Azure 门户](https://portal.azure.com/)后，在左侧菜单上单击“新建”，然后单击“数据 + 分析”，再单击“数据工厂”。 
    
    ![新建 -> DataFactory](./media/data-factory-copy-activity-tutorial-using-azure-portal/NewDataFactoryMenu.png)    
 2. 在“新建数据工厂”  边栏选项卡中：
@@ -89,8 +89,8 @@ ms.lasthandoff: 05/18/2017
    2. 选择要在其中创建数据工厂的 Azure **订阅**。 
    3. 对于**资源组**，请执行以下步骤之一：
       
-      - 选择“使用现有资源组”，然后从下拉列表选择现有的资源组。**** 
-      - 选择“新建”，然后输入资源组的名称。****   
+      - 选择“使用现有资源组”，然后从下拉列表选择现有的资源组。 
+      - 选择“新建”，然后输入资源组的名称。   
          
           本教程中部分步骤假定你使用 **ADFTutorialResourceGroup** 作为资源组名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
    4. 选择数据工厂的**位置**。 下拉列表中只显示数据工厂服务支持的区域。
@@ -103,10 +103,10 @@ ms.lasthandoff: 05/18/2017
       > 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。                
       > 
       > 
-3. 在仪表板上，将会看到状态为“正在部署数据工厂”的以下磁贴。**** 
+3. 在仪表板上，将会看到状态为“正在部署数据工厂”的以下磁贴。 
 
     ![“正在部署数据工厂”磁贴](media/data-factory-copy-activity-tutorial-using-azure-portal/deploying-data-factory.png)
-4. 完成创建后，将显示图中所示的“数据工厂”边栏选项卡。****
+4. 完成创建后，将显示图中所示的“数据工厂”边栏选项卡。
    
    ![数据工厂主页](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-data-factory-home-page.png)
 
@@ -122,19 +122,19 @@ AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob �
 ### <a name="create-azure-storage-linked-service"></a>创建 Azure 存储链接服务
 本步骤将 Azure 存储帐户链接到数据工厂。 在本部分中指定 Azure 存储帐户的名称和密钥。  
 
-1. 在“数据工厂”边栏选项卡中，单击“编写和部署”磁贴。****
+1. 在“数据工厂”边栏选项卡中，单击“编写和部署”磁贴。
    
    ![“编写和部署”磁贴](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-author-deploy-tile.png) 
-2. 此时会看到“数据工厂编辑器”，如下图所示：**** 
+2. 此时会看到“数据工厂编辑器”，如下图所示： 
 
     ![数据工厂编辑器](./media/data-factory-copy-activity-tutorial-using-azure-portal/data-factory-editor.png)
-3. 在“编辑器”中，单击工具栏上的“新建数据存储”按钮，然后从下拉菜单中选择“Azure 存储”。**** 在右窗格中，应会看到用于创建 Azure 存储链接服务的 JSON 模板。 
+3. 在“编辑器”中，单击工具栏上的“新建数据存储”按钮，然后从下拉菜单中选择“Azure 存储”。 在右窗格中，应会看到用于创建 Azure 存储链接服务的 JSON 模板。 
    
     ![编辑器中的“新建数据存储”按钮](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-editor-newdatastore-button.png)    
 3. 将 `<accountname>` 和 `<accountkey>` 替换为 Azure 存储帐户的帐户名与帐户密钥值。 
    
     ![编辑器中的 Blob 存储 JSON](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-editor-blob-storage-json.png)    
-4. 单击工具栏上的“部署”。**** 现在，树视图中应会显示已部署的 **AzureStorageLinkedService**。 
+4. 单击工具栏上的“部署”。 现在，树视图中应会显示已部署的 **AzureStorageLinkedService**。 
    
     ![编辑器中的 Blob 存储部署](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-editor-blob-storage-deploy.png)
 
@@ -143,10 +143,10 @@ AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob �
 ### <a name="create-a-linked-service-for-the-azure-sql-database"></a>为 Azure SQL 数据库创建链接服务
 在此步骤中，将 Azure SQL 数据库链接到数据工厂。 在本部分中指定 Azure SQL 服务器名称、数据库名称、用户名和用户密码。 
 
-1. 在“数据工厂编辑器”中，单击工具栏上的“新建数据存储”按钮，然后从下拉菜单中选择“Azure SQL 数据库”。**** 在右窗格中，应会看到用于创建 Azure SQL 链接服务的 JSON 模板。
+1. 在“数据工厂编辑器”中，单击工具栏上的“新建数据存储”按钮，然后从下拉菜单中选择“Azure SQL 数据库”。 在右窗格中，应会看到用于创建 Azure SQL 链接服务的 JSON 模板。
 2. 将 `<servername>`、`<databasename>`、`<username>@<servername>` 和 `<password>` 分别替换为 Azure SQL 服务器名称、数据库名称、用户帐户名和密码。 
-3. 单击工具栏上的“部署”，创建并部署 **AzureSqlLinkedService**。****
-4. 确认在树视图的“链接服务”下显示 **AzureSqlLinkedService**。****  
+3. 单击工具栏上的“部署”，创建并部署 **AzureSqlLinkedService**。
+4. 确认在树视图的“链接服务”下显示 **AzureSqlLinkedService**。  
 
     有关这些 JSON 属性的详细信息，请参阅 [Azure SQL 数据库连接器](data-factory-azure-sql-connector.md#linked-service-properties)。
 
@@ -160,7 +160,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 ### <a name="create-input-dataset"></a>创建输入数据集
 本步骤在 AzureStorageLinkedService 链接服务代表的 Azure 存储中创建名为 InputDataset 的数据集，该数据集指向 Blob 容器 (adftutorial) 根文件夹中的 Blob 文件 (emp.txt)。 如果不指定 fileName 的值（或者跳过此步骤），则会将输入文件夹中的所有 Blob 复制到目标。 在本教程中，请为 fileName 指定一个值。 
 
-1. 在数据工厂的“编辑器”中，单击命令栏上的“......更多”、“新建数据集”、“Azure Blob 存储”。**** 
+1. 在数据工厂的“编辑器”中，单击命令栏上的“......更多”、“新建数据集”、“Azure Blob 存储”。 
    
     ![“新建数据集”菜单](./media/data-factory-copy-activity-tutorial-using-azure-portal/new-dataset-menu.png)
 2. 将右窗格中的 JSON 替换为以下 JSON 代码片段： 
@@ -212,12 +212,12 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     | external | 如果数据不是由该管道生成的，此属性设置为 **true**。 本教程中的输入数据位于 emp.txt 文件中，此文件不是由该管道生成的，因此将此属性设置为 true。 |
 
     有关这些 JSON 属性的详细信息，请参阅 [Azure Blob 连接器](data-factory-azure-blob-connector.md#dataset-properties)一文。        
-3. 单击工具栏上的“部署”，创建并部署 **InputDataset** 数据集。**** 确认树视图中显示了 **InputDataset**。
+3. 单击工具栏上的“部署”，创建并部署 **InputDataset** 数据集。 确认树视图中显示了 **InputDataset**。
 
 ### <a name="create-output-dataset"></a>创建输出数据集
 Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务在运行时使用该字符串连接到 Azure SQL 数据库。 在此步骤中创建的输出 SQL 表数据集 (OututDataset) 在数据库中指定一个表，数据将从 Blob 存储复制到该表中。
 
-1. 在数据工厂的“编辑器”中，依次单击下拉菜单中的“......更多”、“新建数据集”、“Azure SQL”。**** 
+1. 在数据工厂的“编辑器”中，依次单击下拉菜单中的“......更多”、“新建数据集”、“Azure SQL”。 
 2. 将右窗格中的 JSON 替换为以下 JSON 代码片段：
 
     ```json   
@@ -259,14 +259,14 @@ Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务�
     数据库的 emp 表包含三列 – **ID**、**FirstName** 和 **LastName**。 ID 是标识列，因此只需在此处指定 **FirstName** 和 **LastName**。
 
     有关这些 JSON 属性的详细信息，请参阅 [Azure SQL 连接器](data-factory-azure-sql-connector.md#dataset-properties)一文。
-3. 单击工具栏上的“部署”，创建并部署 **OutputDataset** 数据集。**** 确认在树视图中的“数据集”下显示了 **OutputDataset**。**** 
+3. 单击工具栏上的“部署”，创建并部署 **OutputDataset** 数据集。 确认在树视图中的“数据集”下显示了 **OutputDataset**。 
 
 ## <a name="create-pipeline"></a>创建管道
 本步骤创建管道，其中包含使用 **InputDataset** 作为输入和使用 **OutputDataset** 作为输出的**复制活动**。
 
 目前，输出数据集驱动计划。 在本教程中，输出数据集配置为每小时生成一个切片。 管道的开始时间和结束时间相差一天，即 24 小时。 因此，管道会生成 24 个输出数据集切片。 
 
-1. 在数据工厂的“编辑器”中，单击命令栏上的“...更多”，然后单击“新建管道”。**** 或者，也可以在树视图中，右键单击“管道”，然后单击“新建管道”。****
+1. 在数据工厂的“编辑器”中，单击命令栏上的“...更多”，然后单击“新建管道”。 或者，也可以在树视图中，右键单击“管道”，然后单击“新建管道”。
 2. 将右窗格中的 JSON 替换为以下 JSON 代码片段： 
 
     ```json   
@@ -322,8 +322,8 @@ Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务�
     在上述示例中，由于每小时生成一个数据切片，因此共有 24 个数据切片。
 
     有关管道定义中 JSON 属性的说明，请参阅[创建管道](data-factory-create-pipelines.md)一文。 有关复制活动定义中 JSON 属性的说明，请参阅[数据移动活动](data-factory-data-movement-activities.md)一文。 有关 BlobSource 支持的 JSON 属性的说明，请参阅 [Azure Blob 连接器](data-factory-azure-blob-connector.md)一文。 有关 SqlSink 支持的 JSON 属性的说明，请参阅 [Azure SQL 数据库连接器](data-factory-azure-sql-connector.md)一文。
-3. 单击工具栏上的“部署”，创建并部署 **ADFTutorialPipeline**。**** 确认树视图中显示了该管道。 
-4. 现在，请单击“X”关闭“编辑器”边栏选项卡。再次单击“X”查看 **ADFTutorialDataFactory** 的“数据工厂”主页。****
+3. 单击工具栏上的“部署”，创建并部署 **ADFTutorialPipeline**。 确认树视图中显示了该管道。 
+4. 现在，请单击“X”关闭“编辑器”边栏选项卡。再次单击“X”查看 **ADFTutorialDataFactory** 的“数据工厂”主页。
 
 **祝贺你！** 现已成功创建 Azure 数据工厂，可以使用管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库了。 
 
@@ -334,7 +334,7 @@ Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务�
 ### <a name="monitor-pipeline-using-monitor--manage-app"></a>使用“监视和管理”应用来监视管道
 以下步骤演示了如何通过“监视和管理”应用程序监视数据工厂中的管道： 
 
-1. 在数据工厂的主页上单击“监视和管理”磁贴。****
+1. 在数据工厂的主页上单击“监视和管理”磁贴。
    
     ![“监视和管理”磁贴](./media/data-factory-copy-activity-tutorial-using-azure-portal/monitor-manage-tile.png) 
 2. 将会以单独的选项卡形式显示**“监视和管理”应用程序**。 
@@ -343,14 +343,14 @@ Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务�
     > 如果 Web 浏览器停滞在“正在授权...”处，请执行以下操作之一：清除“阻止第三方 Cookie 和站点数据”复选框，或为 **login.microsoftonline.com** 创建一个例外，然后尝试再次打开该应用。
 
     ![“监视和管理”应用](./media/data-factory-copy-activity-tutorial-using-azure-portal/monitor-and-manage-app.png)
-3. 更改“开始时间”和“结束时间”以包含管道的开始时间 (2017-05-11) 和结束时间 (2017-05-12)，然后单击“应用”。****       
+3. 更改“开始时间”和“结束时间”以包含管道的开始时间 (2017-05-11) 和结束时间 (2017-05-12)，然后单击“应用”。       
 3. 此时会在中间窗格的列表中显示**活动窗口**，这些窗口与管道开始和结束时间范围内的每一小时相关联。 
-4. 若要查看某个活动窗口的详细信息，请在“活动窗口”列表中选择该活动窗口。**** 
+4. 若要查看某个活动窗口的详细信息，请在“活动窗口”列表中选择该活动窗口。 
     ![活动窗口详细信息](./media/data-factory-copy-activity-tutorial-using-azure-portal/activity-window-details.png)
 
     在右侧的“活动窗口资源管理器”中，会看到到当前的 UTC 时间（晚上 8:12）为止的切片都已处理（以绿色表示）。 晚上 8-9 点、9 - 10 点、10 - 11 点、11 - 12 点的切片尚未处理。
 
-    右窗格中的“尝试”部分提供了针对数据切片运行的活动的相关信息。**** 如果有错误，则会提供该错误的详细信息。 例如，如果输入文件夹或容器不存在，导致切片处理失败，则会显示一条错误消息，指出容器或文件夹不存在。
+    右窗格中的“尝试”部分提供了针对数据切片运行的活动的相关信息。 如果有错误，则会提供该错误的详细信息。 例如，如果输入文件夹或容器不存在，导致切片处理失败，则会显示一条错误消息，指出容器或文件夹不存在。
 
     ![活动运行尝试](./media/data-factory-copy-activity-tutorial-using-azure-portal/activity-run-attempts.png) 
 4. 启动 **SQL Server Management Studio**，连接到 Azure SQL 数据库，然后确认行是否已插入数据库的 **emp** 表中。
@@ -362,7 +362,7 @@ Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务�
 ### <a name="monitor-pipeline-using-diagram-view"></a>使用图示视图监视管道
 也可使用图示视图监视数据管道。  
 
-1. 在“数据工厂”边栏选项卡中，单击“图示”。****
+1. 在“数据工厂”边栏选项卡中，单击“图示”。
    
     ![数据工厂边栏选项卡 - 图示磁贴](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-datafactoryblade-diagramtile.png)
 2. 应会看到如下所示的图形： 
@@ -375,24 +375,24 @@ Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务�
    
     ![所有输入数据切片](./media/data-factory-copy-activity-tutorial-using-azure-portal/all-input-slices.png)  
    
-    请注意，到当前的 UTC 时间为止的所有数据切片已“就绪”，因为 **emp.txt** 文件始终在 Blob 容器中：**adftutorial\input**。**** 将来时间的切片尚未处于就绪状态。 确认底部的“最近失败的切片”部分中没有任何切片。****
+    请注意，到当前的 UTC 时间为止的所有数据切片已“就绪”，因为 **emp.txt** 文件始终在 Blob 容器中：**adftutorial\input**。 将来时间的切片尚未处于就绪状态。 确认底部的“最近失败的切片”部分中没有任何切片。
 6. 关闭多个边栏选项卡，直至看到图示视图；或者向左滚动，直至看到图示视图。 然后，双击“OutputDataset”。 
-8. 单击 **OutputDataset** 的“表”边栏选项卡上的“查看更多”链接，查看所有切片。****
+8. 单击 **OutputDataset** 的“表”边栏选项卡上的“查看更多”链接，查看所有切片。
 
     ![数据切片边栏选项卡](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-dataslices-blade.png) 
 9. 请注意，到当前的 UTC 时间为止的所有切片会从“待执行”状态转为“正在进行” ==> “就绪”状态。 过去（当前时间之前）的切片默认按从新到旧的顺序处理。 例如，如果当前时间为晚上 8:12 (UTC)，则会先处理晚上 7 点 - 8 点的切片，然后处理晚上 6 点 - 7 点的切片。 晚上 8 点 - 9 点的切片默认在时间间隔的结束时间过后（即晚上 9 点以后）处理。  
-10. 在列表中单击任一数据切片可以看到“数据切片”边栏选项卡。**** 与活动窗口关联的一片数据称为切片。 切片可以是一个或多个文件。  
+10. 在列表中单击任一数据切片可以看到“数据切片”边栏选项卡。 与活动窗口关联的一片数据称为切片。 切片可以是一个或多个文件。  
     
      ![数据切片边栏选项卡](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-dataslice-blade.png)
     
-     如果切片状态不是“就绪”，可以在“未就绪的上游切片”列表中看到未就绪且阻碍当前切片运行的上游切片。****
-11. 在“数据切片”边栏选项卡的底部列表中，应会看到所有活动都在运行。**** 单击“活动运行”查看“活动运行详细信息”边栏选项卡。**** 
+     如果切片状态不是“就绪”，可以在“未就绪的上游切片”列表中看到未就绪且阻碍当前切片运行的上游切片。
+11. 在“数据切片”边栏选项卡的底部列表中，应会看到所有活动都在运行。 单击“活动运行”查看“活动运行详细信息”边栏选项卡。 
     
     ![活动运行详细信息](./media/data-factory-copy-activity-tutorial-using-azure-portal/ActivityRunDetails.png)
 
     在此边栏选项卡中，可以看到复制操作耗用的时间、具体的吞吐量、读取和写入数据的字节数、运行开始时间、运行结束时间等。  
-12. 单击“X”关闭所有边栏选项卡，直到返回 **ADFTutorialDataFactory** 的主页边栏选项卡。****
-13. （可选）单击“数据集”磁贴或“管道”磁贴即可显示在前述步骤中见过的边栏选项卡。**** 
+12. 单击“X”关闭所有边栏选项卡，直到返回 **ADFTutorialDataFactory** 的主页边栏选项卡。
+13. （可选）单击“数据集”磁贴或“管道”磁贴即可显示在前述步骤中见过的边栏选项卡。 
 14. 启动 **SQL Server Management Studio**，连接到 Azure SQL 数据库，然后确认行是否已插入数据库的 **emp** 表中。
     
     ![SQL 查询结果](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-sql-query-results.png)

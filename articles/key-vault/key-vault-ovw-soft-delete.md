@@ -16,7 +16,7 @@ ms.lasthandoff: 05/10/2017
 # <a name="azure-key-vault-soft-delete-feature-overview"></a>Azure Key Vault 软删除功能概述
 
 >[!NOTE]
->在此预览版 Azure Key Vault 中，只有“软删除”功能处于预览状态。**** Azure Key Vault 作为一个整体，是完整的生产服务。
+>在此预览版 Azure Key Vault 中，只有“软删除”功能处于预览状态。 Azure Key Vault 作为一个整体，是完整的生产服务。
 
 此预览版 Azure Key Vault 描述了 Key Vault 和 Key Vault 对象的可恢复删除（称为“软删除”）。 本文将具体探讨以下方案：
 
@@ -39,7 +39,7 @@ Azure Key Vault 是 Azure Resource Manager 管理的跟踪资源。 Azure Resour
 
 在此预览版中，Key Vault 或 Key Vault 对象上的 DELETE 操作是软删除，因此可以有效地在给定保留期内保留资源，同时通过外观提示已删除对象。 该服务还提供用于恢复已删除对象的机制，从实质上撤销删除。 
 
-软删除是可选 Key Vault 行为，在此版本中默认未启用。**** 有关为 Key Vault 启用软删除的详细信息，请参阅所选接口 [Key Vault 参考](https://docs.microsoft.com/azure/key-vault/)文献中的具体指南。
+软删除是可选 Key Vault 行为，在此版本中默认未启用。 有关为 Key Vault 启用软删除的详细信息，请参阅所选接口 [Key Vault 参考](https://docs.microsoft.com/azure/key-vault/)文献中的具体指南。
 
 ### <a name="key-vault-recovery"></a>Key Vault 恢复
 
@@ -73,7 +73,7 @@ Azure Key Vault 是 Azure Resource Manager 管理的跟踪资源。 Azure Resour
 
 可通过代理资源上的 POST 操作永久删除、清除 Key Vault，但此操作需要特殊权限。 通常，只有订阅所有者才能清除 Key Vault。 POST 操作可触发立即删除该保管库，且此删除不可恢复。 
 
-一种例外情况是，Azure 订阅已被标记为“不可删除”。** 在这种情况下，只有服务可以执行实际删除，并且将作为计划的进程执行此操作。 
+一种例外情况是，Azure 订阅已被标记为“不可删除”。 在这种情况下，只有服务可以执行实际删除，并且将作为计划的进程执行此操作。 
 
 
 

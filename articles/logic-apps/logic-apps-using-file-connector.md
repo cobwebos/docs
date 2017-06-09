@@ -33,7 +33,7 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="add-trigger-and-actions-for-connecting-to-your-file-system"></a>添加用于连接到文件系统的触发器和操作
 
-1. 创建一个逻辑应用，然后添加此 Dropbox 触发器：“创建文件时”**** 
+1. 创建一个逻辑应用，然后添加此 Dropbox 触发器：“创建文件时” 
 2. 在该触发器下，选择“下一步” > “添加操作”。 
 3. 在搜索框中，输入 `file system`，以便可查看所有支持的文件系统连接器操作。
 

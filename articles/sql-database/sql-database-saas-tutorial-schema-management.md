@@ -45,7 +45,7 @@ ms.lasthandoff: 05/25/2017
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 * 已安装最新版的 SQL Server Management Studio (SSMS)。 [下载并安装 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
-本教程使用 SQL 数据库服务的功能，这些功能为有限预览版（弹性数据库作业）。如果你希望完成本教程，请将订阅 ID 提供 给 SaaSFeedback@microsoft.com，并在邮件主题中注明“弹性作业预览版”。收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。由于这是有限预览版，如果存在相关的问题或者需要支持，则应联系 SaaSFeedback@microsoft.com。**
+本教程使用 SQL 数据库服务的功能，这些功能为有限预览版（弹性数据库作业）。如果你希望完成本教程，请将订阅 ID 提供 给 SaaSFeedback@microsoft.com，并在邮件主题中注明“弹性作业预览版”。收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。由于这是有限预览版，如果存在相关的问题或者需要支持，则应联系 SaaSFeedback@microsoft.com。
 
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS 架构管理模式简介
@@ -60,7 +60,7 @@ ms.lasthandoff: 05/25/2017
 有一个新版的弹性作业，该作业现为 Azure SQL 数据库的集成功能（不需其他服务或组件）。 此新版弹性作业目前为有限预览版。 此有限预览版目前支持 PowerShell 创建作业帐户，同时支持 T-SQL 创建和管理作业。
 
 > [!NOTE]
-> 本教程使用 SQL 数据库服务的功能，这些功能为有限预览版（弹性数据库作业）。如果你希望完成本教程，请将订阅 ID 提供 给 SaaSFeedback@microsoft.com，并在邮件主题中注明“弹性作业预览版”。收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。由于这是有限预览版，如果存在相关的问题或者需要支持，则应联系 SaaSFeedback@microsoft.com。**
+> 本教程使用 SQL 数据库服务的功能，这些功能为有限预览版（弹性数据库作业）。如果你希望完成本教程，请将订阅 ID 提供 给 SaaSFeedback@microsoft.com，并在邮件主题中注明“弹性作业预览版”。收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。由于这是有限预览版，如果存在相关的问题或者需要支持，则应联系 SaaSFeedback@microsoft.com。
 
 ## <a name="get-the-wingtip-application-scripts"></a>获取 Wingtip 应用程序脚本
 
@@ -77,11 +77,11 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>创建一个将新的引用数据部署到所有租户的作业
 
-每个租户数据库包括一组地点类型，用于定义托管在某个地点的事件种类。 在本练习中，你将一个更新部署到所有租户数据库，以便添加两种额外的地点类型：“赛车”和“游泳俱乐部”。** 这些地点类型对应于在租户事件应用中看到的背景图。
+每个租户数据库包括一组地点类型，用于定义托管在某个地点的事件种类。 在本练习中，你将一个更新部署到所有租户数据库，以便添加两种额外的地点类型：“赛车”和“游泳俱乐部”。 这些地点类型对应于在租户事件应用中看到的背景图。
 
 单击“地点类型”下拉菜单，验证是否只有 10 个地点类型选项可用，以及具体说来，“赛车”和“游泳俱乐部”是否未包括在列表中。
 
-现在请创建一个作业，对所有租户数据库中的“VenueTypes”表进行更新，并添加新地点类型。**
+现在请创建一个作业，对所有租户数据库中的“VenueTypes”表进行更新，并添加新地点类型。
 
 若要创建新的 作业，请使用一组作业系统存储过程，这些过程是在创建作业帐户时，在 jobaccount 数据库中创建的。
 
@@ -96,7 +96,7 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 * **sp\_add\_target\_group\_member** 首先添加 server 目标成员类型，该类型认定在执行作业时该服务器（注意，这是包含租户数据库的 customer1-&lt;User&gt; 服务器）中的所有数据库都应包括在作业中；其次是添加 database 目标成员类型，具体说来就是“‘golden”数据库 baseTenantDB，后者位于 catalog-&lt;User&gt; 服务器上；最后是添加另一 database 目标组成员类型，用于包括在后面的教程中使用的 adhocanalytics 数据库。
 * **sp\_add\_job** 创建名为“引用数据部署”的作业
 * **sp\_add\_jobstep** 创建包含 T-SQL 命令文本的作业步骤，该文本用于更新引用表 VenueTypes
-* 脚本中的剩余视图显示存在的对象以及监视作业执行情况。 在“生命周期”列中查看状态值。**** 作业已成功地在所有租户数据库以及两个包含引用表的其他数据库上完成。
+* 脚本中的剩余视图显示存在的对象以及监视作业执行情况。 在“生命周期”列中查看状态值。 作业已成功地在所有租户数据库以及两个包含引用表的其他数据库上完成。
 
 1. 在 SSMS 中，浏览到 tenants1 服务器上的 contosoconcerthall 数据库，查询 VenueTypes 表以确认“赛车”和“游泳俱乐部”此时**在**结果列表中。
 

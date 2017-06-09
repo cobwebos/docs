@@ -49,7 +49,7 @@ ms.lasthandoff: 05/10/2017
 
 我们选择 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/ "Azure Cosmos DB") 作为日志和错误记录的存储库（Cosmos DB 将记录作为文档来引用）。 由于 Azure 逻辑应用具有用于所有响应的标准模板，因此我们不必创建自定义架构。 我们可以创建 API 应用以便对错误和日志记录进行**插入**和**查询**。 我们还可以在 API 应用中为各个操作定义架构。  
 
-另一个要求是清除特定日期之后的记录。 Cosmos DB 具有一个名为[生存时间](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) 的属性，使用该属性可以为每个记录或集合设置“生存时间”值。**** 这样便无需在 Cosmos DB 中手动删除记录。
+另一个要求是清除特定日期之后的记录。 Cosmos DB 具有一个名为[生存时间](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) 的属性，使用该属性可以为每个记录或集合设置“生存时间”值。 这样便无需在 Cosmos DB 中手动删除记录。
 
 > [!IMPORTANT]
 > 若要完成本教程，需要创建一个 Cosmos DB 数据库和两个集合（日志记录和错误）。
