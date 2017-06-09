@@ -38,7 +38,7 @@ ms.lasthandoff: 05/25/2017
 若要为应用程序配置所有必需的服务总线依赖项，最简单方法是使用[服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)。 若要在项目中安装服务总线 NuGet 包，请执行以下操作：
 
 1. 在“解决方案资源管理器”中，右键单击“引用”，然后单击“管理 NuGet 包”。
-2. 单击“浏览”，搜索“Azure 服务总线”，然后选择“Microsoft Azure 服务总线”项。 单击“安装”完成安装，然后关闭对话框：****
+2. 单击“浏览”，搜索“Azure 服务总线”，然后选择“Microsoft Azure 服务总线”项。 单击“安装”完成安装，然后关闭对话框：
    
    ![][7]
 

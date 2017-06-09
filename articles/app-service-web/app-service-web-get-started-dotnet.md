@@ -32,7 +32,7 @@ ms.lasthandoff: 05/25/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程演示如何使用 Visual Studio 2017 构建 ASP.NET Web 应用并将其部署到 Azure。 如果尚未安装 Visual Studio 2017，可以下载并使用**免费的** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。****
+本教程演示如何使用 Visual Studio 2017 构建 ASP.NET Web 应用并将其部署到 Azure。 如果尚未安装 Visual Studio 2017，可以下载并使用**免费的** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -40,13 +40,13 @@ ms.lasthandoff: 05/25/2017
 
 在 Visual Studio 中，使用 `Ctrl`+`Shift`+`N` 创建项目。
 
-在“新建项目”对话框中，单击“Visual C#”>“Web”>“ASP.NET Web 应用程序(.NET Framework)”。****
+在“新建项目”对话框中，单击“Visual C#”>“Web”>“ASP.NET Web 应用程序(.NET Framework)”。
 
-将应用程序命名为 **myFirstAzureWebApp**，然后单击“确定”。****
+将应用程序命名为 **myFirstAzureWebApp**，然后单击“确定”。
    
 ![“新建项目”对话框](./media/app-service-web-get-started-dotnet/new-project.png)
 
-可将任何类型的 ASP.NET Web 应用部署到 Azure。 在本教程中，请选择“MVC”模板，并确保将身份验证设置为“无身份验证”。****
+可将任何类型的 ASP.NET Web 应用部署到 Azure。 在本教程中，请选择“MVC”模板，并确保将身份验证设置为“无身份验证”。
       
 单击 **“确定”**。
 
@@ -54,19 +54,19 @@ ms.lasthandoff: 05/25/2017
 
 ## <a name="publish-to-azure"></a>发布到 Azure
 
-在“解决方案资源管理器”中右键单击“myFirstAzureWebApp”项目，然后选择“发布”。****
+在“解决方案资源管理器”中右键单击“myFirstAzureWebApp”项目，然后选择“发布”。
 
 ![从解决方案资源管理器发布](./media/app-service-web-get-started-dotnet/solution-explorer-publish.png)
 
-确保已选择“Microsoft Azure 应用服务”，然后单击“发布”。****
+确保已选择“Microsoft Azure 应用服务”，然后单击“发布”。
 
 ![从项目概述页发布](./media/app-service-web-get-started-dotnet/publish-to-app-service.png)
 
-此时将打开“创建应用服务”对话框，帮助你创建所需的所有 Azure 资源，以便在 Azure 中运行 ASP.NET Web 应用。****
+此时将打开“创建应用服务”对话框，帮助你创建所需的所有 Azure 资源，以便在 Azure 中运行 ASP.NET Web 应用。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-在“创建应用服务”对话框中单击“添加帐户”，然后登录到你的 Azure 订阅。**** 如果已登录到 Microsoft 帐户，请确保该帐户包含你的 Azure 订阅。 如果已登录的 Microsoft 帐户不包含你的 Azure 订阅，请单击该帐户以添加正确的帐户。
+在“创建应用服务”对话框中单击“添加帐户”，然后登录到你的 Azure 订阅。 如果已登录到 Microsoft 帐户，请确保该帐户包含你的 Azure 订阅。 如果已登录的 Microsoft 帐户不包含你的 Azure 订阅，请单击该帐户以添加正确的帐户。
    
 ![登录 Azure](./media/app-service-web-get-started-dotnet/sign-in-azure.png)
 
@@ -81,21 +81,21 @@ ms.lasthandoff: 05/25/2017
 >
 >
 
-在“资源组”旁边单击“新建”。****
+在“资源组”旁边单击“新建”。
 
-将资源组命名为 **myResourceGroup**，然后单击“确定”。****
+将资源组命名为 **myResourceGroup**，然后单击“确定”。
 
 ## <a name="create-an-app-service-plan"></a>创建应用服务计划
 
 [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-在“应用服务计划”旁边单击“新建”。**** 
+在“应用服务计划”旁边单击“新建”。 
 
-在“配置应用服务计划”对话框中，使用以下设置配置新的应用服务计划：****
+在“配置应用服务计划”对话框中，使用以下设置配置新的应用服务计划：
 
 - **应用服务计划**：键入 **myAppServicePlan**。 
-- 位置：选择“西欧”或附近的区域。****
-- 大小：选择“免费”或其他[定价层](https://azure.microsoft.com/pricing/details/app-service/)。****
+- 位置：选择“西欧”或附近的区域。
+- 大小：选择“免费”或其他[定价层](https://azure.microsoft.com/pricing/details/app-service/)。
 
 单击 **“确定”**。
 
@@ -103,11 +103,11 @@ ms.lasthandoff: 05/25/2017
 
 ## <a name="create-and-publish-the-web-app"></a>创建并发布 Web 应用
 
-现在唯一要做的就是为 Web 应用命名。 在“Web 应用名称”中键入唯一的应用名称。**** 此名称将用作应用 (`<app_name>.azurewebsites.net`) 的默认 DNS 名称的一部分，因此，需要在 Azure 中的所有应用之间保持唯一。 稍后，可以先将自定义域名映射到应用，然后向用户公开该域名。
+现在唯一要做的就是为 Web 应用命名。 在“Web 应用名称”中键入唯一的应用名称。 此名称将用作应用 (`<app_name>.azurewebsites.net`) 的默认 DNS 名称的一部分，因此，需要在 Azure 中的所有应用之间保持唯一。 稍后，可以先将自定义域名映射到应用，然后向用户公开该域名。
 
 也可以接受自动生成的名称，这已是一个唯一的名称。
 
-单击“创建”开始创建 Azure 资源。****
+单击“创建”开始创建 Azure 资源。
 
 ![配置 Web 应用名称](./media/app-service-web-get-started-dotnet/web-app-name.png)
 
@@ -123,7 +123,7 @@ URL 使用前面指定的 Web 应用名称，其格式为 `http://<app_name>.azu
 
 在 Azure 中进行更新和重新部署非常简单。 让我们对主页进行更新。
 
-在“解决方案资源管理器”中打开“Views\Home\Index.cshtml”。****
+在“解决方案资源管理器”中打开“Views\Home\Index.cshtml”。
 
 在顶部附近找到 `<div class="jumbotron">` HTML 标记，将整个标记替换为以下代码：
 
@@ -134,9 +134,9 @@ URL 使用前面指定的 Web 应用名称，其格式为 `http://<app_name>.azu
 </div>
 ```
 
-若要重新部署到 Azure，请在“解决方案资源管理器”中右键单击“myFirstAzureWebApp”项目，然后选择“发布”。****
+若要重新部署到 Azure，请在“解决方案资源管理器”中右键单击“myFirstAzureWebApp”项目，然后选择“发布”。
 
-在发布页中单击“发布”。****
+在发布页中单击“发布”。
 
 完成 Visual Studio 中的操作后，将在浏览器中启动更新的 Azure Web 应用。
 
@@ -148,13 +148,13 @@ URL 使用前面指定的 Web 应用名称，其格式为 `http://<app_name>.azu
 
 为此，请登录到 [https://portal.azure.com](https://portal.azure.com)。
 
-从左侧菜单中单击“应用服务”，然后单击 Azure Web 应用的名称。****
+从左侧菜单中单击“应用服务”，然后单击 Azure Web 应用的名称。
 
 ![在门户中导航到 Azure Web 应用](./media/app-service-web-get-started-dotnet/access-portal.png)
 
 现已进入 Web 应用的_边栏选项卡_（水平打开的门户页）。 
 
-默认情况下，Web 应用的边栏选项卡显示“概述”页。**** 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。  
+默认情况下，Web 应用的边栏选项卡显示“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。  
 
 ![Azure 门户中的应用服务边栏选项卡](./media/app-service-web-get-started-dotnet/web-app-blade.png)
 
@@ -168,17 +168,17 @@ URL 使用前面指定的 Web 应用名称，其格式为 `http://<app_name>.azu
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若要删除第一个 Azure Web 应用，可以单击“概述”页中的“删除”。**** 但是，还可以通过一种更好的方法来删除在本快速入门教程中创建的任何内容。 在 Web 应用的“概述”页中，单击资源组打开其边栏选项卡。**** 
+若要删除第一个 Azure Web 应用，可以单击“概述”页中的“删除”。 但是，还可以通过一种更好的方法来删除在本快速入门教程中创建的任何内容。 在 Web 应用的“概述”页中，单击资源组打开其边栏选项卡。 
 
 ![从应用服务边栏选项卡访问资源组](./media/app-service-web-get-started-dotnet/access-resource-group.png)
 
 在资源组边栏选项卡中，可以看到 Visual Studio 为你创建的应用服务计划和应用服务应用。 
 
-在边栏选项卡的顶部单击“删除”。**** 
+在边栏选项卡的顶部单击“删除”。 
 
 <!--![Delete resource group in Azure portal](./media/app-service-web-get-started-dotnet/delete-resource-group.png)-->
 
-在确认边栏选项卡上的文本框中键入资源组名称 **myResourceGroup** 确认删除，然后单击“删除”。****
+在确认边栏选项卡上的文本框中键入资源组名称 **myResourceGroup** 确认删除，然后单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

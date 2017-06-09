@@ -76,10 +76,10 @@ ms.lasthandoff: 05/18/2017
     ```
 注意以下几点：
 
-* Azure 数据工厂的名称必须全局唯一。 如果收到错误：“数据工厂名称 ‘FirstDataFactoryPSH’ 不可用”，请更改名称（例如 yournameFirstDataFactoryPSH）。**** 执行本教程中的步骤时，请使用此名称取代 ADFTutorialFactoryPSH。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
+* Azure 数据工厂的名称必须全局唯一。 如果收到错误：“数据工厂名称 ‘FirstDataFactoryPSH’ 不可用”，请更改名称（例如 yournameFirstDataFactoryPSH）。 执行本教程中的步骤时，请使用此名称取代 ADFTutorialFactoryPSH。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
 * 只有 Azure 订阅的参与者/管理员才可以创建数据工厂实例
 * 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
-* 如果收到错误：“该订阅未注册为使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，尝试再次发布：****
+* 如果收到错误：“该订阅未注册为使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，尝试再次发布：
 
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
 
@@ -383,7 +383,7 @@ ms.lasthandoff: 05/18/2017
     PipelineName        : MyFirstPipeline
     Type                : Script
     ```
-    可以继续运行此 cmdlet，直到切片进入“就绪”状态或“失败”状态。**** 当切片处于“就绪”状态时，检查 Blob 存储中 **adfgetstarted** 容器内 **partitioneddata** 文件夹的输出数据。  创建按需 HDInsight 群集通常需要一段时间。
+    可以继续运行此 cmdlet，直到切片进入“就绪”状态或“失败”状态。 当切片处于“就绪”状态时，检查 Blob 存储中 **adfgetstarted** 容器内 **partitioneddata** 文件夹的输出数据。  创建按需 HDInsight 群集通常需要一段时间。
 
     ![输出数据](./media/data-factory-build-your-first-pipeline-using-powershell/three-ouptut-files.png)
 

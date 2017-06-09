@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) v2.0 终结点支持各种现代应用体系�
 必须在 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com)中注册使用 v2.0 终结点的每个应用。 应用注册过程将收集这些值并将其分配给应用：
 
 * 用于唯一标识应用的**应用程序 ID**
-* 用于将响应定向回应用的重定向 URI****
+* 用于将响应定向回应用的重定向 URI
 * 其他一些特定于方案的值
 
 有关详细信息，请了解如何[注册应用](active-directory-v2-app-registration.md)。

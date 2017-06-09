@@ -215,7 +215,7 @@ ms.lasthandoff: 05/23/2017
   "ipConfigurations":
   ```
 
-  复制引号中 "id": 后面的值。****
+  复制引号中 "id": 后面的值。
 
   ```
   "id": "/subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW"
@@ -323,7 +323,7 @@ ms.lasthandoff: 05/23/2017
 
 ### <a name="step-6---create-the-connections"></a>步骤 8 - 创建连接
 
-由于网关位于不同订阅中，因此将此步骤拆分成两个 CLI 会话，分别标记为“[订阅 1]”和“[订阅 5]”。**** 若要在订阅之间进行切换，请使用“az account list --all”列出可供帐户使用的订阅，然后使用“az account set --subscription <subscriptionID>”切换到要使用的订阅。
+由于网关位于不同订阅中，因此将此步骤拆分成两个 CLI 会话，分别标记为“[订阅 1]”和“[订阅 5]”。 若要在订阅之间进行切换，请使用“az account list --all”列出可供帐户使用的订阅，然后使用“az account set --subscription <subscriptionID>”切换到要使用的订阅。
 
 1. [订阅 1] 登录并连接到订阅 1。 运行以下命令，从输出中获取网关的名称和 ID：
 

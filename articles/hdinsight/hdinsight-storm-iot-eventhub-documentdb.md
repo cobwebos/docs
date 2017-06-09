@@ -50,7 +50,7 @@ Azure 事件中心用于处理传感器生成的大量数据。 将数据存储�
     * Speed
     * VIN
     * Timestamp
-* DataReferencBolt - 使用 VIN 从 Cosmos DB 中查找车型****
+* DataReferencBolt - 使用 VIN 从 Cosmos DB 中查找车型
 * **WasbStoreBolt** - 将数据存储到 HDFS（Azure 存储）
 
 下面是此解决方案的图示：

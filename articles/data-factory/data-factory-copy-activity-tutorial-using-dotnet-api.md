@@ -120,14 +120,14 @@ ms.lasthandoff: 05/18/2017
 ## <a name="walkthrough"></a>演练
 1. 使用 Visual Studio 2012/2013/2015 创建 C# .NET 控制台应用程序。
    1. 启动 **Visual Studio** 2012/2013/2015。
-   2. 单击“文件”，指向“新建”并单击“项目”。****
-   3. 展开“模板”，然后选择“Visual C#”。**** 本演练中使用的是 C#，但可以使用任何 .NET 语言。
-   4. 从右侧项目类型列表中选择“控制台应用程序”。****
+   2. 单击“文件”，指向“新建”并单击“项目”。
+   3. 展开“模板”，然后选择“Visual C#”。 本演练中使用的是 C#，但可以使用任何 .NET 语言。
+   4. 从右侧项目类型列表中选择“控制台应用程序”。
    5. 在“名称”中输入 **DataFactoryAPITestApp** 。
-   6. 在“位置”中选择“C:\ADFGetStarted”。****
+   6. 在“位置”中选择“C:\ADFGetStarted”。
    7. 单击“确定”以创建该项目  。
 2. 单击“工具”，指向“NuGet 包管理器”，然后单击“包管理器控制台”。
-3. 在“包管理器控制台”中执行以下步骤：****
+3. 在“包管理器控制台”中执行以下步骤：
    1. 运行以下命令安装数据工厂包：`Install-Package Microsoft.Azure.Management.DataFactories`
    2. 运行以下命令安装 Azure Active Directory 包（因为要在代码中使用 Active Directory API）：`Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
 4. 将以下 **appSettings** 节添加到 **App.config** 文件。 这些设置由以下帮助器方法使用： **GetAuthorizationHeader**。
@@ -501,20 +501,20 @@ ms.lasthandoff: 05/18/2017
     }
     ```
 
-15. 在解决方案资源管理器中展开项目 (DataFactoryAPITestApp)，右键单击“引用”，然后单击“添加引用”。**** 选中“System.Configuration”程序集对应的复选框。**** 然后单击“确定”。****
-16. 生成控制台应用程序。 在菜单中单击“生成”，然后单击“生成解决方案”。****
+15. 在解决方案资源管理器中展开项目 (DataFactoryAPITestApp)，右键单击“引用”，然后单击“添加引用”。 选中“System.Configuration”程序集对应的复选框。 然后单击“确定”。
+16. 生成控制台应用程序。 在菜单中单击“生成”，然后单击“生成解决方案”。
 17. 确认 Azure Blob 存储中的 **adftutorial** 容器内至少有一个文件。 如果没有，请在记事本中创建包含以下内容的 **Emp.txt** 文件，然后将它上载到 adftutorial 容器。
 
     ```
     John, Doe
     Jane, Doe
     ```
-18. 在菜单中单击“调试” -> “开始调试”运行示例。**** 看到“正在获取数据切片的运行详细信息”时，请等待几分钟，然后按 **ENTER**。****
+18. 在菜单中单击“调试” -> “开始调试”运行示例。 看到“正在获取数据切片的运行详细信息”时，请等待几分钟，然后按 **ENTER**。
 19. 使用 Azure 门户验证是否创建了包含以下项目的数据工厂 **APITutorialFactory** ：
    * 链接服务：**LinkedService_AzureStorage**
    * 数据集：InputDataset 和 OutputDataset。
    * 管道： **PipelineBlobSample**
-20. 验证是否在指定的 Azure SQL 数据库中的“emp”表内创建了两条员工记录。****
+20. 验证是否在指定的 Azure SQL 数据库中的“emp”表内创建了两条员工记录。
 
 ## <a name="next-steps"></a>后续步骤
 有关数据工厂 .NET API 的完整文档，请参阅[数据工厂 .NET API 参考](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1)。

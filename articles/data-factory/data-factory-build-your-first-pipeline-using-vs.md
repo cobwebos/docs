@@ -57,21 +57,21 @@ ms.lasthandoff: 05/22/2017
 5. 发布后，请使用 Azure 门户边栏选项卡以及监视和管理应用来监视管道。 
   
 ### <a name="prerequisites"></a>先决条件
-1. 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。 也可在顶部的下拉列表中选择“概述与先决条件”选项，以便切换到该文章。**** 完成先决条件以后，在下拉列表中选择“Visual Studio”选项即可切换回本文。****
+1. 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。 也可在顶部的下拉列表中选择“概述与先决条件”选项，以便切换到该文章。 完成先决条件以后，在下拉列表中选择“Visual Studio”选项即可切换回本文。
 2. 只有订阅/资源组级别的 [数据工厂参与者](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) 角色成员才能创建数据工厂实例。  
 3. 必须在计算机上安装了以下软件：
    * Visual Studio 2013 或 Visual Studio 2015
-   * 下载用于 Visual Studio 2013 或 Visual Studio 2015 的 Azure SDK。 导航到 [Azure 下载页](https://azure.microsoft.com/downloads/)，在“.NET”部分中单击“VS 2013”或“VS 2015”。****
-   * 下载用于 Visual Studio 的最新 Azure 数据工厂插件：[VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 还可通过执行以下步骤更新插件：在菜单上，依次单击“工具” -> “扩展和更新” -> “联机” -> “Visual Studio 库” -> “适用于 Visual Studio 的 Microsoft Azure 数据工厂工具” -> “更新”。****
+   * 下载用于 Visual Studio 2013 或 Visual Studio 2015 的 Azure SDK。 导航到 [Azure 下载页](https://azure.microsoft.com/downloads/)，在“.NET”部分中单击“VS 2013”或“VS 2015”。
+   * 下载用于 Visual Studio 的最新 Azure 数据工厂插件：[VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 还可通过执行以下步骤更新插件：在菜单上，依次单击“工具” -> “扩展和更新” -> “联机” -> “Visual Studio 库” -> “适用于 Visual Studio 的 Microsoft Azure 数据工厂工具” -> “更新”。
 
 现在，使用 Visual Studio 创建 Azure 数据工厂。
 
 ### <a name="create-visual-studio-project"></a>创建 Visual Studio 项目
-1. 启动 **Visual Studio 2013** 或 **Visual Studio 2015**。 单击“文件”，指向“新建”并单击“项目”。**** 将显示“新建项目”  对话框。  
-2. 在“新建项目”对话框中，选择“DataFactory”模板，然后单击“空数据工厂项目”。****   
+1. 启动 **Visual Studio 2013** 或 **Visual Studio 2015**。 单击“文件”，指向“新建”并单击“项目”。 将显示“新建项目”  对话框。  
+2. 在“新建项目”对话框中，选择“DataFactory”模板，然后单击“空数据工厂项目”。   
 
     ![“新建项目”对话框](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
-3. 输入项目的**名称**、**位置**以及**解决方案**的名称，然后单击“确定”。****
+3. 输入项目的**名称**、**位置**以及**解决方案**的名称，然后单击“确定”。
 
     ![解决方案资源管理器](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
 
@@ -86,16 +86,16 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 > 可以在发布数据工厂解决方案时，通过指定名称和设置来创建数据工厂。
 
 #### <a name="create-azure-storage-linked-service"></a>创建 Azure 存储链接服务
-1. 在解决方案资源管理器中，右键单击“链接服务”，指向“添加”，然后单击“新建项”。****      
-2. 在“添加新项”对话框中，从列表中选择“Azure 存储链接服务”，然后单击“添加”。****
+1. 在解决方案资源管理器中，右键单击“链接服务”，指向“添加”，然后单击“新建项”。      
+2. 在“添加新项”对话框中，从列表中选择“Azure 存储链接服务”，然后单击“添加”。
     ![Azure 存储链接服务](./media/data-factory-build-your-first-pipeline-using-vs/new-azure-storage-linked-service.png)
 3. 将 `<accountname>` 和 `<accountkey>` 替换为你的 Azure 存储帐户的名称和密钥。 若要了解如何获取存储访问密钥，请在[管理你的存储帐户](../storage/storage-create-storage-account.md#manage-your-storage-account)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
     ![Azure 存储链接服务](./media/data-factory-build-your-first-pipeline-using-vs/azure-storage-linked-service.png)
 4. 保存 **AzureStorageLinkedService1.json** 文件。
 
 #### <a name="create-azure-hdinsight-linked-service"></a>创建 Azure HDInsight 链接服务
-1. 在“解决方案资源管理器”中，右键单击“链接服务”，指向“添加”，然后单击“新建项”。****
-2. 选择“HDInsight 按需链接服务”，然后单击“添加”。****
+1. 在“解决方案资源管理器”中，右键单击“链接服务”，指向“添加”，然后单击“新建项”。
+2. 选择“HDInsight 按需链接服务”，然后单击“添加”。
 3. 将 **JSON** 替换为以下 JSON：
 
      ```json
@@ -132,8 +132,8 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 此步骤创建数据集来代表 Hive 处理的输入和输出数据。 这些数据集引用前面在本教程中创建的 **AzureStorageLinkedService1** 。 链接服务指向 Azure 存储帐户，数据集指定用于保存输入和输出数据的存储中的容器、文件夹和文件名。   
 
 #### <a name="create-input-dataset"></a>创建输入数据集
-1. 在“解决方案资源管理器”中，右键单击“表”，指向“添加”，然后单击“新建项”。****
-2. 从列表中选择“Azure Blob”，将文件名更改为 **InputDataSet.json**，然后单击“添加”。****
+1. 在“解决方案资源管理器”中，右键单击“表”，指向“添加”，然后单击“新建项”。
+2. 从列表中选择“Azure Blob”，将文件名更改为 **InputDataSet.json**，然后单击“添加”。
 3. 在编辑器中将 **JSON** 替换为以下 JSON 代码片段：
 
     ```json
@@ -177,8 +177,8 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 #### <a name="create-output-dataset"></a>创建输出数据集
 现在，请创建一个输出数据集，用来表示 Azure Blob 存储中存储的输出数据。
 
-1. 在“解决方案资源管理器”中，右键单击“表”，指向“添加”，然后单击“新建项”。****
-2. 从列表中选择“Azure Blob”，将文件名更改为 **OutputDataset.json**，然后单击“添加”。****
+1. 在“解决方案资源管理器”中，右键单击“表”，指向“添加”，然后单击“新建项”。
+2. 从列表中选择“Azure Blob”，将文件名更改为 **OutputDataset.json**，然后单击“添加”。
 3. 在编辑器中将 **JSON** 替换为以下 JSON：
     
     ```json
@@ -211,8 +211,8 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 ### <a name="create-pipeline"></a>创建管道
 目前已创建 Azure 存储链接服务，以及输入和输出数据集。 现在，请创建 **HDInsightHive** 活动的管道。 Hive 活动的“输入”设置为 **AzureBlobInput**，“输出”设置为 **AzureBlobOutput**。 输入数据集的切片每月都会提供（频率：每月，间隔：1），输出切片也是每月都会生成。 
 
-1. 在“解决方案资源管理器”中，右键单击“管道”，指向“添加”，然后单击“新建项”。****
-2. 从列表中选择“Hive 转换管道”，然后单击“添加”。****
+1. 在“解决方案资源管理器”中，右键单击“管道”，指向“添加”，然后单击“新建项”。
+2. 从列表中选择“Hive 转换管道”，然后单击“添加”。
 3. 将 **JSON** 替换为以下代码片段：
 
     > [!IMPORTANT]
@@ -280,8 +280,8 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 4. 保存 **HiveActivity1.json** 文件。
 
 ### <a name="add-partitionweblogshql-and-inputlog-as-a-dependency"></a>将 partitionweblogs.hql 和 input.log 添加为依赖项
-1. 在“解决方案资源管理器”窗口中右键单击“依赖项”，指向“添加”，然后单击“现有项”。****  
-2. 导航到 **C:\ADFGettingStarted**，选择 **partitionweblogs.hql** 和 **input.log** 文件，然后单击“添加”。**** 你已根据[教程概述](data-factory-build-your-first-pipeline.md)的部分先决条件创建上述两个文件。
+1. 在“解决方案资源管理器”窗口中右键单击“依赖项”，指向“添加”，然后单击“现有项”。  
+2. 导航到 **C:\ADFGettingStarted**，选择 **partitionweblogs.hql** 和 **input.log** 文件，然后单击“添加”。 你已根据[教程概述](data-factory-build-your-first-pipeline.md)的部分先决条件创建上述两个文件。
 
 在下一步骤中发布解决方案时，请将 **partitionweblogs.hql** 文件上载到 `adfgetstarted` Blob 容器中的 **script** 文件夹。   
 
@@ -289,7 +289,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 在此步骤中，请将项目中的数据工厂实体（链接服务、数据集和管道）发布到 Azure 数据工厂服务。 在发布过程中，请指定数据工厂的名称。 
 
 1. 在“解决方案资源管理器”中，右键单击该项目，并单击“发布” 。
-2. 如果显示“登录到 Microsoft 帐户”对话框，请输入拥有 Azure 订阅的帐户凭据，然后单击“登录”。****
+2. 如果显示“登录到 Microsoft 帐户”对话框，请输入拥有 Azure 订阅的帐户凭据，然后单击“登录”。
 3. 应该会看到以下对话框：
 
    ![“发布”对话框](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
@@ -304,21 +304,21 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
         > 如果未看到任何订阅，请确保使用属于订阅管理员或共同管理员的帐户登录。
    4. 为要创建的数据工厂选择 **资源组** 。
    5. 为数据工厂选择 **区域** 。
-   6. 单击“下一步”切换到“发布项”页。**** （如果“下一步”按钮已禁用，请按 **TAB** 移出“名称”字段）。****
+   6. 单击“下一步”切换到“发布项”页。 （如果“下一步”按钮已禁用，请按 **TAB** 移出“名称”字段）。
 
     > [!IMPORTANT]
-    > 如果在发布时收到错误：“数据工厂名称 ‘DataFactoryUsingVS’ 不可用”，请更改名称（例如 yournameDataFactoryUsingVS）。**** 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。   
-1. 在“发布项”页上，确保已选择所有数据工厂实体，然后单击“下一步”切换到“摘要”页。****
+    > 如果在发布时收到错误：“数据工厂名称 ‘DataFactoryUsingVS’ 不可用”，请更改名称（例如 yournameDataFactoryUsingVS）。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。   
+1. 在“发布项”页上，确保已选择所有数据工厂实体，然后单击“下一步”切换到“摘要”页。
 
     ![发布项页](media/data-factory-build-your-first-pipeline-using-vs/publish-items-page.png)     
-2. 查看摘要，单击“下一步”，启动部署过程并查看“部署状态”。****
+2. 查看摘要，单击“下一步”，启动部署过程并查看“部署状态”。
 
     ![“摘要”页](media/data-factory-build-your-first-pipeline-using-vs/summary-page.png)
 3. 在“部署状态”  页上，应看到部署过程的状态。 部署完成后，单击“完成”。
 
 重要注意事项：
 
-- 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，尝试再次发布：****
+- 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，尝试再次发布：
     - 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
         ```PowerShell    
         Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
@@ -337,13 +337,13 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
 #### <a name="monitor-pipeline-using-diagram-view"></a>使用图示视图监视管道
 1. 登录到 [Azure 门户](https://portal.azure.com/)，执行以下步骤：
-   1. 单击“更多服务”，然后单击“数据工厂”。****
+   1. 单击“更多服务”，然后单击“数据工厂”。
        
         ![浏览数据工厂](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png)
    2. 从数据工厂列表中选择数据工厂的名称（例如： **DataFactoryUsingVS09152016**）。
    
        ![选择数据工厂](./media/data-factory-build-your-first-pipeline-using-vs/select-first-data-factory.png)
-2. 在数据工厂的主页中单击“图示”。****
+2. 在数据工厂的主页中单击“图示”。
 
     ![图示磁贴](./media/data-factory-build-your-first-pipeline-using-vs/diagram-tile.png)
 3. 在“图示视图”中，可以看到管道的概述，以及本教程中使用的数据集。
@@ -356,27 +356,27 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
     ![“打开管道”视图](./media/data-factory-build-your-first-pipeline-using-vs/open-pipeline-view.png)
 
-    若要导航回到上一个视图，请单击顶部痕迹导航菜单中的“数据工厂”。****
-6. 在“图示视图”中，双击数据集 **AzureBlobInput**。****  确认切片处于“就绪”状态。 可能需要几分钟时间，切片才显示为“就绪”状态。 如果一段时间后未显示此状态，请检查是否已将输入文件 (input.log) 放置在正确的容器 (`adfgetstarted`) 和文件夹 (`inputdata`) 中。 另外，请确保将输入数据集的 **external** 属性设置为 **true**。 
+    若要导航回到上一个视图，请单击顶部痕迹导航菜单中的“数据工厂”。
+6. 在“图示视图”中，双击数据集 **AzureBlobInput**。  确认切片处于“就绪”状态。 可能需要几分钟时间，切片才显示为“就绪”状态。 如果一段时间后未显示此状态，请检查是否已将输入文件 (input.log) 放置在正确的容器 (`adfgetstarted`) 和文件夹 (`inputdata`) 中。 另外，请确保将输入数据集的 **external** 属性设置为 **true**。 
 
    ![输入切片处于就绪状态](./media/data-factory-build-your-first-pipeline-using-vs/input-slice-ready.png)
-7. 单击“X”关闭“AzureBlobInput”边栏选项卡。****
-8. 在“图示视图”中，双击数据集 **AzureBlobOutput**。**** 此时将显示当前正在处理的切片。
+7. 单击“X”关闭“AzureBlobInput”边栏选项卡。
+8. 在“图示视图”中，双击数据集 **AzureBlobOutput**。 此时将显示当前正在处理的切片。
 
    ![数据集](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
-9. 处理完成后，可以看到切片处于“就绪”状态。****
+9. 处理完成后，可以看到切片处于“就绪”状态。
 
    > [!IMPORTANT]
    > 创建按需 HDInsight 群集通常需要一段时间（大约 20 分钟）。 因此，预期管道需要花费 **大约 30 分钟** 来处理切片。  
    
     ![数据集](./media/data-factory-build-your-first-pipeline-using-vs/dataset-slice-ready.png)    
-10. 当切片处于“就绪”状态时，检查 Blob 存储中 `adfgetstarted` 容器内 `partitioneddata` 文件夹的输出数据。****  
+10. 当切片处于“就绪”状态时，检查 Blob 存储中 `adfgetstarted` 容器内 `partitioneddata` 文件夹的输出数据。  
 
     ![输出数据](./media/data-factory-build-your-first-pipeline-using-vs/three-ouptut-files.png)
-11. 单击切片可在“数据切片”边栏选项卡中查看其详细信息。****
+11. 单击切片可在“数据切片”边栏选项卡中查看其详细信息。
 
     ![数据切片详细信息](./media/data-factory-build-your-first-pipeline-using-vs/data-slice-details.png)  
-12. 单击“活动运行列表”中的某个活动运行可在“活动运行详细信息”窗口中查看有关该活动运行（在本例中为 Hive 活动）的详细信息。**** 
+12. 单击“活动运行列表”中的某个活动运行可在“活动运行详细信息”窗口中查看有关该活动运行（在本例中为 Hive 活动）的详细信息。 
   
     ![活动运行详细信息](./media/data-factory-build-your-first-pipeline-using-vs/activity-window-blade.png)    
 
@@ -390,10 +390,10 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 1. 单击“监视和管理”磁贴。
 
     ![“监视和管理”磁贴](./media/data-factory-build-your-first-pipeline-using-vs/monitor-and-manage-tile.png)
-2. 此时应出现“监视和管理应用程序”。 更改“开始时间”和“结束时间”，使之与管道的开始时间 (04-01-2016 12:00 AM) 和结束时间 (04-02-2016 12:00 AM) 匹配，然后单击“应用”。****
+2. 此时应出现“监视和管理应用程序”。 更改“开始时间”和“结束时间”，使之与管道的开始时间 (04-01-2016 12:00 AM) 和结束时间 (04-02-2016 12:00 AM) 匹配，然后单击“应用”。
 
     ![“监视和管理”应用](./media/data-factory-build-your-first-pipeline-using-vs/monitor-and-manage-app.png)
-3. 若要查看某个活动窗口的详细信息，请在“活动窗口”列表中选择该窗口，然后即可查看其详细信息。****
+3. 若要查看某个活动窗口的详细信息，请在“活动窗口”列表中选择该窗口，然后即可查看其详细信息。
     ![活动窗口详细信息](./media/data-factory-build-your-first-pipeline-using-vs/activity-window-details.png)
 
 > [!IMPORTANT]
@@ -413,20 +413,20 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
 
 ## <a name="use-server-explorer-to-view-data-factories"></a>使用“服务器资源管理器”查看数据工厂
-1. 在 **Visual Studio** 中，在菜单上单击“视图”，然后单击“服务器资源管理器”。****
-2. 在“服务器资源管理器”窗口中，依次展开“Azure”和“数据工厂”。**** 如果看到“登录到 Visual Studio”，请输入与 Azure 订阅关联的**帐户**，然后单击“继续”。**** 输入**密码**，然后单击“登录”。**** Visual Studio 尝试获取有关订阅中所有 Azure 数据工厂的信息。 可在“数据工厂任务列表”窗口中查看此操作的状态。****
+1. 在 **Visual Studio** 中，在菜单上单击“视图”，然后单击“服务器资源管理器”。
+2. 在“服务器资源管理器”窗口中，依次展开“Azure”和“数据工厂”。 如果看到“登录到 Visual Studio”，请输入与 Azure 订阅关联的**帐户**，然后单击“继续”。 输入**密码**，然后单击“登录”。 Visual Studio 尝试获取有关订阅中所有 Azure 数据工厂的信息。 可在“数据工厂任务列表”窗口中查看此操作的状态。
 
     ![服务器资源管理器](./media/data-factory-build-your-first-pipeline-using-vs/server-explorer.png)
-3. 可右键单击数据工厂，并选择“将数据工厂导出到新项目”，创建基于现有数据工厂的 Visual Studio 项目。****
+3. 可右键单击数据工厂，并选择“将数据工厂导出到新项目”，创建基于现有数据工厂的 Visual Studio 项目。
 
     ![导出数据工厂](./media/data-factory-build-your-first-pipeline-using-vs/export-data-factory-menu.png)
 
 ## <a name="update-data-factory-tools-for-visual-studio"></a>更新用于 Visual Studio 的数据工厂工具
 若要更新适用于 Visual Studio 的 Azure 数据工厂工具，请执行以下步骤：
 
-1. 在菜单中单击“工具”，然后选择“扩展和更新”。****
-2. 在左窗格中选择“更新”，然后选择“Visual Studio 库”。****
-3. 选择“用于 Visual Studio 的 Azure 数据工厂工具”，然后单击“更新”。**** 如果未看到此项，说明你已有此工具的最新版本。
+1. 在菜单中单击“工具”，然后选择“扩展和更新”。
+2. 在左窗格中选择“更新”，然后选择“Visual Studio 库”。
+3. 选择“用于 Visual Studio 的 Azure 数据工厂工具”，然后单击“更新”。 如果未看到此项，说明你已有此工具的最新版本。
 
 ## <a name="use-configuration-files"></a>使用配置文件
 可以在 Visual Studio 中使用配置文件，以不同的方式为每个环境配置链接服务/表/管道的属性。
@@ -449,8 +449,8 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 ### <a name="add-a-configuration-file"></a>添加配置文件
 执行以下步骤，为每个环境添加配置文件：   
 
-1. 在 Visual Studio 解决方案中右键单击数据工厂项目，指向“添加”，然后单击“添加项”。****
-2. 在左侧的已安装模板列表中选择“配置”，选择“配置文件”，输入配置文件的**名称**，然后单击“添加”。****
+1. 在 Visual Studio 解决方案中右键单击数据工厂项目，指向“添加”，然后单击“添加项”。
+2. 在左侧的已安装模板列表中选择“配置”，选择“配置文件”，输入配置文件的**名称**，然后单击“添加”。
 
     ![添加配置文件](./media/data-factory-build-your-first-pipeline-using-vs/add-config-file.png)
 3. 使用以下格式添加配置参数及其值：
@@ -526,14 +526,14 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
 使用配置文件在 Azure 数据工厂项目中发布实体：   
 
-1. 右键单击数据工厂项目，然后单击“发布”查看“发布项”对话框。****
-2. 选择现有的数据工厂，或者在“配置数据工厂”页上指定用于创建数据工厂的值，然后单击“下一步”。****   
-3. 在“发布项”页上，可以看到一个下拉列表，其中包含“选择部署配置”字段的可用配置。****
+1. 右键单击数据工厂项目，然后单击“发布”查看“发布项”对话框。
+2. 选择现有的数据工厂，或者在“配置数据工厂”页上指定用于创建数据工厂的值，然后单击“下一步”。   
+3. 在“发布项”页上，可以看到一个下拉列表，其中包含“选择部署配置”字段的可用配置。
 
     ![选择配置文件](./media/data-factory-build-your-first-pipeline-using-vs/select-config-file.png)
-4. 选择要使用的**配置文件**，然后单击“下一步”。****
-5. 确认在“摘要”页上显示了 JSON 文件的名称，然后单击“下一步”。****
-6. 部署操作完成后，请单击“完成”。****
+4. 选择要使用的**配置文件**，然后单击“下一步”。
+5. 确认在“摘要”页上显示了 JSON 文件的名称，然后单击“下一步”。
+6. 部署操作完成后，请单击“完成”。
 
 如果进行部署，则在将实体部署到 Azure 数据工厂服务之前，请使用配置文件中的值设置 JSON 文件中的属性。   
 
