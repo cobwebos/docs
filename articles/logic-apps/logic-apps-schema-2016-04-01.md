@@ -1,5 +1,5 @@
 ---
-title: "架构更新（2016 年&6; 月&1; 日）- Azure 逻辑应用 | Microsoft 文档"
+title: "架构更新（2016 年 6 月 1 日）- Azure 逻辑应用 | Microsoft 文档"
 description: "为 Azure 逻辑应用创建 JSON 定义，使用的架构版本为 2016-06-01"
 author: jeffhollan
 manager: anneta
