@@ -59,7 +59,7 @@ ms.lasthandoff: 02/13/2017
   ![设置源](./media/site-recovery-set-up-physical-to-azure/plus-config-srv.png)
 2. 在“添加服务器”边栏选项卡中，检查“配置服务器”是否已出现在“服务器类型”中。
 4. 下载站点恢复统一安装程序安装文件。
-5. 下载保管库注册密钥。 运行统一安装程序时，需要注册密钥。 生成的密钥有效期为&5; 天。
+5. 下载保管库注册密钥。 运行统一安装程序时，需要注册密钥。 生成的密钥有效期为 5 天。
 
     ![设置源](./media/site-recovery-set-up-physical-to-azure/set-source2.png)
 6. 在用作配置服务器的计算机上，运行 **Azure Site Recovery 统一安装程序**以安装配置服务器、进程服务器和主目标服务器。
@@ -67,7 +67,7 @@ ms.lasthandoff: 02/13/2017
 #### <a name="run-azure-site-recovery-unified-setup"></a>运行 Azure Site Recovery 统一安装程序
 
 > [!TIP]
-> 如果计算机上的系统时钟时间与本地时间相差&5; 分钟以上，则配置服务器注册将失败。 开始安装前，请将系统时钟与[时间服务器](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)同步。
+> 如果计算机上的系统时钟时间与本地时间相差 5 分钟以上，则配置服务器注册将失败。 开始安装前，请将系统时钟与[时间服务器](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)同步。
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 

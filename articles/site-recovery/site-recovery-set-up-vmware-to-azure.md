@@ -66,7 +66,7 @@ ms.lasthandoff: 02/13/2017
     ![设置源](./media/site-recovery-set-up-vmware-to-azure/set-source1.png)
 2. 在“添加服务器”边栏选项卡中，检查“配置服务器”是否已出现在“服务器类型”中。
 4. 下载站点恢复统一安装程序安装文件。
-5. 下载保管库注册密钥。 运行统一安装程序时，需要注册密钥。 生成的密钥有效期为&5; 天。
+5. 下载保管库注册密钥。 运行统一安装程序时，需要注册密钥。 生成的密钥有效期为 5 天。
 
     ![设置源](./media/site-recovery-set-up-vmware-to-azure/set-source2.png)
 6. 在用作配置服务器的计算机上，运行 **Azure Site Recovery 统一安装程序**以安装配置服务器、进程服务器和主目标服务器。
