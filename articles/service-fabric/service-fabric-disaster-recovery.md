@@ -3,7 +3,7 @@ title: "Azure Service Fabric 灾难恢复 | Microsoft 文档"
 description: "Azure Service Fabric 提供所需的功能用于应对各种灾难。 本文介绍可能发生的灾难类型，以及如何应对这些灾难。"
 services: service-fabric
 documentationcenter: .net
-author: seanmck
+author: masnider
 manager: timlt
 editor: 
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,10 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/01/2017
-ms.author: seanmck
-translationtype: Human Translation
+ms.author: masnider
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
 ms.openlocfilehash: 73f5413fb7dd0ca179bf5012478a453963e996a1
+ms.contentlocale: zh-cn
 ms.lasthandoff: 12/14/2016
 
 

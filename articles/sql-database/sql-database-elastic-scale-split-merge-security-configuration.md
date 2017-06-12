@@ -8,16 +8,18 @@ manager: jhubbard
 author: torsteng
 ms.assetid: f9e89c57-61a0-484f-b787-82dae2349cb6
 ms.service: sql-database
-ms.custom: multiple databases
+ms.custom: scale out apps
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 7eecd3cc01cc708c3da1efb1cbb3b1cddb86d6f0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -452,10 +454,5 @@ ms.openlocfilehash: 7eecd3cc01cc708c3da1efb1cbb3b1cddb86d6f0
 对此数据库中存储的凭据进行加密。 但是，最佳做法是，确保服务部署的 Web 角色和辅助角色保持最新且是安全的，因为它们都有权访问元数据数据库和用于加密和解密存储凭据的证书。 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

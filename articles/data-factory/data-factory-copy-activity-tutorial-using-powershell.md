@@ -117,7 +117,7 @@ ms.lasthandoff: 05/18/2017
     ```
 * 只有 Azure 订阅的参与者或管理员才可以创建数据工厂实例。
 * 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
-* 可能会收到以下错误：“未注册订阅，无法使用命名空间 Microsoft.DataFactory”。**** 请执行以下操作之一，然后重试发布：
+* 可能会收到以下错误：“未注册订阅，无法使用命名空间 Microsoft.DataFactory”。 请执行以下操作之一，然后重试发布：
 
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
 
@@ -217,14 +217,14 @@ AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob �
     ProvisioningState : Succeeded
     ```
 
-   确认为 SQL 数据库服务器启用了“允许访问 Azure 服务”设置。**** 若要验证并启用此设置，请执行以下步骤：
+   确认为 SQL 数据库服务器启用了“允许访问 Azure 服务”设置。 若要验证并启用此设置，请执行以下步骤：
 
     1. 登录到 [Azure 门户](https://portal.azure.com)
-    2. 单击左侧的“更多服务”，然后单击“数据库”类别中的“SQL Server”。****
+    2. 单击左侧的“更多服务”，然后单击“数据库”类别中的“SQL Server”。
     3. 在 SQL Server 列表中选择服务器。
-    4. 在 SQL Server 边栏选项卡上，单击“显示防火墙设置”链接。****
-    5. 在“防火墙设置”边栏选项卡中，单击“允许访问 Azure 服务”旁边的“打开”。****
-    6. 单击工具栏上的“保存”。**** 
+    4. 在 SQL Server 边栏选项卡上，单击“显示防火墙设置”链接。
+    5. 在“防火墙设置”边栏选项卡中，单击“允许访问 Azure 服务”旁边的“打开”。
+    6. 单击工具栏上的“保存”。 
 
 ## <a name="create-datasets"></a>创建数据集
 在上一步骤中，已创建用于将 Azure 存储帐户和 Azure SQL 数据库链接到数据工厂的链接服务。 本步骤定义两个名为 InputDataset 和 OutputDataset 的数据集，表示存储在数据存储中的输入和输出数据，这些数据存储分别由 AzureStorageLinkedService 和 AzureSqlLinkedService 引用。

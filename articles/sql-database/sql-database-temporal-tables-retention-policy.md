@@ -8,16 +8,17 @@ manager: drasumic
 editor: 
 ms.assetid: 76cfa06a-e758-453e-942c-9f1ed6a38c2a
 ms.service: sql-database
-ms.custom: development
+ms.custom: develop databases
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sql-database
 ms.date: 10/12/2016
 ms.author: bonova
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: 3870a6ddb8c40a619e3aa6ed1a040f2070e2598c
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/20/2017
 
 
@@ -156,7 +157,7 @@ CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
 下图显示一个简单查询的查询计划：
 
 ````
-SELECT * FROM dbo.WebsiteUserInfo FROM SYSTEM_TIME ALL;
+SELECT * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME ALL;
 ````
 
 该查询计划包含的附加筛选器已应用到历史记录表上“聚集索引扫描”运算符中的期限结束时间列 (ValidTo)（已突出显示）。 此示例假设已在 WebsiteUserInfo 表中设置了一个月 (1 MONTH) 的保留期。

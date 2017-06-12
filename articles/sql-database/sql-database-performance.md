@@ -8,24 +8,25 @@ manager: jhubbard
 editor: monicar
 ms.assetid: a60b75ac-cf27-4d73-8322-ee4d4c448aa2
 ms.service: sql-database
-ms.custom: monitor and tune
+ms.custom: monitor & manage
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 07/19/2016
 ms.author: sstein
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 155e9ddb48c65ad1648e18eb306c9badc2cb27e8
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 071cc504cc4111e20391af86ffdc7819644ec434
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/14/2016
 
 
 ---
 # <a name="sql-database-performance-insight"></a>SQL 数据库性能见解
 Azure SQL 数据库提供的性能工具通过提供智能优化操作和建议，有助于识别并提高数据库的性能。 
 
-1. 浏览到 [Azure 门户](http://portal.azure.com)中的数据库，然后单击“所有设置”>“性能”>“概述”以打开“性能”页面。 
+1. 浏览到 [Azure 门户](http://portal.azure.com)中的数据库并单击“**所有设置**” > “**性能**” > “**概述**”以打开“**性能**”页面。 
 2. 单击“**建议**”，打开 [SQL 数据库顾问](#sql-database-advisor)，然后单击“**查询**”打开[查询性能见解](#query-performance-insight)。
    
     ![查看性能](./media/sql-database-performance/entries.png)
@@ -56,6 +57,6 @@ Azure SQL 数据库提供的性能工具通过提供智能优化操作和建议�
 
 ## <a name="additional-resources"></a>其他资源
 * [Azure SQL 数据库的单一数据库性能指导](sql-database-performance-guidance.md)
-* [何时应使用弹性池？](sql-database-elastic-pool.md)
+* [何时应使用弹性池？](sql-database-elastic-pool-guidance.md)
 
 

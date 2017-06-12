@@ -14,7 +14,7 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: cosmosdb
 ms.workload: database
-ms.date: 05/10/2017
+ms.date: 06/06/2017
 ms.author: mimig
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
@@ -30,6 +30,8 @@ ms.lasthandoff: 05/15/2017
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
 ## <a name="sample-script"></a>示例脚本
 
 [!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/create-cosmosdb-account-database/create-cosmosdb-account-database.sh?highlight=15-35 "创建 Azure Cosmos DB DocumentDB API 帐户、数据库和集合")]
@@ -38,7 +40,7 @@ ms.lasthandoff: 05/15/2017
 
 运行脚本示例后，可以使用以下命令删除资源组以及与其关联的所有资源。
 
-```azurecli
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 

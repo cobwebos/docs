@@ -117,7 +117,7 @@ ms.lasthandoff: 05/16/2017
     },
     "policy":
     {
-    }
+    },
     "scheduler":
     {
     }

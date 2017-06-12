@@ -67,8 +67,8 @@ git clone https://github.com/Azure-Samples/iot-hub-dotnet-simulated-device-clien
 1. 在 Visual Studio 中，使用“控制台应用(.NET Framework)”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 确保 .NET Framework 版本为 4.5.1 或更高。 将项目命名为 **ReadDeviceToCloudMessages**。
    
     ![新的 Visual C# Windows 经典桌面项目][10a]
-2. 在解决方案资源管理器中，右键单击“ReadDeviceToCloudMessages”项目，然后单击“管理 NuGet 包”。****
-3. 在“NuGet 包管理器”窗口中，搜索 **WindowsAzure.ServiceBus**，选择“安装”并接受使用条款。**** 该过程将下载、安装 [Azure 服务总线][lnk-servicebus-nuget]及其所有依赖项并添加对它的引用。 此包可让应用程序连接到 IoT 中心上与事件中心兼容的终结点。
+2. 在解决方案资源管理器中，右键单击“ReadDeviceToCloudMessages”项目，然后单击“管理 NuGet 包”。
+3. 在“NuGet 包管理器”窗口中，搜索 **WindowsAzure.ServiceBus**，选择“安装”并接受使用条款。 该过程将下载、安装 [Azure 服务总线][lnk-servicebus-nuget]及其所有依赖项并添加对它的引用。 此包可让应用程序连接到 IoT 中心上与事件中心兼容的终结点。
 4. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
    
    ```csharp
@@ -132,8 +132,8 @@ git clone https://github.com/Azure-Samples/iot-hub-dotnet-simulated-device-clien
 1. 在 Visual Studio 中，使用“控制台应用(.NET Framework)”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 确保 .NET Framework 版本为 4.5.1 或更高。 将项目命名为 **SimulatedDevice**。
    
     ![新的 Visual C# Windows 经典桌面项目][10b]
-2. 在解决方案资源管理器中，右键单击“SimulatedDevice”项目，然后单击“管理 NuGet 包”。****
-3. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **Microsoft.Azure.Devices.Client**，选择“安装”以安装 **Microsoft.Azure.Devices.Client** 包，然后接受使用条款。**** 该过程将下载、安装 [Azure IoT 设备 SDK][lnk-device-nuget] NuGet 包及其依赖项并添加对它的引用。
+2. 在解决方案资源管理器中，右键单击“SimulatedDevice”项目，然后单击“管理 NuGet 包”。
+3. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **Microsoft.Azure.Devices.Client**，选择“安装”以安装 **Microsoft.Azure.Devices.Client** 包，然后接受使用条款。 该过程将下载、安装 [Azure IoT 设备 SDK][lnk-device-nuget] NuGet 包及其依赖项并添加对它的引用。
 4. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
    
    ```csharp

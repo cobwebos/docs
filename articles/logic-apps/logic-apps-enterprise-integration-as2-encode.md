@@ -41,7 +41,7 @@ ms.lasthandoff: 05/10/2017
 
 2. 编码 AS2 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加一个触发器，然后向逻辑应用中添加一个操作。
 
-3.    在搜索框中，输入“AS2”作为筛选器。 选择“AS2 - 编码 AS2 消息”。****
+3.    在搜索框中，输入“AS2”作为筛选器。 选择“AS2 - 编码 AS2 消息”。
    
     ![搜索“AS2”](./media/logic-apps-enterprise-integration-as2-encode/as2decodeimage1.png)
 

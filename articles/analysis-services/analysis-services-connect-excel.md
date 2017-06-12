@@ -36,7 +36,7 @@ ms.lasthandoff: 05/10/2017
 
 1. 在 Excel 2016 的“数据”功能区上，单击“获取外部数据” > “从其他源获取” > “从 Analysis Services 获取”。
 
-2. 在“数据连接向导”的“服务器名称”中，输入服务器名称，包括协议和 URI。**** 然后，在“登录凭据”中，选择“使用以下用户名和密码”，然后键入组织的用户名（例如 nancy@adventureworks.com）和密码。
+2. 在“数据连接向导”的“服务器名称”中，输入服务器名称，包括协议和 URI。 然后，在“登录凭据”中，选择“使用以下用户名和密码”，然后键入组织的用户名（例如 nancy@adventureworks.com）和密码。
 
     ![“从 Excel 中连接”登录](./media/analysis-services-connect-excel/aas-connect-excel-logon.png)
 

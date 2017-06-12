@@ -34,7 +34,7 @@ ms.lasthandoff: 05/10/2017
 > Cosmos DB 是下一代 DocumentDB。 虽然更改了产品名称，但语法与之前相同。 请继续按照此索引器文章的指示指定 `documentdb`。 
 
 > [!TIP]
-> 可从 Cosmos DB 仪表板启动“导入数据”向导，进而简化该数据源的索引。**** 在左侧导航栏中，转到“集合” > “添加 Azure 搜索”开始操作。
+> 可从 Cosmos DB 仪表板启动“导入数据”向导，进而简化该数据源的索引。 在左侧导航栏中，转到“集合” > “添加 Azure 搜索”开始操作。
 
 <a name="Concepts"></a>
 ## <a name="azure-search-indexer-concepts"></a>Azure 搜索索引器概念
@@ -71,7 +71,7 @@ Azure 搜索支持创建和管理数据源（包括 Cosmos DB）以及针对这�
 
 请求正文包含数据源定义，其中应包括以下字段：
 
-* 名称：选择任意名称来表示 Cosmos DB 数据库。****
+* 名称：选择任意名称来表示 Cosmos DB 数据库。
 * **类型**：必须为 `documentdb`。
 * **凭据**：
   

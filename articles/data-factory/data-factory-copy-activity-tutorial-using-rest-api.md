@@ -348,7 +348,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 请注意以下几点：
 
-* Azure 数据工厂的名称必须全局唯一。 如果在结果中看到错误：“数据工厂名称 ‘ADFCopyTutorialDF’ 不可用”，请执行以下步骤： ****  
+* Azure 数据工厂的名称必须全局唯一。 如果在结果中看到错误：“数据工厂名称 ‘ADFCopyTutorialDF’ 不可用”，请执行以下步骤：   
   
   1. 在 **datafactory.json** 文件中更改名称（例如，yournameADFCopyTutorialDF）。
   2. 在分配 **$cmd** 变量值的第一个命令中，将 ADFCopyTutorialDF 替换为新名称，然后运行该命令。 
@@ -357,7 +357,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
      有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
 * 只有 Azure 订阅的参与者/管理员才可以创建数据工厂实例
 * 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
-* 如果收到错误：“该订阅未注册为使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，尝试再次发布：**** 
+* 如果收到错误：“该订阅未注册为使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，尝试再次发布： 
   
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。 
 
@@ -512,7 +512,7 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 }
 ```
 
-运行 Invoke-Command 和下一条命令，直到切片进入“就绪”或“失败”状态。**** **emp** 表中检查输出数据。 
+运行 Invoke-Command 和下一条命令，直到切片进入“就绪”或“失败”状态。 **emp** 表中检查输出数据。 
 
 对于每个切片，源文件中有两行数据已复制到 Azure SQL 数据库中的 emp 表。 因此，成功处理所有切片（处于“就绪”状态）后，emp 表中有 24 条新记录。 
 

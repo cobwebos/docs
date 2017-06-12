@@ -118,7 +118,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 ### <a name="encryption-in-transit"></a>传输中加密
 所有数据传输都是通过 HTTPS 和 TLS over TCP 安全通道进行的，可防止与 Azure 服务通信期间发生中间人攻击。
  
-还可以使用 [IPSec VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md) 或快速路由[](../expressroute/expressroute-introduction.md)进一步保护本地网络和 Azure 之间的通信信道。
+还可以使用 [IPSec VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md) 或 [快速路由](../expressroute/expressroute-introduction.md) 进一步保护本地网络和 Azure 之间的通信信道。
 
 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 IPSec VPN（站点到站点）或快速路由（私有对等互连）将本地网络连接到 Azure 虚拟网络 (VNet)        
 

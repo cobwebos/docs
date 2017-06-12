@@ -339,17 +339,17 @@ ms.lasthandoff: 05/18/2017
 ## <a name="monitor-pipeline"></a>监视管道
 
 1. 使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧菜单中单击“数据工厂”；或者单击“更多服务”，然后单击“智能 + 分析”类别下面的“数据工厂”。****
+2. 在左侧菜单中单击“数据工厂”；或者单击“更多服务”，然后单击“智能 + 分析”类别下面的“数据工厂”。
    
     ![数据工厂菜单](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factories-menu.png)
-3. 在“数据工厂”页中，搜索并查找数据工厂 (AzureBlobToAzureSQLDatabaseDF)。**** 
+3. 在“数据工厂”页中，搜索并查找数据工厂 (AzureBlobToAzureSQLDatabaseDF)。 
    
     ![搜索数据工厂](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/search-for-data-factory.png)  
 4. 单击你的 Azure 数据工厂。 随后将显示该数据工厂的主页。
    
     ![数据工厂主页](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-home-page.png)  
 6. 按照[监视数据集和管道](data-factory-copy-activity-tutorial-using-azure-portal.md#monitor-pipeline)中的说明，监视在本教程中创建的管道和数据集。 目前，Visual Studio 不支持对数据工厂管道进行监视。
-7. 切片处于“就绪”状态后，验证数据是否已复制到 Azure SQL 数据库中的 emp 表。****
+7. 切片处于“就绪”状态后，验证数据是否已复制到 Azure SQL 数据库中的 emp 表。
 
 
 若要详细了解如何使用 Azure 门户边栏选项卡监视本教程中创建的管道和数据集，请参阅[监视数据集和管道](data-factory-monitor-manage-pipelines.md)。

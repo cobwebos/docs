@@ -62,7 +62,7 @@ Microsoft 已与 Thales 联手增强 HSM 的技术开发水平。 这些增强�
 | Azure 订阅 |若要创建 Azure 密钥保管库，需要 Azure 订阅：[注册免费试用版](https://azure.microsoft.com/pricing/free-trial/) |
 | 用于支持受 HSM 保护的密钥的 Azure 密钥保管库高级服务层 |请参阅 [Azure 密钥保管库定价](https://azure.microsoft.com/pricing/details/key-vault/)网站，了解有关 Azure 密钥保管库的服务层和功能的详细信息。 |
 | Thales HSM、智能卡和支持软件 |必须具有 Thales 硬件安全模块的访问权限和 Thales HSM 的基本操作知识。 请参阅 [Thales 硬件安全模块](https://www.thales-esecurity.com/msrms/buy)，了解兼容型号的列表，或者如果你还没有 HSM，请购买 HSM。 |
-| 以下硬件和软件：<ol><li>脱机 x64 工作站，最低 Windows 操作系统为 Windows 7，Thales nShield 软件最低为 11.50 版。<br/><br/>如果此工作站运行 Windows 7，则必须[安装 Microsoft.NET Framework 4.5](http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>连接到 Internet 的工作站，最低 Windows 操作系统为 Windows 7，最低 [Azure PowerShell](/powershell/azure/overview) 安装版本为 1.1.0。****</li><li>至少拥有 16 MB 可用空间的 USB 驱动器或其他便携式存储设备。</li></ol> |出于安全原因，建议第一个工作站不要连接到网络。 但是，此建议不会以编程方式强制执行。<br/><br/>请注意，在后面的说明中，将此工作站称为连接断开的工作站。</p></blockquote><br/>此外，如果租户密钥用于生产网络，我们建议你使用第二个独立的工作站来下载工具集和上载租户密钥。 但出于测试目的，可以使用与第一个相同的工作站。<br/><br/>请注意，在后面的说明中，将第二个工作站称为连接到 Internet 的工作站。</p></blockquote><br/> |
+| 以下硬件和软件：<ol><li>脱机 x64 工作站，最低 Windows 操作系统为 Windows 7，Thales nShield 软件最低为 11.50 版。<br/><br/>如果此工作站运行 Windows 7，则必须[安装 Microsoft.NET Framework 4.5](http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>连接到 Internet 的工作站，最低 Windows 操作系统为 Windows 7，最低 [Azure PowerShell](/powershell/azure/overview) 安装版本为 1.1.0。</li><li>至少拥有 16 MB 可用空间的 USB 驱动器或其他便携式存储设备。</li></ol> |出于安全原因，建议第一个工作站不要连接到网络。 但是，此建议不会以编程方式强制执行。<br/><br/>请注意，在后面的说明中，将此工作站称为连接断开的工作站。</p></blockquote><br/>此外，如果租户密钥用于生产网络，我们建议你使用第二个独立的工作站来下载工具集和上载租户密钥。 但出于测试目的，可以使用与第一个相同的工作站。<br/><br/>请注意，在后面的说明中，将第二个工作站称为连接到 Internet 的工作站。</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>生成密钥并将其传输到 Azure 密钥保管库 HSM
 将使用以下五个步骤来生成密钥并将其传输到 Azure 密钥保管库 HSM：
@@ -131,7 +131,7 @@ KeyVault-BYOK-Tools-Japan.zip
 453FFEA2F8F410720B68B8BAC4CF79135A7F37F4E491FF840BE9E69E88A98C90
 
 - - -
-韩国：****
+韩国：
 
 KeyVault-BYOK-Tools-Korea.zip
 
@@ -152,7 +152,7 @@ KeyVault-BYOK-Tools-USGovCloud.zip
 3AAE1A96B9D15B899B8126CFC0380719EB54FDF2EA94489B43FAD21ECC745F64
 
 - - -
-美国政府国防部：****
+美国政府国防部：
 
 KeyVault-BYOK-Tools-USGovernmentDoD.zip
 
@@ -196,7 +196,7 @@ ED331A6F1D34A402317D3F27D5396046AF0E5C2D44B5D10CCCE293472942D268
 
 * 名称以 **BYOK-KEK-pkg-** 开头的密钥交换密钥 (KEK) 包。
 * 名称以 **BYOK-SecurityWorld-pkg-** 开头的的安全体系包。
-* 名称为 verifykeypackage.py 的 Python 脚本。****
+* 名称为 verifykeypackage.py 的 Python 脚本。
 * 名称为 **KeyTransferRemote.exe** 的命令行可执行文件以及关联的 DLL。
 * 名称为 **vcredist_x64.exe** 的 Visual c + + 可再发行组件包。
 
@@ -208,7 +208,7 @@ ED331A6F1D34A402317D3F27D5396046AF0E5C2D44B5D10CCCE293472942D268
 ### <a name="step-21-prepare-the-disconnected-workstation-with-thales-hsm"></a>步骤 2.1：准备使用 Thales HSM 的连接断开的工作站
 在 Windows 计算机上安装 nCipher (Thales) 支持软件，然后将 Thales HSM 连接到该计算机。
 
-确保 Thales 工具位于路径 (%nfast_home%\bin) 下。**** 例如，请键入以下内容：
+确保 Thales 工具位于路径 (%nfast_home%\bin) 下。 例如，请键入以下内容：
 
         set PATH=%PATH%;"%nfast_home%\bin"
 
@@ -373,7 +373,7 @@ ED331A6F1D34A402317D3F27D5396046AF0E5C2D44B5D10CCCE293472942D268
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-INDIA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-INDIA-1
 
-运行此命令时，请将 contosokey 替换为在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中指定的相同值。****
+运行此命令时，请将 contosokey 替换为在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中指定的相同值。
 
 系统会要求你插入安全体系的管理员卡。
 
@@ -387,7 +387,7 @@ ED331A6F1D34A402317D3F27D5396046AF0E5C2D44B5D10CCCE293472942D268
 * kmfile-dump.exe:
 
         "%nfast_home%\bin\kmfile-dump.exe" "%NFAST_KMDATA%\local\key_xferacld_contosokey"
-  运行这些命令时，将 contosokey 替换为在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中指定的相同值。****
+  运行这些命令时，将 contosokey 替换为在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中指定的相同值。
 
 ### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>步骤 4.2：使用 Microsoft 的密钥交换密钥加密密钥
 运行以下一项命令，具体要取决于你所在的地理区域或 Azure 实例：
@@ -431,11 +431,11 @@ ED331A6F1D34A402317D3F27D5396046AF0E5C2D44B5D10CCCE293472942D268
 
 运行此命令时，请使用以下说明︰
 
-* 将 contosokey 替换为用于在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中生成密钥的标识符。****
+* 将 contosokey 替换为用于在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中生成密钥的标识符。
 * 将 *SubscriptionID* 替换为包含密钥保管库的 Azure 订阅 ID。 以前已在[准备连接到 Internet 的工作站](#step-1-prepare-your-internet-connected-workstation)步骤的**步骤 1.2：获取 Azure 订阅 ID** 中检索此值。
 * 将 *ContosoFirstHSMKey* 替换为用于输出文件名称的标签。
 
-此操作成功完成后，将会显示“结果: 成功”，并且包含 KeyTransferPackage-ContosoFirstHSMkey.byok 的当前文件夹中会出现一个新文件**
+此操作成功完成后，将会显示“结果: 成功”，并且包含 KeyTransferPackage-ContosoFirstHSMkey.byok 的当前文件夹中会出现一个新文件
 
 ### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>步骤 4.3：将密钥传输包复制到连接 Internet 的工作站
 使用 USB 驱动器或其他便携式存储设备，将上一步的输出文件 (KeyTransferPackage-ContosoFirstHSMkey.byok) 复制到连接 Internet 的工作站。
