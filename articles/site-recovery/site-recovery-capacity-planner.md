@@ -104,14 +104,14 @@ AA 到 AE 列为输出，提供的是每个 VM 的信息。
 ![工作负荷限定](./media/site-recovery-capacity-planner/workload-qualification-2.png)
 
 ### <a name="example"></a>示例
-例如，如果有&6; 个 VM，其值如表中所示，该工具会计算和分配最佳 Azure VM 匹配项以及 Azure 存储需求。
+例如，如果有 6 个 VM，其值如表中所示，该工具会计算和分配最佳 Azure VM 匹配项以及 Azure 存储需求。
 
 ![工作负荷限定](./media/site-recovery-capacity-planner/workload-qualification-3.png)
 
 * 在示例输出中，请注意以下问题：
 
   * 第一列是用于 VM、磁盘和改动的验证列。
-  * 5 个 VM 需要&2; 个标准存储帐户和&1; 个高级存储帐户。
+  * 5 个 VM 需要 2 个标准存储帐户和 1 个高级存储帐户。
   * VM3 不符合受保护资格，因为一个或多个磁盘大于 1 TB。
   * VM1 和 VM2 可以使用第一个标准存储帐户。
   * VM4 可以使用第二个标准存储帐户。

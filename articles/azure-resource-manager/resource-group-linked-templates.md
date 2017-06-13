@@ -170,8 +170,8 @@ Resource Manager 会将每个链接的模板作处理为单独的部署。 在�
   ],
   "outputs": {
     "result": {
-      "type": "object",
-      "value": "[reference('linkedTemplate').outputs.result]"
+      "type": "string",
+      "value": "[reference('linkedTemplate').outputs.result.value]"
     }
   }
 }
