@@ -179,7 +179,7 @@ ms.lasthandoff: 05/09/2017
 2. 单击左侧的“Active Directory”，然后选择你要在其中注册应用程序的目录 **注意：**必须选择包含用于创建密钥保管库的 Azure 订阅的相同目录。 <br> <br> 
 
 >[!NOTE] 
-> 必须选择包含用于创建 Key Vault 的 Azure 订阅的相同目录。 If you do not know which directory this is, click **Settings**, identify the subscription with which you created your key vault, and note the name of the directory displayed in the last column.
+> 必须选择包含用于创建 Key Vault 的 Azure 订阅的相同目录。 如果你不知道是哪个目录，请单击 **设置** ，找到用于创建密钥保管库的订阅，并记下最后一列中显示的目录名称。
 
 3. 单击“应用程序” 。 如果目录中尚未添加任何应用，此页面将仅显示“添加应用”链接。 单击该链接，或者单击命令栏上的“添加”。
 4. 在“添加应用程序”向导的“要执行什么操作?”页面上，单击“添加我的组织正在开发的应用程序”。
