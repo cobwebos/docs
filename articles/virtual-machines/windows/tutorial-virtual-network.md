@@ -186,7 +186,7 @@ $nsgBackendRule = New-AzureRmNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-使用 *New-AzureRmNetworkSecurityGroup[ 添加名为“myBackendNSG”*](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup)的新网络安全组：
+使用 [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) 添加名为 *myBackendNSG* 的新网络安全组：
 
 ```powershell
 $nsgBackend = New-AzureRmNetworkSecurityGroup `
