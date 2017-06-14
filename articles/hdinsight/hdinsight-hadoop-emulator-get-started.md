@@ -35,7 +35,7 @@ ms.lasthandoff: 01/07/2017
 
 ## <a name="download-and-install-the-virtual-machine"></a>下载并安装虚拟机
 1. 浏览到 [Hortonworks 下载](http://hortonworks.com/downloads/#sandbox)。
-2. 单击“下载 VIRTUALBOX”，将最新的 Hrotonworks 沙盒下载到 VM 上。 开始下载之前，网站会提示在 Hortonworks 上注册。 下载需要一到两个小时，具体取决于网络速度。
+2. 单击“下载 VIRTUALBOX”，将最新的 Hortonworks 沙盒下载到 VM 上。 开始下载之前，网站会提示在 Hortonworks 上注册。 下载需要一到两个小时，具体取决于网络速度。
    
     ![用于下载 Hortonworks Sandbox for VirtualBox 的链接图像](./media/hdinsight-hadoop-emulator-get-started/download-sandbox.png)
 3. 在同一网页上，单击“在 Virtual Box 上导入”链接，下载包含虚拟机安装说明的 PDF。
