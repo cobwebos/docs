@@ -3,7 +3,7 @@ title: "Azure AD B2C：使用 Node.js 保护 Web API | Microsoft Docs"
 description: "如何构建可从 B2C 租户接受令牌的 Node.js Web API"
 services: active-directory-b2c
 documentationcenter: 
-author: xerners
+author: dstrockis
 manager: mbaldwin
 editor: 
 ms.assetid: fc2b9af8-fbda-44e0-962a-8b963449106a

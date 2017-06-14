@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/16/2017
+ms.date: 06/13/2017
 ms.author: cjiang
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
 ms.openlocfilehash: 42db903244e5642dbf273e71994d402f8aeda1e9
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/22/2017
 
 
@@ -75,7 +76,7 @@ ms.lasthandoff: 02/22/2017
    
     ![仪表板的屏幕截图](./media/billing-add-office-365-tenant-to-azure-subscription/s314_office-365-tenant-appear-in-azure.png)
 
-### <a name="a-namestep2astep-2-change-the-directory-associated-with-the-azure-subscription"></a><a name="Step2"></a>步骤 2：更改与 Azure 订阅关联的目录
+### <a name="Step2"></a>步骤 2：更改与 Azure 订阅关联的目录
    
 1. 选择“设置”。
    
