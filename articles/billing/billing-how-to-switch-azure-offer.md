@@ -13,11 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 06/13/2017
 ms.author: genli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9c4c872d03a3927d02d17de6cc2aae6e684f1fad
 ms.openlocfilehash: b6a1e6175833ea0cdc785b18c88b43e06a7ad57c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/13/2017
 
 
 ---
@@ -106,10 +108,5 @@ Azure 产品/服务是用户拥有的 Azure 订阅*类型*。 例如，[即用�
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 如果仍有疑问，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 
