@@ -313,7 +313,7 @@ ms.lasthandoff: 01/13/2017
 2. 对于每个引用表，请创建一个 **ShardedTableInfo** 对象，该对象描述了此表的父架构名称（可选，默认为“dbo”）和表名称。
 3. 将上面的 TableInfo 对象添加到新的 **SchemaInfo** 对象。
 4. 获取对 **ShardMapManager** 对象的引用，然后调用 **GetSchemaInfoCollection**。
-5. 将** SchemaInfo** 添加到 **SchemaInfoCollection**，从而提供分片映射名称。
+5. 将 **SchemaInfo** 添加到 **SchemaInfoCollection**，从而提供分片映射名称。
 
 可在 SetupSampleSplitMergeEnvironment.ps1 脚本中看到此操作的示例。
 

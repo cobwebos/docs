@@ -117,7 +117,7 @@ $nsgRule = New-AzureRmNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-将 myNSGRule 与 New-AzureRmNetworkSecurityGroup[](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) 结合使用，创建 NSG：
+将 myNSGRule 与 [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) 结合使用，创建 NSG：
 
 ```powershell
 $nsg = New-AzureRmNetworkSecurityGroup `
