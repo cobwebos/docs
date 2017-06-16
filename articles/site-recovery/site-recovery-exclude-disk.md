@@ -8,7 +8,7 @@ manager: garavd
 editor: 
 ms.assetid: 
 ms.service: site-recovery
-ms.workload: backup-recovery
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
@@ -108,8 +108,8 @@ DB-Disk4 | Disk4 |G:\ |用户数据库 2
 
 **来宾操作系统磁盘编号** | **驱动器号** | **磁盘上的数据类型**
 --- | --- | ---
-DISK0 |    C:\ | 操作系统磁盘
-Disk1 |    E:\ | 临时存储</br /> </br />Azure 添加此磁盘并分配第一个可用的驱动器号。
+DISK0 | C:\ | 操作系统磁盘
+Disk1 | E:\ | 临时存储</br /> </br />Azure 添加此磁盘并分配第一个可用的驱动器号。
 Disk2 | D:\ | SQL 系统数据库和用户数据库 1
 Disk3 | G:\ | 用户数据库 2
 
@@ -141,13 +141,13 @@ Disk3 为 SQL tempdb 磁盘\)（tempdb 文件夹路径为 F:\MSSQL\Data），已
 3. 运行以下 sqlcmd，将 tempdb 路径更改为新路径。
 
         sqlcmd -A -S SalesDB        **Use your SQL DBname**
-        USE master;        
-        GO        
-        ALTER DATABASE tempdb        
+        USE master;     
+        GO      
+        ALTER DATABASE tempdb       
         MODIFY FILE (NAME = tempdev, FILENAME = 'E:\MSSQL\tempdata\tempdb.mdf');
-        GO        
-        ALTER DATABASE tempdb        
-        MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');        
+        GO      
+        ALTER DATABASE tempdb       
+        MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');       
         GO
 
 
@@ -173,9 +173,9 @@ Disk3 为 SQL tempdb 磁盘\)（tempdb 文件夹路径为 F:\MSSQL\Data），已
 **来宾操作系统磁盘编号** | **驱动器号** | **磁盘上的数据类型**
 --- | --- | ---
 DISK0 | C:\ | 操作系统磁盘
-Disk1 |    E:\ | 临时存储</br /> </br />Azure 添加此磁盘并分配第一个可用的驱动器号。
-Disk2 |    D:\ | SQL 系统数据库和用户数据库 1
-Disk3 |    G:\ | 用户数据库 2
+Disk1 | E:\ | 临时存储</br /> </br />Azure 添加此磁盘并分配第一个可用的驱动器号。
+Disk2 | D:\ | SQL 系统数据库和用户数据库 1
+Disk3 | G:\ | 用户数据库 2
 
 
 #### <a name="vmware-to-azure"></a>VMware 到 Azure
@@ -186,8 +186,8 @@ Disk3 |    G:\ | 用户数据库 2
 **来宾操作系统磁盘编号** | **驱动器号** | **磁盘上的数据类型**
 --- | --- | ---
 DISK0 | C:\ | 操作系统磁盘
-Disk1 |    D:\ | SQL 系统数据库和用户数据库 1
-Disk2 |    G:\ | 用户数据库 2
+Disk1 | D:\ | SQL 系统数据库和用户数据库 1
+Disk2 | G:\ | 用户数据库 2
 
 #### <a name="hyper-v-to-azure"></a>Hyper-V 到 Azure
 故障回复到原始位置后，故障回复虚拟机磁盘配置与 Hyper-V 的原始虚拟机磁盘配置仍然一样。 从 Hyper-V 站点故障回复到 Azure 时排除的磁盘在故障回复虚拟机中可用。
@@ -196,7 +196,7 @@ Disk2 |    G:\ | 用户数据库 2
 
 **磁盘名称** | **来宾操作系统磁盘编号** | **驱动器号** | **磁盘上的数据类型**
 --- | --- | --- | ---
-DB-Disk0-OS | DISK0 |    C:\ | 操作系统磁盘
+DB-Disk0-OS | DISK0 |   C:\ | 操作系统磁盘
 DB-Disk1 | Disk1 | D:\ | SQL 系统数据库和用户数据库 1
 DB Disk2（排除的磁盘） | Disk2 | E:\ | 临时文件
 DB-Disk3（排除的磁盘） | Disk3 | F:\ | SQL tempdb 数据库（文件夹路径 (F:\MSSQL\Data\)）

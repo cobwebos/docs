@@ -42,7 +42,7 @@ ms.lasthandoff: 05/18/2017
 
 使用 [az login](/cli/azure/#login) 命令登录到 Azure 订阅，然后遵照屏幕说明操作。 
 
-```azurecli-interactive
+```azurecli
 az login
 ```
 
