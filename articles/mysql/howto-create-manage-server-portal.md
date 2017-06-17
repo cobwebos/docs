@@ -4,12 +4,9 @@ description: "本文介绍了如何使用 Azure 门户快速创建一个新的 A
 services: mysql
 author: v-chenyh
 ms.author: nolanwu
-editor: jasonh
+editor: jasonwhowell
 manager: jhubbard
-ms.assetid: 
 ms.service: mysql-database
-ms.tgt_pltfrm: portal
-ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.translationtype: Human Translation

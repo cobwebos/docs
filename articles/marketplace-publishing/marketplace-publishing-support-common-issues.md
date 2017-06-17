@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2016
+ms.date: 06/16/2017
 ms.author: v-jeana; hascipio; v-dabosl
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 11b5fb0ed1b3939d8278156fcf2c831befc5f7ff
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -30,8 +32,8 @@ ms.openlocfilehash: 11b5fb0ed1b3939d8278156fcf2c831befc5f7ff
 
 > [!NOTE]
 > 如果客户或 Azure 经销商联系 Microsoft 请求退款或贷款，我们将应用我们为 Azure 服务条款所使用的相同策略。 如果我们的策略指示应支付退款或贷款，则我们会主动向客户或 Azure 经销商发出（并且你授权我们代表你发出）退款或贷款（适用时）。 如果我们的策略未指示应支付退款或贷款，则我们可能会邀请客户或 Azure 经销商直接联系你。
-> 
-> 
+>
+>
 
   ![1_RequestRefund][1]
 
@@ -39,12 +41,12 @@ ms.openlocfilehash: 11b5fb0ed1b3939d8278156fcf2c831befc5f7ff
 2. 在“问题类型”框中，选择“管理客户”。
 3. 在“类别”框中，选择“批准或请求客户退款”。
 4. 单击“启动请求”。
-   
+
    ![2_RequestRefund][2]
 
 1. 提供联系人信息。
 2. 在“问题是什么？”框中，输入以下信息：
-   
+
    * 受影响客户的订阅 ID
    * 客户名称
    * 贷款应为多少
@@ -83,8 +85,8 @@ ms.openlocfilehash: 11b5fb0ed1b3939d8278156fcf2c831befc5f7ff
 
 > [!NOTE]
 > 可使用手机号码或电子邮件地址进行验证。
-> 
-> 
+>
+>
 
 ![protectacct][6]
 
@@ -121,9 +123,4 @@ ms.openlocfilehash: 11b5fb0ed1b3939d8278156fcf2c831befc5f7ff
 [6]: ./media/marketplace-publishing-support-common-issues/protectacct.png
 [7]: ./media/marketplace-publishing-support-common-issues/acctdetails.png
 [8]: ./media/marketplace-publishing-support-common-issues/manageadmins.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

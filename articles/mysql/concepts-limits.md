@@ -5,10 +5,8 @@ services: mysql
 author: jasonh
 ms.author: kamathsun
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
+editor: jasonwhowell
 ms.service: mysql-database
-ms.tgt_pltfrm: portal
 ms.topic: article
 ms.date: 05/10/2017
 ms.translationtype: Human Translation
@@ -47,9 +45,9 @@ Azure Database for MySQL 服务目前为公共预览版。 下列各部分介绍
 
 ## <a name="preview-functional-limitations"></a>预览版功能限制：
 ### <a name="scale-operations"></a>缩放操作：
-1.    目前不支持跨服务层动态缩放服务器。 也就是说，不能在基本和标准服务层之间进行切换。
-2.    目前不支持在预先创建的服务器上按需动态增加存储大小。
-3.    不支持减小服务器存储大小。
+1.  目前不支持跨服务层动态缩放服务器。 也就是说，不能在基本和标准服务层之间进行切换。
+2.  目前不支持在预先创建的服务器上按需动态增加存储大小。
+3.  不支持减小服务器存储大小。
 
 ### <a name="server-version-upgrades"></a>服务器版本升级：
 - 目前不支持在主要数据库引擎版本之间进行自动迁移。
@@ -58,8 +56,8 @@ Azure Database for MySQL 服务目前为公共预览版。 下列各部分介绍
 - 目前不支持跨订阅和资源组动态移动预先创建的服务器。
 
 ### <a name="point-in-time-restore"></a>时间点还原：
-1.    不允许还原到不同的服务层和/或计算单元和存储大小。
-2.    不支持还原已删除的服务器。
+1.  不允许还原到不同的服务层和/或计算单元和存储大小。
+2.  不支持还原已删除的服务器。
 
 ## <a name="next-steps"></a>后续步骤：
 [每个服务层中有哪些可用资源](concepts-service-tiers.md)

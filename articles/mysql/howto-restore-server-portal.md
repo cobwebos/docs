@@ -5,12 +5,9 @@ services: mysql
 author: v-chenyh
 ms.author: v-chenyh
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
+editor: jasonwhowell
 ms.service: mysql-database
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: portal
 ms.date: 05/10/2017
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
@@ -40,7 +37,7 @@ ms.lasthandoff: 05/10/2017
 
 2. 找到 Azure Database for MySQL 服务器。 在左侧窗格中，选择“所有资源”，然后从列表中选择服务器。
 
-3.    在服务器概述边栏选项卡的顶部，单击工具栏上的“还原”。 此时将打开“还原”边栏选项卡。
+3.  在服务器概述边栏选项卡的顶部，单击工具栏上的“还原”。 此时将打开“还原”边栏选项卡。
 ![单击“还原”按钮](./media/howto-restore-server-portal/click-restore-button.png)
 
 4. 使用必需信息填写“还原”窗体：
