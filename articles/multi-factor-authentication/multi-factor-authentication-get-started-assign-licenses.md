@@ -5,19 +5,21 @@ services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: yossib
 ms.assetid: 514ef423-8ee6-4987-8a4e-80d5dc394cf9
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/13/2017
+ms.date: 06/13/2017
 ms.author: kgremban
+ms.reviewer: yossib
+ms.custom: it-pro
 ROBOTS: NOINDEX
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4572913c2bc732c31f38021f9d3ccc34417de875
 ms.openlocfilehash: 536968a803e14019c42e7beed4c948ab760cf020
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/15/2017
 
 ---
@@ -42,3 +44,4 @@ ms.lasthandoff: 02/15/2017
 ## <a name="next-steps"></a>后续步骤
 
 - 有关详细信息，请参阅[什么是 Microsoft Azure Active Directory 许可？](../active-directory/active-directory-licensing-what-is.md)
+

@@ -5,19 +5,20 @@ services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: yossib
 ms.assetid: 96168849-241a-4499-a224-d829913caa7e
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/24/2017
+ms.date: 06/14/2017
 ms.author: kgremban
-ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.reviewer: yossib
+ms.custom: H1Hack27Feb2017, it-pro
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e4ef137656c12cf6495a00450eed308ac6a8a872
 ms.openlocfilehash: ea0853929cd8670b6458a546e7fb1b3a229c09d7
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/28/2017
 
 ---
@@ -37,9 +38,9 @@ ms.lasthandoff: 02/28/2017
    <center>![设置](./media/multi-factor-authentication-get-started-adfs-adfs2/setup1.png)</center>
 
 4. 若要自动检测用户名、密码和域变量，请在“自动配置基于表单的网站”对话框内输入登录 URL（例如 https://sso.contoso.com/adfs/ls），然后单击“确定”。
-5. 如果所有用户均已导入或将导入到该服务器并接受双重验证，请选中“需要 Azure 多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器并且/或者将免除进行多重身份验证，请使该框处于未选中状态。 
+5. 如果所有用户均已导入或将导入到该服务器并接受双重验证，请选中“需要 Azure 多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器并且/或者将免除进行多重身份验证，请使该框处于未选中状态。
 6. 如果无法自动检测到页面变量，请在“自动配置基于表单的网站”对话框中 “自动配置基于表单的网站”对话框中的“手动指定...”按钮。
-7. 在“添加基于表单的网站”对话框中，在“提交 URL”字段中输入 AD FS 登录页面的 URL（例如 https://sso.contoso.com/adfs/ls），并输入应用程序名称（可选）。 应用程序名称将出现在 Azure Multi-Factor Authentication 报告中，并可能会显示在短信或移动应用身份验证消息中。 
+7. 在“添加基于表单的网站”对话框中，在“提交 URL”字段中输入 AD FS 登录页面的 URL（例如 https://sso.contoso.com/adfs/ls），并输入应用程序名称（可选）。 应用程序名称将出现在 Azure Multi-Factor Authentication 报告中，并可能会显示在短信或移动应用身份验证消息中。
 8. 将请求格式设置为“POST 或 GET”。
 9. 输入用户名变量 (ctl00$ContentPlaceHolder1$UsernameTextBox) 和密码变量 (ctl00$ContentPlaceHolder1$PasswordTextBox)。 如果基于窗体的登录页显示域文本框，则也输入域变量。 若要在登录页中查找输入框的名称，请在 Web 浏览器中导航到该登录页，右键单击该页并选择“查看源”。
 10. 如果所有用户均已导入或将导入到该服务器并接受双重验证，请选中“需要 Azure 多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器并且/或者将免除进行多重身份验证，请使该框处于未选中状态。
@@ -51,7 +52,7 @@ ms.lasthandoff: 02/28/2017
     - 选择如何对主要凭据进行身份验证
 
 12. 由于不可能将 AD FS 代理服务器加入到域，因此，可以使用 LDAP 连接到域控制器来进行用户导入和预身份验证。 在“基于高级表单的网站”对话框中，单击“主要身份验证”选项卡并为“预身份验证”身份验证类型选择“LDAP 绑定”。
-13. 完成后，单击“确定”返回到“添加基于窗体的网站”对话框。 
+13. 完成后，单击“确定”返回到“添加基于窗体的网站”对话框。
 14. 单击“确定”以关闭该对话框。
 15. 检测到或输入 URL 和页面变量后，网站数据将显示在基于表单的面板中。
 16. 单击“本机模块”选项卡，然后选择服务器、在其下运行 AD FS 代理的网站（例如“默认网站”）或 AD FS 代理应用程序（例如“adfs”下的“ls”），以在所需的级别启用 IIS 插件。
@@ -93,14 +94,14 @@ ms.lasthandoff: 02/28/2017
 3. 单击 **“添加”**。
 4. 在“添加基 URL”对话框的“基 URL”字段中输入进行 HTTP 身份验证的 AD FS 网站的 URL（例如 https://sso.domain.com/adfs/ls/auth/integrated）。 然后，输入应用程序名称（可选）。 应用程序名称将出现在 Azure Multi-Factor Authentication 报告中，并可能会显示在短信或移动应用身份验证消息中。
 5. 如果需要，请调整空闲超时和会话时间上限。
-6. 如果所有用户均已导入或将导入到该服务器并接受双重验证，请选中“需要 Azure 多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器并且/或者将免除进行多重身份验证，请使该框处于未选中状态。 
+6. 如果所有用户均已导入或将导入到该服务器并接受双重验证，请选中“需要 Azure 多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器并且/或者将免除进行多重身份验证，请使该框处于未选中状态。
 7. 如果需要，请选中“Cookie 缓存”框。
 
    <center>![设置](./media/multi-factor-authentication-get-started-adfs-adfs2/noproxy.png)</center>
 
 8. 单击 **“确定”**。
 9. 单击“本机模块”选项卡，然后选择服务器、网站（例如“默认网站”）或 AD FS 应用程序（例如“adfs”下的“ls”），以在所需的级别启用 IIS 插件。
-10. 单击屏幕顶部的“启用 IIS 身份验证”框。 
+10. 单击屏幕顶部的“启用 IIS 身份验证”框。
 
 现在，多重身份验证将保护 AD FS。
 

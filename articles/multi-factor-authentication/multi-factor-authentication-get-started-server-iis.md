@@ -5,19 +5,20 @@ services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: yossib
 ms.assetid: d1bf1c8a-2c10-4ae6-9f4b-75f0c3df43eb
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/26/2017
+ms.date: 06/16/2017
 ms.author: kgremban
-ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.reviewer: yossib
+ms.custom: H1Hack27Feb2017,it-pro
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e4ef137656c12cf6495a00450eed308ac6a8a872
 ms.openlocfilehash: 71ba44c00036b3ed45518f58fa534a1767ab8c34
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/28/2017
 
 ---
@@ -36,17 +37,17 @@ ms.lasthandoff: 02/28/2017
 4. 若要自动检测用户名、密码和域变量，请在“自动配置基于窗体的网站”对话框内输入登录 URL（例如 https://localhost/contoso/auth/login.aspx），然后单击“确定”。
 5. 如果所有用户均已导入或将导入到该服务器并接受多重身份验证，请选中“需要多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器并且/或者将免除 Multi-Factor Authentication，请使该框处于未选中状态。
 6. 如果无法自动检测到页变量，请单击“自动配置基于窗体的网站”对话框中的“手动指定”。
-7. 在“添加基于窗体的网站”对话框中，将登录页的 URL 输入到“提交 URL”字段中并输入应用程序名称（可选）。 应用程序名称将出现在 Azure Multi-Factor Authentication 报告中，并可能会显示在短信或移动应用身份验证消息中。 
+7. 在“添加基于窗体的网站”对话框中，将登录页的 URL 输入到“提交 URL”字段中并输入应用程序名称（可选）。 应用程序名称将出现在 Azure Multi-Factor Authentication 报告中，并可能会显示在短信或移动应用身份验证消息中。
 8. 选择正确的请求格式。 对于大多数 Web 应用程序来说，此项设置为“POST 或 GET”。
 9. 输入用户名变量、密码变量和域变量（如果显示在登录页上）。 若要查找输入框的名称，请在 Web 浏览器中导航到登录页，右键单击该页并选择“查看源”。
-10. 如果所有用户均已导入或将导入到该服务器并接受多重身份验证，请选中“需要 Azure 多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器并且/或者将免除 Multi-Factor Authentication，请使该框处于未选中状态。 
+10. 如果所有用户均已导入或将导入到该服务器并接受多重身份验证，请选中“需要 Azure 多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器并且/或者将免除 Multi-Factor Authentication，请使该框处于未选中状态。
 11. 单击“高级”以查看高级设置，包括：
 
   - 选择自定义拒绝页文件
   - 使用 Cookie 将成功的身份验证缓存到网站一段时间
   - 选择是否对 Windows 域、LDAP 目录 或 RADIUS 服务器就主凭据进行身份验证。
 
-12. 单击“确定”返回到“添加基于窗体的网站”对话框。 
+12. 单击“确定”返回到“添加基于窗体的网站”对话框。
 13. 单击 **“确定”**。
 14. 检测到或输入 URL 和页面变量后，网站数据将显示在基于表单的面板中。
 
@@ -54,11 +55,11 @@ ms.lasthandoff: 02/28/2017
 若要保护使用集成式 Windows HTTP 身份验证的 IIS Web 应用程序，请在 IIS Web 服务器上安装 Azure MFA 服务器，然后按以下步骤配置该服务器：
 
 1. 在 Azure 多重身份验证服务器中，单击左侧菜单中的 IIS 身份验证图标。
-2. 单击“HTTP”选项卡。 
+2. 单击“HTTP”选项卡。
 3. 单击“添加”。
 4. 在“添加基 URL”对话框中，输入执行 HTTP 身份验证的网站的 URL（例如 http://localhost/owa）并提供应用程序名称（可选）。 应用程序名称将出现在 Azure Multi-Factor Authentication 报告中，并可能会显示在短信或移动应用身份验证消息中。
 5. 调整空闲超时和会话时间上限（如果默认值不够）。
-6. 如果所有用户均已导入或将导入到该服务器并接受多重身份验证，请选中“需要多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器并且/或者将免除 Multi-Factor Authentication，请使该框处于未选中状态。 
+6. 如果所有用户均已导入或将导入到该服务器并接受多重身份验证，请选中“需要多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器并且/或者将免除 Multi-Factor Authentication，请使该框处于未选中状态。
 7. 如果需要，请选中“Cookie 缓存”框。
 8. 单击 **“确定”**。
 
@@ -76,5 +77,4 @@ ms.lasthandoff: 02/28/2017
 2. 单击“添加”。
 3. 显示“添加受信任 IP”对话框时，选择“单个 IP”、“IP 范围”或“子网”单选按钮。
 4. 输入应加入允许列表的 IP 地址、IP 地址范围或子网。 如果输入子网，请选择适当的网络掩码，然后单击“确定”。 现已添加允许列表。
-
 
