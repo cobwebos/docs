@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/09/2017
+ms.date: 06/16/2017
 ms.author: corywink
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
 ms.openlocfilehash: 5e3221395082513f842863615d40f7d3ebf2562e
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/10/2017
 
 
@@ -53,7 +54,7 @@ ms.lasthandoff: 03/10/2017
 6. 选择“**请求**”。 此操作会将带特定 JSON 格式化有效负载的传入 HTTP 请求指定为触发器。
 7. 将以下代码贴到请求正文 JSON 架构中：
    
-    ```
+    ```json
     {
       "$schema": "http://json-schema.org/draft-04/schema#",
       "id": "/",
@@ -109,14 +110,14 @@ ms.lasthandoff: 03/10/2017
 
 1. 使用 git 客户端克隆最新版的 [azure-iot-remote-monitoring github 存储库][lnk-rmgithub]。 例如：
    
-    ```
+    ```cmd
     git clone https://github.com/Azure/azure-iot-remote-monitoring.git
     ```
 2. 在 Visual Studio 中，从存储库的本地副本打开 **RemoteMonitoring.sln**。
 3. 打开 **Infrastructure\\Repository** 文件夹中的 **ActionRepository.cs** 文件。
 4. 使用逻辑应用中记下的**指向此 URL 的 Http Post** 更新 **actionIds** 字典，如下所示：
    
-    ```
+    ```csharp
     private Dictionary<string,string> actionIds = new Dictionary<string, string>()
     {
         { "Send Message", "<Http Post to this URL>" },
@@ -132,9 +133,9 @@ ms.lasthandoff: 03/10/2017
 2. 若要在本地部署，请遵循[本地部署][lnk-localdeploy]说明。
 3. 若要部署到云并更新现有的云部署，请遵循[云部署][lnk-clouddeploy]说明。 使用原始部署的名称作为部署名称。 例如，如果原始部署称为 **demologicapp**，请使用以下命令：
    
-   ``
+   ```cmd
    build.cmd cloud release demologicapp
-   ``
+   ```
    
    生成脚本运行时，请务必使用预配解决方案时所用的相同 Azure 帐户、订阅、区域和 Active Directory 实例。
 

@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/15/2017
+ms.date: 06/16/2017
 ms.author: ryanwi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 51ed17ab8f036f00b285232500dc9f606f2a7e2f
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
 
 
@@ -49,7 +50,7 @@ ms.lasthandoff: 04/27/2017
             {
                 "CertificateThumbprint": "[Thumbprint]",
                 "IsAdmin": false
-            }, 
+            },
             {
                 "CertificateThumbprint": "[Thumbprint]",
                 "IsAdmin": true
@@ -58,17 +59,17 @@ ms.lasthandoff: 04/27/2017
         "ClientCertificateCommonNames": [
             {
                 "CertificateCommonName": "[CertificateCommonName]",
-                "CertificateIssuerThumbprint" : "[Thumbprint]",
+                "CertificateIssuerThumbprint": "[Thumbprint]",
                 "IsAdmin": true
             }
-        ]
-        "ReverseProxyCertificate":{
+        ],
+        "ReverseProxyCertificate": {
             "Thumbprint": "[Thumbprint]",
             "ThumbprintSecondary": "[Thumbprint]",
             "X509StoreName": "My"
         }
     }
-}
+},
 ```
 
 该部分描述保护独立 Windows 群集所需的证书。 如果指定群集证书，请将 **ClusterCredentialType** 的值设置为 _**X509**_。 如果为外部连接指定服务器证书，请将 **ServerCredentialType** 设置为 _**X509**_。 虽然并非强制，但为了妥善保护群集，我们建议同时拥有这两个证书。 如果将这些值设置为 *X509*，还必须指定相应的证书，否则 Service Fabric 将引发异常。 在某些情况下，仅需要指定 _ClientCertificateThumbprints_ 或 _ReverseProxyCertificate_。 在这些情况下，不需要将 _ClusterCredentialType_ 或 _ServerCredentialType_ 设置为 _X509_。

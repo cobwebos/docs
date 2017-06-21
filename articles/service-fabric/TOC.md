@@ -200,13 +200,13 @@
 #### [删除](service-fabric-cluster-delete.md)
 
 ### 独立群集
-#### [独立包的内容](service-fabric-cluster-standalone-package-contents.md)
 #### [规划和准备部署](service-fabric-cluster-standalone-deployment-preparation.md)
 #### 创建
 ##### [在本地创建](service-fabric-cluster-creation-for-windows-server.md)
 ##### [在 Azure 虚拟机上创建](service-fabric-cluster-creation-with-windows-azure-vms.md)
 ##### [使用证书进行保护](service-fabric-windows-cluster-x509-security.md)  
 ##### [使用 Windows 安全进行保护](service-fabric-windows-cluster-windows-security.md)
+##### [独立包的内容](service-fabric-cluster-standalone-package-contents.md)
 #### [缩放](service-fabric-cluster-windows-server-add-remove-nodes.md)
 #### [设置访问控制](service-fabric-cluster-security-roles.md)
 #### [配置](service-fabric-cluster-manifest.md)
@@ -232,8 +232,6 @@
 #### [均衡群集](service-fabric-cluster-resource-manager-balancing.md)
 #### [限制](service-fabric-cluster-resource-manager-advanced-throttling.md)
 #### [服务移动](service-fabric-cluster-resource-manager-movement-cost.md)
-
-### [连接到安全群集](service-fabric-connect-to-secure-cluster.md)
 
 ## 监视和诊断
 ### [监视和诊断应用程序](service-fabric-diagnostics-overview.md)
@@ -261,8 +259,9 @@
 # 引用
 ## [PowerShell (Azure)](/powershell/module/azurerm.servicefabric/)
 ## [PowerShell](/powershell/azure/overview?view=azureservicefabricps)
-## [Java API](/java/api/)
-## [.NET](/dotnet/api/)
+## [Azure CLI](/cli/azure/sf)
+## [Java API](/java/api/overview/azure/servicefabric)
+## [.NET](/dotnet/api/overview/azure/servicefabric?view=azure-dotnet)
 ## [REST](/rest/api/servicefabric)
 
 # 资源

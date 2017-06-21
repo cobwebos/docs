@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2017
+ms.date: 06/20/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
@@ -357,7 +357,7 @@ ms.lasthandoff: 04/12/2017
 
 **在网关计算机上：**
 
-1.    运行 **Ksetup** 实用工具以配置 Kerberos KDC 服务器和领域。
+1.  运行 **Ksetup** 实用工具以配置 Kerberos KDC 服务器和领域。
 
     由于 Kerberos 领域不同于 Windows 域，计算机必须配置为工作组的成员。 这可以通过按如下所示设置 Kerberos 领域和添加 KDC 服务器来实现。 根据需要将 *REALM.COM* 替换为自己的领域。
 
@@ -366,7 +366,7 @@ ms.lasthandoff: 04/12/2017
 
     执行这 2 个命令后，**重启**计算机。
 
-2.    使用 **Ksetup** 命令验证配置。 输出应如下所示：
+2.  使用 **Ksetup** 命令验证配置。 输出应如下所示：
 
             C:> Ksetup
             default realm = REALM.COM (external)
@@ -380,8 +380,8 @@ ms.lasthandoff: 04/12/2017
 ### <a name="kerberos-mutual-trust"></a>选项 2：启用 Windows 域和 Kerberos 领域之间的相互信任
 
 #### <a name="requirement"></a>要求：
-*    网关计算机必须加入 Windows 域。
-*    需要可更新域控制器的设置的权限。
+*   网关计算机必须加入 Windows 域。
+*   需要可更新域控制器的设置的权限。
 
 #### <a name="how-to-configure"></a>如何配置：
 
@@ -390,7 +390,7 @@ ms.lasthandoff: 04/12/2017
 
 **在 KDC 服务器上：**
 
-1.    编辑 **krb5.conf** 文件中的 KDC 配置，以便让 KDC 信任引用以下配置模板的 Windows 域。 默认情况下，该配置位于 **/etc/krb5.conf**。
+1.  编辑 **krb5.conf** 文件中的 KDC 配置，以便让 KDC 信任引用以下配置模板的 Windows 域。 默认情况下，该配置位于 **/etc/krb5.conf**。
 
             [logging]
              default = FILE:/var/log/krb5libs.log
@@ -428,24 +428,24 @@ ms.lasthandoff: 04/12/2017
 
   配置后**重新启动** KDC 服务。
 
-2.    使用以下命令准备 KDC 服务器中名为 **krbtgt/REALM.COM@AD.COM** 的主体：
+2.  使用以下命令准备 KDC 服务器中名为 **krbtgt/REALM.COM@AD.COM** 的主体：
 
             Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
-3.    在 **hadoop.security.auth_to_local** HDFS 服务配置文件中，添加 `RULE:[1:$1@$0](.*@AD.COM)s/@.*//`。
+3.  在 **hadoop.security.auth_to_local** HDFS 服务配置文件中，添加 `RULE:[1:$1@$0](.*@AD.COM)s/@.*//`。
 
 **在域控制器上：**
 
-1.    运行以下 **Ksetup** 命令添加一个领域条目：
+1.  运行以下 **Ksetup** 命令添加一个领域条目：
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.    建立从 Windows 域到 Kerberos 领域的信任关系。 [password] 是主体 **krbtgt/REALM.COM@AD.COM** 的密码。
+2.  建立从 Windows 域到 Kerberos 领域的信任关系。 [password] 是主体 **krbtgt/REALM.COM@AD.COM** 的密码。
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
-3.    选择在 Kerberos 中使用的加密算法。
+3.  选择在 Kerberos 中使用的加密算法。
 
     1. 转到“服务器管理器”>“组策略管理”>“域”>“组策略对象”>“默认或活动的域策略”，单击“编辑”。
 
@@ -459,7 +459,7 @@ ms.lasthandoff: 04/12/2017
 
                 C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
 
-4.    在域帐户和 Kerberos 主体之间创建映射，以便在 Windows 域中使用 Kerberos 主体。
+4.  在域帐户和 Kerberos 主体之间创建映射，以便在 Windows 域中使用 Kerberos 主体。
 
     1. 启动管理工具 >“Active Directory 用户和计算机”。
 

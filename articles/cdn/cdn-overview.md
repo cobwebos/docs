@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 02/08/2017
 ms.author: rli
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: ede96c450e1aa5e87d4dd2c1131cefec7cf3493c
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 299e55e095ac323ed0ded7c7844d7cd103174af2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -51,7 +51,7 @@ Azure 内容交付网络 (CDN) 将静态 Web 内容缓存在按特定策略布�
 
 |  | 标准 Akamai | 标准 Verizon | 高级 Verizon |
 | --- | --- | --- | --- |
-| 与[存储](cdn-create-a-storage-account-with-cdn.md)、[云服务](cdn-cloud-service-with-cdn.md)、[Web 应用](../app-service-web/cdn-websites-with-cdn.md)和[媒体服务](../media-services/media-services-portal-manage-streaming-endpoints.md)等 Azure 服务轻松集成 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| 与[存储](cdn-create-a-storage-account-with-cdn.md)、[云服务](cdn-cloud-service-with-cdn.md)、[Web 应用](../app-service-web/app-service-web-tutorial-content-delivery-network.md)和[媒体服务](../media-services/media-services-portal-manage-streaming-endpoints.md)等 Azure 服务轻松集成 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | 通过 [REST API](https://msdn.microsoft.com/library/mt634456.aspx)、[.NET](cdn-app-dev-net.md)、[Node.js](cdn-app-dev-node.md) 或 [PowerShell](cdn-manage-powershell.md) 进行管理。 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | 对 CDN 终结点的 HTTPS 支持 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | 自定义域 HTTPS | |**&#x2713;** |**&#x2713;** |

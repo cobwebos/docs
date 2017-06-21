@@ -13,9 +13,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: kgremban
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
 ms.openlocfilehash: 31e8e39580ed83f13fd3ffb9981221765063a0b7
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/21/2017
 
 
@@ -76,7 +77,7 @@ ms.lasthandoff: 04/21/2017
 3. 基于其主页 URL 查找应用。 可以通过在门户中转到“Azure Active Directory” > “企业应用程序” > “所有应用程序”找到 URL。 此示例使用 *sharepoint-iddemo*。
 
     ```
-    Get-AzureADApplications | where { $_.Homepage -like “sharepoint-iddemo” } | fl DisplayName, Homepage, ObjectID
+    Get-AzureADApplication | where { $_.Homepage -like “sharepoint-iddemo” } | fl DisplayName, Homepage, ObjectID
     ```
 4. 随后应会返回如下所示的结果。 复制 ObjectID GUID，以便在下一部分中使用。
 
@@ -93,7 +94,7 @@ ms.lasthandoff: 04/21/2017
 1. 确认应用正确，将 *8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4* 替换为在前一步骤中复制的 GUID (ObjectID)。
 
     ```
-    Get-AzureADApplication -AppObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4.
+    Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4.
     ```
 
  确认应用后，便可以按如下所述更新主页。
@@ -110,17 +111,17 @@ ms.lasthandoff: 04/21/2017
 3. 将主页 URL 设置为所需的值。 该值必须是已发布应用的子域路径。 例如，如果将主页 URL 从 *https://sharepoint-iddemo.msappproxy.net/* 更改为 *https://sharepoint-iddemo.msappproxy.net/hybrid/*，应用用户将直接转到自定义主页。
 
     ```
-    $appnew.Homepage = “https://sharepoint-iddemo.msappproxy.net/hybrid/”
+    $homepage = “https://sharepoint-iddemo.msappproxy.net/hybrid/”
     ```
 4. 使用在“步骤 1：查找应用的 ObjectID”中复制的 GUID (ObjectID) 进行更新。
 
     ```
-    Set-AzureADApplication -AppObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4 - Application $appnew
+    Set-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4 -Homepage $homepage
     ```
 5. 若要确认更改是否成功，请重新启动应用。
 
     ```
-    Get-AzureADApplication -AppObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
+    Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
     ```
 
 >[!NOTE]

@@ -5,20 +5,21 @@ services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: yossib
 ms.assetid: def7a534-cfb2-492a-9124-87fb1148ab1f
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/16/2017
+ms.date: 06/16/2017
 ms.author: kgremban
-translationtype: Human Translation
+ms.reviewer: yossib
+ms.custom: it-pro
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 999361daa2faebe3e88cab0b6085a938d6f40e9d
 ms.openlocfilehash: 07b14394b0e07fd78d70d77aeef8a2feb17284e0
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/17/2017
-
 
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA 服务器与 Active Directory 之间的目录集成
@@ -95,7 +96,7 @@ Azure 多重身份验证提供以下三个筛选选项：
 | 分机 |输入用户记录中包含电话号码分机的属性的属性名称。  分机字段的值只用作主电话号码的分机。  默认为空。 <br><br>如果未指定“分机”属性，则分机可以包含在“电话”属性中。 在这种情况下，请在分机前面加上“x”，以便正常分析该号码。  例如，如果输入 555-123-4567 x890，系统会将 555-123-4567 视为电话号码，将 890 视为分机号码。 |
 | “还原默认值”按钮 |单击“还原默认值”可将所有属性还原为默认值。  默认值会在标准 Active Directory 或 ADAM 架构中正常工作。 |
 
-若要编辑属性，请在“属性”选项卡上单击“编辑”。  此时会打开一个窗口，可在其中编辑属性。 选择任一属性旁边的“...”会打开一个窗口，可在其中选择要显示的属性。 
+若要编辑属性，请在“属性”选项卡上单击“编辑”。  此时会打开一个窗口，可在其中编辑属性。 选择任一属性旁边的“...”会打开一个窗口，可在其中选择要显示的属性。
 
 ![编辑属性](./media/multi-factor-authentication-get-started-server-dirint/dirint4.png)
 
@@ -138,5 +139,4 @@ Multi-Factor Auth AdSync 服务使用 Microsoft 提供的 DirSync LDAP 服务器
 可以设置额外的 Multi-Factor Auth 服务器作为备份 RADIUS 代理、LDAP 代理，或将其用于 IIS 身份验证。 同步配置在所有代理之间共享。 但是，只有其中一个代理可以让 Multi-Factor Auth 服务器服务运行。 此选项卡允许你选择可用于同步的 Multi-Factor Auth 服务器。
 
 ![Multi-Factor-Auth 服务器](./media/multi-factor-authentication-get-started-server-dirint/dirint6.png)
-
 

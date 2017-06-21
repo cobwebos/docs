@@ -196,18 +196,25 @@ ms.lasthandoff: 05/09/2017
             await registryManager.UpdateTwinAsync(twin.DeviceId, JsonConvert.SerializeObject(patch), twin.ETag);
             Console.WriteLine("Updated desired configuration");
    
-            while (true)
+            try
             {
-                var query = registryManager.CreateQuery("SELECT * FROM devices WHERE deviceId = 'myDeviceId'");
-                var results = await query.GetNextAsTwinAsync();
-                foreach (var result in results)
+                while (true)
                 {
-                    Console.WriteLine("Config report for: {0}", result.DeviceId);
-                    Console.WriteLine("Desired telemetryConfig: {0}", JsonConvert.SerializeObject(result.Properties.Desired["telemetryConfig"], Formatting.Indented));
-                    Console.WriteLine("Reported telemetryConfig: {0}", JsonConvert.SerializeObject(result.Properties.Reported["telemetryConfig"], Formatting.Indented));
-                    Console.WriteLine();
+                    var query = registryManager.CreateQuery("SELECT * FROM devices WHERE deviceId = 'myDeviceId'");
+                    var results = await query.GetNextAsTwinAsync();
+                    foreach (var result in results)
+                    {
+                        Console.WriteLine("Config report for: {0}", result.DeviceId);
+                        Console.WriteLine("Desired telemetryConfig: {0}", JsonConvert.SerializeObject(result.Properties.Desired["telemetryConfig"], Formatting.Indented));
+                        Console.WriteLine("Reported telemetryConfig: {0}", JsonConvert.SerializeObject(result.Properties.Reported["telemetryConfig"], Formatting.Indented));
+                        Console.WriteLine();
+                    }
+                    Thread.Sleep(10000);
                 }
-                Thread.Sleep(10000);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
             }
         }
    
@@ -221,7 +228,7 @@ ms.lasthandoff: 05/09/2017
 1. 最后，在 **Main** 方法中添加以下行：
    
         registryManager = RegistryManager.CreateFromConnectionString(connectionString);
-        SetDesiredConfigurationAndQuery();
+        SetDesiredConfigurationAndQuery().Wait();
         Console.WriteLine("Press any key to quit.");
         Console.ReadLine();
 1. 在“解决方案资源管理器”中，打开“设置启动项目...”，并确保 **SetDesiredConfigurationAndQuery** 项目的“操作”为“启动”。 生成解决方案。

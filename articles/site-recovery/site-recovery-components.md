@@ -8,20 +8,22 @@ manager: jwhit
 editor: 
 ms.assetid: c413efcd-d750-4b22-b34b-15bcaa03934a
 ms.service: site-recovery
-ms.workload: backup-recovery
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/14/2017
+ms.date: 06/14/2017
 ms.author: raynew
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: site-recovery-azure-to-azure-architecture
 ms.translationtype: Human Translation
 ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: 3d2b3509666633df4f6f6f0c385af3667f4bcf3e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/31/2017
 
-
 ---
+
 
 # <a name="how-does-azure-site-recovery-work-for-on-premises-infrastructure"></a>如何将 Azure Site Recovery 用于本地基础结构？
 

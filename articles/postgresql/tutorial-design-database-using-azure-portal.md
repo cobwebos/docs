@@ -5,12 +5,9 @@ services: postgresql
 author: SaloniSonpal
 ms.author: salonis
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
+editor: jasonwhowell
 ms.service: postgresql-database
 ms.custom: tutorial, mvc
-ms.tgt_pltfrm: portal
-ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.translationtype: Human Translation
@@ -45,11 +42,11 @@ Azure Database for PostgreSQL 是一种托管服务，可用于在云中运行�
 创建的 Azure Database for PostgreSQL 服务器中包含一组已定义的[计算和存储](./concepts-compute-unit-and-storage.md)资源。 将在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建服务器。
 
 按照以下步骤创建 Azure Database for PostgreSQL 服务器：
-1.    单击 Azure 门户左上角的“新建”按钮。
-2.    从“新建”页中选择“数据库”，然后从“数据库”页中选择“Azure Database for PostgreSQL”。
+1.  单击 Azure 门户左上角的“新建”按钮。
+2.  从“新建”页中选择“数据库”，然后从“数据库”页中选择“Azure Database for PostgreSQL”。
  ![Azure Database for PostgreSQL - 创建数据库](./media/tutorial-design-database-using-azure-portal/1-create-database.png)
 
-3.    如上图所示，在新服务器详细信息窗体中填写以下信息：
+3.  如上图所示，在新服务器详细信息窗体中填写以下信息：
     - 服务器名称：mypgserver-20170401（服务器的名称会映射到 DNS 名称，因此前者需为全局唯一） 
     - 订阅：如果有多个订阅，请选择资源所在的相应订阅或对资源进行计费的订阅。
     - 资源组：myresourcegroup
@@ -60,15 +57,15 @@ Azure Database for PostgreSQL 是一种托管服务，可用于在云中运行�
   > [!IMPORTANT]
   > 在此处指定的服务器管理员登录名和密码是你以后在本快速入门中登录到服务器及其数据库所必需的。 请牢记或记录此信息，以后会使用到它。
 
-4.    单击“定价层”为新数据库指定服务层和性能级别。 在此快速入门教程中，选择“基本”层、“50 个计算单元”，以及“50 GB”存储空间。
+4.  单击“定价层”为新数据库指定服务层和性能级别。 在此快速入门教程中，选择“基本”层、“50 个计算单元”，以及“50 GB”存储空间。
  ![Azure Database for PostgreSQL - 选择服务层](./media/tutorial-design-database-using-azure-portal/2-service-tier.png)
-5.    单击“确定” 。
-6.    单击“创建”预配服务器。 预配需要数分钟。
+5.  单击“确定” 。
+6.  单击“创建”预配服务器。 预配需要数分钟。
 
   > [!TIP]
   > 选中“固定到仪表板”选项，轻松跟踪部署。
 
-7.    在工具栏上，单击“通知”可监视部署过程。
+7.  在工具栏上，单击“通知”可监视部署过程。
  ![Azure Database for PostgreSQL - 查看通知](./media/tutorial-design-database-using-azure-portal/3-notifications.png)
    
   默认情况下，在服务器下创建 postgres 数据库。 [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) 是供用户、实用工具和第三方应用程序使用的默认数据库。 
@@ -77,16 +74,16 @@ Azure Database for PostgreSQL 是一种托管服务，可用于在云中运行�
 
 Azure Database for PostgreSQL 服务在服务器级别创建防火墙。 除非创建了防火墙规则来为特定的 IP 地址打开防火墙，否则此防火墙会阻止外部应用程序和工具连接到服务器和服务器上的任何数据库。 
 
-1.    部署完成后，请单击左侧菜单中的“所有资源”，并键入名称“mypgserver-20170401”搜索新创建的服务器。 单击搜索结果中列出的服务器名称。 服务器的“概述”页面随即打开，其中提供了用于进一步配置的选项。
+1.  部署完成后，请单击左侧菜单中的“所有资源”，并键入名称“mypgserver-20170401”搜索新创建的服务器。 单击搜索结果中列出的服务器名称。 服务器的“概述”页面随即打开，其中提供了用于进一步配置的选项。
  
  ![Azure Database for PostgreSQL - 搜索服务器 ](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
-2.    在服务器边栏选项卡中，选择“连接安全性”。 
-3.    单击“规则名称”下的文本框，添加新的防火墙规则，将连接的 IP 范围加入允许列表。 本教程中允许所有 IP，方法是键入“规则名称 = AllowAllIps”，“起始 IP = 0.0.0.0”，“结束 IP = 255.255.255.255”，然后单击“保存”。 可以设置覆盖某个 IP 范围的防火墙规则，以便能通过网络连接。
+2.  在服务器边栏选项卡中，选择“连接安全性”。 
+3.  单击“规则名称”下的文本框，添加新的防火墙规则，将连接的 IP 范围加入允许列表。 本教程中允许所有 IP，方法是键入“规则名称 = AllowAllIps”，“起始 IP = 0.0.0.0”，“结束 IP = 255.255.255.255”，然后单击“保存”。 可以设置覆盖某个 IP 范围的防火墙规则，以便能通过网络连接。
  
  ![Azure Database for PostgreSQL - 创建防火墙规则](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
 
-4.    单击“保存”，然后单击“X”关闭“连接安全性”页面。
+4.  单击“保存”，然后单击“X”关闭“连接安全性”页面。
 
   > [!NOTE]
   > Azure PostgreSQL 服务器通过端口 5432 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 5432 的出站流量。 如果是这样，则无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 5432。
@@ -184,16 +181,16 @@ SELECT * FROM inventory;
 ## <a name="restore-data-to-a-previous-point-in-time"></a>将数据还原到之前的时间点
 假设意外删除了此表。 这种情况无法轻易还原。 借助 Azure Database for PostgreSQL，可返回到任意时间点（基本版为最近 7 天内，标准版为最近 35 天内）并将此时间点还原到新的服务器。 可以使用此新服务器恢复已删除的数据。 以下步骤将示例服务器还原到添加此表之前的时间点。
 
-1.    在服务器的 Azure Database for PostgreSQL 页中，单击工具栏上的“还原”。 将打开“还原”页面。
+1.  在服务器的 Azure Database for PostgreSQL 页中，单击工具栏上的“还原”。 将打开“还原”页面。
   ![Azure 门户 - 还原窗体选项](./media/tutorial-design-database-using-azure-portal/9-azure-portal-restore.png)
-2.    使用必需信息填充“还原”窗体：
+2.  使用必需信息填充“还原”窗体：
 
   ![Azure 门户 - 还原窗体选项](./media/tutorial-design-database-using-azure-portal/10-azure-portal-restore.png)
   - 还原点：选择更改服务器前的时间点
   - 目标服务器：提供一个要还原到的新服务器名称
   - 位置：不能选择区域，此区域默认与源服务器相同
   - 定价层：还原服务器时不能更改此值。 此值与源服务器相同。 
-3.    单击“确定”，将服务器[还原到删除这些表之前的时间点](./howto-restore-server-portal.md)。 将服务器还原到不同的时间点，在指定时间点（前提是在[服务层](./concepts-service-tiers.md)保留时间段内）创建原始服务器的一个备份新服务器。
+3.  单击“确定”，将服务器[还原到删除这些表之前的时间点](./howto-restore-server-portal.md)。 将服务器还原到不同的时间点，在指定时间点（前提是在[服务层](./concepts-service-tiers.md)保留时间段内）创建原始服务器的一个备份新服务器。
 
 ## <a name="next-steps"></a>后续步骤
 本教程介绍如何使用 Azure 门户和其他实用工具完成以下操作：

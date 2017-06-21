@@ -3,8 +3,8 @@ title: "通过 REST API 开始使用 Data Lake Analytics | Microsoft 文档"
 description: "使用 WebHDFS REST API 对 Data Lake Analytics 执行操作"
 services: data-lake-analytics
 documentationcenter: 
-author: mumian
-manager: jhubbard
+author: saveenr
+manager: saveenr
 editor: cgronlun
 ms.assetid: 5e133d92-baaa-44c9-890c-ab2d85c91122
 ms.service: data-lake-analytics
@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/03/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 2fea3686b1484406d31c5447c7d3d7e2451b827e
-ms.openlocfilehash: 1898b3d6aa1a9ccbc9f4427cf994c02f9fa35abd
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: 332d7af2539eea8890745005104ac5b0921c2b7f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -344,12 +346,6 @@ ms.openlocfilehash: 1898b3d6aa1a9ccbc9f4427cf994c02f9fa35abd
 * 若要了解 U-SQL，请参阅 [Azure Data Lake Analytics U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)。
 * 有关管理任务，请参阅 [Manage Azure Data Lake Analytics using Azure Portal](data-lake-analytics-manage-use-portal.md)（使用 Azure 门户管理 Azure Data Lake Analytics）。
 * 有关 Data Lake Analytics 的概述，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
-* 若要了解如何使用其他工具完成本教程，请单击页面顶部的选项卡选择器。
-* 若要记录诊断信息，请参阅 [Accessing diagnostics logs for Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
+* 若要了解使用其他工具来完成此教程，请单击页面顶部的选项卡选择器。
 
 

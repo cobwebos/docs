@@ -48,6 +48,7 @@
 #### [数据类型](sql-data-warehouse-tables-data-types.md)
 #### [分布式表](sql-data-warehouse-tables-distribute.md)
 #### [索引](sql-data-warehouse-tables-index.md)
+#### [标识](sql-data-warehouse-tables-identity.md)
 #### [分区](sql-data-warehouse-tables-partition.md)
 #### [统计信息](sql-data-warehouse-tables-statistics.md)
 #### [临时](sql-data-warehouse-tables-temporary.md)

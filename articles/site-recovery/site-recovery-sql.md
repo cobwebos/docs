@@ -8,7 +8,7 @@ manager: gauravd
 editor: 
 ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: backup-recovery
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
@@ -101,18 +101,18 @@ Site Recovery 可与表中汇总的本机 SQL Server BCDR 技术集成，以提�
 本文中的说明假设辅助位置提供了域控制器。 [详细了解](site-recovery-active-directory.md)如何使用 Site Recovery 保护 Active Directory。
 
 
-## <a name="integrate-with-sql-server-always-on-for-replication-to-azure"></a>与 SQL Server Always On 集成以便复制到 Azure 
+## <a name="integrate-with-sql-server-always-on-for-replication-to-azure"></a>与 SQL Server Always On 集成以便复制到 Azure
 
 下面是需要执行的操作：
 
-1. 将脚本导入到你的 Azure 自动化帐户中。 这包括用于在 [Resource Manager 虚拟机](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1)和[经典虚拟机](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1)中对 SQL 可用性组进行故障转移的脚本。 
+1. 将脚本导入到你的 Azure 自动化帐户中。 这包括用于在 [Resource Manager 虚拟机](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1)和[经典虚拟机](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1)中对 SQL 可用性组进行故障转移的脚本。
 
     [![部署到 Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 
 1. 将 ASR-SQL-FailoverAG 添加为恢复计划的第一个组的准备操作。
 
-1. 按照脚本中提供的说明创建一个自动化变量来提供可用性组的名称。 
+1. 按照脚本中提供的说明创建一个自动化变量来提供可用性组的名称。
 
 ### <a name="steps-to-do-a-test-failover"></a>用于执行测试故障转移的步骤
 
@@ -124,13 +124,13 @@ SQL Always On 无法原生支持测试性故障转移。 因此，我们建议�
 
     ![从 Azure 备份进行还原 ](./media/site-recovery-sql/restore-from-backup.png)
 
-1. 在从备份还原的虚拟机中[强制实施仲裁](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/force-a-wsfc-cluster-to-start-without-a-quorum#PowerShellProcedure)。 
+1. 在从备份还原的虚拟机中[强制实施仲裁](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/force-a-wsfc-cluster-to-start-without-a-quorum#PowerShellProcedure)。
 
-1. 将侦听器的 IP 更新为测试故障转移网络中可用的某个 IP。 
- 
+1. 将侦听器的 IP 更新为测试故障转移网络中可用的某个 IP。
+
     ![更新侦听器 IP](./media/site-recovery-sql/update-listener-ip.png)
 
-1. 使侦听器联机。 
+1. 使侦听器联机。
 
     ![使侦听器联机](./media/site-recovery-sql/bring-listener-online.png)
 
@@ -144,7 +144,7 @@ SQL Always On 无法原生支持测试性故障转移。 因此，我们建议�
 
 ### <a name="steps-to-do-a-failover"></a>用于执行故障转移的步骤
 
-在恢复计划中添加脚本并通过执行测试故障转移对恢复计划进行验证后，可以执行恢复计划的故障转移。 
+在恢复计划中添加脚本并通过执行测试故障转移对恢复计划进行验证后，可以执行恢复计划的故障转移。
 
 
 ## <a name="integrate-with-sql-server-always-on-for-replication-to-a-secondary-on-premises-site"></a>与 SQL Server Always On 集成以便复制到辅助本地站点
@@ -155,7 +155,7 @@ SQL Always On 无法原生支持测试性故障转移。 因此，我们建议�
 1. 在辅助站点上创建虚拟网络。
 1. 在该虚拟网络与主站点之间配置站点到站点 VPN 连接。
 1. 在恢复站点上创建虚拟机，并在其上安装 SQL Server。
-1. 将现有的 Always On 可用性组扩展到新的 SQL Server VM。 将此 SQL Server 实例配置为异步副本。 
+1. 将现有的 Always On 可用性组扩展到新的 SQL Server VM。 将此 SQL Server 实例配置为异步副本。
 1. 创建可用性组侦听器，或更新现有的侦听器，以包含异步副本虚拟机。
 1. 确保应用程序场是使用侦听器设置的。 如果它是使用数据库服务器名称设置的，请将其更新为使用侦听器，以便不需要在故障转移后重新配置该场。
 
