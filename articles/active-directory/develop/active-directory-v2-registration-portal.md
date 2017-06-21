@@ -3,7 +3,7 @@ title: "应用注册门户帮助主题 | Microsoft Docs"
 description: "介绍 Microsoft 应用注册门户中的各种功能。"
 services: active-directory
 documentationcenter: 
-author: dstrockis
+author: lnalepa
 manager: mbaldwin
 editor: 
 ms.assetid: f0507c28-9464-4d3e-bd53-de9053fd5278
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2016
-ms.author: dastrock
+ms.author: lenalepa
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e

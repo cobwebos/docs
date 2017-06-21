@@ -10,7 +10,6 @@
 ## [使用 .NET SDK](data-lake-store-get-started-net-sdk.md)
 ## [使用 Java SDK](data-lake-store-get-started-java-sdk.md)
 ## [使用 REST API](data-lake-store-get-started-rest-api.md)
-## [使用 Azure CLI](data-lake-store-get-started-cli.md)
 ## [使用 Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 ## [使用 Node.js](data-lake-store-manage-use-nodejs.md)
 ## [使用 Python](data-lake-store-get-started-python.md)
@@ -21,7 +20,7 @@
 ### [使用 AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)
 ### [使用 DistCp](data-lake-store-copy-data-wasb-distcp.md)
 ### [使用 Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
-### [从脱机源上载数据](data-lake-store-offline-bulk-data-upload.md)
+### [从脱机源上传数据](data-lake-store-offline-bulk-data-upload.md)
 ### [跨区域迁移 Azure Data Lake Store](data-lake-store-migration-cross-region.md)
 
 ## 保护数据

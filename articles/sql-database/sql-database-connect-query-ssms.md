@@ -47,7 +47,7 @@ ms.lasthandoff: 05/31/2017
 2. 从左侧菜单中选择“SQL 数据库”，然后单击“SQL 数据库”页上的数据库。 
 3. 在数据库的“概览”页上，查看如下图所示的完全限定的服务器名称。 可以将鼠标悬停在服务器名称上以打开“单击以复制”选项。
 
-   ![连接信息](./media/sql-database-connect-query-ssms/connection-information.png) 
+   ![连接信息](./media/sql-database-get-started-portal/server-name.png) 
 
 4. 如果忘了 Azure SQL 数据库服务器的登录信息，请导航到 SQL 数据库服务器页，以查看服务器管理员名称并重置密码（如果需要）。 
 

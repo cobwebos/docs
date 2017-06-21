@@ -2,7 +2,7 @@
 title: "Azure Active Directory 身份验证协议 | Microsoft 文档"
 description: "概述 Azure Active Directory (AD) 支持的身份验证协议"
 documentationcenter: dev-center-name
-author: bryanla
+author: priyamohanram
 services: active-directory
 manager: mbaldwin
 editor: 
