@@ -15,9 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/10/2016
 ms.author: magoedte;bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 15456a887aab29ac6c4ee74d15b8b8ef8d3047d3
-ms.openlocfilehash: 4e7488f954ce50298aba0da83ae07f7a0de6a73d
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: e37e79f3990d920a656330c4f4c5cf7748183441
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -50,7 +52,7 @@ Azure 自动化中的 Runbook 均基于 Windows PowerShell 或 Windows PowerShel
 [Azure Automation DSC](automation-dsc-overview.md) 是一个针对 PowerShell DSC 的基于云的解决方案，可提供企业环境所需的服务。  你可以在 Azure 自动化中管理 DSC 资源，并将配置应用于从 Azure 云中的 DSC 拉取服务器检索配置的虚拟机或物理计算机。  它还提供报告服务，以通知你重要的事件，如在节点偏离其所分配的配置时，以及已应用新配置时。 
 
 ## <a name="creating-your-own-dsc-configurations-with-azure-automation"></a>使用 Azure 自动化创建你自己的 DSC 配置
-[DSC 配置](automation-dsc-overview.md#azure-automation-dsc-terms) 指定节点的所需状态。  多个节点可应用同一配置，以确保它们都保持相同状态。  可以在本地计算机上使用任何文本编辑器创建配置，然后将其导入 Azure 自动化中，你可以在其中编译配置并将其应用于节点。
+[DSC 配置](automation-dsc-overview.md) 指定节点的所需状态。  多个节点可应用同一配置，以确保它们都保持相同状态。  可以在本地计算机上使用任何文本编辑器创建配置，然后将其导入 Azure 自动化中，你可以在其中编译配置并将其应用于节点。
 
 ## <a name="getting-modules-and-configurations"></a>获取模块和配置
 可以获取包含 cmdlet 的 [PowerShell 模块](automation-runbook-gallery.md#modules-in-powershell-gallery)，这些 cmdlet 可以用于 [PowerShell 库](http://www.powershellgallery.com/)中的 Runbook 和 DSC 配置。 你可以从 Azure 门户启动此库，并将模块直接导入到 Azure 自动化中，也可以下载并手动导入这些模块。 你不能直接从 Azure 门户安装这些模块，但可以在下载之后进行安装，就像使用其他模块一样。 
@@ -83,10 +85,5 @@ Azure 自动化中的 Runbook 均基于 Windows PowerShell 或 Windows PowerShel
 
 ## <a name="can-i-provide-feedback"></a>我是否可以提供反馈？
 **欢迎提供反馈！** 如果您正在寻找 Azure 自动化 Runbook 解决方案或集成模块，请在脚本中心发布脚本请求。 如果您有关于 Azure 自动化的反馈或功能请求，请将其发布在 [用户之声](http://feedback.windowsazure.com/forums/34192--general-feedback)。 谢谢！ 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

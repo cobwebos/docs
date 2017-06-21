@@ -43,5 +43,5 @@
 | 每个 VPN 网关的点到站点根证书 |20 |20 |
 | 每个虚拟网络的辅助 IP 配置数 |1000 |联系支持人员 |
 
-如果需要在默认值的基础上提高限制，请[与支持人员联系](../articles/azure-supportability/how-to-create-azure-support-request.md)。
+如果需要在默认值的基础上提高限制，请[与支持人员联系](../articles/azure-supportability/resource-manager-core-quotas-request.md )。
 

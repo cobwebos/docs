@@ -1,0 +1,26 @@
+## <a name="extended-iot-scenarios-use-other-azure-services-and-tools"></a>扩展 IoT 方案：使用其他 Azure 服务和工具
+
+将设备连接到 IoT 中心后，可以浏览使用其他 Azure 工具和服务的其他方案：
+
+| 方案                                                   | Azure 服务或工具              |
+|----------------------------------------------------------- |------------------------------------|
+| [管理 IoT 中心消息][Mg_IoT_Hub_Msg]                  | iothub-explorer 工具               |
+| [管理 IoT 设备][Mg_IoT_Dv]                        | iothub-explorer 工具               |
+| [将 IoT 中心消息保存到 Azure 存储][Sv_IoT_Msg_Stor]  | Azure 表存储                |
+| [直观显示传感器数据][Vis_Data]                          | Microsoft Power BI、Azure Web 应用 |
+| [使用传感器数据预测天气][Weather_Forecast]      | Azure 机器学习             |
+| [自动异常检测和反应][Anomaly_Detect] | Azure 逻辑应用                   |
+
+## <a name="next-steps"></a>后续步骤
+
+完成这些教程后，可以在[开发人员指南][lnk-dev-guide]中进一步浏览 IoT 中心的功能。 可以在[操作方法][lnk-how-to]部分中找到其他教程。
+
+
+[Mg_IoT_Hub_Msg]: ../articles/iot-hub/iot-hub-explorer-cloud-device-messaging.md
+[Mg_IoT_Dv]: ../articles/iot-hub/iot-hub-device-management-iothub-explorer.md
+[Sv_IoT_Msg_Stor]: ../articles/iot-hub/iot-hub-store-data-in-azure-table-storage.md
+[Vis_Data]: ../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md
+[Weather_Forecast]: ../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md
+[Anomaly_Detect]: ../articles/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md
+[lnk-dev-guide]: ../articles/iot-hub/iot-hub-devguide.md
+[lnk-how-to]: ../articles/iot-hub/iot-hub-how-to.md

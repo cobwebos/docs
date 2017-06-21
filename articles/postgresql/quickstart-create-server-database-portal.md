@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql-database
 ms.custom: mvc
 ms.topic: hero-article
-ms.date: 05/10/2017
+ms.date: 06/19/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c67ada15c11b81021ff5e6f6e5edc5cb530ece98
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 7bbf70786bff83ad3cfae9cb9b893f41736874b5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="create-an-azure-database-for-postgresql"></a>创建用于 PostgreSQL 的 Azure 数据库
 
-“用于 PostgreSQL 的 Azure 数据库”服务器是使用所定义的一组[计算和存储资源](./concepts-compute-unit-and-storage.md)创建的。 该服务器是在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建的。
+创建的 Azure Database for PostgreSQL 服务器中包含一组已定义的[计算和存储](./concepts-compute-unit-and-storage.md)资源。 将在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建服务器。
 
 可以按照以下步骤创建用于 PostgreSQL 的 Azure 数据库：
 1.  单击 Azure 门户左上角的“新建”按钮。
@@ -38,8 +38,8 @@ ms.lasthandoff: 05/10/2017
  ![用于 PostgreSQL 的 Azure 数据库 - 创建数据库](./media/quickstart-create-database-portal/1-create-database.png)
 
 3.  如上图所示，在新服务器详细信息窗体中填写以下信息：
-    - 服务器名称：**mypgserver-20170401**（服务器的名称映射到 DNS 名称，因此需要是全局唯一的） 
-    - 订阅：如果有多个订阅，请选择资源所在的相应订阅或对其进行计费的订阅。
+    - 服务器名称：mypgserver-20170401（服务器的名称会映射到 DNS 名称，因此前者需为全局唯一） 
+    - 订阅：如果有多个订阅，请选择资源所在的相应订阅或对资源进行计费的订阅。
     - 资源组：**myresourcegroup**
     - 你选择的服务器管理员登录名和密码
     - 位置
@@ -54,12 +54,12 @@ ms.lasthandoff: 05/10/2017
 6.  单击“创建”以预配服务器。 预配需要数分钟。
 
   > [!TIP]
-  > 选中“固定到仪表板”选项，以便轻松跟踪部署。
+  > 选中“固定到仪表板”选项，轻松跟踪部署。
 
 7.  在工具栏上，单击“通知”可监视部署过程。
  ![用于 PostgreSQL 的 Azure 数据库 - 查看通知](./media/quickstart-create-database-portal/3-notifications.png)
    
-  默认情况下，会在服务器下创建 **postgres** 数据库。 [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) 数据库是供用户、实用工具和第三方应用程序使用的默认数据库。 
+  默认情况下，会在服务器下创建 **postgres** 数据库。 [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) 是供用户、实用工具和第三方应用程序使用的默认数据库。 
 
 ## <a name="configure-a-server-level-firewall-rule"></a>配置服务器级防火墙规则
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 05/10/2017
 4.  单击“保存”，然后单击“X”以关闭“连接安全性”页面。
 
   > [!NOTE]
-  > Azure PostgreSQL 服务器通过端口 5432 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经过端口 5432 的出站流量。 如果是这样，则无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 5432。
+  > Azure PostgreSQL 服务器通过端口 5432 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 5432 的出站流量。 如果是这样，则无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 5432。
   >
 
 ## <a name="get-the-connection-information"></a>获取连接信息
@@ -109,7 +109,7 @@ ms.lasthandoff: 05/10/2017
    psql --host=<myserver> --port=<port> --username=<server admin login> --dbname=<database name>
    ```
 
-   例如，以下命令使用访问凭据连接到 PostgreSQL 服务器 **mypgserver-20170401.postgres.database.azure.com** 上名为 **postgres** 的默认数据库。 在出现提示时输入服务器管理员密码。
+   例如，以下命令使用访问凭据连接到 PostgreSQL 服务器 mypgserver-20170401.postgres.database.azure.com 上名为“postgres”的默认数据库。 在出现提示时输入服务器管理员密码。
 
    ```bash
    psql --host=mypgserver-20170401.postgres.database.azure.com --port=5432 --username=mylogin@mypgserver-20170401 --dbname=postgres
@@ -169,6 +169,6 @@ CREATE DATABASE mypgsqldb;
 3.  确认要删除的服务器名称并显示其下受影响的数据库。 在文本框中键入 **mypgserver-20170401**，然后单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
-- 使用[导出和导入](./howto-migrate-using-export-and-import.md)或[转储和还原](./howto-migrate-using-dump-and-restore.md)迁移数据库。
-- 若要使用 Azure CLI 创建“用于 PostgreSQL 的 Azure 数据库”服务器，请参阅[创建 PostgreSQL 服务器 - CLI](./quickstart-create-server-database-azure-cli.md)。
-- 有关技术概述，请参阅[关于“用于 PostgreSQL 的 Azure 数据库”服务](./overview.md)。
+> [!div class="nextstepaction"]
+> [使用导出和导入功能迁移数据库](./howto-migrate-using-export-and-import.md)
+

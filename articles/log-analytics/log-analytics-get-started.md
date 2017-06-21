@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 634b4c99b746ad0b8b3238e11b3c305d2cf7082f
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 9147d2f349f59417e44e288ef057e5857a266815
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/28/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -56,7 +56,7 @@ ms.lasthandoff: 03/28/2017
    * **定价层**  
        ![快速创建](./media/log-analytics-get-started/oms-onboard-quick-create.png)
 3. 单击“确定”查看工作区列表。
-4. 选择工作区，在 Azure 门户中查看其详细信息。       
+4. 选择工作区以在 Azure 门户中查看其详细信息。       
     ![工作区详细信息](./media/log-analytics-get-started/oms-onboard-workspace-details.png)         
 
 ## <a name="3-add-solutions-and-solution-offerings"></a>3 添加解决方案和解决方案产品/服务

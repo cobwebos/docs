@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 05/22/2017
 ms.author: anhoh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 5855b0542ca2ec58f3a24efcc2cf7a96fb92da0f
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 22244cbb85e3d0256b9f495f406942dd2b4b95fc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -192,7 +192,7 @@ ms.lasthandoff: 05/31/2017
 
 ## <a id="CreateColl"></a>步骤 5：创建集合
 > [!WARNING]
-> **CreateDocumentCollectionIfNotExistsAsync** 将创建一个具有保留吞吐量的新集合，它牵涉定价。 有关详细信息，请访问 [定价页](https://azure.microsoft.com/pricing/details/documentdb/)。
+> **CreateDocumentCollectionIfNotExistsAsync** 将创建一个具有保留吞吐量的新集合，它牵涉定价。 有关详细信息，请访问 [定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。
 > 
 > 
 

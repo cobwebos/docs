@@ -1,5 +1,5 @@
 ---
-title: "Azure 批处理 CLI 入门 | Microsoft 文档"
+title: "Azure Batch CLI 入门 | Microsoft 文档"
 description: "Azure CLI 中用于管理 Azure Batch 服务资源的 Batch 命令简介"
 services: batch
 documentationcenter: 
@@ -16,10 +16,10 @@ ms.date: 05/11/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 079632f304112e1034abbd7385506292f10e128d
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 19014e65920b16d2efbaa475b7c17b2a4e3a8471
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 05/15/2017
 
 Azure CLI 2.0 是 Azure 的新命令行体验，用于管理 Azure 资源。 它可以在 macOS、Linux 和 Windows 上使用。 Azure CLI 2.0 已经过优化，可以从命令行管理 Azure 资源。 可以使用 Azure CLI 管理 Azure Batch 帐户，以及管理池、作业、任务等资源。 对于通过 Batch API、Azure 门户和 Batch PowerShell cmdlet 执行的任务，许多都可以使用 Azure CLI 来编写脚本。
 
-本文概述如何将 [Azure CLI 2.0 版](https://docs.microsoft.com/cli/azure/overview)与 Batch 配合使用。 请参阅 [Azure CLI 2.0 入门](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli.md)，大致了解如何将 CLI 与 Azure 配合使用。
+本文概述如何将 [Azure CLI 2.0 版](https://docs.microsoft.com/cli/azure/overview)与 Batch 配合使用。 请参阅 [Azure CLI 2.0 入门](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)，大致了解如何将 CLI 与 Azure 配合使用。
 
 Microsoft 建议使用最新版的 Azure CLI，即 2.0 版。 有关 2.0 版的详细信息，请参阅 [Azure Command Line 2.0 now generally available](https://azure.microsoft.com/blog/announcing-general-availability-of-vm-storage-and-network-azure-cli-2-0/)（Azure 命令行 2.0 现已公开发布）。
 
@@ -127,7 +127,7 @@ az login
 | 脚本 | 说明 |
 |---|---|
 | [创建批处理帐户](./scripts/batch-cli-sample-create-account.md) | 创建 Batch 帐户并将其与存储帐户相关联。 |
-| [添加应用程序](./scripts/batch-cli-sample-add-application.md) | 添加应用程序，并上载打包的二进制文件。|
+| [添加应用程序](./scripts/batch-cli-sample-add-application.md) | 添加应用程序，并上传打包的二进制文件。|
 | [管理批处理池](./scripts/batch-cli-sample-manage-pool.md) | 演示如何创建、管理池并调整其大小。 |
 | [使用批处理运行作业和任务](./scripts/batch-cli-sample-run-job.md) | 演示如何运行作业和添加任务。 |
 

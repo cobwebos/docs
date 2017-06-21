@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 05/24/2017
 ms.author: meetb
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 5fae11119500fd3be3af3e573d45f6cc5880e037
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 99195b43a1577f978562864bac5fa12cdeb95d63
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/17/2017
 
 ---
 # <a name="azure-sql-database-use-python-to-connect-and-query-data"></a>Azure SQL 数据库：使用 Python 进行连接和数据查询
@@ -36,7 +36,7 @@ ms.lasthandoff: 05/26/2017
 
 ## <a name="install-the-python-and-database-communication-libraries"></a>安装 Python 和数据库通信库
 
-本部分中的步骤假定你熟悉使用 Python 开发，但不熟悉如何使用 Azure SQL 数据库。 如果你不熟悉如何使用 Python 进行开发，请转到[使用 SQL Server 生成应用](https://www.microsoft.com/en-us/sql-server/developer-get-started/)并选择 **Python**，然后选择操作系统。
+本部分中的步骤假定你熟悉使用 Python 开发，但不熟悉如何使用 Azure SQL 数据库。 如果你不熟悉如何使用 Python 进行开发，请转到[使用 SQL Server 生成应用](https://www.microsoft.com/sql-server/developer-get-started/)并选择 **Python**，然后选择操作系统。
 
 ### <a name="mac-os"></a>**Mac OS**
 打开终端并导航到你要在其中创建 python 脚本的目录。 输入以下命令，安装 **brew**、**Microsoft ODBC Driver for Mac**和 **pyodbc**。 pyodbc 使用 Linux 上的 Microsoft ODBC 驱动程序连接到 SQL 数据库。
@@ -88,7 +88,7 @@ pip install pyodbc==3.1.1
    
 ## <a name="select-data"></a>选择数据
 
-通过以下代码将 [pyodbc.connect]((https://github.com/mkleehammer/pyodbc/wiki)) 函数与 [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql) Transact-SQL 语句配合使用来按类别查询前 20 个产品。 [Cursor.execute](https://mkleehammer.github.io/pyodbc/api-cursor.html) 函数可用于针对 SQL 数据库从查询中检索结果集。 此函数可接受任何查询，并返回可使用 [cursor.fetchone()](https://mkleehammer.github.io/pyodbc/api-cursor.html) 循环访问的结果集。 将 server、database、username 和 password 参数替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。
+通过以下代码将 [pyodbc.connect](https://github.com/mkleehammer/pyodbc/wiki) 函数与 [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql) Transact-SQL 语句配合使用来按类别查询前 20 个产品。 [Cursor.execute](https://github.com/mkleehammer/pyodbc/wiki/Cursor) 函数可用于针对 SQL 数据库从查询中检索结果集。 此函数可接受任何查询，并返回可使用 **cursor.fetchone()** 循环访问的结果集。 将 server、database、username 和 password 参数替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。
 
 ```Python
 import pyodbc
@@ -107,7 +107,7 @@ while row:
 ```
 
 ## <a name="insert-data"></a>插入数据
-通过以下代码使用 [cursor.execute](https://mkleehammer.github.io/pyodbc/api-cursor.html) 函数和 [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) Transact-SQL 语句来将新产品插入到 SalesLT.Product 表中。 将 server、database、username 和 password 参数替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。
+通过以下代码使用 [cursor.execute](https://github.com/mkleehammer/pyodbc/wiki/Cursor) 函数和 [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) Transact-SQL 语句来将新产品插入到 SalesLT.Product 表中。 将 server、database、username 和 password 参数替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。
 
 ```Python
 import pyodbc
@@ -124,7 +124,7 @@ cnxn.commit()
 ```
 
 ## <a name="update-data"></a>更新数据
-通过以下代码使用 [cursor.execute](https://mkleehammer.github.io/pyodbc/api-cursor.html) 函数和 [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql) Transact-SQL 语句来更新之前添加的新产品。 将 server、database、username 和 password 参数替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。
+通过以下代码使用 [cursor.execute](https://github.com/mkleehammer/pyodbc/wiki/Cursor) 函数和 [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql) Transact-SQL 语句来更新之前添加的新产品。 将 server、database、username 和 password 参数替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。
 
 ```Python
 import pyodbc
@@ -143,7 +143,7 @@ cnxn.commit()
 ```
 
 ## <a name="delete-data"></a>删除数据
-通过以下代码使用 [cursor.execute](https://mkleehammer.github.io/pyodbc/api-cursor.html) 函数和 [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL 语句来删除之前添加的新产品。 将 server、database、username 和 password 参数替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。
+通过以下代码使用 [cursor.execute](https://github.com/mkleehammer/pyodbc/wiki/Cursor) 函数和 [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL 语句来删除之前添加的新产品。 将 server、database、username 和 password 参数替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。
 
 ```Python
 import pyodbc
@@ -164,6 +164,6 @@ cnxn.commit()
 
 - [设计第一个 Azure SQL 数据库](sql-database-design-first-database.md)
 - [用于 SQL Server 的 Microsoft Python 驱动程序](https://docs.microsoft.com/sql/connect/python/python-driver-for-sql-server/)
-- [Python 开发人员中心](/develop/python/)
+- [Python 开发人员中心](https://azure.microsoft.com/develop/python/?v=17.23h)
 
 
