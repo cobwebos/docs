@@ -7,15 +7,15 @@
 ## [选择部署位置](multi-factor-authentication-get-started.md)
 ## [云中的 MFA](multi-factor-authentication-get-started-cloud.md)
 ## [本地 MFA](multi-factor-authentication-get-started-server.md)
-## [O365 用户的 MFA](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)
+## [O365 用户的 MFA](https://support.office.com/article/Plan-for-multi-factor-authentication-for-Office-365-Deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba)
 ## [安全最佳实践](multi-factor-authentication-security-best-practices.md)
 
 # 如何
 ## 部署和使用
-### [创建身份验证提供程序](multi-factor-authentication-get-started-auth-provider.md)
 ### [配置设置](multi-factor-authentication-whats-next.md)
 ### [MFA 中的报告](multi-factor-authentication-manage-reports.md)
 ### [使用现有网络策略服务器](multi-factor-authentication-nps-extension.md)
+### [创建身份验证提供程序](multi-factor-authentication-get-started-auth-provider.md)
 ### 本地 Azure MFA
 #### [安装用户门户](multi-factor-authentication-get-started-portal.md)
 #### [高级 VPN 配置](multi-factor-authentication-advanced-vpn-configurations.md)

@@ -23,6 +23,7 @@
 
 # 引用
 ## [REST](/rest/api/datacatalog/)
+## [搜索语法参考](/rest/api/datacatalog/data-catalog-search-syntax-reference)
 ## [开发人员概念](data-catalog-developer-concepts.md)
 ## [开发人员示例](data-catalog-samples.md)
 
@@ -34,8 +35,3 @@
 ## [定价](https://azure.microsoft.com/pricing/details/data-catalog/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-data-catalog)
-
-
-<!--HONumber=Feb17_HO1-->
-
-

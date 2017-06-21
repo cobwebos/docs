@@ -5,7 +5,7 @@
 ## [业务连续性](virtual-network-disaster-recovery-guidance.md)
 ## [常见问题](virtual-networks-faq.md)
 ## IP 寻址
-### [资源管理器](virtual-network-ip-addresses-overview-arm.md)
+### [Resource Manager](virtual-network-ip-addresses-overview-arm.md)
 ### [经典](virtual-network-ip-addresses-overview-classic.md)
 
 # 入门
@@ -40,12 +40,7 @@
 #### [PowerShell（经典）](virtual-network-create-udr-classic-ps.md)
 #### [CLI（经典）](virtual-network-create-udr-classic-cli.md)
 
-### 虚拟网络对等互连
-#### [门户](virtual-networks-create-vnetpeering-arm-portal.md)
-#### [PowerShell](virtual-networks-create-vnetpeering-arm-ps.md)
-#### [模板](virtual-networks-create-vnetpeering-arm-template-click.md)
-
-### [公共 IP 地址](virtual-network-public-ip-address.md)
+### [虚拟网络对等互连](virtual-network-create-peering.md)
 
 ### 虚拟机
 #### 创建具有静态公共 IP 地址的 VM
@@ -118,6 +113,7 @@
 #### [添加、更改或删除 IP 地址](virtual-network-network-interface-addresses.md)
 ### 虚拟机
 #### [将 VM 移到其他子网](virtual-networks-move-vm-role-to-subnet.md)
+### [公共 IP 地址](virtual-network-public-ip-address.md)
 
 ## 故障排除
 ### 网络安全组
