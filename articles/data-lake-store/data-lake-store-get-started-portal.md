@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 05/06/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: efb9e68256765873eb2776637d1a9469af6e46d6
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: f03181c727650eb0cfc8648cbe3d3838295cf6ad
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -29,14 +29,13 @@ ms.lasthandoff: 04/06/2017
 > * [.NET SDK](data-lake-store-get-started-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
-> * [Azure CLI](data-lake-store-get-started-cli.md)
 > * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
 > 
 
-了解如何使用 Azure 门户来创建 Azure Data Lake Store 帐户以及执行基本操作，如创建文件夹、上载和下载数据文件、删除帐户等。有关 Data Lake Store 的详细信息，请参阅 [Azure Data Lake Store 概述](data-lake-store-overview.md)。
+了解如何使用 Azure 门户来创建 Azure Data Lake Store 帐户以及执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户等。有关 Data Lake Store 的详细信息，请参阅 [Azure Data Lake Store 概述](data-lake-store-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本教程前，你必须具有：
@@ -107,7 +106,7 @@ ms.lasthandoff: 04/06/2017
 ## <a name="uploaddata"></a>将数据上传到 Azure Data Lake Store 帐户
 可以直接将数据上传到 Azure Data Lake Store 帐户的根级别，也可以上传到在帐户中创建的文件夹。 请按照下面屏幕截图中的步骤，从“数据资源管理器”  边栏选项卡上传文件到子文件夹。 在此屏幕截图中，文件已上传到子文件夹，如痕迹导航栏（用红框标记）所示。
 
-如果正在查找一些示例数据进行上载，可以从 **Azure Data Lake Git 存储库** 获取 [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)文件夹。
+如果正在查找一些示例数据进行上传，可以从 **Azure Data Lake Git 存储库** 获取 [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)文件夹。
 
 ![上载数据](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "上载数据")
 
