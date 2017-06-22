@@ -1,8 +1,6 @@
 --- 
 layout: HubPage
 hide_bc: true
-experimental: true
-experiment_id: 81ba5f65-59fb-4d
 title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 ms.translationtype: Human Translation
