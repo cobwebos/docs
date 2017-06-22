@@ -3,7 +3,7 @@ title: "Azure Active Directory v2.0 Node.js Web 应用登录 | Microsoft Docs"
 description: "了解如何生成使用 Microsoft 个人帐户和工作/学校帐户来让用户登录的 Node.js Web 应用。"
 services: active-directory
 documentationcenter: nodejs
-author: brandwe
+author: navyasric
 manager: mbaldwin
 editor: 
 ms.assetid: 1b889e72-f5c3-464a-af57-79abf5e2e147
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 05/13/2017
-ms.author: brandwe
+ms.author: nacanuma
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633

@@ -3,7 +3,7 @@ title: "Azure Active Directory 代码示例 | Microsoft Docs"
 description: "Azure Active Directory 代码示例的索引，按方案进行了组织。"
 services: active-directory
 documentationcenter: dev-center-name
-author: priyamohanram
+author: msmbaldwin
 manager: mbaldwin
 editor: 
 ms.assetid: a242a5ff-7300-40c2-ba83-fb6035707433

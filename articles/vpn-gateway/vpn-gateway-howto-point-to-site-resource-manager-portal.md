@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/15/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: cfe70a92c29dcdef962bbbe256de1a687782b6e4
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 20c0db9c5f3f3586ac2df8657a7b2eb2114ed6b8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -28,9 +28,9 @@ ms.lasthandoff: 05/16/2017
 本文介绍如何在 Resource Manager 部署模型中使用 Azure 门户通过点到站点连接来创建 VNet。 也可使用不同的部署工具或部署模型来创建此配置，方法是从以下列表中选择另一选项：
 
 > [!div class="op_single_selector"]
-> * [Resource Manager - Azure 门户](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
-> * [Resource Manager - PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
-> * [经典 - Azure 门户](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
+> * [Azure 门户](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+> * [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
+> * [Azure 门户（经典）](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 >
 >
 
@@ -140,7 +140,7 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 请
   ![证书数据](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/copycert.png)
 4. 将证书数据粘贴到“公共证书数据”字段中。 “命名”该证书，然后单击“保存”。 最多可以添加 20 个受信任的根证书。
 
-  ![证书上载](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/rootcertupload.png)
+  ![证书上传](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/rootcertupload.png)
 
 ## <a name="clientconfig"></a>9 - 安装 VPN 客户端配置包
 

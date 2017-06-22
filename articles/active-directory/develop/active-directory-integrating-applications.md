@@ -3,7 +3,7 @@ title: "将应用程序与 Azure Active Directory 集成 | Microsoft Docs"
 description: "有关如何在 Azure Active Directory (Azure AD) 中添加、更新或删除应用程序的详细信息。"
 services: active-directory
 documentationcenter: 
-author: bryanla
+author: lnalepa
 manager: mbaldwin
 editor: mbaldwin
 ms.assetid: ae637be5-0b71-4b1e-b1fe-b83df3eb4845
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/08/2017
-ms.author: mbaldwin;bryanla
+ms.author: lenalepa
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68

@@ -22,7 +22,7 @@
 ## 示例演练
 ### [创建预测解决方案](machine-learning-walkthrough-develop-predictive-solution.md)
 ### [1：创建工作区](machine-learning-walkthrough-1-create-ml-workspace.md)
-### [2：上载数据](machine-learning-walkthrough-2-upload-data.md)
+### [2：上传数据](machine-learning-walkthrough-2-upload-data.md)
 ### [3：创建试验](machine-learning-walkthrough-3-create-new-experiment.md)
 ### [4：定型和评估](machine-learning-walkthrough-4-train-and-evaluate-models.md)
 ### [5：部署 Web 服务](machine-learning-walkthrough-5-publish-web-service.md)
@@ -155,7 +155,7 @@
 #### [重新定型现有 Web 服务](machine-learning-retrain-existing-resource-manager-based-web-service.md)
 #### [故障排除](machine-learning-troubleshooting-retraining-models.md)
 ### 使用模型
-#### [概述](machine-learning-connect-to-azure-machine-learning-web-service.md)
+#### [概述](machine-learning-consume-web-services.md)
 #### [使用 Excel](machine-learning-consuming-from-excel.md)
 #### [使用 Excel 外接程序](machine-learning-excel-add-in-for-web-services.md)
 #### [使用 Web 应用模板](machine-learning-consume-web-service-with-web-app-template.md)

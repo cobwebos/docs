@@ -3,7 +3,7 @@ title: "了解 Azure Active Directory 应用程序清单 | Microsoft Docs"
 description: "详细介绍 Azure Active Directory 应用程序清单，该清单表示 Azure AD 租户中的应用程序标识配置，并方便实现 OAuth 授权、许可体验和其他功能。"
 services: active-directory
 documentationcenter: 
-author: bryanla
+author: sureshja
 manager: mbaldwin
 editor: 
 ms.assetid: 4804f3d4-0ff1-4280-b663-f8f10d54d184
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/08/2017
-ms.author: dkershaw;bryanla
+ms.author: sureshja
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 7d6525f4614c6301f0ddb621b0483da70842a71b
