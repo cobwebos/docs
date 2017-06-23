@@ -14,6 +14,8 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 04/05/2017
 ms.author: raynew
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: hyper-v-site-walkthrough-overview
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
 ms.openlocfilehash: 0ef782a7bb7a98da2ec63c91732b3d5ddd959848
@@ -21,6 +23,7 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 05/17/2017
 
 ---
+
 
 # <a name="replicate-hyper-v-virtual-machines-without-vmm-to-azure-using-azure-site-recovery-with-the-azure-portal"></a>结合使用 Azure Site Recovery 和 Azure 门户将 Hyper-V 虚拟机（不包含 VMM）复制到 Azure
 
@@ -270,7 +273,7 @@ Site Recovery 提供 Capacity Planner，帮助你为计算、网络和存储分�
 
 10. 单击“确定”保存更改。 可以稍后再设置其他属性。
 
-     ![启用复制](./media/site-recovery-hyper-v-site-to-azure/enable-replication6-with-exclude-disk.png)
+    ![启用复制](./media/site-recovery-hyper-v-site-to-azure/enable-replication6-with-exclude-disk.png)
 
 11. 在“复制设置” > “配置复制设置”中，选择要应用于受保护 VM 的复制策略。 。 可以在“复制策略”> 策略名称 >“编辑设置”中修改复制策略。 应用的更改将用于已在复制的计算机和新计算机。
 
