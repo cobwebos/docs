@@ -1,4 +1,4 @@
-### <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 使用适用于 IntelliJ 的 Azure 工具包需要以下软件组件：
 
 * IntelliJ IDEA 旗舰版，可从 <https://www.jetbrains.com/idea/download/> 下载。
