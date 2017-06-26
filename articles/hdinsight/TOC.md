@@ -22,7 +22,8 @@
 ## [Hadoop 沙盒](hdinsight-hadoop-emulator-get-started.md)
 ## [Data Lake 工具与 Hortonworks 沙盒](hdinsight-hadoop-emulator-visual-studio.md)
 ## [适用于 Visual Studio 的工具](hdinsight-hadoop-visual-studio-tools-get-started.md)
-## [HDInsight 存储选项](hdinsight-hadoop-use-blob-storage.md)
+## [使用 Azure 存储的 HDInsight](hdinsight-hadoop-use-blob-storage.md)
+## [使用 Azure Data Lake Store 的 HDInsight](hdinsight-hadoop-use-data-lake-store.md)
 
 # 如何
 ## 使用 Hadoop 执行批处理查询
@@ -105,14 +106,17 @@
 ### [配置 Hive 策略](hdinsight-domain-joined-run-hive.md)
 ## 使用 Kafka（预览版）
 ### [复制 Kafka 数据](hdinsight-apache-kafka-mirroring.md)
+### [配置 Kafka 的存储和可伸缩性](hdinsight-apache-kafka-scalability.md)
 ### [与虚拟网络配合使用](hdinsight-apache-kafka-connect-vpn-gateway.md)
-### [与 Spark 配合使用](hdinsight-apache-spark-with-kafka.md)
+### [与 Spark 配合使用（结构化流）](hdinsight-apache-kafka-spark-structured-streaming.md)
+### [与 Spark 配合使用 (DStream)](hdinsight-apache-spark-with-kafka.md)
 ### [与 Storm 配合使用](hdinsight-apache-storm-with-kafka.md)
 ## 开发
 ### [开发 C# 流式处理 MapReduce 程序](hdinsight-hadoop-dotnet-csharp-mapreduce-streaming.md)
 ### [开发 Java MapReduce 程序](hdinsight-develop-deploy-java-mapreduce-linux.md)
 ### [开发 Scalding MapReduce 作业](hdinsight-hadoop-mapreduce-scalding.md)
 ### [使用 HDInsight 工具创建 Spark 应用](hdinsight-apache-spark-eclipse-tool-plugin.md)
+### [使用 HDInsight 工具远程调试 Spark 应用](hdinsight-apache-spark-intellij-tool-debug-remotely.md)
 ### [使用空边缘节点](hdinsight-apps-use-edge-node.md)
 ### [开发 Python 流式处理程序](hdinsight-hadoop-streaming-python.md)
 ### [处理和分析 JSON 文档](hdinsight-using-json-in-hive.md)
@@ -141,7 +145,7 @@
 ### [使用 R](hdinsight-hadoop-r-scripts-linux.md)
 ### [使用 Solr](hdinsight-hadoop-solr-install-linux.md)
 ### [使用虚拟网络](hdinsight-extend-hadoop-virtual-network.md)
-### [使用 Zeppelin](hdinsight-apache-spark-use-zeppelin-notebook.md)
+### [使用 Zeppelin](hdinsight-apache-spark-zeppelin-notebook.md)
 ### 构建 HDInsight 应用程序
 #### [安装 HDInsight 应用](hdinsight-apps-install-applications.md)
 #### [安装自定义应用](hdinsight-apps-install-custom-applications.md)
@@ -166,7 +170,7 @@
 ### [使用 Ambari Web UI 管理群集](hdinsight-hadoop-manage-ambari.md)
 #### [使用 Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
 ### [添加存储帐户](hdinsight-hadoop-add-storage.md)
-### [上载 Hadoop 作业的数据](hdinsight-upload-data.md)
+### [上传 Hadoop 作业的数据](hdinsight-upload-data.md)
 ### [将多个 HDInsight 群集与 Data Lake Store 配合使用](hdinsight-multiple-clusters-data-lake-store.md)
 ### [使用 Sqoop 导入和导出数据](hdinsight-use-sqoop.md)
 #### [使用 SSH 进行连接](hdinsight-use-sqoop-mac-linux.md)
@@ -222,6 +226,7 @@
 ### [使用 Ambari API 监视群集](hdinsight-monitor-use-ambari-api.md)
 
 # 资源
-## [用于 HDInsight 的 Windows 工具](hdinsight-hadoop-windows-tools.md)
+## [Microsoft 大数据专业程序](https://academy.microsoft.com/en-us/professional-program/big-data/)
 ## [在论坛上获取帮助](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
+## [用于 HDInsight 的 Windows 工具](hdinsight-hadoop-windows-tools.md)
