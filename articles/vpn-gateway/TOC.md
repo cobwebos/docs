@@ -50,6 +50,7 @@
 ### [PowerShell](vpn-gateway-forced-tunneling-rm.md)
 ### [PowerShell（经典）](vpn-gateway-about-forced-tunneling.md)
 ## 修改本地网络网关设置
+### [Azure 门户](vpn-gateway-modify-local-network-gateway-portal.md)
 ### [PowerShell](vpn-gateway-modify-local-network-gateway.md)
 ### [Azure CLI](vpn-gateway-modify-local-network-gateway-cli.md)
 ## [验证 VPN 网关连接](vpn-gateway-verify-connection-resource-manager.md)
@@ -59,6 +60,7 @@
 ### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 ### [PowerShell（经典）](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 ## [配置 VPN 网关（经典）](vpn-gateway-configure-vpn-gateway-mp.md)
+## [网关 SKU（旧版）](vpn-gateway-about-skus-legacy.md)
 ## 故障排除
 ### [验证到达 VNet 的 VPN 吞吐量](vpn-gateway-validate-throughput-to-vnet.md)
 

@@ -1,6 +1,5 @@
 # 概述
 ## [版本](biztalk-editions-feature-chart.md)
-## [关于混合连接](integration-hybrid-connection-overview.md)
 
 # 入门
 ## [创建 BizTalk 服务](biztalk-provision-services.md)
@@ -12,8 +11,6 @@
 ## 配置
 ### [限制](biztalk-throttling-thresholds.md)
 ### [服务设置和监视](biztalk-dashboard-monitor-scale-tabs.md)
-## 集成
-### [混合连接](integration-hybrid-connection-create-manage.md)
 ## 迁移
 ### [将 BizTalk Server EDI 解决方案迁移到 BizTalk 服务](biztalk-migrating-to-edi-guide.md)
 ## 监视
@@ -21,6 +18,9 @@
 ## 安全
 ### [访问控制](biztalk-issuer-name-issuer-key.md)
 ## [故障排除](biztalk-troubleshoot-using-ops-logs.md)
+## 混合连接
+### [概述](integration-hybrid-connection-overview.md)
+### [创建和管理](integration-hybrid-connection-create-manage.md)
 
 # 资源
 ## [发行说明](biztalk-release-notes.md)

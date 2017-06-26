@@ -102,9 +102,13 @@
 ### [常见部署问题](cloud-services-troubleshoot-deployment-problems.md)
 ### [角色未能启动](cloud-services-troubleshoot-roles-that-fail-start.md)
 ### [恢复指南](cloud-services-disaster-recovery-guidance.md)
-### [云服务常见问题](cloud-services-faq.md)
+### 云服务常见问题
+#### [应用程序和服务可用性常见问题解答](cloud-services-application-and-service-availability-faq.md)
+#### [配置和管理常见问题解答](cloud-services-configuration-and-management-faq.md)
+#### [连接和网络常见问题解答](cloud-services-connectivity-and-networking-faq.md)
+#### [部署常见问题解答](cloud-services-deployment-faq.md)
 
-# 参考
+# 引用
 ## [.csdef XMLSchema](https://msdn.microsoft.com/library/azure/ee758711)
 ## [.cscfg XMLSchema](https://msdn.microsoft.com/library/azure/ee758710)
 ## [REST](https://msdn.microsoft.com/library/azure/ee460812)

@@ -11,6 +11,12 @@
     href: quickstart-create-mysql-server-database-using-azure-portal.md
   - name: 创建 DB - Azure CLI
     href: quickstart-create-mysql-server-database-using-azure-cli.md
+  - name: 连接和查询
+    items:
+    - name: PHP
+      href: connect-php.md
+    - name: Java
+      href: connect-java.md
 - name: 教程
   items:
   - name: 1 - 设计数据库
@@ -87,6 +93,10 @@
       href: howto-configure-ssl.md
     - name: Web 应用
       href: howto-connect-webapp.md
+  - name: 配置服务器参数
+    items:
+    - name: Azure 门户
+      href: howto-server-parameters.md
 - name: 引用
   items:
   - name: Azure CLI
@@ -99,6 +109,8 @@
     href: https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL
   - name: 堆栈溢出
     href: http://stackoverflow.com/questions/tagged/azure-database-mysql
+  - name: 视频
+    href: videos.md
   - name: 请求功能
     href: https://feedback.azure.com/forums/597982-azure-database-for-mysql
   - name: 上市区域

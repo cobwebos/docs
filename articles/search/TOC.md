@@ -78,6 +78,7 @@
 ## [服务 REST（预览版）](search-api-2015-02-28-preview.md)
 ## [定价](https://azure.microsoft.com/pricing/details/search/)
 ## 演示站点
+### [搜索分析器演示](http://alice.unearth.ai/)
 ### [作业列表应用](http://aka.ms/azjobsdemo)
 ### [实时演示应用](https://searchsamples.azurewebsites.net/)
 ## 课件和教程

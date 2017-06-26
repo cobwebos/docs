@@ -43,6 +43,7 @@
 ### Azure
 #### [探查器](app-insights-profiler.md)
 #### [诊断](app-insights-azure-diagnostics.md)
+#### [预览](app-insights-previews.md)
 
 ### ASP.NET
 #### [收集更多遥测](app-insights-asp-net-more.md)
@@ -91,8 +92,9 @@
 
 ### 使用情况
 #### [概述](app-insights-usage-overview.md)
-#### [保留](app-insights-usage-retention.md)
 #### [用户、会话、事件](app-insights-usage-segmentation.md)
+#### [保留](app-insights-usage-retention.md)
+#### [工作簿](app-insights-usage-workbooks.md)
 
 ### 分析
 
@@ -108,6 +110,7 @@
 ### [创建资源](app-insights-powershell-script-create-resource.md)
 ### [设置警报](app-insights-powershell-alerts.md)
 ### [获取 Azure 诊断](app-insights-powershell-azure-diagnostics.md)
+### [自动执行 Microsoft Flow](app-insights-automate-with-flow.md)
 
 ## 开发
 

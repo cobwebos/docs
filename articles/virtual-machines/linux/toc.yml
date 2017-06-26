@@ -140,6 +140,12 @@
       href: move-vm.md
     - name: 创建高度可用的 VM
       href: create-cli-complete.md
+    - name: Terraform
+      items:
+      - name: 安装和配置
+        href: ../terraform-install-configure.md
+      - name: 创建基本基础结构
+        href: ../terraform-create-complete-vm.md
     - name: Ansible
       items:
       - name: 安装和配置
@@ -202,6 +208,8 @@
       href: upload-vhd.md
     - name: 将现有 VM 捕获到映像中
       href: capture-image.md
+    - name: 使用 Packer 创建映像
+      href: build-image-with-packer.md
     - name: 创建 Azure 映像
       items:
       - name: Ubuntu
@@ -312,7 +320,11 @@
   - name: 运行应用程序
     items:
     - name: Cloud Foundry
-      href: cloudfoundry-get-started.md
+      items:
+      - name: 概述
+        href: cloudfoundry-get-started.md
+      - name: 部署第一个应用
+        href: cloudfoundry-deploy-your-first-app.md
     - name: 数据科研 VM 概述
       href: ../../machine-learning/machine-learning-data-science-virtual-machine-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: MongoDB
@@ -366,6 +378,8 @@
       href: migration-classic-resource-manager-faq.md
   - name: 故障排除
     items:
+    - name: 了解系统重启
+      href: understand-vm-reboot.md
     - name: SSH 连接
       href: troubleshoot-ssh-connection.md
       items:

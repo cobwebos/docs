@@ -21,6 +21,9 @@
 ### [更改租户 ID](key-vault-subscription-move-fix.md)
 ### [可用性和冗余](key-vault-disaster-recovery-guidance.md)
 ### [保护密钥保管库](key-vault-secure-your-key-vault.md)
+### [安全体系概述](key-vault-ovw-security-worlds.md)
+### [软删除概述](key-vault-ovw-soft-delete.md)
+### [存储帐户密钥概述](key-vault-ovw-storage-keys.md)
 
 ## 自动化
 ### [Azure 自动化](automation-manage-key-vault.md)
@@ -43,7 +46,7 @@
 ## [多重身份验证](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 
 # 资源
-## [关于密钥和机密](https://msdn.microsoft.com/en-us/library/azure/dn903623)
+## [关于键、密钥和证书](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)
 ## [代码示例](https://www.microsoft.com/download/details.aspx?id=45343)
 ## [定价](https://azure.microsoft.com/pricing/details/key-vault/)
 ## [博客](http://blogs.technet.com/b/kv/)
