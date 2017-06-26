@@ -45,10 +45,12 @@
 ### [EDIFACT 企业集成](logic-apps-enterprise-integration-edifact.md)
 ### [EDIFACT 编码](logic-apps-enterprise-integration-edifact-encode.md)
 ### [EDIFACT 解码](logic-apps-enterprise-integration-edifact-decode.md)
+### [如何处理具有 UNH2.5 段的 EDIFACT 文档](logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md)
 ### [X12 企业集成](logic-apps-enterprise-integration-x12.md)
 ### [X12 编码](logic-apps-enterprise-integration-x12-encode.md)
 ### [X12 解码](logic-apps-enterprise-integration-x12-decode.md)
 ### [灾难恢复](logic-apps-enterprise-integration-b2b-business-continuity.md)
+### [错误和解决方案](logic-apps-enterprise-integration-b2b-list-errors-solutions.md)
 
 ## 访问本地数据
 ### [连接到本地数据](logic-apps-gateway-connection.md)
@@ -75,7 +77,6 @@
 ### [使用 Azure Functions 调用逻辑应用](logic-apps-scenario-function-sb-trigger.md)
 ### [添加错误和异常处理](logic-apps-scenario-error-and-exception-handling.md)
 ### [B2B 处理](logic-apps-enterprise-integration-b2b.md)
-### [如何处理具有 UNH2.5 段的 EDIFACT 文档](logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md)
 
 ## 定价和计费
 ### [定价](https://azure.microsoft.com/pricing/details/logic-apps/)
@@ -116,6 +117,7 @@
 ### [HTTP Webhook](../connectors/connectors-native-webhook.md)
 ### [Informix](../connectors/connectors-create-api-informix.md)
 ### [集成帐户](logic-apps-enterprise-integration-metadata.md)
+### [MQ](../connectors/connectors-create-api-mq.md)
 ### [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)
 ### [Oracle Database](../connectors/connectors-create-api-oracledatabase.md)
 ### [请求/响应](../connectors/connectors-native-reqres.md)

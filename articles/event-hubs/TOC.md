@@ -19,13 +19,11 @@
 
 # 如何
 ## 规划和设计
-### [🔧与 Azure 服务的常见集成方案](event-hubs-common-integrations.md)
 ### [专用事件中心](event-hubs-dedicated-overview.md)
 ### [身份验证和安全模型概述](event-hubs-authentication-and-security-model-overview.md)
 ### [可用性和一致性](event-hubs-availability-and-consistency.md)
+### [自动缩放吞吐量单位](event-hubs-auto-inflate.md)
 ## 开发
-### [🔧处理错误和重试](event-hubs-handling-errors-retry.md)
-### [🔧管理性能和规模](event-hubs-performance-scale.md)
 ### [可用 API](event-hubs-api-overview.md)
 #### [.NET 标准](event-hubs-dotnet-standard-api-overview.md)
 #### [.NET Framework](event-hubs-dotnet-framework-api-overview.md)

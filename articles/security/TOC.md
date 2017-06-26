@@ -11,6 +11,7 @@
 ### [日志记录和审核](azure-log-audit.md)
 ### [公有云中的隔离](azure-isolation.md)
 ### [安全技术功能](azure-security-technical-capabilities.md)
+### [Azure 中的监管](governance-in-azure.md)
 
 # 入门
 ## [Azure 安全入门](azure-security-getting-started.md)

@@ -48,7 +48,7 @@
 #### [准备 Resource Manager 部署的虚拟机](backup-azure-arm-vms-prepare.md)
 ### 规划环境
 #### [规划 VM 备份基础结构](backup-azure-vms-introduction.md)
-### 备份服务器和工作负荷
+### 备份 VM
 #### [将 Azure 虚拟机备份到备份保管库](backup-azure-vms.md)
 #### [将 Azure 虚拟机备份到恢复服务保管库](backup-azure-arm-vms.md)
 #### [备份加密的虚拟机](backup-azure-vms-encryption.md)

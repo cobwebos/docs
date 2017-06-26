@@ -4,6 +4,7 @@
 
 # 入门
 ## [创建命名空间](relay-create-namespace-portal.md)
+## [创建本地/云混合应用程序](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
 ## 混合连接
 ### [.NET](relay-hybrid-connections-dotnet-get-started.md)
 ### [Node](relay-hybrid-connections-node-get-started.md)

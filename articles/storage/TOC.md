@@ -1,6 +1,7 @@
 # 概述
 
 ## [介绍](storage-introduction.md)
+## [选择 Blob、文件或数据磁盘](storage-decide-blobs-files-disks.md)
 
 # 入门
 
@@ -50,6 +51,7 @@
 ### [将托管磁盘添加到 Linux VM](../virtual-machines/linux/add-disk.md)
 ### [在 Windows 中使用快照创建存储为托管磁盘的 VHD 的副本](../virtual-machines/windows/snapshot-copy-managed-disk.md)
 ### [在 Linux 中使用快照创建存储为托管磁盘的 VHD 的副本](../virtual-machines/linux/snapshot-copy-managed-disk.md)
+### [在 Resource Manager 模板中使用托管磁盘](storage-using-managed-disks-template-deployments.md)
 
 # 如何
 ## [创建存储帐户](storage-create-storage-account.md)
@@ -70,7 +72,8 @@
 ### [示例](https://azure.microsoft.com/documentation/samples/?service=storage&term=table)
 ## 使用文件
 ### [概述](/rest/api/storageservices/File-Service-Concepts)
-### [对 Azure 文件进行故障排除](storage-troubleshoot-file-connection-problems.md)
+### [对 Azure 文件进行故障排除 - Windows](storage-troubleshoot-windows-file-connection-problems.md)
+### [对 Azure 文件进行故障排除 - Linux](storage-troubleshoot-linux-file-connection-problems.md)
 ### [示例](https://azure.microsoft.com/documentation/samples/?service=storage&term=file)
 ## 使用磁盘
 ### [Windows VM 的磁盘和 VHD](storage-about-disks-and-vhds-windows.md)
@@ -91,7 +94,7 @@
 ## 规划和设计
 ### [复制](storage-redundancy.md)
 ### [可伸缩性和性能目标](storage-scalability-targets.md)
-### [性能和可伸缩性清单](storage-performance-checklist.md)
+### [性能和伸缩性清单](storage-performance-checklist.md)
 ### [并发](storage-concurrency.md)
 ## 开发
 ### 示例
@@ -109,6 +112,7 @@
 ## 安全
 ### [安全指导](storage-security-guide.md)
 ### [静态数据加密](storage-service-encryption.md)
+### [静态加密客户密钥](storage-service-encryption-customer-managed-keys.md)
 ### [共享密钥身份验证](https://msdn.microsoft.com/library/dd179428.aspx)
 ### [共享访问签名 (SAS)](storage-dotnet-shared-access-signature-part-1.md)
 ### [教程：使用 Azure 密钥保管库加密和解密 Blob](storage-encrypt-decrypt-blobs-key-vault.md)
@@ -130,7 +134,8 @@
 ### [灾难恢复指南](storage-disaster-recovery-guidance.md)
 ## 传输数据
 ### [向/从存储移动数据](storage-moving-data.md)
-### [AzCopy 命令行实用工具](storage-use-azcopy.md)
+### [Windows 上的 AzCopy](storage-use-azcopy.md)
+### [Linux 上的 AzCopy](storage-use-azcopy-linux.md)
 ### [使用导入/导出服务](storage-import-export-service.md)
 ### [使用导入/导出工具](storage-import-export-tool-how-to.md)
 #### [设置导入/导出工具](storage-import-export-tool-setup.md)

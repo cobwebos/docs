@@ -1,6 +1,6 @@
 # 概述
 ## [什么是 Resource Manager？](resource-group-overview.md)
-## [支持的服务](resource-manager-supported-services.md)
+## [资源提供程序和类型](resource-manager-supported-services.md)
 ## [Resource Manager 部署和经典部署](resource-manager-deployment-model.md)
 ## [订阅监管](resource-manager-subscription-governance.md)
 ## [托管应用程序](managed-application-overview.md)
@@ -67,12 +67,13 @@
 
 ## 设置资源策略
 ### [什么是资源策略？](resource-manager-policy.md)
-### [门户策略分配](resource-manager-policy-portal.md)
-### [脚本策略分配](resource-manager-policy-create-assign.md)
-### [资源标记策略](resource-manager-policy-tags.md)
-### [存储策略](resource-manager-policy-storage.md)
-### [Linux VM 策略](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Windows VM 策略](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [使用门户分配策略](resource-manager-policy-portal.md)
+### [使用脚本分配策略](resource-manager-policy-create-assign.md)
+### 示例
+#### [资源标记](resource-manager-policy-tags.md)
+#### [存储](resource-manager-policy-storage.md)
+#### [Linux VM](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+#### [Windows VM](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
 ## 使用托管应用程序
 ### [发布托管应用程序](managed-application-publishing.md)

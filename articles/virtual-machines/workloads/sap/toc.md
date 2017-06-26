@@ -16,12 +16,13 @@
 ### [故障排除和监视](troubleshooting-monitoring.md)
 ## 虚拟机上的 SAP HANA
 ### [单实例 SAP HANA](hana-get-started.md)
-### [S/4 HANA 或 BW/4 HANA 部署指南](cal-s4h.md)
+### [S/4 HANA 或 BW/4 HANA SAP CAL 部署指南](cal-s4h.md)
 ### [VM 中的高可用性](sap-hana-high-availability.md)
 ### [备份概述](sap-hana-backup-guide.md)
 ### [文件级别备份](sap-hana-backup-file-level.md)
 ### [存储快照备份](sap-hana-backup-storage-snapshots.md)
 ## SAP Netweaver
+### [Windows/SQL Server SAP CAL 上的 SAP IDES 部署指南](sap-cal-ides-erp6-ehp7-sp3-sql.md)
 ### [概述和体系结构](suse-quickstart.md)
 ### [规划和实施](planning-guide.md)
 ### [高可用性](high-availability-guide.md)

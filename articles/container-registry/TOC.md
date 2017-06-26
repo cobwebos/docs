@@ -5,6 +5,7 @@
 # 入门
 ## [在门户中创建注册表](container-registry-get-started-portal.md)
 ## [使用 Azure CLI 2.0 创建注册表](container-registry-get-started-azure-cli.md)
+## [使用 Azure PowerShell 创建注册表](container-registry-get-started-powershell.md)
 ## [推送和提取图像](container-registry-get-started-docker-cli.md)
 ## [查看存储库](container-registry-repositories.md)
 
