@@ -6,7 +6,13 @@
 ## [设置开发环境](media-services-set-up-computer.md)
 ###[.NET](media-services-dotnet-how-to-use.md)
 ###[REST](media-services-rest-how-to-use.md)  
-## 以编程方式连接
+## [使用 AAD 身份验证访问 API](media-services-use-aad-auth-to-access-ams-api.md)
+###[使用门户管理 AAD 身份验证](media-services-portal-get-started-with-aad.md)
+###[使用 .NET 访问 API](media-services-dotnet-get-started-with-aad.md)
+###[使用 REST 访问 API](media-services-rest-connect-with-aad.md)
+###[使用 CLI 创建和配置 AAD 应用](media-services-cli-create-and-configure-aad-app.md)
+###[使用 PowerShell 创建和配置 AAD 应用](media-services-powershell-create-and-configure-aad-app.md)
+## 使用 ACS 密钥以编程方式进行连接
 ### [.NET](media-services-dotnet-connect-programmatically.md)
 ### [REST](media-services-rest-connect-programmatically.md)
 
@@ -35,13 +41,13 @@
 #### [跨多个存储帐户管理资产](meda-services-managing-multiple-storage-accounts.md)
 ### [配额和限制](media-services-quotas-and-limitations.md)
 
-## 上载内容
-### 将文件上载到帐户中
+## 上传内容
+### 将文件上传到帐户中
 #### [门户](media-services-portal-upload-files.md)
 #### [.NET](media-services-dotnet-upload-files.md)
 #### [REST](media-services-rest-upload-files.md)
-### [使用 Aspera 上载大型文件](media-services-upload-files-with-aspera.md)
-### [使用 StorSimple 上载文件](media-services-upload-files-from-storsimple.md)
+### [使用 Aspera 上传大型文件](media-services-upload-files-with-aspera.md)
+### [使用 StorSimple 上传文件](media-services-upload-files-from-storsimple.md)
 ### [复制现有的 Blob](media-services-copying-existing-blob.md)
 
 ## [对内容进行编码](media-services-encode-asset.md)
@@ -214,7 +220,7 @@
 ## [PowerShell (Resource Manager)](/powershell/module/azurerm.media)
 ## [PowerShell（服务管理）](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)
-## [REST](/rest/api/media)
+## [REST](/rest/api/media/mediaservice)  
 
 # 资源
 ## [发行说明](media-services-release-notes.md)
