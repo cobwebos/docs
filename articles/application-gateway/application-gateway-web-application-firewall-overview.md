@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: amsriva
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 0ba2158a45eb4ec9254ef829894152fe92276920
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 50863b60f2843f033bdb07f4564d937cd6f0b7be
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -125,6 +125,12 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，你也可以选择�
 
 每个应用程序网关日志与 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 集成。  这样，你便可以跟踪包括 WAF 警报和日志在内的诊断信息。  门户中“诊断”选项卡上的“应用程序网关”资源中提供了此功能，也可以通过 Azure Monitor 服务直接访问此功能。 若要详细了解如何为应用程序网关启用诊断日志，请访问[应用程序网关诊断](application-gateway-diagnostics.md)
 
+#### <a name="azure-security-center"></a>Azure 安全中心
+
+[Azure 安全中心](../security-center/security-center-intro.md)有助于预防、检测和响应威胁，同时增加 Azure 资源的可见性和安全可控性。 应用程序网关现在会[集成到 Azure 安全中心](application-gateway-integration-security-center.md)。 Azure 安全中心会扫描环境以检测未受保护的 Web 应用程序。 它现在可以建议应用程序网关 WAF 保护这些易受攻击的资源。 可直接从 Azure 安全中心创建应用程序网关 WAF。  这些 WAF 实例与 Azure 安全中心集成，并将警报和运行状况信息发送回 Azure 安全中心，以便进行报告。
+
+![图 1](./media/application-gateway-web-application-firewall-overview/figure1.png)
+
 #### <a name="logging"></a>日志记录
 
 应用程序网关 WAF 提供有关检测到的每个威胁的详细报告。 日志记录与 Azure 诊断日志集成，警报以 JSON 格式记录。 这些日志可与 [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) 集成。
@@ -161,9 +167,9 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，你也可以选择�
 
 ## <a name="application-gateway-waf-sku-pricing"></a>应用程序网关 WAF SKU 定价
 
-Web 应用程序防火墙在新的 WAF SKU 中提供。 此 SKU 仅在 Azure Resource Manager 预配模型中可用，在经典部署模型中不可用。 此外，WAF SKU 仅提供中型和大型应用程序网关实例大小。 应用程序网关的所有限制同样适用于 WAF SKU。 定价基于每小时网关实例费和数据处理费。 WAF SKU 的每小时网关定价不同于标准 SKU 费用，具体请参阅[应用程序网关定价详细信息](https://azure.microsoft.com/pricing/details/application-gateway/)。 数据处理费保持不变。 我们不会按规则或规则组收费。 可以使用同一个 Web 应用程序防火墙保护多个 Web 应用程序，支持多个应用程序不会产生额外的费用。 
+Web 应用程序防火墙在新的 WAF SKU 中提供。 此 SKU 仅在 Azure Resource Manager 预配模型中可用，在经典部署模型中不可用。 此外，WAF SKU 仅提供中型和大型应用程序网关实例大小。 应用程序网关的所有限制同样适用于 WAF SKU。 定价基于每小时网关实例费和数据处理费。 WAF SKU 的每小时网关定价不同于标准 SKU 费用，具体请参阅[应用程序网关定价详细信息](https://azure.microsoft.com/pricing/details/application-gateway/)。 数据处理费保持不变。 不会按规则或规则组收费。 可以使用同一个 Web 应用程序防火墙保护多个 Web 应用程序，支持多个应用程序不会产生额外的费用。 
 
-WAF 的计费方式从 2017 年 5 月 5 日开始生效，此后 WAF SKU 网关将继续按标准费率计费。
+WAF 的计费方式从 2017 年 5 月 5 日开始生效，在此之前，WAF SKU 网关继续按标准费率计费。
 
 ## <a name="next-steps"></a>后续步骤
 

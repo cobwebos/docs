@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/06/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: abb27292d4b5533fe6f3d66d6921fea8c82f18dd
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: dacd689576dce65bbf1a975409ea7d7f2c3ada90
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -47,7 +48,7 @@ ms.lasthandoff: 04/12/2017
    ![更新虚拟网络的 DNS 服务器设置](./media/active-directory-domain-services-getting-started/update-dns.png)
 
 > [!NOTE]
-> 更新虚拟网络的 DNS 服务器设置后，网络上的虚拟机可能需要一些时间才能获取更新的 DNS 配置。 如果虚拟机无法连接到域，可以刷新虚拟机上的 DNS 缓存（“ipconfig /flushdns”）。 此命令会强制刷新虚拟机上的 DNS 设置。
+> 网络中的虚拟机必须重启才能获取新的 DNS 设置。 如果需立即获取更新的 DNS 设置，可通过门户、PowerShell 或 CLI 触发重启。
 >
 >
 

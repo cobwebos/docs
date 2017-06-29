@@ -12,61 +12,36 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2017
+ms.date: 06/16/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 1b0d278c102497eca978d8cd3fa29cd2527f186c
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 19f71e0d5a8a4642b86ae60a3ab2a4042fa2990e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/17/2017
 
 
 ---
-# <a name="security-alerts-by-type-in-azure-security-center"></a>Azure 安全中心按类型划分的安全警报
-本文有助于你了解 Azure 安全中心提供的各类安全警报。 有关如何管理警报的详细信息，请参阅[管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)。
+# <a name="understanding-security-alerts-in-azure-security-center"></a>了解 Azure 安全中心中的安全警报
+本文可帮助了解 Azure 安全中心提供的各类安全警报和相关的见解。 有关如何管理警报和事件的详细信息，请参阅[管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)。
 
 > [!NOTE]
 > 若要设置高级检测，请升级到 Azure 安全中心标准版。 可免费试用 60 天。 若要升级，请选择 **安全策略** 中的 [定价层](security-center-policies.md) 。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 >
->
 
 ## <a name="what-type-of-alerts-are-available"></a>提供了哪类警报？
-Azure 安全中心按网络攻击链的不同阶段提供多种警报。 下图显示与部分阶段相关的各种警报。
-
-![攻击链](./media/security-center-alerts-type/security-center-alerts-type-fig1.png)
-
-**目标和攻击**
-
-* 入站 RDP/SSH 攻击
-* 应用程序和 DDoS 攻击（WAF 合作伙伴）
-* 入侵检测（NG 防火墙合作伙伴）
-
-**安装和攻击**
-
-* 已知的恶意软件特征（AM 合作伙伴）
-* 内存中的恶意软件和利用漏洞攻击尝试
-* 执行可疑进程
-* 为了避免被发现而使用的花招
-* 横向移动
-* 内部侦测
-* 可疑的 PowerShell 活动
-
-**入侵后**  
-
-* 与已知恶意 IP 通信（数据泄露或命令和控制）
-* 利用受攻击的资源准备其他攻击（出站端口扫描 RDP/SSH 暴力破解攻击，以及垃圾邮件）
-
-每个阶段都有不同类型的相关攻击，这些攻击针对不同的子系统。 为了应对这些阶段的攻击，安全中心设置了三类警报：
+Azure 安全中心使用各种[检测功能](security-center-detection-capabilities.md)，提醒客户针对其环境的潜在攻击。 这些警报包含有关触发警报的内容、目标资源以及攻击源的重要信息。 警报中包含的信息根据用于检测威胁的分析类型而异。 事件也可能包含其他上下文信息，在调查威胁时有所帮助。  本文提供了有关以下警报类型的信息：
 
 * 虚拟机行为分析 (VMBA)
 * 网络分析
 * 资源分析
+* 上下文信息
 
 ## <a name="virtual-machine-behavioral-analysis"></a>虚拟机行为分析
 Azure 安全中心可以使用行为分析，根据对虚拟机事件日志的分析确定受攻击的资源。 例如进程创建事件和登录事件。 此外，还可以通过与其他信号的关联性，查看是否存在某个广泛传播活动的支持证据。
 
 > [!NOTE]
 > 有关安全中心检测功能工作原理的详细信息，请参阅 [Azure 安全中心检测功能](security-center-detection-capabilities.md)。
->
 >
 
 ### <a name="crash-analysis"></a>故障分析
@@ -258,6 +233,18 @@ SQL 注入攻击会将恶意代码插入字符串中，这些字符串随后传�
 在服务器上检测到用户从某个不熟悉的 IP 地址进行访问，而该访问在上一时段并未见过时，会触发此警报。
 
 ![异常访问警报](./media/security-center-alerts-type/security-center-alerts-type-fig13-new.png)
+
+## <a name="contextual-information"></a>上下文信息
+在调查期间，分析员需要额外的上下文，以便得出有关威胁的性质以及如何缓解威胁的裁定。  例如，检测到网络异常，但不了解网络上发生的其他情况或者目标资源相关情况，很难知道接下来要采取什么操作。 为此，安全事件可能包括项目、相关事件以及可帮助调查员的信息。 其他信息的可用性根据检测到的威胁类型以及环境的配置而异，并且不向所有安全事件提供。
+
+如果提供其他信息，它将在警报列表下方的安全事件中显示。 这可能包含如下信息：
+
+- 日志清除事件
+- 从未知设备插入的 PNP 设备
+- 无法执行的警报 
+
+![异常访问警报](./media/security-center-alerts-type/security-center-alerts-type-fig20.png) 
+
 
 ## <a name="see-also"></a>另请参阅
 本文介绍了安全中心的各类安全警报。 若要了解有关安全中心的详细信息，请参阅以下文章：

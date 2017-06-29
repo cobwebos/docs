@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/06/2017
+ms.date: 06/12/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 9852981e530cd147c2d34ac2ede251b58a167a0a
-ms.openlocfilehash: 5c030f463b21284c15752cf95aa1f9a75f17ffb0
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 6f95cf7631664f4630edbbcdadfd1d98105fdb98
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -25,14 +27,18 @@ ms.openlocfilehash: 5c030f463b21284c15752cf95aa1f9a75f17ffb0
 
 本文介绍如何在 Azure 安全中心管理数据和确保数据安全性。
 
+>[!NOTE] 
+>自 2017 年 6 月初开始，安全中心将使用 Microsoft Monitoring Agent 来收集和存储数据。 请参阅 [Azure 安全中心平台迁移](security-center-platform-migration.md)，了解详细信息。 本文中的信息表示转换到 Microsoft Monitoring Agent 后的安全中心功能。
+>
+
 
 ## <a name="data-sources"></a>数据源
 Azure 安全中心将分析以下源中的数据，提供安全状态视图、识别漏洞、建议缓解措施，并检测现行的威胁：
 
 - Azure 服务：通过与 Azure 服务的资源提供程序通信，使用已部署的 Azure 服务的配置信息。
 - 网络流量：使用从 Microsoft 基础结构中采样的网络流量元数据，例如源/目标 IP/端口、数据包大小以及网络协议。
-- 合作伙伴解决方案：使用来自集成合作伙伴解决方案（例如防火墙和防恶意软件解决方案）的安全警报。
-- 用户的虚拟机：使用用户虚拟机中的配置信息，以及有关安全事件的信息，例如 Windows 事件和审核日志、IIS 日志、系统日志消息和故障转储文件。
+- 合作伙伴解决方案：使用来自集成合作伙伴解决方案（例如防火墙和防恶意软件解决方案）的安全警报。 
+- 虚拟机和服务器：使用虚拟机中的配置信息，以及有关安全事件的信息，例如 Windows 事件和审核日志、IIS 日志、系统日志消息和故障转储文件。 此外，在创建警报时，Azure 安全中心可以生成受影响 VM 磁盘的快照，并从 VM 磁盘提取与该警报相关的、用于取证目的的计算机项目，例如注册表文件。
 
 
 ## <a name="data-protection"></a>数据保护
@@ -43,19 +49,32 @@ Azure 安全中心将分析以下源中的数据，提供安全状态视图、�
 **数据使用**：Microsoft 使用多个租户所使用的模式和威胁情报增强用户预防和检测威胁的能力；执行过程中遵循[隐私声明](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx)中所述的隐私承诺。
 
 ## <a name="data-location"></a>数据位置
-**用户的存储帐户**：可为运行虚拟机的每个区域指定一个存储帐户。 这样即可将数据存储在一个区域，而从虚拟机收集数据时，虚拟机也位于该区域。 此数据（包括故障转储文件）将持久存储在存储帐户中。 VM 磁盘快照存储在 VM 磁盘所在的同一存储帐户中。
 
-**Azure 安全中心存储**：有关安全警报（包括合作伙伴警报）、建议和安全运行状况的信息将集中存储，存储位置目前位于美国。 该信息可能包括根据需要从用户虚拟机收集的相关配置信息和安全事件，目的是为用户提供安全警报、建议或安全运行状况。
+工作区：为以下地区指定工作区，并且从 Azure 虚拟机收集的数据（包括故障转储和某些类型的警报数据）都存储在最近的工作区中。 
 
+| VM 地区                        | 工作区地区 |
+|-------------------------------|---------------|
+| 美国、巴西、加拿大 | 美国 |
+| 欧洲、英国        | 欧洲        |
+| 亚太、日本、印度    | 亚太区  |
+| 澳大利亚                     | 澳大利亚     |
+
+ 
+VM 磁盘快照存储在 VM 磁盘所在的同一存储帐户中。
+ 
+对于在其他环境中（例如本地）运行的虚拟机和服务器，可以指定存储收集的数据的工作区和区域。 
+
+Azure 安全中心存储：安全警报（包括合作伙伴警报）相关信息根据相关的 Azure 资源位置在区域范围内进行存储，而安全运行状况状态和建议的相关信息则根据客户位置集中存储在美国或欧洲。
 Azure 安全中心收集故障转储文件的临时副本并对其进行分析，目的是找出攻击者尝试利用漏洞并成功进行了破坏的证据。 Azure 安全中心在工作区所在的同一地理位置执行此分析，分析完成后，将删除临时副本。
 
-计算机项目集中存储在 VM 所在的同一区域。
+计算机项目集中存储在 VM 所在的同一区域。 
 
 
 ## <a name="managing-data-collection-from-virtual-machines"></a>管理从虚拟机进行的数据收集
-选择启用 Azure 安全中心以后，即为每个订阅打开了数据收集功能。 可在 Azure 安全中心的“安全策略”部分中打开数据收集。 启用数据收集功能以后，Azure 安全中心即可在所有现有的受支持的虚拟机以及任何新创建的虚拟机中预配 Azure 监视代理。 Azure 安全监视扩展将扫描各种安全相关配置和事件，并将其收集到 [Windows 事件跟踪](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) 的跟踪中。 另外，在运行计算机的过程中，操作系统会引发事件日志事件。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址、已登录用户、租户 ID。 Azure 监视代理读取事件日志条目和 ETW 跟踪，并将其复制到存储帐户进行分析。
 
-可以随时禁止从虚拟机进行数据收集，删除 Azure 安全中心在以前安装的任何监视代理。 即使禁用数据收集，也仍会启用 VM 磁盘快照和项目收集。
+在 Azure 中启用安全中心后，即为每个 Azure 订阅启用了数据收集功能。 还可在 Azure 安全中心的“安全策略”部分，为订阅启用数据收集。 启用数据收集功能后，Azure 安全中心即可在所有受支持的现有 Azure 虚拟机以及任何新创建的虚拟机中预配 Microsoft Monitoring Agent。 Microsoft Monitoring Agent 扫描各种安全相关配置和事件，并将其收集到 [Windows 事件跟踪](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) 的跟踪中。 另外，在运行计算机的过程中，操作系统会引发事件日志事件。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址、已登录用户、租户 ID。 Microsoft Monitoring Agent 读取事件日志条目和 ETW 跟踪，并将其复制到工作区进行分析。 Microsoft Monitoring Agent 还将故障转储文件复制到工作区。
+
+如果使用 Azure 安全中心免费版，也可以在“安全策略”中从虚拟机禁用数据收集。 标准层上的订阅需启用数据收集。 即使禁用数据收集，也仍会启用 VM 磁盘快照和项目收集。
 
 
 ## <a name="see-also"></a>另请参阅
@@ -67,9 +86,4 @@ Azure 安全中心收集故障转储文件的临时副本并对其进行分析�
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md) - 了解如何监视合作伙伴解决方案的运行状态。
 * [Azure 安全中心常见问题解答](security-center-faq.md) - 查找有关使用服务的常见问题
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

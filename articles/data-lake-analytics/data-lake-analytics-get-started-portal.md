@@ -1,5 +1,5 @@
 ---
-title: "通过 Azure 门户开始使用 Azure Data Lake Analytics | Microsoft 文档"
+title: "通过 Azure 门户开始使用 Azure Data Lake Analytics | Microsoft Docs"
 description: "了解如何使用 Azure 门户创建 Data Lake Analytics 帐户，使用 U-SQL 创建 Data Lake Analytics 作业，并提交该作业。 "
 services: data-lake-analytics
 documentationcenter: 
@@ -15,14 +15,14 @@ ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: edmaca
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: eb85d8ef6b29605d7e26b0d2139a4a95c35141fb
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: b004310a3b2667134c9ad890bd907dc8ae439dd9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
-# <a name="tutorial-get-started-with-azure-data-lake-analytics-using-azure-portal"></a>教程：通过 Azure 门户开始使用 Azure Data Lake Analytics
+# <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>通过 Azure 门户开始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 了解如何使用 Azure 门户创建 Azure Data Lake Analytics 帐户，在 [U-SQL](data-lake-analytics-u-sql-get-started.md)中定义作业，并将作业提交到 Data Lake Analytics 服务。 有关 Data Lake Analytics 的详细信息，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
@@ -31,9 +31,9 @@ ms.lasthandoff: 06/01/2017
 
 在开始学习本教程之前，必须有一个 Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-## <a name="create-data-lake-analytics-account"></a>创建 Data Lake Analytics 帐户
+## <a name="create-a-data-lake-analytics-account"></a>创建 Data Lake Analytics 帐户
 
-现在可同时创建 Data Lake Analytics 帐户和 Data Lake Store 帐户。  此步骤很简单，只需大约 60 秒钟即可完成。
+现在可同时创建 Data Lake Analytics 帐户和 Data Lake Store 帐户。  此步骤很简单，只需大约 60 秒即可完成。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 单击“新建” >  “智能 + 分析” > “Data Lake Analytics”。
@@ -46,38 +46,32 @@ ms.lasthandoff: 06/01/2017
 4. （可选）为 Data Lake Analytics 帐户选择定价层。
 5. 单击“创建” 。 
 
-## <a name="create-and-submit-data-lake-analytics-jobs"></a>创建并提交 Data Lake Analytics 作业
-准备好源数据后，可以开始开发 U-SQL 脚本。  
 
-**提交作业**
+## <a name="your-first-u-sql-script"></a>第一个 U-SQL 脚本
 
-1. 从 Data Lake Analytics 帐户单击“新建作业”。
-2. 输入“作业名称”和以下 U-SQL 脚本： 
+以下文本是一个非常简单的 U-SQL 脚本。 它仅是在脚本中定义一个小型数据集，然后将该数据集写出到默认 Data Lake Store 中，并写为名为 `/data.csv` 的文件。
 
 ```
-@searchlog =
-    EXTRACT UserId          int,
-            Start           DateTime,
-            Region          string,
-            Query           string,
-            Duration        int?,
-            Urls            string,
-            ClickedUrls     string
-    FROM "/Samples/Data/SearchLog.tsv"
-    USING Extractors.Tsv();
-
-OUTPUT @searchlog   
-    TO "/Output/SearchLog-from-Data-Lake.csv"
+@a  = 
+    SELECT * FROM 
+        (VALUES
+            ("Contoso", 1500.0),
+            ("Woodgrove", 2700.0)
+        ) AS 
+              D( customer, amount );
+OUTPUT @a
+    TO "/data.csv"
     USING Outputters.Csv();
 ```
 
+## <a name="submit-a-u-sql-job"></a>提交 U-SQL 作业
 
-此 U-SQL 脚本通过 **Extractors.Tsv()** 读取源数据文件，然后通过 **Outputters.Csv()** 创建 csv 文件。
-
-1. 单击“提交”。   
-2. 请等到作业状态变为“成功”。
-3. 如果作业失败，请参阅[对 Data Lake Analytics 作业进行监视和故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)。
-4. 单击“输出”选项卡，然后单击 `SearchLog-from-Data-Lake.csv`。 
+1. 从 Data Lake Analytics 帐户单击“新建作业”。
+2. 粘贴在上面所示的 U-SQL 脚本文本中。 
+3. 单击“提交”。   
+4. 请等到作业状态变为“成功”。
+5. 如果作业失败，请参阅[对 Data Lake Analytics 作业进行监视和故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)。
+6. 单击“输出”选项卡，然后单击 `SearchLog-from-Data-Lake.csv`。 
 
 ## <a name="see-also"></a>另请参阅
 

@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 070d5754049205ca70ba2e1124f087ffc9d396f3
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 08e62dba35a72a4c814b07c93304247227b1635c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -325,7 +325,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 ```
 
 ## <a name="create-data-factory"></a>创建数据工厂
-本步骤创建名为 **ADFCopyTutorialDF**的 Azure 数据工厂。 数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 例如，复制活动可将数据从源复制到目标数据存储。 HDInsight Hive 活动运行 Hive 脚本转换输入数据，以生成输出数据。 运行以下命令创建数据工厂： 
+本步骤创建名为 **ADFCopyTutorialDF**的 Azure 数据工厂。 数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 例如，复制活动可将数据从源复制到目标数据存储。 HDInsight Hive 活动运行 Hive 脚本以将输入数据转换为产品输出数据。 运行以下命令创建数据工厂： 
 
 1. 将命令分配到名为 **cmd**的变量。 
    

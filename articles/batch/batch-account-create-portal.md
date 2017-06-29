@@ -12,14 +12,14 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2017
+ms.date: 06/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 8cfe8689494a9f85d1533d259a2744e18407ecef
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: 053e2ae7f382bc55a6638ccd612289ab2ba64e52
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 05/08/2017
 >
 >
 
-了解如何在 [Azure 门户][azure_portal]中创建 Azure 批处理帐户，以及如何选择适合计算方案的帐户属性。 了解在何处查找重要的帐户属性，例如访问密钥和帐户 URL。
+了解如何在 [Azure 门户][azure_portal]中创建 Azure Batch 帐户，以及如何选择适合计算方案的帐户属性。 了解在何处查找重要的帐户属性，例如访问密钥和帐户 URL。
 
 有关批处理帐户和方案的背景，请参阅[功能概述](batch-api-basics.md)。
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 05/08/2017
 
 ## <a name="user-subscription-mode"></a>“用户订阅”模式
 
-### <a name="allow-azure-batch-to-access-the-subscription-one-time-operation"></a>允许 Azure 批处理访问订阅（一次性操作）
+### <a name="allow-azure-batch-to-access-the-subscription-one-time-operation"></a>允许 Azure Batch 访问订阅（一次性操作）
 在“用户订阅”模式下创建第一个批处理帐户时，请执行以下步骤，将订阅注册到批处理。 （如果已执行过此操作，请跳至下一部分。）
 
 1. 登录到 [Azure 门户][azure_portal]。
@@ -82,7 +82,12 @@ ms.lasthandoff: 05/08/2017
 
     ![订阅访问控制][subscription_access]
 
-4. 在“添加权限”边栏选项卡上，选择“参与者”角色，然后搜索 **MicrosoftAzureBatch**（无空格）。 选择 **MicrosoftAzureBatch**，然后单击“保存”。
+4. 在“添加权限”边栏选项卡上，选择“参与者”角色，然后搜索 Batch API。 搜索每一条字符串，直到找到此 API：
+    1. MicrosoftAzureBatch。
+    2. Microsoft Azure Batch。 较新的 Azure AD 租户可能使用此名称。
+    3. ddbf3205-c6bd-46ae-8127-60eb93363864 是此 Batch API 的 ID。 
+
+5. 找到此 Batch API 后，将其选中并单击“保存”。
 
     ![添加批处理权限][add_permission]
 
@@ -108,7 +113,7 @@ ms.lasthandoff: 05/08/2017
 
     c. **池分配模式**：选择“用户订阅”。
 
-    d.单击“下一步”。 **密钥保管库**：选择在上一部分为批处理帐户创建的密钥保管库。 也可选择创建新的密钥保管库。 选择该保管库后，请选中相应的复选框，授予 Azure 批处理访问密钥保管库的权限。
+    d.单击“下一步”。 **密钥保管库**：选择在上一部分为批处理帐户创建的密钥保管库。 也可选择创建新的密钥保管库。 选择该保管库后，请选中相应的复选框，授予 Azure Batch 访问密钥保管库的权限。
 
     c. **资源组**：选择在其中创建了密钥保管库的资源组。
 
@@ -150,7 +155,7 @@ ms.lasthandoff: 05/08/2017
 ![创建“常规用途”存储帐户][storage_account]
 
 > [!NOTE]
-> Azure 批处理目前仅支持通用存储帐户类型。 此帐户类型在[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)的步骤 5：[创建存储帐户] (../storage/storage-create-storage-account.md#create-a-storage-account) 中进行了说明。
+> Azure Batch 目前仅支持通用存储帐户类型。 此帐户类型在[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)的步骤 5：[创建存储帐户] (../storage/storage-create-storage-account.md#create-a-storage-account) 中进行了说明。
 >
 >
 

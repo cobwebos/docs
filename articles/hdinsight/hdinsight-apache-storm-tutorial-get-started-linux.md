@@ -1,7 +1,7 @@
 ---
-title: "Apache Storm on Azure HDInsight 入门 | Microsoft 文档"
-description: "开始在基于 Linux 的 HDInsight 上使用 Apache Storm 和 Storm 初学者示例进行大数据分析。 了解如何使用 Storm 实时处理数据。"
-keywords: "apache storm,apache storm 教程,大数据分析,storm 初学者"
+title: "Apache Storm on HDInsight 上的 storm-starter 示例 - Azure | Microsoft Docs"
+description: "了解如何在 HDInsight 上使用 Apache Storm 和 storm-starter 示例执行大数据分析和实时处理数据。"
+keywords: "storm-starter，apache storm 示例"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,15 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/25/2017
 ms.author: larryfr
-ms.custom: H1Hack27Feb2017,hdinsightactive
+ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 5976051ea06896e4158071cb6839ba415b4622d2
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 5936a45973eb41d2c5b3a1a47c663e393e628f54
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/09/2017
 
 ---
-#<a name="get-started-with-the-storm-starter-samples-for-big-data-analytics-on-linux-based-hdinsight"></a>用于在基于 Linux 的 HDInsight 上进行大数据分析的 Storm 初学者示例入门
+#<a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>通过 storm-starter 示例开始使用 Apache Storm on HDInsight
+
+了解如何通过 storm-starter 示例在 HDInsight 中使用 Apache Storm。
 
 Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算系统，用于处理数据流。 使用 Azure HDInsight 上的 Storm，你可以创建一个基于云的、用于实时执行大数据分析的 Storm 群集。
 
@@ -46,7 +48,7 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
 
     ![创建 HDInsight 群集](./media/hdinsight-apache-storm-tutorial-get-started-linux/create-hdinsight.png)
 
-2. 在“基本信息”边栏选项卡中输入以下信息： ****
+2. 在“基本信息”边栏选项卡中输入以下信息： 
 
     * **群集名称**：HDInsight 群集的名称。
     * **订阅**：选择要使用的订阅。
@@ -57,7 +59,7 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
 
     ![选择订阅](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-basic-configuration.png)
 
-3. 选择“群集类型”，然后在“群集配置”边栏选项卡上设置以下值：****
+3. 选择“群集类型”，然后在“群集配置”边栏选项卡上设置以下值：
 
     * **群集类型**：Storm
 
@@ -108,7 +110,7 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
     >
     > WordCount 示例和其他 Storm 初学者示例已经包含在群集中，其位置为 `/usr/hdp/current/storm-client/contrib/storm-starter/`。
 
-如果有兴趣查看 storm 初学者示例的源，可以在以下网页中找到代码：[https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter)。 此链接针对与 HDInsight 3.5 一起提供的 Storm 1.0.x。 对于其他版本的 Storm，可使用页面顶部的“分支”按钮选择不同的 Storm 版本。
+如果有兴趣查看 Storm 初学者示例的源，可以在以下网页中找到代码：[https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter)。 此链接针对与 HDInsight 3.5 一起提供的 Storm 1.0.x。 对于其他版本的 Storm，可使用页面顶部的“分支”按钮选择不同的 Storm 版本。
 
 ## <a name="monitor-the-topology"></a>监视拓扑
 
@@ -182,7 +184,7 @@ Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，你的 HDIns
 
 ## <a name="stop-the-topology"></a>停止拓扑
 
-返回到单词计数拓扑的“拓扑摘要”页，然后从“拓扑操作”部分中选择“终止”按钮。**** 出现提示时，输入停止拓扑之前要等待的秒数，即 10。 在超时期限之后访问仪表板的“Storm UI”部分，将不再显示该拓扑。
+返回到单词计数拓扑的“拓扑摘要”页，然后从“拓扑操作”部分中选择“终止”按钮。 出现提示时，输入停止拓扑之前要等待的秒数，即 10。 在超时期限之后访问仪表板的“Storm UI”部分，将不再显示该拓扑。
 
 ## <a name="delete-the-cluster"></a>删除群集
 

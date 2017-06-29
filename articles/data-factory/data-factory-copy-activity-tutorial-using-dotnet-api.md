@@ -1,5 +1,5 @@
 ---
-title: "教程：使用 .NET API 创建包含复制活动的管道 | Microsoft 文档"
+title: "教程：使用 .NET API 创建包含复制活动的管道 | Microsoft Docs"
 description: "本教程使用 .NET API 创建包含复制活动的 Azure 数据工厂管道。"
 services: data-factory
 documentationcenter: 
@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 7e0b9b84eb34e17506824fde11ef9f5c5d180ee1
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 59d8b23291adb1e680e70898f5bb82bb699be19d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -106,7 +106,7 @@ ms.lasthandoff: 05/18/2017
 9. 获取应用程序 ID。
 
     ```PowerShell
-    $azureAdApplication    
+    $azureAdApplication 
     ```
     记下输出中的应用程序 ID (applicationID)。
 
@@ -206,7 +206,7 @@ ms.lasthandoff: 05/18/2017
     );
     ```
 
-    数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 例如，将数据从源复制到目标数据存储的复制活动，以及运行 Hive 脚本，将输入数据转换为产品输出数据的 HDInsight Hive 活动。 首先，在此步骤中创建数据工厂。
+    数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 例如，将数据从源复制到目标数据存储的复制活动，以及运行 Hive 脚本来将输入数据转换为产品输出数据的 HDInsight Hive 活动。 首先，在此步骤中创建数据工厂。
 8. 将以下用于创建 **Azure 存储链接服务**的代码添加到 **Main** 方法。
 
    > [!IMPORTANT]
