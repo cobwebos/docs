@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 04/25/2017
+ms.date: 05/31/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 42fabff59577db5feb98e5c03d7a2b6d3d2461c3
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: ba8db575c8731e4f9067a6635e745da12c8667dd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
-
+ms.lasthandoff: 06/02/2017
 
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>创建由 Azure 队列存储触发的函数
@@ -33,7 +33,7 @@ ms.lasthandoff: 05/25/2017
 
 - 下载并安装 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)。
 
-- 需要一个 Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
@@ -49,15 +49,21 @@ ms.lasthandoff: 05/25/2017
 
 ## <a name="create-a-queue-triggered-function"></a>创建队列触发的函数
 
-展开 Function App，依次单击“函数”旁边的 **+** 按钮、与所需语言相对应的 **QueueTrigger** 模板。 然后，使用表中指定的设置，并单击“创建”。
+1. 展开 Function App，单击“Functions”旁边的 + 按钮。 如果这是 Function App 中的第一个函数，请选择“自定义函数”。 此时将显示函数模板的完整集合。
 
-![创建存储队列触发的函数。](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
+    ![Azure 门户中的 Functions 快速入门页](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
 
-| 设置 | 建议的值 | 说明 |
-|---|---|---|
-| **队列名称**   | myqueue-items    | 要连接到存储帐户中的队列的名称。 |
-| **存储帐户连接** | AzureWebJobStorage | 可以使用 Function App 已在使用的存储帐户连接，也可以创建一个新的存储帐户连接。  |
-| **为函数命名** | 在 Function App 中唯一 | 此队列触发函数的名称。 |
+2. 选择适用于所需语言的“QueueTrigger”模板，然后使用表中指定的设置。
+
+    ![创建存储队列触发的函数。](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
+    
+    | 设置 | 建议的值 | 说明 |
+    |---|---|---|
+    | **队列名称**   | myqueue-items    | 要连接到存储帐户中的队列的名称。 |
+    | **存储帐户连接** | AzureWebJobStorage | 可以使用 Function App 已在使用的存储帐户连接，也可以创建一个新的存储帐户连接。  |
+    | **为函数命名** | 在 Function App 中唯一 | 此队列触发函数的名称。 |
+
+3. 单击“创建”以创建函数。
 
 接下来，连接到 Azure 存储帐户并创建 **myqueue-items** 存储队列。
 

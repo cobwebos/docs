@@ -4,7 +4,7 @@ description: "本文档有助于开始使用 Operations Management Suite 安全�
 services: operations-management-suite
 documentationcenter: na
 author: YuriDio
-manager: swadhwa
+manager: mbaldwin
 editor: 
 ms.assetid: 754796ef-a43e-468a-86c9-04a2eda55b5b
 ms.service: operations-management-suite
@@ -13,12 +13,13 @@ ms.topic: get-started-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2017
+ms.date: 06/13/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: c6944fd4f93d2daa9071bb27f76ea0f772bdb743
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 5753511d26c06f385fd4ff717d8592c321338172
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -138,6 +139,12 @@ OMS 安全和审核仪表板有四个主要类别：
 ### <a name="threat-intelligence"></a>威胁智能
 
 通过使用 OMS 安全和审核中的“威胁智能”选项，IT 管理员可根据环境识别安全威胁，例如识别某台特定的计算机是否是僵尸网络的一部分。 当攻击者非法安装秘密将此计算机连接到命令和控制的恶意软件时，该计算机就成为了僵尸网络的节点。 它还可以识别来自地下通信通道（例如暗网）的潜在威胁。 通过阅读[监视和响应 Operations Management Suite 安全和审核解决方案中的安全警报](oms-security-responding-alerts.md)一文，详细了解威胁情报。
+
+在某些情况下，可能会注意到从一台受监视计算机访问的潜在恶意 IP：
+
+![威胁情报地图](./media/oms-security-responding-alerts/oms-security-responding-alerts-fig6.png)
+
+OMS 安全利用 [Microsoft 威胁智能](https://youtu.be/O4WtxgUrDc8)生成此警报以及同一类别中的其他警报。 威胁智能数据由 Microsoft 收集，也可从领先的威胁智能提供商处购买。 此数据经常更新，适用于快速变化的威胁。 由于其自身的性质，[调查](https://blogs.technet.microsoft.com/msoms/2016/12/08/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/)安全警报时，应将它与其他来源的安全信息结合。 
 
 ### <a name="baseline-assessment"></a>基线评估
 

@@ -27,7 +27,7 @@ Azure 中所有要用作磁盘或映像创建来源的 .vhd 文件都是只读�
 
 ### <a name="premium-storage"></a>高级存储 
 
-高级存储受 SSD 支持，为运行 I/O 密集型工作负荷的 VM 提供高性能、低延迟的磁盘支持。 可以将高级存储与 DS、DSv2、GS 或 FS 系列的 Azure VM 结合使用。 有关详细信息，请参阅[高级存储](../articles/storage/storage-premium-storage.md)。
+高级存储受 SSD 支持，为运行 I/O 密集型工作负荷的 VM 提供高性能、低延迟的磁盘支持。 可以将高级存储与 DS、DSv2、GS、Ls 或 FS 系列的 Azure VM 结合使用。 有关详细信息，请参阅[高级存储](../articles/storage/storage-premium-storage.md)。
 
 ### <a name="unmanaged-disks"></a>非托管磁盘
 
@@ -50,6 +50,7 @@ Azure 中所有要用作磁盘或映像创建来源的 .vhd 文件都是只读�
 | 磁盘类型 | 固态硬盘 (SSD) | 硬盘驱动器 (HDD)  |
 | 概述  | 基于 SSD 的高性能、低延迟磁盘支持，适用于运行 IO 密集型工作负荷或托管任务关键型生产环境的 VM | 基于 HDD 的经济高效型磁盘支持，适用于开发/测试 VM 方案 |
 | 方案  | 生产和性能敏感型工作负荷 | 开发/测试, 非关键, <br>很少访问 |
-| 磁盘大小 | P10：128 GB<br>P20：512 GB<br>P30：1024 GB | 非托管磁盘：1 GB – 1 TB <br><br>托管磁盘：<br> S4：32 GB <br>S6：64 GB <br>S10：128 GB <br>S20：512 GB <br>S30：1024 GB |
-| 每个磁盘的最大吞吐量 | 200 MB/秒 | 60 MB/秒 |
-| 每个磁盘的最大 IOPS | 5000 IOPS | 500 IOPS |
+| 磁盘大小 | P4：32 GB<br>P6：64 GB<br>P10：128 GB<br>P20：512 GB<br>P30：1024 GB<br>P40：2048 GB<br>P50：4095 GB | 非托管磁盘：1 GB - 4 TB (4095 GB) <br><br>托管磁盘：<br> S4：32 GB <br>S6：64 GB <br>S10：128 GB <br>S20：512 GB <br>S30：1024 GB <br>S40：2048 GB<br>S50：4095 GB| 
+| 每个磁盘的最大吞吐量 | 250 MB/秒 | 60 MB/秒 | 
+| 每个磁盘的最大 IOPS | 7,500 IOPS | 500 IOPS | 
+

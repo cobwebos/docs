@@ -12,13 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
+f1_keywords:
+- sql13.swb.windowsazurestorage.connect.f1
 ms.date: 01/23/2017
 ms.author: robinsh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 33988eaaf926dcd91a1e63ae766e815cda93cf03
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: 16d9fa8a7b7593f222976897bddf615c28109540
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -28,7 +30,7 @@ ms.lasthandoff: 05/10/2017
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
 ## <a name="overview"></a>概述
-Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存储空间数据对象。 存储帐户中的所有对象会作为组共同计费。 默认情况下，只有你，即帐户所有者，才能使用你的帐户中的数据。
+Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存储数据对象。 存储帐户中的所有对象会作为组共同计费。 默认情况下，只有你，即帐户所有者，才能使用你的帐户中的数据。
 
 [!INCLUDE [storage-account-types-include](../../includes/storage-account-types-include.md)]
 
@@ -41,7 +43,7 @@ Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存�
 > 
 
 ## <a name="storage-account-endpoints"></a>存储帐户终结点
-存储在 Azure 存储空间中的每个对象都有唯一的 URL 地址。 存储帐户名称构成该地址的子域。 特定于每个服务的子域和域名的组合构成你的存储帐户的 *终结点* 。
+存储在 Azure 存储中的每个对象都有唯一的 URL 地址。 存储帐户名称构成该地址的子域。 特定于每个服务的子域和域名的组合构成你的存储帐户的 *终结点* 。
 
 例如，如果你的存储帐户名为 *mystorageaccount*，则你的存储帐户的默认终结点为：
 
@@ -62,7 +64,7 @@ Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存�
 ## <a name="create-a-storage-account"></a>创建存储帐户
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在“中心”菜单上，选择“新建” -> “存储” -> “存储帐户”。
-3. 输入你的存储帐户的名称。 有关如何使用存储帐户名称在 Azure 存储空间中定位你的对象的详细信息，请参阅 [存储帐户终结点](#storage-account-endpoints) 。
+3. 输入你的存储帐户的名称。 有关如何使用存储帐户名称在 Azure 存储中定位你的对象的详细信息，请参阅 [存储帐户终结点](#storage-account-endpoints) 。
    
    > [!NOTE]
    > 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。
@@ -78,10 +80,10 @@ Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存�
    > 
 5. 选择存储帐户的类型：“常规用途”或“Blob 存储”。 “常规用途”是默认值。
    
-    如果已选择“常规用途”，则指定性能层：“标准”或“高级”。 默认值为“标准”。 有关标准和高级存储帐户的更多详细信息，请参阅 [Microsoft Azure 存储空间简介](storage-introduction.md)和[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](storage-premium-storage.md)。
+    如果已选择“常规用途”，则指定性能层：“标准”或“高级”。 默认值为“标准”。 有关标准和高级存储帐户的更多详细信息，请参阅 [Microsoft Azure 存储简介](storage-introduction.md)和[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](storage-premium-storage.md)。
    
-    如果已选择“Blob 存储”，则指定访问层：“经常访问”或“不常访问”。 默认值为“经常访问”。 有关如何使用存储帐户名称在 Azure 存储空间中定位你的对象的详细信息，请参阅 [Azure Blob 存储：不常访问和经常访问的层](storage-blob-storage-tiers.md) 以了解更多详细信息。
-6. 选择存储帐户的复制选项：“LRS”、“GRS”、“RA-GRS”或“ZRS”。 默认值为“RA-GRS”。 有关 Azure 存储空间复制选项的更多详细信息，请参阅 [Azure 存储空间复制](storage-redundancy.md)。
+    如果已选择“Blob 存储”，则指定访问层：“经常访问”或“不常访问”。 默认值为“经常访问”。 有关如何使用存储帐户名称在 Azure 存储中定位你的对象的详细信息，请参阅 [Azure Blob 存储：不常访问和经常访问的层](storage-blob-storage-tiers.md) 以了解更多详细信息。
+6. 选择存储帐户的复制选项：“LRS”、“GRS”、“RA-GRS”或“ZRS”。 默认值为“RA-GRS”。 有关 Azure 存储复制选项的更多详细信息，请参阅 [Azure 存储复制](storage-redundancy.md)。
 7. 选择想在其中创建新存储帐户的订阅。
 8. 指定新资源组或选择现有资源组。 有关资源组的详细信息，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。
 9. 选择存储帐户的地理区域。 有关哪些服务在哪个区域中可用的详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/#services) 。
@@ -89,14 +91,14 @@ Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存�
 
 ## <a name="manage-your-storage-account"></a>管理存储帐户
 ### <a name="change-your-account-configuration"></a>更改帐户配置
-创建存储帐户之后，可以修改其配置，例如更改帐户所用的复制选项，或更改 Blob 存储帐户的访问层。 在 [Azure 门户](https://portal.azure.com)中，导航到你的存储帐户，单击“所有设置”，然后单击“配置”以查看和/或更改帐户配置。
+创建存储帐户之后，可以修改其配置，例如更改帐户所用的复制选项，或更改 Blob 存储帐户的访问层。 在 [Azure 门户](https://portal.azure.com)中，导航到存储帐户，查找并单击“设置”下的“配置”以查看和/或更改帐户配置。
 
 > [!NOTE]
 > 视你在创建存储帐户时选择的性能层而定，可能无法使用某些复制选项。
 > 
 > 
 
-更改复制选项将更改你的定价。 有关更多详细信息，请参阅 [Azure 存储空间定价](https://azure.microsoft.com/pricing/details/storage/) 页。
+更改复制选项将更改你的定价。 有关更多详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/) 页。
 
 对于 Blob 存储帐户，更改访问层除了会更改你的定价之外，可能还会产生更改费用。 有关更多详细信息，请参阅 [Blob 存储帐户 — 定价和计费](storage-blob-storage-tiers.md#pricing-and-billing) 。
 
@@ -157,9 +159,9 @@ Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存�
 ## <a name="next-steps"></a>后续步骤
 * [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)是 Microsoft 免费提供的独立应用，适用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。
 * [Azure Blob 存储：不常访问和经常访问的层](storage-blob-storage-tiers.md)
-* [Azure 存储空间复制](storage-redundancy.md)
-* [配置 Azure 存储空间连接字符串](storage-configure-connection-string.md)
+* [Azure 存储复制](storage-redundancy.md)
+* [配置 Azure 存储连接字符串](storage-configure-connection-string.md)
 * [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)
-* 访问 [Azure 存储空间团队博客](http://blogs.msdn.com/b/windowsazurestorage/)。
+* 访问 [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)。
 
 

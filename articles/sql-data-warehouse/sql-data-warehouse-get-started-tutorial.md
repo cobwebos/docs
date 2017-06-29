@@ -16,10 +16,10 @@ ms.custom: quickstart
 ms.date: 01/26/2017
 ms.author: elbutter;barbkess
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 9d3029817cae6570ff8871fbcb068250544595d7
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 75c2e0f119ac5669c3ab5bd528899d6e4b7818c9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/21/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -577,6 +577,9 @@ SQL 数据仓库支持名为 CREATE TABLE AS SELECT (CTAS) 的关键语句。 �
 6. 将数据仓库缩减到 400 个 DWU。 请记住，每增加 100 个 DWU，就会向 Azure SQL 数据仓库添加一个计算节点。
 
 7. 再次运行查询！ 应会看到明显的差异。 
+
+    > [!NOTE]
+    > 由于查询返回大量数据，运行 SSMS 的计算机带宽可用性可能出现性能瓶颈。 这可能导致你看不到任何性能改进！
 
 > [!NOTE]
 > SQL 数据仓库使用大规模并行处理。 在数百万行上扫描或执行分析功能的查询可体验到 Azure SQL 数据仓库的真正强大之处。

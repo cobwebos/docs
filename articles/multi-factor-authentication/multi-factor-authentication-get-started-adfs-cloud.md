@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/09/2017
+ms.date: 05/29/2017
 ms.author: kgremban
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 60e8bf883a09668100df8fb51572f9ce0856ccb3
-ms.openlocfilehash: 9eb32ac7936ad54d487dc15d3ef320ec279ce0bc
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 6cf4ec4f777ea1f2b852945ab82da2547946f378
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/10/2017
+ms.lasthandoff: 06/08/2017
 
 ---
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/10/2017
 
 1. 打开“AD FS 管理”。
 2. 在左侧选择“信赖方信任”。
-3. 右键单击 **Microsoft Office 365 标识平台** ，然后选择 **编辑声明规则...**
+3. 右键单击“Microsoft Office 365 标识平台”，然后选择“编辑声明规则”。
 
    ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip1.png)
 
@@ -90,8 +90,10 @@ ms.lasthandoff: 02/10/2017
 3. 在目录中，选择要设置受信任的 IP 的目录。
 4. 在选择的目录上，单击“配置”。
 5. 在“多重身份验证”部分中，单击“管理服务设置”。
-6. 在“服务设置”页的“受信任的 IP **下，选择“跳过对于 Intranet 上联合用户的请求的多重身份验证。**
+6. 在“服务设置”页的“受信任的 IP”下，选择“跳过对于 Intranet 上联合用户的请求的多重身份验证”。  
+
    ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip6.png)
+   
 7. 单击“保存”。
 8. 应用更新后，单击“关闭”。
 

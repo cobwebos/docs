@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2017
+ms.date: 06/12/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: c2e78e0191be6ac7d828402859c04c486e8df594
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 391870380280d6783223849ce383113bf1dd6d31
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.lasthandoff: 04/21/2017
 Log Analytics 是 [Operations Management Suite \(OMS\)](../operations-management-suite/operations-management-suite-overview.md) 中的一个服务，用于监视云和本地环境，使其保持较高的可用性和性能。  它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。  本文简要介绍 Log Analytics 提供的价值及其工作原理的概述，并提供更详细内容的链接帮助你深入了解此产品。
 
 ## <a name="is-log-analytics-for-you"></a>Log Analytics 是否适合你？
-如果 Azure 环境中当前尚未部署监视机制，应该先使用 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 来收集和分析 Azure 资源的监视数据。  Log Analytics 可从 Azure Monitor 收集数据，以便将这些数据与其他数据相关联并提供更多分析信息。
+如果 Azure 环境中当前尚未部署监视机制，应该先使用 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 来收集和分析 Azure 资源的监视数据。  Log Analytics 可[从 Azure Monitor 收集数据](log-analytics-azure-storage.md)，将这些数据与其他数据相关联并提供更多分析信息。
 
 若要监视本地环境，或者部署了使用 Azure Monitor 或 System Center Operations Manager 等服务的现有监视机制，则 Log Analytics 可以大大提高其价值。  它能直接将代理中的数据以及其他此类工具中的数据收集到单个存储库。  Log Analytics 中的分析工具（例如日志搜索、视图和解决方案）可针对收集的所有数据运行，提供整个环境的集中分析信息。
 

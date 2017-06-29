@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/26/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: cc85ae1c6642e763e57327c151ec68845f7673f7
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 34726377836d00d484ca01edb098f6c7cbfa9dbf
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -31,7 +31,6 @@ Azure Analysis Services 基于 Microsoft SQL Server Analysis Services 中经验�
 观看此视频，了解 Azure Analysis Services 如何适应 Microsoft 的整体 BI 功能，以及将数据模型导入到云的益处。
 
 
->
 >[!VIDEO https://channel9.msdn.com/series/Azure-Analysis-Services/Azure-Analysis-Services-overview/player]
 >
 >
@@ -43,7 +42,7 @@ Azure Analysis Services 与用户熟悉的同一个 SQL Server Analysis Services
 ## <a name="use-the-tools-you-already-know"></a>使用已经熟悉的工具
 ![BI 开发人员工具](./media/analysis-services-overview/aas-overview-dev-tools.png)
 
-可使用与 SQL Server Analysis Services 相同的工具创建 Azure Analysis Services 数据模型。 使用 [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx) 或使用 [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) 中的 [Azure Powershell](/powershell/azureps-cmdlets-docs) 和 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 模板创作和部署模型。
+可使用与 SQL Server Analysis Services 相同的工具创建 Azure Analysis Services 数据模型。 通过使用 [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx) 创作并部署模型。 通过使用 [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) 管理服务器和模型数据库。 以及通过 [PowerShell](analysis-services-powershell.md) 和 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 模板自动处理任务 
 
 ## <a name="supports-the-latest-features"></a>支持最新功能
 Azure Analysis Services 支持 1200 和 1400 预览版兼容级别的表格模型。
@@ -55,9 +54,7 @@ Azure Analysis Services 支持 1200 和 1400 预览版兼容级别的表格模�
 ## <a name="data-sources"></a>数据源
 部署到 Azure 中服务器的数据模型支持连接到组织或云中的本地数据源。 为混合 BI 解决方案合并来自本地和云数据源的数据。
 
-由于服务器处于云中，因此可无缝连接到云数据源。 连接到本地数据源时，[本地数据网关](analysis-services-gateway.md)可确保快速、安全地连接到云中的服务器。
-
-若要详细了解哪些本地数据源受支持，请参阅 [Azure Analysis Services 中支持的数据源](analysis-services-datasource.md)。
+由于服务器处于云中，因此可无缝连接到云数据源。 连接到本地数据源时，[本地数据网关](analysis-services-gateway.md)可确保快速、安全地连接到云中的服务器。 若要详细了解哪些本地数据源受支持，请参阅 [Azure Analysis Services 中支持的数据源](analysis-services-datasource.md)。
 
 
 ## <a name="explore-your-data-from-anywhere"></a>随时随地浏览数据
@@ -84,13 +81,17 @@ Azure Analysis Services 受 [Microsoft 联机服务条款](http://www.microsoftv
 有关 Azure 安全性的详细信息，请参阅 [Microsoft 信任中心](https://www.microsoft.com/trustcenter/Security/AzureSecurity)。
 
 ## <a name="get-help"></a>获取帮助
-Azure Analysis Services 的设置和管理非常简单。 用户可以在这里找到创建和管理服务器所需的所有信息。 在创建要部署到服务器的数据模型时，过程与创建部署到本地服务器的数据模型的非常相似。 在[MSDN 上的 Analysis Services](https://msdn.microsoft.com/library/bb522607.aspx)中提供了内容丰富的概念、过程、教程和参考文章库。
 
-我们还在[第 9 频道上的 Azure Analysis Services](https://channel9.msdn.com/series/Azure-Analysis-Services) 中提供了大量帮助视频。
+### <a name="documentation"></a>文档
+Azure Analysis Services 的设置和管理非常简单。 用户可以在这里找到创建和管理服务器所需的所有信息。 在创建要部署到服务器的数据模型时，过程与创建部署到本地服务器的数据模型的非常相似。 [Analysis Services](https://docs.microsoft.com/sql/analysis-services/analysis-services) 中提供了内容丰富的概念、过程、教程和参考文章库。
 
-信息会不断更新。 在 [Azure Analysis Services 博客](https://go.microsoft.com/fwlink/?linkid=830920)上可以随时获取最新信息。
+### <a name="videos"></a>视频
+可在[第 9 频道上的 Azure Analysis Services](https://channel9.msdn.com/series/Azure-Analysis-Services) 查看帮助视频。
 
-## <a name="community"></a>社区
+### <a name="blogs"></a>博客
+信息会不断更新。 在 [Analysis Services 团队博客](https://blogs.msdn.microsoft.com/analysisservices/)和 [Azure 博客](https://azure.microsoft.com/blog/)上可以随时获取最新信息。
+
+### <a name="community"></a>社区
 Analysis Services 拥有一个充满活力的用户社区。 参与 [Azure Analysis Services 论坛](https://aka.ms/azureanalysisservicesforum)上的对话。
 
 ## <a name="feedback"></a>反馈
@@ -100,5 +101,4 @@ Analysis Services 拥有一个充满活力的用户社区。 参与 [Azure Analy
 
 ## <a name="next-steps"></a>后续步骤
 现在已详细了解了 Azure Analysis Services，可以开始使用了。 了解如何在 Azure 中[创建服务器](analysis-services-create-server.md)并对其[部署表格模型](analysis-services-deploy.md)。
-
 

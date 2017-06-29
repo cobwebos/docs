@@ -15,9 +15,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 53f9d5b37e6f754540e70b534555750dd54895d0
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 426294e0dc3e877565bd57e899fdc79a1bd31c21
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -31,14 +33,14 @@ ms.openlocfilehash: 53f9d5b37e6f754540e70b534555750dd54895d0
 > 
 
 本教程演示如何使用 Azure 通知中心将推送通知发送到 iOS 应用程序。
-你将创建一个空白 Xamarin.iOS 应用，它使用 [Apple Push Notification 服务 (APNs)](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html)接收推送通知。 完成后，你将能够使用通知中心将推送通知广播到运行你的应用的所有设备。 [通知中心应用][GitHub] 示例中提供了完成的代码。
+你将创建一个空白 Xamarin.iOS 应用，它使用 [Apple Push Notification 服务 (APNs)](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html)接收推送通知。 完成后，你将能够使用通知中心将推送通知广播到运行你的应用的所有设备。 [NotificationHubs 应用][GitHub]示例中提供了完成的代码。
 
 本教程演示使用通知中心的简单推送消息广播方案。
 
 ## <a name="prerequisites"></a>先决条件
 本教程需要的内容如下：
 
-* [Xcode 6.0][安装 Xcode]
+* [Xcode 6.0][Install Xcode]
 * iOS 7.0（或更高版本）兼容设备
 * iOS 开发人员计划成员身份
 * [Xamarin Studio]
@@ -76,7 +78,7 @@ ms.openlocfilehash: 53f9d5b37e6f754540e70b534555750dd54895d0
 #### <a name="create-a-new-project"></a>创建新项目
 1. 在 Xamarin Studio 中，创建新的 iOS 项目，然后选择“统一 API” > “单视图应用程序”模板。
    
-       ![Xamarin Studio - Select Application Type][31]
+     ![Xamarin Studio - 选择应用程序类型][31]
 2. 添加对 Azure 消息传送组件的引用。 在“解决方案”视图中，右键单击项目的“Components”文件夹，然后选择“获取更多组件”。 搜索“Azure 消息传送”组件，并向项目添加该组件。
 3. 在 **AppDelegate.cs**中，添加以下 using 语句：
    
@@ -277,32 +279,27 @@ ms.openlocfilehash: 53f9d5b37e6f754540e70b534555750dd54895d0
 
 
 <!-- URLs. -->
-[移动服务 iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
-[提交应用页]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[我的应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Mobile Services iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
+[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
 [移动服务入门]: /develop/mobile/tutorials/get-started-xamarin-ios
 [Azure 经典门户]: https://manage.windowsazure.com/
 [通知中心指南]: http://msdn.microsoft.com/library/jj927170.aspx
 [适用于 iOS 的通知中心操作方法指南]: http://msdn.microsoft.com/library/jj927168.aspx
-[安装 Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-[iOS 预配门户]: http://go.microsoft.com/fwlink/p/?LinkId=272456
+[Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
+[iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 
-[使用通知中心向用户推送通知]: /manage/services/notification-hubs/notify-users-aspnet
+[使用通知中心将通知推送到用户]: /manage/services/notification-hubs/notify-users-aspnet
 [使用通知中心发送突发新闻]: /manage/services/notification-hubs/breaking-news-dotnet
 
 [本地和推送通知编程指南]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
-[Apple Push Notification 服务]: http://go.microsoft.com/fwlink/p/?LinkId=272584
+[Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
 
-[Azure 移动服务组件]: http://components.xamarin.com/view/azure-mobile-services/
+[Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329
 [Xamarin Studio]: http://xamarin.com/download
 [WindowsAzure.Messaging]: https://github.com/infosupport/WindowsAzure.Messaging.iOS
 [Azure 门户]: https://portal.azure.com
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 05/31/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: c0d1271bc083688bbc72bd2556546c2f738e7345
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: a55f28fad4c70e49e417d2856568791b313ad1eb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 06/20/2017
 
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>创建由 Azure Blob 存储触发的函数
@@ -31,11 +31,8 @@ ms.lasthandoff: 05/12/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-运行此示例之前，必须已执行以下事项：
-
-- 下载并安装 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)。
-
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
++ 下载并安装 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)。
++ Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
@@ -51,15 +48,21 @@ ms.lasthandoff: 05/12/2017
 
 ## <a name="create-a-blob-storage-triggered-function"></a>创建 Blob 存储触发的函数
 
-展开 Function App，依次单击“函数”旁边的 **+** 按钮、与所需语言相对应的 **BlobTrigger** 模板。 然后，使用表中指定的设置，并单击“创建”。
+1. 展开 Function App，单击“Functions”旁边的 + 按钮。 如果这是 Function App 中的第一个函数，请选择“自定义函数”。 此时将显示函数模板的完整集合。
 
-![创建 Blob 存储触发的函数。](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal.png)
+    ![Azure 门户中的 Functions 快速入门页](./media/functions-create-storage-blob-triggered-function/add-first-function.png)
 
-| 设置 | 建议的值 | 说明 |
-|---|---|---|
-| **路径**   | mycontainer/{name}    | 所监视的 Blob 存储中的位置。 blob 的文件名将作为 _name_ 参数传入绑定。  |
-| **存储帐户连接** | AzureWebJobStorage | 可以使用 Function App 已在使用的存储帐户连接，也可以创建一个新的存储帐户连接。  |
-| **为函数命名** | 在 Function App 中唯一 | 此队列触发函数的名称。 |
+2. 选择适用于所需语言的“BlobTrigger”模板，然后使用表中指定的设置。
+
+    ![创建 Blob 存储触发的函数。](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal.png)
+
+    | 设置 | 建议的值 | 说明 |
+    |---|---|---|
+    | **路径**   | mycontainer/{name}    | 所监视的 Blob 存储中的位置。 blob 的文件名将作为 _name_ 参数传入绑定。  |
+    | **存储帐户连接** | AzureWebJobStorage | 可以使用 Function App 已在使用的存储帐户连接，也可以创建一个新的存储帐户连接。  |
+    | **为函数命名** | 在 Function App 中唯一 | 此 Blob 触发函数的名称。 |
+
+3. 单击“创建”以创建函数。
 
 接下来，连接到 Azure 存储帐户并创建 **mycontainer** 容器。
 
@@ -111,3 +114,4 @@ ms.lasthandoff: 05/12/2017
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
 有关 Blob 存储触发器的详细信息，请参阅 [Azure Functions Blob 存储绑定](functions-bindings-storage-blob.md)。
+

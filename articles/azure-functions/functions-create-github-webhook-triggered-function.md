@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 05/31/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: d79ce0e047e71d9f6af7ca55f55bea405c280b1d
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: accd5c55e7adafd5a387bf420660b808335192e6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 06/02/2017
 
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>创建由 GitHub Webhook 触发的函数
@@ -31,11 +31,8 @@ ms.lasthandoff: 05/18/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-运行此示例之前，必须具有以下项：
-
-- 一个至少包含一个项目的 GitHub 帐户。
-
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
++ 一个至少包含一个项目的 GitHub 帐户。
++ Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
@@ -51,9 +48,15 @@ ms.lasthandoff: 05/18/2017
 
 ## <a name="create-a-github-webhook-triggered-function"></a>创建 GitHub webhook 触发函数
 
-1. 展开 Function App，依次单击“函数”旁边的 **+** 按钮、与所需语言相对应的 **GitHubWebHook** 模板。 **命名函数**，然后单击“创建”。
+1. 展开 Function App，单击“Functions”旁边的 + 按钮。 如果这是 Function App 中的第一个函数，请选择“自定义函数”。 此时将显示函数模板的完整集合。
 
-1. 在新函数中，单击“</> 获取函数 URL”，然后复制并保存相关值。 针对“</> 获取 GitHub 机密”执行相同的操作。 请使用这些值在 GitHub 中配置 Webhook。
+    ![Azure 门户中的 Functions 快速入门页](./media/functions-create-github-webhook-triggered-function/add-first-function.png)
+
+2. 为所需语言选择 GitHubWebHook 模板。 为函数命名，然后选择“创建”。
+
+     ![在 Azure 门户中创建 GitHub Webhook 触发的函数](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger.png) 
+
+3. 在新函数中，单击“</> 获取函数 URL”，然后复制并保存相关值。 针对“</> 获取 GitHub 机密”执行相同的操作。 请使用这些值在 GitHub 中配置 Webhook。
 
     ![查看函数代码](./media/functions-create-github-webhook-triggered-function/functions-copy-function-url-github-secret.png)
 

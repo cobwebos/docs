@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/10/2017
+ms.date: 06/09/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: d1e1f977c9023f4727d8c444b5e490e8f5ba8d9e
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 07dc5e1520cf60e19a1961ad85d2aea0cc7bd15f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 05/31/2017
 
 ![Azure 表存储 API 和 Azure Cosmos DB](./media/table-introduction/premium-tables.png) 
 
-Azure Cosmos DB 通过灵活架构为需要键/值存储的应用程序提供表 API。 [Azure 表存储](../storage/storage-introduction.md) SDK 和 REST API 可用于处理 Azure Cosmos DB。 可以使用 Azure Cosmos DB 创建具有高吞吐量要求的表。 Azure Cosmos DB 当前在公共预览版中支持吞吐量优化表（非正式地称为“高级表”）。 
+Azure Cosmos DB 可为需要具有灵活架构、可预测性能、全局分发和高吞吐量的键值存储的应用程序提供表 API（预览）。 表 API 提供与 Azure 表存储相同的功能，但利用 Azure Cosmos DB 引擎的优势。 
 
 可以继续对具有高存储和低吞吐量要求的表使用 Azure 表存储。 Azure Cosmos DB 会在将来更新中引入对存储优化表的支持，并且现有和新的 Azure 表存储帐户将升级到 Azure Cosmos DB。
 
@@ -56,3 +56,4 @@ Azure Cosmos DB 通过灵活架构为需要键/值存储的应用程序提供表
 * 使用现有的 NET 表 SDK 开始使用 [Azure Cosmos DB 的表 API](create-table-dotnet.md)。
 * 了解[使用 Azure Cosmos DB 进行全局分发](distribute-data-globally.md)。
 * 了解 [Azure Cosmos DB 中预配的吞吐量](request-units.md)。
+

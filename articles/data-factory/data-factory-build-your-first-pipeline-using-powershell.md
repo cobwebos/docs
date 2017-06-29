@@ -1,5 +1,5 @@
 ---
-title: "构建第一个数据工厂 (PowerShell) | Microsoft 文档"
+title: "构建第一个数据工厂 (PowerShell) | Microsoft Docs"
 description: "本教程使用 Azure PowerShell 创建一个示例 Azure 数据工厂管道。"
 services: data-factory
 documentationcenter: 
@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 6615fc7f23a8a53ae0b8d855f5b157c3787a1f06
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: d3908e2984889656a70b5295eab19164ad3bfa95
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -57,7 +57,7 @@ ms.lasthandoff: 05/18/2017
     ```    
    * 运行以下命令查看此帐户的所有订阅。
     ```PowerShell
-    Get-AzureRmSubscription    
+    Get-AzureRmSubscription 
     ```
    * 运行以下命令选择要使用的订阅。 此订阅应与 Azure 门户中使用的订阅相同。
     ```PowerShell

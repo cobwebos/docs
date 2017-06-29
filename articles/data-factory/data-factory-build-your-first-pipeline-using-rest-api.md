@@ -1,5 +1,5 @@
 ---
-title: "构建第一个数据工厂 (REST) | Microsoft 文档"
+title: "构建第一个数据工厂 (REST) | Microsoft Docs"
 description: "本教程使用数据工厂 REST API 创建一个示例 Azure 数据工厂管道。"
 services: data-factory
 documentationcenter: 
@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: a8a4c9592ec78f1c56c9bf60c10d9190c13b0e7d
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 168704acc3ef1fadad2ab17abbc3cc0ddd2f389c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---

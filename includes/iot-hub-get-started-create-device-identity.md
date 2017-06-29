@@ -1,6 +1,6 @@
 ## <a name="create-a-device-identity"></a>创建设备标识
 
-本部分使用名为 [iothub-explorer][iot-hub-explorer] 的 Node.js 工具为本教程创建设备标识。
+本部分使用名为 [iothub-explorer][iot-hub-explorer] 的 Node.js 工具为本教程创建设备标识。 设备 ID 区分大小写。
 
 1. 在命令行环境中运行以下命令：
 

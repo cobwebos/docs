@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/06/2017
+ms.date: 06/06/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 4547a805c1827a703bf0ef118387882e45c3f241
-ms.openlocfilehash: 5bbd7088f5d4986a5b1c9f5695a5defb678307a9
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 7ab7e693909f807781744ae53eed75d425096590
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -52,7 +54,7 @@ ms.openlocfilehash: 5bbd7088f5d4986a5b1c9f5695a5defb678307a9
 
 2. 如果以前安装了 Web 服务 SDK，请通过 Multi-Factor Authentication 服务器用户界面安装新的 Web 服务 SDK。
 
-  默认虚拟目录名称现在是“MultiFactorAuthWebServiceSdk”，而不是“PhoneFactorWebServiceSdk”。 如果要使用以前的名称，则必须在安装过程中更改虚拟目录的名称。 否则，如果你允许安装使用新的默认名称，则必须将任何应用程序中引用 Web 服务 SDK（如用户门户和移动应用 Web 服务）的 URL 改为指向正确的位置。
+  默认虚拟目录名称现在是“MultiFactorAuthWebServiceSdk”，而不是“PhoneFactorWebServiceSdk”。 如果要使用以前的名称，则必须在安装过程中更改虚拟目录的名称。 否则，如果允许安装使用新的默认名称，则必须将任何应用程序中引用 Web 服务 SDK（如用户门户和移动应用 Web 服务）的 URL 改为指向正确的位置。
 
 3. 如果用户门户以前已安装在 PhoneFactor 代理服务器上，请通过Multi-Factor Authentication 服务器用户界面安装新的Multi-Factor Authentication用户门户。
 
@@ -60,7 +62,7 @@ ms.openlocfilehash: 5bbd7088f5d4986a5b1c9f5695a5defb678307a9
 
 4. 如果用户门户和/或移动应用 Web 服务之前安装在了 PhoneFactor 代理中的不同服务器上：
 
-  1. 转到安装位置（例如 C:\Program Files\PhoneFactor），并将相应安装程序复制复制到另一台服务器。 用户门户和移动应用 Web 服务都有 32 位和 64 位安装程序。 它们分别名为 MultiFactorAuthenticationUserPortalSetupXX.msi 和 MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi。
+  1. 转到安装位置（例如 C:\Program Files\PhoneFactor），并将一个或多个安装程序复制到另一台服务器。 用户门户和移动应用 Web 服务都有 32 位和 64 位安装程序。 它们名为 MultiFactorAuthenticationUserPortalSetupXX.msi 和 MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi。
 
   2. 若要在 Web 服务器上安装用户门户，请以管理员身份打开命令提示符，并运行 MultiFactorAuthenticationUserPortalSetupXX.msi。
 
@@ -79,9 +81,4 @@ ms.openlocfilehash: 5bbd7088f5d4986a5b1c9f5695a5defb678307a9
 - 为 Azure 多重身份验证服务器[安装用户门户](multi-factor-authentication-get-started-portal.md)。
 
 - 为应用程序[配置 Windows 身份验证](multi-factor-authentication-get-started-server-windows.md)。 
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

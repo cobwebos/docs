@@ -1,5 +1,5 @@
 ---
-title: "构建第一个数据工厂（Azure 门户）| Microsoft 文档"
+title: "构建第一个数据工厂（Azure 门户）| Microsoft Docs"
 description: "本教程使用 Azure 门户中的数据工厂编辑器创建一个示例 Azure 数据工厂管道。"
 services: data-factory
 documentationcenter: 
@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: c54a1ed648022875f489179a3321dedf2d290d7e
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: dac2b51cb48f76a88fc592c0fac50414da641777
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -47,7 +47,7 @@ ms.lasthandoff: 05/18/2017
 2. 本文不提供 Azure 数据工厂服务的概念性概述。 有关该服务的详细概述，建议通读 [Introduction to Azure Data Factory](data-factory-introduction.md) （Azure 数据工厂简介）一文。  
 
 ## <a name="create-data-factory"></a>创建数据工厂
-数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 例如，将数据从源复制到目标数据存储的复制活动，以及运行 Hive 脚本，将输入数据转换为产品输出数据的 HDInsight Hive 活动。 首先，在此步骤中创建数据工厂。
+数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 例如，将数据从源复制到目标数据存储的复制活动，以及运行 Hive 脚本来将输入数据转换为产品输出数据的 HDInsight Hive 活动。 首先，在此步骤中创建数据工厂。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在左侧菜单中单击“新建”，然后依次单击“数据 + 分析”、“数据工厂”。
@@ -361,7 +361,7 @@ ms.lasthandoff: 05/18/2017
    有关详细信息，请参阅 [Monitor and manage pipelines using Azure portal blades](data-factory-monitor-manage-pipelines.md) （使用 Azure 门户边栏选项卡监视和管理管道）。
 
 > [!IMPORTANT]
-> 成功处理切片后，将会删除输入文件。 因此，如果想要重新运行切片或重新学习本教程，请将输入文件 (input.log) 上载到 adfgetstarted 容器的 inputdata 文件夹中。
+> 成功处理切片后，将会删除输入文件。 因此，如果想要重新运行切片或重新学习本教程，请将输入文件 (input.log) 上传到 adfgetstarted 容器的 inputdata 文件夹中。
 >
 >
 

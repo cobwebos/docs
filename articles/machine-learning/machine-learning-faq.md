@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/23/2017
+ms.date: 06/02/2017
 ms.author: garye
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: bb4d64f799027c9af74fd50ab724449bdede7804
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 0a1e23cd52ab5c10791a11d93753b54eb1c1b71a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -47,7 +47,7 @@ Azure 机器学习是完全托管的服务，可用于创建、测试、操作�
 
 使用机器学习 API 服务可将预测模型（例如机器学习工作室内置的预测模型）部署为可缩放且容错的 Web 服务。 机器学习 API 服务创建的 Web 服务是 REST API，此类 API 提供的接口可用于外部应用程序与预测分析模型之间的通信。
 
-有关详细信息，请参阅 [Connect to a Machine Learning web service](machine-learning-connect-to-azure-machine-learning-web-service.md)（连接到机器学习 Web 服务）。
+有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](machine-learning-consume-web-services.md)。
 
 **经典 Web 服务列在何处？新 Web 服务（基于 Azure Resource Manager）列在何处？**
 
@@ -221,7 +221,7 @@ Azure 机器学习有两种类型的 Web 服务：
 ### <a name="use"></a>使用
 **以批处理执行服务的形式或者以请求响应服务的形式运行预测模型的时机是什么？**
 
-请求响应服务 (RRS) 是低延迟的大规模 Web 服务，为从试验环境创建并部署的无状态模型提供接口。 批处理执行服务 (BES) 是为一批数据记录进行异步评分的服务。 BES 的输入类似于 RRS 使用的数据输入。 主要区别在于，BES 读取的记录块来自多种源，例如 Azure Blob 存储、Azure 表存储、Azure SQL 数据库、HDInsight（Hive 查询）和 HTTP 源。 有关详细信息，请参阅 [How to consume Machine Learning web services](machine-learning-consume-web-services.md)（如何使用机器学习 Web 服务）。
+请求响应服务 (RRS) 是低延迟的大规模 Web 服务，为从试验环境创建并部署的无状态模型提供接口。 批处理执行服务 (BES) 是为一批数据记录进行异步评分的服务。 BES 的输入类似于 RRS 使用的数据输入。 主要区别在于，BES 读取的记录块来自多种源，例如 Azure Blob 存储、Azure 表存储、Azure SQL 数据库、HDInsight（Hive 查询）和 HTTP 源。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](machine-learning-consume-web-services.md)。
 
 **如何更新已部署的 Web 服务的模型？**
 
@@ -287,7 +287,7 @@ Azure 机器学习有两种类型的 Web 服务：
 ## <a name="security-and-availability"></a>安全性和可用性
 **默认情况下，哪些人可以访问 Web 服务的 HTTP 终结点？如何限制对终结点的访问？**
 
-部署 Web 服务之后，将为该服务创建默认终结点。 该默认终结点可以使用其 API 密钥调用。 可以从 Azure 经典门户，或以编程方式使用 Web 服务管理 API 添加具有自身密钥的更多终结点。 需要使用访问密钥来调用 Web 服务。 有关详细信息，请参阅 [Connect to a Machine Learning web service](machine-learning-connect-to-azure-machine-learning-web-service.md)（连接到机器学习 Web 服务）。
+部署 Web 服务之后，将为该服务创建默认终结点。 该默认终结点可以使用其 API 密钥调用。 可以从 Azure 经典门户，或以编程方式使用 Web 服务管理 API 添加具有自身密钥的更多终结点。 需要使用访问密钥来调用 Web 服务。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](machine-learning-consume-web-services.md)。
 
 **如果找不到 Azure 存储帐户，会发生什么情况？**
 

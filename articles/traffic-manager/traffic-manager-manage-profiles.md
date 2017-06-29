@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: kumud
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 3d30024920295298ad2a8a6e22e11ef829934255
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: a5164282264124835692bc72a4ab61891aa7af9d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/02/2017
 
 ---
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 05/11/2017
 
 ## <a name="disable-enable-or-delete-a-profile"></a>禁用、启用或删除配置文件
 
-可以禁用现有的配置文件，使流量管理器不会将用户请求路由到配置的终结点。 禁用流量管理器配置文件后，配置文件及其中包含的信息将保持不变，并且可以在流量管理器界面中进行编辑。  重新启用配置文件时，路由将会恢复。 在 Azure 经典门户中创建流量管理器配置文件时，会自动启用该配置文件。 如果确定不再需要某个配置文件，可以将其删除。
+可以禁用现有的配置文件，使流量管理器不会将用户请求路由到配置的终结点。 禁用流量管理器配置文件后，配置文件及其中包含的信息将保持不变，并且可以在流量管理器界面中进行编辑。  重新启用配置文件时，路由将会恢复。 在 Azure 门户中创建流量管理器配置文件时，会自动启用该配置文件。 如果确定不再需要某个配置文件，可以将其删除。
 
 ### <a name="to-disable-a-profile"></a>禁用配置文件
 

@@ -1,5 +1,5 @@
 ---
-title: "构建第一个数据工厂 (Visual Studio) | Microsoft 文档"
+title: "构建第一个数据工厂 (Visual Studio) | Microsoft Docs"
 description: "本教程使用 Visual Studio 创建一个示例 Azure 数据工厂管道。"
 services: data-factory
 documentationcenter: 
@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
-ms.openlocfilehash: 9d788bf8e41fe225a4c24a4f5b464e8664f3d677
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 7ea9988b02bc09626a11efb5e95c2349b378256a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/22/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -202,7 +202,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
     }
     ```
     该 JSON 代码片段定义名为 **AzureBlobOutput** 的数据集，表示管道中 Hive 活动生成的输出数据。 可指定将 Hive 活动生成的输出数据置于名为 `adfgetstarted` 的 Blob 容器以及名为 `partitioneddata` 的文件夹中。 
-     
+    
     **availability** 节指定每月生成输出数据集一次。 输出数据集驱动管道的计划。 管道每月在开始和结束时间范围内运行。 
 
     有关这些属性的描述，请参阅 **创建输入数据集** 部分。 由于数据集是由管道生成的，因此未在输出数据集上设置外部属性。
@@ -320,7 +320,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
 - 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，尝试再次发布：
     - 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
-        ```PowerShell    
+        ```PowerShell   
         Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
         ```
         可通过运行以下命令来确认数据工厂提供程序是否已注册。

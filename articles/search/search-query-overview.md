@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.date: 04/26/2017
 ms.author: ashmaka
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a6e9e504f4ccb8fb1e0a151dcfe76339fcc8051a
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: a22b82829df4659681940267e64c98d345453958
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -62,4 +62,10 @@ Azure 搜索可轻松对搜索结果进行分页。 使用 `top` 和 `skip` 参�
 ## <a name="hit-highlighting"></a>突出显示
 在 Azure 搜索中，使用 `highlight`、`highlightPreTag` 和 `highlightPostTag` 参数可轻松强调搜索结果中与搜索查询相匹配的确切部分。 可以指定应强调其匹配文本的可搜索字段，还可指定要附加到 Azure 搜索所返回匹配文本的开头和结尾的精确字符串标记。
 
+## <a name="try-out-query-syntax"></a>试用查询语法
 
+了解语法差异最好的方法是提交查询并检查结果。
+
++ 在 Azure 门户中使用[搜索资源管理器](search-explorer.md)。 通过部署[示例索引](search-get-started-portal.md)，使用门户中的工具可在几分钟内查询索引。
+
++ 使用 [Fiddler](search-fiddler.md) 或 Chrome Postman 将查询提交到已上传到搜索服务的索引。 这两种工具都支持对 HTTP 终结点的 REST 调用。 
