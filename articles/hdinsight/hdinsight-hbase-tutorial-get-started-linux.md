@@ -1,7 +1,7 @@
 ---
-title: "HBase on Azure HDInsight 入门 | Microsoft 文档"
-description: "遵循本 HBase 教程开始在 HDInsight 中将 Apache HBase 与 Hadoop 配合使用。 从 HBase shell 创建表，然后使用 Hive 查询这些表。"
-keywords: "apache hbase,hbase,hbase shell,hbase 教程,beeline"
+title: "HDInsight 上的 HBase 入门示例 - Azure | Microsoft Docs"
+description: "按照此 Apache HBase 示例，开始在 HDInsight 上使用 HBase。 从 HBase shell 创建表，然后使用 Hive 查询这些表。"
+keywords: "hbasecommand，hbase 示例"
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -9,7 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 4d6a2658-6b19-4268-95ee-822890f5a33a
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,21 +17,21 @@ ms.topic: get-started-article
 ms.date: 05/09/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 5f9b421571fa98d9881a9e955b05041de124f922
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 5bac1fcc39d052dd1bd9bf710a45a3494b70cae9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
-# <a name="hbase-tutorial-get-started-using-apache-hbase-in-hdinsight"></a>HBase 教程：开始使用 HDInsight 中的 Apache HBase
+# <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>HDInsight 中的 Apache HBase 入门示例
 
 了解如何使用 Hive 在 HDInsight 中创建 HBase 群集、创建 HBase 表和查询表。 有关 HBase 的一般信息，请参阅 [HDInsight HBase 概述][hdinsight-hbase-overview]。
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="prerequisites"></a>先决条件
-在开始本 HBase 教程前，必须具有以下项目：
+开始使用本 HBase 示例前，必须具有以下项目：
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * [安全外壳 (SSH)](hdinsight-hadoop-linux-use-ssh-unix.md)。 
@@ -76,7 +76,7 @@ ms.lasthandoff: 05/10/2017
 
 **使用 HBase shell**
 
-1. 从 SSH 运行以下命令：
+1. 从 SSH 运行以下 HBase 命令：
    
         hbase shell
 2. 创建包含两个列系列的 HBase：
@@ -107,7 +107,7 @@ ms.lasthandoff: 05/10/2017
 
 HBase 提供了多种方法用于将数据载入表中。  有关详细信息，请参阅 [批量加载](http://hbase.apache.org/book.html#arch.bulk.load)。
 
-已将示例数据文件上载到公共 Blob 容器 *wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*。  该数据文件的内容为：
+已将示例数据文件上传到公共 Blob 容器 *wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*。  该数据文件的内容为：
 
     8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.
     16600   Karen Wu         646-555-0113    230-555-0192    9265 La Paz

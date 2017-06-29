@@ -1,5 +1,5 @@
 ---
-title: "从 HDFS 兼容的 Azure 存储查询数据 | Microsoft Docs"
+title: "从与 HDFS 兼容的 Azure 存储查询数据 - Azure HDInsight | Microsoft Docs"
 description: "了解如何从 Azure 存储和 Azure Data Lake Store 查询数据，以存储分析结果。"
 keywords: "blob 存储,hdfs,结构化数据,非结构化数据,data lake store,Hadoop 输入,Hadoop 输出, hadoop 存储, hdfs 输入,hdfs 输出,hdfs 存储,wasb azure"
 services: hdinsight,storage
@@ -15,25 +15,23 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/27/2017
+ms.date: 06/09/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: a8f59b891ee048bc71efc6f913e7998f6eed6d62
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 4a46c7d9a030adb9c0407fda622ccd787212b030
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/10/2017
 
 
 ---
-# <a name="use-hdfs-compatible-storage-with-hadoop-in-hdinsight"></a>将 HDFS 兼容的存储与 HDInsight 中的 Hadoop 配合使用
+# <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
 若要分析 HDInsight 群集中的数据，可以将数据存储在 Azure 存储和/或 Azure Data Lake Store 中。 这两个存储选项都允许安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。
 
-Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可以指定 Azure 存储中的 Blob 容器作为默认文件系统，或者借助 HDInsight 3.5，可以选择 Azure 存储或 Azure Data Lake Store 作为默认文件系统。
+Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可以指定 Azure 存储中的 Blob 容器作为默认文件系统，或者借助 HDInsight 3.5，可以选择 Azure 存储或 Azure Data Lake Store 作为默认文件系统（有少数例外）。 有关将 Data Lake Store 同时用作默认存储和链接存储的可支持性，请参阅 [HDInsight 群集的可用性](#availabilities-for-hdinsight-clusters])。
 
-本文介绍这两个存储选项处理 HDInsight 群集的方式。 有关创建 HDInsight 群集的详细信息，请参阅 [HDInsight 入门](hdinsight-hadoop-linux-tutorial-get-started.md)。
-
-## <a name="using-azure-storage-with-hdinsight-clusters"></a>将 Azure 存储与 HDInsight 群集配合使用
+本文介绍如何配合使用 Azure 存储和 HDInsight 群集。 若要了解 Data Lake Store 与 HDInsight 群集如何配合工作，请参阅[如何配合使用 Azure Data Lake Store 和 Azure HDInsight 群集](hdinsight-hadoop-use-data-lake-store.md)。 若要深入了解如何创建 HDInsight 群集，请参阅[在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 Azure 存储是一种稳健、通用的存储解决方案，它与 HDInsight 无缝集成。 HDInsight 可将 Azure 存储中的 Blob 容器用作群集的默认文件系统。 通过 Hadoop 分布式的文件系统 (HDFS) 界面，可以针对作为 Blob 存储的结构化或非结构化数据直接运行 HDInsight 中的整套组件。
 
@@ -47,8 +45,12 @@ Azure 存储是一种稳健、通用的存储解决方案，它与 HDInsight 无
 > | Blob 存储帐户 | 热 | 否 |
 > | &nbsp; | 冷 | 否 |
 
-### <a name="hdinsight-storage-architecture"></a>HDInsight 存储体系结构
-下图提供了 HDInsight 存储体系结构的抽象视图：
+建议不要使用默认 blob 容器来存储业务数据。 良好的做法是每次使用之后删除默认 blob 容器以降低存储成本。 请注意，默认容器包含应用程序日志和系统日志。 请确保在删除该容器之前检索日志。
+
+不支持多个群集共享一个 blob 容器。
+
+## <a name="hdinsight-storage-architecture"></a>HDInsight 存储体系结构
+下图提供了使用 Azure 存储时的 HDInsight 存储体系结构的抽象视图：
 
 ![Hadoop 群集使用 HDFS API 来访问 Blob 存储中的结构化和非结构化数据，并在其中存储这些数据。](./media/hdinsight-hadoop-use-blob-storage/HDI.WASB.Arch.png "HDInsight 存储体系结构")
 
@@ -56,7 +58,7 @@ HDInsight 提供对在本地附加到计算节点的分布式文件系统的访�
 
     hdfs://<namenodehost>/<path>
 
-另外，HDInsight 提供了访问 Azure 存储中所存储数据的功能。 语法为：
+另外，HDInsight 支持访问在 Azure 存储中存储的数据。 语法为：
 
     wasb[s]://<containername>@<accountname>.blob.core.windows.net/<path>
 
@@ -78,7 +80,7 @@ HDInsight 提供对在本地附加到计算节点的分布式文件系统的访�
 
 Blob 可用于结构化和非结构化数据。 Blob 容器将数据存储为键值对，没有目录层次结构。 不过，可在键名称中使用斜杠字符 (/)，使其看起来像存储在目录结构中的文件。 例如，Blob 的键可以是 *input/log1.txt*。 不存在实际的 *input* 目录，但由于键名称中包含斜杠字符，因此使其看起来像一个文件路径。
 
-### <a id="benefits"></a>Azure 存储的优点
+## <a id="benefits"></a>Azure 存储的优点
 通过在 Azure 区域的存储帐户资源附近创建计算群集，使计算节点能够通过高速网络非常高效地访问 Azure 存储中的数据，从而减少了非并置计算群集和存储资源所产生的隐含性能成本。
 
 在 Azure 存储而非 HDFS 中存储数据有几个好处：
@@ -96,14 +98,14 @@ Blob 可用于结构化和非结构化数据。 Blob 容器将数据存储为键
 > 
 > 
 
-### <a name="create-blob-containers"></a>创建 Blob 容器
+## <a name="create-blob-containers"></a>创建 Blob 容器
 若要使用 Blob，必须先创建 [Azure 存储帐户][azure-storage-create]。 在此过程中，可指定在其中创建存储帐户的 Azure 区域。 群集和存储帐户必须位于同一区域。 Hive 元存储 SQL Server 数据库和 Oozie 元存储 SQL Server 数据库也必须位于同一区域。
 
 无论所创建的每个 Blob 位于何处，它都属于 Azure 存储帐户中的某个容器。 此容器可以是在 HDInsight 外部创建的现有的 Blob，也可以是为 HDInsight 群集创建的容器。
 
 默认的 Blob 容器存储群集特定的信息，如作业历史记录和日志。 请不要多个 HDInsight 群集之间共享默认的 Blob 容器。 这可能会损坏作业历史记录。 建议对每个群集使用不同的容器，并将共享数据放入在所有相关群集的部署中指定的链接存储帐户，而不是放入默认存储帐户。 有关配置链接存储帐户的详细信息，请参阅[创建 HDInsight 群集][hdinsight-creation]。 但是，在删除原始的 HDInsight 群集后，你可以重用默认存储容器。 对于 HBase 群集，实际上可以通过使用已删除的 HBase 群集使用的默认 Blob 容器创建新的 HBase 群集，从而保留 HBase 表架构和数据。
 
-#### <a name="using-the-azure-portal"></a>使用 Azure 门户
+### <a name="use-the-azure-portal"></a>使用 Azure 门户
 从门户创建 HDInsight 群集时，可通过以下选项提供存储帐户详细信息。 还可以指定是否要将其他的存储帐户与该群集相关联，如有需要，请选择 Data Lake Store 或另一个 Azure 存储 blob 作为其他存储。
 
 ![HDInsight hadoop 创建数据源](./media/hdinsight-hadoop-use-blob-storage/hdinsight.provision.data.source.png)
@@ -111,29 +113,8 @@ Blob 可用于结构化和非结构化数据。 Blob 容器将数据存储为键
 > [!WARNING]
 > 不支持在 HDInsight 群集之外的其他位置使用别的存储帐户。
 
-#### <a name="using-azure-cli"></a>使用 Azure CLI
-[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
-如果 [已安装并配置 Azure CLI](../cli-install-nodejs.md)，则以下命令可以用于存储帐户和容器。
-
-    azure storage account create <storageaccountname> --type LRS
-
-> [!NOTE]
-> `--type` 参数指示如何复制存储帐户。 有关详细信息，请参阅 [Azure 存储复制](../storage/storage-redundancy.md)。 不要使用 ZRS，因为 ZRS 不支持页 blob、文件、表或队列。
-> 
-> 
-
-系统会提示你指定创建存储帐户的地理区域。 应在计划创建 HDInsight 群集的同一区域中创建存储帐户。
-
-创建存储帐户后，使用以下命令检索存储帐户密钥：
-
-    azure storage account keys list <storageaccountname>
-
-若要创建容器，请使用以下命令：
-
-    azure storage container create <containername> --account-name <storageaccountname> --account-key <storageaccountkey>
-
-#### <a name="using-azure-powershell"></a>使用 Azure PowerShell
+### <a name="use-azure-powershell"></a>使用 Azure PowerShell
 如果[已安装并配置 Azure PowerShell][powershell-install]，可以从 Azure PowerShell 提示符使用以下命令来创建存储帐户和容器：
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
@@ -159,7 +140,30 @@ Blob 可用于结构化和非结构化数据。 Blob 容器将数据存储为键
     $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
     New-AzureStorageContainer -Name $containerName -Context $destContext
 
-### <a name="address-files-in-azure-storage"></a>确定 Azure 存储中文件的地址
+### <a name="use-azure-cli"></a>使用 Azure CLI
+
+[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+
+如果 [已安装并配置 Azure CLI](../cli-install-nodejs.md)，则以下命令可以用于存储帐户和容器。
+
+    azure storage account create <storageaccountname> --type LRS
+
+> [!NOTE]
+> `--type` 参数指示如何复制存储帐户。 有关详细信息，请参阅 [Azure 存储复制](../storage/storage-redundancy.md)。 不要使用 ZRS，因为 ZRS 不支持页 blob、文件、表或队列。
+> 
+> 
+
+系统会提示你指定创建存储帐户的地理区域。 应在计划创建 HDInsight 群集的同一区域中创建存储帐户。
+
+创建存储帐户后，使用以下命令检索存储帐户密钥：
+
+    azure storage account keys list <storageaccountname>
+
+若要创建容器，请使用以下命令：
+
+    azure storage container create <containername> --account-name <storageaccountname> --account-key <storageaccountkey>
+
+## <a name="address-files-in-azure-storage"></a>确定 Azure 存储中文件的地址
 用于从 HDInsight 访问 Azure 存储中的文件的 URI 方案为：
 
     wasb[s]://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>
@@ -189,28 +193,10 @@ URI 方案提供了使用 *wasb:* 前缀的未加密访问和使用 *wasbs* 的 
 > 
 > 
 
-### <a name="access-blobs-using-azure-cli"></a>使用 Azure CLI 访问 Blob
-使用以下命令列出与 Blob 有关的命令：
+## <a name="access-blobs"></a>访问 Blob 
 
-    azure storage blob
 
-**使用 Azure CLI 上载文件的示例**
-
-    azure storage blob upload <sourcefilename> <containername> <blobname> --account-name <storageaccountname> --account-key <storageaccountkey>
-
-**使用 Azure CLI 下载文件的示例**
-
-    azure storage blob download <containername> <blobname> <destinationfilename> --account-name <storageaccountname> --account-key <storageaccountkey>
-
-**使用 Azure CLI 删除文件的示例**
-
-    azure storage blob delete <containername> <blobname> --account-name <storageaccountname> --account-key <storageaccountkey>
-
-**使用 Azure CLI 列出文件的示例**
-
-    azure storage blob list <containername> <blobname|prefix> --account-name <storageaccountname> --account-key <storageaccountkey>
-
-### <a name="access-blobs-using-azure-powershell"></a>使用 Azure PowerShell 访问 Blob
+### <a name="access-blobs-using-azure-powershell"></a> 使用 Azure PowerShell
 > [!NOTE]
 > 本部分中的命令提供了使用 PowerShell 访问 Blob 中存储的数据的基本示例。 有关针对使用 HDInsight 自定义的功能更加全面的示例，请参阅 [HDInsight 工具](https://github.com/Blackmist/hdinsight-tools)。
 > 
@@ -222,7 +208,7 @@ URI 方案提供了使用 *wasb:* 前缀的未加密访问和使用 *wasbs* 的 
 
 ![Blob 相关 PowerShell cmdlet 的列表。][img-hdi-powershell-blobcommands]
 
-#### <a name="upload-files"></a>上载文件
+#### <a name="upload-files"></a>上传文件
 请参阅[将数据上载到 HDInsight][hdinsight-upload-data]。
 
 #### <a name="download-files"></a>下载文件
@@ -262,6 +248,7 @@ URI 方案提供了使用 *wasb:* 前缀的未加密访问和使用 *wasbs* 的 
     Write-Host "Download the blob ..." -ForegroundColor Green
     Get-AzureStorageBlobContent -Container $defaultStorageContainer -Blob $blob -Context $storageContext -Force
 
+
 #### <a name="delete-files"></a>删除文件
     Remove-AzureStorageBlob -Container $containerName -Context $storageContext -blob $blob
 
@@ -284,80 +271,36 @@ $clusterName = "<HDInsightClusterName>"
 
     Invoke-AzureRmHDInsightHiveJob -Defines $defines -Query "dfs -ls wasbs://$undefinedContainer@$undefinedStorageAccount.blob.core.windows.net/;"
 
+### <a name="use-azure-cli"></a>使用 Azure CLI
+使用以下命令列出与 Blob 有关的命令：
 
-### <a name="using-additional-storage-accounts"></a>使用其他的存储帐户
+    azure storage blob
+
+**使用 Azure CLI 上传文件的示例**
+
+    azure storage blob upload <sourcefilename> <containername> <blobname> --account-name <storageaccountname> --account-key <storageaccountkey>
+
+**使用 Azure CLI 下载文件的示例**
+
+    azure storage blob download <containername> <blobname> <destinationfilename> --account-name <storageaccountname> --account-key <storageaccountkey>
+
+**使用 Azure CLI 删除文件的示例**
+
+    azure storage blob delete <containername> <blobname> --account-name <storageaccountname> --account-key <storageaccountkey>
+
+**使用 Azure CLI 列出文件的示例**
+
+    azure storage blob list <containername> <blobname|prefix> --account-name <storageaccountname> --account-key <storageaccountkey>
+
+## <a name="use-additional-storage-accounts"></a>使用其他存储帐户
 
 创建 HDInsight 群集时，可以指定要与其关联的 Azure 存储帐户。 除了此存储帐户外，在创建过程中或群集创建完成后，还可以从同一 Azure 订阅或不同 Azure 订阅添加其他存储帐户。 有关添加其他存储帐户的说明，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 > [!WARNING]
 > 不支持在 HDInsight 群集之外的其他位置使用别的存储帐户。
 
-## <a name="using-azure-data-lake-store-with-hdinsight-clusters"></a>将 Azure Data Lake Store 与 HDInsight 群集配合使用
-
-HDInsight 群集可以通过以下两种方式使用 Azure Data Lake Store：
-
-* 将 Azure Data Lake Store 作为默认存储
-* 将 Azure Data Lake Store 作为其他存储，将 Azure 存储 Blob 作为默认存储。
-
-> [!NOTE]
-> 因为始终需要通过安全通道访问 Azure Data Lake Store，因此没有 `adls` 文件系统方案名称。 始终使用 `adl`。
-> 
-> 
-
-### <a name="using-azure-data-lake-store-as-default-storage"></a>将 Azure Data Lake Store 用作默认存储
-
-将 Azure Data Lake Store 作为默认存储对 HDInsight 进行部署时，与群集相关的文件将存储在 Azure Data Lake Store 的以下位置中：
-
-    adl://mydatalakestore/<cluster_root_path>/
-
-其中，`<cluster_root_path>` 是在 Azure Data Lake Store 中创建的文件夹的名称。 通过指定每个群集的根路径，可以将同一 Azure Data Lake Store 帐户用于多个群集。 因此可以进行设置，其中：
-
-* Cluster1 可以使用路径 `adl://mydatalakestore/cluster1storage`
-* Cluster2 可以使用路径 `adl://mydatalakestore/cluster2storage`
-
-请注意：这两个群集使用的是同一个 Data Lake Store 帐户 **mydatalakestore**。 每个群集都有权访问 Data Lake Store 中其自身的根文件系统。 Azure 门户部署体验将特别提示为根路径使用 **/clusters/\<clustername>** 等文件夹名称。
-
-#### <a name="accessing-files-from-the-cluster"></a>从群集访问文件
-
-可以通过多种方法从 HDInsight 群集访问 Azure Data Lake Store 中的文件。
-
-* **使用完全限定的名称**。 使用此方法时，需要提供要访问的文件的完整路径。
-
-        adl://mydatalakestore.azuredatalakestore.net/<cluster_root_path>/<file_path>
-
-* **使用缩短的路径格式**。 使用此方法时，需将群集根的路径替换为 adl:///。 因此，在以上示例中，可以将 `adl://mydatalakestore.azuredatalakestore.net/<cluster_root_path>/` 替换为 `adl:///`。
-
-        adl:///<file path>
-
-* **使用相对路径**。 使用此方法时，仅需提供要访问的文件的相对路径。 例如，如果文件的完整路径为：
-
-        adl://mydatalakestore.azuredatalakestore.net/<cluster_root_path>/example/data/sample.log
-
-    可以改为使用此相对路径来访问同一 sample.log 文件。
-
-        /example/data/sample.log
-
-### <a name="using-azure-data-lake-store-as-additional-storage"></a>将 Azure Data Lake Store 用作其他存储
-
-也可以将 Data Lake Store 用作群集的其他存储。 在这种情况下，群集默认存储可以是 Azure 存储 Blob 或 Azure Data Lake Store 帐户。 如果针对 Azure Data Lake Store（作为其他存储）中存储的数据运行 HDInsight 作业，则必须使用该文件的完全限定的路径。 例如：
-
-    adl://mydatalakestore.azuredatalakestore.net/<file_path>
-
-请注意，当前在 URL 中没有 **cluster_root_path**。 这是因为在此情况下，Data Lake Store 不是默认存储，因此只需提供文件的路径即可。
-
-
-### <a name="creating-hdinsight-clusters-with-access-to-data-lake-store"></a>创建具有 Data Lake Store 访问权限的 HDInsight 群集
-
-请使用以下链接来详细了解如何创建具有 Data Lake Store 访问权限的 HDInsight 群集。
-
-* [使用门户](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
-* [使用 PowerShell（Data Lake Store 作为默认存储）](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
-* [使用 PowerShell（Data Lake Store 作为其他存储）](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
-* [使用 Azure 模板](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
-
-
 ## <a name="next-steps"></a>后续步骤
-本文介绍如何将 HDFS 兼容的 Azure 存储和 Azure Data Lake Store 与 HDInsight 配合使用。 这使你能够生成可缩放的长期存档数据采集解决方案，并使用 HDInsight 来解锁所存储结构化和非结构化数据内的信息。
+本文介绍如何将与 HDFS 兼容的 Azure 存储和 HDInsight 配合使用。 这使你能够生成可缩放的长期存档数据采集解决方案，并使用 HDInsight 来解锁所存储结构化和非结构化数据内的信息。
 
 有关详细信息，请参阅：
 

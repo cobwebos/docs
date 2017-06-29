@@ -1,5 +1,5 @@
 ---
-title: "通过 PowerShell 开始使用 Azure Data Lake Store | Microsoft 文档"
+title: "通过 PowerShell 开始使用 Azure Data Lake Store | Microsoft Docs"
 description: "使用 Azure PowerShell 创建 Data Lake Store 帐户并执行基本操作"
 services: data-lake-store
 documentationcenter: 
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/06/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: bdb06783d0ec7db867381504d89e76db179be78d
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 1fe2b4b6c84e3c4d96677e3da5a94b9462e2a7bf
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -28,14 +29,13 @@ ms.lasthandoff: 04/27/2017
 > * [.NET SDK](data-lake-store-get-started-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
-> * [Azure CLI](data-lake-store-get-started-cli.md)
 > * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
 >
 
-了解如何使用 Azure PowerShell 来创建 Azure Data Lake Store 帐户以及执行基本操作，如创建文件夹、上载和下载数据文件、删除帐户等。有关 Data Lake Store 的详细信息，请参阅 [Data Lake Store 概述](data-lake-store-overview.md)。
+了解如何使用 Azure PowerShell 来创建 Azure Data Lake Store 帐户以及执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户等。有关 Data Lake Store 的详细信息，请参阅 [Data Lake Store 概述](data-lake-store-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本教程前，你必须具有：
@@ -44,7 +44,7 @@ ms.lasthandoff: 04/27/2017
 * **Azure PowerShell 1.0 或更高版本**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="authentication"></a>身份验证
-本文对 Data Lake Store 使用一种较为简单的身份验证方法，其中会提示输入 Azure 帐户凭据。 系统会根据登录用户的访问级别监管对 Data Lake Store 帐户和文件系统的访问权限。 不过，也可以使用其他方法在 Data Lake Store 中进行身份验证，即**最终用户身份验证**或**服务到服务身份验证**。 有关如何进行身份验证的说明和详细信息，请参阅[使用 Azure Active Directory 进行 Data Lake Store 身份验证](data-lake-store-authenticate-using-active-directory.md)。
+本文对 Data Lake Store 使用一种较为简单的身份验证方法，其中会提示输入 Azure 帐户凭据。 系统会根据登录用户的访问级别监管对 Data Lake Store 帐户和文件系统的访问权限。 不过，也可以使用其他方法在 Data Lake Store 中进行身份验证，即**最终用户身份验证**或**服务到服务身份验证**。 有关如何进行身份验证的说明和详细信息，请参阅[最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)或[服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
 
 ## <a name="create-an-azure-data-lake-store-account"></a>创建 Azure Data Lake Store 帐户
 1. 在桌面上，打开一个新的 Windows PowerShell 窗口，输入以下代码段登录到 Azure 帐户，然后设置订阅，并注册 Data Lake Store 提供程序。 当系统提示输入登录信息时，请确保以订阅管理员/所有者身份登录：
@@ -95,10 +95,10 @@ ms.lasthandoff: 04/27/2017
 
     ![验证目录](./media/data-lake-store-get-started-powershell/ADL.PS.Verify.Dir.Creation.png "验证目录")
 
-## <a name="upload-data-to-your-azure-data-lake-store"></a>将数据上载到 Azure Data Lake Store
-可以直接将数据上载到 Data Lake Store 的根级别，也可以上载到在帐户中创建的目录。 下面的代码段演示了如何将一些示例数据上载到上一节中创建的目录 (**mynewdirectory**)。
+## <a name="upload-data-to-your-azure-data-lake-store"></a>将数据上传到 Azure Data Lake Store
+可以直接将数据上传到 Data Lake Store 的根级别，也可以上传到在帐户中创建的目录。 下面的代码段演示了如何将一些示例数据上传到上一节中创建的目录 (**mynewdirectory**)。
 
-如果正在查找一些示例数据进行上载，可以从 **Azure Data Lake Git 存储库** 获取 [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)文件夹。 下载文件，并将其存储在计算机的本地目录，如 C:\sampledata\.
+如果正在查找一些示例数据进行上传，可以从 **Azure Data Lake Git 存储库** 获取 [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)文件夹。 下载文件，并将其存储在计算机的本地目录中，如 C:\sampledata\。
 
     Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path "C:\sampledata\vehicle1_09142014.csv" -Destination $myrootdir\mynewdirectory\vehicle1_09142014.csv
 
@@ -133,8 +133,8 @@ ms.lasthandoff: 04/27/2017
 
 | 属性            | 默认 | 说明 |
 |---------------------|---------|-------------|
-| PerFileThreadCount  | 10      | 使用此参数可以选择用于上载或下载每个文件的并行线程数。 此数字表示可以针对每个文件分配的最大线程数，但根据具体的方案，获得的线程可能少于此数目（例如，如果只是上载 1KB 的文件，则即使请求了 20 个线程，也只能获得一个线程）。  |
-| ConcurrentFileCount | 10      | 此参数专门为上载或下载文件夹。 此参数确定可上载或下载的并发文件数。 此数字表示一次性可上载或下载的最大并发文件数，但根据具体的方案，获得的并发性可能少于此数目（例如，如果只是上载两个文件，则即使请求 15 个并发文件上载进程，也只能获得两个）。 |
+| PerFileThreadCount  | 10      | 使用此参数可以选择用于上传或下载每个文件的并行线程数。 此数字表示可以针对每个文件分配的最大线程数，但根据具体的方案，获得的线程可能少于此数目（例如，如果只是上传 1KB 的文件，则即使请求了 20 个线程，也只能获得一个线程）。  |
+| ConcurrentFileCount | 10      | 此参数专门为上传或下载文件夹。 此参数确定可上传或下载的并发文件数。 此数字表示一次性可上传或下载的最大并发文件数，但根据具体的方案，获得的并发性可能少于此数目（例如，如果只是上传两个文件，则即使请求 15 个并发文件上传进程，也只能获得两个）。 |
 
 **示例**
 
@@ -191,7 +191,7 @@ ms.lasthandoff: 04/27/2017
 
 ### <a name="limitation"></a>限制
 
-* **文件数小于 ConcurrentFileCount**：如果要上载的文件数小于计算得出的 **ConcurrentFileCount**，应该减小 **ConcurrentFileCount**，使其等于文件数。 可以使用所有剩余线程来增大 **PerFileThreadCount**。
+* **文件数小于 ConcurrentFileCount**：如果要上传的文件数小于计算得出的 **ConcurrentFileCount** ，应该减小 **ConcurrentFileCount** ，使其等于文件数。 可以使用所有剩余线程来增大 **PerFileThreadCount**。
 
 * **线程过多**：如果在不增加群集大小的情况下大幅增加线程计数，将会面临性能下降的风险。 在 CPU 上执行上下文切换时，可能会出现资源争用的问题。
 

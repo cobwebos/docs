@@ -1,5 +1,5 @@
 ---
-title: "通过 REST API 开始使用 Data Lake Store | Microsoft 文档"
+title: "通过 REST API 开始使用 Data Lake Store | Microsoft Docs"
 description: "使用 WebHDFS REST API 对 Data Lake Store 执行操作"
 services: data-lake-store
 documentationcenter: 
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/21/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: de04bf367f9f9f92756202cf6c1571f811a0f1f7
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: dc2c8f58e0a2faf1b00f4903148328a5141a8637
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -28,7 +29,6 @@ ms.lasthandoff: 04/22/2017
 > * [.NET SDK](data-lake-store-get-started-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
-> * [Azure CLI](data-lake-store-get-started-cli.md)
 > * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
 > * [Python](data-lake-store-get-started-python.md)
@@ -44,7 +44,7 @@ ms.lasthandoff: 04/22/2017
 
 ## <a name="prerequisites"></a>先决条件
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **创建 Azure Active Directory 应用程序**。 使用 Azure AD 应用程序对 Data Lake Store 应用程序进行 Azure AD 身份验证。 有不同的方式可进行 Azure AD 身份验证，即“最终用户身份验证”或“服务到服务身份验证”。 有关如何进行身份验证的说明和详细信息，请参阅[使用 Azure Active Directory 进行 Data Lake Store 身份验证](data-lake-store-authenticate-using-active-directory.md)。
+* **创建 Azure Active Directory 应用程序**。 使用 Azure AD 应用程序对 Data Lake Store 应用程序进行 Azure AD 身份验证。 有不同的方式可进行 Azure AD 身份验证，即“最终用户身份验证”或“服务到服务身份验证”。 有关如何进行身份验证的说明和详细信息，请参阅[最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)或[服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
 * [cURL](http://curl.haxx.se/)。 本文使用 cURL 演示如何对 Data Lake Store 帐户进行 REST API 调用。
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>如何使用 Azure Active Directory 进行身份验证？
@@ -164,14 +164,14 @@ ms.lasthandoff: 04/22/2017
     }
     }
 
-## <a name="upload-data-into-a-data-lake-store-account"></a>将数据上载到 Data Lake Store 帐户中
+## <a name="upload-data-into-a-data-lake-store-account"></a>将数据上传到 Data Lake Store 帐户中
 此操作基于 [此处](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Create_and_Write_to_a_File)定义的 WebHDFS REST API 调用。
 
 使用以下 cURL 命令。 将 **\<yourstorename>** 替换为 Data Lake Store 名称。
 
     curl -i -X PUT -L -T 'C:\temp\list.txt' -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/list.txt?op=CREATE'
 
-在上述语法中，**-T** 参数是要上载的文件的位置。
+在上述语法中， **-T** 参数是要上传的文件的位置。
 
 输出与下面类似：
    
