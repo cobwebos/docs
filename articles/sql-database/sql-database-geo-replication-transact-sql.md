@@ -103,7 +103,7 @@ ms.lasthandoff: 05/18/2017
 2. 打开“数据库”文件夹、展开“系统数据库”、右键单击“master”，然后单击“新建查询”。
 3. 使用以下语句显示具有异地复制链接的所有数据库。
    
-        SELECT database_id, start_date, modify_date, partner_server, partner_database, replication_state_desc, role, secondary_allow_connections_desc FROM [sys].geo_replication_links;
+        SELECT database_id, start_date, modify_date, partner_server, partner_database, replication_state_desc, role, secondary_allow_connections_desc FROM [sys].dm_geo_replication_links;
 4. 单击“执行”运行查询。
 5. 打开“数据库”文件夹、展开“系统数据库”、右键单击“MyDB”，然后单击“新建查询”。
 6. 使用以下语句显示复制延迟和辅助数据库 MyDB 上次复制的开始时间。
