@@ -167,7 +167,7 @@ Azure Cosmos DB 支持大量 Azure 表存储 API 中不可用的功能。 可以
 
       <!--Table creation options -->
       <add key="TableThroughput" value="700"/>
-      <add key="TableIndexingPolicy" value="{""indexingMode"": ""Consistent""}">
+      <add key="TableIndexingPolicy" value="{""indexingMode"": ""Consistent""}"/>
 
       <!-- Table query options -->
       <add key="TableQueryMaxItemCount" value="-1"/>
