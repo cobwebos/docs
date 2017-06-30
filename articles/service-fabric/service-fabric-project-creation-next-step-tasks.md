@@ -3,7 +3,7 @@ title: "Service Fabric 项目创建后续步骤 | Microsoft 文档"
 description: "本文包含针对 Service Fabric 执行的一组核心开发任务的链接"
 services: service-fabric
 documentationcenter: .net
-author: seanmck
+author: rwike77
 manager: timlt
 editor: 
 ms.assetid: 299d1f97-1ca9-440d-9f81-d1d0dd2bf4df
@@ -12,11 +12,12 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/28/2017
-ms.author: seanmck
-translationtype: Human Translation
+ms.date: 06/29/2017
+ms.author: rwike77
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 8208a1a41388a8cc36f3702bd0cad2bb82e16403
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
 
 
