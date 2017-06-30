@@ -12,11 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 06/29/2017
 ms.author: cenkd;juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
 ms.openlocfilehash: d0f9899d6b8cc83ea4f2836444b41a9dabe7fea7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/14/2016
 
 
 ---
@@ -92,7 +94,7 @@ ms.openlocfilehash: d0f9899d6b8cc83ea4f2836444b41a9dabe7fea7
 > 
 > 
 
-### <a name="a-idfiltersafilters"></a><a id="filters"></a>筛选器
+### <a id="filters"></a>筛选器
 有两种类型的资产筛选器： 
 
 * 全局筛选器（可以应用到 Azure 媒体服务帐户中所有的资产，拥有帐户的生存期）和 
@@ -100,7 +102,7 @@ ms.openlocfilehash: d0f9899d6b8cc83ea4f2836444b41a9dabe7fea7
 
 全局和本地筛选器类型具有完全相同的属性。 两者的主要差异在于它们更适合哪些方案。 全局筛选器通常适用于设备配置文件（再现内容筛选），而本地筛选器可用于修剪特定的资产。
 
-## <a name="a-idscenariosacommon-scenarios"></a><a id="scenarios"></a>常见方案
+## <a id="scenarios"></a>常见方案
 如前所述，在将内容传送到客户（流式传输实时事件或视频点播）时，你的目标就是：将优质视频传递到处于不同网络条件下的各种设备。 此外，你可能在筛选资产与使用**动态清单**方面具有其他的要求。 以下部分提供了不同筛选方案的简要概述。
 
 * 仅指定某些设备可以处理的音频和视频再现内容子集（而不是与该资产关联的所有再现内容）。 
@@ -210,9 +212,4 @@ ms.openlocfilehash: d0f9899d6b8cc83ea4f2836444b41a9dabe7fea7
 [language_filter]: ./media/media-services-dynamic-manifest-overview/media-services-language-filter.png
 [dvr_filter]: ./media/media-services-dynamic-manifest-overview/media-services-dvr-filter.png
 [skiing]: ./media/media-services-dynamic-manifest-overview/media-services-skiing.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
