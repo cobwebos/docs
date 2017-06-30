@@ -1,4 +1,4 @@
---- 
+---
 title: "适用于 Eclipse 的 Azure Service Fabric 插件 | Microsoft Docs"
 description: "适用于 Eclipse 的 Service Fabric 插件入门。"
 services: service-fabric
@@ -12,7 +12,7 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/03/2016
+ms.date: 06/29/2016
 ms.author: saysa
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
@@ -38,7 +38,7 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
   1.    在“使用”框中，输入“http://dl.microsoft.com/eclipse”。
   2.    单击 **“添加”**。
 
-         ![适用于 Eclipse Neon 的 Service Fabric 插件][sf-eclipse-plugin-install] 
+         ![适用于 Eclipse Neon 的 Service Fabric 插件][sf-eclipse-plugin-install]
   3.    选择 Service Fabric 插件，然后单击“下一步”。
   4.    完成安装步骤，然后接受 Microsoft 软件许可条款。
 
