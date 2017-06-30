@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 06/29/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: ea0b54a1041c0008071a9b11afc81e1b91f3e409
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/16/2017
 
 
@@ -60,7 +61,7 @@ XML 符合 PlayReady 许可证模板 XML 架构部分中定义的 PlayReady 许�
 
 有关使用 .NET 类来配置 PlayReady 许可证模板的端到端示例，请参阅[使用 PlayReady 动态加密和许可证传送服务](media-services-protect-with-drm.md)。
 
-## <a name="a-idclassesamedia-services-net-classes-that-are-used-to-configure-license-templates"></a><a id="classes"></a>用于配置许可证模板的媒体服务 .NET 类
+## <a id="classes"></a>用于配置许可证模板的媒体服务 .NET 类
 以下是用于配置媒体服务 PlayReady 许可证模板的主要 .NET 类。 这些类映射到 [PlayReady 许可证模板 XML 架构](media-services-playready-license-template-overview.md#schema)中定义的类型。
 
 [MediaServicesLicenseTemplateSerializer](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer.aspx) 类用于序列化到媒体服务许可证模板 XML 和从该 XML 进行反序列化。
@@ -73,7 +74,7 @@ XML 符合 PlayReady 许可证模板 XML 架构部分中定义的 PlayReady 许�
 ### <a name="playreadylicensetemplate"></a>PlayReadyLicenseTemplate
 [PlayReadyLicenseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate.aspx) - 该类表示用于创建要返回给最终用户的 PlayReady 许可证的许可证模板。 它包含许可证中内容密钥上的数据以及使用内容密钥时由 PlayReady DRM 运行时强制执行的任何权限或限制。
 
-### <a name="a-idplayreadyplayrightaplayreadyplayright"></a><a id="PlayReadyPlayRight"></a>PlayReadyPlayRight
+### <a id="PlayReadyPlayRight"></a>PlayReadyPlayRight
 [PlayReadyPlayRight](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx) - 此类表示 PlayReady 许可证的 PlayRight。 它会授予用户播放许可证中和 PlayRight 本身（用于播放特定策略）配置的零个或多个限制的制约内容的权限。 PlayRight 上的很多策略都与输出限制有关，输出限制用于控制可以播放的内容的输出类型和使用给定输出时必须使用的任何限制。 例如，如果启用了 DigitalVideoOnlyContentRestriction，DRM 运行时将只允许通过数字输出显示视频（将不允许模拟视频输出传递内容）。
 
 > [!IMPORTANT]
@@ -83,7 +84,7 @@ XML 符合 PlayReady 许可证模板 XML 架构部分中定义的 PlayReady 许�
 
 有关 Silverlight 支持的保护级别的示例，请参阅：[Silverlight 支持的输出保护](http://go.microsoft.com/fwlink/?LinkId=617318)。
 
-## <a name="a-idschemaaplayready-license-template-xml-schema"></a><a id="schema"></a>PlayReady 许可证模板 XML 架构
+## <a id="schema"></a>PlayReady 许可证模板 XML 架构
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />

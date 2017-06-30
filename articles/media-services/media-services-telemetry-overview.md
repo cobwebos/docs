@@ -12,11 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 06/29/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 99c43c63f75e01713600ef5ca46a8d11e8c5c7ce
 ms.openlocfilehash: b6560fdd50c93a7e84f12047ec4401328b601deb
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/09/2016
 
 
 ---
@@ -40,7 +42,6 @@ ms.openlocfilehash: b6560fdd50c93a7e84f12047ec4401328b601deb
 [通过 .NET 启用遥测](media-services-dotnet-telemetry.md) 
 
 [通过 REST 启用遥测](media-services-rest-telemetry.md)
-
 
 ## <a name="consuming-telemetry-information"></a>使用遥测信息
 
@@ -67,11 +68,9 @@ ms.openlocfilehash: b6560fdd50c93a7e84f12047ec4401328b601deb
 - 检索某一日期范围内给定服务的所有数据。
 - 检索某项服务的最新数据。
 
-
 ### <a name="telemetry-table-storage-output-schema"></a>遥测表存储输出架构
 
 遥测数据汇总存储在表“TelemetryMetrics20160321”中，其中“20160321”是创建表的日期。 遥测系统为每个新日期（基于 00:00 UTC）单独创建一个表。 该表用于存储重复值，如给定时间范围内的引入比特率、发送的字节数等。 
-
 
 属性|值|示例/说明
 ---|---|---
@@ -83,7 +82,6 @@ Timestamp|日期/时间|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
 ObservedTime|发生遥测事件的时间 (UTC)|2016-09-09T22:42:36.924Z<br/><br/>观察时间由发送遥测的实体（例如通道）提供。 组件之间可能存在时间同步问题，因此此值为近似值
 ServiceID|{service ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 特定于实体的属性|由事件定义|StreamName: stream1, Bitrate 10123, …<br/><br/>其余属性针对给定时间类型定义。 Azure 表内容是键值对。  （即，表中的不同行具有不同的属性集）。
-
 
 ### <a name="entity-specific-schema"></a>特定于实体的架构
 
@@ -112,7 +110,6 @@ BytesSent|发送的聚合字节数|2987358
 ServerLatency|平均服务器延迟（包括存储）|129
 E2ELatency|平均端到端延迟|250
 
-
 **实时频道**
 
 属性|值|示例/说明
@@ -138,7 +135,6 @@ UnalignedPresentationTime|是否收到演示时间不一致的片段（跨音质
 UnexpectedBitrate|如果音频/视频轨道的计算/实际比特率 > 40,000 bps 且 IncomingBitrate == 0，或者 IncomingBitrate 和 actualBitrate 相差 50%，则为 true |True
 Healthy|如果满足以下条件，则为 true： <br/>overlapCount、 <br/>DiscontinuityCount、 <br/>NonIncreasingCount、 <br/>UnalignedKeyFrames、 <br/>UnalignedPresentationTime、 <br/>UnexpectedBitrate<br/> 都为 0|True<br/><br/>Healthy 是一个复合函数，满足以下任何条件时返回 false：<br/><br/>- OverlapCount > 0<br/>- DiscontinuityCount > 0<br/>- NonincreasingCount > 0<br/>- UnalignedKeyFrames == True<br/>- UnalignedPresentationTime == True<br/>- UnexpectedBitrate == True
 
-
 **实时存档**
 
 属性|值|示例/说明
@@ -156,7 +152,6 @@ TrackType|轨道类型|音频/视频
 CustomAttribute|十六进制字符串，用于区分具有相同名称和比特率的不同轨道（多摄像机角度）|
 Bitrate|轨道比特率|785000
 Healthy|如果 FragmentDiscardedCount == 0 且 ArchiveAcquisitionError == False，则为 true|True（这两个值不存在于指标中，但存在于源事件中）<br/><br/>Healthy 是一个复合函数，满足以下任何条件时返回 false：<br/><br/>- FragmentDiscardedCount > 0<br/>- ArchiveAcquisitionError == True
-
 
 ## <a name="general-qa"></a>常见问答
 
@@ -226,9 +221,4 @@ Healthy|如果 FragmentDiscardedCount == 0 且 ArchiveAcquisitionError == False�
 ## <a name="provide-feedback"></a>提供反馈
 
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

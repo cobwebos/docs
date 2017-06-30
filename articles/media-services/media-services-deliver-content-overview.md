@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 06/29/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: 249b87ecc9e43fa26a74e27f91f807d60b275eeb
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/13/2017
 
 
@@ -115,7 +116,7 @@ http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f
 
 http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
-### <a name="a-idfmp4v20asmooth-streaming-20-manifest-legacy-manifest"></a><a id="fmp4_v20"></a>平滑流式处理 2.0 清单（旧清单）
+### <a id="fmp4_v20"></a>平滑流式处理 2.0 清单（旧清单）
 默认情况下，平滑流式处理清单格式包含重复标记（r 标记）。 但是，一些播放器不支持 r 标记。 使用这些播放器的客户端可以使用禁用 r 标记的格式：
 
 {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=fmp4-v20)
