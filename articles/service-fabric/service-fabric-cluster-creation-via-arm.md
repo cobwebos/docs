@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/22/2017
 ms.author: chackdan
-translationtype: Human Translation
-ms.sourcegitcommit: b80ee30379e9aac207cfe420cae17da57ea123a5
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8d876a0f2168ee9375a3905d5d5a562ab1194cf3
 ms.openlocfilehash: 9159f40fed17e52e6576efa1ea7e8a2dee98728e
-ms.lasthandoff: 03/02/2017
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/04/2017
 
 
 ---
@@ -460,7 +461,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 }
 ```
 
-### <a name="a-configure-arm-aconfigure-resource-manager-template-parameters"></a><a "configure-arm" ></a>配置 Resource Manager 模板参数
+### <a "configure-arm" ></a>配置 Resource Manager 模板参数
 最后，使用密钥保管库和 Azure AD PowerShell 命令的输出值填充参数文件：
 
 ```json
