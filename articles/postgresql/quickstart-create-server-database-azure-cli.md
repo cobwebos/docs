@@ -55,7 +55,7 @@ az postgres server create --resource-group myresourcegroup --name mypgserver-201
 
 ## <a name="configure-a-server-level-firewall-rule"></a>配置服务器级防火墙规则
 
-使用 az postgres server firewall-rule create[](/cli/azure/postgres/server/firewall-rule#create) 命令创建 Azure PostgreSQL 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 [psql](https://www.postgresql.org/docs/9.2/static/app-psql.html) 或 [PgAdmin](https://www.pgadmin.org/)）通过 Azure PostgreSQL 服务防火墙连接到服务器。 
+使用 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule#create) 命令创建 Azure PostgreSQL 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 [psql](https://www.postgresql.org/docs/9.2/static/app-psql.html) 或 [PgAdmin](https://www.pgadmin.org/)）通过 Azure PostgreSQL 服务防火墙连接到服务器。 
 
 可以设置覆盖某个 IP 范围的防火墙规则，以便通过网络进行连接。 下面的示例使用 [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule#create) 为某个 IP 地址范围创建防火墙规则 `AllowAllIps`。 若要开放所有 IP 地址，请使用 0.0.0.0 作为起始 IP 地址，使用 255.255.255.255 作为结束地址。
 ```azurecli-interactive

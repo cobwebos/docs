@@ -77,7 +77,7 @@ ms.lasthandoff: 06/16/2017
 
    ![][11]
 4. 单击“确定”以创建“ProductsServer”项目。
-5. 如果你已为 Visual Studio 安装 NuGet 包管理器，请跳到下一步骤。 否则，请访问 [NuGet][NuGet]，然后单击“安装 NuGet”。[](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 按照提示操作以安装 NuGet 包管理器，然后重新启动 Visual Studio。
+5. 如果你已为 Visual Studio 安装 NuGet 包管理器，请跳到下一步骤。 否则，请访问 [NuGet][NuGet]，然后单击 [安装 NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)。 按照提示操作以安装 NuGet 包管理器，然后重新启动 Visual Studio。
 6. 在解决方案资源管理器中，右键单击“ProductsServer”项目，然后单击“管理 NuGet 程序包”。
 7. 单击“浏览”选项卡，然后搜索 `Microsoft Azure Service Bus`。 选择“WindowsAzure.ServiceBus”包。
 8. 单击“安装” 并接受使用条款。
@@ -332,7 +332,7 @@ ms.lasthandoff: 06/16/2017
 
 下一步是将本地产品服务器与 ASP.NET 应用程序挂钩。
 
-1. 如果尚未打开在“ **创建 ASP.NET 应用程序** ”一节中创建的 [ProductsPortal](#create-an-aspnet-application) 项目，请在 Visual Studio 中重新打开该项目。
+1. 如果尚未打开在 [创建 ASP.NET 应用程序](#create-an-aspnet-application) 一节中创建的 **ProductsPortal** 项目，请在 Visual Studio 中重新打开该项目。
 2. 采用与“创建本地服务器”部分类似的步骤，将 NuGet 包添加到项目“引用”中。 在解决方案资源管理器中，右键单击“ProductsPortal”项目，然后单击“管理 NuGet 程序包”。
 3. 搜索“服务总线”，然后选择“WindowsAzure.ServiceBus”项。 然后，完成安装过程并关闭此对话框。
 4. 在解决方案资源管理器中，右键单击“ProductsPortal”项目，然后单击“添加”，再单击“现有项”。
