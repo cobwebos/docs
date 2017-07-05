@@ -17,10 +17,10 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: dccebad561b04306126f986193a57aee176aaa0d
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: df42834bca821b16e9dd1bc57d735d346f12ca1d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -30,17 +30,9 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南�
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-本快速入门需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 
-
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="log-in-to-azure"></a>登录 Azure
-
-使用 [az login](/cli/azure/#login) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
-
-```azurecli
-az login
-```
+如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0.4 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 ## <a name="define-variables"></a>定义变量
 
@@ -57,7 +49,7 @@ export adminlogin = ServerAdmin
 export password = ChangeYourAdminPassword1
 # The ip address range that you want to allow to access your DB
 export startip = "0.0.0.0"
-export endip = "0.0.0.1"
+export endip = "0.0.0.0"
 # The database name
 export databasename = mySampleDatabase
 ```

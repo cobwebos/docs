@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 中不到 5 分钟创建一个静态 HTML Web 应用 | Microsoft 文档"
-description: "了解如何通过部署一个示例应用，轻松地在应用服务中运行 Web 应用。"
+title: "在 Azure 中创建静态 HTML Web 应用 | Microsoft Docs"
+description: "了解如何通过部署静态 HTML 示例应用，在 Azure App Service 中运行 Web 应用。"
 services: app-service\web
 documentationcenter: 
 author: rick-anderson
@@ -12,61 +12,112 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 05/08/2017
+ms.date: 05/26/2017
 ms.author: riande
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 895906e1ab4bc50093ed3b18f043c3dd515ca054
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: bfa54a90af057f3c799fd8265b3cd5e053f21e69
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/20/2017
 
 ---
-# <a name="create-a-static-html-web-app-in-azure-in-five-minutes"></a>在 Azure 中不到 5 分钟创建一个静态 HTML Web 应用
+# <a name="create-a-static-html-web-app-in-azure"></a>在 Azure 中创建静态 HTML Web 应用
 
-本快速入门教程将指导你完成如何将基本 HTML+CSS 站点部署到 Azure。 你将使用 [Azure 应用服务计划](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)运行该应用，然后使用 [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli) 在其中创建一个 Web 应用。 使用 Git 将应用部署到 Azure。 安装先决条件后，需要大约五分钟可完成本教程。
+[Azure Web 应用](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview)提供高度可缩放、自修补的 Web 托管服务。  本快速入门教程演示如何将基本 HTML+CSS 站点部署到 Azure Web 应用。 使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建 Web 应用，并使用 Git 将 HTML 内容示例部署到 Web 应用。
 
-![hello-world-in-browser](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
+![示例应用主页](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
+
+可以在 Mac、Windows 或 Linux 计算机上执行以下步骤。 安装先决条件后，大约需要五分钟完成这些步骤。
 
 ## <a name="prerequisites"></a>先决条件
 
-创建此示例之前，请下载并安装以下组件：
+完成本快速入门教程：
 
-- [Git](https://git-scm.com/)
-- [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
-
+- [安装 Git](https://git-scm.com/)
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 ## <a name="download-the-sample"></a>下载示例
 
-在终端窗口中，将示例应用存储库克隆到本地计算机：
+在终端窗口中，运行以下命令，将示例应用存储库克隆到本地计算机。
 
 ```bash
 git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 ```
 
+使用此终端窗口运行本快速入门中的所有命令。
+
 ## <a name="view-the-html"></a>查看 HTML
 
 导航到包含示例 HTML 的目录。 在浏览器中打开 *index.html* 文件。
 
-![hello-world-in-browser](media/app-service-web-get-started-html/hello-world-in-browser.png)
+![示例应用主页](media/app-service-web-get-started-html/hello-world-in-browser.png)
 
-[!INCLUDE [login-to-azure](../../includes/login-to-azure.md)] 
-[!INCLUDE [configure-deployment-user](../../includes/configure-deployment-user.md)] 
+[!INCLUDE [Log in to Azure](../../includes/login-to-azure.md)] 
 
-[!INCLUDE [app-service-web-quickstart1](../../includes/app-service-web-quickstart1.md)] 
+[!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)] 
 
-在 `quickStartPlan` 应用服务计划中创建一个 [Web 应用](app-service-web-overview.md)。 该 Web 应用为代码提供托管空间，并提供一个 URL 用于查看已部署的应用。
+[!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group.md)] 
 
-[!INCLUDE [app-service-web-quickstart2](../../includes/app-service-web-quickstart2.md)] 
+[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan.md)] 
 
-该页作为 Azure 应用服务 Web 应用运行：
+[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app.md)] 
 
-![hello-world-in-browser](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
+![空 Web 应用页面](media/app-service-web-get-started-html/app-service-web-service-created.png)
+
+已在 Azure 中新建了一个空的 Web 应用。
+
+[!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git.md)] 
+
+[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
+
+```bash
+Counting objects: 13, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (11/11), done.
+Writing objects: 100% (13/13), 2.07 KiB | 0 bytes/s, done.
+Total 13 (delta 2), reused 0 (delta 0)
+remote: Updating branch 'master'.
+remote: Updating submodules.
+remote: Preparing deployment for commit id 'cc39b1e4cb'.
+remote: Generating deployment script.
+remote: Generating deployment script for Web Site
+remote: Generated deployment script files
+remote: Running deployment command...
+remote: Handling Basic Web Site deployment.
+remote: KuduSync.NET from: 'D:\home\site\repository' to: 'D:\home\site\wwwroot'
+remote: Deleting file: 'hostingstart.html'
+remote: Copying file: '.gitignore'
+remote: Copying file: 'LICENSE'
+remote: Copying file: 'README.md'
+remote: Finished successfully.
+remote: Running post deployment command(s)...
+remote: Deployment successful.
+To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+ * [new branch]      master -> master
+```
+
+## <a name="browse-to-the-app"></a>浏览到应用
+
+在浏览器中转到 Azure Web 应用 URL：
+
+```
+http://<app_name>.azurewebsites.net
+```
+
+该页作为 Azure App Service Web 应用运行。
+
+![示例应用主页](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
+
+**祝贺你！** 现已将第一个 HTML 应用部署到应用服务。
 
 ## <a name="update-and-redeploy-the-app"></a>更新并重新部署应用
 
-打开 *index.html* 文件。 对标记进行更改。 例如，将 `Hello world!` 更改为 `Hello Azure!`
+在文本编辑器中打开 index.html 文件，并对标记进行更改。 例如，将 H1 标题从“Azure App Service - 示例静态 HTML 站点”更改为“Azure App Service”。
 
 提交在 Git 中所做的更改，然后将代码更改推送到 Azure。
 
@@ -77,12 +128,26 @@ git push azure master
 
 完成部署后，刷新浏览器以查看所做的更改。
 
-[!INCLUDE [manage-azure-web-app](../../includes/manage-azure-web-app.md)]
+![已更新的示例应用主页](media/app-service-web-get-started-html/hello-azure-in-browser-az.png)
 
+## <a name="manage-your-new-azure-web-app"></a>管理新 Azure Web 应用
+
+转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理创建的 Web 应用。
+
+在左侧菜单中单击“应用服务”，然后单击 Azure Web 应用的名称。
+
+![在门户中导航到 Azure Web 应用](./media/app-service-web-get-started-html/portal1.png)
+
+将看到 Web 应用的概述页。 在此处可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 
+
+![Azure 门户中的应用服务边栏选项卡](./media/app-service-web-get-started-html/portal2.png)
+
+左侧菜单提供用于配置应用的不同页面。 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-- 浏览示例 [Web 应用 CLI 脚本](app-service-cli-samples.md)。
-- 了解如何[映射自定义域名](app-service-web-tutorial-custom-domain.md)（如 contoso.com）到[应用服务应用](app-service-web-tutorial-custom-domain.md)。
+> [!div class="nextstepaction"]
+> [映射自定义域](app-service-web-tutorial-custom-domain.md)
+

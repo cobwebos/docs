@@ -178,7 +178,7 @@ ms.lasthandoff: 04/03/2017
 创建应用程序资源后，需使用检测密钥： 
 
 ```PS
-    $resource = Find-AzureRmResource -ResourceNameEquals "<YOUR APP NAME>"
+    $resource = Find-AzureRmResource -ResourceNameEquals "<YOUR APP NAME>" -ResourceType "Microsoft.Insights/components"
     $details = Get-AzureRmResource -ResourceId $resource.ResourceId
     $ikey = $details.Properties.InstrumentationKey
 ```

@@ -10,18 +10,18 @@ manager: jhubbard
 editor: 
 ms.assetid: 676bd799-a571-4bb8-848b-fb1720007866
 ms.service: sql-database
-ms.custom: quick start manage, mvc
+ms.custom: mvc,DBs & servers
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 05/24/2017
+ms.date: 06/20/2017
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 82c8a34fcccb6d19dc82110a6d95a80d748835f0
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: ca0b1dc8fdf13112510574741a319f0fbebadf93
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -69,7 +69,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 2. 从左侧菜单中选择“SQL 数据库”，然后单击“SQL 数据库”页上的数据库。 
 3. 在数据库的“概览”页上，查看如下图所示的完全限定的服务器名称。 可以将鼠标悬停在服务器名称上以打开“单击以复制”选项。
 
-   ![连接信息](./media/sql-database-connect-query-ssms/connection-information.png) 
+   ![连接信息](./media/sql-database-get-started-portal/server-name.png) 
 
 4. 如果忘了 Azure SQL 数据库服务器的登录信息，请导航到 SQL 数据库服务器页，以查看服务器管理员名称并重置密码（如果需要）。 
 
@@ -84,7 +84,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
    ![SQL 语言模式](./media/sql-database-connect-query-vscode/vscode-language-mode.png)
 
-## <a name="connect-to-your-database-in-the-sql-database-logical-server"></a>连接到 SQL 数据库逻辑服务器中的数据库
+## <a name="connect-to-your-database"></a>连接到您的数据库
 
 使用 Visual Studio Code 建立到 Azure SQL 数据库服务器的连接。
 
@@ -190,11 +190,6 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要使用 SQL Server Management Studio 进行连接和查询，请参阅[使用 SSMS 进行连接和查询](sql-database-connect-query-ssms.md)
-- 若要使用 .NET 进行连接和查询，请参阅[使用 .NET 进行连接和查询](sql-database-connect-query-dotnet.md)。
-- 若要使用 PHP 进行连接和查询，请参阅[使用 PHP 进行连接和查询](sql-database-connect-query-php.md)。
-- 若要使用 Node.js 进行连接和查询，请参阅[使用 Node.js 进行连接和查询](sql-database-connect-query-nodejs.md)。
-- 若要使用 Java 进行连接和查询，请参阅[使用 Java 进行连接和查询](sql-database-connect-query-java.md)。
-- 若要使用 Python 进行连接和查询，请参阅[使用 Python 进行连接和查询](sql-database-connect-query-python.md)。
-- 若要使用 Ruby 进行连接和查询，请参阅[使用 Ruby 进行连接和查询](sql-database-connect-query-ruby.md)。
+- 若要使用 SQL Server Management Studio 进行连接和查询，请参阅[使用 SSMS 进行连接和查询](sql-database-connect-query-ssms.md)。
+- 有关使用 Visual Studio Code 的 MSDN 杂志文章，请参阅[“利用 MSSQL 扩展创建数据库 IDE”博客文章](https://msdn.microsoft.com/magazine/mt809115)。
 
