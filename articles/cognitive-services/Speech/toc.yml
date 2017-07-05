@@ -1,33 +1,37 @@
-- name: 必应语音文档
+- name: Bing Speech Documentation
   href: ../index.md
-- name: 概述
+- name: Overview
   href: Home.md
-- name: 入门
+- name: Get started
   items:
-  - name: "C# (REST API)\_\_"
+  - name: 'C#(REST API)  '
     href: GetStarted/GetStartedREST.md
   - name: cURL(REST API)
     href: GetStarted/GetStarted-cURL.md
-  - name: "JavaScript (Websocket API)\_\_\_"
+  - name: 'JavaScript(Websocket API)   '
  
     href: GetStarted/GetStartedJSWebsockets.md
-  - name: 'C#（客户端库）'
+  - name: 'C#(Client Library)'
     href: GetStarted/GetStartedCSharpDesktop.md
-  - name: 'C#（服务库）'
+  - name: 'C#(Service Library)'
     href: GetStarted/GetStartedCSharpServiceLibrary.md
-  - name: "Objective C on iOS（客户端库）\_\_\_"
+  - name: 'Objective C on iOS(Client Library)   '
     href: GetStarted/Get-Started-ObjectiveC-iOS.md
-  - name: Java on Android（客户端库）
+  - name: Java on Android(Client Library)
     href: GetStarted/GetStartedJavaAndroid.md
-- name: 引用
+- name: Reference
   items: 
-  - name: 语音识别 API 参考
+  - name: Speech recognition API reference
     href: API-Reference-REST/BingVoiceRecognition.md
-  - name: 文本到语音 API 参考
+  - name: Text-to-speech API reference
     href: API-Reference-REST/BingVoiceOutput.md
-  - name: Websocket 协议
+  - name: Websocket Protocol
     href: API-Reference-REST/websocketprotocol.md
-  - name: SDK 和示例
+  - name: SDKs & Samples
     items:
     - name: JavaScript
       href: https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript
+- name: Resources
+  items:
+  - name: Azure Roadmap
+    href: https://azure.microsoft.com/roadmap/
