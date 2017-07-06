@@ -6,7 +6,7 @@ keywords: "Active Directory 密码管理, 密码管理, Azure AD 自助密码重
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-editor: gahug
+ms.reviewer: gahug
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
