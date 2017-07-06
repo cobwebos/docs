@@ -16,8 +16,8 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 02688f62101fe2ee602badc08feba02fa3e86e26
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 7963a07a2b9d529e89302f32e5ffd56c51687ffa
 ms.contentlocale: zh-cn
 
 
@@ -25,8 +25,8 @@ ms.contentlocale: zh-cn
 
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>使用 Microsoft 身份验证库 (MSAL) 获取用于 Microsoft Graph API 的令牌
 
-1.    打开 `MainActivity`（在 `app` > `java` > `{domain}.{appname}` 下）
-2.    添加以下导入内容：
+1.  打开 `MainActivity`（在 `app` > `java` > `{domain}.{appname}` 下）
+2.  添加以下导入内容：
 
 ```java
 import android.app.Activity;
@@ -254,12 +254,12 @@ public class MainActivity extends AppCompatActivity {
 `AcquireTokenSilentAsync` 处理令牌获取和续订，无需任何用户交互。 首次执行 `AcquireTokenAsync` 后，通常使用 `AcquireTokenSilentAsync` 方法获取用于访问受保护资源的令牌，以便进行后续调用 - 因为调用请求或续订令牌都以静默方式进行。
 `AcquireTokenSilentAsync` 最终将失败（例如，用户已注销，或已在另一台设备上更改了密码）。 MSAL 检测到可以通过请求交互式操作解决问题时，它将引发 `MsalUiRequiredException`。 应用程序可以通过两种方式处理此异常：
 
-1.    立即调用 `AcquireTokenAsync`，随后出现用户登录提示。 此模式通常用于联机应用程序，此时应用程序中没有可供用户使用的脱机内容。 此指导式设置生成的示例使用此模式：首次执行示例时可以在操作中看到此模式：由于没有用户曾使用过此应用程序，因此 `PublicClientApp.Users.FirstOrDefault` 将包含一个 null 值，并且将引发 `MsalUiRequiredException` 异常。 此示例中的代码随后会处理此异常，方法是通过调用 `AcquireTokenAsync` 使其显示用户登录提示。
-2.    应用程序还可以直观地提示用户以交互方式登录，用户可以选择在合适的时间登录，或者应用程序可以稍后重试 `AcquireTokenSilentAsync`。 对于用户能在应用程序不中断的情况下访问应用程序功能的情况，通常会使用此方法 - 例如，应用程序中有可用的脱机内容。 在这种情况下，用户可以决定何时登录并访问受保护的资源，或何时刷新过期信息，或在网络暂时不可用得到还原后，应用程序可以决定重试 `AcquireTokenSilentAsync`。
+1.  立即调用 `AcquireTokenAsync`，随后出现用户登录提示。 此模式通常用于联机应用程序，此时应用程序中没有可供用户使用的脱机内容。 此指导式设置生成的示例使用此模式：首次执行示例时可以在操作中看到此模式：由于没有用户曾使用过此应用程序，因此 `PublicClientApp.Users.FirstOrDefault` 将包含一个 null 值，并且将引发 `MsalUiRequiredException` 异常。 此示例中的代码随后会处理此异常，方法是通过调用 `AcquireTokenAsync` 使其显示用户登录提示。
+2.  应用程序还可以直观地提示用户以交互方式登录，用户可以选择在合适的时间登录，或者应用程序可以稍后重试 `AcquireTokenSilentAsync`。 对于用户能在应用程序不中断的情况下访问应用程序功能的情况，通常会使用此方法 - 例如，应用程序中有可用的脱机内容。 在这种情况下，用户可以决定何时登录并访问受保护的资源，或何时刷新过期信息，或在网络暂时不可用得到还原后，应用程序可以决定重试 `AcquireTokenSilentAsync`。
 <!--end-collapse-->
 
 ## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a>使用刚获得的令牌调用 Microsoft Graph API
-1.    将以下方法添加到 `MainActivity` 类：
+1.  将以下方法添加到 `MainActivity` 类：
 
 ```java
 /* Use Volley to make an HTTP request to the /me endpoint from MS Graph using an access token */
@@ -323,7 +323,7 @@ private void updateGraphUI(JSONObject graphResponse) {
 
 ## <a name="setup-sign-out"></a>安装注销
 
-1.    将以下方法添加到 `MainActivity` 类：
+1.  将以下方法添加到 `MainActivity` 类：
 
 ```java
 /* Clears a user's tokens from the cache.

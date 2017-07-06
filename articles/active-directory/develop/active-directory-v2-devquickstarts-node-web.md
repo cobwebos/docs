@@ -16,10 +16,10 @@ ms.date: 05/13/2017
 ms.author: nacanuma
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: a77337b582f337723b9e4b1befb2c638870a1c4b
+ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
+ms.openlocfilehash: 6d49c742f72440e22830915c90de009d9188db2a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -35,7 +35,7 @@ ms.lasthandoff: 05/10/2017
 * 显示有关用户的信息。
 * 从应用中注销用户。
 
-**Passport** 是 Node.js 的身份验证中间件。 Passport 很灵活并且采用模块化结构，可以在不造成干扰的情况下放入任何基于 Express 的应用程序或 Resitify Web 应用程序。 在 Passport 中，有一套综合性策略支持使用用户名和密码、Facebook、Twitter 或其他选项进行身份验证。 我们针对 Azure AD 开发了一项策略。 在本文中，我们说明如何安装该模块及添加 Azure AD `passport-azure-ad` 插件。
+**Passport** 是 Node.js 的身份验证中间件。 Passport 很灵活并且采用模块化结构，可以在不造成干扰的情况下放入任何基于 Express 的应用程序或 Resitify Web 应用程序。 在 Passport 中，有一套综合性策略支持使用用户名和密码、Facebook、Twitter 或其他选项进行身份验证。 我们针对 Azure AD 开发了一项策略。 本文介绍如何安装该模块及添加 Azure AD `passport-azure-ad` 插件。
 
 ## <a name="download"></a>下载
 本教程的代码 [在 GitHub 上](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs)维护。 若要按照本教程操作，可以[下载 .zip 文件格式的应用框架](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip)，或克隆该框架：
@@ -44,7 +44,7 @@ ms.lasthandoff: 05/10/2017
 
 还可以在本教程结束时获得完整的应用程序。
 
-## <a name="1-register-an-app"></a>1. 注册应用
+## <a name="1-register-an-app"></a>1：注册应用
 在 [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) 上创建新应用，或按照[以下详细步骤](active-directory-v2-app-registration.md)注册应用。 确保：
 
 * 复制分配给应用的**应用程序 ID**。 在本教程中需要用到它。
@@ -408,7 +408,7 @@ Passport 对其所有策略（Twitter、Facebook 等）都使用类似的模式�
 现在拥有使用行业标准协议进行保护的 Web 应用。 可使用用户的个人和工作/学校帐户，在应用中验证用户的身份。
 
 ## <a name="next-steps"></a>后续步骤
-[以 .zip 文件格式](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip)提供完整示例（不包括配置值）以供参考。 还可以从 GitHub 中进行克隆：
+某个 [.zip 文件](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip)提供了完整的示例（不包括配置值）供参考。 还可以从 GitHub 中进行克隆：
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
 
@@ -422,6 +422,6 @@ Passport 对其所有策略（Twitter、Facebook 等）都使用类似的模式�
 * [Stack Overflow“azure-active-directory”标记](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
 ### <a name="get-security-updates-for-our-products"></a>获取关于我们产品的安全更新
-建议注册，以便在发生安全事件时获得通知。 在 [Microsoft 技术安全通知](https://technet.microsoft.com/security/dd252948)页上，订阅安全公告通知。
+我们建议注册，以便在发生安全事件时获得通知。 在 [Microsoft 技术安全通知](https://technet.microsoft.com/security/dd252948)页上订阅安全顾问警报。
 
 

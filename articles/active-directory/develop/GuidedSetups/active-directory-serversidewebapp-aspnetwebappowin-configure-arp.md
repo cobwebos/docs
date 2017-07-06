@@ -16,10 +16,10 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b10c8bd6878f6891b2420ae7fb4b65b19144762c
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 6c6a44cbbd79cf6422515a6d70d48ac12cba4f9f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -27,11 +27,11 @@ ms.lasthandoff: 05/10/2017
 
 此步将配置项目以使用 SSL，然后使用 SSL URL 配置应用程序的注册信息。 此后通过 web.config 将应用程序注册信息添加到解决方案。
 
-1.    在解决方案资源管理器中，选择项目并查看`Properties`窗口（如果你看不到“属性”窗口，请按 F4）
-2.    将 `SSL Enabled` 更改为 `True`：<br/>
+1.  在解决方案资源管理器中，选择项目并查看`Properties`窗口（如果你看不到“属性”窗口，请按 F4）
+2.  将 `SSL Enabled` 更改为 `True`：<br/>
 ![项目属性](media/active-directory-serversidewebapp-aspnetwebappowin-configure/vsprojectproperties.png)<br />
-3.    复制以上 `SSL URL` 中的值，并将其粘贴到此页顶部的`Redirect URL` 字段，然后单击“更新”:
-4.    在 `configuration\appSettings` 节下根文件夹内 `web.config` 文件中添加以下内容：
+3.  复制以上 `SSL URL` 中的值，并将其粘贴到此页顶部的`Redirect URL` 字段，然后单击“更新”:
+4.  在 `configuration\appSettings` 节下根文件夹内 `web.config` 文件中添加以下内容：
 
 ```xml
 <add key="ClientId" value="[Enter the application Id here]" />

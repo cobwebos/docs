@@ -18,7 +18,7 @@ ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 88628fb2c07ad72c646f7e3ed076e7a4b1519200
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -181,7 +181,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 | priority |确定应在所有排队的作业中选择哪些作业首先运行。 编号越低，优先级越高。 |否 |
 | parameters |U-SQL 脚本的参数 |否 |
 | runtimeVersion | 要使用的 U-SQL 引擎的运行时版本 | 否 | 
-| compilationMode | <p>U-SQL 编译模式。 必须是这些值之一：</p> <ul><li>Semantic：只执行语义检查和必要的健全性检查。****</li><li>Full：执行完整编译，包括语法检查、优化、代码生成等。****</li><li>SingleBox：执行完整编译，且 TargetType 设置为 SingleBox。****</li></ul><p>如果该属性未指定值，则服务器将确定最佳编译模式。 </p>| 否 | 
+| compilationMode | <p>U-SQL 编译模式。 必须是这些值之一：</p> <ul><li>Semantic：只执行语义检查和必要的健全性检查。</li><li>Full：执行完整编译，包括语法检查、优化、代码生成等。</li><li>SingleBox：执行完整编译，且 TargetType 设置为 SingleBox。</li></ul><p>如果该属性未指定值，则服务器将确定最佳编译模式。 </p>| 否 | 
 
 有关脚本定义，请参阅 [SearchLogProcessing.txt 脚本定义](#sample-u-sql-script)。 
 

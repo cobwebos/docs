@@ -18,7 +18,7 @@ ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 9743711805d8502b60ee91bac5c91035a3cda5fe
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -341,7 +341,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | 适用的技术 | 泛型 |
 | 属性              | 不适用  |
 | 参考              | [Microsoft Azure 存储的客户端加密和 Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/)、[教程：在 Microsoft Azure 存储中使用 Azure Key Vault 加密和解密 Blob](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/)、[使用 Azure 加密扩展在 Azure Blob 存储中安全存储数据](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
-| 步骤 | <p>用于 .NET 的 Azure 存储客户端库 Nuget 包支持在上载到 Azure 存储之前加密客户端应用程序中的数据，并在下载到客户端时解密数据。 此库还支持与 Azure 密钥保管库集成，以便管理存储帐户密钥。 下面是客户端加密的工作原理的简要说明：</p><ul><li>Azure 存储客户端 SDK 生成内容加密密钥 (CEK)，这是一次性使用的对称密钥</li><li>可使用此 CEK 将客户数据加密</li><li>然后，使用密钥加密密钥 (KEK) 对此 CEK 进行包装（加密）。 KEK 由密钥标识符标识，可以是非对称密钥对或对称密钥，还可以在本地托管或存储在 Azure 密钥保管库中。 存储空间客户端本身永远无法访问 KEK。 它只能调用密钥保管库提供的密钥包装算法。 客户可根据需要选择使用自定义提供程序进行密钥包装/解包</li><li>然后，将已加密的数据上载到 Azure 存储服务。 请参阅参考部分中的链接，了解低级别实施详细信息。</li></ul>|
+| 步骤 | <p>用于 .NET 的 Azure 存储客户端库 Nuget 包支持在上传到 Azure 存储之前加密客户端应用程序中的数据，并在下载到客户端时解密数据。 此库还支持与 Azure 密钥保管库集成，以便管理存储帐户密钥。 下面是客户端加密的工作原理的简要说明：</p><ul><li>Azure 存储客户端 SDK 生成内容加密密钥 (CEK)，这是一次性使用的对称密钥</li><li>可使用此 CEK 将客户数据加密</li><li>然后，使用密钥加密密钥 (KEK) 对此 CEK 进行包装（加密）。 KEK 由密钥标识符标识，可以是非对称密钥对或对称密钥，还可以在本地托管或存储在 Azure 密钥保管库中。 存储空间客户端本身永远无法访问 KEK。 它只能调用密钥保管库提供的密钥包装算法。 客户可根据需要选择使用自定义提供程序进行密钥包装/解包</li><li>然后，将已加密的数据上传到 Azure 存储服务。 请参阅参考部分中的链接，了解低级别实施详细信息。</li></ul>|
 
 ## <a id="pii-phones"></a>加密写入到手机本地存储的敏感或 PII 数据
 

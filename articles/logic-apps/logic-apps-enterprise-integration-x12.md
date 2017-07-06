@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: LADocs; padmavc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: d30cbc1cfd095ab9e8321a723335ebab593ee5fe
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 4a41d9eb8b28aed499bb20e17e3c979962c78bcd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -35,20 +35,20 @@ ms.lasthandoff: 05/10/2017
 
 * 已定义的、与你的 Azure 订阅关联的[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)
 * 在集成帐户中至少定义了两个[合作伙伴](../logic-apps/logic-apps-enterprise-integration-partners.md)，并且在“企业标识”下面配置了这些合作伙伴的 X12 标识符    
-* 要上载到[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)的所需[架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)
+* 要上传到[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)的所需[架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)
 
 [创建集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)、[添加合作伙伴](logic-apps-enterprise-integration-partners.md)并定义想要使用的[架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)之后，可以遵循以下步骤来创建 X12 协议。
 
 ## <a name="create-an-x12-agreement"></a>创建 X12 协议
 
-1.    登录 [Azure 门户](http://portal.azure.com "Azure portal")。 在左侧菜单中，选择“更多服务”。 
+1.  登录 [Azure 门户](http://portal.azure.com "Azure portal")。 在左侧菜单中，选择“更多服务”。 
 
     > [!TIP]
     > 如果未看到“更多服务”，可能需要先展开菜单。 在折叠的菜单顶部，选择“显示菜单”。
 
     ![在左侧菜单中，选择“更多服务”](./media/logic-apps-enterprise-integration-x12/account-1.png)
 
-2.    在搜索框中，键入“集成”作为筛选器。 在结果列表中，选择“集成帐户”。  
+2.  在搜索框中，键入“集成”作为筛选器。 在结果列表中，选择“集成帐户”。  
 
     ![筛选“集成”，选择“集成帐户”](./media/logic-apps-enterprise-integration-x12/account-2.png)
 
@@ -87,7 +87,7 @@ ms.lasthandoff: 05/10/2017
 
 设置协议属性后，可以配置此协议如何识别和处理从合作伙伴接收的传入消息。
 
-1.    在“添加”下面，选择“接收设置”。
+1.  在“添加”下面，选择“接收设置”。
 根据要与其交换消息的合作伙伴达成的协议来配置这些属性。 有关属性说明，请参阅本部分中的表格。
 
     “接收设置”划分为以下部分：“标识符”、“确认”、“架构”、“信封”、“控制编号”、“验证”和“内部设置”。
@@ -131,7 +131,7 @@ ms.lasthandoff: 05/10/2017
 | 架构 |选择要使用的架构文件。 架构将添加到集成帐户中。 |
 
 > [!NOTE]
-> 配置将上载到[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)的所需[架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)。
+> 配置将上传到[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)的所需[架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)。
 
 ### <a name="envelopes"></a>信封
 
@@ -183,7 +183,7 @@ ms.lasthandoff: 05/10/2017
 
 可以配置此协议如何识别和处理发送给合作伙伴的传出消息。
 
-1.    在“添加”下面，选择“发送设置”。
+1.  在“添加”下面，选择“发送设置”。
 根据要与其交换消息的合作伙伴达成的协议来配置这些属性。 有关属性说明，请参阅本部分中的表格。
 
     “发送设置”划分为以下部分：“标识符”、“确认”、“架构”、“字符集和分隔符”、“控制编号”和“验证”。
@@ -224,7 +224,7 @@ ms.lasthandoff: 05/10/2017
 | 架构 |选择要使用的架构。 架构位于集成帐户中。 如果先选择架构，它会自动配置版本和事务类型  |
 
 > [!NOTE]
-> 配置将上载到[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)的所需[架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)。
+> 配置将上传到[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)的所需[架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)。
 
 ### <a name="envelopes"></a>信封
 
@@ -290,11 +290,11 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="find-your-created-agreement"></a>查找创建的协议
 
-1.    设置完所有协议属性后，请在“添加”边栏选项卡中选择“确定”来完成创建协议，并返回到集成帐户边栏选项卡。
+1.  设置完所有协议属性后，请在“添加”边栏选项卡中选择“确定”来完成创建协议，并返回到集成帐户边栏选项卡。
 
     新添加的协议随即会出现在“协议”列表中。
 
-2.    还可以在集成帐户概述中查看协议。 在集成帐户边栏选项卡中选择“概述”，然后选择“协议”磁贴。
+2.  还可以在集成帐户概述中查看协议。 在集成帐户边栏选项卡中选择“概述”，然后选择“协议”磁贴。
 
     ![选择“协议”磁贴可查看所有协议](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
 
