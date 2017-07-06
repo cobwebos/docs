@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 6408fdf494035b37e0025dd8439e800a80bffb4e
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 18719a8f49c74973947517161f7306c233a9323f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -41,7 +41,7 @@ ms.lasthandoff: 05/10/2017
 
 2. 解码 X12 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加一个触发器，然后向逻辑应用中添加一个操作。
 
-3.    在搜索框中，输入“x12”作为筛选器。 选择“X12 - 解码 X12 消息”。
+3.  在搜索框中，输入“x12”作为筛选器。 选择“X12 - 解码 X12 消息”。
    
     ![搜索“x12”](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 05/10/2017
     | 连接名称 * |为连接输入任何名称。 |
     | 集成帐户 * |输入集成帐户的名称。 确保集成帐户和逻辑应用位于同一 Azure 位置。 |
 
-5.    完成后，连接详细信息应如此示例所示。 若要完成连接创建，请选择“创建”。
+5.  完成后，连接详细信息应如此示例所示。 若要完成连接创建，请选择“创建”。
    
     ![集成帐户连接详细信息](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage5.png) 
 
@@ -83,13 +83,13 @@ X12 解码连接器执行以下任务：
   * 针对以前收到的交换检查交换控制编号。
   * 针对交换中的其他组控制编号检查组控制编号。
   * 针对该组中的其他事务集控制编号检查事务集控制编号。
-* 将交换拆分为交易集，或保留整个交换：
+* 将交换拆分为事务集，或保留整个交换：
   * 将交换拆分为交易集 - 出错时暂停交易集：将交换拆分为交易集并分析每个交易集。 
-  X12 解码操作仅将未通过验证的交易集输出到 `badMessages`，并将剩余交易集输出到 `goodMessages`。
+  X12 解码操作仅将未通过验证的事务集输出到 `badMessages`，并将剩余事务集输出到 `goodMessages`。
   * 将交换拆分为交易集 - 出错时暂停交换：将交换拆分为交易集并分析每个交易集。 
-  如果交换中的一个或多个交易集未能通过验证，X12 解码操作会将该交换中的所有交易集输出到 `badMessages`。
+  如果交换中的一个或多个事务集未能通过验证，X12 解码操作会将该交换中的所有事务集输出到 `badMessages`。
   * 保留交换 - 出错时暂停交易集：保留交换并处理整个批量交换。 
-  X12 解码操作仅将未通过验证的交易集输出到 `badMessages`，并将剩余交易集输出到 `goodMessages`。
+  X12 解码操作仅将未通过验证的事务集输出到 `badMessages`，并将剩余事务集输出到 `goodMessages`。
   * 保留交换 - 出错时暂停交易集：保留交换并处理整个批量交换。 
   如果交换中的一个或多个交易集未能通过验证，X12 解码操作会将该交换中的所有交易集输出到 `badMessages`。 
 * 生成技术和/或功能确认（如果已配置）。
