@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/07/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: d9ba200dba2b1460a9d3c9ba07e2bca54c30b53a
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: ead9fcc5ec582420d731faccb7abba0dc815ed84
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -69,7 +70,7 @@ StorSimple 虚拟设备是软件形式的 StorSimple，在 Microsoft Azure 虚�
 #### <a name="azure-requirements"></a>Azure 要求
 预配虚拟设备之前，需要在 Azure 环境中做好以下准备：
 
-* 对于虚拟设备，需 [在 Azure 中配置虚拟网络](../virtual-network/virtual-networks-create-vnet-classic-portal.md)。 如果使用高级存储，必须在支持高级存储的 Azure 区域中创建虚拟网络。 高级存储区域对应于 [Azure 服务（按区域）](https://azure.microsoft.com/en-us/regions/services)列表中“磁盘存储”所在的行。
+* 对于虚拟设备，需 [在 Azure 中配置虚拟网络](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)。 如果使用高级存储，必须在支持高级存储的 Azure 区域中创建虚拟网络。 高级存储区域对应于 [Azure 服务（按区域）](https://azure.microsoft.com/en-us/regions/services)列表中“磁盘存储”所在的行。
 * 建议使用 Azure 提供的默认 DNS 服务器，而不要指定自己的 DNS 服务器名称。 如果 DNS 服务器名称无效，或者 DNS 服务器无法正确解析 IP 地址，则创建虚拟设备将会失败。
 * 点到站点和站点到站点连接是可选的，而不是必需的。 如果需要，可以针对更高级方案配置这些选项。
 * 可以在可使用虚拟设备公开的卷的虚拟网络中创建 [Azure 虚拟机](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) （主机服务器）。 这些服务器必须满足以下要求：                             
@@ -170,7 +171,7 @@ StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员�
 由于是纯软件设备，相比物理设备的维护，虚拟设备的维护可以说非常简单。 可以使用以下选项：
 
 * **软件更新** - 可以查看上次更新软件的日期，以及任何更新状态消息。 若要检查是否有新的更新，可以使用页面底部的“扫描更新”来执行手动扫描。  如果有可用的更新，请单击“安装更新”进行安装。 虚拟设备上只有一个接口，这意味着应用更新时，会造成轻微的服务中断。 虚拟设备将关闭并重新启动（如果需要），以应用任何已发布的更新。 有关分步过程，请转到 [更新设备](storsimple-update-device.md#install-regular-updates-via-the-azure-classic-portal)。
-* **支持包** - 可以创建并上载支持包，帮助 Microsoft 支持人员针对虚拟设备问题进行故障排除。 有关分步过程，请转到 [创建和管理支持包](storsimple-create-manage-support-package.md)。
+* **支持包** - 可以创建并上传支持包，帮助 Microsoft 支持人员针对虚拟设备问题进行故障排除。 有关分步过程，请转到 [创建和管理支持包](storsimple-create-manage-support-package.md)。
 
 ### <a name="storage-accounts-for-a-virtual-device"></a>虚拟设备的存储帐户
 创建的存储帐户供 StorSimple Manager 服务、虚拟设备和物理设备使用。 创建存储帐户时，建议在友好名称中使用区域标识符，帮助确保所有系统组件的区域一致。 在虚拟设备中，所有组件必须位于同一区域中，防止出现性能问题。
