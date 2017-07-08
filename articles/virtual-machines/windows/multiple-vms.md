@@ -15,9 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: guybo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 51de0e9aa1d29d0b3f3ffc4f126b8ca688be3504
 ms.openlocfilehash: 5e96805f8880a30a5fc8779d8f07addb6d068c09
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -46,10 +48,5 @@ ms.openlocfilehash: 5e96805f8880a30a5fc8779d8f07addb6d068c09
 VM 规模集可以集中配置网络、存储、虚拟机和扩展属性，不需将多个资源（例如 NIC 和 VM）关联在一起。
 
 如需 VM 规模集的简介，请参阅[虚拟机规模集产品页](https://azure.microsoft.com/services/virtual-machine-scale-sets/)。 有关详细信息，请访问[虚拟机规模集文档](https://azure.microsoft.com/documentation/services/virtual-machine-scale-sets/)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

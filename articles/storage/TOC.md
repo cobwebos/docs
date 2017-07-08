@@ -113,9 +113,10 @@
 ### [安全指导](storage-security-guide.md)
 ### [静态数据加密](storage-service-encryption.md)
 ### [静态加密客户密钥](storage-service-encryption-customer-managed-keys.md)
-### [共享密钥身份验证](https://msdn.microsoft.com/library/dd179428.aspx)
+### [共享密钥身份验证](/rest/api/storageservices/Authentication-for-the-Azure-Storage-Services)
 ### [共享访问签名 (SAS)](storage-dotnet-shared-access-signature-part-1.md)
 ### [教程：使用 Azure 密钥保管库加密和解密 Blob](storage-encrypt-decrypt-blobs-key-vault.md)
+### [需要安全传输](storage-require-secure-transfer.md)
 ### 客户端加密
 #### [.NET](storage-client-side-encryption.md)
 #### [Java](storage-client-side-encryption-java.md)
@@ -201,11 +202,12 @@
 ### [故障排除教程](storage-e2e-troubleshooting-classic-portal.md)
 
 # 资源
-## [定价](https://azure.microsoft.com/pricing/details/storage/blobs/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [Azure 存储客户端工具](storage-explorers.md)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/windows-azure-storage)
 ## [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
+## [定价](https://azure.microsoft.com/pricing/details/storage/blobs/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=storage)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/windows-azure-storage)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=storage)
 
 ## Azure 存储资源管理器

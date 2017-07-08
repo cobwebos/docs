@@ -14,9 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4f2fcfecf0d888997b0b0061dc9ed2a8f862d78b
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e345b2e22daae5b24c23645f7d2636f66df630ff
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -391,10 +393,5 @@ Date: Wed, 16 Mar 2016 19:10:02 GMT
  [Azure 计划程序的高可用性和可靠性](scheduler-high-availability-reliability.md)
 
  [Azure 计划程序的限制、默认值和错误代码](scheduler-limits-defaults-errors.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

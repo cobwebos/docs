@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/02/2017
+ms.date: 06/29/2017
 ms.author: bwren
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: a63778c300a3d215a2a0025824f6363e1d9e9675
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 5cd863c3e357b67d281adb8484376295ad9099ec
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/30/2017
 
 ---
 
@@ -57,7 +57,7 @@ Azure 自动化中的 Runbook 无法访问你本地数据中心的资源，因�
 * 请考虑使用实际位于或接近自动化帐户所在区域的计算机，因为当作业完成时，作业数据将发回到 Azure 自动化。
 
 ### <a name="configure-proxy-and-firewall-settings"></a>配置代理和防火墙设置
-要使本地混合 Runbook 辅助角色连接到并注册到 Microsoft Operations Management Suite (OMS) 服务，它必须有权访问下面所述的端口号和 URL。  除了这些端口和 URL 以外，还需有权访问连接到 OMS 时 [Microsoft Monitoring Agent 需要的端口和 URL](../log-analytics/log-analytics-windows-agents.md)。 如果使用代理服务器在代理与 OMS 服务之间通信，则需确保能够访问相应的资源。 如果使用防火墙来限制对 Internet 的访问，则需要将防火墙配置为允许访问。
+要使本地混合 Runbook 辅助角色连接到并注册到 Microsoft Operations Management Suite (OMS) 服务，它必须有权访问下面所述的端口号和 URL。  除了这些端口和 URL 以外，还需有权访问连接到 OMS 时 [Microsoft Monitoring Agent 需要的端口和 URL](../log-analytics/log-analytics-windows-agents.md#network)。 如果使用代理服务器在代理与 OMS 服务之间通信，则需确保能够访问相应的资源。 如果使用防火墙来限制对 Internet 的访问，则需要将防火墙配置为允许访问。
 
 下面的信息列出了混合 Runbook 辅助角色与自动化通信时所要使用的端口和 URL。
 
@@ -81,11 +81,11 @@ Azure 自动化中的 Runbook 无法访问你本地数据中心的资源，因�
 | 英国南部 | uks-jobruntimedata-prod-su1.azure-automation.net |
 | 美国政府弗吉尼亚州 | usge-jobruntimedata-prod-su1.azure-automation.us |
 
-有关 IP 地址列表（非名称列表），请从 Microsoft 下载中心下载 [Azure 数据中心 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653) xml 文件并进行查看。
+有关 IP 地址列表（非名称列表），请从 Microsoft 下载中心下载 [Azure 数据中心 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653) xml 文件并进行查看。 
 
 > [!NOTE]
-> 此文件包含 Microsoft Azure 数据中心使用的 IP 地址范围（包括计算、SQL 和存储范围）。 每周都将发布更新的文件，反映当前已部署的范围和任何即将对 IP 范围进行的更改。 数据中心至少在一周后才会使用文件中显示的新范围。 请每周下载新的 xml 文件，并在网站上执行必要的更改以正确地标识 Azure 中运行的服务。 快速路由用户可能会注意到，此文件用于在每个月第一周更新 Azure 空间的 BGP 播发。
->
+> 此文件包含 Microsoft Azure 数据中心使用的 IP 地址范围（包括计算、SQL 和存储范围）。 每周都将发布更新的文件，反映当前已部署的范围和任何即将对 IP 范围进行的更改。 数据中心至少在一周后才会使用文件中显示的新范围。 请每周下载新的 xml 文件，并在网站上执行必要的更改以正确地标识 Azure 中运行的服务。 快速路由用户可能会注意到，此文件用于在每个月第一周更新 Azure 空间的 BGP 播发。 
+> 
 
 ## <a name="installing-hybrid-runbook-worker"></a>安装混合 Runbook 辅助角色
 
@@ -101,20 +101,20 @@ Azure 自动化中的 Runbook 无法访问你本地数据中心的资源，因�
 
   * AutomationAccountName（必需）- 自动化帐户的名称。  
   * ResourceGroupName（必需）- 与自动化帐户关联的资源组的名称。  
-  * HybridGroupName（必需）- 混合 Runbook 辅助角色组的名称，可将其指定为支持此方案的 Runbook 的目标。
+  * HybridGroupName（必需）- 混合 Runbook 辅助角色组的名称，可将其指定为支持此方案的 Runbook 的目标。 
   *  SubscriptionID（必需）- 包含自动化帐户的 Azure 订阅 ID。
   *  WorkspaceName（可选）- OMS 工作区名称。  如果没有 OMS 工作区，该脚本会创建并配置一个。  
 
      > [!NOTE]
      > 目前可与 OMS 集成的自动化区域仅限：**澳大利亚东南部**、**美国东部 2**、**东南亚**以及**西欧**。  如果自动化帐户不在其中的某个区域，脚本会创建 OMS 工作区，但会警告用户：无法将这些区域链接到一起。
-     >
+     > 
 2. 在计算机的“管理员”模式下，从“开始”屏幕启动 **Windows PowerShell**。  
 3. 从 PowerShell 命令行 shell 中，导航到已下载脚本所在的文件夹并执行该脚本，请记得更改 -AutomationAccountName、-ResourceGroupName、-HybridGroupName、-SubscriptionId 和 -WorkspaceName 参数的值。
 
-     > [!NOTE]
+     > [!NOTE] 
      > 执行脚本后，系统将提示你在 Azure 上进行身份验证。  **必须**以订阅管理员角色成员和订阅共同管理员的帐户登录。  
      >  
-
+    
         .\New-OnPremiseHybridWorker.ps1 -AutomationAccountName <NameofAutomationAccount> `
         -ResourceGroupName <NameofOResourceGroup> -HybridGroupName <NameofHRWGroup> `
         -SubscriptionId <AzureSubscriptionId> -WorkspaceName <NameOfOMSWorkspace>
@@ -123,7 +123,7 @@ Azure 自动化中的 Runbook 无法访问你本地数据中心的资源，因�
 
 5. 脚本完成后，“混合辅助角色组”边栏选项卡会显示新组和成员数，或者会将成员数进行递增（如果组已存在）。  可以从“混合辅助角色组”边栏选项卡上的列表中选择组，然后选择“混合辅助角色”磁贴。  在“混合辅助角色”边栏选项卡上，将会列出组的每个成员。  
 
-### <a name="manual-deployment"></a>手动部署
+### <a name="manual-deployment"></a>手动部署 
 针对自动化环境执行前两个步骤一次，然后对每台辅助角色计算机重复其余步骤。
 
 #### <a name="1-create-operations-management-suite-workspace"></a>1.创建 Operations Management Suite 工作区
@@ -166,9 +166,9 @@ Microsoft Monitoring Agent 可将计算机连接到 Operations Management Suite�
 #### <a name="5-install-powershell-modules"></a>5.安装 PowerShell 模块
 Runbook 可以使用在 Azure 自动化环境中安装的模块中定义的任何活动和 cmdlet。  不过，这些模块不会自动部署到本地计算机，因此必须手动安装。  例外情况是 Azure 模块，该模块是默认安装的，可以用于访问所有 Azure 服务的 cmdlet 以及 Azure 自动化的活动。
 
-由于混合 Runbook 辅助角色功能的主要用途是管理本地资源，很可能需要安装支持这些资源的模块。  可以参考 [Installing Modules](http://msdn.microsoft.com/library/dd878350.aspx)（安装模块），获取有关安装 Windows PowerShell 模块的信息。  安装的模块必须位于 PSModulePath 环境变量所引用的位置，以便混合辅助角色自动将其导入。  有关详细信息，请参阅 [Modifying the PSModulePath Installation Path](https://msdn.microsoft.com/library/dd878326%28v=vs.85%29.aspx)（修改 PSModulePath 安装路径）。
+由于混合 Runbook 辅助角色功能的主要用途是管理本地资源，很可能需要安装支持这些资源的模块。  可以参考 [Installing Modules](http://msdn.microsoft.com/library/dd878350.aspx)（安装模块），获取有关安装 Windows PowerShell 模块的信息。  安装的模块必须位于 PSModulePath 环境变量所引用的位置，以便混合辅助角色自动将其导入。  有关详细信息，请参阅 [Modifying the PSModulePath Installation Path](https://msdn.microsoft.com/library/dd878326%28v=vs.85%29.aspx)（修改 PSModulePath 安装路径）。 
 
-## <a name="removing-hybrid-runbook-worker"></a>删除混合 Runbook 辅助角色
+## <a name="removing-hybrid-runbook-worker"></a>删除混合 Runbook 辅助角色 
 可以从组中删除一个或多个混合 Runbook 辅助角色，或者根据要求删除该组。  若要从本地计算机删除混合 Runbook 辅助角色，请执行以下步骤。
 
 1. 在 Azure 门户中，导航到自动化帐户。  
@@ -242,21 +242,21 @@ Runbook 可以使用在 Azure 自动化环境中安装的模块中定义的任�
     .GUID 3a796b9a-623d-499d-86c8-c249f10a6986
     .AUTHOR Azure Automation Team
     .COMPANYNAME Microsoft
-    .COPYRIGHT
-    .TAGS Azure Automation
-    .LICENSEURI
-    .PROJECTURI
-    .ICONURI
-    .EXTERNALMODULEDEPENDENCIES
-    .REQUIREDSCRIPTS
-    .EXTERNALSCRIPTDEPENDENCIES
+    .COPYRIGHT 
+    .TAGS Azure Automation 
+    .LICENSEURI 
+    .PROJECTURI 
+    .ICONURI 
+    .EXTERNALMODULEDEPENDENCIES 
+    .REQUIREDSCRIPTS 
+    .EXTERNALSCRIPTDEPENDENCIES 
     .RELEASENOTES
     #>
 
     <#  
     .SYNOPSIS  
-    Exports the Run As certificate from an Azure Automation account to a hybrid worker in that account.
-
+    Exports the Run As certificate from an Azure Automation account to a hybrid worker in that account. 
+  
     .DESCRIPTION  
     This runbook exports the Run As certificate from an Azure Automation account to a hybrid worker in that account.
     Run this runbook in the hybrid worker where you want the certificate installed.
@@ -266,11 +266,11 @@ Runbook 可以使用在 Azure 自动化环境中安装的模块中定义的任�
     .\Export-RunAsCertificateToHybridWorker
 
     .NOTES
-    AUTHOR: Azure Automation Team
+    AUTHOR: Azure Automation Team 
     LASTEDIT: 2016.10.13
     #>
 
-    [OutputType([string])]
+    [OutputType([string])] 
 
     # Set the password used for this certificate
     $Password = "YourStrongPasswordForTheCert"
@@ -280,28 +280,28 @@ Runbook 可以使用在 Azure 自动化环境中安装的模块中定义的任�
 
     # Get the management certificate that will be used to make calls into Azure Service Management resources
     $RunAsCert = Get-AutomationCertificate -Name "AzureRunAsCertificate"
-
+       
     # location to store temporary certificate in the Automation service host
     $CertPath = Join-Path $env:temp  "AzureRunAsCertificate.pfx"
-
+   
     # Save the certificate
     $Cert = $RunAsCert.Export("pfx",$Password)
-    Set-Content -Value $Cert -Path $CertPath -Force -Encoding Byte | Write-Verbose
+    Set-Content -Value $Cert -Path $CertPath -Force -Encoding Byte | Write-Verbose 
 
-    Write-Output ("Importing certificate into local machine root store from " + $CertPath)
+    Write-Output ("Importing certificate into $env:computername local machine root store from " + $CertPath)
     $SecurePassword = ConvertTo-SecureString $Password -AsPlainText -Force
     Import-PfxCertificate -FilePath $CertPath -CertStoreLocation Cert:\LocalMachine\My -Password $SecurePassword -Exportable | Write-Verbose
 
     # Test that authentication to Azure Resource Manager is working
-    $RunAsConnection = Get-AutomationConnection -Name "AzureRunAsConnection"
-
+    $RunAsConnection = Get-AutomationConnection -Name "AzureRunAsConnection" 
+    
     Add-AzureRmAccount `
       -ServicePrincipal `
       -TenantId $RunAsConnection.TenantId `
       -ApplicationId $RunAsConnection.ApplicationId `
       -CertificateThumbprint $RunAsConnection.CertificateThumbprint | Write-Verbose
 
-    Select-AzureRmSubscription -SubscriptionId $RunAsConnection.SubscriptionID | Write-Verbose
+    Set-AzureRmContext -SubscriptionId $RunAsConnection.SubscriptionID | Write-Verbose
 
     # List automation accounts to confirm Azure Resource Manager calls are working
     Get-AzureRmAutomationAccount | Select AutomationAccountName

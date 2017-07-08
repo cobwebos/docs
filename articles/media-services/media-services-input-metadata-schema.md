@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2016
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2274f8b69e82edb2f3e24f23ac6f89dcd7dfcb17
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 21cbbb10065df9ae9c63b775a6526ea9c4f92136
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -32,7 +34,7 @@ ms.openlocfilehash: 2274f8b69e82edb2f3e24f23ac6f89dcd7dfcb17
 > 
 > 
 
-## <a name="a-nameassetfilesa-assetfiles-element-root-element"></a><a name="AssetFiles"></a>AssetFiles 元素（根元素）
+## <a name="AssetFiles"></a>AssetFiles 元素（根元素）
 包含用于编码作业的 [AssetFile 元素](media-services-input-metadata-schema.md#AssetFile)集合。  
 
 请参阅本主题末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
@@ -41,7 +43,7 @@ ms.openlocfilehash: 2274f8b69e82edb2f3e24f23ac6f89dcd7dfcb17
 | --- | --- |
 | **AssetFile**<br /><br /> minOccurs="1" maxOccurs="unbounded" |单个子元素。 有关详细信息，请参阅 [AssetFile 元素](media-services-input-metadata-schema.md#AssetFile)。 |
 
-## <a name="a-nameassetfilea-assetfile-element"></a><a name="AssetFile"></a>AssetFile 元素
+## <a name="AssetFile"></a>AssetFile 元素
  包含属性和描述资产文件的元素。  
 
  请参阅本主题末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
@@ -71,7 +73,7 @@ ms.openlocfilehash: 2274f8b69e82edb2f3e24f23ac6f89dcd7dfcb17
 | **AudioTracks**<br /><br /> minOccurs=“0” | |每个物理资产文件可包含交错成适当容器格式的零个或多个音频轨。 此元素包含所有 [AudioTracks 元素](media-services-input-metadata-schema.md#AudioTracks)（属于资产文件）的集合。 |
 | **元数据**<br /><br /> minOccurs=“0” maxOccurs =“unbounded” |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |资产文件的元数据表示为键\值字符串。 例如：<br /><br /> **&lt;元数据键 =“language” 值="eng" /&gt;** |
 
-## <a name="a-nametracktypea-tracktype"></a><a name="TrackType"></a> TrackType
+## <a name="TrackType"></a> TrackType
 请参阅本主题末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
 
 ### <a name="attributes"></a>属性
@@ -96,7 +98,7 @@ ms.openlocfilehash: 2274f8b69e82edb2f3e24f23ac6f89dcd7dfcb17
 | **处置**<br /><br /> minOccurs="0" maxOccurs="1" |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |包含演示信息（例如，特定音频轨是否适用于视觉障碍人士）。 |
 | **元数据**<br /><br /> minOccurs=“0” maxOccurs =“unbounded” |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |可用于保存各种信息的通用键/值字符串。 例如，键 =“language”，值 =“eng”。 |
 
-## <a name="a-nameaudiotracktypea-audiotracktype-inherits-from-tracktype"></a><a name="AudioTrackType"></a> AudioTrackType（继承自 TrackType）
+## <a name="AudioTrackType"></a> AudioTrackType（继承自 TrackType）
  **AudioTrackType** 是继承自 [TrackType](media-services-input-metadata-schema.md#TrackType) 的全局复杂类型。  
 
  此类型表示资产文件中的特定音频轨。  
@@ -113,7 +115,7 @@ ms.openlocfilehash: 2274f8b69e82edb2f3e24f23ac6f89dcd7dfcb17
 | **Bitrate** |**xs:int** |由资产文件计算的平均音频比特率（以 bps 为单位）。 只对基本流有效负载进行计算，且不包括打包开销。 |
 | **BitsPerSample** |**xs:int** |wFormatTag 格式类型的每个样本的位数。 |
 
-## <a name="a-namevideotracktypea-videotracktype-inherits-from-tracktype"></a><a name="VideoTrackType"></a> VideoTrackType（继承自 TrackType）
+## <a name="VideoTrackType"></a> VideoTrackType（继承自 TrackType）
 **VideoTrackType** 是继承自 [TrackType](media-services-input-metadata-schema.md#TrackType) 的全局复杂类型。  
 
 此类型表示资产文件中的特定视频轨。  
@@ -139,7 +141,7 @@ ms.openlocfilehash: 2274f8b69e82edb2f3e24f23ac6f89dcd7dfcb17
 | **MaxGOPBitrate** |**xs:int** |此视频轨道的最大 GOP 平均比特率，以千比特/秒为单位。 |
 | **HasBFrames** |**xs:int** |B 帧的视频轨数量。 |
 
-## <a name="a-namemetadatatypea-metadatatype"></a><a name="MetadataType"></a> MetadataType
+## <a name="MetadataType"></a> MetadataType
 **MetadataType** 是全局复杂类型，可对作为键/值字符串的资产文件的元数据进行描述。 例如，键 =“language”，值 =“eng”。  
 
 请参阅本主题末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
@@ -150,7 +152,7 @@ ms.openlocfilehash: 2274f8b69e82edb2f3e24f23ac6f89dcd7dfcb17
 | **键**<br /><br /> 必选 |**xs:string** |键/值对中的键。 |
 | **值**<br /><br /> 必选 |**xs:string** |键/值对中的值。 |
 
-## <a name="a-nameprogramtypea-programtype"></a><a name="ProgramType"></a> ProgramType
+## <a name="ProgramType"></a> ProgramType
 **ProgramType** 是描述节目的全局复杂类型。  
 
 ### <a name="attributes"></a>属性
@@ -163,7 +165,7 @@ ms.openlocfilehash: 2274f8b69e82edb2f3e24f23ac6f89dcd7dfcb17
 | **StartPTS** |**xs: long** |开始演示时间戳。 |
 | **EndPTS** |**xs: long** |结束演示时间戳。 |
 
-## <a name="a-namestreamdispositiontypea-streamdispositiontype"></a><a name="StreamDispositionType"></a> StreamDispositionType
+## <a name="StreamDispositionType"></a> StreamDispositionType
 **StreamDispositionType** 是描述流的全局复杂类型。  
 
 请参阅本主题末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
@@ -183,7 +185,7 @@ ms.openlocfilehash: 2274f8b69e82edb2f3e24f23ac6f89dcd7dfcb17
 | **CleanEffects**<br /><br /> 必选 |**xs:int** |将此属性设置为 1，表示该轨道有清晰的效果。 |
 | **AttachedPic**<br /><br /> 必选 |**xs:int** |将此属性设置为 1，表示该轨道包含图片。 |
 
-## <a name="a-nameprogramsa-programs-element"></a><a name="Programs"></a> 节目元素
+## <a name="Programs"></a> 节目元素
 拥有多个**节目**元素的包装元素。  
 
 ### <a name="child-elements"></a>子元素
@@ -191,7 +193,7 @@ ms.openlocfilehash: 2274f8b69e82edb2f3e24f23ac6f89dcd7dfcb17
 | --- | --- | --- |
 | **节目**<br /><br /> minOccurs=“0” maxOccurs =“unbounded” |[ProgramType](media-services-input-metadata-schema.md#ProgramType) |对于 MPEG-TS 格式的资产文件，包含有关资产文件中节目的信息。 |
 
-## <a name="a-namevideotracksa-videotracks-element"></a><a name="VideoTracks"></a>VideoTracks 元素
+## <a name="VideoTracks"></a>VideoTracks 元素
  拥有多个 **VideoTrack** 元素的包装元素。  
 
  请参阅本主题末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
@@ -201,7 +203,7 @@ ms.openlocfilehash: 2274f8b69e82edb2f3e24f23ac6f89dcd7dfcb17
 | --- | --- | --- |
 | **VideoTrack**<br /><br /> minOccurs=“0” maxOccurs =“unbounded” |[VideoTrackType（继承自 TrackType）](media-services-input-metadata-schema.md#VideoTrackType) |包含有关资产文件中视频轨的信息。 |
 
-## <a name="a-nameaudiotracksa-audiotracks-element"></a><a name="AudioTracks"></a>AudioTracks 元素
+## <a name="AudioTracks"></a>AudioTracks 元素
  拥有多个 **AudioTrack** 元素的包装元素。  
 
  请参阅本主题末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
@@ -211,7 +213,7 @@ ms.openlocfilehash: 2274f8b69e82edb2f3e24f23ac6f89dcd7dfcb17
 | --- | --- | --- |
 | **AudioTrack**<br /><br /> minOccurs=“0” maxOccurs =“unbounded” |[AudioTrackType（继承自 TrackType）](media-services-input-metadata-schema.md#AudioTrackType) |包含有关资产文件中音频轨的信息。 |
 
-## <a name="a-namecodea-schema-code"></a><a name="code"></a> 架构代码
+## <a name="code"></a> 架构代码
     <?xml version="1.0" encoding="utf-8"?>  
     <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" version="1.0"  
                xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2014/07/mediaencoder/inputmetadata"  
@@ -610,7 +612,7 @@ ms.openlocfilehash: 2274f8b69e82edb2f3e24f23ac6f89dcd7dfcb17
     </xs:schema>  
 
 
-## <a name="a-namexmla-xml-example"></a><a name="xml"></a>XML 示例
+## <a name="xml"></a>XML 示例
 下面是输入元数据文件的示例。  
 
     <?xml version="1.0" encoding="utf-8"?>  
@@ -645,10 +647,5 @@ ms.openlocfilehash: 2274f8b69e82edb2f3e24f23ac6f89dcd7dfcb17
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

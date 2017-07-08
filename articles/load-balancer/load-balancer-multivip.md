@@ -13,21 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: cf1eafc7bca5bddeb32f1e1e05e660d6877ed805
-ms.openlocfilehash: 20aed2689e360b46e643ab154f5446c3866b3eb5
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
+ms.openlocfilehash: f40e0501eed8d5f296e7c79d8a35705a695ae6fd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 ---
 
 # <a name="configure-multiple-vips-for-a-cloud-service"></a>为云服务配置多个 VIP
 
-你可以使用 Azure 提供的 IP 地址通过公共 Internet 访问 Azure 云服务。 此公共 IP 地址称为 VIP（虚拟 IP），因为它链接到 Azure Load Balancer，而不是云服务中的虚拟机 (VM) 实例。 你可以使用单个 VIP 访问云服务中的任何 VM 实例。
+你可以使用 Azure 提供的 IP 地址通过公共 Internet 访问 Azure 云服务。 此公共 IP 地址称为 VIP（虚拟 IP），因为它链接到 Azure 负载均衡器，而不是云服务中的虚拟机 (VM) 实例。 你可以使用单个 VIP 访问云服务中的任何 VM 实例。
 
 但是，在某些情况下，你可能需要多个 VIP 作为同一云服务的入口点。 例如，云服务可能托管了多个网站，而这些网站需要使用默认端口 443 建立 SSL 连接，因为每个站点是针对不同的客户或租户托管的。 在此情况下，每个网站都需要有不同的面向公众的 IP 地址。 下图阐明了一个典型的多租户 Web 托管，它需要在同一个公共端口上使用多个 SSL 证书。
 
 ![多 VIP SSL 方案](./media/load-balancer-multivip/Figure1.png)
 
-在上面的示例中，所有 VIP 使用相同的公共端口 (443)，流量重定向到托管所有网站的云服务的内部 IP 地址中唯一专用端口上的一个或多个负载平衡的 VM。
+在上面的示例中，所有 VIP 使用相同的公共端口 (443)，流量重定向到托管所有网站的云服务的内部 IP 地址中唯一专用端口上的一个或多个负载均衡的 VM。
 
 > [!NOTE]
 > 需要使用多个 VIP 的另一种情形是在同一组虚拟机器上托管多个 SQL AlwaysOn 可用性组侦听器。
@@ -37,7 +39,7 @@ ms.openlocfilehash: 20aed2689e360b46e643ab154f5446c3866b3eb5
 > [!NOTE]
 > 有关 VIP 和保留 IP 的定价信息，请参阅 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses/)。
 
-可以使用 PowerShell 来验证云服务使用的 VIP、添加和删除 VIP、将 VIP 关联到终结点，以及在特定 VIP 上配置负载平衡。
+可以使用 PowerShell 来验证云服务使用的 VIP、添加和删除 VIP、将 VIP 关联到终结点，以及在特定 VIP 上配置负载均衡。
 
 ## <a name="limitations"></a>限制
 
@@ -147,9 +149,9 @@ $deployment.VirtualIPs
     ReservedIPName  :
     ExtensionData   :
 
-## <a name="how-to-enable-load-balancing-on-a-specific-vip"></a>如何在特定 VIP 上启用负载平衡
+## <a name="how-to-enable-load-balancing-on-a-specific-vip"></a>如何在特定 VIP 上启用负载均衡
 
-可以将单个 VIP 与多个虚拟机相关联，以实现负载平衡。 例如，你有名为 *myService* 的云服务，以及名为 *myVM1* 和 *myVM2* 的两个虚拟机。 而你的云服务有多个 VIP，其中一个名为 *Vip2*。 要确保发往 *Vip2* 上端口 *81* 的所有流量都在端口 *8181* 上的 *myVM1* 与 *myVM2* 之间平衡，请运行以下 PowerShell 脚本：
+可以将单个 VIP 与多个虚拟机相关联，以实现负载均衡。 例如，你有名为 *myService* 的云服务，以及名为 *myVM1* 和 *myVM2* 的两个虚拟机。 而你的云服务有多个 VIP，其中一个名为 *Vip2*。 要确保发往 *Vip2* 上端口 *81* 的所有流量都在端口 *8181* 上的 *myVM1* 与 *myVM2* 之间平衡，请运行以下 PowerShell 脚本：
 
 ```powershell
 Get-AzureVM -ServiceName myService -Name myVM1 |
@@ -161,7 +163,7 @@ Get-AzureVM -ServiceName myService -Name myVM2 |
     Update-AzureVM
 ```
 
-你也可以更新你的负载均衡器，以使用不同的 VIP。 例如，如果运行以下 PowerShell 命令，则会将负载平衡集更改为使用名为 Vip1 的 VIP：
+你也可以更新你的负载均衡器，以使用不同的 VIP。 例如，如果运行以下 PowerShell 命令，则会将负载均衡集更改为使用名为 Vip1 的 VIP：
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -VirtualIPName Vip1
@@ -169,18 +171,13 @@ Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -Virtual
 
 ## <a name="next-steps"></a>后续步骤
 
-[用于 Azure Load Balancer 的 Log Analytics](load-balancer-monitor-log.md)
+[用于 Azure 负载均衡器的 Log Analytics](load-balancer-monitor-log.md)
 
-[面向 Internet 的负载平衡器概述](load-balancer-internet-overview.md)
+[面向 Internet 的负载均衡器概述](load-balancer-internet-overview.md)
 
-[面向 Internet 的负载平衡器入门](load-balancer-get-started-internet-arm-ps.md)
+[面向 Internet 的负载均衡器入门](load-balancer-get-started-internet-arm-ps.md)
 
 [虚拟网络概述](../virtual-network/virtual-networks-overview.md)
 
 [保留 IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

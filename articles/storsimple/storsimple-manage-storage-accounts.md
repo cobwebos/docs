@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/29/2016
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8e12de291ad93f894967a41d1b29f67757ba0d6c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 4bdef3c0a68b07ee2d6e0ab5344ff7cc41965f1e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -32,7 +34,7 @@ ms.openlocfilehash: 8e12de291ad93f894967a41d1b29f67757ba0d6c
 
  ![“配置”页](./media/storsimple-manage-storage-accounts/HCS_ConfigureService.png)  
 
-存储帐户包含设备通过云服务提供程序访问存储帐户时使用的凭据。 对于 Microsoft Azure 存储帐户，这是帐户名和主访问密钥等凭据。 
+存储帐户包含设备通过云服务提供程序访问存储帐户时使用的凭据。 对于 Microsoft Azure 存储帐户，这些是帐户名和主访问密钥等凭据。 
 
 在“配置”页上，为计费订阅创建的所有存储帐户以表格格式显示，其中包含以下信息：
 
@@ -51,7 +53,7 @@ ms.openlocfilehash: 8e12de291ad93f894967a41d1b29f67757ba0d6c
 可在 StorSimple 设备上使用三种类型的存储帐户。
 
 * **自动生成的存储帐户** – 顾名思义，这种存储帐户是首次创建服务时自动生成的。 若要详细了解如何创建此存储帐户，请参阅[部署本地 StorSimple 设备](storsimple-deployment-walkthrough.md)中的[步骤 1：创建新服务](storsimple-deployment-walkthrough-u1.md#step-1-create-a-new-service)。 
-* **服务订阅中的存储帐户** – 这是与服务的相同订阅关联的 Azure 存储帐户。 若要详细了解如何创建这些存储帐户，请参阅[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)。 
+* **服务订阅中的存储帐户** – 这是与服务的相同订阅关联的 Azure 存储帐户。 若要了解有关如何创建这些存储帐户的详细信息，请参阅[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)。 
 * **服务订阅外部的存储帐户** – 这是不与服务关联的、可能在创建服务之前即已存在的 Azure 存储帐户。
 
 ## <a name="add-a-storage-account"></a>添加存储帐户
@@ -76,9 +78,9 @@ StorSimple 也支持 Azure 门户中创建的 Resource Manager 存储帐户。 �
 可以编辑卷容器使用的存储帐户。 如果编辑当前正在使用的存储帐户，唯一可修改的字段是存储帐户的访问密钥。 可以提供新的存储访问密钥并保存更新的设置。
 
 #### <a name="to-edit-a-storage-account"></a>编辑存储帐户
-1. 在服务登录页上选择你的服务，双击服务名称，然后单击“配置”。
+1. 在服务登录页上，选择你的服务、双击服务名称，然后单击“配置”。
 2. 单击“添加/编辑存储帐户”。
-3. 在“添加/编辑存储帐户”对话框中执行以下操作：
+3. 在“添加/编辑存储帐户”对话框中，执行以下操作：
    
    1. 在“存储帐户”的下拉列表中，选择要修改的现有帐户。 这可能还包括首次创建服务时自动生成的存储帐户。
    2. 如果需要，可以修改“启用 SSL 模式”选项。
@@ -94,7 +96,7 @@ StorSimple 也支持 Azure 门户中创建的 Resource Manager 存储帐户。 �
 > 
 
 #### <a name="to-delete-a-storage-account"></a>删除存储帐户
-1. 在 StorSimple Manager 服务登录页上选择你的服务，双击服务名称，然后单击“配置”。
+1. 在 StorSimple Manager 服务登录页上，选择你的服务、双击服务名称，然后单击“配置”。
 2. 在存储帐户的表格列表中，将鼠标悬停在想要删除的帐户上。
 3. 该存储帐户的最右侧列中将显示一个删除图标 (**x**)。 单击 **x** 图标即可删除凭据。
 4. 系统提示确认时，请单击“是”继续删除。 表格列表随即会更新以反映更改。
@@ -143,10 +145,5 @@ Microsoft Azure 管理员可以通过直接访问存储帐户中重新生成或�
 ## <a name="next-steps"></a>后续步骤
 * 详细了解 [StorSimple 安全性](storsimple-security.md)。
 * 了解有关如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)的详细信息。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

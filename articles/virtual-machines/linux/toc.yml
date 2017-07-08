@@ -37,7 +37,7 @@
     href: tutorial-monitoring.md
   - name: 11 - 管理 VM 安全性
     href: tutorial-azure-security.md
-  - name: 12 - Jenkins CI/CD
+  - name: 12 - 部署 Jenkins
     href: tutorial-jenkins-github-docker-cicd.md
 - name: 示例
   items:
@@ -204,6 +204,8 @@
       href: cli-ps-findimage.md
     - name: 创建自定义 VM 映像
       href: create-upload-generic.md
+    - name: 下载 VHD
+      href: download-vhd.md
     - name: 上传自定义 VM 映像
       href: upload-vhd.md
     - name: 将现有 VM 捕获到映像中
@@ -331,6 +333,8 @@
       href: install-mongodb.md
     - name: MySQL
       href: mysql-install.md
+    - name: OpenShift
+      href: openshift-get-started.md
     - name: PostgreSQL
       href: postgresql-install.md
     - name: 部署 LAMP 堆栈
@@ -378,6 +382,8 @@
       href: migration-classic-resource-manager-faq.md
   - name: 故障排除
     items:
+    - name: 重置 Linux VM 密码
+      href: virtual-machines-linux-reset-password.md
     - name: 了解系统重启
       href: understand-vm-reboot.md
     - name: SSH 连接
@@ -393,6 +399,8 @@
     - name: 分配失败
       href: allocation-failure.md
     - name: 部署问题
+      href: troubleshoot-deploy-vm.md
+    - name: 创建 VM
       href: troubleshoot-deployment-new-vm.md
     - name: 将 VM 重新部署到新的 Azure 节点
       href: redeploy-to-new-node.md
@@ -424,6 +432,8 @@
   items:
   - name: 创作模板
     href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/
   - name: 社区模板
     href: https://azure.microsoft.com/documentation/templates
   - name: 定价

@@ -1,6 +1,6 @@
 ---
-title: "Azure Load Balancer 的 IPv6 概述 | Microsoft Docs"
-description: "了解 Azure Load Balancer 和负载均衡 VM 的 IPv6 支持。"
+title: "Azure 负载均衡器的 IPv6 概述 | Microsoft Docs"
+description: "了解 Azure 负载均衡器和负载均衡 VM 的 IPv6 支持。"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -15,24 +15,26 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: bec4f89556a2daa41e19b0ecb2ab9bbbed849107
-ms.openlocfilehash: 3326b1ff8d1704b225cfb62886fbc992c6171211
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
+ms.openlocfilehash: 397f3e75830acf46b29ac864c77ed3160f4e01e4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 ---
 
-# <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer 的 IPv6 概述
+# <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure 负载均衡器的 IPv6 概述
 
 可以在面向 Internet 的负载均衡器上部署 IPv6 地址。 除了 IPv4 连接以外，这还可以实现以下功能：
 
 * 通过负载均衡器在公共 Internet 客户端与 Azure 虚拟机 (VM) 之间建立本机端到端 IPv6 连接。
 * 在 VM 与公共 Internet 上已启用 IPv6 的客户端之间建立本机端到端 IPv6 输出连接。
 
-下图演示了 Azure Load Balancer 的 IPv6 功能。
+下图演示了 Azure 负载均衡器的 IPv6 功能。
 
-![使用 IPv6 的 Azure Load Balancer](./media/load-balancer-ipv6-overview/load-balancer-ipv6.png)
+![使用 IPv6 的 Azure 负载均衡器](./media/load-balancer-ipv6-overview/load-balancer-ipv6.png)
 
-部署后，已启用 IPv4 或 IPv6 的 Internet 客户端可与面向 Internet 的 Azure Load Balancer 公共 IPv4 或 IPv6 地址（或主机名）通信。 负载均衡器使用网络地址转换 (NAT) 将 IPv6 数据包路由到 VM 的专用 IPv6 地址。 IPv6 Internet 客户端无法与 VM 的 IPv6 地址直接通信。
+部署后，已启用 IPv4 或 IPv6 的 Internet 客户端可与面向 Internet 的 Azure 负载均衡器公共 IPv4 或 IPv6 地址（或主机名）通信。 负载均衡器使用网络地址转换 (NAT) 将 IPv6 数据包路由到 VM 的专用 IPv6 地址。 IPv6 Internet 客户端无法与 VM 的 IPv6 地址直接通信。
 
 ## <a name="features"></a>功能
 
@@ -78,12 +80,7 @@ ms.openlocfilehash: 3326b1ff8d1704b225cfb62886fbc992c6171211
 了解如何部署使用 IPv6 的负载均衡器。
 
 * [IPv6 在各区域的可用性](https://go.microsoft.com/fwlink/?linkid=828357)
-* [使用模板部署具有 IPv6 的负载平衡器](load-balancer-ipv6-internet-template.md)
-* [使用 Azure PowerShell 部署具有 IPv6 的负载平衡器](load-balancer-ipv6-internet-ps.md)
-* [使用 Azure CLI 部署具有 IPv6 的负载平衡器](load-balancer-ipv6-internet-cli.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+* [使用模板部署具有 IPv6 的负载均衡器](load-balancer-ipv6-internet-template.md)
+* [使用 Azure PowerShell 部署具有 IPv6 的负载均衡器](load-balancer-ipv6-internet-ps.md)
+* [使用 Azure CLI 部署具有 IPv6 的负载均衡器](load-balancer-ipv6-internet-cli.md)
 

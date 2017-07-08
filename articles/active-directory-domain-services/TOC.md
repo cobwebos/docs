@@ -7,10 +7,10 @@
 ## [兼容的第三方软件](active-directory-ds-compatible-software.md)
 
 # 入门
-## [创建管理组](active-directory-ds-getting-started.md)
+## [创建管理组](active-directory-ds-getting-started-create-group.md)
 ## [创建或选择虚拟网络](active-directory-ds-getting-started-vnet.md)
 ## [启用 Azure AD DS](active-directory-ds-getting-started-enableaadds.md)
-## [更新 DNS 设置](active-directory-ds-getting-started-dns.md)
+## [更新 DNS 设置](active-directory-ds-getting-started-update-dns.md)
 ## 启用密码同步
 ### [仅限云的租户](active-directory-ds-getting-started-password-sync.md)
 ### [已同步的租户](active-directory-ds-getting-started-password-sync-synced-tenant.md)
@@ -41,12 +41,8 @@
 ## [多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)
 
 # 资源
-## [定价](https://azure.microsoft.com/pricing/details/active-directory-ds/)
 ## [Azure AD 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory)
-## [服务更新](https://azure.microsoft.com/updates/?product=active-directory-ds)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [联系我们](active-directory-ds-contact-us.md)
-
-
-<!--HONumber=Feb17_HO1-->
-
-
+## [定价](https://azure.microsoft.com/pricing/details/active-directory-ds/)
+## [服务更新](https://azure.microsoft.com/updates/?product=active-directory-ds)

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/16/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: bb836357af6d006c18db578164f02fa7bd043b45
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: bf5bd20007c186bfd01b82aa06213ef9e7424a05
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -33,8 +33,8 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="diagnose-data-changes"></a>诊断数据变化
 
-1.    在分析中运行查询，并以时间表的形式进行呈现。 
-2.    单击任何突出显示的峰值点（如有）。
+1.  在分析中运行查询，并以时间表的形式进行呈现。 
+2.  单击任何突出显示的峰值点（如有）。
  
     ![峰值点](./media/app-insights-analytics-diagnostics/peak.png)
 
@@ -48,11 +48,11 @@ ms.lasthandoff: 05/10/2017
 
     另外请注意图表中可以筛选 true 和 false 的两个组件。 false 组件显示了未发生变化的趋势。 换而言之，如果排除了诊断识别出的一系列维度问题，遥测结果不会发生变化。 与此相反，如果包含这些问题，则结果会在突出显示的调查区域内显示出巨大变化。 这表明诊断已经找到了可以解释变化的一系列属性。
 
-4.    如果模式很复杂，则需要将鼠标悬停在“全部显示”上以查看维度。
+4.  如果模式很复杂，则需要将鼠标悬停在“全部显示”上以查看维度。
 
     ![全部显示](./media/app-insights-analytics-diagnostics/show-all.png)
  
-5.    如果诊断没有发现可通知的明显模式，则会显示“无结果”页面。 在这种情况下，建议更改查询方式。 例如，可以缩小分析查询中的时间范围和划分，以进行深入分析，这样也许可以获得更好的结果。
+5.  如果诊断没有发现可通知的明显模式，则会显示“无结果”页面。 在这种情况下，建议更改查询方式。 例如，可以缩小分析查询中的时间范围和划分，以进行深入分析，这样也许可以获得更好的结果。
 
 弄清楚网站的哪个页面在哪个浏览器上存在问题后，就可以直接转到问题页面，并调查最近做出的更改。
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="how-it-works"></a>工作原理
 
-智能诊断使用了先进的基于 [DiffPatterns](app-insights-analytics-reference.md#evaluate-diffpatterns) 操作的非监督式机器学习算法。 该算法会查找也许可以解释数据变化的候选模式。 它会分析每个候选模式对指标的影响，并显示与变化最相关的模式。
+智能诊断使用了先进的基于 [DiffPatterns](app-insights-analytics-reference.md#evaluate-diffpatterns_v2) 操作的非监督式机器学习算法。 该算法会查找也许可以解释数据变化的候选模式。 它会分析每个候选模式对指标的影响，并显示与变化最相关的模式。
 
 ## <a name="no-diagnostic-points"></a>没有诊断点？
 

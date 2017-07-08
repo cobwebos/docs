@@ -63,6 +63,10 @@
 ## [网关 SKU（旧版）](vpn-gateway-about-skus-legacy.md)
 ## 故障排除
 ### [验证到达 VNet 的 VPN 吞吐量](vpn-gateway-validate-throughput-to-vnet.md)
+### [社区建议的 VPN 或防火墙设备设置](vpn-gateway-third-party-settings.md)
+### [点到站点连接问题](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
+### [站点到站点连接间歇性地断开](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
+### [站点到站点连接无法连接](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md) 
 
 # 引用
 ## [PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn)
@@ -80,6 +84,7 @@
 ## [ExpressRoute](/azure/expressroute/)
 
 # 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [博客](https://azure.microsoft.com/blog/topics/networking)
 ## [论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [定价](https://azure.microsoft.com/pricing/details/vpn-gateway)

@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f479602647d67e7048371df76b128e33b27c1014
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 2ab624941fc385f14b62bb5d743927f157955845
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -162,10 +164,5 @@ ms.openlocfilehash: f479602647d67e7048371df76b128e33b27c1014
 * 如果你有兴趣了解全面的 OData 映射过程和用途，请阅读[数据服务 OData 映射](marketplace-publishing-data-service-creation-odata-mapping.md)一文以查看定义、结构和说明。
 * 如果你有兴趣学习和了解特定节点及其参数，请阅读[数据服务 OData 映射节点](marketplace-publishing-data-service-creation-odata-mapping-nodes.md)一文以了解有关定义和说明、 示例和使用案例上下文。
 * 若要返回到用于将数据服务发布到 Azure 应用商店的指定路径，请阅读这篇文章[数据服务发布指南](marketplace-publishing-data-service-creation.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

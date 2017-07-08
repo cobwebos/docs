@@ -16,10 +16,10 @@ ms.workload: NA
 ms.date: 04/14/2017
 ms.author: sashan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 8f1f22d1609dc34369a131e79eb2a1c0be9fe552
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: e33f69bf04b32a31aae3c311c41aa44e4da5016a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -95,7 +95,7 @@ Azure 团队会努力尽快还原服务可用性，但视根本原因而定，�
 有关数据库警报规则的详细信息，请参阅[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)和[跟踪服务运行状况](../monitoring-and-diagnostics/insights-service-health.md)。
 
 ### <a name="enable-auditing"></a>启用审核
-如果需要通过审核来访问数据库，你需要在恢复数据库后启用审核。 如果客户端应用程序使用 *.database.secure.windows.net 模式的安全连接字符串，就充分表明需要审核。 有关详细信息，请参阅[数据库审核](sql-database-auditing.md)。
+如果需要通过审核来访问数据库，你需要在恢复数据库后启用审核。 有关详细信息，请参阅[数据库审核](sql-database-auditing.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 若要了解 Azure SQL 数据库的自动备份，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)

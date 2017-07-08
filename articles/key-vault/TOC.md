@@ -14,16 +14,18 @@
 ### [服务限制](key-vault-service-limits.md)
 ### [HSM 保护的密钥](key-vault-hsm-protected-keys.md)
 ### [迁移到.NET 2.0](key-vault-dotnet2api-release-notes.md)
+### 概述
+#### [安全体系概述](key-vault-ovw-security-worlds.md)
+#### [软删除概述](key-vault-ovw-soft-delete.md)
+#### [限制概述](key-vault-ovw-throttling.md)
 
 ## 管理
 ### [Azure 密钥保管库日志记录](key-vault-logging.md)
 ### [在防火墙后面访问](key-vault-access-behind-firewall.md)
 ### [更改租户 ID](key-vault-subscription-move-fix.md)
+### [使用组授予访问权限](key-vault-group-permissions-for-apps.md)
 ### [可用性和冗余](key-vault-disaster-recovery-guidance.md)
 ### [保护密钥保管库](key-vault-secure-your-key-vault.md)
-### [安全体系概述](key-vault-ovw-security-worlds.md)
-### [软删除概述](key-vault-ovw-soft-delete.md)
-### [存储帐户密钥概述](key-vault-ovw-storage-keys.md)
 
 ## 自动化
 ### [Azure 自动化](automation-manage-key-vault.md)
@@ -47,7 +49,8 @@
 
 # 资源
 ## [关于键、密钥和证书](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)
-## [代码示例](https://www.microsoft.com/download/details.aspx?id=45343)
-## [定价](https://azure.microsoft.com/pricing/details/key-vault/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [博客](http://blogs.technet.com/b/kv/)
+## [代码示例](https://www.microsoft.com/download/details.aspx?id=45343)
 ## [论坛](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureKeyVault)
+## [定价](https://azure.microsoft.com/pricing/details/key-vault/)

@@ -45,7 +45,7 @@
 ## [Azure 负载均衡器的 Log Analytics](load-balancer-monitor-log.md)
 ## [为 Linux VM 配置 DHCPv6](load-balancer-ipv6-for-linux.md)
 ## 故障排除
-### [对 Azure 负载平衡器进行故障排除](load-balancer-troubleshoot.md)
+### [对 Azure 负载均衡器进行故障排除](load-balancer-troubleshoot.md)
 
 # 引用
 ## [PowerShell](/powershell/module/azurerm.network)
@@ -67,5 +67,6 @@
 ## [DNS](/azure/dns/)
 
 # 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [定价](https://azure.microsoft.com/pricing/details/load-balancer/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=load-balancer)

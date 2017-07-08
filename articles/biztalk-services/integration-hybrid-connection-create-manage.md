@@ -14,13 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: ad6e548b5998d5ee0b66e3d33da9fa97efb7c97c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: fceb6b0671e0f77c1f8f92bbb49c986fda3660ea
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/03/2017
 
 
 ---
 # <a name="create-and-manage-hybrid-connections"></a>创建和管理混合连接
+
+> [!IMPORTANT]
+> BizTalk 混合连接已停用，并由应用服务混合连接替代。 有关详细信息，包括如何管理现有 BizTalk 混合连接，请参阅 [Azure App Service 混合连接](../app-service/app-service-hybrid-connections.md)。
+
+
 ## <a name="overview-of-the-steps"></a>步骤概述
 1. 通过在专用网络中为本地资源输入**主机名**或 **FQDN**，来创建混合连接。
 2. 将 Azure Web 应用或 Azure 移动应用链接到混合连接。
@@ -42,7 +49,7 @@ ms.openlocfilehash: ad6e548b5998d5ee0b66e3d33da9fa97efb7c97c
 > 
 > 
 
-## <a name="a-namecreatehybridconnectionacreate-a-hybrid-connection"></a><a name="CreateHybridConnection"></a>创建混合连接
+## <a name="CreateHybridConnection"></a>创建混合连接
 可以在 Azure 门户中使用 Web 应用**或**使用 BizTalk 服务创建混合连接。 
 
 **若要使用 Web 应用创建混合连接**，请参阅[将 Azure Web 应用连接到本地资源](../app-service-web/web-sites-hybrid-connection-get-started.md)。 还可以从 Web 应用安装混合连接管理器 (HCM)，这是首选方法。 
@@ -68,10 +75,10 @@ ms.openlocfilehash: ad6e548b5998d5ee0b66e3d33da9fa97efb7c97c
 * 可创建多个混合连接。 请参阅 [BizTalk 服务：版本图表](biztalk-editions-feature-chart.md)，了解允许的连接数。 
 * 每个混合连接均使用连接字符串对进行创建：用于发送的应用程序密钥和用于侦听的本地密钥。 每一对都有主要密钥和辅助密钥。 
 
-## <a name="a-namelinkwebsitealink-your-azure-app-service-web-app-or-mobile-app"></a><a name="LinkWebSite"></a>链接 Azure App Service Web 应用或移动应用
-若要将 Azure App Service 中的 Web 应用或移动应用链接到现有混合连接，请在“混合连接”边栏选项卡中选择“使用现有混合连接”。 请参阅[在 Azure App Service 中使用混合连接访问本地资源](../app-service-web/web-sites-hybrid-connection-get-started.md)。
+## <a name="LinkWebSite"></a>链接 Azure 应用服务 Web 应用或移动应用
+若要将 Azure 应用服务中的 Web 应用或移动应用链接到现有混合连接，请在“混合连接”边栏选项卡中选择“使用现有混合连接”。 请参阅[在 Azure 应用服务中使用混合连接访问本地资源](../app-service-web/web-sites-hybrid-connection-get-started.md)。
 
-## <a name="a-nameinstallhcmainstall-the-hybrid-connection-manager-on-premises"></a><a name="InstallHCM"></a>本地安装混合连接管理器
+## <a name="InstallHCM"></a>本地安装混合连接管理器
 创建混合连接后，将混合连接管理器安装在本地资源上。 它可以从 Azure Web 应用或从 BizTalk 服务下载。 BizTalk 服务步骤： 
 
 1. 登录到 [Azure 经典门户](http://go.microsoft.com/fwlink/p/?LinkID=213885)。
@@ -106,7 +113,7 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 * 混合连接管理器必须使用有效的本地连接字符串才能进行授权。 Azure Web 应用或移动应用必须使用有效的应用程序连接字符串才能进行授权。
 * 通过在另一台服务器上安装混合连接管理器的另一实例，可以扩展混合连接。 配置本地侦听器以便将相同的地址用作第一个本地侦听器。 在此情况下，流量随机分布（轮循机制）在活动的本地侦听器之间。 
 
-## <a name="a-namemanagehybridconnectionamanage-hybrid-connections"></a><a name="ManageHybridConnection"></a>管理混合连接
+## <a name="ManageHybridConnection"></a>管理混合连接
 若要管理混合连接，你可以：
 
 * 使用 Azure 门户并转到 BizTalk 服务。 
@@ -151,9 +158,4 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 [HybridConnectionTab]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionTab.png
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionManageConn.png 
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

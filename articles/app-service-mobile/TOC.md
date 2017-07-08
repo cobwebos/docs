@@ -217,21 +217,22 @@
 ## [Azure 门户](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 # 资源
-## [定价](https://azure.microsoft.com/en-us/pricing/details/app-service/)
+## [应用服务最佳实践](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [WebJob 资源列表](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)
+## [定价](https://azure.microsoft.com/en-us/pricing/details/app-service/)
+## [服务更新](https://azure.microsoft.com/updates/?product=mobile-services)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-mobile-services)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services)
 ## 示例
 ### [现场工程师](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/)
 ### [结构化数据同步](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-todo-list-files/)
 ### 快速入门已完成
-#### [Windows](https://azure.microsoft.com/resources/samples/app-service-mobile-windows-quickstart/)
-#### [Xamarin.Android](https://azure.microsoft.com/resources/samples/app-service-mobile-xamarin-android-quickstart/)
 #### [.NET 后端](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-backend-quickstart/)
 #### [Node.js 后端](https://azure.microsoft.com/resources/samples/app-service-mobile-nodejs-backend-quickstart/)
-## [服务更新](https://azure.microsoft.com/updates/?product=mobile-services)
-## [应用服务最佳实践](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-## [WebJob 资源列表](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Windows](https://azure.microsoft.com/resources/samples/app-service-mobile-windows-quickstart/)
+#### [Xamarin.Android](https://azure.microsoft.com/resources/samples/app-service-mobile-xamarin-android-quickstart/)
 
 
 

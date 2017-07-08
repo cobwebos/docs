@@ -2,11 +2,11 @@
 # 概述
 ## [什么是 Service Fabric？](service-fabric-overview.md)
 ## [了解微服务](service-fabric-overview-microservices.md)
+## [大图](service-fabric-content-roadmap.md)
 ## [应用程序方案](service-fabric-application-scenarios.md)
 ## [模式和方案](service-fabric-patterns-and-scenarios.md)
 ## [体系结构](service-fabric-architecture.md)
 ## [术语](service-fabric-technical-overview.md)
-## [入门](service-fabric-content-roadmap.md)
 
 # 入门
 ## 设置开发环境
@@ -131,6 +131,10 @@
 #### [Windows](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 #### [Linux](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
 
+### 与 API 管理集成
+#### [概述](service-fabric-api-management-overview.md)
+#### [快速入门](service-fabric-api-management-quick-start.md)
+
 ### 从云服务迁移
 #### [比较云服务和 Service Fabric](service-fabric-cloud-services-migration-differences.md)
 #### [迁移到 Service Fabric](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
@@ -142,6 +146,7 @@
 ### [了解 ImageStoreConnectionString 设置](service-fabric-image-store-connection-string.md)
 ### 部署或删除应用程序
 #### [PowerShell](service-fabric-deploy-remove-applications.md)
+#### [Azure CLI 2.0](service-fabric-application-lifecycle-azure-cli-2-0.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
 #### [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
 ### 升级应用程序
@@ -215,7 +220,8 @@
 ### [可视化群集](service-fabric-visualizing-your-cluster.md)
 ### [连接到安全群集](service-fabric-connect-to-secure-cluster.md)
 
-### [使用 Azure CLI 管理群集](service-fabric-azure-cli.md)
+### [使用 XPlat CLI 管理群集](service-fabric-azure-cli.md)
+### [使用 Azure CLI 2.0 命令管理群集](service-fabric-azure-cli-2-0.md)
 ### [修补群集节点](service-fabric-patch-orchestration-application.md)
 
 ### 管理和协调群集资源
@@ -258,18 +264,19 @@
 
 # 引用
 ## [PowerShell (Azure)](/powershell/module/azurerm.servicefabric/)
-## [PowerShell](/powershell/azure/overview?view=azureservicefabricps)
+## [PowerShell](/powershell/module/servicefabric/?view=azureservicefabricps)
 ## [Azure CLI](/cli/azure/sf)
 ## [Java API](/java/api/overview/azure/servicefabric)
 ## [.NET](/dotnet/api/overview/azure/servicefabric?view=azure-dotnet)
 ## [REST](/rest/api/servicefabric)
 
 # 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [有关 Service Fabric 的常见问题](service-fabric-common-questions.md)
-## [Service Fabric 支持选项](service-fabric-support.md)
-## [代码示例](http://aka.ms/servicefabricsamples)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
-## [定价](https://azure.microsoft.com/pricing/details/service-fabric/)
-## [服务更新](https://azure.microsoft.com/updates/?product=service-fabric)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric)
+## [定价](https://azure.microsoft.com/pricing/details/service-fabric/)
+## [代码示例](http://aka.ms/servicefabricsamples)
+## [Service Fabric 支持选项](service-fabric-support.md)
+## [服务更新](https://azure.microsoft.com/updates/?product=service-fabric)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=service-fabric)

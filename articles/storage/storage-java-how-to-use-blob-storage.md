@@ -14,9 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
-ms.openlocfilehash: 1dd0736634c23658b8e3fc0f2ff4dbf9740db47f
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 33630644e2b3b6565d009276145ecf220802cc63
+ms.openlocfilehash: b8a4eca600b458802a7a23851bb80ea4da2664ef
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -31,7 +33,7 @@ Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中
 本文将演示如何使用 Microsoft Azure Blob 存储执行常见任务。 这些示例用 Java 编写并使用 [Azure Storage SDK for Java][Azure Storage SDK for Java]。 涉及的任务包括**上传**、**列出**、**下载**和**删除**Blob。 有关 Blob 的详细信息，请参阅[后续步骤](#Next-Steps)部分。
 
 > [!NOTE]
-> SDK 提供给在 Android 设备上使用 Azure 存储空间的开发人员。 有关详细信息，请参阅 [Azure Storage SDK for Android][Azure Storage SDK for Android]。
+> SDK 提供给在 Android 设备上使用 Azure 存储的开发人员。 有关详细信息，请参阅 [Azure Storage SDK for Android][Azure Storage SDK for Android]。
 >
 >
 
@@ -123,8 +125,8 @@ containerPermissions.setPublicAccess(BlobContainerPublicAccessType.CONTAINER);
 container.uploadPermissions(containerPermissions);
 ```
 
-## <a name="upload-a-blob-into-a-container"></a>将 Blob 上载到容器中
-若要将文件上载到 Blob，请获取容器引用，并使用它获取 Blob 引用。 获取 Blob 引用后，可以通过对该 Blob 引用调用 upload 来上载任何数据流。 此操作将创建 Blob（如果该 Blob 不存在），或者覆盖它（如果该 Blob 存在）。 下面的代码示例演示了这一点，并假定已创建容器。
+## <a name="upload-a-blob-into-a-container"></a>将 Blob 上传到容器中
+若要将文件上传到 Blob，请获取容器引用，并使用它获取 Blob 引用。 获取 Blob 引用后，可以通过对该 Blob 引用调用 upload 来上传任何数据流。 此操作将创建 Blob（如果该 Blob 不存在），或者覆盖它（如果该 Blob 存在）。 下面的代码示例演示了这一点，并假定已创建容器。
 
 ```java
 try
@@ -154,7 +156,7 @@ catch (Exception e)
 ```
 
 ## <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
-若要列出容器中的 Blob，请先获取容器引用，就像上载 Blob 时执行的操作一样。 可将容器的 **listBlobs** 方法用于 **for** 循环。 以下代码将容器中每个 Blob 的 URI 输出到控制台。
+若要列出容器中的 Blob，请先获取容器引用，就像上传 Blob 时执行的操作一样。 可将容器的 **listBlobs** 方法用于 **for** 循环。 以下代码将容器中每个 Blob 的 URI 输出到控制台。
 
 ```java
 try
@@ -182,12 +184,12 @@ catch (Exception e)
 
 请注意，你可以命名 Blob，并在其名称中包含路径信息。 这将创建一个虚拟目录结构，你可以像传统文件系统一样组织和遍历。 注意，该目录结构仅仅是虚拟的 - Blob 存储中唯一可用的资源是容器和 Blob。 但是，客户端库提供 **CloudBlobDirectory** 对象来引用虚拟目录，并简化了以此方式组织的 Blob 的使用过程。
 
-例如，你可以创建一个名为“photos”的容器，你可以在其中上载名为“rootphoto1”、“2010/photo1”、“2010/photo2”和“2011/photo1”的 Blob。 这将在“photos”容器中创建虚拟目录“2010”和“2011”。 对“photos”容器调用 **listBlobs** 时，返回的集合将包含表示最高层所含目录和 Blob 的 **CloudBlobDirectory** 和 **CloudBlob** 对象。 在本例中，将返回目录“2010”和“2011”以及照片“rootphoto1”。 可使用 **instanceof** 运算符来区分这些对象。
+例如，你可以创建一个名为“photos”的容器，你可以在其中上传名为“rootphoto1”、“2010/photo1”、“2010/photo2”和“2011/photo1”的 Blob。 这将在“photos”容器中创建虚拟目录“2010”和“2011”。 对“photos”容器调用 **listBlobs** 时，返回的集合将包含表示最高层所含目录和 Blob 的 **CloudBlobDirectory** 和 **CloudBlob** 对象。 在本例中，将返回目录“2010”和“2011”以及照片“rootphoto1”。 可使用 **instanceof** 运算符来区分这些对象。
 
 还可以向 **listBlobs** 方法传入参数，并将 **useFlatBlobListing** 参数设置为 true。 这将导致返回每个 Blob，而无论目录如何。 有关详细信息，请参阅 [Azure 存储客户端 SDK 参考]中的 **CloudBlobContainer.listBlobs**。
 
 ## <a name="download-a-blob"></a>下载 Blob
-若要下载 Blob，请执行之前用于上载 Blob 的相同步骤以获取 Blob 引用。 在上载示例中，您对 Blob 对象调用了 upload。 在下面的示例中，调用 download 以将 Blob 内容传输到可用于将 Blob 保存到本地文件的流对象（如 **FileOutputStream**）。
+若要下载 Blob，请执行之前用于上传 Blob 的相同步骤以获取 Blob 引用。 在上传示例中，您对 Blob 对象调用了 upload。 在下面的示例中，调用 download 以将 Blob 内容传输到可用于将 Blob 保存到本地文件的流对象（如 **FileOutputStream**）。
 
 ```java
 try
@@ -287,9 +289,4 @@ catch (Exception e)
 [Azure 存储客户端 SDK 参考]: http://dl.windowsazure.com/storage/javadoc/
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

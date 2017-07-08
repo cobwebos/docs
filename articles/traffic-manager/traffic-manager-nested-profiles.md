@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: e274d10b59c6f198962974fda0a804f4d993c324
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 2dacb50ab9b8604e48f5ba08e8f8e94fa4a71bd5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/09/2017
 
 ---
 
@@ -45,7 +46,7 @@ ms.lasthandoff: 03/22/2017
 
 在此配置中，通过父配置文件定向的流量可跨区域正常分发。 在西欧，嵌套式配置文件根据分配的权重将流量分发到生产和测试终结点。
 
-当父配置文件使用“性能”流量路由方法时，必须为每个终结点分配一个位置。 可在配置终结点时分配该位置。 请选择离你的部署最近的 Azure 区域。 Azure 区域是 Internet 延迟表支持的位置值。 有关详细信息，请参阅[流量管理器“性能”流量路由方法](traffic-manager-routing-methods.md#performance-traffic-routing-method)。
+当父配置文件使用“性能”流量路由方法时，必须为每个终结点分配一个位置。 可在配置终结点时分配该位置。 请选择离你的部署最近的 Azure 区域。 Azure 区域是 Internet 延迟表支持的位置值。 有关详细信息，请参阅[流量管理器“性能”流量路由方法](traffic-manager-routing-methods.md#a-name--performanceaperformance-traffic-routing-method)。
 
 ## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>示例 2：嵌套式配置文件中的终结点监视
 

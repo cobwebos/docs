@@ -1,6 +1,6 @@
 ---
 title: "适用于 Azure Web 应用的基于 Azure Resource Manager 的 PowerShell 命令 | Microsoft Docs"
-description: "了解如何使用基于 Azure Resource Manager 的新 PowerShell 命令来管理 Azure Web Apps。"
+description: "了解如何使用基于 Azure Resource Manager 的新 PowerShell 命令来管理 Azure Web 应用。"
 services: app-service\web
 documentationcenter: 
 author: ahmedelnably
@@ -14,13 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2016
 ms.author: aelnably
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d8f76a2857766c481ec6cdec52274b5bd370ccfc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8d574f051a327ba0409e6f25a5886af673d3d5e0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="using-azure-resource-manager-based-powershell-to-manage-azure-web-apps"></a>使用基于 Azure Resource Manager 的 PowerShell 来管理 Azure Web Apps
+# <a name="using-azure-resource-manager-based-powershell-to-manage-azure-web-apps"></a>使用基于 Azure Resource Manager 的 PowerShell 来管理 Azure Web 应用
 > [!div class="op_single_selector"]
 > * [Azure CLI](app-service-web-app-azure-resource-manager-xplat-cli.md)
 > * [Azure PowerShell](app-service-web-app-azure-resource-manager-powershell.md)
@@ -33,8 +35,8 @@ Microsoft Azure PowerShell 版本 1.0.0 中添加了新命令，可让用户使�
 
 若要了解 PowerShell cmdlet 的完整参数和选项列表，请参阅 [Web 应用基于 Azure Resource Manager 的 PowerShell Cmdlet 的完整 Cmdlet 参考](https://msdn.microsoft.com/library/mt619237.aspx)
 
-## <a name="managing-app-service-plans"></a>管理 App Service 计划
-### <a name="create-an-app-service-plan"></a>创建 App Service 计划
+## <a name="managing-app-service-plans"></a>管理应用服务计划
+### <a name="create-an-app-service-plan"></a>创建应用服务计划
 若要创建应用服务计划，请使用 **New-AzureRmAppServicePlan** cmdlet。
 
 以下是各种参数的说明：
@@ -59,43 +61,43 @@ Microsoft Azure PowerShell 版本 1.0.0 中添加了新命令，可让用户使�
 
 若要详细了解应用服务环境，请查看 [Introduction to App Service Environment](app-service-app-service-environment-intro.md)（应用服务环境简介）
 
-### <a name="list-existing-app-service-plans"></a>列出现有的 App Service 计划
+### <a name="list-existing-app-service-plans"></a>列出现有的应用服务计划
 若要列出现有的应用服务计划，请使用 **Get-AzureRmAppServicePlan** cmdlet。
 
 若要列出订阅之下的所有应用服务计划，请使用： 
 
     Get-AzureRmAppServicePlan
 
-若要列出特定资源组之下的所有 App Service 计划，请使用：
+若要列出特定资源组之下的所有应用服务计划，请使用：
 
     Get-AzureRmAppServicePlan -ResourceGroupname ContosoAzureResourceGroup
 
-若要获取特定的 App Service 计划，请使用：
+若要获取特定的应用服务计划，请使用：
 
     Get-AzureRmAppServicePlan -Name ContosoAppServicePlan
 
 
-### <a name="configure-an-existing-app-service-plan"></a>配置现有的 App Service 计划
+### <a name="configure-an-existing-app-service-plan"></a>配置现有的应用服务计划
 若要更改现有应用服务计划的设置，请使用 **Set-AzureRmAppServicePlan** cmdlet。 可以更改层、辅助角色大小和辅助角色数目 
 
     Set-AzureRmAppServicePlan -Name ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup -Tier Standard -WorkerSize Medium -NumberofWorkers 9
 
-#### <a name="scaling-an-app-service-plan"></a>缩放 App Service 计划
-若要缩放现有的 App Service 计划，请使用：
+#### <a name="scaling-an-app-service-plan"></a>缩放应用服务计划
+若要缩放现有的应用服务计划，请使用：
 
     Set-AzureRmAppServicePlan -Name ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup -NumberofWorkers 9
 
-#### <a name="changing-the-worker-size-of-an-app-service-plan"></a>更改 App Service 计划的辅助角色大小
-若要更改现有 App Service 计划中的辅助角色大小，请使用：
+#### <a name="changing-the-worker-size-of-an-app-service-plan"></a>更改应用服务计划的辅助角色大小
+若要更改现有应用服务计划中的辅助角色大小，请使用：
 
     Set-AzureRmAppServicePlan -Name ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup -WorkerSize Medium
 
-#### <a name="changing-the-tier-of-an-app-service-plan"></a>更改 App Service 计划的层
-若要更改现有 App Service 计划的层，请使用：
+#### <a name="changing-the-tier-of-an-app-service-plan"></a>更改应用服务计划的层
+若要更改现有应用服务计划的层，请使用：
 
     Set-AzureRmAppServicePlan -Name ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup -Tier Standard
 
-### <a name="delete-an-existing-app-service-plan"></a>删除现有的 App Service 计划
+### <a name="delete-an-existing-app-service-plan"></a>删除现有的应用服务计划
 若要删除现有应用服务计划，需先移动或删除所有分配的 Web 应用， 然后即可使用 **Remove-AzureRmAppServicePlan** cmdlet 删除应用服务计划。
 
     Remove-AzureRmAppServicePlan -Name ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup
@@ -197,14 +199,9 @@ Microsoft Azure PowerShell 版本 1.0.0 中添加了新命令，可让用户使�
 
 ### <a name="next-steps"></a>后续步骤
 * 若要了解 Azure Resource Manager PowerShell 支持，请参阅[将 Azure PowerShell 与 Azure Resource Manager 搭配使用](../powershell-azure-resource-manager.md)。
-* 若要了解应用服务环境，请参阅 [Introduction to App Service Environment](app-service-app-service-environment-intro.md)（应用服务环境简介）。
+* 若要了解应用服务环境，请参阅 [Introduction to 应用服务Environment（应用服务环境简介）。](app-service-app-service-environment-intro.md)
 * 若要了解如何使用 PowerShell 管理应用服务 SSL 证书，请参阅[使用 PowerShell 创建 SSL 证书绑定](app-service-web-app-powershell-ssl-binding.md)。
 * 若要了解适用于 Azure Web 应用的基于 Azure Resource Manager 的 PowerShell cmdlet 的完整列表，请参阅 [Azure Cmdlet Reference of Web Apps Azure Resource Manager PowerShell Cmdlets](https://msdn.microsoft.com/library/mt619237.aspx)（Web 应用 Azure Resource Manager PowerShell Cmdlet 的 Azure Cmdlet 参考）。
 * * 若要了解如何使用 CLI 管理应用服务，请参阅 [Using Azure Resource Manager-Based XPlat CLI for Azure Web App](app-service-web-app-azure-resource-manager-xplat-cli.md)（使用基于 Azure Resource Manager 且适用于 Azure Web 应用的 XPlat CLI）。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

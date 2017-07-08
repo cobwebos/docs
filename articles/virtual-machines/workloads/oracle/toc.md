@@ -6,3 +6,5 @@
 ## [配置 Oracle ASM](configure-oracle-asm.md)
 ## [配置 Oracle DataGuard](configuring-oracle-dataguard.md)
 ## [配置 Oracle GoldenGate](configure-oracle-golden-gate.md)
+# 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)

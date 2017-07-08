@@ -1,6 +1,6 @@
 # 概述
 ## [什么是 Application Insights？](app-insights-overview.md)
-## [在 devOps 周期中监视性能](app-insights-detect-triage-diagnose.md)
+## [DevOps 的性能监视概述](app-insights-detect-triage-diagnose.md)
 
 # 入门
 ## 监视 Azure
@@ -80,7 +80,6 @@
 #### [搜索](app-insights-diagnostic-search.md)
 #### [指标](app-insights-metrics-explorer.md)
 #### [实时流](app-insights-live-stream.md)
-
 #### [应用程序映射](app-insights-app-map.md)
 #### [HockeyApp 数据](app-insights-hockeyapp-bridge-app.md)
 
@@ -93,6 +92,7 @@
 ### 使用情况
 #### [概述](app-insights-usage-overview.md)
 #### [用户、会话、事件](app-insights-usage-segmentation.md)
+#### [漏斗图](app-insights-understand-usage-patterns.md)
 #### [保留](app-insights-usage-retention.md)
 #### [工作簿](app-insights-usage-workbooks.md)
 
@@ -111,6 +111,7 @@
 ### [设置警报](app-insights-powershell-alerts.md)
 ### [获取 Azure 诊断](app-insights-powershell-azure-diagnostics.md)
 ### [自动执行 Microsoft Flow](app-insights-automate-with-flow.md)
+### [使用 Azure 逻辑应用自动执行](automate-with-logic-apps.md)
 
 ## 开发
 
@@ -154,6 +155,7 @@
 ## [遥测关联](application-insights-correlation.md)
 
 # 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 
 ## [语言和平台](app-insights-platforms.md)
 

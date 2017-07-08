@@ -70,7 +70,8 @@
 ### [使用门户分配策略](resource-manager-policy-portal.md)
 ### [使用脚本分配策略](resource-manager-policy-create-assign.md)
 ### 示例
-#### [资源标记](resource-manager-policy-tags.md)
+#### [标记](resource-manager-policy-tags.md)
+#### [命名约定](resource-manager-policy-naming-convention.md)
 #### [存储](resource-manager-policy-storage.md)
 #### [Linux VM](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 #### [Windows VM](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
@@ -119,8 +120,9 @@
 ## [REST](/rest/api/resources/)
 
 # 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [服务更新](https://azure.microsoft.com/updates/?product=azure-resource-manager)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [限制请求](resource-manager-request-limits.md)
 ## [跟踪异步操作](resource-manager-async-operations.md)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)
-## [服务更新](https://azure.microsoft.com/updates/?product=azure-resource-manager)

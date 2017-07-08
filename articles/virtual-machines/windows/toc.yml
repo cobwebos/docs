@@ -134,13 +134,13 @@
       href: create-vm-specialized.md
     - name: 使用模板创建 VM
       href: ps-template.md
-    - name: '使用 C# 创建 VM'
+    - name: '使用 C# 创建/管理 VM'
       href: csharp.md
     - name: '使用 C# 和模板创建 VM'
       href: csharp-template.md
     - name: 使用 Chef 创建 VM
       href: chef-automation.md
-    - name: 使用 Python 创建 VM
+    - name: 使用 Python 创建/管理 VM
       href: python.md
     - name: 使用 Terraform 创建 VM
       items:
@@ -173,8 +173,6 @@
       href: cli-manage.md
     - name: 使用 CLI 管理 VM
       href: cli-deploy-templates.md
-    - name: '使用 C# 管理 VM'
-      href: csharp-manage.md
   - name: 使用 RDP 连接
     items:
     - name: 登录到虚拟机
@@ -187,6 +185,8 @@
       href: hybrid-use-benefit-licensing.md
     - name: 使用 Windows 客户端映像
       href: client-images.md
+    - name: 下载 VHD
+      href: download-vhd.md
     - name: 准备要上传的 VHD
       href: prepare-for-upload-vhd-image.md
     - name: 创建托管磁盘映像
@@ -366,15 +366,22 @@
         href: troubleshoot-specific-rdp-errors.md
     - name: 重置 RDP 密码
       href: reset-rdp.md
+    - name: 重置 NIC
+      href: reset-network-interface.md
     - name: 启动诊断
  
       href: boot-diagnostics.md
     - name: 创建 VM
       href: troubleshoot-deployment-new-vm.md
+    - name: 部署问题
+ 
+      href: troubleshoot-deploy-vm.md
     - name: 重新启动 VM 或调整其大小
       href: restart-resize-error-troubleshooting.md
     - name: 应用程序访问
       href: troubleshoot-app-connection.md
+    - name: “激活”问题
+      href: troubleshoot-activation-problems.md
     - name: 分配失败
       href: allocation-failure.md
     - name: 重新部署 VM
@@ -409,6 +416,8 @@
   items:
   - name: 创作模板
     href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/
   - name: 社区模板
     href: https://azure.microsoft.com/documentation/templates
   - name: 定价

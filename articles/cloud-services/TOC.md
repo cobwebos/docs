@@ -114,8 +114,9 @@
 ## [REST](https://msdn.microsoft.com/library/azure/ee460812)
 
 # 资源
-## [定价](https://azure.microsoft.com/pricing/details/cloud-services/)
-## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment)
-## [视频](https://azure.microsoft.com/documentation/videos/index/?services=cloud-services)
-## [服务更新](https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform=)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment)
+## [定价](https://azure.microsoft.com/pricing/details/cloud-services/)
+## [服务更新](https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform=)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=cloud-services)

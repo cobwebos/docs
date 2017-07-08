@@ -91,6 +91,8 @@
 ## [删除 Azure 备份保管库](backup-azure-delete-vault.md)
 ## [基于角色的访问控制](backup-rbac-rs-vault.md)
 ## [混合备份的安全性](backup-azure-security-feature.md)
+## [配置 Azure 备份报表](backup-azure-configure-reports.md)
+## [Azure 备份报表的数据模型](backup-azure-reports-data-model.md)
 ## [配置脱机备份](backup-azure-backup-import-export.md)
 ## [替换磁带库](backup-azure-backup-cloud-as-tape.md)
 ## [Linux VM 的应用程序一致性备份](backup-azure-linux-app-consistent.md)
@@ -100,7 +102,8 @@
 ## [.NET](/dotnet/api/microsoft.azure.management.recoveryservices.backup)
 
 # 资源
-## [定价](https://azure.microsoft.com/pricing/details/backup/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup)
-## [视频](https://azure.microsoft.com/documentation/videos/index/?services=backup)
+## [定价](https://azure.microsoft.com/pricing/details/backup/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=backup)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=backup)

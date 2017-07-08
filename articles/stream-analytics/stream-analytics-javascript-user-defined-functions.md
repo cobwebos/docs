@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: e917385cb9afc13ba459aed48e5f06cc156efac5
-ms.lasthandoff: 05/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 3dfe8571114d936cc07d887392ec294ec8a67120
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/04/2017
 
 ---
 
@@ -43,11 +44,11 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
 ## <a name="add-a-javascript-user-defined-function-in-the-azure-portal"></a>在 Azure 门户中添加 JavaScript 用户定义的函数
 若要在现有的流分析作业中创建一个简单的 JavaScript 用户定义的函数，请执行以下步骤：
 
-1.    在 Azure 门户中找到你的流分析作业。
+1.  在 Azure 门户中找到你的流分析作业。
 2.  在“作业拓扑”下面选择你的函数。 此时将显示一个空白的函数列表。
-3.    若要新建用户的定义函数，请选择“添加”。
-4.    在“新建函数”边栏选项卡中，为“函数类型”选择“JavaScript”。 编辑器中将显示默认函数模板。
-5.    为“UDF 别名”输入 **hex2Int**，然后按如下所示更改函数实现：
+3.  若要新建用户的定义函数，请选择“添加”。
+4.  在“新建函数”边栏选项卡中，为“函数类型”选择“JavaScript”。 编辑器中将显示默认函数模板。
+5.  为“UDF 别名”输入 **hex2Int**，然后按如下所示更改函数实现：
 
     ```
     // Convert Hex value to integer.
@@ -56,13 +57,13 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
     }
     ```
 
-6.    选择“保存”。 该函数随即显示在函数列表中。
-7.    选择新的 **hex2Int** 函数并检查函数定义。 所有函数的函数别名带有 **UDF** 前缀。 在流分析查询中调用该函数时，需要*包含该前缀*。 在本例中，调用的是 **UDF.hex2Int**。
+6.  选择“保存”。 该函数随即显示在函数列表中。
+7.  选择新的 **hex2Int** 函数并检查函数定义。 所有函数的函数别名带有 **UDF** 前缀。 在流分析查询中调用该函数时，需要*包含该前缀*。 在本例中，调用的是 **UDF.hex2Int**。
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>在查询中调用 JavaScript 用户定义的函数
 
 1. 在查询编辑器中的“作业拓扑”下面选择“查询”。
-2.    编辑查询，然后调用该用户定义的函数，如下所示：
+2.  编辑查询，然后调用该用户定义的函数，如下所示：
 
     ```
     SELECT
@@ -74,8 +75,8 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
         InputStream
     ```
 
-3.    若要上载示例数据文件，请右键单击作业输入。
-4.    若要测试查询，请选择“测试”。
+3.  若要上传示例数据文件，请右键单击作业输入。
+4.  若要测试查询，请选择“测试”。
 
 
 ## <a name="supported-javascript-objects"></a>支持的 JavaScript 对象
@@ -144,7 +145,7 @@ FROM
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [Azure 流分析入门](stream-analytics-get-started.md)
+* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

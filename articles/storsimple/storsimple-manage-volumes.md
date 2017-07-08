@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/11/2016
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2b79492914bb52e970343a2e829622122f03642b
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 31ed9dad8ba56a3746873b7b35e678e97743fbfe
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -68,7 +70,7 @@ StorSimple Manager 服务是 Azure 经典门户的一个扩展，可让用户通
      ![“添加卷向导”中的“基本设置”](./media/storsimple-manage-volumes/AddVolume1.png)
 4. 在“添加卷向导”中的“基本设置” 下，执行以下操作：
    
-   1. 为卷提供“名称”。
+   1. 为卷提供“名称”  。
    2. 指定卷的“预配的容量”（以 GB 或 TB 为单位）。 对于物理设备，容量必须介于 1 GB 和 64 TB 之间。 在 StorSimple 虚拟设备上，可以为卷预配的最大容量是 30 TB。
    3. 选择卷的“使用类型”。 如果针对存档数据使用分层卷，则选中“将此卷用于不常访问的存档数据”复选框可将卷的重复数据删除区块大小更改为 512 KB。 如果不选择此选项，相应的分层卷将使用 64 KB 区块大小。 重复数据删除区块越大，设备将大型存档数据传输到云端的速度就越快。（分层卷以前称为主卷。）
    4. 单击箭头图标![箭头图标](./media/storsimple-manage-volumes/HCS_ArrowIcon.png)以转到“其他设置”页。
@@ -113,7 +115,7 @@ StorSimple Manager 服务是 Azure 经典门户的一个扩展，可让用户通
      > 无法更改卷的“为此卷启用默认备份”选项。
      > 
      > 
-6. 单击对号图标保存更改 ![对号图标](./media/storsimple-manage-volumes/HCS_CheckIcon.png)。 Azure 经典门户将显示一条正在更新卷消息。 成功更新卷后，它将显示一条成功消息。
+6. 单击对号图标保存更改 ![check-icon](./media/storsimple-manage-volumes/HCS_CheckIcon.png)。 Azure 经典门户将显示一条正在更新卷消息。 成功更新卷后，它将显示一条成功消息。
 7. 如果要扩展卷，请在 Windows 主机计算机上完成以下步骤：
    
    1. 转到“计算机管理” ->“磁盘管理”。
@@ -177,10 +179,5 @@ StorSimple Manager 服务是 Azure 经典门户的一个扩展，可让用户通
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[克隆 StorSimple 卷](storsimple-clone-volume.md)。
 * 了解如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

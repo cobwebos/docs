@@ -16,17 +16,17 @@ ms.tgt_pltfrm: na
 ms.date: 10/27/2016
 ms.author: liamca
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0740bc1f9e8b8be3c59518d9b23b8a1411c6d16a
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: bfb6fc04d3aa4937336083d04137e22694e5146c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/09/2017
 
 ---
 
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>在 Azure 搜索中生成查询的 Lucene 查询语法示例
 为 Azure 搜索构建查询时，可使用默认的[简单查询语法](https://msdn.microsoft.com/library/azure/dn798920.aspx)或备用的 [Azure 搜索中的 Lucene 查询分析器](https://msdn.microsoft.com/library/azure/mt589323.aspx)。 Lucene 查询分析器支持更复杂的查询构造，例如字段范围查询、模糊搜索、邻近搜索、术语提升以及正则表达式搜索。
 
-在本文中可逐步查看并排显示 Lucene 查询语法和结果的示例。 根据在 [JSFiddle](https://jsfiddle.net/)（这是测试脚本和 HTML 的在线代码编辑器）中的预加载搜索索引运行的示例。 有关查询处理的背景信息，请参阅 [Azure 搜索中全文搜索的工作原理](search-lucene-query-architecture.md)。
+在本文中可逐步查看并排显示 Lucene 查询语法和结果的示例。 根据在 [JSFiddle](https://jsfiddle.net)（这是测试脚本和 HTML 的在线代码编辑器）中的预加载搜索索引运行的示例。 有关查询处理的背景信息，请参阅 [Azure 搜索中全文搜索的工作原理](search-lucene-query-architecture.md)。
 
 右键单击查询示例 URL，在单独的浏览器窗口中打开 JSFiddle。
 
