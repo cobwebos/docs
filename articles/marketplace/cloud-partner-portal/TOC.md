@@ -32,3 +32,5 @@
 ## [管理发布者个人资料](./cloud-partner-portal-manage-publisher-profile.md)
 ## [管理用户](./cloud-partner-portal-manage-users.md)
 ## [获取支持](./cloud-partner-portal-support-for-cloud-partner-portal.md)
+# 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)

@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2017
+ms.date: 06/29/2017
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: e5b622be66c3e009c67a00dd380efd87b013c920
-ms.lasthandoff: 03/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: ed35d081b191ec41ed9e5970515057a4715c0d59
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -72,6 +73,21 @@ ms.lasthandoff: 03/17/2017
 1. 选择“保存”。
 
     默认情况下，一旦启用，此策略会应用到当前实验室中所有 VM。 若要从特定 VM 中删除此设置，请打开 VM 的边栏选项卡，然后更改其“自动关闭”设置 
+
+## <a name="set-auto-start"></a>设置自动启动
+通过自动启动策略可以指定启动当前实验室中虚 VM 的时间。  
+
+1. 在实验室的“配置和策略”边栏选项卡上，选择“自动启动”。
+   
+    ![自动启动](./media/devtest-lab-set-lab-policy/auto-start.png)
+
+2. 选择“开启”启用此策略，选择“关闭”禁用此策略。
+
+3. 如果启用此策略，请指定计划的启动时间、时区以及在每周的哪几天应用该时间。 
+
+4. 选择“保存”。
+
+    一旦启用，此策略不会自动应用到当前实验室中所有 VM。 若要将设置应用到特定 VM，请打开 VM 的边栏选项卡，然后更改其“自动启动”设置 
 
 ## <a name="next-steps"></a>后续步骤
 

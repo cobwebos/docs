@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: ankshah
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 9a17d9fe0c252e2327ffbd75fde38d1f97ce3cc9
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: e08c0ba9c1fc0bab72ae8c1158aafaad4f66920e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -50,7 +50,7 @@ ms.lasthandoff: 05/31/2017
 从 Internet 上的计算机访问 Azure Cosmos DB 数据库帐户时，必须将客户端 IP 地址或计算机的 IP 地址范围添加到 Azure Cosmos DB 数据库帐户 IP 地址的允许列表中。 
 
 ## <a id="configure-ip-policy"></a>配置 IP 访问控制策略
-可以在 Azure 门户中设置 IP 访问控制策略，也可以通过 [Azure CLI](cli-samples.md)、[Azure Powershell](powershell-samples.md) 或 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 通过更新 `ipRangeFilter` 属性以编程方式设置 IP 访问控制策略。 IP 地址/范围必须以逗号分隔，且不能包含空格。 示例：“13.91.6.132,13.91.6.1/24”。 通过这些方法更新数据库帐户时，请确保填充所有属性以防止重置为默认设置。
+可以在 Azure 门户中设置 IP 访问控制策略，也可以通过 [Azure CLI](cli-samples.md)、[Azure Powershell](powershell-samples.md) 或 [REST API](/rest/api/documentdb/) 通过更新 `ipRangeFilter` 属性以编程方式设置 IP 访问控制策略。 IP 地址/范围必须以逗号分隔，且不能包含空格。 示例：“13.91.6.132,13.91.6.1/24”。 通过这些方法更新数据库帐户时，请确保填充所有属性以防止重置为默认设置。
 
 > [!NOTE]
 > 通过启用 Azure Cosmos DB 数据库帐户的 IP 访问控制策略，阻止从 IP 地址范围已配置的允许列表外部的计算机访问 Azure Cosmos DB 数据库帐户。 通过此模型，也将阻止从门户浏览数据平面操作，以确保访问控制的完整性。

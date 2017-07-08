@@ -20,7 +20,8 @@
 ### [禁用 Stretch Database](/sql/sql-server/stretch-database/disable-stretch-database-and-bring-back-remote-data)
 
 # 资源
-## [定价](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [博客](https://blogs.technet.microsoft.com/dataplatforminsider/tag/stretch-database/)
+## [定价](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=sql-server-stretch-database)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=sql-server-stretch-database)

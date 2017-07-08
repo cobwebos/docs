@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/29/2016
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2dfc682fa54577ec5ab9d8a1e21ea82f035cc41e
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0894908fc4d050e7890dd21e698bf3981a7413f7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -117,10 +119,5 @@ Azure 经典门户“配置”页包含你可以在由 StorSimple Manager 服务
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[为 StorSimple 设备配置 MPIO](storsimple-configure-mpio-windows-server.md)。
 * 了解如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

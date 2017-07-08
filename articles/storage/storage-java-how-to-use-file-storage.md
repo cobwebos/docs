@@ -1,6 +1,6 @@
 ---
 title: "如何通过 Java 使用文件存储 | Microsoft Docs"
-description: "了解如何使用 Azure 文件服务上载、下载、列出和删除文件。 用 Java 编写的示例。"
+description: "了解如何使用 Azure 文件服务上传、下载、列出和删除文件。 用 Java 编写的示例。"
 services: storage
 documentationcenter: java
 author: robinsh
@@ -14,9 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 60d4bcafa51a6eedea06901a0557d13b4e85ec7a
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 33630644e2b3b6565d009276145ecf220802cc63
+ms.openlocfilehash: 49b35ff1b82f5384b105d99ce95773648a11f6f4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -99,17 +101,17 @@ if (share.createIfNotExists()) {
 
 而在目前，**share** 保留对名为 **sampleshare** 的共享的引用。
 
-## <a name="how-to-upload-a-file"></a>如何：上载文件
-Azure 文件存储共享至少包含文件所在的根目录。 在本部分，你将学习如何将文件从本地存储上载到共享所在的根目录。
+## <a name="how-to-upload-a-file"></a>如何：上传文件
+Azure 文件存储共享至少包含文件所在的根目录。 在本部分，你将学习如何将文件从本地存储上传到共享所在的根目录。
 
-上载文件的第一步是获取对文件所在的目录的引用。 为此，需要调用共享对象的 **getRootDirectoryReference** 方法。
+上传文件的第一步是获取对文件所在的目录的引用。 为此，需要调用共享对象的 **getRootDirectoryReference** 方法。
 
 ```java
 //Get a reference to the root directory for the share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 ```
 
-现在，你已经有了共享所在的根目录的引用，因此可以使用以下代码来上载文件。
+现在，你已经有了共享所在的根目录的引用，因此可以使用以下代码来上传文件。
 
 ```java
         // Define the path to a local file.
@@ -230,13 +232,8 @@ try
 * [用于 Java 的 Azure 存储 SDK](https://github.com/azure/azure-storage-java)
 * [用于 Android 的 Azure 存储 SDK](https://github.com/azure/azure-storage-android)
 * [Azure 存储客户端 SDK 参考](http://dl.windowsazure.com/storage/javadoc/)
-* [Azure 存储空间服务 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+* [Azure 存储服务 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 * [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

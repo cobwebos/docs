@@ -105,3 +105,5 @@
 #### [令牌参考](active-directory-v2-tokens.md)
 #### [证书凭据](active-directory-certificate-credentials.md)
 ### [范围](active-directory-v2-scopes.md)
+# 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)

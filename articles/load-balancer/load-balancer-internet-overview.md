@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 1a0f69e6530f1ab3734e1a44e5be056aacb0fff0
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: c420b38fbe8054bc4b701f89ebc417677ca47a27
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
@@ -32,7 +32,7 @@ Azure 负载均衡器将传入流量的公用 IP 地址和端口号映射到虚�
 
 下图显示了公用和专用 TCP 端口 80 的 Web 流量的负载均衡终结点，由三个虚拟机共享。 三台虚拟机位于负载均衡集中。
 
-![公共负载均衡器示例](./media/load-balancer-internet-overview/IC727496.png))
+![公共负载均衡器示例](./media/load-balancer-internet-overview/IC727496.png)
 
 图 1 - Web 流量的负载均衡终结点
 

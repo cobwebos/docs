@@ -48,3 +48,5 @@
 ### [常见问题](multi-factor-authentication-faq.md)
 ### [提问](https://social.msdn.microsoft.com/Forums/newthread?category=windowsazureplatform&forum=windowsazureactiveauthentication&prof=required)
 ### [NPS 扩展错误](multi-factor-authentication-nps-errors.md)
+# 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)

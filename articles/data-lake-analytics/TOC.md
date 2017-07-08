@@ -23,15 +23,11 @@
 ### [U-SQL 基础知识](data-lake-analytics-u-sql-get-started.md)
 ### [U-SQL 语言参考](https://msdn.microsoft.com/library/azure/mt591959)
 ### [U-SQL 目录](data-lake-analytics-u-sql-catalog.md)
-### [U-SQL 联接](data-lake-analytics-u-sql-combine-data-with-joins.md)
-### [U-SQL 开窗函数](data-lake-analytics-use-window-functions.md)
 ### [U-SQL 用户定义的运算符](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 ### [U-SQL Python 扩展](data-lake-analytics-u-sql-python-extensions.md)
 ### [U-SQL R 扩展](data-lake-analytics-u-sql-r-extensions.md)
 ### [U-SQL 认知扩展](data-lake-analytics-u-sql-cognitive.md)
-### [使用 U-SQL 目录构建代码和数据](data-lake-analytics-use-u-sql-catalog.md)
 ### [分析网站日志](data-lake-analytics-analyze-weblogs.md)
-### [使用 U-SQL 交互式教程](data-lake-analytics-use-interactive-tutorials.md)
 
 ## 调试 U-SQL 程序
 ### [作业的监视和故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
@@ -48,9 +44,10 @@
 ## [CLI 2.0](https://docs.microsoft.com/cli/azure/dla)
 
 # 资源
-## [服务更新](https://azure.microsoft.com/updates/?product=data-lake-analytics)
-## [定价](https://azure.microsoft.com/pricing/details/data-lake-analytics/)
-## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-data-lake)
-## [在 UserVoice 上提供反馈](https://feedback.azure.com/forums/327234-data-lake)
 ## [Azure Data Lake 博客](https://blogs.msdn.microsoft.com/azuredatalake/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [在 UserVoice 上提供反馈](https://feedback.azure.com/forums/327234-data-lake)
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
+## [定价](https://azure.microsoft.com/pricing/details/data-lake-analytics/)
+## [服务更新](https://azure.microsoft.com/updates/?product=data-lake-analytics)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-data-lake)

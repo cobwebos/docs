@@ -1,11 +1,14 @@
 # 概述
 ## [什么是 Azure Analysis Services？](analysis-services-overview.md)
 ## [支持的数据源](analysis-services-datasource.md)
+## [身份验证和用户权限](analysis-services-manage-users.md)
 
 # 快速入门
 ## [创建服务器 - 门户](analysis-services-create-server.md)
 ## [部署模型 - SSDT](analysis-services-deploy.md)
 
+# 示例
+## [GitHub 上的 Analysis Services 示例](https://github.com/Microsoft/Analysis-Services)
 
 # 教程
 ## 创建和部署模型
@@ -29,9 +32,9 @@
 
 # 操作说明 
 ## [管理服务器](analysis-services-manage.md)
-## [管理用户](analysis-services-manage-users.md)
+## [管理数据库用户](analysis-services-database-users.md)
+## [管理服务器管理员](analysis-services-server-admins.md)
 ## [集成本地数据网关](analysis-services-gateway.md)
-## [连接到服务器](analysis-services-connect.md)
 ## [使用 Excel 进行连接](analysis-services-connect-excel.md)
 ## [使用 Power BI 进行连接](analysis-services-connect-pbi.md)
 ## [获取客户端库](analysis-services-data-providers.md)
@@ -44,13 +47,15 @@
 ## [REST](/rest/api/analysisservices)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
+## [表格模型脚本语言 (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
 
 # 资源
 ## [Analysis Services 团队博客](https://blogs.msdn.microsoft.com/analysisservices/)
 ## [Azure Analysis Services 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices)
-## [反馈](https://feedback.azure.com/forums/556165-azure-analysis-services)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-analysis-services)
-## [定价](https://azure.microsoft.com/pricing/details/analysis-services/)
-## [视频](https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [Azure 状态](https://azure.microsoft.com/status/)
+## [反馈](https://feedback.azure.com/forums/556165-azure-analysis-services)
+## [定价](https://azure.microsoft.com/pricing/details/analysis-services/)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-analysis-services)
+## [视频](https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest)
 

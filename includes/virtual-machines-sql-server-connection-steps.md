@@ -1,12 +1,12 @@
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>在 Windows 防火墙中为数据库引擎的默认实例打开 TCP 端口
 1. 通过远程桌面连接到虚拟机。 有关连接到 VM 的详细说明，请参阅[使用远程桌面打开 SQL VM](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#open-the-vm-with-remote-desktop)。
-2. 登录后，在开始屏幕中，键入“WF.msc”，然后按 ENTER。
+2. 登录后，在开始屏幕中，键入 **“WF.msc”** ，然后按 ENTER。
    
     ![启动防火墙程序](./media/virtual-machines-sql-server-connection-steps/12Open-WF.png)
-3. 在“高级安全 Windows 防火墙”的左窗格中，右键单击“入站规则”，然后在操作窗格中单击“新建规则”。
+3. 在 **“高级安全 Windows 防火墙”** 的左窗格中，右键单击 **“入站规则”** ，然后在操作窗格中单击 **“新建规则”** 。
    
     ![新建规则](./media/virtual-machines-sql-server-connection-steps/13New-FW-Rule.png)
-4. 在“新建入站规则向导”对话框中，在“规则类型”下，选择“端口”，然后单击“下一步”。
+4. 在 **“新建入站规则向导”** 对话框中，在 **“规则类型”** 下，选择 **“端口”** ，然后单击 **“下一步”** 。
 5. 在“协议和端口”对话框中，使用默认“TCP”。 然后，在“特定本地端口”框中，键入数据库引擎实例的端口号（即默认实例对应的端口号“1433”，或在终结点步骤中为专用端口选择的端口号）。
    
     ![TCP 端口 1433](./media/virtual-machines-sql-server-connection-steps/14Port-1433.png)

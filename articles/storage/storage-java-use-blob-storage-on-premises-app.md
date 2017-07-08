@@ -14,9 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/17/2016
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 27d088291d93ce936a9b2465a13a47e62270fb84
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff0c9f9c800b0e4764efb88e43087bd96fa820e9
+ms.openlocfilehash: a172b881fa38a69f4510df94f5797b7a56940c52
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -29,7 +31,7 @@ ms.openlocfilehash: 27d088291d93ce936a9b2465a13a47e62270fb84
 * 已安装 Azure SDK。
 * 适用于 Azure Libraries for Java 的 JAR 以及任何适用的依赖项 JAR 已安装并且位于 Java 编译器使用的生成路径中。 若要了解如何安装 Azure Libraries for Java，请参阅[下载用于 Java 的 Azure SDK](../java-download-azure-sdk.md)。
 * 已设置了一个 Azure 存储帐户。 本文中的代码将使用存储帐户的帐户名称和帐户密钥。 有关创建存储帐户的信息，请参阅[如何创建存储帐户](storage-create-storage-account.md#create-a-storage-account)；有关检索帐户密钥的信息，请参阅[查看并复制存储访问密钥](storage-create-storage-account.md#view-and-copy-storage-access-keys)。
-* 创建了已命名的本地映像文件，存储路径为 c:\\myimages\\image1.jpg。 或者，在示例中修改   **FileInputStream** 构造函数，以使用其他映像路径和文件名。
+* 创建了已命名的本地映像文件，存储路径为 c:\\myimages\\image1.jpg。 或者，在示例中修改 **FileInputStream** 构造函数，以使用其他映像路径和文件名。
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
@@ -404,12 +406,7 @@ public class DeleteContainer {
 
 * [用于 Java 的 Azure 存储 SDK](https://github.com/azure/azure-storage-java)
 * [Azure 存储客户端 SDK 参考](http://dl.windowsazure.com/storage/javadoc/)
-* [Azure 存储空间服务 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+* [Azure 存储服务 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

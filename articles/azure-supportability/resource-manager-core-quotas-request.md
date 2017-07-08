@@ -7,9 +7,11 @@ ms.date: 1/18/2017
 ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2373cf227cbed4f6657e31088b11dca5223ce5fe
 ms.openlocfilehash: cb6c5b3e86f126d4110d1cd29d8c9891e356e414
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -29,7 +31,7 @@ ms.openlocfilehash: cb6c5b3e86f126d4110d1cd29d8c9891e356e414
 
     ![“配额基本信息”边栏选项卡](./media/resource-manager-core-quotas-request/Basics-blade.png)
 
-2. 将部署模型选择为“资源管理器”并选择一个位置。
+2. 将部署模型选择为“ Resource Manager ”并选择一个位置。
 
     ![“配额问题”边栏选项卡](./media/resource-manager-core-quotas-request/Problem-step.png)
 
@@ -43,9 +45,4 @@ ms.openlocfilehash: cb6c5b3e86f126d4110d1cd29d8c9891e356e414
 
 - 若要删除某行，请从 SKU 系列下拉列表中取消选中 SKU，或单击“x”丢弃图标。
 为每个 SKU 系列输入所需的配额后，在“问题步骤”页面上单击“下一步”，继续创建支持请求。
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

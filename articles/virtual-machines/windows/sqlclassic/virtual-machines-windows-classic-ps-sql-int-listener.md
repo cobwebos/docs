@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: df0e99dd79c970dfc4d66565c1286c0c9a5ec532
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: fea70b389b1f1d6af963e3f14fdc48e8d857dd53
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -27,12 +27,12 @@ ms.lasthandoff: 05/18/2017
 > [!div class="op_single_selector"]
 > * [内部侦听器](../classic/ps-sql-int-listener.md)
 > * [外部侦听器](../classic/ps-sql-ext-listener.md)
-> 
-> 
+>
+>
 
 ## <a name="overview"></a>概述
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Azure 提供两个不同的部署模型用于创建和处理资源：[Azure Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍经典部署模型的用法。 我们建议在大多数新部署中使用 Resource Manager 模型。
 
 若要在 Resource Manager 模型中配置 Always On 可用性组的侦听器，请参阅[在 Azure 中配置 Always On 可用性组的负载均衡器](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)。
@@ -69,37 +69,37 @@ ms.lasthandoff: 05/18/2017
 6. 运行 `Get-AzurePublishSettingsFile`。 此 cmdlet 将你定向到浏览器，以将发布设置文件下载到本地目录。 系统可能会提示输入 Azure 订阅的登录凭据。
 
 7. 结合下载的发布设置文件的路径运行以下 `Import-AzurePublishSettingsFile` 命令：
-   
+
         Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
-   
+
     导入发布设置文件后，便可以在 PowerShell 会话中管理 Azure 订阅。
-    
+
 8. 对于 *ILB*，请分配一个静态 IP 地址。 运行以下命令检查当前虚拟网络配置：
-   
+
         (Get-AzureVNetConfig).XMLConfiguration
 9. 记下包含副本所在 VM 的子网的 *Subnet* 名称。 脚本中的 $SubnetName 参数将要使用此名称。
 
 10. 记下包含副本所在 VM 的子网的 *VirtualNetworkSite* 名称和起始 *AddressPrefix*。 再通过将这两个值传递给 `Test-AzureStaticVNetIP` 命令并检查 *AvailableAddresses* 来查找可用的 IP 地址。 例如，如果虚拟网络名为 *MyVNet*，并包含从 *172.16.0.128* 开始的子网地址范围，则以下命令将列出可用地址：
-   
+
         (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
 11. 选择一个可用地址，并将其用于下一步骤中的脚本的 $ILBStaticIP 参数。
 
 12. 将以下 PowerShell 脚本复制到文本编辑器，并根据环境设置变量值。 已经为某些参数提供了默认值。  
 
-    使用地缘组的现有部署不能添加 ILB。 有关 ILB 要求的详细信息，请参阅[内部负载均衡器概述](../../../load-balancer/load-balancer-internal-overview.md)。 
-    
+    使用地缘组的现有部署不能添加 ILB。 有关 ILB 要求的详细信息，请参阅[内部负载均衡器概述](../../../load-balancer/load-balancer-internal-overview.md)。
+
     此外，如果可用性组跨 Azure 区域，则你必须在每个数据中心内对云服务和节点运行该脚本一次。
-   
+
         # Define variables
         $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
         $AGNodes = "<VM1>","<VM2>","<VM3>" # all availability group nodes containing replicas in the same cloud service, separated by commas
         $SubnetName = "<MySubnetName>" # subnet name that the replicas use in the virtual network
         $ILBStaticIP = "<MyILBStaticIPAddress>" # static IP address for the ILB in the subnet
         $ILBName = "AGListenerLB" # customize the ILB name or use this default value
-   
+
         # Create the ILB
         Add-AzureInternalLoadBalancer -InternalLoadBalancerName $ILBName -SubnetName $SubnetName -ServiceName $ServiceName -StaticVNetIPAddress $ILBStaticIP
-   
+
         # Configure a load-balanced endpoint for each node in $AGNodes by using ILB
         ForEach ($node in $AGNodes)
         {
@@ -107,11 +107,6 @@ ms.lasthandoff: 05/18/2017
         }
 
 13. 设置变量后，将脚本从文本编辑器复制到 PowerShell 会话中运行。 如果提示符仍然显示 **>>**，请再次按 Enter，以确保脚本开始运行。
-
-> [!NOTE]
-> 由于 Azure 经典门户目前不支持 ILB，因此不会显示 ILB 或终结点。 但是，如果负载均衡器在经典门户中运行，`Get-AzureEndpoint` 将返回内部 IP 地址。 否则，将返回 null。
-> 
-> 
 
 ## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>如果需要，请验证是否已安装 KB2854082
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
@@ -128,33 +123,33 @@ ms.lasthandoff: 05/18/2017
 
 ### <a name="configure-the-cluster-resources-in-powershell"></a>在 PowerShell 中配置群集资源
 1. 对于 ILB，必须使用前面创建的 ILB 的 IP 地址。 在 PowerShell 中使用以下脚本获取此 IP 地址：
-   
+
         # Define variables
         $ServiceName="<MyServiceName>" # the name of the cloud service that contains the AG nodes
         (Get-AzureInternalLoadBalancer -ServiceName $ServiceName).IPAddress
 
 2. 在某个 VM 上，将操作系统的 PowerShell 脚本复制到文本编辑器中，然后将变量设置为之前记下的值。
-   
+
     对于 Windows Server 2012 或更高版本，请使用以下脚本：
-   
+
         # Define variables
         $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
         $IPResourceName = "<IPResourceName>" # the IP address resource name
         $ILBIP = “<X.X.X.X>” # the IP address of the ILB
-   
+
         Import-Module FailoverClusters
-   
+
         Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
-   
+
     对于 Windows Server 2008 R2，请使用以下脚本：
-   
+
         # Define variables
         $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
         $IPResourceName = "<IPResourceName>" # the IP address resource name
         $ILBIP = “<X.X.X.X>” # the IP address of the ILB
-   
+
         Import-Module FailoverClusters
-   
+
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
 3. 设置变量之后，打开提升的 Windows PowerShell 窗口，然后将文本编辑器中的脚本粘贴到 Azure PowerShell 会话中运行。 如果提示符仍然显示 **>>**，请再次按 Enter，确保脚本开始运行。
@@ -173,5 +168,4 @@ ms.lasthandoff: 05/18/2017
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [Listener-Next-Steps](../../../../includes/virtual-machines-ag-listener-next-steps.md)]
-
 

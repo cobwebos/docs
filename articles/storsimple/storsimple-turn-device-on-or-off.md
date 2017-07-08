@@ -15,26 +15,17 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 6bfbb0b5eaae3fb3ce45d719ea1d3dec48ed0467
-ms.openlocfilehash: 359aaa1af6765270d9fe0f449007fcb4323b0ad4
-ms.lasthandoff: 02/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.openlocfilehash: 74196c7d3989cc748a27026c04ea837b29a2785f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/06/2017
 
 
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>打开或关闭 StorSimple 8000 系列设备
 ## <a name="overview"></a>概述
 在正常的系统操作过程中，无需关闭 Microsoft Azure StorSimple 设备。 但是，你可能需要打开新设备或不得已关闭了的设备。 在必须更换故障硬件，移动设备的物理位置或让设备暂停服务的情况下，通常需要关机。 本教程将介绍在不同情况下打开和关闭 StorSimple 设备所需的过程。
-
-下表列出了打开和关闭 StorSimple 设备的各种情况，并提供了相应过程的链接。
-
-| 方案 | 参考主题 |
-|:--- |:--- |
-| 打开新设备 |[打开新设备](#turn-on-a-new-device)<ul><li>[只有主机箱的新设备](#new-device-with-primary-enclosure-only)</li><li>[配有 EBOD 机箱的新设备](#new-device-with-ebod-enclosure)</li></ul> |
-| 关闭后打开设备 |[关闭后打开设备](#turn-on-a-device-after-shutdown)<ul><li>[只有主机箱的设备](#device-with-primary-enclosure-only)</li><li>[配有 EBOD 机箱的设备](#device-with-ebod-enclosure)</li></ul> |
-| 断电后打开设备 |[断电后打开设备](#turn-on-a-device-after-a-power-loss)<ul><li>[只有主机箱的设备](#8100)</li><li>[配有 EBOD 机箱的设备](#8600)</li></ul> |
-| 在主机箱和 EBOD 连接丢失后打开设备 |[在主机箱和 EBOD 机箱连接丢失后打开设备](#turn-on-a-device-after-the-primary-and-ebod-enclosure-connection-is-lost) |
-| 关闭正在运行的设备 |[关闭正在运行的设备](#turn-off-a-running-device)<ul><li>[只有主机箱的设备](#8100a)</li><li>[配有 EBOD 机箱的设备](#8600a)</li></ul> |
 
 ## <a name="turn-on-a-new-device"></a>打开新设备
 根据设备是 8100 还是 8600 型号，第一次打开 StorSimple 设备的步骤有所不同。 8100 采用单个主机箱，而 8600 是配有主机箱和 EBOD 机箱的双机箱设备。 将在以下各节中介绍这两个型号的详细步骤。
@@ -146,7 +137,7 @@ StorSimple 8600 型号配有一个主机箱和一个 EBOD 机箱。 需要将这
 7. 检查绿色 LED 是否亮起，确保 EBOD 机箱已打开。
 8. 打开主机箱。
 9. 检查控制器的绿色 LED 是否亮起，确保主机箱已打开。
-10. 检查 SAS 通道 LED（每个 EBOD 控制器有&4; 个）是否全都亮起，以便确认主机箱与 EBOD 机箱的连接良好。
+10. 检查 SAS 通道 LED（每个 EBOD 控制器有 4 个）是否全都亮起，以便确认主机箱与 EBOD 机箱的连接良好。
 
 > [!IMPORTANT]
 > 如果 SAS 电缆有缺陷或 EBOD 机箱与主机箱之间的连接不正确，当你打开系统时，它将进入恢复模式。 如果发生这种情况，请 [联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)。

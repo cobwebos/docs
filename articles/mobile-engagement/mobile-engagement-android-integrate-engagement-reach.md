@@ -12,12 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: Java
 ms.topic: article
-ms.date: 08/19/2016
+ms.date: 06/27/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fd8ba95ee1fb2703926fb35cdb49e6a503637a7d
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 26ba47b19f3a503693d60d344ad39b9eba74fe99
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -28,16 +29,11 @@ ms.lasthandoff: 11/17/2016
 > 
 
 ## <a name="standard-integration"></a>标准的集成
-Reach SDK 需要 **Android 支持库 (v4)**。
-
-在 **Eclipse** 中将库添加到项目中的最快捷方法是 `Right click on your project -> Android Tools -> Add Support Library...`。
-
-如果未使用 Eclipse，则可以阅读[此处]的说明。
 
 从项目中的 SDK 复制 Reach 资源文件：
 
-* 将使用 SDK 所附的 `res/layout` 文件夹中的文件复制到你的应用程序的 `res/layout` 文件夹中。
-* 将使用 SDK 所附的 `res/drawable` 文件夹中的文件复制到你的应用程序的 `res/drawable` 文件夹中。
+* 将随 SDK 交付的 `res/layout` 文件夹中的文件复制到你的应用程序的 `res/layout` 文件夹中。
+* 将随 SDK 所附的 `res/drawable` 文件夹中的文件复制到你的应用程序的 `res/drawable` 文件夹中。
 
 编辑你的 `AndroidManifest.xml` 文件：
 
@@ -92,7 +88,7 @@ Reach SDK 需要 **Android 支持库 (v4)**。
           <meta-data android:name="engagement:reach:notification:icon" android:value="<name_of_icon_WITHOUT_file_extension_and_WITHOUT_'@drawable/'>" />
 
 > [!IMPORTANT]
-> 如果打算在创建市场活动时使用系统通知，则**必需**使用本部分。 Android 将阻止显示没有图标的系统通知。 因此，如果你省略此部分，则最终用户将无法收到这些通知。
+> 如果打算在创建市场宣传活动时使用系统通知，则**必需**使用本部分。 Android 将阻止显示没有图标的系统通知。 因此，如果你省略此部分，则最终用户将无法收到这些通知。
 > 
 > 
 
@@ -102,15 +98,11 @@ Reach SDK 需要 **Android 支持库 (v4)**。
           <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
   
   * 在 Android M 上，如果你的应用程序目标为 Android API 级别23 或更高级别，则 ``WRITE_EXTERNAL_STORAGE`` 权限需要用户批准。 请阅读[本部分](mobile-engagement-android-integrate-engagement.md#android-m-permissions)。
-* 针对系统通知，如果设备应设置为响铃和/或振动，也可以市场宣传活动中指定。 为使其正常工作，必须确保声明了以下权限（在 `</application>` 标记之后）：
+* 针对系统通知，如果设备应设置为响铃和/或振动，也可以在市场宣传活动中指定。 为使其正常工作，必须确保声明了以下权限（在 `</application>` 标记之后）：
   
           <uses-permission android:name="android.permission.VIBRATE" />
   
   在没有此权限的情况下，如果你在“市场宣传活动管理员”中选中响铃或振动选项，Android 会阻止显示系统通知。
-* 如果你使用 **ProGuard** 构建应用程序，并且发生了与 Android 支持库或 Engagement jar 相关的错误，请将以下行添加到你的 `proguard.cfg` 文件中：
-  
-          -dontwarn android.**
-          -keep class android.support.v4.** { *; }
 
 ## <a name="native-push"></a>原生推送
 至此，你已配置了市场宣传模块，接下来需要配置原生推送，以便能够在设备上接收活动。
@@ -163,9 +155,9 @@ Reach SDK 需要 **Android 支持库 (v4)**。
 ### <a name="callbacks-return-parameter"></a>回调的返回参数
 以下是正确处理 `onDataPushStringReceived` 和 `onDataPushBase64Received` 的返回参数部分准则：
 
-* 如果接收器不知道如何处理数据推送，则应在回调中返回 `null`。 你应使用类别来确定广播接收器是否应处理数据推送。
-* 如果接受数据推送，则其中一个广播接收器应在回调中返回 `true`。
-* 如果可识别数据推送，但因各种原因而放弃，则其中一个广播接收器应在回调中返回 `false`。 例如，当收到的数据无效时，返回 `false`。
+* 如果广播接收器不知道如何处理数据推送，则应在回调中返回 `null`。 你应使用类别来确定广播接收器是否应处理数据推送。
+* 如果其中一个广播接收器接受数据推送，则应在回调中返回 `true`。
+* 如果其中一个广播接收器可识别数据推送，但因各种原因而放弃，则应在回调中返回 `false`。 例如，当收到的数据无效时，返回 `false`。
 * 如果对于相同的数据推送，一个广播接收器返回 `true`，而另一个返回 `false`，则属于未定义行为，你永远都不应这样做。
 
 返回类型仅针对市场宣传统计信息：
@@ -243,7 +235,7 @@ Engagement Reach SDK 会自动检测通知布局是否包含在此活动中，�
               <meta-data android:name="engagement:notification:overlay" android:value="false"/>
             </activity>
 
-#### <a name="a-namecategoriesa-categories"></a><a name="categories"></a> 类别
+#### <a name="categories"></a> 类别
 当修改提供的布局时，你会修改所有通知的外观。 类别允许你定义通知的各种目标外观（可能是行为）。 创建市场宣传活动时可以指定类别。 请记住，使用类别还可以自定义公告和投票，本文档稍后会介绍这部分内容。
 
 若要注册通知的类别处理程序，需要在初始化应用程序时添加调用。
@@ -569,7 +561,7 @@ Reach SDK 使用意向系统解决特定类别的正确活动，如果解决方�
 
 下面是一些注意事项：市场宣传会以特定的意向（对应于意向筛选器），以及一个额外参数（也就是内容标识符）来启动活动。
 
-若要检索包含你在网站上创建活动时所指定字段的内容对象，可以执行此操作：
+若要检索包含你在网站上创建市场活动时所指定字段的内容对象，可以执行此操作：
 
             public class MyCustomTextAnnouncement extends EngagementActivity
             {
@@ -636,7 +628,7 @@ Reach SDK 使用意向系统解决特定类别的正确活动，如果解决方�
 
 如你所看到的，如果你调用了 `actionContent(this)`，然后完成了活动，则可以安全地调用 `exitContent(this)`，而不会产生任何影响。
 
-[此处]:http://developer.android.com/tools/extras/support-library.html#Downloading
+[here]:http://developer.android.com/tools/extras/support-library.html#Downloading
 [Google Cloud Messaging]:http://developer.android.com/guide/google/gcm/index.html
 [Amazon Device Messaging]:https://developer.amazon.com/sdk/adm.html
 

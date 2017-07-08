@@ -127,17 +127,18 @@
 ### [Windows Phone Silverlight SDK](mobile-engagement-windows-phone-sdk-content.md)
 
 # 资源
+## [.NET API 示例](mobile-engagement-dotnet-sdk-service-api.md)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [定价](https://azure.microsoft.com/pricing/details/mobile-engagement/)
+## [示例演示应用](mobile-engagement-demo-apps.md)
+## [服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/mobile-engagement/)
+## [视频和更新](https://azure.microsoft.com/documentation/services/mobile-engagement/)
 ## 发行说明
 ### [Android SDK](mobile-engagement-android-release-notes.md)
 ### [iOS SDK](mobile-engagement-ios-release-notes.md)
 ### [Web SDK](mobile-engagement-web-release-notes.md)
-### [Windows Universal 应用 SDK](mobile-engagement-windows-store-release-notes.md)
 ### [Windows Phone Silverlight SDK](mobile-engagement-windows-phone-release-notes.md)
-## [定价](https://azure.microsoft.com/pricing/details/mobile-engagement/)
-## [示例演示应用](mobile-engagement-demo-apps.md)
-## [.NET API 示例](mobile-engagement-dotnet-sdk-service-api.md)
-## [视频和更新](https://azure.microsoft.com/documentation/services/mobile-engagement/)
-## [服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/mobile-engagement/)
+### [Windows Universal 应用 SDK](mobile-engagement-windows-store-release-notes.md)
 
 
 

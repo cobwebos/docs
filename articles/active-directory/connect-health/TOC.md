@@ -20,5 +20,6 @@
 ## [混合标识设计指南](../active-directory-hybrid-identity-design-considerations-overview.md)
 
 # 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ##[Azure AD Connect Health 常见问题](active-directory-aadconnect-health-faq.md)
 

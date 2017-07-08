@@ -14,9 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 12/15/2016
 ms.author: eugenesh
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 82c9d68bc3f1650648fac0597f4a329ef053b109
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9b56317fe8326a20fccfff4687f518d1e847122f
+ms.openlocfilehash: af9da85c37211d2436c23cc05400031c661ef51e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -90,10 +92,5 @@ ms.openlocfilehash: 82c9d68bc3f1650648fac0597f4a329ef053b109
 
 ## <a name="help-us-make-azure-search-better"></a>帮助我们改进 Azure 搜索
 如果你有功能请求或改进建议，请通过我们的 [UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search/)与我们联系。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

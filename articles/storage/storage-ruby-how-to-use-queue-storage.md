@@ -14,9 +14,11 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a2ab40c9986f8f5194be527257632b0c2f689dcd
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1fea38ed4caacfee0c69d024b1ea6dbdcbccaf1d
+ms.openlocfilehash: b978b65bb3b717362697a41510c5b2b4d057cf1f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -37,7 +39,7 @@ ms.openlocfilehash: a2ab40c9986f8f5194be527257632b0c2f689dcd
 创建 Ruby 应用程序。 有关说明，请参阅 [Azure VM 上的 Ruby on Rails Web 应用程序](../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md)。
 
 ## <a name="configure-your-application-to-access-storage"></a>配置应用程序以访问存储
-要使用 Azure 存储空间，你需要下载和使用 Ruby azure 包，其中包括一组便于与存储 REST 服务进行通信的库。
+要使用 Azure 存储，你需要下载和使用 Ruby azure 包，其中包括一组便于与存储 REST 服务进行通信的库。
 
 ### <a name="use-rubygems-to-obtain-the-package"></a>使用 RubyGems 获取该程序包
 1. 使用命令行接口，例如 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix)。
@@ -168,8 +170,3 @@ azure_queue_service.delete_queue("test-queue")
 * 访问 GitHub 上的 [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) 存储库
 
 若要了解 Azure 队列服务（本文所述）和 Azure 服务总线队列（[如何使用服务总线队列](/develop/ruby/how-to-guides/service-bus-queues/)文章中所述）之间的比较，请参阅 [Azure 队列和服务总线队列 - 比较与对照](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
-
-
-<!--HONumber=Nov16_HO3-->
-
-

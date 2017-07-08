@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: davidmu
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 7bed1e96cec49e8b62d671952976025453da6787
+ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
+ms.openlocfilehash: daff6ab4c0eaf17d1cb488f1c16aa111b6ed9a88
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/22/2017
 
 
 ---
@@ -264,5 +264,4 @@ ms.lasthandoff: 05/11/2017
 ## <a name="next-steps"></a>后续步骤
 * 如果部署出现问题，后续措施是参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](../../resource-manager-common-deployment-errors.md)。
 * 若要了解如何部署虚拟机及其支持的资源，请查看[使用 C# 部署 Azure 虚拟机](csharp.md)。
-* 查看[使用 Azure Resource Manager 和 C# 管理 Azure 虚拟机](csharp-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，了解如何管理创建的虚拟机。
 

@@ -18,7 +18,7 @@ ms.translationtype: Human Translation
 ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
 ms.openlocfilehash: f36d5da78818410e028a73a36a502a758400e5a5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -200,8 +200,8 @@ sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属�
 ### <a name="enabling-single-sign-on-sso"></a>启用单一登录 (SSO)
 配合密码同步或传递身份验证配置单一登录是一个简单的过程，针对要同步到 Azure AD 的每个林，只需完成此过程一次。 配置包括如下所述的两个步骤：
 
-1.    在本地 Active Directory 中创建所需的计算机帐户。
-2.    配置客户端计算机的 Intranet 区域，使其支持单一登录。
+1.  在本地 Active Directory 中创建所需的计算机帐户。
+2.  配置客户端计算机的 Intranet 区域，使其支持单一登录。
 
 #### <a name="create-the-computer-account-in-active-directory"></a>在 Active Directory 中创建计算机帐户
 对于在 Azure AD Connect 中添加的每个林，需要提供域管理员凭据，以便在每个林中创建计算机帐户。 凭据仅用于创建帐户，而不会存储，也不会用于其他任何操作。 只需在 Azure AD Connect 向导的“启用单一登录”页上添加凭据，如下所示：
@@ -215,20 +215,20 @@ sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属�
 为了确保客户端在 Intranet 区域中自动登录，需确保两个 URL 是 Intranet 区域的一部分。 这样就可以确保已加入域的计算机在连接到企业网络后，向 Azure AD 自动发送 Kerberos 票证。
 在装有组策略管理工具的计算机上：
 
-1.    打开组策略管理工具
-2.    编辑要应用到所有用户的组策略。 例如默认的域策略。
-3.    导航到“用户配置\管理模板\Windows 组件\Internet Explorer\Internet 控制面板\安全性”页，然后选择“区域分配列表的站点”，如下图所示。
-4.    启用策略，并在对话框中输入以下两项。
+1.  打开组策略管理工具
+2.  编辑要应用到所有用户的组策略。 例如默认的域策略。
+3.  导航到“用户配置\管理模板\Windows 组件\Internet Explorer\Internet 控制面板\安全性”页，然后选择“区域分配列表的站点”，如下图所示。
+4.  启用策略，并在对话框中输入以下两项。
 
-        值：`https://autologon.microsoftazuread-sso.com`  
-        Data 1  
-        值：`https://aadg.windows.net.nsatc.net`  
-        Data 1
+        Value: `https://autologon.microsoftazuread-sso.com`  
+        Data: 1  
+        Value: `https://aadg.windows.net.nsatc.net`  
+        Data: 1
 
-5.    如下图所示：  
+5.  如下图所示：  
 ![Intranet 区域](./media/active-directory-aadconnect-get-started-custom/sitezone.png)
 
-6.    单击“确定”两次。
+6.  单击“确定”两次。
 
 ## <a name="configuring-federation-with-ad-fs"></a>配置与 AD FS 的联合
 只需单击几下鼠标，请能使用 Azure AD Connect 配置 AD FS。 配置之前需要做好以下准备。

@@ -104,7 +104,7 @@ ms.lasthandoff: 03/15/2017
     ![设置源](./media/site-recovery-vmm-to-vmm/set-source1.png)
 3. 在“添加服务器”中，检查“System Center VMM 服务器”是否出现在“服务器类型”中，以及 VMM 服务器是否符合[先决条件](#prerequisites)。
 4. 下载 Azure Site Recovery 提供程序安装文件。
-5. 下载注册密钥。 运行安装程序时需要用到此密钥。 生成的密钥有效期为&5; 天。
+5. 下载注册密钥。 运行安装程序时需要用到此密钥。 生成的密钥有效期为 5 天。
 
     ![设置源](./media/site-recovery-vmm-to-vmm/set-source3.png)
 6. 在 VMM 服务器上安装 Azure Site Recovery 提供程序。 不需要在 Hyper-V 主机服务器上显式安装任何组件。

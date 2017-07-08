@@ -14,9 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
-translationtype: Human Translation
-ms.sourcegitcommit: fefebeae665ccd14f15b0197241b30d33830fd09
-ms.openlocfilehash: 8b09e5c7505554f1007cdf46ae74a100fb083432
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1ae54ed11130223f2795120e199234fec609d3fc
+ms.openlocfilehash: 1ad3ba6853edda93034b84996823262cb017c71a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -111,14 +113,9 @@ queue_service.delete_queue('taskqueue')
 在了解了队列存储的基础知识后，可单击下面的链接了解详细信息。
 
 * [Python 开发人员中心](/develop/python/)
-* [Azure 存储空间服务 REST API](http://msdn.microsoft.com/library/azure/dd179355)
+* [Azure 存储服务 REST API](http://msdn.microsoft.com/library/azure/dd179355)
 * [Azure 存储团队博客]
 * [用于 Python 的 Microsoft Azure 存储 SDK]
 
 [Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
 [用于 Python 的 Microsoft Azure 存储 SDK]: https://github.com/Azure/azure-storage-python
-
-
-<!--HONumber=Nov16_HO3-->
-
-

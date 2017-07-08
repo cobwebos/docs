@@ -25,7 +25,8 @@
 ## [容器服务](/azure/container-service/)
 
 # 资源
-## [上市区域](https://azure.microsoft.com/regions/services/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [定价](https://azure.microsoft.com/pricing/details/container-registry/)
+## [上市区域](https://azure.microsoft.com/regions/services/)
 ## [服务更新](https://azure.microsoft.com/en-us/updates/?product=container-registry&updatetype=&platform=)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-container-registry)

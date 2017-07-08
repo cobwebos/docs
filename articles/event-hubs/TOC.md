@@ -15,6 +15,9 @@
 ### [.NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md)
 ### [Java](event-hubs-java-get-started-receive-eph.md)
 ### [Apache Storm](event-hubs-storm-getstarted-receive.md)
+## 捕获事件
+### [使用 Azure 门户启用事件中心捕获](event-hubs-capture-enable-through-portal.md)
+### [使用 Resource Manager 模板启用事件中心捕获](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
 ## [编程指南](event-hubs-programming-guide.md)
 
 # 如何
@@ -31,10 +34,9 @@
 ### [AMQP 1.0 协议指南](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
 ## 管理
 ### [事件中心管理库](event-hubs-management-libraries.md)
-### 存档
-#### [事件中心存档](event-hubs-archive-overview.md)
-#### [使用模板启用事件中心存档](event-hubs-resource-manager-namespace-event-hub-enable-archive.md)
-#### [使用 Python 启用事件中心存档](event-hubs-archive-python.md)
+### 捕获
+#### [事件中心捕获](event-hubs-capture-overview.md)
+#### [使用 Python 捕获事件中心数据](event-hubs-capture-python.md)
 ### [使用 PowerShell 预配实体](event-hubs-manage-with-ps.md) 
 ### [使用事件中心流式传输 Azure 诊断数据](event-hubs-streaming-azure-diags-data.md)
 ### [使用 Resource Manager 模板创建和部署事件中心](event-hubs-resource-manager-namespace-event-hub.md)
@@ -54,9 +56,10 @@
 ## [配额](event-hubs-quotas.md)
 
 # 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [代码示例](event-hubs-samples.md)
-## [定价](https://azure.microsoft.com/pricing/details/event-hubs/)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/event-hubs/)
+## [定价](https://azure.microsoft.com/pricing/details/event-hubs/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=event-hubs)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-eventhub)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=event-hubs)

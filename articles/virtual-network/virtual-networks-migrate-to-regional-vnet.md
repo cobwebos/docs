@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f74379c3e310a7bbcf659ef610727bff19639022
 ms.openlocfilehash: c495af3e818758cc5fe99af9b5f07506a16b59ef
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -70,10 +72,5 @@ ms.openlocfilehash: c495af3e818758cc5fe99af9b5f07506a16b59ef
 当前位于地缘组中的 VM 不需要从地缘组中删除。
 
 在 VM 部署后，系统会将其部署到单个缩放单位。 地缘组可以限制可用于新 VM 部署的 VM 大小集，但是部署的任何现有 VM 已限制为在其中部署该 VM 的缩放单位中可用的 VM 大小集。 因此，从地缘组中删除 VM 将不产生任何影响。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

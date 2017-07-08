@@ -21,24 +21,27 @@
 #### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
 #### [CLI](virtual-networks-create-vnet-arm-cli.md)
 #### [模板](virtual-networks-create-vnet-arm-template-click.md)
-#### [门户（经典）](virtual-networks-create-vnet-classic-pportal.md)
-#### [PowerShell（经典）](virtual-networks-create-vnet-classic-netcfg-ps.md)
-#### [CLI（经典）](virtual-networks-create-vnet-classic-cli.md)
+#### 经典
+##### [门户](virtual-networks-create-vnet-classic-pportal.md)
+##### [PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
+##### [CLI](virtual-networks-create-vnet-classic-cli.md)
 
 ### 网络安全组
 #### [门户](virtual-networks-create-nsg-arm-pportal.md)
 #### [PowerShell](virtual-networks-create-nsg-arm-ps.md)
 #### [CLI](virtual-networks-create-nsg-arm-cli.md)
 #### [模板](virtual-networks-create-nsg-arm-template.md)
-#### [PowerShell（经典）](virtual-networks-create-nsg-classic-ps.md)
-#### [CLI（经典）](virtual-networks-create-nsg-classic-cli.md)
+#### 经典
+##### [PowerShell](virtual-networks-create-nsg-classic-ps.md)
+##### [CLI](virtual-networks-create-nsg-classic-cli.md)
 
 ### 用户定义路由
 #### [PowerShell](virtual-network-create-udr-arm-ps.md)
 #### [CLI](virtual-network-create-udr-arm-cli.md)
 #### [模板](virtual-network-create-udr-arm-template.md)
-#### [PowerShell（经典）](virtual-network-create-udr-classic-ps.md)
-#### [CLI（经典）](virtual-network-create-udr-classic-cli.md)
+#### 经典
+##### [PowerShell](virtual-network-create-udr-classic-ps.md)
+##### [CLI](virtual-network-create-udr-classic-cli.md)
 
 ### [虚拟网络对等互连](virtual-network-create-peering.md)
 
@@ -48,21 +51,24 @@
 ##### [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
 ##### [CLI](virtual-network-deploy-static-pip-arm-cli.md)
 ##### [模板](virtual-network-deploy-static-pip-arm-template.md)
-##### [PowerShell（经典）](virtual-networks-reserved-public-ip.md)
+##### 经典
+###### [PowerShell](virtual-networks-reserved-public-ip.md)
 
 #### 创建具有静态专用 IP 地址的 VM
 ##### [门户](virtual-networks-static-private-ip-arm-pportal.md)
 ##### [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
 ##### [CLI](virtual-networks-static-private-ip-arm-cli.md)
-##### [门户 经典）](virtual-networks-static-private-ip-classic-pportal.md)
-##### [PowerShell（经典）](virtual-networks-static-private-ip-classic-ps.md)
-##### [CLI（经典）](virtual-networks-static-private-ip-classic-cli.md)
+##### 经典
+###### [门户](virtual-networks-static-private-ip-classic-pportal.md)
+###### [PowerShell](virtual-networks-static-private-ip-classic-ps.md)
+###### [CLI](virtual-networks-static-private-ip-classic-cli.md)
 
 #### 创建具有多个网络接口的 VM
 ##### [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 ##### [CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-##### [PowerShell（经典）](virtual-network-deploy-multinic-classic-ps.md)
-##### [CLI（经典）](virtual-network-deploy-multinic-classic-cli.md)
+##### 经典
+###### [PowerShell](virtual-network-deploy-multinic-classic-ps.md)
+###### [CLI](virtual-network-deploy-multinic-classic-cli.md)
 
 #### 创建具有多个 IP 地址的 VM
 ##### [Azure 门户](virtual-network-multiple-ip-addresses-portal.md)
@@ -103,6 +109,9 @@
 ### [虚拟网络](virtual-network-manage-network.md)
 #### [子网](virtual-network-manage-subnet.md)
 #### [对等互连](virtual-network-manage-peering.md)
+#### 经典
+##### [网络配置文件](virtual-networks-using-network-configuration-file.md)
+##### [从地缘组迁移到区域](virtual-networks-migrate-to-regional-vnet.md)
 ### 网络安全组
 #### [门户](virtual-network-manage-nsg-arm-portal.md)
 #### [PowerShell](virtual-network-manage-nsg-arm-ps.md)
@@ -126,7 +135,7 @@
 
 # 引用
 ## [PowerShell (Resource Manager)](/powershell/module/azurerm.network)
-## [PowerShell（经典）](/powershell/module/azure/?view=azuresmps-3.7.0)
+## [PowerShell（经典）](/powershell/module/azure/)
 ## [Azure CLI](/cli/azure/network)
 ## [Java](/java/api/)
 ## [REST (Resource Manager)](https://msdn.microsoft.com/library/mt163658.aspx)
@@ -143,6 +152,7 @@
 ## [ExpressRoute](/azure/expressroute/)
 
 # 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [网络博客](http://azure.microsoft.com/blog/topics/networking)
 ## [网络论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [定价](https://azure.microsoft.com/pricing/details/virtual-network)

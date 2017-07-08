@@ -140,10 +140,11 @@
 ## [PowerShell cmdlets](sql-data-warehouse-reference-powershell-cmdlets.md)
 
 # 资源
-## [定价](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)
-## [堆栈溢出](https://stackoverflow.com/questions/tagged/azure-sqldw/)
-## [服务更新](https://azure.microsoft.com/updates/?product=sql-data-warehouse)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
+## [定价](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)
+## [服务更新](https://azure.microsoft.com/updates/?product=sql-data-warehouse)
+## [堆栈溢出](https://stackoverflow.com/questions/tagged/azure-sqldw/)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 
 ## 合作伙伴

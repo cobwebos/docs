@@ -12,11 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/8/2017
+ms.date: 6/29/2017
 ms.author: sumukhs
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
 ms.openlocfilehash: e787f48f14539dff3035c51e14243c7bd9dcbb73
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -124,10 +126,5 @@ CheckpointThresholdInMB 参数控制复制器可以用于将状态信息存储�
 MaxRecordSizeInKB 设置用于定义可由复制器写入日志文件的记录的最大大小。 大多数情况下，默认的 1024-KB 记录大小是最佳的。 但是，如果服务使更大数据项成为状态信息的一部分，则可能需要增加此值。 使 MaxRecordSizeInKB 小于 1024 几乎没什么好处，因为记录仅使用较小记录所需的空间。 我们预期此值只在极少数情况下需要更改。
 
 SharedLogId 和 SharedLogPath 设置始终一起使用，使服务可以使用与节点的默认共享日志不同的共享日志。 为获得最佳效率，应让尽可能多的服务指定相同共享日志。 共享日志文件应置于仅用于共享日志文件的磁盘上，以便减少磁头运动争用。 我们预期这些值只在极少数情况下需要更改。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

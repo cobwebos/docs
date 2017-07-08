@@ -1,6 +1,6 @@
 ---
-title: "Azure 批处理计算节点环境变量 | Microsoft Docs"
-description: "Azure 批处理分析的计算节点环境变量参考。"
+title: "Azure Batch 计算节点环境变量 | Microsoft Docs"
+description: "Azure Batch 分析的计算节点环境变量参考。"
 services: batch
 author: tamram
 manager: timlt
@@ -16,12 +16,12 @@ ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 29f642754430957e77ef68946f721f8e15dba065
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 ---
 
-# <a name="azure-batch-compute-node-environment-variables"></a>Azure 批处理计算节点环境变量
-[Azure 批处理服务](https://azure.microsoft.com/services/batch/)在计算节点上设置以下环境变量。 可以在任务命令行中引用这些环境变量，也可在命令行运行的程序和脚本中引用它们。
+# <a name="azure-batch-compute-node-environment-variables"></a>Azure Batch 计算节点环境变量
+[Azure Batch 服务](https://azure.microsoft.com/services/batch/)在计算节点上设置以下环境变量。 可以在任务命令行中引用这些环境变量，也可在命令行运行的程序和脚本中引用它们。
 
 有关将环境变量用于批处理的其他信息，请参阅[任务的环境设置](https://docs.microsoft.com/azure/batch/batch-api-basics#environment-settings-for-tasks)。
 

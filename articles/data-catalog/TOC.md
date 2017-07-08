@@ -28,10 +28,11 @@
 ## [开发人员示例](data-catalog-samples.md)
 
 # 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [针对 Azure 数据目录的键盘快捷方式](data-catalog-keyboard-shortcuts.md)
-## [术语](data-catalog-terminology.md)
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
+## [定价](https://azure.microsoft.com/pricing/details/data-catalog/)
 ## [发行说明](data-catalog-whats-new.md)
 ## [服务更新](https://azure.microsoft.com/updates/?product=data-catalog)
-## [定价](https://azure.microsoft.com/pricing/details/data-catalog/)
-## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-data-catalog)
+## [术语](data-catalog-terminology.md)

@@ -62,14 +62,15 @@
 ## [Azure 云中的批处理和 HPC 解决方案](batch-hpc-solutions.md)
 
 # 资源
-## [定价](https://azure.microsoft.com/pricing/details/batch/)
-## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-us/home?forum=azurebatch)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-batch)
-## [视频](https://azure.microsoft.com/documentation/videos/index/?services=batch)
-## [服务更新](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
-## [C# 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
-## [Python 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [大型计算资源](big-compute-resources.md)
 ## [博客](https://blogs.technet.microsoft.com/windowshpc/)
+## [C# 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-us/home?forum=azurebatch)
+## [定价](https://azure.microsoft.com/pricing/details/batch/)
+## [Python 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
+## [服务更新](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-batch)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=batch)
 
 

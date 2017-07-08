@@ -52,7 +52,7 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/sql-database/sql-database-design-first-database">创建和设计新 SQL 数据库的架构</a>
+    - html: '<a href="/azure/sql-database/sql-database-design-first-database">使用 SSMS 为新的 SQL 数据库创建并设计架构</a>或<a href="/azure/sql-database/sql-database-design-first-database-csharp">使用 C# 为新的 SQL 数据库创建并设计架构</a>'
     - html: <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">迁移现有 SQL Server 数据库以使用 Azure SQL 数据库</a>
     - html: <a href="/azure/sql-database/sql-database-security-tutorial">保护 SQL 数据库</a>
     - html: <a href="/azure/sql-database/sql-database-performance-tutorial">提高 SQL 数据库性能</a>
@@ -85,7 +85,7 @@ sections:
     className: cardsD
     items:
     - title: 命令行
-      html: <p><a href="/powershell/resourcemanager/azurerm.sql/v2.3.0/azurerm.sql">Azure PowerShell</a></p><p><a href="/powershell/elasticdatabasejobs/v0.8.33/elasticdatabasejobs">Azure PowerShell（弹性 DB）</a></p><p><a href="/cli/azure/sql">Azure CLI 2.0</a></p>
+      html: '<p><a href="/powershell/module/azurerm.sql/#sql">Azure PowerShell</a></p><p><a href="/powershell/module/elasticdatabasejobs/#elasticdatabasejobs">Azure PowerShell（弹性 DB）</a></p><p><a href="/cli/azure/sql">Azure CLI 2.0</a></p>'
     - title: 语言
       html: '<p><a href="/dotnet/api/microsoft.azure.management.sql.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.sql">Java</a></p><p><a href="https://msdn.microsoft.com/library/mt652093.aspx">Node.js</a></p><p><a href="https://msdn.microsoft.com/library/mt652092.aspx">Python</a></p><p><a href="https://msdn.microsoft.com/library/mt691981.aspx">Ruby</a></p><p><a href="https://msdn.microsoft.com/library/dn865013.aspx">PHP</a></p><p><a href="https://msdn.microsoft.com/library/azure/bb510741.aspx">T-SQL</a></p>'
     - title: REST

@@ -42,6 +42,7 @@
 #### [Azure 日志集成入门](security-azure-log-integration-get-started.md)
 #### [集成 Azure Active Directory 审核日志](security-azure-log-integration-ad.md)
 #### [集成安全中心警报](security-azure-log-integration-security-center.md)
+#### [使用事件中心集成 Key Vault 中的日志](security-azure-log-integration-keyvault-eventhub.md)
 #### [常见问题](security-azure-log-integration-faq.md)
 
 ## 身份管理
@@ -72,9 +73,10 @@
 ## [Operations Management Suite](../operations-management-suite/oms-security-getting-started.md)
 
 # 资源
-## [安全与合规性博客](http://blogs.msdn.com/b/azuresecurity/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [Azure 安全 MVP 计划](azure-security-mvp.md)
 ## [网络安全咨询](azure-security-cyber-services.md)
+## [安全与合规性博客](http://blogs.msdn.com/b/azuresecurity/)
 ## [Virtual Academy 中的安全课程](security-microsoft-virtual-academy.md)
 ## [第 9 频道上的安全视频](security-channel-nine.md)
 ## [威胁建模工具](azure-security-threat-modeling-tool.md)

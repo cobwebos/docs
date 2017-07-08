@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: b5df0883f20cd484970587b17d5df646022ba84f
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 310dcb176c2e1556af4ed0e0f50ea77c4644ec98
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.lasthandoff: 04/13/2017
 
 * 对 ADFS（2012 R2 或更高版本）保护的应用程序（信赖方信任），启用基于设备的条件性访问。
 
-这可以提供额外的安全性，确保只有受信任的设备才能访问应用程序。 有关条件性访问的详细信息，请参阅[使用条件性访问管理风险](../active-directory-conditional-access.md)和[使用 Azure Active Directory Device Registration 设置本地的条件性访问](https://msdn.microsoft.com/library/azure/dn788908.aspx)。
+这可以提供额外的安全性，确保只有受信任的设备才能访问应用程序。 有关条件性访问的详细信息，请参阅[使用条件性访问管理风险](../active-directory-conditional-access.md)和[使用 Azure Active Directory Device Registration 设置本地的条件性访问](../active-directory-conditional-access-automatic-device-registration-setup.md)。
 
 > [!IMPORTANT]
 > <li>设备必须位于用户所在的同一个林中。 由于设备必须写回到单个林，此功能当前不支持具有多个用户林的部署。</li>
@@ -82,7 +83,7 @@ ms.lasthandoff: 04/13/2017
 4. 在向导中完成安装，不需要更改其他配置。 如果需要，请参阅 [Azure AD Connect 的自定义安装](active-directory-aadconnect-get-started-custom.md)。
 
 ## <a name="enable-conditional-access"></a>启用条件性访问
-[使用 Azure Active Directory Device Registration 设置本地条件性访问](https://msdn.microsoft.com/library/azure/dn788908.aspx)中提供了有关启用此方案的详细说明。
+[使用 Azure Active Directory Device Registration 设置本地条件性访问](../active-directory-conditional-access-automatic-device-registration-setup.md)中提供了有关启用此方案的详细说明。
 
 ## <a name="verify-devices-are-synchronized-to-active-directory"></a>验证设备是否已同步到 Active Directory
 设备写回现在应在正常运行。 请注意，将设备对象写回到 Active Directory 最长可能需要 3 个小时。  若要验证设备是否已正确同步，请在同步规则完成之后执行以下操作：

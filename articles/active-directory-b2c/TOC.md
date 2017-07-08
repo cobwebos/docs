@@ -88,10 +88,11 @@
 ## [多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)
 
 # 资源
-## [定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 ## [Azure AD B2C 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)
-## [视频](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c)
-## [服务更新](https://azure.microsoft.com/updates/?product=active-directory-b2c)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [常见问题](active-directory-b2c-faqs.md)
+## [定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
+## [服务更新](https://azure.microsoft.com/updates/?product=active-directory-b2c)
 ## [堆栈溢出](https://stackoverflow.com/questions/tagged/azure-ad-b2c)
 ## [支持](active-directory-b2c-support.md)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c)

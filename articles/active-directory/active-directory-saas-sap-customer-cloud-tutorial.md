@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: f454e7e218764e00cc19ca67b0edade213834b75
-ms.openlocfilehash: bec672005b0b1856faeb230f5674013a37add774
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 22665107cdf689042a5b0eee34eaeacc0434fbc4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -44,7 +46,7 @@ ms.openlocfilehash: bec672005b0b1856faeb230f5674013a37add774
 
 测试本教程中的步骤应遵循以下建议：
 
-* 不应使用生产环境，除非有此必要。
+* 除非必要，请勿使用生产环境。
 * 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
 ## <a name="scenario-description"></a>方案描述
@@ -80,11 +82,11 @@ ms.openlocfilehash: bec672005b0b1856faeb230f5674013a37add774
 
 6. 在搜索框中，键入“SAP Cloud for Customer”。
    
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_01.png)
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_01.png)
 
 7. 在结果窗格中，选择“SAP Cloud for Customer”，然后单击“完成”以添加该应用程序。
    
-    ![Active Directory](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_02.png)
+    ![Active Directory](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_02.png)
 
 ## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置并测试 Azure AD 单一登录
 在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 SAP Cloud for Customer 的 Azure AD 单一登录。
@@ -106,15 +108,15 @@ ms.openlocfilehash: bec672005b0b1856faeb230f5674013a37add774
 
 1. 在 Azure 经典门户中的“SAP Cloud for Customer”应用程序集成页上，单击顶部菜单中的“属性”。
    
-    ![配置单一登录](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_80.png) 
+    ![配置单一登录](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_80.png) 
 
 2. 在属性 SAML 令牌属性列表中，选择 nameidentifier 属性，然后单击“编辑”。
    
-    ![配置单一登录](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_84.png) 
+    ![配置单一登录](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_84.png) 
 
 3. 在“编辑用户属性”对话框中，执行以下步骤：
    
-    ![配置单一登录](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_85.png) 
+    ![配置单一登录](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_85.png) 
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“属性值”列表中，选择“ExtractMailPrefix()”函数。
 
@@ -130,11 +132,11 @@ ms.openlocfilehash: bec672005b0b1856faeb230f5674013a37add774
 
 2. 在“你希望用户如何登录到 SAP Cloud for Customer”页上，选择“Azure AD 单一登录”，然后单击“下一步”。
    
-    ![配置单一登录](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_03.png) 
+    ![配置单一登录](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_03.png) 
 
 3. 在“配置应用设置”对话框页上，执行以下步骤：
    
-    ![配置单一登录](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_04.png) 
+    ![配置单一登录](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_04.png) 
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入用户用于登录 SAP Cloud for Customer 应用程序的 URL：`https://<server name>.crm.ondemand.com`
    
@@ -142,7 +144,7 @@ ms.openlocfilehash: bec672005b0b1856faeb230f5674013a37add774
 
 4. 在“配置 SAP Cloud for Customer 的单一登录”页上，执行以下步骤：
    
-    ![配置单一登录](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_05.png)
+    ![配置单一登录](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_05.png)
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载元数据”，然后在计算机上保存该文件。
    
@@ -154,9 +156,9 @@ ms.openlocfilehash: bec672005b0b1856faeb230f5674013a37add774
    
     b.保留“数据库类型”设置，即设置为“共享”。 导航到“应用程序和用户管理常见任务”，单击“标识提供者”选项卡。
    
-    c. 单击“新建标识提供者”，并选择从 Azure 经典门户下载的元数据 XML 文件。 导入元数据时，系统会自动上载所需的签名证书和加密证书。
+    c. 单击“新建标识提供者”，并选择从 Azure 经典门户下载的元数据 XML 文件。 导入元数据时，系统会自动上传所需的签名证书和加密证书。
    
-    ![配置单一登录](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_54.png)
+    ![配置单一登录](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_54.png)
    
     d.单击“下一步”。 Azure AD 要求在 SAML 请求中包含“断言使用者服务 URL”元素，因此请选中“包括断言使用者服务 URL”复选框。
    
@@ -166,11 +168,11 @@ ms.openlocfilehash: bec672005b0b1856faeb230f5674013a37add774
    
     g. 单击“我的系统”选项卡。
    
-    ![配置单一登录](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_52.png)
+    ![配置单一登录](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_52.png)
    
     h. 复制 **SSO URL**，并将其粘贴到“Azure AD 登录 URL”文本框中。
    
-    ![配置单一登录](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_53.png)
+    ![配置单一登录](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_53.png)
    
     i. 指定员工是否可以手动在以下两者中选择：使用用户 ID 和密码登录，或者通过选择“手动选择标识提供者”使用 SSO 登录。
    
@@ -208,29 +210,29 @@ ms.openlocfilehash: bec672005b0b1856faeb230f5674013a37add774
 
 1. 在 **Azure 经典门户**中，在左侧导航窗格上，单击“Active Directory”。
    
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_09.png) 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_09.png) 
 
 2. 在“目录”列表中，选择要启用目录集成的目录。
 
 3. 若要显示用户列表，请在顶部菜单中，单击“用户”。
    
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_03.png) 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_03.png) 
 
 4. 若要打开“添加用户”对话框，请在底部工具栏中单击“添加用户”。
    
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_04.png) 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_04.png) 
 
 5. 在“告诉我们有关此用户的信息”对话框页上，执行以下步骤：
 
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_05.png) 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_05.png) 
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 
-6. 在“用户配置文件”对话框页面上，执行以下步骤： ![创建 Azure AD 测试用户](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_06.png) 
+6. 在“用户配置文件”对话框页面上，执行以下步骤： ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_06.png) 
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
    
@@ -244,11 +246,11 @@ ms.openlocfilehash: bec672005b0b1856faeb230f5674013a37add774
 
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_07.png) 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_07.png) 
 
 8. 在“获取临时密码”对话框页上，执行以下步骤：
    
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_08.png) 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_08.png) 
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
    
@@ -275,7 +277,7 @@ ms.openlocfilehash: bec672005b0b1856faeb230f5674013a37add774
 
 2. 在应用程序列表中，选择“SAP Cloud for Customer”。
    
-    ![配置单一登录](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_50.png) 
+    ![配置单一登录](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_50.png) 
 
 3. 在顶部菜单中，单击“用户”。
    
@@ -298,24 +300,19 @@ ms.openlocfilehash: bec672005b0b1856faeb230f5674013a37add774
 
 <!--Image references-->
 
-[1]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_01.png
-[2]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_02.png
-[3]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_03.png
-[4]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_04.png
+[1]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_04.png
 
-[6]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_05.png
-[10]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_06.png
-[11]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_07.png
-[20]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_100.png
+[6]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_05.png
+[10]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_06.png
+[11]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_07.png
+[20]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_100.png
 
-[200]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_200.png
-[201]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_201.png
-[203]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_203.png
-[204]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_204.png
-[205]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO1-->
-
+[200]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_201.png
+[203]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_203.png
+[204]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_204.png
+[205]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_205.png
 

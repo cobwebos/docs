@@ -23,9 +23,10 @@
 ### [创建和管理](integration-hybrid-connection-create-manage.md)
 
 # 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebiztalksvcs)
+## [定价](https://azure.microsoft.com/pricing/details/biztalk-services/)
 ## [发行说明](biztalk-release-notes.md)
 ## [服务更新](https://azure.microsoft.com/updates/?product=biztalk-services)
-## [定价](https://azure.microsoft.com/pricing/details/biztalk-services/)
-## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebiztalksvcs)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/biztalk-services)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=biztalk-services)

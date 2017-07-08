@@ -3,8 +3,7 @@
 ## [选择版本](active-directory-editions.md)
 ## [关于 Azure 标识管理](identity-fundamentals.md)
 ## [了解 Azure 标识解决方案](understand-azure-identity-solutions.md)
-## [预览 Azure 门户体验](active-directory-preview-explainer.md)
-
+## [部署混合标识解决方案](choose-hybrid-identity-solution.md)
 
 # 入门
 ## [获取 Azure AD 租户](active-directory-howto-tenant.md)
@@ -13,14 +12,16 @@
 ## 管理 Azure AD 许可
 ### [Azure 门户](active-directory-licensing-get-started-azure-portal.md)
 ### [经典门户](active-directory-licensing-what-is.md)
-## [为组织获取 Azure](sign-up-organization.md)
+### [使用组分配许可证](active-directory-licensing-whatis-azure-portal.md)
+#### [将许可证分配到组](active-directory-licensing-group-assignment-azure-portal.md)
+#### [识别和解决组中的许可证问题](active-directory-licensing-group-problem-resolution-azure-portal.md)
+#### [将单个许可用户迁移到基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
+#### [基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
+#### [基于组的许可的 PowerShell 示例](active-directory-licensing-ps-examples.md)
 ## [常见问题](active-directory-faq.md)
 ## [如何获取对 Azure Active Directory 的支持](active-directory-troubleshooting-support-howto.md)
 ## [SaaS 应用集成教程](active-directory-saas-tutorial-list.md)
-## Azure AD 控件
-### [完成访问评审](active-directory-azure-ad-controls-complete-an-access-review.md)
-### [创建访问评审](active-directory-azure-ad-controls-create-an-access-review.md)
-### [如何执行访问评审](active-directory-azure-ad-controls-perform-an-access-review.md)
+
 
 
 # 如何
@@ -53,9 +54,7 @@
 ### 添加用户
 #### [Azure 门户](active-directory-users-create-azure-portal.md)
 #### [经典门户](active-directory-create-users.md)
-### Azure AD 控件
-#### [使用访问评审的来宾访问](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
-#### [通过评审管理用于访问](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
+
 
 ### [使用组分配许可证](active-directory-licensing-whatis-azure-portal.md)
 #### [将许可证分配到组](active-directory-licensing-group-assignment-azure-portal.md)
@@ -106,11 +105,13 @@
 ### [有风险的用户](active-directory-reporting-security-user-at-risk.md)
 ### [有风险的登录](active-directory-reporting-security-risky-sign-ins.md)
 ### [风险事件](active-directory-reporting-risk-events.md)
-### [命名位置](active-directory-named-locations.md)
-### [报告迁移](active-directory-reporting-migration.md)
 ### [保留](active-directory-reporting-retention.md)
 ### [延迟](active-directory-reporting-latencies-azure-portal.md)
 ### [常见问题](active-directory-reporting-faq.md)
+### 任务
+#### [配置命名位置](active-directory-named-locations.md)
+#### [查找活动报表](active-directory-reporting-migration.md)
+#### [使用 Azure Active Directory Power BI 内容包](active-directory-reporting-power-bi-content-pack-how-to.md)  
 ### 故障排除
 #### [缺少审核数据](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [在下载项中缺少数据](active-directory-reporting-troubleshoot-missing-data-download.md)
@@ -188,8 +189,7 @@
 ### [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)
 #### [更新注册表设置](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 #### [了解安全性和隐私性](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
-### Azure AD 控件
-####[管理程序及其控件](active-directory-azure-ad-controls-manage-programs-and-controls.md)
+
 
 ### [使用应用代理远程访问应用](active-directory-application-proxy-get-started.md)
 #### 入门
@@ -215,6 +215,7 @@
 ##### [本机客户端应用](active-directory-application-proxy-native-client.md)
 ##### [无提示安装](active-directory-application-proxy-silent-installation.md)
 ##### [自定义主页](application-proxy-office365-app-launcher.md)
+##### [转换内联链接](application-proxy-link-translation.md)
 #### 发布演练
 ##### [远程桌面](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
@@ -399,9 +400,10 @@
 ## [Azure AD Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
 # 资源
-## [定价](https://azure.microsoft.com/pricing/details/active-directory/)
+## [Azure 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
+## [定价](https://azure.microsoft.com/pricing/details/active-directory/)
+## [服务更新](https://azure.microsoft.com/updates/?product=active-directory)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-active-directory)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)
-## [服务更新](https://azure.microsoft.com/updates/?product=active-directory)
-## [Azure 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory)

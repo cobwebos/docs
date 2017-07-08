@@ -56,15 +56,17 @@
 ### [活动 Log Analytics](log-analytics-activity.md)
 ### [AD 评估](log-analytics-ad-assessment.md)
 ### [AD 复制状态](log-analytics-ad-replication-status.md)
+### [代理运行状况](../operations-management-suite/oms-solution-agenthealth.md?toc=%2fazure%2flog-analytics%2ftoc.json)
 ### [警报管理](log-analytics-solution-alert-management.md)
+### [Application Insights 连接器](log-analytics-app-insights-connector.md)
 ### [Azure SQL Analytics](log-analytics-azure-sql.md)
 ### [Azure Web 应用分析](log-analytics-azure-web-apps-analytics.md)
 ### [容量和性能](log-analytics-capacity.md)
 ### [更改跟踪](log-analytics-change-tracking.md)
 ### [容器](log-analytics-containers.md)
 ### [DNS 分析](log-analytics-dns.md)
-### [OMS 中的 IT 服务管理连接器](log-analytics-itsmc-overview.md)
-#### [OMS 中的 IT 服务管理连接](log-analytics-itsmc-connections.md)
+### [IT Service Management Connector](log-analytics-itsmc-overview.md)
+#### [IT Service Management 连接](log-analytics-itsmc-connections.md)
 ### [密钥保管库](log-analytics-azure-key-vault.md)
 ### 逻辑应用 B2B 消息
 #### [逻辑应用 B2B 消息解决方案](../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json)
@@ -89,6 +91,7 @@
 ### [PowerShell cmdlets](log-analytics-powershell-workspace-configuration.md)
 ### [Resource Manager 模板](log-analytics-template-workspace-configuration.md)
 ### [日志搜索 API](log-analytics-log-search-api.md)
+#### [Python](log-analytics-log-search-api-python.md)
 ### [警报 API](log-analytics-api-alerts.md)
 
 # 参考
@@ -96,6 +99,7 @@
 ## [REST](/rest/api/loganalytics)
 
 # 资源
-## [Windows 分析](https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [定价](https://azure.microsoft.com/pricing/details/log-analytics/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=log-analytics)
+## [Windows 分析](https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics)

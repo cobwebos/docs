@@ -55,6 +55,7 @@
 ## [REST](https://docs.microsoft.com/rest/api/redis/)
 
 # 资源
-## [Redis 缓存示例](cache-redis-samples.md)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [定价](https://azure.microsoft.com/pricing/details/cache/)
+## [Redis 缓存示例](cache-redis-samples.md)
 

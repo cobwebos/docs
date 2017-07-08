@@ -10,21 +10,21 @@ ms.topic: sample
 ms.service: functions
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: f87cf7d300b4c2b89ad692aadcda958e9747c7f9
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: d67e85f91c80efe464fceb1105243bedfba83a0f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-github"></a>创建 Function App 并从 GitHub 部署函数代码
 
 此示例脚本使用[消耗计划](../functions-scale.md#consumption-plan)及其相关资源创建 Function App，并从公共 GitHub 存储库部署函数代码（不进行持续部署）。 有关从 GitHub 持续交付函数代码，请阅读[创建 Function App 并从 GitHub 进行持续部署](functions-cli-create-function-app-github-continuous.md)
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 ## <a name="sample-script"></a>示例脚本
 

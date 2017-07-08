@@ -70,6 +70,7 @@
 ### [1.3 和更高版本](azure-diagnostics-schema-1dot3-and-later.md)
 
 # 资源
-## [PowerShell 示例](insights-powershell-samples.md)
 ## [Azure CLI 1.0 示例](insights-cli-samples.md)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [PowerShell 示例](insights-powershell-samples.md)
 ## [视频](https://azure.microsoft.com/resources/videos/index/?services=monitor)

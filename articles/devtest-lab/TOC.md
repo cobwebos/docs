@@ -2,6 +2,7 @@
 ## [关于 Azure 开发测试实验室](devtest-lab-overview.md)
 ## [概念](devtest-lab-concepts.md)
 ## 方案
+### [使用开发人员实验室](devtest-lab-developer-lab.md)
 ### [使用实验室进行培训](devtest-lab-training-lab.md)
 
 # 入门
@@ -33,9 +34,9 @@
 ### [从 VM 创建自定义映像](devtest-lab-create-custom-image-from-vm-using-portal.md)
 ### [使用 Azure 门户从 VHD 创建自定义映像](devtest-lab-create-template.md)
 ### [使用 PowerShell 从 VHD 创建自定义映像](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
-### [使用 AzCopy 上载 VHD 文件](devtest-lab-upload-vhd-using-azcopy.md)
-### [使用 PowerShell 上载 VHD 文件](devtest-lab-upload-vhd-using-powershell.md)
-### [使用存储资源管理器上载 VHD 文件](devtest-lab-upload-vhd-using-storage-explorer.md)
+### [使用 AzCopy 上传 VHD 文件](devtest-lab-upload-vhd-using-azcopy.md)
+### [使用 PowerShell 上传 VHD 文件](devtest-lab-upload-vhd-using-powershell.md)
+### [使用存储资源管理器上传 VHD 文件](devtest-lab-upload-vhd-using-storage-explorer.md)
 
 ## 管理可重用模板
 ### [添加 Git 存储库以存储项目和模板](devtest-lab-add-artifact-repo.md)
@@ -64,3 +65,5 @@
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-devtest-labs)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab)
 ## [定价](https://azure.microsoft.com/pricing/details/devtest-lab/)
+# 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)

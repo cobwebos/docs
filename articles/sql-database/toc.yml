@@ -33,8 +33,10 @@
       href: sql-database-connect-query-ruby.md
 - name: 教程
   items:
-  - name: 1 - 创建/设计新的 SQL DB
+  - name: 1 - 使用 SSMS 设计 DB
     href: sql-database-design-first-database.md
+  - name: 1 - 使用 .NET 设计 DB
+    href: sql-database-design-first-database-csharp.md
   - name: 2 - 迁移 SQL Server DB
     href: sql-database-migrate-your-sql-server-database.md
   - name: 3 - 保护 SQL DB
@@ -55,10 +57,8 @@
   items:
   - name: 数据库和服务器
     items:
-    - name: 数据库
-      href: sql-database-overview.md
-    - name: 服务器
-      href: sql-database-server-overview.md
+    - name: 概述
+      href: sql-database-servers-databases.md
     - name: 服务层
       href: sql-database-service-tiers.md
     - name: 弹性池
@@ -75,8 +75,6 @@
       href: sql-database-paas-vs-sql-server-iaas.md  
     - name: 功能
       href: sql-database-features.md
-    - name: 工具
-      href: sql-database-manage-overview.md
   - name: “安全”
     items:
     - name: 概述
@@ -100,7 +98,7 @@
     - name: 使用 SQL DB 实现 TDE
       href: https://msdn.microsoft.com/library/dn948096
     - name: Always Encrypted
-      href: https://msdn.microsoft.com/library/mt163865.aspx
+      href: https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine
     - name: 数据屏蔽
       href: sql-database-dynamic-data-masking-get-started.md
   - name: 业务连续性
@@ -139,6 +137,8 @@
       href: sql-database-import.md
     - name: 导出 DB
       href: sql-database-export.md
+    - name: 同步数据
+      href: sql-database-sync-data.md
   - name: 监视和优化
     items:
     - name: 概述
@@ -391,6 +391,8 @@
       href: https://msdn.microsoft.com/library/mt654048.aspx
 - name: 资源
   items:
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/
   - name: 常见问题
     href: sql-database-faq.md
   - name: 公共数据集

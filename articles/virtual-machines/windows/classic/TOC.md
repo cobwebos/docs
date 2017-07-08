@@ -22,7 +22,7 @@
 ## 网络
 ### [如何设置终结点](setup-endpoints.md)
 ### [将 VM 与 VNet 或云服务连接](connect-vms.md)
-### [将经典 VNet 连接到资源管理器 VNet](../../../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
+### [将经典 VNet 连接到Resource Manager VNet](../../../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 ### [创建负载均衡器](../../../load-balancer/load-balancer-get-started-internet-classic-portal.md)
 ### [使用 Azure PowerShell 管理 NSG](../../../virtual-network/virtual-networks-create-nsg-classic-ps.md)
 
@@ -30,7 +30,7 @@
 ### [创建自定义 VM](createportal.md)
 ### [使用 Azure PowerShell 创建和配置 VM](create-powershell.md)
 ### [捕获 Windows VM](capture-image.md)
-### [使用 PowerShell 创建和上载 VHD](createupload-vhd.md)
+### [使用 PowerShell 创建和上传 VHD](createupload-vhd.md)
 ### [使用 Chef 自动化 Azure VM 部署](../../virtual-machines-windows-chef-automation.md)
 ### [在 Visual Studio 中创建和管理 VM](manage-visual-studio.md)
 ### [使用 Visual Studio 为 Web 应用创建 VM](web-app-visual-studio.md)
@@ -45,7 +45,7 @@
 ### [调整经典部署模型中创建的 Windows VM 大小](resize-vm.md)
 
 ## 管理
-### [从经典部署迁移到资源管理器部署](../../virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
+### [从经典部署迁移到 Resource Manager 部署](../../virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 ### [使用 Azure PowerShell 管理 VM](manage-psh.md)
 ### [关于 VM 代理和扩展](agents-and-extensions.md)
 ### [管理 VM 扩展](manage-extensions.md)
@@ -99,6 +99,7 @@
 ## [存储 REST](/rest/api/storageservices)
 
 # 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [定价](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)
 ## [区域可用性](https://azure.microsoft.com/regions/services/)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-virtual-machine)

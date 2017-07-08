@@ -75,7 +75,7 @@
 ### [通过脚本操作将外部包与 Jupyter 配合使用](hdinsight-apache-spark-python-package-installation.md)
 ### [使用本地 Jupyter 笔记本](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 ### [远程作业与 Livy](hdinsight-apache-spark-livy-rest-interface.md)
-### [使用 IntelliJ 远程调试作业](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+### [使用 IntelliJ 通过 VPN 远程调试作业](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 ### [管理资源](hdinsight-apache-spark-resource-manager.md)
 ### [跟踪和调试作业](hdinsight-apache-spark-job-debugging.md)
 ### [已知问题](hdinsight-apache-spark-known-issues.md)
@@ -107,6 +107,7 @@
 ## 使用 Kafka（预览版）
 ### [复制 Kafka 数据](hdinsight-apache-kafka-mirroring.md)
 ### [配置 Kafka 的存储和可伸缩性](hdinsight-apache-kafka-scalability.md)
+### [配置数据的高可用性](hdinsight-apache-kafka-high-availability.md)
 ### [与虚拟网络配合使用](hdinsight-apache-kafka-connect-vpn-gateway.md)
 ### [与 Spark 配合使用（结构化流）](hdinsight-apache-kafka-spark-structured-streaming.md)
 ### [与 Spark 配合使用 (DStream)](hdinsight-apache-spark-with-kafka.md)
@@ -116,7 +117,7 @@
 ### [开发 Java MapReduce 程序](hdinsight-develop-deploy-java-mapreduce-linux.md)
 ### [开发 Scalding MapReduce 作业](hdinsight-hadoop-mapreduce-scalding.md)
 ### [使用 HDInsight 工具创建 Spark 应用](hdinsight-apache-spark-eclipse-tool-plugin.md)
-### [使用 HDInsight 工具远程调试 Spark 应用](hdinsight-apache-spark-intellij-tool-debug-remotely.md)
+### [使用 HDInsight 工具通过 SSH 远程调试 Spark 应用](hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 ### [使用空边缘节点](hdinsight-apps-use-edge-node.md)
 ### [开发 Python 流式处理程序](hdinsight-hadoop-streaming-python.md)
 ### [处理和分析 JSON 文档](hdinsight-using-json-in-hive.md)
@@ -226,7 +227,8 @@
 ### [使用 Ambari API 监视群集](hdinsight-monitor-use-ambari-api.md)
 
 # 资源
-## [Microsoft 大数据专业程序](https://academy.microsoft.com/en-us/professional-program/big-data/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [在论坛上获取帮助](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
+## [Microsoft 大数据专业程序](https://academy.microsoft.com/en-us/professional-program/big-data/)
 ## [用于 HDInsight 的 Windows 工具](hdinsight-hadoop-windows-tools.md)

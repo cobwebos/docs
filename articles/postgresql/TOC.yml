@@ -17,8 +17,16 @@
       href: connect-python.md
     - name: Node.js
       href: connect-nodejs.md
+    - name: Java
+      href: connect-java.md
+    - name: Ruby
+      href: connect-ruby.md
+    - name: PHP
+      href: connect-php.md
     - name: .NET
       href: connect-csharp.md
+    - name: Go
+      href: connect-go.md
 - name: 教程
   items:
   - name: 1 - 设计数据库
@@ -97,6 +105,8 @@
     href: /cli/azure/postgres
 - name: 资源
   items:
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/
   - name: 定价
     href: https://azure.microsoft.com/pricing/details/postgresql/
   - name: MSDN 论坛

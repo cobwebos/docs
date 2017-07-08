@@ -12,16 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2015
+ms.date: 06/06/2017
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c9f907e55664e266fe994fb851ce744679dfb3e4
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 5ccb5c0b3c2ffaf8aba855a9dbe3da9691ab149b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/08/2017
 
 
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Microsoft Azure 中的度量值概述
-所有 Azure 服务都会跟踪使你可以监视你服务的运行状况、性能、可用性和使用情况的关键指标。 可以在 Azure 门户中查看这些度量值，也可以使用 [REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx) 或 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) 以编程方式访问完整的度量值集。
+所有 Azure 服务都会跟踪使你可以监视你服务的运行状况、性能、可用性和使用情况的关键指标。 可以在 Azure 门户中查看这些度量值，也可以使用 [REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx) 或 [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) 以编程方式访问完整的度量值集。
 
 对于某些服务，可能需要打开诊断以便查看任何指标。 对于其他服务（如虚拟机），你会获得基本指标集，但需要启用完整高频率指标集。 有关详细信息，请参阅[启用监视和诊断](insights-how-to-use-diagnostics.md)。
 
@@ -58,7 +60,7 @@ ms.openlocfilehash: c9f907e55664e266fe994fb851ce744679dfb3e4
 
 ![使用情况](./media/insights-how-to-customize-monitoring/Insights_UsageChart.png)
 
-与度量值一样，可使用 [REST API](https://msdn.microsoft.com/library/azure/dn931963.aspx) 或 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) 按编程方式访问完整使用配额集。
+与度量值一样，可使用 [REST API](https://msdn.microsoft.com/library/azure/dn931963.aspx) 或 [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) 按编程方式访问完整使用配额集。
 
 ## <a name="next-steps"></a>后续步骤
 * 每当度量值超过阈值时[接收警报通知](insights-receive-alert-notifications.md)。
@@ -67,10 +69,5 @@ ms.openlocfilehash: c9f907e55664e266fe994fb851ce744679dfb3e4
 * 要确切了解代码在云中的执行情况时[监视应用程序性能](../application-insights/app-insights-azure-web-apps.md)。
 * 若要获取有关访问网页的浏览器的客户端分析，请使用[适用于 JavaScript 应用和网页的 Application Insights](../application-insights/app-insights-web-track-usage.md)。
 * 使用 Application Insights [监视任何网页的可用性和响应能力](../application-insights/app-insights-monitor-web-app-availability.md)，以便可以在页面出现故障时及时发现。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

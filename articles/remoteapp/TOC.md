@@ -34,7 +34,7 @@
 ### [创建 RemoteApp 映像](remoteapp-imageoptions.md)
 ### [什么是模板映像？](remoteapp-images.md)
 ### [映像要求](remoteapp-imagereqs.md)
-### [上载映像](remoteapp-uploadimage.md)
+### [上传映像](remoteapp-uploadimage.md)
 ### [从 Azure VM 创建映像](remoteapp-image-on-azurevm.md)
 ## 配置虚拟网络
 ### [规划 VNET](remoteapp-planvnet.md)
@@ -67,7 +67,8 @@
 ### [云集合疑难解答](remoteapp-cloudtrouble.md)
 
 # 资源
-## [服务更新](https://azure.microsoft.com/updates/?product=remoteapp)
-## [定价](https://azure.microsoft.com/pricing/details/remoteapp/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureRemoteApp)
+## [定价](https://azure.microsoft.com/pricing/details/remoteapp/)
+## [服务更新](https://azure.microsoft.com/updates/?product=remoteapp)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=remoteapp)

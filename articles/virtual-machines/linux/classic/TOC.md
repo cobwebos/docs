@@ -33,8 +33,8 @@
 ### [将 VM 与虚拟网络或云服务连接](connect-vms.md)
 
 ## 部署映像
-### [创建并上载 VHD](create-upload-vhd.md)
-### [创建并上载 FreeBSD VHD](freebsd-create-upload-vhd.md)
+### [创建并上传 VHD](create-upload-vhd.md)
+### [创建并上传 FreeBSD VHD](freebsd-create-upload-vhd.md)
 ### [Oracle VM 映像列表](oracle-images.md)
 
 ## 管理工作负荷
@@ -78,6 +78,7 @@
 
 
 # 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [定价](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)
 ## [区域可用性](https://azure.microsoft.com/regions/services)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-virtual-machine)

@@ -99,3 +99,5 @@
 #### [将计算机连接到虚拟网络](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [后续步骤](azure-operations-guide.md#next-steps)
+# 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)

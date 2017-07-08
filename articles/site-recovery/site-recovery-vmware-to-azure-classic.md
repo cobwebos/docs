@@ -12,15 +12,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2017
+ms.date: 06/23/2017
 ms.author: raynew
 ROBOTS: NOINDEX, NOFOLLOW
 redirect_url: site-recovery-vmware-to-azure
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 88c0e4d02f13d3dcc8824ed1cba8fecd3c5cfa77
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 73c3fb5cf4056ddb9554f598ec7f173d81802f17
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -711,7 +711,7 @@ C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstalls
 
 | **角色** | **详细信息** | **权限** |
 | --- | --- | --- |
-| Azure_Site_Recovery 角色 |VMware VM 发现 |为 v-Center 服务器分配这些特权：<br/><br/>数据存储：分配空间、浏览数据存储、低级别文件操作、删除文件、更新虚拟机文件<br/><br/>网络：网络分配<br/><br/>资源：将虚拟机分配给资源池、迁移电源关闭的虚拟机、迁移已打开的虚拟机<br/><br/>任务：创建任务、更新任务<br/><br/>虚拟机 > 配置<br/><br/>虚拟机 > 交互 > 回答问题、设备连接、配置 CD 媒体、配置软盘媒体、关机、开机、安装 VMware 工具<br/><br/>虚拟机 > 库存 > 创建、注册、取消注册<br/><br/>虚拟机 > 预配 > 允许虚拟机下载、允许虚拟机文件上载<br/><br/>虚拟机 > 快照 > 删除快照 |
+| Azure_Site_Recovery 角色 |VMware VM 发现 |为 v-Center 服务器分配这些特权：<br/><br/>数据存储：分配空间、浏览数据存储、低级别文件操作、删除文件、更新虚拟机文件<br/><br/>网络：网络分配<br/><br/>资源：将虚拟机分配给资源池、迁移电源关闭的虚拟机、迁移已打开的虚拟机<br/><br/>任务：创建任务、更新任务<br/><br/>虚拟机 > 配置<br/><br/>虚拟机 > 交互 > 回答问题、设备连接、配置 CD 媒体、配置软盘媒体、关机、开机、安装 VMware 工具<br/><br/>虚拟机 > 库存 > 创建、注册、取消注册<br/><br/>虚拟机 > 预配 > 允许虚拟机下载、允许虚拟机文件上传<br/><br/>虚拟机 > 快照 > 删除快照 |
 | vCenter 用户角色 |VMware VM 发现/在不关闭源 VM 的情况下进行故障转移 |为 v-Center 服务器分配这些特权：<br/><br/>数据中心对象 > 传播到子对象、角色=只读 <br/><br/>用户在数据中心级别进行分配，因此具有数据中心内所有对象的访问权限。 若要限制访问权限，请将具有“传播到子对象”权限的“禁止访问”角色分配给子对象（ESX 主机、数据存储、VM 和网络）。 |
 | vCenter 用户角色 |故障转移和故障回复 |为 v-Center 服务器分配这些特权：<br/><br/>数据中心对象 – 传播到子对象、角色=Azure_Site_Recovery<br/><br/>用户在数据中心级别进行分配，并因此具有数据中心内所有对象的访问权限。  若要限制访问权限，请将具有“传播到子对象”权限的**禁止访问**角色分配给子对象（ESX 主机、数据存储、VM 和网络）。 |
 

@@ -16,17 +16,17 @@ ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeffstok
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 3724b9077b04c767d0b1679caffed2bc5d077113
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: d1c099dd39fd6a58bf4d0679f536499d6dd8d29a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/01/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
 
 # <a name="debug-azure-stream-analytics-with-event-hub-receivers"></a>使用事件中心接收器调试 Azure 流分析
 
-可以使用 Azure 流分析中的 Azure 事件中心来从作业中引入或输出作业。 使用事件中心的最佳做法是使用多个使用者组来确保作业的可缩放性。 其中一个原因是，对于特定的输入，流分析作业中读取器的数量会影响单个使用者组中的读取器数量。 接收器的精确数量取决于横向扩展的拓扑逻辑的内部实现详细信息。 接收器的数量不向外部公开。 读取器的数量会在作业启动时或作业升级期间发生更改。
+可以使用 Azure 流分析中的 Azure 事件中心来从作业中引入或输出作业。 使用事件中心的最佳做法是使用多个使用者组来确保作业的伸缩性。 其中一个原因是，对于特定的输入，流分析作业中读取器的数量会影响单个使用者组中的读取器数量。 接收器的精确数量取决于横向扩展的拓扑逻辑的内部实现详细信息。 接收器的数量不向外部公开。 读取器的数量会在作业启动时或作业升级期间发生更改。
 
 > [!NOTE]
 > 当读取器的数量在作业升级期间发生更改时，暂时性警告将被写入到审核日志中。 流分析作业会自动从这些暂时性问题中恢复。
@@ -87,7 +87,7 @@ FROM data
 
 ## <a name="next-steps"></a>后续步骤
 * [流分析简介](stream-analytics-introduction.md)
-* [流分析入门](stream-analytics-get-started.md)
+* [流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [扩展流分析作业](stream-analytics-scale-jobs.md)
 * [流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

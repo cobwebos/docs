@@ -16,10 +16,10 @@ ms.date: 05/05/2017
 ms.author: cfowler
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: b58ecb5dee434ab2295ccf3ff9a80dbfbdd1fe14
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: e41c6f544ace374eb1f059c115e585a70265a571
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中创建 Node.js Web 应用
@@ -139,7 +139,7 @@ Node.js 示例代码在 Azure App Service Web 应用中运行。
 
 ![在 Azure 中运行应用的示例](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
-**祝贺你！** 现已将第一个 PHP 应用部署到应用服务。
+**祝贺你！** 现已将第一个 Node.js 应用部署到应用服务。
 
 ## <a name="update-and-redeploy-the-code"></a>更新并重新部署代码
 

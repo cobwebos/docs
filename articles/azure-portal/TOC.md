@@ -33,6 +33,7 @@
 ## [Azure Insights CLI 快速入门示例](../monitoring-and-diagnostics/insights-cli-samples.md)
 
 # 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazuremanagement) 
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-management-portal)
 

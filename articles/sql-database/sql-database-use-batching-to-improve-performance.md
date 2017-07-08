@@ -8,17 +8,18 @@ manager: jhubbard
 editor: 
 ms.assetid: 563862ca-c65a-46f6-975d-10df7ff6aa9c
 ms.service: sql-database
-ms.custom: monitor and tune
+ms.custom: develop apps
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 07/12/2016
 ms.author: sstein
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: b62097f945bc5c595c0893d16bb2c1d9bbfd7a07
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: 22cff47444306e599325ba3035d83a0266d69c72
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/22/2017
 
 
 ---
@@ -41,7 +42,7 @@ ms.lasthandoff: 04/20/2017
 ## <a name="batching-strategies"></a>批处理策略
 ### <a name="note-about-timing-results-in-this-topic"></a>有关本主题中计时结果的注意事项
 > [!NOTE]
-> 结果并不是基准，而是用于显示**相对性能**。 计时基于至少运行 10 次测试后的平均值。 操作将插入空表。 这些测试是不久前完成的，不一定对应于今天可能产生的吞吐量。 批处理技术的相对优势应该类似。
+> 结果并不是基准，而是用于显示**相对性能**。 计时基于至少运行 10 次测试后的平均值。 操作将插入空表。 这些测试将在 V12 以前的版本中测量，不一定对应于在使用新[服务层](sql-database-service-tiers.md)的 V12 数据库中可能会获得的吞吐量。 批处理技术的相对优势应该类似。
 > 
 > 
 
@@ -120,7 +121,7 @@ ms.lasthandoff: 04/20/2017
 
 前一个示例演示你可以将一个本地事务添加到任何具有两行的 ADO.NET 代码。 事务提供了一个快速提高代码性能的方法，这些代码用于执行顺序插入、更新和删除操作。 但是，为了实现最佳性能，请考虑进一步更改代码，以利用客户端批处理（如表值参数）。
 
-有关 ADO.NET 中事务的详细信息，请参阅 [ADO.NET 中的本地事务](https://msdn.microsoft.com/library/vstudio/2k2hy99x.aspx)。
+有关 ADO.NET 中事务的详细信息，请参阅 [ADO.NET 中的本地事务](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions)。
 
 ### <a name="table-valued-parameters"></a>表值参数
 表值参数支持用户定义的表类型作为 Transact-SQL 语句、存储过程和函数的参数。 使用这个客户端批处理方法，你可以在表值参数中发送多行数据。 若要使用表值参数，请首先定义表类型。 以下 Transact-SQL 语句将创建一个名为 **MyTableType** 的表类型。
@@ -619,6 +620,6 @@ OrderID 表中的 PurchaseOrderDetail 列必须引用 PurchaseOrder 表的订单
 * 请考虑对大小和时间进行缓冲，为更多方案实现批处理。
 
 ## <a name="next-steps"></a>后续步骤
-本文着重于与批处理相关的数据库设计和代码编写技术，以及如何改善应用程序的性能和缩放性。 但这只是整体策略中的一个因素。 有关其他可改善性能和缩放性的方式，请参阅 [Azure SQL 数据库的单一数据库性能指导](sql-database-performance-guidance.md)及[弹性池的价格和性能注意事项](sql-database-elastic-pool.md)。
+本文着重于与批处理相关的数据库设计和代码编写技术，以及如何改善应用程序的性能和缩放性。 但这只是整体策略中的一个因素。 有关其他可改善性能和缩放性的方式，请参阅 [Azure SQL 数据库的单一数据库性能指导](sql-database-performance-guidance.md)及[弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。
 
 
