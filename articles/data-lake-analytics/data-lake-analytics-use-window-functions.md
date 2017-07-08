@@ -1,9 +1,9 @@
 ---
 redirect_url: /azure/data-lake-analytics/data-lake-analytics-u-sql-get-started
-redirect_document_id: FALSE
+redirect_document_id: TRUE
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 19c647b07da52e198ac9072c14d876d87bd1ddc5
+ms.sourcegitcommit: 9d12a322493c199cdef4c758642a4a48925a821c
+ms.openlocfilehash: 83fb8b710e81fc2d22712f704d0e1ad3839f44ed
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/28/2017
 
