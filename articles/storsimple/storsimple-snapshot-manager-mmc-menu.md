@@ -4,7 +4,7 @@ description: "介绍了如何使用 StorSimple Snapshot Manager 中的标准 Mic
 services: storsimple
 documentationcenter: NA
 author: SharS
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 78ef81af-0d3a-4802-be54-ad192f9ac8a6
 ms.service: storsimple
@@ -12,17 +12,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 04/25/2016
+ms.date: 06/05/2017
 ms.author: v-sharos
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: b2be03e12b2deaecb352f8703650cf23cdefdebd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>使用 StorSimple Snapshot Manager 中的 MMC 菜单操作
+
 ## <a name="overview"></a>概述
-在 StorSimple Snapshot Manager 中，将看到以下操作列于所有的操作菜单和“**操作**”窗格的所有变体上。 
+在 StorSimple Snapshot Manager 中，将看到以下操作列于所有的操作菜单和“**操作**”窗格的所有变体上。
 
 * 查看
 * 从此处新建窗口 
@@ -99,10 +102,5 @@ ms.openlocfilehash: b2be03e12b2deaecb352f8703650cf23cdefdebd
 ## <a name="next-steps"></a>后续步骤
 * 了解有关 [StorSimple Snapshot Manager 用户界面](storsimple-use-snapshot-manager.md)的详细信息。
 * 了解有关[使用 StorSimple Snapshot Manager 管理你的 StorSimple 解决方案](storsimple-snapshot-manager-admin.md)的详细信息。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
