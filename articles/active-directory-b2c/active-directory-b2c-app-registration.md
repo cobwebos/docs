@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 6/13/2017
 ms.author: parakhj
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 4649bec5290e09b8a18e3e12719e63bf5e57c0b0
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 3499ff57e650c70679dfa018eec5dbe1a6173a33
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/04/2017
 
 
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 06/16/2017
 1. 单击边栏选项卡顶部的“ **+添加** ”。
 1. 输入应用程序的“ **名称** ”，用于向使用者描述你的应用程序。 例如，你可以输入“Contoso B2C app”。
 1. 将“包括 Web 应用/Web API”开关切换到“是”。
-1. 为“回复 URL”输入[适当](#choosing-a-web-app/api-reply-url)的值，回复 URL 是 Azure AD B2C 将在其中返回应用程序请求的任何令牌的终结点。 例如，输入 `https://localhost:44316/`。
+1. 为“回复 URL”输入[适当](#limitations)的值，回复 URL 是 Azure AD B2C 将在其中返回应用程序请求的任何令牌的终结点。 例如，输入 `https://localhost:44316/`。
 1. 单击“ **创建** ”以注册你的应用程序。
 1. 单击刚刚创建的应用程序，并复制稍后将在代码中使用的全局唯一“ **应用程序客户端 ID** ”。
 1. 如果 Web 应用程序还将调用受 Azure AD B2C 保护的 Web API，则需：
@@ -154,3 +154,4 @@ ms.lasthandoff: 06/16/2017
 ## <a name="next-steps"></a>后续步骤
 
 将应用程序注册到 Azure AD B2C 以后，接下来可以完成[快速入门教程](active-directory-b2c-overview.md#get-started)之一，进一步做好启动和运行准备。
+
