@@ -79,7 +79,7 @@ CORS 规则在服务级别设置，因此你需要分别为每个服务（Blob�
 * **ExposedHeaders**：可以在 CORS 请求响应中发送并由浏览器向请求发出方公开的响应标头。 在上面的示例中，指示浏览器公开任何以 x-ms-meta 开头的标头。
 * **MaxAgeInSeconds**：浏览器应缓存预检 OPTIONS 请求的最长时间。
 
-Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元素指定带前缀的标头。 若要允许某个标头类别，可以为该类别指定一个通用前缀。 例如，如果指定 *x-ms-meta***作为带前缀的标头，将会建立一条与 x-ms-meta 开头的所有标头相匹配的规则。
+Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元素指定带前缀的标头。 若要允许某个标头类别，可以为该类别指定一个通用前缀。 例如，如果指定 *x-ms-meta** 作为带前缀的标头，将会建立一条与 x-ms-meta 开头的所有标头相匹配的规则。
 
 以下限制适用于 CORS 规则：
 
