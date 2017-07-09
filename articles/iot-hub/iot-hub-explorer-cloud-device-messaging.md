@@ -70,7 +70,7 @@ ms.lasthandoff: 05/08/2017
 1. 运行以下命令，在 IoT 中心内启动一个会话：
 
    ```bash
-   iothub-explorer login <IoTHubConnectionString>
+   iothub-explorer login `<IoTHubConnectionString>`
    ```
 
 1. 运行以下命令，将消息发送到设备：
@@ -89,3 +89,4 @@ ms.lasthandoff: 05/08/2017
 现在，你已了解如何监视设备到云的消息，以及在 IoT 设备与 Azure IoT 中心之间发送云到设备的消息。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
+
