@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/23/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 8e0516585e2191caaef70bc973f027925df91bf6
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: d04d1240fb353a973953b2a90eadc65705219edb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -167,7 +167,7 @@ Azure Cosmos DB 提供名为集合的弹性存储和吞吐量容器。 集合中
     <tr>
         <td>minInclusive</td>
         <td>分区键范围的最小分区键哈希值。 供内部使用。</td>
-    </tr>        
+    </tr>       
 </table>
 
 可使用某个支持的 [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) 完成此操作。 例如，以下代码片段演示如何在 .NET 中检索分区键范围。
@@ -402,5 +402,5 @@ ReadDocumentFeed 支持使用以下方案/任务对 Azure Cosmos DB 集合中的
 
 ## <a name="next-steps"></a>后续步骤
 * 试用 [GitHub 上的 Azure Cosmos DB 更改源代码示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed)
-* 使用 [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) 或 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 开始编写代码
+* 使用 [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) 或 [REST API](/rest/api/documentdb/) 开始编写代码
 

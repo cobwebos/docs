@@ -1,22 +1,25 @@
-<properties
-   pageTitle="Azure 搜索中的同义词功能（预览版）| Microsoft Docs"
-   description="Azure 搜索 REST API 中公开了有关同义词功能（预览）功能的初步文档。"
-   services="search"
-   documentationCenter=""
-   authors="mhko"
-   manager="pablocas"
-   editor=""/>
+---
+pageTitle: Synonyms in Azure Search (preview) | Microsoft Docs
+description: "Azure 搜索 REST API 中公开了有关同义词功能（预览）功能的初步文档。"
+services: search
+documentationCenter: 
+authors: mhko
+manager: pablocas
+editor: 
+ms.service: search
+ms.devlang: rest-api
+ms.workload: search
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.date: 07/07/2016
+ms.author: nateko
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 739a0ad77c68ea74ec25bc80c7539ac8b3f18201
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/09/2017
 
-<tags
-   ms.service="search"
-   ms.devlang="rest-api"
-   ms.workload="search"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.date="07/07/2016"
-   ms.author="nateko"/>
-
-
+---
 # <a name="synonyms-in-azure-search-preview"></a>Azure 搜索中的同义词功能（预览版）
 
 搜索引擎中的同义词功能无需用户实际提供术语，便可关联隐式扩展查询作用域的等效术语。 例如，若给定术语“dog”以及“canine”和“puppy”同义词关联，则包含“dog”、“canine”或“puppy”的所有文档都属于查询作用域。
@@ -35,9 +38,9 @@
 
 将同义词并入搜索应用程序需要两步：
 
-1.    通过以下 API 将同义词映射添加到搜索服务。  
+1.  通过以下 API 将同义词映射添加到搜索服务。  
 
-2.    配置可搜索字段以在索引定义中使用同义词映射。
+2.  配置可搜索字段以在索引定义中使用同义词映射。
 
 ### <a name="synonymmaps-resource-apis"></a>SynonymMaps 资源 API
 

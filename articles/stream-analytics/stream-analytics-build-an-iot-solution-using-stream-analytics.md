@@ -16,16 +16,17 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 637473db37985a4a89ddb19e02eebc377902c942
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 43acd0e8e6b106013fc4491e3785f6efefc51493
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
+
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>使用流分析构建 IoT 解决方案
 ## <a name="introduction"></a>介绍
-在本教程中，将学习如何使用 Azure 流分析来实时了解数据。 开发人员可以轻松将数据流（例如点击流、日志和设备生成的时间）与历史记录或引用数据结合起来，获取业务信息。 由 Microsoft Azure 托管的 Azure 流分析是可完全管理的实时流计算服务，它提供内置冗余、低延迟及可缩放性，可让你在几分钟之内就立刻上手。
+在本教程中，将学习如何使用 Azure 流分析来实时了解数据。 开发人员可以轻松将数据流（例如点击流、日志和设备生成的时间）与历史记录或引用数据结合起来，获取业务信息。 由 Microsoft Azure 托管的 Azure 流分析是可完全管理的实时流计算服务，它提供内置冗余、低延迟及伸缩性，可让用户在几分钟之内就立刻上手。
 
 完成本教程之后，你将能够：
 
@@ -133,7 +134,7 @@ ms.lasthandoff: 04/27/2017
 请务必按照本文末尾的“清理 Azure 帐户”部分中的步骤操作，以便充分利用 200 美元的免费 Azure 信用额度。
 
 ## <a name="provision-azure-resources-required-for-the-tutorial"></a>预配本教程所需的 Azure 资源
-本教程需要两个事件中心来接收“入口”和“出口”数据流。 Azure SQL 数据库输出流分析作业的结果。 Azure 存储空间存储有关汽车注册的引用数据。
+本教程需要两个事件中心来接收“入口”和“出口”数据流。 Azure SQL 数据库输出流分析作业的结果。 Azure 存储存储有关汽车注册的引用数据。
 
 可以使用 GitHub 上 TollApp 文件夹中的 Setup.ps1 脚本创建所有必要的资源。 为了节省时间，我们建议运行此脚本。 如果想要详细了解如何在 Azure 门户中配置这些资源，请参阅附录“在 Azure 门户中配置教程资源”。
 
@@ -192,7 +193,7 @@ ms.lasthandoff: 04/27/2017
 2. 单击以 *tolldata* 开头的项。 单击“容器”选项卡，查看创建的容器。
    
     ![Azure 门户中的“容器”选项卡](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image10.png)
-3. 单击“tolldata”容器，查看已上载的、包含汽车注册数据的 JSON 文件。
+3. 单击 **tolldata** 容器，查看已上传的、包含汽车注册数据的 JSON 文件。
    
     ![容器中 registration.json 文件的屏幕截图](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image12.png)
 

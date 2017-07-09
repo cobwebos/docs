@@ -14,12 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 12/21/2016
+ms.date: 05/30/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 8c5342fd2c35bbda94ec8496e9ca74454d44d17f
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 24f903c6b8b982599904b95f86d648927a3be5ce
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -73,7 +74,7 @@ ms.lasthandoff: 04/03/2017
 ## <a name="use-the-azure-cli-20"></a>使用 Azure CLI 2.0
 安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/#login) 登录到 Azure 帐户（如果尚未这样做）。
 
-如果创建并上载了自定义 Linux 磁盘映像，请确保已安装 [Microsoft Azure Linux 代理](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 2.0.5 版或更高版本。 在使用库映像创建的 VM 上，系统已自动安装并配置了此访问扩展。
+如果创建并上传了自定义 Linux 磁盘映像，请确保已安装 [Microsoft Azure Linux](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 代理 2.0.5 版或更高版本。 在使用库映像创建的 VM 上，系统已自动安装并配置了此访问扩展。
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>重置用户的 SSH 凭据
 以下示例在 `myResourceGroup` 中名为 `myVM` 的 VM 上，使用 [az vm access set-linux-user](/cli/azure/vm/access#set-linux-user) 将 `myUsername` 的凭据重置为 `myPassword` 中指定的值。 请如下所示使用自己的值：
@@ -142,7 +143,7 @@ azure vm extension set myResourceGroup myVM \
 azure config mode arm
 ```
 
-如果创建并上载了自定义 Linux 磁盘映像，请确保已安装 [Microsoft Azure Linux 代理](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 2.0.5 版或更高版本。 在使用库映像创建的 VM 上，系统已自动安装并配置了此访问扩展。
+如果创建并上传了自定义 Linux 磁盘映像，请确保已安装 [Microsoft Azure Linux](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 代理 2.0.5 版或更高版本。 在使用库映像创建的 VM 上，系统已自动安装并配置了此访问扩展。
 
 ### <a name="reset-ssh-configuration"></a>重置 SSH 配置
 SSHD 配置本身可能有误或服务遇到错误。 你可以重置 SSHD 以确保 SSH 配置本身是有效的。 要执行的第一个故障排除步骤应该是重置 SSHD。
@@ -225,10 +226,7 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 
 * 从 [Azure 门户](https://portal.azure.com)重置远程访问。 在 Azure 门户中选择 VM，然后单击“重置远程...”按钮。
 * 重启 VM。 在 [Azure 门户](https://portal.azure.com)中选择 VM，然后单击“重新启动”按钮。
-  
-    - 或 -
-  
-    在 [Azure 经典门户](https://manage.windowsazure.com)中，选择“虚拟机” > “实例” > “重新启动”。
+    
 * 将 VM 重新部署到新的 Azure 节点。 有关如何重新部署 VM 的信息，请参阅[将虚拟机重新部署到新的 Azure 节点](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
   
     完成此操作后，临时磁盘数据会丢失，并且系统会更新与虚拟机关联的动态 IP 地址。

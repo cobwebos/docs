@@ -16,19 +16,19 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: jdial
 ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: f1fb0f6348b579121be64bff4411952026f8528d
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 871d469ada9857af6d6fe70f1dd38385fb18e312
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/13/2017
+ms.lasthandoff: 06/02/2017
 
 
 ---
 
 # <a name="create-change-or-delete-network-interfaces"></a>创建、更改或删除网络接口
 
-了解如何创建、删除网络接口 (NIC) 及更改其设置。 Azure 虚拟机 (VM) 通过 NIC 与 Internet、Azure 及本地资源通信。 使用 Azure 门户创建 VM 时，门户将使用默认设置创建一个 NIC。 可以改为选择使用自定义设置创建 NIC，并在创建 VM 时向其添加一个或多个 NIC。 还可以更改现有 NIC 的默认 NIC 设置。 本文介绍如何使用自定义设置创建 NIC、更改现有的 NIC 设置（例如网络筛选器分配（网络安全组）、子网分配、DNS 服务器设置和 IP 转发），以及删除 NIC。 
+了解如何创建、删除网络接口 (NIC) 及更改其设置。 Azure 虚拟机 (VM) 通过 NIC 与 Internet、Azure 及本地资源通信。 使用 Azure 门户创建 VM 时，门户将使用默认设置创建一个 NIC。 可以改为选择使用自定义设置创建 NIC，并在创建 VM 时向其添加一个或多个 NIC。 还可以更改现有 NIC 的默认 NIC 设置。 本文介绍如何使用自定义设置创建 NIC、更改现有的 NIC 设置（例如网络筛选器分配（网络安全组）、子网分配、DNS 服务器设置和 IP 转发），以及删除 NIC。
 
-如果需要为 NIC 添加、更改或删除 IP 地址，请阅读[添加、更改或删除 IP 地址](virtual-network-network-interface-addresses.md)一文。 如果需要在 VM 中添加或删除 NIC，请阅读[添加或删除 NIC](virtual-network-network-interface-vm.md) 一文。 
+如果需要为 NIC 添加、更改或删除 IP 地址，请阅读[添加、更改或删除 IP 地址](virtual-network-network-interface-addresses.md)一文。 如果需要在 VM 中添加或删除 NIC，请阅读[添加或删除 NIC](virtual-network-network-interface-vm.md) 一文。
 
 
 ## <a name="before"></a>准备工作
@@ -54,7 +54,7 @@ ms.lasthandoff: 05/13/2017
     |虚拟网络|是|选择要将 NIC 连接到的 VNet。 只能将 NIC 连接到与 NIC 位于相同位置和订阅中的 VNet。 创建 NIC 后，无法更改它连接到的 VNet。 将 NIC 添加到的 VM 也必须位于该 NIC 所在的同一位置和订阅中。|
     |子网|是|在所选的 VNet 中选择一个子网。 创建 NIC 后，可以更改它连接到的子网。|
     |专用 IP 地址分配|是| 从以下分配方法中选择：**动态：**选择此选项时，Azure 将从所选子网的地址空间中自动分配可用地址。 当 NIC 所在的 VM 处于停止（解除分配）状态后启动时，Azure 会向 NIC 分配一个不同的地址。 如果在 VM 不是处于停止（解除分配）的状态下将它重新启动，地址将保持不变。 **静态：**选择此选项时，必须手动从所选子网的地址空间中手动分配一个可用的 IP 地址。 静态地址不会更改，除非手动将它更改或者删除 NIC。 创建 NIC 后，可以更改分配方法。 Azure DHCP 服务器将此地址分配到 VM 操作系统中的 NIC。|
-    |网络安全组|否| 保留设置为“无”，选择现有的网络安全组 (NSG)，或创建 NSG。 使用 NSG 可以筛选传入和传出 NIC 的网络流量。 有关 NSG 的详细信息，请参阅[网络安全组](virtual-networks-nsg.md)一文。 若要创建 NSG，请参阅[创建 NSG](virtual-networks-create-nsg-arm-pportal.md) 一文。 可以将零个或一个 NSG 应用到 NIC。 也可以将零个或一个 NSG 应用到 NIC 所连接到的子网。 将 NSG 应用到 NIC 以及 NIC 连接到的子网时，有时会发生意外的结果。 若要对应用到 NIC 和子网的 NSG 进行故障排除，请参阅 [NSG 故障排除](virtual-network-nsg-troubleshoot-portal.md#view-effective-security-rules-for-a-network-interface)一文。|
+    |网络安全组|否| 保留设置为“无”，选择现有的网络安全组 (NSG)，或创建 NSG。 使用 NSG 可以筛选传入和传出 NIC 的网络流量。 有关 NSG 的详细信息，请参阅[网络安全组](virtual-networks-nsg.md)一文。 若要创建 NSG，请参阅[创建 NSG](virtual-networks-create-nsg-arm-pportal.md) 一文。 可以将零个或一个 NSG 应用到 NIC。 也可以将零个或一个 NSG 应用到 NIC 所连接到的子网。 将 NSG 应用到 NIC 以及 NIC 连接到的子网时，有时会发生意外的结果。 若要对应用到 NIC 和子网的 NSG 进行故障排除，请参阅 [NSG 故障排除](virtual-network-nsg-troubleshoot-portal.md#a-namensgaview-effective-security-rules-for-a-network-security-group-nsg)一文。|
     |订阅|是|选择一个 Azure [订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)。 将 NIC 附加到的 VM 以及将 NIC 连接的 VNet 必须在同一个订阅中。|
     |资源组|是|选择现有的[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)或创建一个资源组。 NIC 可与它附加的 VM 或者连接到的 VNet 位于相同或不同的资源组中。|
     |位置|是|将 NIC 附加到的 VM 以及将 NIC 连接的 VNet 必须位于同一个[位置](https://azure.microsoft.com/regions)（也称为区域）。|
@@ -84,7 +84,7 @@ ms.lasthandoff: 05/13/2017
     - **DNS 服务器：**可以指定 Azure DHCP 服务器向 NIC 分配哪个 DNS 服务器。 NIC 可从 NIC 连接到的 VNet 继承设置，或使用自定义设置来替代它连接到的 VNet 的设置。 若要修改显示的内容，请完成本文[更改 DNS 服务器](#dns)部分中的步骤。
     - **网络安全组(NSG)：**显示与 NIC 关联的 NSG（如果有）。 NSG 包含用于筛选 NIC 网络流量的入站和出站规则 如果 NIC 有关联的 NSG，将显示关联的 NSG 的名称。 若要修改显示的内容，请完成本文[在网络接口中关联或取消关联 NSG](#associate-nsg) 部分中的步骤。
     - **属性：**显示有关 NIC 的关键设置，包括它的 MAC 地址（如果 NIC 未附加到 VM，则为空）及其所在的订阅。
-    - **有效的安全规则：**如果 NIC 已附加到正在运行的 VM，并且某个 NSG 规则已关联到该 NIC 和/或它连接到的子网，则会列出安全规则。 若要详细了解显示的内容，请参阅[网络安全组故障排除](virtual-network-nsg-troubleshoot-portal.md#view-effective-security-rules-for-a-network-interface)一文。 有关 NSG 的详细信息，请参阅[网络安全组](virtual-networks-nsg.md)一文。
+    - **有效的安全规则：**如果 NIC 已附加到正在运行的 VM，并且某个 NSG 规则已关联到该 NIC 和/或它连接到的子网，则会列出安全规则。 若要详细了解显示的内容，请参阅[网络安全组故障排除](virtual-network-nsg-troubleshoot-portal.md#a-namensgaview-effective-security-rules-for-a-network-security-group-nsg)一文。 有关 NSG 的详细信息，请参阅[网络安全组](virtual-networks-nsg.md)一文。
     - **有效的路由：**如果 NIC 已附加到正在运行的 VM，则会列出路由。 路由是 Azure 默认路由、用户定义的任何路由 (UDR) 和 NIC 所连接到的子网可能存在的任何 BGP 路由的组合。 若要详细了解显示的内容，请参阅[路由故障排除](virtual-network-routes-troubleshoot-portal.md#view-effective-routes-for-a-network-interface)一文。 若要详细了解 Azure 默认值和 UDR，请阅读[用户定义的路由](virtual-networks-udr-overview.md)一文。
     - **常见的 Azure Resource Manager 设置：**若要详细了解常见的 Azure Resource Manager 设置，请参阅文章[活动日志](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)、[访问控制 (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)、[标记](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags)、[锁定](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[自动化脚本](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)。
 

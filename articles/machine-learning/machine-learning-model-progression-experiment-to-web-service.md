@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 209d1cbe4f1ad08a98caf0a8d16f5b0ee45468ca
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 008952b4fee6bffe1e20259dc86fd6d5122777ec
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -71,7 +72,7 @@ Azure 机器学习工作室提供交互式画布，允许你开发、运行、�
 > 
 
 ### <a name="the-web-service"></a>Web 服务
-预测实验准备就绪让你感到满意后，即可基于 Azure Resource Manager 将服务部署为经典 Web 服务或新的 Web 服务。 若要通过将其部署为*经典机器学习 Web 服务*来实施模型，请单击“**部署 Web 服务**”，然后选择“**部署 Web 服务[经典]**”。 若要作为*新的机器学习 Web 服务*进行部署，请单击“**部署 Web 服务**”，然后选择“**部署 Web 服务[新]**”。 用户现在可以使用 Web 服务 REST API 将数据发送到你的模型并接收返回的结果。 有关详细信息，请参阅[如何使用已从机器学习实验部署的 Azure 机器学习 Web 服务](machine-learning-consume-web-services.md)。
+预测实验准备就绪让你感到满意后，即可基于 Azure Resource Manager 将服务部署为经典 Web 服务或新的 Web 服务。 若要通过将其部署为*经典机器学习 Web 服务*来实施模型，请单击“**部署 Web 服务**”，然后选择“**部署 Web 服务[经典]**”。 若要作为*新的机器学习 Web 服务*进行部署，请单击“**部署 Web 服务**”，然后选择“**部署 Web 服务[新]**”。 用户现在可以使用 Web 服务 REST API 将数据发送到你的模型并接收返回的结果。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](machine-learning-consume-web-services.md)。
 
 ## <a name="the-non-typical-case-creating-a-non-predictive-web-service"></a>非典型情况：创建一个非预测性的 Web 服务
 如果实验没有对预测分析模型进行训练，则无需创建训练实验和评分实验 - 只有一个实验，并且可以将其部署为 Web 服务。 机器学习工作室可通过分析所使用的模块，检测你的实验是否包含预测性模型。

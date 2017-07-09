@@ -15,10 +15,10 @@ ms.workload: search
 ms.date: 05/01/2017
 ms.author: brjohnst
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ea3fc801074bb6d7e7c32574bc94702c79a61185
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: e6ad5c964bfa8421be2706cb4015980e01a271b7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -259,7 +259,7 @@ Azure 搜索服务 API 支持 API 操作的两个 URL 语法：简单和 OData�
 
 `name` - 设置字段的名称。
 
-`type` - 设置字段的数据类型。 有关受支持类型的列表，请参阅[受支持的数据类型](#DataTypes)。
+`type` - 设置字段的数据类型。
 
 `searchable` - 将字段标记为全文可搜索。 这意味着它将在索引期间受到分词之类的分析。 如果将 `searchable` 字段设置为“sunny day”之类的值，在内部它将拆分为单独的标记“sunny”和“day”。 这实现了对这些词的全文搜素。 `Edm.String` 或 `Collection(Edm.String)` 类型的字段默认为 `searchable`。 其他类型的字段不能为 `searchable`。
 
@@ -1461,7 +1461,7 @@ Azure 搜索中的建议功能是提前键入或自动完成查询功能，提�
 > 
 > 
 
-`$filter=[string]`（可选）- 标准 OData 语法中的结构化搜索表达式。 有关 Azure 搜索支持的 OData 表达式语法子集的详细信息，请参阅 [OData 表达式语法](#ODataExpressionSyntax)。
+`$filter=[string]`（可选）- 标准 OData 语法中的结构化搜索表达式。
 
 > [!NOTE]
 > 使用 POST 调用**搜索**时，此参数命名为 `filter`，而不是 `$filter`。

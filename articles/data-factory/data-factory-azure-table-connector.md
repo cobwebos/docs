@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 06/22/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: d688b5c6f918542b73d95c795f5dbb82070b17c8
+ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
+ms.openlocfilehash: 792a551ae3dae46c503e5f0dda74cd0ac3a69c3a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/27/2017
+ms.lasthandoff: 06/22/2017
 
 
 ---
@@ -244,7 +244,7 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 
 **管道中使用 AzureTableSource 和 BlobSink 的复制活动：**
 
-管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将**源**类型设置为 **AzureTableSource**，将**接收器**类型设置为 **BlobSink**。 使用 **AzureTableSourceQuery** 属性指定的 SQL 查询会每小时从默认分区中选择要复制的数据。
+管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将**源**类型设置为 **AzureTableSource**，将**接收器**类型设置为 **BlobSink**。 使用  **AzureTableSourceQuery**  属性指定的 SQL 查询会每小时从默认分区中选择要复制的数据。
 
 ```JSON
 {  
@@ -460,7 +460,7 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
    }
 }
 ```
-### <a name="type-mapping-for-azure-table"></a>Azure 表的类型映射
+## <a name="type-mapping-for-azure-table"></a>Azure 表的类型映射
 如[数据移动活动](data-factory-data-movement-activities.md)一文中所述，复制活动使用以下 2 步方法执行从源类型到接收器类型的自动类型转换。
 
 1. 从本机源类型转换为 .NET 类型
@@ -475,8 +475,8 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 | Edm.DateTime |DateTime |一个 64 位值，用协调世界时 (UTC) 表示。 支持的 DateTime 范围从 (UTC) 公元 (C.E.) 1601 年 1 月 1 日 午夜 12:00 开始。 到 9999 年 12 月 31 日结束。 |
 | Edm.Double |double |64 位浮点值。 |
 | Edm.Guid |Guid |128 位全局唯一标识符。 |
-| Edm.Int32 |Int32 或 int |32 位整数。 |
-| Edm.Int64 |Int64 或 long |64 位整数。 |
+| Edm.Int32 |Int32 |32 位整数。 |
+| Edm.Int64 |Int64 |64 位整数。 |
 | Edm.String |String |UTF-16 编码值。 字符串值最大可以为 64 KB。 |
 
 ### <a name="type-conversion-sample"></a>类型转换示例

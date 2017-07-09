@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 0ea23f4f59737123f4400dafc7506e121f24ae34
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 35896cc9891e2439df004cc4eab339219d47b805
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -42,7 +42,7 @@ ms.lasthandoff: 05/11/2017
     
     此时将显示“创建存储帐户”边栏选项卡。   
 
-       ![Create Storage Account][create-new-storage-account]  
+    ![创建存储帐户][create-new-storage-account]  
 
 3. 在“名称”字段中，键入子域名称。 此条目可包含 3-24 个小写字母和数字。
    
@@ -75,7 +75,7 @@ ms.lasthandoff: 05/11/2017
     - CDN 终结点名称：根据选择输入终结点名称。
 
     > [!TIP]
-       > 默认情况下，创建的 CDN 终结点将使用存储帐户的主机名作为源。
+    > 默认情况下，创建的 CDN 终结点将使用存储帐户的主机名作为源。
 
     ![创建新的 CDN 终结点][cdn-new-endpoint-creation]
 
@@ -123,3 +123,4 @@ http://<*EndpointName*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 [cdn-enable-navigation]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-creation.png
 [cdn-storage-new-endpoint]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-list.png
 [cdn-storage-cdn-configuration]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-endpoint-configuration.png 
+

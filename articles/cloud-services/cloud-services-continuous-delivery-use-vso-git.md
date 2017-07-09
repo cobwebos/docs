@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 中使用 Git 和 Visual Studio Team Services 进行持续交付 | Microsoft Docs"
-description: "了解如何将 Visual Studio Team Services 团队项目配置为使用 Git 自动生成并部署到 Azure App Service 或云服务中的 Web 应用功能。"
+description: "了解如何将 Visual Studio Team Services 团队项目配置为使用 Git 自动生成并部署到 Azure 应用服务或云服务中的 Web 应用功能。"
 services: cloud-services
 documentationcenter: .net
 author: mlearned
@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: mlearned
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: da4bb7fcbb45afed5d45f4d48c0b90e44503daf8
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: f4f5f231536bc381d17898ff2c592be821168a65
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -186,7 +187,7 @@ ms.lasthandoff: 04/06/2017
 10. 导航到“**生成**”视图并查找刚刚为工作分支触发的生成。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关将 Git 与 Visual Studio Team Services 配合使用的更多技巧，请参阅[使用 Visual Studio 在 Git 中开发和共享你的代码](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx)；有关使用不受 Visual Studio Team Services 管理的 Git 存储库发布到 Azure 的信息，请参阅[持续部署到 Azure 应用服务](../app-service-web/app-service-continuous-deployment.md)。 有关 Visual Studio Team Services 的详细信息，请参阅 [Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861)。
+若要了解有关将 Git 与 Visual Studio Team Services 配合使用的更多技巧，请参阅[使用 Visual Studio 在 Git 中开发和共享你的代码](https://www.visualstudio.com/en-us/docs/git/share-your-code-in-git-vs-2017)；有关使用不受 Visual Studio Team Services 管理的 Git 存储库发布到 Azure 的信息，请参阅[持续部署到 Azure 应用服务](../app-service-web/app-service-continuous-deployment.md)。 有关 Visual Studio Team Services 的详细信息，请参阅 [Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861)。
 
 [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
 [1]: ./media/cloud-services-continuous-delivery-use-vso-git/CreateTeamProjectInGit.PNG

@@ -16,15 +16,15 @@ ms.date: 05/22/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 0f914eacf5b8742a1499744d48c1de3fbf5fe03b
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: d5785c81fb597e7d30eb7d3a880e7194d8358ed5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
 # <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的地理空间和 GeoJSON 位置数据
-本文介绍 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 中的地理空间功能。 在阅读本文之后，你将能够回答以下问题：
+本文介绍 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 中的地理空间功能。 在阅读本文之后，你将能够回答以下问题：
 
 * 如何在 Azure Cosmos DB 中存储空间数据？
 * 如何使用 SQL 和 LINQ 查询 Azure Cosmos DB 中的地理空间数据？

@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: cbe2b6bbc8e193bdbbf08572a8488239c633548d
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 84c27de6b5fafb3b9236fed77a9d0557d89d217c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -45,7 +45,7 @@ ms.lasthandoff: 05/25/2017
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 * 已安装最新版的 SQL Server Management Studio (SSMS)。 [下载并安装 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
-本教程使用 SQL 数据库服务的功能，这些功能为有限预览版（弹性数据库作业）。如果你希望完成本教程，请将订阅 ID 提供 给 SaaSFeedback@microsoft.com，并在邮件主题中注明“弹性作业预览版”。收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。由于这是有限预览版，如果存在相关的问题或者需要支持，则应联系 SaaSFeedback@microsoft.com。
+*本教程使用 SQL 数据库服务的功能，这些功能为有限预览版（弹性数据库作业）。如果你希望完成本教程，请将订阅 ID 提供 给 SaaSFeedback@microsoft.com，并在邮件主题中注明“弹性作业预览版”。收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。由于这是有限预览版，如果存在相关的问题或者需要支持，则应联系 SaaSFeedback@microsoft.com。*
 
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS 架构管理模式简介
@@ -60,11 +60,11 @@ ms.lasthandoff: 05/25/2017
 有一个新版的弹性作业，该作业现为 Azure SQL 数据库的集成功能（不需其他服务或组件）。 此新版弹性作业目前为有限预览版。 此有限预览版目前支持 PowerShell 创建作业帐户，同时支持 T-SQL 创建和管理作业。
 
 > [!NOTE]
-> 本教程使用 SQL 数据库服务的功能，这些功能为有限预览版（弹性数据库作业）。如果你希望完成本教程，请将订阅 ID 提供 给 SaaSFeedback@microsoft.com，并在邮件主题中注明“弹性作业预览版”。收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。由于这是有限预览版，如果存在相关的问题或者需要支持，则应联系 SaaSFeedback@microsoft.com。
+> *本教程使用 SQL 数据库服务的功能，这些功能为有限预览版（弹性数据库作业）。如果你希望完成本教程，请将订阅 ID 提供 给 SaaSFeedback@microsoft.com，并在邮件主题中注明“弹性作业预览版”。收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。由于这是有限预览版，如果存在相关的问题或者需要支持，则应联系 SaaSFeedback@microsoft.com。*
 
 ## <a name="get-the-wingtip-application-scripts"></a>获取 Wingtip 应用程序脚本
 
-Wingtip SaaS 脚本和应用程序源代码可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub 存储库中找到。 [下载 Wingtip SaaS 脚本的步骤](sql-database-wtp-overview.md#download-the-wingtip-saas-scripts)。
+Wingtip SaaS 脚本和应用程序源代码可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub 存储库中找到。 [下载 Wingtip SaaS 脚本的步骤](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts)。
 
 ## <a name="create-a-job-account-database-and-new-job-account"></a>创建作业帐户数据库和新的作业帐户
 
@@ -136,3 +136,4 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 * [基于 Wingtip SaaS 应用程序部署编写的其他教程](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [管理扩大的云数据库](sql-database-elastic-jobs-overview.md)
 * [创建和管理扩大的云数据库](sql-database-elastic-jobs-create-and-manage.md)
+

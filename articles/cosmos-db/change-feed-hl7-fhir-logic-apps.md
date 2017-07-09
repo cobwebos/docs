@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: b-hoedid
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: a5bd59cd94beaf2181b463929b0af0b9d63cf4ee
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 6e6e12f3d6d95002b223ad0fcb11d72bd920cdaf
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -131,7 +131,7 @@ API 应用将连接到 Azure Cosmos DB，并按资源类型查询新的或修改
         {
             /// <summary>
             ///     Gets the new or modified FHIR documents from Last Run Date 
-            ///        or create date of the collection
+            ///     or create date of the collection
             /// </summary>
             /// <param name="databaseId"></param>
             /// <param name="collectionId"></param>
@@ -156,7 +156,7 @@ API 应用将连接到 Azure Cosmos DB，并按资源类型查询新的或修改
             {
                 var collectionLink = UriFactory.CreateDocumentCollectionUri(databaseId, collectionId);
     
-                var context = new DocumentDbContext();    
+                var context = new DocumentDbContext();  
     
                 var docs = new List<dynamic>();
     
@@ -232,7 +232,7 @@ API 应用将连接到 Azure Cosmos DB，并按资源类型查询新的或修改
 - 使用 Azure 服务总线队列处理 HL7 FHIR 文档的分布。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB 主页](https://azure.microsoft.com/services/documentdb/)。 有关逻辑应用的详细信息，请参阅[逻辑应用](https://azure.microsoft.com/services/logic-apps/)。
+有关 Azure Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB 主页](https://azure.microsoft.com/services/cosmos-db/)。 有关逻辑应用的详细信息，请参阅[逻辑应用](https://azure.microsoft.com/services/logic-apps/)。
 
 
 

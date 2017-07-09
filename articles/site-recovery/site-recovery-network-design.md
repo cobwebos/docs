@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 03/27/2017
 ms.author: pratshar
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6e6d05d7a7595e17d026be6a448b2fa2cca9b816
-ms.openlocfilehash: a62fe406af18c9c7d9b58839bfa0d6e785b614ef
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 2d8d0feb5c391017e02413b009aafe4d5c012976
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/22/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -41,7 +41,7 @@ ASR 让故障转移变为可能，第一步是将指定的虚拟机从主要数�
 
 设计恢复站点的网络时，管理员有两种选择：
 
-* 对恢复站点的网络使用不同的 IP 地址范围。 在这种情况下，虚拟机在故障转移之后会获取新的 IP 地址，管理员必须进行 DNS 更新。 在[此处](site-recovery-test-failover-vmm-to-vmm.md#preparing-infrastructure-for-test-failover)了解详细信息
+* 对恢复站点的网络使用不同的 IP 地址范围。 在这种情况下，虚拟机在故障转移之后会获取新的 IP 地址，管理员必须进行 DNS 更新。 在[此处](site-recovery-test-failover-vmm-to-vmm.md#prepare-the-infrastructure-for-test-failover)了解详细信息
 * 对恢复站点的网络使用相同的 IP 地址范围。 在某些情况下，即使在故障转移之后，管理员也想在主站点上保留他们的 IP 地址。 在正常情况下，管理员必须更新路由以指示 IP 地址的新位置。 但是，对于在主站点和恢复站点之间部署了延伸 VLAN 的情况，保留虚拟机的 IP 地址会变成一个不错的选择。 保留相同 IP 地址可省去故障转移后的所有网络相关步骤，从而简化了恢复过程。
 
 当管理员计划部署灾难恢复解决方案时，脑海中浮现的一个重要问题是，如何在故障转移完成后使应用程序可供访问。 现代应用程序在一定程度上几乎都依赖网络，因此，以物理方式将服务从一个站点移动到另一个站点会带来网络挑战。 在灾难恢复解决方案中，解决这个问题有两种主要方法。 第一种方法是保持固定的 IP 地址。 尽管移动的服务和宿主服务器位于不同的物理位置，应用程序将 IP 地址配置带到新的位置。 第二种方法需要在转换到恢复站点的过程中完全更改 IP 地址。 每种方法都有多种不同的实施方式，下面进行了汇总。

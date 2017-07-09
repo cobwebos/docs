@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: 43e0bb0c921be3992321d0a202fce1fa09053f99
-ms.openlocfilehash: 67edd136737e6af372c3c898c34a8bc6681a8c6d
-ms.lasthandoff: 02/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 32bff438c2e56b1c21aa907b6bff6c1d1e879de3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/14/2017
 
 ---
 
@@ -35,12 +36,22 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 
 | 地理位置 | 配对区域 |  |
 |:--- |:--- |:--- |
+| 亚洲 |东亚 |东南亚 |
+| 澳大利亚 |澳大利亚东部 |澳大利亚东南部 |
+| 巴西 |巴西南部 (1) |美国中南部 |
+| 加拿大 |加拿大中部 |加拿大东部 |
+| 中国 |中国北部 |中国东部|
+| 欧洲 |欧洲北部 |欧洲西部 |
+| 德国 |德国中部 |德国东北部 |
+| 印度 |印度中部 |印度南部 |
+| 日本 |日本东部 |日本西部 |
+| 韩国 |韩国中部 |韩国南部 |
 | 北美 |美国中北部 |美国中南部 |
 | 北美 |美国东部 |美国西部 |
 | 北美 |美国东部 2 |美国中部 |
 | 北美 |美国西部 2 |美国中西部 |
 | 欧洲 |欧洲北部 |欧洲西部 |
-| 亚洲 |东南亚 |东亚 |
+| 亚洲 |亚洲东南部 |东亚 |
 | 中国 |中国东部 |中国北部 |
 | 日本 |日本东部 |日本西部 |
 | 巴西 |巴西南部 (1) |美国中南部 |
@@ -49,6 +60,8 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 | 印度 |印度中部 |印度南部 |
 | 加拿大 |加拿大中部 |加拿大东部 |
 | 英国 |英国西部 |英国南部 |
+| 韩国 |韩国中部 |韩国南部 |
+| 德国 |德国中部 |德国东北部 |
 
 表 1 - Azure 区域对映射
 

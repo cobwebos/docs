@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 06/20/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: f665ff5ca345d96bac9b51c3c798874e55738a62
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 7a11c6ade0325b08ad520448bbf82d64a0a555f3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -55,7 +55,21 @@ ms.lasthandoff: 05/11/2017
 | **属性** | **说明** | **必需** |
 | --- | --- | --- |
 | type |类型属性必须设置为：**DocumentDb** |是 |
-| connectionString |指定连接到 Azure Cosmos DB 数据库所需的信息。 |是 |
+| connectionString |指定连接 Azure Cosmos DB 数据库所需的信息。 |是 |
+
+示例：
+
+```JSON
+{
+  "name": "CosmosDbLinkedService",
+  "properties": {
+    "type": "DocumentDb",
+    "typeProperties": {
+      "connectionString": "AccountEndpoint=<EndpointUrl>;AccountKey=<AccessKey>;Database=<Database>"
+    }
+  }
+}
+```
 
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的部分和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。

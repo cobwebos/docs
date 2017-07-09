@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 4e0a0a711ffb0b474606863187acaab4474c3459
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 9b212bcfcb604319ff9bc39fd284a5eb98c0d2c3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 04/27/2017
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅。 如需免费试用，请参阅[免费试用一个月](https://azure.microsoft.com/pricing/free-trial/)。
 * 使用弹性数据库工具创建的一组数据库。 请参阅[弹性数据库工具入门](sql-database-elastic-scale-get-started.md)。
-* Azure PowerShell。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+* Azure PowerShell。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
 * **弹性数据库作业** PowerShell 包：请参阅[安装弹性数据库作业](sql-database-elastic-jobs-service-installation.md)
 
 ### <a name="select-your-azure-subscription"></a>选择 Azure 订阅
@@ -50,7 +50,7 @@ ms.lasthandoff: 04/27/2017
   </tr>
   <tr>
     <td>凭据</td>
-    <td>连接到数据库以执行脚本或应用 DACPAC 时使用的用户名和密码。 <p>密码在发送并存储在弹性数据库作业数据库之前会经过加密。  密码由弹性数据库作业服务通过安装脚本创建和上载的凭据解密。</td>
+    <td>连接到数据库以执行脚本或应用 DACPAC 时使用的用户名和密码。 <p>密码在发送并存储在弹性数据库作业数据库之前会经过加密。  密码由弹性数据库作业服务通过安装脚本创建和上传的凭据解密。</td>
     <td><p>Get-AzureSqlJobCredential</p>
     <p>New-AzureSqlJobCredential</p><p>Set-AzureSqlJobCredential</p></td></td>
   </tr>
@@ -207,7 +207,7 @@ ms.lasthandoff: 04/27/2017
 ## <a name="encrypted-credentials-within-the-elastic-database-jobs"></a>弹性数据库作业中的已加密凭据
 数据库凭据可以插入密码已加密的作业*控制数据库*。 必须存储凭据，使作业可以在稍后执行（使用作业计划）。
 
-加密是通过创建为安装脚本一部分的证书来进行的。 安装脚本创建证书并将其上载到 Azure 云服务，以解密已存储的加密密码。 Azure 云服务稍后在作业*控制数据库*内存储公钥，让 PowerShell API 或 Azure 经典门户界面加密提供的密码，而不需要在本地安装证书。
+加密是通过创建为安装脚本一部分的证书来进行的。 安装脚本创建证书并将其上传到 Azure 云服务，以解密已存储的加密密码。 Azure 云服务稍后在作业*控制数据库*内存储公钥，让 PowerShell API 或 Azure 经典门户界面加密提供的密码，而不需要在本地安装证书。
 
 凭据密码经过加密后，无法供只能通过只读方式访问弹性数据库作业对象的用户访问。 不过，具有弹性数据库作业对象读-写访问权限的恶意用户可能会提取密码。 凭据设计为跨作业执行重复使用。 在建立连接时，凭据将传递到目标数据库。 适用于每个凭据的目标数据库目前并没有受到限制，因此恶意用户可以针对自己所控制的数据库来添加数据库目标。 然后，该用户可以启动一个针对该数据库的作业，从而获取凭据的密码。
 
@@ -217,7 +217,7 @@ ms.lasthandoff: 04/27/2017
 * 凭据应该具有执行作业任务所需的最低权限。  有关详细信息，请参阅这篇 SQL Server MSDN [授权和权限](https://msdn.microsoft.com/library/bb669084.aspx) 文章。
 
 ### <a name="to-create-an-encrypted-credential-for-job-execution-across-databases"></a>跨数据库创建执行作业所需的加密凭据
-创建新的加密凭据时，[**Get-Credential cmdlet**](https://technet.microsoft.com/library/hh849815.aspx) 会提示用户输入可以传递给 [**New-AzureSqlJobCredential cmdlet**](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential?view=azureelasticdbjobsps-0.8.33) 的用户名和密码。
+创建新的加密凭据时，[**Get-Credential cmdlet**](https://technet.microsoft.com/library/hh849815.aspx) 会提示用户输入可以传递给 [**New-AzureSqlJobCredential cmdlet**](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential) 的用户名和密码。
 
     $credentialName = "{Credential Name}"
     $databaseCredential = Get-Credential
@@ -225,7 +225,7 @@ ms.lasthandoff: 04/27/2017
     Write-Output $credential
 
 ### <a name="to-update-credentials"></a>更新凭据
-当密码更改时，请使用 [**Set-AzureSqlJobCredential cmdlet**](/powershell/module/elasticdatabasejobs/set-azuresqljobcredential?view=azureelasticdbjobsps-0.8.33) 并设置 **CredentialName** 参数。
+当密码更改时，请使用 [**Set-AzureSqlJobCredential cmdlet**](/powershell/module/elasticdatabasejobs/set-azuresqljobcredential) 并设置 **CredentialName** 参数。
 
     $credentialName = "{Credential Name}"
     Set-AzureSqlJobCredential -CredentialName $credentialName -Credential $credential 
@@ -246,7 +246,7 @@ ms.lasthandoff: 04/27/2017
 ## <a name="create-a-t-sql-script-for-execution-across-databases"></a>创建 T-SQL 脚本用于跨数据库执行
 创建要执行的 T-SQL 脚本时，强烈建议将其构建为[幂等](https://en.wikipedia.org/wiki/Idempotence)模式，以便灵活地应对各种故障。 每当执行发生失败时，不论失败的分类，弹性数据库作业将重试执行脚本。
 
-使用 [**New-AzureSqlJobContent cmdlet**](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent?view=azureelasticdbjobsps-0.8.33) 创建并保存执行脚本，然后设置 **-ContentName** 和 **-CommandText** 参数。
+使用 [**New-AzureSqlJobContent cmdlet**](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent) 创建并保存执行脚本，然后设置 **-ContentName** 和 **-CommandText** 参数。
 
     $scriptName = "Create a TestTable"
 
@@ -329,7 +329,7 @@ ms.lasthandoff: 04/27/2017
     Write-Output $jobExecution
 
 ## <a name="to-retrieve-the-state-of-a-single-job-execution"></a>检索单个作业的执行状态
-使用 [**Get-AzureSqlJobExecution cmdlet**](/powershell/module/elasticdatabasejobs/new-azuresqljobexecution?view=azureelasticdbjobsps-0.8.33) 并设置 **JobExecutionId** 参数以查看作业的执行状态。
+使用 [**Get-AzureSqlJobExecution cmdlet**](/powershell/module/elasticdatabasejobs/get-azuresqljobexecution) 并设置 **JobExecutionId** 参数以查看作业的执行状态。
 
     $jobExecutionId = "{Job Execution Id}"
     $jobExecution = Get-AzureSqlJobExecution -JobExecutionId $jobExecutionId
@@ -342,7 +342,7 @@ ms.lasthandoff: 04/27/2017
     Write-Output $jobExecutions 
 
 ## <a name="to-view-the-state-across-multiple-job-executions"></a>查看多次执行作业时的状态
-[**Get-AzureSqlJobExecution cmdlet**](/powershell/module/elasticdatabasejobs/new-azuresqljobexecution?view=azureelasticdbjobsps-0.8.33) 具有多个可选参数，用于显示多个作业执行（已通过提供的参数进行筛选）。 下面演示了 Get-AzureSqlJobExecution 的一些可能的用法：
+[**Get-AzureSqlJobExecution cmdlet**](/powershell/module/elasticdatabasejobs/new-azuresqljob) 具有多个可选参数，用于显示多个作业执行（已通过提供的参数进行筛选）。 下面演示了 Get-AzureSqlJobExecution 的一些可能的用法：
 
 检索所有处于活动状态的顶级作业执行：
 
@@ -465,7 +465,7 @@ ms.lasthandoff: 04/27/2017
 
 如果针对父作业请求了作业取消，则会对父作业及其所有子作业执行取消请求。
 
-若要提交取消请求，请使用 [**Stop-AzureSqlJobExecution cmdlet**](/powershell/module/elasticdatabasejobs/stop-azuresqljobexecution?view=azureelasticdbjobsps-0.8.33) 并设置 **JobExecutionId** 参数。
+若要提交取消请求，请使用 [**Stop-AzureSqlJobExecution cmdlet**](/powershell/module/elasticdatabasejobs/stop-azuresqljobexecution) 并设置 **JobExecutionId** 参数。
 
     $jobExecutionId = "{Job Execution Id}"
     Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
@@ -473,9 +473,9 @@ ms.lasthandoff: 04/27/2017
 ## <a name="to-delete-a-job-and-job-history-asynchronously"></a>以异步方式删除作业和作业历史记录
 弹性数据库作业支持异步删除作业。 可将某个作业标记为待删除，系统将在作业的作业执行都已完成后，删除该作业及其所有作业历史记录。 系统不会自动取消处于活动状态的作业执行。  
 
-调用 [**Stop-AzureSqlJobExecution**](/powershell/module/elasticdatabasejobs/stop-azuresqljobexecution?view=azureelasticdbjobsps-0.8.33) 即可取消正在执行的作业。
+调用 [**Stop-AzureSqlJobExecution**](/powershell/module/elasticdatabasejobs/stop-azuresqljobexecution) 即可取消正在执行的作业。
 
-若要触发作业删除，请使用 [**Remove-AzureSqlJob cmdlet**](/powershell/module/elasticdatabasejobs/remove-azuresqljob?view=azureelasticdbjobsps-0.8.33) 并设置 **JobName** 参数。
+若要触发作业删除，请使用 [**Remove-AzureSqlJob cmdlet**](/powershell/module/elasticdatabasejobs/remove-azuresqljob) 并设置 **JobName** 参数。
 
     $jobName = "{Job Name}"
     Remove-AzureSqlJob -JobName $jobName
@@ -490,7 +490,7 @@ ms.lasthandoff: 04/27/2017
     New-AzureSqlJobDatabaseTarget -DatabaseName $databaseName -ServerName $databaseServerName 
 
 ## <a name="to-create-a-custom-database-collection-target"></a>创建自定义数据库集合目标
-使用 [**New-AzureSqlJobTarget**](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget?view=azureelasticdbjobsps-0.8.33) 可以自定义数据库集合目标，从而让执行操作跨多个已定义数据库目标。 创建数据库组之后，数据库可与自定义集合目标相关联。
+使用 [**New-AzureSqlJobTarget**](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) 可以自定义数据库集合目标，从而让执行操作跨多个已定义数据库目标。 创建数据库组之后，数据库可与自定义集合目标相关联。
 
 设置以下变量以反映所需的自定义集合目标配置：
 
@@ -498,7 +498,7 @@ ms.lasthandoff: 04/27/2017
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName 
 
 ### <a name="to-add-databases-to-a-custom-database-collection-target"></a>将数据库添加到自定义数据库集合目标
-若要将数据库添加到特定的自定义集合，请使用 [**Add-AzureSqlJobChildTarget**](/powershell/module/elasticdatabasejobs/add-azuresqljobchildtarget?view=azureelasticdbjobsps-0.8.33) cmdlet。
+若要将数据库添加到特定的自定义集合，请使用 [**Add-AzureSqlJobChildTarget**](/powershell/module/elasticdatabasejobs/add-azuresqljobchildtarget) cmdlet。
 
     $databaseServerName = "{Database Server Name}"
     $databaseName = "{Database Name}"
@@ -506,7 +506,7 @@ ms.lasthandoff: 04/27/2017
     Add-AzureSqlJobChildTarget -CustomCollectionName $customCollectionName -DatabaseName $databaseName -ServerName $databaseServerName 
 
 #### <a name="review-the-databases-within-a-custom-database-collection-target"></a>查看自定义数据库集合目标内的数据库
-使用 [**Get-AzureSqlJobTarget**](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget?view=azureelasticdbjobsps-0.8.33) cmdlet 检索自定义数据库集合目标内的子数据库。 
+使用 [**Get-AzureSqlJobTarget**](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) cmdlet 检索自定义数据库集合目标内的子数据库。 
 
     $customCollectionName = "{Custom Database Collection Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
@@ -514,7 +514,7 @@ ms.lasthandoff: 04/27/2017
     Write-Output $childTargets
 
 ### <a name="create-a-job-to-execute-a-script-across-a-custom-database-collection-target"></a>创建作业以跨自定义数据库集合目标执行脚本
-使用 [**New-AzureSqlJob**](/powershell/module/elasticdatabasejobs/new-azuresqljob?view=azureelasticdbjobsps-0.8.33) cmdlet 可以针对自定义数据库集合目标定义的数据库组创建作业。 弹性数据库作业将作业扩展为多个子作业（每个子作业映射到与自定义数据库集合目标关联的数据库），并确保脚本针对每个数据库执行。 同样，重要的是脚本具有幂等处理重试的弹性。
+使用 [**New-AzureSqlJob**](/powershell/module/elasticdatabasejobs/new-azuresqljob) cmdlet 可以针对自定义数据库集合目标定义的数据库组创建作业。 弹性数据库作业将作业扩展为多个子作业（每个子作业映射到与自定义数据库集合目标关联的数据库），并确保脚本针对每个数据库执行。 同样，重要的是脚本具有幂等处理重试的弹性。
 
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
@@ -531,7 +531,7 @@ ms.lasthandoff: 04/27/2017
 
 以下 PowerShell 脚本可用于执行脚本，将其结果收集到指定的表。 此脚本假设已创建一个可输出单个结果集的 T-SQL 脚本，并且已创建自定义的数据库集合目标。
 
-此脚本使用 [**Get-AzureSqlJobTarget**](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget?view=azureelasticdbjobsps-0.8.33) cmdlet。 设置脚本、凭据和执行目标的参数：
+此脚本使用 [**Get-AzureSqlJobTarget**](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) cmdlet。 设置脚本、凭据和执行目标的参数：
 
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
@@ -545,7 +545,7 @@ ms.lasthandoff: 04/27/2017
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
 
 ### <a name="to-create-and-start-a-job-for-data-collection-scenarios"></a>创建和启动用于数据收集方案的作业
-此脚本使用 [**Start-AzureSqlJobExecution**](/powershell/module/elasticdatabasejobs/start-azuresqljobexecution?view=azureelasticdbjobsps-0.8.33) cmdlet。
+此脚本使用 [**Start-AzureSqlJobExecution**](/powershell/module/elasticdatabasejobs/start-azuresqljobexecution) cmdlet。
 
     $job = New-AzureSqlJob -JobName $jobName 
     -CredentialName $executionCredentialName 
@@ -561,7 +561,7 @@ ms.lasthandoff: 04/27/2017
     Write-Output $jobExecution
 
 ## <a name="to-schedule-a-job-execution-trigger"></a>计划作业执行触发器
-以下 PowerShell 脚本可用于创建重复计划。 此脚本使用分钟间隔，但是 [**New-AzureSqlJobSchedule** ](/powershell/module/elasticdatabasejobs/new-azuresqljobschedule?view=azureelasticdbjobsps-0.8.33)也支持 -DayInterval、-HourInterval、-MonthInterval 和 -WeekInterval 参数。 可以通过传递 -OneTime 来创建仅执行一次的计划。
+以下 PowerShell 脚本可用于创建重复计划。 此脚本使用分钟间隔，但是 [**New-AzureSqlJobSchedule** ](/powershell/module/elasticdatabasejobs/new-azuresqljobschedule)也支持 -DayInterval、-HourInterval、-MonthInterval 和 -WeekInterval 参数。 可以通过传递 -OneTime 来创建仅执行一次的计划。
 
 创建新计划：
 
@@ -577,7 +577,7 @@ ms.lasthandoff: 04/27/2017
 ### <a name="to-trigger-a-job-executed-on-a-time-schedule"></a>触发按时间计划执行的作业
 可以定义作业触发器，使作业根据时间计划执行。 以下 PowerShell 脚本可用于创建作业触发器。
 
-使用 [New-AzureSqlJobTrigger](/powershell/module/elasticdatabasejobs/new-azuresqljobtrigger?view=azureelasticdbjobsps-0.8.33)，根据所需作业和计划设置以下变量：
+使用 [New-AzureSqlJobTrigger](/powershell/module/elasticdatabasejobs/new-azuresqljobtrigger)，根据所需作业和计划设置以下变量：
 
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
@@ -587,7 +587,7 @@ ms.lasthandoff: 04/27/2017
     Write-Output $jobTrigger
 
 ### <a name="to-remove-a-scheduled-association-to-stop-job-from-executing-on-schedule"></a>删除计划的关联，以停止按计划执行作业
-若要通过作业触发器中断作业重复执行，可以删除作业触发器。 使用 [**Remove-AzureSqlJobTrigger cmdlet**](/powershell/module/elasticdatabasejobs/remove-azuresqljobtrigger?view=azureelasticdbjobsps-0.8.33) 删除作业触发器，以停止作业根据计划执行。
+若要通过作业触发器中断作业重复执行，可以删除作业触发器。 使用 [**Remove-AzureSqlJobTrigger cmdlet**](/powershell/module/elasticdatabasejobs/remove-azuresqljobtrigger) 删除作业触发器，以停止作业根据计划执行。
 
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
@@ -603,14 +603,14 @@ ms.lasthandoff: 04/27/2017
     Write-Output $jobTriggers
 
 ### <a name="to-retrieve-job-triggers-bound-to-a-job"></a>检索绑定到作业的作业触发器
-使用 [Get-AzureSqlJobTrigger](/powershell/module/elasticdatabasejobs/get-azuresqljobtrigger?view=azureelasticdbjobsps-0.8.33) 来获取并显示包含已注册作业的计划。
+使用 [Get-AzureSqlJobTrigger](/powershell/module/elasticdatabasejobs/get-azuresqljobtrigger) 来获取并显示包含已注册作业的计划。
 
     $jobName = "{Job Name}"
     $jobTriggers = Get-AzureSqlJobTrigger -JobName $jobName
     Write-Output $jobTriggers
 
 ## <a name="to-create-a-data-tier-application-dacpac-for-execution-across-databases"></a>创建可以跨数据库执行的数据层应用程序 (DACPAC)
-若要创建 DACPAC，请参阅[数据层应用程序](https://msdn.microsoft.com/library/ee210546.aspx)。 若要部署 DACPAC，请使用 [New-AzureSqlJobContent cmdlet](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent?view=azureelasticdbjobsps-0.8.33)。 DACPAC 必须可供服务访问。 建议将创建的 DACPAC 上载到 Azure 存储空间，并创建 DACPAC 的[共享访问签名](../storage/storage-dotnet-shared-access-signature-part-1.md)。
+若要创建 DACPAC，请参阅[数据层应用程序](https://msdn.microsoft.com/library/ee210546.aspx)。 若要部署 DACPAC，请使用 [New-AzureSqlJobContent cmdlet](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent)。 DACPAC 必须可供服务访问。 建议将创建的 DACPAC 上载到 Azure 存储空间，并创建 DACPAC 的[共享访问签名](../storage/storage-dotnet-shared-access-signature-part-1.md)。
 
     $dacpacUri = "{Uri}"
     $dacpacName = "{Dacpac Name}"
@@ -618,7 +618,7 @@ ms.lasthandoff: 04/27/2017
     Write-Output $dacpac
 
 ### <a name="to-update-a-data-tier-application-dacpac-for-execution-across-databases"></a>更新可以跨数据库执行的数据层应用程序 (DACPAC)
-弹性数据库作业中的现有已注册 DACPAC 可以更新为指向新的 URI。 使用 [**Set-AzureSqlJobContentDefinition cmdlet**](/powershell/module/elasticdatabasejobs/set-azuresqljobcontentdefinition?view=azureelasticdbjobsps-0.8.33) 在现有的已注册 DACPAC 基础上更新 DACPAC URI：
+弹性数据库作业中的现有已注册 DACPAC 可以更新为指向新的 URI。 使用 [**Set-AzureSqlJobContentDefinition cmdlet**](/powershell/module/elasticdatabasejobs/set-azuresqljobcontentdefinition) 在现有的已注册 DACPAC 基础上更新 DACPAC URI：
 
     $dacpacName = "{Dacpac Name}"
     $newDacpacUri = "{Uri}"
