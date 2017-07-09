@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/02/2017
+ms.date: 06/12/2017
 ms.author: ryanwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 2bf6bd76b653e30f38595631eff576d8eeb8efda
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: c58de22e29b6403e88bf22bdfe704a25757cdfca
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -33,11 +33,6 @@ Service Fabric Explorer 是一个用于检验和管理 Azure Service Fabric 群�
 
 ## <a name="connect-to-service-fabric-explorer"></a>连接到 Service Fabric Explorer
 如果已根据说明[准备开发环境](service-fabric-get-started.md)，则可以通过导航到 http://localhost:19080/Explorer 来启动本地群集上的 Service Fabric Explorer。
-
-> [!NOTE]
-> 如果你使用 Internet Explorer 配合 Service Fabric Explorer 来管理远程群集，则需要配置一些 Internet Explorer 设置。 转到“**工具**” > “**兼容性视图设置**”，然后取消选中“**在兼容性视图中显示 Intranet 站点**”，以确保正确加载所有信息。
->
->
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>了解 SService Fabric Explorer 的布局
 可以使用左侧的树来导航 Service Fabric Explorer。 在树根中，群集仪表板提供了群集的概述，包括应用程序和节点运行状况的摘要。

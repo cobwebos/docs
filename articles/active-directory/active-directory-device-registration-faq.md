@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 06/23/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 91a4e54b3dd2e1f44a6b52c548a243ae98e3ba3f
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
 
 
@@ -58,17 +59,17 @@ ms.lasthandoff: 04/27/2017
 
 对于已加入本地 AD 域的 Windows 10 和 Windows Server 2016 设备：
 
-1.    以管理员身份打开命令提示符。
+1.  以管理员身份打开命令提示符。
 
-2.    键入 `dsregcmd.exe /debug /leave`
+2.  键入 `dsregcmd.exe /debug /leave`
 
-3.    注销并再次登录，以触发注册设备的计划任务。 
+3.  注销并再次登录，以触发注册设备的计划任务。 
 
 对于已加入本地 AD 域的其他 Windows 平台：
 
-1.    以管理员身份打开命令提示符。
-2.    键入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`。
-3.    键入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`。
+1.  以管理员身份打开命令提示符。
+2.  键入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`。
+3.  键入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`。
 
 ---
 
@@ -76,13 +77,13 @@ ms.lasthandoff: 04/27/2017
 
 **答：**
 
--    对于 Windows 10 和 Windows Server 2016，如果反复尝试分离再重新加入同一个设备，则可能会出现重复条目。 
+-   对于 Windows 10 和 Windows Server 2016，如果反复尝试分离再重新加入同一个设备，则可能会出现重复条目。 
 
--    如果你使用了“添加工作或学校帐户”，则使用“添加工作或学校帐户”的每个 Windows 用户将创建具有相同设备名称的新设备记录。
+-   如果你使用了“添加工作或学校帐户”，则使用“添加工作或学校帐户”的每个 Windows 用户将创建具有相同设备名称的新设备记录。
 
--    使用自动注册加入本地 AD 域的其他 Windows 平台将为登录设备的每个域用户创建具有相同设备名称的新设备记录。 
+-   使用自动注册加入本地 AD 域的其他 Windows 平台将为登录设备的每个域用户创建具有相同设备名称的新设备记录。 
 
--    已擦除、重新安装并使用相同名称重新加入域的 AADJ 计算机将显示为具有相同设备名称的另一条记录。
+-   已擦除、重新安装并使用相同名称重新加入域的 AADJ 计算机将显示为具有相同设备名称的另一条记录。
 
 ---
 

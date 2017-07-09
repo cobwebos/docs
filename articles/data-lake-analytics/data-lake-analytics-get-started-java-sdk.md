@@ -3,8 +3,8 @@ title: "使用 Data Lake Analytics Java SDK 开发应用程序 | Microsoft Docs"
 description: "使用 Azure Data Lake Analytics Java SDK 开发应用程序"
 services: data-lake-analytics
 documentationcenter: 
-author: edmacauley
-manager: jhubbard
+author: saveenr
+manager: saveenr
 editor: cgronlun
 ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.service: data-lake-analytics
@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 5d73d1203faf485d715354e68ce2ccde32562611
-ms.openlocfilehash: 99e1c8956968264fbea696b85ac084281d75f02a
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: 795d9ec0b0cac5d74673404f1d0d851393336df0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/20/2017
 
 
 ---
-# <a name="tutorial-get-started-with-azure-data-lake-analytics-using-java-sdk"></a>教程：通过使用 Java SDK 实现 Azure Data Lake Analytics 入门
+# <a name="get-started-with-azure-data-lake-analytics-using-java-sdk"></a>通过 Java SDK 开始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 了解如何使用 Azure Data Lake Analytics Java SDK 来创建 Azure Data Lake 帐户以及执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户和处理作业。 有关 Data Lake 的详细信息，请参阅 [Azure Data Lake Analytics](data-lake-analytics-overview.md)。
@@ -31,7 +33,6 @@ ms.openlocfilehash: 99e1c8956968264fbea696b85ac084281d75f02a
 * Java 开发工具包 (JDK) 8（使用 Java 1.8 版）。
 * IntelliJ 或其他合适的 Java 开发环境。 此步骤是可选的，但建议执行。 以下说明使用 IntelliJ。
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **启用 Azure 订阅** 进行 Data Lake Analytics 公共预览。 请参阅[说明](data-lake-analytics-get-started-portal.md)。
 * 创建 Azure Active Directory (AAD) 应用程序，并检索其**客户端 ID**、**租户 ID** 和**密钥**。 有关 AAD 应用程序的详细信息和如何获取客户端 ID 的说明，请参阅 [使用门户创建 Active Directory 应用程序和服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)。 创建应用程序并生成密钥后，也可以从门户中获取回复 URI 和密钥。
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>如何使用 Azure Active Directory 进行身份验证？
@@ -350,9 +351,4 @@ ms.openlocfilehash: 99e1c8956968264fbea696b85ac084281d75f02a
 * 若要了解 U-SQL，请参阅 [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md)（Azure Data Lake Analytics U-SQL 语言入门）和 [U-SQL language reference](http://go.microsoft.com/fwlink/?LinkId=691348)（U-SQL 语言参考）。
 * 有关管理任务，请参阅 [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)。
 * 有关 Data Lake Analytics 的概述，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

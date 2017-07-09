@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2015
+ms.date: 06/06/2017
 ms.author: robb
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 8f1c94ae5389739e03a7b1a70421e538516c873f
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 44bcf3ed1be8007a3c1ab9b727acf9a249cf84cc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 04/27/2017
 
 基于实例计数进行缩放之前，应考虑的除了实例计数之外，缩放还会受**定价层**影响。 不同定价层可以具有不同数量的核心和内存，因此它们对于相同数量的实例具有更佳性能（即增加或减少）。 本文专门介绍缩小和扩大。
 
-可以在门户中进行缩放，也可以使用 [REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx) 或 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) 手动或自动调整规模。
+可以在门户中进行缩放，也可以使用 [REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx) 或 [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) 手动或自动调整规模。
 
 > [!NOTE]
 > 本文介绍如何在门户 [http://portal.azure.com](http://portal.azure.com) 中创建自动缩放设置。 不可在经典门户 ([http://manage.windowsazure.com](http://manage.windowsazure.com)) 中对此门户中创建的自动缩放设置进行编辑。

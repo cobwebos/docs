@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 3071bf565b14966de2293205026c4524d7b0f0c5
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: b70d74441f3d6d9793ae516b3f04e36e786a9a8f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -38,7 +38,7 @@ Azure 应用服务中的安全性有两个级别：
 * 应用服务应用与外部资源（例如 PowerShell 管理、命令行接口、Azure SDK、REST API 和混合连接）之间的所有通信都经过了正常的加密。
 * 24 小时威胁管理可保护应用服务资源免受恶意软件、分布式拒绝服务 (DDoS)、中间人 (MITM) 和其他威胁的危害。 
 
-有关 Azure 中的基础结构和平台安全性的详细信息，请参阅 [Azure 信任中心](/support/trust-center/security/)。
+有关 Azure 中的基础结构和平台安全性的详细信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/security/)。
 
 #### <a name="application-security"></a>应用程序安全性
 Azure 负责保护运行应用程序的基础结构和平台，而你负责保护你的应用程序本身。 换而言之，你需要以安全方式开发、部署和管理你的应用程序代码和内容。 无此安全性，你的应用程序代码或内容仍然容易受到如下威胁的危害：
@@ -57,7 +57,7 @@ Azure 负责保护运行应用程序的基础结构和平台，而你负责保�
 如果想要执行自己的渗透测试，或者想要使用其他扫描程序套件或提供程序，则必须按照 [Azure 渗透测试审批流程](https://security-forms.azure.com/penetration-testing/terms)来进行并获得事先批准才能执行所需的渗透测试。
 
 ## <a name="https"></a>保护与客户的通信
-如果使用为应用服务应用创建的 **\*.azurewebsites.net** 域名，则可以立即使用 HTTPS，因为 SSL 证书是针对所有 **\*.azurewebsites.net** 域名提供的。 如果你的网站使用[自定义域名](app-service-web-tutorial-custom-domain.md)，则可以上传 SSL 证书，为自定义域[启用 HTTPS](app-service-web-tutorial-custom-ssl.md)。
+如果使用为应用服务应用创建的 **\*.azurewebsites.net** 域名，则可以立即使用 HTTPS，因为 SSL 证书是针对所有 **\*.azurewebsites.net** 域名提供的。 如果你的网站使用[自定义域名](app-service-web-tutorial-custom-domain.md)，则可以上载 SSL 证书，为自定义域[启用 HTTPS](app-service-web-tutorial-custom-ssl.md)。
 
 启用 [HTTPS](https://en.wikipedia.org/wiki/HTTPS) 可帮助防范对应用与其用户之间的通信进行的 MITM 攻击。
 

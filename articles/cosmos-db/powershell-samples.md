@@ -10,16 +10,16 @@ ms.assetid:
 ms.service: cosmos-db
 ms.custom: mvc
 ms.devlang: na
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: database
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 8bf047bd19c5278bfff85cab63ea10a1838cc683
+ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
+ms.openlocfilehash: 7698e03c0dc8d1c6d1e926f45e903a909bfd0c93
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/24/2017
 
 ---
 
@@ -30,14 +30,14 @@ ms.lasthandoff: 05/10/2017
 | |  |
 |---|---|
 |**创建 Azure Cosmos DB 帐户**||
-|[创建 DocumentDB API 帐户](scripts/create-database-account-powershell.md)| 创建单个要用于 DocumentDB API 的 Azure Cosmos DB 帐户。 |
+|[创建 DocumentDB API 帐户](scripts/create-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建单个要用于 DocumentDB API 的 Azure Cosmos DB 帐户。 |
 |**缩放 Azure Cosmos DB**||
-|[将 Azure Cosmos DB 帐户复制到多个区域中并配置故障转移优先级](scripts/scale-multiregion-powershell.md)|在全局范围内将帐户数据复制到具有指定故障转移优先级的多个区域中。|
+|[将 Azure Cosmos DB 帐户复制到多个区域中并配置故障转移优先级](scripts/scale-multiregion-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)|在全局范围内将帐户数据复制到具有指定故障转移优先级的多个区域中。|
 |**保护 Azure Cosmos DB**||
-| [获取帐户密钥](scripts/secure-get-account-key-powershell.md) | 获取帐户的主要和辅助 master 写密钥以及主要和辅助只读密钥。|
-| [获取 MongoDB 连接字符串](scripts/secure-mongo-connection-string-powershell.md) | 获取用于将 MongoDB 应用连接到 Azure Cosmos DB 帐户的连接字符串。|
-|[重新生成帐户密钥](scripts/secure-regenerate-key-powershell.md)|重新生成帐户的 master 密钥或只读密钥。|
-|[创建防火墙](scripts/create-firewall-powershell.md)| 创建入站 IP 访问控制策略，仅允许从获批准的一组计算机和/或云服务访问帐户。|
+| [获取帐户密钥](scripts/secure-get-account-key-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 获取帐户的主要和辅助 master 写密钥以及主要和辅助只读密钥。|
+| [获取 MongoDB 连接字符串](scripts/secure-mongo-connection-string-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 获取用于将 MongoDB 应用连接到 Azure Cosmos DB 帐户的连接字符串。|
+|[重新生成帐户密钥](scripts/secure-regenerate-key-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)|重新生成帐户的 master 密钥或只读密钥。|
+|[创建防火墙](scripts/create-firewall-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建入站 IP 访问控制策略，仅允许从获批准的一组计算机和/或云服务访问帐户。|
 |**高可用性、灾难恢复、备份和还原**||
-|[配置故障转移策略](scripts/ha-failover-policy-powershell.md)|为帐户所复制的每个区域设置故障转移优先级。|
+|[配置故障转移策略](scripts/ha-failover-policy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)|为帐户所复制的每个区域设置故障转移优先级。|
 |||

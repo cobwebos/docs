@@ -4,7 +4,7 @@ description: "了解 Azure 帐单用量和 RateCard API，洞察 Azure 资源消
 services: 
 documentationcenter: 
 author: BryanLa
-manager: ruchic
+manager: tonguyen
 editor: 
 tags: billing
 ms.assetid: 3e817b43-0696-400c-a02e-47b7817f9b77
@@ -15,9 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/18/2017
 ms.author: mobandyo;bryanla
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: d3e1dd894c1548b44257bcc02c12cfafe364d5eb
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
 
 

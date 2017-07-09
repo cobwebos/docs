@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: asteen
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 4394a5ddd17e635661cd89b42f76b0558ffa17ab
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 32c6d4ed5470077856d4ab175a5df5188b3690a6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/18/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -68,7 +68,7 @@ ms.lasthandoff: 04/18/2017
 
 -   根据 Internet Explorer 中启用的安全设置，如果网站不属于**受信区域**，我们的脚本有时会在执行应用程序时遭到屏蔽。
 
-  *  为了解决这一问题，请指导用户**添加应用程序的网站**到**Internet Explorer 安全设置**内的“受信任的站点”列表。 可以将用户发送到文章[如何将站点添加到受信任的站点列表](https://answers.microsoft.com/ie/forum/ie9-windows_7/how-do-i-add-a-site-to-my-trusted-sites-list/98cc77c8-b364-e011-8dfc-68b599b31bf5)，了解指导说明的详细信息。
+  *  为了解决这一问题，请指导用户**添加应用程序的网站**到**Internet Explorer 安全设置**内的“受信任的站点”列表。 可以将用户发送到文章[如何将站点添加到受信任的站点列表](https://answers.microsoft.com/en-us/ie/forum/ie9-windows_7/how-do-i-add-a-site-to-my-trusted-sites-list/98cc77c8-b364-e011-8dfc-68b599b31bf5)，了解指导说明的详细信息。
 
 -   在少数情况下，Internet Explorer 的安全验证有时可以导致页面的加载速度慢于脚本的执行速度。
 
@@ -90,7 +90,7 @@ ms.lasthandoff: 04/18/2017
 
 1.  在某个支持的浏览器中打开[访问面板](https://myapps.microsoft.com)，并在 Azure AD 中以“用户”身份登录。
 
-2.  单击访问面板中的“密码 - SSO 应用程序”。
+2.  在访问面板中单击“密码-SSO 应用程序”。
 
 3.  在出现询问是否安装该软件的提示时，选择“立即安装”。
 

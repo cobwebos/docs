@@ -14,10 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/18/2017
 ms.author: karolz
-translationtype: Human Translation
-ms.sourcegitcommit: d7f7b157d8d6fb54259c8f23d5005509f4eb7872
-ms.openlocfilehash: 22acb6afbfbfff753e71b5e821385798cc76ffdd
-ms.lasthandoff: 01/19/2017
+redirect_url: /azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 08f7b57985382f2abbb90ba1e13a30f40b38917f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -29,7 +31,7 @@ ms.lasthandoff: 01/19/2017
 
     * 诊断数据收集配置只是服务配置的一部分。 将其与应用程序的其余部分始终保持“同步”很简单。
     * 可轻松基于每个应用程序或每个服务进行配置。
-        * 基于代理的日志收集通常需要单独部署和配置诊断代理，这是额外的管理任务，也是潜在的错误来源。 通常对于每个虚拟机（节点），只允许一个代理实例，并在所有应用程序和该节点上运行的服务间共享该代理配置。 
+        * 基于代理的日志收集通常需要单独部署和配置诊断代理，这是额外的管理任务，也是潜在的错误来源。 通常对于每个虚拟机（节点），只允许一个代理实例，并在该节点上运行的所有应用程序和服务间共享该代理配置。 
 
 * *灵活性*
    
@@ -40,7 +42,7 @@ ms.lasthandoff: 01/19/2017
 * *可访问内部应用程序数据和上下文*
    
     * 应用程序/服务进程内运行的诊断子系统可以轻松地随着上下文信息而扩展跟踪。
-    * 借助基于代理的日志收集，必须通过 Windows 事件跟踪之类的某种进程间通信机制将数据发送至代理。 此机制可能造成额外限制。
+    * 使用基于代理的日志收集时，必须通过 Windows 事件跟踪之类的某种进程间通信机制将数据发送至代理。 此机制可能造成额外限制。
 
 可以结合这两种收集方法的优点。 事实上，它可能是许多应用程序的最佳解决方案。 基于代理的收集自然成为用于收集与整个群集和各个群集节点相关的日志的解决方案。 对于诊断服务启动问题和崩溃，这种方式比进程内日志收集更可靠。 此外，对于运行在 Service Fabric 群集内的许多服务，每个服务执行其自身进程内日志收集都会导致来自该群集的大量传出连接。 对于网络子系统和日志目标，大量传出连接的负担很重。 [**Azure 诊断**](../cloud-services/cloud-services-dotnet-diagnostics.md)等代理可以从多个服务收集数据，并通过几个连接发送所有数据，从而提高吞吐量。 
 
@@ -53,15 +55,15 @@ EventFlow 二进制文件都可用作一组 NuGet 包。 若要将 EventFlow 添
 
 托管 EventFlow 的服务应包括相应的包，具体取决于应用程序日志的源和目标。 添加以下包： 
 
-* `Microsoft.Diagnostics.EventFlow.Input.EventSource` 
+* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource` 
     * （从服务的 EventSource 类和标准 EventSource 捕获数据，例如 Microsoft-ServiceFabric-Services 和 Microsoft-ServiceFabric-Actors）
-* `Microsoft.Diagnostics.EventFlow.Output.ApplicationInsights` 
+* `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` 
     * （我们会将日志发送到 Azure Application Insights 资源）  
 * `Microsoft.Diagnostics.EventFlow.ServiceFabric` 
     * （允许初始化来自 Service Fabric 服务配置的 EventFlow 管道，报告任何将诊断数据以 Service Fabric 运行状况报告的形式进行发送的问题）
 
 > [!NOTE]
-> `Microsoft.Diagnostics.EventFlow.Input.EventSource` 包要求服务项目面向.NET Framework 4.6 或更高版本。 请确保在项目属性中设置相应的目标框架，然后再安装此包。 
+> `Microsoft.Diagnostics.EventFlow.Inputs.EventSource` 包要求服务项目面向.NET Framework 4.6 或更高版本。 请确保在项目属性中设置相应的目标框架，然后再安装此包。 
 
 安装所有的包后，下一步是在服务中配置和启用 EventFlow。
 
@@ -104,7 +106,7 @@ EventFlow 管道（负责发送日志）根据配置文件中存储的规范创�
 ```
 
 > [!NOTE]
-> 服务的 ServiceEventSource 名称是应用于 ServiceEventSource 类的 `EventSourceAttribute` 的 Name 属性值。 该值属于服务代码，而且可以在 `ServiceEventSource.cs` 文件中指定。 例如，在以下代码片段中，ServiceEventSource 的名称是 MyCompany-Application1-Stateless1：
+> 服务的 ServiceEventSource 名称是应用于 ServiceEventSource 类的 `EventSourceAttribute` 的 Name 属性值。 这在 `ServiceEventSource.cs` 文件中指定，该文件是服务代码的一部分。 例如，在以下代码片段中，ServiceEventSource 的名称是 MyCompany-Application1-Stateless1：
 > ```csharp
 > [EventSource(Name = "MyCompany-Application1-Stateless1")]
 > internal sealed class ServiceEventSource : EventSource
@@ -113,7 +115,7 @@ EventFlow 管道（负责发送日志）根据配置文件中存储的规范创�
 >} 
 > ```
 
-请注意，`eventFlowConfig.json` 文件属于服务配置包。 对此文件的更改可以包含在服务的完全升级或仅配置的升级中，具体取决于 Service Fabric 升级运行状况检查和自动回退（如果升级失败）。 有关详细信息，请参阅 [Service Fabric 应用程序升级](service-fabric-application-upgrade.md)。
+请注意，`eventFlowConfig.json` 文件属于服务配置包。 对此文件的更改可以包含在服务的完全升级或仅配置的升级中，并且会接受 Service Fabric 升级运行状况检查和自动回退（如果升级失败）。 有关详细信息，请参阅 [Service Fabric 应用程序升级](service-fabric-application-upgrade.md)。
 
 最后一步是在服务的启动代码中（位于 `Program.cs` 文件）实例化 EventFlow 管道。 在以下示例中，与 EventFlow 相关的新增内容标有以 `****` 开头的备注：
 
@@ -176,3 +178,4 @@ namespace Stateless1
 <!--Image references-->
 [1]: ./media/service-fabric-diagnostics-collect-logs-without-an-agent/eventflow-nugets.png
 [2]: ./media/service-fabric-diagnostics-collect-logs-without-an-agent/ai-traces.png
+

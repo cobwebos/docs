@@ -12,16 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2015
+ms.date: 06/06/2017
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c30ffa9e392bb6411312b0789ae6e8218f770bc1
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: b82bb1ab419831e803689edb2a2a7fe256dde5a2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/07/2017
 
 
 ---
 # <a name="enable-monitoring-and-diagnostics"></a>启用监视和诊断
-在 [Azure 门户](https://portal.azure.com)中，可以配置有关资源的丰富和频繁的监视和诊断数据。 还可以使用 [REST API](https://msdn.microsoft.com/library/azure/dn931932.aspx) 或 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) 以编程方式配置诊断。
+在 [Azure 门户](https://portal.azure.com)中，可以配置有关资源的丰富和频繁的监视和诊断数据。 还可以使用 [REST API](https://msdn.microsoft.com/library/azure/dn931932.aspx) 或 [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) 以编程方式配置诊断。
 
 Azure 中的诊断、监视和指标数据会保存到所选择的存储帐户中。 这使你可以使用所需的任何工具将数据从存储浏览器读取到 Power BI，再到第三方工具。
 
@@ -65,10 +67,5 @@ Azure 中的诊断、监视和指标数据会保存到所选择的存储帐户�
 * 要确切了解代码在云中的执行情况时[监视应用程序性能](../application-insights/app-insights-azure-web-apps.md)。
 * [查看事件和活动日志](insights-debugging-with-events.md)，以了解服务中发生的所有事件。
 * [跟踪服务运行状况](insights-service-health.md)，以在 Azure 遇到性能下降或服务中断时及时发现。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
