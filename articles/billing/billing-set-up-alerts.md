@@ -24,12 +24,14 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 03/02/2017
 
 ---
-# <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>为 Microsoft Azure 订阅设置计费或信用额度警报
+<a id="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions" class="xliff"></a>
+# 为 Microsoft Azure 订阅设置计费或信用额度警报
 如果用户是 Azure 订阅的帐户管理员，可以使用 Azure 计费警报服务来创建自定义的计费警报，以便监控和管理 Azure 帐户的计费活动。
 
 此服务为预览功能，因此需要先在预览功能页面中启用它。
 
-## <a name="set-the-alert-threshold-and-email-recipients"></a>设置警报阈值和电子邮件收件人
+<a id="set-the-alert-threshold-and-email-recipients" class="xliff"></a>
+## 设置警报阈值和电子邮件收件人
 1. 访问[预览功能页](https://account.windowsazure.com/PreviewFeatures)并启用**账单警报服务**。
 
 1. 收到已为订阅启用计费服务的确认电子邮件后，请访问帐户门户中的[订阅页面](https://account.windowsazure.com/Subscriptions)。 单击想要监控的订阅，然后单击“警报”。
@@ -46,13 +48,16 @@ ms.lasthandoff: 03/02/2017
 
 Azure 支持任何电子邮件地址并且不验证电子邮件地址是否可正常使用，因此请仔细检查以避免拼写错误。
 
-## <a name="check-on-your-alerts"></a>检查警报
+<a id="check-on-your-alerts" class="xliff"></a>
+## 检查警报
 在设置警报后，帐户中心会列出它们并显示你还可以设置多少警报。 对于每个警报，你可以看到其发送日期和时间，是针对帐单合计的警报还是针对资金信用的警报，以及你设置的限制。 日期和时间格式为 24 小时制通用协调时间 (UTC)，日期为 yyyy-mm-dd 格式。 单击列表中某个警报的加号可对其进行编辑，单击垃圾桶可将其删除。
 
-## <a name="billing-alerts-for-enterprise-agreement-ea-customers"></a>用于企业协议 (EA) 客户的账单警报
+<a id="billing-alerts-for-enterprise-agreement-ea-customers" class="xliff"></a>
+## 用于企业协议 (EA) 客户的账单警报
 EA 客户可以通过设置支出配额为注册的每个部门获取警报。 若要快速入门，请参阅 EA 门户中的[部门支出配额](https://ea.azure.com/helpdocs/departmentSpendingQuotas)。
 
-## <a name="learn-more-about-azure-cost-management"></a>详细了解 Azure 成本管理
+<a id="learn-more-about-azure-cost-management" class="xliff"></a>
+## 详细了解 Azure 成本管理
 - 使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)、[总体拥有成本计算器](https://aka.ms/azure-tco-calculator)和添加服务时估计成本。
 - [在 Azure 门户中定期查看使用情况和成本](billing-getting-started.md#costs)。
 - 打开 [Azure 顾问成本建议](../advisor/advisor-cost-recommendations.md)。
