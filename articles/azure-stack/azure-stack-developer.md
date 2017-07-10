@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2017
+ms.date: 07/10/2017
 ms.author: helaw
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9c3d9ee502cef88ed00434a9ebfcd388f90b4af5
@@ -22,7 +22,8 @@ ms.lasthandoff: 01/24/2017
 
 
 ---
-# <a name="develop-for-azure-stack"></a>Develop for Azure Stack
+<a id="develop-for-azure-stack" class="xliff"></a>
+# Develop for Azure Stack
 You can get started developing applications today, even if you don't have access to an Azure Stack environment. Because Azure Stack delivers Microsoft Azure services that run in your datacenter, you can use similar tools and processes to develop against Azure Stack as you would with Azure.  With a bit of preparation and guidance from the following topics, you can use Azure to emulate an Azure Stack environment:
 
 * In Azure, you can create Azure Resource Manager templates that are also deployable to Azure Stack.  See [template considerations](azure-stack-develop-templates.md) for guidance on developing your templates to ensure portability.

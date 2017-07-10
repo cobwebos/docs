@@ -11,7 +11,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/10/2017
+ms.date: 07/10/2017
 ms.author: helaw
 ms.custom: mvc
 ms.translationtype: Human Translation
@@ -22,7 +22,8 @@ ms.lasthandoff: 07/06/2017
 
 ---
 
-# <a name="deploy-apps-to-azure-and-azure-stack"></a>Deploy apps to Azure and Azure Stack
+<a id="deploy-apps-to-azure-and-azure-stack" class="xliff"></a>
+# Deploy apps to Azure and Azure Stack
 A hybrid [continuous integration](https://www.visualstudio.com/learn/what-is-continuous-integration/)/[continuous delivery](https://www.visualstudio.com/learn/what-is-continuous-delivery/)(CI/CD) pipeline enables you to build, test, and deploy your app to multiple clouds.  In this tutorial, you build a sample environment to learn how a hybrid CI/CD pipeline can help you:
  
 > [!div class="checklist"]
@@ -31,7 +32,8 @@ A hybrid [continuous integration](https://www.visualstudio.com/learn/what-is-con
 > * Once your code has passed testing, automatically deploy to Azure Stack. 
 
 
-## <a name="prerequisites"></a>Prerequisites
+<a id="prerequisites" class="xliff"></a>
+## Prerequisites
 A few components are required to build a hybrid CI/CD pipeline, and may take some time to prepare.  If you already have some of these components, make sure they meet the requirements before beginning.
 
 This topic also assumes that you have some knowledge of Azure and Azure Stack. If you want to learn more before proceeding, be sure to start with these topics:
@@ -39,17 +41,20 @@ This topic also assumes that you have some knowledge of Azure and Azure Stack. I
 - [Introduction to Azure](https://docs.microsoft.com/azure/fundamentals-introduction-to-azure)
 - [Azure Stack Key Concepts](azure-stack-key-features.md)
 
-### <a name="azure"></a>Azure
+<a id="azure" class="xliff"></a>
+### Azure
  - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
  - Create a [Web App](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md), and configure it for [FTP publishing](../app-service-web/app-service-deploy-ftp.md).  Make note of the new Web App URL, as it is used later.
 
 
-### <a name="azure-stack"></a>Azure Stack
+<a id="azure-stack" class="xliff"></a>
+### Azure Stack
  - [Deploy Azure Stack](azure-stack-run-powershell-script.md).  The installation usually takes a few hours to complete, so plan accordingly.
  - Deploy [SQL](azure-stack-sql-resource-provider-deploy.md) and [App Service](azure-stack-app-service-deploy.md) PaaS services to Azure Stack.
  - Create a Web App and configure it for [FTP publishing](azure-stack-app-service-enable-ftp.md).  Make note of the new Web App URL, as it is used later.  
 
-### <a name="developer-tools"></a>Developer tools
+<a id="developer-tools" class="xliff"></a>
+### Developer tools
  - Create a [VSTS workspace](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services).  The sign-up process creates a project named "MyFirstProject".  
  - [Install Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) and [sign-in to VSTS].(https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services#connect-and-share-code-from-visual-studio)
  - Connect to the project and [clone locally](https://www.visualstudio.com/docs/git/gitquickstart).
@@ -57,9 +62,11 @@ This topic also assumes that you have some knowledge of Azure and Azure Stack. I
  - Install Visual Studio and deploy a [VSTS build agent](https://www.visualstudio.com/docs/build/actions/agents/v2-windows) to a virtual machine on Azure Stack. 
  
 
-## <a name="create-app--push-to-vsts"></a>Create app & push to VSTS
+<a id="create-app--push-to-vsts" class="xliff"></a>
+## Create app & push to VSTS
 
-### <a name="create-application"></a>Create application
+<a id="create-application" class="xliff"></a>
+### Create application
 In this section, you create a simple ASP.NET application and push it to VSTS.  These steps represent the normal developer workflow, and could be adapted for developer tools and languages. 
 
 1.  Open Visual Studio.
@@ -68,7 +75,8 @@ In this section, you create a simple ASP.NET application and push it to VSTS.  T
 4.  Provide a name for the application and click **OK**.
 5.  On the next screen, keep the defaults (Web forms) and click **OK**.
 
-### <a name="commit-and-push-changes-to-vsts"></a>Commit and push changes to VSTS
+<a id="commit-and-push-changes-to-vsts" class="xliff"></a>
+### Commit and push changes to VSTS
 1.  Using Team Explorer in Visual Studio, select the dropdown and click **Changes**.
 2.  Provide a commit message and select **Commit all**. You may be prompted to save the solution file, click yes to save all.
 3.  Once committed, Visual Studio will offer you to sync changes to your project. Select **Sync**.
@@ -79,10 +87,12 @@ In this section, you create a simple ASP.NET application and push it to VSTS.  T
 
     ![image showing sync steps](./media/azure-stack-solution-pipeline/image2.png)
 
-### <a name="review-code-in-vsts"></a>Review code in VSTS
+<a id="review-code-in-vsts" class="xliff"></a>
+### Review code in VSTS
 Once you've committed a change and pushed to VSTS, check your code from the VSTS portal.  Select **Code**, and then **Files** from the dropdown menu.  You can see the solution you created.
 
-## <a name="create-build-definition"></a>Create build definition
+<a id="create-build-definition" class="xliff"></a>
+## Create build definition
 The build process defines how your application is built and packaged for deployment on each commit of code changes. In our example, we use the included template to configure the build process for an ASP.NET app, though this configuration could be adapted depending on your application.
 
 1.  Sign in to your VSTS workspace from a web browser.
@@ -97,7 +107,8 @@ The build process defines how your application is built and packaged for deploym
 7.  Select the **Triggers** tab, and enable **Continuous Integration**.
 7.  Click **Save & queue** and then select **Save** from the dropdown. 
 
-## <a name="create-release-definition"></a>Create release definition
+<a id="create-release-definition" class="xliff"></a>
+## Create release definition
 The release process defines how builds from the previous step are deployed to an environment.  In this tutorial, we publish our ASP.NET app with FTP to an Azure Web App. To configure a release to Azure, use the following steps:
 
 1.  From the VSTS banner, select **Build & Release**  and then **Releases**.
@@ -129,7 +140,8 @@ Finally, you configure the release definition to use the agent pool containing t
     ![image showing configuration of release definition to use specific queue](./media/azure-stack-solution-pipeline/image3.png)
 
 
-## <a name="deploy-your-app-to-azure"></a>Deploy your app to Azure
+<a id="deploy-your-app-to-azure" class="xliff"></a>
+## Deploy your app to Azure
 This step uses your newly built CI/CD pipeline to deploy the ASP.NET app to a Web App on Azure. 
 
 1.  From the banner in VSTS, select **Build & Release**, and then select **Builds**.
@@ -139,7 +151,8 @@ This step uses your newly built CI/CD pipeline to deploy the ASP.NET app to a We
 5.  After the build is complete, visit the website using the URL noted when creating the Web App.    
 
 
-## <a name="add-azure-stack-to-pipeline"></a>Add Azure Stack to pipeline
+<a id="add-azure-stack-to-pipeline" class="xliff"></a>
+## Add Azure Stack to pipeline
 Now that you've tested your CI/CD pipeline by deploying to Azure, it's time to add Azure Stack to the pipeline.  In the following steps, you create a new environment and add an FTP Upload task to deploy your app to Azure Stack.  You also add a release approver, which serves as a way to simulate "signing off" on a code release to Azure Stack.  
 
 1.  In the Release definition, select **+ Add Environment** and **Create new environment**.
@@ -150,7 +163,8 @@ Now that you've tested your CI/CD pipeline by deploying to Azure, it's time to a
 6.  Select the **FTP Upload** task and select **Add**, then select **Close**.
 
 
-### <a name="configure-ftp-task"></a>Configure FTP task
+<a id="configure-ftp-task" class="xliff"></a>
+### Configure FTP task
 Now that you've created a release, you'll configure the steps required for publishing to the Web App on Azure Stack.  Just like you configured the FTP Upload task for Azure, you configure the task for Azure Stack:
 
 1.  Select the **FTP Upload** task you just added, and configure the following parameters:
@@ -172,7 +186,8 @@ Finally, configure the release definition to use the agent pool containing the a
 2.  Select **Run on agent** from the middle column. In the right column, select the agent queue containing the build agent running on Azure Stack.  
     ![image showing configuration of release definition to use specific queue](./media/azure-stack-solution-pipeline/image3.png)
 
-## <a name="deploy-new-code"></a>Deploy new code
+<a id="deploy-new-code" class="xliff"></a>
+## Deploy new code
 You can now test the hybrid CI/CD pipeline, with the final step publishing to Azure Stack.  In this section, you modify the site's footer and start deployment through the pipeline.  Once complete, you will see your changes deployed to Azure for review, then once you approve the release, they are published to Azure Stack.
 
 1. In Visual Studio, open the *site.master* file and change this line:
@@ -198,7 +213,8 @@ You can now test the hybrid CI/CD pipeline, with the final step publishing to Az
 
 You can now use your new hybrid CI/CD pipeline as a building block for other hybrid cloud patterns.
 
-## <a name="next-steps"></a>Next steps
+<a id="next-steps" class="xliff"></a>
+## Next steps
 In this tutorial, you learned how to build a hybrid CI/CD pipeline that:
 
 > [!div class="checklist"]

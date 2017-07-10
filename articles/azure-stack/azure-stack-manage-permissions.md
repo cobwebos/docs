@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 07/10/2017
 ms.author: helaw
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
@@ -22,20 +22,23 @@ ms.lasthandoff: 03/24/2017
 
 
 ---
-# <a name="manage-role-based-access-control"></a>Manage Role-Based Access Control
+<a id="manage-role-based-access-control" class="xliff"></a>
+# Manage Role-Based Access Control
 A user in Azure Stack can be a reader, owner, or contributor for each instance of a subscription, resource group, or service. For example, User A might have reader permissions to Subscription 1, but have owner permissions to Virtual Machine 7.
 
 * Reader: User can view everything, but can’t make any changes.
 * Contributor: User can manage everything except access to resources.
 * Owner: User can manage everything, including access to resources.
 
-## <a name="set-access-permissions-for-a-user"></a>Set access permissions for a user
+<a id="set-access-permissions-for-a-user" class="xliff"></a>
+## Set access permissions for a user
 1. Sign in with an account that has owner permissions to the resource you want to manage.
 2. In the blade for the resource, click the **Access** icon ![](media/azure-stack-manage-permissions/image1.png).
 3. In the **Users** blade, click **Roles**.
 4. In the **Roles** blade, click **Add** to add permissions for the user.
 
-## <a name="next-steps"></a>Next steps
+<a id="next-steps" class="xliff"></a>
+## Next steps
 [Add an Azure Stack tenant](azure-stack-add-new-user-aad.md)
 
 
