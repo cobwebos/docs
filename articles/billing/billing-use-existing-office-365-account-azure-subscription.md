@@ -23,12 +23,14 @@ ms.lasthandoff: 04/12/2017
 
 
 ---
-# <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>使用 Office 365 帐户注册 Azure 订阅
+<a id="sign-up-for-an-azure-subscription-with-your-office-365-account" class="xliff"></a>
+# 使用 Office 365 帐户注册 Azure 订阅
 如果具有 Office 365 订阅，使用 Office 365 帐户创建 Azure 订阅。 可以在没有 Azure 订阅的情况下使用 Office 365 用户名和密码登录 [Azure 门户](https://portal.azure.com/)。 但如果想要设置虚拟机或使用其他 Azure 服务，则必须为帐户创建 Azure 订阅。 如果是想使用 Azure 服务的组织的成员，在创建订阅后将组织中的其他人员添加到订阅中。  
 
 如果已具有 Office 365 帐户和 Azure 订阅，请参阅[将 Office 365 租户与 Azure 订阅关联](billing-add-office-365-tenant-to-azure-subscription.md)。
 
-## <a name="get-an-azure-subscription-by-using-your-office-365-account"></a>通过 Office 365 帐户获取 Azure 订阅
+<a id="get-an-azure-subscription-by-using-your-office-365-account" class="xliff"></a>
+## 通过 Office 365 帐户获取 Azure 订阅
 
 若要注册 Azure，请使用 Azure 免费链接，并使用 Office 365 用户名和密码注册 Azure。 
 
@@ -58,5 +60,6 @@ Office 365 和 Azure 使用 Azure AD 服务管理用户和订阅。 Azure 目录
 
 有关详细信息，请参阅 [How Azure subscriptions are associated with Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md)（Azure 订阅与 Azure Active Directory 的关联方式）。
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
+<a id="need-help-contact-support" class="xliff"></a>
+## 需要帮助？ 联系支持人员。
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。 
