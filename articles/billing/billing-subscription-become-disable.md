@@ -24,10 +24,12 @@ ms.lasthandoff: 03/31/2017
 
 
 ---
-# <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>为何禁用 Azure 订阅？如何重新激活它？
+<a id="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it" class="xliff"></a>
+# 为何禁用 Azure 订阅？如何重新激活它？
 禁用 Azure 订阅可能是因为：达到了支出限制、帐单过期未付、达到了信用卡限制，或者订阅被帐户管理员取消。 了解自己的情况属于什么样的问题，按照本文所述步骤重新激活订阅。
 
-## <a name="you-reached-your-spending-limit"></a>已达到支出限制
+<a id="you-reached-your-spending-limit" class="xliff"></a>
+## 已达到支出限制
 当用户用完订阅中包含的月度金额时，我们将在该帐单月的剩余时间内禁用用户的服务。 禁用服务是为了避免用户在意外情况下因使用量超出订阅的规定用量而产生相应的费用。 可以移除支出限制，并[为 Microsoft Azure 订阅设置计费警报](billing-set-up-alerts.md)，以便监视和管理 Azure 帐户的计费活动。
 
 若要移除支出限制，请执行以下操作：
@@ -47,13 +49,16 @@ ms.lasthandoff: 03/31/2017
 
 如果使用的是“免费试用”订阅且移除了支出限制，则在免费试用结束时会将订阅转为“即用即付”。
 
-## <a name="your-bill-is-past-due"></a>你的帐单已过期
+<a id="your-bill-is-past-due" class="xliff"></a>
+## 你的帐单已过期
 全额支付欠款。 请参阅文章：[为什么会收到 Azure 订阅欠款到期未付的通知？](billing-azure-subscription-past-due-balance.md#how-to-resolve-the-issue)
 
-## <a name="the-bill-exceeds-your-credit-card-limit"></a>帐单金额超出了信用卡限制
+<a id="the-bill-exceeds-your-credit-card-limit" class="xliff"></a>
+## 帐单金额超出了信用卡限制
 为了解决此问题，请[改用其他信用卡](billing-how-to-change-credit-card.md)。 或者，如果代表的是公司，则可[改用发票付款](https://azure.microsoft.com/pricing/invoicing/)。
 
-## <a name="the-subscription-was-canceled-by-the-account-administrator"></a>由帐户管理员取消订阅
+<a id="the-subscription-was-canceled-by-the-account-administrator" class="xliff"></a>
+## 由帐户管理员取消订阅
 如果是帐户管理员，则可执行以下步骤，重新激活“即用即付”订阅：
 
 1. 登录到 [Azure 帐户中心](https://account.windowsazure.com/Home/Index)。
@@ -64,6 +69,7 @@ ms.lasthandoff: 03/31/2017
 
 对于其他订阅类型，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以重新激活订阅。
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
+<a id="need-help-contact-support" class="xliff"></a>
+## 需要帮助？ 联系支持人员。
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
 

@@ -23,16 +23,19 @@ ms.lasthandoff: 12/22/2016
 
 
 ---
-# <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection 通知
+<a id="azure-active-directory-identity-protection-notifications" class="xliff"></a>
+# Azure Active Directory Identity Protection 通知
 Azure AD Identity Protection 会发送两种类型的自动生成的通知电子邮件，帮助你管理用户风险和风险事件：
 
 * 用户受威胁的警报电子邮件
 * 每周摘要电子邮件
 
-## <a name="user-compromised-alert-email"></a>用户受威胁的警报电子邮件
+<a id="user-compromised-alert-email" class="xliff"></a>
+## 用户受威胁的警报电子邮件
 当 Azure AD Identity Protection 确定帐户受到威胁时，会生成用户受威胁的电子邮件警报。 该电子邮件包含指向 Identity Protection 仪表板中针对风险报告而标记的用户的链接。 建议立即调查已泄漏帐户的通知。
 
-## <a name="weekly-digest-email"></a>每周摘要电子邮件
+<a id="weekly-digest-email" class="xliff"></a>
+## 每周摘要电子邮件
 每周摘要电子邮件中包含新风险事件的摘要。<br>
 其中包括：
 
@@ -61,6 +64,7 @@ Azure AD Identity Protection 会发送两种类型的自动生成的通知电子
    ![用户风险策略](./media/active-directory-identityprotection-notifications/405.png "User risk policy")
    <br>
 
-## <a name="see-also"></a>另请参阅
+<a id="see-also" class="xliff"></a>
+## 另请参阅
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
