@@ -4,7 +4,7 @@ description: "了解 Azure 中外部服务（以前称为应用商店）的计�
 services: 
 documentationcenter: 
 author: adpick
-manager: ruchic
+manager: tonguyen
 editor: 
 tags: billing
 ms.assetid: 5e0e2a3c-d111-4054-8508-0c111c1b749b
