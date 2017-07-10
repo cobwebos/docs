@@ -1,10 +1,17 @@
 
-[Azure Cloud Shell](../articles/cloud-shell/quickstart.md)（公共预览版）是基于 Web 的 shell，已预先配置为简化 Azure 工具的使用。 使用 Cloud Shell，你始终有最新版的工具可用，不需安装、更新或单独登录。 直接单击本文中代码块右上角的“试用”按钮，启动 Cloud Shell。
+<a id="launch-azure-cloud-shell" class="xliff"></a>
+## 启动 Azure Cloud Shell
 
-![Cloud Shell](./media/cloud-shell-try-it/cli-try-it.png)
+Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置与你的帐户一起使用。 单击 [Azure 门户](https://portal.azure.com)右上角菜单上的“Cloud Shell”按钮。
 
-也可从 Azure 门户打开 Cloud Shell，只需单击顶部导航栏中的 ![Cloud Shell](./media/cloud-shell-try-it/cs-button.png) 按钮即可。 
- 
+[![Cloud Shell](./media/cloud-shell-try-it/cloud-shell-menu.png)](https://portal.azure.com)
+
+该按钮会启动交互式 shell，可以使用它运行本主题中的所有步骤：
+
+[![显示门户中 Cloud Shell 窗口的屏幕截图](./media/cloud-shell-try-it/cloud-shell-safari.png)](https://portal.azure.com)
+
+
+
 
 
 
