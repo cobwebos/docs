@@ -12,17 +12,19 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/04/2017
+ms.date: 6/28/2017
 ms.author: subramar
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 8c0f3cc737b999d26359f33d3768dcc55893029c
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 5840932d79ef9fd99a94eb6ae4e587b0e616065e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 07/01/2017
 
 
 ---
-# <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
+<a id="prepare-your-development-environment-on-linux" class="xliff"></a>
+
+# 在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started.md)
 > * [Linux](service-fabric-get-started-linux.md)
@@ -32,14 +34,20 @@ ms.lasthandoff: 05/25/2017
 
  若要在 Linux 开发计算机上部署和运行 [Azure Service Fabric 应用程序](service-fabric-application-model.md)，请安装运行时和常用 SDK。 还可以安装适用于 Java 和 .NET Core 的可选 SDK。
 
-## <a name="prerequisites"></a>先决条件
+<a id="prerequisites" class="xliff"></a>
 
-### <a name="supported-operating-system-versions"></a>支持的操作系统版本
+## 先决条件
+
+<a id="supported-operating-system-versions" class="xliff"></a>
+
+### 支持的操作系统版本
 支持使用以下操作系统版本进行开发：
 
 * Ubuntu 16.04 (`Xenial Xerus`)
 
-## <a name="update-your-apt-sources"></a>更新 apt 源
+<a id="update-your-apt-sources" class="xliff"></a>
+
+## 更新 apt 源
 若要通过 apt-get 安装 SDK 和关联的运行时包，必须首先更新 apt 源。
 
 1. 打开终端。
@@ -62,13 +70,27 @@ ms.lasthandoff: 05/25/2017
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
     ```
 
-5. 根据新添加的存储库刷新包列表。
+5. 将 Docker 的官方 GPG 密钥添加到 apt keyring。
+
+    ```bash
+    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    ```
+
+6. 设置 Docker 存储库。
+
+    ```bash
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    ```
+
+7. 根据新添加的存储库刷新包列表。
 
     ```bash
     sudo apt-get update
     ```
 
-## <a name="install-and-set-up-the-sdk-for-containers-and-guest-executables"></a>为容器和来宾可执行文件安装和设置 SDK
+<a id="install-and-set-up-the-sdk-for-containers-and-guest-executables" class="xliff"></a>
+
+## 为容器和来宾可执行文件安装和设置 SDK
 
 源进行更新后，可以安装 SDK。
 
@@ -78,37 +100,41 @@ ms.lasthandoff: 05/25/2017
     sudo apt-get install servicefabricsdkcommon
     ```
 
-   以下命令自动接受 Service Fabric 包的许可证：
+    >   [!TIP]
+    >   以下命令自动接受 Service Fabric 包的许可证：
+    >   ```bash
+    >   echo "servicefabric servicefabric/accepted-eula-v1 select true" | debconf-set-selections
+    >   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-v1 select true" | debconf-set-selections
+    >   ```
     
-    ```bash
-    echo "servicefabric servicefabric/accepted-eula-v1 select true" | debconf-set-selections
-    echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-v1 select true" | debconf-set-selections
-    ```
-
 2. 运行 SDK 安装程序脚本。
 
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/sdkcommonsetup.sh
     ```
 
-运行安装常用 SDK 包的步骤以后，就应该可以运行 `yo azuresfguest`，从而通过来宾可执行文件或容器服务创建应用。 可能需要将 **$NODE_PATH** 环境变量设置为节点模块所在的位置。 
+运行安装常用 SDK 包的步骤以后，应该就可以运行 `yo azuresfguest` 或 `yo azuresfcontainer`，通过来宾可执行文件或容器服务创建应用。 可能需要将 **$NODE_PATH** 环境变量设置为节点模块所在的位置。 
 
-    ```bash
+
+```bash
     export NODE_PATH=$NODE_PATH:$HOME/.node/lib/node_modules 
-    ```
+```
 
 如果使用环境作为根，则可能需要通过以下命令设置变量：
 
-    ```bash
+```bash
     export NODE_PATH=$NODE_PATH:/root/.node/lib/node_modules 
-    ```
+```
+
 
 > [!TIP]
 > 可以将这些命令添加到 ~/.bashrc 文件中，这样就不需每次登录都设置环境变量。
 >
 
-## <a name="set-up-the-azure-cli"></a>设置 Azure CLI
-[Azure CLI][azure-xplat-cli-github] 包含用来与 Service Fabric 实体（包括群集和应用程序）交互的命令。 它基于 Node.js，因此，请[务必先安装 Node][install-node]，然后继续遵照下面的说明操作：
+<a id="setup-the-xplat-service-fabric-cli" class="xliff"></a>
+
+## 设置 XPlat Service Fabric CLI
+[XPlat CLI][azure-xplat-cli-github] 包含用来与 Service Fabric 实体（包括群集和应用程序）交互的命令。 它基于 Node.js，因此，请[务必先安装 Node][install-node]，然后继续遵照下面的说明操作：
 
 1. 将 github 存储库克隆到你的开发计算机。
 
@@ -137,11 +163,17 @@ ms.lasthandoff: 05/25/2017
     source ~/azure.completion.sh
     ```
 
-> [!NOTE]
-> Service Fabric 命令在 Azure CLI 2.0 中尚不可用。
+<a id="setup-azure-cli-20" class="xliff"></a>
 
+### 设置 Azure CLI 2.0
 
-## <a name="set-up-a-local-cluster"></a>设置本地群集
+现在可以使用 Azure CLI 中提供的 Service Fabric 命令模块，作为 XPlat CLI 的替代。
+
+若要详细了解如何安装 Azure CLI 2.0 以及如何使用 Service Fabric 命令，请参阅[入门文档](service-fabric-azure-cli-2-0.md)。
+
+<a id="set-up-a-local-cluster" class="xliff"></a>
+
+## 设置本地群集
 如果所有内容都已成功安装，则应该能够启动本地群集。
 
 1. 运行群集安装程序脚本。
@@ -161,7 +193,9 @@ ms.lasthandoff: 05/25/2017
 > 此外，Linux 不支持独立群集 - 预览版仅支持单机群集和 Azure Linux 多计算机群集。
 >
 
-## <a name="install-the-java-sdk-optional-if-you-wish-to-use-the-java-programming-models"></a>安装 Java SDK（如果希望使用 Java 编程模型，则可以选择执行此步骤）
+<a id="install-the-java-sdk-optional-if-you-wish-to-use-the-java-programming-models" class="xliff"></a>
+
+## 安装 Java SDK（如果希望使用 Java 编程模型，则可以选择执行此步骤）
 Java SDK 提供使用 Java 生成 Service Fabric 服务所需的库和模板。
 
 1. 安装 Java SDK 包。
@@ -176,7 +210,9 @@ Java SDK 提供使用 Java 生成 Service Fabric 服务所需的库和模板。
     sudo /opt/microsoft/sdk/servicefabric/java/sdkjavasetup.sh
     ```
 
-## <a name="install-the-eclipse-neon-plugin-optional"></a>安装 Eclipse Neon 插件（可选）
+<a id="install-the-eclipse-neon-plugin-optional" class="xliff"></a>
+
+## 安装 Eclipse Neon 插件（可选）
 
 可以在**适用于 Java 开发人员的 Eclipse IDE** 中安装适用于 Service Fabric 的 Eclipse 插件。 可以使用 Eclipse，在 Service Fabric Java 应用程序的基础上创建 Service Fabric 来宾可执行应用程序和容器应用程序。
 
@@ -194,12 +230,14 @@ Java SDK 提供使用 Java 生成 Service Fabric 服务所需的库和模板。
 5. 选择 Service Fabric 插件，然后单击“下一步”。
 6. 继续执行安装并接受最终用户许可协议。
 
-如果已安装 Service Fabric Eclipse 插件，请确保使用的是最新版本。 可以通过选择``Help => Installation Details``并在已安装插件的列表中搜索 Service Fabric 来进行检查。 如果可以使用更新的版本，请选择“更新”。 
+如果已安装 Service Fabric Eclipse 插件，请确保使用的是最新版本。 可以通过选择``Help => Installation Details``并在已安装插件的列表中搜索 Service Fabric 来进行检查。 如果可以使用更新的版本，请选择“更新”。
 
 有关详细信息，请参阅 [Service Fabric：Eclipse 入门](service-fabric-get-started-eclipse.md)。
 
 
-## <a name="install-the-net-core-sdk-optional-if-you-wish-to-use-the-net-core-programming-models"></a>安装 .NET Core SDK（如果希望使用 .NET Core 编程模型，则可以选择执行此步骤）
+<a id="install-the-net-core-sdk-optional-if-you-wish-to-use-the-net-core-programming-models" class="xliff"></a>
+
+## 安装 .NET Core SDK（如果希望使用 .NET Core 编程模型，则可以选择执行此步骤）
 .NET Core SDK 提供使用 .NET Core 生成 Service Fabric 服务所需的库和模板。
 
 1. 安装 .NET Core SDK 包。
@@ -214,30 +252,37 @@ Java SDK 提供使用 Java 生成 Service Fabric 服务所需的库和模板。
    sudo /opt/microsoft/sdk/servicefabric/csharp/sdkcsharpsetup.sh
    ```
 
-## <a name="updating-the-sdk-and-runtime"></a>更新 SDK 和运行时
+<a id="updating-the-sdk-and-runtime" class="xliff"></a>
+
+## 更新 SDK 和运行时
 
 若要更新到最新版本的 SDK 和运行时，请运行以下命令（取消选择不想要的 SDK）：
 
-   ```bash
-   sudo apt-get update
-   sudo apt-get install servicefabric servicefabricsdkcommon servicefabricsdkcsharp servicefabricsdkjava
-   ```
-   
+```bash
+sudo apt-get update
+sudo apt-get install servicefabric servicefabricsdkcommon servicefabricsdkcsharp servicefabricsdkjava
+```
+
+
 > [!NOTE]
 > 更新这些包可能导致本地开发群集停止。 按本页说明操作，在升级后重新启动本地群集。
->
->
 
-若要更新 CLI，请导航到 CLI 克隆到的目录，然后运行 `git pull` 进行更新。  发行说明可能包含其他步骤。 
+<a id="next-steps" class="xliff"></a>
 
-
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
 * [使用 Yeoman 在 Linux 上创建和部署第一个 Service Fabric Java 应用程序](service-fabric-create-your-first-linux-application-with-java.md)
 * [使用适用于 Eclipse 的 Service Fabric 插件在 Linux 上创建和部署第一个 Service Fabric Java 应用程序](service-fabric-get-started-eclipse.md)
 * [在 Linux 上创建第一个 CSharp 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)
 * [在 OSX 上准备开发环境](service-fabric-get-started-mac.md)
-* [使用 Azure CLI 管理 Service Fabric 应用程序](service-fabric-azure-cli.md)
+* [使用 XPlat CLI 管理 Service Fabric 应用程序](service-fabric-azure-cli.md)
 * [Service Fabric Windows/Linux 差异](service-fabric-linux-windows-differences.md)
+
+<a id="related-articles" class="xliff"></a>
+
+## 相关文章
+
+* [Service Fabric 和 Azure CLI 2.0 入门](service-fabric-azure-cli-2-0.md)
+* [Service Fabric XPlat CLI 入门](service-fabric-azure-cli.md)
 
 <!-- Links -->
 
