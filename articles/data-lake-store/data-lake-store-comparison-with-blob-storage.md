@@ -23,6 +23,7 @@ ms.lasthandoff: 01/05/2017
 
 ---
 <a id="comparing-azure-data-lake-store-and-azure-blob-storage" class="xliff"></a>
+
 # 比较 Azure Data Lake Store 与 Azure 存储 Blob
 本文中的表总结了 Azure Data Lake Store 和 Azure 存储 Blob 在一些大数据处理的关键方面之间的差异。 Azure Blob 存储是一个常规用途和可扩展的对象存储，适用于多种存储方案。 Azure Data Lake Store 是一个超大规模存储库，优化用于大数据分析工作负荷。
 
@@ -50,6 +51,7 @@ ms.lasthandoff: 01/05/2017
 | 价格 |参阅[定价](https://azure.microsoft.com/pricing/details/data-lake-store/) |参阅[定价](https://azure.microsoft.com/pricing/details/storage/) |
 
 <a id="next-steps" class="xliff"></a>
+
 ### 后续步骤
 * [Overview of Azure Data Lake Store](data-lake-store-overview.md)
 * [Data Lake Store 入门](data-lake-store-get-started-portal.md)
