@@ -26,7 +26,9 @@ ms.lasthandoff: 04/03/2017
 
 ---
 
-# <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM 上的 SAP NetWeaver 高可用性
+<a id="high-availability-for-sap-netweaver-on-azure-vms" class="xliff"></a>
+
+# Azure VM 上的 SAP NetWeaver 高可用性
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -507,7 +509,9 @@ Azure Resource Manager 和 Azure 经典部署模型在以下方面有所不同�
 
 在 Azure Resource Manager 模型中，无需 Azure 资源组即可使用 Azure 负载均衡器。 环境更加简单灵活。
 
-### <a name="support-for-sap-multi-sid-scenarios"></a>对 SAP 多 SID 方案的支持
+<a id="support-for-sap-multi-sid-scenarios" class="xliff"></a>
+
+### 对 SAP 多 SID 方案的支持
 
 在 Azure Resource Manager 中，可在一个群集中安装多个 SAP 系统标识符 (SID) ASCS/SCS 实例。 之所以能够使用多 SID 实例，是因为支持对每个 Azure 负载均衡器使用多个 IP 地址。
 
@@ -644,7 +648,9 @@ _**图 7：**使用 SQL Server Always On 的高可用性 SAP DBMS 示例_
 
 ## <a name="045252ed-0277-4fc8-8f46-c5a29694a816"></a> 端到端高可用性部署方案
 
-### <a name="deployment-scenario-using-architectural-template-1"></a>使用体系结构模板 1 的部署方案
+<a id="deployment-scenario-using-architectural-template-1" class="xliff"></a>
+
+### 使用体系结构模板 1 的部署方案
 
 图 8 显示了 Azure 中适用于**一个** SAP 系统的 SAP NetWeaver 高可用性体系结构的示例。 此方案的设置方式如下：
 
@@ -656,7 +662,9 @@ _**图 7：**使用 SQL Server Always On 的高可用性 SAP DBMS 示例_
 
 _**图 8：**SAP 高可用性体系结构模板 1：包含 ASCS/SCS 和 DBMS 实例的专用群集_
 
-### <a name="deployment-scenario-using-architectural-template-2"></a>使用体系结构模板 2 的部署方案
+<a id="deployment-scenario-using-architectural-template-2" class="xliff"></a>
+
+### 使用体系结构模板 2 的部署方案
 
 图 9 显示了 Azure 中适用于**一个** SAP 系统的 SAP NetWeaver 高可用性体系结构的示例。 此方案的设置方式如下：
 
@@ -667,7 +675,9 @@ _**图 8：**SAP 高可用性体系结构模板 1：包含 ASCS/SCS 和 DBMS 实
 
 _**图 9：**SAP 高可用性体系结构模板 2：包含 ASCS/SCS 的专用群集和 DBMS 的专用群集_
 
-### <a name="deployment-scenario-using-architectural-template-3"></a>使用体系结构模板 3 的部署方案
+<a id="deployment-scenario-using-architectural-template-3" class="xliff"></a>
+
+### 使用体系结构模板 3 的部署方案
 
 图 10 显示了 Azure 中**两个** SAP 系统（分别带有标记 &lt;SID1&gt; 和 &lt;SID2&gt;）的 SAP NetWeaver 高可用性体系结构示例。 此方案的设置方式如下：
 
@@ -682,7 +692,9 @@ _**图 10：**SAP 高可用性体系结构模板 3：为不同的 ASCS/SCS 实�
 
 ## <a name="78092dbe-165b-454c-92f5-4972bdbef9bf"></a> 准备基础结构
 
-### <a name="prepare-the-infrastructure-for-architectural-template-1"></a>准备体系结构模板 1 的基础结构
+<a id="prepare-the-infrastructure-for-architectural-template-1" class="xliff"></a>
+
+### 准备体系结构模板 1 的基础结构
 适用于 SAP 的 Azure Resource Manager 模板有助于简化所需资源的部署。
 
 Azure Resource Manager 中的三层模板还支持高可用性方案，例如体系结构模板 1 包含两个群集。 每个群集都是 SAP ASCS/SCS 和 DBMS 的 SAP 单一故障点。
@@ -774,7 +786,9 @@ _**图 11：**设置 SAP 高可用性 Azure Resource Manager 参数_
 >
 
 
-### <a name="prepare-the-infrastructure-for-architectural-template-2"></a>准备体系结构模板 2 的基础结构
+<a id="prepare-the-infrastructure-for-architectural-template-2" class="xliff"></a>
+
+### 准备体系结构模板 2 的基础结构
 
 可以借助这个适用于 SAP 的 Azure Resource Manager 模板来简化 SAP 体系结构模板 2 所需基础结构资源的部署。
 
@@ -784,7 +798,9 @@ _**图 11：**设置 SAP 高可用性 Azure Resource Manager 参数_
 * [自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
 
 
-### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>准备体系结构模板 3 的基础结构
+<a id="prepare-the-infrastructure-for-architectural-template-3" class="xliff"></a>
+
+### 准备体系结构模板 3 的基础结构
 
 可以准备基础结构并在 SAP 中配置**多 SID**。 例如，将附加的 SAP ASCS/SCS 实例添加到*现有*群集配置。 有关详细信息，请参阅[使用 Azure Resource Manager 在现有群集配置中配置附加的 SAP ASCS/SCS 实例以创建 SAP 多 SID 配置][sap-ha-multi-sid-guide]。
 
@@ -1027,7 +1043,7 @@ _**图 15：**Azure 内部负载均衡器的默认 ASCS/SCS 负载均衡规则_
 
 如果想要将其他编号用于 SAP ASCS 或 SCS 实例，必须更改这些实例的名称和默认值。
 
-1.  在 Azure 门户中，依次选择“<SID>-lb-ascs 负载均衡器**”、“负载均衡规则”。
+1.  在 Azure 门户中，依次选择“**<*SID*>-lb-ascs 负载均衡器**”、“负载均衡规则”。
 2.  对于属于 SAP ASCS 或 SCS 实例的所有负载均衡规则，请更改以下值：
 
   * Name
@@ -1558,7 +1574,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
   }
   ```
 
-  将 SAP <SID>** 群集角色联机之后，验证“ProbePort”是否已设置为新值。
+  将 **SAP <*SID*>** 群集角色联机之后，验证“ProbePort”是否已设置为新值。
 
   ```PowerShell
   $SAPSID = "PR1"     # SAP <SID>
