@@ -12,20 +12,28 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2017
+ms.date: 06/23/2017
 ms.author: yurid
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 8dddfc8929ab1a0c44522ed2a2596e2c82e3987d
+ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
+ms.openlocfilehash: 85460ea37d251b53074de9d832610d253700f2c1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/01/2017
+ms.lasthandoff: 06/24/2017
 
 
 ---
-# <a name="partner-integration-in-azure-security-center"></a>Azure 安全中心的合作伙伴集成
+<a id="partner-integration-in-azure-security-center" class="xliff"></a>
+
+# Azure 安全中心的合作伙伴集成
 本文档说明如何将 Azure 安全中心与合作伙伴集成，以增强总体安全性并在 Azure 中提供集成体验，同时利用 Azure 应用商店进行合作伙伴认证和计费。
 
-## <a name="why-deploy-partners-solutions-from-security-center"></a>为什么从安全中心部署合作伙伴的解决方案？
+>[!NOTE] 
+>自 2017 年 6 月初开始，安全中心将使用 Microsoft Monitoring Agent 来收集和存储数据。 请参阅 [Azure 安全中心平台迁移](security-center-platform-migration.md)，了解详细信息。 本文中的信息表示转换到 Microsoft Monitoring Agent 后的安全中心功能。
+>
+
+<a id="why-deploy-partners-solutions-from-security-center" class="xliff"></a>
+
+## 为什么从安全中心部署合作伙伴的解决方案？
 
 利用安全中心的合作伙伴集成的四个主要原因是：
 
@@ -35,17 +43,21 @@ ms.lasthandoff: 05/01/2017
 - **导出到 SIEM**：客户现在可以使用 Microsoft Azure 日志集成（预览版）以 CEF 格式将所有安全中心和合作伙伴的警报导出到本地 SIEM 系统
 
 
-## <a name="what-partners-are-integrated-with-security-center"></a>哪些合作伙伴已与安全中心集成？
-安全中心当前与以下合作伙伴集成：
+<a id="what-partners-are-integrated-with-security-center" class="xliff"></a>
 
-- 终结点保护 ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html)) 
-- Web 应用程序防火墙（[Barracuda](https://www.barracuda.com/products/webapplicationfirewall)、[F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html)、[Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF)、[Fortinet](https://www.fortinet.com/resources.html?limit=10&search=&document-type=data-sheets)、[App Gateway WAF](https://azure.microsoft.com/en-us/blog/azure-web-application-firewall-waf-generally-available/)） 
+## 哪些合作伙伴已与安全中心集成？
+安全中心当前与以下解决方案集成：
+
+- Endpoint Protection（[Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html)、Symantec、[适用于 Azure 的 Microsoft 反恶意软件](https://docs.microsoft.com/azure/security/azure-security-antimalware)） 
+- Web 应用程序防火墙（[Barracuda](https://www.barracuda.com/products/webapplicationfirewall)、[F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html)、[Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF)、[Fortinet](https://www.fortinet.com/resources.html?limit=10&search=&document-type=data-sheets)、[App Gateway WAF](https://azure.microsoft.com/blog/azure-web-application-firewall-waf-generally-available/)） 
 - 下一代防火墙（[Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/)、[Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/)、[Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2) 和 [Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html)） 
-- 漏洞评估（[Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) - 预览版）  
+- 漏洞评估 ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/))  
 
 随着时间推移，安全中心将扩展这些现有类别中的合作伙伴数量，并添加新类别。 
 
-## <a name="how-to-deploy-a-partner-solution"></a>如何部署合作伙伴解决方案？
+<a id="how-to-deploy-a-partner-solution" class="xliff"></a>
+
+## 如何部署合作伙伴解决方案？
 
 根据 Azure 环境的配置和定义的安全策略，安全中心可能会建议部署合作伙伴解决方案。 该建议将引导你完成选择和安装合作伙伴解决方案的过程。 此时的总体部署体验可能因解决方案的类型和合作伙伴而异。 有关详细信息，请参阅以下链接：
 
@@ -54,14 +66,21 @@ ms.lasthandoff: 05/01/2017
 - [安装终结点保护](security-center-install-endpoint-protection.md)
 - [未安装漏洞评估](security-center-vulnerability-assessment-recommendations.md)
 
-## <a name="how-to-manage-partner-solutions"></a>如何管理合作伙伴解决方案？
+<a id="how-to-manage-partner-solutions" class="xliff"></a>
+
+## 如何管理合作伙伴解决方案？
 
 部署合作伙伴解决方案后，可以查看有关解决方案运行状况的信息，以及通过安全中心主仪表板中的“合作伙伴解决方案”磁贴执行基本管理任务。 有关管理安全中心的合作伙伴解决方案的详细信息，请阅读[监视 Azure 安全中心的合作伙伴解决方案](security-center-partner-solutions.md)。
 
 ![合作伙伴集成](./media/security-center-partner-integration/security-center-partner-integration-fig1-1-newUI.png)
 
+> [!NOTE]
+> Symantec Endpoint Protection 支持仅限于发现，不提供任何运行状况警报。
+>
 
-## <a name="see-also"></a>另请参阅
+<a id="see-also" class="xliff"></a>
+
+## 另请参阅
 本文档已经介绍了如何在 Azure 安全中心中集成合作伙伴的解决方案。 要了解有关安全中心的详细信息，请参阅以下内容：
 
 * [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md)
