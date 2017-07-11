@@ -21,7 +21,8 @@ ms.lasthandoff: 04/27/2017
 
 
 ---
-# <a name="azure-active-directory-automatic-device-registration-faq"></a>Azure Active Directory 自动设备注册常见问题
+<a id="azure-active-directory-automatic-device-registration-faq" class="xliff"></a>
+# Azure Active Directory 自动设备注册常见问题
 
 **问：我最近注册了设备，但为什么在 Azure 门户中我的用户信息下看不到该设备？**
 
