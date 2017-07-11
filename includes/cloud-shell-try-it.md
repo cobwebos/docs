@@ -1,5 +1,6 @@
 
 <a id="launch-azure-cloud-shell" class="xliff"></a>
+
 ## 启动 Azure Cloud Shell
 
 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置与你的帐户一起使用。 单击 [Azure 门户](https://portal.azure.com)右上角菜单上的“Cloud Shell”按钮。
