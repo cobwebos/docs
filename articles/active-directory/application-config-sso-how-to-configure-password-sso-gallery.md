@@ -11,17 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: d4678afa4d7a9000761d3a60a54539fc1730f76a
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/11/2017
-
 
 ---
 
-# <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>如何配置 Azure AD 库应用程序的密码单一登录
+<a id="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application" class="xliff"></a>
+
+# 如何配置 Azure AD 库应用程序的密码单一登录
 
 从 [Azure AD 应用程序库](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery)添加应用程序时，可以选择用户登录到该应用程序的方式。 可随时通过在 [Azure 门户](https://portal.azure.com/)中选择企业应用程序上的**单一登录**导航项进行配置。
 
@@ -43,7 +45,9 @@ ms.lasthandoff: 04/11/2017
 
 下面介绍如何对 [Azure AD 应用程序库](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery)中已有的应用程序启用[基于密码的单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work)。
 
-## <a name="overview-of-steps-required"></a>所需步骤概述
+<a id="overview-of-steps-required" class="xliff"></a>
+
+## 所需步骤概述
 从 Azure AD 库中配置应用程序时需：
 
 -   [从 Azure AD 库添加应用程序](#add-an-application-from-the-azure-ad-gallery)
@@ -56,7 +60,9 @@ ms.lasthandoff: 04/11/2017
 
     -   [直接将应用程序分配给组](#assign-an-application-to-a-group-directly)
 
-## <a name="add-an-application-from-the-azure-ad-gallery"></a>从 Azure AD 库添加应用程序
+<a id="add-an-application-from-the-azure-ad-gallery" class="xliff"></a>
+
+## 从 Azure AD 库添加应用程序
 
 若要从 Azure AD 库添加应用程序，请执行以下步骤：
 
@@ -80,7 +86,9 @@ ms.lasthandoff: 04/11/2017
 
 在很短一段时间后，便能看到应用程序的配置边栏选项卡。
 
-## <a name="configure-the-application-for-password-single-sign-on"></a>将应用程序配置为使用密码单一登录
+<a id="configure-the-application-for-password-single-sign-on" class="xliff"></a>
+
+## 将应用程序配置为使用密码单一登录
 
 要为应用程序配置单一登录，请执行以下步骤：
 
@@ -106,7 +114,9 @@ ms.lasthandoff: 04/11/2017
 
 10. 此外，还可以通过下列步骤代表用户提供凭据：选择用户对应的行，单击“更新凭据”，然后代表用户输入用户名和密码。 否则，会在启动时提示用户输入凭据。
 
-## <a name="assign-a-user-to-an-application-directly"></a>直接将用户分配到应用程序
+<a id="assign-a-user-to-an-application-directly" class="xliff"></a>
+
+## 直接将用户分配到应用程序
 
 若要直接将一个或多个用户分配到应用程序，请执行以下步骤：
 
@@ -142,7 +152,9 @@ ms.lasthandoff: 04/11/2017
 
 15. 单击“分配”按钮，将应用程序分配给选定用户。
 
-## <a name="assign-an-application-to-a-group-directly"></a>直接将应用程序分配给组
+<a id="assign-an-application-to-a-group-directly" class="xliff"></a>
+
+## 直接将应用程序分配给组
 
 若要直接将一个或多个组分配到应用程序，请执行以下步骤：
 
@@ -180,6 +192,8 @@ ms.lasthandoff: 04/11/2017
 
 在很短一段时间后，所选用户便能够在访问面板中启动这些应用程序。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [使用应用程序代理提供到应用的单一登录](active-directory-application-proxy-sso-using-kcd.md)
 

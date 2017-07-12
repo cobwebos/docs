@@ -20,9 +20,10 @@ ms.openlocfilehash: ca5ee2733df51faa5025c4d8eb687c81df4a3b4f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/09/2017
 
-
 ---
-# <a name="use-desired-properties-to-configure-devices"></a>使用所需属性配置设备
+<a id="use-desired-properties-to-configure-devices" class="xliff"></a>
+
+# 使用所需属性配置设备
 [!INCLUDE [iot-hub-selector-twin-how-to-configure](../../includes/iot-hub-selector-twin-how-to-configure.md)]
 
 在本教程结束时，将会创建两个控制台应用：
@@ -47,7 +48,10 @@ ms.lasthandoff: 05/09/2017
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="create-the-simulated-device-app"></a>创建模拟设备应用
+<a id="#create-the-simulated-device-app"></a>
+<a id="create-the-simulated-device-app" class="xliff"></a>
+
+## 创建模拟设备应用
 在此部分中，你会创建一个 Node.js 控制台应用，它作为 **myDeviceId** 连接到你的中心，等待所需配置更新，然后对模拟配置更新过程报告更新。
 
 1. 新建名为 **simulatedeviceconfiguration** 的空文件夹。 在命令提示符处，使用以下命令在 **simulatedeviceconfiguration** 文件夹中创建新的 package.json 文件。 接受所有默认值。
@@ -158,7 +162,9 @@ ms.lasthandoff: 05/09/2017
    
     你应该看到消息 `retrieved device twin`。 保持运行该应用。
 
-## <a name="create-the-service-app"></a>创建服务应用
+<a id="create-the-service-app" class="xliff"></a>
+
+## 创建服务应用
 在本部分中，将创建一个 .NET 控制台应用，该应用通过新的遥测配置对象更新与 **myDeviceId** 关联的设备孪生的所需属性。 然后，它查询存储在 IoT 中心的设备孪生，并显示该设备的所需配置和报告配置之间的差异。
 
 1. 在 Visual Studio 中，使用“ **控制台应用程序** ”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 将项目命名为 **SetDesiredConfigurationAndQuery**。
@@ -241,7 +247,9 @@ ms.lasthandoff: 05/09/2017
    > 
    > 
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 在本教程中，用户已从解决方案后端将所需配置设置为所需属性，此外还编写了一个设备应用来检测该更改并模拟多步骤更新过程（通过报告属性报告其状态）。
 
 使用下列资源了解如何执行以下操作：
@@ -275,5 +283,5 @@ ms.lasthandoff: 05/09/2017
 
 [lnk-guid]: https://en.wikipedia.org/wiki/Globally_unique_identifier
 
-[lnk-how-to-configure-createapp]: iot-hub-node-node-twin-how-to-configure.md#create-the-simulated-device-app
+[lnk-how-to-configure-createapp]: iot-hub-csharp-node-twin-how-to-configure.md#create-the-simulated-device-app
 

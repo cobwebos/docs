@@ -11,21 +11,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: d244905089605bb8608085d3e0132590c927ef6f
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
-
 
 ---
 
-# <a name="unexpected-application-in-my-applications-list"></a>应用程序列表中意料之外的应用程序
+<a id="unexpected-application-in-my-applications-list" class="xliff"></a>
+
+# 应用程序列表中意料之外的应用程序
 
 本文介绍应用程序如何显示在“企业应用程序”下的“所有应用程序”列表中。 
 
-## <a name="how-to-see-all-applications-in-your-tenant"></a>如何查看租户中的全部应用程序
+<a id="how-to-see-all-applications-in-your-tenant" class="xliff"></a>
+
+## 如何查看租户中的全部应用程序
 
 若要查看租户中的所有应用程序，需要使用“筛选器”控件，在“所有应用程序”列表下显示“所有应用程序”。 为此，请执行以下步骤：
 
@@ -43,7 +47,9 @@ ms.lasthandoff: 04/27/2017
 
 7.  在“筛选器”边栏选项卡上，将“显示”选项设为“所有应用程序”。
 
-## <a name="why-does-a-specific-application-appear-in-my-all-applications-list"></a>为什么在所有应用程序列表中出现某个特定应用程序？
+<a id="why-does-a-specific-application-appear-in-my-all-applications-list" class="xliff"></a>
+
+## 为什么在所有应用程序列表中出现某个特定应用程序？
 
 筛选为“所有应用程序”时，“所有应用程序列表”会显示租户中的每个服务主体对象。 服务主体对象以多种方式出现在此列表中：
 
@@ -77,15 +83,21 @@ ms.lasthandoff: 04/27/2017
 
 若要详细深入地了解如何将应用添加到目录，请参阅[如何以及为何将应用程序添加到 Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added)。
 
-## <a name="i-want-to-remove-a-specific-users-or-groups-assignment-to-an-application"></a>我要删除特定用户或组到应用程序的分配
+<a id="i-want-to-remove-a-specific-users-or-groups-assignment-to-an-application" class="xliff"></a>
+
+## 我要删除特定用户或组到应用程序的分配
 
 若要删除用户或组对应用程序的分配，请按照[在 Azure Active Directory 中从企业应用删除用户或组分配](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal)一文中所列的步骤进行操作。
 
-## <a name="i-want-to-disable-all-access-to-an-application-for-every-user"></a>我要禁用每个用户对应用程序的所有访问权限
+<a id="i-want-to-disable-all-access-to-an-application-for-every-user" class="xliff"></a>
+
+## 我要禁用每个用户对应用程序的所有访问权限
 
 若要禁用所有用户对应用程序的登录，请遵循[在 Azure Active Directory 中对企业应用禁用用户登录](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal)一文中所列出的步骤。
 
-## <a name="i-want-to-delete-an-application-entirely"></a>我要彻底删除应用程序
+<a id="i-want-to-delete-an-application-entirely" class="xliff"></a>
+
+## 我要彻底删除应用程序
 
 若要“删除应用程序”，请按照以下说明进行操作：
 
@@ -105,7 +117,9 @@ ms.lasthandoff: 04/27/2017
 
 7.  加载应用程序后，在应用程序顶部的“概述”边栏选项卡中，单击“删除”图标。
 
-## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>我要禁用用户未来针对应用程序的所有同意操作
+<a id="i-want-to-disable-all-future-user-consent-operations-to-any-application" class="xliff"></a>
+
+## 我要禁用用户未来针对应用程序的所有同意操作
 
 针对整个目录禁用用户同意操作，可防止最终用户同意任何应用程序。 管理员仍可代表用户执行同意操作。 若要深入了解应用程序同意，以及为何要或不这样操作，请参阅[了解用户和管理员同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)。
 
@@ -123,6 +137,8 @@ ms.lasthandoff: 04/27/2017
 
 6.  通过将“用户可以允许应用访问其数据”切换为“否”来禁用用户未来的所有同意操作，并单击“保存”按钮。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [使用 Azure Active Directory 管理应用程序](active-directory-enable-sso-scenario.md)
 

@@ -20,11 +20,12 @@ ms.openlocfilehash: 2f33c266c14b62f51745ff67069358c007bc00a2
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/13/2017
 
-
 ---
 <a id="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk" class="xliff"></a>
+
 # 使用 Azure 数据工厂 .NET SDK 创建、监视和管理 Azure 数据工厂
 <a id="overview" class="xliff"></a>
+
 ## 概述
 可使用数据工厂 .NET SDK 以编程方式创建、监视和管理 Azure 数据工厂。 可根据本文所含演练创建示例 .NET 控制台应用程序，从而创建和监视数据工厂。 
 
@@ -32,12 +33,14 @@ ms.lasthandoff: 05/13/2017
 > 本文不会介绍所有数据工厂 .NET API。 有关数据工厂 .NET API 的综合文档，请参阅 [Data Factory .NET API Reference](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1)（数据工厂 .NET API 参考）。 
 
 <a id="prerequisites" class="xliff"></a>
+
 ## 先决条件
 * Visual Studio 2012、2013 或 2015
 * 下载并安装 [Azure .NET SDK](http://azure.microsoft.com/downloads/)。
 * Azure PowerShell。 遵循 [How to install and configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装 Azure PowerShell。 使用 Azure PowerShell 创建 Azure Active Directory 应用程序。
 
 <a id="create-an-application-in-azure-active-directory" class="xliff"></a>
+
 ### 在 Azure Active Directory 中创建应用程序
 创建一个 Azure Active Directory 应用程序，为该应用程序创建服务主体，然后将其分配到 **数据工厂参与者** 角色。
 
@@ -106,6 +109,7 @@ ms.lasthandoff: 05/13/2017
 * 密码（在第一条命令中指定）
 
 <a id="walkthrough" class="xliff"></a>
+
 ## 演练
 在本演练中，将使用包含复制活动的管道创建数据工厂。 复制活动将数据从 Azure blob 存储中的一个文件夹复制到同一 blob 存储中的另一个文件夹。 
 
@@ -129,7 +133,7 @@ ms.lasthandoff: 05/13/2017
     <?xml version="1.0" encoding="utf-8" ?>
     <configuration>
         <appSettings>
-            <add key="ActiveDirectoryEndpoint" value="https://login.windows.net/" />
+            <add key="ActiveDirectoryEndpoint" value="https://login.microsoftonline.com/" />
             <add key="ResourceManagerEndpoint" value="https://management.azure.com/" />
             <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
 
@@ -464,6 +468,7 @@ ms.lasthandoff: 05/13/2017
 19. 验证 **adftutorial** 容器中的 **apifactoryoutput** 文件夹内是否创建了一个输出文件。
 
 <a id="get-a-list-of-failed-data-slices" class="xliff"></a>
+
 ## 获取失败的数据切片的列表 
 
 ```csharp
@@ -504,6 +509,7 @@ while (response != null);
 ```
 
 <a id="next-steps" class="xliff"></a>
+
 ## 后续步骤
 请参阅以下示例，该示例使用 .NET SDK 创建将数据从 Azure blob 存储复制到 Azure SQL 数据库的管道： 
 

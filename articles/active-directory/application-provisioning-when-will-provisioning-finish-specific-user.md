@@ -11,20 +11,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
 ms.openlocfilehash: b1f16079ad13c4e45f93a7e5e3d29568738e03cf
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/18/2017
-
 
 ---
 
-# <a name="find-out-when-a-specific-user-will-be-able-to-access-an-application"></a>找出特定的用户何时可以访问某个应用程序
+<a id="find-out-when-a-specific-user-will-be-able-to-access-an-application" class="xliff"></a>
+
+# 找出特定的用户何时可以访问某个应用程序
 当将自动化用户预配用于应用程序时，Azure AD 将根据类似[用户和组分配](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)，定期（通常每 10 分钟）自动预配并更新应用中的用户帐户。
 
-## <a name="how-long-does-it-take"></a>需要多长时间？
+<a id="how-long-does-it-take" class="xliff"></a>
+
+## 需要多长时间？
 
 给定用户的预配所需时间主要取决于是否已进行过初始“完整”同步。
 
@@ -32,7 +36,9 @@ Azure AD 和应用之间的首次同步可能会持续 20 分钟至几小时，�
 
 在初始同步之后同步速度会变快（例如在 10 分钟内完成），因为在初始同步后，预配服务已存储代表两个系统状态的水印，这提高了后续同步的性能。
 
-## <a name="how-to-check-the-status-of-a-user"></a>如何检查用户状态
+<a id="how-to-check-the-status-of-a-user" class="xliff"></a>
+
+## 如何检查用户状态
 
 若要查看选定用户的预配状态，请查阅 Azure AD 中的审核日志。
 
@@ -47,6 +53,8 @@ Azure AD 和应用之间的首次同步可能会持续 20 分钟至几小时，�
 * 比较系统之间的用户对象
 * 根据比较结果在目标系统中添加、更新或禁用用户帐户
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [通过 Azure Active Directory 为 SaaS 应用程序自动化用户预配和取消预配](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)
 

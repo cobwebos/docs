@@ -11,7 +11,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
@@ -19,14 +19,17 @@ ms.openlocfilehash: 7c4e2f084571a2146e5013f24bd5da55319118af
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
 
-# <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>使用应用程序代理应用程序时出现“无法访问此企业应用程序”错误
+<a id="cant-access-this-corporate-application-error-when-using-an-application-proxy-application" class="xliff"></a>
+
+# 使用应用程序代理应用程序时出现“无法访问此企业应用程序”错误
 
 本文将帮助解决在 Azure AD 应用程序代理应用程序上看到“无法访问此公司应用”错误时面临的常见问题。
 
-## <a name="overview"></a>概述
+<a id="overview" class="xliff"></a>
+
+## 概述
 当出现此错误时，页面上还会显示状态代码。 该代码可能是以下代码中的一个：
 
 -   **网关超时**：应用程序代理服务无法访问连接器。 这通常指示连接器分配、连接器本身或者连接器周围的网络规则存在问题。
@@ -41,12 +44,16 @@ ms.lasthandoff: 07/06/2017
 
 有关如何诊断这些错误的根本原因以及建议的修复的详细信息，请参阅以下相应部分。
 
-## <a name="gateway-timeout-errors"></a>网关超时错误
+<a id="gateway-timeout-errors" class="xliff"></a>
+
+## 网关超时错误
 
 当服务尝试访问连接器，但未能在超时时段内访问时，会发生网关超时。 这通常是由于应用程序分配到不具有正常工作的连接器的连接器组，或者连接器所需的一些端口未打开所致。
 
 
-## <a name="bad-gateway-errors"></a>“错误的网关”错误
+<a id="bad-gateway-errors" class="xliff"></a>
+
+## “错误的网关”错误
 
 “错误的网关”错误指示连接器无法访问后端应用程序。 请确保已发布正确的应用程序。 导致此错误的常见错误：
 
@@ -58,7 +65,9 @@ ms.lasthandoff: 07/06/2017
 
 -   后端应用程序问题
 
-## <a name="forbidden-errors"></a>禁止访问错误
+<a id="forbidden-errors" class="xliff"></a>
+
+## 禁止访问错误
 
 如果出现禁止访问错误，则表明用户未分配到该应用程序。 问题可能会出现在 Azure Active Directory 中或后端应用程序上。
 
@@ -66,11 +75,15 @@ ms.lasthandoff: 07/06/2017
 
 如果确认用户已分配到 Azure 中的应用程序，请检查后端应用程序中的用户配置。 如果使用 Kerberos 约束委派/集成 Windows 身份验证，请参阅我们的 KCD 故障排除页以了解一些准则。
 
-## <a name="check-the-applications-internal-url"></a>检查应用程序的内部 URL
+<a id="check-the-applications-internal-url" class="xliff"></a>
+
+## 检查应用程序的内部 URL
 
 作为第一个快捷步骤，仔细检查并通过“企业应用程序”打开此应用程序，然后选择“应用程序代理”菜单来修复内部 URL。 确认内部 URL 正确，即用于从本地网络访问应用程序的 URL。
 
-## <a name="check-the-application-is-assigned-to-a-working-connector-group"></a>检查应用程序是否已分配到正常工作的连接器组
+<a id="check-the-application-is-assigned-to-a-working-connector-group" class="xliff"></a>
+
+## 检查应用程序是否已分配到正常工作的连接器组
 
 若要确认应用程序已分配到正常工作的连接器组：
 
@@ -90,17 +103,23 @@ ms.lasthandoff: 07/06/2017
 
 使用上述步骤确保应用程序分配到具有正常工作的连接器的组之后，再次测试该应用程序。 如果它仍无法正常工作，则继续执行下一部分。
 
-## <a name="check-all-required-ports-are-whitelisted"></a>检查所有必需的端口是否都已列入白名单
+<a id="check-all-required-ports-are-whitelisted" class="xliff"></a>
+
+## 检查所有必需的端口是否都已列入白名单
 
 若要确认所有必需的端口都已打开，请参阅我们的打开端口文档。 如果所有必需的端口都已打开，则继续下一部分。
 
-## <a name="check-for-other-connector-errors"></a>检查其他连接器错误
+<a id="check-for-other-connector-errors" class="xliff"></a>
+
+## 检查其他连接器错误
 
 如果上述步骤未能解决此问题，下一步是查找连接器本身的问题或错误。 可以在[故障排除文档](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors)中查看一些常见错误。 
 
 也可以直接查看连接器日志以标识任何错误。 我们的很多错误消息都能共享更具体的修复建议。 若要了解如何查看日志，请参阅[我们的连接器文档](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors#under-the-hood)。
 
-## <a name="additional-resolutions"></a>其他解决方法
+<a id="additional-resolutions" class="xliff"></a>
+
+## 其他解决方法
 
 如果上述方法未能解决该问题，存在几个不同的可能原因。 若要确定问题：
 
@@ -112,6 +131,8 @@ ms.lasthandoff: 07/06/2017
 
 如果可以从该计算机访问应用程序，则查找连接器本身的问题或错误。 可以在[故障排除文档](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors)中查看一些常见错误。 也可以直接查看连接器日志以标识任何错误。 我们的很多错误消息都能共享更具体的修复建议。 若要了解如何查看日志，请参阅[我们的连接器文档](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors#under-the-hood)。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md)
 

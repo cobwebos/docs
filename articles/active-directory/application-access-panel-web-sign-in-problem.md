@@ -11,17 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: bbd57547a0cc486a9cf7c8030dccaaf6f46c9860
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/11/2017
-
 
 ---
 
-# <a name="problem-signing-in-to-the-access-panel-website"></a>登录到访问面板网站时出现问题
+<a id="problem-signing-in-to-the-access-panel-website" class="xliff"></a>
+
+# 登录到访问面板网站时出现问题
 
 访问面板是一个基于 Web 的门户，在 Azure Active Directory (Azure AD) 中拥有工作或学校帐户的用户可以使用它来查看和启动 Azure AD 管理员已授权他们访问的基于云的应用程序。 拥有 Azure AD 版本的用户还可以通过访问面板使用自助服务组和应用管理功能。 访问面板不同于 Azure 门户，它不要求用户拥有 Azure 订阅。
 
@@ -35,7 +37,9 @@ ms.lasthandoff: 04/11/2017
 
 如果用户具有 Azure 或 Office 365 订阅并且已在使用 Azure 门户或 Office 365 应用程序，则能够在无需再次登录的情况下无缝地使用访问面板。 系统将提示未进行身份验证的用户使用其在 Azure AD 中的帐户的用户名和密码进行登录。 如果组织已配置联合，只需键入用户名即可。
 
-## <a name="general-issues-to-check-first"></a>首先要检查的常规问题 
+<a id="general-issues-to-check-first" class="xliff"></a>
+
+## 首先要检查的常规问题 
 
 -   确保用户尝试登录到**正确的 URL**：<https://myapps.microsoft.com>
 
@@ -55,7 +59,9 @@ ms.lasthandoff: 04/11/2017
 
 -   同时还务必尝试清除浏览器 Cookie，并尝试重新登录。
 
-## <a name="meeting-browser-requirements-for-the-access-panel"></a>满足访问面板的浏览器要求
+<a id="meeting-browser-requirements-for-the-access-panel" class="xliff"></a>
+
+## 满足访问面板的浏览器要求
 
 访问面板要求浏览器支持 JavaScript 并且已启用 CSS。 若要在访问面板中使用基于密码的单一登录 (SSO)，必须在用户的浏览器中安装访问面板扩展。 当用户选择某个已配置基于密码的 SSO 的应用程序时，会自动下载此扩展。
 
@@ -72,7 +78,9 @@ ms.lasthandoff: 04/11/2017
 >
 >
 
-## <a name="problems-with-the-users-account"></a>用户帐户存在的问题
+<a id="problems-with-the-users-account" class="xliff"></a>
+
+## 用户帐户存在的问题
 
 对访问面板的访问可能会由于用户帐户存在的问题而被阻止。 下面是可以用来排除和解决用户及其帐户设置存在的问题的一些方法：
 
@@ -94,7 +102,9 @@ ms.lasthandoff: 04/11/2017
 
 -   [为用户分配许可证](#assign-a-user-a-license)
 
-### <a name="check-if-a-user-account-exists-in-azure-active-directory"></a>检查用户帐户是否存在于 Azure Active Directory 中
+<a id="check-if-a-user-account-exists-in-azure-active-directory" class="xliff"></a>
+
+### 检查用户帐户是否存在于 Azure Active Directory 中
 
 若要检查用户帐户是否存在，请执行以下步骤：
 
@@ -112,7 +122,9 @@ ms.lasthandoff: 04/11/2017
 
 7.  检查用户对象的属性，确保它们与预期一致而且没有缺失数据。
 
-### <a name="check-a-users-account-status"></a>检查用户帐户的状态
+<a id="check-a-users-account-status" class="xliff"></a>
+
+### 检查用户帐户的状态
 
 若要检查用户帐户的状态，请执行以下步骤：
 
@@ -132,7 +144,9 @@ ms.lasthandoff: 04/11/2017
 
 8.  在“设置”中，确保“阻止登录”设置为“否”。
 
-### <a name="reset-a-users-password"></a>重置用户的密码
+<a id="reset-a-users-password" class="xliff"></a>
+
+### 重置用户的密码
 
 若要重置用户的密码，请执行以下步骤：
 
@@ -156,7 +170,9 @@ ms.lasthandoff: 04/11/2017
 
 10. 告知用户此新密码，用户在下次登录到 Azure Active Directory 时需要更改此密码。
 
-### <a name="enable-self-service-password-reset"></a>启用自助服务密码重置
+<a id="enable-self-service-password-reset" class="xliff"></a>
+
+### 启用自助服务密码重置
 
 若要启用自助服务密码重置，请执行以下部署步骤：
 
@@ -164,7 +180,9 @@ ms.lasthandoff: 04/11/2017
 
 -   [使用户能够重置或更改其 Active Directory 本地密码](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords)
 
-### <a name="check-a-users-multi-factor-authentication-status"></a>检查用户的多重身份验证状态
+<a id="check-a-users-multi-factor-authentication-status" class="xliff"></a>
+
+### 检查用户的多重身份验证状态
 
 若要检查用户的多重身份验证状态，请执行以下步骤：
 
@@ -191,7 +209,9 @@ ms.lasthandoff: 04/11/2017
    >
    >
 
-### <a name="check-a-users-authentication-contact-info"></a>检查用户的身份验证联系信息
+<a id="check-a-users-authentication-contact-info" class="xliff"></a>
+
+### 检查用户的身份验证联系信息
 
 若要检查用于多重身份验证、条件访问、Identity Protection 和密码重置的用户身份验证联系信息，请按照以下步骤操作：
 
@@ -213,7 +233,9 @@ ms.lasthandoff: 04/11/2017
 
 9.  **查看**为用户注册的数据并根据需要进行更新。
 
-### <a name="check-a-users-group-memberships"></a>检查用户的组成员身份
+<a id="check-a-users-group-memberships" class="xliff"></a>
+
+### 检查用户的组成员身份
 
 若要检查用户的组成员身份，请执行以下步骤：
 
@@ -231,7 +253,9 @@ ms.lasthandoff: 04/11/2017
 
 7.  单击“组”查看用户所属的组。
 
-### <a name="check-a-users-assigned-licenses"></a>检查用户的已分配许可证
+<a id="check-a-users-assigned-licenses" class="xliff"></a>
+
+### 检查用户的已分配许可证
 
 若要检查用户的已分配许可证，请执行以下步骤：
 
@@ -249,7 +273,9 @@ ms.lasthandoff: 04/11/2017
 
 7.  单击“许可证”查看当前为用户分配了哪些许可证。
 
-### <a name="assign-a-user-a-license"></a>为用户分配许可证 
+<a id="assign-a-user-a-license" class="xliff"></a>
+
+### 为用户分配许可证 
 
 若要将许可证分配给用户，请执行以下步骤：
 
@@ -275,7 +301,9 @@ ms.lasthandoff: 04/11/2017
 
 11. 单击“分配”按钮，将这些许可证分配给此用户。
 
-## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>如果这些故障排除步骤未解决此问题
+<a id="if-these-troubleshooting-steps-do-not-resolve-the-issue" class="xliff"></a>
+
+## 如果这些故障排除步骤未解决此问题
 
 请打开一个支持票证，并提供以下信息（如有）：
 
@@ -291,6 +319,8 @@ ms.lasthandoff: 04/11/2017
 
 -   Fiddler 跟踪
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [使用应用程序代理提供到你的应用的单一登录](active-directory-application-proxy-sso-using-kcd.md)
 

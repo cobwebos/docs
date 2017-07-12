@@ -14,13 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: c0413f9c83fd6dceb4a1d956c0f32712e29bdc58
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
 
 ---
-# <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
+<a id="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management" class="xliff"></a>
+
+# 如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 通过 Azure API 管理选择发布和管理 API，即可充分利用了许多容错和基础结构功能，否则必须设计、实现和管理这些功能。 Azure 平台通过花费少量成本消除大量潜在故障。
 
 若要从影响托管 API 管理服务的区域的可用性问题中恢复，应随时准备好在不同的区域中重建服务。 根据可用性目标和恢复时间目标，可能要在一个或多个区域中保留备份服务，并尝试使其配置和内容与活动服务保持同步。 服务备份和还原功能为实现灾难恢复策略提供必要的构建基块。
@@ -34,7 +37,9 @@ ms.lasthandoff: 03/31/2017
 >
 >
 
-## <a name="authenticating-azure-resource-manager-requests"></a>对 Azure Resource Manager 请求进行身份验证
+<a id="authenticating-azure-resource-manager-requests" class="xliff"></a>
+
+## 对 Azure Resource Manager 请求进行身份验证
 > [!IMPORTANT]
 > 用于还原和备份的 REST API 使用 Azure Resource Manager，并且具有与用于管理 API 管理实体的 REST API 不同的身份验证机制。 本部分中的步骤介绍如何对 Azure Resource Manager 请求进行身份验证。 有关详细信息，请参阅[对 Azure Resource Manager 请求进行身份验证](http://msdn.microsoft.com/library/azure/dn790557.aspx)。
 >
@@ -81,7 +86,7 @@ namespace GetTokenResourceManagerRequests
     {
         static void Main(string[] args)
         {
-            var authenticationContext = new AuthenticationContext("https://login.windows.net/{tenant id}");
+            var authenticationContext = new AuthenticationContext("https://login.microsoftonline.com/{tenant id}");
             var result = authenticationContext.AcquireToken("https://management.azure.com/", {application id}, new Uri({redirect uri});
 
             if (result == null) {
@@ -188,7 +193,9 @@ request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 >
 >
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 查看以下 Microsoft 博客了解备份/还原过程的两种不同的演练。
 
 * [复制 Azure API 管理帐户](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)

@@ -11,23 +11,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: 4d8c241344485e50a1afde3cd67adf3d0a7c041f
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/11/2017
-
 
 ---
 
-# <a name="problem-using-self-service-application-access"></a>使用自助应用程序访问时的问题
+<a id="problem-using-self-service-application-access" class="xliff"></a>
+
+# 使用自助应用程序访问时的问题
 
 自助应用程序访问是帮助用户自己发现应用程序的绝佳方式，可选择性地允许业务组批准对这些应用程序的访问。 可允许业务组直接从其访问面板，管理分配给用户的密码单一登录应用程序的凭据。
 
 在用户能够从其访问面板中自行发现应用程序之前，需要先对要允许用户自行发现并请求访问的任何应用程序启用“自助应用程序访问”。
 
-## <a name="general-issues-to-check-first"></a>首先要检查的常规问题
+<a id="general-issues-to-check-first" class="xliff"></a>
+
+## 首先要检查的常规问题
 
 -   确保已正确配置自助应用程序访问。 请参阅“如何配置自助应用程序访问”。
 
@@ -37,7 +41,9 @@ ms.lasthandoff: 04/11/2017
 
 -   如果最近刚配置了自助应用程序访问，请尝试几分钟后再次登录和登出用户的“访问控制面板”，查看是否已显示自助访问更改。
 
-## <a name="how-to-configure-self-service-application-access"></a>如何配置自助应用程序访问
+<a id="how-to-configure-self-service-application-access" class="xliff"></a>
+
+## 如何配置自助应用程序访问
 
 若要启用应用程序的自助应用程序访问，请执行以下步骤：
 
@@ -80,7 +86,9 @@ ms.lasthandoff: 04/11/2017
 
 这些批准仅支持单个审批工作流，这意味着如果指定了多个审批人，任何一个审批人都可以批准对该应用程序的访问。
 
-## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>如果这些故障排除步骤未解决此问题 
+<a id="if-these-troubleshooting-steps-do-not-resolve-the-issue" class="xliff"></a>
+
+## 如果这些故障排除步骤未解决此问题 
 
 打开支持票证，并提供以下信息（如有）：
 
@@ -96,6 +104,8 @@ ms.lasthandoff: 04/11/2017
 
 -   Fiddler 跟踪
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [为自助组管理设置 Azure Active Directory](active-directory-accessmanagement-self-service-group-management.md)
 

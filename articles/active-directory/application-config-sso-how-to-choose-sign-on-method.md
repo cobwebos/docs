@@ -11,27 +11,33 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: 6aba9206ab0634e9379d63520ad9e2d0256b7e94
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/11/2017
-
 
 ---
 
-# <a name="how-to-determine-what-single-sign-on-method-to-use"></a>如何确定要使用哪种单一登录方法
+<a id="how-to-determine-what-single-sign-on-method-to-use" class="xliff"></a>
+
+# 如何确定要使用哪种单一登录方法
 
 本文介绍 Azure AD 支持的单一登录模式，以及如何为感兴趣的应用程序选择模式。
 
-## <a name="single-sign-on-and-provisioning-modes-supported-by-specific-application-types"></a>特定应用程序类型支持的单一登录和预配模式
+<a id="single-sign-on-and-provisioning-modes-supported-by-specific-application-types" class="xliff"></a>
+
+## 特定应用程序类型支持的单一登录和预配模式
 
 下表介绍以上每种应用程序类型支持的单一登录和预配模式。 可使用此表帮助了解为支持特定目标而需添加的应用程序。
 
   ![Ap 类型表](./media/application-tables/table1.png)
 
-## <a name="how-to-choose-a-single-sign-on-mode"></a>如何选择单一登录模式
+<a id="how-to-choose-a-single-sign-on-mode" class="xliff"></a>
+
+## 如何选择单一登录模式
 
 下面列出了 Azure AD 应用程序支持的**单一登录**模式。
 
@@ -47,7 +53,9 @@ ms.lasthandoff: 04/11/2017
 
 -   **集成 Windows 身份验证** - 公开要对之执行单一登录的本地 WIA 应用程序时，选择[集成 Windows 身份验证](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd)单一登录模式（注意：为应用程序配置应用程序代理时，此选项才可用）
 
-## <a name="single-sign-on-modes-for-custom-developed-applications"></a>适用于以自定义方式开发的应用程序的单一登录模式
+<a id="single-sign-on-modes-for-custom-developed-applications" class="xliff"></a>
+
+## 适用于以自定义方式开发的应用程序的单一登录模式
 
 通过[以自定义方式开发的应用程序](#_Custom-Developed_Applications)的开发过程，以自定义方式开发的应用程序，还支持其他上面未列出的单一登录模式。 其中包括：
 
@@ -61,7 +69,9 @@ ms.lasthandoff: 04/11/2017
 
 阅读 [Azure Active Directory 开发人员指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)，深入了解如何创建支持这些单一登录模式的以自定义方式开发的应用程序。
 
-## <a name="how-to-set-an-applications-single-sign-on-mode"></a>如何设置应用程序的单一登录模式
+<a id="how-to-set-an-applications-single-sign-on-mode" class="xliff"></a>
+
+## 如何设置应用程序的单一登录模式
 
 若要设置应用程序的“单一登录”模式，请按照以下说明进行操作：
 
@@ -81,7 +91,9 @@ ms.lasthandoff: 04/11/2017
 
 7.  加载应用程序后，在应用程序的左侧导航菜单中，单击“单一登录”。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [使用应用程序代理提供到应用的单一登录](active-directory-application-proxy-sso-using-kcd.md)
 
 
