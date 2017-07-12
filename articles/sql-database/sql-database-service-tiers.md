@@ -1,6 +1,6 @@
 ---
-title: "SQL 数据库性能：服务层 | Microsoft Docs"
-description: "比较 SQL 数据库服务层。"
+title: "Azure SQL 数据库服务和性能层 | Microsoft Docs"
+description: "比较单一数据库的 SQL 数据库服务层和性能级别，并介绍 SQL 弹性池"
 keywords: "数据库选项,数据库性能"
 services: sql-database
 documentationcenter: 
@@ -14,27 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-wms.date: 05/31/2017
+ms.date: 06/30/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 9ea73d39a8fcee82e749d20accdd3a3c30cba94e
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 68d55d2dd088ce6350bd65b79206f161f9d3d788
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="sql-database-options-and-performance-understand-whats-available-in-each-service-tier"></a>SQL 数据库选项和性能：了解每个服务层提供的功能
+<a id="what-performance-options-are-available-for-an-azure-sql-database" class="xliff"></a>
 
-[Azure SQL 数据库](sql-database-technical-overview.md)提供四个服务层：**基本**、**标准**、**高级**和**高级 RS**。 每个服务层提供多个性能级别来处理不同的工作负荷。 更高的性能级别提供更多的资源，旨在逐级提高吞吐量。 可在不停机的情况下动态更改服务层和性能级别。 基本、标准和高级服务层都提供 99.99% 的运行时间 SLA、灵活的业务连续性选项、安全功能和按小时计费功能。 高级 RS 层提供的性能级别、安全功能和业务连续性功能与高级层相同，但 SLA 更低。
+# 针对 Azure SQL 数据库提供了哪些性能选项
+
+[Azure SQL 数据库](sql-database-technical-overview.md)针对单一数据库和[池化](sql-database-elastic-pool.md)数据库都提供了四个服务层。 这些服务层为：**基本**、**标准**、**高级**和**高级 RS**。 在每个服务层内有多个性能级别 ([DTU](sql-database-what-is-a-dtu.md)) 和存储选项用来处理不同的工作负荷和数据大小。 更高的性能级别提供更多的计算和存储资源，旨在逐级提高吞吐量和容量。 可在不停机的情况下动态更改服务层、性能级别和存储。 
+- **基本**、**标准**和**高级**服务层都提供 99.99% 的运行时间 SLA、灵活的业务连续性选项、安全功能和按小时计费功能。 
+- **高级 RS** 层提供与高级层相同的性能级别，但具有降低的 SLA，因为与其他服务层中的数据库相比，它运行较少的冗余副本。 因此，在发生服务故障时，可能需要从备份中恢复数据库，这最长会出现 5 分钟的滞后时间。
 
 > [!IMPORTANT]
-> 与高级或标准数据库相比，高级 RS 数据库以更少的冗余副本运行。 因此，在发生服务故障时，可能需要从备份中恢复数据库，这最长会出现 5 分钟的滞后时间。
->
+> Azure SQL 数据库可确保获得一组资源，并且数据库的预期性能特征不受 Azure 中的任何其他数据库影响。 
 
-可以使用服务层中具有特定[性能级别](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)的专用资源创建单一数据库。 还可以在[弹性池](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus)中创建数据库，弹性池中的资源在多个数据库之间共享。 可用于单一数据库的资源以数据库事务单位 (DTU) 表示，可用于弹性池的资源则以弹性数据库事务单位 (eDTU) 表示。 有关 DTU 和 eDTU 的详细信息，请参阅[什么是 DTU？](sql-database-what-is-a-dtu.md) 
+<a id="choosing-a-service-tier" class="xliff"></a>
 
-## <a name="choosing-a-service-tier"></a>选择服务层
+## 选择服务层
 下表提供了最适用于不同应用程序工作负荷的层的示例。
 
 | 服务层 | 目标工作负荷 |
@@ -45,7 +48,11 @@ ms.lasthandoff: 06/01/2017
 | **高级 RS** | 专为不需要最高可用性保证的 IO 密集型工作负荷设计。 示例包括测试高性能工作负荷或数据库不是记录系统的分析工作负荷。 |
 |||
 
-首先请确定是要运行包含定义数量的专用资源的单一数据库，还是要在一组数据库之间共享某个资源池。 查看[弹性池注意事项](sql-database-elastic-pool.md)。 若要确定服务层，首先确定需要的最少数据库功能：
+可以使用服务层中的专用资源创建处于特定[性能级别](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)的单一数据库，也可以在 [SQL 弹性池](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus)中创建数据库。 在 SQL 弹性池中，计算和存储资源是在单一逻辑服务器中的多个数据库之间共享的。 
+
+可用于单一数据库的资源以数据库事务单位 (DTU) 表示，可用于 SQL 弹性池的资源则以弹性数据库事务单位 (eDTU) 表示。 有关 DTU 和 eDTU 的详细信息，请参阅[什么是 DTU 和 eDTU？](sql-database-what-is-a-dtu.md)
+
+若要确定服务层，首先确定需要的最少数据库功能：
 
 | **服务层功能** | **基本** | **标准** | **高级** | **高级 RS**|
 | :-- | --: | --: | --: | --: |
@@ -59,96 +66,147 @@ ms.lasthandoff: 06/01/2017
 ||||||
 
 > [!IMPORTANT]
-> 附加的存储选项目前在以下区域中可用：美国东部 2、美国西部、美国弗吉尼亚州政府、西欧、德国中部、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。 请参阅[当前的 4 TB 限制](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize)
+> 最多存储 4 TB，目前在以下区域中可用：美国东部 2、美国西部、美国弗吉尼亚州政府、西欧、德国中部、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。 请参阅[当前的 4 TB 限制](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize)
 >
 
-确定了最低服务层后，就可以确定数据库的性能级别（DTU 数）。 通常情况下，可以先使用标准 S2 和 S3 性能级别。 对于具有高 CPU 或 IO 要求的数据库，开始适合使用高级性能级别。 高级版提供更多的 CPU，并且一开始就提供比最高标准性能水平高出 10 倍的 IO。
+确定了合适的服务层后，就可以确定数据库的性能级别（DTU 数）和存储量。 
 
-## <a name="single-database-service-tiers-and-performance-levels"></a>单一数据库服务层和性能级别
-对于单一数据库，每个服务层内都有多个性能级别。 可以使用 Azure 门户、[PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database)、C# 和 REST API 灵活选择最适合工作负荷需求的级别。  
+- 通常情况下，开始时适合使用**标准**层中的 S2 和 S3 性能级别。 
+- 对于具有高 CPU 或 IO 要求的数据库，开始时适合使用**高级**层中的性能级别。 
+- **高级**层提供更多的 CPU，并且一开始就提供比**标准**层中的最高性能级别高出 10 倍的 IO。
+- **高级 RS** 层以较低的成本提供**高级**层的性能，但具有降低的 SLA。
 
-尽管有多个托管的数据库，你的数据库仍可确保获得一组资源，并且数据库的预期性能特征不受影响。
+> [!IMPORTANT]
+> 有关将数据库分组到 SQL 弹性池中以共享计算和存储资源的详细信息，请查看 [SQL 弹性池](sql-database-elastic-pool.md)主题。 本主题的其余部分侧重介绍了单一数据库的服务层和性能级别。
+>
+
+<a id="single-database-service-tiers-and-performance-levels" class="xliff"></a>
+
+## 单一数据库服务层和性能级别
+对于单一数据库，每个服务层内都有多个性能级别和存储量。 
 
 [!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
 
-> [!NOTE]
-> 如需本服务层表中所有其他行的详细说明，请参阅 [服务层功能和限制](sql-database-performance-guidance.md#service-tier-capabilities-and-limits)。
-> 
+<a id="scaling-up-or-scaling-down-a-single-database" class="xliff"></a>
 
-## <a name="scaling-up-or-scaling-down-a-single-database"></a>上下缩放单一数据库
+## 上下缩放单一数据库
 
-在最初选择服务层和性能级别之后，可根据实际经验动态地上下缩放单一数据库。 若需向上或向下缩放，可以使用 Azure 门户、[PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database)、C# 和 REST API 轻松更改数据库层。 
+在最初选择服务层和性能级别之后，可根据实际经验动态地上下缩放单一数据库。  
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 >
 
-更改数据库的服务层和/或性能级别将在新的性能级别创建原始数据库的副本，然后将连接切换到副本。 当我们切换到副本时，在此过程中不会丢失任何数据，但在短暂的瞬间，将禁用与数据库的连接，因此可能回滚某些处于进行状态的事务。 此窗口会有所不同，但平均起伏少于 4 秒，而在超过 99%的情况下为不足 30 秒。 如果有很大数量的事务在连接禁用的瞬间正在进行中，则此窗口停留时间可能会更长。  
+更改数据库的服务层和/或性能级别将在新的性能级别创建原始数据库的副本，然后将连接切换到副本。 当我们切换到副本时，在此过程中不会丢失任何数据，但在短暂的瞬间，将禁用与数据库的连接，因此可能回滚某些处于进行状态的事务。 用于切换的时间长度因情况而异，但通常为 4 秒以下，并且 99% 的情况下少于 30 秒。 如果在禁用连接的那一刻有大量的事务正在进行，则用于切换的时间长度可能会更长。  
 
 整个扩展过程的持续时间同时取决于更改前后数据库的大小和服务层。 例如，一个正在更改到标准服务层、从标准服务层更改或在标准服务层内更改的 250 GB 的数据库应在 6 小时内完成。 对于与正在高级服务层内更改性能级别的大小相同的数据库，它应在 3 小时内完成。
 
-* 若要对数据库进行降级，数据库应小于目标服务层允许的最大大小。 
-* 在启用了[异地复制](sql-database-geo-replication-portal.md)的情况下升级数据库时，必须先将辅助数据库升级到所需的性能层，然后再升级主数据库。
-* 从高级服务层降级时，必须先终止所有异地复制关系。 可以按照[在中断后恢复](sql-database-disaster-recovery.md)主题中所述的步骤停止主数据库与活动次要数据库之间的复制过程。
-* 各服务层提供的还原服务各不相同。 如果进行降级，你可能无法再还原到某个时间点，或者备份保留期变短。 有关详细信息，请参阅 [Azure SQL 数据库备份和还原](sql-database-business-continuity.md)。
+* 如果要升级到较高的服务层或性能级别，除非显式指定了较大的最大大小，否则，最大数据库大小不会增大。
+* 若要对数据库进行降级，数据库必须小于目标服务层允许的最大大小。 
+* 在启用了[异地复制](sql-database-geo-replication-portal.md)的情况下升级数据库时，请先将辅助数据库升级到所需的性能层，然后再升级主数据库（一般原则）。
+* 从**高级**服务层降级到较低服务层时，必须先终止所有异地复制关系。 可以按照[在中断后恢复](sql-database-disaster-recovery.md)主题中所述的步骤停止主数据库与辅助数据库之间的复制过程。
+* 各服务层提供的还原服务各不相同。 如果要降级到**基本**层，你将具有更小的备份保留期 - 请参阅 [Azure SQL 数据库备份](sql-database-automated-backups.md)。
 * 所做的更改完成之前不会应用数据库的新属性。
 
-## <a name="elastic-pool-service-tiers-and-performance-in-edtus"></a>弹性池服务层和性能 (eDTU)
 
-池允许数据库共享和使用 eDTU 资源，无需为该池中的每个数据库分配特定性能级别。 例如，标准池中的单一数据库可使用 0 个 eDTU 到最大数据库 eDTU 数（配置池时设置的）运转。 弹性池允许多个具有不同工作负荷的数据库有效地使用在整个池中都可用的 eDTU 资源。 有关详细信息，请参阅 [弹性池的价格和性能注意事项](sql-database-elastic-pool.md) 。
+<a id="current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize" class="xliff"></a>
 
-下表描述了弹性池的资源限制。  弹性池中各个数据库的资源限制通常与池外部基于 DTU 和服务层的各个数据库相同。  例如，S2 数据库的最大并发辅助进程数为 120 个。  因此，如果池中每个数据库的最大 DTU 是 50 DTU（这等效于 S2），则标准池中数据库的最大并发辅助进程数也是 120 个辅助进程。
+## 最大大小为 4 TB 的 P11 和 P15 数据库的当前限制
 
-[!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
+在某些区域中，对于 P11 和 P15 A 数据库，支持的最大大小为 4 TB（如前面所讨论）。 对于最大大小为 4 TB 的 P11 和 P15 数据库，存在以下注意事项和限制：
 
-## <a name="scaling-up-or-scaling-down-an-elastic-pool"></a>上下缩放弹性池
+- 如果在创建数据库时选择 4 TB 最大大小选项（使用值 4 TB 或 4096 GB），如果在不受支持的区域中预配数据库，则 create 命令将会失败并出错。
+- 对于位于一个受支持区域中的 P11 和 P15 数据库，可将最大存储大小增加到 4 TB。 可以使用 [SELECT DATABASEPROPERTYEX](https://msdn.microsoft.com/library/ms186823.aspx) 或通过在 Azure 门户中查看数据库大小来检查此项内容。 升级现有 P11 或 P15 数据库只能由服务器级主体登录名或 dbmanager 数据库角色的成员执行。 
+- 如果在受支持的区域中执行升级操作，则配置会立即更新。 在升级过程中，数据库将保持联机。 但是，在实际的数据库文件已升级到新的最大大小之前，你无法利用完整的 4 TB 存储。 所需的时间长度取决于要升级的数据库的大小。  
+- 创建或更新 P11 或 P15 数据库时，只能在 1 TB 和 4 TB 最大大小之间选择。 中间存储大小当前不受支持。 创建 P11/P15 数据库时，系统已预先选择了默认的 1TB 存储选项。 对于位于某个受支持区域中的数据库，可将新的或现有单一数据库的最大存储空间增加到 4TB。 对于所有其他区域，无法将最大大小增大到 1 TB 以上。 选择 4 TB 的随附存储时，价格不会更改。
+- 即使使用的实际存储低于 1 TB，也不能将 4 TB 的数据库最大大小更改为 1 TB。 因此，不能将 P11-4TB/P15-4TB 降级到 P11-1TB/P15-1TB 或更低的性能层（例如，降级到 P1-P6），除非我们为其余性能层提供了更多存储选项。 此限制也适用于还原和复制方案，包括时间点、异地还原、长期备份保留以及数据库复制。 数据库配置了 4 TB 选项后，此数据库的所有还原操作都必须适合最大大小为 4 TB 的 P11/P15。
+- 在不受支持的区域中创建或升级 P11/P15 数据库时，创建或升级操作将会失败，并出现以下错误消息：**最多带有 4 TB 存储的 P11 和 P15 数据库在美国东部 2、美国西部、美国弗吉尼亚州政府、西欧、德国中部、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部可用。**
+- 对于“活动异地复制”方案：
+   - 设置异地复制关系：如果主数据库是 P11 或 P15，则辅助数据库也必须为 P11 或 P15，更低的性能层将被拒绝作为辅助数据库，因为它们不能支持 4 TB。
+   - 升级异地复制关系中的主数据库：在主数据库上将最大大小更改到 4 TB 将触发辅助数据库上的相同更改。 这两个升级都必须成功才能使主数据库上的更改生效。 4TB 选项的区域限制适用（请参阅上文）。 如果辅助数据库位于不支持 4 TB 的区域，则不会升级主数据库。
+- 将导入/导出服务用于加载 P11-4TB/P15-4TB 数据库不受支持。 使用 SqlPackage.exe 可[导入](sql-database-import.md)和[导出](sql-database-export.md)数据。
 
-在最初选择服务层和性能级别之后，可根据实际经验动态地上下缩放弹性池。 
+<a id="manage-single-database-service-tiers-and-performance-levels-using-the-azure-portal" class="xliff"></a>
 
-* 更改每个数据库的最小 eDTU 数或每个数据库的最大 eDTU 数通常可在五分钟或更少的时间内完成。
-* 更改池大小 (eDTU) 所需的时间取决于池中所有数据库的总大小。 更改平均起来每 100 GB 需要 90 分钟或更短的时间。 例如，如果池中所有数据库的总空间为 200 GB，则更改每个池的池 eDTU 时，预计延迟为 3 小时或更短的时间。
+## 使用 Azure 门户管理单一数据库服务层和性能级别
 
-如需详细步骤，请参阅[在 Azure 门户中管理弹性池](sql-database-elastic-pool-manage-portal.md)、[使用 Powershell 管理弹性池](scripts/sql-database-monitor-and-scale-pool-powershell.md)、[使用 Transact-SQL 管理弹性池](sql-database-elastic-pool-manage-tsql.md)或[使用 C# 管理弹性池](sql-database-elastic-pool-manage-csharp.md)。
+若要使用 Azure 门户为新的或现有 Azure SQL 数据库设置或更改服务层、性能级别或存储量，请单击“定价层(缩放 DTU)”打开数据库的“配置性能”窗口 - 如以下屏幕截图中所示。 
 
-## <a name="creating-or-upgrading-to-4tb"></a>创建或升级到 4TB
+- 通过为你的工作负荷选择服务层来设置或更改服务层。 
+- 使用“DTU”滑块在服务层内设置或更改性能级别 (**DTU**)。
+- 使用“存储”滑块为性能级别设置或更改存储量。 
 
-以下部分介绍 4 TB 选项的实现细节。
+  ![配置服务层和性能级别](./media/sql-database-service-tiers/service-tier-performance-level.png)
 
-### <a name="creating-in-the-azure-portal"></a>在 Azure 门户中创建
+> [!IMPORTANT]
+> 当选择 P11 或 P15 服务层时，请查看[最大大小为 4 TB 的 P11 和 P15 数据库的当前限制](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize)。
+>
 
-创建 P11/P15 数据库时，系统已预先选择默认的 1TB 存储选项。 对于位于一个受支持区域中的数据库，可将最大存储空间增加到 4TB。 对于其他所有区域，无法更改存储滑块。 选择 4 TB 的随附存储时，价格不会更改。
+<a id="manage-single-database-service-tiers-and-performance-levels-using-powershell" class="xliff"></a>
 
-### <a name="creating-using-powershell-or-transact-sql"></a>使用 PowerShell 或 Transact-SQL 创建
+## 使用 PowerShell 管理单一数据库服务层和性能级别
 
-创建 P11/P15 数据库时，可将最大大小值设置为 1 TB（默认值）或 4 TB。 也接受“1024 GB”和“4096 GB”值。 如果在不受支持的区域中预配数据库，则选择 4 TB 最大大小选项时，create 命令将会失败并出错。
+若要使用 PowerShell 设置或更改 Azure SQL 数据库服务层、性能级别和存储量，请使用以下 PowerShell cmdlet。 如果需要安装或升级 PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 
 
-### <a name="upgrading-to-4tb"></a>升级到 4TB 
+| Cmdlet | 说明 |
+| --- | --- |
+|[New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase)|创建数据库 |
+|[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|获取一个或多个数据库|
+|[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|设置数据库的属性，或者将现有数据库移动到弹性池中|
 
-对于位于一个受支持区域中的 P11 和 P15 数据库，可将最大存储大小增加到 4 TB。 可在 Azure 门户或者使用 PowerShell 或 Transact-SQL 执行此操作。 以下示例演示如何使用 ALTER DATABASE 命令更改最大大小：
+
+> [!TIP]
+> 可以使用 PowerShell 脚本监视数据库的性能指标，将其缩放到更高的性能级别，并基于性能指标之一创建警报规则，有关这样的示例脚本，请参阅[使用 PowerShell 监视和缩放单一 SQL 数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
+
+<a id="manage-single-database-service-tiers-and-performance-levels-using-the-azure-cli" class="xliff"></a>
+
+## 使用 Azure CLI 管理单一数据库服务层和性能级别
+
+若要使用 Azure CLI 设置或更改 Azure SQL 数据库服务层、性能级别和存储量，请使用以下 [Azure CLI SQL 数据库](/cli/azure/sql/db)命令。 使用 [Cloud Shell](/azure/cloud-shell/overview) 在浏览器中运行 CLI，或者在 macOS、Linux 或 Windows 上[安装](/cli/azure/install-azure-cli)它。 对于创建和管理 SQL 弹性池，请参阅[弹性池](sql-database-elastic-pool.md)。
+
+| Cmdlet | 说明 |
+| --- | --- |
+|[az sql db create](/cli/azure/sql/db#create) |创建数据库|
+|[az sql db list](/cli/azure/sql/db#list)|列出某台服务器中的所有数据库和数据仓库，或者列出弹性池中的所有数据库|
+|[az sql db list-editions](/cli/azure/sql/db#list-editions)|列出可用的服务目标和存储限制|
+|[az sql db list-usages](/cli/azure/sql/db#list-usages)|返回数据库使用情况|
+|[az sql db show](/cli/azure/sql/db#show)|获取数据库或数据仓库|
+|[az sql db update](/cli/azure/sql/db#update)|更新数据库|
+
+> [!TIP]
+> 可以使用 Azure CLI 脚本在查询数据库的大小信息后将单一 Azure SQL 数据库缩放到不同的性能级别，有关这样的示例脚本，请参阅[使用 CLI 监视和缩放单一 SQL 数据库](scripts/sql-database-monitor-and-scale-database-cli.md)。
+>
+
+<a id="manage-single-database-service-tiers-and-performance-levels-using-transact-sql" class="xliff"></a>
+
+## 使用 Transact-SQL 管理单一数据库服务层和性能级别
+
+若要使用 Transact-SQL 设置或更改 Azure SQL 数据库服务层、性能级别和存储量，请使用以下 T-SQL 命令。 可以使用 Azure 门户、[SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、[Visual Studio Code](https://code.visualstudio.com/docs) 或可以连接到 Azure SQL 数据库服务器并传递 Transact-SQL 命令的任何其他程序来发出这些命令。 
+
+| 命令 | 说明 |
+| --- | --- |
+|[CREATE DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/create-database-azure-sql-database)|创建新数据库。 必须连接到 master 数据库才能创建新数据库。|
+| [ALTER DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/alter-database-azure-sql-database) |修改 Azure SQL 数据库。 |
+|[sys.database_service_objectives（Azure SQL 数据库）](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|为 Azure SQL 数据库或 Azure SQL 数据仓库返回版本（服务层）、服务目标（定价层）和弹性池名称。 如果已登录到 Azure SQL 数据库服务器中的 master 数据库，则返回有关所有数据库的信息。 对于 Azure SQL 数据仓库，必须连接到 master 数据库。|
+|[sys.database_usage（Azure SQL 数据库）](/sql/relational-databases/system-catalog-views/sys-database-usage-azure-sql-database)|列出 Azure SQL 数据库服务器上的数据库的数目、类型和持续时间。|
+
+以下示例演示如何使用 ALTER DATABASE 命令更改最大大小：
 
  ```sql
 ALTER DATABASE <myDatabaseName> 
    MODIFY (MAXSIZE = 4096 GB);
 ```
 
-升级现有 P11 或 P15 数据库只能由服务器级主体登录名或 dbmanager 数据库角色的成员执行。 如果在受支持的区域中执行，配置将立即更新。 可以使用 [SELECT DATABASEPROPERTYEX](https://msdn.microsoft.com/library/ms186823.aspx) 或通过在 Azure 门户中查看数据库大小来检查此项内容。 在升级过程中，数据库将保持联机。 但是，在实际的数据库文件已升级到新的最大大小之前，你无法利用完整的 4 TB 存储。 所需的时间长度取决于要升级的数据库的大小。  
+<a id="manage-single-databases-using-the-rest-api" class="xliff"></a>
 
-### <a name="error-messages"></a>错误消息
-在不受支持的区域中创建或升级 P11/P15 数据库时，创建或升级操作将会失败，并出现以下错误消息：**最多带有 4 TB 存储的 P11 和 P15 数据库在美国东部 2、美国西部、美国弗吉尼亚州政府、西欧、德国中部、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部可用。**
+## 使用 REST API 管理单一数据库
 
-## <a name="current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize"></a>最大大小为 4 TB 的 P11 和 P15 数据库的当前限制
+若要使用 REST API 设置或更改 Azure SQL 数据库服务层、性能级别和存储量，请参阅 [Azure SQL 数据库 REST API](/rest/api/sql/)。
 
-- 创建或更新 P11 或 P15 数据库时，只能在 1 TB 和 4 TB 最大大小之间选择。 中间存储大小当前不受支持。
-- 即使使用的实际存储低于 1 TB，也不能将 4 TB 的数据库最大大小更改为 1 TB。 因此，不能将 P11-4TB/P15-4TB 降级到 P11-1TB/P15-1TB 或更低的性能层（例如，降级到 P1-P6），除非我们为其余性能层提供了更多存储选项。 此限制也适用于还原和复制方案，包括时间点、异地还原、长期备份保留以及数据库复制。 数据库配置了 4 TB 选项后，此数据库的所有还原操作都必须适合最大大小为 4 TB 的 P11/P15。
-- 对于“活动异地复制”方案：
-   - 设置异地复制关系：如果主数据库是 P11 或 P15，则辅助数据库也必须为 P11 或 P15，更低的性能层将被拒绝作为辅助数据库，因为它们不能支持 4 TB。
-   - 升级异地复制关系中的主数据库：在主数据库上将最大大小更改到 4 TB 将触发辅助数据库上的相同更改。 这两个升级都必须成功才能使主数据库上的更改生效。 4TB 选项的区域限制适用（请参阅上文）。 如果辅助数据库位于不支持 4 TB 的区域，则不会升级主数据库。
-- 将导入/导出服务用于加载 P11-4TB/P15-4TB 数据库不受支持。 使用 SqlPackage.exe 可[导入](sql-database-import.md)和[导出](sql-database-export.md)数据。
+<a id="next-steps" class="xliff"></a>
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
 
-* 详细了解[弹性池](sql-database-elastic-pool.md)和[弹性池的价格和性能注意事项](sql-database-elastic-pool.md)。
-* 了解如何[监视、管理弹性池和调整其大小](sql-database-elastic-pool-manage-portal.md)以及如何[监视单一数据库的性能](sql-database-single-database-monitor.md)。
-* 你了解了 SQL 数据库层，接下来请使用[免费帐户](https://azure.microsoft.com/pricing/free-trial/)试用一下这些层并了解[如何创建首个 SQL 数据库](sql-database-get-started-portal.md)。
-* 对于迁移方案，可使用 [DTU 计算器](http://dtucalculator.azurewebsites.net/)估计所需的 DTU 数。 
+* 了解有关 [DTU](sql-database-what-is-a-dtu.md) 的详细信息。
+* 若要了解有关监视 DTU 使用情况的信息，请参阅[监视和性能优化](sql-database-troubleshoot-performance.md)。
 
 
