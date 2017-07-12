@@ -11,7 +11,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
@@ -19,14 +19,17 @@ ms.openlocfilehash: 32c6d4ed5470077856d4ab175a5df5188b3690a6
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/13/2017
 
-
 ---
 
-# <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>配置 Azure AD 库应用程序密码单一登录时遇到的问题
+<a id="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application" class="xliff"></a>
+
+# 配置 Azure AD 库应用程序密码单一登录时遇到的问题
 
 阅读本文有助于了解在配置 Azure AD 库应用程序**密码单一登录**时人们面对的常见问题。
 
-## <a name="credentials-are-filled-in-but-the-extension-does-not-submit-them"></a>凭据已填写，但扩展却未提交凭据
+<a id="credentials-are-filled-in-but-the-extension-does-not-submit-them" class="xliff"></a>
+
+## 凭据已填写，但扩展却未提交凭据
 
 这种问题通常发生在以下情景中：应用程序供应商为了添加字段而在近期变更了他们的登录页面、改变我们用于检测用户名和密码字段的基础标识符，或改变登录体验作用于应用程序的方式。 幸运的是，在许多情况下，Microsoft 能够与应用程序供应商合作来快速解决这些问题。
 
@@ -34,7 +37,9 @@ ms.lasthandoff: 06/13/2017
 
 除此之外，**如果与该应用程序的供应商联系**，**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
 
-## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>凭据已填写并提交，但页面却显示凭据不正确
+<a id="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect" class="xliff"></a>
+
+## 凭据已填写并提交，但页面却显示凭据不正确
 
 若要解决这一问题，请先检查以下内容：
 
@@ -62,7 +67,9 @@ ms.lasthandoff: 06/13/2017
 
 除此之外，**如果与该应用程序的供应商联系**，**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
 
-## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>扩展在 Chrome 和 Firefox 中有效，但在 Internet Explorer 中无效
+<a id="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer" class="xliff"></a>
+
+## 扩展在 Chrome 和 Firefox 中有效，但在 Internet Explorer 中无效
 
 针对这一问题有两个主要原因：
 
@@ -76,7 +83,9 @@ ms.lasthandoff: 06/13/2017
 
 除此之外，**如果与该应用程序的供应商联系**，**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
 
-## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>检查应用程序的登录页面近期是否已变更，或需要其他字段
+<a id="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field" class="xliff"></a>
+
+## 检查应用程序的登录页面近期是否已变更，或需要其他字段
 
 如果应用程序的登录页面已彻底变更，有时这会导致我们的集成中断。 例如，当应用程序供应商向体验添加登录字段、验证码或多重身份验证时就会出现这种情况。 幸运的是，在许多情况下，Microsoft 能够与应用程序供应商合作来快速解决这些问题。
 
@@ -84,7 +93,9 @@ ms.lasthandoff: 06/13/2017
 
 除此之外，**如果与该应用程序的供应商联系**，**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)来让他们开始工作。
 
-## <a name="how-to-install-the-access-panel-browser-extension"></a>如何安装访问面板浏览器扩展
+<a id="how-to-install-the-access-panel-browser-extension" class="xliff"></a>
+
+## 如何安装访问面板浏览器扩展
 
 若要安装访问面板浏览器扩展，请按照以下步骤操作：
 
@@ -108,7 +119,9 @@ ms.lasthandoff: 06/13/2017
 
 -   [Firefox 访问面板扩展](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [使用应用程序代理为应用提供单一登录](active-directory-application-proxy-sso-using-kcd.md)
 
 

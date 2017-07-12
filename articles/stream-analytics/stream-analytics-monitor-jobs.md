@@ -21,13 +21,16 @@ ms.openlocfilehash: bfcf1f8c1aeb30df13a82470bb4fa0161204d8ee
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
-# <a name="programmatically-create-a-stream-analytics-job-monitor"></a>以编程方式创建流分析作业监视器
+<a id="programmatically-create-a-stream-analytics-job-monitor" class="xliff"></a>
+
+# 以编程方式创建流分析作业监视器
 
 本文说明如何为流分析作业启用监视功能。 通过 REST API、Azure SDK 或 PowerShell 创建的流分析作业默认不启用监视功能。 可以在 Azure 门户中手动启用此功能，只需转到作业的“监视”页并单击“启用”按钮即可；也可以按本文中所述步骤自动化此过程。 流分析作业的监视数据将显示在 Azure 门户的“指标”区域。
 
-## <a name="prerequisites"></a>先决条件
+<a id="prerequisites" class="xliff"></a>
+
+## 先决条件
 
 在开始进行此流程前，必须满足以下条件：
 
@@ -35,7 +38,9 @@ ms.lasthandoff: 07/04/2017
 * 已下载并安装了 [Azure.NET SDK](https://azure.microsoft.com/downloads/)
 * 具有需要已启用监视功能的现有流分析作业
 
-## <a name="create-a-project"></a>创建一个项目
+<a id="create-a-project" class="xliff"></a>
+
+## 创建一个项目
 
 1. 创建 Visual Studio C# .NET 控制台应用程序。
 2. 在程序包管理器控制台中运行以下命令以安装 NuGet 包。 第一个是 Azure 流分析管理 .NET SDK。 第二个是 Azure Monitor SDK，将用于启用监视功能。 最后一个是用于进行身份验证的 Azure Active Directory 客户端。
@@ -53,7 +58,7 @@ ms.lasthandoff: 07/04/2017
      <add key="ResourceGroupName" value="RESOURCE GROUP NAME" />
      <add key="JobName" value="YOUR JOB NAME" />
      <add key="StorageAccountName" value="YOUR STORAGE ACCOUNT"/>
-     <add key="ActiveDirectoryEndpoint" value="https://login.windows.net/" />
+     <add key="ActiveDirectoryEndpoint" value="https://login.microsoftonline.com/" />
      <add key="ResourceManagerEndpoint" value="https://management.azure.com/" />
      <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
      <add key="AsaClientId" value="1950a258-227b-4e31-a9cf-717495945fc2" />
@@ -119,7 +124,9 @@ ms.lasthandoff: 07/04/2017
              throw new InvalidOperationException("Failed to acquire token");
      }
 
-## <a name="create-management-clients"></a>创建管理客户端
+<a id="create-management-clients" class="xliff"></a>
+
+## 创建管理客户端
 
 以下代码将设置必需变量和管理客户端。
 
@@ -141,7 +148,9 @@ ms.lasthandoff: 07/04/2017
     InsightsManagementClient insightsClient = new
     InsightsManagementClient(aadTokenCredentials, resourceManagerUri);
 
-## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>为现有流分析作业启用监视功能
+<a id="enable-monitoring-for-an-existing-stream-analytics-job" class="xliff"></a>
+
+## 为现有流分析作业启用监视功能
 
 以下代码为现有流分析作业启用监视功能。 代码的第一部分针对流分析服务执行 GET 请求，目的是检索特定流分析作业的信息。 它使用“Id”属性（从 GET 请求检索而得）作为代码第二部分中 Put 方法的参数，目的是将 PUT 请求发送到 Insights 服务以为流分析作业启用监视功能。
 
@@ -175,11 +184,15 @@ ms.lasthandoff: 07/04/2017
 
 
 
-## <a name="get-support"></a>获取支持
+<a id="get-support" class="xliff"></a>
+
+## 获取支持
 
 如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)

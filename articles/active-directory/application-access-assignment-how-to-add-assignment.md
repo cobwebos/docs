@@ -11,17 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: 972ed736e63089a69726de5d26236b930b390a10
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/11/2017
-
 
 ---
 
-# <a name="how-to-assign-users-and-groups-to-an-application"></a>如何将用户和组分配到应用程序
+<a id="how-to-assign-users-and-groups-to-an-application" class="xliff"></a>
+
+# 如何将用户和组分配到应用程序
 
 在用户可以对特定应用程序执行下列任何操作之前，需要先**将用户分配给应用程序**以授予其访问权限：
 
@@ -33,7 +35,9 @@ ms.lasthandoff: 04/11/2017
 
 -   查看显示在其 [Office 365 应用程序启动器](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)中的应用程序。
 
-## <a name="methods-to-assign-applications-with-azure-active-directory"></a>使用 Azure Active Directory 分配应用程序的方法 
+<a id="methods-to-assign-applications-with-azure-active-directory" class="xliff"></a>
+
+## 使用 Azure Active Directory 分配应用程序的方法 
 
 可以通过 3 种方法使用 Azure Active Directory 分配应用程序：
 
@@ -43,7 +47,9 @@ ms.lasthandoff: 04/11/2017
 
 -   [启用自助服务应用程序访问以允许用户查找自己的应用程序](#enable-self-service-application-access-to-allow-users-to-find-their-own-applications)
 
-## <a name="assign-a-user-directly-as-an-administrator"></a>以管理员身份直接将用户分配到应用程序
+<a id="assign-a-user-directly-as-an-administrator" class="xliff"></a>
+
+## 以管理员身份直接将用户分配到应用程序
 
 若要直接将一个或多个用户分配到应用程序，请执行以下步骤：
 
@@ -81,7 +87,9 @@ ms.lasthandoff: 04/11/2017
 
 在一段很短的时间后，所选用户将能够使用解决方案描述部分中所述的方法启动这些应用程序。
 
-## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>以管理员身份直接将组分配到应用程序
+<a id="assign-a-group-directly-to-an-application-as-an-administrator" class="xliff"></a>
+
+## 以管理员身份直接将组分配到应用程序
 
 若要直接将一个或多个组分配到应用程序，请执行以下步骤：
 
@@ -119,7 +127,9 @@ ms.lasthandoff: 04/11/2017
 
 在一段很短的时间后，所选组中的用户将能够使用解决方案描述部分中所述的方法启动这些应用程序。 如果是动态组，则这些分配组中的用户显示分配时可能会出现一些额外的处理延迟。
 
-## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>启用自助服务应用程序访问以允许用户查找自己的应用程序
+<a id="enable-self-service-application-access-to-allow-users-to-find-their-own-applications" class="xliff"></a>
+
+## 启用自助服务应用程序访问以允许用户查找自己的应用程序
 
 自助应用程序访问是帮助用户自己发现应用程序的绝佳方式，可选择性地允许业务组批准对这些应用程序的访问。 可允许业务组直接从其访问面板，管理分配给用户的密码单一登录应用程序的凭据。
 
@@ -164,6 +174,8 @@ ms.lasthandoff: 04/11/2017
 
 这些批准仅支持单个审批工作流，这意味着如果指定了多个审批人，任何一个审批人都可以批准对该应用程序的访问。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [使用应用程序代理提供到应用的单一登录](active-directory-application-proxy-sso-using-kcd.md)
 

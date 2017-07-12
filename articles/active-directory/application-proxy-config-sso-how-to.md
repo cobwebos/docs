@@ -11,28 +11,34 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
 ms.openlocfilehash: 96d05bd6bdbe0006aa1f8fff7b518f11cebc5d0a
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/18/2017
-
 
 ---
 
-# <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>如何配置应用程序代理应用程序的单一登录
+<a id="how-to-configure-single-sign-on-to-an-application-proxy-application" class="xliff"></a>
+
+# 如何配置应用程序代理应用程序的单一登录
 
 单一登录 (SSO) 允许用户访问应用程序，无需进行多次身份验证。 借助 Azure Active Directory，单一登录允许在云中执行一次身份验证，并允许服务或连接器模拟用户，完成来自应用程序的任何其他身份验证质询。
 
-## <a name="how-to-configure-single-sign-on"></a>如何配置单一登录
+<a id="how-to-configure-single-sign-on" class="xliff"></a>
+
+## 如何配置单一登录
 若要配置 SSO，请先确保应用程序已配置为通过 Azure Active Directory 进行预身份验证。 若要执行此操作，请转到“Azure Active Directory” -&gt;“企业应用程序” -&gt;“所有应用程序” -&gt;“你的应用程序”**-&gt;“应用程序代理”**。 在此页上，会看到“预身份验证”字段，确保将该字段设置为“Azure Active Directory”。 
 
 有关预身份验证方法的详细信息，请参阅[应用发布文档](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal)的步骤四。
 
    ![Azure 门户中的预身份验证方法](./media/application-proxy-config-sso-how-to/app-proxy.png)
 
-## <a name="configuring-single-sign-on-modes-for-application-proxy-applications"></a>为应用程序代理应用程序配置单一登录模式
+<a id="configuring-single-sign-on-modes-for-application-proxy-applications" class="xliff"></a>
+
+## 为应用程序代理应用程序配置单一登录模式
 接下来，配置特定类型的单一登录。 登录方法的分类基于后端应用程序使用的身份验证类型。 应用代理应用程序支持三种类型的登录：
 
 -   **基于密码的登录**：基于密码的登录可用于任何使用用户名和密码字段进行登录的应用程序。 可以在[密码 SSO 配置文档](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal#bring-your-own-password-sso-applications)中找到配置步骤。
@@ -47,6 +53,8 @@ ms.lasthandoff: 04/18/2017
 
 此选项允许管理员在访问应用程序时创建一个指向用户首次登录的应用程序的链接。 例如，如果某一个应用程序配置为使用 Active Directory 联合身份验证服务 2.0 验证用户身份，则管理员可以使用“链接登录”选项在访问面板上创建指向该应用程序的链接。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [使用应用程序代理为应用提供单一登录](active-directory-application-proxy-sso-using-kcd.md)
 

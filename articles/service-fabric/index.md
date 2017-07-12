@@ -19,7 +19,9 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 06/23/2017
 
 ---
-#<a name="service-fabric-documentation"></a>Service Fabric 文档
+<a id="service-fabric-documentation" class="xliff"></a>
+
+#Service Fabric 文档
 
 了解如何使用 Service Fabric 来打包、部署和管理可缩放且可靠的微服务。 教程、API 参考和代码示例演示了如何使用此中间件平台来构建及管理云规模应用程序。
 

@@ -21,16 +21,19 @@ ms.openlocfilehash: daff6ab4c0eaf17d1cb488f1c16aa111b6ed9a88
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/22/2017
 
-
 ---
-# <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>使用 C# 和 Resource Manager 模板部署 Azure 虚拟机
+<a id="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template" class="xliff"></a>
+
+# 使用 C# 和 Resource Manager 模板部署 Azure 虚拟机
 本文介绍如何使用 C# 部署 Azure Resource Manager 模板。 此[模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json)在包含单个子网的新虚拟网络中部署运行 Windows Server 的单个虚拟机。
 
 有关虚拟机资源的详细说明，请参阅 [Azure Resource Manager 模板中的虚拟机](template-description.md)。 有关模板中所有资源的详细信息，请参阅 [Azure Resource Manager 模板演练](../../azure-resource-manager/resource-manager-template-walkthrough.md)。
 
 完成这些步骤大约需要 10 分钟。
 
-## <a name="step-1-create-a-visual-studio-project"></a>步骤 1：创建 Visual Studio 项目
+<a id="step-1-create-a-visual-studio-project" class="xliff"></a>
+
+## 步骤 1：创建 Visual Studio 项目
 
 在此步骤中，请确保已安装 Visual Studio 并已创建用于部署模板的控制台应用程序。
 
@@ -38,7 +41,9 @@ ms.lasthandoff: 06/22/2017
 2. 在 Visual Studio 中，单击“文件” > “新建” > “项目”。
 3. 在“模板” > “Visual C#”中，选择“控制台应用(.NET Framework)”，输入项目的名称和位置，然后单击“确定”。
 
-## <a name="step-2-install-libraries"></a>步骤 2：安装库
+<a id="step-2-install-libraries" class="xliff"></a>
+
+## 步骤 2：安装库
 
 使用 NuGet 包可以最轻松地安装完成这些步骤所需的库。 需要 Azure Resource Manager 库和 Active Directory 身份验证库以创建资源。 若要在 Visual Studio 中获取这些库，请执行以下步骤：
 
@@ -48,7 +53,9 @@ ms.lasthandoff: 06/22/2017
 
 现在，你可以开始使用这些库来创建应用程序了。
 
-## <a name="step-3-create-credentials-used-to-authenticate-requests"></a>步骤 3：创建用于对请求进行身份验证的凭据
+<a id="step-3-create-credentials-used-to-authenticate-requests" class="xliff"></a>
+
+## 步骤 3：创建用于对请求进行身份验证的凭据
 
 在开始此步骤之前，请确保能够访问 [Active Directory 服务主体](../../resource-group-authenticate-service-principal.md)。 从服务主体中，将获取对 Azure Resource Manager 请求进行身份验证的令牌。
 
@@ -69,7 +76,7 @@ ms.lasthandoff: 06/22/2017
     private static async Task<AuthenticationResult> GetAccessTokenAsync()
     {
       var cc = new ClientCredential("client-id", "client-secret");
-      var context = new AuthenticationContext("https://login.windows.net/tenant-id");
+      var context = new AuthenticationContext("https://login.microsoftonline.com/tenant-id");
       var token = await context.AcquireTokenAsync("https://management.azure.com/", cc);
       if (token == null)
       {
@@ -94,7 +101,9 @@ ms.lasthandoff: 06/22/2017
 
 4. 保存 Program.cs 文件。
 
-## <a name="step-4-create-a-resource-group"></a>步骤 4：创建资源组
+<a id="step-4-create-a-resource-group" class="xliff"></a>
+
+## 步骤 4：创建资源组
 
 虽然可以从模板创建资源组，但是未使用库中的模板创建资源组。 在此步骤中，添加代码来创建资源组。
 
@@ -146,7 +155,9 @@ ms.lasthandoff: 06/22/2017
     Console.ReadLine();
     ```
 
-## <a name="step-5-create-a-parameters-file"></a>步骤 5：创建参数文件
+<a id="step-5-create-a-parameters-file" class="xliff"></a>
+
+## 步骤 5：创建参数文件
 
 若要为模板中定义的资源参数指定值，请创建包含值的参数文件。 部署模板时使用参数文件。 从库中使用的模板需要 adminUserName、adminPassword 和dnsLabelPrefix 参数的值。
 
@@ -172,7 +183,9 @@ ms.lasthandoff: 06/22/2017
 
 4. 保存 Parameters.json 文件。
 
-## <a name="step-6-deploy-a-template"></a>步骤 6：部署模板
+<a id="step-6-deploy-a-template" class="xliff"></a>
+
+## 步骤 6：部署模板
 
 在本示例中，从 Azure 模板库中部署模板，并使用创建的本地文件向此模板提供参数值。 
 
@@ -220,7 +233,9 @@ ms.lasthandoff: 06/22/2017
     Console.ReadLine();
     ```
 
-## <a name="step-7-delete-the-resources"></a>步骤 7：删除资源
+<a id="step-7-delete-the-resources" class="xliff"></a>
+
+## 步骤 7：删除资源
 
 由于需要为 Azure 中使用的资源付费，因此，删除不再需要的资源总是一种良好的做法。 你不需要单独从资源组中删除每个资源， 删除资源组，其中包含的所有资源会一并删除。
 
@@ -249,7 +264,9 @@ ms.lasthandoff: 06/22/2017
    Console.ReadLine();
    ```
 
-## <a name="step-8-run-the-console-application"></a>步骤 8：运行控制台应用程序
+<a id="step-8-run-the-console-application" class="xliff"></a>
+
+## 步骤 8：运行控制台应用程序
 
 控制台应用程序从头到尾完成运行大约需要五分钟时间。 
 
@@ -261,7 +278,9 @@ ms.lasthandoff: 06/22/2017
 
 3. 在按 **Enter** 开始删除资源之前，可能需要在 Azure 门户中花几分钟时间来验证资源的创建。 单击部署状态以查看有关部署的信息。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 * 如果部署出现问题，后续措施是参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](../../resource-manager-common-deployment-errors.md)。
 * 若要了解如何部署虚拟机及其支持的资源，请查看[使用 C# 部署 Azure 虚拟机](csharp.md)。
 

@@ -11,21 +11,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
 ms.openlocfilehash: 3dabb8adb67345c56750bb88373f5f740aa19036
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/18/2017
-
 
 ---
 
-# <a name="problem-installing-the-application-proxy-agent-connector"></a>安装应用程序代理程序连接器时出现问题
+<a id="problem-installing-the-application-proxy-agent-connector" class="xliff"></a>
+
+# 安装应用程序代理程序连接器时出现问题
 
 Microsoft AAD 应用程序代理连接器是一个内部域组件，该组件使用出站连接来建立从云可用终结点到内部域的连接性。
 
-## <a name="general-problem-areas-with-connector-installation"></a>连接器安装的常规问题区域
+<a id="general-problem-areas-with-connector-installation" class="xliff"></a>
+
+## 连接器安装的常规问题区域
 
 连接器安装失败时，根本原因通常是以下方面之一：
 
@@ -35,7 +39,9 @@ Microsoft AAD 应用程序代理连接器是一个内部域组件，该组件使
 
 3.  **管理员的身份验证** – 在安装过程中，用户必须提供管理员凭据才能完成连接器安装。
 
-## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>验证与云应用程序代理服务和 Microsoft 登录页的连接性
+<a id="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page" class="xliff"></a>
+
+## 验证与云应用程序代理服务和 Microsoft 登录页的连接性
 
 **目的︰**验证连接器计算机是否可以连接到 AAD 应用程序代理注册终结点以及 Microsoft 登录页。
 
@@ -45,7 +51,9 @@ Microsoft AAD 应用程序代理连接器是一个内部域组件，该组件使
 
 3.  打开浏览器（单独选项卡）并转到以下网页：<https://login.microsoftonline.com>，确保可登录到该页。
 
-## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-cert"></a>验证计算机和后端组件是否支持应用程序代理信任证书
+<a id="verify-machine-and-backend-components-support-for-application-proxy-trust-cert" class="xliff"></a>
+
+## 验证计算机和后端组件是否支持应用程序代理信任证书
 
 **目的：**验证连接器计算机、后端代理和防火墙是否可以支持连接器为未来信任所创建的证书。
 
@@ -60,7 +68,9 @@ Microsoft AAD 应用程序代理连接器是一个内部域组件，该组件使
 
 2.  联系网络管理员并要求验证后端代理和防火墙不会阻止 SHA512 传出流量。
 
-## <a name="verify-admin-is-used-to-install-the-connector"></a>验证“admin”是否可用于安装连接器
+<a id="verify-admin-is-used-to-install-the-connector" class="xliff"></a>
+
+## 验证“admin”是否可用于安装连接器
 
 **目的：**验证尝试安装连接器的用户是否是具有正确凭据的管理员。 目前，用户必须是全局管理员才能成功安装。
 
@@ -70,6 +80,8 @@ Microsoft AAD 应用程序代理连接器是一个内部域组件，该组件使
 
 选择用户帐户，然后在生成的菜单中选择“目录角色”。 验证所选角色是否为“全局管理员”。 如果按这些步骤操作无法访问任何页，则不是全局管理员。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md)
 

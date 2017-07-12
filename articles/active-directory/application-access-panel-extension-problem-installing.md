@@ -11,7 +11,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
@@ -19,16 +19,19 @@ ms.openlocfilehash: 759631bca9b29134098dba55ef07513d0ee42549
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
 
-# <a name="problem-installing-the-application-access-panel-browser-extension"></a>安装应用程序访问面板浏览器扩展时遇到问题
+<a id="problem-installing-the-application-access-panel-browser-extension" class="xliff"></a>
+
+# 安装应用程序访问面板浏览器扩展时遇到问题
 
 访问面板是一个基于 Web 的门户，在 Azure Active Directory (Azure AD) 中拥有工作或学校帐户的用户可以使用它来查看和启动 Azure AD 管理员已授权他们访问的基于云的应用程序。 拥有 Azure AD 版本的用户还可以通过访问面板使用自助服务组和应用管理功能。 访问面板不同于 Azure 门户，它不要求用户拥有 Azure 订阅。
 
 若要在访问面板中使用基于密码的单一登录 (SSO)，必须在用户的浏览器中安装访问面板扩展。 当用户选择某个已配置基于密码的 SSO 的应用程序时，会自动下载此扩展。
 
-## <a name="meeting-browser-requirements-for-the-access-panel"></a>满足访问面板的浏览器要求
+<a id="meeting-browser-requirements-for-the-access-panel" class="xliff"></a>
+
+## 满足访问面板的浏览器要求
 
 访问面板要求浏览器支持 JavaScript 并且已启用 CSS。 若要在访问面板中使用基于密码的单一登录 (SSO)，必须在用户的浏览器中安装访问面板扩展。 当用户选择某个已配置基于密码的 SSO 的应用程序时，会自动下载此扩展。
 
@@ -42,7 +45,9 @@ ms.lasthandoff: 05/26/2017
 
 **注意**：如果浏览器扩展支持 Edge，则基于密码的 SSO 扩展可供 Windows 10 中的 Edge 使用。
 
-## <a name="how-to-install-the-access-panel-browser-extension"></a>如何安装访问面板浏览器扩展
+<a id="how-to-install-the-access-panel-browser-extension" class="xliff"></a>
+
+## 如何安装访问面板浏览器扩展
 
 若要安装访问面板浏览器扩展，请按照以下步骤操作：
 
@@ -66,7 +71,9 @@ ms.lasthandoff: 05/26/2017
 
 -   [Firefox 访问面板扩展](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="setting-up-a-group-policy-for-internet-explorer"></a>设置 Internet Explorer 的组策略
+<a id="setting-up-a-group-policy-for-internet-explorer" class="xliff"></a>
+
+## 设置 Internet Explorer 的组策略
 
 可以设置组策略，以便在用户的计算机上远程安装 Internet Explorer 的访问面板扩展。
 
@@ -78,11 +85,15 @@ ms.lasthandoff: 05/26/2017
 
 有关如何配置组策略并将其部署到用户的分步说明，请按照教程[如何使用组策略部署 Internet Explorer 的访问面板扩展](active-directory-saas-ie-group-policy.md)操作。
 
-## <a name="troubleshoot-the-access-panel-in-internet-explorer"></a>对 Internet Explorer 中的访问面板进行故障排除
+<a id="troubleshoot-the-access-panel-in-internet-explorer" class="xliff"></a>
+
+## 对 Internet Explorer 中的访问面板进行故障排除
 
 若要访问诊断工具以及获得为 IE 配置扩展的分步说明，请按照[对 Internet Explorer 的访问面板进行故障排除](active-directory-saas-ie-troubleshooting.md)指南进行操作。
 
-## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>如果这些故障排除步骤未解决此问题
+<a id="if-these-troubleshooting-steps-do-not-resolve-the-issue" class="xliff"></a>
+
+## 如果这些故障排除步骤未解决此问题
 
 打开支持票证，并提供以下信息（如有）：
 
@@ -98,6 +109,8 @@ ms.lasthandoff: 05/26/2017
 
 -   Fiddler 跟踪
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
 
