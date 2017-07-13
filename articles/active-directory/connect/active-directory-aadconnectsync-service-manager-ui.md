@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
 ms.openlocfilehash: d999cc5ce3527539bbdf868912d5b2f6f470c21e
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Azure AD Connect Synchronization Service Manager UI 简介
+# Azure AD Connect Synchronization Service Manager UI 简介
+<a id="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui" class="xliff"></a>
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/ssmui.png)
 
@@ -32,7 +34,8 @@ ms.lasthandoff: 02/28/2017
 
 单击本主题顶部的链接可以了解有关该 UI 中各个选项卡的详细信息。
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 了解有关 [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)配置的详细信息。
 
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。

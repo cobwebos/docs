@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/09/2017
 ms.author: anandy; billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
 ms.openlocfilehash: 22f2bcfdd8c3978a6924c8c8cdea2744001000fe
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/10/2017
 
 ---
 
-#<a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>将 Azure AD 的多个实例与 AD FS 的单个实例联合
+#将 Azure AD 的多个实例与 AD FS 的单个实例联合
+<a id="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs" class="xliff"></a>
 
 单个高度可用的 AD FS 场可以联合多个林，前提是这些林之间存在双向信任。 上面提到的多个林可以对应于同一 Azure Active Directory，也可以不进行对应。 本文说明了如何在单个 AD FS 部署和多个同步到不同 Azure AD 的林之间配置联合身份验证。
 
@@ -34,15 +36,18 @@ ms.lasthandoff: 04/10/2017
 > [!NOTE]
 > Azure AD Connect 不能在此方案中用于配置联合身份验证，因为 Azure AD Connect 可以为单个 Azure AD 中的域配置联合身份验证。
 
-##<a name="steps-for-federating-ad-fs-with-multiple-azure-ad"></a>将 AD FS 与多个 Azure AD 进行联合的步骤
+##将 AD FS 与多个 Azure AD 进行联合的步骤
+<a id="steps-for-federating-ad-fs-with-multiple-azure-ad" class="xliff"></a>
 
 请考虑一下这样一种情形：Azure Active Directory contoso.onmicrosoft.com 中的域 contoso.com 已与 AD FS 联合，后者通过本地方式安装在 contoso.com 本地 Active Directory 环境中。 Fabrikam.com 是 fabrikam.onmicrosoft.com Azure Active Directory 中的域。
 
-##<a name="step-1-establish-a-two-way-trust"></a>步骤 1：建立双向信任
+##步骤 1：建立双向信任
+<a id="step-1-establish-a-two-way-trust" class="xliff"></a>
  
 若要让 contoso.com 中的 AD FS 能够对 fabrikam.com 中的用户进行身份验证，需在 contoso.com 和 fabrikam.com 之间建立双向信任。 请按照[此文](https://technet.microsoft.com/library/cc816590.aspx)中的准则创建双向信任。
  
-##<a name="step-2-modify-contosocom-federation-settings"></a>步骤 2：修改 contoso.com 联合身份验证设置 
+##步骤 2：修改 contoso.com 联合身份验证设置
+<a id="step-2-modify-contosocom-federation-settings" class="xliff"></a> 
  
 为联合到 AD FS 的单个域设置的默认颁发者为“http://ADFSServiceFQDN/adfs/services/trust”，例如“http://fs.contoso.com/adfs/services/trust”。 Azure Active Directory 要求每个联合域都有唯一颁发者。 由于同一 AD FS 将联合两个域，因此颁发者值需进行修改，使之对于每个与 Azure Active Directory 联合的域 AD FS 都是唯一的。 
  
@@ -52,7 +57,8 @@ ms.lasthandoff: 04/10/2017
  
 会将域联合身份验证设置中的颁发者更改为“http://contoso.com/adfs/services/trust”，并且会为 Azure AD 信赖方信任添加颁发声明规则，以便根据 UPN 后缀颁发正确的 issuerId 值。
  
-##<a name="step-3-federate-fabrikamcom-with-ad-fs"></a>步骤 3：通过 AD FS 联合 fabrikam.com
+##步骤 3：通过 AD FS 联合 fabrikam.com
+<a id="step-3-federate-fabrikamcom-with-ad-fs" class="xliff"></a>
  
 在 Azure AD PowerShell 会话中，执行以下步骤：连接到 Azure Active Directory，其中包含域 fabrikam.com
 
@@ -63,5 +69,7 @@ ms.lasthandoff: 04/10/2017
  
 上述操作会将域 fabrikam.com 与同一 AD FS 联合。 可以对两个域使用 Get-MsolDomainFederationSettings，以便验证域设置。
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 [将 Active Directory 连接到 Azure Active Directory](active-directory-aadconnect.md)
+

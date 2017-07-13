@@ -13,21 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2017
+ms.date: 07/13/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 9778db69e94e9f1d033cc8c16fdb9554df3eddcc
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
-
 ---
-# <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect 同步：启用 AD 回收站
+# Azure AD Connect 同步：启用 AD 回收站
+<a id="azure-ad-connect-sync-enable-ad-recycle-bin" class="xliff"></a>
 建议为同步到 Azure AD 的本地 Active Directory 启用 AD 回收站功能。 
 
 如果意外删除了本地 AD 用户对象并使用该功能进行还原，Azure AD 将还原相应的 Azure AD 用户对象。  有关 AD 回收站功能的信息，请参阅文章 [Scenario Overview for Restoring Deleted Active Directory Objects](https://technet.microsoft.com/library/dd379542.aspx)（还原已删除 Active Directory 对象的方案概述）。
 
-## <a name="benefits-of-enabling-the-ad-recycle-bin"></a>启用 AD 回收站的好处
+## 启用 AD 回收站的好处
+<a id="benefits-of-enabling-the-ad-recycle-bin" class="xliff"></a>
 此功能可通过执行以下操作，帮助还原 Azure AD 用户对象：
 
 * 如果意外删除了本地 AD 用户对象，将在下一同步周期中删除相应的 Azure AD 用户对象。 默认情况下，Azure AD 会以软删除状态保存已删除的 Azure AD 用户对象 30 天。
@@ -41,9 +43,11 @@ ms.lasthandoff: 04/03/2017
 
 
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 **概述主题**
 
 * [Azure AD Connect 同步：理解和自定义同步](active-directory-aadconnectsync-whatis.md)
 
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
+
