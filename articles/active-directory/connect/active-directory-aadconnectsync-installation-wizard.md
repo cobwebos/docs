@@ -13,16 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 07/13/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
 ms.openlocfilehash: f18e11ac7482b78925d1885ceb20696146603ad2
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/28/2017
 
-
 ---
-# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect 同步：第二次运行安装向导
+# Azure AD Connect 同步：第二次运行安装向导
+<a id="azure-ad-connect-sync-running-the-installation-wizard-a-second-time" class="xliff"></a>
 首次运行 Azure AD Connect 安装向导时，该向导将逐步引导用户配置安装。 如果再次运行安装向导，它将提供维护选项。
 
 可以在“开始”菜单中找到名为 **Azure AD Connect** 的安装向导。
@@ -42,14 +43,16 @@ ms.lasthandoff: 03/28/2017
 >
 >
 
-## <a name="view-current-configuration"></a>查看当前配置
+## 查看当前配置
+<a id="view-current-configuration" class="xliff"></a>
 此选项可让你快速查看当前配置的选项。
 
 ![列出所有选项及其状态的页面](./media/active-directory-aadconnectsync-installation-wizard/viewconfig.png)
 
 单击“上一步”可以后退。 如果选择“退出”，将关闭安装向导。
 
-## <a name="customize-synchronization-options"></a>自定义同步选项
+## 自定义同步选项
+<a id="customize-synchronization-options" class="xliff"></a>
 此选项可用于更改同步配置。 将在自定义配置安装路径中看到一部分选项。 即使一开始是使用快速安装也会看到此选项。
 
 * [添加更多目录](active-directory-aadconnect-get-started-custom.md#connect-your-directories)。 若要删除目录，请参阅[删除连接器](active-directory-aadconnectsync-service-manager-ui-connectors.md#delete)。
@@ -63,14 +66,16 @@ ms.lasthandoff: 03/28/2017
 * 更改不同林中对象的联接方法。
 * 启用基于组的筛选。
 
-## <a name="refresh-directory-schema"></a>刷新目录架构
+## 刷新目录架构
+<a id="refresh-directory-schema" class="xliff"></a>
 如果已更改其中一个本地 AD DS 林中的架构，则应使用此选项。 例如，可能已安装 Exchange，或升级到包含设备对象的 Windows Server 2012 架构。 在这种情况下，需指示 Azure AD Connect 从 AD DS 再次读取架构并更新其缓存。 此操作还会重新生成同步规则。 举例来说，如果你添加 Exchange 架构，配置中就会添加 Exchange 的同步规则。
 
 选择此选项时，将列出配置中的所有目录。 可以保留默认设置，并刷新所有林或取消选择其中某些林。
 
 ![列出环境中所有目录的页面](./media/active-directory-aadconnectsync-installation-wizard/refreshschema.png)
 
-## <a name="configure-staging-mode"></a>配置过渡模式
+## 配置过渡模式
+<a id="configure-staging-mode" class="xliff"></a>
 此选项可让你启用和禁用服务器上的过渡模式。 过渡模式及其使用方式的详细信息可在[操作](active-directory-aadconnectsync-operations.md#staging-mode)中找到。
 
 此选项显示过渡模式当前是已启用还是已禁用：  
@@ -79,12 +84,14 @@ ms.lasthandoff: 03/28/2017
 若要更改状态，请选择此选项，并选中或取消选中复选框。  
 ![同时显示过渡模式当前状态的选项](./media/active-directory-aadconnectsync-installation-wizard/stagingmodeenable.png)
 
-## <a name="change-user-sign-in"></a>更改用户登录
+## 更改用户登录
+<a id="change-user-sign-in" class="xliff"></a>
 此选项可让你从密码同步更改为联盟，反之亦然。 但不能更改为“不配置”。
 
 有关此选项的详细信息，请参阅[用户登录](active-directory-aadconnect-user-signin.md#changing-the-user-sign-in-method)。
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 * 在[了解声明性预配](active-directory-aadconnectsync-understanding-declarative-provisioning.md)中了解 Azure AD Connect 同步使用的配置模型。
 
 **概述主题**

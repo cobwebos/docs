@@ -20,9 +20,9 @@ ms.openlocfilehash: 81fdae033afd90b77d3725f8c39b8a6c6bbc3812
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/05/2017
 
-
 ---
-# <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
+# 用于配置组设置的 Azure Active Directory cmdlet
+<a id="azure-active-directory-cmdlets-for-configuring-group-settings" class="xliff"></a>
 
 > [!IMPORTANT]
 > 此内容仅适用于统一组，也称为 Office 365 组。 
@@ -31,14 +31,16 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 
 这些 Cmdlet 属于 Azure Active Directory PowerShell V2 模块。 有关此模块的详细信息以及有关如何在计算机上下载和安装此模块的说明，请参阅 [Azure Active Directory PowerShell 版本 2](https://docs.microsoft.com/powershell/azuread/)。 可以从[此处](https://www.powershellgallery.com/packages/AzureAD/)安装模块的版本 2 发行版。
 
-## <a name="retrieve-a-specific-settings-value"></a>检索特定的设置值
+## 检索特定的设置值
+<a id="retrieve-a-specific-settings-value" class="xliff"></a>
 如果知道要检索的设置的名称，可以使用以下 cmdlet 检索当前的设置值。 在此示例中，我们要检索名为“UsageGuidelinesUrl”的设置的值。 可以在本文的后面部分阅读有关目录设置及其名称的详细信息。
 
 ```powershell
 (Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value UsageGuidelinesUrl -EQ
 ```
 
-## <a name="create-settings-at-the-directory-level"></a>在目录级别创建设置
+## 在目录级别创建设置
+<a id="create-settings-at-the-directory-level" class="xliff"></a>
 这些步骤在目录级别创建设置，这些设置适用于目录中的所有统一组。
 
 1. 在 DirectorySettings cmdlet 中，需要指定要使用的 SettingsTemplate 的 ID。 如果不知道此 ID，此 cmdlet 将返回所有设置模板的列表：
@@ -76,7 +78,7 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 5. 最后，应用设置：
   
   ```
-  New-AzureADDirectorySetting -DirectorySetting $settings
+  New-AzureADDirectorySetting -DirectorySetting $setting
   ```
 
 成功完成后，该 cmdlet 返回新设置对象的 ID：
@@ -103,7 +105,8 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 |  <ul><li>EnableGroupCreation<li>类型：布尔值<li>默认值：True | 一个布尔值，该值指示非管理员用户是否可以创建新的统一组。 |
 
 
-## <a name="read-settings-at-the-directory-level"></a>在目录级别读取设置
+## 在目录级别读取设置
+<a id="read-settings-at-the-directory-level" class="xliff"></a>
 这些步骤在目录级别读取设置，这些设置适用于目录中的所有 Office 组。
 
 1. 读取所有现有的目录设置：
@@ -143,7 +146,8 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
   EnableGroupCreation           True
   ```
 
-## <a name="update-settings-for-a-specific-group"></a>更新特定组的设置
+## 更新特定组的设置
+<a id="update-settings-for-a-specific-group" class="xliff"></a>
 
 1. 搜索名为“Groups.Unified.Guest”的设置模板
   ```
@@ -179,7 +183,8 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
   25651479-a26e-4181-afce-ce24111b2cb5             08d542b9-071f-4e16-94b0-74abb372e3d9 {class SettingValue {...
   ```
 
-## <a name="update-settings-at-the-directory-level"></a>在目录级别更新设置
+## 在目录级别更新设置
+<a id="update-settings-at-the-directory-level" class="xliff"></a>
 
 这些步骤在目录级别更新设置，这些设置适用于目录中的所有统一组。 这些示例假定目录中已有 Settings 对象。
 
@@ -204,16 +209,19 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
   Set-AzureADDirectorySetting -Id c391b57d-5783-4c53-9236-cefb5c6ef323 -DirectorySetting $Setting
   ```
 
-## <a name="remove-settings-at-the-directory-level"></a>在目录级别删除设置
+## 在目录级别删除设置
+<a id="remove-settings-at-the-directory-level" class="xliff"></a>
 这些步骤在目录级别删除设置，这些设置适用于目录中的所有 Office 组。
   ```
   Remove-AzureADDirectorySetting –Id c391b57d-5783-4c53-9236-cefb5c6ef323c
   ```
 
-## <a name="cmdlet-syntax-reference"></a>Cmdlet 语法参考
+## Cmdlet 语法参考
+<a id="cmdlet-syntax-reference" class="xliff"></a>
 如需更多 Azure Active Directory PowerShell 文档，可参阅 [Azure Active Directory Cmdlet](/powershell/azure/install-adv2?view=azureadps-2.0)。
 
-## <a name="additional-reading"></a>其他阅读材料
+## 其他阅读材料
+<a id="additional-reading" class="xliff"></a>
 
 * [使用 Azure Active Directory 组管理对资源的访问](active-directory-manage-groups.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
