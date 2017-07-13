@@ -1,8 +1,7 @@
 <!--author=alkohli last changed: 02/10/17-->
 
-<a id="to-add-a-storsimple-backup-policy" class="xliff"></a>
-
 #### 添加 StorSimple 备份策略
+<a id="to-add-a-storsimple-backup-policy" class="xliff"></a>
 
 1. 转到 StorSimple 设备并单击“备份策略”。
 

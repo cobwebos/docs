@@ -1,9 +1,8 @@
 
 <!--author=alkohli last changed: 01/20/2017-->
 
-<a id="to-create-a-manual-backup" class="xliff"></a>
-
 #### 创建手动备份
+<a id="to-create-a-manual-backup" class="xliff"></a>
 
 1. 转到 StorSimple Device Manager 服务，然后单击“设备”。 从设备的表格式列表中，选择你的设备。 转到“设置”>“管理”>“备份策略”。
 
