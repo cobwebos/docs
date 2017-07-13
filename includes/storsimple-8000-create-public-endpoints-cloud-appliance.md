@@ -1,6 +1,5 @@
-<a id="to-create-public-endpoints-on-the-cloud-appliance" class="xliff"></a>
-
 #### 在云设备上创建公共终结点
+<a id="to-create-public-endpoints-on-the-cloud-appliance" class="xliff"></a>
 
 1. 登录到 Azure 门户。
 2. 转到“虚拟机”，然后选择并单击正用作云设备的虚拟机。

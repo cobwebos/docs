@@ -1,10 +1,13 @@
 > [!div class="op_single_selector"]
 > * [Node.js](../articles/iot-hub/iot-hub-node-node-twin-how-to-configure.md)
-> * [C#](../articles/iot-hub/iot-hub-csharp-node-twin-how-to-configure.md)
+> * [C#/Node.js](../articles/iot-hub/iot-hub-csharp-node-twin-how-to-configure.md)
+> * [C#](../articles/iot-hub/iot-hub-csharp-csharp-twin-how-to-configure.md)
 > 
 > 
 
-## <a name="introduction"></a>介绍
+## 介绍
+<a id="introduction" class="xliff"></a>
+
 在 [IoT 中心设备孪生入门][lnk-twin-tutorial]中，你已学习了如何使用*标记*通过解决方案后端设置设备元数据、使用*报告属性*通过设备应用报告设备条件以及使用类似 SQL 的语言查询此信息。
 
 在本教程中，将了解 如何使用设备孪生的*所需属性*和*报告属性*来远程配置设备应用。 具体而言，本教程演示设备孪生的报告属性和所需属性如何启用设备应用程序的多步配置，并跨所有设备向解决方案后端提供此操作状态的可见性。 有关在配置设备时所需角色的详细信息，请参阅[使用 IoT 中心进行设备管理概述][lnk-dm-overview]。

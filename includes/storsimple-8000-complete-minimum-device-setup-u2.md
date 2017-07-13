@@ -1,8 +1,7 @@
 <!--author=alkohli last changed: 01/12/17-->
 
-<a id="to-complete-the-minimum-storsimple-device-setup" class="xliff"></a>
-
 #### 完成最低要求的 StorSimple 设备设置
+<a id="to-complete-the-minimum-storsimple-device-setup" class="xliff"></a>
 
 1. 从“设备”边栏选项卡中的表格式设备列表中，选择并单击你的设备。 该设备处于“就绪可设置”状态。 “配置设备”边栏选项卡随即打开。
 

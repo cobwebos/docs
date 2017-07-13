@@ -1,6 +1,5 @@
-<a id="to-configure-and-register-the-cloud-appliance" class="xliff"></a>
-
 #### 配置和注册云设备
+<a id="to-configure-and-register-the-cloud-appliance" class="xliff"></a>
 
 1. 在“设备”边栏选项卡中选择并单击你创建的 StorSimple 云设备。
 

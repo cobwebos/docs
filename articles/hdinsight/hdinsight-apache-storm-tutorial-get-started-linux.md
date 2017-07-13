@@ -17,22 +17,24 @@ ms.date: 05/25/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 5936a45973eb41d2c5b3a1a47c663e393e628f54
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5121861dc9fa11bbde32c12f3987bb60f2dda057
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
+ms.lasthandoff: 07/08/2017
 
 ---
-#<a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>通过 storm-starter 示例开始使用 Apache Storm on HDInsight
+#通过 storm-starter 示例开始使用 Apache Storm on HDInsight
+<a id="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples" class="xliff"></a>
 
 了解如何通过 storm-starter 示例在 HDInsight 中使用 Apache Storm。
 
 Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算系统，用于处理数据流。 使用 Azure HDInsight 上的 Storm，你可以创建一个基于云的、用于实时执行大数据分析的 Storm 群集。
 
 > [!IMPORTANT]
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
-## <a name="prerequisites"></a>先决条件
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -40,7 +42,8 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
 
 * **熟悉 SSH 和 SCP**。 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-## <a name="create-a-storm-cluster"></a>创建 Storm 群集
+## 创建 Storm 群集
+<a id="create-a-storm-cluster" class="xliff"></a>
 
 使用以下步骤创建 Storm on HDInsight 群集：
 
@@ -86,7 +89,8 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
     > [!NOTE]
     > 创建群集可能需要 20 分钟。
 
-## <a name="run-a-storm-starter-sample-on-hdinsight"></a>在 HDInsight 上运行 Storm 初学者示例
+## 在 HDInsight 上运行 Storm 初学者示例
+<a id="run-a-storm-starter-sample-on-hdinsight" class="xliff"></a>
 
 1. 使用 SSH 连接到 HDInsight 群集：
 
@@ -112,7 +116,8 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
 
 如果有兴趣查看 Storm 初学者示例的源，可以在以下网页中找到代码：[https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter)。 此链接针对与 HDInsight 3.5 一起提供的 Storm 1.0.x。 对于其他版本的 Storm，可使用页面顶部的“分支”按钮选择不同的 Storm 版本。
 
-## <a name="monitor-the-topology"></a>监视拓扑
+## 监视拓扑
+<a id="monitor-the-topology" class="xliff"></a>
 
 Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，你的 HDInsight 群集随附了此界面。
 
@@ -182,11 +187,13 @@ Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，你的 HDIns
 
     在此示例中，**seven** 一词出现了 1493957 次。 此计数就是自从启动此拓扑以来该单词出现的次数。
 
-## <a name="stop-the-topology"></a>停止拓扑
+## 停止拓扑
+<a id="stop-the-topology" class="xliff"></a>
 
 返回到单词计数拓扑的“拓扑摘要”页，然后从“拓扑操作”部分中选择“终止”按钮。 出现提示时，输入停止拓扑之前要等待的秒数，即 10。 在超时期限之后访问仪表板的“Storm UI”部分，将不再显示该拓扑。
 
-## <a name="delete-the-cluster"></a>删除群集
+## 删除群集
+<a id="delete-the-cluster" class="xliff"></a>
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 

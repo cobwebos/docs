@@ -1,7 +1,6 @@
 
-<a id="to-configure-remote-management-on-cloud-appliance" class="xliff"></a>
-
 #### 在云设备上配置远程管理
+<a id="to-configure-remote-management-on-cloud-appliance" class="xliff"></a>
 
 1. 在 StorSimple Device Manager 服务中，单击“设备”。 从连接到该服务的设备列表中选择并单击你的云设备。
     ![StorSimple 选择云设备](./media/storsimple-8000-configure-remote-management-http-device/sca-remote-manage1.png)

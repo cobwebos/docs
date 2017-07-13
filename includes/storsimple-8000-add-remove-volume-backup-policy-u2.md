@@ -1,9 +1,8 @@
 <!--author=alkohli last changed: 01/02/17-->
 
 
-<a id="to-add-or-remove-a-volume" class="xliff"></a>
-
 #### 添加或删除卷
+<a id="to-add-or-remove-a-volume" class="xliff"></a>
 
 1. 转到 StorSimple 设备并单击“备份策略”。
 
