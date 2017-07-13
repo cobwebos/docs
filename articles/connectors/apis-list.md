@@ -23,9 +23,8 @@ ms.lasthandoff: 06/28/2017
 
 
 ---
-<a id="connectors-list" class="xliff"></a>
-
 # 连接器列表
+<a id="connectors-list" class="xliff"></a>
 > [!TIP]
 > （本主题中的）[A-Z 完整列表](#az)列出了所有可以用在逻辑应用中的连接器。 [连接器详细信息](/connectors/)列出了在 Swagger 中定义的触发器和操作，同时还列出了每个连接器的限制。
 
@@ -41,9 +40,8 @@ ms.lasthandoff: 06/28/2017
 
 [逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)和[定价模型](../logic-apps/logic-apps-pricing.md)提供了有关成本的更多详细信息。 
 
-<a id="popular-connectors" class="xliff"></a>
-
 ## 常用连接器
+<a id="popular-connectors" class="xliff"></a>
 成千上万的应用程序和执行操作成功使用这些连接器处理数据和信息。 下表列出了用户最常用和最喜欢的一些连接器：
 
 | |  |  |  |
@@ -56,9 +54,8 @@ ms.lasthandoff: 06/28/2017
 |  [![API 图标][SharePointicon]<br/>**SharePoint<br/>Online**][SharePointdoc] | 如果通过 SharePoint 进行操作，并且可以利用自动化，则建议使用此连接器。 可以与本地 SharePoint 以及 SharePoint Online 配合使用。 | [![API Icon][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc] | 使用次数最多的连接器之一，可以连接到本地 SQL Server 以及 Azure SQL 数据库。 | 
 | [![API Icon][Twittericon]<br/>**Twitter**][Twitterdoc] | 轻松使用 Twitter 帐户登录，然后在有新推文发布时启动工作流。 然后，将这些推文保存到 SQL 数据库或 SharePoint 列表。 | | | 
 
-<a id="integration-account-connectors" class="xliff"></a>
-
-## 集成帐户连接器 
+## 集成帐户连接器
+<a id="integration-account-connectors" class="xliff"></a> 
 
 Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连接器。 购买[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)时，还会获得以下连接器： 
 
@@ -68,9 +65,8 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 [![API Icon][flatfileicon]<br/>**平面文件</br>编码**][flatfiledoc] | [![API Icon][flatfiledecodeicon]<br/>**平面文件</br>解码**][flatfiledecodedoc] | [![API 图标][integrationaccounticon]<br/>**集成<br/>帐户**][integrationaccountdoc] | [![API 图标][xmltransformicon]<br/>**转换<br/>XML**][xmltransformdoc] |
 | [![API Icon][x12icon]<br/>**X12</br> 解码**][x12decode] | [![API Icon][x12icon]<br/>**X12</br> 解码**][x12encode] | [![API Icon][xmlvalidateicon]<br/>**XML <br/>验证**][xmlvalidatedoc] | |
 
-<a id="enterprise-connectors" class="xliff"></a>
-
 ## 企业连接器
+<a id="enterprise-connectors" class="xliff"></a>
 
 连接到逻辑应用中的企业应用程序。
 
@@ -95,9 +91,8 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 > [!TIP]
 > 若要在注册 Azure 帐户之前开始使用 Azure 逻辑应用，请转到[试用逻辑应用](https://tryappservice.azure.com/?appservice=logic)。 可立即创建短期的初学者逻辑应用。 你不需要使用信用卡，也不需要做出承诺。
 
-<a id="connectors-as-triggers-and-actions" class="xliff"></a>
-
 ## 用作触发器和操作的连接器
+<a id="connectors-as-triggers-and-actions" class="xliff"></a>
 
 **触发器**可启动或运行逻辑应用的实例。 某些连接器提供触发器，在发生特定事件时通知应用。 例如，FTP 连接器提供 `OnUpdatedFile` 触发器，在更新文件时启动逻辑应用。 
 
@@ -117,9 +112,8 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 > [连接器概述](connectors-overview.md)提供了有关触发器和操作的更多详细信息。 
 
 
-<a id="message-manipulation-actions" class="xliff"></a>
-
 ## 消息操纵操作
+<a id="message-manipulation-actions" class="xliff"></a>
 
 逻辑应用包括内置的操作，可以用来更改或操纵有效负载数据。 内置的“数据操作”连接器包括以下操作： 
 
@@ -132,17 +126,15 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 | **分析 JSON** | 分析并访问设计器中的 JSON 对象提供的值。 例如，如果 Azure Function 返回 JSON 有效负载，则可对其进行分析，以便以后在另一步骤中访问 JSON 属性。 该操作还验证 JSON 是否与运行时的指定架构匹配。 | 
 | **Select** | 选择某个数组的特定属性进行进一步的处理。 如果从 SQL“列出记录”时返回了 15 个列，则只选择其中一部分进行进一步的处理。 输出是只包含所选属性的数组。 |
 
-<a id="custom-connectors-and-azure-certification" class="xliff"></a>
-
-## 自定义连接器和 Azure 认证 
+## 自定义连接器和 Azure 认证
+<a id="custom-connectors-and-azure-certification" class="xliff"></a> 
 
 若要调用的 API 运行自定义代码，或者无法作为连接器使用，可以[将基于 REST 的 API 应用作为自定义连接器创建](../logic-apps/logic-apps-create-api-app.md)，以便扩展逻辑应用平台。 
 
 若要将自定义 API 应用公开并使其可以在 Azure 中使用，则请将提名的应用提交到 [Microsoft Azure 认证计划](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)。
 
-<a id="get-help" class="xliff"></a>
-
 ## 获取帮助
+<a id="get-help" class="xliff"></a>
 
 若要提问、解答问题以及了解其他 Azure 逻辑应用用户的活动，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
 
@@ -150,9 +142,8 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 
 我们是否缺少连接器主题，或者你认为哪些细节很重要？ 如果是，请帮帮忙，为我们的现有主题添加相关内容，或者写下你自己的主题。 我们的文档是开源的，托管在 GitHub 上。 [GitHub 存储库](https://github.com/Microsoft/azure-docs)入门。 
 
-<a id="next-steps" class="xliff"></a>
-
 ## 后续步骤
+<a id="next-steps" class="xliff"></a>
 * [创建第一个逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
 * [为逻辑应用创建自定义 API](../logic-apps/logic-apps-create-api-app.md)
 * [监视逻辑应用](../logic-apps/logic-apps-monitor-your-logic-apps.md)

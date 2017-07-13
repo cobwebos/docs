@@ -14,22 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: a0080a847764d538175d6b22d50d584383bd2054
-ms.openlocfilehash: 3028da79b6a9bfae4c95a8139ecf8bbd7debc56a
-ms.lasthandoff: 02/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 452dd602387db6db04ca87f6834c9e8606185484
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/29/2017
 
 
 ---
-# <a name="what-is-operations-management-suite-oms"></a>什么是 Operations Management Suite (OMS)？
+# 什么是 Operations Management Suite (OMS)？
+<a id="what-is-operations-management-suite-oms" class="xliff"></a>
 本文介绍 Operations Management Suite (OMS)，包括它提供的商业价值、服务和管理解决方案以及将不同服务和解决方案打包在一起的产品的简要概述。  文中提供了有关部署和使用每种服务和解决方案的详细文档的链接。
 
-## <a name="from-on-premise-to-the-cloud"></a>从本地到云
+## 从本地到云
+<a id="from-on-premises-to-the-cloud" class="xliff"></a>
 长期以来，Microsoft 一直在提供用于管理企业环境的产品。  2007 年的 System Center 管理套件中合并了多个产品。  其中包括提供软件分发和库存等功能的 Configuration Manager、提供系统和应用程序主动监视的 Operations Manager（包含用于将手动过程自动化的 Runbook），以及用于备份和恢复关键数据的 Data Protection Manager。
 
 随着迁移到云中的计算资源越来越多，System Center 产品中融合了更多用于在云中管理资源的云功能，例如 Operations Manager 和 Orchestrator。  不过，这些功能在本质上仍然设计为本地解决方案，需要在部署和维护本地管理环境方面大量投资。  为了完全利用云并支持未来的应用程序，需要制定一套全新的管理方式。
 
-## <a name="introducing-operations-management-suite"></a>Operations Management Suite 简介
+## Operations Management Suite 简介
+<a id="introducing-operations-management-suite" class="xliff"></a>
 Operations Management Suite（简称为 OMS）是在云中从无到有设计出的管理服务集合。  OMS 组件完全在 Azure 中托管，而不是部署和管理本地资源。  配置工作极少，基本上在几分钟内就能将它启动并运行。  
 
 - **极低的部署成本与复杂性。**  由于 OMS 的所有组件和数据都存储在 Azure 中，因此在短时间就能将它启动并运行，没有本地组件那样的复杂性，也不需要额外的投资。
@@ -39,15 +43,18 @@ Operations Management Suite（简称为 OMS）是在云中从无到有设计出�
 - **全球信息。**  OMS 中的管理解决方案可持续访问最新的信息。  例如，安全和审核解决方案可以使用在全球检测到的最新威胁来执行威胁分析。
 - **从任何位置访问。**  只要有浏览器，就能从任何位置访问管理环境。  在智能手机上安装 OMS 应用即可随时访问监视数据。
 
-### <a name="is-it-just-for-the-cloud"></a>它只适用于云环境吗？
+### 它只适用于云环境吗？
+<a id="is-it-just-for-the-cloud" class="xliff"></a>
 不能仅仅因为 OMS 服务在云中运行，就认为它们无法有效管理本地环境。  在数据中心内的任意 Windows 或 Linux 计算机上安装一个代理，就能将数据发送到 Log Analytics，可在其中连同从云或本地服务收集的其他所有数据一起进行分析。  使用 Azure 备份和 Azure Site Recovery 可以利用云来实现本地资源的备份和高可用性。  
 云中的 Runbook 通常无法访问本地资源，但你也可以在数据中心内托管 Runbook 的一台或多台计算机上安装代理。  启动 Runbook 时，只需指定是要让它在云中还是本地辅助角色上运行即可。
 
-## <a name="hybrid-management-with-system-center"></a>使用 System Center 进行混合管理
+## 使用 System Center 进行混合管理
+<a id="hybrid-management-with-system-center" class="xliff"></a>
 如果有现有的 System Center 安装，可将这些组件与 OMS 服务集成，利用每种产品的相关专业技术为本地和云环境提供混合解决方案。  将现有 Operations Manager 管理组连接到 Log Analytics 可以分析云中托管的代理。  结合 Data Protection Manager 使用现有备份过程可将数据备份到云中。  
 
 
-## <a name="oms-services"></a>OMS 服务
+## OMS 服务
+<a id="oms-services" class="xliff"></a>
 OMS 的核心功能由 Azure 中运行的一组服务提供。  每个服务提供特定的管理功能，可以组合这些服务来实现不同的管理方案。
 
 || 服务 | 说明 |
@@ -57,19 +64,22 @@ OMS 的核心功能由 Azure 中运行的一组服务提供。  每个服务提�
 | ![Azure 备份](media/operations-management-suite-overview/icon-backup.png) | 备份 | 备份和还原关键数据。 |
 | ![Azure Site Recovery](media/operations-management-suite-overview/icon-site-recovery.png) | 站点恢复 | 为关键应用程序提供高可用性。 |
 
-### <a name="log-analytics"></a>Log Analytics
+### Log Analytics
+<a id="log-analytics" class="xliff"></a>
 [Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) 通过将托管资源的数据收集到中心存储库来为 OMS 提供监视服务。  这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集后，可以分析、导出数据或针对它们发出警报。  使用这种方法可以整合来自各种源的数据，因此可将 Azure 服务中的服务合并到现有的本地环境。  此外，它还能将数据收集与针对该数据执行的操作明确区分开来，以便能够针对所有类型的数据执行所有操作。  
 
 ![Log Analytics 概述](media/operations-management-suite-overview/overview-log-analytics.png)
 
-#### <a name="collecting-data"></a>收集数据
+#### 收集数据
+<a id="collecting-data" class="xliff"></a>
 可通过多种方法将数据收集到存储库，供 Log Analytics 分析。
 
 - **Windows 或 Linux 计算机和虚拟机。**  在要从中收集数据的 [Windows](../log-analytics/log-analytics-windows-agents.md) 和 [Linux](../log-analytics/log-analytics-linux-agents.md) 计算机或虚拟机上安装 Microsoft 监视代理。  该代理将自动从 Log Analytics 下载用于定义要收集的事件和性能数据的配置。  可以使用 Azure 门户在 Azure 中运行的虚拟机上轻松安装该代理。  如果有现有的 Operations Manager 环境，可将管理组连接到 Log Analytics，然后从所有现有代理自动开始收集数据。
 - **Azure 服务。**  Log Analytics 将 [Azure 诊断和 Azure 监视](../log-analytics/log-analytics-azure-storage.md)中的遥测数据收集到存储库，以便可以监视 Azure 资源。
 - **数据收集器 API。**  Log Analytics 提供[用于从任何客户端填充数据的 REST API](../log-analytics/log-analytics-data-collector-api.md)。  可以使用此 API 从第三方应用程序收集数据，或实现自定义管理方案。  一种常用方法是使用 Azure 自动化中的 Runbook 收集数据，然后使用数据收集器 API 将数据写入存储库。
 
-#### <a name="reporting-and-analyzing-data"></a>报告和分析数据
+#### 报告和分析数据
+<a id="reporting-and-analyzing-data" class="xliff"></a>
 Log Analytics 包含强大的查询语言，可提取存储库中存储的数据。  由于所有源中的数据以记录的形式存储，因此使用单个查询就能分析多个源中的数据。
   
 除了即席分析以外，Log Analytics 还提供多种方法来报告和分析查询中的数据。
@@ -78,7 +88,8 @@ Log Analytics 包含强大的查询语言，可提取存储库中存储的数据
 - **导出。**  可以使用相应的选项来导出任何查询的结果，以便在 Log Analytics 的外部进行分析。  甚至可以在提供强大可视化与分析功能的 [Power BI](../log-analytics/log-analytics-powerbi.md) 中计划定期导出。
 - **日志搜索 API。**  Log Analytics 提供[用于从任何客户端收集数据的 REST API](../log-analytics/log-analytics-log-search-api.md)。  使用此 API 能够以编程方式处理在存储库中收集的数据，或者通过其他监视工具访问这些数据。
 
-#### <a name="alerting"></a>警报
+#### 警报
+<a id="alerting" class="xliff"></a>
 检测到问题时，Log Analytics可以[主动发出警报](../log-analytics/log-analytics-alerts.md)或采取纠正措施。  与 Log Analytics 中的其他所有分析功能一样，这也是通过日志搜索实现的。  这种搜索按定期计划运行，如果结果与特定的条件匹配，则创建警报。
 
 ![Log Analytics 警报](media/operations-management-suite-overview/overview-alerts.png)
@@ -89,14 +100,17 @@ Log Analytics 包含强大的查询语言，可提取存储库中存储的数据
 - **Runbook。**  Log Analytics 中的警报可以启动 Azure 自动化中的 Runbook。  这样做的目的通常是为了尝试纠正检测到的问题。  如果 Azure 或其他云中出现问题，可在云中启动 Runbook；如果物理机或虚拟机上出现问题，可在本地代理上启动 Runbook。
 - **Webhook。**  警报可以启动 Webhook，并向其传递日志搜索结果中的数据。  这样，便可以实现与外部服务（例如备用警报系统）的集成，或者尝试针对外部网站采取纠正措施。
 
-### <a name="azure-automation"></a>Azure 自动化
+### Azure 自动化
+<a id="azure-automation" class="xliff"></a>
 [Azure 自动化](http://azure.microsoft.com/documentation/services/automation)为 OMS 提供过程自动化和配置管理。  它可以将手动过程自动化，帮助实施物理和虚拟计算机的配置。  
 
-#### <a name="process-automation"></a>过程自动化
+#### 过程自动化
+<a id="process-automation" class="xliff"></a>
 Azure 自动化使用基于 PowerShell 脚本或 PowerShell 工作流的 [Runbook](../automation/automation-runbook-types.md) 将手动过程自动化。  它还包含资产支持 Runbook，例如，可在多个 Runbook 之间共享的变量，以及用于存储 Runbook 进行身份验证时可能需要的已加密信息的凭据与连接。
 Runbook 为套件中的其他服务提供过程自动化。  由于可以使用 PowerShell 或 REST API 访问其他每个服务，因此可以创建 Runbook 来执行在 Log Analytics 中收集管理数据或使用 Azure 备份启动备份等功能。
 
-##### <a name="accessing-resources"></a>访问资源
+##### 访问资源
+<a id="accessing-resources" class="xliff"></a>
 由于 Runbook 基于 PowerShell，因此能够管理可通过 PowerShell cmdlet 访问的任何资源。  在自动化帐户中[加载模块](../automation/automation-integration-modules.md)时，该模块可供该帐户中的所有 Runbook 使用。 
  
 在云中运行 Runbook 时，这些 Runbook 可从云访问任何资源。  这包括你的 Azure 订阅、Amazon Web Services (AWS) 等其他云或可通过 REST API 访问的服务中的资源。  云中的 Runbook 不使用任何凭据运行，但可以利用凭据、连接和证书等自动化资产向它们访问的资源进行身份验证。
@@ -105,7 +119,8 @@ Runbook 为套件中的其他服务提供过程自动化。  由于可以使用 
 
 ![Azure 自动化 Runbook](media/operations-management-suite-overview/overview-runbooks.png)
 
-##### <a name="starting-a-runbook"></a>启动 Runbook
+##### 启动 Runbook
+<a id="starting-a-runbook" class="xliff"></a>
 可[通过多种方法启动](../automation/automation-starting-a-runbook.md) Runbook，以便可以将它们包含在多个管理方案中。  
 
 - **Azure 门户。**  与其他 Azure 服务一样，可以通过 Azure 门户管理 Azure 自动化。  除了启动 Runbook 以外，还可以导入 Runbook 或创作自己的 Runbook。
@@ -114,15 +129,18 @@ Runbook 为套件中的其他服务提供过程自动化。  由于可以使用 
 - **Webhook。**  可为任何 Runbook 创建 Webhook，以便能够从外部应用程序或网站启动该 Runbook。
 - **Log Analytics 警报。**  Log Analytics 中的警报能够自动启动 Runbook，以尝试纠正警报识别到的问题。
 
-#### <a name="configuration-management"></a>配置管理
+#### 配置管理
+<a id="configuration-management" class="xliff"></a>
 [PowerShell Desired State Configuration (DSC)](../automation/automation-dsc-overview.md) 是 Windows PowerShell 中用于部署和实施物理机与虚拟机配置的管理平台。  Azure 自动化可管理 DSC 配置，在云中提供代理可以访问的“拉”服务器用于检索所需的配置。
 
 ![Azure Automation DSC](media/operations-management-suite-overview/overview-dsc.png)
 
-### <a name="azure-backup-and-azure-site-recovery"></a>Azure 备份和 Azure Site Recovery
+### Azure 备份和 Azure Site Recovery
+<a id="azure-backup-and-azure-site-recovery" class="xliff"></a>
 Azure 备份和 Azure Site Recovery 能够为业务连续性和灾难恢复提供辅助。  它们各自的功能可帮助确保在发生服务中断时应用程序保持可用，在系统重新联机时恢复正常操作。  这两个服务都有助于实现针对组织定义的恢复点目标 (RPO) 和恢复时间目标 (RTO)。 RPO 定义在发生服务中断期间数据处于不可用状态的可接受限制，RTO 定义在发生服务中断期间服务或应用处于不可用状态的时间限制。
 
-#### <a name="azure-backup"></a>Azure 备份
+#### Azure 备份
+<a id="azure-backup" class="xliff"></a>
 [Azure 备份](http://azure.microsoft.com/documentation/services/backup)为 OMS 提供数据备份和还原服务。  它可以保护应用程序数据，并且无需资本投资、只需最低的运行成本，即可将这些数据保留多年。  它可以备份物理和虚拟 Windows 服务器以及 SQL Server 和 SharePoint 等应用程序工作负荷中的数据。  System Center Data Protection Manager (DPM) 也可使用它将受保护的数据复制到 Azure，以实现冗余和长期存储。
 
 Azure 备份中的受保护数据存储在位于特定地理区域的备份保管库。 数据在同一区域内复制，并且根据保管库类型，可能还会复制到其他区域以进一步实现复原能力。
@@ -135,7 +153,8 @@ Azure 备份有三种基本方案。
 
 
 
-#### <a name="azure-site-recovery"></a>Azure Site Recovery
+#### Azure Site Recovery
+<a id="azure-site-recovery" class="xliff"></a>
 [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) 通过协调本地虚拟机和物理机到 Azure 或辅助站点的复制来提供业务连续性。 如果主站点不可用，可故障转移到辅助位置，使用户能够继续工作，系统恢复正常后可故障回复。 
 
 Azure Site Recovery 为服务器和应用程序提供高可用性。  它能够为业务连续性和灾难恢复 (BCDR) 策略提供辅助，因为可以协调本地 Hyper-V 虚拟机、VMware 虚拟机和 Windows/Linux 物理服务器的复制故障转移和恢复。 可将计算机复制到辅助数据中心，或将其复制到 Azure 以扩展数据中心。 Site Recovery 还为工作负荷提供简单的故障转移和恢复。 它与 SQL Server AlwaysOn 等灾难恢复机制集成，提供恢复计划以便对多台计算机间分层的工作负荷实现轻松故障转移。
@@ -149,7 +168,8 @@ Azure Site Recovery 有三种基本复制方案。
 
 Site Recovery 将元数据存储在位于特定 Azure 地理区域的保管库。 Site Recovery 服务不存储任何复制的数据。
 
-## <a name="management-solutions"></a>管理解决方案
+## 管理解决方案
+<a id="management-solutions" class="xliff"></a>
 [管理解决方案](operations-management-suite-solutions.md)是预先打包的逻辑集，可以实现利用一个或多个 OMS 服务的特定管理方案。  Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 订阅，提高 OMS 投资的价值。  合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure 应用商店或快速启动模板将它们提供给用户。
 
 [更新管理解决方案](oms-solution-update-management.md)就是利用多个服务提供更多功能的解决方案的一个好例子。  此解决方案使用适用于 Windows 和 Linux 的 Log Analytics 代理来收集有关每个代理上所需的更新的信息。  它将这些数据写入 Log Analytics 存储库，你可以使用随附的仪表板来分析这些数据。  创建部署时，可以使用 Azure 自动化中的 Runbook 来安装所需的更新。  可在管理门户中管理整个过程，无需担心如何获取基础详细信息。
@@ -166,7 +186,8 @@ Microsoft 与合作伙伴会定期将解决方案添加到 OMS，使用户能够
 ![解决方案库](media/operations-management-suite-overview/solution-gallery.png)
 
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 * 了解 [Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) 的相关信息。
 * 了解 [Azure 自动化](../automation/automation-intro.md)的相关信息。
 * 了解 [Azure 备份](http://azure.microsoft.com/documentation/services/backup)的相关信息。

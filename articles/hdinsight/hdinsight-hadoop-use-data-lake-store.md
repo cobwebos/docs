@@ -14,17 +14,18 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/10/2017
+ms.date: 07/03/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: b60a0d1668e7c1010663ee2b11bff26b0bb70cf0
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 993cff63037017e37ff5b0787f50ba002df28d03
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/13/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
-# <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>配合使用 Data Lake Store 和 HDInsight 群集
+# 配合使用 Data Lake Store 和 HDInsight 群集
+<a id="use-data-lake-store-with-azure-hdinsight-clusters" class="xliff"></a>
 
 若要分析 HDInsight 群集中的数据，可将数据存储在 [Azure 存储](../storage/storage-introduction.md)和/或 [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) 中。 这两个存储选项都允许安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。
 
@@ -35,7 +36,8 @@ ms.lasthandoff: 06/13/2017
 > 
 > 
 
-## <a name="availabilities-for-hdinsight-clusters"></a>HDInsight 群集的可用性
+## HDInsight 群集的可用性
+<a id="availabilities-for-hdinsight-clusters" class="xliff"></a>
 
 Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可指定 Azure 存储中的 Blob 容器作为默认文件系统，或者可借助 HDInsight 3.5 和更新版本，选择 Azure 存储或 Azure Data Lake Store 作为默认文件系统，但有一些例外。 
 
@@ -59,7 +61,8 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Store：
 使用 Data Lake Store 作为附加存储帐户不会影响从群集读取或写入数据到 Azure 存储的性能或能力。
 
 
-## <a name="use-data-lake-store-as-default-storage"></a>将 Data Lake Store 用作默认存储
+## 将 Data Lake Store 用作默认存储
+<a id="use-data-lake-store-as-default-storage" class="xliff"></a>
 
 将 Data Lake Store 作为默认存储对 HDInsight 进行部署时，与群集相关的文件将存储在 Data Lake Store 的以下位置中：
 
@@ -81,7 +84,8 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Store：
 若要深入了解如何创建服务主体和授予访问权限，请参阅[配置 Data Lake Store 访问](#configure-data-lake-store-access)。
 
 
-## <a name="use-data-lake-store-as-additional-storage"></a>将 Data Lake Store 用作附加存储
+## 将 Data Lake Store 用作附加存储
+<a id="use-data-lake-store-as-additional-storage" class="xliff"></a>
 
 也可以将 Data Lake Store 用作群集的其他存储。 在这种情况下，群集默认存储可以是 Azure 存储 Blob 或 Data Lake Store 帐户。 如果针对 Data Lake Store（作为附加存储）中存储的数据运行 HDInsight 作业，则必须使用该文件的完全限定的路径。 例如：
 
@@ -96,15 +100,22 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Store：
 若要深入了解如何创建服务主体和授予访问权限，请参阅[配置 Data Lake Store 访问](#configure-data-lake-store-access)。
 
 
-## <a name="use-more-than-one-data-lake-store-accounts"></a>使用多个 Data Lake Store 帐户
+## 使用多个 Data Lake Store 帐户
+<a id="use-more-than-one-data-lake-store-accounts" class="xliff"></a>
 
 通过向 HDInsight 群集授予对一个或多个 Data Lake Store 帐户中数据的访问权限，可实现添加 Data Lake Store 帐户作为附加帐户以及添加多个 Data Lake Store 帐户。 请参阅[配置 Data Lake Store 访问](#configure-data-lake-store-access)。
 
-## <a name="configure-data-lake-store-access"></a>配置 Data Lake Store 访问
+## 配置 Data Lake Store 访问
+<a id="configure-data-lake-store-access" class="xliff"></a>
 
 若要从 HDInsight 群集配置 Data Lake Store 访问，必须具有 Azure Active Directory (Azure AD) 服务主体。 只有 Azure AD 管理员才能创建服务主体。 必须使用证书创建服务主体。 有关详细信息，请参阅[配置 Data Lake Store 访问](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#configure-data-lake-store-access)和[使用自签名证书创建服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate)。
 
-## <a name="access-files-from-the-cluster"></a>从群集访问文件
+> [!NOTE]
+> 若要将 Azure Data Lake Store 用作 HDInsight 群集的额外存储，则强烈建议你在创建群集时按本文说明进行操作。 向现有的 HDInsight 群集添加 Azure Data Lake Store 作为额外的存储是很复杂的过程，容易出现错误。
+>
+
+## 从群集访问文件
+<a id="access-files-from-the-cluster" class="xliff"></a>
 
 可以通过多种方法从 HDInsight 群集访问 Data Lake Store 中的文件。
 
@@ -124,7 +135,8 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Store：
 
         /example/data/sample.log
 
-## <a name="create-hdinsight-clusters-with-access-to-data-lake-store"></a>创建具有 Data Lake Store 访问权限的 HDInsight 群集
+## 创建具有 Data Lake Store 访问权限的 HDInsight 群集
+<a id="create-hdinsight-clusters-with-access-to-data-lake-store" class="xliff"></a>
 
 请使用以下链接，详细了解如何创建具有 Data Lake Store 访问权限的 HDInsight 群集。
 
@@ -134,7 +146,8 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Store：
 * [使用 Azure 模板](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 本文介绍如何将 HDFS 兼容的 Azure Data Lake Store 与 HDInsight 配合使用。 这使你能够生成可缩放的长期存档数据采集解决方案，并使用 HDInsight 来解锁所存储结构化和非结构化数据内的信息。
 
 有关详细信息，请参阅：

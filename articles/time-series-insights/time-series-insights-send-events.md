@@ -16,17 +16,19 @@ ms.workload: big-data
 ms.date: 04/21/2017
 ms.author: venkatja
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: d7c01e18355b66670c9ab7d964f5cdb7ba72bb8f
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 9f2d3b57a42efb7b04566278d3267b3cdbed713a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/01/2017
 
 ---
-# <a name="send-events-to-a-time-series-insights-environment-via-event-hub"></a>通过事件中心向时序见解环境发送事件
+# 通过事件中心向时序见解环境发送事件
+<a id="send-events-to-a-time-series-insights-environment-via-event-hub" class="xliff"></a>
 
-本教程介绍如何创建和配置事件中心并运行示例应用程序来推送事件。 如果你已经有了一个事件中心，其中已包含 JSON 格式的事件，则可跳过本教程，在[时序资源管理器](https://insights.timeseries.azure.com)中查看你的环境。
+本教程介绍如何创建和配置事件中心并运行示例应用程序来推送事件。 如果你已经有了一个事件中心，其中的事件采用 JSON 格式，则可跳过本教程，在[时序见解](https://insights.timeseries.azure.com)中查看你的环境。
 
-## <a name="configure-an-event-hub"></a>配置事件中心
+## 配置事件中心
+<a id="configure-an-event-hub" class="xliff"></a>
 1. 若要创建事件中心，请遵循事件中心[文档](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)中的说明。
 
 2. 请确保创建一个使用者组，由时序见解事件源独占使用。
@@ -36,20 +38,22 @@ ms.lasthandoff: 06/16/2017
 
   ![选择事件中心使用者组](media/send-events/consumer-group.png)
 
-3. 在事件中心创建“MySendPolicy”，用于在下面的示例中发送事件。
+3. 在事件中心创建“MySendPolicy”，用于在 csharp 示例中发送事件。
 
   ![选择共享访问策略，然后单击“添加”按钮](media/send-events/shared-access-policy.png)  
 
   ![添加新的共享访问策略](media/send-events/shared-access-policy-2.png)  
 
-## <a name="create-time-series-insights-event-source"></a>创建时序见解事件源
+## 创建时序见解事件源
+<a id="create-time-series-insights-event-source" class="xliff"></a>
 1. 如果尚未创建事件源，请按[此处](time-series-insights-add-event-source.md)指定的说明操作，以便创建事件源。
 
-2. 指定“deviceTimestamp”作为时间戳属性名称 - 此属性在下面的示例中用作实际时间戳。 时间戳属性名称区分大小写，值在作为 JSON 发送到事件中心时应采用 __yyyy-MM-ddTHH:mm:ss.FFFFFFFK__ 格式。 如果此属性不存在于事件中，则会使用事件在事件中心的排队时间。
+2. 指定“deviceTimestamp”作为时间戳属性名称 - 此属性在 csharp 示例中用作实际时间戳。 时间戳属性名称区分大小写，值在作为 JSON 发送到事件中心时应采用 __yyyy-MM-ddTHH:mm:ss.FFFFFFFK__ 格式。 如果此属性不存在于事件中，则会使用事件中心的排队时间。
 
   ![创建事件源](media/send-events/event-source-1.png)
 
-## <a name="run-sample-code-to-push-events"></a>运行示例代码以推送事件
+## 用于推送事件的示例代码
+<a id="sample-code-to-push-events" class="xliff"></a>
 1. 转到事件中心策略“MySendPolicy”，复制带策略密钥的连接字符串。
 
   ![复制 MySendPolicy 连接字符串](media/send-events/sample-code-connection-string.png)
@@ -123,50 +127,59 @@ namespace Microsoft.Rdx.DataGenerator
 }
 
 ```
-## <a name="supported-json-shapes"></a>支持的 JSON 形状
-### <a name="sample-1"></a>示例 1
+## 支持的 JSON 形状
+<a id="supported-json-shapes" class="xliff"></a>
+### 示例 1
+<a id="sample-1" class="xliff"></a>
 
-#### <a name="input"></a>输入
+#### 输入
+<a id="input" class="xliff"></a>
 
 一个简单的 JSON 对象。
 
 ```json
 {
-    "deviceId":"device1",
-    "deviceTimestamp":"2016-01-08T01:08:00Z"
+    "id":"device1",
+    "timestamp":"2016-01-08T01:08:00Z"
 }
 ```
-#### <a name="output---1-event"></a>输出 - 1 个事件
+#### 输出 - 1 个事件
+<a id="output---1-event" class="xliff"></a>
 
-|deviceId|deviceTimestamp|
+|id|timestamp|
 |--------|---------------|
 |device1|2016-01-08T01:08:00Z|
 
-### <a name="sample-2"></a>示例 2
+### 示例 2
+<a id="sample-2" class="xliff"></a>
 
-#### <a name="input"></a>输入
+#### 输入
+<a id="input" class="xliff"></a>
 包含两个 JSON 对象的 JSON 数组。 每个 JSON 对象都将转换为事件。
 ```json
 [
     {
-        "deviceId":"device1",
-        "deviceTimestamp":"2016-01-08T01:08:00Z"
+        "id":"device1",
+        "timestamp":"2016-01-08T01:08:00Z"
     },
     {
-        "deviceId":"device2",
-        "deviceTimestamp":"2016-01-17T01:17:00Z"
+        "id":"device2",
+        "timestamp":"2016-01-17T01:17:00Z"
     }
 ]
 ```
-#### <a name="output---2-events"></a>输出 - 2 个事件
+#### 输出 - 2 个事件
+<a id="output---2-events" class="xliff"></a>
 
-|deviceId|deviceTimestamp|
+|id|timestamp|
 |--------|---------------|
 |device1|2016-01-08T01:08:00Z|
 |device2|2016-01-08T01:17:00Z|
-### <a name="sample-3"></a>示例 3
+### 示例 3
+<a id="sample-3" class="xliff"></a>
 
-#### <a name="input"></a>输入
+#### 输入
+<a id="input" class="xliff"></a>
 
 具有嵌套 JSON 数组（其中包含两个 JSON 对象）的 JSON 对象。
 ```json
@@ -174,52 +187,55 @@ namespace Microsoft.Rdx.DataGenerator
     "location":"WestUs",
     "events":[
         {
-            "deviceId":"device1",
-            "deviceTimestamp":"2016-01-08T01:08:00Z"
+            "id":"device1",
+            "timestamp":"2016-01-08T01:08:00Z"
         },
         {
-            "deviceId":"device2",
-            "deviceTimestamp":"2016-01-17T01:17:00Z"
+            "id":"device2",
+            "timestamp":"2016-01-17T01:17:00Z"
         }
     ]
 }
 
 ```
-#### <a name="output---2-events"></a>输出 - 2 个事件
+#### 输出 - 2 个事件
+<a id="output---2-events" class="xliff"></a>
 请注意，“location”属性复制到每个事件。
 
-|location|events.deviceId|events.deviceTimestamp|
+|location|events.id|events.timestamp|
 |--------|---------------|----------------------|
 |WestUs|device1|2016-01-08T01:08:00Z|
 |WestUs|device2|2016-01-08T01:17:00Z|
 
-### <a name="sample-4"></a>示例 4
+### 示例 4
+<a id="sample-4" class="xliff"></a>
 
-#### <a name="input"></a>输入
+#### 输入
+<a id="input" class="xliff"></a>
 
 具有嵌套 JSON 数组（其中包含两个 JSON 对象）的 JSON 对象。 此输入表明复杂 JSON 对象可能表示全局属性。
 
 ```json
 {
     "location":"WestUs",
-    "manufacturerInfo":{
+    "manufacturer":{
         "name":"manufacturer1",
         "location":"EastUs"
     },
     "events":[
         {
-            "deviceId":"device1",
-            "deviceTimestamp":"2016-01-08T01:08:00Z",
-            "deviceData":{
+            "id":"device1",
+            "timestamp":"2016-01-08T01:08:00Z",
+            "data":{
                 "type":"pressure",
                 "units":"psi",
                 "value":108.09
             }
         },
         {
-            "deviceId":"device2",
-            "deviceTimestamp":"2016-01-17T01:17:00Z",
-            "deviceData":{
+            "id":"device2",
+            "timestamp":"2016-01-17T01:17:00Z",
+            "data":{
                 "type":"vibration",
                 "units":"abs G",
                 "value":217.09
@@ -228,14 +244,16 @@ namespace Microsoft.Rdx.DataGenerator
     ]
 }
 ```
-#### <a name="output---2-events"></a>输出 - 2 个事件
+#### 输出 - 2 个事件
+<a id="output---2-events" class="xliff"></a>
 
-|location|manufacturerInfo.name|manufacturerInfo.location|events.deviceId|events.deviceTimestamp|events.deviceData.type|events.deviceData.units|events.deviceData.value|
+|location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
 |---|---|---|---|---|---|---|---|
 |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|压强|psi|108.09|
 |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|振动|abs G|217.09|
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 * 在[时序见解门户](https://insights.timeseries.azure.com)中查看环境
 

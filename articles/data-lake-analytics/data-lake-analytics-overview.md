@@ -22,17 +22,14 @@ ms.lasthandoff: 06/26/2017
 
 
 ---
-<a id="overview-of-microsoft-azure-data-lake-analytics" class="xliff"></a>
-
 # Microsoft Azure Data Lake Analytics 概述
-<a id="what-is-azure-data-lake-analytics" class="xliff"></a>
-
+<a id="overview-of-microsoft-azure-data-lake-analytics" class="xliff"></a>
 ## 什么是 Azure Data Lake Analytics？
+<a id="what-is-azure-data-lake-analytics" class="xliff"></a>
 Azure Data Lake Analytics 是一项按需分析作业服务，用于简化大数据分析。 可以专注于编写、运行和管理作业，而不是运行分布式基础结构。 无需部署、配置和调整硬件，只需编写查询即可转换数据并提取有价值的见解。 通过将表盘设置为所需值，该分析服务就可以立即处理任何规模的作业。 只需为运行作业付费，让服务变得更为经济高效。 该分析服务支持 Azure Active Directory，让用户可管理访问和角色，并与用户的本地识别系统集成。 它还包括了 U-SQL 语言，有效结合了 SQL 的优点和用户代码的表达力。 U-SQL 的可缩放分布式运行时可让用户高效地分析存储中的数据，以及跨 Azure 中的 SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库的数据。
 
-<a id="key-capabilities" class="xliff"></a>
-
 ## 关键功能
+<a id="key-capabilities" class="xliff"></a>
 * **动态缩放**
   
     Data Lake Analytics 是针对云缩放和性能需求进行构建的。  它能动态地预配资源并让你以千吉字节甚至百亿亿字节为单位进行分析。 当作业完成时，它自动释放资源，你仅需为所用的处理功能付费。 增加或减少存储数据的大小或使用的计算资源量时，无需重写代码。 用户可仅关注自己的业务逻辑，而非如何处理和存储大数据集。
@@ -52,9 +49,8 @@ Azure Data Lake Analytics 是一项按需分析作业服务，用于简化大数
   
     Data Lake Analytics 已针对搭配使用 Azure Data Lake 而优化，可为大数据工作负荷提供最高级别的性能、吞吐量和并行化。  Data Lake Analytics 还可与 Azure Blob 存储和 Azure SQL 数据库搭配使用。
 
-<a id="next-steps" class="xliff"></a>
-
 ## 后续步骤
+<a id="next-steps" class="xliff"></a>
  
   * 通过 [Azure 门户](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [CLI](data-lake-analytics-get-started-cli2.md) 使用 Data Lake Analytics 入门
   * 使用 [Azure 门户](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) | [Azure .NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md) | [Node.js](data-lake-analytics-manage-use-nodejs.md) 管理 Azure Data Lake Analytics

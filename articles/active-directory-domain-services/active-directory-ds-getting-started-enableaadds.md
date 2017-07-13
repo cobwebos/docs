@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory 域服务：启用 Azure Active Directory 域服务 | Microsoft Docs"
-description: "Azure Active Directory 域服务入门"
+description: "通过 Azure 经典门户启用 Azure Active Directory 域服务"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -12,18 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/06/2017
+ms.date: 06/28/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: e5f1fe51d8931985fa55b2d8c0a3fd25bb93f20f
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: ed72325ca9db99405c6173eb882a92f80cd77f47
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/30/2017
 
 
 ---
-# <a name="enable-azure-active-directory-domain-services"></a>启用 Azure Active Directory 域服务
-## <a name="task-3-enable-azure-active-directory-domain-services"></a>任务 3：启用 Azure Active Directory 域服务
-在此任务中，请执行以下操作，为目录启用 Azure Active Directory 域服务 (Azure AD DS)：
+# 通过 Azure 经典门户启用 Azure Active Directory 域服务
+<a id="enable-azure-active-directory-domain-services-using-the-azure-classic-portal" class="xliff"></a>
+
+## 任务 3：启用 Azure Active Directory 域服务
+<a id="task-3-enable-azure-active-directory-domain-services" class="xliff"></a>
+在此任务中，请执行以下步骤，为目录启用 Azure Active Directory 域服务 (Azure AD DS)：
 
 1. 转到 [Azure 经典门户](https://manage.windowsazure.com)。
 2. 在左窗格中，选择“Active Directory”按钮。
@@ -70,20 +74,20 @@ ms.lasthandoff: 04/12/2017
    * 对 Azure Active Directory 域服务使用虚拟网络中的专用子网。 请*勿*选择网关子网。 请参阅[网络注意事项](active-directory-ds-networking.md)。
 
    * 同样，使用 Azure Resource Manager 创建的虚拟网络也不会出现在此下拉列表中。 Azure Active Directory 域服务目前不支持基于 Resource Manager 的虚拟网络。
-9. 若要启用 Azure Active Directory 域服务，请单击页面底部任务窗格中的“保存”。 
+9. 若要启用 Azure Active Directory 域服务，请单击页面底部任务窗格中的“保存”。
     * 虽然已为目录启用 Azure Active Directory 域服务，但页面仍显示“挂起”状态。
 
         ![“启用域服务”窗口](./media/active-directory-domain-services-getting-started/enable-domain-services-pendingstate.png)
 
         > [!NOTE]
-        > Azure Active Directory 域服务为托管域提供高可用性。 启用 Azure Active Directory 域服务后，可以看到，可在虚拟网络上使用的域服务的 IP 地址会逐个显示。 服务为域启用高可用性后，第二个 IP 地址将在第一个 IP 地址显示后很快显示。 为域配置高可用性并将其激活后，应会在“配置”选项卡的“域服务”部分中看到两个 IP 地址。
+        > Azure Active Directory 域服务为托管域提供高可用性。 启用 Azure Active Directory 域服务后，可在虚拟网络上使用的域服务的 IP 地址会逐个显示。 服务为域启用高可用性后，第二个 IP 地址将在第一个 IP 地址显示后很快显示。 为域配置高可用性并将其激活后，应会在“配置”选项卡的“域服务”部分中看到两个 IP 地址。
         >
         >
     * 大约 20 到 30 分钟后，将在“配置”页的“IP 地址”字段中显示可在虚拟网络上使用的域服务的第一个 IP 地址。
 
         ![“域服务”窗口显示首次预配的 IP](./media/active-directory-domain-services-getting-started/domain-services-enabled-firstdc-available.png)
-    * 如果域的高可用性正常运行，将在页面上显示两个 IP 地址。 托管域已在这两个 IP 地址对应的所选虚拟网络上可用。 
-    
+    * 如果域的高可用性正常运行，将在页面上显示两个 IP 地址。 托管域已在这两个 IP 地址对应的所选虚拟网络上可用。
+
 10. 请记下这两个 IP 地址，以便更新虚拟网络的 DNS 设置。 这样做可使虚拟网络上的虚拟机连接到域，执行域加入等操作。
 
     ![“域服务”窗口，显示两个已预配的 IP](./media/active-directory-domain-services-getting-started/domain-services-enabled-bothdcs-available.png)
@@ -93,6 +97,7 @@ ms.lasthandoff: 04/12/2017
 >
 >
 
-## <a name="next-steps"></a>后续步骤
-任务 4：[更新 Azure 虚拟网络的 DNS 设置](active-directory-ds-getting-started-dns.md)
+## 后续步骤
+<a id="next-step" class="xliff"></a>
+[任务 4：更新 Azure 虚拟网络的 DNS 设置](active-directory-ds-getting-started-update-dns.md)
 

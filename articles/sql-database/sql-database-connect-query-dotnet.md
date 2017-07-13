@@ -16,18 +16,24 @@ ms.topic: hero-article
 ms.date: 05/23/2017
 ms.author: andrela
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 4faa029062fef6495debd5d787a1d86f4747453b
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: c3949447d40fe7e72c6490827fae4bdab6db48be
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/22/2017
 
 
 ---
-# <a name="azure-sql-database-use-net-c-to-connect-and-query-data"></a>Azure SQL 数据库：使用 .NET (C#) 进行连接和数据查询
+# Azure SQL 数据库：使用 .NET (C#) 进行连接和数据查询
+<a id="azure-sql-database-use-net-c-to-connect-and-query-data" class="xliff"></a>
 
 本快速入门演示了如何通过 Windows、Mac OS 和 Ubuntu Linux 平台使用 [C# 和 ADO.NET](https://msdn.microsoft.com/library/kb9s9ks0.aspx) 连接到 Azure SQL 数据库，然后使用 Transact-SQL 语句在数据库中查询、插入、更新和删除数据。
 
-## <a name="prerequisites"></a>先决条件
+> [!TIP]
+> 有关如何使用 C# 来创建和查询新数据库的教程，请参阅[使用 C# 设计你的第一个数据库](sql-database-design-first-database-csharp.md)。
+>
+
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
 
 此快速入门使用以下某个快速入门中创建的资源作为其起点：
 
@@ -35,18 +41,21 @@ ms.lasthandoff: 05/26/2017
 - [创建 DB - CLI](sql-database-get-started-cli.md)
 - [创建 DB - PowerShell](sql-database-get-started-powershell.md)
 
-## <a name="install-net"></a>安装 .NET
+## 安装 .NET
+<a id="install-net" class="xliff"></a>
 
 本部分中的步骤假定你熟悉使用 .NET 开发，但不熟悉如何使用 Azure SQL 数据库。 如果你不熟悉如何使用 .NET 进行开发，请转到[使用 SQL Server 生成应用](https://www.microsoft.com/sql-server/developer-get-started/)并选择 **C#**，然后选择操作系统。
 
-### <a name="windows-net-framework-and-net-core"></a>**Windows .NET Framework 和 .NET Core**
+### **Windows .NET Framework 和 .NET Core**
+<a id="windows-net-framework-and-net-core" class="xliff"></a>
 
 Visual Studio 2017 Community 是全功能、可扩展的免费 IDE，用于创建适用于 Android、iOS、Windows 以及 Web 和数据库应用程序与云服务的新式应用程序。 可以安装完整的 .NET Framework，也可以只安装 .NET Core。 快速入门中的代码片段二者都可以使用。 如果已在计算机上安装了 Visual Studio，请跳过下面几个步骤。
 
 1. 下载 [Visual Studio 2017 安装程序](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)。 
 2. 运行该安装程序，并遵照安装提示完成安装。
 
-### <a name="mac-os"></a>**Mac OS**
+### **Mac OS**
+<a id="mac-os" class="xliff"></a>
 打开终端并导航到要在其中创建 .NET Core 项目的目录。 输入以下命令安装 **brew**、**OpenSSL** 和 **.NET Core**。 
 
 ```bash
@@ -60,7 +69,8 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 在 macOS 上安装 .NET Core。 下载[正式的安装程序](https://go.microsoft.com/fwlink/?linkid=843444)。 此安装程序会安装工具并将其放置在 PATH 中，使你可以从控制台运行 dotnet
 
-### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
+### **Linux (Ubuntu)**
+<a id="linux-ubuntu" class="xliff"></a>
 打开终端并导航到要在其中创建 .NET Core 项目的目录。 输入以下命令安装 **.NET Core**。
 
 ```bash
@@ -70,7 +80,8 @@ sudo apt-get update
 sudo apt-get install dotnet-dev-1.0.1
 ```
 
-## <a name="get-connection-information"></a>获取连接信息
+## 获取连接信息
+<a id="get-connection-information" class="xliff"></a>
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称、数据库名称和登录信息。
 
@@ -88,7 +99,8 @@ sudo apt-get install dotnet-dev-1.0.1
 
     ![ADO.NET 连接字符串](./media/sql-database-connect-query-dotnet/adonet-connection-string.png)
   
-## <a name="add-systemdatasqlclient"></a>添加 System.Data.SqlClient
+## 添加 System.Data.SqlClient
+<a id="add-systemdatasqlclient" class="xliff"></a>
 使用 .NET Core 时，请将 System.Data.SqlClient 作为依赖项添加到项目的 ***csproj*** 文件。
 
 ```xml
@@ -97,7 +109,8 @@ sudo apt-get install dotnet-dev-1.0.1
 </ItemGroup>
 ```
 
-## <a name="select-data"></a>选择数据
+## 选择数据
+<a id="select-data" class="xliff"></a>
 
 1. 在开发环境中，打开一个空白的代码文件。
 2. 将 ```using System.Data.SqlClient``` 添加到代码文件 ([System.Data.SqlClient namespace](https://msdn.microsoft.com/library/system.data.sqlclient.aspx))。 
@@ -157,7 +170,8 @@ namespace ConsoleApplication1
 }
 ```
 
-## <a name="insert-data"></a>插入数据
+## 插入数据
+<a id="insert-data" class="xliff"></a>
 
 通过以下代码将 [SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) 与 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 语句配合使用，以便将新产品插入到 SalesLT.Product 表中。 为服务器、数据库、用户和密码添加相应的值。
 
@@ -212,7 +226,8 @@ namespace ConsoleApplication1
 }
 ```
 
-## <a name="update-data"></a>更新数据
+## 更新数据
+<a id="update-data" class="xliff"></a>
 
 通过以下代码将 [SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) 与 [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL 语句配合使用，以便更新此前添加的新产品。 为服务器、数据库、用户和密码添加相应的值。
 
@@ -262,7 +277,8 @@ namespace ConsoleApplication1
 }
 ```
 
-## <a name="delete-data"></a>删除数据
+## 删除数据
+<a id="delete-data" class="xliff"></a>
 
 通过以下代码将 [SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) 与 [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL 语句配合使用，以便删除此前添加的新产品。 为服务器、数据库、用户和密码添加相应的值。
 
@@ -311,7 +327,8 @@ namespace ConsoleApplication1
 }
 ```
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 - [设计你的第一个 Azure SQL 数据库](sql-database-design-first-database.md)
 - [.NET 文档](https://docs.microsoft.com/dotnet/)。
 - [使用 SSMS 进行连接和查询](sql-database-connect-query-ssms.md)

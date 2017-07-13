@@ -15,19 +15,21 @@ ms.topic: get-started-article
 ms.date: 06/13/2017
 ms.author: rachelap
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 19d6d0e1df185746a8ea289db9ac18e5614c09c7
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 8a5d0c60e101f4038dff6f76c8f23dbb2b44661c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
-# <a name="build-a-nodejs-restful-api-and-deploy-it-to-an-api-app-in-azure"></a>构建 Node.js RESTful API 并将它部署到 Azure 中的 API 应用
+# 构建 Node.js RESTful API 并将它部署到 Azure 中的 API 应用
+<a id="build-a-nodejs-restful-api-and-deploy-it-to-an-api-app-in-azure" class="xliff"></a>
 [!INCLUDE [app-service-api-get-started-selector](../../includes/app-service-api-get-started-selector.md)]
 
 此快速入门教程演示如何使用 [Swagger](http://swagger.io/) 定义创建 [Express](http://expressjs.com/) 框架 Node.js REST API，并在 Azure 上将其部署为 [API 应用](app-service-api-apps-why-best-platform.md)。 使用命令行工具创建应用，使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 配置资源，并使用 Git 部署该应用。  完成后，即可拥有一个在 Azure 上运行的有效示例 REST API。
 
-## <a name="prerequisites"></a>先决条件
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
 
 * [Git](https://git-scm.com/)
 * [Node.js 和 NPM](https://nodejs.org/)
@@ -38,7 +40,8 @@ ms.lasthandoff: 06/20/2017
 
 如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
-## <a name="prepare-your-environment"></a>准备环境
+## 准备环境
+<a id="prepare-your-environment" class="xliff"></a>
 
 1. 在终端窗口中，运行以下命令，将示例克隆到本地计算机。
 
@@ -59,7 +62,8 @@ ms.lasthandoff: 06/20/2017
     npm install -g generator-swaggerize
     ```
 
-## <a name="generate-nodejs-code"></a>生成 Node.js 代码 
+## 生成 Node.js 代码
+<a id="generate-nodejs-code" class="xliff"></a> 
 
 本教程部分为 API 开发工作流建模，将在其中先创建 Swagger 元数据，然后以此创建（自动生成）API 服务器代码基架。 
 
@@ -81,7 +85,8 @@ ms.lasthandoff: 06/20/2017
    ? Your email: frank@fabrikam.net
    ```
    
-## <a name="customize-the-project-code"></a>自定义项目代码
+## 自定义项目代码
+<a id="customize-the-project-code" class="xliff"></a>
 
 1. 将 lib 文件夹复制到 `yo swaggerize` 创建的 ContactList 文件夹，然后将目录更改为 ContactList。
 
@@ -161,9 +166,10 @@ ms.lasthandoff: 06/20/2017
     });
     ```   
 
-    此代码进行了一些小的更改，可与 Azure App Service 配合使用，并公开一个用于 API 的交互式 Web 界面。
+    此代码进行了一些小的更改，可与 Azure 应用服务配合使用，并公开一个用于 API 的交互式 Web 界面。
 
-### <a name="test-the-api-locally"></a>在本地测试 API
+### 在本地测试 API
+<a id="test-the-api-locally" class="xliff"></a>
 
 1. 启动 Node.js 应用
     ```bash
@@ -206,7 +212,7 @@ ms.lasthandoff: 06/20/2017
 
 ## <a id="createapiapp"></a>创建 API 应用
 
-本部分将使用 Azure CLI 2.0 创建在 Azure App Service 上托管 API 的资源。 
+本部分将使用 Azure CLI 2.0 创建在 Azure 应用服务上托管 API 的资源。 
 
 1.  使用 [az login](/cli/azure/#login) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
 
@@ -214,18 +220,25 @@ ms.lasthandoff: 06/20/2017
     az login
     ```
 
-2. [!INCLUDE [Create resource group](../../includes/app-service-api-create-resource-group.md)] 
+2. 如果有多个 Azure 订阅，则可将默认订阅更改为所需订阅。
 
-3. [!INCLUDE [Create app service plan](../../includes/app-service-api-create-app-service-plan.md)]
+    ````azurecli-interactive
+    az account set --subscription <name or id>
+    ````
 
-4. [!INCLUDE [Create API app](../../includes/app-service-api-create-api-app.md)] 
+3. [!INCLUDE [Create resource group](../../includes/app-service-api-create-resource-group.md)] 
+
+4. [!INCLUDE [Create app service plan](../../includes/app-service-api-create-app-service-plan.md)]
+
+5. [!INCLUDE [Create API app](../../includes/app-service-api-create-api-app.md)] 
 
 
-## <a name="deploy-the-api-with-git"></a>使用 Git 部署 API
+## 使用 Git 部署 API
+<a id="deploy-the-api-with-git" class="xliff"></a>
 
-通过将提交内容从本地 Git 存储库推送到 Azure App Service，将代码部署到 API 应用。
+通过将提交内容从本地 Git 存储库推送到 Azure 应用服务，将代码部署到 API 应用。
 
-1. [!INCLUDE [Configure your deployment credentials](../../includes/app-service-api-configure-local-git.md)] 
+1. [!INCLUDE [Configure your deployment credentials](../../includes/configure-deployment-user-no-h.md)] 
 
 2. 初始化 ContactList 目录中的一个新存储库。 
 
@@ -248,7 +261,8 @@ ms.lasthandoff: 06/20/2017
 
 5. [!INCLUDE [Push to Azure](../../includes/app-service-api-git-push-to-azure.md)]  
  
-## <a name="test-the-api--in-azure"></a>在 Azure 中测试 API
+## 在 Azure 中测试 API
+<a id="test-the-api--in-azure" class="xliff"></a>
 
 1. 打开浏览器并导航到 http://app_name.azurewebsites.net/contacts。 返回的 JSON 与本教程之前在本地提发出请求时返回的内容相同。
 
@@ -276,7 +290,8 @@ ms.lasthandoff: 06/20/2017
 
     现在可通过将提交内容推送到 Azure Git 存储库，将示例 API 的更新部署到 Azure。
 
-## <a name="clean-up"></a>清理
+## 清理
+<a id="clean-up" class="xliff"></a>
 
 若要清除此快速入门中创建的资源，请运行以下 Azure CLI 命令：
 
@@ -284,7 +299,8 @@ ms.lasthandoff: 06/20/2017
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-step"></a>后续步骤 
+## 后续步骤
+<a id="next-step" class="xliff"></a> 
 > [!div class="nextstepaction"]
 > [借助 CORS 从 JavaScript 客户端使用 API 应用](app-service-api-cors-consume-javascript.md)
 
