@@ -4,7 +4,7 @@ description:
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "azure iot 中心, 物联网云, azure iot 中心创建设备, ti sensortag, ti ble"
 ROBOTS: NOINDEX
@@ -17,17 +17,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: 759085dcb4993d38f79cb19efe58e1a968ddb682
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/25/2017
-
 
 ---
 
-# <a name="create-your-azure-iot-hub-and-register-your-device"></a>创建 Azure IoT 中心并注册设备
+<a id="create-your-azure-iot-hub-and-register-your-device" class="xliff"></a>
 
-## <a name="what-you-will-do"></a>执行的操作
+# 创建 Azure IoT 中心并注册设备
+
+<a id="what-you-will-do" class="xliff"></a>
+
+## 执行的操作
 
 - 创建资源组
 - 创建第一个 IoT 中心
@@ -37,19 +41,25 @@ ms.lasthandoff: 01/25/2017
 
 如果有任何问题，请在[故障排除页面](iot-hub-gateway-kit-c-sim-troubleshooting.md)上查找解决方案。
 
-## <a name="what-you-will-learn"></a>你要学习的知识
+<a id="what-you-will-learn" class="xliff"></a>
+
+## 你要学习的知识
 
 在本课程中将学习：
 
 - 如何使用 Azure CLI 创建 IoT 中心。
 - 如何在 IoT 中心注册设备。
 
-## <a name="what-you-need"></a>所需条件
+<a id="what-you-need" class="xliff"></a>
+
+## 所需条件
 
 - 一个有效的 Azure 订阅。 如果没有 Azure 帐户，只需几分钟时间就能创建一个[免费的 Azure 试用帐户](http://azure.microsoft.com/pricing/free-trial/)。
 - 应该安装 Azure CLI。
 
-## <a name="create-an-iot-hub"></a>创建 IoT 中心
+<a id="create-an-iot-hub" class="xliff"></a>
+
+## 创建 IoT 中心
 
 若要创建 IoT 中心，请执行以下步骤：
 
@@ -94,7 +104,9 @@ ms.lasthandoff: 01/25/2017
 > [!NOTE]
 > IoT 中心的名称必须是全局唯一的。 在 Azure 订阅下只能创建一个 F1 版本的 Azure IoT 中心。
 
-## <a name="register-your-device-in-your-iot-hub"></a>在 IoT 中心中注册设备
+<a id="register-your-device-in-your-iot-hub" class="xliff"></a>
+
+## 在 IoT 中心中注册设备
 
 必须为向 IoT 中心发送消息并从 IoT 中心接收消息的每个设备注册一个唯一 ID。
 运行以下命令，在 IoT 中心注册设备：
@@ -103,9 +115,13 @@ ms.lasthandoff: 01/25/2017
 az iot device create --device-id mydevice --hub-name {my hub name} --resource-group iot-gateway
 ```
 
-## <a name="summary"></a>摘要
+<a id="summary" class="xliff"></a>
+
+## 摘要
 
 你已创建了一个 IoT 中心并在该 IoT 中心内注册了逻辑设备的设备标识。 现在你可以了解如何配置并运行网关示例应用程序，以将数据从物理设备发送到云中的 IoT 中心。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [配置并运行模拟设备云上传示例应用程序](iot-hub-gateway-kit-c-sim-lesson3-configure-simulated-device-app.md)

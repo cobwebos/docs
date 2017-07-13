@@ -4,7 +4,7 @@ description: "克隆 GitHub 提供的示例 Arduino 应用程序，并运行 gul
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "arduino led 项目, arduino led 闪烁, arduino led 闪烁代码, arduino 闪烁程序, arduino 闪烁示例"
 ROBOTS: NOINDEX
@@ -17,29 +17,39 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: a2058611cecb33eab04de9249ad73b1c4ec6c2a5
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/24/2017
 
-
 ---
-# <a name="create-and-deploy-the-blink-application"></a>创建并部署 blink 应用程序
-## <a name="what-you-will-do"></a>执行的操作
+<a id="create-and-deploy-the-blink-application" class="xliff"></a>
+
+# 创建并部署 blink 应用程序
+<a id="what-you-will-do" class="xliff"></a>
+
+## 执行的操作
 克隆 GitHub 提供的示例 Arduino 应用程序，并使用 gulp 工具将示例应用程序部署到 Adafruit Feather M0 WiFi Arduino 开发板。 此示例应用程序让 GPIO #13 开发板 LED 每两秒闪烁一次。
 
 如果有任何问题，请在[故障排除页面][troubleshooting-page]上查找解决方案。
 
-## <a name="what-you-will-learn"></a>你要学习的知识
+<a id="what-you-will-learn" class="xliff"></a>
+
+## 你要学习的知识
 * 如何在 Arduino 开发板上部署和运行示例应用程序。
 
-## <a name="what-you-need"></a>所需条件
+<a id="what-you-need" class="xliff"></a>
+
+## 所需条件
 必须已成功完成以下操作：
 
 * [配置设备][configure-your-device]
 * [获取工具][get-the-tools]
 
-## <a name="open-the-sample-application"></a>打开示例应用程序
+<a id="open-the-sample-application" class="xliff"></a>
+
+## 打开示例应用程序
 若要打开示例应用程序，请执行以下步骤：
 
 1. 通过运行以下命令克隆 GitHub 中的示例存储库：
@@ -59,14 +69,18 @@ ms.lasthandoff: 01/24/2017
 
 `app` 子文件夹中的 `app.ino` 文件是关键源文件，其中包含用于控制 LED 的代码。
 
-### <a name="install-application-dependencies"></a>安装应用程序依赖项
+<a id="install-application-dependencies" class="xliff"></a>
+
+### 安装应用程序依赖项
 通过运行以下命令安装示例应用程序所需的库和其他模块：
 
 ```bash
 npm install
 ```
 
-## <a name="configure-the-device-connection"></a>配置设备连接
+<a id="configure-the-device-connection" class="xliff"></a>
+
+## 配置设备连接
 若要配置设备连接，请执行以下步骤：
 
 1. 使用设备发现 CLI 获取设备的串行端口：
@@ -88,8 +102,12 @@ npm install
    > [!NOTE]
    > 在 Windows 平台上 COM 端口的格式为 `COM1, COM2, ...`。 在 macOS 或 Ubuntu 上，此端口以 `/dev/` 开头。
 
-## <a name="deploy-and-run-the-sample-application"></a>部署并运行示例应用程序
-### <a name="install-the-required-tools-for-your-arduino-board"></a>安装 Arduino 开发板的所需工具
+<a id="deploy-and-run-the-sample-application" class="xliff"></a>
+
+## 部署并运行示例应用程序
+<a id="install-the-required-tools-for-your-arduino-board" class="xliff"></a>
+
+### 安装 Arduino 开发板的所需工具
 
 通过运行以下命令来安装用于 Arduino 开发板的 Azure IoT 中心 SDK：
 
@@ -102,7 +120,9 @@ gulp install-tools
 > [!NOTE]
 > 在运行 gulp 任务时，请退出正在运行的 Arduino IDE 实例：`install-tools`, `run`。
 
-### <a name="deploy-and-run-the-sample-app"></a>部署并运行示例应用
+<a id="deploy-and-run-the-sample-app" class="xliff"></a>
+
+### 部署并运行示例应用
 通过运行以下命令部署并运行示例应用程序：
 
 ```bash
@@ -115,15 +135,21 @@ gulp listen
 gulp run --listen
 ```
 
-### <a name="verify-the-app-works"></a>验证应用是否正常工作
+<a id="verify-the-app-works" class="xliff"></a>
+
+### 验证应用是否正常工作
 如果未看到 LED 闪烁，请参阅[故障排除指南][troubleshooting-page]来查找常见问题的解决方案。
 
 ![LED 闪烁][led-blinking]
 
-## <a name="summary"></a>摘要
+<a id="summary" class="xliff"></a>
+
+## 摘要
 你已安装了使用 Arduino 开发板时必需的工具，并已将使 LED 闪烁的示例应用程序部署到 Arduino 开发板。 现在，你可以创建、部署并运行另一个示例应用程序，以便将 Arduino 开发板连接到 Azure IoT 中心以发送和接收消息。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [获取 Azure 工具][get-the-azure-tools]
 
 <!-- Images and links -->

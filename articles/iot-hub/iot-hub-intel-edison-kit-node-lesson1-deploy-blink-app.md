@@ -4,7 +4,7 @@ description: "克隆 GitHub 提供的示例 C 应用程序，并使用 gulp 工�
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "arduino led 项目, arduino led 闪烁, arduino led 闪烁代码, arduino 闪烁程序, arduino 闪烁示例"
 ROBOTS: NOINDEX
@@ -17,27 +17,37 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
 ms.openlocfilehash: 182e63d40986b61a12885799b1b33bb570437a3c
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/25/2017
 
-
 ---
-# <a name="create-and-deploy-the-blink-application"></a>创建并部署 blink 应用程序
-## <a name="what-you-will-do"></a>执行的操作
+<a id="create-and-deploy-the-blink-application" class="xliff"></a>
+
+# 创建并部署 blink 应用程序
+<a id="what-you-will-do" class="xliff"></a>
+
+## 执行的操作
 克隆 GitHub 提供的示例 C 应用程序，并使用 gulp 工具将该示例应用程序部署到 Intel Edison。 此示例应用程序让连接到电路板的 LED 每隔两秒闪烁一次。 如果有任何问题，请在[故障排除页面][troubleshooting]上查找解决方案。
 
-## <a name="what-you-will-learn"></a>你要学习的知识
+<a id="what-you-will-learn" class="xliff"></a>
+
+## 你要学习的知识
 * 如何在 Edison 上部署和运行示例应用程序。
 
-## <a name="what-you-need"></a>需要什么
+<a id="what-you-need" class="xliff"></a>
+
+## 需要什么
 必须已成功完成以下操作：
 
 * [配置设备][configure-your-device]
 * [获取工具][get-the-tools]
 
-## <a name="open-the-sample-application"></a>打开示例应用程序
+<a id="open-the-sample-application" class="xliff"></a>
+
+## 打开示例应用程序
 若要打开示例应用程序，请执行以下步骤：
 
 1. 通过运行以下命令克隆 GitHub 中的示例存储库：
@@ -57,14 +67,18 @@ ms.lasthandoff: 01/25/2017
 
 `app` 子文件夹中的文件是重要的源文件，其中包含用于控制 LED 的代码。
 
-### <a name="install-application-dependencies"></a>安装应用程序依赖项
+<a id="install-application-dependencies" class="xliff"></a>
+
+### 安装应用程序依赖项
 通过运行以下命令安装示例应用程序所需的库和其他模块：
 
 ```bash
 npm install
 ```
 
-## <a name="configure-the-device-connection"></a>配置设备连接
+<a id="configure-the-device-connection" class="xliff"></a>
+
+## 配置设备连接
 若要配置设备连接，请执行以下步骤：
 
 1. 运行以下命令，生成设备配置文件：
@@ -91,24 +105,34 @@ npm install
 
 祝贺你！ Edison 的第一个示例应用程序已创建成功。
 
-## <a name="deploy-and-run-the-sample-application"></a>部署并运行示例应用程序
+<a id="deploy-and-run-the-sample-application" class="xliff"></a>
 
-### <a name="deploy-and-run-the-sample-app"></a>部署并运行示例应用
+## 部署并运行示例应用程序
+
+<a id="deploy-and-run-the-sample-app" class="xliff"></a>
+
+### 部署并运行示例应用
 通过运行以下命令部署并运行示例应用程序：
 
 ```bash
 gulp deploy && gulp run
 ```
 
-### <a name="verify-the-app-works"></a>确保应用正常运行
+<a id="verify-the-app-works" class="xliff"></a>
+
+### 确保应用正常运行
 LED 闪烁 20 次后，示例应用程序会自动终止。 如果未看到 LED 闪烁，请参阅[故障排除指南][troubleshooting]来查找常见问题的解决方案。
 
 ![LED 闪烁][led-blinking]
 
-## <a name="summary"></a>摘要
+<a id="summary" class="xliff"></a>
+
+## 摘要
 已安装适用于 Edison 的必需工具，并已将使 LED 闪烁的示例应用程序部署到 Edison。 现在可以创建、部署以及运行其他示例应用程序，以便将 Edison 连接到发送和接收消息的 Azure IoT 中心。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [获取 Azure 工具][get-the-azure-tools]
 
 <!-- Images and links -->

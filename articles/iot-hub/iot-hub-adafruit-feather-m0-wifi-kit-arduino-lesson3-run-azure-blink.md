@@ -4,7 +4,7 @@ description: "在 Adafruit Feather M0 WiFi 上部署并运行示例应用程序�
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "iot 云服务, arduino 向云发送数据"
 ROBOTS: NOINDEX
@@ -17,26 +17,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: 631a6677e4801b1c3475b9e8f2726219dd101132
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/24/2017
 
-
 ---
-# <a name="run-a-sample-application-to-send-device-to-cloud-messages"></a>运行示例应用程序以发送“设备到云”消息
-## <a name="what-you-will-do"></a>执行的操作
+<a id="run-a-sample-application-to-send-device-to-cloud-messages" class="xliff"></a>
+
+# 运行示例应用程序以发送“设备到云”消息
+<a id="what-you-will-do" class="xliff"></a>
+
+## 执行的操作
 本文说明如何在 Adafruit Feather M0 WiFi Arduino 开发板上部署和运行示例应用程序，以便将消息发送到 IoT 中心。
 
 如果有任何问题，请在[故障排除页面][troubleshooting]上查找解决方案。
 
-## <a name="what-you-will-learn"></a>你要学习的知识
+<a id="what-you-will-learn" class="xliff"></a>
+
+## 你要学习的知识
 你将学习如何使用 gulp 工具在 Arduino 开发板上部署并运行示例 Arduino 应用程序。
 
-## <a name="what-you-need"></a>所需条件
+<a id="what-you-need" class="xliff"></a>
+
+## 所需条件
 * 在开始此任务之前，必须已成功完成了[创建 Azure Function App 和 Azure 存储帐户来处理和存储 IoT 中心消息][process-and-store-iot-hub-messages]。
 
-## <a name="get-your-iot-hub-and-device-connection-strings"></a>获取 IoT 中心连接字符串和设备连接字符串
+<a id="get-your-iot-hub-and-device-connection-strings" class="xliff"></a>
+
+## 获取 IoT 中心连接字符串和设备连接字符串
 设备连接字符串用来将 Arduino 开发板连接到 IoT 中心。 IoT 中心连接字符串用来将 IoT 中心连接到 IoT 中心内代表 Arduino 开发板的设备标识。
 
 * 运行以下 Azure CLI 命令，列出资源组中的所有 IoT 中心：
@@ -62,7 +72,9 @@ az iot device show-connection-string --hub-name {my hub name} --device-id mym0wi
 ```
 
 使用 `mym0wifi` 作为 `{device id}` 的值（如果尚未更改此值）。
-## <a name="configure-the-device-connection"></a>配置设备连接
+<a id="configure-the-device-connection" class="xliff"></a>
+
+## 配置设备连接
 若要配置设备连接，请执行以下步骤：
 
 1. 使用设备发现 CLI 获取设备的串行端口：
@@ -117,7 +129,9 @@ az iot device show-connection-string --hub-name {my hub name} --device-id mym0wi
    > [!NOTE]
    > 本文中不需要 `azure_storage_connection_string`。 请保留该名称。
 
-## <a name="deploy-and-run-the-sample-application"></a>部署并运行示例应用程序
+<a id="deploy-and-run-the-sample-application" class="xliff"></a>
+
+## 部署并运行示例应用程序
 通过运行以下命令在 Arduino 开发板上部署并运行示例应用程序：
 
 ```bash
@@ -132,15 +146,21 @@ gulp run --listen
 > [!NOTE]
 > 默认 gulp 任务按顺序运行 `install-tools` 和 `run` 任务。 [部署闪烁应用][deployed-the-blink-app]时，是分别运行这些任务的。
 
-## <a name="verify-that-the-sample-application-works"></a>验证示例应用程序是否正常工作
+<a id="verify-that-the-sample-application-works" class="xliff"></a>
+
+## 验证示例应用程序是否正常工作
 应看到 GPIO #0 开发板 LED 每两秒闪烁一次。 LED 每次闪烁时，示例应用程序都会向 IoT 中心发送一条消息并验证该消息是否已成功发送到 IoT 中心。 此外，还会在控制台窗口中输出 IoT 中心收到的每条消息。 在发送 20 条消息后，示例应用程序将自动终止。
 
 ![包含发送和接收的消息的示例应用程序][sample-application-with-sent-and-received-messages]
 
-## <a name="summary"></a>摘要
+<a id="summary" class="xliff"></a>
+
+## 摘要
 用户已在 Arduino 开发板上部署和运行新的闪烁示例应用程序，目的是将从设备到云的消息发送到 IoT 中心。 现可在将消息写入存储帐户时对其进行监视。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [读取 Azure 存储中保存的消息][read-messages-persisted-in-azure-storage]
 <!-- Images and links -->
 

@@ -4,7 +4,7 @@ description: "自定义这些消息，以更改 LED 的开关行为。"
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "使用 raspberry pi 控制 led, raspberry pi led 控制, raspberry pi 控制 led"
 ROBOTS: NOINDEX
@@ -17,24 +17,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: c1c999e40ecc92a1018067822be66f14b61a8c36
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/24/2017
 
-
 ---
-# <a name="change-the-on-and-off-behavior-of-the-led"></a>更改 LED 的亮起和熄灭行为
-## <a name="what-you-will-do"></a>执行的操作
+<a id="change-the-on-and-off-behavior-of-the-led" class="xliff"></a>
+
+# 更改 LED 的亮起和熄灭行为
+<a id="what-you-will-do" class="xliff"></a>
+
+## 执行的操作
 对消息进行自定义以更改 LED 的亮起和熄灭行为。 如果有任何问题，请在[故障排除页面](iot-hub-raspberry-pi-kit-c-troubleshooting.md)上查找解决方案。
 
-## <a name="what-you-will-learn"></a>你要学习的知识
+<a id="what-you-will-learn" class="xliff"></a>
+
+## 你要学习的知识
 使用额外的 Node.js 函数更改 LED 的亮起和熄灭行为。
 
-## <a name="what-you-need"></a>所需条件
+<a id="what-you-need" class="xliff"></a>
+
+## 所需条件
 必须已成功完成了[在 Raspberry Pi 上运行示例应用程序来检索“云到设备”消息](iot-hub-raspberry-pi-kit-c-lesson4-send-cloud-to-device-messages.md)。
 
-## <a name="add-functions-to-mainc-and-gulpfilejs"></a>将函数添加到 main.c 和 gulpfile.js
+<a id="add-functions-to-mainc-and-gulpfilejs" class="xliff"></a>
+
+## 将函数添加到 main.c 和 gulpfile.js
 1. 通过运行以下命令在 Visual Studio Code 中打开示例应用程序：
 
    ```bash
@@ -92,7 +102,9 @@ ms.lasthandoff: 01/24/2017
    ```
 6. 保存所有更改。
 
-### <a name="deploy-and-run-the-sample-application"></a>部署并运行示例应用程序
+<a id="deploy-and-run-the-sample-application" class="xliff"></a>
+
+### 部署并运行示例应用程序
 通过运行以下命令在 Pi 上部署并运行示例应用程序：
 
 ```bash
@@ -105,6 +117,8 @@ gulp deploy && gulp run
 
 祝贺你！ 你已成功自定义了从 IoT 中心发送到 Pi 的消息。
 
-### <a name="summary"></a>摘要
+<a id="summary" class="xliff"></a>
+
+### 摘要
 此可选部分展示了如何自定义消息，以便使示例应用程序能够以不同的方式控制 LED 的亮起和熄灭行为。
 

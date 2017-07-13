@@ -4,7 +4,7 @@ description: "在“设备到云”消息写入到 Azure 表存储时对这些�
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "云中的数据, 云数据收集, iot 云服务, iot 数据"
 ROBOTS: NOINDEX
@@ -17,24 +17,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
 ms.openlocfilehash: 1be4de1fef11da43c2940fdd890027d0e9728515
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/25/2017
 
-
 ---
-# <a name="read-messages-persisted-in-azure-storage"></a>读取 Azure 存储中保存的消息
-## <a name="what-you-will-do"></a>执行的操作
+<a id="read-messages-persisted-in-azure-storage" class="xliff"></a>
+
+# 读取 Azure 存储中保存的消息
+<a id="what-you-will-do" class="xliff"></a>
+
+## 执行的操作
 对于从 Intel Edison 发送到 IoT 中心的设备到云消息，在将其写入 Azure 表存储时对其进行监视。 如果有任何问题，请在[故障排除页面][troubleshooting]上查找解决方案。
 
-## <a name="what-you-will-learn"></a>你要学习的知识
+<a id="what-you-will-learn" class="xliff"></a>
+
+## 你要学习的知识
 在本文中，你将学习如何使用 gulp 读取消息任务来读取 Azure 表存储中保存的消息。
 
-## <a name="what-you-need"></a>所需条件
+<a id="what-you-need" class="xliff"></a>
+
+## 所需条件
 在开始此过程之前，必须已成功完成[在 Intel Edison 上运行 Azure 闪烁示例应用程序][run-the-azure-blink-sample-application-on-intel-edison]这一操作。
 
-## <a name="read-new-messages-from-your-storage-account"></a>从存储帐户读取新消息
+<a id="read-new-messages-from-your-storage-account" class="xliff"></a>
+
+## 从存储帐户读取新消息
 在以前的文章中，已在 Edison 上运行示例应用程序。 示例应用程序发送消息到 Azure IoT 中心。 发送到 IoT 中心的消息通过 Azure Function App 存储到 Azure 表存储中。 若要从 Azure 表存储中读取消息，需要使用 Azure 表存储连接字符串。
 
 若要读取 Azure 表存储中存储的消息，请执行以下步骤：
@@ -68,10 +78,14 @@ ms.lasthandoff: 01/25/2017
 
    ![gulp run --read-storage][gulp run]
 
-## <a name="summary"></a>摘要
+<a id="summary" class="xliff"></a>
+
+## 摘要
 已成功将 Edison 连接到云中的 IoT 中心，并已使用 blink 示例应用程序发送设备到云消息。 用户还使用 Azure 函数应用将传入的 IoT 中心消息存储到 Azure 表存储中。 现在可从 IoT 中心将云到设备消息发送到 Edison。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [运行示例应用程序，接收云到设备消息][receive-cloud-to-device-messages]
 <!-- Images and links -->
 
