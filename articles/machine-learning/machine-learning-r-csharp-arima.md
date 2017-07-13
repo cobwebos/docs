@@ -1,15 +1,31 @@
 ---
-
-ROBOTS: NOINDEX, NOFOLLOW
+title: "（已弃用）预测：自动回归集成移动平均 (ARIMA) - Azure | Microsoft Docs"
+description: "（已弃用）预测 - 自动回归集成移动平均 (ARIMA)"
+services: machine-learning
+documentationcenter: 
+author: yijichen
+manager: jhubbard
+editor: cgronlun
+ms.assetid: 1e0d525f-8a9e-4b42-87e0-c9423f059f8c
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/06/2017
+ms.author: yijichen
+ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: be75a60762674ab347ab7adaddfb17c4208a2b9e
-ms.lasthandoff: 05/03/2017
-
+redirect_document_id: true
+ms.translationtype: HT
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 6be76618c8ce5917f8fdfdea851c3ca65f9fddd4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
-# <a name="deprecated-forecasting---autoregressive-integrated-moving-average-arima"></a>（已弃用）预测 - 自动回归集成移动平均 (ARIMA)
+# （已弃用）预测 - 自动回归集成移动平均 (ARIMA)
+<a id="deprecated-forecasting---autoregressive-integrated-moving-average-arima" class="xliff"></a>
 
 > [!NOTE]
 > 即将停用 Microsoft DataMarket，此 API 已弃用。 
@@ -25,7 +41,8 @@ ms.lasthandoff: 05/03/2017
 > 
 > 
 
-## <a name="consumption-of-web-service"></a>Web 服务的使用
+## Web 服务的使用
+<a id="consumption-of-web-service" class="xliff"></a>
 该服务接受 4 个参数并计算 ARIMA 预测。
 输入参数为：
 
@@ -49,7 +66,8 @@ ms.lasthandoff: 05/03/2017
 
 有多种方法可以自动方式使用该服务（[此处](http://microsoftazuremachinelearning.azurewebsites.net/ArimaForecasting.aspx)为示例应用）。
 
-### <a name="starting-c-code-for-web-service-consumption"></a>为 Web 服务使用启动 C# 代码：
+### 为 Web 服务使用启动 C# 代码：
+<a id="starting-c-code-for-web-service-consumption" class="xliff"></a>
     public class Input
     {
         public string frequency;
@@ -79,21 +97,25 @@ ms.lasthandoff: 05/03/2017
           var scoreResult = result.ReadAsStringAsync().Result;
       }
 
-## <a name="creation-of-web-service"></a>Web 服务的创建
+## Web 服务的创建
+<a id="creation-of-web-service" class="xliff"></a>
 > 此 Web 服务是使用 Azure 机器学习创建的。 有关免费试用版，以及关于创建实验和[发布 Web 服务](machine-learning-publish-a-machine-learning-web-service.md)的介绍性视频，请参阅 [azure.com/ml](http://azure.com/ml)。 下面是创建 Web 服务的实验的屏幕快照，以及实验内每个模块的示例代码。
 > 
 > 
 
-从 Azure 机器学习中创建了新的空白实验。 示例输入数据已随预定义数据架构一起上载。 链接到数据架构的是一种[执行 R 脚本][execute-r-script] 模块，该模块通过使用 R 中的“auto.arima”和“forecast”函数生成 ARIMA 预测模型。 
+从 Azure 机器学习中创建了新的空白实验。 示例输入数据已随预定义数据架构一起上传。 链接到数据架构的是一种[执行 R 脚本][execute-r-script] 模块，该模块通过使用 R 中的“auto.arima”和“forecast”函数生成 ARIMA 预测模型。 
 
-### <a name="experiment-flow"></a>实验流：
+### 实验流：
+<a id="experiment-flow" class="xliff"></a>
 ![创建工作区][2]
 
-#### <a name="module-1"></a>模块 1：
+#### 模块 1：
+<a id="module-1" class="xliff"></a>
     # Add in the CSV file with the data in the format shown below 
 ![创建工作区][3]    
 
-#### <a name="module-2"></a>模块 2：
+#### 模块 2：
+<a id="module-2" class="xliff"></a>
     # data input
     data <- maml.mapInputPort(1) # class: data.frame
     library(forecast)
@@ -121,10 +143,12 @@ ms.lasthandoff: 05/03/2017
     maml.mapOutputPort("data.forecast");
 
 
-## <a name="limitations"></a>限制
+## 限制
+<a id="limitations" class="xliff"></a>
 这是一个非常简单的 ARIMA 预测示例。 从上面的代码示例中可看出，没有进行错误捕获，并且该服务假定所有变量都是连续/正值，频率应为大于 1 的整数。 日期和值向量的长度应相同。 日期变量应遵循格式 mm/dd/yyyy。
 
-## <a name="faq"></a>常见问题
+## 常见问题
+<a id="faq" class="xliff"></a>
 有关使用 Web 服务或发布到应用商店的常见问题，请参阅[此处](machine-learning-marketplace-faq.md)。
 
 [1]: ./media/machine-learning-r-csharp-arima/arima-img1.png
