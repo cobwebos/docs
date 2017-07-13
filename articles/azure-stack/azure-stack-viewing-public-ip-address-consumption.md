@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: scottnap
-translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: b41c3465cdb73b2a485b0618e6b07e4c518b7307
-ms.lasthandoff: 04/12/2017
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: 44983487760fce8646923ae409a549e11e2021e1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/10/2017
 
 
 ---
-# <a name="view-public-ip-address-consumption-in-azure-stack-tp2"></a>View public IP address consumption in Azure Stack TP2
-As a service administrator, you can view the number of public IP addresses that have been allocated to tenants, the number of public IP addresses that are still available for allocation, and the percentage of public IP addresses that have been allocated in that location.
+# View public IP address consumption in Azure Stack TP2
+<a id="view-public-ip-address-consumption-in-azure-stack-tp2" class="xliff"></a>
+As a cloud administrator, you can view the number of public IP addresses that have been allocated to tenants, the number of public IP addresses that are still available for allocation, and the percentage of public IP addresses that have been allocated in that location.
 
 The **Public IP Address Usage** tile shows the total number of public IP addresses that have been consumed across all public IP address pools on the fabric, whether they have been used for tenant IaaS VM instances, fabric infrastructure services, or public IP address resources that were explicitly created by tenants.
 
@@ -30,7 +32,8 @@ The purpose of this tile is to give Azure Stack administrators a sense of the ov
 
 On the **Settings** blade, the **Public IP Addresses** menu item under **Tenant resources** lists only those public IP addresses that have been *explicitly created by tenants*. As such, the number of **Used** public IP addresses on the **Public IP Address Usage** tile is always different from (larger than) the number on the **Public IP Addresses** tile under **Tenant resources**.
 
-## <a name="view-the-public-ip-address-usage-information"></a>View the public IP address usage information
+## View the public IP address usage information
+<a id="view-the-public-ip-address-usage-information" class="xliff"></a>
 To view the total number of public IP addresses that have been consumed in the region:
 
 1. In the Azure Stack portal, click **Browse**, and then select **Resource Providers**.
@@ -42,7 +45,8 @@ To view the total number of public IP addresses that have been consumed in the r
 
 Keep in mind that the **Used** number represents the number of public IP addresses from all public IP address pools in that location that are assigned. The **Available** number represents the number of public IP addresses from all public IP address pools that have not been assigned and are still available. The **% Used** number represents the number of used or assigned addresses as a percentage of the total number of public IP addresses in all public IP address pools in that location.
 
-## <a name="view-the-public-ip-addresses-that-were-created-by-tenant-subscriptions"></a>View the public IP addresses that were created by tenant subscriptions
+## View the public IP addresses that were created by tenant subscriptions
+<a id="view-the-public-ip-addresses-that-were-created-by-tenant-subscriptions" class="xliff"></a>
 To see a list of public IP addresses that were explicitly created by tenant subscriptions in a specific region, go to the **Settings** blade of the **Network Resource Provider Admin**, and then select **Public IP Addresses**.
 
 ![Settings blade of the Network Resource Provider Admin](media/azure-stack-viewing-public-ip-address-consumption-in-tp2/image2.png)
@@ -51,7 +55,8 @@ You might notice that some public IP addresses that have been dynamically alloca
 
 The Network Controller does not assign an address to this resource until it is actually bound to an interface, a network interface card (NIC), a load balancer, or a virtual network gateway. When the public IP address is bound to an interface, the Network Controller allocates an IP address to it, and it appears in the **Address** field.
 
-## <a name="view-the-public-ip-address-information-summary-table"></a>View the public IP address information summary table
+## View the public IP address information summary table
+<a id="view-the-public-ip-address-information-summary-table" class="xliff"></a>
 There are a number of different cases in which public IP addresses are assigned that determine whether the address appears in one list or another.
 
 | **Public IP address assignment case** | **Appears in usage summary** | **Appears in tenant public IP addresses list** |

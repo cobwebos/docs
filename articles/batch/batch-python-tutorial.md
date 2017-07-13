@@ -1,5 +1,5 @@
 ---
-title: "教程 - 使用用于 Python 的 Azure 批处理 SDK | Microsoft 文档"
+title: "教程 - 使用用于 Python 的 Azure Batch SDK | Microsoft 文档"
 description: "了解 Azure Batch 的基本概念并使用 Python 构建简单的解决方案。"
 services: batch
 documentationcenter: python
@@ -16,14 +16,15 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: bdb36e6397951d2d3298dbfe9e80a0b678ecfdaf
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: 8de3df11a59178b782d50b7662aa5d8cab11a260
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="get-started-with-the-batch-sdk-for-python"></a>适用于 Python 的 Batch SDK 入门
+# 适用于 Python 的 Batch SDK 入门
+<a id="get-started-with-the-batch-sdk-for-python" class="xliff"></a>
 
 > [!div class="op_single_selector"]
 > * [.NET](batch-dotnet-get-started.md)
@@ -32,28 +33,33 @@ ms.lasthandoff: 05/02/2017
 >
 >
 
-在介绍以 Python 编写的小型 Batch 应用程序时，我们了解了 [Azure 批处理][azure_batch]和[批处理 Python][py_azure_sdk] 客户端的基础知识。 我们将探讨两个示例脚本如何使用批处理服务来处理云中 Linux 虚拟机上的并行工作负荷，以及这些脚本如何与 [Azure 存储](../storage/storage-introduction.md)交互来暂存和检索文件。 你将了解常见的 Batch 应用程序工作流，并基本了解 Batch 的主要组件，例如作业、任务、池和计算节点。
+在介绍以 Python 编写的小型 Batch 应用程序时，我们了解了 [Azure Batch][azure_batch]和[批处理 Python][py_azure_sdk] 客户端的基础知识。 我们将探讨两个示例脚本如何使用批处理服务来处理云中 Linux 虚拟机上的并行工作负荷，以及这些脚本如何与 [Azure 存储](../storage/storage-introduction.md)交互来暂存和检索文件。 你将了解常见的 Batch 应用程序工作流，并基本了解 Batch 的主要组件，例如作业、任务、池和计算节点。
 
 ![Batch 解决方案工作流（基础）][11]<br/>
 
-## <a name="prerequisites"></a>先决条件
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
 本文假设你有 Python 的实践知识，并熟悉 Linux。 本文还假定，你能够满足下面为 Azure 和 Batch 及存储服务指定的帐户创建要求。
 
-### <a name="accounts"></a>帐户
+### 帐户
+<a id="accounts" class="xliff"></a>
 * **Azure 帐户**：如果没有 Azure 订阅，可以[创建一个免费 Azure 帐户][azure_free_account]。
 * **Batch 帐户**：获取 Azure 订阅后，请 [创建 Azure Batch 帐户](batch-account-create-portal.md)。
 * **存储帐户**：请参阅[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)中的[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)。
 
-### <a name="code-sample"></a>代码示例
+### 代码示例
+<a id="code-sample" class="xliff"></a>
 Python 教程[代码示例][github_article_samples]是 GitHub 上的 [azure-batch-samples][github_samples] 存储库中提供的众多批处理代码示例之一。 单击存储库主页上的“克隆或下载”>“下载 ZIP”，或单击“azure-batch-samples-master.zip[github_samples_zip]”直接下载链接，即可下载所有示例。[] 解压缩 ZIP 文件的内容后，在 `article_samples` 目录中可找到本教程的两个脚本：
 
 `/azure-batch-samples/Python/Batch/article_samples/python_tutorial_client.py`<br/>
 `/azure-batch-samples/Python/Batch/article_samples/python_tutorial_task.py`
 
-### <a name="python-environment"></a>Python 环境
+### Python 环境
+<a id="python-environment" class="xliff"></a>
 若要在本地工作站上运行 *python_tutorial_client.py* 示例脚本，需要与版本 **2.7** 或 **3.3+** 兼容的 **Python 解释程序**。 此脚本已在 Linux 和 Windows 上测试。
 
-### <a name="cryptography-dependencies"></a>加密依赖项
+### 加密依赖项
+<a id="cryptography-dependencies" class="xliff"></a>
 必须为[加密][crypto]库安装 `azure-batch` 和 `azure-storage` Python 包所需的依赖项。 根据平台执行以下操作之一，或参阅[加密程序安装][crypto_install]获取详细信息：
 
 * Ubuntu
@@ -61,7 +67,7 @@ Python 教程[代码示例][github_article_samples]是 GitHub 上的 [azure-batc
     `apt-get update && apt-get install -y build-essential libssl-dev libffi-dev libpython-dev python-dev`
 * CentOS
 
-    `yum update && yum install -y gcc openssl-dev libffi-devel python-devel`
+    `yum update && yum install -y gcc openssl-devel libffi-devel python-devel`
 * SLES/OpenSUSE
 
     `zypper ref && zypper -n in libopenssl-dev libffi48-devel python-devel`
@@ -74,8 +80,9 @@ Python 教程[代码示例][github_article_samples]是 GitHub 上的 [azure-batc
 >
 >
 
-### <a name="azure-packages"></a>Azure 包
-接下来，安装 **Azure 批处理**和 **Azure 存储** Python 包。 可以使用以下位置提供的 **pip** 和 *requirements.txt* 安装这两个包：
+### Azure 包
+<a id="azure-packages" class="xliff"></a>
+接下来，安装 **Azure Batch**和 **Azure 存储** Python 包。 可以使用以下位置提供的 **pip** 和 *requirements.txt* 安装这两个包：
 
 `/azure-batch-samples/Python/Batch/requirements.txt`
 
@@ -93,11 +100,12 @@ Python 教程[代码示例][github_article_samples]是 GitHub 上的 [azure-batc
 >
 >
 
-## <a name="batch-python-tutorial-code-sample"></a>Batch Python 教程代码示例
+## Batch Python 教程代码示例
+<a id="batch-python-tutorial-code-sample" class="xliff"></a>
 Batch Python 教程代码示例由两个 Python 脚本和若干数据文件组成。
 
 * **python_tutorial_client.py**：与批处理和存储服务交互，在计算节点（虚拟机）上执行并行工作负荷。 *python_tutorial_client.py* 脚本在本地工作站上运行。
-* **python_tutorial_task.py**：在 Azure 中的计算节点上运行，执行实际工作的脚本。 在本示例中，*python_tutorial_task.py* 分析从 Azure 存储下载的文件（输入文件）中的文本。 然后，它会生成一个文本文件（输出文件），其中包含出现在输入文件中的头三个单词的列表。 创建输出文件后，*python_tutorial_task.py* 会将该文件上载到 Azure 存储。 这样，便可以将文件下载到工作站上运行的客户端脚本。 *python_tutorial_task.py* 脚本在批处理服务中的多个计算节点上并行运行。
+* **python_tutorial_task.py**：在 Azure 中的计算节点上运行，执行实际工作的脚本。 在本示例中，*python_tutorial_task.py* 分析从 Azure 存储下载的文件（输入文件）中的文本。 然后，它会生成一个文本文件（输出文件），其中包含出现在输入文件中的头三个单词的列表。 创建输出文件后，*python_tutorial_task.py* 会将该文件上传到 Azure 存储。 这样，便可以将文件下载到工作站上运行的客户端脚本。 *python_tutorial_task.py* 脚本在批处理服务中的多个计算节点上并行运行。
 * **./data/taskdata\*.txt**：这三个文本文件为计算节点上运行的任务提供输入。
 
 下图演示了客户端和任务脚本执行的主要操作。 此基本工作流是通过 Batch 创建的许多计算解决方案中常见的工作流。 尽管它并未演示 Batch 服务提供的每项功能，但几乎每个 Batch 方案都包含此工作流的某些部分。
@@ -105,7 +113,7 @@ Batch Python 教程代码示例由两个 Python 脚本和若干数据文件组�
 ![Batch 示例工作流][8]<br/>
 
 [**步骤 1.**](#step-1-create-storage-containers) 在 Azure Blob 存储中创建**容器**。<br/>
-[**步骤 2.**](#step-2-upload-task-script-and-data-files) 将任务脚本和输入文件上载到容器。<br/>
+[**步骤 2.**](#step-2-upload-task-script-and-data-files) 将任务脚本和输入文件上传到容器。<br/>
 [**步骤 3.**](#step-3-create-batch-pool) 创建批处理**池**。<br/>
   &nbsp;&nbsp;&nbsp;&nbsp;**3a.** 池 **StartTask** 在节点加入池时将任务脚本 (python_tutorial_task.py) 下载到节点。<br/>
 [**步骤 4.**](#step-4-create-batch-job) 创建批处理**作业**。<br/>
@@ -113,12 +121,13 @@ Batch Python 教程代码示例由两个 Python 脚本和若干数据文件组�
   &nbsp;&nbsp;&nbsp;&nbsp;**5a.** 任务计划在节点上执行。<br/>
     &nbsp;&nbsp;&nbsp;&nbsp;**5b.** 每项任务从 Azure 存储下载其输入数据，然后开始执行。<br/>
 [**步骤 6.**](#step-6-monitor-tasks) 监视任务。<br/>
-  &nbsp;&nbsp;&nbsp;&nbsp;**6a.** 当任务完成时，会将其输出数据上载到 Azure 存储。<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;**6a.** 当任务完成时，会将其输出数据上传到 Azure 存储。<br/>
 [**步骤 7.**](#step-7-download-task-output) 从存储空间下载任务输出。
 
 如前所述，并非每个 Batch 解决方案都会执行这些具体步骤，此类方案可能包含更多步骤，但本示例将演示 Batch 方案中的常见过程。
 
-## <a name="prepare-client-script"></a>准备客户端脚本
+## 准备客户端脚本
+<a id="prepare-client-script" class="xliff"></a>
 在运行示例之前，请将批处理和存储帐户凭据添加到 *python_tutorial_client.py*。 如果尚未这样做，请在偏好的编辑器中打开此文件，并使用凭据更新以下代码行。
 
 ```python
@@ -149,15 +158,16 @@ STORAGE_ACCOUNT_KEY = ""
 if __name__ == '__main__':
 ```
 
-## <a name="step-1-create-storage-containers"></a>步骤 1：创建存储容器
+## 步骤 1：创建存储容器
+<a id="step-1-create-storage-containers" class="xliff"></a>
 ![在 Azure 存储中创建容器][1]
 <br/>
 
-Batch 包含的内置支持支持与 Azure 存储空间交互。 存储帐户中的容器将为 Batch 帐户中运行的任务提供所需的文件。 这些容器还提供存储任务生成的输出数据所需的位置。 *python_tutorial_client.py* 脚本执行的第一个操作是在 [Azure Blob 存储](../storage/storage-introduction.md#blob-storage)中创建三个容器：
+Batch 包含的内置支持支持与 Azure 存储交互。 存储帐户中的容器将为 Batch 帐户中运行的任务提供所需的文件。 这些容器还提供存储任务生成的输出数据所需的位置。 *python_tutorial_client.py* 脚本执行的第一个操作是在 [Azure Blob 存储](../storage/storage-introduction.md#blob-storage)中创建三个容器：
 
 * **应用程序**：此容器存储任务运行的 Python 脚本 *python_tutorial_task.py*。
 * **输入**：任务将从 *输入* 容器下载所要处理的数据文件。
-* **输出**：当任务完成输入文件的处理时，会将其结果上载到 *输出* 容器。
+* **输出**： 当任务完成输入文件的处理时，会将其结果上传到 *输出* 容器。
 
 为了与存储帐户交互并创建容器，我们将使用 [azure-storage][pypi_storage] 包来创建 [BlockBlobService][py_blockblobservice] 对象 -“Blob 客户端”。 然后，使用 Blob 客户端在存储帐户中创建三个容器。
 
@@ -180,18 +190,19 @@ blob_client.create_container(INPUT_CONTAINER_NAME, fail_on_exist=False)
 blob_client.create_container(OUTPUT_CONTAINER_NAME, fail_on_exist=False)
 ```
 
-创建容器之后，应用程序现在即可上载任务使用的文件。
+创建容器之后，应用程序现在即可上传任务使用的文件。
 
 > [!TIP]
 > [如何通过 Python 使用 Azure Blob 存储](../storage/storage-python-how-to-use-blob-storage.md)对如何使用 Azure 存储容器和 Blob 做了全面的概述。 当你开始使用 Batch 时，它应该位于阅读列表顶部附近。
 >
 >
 
-## <a name="step-2-upload-task-script-and-data-files"></a>步骤 2：上载任务脚本和数据文件
+## 步骤 2：上传任务脚本和数据文件
+<a id="step-2-upload-task-script-and-data-files" class="xliff"></a>
 ![将任务应用程序和输入（数据）文件上传到容器][2]
 <br/>
 
-在文件上载操作中，*python_tutorial_client.py* 先定义**应用程序**和**输入**文件在本地计算机上的路径的集合， 然后将这些文件上载到上一步骤创建的容器。
+在文件上传操作中，*python_tutorial_client.py* 先定义应用程序和输入文件在本地计算机上的路径的集合， 然后将这些文件上传到上一步骤创建的容器。
 
 ```python
 # Paths to the task script. This script will be executed by the tasks that
@@ -260,7 +271,8 @@ def upload_file_to_container(block_blob_client, container_name, path):
                                     blob_source=sas_url)
 ```
 
-### <a name="resourcefiles"></a>ResourceFiles
+### ResourceFiles
+<a id="resourcefiles" class="xliff"></a>
 [ResourceFile][py_resource_file] 提供批处理中的任务，以及 Azure 存储中将在任务运行之前下载到计算节点的文件的 URL。 [ResourceFile][py_resource_file].**blob_source** 属性指定存在于 Azure 存储的文件的完整 URL。 该 URL 还可以包含用于对文件进行安全访问的共享访问签名 (SAS)。 Batch 中的大多数任务类型都包含 *ResourceFiles* 属性，这些类型包括：
 
 * [CloudTask][py_task]
@@ -270,8 +282,9 @@ def upload_file_to_container(block_blob_client, container_name, path):
 
 本示例不使用 JobPreparationTask 或 JobReleaseTask 任务类型，但可以通过 [在 Azure Batch 计算节点上运行作业准备和完成任务](batch-job-prep-release.md)来详细了解这些任务类型。
 
-### <a name="shared-access-signature-sas"></a>共享访问签名 (SAS)
-共享访问签名是一些字符串，可以提供对 Azure 存储空间中容器和 Blob 的安全访问。 *python_tutorial_client.py* 脚本使用 Blob 和容器共享访问签名，并演示如何从存储服务获取这些共享访问签名字符串。
+### 共享访问签名 (SAS)
+<a id="shared-access-signature-sas" class="xliff"></a>
+共享访问签名是一些字符串，可以提供对 Azure 存储中容器和 Blob 的安全访问。 *python_tutorial_client.py* 脚本使用 Blob 和容器共享访问签名，并演示如何从存储服务获取这些共享访问签名字符串。
 
 * **Blob 共享访问签名**：池的 StartTask 在从存储下载任务脚本和输入数据文件时使用 Blob 共享访问签名（请参阅下面的 [步骤 3](#step-3-create-batch-pool) ）。 *python_tutorial_client.py* 中的 `upload_file_to_container` 函数包含可用于获取每个 Blob 的共享访问签名的代码。 它通过调用存储模块中的 [BlockBlobService.make_blob_url][py_make_blob_url] 实现此目的。
 * **容器共享访问签名**：每个任务在计算节点上完成其工作后，会将其输出文件上传到 Azure 存储中的 *输出* 容器。 为此，*python_tutorial_task.py* 将使用提供容器写入访问权限的容器共享访问签名。 *python_tutorial_client.py* 中的 `get_container_sas_token` 函数获取容器的共享访问签名，然后该签名将以命令行参数的形式传递给任务。 步骤 5 [将任务添加到作业](#step-5-add-tasks-to-job)介绍了容器 SAS 的用法。
@@ -281,13 +294,14 @@ def upload_file_to_container(block_blob_client, container_name, path):
 >
 >
 
-## <a name="step-3-create-batch-pool"></a>步骤 3：创建 Batch 池
+## 步骤 3：创建 Batch 池
+<a id="step-3-create-batch-pool" class="xliff"></a>
 ![创建 Batch 池][3]
 <br/>
 
 Batch **池** 是 Batch 执行作业任务时所在的计算节点（虚拟机）集合。
 
-将任务脚本和数据文件上载到存储帐户之后，*python_tutorial_client.py* 将使用批处理 Python 模块开始与批处理服务交互。 为此，将创建 [BatchServiceClient][py_batchserviceclient]：
+将任务脚本和数据文件上传到存储帐户之后， *python_tutorial_client.py* 将使用批处理 Python 模块开始与批处理服务交互。 为此，将创建 [BatchServiceClient][py_batchserviceclient]：
 
 ```python
 # Create a Batch service client. We'll now be interacting with the Batch
@@ -372,8 +386,8 @@ def create_pool(batch_service_client, pool_id,
 创建池时，应定义 [PoolAddParameter][py_pooladdparam] 用于指定池的几个属性：
 
 * 池的 **ID**（*id* - 必需）<p/>与 Batch 中的大多数实体一样，新池在 Batch 帐户中必须具有唯一 ID。 代码将使用池 ID 引用此池，这也是在 Azure [门户][azure_portal]中识别池的方式。
-* **计算节点数**（*target_dedicated* - 必需）<p/>此属性指定应在池中部署多少个 VM。 必须注意，所有批处理帐户都有默认**配额**，用于限制批处理帐户中的**核心**（因此也包括计算节点）数目。 可以在 [Quotas and limits for the Azure Batch service](batch-quota-limit.md)（Azure 批处理服务的配额和限制）中找到默认配额以及如何[提高配额](batch-quota-limit.md#increase-a-quota)（例如批处理帐户中的核心数目上限）的说明。 如果你有类似于“为什么我的池不能包含 X 个以上的节点？ ”的疑惑，则原因可能在于此核心配额。
-* 节点的**操作系统**（*virtual_machine_configuration* **或** *cloud_service_configuration* - 必需）<p/>在 *python_tutorial_client.py* 中，使用 [VirtualMachineConfiguration][py_vm_config] 创建 Linux 节点池。 `common.helpers` 中的 `select_latest_verified_vm_image_with_node_agent_sku` 函数简化了 [Azure 虚拟机应用商店][vm_marketplace]映像的用法。 有关使用应用商店映像的详细信息，请参阅[在 Azure 批处理池中预配 Linux 计算节点](batch-linux-nodes.md)。
+* **计算节点数**（*target_dedicated* - 必需）<p/>此属性指定应在池中部署多少个 VM。 必须注意，所有批处理帐户都有默认**配额**，用于限制批处理帐户中的**核心**（因此也包括计算节点）数目。 可以在 [Quotas and limits for the Azure Batch service](batch-quota-limit.md)（Azure Batch 服务的配额和限制）中找到默认配额以及如何[提高配额](batch-quota-limit.md#increase-a-quota)（例如 Batch 帐户中的核心数目上限）的说明。 如果你有类似于“为什么我的池不能包含 X 个以上的节点？ ”的疑惑，则原因可能在于此核心配额。
+* 节点的**操作系统**（*virtual_machine_configuration* **或** *cloud_service_configuration* - 必需）<p/>在 *python_tutorial_client.py* 中，使用 [VirtualMachineConfiguration][py_vm_config] 创建 Linux 节点池。 `common.helpers` 中的 `select_latest_verified_vm_image_with_node_agent_sku` 函数简化了 [Azure 虚拟机应用商店][vm_marketplace]映像的用法。 有关使用应用商店映像的详细信息，请参阅[在 Azure Batch 池中预配 Linux 计算节点](batch-linux-nodes.md)。
 * **计算节点的大小**（*vm_size* - 必需）<p/>由于我们要为 [VirtualMachineConfiguration][py_vm_config] 指定 Linux 节点，因此应根据 [Azure 中虚拟机的大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)指定 VM 大小（在本示例中为 `STANDARD_A1`）。 同样，请参阅 [在 Azure Batch 池中预配 Linux 计算节点](batch-linux-nodes.md) 获取详细信息。
 * **启动任务**（*start_task* - 可选）<p/>还可以连同上述物理节点属性一起指定池的 [StartTask][py_starttask]（可选）。 StartTask 在每个节点加入池以及每次重新启动节点时在该节点上运行。 StartTask 特别适合用于准备计算节点，以便执行任务，例如安装任务将要运行的应用程序。<p/>在此示例应用程序中，StartTask 将它从存储下载的文件（使用 StartTask 的 **resource_files** 属性指定），从 StartTask *工作目录*复制到在节点上运行的所有任务可以访问的*共享*目录。 本质上，这会在节点加入池时，将 `python_tutorial_task.py` 复制到每个节点上的共享目录，因此该节点上运行的任何任务都可以访问它。
 
@@ -382,11 +396,12 @@ def create_pool(batch_service_client, pool_id,
 此外，在上述代码片段中，值得注意的问题是，StartTask 的 **command_line** 属性中使用了两个环境变量：`AZ_BATCH_TASK_WORKING_DIR` 和 `AZ_BATCH_NODE_SHARED_DIR`。 将自动为 Batch 池中的每个计算节点配置多个特定于 Batch 的环境变量。 由任务执行的任何进程都可以访问这些环境变量。
 
 > [!TIP]
-> 若要深入了解批处理池中计算节点上可用的环境变量，以及有关任务工作目录的信息，请参阅 [overview of Azure Batch features](batch-api-basics.md)（Azure 批处理功能概述）中的 **Environment settings for tasks**（任务的环境设置）及 **Files and directories**（文件和目录）。
+> 若要深入了解批处理池中计算节点上可用的环境变量，以及有关任务工作目录的信息，请参阅 [overview of Azure Batch features](batch-api-basics.md)（Azure Batch 功能概述）中的 **Environment settings for tasks**（任务的环境设置）及 **Files and directories**（文件和目录）。
 >
 >
 
-## <a name="step-4-create-batch-job"></a>步骤 4：创建 Batch 作业
+## 步骤 4：创建 Batch 作业
+<a id="step-4-create-batch-job" class="xliff"></a>
 ![创建 Batch 作业][4]<br/>
 
 Batch **作业** 是任务的集合，它与计算节点池相关联。 作业中的任务在关联池的计算节点上执行。
@@ -420,7 +435,8 @@ def create_job(batch_service_client, job_id, pool_id):
 
 创建作业后，可以添加任务来执行工作。
 
-## <a name="step-5-add-tasks-to-job"></a>步骤 5：将任务添加到作业
+## 步骤 5：将任务添加到作业
+<a id="step-5-add-tasks-to-job" class="xliff"></a>
 ![将任务添加到作业][5]<br/>
 *(1) 将任务添加到作业；(2) 将任务计划为在节点上运行；(3) 任务下载要处理的数据文件*
 
@@ -493,7 +509,8 @@ blob_client = azureblob.BlockBlobService(account_name=args.storageaccount,
                                          sas_token=args.sastoken)
 ```
 
-## <a name="step-6-monitor-tasks"></a>步骤 6：监视任务
+## 步骤 6：监视任务
+<a id="step-6-monitor-tasks" class="xliff"></a>
 ![监视任务][6]<br/>
 *脚本将会：(1) 监视任务的完成状态，(2) 监视将结果数据上传到 Azure 存储的任务*
 
@@ -536,10 +553,11 @@ def wait_for_tasks_to_complete(batch_service_client, job_id, timeout):
                        "timeout period of " + str(timeout))
 ```
 
-## <a name="step-7-download-task-output"></a>步骤 7：下载任务输出
+## 步骤 7：下载任务输出
+<a id="step-7-download-task-output" class="xliff"></a>
 ![从存储下载任务输出][7]<br/>
 
-完成作业后，可以从 Azure 存储空间下载任务的输出。 可通过在 *python_tutorial_client.py* 中调用 `download_blobs_from_container` 来实现此目的：
+完成作业后，可以从 Azure 存储下载任务的输出。 可通过在 *python_tutorial_client.py* 中调用 `download_blobs_from_container` 来实现此目的：
 
 ```python
 def download_blobs_from_container(block_blob_client,
@@ -578,8 +596,9 @@ def download_blobs_from_container(block_blob_client,
 >
 >
 
-## <a name="step-8-delete-containers"></a>步骤 8：删除容器
-由于你需要对位于 Azure 存储空间中的数据付费，因此我们建议删除 Batch 作业不再需要的所有 Blob。 在 *python_tutorial_client.py* 中，可通过调用 [BlockBlobService.delete_container][py_delete_container] 三次来实现此目的：
+## 步骤 8：删除容器
+<a id="step-8-delete-containers" class="xliff"></a>
+由于你需要对位于 Azure 存储中的数据付费，因此我们建议删除 Batch 作业不再需要的所有 Blob。 在 *python_tutorial_client.py* 中，可通过调用 [BlockBlobService.delete_container][py_delete_container] 三次来实现此目的：
 
 ```python
 # Clean up storage resources
@@ -589,7 +608,8 @@ blob_client.delete_container(input_container_name)
 blob_client.delete_container(output_container_name)
 ```
 
-## <a name="step-9-delete-the-job-and-the-pool"></a>步骤 9：删除作业和池
+## 步骤 9：删除作业和池
+<a id="step-9-delete-the-job-and-the-pool" class="xliff"></a>
 在最后一个步骤，系统将提示删除 *python_tutorial_client.py* 脚本创建的作业和池。 虽然作业和任务本身不收费，但计算节点*收费*。 因此，建议你只在需要的时候分配节点。 在维护过程中，可能需要删除未使用的池。
 
 BatchServiceClient 的 [JobOperations][py_job] 和 [PoolOperations][py_pool] 都有对应的删除方法（在确认删除时调用）：
@@ -608,7 +628,8 @@ if query_yes_no('Delete pool?') == 'yes':
 >
 >
 
-## <a name="run-the-sample-script"></a>运行示例脚本
+## 运行示例脚本
+<a id="run-the-sample-script" class="xliff"></a>
 从教程[代码示例][github_article_samples]运行 *python_tutorial_client.py* 脚本时，控制台输出如下所示。 出现 `Monitoring all tasks for 'Completed' state, timeout in 0:20:00...` 后将会暂停，此时会创建、启动池的计算节点，然后执行池启动任务中的命令。 在执行期间和之后，可以使用 [Azure 门户][azure_portal]监视池、计算节点、作业和任务。 使用 [Azure 门户][azure_portal]或 [Microsoft Azure 存储资源管理器][storage_explorer]可以查看应用程序创建的存储资源（容器和 Blob）。
 
 > [!TIP]
@@ -646,7 +667,8 @@ Delete pool? [Y/n]
 Press ENTER to exit...
 ```
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 随意更改 *python_tutorial_client.py* 和 *python_tutorial_task.py*，体验不同的计算方案。 例如，尝试将执行延迟添加到 *python_tutorial_task.py*，模拟长时间运行的任务并在门户中监视这些任务。 尝试添加更多任务，或调整计算节点的数目。 添加逻辑来检查并允许使用现有池，以加速执行时间。
 
 熟悉 Batch 解决方案的基本工作流后，接下来可以深入了解 Batch 服务的其他功能。
@@ -707,7 +729,7 @@ Press ENTER to exit...
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 
 [1]: ./media/batch-python-tutorial/batch_workflow_01_sm.png "在 Azure 存储中创建容器"
-[2]: ./media/batch-python-tutorial/batch_workflow_02_sm.png "将任务应用程序和输入（数据）文件上载到容器"
+[2]: ./media/batch-python-tutorial/batch_workflow_02_sm.png "将任务应用程序和输入（数据）文件上传到容器"
 [3]: ./media/batch-python-tutorial/batch_workflow_03_sm.png "创建批处理池"
 [4]: ./media/batch-python-tutorial/batch_workflow_04_sm.png "创建批处理作业"
 [5]: ./media/batch-python-tutorial/batch_workflow_05_sm.png "将任务添加到作业"
