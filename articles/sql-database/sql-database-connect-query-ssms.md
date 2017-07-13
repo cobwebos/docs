@@ -18,18 +18,20 @@ ms.topic: hero-article
 ms.date: 05/26/2017
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 05cbc0c80a4e622f537772c698e2711a7a85c00d
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 29883e37f1f506f33f44cf02dbf08221274e109d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
-# <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL 数据库：使用 SQL Server Management Studio 进行连接和数据查询
+# Azure SQL 数据库：使用 SQL Server Management Studio 进行连接和数据查询
+<a id="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data" class="xliff"></a>
 
 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) 是用于管理任何 SQL 基础结构（从适用于 Microsoft Windows 的 SQL Server 到 SQL 数据库，不一而足）的集成环境。 本快速入门演示了如何使用 SSMS 连接到 Azure SQL 数据库，然后使用 Transact-SQL 语句在数据库中查询、插入、更新和删除数据。 
 
-## <a name="prerequisites"></a>先决条件
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
 
 此快速入门使用以下某个快速入门中创建的资源作为其起点：
 
@@ -39,7 +41,8 @@ ms.lasthandoff: 05/31/2017
 
 在开始之前，请确保已安装最新版本的 [SSMS](https://msdn.microsoft.com/library/mt238290.aspx)。 
 
-## <a name="get-connection-information"></a>获取连接信息
+## 获取连接信息
+<a id="get-connection-information" class="xliff"></a>
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称、数据库名称和登录信息。
 
@@ -51,7 +54,8 @@ ms.lasthandoff: 05/31/2017
 
 4. 如果忘了 Azure SQL 数据库服务器的登录信息，请导航到 SQL 数据库服务器页，以查看服务器管理员名称并重置密码（如果需要）。 
 
-## <a name="connect-to-your-database"></a>连接到您的数据库
+## 连接到您的数据库
+<a id="connect-to-your-database" class="xliff"></a>
 
 使用 SQL Server Management Studio 建立到 Azure SQL 数据库服务器的连接。 
 
@@ -83,7 +87,8 @@ ms.lasthandoff: 05/31/2017
 
 5. 在对象资源管理器中展开“数据库”，然后展开 **mySampleDatabase**，查看示例数据库中的对象。
 
-## <a name="query-data"></a>查询数据
+## 查询数据
+<a id="query-data" class="xliff"></a>
 
 通过以下代码使用 [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL 语句，以便按类别查询前 20 个产品。
 
@@ -101,7 +106,8 @@ ms.lasthandoff: 05/31/2017
 
     ![query](./media/sql-database-connect-query-ssms/query.png)
 
-## <a name="insert-data"></a>插入数据
+## 插入数据
+<a id="insert-data" class="xliff"></a>
 
 通过以下代码使用 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 语句，将新产品插入到 SalesLT.Product 表中。
 
@@ -131,7 +137,8 @@ ms.lasthandoff: 05/31/2017
 
     <img src="./media/sql-database-connect-query-ssms/insert.png" alt="insert" style="width: 780px;" />
 
-## <a name="update-data"></a>更新数据
+## 更新数据
+<a id="update-data" class="xliff"></a>
 
 通过以下代码使用 [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL 语句，以便更新此前添加的新产品。
 
@@ -147,7 +154,8 @@ ms.lasthandoff: 05/31/2017
 
     <img src="./media/sql-database-connect-query-ssms/update.png" alt="update" style="width: 780px;" />
 
-## <a name="delete-data"></a>删除数据
+## 删除数据
+<a id="delete-data" class="xliff"></a>
 
 通过以下代码使用 [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL 语句，以便删除此前添加的新产品。
 
@@ -162,8 +170,10 @@ ms.lasthandoff: 05/31/2017
 
     <img src="./media/sql-database-connect-query-ssms/delete.png" alt="delete" style="width: 780px;" />
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
+- 若要了解如何使用 Transact-SQL 来创建和管理服务器和数据库，请参阅[了解 Azure SQL 数据库服务器和数据库](sql-database-servers-databases.md)。
 - 有关 SSMS 的信息，请参阅[使用 SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx)。
 - 若要使用 Visual Studio Code 进行连接和查询，请参阅[使用 Visual Studio Code 进行连接和查询](sql-database-connect-query-vscode.md)。
 - 若要使用 .NET 进行连接和查询，请参阅[使用 .NET 进行连接和查询](sql-database-connect-query-dotnet.md)。

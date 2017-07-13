@@ -1,21 +1,17 @@
-<a id="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus" class="xliff"></a>
-
 ### 是否所有 Azure VPN 网关 SKU 都支持自定义 IPsec/IKE 策略？
+<a id="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus" class="xliff"></a>
 自定义 IPsec/IKE 策略在 Azure VpnGw1、VpnGw2、VpnGw3、标准 VPN 网关和高性能 VPN 网关上受支持。 **基本** SKU。
 
-<a id="how-many-policies-can-i-specify-on-a-connection" class="xliff"></a>
-
 ### 在一个连接上可以指定多少个策略？
+<a id="how-many-policies-can-i-specify-on-a-connection" class="xliff"></a>
 一个给定的连接只能指定一个策略组合。
 
-<a id="can-i-specify-a-partial-policy-on-a-connection-eg-only-ike-algorithms-but-not-ipsec" class="xliff"></a>
-
 ### 能否在一个连接上指定部分策略？ （例如，仅指定 IKE 算法，不指定 IPsec）
+<a id="can-i-specify-a-partial-policy-on-a-connection-eg-only-ike-algorithms-but-not-ipsec" class="xliff"></a>
 否，必须指定 IKE（主模式）和 IPsec（快速模式）的所有算法和参数。 不允许指定部分策略。
 
-<a id="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy" class="xliff"></a>
-
 ### 自定义策略中支持的算法和密钥强度有哪些？
+<a id="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy" class="xliff"></a>
 下表列出了支持的加密算法和密钥强度，可供客户配置。 必须为每个字段选择一个选项。
 
 | IPsec/IKEv2  | 选项                                                                 |
@@ -33,9 +29,8 @@
 * (*) 在 Azure VPN 网关上，IKEv2 主模式 SA 生存期固定为 28,800 秒
 * (**) 请参阅下一针对“UsePolicyBasedTrafficSelectors”的常见问题解答项
 
-<a id="does-everything-need-to-match-between-the-azure-vpn-gateway-policy-and-my-on-premises-vpn-device-configurations" class="xliff"></a>
-
 ### Azure VPN 网关策略与本地 VPN 设备配置是否需完全匹配？
+<a id="does-everything-need-to-match-between-the-azure-vpn-gateway-policy-and-my-on-premises-vpn-device-configurations" class="xliff"></a>
 本地 VPN 设备配置必须匹配，或者必须包含可在 Azure IPsec/IKE 策略中指定的以下算法和参数：
 
 * IKE 加密算法
@@ -56,37 +51,30 @@ SA 生存期是本地规范，不需匹配。
 
 有关如何使用此选项的更多详细信息，请参阅[连接多个基于策略的本地 VPN 设备](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)。
 
-<a id="does-the-custom-policy-replace-the-default-ipsecike-policy-sets-for-azure-vpn-gateways" class="xliff"></a>
-
 ### 自定义策略是否会替换 Azure VPN 网关的默认 IPsec/IKE 策略集？
+<a id="does-the-custom-policy-replace-the-default-ipsecike-policy-sets-for-azure-vpn-gateways" class="xliff"></a>
 是的。一旦在连接上指定自定义策略，Azure VPN 网关就会只使用该连接的策略，既充当 IKE 发起方，又充当 IKE 响应方。
 
-<a id="if-i-remove-a-custom-ipsecike-policy-does-the-connection-become-unprotected" class="xliff"></a>
-
 ### 如果删除自定义 IPsec/IKE 策略，连接是否会变得不受保护？
+<a id="if-i-remove-a-custom-ipsecike-policy-does-the-connection-become-unprotected" class="xliff"></a>
 否。连接仍受 IPsec/IKE 保护。 从连接中删除自定义策略以后，Azure VPN 网关会还原为[默认的 IPsec/IKE 提议列表](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md)，并再次重启与本地 VPN 设备的 IKE 握手。
 
-<a id="would-adding-or-updating-an-ipsecike-policy-disrupt-my-vpn-connection" class="xliff"></a>
-
 ### 添加或更新 IPsec/IKE 策略是否会中断 VPN 连接？
+<a id="would-adding-or-updating-an-ipsecike-policy-disrupt-my-vpn-connection" class="xliff"></a>
 是的。那样会导致短时中断（数秒），因为 Azure VPN 网关会断开现有连接并重启 IKE 握手，以便使用新的加密算法和参数重建 IPsec 隧道。 请确保也使用匹配的算法和密钥强度对本地 VPN 设备进行配置，尽量减少中断。
 
-<a id="can-i-use-different-policies-on-different-connections" class="xliff"></a>
-
 ### 是否可以在不同的连接上使用不同的策略？
+<a id="can-i-use-different-policies-on-different-connections" class="xliff"></a>
 是的。 自定义策略是在单个连接的基础上应用的。 可以在不同的连接上创建并应用不同的 IPsec/IKE 策略。 也可选择在连接子集上应用自定义策略。 剩余连接将使用 Azure 默认 IPsec/IKE 策略集。
 
-<a id="can-i-use-the-custom-policy-on-vnet-to-vnet-connection-as-well" class="xliff"></a>
-
 ### 是否也可在 VNet 到 VNet 连接上使用自定义策略？
+<a id="can-i-use-the-custom-policy-on-vnet-to-vnet-connection-as-well" class="xliff"></a>
 是的。可以在 IPsec 跨界连接或 VNet 到 VNet 连接上应用自定义策略。
 
-<a id="do-i-need-to-specify-the-same-policy-on-both-vnet-to-vnet-connection-resources" class="xliff"></a>
-
 ### 是否需在两个 VNet 到 VNet 连接资源上指定同一策略？
+<a id="do-i-need-to-specify-the-same-policy-on-both-vnet-to-vnet-connection-resources" class="xliff"></a>
 是的。 VNet 到 VNet 隧道包含 Azure 中的两个连接资源，一个方向一个资源。 需确保两个连接资源的策略相同，否则无法建立 VNet 到 VNet 连接。
 
-<a id="does-custom-ipsecike-policy-work-on-expressroute-connection" class="xliff"></a>
-
 ### 能否在 ExpressRoute 连接上使用自定义 IPsec/IKE 策略？
+<a id="does-custom-ipsecike-policy-work-on-expressroute-connection" class="xliff"></a>
 不能。 只能通过 Azure VPN 网关在 S2S VPN 和 VNet 到 VNet 连接上使用 IPsec/IKE 策略。

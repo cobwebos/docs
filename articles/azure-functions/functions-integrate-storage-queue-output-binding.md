@@ -17,23 +17,25 @@ ms.date: 05/02/2017
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: ccafe4d440f533560fcb3780d4e0e440a4399021
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: d1ddfbe9a0a0c7c7e0a060776938bd68a87e1ba5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/26/2017
 
 ---
-# <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>使用 Functions 将消息添加到 Azure 存储队列
+# 使用 Functions 将消息添加到 Azure 存储队列
+<a id="add-messages-to-an-azure-storage-queue-using-functions" class="xliff"></a>
 
 在 Azure Functions 中，输入和输出绑定提供从函数连接到外部服务数据的声明性方式。 在本主题中，了解如何通过添加用于将消息发送到 Azure 队列存储的输出绑定来更新现有函数。  
 
 ![在日志中查看消息。](./media/functions-integrate-storage-queue-output-binding/functions-integrate-storage-binding-in-portal.png)
 
-## <a name="prerequisites"></a>先决条件 
+## 先决条件
+<a id="prerequisites" class="xliff"></a> 
 
 [!INCLUDE [Previous topics](../../includes/functions-quickstart-previous-topics.md)]
 
-还需要下载并安装 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)。 
+* 安装 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)。
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)] 
 
@@ -41,11 +43,11 @@ ms.lasthandoff: 05/18/2017
  
 1. 展开 Function App 和函数。
 
-2. 单击“集成”和“+ 新建输出”，然后单击“Azure 队列存储”并单击“选择”。
+2. 选择“集成”和“+ 新建输出”，然后选择“Azure 队列存储”并选择“选择”。
     
     ![将队列存储输出绑定添加到 Azure 门户中的函数。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
-3. 使用表中指定的设置，然后“保存”： 
+3. 使用表中指定的设置，然后选择“保存”： 
 
     ![将队列存储输出绑定添加到 Azure 门户中的函数。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
@@ -57,9 +59,10 @@ ms.lasthandoff: 05/18/2017
 
 现在，已定义输出绑定，需要更新代码以使用绑定将消息添加到队列。  
 
-## <a name="update-the-function-code"></a>更新函数代码
+## 更新函数代码
+<a id="update-the-function-code" class="xliff"></a>
 
-1. 单击函数以在编辑器中显示函数代码。 
+1. 选择函数以在编辑器中显示函数代码。 
 
 2. 对于 C# 函数，按如下所示更新函数定义，添加 **outQueueItem** 存储绑定参数。 对于 JavaScript 函数，跳过此步骤。
 
@@ -82,13 +85,14 @@ ms.lasthandoff: 05/18/2017
     outQueueItem.Add("Name passed to the function: " + name);     
     ```
 
-4. 单击“保存”以保存更改。
+4. 选择“保存”以保存更改。
 
 传递给 HTTP 触发器的值将包含在添加到队列的消息中。
  
-## <a name="test-the-function"></a>测试函数 
+## 测试函数
+<a id="test-the-function" class="xliff"></a> 
 
-1. 保存代码更改后，单击“运行”。 
+1. 保存代码更改后，选择“运行”。 
 
     ![将队列存储输出绑定添加到 Azure 门户中的函数。](./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png)
 
@@ -96,32 +100,35 @@ ms.lasthandoff: 05/18/2017
 
 接下来，可以连接到存储帐户以验证新队列和添加到它的消息。 
 
-## <a name="connect-to-the-queue"></a>连接到队列
+## 连接到队列
+<a id="connect-to-the-queue" class="xliff"></a>
 
 如果已安装存储资源管理器并已将其连接到存储帐户，请跳过前三个步骤。    
 
-1. 在函数中，单击“集成”和新的“Azure 队列存储”输出绑定，然后展开“文档”。 复制“帐户名称”和“帐户密钥”。 使用这些凭据连接到存储帐户。
+1. 在函数中，选择“集成”和新的“Azure 队列存储”输出绑定，然后展开“文档”。 复制“帐户名称”和“帐户密钥”。 使用这些凭据连接到存储帐户。
  
     ![获取存储帐户连接凭据。](./media/functions-integrate-storage-queue-output-binding/function-get-storage-account-credentials.png)
 
-2. 运行 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)工具，单击左侧的“连接”图标，选择“使用存储帐户名称和密钥”，然后单击“下一步”。
+2. 运行 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)工具，选择左侧的“连接”图标，选择“使用存储帐户名称和密钥”，然后选择“下一步”。
 
     ![运行“存储帐户资源管理器”工具。](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-1.png)
     
-3. 输入步骤 1 中的**帐户名称**和**帐户密钥**，单击“下一步”，然后单击“连接”。 
+3. 将步骤 1 中的“帐户名称”和“帐户密钥”粘贴到相应的字段中，然后选择“下一步”和“连接”。 
   
-    ![输入存储凭据和连接。](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-2.png)
+    ![粘贴存储凭据，然后进行连接。](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-2.png)
 
 4. 展开附加的存储帐户，右键单击“队列”并验证名为 **myqueue-items** 的队列是否存在。 应看到一条消息已在队列中。  
  
     ![创建存储队列。](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
  
 
-## <a name="clean-up-resources"></a>清理资源
+## 清理资源
+<a id="clean-up-resources" class="xliff"></a>
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 已将输出绑定添加到现有函数。 
 

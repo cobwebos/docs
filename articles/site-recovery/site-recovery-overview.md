@@ -22,15 +22,13 @@ ms.lasthandoff: 06/29/2017
 
 
 ---
-<a id="what-is-site-recovery" class="xliff"></a>
-
 # 什么是 Site Recovery？
+<a id="what-is-site-recovery" class="xliff"></a>
 
 欢迎使用 Azure Site Recovery 服务！ 本文快速简要地介绍了该服务。
 
-<a id="business-continuity-and-disaster-recovery-bdcr-with-azure-recovery-services" class="xliff"></a>
-
 ## Azure 恢复服务的业务连续性和灾难恢复 (BDCR)
+<a id="business-continuity-and-disaster-recovery-bdcr-with-azure-recovery-services" class="xliff"></a>
 
 组织需确定在发生计划内和计划外中断时，如何维护数据的安全，以及如何确保应用/工作负荷处于运行状态。
 
@@ -45,9 +43,8 @@ Site Recovery 可以为以下计算机管理复制：
 - 将数据复制到 Azure 或辅助站点的本地虚拟机和物理服务器。
 
 
-<a id="what-does-site-recovery-provide" class="xliff"></a>
-
 ## Site Recovery 提供什么功能？
+<a id="what-does-site-recovery-provide" class="xliff"></a>
 
 **功能** | **详细信息**
 --- | ---
@@ -66,9 +63,8 @@ Site Recovery 可以为以下计算机管理复制：
 管理网络设置 | Site Recovery 和 Azure 集成可简化应用程序网络管理，具体包括：保留 IP 地址、配置负载均衡器并集成 Azure 流量管理器，从而实现高效的网络切换。
 
 
-<a id="what-can-i-replicate" class="xliff"></a>
-
 ## 可复制哪些内容？
+<a id="what-can-i-replicate" class="xliff"></a>
 
 **支持** | **详细信息**
 --- | ---
@@ -79,17 +75,15 @@ Site Recovery 可以为以下计算机管理复制：
 可复制哪些工作负荷？ | 可复制支持的复制计算机上运行的任何工作负荷。 另外，Site Recovery 团队已针对[多个应用](site-recovery-workload.md#workload-summary)执行特定于应用的测试。
 
 
-<a id="azure-portal-considerations" class="xliff"></a>
-
 ## Azure 门户注意事项
+<a id="azure-portal-considerations" class="xliff"></a>
 
 * 可在 [Azure 门户](https://portal.azure.com)中部署 Site Recovery。
 * 在 Azure 经典门户中，可使用经典服务管理模型管理 Site Recovery。
 - 经典门户应仅用于维护现有 Site Recovery 部署。 无法在经典门户中创建新的保管库。
 
-<a id="next-steps" class="xliff"></a>
-
 ## 后续步骤
+<a id="next-steps" class="xliff"></a>
 * 阅读有关[工作负荷支持](site-recovery-workload.md)的更多内容
 * 开始[在区域之间进行 Azure VM 复制](site-recovery-azure-to-azure.md)、[从 VMware 复制到 Azure](vmware-walkthrough-overview.md) 或[从 Hyper-V 复制到 Azure](hyper-v-site-walkthrough-overview.md)。
 

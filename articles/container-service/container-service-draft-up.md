@@ -16,23 +16,25 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: rasquill
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 20619fd21f376afee95facb688e35534f5979b90
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: dc3ae52b1ec6717c7e19a160e3e7ea5d211f1f5f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 06/28/2017
 
 
 
 ---
 
-# <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>结合使用 Draft 与 Azure 容器服务和 Azure 容器注册表，生成应用程序并将其部署到 Kubernetes
+# 结合使用 Draft 与 Azure 容器服务和 Azure 容器注册表，生成应用程序并将其部署到 Kubernetes
+<a id="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes" class="xliff"></a>
 
 [Draft](https://aka.ms/draft) 是一种新的开放源工具，使用它可轻松地开发基于容器的应用程序并将其部署到 Kubernetes 群集，而无需了解大量有关 Docker 和 Kubernetes 的信息，甚至无需安装它们。 使用 Draft 之类的工具，你和你的团队可专注于使用 Kubernetes 生成应用程序，而不用太过关注基础结构。
 
 可将 Draft 与任何 Docker 映像注册表以及任何 Kubernetes 群集一起使用（在本地也可）。 本教程演示如何结合使用 ACS、Kubernetes、ACR 和 Azure DNS，通过 Draft 创建实时 CI/CD 开发人员管道。
 
 
-## <a name="create-an-azure-container-registry"></a>创建 Azure 容器注册表
+## 创建 Azure 容器注册表
+<a id="create-an-azure-container-registry" class="xliff"></a>
 可以轻松[创建新的 Azure 容器注册表](../container-registry/container-registry-get-started-azure-cli.md)，步骤如下：
 
 1. 创建 Azure 资源组，在 ACS 中管理 ACR 注册表和 Kubernetes 群集。
@@ -46,7 +48,8 @@ ms.lasthandoff: 06/03/2017
       ```
 
 
-## <a name="create-an-azure-container-service-with-kubernetes"></a>使用 Kubernetes 创建 Azure 容器服务
+## 使用 Kubernetes 创建 Azure 容器服务
+<a id="create-an-azure-container-service-with-kubernetes" class="xliff"></a>
 
 现已准备好使用 [az acs create](/cli/azure/acs#create) 创建 ACS 群集，使用 Kubernetes 作为 `--orchestrator-type` 值。
 ```azurecli
@@ -104,15 +107,16 @@ waiting for AAD role to propagate.done
 
 现在有了一个群集，可以使用 [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) 命令导入凭据。 现在群集有了本地配置文件，Helm 和 Draft 需要它来完成工作。
 
-## <a name="install-and-configure-draft"></a>安装并配置 Draft
+## 安装并配置 Draft
+<a id="install-and-configure-draft" class="xliff"></a>
 [Draft 存储库](https://github.com/Azure/draft/blob/master/docs/install.md)中提供 Draft 的安装说明。 安装相对简单，但需要一些配置，因为它依赖于 [Helm](https://aka.ms/helm) 来创建 Helm 图表并将图表部署到 Kubernetes 群集。
 
 1. [下载并安装 Helm](https://aka.ms/helm#install)。
 2. 使用 Helm 搜索并安装 `stable/traefik` 和入口控制器，为生成启用入站请求。
     ```bash
     $ helm search traefik
-    NAME              VERSION    DESCRIPTION
-    stable/traefik    1.2.1-a    A Traefik based Kubernetes ingress controller w...
+    NAME            VERSION DESCRIPTION
+    stable/traefik  1.3.0   A Traefik based Kubernetes ingress controller w...
 
     $ helm install stable/traefik --name ingress
     ```
@@ -127,7 +131,8 @@ waiting for AAD role to propagate.done
 
     在这种情况下，部署域的外部 IP 为 `13.64.108.240`。 现在，可以将域映射到该 IP。
 
-## <a name="wire-up-deployment-domain"></a>连接部署域
+## 连接部署域
+<a id="wire-up-deployment-domain" class="xliff"></a>
 
 Draft 每创建一个 Helm 图表（即每个正在处理的应用程序），就为其创建一个版本。 每个图表获得一个生成的名称，该名称由 Draft 用作所控制的根部署域之上的子域。 （此示例中，我们使用 `squillace.io` 作为部署域。）若要启用这一子域行为，必须在部署域的 DNS 条目中为 `'*'` 创建一个 A 记录，使每个生成的子域都路由到 Kubernetes 群集的入口控制器。
 
@@ -194,29 +199,39 @@ Draft 每创建一个 Helm 图表（即每个正在处理的应用程序），�
     ```
 
 5. 配置 Draft 来使用注册表并为所创建的每个 Helm 图表创建子域。 若要配置 Draft，需要：
-  - Azure 容器注册表名称（此示例中为 `draftacs`）
-  - `az acr credential show -n $acrname --output tsv --query "passwords[0].value"` 中的注册表项或密码。
-  - 已配置为映射到 Kubernetes 入口外部 IP 地址的根部署域（此处为 `13.64.108.240`）
+  - Azure 容器注册表名称（此示例中为 `draft`）
+  - `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"` 中的注册表项或密码。
+  - 已配置为映射到 Kubernetes 入口外部 IP 地址的根部署域（此处为 `squillace.io`）
 
-  使用这些值可以创建配置 JSON 字符串 `{"username":"<user>","password":"<secret>","email":"email@example.com"}` 的 Base64 编码值。 下面是对值进行编码的一种方法（但需要将此示例的值替换为自己的值）。
-      ```bash
-      acrname="draftacs"
-      password=$(az acr credential show -n $acrname --output tsv --query "passwords[0].value")
-      authtoken=$(echo \{\"username\":\"$acrname\",\"password\":\"$password\",\"email\":\"rasquill@microsoft.com\"\} | base64)
-      ```
+  调用 `draft init`，然后配置进程会提示你输入上述值。 该进程会在你首次运行时，要求你提供如下所示的信息。
+    ```
+    draft init
+    Creating pack ruby...
+    Creating pack node...
+    Creating pack gradle...
+    Creating pack maven...
+    Creating pack php...
+    Creating pack python...
+    Creating pack dotnetcore...
+    Creating pack golang...
+    $DRAFT_HOME has been configured at /Users/ralphsquillace/.draft.
 
-  通过键入 `echo $authtoken | base64 -D` 来显示未编码的结果，可以确认 JSON 字符串是否正确。
-  现在，使用此命令及 `-set` 选项的配置参数来初始化 Draft：
-      ```bash
-      draft init --set registry.url=$acrname.azurecr.io,registry.org=$acrname,registry.authtoken=$authtoken,basedomain=squillace.io
-      ```
-      > [!NOTE]
-      > 很容易忘记 `basedomain` 值是所控制并且已配置为指向入口外部 IP 的基础部署域。
+    In order to install Draft, we need a bit more information...
+
+    1. Enter your Docker registry URL (e.g. docker.io, quay.io, myregistry.azurecr.io): draft.azurecr.io
+    2. Enter your username: draft
+    3. Enter your password:
+    4. Enter your org where Draft will push images [draft]: draft
+    5. Enter your top-level domain for ingress (e.g. draft.example.com): squillace.io
+    Draft has been installed into your Kubernetes Cluster.
+    Happy Sailing!
+    ```
 
 现已准备好部署应用程序。
 
 
-## <a name="build-and-deploy-an-application"></a>生成和部署应用程序
+## 生成和部署应用程序
+<a id="build-and-deploy-an-application" class="xliff"></a>
 
 在 Draft 中，存储库是 [6 个简单的示例应用程序](https://github.com/Azure/draft/tree/master/examples)。 克隆存储库并使用 [Python 示例](https://github.com/Azure/draft/tree/master/examples/python)。 更改为 examples/Python 目录，并键入 `draft create` 来生成应用程序。 结果应与以下示例类似。
 ```bash
@@ -254,7 +269,8 @@ Watching local files for changes...
 
 无论图表的名称是什么，现都可以 `curl http://gangly-bronco.squillace.io`接收回复 `Hello World!`。
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 现在有了 ACS Kubernetes 群集，可以使用 [Azure 容器注册表](../container-registry/container-registry-intro.md)进行研究，创建此种方案的更多不同部署。 例如，可以创建 draft.basedomain.toplevel 域 DNS 记录集，控制特定 ACS 部署的更深子域中的内容。
 

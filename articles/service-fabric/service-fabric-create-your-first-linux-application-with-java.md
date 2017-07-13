@@ -15,14 +15,15 @@ ms.workload: NA
 ms.date: 06/02/2017
 ms.author: ryanwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 4ffab9eb858b05d3f5894e8753fb0fd4f38c4087
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: e229602b4bfa72977c9b15e854d796ed09fa55d2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 07/01/2017
 
 
 ---
-# <a name="create-your-first-service-fabric-java-application-on-linux"></a>在 Linux 上创建第一个 Service Fabric Java 应用程序
+# 在 Linux 上创建第一个 Service Fabric Java 应用程序
+<a id="create-your-first-service-fabric-java-application-on-linux" class="xliff"></a>
 > [!div class="op_single_selector"]
 > * [C# - Windows](service-fabric-create-your-first-application-in-visual-studio.md)
 > * [Java-Linux](service-fabric-create-your-first-linux-application-with-java.md)
@@ -32,10 +33,14 @@ ms.lasthandoff: 06/03/2017
 
 借助本快速入门，只需几分钟即可在 Linux 开发环境中创建第一个 Azure Service Fabric Java 应用程序。  完成后，即拥有一个在本地开发群集上运行的简单 Java 单一服务应用。  
 
-## <a name="prerequisites"></a>先决条件
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
 开始之前，请安装 Service Fabric SDK、Azure CLI，并在 [Linux 开发环境](service-fabric-get-started-linux.md)中设置开发群集。 如果使用 Mac OS X，则可[使用 Vagrant 在虚拟机中设置 Linux 开发环境](service-fabric-get-started-mac.md)。
 
-## <a name="create-the-application"></a>创建应用程序
+此外还需配置 [Azure CLI 2.0](service-fabric-azure-cli-2-0.md)（推荐）或 [XPlat CLI](service-fabric-azure-cli.md)，以便部署应用程序。
+
+## 创建应用程序
+<a id="create-the-application" class="xliff"></a>
 Service Fabric 应用程序包含一个或多个服务，每个服务都在提供应用程序功能时具有特定角色。 用于 Linux 的 Service Fabric SDK 包括 [Yeoman](http://yeoman.io/) 生成器，利用它可以轻松地创建第一个服务和在以后添加其他服务。  此外，还可使用适用于 Eclipse 的插件创建、生成和部署 Service Fabric Java 应用程序。 请参阅[使用 Eclipse 创建和部署第一个 Java 应用程序](service-fabric-get-started-eclipse.md)。 对于本快速入门，使用 Yeoman 创建具有单项服务的应用程序，该服务用于存储和获取获取计数器值。
 
 1. 在终端中，键入 ``yo azuresfjava``。
@@ -43,7 +48,8 @@ Service Fabric 应用程序包含一个或多个服务，每个服务都在提�
 3. 选择第一个服务的类型并将其命名。 对于本教程，请选择“可靠角色服务”。 有关其他服务类型的详细信息，请参阅 [Service Fabric 编程模型概述](service-fabric-choose-framework.md)。
    ![适用于 Java 的 Service Fabric Yeoman 生成器][sf-yeoman]
 
-## <a name="build-the-application"></a>构建应用程序
+## 构建应用程序
+<a id="build-the-application" class="xliff"></a>
 Service Fabric Yeoman 模板包含 [Gradle](https://gradle.org/) 的生成脚本，可用于从终端生成应用。 若要生成和打包应用，请运行以下命令：
 
   ```bash
@@ -51,8 +57,12 @@ Service Fabric Yeoman 模板包含 [Gradle](https://gradle.org/) 的生成脚本
   gradle
   ```
 
-## <a name="deploy-the-application"></a>部署应用程序
-生成应用程序后，可以使用 Azure CLI 将其部署到本地群集。
+## 部署应用程序
+<a id="deploy-the-application" class="xliff"></a>
+生成应用程序后，可以将其部署到本地群集。
+
+### 使用 XPlat CLI
+<a id="using-xplat-cli" class="xliff"></a>
 
 1. 连接到本地 Service Fabric 群集。
 
@@ -66,11 +76,18 @@ Service Fabric Yeoman 模板包含 [Gradle](https://gradle.org/) 的生成脚本
     ./install.sh
     ```
 
-3. 打开浏览器并导航到 http://localhost:19080/Explorer 处的 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)（如果在 Mac OS X 上使用 Vagrant，则使用 VM 的专用 IP 替换 localhost）。
+### 使用 Azure CLI 2.0
+<a id="using-azure-cli-20" class="xliff"></a>
 
-4. 展开“应用程序”节点，注意现在有一个条目用于应用程序类型，另一个条目用于该类型的第一个实例。
+部署生成的应用程序时，其方式与部署任何其他 Service Fabric 应用程序相同。 如需详细的说明，请参阅相关文档，了解如何[使用 Azure CLI 管理 Service Fabric 应用程序](service-fabric-application-lifecycle-azure-cli-2-0.md)。
 
-## <a name="start-the-test-client-and-perform-a-failover"></a>启动测试客户端并执行故障转移
+这些命令的参数可以在应用程序包内的已生成清单中找到。
+
+应用程序部署完以后，请打开浏览器并导航到 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)，其地址为 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。
+然后，展开“应用程序”节点，注意现在有一个条目是用于你的应用程序类型，另一个条目用于该类型的第一个实例。
+
+## 启动测试客户端并执行故障转移
+<a id="start-the-test-client-and-perform-a-failover" class="xliff"></a>
 角色自身未执行任何操作，它们需要其他服务或客户端向其发送消息。 Actor 模板包括可用于与 actor 服务进行交互的简单测试脚本。
 
 1. 使用监视实用程序运行该脚本来查看 actor 服务的输出。  测试脚本对角色调用 `setCountAsync()` 方法来递增计数器，对角色调用 `getCountAsync()` 方法来获取新的计数器值，并向控制台显示该值。
@@ -86,13 +103,15 @@ Service Fabric Yeoman 模板包含 [Gradle](https://gradle.org/) 的生成脚本
 
 3. 在“节点”中，单击上一步找到的节点，然后从“操作”菜单中选择“停用(重启)”。 此操作重启运行主要服务副本的节点，并强制故障转移到在其他节点上运行的其中一个次要副本。  该次要副本将提升为主要副本，并在其他节点上创建另一次要副本，然后主要副本开始执行读/写操作。 节点重启时，请注意来自测试客户端的输出，并注意虽然发生故障转移，但计数器仍继续递增。
 
-## <a name="add-another-service-to-the-application"></a>向应用程序添加另一服务
+## 向应用程序添加另一服务
+<a id="add-another-service-to-the-application" class="xliff"></a>
 若要使用 `yo` 将其他服务添加到现有应用程序，请执行以下步骤：
 1. 将目录更改为现有应用程序的根目录。  例如，如果 `MyApplication` 是 Yeoman 创建的应用程序，则使用 `cd ~/YeomanSamples/MyApplication`。
 2. 运行 `yo azuresfjava:AddService`
 3. 按照前述步骤，生成并部署应用。
 
-## <a name="remove-the-application"></a>删除应用程序
+## 删除应用程序
+<a id="remove-the-application" class="xliff"></a>
 使用模板中提供的卸载脚本可从群集的映像存储区删除应用实例、注销应用程序包并删除应用程序包。
 
 ```bash
@@ -101,12 +120,19 @@ Service Fabric Yeoman 模板包含 [Gradle](https://gradle.org/) 的生成脚本
 
 在 Service Fabric Explorer 中，可看到应用程序和应用程序类型不再显示在“应用程序”节点中。
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 * [使用 Eclipse 在 Linux 上创建第一个 Service Fabric Java 应用程序](service-fabric-get-started-eclipse.md)
 * [了解有关 Reliable Actors 的详细信息](service-fabric-reliable-actors-introduction.md)
 * [使用 Azure CLI 与 Service Fabric 群集交互](service-fabric-azure-cli.md)
 * [排查部署问题](service-fabric-azure-cli.md#troubleshooting)
 * 了解 [Service Fabric 支持选项](service-fabric-support.md)
+
+## 相关文章
+<a id="related-articles" class="xliff"></a>
+
+* [Service Fabric 和 Azure CLI 2.0 入门](service-fabric-azure-cli-2-0.md)
+* [Service Fabric XPlat CLI 入门](service-fabric-azure-cli.md)
 
 <!-- Images -->
 [sf-yeoman]: ./media/service-fabric-create-your-first-linux-application-with-java/sf-yeoman.png

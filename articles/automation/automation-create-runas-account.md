@@ -12,17 +12,18 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/01/2017
+ms.date: 06/29/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 431049c714a58f85ebb73165fe338d927d27039a
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 09ddca83fc0f39d7911813e488317f9434fdcfc8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 06/30/2017
 
 ---
 
-# <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>使用运行方式帐户更新自动化帐户身份验证 
+# 使用运行方式帐户更新自动化帐户身份验证
+<a id="update-your-automation-account-authentication-with-run-as-accounts" class="xliff"></a> 
 在以下情况下，可以通过门户或使用 PowerShell 更新现有自动化帐户：
 
 * 你创建了自动化帐户，但不想要创建运行方式帐户。
@@ -30,7 +31,8 @@ ms.lasthandoff: 06/03/2017
 * 已使用一个自动化帐户来管理经典资源，并且想要对它进行更新以使用经典运行方式帐户，而不是创建新的帐户并将 Runbook 和资产迁移到该帐户。   
 * 你想要使用企业证书颁发机构 (CA) 颁发的证书创建运行方式帐户和经典运行方式帐户。
 
-## <a name="prerequisites"></a>先决条件
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
 
 * 该脚本只能在装有 Azure Resource Manager 模块 3.0.0 和更高版本的 Windows 10 与 Windows Server 2016 上运行。 在 Windows 的早期版本中不受支持。
 * Azure PowerShell 1.0 和更高版本。 有关 PowerShell 1.0 版本的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
@@ -42,7 +44,17 @@ ms.lasthandoff: 06/03/2017
 2. 在“所有设置”边栏选项卡中，选择“帐户设置”下面的“属性”。 
 3. 请记下“属性”边栏选项卡中的值。<br><br> ![自动化帐户的“属性”边栏选项卡](media/automation-create-runas-account/automation-account-properties.png)  
 
-## <a name="create-run-as-account-from-the-portal"></a>通过门户创建运行方式帐户
+### 更新自动化帐户所需的权限
+<a id="required-permissions-to-update-your-automation-account" class="xliff"></a>
+若要更新自动化帐户，必须具有完成本主题所需的下述特定权限。   
+ 
+* 需将 AD 用户帐户添加到一个角色，该角色的权限相当于 Microsoft.Automation 资源的参与者角色，如 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md#contributor-role-permissions)一文所述。  
+* Azure AD 租户中的非管理员用户可以[注册 AD 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions)，前提是“应用注册设置”已设置为“是”。  如果“应用注册设置”设置为“否”，则执行此操作的用户必须是 Azure AD 中的全局管理员。 
+
+如果你在被添加到订阅的全局管理员/共同管理员角色之前不是订阅的 Active Directory 实例的成员，则会将你作为来宾添加到 Active Directory。 在这种情况下，“添加自动化帐户”边栏选项卡中会显示 “你无权创建...”警告。 可以先从订阅的 Active Directory 实例中删除已添加到全局管理员/共同管理员角色的用户，然后重新添加，使其成为 Active Directory 中的完整用户。 若要验证这种情况，可在 Azure 门户的“Azure Active Directory”窗格中选择“用户和组”，选择“所有用户”，在选择特定的用户后再选择“配置文件”。 用户配置文件下的“用户类型”属性值不应等于“来宾”。
+
+## 通过门户创建运行方式帐户
+<a id="create-run-as-account-from-the-portal" class="xliff"></a>
 在本部分中，请执行以下步骤，通过 Azure 门户更新 Azure 自动化帐户。  分别创建运行方式帐户和经典运行方式帐户，如果不需要管理经典 Azure 门户中的资源，可只创建 Azure 运行方式帐户。  
 
 此进程在自动化帐户中创建以下各项。
@@ -58,13 +70,13 @@ ms.lasthandoff: 06/03/2017
 * 在指定的自动化帐户中创建名为 *AzureClassicRunAsCertificate* 的自动化证书资产。 该证书资产保存管理证书使用的证书私钥。
 * 在指定的自动化帐户中创建名为 *AzureClassicRunAsConnection* 的自动化连接资产。 该连接资产保存订阅名称、subscriptionId 和证书资产名称。
 
-
 1. 以订阅管理员角色成员和订阅共同管理员的帐户登录 Azure 门户。
 2. 在“自动化帐户”边栏选项卡上的“帐户设置”部分下，选择“运行方式帐户”。  
 3. 根据所需帐户，选择“Azure 运行方式帐户”或“Azure 经典运行方式帐户”。  选择后，便会出现“添加 Azure 运行方式帐户”或“添加 Azure 经典运行方式帐户”边栏选项卡，查看概述信息后，单击“创建”，继续创建运行方式帐户。  
 4. Azure 创建运行方式帐户时，用户可以在菜单的“通知”下跟踪进度，此时会显示一个横幅，指示正在创建帐户。  此过程可能需要几分钟才能完成。  
 
-## <a name="create-run-as-account-using-powershell-script"></a>使用 PowerShell 脚本创建运行方式帐户
+## 使用 PowerShell 脚本创建运行方式帐户
+<a id="create-run-as-account-using-powershell-script" class="xliff"></a>
 此 PowerShell 脚本包括对以下配置的支持：
 
 * 使用自签名证书创建运行方式帐户。
@@ -290,6 +302,7 @@ ms.lasthandoff: 06/03/2017
 * 如果使用企业公共证书（.cer 文件）创建了经典运行方式帐户，则使用此证书。 遵循有关[将管理 API 证书上传到 Azure 经典门户](../azure-api-management-certs.md)的说明，然后参考[用于通过 Azure 经典部署资源进行身份验证的示例代码](automation-verify-runas-authentication.md#classic-run-as-authentication)，使用经典部署资源来验证凭据配置。 
 * 如果*未*创建经典运行方式帐户，请参考[用于通过服务管理资源进行身份验证的示例代码](automation-verify-runas-authentication.md#automation-run-as-authentication)，使用 Resource Manager 资源进行身份验证并验证凭据配置。
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 * 有关服务主体的详细信息，请参阅 [Application Objects and Service Principal Objects](../active-directory/active-directory-application-objects.md)（应用程序对象和服务主体对象）。
 * 有关证书和 Azure 服务的详细信息，请参阅 [Azure 云服务证书概述](../cloud-services/cloud-services-certs-create.md)。

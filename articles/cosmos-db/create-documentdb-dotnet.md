@@ -16,14 +16,15 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 899c710318fee46a93b3f54a68cb9027589f7177
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: d17f90d5ed5440dc336d1e3ae890a13077e33c4d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
-# <a name="azure-cosmos-db-build-a-documentdb-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB：使用 .NET 和 Azure 门户生成 DocumentDB API Web 应用
+# Azure Cosmos DB：使用 .NET 和 Azure 门户生成 DocumentDB API Web 应用
+<a id="azure-cosmos-db-build-a-documentdb-api-web-app-with-net-and-the-azure-portal" class="xliff"></a>
 
 Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，它们都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
 
@@ -31,28 +32,32 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ![包含示例数据的“待办事项”应用](./media/create-documentdb-dotnet/azure-comosdb-todo-app-list.png)
 
-## <a name="prerequisites"></a>先决条件
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
 
 如果尚未安装 Visual Studio 2017，可以下载并使用**免费的** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 <a id="create-account"></a>
-## <a name="create-a-database-account"></a>创建数据库帐户
+## 创建数据库帐户
+<a id="create-a-database-account" class="xliff"></a>
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 <a id="create-collection"></a>
-## <a name="add-a-collection"></a>添加集合
+## 添加集合
+<a id="add-a-collection" class="xliff"></a>
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
 <a id="add-sample-data"></a>
-## <a name="add-sample-data"></a>添加示例数据
+## 添加示例数据
+<a id="add-sample-data" class="xliff"></a>
 
 现在可以使用数据资源管理器将数据添加到新集合。
 
-1. 在数据资源管理器中，新数据库将显示在“集合”窗格中。 展开 **Items** 数据库，展开 **ToDoList** 集合，单击“文档”，然后单击“新建文档”。 
+1. 在数据资源管理器中，新数据库将显示在“集合”窗格中。 展开 **Tasks** 数据库，展开 **Items** 集合，单击“文档”，然后单击“新建文档”。 
 
    ![在 Azure 门户的数据资源管理器中创建新文档](./media/create-documentdb-dotnet/azure-cosmosdb-data-explorer-new-document.png)
   
@@ -63,15 +68,21 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
          "id": "1",
          "category": "personal",
          "name": "groceries",
-         "description": "Pick up apples and strawberries."
+         "description": "Pick up apples and strawberries.",
+         "isComplete": false
      }
      ```
+
+3. 将 json 添加到“文档”选项卡以后，即可单击“保存”。
+
+    ![通过复制添加 json 数据，然后在 Azure 门户的数据资源管理器中单击“保存”](./media/create-documentdb-dotnet/azure-cosmosdb-data-explorer-save-document.png)
 
      现在可以在数据资源管理器中使用查询来检索数据。 默认情况下，数据资源管理器使用 `SELECT * FROM c` 来检索集合中的所有文档，但你可以将其更改为 `SELECT * FROM c ORDER BY c.name ASC`，按 name 属性的字母升序返回所有文档。 
  
      还可以使用数据资源管理器创建存储过程、UDF 和触发器以执行服务器端业务逻辑和缩放吞吐量。 数据资源管理器公开 API 中提供的所有内置编程数据访问，但你可以使用它轻松访问 Azure 门户中的数据。
 
-## <a name="clone-the-sample-application"></a>克隆示例应用程序
+## 克隆示例应用程序
+<a id="clone-the-sample-application" class="xliff"></a>
 
 现在，我们从 github 克隆 DocumentDB API 应用、设置连接字符串，然后运行该应用。 你将看到以编程方式处理数据是多么容易。 
 
@@ -83,25 +94,26 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     git clone https://github.com/Azure-Samples/documentdb-dotnet-todo-app.git
     ```
 
-3. 然后在 Visual Studio 中打开解决方案文件。 
+3. 然后在 Visual Studio 中打开 todo 解决方案文件。 
 
-## <a name="review-the-code"></a>查看代码
+## 查看代码
+<a id="review-the-code" class="xliff"></a>
 
 让我们快速查看一下应用中发生的情况。 打开 DocumentDBRepository.cs 文件，会发现以下代码行创建 Azure Cosmos DB 资源。 
 
-* 将对 DocumentClient 进行初始化。
+* 将在第 73 行对 DocumentClient 进行初始化。
 
     ```csharp
     client = new DocumentClient(new Uri(ConfigurationManager.AppSettings["endpoint"]), ConfigurationManager.AppSettings["authKey"]);`
     ```
 
-* 将创建一个新数据库。
+* 将在第 88 行创建一个新数据库。
 
     ```csharp
     await client.CreateDatabaseAsync(new Database { Id = DatabaseId });
     ```
 
-* 将创建一个新集合。
+* 将在第 107 行创建一个新集合。
 
     ```csharp
     await client.CreateDocumentCollectionAsync(
@@ -110,7 +122,8 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
         new RequestOptions { OfferThroughput = 1000 });
     ```
 
-## <a name="update-your-connection-string"></a>更新连接字符串
+## 更新连接字符串
+<a id="update-your-connection-string" class="xliff"></a>
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
@@ -128,7 +141,8 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
     `<add key="authKey" value="FILLME" />`
     
-## <a name="run-the-web-app"></a>运行 Web 应用
+## 运行 Web 应用
+<a id="run-the-web-app" class="xliff"></a>
 1. 在 Visual Studio 中，右键单击解决方案资源管理器中的项目，然后单击“管理 NuGet 包”。 
 
 2. 在 NuGet“浏览”框中，键入 *DocumentDB*。
@@ -143,18 +157,21 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现可返回到数据资源管理器，查看查询、修改和处理此新数据。 
 
-## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
+## 在 Azure 门户中查看 SLA
+<a id="review-slas-in-the-azure-portal" class="xliff"></a>
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>清理资源
+## 清理资源
+<a id="clean-up-resources" class="xliff"></a>
 
 如果不打算继续使用此应用，请删除本快速入门教程在 Azure 门户中创建的所有资源，步骤如下：
 
 1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击已创建资源的名称。 
 2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，然后单击“删除”。
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 在本快速入门教程中，你已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建集合和运行 Web 应用。 现在可以将其他数据导入 Cosmos DB 帐户。 
 

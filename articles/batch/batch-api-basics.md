@@ -23,9 +23,8 @@ ms.lasthandoff: 06/30/2017
 
 
 ---
-<a id="develop-large-scale-parallel-compute-solutions-with-batch" class="xliff"></a>
-
 # 使用 Batch 开发大规模并行计算解决方案
+<a id="develop-large-scale-parallel-compute-solutions-with-batch" class="xliff"></a>
 
 这篇 Azure Batch 服务核心组件的概述将介绍 Batch 开发人员可用来构建大规模并发计算解决方案的主要服务功能和资源。
 
@@ -36,9 +35,8 @@ ms.lasthandoff: 06/30/2017
 >
 >
 
-<a id="batch-service-workflow" class="xliff"></a>
-
 ## Batch 服务工作流
+<a id="batch-service-workflow" class="xliff"></a>
 几乎所有使用 Batch 服务处理并行工作负荷的应用程序和服务都使用以下典型高级工作流：
 
 1. 将要处理的**数据文件**上传到 [Azure 存储][azure_storage]帐户。 Batch 包含访问 Azure Blob 存储的内置支持，在运行任务时，任务可以将这些文件下载到 [计算节点](#compute-node) 。
@@ -55,9 +53,8 @@ ms.lasthandoff: 06/30/2017
 >
 >
 
-<a id="batch-service-resources" class="xliff"></a>
-
 ## Batch 服务资源
+<a id="batch-service-resources" class="xliff"></a>
 使用 Batch 服务的所有解决方案需要以下某些资源：帐户、计算节点、池、作业、任务。 其他资源（如作业计划和应用程序包）都很有用，但为可选功能。
 
 * [帐户](#account)
@@ -75,9 +72,8 @@ ms.lasthandoff: 06/30/2017
   * [任务依赖项](#task-dependencies)
 * [应用程序包](#application-packages)
 
-<a id="account" class="xliff"></a>
-
 ## 帐户
+<a id="account" class="xliff"></a>
 批处理帐户是批处理服务中唯一标识的实体。 所有处理都与一个 Batch 帐户相关联。
 
 可以通过 [Azure 门户](batch-account-create-portal.md)或编程方式（例如使用[批处理管理 .NET 库](batch-management-dotnet.md)）创建 Azure Batch 帐户。 创建帐户时，可以关联 Azure 存储帐户。
@@ -109,9 +105,8 @@ Batch 支持两种帐户配置，在创建批处理帐户时需要选择相应�
 >
 
 
-<a id="compute-node" class="xliff"></a>
-
 ## 计算节点
+<a id="compute-node" class="xliff"></a>
 计算节点是专门用于处理一部分应用程序工作负荷的 Azure 虚拟机 (VM) 或云服务 VM。 节点大小确定了 CPU 核心数目、内存容量，以及分配给节点的本地文件系统大小。 可以使用 Azure 云服务或虚拟机应用商店映像创建的 Windows 或 Linux 节点池。 有关这些选项的详细信息，请参阅下面的 [池](#pool) 部分。
 
 节点可以运行节点操作系统环境支持的任何可执行文件或脚本。 这包括适用于 Windows 的 \*.exe、\*.cmd、\*.bat 和 PowerShell 脚本，以及适用于 Linux 的二进制文件、shell 和 Python 脚本。
@@ -122,9 +117,8 @@ Batch 中的所有计算节点还包括：
 * **防火墙** 设置。
 * [远程访问](#connecting-to-compute-nodes) Windows（远程桌面协议 (RDP)）和 Linux（安全外壳 (SSH)）节点。
 
-<a id="pool" class="xliff"></a>
-
 ## 池
+<a id="pool" class="xliff"></a>
 池是运行应用程序的节点集合。 你可以手动创建池；或者在你指定要完成的工作时，由 Batch 服务自动创建池。 你可以创建和管理符合应用程序资源要求的池。 池只能由创建它的 Batch 帐户使用。 一个批处理帐户可以有多个池。
 
 Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规模的分配、应用程序安装、数据分发和运行状况监视，以及在池内灵活调整计算节点数目（[缩放](#scaling-compute-resources)）等功能。
@@ -150,9 +144,8 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 >
 >使用用户订阅配置创建的批处理帐户不会依循 Batch 服务配额。 而是会分摊指定订阅的核心配额。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额和约束条件](../azure-subscription-service-limits.md)中的[虚拟机限制](../azure-subscription-service-limits.md#virtual-machines-limits)。
 
-<a id="compute-node-operating-system-and-version" class="xliff"></a>
-
 ### 计算节点的操作系统和版本
+<a id="compute-node-operating-system-and-version" class="xliff"></a>
 
 在创建 Batch 池时，可指定 Azure 虚拟机配置和想要在池中每个计算节点上运行的操作系统类型。 Batch 中可用的两个配置类型为：
 
@@ -170,9 +163,8 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
 有关在创建批处理帐户时如何设置池分配模式的信息，请参阅[帐户](#account)部分。
 
-<a id="custom-images-for-virtual-machine-pools" class="xliff"></a>
-
 #### 虚拟机池的自定义映像
+<a id="custom-images-for-virtual-machine-pools" class="xliff"></a>
 
 若要将自定义映像用于虚拟机池，请使用“用户订阅”帐户配置创建批处理帐户。 使用此配置，Batch 池将分配到帐户所在的订阅中。 有关在创建批处理帐户时如何设置池分配模式的信息，请参阅[帐户](#account)部分。
 
@@ -199,9 +191,8 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 6. 若要检查池是否基于自定义映像，请查看“池”边栏选项卡的资源摘要部分中的“操作系统”属性。 此属性的值应为“自定义 VM 映像”。
 7. 与池相关联的所有自定义 VHD 都显示在池的“属性”边栏选项卡中。
 
-<a id="compute-node-type-and-target-number-of-nodes" class="xliff"></a>
-
 ### 计算节点类型和目标节点数
+<a id="compute-node-type-and-target-number-of-nodes" class="xliff"></a>
 
 创建池时，可以指定所需的计算节点类型和每种类型的目标节点数。 有两种类型的计算节点：
 
@@ -219,9 +210,8 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
 有关低优先级计算节点和专用计算节点的定价信息，请参阅 [Batch 定价](https://azure.microsoft.com/pricing/details/batch/)。
 
-<a id="size-of-the-compute-nodes" class="xliff"></a>
-
 ### 计算节点大小
+<a id="size-of-the-compute-nodes" class="xliff"></a>
 
 **Sizes for Cloud Services** （云服务的大小）中列出了 [云服务配置](../cloud-services/cloud-services-sizes-specs.md)计算节点大小。 批处理支持 `ExtraSmall`、`STANDARD_A1_V2`、`STANDARD_A2_V2` 以外的所有云服务大小。
 
@@ -231,15 +221,13 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
 池中所有节点的大小相同。 如果打算运行具有不同系统要求和/或负载级别的应用程序，建议使用不同的池。
 
-<a id="scaling-policy" class="xliff"></a>
-
 ### 缩放策略
+<a id="scaling-policy" class="xliff"></a>
 
 对于动态工作负荷，可编写[自动缩放公式](#scaling-compute-resources)并将其应用到池中。 Batch 服务将定期计算该公式，并根据可以指定的各个池、作业、和任务参数，调整池中的节点数目。
 
-<a id="task-scheduling-policy" class="xliff"></a>
-
 ### 任务计划策略
+<a id="task-scheduling-policy" class="xliff"></a>
 
 [每个节点的最大任务数](batch-parallel-node-tasks.md) 配置选项确定了可以在池中每个计算节点上并行运行的最大任务数。
 
@@ -247,9 +235,8 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
 还可以指定一个 *填充类型* ，用于确定 Batch 是要将任务平均分散到池中的所有节点，还是在将最大数目的任务分配给一个节点后，再将任务分配给另一个节点。
 
-<a id="communication-status-for-compute-nodes" class="xliff"></a>
-
 ### 计算节点的通信状态
+<a id="communication-status-for-compute-nodes" class="xliff"></a>
 
 在大多数情况下，任务将独立运行，并不需要彼此通信。 但是，某些应用程序中的任务必须能够通信，例如 [MPI 方案](batch-mpi.md)。
 
@@ -257,28 +244,24 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
 请注意，启用节点间通信也会影响群集内的节点位置，并且由于部署限制，可能限制池中的最大节点数。 如果应用程序不需要节点之间的通信，Batch 服务可以将许多不同的群集和数据中心的大量节点分配给池，以发挥更强大的并行处理能力。
 
-<a id="start-tasks-for-compute-nodes" class="xliff"></a>
-
 ### 计算节点的启动任务
+<a id="start-tasks-for-compute-nodes" class="xliff"></a>
 
 可选的 *启动任务* 将在每个节点加入池以及节点每次重新启动或重置映像时在该节点上运行。 启动任务特别适合用于准备计算节点，以便执行任务，例如，在计算节点上安装运行任务的应用程序。
 
-<a id="application-packages" class="xliff"></a>
-
 ### 应用程序包
+<a id="application-packages" class="xliff"></a>
 
 可以指定要部署到池中计算节点的 [应用程序包](#application-packages) 。 应用程序包提供任务运行的应用程序的简化部署和版本控制。 为池指定的应用程序包安装在加入该池的每个节点上，每次节点重新启动或重置映像时，将安装这些包。 Linux 计算节点目前不支持应用程序包。
 
-<a id="network-configuration" class="xliff"></a>
-
 ### 网络配置
+<a id="network-configuration" class="xliff"></a>
 
 可以指定应在其中创建池计算节点的 Azure [虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 的子网。 有关详细信息，请参阅[池网络配置](#pool-network-configuration)部分。
 
 
-<a id="job" class="xliff"></a>
-
 ## 作业
+<a id="job" class="xliff"></a>
 作业是任务的集合。 作业控制其任务对池中计算节点执行计算的方式。
 
 * 作业指定要在其上运行工作的 **池**。 可以为每个作业创建新池，或将池用于多个作业。 可以针对与作业计划关联的每个作业创建池，或者针对与作业计划关联的所有作业创建池。
@@ -293,23 +276,20 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
     请注意，Batch 服务将 *没有* 任务的作业视为其所有任务都已完成。 因此，此选项往往与 [作业管理器任务](#job-manager-task)配合使用。 如果想要使用自动作业终止而不通过作业管理器终止，首先应该将新作业的 **onAllTasksComplete** 属性设置为 *noaction*，然后只有在完成将任务添加到作业之后才将它设置为 *terminatejob*。
 
-<a id="job-priority" class="xliff"></a>
-
 ### 作业优先级
+<a id="job-priority" class="xliff"></a>
 可以向你在 Batch 中创建的作业分配优先级。 Batch 服务使用作业的优先级值来确定帐户中的作业计划顺序（不要与 [计划的作业](#scheduled-jobs)相混淆）。 优先级值的范围为 -1000 到 1000，-1000 表示最低优先级，1000 表示最高优先级。 若要更新作业的优先级，请调用[更新作业的属性][rest_update_job]操作 (Batch REST) 或修改 [CloudJob.Priority][net_cloudjob_priority] 属性 (Batch .NET)。
 
 在同一个帐户内，高优先级作业的计划优先顺序高于低优先级作业。 一个帐户中具有较高优先级值的作业，其计划优先级并不高于不同帐户中较低优先级值的另一个作业。
 
 不同池的作业计划是独立的。 在不同的池之间，即使作业的优先级较高，如果其关联的池缺少空闲的节点，则不保证此作业优先计划。 在同一个池中，相同优先级的作业有相同的计划机会。
 
-<a id="scheduled-jobs" class="xliff"></a>
-
 ### 计划的作业
+<a id="scheduled-jobs" class="xliff"></a>
 使用[作业计划][rest_job_schedules]可在 Batch 服务中创建周期性作业。 作业计划指定何时要运行作业，并包含要运行的作业的规范。 可以指定计划的持续时间（计划的持续时间和生效时间），以及在计划的时间段创建作业的频率。
 
-<a id="task" class="xliff"></a>
-
 ## 任务
+<a id="task" class="xliff"></a>
 任务是与作业关联的计算单位。 它在节点上运行。 任务将分配到节点以执行，或排入队列直到节点空闲。 简而言之，任务将在计算节点上运行一个或多个程序或脚本，以执行你需要完成的工作。
 
 创建任务时，可以指定：
@@ -336,9 +316,8 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 * [多实例任务 (MPI)](#multi-instance-tasks)
 * [任务依赖项](#task-dependencies)
 
-<a id="start-task" class="xliff"></a>
-
 ### 启动任务
+<a id="start-task" class="xliff"></a>
 通过将 **启动任务** 与池相关联，可以准备池节点的操作环境。 可以执行各种操作，例如，安装任务所要运行的应用程序或启动后台进程。 启动任务在节点每次启动时运行，且只要保留在池中就会持续运行（包括首次将节点添加到池时，以及节点重新启动或重置映像时）。
 
 启动任务的主要优点是可以包含全部所需的信息，使你能够配置计算节点，以及安装执行任务所需的应用程序。 因此，增加池中的节点数量与指定新的目标节点计数一样简单。 启动任务向 Batch 服务提供配置新节点并使其准备好接受任务所需的信息。
@@ -363,9 +342,8 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 >
 >
 
-<a id="job-manager-task" class="xliff"></a>
-
 ### 作业管理器任务
+<a id="job-manager-task" class="xliff"></a>
 通常使用 **作业管理器任务** 来控制和/或监视作业的执行 - 例如，创建和提交作业的任务、确定其他要运行的任务，以及确定任务何时完成。 但是，作业管理器任务并不限定于这些活动。 它是功能齐备的任务，可执行作业所需的任何操作。 例如，作业管理器任务可以下载指定为参数的文件、分析该文件的内容，并根据这些内容提交其他任务。
 
 作业管理员任务在所有其他任务之前启动。 它提供以下功能：
@@ -377,9 +355,8 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 * 需要重新启动时，作业管理器任务有最高的优先级。 如果找不到空闲的节点，Batch 服务可以终止池中正在运行的其他某个任务，以便腾出空间供作业管理器任务运行。
 * 一个作业中的作业管理器任务的优先级不高于其他作业的任务。 不同作业之间只遵循作业级别的优先级。
 
-<a id="job-preparation-and-release-tasks" class="xliff"></a>
-
 ### 作业准备和释放任务
+<a id="job-preparation-and-release-tasks" class="xliff"></a>
 Batch 提供作业准备任务来设置作业前的执行。 作业释放任务用于作业后的维护或清理。
 
 * **作业准备任务**：在任何其他作业任务执行之前，作业准备任务在计划要运行任务的所有计算节点上运行。 你可以使用作业准备任务可以复制所有任务共享的、但对作业唯一的数据。
@@ -389,16 +366,14 @@ Batch 提供作业准备任务来设置作业前的执行。 作业释放任务�
 
 有关作业准备和释放任务的详细信息，请参阅 [在 Azure Batch 计算节点上运行作业准备和完成任务](batch-job-prep-release.md)。
 
-<a id="multi-instance-task" class="xliff"></a>
-
 ### 多实例任务
+<a id="multi-instance-task" class="xliff"></a>
 [多实例任务](batch-mpi.md) 是经过配置后可以在多个计算节点上同时运行的任务。 通过多实例任务，可以启用等高性能计算方案（例如消息传递接口 (MPI)），此类方案需要将一组计算节点分配到一起来处理单个工作负荷。
 
 有关在 Batch 中使用 Batch .NET 库运行 MPI 作业的详细介绍，请参阅 [Use multi-instance tasks to run Message Passing Interface (MPI) applications in Azure Batch](batch-mpi.md)（在 Azure Batch 中使用多实例任务来执行消息传递接口 (MPI) 应用程序）。
 
-<a id="task-dependencies" class="xliff"></a>
-
 ### 任务依赖项
+<a id="task-dependencies" class="xliff"></a>
 顾名思义，使用[任务依赖项](batch-task-dependencies.md)可以在执行某个任务之前，指定该任务与其他任务的依赖性。 此功能提供以下情况的支持：“下游”任务取用“上游”任务的输出，或当上游任务执行下游任务所需的某种初始化时。 若要使用此功能，必须先在 Batch 作业中启用任务依赖性。 然后，针对每个依赖于另一个任务（或其他许多任务）的任务，指定该任务依赖的任务。
 
 使用任务依赖性，可以配置如下所述的方案：
@@ -409,9 +384,8 @@ Batch 提供作业准备任务来设置作业前的执行。 作业释放任务�
 
 有关此功能的更深入信息，请查看 [Azure Batch 中的任务依赖关系](batch-task-dependencies.md)和 [azure-batch-samples][github_samples] GitHub 存储库中的 [TaskDependencies][github_sample_taskdeps] 代码示例。
 
-<a id="environment-settings-for-tasks" class="xliff"></a>
-
 ## 任务的环境设置
+<a id="environment-settings-for-tasks" class="xliff"></a>
 批处理服务执行的每个任务都可以访问在计算节点上设置的环境变量。 这包括 Batch 服务定义的（[服务定义型][msdn_env_vars]）环境变量以及用户可以针对其任务定义的自定义环境变量。 任务执行的应用程序和脚本可以在执行期间访问这些环境变量。
 
 可以通过填充这些实体的 *环境设置* 属性，在任务或作业级别设置自定义环境变量。 有关示例，请参阅[将任务添加到作业][rest_add_task]操作 (Batch REST API)，或 Batch .NET 中的 [CloudTask.EnvironmentSettings][net_cloudtask_env] 和 [CloudJob.CommonEnvironmentSettings][net_job_env] 属性。
@@ -420,9 +394,8 @@ Batch 提供作业准备任务来设置作业前的执行。 作业释放任务�
 
 可以在[计算节点环境变量][msdn_env_vars]中找到包含所有服务定义型环境变量的完整列表。
 
-<a id="files-and-directories" class="xliff"></a>
-
 ## 文件和目录
+<a id="files-and-directories" class="xliff"></a>
 每个任务都有一个 *工作目录* ，任务将在该目录中创建零个或多个文件和目录。 此工作目录可用于存储任务运行的程序、任务处理的数据，以及任务执行的处理的输出。 任务的所有文件和目录由任务用户拥有。
 
 Batch 服务在节点上公开文件系统的一部分作为 *根目录*。 任务可通过引用 `AZ_BATCH_NODE_ROOT_DIR` 环境变量来访问根目录。 有关使用环境变量的详细信息，请参阅 [任务的环境设置](#environment-settings-for-tasks)。
@@ -444,9 +417,8 @@ Batch 服务在节点上公开文件系统的一部分作为 *根目录*。 任�
 >
 >
 
-<a id="application-packages" class="xliff"></a>
-
 ## 应用程序包
+<a id="application-packages" class="xliff"></a>
 [应用程序包](batch-application-packages.md) 功能可为池中的计算节点提供简单的应用程序管理和部署能力。 可以上传和管理任务运行的多个应用程序版本，包括二进制文件和支持文件。 然后可以将一个或多个这样的应用程序自动部署到池中的计算节点。
 
 可以在池和任务级别指定应用程序包。 指定池应用程序包时，应用程序将部署到池中的每个节点。 指定任务应用程序包时，应用程序只在运行任务的命令行之前，部署到计划要运行作业的至少一个任务的节点。
@@ -460,9 +432,8 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 >
 >
 
-<a id="pool-and-compute-node-lifetime" class="xliff"></a>
-
 ## 池和计算节点生存期
+<a id="pool-and-compute-node-lifetime" class="xliff"></a>
 在设计 Azure Batch 解决方案时，必须做出有关如何及何时创建池，以及这些池中的计算节点可用性要保持多久的设计决策。
 
 在极端情况下，可以针对提交的每个作业创建一个池，并在其任务执行完成时立即删除该池。 这样，只有在需要时才分配节点，节点空闲时会立即关闭，因此可以最高程度地提高利用率。 这意味着作业必须等待分配节点，但务必注意，在任务单独可用、已分配并且启动任务已完成时，会立即将任务安排给节点。 批处理*不会*在等到池中的所有节点都可用后才将任务分配到节点。 这可确保最大程度地利用所有可用节点。
@@ -471,9 +442,8 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 
 通常会使用一种组合方法来处理可变但持续存在的负载。 可以创建一个池用于容纳提交的多个作业，但同时根据作业负载扩展或缩减节点数目（请参阅下一部分中的 [缩放计算资源](#scaling-compute-resources) ）。 可以根据当前负载被动执行此操作，或者在负载可预测时主动执行此操作。
 
-<a id="pool-network-configuration" class="xliff"></a>
-
 ## 池网络配置
+<a id="pool-network-configuration" class="xliff"></a>
 
 在 Azure Batch 中创建计算节点池时，可以指定应在其中创建池计算节点的 Azure [虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 的子网 ID。
 
@@ -510,9 +480,8 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 
 VNet 的其他设置取决于批处理帐户的池分配模式。
 
-<a id="vnets-for-pools-provisioned-in-the-batch-service" class="xliff"></a>
-
 ### 在批处理服务中预配的池的 VNet
+<a id="vnets-for-pools-provisioned-in-the-batch-service" class="xliff"></a>
 
 在批处理服务分配模式下，只能为**云服务配置**池分配 VNet。 另外，指定的 VNet 必须是**经典** VNet。 不支持使用 Azure Resource Manager 部署模型创建的 VNet。
 
@@ -527,17 +496,15 @@ VNet 的其他设置取决于批处理帐户的池分配模式。
 
 
 
-<a id="vnets-for-pools-provisioned-in-a-user-subscription" class="xliff"></a>
-
 ### 在用户订阅中预配的池的 VNet
+<a id="vnets-for-pools-provisioned-in-a-user-subscription" class="xliff"></a>
 
 在“用户订阅分配”模式下，仅支持**虚拟机配置**池，并且可以为其分配 VNet。 另外，指定的 VNet 必须是基于 **Resource Manager** 的 VNet。 不支持使用经典部署模型创建的 VNet。
 
 
 
-<a id="scaling-compute-resources" class="xliff"></a>
-
 ## 缩放计算资源
+<a id="scaling-compute-resources" class="xliff"></a>
 通过 [自动缩放](batch-automatic-scaling.md)功能，可以让 Batch 服务根据计算方案的当前工作负荷和资源使用状况动态缩放池中的计算节点数目。 这样，便可做到只使用所需资源并可释放不需要的资源，因而能够降低运行应用程序的整体成本。
 
 可通过编写 [自动缩放公式](batch-automatic-scaling.md#automatic-scaling-formulas) 并将该公式与池相关联，来启用自动缩放。 Batch 服务使用该公式来确定池中下一个缩放间隔（可配置的间隔）的目标节点数目。 可以在创建池时指定池的自动缩放设置，或稍后在池上启用缩放。 还可以更新已启用缩放的池上的缩放设置。
@@ -559,23 +526,20 @@ VNet 的其他设置取决于批处理帐户的池分配模式。
 >
 >
 
-<a id="security-with-certificates" class="xliff"></a>
-
 ## 证书的安全性
+<a id="security-with-certificates" class="xliff"></a>
 在加密或解密任务的敏感信息（例如 [Azure 存储帐户][azure_storage]的密钥）时，通常需要使用证书。 为此，可以在节点上安装证书。 加密的机密通过命令行参数或内嵌在某个任务资源中来传递给任务，已安装的证书可用于解密机密。
 
 可以使用[添加证书][rest_add_cert]操作 (Batch REST) 或 [CertificateOperations.CreateCertificate][net_create_cert] 方法 (Batch .NET) 将证书添加到 Batch 帐户。 然后，可以将该证书与新池或现有池相关联。 将证书与池关联后，Batch 服务将在池中的每个节点上安装该证书。 在启动节点之后、启动任何任务（包括启动任务和作业管理器任务）之前，Batch 服务将安装相应的证书。
 
 如果将证书添加到 *现有* 池，必须重新启动其计算节点，证书才会应用到节点。
 
-<a id="error-handling" class="xliff"></a>
-
 ## 错误处理。
+<a id="error-handling" class="xliff"></a>
 有时你可能需要处理 Batch 解决方案中的任务和应用程序失败。
 
-<a id="task-failure-handling" class="xliff"></a>
-
 ### 任务失败处理
+<a id="task-failure-handling" class="xliff"></a>
 任务失败划分为以下类别：
 
 * 预处理失败
@@ -602,9 +566,8 @@ VNet 的其他设置取决于批处理帐户的池分配模式。
 
     如果超出了最长时间，则将任务标记为*已完成*，但退出代码将设置为 `0xC000013A`，*schedulingError* 字段将标记为 `{ category:"ServerError", code="TaskEnded"}`。
 
-<a id="debugging-application-failures" class="xliff"></a>
-
 ### 调试应用程序失败
+<a id="debugging-application-failures" class="xliff"></a>
 * `stderr` 和 `stdout`
 
     在执行过程中，应用程序可以生成诊断输出，这些信息可用于排查问题。 如前一部分[文件和目录](#files-and-directories)中所述，批处理服务会将标准输出和标准错误输出发送到计算节点上的任务目录中的 `stdout.txt` 和 `stderr.txt` 文件。 可以使用 Azure 门户或 Batch SDK 之一下载这些文件。 例如，可以使用 Batch .NET 库中的 [ComputeNode.GetNodeFile][net_getfile_node] 和 [CloudTask.GetNodeFile][net_getfile_task] 检索这些文件和其他文件来进行故障排除。
@@ -613,16 +576,14 @@ VNet 的其他设置取决于批处理帐户的池分配模式。
 
     如前所述，如果任务执行的程序返回非零退出代码，则 Batch 服务会将此任务标记为失败。 当任务执行某个进程时，Batch 将使用 *进程的返回代码*填充任务的退出代码属性。 请务必注意，任务的退出代码**不是**由 Batch 服务确定， 而是由进程本身或此进程在其上运行的操作系统确定。
 
-<a id="accounting-for-task-failures-or-interruptions" class="xliff"></a>
-
 ### 应对任务失败或中断
+<a id="accounting-for-task-failures-or-interruptions" class="xliff"></a>
 任务偶尔会失败或中断。 任务应用程序本身可能会失败，运行任务的节点可能会重新启动，或者在调整大小操作期间，可能会因为池的取消分配策略设置为在不等待任务完成的情况下立即删除节点，而从池中删除节点。 在所有情况下，任务都可以由 Batch 自动排队，并在另一个节点上执行。
 
 间歇性的问题也有可能会导致任务挂起，或者花费很长时间才能完成执行。 可为任务设置最长的执行时间间隔。 如果超出最长执行时间间隔，Batch 服务会中断任务应用程序。
 
-<a id="connecting-to-compute-nodes" class="xliff"></a>
-
 ### 连接到计算节点
+<a id="connecting-to-compute-nodes" class="xliff"></a>
 可通过远程登录到计算节点来进一步执行调试和故障排除。 可以使用 Azure 门户下载 Windows 节点的远程桌面协议 (RDP) 文件，并获取 Linux 节点的安全外壳 (SSH) 连接信息。 也可以使用 Batch API（例如，使用 [Batch .NET][net_rdpfile] 或 [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh)）执行此操作。
 
 > [!IMPORTANT]
@@ -630,9 +591,8 @@ VNet 的其他设置取决于批处理帐户的池分配模式。
 >
 >
 
-<a id="troubleshooting-problematic-compute-nodes" class="xliff"></a>
-
 ### 对有问题的计算节点进行故障排除
+<a id="troubleshooting-problematic-compute-nodes" class="xliff"></a>
 在部分任务失败的情况下，Batch 客户端应用程序或服务可以检查失败任务的元数据来找出行为异常的节点。 池中的每个节点都有一个唯一 ID，运行任务的节点包含在任务元数据中。 识别出“有问题的节点”后，可对其执行多种操作：
 
 * **重新启动节点** ([REST][rest_reboot] | [.NET][net_reboot])
@@ -653,9 +613,8 @@ VNet 的其他设置取决于批处理帐户的池分配模式。
 >
 >
 
-<a id="next-steps" class="xliff"></a>
-
 ## 后续步骤
+<a id="next-steps" class="xliff"></a>
 * 了解适用于生成批处理解决方案的[批处理 API 和工具](batch-apis-tools.md)。
 * 在 [Get started with the Azure Batch Library for .NET](batch-dotnet-get-started.md)（适用于 .NET 的 Azure Batch 库入门）中逐步演练一个示例 Batch 应用程序。 另请参阅该教程的 [Python 版本](batch-python-tutorial.md) ，其中介绍了如何在 Linux 计算节点上运行工作负荷。
 * 下载并构建 [Batch 资源管理器][github_batchexplorer]示例项目，以便在开发 Batch 解决方案时使用。 使用 Batch 资源管理器可以执行以下和其他操作：

@@ -22,9 +22,8 @@ ms.lasthandoff: 06/28/2017
 
 
 ---
-<a id="azure-security-center-platform-migration" class="xliff"></a>
-
 # Azure 安全中心平台迁移
+<a id="azure-security-center-platform-migration" class="xliff"></a>
 
 从 2017 年 6 月初起，Azure 安全中心推出对安全数据收集和存储方式的重要更改。  这些更改解锁了新功能，例如可以轻松搜索安全数据并更好地与其他 Azure 管理和监视服务保持一致。
 
@@ -32,17 +31,15 @@ ms.lasthandoff: 06/28/2017
 > 平台迁移不应影响生产资源，也无需采取任何操作。
 
 
-<a id="whats-happening-during-this-platform-migration" class="xliff"></a>
-
 ## 平台迁移过程中发生了什么？
+<a id="whats-happening-during-this-platform-migration" class="xliff"></a>
 
 以前，安全中心使用 Azure Monitoring Agent从 VM 中收集安全数据。 这包括安全配置（用于识别漏洞）和安全事件（用于检测威胁）相关信息。 此数据存储在 Azure 存储帐户中。
 
 此后，安全中心使用 Microsoft Monitoring Agent - Operations Management Suite 和 Log Analytics 服务同样使用此代理。 通过此代理收集的数据存储在与 Azure 订阅关联的现有 Log Analytics [工作区](../log-analytics/log-analytics-manage-access.md)或新工作区中，具体取决于 VM 的地理位置。
 
-<a id="agent" class="xliff"></a>
-
 ## 代理
+<a id="agent" class="xliff"></a>
 
 转换过程中，Microsoft Monitoring Agent（适用于 [Windows](../log-analytics/log-analytics-windows-agents.md) 或 [Linux](../log-analytics/log-analytics-linux-agents.md)）安装于当前正收集数据的所有 Azure VM 上。  如果 VM 已安装 Microsoft Monitoring Agent，安全中心将利用当前安装的代理。
 
@@ -56,9 +53,8 @@ ms.lasthandoff: 06/28/2017
 > [!NOTE] 
 > 由于其他 Azure 管理和监视服务可能使用 Microsoft Monitoring Agent，因此关闭安全中心数据收集后不会自动卸载代理。 但是，必要时可手动卸载代理。
 
-<a id="workspace" class="xliff"></a>
-
 ## 工作区
+<a id="workspace" class="xliff"></a>
 
 如上所述，通过 Microsoft Monitoring Agent（代表安全中心）收集的数据存储在与 Azure 订阅关联的现有 Log Analytics 工作区或新工作区中，具体取决于 VM 的地理位置。
 
@@ -72,16 +68,14 @@ ms.lasthandoff: 06/28/2017
 > [!NOTE]
 > 安全中心以前收集的数据保留在存储帐户中。 完成迁移后，可以删除这些存储帐户。
 
-<a id="oms-security-solution" class="xliff"></a>
-
-### OMS 安全解决方案 
+### OMS 安全解决方案
+<a id="oms-security-solution" class="xliff"></a> 
 
 对于未安装 OMS 安全解决方案的现有客户，Microsoft 将此解决方案安装在客户工作区，但仅针对 Azure VM。 请不要卸载此解决方案，因为如果从 OMS管理控制台完成此操作，则不会执行自动修正。
 
 
-<a id="other-updates" class="xliff"></a>
-
 ## 其他更新
+<a id="other-updates" class="xliff"></a>
 
 连同平台迁移，我们将推出一些其他的次要更新：
 

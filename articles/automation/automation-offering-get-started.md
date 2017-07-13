@@ -15,19 +15,21 @@ ms.topic: get-started-article
 ms.date: 06/16/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 800c4c5928f24a7e879a433d46b096dfbbbaa910
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: eb7d58c71f6d0daf072045797e30208ffe966ee0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 06/30/2017
 
 ---
 
-# <a name="getting-started-with-azure-automation"></a>Azure 自动化入门
+# Azure 自动化入门
+<a id="getting-started-with-azure-automation" class="xliff"></a>
 
 本入门指南介绍了与 Azure 自动化部署相关的核心概念。 不管是 Azure 自动化新手，还是已有自动化工作流软件（例如 System Center Orchestrator）使用经验，都可以通过本指南了解如何准备和载入自动化。  之后便可开始开发 runbook，支持流程自动化需求。 
 
 
-## <a name="automation-architecture-overview"></a>自动化体系结构概述
+## 自动化体系结构概述
+<a id="automation-architecture-overview" class="xliff"></a>
 
 ![Azure 自动化概述](media/automation-offering-get-started/automation-infradiagram-networkcomms.png)
 
@@ -43,9 +45,11 @@ Azure 中运行的 Runbook 在自动化沙盒中执行，这些沙盒托管在 A
 
 存储在 Azure 自动化中的 DSC 配置可直接应用于 Azure 虚拟机。 其他物理计算机和虚拟机可从 Azure 自动化 DSC 拉取服务器请求配置。  管理本地物理或虚拟 Windows 系统和 Linux 系统的配置时，不需部署任何支持自动化 DSC 请求服务器的基础结构，只需确保要通过自动化 DSC 管理每个系统能够进行出站 Internet 访问（经 TCP 端口 443 与 OMS 服务通信）即可。   
 
-## <a name="requirements"></a>要求
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
 
-### <a name="automation-dsc"></a>自动化 DSC
+### 自动化 DSC
+<a id="automation-dsc" class="xliff"></a>
 Azure 自动化 DSC 可用于管理各种计算机：
 
 * 运行 Windows 或 Linux 的 Azure 虚拟机（经典）
@@ -56,7 +60,8 @@ Azure 自动化 DSC 可用于管理各种计算机：
 
 必须先安装最新版的 WMF 5，然后适用于 Windows 的 PowerShell DSC 代理才能与 Azure 自动化通信。 只有安装了[适用于 Linux 的 PowerShell DSC 代理](https://www.microsoft.com/en-us/download/details.aspx?id=49150)的最新版本，Linux 才能与 Azure 自动化通信。
 
-### <a name="hybrid-runbook-worker"></a>混合 Runbook 辅助角色  
+### 混合 Runbook 辅助角色
+<a id="hybrid-runbook-worker" class="xliff"></a>  
 指定某台计算机运行混合 Runbook 作业时，该计算机必须满足以下要求：
 
 * Windows Server 2012 或更高版本
@@ -64,10 +69,21 @@ Azure 自动化 DSC 可用于管理各种计算机：
 * 至少双核
 * 至少 4 GB RAM
 
-## <a name="authentication-planning"></a>身份验证规划
+### 创建自动化帐户所需的权限
+<a id="permissions-required-to-create-automation-account" class="xliff"></a>
+若要创建或更新自动化帐户，必须具有完成本主题所需的下述特定权限。   
+ 
+* 若要创建自动化帐户，需将 AD 用户帐户添加到一个角色，该角色的权限相当于 Microsoft.Automation 资源的参与者角色，如 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md#contributor-role-permissions)一文所述。  
+* Azure AD 租户中的非管理员用户可以[注册 AD 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions)，前提是“应用注册设置”已设置为“是”。  如果“应用注册设置”设置为“否”，则执行此操作的用户必须是 Azure AD 中的全局管理员。 
+
+如果你在被添加到订阅的全局管理员/共同管理员角色之前不是订阅的 Active Directory 实例的成员，则会将你作为来宾添加到 Active Directory。 在这种情况下，“添加自动化帐户”边栏选项卡中会显示 “你无权创建...”警告。 可以先从订阅的 Active Directory 实例中删除已添加到全局管理员/共同管理员角色的用户，然后重新添加，使其成为 Active Directory 中的完整用户。 若要验证这种情况，可在 Azure 门户的“Azure Active Directory”窗格中选择“用户和组”，选择“所有用户”，在选择特定的用户后再选择“配置文件”。 用户配置文件下的“用户类型”属性值不应等于“来宾”。
+
+## 身份验证规划
+<a id="authentication-planning" class="xliff"></a>
 可以通过 Azure 自动化，针对本地资源、Azure 资源以及其他云提供程序资源自动执行任务。  为了使 Runbook 执行所需操作，Runbook 必须有权使用订阅中所需的最小权限来安全地访问资源。  
 
-### <a name="what-is-an-automation-account"></a>什么是自动化帐户 
+### 什么是自动化帐户
+<a id="what-is-an-automation-account" class="xliff"></a> 
 所有使用 Azure 自动化中的 Azure cmdlet 针对资源执行的自动化任务在向 Azure 进行身份验证时，都使用基于 Azure Active Directory 组织标识凭据的身份验证。  自动化帐户独立于用来登录到门户，对 Azure 资源进行配置和使用的帐户。  随附于帐户的自动化资源有：
 
 * 证书 - 包含用于从 runbook 或 DSC 配置进行身份验证的证书或用于添加这些证书。
@@ -90,7 +106,8 @@ Azure 自动化 DSC 可用于管理各种计算机：
 
 基于角色的访问控制在 Azure Resource Manager 中可用，向 Azure AD 用户帐户和运行方式帐户授予允许的操作，并对该服务主体进行身份验证。  请阅读 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md)一文，详细了解如何开发自动化权限管理模型。  
 
-#### <a name="authentication-methods"></a>身份验证方法
+#### 身份验证方法
+<a id="authentication-methods" class="xliff"></a>
 下表总结了 Azure 自动化所支持的每个环境的不同身份验证方法。
 
 | 方法 | 环境 
@@ -102,7 +119,8 @@ Azure 自动化 DSC 可用于管理各种计算机：
 
 如何\身份验证和安全性部分是支持文章，这些文章概述了如何通过专用于上述环境的现有帐户或新帐户为此类环境配置身份验证，并提供了相应的实现步骤。  [更新自动化运行方式帐户](automation-create-runas-account.md)主题适用于 Azure 运行方式和经典运行方式帐户，介绍了如何从门户或使用 PowerShell 对现有的自动化帐户进行运行方式帐户更新（如果最初没有为其配置运行方式或经典运行方式帐户）。 如果要使用企业证书颁发机构 (CA) 颁发的证书创建运行方式和经典运行方式帐户，请参阅本文，了解如何使用此配置创建帐户。     
  
-## <a name="network-planning"></a>网络规划
+## 网络规划
+<a id="network-planning" class="xliff"></a>
 要使混合 Runbook 辅助角色连接并注册到 Microsoft Operations Management Suite (OMS)，必须让其有权访问下述端口号和 URL。  除了这些端口和 URL 以外，还需有权访问连接到 OMS 时 [Microsoft Monitoring Agent 需要的端口和 URL](../log-analytics/log-analytics-windows-agents.md#network)。 如果使用代理服务器在代理与 OMS 服务之间通信，则需确保能够访问相应的资源。 如果使用防火墙来限制对 Internet 的访问，则需要将防火墙配置为允许访问。
 
 下面的信息列出了混合 Runbook 辅助角色与自动化通信时所要使用的端口和 URL。
@@ -133,7 +151,8 @@ Azure 自动化 DSC 可用于管理各种计算机：
 > 此文件包含 Microsoft Azure 数据中心使用的 IP 地址范围（包括计算、SQL 和存储范围）。 每周都将发布更新的文件，反映当前已部署的范围和任何即将对 IP 范围进行的更改。 数据中心至少在一周后才会使用文件中显示的新范围。 请每周下载新的 xml 文件，并在网站上执行必要的更改以正确地标识 Azure 中运行的服务。 快速路由用户可能会注意到用于在每个月的第一周更新 Azure 空间中 BGP 播发的此文件。 
 > 
 
-## <a name="creating-an-automation-account"></a>创建自动化帐户
+## 创建自动化帐户
+<a id="creating-an-automation-account" class="xliff"></a>
 
 可以通过不同方式在 Azure 门户中创建自动化帐户。  下表介绍了每种类型的部署体验以及其间的差异。  
 
@@ -145,15 +164,9 @@ Azure 自动化 DSC 可用于管理各种计算机：
 
 本主题演示如何载入“自动化与控制”服务，以便创建自动化帐户和 OMS 工作区。  若要创建独立的自动化帐户，以便进行测试或对服务进行预览，请参阅[创建独立的自动化帐户](automation-create-standalone-account.md)一文。  
 
-### <a name="create-automation-account-integrated-with-oms"></a>创建与 OMS 集成的自动化帐户
+### 创建与 OMS 集成的自动化帐户
+<a id="create-automation-account-integrated-with-oms" class="xliff"></a>
 若要载入自动化，建议的方法是从应用商店选择“自动化与控制”服务。  这将创建自动化帐户并建立与 OMS 工作区的集成，包括安装服务中提供的管理解决方案的选项。  
-
->[!NOTE]
->若要创建自动化帐户，你必须是“服务管理员”角色的成员，或者是授予订阅访问权限的订阅共同管理员。 此外，必须将某个用户添加到该订阅的默认 Active Directory 实例。 不需要将该帐户分配到特权角色。
->
->如果你在被添加到订阅共同管理员角色之前不是订阅的 Active Directory 实例的成员，则会将你作为来宾添加到 Active Directory。 在此实例中，“添加自动化帐户”边栏选项卡中会显示 “你无权创建...”警告。
->
->可以先从订阅的 Active Directory 实例中删除已添加到共同管理员角色的用户，然后重新添加，使其成为 Active Directory 中的完整用户。 若要验证这种情况，可在 Azure 门户的“Azure Active Directory”窗格中选择“用户和组”，选择“所有用户”，在选择特定的用户后再选择“配置文件”。 用户配置文件下的“用户类型”属性值不应等于“来宾”。
 
 1. 以订阅管理员角色成员和订阅共同管理员的帐户登录 Azure 门户。
 
@@ -186,7 +199,8 @@ Azure 自动化 DSC 可用于管理各种计算机：
 
 载入该服务以后，即可开始创建 runbook，运行已启用的管理解决方案，部署[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)，或者开始使用 [Log Analytics](https://docs.microsoft.com/azure/log-analytics) 收集云或本地环境中的资源所生成的数据。   
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 * 可以参阅[测试 Azure 自动化运行方式帐户身份验证](automation-verify-runas-authentication.md)一文，确认新的自动化帐户能否针对 Azure 资源进行身份验证。
 * 若要开始创建 runbook，请在开始创作前，先查看支持的[自动化 runbook 类型](automation-runbook-types.md)和相关注意事项。
 

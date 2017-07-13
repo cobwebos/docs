@@ -12,46 +12,45 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/06/2017
+ms.date: 06/27/2017
 ms.author: maheshu
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: dacd689576dce65bbf1a975409ea7d7f2c3ada90
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: c704ee189072ce8ed196d1ef0a23edd528a10025
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/14/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
-# <a name="update-dns-settings-for-the-azure-virtual-network"></a>更新 Azure 虚拟网络的 DNS 设置
-## <a name="task-4-update-dns-settings-for-the-azure-virtual-network"></a>任务 4：更新 Azure 虚拟网络的 DNS 设置
+# 启用 Azure Active Directory 域服务（预览版）
+<a id="enable-azure-active-directory-domain-services-preview" class="xliff"></a>
+
+## 任务 4：更新 Azure 虚拟网络的 DNS 设置
+<a id="task-4-update-dns-settings-for-the-azure-virtual-network" class="xliff"></a>
 在前面的配置任务中，已成功为你的目录启用 Azure Active Directory 域服务。 下一个任务是确保虚拟网络中的计算机可以连接和使用这些服务。 在本文中，你需要更新虚拟网络的 DNS 服务器设置，使其指向 Azure Active Directory 域服务在虚拟网络上可用的两个 IP 地址。
 
-> [!NOTE]
-> 为目录启用 Azure Active Directory 域服务后，请记下目录的“配置”选项卡上显示的 Azure Active Directory 域服务的 IP 地址。
->
->
+若要更新已启用 Azure Active Directory 域服务的虚拟网络的 DNS 服务器设置，请完成以下步骤：
 
-若要更新已启用 Azure Active Directory 域服务的虚拟网络的 DNS 服务器设置，请执行下列步骤：
+1. “概览”选项卡列出了一组“必需的配置步骤”，这些步骤将在完全预配托管域后执行。 第一个配置步骤是“更新虚拟网络的 DNS 服务器设置”。
 
-1. 转到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 在左窗格中，选择“网络”。  
-    “网络”窗口随即打开。
+    ![完全预配后的“域服务 - 概览”选项卡](./media/getting-started/domain-services-provisioned-overview.png)
 
-    ![“虚拟网络”窗口](./media/active-directory-domain-services-getting-started/virtual-network-select.png)
-3. 在“虚拟网络”选项卡上，选择其中启用了 Azure Active Directory 域服务的虚拟网络，以查看其属性。
-4. 单击“配置”  选项卡。
+2. 完全预配域以后，此磁贴中会显示两个 IP 地址。 每个这样的 IP 地址都代表托管域的一个域控制器。
 
-    ![“虚拟网络”窗口](./media/active-directory-domain-services-getting-started/virtual-network-configure-tab.png)
-5. 在“DNS 服务器”部分，输入目录的“配置”选项卡上“域服务”部分显示的两个 IP 地址。
-6. 若要保存此虚拟网络的 DNS 服务器设置，请单击窗口底部任务窗格中的“保存”。
+3. 若要将第一个 IP 地址复制到剪贴板，请单击其旁边的复制按钮。 然后单击“配置 DNS 服务器”按钮。
 
-   ![更新虚拟网络的 DNS 服务器设置](./media/active-directory-domain-services-getting-started/update-dns.png)
+4. 将第一个 IP 地址粘贴到“DNS 服务器”边栏选项卡的“添加 DNS 服务器”文本框中。 水平滚动到左侧，复制第二个 IP 地址并将其粘贴到“添加 DNS 服务器”文本框中。
+
+    ![域服务 - 更新 DNS](./media/getting-started/domain-services-update-dns.png)
+
+5. 更新完虚拟网络的 DNS 服务器以后，单击“保存”。
 
 > [!NOTE]
 > 网络中的虚拟机必须重启才能获取新的 DNS 设置。 如果需立即获取更新的 DNS 设置，可通过门户、PowerShell 或 CLI 触发重启。
 >
 >
 
-## <a name="next-steps"></a>后续步骤
-任务 5：[允许将密码同步到 Azure Active Directory 域服务](active-directory-ds-getting-started-password-sync.md)
+## 后续步骤
+<a id="next-step" class="xliff"></a>
+[任务 5：允许将密码同步到 Azure Active Directory 域服务](active-directory-ds-getting-started-password-sync.md)
 

@@ -22,9 +22,8 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
 ---
-<a id="start-with-apache-kafka-preview-on-hdinsight" class="xliff"></a>
-
 # HDInsight 上的 Apache Kafka（预览版）入门
+<a id="start-with-apache-kafka-preview-on-hdinsight" class="xliff"></a>
 
 了解如何在 Azure HDInsight 上创建和使用 [Apache Kafka](https://kafka.apache.org) 群集。 Kafka 是开源分布式流式处理平台，可与 HDInsight 配合使用。 通常将其用作消息代理，因为它可提供类似于发布-订阅消息队列的功能。
 
@@ -33,17 +32,15 @@ ms.lasthandoff: 07/04/2017
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-<a id="prerequisites" class="xliff"></a>
-
 ## 先决条件
+<a id="prerequisites" class="xliff"></a>
 
 * [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 或类似程序，如 OpenJDK。
 
 * [Apache Maven](http://maven.apache.org/) 
 
-<a id="create-a-kafka-cluster" class="xliff"></a>
-
 ## 创建 Kafka 群集
+<a id="create-a-kafka-cluster" class="xliff"></a>
 
 使用以下步骤创建 Kafka on HDInsight 群集：
 
@@ -101,9 +98,8 @@ ms.lasthandoff: 07/04/2017
     > [!NOTE]
     > 创建群集可能需要 20 分钟。
 
-<a id="connect-to-the-cluster" class="xliff"></a>
-
 ## 连接至群集
+<a id="connect-to-the-cluster" class="xliff"></a>
 
 使用 SSH 从客户端连接到群集：
 
@@ -151,9 +147,8 @@ ms.lasthandoff: 07/04/2017
     >
     > 应在检索 Zookeeper 和中转站主机信息后尽快使用这些信息，确保信息有效。
 
-<a id="create-a-topic" class="xliff"></a>
-
 ## 创建主题
+<a id="create-a-topic" class="xliff"></a>
 
 Kafka 在名为 topics 的类别中存储数据流。 与群集头节点建立 SSH 连接后，使用随 Kafka 提供的脚本创建主题：
 
@@ -169,9 +164,8 @@ Kafka 在名为 topics 的类别中存储数据流。 与群集头节点建立 S
 
 此命令的输出列出了 Kafka 主题，其中包含 **test** 主题。
 
-<a id="produce-and-consume-records" class="xliff"></a>
-
 ## 生成和使用记录
+<a id="produce-and-consume-records" class="xliff"></a>
 
 Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使用。 生成者从 Kafka 代理检索记录。 HDInsight 群集中的每个辅助角色节点都是 Kafka 代理。
 
@@ -195,9 +189,8 @@ Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使�
 
 3. 使用 __Ctrl + C__ 阻止使用者。
 
-<a id="producer-and-consumer-api" class="xliff"></a>
-
 ## 生成者和使用者 API
+<a id="producer-and-consumer-api" class="xliff"></a>
 
 还可使用 [Kafka API](http://kafka.apache.org/documentation#api) 以编程方式生成和使用记录。 使用以下步骤下载、构建基于 Java 的生成者和使用者：
 
@@ -246,9 +239,8 @@ Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使�
 
 6. 使用 __Ctrl + C__ 让使用者退出。
 
-<a id="multiple-consumers" class="xliff"></a>
-
 ### 多个使用者
+<a id="multiple-consumers" class="xliff"></a>
 
 Kafka 的一个重要概念是使用者在读取记录时使用使用者组（由组 ID 定义）。 让多个使用者使用同一个组会导致对主题的读取进行负载均衡操作。 组中的每个使用者接收一部分记录。 若要实时查看此过程，请使用以下步骤：
 
@@ -270,9 +262,8 @@ Kafka 的一个重要概念是使用者在读取记录时使用使用者组（�
 
 存储在 Kafka 中的记录都按在分区中接收的顺序进行存储。 若要在分区内实现记录的有序交付，请创建一个使用者组，其中的使用者实例数与分区数匹配。 若要在主题内实现记录的有序交付，请创建仅含一个使用者实例的使用者组。
 
-<a id="streaming-api" class="xliff"></a>
-
 ## 流式处理 API
+<a id="streaming-api" class="xliff"></a>
 
 已将流式处理 API 添加到 Kafka 版本 0.10.0 中；早期版本依赖于 Apache Spark 或 Storm 进行流式处理。
 
@@ -347,21 +338,18 @@ Kafka 的一个重要概念是使用者在读取记录时使用使用者组（�
 
 7. 使用 __Ctrl + C__ 让使用者退出，然后使用 `fg` 命令将流式处理后台任务恢复到前台。 同样，使用 __Ctrl + C__ 使它退出。
 
-<a id="delete-the-cluster" class="xliff"></a>
-
 ## 删除群集
+<a id="delete-the-cluster" class="xliff"></a>
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-<a id="troubleshoot" class="xliff"></a>
-
 ## 故障排除
+<a id="troubleshoot" class="xliff"></a>
 
 如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](hdinsight-administer-use-portal-linux.md#create-clusters)。
 
-<a id="next-steps" class="xliff"></a>
-
 ## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 在本文档中，已了解在 HDInsight 上使用 Apache Kafka 的基本知识。 使用以下内容，详细了解如何使用 Kafka：
 

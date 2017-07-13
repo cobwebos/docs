@@ -21,9 +21,8 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
 ---
-<a id="expressroute-partners-and-peering-locations" class="xliff"></a>
-
 # ExpressRoute 合作伙伴和对等位置
+<a id="expressroute-partners-and-peering-locations" class="xliff"></a>
 
 > [!div class="op_single_selector"]
 > * [按提供商列出的位置](expressroute-locations.md)
@@ -39,9 +38,8 @@ ms.lasthandoff: 07/04/2017
 
 如果你至少与地缘政治区域内的一个 ExpressRoute 位置连接，你将有权访问地缘政治区域内所有区域中的 Azure 服务。 
 
-<a id="azure-regions-to-expressroute-locations-within-a-geopolitical-region" class="xliff"></a>
-
 ### 地缘政治区域中 ExpressRoute 位置与 Azure 区域的映射
+<a id="azure-regions-to-expressroute-locations-within-a-geopolitical-region" class="xliff"></a>
 下表提供了地缘政治区域内 ExpressRoute 位置与 Azure 区域的映射。
 
 | **地缘政治区域** | **Azure 区域** | **ExpressRoute 位置** |
@@ -55,9 +53,8 @@ ms.lasthandoff: 07/04/2017
 | **印度** |印度西部、印度中部、印度南部 |金奈、孟买 |
 | **韩国** |韩国中部、韩国南部 |釜山、首尔 |
 
-<a id="regions-and-geopolitical-boundaries-for-national-clouds" class="xliff"></a>
-
 ### 国家/地区云的区域和地缘政治边界
+<a id="regions-and-geopolitical-boundaries-for-national-clouds" class="xliff"></a>
 下表提供了国家/地区云的区域和地缘政治边界的信息。
 
 | **地缘政治区域** | **Azure 区域** | **ExpressRoute 位置** |
@@ -73,9 +70,8 @@ ms.lasthandoff: 07/04/2017
 下表显示连接位置和每个位置的服务提供商。 若要查看服务提供商及其提供服务的位置，请参阅[按服务提供商列出的位置](expressroute-locations.md#locations)。 
 
 
-<a id="production-azure" class="xliff"></a>
-
 ### 生产 Azure
+<a id="production-azure" class="xliff"></a>
 | **位置** | **服务提供商** |
 | --- | --- |
 | **阿姆斯特丹** |Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、euNetworks、GÉANT、InterCloud、Internet Solutions - Cloud Connect、Interxion、KPN、Level 3 Communications、Megaport、Orange、Tata Communications、TeleCity Group、Telefonica、Telenor、Verizon、Zayo Group |
@@ -112,13 +108,11 @@ ms.lasthandoff: 07/04/2017
 
  **+** 表示即将推出
 
+### 国家/地区云环境
 <a id="national-cloud-environments" class="xliff"></a>
 
-### 国家/地区云环境
-
-<a id="us-government-cloud" class="xliff"></a>
-
 ### 美国政府云
+<a id="us-government-cloud" class="xliff"></a>
 | **位置** | **服务提供商** |
 | --- | --- |
 | **芝加哥** |AT&T NetBond、Equinix、Level 3 Communications、Verizon |
@@ -128,9 +122,8 @@ ms.lasthandoff: 07/04/2017
 | **西雅图** | Equinix |
 | **华盛顿特区** |AT&T NetBond、Equinix、Level 3 Communications、Verizon |
 
-<a id="china" class="xliff"></a>
-
 ### 中国
+<a id="china" class="xliff"></a>
 | **位置** | **服务提供商** |
 | --- | --- |
 | **北京** |中国电信 |
@@ -138,9 +131,8 @@ ms.lasthandoff: 07/04/2017
 
 若要了解详细信息，请参阅 [位于中国的 ExpressRoute](http://www.windowsazure.cn/home/features/expressroute/)
 
-<a id="germany" class="xliff"></a>
-
 ### 德国
+<a id="germany" class="xliff"></a>
 | **位置** | **服务提供商** |
 | --- | --- |
 | **柏林** |Colt+、e-shelter、Megaport+ |
@@ -185,9 +177,8 @@ ms.lasthandoff: 07/04/2017
 | **多伦多** | Equinix | Airgate Technologies Inc、Cogeco Peer 1、Rogers、Thinktel、Zirro|
 | **华盛顿特区** |Equinix | Altice Business、Gtt Communications Inc、Epsilon、Lightower、Masergy、Windstream |
 
-<a id="expressroute-system-integrators" class="xliff"></a>
-
 ## ExpressRoute 系统集成商
+<a id="expressroute-system-integrators" class="xliff"></a>
 根据网络的规模，有时，很难启用专用连接来满足需要。 你可以与下表中列出的任一系统集成商合作，以帮助将你加入 ExpressRoute。
 
 | **所在洲** | **系统集成商** |
@@ -197,9 +188,8 @@ ms.lasthandoff: 07/04/2017
 | **欧洲** |Avanade Inc.、Altogee、Bright Skies GmbH、Inframon、MSG Services、New Signature、Nelite、Orange Networks、sol-tec |
 | **北美** |Avanade Inc.、Equinix Professional Services、FlexManage、Perficient、Presidio |
 | **南美洲** |Avanade Inc. |
-<a id="next-steps" class="xliff"></a>
-
 ## 后续步骤
+<a id="next-steps" class="xliff"></a>
 * 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
 * 确保符合所有先决条件。 请参阅 [ExpressRoute 先决条件](expressroute-prerequisites.md)。
 
