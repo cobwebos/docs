@@ -15,14 +15,15 @@ ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f8b0917b6eb0295641360c4e0a80e81100809f6e
-ms.openlocfilehash: e3ce01d20f6b47c6fe68fdbfe31679cc2c92f2e7
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8ff76ea21ba684ae2a2afcb74d66b4912d7be053
 ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="understanding-the-nodes-schema-for-mapping-an-existing-web-service-to-odata-through-csdl"></a>了解通过 CSDL 将现有 Web 服务映射到 OData 的节点架构
+# 了解通过 CSDL 将现有 Web 服务映射到 OData 的节点架构
+<a id="understanding-the-nodes-schema-for-mapping-an-existing-web-service-to-odata-through-csdl" class="xliff"></a>
 > [!IMPORTANT]
 > **本次我们将不再载入任何新的数据服务发布服务器。新的 dataservices 将不会获准出现在列表中。** 如果想要在 AppSource 上发布 SaaS 业务应用程序，可以在[此处](https://appsource.microsoft.com/partners)找到更多信息。 如果想要在 Azure 应用商店上发布 IaaS 应用程序或开发人员服务，可以在[此处](https://azure.microsoft.com/marketplace/programs/certified/)找到更多信息。
 >
@@ -30,7 +31,8 @@ ms.lasthandoff: 11/17/2016
 
 本文档将帮助阐明用于将 OData 协议映射到 CSDL 的节点结构。 务必注意节点结构是格式正确的 XML。 因此，在设计 OData 映射时根节点、父节点和子节点结构也适用。
 
-## <a name="ignored-elements"></a>被忽略的元素
+## 被忽略的元素
+<a id="ignored-elements" class="xliff"></a>
 以下是 Azure 应用商店后端在 Web 服务的元数据导入过程中将不会使用的高级 CSDL 元素（XML 节点）。 它们可以存在，但将被忽略。
 
 | 元素 | 范围 |
@@ -47,15 +49,15 @@ ms.lasthandoff: 11/17/2016
 
 以下部分将详细介绍对各种 CSDL XML 节点的更改（添加和被忽略的元素）。
 
-## <a name="functionimport-node"></a>FunctionImport 节点
+## FunctionImport 节点
+<a id="functionimport-node" class="xliff"></a>
 FunctionImport 节点表示一个将服务公开给最终用户的 URL（入口点）。 此节点允许介绍如何查找上述 URL，哪些参数可供最终用户使用以及如何提供这些参数。
 
 可在[此处][MSDNFunctionImportLink](https://msdn.microsoft.com/library/cc716710.aspx)找到有关此节点的详细信息
 
 以下是由 FunctionImport 节点公开的其他属性 （或新增属性）：
 
-**d:BaseUri** -
-向市场公开的 REST 资源的 URI 模板。 市场上使用该模板来构建针对 REST Web 服务的查询。 URI 模板包含 {parameterName} 形式的参数占位符，其中 parameterName 是参数名称。 例如： apiVersion = {apiVersion}。
+**d:BaseUri** - 向应用商店公开的 REST 资源的 URI 模板。 市场上使用该模板来构建针对 REST Web 服务的查询。 URI 模板包含 {parameterName} 形式的参数占位符，其中 parameterName 是参数名称。 例如： apiVersion = {apiVersion}。
 参数可以作为 URI 参数或作为 URI 路径的一部分出现。 出现在路径中时，参数始终是必需的（不能标记为可为 null）。 *示例：* `d:BaseUri="http://api.MyWeb.com/Site/{url}/v1/visits?start={start}&amp;end={end}&amp;ApiKey=3fadcaa&amp;Format=XML"`
 
 **名称** — 已导入函数的名称。  不能与 CSDL 中其他定义的名称相同。  例如： 名称 ="GetModelUsageFile"
@@ -150,7 +152,8 @@ FunctionImport 节点内的其他子节点（CSDL 文档未涉及）为：
 
 **d:ErrorMessage** - OData 的可选扩展
 
-## <a name="parameter-node"></a>参数节点
+## 参数节点
+<a id="parameter-node" class="xliff"></a>
 此节点表示作为 URI 模板 / 请求正文（已在 FunctionImport 节点中指定）的一部分公开的一个参数。
 
 可在[此处](http://msdn.microsoft.com/library/ee473431.aspx)找到关于“参数元素”节点的非常有帮助的详细信息文档页（必要时使用“其他版本”下拉列表查看该文档）。 *示例：* `<Parameter Name="Query" Nullable="false" Mode="In" Type="String" d:Description="Query" d:SampleValues="Rudy Duck" d:EncodeParameterValue="true" MaxLength="255" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Identity"/>`
@@ -173,7 +176,8 @@ FunctionImport 节点内的其他子节点（CSDL 文档未涉及）为：
 | **d:Nullable***（可选）* |允许定义参数是否可以为 null。 默认值为：true。 但是，作为 URI 模板中的路径的一部分公开的参数不能为 null。 当为这些参数将属性设置为 false 时，重写用户输入。 **示例：** `<Parameter Name="BikeType" Type="String" Mode="In" Nullable="false"/>` |
 | **d:SampleValue** *（可选）* |在 UI 中作为注释向客户端显示的示例值。  可通过使用竖线分隔的列表添加多个值，即 `a |
 
-## <a name="entitytype-node"></a>EntityType 节点
+## EntityType 节点
+<a id="entitytype-node" class="xliff"></a>
 此节点表示从应用商店返回给最终用户的类型之一。 它还包含从内容提供商服务返回的输出到返回给最终用户的值的映射。
 
 可在[此处](http://msdn.microsoft.com/library/bb399206.aspx)找到关于此节点的详细信息（必要时使用“其他版本”下拉列表查看该文档。）
@@ -197,11 +201,11 @@ XPath 表达式将是 /foo/bar，因为 bar 节点是输出中的重复节点，
 
 **Key** - 应用商店忽略此属性。 基于 REST 的 Web 服务通常不公开主键。
 
-## <a name="property-node"></a>属性节点
+## 属性节点
+<a id="property-node" class="xliff"></a>
 此节点包含记录的一个属性。
 
-可在 [http://msdn.microsoft.com/library/bb399546.aspx](http://msdn.microsoft.com/library/bb399546.aspx) 找到关于此节点的详细信息（必要时使用 **其他版本** 下拉列表查看该文档。）*示例：*
-        `<EntityType Name="MetaDataEntityType" d:Map="/MyXMLPath">
+可在 [http://msdn.microsoft.com/library/bb399546.aspx](http://msdn.microsoft.com/library/bb399546.aspx) 找到关于此节点的详细信息（必要时使用 **其他版本** 下拉列表查看该文档。）*示例：*`<EntityType Name="MetaDataEntityType" d:Map="/MyXMLPath">
         <Property Name="Name"     Type="String" Nullable="true" d:Map="./Service/Name" d:IsPrimaryKey="true" DefaultValue=”Joe Doh” MaxLength="25" FixedLength="true" />
         ...
         </EntityType>`
@@ -254,7 +258,8 @@ XPath 表达式将是 /foo/bar，因为 bar 节点是输出中的重复节点，
 
 **d:DatabaseDataType** - 是数据库中列的数据类型，即 SQL 数据类型。 请参阅 DataService CSDL 示例
 
-## <a name="supported-parametersproperty-types"></a>支持的参数/属性类型
+## 支持的参数/属性类型
+<a id="supported-parametersproperty-types" class="xliff"></a>
 以下是受支持的参数和属性类型。 （区分大小写）
 
 | 基元类型 | 说明 |
@@ -272,7 +277,8 @@ XPath 表达式将是 /foo/bar，因为 bar 节点是输出中的重复节点，
 | Int64 |表示有符号的 64 位整数值 |
 | String |表示固定或可变长度的字符数据 |
 
-## <a name="see-also"></a>另请参阅
+## 另请参阅
+<a id="see-also" class="xliff"></a>
 * 如果你有兴趣了解全面的 OData 映射过程和用途，请阅读[数据服务 OData 映射](marketplace-publishing-data-service-creation-odata-mapping.md)一文以查看定义、结构和说明。
 * 如果你有兴趣查看示例，请阅读[数据服务 OData 映射示例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)一文以查看示例代码，了解代码的语法和上下文。
 * 若要返回到用于将数据服务发布到 Azure 应用商店的指定路径，请阅读这篇文章[数据服务发布指南](marketplace-publishing-data-service-creation.md)。

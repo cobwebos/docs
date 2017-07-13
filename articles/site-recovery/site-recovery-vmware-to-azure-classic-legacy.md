@@ -15,16 +15,15 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: raynew
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 858ed6ca4355c36c728ae88bf9488f362d487646
-ms.openlocfilehash: 7ffef4a8dcd10fa6608d200b4ca34fb3517c0cc6
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: d686d411b0877d2e4aef992e6b28da2a6f03b66e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/22/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
-<a id="replicate-vmware-virtual-machines-and-physical-servers-to-azure-with-azure-site-recovery-using-the-classic-portal-legacy" class="xliff"></a>
-
 # 在经典门户（旧版）中使用 Azure Site Recovery 将 VMware 虚拟机和物理服务器复制到 Azure
+<a id="replicate-vmware-virtual-machines-and-physical-servers-to-azure-with-azure-site-recovery-using-the-classic-portal-legacy" class="xliff"></a>
 > [!div class="op_single_selector"]
 > * [Azure 门户](site-recovery-vmware-to-azure.md)
 > * [经典门户](site-recovery-vmware-to-azure-classic.md)
@@ -34,9 +33,8 @@ ms.lasthandoff: 02/22/2017
 
 欢迎使用 Azure Site Recovery！ 本文介绍如何在经典门户中，使用 Azure Site Recovery 将本地 VMware 虚拟机或 Windows/Linux 物理服务器复制到 Azure 以进行传统部署。
 
-<a id="overview" class="xliff"></a>
-
 ## 概述
+<a id="overview" class="xliff"></a>
 组织需要制定 BCDR 策略来确定应用、工作负荷和数据如何在计划和非计划停机期间保持运行和可用，并尽快恢复正常运行情况。 BCDR 策略应保持业务数据的安全性和可恢复性，并确保在发生灾难时工作负荷持续可用。
 
 站点恢复是一项 Azure 服务，可以通过协调从本地物理服务器和虚拟机到云 (Azure) 或辅助数据中心的的复制，来为 BCDR 策略提供辅助。 当主要位置发生故障时，你可以故障转移到辅助位置，使应用和工作负荷保持可用。 当主要位置恢复正常时，你可以故障转移回到主要位置。 在 [什么是 Azure Site Recovery？](site-recovery-overview.md)
@@ -46,9 +44,8 @@ ms.lasthandoff: 02/22/2017
 >
 >
 
-<a id="migrate-to-the-enhanced-deployment" class="xliff"></a>
-
 ## 迁移到增强型部署
+<a id="migrate-to-the-enhanced-deployment" class="xliff"></a>
 仅当你已使用本文中的说明部署了站点恢复时，本部分才有关。
 
 若要迁移现有的部署，需执行以下操作：
@@ -100,9 +97,8 @@ ms.lasthandoff: 02/22/2017
 >
 >
 
-<a id="what-do-i-need" class="xliff"></a>
-
 ## 我需要做好哪些准备？
+<a id="what-do-i-need" class="xliff"></a>
 此图显示了部署组件。
 
 ![新保管库](./media/site-recovery-vmware-to-azure-classic-legacy/architecture.png)
@@ -119,17 +115,15 @@ ms.lasthandoff: 02/22/2017
 | **Azure Site Recovery 保管库** |使用 Azure 订阅创建 Site Recovery 保管库，并在保管库中注册服务器。 |保管库可协调和安排本地站点与 Azure 之间的数据复制、故障转移和恢复。 |
 | **复制机制** |**在 Internet 上** - 在 Internet 上使用安全 SSL/TLS 通道通信，并将数据从受保护的本地服务器复制到 Azure。 这是默认选项。<br/><br/> **VPN/ExpressRoute** - 通过 VPN 连接通信，并在本地服务器与 Azure 之间复制数据。 需要在本地站点与 Azure 网络之间设置站点到站点 VPN 或 ExpressRoute 连接。<br/><br/> 需要选择在站点恢复部署期间你要如何进行复制。 配置机制后，你无法在不影响现有计算机的复制的前提下更改该机制。 |无论是哪个选项，都不需要你在受保护的计算机上打开任何入站网络端口。 所有网络通信都从本地站点启动。 |
 
-<a id="capacity-planning" class="xliff"></a>
-
 ## 容量规划
+<a id="capacity-planning" class="xliff"></a>
 需要考虑的主要方面：
 
 * **源环境** - VMware 基础结构、源计算机设置和要求。
 * **组件服务器** - 进程服务器、配置服务器和主目标服务器
 
-<a id="considerations-for-the-source-environment" class="xliff"></a>
-
 ### 有关源环境的注意事项
+<a id="considerations-for-the-source-environment" class="xliff"></a>
 * **磁盘大小上限** - 可以在虚拟机中附加的磁盘的当前大小上限为 1 TB。 因此，可以复制的源磁盘的最大大小也限制为 1 TB。
 * **每个源的大小上限** - 单个源计算机的大小上限是 31 TB（包含 31 个磁盘，以及为主目标服务器预配的 D14 实例）。
 * **每个主目标服务器的源数目** - 可以使用单个主目标服务器保护多个源计算机。 但是，无法通过多个主目标服务器保护单个计算机，因为在磁盘复制时，镜像磁盘大小的 VHD 在 Azure Blob 存储上创建，并作为数据磁盘附加到主目标服务器。  
@@ -138,9 +132,8 @@ ms.lasthandoff: 02/22/2017
   * **目标磁盘支持的最大吞吐量** - 每个源磁盘的最大改动不能超过 144 GB/天（8K 写入大小）。 请参阅主目标部分中的表，以获取各种写入大小的目标的吞吐量与 IOPS。 必须将此数字除以 2，因为每个源 IOP 在目标磁盘上生成 2 个 IOPS。 请参阅 [Azure 可缩放性和性能目标](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)，了解如何配置高级存储帐户的目标。
   * **存储帐户支持的最大吞吐量** - 一个源不能跨越多个存储帐户。 假设某个存储帐户每秒可接受最多 20,000 个请求，并且每个源 IOP 在主目标服务器上生成 2 个 IOPS，则建议将源的 IOPS 数目保留为 10,000。 请参阅 [Azure 可缩放性和性能目标](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)，了解如何配置高级存储帐户的源。
 
-<a id="considerations-for-component-servers" class="xliff"></a>
-
 ### 有关组件服务器的注意事项
+<a id="considerations-for-component-servers" class="xliff"></a>
 表 1 汇总了配置服务器与主目标服务器的虚拟机大小。
 
 | **组件** | **部署的 Azure 实例** | **核心数** | **内存** | **最大磁盘数** | **磁盘大小** |
@@ -152,9 +145,8 @@ ms.lasthandoff: 02/22/2017
 
 **表 1**
 
-<a id="process-server-considerations" class="xliff"></a>
-
 #### 进程服务器注意事项
+<a id="process-server-considerations" class="xliff"></a>
 进程服务器的大小通常取决于跨所有受保护工作负荷的每日更改率。
 
 * 需要有足够的计算容量才能执行内联压缩和加密等任务。
@@ -179,14 +171,12 @@ ms.lasthandoff: 02/22/2017
 * 对于缓存磁盘，建议为所有进程服务器提供一个至少有 128 GB 的独立 OS 磁盘。
 * 缓存磁盘吞吐量已使用以下存储进行基准测试：8 个采用 RAID 10 配置的 10K RPM SAS 驱动器。
 
-<a id="configuration-server-considerations" class="xliff"></a>
-
 #### 配置服务器注意事项
+<a id="configuration-server-considerations" class="xliff"></a>
 每个配置服务器最多支持 100 个包含 3 到 4 个卷的源计算机。 如果部署较大，我们建议部署另一个配置服务器。 有关配置服务器的默认虚拟机属性，请参阅“表 1”。
 
-<a id="master-target-server-and-storage-account-considerations" class="xliff"></a>
-
 #### 主目标服务器与存储帐户注意事项
+<a id="master-target-server-and-storage-account-considerations" class="xliff"></a>
 每个主目标服务器的存储包括 OS 磁盘、保留卷和数据磁盘。 保留驱动器可以维护 Site Recovery 门户中定义的特定时段内的磁盘更改日志。  有关主目标的虚拟机服务器属性，请参阅“表 1”。 表 3 显示了如何使用 A4 的磁盘。
 
 | **实例** | **OS 磁盘** | **保留** | **数据磁盘** |
@@ -216,9 +206,8 @@ ms.lasthandoff: 02/22/2017
     * 每日来自源环境的变换总计（未压缩）/ 287 GB。 287 GB 是目标磁盘每日支持的最大吞吐量。 此度量值根据因数为 8K 的写入大小而异，因为在此情况下，8K 是假设的写入大小。 例如，如果写入大小为 4K，则吞吐量为 287/2。 同理，如果写入大小为 16K，则吞吐量为 287*2。
 * 所需的存储帐户数 = 源 IOPS 总计/10000。
 
-<a id="before-you-start" class="xliff"></a>
-
 ## 开始之前
+<a id="before-you-start" class="xliff"></a>
 | **组件** | **要求** | **详细信息** |
 | --- | --- | --- |
 | **Azure 帐户** |你将需要一个 [Microsoft Azure](https://azure.microsoft.com/) 帐户。 你可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。 | |
@@ -234,9 +223,8 @@ ms.lasthandoff: 02/22/2017
 | **Linux 计算机** |支持的 64 位操作系统：**Centos 6.4、6.5、6.6**、**Oracle Enterprise Linux 6.4、6.5（运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel 第 3 版 (UEK3)）**、**SUSE Linux Enterprise Server 11 SP3**。<br/><br/> 受保护的计算机上的防火墙规则应允许其访问 Azure 中的配置服务器和主目标服务器。<br/><br/> 受保护的计算机上的 /etc/hosts 文件应包含将本地主机名映射到与所有 NIC 相关联的 IP 地址的条目 <br/><br/> 如果要在故障转移后使用安全外壳客户端 (ssh) 连接运行 Linux 的 Azure 虚拟机，请确保将受保护的计算机上的安全外壳服务设置为在系统启动时自动启动，并且防火墙规则允许与其建立 ssh 连接。<br/><br/> 主机名、装载点、设备名称，以及 Linux 系统路径和文件名（例如 /etc/；/usr）只能采用英文形式。<br/><br/> 可以对使用以下存储的本地计算机启用保护：-<br>文件系统：EXT3、ETX4、ReiserFS、XFS<br>多路径软件设备映射程序（多路径）<br>卷管理器：LVM2<br>不支持使用 HP CCISS 控制器存储的物理服务器。 | |
 | **第三方** |在这种情况下，一些部署组件依赖第三方软件才能正常工作。 有关完整列表，请参阅[第三方软件通知和信息](#third-party) | |
 
-<a id="network-connectivity" class="xliff"></a>
-
 ### 网络连接
+<a id="network-connectivity" class="xliff"></a>
 配置本地站点与部署基础结构组件（配置服务器、主目标服务器）的 Azure 虚拟网络之间的网络连接时，可以使用两个选项。 在部署配置服务器之前，需要决定所要使用的网络连接选项。 需要在部署时选择此设置。 以后无法更改它。
 
 **Internet：**本地服务器（进程服务器、受保护的计算机）与 Azure 基础结构组件服务器（配置服务器、主目标服务器）之间的通信和数据复制是通过从本地到配置服务器和主目标服务器上的公共终结点的安全 SSL/TLS 连接进行的。 （唯一的例外是 TCP 端口 9080 上的进程服务器与主目标服务器之间的连接未加密。 在此连接上，只会交换与用于复制设置的复制协议相关的控制信息。）
@@ -247,9 +235,8 @@ ms.lasthandoff: 02/22/2017
 
 ![部署示意图 - VPN](./media/site-recovery-vmware-to-azure-classic-legacy/vpn-deployment.png)
 
-<a id="step-1-create-a-vault" class="xliff"></a>
-
 ## 步骤 1：创建保管库
+<a id="step-1-create-a-vault" class="xliff"></a>
 1. 登录到[管理门户](https://portal.azure.com)。
 2. 展开“**数据服务**” > “**恢复服务**”，并单击“**Site Recovery 保管库**”。
 3. 单击“**新建**” > “**快速创建**”。
@@ -261,12 +248,10 @@ ms.lasthandoff: 02/22/2017
 
 检查状态栏以确认保管库已成功创建。 保管库将以“**活动**”状态列在主要的“**恢复服务**”页上。
 
-<a id="step-2-deploy-a-configuration-server" class="xliff"></a>
-
 ## 步骤 2：部署配置服务器
-<a id="configure-server-settings" class="xliff"></a>
-
+<a id="step-2-deploy-a-configuration-server" class="xliff"></a>
 ### 配置服务器设置
+<a id="configure-server-settings" class="xliff"></a>
 1. 在“恢复服务”页中，单击保管库以打开“快速启动”页  。 也可随时使用该图标打开“快速启动”。
 
     ![“快速启动”图标](./media/site-recovery-vmware-to-azure-classic-legacy/quick-start-icon.png)
@@ -301,9 +286,8 @@ ms.lasthandoff: 02/22/2017
 
 配置服务器使用保留的 IP 地址部署在自动创建的 Azure 云服务中。 需要使用保留地址，以确保在云服务上的虚拟机（包括配置服务器）重启后，配置服务器云服务 IP 地址保持不变。 在停用配置服务器后，必须手动将保留的公共 IP 地址取消保留，否则会继续保留。 每个订阅保留的公共 IP 地址数默认限制为 20 个。 [详细了解](../virtual-network/virtual-networks-reserved-private-ip.md)保留 IP 地址。
 
-<a id="register-the-configuration-server-in-the-vault" class="xliff"></a>
-
 ### 在保管库中注册配置服务器
+<a id="register-the-configuration-server-in-the-vault" class="xliff"></a>
 1. 在“**快速启动**”页中，依次单击“**准备目标资源**” > “**下载注册密钥**”。 此时将自动生成密钥文件。 该文件在生成后的 5 天内有效。 将它复制到配置服务器。
 2. 在“**虚拟机**”中，从虚拟机列表中选择配置服务器。 打开“**仪表板**”选项卡，然后单击“**连接**”。 **打开**下载的 RDP 文件，使用远程桌面登录配置服务器。 如果你使用 VPN，请使用内部 IP 地址（部署配置服务器时指定的地址）从本地站点进行远程桌面连接。 当你首次登录时，Azure Site Recovery 安装向导将自动运行。
 
@@ -346,9 +330,8 @@ ms.lasthandoff: 02/22/2017
 
 注册后，保管库中的“**配置服务器**”页上会列出此配置服务器。
 
-<a id="set-up-and-manage-accounts" class="xliff"></a>
-
 ### 设置和管理帐户
+<a id="set-up-and-manage-accounts" class="xliff"></a>
 在部署期间，Site Recovery 将请求以下操作的凭据：
 
 * 一个 VMware 帐户，可让站点恢复自动发现 vCenter 服务器或 vSphere 主机上的 VM。
@@ -366,9 +349,8 @@ ms.lasthandoff: 02/22/2017
 
     ![管理帐户](./media/site-recovery-vmware-to-azure-classic-legacy/account-details.png)
 
-<a id="connect-to-the-configuration-server" class="xliff"></a>
-
 ### 连接到配置服务器
+<a id="connect-to-the-configuration-server" class="xliff"></a>
 可通过两种方式连接到配置服务器：
 
 * 通过 VPN 站点到站点或 ExpressRoute 连接
@@ -380,9 +362,8 @@ ms.lasthandoff: 02/22/2017
 * VPN 连接将服务器的内部 IP 地址与终结点的专用端口结合使用。
 * 确定是要从本地服务器通过 VPN 连接还是 Internet 连接到 Azure 中运行的各种组件服务器（配置服务器、主目标服务器，以访问控制和复制数据），这项决定是最终性的。 以后无法更改此设置。 如果这样做，将需要重新部署方案并重新保护计算机。  
 
-<a id="step-3-deploy-the-master-target-server" class="xliff"></a>
-
 ## 步骤 3：部署主目标服务器
+<a id="step-3-deploy-the-master-target-server" class="xliff"></a>
 1. 依次单击“**准备目标(Azure)资源**” > “**部署主目标服务器**”。
 2. 指定主目标服务器的详细信息和凭据。 该服务器将部署在配置服务器所在的同一个 Azure 网络中。 在单击完成时，将使用 Windows 或 Linux 库映像创建 Azure 虚拟机。
 
@@ -431,8 +412,8 @@ ms.lasthandoff: 02/22/2017
    4. 运行 **tar –xvzf Microsoft-ASR_UA_8.4.0.0_RHEL6-64***
       ![Linux 主目标服务器](./media/site-recovery-vmware-to-azure-classic-legacy/linux-tar.png)，从 gzip 压缩的安装程序中提取文件
    5. 确保你位于 tar 文件内容提取到的目录中。
-   6. 使用命令 **echo*`<passphrase>`* >passphrase.txt**，将配置服务器密码复制到本地文件
-   7. 运行命令“**sudo ./install -t both -a host -R MasterTarget -d /usr/local/ASR -i* `<Configuration server internal IP address>`* -p 443 -s y -c https -P passphrase.txt**”。
+   6. 使用命令 **echo *`<passphrase>`* >passphrase.txt**，将配置服务器密码复制到本地文件
+   7. 运行命令“**sudo ./install -t both -a host -R MasterTarget -d /usr/local/ASR -i *`<Configuration server internal IP address>`* -p 443 -s y -c https -P passphrase.txt**”。
 
       ![注册目标服务器](./media/site-recovery-vmware-to-azure-classic-legacy/linux-mt-install.png)
 7. 等待几分钟（10-15 分钟），然后在“**服务器**” > “**配置服务器**”页上，检查主目标服务器是否作为注册服务器列在“**服务器详细信息**”选项卡中。 如果运行的是 Linux，并且它未注册，请从 /usr/local/ASR/Vx/bin/hostconfigcli 再次运行主机配置工具。 你需要以 root 身份运行 chmod 以设置访问权限。
@@ -444,9 +425,8 @@ ms.lasthandoff: 02/22/2017
 >
 >
 
-<a id="step-4-deploy-the-on-premises-process-server" class="xliff"></a>
-
 ## 步骤 4：部署本地进程服务器
+<a id="step-4-deploy-the-on-premises-process-server" class="xliff"></a>
 在开始之前，建议在进程服务器上配置静态 IP 地址，以保证在重新启动后可持续使用相同的地址。
 
 1. 依次单击“快速启动”>“**在本地安装进程服务器**” > “**下载并安装进程服务器**”。
@@ -498,9 +478,8 @@ ms.lasthandoff: 02/22/2017
 1. 以管理员身份登录到处理服务器，然后打开文件 C:\pushinstallsvc\pushinstaller.conf 以进行编辑。 在 **[PushInstaller.transport]** 部分下，添加下面这行代码：**SignatureVerificationChecks=”0”**。 保存并关闭该文件。
 2. 重新启动 InMage PushInstall 服务。
 
-<a id="step-5-update-site-recovery-components" class="xliff"></a>
-
 ## 步骤 5：更新站点恢复组件
+<a id="step-5-update-site-recovery-components" class="xliff"></a>
 站点恢复组件不定时更新。 当有新的更新可用时，应按以下顺序安装更新：
 
 1. 配置服务器
@@ -508,9 +487,8 @@ ms.lasthandoff: 02/22/2017
 3. 主目标服务器
 4. 故障回复工具 (vContinuum)
 
-<a id="obtain-and-install-the-updates" class="xliff"></a>
-
 ### 获取和安装更新
+<a id="obtain-and-install-the-updates" class="xliff"></a>
 1. 可以从 Site Recovery **仪表板**获取配置服务器、进程服务器和主目标服务器的更新。 对于 Linux 安装，请从 gzip 压缩过的安装程序中提取文件，然后运行命令“sudo ./install”以安装更新。
 2. [下载](http://go.microsoft.com/fwlink/?LinkID=533813)故障回复工具 (vContinuum) 的最新更新程序。
 3. 如果运行的虚拟机或物理服务器上已安装移动服务，你可以按如下所示获取服务更新：
@@ -531,9 +509,8 @@ ms.lasthandoff: 02/22/2017
 
 在“选择帐户”中，指定用于更新受保护服务器上的移动服务的管理员帐户。 单击“确定”并等待触发的作业完成。
 
-<a id="step-6-add-vcenter-servers-or-vsphere-hosts" class="xliff"></a>
-
 ## 步骤 6：添加 vCenter 服务器或 vSphere 主机
+<a id="step-6-add-vcenter-servers-or-vsphere-hosts" class="xliff"></a>
 1. 依次单击“**服务器**” > “**配置服务器**”>“配置服务器”>“**添加 vCenter Server**”，添加 vCenter 服务器或 vSphere 主机。
 
     ![选择 vCenter 服务器](./media/site-recovery-vmware-to-azure-classic-legacy/add-vcenter.png)
@@ -551,9 +528,8 @@ ms.lasthandoff: 02/22/2017
    * vCenter 帐户应该已启用数据中心、数据存储、文件夹、主机、网络、资源、存储视图、虚拟机和 vSphere 分布式交换机权限。
    * vSphere 主机帐户应该已启用数据中心、数据存储、文件夹、主机、网络、资源、虚拟机和 vSphere 分布式交换机权限
 
-<a id="step-7-create-a-protection-group" class="xliff"></a>
-
 ## 步骤 7：创建保护组
+<a id="step-7-create-a-protection-group" class="xliff"></a>
 1. 依次打开“**受保护的项**” > “**保护组**” > “**创建保护组**”。
 
     ![创建保护组](./media/site-recovery-vmware-to-azure-classic-legacy/create-pg1.png)
@@ -572,17 +548,15 @@ ms.lasthandoff: 02/22/2017
 
 你可以监视保护组，因为它们是在“**受保护的项**”页上创建的。
 
-<a id="step-8-set-up-machines-you-want-to-protect" class="xliff"></a>
-
 ## 步骤 8：设置想要保护的计算机
+<a id="step-8-set-up-machines-you-want-to-protect" class="xliff"></a>
 需在要保护的虚拟机和物理服务器上安装移动服务。 可通过两种方式实现此目的：
 
 * 从进程服务器自动推送并在每台计算机上安装该服务。
 * 手动安装该服务。
 
-<a id="install-the-mobility-service-automatically" class="xliff"></a>
-
 ### 自动安装移动服务
+<a id="install-the-mobility-service-automatically" class="xliff"></a>
 在向保护组添加计算机时，进程服务器将自动推送移动服务，并将其安装在每个计算机上。
 
 **在 Windows 服务器上自动推送安装移动服务：**
@@ -615,9 +589,8 @@ ms.lasthandoff: 02/22/2017
        ![Linux 推送移动服务](./media/site-recovery-vmware-to-azure-classic-legacy/linux-push2.png)    
 8. 确保支持源计算机 Linux 变体。
 
-<a id="install-the-mobility-service-manually" class="xliff"></a>
-
 ### 手动安装移动服务
+<a id="install-the-mobility-service-manually" class="xliff"></a>
 用于安装移动服务的软件包位于进程服务器上的 C:\pushinstallsvc\repository 中。 请登录进程服务器，并根据下表将相应的安装包复制到源计算机：
 
 | 源操作系统 | 进程服务器上的移动服务包 |
@@ -678,9 +651,8 @@ ms.lasthandoff: 02/22/2017
 >
 >
 
-<a id="step-9-enable-protection" class="xliff"></a>
-
 ## 步骤 9：启用保护
+<a id="step-9-enable-protection" class="xliff"></a>
 若要启用保护，请将虚拟机和物理服务器添加到保护组。 开始之前，请注意：
 
 * 系统会每隔 15 分钟发现虚拟机一次，在发现之后，最多需要 15 分钟时间虚拟机才会出现在 Azure Site Recovery 中。
@@ -718,9 +690,8 @@ ms.lasthandoff: 02/22/2017
 
     ![虚拟机作业](./media/site-recovery-vmware-to-azure-classic-legacy/pg-jobs.png)
 
-<a id="set-protected-machine-properties" class="xliff"></a>
-
 ### 设置受保护的计算机属性
+<a id="set-protected-machine-properties" class="xliff"></a>
 1. 在计算机的状态为“**受保护**”后，你可以配置其故障转移属性。 在“保护组详细信息”中，选择计算机，然后打开“**配置**”选项卡。
 2. 在故障转移后，你可以在 Azure 中修改要提供给计算机的名称，以及 Azure 虚拟机大小。 你还可以选择故障转移后要将计算机连接到的 Azure 网络。
 
@@ -744,9 +715,8 @@ ms.lasthandoff: 02/22/2017
       ![设置虚拟机属性](./media/site-recovery-vmware-to-azure-classic-legacy/remove-vm.png)
   * d) 为虚拟机重新启用保护。 在重新启用保护时，调整过大小的卷的数据将被传输到 Azure。
 
-<a id="step-10-run-a-failover" class="xliff"></a>
-
 ## 步骤 10：运行故障转移
+<a id="step-10-run-a-failover" class="xliff"></a>
 目前只能为受保护的 VMware 虚拟机和物理服务器运行非计划的故障转移。 注意以下事项：
 
 * 启动故障转移之前，请确保配置服务器和主目标服务器正常运行， 否则故障转移将会失败。
@@ -764,14 +734,12 @@ ms.lasthandoff: 02/22/2017
 5. 在“**确认故障转移**”中，确认故障转移方向（到 Azure），然后选择要故障转移到的恢复点。
 6. 等待故障转移作业完成，然后验证故障转移是否按预期工作，以及复制的虚拟机是否在 Azure 中成功启动。
 
-<a id="step-11-fail-back-failed-over-machines-from-azure" class="xliff"></a>
-
 ## 步骤 11：故障回复 Azure 中已故障转移的计算机
+<a id="step-11-fail-back-failed-over-machines-from-azure" class="xliff"></a>
 [详细了解](site-recovery-failback-azure-to-vmware-classic-legacy.md)如何将 Azure 中运行的已故障转移的计算机恢复到本地环境。
 
-<a id="manage-your-process-servers" class="xliff"></a>
-
 ## 管理进程服务器
+<a id="manage-your-process-servers" class="xliff"></a>
 进程服务器将复制数据发送到 Azure 中的主目标服务器，并发现已添加到 vCenter 服务器的新 VMware 虚拟机。 在以下情况下，你可能要更改部署中的进程服务器：
 
 * 如果当前进程服务器已关闭
@@ -782,14 +750,12 @@ ms.lasthandoff: 02/22/2017
 * **故障** - 如果进程服务器发生故障或不可用，你可以将受保护的计算机复制转移到另一台进程服务器。 源计算机和副本计算机的元数据将转移到新的进程服务器并且会重新同步。 新的进程服务器将自动连接到 vCenter 服务器以执行自动发现。 你可以在 Site Recovery 仪表板上监视进程服务器的状态。
 * **负载平衡以调整 RPO** - 若要改善负载平衡，你可以在 Site Recovery 门户中选择其他进程服务器，然后将一台或多台计算机的复制转移到该服务器，以手动进行负载平衡。 在此情况下，选择的源和副本计算机的元数据将转移到新的进程服务器。 原始进程服务器仍然连接到 vCenter 服务器。
 
-<a id="monitor-the-process-server" class="xliff"></a>
-
 ### 监视进程服务器
+<a id="monitor-the-process-server" class="xliff"></a>
 如果进程服务器处于关键状态，Site Recovery 仪表板上会显示状态警告。 你可以单击状态以打开“事件”选项卡，然后向下钻取到“作业”选项卡上的特定作业。
 
-<a id="modify-the-process-server-used-for-replication" class="xliff"></a>
-
 ### 修改用于复制的进程服务器
+<a id="modify-the-process-server-used-for-replication" class="xliff"></a>
 1. 依次打开“**服务器**” > “**配置服务器**”>“配置服务器”>“**服务器详细信息**”。
 2. 在要修改的服务器旁边，依次单击“**进程服务器**” > “**更改进程服务器**”。
 
@@ -799,9 +765,8 @@ ms.lasthandoff: 02/22/2017
     ![更改进程服务器 2](./media/site-recovery-vmware-to-azure-classic-legacy/change-ps2.png)
 4. 单击复选标记以开始复制到新的进程服务器。 请注意，如果你从某个重要的进程服务器中删除所有虚拟机，仪表板中应该不再会显示关键警告。
 
-<a id="third-party-software-notices-and-information" class="xliff"></a>
-
 ## 第三方软件通知和信息
+<a id="third-party-software-notices-and-information" class="xliff"></a>
 Do Not Translate or Localize
 
 The software and firmware running in the Microsoft product or service is based on or incorporates material from the projects listed below (collectively, “Third Party Code”).  Microsoft is the not original author of the Third Party Code.  The original copyright notice and license, under which Microsoft received such Third Party Code, are set forth below.

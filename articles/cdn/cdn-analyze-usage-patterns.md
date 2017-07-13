@@ -15,15 +15,19 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 41d63ef88e9f0caf3d5f74841ec4670875fdaad1
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: aadbe872dd3384c8d337b432fb3be69422ca322b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="analyze-azure-cdn-usage-patterns"></a>分析Azure CDN 使用模式
-[!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]以下指南介绍通过 Verizon 配置文件的管理门户查看核心报告的步骤。 还可[通过 Azure 门户](cdn-log-analysis.md)将核心分析数据导出到 Verizon 和 Akamai 配置文件的存储、事件中心或 Log Analytics (oms)。
+# 分析 Azure CDN 使用模式
+<a id="analyze-azure-cdn-usage-patterns" class="xliff"></a>
+
+[!INCLUDE[cdn-verizon-only](../../includes/cdn-verizon-only.md)]
+
+以下指南介绍通过 Verizon 配置文件的管理门户查看核心报告的步骤。 还可[通过 Azure 门户](cdn-log-analysis.md)将核心分析数据导出到 Verizon 和 Akamai 配置文件的存储、事件中心或 Log Analytics (oms)。
 
 可通过下列报告查看 CDN 的使用模式：
 
@@ -34,7 +38,8 @@ ms.lasthandoff: 05/11/2017
 * 缓存命中率
 * 已传输 IPV4/IPV6 数据
 
-## <a name="accessing-core-reports"></a>访问核心报告
+## 访问核心报告
+<a id="accessing-core-reports" class="xliff"></a>
 1. 从 CDN 配置文件的边栏选项卡，单击“**管理**”按钮。
    
     ![CDN 配置文件边栏选项卡管理按钮](./media/cdn-reports/cdn-manage-btn.png)
@@ -44,7 +49,8 @@ ms.lasthandoff: 05/11/2017
    
     ![CDN 管理门户 - 核心报告菜单](./media/cdn-reports/cdn-core-reports.png)
 
-## <a name="bandwidth"></a>带宽
+## 带宽
+<a id="bandwidth" class="xliff"></a>
 带宽报告包含一个图和一个数据表，说明了特定时段内 HTTP 和 HTTPS 的带宽使用量。 你可以查看所有 CDN POP 或特定 POP 的带宽使用量。 此功能允许你查看整个 CDN POP 的流量高峰和流量分布情况（以 Mbps 为单位）。
 
 * 可以选择“所有 Edge 节点”以查看所有节点的流量，也可以从下拉列表中选择特定的区域/节点。
@@ -55,7 +61,8 @@ ms.lasthandoff: 05/11/2017
 
 ![带宽报告](./media/cdn-reports/cdn-bandwidth.png)
 
-## <a name="data-transferred"></a>传输的数据
+## 传输的数据
+<a id="data-transferred" class="xliff"></a>
 该报告包含一个图和一个数据表，说明了特定时段内 HTTP 和 HTTPS 的流量使用情况。 你可以查看所有 CDN POP 或特定 POP 的流量使用情况。 此功能允许你查看整个 CDN POP 的流量高峰和流量分布情况（以 GB 为单位）。
 
 * 可以选择“所有 Edge 节点”以查看所有节点的流量，也可以从下拉列表中选择特定的区域/节点。
@@ -66,7 +73,8 @@ ms.lasthandoff: 05/11/2017
 
 ![已传输数据报告](./media/cdn-reports/cdn-data-transferred.png)
 
-## <a name="hits-status-codes"></a>命中数（状态代码）
+## 命中数（状态代码）
+<a id="hits-status-codes" class="xliff"></a>
 此报告描述内容的请求状态代码的分布。 对内容的每个请求都会生成一个 HTTP 状态代码。 状态代码描述边缘 POP 如何处理请求。 例如，2xx 状态代码指示已成功处理客户端的请求，而 4xx 状态代码则指示发生了错误。 有关 HTTP 状态代码的更多详细信息，请参阅 [状态代码](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)。
 
 * 选择日期范围可以查看本日/本周/本月等的数据，也可以输入自定义日期，然后单击“执行”以确保你的选择得到更新。
@@ -74,12 +82,14 @@ ms.lasthandoff: 05/11/2017
 
 ![命中数报告](./media/cdn-reports/cdn-hits.png)
 
-## <a name="cache-statuses"></a>缓存状态
+## 缓存状态
+<a id="cache-statuses" class="xliff"></a>
 此报告描述客户端请求的缓存命中数和缓存未命中数的分布情况。 缓存命中数越高，性能最高，因此你可以通过尽量降低缓存未命中数和过期的缓存命中数来优化数据传递速度。 可以通过以下方式减少缓存未命中数：配置源服务器，避免分配“no-cache”响应标头；除非极其需要，否则应避免缓存查询字符串；避免不可缓存的响应代码。 可以通过以下方式避免过期的缓存命中数：尽量延长资产的最大年龄，以便尽量减少发送到源服务器的请求数。
 
 ![缓存状态报告](./media/cdn-reports/cdn-cache-statuses.png)
 
-### <a name="main-cache-statuses-include"></a>主要的缓存状态包括：
+### 主要的缓存状态包括：
+<a id="main-cache-statuses-include" class="xliff"></a>
 * TCP_HIT：从 Edge 提供。 该对象已在缓存中且尚未超过其最大有效期。
 * TCP_MISS：从源提供。 该对象不在缓存中，响应已发送回源。
 * TCP_EXPIRED _MISS：通过源重新验证之后，从源提供。 该对象已在缓存中，但已超过其最大有效期。 通过源重新验证之后，缓存对象就会被新的来自源的响应替换。
@@ -87,7 +97,8 @@ ms.lasthandoff: 05/11/2017
 * 选择日期范围可以查看本日/本周/本月等的数据，也可以输入自定义日期，然后单击“执行”以确保你的选择得到更新。
 * 你可以导出和下载数据，只需单击“执行”旁边的 Excel 工作表图标即可。
 
-### <a name="full-list-of-cache-statuses"></a>缓存状态的完整列表
+### 缓存状态的完整列表
+<a id="full-list-of-cache-statuses" class="xliff"></a>
 * TCP_HIT - 通过 POP 直接处理客户端的请求时，会报告此状态。 当某项资产缓存在最靠近客户端的 POP 中且具有有效的生存时间（即 TTL）时，就会立即从该 POP 提供该资产。 TTL 取决于以下响应标头：
   
   * Cache-Control: s-maxage
@@ -106,7 +117,8 @@ ms.lasthandoff: 05/11/2017
 * TCP_ PARTIAL_HIT - 当某个字节范围请求导致某个部分缓存的资产被命中时，会报告此状态。 请求的字节范围将立即从 POP 提供给客户端。
 * UNCACHEABLE - 当资产的 Cache-Control 和 Expires 标头指示该资产不应缓存在 POP 上或不应由 HTTP 客户端缓存时，会报告此状态。 这些类型的请求均由源服务器处理。
 
-## <a name="cache-hit-ratio"></a>缓存命中率
+## 缓存命中率
+<a id="cache-hit-ratio" class="xliff"></a>
 此报告指示直接从缓存提供的已缓存请求的百分比。
 
 该报告提供以下详细信息：
@@ -128,7 +140,8 @@ ms.lasthandoff: 05/11/2017
 
 ![缓存命中率报告](./media/cdn-reports/cdn-cache-hit-ratio.png)
 
-## <a name="ipv4ipv6-data-transferred"></a>已传输 IPV4/IPV6 数据
+## 已传输 IPV4/IPV6 数据
+<a id="ipv4ipv6-data-transferred" class="xliff"></a>
 此报告显示 IPV4 和 IPV6 中流量使用的分布情况。
 
 ![已传输 IPV4/IPV6 数据](./media/cdn-reports/cdn-ipv4-ipv6.png)
@@ -136,7 +149,8 @@ ms.lasthandoff: 05/11/2017
 * 选择日期范围可以查看本日/本周/本月等的数据，也可以输入自定义日期，
 * 然后单击“执行”以确保你的选择得到更新。
 
-## <a name="considerations"></a>注意事项
+## 注意事项
+<a id="considerations" class="xliff"></a>
 只能生成过去 18 个月的报告。
 
 
