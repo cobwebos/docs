@@ -12,32 +12,35 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/06/2017
+ms.date: 07/10/2017
 ms.author: sngun
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 16d57bfd8232c1d2f646bffef671aa0236b8c2f6
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 12b3216e4228749930ba30911d6f1dc859df01a6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 07/11/2017
 
 
 ---
-# <a name="create-virtual-machines-and-include-certificates-retrieved-from-a-key-vault"></a>Create virtual machines and include certificates retrieved from a key vault
+# Create virtual machines and include certificates retrieved from a key vault
+<a id="create-virtual-machines-and-include-certificates-retrieved-from-a-key-vault" class="xliff"></a>
 
-> [!NOTE]
-> In Technical Preview 3, you can create and manage a key vault from the [user portal](azure-stack-manage-portals.md#the-user-portal) or user API only. If you are an administrator, sign in to the user portal to access and perform operations on a key vault.
+This article helps you to create a virtual machine in Azure Stack and push certificates onto it. 
 
-## <a name="prerequisites"></a>Prerequisites
+## Prerequisites
+<a id="prerequisites" class="xliff"></a>
 
 * [Install PowerShell for Azure Stack.](azure-stack-powershell-install.md)  
-* Azure Stack administrators must have [created an offer](azure-stack-create-offer.md) that includes the Azure Key Vault service.  
-* Tenants must [subscribe to an offer](azure-stack-subscribe-plan-provision-vm.md) that includes the Key Vault service. 
+* Azure Stack cloud administrators must have [created an offer](azure-stack-create-offer.md) that includes the Azure Key Vault service.  
+* Users must [subscribe to an offer](azure-stack-subscribe-plan-provision-vm.md) that includes the Key Vault service. 
+* [Configure PowerShell for use with Azure Stack.](azure-stack-powershell-configure.md)
 
 A key vault in Azure Stack is used to store certificates. Certificates are helpful in many different scenarios. For example, consider a scenario where you have a virtual machine in Azure Stack that is running an application that needs a certificate. This certificate can be used for encrypting, for authenticating to Active Directory, or for SSL on a website. Having the certificate in a key vault helps make sure that it's secure.
 
-In this article, we walk you through the steps required to push a certificate onto a Windows virtual machine in Azure Stack. You can use these steps either from the Azure Stack POC computer, or from a Windows-based external client if you are connected through VPN.
+In this article, we walk you through the steps required to push a certificate onto a Windows virtual machine in Azure Stack. You can use these steps either from the Azure Stack Development Kit, or from a Windows-based external client if you are connected through VPN.
 
-## <a name="include-a-certificate-on-the-virtual-machine"></a>Include a certificate on the virtual machine
+## Include a certificate on the virtual machine
+<a id="include-a-certificate-on-the-virtual-machine" class="xliff"></a>
 
 The following steps describe the process to push a certificate onto the virtual machine:
 
@@ -163,7 +166,8 @@ When the template is deployed successfully, it results in the following output:
 
 When this virtual machine is deployed, Azure Stack pushes the certificate onto the virtual machine. In Windows, the certificate is added to the LocalMachine certificate location, with the certificate store that the user provided. In Linux, the certificate is placed under the /var/lib/waagent directory, with the file name &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and &lt;UppercaseThumbprint&gt;.prv for the private key.
 
-## <a name="retire-certificates"></a>Retire certificates
+## Retire certificates
+<a id="retire-certificates" class="xliff"></a>
 
 In the preceding section, we showed you how to push a new certificate onto a virtual machine. Your old certificate is still on the virtual machine, and it can't be removed. However, you can disable the older version of the secret by using the `Set-AzureKeyVaultSecretAttribute` cmdlet. The following is an example usage of this cmdlet. Make sure to replace the vault name, secret name, and version values according to your environment:
 
@@ -171,7 +175,8 @@ In the preceding section, we showed you how to push a new certificate onto a vir
 Set-AzureKeyVaultSecretAttribute -VaultName contosovault -Name servicecert -Version e3391a126b65414f93f6f9806743a1f7 -Enable 0
 ```
 
-## <a name="next-steps"></a>Next steps
+## Next steps
+<a id="next-steps" class="xliff"></a>
 
 * [Deploy a VM with a Key Vault password](azure-stack-kv-deploy-vm-with-secret.md)
 * [Allow an application to access Key Vault](azure-stack-kv-sample-app.md)

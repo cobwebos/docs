@@ -1,6 +1,6 @@
 ---
-title: Create a site-to-site VPN connection between two virtual networks in different Azure Stack POC environments | Microsoft Docs
-description: Step-by-step procedure that a cloud administrator uses to create a site-to-site VPN connection between two single-node POC environments.
+title: Create a site-to-site VPN connection between two virtual networks in different Azure Stack Development Kit environments | Microsoft Docs
+description: Step-by-step procedure that a cloud administrator uses to create a site-to-site VPN connection between two single-node Azure Stack Development Kit environments.
 services: azure-stack
 documentationcenter: 
 author: ScottNapolitan
@@ -12,42 +12,49 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 5/23/2017
+ms.date: 7/10/2017
 ms.author: scottnap
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 25608305c0ae6c931f5cea4f1ae25c9522f51df6
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: fa2a940620e06521fa110fa13dcbc3050635a502
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
+ms.lasthandoff: 07/11/2017
 
 
 ---
-# <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-poc-environments"></a>Create a site-to-site VPN connection between two virtual networks in different Azure Stack POC environments
-## <a name="overview"></a>Overview
-This article shows you how to create a site-to-site VPN connection between two virtual networks in two separate Azure Stack proof of concept (POC) environments. While you configure the connections, you learn how VPN gateways in Azure Stack work.
+# Create a site-to-site VPN connection between two virtual networks in different Azure Stack Development Kit environments
+<a id="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments" class="xliff"></a>
+## Overview
+<a id="overview" class="xliff"></a>
+This article shows you how to create a site-to-site VPN connection between two virtual networks in two separate Azure Stack Development Kit environments. While you configure the connections, you learn how VPN gateways in Azure Stack work.
 
-### <a name="connection-diagram"></a>Connection diagram
+### Connection diagram
+<a id="connection-diagram" class="xliff"></a>
 The following diagram shows what the connection configuration should look like when you’re done.
 
 ![Site-to-site VPN connection configuration](media/azure-stack-create-vpn-connection-one-node-tp2/OneNodeS2SVPN.png)
 
-### <a name="before-you-begin"></a>Before you begin
+### Before you begin
+<a id="before-you-begin" class="xliff"></a>
 To complete the connection configuration, ensure that you have the following items before you begin:
 
-* Two servers that meet the Azure Stack POC hardware requirements, which are defined by the [Azure Stack deployment prerequisites](azure-stack-deploy.md). Ensure that the other prerequisites that appear in the [article](azure-stack-deploy.md) are fulfilled too.
-* The [Azure Stack Technical Preview](https://azure.microsoft.com/en-us/overview/azure-stack/try/) deployment package.
+* Two servers that meet the Azure Stack Development Kit hardware requirements, which are defined by the [Azure Stack deployment prerequisites](azure-stack-deploy.md). Ensure that the other prerequisites that appear in the [article](azure-stack-deploy.md) are fulfilled too.
+* The [Azure Stack Development Kit](https://azure.microsoft.com/en-us/overview/azure-stack/try/) deployment package.
 
-## <a name="deploy-the-poc-environments"></a>Deploy the POC environments
-To complete the connection configuration, you must deploy two Azure Stack POC environments.
+## Deploy the Azure Stack Development Kit environments
+<a id="deploy-the-azure-stack-development-kit-environments" class="xliff"></a>
+To complete the connection configuration, you must deploy two Azure Stack Development Kit environments.
 > [!NOTE] 
-> For each POC that you deploy, follow the [deployment instructions](azure-stack-run-powershell-script.md). In this article, the POC environments are called *POC1* and *POC2*.
+> For each Azure Stack Development Kit that you deploy, follow the [deployment instructions](azure-stack-run-powershell-script.md). In this article, the Azure Stack Development Kit environments are called *POC1* and *POC2*.
 
 
-## <a name="prepare-an-offer-on-poc1-and-poc2"></a>Prepare an offer on POC1 and POC2
+## Prepare an offer on POC1 and POC2
+<a id="prepare-an-offer-on-poc1-and-poc2" class="xliff"></a>
 On both POC1 and POC2, prepare an offer so that a user can subscribe to the offer and deploy the virtual machines. For information on how to create an offer, see [Make virtual machines available to your Azure Stack users](azure-stack-tutorial-tenant-vm.md).
 
-## <a name="review-and-complete-the-network-configuration-table"></a>Review and complete the network configuration table
-The following table summarizes the network configuration for both POC environments. Use the procedure that appears after the table to add the External BGPNAT address that is specific for your network.
+## Review and complete the network configuration table
+<a id="review-and-complete-the-network-configuration-table" class="xliff"></a>
+The following table summarizes the network configuration for both Azure Stack Development Kit environments. Use the procedure that appears after the table to add the External BGPNAT address that is specific for your network.
 
 **Network configuration table**
 |   |POC1|POC2|
@@ -60,10 +67,11 @@ The following table summarizes the network configuration for both POC environmen
 |External BGPNAT address     |         |         |
 
 > [!NOTE]
-> The external BGPNAT IP addresses in the example environment are 10.16.167.195 for POC1, and 10.16.169.131 for POC2. Use the following procedure to determine the external BGPNAT IP addresses for your POC hosts, and then add them to the previous network configuration table.
+> The external BGPNAT IP addresses in the example environment are 10.16.167.195 for POC1, and 10.16.169.131 for POC2. Use the following procedure to determine the external BGPNAT IP addresses for your Azure Stack Development Kit hosts, and then add them to the previous network configuration table.
 
 
-### <a name="get-the-ip-address-of-the-external-adapter-of-the-nat-vm"></a>Get the IP address of the external adapter of the NAT VM
+### Get the IP address of the external adapter of the NAT VM
+<a id="get-the-ip-address-of-the-external-adapter-of-the-nat-vm" class="xliff"></a>
 1. Sign in to the Azure Stack physical machine for POC1.
 2. Edit the following Powershell code to replace your administrator password, and then run the code on the POC host:
 
@@ -74,22 +82,25 @@ The following table summarizes the network configuration for both POC environmen
     -AsPlainText `
     -Force
    Get-AzureStackNatServerAddress `
-    -HostComputer "mas-bgpnat01" `
+    -HostComputer "AzS-bgpnat01" `
     -Password $Password
    ```
 3. Add the IP address to the network configuration table that appears in the previous section.
 
 4. Repeat this procedure on POC2.
 
-## <a name="create-the-network-resources-in-poc1"></a>Create the network resources in POC1
+## Create the network resources in POC1
+<a id="create-the-network-resources-in-poc1" class="xliff"></a>
 Now you create the POC1 network resources that you need to set up your gateways. The following instructions show you how to create the resources by using the user portal. You can also use PowerShell code to create the resources.
 
 ![Workflow that is used to create resources](media/azure-stack-create-vpn-connection-one-node-tp2/image2.png)
 
-### <a name="sign-in-as-a-tenant"></a>Sign in as a tenant
+### Sign in as a tenant
+<a id="sign-in-as-a-tenant" class="xliff"></a>
 A service administrator can sign in as a tenant to test the plans, offers, and subscriptions that their tenants might use. If you don’t already have one, [create a tenant account](azure-stack-add-new-user-aad.md) before you sign in.
 
-### <a name="create-the-virtual-network-and-vm-subnet"></a>Create the virtual network and VM subnet
+### Create the virtual network and VM subnet
+<a id="create-the-virtual-network-and-vm-subnet" class="xliff"></a>
 1. Use a tenant account to sign in to the user portal.
 2. In the user portal, select **New**.
 
@@ -104,7 +115,8 @@ A service administrator can sign in as a tenant to test the plans, offers, and s
 9. Select **Pin to dashboard**.
 10. Select **Create**.
 
-### <a name="create-the-gateway-subnet"></a>Create the gateway subnet
+### Create the gateway subnet
+<a id="create-the-gateway-subnet" class="xliff"></a>
 1. On the dashboard, open the VNET-01 virtual network resource that you created earlier.
 2. On the **Settings** blade, select **Subnets**.
 3. To add a gateway subnet to the virtual network, select **Gateway Subnet**.
@@ -116,7 +128,8 @@ A service administrator can sign in as a tenant to test the plans, offers, and s
 5. In **Address range**, verify that the address is **10.0.11.0/24**.
 6. Select **OK** to create the gateway subnet.
 
-### <a name="create-the-virtual-network-gateway"></a>Create the virtual network gateway
+### Create the virtual network gateway
+<a id="create-the-virtual-network-gateway" class="xliff"></a>
 1. In the Azure portal, select **New**. 
 2. Go to **Marketplace**, and then select **Networking**.
 3. From the list of network resources, select **Virtual network gateway**.
@@ -129,15 +142,17 @@ A service administrator can sign in as a tenant to test the plans, offers, and s
     Keep the **Route-based** VPN type.
 9. Verify that **Subscription** and **Location** are correct. You can pin the resource to the dashboard. Select **Create**.
 
-### <a name="create-the-local-network-gateway"></a>Create the local network gateway
+### Create the local network gateway
+<a id="create-the-local-network-gateway" class="xliff"></a>
 The implementation of a *local network gateway* in this Azure Stack evaluation deployment is a bit different than in an actual Azure deployment.
 
-In an Azure deployment, a local network gateway represents an on-premise (at the tenant) physical device, that you use to connect to a virtual network gateway in Azure. In this Azure Stack evaluation deployment, both ends of the connection are virtual network gateways!
+In an Azure deployment, a local network gateway represents an on-premises (at the tenant) physical device, that you use to connect to a virtual network gateway in Azure. In this Azure Stack evaluation deployment, both ends of the connection are virtual network gateways!
 
-A way to think about this more generically is that the local network gateway resource always indicates the remote gateway at the other end of the connection. Because of the way the POC was designed, you need to provide the IP address of the external network adapter on the network address translation (NAT) VM of the other POC as the Public IP Address of the local network gateway. You then create NAT mappings on the NAT VM to make sure that both ends are connected properly.
+A way to think about this more generically is that the local network gateway resource always indicates the remote gateway at the other end of the connection. Because of the way the Azure Stack Development Kit was designed, you need to provide the IP address of the external network adapter on the network address translation (NAT) VM of the other Azure Stack Development Kit as the Public IP Address of the local network gateway. You then create NAT mappings on the NAT VM to make sure that both ends are connected properly.
 
 
-### <a name="create-the-local-network-gateway-resource"></a>Create the local network gateway resource
+### Create the local network gateway resource
+<a id="create-the-local-network-gateway-resource" class="xliff"></a>
 1. Sign in to the Azure Stack physical machine for POC1.
 2. In the user portal, select **New**.
 3. Go to **Marketplace**, and then select **Networking**.
@@ -147,7 +162,8 @@ A way to think about this more generically is that the local network gateway res
 7. In **Address Space**, for the address space of the POC2 VNET that you create later, enter **10.0.20.0/23**.
 8. Verify that your **Subscription**, **Resource Group**, and **location** are correct, and then select **Create**.
 
-### <a name="create-the-connection"></a>Create the connection
+### Create the connection
+<a id="create-the-connection" class="xliff"></a>
 1. In the user portal, select **New**.
 2. Go to **Marketplace**, and then select **Networking**.
 3. From the list of resources, select **Connection**.
@@ -159,11 +175,12 @@ A way to think about this more generically is that the local network gateway res
 9. In **Shared key (PSK)**, enter **12345**, and then select **OK**.
 10. On the **Summary** blade, select **OK**.
 
-### <a name="create-a-vm"></a>Create a VM
-To validate the data that travels through the VPN connection, you need the virtual machines to send and receive data in each POC. Create a virtual machine in POC1 now, and then in your virtual network, put it on your VM subnet.
+### Create a VM
+<a id="create-a-vm" class="xliff"></a>
+To validate the data that travels through the VPN connection, you need the virtual machines to send and receive data in each Azure Stack Development Kit. Create a virtual machine in POC1 now, and then in your virtual network, put it on your VM subnet.
 
 1. In the Azure portal, select **New**.
-2. Go to **Marketplace**, and then select **Virtual Machines**.
+2. Go to **Marketplace**, and then select **Compute**.
 3. In the list of virtual machine images, select the **Windows Server 2016 Datacenter Eval** image.
 4. On the **Basics** blade, in **Name**, enter **VM01**.
 5. Enter a valid username and password. You use this account to sign in to the VM after it's created.
@@ -174,14 +191,17 @@ To validate the data that travels through the VPN connection, you need the virtu
 
 
 
-## <a name="create-the-network-resources-in-poc2"></a>Create the network resources in POC2
+## Create the network resources in POC2
+<a id="create-the-network-resources-in-poc2" class="xliff"></a>
 
 The next step is to create the network resources for POC2. The following instructions show how to create the resources by using the user portal.
 
-### <a name="sign-in-as-a-tenant"></a>Sign in as a tenant
+### Sign in as a tenant
+<a id="sign-in-as-a-tenant" class="xliff"></a>
 A service administrator can sign in as a tenant to test the plans, offers, and subscriptions that their tenants might use. If you don’t already have one, [create a tenant account](azure-stack-add-new-user-aad.md) before you sign in.
 
-### <a name="create-the-virtual-network-and-vm-subnet"></a>Create the virtual network and VM subnet
+### Create the virtual network and VM subnet
+<a id="create-the-virtual-network-and-vm-subnet" class="xliff"></a>
 
 1. Sign in by using a tenant account.
 2. In the user portal, select **New**.
@@ -194,7 +214,8 @@ A service administrator can sign in as a tenant to test the plans, offers, and s
 9. Select **Pin to dashboard**.
 10. Select **Create**.
 
-### <a name="create-the-gateway-subnet"></a>Create the Gateway Subnet
+### Create the Gateway Subnet
+<a id="create-the-gateway-subnet" class="xliff"></a>
 1. Open the Virtual network resource you created (**VNET-02**) from the dashboard.
 2. On the **Settings** blade, select **Subnets**.
 3. Select  **Gateway subnet** to add a gateway subnet to the virtual network.
@@ -203,7 +224,8 @@ A service administrator can sign in as a tenant to test the plans, offers, and s
 5. In the **Address range** field, verify the address is **10.0.21.0/24**.
 6. Select **OK** to create the gateway subnet.
 
-### <a name="create-the-virtual-network-gateway"></a>Create the virtual network gateway
+### Create the virtual network gateway
+<a id="create-the-virtual-network-gateway" class="xliff"></a>
 1. In the Azure portal, select **New**.  
 2. Go to **Marketplace**, and then select **Networking**.
 3. From the list of network resources, select **Virtual network gateway**.
@@ -215,7 +237,8 @@ A service administrator can sign in as a tenant to test the plans, offers, and s
     Keep the **Route-based** VPN type.
 9. Verify that **Subscription** and **Location** are correct. You can pin the resource to the dashboard. Select **Create**.
 
-### <a name="create-the-local-network-gateway-resource"></a>Create the local network gateway resource
+### Create the local network gateway resource
+<a id="create-the-local-network-gateway-resource" class="xliff"></a>
 
 1. In the POC2 user portal, select **New**. 
 4. Go to **Marketplace**, and then select **Networking**.
@@ -225,7 +248,8 @@ A service administrator can sign in as a tenant to test the plans, offers, and s
 8. In **Address Space**, from POC1, enter the **10.0.10.0/23** address space of **VNET-01**.
 9. Verify that your **Subscription**, **Resource Group**, and **Location** are correct, and then select **Create**.
 
-## <a name="create-the-connection"></a>Create the connection
+## Create the connection
+<a id="create-the-connection" class="xliff"></a>
 1. In the user portal, select **New**. 
 2. Go to **Marketplace**, and then select **Networking**.
 3. From the list of resources, select **Connection**.
@@ -237,11 +261,12 @@ A service administrator can sign in as a tenant to test the plans, offers, and s
 9. In **Shared key (PSK)**, enter **12345**. If you choose a different value, remember that it *must* match the value for the shared key that you created on POC1. Select **OK**.
 10. Review the **Summary** blade, and then select **OK**.
 
-## <a name="create-a-virtual-machine"></a>Create a virtual machine
+## Create a virtual machine
+<a id="create-a-virtual-machine" class="xliff"></a>
 Create a virtual machine in POC2 now, and put it on your VM subnet in your virtual network.
 
 1. In the Azure portal, select **New**.
-2. Go to **Marketplace**, and then select **Virtual Machines**.
+2. Go to **Marketplace**, and then select **Compute**.
 3. In the list of virtual machine images, select the **Windows Server 2016 Datacenter Eval** image.
 4. On the **Basics** blade, for **Name**, enter **VM02**.
 5. Enter a valid username and password. You use this account to sign in to the virtual machine after it's created.
@@ -250,38 +275,40 @@ Create a virtual machine in POC2 now, and put it on your VM subnet in your virtu
 8. On the **Settings** blade, you can accept the defaults. Ensure that the **VNET-02** virtual network is selected, and verify that the subnet is set to **10.0.20.0/24**. Select **OK**.
 9. Review the settings on the **Summary** blade, and then select **OK**.
 
-## <a name="configure-the-nat-virtual-machine-on-each-poc-for-gateway-traversal"></a>Configure the NAT virtual machine on each POC for gateway traversal
-Because the POC is self-contained and isolated from the network on which the physical host is deployed, the *external* VIP network that the gateways are connected to is not actually external. Instead, the VIP network is hidden behind a router that performs network address translation. 
+## Configure the NAT virtual machine on each Azure Stack Development Kit for gateway traversal
+<a id="configure-the-nat-virtual-machine-on-each-azure-stack-development-kit-for-gateway-traversal" class="xliff"></a>
+Because the Azure Stack Development Kit is self-contained and isolated from the network on which the physical host is deployed, the *external* VIP network that the gateways are connected to is not actually external. Instead, the VIP network is hidden behind a router that performs network address translation. 
 
-The router is a Windows Server virtual machine, called *MAS-BGPNAT01*, that runs the Routing and Remote Access Services (RRAS) role in the POC infrastructure. You must configure NAT on the MAS-BGPNAT01 virtual machine to allow the site-to-site VPN connection to connect on both ends. 
+The router is a Windows Server virtual machine, called *AzS-bgpnat01*, that runs the Routing and Remote Access Services (RRAS) role in the Azure Stack Development Kit infrastructure. You must configure NAT on the AzS-bgpnat01 virtual machine to allow the site-to-site VPN connection to connect on both ends. 
 
 To configure the VPN connection, you must create a static NAT map route that maps the external interface on the BGPNAT virtual machine to the VIP of the Edge Gateway Pool. A static NAT map route is required for each port in a VPN connection.
 
 > [!NOTE]
-> This configuration is required for POC environments only.
+> This configuration is required for Azure Stack Development Kit environments only.
 > 
 > 
 
-### <a name="configure-the-nat"></a>Configure the NAT
+### Configure the NAT
+<a id="configure-the-nat" class="xliff"></a>
 > [!IMPORTANT]
-> You must complete this procedure for *both* POC environments.
+> You must complete this procedure for *both* Azure Stack Development Kit environments.
 
 1. Determine the **Internal IP address** to use in the following PowerShell script. Open the virtual network gateway (GW1 and GW2), and then on the **Overview** blade, save the value for the **Public IP address** for later use.
 ![Internal IP address](media/azure-stack-create-vpn-connection-one-node-tp2/InternalIP.PNG)
 2. Sign in to the Azure Stack physical machine for POC1.
-3. Copy and edit the following PowerShell script. To configure the NAT on each POC, run the script in an elevated Windows PowerShell ISE. In the script, add values to the *External BGPNAT address* and *Internal IP address* placeholders:
+3. Copy and edit the following PowerShell script. To configure the NAT on each Azure Stack Development Kit, run the script in an elevated Windows PowerShell ISE. In the script, add values to the *External BGPNAT address* and *Internal IP address* placeholders:
 
    ```powershell
    # Designate the external NAT address for the ports that use the IKE authentication.
    Invoke-Command `
-    -ComputerName mas-bgpnat01 `
+    -ComputerName AzS-bgpnat01 `
      {Add-NetNatExternalAddress `
       -NatName BGPNAT `
       -IPAddress <External BGPNAT address> `
       -PortStart 499 `
       -PortEnd 501}
    Invoke-Command `
-    -ComputerName mas-bgpnat01 `
+    -ComputerName AzS-bgpnat01 `
      {Add-NetNatExternalAddress `
       -NatName BGPNAT `
       -IPAddress <External BGPNAT address> `
@@ -290,7 +317,7 @@ To configure the VPN connection, you must create a static NAT map route that map
    # create a static NAT mapping to map the external address to the Gateway
    # Public IP Address to map the ISAKMP port 500 for PHASE 1 of the IPSEC tunnel
    Invoke-Command `
-    -ComputerName mas-bgpnat01 `
+    -ComputerName AzS-bgpnat01 `
      {Add-NetNatStaticMapping `
       -NatName BGPNAT `
       -Protocol UDP `
@@ -301,7 +328,7 @@ To configure the VPN connection, you must create a static NAT map route that map
    # Finally, configure NAT traversal which uses port 4500 to
    # successfully establish the complete IPSEC tunnel over NAT devices
    Invoke-Command `
-    -ComputerName mas-bgpnat01 `
+    -ComputerName AzS-bgpnat01 `
      {Add-NetNatStaticMapping `
       -NatName BGPNAT `
       -Protocol UDP `
@@ -313,14 +340,16 @@ To configure the VPN connection, you must create a static NAT map route that map
 
 4. Repeat this procedure on POC2.
 
-## <a name="test-the-connection"></a>Test the connection
-Now that the site-to-site connection is established, you should validate that you can get traffic flowing through it. To validate, sign in to one of the virtual machines that you created in either POC environment. Then, ping the virtual machine that you created in the other environment. 
+## Test the connection
+<a id="test-the-connection" class="xliff"></a>
+Now that the site-to-site connection is established, you should validate that you can get traffic flowing through it. To validate, sign in to one of the virtual machines that you created in either Azure Stack Development Kit environment. Then, ping the virtual machine that you created in the other environment. 
 
 To ensure that you send the traffic through the site-to-site connection, ensure that you ping the Direct IP (DIP) address of the virtual machine on the remote subnet, not the VIP. To do this, find the DIP address on the other end of the connection. Save the address for later use.
 
-### <a name="sign-in-to-the-tenant-vm-in-poc1"></a>Sign in to the tenant VM in POC1
+### Sign in to the tenant VM in POC1
+<a id="sign-in-to-the-tenant-vm-in-poc1" class="xliff"></a>
 1. Sign in to the Azure Stack physical machine for POC1, and then use a tenant account to sign in to the user portal.
-2. In the left navigation bar, select **Virtual Machines**.
+2. In the left navigation bar, select **Compute**.
 3. In the list of VMs, find **VM01** that you created previously, and then select it.
 4. On the blade for the virtual machine, click **Connect**, and then open the VM01.rdp file.
    
@@ -337,9 +366,10 @@ To ensure that you send the traffic through the site-to-site connection, ensure 
     –Protocol ICMPv4
    ```
 
-### <a name="sign-in-to-the-tenant-vm-in-poc2"></a>Sign in to the tenant VM in POC2
+### Sign in to the tenant VM in POC2
+<a id="sign-in-to-the-tenant-vm-in-poc2" class="xliff"></a>
 1. Sign in to the Azure Stack physical machine for POC2, and then use a tenant account to sign in to the user portal.
-2. In the left navigation bar, click **Virtual Machines**.
+2. In the left navigation bar, click **Compute**.
 3. From the list of virtual machines, find **VM02** that you created previously, and then select it.
 4. On the blade for the virtual machine, click **Connect**.
 5. Sign in with the account that you configured when you created the virtual machine.
@@ -360,7 +390,8 @@ To ensure that you send the traffic through the site-to-site connection, ensure 
     ![Successful ping](media/azure-stack-create-vpn-connection-one-node-tp2/image19b.png)
 11. A reply from the remote virtual machine indicates a successful test! You can close the virtual machine window. To test your connection, you can try other kinds of data transfers like a file copy.
 
-### <a name="viewing-data-transfer-statistics-through-the-gateway-connection"></a>Viewing data transfer statistics through the gateway connection
+### Viewing data transfer statistics through the gateway connection
+<a id="viewing-data-transfer-statistics-through-the-gateway-connection" class="xliff"></a>
 If you want to know how much data passes through your site-to-site connection, this information is available on the **Connection** blade. This test is also another way to verify that the ping you just sent actually went through the VPN connection.
 
 1. While you're signed in to the tenant virtual machine in POC2, use your tenant account to sign in to the user portal.
@@ -368,6 +399,4 @@ If you want to know how much data passes through your site-to-site connection, t
 4. On the **Connection** blade, the statistics for **Data in** and **Data out** appear. In the following screenshot, the large numbers are attributed to additional file transfer. You should see some nonzero values there.
    
     ![Data in and out](media/azure-stack-create-vpn-connection-one-node-tp2/image20.png)
-
-   
 

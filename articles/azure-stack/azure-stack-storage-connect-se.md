@@ -12,41 +12,47 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/22/2017
+ms.date: 7/10/2017
 ms.author: xiaofmao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
-ms.openlocfilehash: 7bee056a4252ccc0cd316e9c927aa5efcbff9b8c
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 080f8798e1704e7bd4087f33120bc67eb5e1efbb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
+# Connect Storage Explorer to an Azure Stack subscription
 <a id="connect-storage-explorer-to-an-azure-stack-subscription" class="xliff"></a>
 
-# Connect Storage Explorer to an Azure Stack subscription
+Azure Storage Explorer (Preview) is a standalone app that enables you to easily work with Azure Stack Storage data on Windows, macOS, and Linux. There are several tools avaialble to move data to and from Azure Stack Storage. For more information, see [Data transfer tools for Azure Stack storage](azure-stack-storage-transfer.md).
 
-Azure Storage Explorer (Preview) is a standalone app that enables you to easily work with Azure Stack Storage data on Windows, macOS, and Linux. In this article, you learn how to connect to your Azure Stack storage accounts.
+In this article, you learn how to connect to your Azure Stack storage accounts using Storage Explorer. 
+
+Azure Stack requires Storage Explorer version 0.8.13. If you haven't installed it yet, [download](https://go.microsoft.com/fwlink/?LinkId=809306) Storage Explorer version 0.8.13 and install it.
+
+> [!WARNING]
+> Do not update Storage Explorer if you are prompted with an available update. To work with Azure Stack, you must continue to use version 0.8.13. 
 
 After you connect to your Azure Stack subscription, you can use the [Azure Storage Explorer articles](../vs-azure-tools-storage-manage-with-storage-explorer.md) to work with your Azure Stack data. 
 
+## Connect to an Azure Stack subscription
 <a id="connect-to-an-azure-stack-subscription" class="xliff"></a>
 
-## Connect to an Azure Stack subscription
+You need access to the Azure Stack host machine's desktop or a VPN connection for Storage Explorer to access the Azure Stack subscription. To learn how to set up a VPN connection to Azure Stack, see [Connect to Azure Stack with VPN](azure-stack-connect-azure-stack.md#connect-with-vpn).
 
-You need a VPN connection for Storage Explorer to access the Azure Stack subscription remotely. To learn how to set up a VPN connection to Azure Stack, see [Connect to Azure Stack with VPN](azure-stack-connect-azure-stack.md#connect-with-vpn).
+For Azure Stack Development Kit, you need to export the Azure Stack authority root certificate. To do so:
 
-For Azure Stack Proof of Concept (POC), you need to export the Azure Stack authority root certificate. To do so:
-
-1. Open `mmc.exe` on MAS-CON01, an Azure Stack host machine, or a local machine with a VPN connection to Azure Stack. 
+1. Open `mmc.exe` on an Azure Stack host machine, or a local machine with a VPN connection to Azure Stack. 
 
 2. In **File**, select **Add/Remove Snap-in**, and then add **Certificates** to manage **Computer account** of **Local Computer**.
 
     ![Load the Azure Stack root certificate through mmc.exe][25]   
 
-3. Find **AzureStackCertificationAuthority** under **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates**. 
+3. Under **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** find **AzureStackCertificationAuthority**. 
 
-4. Right-click the item, select **All Tasks** > **Export**, and then follow the instructions to export the certificate with **Base-64 encoded X.509 (.CER)**.  
+    If you see multiple copies of this certificate, select the first one.
+
+4. Right-click the certificate, select **All Tasks** > **Export**, and then follow the instructions to export the certificate with **Base-64 encoded X.509 (.CER)**.  
 
     The exported certificate will be used in the next step.   
 
@@ -69,35 +75,37 @@ For Azure Stack Proof of Concept (POC), you need to export the Azure Stack autho
 
     ![Add an Azure Stack account][29]
 
-9. In the **Add new account** dialog box, under **Azure environment**, select **Create Custom Environment**, and then click **Next**.
+9. In the **Connect to Azure Storage** dialog box, under **Azure environment**, select **Create Custom Environment**, and then click **Next**.
 
-10. Enter all required information for the Azure Stack custom environment, and then click **Sign in**. 
-
-11. To sign in with the Azure Stack account that's associated with at least one active Azure Stack subscription, fill in the **Sign in to a Custom Cloud environment** dialog box.  
+10. To sign in with the Azure Stack account that's associated with at least one active Azure Stack subscription, fill in the **Sign in to a Custom Cloud ETestnvironment** dialog box.  
 
     The details for each field are as follows:
 
     * **Environment name**: The field can be customized by user.
-    * **Authority**: The value should be https://login.windows.net. For Azure China, use https://login.chinacloudapi.cn.
-    * **Sign in resource id**: Retrieve the value by executing one of the following PowerShell scripts:
+    * **Authority**: The value should be https://login.microsoftonline.com.
+    * **Sign in resource id**: Retrieve the value by running one of the following PowerShell scripts:
 
-        If you are a cloud administrator:
-
-        ```powershell
-        PowerShell (Invoke-RestMethod -Uri https://adminmanagement.local.azurestack.external/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
-        ```
-
-        If you are a tenant:
+        If you are a cloud operator:
 
         ```powershell
-        PowerShell (Invoke-RestMethod -Uri https://management.local.azurestack.external/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
+        (Invoke-RestMethod `
+         -Uri https://adminmanagement.local.azurestack.external/metadata/endpoints?api-version=1.0 `
+         -Method Get).authentication.audiences[0]
         ```
 
-    * **Graph endpoint**: The value should be https://graph.windows.net. For Azure China, use https://graph.chinacloudapi.cn.
+        If you are a user:
+
+        ```powershell
+        (Invoke-RestMethod `
+         -Uri https://management.local.azurestack.external/metadata/endpoints?api-version=1.0 `
+         -Method Get).authentication.audiences[0]
+        ```
+
+    * **Graph endpoint**: The value should be https://graph.windows.net.
     * **ARM resource id**: Use the same value as **Sign in resource id**.
     * **ARM resource endpoint**: The samples of Azure Resource Manager resource endpoints:
 
-        * For cloud administrator: https://adminmanagement.local.azurestack.external   
+        * For cloud operator: https://adminmanagement.local.azurestack.external   
         * For tenant: https://management.local.azurestack.external
  
     * **Tenant Ids**: Optional. The value is given only when the directory must be specified.
@@ -109,11 +117,10 @@ For Azure Stack Proof of Concept (POC), you need to export the Azure Stack autho
 
     ![List of storage accounts including Azure Stack subscription accounts][31]
 
-<a id="next-steps" class="xliff"></a>
-
 ## Next steps
+<a id="next-steps" class="xliff"></a>
 * [Get started with Storage Explorer (Preview)](../vs-azure-tools-storage-manage-with-storage-explorer.md)
-* [Azure-consistent storage: differences and considerations](azure-stack-acs-differences.md)
+* [Azure Stack Storage: differences and considerations](azure-stack-acs-differences.md)
 
 
 * To learn more about Azure Storage, see [Introduction to Microsoft Azure Storage](..\storage\storage-introduction.md)
