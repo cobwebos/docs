@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/2/2017
+ms.date: 07/12/2017
 ms.author: billmath
 ms.translationtype: Human Translation
 ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
@@ -20,9 +20,10 @@ ms.openlocfilehash: b7e99f8a4d7bc1cd30c71ce08ad38c13203f8b69
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/12/2017
 
-
 ---
-# <a name="generic-sql-connector-technical-reference"></a>泛型 SQL 连接器技术参考
+<a id="generic-sql-connector-technical-reference" class="xliff"></a>
+
+# 泛型 SQL 连接器技术参考
 本指南介绍泛型 SQL 连接器。 本文适用于以下产品：
 
 * Microsoft 标识管理器 2016 (MIM2016)
@@ -33,7 +34,9 @@ ms.lasthandoff: 05/12/2017
 
 若要查看此连接器的工作原理，请参阅[泛型 SQL 连接器分步指南](active-directory-aadconnectsync-connector-genericsql-step-by-step.md)一文。
 
-## <a name="overview-of-the-generic-sql-connector"></a>泛型 SQL 连接器概述
+<a id="overview-of-the-generic-sql-connector" class="xliff"></a>
+
+## 泛型 SQL 连接器概述
 使用泛型 SQL 连接器可以将同步服务与提供 ODBC 连接的数据库系统相集成。  
 
 从较高层面讲，当前的连接器版本支持以下功能：
@@ -45,27 +48,37 @@ ms.lasthandoff: 05/12/2017
 | 操作 |<li>完全导入和增量导入、导出</li><li>对于导出：添加、删除、更新和替换</li><li>设置密码、更改密码</li> |
 | 架构 |<li>动态发现对象和属性</li> |
 
-### <a name="prerequisites"></a>先决条件
+<a id="prerequisites" class="xliff"></a>
+
+### 先决条件
 在使用连接器之前，请确保在同步服务器上安装以下软件：
 
 * Microsoft .NET 4.5.2 Framework 或更高版本
 * 64 位 ODBC 客户端驱动程序
 
-### <a name="permissions-in-connected-data-source"></a>连接的数据源权限
+<a id="permissions-in-connected-data-source" class="xliff"></a>
+
+### 连接的数据源权限
 若要在泛型 SQL 连接器中创建或执行任何支持的任务，你必须具备：
 
 * db_datareader
 * db_datawriter
 
-### <a name="ports-and-protocols"></a>端口和协议
+<a id="ports-and-protocols" class="xliff"></a>
+
+### 端口和协议
 有关运行 ODBC 驱动程序所需的端口，请参阅数据库供应商的文档。
 
-## <a name="create-a-new-connector"></a>创建新连接器
+<a id="create-a-new-connector" class="xliff"></a>
+
+## 创建新连接器
 若要创建泛型 SQL 连接器，请在“同步服务”中选择“管理代理”和“创建”。 选择“泛型 SQL (Microsoft)”连接器。
 
 ![CreateConnector](./media/active-directory-aadconnectsync-connector-genericsql/createconnector.png)
 
-### <a name="connectivity"></a>连接
+<a id="connectivity" class="xliff"></a>
+
+### 连接
 连接器使用 ODBC DSN 文件进行连接。 使用开始菜单中“管理工具”下的“ODBC 数据源”来创建 DSN 文件。 在管理工具中创建“文件 DSN”，以便提供给连接器。
 
 ![CreateConnector](./media/active-directory-aadconnectsync-connector-genericsql/connectivity.png)
@@ -89,7 +102,9 @@ ms.lasthandoff: 05/12/2017
 
 **导出类型: 对象替换**：在导出期间，只有一些属性已更改时，包含所有属性的整个对象将会导出并替换现有对象。
 
-### <a name="schema-1-detect-object-types"></a>架构 1（检测对象类型）
+<a id="schema-1-detect-object-types" class="xliff"></a>
+
+### 架构 1（检测对象类型）
 此页面上，将配置连接器要如何在数据库中查找不同的对象类型。
 
 每个对象类型显示为一个分区，并且在“配置分区和层次结构”上进一步设置。
@@ -104,7 +119,9 @@ ms.lasthandoff: 05/12/2017
   ![schema1c](./media/active-directory-aadconnectsync-connector-genericsql/schema1c.png)
 * **SQL 查询**：使用此选项可以提供 SQL 查询，返回包含对象类型的单个列，例如 `SELECT [Column Name] FROM TABLENAME`。 返回的列必须是字符串类型 (varchar)。
 
-### <a name="schema-2-detect-attribute-types"></a>架构 2（检测属性类型）
+<a id="schema-2-detect-attribute-types" class="xliff"></a>
+
+### 架构 2（检测属性类型）
 在此页面上，将配置如何检测属性名称和类型。 系统针对在前一页检测到的每个对象类型，列出配置选项。
 
 ![schema2a](./media/active-directory-aadconnectsync-connector-genericsql/schema2a.png)
@@ -114,7 +131,9 @@ ms.lasthandoff: 05/12/2017
 * **表/视图/存储过程**：提供表/视图/存储过程的名称，用于查找属性名称。 如果使用存储过程，则还需要使用 **[名称]:[方向]:[值]** 格式提供其参数。 独行提供每个参数（使用 Ctrl+Enter 来换行）。 若要检测多值属性中的属性名称，请提供以逗号分隔的表或视图列表。 如果父表和子表具有相同的列名称，则不支持多值方案。
 * **SQL 查询**：使用此选项可以提供 SQL 查询，返回包含属性名称的单个列，例如 `SELECT [Column Name] FROM TABLENAME`。 返回的列必须是字符串类型 (varchar)。
 
-### <a name="schema-3-define-anchor-and-dn"></a>架构 3（定义定位点和 DN）
+<a id="schema-3-define-anchor-and-dn" class="xliff"></a>
+
+### 架构 3（定义定位点和 DN）
 此页面可让你为每个检测到的对象类型配置定位点和 DN 属性。 可以选择多个属性，让定位点变成唯一。
 
 ![schema3a](./media/active-directory-aadconnectsync-connector-genericsql/schema3a.png)
@@ -125,7 +144,9 @@ ms.lasthandoff: 05/12/2017
 
   ![schema3b](./media/active-directory-aadconnectsync-connector-genericsql/schema3b.png)
 
-### <a name="schema-4-define-attribute-type-reference-and-direction"></a>架构 4（定义属性类型、引用和方向）
+<a id="schema-4-define-attribute-type-reference-and-direction" class="xliff"></a>
+
+### 架构 4（定义属性类型、引用和方向）
 使用此页面可以配置每个属性的属性类型，如整数、二进制数或布尔值和方向。 “架构 2”页面中的所有属性都列出，包括多值属性。
 
 ![schema4a](./media/active-directory-aadconnectsync-connector-genericsql/schema4a.png)
@@ -141,7 +162,9 @@ ms.lasthandoff: 05/12/2017
 * 可将嵌套表视为包含一个列的数据库表。 Oracle 不以任何特定顺序存储嵌套表的行。 但是，当你将嵌套表检索到 PL/SQL 变量时，行便有从 1 开始的连续下标。 这可让你获取单个行的类似于数组的访问。
 * 连接器不支持 **VARRYS**。
 
-### <a name="schema-5-define-partition-for-reference-attributes"></a>架构 5（定义引用属性的分区）
+<a id="schema-5-define-partition-for-reference-attributes" class="xliff"></a>
+
+### 架构 5（定义引用属性的分区）
 在此页面上，将为所有引用属性配置属性所引用的分区（对象类型）。
 
 ![schema5](./media/active-directory-aadconnectsync-connector-genericsql/schema5.png)
@@ -166,7 +189,9 @@ ms.lasthandoff: 05/12/2017
 
 
 
-### <a name="global-parameters"></a>全局参数
+<a id="global-parameters" class="xliff"></a>
+
+### 全局参数
 “全局参数”页面用于设置增量导入、日期/时间格式，以及密码方法。
 
 ![globalparameters1](./media/active-directory-aadconnectsync-connector-genericsql/globalparameters1.png)
@@ -205,7 +230,9 @@ ms.lasthandoff: 05/12/2017
 还必须在“配置扩展”页面上启用密码管理。
 ![globalparameters5](./media/active-directory-aadconnectsync-connector-genericsql/globalparameters5.png)
 
-### <a name="configure-partitions-and-hierarchies"></a>配置分区和层次结构
+<a id="configure-partitions-and-hierarchies" class="xliff"></a>
+
+### 配置分区和层次结构
 在分区和层次结构页面上，选择所有对象类型。 每个对象类型都在自身的分区中。
 
 ![partitions1](./media/active-directory-aadconnectsync-connector-genericsql/partitions1.png)
@@ -214,15 +241,21 @@ ms.lasthandoff: 05/12/2017
 
 ![partitions2](./media/active-directory-aadconnectsync-connector-genericsql/partitions2.png)
 
-### <a name="configure-anchors"></a>配置定位点
+<a id="configure-anchors" class="xliff"></a>
+
+### 配置定位点
 此页面是只读页面，因为已经定义定位点。 选择的定位点属性始终附加对象类型，确保它在所有对象类型中保持唯一。
 
 ![anchors](./media/active-directory-aadconnectsync-connector-genericsql/anchors.png)
 
-## <a name="configure-run-step-parameter"></a>配置运行步骤参数
+<a id="configure-run-step-parameter" class="xliff"></a>
+
+## 配置运行步骤参数
 对连接器的运行配置文件配置这些步骤。 这些配置将进行导入和导出数据的实际工作。
 
-### <a name="full-and-delta-import"></a>完整和增量导入
+<a id="full-and-delta-import" class="xliff"></a>
+
+### 完整和增量导入
 泛型 SQL 连接器支持使用以下方法的完整和增量导入：
 
 * 表
@@ -261,7 +294,9 @@ ms.lasthandoff: 05/12/2017
 * 不支持多个结果集查询。
 * SQL 查询支持分页并提供起始索引和结束索引作为变量，以支持分页。
 
-### <a name="delta-import"></a>增量导入
+<a id="delta-import" class="xliff"></a>
+
+### 增量导入
 ![runstep6](./media/active-directory-aadconnectsync-connector-genericsql/runstep6.png)
 
 相比于完整导入，增量导入的配置更详细。
@@ -272,7 +307,9 @@ ms.lasthandoff: 05/12/2017
 * 如果选择“水印”来跟踪增量更改，则必须在“水印列名称”中提供包含操作信息的列名称。
 * 更改类型需要“更改型别属性”列。 此列将主表或多值表中发生的更改映射到差异视图中的更改类型。 此列可以包含适用于属性级更改的 Modify_Attribute 更改类型，或适用于对象级更改的“添加”、“修改”或“删除”更改类型。 如果更改类型不是默认值“添加”、“修改”或“删除”，则可以使用此选项来定义这些值。
 
-### <a name="export"></a>导出
+<a id="export" class="xliff"></a>
+
+### 导出
 ![runstep7](./media/active-directory-aadconnectsync-connector-genericsql/runstep7.png)
 
 泛型 SQL 连接器支持使用以下四种方法的导出：
@@ -306,6 +343,8 @@ ms.lasthandoff: 05/12/2017
 * **删除查询**：如有任何对象进入连接器以便在相应的表中删除，则运行此查询。
 * 从架构中选择的用作查询参数值的属性，例如 `Insert into Employee (ID, Name) Values (@ID, @EmployeeName)`
 
-## <a name="troubleshooting"></a>故障排除
+<a id="troubleshooting" class="xliff"></a>
+
+## 故障排除
 * 有关如何启用记录来排查连接器问题的信息，请参阅[如何启用连接器的 ETW 跟踪](http://go.microsoft.com/fwlink/?LinkId=335731)。
 

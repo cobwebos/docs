@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 07/12/2017
 ms.author: billmath
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
@@ -20,12 +20,15 @@ ms.openlocfilehash: 4a88cf56eea3dd562d4d5dcc4fe7364ea226a348
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/16/2017
 
-
 ---
-# <a name="azure-ad-connect-sync-how-to-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步：如何更改默认配置
+<a id="azure-ad-connect-sync-how-to-make-a-change-to-the-default-configuration" class="xliff"></a>
+
+# Azure AD Connect 同步：如何更改默认配置
 本主题旨在介绍如何对 Azure AD Connect 同步中的默认配置进行更改。 其中提供了一些常见方案的步骤。 了解这些知识后，用户应该能够根据自己的业务规则对自己的配置进行一些简单的更改。
 
-## <a name="synchronization-rules-editor"></a>同步规则编辑器
+<a id="synchronization-rules-editor" class="xliff"></a>
+
+## 同步规则编辑器
 同步规则编辑器用于查看和更改默认配置。 可以在 **Azure AD Connect** 组下的开始菜单中找到它。  
 ![具有同步规则编辑器的开始菜单](./media/active-directory-aadconnectsync-change-the-configuration/startmenu2.png)
 
@@ -33,7 +36,9 @@ ms.lasthandoff: 05/16/2017
 
 ![同步规则编辑器](./media/active-directory-aadconnectsync-change-the-configuration/sre2.png)
 
-### <a name="navigating-in-the-editor"></a>在编辑器中导航
+<a id="navigating-in-the-editor" class="xliff"></a>
+
+### 在编辑器中导航
 通过编辑器顶部的下拉列表可以快速查找特定规则。 例如，如果想要查看包含属性 proxyAddresses 的规则，可将下拉列表更改为：  
 ![SRE 筛选](./media/active-directory-aadconnectsync-change-the-configuration/filtering.png)  
 若要重置筛选并加载新配置，请按键盘上的 **F5**。
@@ -42,15 +47,21 @@ ms.lasthandoff: 05/16/2017
 
 顶部有用于执行所选同步规则的按钮。 “编辑”和“删除”按钮可执行其应有的操作。 “导出”按钮可生成用于创建同步规则的 PowerShell 脚本。 在此过程中，用户可以将同步规则从一台服务器移到另一台。
 
-## <a name="create-your-first-custom-rule"></a>创建第一个自定义规则
+<a id="create-your-first-custom-rule" class="xliff"></a>
+
+## 创建第一个自定义规则
 最常见的更改是对属性流的更改。 源目录中的数据可能与 Azure AD 中的不同。 在本部分的示例中，需要确保用户的给定名称始终为**首字母大写**。
 
-### <a name="disable-the-scheduler"></a>禁用计划程序
+<a id="disable-the-scheduler" class="xliff"></a>
+
+### 禁用计划程序
 默认情况下，[计划程序](active-directory-aadconnectsync-feature-scheduler.md)每 30 分钟运行一次。 进行更改以及排查新规则错误时，需要确保其未启动。 若要临时禁用计划程序，请启动 PowerShell，然后运行 `Set-ADSyncScheduler -SyncCycleEnabled $false`
 
 ![禁用计划程序](./media/active-directory-aadconnectsync-change-the-configuration/schedulerdisable.png)  
 
-### <a name="create-the-rule"></a>创建规则
+<a id="create-the-rule" class="xliff"></a>
+
+### 创建规则
 1. 单击“添加新规则”。
 2. 在“说明”页上输入以下内容：  
    ![入站规则筛选](./media/active-directory-aadconnectsync-change-the-configuration/description2.png)  
@@ -72,7 +83,9 @@ ms.lasthandoff: 05/16/2017
 
 新的自定义规则应该与系统中的其他同步规则一起显示。
 
-### <a name="verify-the-change"></a>验证更改
+<a id="verify-the-change" class="xliff"></a>
+
+### 验证更改
 采用此新更改后，需要确保其按预期方式工作并且不会引发任何错误。 根据拥有的对象数量，有两种不同的方法执行此步骤。
 
 1. 在所有对象上运行完全同步
@@ -93,13 +106,19 @@ ms.lasthandoff: 05/16/2017
 用户要挑选几个示例对象，确保值符合预期并且已应用规则。 从顶部选择“Metaverse 搜索”。 添加查找相关对象所需的筛选器。 从搜索结果中，打开对象。 查看属性值，同时还要在按预期方式应用规则的“同步规则”列中进行验证。  
 ![Metaverse 搜索](./media/active-directory-aadconnectsync-change-the-configuration/mvsearch.png)  
 
-### <a name="enable-the-scheduler"></a>启用计划程序
+<a id="enable-the-scheduler" class="xliff"></a>
+
+### 启用计划程序
 如果一切按预期方式进行，可以再次启用计划程序。 从 PowerShell 中运行 `Set-ADSyncScheduler -SyncCycleEnabled $true`。
 
-## <a name="other-common-attribute-flow-changes"></a>其他常见的属性流更改
+<a id="other-common-attribute-flow-changes" class="xliff"></a>
+
+## 其他常见的属性流更改
 前面部分介绍了如何更改属性流。 本部分提供了另外一些示例。 虽然创建同步规则的步骤已缩简，但可以在前面部分中找到完整步骤。
 
-### <a name="use-another-attribute-than-the-default"></a>使用其他属性而不是默认属性
+<a id="use-another-attribute-than-the-default" class="xliff"></a>
+
+### 使用其他属性而不是默认属性
 Fabrikam 中有对名字、姓氏和显示名称使用本地字母的林。 以拉丁字母表示的这些属性可在扩展属性中找到。 在 Azure AD 和 Office 365 中创建全局地址列表时，组织反而想要使用这些属性。
 
 使用默认配置时，本地林中的对象如下所示：  
@@ -121,23 +140,31 @@ Fabrikam 中有对名字、姓氏和显示名称使用本地字母的林。 以�
 这是使用此自定义规则的同一对象的结果：  
 ![属性流 4](./media/active-directory-aadconnectsync-change-the-configuration/attributeflowjp4.png)
 
-### <a name="length-of-attributes"></a>属性的长度
+<a id="length-of-attributes" class="xliff"></a>
+
+### 属性的长度
 字符串属性在默认情况下设置为可编制索引，并且最大长度为 448 个字符。 如果正在使用其中可能包含更多字符的字符串属性，请确保属性流中包括以下内容：  
 `attributeName` <- `Left([attributeName],448)`
 
-### <a name="changing-the-userprincipalsuffix"></a>更改 userPrincipalSuffix
+<a id="changing-the-userprincipalsuffix" class="xliff"></a>
+
+### 更改 userPrincipalSuffix
 Active Directory 中的 userPrincipalName 属性并非始终被用户知晓，并且可能不适合作为登录 ID。 Azure AD Connect 同步安装向导允许选择不同的属性，例如 mail。 但在某些情况下，必须计算该属性。 例如：公司 Contoso 具有两个 Azure AD 目录，一个用于生产，另一个用于测试。 他们希望测试租户中的用户使用登录 ID 中的另一后缀。  
 `userPrincipalName` <- `Word([userPrincipalName],1,"@") & "@contosotest.com"`
 
 在此表达式中，使用第一个 @-sign (Word) 的左侧所有内容，并与固定字符串连接。
 
-### <a name="convert-a-multi-value-to-a-single-value"></a>将多值转换为单值
+<a id="convert-a-multi-value-to-a-single-value" class="xliff"></a>
+
+### 将多值转换为单值
 Active Directory 中的某些属性在架构中是多值，不过它们在 Active Directory 用户和计算机中看上去是单值。 一个示例就是说明属性。  
 `description` <- `IIF(IsNullOrEmpty([description]),NULL,Left(Trim(Item([description],1)),448))`
 
 在此表达式中，如果属性具有值，请使用属性中的第一项 (Item)，删除前导空格和尾随空格 (Trim)，然后保留字符串中的前 448 个字符（左）。
 
-### <a name="do-not-flow-an-attribute"></a>不要流送属性
+<a id="do-not-flow-an-attribute" class="xliff"></a>
+
+### 不要流送属性
 有关本部分方案的背景信息，请参阅[控制属性流过程](active-directory-aadconnectsync-understanding-declarative-provisioning.md#control-the-attribute-flow-process)。
 
 有两种方法可防止流送属性。 第一种方法可在安装向导中使用，允许用户[删除选定的属性](active-directory-aadconnect-get-started-custom.md#azure-ad-app-and-attribute-filtering)。 如果你以前未曾同步该属性，则可以使用这个选项。 但是，如果已开始同步此属性，后来使用此功能将它删除，则同步引擎将停止管理属性，现有值将保留在 Azure AD 中。
@@ -154,13 +181,19 @@ Active Directory 中的某些属性在架构中是多值，不过它们在 Activ
 * 通过搜索连接器空间来验证是否即将导出所需的更改。
   ![分阶段删除](./media/active-directory-aadconnectsync-change-the-configuration/deletetobeexported.png)
 
-## <a name="create-rules-with-powershell"></a>使用 PowerShell 创建规则
+<a id="create-rules-with-powershell" class="xliff"></a>
+
+## 使用 PowerShell 创建规则
 如只需进行少量更改，使用同步规则编辑器即可达到目的。 如需进行大量更改，最好选择 PowerShell。 某些高级功能只有 PowerShell 中才会提供。
 
-### <a name="get-the-powershell-script-for-an-out-of-box-rule"></a>获取现成规则的 PowerShell 脚本
+<a id="get-the-powershell-script-for-an-out-of-box-rule" class="xliff"></a>
+
+### 获取现成规则的 PowerShell 脚本
 若要查看创建现成规则的 PowerShell 脚本，在同步规则编辑器中选择此规则，然后单击“导出”。 此操作会提供创建该规则的 PowerShell 脚本。
 
-### <a name="advanced-precedence"></a>高级优先级
+<a id="advanced-precedence" class="xliff"></a>
+
+### 高级优先级
 以 100 优先级值开头的现成同步规则。 如果有多个林，并且需要进行大量自定义更改，那么 99 个同步规则可能不够。
 
 可以指示同步引擎需要在现成规则前插入其他规则。 若要获取此行为，请执行以下步骤：
@@ -174,7 +207,9 @@ Active Directory 中的某些属性在架构中是多值，不过它们在 Activ
 必要时，可让多个自定义同步规则使用相同的 **PrecedenceBefore** 值。
 
 
-## <a name="enable-synchronization-of-preferreddatalocation"></a>启用 PreferredDataLocation 同步
+<a id="enable-synchronization-of-preferreddatalocation" class="xliff"></a>
+
+## 启用 PreferredDataLocation 同步
 Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **PreferredDataLocation** 属性同步。 更具体地讲，已引入以下更改：
 
 * Azure AD 连接器中对象类型 **User** 的架构经过扩展，包含字符串类型的单值 PreferredDataLocation 属性。
@@ -219,7 +254,9 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **Prefer
 > [!NOTE]
 > 本部分的其余部分介绍这些步骤的详细信息。 在 Azure AD 部署使用单林拓扑和不使用自定义同步规则的上下文中描述它们。 如果有多林拓扑、自定义同步规则配置或者过渡服务器，则需要相应地调整步骤。
 
-### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>步骤 1：禁用同步计划程序，并验证是否没有正在进行的同步操作
+<a id="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress" class="xliff"></a>
+
+### 步骤 1：禁用同步计划程序，并验证是否没有正在进行的同步操作
 确保实现新同步规则的中途不会发生同步，以免将意外的更改导出到 Azure AD。 若要禁用内置的同步计划程序，请执行以下操作：
 
  1. 在 Azure AD Connect 服务器上启动 PowerShell 会话。
@@ -232,7 +269,9 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **Prefer
 
 ![Synchronization Service Manager - 检查没有正在进行的操作](./media/active-directory-aadconnectsync-change-the-configuration/preferredDataLocation-step1.png)
 
-### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>步骤 2：将源属性添加到本地 AD 连接器架构
+<a id="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema" class="xliff"></a>
+
+### 步骤 2：将源属性添加到本地 AD 连接器架构
 并非所有 AD 属性都将导入本地 AD 连接器空间。 若要将源属性添加到导入属性的列表：
 
  1. 在 Synchronization Service Manager 中转到“连接器”选项卡。
@@ -247,7 +286,9 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **Prefer
 
 ![将源属性添加到本地 AD 连接器架构](./media/active-directory-aadconnectsync-change-the-configuration/preferredDataLocation-step2.png)
 
-### <a name="step-3-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>步骤 3：将 PreferredDataLocation 添加到 Azure AD 连接器架构
+<a id="step-3-add-preferreddatalocation-to-the-azure-ad-connector-schema" class="xliff"></a>
+
+### 步骤 3：将 PreferredDataLocation 添加到 Azure AD 连接器架构
 默认情况下，PreferredDataLocation 属性不会导入 Azure AD 连接空间。 若要将 PreferredDataLocation 属性添加到导入属性的列表：
 
  1. 在 Synchronization Service Manager 中转到“连接器”选项卡。
@@ -262,7 +303,9 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **Prefer
 
 ![将源属性添加到 Azure AD 连接器架构](./media/active-directory-aadconnectsync-change-the-configuration/preferredDataLocation-step3.png)
 
-### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>步骤 4：创建流从本地 Active Directory 的属性值的入站的同步规则
+<a id="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory" class="xliff"></a>
+
+### 步骤 4：创建流从本地 Active Directory 的属性值的入站的同步规则
 入站同步规则允许要流到 Metaverse 源属性从本地 Active Directory 中的属性值：
 
 1. 转到“开始”→“同步规则编辑器”，启动“同步规则编辑器”。
@@ -301,7 +344,9 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **Prefer
 
 ![创建入站同步规则](./media/active-directory-aadconnectsync-change-the-configuration/preferredDataLocation-step4.png)
 
-### <a name="step-5-create-an-outbound-synchronization-rule-to-flow-the-attribute-value-to-azure-ad"></a>步骤 5：创建流到 Azure AD 的属性值的出站同步规则
+<a id="step-5-create-an-outbound-synchronization-rule-to-flow-the-attribute-value-to-azure-ad" class="xliff"></a>
+
+### 步骤 5：创建流到 Azure AD 的属性值的出站同步规则
 出站同步规则允许要在 Azure AD 中从 Metaverse 流向 PreferredDataLocation 属性的属性值：
 
 1. 转到“同步规则”编辑器。
@@ -341,7 +386,9 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **Prefer
 
 ![创建出站同步规则](./media/active-directory-aadconnectsync-change-the-configuration/preferredDataLocation-step5.png)
 
-### <a name="step-6-run-full-synchronization-cycle"></a>步骤 6：运行完全同步周期
+<a id="step-6-run-full-synchronization-cycle" class="xliff"></a>
+
+### 步骤 6：运行完全同步周期
 一般情况下，完全同步周期是必需的，因为我们已添加到这两个 AD 的新属性和 Azure AD 连接器架构和引入的自定义同步规则。 建议在将其导出到 Azure AD 之前验证所做的更改。 可使用以下步骤手动运行完全同步周期所构成的步骤时验证更改。 
 
 1. 在**本地 AD 连接器**上运行**完全导入**步骤：
@@ -402,7 +449,9 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **Prefer
 > [!NOTE]
 > 可能注意到这些步骤不包括完全同步步骤和 Azure AD 连接器上的导出步骤。 由于属性值只会从本地 Active Directory 流向 Azure AD，因此不需要执行这些步骤。
 
-### <a name="step-7-re-enable-sync-scheduler"></a>步骤 7：重新启用同步计划程序
+<a id="step-7-re-enable-sync-scheduler" class="xliff"></a>
+
+### 步骤 7：重新启用同步计划程序
 重新启用内置的同步计划程序：
 
 1. 启动 PowerShell 会话。
@@ -411,7 +460,9 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **Prefer
 
 
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 * 在 [Understanding Declarative Provisioning](active-directory-aadconnectsync-understanding-declarative-provisioning.md)（了解声明性预配）中了解有关配置模型的详细信息。
 * 在 [Understanding Declarative Provisioning Expressions](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)（了解声明性预配表达式）中了解有关表达式语言的详细信息。
 

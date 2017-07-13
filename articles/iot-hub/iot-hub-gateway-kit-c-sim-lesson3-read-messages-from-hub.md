@@ -4,7 +4,7 @@ description: "在主计算机上运行示例代码，从 IoT 中心读取消息�
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "云中的数据, 云数据收集, iot 云服务, iot 数据"
 ROBOTS: NOINDEX
@@ -17,31 +17,41 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: 08ccd35c6e6a8e77f0fd4637f14a1f27730560d6
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/25/2017
-
 
 ---
 
-# <a name="read-messages-from-your-iot-hub"></a>从 IoT 中心读取消息
+<a id="read-messages-from-your-iot-hub" class="xliff"></a>
 
-## <a name="what-you-will-do"></a>执行的操作
+# 从 IoT 中心读取消息
+
+<a id="what-you-will-do" class="xliff"></a>
+
+## 执行的操作
 
 - 在主计算机上运行示例代码，从 IoT 中心读取消息。
 
 如果有任何问题，请在[故障排除页面](iot-hub-gateway-kit-c-sim-troubleshooting.md)上查找解决方案。
 
-## <a name="what-you-will-learn"></a>你要学习的知识
+<a id="what-you-will-learn" class="xliff"></a>
+
+## 你要学习的知识
 
 如何使用 gulp 工具从 IoT 中心读取消息。
 
-## <a name="what-you-need"></a>所需条件
+<a id="what-you-need" class="xliff"></a>
+
+## 所需条件
 
 - [配置并运行模拟设备云上传示例应用程序](iot-hub-gateway-kit-c-sim-lesson3-configure-simulated-device-app.md)中的模拟设备示例。
 
-## <a name="get-your-iot-hub-and-device-connection-strings"></a>获取 IoT 中心连接字符串和设备连接字符串
+<a id="get-your-iot-hub-and-device-connection-strings" class="xliff"></a>
+
+## 获取 IoT 中心连接字符串和设备连接字符串
 
 模拟设备使用设备连接字符串连接到 IoT 中心。 IoT 中心连接字符串用于连接到 IoT 中心中的标识注册表，以便管理允许连接到 IoT 中心的设备。
 
@@ -60,7 +70,9 @@ ms.lasthandoff: 01/25/2017
 
    `{my hub name}` 是在第 2 课中指定的名称。
 
-## <a name="configure-the-device-connection-for-the-sample-code"></a>为示例代码配置设备连接
+<a id="configure-the-device-connection-for-the-sample-code" class="xliff"></a>
+
+## 为示例代码配置设备连接
 
 执行以下步骤，更新 `config-azure.json` 中的 IoT 中心和设备连接配置：
 
@@ -79,7 +91,9 @@ ms.lasthandoff: 01/25/2017
 
    将 `[IoT hub connection string]` 替换为 IoT 中心连接字符串。
 
-## <a name="read-messages-from-your-iot-hub"></a>从 IoT 中心读取消息
+<a id="read-messages-from-your-iot-hub" class="xliff"></a>
+
+## 从 IoT 中心读取消息
 
 通过以下命令运行模拟设备示例应用程序，并读取 IoT 中心消息：
 
@@ -93,11 +107,15 @@ gulp run --iot-hub
 
 ![包含发送和接收的消息的模拟示例应用程序](media/iot-hub-gateway-kit-lessons/lesson3/gulp_run_read_hub_simudev.png)
 
-## <a name="summary"></a>摘要
+<a id="summary" class="xliff"></a>
+
+## 摘要
 
 已成功运行示例应用程序，可使用模拟设备将数据发送到 IoT 中心。 此外，也已读取发送到 IoT 中心的消息。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [创建 Azure Function App 和 Azure 存储帐户](iot-hub-gateway-kit-c-sim-lesson4-deploy-resource-manager-template.md)
 
 

@@ -4,7 +4,7 @@ description: "创建一个模块并将其添加到一个示例应用以自定义
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: 
 ROBOTS: NOINDEX
@@ -23,28 +23,37 @@ ms.openlocfilehash: 5e28422158684c3aaf0ac3fdf5b19c80fbccfb02
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
-# <a name="lesson-5-create-your-first-azure-iot-gateway-module"></a>第 5 课：创建你的第一个 Azure IoT 网关模块
+<a id="lesson-5-create-your-first-azure-iot-gateway-module" class="xliff"></a>
+
+# 第 5 课：创建你的第一个 Azure IoT 网关模块
 虽然 Azure IoT Edge 允许用户生成以 Java、.NET 或 Node.js 编写的模块，但本教程演示的使用 C 生成模块的步骤。
 
-## <a name="what-you-will-do"></a>执行的操作
+<a id="what-you-will-do" class="xliff"></a>
+
+## 执行的操作
 
 - 在 Intel NUC 上编译并运行 hello_world 示例应用。
 - 创建一个模块并在 Intel NUC 上编译该模块。
 - 将新模块添加到 hello_world 示例应用，然后在 Intel NUC 上运行该示例。 新模块将输出带时间戳的“hello_world”消息。
 
-## <a name="what-you-will-learn"></a>你要学习的知识
+<a id="what-you-will-learn" class="xliff"></a>
+
+## 你要学习的知识
 
 - 如何在 Intel NUC 上编译并运行示例应用。
 - 如何创建模块。
 - 如何将模块添加到示例应用。
 
-## <a name="what-you-need"></a>所需条件
+<a id="what-you-need" class="xliff"></a>
+
+## 所需条件
 
 主机计算机上已安装了 Azure IoT Edge。
 
-## <a name="folder-structure"></a>文件夹结构
+<a id="folder-structure" class="xliff"></a>
+
+## 文件夹结构
 
 在你在第 1 课中克隆的示例代码的 Lesson 5 子文件夹中，有一个 `module` 文件夹和一个 `sample` 文件夹。
 
@@ -53,7 +62,9 @@ ms.lasthandoff: 07/06/2017
 - `module/my_module` 文件夹中包含用来构建模块的源代码和脚本。
 - `sample` 文件夹中包含用来构建示例应用的源代码和脚本。
 
-## <a name="compile-and-run-the-helloworld-sample-app-on-intel-nuc"></a>在 Intel NUC 上编译并运行 hello_world 示例应用
+<a id="compile-and-run-the-helloworld-sample-app-on-intel-nuc" class="xliff"></a>
+
+## 在 Intel NUC 上编译并运行 hello_world 示例应用
 
 `hello_world` 示例根据 `hello_world.json` 文件创建一个网关，该文件指定了与应用关联的两个预定义模块。 网关每隔 5 秒将一条“hello world”消息记录到一个文件中。 在本部分中，你将使用 `hello_world` 应用的默认模块编译并运行该应用。
 
@@ -100,7 +111,9 @@ ms.lasthandoff: 07/06/2017
 
    ![run_sample](media/iot-hub-gateway-kit-lessons/lesson5/run_sample.png)
 
-## <a name="create-a-new-module-and-compile-it-on-intel-nuc"></a>创建一个新模块并在 Intel NUC 上编译该模块
+<a id="create-a-new-module-and-compile-it-on-intel-nuc" class="xliff"></a>
+
+## 创建一个新模块并在 Intel NUC 上编译该模块
 
 以下步骤将引导你创建一个新模块并在 Intel NUC 上编译该模块。 该模块在收到带时间戳的消息时将输出这些消息。 在本部分中，你将创建你的第一个自定义网关模块。
 
@@ -208,7 +221,9 @@ ms.lasthandoff: 07/06/2017
 
    该命令将源代码传输到 Intel NUC 并运行 `build.sh` 来编译该模块。
 
-## <a name="add-the-module-to-the-helloworld-sample-app-and-run-the-app-on-intel-nuc"></a>将模块添加到 hello_world 示例应用，然后在 Intel NUC 上运行该应用
+<a id="add-the-module-to-the-helloworld-sample-app-and-run-the-app-on-intel-nuc" class="xliff"></a>
+
+## 将模块添加到 hello_world 示例应用，然后在 Intel NUC 上运行该应用
 
 若要执行此任务，请执行以下步骤：
 
@@ -275,7 +290,9 @@ ms.lasthandoff: 07/06/2017
 
 祝贺。 现在，你可以看到此新模块的行为了，它只是输出带时间戳的“hello world”消息，这不同于原始“hello_world”模块的结果。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 
 你已创建了一个新模块，将其添加到了 hello_world 示例，并使该示例应用使用新模块在网关上运行。 如果希望了解关于 Azure IoT 网关模块的详细信息，可以在以下位置找到更多模块示例：[https://github.com/Azure/azure-iot-gateway-sdk/tree/master/modules](https://github.com/Azure/azure-iot-gateway-sdk/tree/master/modules)。
 

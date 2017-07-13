@@ -4,7 +4,7 @@ description: "在运行 Windows 的主计算机上安装工具和软件，创建
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "iot 开发, iot 软件, iot 云服务, 物联网软件, azure cli, 在 windows 上安装 git, gulp 运行, 安装 node js windows, 在 windows 上安装 npm, 在 windows 上安装 python"
 ROBOTS: NOINDEX
@@ -17,27 +17,33 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: b07c6c383f31f77a78628593a60b7b76a49bca4f
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/25/2017
 
-
 ---
-# <a name="get-the-tools-windows-7-and-later"></a>获取工具（Windows 7 及更高版本）
+<a id="get-the-tools-windows-7-and-later" class="xliff"></a>
+
+# 获取工具（Windows 7 及更高版本）
 > [!div class="op_single_selector"]
 > * [Windows 7 或更高版本](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-win32.md)
 > * [Ubuntu 16.04](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-ubuntu.md)
 > * [macOS 10.10](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-mac.md)
 
-## <a name="what-you-will-do"></a>执行的操作
+<a id="what-you-will-do" class="xliff"></a>
+
+## 执行的操作
 
 - 安装 Git、Node.js、Gulp、Python。
 - 安装 Azure 命令行界面 (Azure CLI)。 
 
 如果有任何问题，请在[故障排除页面](iot-hub-gateway-kit-c-sim-troubleshooting.md)上查找解决方案。
 
-## <a name="what-you-will-learn"></a>你要学习的知识
+<a id="what-you-will-learn" class="xliff"></a>
+
+## 你要学习的知识
 
 在本课程中将学习：
 
@@ -55,19 +61,25 @@ ms.lasthandoff: 01/25/2017
   - Azure CLI 为 Azure 提供了多平台命令行体验。 可以直接从命令行执行操作以预配和管理资源。
 - 如何使用 Azure CLI 创建 IoT 中心。
 
-## <a name="what-you-need"></a>所需条件
+<a id="what-you-need" class="xliff"></a>
+
+## 所需条件
 
 - Internet 连接，用于下载工具和软件。
 - 一台 Windows 计算机。
 
-## <a name="install-git-and-nodejs"></a>安装 Git 和 Node.js
+<a id="install-git-and-nodejs" class="xliff"></a>
+
+## 安装 Git 和 Node.js
 
 单击以下链接，下载和安装适用于 Windows 的 Git 和 Node.js LTS。
 
 - [获取适用于 Windows 的 Git](https://git-scm.com/download/win/)
 - [获取适用于 Windows 的 Node.js LTS](https://nodejs.org/en/)
 
-## <a name="install-nodejs-development-tools"></a>安装 Node.js 开发工具
+<a id="install-nodejs-development-tools" class="xliff"></a>
+
+## 安装 Node.js 开发工具
 
 使用 [gulp.js](http://gulpjs.com/) 自动部署和执行脚本。
 
@@ -82,7 +94,9 @@ npm install -g gulp
 > [!Note]
 > 需要使用 Node、NPM 和 Gulp，才能运行在 Node.js 中开发的自动化脚本。
 
-## <a name="install-python"></a>安装 Python
+<a id="install-python" class="xliff"></a>
+
+## 安装 Python
 
 可以选择 Python 2.7、3.4 或 3.5。 在本教程中，我们使用 Python 2.7。 如果已安装 Python，请转到下一部分。
 
@@ -90,7 +104,9 @@ npm install -g gulp
 
 还需要将其中安装了 Python.exe 和 pip.exe 的文件夹路径添加到系统 `PATH` 环境变量。 默认情况下，python.exe 安装在 `C:\Python27` 中，pip.exe 安装在 `C:\Python27\Scripts` 中。
 
-## <a name="install-the-azure-cli"></a>安装 Azure CLI
+<a id="install-the-azure-cli" class="xliff"></a>
+
+## 安装 Azure CLI
 
 若要安装 Azure CLI，请执行以下步骤：
 
@@ -115,16 +131,22 @@ npm install -g gulp
 
    ![验证 Azure CLI 安装](media/iot-hub-gateway-kit-lessons/lesson2/az_iot_help_win.png)
 
-## <a name="install-visual-studio-code"></a>安装 Visual Studio Code
+<a id="install-visual-studio-code" class="xliff"></a>
+
+## 安装 Visual Studio Code
 
 使用本教程后面的 Visual Studio Code 编辑配置文件。
 
 [下载](https://code.visualstudio.com/docs/setup/windows)并安装 Visual Studio Code。
 
-## <a name="summary"></a>摘要
+<a id="summary" class="xliff"></a>
+
+## 摘要
 
 已在主计算机上安装所有所需的工具和软件。 下一个任务是使用 Azure CLI 创建 IoT 中心并在此 IoT 中心注册设备。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [创建 IoT 中心并注册设备](iot-hub-gateway-kit-c-sim-lesson2-register-device.md)
 

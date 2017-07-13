@@ -4,7 +4,7 @@ description: "在 Raspberry Pi 3 上部署并运行一个示例应用程序，�
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "闪烁 led 云 pi, 通过云使 led 闪烁"
 ROBOTS: NOINDEX
@@ -17,24 +17,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: 985ba895bfcad1611bebe80a6c2fc8ffed780da5
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/24/2017
 
-
 ---
-# <a name="run-a-sample-application-to-send-device-to-cloud-messages"></a>运行示例应用程序以发送“设备到云”消息
-## <a name="what-you-will-do"></a>执行的操作
+<a id="run-a-sample-application-to-send-device-to-cloud-messages" class="xliff"></a>
+
+# 运行示例应用程序以发送“设备到云”消息
+<a id="what-you-will-do" class="xliff"></a>
+
+## 执行的操作
 本文将说明如何在 Raspberry Pi 3 上部署并运行一个示例应用程序，用以向 IoT 中心发送消息。 如果有任何问题，请在[故障排除页面](iot-hub-raspberry-pi-kit-c-troubleshooting.md)上查找解决方案。
 
-## <a name="what-you-will-learn"></a>你要学习的知识
+<a id="what-you-will-learn" class="xliff"></a>
+
+## 你要学习的知识
 你将学习如何使用 gulp 工具在 Pi 上部署并运行示例 Node.js 应用程序。
 
-## <a name="what-you-need"></a>所需条件
+<a id="what-you-need" class="xliff"></a>
+
+## 所需条件
 * 在开始此任务之前，必须已成功完成了[创建 Azure Function App 和 Azure 存储帐户来处理和存储 IoT 中心消息](iot-hub-raspberry-pi-kit-c-lesson3-deploy-resource-manager-template.md)。
 
-## <a name="get-your-iot-hub-and-device-connection-strings"></a>获取 IoT 中心连接字符串和设备连接字符串
+<a id="get-your-iot-hub-and-device-connection-strings" class="xliff"></a>
+
+## 获取 IoT 中心连接字符串和设备连接字符串
 Pi 使用设备连接字符串连接到 IoT 中心。 IoT 中心连接字符串用于连接到 IoT 中心中的标识注册表，以便管理允许连接到 IoT 中心的设备。 
 
 * 运行以下 Azure CLI 命令，列出资源组中的所有 IoT 中心：
@@ -61,7 +71,9 @@ az iot device show-connection-string --hub-name {my hub name} --device-id myrasp
 
 使用 `myraspberrypi` 作为 `{device id}` 的值（如果尚未更改此值）。
 
-## <a name="configure-the-device-connection"></a>配置设备连接
+<a id="configure-the-device-connection" class="xliff"></a>
+
+## 配置设备连接
 1. 通过运行以下命令初始化配置文件：
    
    ```bash
@@ -94,22 +106,30 @@ az iot device show-connection-string --hub-name {my hub name} --device-id myrasp
 
 更新 `config-raspberrypi.json` 文件，以便部署计算机中的示例应用程序。
 
-## <a name="deploy-and-run-the-sample-application"></a>部署并运行示例应用程序
+<a id="deploy-and-run-the-sample-application" class="xliff"></a>
+
+## 部署并运行示例应用程序
 通过运行以下命令在 Pi 上部署并运行示例应用程序：
 
 ```bash
 gulp deploy && gulp run
 ```
 
-## <a name="verify-that-the-sample-application-works"></a>验证示例应用程序是否正常工作
+<a id="verify-that-the-sample-application-works" class="xliff"></a>
+
+## 验证示例应用程序是否正常工作
 你应当会看到连接到 Pi 的 LED 每两秒闪烁一次。 LED 每次闪烁时，示例应用程序都会向 IoT 中心发送一条消息并验证该消息是否已成功发送到 IoT 中心。 此外，还会在控制台窗口中输出 IoT 中心收到的每条消息。 在发送 20 条消息后，示例应用程序将自动终止。
 
 ![包含发送和接收的消息的示例应用程序](media/iot-hub-raspberry-pi-lessons/lesson3/gulp_run_c.png)
 
-## <a name="summary"></a>摘要
+<a id="summary" class="xliff"></a>
+
+## 摘要
 用户已在 Pi 上部署和运行新的 blink 示例应用程序，目的是将从设备到云的消息发送到 IoT 中心。 现可在将消息写入存储帐户时对其进行监视。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [读取 Azure 存储中保存的消息](iot-hub-raspberry-pi-kit-c-lesson3-read-table-storage.md)
 
 

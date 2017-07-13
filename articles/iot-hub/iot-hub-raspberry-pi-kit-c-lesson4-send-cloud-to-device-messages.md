@@ -4,7 +4,7 @@ description: "示例应用程序在 Pi 上运行，监视来自 IoT 中心的传
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "云到设备, 来自云的消息"
 ROBOTS: NOINDEX
@@ -17,31 +17,41 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4f9feb665ac93028023df86889ca53a64ac2ec0e
 ms.openlocfilehash: 3a6957ebbb239eacb4fce696b7fcfd02e690310b
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/28/2017
 
-
 ---
-# <a name="run-a-sample-application-to-receive-cloud-to-device-messages"></a>运行示例应用程序，接收云到设备消息
+<a id="run-a-sample-application-to-receive-cloud-to-device-messages" class="xliff"></a>
+
+# 运行示例应用程序，接收云到设备消息
 在本文中，用户需在 Raspberry Pi 3 上部署示例应用程序。 示例应用程序监视来自 IoT 中心的传入消息。 此外，还需在计算机上运行一项 gulp 任务来从 IoT 中心向 Pi 发送消息。 示例应用程序在收到这些消息后，就会让 LED 闪烁。 如果有任何问题，请在[故障排除页面](iot-hub-raspberry-pi-kit-c-troubleshooting.md)上查找解决方案。
 
-## <a name="what-you-will-do"></a>执行的操作
+<a id="what-you-will-do" class="xliff"></a>
+
+## 执行的操作
 * 将示例应用程序连接到 IoT 中心。
 * 部署并运行示例应用程序。
 * 从 IoT 中心向 Pi 发送消息来使 LED 闪烁。
 
-## <a name="what-you-will-learn"></a>你要学习的知识
+<a id="what-you-will-learn" class="xliff"></a>
+
+## 你要学习的知识
 本文介绍：
 * 如何监视来自 IoT 中心的传入消息。
 * 如何将从云到设备的消息从 IoT 中心发送到 Pi。
 
-## <a name="what-you-need"></a>所需条件
+<a id="what-you-need" class="xliff"></a>
+
+## 所需条件
 * 已完成设置可供使用的 Raspberry Pi 3。 若要了解如何设置 Pi，请参阅[配置设备](iot-hub-raspberry-pi-kit-c-lesson1-configure-your-device.md)。
 * 在 Azure 订阅中创建的一个 IoT 中心。 若要了解如何创建 IoT 中心，请参阅[创建 IoT 中心并注册 Raspberry Pi 3](iot-hub-raspberry-pi-kit-c-lesson2-prepare-azure-iot-hub.md)。
 
-## <a name="connect-the-sample-application-to-your-iot-hub"></a>将示例应用程序连接到 IoT 中心
+<a id="connect-the-sample-application-to-your-iot-hub" class="xliff"></a>
+
+## 将示例应用程序连接到 IoT 中心
 1. 确保位于存储库文件夹 `iot-hub-c-raspberrypi-getting-started` 中。 通过运行以下命令在 Visual Studio Code 中打开示例应用程序：
 
    ```bash
@@ -70,7 +80,9 @@ ms.lasthandoff: 01/28/2017
 > [!NOTE]
 > 如果在第 1 课中没有运行 **gulp install-tools**，则还需要运行此命令。
 
-## <a name="deploy-and-run-the-sample-application"></a>部署并运行示例应用程序
+<a id="deploy-and-run-the-sample-application" class="xliff"></a>
+
+## 部署并运行示例应用程序
 运行以下命令，在 Pi 上部署并运行示例应用程序：
 
 ```
@@ -85,9 +97,13 @@ Gulp 命令首先运行 install-tools 任务， 然后将示例应用程序部�
 
 ![包含 gulp 命令和闪烁消息的示例应用程序](media/iot-hub-raspberry-pi-lessons/lesson4/gulp_blink_c.png)
 
-## <a name="summary"></a>摘要
+<a id="summary" class="xliff"></a>
+
+## 摘要
 你已成功地将消息从 IoT 中心发送到 Pi，使 LED 闪烁。 下一任务为可选任务：更改 LED 的亮起和熄灭行为。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [更改 LED 的亮起和熄灭行为](iot-hub-raspberry-pi-kit-c-lesson4-change-led-behavior.md)
 

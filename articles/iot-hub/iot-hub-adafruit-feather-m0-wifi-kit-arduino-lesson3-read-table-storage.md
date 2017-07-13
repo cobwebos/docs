@@ -4,7 +4,7 @@ description: "在“设备到云”消息写入到 Azure 表存储时对这些�
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "云中的数据, 云数据收集, iot 云服务, iot 数据"
 ROBOTS: NOINDEX
@@ -17,26 +17,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: 7a49a15b00bf25c9416235f41da8cc86e54d0062
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/24/2017
 
-
 ---
-# <a name="read-messages-persisted-in-azure-storage"></a>读取 Azure 存储中保存的消息
-## <a name="what-you-will-do"></a>执行的操作
+<a id="read-messages-persisted-in-azure-storage" class="xliff"></a>
+
+# 读取 Azure 存储中保存的消息
+<a id="what-you-will-do" class="xliff"></a>
+
+## 执行的操作
 对于从 Adafruit Feather M0 WiFi Arduino 开发板发送到 IoT 中心的设备到云消息，在将其写入 Azure 表存储时对其进行监视。
 
 如果有任何问题，请在[故障排除页面][troubleshooting]上查找解决方案。
 
-## <a name="what-you-will-learn"></a>你要学习的知识
+<a id="what-you-will-learn" class="xliff"></a>
+
+## 你要学习的知识
 在本文中，你将学习如何使用 gulp 读取消息任务来读取 Azure 表存储中保存的消息。
 
-## <a name="what-you-need"></a>所需条件
+<a id="what-you-need" class="xliff"></a>
+
+## 所需条件
 在开始此过程之前，必须已成功完成了[在 Arduino 开发板上运行 Azure 闪烁示例应用程序][run-blink-application]操作。
 
-## <a name="read-new-messages-from-your-storage-account"></a>从存储帐户读取新消息
+<a id="read-new-messages-from-your-storage-account" class="xliff"></a>
+
+## 从存储帐户读取新消息
 在前面的文章中，你在 Arduino 开发板上运行了一个示例应用程序。 该示例应用程序向 Azure IoT 中心发送了消息。 发送到 IoT 中心的消息通过 Azure Function App 存储到 Azure 表存储中。 若要从 Azure 表存储中读取消息，需要使用 Azure 表存储连接字符串。
 
 若要读取 Azure 表存储中存储的消息，请执行以下步骤：
@@ -76,10 +86,14 @@ ms.lasthandoff: 01/24/2017
 
    ![gulp run --read-storage][gulp-run]
 
-## <a name="summary"></a>摘要
+<a id="summary" class="xliff"></a>
+
+## 摘要
 你已成功将 Arduino 开发板连接到云中的 IoT 中心，并使用闪烁示例应用程序发送了“设备到云”消息。 你还使用了 Azure Function App 将传入的 IoT 中心消息存储到 Azure 表存储。 现在可以从 IoT 中心向 Arduino 开发板发送“云到设备”消息了。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [发送云到设备的消息][send-cloud-to-device-messages]
 <!-- Images and links -->
 

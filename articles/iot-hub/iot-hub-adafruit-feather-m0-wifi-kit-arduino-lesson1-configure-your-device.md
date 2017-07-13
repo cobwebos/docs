@@ -4,7 +4,7 @@ description: "在首次使用前配置 Adafruit Feather M0 WiFi。"
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "arduino 安装, 将 arduino 连接到电脑, 安装 arduino, arduino 开发板"
 ROBOTS: NOINDEX
@@ -17,18 +17,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: 3789c07cd6142ba5b6a58a67813c0ead6b87bd76
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/24/2017
 
-
 ---
-# <a name="configure-your-device"></a>配置设备
-## <a name="what-you-will-do"></a>执行的操作
+<a id="configure-your-device" class="xliff"></a>
+
+# 配置设备
+<a id="what-you-will-do" class="xliff"></a>
+
+## 执行的操作
 通过装配并启动 Adafruit Feather M0 WiFi Arduino 开发板，在首次使用前配置开发板。 如果有任何问题，请在[故障排除页面](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md)上查找解决方案。
 
-## <a name="what-you-need"></a>所需条件
+<a id="what-you-need" class="xliff"></a>
+
+## 所需条件
 若要完成此操作，需要使用 Adafruit Feather M0 WiFi 初学者工具包中的以下部件：
 
 * Adafruit Feather M0 Wifi 开发板
@@ -42,13 +48,17 @@ ms.lasthandoff: 01/24/2017
 * 适合 Arduino 开发板连接的无线连接。
 * Internet 访问权限（用于下载配置工具）。
 
-## <a name="what-you-will-learn"></a>你要学习的知识
+<a id="what-you-will-learn" class="xliff"></a>
+
+## 你要学习的知识
 在本文中，将学习以下内容：
 
 * 有关如何装配并启动 Arduino 开发板的信息，请参阅以下资源。
 * 如何在 Ubuntu 上添加串行端口权限。
 
-## <a name="connect-your-arduino-board-to-your-computer"></a>将 Arduino 开发板连接到计算机
+<a id="connect-your-arduino-board-to-your-computer" class="xliff"></a>
+
+## 将 Arduino 开发板连接到计算机
 
 1. 将 micro USB 线缆插入顶部的 micro USB 端口。
 
@@ -58,7 +68,9 @@ ms.lasthandoff: 01/24/2017
 
    ![计算机 USB][computer-usb]
 
-## <a name="add-serial-port-permissions-on-ubuntu"></a>在 Ubuntu 上添加串行端口权限
+<a id="add-serial-port-permissions-on-ubuntu" class="xliff"></a>
+
+## 在 Ubuntu 上添加串行端口权限
 
 如果使用的是 Windows 或 macOS，可以跳过此部分。 对于 Ubuntu，需要执行以下步骤，确保一般的 Linux 用户有权在 Arduino 开发板的 USB 端口上执行操作。
 
@@ -90,12 +102,16 @@ ms.lasthandoff: 01/24/2017
 
 3. 需要注销并再次登录，以使此更改生效并完成安装。
 
-## <a name="summary"></a>摘要
+<a id="summary" class="xliff"></a>
+
+## 摘要
 通过本文，已了解如何配置 Arduino 开发板。 下一个任务是安装必需的工具和软件，从而为在 Arduino 开发板上运行示例应用程序做准备工作。
 
 ![硬件已准备就绪][hardware-is-ready]
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [获取工具][get-the-tools]
 <!-- Images and links -->
 

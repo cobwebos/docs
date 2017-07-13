@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/24/2017
+ms.date: 07/12/2017
 ms.author: markvi
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
@@ -20,15 +20,18 @@ ms.openlocfilehash: 899a45d59099dec147c96e4cd175536e859e88f8
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/04/2017
 
-
 ---
-# <a name="azure-active-directory-faq"></a>Azure Active Directory 常见问题
+<a id="azure-active-directory-faq" class="xliff"></a>
+
+# Azure Active Directory 常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
 
 有关详细信息，请参阅[什么是 Azure Active Directory？](active-directory-whatis.md)。
 
 
-## <a name="access-azure-and-azure-active-directory"></a>访问 Azure 和 Azure Active Directory
+<a id="access-azure-and-azure-active-directory" class="xliff"></a>
+
+## 访问 Azure 和 Azure Active Directory
 **问：尝试在 Azure 经典门户 \(https://manage.windowsazure.com\) 中访问 Azure AD 时，为何收到“找不到订阅”？**
 
 **答：**若要访问 Azure 经典门户，每个用户都需要 Azure 订阅的权限。 如果订阅为付费型 Office 365 订阅或 Azure AD 订阅，请访问 [http://aka.ms/accessAAD](http://aka.ms/accessAAD)，了解一次性激活步骤。 否则需激活免费型 [Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)或某个付费型订阅。
@@ -69,7 +72,9 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 
 - - -
 
-## <a name="get-started-with-hybrid-azure-ad"></a>混合 Azure AD 入门
+<a id="get-started-with-hybrid-azure-ad" class="xliff"></a>
+
+## 混合 Azure AD 入门
 
 
 **问：如果我已被添加为协作者，该如何离开原来的租户？**
@@ -106,7 +111,9 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 有关详细信息，请参阅[在云中监视本地标识基础结构和同步服务](active-directory-aadconnect-health.md)。  
 
 - - -
-## <a name="password-management"></a>密码管理
+<a id="password-management" class="xliff"></a>
+
+## 密码管理
 **问：是否可以使用 Azure AD 密码写回但不使用密码同步？（在这种情况下，是否可以结合密码写回使用 Azure AD 自助服务密码重置 (SSPR)，而不将密码存储在云中？）**
 
 **答：**无需将 Active Directory 密码同步到 Azure AD 即可启用写回。 在联合环境中，Azure AD 单一登录 (SSO) 依赖本地目录对用户进行身份验证。 在这种情况下，并不需要在 Azure AD 中跟踪本地密码。
@@ -139,7 +146,9 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 
 
 - - -
-## <a name="security"></a>安全
+<a id="security" class="xliff"></a>
+
+## 安全
 **问：帐户在经过特定次数的失败尝试后被锁定还是使用了更复杂的策略？**</br>
 我们使用更复杂的策略来锁定帐户。  这基于请求的 IP 和输入的密码。 锁定的持续时间也会根据存在攻击的可能性而延长。  
 
@@ -149,7 +158,9 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 **问：B2C 租户中就会阻止来自可疑来源（僵尸网络、Tor 终结点）的登录请求还是需要使用基本或高级版租户才能阻止？**</br>
 我们有一个网关，它会筛选请求并针对僵尸网络提供一定的防护，它适用于所有 B2C 租户。
 
-## <a name="application-access"></a>应用程序访问
+<a id="application-access" class="xliff"></a>
+
+## 应用程序访问
 **问：在哪里可以找到与 Azure AD 预先集成的应用程序及其功能的列表？**
 
 **答：**Azure AD 中包含 Microsoft、应用程序服务提供商和合作伙伴提供的 2600 多个预先集成的应用程序。 所有预先集成的应用程序都支持单一登录 (SSO)。 SSO 允许用户使用组织凭据来访问应用。 某些应用程序还支持自动预配和自动取消预配。
