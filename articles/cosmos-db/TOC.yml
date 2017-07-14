@@ -2,323 +2,327 @@
   href: index.yml
 - name: 概述
   items:
-  - name: 关于 Azure Cosmos DB
-    href: introduction.md
-  - name: 欢迎 DocumentDB 客户
-    href: https://azure.microsoft.com/blog/dear-documentdb-customers-welcome-to-azure-cosmos-db/
+    - name: 关于 Azure Cosmos DB
+      href: introduction.md
+    - name: 欢迎 DocumentDB 客户
+      href: >-
+        https://azure.microsoft.com/blog/dear-documentdb-customers-welcome-to-azure-cosmos-db/
 - name: 快速入门
   expanded: true
   items:
-  - name: DocumentDB
-    items:
-    - name: .NET
-      href: create-documentdb-dotnet.md
-    - name: Java
-      href: create-documentdb-java.md
-    - name: Node.js
-      href: create-documentdb-nodejs.md
-    - name: Python
-      href: create-documentdb-python.md
-    - name: Xamarin
-      href: create-documentdb-xamarin-dotnet.md
-  - name: MongoDB
-    items:
-    - name: Node.js
-      href: create-mongodb-nodejs.md
-    - name: .NET
-      href: create-mongodb-dotnet.md
-    - name: Java
-      href: create-mongodb-java.md
-    - name: Golang
-      href: create-mongodb-golang.md
-  - name: 图形
-    items:
-    - name: .NET
-      href: create-graph-dotnet.md
-    - name: Gremlin 控制台
-      href: create-graph-gremlin-console.md
-    - name: Java
-      href: create-graph-java.md
-    - name: Node.js
-      href: create-graph-nodejs.md
-  - name: 表
-    items:
-    - name: .NET
-      href: create-table-dotnet.md
+    - name: DocumentDB
+      items:
+        - name: .NET
+          href: create-documentdb-dotnet.md
+        - name: Java
+          href: create-documentdb-java.md
+        - name: Node.js
+          href: create-documentdb-nodejs.md
+        - name: Python
+          href: create-documentdb-python.md
+        - name: Xamarin
+          href: create-documentdb-xamarin-dotnet.md
+    - name: MongoDB
+      items:
+        - name: Node.js
+          href: create-mongodb-nodejs.md
+        - name: .NET
+          href: create-mongodb-dotnet.md
+        - name: Java
+          href: create-mongodb-java.md
+        - name: Golang
+          href: create-mongodb-golang.md
+    - name: 图形
+      items:
+        - name: .NET
+          href: create-graph-dotnet.md
+        - name: Gremlin 控制台
+          href: create-graph-gremlin-console.md
+        - name: Java
+          href: create-graph-java.md
+        - name: Node.js
+          href: create-graph-nodejs.md
+    - name: 表
+      items:
+        - name: .NET
+          href: create-table-dotnet.md
 - name: 教程
   items:
-  - name: 1 - 创建
-    items:
-    - name: DocumentDB
-      href: tutorial-develop-documentdb-dotnet.md
-    - name: MongoDB
-      href: tutorial-develop-mongodb.md
-    - name: 表
-      href: tutorial-develop-table-dotnet.md
-    - name: 图形
-      href: tutorial-develop-graph-dotnet.md
-  - name: 2 - 导入
-    items:
-    - name: DocumentDB
-      href: import-data.md
-    - name: MongoDB
-      href: mongodb-migrate.md
-  - name: 3 - 查询
-    items:
-    - name: DocumentDB
-      href: tutorial-query-documentdb.md
-    - name: MongoDB
-      href: tutorial-query-mongodb.md
-    - name: 表
-      href: tutorial-query-table.md
-    - name: 图形
-      href: tutorial-query-graph.md
-  - name: 4 - 全局分布
-    items:
-    - name: DocumentDB
-      href: tutorial-global-distribution-documentdb.md
-    - name: MongoDB
-      href: tutorial-global-distribution-mongodb.md
-    - name: 表
-      href: tutorial-global-distribution-table.md
-    - name: 图形
-      href: tutorial-global-distribution-graph.md
-  - name: 5 - 本地开发
-    items:
-    - name: 使用模拟器
-      href: local-emulator.md
-    - name: 导出证书
-      href: local-emulator-export-ssl-certificates.md
+    - name: 1 - 创建
+      items:
+        - name: DocumentDB
+          href: tutorial-develop-documentdb-dotnet.md
+        - name: MongoDB
+          href: tutorial-develop-mongodb.md
+        - name: 表
+          href: tutorial-develop-table-dotnet.md
+        - name: 图形
+          href: tutorial-develop-graph-dotnet.md
+    - name: 2 - 导入
+      items:
+        - name: DocumentDB
+          href: import-data.md
+        - name: MongoDB
+          href: mongodb-migrate.md
+    - name: 3 - 查询
+      items:
+        - name: DocumentDB
+          href: tutorial-query-documentdb.md
+        - name: MongoDB
+          href: tutorial-query-mongodb.md
+        - name: 表
+          href: tutorial-query-table.md
+        - name: 图形
+          href: tutorial-query-graph.md
+    - name: 4 - 全局分布
+      items:
+        - name: DocumentDB
+          href: tutorial-global-distribution-documentdb.md
+        - name: MongoDB
+          href: tutorial-global-distribution-mongodb.md
+        - name: 表
+          href: tutorial-global-distribution-table.md
+        - name: 图形
+          href: tutorial-global-distribution-graph.md
+    - name: 5 - 本地开发
+      items:
+        - name: 使用模拟器
+          href: local-emulator.md
+        - name: 导出证书
+          href: local-emulator-export-ssl-certificates.md
 - name: 示例
   items:
-  - name: Azure CLI 2.0
-    href: cli-samples.md
-  - name: Azure PowerShell
-    href: powershell-samples.md
+    - name: Azure CLI 2.0
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: 概念
   items:
-  - name: 全局分发
-    href: distribute-data-globally.md
-  - name: 分区
-    href: partition-data.md
-  - name: 一致性
-    href: consistency-levels.md
-  - name: 吞吐量
-    href: request-units.md
-    items:
-    - name: 每分钟请求单位数
-      href: request-units-per-minute.md
-  - name: 多模型 API
-    items:
-    - name: DocumentDB
-      href: documentdb-introduction.md
-    - name: MongoDB
-      href: mongodb-introduction.md
-    - name: 表
-      href: table-introduction.md
-    - name: 图形
-      href: graph-introduction.md
-  - name: 安全
-    href: database-security.md
-  - name: TCO
-    href: https://aka.ms/documentdb-tco-paper
-  - name: 用例
-    href: use-cases.md
-    items:
-      - name: 社交媒体应用
-        href: social-media-apps.md
+    - name: 全局分发
+      href: distribute-data-globally.md
+    - name: 分区
+      href: partition-data.md
+    - name: 一致性
+      href: consistency-levels.md
+    - name: 吞吐量
+      href: request-units.md
+      items:
+        - name: 每分钟请求单位数
+          href: request-units-per-minute.md
+    - name: 多模型 API
+      items:
+        - name: DocumentDB
+          href: documentdb-introduction.md
+        - name: MongoDB
+          href: mongodb-introduction.md
+        - name: 表
+          href: table-introduction.md
+        - name: 图形
+          href: graph-introduction.md
+    - name: 安全
+      href: database-security.md
+    - name: TCO
+      href: 'https://aka.ms/documentdb-tco-paper'
+    - name: 用例
+      href: use-cases.md
+      items:
+        - name: 社交媒体应用
+          href: social-media-apps.md
 - name: 操作方法指南
   items:
-  - name: 开发
-    items:
-    - name: DocumentDB API
+    - name: 开发
       items:
-      - name: 资源
-        href: documentdb-resources.md
-      - name: SQL 查询
-        href: documentdb-sql-query.md
-      - name: SQL 演练
-        href: https://www.documentdb.com/sql/demo
-      - name: 分区
-        href: documentdb-partition-data.md
-      - name: 存储过程、触发器和 UDF
-        href: programming.md
-      - name: 性能测试
-        href: performance-testing.md
-      - name: 性能提示
-        href: performance-tips.md
-      - name: 多主设置
-        href: multi-region-writers.md
-      - name: 日期时间
-        href: working-with-dates.md
-      - name: 文档数据建模
- 
-        href: modeling-data.md 
-      - name: 教程
-        items:
-        - name: 编写第一个应用
+        - name: DocumentDB API
           items:
-          - name: .NET
-            href: documentdb-get-started.md
-          - name: .NET Core
-            href: documentdb-dotnetcore-get-started.md
-          - name: Java
-            href: documentdb-java-get-started.md
-          - name: Node.js
-            href: documentdb-nodejs-get-started.md
-          - name: C++
-            href: documentdb-cpp-get-started.md
-        - name: 构建 Web 应用
+            - name: 资源
+              href: documentdb-resources.md
+            - name: SQL 查询
+              href: documentdb-sql-query.md
+            - name: SQL 演练
+              href: 'https://www.documentdb.com/sql/demo'
+            - name: 分区
+              href: documentdb-partition-data.md
+            - name: 存储过程、触发器和 UDF
+              href: programming.md
+            - name: 性能测试
+              href: performance-testing.md
+            - name: 性能提示
+              href: performance-tips.md
+            - name: 多主设置
+              href: multi-region-writers.md
+            - name: 日期时间
+              href: working-with-dates.md
+            - name: 文档数据建模
+              href: modeling-data.md
+            - name: 教程
+              items:
+                - name: 编写第一个应用
+                  items:
+                    - name: .NET
+                      href: documentdb-get-started.md
+                    - name: .NET Core
+                      href: documentdb-dotnetcore-get-started.md
+                    - name: Java
+                      href: documentdb-java-get-started.md
+                    - name: Node.js
+                      href: documentdb-nodejs-get-started.md
+                    - name: C++
+                      href: documentdb-cpp-get-started.md
+                - name: 构建 Web 应用
+                  items:
+                    - name: .NET
+                      href: documentdb-dotnet-application.md
+                    - name: Xamarin
+                      href: mobile-apps-with-xamarin.md
+                    - name: Node.js
+                      href: documentdb-nodejs-application.md
+                    - name: Java
+                      href: documentdb-java-application.md
+                    - name: Python Flask
+                      href: documentdb-python-application.md
+            - name: 示例
+              items:
+                - name: .NET 示例
+                  href: documentdb-dotnet-samples.md
+                - name: Node.js 示例
+                  href: documentdb-nodejs-samples.md
+                - name: Python 示例
+                  href: documentdb-python-samples.md
+            - name: 资源
+              items:
+                - name: SQL 语法备忘单
+                  href: documentdb-sql-query-cheat-sheet.md
+                - name: 堆栈溢出
+                  href: 'http://stackoverflow.com/questions/tagged/azure-cosmosdb'
+                - name: 视频
+                  href: >-
+                    https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db
+                - name: 服务更新
+                  href: 'https://azure.microsoft.com/updates/?product=cosmos-db'
+                - name: 社区门户
+                  href: community.md
+                - name: 与架构无关的索引文件
+                  href: 'http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf'
+                - name: 停用 S1、S2、S3
+                  href: performance-levels.md
+        - name: MongoDB API
           items:
-          - name: .NET
-            href: documentdb-dotnet-application.md
-          - name: Xamarin
-            href: mobile-apps-with-xamarin.md
-          - name: Node.js
-            href: documentdb-nodejs-application.md
-          - name: Java
-            href: documentdb-java-application.md
-          - name: Python Flask
-            href: documentdb-python-application.md
-      - name: 示例
-        items:
-        - name: .NET 示例
-          href: documentdb-dotnet-samples.md
-        - name: Node.js 示例
-          href: documentdb-nodejs-samples.md
-        - name: Python 示例
-          href: documentdb-python-samples.md
-      - name: 资源
-        items:
-        - name: SQL 语法备忘单
-          href: documentdb-sql-query-cheat-sheet.md
-        - name: 堆栈溢出
-          href: http://stackoverflow.com/questions/tagged/azure-cosmosdb
-        - name: 视频
-          href: https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db
-        - name: 服务更新
-          href: https://azure.microsoft.com/updates/?product=cosmos-db
-        - name: 社区门户
-          href: community.md
-        - name: 与架构无关的索引文件
-          href: http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf
-        - name: 停用 S1、S2、S3
-          href: performance-levels.md
-    - name: MongoDB API
+            - name: 连接到 MongoDB 帐户
+              href: connect-mongodb-account.md
+            - name: 使用 MongoChef
+              href: mongodb-mongochef.md
+            - name: 使用 Robomongo
+              href: mongodb-robomongo.md
+            - name: 教程
+              items:
+                - name: Node.js 控制台应用
+                  href: mongodb-samples.md
+        - name: Graph API
+          items:
+            - name: Gremlin 支持
+              href: gremlin-support.md
+        - name: 表 API
+          items:
+            - name: 表存储
+              href: >-
+                https://docs.microsoft.com/rest/api/storageservices/fileservices/Table-Service-Concepts
+        - name: 更改源
+          href: change-feed.md
+        - name: 地理空间
+          href: geospatial.md
+        - name: 索引
+          href: indexing-policies.md
+    - name: 管理
       items:
-      - name: 连接到 MongoDB 帐户
-        href: connect-mongodb-account.md
-      - name: 使用 MongoChef
-        href: mongodb-mongochef.md
-      - name: 使用 Robomongo
-        href: mongodb-robomongo.md
-      - name: 教程
-        items:
-        - name: Node.js 控制台应用
-          href: mongodb-samples.md
-    - name: Graph API
+        - name: 以经济高效的方式读取和写入
+          href: key-value-store-cost.md
+        - name: 使数据自动过期
+          href: time-to-live.md
+        - name: 备份和还原
+          href: online-backup-and-restore.md
+        - name: 区域性故障转移
+          href: regional-failover.md
+        - name: 设置吞吐量
+          href: set-throughput.md
+        - name: 监视 SLA
+          href: monitor-accounts.md
+        - name: 管理密钥和一致性
+          href: manage-account.md
+        - name: “安全”
+          items:
+            - name: 静态加密
+              href: database-encryption-at-rest.md
+            - name: 防火墙支持
+              href: firewall-support.md
+            - name: 确保对数据的访问安全
+              href: secure-access-to-data.md
+    - name: 集成
       items:
-      - name: Gremlin 支持
-        href: gremlin-support.md
-    - name: 表 API
-      items:
-      - name: 表存储
-        href: https://docs.microsoft.com/rest/api/storageservices/fileservices/Table-Service-Concepts
-    - name: 更改源
-      href: change-feed.md
-    - name: 地理空间
-      href: geospatial.md
-    - name: 索引
-      href: indexing-policies.md
-  - name: 管理
-    items:
-    - name: 以经济高效的方式读取和写入
-      href: key-value-store-cost.md
-    - name: 使数据自动过期
-      href: time-to-live.md
-    - name: 备份和还原
-      href: online-backup-and-restore.md
-    - name: 区域性故障转移
-      href: regional-failover.md
-    - name: 设置吞吐量
-      href: set-throughput.md
-    - name: 监视 SLA
-      href: monitor-accounts.md
-    - name: 管理密钥和一致性
-      href: manage-account.md
-    - name: “安全”
-      items:
-      - name: 静态加密
-        href: database-encryption-at-rest.md
-      - name: 防火墙支持
-        href: firewall-support.md
-      - name: 确保对数据的访问安全
-        href: secure-access-to-data.md
-  - name: 集成
-    items:
-    - name: 连接到 Spark
-      href: spark-connector.md
-    - name: 连接到 Spark GraphX
-      href: spark-connector-graph.md      
-    - name: 使用 Azure 应用服务部署网站
-      href: create-website.md
-    - name: 使用逻辑应用进行应用程序日志记录
-      href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md
-    - name: 绑定到 Azure Functions
-      href: ../azure-functions/functions-bindings-documentdb.md
-    - name: 使用 Hadoop 分析数据
-      href: run-hadoop-with-hdinsight.md
-    - name: 与 Azure 搜索集成
-      href: ../search/search-howto-index-documentdb.md
-    - name: 使用 Azure 数据工厂移动数据
-      href: ../data-factory/data-factory-azure-documentdb-connector.md
-    - name: 使用 Azure 流分析分析实时数据
-      href: ../stream-analytics/stream-analytics-define-outputs.md#documentdb
-    - name: 使用逻辑应用获取更改的 HL7 FHIR 记录
-      href: change-feed-hl7-fhir-logic-apps.md
-    - name: 实时处理传感器数据
-      href: ../hdinsight/hdinsight-storm-iot-eventhub-documentdb.md
-    - name: 使用 Power BI 直观显示数据
-      href: powerbi-visualize.md
-    - name: 将 ODBC 驱动程序用于数据可视化
-      href: odbc-driver.md
+        - name: 连接到 Spark
+          href: spark-connector.md
+        - name: 连接到 Spark GraphX
+          href: spark-connector-graph.md
+        - name: 使用 Azure 应用服务部署网站
+          href: create-website.md
+        - name: 使用逻辑应用进行应用程序日志记录
+          href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md
+        - name: 绑定到 Azure Functions
+          href: ../azure-functions/functions-bindings-documentdb.md
+        - name: 使用 Hadoop 分析数据
+          href: run-hadoop-with-hdinsight.md
+        - name: 与 Azure 搜索集成
+          href: ../search/search-howto-index-documentdb.md
+        - name: 使用 Azure 数据工厂移动数据
+          href: ../data-factory/data-factory-azure-documentdb-connector.md
+        - name: 使用 Azure 流分析分析实时数据
+          href: '../stream-analytics/stream-analytics-define-outputs.md#documentdb'
+        - name: 使用逻辑应用获取更改的 HL7 FHIR 记录
+          href: change-feed-hl7-fhir-logic-apps.md
+        - name: 实时处理传感器数据
+          href: ../hdinsight/hdinsight-storm-iot-eventhub-documentdb.md
+        - name: 使用 Power BI 直观显示数据
+          href: powerbi-visualize.md
+        - name: 将 ODBC 驱动程序用于数据可视化
+          href: odbc-driver.md
 - name: 引用
   items:
-  - name: DocumentDB API
-    items:
-    - name: Java
-      href: documentdb-sdk-java.md
-    - name: .NET
-      href: documentdb-sdk-dotnet.md
-    - name: .NET Core
-      href: documentdb-sdk-dotnet-core.md
-    - name: Node.js
-      href: documentdb-sdk-node.md
-    - name: Python
-      href: documentdb-sdk-python.md
-    - name: REST
-      href: /rest/api/documentdb/
-    - name: REST 资源提供程序
-      href: /rest/api/documentdbresourceprovider/
-    - name: SQL
-      href: documentdb-sql-query-reference.md
-  - name: 表 API
-    items:
-    - name: .NET
-      href: table-sdk-dotnet.md
-  - name: 图形 API
-    items:
-    - name: .NET
-      href: graph-sdk-dotnet.md
+    - name: DocumentDB API
+      items:
+        - name: Java
+          href: documentdb-sdk-java.md
+        - name: .NET
+          href: documentdb-sdk-dotnet.md
+        - name: .NET 更改源
+          href: documentdb-sdk-dotnet-changefeed.md
+        - name: .NET Core
+          href: documentdb-sdk-dotnet-core.md
+        - name: Node.js
+          href: documentdb-sdk-node.md
+        - name: Python
+          href: documentdb-sdk-python.md
+        - name: REST
+          href: /rest/api/documentdb/
+        - name: REST 资源提供程序
+          href: /rest/api/documentdbresourceprovider/
+        - name: SQL
+          href: documentdb-sql-query-reference.md
+    - name: 表 API
+      items:
+        - name: .NET
+          href: table-sdk-dotnet.md
+    - name: 图形 API
+      items:
+        - name: .NET
+          href: graph-sdk-dotnet.md
 - name: 资源
   items:
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/cosmos-db/
-  - name: 常见问题
-    href: faq.md
-  - name: 堆栈溢出
-    href: http://stackoverflow.com/questions/tagged/azure-cosmosdb
-  - name: 借助棒球解释数据一致性
-    href: http://research.microsoft.com/apps/pubs/default.aspx?id=206913
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cosmos-db/'
+    - name: 常见问题
+      href: faq.md
+    - name: 堆栈溢出
+      href: 'http://stackoverflow.com/questions/tagged/azure-cosmosdb'
+    - name: 借助棒球解释数据一致性
+      href: 'http://research.microsoft.com/apps/pubs/default.aspx?id=206913'

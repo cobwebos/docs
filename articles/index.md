@@ -3,11 +3,11 @@ layout: HubPage
 hide_bc: true
 title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 235bc72f9e72ba44c872bc3a3f8dc2abef7454c5
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 39252624b3ae254721ad514f666ea8498d5f37bc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/13/2017
 
 ---
 <div id="main" class="v2">
@@ -61,7 +61,7 @@ ms.lasthandoff: 06/28/2017
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <span class="likeAnH3">适用于 Azure 的免费 PluralSight 视频培训</span>
+                                    <span class="likeAnH3">适用于 Azure 的免费 Pluralsight 视频培训</span>
                                 </div>
                             </div>
                         </div>
@@ -154,7 +154,7 @@ ms.lasthandoff: 06/28/2017
                                         <div class="card">
                                             <div class="cardText">
                                                 <h3>管理数据和 AI</h3>
-                                                <h4>关系数据库</h4>
+                                                <h4>关系型数据库服务</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/sql-database/">SQL 数据库即服务</a></li>
                                                     <li><a class="barLink" href="/azure/postgresql/">PostgreSQL 数据库即服务</a></li>
