@@ -22,9 +22,8 @@ ms.lasthandoff: 11/17/2016
 
 
 ---
-<a id="reliable-services-notifications" class="xliff"></a>
-
 # Reliable Services 通知
+<a id="reliable-services-notifications" class="xliff"></a>
 通知可让客户端跟踪对它们感兴趣的对象所进行的更改。 两种类型的对象支持通知：*可靠状态管理器*和*可靠字典*。
 
 使用通知的常见原因如下：
@@ -34,9 +33,8 @@ ms.lasthandoff: 11/17/2016
 
 通知会在应用操作的过程中触发。 因此，应该尽快处理通知，且同步事件不应包含任何耗费资源的操作。
 
-<a id="reliable-state-manager-notifications" class="xliff"></a>
-
 ## 可靠状态管理器通知
+<a id="reliable-state-manager-notifications" class="xliff"></a>
 可靠状态管理器为以下事件提供通知：
 
 * 事务
@@ -111,9 +109,8 @@ public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChange
 }
 ```
 
-<a id="reliable-dictionary-notifications" class="xliff"></a>
-
 ## 可靠字典通知
+<a id="reliable-dictionary-notifications" class="xliff"></a>
 可靠字典为以下事件提供通知：
 
 * 重新生成：在 **ReliableDictionary** 从过去恢复或复制的本地状态或备份恢复其状态后调用。
@@ -210,9 +207,8 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 }
 ```
 
-<a id="recommendations" class="xliff"></a>
-
 ## 建议
+<a id="recommendations" class="xliff"></a>
 * 尽快*完成*通知事件。
 * *不要*执行任何耗费资源的操作（例如 I/O 操作）作为同步事件的一部分。
 * 处理事件之前，先*检查*操作类型。 未来可能会添加新的操作类型。
@@ -225,9 +221,8 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 * 对于包含多个操作的事务，操作将按用户在主要副本上收到它们的顺序应用。
 * 在处理错误进度的过程中，某些操作可能会恢复。 通知会针对这类恢复操作加以触发，将副本状态回滚到稳定的时间点。 恢复通知的一个重要区别，是具有重复键的事件会聚合在一起。 例如，如果恢复事务 T1，你将看到一条针对 Delete(X) 的通知。
 
-<a id="next-steps" class="xliff"></a>
-
 ## 后续步骤
+<a id="next-steps" class="xliff"></a>
 * [Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
 * [Reliable Services 备份和还原（灾难恢复）](service-fabric-reliable-services-backup-restore.md)
