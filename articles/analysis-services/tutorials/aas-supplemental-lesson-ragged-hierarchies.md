@@ -22,8 +22,8 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 05/05/2017
 
 ---
-<a id="supplemental-lesson---ragged-hierarchies" class="xliff"></a>
 # 补充课程 - 不规则层次结构
+<a id="supplemental-lesson---ragged-hierarchies" class="xliff"></a>
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
@@ -35,17 +35,17 @@ ms.lasthandoff: 05/05/2017
   
 本课预计完成时间：**20 分钟**  
   
-<a id="prerequisites" class="xliff"></a>
-## 先决条件  
+## 先决条件
+<a id="prerequisites" class="xliff"></a>  
 本补充课程主题是表格建模教程的一部分。 在执行本补充课程中的任务之前，应当已完成了前面的所有课程，或者具有已完成的“Adventure Works Internet 销售”示例模型项目。 
 
 如果已经将“AW Internet 销售”项目创建为教程的一部分，则模型中尚未包含任何不规则的数据或层次结构。 若要完成本补充课程，必须首先通过添加一些其他表并创建关系、计算列、度量值和新的 Organization 层次结构来制造问题。 该部分需要花费大约 15 分钟。 然后，你需要花费几分钟时间来解决此问题。  
 
-<a id="add-tables-and-objects" class="xliff"></a>
 ## 添加表和对象
+<a id="add-tables-and-objects" class="xliff"></a>
   
-<a id="to-add-new-tables-to-your-model" class="xliff"></a>
 ### 向模型中添加新表
+<a id="to-add-new-tables-to-your-model" class="xliff"></a>
   
 1.  在表格模型资源管理器中，展开“数据源”，然后右键单击你的连接，再单击“导入新表”。
   
@@ -108,7 +108,7 @@ ms.lasthandoff: 05/05/2017
     ResellerTotalSales:=SUM([SalesAmount])
     ```
 
-8.  使用“在 Excel 中分析”打开 Excel 并自动创建一个数据透视表。[](../tutorials/aas-lesson-12-analyze-in-excel.md)
+8.  使用[“在 Excel 中分析”](../tutorials/aas-lesson-12-analyze-in-excel.md)打开 Excel 并自动创建一个数据透视表。
 
 9.  在“数据透视表字段”中，将“DimEmployee”表中的“Organization”层次结构添加到“行”，将“FactResellerSales”表中的“ResellerTotalSales”度量值添加到“值”。
 
@@ -116,8 +116,8 @@ ms.lasthandoff: 05/05/2017
 
     如数据透视表中所示，该层次结构显示了不规则的行。 许多行中显示了空白成员。
 
-<a id="to-fix-the-ragged-hierarchy-by-setting-the-hide-members-property" class="xliff"></a>
 ## 通过设置“隐藏成员”属性修复不规则层次结构
+<a id="to-fix-the-ragged-hierarchy-by-setting-the-hide-members-property" class="xliff"></a>
 
 1.  在“表格模型资源管理器”中，展开“表” > “DimEmployee” > “层次结构” > “Organization”。
 
@@ -131,8 +131,8 @@ ms.lasthandoff: 05/05/2017
 
     现在看起来好多了！
 
-<a id="see-also" class="xliff"></a>
-## 另请参阅   
+## 另请参阅
+<a id="see-also" class="xliff"></a>   
 [第 9 课：创建层次结构](../tutorials/aas-lesson-9-create-hierarchies.md)  
 [补充课程 - 动态安全性](../tutorials/aas-supplemental-lesson-dynamic-security.md)  
 [补充课程 - 详细信息行](../tutorials/aas-supplemental-lesson-detail-rows.md)  
