@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/21/2017
+ms.date: 07/09/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
-ms.openlocfilehash: b4d5ab66db64a50d1b87edd4bf445e49004e67b4
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: 8f83f5d13cb61709653f255c756dc78453073626
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/22/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 06/22/2017
 
 ![“更新管理”符号](./media/oms-solution-update-management/update-management-symbol.png)
 
-OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新。  你可以快速评估所有代理计算机上可用更新的状态并启动为服务器安装所需更新的过程。
+可以使用 OMS 中的更新管理解决方案，为部署在 Azure、本地环境或其他云提供程序中的 Windows 和 Linux 计算机管理操作系统安全更新。  可以快速评估所有代理计算机上可用更新的状态，并管理为服务器安装所需更新的过程。
 
 
 ## 解决方案概述
@@ -39,7 +39,7 @@ OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新
 * 自动化混合 Runbook 辅助角色
 * 适用于 Windows 计算机的 Microsoft 更新或 Windows Server 更新服务
 
-下图是针对行为和数据流的概念性视图，说明了解决方案如何评估更新并将其应用到工作区中所有连接的 Windows Server 和 Linux 计算机。    
+下图是针对行为和数据流的概念性视图，说明了解决方案如何评估安全更新并将其应用到工作区中所有连接的 Windows Server 和 Linux 计算机。    
 
 #### Windows Server
 <a id="windows-server" class="xliff"></a>

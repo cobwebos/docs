@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/30/2017
+ms.date: 07/04/2017
 ms.author: kaanan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 7fbdecd6fcaa784c5cdeebe46bf1991bfe730017
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 48c7a83515ec43f63fb7ff4e6b2d6b4edf93f7b4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
+ms.lasthandoff: 07/13/2017
 
 ---
 # ExpressRoute 合作伙伴和对等位置
@@ -92,7 +92,7 @@ ms.lasthandoff: 07/04/2017
 | **Mumbai** |Airtel+、Tata Communications |
 | **纽约** |Coresite、Equinix、Megaport、Zayo Group |
 | **Newport(Wales)** |Next Generation Data |
-| **大阪** |Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、NTT SmartConnect+、Softbank |
+| **大阪** |Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、NTT SmartConnect、Softbank |
 | **巴黎** |Colt、Interxion、Equinix、Orange+ |
 | **魁北克市** | Megaport |
 | **圣安东尼奥** |Megaport |
@@ -159,7 +159,7 @@ ms.lasthandoff: 07/04/2017
 | **位置** | **Exchange** | **连接提供商** |
 | --- | --- | --- |
 | **阿姆斯特丹** | Equinix、Telecity | Eurofiber、Fastweb S.p.A、Nianet |
-| **芝加哥** | Equinix | Windstream |
+| **芝加哥** | Equinix | Lightower、Windstream |
 | **达拉斯** | Equinix、Megaport | C3ntro Telecom、Cox Business、Data Foundry、Transtelco |
 | **法兰克福** | Telecity | Nianet、QSC AG |
 | **香港** | Equinix | Macroview Telecom |
@@ -173,7 +173,7 @@ ms.lasthandoff: 07/04/2017
 | **新加坡** |Equinix |1CLOUDSTAR、Epsilon Telecommunications Limited、LGA Telecom、United Information Highway (UIH) |
 | **Slough** | Equinix | HSO|
 | **悉尼** | Megaport | Macquarie Telecom Group|
-| **东京** | Equinix | ARTERIA Networks Corporation |
+| **东京** | Equinix | ARTERIA Networks Corporation、BroadBand Tower, Inc. |
 | **多伦多** | Equinix | Airgate Technologies Inc、Cogeco Peer 1、Rogers、Thinktel、Zirro|
 | **华盛顿特区** |Equinix | Altice Business、Gtt Communications Inc、Epsilon、Lightower、Masergy、Windstream |
 

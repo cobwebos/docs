@@ -14,29 +14,32 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 07/08/2017
 ms.author: rachelap
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 46022530c69b292878a4500c0e325bda878e6188
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: 492c916a493bb8d5c5415fc517506e5c1ccffc56
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 07/10/2017
 
 ---
-# <a name="store-unstructured-data-using-azure-functions-and-cosmos-db"></a>使用 Azure Functions 和 Cosmos DB 存储非结构化数据
+# 使用 Azure Functions 和 Cosmos DB 存储非结构化数据
+<a id="store-unstructured-data-using-azure-functions-and-cosmos-db" class="xliff"></a>
 
 Azure Cosmos DB 是存储非结构化数据和 JSON 数据的良好方式。 将 Cosmos DB 与 Azure Functions 结合使用，可以快速、轻松地存储数据，并且所需的代码也比在关系数据库中存储数据时所需的代码少得多。
 
 本教程将逐步讲解如何使用 Azure 门户创建在 Cosmos DB 文档中存储非结构化数据的 Azure 函数。 
 
-## <a name="prerequisites"></a>先决条件
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
-## <a name="create-a-function"></a>创建函数
+## 创建函数
+<a id="create-a-function" class="xliff"></a>
 
 新建名为 `MyTaskList` 的 C# 泛型 WebHook。
 
@@ -45,7 +48,8 @@ Azure Cosmos DB 是存储非结构化数据和 JSON 数据的良好方式。 将
 
 ![添加新的 C# 泛型 WebHook Function App](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-create-new-functionapp.png)
 
-## <a name="add-an-output-binding"></a>添加输出绑定
+## 添加输出绑定
+<a id="add-an-output-binding" class="xliff"></a>
 
 一个 Azure 函数可以有一个触发器和任意数量的输入或输出绑定。 在此示例中，我们将使用 HTTP 请求触发器和 Cosmos DB 文档作为输出绑定。
 
@@ -86,7 +90,8 @@ Azure Cosmos DB 是存储非结构化数据和 JSON 数据的良好方式。 将
 1. 单击“确定”按钮。 当 Azure 创建资源时，你可能需要等待几分钟。
 1. 单击“保存”按钮  。
 
-## <a name="update-the-function-code"></a>更新函数代码
+## 更新函数代码
+<a id="update-the-function-code" class="xliff"></a>
 
 将函数的模板代码替换为以下代码：
 
@@ -127,7 +132,8 @@ public static HttpResponseMessage Run(HttpRequestMessage req, out object taskDoc
 
 此代码示例读取 HTTP 请求查询字符串，并将其分配为 `taskDocument` 对象的成员。 `taskDocument` 对象自动将数据保存在 Cosmos DB 数据库中，并且甚至在首次使用时会创建该数据库。
 
-## <a name="test-the-function-and-database"></a>测试函数和数据库
+## 测试函数和数据库
+<a id="test-the-function-and-database" class="xliff"></a>
 
 1. 在函数选项卡中，单击门户右侧的“测试”链接并输入以下 HTTP 查询字符串：
 
@@ -153,15 +159,15 @@ public static HttpResponseMessage Run(HttpRequestMessage req, out object taskDoc
 
 如果数据在文档中，则表示已成功创建一个在 Cosmos DB 数据库中存储非结构化数据的 Azure 函数。
 
-## <a name="clean-up-resources"></a>清理资源
+## 清理资源
+<a id="clean-up-resources" class="xliff"></a>
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>后续步骤
-
-有关 Azure Functions 的详细信息，请参阅以下主题：
-
-[!INCLUDE [Getting help note](../../includes/functions-get-help.md)]
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 [!INCLUDE [functions-quickstart-next-steps](../../includes/functions-quickstart-next-steps.md)]
+
+若要详细了解如何绑定到 Cosmos DB 数据库，请参阅 [Azure Functions Cosmos DB 绑定](functions-bindings-documentdb.md)。
 

@@ -1,6 +1,6 @@
 ---
-title: "使用 Java 连接 Azure SQL 数据库 | Microsoft Docs"
-description: "演示了一个可以用来连接到 Azure SQL 数据库并进行查询的 Java 代码示例。"
+title: "使用 Java 查询 Azure SQL 数据库 | Microsoft Docs"
+description: "本主题介绍如何使用 Java 创建连接到 Azure SQL 数据库的程序并使用 Transact-SQL 语句对其进行查询。"
 services: sql-database
 documentationcenter: 
 author: ajlam
@@ -13,297 +13,157 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: hero-article
-ms.date: 05/23/2017
+ms.date: 07/10/2017
 ms.author: andrela
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 63ab7345b70d456d9d1ad23255d9ca7e777e161d
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: f07f49e64f107ec063bfb755dbb89644f3d00576
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
-# <a name="azure-sql-database-use-java-to-connect-and-query-data"></a>Azure SQL 数据库：使用 Java 进行连接和数据查询
+# 使用 Java 查询 Azure SQL 数据库
+<a id="use-java-to-query-an-azure-sql-database" class="xliff"></a>
 
-本快速入门演示了如何通过 Mac OS、Ubuntu Linux 和 Windows 平台使用 [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) 连接到 Azure SQL 数据库，然后使用 Transact-SQL 语句在数据库中查询、插入、更新和删除数据。
+本快速入门演示了如何使用 [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) 连接到 Azure SQL 数据库，然后使用 Transact-SQL 语句查询数据。
 
-## <a name="prerequisites"></a>先决条件
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
 
-此快速入门使用以下某个快速入门中创建的资源作为其起点：
+若要完成本快速入门教程，请确保符合以下先决条件：
 
-- [创建 DB - 门户](sql-database-get-started-portal.md)
-- [创建 DB - CLI](sql-database-get-started-cli.md)
-- [创建 DB - PowerShell](sql-database-get-started-powershell.md)
+- Azure SQL 数据库。 此快速入门使用以下某个快速入门中创建的资源： 
 
-## <a name="install-java-software"></a>安装 Java 软件
+   - [创建 DB - 门户](sql-database-get-started-portal.md)
+   - [创建 DB - CLI](sql-database-get-started-cli.md)
+   - [创建 DB - PowerShell](sql-database-get-started-powershell.md)
 
-本部分中的步骤假定你熟悉使用 Java 开发，但不熟悉如何使用 Azure SQL 数据库。 如果你不熟悉如何使用 Java 进行开发，请转到[使用 SQL Server 生成应用](https://www.microsoft.com/en-us/sql-server/developer-get-started/)并选择 **Java**，然后选择操作系统。
+- 针对用于本快速入门教程的计算机的公共 IP 地址制定[服务器级防火墙规则](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。
 
-### <a name="mac-os"></a>**Mac OS**
-打开终端并导航到要在其中创建 Java 项目的目录。 输入以下命令安装 **brew** 和 **Maven**： 
+- 已为操作系统安装 Java 和相关软件。
 
-```bash
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew update
-brew install maven
-```
+    - MacOS：安装 Homebrew 和 Java，然后安装 Maven。 请参阅[步骤 1.2 和 1.3](https://www.microsoft.com/sql-server/developer-get-started/java/mac/)。
+    - Ubuntu：安装 Java 开发工具包，然后安装 Maven。 请参阅[步骤 1.2、1.3 和 1.4](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/)。
+    - Windows：安装 Java 开发工具包，然后安装 Maven。 请参阅[步骤 1.2 和 1.3](https://www.microsoft.com/sql-server/developer-get-started/java/windows/)。    
 
-### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
-打开终端并导航到要在其中创建 Java 项目的目录。 输入以下命令安装 **Maven**：
-
-```bash
-sudo apt-get install maven
-```
-
-### <a name="windows"></a>**Windows**
-使用官方安装程序安装 [Maven](https://maven.apache.org/download.cgi)。 使用 Maven 帮助管理依赖项、内部版本、测试和运行 Java 项目。 
-
-## <a name="get-connection-information"></a>获取连接信息
+## SQL Server 连接信息
+<a id="sql-server-connection-information" class="xliff"></a>
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称、数据库名称和登录信息。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 从左侧菜单中选择“SQL 数据库”，然后单击“SQL 数据库”页上的数据库。 
-3. 在数据库的“概览”页上，查看如下图所示的完全限定的服务器名称。 可以将鼠标悬停在服务器名称上以打开“单击以复制”选项。 
+3. 在数据库的“概览”页上，查看如下图所示的完全限定的服务器名称：将鼠标悬停到服务器名称上方即可显示“通过单击进行复制”选项。  
 
    ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. 如果忘了服务器的登录信息，请导航到 SQL 数据库服务器页，以查看服务器管理员名称并重置密码（如果需要）。
-5. 单击“显示数据库连接字符串”。
+4. 如果忘了服务器的登录信息，请导航到 SQL 数据库服务器页，以查看服务器管理员名称。  如有必要，请重置密码。     
 
-6. 查看完整 **JDBC** 连接字符串。
+## 创建 Maven 项目和依赖项
+<a id="create-maven-project-and-dependencies" class="xliff"></a>
+1. 从 Terminal 创建名为 sqltest 的新 Maven 项目。 
 
-    ![JDBC 连接字符串](./media/sql-database-connect-query-jdbc/jdbc-connection-string.png)   
+   ```bash
+   mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=sqltest" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
+   ```
 
-### <a name="create-maven-project"></a>**创建 Maven 项目**
-从终端创建一个新的 Maven 项目。 
-```bash
-mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
-```
+2. 出现提示时输入“Y”。
+3. 将目录更改为 **sqltest**，然后使用喜欢的文本编辑器打开 pom.xml。  使用以下代码，将 **Microsoft JDBC Driver for SQL Server** 添加到项目的依赖项：
 
-将 **Microsoft JDBC Driver for SQL Server** 添加到 ***pom.xml*** 中的依赖项。 
+   ```xml
+   <dependency>
+       <groupId>com.microsoft.sqlserver</groupId>
+       <artifactId>mssql-jdbc</artifactId>
+       <version>6.2.0.jre8</version>
+   </dependency>
+   ```
 
-```xml
-<dependency>
-    <groupId>com.microsoft.sqlserver</groupId>
-    <artifactId>mssql-jdbc</artifactId>
-    <version>6.2.0.jre8</version>
-</dependency>
-```
+4. 另请在 pom.xml 中向项目添加以下属性。  如果没有 properties 节，可以将其添加到 dependencies 后面。
 
-## <a name="select-data"></a>选择数据
+   ```xml
+   <properties>
+       <maven.compiler.source>1.8</maven.compiler.source>
+       <maven.compiler.target>1.8</maven.compiler.target>
+   </properties>
+   ```
 
-通过以下代码将 [connection](https://docs.microsoft.com/sql/connect/jdbc/working-with-a-connection) 类与 [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql) Transact-SQL 语句配合使用来按类别查询前 20 个产品。 将 hostHame、dbName、user 和 password 参数替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。 
+5. 保存并关闭 pom.xml。
 
-```java
-package com.sqldbsamples;
+## 插入用于查询 SQL 数据库的代码
+<a id="insert-code-to-query-sql-database" class="xliff"></a>
 
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.DriverManager;
+1. 此时，你应该在 Maven 项目中有了一个名为 App.java 的文件，其位置为：\sqltest\src\main\java\com\sqlsamples\App.java
 
-public class App {
+2. 打开该文件，将其内容替换为以下代码，为服务器、数据库、用户和密码添加相应的值。
+
+   ```java
+   package com.sqldbsamples;
+
+   import java.sql.Connection;
+   import java.sql.Statement;
+   import java.sql.PreparedStatement;
+   import java.sql.ResultSet;
+   import java.sql.DriverManager;
+
+   public class App {
 
     public static void main(String[] args) {
     
         // Connect to database
-        String hostName = "your_server";
-        String dbName = "your_database";
-        String user = "your_username";
-        String password = "your_password";
-        String url = String.format("jdbc:sqlserver://%s.database.windows.net:1433;database=%s;user=%s;password=%s;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
-        Connection connection = null;
+           String hostName = "your_server.database.windows.net";
+           String dbName = "your_database";
+           String user = "your_username";
+           String password = "your_password";
+           String url = String.format("jdbc:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
+           Connection connection = null;
 
-        try {
-                connection = DriverManager.getConnection(url);
-                String schema = connection.getSchema();
-                System.out.println("Successful connection - Schema: " + schema);
+           try {
+                   connection = DriverManager.getConnection(url);
+                   String schema = connection.getSchema();
+                   System.out.println("Successful connection - Schema: " + schema);
 
-                System.out.println("Query data example:");
-                System.out.println("=========================================");
+                   System.out.println("Query data example:");
+                   System.out.println("=========================================");
 
-                // Create and execute a SELECT SQL statement.
-                String selectSql = "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName " 
-                    + "FROM [SalesLT].[ProductCategory] pc "  
-                    + "JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid";
+                   // Create and execute a SELECT SQL statement.
+                   String selectSql = "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName " 
+                       + "FROM [SalesLT].[ProductCategory] pc "  
+                       + "JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid";
                 
-                try (Statement statement = connection.createStatement();
-                    ResultSet resultSet = statement.executeQuery(selectSql)) {
+                   try (Statement statement = connection.createStatement();
+                       ResultSet resultSet = statement.executeQuery(selectSql)) {
 
-                        // Print results from select statement
-                        System.out.println("Top 20 categories:");
-                        while (resultSet.next())
-                        {
-                            System.out.println(resultSet.getString(1) + " "
-                                + resultSet.getString(2));
-                        }
-                }
-        }
-        catch (Exception e) {
-                e.printStackTrace();
-        }
-    }
-}
-```
+                           // Print results from select statement
+                           System.out.println("Top 20 categories:");
+                           while (resultSet.next())
+                           {
+                               System.out.println(resultSet.getString(1) + " "
+                                   + resultSet.getString(2));
+                           }
+                   }
+           }
+           catch (Exception e) {
+                   e.printStackTrace();
+           }
+       }
+   }
+   ```
 
-## <a name="insert-data"></a>插入数据
+## 运行代码
+<a id="run-the-code" class="xliff"></a>
 
-通过以下代码将 [Prepared Statements](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) 类与 [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) Transact-SQL 语句配合使用来将新产品插入到 SalesLT.Product 表中。 将 hostHame、dbName、user 和 password 参数替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。 
+1. 请在命令提示符处运行以下命令：
 
-```java
-package com.sqldbsamples;
+   ```bash
+   mvn package
+   mvn -q exec:java "-Dexec.mainClass=com.sqldbsamples.App"
+   ```
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.DriverManager;
-
-public class App {
-
-    public static void main(String[] args) {
-    
-        // Connect to database
-        String hostName = "your_server";
-        String dbName = "your_database";
-        String user = "your_username";
-        String password = "your_password";
-        String url = String.format("jdbc:sqlserver://%s.database.windows.net:1433;database=%s;user=%s;password=%s;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
-        Connection connection = null;
-
-        try {
-                connection = DriverManager.getConnection(url);
-                String schema = connection.getSchema();
-                System.out.println("Successful connection - Schema: " + schema);
-
-                System.out.println("Insert data example:");
-                System.out.println("=========================================");
-
-                // Prepared statement to insert data
-                String insertSql = "INSERT INTO SalesLT.Product (Name, ProductNumber, Color, " 
-                    + " StandardCost, ListPrice, SellStartDate) VALUES (?,?,?,?,?,?);";
-
-                java.util.Date date = new java.util.Date();
-                java.sql.Timestamp sqlTimeStamp = new java.sql.Timestamp(date.getTime());
-
-                try (PreparedStatement prep = connection.prepareStatement(insertSql)) {
-                        prep.setString(1, "BrandNewProduct");
-                        prep.setInt(2, 200989);
-                        prep.setString(3, "Blue");
-                        prep.setDouble(4, 75);
-                        prep.setDouble(5, 80);
-                        prep.setTimestamp(6, sqlTimeStamp);
-
-                        int count = prep.executeUpdate();
-                        System.out.println("Inserted: " + count + " row(s)");
-                }
-        }
-        catch (Exception e) {
-                e.printStackTrace();
-        }
-    }
-}
-```
-## <a name="update-data"></a>更新数据
-
-通过以下代码将 [Prepared Statements](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) 类与 [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql) Transact-SQL 语句配合使用来更新之前添加的新产品。 将 hostHame、dbName、user 和 password 参数替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。 
-
-```java
-package com.sqldbsamples;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.DriverManager;
-
-public class App {
-
-    public static void main(String[] args) {
-    
-        // Connect to database
-        String hostName = "your_server";
-        String dbName = "your_database";
-        String user = "your_username";
-        String password = "your_password";
-        String url = String.format("jdbc:sqlserver://%s.database.windows.net:1433;database=%s;user=%s;password=%s;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
-        Connection connection = null;
-
-        try {
-                connection = DriverManager.getConnection(url);
-                String schema = connection.getSchema();
-                System.out.println("Successful connection - Schema: " + schema);
-
-                System.out.println("Update data example:");
-                System.out.println("=========================================");
-
-                // Prepared statement to update data
-                String updateSql = "UPDATE SalesLT.Product SET ListPrice = ? WHERE Name = ?";
-
-                try (PreparedStatement prep = connection.prepareStatement(updateSql)) {
-                        prep.setString(1, "500");
-                        prep.setString(2, "BrandNewProduct");
-
-                        int count = prep.executeUpdate();
-                        System.out.println("Updated: " + count + " row(s)")
-                }
-        }
-        catch (Exception e) {
-                e.printStackTrace();
-        }
-    }
-}
-```
+2. 验证是否已返回前 20 行，然后关闭应用程序窗口。
 
 
-
-## <a name="delete-data"></a>删除数据
-
-通过以下代码将 [Prepared Statements](https://docs.microsoft.com/sql/connect/jdbc/using-statements-with-sql) 类与 [UPDATE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL 语句配合使用来更新之前添加的新产品。 将 hostHame、dbName、user 和 password 参数替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。 
-
-```java
-package com.sqldbsamples;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.DriverManager;
-
-public class App {
-
-    public static void main(String[] args) {
-    
-        // Connect to database
-        String hostName = "your_server";
-        String dbName = "your_database";
-        String user = "your_username";
-        String password = "your_password";
-        String url = String.format("jdbc:sqlserver://%s.database.windows.net:1433;database=%s;user=%s;password=%s;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
-        Connection connection = null;
-
-        try {
-                connection = DriverManager.getConnection(url);
-                String schema = connection.getSchema();
-                System.out.println("Successful connection - Schema: " + schema);
-
-                System.out.println("Delete data example:");
-                System.out.println("=========================================");
-
-                // Prepared statement to delete data
-                String deleteSql = "DELETE SalesLT.Product WHERE Name = ?";
-
-                try (PreparedStatement prep = connection.prepareStatement(deleteSql)) {
-                        prep.setString(1, "BrandNewProduct");
-
-                        int count = prep.executeUpdate();
-                        System.out.println("Deleted: " + count + " row(s)");
-                }
-        }       
-        catch (Exception e) {
-                e.printStackTrace();
-        }
-    }
-}
-```
-
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 - [设计第一个 Azure SQL 数据库](sql-database-design-first-database.md)
 - [用于 SQL Server 的 Microsoft JDBC 驱动程序](https://github.com/microsoft/mssql-jdbc)
 - [报告问题/提出问题](https://github.com/microsoft/mssql-jdbc/issues)

@@ -16,10 +16,10 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 5144c27ccbef6cc0e1e8c0b168bbfd86b736331b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9776bd4f703227f49f83f563489cfa7c44604fb8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -388,7 +388,7 @@ private static async Task CreatePoolIfNotExistAsync(BatchClient batchClient, str
 在此示例应用程序中，StartTask 将它从存储中下载的文件（使用 [StartTask][net_starttask].[ResourceFiles][net_starttask_resourcefiles] 属性指定），从 StartTask 工作目录复制到在节点上运行的*所有*任务可以访问的共享目录。 本质上，这会在节点加入池时，将 `TaskApplication.exe` 及其依赖项复制到每个节点上的共享目录，因此该节点上运行的任何任务都可以访问它。
 
 > [!TIP]
-> Azure Batch 的 **应用程序包** 功能提供另一种方法，用于将应用程序转移到池中的计算节点。 有关详细信息，请参阅 [使用 Azure Batch 应用程序包部署应用程序](batch-application-packages.md) 。
+> Azure Batch 的 **应用程序包** 功能提供另一种方法，用于将应用程序转移到池中的计算节点。 有关详细信息，请参阅[使用 Batch 应用程序包将应用程序部署到计算节点](batch-application-packages.md)。
 >
 >
 

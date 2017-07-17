@@ -16,27 +16,30 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: accd5c55e7adafd5a387bf420660b808335192e6
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 6e91d095c8a89ead513a8ea63f74fd4b9384cfd5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
+ms.lasthandoff: 07/11/2017
 
 ---
-# <a name="create-a-function-triggered-by-a-github-webhook"></a>创建由 GitHub Webhook 触发的函数
+# 创建由 GitHub Webhook 触发的函数
+<a id="create-a-function-triggered-by-a-github-webhook" class="xliff"></a>
 
 了解如何创建由带有 GitHub 特定有效负载的 HTTP webhook 请求触发的函数。
 
 ![Azure 门户中 Github Webhook 触发的函数](./media/functions-create-github-webhook-triggered-function/function-app-in-portal-editor.png)
 
-## <a name="prerequisites"></a>先决条件
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
 
 + 一个至少包含一个项目的 GitHub 帐户。
 + Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
-## <a name="create-an-azure-function-app"></a>创建 Azure Function App
+## 创建 Azure Function App
+<a id="create-an-azure-function-app" class="xliff"></a>
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
@@ -46,7 +49,8 @@ ms.lasthandoff: 06/02/2017
 
 <a name="create-function"></a>
 
-## <a name="create-a-github-webhook-triggered-function"></a>创建 GitHub webhook 触发函数
+## 创建 GitHub webhook 触发函数
+<a id="create-a-github-webhook-triggered-function" class="xliff"></a>
 
 1. 展开 Function App，单击“Functions”旁边的 + 按钮。 如果这是 Function App 中的第一个函数，请选择“自定义函数”。 此时将显示函数模板的完整集合。
 
@@ -62,7 +66,8 @@ ms.lasthandoff: 06/02/2017
 
 接下来，在 GitHub 存储库中创建 Webhook。
 
-## <a name="configure-the-webhook"></a>配置 Webhook
+## 配置 Webhook
+<a id="configure-the-webhook" class="xliff"></a>
 
 1. 在 GitHub 中，导航到自己的存储库。 还可以使用已分叉的任何存储库。 如果需要分叉存储库，请使用 <https://github.com/Azure-Samples/functions-quickstart>。
 
@@ -84,7 +89,8 @@ ms.lasthandoff: 06/02/2017
 
 现在，Webhook 配置为在添加新问题注释时触发函数。
 
-## <a name="test-the-function"></a>测试函数
+## 测试函数
+<a id="test-the-function" class="xliff"></a>
 
 1. 在 GitHub 存储库的新浏览器窗口中，打开“问题”选项卡。
 
@@ -98,11 +104,17 @@ ms.lasthandoff: 06/02/2017
 
      ![在日志中查看注释文本。](./media/functions-create-github-webhook-triggered-function/function-app-view-logs.png)
 
-## <a name="clean-up-resources"></a>清理资源
+## 清理资源
+<a id="clean-up-resources" class="xliff"></a>
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
-已创建从 GitHub webhook 收到请求时运行的函数。 
-[!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)] 有关 webhook 触发器的详细信息，请参阅 [Azure Functions HTTP 和 webhook 绑定](functions-bindings-http-webhook.md)。
+已创建从 GitHub webhook 收到请求时运行的函数。
+
+[!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
+
+有关 Webhook 触发器的详细信息，请参阅 [Azure Functions HTTP 和 Webhook 绑定](functions-bindings-http-webhook.md)。
+
