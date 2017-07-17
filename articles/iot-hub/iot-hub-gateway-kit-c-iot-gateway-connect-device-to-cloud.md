@@ -4,7 +4,7 @@ description: "了解如何将 Intel NUC 用作 IoT 网关，以连接 TI SensorT
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "IoT 网关将设备连接到云"
 ms.assetid: cb851648-018c-4a7e-860f-b62ed3b493a5
@@ -13,35 +13,39 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/06/2017
+ms.date: 06/25/2017
 ms.author: xshi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 2b772afc946f1637cb8d61c198bc9cf18f42e1ba
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 61cb8eb0ad23a7d4b333bf54342b872a3a8ae1da
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 06/28/2017
 
 ---
-# <a name="use-iot-gateway-to-connect-things-to-the-cloud---sensortag-to-azure-iot-hub"></a>使用 IoT 网关将设备连接到 Azure IoT 中心的云 - SensorTag
+# 使用 IoT 网关将设备连接到 Azure IoT 中心的云 - SensorTag
+<a id="use-iot-gateway-to-connect-things-to-the-cloud---sensortag-to-azure-iot-hub" class="xliff"></a>
 
 > [!NOTE]
 > 在开始本教程前，请确保[将 Intel NUC 设置为 IoT 网关](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)已完成。 在[将 Intel NUC 设置为 IoT 网关](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)中，用户将 Intel NUC 设备设置为 IoT 网关。
 
-## <a name="what-you-will-learn"></a>你要学习的知识
+## 你要学习的知识
+<a id="what-you-will-learn" class="xliff"></a>
 
 了解如何使用 IoT 网关将 Texas Instruments SensorTag (CC2650STK) 连接到 Azure IoT 中心。 IoT 网关将从 SensorTag 收集的温度和湿度数据发送到 Azure IoT 中心。
 
-## <a name="what-you-will-do"></a>执行的操作
+## 执行的操作
+<a id="what-you-will-do" class="xliff"></a>
 
 - 创建 IoT 中心。
 - 在 IoT 中心内为 SensorTag 注册一台设备。
 - 启用 IoT 网关和 SensorTag 之间的连接。
 - 运行 BLE 示例应用程序，以将 SensorTag 数据发送到 IoT 中心。
 
-## <a name="what-you-need"></a>所需条件
+## 所需条件
+<a id="what-you-need" class="xliff"></a>
 
 - 将 Intel NUC 设置为 IoT 网关后，即已完成[将 Intel NUC 设置为 IoT 网关](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)教程。
+- * 一个有效的 Azure 订阅。 如果没有 Azure 帐户，只需几分钟时间就能[创建一个免费的 Azure 试用帐户](https://azure.microsoft.com/free/)。
 - 在主计算机上运行的 SSH 客户端。 建议在 Windows 上使用 PuTTY。 Linux 和 macOS 已附带 SSH 客户端。
 - IP 地址以及访问 SSH 客户端网关的用户名和密码。
 - Internet 连接。
@@ -51,14 +55,16 @@ ms.lasthandoff: 05/10/2017
 > [!NOTE]
 > 在此处为 SensorTag 注册这台新设备
 
-## <a name="enable-the-connection-between-the-iot-gateway-and-the-sensortag"></a>启用 IoT 网关和 SensorTag 之间的连接
+## 启用 IoT 网关和 SensorTag 之间的连接
+<a id="enable-the-connection-between-the-iot-gateway-and-the-sensortag" class="xliff"></a>
 
 在本节中，执行以下任务：
 
 - 获取 SensorTag 的 MAC 地址以进行蓝牙连接。
 - 启动从 IoT 网关到 SensorTag 的蓝牙连接。
 
-### <a name="get-the-mac-address-of-the-sensortag-for-bluetooth-connection"></a>获取 SensorTag 的 MAC 地址以进行蓝牙连接
+### 获取 SensorTag 的 MAC 地址以进行蓝牙连接
+<a id="get-the-mac-address-of-the-sensortag-for-bluetooth-connection" class="xliff"></a>
 
 1. 在主计算机上，运行 SSH 客户端并连接到 IoT 网关。
 1. 运行以下命令，取消阻止蓝牙：
@@ -100,7 +106,8 @@ ms.lasthandoff: 05/10/2017
 
    ![通过 bluetoothctl 停止扫描附近的蓝牙设备](./media/iot-hub-iot-gateway-connect-device-to-cloud/10_stop-scanning-nearby-bluetooth-devices-at-bluetooth-shell-bluetoothctl.png)
 
-### <a name="initiate-a-bluetooth-connection-from-the-iot-gateway-to-the-sensortag"></a>启动从 IoT 网关到 SensorTag 的蓝牙连接
+### 启动从 IoT 网关到 SensorTag 的蓝牙连接
+<a id="initiate-a-bluetooth-connection-from-the-iot-gateway-to-the-sensortag" class="xliff"></a>
 
 1. 通过运行以下命令，连接到 SensorTag：
 
@@ -121,19 +128,21 @@ ms.lasthandoff: 05/10/2017
 
 已成功启用 SensorTag 和 IoT 网关之间的连接。
 
-## <a name="run-a-ble-sample-application-to-send-sensortag-data-to-your-iot-hub"></a>运行 BLE 示例应用程序，将 SensorTag 数据发送到 IoT 中心
+## 运行 BLE 示例应用程序，将 SensorTag 数据发送到 IoT 中心
+<a id="run-a-ble-sample-application-to-send-sensortag-data-to-your-iot-hub" class="xliff"></a>
 
-Azure IoT Edge 提供蓝牙低功耗 (BLE) 示例应用程序。 该示例应用程序收集 BLE 连接的数据，并将该数据发送到 IoT 中心。 若要运行示例应用程序，需要：
+Azure IoT Edge 提供了蓝牙低功耗 (BLE) 示例应用程序。 该示例应用程序收集 BLE 连接的数据，并将该数据发送到 IoT 中心。 若要运行示例应用程序，需要：
 
 1. 配置该示例应用程序。
 1. 在 IoT 网关上运行该示例应用程序。
 
-### <a name="configure-the-sample-application"></a>配置示例应用程序
+### 配置示例应用程序
+<a id="configure-the-sample-application" class="xliff"></a>
 
 1. 通过运行以下命令，转到示例应用程序的文件夹：
 
    ```bash
-   cd /user/share/azureiotgatewaysdk/samples
+   cd /usr/share/azureiotgatewaysdk/samples/ble_gateway
    ```
 
 1. 通过运行以下命令，打开配置文件：
@@ -160,7 +169,8 @@ Azure IoT Edge 提供蓝牙低功耗 (BLE) 示例应用程序。 该示例应用
 
 1. 按 `ESC` 并键入 `:wq` 以保存文件。
 
-### <a name="run-the-sample-application"></a>运行示例应用程序
+### 运行示例应用程序
+<a id="run-the-sample-application" class="xliff"></a>
 
 1. 确保已打开 SensorTag。
 1. 运行以下命令：
@@ -169,7 +179,8 @@ Azure IoT Edge 提供蓝牙低功耗 (BLE) 示例应用程序。 该示例应用
    ./ble_gateway ble_gateway.json
    ```
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 [通过 Azure IoT Edge，使用 IoT 网关进行传感器数据转换](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
 

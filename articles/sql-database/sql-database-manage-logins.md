@@ -18,14 +18,15 @@ ms.workload: data-management
 ms.date: 01/23/2017
 ms.author: rickbyh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: f29b2c1da0d9b761634370f5f08ea942b66d9f1f
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 51edd390c065dd7312ecc54694b5a95ecc11eab8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/15/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
-# <a name="controlling-and-granting-database-access"></a>控制和授予数据库访问权限
+# 控制和授予数据库访问权限
+<a id="controlling-and-granting-database-access" class="xliff"></a>
 
 配置防火墙规则后，可以使用某个管理员帐户、数据库所有者或数据库中数据库用户的身份连接到 SQL 数据库。  
 
@@ -34,11 +35,12 @@ ms.lasthandoff: 04/15/2017
 >
 
 > [!TIP]
-> 有关使用 SQL Server 身份验证的教程，请参阅[教程：SQL Server 身份验证](sql-database-control-access-sql-authentication-get-started.md)。 有关使用 Azure Active Directory 身份验证的教程，请参阅[教程：AAD 身份验证](sql-database-control-access-aad-authentication-get-started.md)。
+> 有关教程，请参阅[保护 Azure SQL 数据库](sql-database-security-tutorial.md)。
 >
 
 
-## <a name="unrestricted-administrative-accounts"></a>非受限管理帐户
+## 非受限管理帐户
+<a id="unrestricted-administrative-accounts" class="xliff"></a>
 有两个充当管理员的管理帐户（**服务器管理员**和 **Active Directory 管理员**）。 若要在 SQL 服务器中识别这些管理员帐户，请打开 Azure 门户并导航到 SQL 服务器的属性。
 
 ![SQL 服务器管理员](./media/sql-database-manage-logins/sql-admins.png)
@@ -58,27 +60,32 @@ ms.lasthandoff: 04/15/2017
 - 这些帐户可在 `dbmanager` 与 `loginmanager` 角色中添加和删除成员。
 - 这些帐户可以查看 `sys.sql_logins` 系统表。
 
-### <a name="configuring-the-firewall"></a>配置防火墙
+### 配置防火墙
+<a id="configuring-the-firewall" class="xliff"></a>
 为单个 IP 地址或地址范围配置服务器级防火墙后，**SQL 服务器管理员**和 **Azure Active Directory 管理员**可以连接到 master 数据库以及所有用户数据库。 初始服务器级防火墙可通过 [Azure 门户](sql-database-get-started-portal.md)、[PowerShell](sql-database-get-started-powershell.md) 或 [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx) 进行配置。 建立连接以后，还可以使用 [Transact-SQL](sql-database-configure-firewall-settings.md) 配置其他服务器级防火墙规则。
 
-### <a name="administrator-access-path"></a>管理员访问路径
+### 管理员访问路径
+<a id="administrator-access-path" class="xliff"></a>
 适当地配置服务器级防火墙后，**SQL 服务器管理员**和 **Azure Active Directory 管理员**可以使用 SQL Server Management Studio 或 SQL Server Data Tools 等客户端工具进行连接。 仅最新工具提供所有的特性和功能。 下图显示了这两个管理员帐户的典型配置。
 
 ![管理员访问路径](./media/sql-database-manage-logins/1sql-db-administrator-access.png)
 
 使用服务器级防火墙中的开放端口时，管理员可以连接到任何 SQL 数据库。
 
-### <a name="connecting-to-a-database-by-using-sql-server-management-studio"></a>通过使用 SQL Server Management Studio 连接到数据库
+### 通过使用 SQL Server Management Studio 连接到数据库
+<a id="connecting-to-a-database-by-using-sql-server-management-studio" class="xliff"></a>
 有关创建服务器、数据库和服务器级防火墙规则，以及使用 SQL Server Management Studio 查询数据库的演练，请参阅[通过 Azure 门户和 SQL Server Management Studio 开始使用 Azure SQL 数据库服务器、数据库和防火墙规则](sql-database-get-started-portal.md)。
 
 > [!IMPORTANT]
 > 建议始终使用最新版本的 Management Studio 以保持与 Microsoft Azure 和 SQL 数据库的更新同步。 [更新 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)。
 
 
-## <a name="additional-server-level-administrative-roles"></a>其他服务器级管理角色
+## 其他服务器级管理角色
+<a id="additional-server-level-administrative-roles" class="xliff"></a>
 除了上述服务器级管理角色以外，SQL 数据库还在可以添加用户帐户的 master 数据库中提供了两个受限的管理角色，这些角色可授予创建数据库或管理登录名的权限。
 
-### <a name="database-creators"></a>数据库创建者
+### 数据库创建者
+<a id="database-creators" class="xliff"></a>
 其中一个管理角色是 **dbmanager** 角色。 此角色的成员可以创建新数据库。 若要使用此角色，请在 `master` 数据库中创建一个用户，然后将该用户添加到 **dbmanager** 数据库角色。 若要创建数据库，用户必须是基于 master 数据库中的 SQL Server 登录名的用户，或者是基于 Azure Active Directory 用户的已包含数据库用户。
 
 1. 使用管理员帐户连接到 master 数据库。
@@ -115,10 +122,12 @@ ms.lasthandoff: 04/15/2017
 
 现在，该用户可以连接到 master 数据库，并且可以创建新数据库。 创建数据库的帐户成为该数据库的所有者。
 
-### <a name="login-managers"></a>登录名管理器
+### 登录名管理器
+<a id="login-managers" class="xliff"></a>
 另一个管理角色是登录管理员角色。 此角色的成员可在 master 数据库中创建新登录名。 如果需要，可以完成相同的步骤（创建登录名和用户，然后向 **loginmanager** 角色添加用户），使用户能够在 master 数据库中创建新登录名。 通常不必要创建登录名，因为 Microsoft 建议使用包含的数据库用户在数据库级别进行身份验证，而不要使用基于登录名的用户。 有关详细信息，请参阅[包含数据库用户 - 使你的数据库可移植](https://msdn.microsoft.com/library/ff929188.aspx)。
 
-## <a name="non-administrator-users"></a>非管理员用户
+## 非管理员用户
+<a id="non-administrator-users" class="xliff"></a>
 非管理员帐户通常无需访问 master 数据库。 使用 [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx) 语句在数据库级别创建包含数据库用户。 该用户可以是 Azure Active Directory 身份验证包含数据库用户（如果你已针对 Azure AD 身份验证配置了环境），可以是 SQL Server 身份验证包含数据库用户，也可以是基于 SQL Server 身份验证登录名（在前一步骤中创建）的 SQL Server 身份验证用户。有关详细信息，请参阅[包含数据库用户 - 使你的数据库可移植](https://msdn.microsoft.com/library/ff929188.aspx)。 
 
 若要创建用户，请先连接到数据库，然后执行如下所示的语句：
@@ -139,15 +148,18 @@ GRANT ALTER ANY USER TO Mary;
 > [!NOTE]
 > 根据登录名创建数据库用户的最常见原因是 SQL Server 身份验证用户需要访问多个数据库。 基于登录名的用户与登录名绑定，并且只为该登录名保留一个密码。 各个数据库中的包含数据库用户都是单个的实体，且均保留各自的密码。 如果包含数据库用户的密码不相同，则可能会给这些用户造成混淆。
 
-### <a name="configuring-the-database-level-firewall"></a>配置数据库级防火墙
+### 配置数据库级防火墙
+<a id="configuring-the-database-level-firewall" class="xliff"></a>
 最好是规定非管理员用户只能通过防火墙来访问所使用的数据库。 可以使用 [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) 语句来配置数据库级防火墙，而不必通过服务器级防火墙来授权其 IP 地址访问所有数据库。 不能通过门户来配置数据库级防火墙。
 
-### <a name="non-administrator-access-path"></a>非管理员访问路径
+### 非管理员访问路径
+<a id="non-administrator-access-path" class="xliff"></a>
 对数据库级防火墙进行适当配置以后，数据库用户即可使用 SQL Server Management Studio 或 SQL Server Data Tools 这样的客户端工具进行连接。 仅最新工具提供所有的特性和功能。 下图显示了典型的非管理员访问路径。
 
 ![非管理员访问路径](./media/sql-database-manage-logins/2sql-db-nonadmin-access.png)
 
-## <a name="groups-and-roles"></a>组和角色
+## 组和角色
+<a id="groups-and-roles" class="xliff"></a>
 有效的访问管理需要将权限分配到组和角色，而不是分配到单个用户。 
 
 - 使用 Azure Active Directory 身份验证时，请将 Azure Active Directory 用户放入 Azure Active Directory 组。 为该组创建包含数据库用户。 将一个或多个数据库用户添加到[数据库角色](https://msdn.microsoft.com/library/ms189121)，然后向数据库角色分配[权限](https://msdn.microsoft.com/library/ms191291.aspx)。
@@ -156,11 +168,13 @@ GRANT ALTER ANY USER TO Mary;
 
 数据库角色可以是内置的角色，例如 **db_owner**、**db_ddladmin**、**db_datawriter**、**db_datareader**、**db_denydatawriter** 和 **db_denydatareader**。 **db_owner** 通常用于向部分用户授予完全权限。 其他固定数据库角色可用于快速开发简单的数据库，但不建议用于大多数生产数据库。 例如，**db_datareader** 固定数据库角色授予用户对数据库中每个表的读取访问权限，这通常超出了必要的范畴。 而如果先使用 [CREATE ROLE](https://msdn.microsoft.com/library/ms187936.aspx) 语句创建自己的用户定义数据库角色，然后再根据业务需要向每个角色授予所需的最低权限，则要合适得多。 如果用户是多个角色的成员，则会聚合所有这些角色的权限。
 
-## <a name="permissions"></a>权限
+## 权限
+<a id="permissions" class="xliff"></a>
 可以在 SQL 数据库中单独授予或拒绝 100 多种权限。 这些权限中，许多都是嵌套式的。 例如，针对架构的 `UPDATE` 权限包括针对该架构中每个表的 `UPDATE` 权限。 与大多数权限系统中的情况一样，拒绝某个权限将覆盖对该权限的授予操作。 考虑到权限的嵌套性质和数目，可能需要进行仔细的研究才能设计出适当的权限系统，以便对你的数据库进行恰当的保护。 一开始可以了解[权限（数据库引擎）](https://msdn.microsoft.com/library/ms191291.aspx)中的权限列表，然后查看这些权限的[海报大小的图](http://go.microsoft.com/fwlink/?LinkId=229142)。
 
 
-### <a name="considerations-and-restrictions"></a>注意事项和限制
+### 注意事项和限制
+<a id="considerations-and-restrictions" class="xliff"></a>
 管理 SQL 数据库中的登录名和用户时，请注意以下事项：
 
 * 执行 `CREATE/ALTER/DROP DATABASE` 语句时，必须连接到 **master** 数据库。   
@@ -187,13 +201,12 @@ GRANT ALTER ANY USER TO Mary;
 * 在数据库角色的所有者尝试在该数据库角色中添加或删除其他数据库用户时，可能会发生以下错误：“**此数据库中不存在用户或角色‘Name’**”。 在用户对所有者不可见时，将会发生此错误。 若要解决此问题，请向角色所有者授予对该用户的 `VIEW DEFINITION` 权限。 
 
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 - 有关防火墙规则的详细信息，请参阅 [Azure SQL 数据库防火墙](sql-database-firewall-configure.md)。
 - 有关所有 SQL 数据库安全功能的概述，请参阅 [SQL 安全概述](sql-database-security-overview.md)。
-- 有关教程，请参阅 [SQL 安全入门](sql-database-control-access-sql-authentication-get-started.md)
+- 有关教程，请参阅[保护 Azure SQL 数据库](sql-database-security-tutorial.md)。
 - 有关视图和存储过程的信息，请参阅[创建视图和存储过程](https://msdn.microsoft.com/library/ms365311.aspx)
 - 有关授予数据库对象访问权限的信息，请参阅[授予数据库对象访问权限](https://msdn.microsoft.com/library/ms365327.aspx)
-- 有关使用 SQL Server 身份验证的教程，请参阅[教程：SQL Server 身份验证](sql-database-control-access-sql-authentication-get-started.md)。
-- 有关使用 Azure Active Directory 身份验证的教程，请参阅[教程：AAD 身份验证](sql-database-control-access-aad-authentication-get-started.md)。
 

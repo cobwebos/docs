@@ -16,36 +16,40 @@ ms.workload: na
 ms.date: 04/28/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 64b09448149b7e1efd8b76663a27b6c7ec1eb3c7
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: d3d74d44bdd7ce6b49ec58b70c7ddb8081e11f96
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
-# <a name="azure-iot-hub-get-started-tutorials"></a>Azure IoT 中心入门教程
+# Azure IoT 中心入门教程
+<a id="azure-iot-hub-get-started-tutorials" class="xliff"></a>
 
 可以使用 Azure IoT 中心和 Azure IoT 设备 SDK 生成物联网 (IoT) 解决方案。
 
 * Azure IoT 中心是在云中完全托管的服务，可安全地连接、监视和管理 IoT 设备。 使用 Azure IoT 设备 SDK 实现 IoT 设备。
 * 在更复杂的 IoT 方案中使用 IoT 网关，在这些方案中需要考虑一些因素，例如旧设备、带宽成本、安全和隐私策略或边缘数据处理等。 在这些方案中，可以使用 Azure IoT Edge 实现用于将设备连接到 IoT 中心的网关。
 
-## <a name="what-the-tutorials-cover"></a>教程涵盖内容
+## 教程涵盖内容
+<a id="what-the-tutorials-cover" class="xliff"></a>
 
 这些教程介绍 Azure IoT 中心和设备 SDK。 这些教程介绍用于演示 IoT 中心功能的常见 IoT 方案。 这些教程还说明了如何将 IoT 中心与其他 Azure 服务和工具结合在一起，以构建更强大的 IoT 解决方案。 在这些教程中，可以选择是使用模拟 IoT 设备还是使用真实 IoT 设备。 此外，还可以了解如何使用网关使设备能够连接到 IoT 中心。
 
-## <a name="device-setup-scenario-connect-iot-device-or-gateway-to-azure-iot-hub"></a>设备安装方案：将 IoT 设备或网关连接到 Azure IoT 中心
+## 设置你的设备：将 IoT 设备或网关连接到 Azure IoT 中心
+<a id="setup-your-device-connect-iot-device-or-gateway-to-azure-iot-hub" class="xliff"></a>
 
 可以选择是使用真实设备还是使用模拟设备开始。
 
 | IoT 设备                       | 编程语言 |
 |---------------------------------|----------------------|
-| Raspberry Pi                    | [Node.js][Pi_Nd]、[C][Pi_C]           |
+| Raspberry Pi                    | [Node.js][Pi_Nd]、[C][Pi_C]、[Python][Pi_Py]           |
 | Intel Edison                    | [Node.js][Ed_Nd]、[C][Ed_C]           |
 | Adafruit Feather HUZZAH ESP8266 | [Arduino][Hu_Ard]              |
 | Sparkfun ESP8266 Thing Dev      | [Arduino][Th_Ard]              |
 | Adafruit Feather M0             | [Arduino][M0_Ard]              |
-| 模拟设备                | [.NET][Sim_NET]、[Java][Sim_Jav]、[Node.js][Sim_Nd]、[Python][Sim_Pyth]              |
+| PC 上的模拟设备          | [.NET][Sim_NET]、[Java][Sim_Jav]、[Node.js][Sim_Nd]、[Python][Sim_Pyth]              |
+| 联机设备模拟器         | [Raspberry Pi (Node.js)][Ol_Sim] |
 
 此外，还可以使用 IoT Edge 网关使设备能够连接到 IoT 中心。
 
@@ -54,26 +58,12 @@ ms.lasthandoff: 05/17/2017
 | Intel NUC（模型 DE3815TYKE） | C                    | [Wind River Linux][NUC_Lnx] |
 | 模拟网关            | C                    | [Linux][Sim_Lnx]、[Windows][Sim_Win] |
 
-## <a name="extended-iot-scenarios-use-other-azure-services-and-tools"></a>扩展 IoT 方案：使用其他 Azure 服务和工具
-
-将设备连接到 IoT 中心后，可以浏览使用其他 Azure 工具和服务的其他方案：
-
-| 方案                                    | Azure 服务或工具              |
-|---------------------------------------------|------------------------------------|
-| [管理 IoT 中心消息][Mg_IoT_Hub_Msg]                    | iothub-explorer 工具               |
-| [管理 IoT 设备][Mg_IoT_Dv]               | iothub-explorer 工具               |
-| [将 IoT 中心消息保存到 Azure 存储][Sv_IoT_Msg_Stor]                      | Azure 表存储               |
-| [直观显示传感器数据][Vis_Data]             | Microsoft Power BI、Azure Web 应用 |
-| [使用传感器数据预测天气][Weather_Forecast] | Azure 机器学习             |
-| [自动异常检测和反应][Anomaly_Detect]    | Azure 逻辑应用                   |
-
-## <a name="next-steps"></a>后续步骤
-
-完成这些教程后，可以在[开发人员指南][lnk-dev-guide]中进一步浏览 IoT 中心的功能。 可以在[操作方法][lnk-how-to]部分中找到其他教程。
+[!INCLUDE [iot-hub-get-started-extended](../../includes/iot-hub-get-started-extended.md)]
 
 
 [Pi_Nd]: iot-hub-raspberry-pi-kit-node-get-started.md
 [Pi_C]: iot-hub-raspberry-pi-kit-c-get-started.md
+[Pi_Py]: iot-hub-raspberry-pi-kit-node-get-started.md
 [Ed_Nd]: iot-hub-intel-edison-kit-node-get-started.md
 [Ed_C]: iot-hub-intel-edison-kit-c-get-started.md
 [Hu_Ard]: iot-hub-arduino-huzzah-esp8266-get-started.md
@@ -86,11 +76,5 @@ ms.lasthandoff: 05/17/2017
 [NUC_Lnx]: iot-hub-gateway-kit-c-lesson1-set-up-nuc.md
 [Sim_Lnx]: iot-hub-linux-iot-edge-get-started.md
 [Sim_Win]: iot-hub-windows-iot-edge-get-started.md
-[Mg_IoT_Hub_Msg]: iot-hub-explorer-cloud-device-messaging.md
-[Mg_IoT_Dv]: iot-hub-device-management-iothub-explorer.md
-[Sv_IoT_Msg_Stor]: iot-hub-store-data-in-azure-table-storage.md
-[Vis_Data]: iot-hub-live-data-visualization-in-power-bi.md
-[Weather_Forecast]: iot-hub-weather-forecast-machine-learning.md
-[Anomaly_Detect]: iot-hub-monitoring-notifications-with-azure-logic-apps.md
-[lnk-dev-guide]: iot-hub-devguide.md
-[lnk-how-to]: iot-hub-how-to.md
+[Ol_Sim]: iot-hub-raspberry-pi-web-simulator-get-started.md
+

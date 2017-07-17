@@ -1,79 +1,85 @@
 ---
-title: "如何将应用程序连接到 Azure Database for MySQL | Microsoft Docs"
-description: "本文档中列出了目前支持的用于将应用程序连接到 Azure Database for MySQL 的所有连接字符串"
+title: "将应用程序连接到 Azure Database for MySQL | Microsoft Docs"
+description: "本文档中列出了目前支持的用于将应用程序连接到 Azure Database for MySQL 的连接字符串，包括 ADO.NET (C#)、JDBC、Node.js、ODBC、PHP、Python 和 Ruby。"
 services: mysql
-author: wuta
+author: mswutao
 ms.author: wuta
-editor: jasonh
+editor: jasonwhowell
 manager: jhubbard
-ms.assetid: 
 ms.service: mysql-database
-ms.tgt_pltfrm: portal
-ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 06/12/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 93b74f146cd0a75437e85dbb1c941b29534ffab2
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 2f40da41bcfda7e35f6fc63ead5d055246ab390c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/30/2017
 
 ---
 
-# <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>如何将应用程序连接到 Azure Database for MySQL
-本文档列出了 Azure Database for MySQL 支持的所有连接字符串，以及模板和示例。 连接字符串中的参数和设置可能各不相同。
+# 如何将应用程序连接到 Azure Database for MySQL
+<a id="how-to-connect-applications-to-azure-database-for-mysql" class="xliff"></a>
+本文档列出了 Azure Database for MySQL 支持的连接字符串，以及模板和示例。 你可能会在连接字符串中使用不同的参数和设置。
 
-- 请参阅文档[如何配置 SSL](./howto-configure-ssl.md)以获取证书
+- 若要获取证书，请参阅[如何配置 SSL](./howto-configure-ssl.md)。
 - {your_host} = <servername>.mysql.database.azure.com
+- {your_user}@{servername} = userID 格式是用于身份验证的正确格式。  仅使用 userID 将导致身份验证失败。
 
-## <a name="adonet"></a>ADO.NET
+## ADO.NET
+<a id="adonet" class="xliff"></a>
 ```ado.net
-Server={your_host};Port={your_port};Database={your_database};Uid={your_username};Pwd={your_password};[SslMode=Required;]
+Server={your_host};Port={your_port};Database={your_database};Uid={username@servername};Pwd={your_password};[SslMode=Required;]
 ```
 
-例如，假设服务器名称为 wpdemo，数据库名称为 wpdb，用户名为 WPAdmin，密码为 orcas!2。
-
-则连接字符串应为：
+在此示例中，服务器名称为 `myserver4demo`，数据库名称为 `wpdb`，用户名为 `WPAdmin`，密码为 `mypassword!2`。 因此，连接字符串应为：
 
 ```ado.net
-Server= "wpdemo.mysql.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@wpdemo"; Pwd="orcas!2"; SslMode=Required;
+Server= "myserver4demo.mysql.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@myserver4demo"; Pwd="mypassword!2"; SslMode=Required;
 ```
 
-## <a name="jdbc"></a>JDBC
+## JDBC
+<a id="jdbc" class="xliff"></a>
 ```jdbc
-String url ="jdbc:mysql://%s:%s/%s[?verifyServerCertificate=true&useSSL=true&requireSSL=true]",{your_host},{your_port},{your_database}"; myDbConn = DriverManager.getConnection(url, {your_username}, {your_password}";
+String url ="jdbc:mysql://%s:%s/%s[?verifyServerCertificate=true&useSSL=true&requireSSL=true]",{your_host},{your_port},{your_database}"; myDbConn = DriverManager.getConnection(url, {username@servername}, {your_password}";
 ```
 
-## <a name="nodejs"></a>Node.JS
+## Node.js
+<a id="nodejs" class="xliff"></a>
 ```node.js
-var conn = mysql.createConnection({host: {your_host}, user: {your_username}, password: {your_password}, database: {your_database}, Port: {your_port}[, ssl:{ca:fs.readFileSync({ca-cert filename})}}]);
+var conn = mysql.createConnection({host: {your_host}, user: {username@servername}, password: {your_password}, database: {your_database}, Port: {your_port}[, ssl:{ca:fs.readFileSync({ca-cert filename})}}]);
 ```
 
-## <a name="odbc"></a>ODBC
+## ODBC
+<a id="odbc" class="xliff"></a>
 ```odbc
-DRIVER={MySQL ODBC 5.3 UNICODE Driver};Server={your_host};Port={your_port};Database={your_database};Uid={your_username};Pwd={your_password}; [sslca={ca-cert filename}; sslverify=1; Option=3;]
+DRIVER={MySQL ODBC 5.3 UNICODE Driver};Server={your_host};Port={your_port};Database={your_database};Uid={username@servername};Pwd={your_password}; [sslca={ca-cert filename}; sslverify=1; Option=3;]
 ```
 
-## <a name="php"></a>PHP
+## PHP
+<a id="php" class="xliff"></a>
 ```php
-$con=mysqli_init(); [mysqli_ssl_set($con, NULL, NULL, {ca-cert filename}, NULL, NULL);] mysqli_real_connect($con, {your_host}, {your_username}, {your_password}, {your_database}, {your_port});
+$con=mysqli_init(); [mysqli_ssl_set($con, NULL, NULL, {ca-cert filename}, NULL, NULL);] mysqli_real_connect($con, {your_host}, {username@servername}, {your_password}, {your_database}, {your_port});
 ```
 
-## <a name="python"></a>Python
+## Python
+<a id="python" class="xliff"></a>
 ```python
-cnx = mysql.connector.connect(user={your_username}, password={your_password}, host={your_host}, port={your_port}, database={your_database}[, ssl_ca={ca-cert filename}, ssl_verify_cert=true])
+cnx = mysql.connector.connect(user={username@servername}, password={your_password}, host={your_host}, port={your_port}, database={your_database}[, ssl_ca={ca-cert filename}, ssl_verify_cert=true])
 ```
 
-## <a name="ruby"></a>Ruby
+## Ruby
+<a id="ruby" class="xliff"></a>
 ```ruby
-client = Mysql2::Client.new(username: {your_username}, password: {your_password}, database: {your_database}, host: {your_host}, port: {your_port}[, sslca:{ca-cert filename}, sslverify:false, sslcipher:'AES256-SHA'])
+client = Mysql2::Client.new(username: {username@servername}, password: {your_password}, database: {your_database}, host: {your_host}, port: {your_port}[, sslca:{ca-cert filename}, sslverify:false, sslcipher:'AES256-SHA'])
 ```
 
-## <a name="get-connection-string-from-portal"></a>从门户中获取连接字符串
-在 [Azure 门户](https://portal.azure.com)中，转到 Azure Database for MySQL，然后单击“连接字符串”即可获取实例的字符串列表：![门户中的连接字符串](./media/howto-connection-strings/connection-strings-on-portal.png)
+## 从 Azure 门户获取连接字符串详细信息
+<a id="get-the-connection-string-details-from-the-azure-portal" class="xliff"></a>
+在 [Azure 门户](https://portal.azure.com)中，转到 Azure Database for MySQL 服务器，然后单击“连接字符串”以获取你的实例的字符串列表：![Azure 门户中的连接字符串窗格](./media/howto-connection-strings/connection-strings-on-portal.png)
 
-字符串提供驱动程序、服务器和其他数据库连接参数等详细信息。 根据需要复制连接字符串，然后使用数据库名称、密码等自己的参数进行修改。然后便可使用此字符串连接服务器。
+字符串提供驱动程序、服务器和其他数据库连接参数等详细信息。 修改这些示例，以使用你自己的参数，例如数据库名称、密码，等等。 然后，可以在代码和应用程序中使用此字符串连接到服务器。
 
-## <a name="next-steps"></a>后续步骤
-- 有关连接库的详细信息，请参阅[概念 - 连接库](./concepts-connection-libraries.md)
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
+- 有关连接库的详细信息，请参阅[概念 - 连接库](./concepts-connection-libraries.md)。
 

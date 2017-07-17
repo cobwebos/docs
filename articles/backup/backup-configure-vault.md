@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/23/2017
 ms.author: markgal;trinadhk;
-translationtype: Human Translation
-ms.sourcegitcommit: b188affca609dd5ff3aa0d2cba3ec81c1c91888f
-ms.openlocfilehash: 3528294d944fd71fc98a30e2736e1245e50c3be6
-ms.lasthandoff: 02/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: aa6b75ef1786021b56a59ad1bea2d45eb74ad25f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>通过 Resource Manager 部署模型将 Windows Server 或客户端备份到 Azure
+# 通过 Resource Manager 部署模型将 Windows Server 或客户端备份到 Azure
+<a id="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model" class="xliff"></a>
 > [!div class="op_single_selector"]
 > * [Azure 门户](backup-configure-vault.md)
 > * [经典门户](backup-configure-vault-classic.md)
@@ -35,13 +37,16 @@ ms.lasthandoff: 02/24/2017
 
 ![备份过程的步骤](./media/backup-configure-vault/initial-backup-process.png)
 
-## <a name="before-you-start"></a>开始之前
+## 开始之前
+<a id="before-you-start" class="xliff"></a>
 若要将服务器或客户端备份到 Azure，你需要一个 Azure 帐户。 如果你没有帐户，只需几分钟的时间就能创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
+## 创建恢复服务保管库
+<a id="create-a-recovery-services-vault" class="xliff"></a>
 恢复服务保管库是存储所有按时间创建的备份和恢复点的实体。 恢复服务保管库还包含应用到受保护文件和文件夹的备份策略。 在创建恢复服务保管库时，你还应选择适当的存储冗余选项。
 
-### <a name="to-create-a-recovery-services-vault"></a>创建恢复服务保管库
+### 创建恢复服务保管库
+<a id="to-create-a-recovery-services-vault" class="xliff"></a>
 1. 如果你尚未登录 [Azure 门户](https://portal.azure.com/) ，请使用你的 Azure 订阅登录。
 2. 在“中心”菜单中，单击“更多服务”，然后在资源列表中，键入“恢复服务”并单击“恢复服务保管库”。
 
@@ -80,7 +85,8 @@ ms.lasthandoff: 02/24/2017
   一旦在恢复服务保管库列表中看到保管库，即可设置存储冗余。
 
 
-### <a name="set-storage-redundancy"></a>设置存储冗余
+### 设置存储冗余
+<a id="set-storage-redundancy" class="xliff"></a>
 在首次创建恢复服务保管库时，需确定复制存储的方式。
 
 1. 在“恢复服务保管库”边栏选项卡中，单击新保管库。
@@ -107,7 +113,8 @@ ms.lasthandoff: 02/24/2017
 
 现在你已创建了一个保管库，可以准备基础结构以备份文件和文件夹了，方法是下载并安装 Microsoft Azure 恢复服务代理、下载保管库凭据，然后使用这些凭据向保管库注册该代理。
 
-## <a name="configure-the-vault"></a>配置保管库
+## 配置保管库
+<a id="configure-the-vault" class="xliff"></a>
 
 1. 在“恢复服务保管库”边栏选项卡（对应于刚创建的保管库）的“开始”部分单击“备份”，然后在“开始使用备份”边栏选项卡上选择“备份目标”。
 
@@ -153,7 +160,8 @@ ms.lasthandoff: 02/24/2017
 
   ![保管库凭据下载完毕](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
 
-## <a name="install-and-register-the-agent"></a>安装并注册代理
+## 安装并注册代理
+<a id="install-and-register-the-agent" class="xliff"></a>
 
 > [!NOTE]
 > 尚未推出通过 Azure 门户启用备份这一功能。 请使用 Microsoft Azure 恢复服务代理备份文件和文件夹。
@@ -180,11 +188,23 @@ ms.lasthandoff: 02/24/2017
 
 现已安装代理，且已向保管库注册计算机。 接下来可以配置和计划备份。
 
+## 网络和连接要求
+<a id="network-and-connectivity-requirements" class="xliff"></a>
 
-## <a name="create-the-backup-policy"></a>创建备份策略
+如果计算机/代理具有有限的 internet 访问，请确保计算机/代理上的防火墙设置配置为允许以下 URL： <br>
+    1. www.msftncsi.com
+    2. *.Microsoft.com
+    3. *.WindowsAzure.com
+    4. *.microsoftonline.com
+    5. *.windows.ne
+
+
+## 创建备份策略
+<a id="create-the-backup-policy" class="xliff"></a>
 备份策略是有关以下事项的计划：何时创建恢复点，以及恢复点保留的时间长度。 可以使用 Microsoft Azure 备份代理为文件和文件夹创建备份策略。
 
-### <a name="to-create-a-backup-schedule"></a>创建备份计划
+### 创建备份计划
+<a id="to-create-a-backup-schedule" class="xliff"></a>
 1. 打开 Microsoft Azure 备份代理。 可以通过在计算机中搜索 **Microsoft Azure 备份**找到该代理。
 
     ![启动 Azure 备份代理](./media/backup-configure-vault/snap-in-search.png)
@@ -219,7 +239,8 @@ ms.lasthandoff: 02/24/2017
 10. 在“确认”页上复查信息，然后单击“**完成**”。
 11. 在向导完成创建备份计划后，请单击“**关闭**”。
 
-### <a name="enable-network-throttling"></a>启用网络限制
+### 启用网络限制
+<a id="enable-network-throttling" class="xliff"></a>
 Microsoft Azure 备份代理提供了网络限制。 限制功能将控制数据传输期间的网络带宽使用方式。 如果需要在上班时间内备份数据，但不希望备份程序干扰其他 Internet 流量，此控制机制很有帮助。 限制适用于备份和还原活动。
 
 > [!NOTE]
@@ -240,7 +261,8 @@ Microsoft Azure 备份代理提供了网络限制。 限制功能将控制数据
     带宽值从每秒 512 千字节 (Kbps) 开始，最高可为每秒 1,023 兆字节 (MBps)。 你还可以指定“**工作时间**”的开始和结束时间，以及一周中有哪几天被视为工作日。 指定的工作时间以外的时间视为非工作时间。
 4. 单击 **“确定”**。
 
-### <a name="to-back-up-files-and-folders-for-the-first-time"></a>首次备份文件和文件夹
+### 首次备份文件和文件夹
+<a id="to-back-up-files-and-folders-for-the-first-time" class="xliff"></a>
 1. 在“备份代理”中单击“立即备份”，以通过网络完成初始种子设定。
 
     ![立即备份 Windows Server](./media/backup-configure-vault/backup-now.png)
@@ -251,10 +273,12 @@ Microsoft Azure 备份代理提供了网络限制。 限制功能将控制数据
 
 ![IR 完成](./media/backup-configure-vault/ircomplete.png)
 
-## <a name="questions"></a>有疑问？
+## 有疑问？
+<a id="questions" class="xliff"></a>
 如果你有疑问，或者希望包含某种功能，请 [给我们反馈](http://aka.ms/azurebackup_feedback)。
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 有关备份 VM 或其他工作负荷的详细信息，请参阅：
 
 * 备份文件和文件夹后，可以 [管理保管库和服务器](backup-azure-manage-windows-server.md)。

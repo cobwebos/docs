@@ -13,24 +13,25 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 6a3c4273042a7684307d56341de1065ad45eb617
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: ad9174c47e1af8d5dba080ec82f2a56fbbf78782
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/29/2017
 
 
 ---
-# <a name="profiling-live-azure-web-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure Web 应用
+# 使用 Application Insights 探查实时 Azure Web 应用
+<a id="profiling-live-azure-web-apps-with-application-insights" class="xliff"></a>
 
 *Application Insights 的此功能对于应用服务已正式发布，对于计算尚处于预览版阶段。*
 
 使用 [Azure Application Insights](app-insights-overview.md) 的探查工具确定实时 Web 应用程序中的每个方法花费了多长时间。 该工具会显示应用提供的实时请求的详细探查信息，并突出显示占用最多时间的“热路径”。 该工具会自动选择具有不同响应时间的示例。 该探查器使用多种技术来尽量降低开销。
 
-该探查器目前适用于 Azure 应用服务上运行的、至少处于基本定价层的 ASP.NET Web 应用。 （如果使用的是 ASP.NET Core，目标框架必须是 `.NetCoreApp`。）
-
+该探查器目前适用于 Azure 应用服务上运行的、至少处于基本定价层的 ASP.NET Web 应用。 
 
 <a id="installation"></a>
-## <a name="enable-the-profiler"></a>启用探查器
+## 启用探查器
+<a id="enable-the-profiler" class="xliff"></a>
 
 在代码中[安装 Application Insights](app-insights-asp-net.md)。 如果已安装，请确保使用的是最新版本。 （为此，请在解决方案资源管理器中，右键单击你的项目，然后选择“管理 NuGet 包”。 选择“更新”并更新所有包。）重新部署应用。
 
@@ -60,20 +61,23 @@ ms.lasthandoff: 05/10/2017
 
 如果使用 WebDeploy 将更改部署到 Web 应用程序，请确保排除 **App_Data** 文件夹，以防在部署期间将它删除。 否则，下一次将 Web 应用程序部署到 Azure 时，会删除探查器扩展文件。
 
-### <a name="using-profiler-with-azure-vms-and-compute-resources-preview"></a>将探查器与 Azure VM 和计算资源一起使用（预览版）
+### 将探查器与 Azure VM 和计算资源一起使用（预览版）
+<a id="using-profiler-with-azure-vms-and-compute-resources-preview" class="xliff"></a>
 
 [在运行时为 Azure 应用服务启用 Application Insights](app-insights-azure-web-apps.md#run-time-instrumentation-with-application-insights) 后，该探查器将自动可用。 （如果已经为资源启用了 Application Insights，则可能需要通过“配置”向导更新到最新版本。）
 
 目前提供了[用于 Azure 计算资源的探查器的预览版本](https://go.microsoft.com/fwlink/?linkid=848155)。
 
 
-## <a name="limits"></a>限制
+## 限制
+<a id="limits" class="xliff"></a>
 
 默认的数据保留期为 5 天。 每天最多可以引入 10 GB。
 
 探查器服务不收取费用。 你的 Web 应用必须至少托管在应用服务的基本层中。
 
-## <a name="viewing-profiler-data"></a>查看探查器数据
+## 查看探查器数据
+<a id="viewing-profiler-data" class="xliff"></a>
 
 打开“性能”边栏选项卡，向下滚动到操作列表。
 
@@ -103,7 +107,8 @@ ms.lasthandoff: 05/10/2017
 * **所用时间**：从操作开始到操作结束之间的时间间隔。
 * **时间**：显示运行该函数/事件的时间，此值相对于运行其他函数的时间。
 
-## <a name="how-to-read-performance-data"></a>如何读取性能数据
+## 如何读取性能数据
+<a id="how-to-read-performance-data" class="xliff"></a>
 
 Microsoft 服务探查器结合使用采样方法和检测来分析应用程序的性能。
 当详细收集操作正在进行时，服务探查器将每隔一毫秒对每台计算机的 CPU 指令指针采样。
@@ -154,11 +159,13 @@ CPU 正忙于执行指令。
 
 ## <a id="troubleshooting"></a>故障排除
 
-### <a name="how-can-i-know-whether-application-insights-profiler-is-running"></a>如何确定 Application Insights 探查器是否正在运行？
+### 如何确定 Application Insights 探查器是否正在运行？
+<a id="how-can-i-know-whether-application-insights-profiler-is-running" class="xliff"></a>
 
 探查器在 Web 应用中以连续 Web 作业的形式运行。 可以在 https://portal.azure.com 中打开 Web 应用资源，然后在“Web 作业”边栏选项卡中查看“ApplicationInsightsProfiler”状态。 如果探查器未运行，请打开“日志”查看详细信息。
 
-### <a name="why-cant-i-find-any-stack-examples-even-though-the-profiler-is-running"></a>为何即使运行了探查器，也找不到任何堆栈示例？
+### 为何即使运行了探查器，也找不到任何堆栈示例？
+<a id="why-cant-i-find-any-stack-examples-even-though-the-profiler-is-running" class="xliff"></a>
 
 下面是可以检查的几个因素。
 
@@ -170,7 +177,8 @@ CPU 正忙于执行指令。
 
 启动探查器后，将有短暂的一段预热时间，在此期间，探查器会活跃地收集多种性能跟踪。 此后，探查器将每隔一小时收集性能跟踪两分钟。  
 
-### <a name="i-was-using-azure-service-profiler-what-happened-to-it"></a>使用 Azure 服务事件探查器时出现问题， 原因是什么？  
+### 使用 Azure 服务事件探查器时出现问题， 原因是什么？
+<a id="i-was-using-azure-service-profiler-what-happened-to-it" class="xliff"></a>  
 
 启用 Application Insights 探查器时，会禁用 Azure 服务探查器代理。
 
@@ -190,26 +198,32 @@ CPU 正忙于执行指令。
 
 3. 检查在应用中使用的 Application Insights 检测密钥是否与启用探查的 Application Insights 资源使用的检测密钥相同。 该密钥通常保存在 ApplicationInsights.config 中，但也可以在 web.config 或 app.config 中找到。
 
-### <a name="error-report-in-the-profiling-viewer"></a>探查查看器中的错误报告
+### 探查查看器中的错误报告
+<a id="error-report-in-the-profiling-viewer" class="xliff"></a>
 
 通过门户开具支持票证。 请包含错误消息中的相关性 ID。
 
-## <a name="manual-installation"></a>手动安装
+## 手动安装
+<a id="manual-installation" class="xliff"></a>
 
-配置探查器时，将对 Web 应用的设置进行以下更新。 如果你的环境需要，可以手动执行这些操作，例如，当应用程序在使用内部负载均衡器的专用网络中运行时：
+配置探查器时，将对 Web 应用的设置进行以下更新。 如果你的环境需要，可以手动执行这些操作，例如，当应用程序在 Azure 应用服务环境 (ASE)中运行时：
 
 1. 在 Web 应用控制边栏选项卡中打开“设置”。
 2. 将“.Net Framework 版本”设置为 v4.6。
 3. 将“Always On”设置为“打开”。
 4. 添加应用设置“__APPINSIGHTS_INSTRUMENTATIONKEY__”，将值设置为 SDK 使用的同一检测密钥。
-5. 在“扩展”中，添加“Application Insights”。 安装需要几分钟。
+5. 打开“高级工具”。
+6. 单击“转到”以打开 Kudu 网站。
+7. 在 Kudu 网站中，选择“站点扩展”。
+8. 从库中安装“Application Insights”。
+9. 重新启动 Web 应用。
 
 ## <a id="aspnetcore"></a>ASP.NET Core 支持
 
-针对 AI SDK 2.0 或更高版本的 ASP.NET Core 1.1.2 应用程序可以与探查器一起配合使用。 
+ASP.NET Core 应用程序需要安装 Microsoft.ApplicationInsights.AspNetCore Nuget 包 2.1.0-beta6 或更高版本才能使用探查器。 2017 年 6 月 27 日之后，我们不再支持较低版本。
 
-
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 * [在 Visual Studio 中使用 Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)
 

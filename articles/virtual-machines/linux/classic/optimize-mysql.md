@@ -13,22 +13,25 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2015
+ms.date: 05/31/2017
 ms.author: ningk
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: e910c47d88434fae76f9c2d3bcb8a258d7d3fde4
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 8f2ec884fa98e989448ac11675e71f39aa21fa7f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/03/2017
 
 
 ---
-# <a name="optimize-mysql-performance-on-azure-linux-vms"></a>优化 Azure Linux VM 上的 MySQL 性能
+# 优化 Azure Linux VM 上的 MySQL 性能
+<a id="optimize-mysql-performance-on-azure-linux-vms" class="xliff"></a>
 影响 Azure 上 MySQL 性能的因素有很多，主要体现在虚拟硬件选择和软件配置两个方面。 本文重点介绍如何通过存储、系统和数据库配置优化性能。
 
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure Resource Manager](../../../resource-manager-deployment-model.md) 和经典。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关使用 Resource Manager 模型进行 Linux VM 优化的信息，请参阅[优化 Azure 上的 Linux VM](../optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure Resource Manager](../../../resource-manager-deployment-model.md) 和经典。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 有关使用 Resource Manager 模型进行 Linux VM 优化的信息，请参阅[优化 Azure 上的 Linux VM](../optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-## <a name="utilize-raid-on-an-azure-virtual-machine"></a>利用 Azure 虚拟机上的 RAID
+## 利用 Azure 虚拟机上的 RAID
+<a id="utilize-raid-on-an-azure-virtual-machine" class="xliff"></a>
 存储是影响云环境中的数据库性能的关键因素。 与单个磁盘相比，RAID 可以通过并发访问提供更快的访问速度。 有关详细信息，请参阅[标准 RAID 级别](http://en.wikipedia.org/wiki/Standard_RAID_levels)。   
 
 通过 RAID 可改善 Azure 中的磁盘 I/O 吞吐量和 I/O 响应时间。 我们的检验测试表明，随着 RAID 磁盘数量的加倍（从 2 到 4，从 4 到 8，等等），磁盘 I/O 吞吐量平均增加一倍，I/O 响应时间平均缩短一半。 有关详细信息，请参阅[附录 A](#AppendixA)。  
@@ -41,28 +44,25 @@ ms.lasthandoff: 04/03/2017
 
 本文假定你已经创建 Linux 虚拟机，并且安装和配置了 MYSQL。 有关入门的详细信息，请参阅“如何在 Azure 上安装 MySQL”。  
 
-### <a name="set-up-raid-on-azure"></a>在 Azure 上设置 RAID
-以下步骤显示如何使用 Azure 经典门户在 Azure 上创建 RAID。 也可以使用 Windows PowerShell 脚本设置 RAID。
+### 在 Azure 上设置 RAID
+<a id="set-up-raid-on-azure" class="xliff"></a>
+以下步骤展示了如何使用 Azure 门户在 Azure 上创建 RAID。 也可以使用 Windows PowerShell 脚本设置 RAID。
 在本示例中，我们将使用四个磁盘配置 RAID 0。  
 
-#### <a name="add-a-data-disk-to-your-virtual-machine"></a>向虚拟机添加数据磁盘
-在 Azure 经典门户的“虚拟机”页上，单击要添加数据磁盘的虚拟机。 在本示例中，该虚拟机为 mysqlnode1。  
+#### 向虚拟机添加数据磁盘
+<a id="add-a-data-disk-to-your-virtual-machine" class="xliff"></a>
+在 Azure 门户中，转到仪表板并选择要向其中添加数据磁盘的虚拟机。 在本示例中，该虚拟机为 mysqlnode1。  
 
-![虚拟机][1]
+<!--![Virtual machines][1]-->
 
-在该虚拟机的相应页面上，单击“仪表板”。  
+选择“磁盘”，然后单击“附加新磁盘”。
 
-![虚拟机仪表板][2]
+![虚拟机添加磁盘](media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-Disks-option.png)
 
-在任务栏中，单击“附加”。
+创建一个新的 500 GB 磁盘。 请确保“主机缓存首选项”设置为“无”。  完成后，单击“确定”。
 
-![虚拟机任务栏][3]
+![附加空磁盘](media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-attach-empty-disk.png)
 
-然后单击“附加空磁盘”。  
-
-![附加空磁盘][4]
-
-对于数据磁盘，“主机缓存首选项”应设置为“无”。  
 
 这将向虚拟机添加一个空磁盘。 再重复此步骤三次，以便为 RAID 附加四个数据磁盘。  
 
@@ -70,7 +70,8 @@ ms.lasthandoff: 04/03/2017
 
     sudo grep SCSI /var/log/dmesg
 
-#### <a name="create-raid-with-the-additional-disks"></a>创建具有更多磁盘的 RAID
+#### 创建具有更多磁盘的 RAID
+<a id="create-raid-with-the-additional-disks" class="xliff"></a>
 以下步骤介绍如何[在 Linux 上配置软件 RAID](../configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 > [!NOTE]
@@ -87,23 +88,27 @@ ms.lasthandoff: 04/03/2017
     yum -y install xfsprogs  xfsdump
 
 
-#### <a name="set-up-a-new-storage-path"></a>设置新的存储路径
+#### 设置新的存储路径
+<a id="set-up-a-new-storage-path" class="xliff"></a>
 使用以下命令设置新的存储路径：  
 
     root@mysqlnode1:~# mkdir -p /RAID0/mysql
 
-#### <a name="copy-the-original-data-to-the-new-storage-path"></a>将原始数据复制到新的存储路径
+#### 将原始数据复制到新的存储路径
+<a id="copy-the-original-data-to-the-new-storage-path" class="xliff"></a>
 使用以下命令将数据复制到新的存储路径：  
 
     root@mysqlnode1:~# cp -rp /var/lib/mysql/* /RAID0/mysql/
 
-#### <a name="modify-permissions-so-mysql-can-access-read-and-write-the-data-disk"></a>修改权限以便 MySQL 访问（读取和写入）数据磁盘
+#### 修改权限以便 MySQL 访问（读取和写入）数据磁盘
+<a id="modify-permissions-so-mysql-can-access-read-and-write-the-data-disk" class="xliff"></a>
 使用以下命令修改权限：  
 
     root@mysqlnode1:~# chown -R mysql.mysql /RAID0/mysql && chmod -R 755 /RAID0/mysql
 
 
-## <a name="adjust-the-disk-io-scheduling-algorithm"></a>调整磁盘 I/O 计划算法
+## 调整磁盘 I/O 计划算法
+<a id="adjust-the-disk-io-scheduling-algorithm" class="xliff"></a>
 Linux 实现了四种类型的 I/O 计划算法：  
 
 * NOOP 算法（无操作）
@@ -119,7 +124,8 @@ Linux 实现了四种类型的 I/O 计划算法：
 
 下面的示例演示如何在 Debian 分发系列中检查默认计划程序并将其设置为 NOOP 算法。  
 
-### <a name="view-the-current-io-scheduler"></a>查看当前的 I/O 调度器
+### 查看当前的 I/O 调度器
+<a id="view-the-current-io-scheduler" class="xliff"></a>
 若要查看计划程序，请运行下列命令：  
 
     root@mysqlnode1:~# cat /sys/block/sda/queue/scheduler
@@ -129,7 +135,8 @@ Linux 实现了四种类型的 I/O 计划算法：
     noop [deadline] cfq
 
 
-### <a name="change-the-current-device-devsda-of-the-io-scheduling-algorithm"></a>更改 I/O 计划算法的当前设备 (/dev/sda)
+### 更改 I/O 计划算法的当前设备 (/dev/sda)
+<a id="change-the-current-device-devsda-of-the-io-scheduling-algorithm" class="xliff"></a>
 运行以下命令以更改当前设备：  
 
     azureuser@mysqlnode1:~$ sudo su -
@@ -157,7 +164,8 @@ Linux 实现了四种类型的 I/O 计划算法：
 
     echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 
-## <a name="configure-system-file-operations-settings"></a>配置系统文件操作设置
+## 配置系统文件操作设置
+<a id="configure-system-file-operations-settings" class="xliff"></a>
 最佳做法之一是禁用文件系统上的 *atime* 日志记录功能。 Atime 指最后一次文件访问的时间。 无论何时访问文件，文件系统都会在日志中记录时间戳。 但是，很少使用此信息。 如果不需要，可以禁用它，这样将减少总体磁盘访问时间。  
 
 若要禁用 atime 日志记录，需修改文件系统配置文件 /etc/ fstab 并添加 **noatime** 选项。  
@@ -184,10 +192,12 @@ Linux 实现了四种类型的 I/O 计划算法：
 
 ![访问修改后的代码][6]
 
-## <a name="increase-the-maximum-number-of-system-handles-for-high-concurrency"></a>增加系统句柄的最大数量以实现高并发
+## 增加系统句柄的最大数量以实现高并发
+<a id="increase-the-maximum-number-of-system-handles-for-high-concurrency" class="xliff"></a>
 MySQL 是高并发数据库。 对于 Linux，默认的并发句柄数量是 1024 个，这个数量有时候不够用。 通过执行以下步骤来增加系统的最大并发句柄数，以此支持 MySQL 的高并发。
 
-### <a name="modify-the-limitsconf-file"></a>修改 limits.conf 文件
+### 修改 limits.conf 文件
+<a id="modify-the-limitsconf-file" class="xliff"></a>
 若要增加允许的最大并发句柄数，请在 /etc/security/limits.conf 文件中添加以下四行。 请注意，65536 是系统可以支持的最大数量。   
 
     * soft nofile 65536
@@ -195,19 +205,22 @@ MySQL 是高并发数据库。 对于 Linux，默认的并发句柄数量是 102
     * soft nproc 65536
     * hard nproc 65536
 
-### <a name="update-the-system-for-the-new-limits"></a>更新系统的新限制
+### 更新系统的新限制
+<a id="update-the-system-for-the-new-limits" class="xliff"></a>
 若要更新系统，请运行以下命令：  
 
     ulimit -SHn 65536
     ulimit -SHu 65536
 
-### <a name="ensure-that-the-limits-are-updated-at-boot-time"></a>确保在启动时更新限制
+### 确保在启动时更新限制
+<a id="ensure-that-the-limits-are-updated-at-boot-time" class="xliff"></a>
 在 /etc/rc.local 文件中放入以下启动命令，以便其在启动时生效。  
 
     echo “ulimit -SHn 65536” >>/etc/rc.local
     echo “ulimit -SHu 65536” >>/etc/rc.local
 
-## <a name="mysql-database-optimization"></a>MySQL 数据库优化
+## MySQL 数据库优化
+<a id="mysql-database-optimization" class="xliff"></a>
 若要在 Azure 上配置 MySQL，可以使用在本地计算机上使用的相同性能优化策略。  
 
 主要 I/O 优化规则包括：   
@@ -230,7 +243,8 @@ MySQL 是高并发数据库。 对于 Linux，默认的并发句柄数量是 102
 
 请参阅[附录 D](#AppendixD)，获取优化前后的性能比较。
 
-## <a name="turn-on-the-mysql-slow-query-log-for-analyzing-the-performance-bottleneck"></a>启用 MySQL 慢查询日志进行性能瓶颈分析
+## 启用 MySQL 慢查询日志进行性能瓶颈分析
+<a id="turn-on-the-mysql-slow-query-log-for-analyzing-the-performance-bottleneck" class="xliff"></a>
 MySQL 慢查询日志有助于识别 MySQL 的慢查询。 在启用 MySQL 慢查询日志后，可以使用 **mysqldumpslow** 等 MySQL 工具来识别性能瓶颈。  
 
 默认情况下，未启用此项。 启用慢查询日志可能会占用一些 CPU 资源。 建议临时启用此选项来排除性能瓶颈。 若要启用慢查询日志，请执行以下操作：
@@ -253,7 +267,8 @@ MySQL 慢查询日志有助于识别 MySQL 的慢查询。 在启用 MySQL 慢�
 
 在本示例中，可以看到慢查询功能已启用。 然后可以使用 **mysqldumpslow** 工具来确定性能瓶颈和优化性能，比如添加索引。
 
-## <a name="appendices"></a>附录
+## 附录
+<a id="appendices" class="xliff"></a>
 以下是在目标实验室环境中生成的性能测试示例数据。 它们使用不同性能优化方法提供性能数据趋势的一般背景知识。 在不同的环境或产品版本下，结果可能会不同。
 
 ### <a name="AppendixA"></a>附录 A  
@@ -348,4 +363,5 @@ MySQL 慢查询日志有助于识别 MySQL 的慢查询。 在启用 MySQL 慢�
 [12]:media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-12.png
 [13]:media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-13.png
 [14]:media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-14.png
+
 

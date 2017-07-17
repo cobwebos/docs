@@ -13,19 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/05/2017
+ms.date: 06/06/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 06fe033be4df07d8c691733016bc7c44dd49f51c
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: e0c44f6aabb56dfc97188bafa5e54ce2a0183e11
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/08/2017
 
 
 ---
-# <a name="planning-and-design-for-vpn-gateway"></a>规划和设计 VPN 网关
+# 规划和设计 VPN 网关
+<a id="planning-and-design-for-vpn-gateway" class="xliff"></a>
 规划和设计跨界配置和 VNet 到 VNet 配置可能很简单，也可能很复杂，具体取决于网络需求。 本文详细介绍基本规划和设计注意事项。
 
-## <a name="planning"></a>规划
+## 规划
+<a id="planning" class="xliff"></a>
 ### <a name="compare"></a>跨界连接选项
 若要安全地将本地站点连接到虚拟网络，可以使用三种不同的方式实现此目的：站点到站点、点到站点和 ExpressRoute。 比较可用的不同跨界连接。 选择的选项取决于不同的考虑因素，例如：
 
@@ -37,20 +40,18 @@ ms.lasthandoff: 04/06/2017
 * 想要创建的解决方案需要哪种类型的 VPN 网关？
 * 你应该使用哪个网关 SKU？
 
+
+### 规划表
+<a id="planning-table" class="xliff"></a>
 下表可帮助选择最适合解决方案的连接选项。
 
 [!INCLUDE [vpn-gateway-cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
-### <a name="gwrequire"></a>根据 VPN 类型和 SKU 考虑网关要求
-[!INCLUDE [vpn-gateway-gwsku](../../includes/vpn-gateway-gwsku-include.md)]
 
-有关网关 SKU 的详细信息，请参阅 [VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
-
-#### <a name="aggregate-throughput-by-sku-and-vpn-type"></a>按 SKU 和 VPN 类型估计的吞吐量
+### 网关 SKU
+<a id="gateway-skus" class="xliff"></a>
 [!INCLUDE [vpn-gateway-table-gwtype-aggtput](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
-#### <a name="supported-configurations-by-sku-and-vpn-type"></a>按 SKU 和 VPN 类型划分的受支持配置
-[!INCLUDE [vpn-gateway-table-requirements](../../includes/vpn-gateway-table-requirements-include.md)]
 
 ### <a name="wf"></a>工作流
 以下列表概述了云连接的常用工作流：
@@ -61,7 +62,8 @@ ms.lasthandoff: 04/06/2017
 4. 创建并配置与本地网络或其他虚拟网络的连接（根据需要）。
 5. 创建并配置 Azure VPN 网关的点到站点连接（根据需要）。
 
-## <a name="design"></a>设计
+## 设计
+<a id="design" class="xliff"></a>
 ### <a name="topologies"></a>连接拓扑
 首先查看[关于 VPN 网关](vpn-gateway-about-vpngateways.md)一文中的示意图。 该文章包含基本原理图、每种拓扑的部署模型（Resource Manager 或经典）和可用来部署配置的部署工具。   
 
@@ -122,7 +124,8 @@ VPN 网关需要一个特定的子网，称为网关子网。 所有网关子网
 
 ![Azure VPN 网关强制隧道示意图](./media/vpn-gateway-plan-design/forced-tunneling-diagram.png)
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 请参阅 [VPN 网关常见问题](vpn-gateway-vpn-faq.md)和[关于 VPN 网关](vpn-gateway-about-vpngateways.md)文章，获取可帮助进行设计的详细信息。
 
 有关特定网关设置的详细信息，请参阅[关于 VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md)。

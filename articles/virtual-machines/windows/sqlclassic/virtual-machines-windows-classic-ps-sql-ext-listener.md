@@ -13,16 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/28/2016
+ms.date: 05/31/2017
 ms.author: mikeray
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: d9138b17e54aa1c4bf1982b09d3d0ad10e936d4c
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 8e506be42aea4fb3c48c29b771a78dcf694f4518
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/02/2017
 
 
 ---
-# <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>在 Azure 中配置 AlwaysOn 可用性组的外部侦听器
+# 在 Azure 中配置 AlwaysOn 可用性组的外部侦听器
+<a id="configure-an-external-listener-for-always-on-availability-groups-in-azure" class="xliff"></a>
 > [!div class="op_single_selector"]
 > * [内部侦听器](../classic/ps-sql-int-listener.md)
 > * [外部侦听器](../classic/ps-sql-ext-listener.md)
@@ -32,11 +34,12 @@ ms.lasthandoff: 03/25/2017
 本主题说明如何为 AlwaysOn 可用性组配置一个可以通过 Internet 从外部访问的侦听器。 这通过将云服务的**公共虚拟 IP (VIP)** 地址与侦听器关联来实现。
 
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
 
 你的可用性组可以仅包含本地副本或 Azure 副本，也可以跨越本地和 Azure 以实现混合配置。 Azure 副本可以位于同一区域，也可以跨越使用多个虚拟网络 (VNet) 的多个区域。 下面的步骤假设已经[配置可用性组](../classic/portal-sql-alwayson-availability-groups.md)，但未配置侦听器。
 
-## <a name="guidelines-and-limitations-for-external-listeners"></a>外部侦听器的准则和限制
+## 外部侦听器的准则和限制
+<a id="guidelines-and-limitations-for-external-listeners" class="xliff"></a>
 在使用云服务的公共 VIP 地址部署时，请注意有关 Azure 中可用性组侦听器的以下准则：
 
 * Windows Server 2008 R2、Windows Server 2012 和 Windows Server 2012 R2 支持可用性组侦听器。
@@ -45,12 +48,14 @@ ms.lasthandoff: 03/25/2017
 * 如果你要为混合环境创建侦听器，则本地网络必须连接到公共 Internet，还通过 Azure 虚拟网络连接到站点到站点 VPN。 位于 Azure 子网中时，只能通过相应云服务的公共 IP 地址来访问该可用性组侦听器。
 * 不支持在你在其中也有使用内部负载均衡器 (ILB) 的内部侦听器的同一云服务中创建外部侦听器。
 
-## <a name="determine-the-accessibility-of-the-listener"></a>确定侦听器的可访问性
+## 确定侦听器的可访问性
+<a id="determine-the-accessibility-of-the-listener" class="xliff"></a>
 [!INCLUDE [ag-listener-accessibility](../../../../includes/virtual-machines-ag-listener-determine-accessibility.md)]
 
 本文重点介绍如何创建使用**外部负载均衡**的侦听器。 如果要创建专用于虚拟网络的侦听器，请参阅本文的另一个版本，其中提供了设置[使用 ILB 的侦听器](../classic/ps-sql-int-listener.md)的步骤
 
-## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>创建支持直接服务器返回的负载均衡 VM 终结点
+## 创建支持直接服务器返回的负载均衡 VM 终结点
+<a id="create-load-balanced-vm-endpoints-with-direct-server-return" class="xliff"></a>
 外部负载均衡使用托管 VM 的云服务的公共虚拟 IP 地址。 因此，在这种情况下，你不需要创建或配置负载均衡器。
 
 你必须为每个托管 Azure 副本的 VM 创建一个负载均衡的终结点。 如果你在多个区域中拥有副本，该区域的每个副本必须位于同一个 VNet 的同一个云服务中。 跨越多个 Azure 区域创建可用性组副本需要配置多个 Vnet。 有关配置跨 VNet 连接的详细信息，请参阅[配置 VNet 到 VNet 连接](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)。
@@ -81,21 +86,26 @@ ms.lasthandoff: 03/25/2017
 
 2. 设置变量后，将脚本从文本编辑器复制到 Azure PowerShell 会话中运行。 如果提示符仍然显示 >>，请再次按 Enter，以确保脚本开始运行。
 
-## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>如果需要，请验证是否已安装 KB2854082
+## 如果需要，请验证是否已安装 KB2854082
+<a id="verify-that-kb2854082-is-installed-if-necessary" class="xliff"></a>
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
 
-## <a name="open-the-firewall-ports-in-availability-group-nodes"></a>在可用性组节点中打开防火墙端口
+## 在可用性组节点中打开防火墙端口
+<a id="open-the-firewall-ports-in-availability-group-nodes" class="xliff"></a>
 [!INCLUDE [firewall](../../../../includes/virtual-machines-ag-listener-open-firewall.md)]
 
-## <a name="create-the-availability-group-listener"></a>创建可用性组侦听器
+## 创建可用性组侦听器
+<a id="create-the-availability-group-listener" class="xliff"></a>
 
 通过两个步骤创建可用性组侦听器。 首先，创建客户端接入点的群集资源，并配置依赖关系。 其次，使用 PowerShell 配置群集资源。
 
-### <a name="create-the-client-access-point-and-configure-the-cluster-dependencies"></a>创建客户端接入点和配置群集依赖关系
+### 创建客户端接入点和配置群集依赖关系
+<a id="create-the-client-access-point-and-configure-the-cluster-dependencies" class="xliff"></a>
 [!INCLUDE [firewall](../../../../includes/virtual-machines-ag-listener-create-listener.md)]
 
-### <a name="configure-the-cluster-resources-in-powershell"></a>在 PowerShell 中配置群集资源
-1. 对于外部负载均衡，你必须获取包含副本的云服务的公共虚拟 IP 地址。 登录到 Azure 经典门户。 导航到包含你的可用性组 VM 的云服务。 打开“仪表板”视图。
+### 在 PowerShell 中配置群集资源
+<a id="configure-the-cluster-resources-in-powershell" class="xliff"></a>
+1. 对于外部负载均衡，你必须获取包含副本的云服务的公共虚拟 IP 地址。 登录到 Azure 门户。 导航到包含你的可用性组 VM 的云服务。 打开“仪表板”视图。
 2. 记下“公共虚拟 IP (VIP)地址”下显示的地址。 如果解决方案跨 VNet，请针对包含副本所在 VM 的每个云服务重复此步骤。
 3. 在某个 VM 上，将以下 PowerShell 脚本复制到文本编辑器中，将变量设置为之前记下的值。
    
@@ -113,16 +123,20 @@ ms.lasthandoff: 03/25/2017
 4. 设置变量之后，打开提升的 Windows PowerShell 窗口，然后从文本编辑器复制脚本，并将其粘贴到 Azure PowerShell 会话中运行。 如果提示符仍然显示 >>，请再次按 Enter，以确保脚本开始运行。
 5. 在每个 VM 上重复此过程。 此脚本将使用云服务的 IP 地址来配置 IP 地址资源，同时设置探测端口等其他参数。 在 IP 地址资源联机后，它可以响应我们在本教程前面部分创建的负载均衡终结点在探测端口上的轮询。
 
-## <a name="bring-the-listener-online"></a>使侦听器联机
+## 使侦听器联机
+<a id="bring-the-listener-online" class="xliff"></a>
 [!INCLUDE [Bring-Listener-Online](../../../../includes/virtual-machines-ag-listener-bring-online.md)]
 
-## <a name="follow-up-items"></a>后续操作项
+## 后续操作项
+<a id="follow-up-items" class="xliff"></a>
 [!INCLUDE [Follow-up](../../../../includes/virtual-machines-ag-listener-follow-up.md)]
 
-## <a name="test-the-availability-group-listener-within-the-same-vnet"></a>测试可用性组侦听器（在同一 VNet 中）
+## 测试可用性组侦听器（在同一 VNet 中）
+<a id="test-the-availability-group-listener-within-the-same-vnet" class="xliff"></a>
 [!INCLUDE [Test-Listener-Within-VNET](../../../../includes/virtual-machines-ag-listener-test.md)]
 
-## <a name="test-the-availability-group-listener-over-the-internet"></a>测试可用性组侦听器（通过 Internet）
+## 测试可用性组侦听器（通过 Internet）
+<a id="test-the-availability-group-listener-over-the-internet" class="xliff"></a>
 若要从虚拟网络外部访问侦听器，必须使用外部/公共负载均衡（如本主题中所述）而不是 ILB，因为 ILB 只能在同一 VNet 中进行访问。 在连接字符串中指定云服务名称。 例如，如果云服务名为 *mycloudservice*，则 sqlcmd 语句将如下所示：
 
     sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
@@ -131,7 +145,8 @@ ms.lasthandoff: 03/25/2017
 
 如果 Always On 副本位于不同子网中，客户端必须在连接字符串中指定 **MultisubnetFailover=True**。 这会导致尝试并行连接到不同子网中的副本。 请注意，这种情况下包括跨区域 AlwaysOn 可用性组部署。
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 [!INCLUDE [Listener-Next-Steps](../../../../includes/virtual-machines-ag-listener-next-steps.md)]
 
 

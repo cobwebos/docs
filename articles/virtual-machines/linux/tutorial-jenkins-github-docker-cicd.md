@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 中使用 Jenkins 创建 CI/CD 管道 | Microsoft Docs"
-description: "了解如何在 Azure 中创建一个 Jenkins 实例，用于在每次提交代码后从 GitHub 提取数据，并生成新的 Docker 容器来运行应用"
+title: "在 Azure 中使用 Jenkins 创建开发管道 | Microsoft Docs"
+description: "了解如何在 Azure 中创建一个 Jenkins 虚拟机，用于在每次提交代码后从 GitHub 提取数据，并生成新的 Docker 容器来运行应用"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -17,14 +17,15 @@ ms.date: 05/08/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: dbf9b9f997ce8b66f8672f75f49f568d45e57390
+ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
+ms.openlocfilehash: b606d2c3070f8020cdd9aad3f12f8f1e43125138
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/21/2017
 
 ---
 
-# <a name="create-a-cicd-infrastructure-on-a-linux-vm-in-azure-that-uses-jenkins-github-and-docker"></a>在 Azure 中的 Linux VM 上创建使用 Jenkins、GitHub 和 Docker 的 CI/CD 基础结构
+# 如何使用 Jenkins、GitHub 和 Docker 在 Azure 中的 Linux VM 上创建开发基础结构
+<a id="how-to-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker" class="xliff"></a>
 若要将应用程序开发的生成和测试阶段自动化，可以使用持续集成和部署 (CI/CD) 管道。 本教程介绍如何在 Azure VM 上创建 CI/CD 管道，包括如何：
 
 > [!div class="checklist"]
@@ -35,11 +36,13 @@ ms.lasthandoff: 05/09/2017
 > * 创建应用的 Docker 映像
 > * 验证 GitHub 提交是否生成新的 Docker 映像并更新正在运行的应用
 
-本教程需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-jenkins-instance"></a>创建 Jenkins 实例
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+
+## 创建 Jenkins 实例
+<a id="create-jenkins-instance" class="xliff"></a>
 在有关[如何在首次启动时自定义 Linux 虚拟机](tutorial-automate-vm-deployment.md)的上一个教程中，你已了解如何使用 cloud-init 自动执行 VM 自定义。 本教程使用 cloud-init 文件在 VM 上安装 Jenkins 和 Docker。 
 
 创建名为 *cloud-init-jenkins.txt* 的 cloud-init 文件并粘贴以下内容：
@@ -95,7 +98,8 @@ az vm open-port --resource-group myResourceGroupJenkins --name myVM --port 1337 
 ```
 
 
-## <a name="configure-jenkins"></a>配置 Jenkins
+## 配置 Jenkins
+<a id="configure-jenkins" class="xliff"></a>
 若要访问 Jenkins 实例，请获取 VM 的公共 IP 地址：
 
 ```azurecli-interactive 
@@ -123,7 +127,8 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 - 完成后，单击“开始使用 Jenkins”
 
 
-## <a name="create-github-webhook"></a>创建 GitHub Webhook
+## 创建 GitHub Webhook
+<a id="create-github-webhook" class="xliff"></a>
 若要配置与 GitHub 的集成，请从 Azure 示例存储库中打开 [Node.js Hello World 示例应用](https://github.com/Azure-Samples/nodejs-docs-hello-world)。 若要将存储库分叉到你自己的 GitHub 帐户，请单击右上角的“分叉”按钮。
 
 在创建的分叉中创建 Webhook：
@@ -137,7 +142,8 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ![将 GitHub Webhook 添加到分叉的存储库](media/tutorial-jenkins-github-docker-cicd/github_webhook.png)
 
 
-## <a name="create-jenkins-job"></a>创建 Jenkins 作业
+## 创建 Jenkins 作业
+<a id="create-jenkins-job" class="xliff"></a>
 若要让 Jenkins 对 GitHub 中的事件（例如提交代码）做出响应，请创建 Jenkins 作业。 
 
 在 Jenkins 网站中的主页上，单击“创建新作业”：
@@ -150,7 +156,8 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 - 单击作业窗口底部的“保存”。
 
 
-## <a name="test-github-integration"></a>测试 GitHub 集成
+## 测试 GitHub 集成
+<a id="test-github-integration" class="xliff"></a>
 若要测试 GitHub 与 Jenkins 的集成，请提交分叉中的更改。 
 
 返回到 GitHub Web UI，选择分叉的存储库，然后单击“index.js”文件。 单击铅笔图标编辑该文件，使第 6 行的内容如下：
@@ -164,7 +171,8 @@ response.end("Hello World!");`.
 在 Jenkins 中，作业页左下角的“生成历史记录”部分下面启动了一个新的生成。 单击生成编号链接，然后选择左侧的“控制台输出”。 从 GitHub 提取代码以及生成操作将消息 `Testing` 输出到控制台时，可以查看 Jenkins 执行的步骤。 每次在 GitHub 中提交内容时，Webhook 将以此方式访问 Jenkins 并触发新的生成。
 
 
-## <a name="define-docker-build-image"></a>定义 Docker 生成映像
+## 定义 Docker 生成映像
+<a id="define-docker-build-image" class="xliff"></a>
 为了查看基于 GitHub 提交内容运行的 Node.js 应用，让我们生成一个 Docker 映像用于运行该应用。 该映像是从定义如何配置运行应用的容器的 Dockerfile 生成的。 
 
 通过 SSH 连接到 VM 后，请切换到根据上一步骤创建的作业命名的 Jenkins 工作区目录。 在本示例中，该目录名为 *HelloWorld*。
@@ -189,7 +197,8 @@ COPY index.js /var/www/
 此 Dockerfile 使用基本 Node.js 映像（该映像使用 Alpine Linux），公开运行 Hello World 应用的端口 1337，然后复制应用文件并初始化应用。
 
 
-## <a name="create-jenkins-build-rules"></a>创建 Jenkins 生成规则
+## 创建 Jenkins 生成规则
+<a id="create-jenkins-build-rules" class="xliff"></a>
 在上一步骤中，已创建一个可将消息输出到控制台的基本 Jenkins 生成规则。 让我们创建生成步骤以使用 Dockerfile 并运行应用。
 
 返回到 Jenkins 实例，选择上一步骤创建的作业。 单击左侧的“配置”，然后向下滚动到“生成”部分：
@@ -207,7 +216,8 @@ COPY index.js /var/www/
 Docker 生成步骤将创建一个映像，并使用 Jenkins 生成编号对其进行标记，以便可以维护映像的历史记录。 运行应用的任何现有容器将会停止，随后被删除。 然后，将使用该映像启动新的容器，并基于 GitHub 中的最新提交内容运行 Node.js 应用。
 
 
-## <a name="test-your-pipeline"></a>测试管道
+## 测试管道
+<a id="test-your-pipeline" class="xliff"></a>
 若要查看整个管道的工作状况，请再次在分叉的 GitHub 存储库中编辑 *index.js* 文件，然后单击“提交更改”。 将会基于 GitHub 的 Webhook 在 Jenkins 中启动新作业。 创建 Docker 映像并在新容器中启动应用需要几秒钟时间。
 
 如果需要，请再次获取 VM 的公共 IP 地址：
@@ -225,7 +235,8 @@ az vm show --resource-group myResourceGroupJenkins --name myVM -d --query [publi
 ![在 GitHub 中再次提交更改后运行 Node.js 应用](media/tutorial-jenkins-github-docker-cicd/another_running_nodejs_app.png)
 
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 在本教程中，你已将 GitHub 配置为每次提交代码后运行 Jenkins 生成作业，然后部署了一个 Docker 容器用于测试应用。 你已了解如何：
 
 > [!div class="checklist"]
