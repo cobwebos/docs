@@ -12,27 +12,32 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/2017
+ms.date: 06/29/2017
 ms.author: saysa
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 71e3d130f22515d22dc7f486f3dede936b874049
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 32d39e2c19348bc4a1ba218cfc411a70f9f212e3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/30/2017
 
 
 ---
-# <a name="use-jenkins-to-build-and-deploy-your-linux-java-application"></a>使用 Jenkins 生成和部署 Linux Java 应用程序
+# 使用 Jenkins 生成和部署 Linux Java 应用程序
+<a id="use-jenkins-to-build-and-deploy-your-linux-java-application" class="xliff"></a>
 Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使用 Jenkins 生成和部署 Azure Service Fabric 应用程序。
 
-## <a name="general-prerequisites"></a>常规先决条件
+## 常规先决条件
+<a id="general-prerequisites" class="xliff"></a>
 - 已在本地安装 Git。 可以根据操作系统[从 Git 下载页](https://git-scm.com/downloads)安装相应的 Git 版本。 如果你是 Git 的新手，请通过 [Git 文档](https://git-scm.com/docs)了解其详细信息。
 - 已准备好 Service Fabric Jenkins 插件。 可从 [Service Fabric 下载页](https://servicefabricdownloads.blob.core.windows.net/jenkins/serviceFabric.hpi)下载该插件。
 
-## <a name="set-up-jenkins-inside-a-service-fabric-cluster"></a>在 Service Fabric 群集中设置 Jenkins
+## 在 Service Fabric 群集中设置 Jenkins
+<a id="set-up-jenkins-inside-a-service-fabric-cluster" class="xliff"></a>
 
-可在 Service Fabric 群集内部或外部设置 Jenkins。 以下部分说明如何在群集内部设置 Jenkins。
+可在 Service Fabric 群集内部或外部设置 Jenkins。 以下各部分展示了如何在群集内部对其进行设置，同时使用 Azure 存储帐户保存容器实例的状态。
 
-### <a name="prerequisites"></a>先决条件
+### 先决条件
+<a id="prerequisites" class="xliff"></a>
 1. 准备好 Service Fabric Linux 群集。 通过 Azure 门户创建的 Service Fabric 群集已安装 Docker。 如果在本地运行群集，可使用 ``docker info`` 命令检查是否已安装 Docker。 如果未安装，请相应地使用以下命令安装它：
 
   ```sh
@@ -42,14 +47,31 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 2. 执行以下步骤在群集上部署 Service Fabric 容器应用程序：
 
   ```sh
-git clone https://github.com/Azure-Samples/service-fabric-java-getting-started.git -b JenkinsDocker
+git clone https://github.com/Azure-Samples/service-fabric-java-getting-started.git
 cd service-fabric-java-getting-started/Services/JenkinsDocker/
+```
+
+3. 你需要获取你希望在其中持久保存 Jenkins 容器实例状态的 Azure 存储文件共享的连接选项详细信息。 如果使用 Microsoft Azure 门户实现同样的目标，请执行以下步骤 - 创建一个 Azure 存储帐户，例如 ``sfjenkinsstorage1``。 在该存储帐户下创建一个**文件共享**，例如 ``sfjenkins``。 针对文件共享单击“连接”，并记下它在“从 Linux 进行连接”下显示的值，例如，这看起来将如下所示 -
+```sh
+sudo mount -t cifs //sfjenkinsstorage1.file.core.windows.net/sfjenkins [mount point] -o vers=3.0,username=sfjenkinsstorage1,password=GB2NPUCQY9LDGeG9Bci5dJV91T6SrA7OxrYBUsFHyueR62viMrC6NIzyQLCKNz0o7pepGfGY+vTa9gxzEtfZHw==,dir_mode=0777,file_mode=0777
+```
+
+4. 使用对应的 azure 存储详细信息更新 ```setupentrypoint.sh``` 脚本中的占位符值。
+```sh
+vi JenkinsSF/JenkinsOnSF/Code/setupentrypoint.sh
+```
+将 ``[REMOTE_FILE_SHARE_LOCATION]`` 替换为前面第 3 点内容中的连接输出中的值 ``//sfjenkinsstorage1.file.core.windows.net/sfjenkins``。
+将 ``[FILE_SHARE_CONNECT_OPTIONS_STRING]`` 替换为前面的第 3 点内容中的值 ``vers=3.0,username=sfjenkinsstorage1,password=GB2NPUCQY9LDGeG9Bci5dJV91T6SrA7OxrYBUsFHyueR62viMrC6NIzyQLCKNz0o7pepGfGY+vTa9gxzEtfZHw==,dir_mode=0777,file_mode=0777``。
+
+5. 连接到群集并安装容器应用程序。
+```sh
 azure servicefabric cluster connect http://PublicIPorFQDN:19080   # Azure CLI cluster connect command
 bash Scripts/install.sh
 ```
 这会在群集上安装 Jenkins 容器，可以使用 Service Fabric Explorer 监视该容器。
 
-### <a name="steps"></a>步骤
+### 步骤
+<a id="steps" class="xliff"></a>
 1. 在浏览器中转到 ``http://PublicIPorFQDN:8081``。 该 URL 提供了登录时所需的初始管理员密码的路径。 可继续以管理员用户的身份使用 Jenkins。 或者，可在使用初始管理员帐户登录后创建和更改用户。
 
    > [!NOTE]
@@ -73,11 +95,13 @@ bash Scripts/install.sh
   docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
   ```
 
-## <a name="set-up-jenkins-outside-a-service-fabric-cluster"></a>在 Service Fabric 群集外部设置 Jenkins
+## 在 Service Fabric 群集外部设置 Jenkins
+<a id="set-up-jenkins-outside-a-service-fabric-cluster" class="xliff"></a>
 
 可在 Service Fabric 群集内部或外部设置 Jenkins。 以下部分说明如何在群集外部设置 Jenkins。
 
-### <a name="prerequisites"></a>先决条件
+### 先决条件
+<a id="prerequisites" class="xliff"></a>
 需安装 Docker。 可在终端中使用以下命令安装 Docker：
 
   ```sh
@@ -87,7 +111,8 @@ bash Scripts/install.sh
 
 现在，在终端中运行 ``docker info`` 时，输出中应会显示 Docker 服务正在运行。
 
-### <a name="steps"></a>步骤
+### 步骤
+<a id="steps" class="xliff"></a>
   1. 拉取 Service Fabric Jenkins 容器映像：``docker pull raunakpandya/jenkins:v1``
   2. 运行容器映像：``docker run -itd -p 8080:8080 raunakpandya/jenkins:v1``
   3. 获取容器映像实例的 ID。 可以使用命令 ``docker ps –a`` 列出所有 Docker 容器
@@ -102,7 +127,7 @@ bash Scripts/install.sh
   5. 使用 [Generating a new SSH key and adding it to the SSH agent](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)（生成新的 SSH 密钥并将其添加到 SSH 代理）中所述的步骤，将 GitHub 设置为使用 Jenkins。
         * 根据 GitHub 提供的说明生成 SSH 密钥，然后将 SSH 密钥添加到托管存储库的 GitHub 帐户。
         * 在 Jenkins Docker shell（而不是主机）中运行上述链接中提到的命令。
-        * 若要从主机登录到 Jenkins shell，请使用以下命令：
+      * 若要从主机登录到 Jenkins shell，请使用以下命令：
 
       ```sh
       docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
@@ -110,13 +135,15 @@ bash Scripts/install.sh
 
 确保托管 Jenkins 容器映像的群集或计算机使用公共 IP。 这样，Jenkins 实例便可以从 GitHub 接收通知。
 
-## <a name="install-the-service-fabric-jenkins-plug-in-from-the-portal"></a>通过门户安装 Service Fabric Jenkins 插件
+## 通过门户安装 Service Fabric Jenkins 插件
+<a id="install-the-service-fabric-jenkins-plug-in-from-the-portal" class="xliff"></a>
 
 1. 转到 ``http://PublicIPorFQDN:8081``
 2. 在 Jenkins 仪表板中，选择“管理 Jenkins” > “管理插件” > “高级”。
-可在此处上载插件。 选择“选择文件”，然后选择已根据先决条件所述下载的“serviceFabric.hpi”文件。 选择“上载”时，Jenkins 会自动安装该插件。 如果系统请求重新启动，请允许。
+可在此处上传插件。 选择“选择文件”，然后选择已根据先决条件所述下载的“serviceFabric.hpi”文件。 选择 **上传** 时，Jenkins 会自动安装该插件。 如果系统请求重新启动，请允许。
 
-## <a name="create-and-configure-a-jenkins-job"></a>创建和配置 Jenkins 作业
+## 创建和配置 Jenkins 作业
+<a id="create-and-configure-a-jenkins-job" class="xliff"></a>
 
 1. 通过仪表板创建**新项**。
 2. 输入项名称（例如 **MyJob**）。 选择“自由格式的项目”，然后单击“确定”。
@@ -149,7 +176,8 @@ bash Scripts/install.sh
    > 如果使用 Service Fabric 部署 Jenkins 容器映像，此处的群集可与托管 Jenkins 容器应用程序的群集相同。
    >
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 现已配置 GitHub 和 Jenkins。 请考虑对存储库示例 https://github.com/sayantancs/SFJenkins 中的 ``MyActor`` 项目进行一些示例更改。 将更改推送到远程 ``master`` 分支（或配置使用的任何分支）。 这会触发配置的 Jenkins 作业 ``MyJob``。 它会从 GitHub 提取更改、生成这些更改并将应用程序部署到在生成后操作中指定的群集终结点。  
 
   <!-- Images -->
