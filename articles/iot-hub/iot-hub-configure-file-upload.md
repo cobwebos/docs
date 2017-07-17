@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure 门户配置文件上载 | Microsoft Docs"
+title: "使用 Azure 门户配置文件上传 | Microsoft Docs"
 description: "如何使用 Azure 门户配置 IoT 中心，以便从连接的设备上传文件。 包括有关配置目标 Azure 存储帐户的信息。"
 services: iot-hub
 documentationcenter: 
@@ -12,23 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2017
+ms.date: 07/03/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: b958487c80207002e0642b8af8486f53266dd563
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 149dd84d7d8f4ff9cd30f9fc649ced3cb364cfb7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
-# <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>使用 Azure 门户配置 IoT 中心文件上传
+# 使用 Azure 门户配置 IoT 中心文件上传
+<a id="configure-iot-hub-file-uploads-using-the-azure-portal" class="xliff"></a>
 
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
-## <a name="file-upload"></a>文件上载
+## 文件上传
+<a id="file-upload" class="xliff"></a>
 
-若要使用 [IoT 中心的文件上传功能][lnk-upload]，必须先将 Azure 存储帐户与中心关联。 选择“**文件上载**”设置，即可显示正在修改的 IoT 中心的文件上载属性列表。
+若要使用 [IoT 中心的文件上传功能][lnk-upload]，必须先将 Azure 存储帐户与中心关联。 选择“文件上传”，以显示正在修改的 IoT 中心的文件上传属性列表。
 
 ![在门户中查看 IoT 中心文件上传设置][13]
 
@@ -36,17 +38,18 @@ ms.lasthandoff: 05/16/2017
 
 ![在门户中查看用于文件上传的存储容器][14]
 
-**接收已上载文件的通知**：通过切换来启用或禁用文件上载通知。
+**接收已上传文件的通知**：通过切换来启用或禁用文件上传通知。
 
 **SAS TTL**：此设置是 IoT 中心返回给设备的 SAS URI 生存时间。 默认设置为一小时，但可以使用滑块自定义为其他值。
 
-**文件通知设置默认 TTL**：文件上载通知到期前的生存时间。 默认设置为一天，但可以使用滑块自定义为其他值。
+**文件通知设置默认 TTL**：文件上传通知到期前的生存时间。 默认设置为一天，但可以使用滑块自定义为其他值。
 
-**文件通知最大传送数**：IoT 中心将尝试传送文件上载通知的次数。 默认设置为 10，但可以使用滑块自定义为其他值。
+**文件通知最大传送数**：IoT 中心将尝试传送文件上传通知的次数。 默认设置为 10，但可以使用滑块自定义为其他值。
 
 ![在门户中配置 IoT 中心文件上传][15]
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 有关 IoT 中心文件上传功能的详细信息，请参阅 IoT 中心开发人员指南中的[从设备上传文件][lnk-upload]。
 
