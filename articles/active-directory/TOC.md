@@ -199,10 +199,6 @@
 
 ### [风险事件](active-directory-reporting-risk-events.md)
 
-### [保留](active-directory-reporting-retention.md)
-
-### [延迟](active-directory-reporting-latencies-azure-portal.md)
-
 ### [常见问题](active-directory-reporting-faq.md)
 
 ### 任务
@@ -212,7 +208,15 @@
 #### [查找活动报表](active-directory-reporting-migration.md)
 
 #### [使用 Azure Active Directory Power BI 内容包](active-directory-reporting-power-bi-content-pack-how-to.md)
-  
+
+### 引用
+
+#### [保留](active-directory-reporting-retention.md)
+
+#### [延迟](active-directory-reporting-latencies-azure-portal.md)
+
+#### [登录活动错误代码](active-directory-reporting-activity-sign-ins-errors.md)
+
 ### 故障排除
 
 #### [缺少审核数据](active-directory-reporting-troubleshoot-missing-audit-data.md)
@@ -416,6 +420,8 @@
 ##### [远程桌面](application-proxy-publish-remote-desktop.md)
 
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
+
+##### [Microsoft Teams](application-proxy-teams.md)
 
 #### [故障排除](active-directory-application-proxy-troubleshoot.md)
 

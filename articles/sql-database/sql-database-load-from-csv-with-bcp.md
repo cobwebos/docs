@@ -8,26 +8,30 @@ manager: jhubbard
 editor: 
 ms.assetid: 875f9b8d-f1a1-4895-b717-f45570fb7f80
 ms.service: sql-database
-ms.custom: move data
+ms.custom: load & move data
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 01/10/2017
 ms.author: carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: 36748312506a08ed7932a6bb355a5dc7393bb002
-ms.openlocfilehash: 5e15f8a0ebb8cab5dce5b3c1cf6b62dee362a8d0
-ms.lasthandoff: 01/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: c017996235459766ca3c45ddac453fb11991b76e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/08/2017
 
 
 ---
-# <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>将数据从 CSV 载入 Azure SQL 数据库（平面文件）
+# 将数据从 CSV 载入 Azure SQL 数据库（平面文件）
+<a id="load-data-from-csv-into-azure-sql-database-flat-files" class="xliff"></a>
 你可以使用 bcp 命令行实用程序将数据从 CSV 文件导入 Azure SQL 数据库。
 
-## <a name="before-you-begin"></a>开始之前
-### <a name="prerequisites"></a>先决条件
-若要逐步完成本教程，你需要：
+## 开始之前
+<a id="before-you-begin" class="xliff"></a>
+### 先决条件
+<a id="prerequisites" class="xliff"></a>
+若要完成本文中的步骤，你需要：
 
 * Azure SQL 数据库逻辑服务器和数据库
 * 已安装 bcp 命令行实用工具
@@ -35,10 +39,12 @@ ms.lasthandoff: 01/28/2017
 
 可以从 [Microsoft 下载中心][Microsoft Download Center]下载 bcp 和 sqlcmd 实用工具。
 
-### <a name="data-in-ascii-or-utf-16-format"></a>采用 ASCII 或 UTF-16 格式的数据
+### 采用 ASCII 或 UTF-16 格式的数据
+<a id="data-in-ascii-or-utf-16-format" class="xliff"></a>
 如果你使用自己的数据尝试学习本教程，则数据需要使用 ASCII 或 UTF-16 编码，因为 bcp 不支持 UTF-8。 
 
-## <a name="1-create-a-destination-table"></a>1.创建目标表
+## 1.创建目标表
+<a id="1-create-a-destination-table" class="xliff"></a>
 将 SQL 数据库中的某个表定义为目标表。 该表中的列必须对应于数据文件每一行中的数据。
 
 若要创建表，请打开命令提示符并使用 sqlcmd.exe 运行以下命令：
@@ -56,7 +62,8 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 
-## <a name="2-create-a-source-data-file"></a>2.创建源数据文件
+## 2.创建源数据文件
+<a id="2-create-a-source-data-file" class="xliff"></a>
 打开记事本，将以下几行数据复制到新文本文件，然后将此文件保存到本地临时目录，路径为 C:\Temp\DimDate2.txt。 此数据采用 ASCII 格式。
 
 ```
@@ -76,20 +83,21 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 （可选）若要从 SQL Server 数据库导出自己的数据，请打开命令提示符并运行以下命令。 将 TableName、ServerName、DatabaseName、Username 和 Password 替换为你自己的信息。
 
-```sql
-bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t ','
+```bcp
+bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t , 
 ```
 
-## <a name="3-load-the-data"></a>3.加载数据
+## 3.加载数据
+<a id="3-load-the-data" class="xliff"></a>
 若要加载数据，请打开命令提示符并运行以下命令，请注意将 Server Name、Database Name、Username 和 Password 替换为你自己的信息。
 
-```sql
-bcp DimDate2 in C:\Temp\DimDate2.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <password> -q -c -t  ','
+```bcp
+bcp DimDate2 in C:\Temp\DimDate2.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <password> -q -c -t  ,
 ```
 
 使用此命令来验证是否已正确加载数据
 
-```sql
+```bcp
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "SELECT * FROM DimDate2 ORDER BY 1;"
 ```
 
@@ -110,7 +118,8 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 | 20151101 |4 |2 |
 | 20151201 |4 |2 |
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 若要迁移 SQL Server 数据库，请参阅 [SQL Server 数据库迁移](sql-database-cloud-migrate.md)。
 
 <!--MSDN references-->

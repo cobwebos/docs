@@ -13,30 +13,38 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
-ms.date: 03/20/2017
+ms.date: 06/19/2017
 ms.author: cfowler
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: ec524ed8dd4cc58b948d3047c36a9f7913d7d041
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: 2556947d7cdd1475ae82ac2e1d61ad30ebd0d29f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
-# <a name="create-an-aspnet-core-web-app-in-a-docker-container-from-azure-container-registry"></a>在 Docker 容器中通过 Azure 容器注册表创建 ASP.NET Core Web 应用
+# 在 Docker 容器中通过 Azure 容器注册表创建 ASP.NET Core Web 应用
+<a id="create-an-aspnet-core-web-app-in-a-docker-container-from-azure-container-registry" class="xliff"></a>
 
 在此方案中，你将学习如何创建资源组、Linux 应用服务计划和 Web 应用，并使用 Docker 容器通过 Azure 容器注册表部署 ASP.NET Core 应用程序。
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-## <a name="create-app-sample"></a>创建应用示例
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+
+## 示例脚本
+<a id="sample-script" class="xliff"></a>
 
 [!code-azurecli-interactive[主要](../../../cli_scripts/app-service/deploy-linux-acr/deploy-linux-acr.sh?highlight=6-9 "Linux Azure 容器注册表")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
-## <a name="script-explanation"></a>脚本说明
+## 脚本说明
+<a id="script-explanation" class="xliff"></a>
 
 此脚本使用以下命令创建资源组、Web 应用和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
@@ -44,10 +52,11 @@ ms.lasthandoff: 05/15/2017
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
 | [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#create) | 创建应用服务计划。 这与 Azure Web 应用的服务器场类似。 |
-| [az appservice web create](https://docs.microsoft.com/cli/azure/appservice/web#create) | 创建应用服务计划中的 Azure Web 应用。 |
-| [az appservice web config container update](https://docs.microsoft.com/cli/azure/appservice/web/config/container#update) | 为 Azure Web 应用设置 Docker 容器。 |
+| [az webapp create](https://docs.microsoft.com/cli/azure/webapp#create) | 创建 Azure Web 应用。 |
+| [az webapp config container set](https://docs.microsoft.com/cli/azure/webapp/config/container#set) | 为 Azure Web 应用设置 Docker 容器。 |
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
 

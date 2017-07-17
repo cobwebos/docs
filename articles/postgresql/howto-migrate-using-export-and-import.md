@@ -5,23 +5,23 @@ services: postgresql
 author: SaloniSonpal
 ms.author: salonis
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
+editor: jasonwhowell
 ms.service: postgresql-database
-ms.tgt_pltfrm: portal
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 06/14/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 275519089d682b6ef3c7858446ab2c4baface77f
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: e05e61ea05afc2866a618c663cb437540ab54c9b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/16/2017
 
 ---
-# <a name="migrate-your-postgresql-database-using-export-and-import"></a>使用导入和导出功能迁移 PostgreSQL 数据库
+# 使用导入和导出功能迁移 PostgreSQL 数据库
+<a id="migrate-your-postgresql-database-using-export-and-import" class="xliff"></a>
 可以使用 [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) 将 PostgreSQL 数据库解压到脚本文件，并使用 [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) 将数据从该文件导入目标数据库。
 
-## <a name="prerequisites"></a>先决条件
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
 若要逐步执行本操作方法指南，需要：
 - 一个 [Azure Database for PostgreSQL 服务器](quickstart-create-server-database-portal.md)，其防火墙规则设置为允许访问，并且包含数据库。
 - 已安装 [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) 命令行实用工具
@@ -29,8 +29,9 @@ ms.lasthandoff: 05/10/2017
 
 请按照下列步骤导出和导入 PostgreSQL 数据库。
 
-## <a name="create-a-script-file-using-pgdump-that-contains-the-data-to-be-loaded"></a>使用 pg_dump 创建包含要加载的数据的脚本文件
-若要将本地或 VM 中现有的 PostgreSQL 数据库导出到 sql 脚本文件，请运行以下命令：
+## 使用 pg_dump 创建包含要加载的数据的脚本文件
+<a id="create-a-script-file-using-pgdump-that-contains-the-data-to-be-loaded" class="xliff"></a>
+若要将本地或 VM 中现有的 PostgreSQL 数据库导出到 sql 脚本文件中，请在现有环境中运行以下命令：
 ```bash
 pg_dump –-host=<host> --username=<name> --dbname=<database name> --file=<database>.sql
 ```
@@ -39,15 +40,17 @@ pg_dump –-host=<host> --username=<name> --dbname=<database name> --file=<datab
 pg_dump --host=localhost --username=masterlogin --dbname=testdb --file=testdb.sql
 ```
 
-## <a name="import-the-data-on-target-azure-database-for-postrgesql"></a>导入目标 Azure Database for PostrgeSQL 上的数据
+## 导入目标 Azure Database for PostrgeSQL 上的数据
+<a id="import-the-data-on-target-azure-database-for-postrgesql" class="xliff"></a>
 可以使用 psql 命令行和 -d、--dbname 参数将数据导入创建的 Azure Database for PostrgeSQL，并加载 sql 文件中的数据。
 ```bash
 psql --file=<database>.sql --host=<server name> --port=5432 --username=<user@servername> --dbname=<target database name>
 ```
-本示例使用先前步骤中的 psql 和名为 testdb.sql 的脚本文件，将数据导入目标服务器 mypgserver-20170401.postgres.database.azure.com 上的数据库 mypgsqldb。
+此示例使用 psql 实用程序和先前步骤中名为 **testdb.sql** 的脚本文件，将数据导入到目标服务器 **mypgserver-20170401.postgres.database.azure.com** 上的数据库 **mypgsqldb** 中。
 ```bash
 psql --file=testdb.sql --host=mypgserver-20170401.database.windows.net --port=5432 --username=mylogin@mypgserver-20170401 --dbname=mypgsqldb
 ```
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 - 若要通过转储和还原迁移 PostgreSQL 数据库，请参阅[Migrate your PostgreSQL database using dump and restore](howto-migrate-using-dump-and-restore.md)（通过转储和还原迁移 PostgreSQL 数据库）

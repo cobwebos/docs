@@ -1,0 +1,60 @@
+---
+title: "适用于 Azure VPN 网关的社区建议第三方 VPN 或防火墙设备设置 | Microsoft Docs"
+description: "了解适用于 Azure VPN 网关的社区建议第三方 VPN 或防火墙设备设置。"
+services: vpn-gateway
+documentationcenter: 
+author: chadmath
+manager: cshepard
+editor: 
+tags: azure-vpn-gateway
+ms.assetid: 
+ms.service: vpn-gateway
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 07/04/2017
+ms.author: delhan
+ms.translationtype: Human Translation
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: c3182f14623fc53482ab13fbf4abf58e4e2c50d8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/26/2017
+
+
+---
+
+# 适用于 Azure VPN 网关的社区建议第三方 VPN 或防火墙设备设置
+<a id="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway" class="xliff"></a>
+
+本文针对与 Azure VPN 网关一起使用的第三方 VPN 或防火墙设备提供了几种建议的解决方案。
+
+> [!Note]
+> 对第三方 VPN 或防火墙设备的技术支持是由设备供应商提供的。 
+
+## 详细信息
+<a id="more-information" class="xliff"></a>
+
+下表列出了几种常见设备和相关帮助：
+
+|产品    |引用                                                |
+|-----------|-----------------------------------------------------------|
+|Cisco ASA  |[适用于 Azure VPN 上的 Cisco ASA 的社区建议解决方案](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASA&locale=enUS&tab=Cisco)   |
+|Cisco ISR  |[适用于 Azure VPN 上的 Cisco ISR 的社区建议解决方案](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ISR&locale=enUS&tab=Cisco)   |
+|Cisco ASR  |[适用于 Azure VPN 上的 Cisco ASR 的社区建议解决方案](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASR&locale=enUS&tab=Cisco)   |
+|Sonicwall |在 [Sonicwall 站点](https://support.sonicwall.com/search)上搜索 **Azure VPN** |
+| Checkpoint    |在 [Checkpoint 站点](https://supportcenter.checkpoint.com/supportcenter/portal)上搜索 **Azure VPN** |
+|Juniper |在 [Juniper 站点]( http://www.juniper.net/search/public/)上搜索 **Azure VPN**|
+|Barracuda  |[适用于 Azure VPN 上的 Barracuda 的社区建议解决方案](https://campus.barracuda.com/search/?q=%22Azure+VPN%22&x=0&y=0)   |
+|F5         |[适用于 Azure VPN 上的 F5 的社区建议解决方案](https://support.f5.com/csp/#/federated-search?q=%22Azure%20VPN%22&source=support)          |
+|Palo       |[适用于 Azure VPN 上的 Palo 的社区建议解决方案](https://live.paloaltonetworks.com/t5/forums/searchpage/tab/message?q=Azure+VPN)        |
+|Watchguard |[适用于 Azure VPN 上的 Watchguard 的社区建议解决方案](http://watchguardsupport.force.com/SupportSearch#q=Azure%20VPN&t=All&sort=relevancy)  |
+
+## 后续步骤
+<a id="next-step" class="xliff"></a>
+
+[Azure 网关设置](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpn-devices#a-nameipsecaipsecike-parameters)
+
+[已知的兼容设备](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpn-devices#validated-vpn-devices)
+
+

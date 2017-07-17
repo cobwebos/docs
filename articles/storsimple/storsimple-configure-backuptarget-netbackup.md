@@ -12,18 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/05/2016
+ms.date: 06/15/2017
 ms.author: hkanna
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: cbc33fa15d069b55844cc6e4356ca5a01b40c199
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 613fd0c1164ac34d36d5f21d07dfdf00c8aad614
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/17/2017
 
 ---
 
-# <a name="storsimple-as-a-backup-target-with-netbackup"></a>用作备份目标的 StorSimple 与 NetBackup 的集成
+# 用作备份目标的 StorSimple 与 NetBackup 的集成
+<a id="storsimple-as-a-backup-target-with-netbackup" class="xliff"></a>
 
-## <a name="overview"></a>概述
+## 概述
+<a id="overview" class="xliff"></a>
 
 Azure StorSimple 是 Microsoft 提供的一种混合云存储解决方案。 StorSimple 使用 Azure 存储帐户作为本地解决方案的扩展，跨本地存储和云存储自动将数据分层，解决指数级数据增长带来的复杂性。
 
@@ -31,17 +34,20 @@ Azure StorSimple 是 Microsoft 提供的一种混合云存储解决方案。 Sto
 
 本文虽然介绍了配置步骤和重要概念，但并未提供循序渐进的配置或安装指南。 本文假设基本组件与基础结构工作正常，随时能够支持本文中所述的操作。
 
-### <a name="who-should-read-this"></a>目标读者
+### 目标读者
+<a id="who-should-read-this" class="xliff"></a>
 
 本文中的信息主要面向具有存储、Windows Server 2012 R2、以太网、云服务和 Veritas NetBackup 相关知识的备份管理员、存储管理员和存储架构师。
 
-### <a name="supported-versions"></a>支持的版本
+### 支持的版本
+<a id="supported-versions" class="xliff"></a>
 
 -   NetBackup 7.7.x 和更高版本
 -   [StorSimple Update 3 和更高版本](storsimple-overview.md#storsimple-workload-summary)
 
 
-## <a name="why-storsimple-as-a-backup-target"></a>为何将 StorSimple 用作备份目标？
+## 为何将 StorSimple 用作备份目标？
+<a id="why-storsimple-as-a-backup-target" class="xliff"></a>
 
 StorSimple 是极佳的备份目标，原因如下：
 
@@ -49,7 +55,8 @@ StorSimple 是极佳的备份目标，原因如下：
 -   它的云层与 Azure 云存储帐户无缝集成，可以利用经济高效的 Azure 存储。
 -   它提供场外存储，实现灾难恢复。
 
-## <a name="key-concepts"></a>关键概念
+## 关键概念
+<a id="key-concepts" class="xliff"></a>
 
 与任何存储解决方案一样，对解决方案的存储性能、SLA、更改率以及容量增长需求展开细致的评估是成功的关键所在。 主要思路是引入云层，要使 StorSimple 发挥其作用，云的访问时间与吞吐量发挥着至关重要的作用。
 
@@ -62,7 +69,8 @@ StorSimple 旨在为处理妥善定义的工作数据集（热数据）的应用
 -   通过本地工作数据集执行最常见的还原。
 -   使用云实现场外灾难恢复，存储不经常还原的陈旧数据。
 
-## <a name="storsimple-benefits"></a>StorSimple 的优势
+## StorSimple 的优势
+<a id="storsimple-benefits" class="xliff"></a>
 
 StorSimple 提供与 Microsoft Azure 无缝集成的本地解决方案，可让用户无缝访问本地存储和云存储。
 
@@ -84,7 +92,8 @@ StorSimple 提供以下优势：
 > [!IMPORTANT]
 > 只有 StorSimple 8000 Update 3 和更高版本才支持使用 StorSimple 设备作为备份目标。
 
-## <a name="architecture-overview"></a>体系结构概述
+## 体系结构概述
+<a id="architecture-overview" class="xliff"></a>
 
 下表显示设备模型到体系结构的初步指导。
 
@@ -103,13 +112,15 @@ StorSimple 提供以下优势：
 | 主备份  | 最近的备份存储在本地存储中以加快恢复速度，满足恢复点目标 (RPO)。 | 备份历史记录 (RPO) 占用云容量 |
 | 辅助备份 | 备份数据的辅助副本可存储在云容量中  | 不适用  |
 
-## <a name="storsimple-as-a-primary-backup-target"></a>用作主备份目标的 StorSimple
+## 用作主备份目标的 StorSimple
+<a id="storsimple-as-a-primary-backup-target" class="xliff"></a>
 
 在此方案中，StorSimple 卷将提供给备份应用程序作为唯一的备份存储库。 下图显示了其中所有备份使用 StorSimple 分层卷进行备份和还原的解决方案体系结构。
 
 ![用作主备份目标的 StorSimple 的逻辑示意图](./media/storsimple-configure-backup-target-using-netbackup/primarybackuptargetlogicaldiagram.png)
 
-### <a name="primary-target-backup-logical-steps"></a>主目标备份逻辑步骤
+### 主目标备份逻辑步骤
+<a id="primary-target-backup-logical-steps" class="xliff"></a>
 
 1.  备份服务器与目标备份代理通信，备份代理将数据传输到备份服务器。
 2.  备份服务器将数据写入 StorSimple 分层卷。
@@ -117,13 +128,15 @@ StorSimple 提供以下优势：
 4.  快照脚本触发 StorSimple 快照管理器（启动或删除）。
 5.  备份服务器根据保留策略删除过期的备份。
 
-### <a name="primary-target-restore-logical-steps"></a>主目标还原逻辑步骤
+### 主目标还原逻辑步骤
+<a id="primary-target-restore-logical-steps" class="xliff"></a>
 
 1.  备份服务器开始从存储库还原相应的数据。
 2.  备份代理从备份服务器接收数据。
 3.  备份服务器完成还原作业。
 
-## <a name="storsimple-as-a-secondary-backup-target"></a>用作辅助备份目标的 StorSimple
+## 用作辅助备份目标的 StorSimple
+<a id="storsimple-as-a-secondary-backup-target" class="xliff"></a>
 
 在此方案中，StorSimple 卷主要用于长期保留或存档。
 
@@ -133,7 +146,8 @@ StorSimple 提供以下优势：
 
 ![用作辅助备份目标的 StorSimple 的逻辑示意图](./media/storsimple-configure-backup-target-using-netbackup/secondarybackuptargetlogicaldiagram.png)
 
-### <a name="secondary-target-backup-logical-steps"></a>辅助目标备份逻辑步骤
+### 辅助目标备份逻辑步骤
+<a id="secondary-target-backup-logical-steps" class="xliff"></a>
 
 1.  备份服务器与目标备份代理通信，备份代理将数据传输到备份服务器。
 2.  备份服务器将数据写入高性能存储。
@@ -142,13 +156,15 @@ StorSimple 提供以下优势：
 5.  快照脚本触发 StorSimple 快照管理器（启动或删除）。
 6.  备份服务器根据保留策略删除过期的备份。
 
-### <a name="secondary-target-restore-logical-steps"></a>辅助目标还原逻辑步骤
+### 辅助目标还原逻辑步骤
+<a id="secondary-target-restore-logical-steps" class="xliff"></a>
 
 1.  备份服务器开始从存储库还原相应的数据。
 2.  备份代理从备份服务器接收数据。
 3.  备份服务器完成还原作业。
 
-## <a name="deploy-the-solution"></a>部署解决方案
+## 部署解决方案
+<a id="deploy-the-solution" class="xliff"></a>
 
 部署此解决方案需要执行三个步骤：
 1. 准备网络基础结构。
@@ -157,7 +173,8 @@ StorSimple 提供以下优势：
 
 以下部分详细介绍了每个步骤。
 
-### <a name="set-up-the-network"></a>设置网络
+### 设置网络
+<a id="set-up-the-network" class="xliff"></a>
 
 由于 StorSimple 是与 Azure 云集成的解决方案，因此 StorSimple 需要与 Azure 云建立有效的连接。 此连接用于如下所述的操作：云快照、数据管理、元数据传输，以及在 Azure 云存储中将不经常访问的旧数据分层。
 
@@ -167,19 +184,23 @@ StorSimple 提供以下优势：
 
 -   最大 Azure Blob 存储访问延迟应在 80 毫秒左右。
 
-### <a name="deploy-storsimple"></a>部署 StorSimple
+### 部署 StorSimple
+<a id="deploy-storsimple" class="xliff"></a>
 
 有关 StorSimple 分步部署指南，请参阅[部署本地 StorSimple 设备](storsimple-deployment-walkthrough-u2.md)。
 
-### <a name="deploy-netbackup"></a>部署 NetBackup
+### 部署 NetBackup
+<a id="deploy-netbackup" class="xliff"></a>
 
 有关 NetBackup 7.7.x 分步部署指南，请参阅 [NetBackup 7.7.x 文档](http://www.veritas.com/docs/000094423)。
 
-## <a name="set-up-the-solution"></a>设置解决方案
+## 设置解决方案
+<a id="set-up-the-solution" class="xliff"></a>
 
 本部分演示一些配置示例。 以下示例和建议演示最基本的实现。 不一定能够根据具体的备份要求直接应用此实现。
 
-### <a name="set-up-storsimple"></a>设置 StorSimple
+### 设置 StorSimple
+<a id="set-up-storsimple" class="xliff"></a>
 
 | StorSimple 部署任务  | 附加备注 |
 |---|---|
@@ -190,7 +211,8 @@ StorSimple 提供以下优势：
 | 为所有备份目标卷创建唯一的 StorSimple 备份策略。 | StorSimple 备份策略定义卷一致性组。 |
 | 快照过期时禁用计划。 | 快照将作为后处理操作触发。 |
 
-### <a name="set-up-the-host-backup-server-storage"></a>设置主机备份服务器存储
+### 设置主机备份服务器存储
+<a id="set-up-the-host-backup-server-storage" class="xliff"></a>
 
 根据以下指导原则设置主机备份服务器存储：  
 
@@ -201,11 +223,13 @@ StorSimple 提供以下优势：
     - 为虚拟服务器使用直通磁盘。
 
 
-## <a name="best-practices-for-storsimple-and-netbackup"></a>StorSimple 和 Veritas NetBackup 的最佳实践
+## StorSimple 和 Veritas NetBackup 的最佳实践
+<a id="best-practices-for-storsimple-and-netbackup" class="xliff"></a>
 
 根据以下几个部分中的指导原则设置解决方案。
 
-### <a name="operating-system-best-practices"></a>操作系统最佳实践
+### 操作系统最佳实践
+<a id="operating-system-best-practices" class="xliff"></a>
 
 -   在 NTFS 文件系统中禁用 Windows Server 加密和重复数据删除。
 -   在 StorSimple 卷上禁用 Windows Server 碎片整理。
@@ -218,23 +242,26 @@ StorSimple 提供以下优势：
       psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
       ```
 
-### <a name="storsimple-best-practices"></a>StorSimple 最佳实践
+### StorSimple 最佳实践
+<a id="storsimple-best-practices" class="xliff"></a>
 
 -   请务必将 StorSimple 设备更新到 [Update 3 或更高版本](storsimple-install-update-3.md)。
 -   隔离 iSCSI 和云流量。 使用专用的 iSCSI 连接在 StorSimple 与备份服务器之间传送流量。
 -   确保 StorSimple 设备是专用的备份目标。 不支持混合工作负荷，因为它们会影响 RTO 和 RPO。
 
-### <a name="netbackup-best-practices"></a>NetBackup 最佳实践
+### NetBackup 最佳实践
+<a id="netbackup-best-practices" class="xliff"></a>
 
 -   NetBackup 数据库应位于服务器本地，而不能驻留在 StorSimple 卷上。
 -   为实现灾难恢复，请在 StorSimple 卷上备份 NetBackup 数据库。
--   支持在此解决方案中使用 NetBackup 完整和增量备份。 建议不要使用合成备份和差异备份。
+-   对于此解决方案，我们支持 NetBackup 完全和增量备份（在 NetBackup 中也称为差异增量备份）。 建议不要使用合成和累积差异备份。
 -   备份数据文件应只包含特定作业的数据。 例如，不允许跨不同的作业附加媒体。
 
 有关最新的 NetBackup 设置以及如何满足这些要求的最佳实践，请参阅 [www.veritas.com](https://www.veritas.com) 上的 NetBackup 文档。
 
 
-## <a name="retention-policies"></a>保留策略
+## 保留策略
+<a id="retention-policies" class="xliff"></a>
 
 最常用的备份保留策略类型之一为祖父、父和子 (GFS) 策略。 在 GSF 策略中，增量备份每日执行，完整备份每周和每月执行。 此策略会导致生成 6 个 StorSimple 分层卷：一个卷包含每周、每月和每年完整备份；另外 5 个卷存储每日增量备份。
 
@@ -259,9 +286,11 @@ StorSimple 提供以下优势：
 | 提高的配额  | 4  |   | 总共 42，满足 GFS 要求  |
 \* GFS 乘数是需要根据备份策略要求保护和保留的副本数。
 
-## <a name="set-up-netbackup-storage"></a>设置 NetBackup 存储
+## 设置 NetBackup 存储
+<a id="set-up-netbackup-storage" class="xliff"></a>
 
-### <a name="to-set-up-netbackup-storage"></a>设置 NetBackup 存储
+### 设置 NetBackup 存储
+<a id="to-set-up-netbackup-storage" class="xliff"></a>
 
 1.  在 NetBackup 管理控制台中，选择“媒体和设备存储” > “设备” > “磁盘池”。 在磁盘池配置向导中，选择存储服务器类型“AdvancedDisk”，然后选择“下一步”。
 
@@ -285,7 +314,8 @@ StorSimple 提供以下优势：
 
     ![NetBackup 管理控制台，磁盘配置](./media/storsimple-configure-backup-target-using-netbackup/nbimage5.png)
 
-## <a name="set-up-storsimple-as-a-primary-backup-target"></a>将 StorSimple 设置为主备份目标
+## 将 StorSimple 设置为主备份目标
+<a id="set-up-storsimple-as-a-primary-backup-target" class="xliff"></a>
 
 > [!NOTE]
 > 从云中分层的备份还原数据将以云的速度进行。
@@ -294,7 +324,8 @@ StorSimple 提供以下优势：
 
 ![主备份目标配置逻辑示意图 ](./media/storsimple-configure-backup-target-using-netbackup/primarybackuptargetdiagram.png)
 
-### <a name="storsimple-as-a-primary-backup-target-gfs-schedule-example"></a>用作主备份目标的 StorSimple 的 GFS 计划示例
+### 用作主备份目标的 StorSimple 的 GFS 计划示例
+<a id="storsimple-as-a-primary-backup-target-gfs-schedule-example" class="xliff"></a>
 
 下面是四周、每月和每年的 GFS 轮转计划示例：
 
@@ -304,11 +335,13 @@ StorSimple 提供以下优势：
 | 每月  | 星期六  |   |
 | 每年 | 星期六  |   |   |
 
-## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>将 StorSimple 卷分配到 NetBackup 备份作业
+## 将 StorSimple 卷分配到 NetBackup 备份作业
+<a id="assigning-storsimple-volumes-to-a-netbackup-backup-job" class="xliff"></a>
 
 以下步骤顺序假设已根据 NetBackup 代理指导原则配置 NetBackup 和目标主机。
 
-### <a name="to-assign-storsimple-volumes-to-a-netbackup-backup-job"></a>将 StorSimple 卷分配到 NetBackup 备份作业
+### 将 StorSimple 卷分配到 NetBackup 备份作业
+<a id="to-assign-storsimple-volumes-to-a-netbackup-backup-job" class="xliff"></a>
 
 1.  在 NetBackup 管理控制台中，选择“NetBackup 管理”，右键单击“策略”，然后选择“新建策略”。
 
@@ -376,7 +409,8 @@ StorSimple 提供以下优势：
 
     ![NetBackup 管理控制台，最终的计划](./media/storsimple-configure-backup-target-using-netbackup/nbimage19.png)
 
-## <a name="set-up-storsimple-as-a-secondary-backup-target"></a>将 StorSimple 设置为辅助备份目标
+## 将 StorSimple 设置为辅助备份目标
+<a id="set-up-storsimple-as-a-secondary-backup-target" class="xliff"></a>
 
 > [!NOTE]
 >从云中分层的备份还原数据将以云的速度进行。
@@ -385,13 +419,15 @@ StorSimple 提供以下优势：
 
 下图显示了典型的短期保留本地卷（在服务器上）和长期保留存档卷。 在此方案中，所有备份在服务器本地 RAID 卷上运行。 将定期删除这些备份中的重复数据并将其存档到存档卷。 必须调整服务器本地 RAID 卷的大小，使其能够应对短期保留容量和性能要求。
 
-### <a name="storsimple-as-a-secondary-backup-target-gfs-example"></a>用作辅助备份目标的 StorSimple GFS 示例
+### 用作辅助备份目标的 StorSimple GFS 示例
+<a id="storsimple-as-a-secondary-backup-target-gfs-example" class="xliff"></a>
 
 ![用作辅助备份目标的 StorSimple 的逻辑示意图](./media/storsimple-configure-backup-target-using-netbackup/secondarybackuptargetdiagram.png)
 
 下表显示如何将备份设置为在本地和 StorSimple 磁盘中运行。 其中包含各个磁盘的要求以及总容量要求。
 
-### <a name="backup-configuration-and-capacity-requirements"></a>备份配置和容量要求
+### 备份配置和容量要求
+<a id="backup-configuration-and-capacity-requirements" class="xliff"></a>
 
 | 备份类型和保留期 | 配置的存储 | 大小 (TiB) | GFS 乘数 | 总容量\* (TiB) |
 |---|---|---|---|---|
@@ -403,7 +439,8 @@ StorSimple 提供以下优势：
 \* 总容量包括 17 TiB 的 StorSimple 磁盘和 1 TiB 的本地 RAID 卷。
 
 
-### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GSF 示例计划：每周、每月和每年 GFS 轮转计划
+### GSF 示例计划：每周、每月和每年 GFS 轮转计划
+<a id="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule" class="xliff"></a>
 
 | 周次 | 完整 | 第 1 天增量备份 | 第 2 天增量备份 | 第 3 天增量备份 | 第 4 天增量备份 | 第 5 天增量备份 |
 |---|---|---|---|---|---|---|
@@ -415,7 +452,8 @@ StorSimple 提供以下优势：
 | 每年 | StorSimple 每年备份  |   |   |   |   |   |   |
 
 
-## <a name="assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>将 StorSimple 卷分配到 NetBackup 存档和重复数据删除作业
+## 将 StorSimple 卷分配到 NetBackup 存档和重复数据删除作业
+<a id="assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job" class="xliff"></a>
 
 由于 NetBackup 提供众多的存储和媒体管理选项，因此，我们建议咨询 Veritas 或 NetBackup 架构师来正确评估存储生命周期策略 (SLP) 要求。
 
@@ -425,7 +463,8 @@ StorSimple 提供以下优势：
 * StorSimpleMonthlyFulls
 * StorSimpleYearlyFulls
 
-### <a name="to-assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>将 StorSimple 卷分配到 NetBackup 存档和重复数据删除作业
+### 将 StorSimple 卷分配到 NetBackup 存档和重复数据删除作业
+<a id="to-assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job" class="xliff"></a>
 
 1.  在 NetBackup 管理控制台中，选择“存储” > “存储生命周期策略” > “新建存储生命周期策略”。
 
@@ -476,7 +515,8 @@ StorSimple 提供以下优势：
 | 提高的配额  | 4  |    | 总共 42，满足 GFS 要求 |
 \* GFS 乘数是需要根据备份策略要求保护和保留的副本数。
 
-## <a name="storsimple-cloud-snapshots"></a>StorSimple 云快照
+## StorSimple 云快照
+<a id="storsimple-cloud-snapshots" class="xliff"></a>
 
 StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照相当于将本地备份磁带寄送到场外设施。 如果使用 Azure 异地冗余存储，则创建云快照就相当于将备份磁带寄送到多个站点。 如果发生灾难后需要还原设备，可将另一个 StorSimple 设备联机，然后执行故障转移。 故障转移后，可从最新的云快照访问数据（以云的速度）。
 
@@ -485,23 +525,27 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 > [!NOTE]
 > 手动或以编程方式创建的快照不遵循 StorSimple 快照过期策略。 必须手动或以编程方式删除这些快照。
 
-### <a name="start-and-delete-cloud-snapshots-by-using-a-script"></a>使用脚本启动和删除云快照
+### 使用脚本启动和删除云快照
+<a id="start-and-delete-cloud-snapshots-by-using-a-script" class="xliff"></a>
 
 > [!NOTE]
 > 在删除 StorSimple 快照之前，请仔细评估造成的合规性与数据保留后果。 有关如何运行备份后脚本的详细信息，请参阅 [NetBackup 文档](http://www.veritas.com/docs/000094423)。
 
-### <a name="backup-lifecycle"></a>备份生命周期
+### 备份生命周期
+<a id="backup-lifecycle" class="xliff"></a>
 
 ![备份生命周期示意图](./media/storsimple-configure-backup-target-using-netbackup/backuplifecycle.png)
 
-### <a name="requirements"></a>要求
+### 要求
+<a id="requirements" class="xliff"></a>
 
 -   运行脚本的服务器必须能够访问 Azure 云资源。
 -   用户帐户必须拥有所需的权限。
 -   必须设置但不要启用具有关联 StorSimple 卷的 StorSimple 备份策略。
 -   需要 StorSimple 资源名称、注册密钥、设备名称和备份策略 ID。
 
-### <a name="to-start-or-delete-a-cloud-snapshot"></a>启动或删除云快照
+### 启动或删除云快照
+<a id="to-start-or-delete-a-cloud-snapshot" class="xliff"></a>
 
 1.  [安装 Azure PowerShell](/powershell/azure/overview)。
 2.  [下载并导入发布设置和订阅信息](https://msdn.microsoft.com/library/dn385850.aspx)。
@@ -550,11 +594,13 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 > [!NOTE]
 > 建议在每日备份作业结束时，以后处理脚本的形式运行 StorSimple 云快照备份策略。 有关如何备份和还原备份应用程序环境以帮助满足 RPO 和 RTO 要求的详细信息，请咨询备份架构师。
 
-## <a name="storsimple-as-a-restore-source"></a>用作还原源的 StorSimple
+## 用作还原源的 StorSimple
+<a id="storsimple-as-a-restore-source" class="xliff"></a>
 
 从 StorSimple 设备还原的过程类似于从任何块存储设备还原。 还原已在云中分层的数据将以云的速度进行。 对于本地数据，还原将以设备本地磁盘的速度进行。 有关如何执行还原的信息，请参阅 [NetBackup 文档](http://www.veritas.com/docs/000094423)。 我们建议遵循 NetBackup 还原最佳实践。
 
-## <a name="storsimple-failover-and-disaster-recovery"></a>StorSimple 故障转移和灾难恢复
+## StorSimple 故障转移和灾难恢复
+<a id="storsimple-failover-and-disaster-recovery" class="xliff"></a>
 
 > [!NOTE]
 > 对于备份目标方案，不支持将 StorSimple 云设备用作恢复目标。
@@ -567,7 +613,8 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 | NetBackup 服务器故障 | 备份和还原操作将会中断。 | 重新构建备份服务器并执行数据库还原。 | 必须在灾难恢复站点重建或还原 NetBackup 服务器。 将数据库还原到最近的时间点。 如果还原的 NetBackup 数据库未与最新的备份作业同步，则需要编制索引和目录。 这种索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层。 这会进一步消耗时间。 |
 | 站点发生故障，导致备份服务器和 StorSimple 丢失 | 备份和还原操作将会中断。 | 首先还原 StorSimple，然后还原 NetBackup。 | 首先还原 StorSimple，然后还原 NetBackup。 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 |
 
-## <a name="references"></a>参考
+## 参考
+<a id="references" class="xliff"></a>
 
 本文参考了以下文档：
 
@@ -576,7 +623,8 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 - [Using GPT drives](http://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)（使用 GPT 驱动器）
 - [Set up shadow copies for shared folders](http://technet.microsoft.com/library/cc771893.aspx)（设置共享文件夹的卷影副本）
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 - 详细了解如何[从备份集还原](storsimple-restore-from-backup-set-u2.md)。
 - 详细了解如何执行[设备故障转移和灾难恢复](storsimple-device-failover-disaster-recovery.md)。

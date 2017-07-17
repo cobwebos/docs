@@ -13,33 +13,40 @@ ms.workload: web
 ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
-ms.date: 03/20/2017
+ms.date: 06/19/2017
 ms.author: cephalin
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: dfb4c7651f6cfd378f9b1706abcdd732e56d7eb1
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: a12085a7a8146c22d6b079381542d4fe3a8e6e87
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
-# <a name="create-a-web-app-with-continuous-deployment-from-github"></a>从 GitHub 使用连续部署创建 Web 应用
+# 从 GitHub 使用连续部署创建 Web 应用
+<a id="create-a-web-app-with-continuous-deployment-from-github" class="xliff"></a>
 
 此示例脚本使用其相关资源，在应用服务中创建 Web 应用，然后在 Git 存储库中设置连续部署。 有关不进行连续部署的 GitHub 部署，请参阅[从 GitHub 创建 Web 应用并部署代码](app-service-cli-deploy-github.md)。 此示例需要：
 
 * 包含应用程序代码且你对其拥有管理权限的 GitHub 存储库。
 * GitHub 帐户的[个人访问令牌(PAT)](https://help.github.com/articles/creating-an-access-token-for-command-line-use)。
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-app-sample"></a>创建应用示例
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+
+## 示例脚本
+<a id="sample-script" class="xliff"></a>
 
 [!code-azurecli-interactive[主要](../../../cli_scripts/app-service/deploy-github-continuous/deploy-github-continuous.sh?highlight=3-4 "从 GitHub 使用连续部署创建 Web 应用")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
-## <a name="script-explanation"></a>脚本说明
+## 脚本说明
+<a id="script-explanation" class="xliff"></a>
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
@@ -47,11 +54,12 @@ ms.lasthandoff: 05/15/2017
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
 | [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#create) | 创建应用服务计划。 |
-| [az appservice web create](https://docs.microsoft.com/cli/azure/appservice/web#delete) | 创建 Azure Web 应用。 |
-| [az appservice web source-control config](https://docs.microsoft.com/cli/azure/appservice/web/source-control#config) | 将 Azure Web 应用与 Git 或 Mercurial 存储库相关联。 |
-| [az appservice web browse](https://docs.microsoft.com/cli/azure/appservice/web#browse) | 在浏览器中打开 Azure Web 应用。 |
+| [az webapp create](https://docs.microsoft.com/cli/azure/webapp#create) | 创建 Azure Web 应用。 |
+| [az webapp deployment source config](https://docs.microsoft.com/cli/azure/webapp/deployment/source#config) | 将 Azure Web 应用与 Git 或 Mercurial 存储库相关联。 |
+| [az webapp browse](https://docs.microsoft.com/cli/azure/webapp#browse) | 在浏览器中打开 Azure Web 应用。 |
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
 
