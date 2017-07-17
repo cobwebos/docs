@@ -3,7 +3,7 @@ title: "查看访问和使用情况报告 | Microsoft Docs"
 description: "说明如何查看访问和使用情况报告，以深入分析组织目录的完整性和安全性。"
 services: active-directory
 documentationcenter: 
-author: dhanyahk
+author: MarkusVi
 manager: femila
 editor: 
 ms.assetid: a074bc4e-cf3f-4ad1-8cc6-4199d2e09ce4
@@ -12,17 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
+ms.custom: oldportal
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 8b3835d354512645cd47ffa4541d6155c80e77ee
 ms.contentlocale: zh-cn
 ms.lasthandoff: 11/17/2016
 
-
 ---
-# <a name="view-your-access-and-usage-reports"></a>查看访问和使用情况报告
+# 查看访问和使用情况报告
+<a id="view-your-access-and-usage-reports" class="xliff"></a>
 *本文档是 [Azure Active Directory 报告指南](active-directory-reporting-guide.md)的一部分。*
 
 你可以使用 Azure Active Directory 的访问和使用情况报告来监控你所在组织的目录的完整性和安全性。 使用此信息，目录管理员可以更好地确定哪里可能存在安全风险，以便制定相应的计划来降低风险。
@@ -41,7 +42,8 @@ ms.lasthandoff: 11/17/2016
 > 
 > 
 
-## <a name="reports"></a>报告
+## 报告
+<a id="reports" class="xliff"></a>
 | 报表 | 说明 |
 | --- | --- |
 | **异常活动报告** | |
@@ -69,7 +71,8 @@ ms.lasthandoff: 11/17/2016
 | RMS 设备使用情况 |列出用于访问受 RMS 保护的文件的设备 |
 | 启用了 RMS 的应用程序使用情况 |提供启用了 RMS 的应用程序的使用情况 |
 
-## <a name="report-editions"></a>报告版本
+## 报告版本
+<a id="report-editions" class="xliff"></a>
 | 报表 | 免费 | 基本 | 高级 |
 | --- | --- | --- | --- |
 | **异常活动报告** | | | |
@@ -97,7 +100,8 @@ ms.lasthandoff: 11/17/2016
 | RMS 设备使用情况 | | |仅限 RMS |
 | 启用了 RMS 的应用程序使用情况 | | |仅限 RMS |
 
-## <a name="anomalous-activity-reports"></a>异常活动报告
+## 异常活动报告
+<a id="anomalous-activity-reports" class="xliff"></a>
 <p>异常登录活动报告将会标识 Office365、Azure 管理门户、Azure AD 访问面板、Sharepoint Online、Dynamics CRM Online 和其他 Microsoft Online Services 中发生的可疑登录活动。</p>
 
 <p>所有这些报告（“多次失败后的登录”报告除外）还会标识上述服务中发生的可疑<i>联合</i>登录，不管联合提供程序是什么。 </p>
@@ -120,37 +124,44 @@ ms.lasthandoff: 11/17/2016
 
 <li>具有已泄漏凭据的用户</li></ul>
 
-## <a name="activity-logs"></a>活动日志
-### <a name="audit-report"></a>审核报告
+## 活动日志
+<a id="activity-logs" class="xliff"></a>
+### 审核报告
+<a id="audit-report" class="xliff"></a>
 | 说明 | 报告位置 |
 |:--- |:--- |
 | 显示在过去 24 小时、过去 7 天或过去 30 天内发生的所有已审核事件的记录。 <br /> 有关详细信息，请参阅 [Azure Active Directory 审核报告事件](active-directory-reporting-audit-events.md) |“目录”>“报告”选项卡 |
 
 ![审核报告](./media/active-directory-view-access-usage-reports/auditReport.PNG)
 
-### <a name="password-reset-activity"></a>密码重置活动
+### 密码重置活动
+<a id="password-reset-activity" class="xliff"></a>
 | 说明 | 报告位置 |
 |:--- |:--- |
 | 显示你的组织中发生的所有密码重置尝试。 |“目录”>“报告”选项卡 |
 
 ![密码重置活动](./media/active-directory-view-access-usage-reports/passwordResetActivity.PNG)
 
-### <a name="password-reset-registration-activity"></a>查看密码重置注册活动
+### 查看密码重置注册活动
+<a id="password-reset-registration-activity" class="xliff"></a>
 | 说明 | 报告位置 |
 |:--- |:--- |
 | 显示你的组织中发生的所有密码重置注册 |“目录”>“报告”选项卡 |
 
 ![查看密码重置注册活动](./media/active-directory-view-access-usage-reports/passwordResetRegistrationActivity.PNG)
 
-### <a name="self-service-groups-activity"></a>自助服务组活动
+### 自助服务组活动
+<a id="self-service-groups-activity" class="xliff"></a>
 | 说明 | 报告位置 |
 |:--- |:--- |
 | 显示目录中自助管理组的所有活动。 |“目录”>“用户”>“<i>用户</i>”>“设备”选项卡 |
 
 ![自助服务组活动](./media/active-directory-view-access-usage-reports/selfServiceGroupsActivity.PNG)
 
-## <a name="integrated-applications-reports"></a>集成应用程序报告
-### <a name="application-usage-summary"></a>应用程序使用情况：摘要
+## 集成应用程序报告
+<a id="integrated-applications-reports" class="xliff"></a>
+### 应用程序使用情况：摘要
+<a id="application-usage-summary" class="xliff"></a>
 | 说明 | 报告位置 |
 |:--- |:--- |
 | 当你要查看目录中所有 SaaS 应用程序的使用情况时，可使用此报告。 此报告基于用户在访问面板中单击应用程序的次数。 |“目录”>“报告”选项卡 |
@@ -161,36 +172,44 @@ ms.lasthandoff: 11/17/2016
 
 ![应用程序使用情况摘要](./media/active-directory-view-access-usage-reports/applicationUsage.PNG)
 
-### <a name="application-usage-detailed"></a>应用程序使用情况：详细信息
+### 应用程序使用情况：详细信息
+<a id="application-usage-detailed" class="xliff"></a>
 | 说明 | 报告位置 |
 |:--- |:--- |
 | 当你要查看特定 SaaS 应用程序的使用量时，可使用此报告。 此报告基于用户在访问面板中单击应用程序的次数。 |“目录”>“报告”选项卡 |
 
-### <a name="application-dashboard"></a>应用程序仪表板
+### 应用程序仪表板
+<a id="application-dashboard" class="xliff"></a>
 | 说明 | 报告位置 |
 |:--- |:--- |
 | 此报告指示在所选时间间隔内你所在组织的用户累积登录该应用程序的次数。 面板页面上的图表将帮助你识别该应用程序全部使用情况的趋势。 |“目录”>“应用程序”>“仪表板”选项卡 |
 
-## <a name="error-reports"></a>错误报告
-### <a name="account-provisioning-errors"></a>帐户设置错误
+## 错误报告
+<a id="error-reports" class="xliff"></a>
+### 帐户设置错误
+<a id="account-provisioning-errors" class="xliff"></a>
 | 说明 | 报告位置 |
 |:--- |:--- |
 | 使用此报告监视在从 SaaS 应用程序将帐户同步到 Azure Active Directory 期间发生的错误。 |“目录”>“报告”选项卡 |
 
 ![帐户设置错误](./media/active-directory-view-access-usage-reports/accountProvisioningErrors.PNG)
 
-## <a name="user-specific-reports"></a>用户特定的报告
-### <a name="devices"></a>设备
+## 用户特定的报告
+<a id="user-specific-reports" class="xliff"></a>
+### 设备
+<a id="devices" class="xliff"></a>
 | 说明 | 报告位置 |
 |:--- |:--- |
 | 当你想查看特定用户用于访问 Azure Active Directory 的设备的 IP 地址和地理位置时，可使用此报告。 |“目录”>“用户”>“<i>用户</i>”>“设备”选项卡 |
 
-### <a name="activity"></a>活动
+### 活动
+<a id="activity" class="xliff"></a>
 | 说明 | 报告位置 |
 |:--- |:--- |
 | 显示用户的登录活动。 该报告包含登录的应用程序、所使用的设备、IP 地址和位置等信息。 我们不收集使用 Microsoft 帐户登录的用户的历史记录。 |“目录”>“用户”>“<i>用户</i>”>“活动”选项卡 |
 
-#### <a name="sign-in-events-included-in-the-user-activity-report"></a>用户活动报告中包含的登录事件
+#### 用户活动报告中包含的登录事件
+<a id="sign-in-events-included-in-the-user-activity-report" class="xliff"></a>
 用户活动报告中只包括特定类型的登录事件。
 
 | 事件类型 | 是否包括？ |
@@ -209,14 +228,16 @@ ms.lasthandoff: 11/17/2016
 > 
 > 
 
-## <a name="things-to-consider-if-you-suspect-security-breach"></a>当你怀疑有安全漏洞时要考虑的事项
+## 当你怀疑有安全漏洞时要考虑的事项
+<a id="things-to-consider-if-you-suspect-security-breach" class="xliff"></a>
 如果你怀疑某个用户帐户可能已泄露或者出现可能导致云中的目录数据产生安全漏洞的任何可疑用户活动，你可能需要考虑采取以下一个或多个措施：
 
 * 联系该用户以核实该活动
 * 重置用户密码
 * [启用多重身份验证](../multi-factor-authentication/multi-factor-authentication-get-started.md)以提高安全性
 
-## <a name="view-or-download-a-report"></a>查看或下载报告
+## 查看或下载报告
+<a id="view-or-download-a-report" class="xliff"></a>
 1. 在 Azure 经典门户中，依次单击“Active Directory”、所在组织的目录的名称和“报告”。
 2. 在“报告”页面上，单击你要查看和/或下载的报告。
    
@@ -235,13 +256,16 @@ ms.lasthandoff: 11/17/2016
    * 下载的文件中最多包含 75,000 个事件。
    * 有关更多数据，请查看 [Azure AD 报告 API](active-directory-reporting-api-getting-started.md)。
 
-## <a name="ignore-an-event"></a>忽略事件
+## 忽略事件
+<a id="ignore-an-event" class="xliff"></a>
 如果你正在查看任何异常报告，则可能会注意到你可以忽略相关报告中出现的各种事件。 若要忽略某个事件，只需在报告中突出显示该事件，然后单击“忽略”。 “忽略”按钮会从报告中永久地删除突出显示的事件，但此按钮只能由获得许可的全局管理员使用。
 
-## <a name="automatic-email-notifications"></a>自动电子邮件通知
+## 自动电子邮件通知
+<a id="automatic-email-notifications" class="xliff"></a>
 有关 Azure AD 报告通知的详细信息，请查看 [Azure Active Directory 报告通知](active-directory-reporting-notifications.md)。
 
-## <a name="whats-next"></a>后续步骤
+## 后续步骤
+<a id="whats-next" class="xliff"></a>
 * [Azure Active Directory 高级版入门](active-directory-get-started-premium.md)
 * [向“登录”和“访问面板”页添加公司品牌](active-directory-add-company-branding.md)
 
