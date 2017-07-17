@@ -1,5 +1,5 @@
 ---
-title: " 使用 Azure 门户创建 Azure 媒体服务帐户| Microsoft 文档s"
+title: "使用 Azure 门户创建 Azure 媒体服务帐户| Microsoft Docs"
 description: "本教程介绍了使用 Azure 门户创建 Azure 媒体服务帐户的步骤。"
 services: media-services
 documentationcenter: 
@@ -12,15 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/10/2017
+ms.date: 07/10/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 7ef0383ae88dcb8beb4b30792eaf60dec2911507
-ms.openlocfilehash: 08b8629502f99fc46fbe28ad17cd173f11259721
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 9ab5368c173f016f44546d6c8acb360598f5f5ab
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
-# <a name="create-an-azure-media-services-account-using-the-azure-portal"></a>利用 Azure 门户创建 Azure 媒体服务帐户
+# 利用 Azure 门户创建 Azure 媒体服务帐户
+<a id="create-an-azure-media-services-account-using-the-azure-portal" class="xliff"></a>
 > [!div class="op_single_selector"]
 > * [门户](media-services-portal-create-account.md)
 > * [PowerShell](media-services-manage-with-powershell.md)
@@ -35,20 +37,19 @@ ms.openlocfilehash: 08b8629502f99fc46fbe28ad17cd173f11259721
 
 本文将介绍一些常见概念，并展示如何使用 Azure 门户创建媒体服务帐户。
 
-## <a name="concepts"></a>概念
+## 概念
+<a id="concepts" class="xliff"></a>
 访问媒体服务需要两个关联的帐户：
 
 * 一个媒体服务帐户。 你可以使用你的帐户访问 Azure 中可用的一组基于云的媒体服务。 媒体服务帐户不会存储实际媒体内容， 而是存储有关你帐户中的媒体内容和媒体处理作业的元数据。 创建该帐户时，需要选择一个可用的媒体服务区域。 所选的区域是存储你帐户的元数据记录的数据中心。
   
-    可用的媒体服务 (AMS) 区域如下：北欧、西欧、美国西部、美国东部、东南亚、东亚、日本西部、日本东部。 媒体服务不使用地缘组。
-  
-    AMS 现已在以下数据中心推出：巴西南部、印度西部、印度南部和印度中部。 现在可以使用 Azure 门户创建媒体服务帐户，以及执行此处所述的各项任务。 不过，这些数据中心未启用实时编码。 此外，并非所有类型的编码保留单位都可用于这些数据中心。
-  
-  * 巴西南部：只可以使用标准和基本编码保留单位。
-  * 印度西部、印度南部： 
 * 一个 Azure 存储帐户。 存储帐户必须位于媒体服务帐户所在的地理区域内。 创建媒体服务帐户时，你可以选择位于同一区域内的现有存储帐户，也可以在同一区域内创建新的存储帐户。 如果你删除媒体服务帐户，相关存储帐户中的 Blob 不会被删除。
 
-## <a name="create-an-ams-account"></a>创建 AMS 帐户
+> [!NOTE]
+> 若要了解 Azure 媒体服务功能在不同区域的可用性，请参阅 [AMS 功能的跨数据中心可用性](scenarios-and-availability.md#a-idavailabilitya-availability-of-media-services-features-across-datacenters)。
+
+## 创建 AMS 帐户
+<a id="create-an-ams-account" class="xliff"></a>
 本部分中的步骤将介绍如何创建 AMS 帐户。
 
 1. 在 [Azure 门户](https://portal.azure.com/)登录。
@@ -74,35 +75,25 @@ ms.openlocfilehash: 08b8629502f99fc46fbe28ad17cd173f11259721
     >[!NOTE]
     >创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
    
-    ![媒体服务设置](./media/media-services-create-account/media-services-settings.png)
-   
-    若要管理 AMS 帐户（例如，上载视频、对资产进行编码、监视作业进度），请使用“设置”窗口。
+## 管理 AMS 帐户的步骤
+<a id="to-manage-your-ams-account" class="xliff"></a>
 
-## <a name="manage-keys"></a>管理密钥
-你需要有帐户名和主密钥信息，才能以编程方式访问媒体服务帐户。
+若要管理 AMS 帐户（例如，以编程方式连接到 AMS API、上传视频、编码资产、配置内容保护、监视作业进度），请在门户左侧选择“设置”。 从“设置”导航都某个可用的边栏选项卡（例如：“API 访问权限”、“资产”、“作业”、“内容保护”）。
 
-1. 在 Azure 门户中，选择你的帐户。 
-   
-    “设置”窗口显示在右侧。 
-2. 在“设置”窗口中，选择“密钥”。 
-   
-    “管理密钥”窗口显示帐户名，主密钥和辅助密钥也会显示。 
-3. 按复制按钮复制这些值。
-   
-    ![媒体服务密钥](./media/media-services-create-account/media-services-keys.png)
 
-## <a name="next-steps"></a>后续步骤
-现在可以将文件上载到 AMS 帐户。 有关详细信息，请参阅 [上载文件](media-services-portal-upload-files.md)。
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
-## <a name="media-services-learning-paths"></a>媒体服务学习路径
+现在可以将文件上传到 AMS 帐户。 有关详细信息，请参阅 [上传文件](media-services-portal-upload-files.md)。
+
+如果计划以编程方式访问 AMS API，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。
+
+## 媒体服务学习路径
+<a id="media-services-learning-paths" class="xliff"></a>
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>提供反馈
+## 提供反馈
+<a id="provide-feedback" class="xliff"></a>
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 
