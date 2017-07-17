@@ -13,17 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/01/2017
+ms.date: 07/17/2017
 ms.author: davidmu
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: cda53c43d4524ddcc8139f60f6b605a1f26c2658
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
-
 
 ---
 
-# <a name="virtual-networks-and-windows-virtual-machines-in-azure"></a>Azure 中的虚拟网络和 Windows 虚拟机 
+# Azure 中的虚拟网络和 Windows 虚拟机
+<a id="virtual-networks-and-windows-virtual-machines-in-azure" class="xliff"></a> 
 
 创建 Azure 虚拟机 (VM) 时，必须创建[虚拟网络](../../virtual-network/virtual-networks-overview.md) (VNet) 或使用现有的 VNet。 此外，还需要确定如何在 VNet 上访问 VM。 [在创建资源之前必须做好规划](../../virtual-network/virtual-network-vnet-plan-design-arm.md)，确保了解[网络资源的限制](../../azure-subscription-service-limits.md#networking-limits)。
 
@@ -44,7 +45,8 @@ ms.lasthandoff: 04/27/2017
 - 网络安全组
 - 负载均衡器 
 
-## <a name="network-interfaces"></a>网络接口
+## 网络接口
+<a id="network-interfaces" class="xliff"></a>
 
 [网络接口 (NIC)](../../virtual-network/virtual-network-network-interface.md) 是 VM 与虚拟网络 (VNet) 之间互相连接的桥梁。 VM 必须至少有一个 NIC，但可以根据所创建 VM 的大小包含多个 NIC。 请在 [Azure 中虚拟机的大小](sizes.md)中了解每种 VM 大小支持的 NIC 数目。 
 
@@ -63,7 +65,8 @@ ms.lasthandoff: 04/27/2017
 | [Azure CLI](../../virtual-network/virtual-network-deploy-multinic-arm-cli.md) | 若要提供事先创建的公共 IP 地址标识符，请结合 **--public-ip-address** 参数使用 [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#create)。 |
 | [模板](../../virtual-network/virtual-network-deploy-multinic-arm-template.md) | 参考 [Network Interface in a Virtual Network with Public IP Address](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet)（虚拟网络中使用公共 IP 地址的网络接口），使用模板部署网络接口。 |
 
-## <a name="ip-addresses"></a>IP 地址 
+## IP 地址
+<a id="ip-addresses" class="xliff"></a> 
 
 可将以下类型的 [IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)分配到 Azure 中的 NIC：
 
@@ -87,7 +90,8 @@ ms.lasthandoff: 04/27/2017
 
 创建公共 IP 地址后，可将它分配到 NIC，从而将它与 VM 相关联。
 
-## <a name="virtual-network-and-subnets"></a>虚拟网络和子网
+## 虚拟网络和子网
+<a id="virtual-network-and-subnets" class="xliff"></a>
 
 子网是 VNet 中的一系列 IP 地址。 可将一个 VNet 划分为多个子网，以便于组织和提高安全性。 VM 中的每个 NIC 连接到一个 VNet 中的一个子网。 连接到 VNet 中的子网（不管是相同的子网还是不同的子网）的 NIC 可以互相通信，不需任何额外的配置。
 
@@ -97,7 +101,7 @@ ms.lasthandoff: 04/27/2017
 
 默认情况下，子网之间没有安全边界，因此，每个子网中的 VM 可以相互通信。 但是，可以设置网络安全组 (NSG) 来控制流入或流出子网以及 VM 的流量。 
 
-下表列出了可用于创建 VNet 和子网的方法。    
+下表列出了可用于创建 VNet 和子网的方法。 
 
 | 方法 | 说明 |
 | ------ | ----------- |
@@ -106,7 +110,8 @@ ms.lasthandoff: 04/27/2017
 | [Azure CLI](../../virtual-network/virtual-networks-create-vnet-arm-cli.md) | 子网和 VNet 是同时创建的。 在 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) 后面提供 **--subnet-name** 参数并指定子网名称。 |
 | [模板](../../virtual-network/virtual-networks-create-vnet-arm-template-click.md) | 创建 VNet 和子网的最简单方法是下载一个现有的模板（例如[包含两个子网的虚拟网络](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)），并根据需要对它进行修改。 |
 
-## <a name="network-security-groups"></a>网络安全组
+## 网络安全组
+<a id="network-security-groups" class="xliff"></a>
 
 [网络安全组 (NSG)](../../virtual-network/virtual-networks-nsg.md) 包含一系列访问控制列表 (ACL) 规则，这些规则可以允许或拒绝流向子网和/或 NIC 的网络流量。 NSG 可与子网或者已连接到子网的各个 NIC 相关联。 当 NSG 与某个子网相关联时，ACL 规则将应用到该子网中的所有 VM。 另外，可以通过将 NSG 直接关联到 NIC，对流向单个 NIC 的流量进行限制。
 
@@ -127,7 +132,8 @@ NSG 包含两种类型的规则：入站规则和出站规则。 在每组中，
 | [Azure CLI](../../virtual-network/virtual-networks-create-nsg-arm-cli.md) | 首先使用 [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#create) 创建 NSG。 使用 [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#create) 向 NSG 添加规则。 使用 [az network vnet subnet update](https://docs.microsoft.com/en-us/cli/azure/network/vnet/subnet#update) 将 NSG 添加到子网。 |
 | [模板](../../virtual-network/virtual-networks-create-nsg-arm-template.md) | 参考[创建网络安全组](https://github.com/Azure/azure-quickstart-templates/tree/master/101-security-group-create)，使用模板部署网络安全组。 |
 
-## <a name="load-balancers"></a>负载均衡器
+## 负载均衡器
+<a id="load-balancers" class="xliff"></a>
 
 [Azure 负载均衡器](../../load-balancer/load-balancer-overview.md) 可提高应用程序的可用性和网络性能。 可以配置负载均衡器，[对传入 VM 的 Internet 流量进行均衡](../../load-balancer/load-balancer-internet-overview.md)，或者[对 VNet 中 VM 之间的流量进行均衡](../../load-balancer/load-balancer-internal-overview.md)。 负载均衡器还可以均衡跨界网络中本地计算机与 VM 之间的流量，或者将外部流量转发到特定的 VM。
 
@@ -159,7 +165,8 @@ NSG 包含两种类型的规则：入站规则和出站规则。 在每组中，
 | [Azure CLI](../../load-balancer/load-balancer-get-started-ilb-arm-cli.md) | 使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb#create) 命令创建初始负载均衡器配置。 若要定义专用 IP 地址，请结合 **--private-ip-address** 参数使用 [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip#create)。 使用 [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool#create) 添加后端地址池的配置。 使用 [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule#create) 添加 NAT 规则。 使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#create) 添加负载均衡器规则。 使用 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe#create) 添加探测。|
 | [模板](../../load-balancer/load-balancer-get-started-ilb-arm-template.md) | 参考[负载均衡器中的 2 个 VM，在 LB 上配置 NAT 规则](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer)，使用模板部署负载均衡器。 |
 
-## <a name="vms"></a>VM
+## VM
+<a id="vms" class="xliff"></a>
 
 可在同一 VNet 中创建 VM，VM 可以使用专用 IP 地址相互连接。 即使 VM 位于不同的子网中，它们也可以相互连接，无需配置网关或使用公共 IP 地址。 若要将 VM 放入某个 VNet，请创建该 VNet，然后在每个 VM 时，将其分配到该 VNet 和子网。 在部署或启动期间，VM 将获取其网络设置。  
 
@@ -175,7 +182,8 @@ NSG 包含两种类型的规则：入站规则和出站规则。 在每组中，
 | [Azure PowerShell](../virtual-machines-windows-ps-create.md) | 使用 [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface) 将事先创建的 NIC 添加到 VM 配置中。 |
 | [模板](ps-template.md) | 参考 [Very simple deployment of a Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)（非常简单的 Windows VM 部署），使用模板部署 VM。 |
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 - 了解如何配置[用户定义的路由和 IP 转发](../../virtual-network/virtual-networks-udr-overview.md)。 
 - 了解如何配置 [VNet 到 VNet 连接](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)。

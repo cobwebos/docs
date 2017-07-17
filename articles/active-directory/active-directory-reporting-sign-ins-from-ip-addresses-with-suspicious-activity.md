@@ -12,22 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/04/2016
-ms.author: saah; kenhoff
-translationtype: Human Translation
+ms.date: 07/15/2017
+ms.author: markvi
+ms.custom: oldportal
+ms.reviewer: dhanyahk
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: d4168f2a674a90237ff5fa1c51518a711a1c2897
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
-# <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>从具有可疑活动的 IP 地址登录
+# 从具有可疑活动的 IP 地址登录
+<a id="sign-ins-from-ip-addresses-with-suspicious-activity" class="xliff"></a>
 此报告显示从已检测到可疑活动的 IP 地址执行的登录。 在此情况下，可疑活动定义为与成功登录相比，次数偏多的失败登录，这可能表示某个 IP 地址被恶意利用。
 
 ![从具有可疑活动的 IP 地址登录](./media/active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity/signInsFromIPAddressesWithSuspiciousActivity.PNG)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

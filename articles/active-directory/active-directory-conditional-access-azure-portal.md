@@ -16,14 +16,14 @@ ms.workload: identity
 ms.date: 05/11/2017
 ms.author: markvi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.sourcegitcommit: d4b38f1f90301c971cb6000f46d831047acb220e
 ms.openlocfilehash: 5a1ce66e02943caedd52976c5dcb3cf75c23bd49
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 07/17/2017
 
 ---
-# <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件性访问
+# Azure Active Directory 中的条件性访问
+<a id="conditional-access-in-azure-active-directory" class="xliff"></a>
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](active-directory-conditional-access-azure-portal.md)
@@ -60,13 +60,15 @@ ms.lasthandoff: 05/11/2017
 ![控制](./media/active-directory-conditional-access-azure-portal/12.png)
 
 
-## <a name="controls"></a>控制
+## 控制
+<a id="controls" class="xliff"></a>
 
 在条件性访问策略中，控制定义了在满足某个条件语句时应采取的措施。  
 使用控制可以阻止访问，或者在满足其他要求的情况下允许访问。
 配置允许访问的策略时，至少需要选择一项要求。   
 
-### <a name="grant-controls"></a>授权控制
+### 授权控制
+<a id="grant-controls" class="xliff"></a>
 Azure Active Directory 的当前实现允许配置以下授权控制要求：
 
 ![控制](./media/active-directory-conditional-access-azure-portal/05.png)
@@ -81,16 +83,19 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 
 ![控制](./media/active-directory-conditional-access-azure-portal/06.png)
 
-### <a name="session-controls"></a>会话控制
+### 会话控制
+<a id="session-controls" class="xliff"></a>
 可以通过会话控制限制云应用中的体验。 会话控制由云应用强制实施，取决于由 Azure AD 提供给应用的有关会话的其他信息。
 
 ![控制](./media/active-directory-conditional-access-azure-portal/session-control-pic.png)
 
-#### <a name="use-app-enforced-restrictions"></a>使用应用所强制实施的限制
+#### 使用应用所强制实施的限制
+<a id="use-app-enforced-restrictions" class="xliff"></a>
 可以使用此控制要求 Azure AD 将设备信息传递给云应用。 这样是为了让云应用了解用户是否来自合规的设备或已加入域的设备。 目前仅用作云应用的 SharePoint 支持此控制。 SharePoint 在收到设备信息后，会根据设备状态为用户通过受限的体验或完整的体验。
 若要详细了解如何设置 SharePoint 的受限访问条件，请访问[此链接](https://aka.ms/spolimitedaccessdocs)。
 
-## <a name="condition-statement"></a>条件语句
+## 条件语句
+<a id="condition-statement" class="xliff"></a>
 
 上一部分介绍了可以使用哪些支持的选项，以控制形式来阻止或限制对资源的访问。 在条件性访问策略中，可以定义需要满足哪种条件，才以条件语句的形式应用控制。  
 
@@ -117,7 +122,8 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
     ![条件](./media/active-directory-conditional-access-azure-portal/21.png)
 
 
-## <a name="conditions"></a>条件
+## 条件
+<a id="conditions" class="xliff"></a>
 
 在 Azure Active Directory 的当前实现中，可针对以下方面定义条件：
 
@@ -143,16 +149,19 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
     ![条件](./media/active-directory-conditional-access-azure-portal/04.png)
 
 
-## <a name="common-scenarios"></a>常见方案
+## 常见方案
+<a id="common-scenarios" class="xliff"></a>
 
-### <a name="requiring-multi-factor-authentication-for-apps"></a>要求对应用使用多重身份验证
+### 要求对应用使用多重身份验证
+<a id="requiring-multi-factor-authentication-for-apps" class="xliff"></a>
 
 在许多环境中，某些应用所需的保护级别要比其他应用要高一些。
 例如，有权访问敏感数据的应用就需要更高的保护级别。
 如果想要为这些应用添加另一层保护，可以配置条件访问策略，要求访问这些应用的用户执行多重身份验证。
 
 
-### <a name="requiring-multi-factor-authentication-for-access-from-networks-that-are-not-trusted"></a>通过不受信任的网络访问时要求执行多重身份验证
+### 通过不受信任的网络访问时要求执行多重身份验证
+<a id="requiring-multi-factor-authentication-for-access-from-networks-that-are-not-trusted" class="xliff"></a>
 
 此方案与前一种方案类似，两者都提出了多重身份验证的要求。
 但是，主要区别在于此项要求的条件。  
@@ -160,13 +169,15 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 换而言之，如果用户通过不受信任的网络访问应用，则你可能要求执行多重身份验证。
 
 
-### <a name="only-trusted-devices-can-access-office-365-services"></a>只允许受信任的设备访问 Office 365 服务
+### 只允许受信任的设备访问 Office 365 服务
+<a id="only-trusted-devices-can-access-office-365-services" class="xliff"></a>
 
 如果在环境中使用 Intune，马上就可以在 Azure 控制台中开始使用条件性访问策略接口。
 
 许多 Intune 客户都在使用条件性访问来确保只有受信任的设备可以访问 Office 365 服务。 这意味着，访问这些服务的移动设备已注册到 Intune 并满足合规策略要求，Windows 电脑已加入本地域。 一项重要改进是不需要针对每个 Office 365 服务设置相同的策略。  创建新策略时，可以配置云应用，以包含想要使用条件性访问保护的每个 O365 应用。
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 若要了解如何配置条件性访问策略，请参阅 [Get started with conditional access in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md)（Azure Active Directory 中的条件性访问入门）。
 

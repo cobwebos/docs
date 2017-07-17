@@ -3,7 +3,7 @@ title: "Azure Active Directory 报告延迟 | Microsoft 文档"
 description: "在 Azure Active Directory 中显示报告事件所花费的时间"
 services: active-directory
 documentationcenter: 
-author: dhanyahk
+author: MarkusVi
 manager: femila
 editor: 
 ms.assetid: 346b14f8-d16d-4b07-8211-e6c5eec07062
@@ -12,17 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
+ms.custom: oldportal
+ms.reviewer: dhanyahk
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: 9443a00232420d58dea52ed01f31a4ef964a1620
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/09/2017
 
-
 ---
-# <a name="azure-active-directory-report-latencies"></a>Azure Active Directory 报告延迟
+# Azure Active Directory 报告延迟
+<a id="azure-active-directory-report-latencies" class="xliff"></a>
 *本文档是 [Azure Active Directory 报告指南](active-directory-reporting-guide.md)的一部分。*
 
 | 报表 | 最小值 | 平均值 | 最大值 |

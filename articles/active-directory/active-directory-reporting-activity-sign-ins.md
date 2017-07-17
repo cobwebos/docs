@@ -12,17 +12,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/05/2017
+ms.date: 07/15/2017
 ms.author: markvi
+ms.reviewer: dhanyahk
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: 0e8ae05b5f8644d4dfd0e6205224cabfb0919531
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
-# <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
+# Azure Active Directory 门户中的“登录活动”报告
+<a id="sign-in-activity-reports-in-the-azure-active-directory-portal" class="xliff"></a>
 
 通过 [Azure 门户](https://portal.azure.com)中的 Azure Active Directory (Azure AD) 报告，可以获取确定环境运行状况所需的信息。
 
@@ -37,18 +38,22 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 
 本主题概述登录活动。
 
-## <a name="pre-requisite"></a>先决条件
+## 先决条件
+<a id="pre-requisite" class="xliff"></a>
 
-### <a name="who-can-access-the-data"></a>谁可以访问该数据？
+### 谁可以访问该数据？
+<a id="who-can-access-the-data" class="xliff"></a>
 * 安全管理员或安全读者角色中的用户
 * 全局管理员
 * 任何用户（非管理员）都可以访问自己的登录活动 
 
-### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>访问登录活动需要什么 Azure AD 许可证？
+### 访问登录活动需要什么 Azure AD 许可证？
+<a id="what-azure-ad-license-do-you-need-to-access-sign-in-activity" class="xliff"></a>
 * 租户必须具有与之关联的 Azure AD Premium 许可证，才能查看包含所有登录活动的报告
 
 
-## <a name="signs-in-activities"></a>登录活动
+## 登录活动
+<a id="signs-in-activities" class="xliff"></a>
 
 通过用户登录报表提供的信息，可以找到一些问题的答案，例如：
 
@@ -84,7 +89,8 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 ![登录活动](./media/active-directory-reporting-activity-sign-ins/43.png "登录活动")
 
 
-## <a name="filtering-sign-in-activities"></a>筛选登录活动
+## 筛选登录活动
+<a id="filtering-sign-in-activities" class="xliff"></a>
 
 若要将所报告数据的范围缩小到适当的级别，可以使用以下字段筛选登录数据：
 
@@ -120,7 +126,8 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 - 失败
 
 
-## <a name="sign-in-activities-shortcuts"></a>登录活动快捷方式
+## 登录活动快捷方式
+<a id="sign-in-activities-shortcuts" class="xliff"></a>
 
 除了 Azure Active Directory，Azure 门户还提供了两个额外的登录活动数据的入口点：
 
@@ -128,7 +135,8 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 - 企业应用程序
 
 
-### <a name="users-and-groups-sign-ins-activities"></a>用户和组的登录活动
+### 用户和组的登录活动
+<a id="users-and-groups-sign-ins-activities" class="xliff"></a>
 
 通过用户登录报表提供的信息，可以找到一些问题的答案，例如：
 
@@ -164,7 +172,8 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 
 
 
-## <a name="usage-of-managed-applications"></a>托管应用程序的使用情况
+## 托管应用程序的使用情况
+<a id="usage-of-managed-applications" class="xliff"></a>
 
 通过登录数据的以应用程序为中心的视图，可以回答如下问题：
 
@@ -197,7 +206,8 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 
 
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 请参阅 [Azure Active Directory 报表指南](active-directory-reporting-guide.md)。
 
 
