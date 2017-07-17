@@ -12,16 +12,17 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/07/2017
+ms.date: 07/13/2017
 ms.author: ryanwi;mikhegn
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: c0c5ab8a9db60ff375b7d823e40f83cbc4d2b4c3
-ms.lasthandoff: 04/07/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ad284e152dcf44f27fb53340dd641d95b103db78
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/08/2017
 
 ---
-# <a name="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster"></a>在本地群集上部署和升级应用程序入门
+# 在本地群集上部署和升级应用程序入门
+<a id="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster" class="xliff"></a>
 Azure Service Fabric SDK 包含完整的本地开发环境，可让你快速地在本地群集上开始部署和管理应用程序。 在本文中，您会从 Windows PowerShell 创建本地群集、将现有应用程序部署到该群集，然后将该应用程序升级为新版本。
 
 > [!NOTE]
@@ -29,7 +30,8 @@ Azure Service Fabric SDK 包含完整的本地开发环境，可让你快速地�
 > 
 > 
 
-## <a name="create-a-local-cluster"></a>创建本地群集
+## 创建本地群集
+<a id="create-a-local-cluster" class="xliff"></a>
 Service Fabric 群集代表一组可在其中部署应用程序的硬件资源。 通常，群集由任意数量的计算机（从 5 台到数千台）组成。 不过，Service Fabric SDK 包含可在一台计算机上运行的群集配置。
 
 请务必知道 Service Fabric 本地群集不是模拟器或仿真器。 它运行多台计算机群集上使用的相同平台代码。 唯一的差别在于它在一台计算机上运行通常会分散于五台计算机的平台进程。
@@ -54,7 +56,8 @@ SDK 提供两种方式来设置本地群集：Windows PowerShell 脚本和本地
    
     现已准备好将应用程序部署到群集。
 
-## <a name="deploy-an-application"></a>部署应用程序
+## 部署应用程序
+<a id="deploy-an-application" class="xliff"></a>
 Service Fabric SDK 包含一组丰富的框架以及用于创建应用程序的开发人员工具。 如果您有兴趣学习如何在 Visual Studio 中创建应用程序，请参阅 [在 Visual Studio 中创建您的第一个 Service Fabric 应用程序](service-fabric-create-your-first-application-in-visual-studio.md)。
 
 本教程将使用现有示例应用程序（其名称为 WordCount），以便可专注于平台的管理方面：部署、监视和升级。
@@ -94,7 +97,8 @@ Service Fabric SDK 包含一组丰富的框架以及用于创建应用程序的�
    
     我们部署的应用程序包含四个分区。 因此，以 A 到 G 开头的单词将存储在第一个分区，以 N 到 H 开头的单词将存储在第二个分区，依此类推。
 
-## <a name="view-application-details-and-status"></a>查看应用程序详细信息和状态
+## 查看应用程序详细信息和状态
+<a id="view-application-details-and-status" class="xliff"></a>
 我们现已部署应用程序，让我们在 PowerShell 中查看一些应用程序详细信息。
 
 1. 查询群集上所有已部署的应用程序：
@@ -134,7 +138,8 @@ Service Fabric SDK 包含一组丰富的框架以及用于创建应用程序的�
    > 
    > 
 
-## <a name="upgrade-an-application"></a>升级应用程序
+## 升级应用程序
+<a id="upgrade-an-application" class="xliff"></a>
 Service Fabric 在应用程序推出于群集时监视其运行状况，从而提供无需停机的升级。 执行 WordCount 应用程序升级。
 
 新版应用程序现在只计算以元音开头的单词。 推出升级后，我们会看到应用程序的行为出现两项变化。 首先，计数增长的速率应该变慢，因为计算的单词比较少。 其次，由于第一个分区有两个元音（A 和 E），而其他每个分区只包含一个元音，因此第一个分区的计数最终会超出其他分区。
@@ -167,7 +172,8 @@ Service Fabric 在应用程序推出于群集时监视其运行状况，从而�
    
     ![在浏览器中查看应用程序的新版本][deployed-app-ui-v2]
 
-## <a name="cleaning-up"></a>清理
+## 清理
+<a id="cleaning-up" class="xliff"></a>
 结束之前，请务必记住该本地群集是真实的。 应用程序继续在后台运行，直到您删除它们。  根据应用的性质，正在运行的应用可能会占用计算机上的大量资源。 可通过几个选项对应用程序和群集进行管理：
 
 1. 若要删除单个应用程序及其所有数据，请运行下面的命令：
@@ -190,7 +196,8 @@ Service Fabric 在应用程序推出于群集时监视其运行状况，从而�
 3. 若要关闭群集，但保留应用程序数据和跟踪，请在系统托盘应用中单击“停止本地群集”  。
 4. 要完全删除群集，请在系统托盘应用中单击“删除本地群集”  。 此选项会导致下次在 Visual Studio 中按 F5 时部署较慢。 仅当在一段时间内不想使用本地群集时，或者当需要回收资源时，才删除本地群集。
 
-## <a name="one-node-and-five-node-cluster-mode"></a>单节点或 5 节点群集模式
+## 单节点或 5 节点群集模式
+<a id="one-node-and-five-node-cluster-mode" class="xliff"></a>
 开发应用程序时，你通常会发现自己快速迭代编写代码、调试、更改代码、调试等。 为有助于优化此过程，本地群集可采用两种模式运行：单节点或 5 节点模式。 这两种群集模式各有优点。 5 节点群集模式使你能够使用真正的群集。 可以使用多个实例和服务副本测试故障转移方案。 单节点群集模式经过优化，能够快速执行服务部署和注册，从而帮助使用 Service Fabric 运行时快速验证代码。
 
 单节点群集模式和 5 节点群集模式都不是仿真器或模拟器。 本地开发群集运行多台计算机群集中使用的同一平台代码。
@@ -217,7 +224,8 @@ Service Fabric 在应用程序推出于群集时监视其运行状况，从而�
    
     ![群集设置输出][cluster-setup-success-1-node]
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 * 现在，您已部署并升级某些预先生成的应用程序，接下来可以 [尝试在 Visual Studio 中生成您自己的应用程序](service-fabric-create-your-first-application-in-visual-studio.md)。
 * 也可以对 [Azure 群集](service-fabric-cluster-creation-via-portal.md) 执行本文中所述的对本地群集执行的所有操作。
 * 本文中执行的升级非常简单。 若要深入了解 Service Fabric 升级的功能和灵活性，请参阅 [升级文档](service-fabric-application-upgrade.md) 。

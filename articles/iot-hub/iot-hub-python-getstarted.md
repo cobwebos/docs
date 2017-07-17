@@ -1,6 +1,6 @@
 ---
 title: "Azure IoT 中心入门 (Python) | Microsoft Docs"
-description: "本文介绍如何通过用于 Python 的 Azure IoT SDK 将消息从模拟设备发送到 Azure IoT 中心。"
+description: "了解如何通过用于 Python 的 IoT SDK 将设备到云消息发送到 Azure IoT 中心。 创建模拟的设备和服务应用，以便通过 IoT 中心注册设备、发送消息和读取消息。"
 services: iot-hub
 author: dsk-2015
 manager: timlt
@@ -13,15 +13,15 @@ ms.workload: na
 ms.date: 04/22/2017
 ms.author: dkshir
 ms.custom: na
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 572dfc8965957c4667d4124b045ffbb835786a94
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 05268924a182575b3df66fb6dad6bcac2700ec0c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/23/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
-# <a name="connect-your-simulated-device-to-your-iot-hub-using-python"></a>使用 Python 将模拟设备连接到 IoT 中心
+# 使用 Python 将模拟设备连接到 IoT 中心
+<a id="connect-your-simulated-device-to-your-iot-hub-using-python" class="xliff"></a>
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
 在本教程结束时，将会创建两个 Python 应用：
@@ -53,7 +53,8 @@ ms.lasthandoff: 05/23/2017
 > 也可使用基于 Python 或 Node.js 的 Azure CLI，在命令行中轻松创建 IoT 中心。 [使用 Azure CLI 2.0 创建 IoT 中心][lnk-azure-cli-hub]一文介绍了执行该操作的快速步骤。 
 > 
 
-## <a name="create-a-device-identity"></a>创建设备标识
+## 创建设备标识
+<a id="create-a-device-identity" class="xliff"></a>
 本部分列出了创建 Python 控制台应用的步骤，该应用可在 IoT 中心的标识注册表中创建设备标识。 设备无法连接到 IoT 中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]中的**标识注册表**部分。 当你运行此控制台应用时，它将生成唯一的设备 ID 和密钥，当设备向 IoT 中心发送设备到云的消息时，可以用于标识设备本身。
 
 1. 打开命令提示符，然后安装**用于 Python 的 Azure IoT 中心服务 SDK**。 在安装 SDK 之后关闭命令提示符。
@@ -138,7 +139,8 @@ ms.lasthandoff: 05/23/2017
 > 
 
 
-## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
+## 创建模拟设备应用程序
+<a id="create-a-simulated-device-app" class="xliff"></a>
 本部分列出了创建 Python 控制台应用的步骤，该应用可模拟设备并向 IoT 中心发送设备到云消息。
 
 1. 打开新的命令提示符，然后安装用于 Python 的 Azure IoT 中心设备 SDK，如下所示。 在安装之后关闭命令提示符。
@@ -255,7 +257,8 @@ ms.lasthandoff: 05/23/2017
 > 
 > 
 
-## <a name="receive-messages-from-your-simulated-device"></a>从模拟设备接收消息
+## 从模拟设备接收消息
+<a id="receive-messages-from-your-simulated-device" class="xliff"></a>
 若要从设备接收遥测消息，需使用 IoT 中心公开的与[事件中心][lnk-event-hubs-overview]兼容的终结点，以便读取设备到云消息。 阅读[事件中心入门][lnk-eventhubs-tutorial]教程，了解如何处理来自事件中心的消息，这些事件中心所对应的终结点与 IoT 中心的事件中心兼容。 在 Python 中，事件中心尚不支持遥测，因此可创建一个基于 [Node.js](iot-hub-node-node-getstarted.md#D2C_node) 或 [.NET](iot-hub-csharp-csharp-getstarted.md#D2C_csharp) 事件中心的控制台应用，以便从 IoT 中心读取设备到云消息。 本教程介绍如何使用 [IoT 中心资源管理器工具][lnk-iot-hub-explorer]读取这些设备消息。
 
 1. 打开命令提示符并安装 IoT 中心资源管理器。 
@@ -281,7 +284,8 @@ ms.lasthandoff: 05/23/2017
 
     ![Python 设备到云消息][2]
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，然后在 IoT 中心的标识注册表中创建了设备标识。 你已使用此设备标识来让模拟设备应用向 IoT 中心发送设备到云的消息。 你已借助 IoT 中心资源管理器工具观察到 IoT 中心接收的消息。 
 
 若要深入探索用于 Azure IoT 中心的 Python SDK 的用法，请访问[此 Git 中心存储库][lnk-python-github]。 若要查看用于 Python 的 Azure IoT 中心服务 SDK 的消息传送功能，可下载并运行 [iothub_messaging_sample.py][lnk-messaging-sample]。 若要了解如何通过用于 Python 的 Azure IoT 中心设备 SDK 进行设备端模拟，可下载并运行 [iothub_client_sample.py][lnk-client-sample]。

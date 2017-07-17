@@ -1,12 +1,18 @@
-### <a name="create-a-console-application"></a>创建控制台应用程序
-* 启动 Visual Studio 并创建新的控制台应用程序。
+### 创建控制台应用程序
+<a id="create-a-console-application" class="xliff"></a>
 
-### <a name="add-the-relay-nuget-package"></a>添加中继 NuGet 包
-1. 右键单击新创建的项目，然后选择“管理 NuGet 包” 。
+首先，启动 Visual Studio 并创建新的控制台应用 (.NET Framework) 项目。
+
+### 添加中继 NuGet 包
+<a id="add-the-relay-nuget-package" class="xliff"></a>
+
+1. 右键单击新创建的项目，然后单击“管理 NuGet 包” 。
 2. 单击“浏览”选项卡，然后搜索“Microsoft.Azure.Relay”，并选择“Microsoft Azure 中继”项。 单击“安装”以完成安装，然后关闭此对话框。
 
-### <a name="write-some-code-to-send-messages"></a>编写一些代码来发送消息
-1. 将 Program.cs 文件顶部的现有 `using` 语句替换为以下语句：
+### 编写一些代码来发送消息
+<a id="write-some-code-to-send-messages" class="xliff"></a>
+
+1. 将 Program.cs 文件顶部的现有 `using` 语句替换为以下 `using` 语句：
    
     ```csharp
     using System;
@@ -15,7 +21,7 @@
     using System.Threading.Tasks;
     using Microsoft.Azure.Relay;
     ```
-2. 将常量添加到 `Program` 类，用于保存混合连接的连接详细信息。 将括号中的占位符替换为在创建混合连接时获得的相应值。 请务必使用完全限定的命名空间名称：
+2. 将常量添加到 `Program` 类，用于保存混合连接的连接详细信息。 将括号中的占位符替换为在创建混合连接时获得的值。 请务必使用完全限定的命名空间名称：
    
     ```csharp
     private const string RelayNamespace = "{RelayNamespace}.servicebus.windows.net";
@@ -23,7 +29,7 @@
     private const string KeyName = "{SASKeyName}";
     private const string Key = "{SASKey}";
     ```
-3. 将以下新方法添加到 `Program` 类：
+3. 将以下方法添加到 `Program` 类：
    
     ```csharp
     private static async Task RunAsync()

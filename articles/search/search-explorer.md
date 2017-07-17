@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure 门户查询 Azure 搜索索引 | Microsoft Docs"
+title: "查询索引（门户 - Azure 搜索）| Microsoft Docs"
 description: "在 Azure 门户的搜索资源管理器中发出搜索查询。"
 services: search
 manager: jhubbard
@@ -11,15 +11,17 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 07/10/2017
 ms.author: ashmaka
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a23372112e17703a3399e1bdc9eaf73b85a1f80d
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: dd68d8ed073bf7b8666ddef35a2f1f84df690b4b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
-# <a name="query-your-azure-search-index-using-the-azure-portal"></a>使用 Azure 门户查询 Azure 搜索索引
+# 使用搜索资源管理器在 Azure 门户中查询 Azure 搜索索引
+<a id="query-an-azure-search-index-using-search-explorer-in-the-azure-portal" class="xliff"></a>
 > [!div class="op_single_selector"]
 > * [概述](search-query-overview.md)
 > * [门户](search-explorer.md)
@@ -28,34 +30,48 @@ ms.openlocfilehash: a23372112e17703a3399e1bdc9eaf73b85a1f80d
 > 
 > 
 
-本指南介绍如何在 Azure 门户中查询 Azure 搜索索引。
+本文介绍如何使用搜索资源管理器在 Azure 门户中查询 Azure 搜索索引。 可以使用搜索资源管理器，向服务中的任何现有索引提交简单或完整的 Lucene 查询字符串。
 
-开始本演练前，应已[创建 Azure 搜索索引](search-what-is-an-index.md)并[填充数据](search-what-is-data-import.md)。
+## 打开服务仪表板
+<a id="open-the-service-dashboard" class="xliff"></a>
+1. 在 [Azure 门户](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)左侧的跳转栏中，单击“所有资源”。
+2. 选择 Azure 搜索服务。
 
-## <a name="i-go-to-your-azure-search-blade"></a>I. 转到“Azure 搜索”边栏选项卡
-1. 在 [Azure 门户](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)
-2. 选择你的 Azure 搜索服务
+## 选择索引
+<a id="select-an-index" class="xliff"></a>
 
-## <a name="ii-select-the-index-you-would-like-to-search"></a>II. 选择要搜索的索引
-1. 选择要从“索引”磁贴中搜索的索引。
+选择要从“索引”磁贴中搜索的索引。
 
-![](./media/search-explorer/pick-index.png)
+   ![](./media/search-explorer/pick-index.png)
 
-## <a name="iii-click-on-the-search-explorer-tile"></a>III. 单击“搜索资源管理器”磁贴
-![](./media/search-explorer/search-explorer-tile.png)
+## 打开搜索资源管理器
+<a id="open-search-explorer" class="xliff"></a>
 
-## <a name="iii-start-searching"></a>III. 开始搜索
-1. 若要搜索“Azure 搜索”索引，请开始键入“查询字符串”字段中，然后按“搜索”。
+单击“搜索资源管理器”磁贴，以滑动方式打开搜索栏和结果窗格。
+
+   ![](./media/search-explorer/search-explorer-tile.png)
+
+## 开始搜索
+<a id="start-searching" class="xliff"></a>
+
+使用“搜索资源管理器”时，可以指定用于表述查询的[查询参数](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。
+
+1. 在“查询字符串”中键入查询，然后按“搜索”。 
+
+   查询字符串将自动解析为相应的请求 URL，以便提交针对 Azure 搜索 REST API 的 HTTP 请求。   
    
-   * 使用“搜索资源管理器”时，可以指定任何 [查询参数](https://msdn.microsoft.com/library/dn798927.aspx)
-2. 在“结果”部分中，发出针对 Azure 搜索 REST API 的搜索请求后，查询的结果将显示在 HTTP 响应正文中接收到的原始 JSON 中。
-3. 查询字符串将自动解析为相应的请求 URL，以便提交针对 Azure 搜索 REST API 的 HTTP 请求
+   可以使用任何有效的 Lucene 查询语法（不管是简单的还是完整的）来创建请求。 `*` 字符相当于空的或未指定的搜索，返回没有特定顺序的所有文档。
 
-![](./media/search-explorer/search-bar.png)
+2. 在“结果”中，查询结果以原始 JSON 格式呈现，等同于以编程方式发出请求时，在 HTTP 响应正文中返回的有效负载。
 
+   ![](./media/search-explorer/search-bar.png)
 
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
+以下资源提供更多的查询语法信息和示例。
 
-<!--HONumber=Nov16_HO2-->
-
-
+ + [简单的查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
+ + [Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
+ + [Lucene 查询语法示例](https://docs.microsoft.com/azure/search/search-query-lucene-examples) 
+ + [OData 筛选器表达式语法](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) 

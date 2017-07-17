@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/16/2017
+ms.date: 07/12/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: eb7d58c71f6d0daf072045797e30208ffe966ee0
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 0e80e0a1c334bcca0bb15dd16c54306a60f2486e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 07/13/2017
 
 ---
 
@@ -92,6 +92,8 @@ Azure 自动化 DSC 可用于管理各种计算机：
 * 集成模块 - Azure 自动化帐户中包含的 PowerShell 模块，用于在 runbook 和 DSC 配置中使用 cmdlet。
 * 计划 - 包含在指定时间启动或停止 runbook（包括重复频率）的计划。
 * 变量 - 包含来自于 runbook 或 DSC 配置的值。
+* **DSC 配置** - 属于 PowerShell 脚本，说明如何在 Windows 或 Linux 计算机上配置操作系统功能或设置，或者如何安装应用程序。  
+* **Runbooks** - 是基于 Windows PowerShell 的 Azure 自动化中执行某些自动化过程的一组任务。    
 
 每个自动化帐户的自动化资源与单个 Azure 区域相关联，但自动化帐户可以管理订阅中的所有资源。 如果策略要求将数据和资源隔离到特定的区域，请在不同区域中创建自动化帐户。
 

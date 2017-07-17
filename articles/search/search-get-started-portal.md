@@ -1,5 +1,5 @@
 ---
-title: "在门户中构建第一个 Azure 搜索索引 | Microsoft 文档"
+title: "教程：在门户中创建第一个 Azure 搜索索引 | Microsoft Docs"
 description: "在 Azure 门户中使用预定义的示例数据生成索引。 探索全文搜索、筛选器、分面 (Facet)、模糊搜索、地域搜索等功能。"
 services: search
 documentationcenter: 
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.workload: search
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 05/01/2017
+ms.date: 06/26/2017
 ms.author: heidist
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: e03d0ff92b0ad6d34314c55d98972997769d09f0
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: c49989058fdd98d623c5517060f725e5f7e436d8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
-# <a name="build-and-query-your-first-azure-search-index-in-the-portal"></a>在门户中生成和查询第一个 Azure 搜索索引
+# 教程：在门户中创建第一个 Azure 搜索索引
+<a id="tutorial-create-your-first-azure-search-index-in-the-portal" class="xliff"></a>
 
 在 Azure 门户中，通过“导入数据”向导开始使用预定义的示例数据集快速生成索引。 使用“搜索浏览器”探索全文搜索、筛选器、分面、模糊搜索和地域搜索。  
 
@@ -38,20 +38,23 @@ ms.lasthandoff: 05/10/2017
 
 也可参阅[在 .NET 中进行基于代码的 Azure 搜索编程简介](search-howto-dotnet-sdk.md)来加强相关知识。
 
-## <a name="prerequisites"></a>先决条件
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
 
 本教程假设读者拥有 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)和 [Azure 搜索服务](search-create-service-portal.md)。 
 
 如果不需立即预配某项服务，也可以观看这部 [Azure 搜索概述视频](https://channel9.msdn.com/Events/Connect/2016/138)（在大约 3 分钟时开始观看），其中对本教程所述的步骤做了 6 分钟的演示。
 
-## <a name="find-your-service"></a>找到服务
+## 找到服务
+<a id="find-your-service" class="xliff"></a>
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 打开 Azure 搜索服务的服务仪表板。 如果未将服务磁贴固定到仪表板，可通过以下方式找到你的服务： 
    
    * 在跳转栏中，单击左侧导航窗格底部的“更多服务”。
    * 在搜索框中，键入“搜索”获取订阅的搜索服务列表。 你的服务应会出现在该列表中。 
 
-## <a name="check-for-space"></a>检查空间
+## 检查空间
+<a id="check-for-space" class="xliff"></a>
 很多客户开始使用免费服务。 此版本限制为三个索引、三个数据源和三个索引器。 在开始之前，请确保有空间存储额外的项目。 本教程将创建每个对象的一个实例。 
 
 > [!TIP] 
@@ -65,7 +68,8 @@ ms.lasthandoff: 05/10/2017
 
 为了在门户中完成此任务，我们将使用可通过“导入数据”向导利用索引器进行爬网的内置示例数据集。 
 
-#### <a name="step-1-start-the-import-data-wizard"></a>步骤 1：启动“导入数据”向导
+#### 步骤 1：启动“导入数据”向导
+<a id="step-1-start-the-import-data-wizard" class="xliff"></a>
 1. 在 Azure 搜索服务仪表板上，单击命令栏中的“导入数据”  ，以启动用于创建和填充索引的向导。
    
     ![导入数据命令][2]
@@ -76,7 +80,8 @@ ms.lasthandoff: 05/10/2017
 
 3. 单击“确定”使用该数据集。
 
-#### <a name="step-2-define-the-index"></a>步骤 2：定义索引
+#### 步骤 2：定义索引
+<a id="step-2-define-the-index" class="xliff"></a>
 创建索引通常是基于代码的手动过程，但向导可以针对它能够爬网的所有数据源生成索引。 索引至少需要使用一个名称和一个字段集合（其中一个字段标记为文档键）来唯一标识每个文档。
 
 字段包含数据类型和属性。 顶部的复选框为*索引属性*，用于控制如何使用字段。 
@@ -91,14 +96,16 @@ ms.lasthandoff: 05/10/2017
 
 单击“确定”创建该索引。
 
-#### <a name="step-3-define-the-indexer"></a>步骤 3：定义索引器
+#### 步骤 3：定义索引器
+<a id="step-3-define-the-indexer" class="xliff"></a>
 仍在“导入数据”向导中，单击“索引器” > “名称”，然后键入索引器的名称。 
 
 此对象定义一个可执行过程。 可将该对象放入定期计划，但我们暂时单击“确定”，使用默认选项立即运行索引器一次。  
 
   ![realestate 索引器][8]
 
-## <a name="check-progress"></a>检查进度
+## 检查进度
+<a id="check-progress" class="xliff"></a>
 若要监视数据导入，请返回服务仪表板并向下滚动，然后双击“索引器”磁贴打开索引器列表。 列表中应会出现新建的索引器，其状态指示“正在进行”或“成功”，此外还会列出已编制索引的文档数。
 
    ![索引器进度消息][4]
@@ -194,7 +201,8 @@ ms.lasthandoff: 05/10/2017
 
 + 如果搜索应用程序具有“附近查找”功能或使用地图导航，地理空间搜索非常有用。 但它不属于全文搜索。 如果用户要求是按名称搜索城市或国家/地区，请添加包含该城市或国家/地区的名称的字段，并添加坐标。
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 + 修改刚刚创建的任一对象。 运行一次该向导后，可以返回查看或修改单个组件：索引、索引器或数据源。 不允许对索引进行某些编辑操作（如更改字段数据类型），但大多数属性和设置是可修改的。
 

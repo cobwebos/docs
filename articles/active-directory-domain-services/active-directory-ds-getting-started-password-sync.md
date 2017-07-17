@@ -12,44 +12,58 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/06/2017
+ms.date: 06/30/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: b7b5f92c0093faa96a367fc95d459b1babd99789
-ms.lasthandoff: 04/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4b6da997f44860dccb2aa2571ce099ab2d0231f3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/08/2017
 
 
 ---
-# <a name="enable-password-synchronization-with-azure-active-directory-domain-services"></a>启用 Azure Active Directory 域服务的密码同步
-在前述任务中，你为 Azure Active Directory (Azure AD) 租户启用了 Azure Active Directory 域服务 (AD DS)。 下一任务是启用凭据哈希，这是进行 NT LAN Manager (NTLM) 和 Kerberos 身份验证所必需的，否则无法通过 Azure Active Directory 域服务进行同步。 设置凭据同步以后，用户即可使用其公司凭据登录到托管域。
+# 允许将密码同步到 Azure Active Directory 域服务
+<a id="enable-password-synchronization-to-azure-active-directory-domain-services" class="xliff"></a>
+在前述任务中，你为 Azure Active Directory (Azure AD) 租户启用了 Azure Active Directory 域服务。 下一个任务是使 NT LAN Manager (NTLM) 和 Kerberos 身份验证所需的凭据哈希同步到 Azure AD 域服务。 设置凭据同步以后，用户即可使用其公司凭据登录到托管域。
 
-各过程并不相同，具体取决于组织是具有仅限云的 Azure AD 租户，还是被设置为通过 Azure AD Connect 与本地目录同步。
+对于仅限云的用户帐户来说，所涉及的步骤不同于使用 Azure AD Connect 从本地目录同步的用户帐户。  如果 Azure AD 租户既有仅限云的用户，又有来自本地 AD 的用户，你需要执行两个步骤。
+
+<br>
 
 > [!div class="op_single_selector"]
-> * [仅限云的 Azure AD 租户](active-directory-ds-getting-started-password-sync.md)
-> * [同步的 Azure AD 租户](active-directory-ds-getting-started-password-sync-synced-tenant.md)
+> * 仅限云的用户帐户：[将仅限云的用户帐户的密码同步到托管域](active-directory-ds-getting-started-password-sync.md)
+> * 本地用户帐户：[将从本地 AD 同步的用户帐户的密码同步到托管域](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 >
 >
 
-## <a name="task-5-enable-password-synchronization-with-azure-active-directory-domain-services-for-a-cloud-only-azure-ad-tenant"></a>任务 5：对仅限云的 Azure AD 租户启用 Azure Active Directory 域服务密码同步
-Azure Active Directory 域服务需要凭据哈希的格式适用于 NTLM 和 Kerberos 身份验证，以对托管域上的用户进行身份验证。 除非你为租户启用了 Azure Active Directory 域服务，否则 Azure AD 不会以 NTLM 或 Kerberos 身份验证所需的格式生成或存储凭据哈希。 出于显而易见的安全考虑，Azure AD 也不以明文形式存储任何凭据。 因此，根据用户的现有凭据，Azure AD 没有方法来生成这些 NTLM 或 Kerberos 凭据哈希。
+<br>
+
+## 任务 5：为仅限云的用户帐户启用到托管域的密码同步
+<a id="task-5-enable-password-synchronization-to-your-managed-domain-for-cloud-only-user-accounts" class="xliff"></a>
+Azure Active Directory 域服务需要凭据哈希的格式适用于 NTLM 和 Kerberos 身份验证，以对托管域上的用户进行身份验证。 除非为租户启用了 Azure Active Directory 域服务，否则 Azure AD 不会以 NTLM 或 Kerberos 身份验证所需的格式生成或存储凭据哈希。 出于显而易见的安全考虑，Azure AD 也不以明文形式存储任何密码凭据。 因此，根据用户的现有凭据，Azure AD 没有方法来自动生成这些 NTLM 或 Kerberos 凭据哈希。
 
 > [!NOTE]
-> 如果你的组织具有仅限云的 Azure AD 租户，则需要使用 Azure Active Directory 域服务的用户必须更改其密码。
+> 如果组织有仅限云的用户帐户，则需要使用 Azure Active Directory 域服务的用户必须更改其密码。 仅限云的用户帐户是在 Azure AD 目录中使用 Azure 门户或 Azure AD PowerShell cmdlet 创建的帐户。 此类用户帐户不是从本地目录同步的。
 >
 >
 
 此密码更改过程会导致在 Azure AD 中生成进行 Kerberos 和 NTLM 身份验证时 Azure Active Directory 域服务所需的凭据哈希。 也可以对需要使用 Azure Active Directory 域服务的所有租户中的用户终止密码或指示这些用户更改其密码。
 
-### <a name="enable-ntlm-and-kerberos-credential-hash-generation-for-a-cloud-only-azure-ad-tenant"></a>对仅限云的 Azure AD 租户启用 NTLM 和 Kerberos 凭据哈希生成
+### 对仅限云的用户帐户启用 NTLM 和 Kerberos 凭据哈希生成
+<a id="enable-ntlm-and-kerberos-credential-hash-generation-for-a-cloud-only-user-account" class="xliff"></a>
 下面是你需要向用户提供的说明，以便用户可以更改其密码：
 
 1. 转到组织的 [Azure AD 访问面板](http://myapps.microsoft.com)页。
-2. 在“访问面板”窗口中，选择“配置文件”选项卡。
-3. 单击“更改密码”磁贴。
 
-    ![Azure AD 访问面板的“更改密码”磁贴](./media/active-directory-domain-services-getting-started/user-change-password.png)
+    ![启动 Azure AD 访问面板](./media/active-directory-domain-services-getting-started/access-panel.png)
+
+2. 在右上角单击名称，然后从菜单中选择“配置文件”。
+
+    ![选择配置文件](./media/active-directory-domain-services-getting-started/select-profile.png)
+
+3. 在“配置文件”页上，单击“更改密码”。
+
+    ![单击“更改密码”](./media/active-directory-domain-services-getting-started/user-change-password.png)
 
    > [!NOTE]
    > 如果在“访问面板”窗口中没有显示“更改密码”选项，请确保组织已配置 [Azure AD 中的密码管理](../active-directory/active-directory-passwords-getting-started.md)。
@@ -63,7 +77,8 @@ Azure Active Directory 域服务需要凭据哈希的格式适用于 NTLM 和 Ke
 
 更改密码后，新密码数分钟后将在 Azure Active Directory 域服务中可用。 再过几分钟后（通常情况下，大约为 20 分钟），你就可以使用新更改的密码登录到已加入托管域的计算机了。
 
-## <a name="next-steps"></a>后续步骤
+## 相关内容
+<a id="related-content" class="xliff"></a>
 * [如何更新自己的密码](../active-directory/active-directory-passwords-update-your-own-password.md)
 * [Azure AD 中的密码管理入门](../active-directory/active-directory-passwords-getting-started.md)
 * [对已同步的 Azure AD 租户启用 Azure Active Directory 域服务密码同步](active-directory-ds-getting-started-password-sync-synced-tenant.md)

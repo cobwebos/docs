@@ -17,14 +17,15 @@ ms.workload: na
 ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
-ms.openlocfilehash: bc0c8ccad64166582dcb3f7162280a8772abc6b3
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: f9dff5384838521c309a2d2a5ebb5376c90159fb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/21/2017
+ms.lasthandoff: 07/12/2017
 
 ---
-# <a name="introduction-to-private-docker-container-registries"></a>专用 Docker 容器注册表简介
+# 专用 Docker 容器注册表简介
+<a id="introduction-to-private-docker-container-registries" class="xliff"></a>
 
 
 Azure 容器注册表是基于开源 Docker 注册表 2.0 的托管 [Docker 注册表](https://docs.docker.com/registry/)服务。 可以创建和维护 Azure 容器注册表来存储与管理专用的 [Docker 容器](https://www.docker.com/what-docker)映像。 可将 Azure 中的容器注册表与现有的容器开发和部署管道配合使用，现成地吸收 Docker 社区的专业知识。
@@ -36,7 +37,8 @@ Azure 容器注册表是基于开源 Docker 注册表 2.0 的托管 [Docker 注�
 
 
 
-## <a name="use-cases"></a>用例
+## 用例
+<a id="use-cases" class="xliff"></a>
 将 Azure 容器注册表中的映像提取到各种部署目标：
 
 * 用于跨主机群集管理容器化应用程序的**可缩放协调系统**，包括 [DC/OS](https://docs.mesosphere.com/)、[Docker Swarm](https://docs.docker.com/swarm/) 和 [Kubernetes](http://kubernetes.io/docs/)。
@@ -48,10 +50,13 @@ Azure 容器注册表是基于开源 Docker 注册表 2.0 的托管 [Docker 注�
 
 
 
-## <a name="key-concepts"></a>关键概念
+## 关键概念
+<a id="key-concepts" class="xliff"></a>
 * **注册表** - 在 Azure 订阅中创建一个或多个容器注册表。 每个注册表由同一位置的标准 Azure [存储帐户](../storage/storage-introduction.md)提供支持。 在与部署相同的 Azure 位置创建注册表，充分利用容器映像的本地闭合网络存储。 完全限定的注册表名称采用以下格式：`myregistry.azurecr.io`。
 
   可以使用使用 Azure Active Directory 支持的 [服务主体](../active-directory/active-directory-application-objects.md)或提供的管理员帐户来[控制访问](container-registry-authentication.md)容器注册表。 运行标准 `docker login` 命令可对注册表进行身份验证。
+
+* 托管的注册表 - 一个为三种 SKU（基本、标准和高级）的注册表提供其他功能的层。 这些 SKU 中的映像存储在由 Azure 容器注册表服务托管的存储帐户中，该服务可改进可靠性并启用新功能。 新功能包括：Webhook 集成、通过 Azure Active Directory 进行存储库身份验证，以及对删除功能的支持。 在创建注册表时，用户可以选择托管的注册表，也可以创建受自己的存储帐户支持的注册表。
 
 * **存储库** - 一个注册表包含一个或多个存储库（容器映像组）。 Azure 容器注册表支持多级存储库命名空间。 使用此功能可将特定应用相关的映像集合分组，或者将特定开发或运营团队的应用集合分组。 例如：
 
@@ -66,7 +71,8 @@ Azure 容器注册表是基于开源 Docker 注册表 2.0 的托管 [Docker 注�
 
 
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 * [使用 Azure 门户创建容器注册表](container-registry-get-started-portal.md)
 * [使用 Azure CLI 创建容器注册表](container-registry-get-started-azure-cli.md)
 * [使用 Docker CLI 推送第一个映像](container-registry-get-started-docker-cli.md)

@@ -14,20 +14,24 @@
 <a id="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy" class="xliff"></a>
 下表列出了支持的加密算法和密钥强度，可供客户配置。 必须为每个字段选择一个选项。
 
-| IPsec/IKEv2  | 选项                                                                 |
-| ---              | ---                                                                         |
-| IKEv2 加密 | AES256、AES192、AES128、DES3、DES                                           |
-| IKEv2 完整性  | SHA384、SHA256、SHA1、MD5                                                   |
-| DH 组         | ECP384、ECP256、DHGroup24、DHGroup14、DHGroup2048、DHGroup2、DHGroup1、无 |
-| IPsec 加密 | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、无    |
-| IPsec 完整性  | GCMAES256、GCMAES192、GCMAES128、SHA256、SHA1、MD5                          |
-| PFS 组        | ECP384、ECP256、PFS24、PFS2048、PFS14、PFS2、PFS1、无                     |
-| QM SA 生存期*  | 秒数（整数，至少为 300）和 KB 数（整数，至少为 1024）                                      |
-| 流量选择器 | UsePolicyBasedTrafficSelectors** ($True/$False; default $False)                             |
-|                  |                                                                             |
+| IPsec/IKEv2  | 选项                                                                   |
+| ---              | ---                                                                           |
+| IKEv2 加密 | AES256、AES192、AES128、DES3、DES                                             |
+| IKEv2 完整性  | SHA384、SHA256、SHA1、MD5                                                     |
+| DH 组         | DHGroup24、ECP384、ECP256、DHGroup14 (DHGroup2048)、DHGroup2、DHGroup1、无 |
+| IPsec 加密 | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、无      |
+| IPsec 完整性  | GCMAES256、GCMAES192、GCMAES128、SHA256、SHA1、MD5                            |
+| PFS 组        | PFS24、ECP384、ECP256、PFS2048、PFS2、PFS1、无                              |
+| QM SA 生存期   | 秒（整数；至少为 300 秒/默认为 27000 秒）<br>KB（整数；至少为 1024 KB/默认为 102400000 KB）           |
+| 流量选择器 | UsePolicyBasedTrafficSelectors ($True/$False; default $False)                 |
+|                  |                                                                               |
 
-* (*) 在 Azure VPN 网关上，IKEv2 主模式 SA 生存期固定为 28,800 秒
-* (**) 请参阅下一针对“UsePolicyBasedTrafficSelectors”的常见问题解答项
+> [!IMPORTANT]
+> 1. 在 IKE 和 IPsec PFS 中，DHGroup2048 和 PFS2048 与 Diffie-Hellman 组 14 相同。 如需完整的映射，请参阅 [Diffie-Hellman 组](#DH)。
+> 2. 对于 GCMAES 算法，必须为 IPsec 加密和完整性指定相同的 GCMAES 算法和密钥长度。
+> 3. 在 Azure VPN 网关上，IKEv2 主模式 SA 生存期固定为 28,800 秒
+> 4. QM SA 生存期是可选参数。 如果未指定，则使用默认值 27,000 秒（7.5 小时）和 102400000 KB (102GB)。
+> 5. UsePolicyBasedTrafficSelector 是连接的可选参数。 请参阅下一针对“UsePolicyBasedTrafficSelectors”的常见问题解答项
 
 ### Azure VPN 网关策略与本地 VPN 设备配置是否需完全匹配？
 <a id="does-everything-need-to-match-between-the-azure-vpn-gateway-policy-and-my-on-premises-vpn-device-configurations" class="xliff"></a>
@@ -50,6 +54,21 @@ SA 生存期是本地规范，不需匹配。
 * 10.2.0.0/16 <====> 172.16.0.0/16
 
 有关如何使用此选项的更多详细信息，请参阅[连接多个基于策略的本地 VPN 设备](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)。
+
+### <a name ="DH"></a>支持哪些 Diffie-Hellman 组？
+下表列出了支持的 Diffie-Hellman 组，分别针对 IKE (DHGroup) 和 IPsec (PFSGroup)：
+
+| **Diffie-Hellman 组**  | **DHGroup**              | **PFSGroup** | 密钥长度 |
+| ---                       | ---                      | ---          | ---            |
+| 1                         | DHGroup1                 | PFS1         | 768 位 MODP   |
+| 2                         | DHGroup2                 | PFS2         | 1024 位 MODP  |
+| 14                        | DHGroup14<br>DHGroup2048 | PFS2048      | 2048 位 MODP  |
+| 19                        | ECP256                   | ECP256       | 256 位 ECP    |
+| 20                        | ECP384                   | ECP284       | 384 位 ECP    |
+| 24                        | DHGroup24                | PFS24        | 2048 位 MODP  |
+|                           |                          |              |                |
+
+如需更多详细信息，请参阅 [RFC3526](https://tools.ietf.org/html/rfc3526) 和 [RFC5114](https://tools.ietf.org/html/rfc5114)。
 
 ### 自定义策略是否会替换 Azure VPN 网关的默认 IPsec/IKE 策略集？
 <a id="does-the-custom-policy-replace-the-default-ipsecike-policy-sets-for-azure-vpn-gateways" class="xliff"></a>

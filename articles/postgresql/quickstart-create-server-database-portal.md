@@ -10,25 +10,28 @@ ms.service: postgresql-database
 ms.custom: mvc
 ms.topic: hero-article
 ms.date: 06/19/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 7bbf70786bff83ad3cfae9cb9b893f41736874b5
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 2b81b9e1ae2abfd332bd6048b7643b4245ca374b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 07/13/2017
 
 ---
 
-# <a name="create-an-azure-database-for-postgresql-in-the-azure-portal"></a>可以在 Azure 门户中创建用于 PostgreSQL 的 Azure 数据库
+# 可以在 Azure 门户中创建用于 PostgreSQL 的 Azure 数据库
+<a id="create-an-azure-database-for-postgresql-in-the-azure-portal" class="xliff"></a>
 
 用于 PostgreSQL 的 Azure 数据库是一种托管服务，可用于在云中运行、管理和缩放具有高可用性的 PostgreSQL 数据库。 此快速入门指南介绍了如何使用 Azure 门户创建用于 PostgreSQL 的 Azure 数据库。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
+## 登录到 Azure 门户
+<a id="log-in-to-the-azure-portal" class="xliff"></a>
 
 登录到 [Azure 门户](https://portal.azure.com)。
 
-## <a name="create-an-azure-database-for-postgresql"></a>创建用于 PostgreSQL 的 Azure 数据库
+## 创建用于 PostgreSQL 的 Azure 数据库
+<a id="create-an-azure-database-for-postgresql" class="xliff"></a>
 
 创建的 Azure Database for PostgreSQL 服务器中包含一组已定义的[计算和存储](./concepts-compute-unit-and-storage.md)资源。 将在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建服务器。
 
@@ -61,7 +64,8 @@ ms.lasthandoff: 06/20/2017
    
   默认情况下，会在服务器下创建 **postgres** 数据库。 [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) 是供用户、实用工具和第三方应用程序使用的默认数据库。 
 
-## <a name="configure-a-server-level-firewall-rule"></a>配置服务器级防火墙规则
+## 配置服务器级防火墙规则
+<a id="configure-a-server-level-firewall-rule" class="xliff"></a>
 
 “用于 PostgreSQL 的 Azure 数据库”服务会在服务器级别创建防火墙。 除非创建了防火墙规则来为特定的 IP 地址打开防火墙，否则此防火墙会阻止外部应用程序和工具连接到服务器和服务器上的任何数据库。 
 
@@ -80,7 +84,8 @@ ms.lasthandoff: 06/20/2017
   > Azure PostgreSQL 服务器通过端口 5432 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 5432 的出站流量。 如果是这样，则无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 5432。
   >
 
-## <a name="get-the-connection-information"></a>获取连接信息
+## 获取连接信息
+<a id="get-the-connection-information" class="xliff"></a>
 
 创建“用于 PostgreSQL 的 Azure 数据库”服务器时，还会创建默认的 **postgres** 数据库。 若要连接到数据库服务器，需要提供主机信息和访问凭据。
 
@@ -93,7 +98,8 @@ ms.lasthandoff: 06/20/2017
 
  ![用于 PostgreSQL 的 Azure 数据库 - 服务器管理员登录名](./media/quickstart-create-database-portal/6-server-name.png)
 
-## <a name="connect-to-postgresql-database-using-psql-in-cloud-shell"></a>在 Cloud Shell 中使用 psql 连接到 PostgreSQL 数据库
+## 在 Cloud Shell 中使用 psql 连接到 PostgreSQL 数据库
+<a id="connect-to-postgresql-database-using-psql-in-cloud-shell" class="xliff"></a>
 
 现在，使用 psql 命令行实用工具连接到“用于 PostgreSQL 的 Azure 数据库”服务器。 
 1. 通过顶部导航窗格中的终端图标启动 Azure Cloud Shell。
@@ -104,12 +110,12 @@ ms.lasthandoff: 06/20/2017
 
    ![用于 PostgreSQL 的 Azure 数据库 - Azure Shell Bash 提示符](./media/quickstart-create-database-portal/8-bash.png)
 
-3. 在 Cloud Shell 提示符下，使用 psql 命令连接到“用于 PostgreSQL 的 Azure 数据库”服务器。 借助 [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) 实用工具可以使用以下格式连接到用于 PostgreSQL 的 Azure 数据库：
+3. 在 Cloud Shell 提示符下键入 psql 命令行，连接到 Azure Database for PostgreSQL 服务器。 借助 [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) 实用工具可以使用以下格式连接到用于 PostgreSQL 的 Azure 数据库：
    ```bash
    psql --host=<myserver> --port=<port> --username=<server admin login> --dbname=<database name>
    ```
 
-   例如，以下命令使用访问凭据连接到 PostgreSQL 服务器 mypgserver-20170401.postgres.database.azure.com 上名为“postgres”的默认数据库。 在出现提示时输入服务器管理员密码。
+   例如，以下命令使用访问凭据连接到 PostgreSQL 服务器 mypgserver-20170401.postgres.database.azure.com 上名为“postgres”的默认数据库。 连接时始终使用端口 5432。 在出现提示时输入服务器管理员密码。 请在命令中的 -- 开关之间使用空格（如下所示），但不要在等号和参数值之间使用空格。
 
    ```bash
    psql --host=mypgserver-20170401.postgres.database.azure.com --port=5432 --username=mylogin@mypgserver-20170401 --dbname=postgres
@@ -124,7 +130,8 @@ CREATE DATABASE mypgsqldb;
 \c mypgsqldb
 ```
 
-## <a name="connect-to-postgresql-database-using-pgadmin"></a>使用 pgAdmin 连接到 PostgreSQL 数据库
+## 使用 pgAdmin 连接到 PostgreSQL 数据库
+<a id="connect-to-postgresql-database-using-pgadmin" class="xliff"></a>
 
 使用 GUI 工具 _pgAdmin_ 连接到 Azure PostgreSQL 服务器
 1.  在客户端计算机上启动 _pgAdmin_ 应用程序。 可以从 http://www.pgadmin.org/ 安装 _pgAdmin_。
@@ -154,7 +161,8 @@ CREATE DATABASE mypgsqldb;
  ![pgAdmin - 创建 - 数据库](./media/quickstart-create-database-portal/11-pgadmin-database.png)
 
 
-## <a name="clean-up-resources"></a>清理资源
+## 清理资源
+<a id="clean-up-resources" class="xliff"></a>
 可以通过删除 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)来清除你在此快速入门中创建的所有资源。
 
 > [!TIP]
@@ -168,7 +176,8 @@ CREATE DATABASE mypgsqldb;
 2.  在“概述”页面上，单击顶部窗格“用于 PostgreSQL 的 Azure 数据库 - 删除服务器”中的“删除”按钮![](./media/quickstart-create-database-portal/12-delete.png)
 3.  确认要删除的服务器名称并显示其下受影响的数据库。 在文本框中键入 **mypgserver-20170401**，然后单击“删除”。
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 > [!div class="nextstepaction"]
 > [使用导出和导入功能迁移数据库](./howto-migrate-using-export-and-import.md)
 

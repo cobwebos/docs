@@ -1,5 +1,5 @@
 ---
-title: "使用 REST API 在 Azure 搜索中上传数据 | Microsoft Docs"
+title: "上传数据（REST API - Azure 搜索）| Microsoft Docs"
 description: "了解如何使用 REST API 将数据上传到 Azure 搜索索引。"
 services: search
 documentationcenter: 
@@ -15,13 +15,16 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
-translationtype: Human Translation
-ms.sourcegitcommit: 1f06a7197cc1a6dcf7a39c91183a4317bef126bb
-ms.openlocfilehash: 7c1c14055507d77dfcefe87694167ca5a2fcfb97
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: f22a33ed86fbfc46dfa732239263a49f34c4afee
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 
-# <a name="upload-data-to-azure-search-using-the-rest-api"></a>使用 REST API 将数据上传到 Azure 搜索
+# 使用 REST API 将数据上传到 Azure 搜索
+<a id="upload-data-to-azure-search-using-the-rest-api" class="xliff"></a>
 > [!div class="op_single_selector"]
 >
 > * [概述](search-what-is-data-import.md)
@@ -36,7 +39,8 @@ ms.openlocfilehash: 7c1c14055507d77dfcefe87694167ca5a2fcfb97
 
 为了使用 REST API 将文档推送到索引中，需要对索引的 URL 终结点发出 HTTP POST 请求。 HTTP 请求的正文是一个 JSON 对象，包含要添加、修改或删除的文档。
 
-## <a name="identify-your-azure-search-services-admin-api-key"></a>确定 Azure 搜索服务的管理 API 密钥
+## 确定 Azure 搜索服务的管理 API 密钥
+<a id="identify-your-azure-search-services-admin-api-key" class="xliff"></a>
 使用 REST API 对服务发出 HTTP 请求时， *每个* API 请求必须包含为已预配的搜索服务生成的 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
 1. 若要查找服务的 API 密钥，可登录到 [Azure 门户](https://portal.azure.com/)
@@ -50,7 +54,8 @@ ms.openlocfilehash: 7c1c14055507d77dfcefe87694167ca5a2fcfb97
 
 可以使用主管理密钥或辅助管理密钥将数据导入到索引中。
 
-## <a name="decide-which-indexing-action-to-use"></a>确定要使用的索引操作
+## 确定要使用的索引操作
+<a id="decide-which-indexing-action-to-use" class="xliff"></a>
 使用 REST API 时，将向 Azure 搜索索引的终结点 URL 发出具有 JSON 请求正文的 HTTP POST 请求。 HTTP 请求正文中的 JSON 对象包含一个名为“value”的 JSON 数组，该数组中包含一系列 JSON 对象，表示要添加到索引、更新或删除的文档。
 
 “value”数组中的每个 JSON 对象表示要索引的文档。 每个对象都包含文档密钥，并指定所需的索引操作（upload、merge、delete 等）。 根据选择的以下操作，每个文档必须仅包含某些特定的字段：
@@ -62,17 +67,20 @@ ms.openlocfilehash: 7c1c14055507d77dfcefe87694167ca5a2fcfb97
 | `mergeOrUpload` |如果索引中已存在具有给定关键字段的文档，则此操作的行为类似于 `merge`。 如果该文档不存在，则它的行为类似于对新文档进行 `upload` 。 |关键字段以及要定义的任何其他字段 |- |
 | `delete` |从索引中删除指定文档。 |仅关键字段 |所指定关键字段以外的所有字段都将被忽略。 如果要从文档中删除单个字段，请改用 `merge` ，只需将该字段显式设置为 null。 |
 
-## <a name="construct-your-http-request-and-request-body"></a>构造 HTTP 请求和请求正文
+## 构造 HTTP 请求和请求正文
+<a id="construct-your-http-request-and-request-body" class="xliff"></a>
 既然已经为索引操作收集了必要的字段值，就可以构造实际的 HTTP 请求和 JSON 请求正文来导入数据。
 
-#### <a name="request-and-request-headers"></a>请求和请求头
+#### 请求和请求头
+<a id="request-and-request-headers" class="xliff"></a>
 在 URL 中，需要提供服务名称、索引名称（本例为“hotels”）以及正确的 API 版本（发布本文档时的 API 版本为 `2016-09-01` ）。 需要定义 `Content-Type` 和 `api-key` 请求头。 请使用服务的其中一个管理密钥来定义后者。
 
     POST https://[search service].search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01
     Content-Type: application/json
     api-key: [admin key]
 
-#### <a name="request-body"></a>请求正文
+#### 请求正文
+<a id="request-body" class="xliff"></a>
 ```JSON
 {
     "value": [
@@ -126,8 +134,10 @@ ms.openlocfilehash: 7c1c14055507d77dfcefe87694167ca5a2fcfb97
 
 另请注意，一个索引请求中最多只能包含 1000 个（或者 16 MB）文档。
 
-## <a name="understand-your-http-response-code"></a>了解 HTTP 响应代码
-#### <a name="200"></a>200
+## 了解 HTTP 响应代码
+<a id="understand-your-http-response-code" class="xliff"></a>
+#### 200
+<a id="200" class="xliff"></a>
 成功提交索引请求后，会收到状态代码为 `200 OK`的 HTTP 响应。 HTTP 响应的 JSON 正文如下所示：
 
 ```JSON
@@ -143,7 +153,8 @@ ms.openlocfilehash: 7c1c14055507d77dfcefe87694167ca5a2fcfb97
 }
 ```
 
-#### <a name="207"></a>207
+#### 207
+<a id="207" class="xliff"></a>
 至少有一项未成功索引时，会返回状态代码 `207` 。 HTTP 响应的 JSON 正文将包含失败文档的信息。
 
 ```JSON
@@ -164,10 +175,12 @@ ms.openlocfilehash: 7c1c14055507d77dfcefe87694167ca5a2fcfb97
 >
 >
 
-#### <a name="429"></a>429
+#### 429
+<a id="429" class="xliff"></a>
 超过每个索引的文档数配额时，会返回状态代码 `429` 。
 
-#### <a name="503"></a>503
+#### 503
+<a id="503" class="xliff"></a>
 如果请求中的所有项均未成功索引，会返回状态代码 `503` 。 此错误表示系统负载过重，当前无法处理请求。
 
 > [!NOTE]
@@ -177,11 +190,7 @@ ms.openlocfilehash: 7c1c14055507d77dfcefe87694167ca5a2fcfb97
 
 有关文档操作以及成功/错误响应的详细信息，请参阅 [添加、更新或删除文档](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents)。 有关请求失败时可能返回的其他 HTTP 状态代码的详细信息，请参阅 [HTTP 状态代码（Azure 搜索）](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)。
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 填充 Azure 搜索索引后，即可发出查询，搜索文档。 有关详细信息，请参阅 [查询 Azure 搜索索引](search-query-overview.md) 。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

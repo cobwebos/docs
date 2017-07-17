@@ -10,12 +10,12 @@ ms.service: postgresql-database
 ms.custom: mvc
 ms.devlang: python
 ms.topic: hero-article
-ms.date: 06/23/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: 0027d25bcaa3376c5a29299f3ec88809ebf1d2d8
+ms.date: 07/07/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 3cd090b02887857a68271f021e3580e05660d1dc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/26/2017
+ms.lasthandoff: 07/13/2017
 
 ---
 # Azure Database for PostgreSQL：使用 Python 进行连接并查询数据
@@ -51,7 +51,15 @@ pip install psycopg2
 4. 选择服务器的“概述”页面。 记下“服务器名称”和“服务器管理员登录名”。
  ![Azure Database for PostgreSQL - 服务器管理员登录名](./media/connect-python/1-connection-string.png)
 5. 如果忘了服务器的登录信息，请导航到“概览”页，以查看服务器管理员登录名并重置密码（如果需要）。
-   
+
+## 如何运行 Python 代码
+<a id="how-to-run-python-code" class="xliff"></a>
+- 使用喜欢的文本编辑器创建名为 postgres.py 的新文件，然后将其保存到项目文件夹中。 将下面显示的代码示例复制并粘贴到文本文件中，然后保存。 在 Windows OS 中保存文件时，请确保选择 UTF-8 编码。 
+- 若要运行此代码，请启动命令提示符或 bash shell。 将目录更改为项目文件夹，例如 `cd postgresql`。 然后键入后跟文件名的 python 命令，例如 `python postgresql.py`。
+
+> [!NOTE]
+> 从 Python 版本 3 开始，在运行下面的代码块时，可能会出现错误`SyntaxError: Missing parentheses in call to 'print'`。 如果发生这种情况，请将对命令 `print "string"` 的每个调用替换为使用括号的函数调用，例如 `print("string")`。
+
 ## 进行连接，创建表，然后插入数据
 <a id="connect-create-table-and-insert-data" class="xliff"></a>
 通过以下代码进行连接，然后使用 [psycopg2.connect](http://initd.org/psycopg/docs/connection.html) 函数和 **INSERT** SQL 语句加载数据。 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 函数用来针对 PostgreSQL 数据库执行 SQL 查询。 将 host、dbname、user 和 password 参数替换为创建服务器和数据库时指定的值。
@@ -64,9 +72,10 @@ host = "mypgserver-20170401.postgres.database.azure.com"
 user = "mylogin@mypgserver-20170401"
 dbname = "mypgsqldb"
 password = "<server_admin_password>"
+sslmode = "require"
 
 # Construct connection string
-conn_string = "host={0} user={1} dbname={2} password={3}".format(host, user, dbname, password)
+conn_string = "host={0} user={1} dbname={2} password={3} sslmode={4}".format(host, user, dbname, password, sslmode)
 conn = psycopg2.connect(conn_string) 
 print "Connection established"
 
@@ -86,7 +95,10 @@ cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("oran
 cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("apple", 100))
 print "Inserted 3 rows of data"
 
+# Cleanup
 conn.commit()
+cursor.close()
+conn.close()
 ```
 
 ## 读取数据
@@ -101,9 +113,10 @@ host = "mypgserver-20170401.postgres.database.azure.com"
 user = "mylogin@mypgserver-20170401"
 dbname = "mypgsqldb"
 password = "<server_admin_password>"
+sslmode = "require"
 
 # Construct connection string
-conn_string = "host={0} user={1} dbname={2} password={3}".format(host, user, dbname, password)
+conn_string = "host={0} user={1} dbname={2} password={3} sslmode={4}".format(host, user, dbname, password, sslmode)
 conn = psycopg2.connect(conn_string) 
 print "Connection established"
 
@@ -117,7 +130,10 @@ rows = cursor.fetchall()
 for row in rows:
     print "Data row = (%s, %s, %s)" %(str(row[0]), str(row[1]), str(row[2]))
 
+# Cleanup
 conn.commit()
+cursor.close()
+conn.close()
 ```
 
 ## 更新数据
@@ -132,9 +148,10 @@ host = "mypgserver-20170401.postgres.database.azure.com"
 user = "mylogin@mypgserver-20170401"
 dbname = "mypgsqldb"
 password = "<server_admin_password>"
+sslmode = "require"
 
 # Construct connection string
-conn_string = "host={0} user={1} dbname={2} password={3}".format(host, user, dbname, password)
+conn_string = "host={0} user={1} dbname={2} password={3} sslmode={4}".format(host, user, dbname, password, sslmode)
 conn = psycopg2.connect(conn_string) 
 print "Connection established"
 
@@ -144,7 +161,10 @@ cursor = conn.cursor()
 cursor.execute("UPDATE inventory SET quantity = %s WHERE name = %s;", (200, "banana"))
 print "Updated 1 row of data"
 
+# Cleanup
 conn.commit()
+cursor.close()
+conn.close()
 ```
 
 ## 删除数据
@@ -159,9 +179,10 @@ host = "mypgserver-20170401.postgres.database.azure.com"
 user = "mylogin@mypgserver-20170401"
 dbname = "mypgsqldb"
 password = "<server_admin_password>"
+sslmode = "require"
 
 # Construct connection string
-conn_string = "host={0} user={1} dbname={2} password={3}".format(host, user, dbname, password)
+conn_string = "host={0} user={1} dbname={2} password={3} sslmode={4}".format(host, user, dbname, password, sslmode)
 conn = psycopg2.connect(conn_string) 
 print "Connection established"
 
@@ -169,9 +190,12 @@ cursor = conn.cursor()
 
 # Delete data row from table
 cursor.execute("DELETE FROM inventory WHERE name = %s;", ("orange",))
-print ("Deleted 1 row of data")
+print "Deleted 1 row of data"
 
+# Cleanup
 conn.commit()
+cursor.close()
+conn.close()
 ```
 
 ## 后续步骤

@@ -1,4 +1,5 @@
-## <a name="general-considerations-for-n-series-vms"></a>N 系列 VM 的一般注意事项
+## 部署注意事项
+<a id="deployment-considerations" class="xliff"></a>
 
 * 有关 N 系列 VM 的可用性，请查看[可用产品(按区域)](https://azure.microsoft.com/en-us/regions/services/)。
 
@@ -12,7 +13,7 @@
 
 * 你可能需要提高 Azure 订阅中的核心配额（按区域）以及单独针对 NC 或 NV 核心的配额。 若要请求提高配额，可免费[提出在线客户支持请求](../articles/azure-supportability/how-to-create-azure-support-request.md)。 默认限制可能因订阅类别而异。
 
-
+* 可以部署在 N 系列 VM 上的一个 VM 映像是 [Azure 数据科学虚拟机](../articles/machine-learning/machine-learning-data-science-virtual-machine-overview.md)。 数据科学虚拟机预安装并配置了许多热门的数据科学工具和深度学习工具。 它还预安装了 NVIDIA Tesla GPU 驱动程序，适用于 NC 实例。
 
 
 

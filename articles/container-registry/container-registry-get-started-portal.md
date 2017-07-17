@@ -17,21 +17,22 @@ ms.workload: na
 ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: e74c5428f0e31d9d3cf06b85aa8cefde868e9d67
-ms.lasthandoff: 03/27/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 2cd5a08cc74473be594fc3c7a4fb934d65ffe0ab
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 
-# <a name="create-a-private-docker-container-registry-using-the-azure-portal"></a>使用 Azure 门户创建私有 Docker 容器注册表
-使用 Azure 门户创建容器注册表并管理其设置。 也可以使用 [Azure CLI 2.0 命令](container-registry-get-started-azure-cli.md)或者使用容器注册表 [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) 以编程方式创建和管理容器注册表。
+# 使用 Azure 门户创建私有 Docker 容器注册表
+<a id="create-a-private-docker-container-registry-using-the-azure-portal" class="xliff"></a>
+使用 Azure 门户创建容器注册表并管理其设置。 也可以使用 [Azure CLI 2.0 命令](container-registry-get-started-azure-cli.md)、[Azure PowerShell](container-registry-get-started-powershell.md) 或者以编程方式使用容器注册表 [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) 创建和管理容器注册表。
 
 有关背景和概念，请参阅[概述](container-registry-intro.md)。
 
-
-
-## <a name="create-a-container-registry"></a>创建容器注册表
+## 创建容器注册表
+<a id="create-a-container-registry" class="xliff"></a>
 1. 在 [Azure 门户](https://portal.azure.com)中，单击“+ 新建”。
 2. 在应用商店中搜索“Azure 容器注册表”。
 3. 选择发行商为“Microsoft”的“Azure 容器注册表”。
@@ -55,7 +56,8 @@ ms.lasthandoff: 03/27/2017
 
     e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 **存储帐户**：使用默认设置来创建[存储帐户](../storage/storage-introduction.md)，或选择位于同一位置的现有存储帐户。 当前不支持高级存储。
 
-## <a name="manage-registry-settings"></a>管理注册表设置
+## 管理注册表设置
+<a id="manage-registry-settings" class="xliff"></a>
 创建注册表后，请在门户中的“容器注册表”在边栏选项卡上查找注册表设置。 例如，可能需要指定设置来登录注册表，或者需要启用或禁用管理员用户。
 
 1. 在“容器注册表”边栏选项卡上，单击相应注册表的名称。
@@ -70,6 +72,7 @@ ms.lasthandoff: 03/27/2017
    * **管理员用户** - 启用或禁用注册表的管理员用户帐户。
    * **用户名**和**密码** - 可用于登录注册表的管理员用户帐户（如果已启用）的凭据。 可以根据需要重新生成密码。 将生成两个密码，这样就可以在重新生成某个密码的时候，使用另一个密码来连接到注册表。 若要改用服务主体进行身份验证，请参阅[使用私有 Docker 容器注册表进行身份验证](container-registry-authentication.md)。
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 * [使用 Docker CLI 推送第一个映像](container-registry-get-started-docker-cli.md)
 
