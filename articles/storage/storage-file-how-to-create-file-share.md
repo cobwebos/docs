@@ -6,7 +6,7 @@ documentationcenter:
 author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
-ms.assetid: a4a1bc58-ea14-4bf5-b040-f85114edc1f1
+ms.assetid: 
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -21,19 +21,16 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 07/12/2017
 
 ---
-# 在 Azure 文件存储中创建文件共享
-<a id="create-a-file-share-in-azure-file-storage" class="xliff"></a>
+# <a name="create-a-file-share-in-azure-file-storage"></a>在 Azure 文件存储中创建文件共享
 可以使用 [Azure 门户](https://portal.azure.com/)、Azure 存储 PowerShell cmdlet、Azure 存储客户端库或 Azure 存储 REST API 来创建 Azure 文件共享。本教程介绍：
 * [如何使用 Azure 门户创建 Azure 文件共享](#Create file share through the Portal)
 * [如何使用 Powershell 创建 Azure 文件共享](#Create file share using PowerShell)
 * [如何使用 CLI 创建 Azure 文件共享](#create-file-share-using-command-line-interface-cli)
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 若要创建 Azure 文件共享，可以使用已存在的存储帐户，也可以[创建新的 Azure 存储帐户](storage-create-storage-account.md)。 若要使用 PowerShell 创建 Azure 文件共享，需提供存储帐户的帐户密钥和名称。 如果计划使用 Powershell 或 CLI，则需存储帐户密钥。
 
-## 通过门户创建文件共享
-<a id="create-file-share-through-the-portal" class="xliff"></a>
+## <a name="create-file-share-through-the-portal"></a>通过门户创建文件共享
 1. 转到 Azure 门户中的“存储帐户”边栏选项卡：    
     ![“存储帐户”边栏选项卡](media/storage-file-how-to-create-file-share/create-file-share-portal1.png)
 
@@ -50,8 +47,7 @@ ms.lasthandoff: 07/12/2017
 6. 浏览到文件共享并管理目录和文件：![浏览文件共享](media/storage-file-how-to-create-file-share/create-file-share-portal6.png)
 
 
-## 通过 PowerShell 创建文件共享
-<a id="create-file-share-through-powershell" class="xliff"></a>
+## <a name="create-file-share-through-powershell"></a>通过 PowerShell 创建文件共享
 若要准备使用 PowerShell，请下载并安装 Azure PowerShell cmdlet。 有关安装点和安装说明，请参阅 [如何安装和配置 Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/) 。
 
 > [!Note]  
@@ -72,8 +68,7 @@ ms.lasthandoff: 07/12/2017
 > [!Note]  
 > 文件共享的名称必须是全部小写。 有关命名文件共享和文件的完整详细信息，请参阅 [命名和引用共享、目录、文件和元数据](https://msdn.microsoft.com/library/azure/dn167011.aspx)。
 
-## 通过命令行界面 (CLI) 创建文件共享
-<a id="create-file-share-through-command-line-interface-cli" class="xliff"></a>
+## <a name="create-file-share-through-command-line-interface-cli"></a>通过命令行界面 (CLI) 创建文件共享
 1. 若要准备使用命令行界面 (CLI)，请下载并安装 Azure CLI。  
     请参阅[安装 Azure CLI 2.0](/cli/azure/install-az-cli2.md) 和 [Azure CLI 2.0 入门](/cli/azure/get-started-with-azure-cli.md)。
 
@@ -93,8 +88,7 @@ ms.lasthandoff: 07/12/2017
     az storage share create --name files --quota 2048 --connection-string $current_env_conn_string 1 > /dev/null
     ```
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 * [连接并装载文件共享 - Windows](storage-file-how-to-use-files-windows.md)
 * [连接并装载文件共享 - Linux](storage-how-to-use-files-linux.md)
 * [连接并装载文件共享 - macOS](storage-file-how-to-use-files-mac.md)

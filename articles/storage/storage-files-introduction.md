@@ -6,7 +6,7 @@ documentationcenter:
 author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
-ms.assetid: a4a1bc58-ea14-4bf5-b040-f85114edc1f1
+ms.assetid: 
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -22,20 +22,17 @@ ms.lasthandoff: 07/12/2017
 
 ---
 
-# Azure 文件存储简介
-<a id="introduction-to-azure-file-storage" class="xliff"></a>
+# <a name="introduction-to-azure-file-storage"></a>Azure 文件存储简介
 Azure 文件存储根据行业标准[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)和 [Samba/通用 Internet 文件系统 (CIFS)](https://technet.microsoft.com/library/cc939973.aspx) 在云中提供网络文件共享。 Azure 文件共享可以由客户端（例如本地部署的 Windows、macOS、Linux）或 Azure 虚拟机同时装载。 
 
 
 
-## 视频
-<a id="videos" class="xliff"></a>
+## <a name="videos"></a>视频
 | Azure 文件存储简介（27 分钟） | Azure 文件存储教程（5 分钟）  |
 |-|-|
 | [![Azure 文件存储简介视频屏幕截图 - 单击即可播放！](media/storage-file-storage/azure-files-introduction-video-snapshot1.png)](https://www.youtube.com/watch?v=zlrpomv5RLs) | [![Azure 文件存储教程屏幕截图 - 单击即可播放！](media/storage-file-storage/azure-files-introduction-video-snapshot2.png)](https://channel9.msdn.com/Blogs/Azure/Azure-File-storage-with-Windows/) |
 
-## 为何 Azure 文件存储很有用
-<a id="why-azure-file-storage-is-useful" class="xliff"></a>
+## <a name="why-azure-file-storage-is-useful"></a>为何 Azure 文件存储很有用
 Azure 文件存储允许你将基于 Windows Server、Linux 或 NAS 的文件服务器（托管在本地或云中）替换为无 OS 的云文件共享。 该功能有以下优点：
 
 * 共享访问。 Azure 文件共享支持行业标准 SMB 协议，这意味着，你可以无缝地将本地文件共享替换为 Azure 文件共享，不需担心应用程序兼容性。 对于需要可共享性的应用程序来说，能够跨多个计算机、应用程序/实例共享文件系统是使用 Azure 文件存储的一项很大优势。 
@@ -63,8 +60,7 @@ Azure 文件共享可用于：
     * 开发/测试/调试：  
         开发人员或管理员在云中的 VM 上工作时，通常需要一套工具或实用程序。 根据需要在每个虚拟机上安装和分发这些实用程序可能很费时间。 有了 Azure 文件存储，开发人员或管理员就可以将最喜爱的工具存储在文件共享中，然后即可轻松地从任何虚拟机连接到这些工具。
         
-## 工作原理
-<a id="how-does-it-work" class="xliff"></a>
+## <a name="how-does-it-work"></a>工作原理
 管理 Azure 文件共享比管理本地文件共享容易得多。 下图说明了 Azure 文件存储管理构造：
 
 ![文件结构](../../includes/media/storage-file-concepts-include/files-concepts.png)
@@ -78,8 +74,7 @@ Azure 文件共享可用于：
     ```
     https://<storage account>.file.core.windows.net/<share>/<directory/directories>/<file>
     ```
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 * [创建 Azure 文件共享](storage-file-how-to-create-file-share.md)
 * [在 Windows 上进行连接和装载](storage-file-how-to-use-files-windows.md)
 * [在 Linux 上进行连接和装载](storage-how-to-use-files-linux.md)
@@ -87,25 +82,21 @@ Azure 文件共享可用于：
 * [常见问题](storage-files-faq.md)
 * [故障排除](storage-troubleshoot-file-connection-problems.md)
 
-### 概念性文章和视频
-<a id="conceptual-articles-and-videos" class="xliff"></a>
+### <a name="conceptual-articles-and-videos"></a>概念性文章和视频
 * [Azure File storage: a frictionless cloud SMB file system for Windows and Linux](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)（Azure 文件存储：适用于 Windows 和 Linux 的顺畅的云 SMB 文件系统）
 
-### Azure 文件存储的工具支持
-<a id="tooling-support-for-azure-file-storage" class="xliff"></a>
+### <a name="tooling-support-for-azure-file-storage"></a>Azure 文件存储的工具支持
 * [对 Azure 存储空间使用 Azure PowerShell](storage-powershell-guide-full.md)
 * [如何对 Microsoft Azure 存储使用 AzCopy](storage-use-azcopy.md)
 * [将 Azure CLI 用于 Azure 存储](storage-azure-cli.md#create-and-manage-file-shares)
 
-### 博客文章
-<a id="blog-posts" class="xliff"></a>
+### <a name="blog-posts"></a>博客文章
 * [Azure 文件存储现已正式发布](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
 * [Inside Azure File storage](https://azure.microsoft.com/blog/inside-azure-file-storage/)（Azure 文件存储内部）
 * [Microsoft Azure 文件服务简介](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 * [Migrating data to Azure File](https://azure.microsoft.com/blog/migrating-data-to-microsoft-azure-files/)（将数据迁移到 Azure 文件）
 
-### 引用
-<a id="reference" class="xliff"></a>
+### <a name="reference"></a>引用
 * [用于 .NET 的存储客户端库参考](https://msdn.microsoft.com/library/azure/dn261237.aspx)
 * [文件服务 REST API 参考](http://msdn.microsoft.com/library/azure/dn167006.aspx)
 
