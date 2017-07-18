@@ -6,7 +6,7 @@ documentationcenter:
 author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
-ms.assetid: a4a1bc58-ea14-4bf5-b040-f85114edc1f1
+ms.assetid: 
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -21,12 +21,10 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
 
 ---
-# 如何使用 PowerShell 管理 Azure 文件存储
-<a id="how-to-use-powershell-to-manage-azure-file-storage" class="xliff"></a>
+# <a name="how-to-use-powershell-to-manage-azure-file-storage"></a>如何使用 PowerShell 管理 Azure 文件存储
 可以使用 Azure PowerShell 来创建和管理文件共享。
 
-## 为 Azure 存储安装 PowerShell cmdlet
-<a id="install-the-powershell-cmdlets-for-azure-storage" class="xliff"></a>
+## <a name="install-the-powershell-cmdlets-for-azure-storage"></a>为 Azure 存储安装 PowerShell cmdlet
 若要准备使用 PowerShell，请下载并安装 Azure PowerShell cmdlet。 有关安装点和安装说明，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。
 
 > [!NOTE]
@@ -36,8 +34,7 @@ ms.lasthandoff: 07/11/2017
 
 通过单击“开始”并键入 **Windows PowerShell** 打开 Azure PowerShell 窗口。 PowerShell 窗口将为你加载 Azure PowerShell 模块。
 
-## 为存储帐户和密钥创建上下文
-<a id="create-a-context-for-your-storage-account-and-key" class="xliff"></a>
+## <a name="create-a-context-for-your-storage-account-and-key"></a>为存储帐户和密钥创建上下文
 创建存储帐户上下文。 该上下文封装了存储帐户名称和帐户密钥。 有关从 [Azure 门户](https://portal.azure.com)复制帐户密钥的说明，请参阅[查看和复制存储访问密钥](storage-create-storage-account.md#view-and-copy-storage-access-keys)。
 
 请将下面示例中的 `storage-account-name` 和 `storage-account-key` 替换为你的存储帐户名称和密钥。
@@ -47,8 +44,7 @@ ms.lasthandoff: 07/11/2017
 $ctx=New-AzureStorageContext storage-account-name storage-account-key
 ```
 
-## 创建新的文件共享
-<a id="create-a-new-file-share" class="xliff"></a>
+## <a name="create-a-new-file-share"></a>创建新的文件共享
 创建名为 `logs` 的新共享。
 
 ```powershell
@@ -63,8 +59,7 @@ $s = New-AzureStorageShare logs -Context $ctx
 > 
 > 
 
-## 在文件共享中创建目录
-<a id="create-a-directory-in-the-file-share" class="xliff"></a>
+## <a name="create-a-directory-in-the-file-share"></a>在文件共享中创建目录
 在共享中创建目录。 在下面的示例中，目录名为 `CustomLogs`。
 
 ```powershell
@@ -72,8 +67,7 @@ $s = New-AzureStorageShare logs -Context $ctx
 New-AzureStorageDirectory -Share $s -Path CustomLogs
 ```
 
-## 将本地文件上传到目录
-<a id="upload-a-local-file-to-the-directory" class="xliff"></a>
+## <a name="upload-a-local-file-to-the-directory"></a>将本地文件上传到目录
 现在，将本地文件上传到该目录。 以下示例从 `C:\temp\Log1.txt` 上传文件。 请编辑文件路径，使其指向你本地计算机上的有效文件。
 
 ```powershell
@@ -81,8 +75,7 @@ New-AzureStorageDirectory -Share $s -Path CustomLogs
 Set-AzureStorageFileContent -Share $s -Source C:\temp\Log1.txt -Path CustomLogs
 ```
 
-## 列出目录中的文件
-<a id="list-the-files-in-the-directory" class="xliff"></a>
+## <a name="list-the-files-in-the-directory"></a>列出目录中的文件
 若要查看目录中的文件，你可以列出目录的所有文件。 此命令将返回 CustomLogs 目录中的文件和子目录（如果有的话）。
 
 ```powershell
@@ -92,8 +85,7 @@ Get-AzureStorageFile -Share $s -Path CustomLogs | Get-AzureStorageFile
 
 Get-AzureStorageFile 将返回任何传入的目录对象的文件和目录列表。 “Get-AzureStorageFile -Share $s”将返回根目录中的文件和目录列表。 若要获取子目录中的文件列表，必须将子目录传递给 Get AzureStorageFile。 这就是此功能的作用 -- 到达管道的命令的第一部分将返回子目录 CustomLogs 的目录实例。 然后，该实例将传递到 Get-AzureStorageFile，从而返回 CustomLogs 中的文件和目录。
 
-## 复制文件
-<a id="copy-files" class="xliff"></a>
+## <a name="copy-files"></a>复制文件
 从 Azure PowerShell 的 0.9.7 版开始，可以将一个文件复制到另一个文件，将一个文件复制到一个 Blob，或将一个 Blob 复制到一个文件。 下面，我们演示如何使用 PowerShell cmdlet 执行这些复制操作。
 
 ```powershell
@@ -103,8 +95,7 @@ Start-AzureStorageFileCopy -SrcShareName srcshare -SrcFilePath srcdir/hello.txt 
 # copy a blob to a file directory
 Start-AzureStorageFileCopy -SrcContainerName srcctn -SrcBlobName hello2.txt -DestShareName hello -DestFilePath hellodir/hello2copy.txt -DestContext $ctx -Context $ctx
 ```
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 请参阅以下链接以获取有关 Azure 文件存储的更多信息。
 
 * [常见问题](storage-files-faq.md)

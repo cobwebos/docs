@@ -13,7 +13,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/30/2017
+ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: Human Translation
@@ -22,13 +22,10 @@ ms.openlocfilehash: 52f89520fef8fc9ddb6e8e10a59ec35600affb2a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
-# 快速入门：Azure AD 自助密码重置
-<a id="quick-start-azure-ad-self-service-password-reset" class="xliff"></a>
+# <a name="quick-start-azure-ad-self-service-password-reset"></a>快速入门：Azure AD 自助密码重置
 
-## 快速部署自助密码重置
-<a id="rapidly-deploy-self-service-password-reset" class="xliff"></a>
+## <a name="rapidly-deploy-self-service-password-reset"></a>快速部署自助密码重置
 
 IT 管理员可以让用户通过自助密码重置 (SSPR) 这种简单的方法来重置或解锁其密码或帐户。 系统提供详细的报告，用于跟踪用户使用系统的时间，同时还提供通知，提醒用户存在误用或滥用情况。
 
@@ -67,8 +64,7 @@ IT 管理员可以让用户通过自助密码重置 (SSPR) 这种简单的方法
 > [!NOTE]
 > 请使用用户而不是管理员来测试 SSPR，因为 Microsoft 对 Azure 管理员类型帐户强制实施强身份验证要求。 有关管理员密码策略的详细信息，请参阅[密码策略文章](active-directory-passwords-policy.md#administrator-password-policy-differences)。
 
-## 配置到现有标识源的同步
-<a id="configure-synchronization-to-existing-identity-source" class="xliff"></a>
+## <a name="configure-synchronization-to-existing-identity-source"></a>配置到现有标识源的同步
 
 若要启用本地标识到 Azure AD 的同步，需在组织的服务器上安装并配置 [Azure AD Connect](./connect/active-directory-aadconnect.md)。 该应用程序负责将用户和组从现有的标识源同步到 Azure AD 租户。
 
@@ -76,13 +72,11 @@ IT 管理员可以让用户通过自助密码重置 (SSPR) 这种简单的方法
 * [通过快速设置开始使用 Azure AD Connect](./connect/active-directory-aadconnect-get-started-express.md)
 * [配置密码写回](active-directory-passwords-writeback.md#configuring-password-writeback)，将密码从 Azure AD 写回到本地目录。
 
-## 禁用自助密码重置
-<a id="disabling-self-service-password-reset" class="xliff"></a>
+## <a name="disabling-self-service-password-reset"></a>禁用自助密码重置
 
 禁用自助密码重置很简单：打开 Azure AD 租户，转到“密码重置”>“属性”> 在“已启用自助密码重置”下选择“无人”
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 以下链接提供有关使用 Azure AD 进行密码重置的其他信息
 
 * [**授权**](active-directory-passwords-licensing.md) - 配置 Azure AD 授权

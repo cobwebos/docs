@@ -6,7 +6,7 @@ documentationcenter:
 author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
-ms.assetid: a4a1bc58-ea14-4bf5-b040-f85114edc1f1
+ms.assetid: 
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -22,8 +22,7 @@ ms.lasthandoff: 07/12/2017
 
 ---
 
-# 在 macOS 中通过 SMB 装载 Azure 文件共享
-<a id="mount-azure-file-share-over-smb-with-macos" class="xliff"></a>
+# <a name="mount-azure-file-share-over-smb-with-macos"></a>在 macOS 中通过 SMB 装载 Azure 文件共享
 [Azure 文件存储](storage-dotnet-how-to-use-files.md)是 Microsoft 推出的服务，你可以通过该服务根据行业标准在 Azure 中创建和使用网络文件共享。 Azure 文件共享可以装载在 macOS Sierra (10.12) 和 El Capitan (10.11) 中。 本文介绍如何使用两种不同的方法通过 Finder UI 和 Terminal 在 macOS 中装载 Azure 文件共享。
 
 > [!Note]  
@@ -35,16 +34,14 @@ ms.lasthandoff: 07/12/2017
 >    exit
 >    ```
 
-## 在 macOS 中装载 Azure 文件共享的先决条件
-<a id="prerequisites-for-mounting-an-azure-file-share-on-macos" class="xliff"></a>
+## <a name="prerequisites-for-mounting-an-azure-file-share-on-macos"></a>在 macOS 中装载 Azure 文件共享的先决条件
 * 存储帐户名称：需提供存储帐户的名称才能装载 Azure 文件共享。
 
 * 存储帐户密钥：需提供主要（或辅助）存储帐户密钥才能装载 Azure 文件共享。 目前不支持使用 SAS 密钥进行装载。
 
 * 确保端口 445 处于打开状态：SMB 通过 TCP 端口 445 通信。 在客户端计算机 (Mac) 上检查，确保防火墙未阻止 TCP 端口 445。
 
-## 通过 Finder 装载 Azure 文件共享
-<a id="mount-an-azure-file-share-via-finder" class="xliff"></a>
+## <a name="mount-an-azure-file-share-via-finder"></a>通过 Finder 装载 Azure 文件共享
 1. 打开 Finder：默认情况下，Finder 在 macOS 中处于打开状态，但你可以通过单击 Dock 中的“macOS 笑脸图标”来确保它是当前选定的应用程序：  
     ![macOS 笑脸图标](media/storage-file-how-to-use-files-mac/mount-via-finder-1.png)
 
@@ -56,8 +53,7 @@ ms.lasthandoff: 07/12/2017
 
     ![已装载 Azure 文件共享的快照](./media/storage-file-how-to-use-files-mac/mount-via-finder-3.png)
 
-## 通过 Terminal 装载 Azure 文件共享
-<a id="mount-an-azure-file-share-via-terminal" class="xliff"></a>
+## <a name="mount-an-azure-file-share-via-terminal"></a>通过 Terminal 装载 Azure 文件共享
 1. 将 `<storage-account-name>` 替换为你的存储帐户的名称。 在系统提示时提供存储帐户密钥作为密码。 
 
     ```
@@ -68,8 +64,7 @@ ms.lasthandoff: 07/12/2017
 
     ![已装载 Azure 文件共享的快照](./media/storage-file-how-to-use-files-mac/mount-via-terminal-1.png)
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 请参阅以下链接以获取有关 Azure 文件存储的更多信息。
 
 * [Apple 支持文章 - 如何使用 Mac 上的“文件共享”进行连接](https://support.apple.com/HT204445)

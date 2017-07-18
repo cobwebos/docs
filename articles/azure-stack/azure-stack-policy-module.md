@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/9/2017
 ms.author: helaw
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
 ms.openlocfilehash: 7a3949a2036b12f4bd09b63a2ce10613f887e920
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/28/2017
-
 
 ---
 # <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Manage Azure policy using the Azure Stack Policy Module
@@ -32,7 +32,7 @@ The Azure Stack Policy module allows you to configure an Azure subscription with
 4. Import the AzureStack.Policy.psm1 module:
 
    ```PowerShell
-   import-module .\Policy\AzureStack.Policy.psm1
+   Import-Module .\Policy\AzureStack.Policy.psm1
    ```
 
 ## <a name="apply-policy-to-subscription"></a>Apply policy to subscription

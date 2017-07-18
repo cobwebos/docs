@@ -6,7 +6,7 @@ documentationcenter:
 author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
-ms.assetid: a4a1bc58-ea14-4bf5-b040-f85114edc1f1
+ms.assetid: 
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -22,8 +22,7 @@ ms.lasthandoff: 07/12/2017
 
 ---
 
-# 如何在 Azure 门户中使用 Azure 文件存储
-<a id="how-to-use-azure-file-storage-from-the-azure-portal" class="xliff"></a>
+# <a name="how-to-use-azure-file-storage-from-the-azure-portal"></a>如何在 Azure 门户中使用 Azure 文件存储
 [Azure 门户](https://portal.azure.com)提供用于管理 Azure 文件存储的用户界面。 你可以从 Web 浏览器中执行以下操作：
 
 * 创建文件共享
@@ -32,8 +31,7 @@ ms.lasthandoff: 07/12/2017
 * 调整文件共享大小配额。
 * 复制装载命令，用于从 Windows 或 Linux 客户端装载文件共享。
 
-## 创建文件共享
-<a id="create-file-share" class="xliff"></a>
+## <a name="create-file-share"></a>创建文件共享
 1. 登录到 Azure 门户。
 2. 在导航菜单中，单击“存储帐户”或“存储帐户(经典)”。
     
@@ -55,8 +53,7 @@ ms.lasthandoff: 07/12/2017
 
     ![演示如何在门户中创建文件共享的屏幕快照](media/storage-file-how-to-use-files-portal/use-files-portal-create-file-share5.png)
 
-## 上传和下载文件
-<a id="upload-and-download-files" class="xliff"></a>
+## <a name="upload-and-download-files"></a>上传和下载文件
 1. 选择一个已创建的文件共享。
 
     ![演示如何从门户上传和下载文件的屏幕快照](media/storage-file-how-to-use-files-portal/use-files-portal-upload-file1.png)
@@ -65,8 +62,7 @@ ms.lasthandoff: 07/12/2017
 
     ![演示如何从门户上传文件的屏幕快照](media/storage-file-how-to-use-files-portal/use-files-portal-upload-file2.png)
 
-## 连接到文件共享
-<a id="connect-to-file-share" class="xliff"></a>
+## <a name="connect-to-file-share"></a>连接到文件共享
 -  单击“连接”获取从 Windows 和 Linux 装载文件共享的命令行。 对于 Linux 用户，你还可以参阅[如何将 Azure 文件存储与 Linux 配合使用](storage-how-to-use-files-linux.md)，了解针对其他 Linux 发行版的更多装载说明。
 
     ![演示如何装载文件共享的屏幕快照](media/storage-file-how-to-use-files-portal/use-files-portal-connect.png)
@@ -77,8 +73,7 @@ ms.lasthandoff: 07/12/2017
 提示：  
 若要查找用于装载的存储帐户访问密钥，请单击“连接”页底部的“查看此存储帐户的访问密钥”。
 
-## 另请参阅
-<a id="see-also" class="xliff"></a>
+## <a name="see-also"></a>另请参阅
 请参阅以下链接以获取有关 Azure 文件存储的更多信息。
 
 * [常见问题](storage-files-faq.md)

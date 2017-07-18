@@ -22,13 +22,11 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 07/13/2017
 
 ---
-# 使用 Java 查询 Azure SQL 数据库
-<a id="use-java-to-query-an-azure-sql-database" class="xliff"></a>
+# <a name="use-java-to-query-an-azure-sql-database"></a>使用 Java 查询 Azure SQL 数据库
 
 本快速入门演示了如何使用 [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) 连接到 Azure SQL 数据库，然后使用 Transact-SQL 语句查询数据。
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门教程，请确保符合以下先决条件：
 
@@ -46,8 +44,7 @@ ms.lasthandoff: 07/13/2017
     - Ubuntu：安装 Java 开发工具包，然后安装 Maven。 请参阅[步骤 1.2、1.3 和 1.4](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/)。
     - Windows：安装 Java 开发工具包，然后安装 Maven。 请参阅[步骤 1.2 和 1.3](https://www.microsoft.com/sql-server/developer-get-started/java/windows/)。    
 
-## SQL Server 连接信息
-<a id="sql-server-connection-information" class="xliff"></a>
+## <a name="sql-server-connection-information"></a>SQL Server 连接信息
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称、数据库名称和登录信息。
 
@@ -59,8 +56,7 @@ ms.lasthandoff: 07/13/2017
 
 4. 如果忘了服务器的登录信息，请导航到 SQL 数据库服务器页，以查看服务器管理员名称。  如有必要，请重置密码。     
 
-## 创建 Maven 项目和依赖项
-<a id="create-maven-project-and-dependencies" class="xliff"></a>
+## <a name="create-maven-project-and-dependencies"></a>创建 Maven 项目和依赖项
 1. 从 Terminal 创建名为 sqltest 的新 Maven 项目。 
 
    ```bash
@@ -74,7 +70,7 @@ ms.lasthandoff: 07/13/2017
    <dependency>
        <groupId>com.microsoft.sqlserver</groupId>
        <artifactId>mssql-jdbc</artifactId>
-       <version>6.2.0.jre8</version>
+       <version>6.2.1.jre8</version>
    </dependency>
    ```
 
@@ -89,8 +85,7 @@ ms.lasthandoff: 07/13/2017
 
 5. 保存并关闭 pom.xml。
 
-## 插入用于查询 SQL 数据库的代码
-<a id="insert-code-to-query-sql-database" class="xliff"></a>
+## <a name="insert-code-to-query-sql-database"></a>插入用于查询 SQL 数据库的代码
 
 1. 此时，你应该在 Maven 项目中有了一个名为 App.java 的文件，其位置为：\sqltest\src\main\java\com\sqlsamples\App.java
 
@@ -149,8 +144,7 @@ ms.lasthandoff: 07/13/2017
    }
    ```
 
-## 运行代码
-<a id="run-the-code" class="xliff"></a>
+## <a name="run-the-code"></a>运行代码
 
 1. 请在命令提示符处运行以下命令：
 
@@ -162,8 +156,7 @@ ms.lasthandoff: 07/13/2017
 2. 验证是否已返回前 20 行，然后关闭应用程序窗口。
 
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 - [设计第一个 Azure SQL 数据库](sql-database-design-first-database.md)
 - [用于 SQL Server 的 Microsoft JDBC 驱动程序](https://github.com/microsoft/mssql-jdbc)
 - [报告问题/提出问题](https://github.com/microsoft/mssql-jdbc/issues)
