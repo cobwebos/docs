@@ -12,17 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 06/29/2017
 ms.author: banders
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 05dfdc3491e6c7f838f5e7e2c16951bc1328e32b
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 936064959ac9dd6422619076fabbbba887d17bb6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
-# <a name="containers-preview-solution-log-analytics"></a>容器（预览版）解决方案 Log Analytics
+# <a name="containers-preview-solution-in-log-analytics"></a>Log Analytics 中的容器（预览）解决方案
+
+![容器符号](./media/log-analytics-containers/containers-symbol.png)
+
 本文介绍如何设置和使用 Log Analytics 中的容器解决方案，它可以帮助用户在单个位置查看和管理 Docker 和 Windows 容器主机。 Docker 是一种软件虚拟化系统，用于创建自动将软件部署到其 IT 基础结构的容器。
 
 使用该解决方案，你可以查看容器主机上正在运行的容器以及容器中运行的映像。 你可以查看详细审核信息，它显示了与容器一起使用的命令。 并且，用户可以通过查看和搜索集中式日志来排查容器问题，而无需远程查看 Docker 或 Windows 主机。 你可以在主机上找到可能具有干扰性并且占用过多资源的容器。 并且，你可以查看容器的集中式 CPU、内存、存储器、网络使用情况和性能信息。 在运行 Windows 的计算机上，可以集中比较 Windows Server、Hyper-V 和 Docker 容器中的日志。
@@ -45,8 +48,11 @@ ms.lasthandoff: 05/09/2017
 
 可以在 [GitHub](https://github.com/Microsoft/OMS-docker) 上查看容器主机支持的 Docker 和 Linux 操作系统版本。
 
+### <a name="container-services"></a>容器服务
+
 - 如果你的某个 Kubernetes 群集 使用 Azure 容器服务，请前往[使用 Microsoft Operations Management Suite (OMS) 监视 Azure 容器服务群集](../container-service/container-service-kubernetes-oms.md)了解详细信息。
 - 如果你拥有 Azure 容器服务 DC/OS 群集，请前往[通过 Operations Management Suite 监视 Azure 容器服务 DC/OS 群集](../container-service/container-service-monitoring-oms.md)了解详细信息。
+- 如果拥有 Docker Swarm 模式环境，请访问[配置适用于 Docker Swarm 的 OMS 代理](#configure-an-oms-agent-for-docker-swarm)了解更多信息。
 - 如果在 Service Fabric 中使用容器，请在 [Azure Service Fabric 概述](../service-fabric/service-fabric-overview.md)中了解更多信息。
 - 请参阅 [Windows 上的 Docker 引擎](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)一文，详细了解如何在运行 Windows 的计算机上安装和配置 Docker 引擎。
 
@@ -57,7 +63,7 @@ ms.lasthandoff: 05/09/2017
 
 你需要在容器主机上配置以下设置，然后才能监视容器。
 
-## <a name="configure-settings-for-a-linux-container-host"></a>配置 Linux 容器主机的设置
+## <a name="linux-container-hosts"></a>Linux 容器主机
 
 支持的 Linux 版本：
 
@@ -92,10 +98,164 @@ ms.lasthandoff: 05/09/2017
 sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e WSID="your workspace id" -e KEY="your key" -h=`hostname` -p 127.0.0.1:25225:25225 --name="omsagent" --restart=always microsoft/oms
 ```
 
+### <a name="for-all-azure-government-linux-container-hosts-including-coreos"></a>对于包括 CoreOS 在内的所有 Azure 政府 Linux 容器主机
+
+启动想要监视的 OMS 容器。 修改并使用以下示例。
+
+```
+sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/log:/var/log -e WSID="your workspace id" -e KEY="your key" -e DOMAIN="opinsights.azure.us" -p 127.0.0.1:25225:25225 -p 127.0.0.1:25224:25224/udp --name="omsagent" -h=`hostname` --restart=always microsoft/oms
+```
+
+
 ### <a name="switching-from-using-an-installed-linux-agent-to-one-in-a-container"></a>从使用已安装的 Linux 代理切换为使用容器中的 Linux 代理
 如果你以前使用直接安装的代理，并且想要改为使用容器中运行的代理，则必须首先删除 OMSAgent。 请参阅 [OMS Agent for Linux 的安装步骤](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md)。
 
-## <a name="supported-windows-versions"></a>支持的 Windows 版本
+### <a name="configure-an-oms-agent-for-docker-swarm"></a>配置适用于 Docker Swarm 的 OMS 代理
+
+可以在 Docker Swarm 中运行 OMS 代理作为全局服务。 使用以下信息创建 OMS 代理服务。 需要插入工作区 ID 和主密钥。
+
+- 在主节点上运行以下命令。
+
+    ```
+    sudo docker service create  --name omsagent --mode global  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock  -e WSID="<WORKSPACE ID>" -e KEY="<PRIMARY KEY>" -p 25225:25225 -p 25224:25224/udp  --restart-condition=on-failure microsoft/oms
+    ```
+
+### <a name="secure-your-secret-information-for-container-services"></a>保护容器服务的机密信息
+
+可以保护 Docker Swarm 和 Kubernetes 的机密 OMS 工作区 ID 和主密钥。
+
+#### <a name="secure-secrets-for-docker-swarm"></a>保护 Docker Swarm 的机密
+
+对于 Docker Swarm，为工作区 ID 和主密钥创建机密后，便可以创建适用于 OMSagent 的 Docker 服务了。 使用以下信息创建机密信息。
+
+1. 在主节点上运行以下命令。
+
+    ```
+    echo "WSID" | docker secret create WSID -
+    echo "KEY" | docker secret create KEY -
+    ```
+
+2. 验证机密是否已正确创建。
+
+    ```
+    keiko@swarmm-master-13957614-0:/run# sudo docker secret ls
+    ```
+
+    ```
+    ID                          NAME                CREATED             UPDATED
+    j2fj153zxy91j8zbcitnjxjiv   WSID                43 minutes ago      43 minutes ago
+    l9rh3n987g9c45zffuxdxetd9   KEY                 38 minutes ago      38 minutes ago
+    ```
+
+3. 运行以下命令将机密装载到容器化 OMS 代理。
+
+    ```
+    sudo docker service create  --name omsagent --mode global  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock --secret source=WSID,target=WSID --secret source=KEY,target=KEY  -p 25225:25225 -p 25224:25224/udp --restart-condition=on-failure microsoft/oms
+    ```
+
+#### <a name="secure-secrets-for-kubernetes-with-yaml-files"></a>使用 yaml 文件保护 Kubernetes 的机密
+
+对于 Kubernetes，使用脚本为工作区 ID 和主密钥生成机密 .yaml 文件。 在 [OMS Docker Kubernetes GitHub](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes) 页上，存在你可以对其使用或不使用机密信息的文件。
+
+- 没有机密信息的默认 OMS 代理 DaemonSet (omsagent.yaml)
+- 使用机密信息 (omsagent-ds-secrets.yaml) 的 OMS 代理 DaemonSet yaml 文件与生成机密 yaml (omsagentsecret.yaml) 文件的机密生成脚本。
+
+可以选择创建包含或不包含机密的 omsagent DaemonSet。
+
+##### <a name="default-omsagent-daemonset-yaml-file-without-secrets"></a>不包含机密的默认 OMSagent DaemonSet yaml 文件
+
+- 对于默认 OMS 代理 DaemonSet yaml 文件，将 `<WSID>` 和 `<KEY>` 分别替换为 WSID 和 KEY。 将文件复制到主节点并运行以下命令：
+
+    ```
+    sudo kubectl create -f omsagent.yaml
+    ```
+
+##### <a name="default-omsagent-daemonset-yaml-file-with-secrets"></a>包含机密的默认 OMSagent DaemonSet yaml 文件
+
+1. 若要使用包含机密信息的 OMS 代理 DaemonSet，请先创建机密。
+    1. 复制脚本和机密模板文件，并确保它们位于同一目录中。
+        - 生成机密的脚本 - secret-gen.sh
+        - 机密模板 - secret-template.yaml
+    2. 运行脚本，如下例所示。 脚本要求输入 OMS 工作区 ID 和主密钥，你输入这些值后，脚本将创建一个机密 .yaml 文件，以便你可以运行它。   
+
+        ```
+        #> sudo bash ./secret-gen.sh
+        ```
+
+    3. 通过运行以下命令创建机密 Pod：
+        ```
+        sudo kubectl create -f omsagentsecret.yaml
+        ```
+
+    4. 若要验证，请运行以下命令：
+
+        ```
+        keiko@ubuntu16-13db:~# sudo kubectl get secrets
+        ```
+
+        输出应类似于：
+
+        ```
+        NAME                  TYPE                                  DATA      AGE
+        default-token-gvl91   kubernetes.io/service-account-token   3         50d
+        omsagent-secret       Opaque                                2         1d
+        ```
+
+        ```
+        keiko@ubuntu16-13db:~# sudo kubectl describe secrets omsagent-secret
+        ```
+
+        输出应类似于：
+
+        ```
+        Name:           omsagent-secret
+        Namespace:      default
+        Labels:         <none>
+        Annotations:    <none>
+
+        Type:   Opaque
+
+        Data
+        ====
+        WSID:   36 bytes
+        KEY:    88 bytes
+        ```
+
+    5. 通过运行 ``` sudo kubectl create -f omsagent-ds-secrets.yaml ``` 创建 omsagent daemon-set
+
+2. 验证 OMS 代理 DaemonSet 是否正在运行，命令如下：
+
+    ```
+    keiko@ubuntu16-13db:~# sudo kubectl get ds omsagent
+    ```
+
+    ```
+    NAME       DESIRED   CURRENT   NODE-SELECTOR   AGE
+    omsagent   3         3         <none>          1h
+    ```
+
+
+对于 Kubernetes，使用脚本为工作区 ID 和主密钥生成机密 yaml 文件。 将以下示例信息与 [omsagent yaml 文件](https://github.com/Microsoft/OMS-docker/blob/master/Kubernetes/omsagent.yaml)配合使用来保护机密信息。
+
+```
+keiko@ubuntu16-13db:~# sudo kubectl describe secrets omsagent-secret
+Name:           omsagent-secret
+Namespace:      default
+Labels:         <none>
+Annotations:    <none>
+
+Type:   Opaque
+
+Data
+====
+WSID:   36 bytes
+KEY:    88 bytes
+```
+
+
+## <a name="windows-container-hosts"></a>Windows 容器主机
+
+支持的 Windows 版本：
 
 - Windows Server 2016
 - Windows 10 周年版（专业版或企业版）
@@ -105,7 +265,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e 
 - Docker 1.12 – 1.13
 - Docker 17.03.0 [稳定]
 
-### <a name="preparation-before-installing-agents"></a>安装代理之前的准备
+### <a name="preparation-before-installing-windows-agents"></a>安装 Windows 代理之前的准备
 
 在运行 Windows 的计算机上安装代理之前，需配置 Docker 服务。 配置允许 Windows 代理或 Log Analytics 虚拟机扩展使用 Docker TCP 套接字，因此代理能够远程访问 Docker 守护程序并捕获用于监视的数据。
 

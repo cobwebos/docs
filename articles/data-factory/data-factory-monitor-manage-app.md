@@ -12,11 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 05/18/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: 1d35fbbe14d1597c23d8521bc21c683b520f0ea6
-ms.openlocfilehash: 34141bb2c3c6e159e4ce3d567b830451c59ed84c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: d5a2d1f3d85b8a2212326cfcfd0ba5d80356b769
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -27,14 +29,16 @@ ms.openlocfilehash: 34141bb2c3c6e159e4ce3d567b830451c59ed84c
 >
 >
 
-本文介绍如何使用“监视和管理”应用监视、管理和调试 Azure 数据工厂管道，并创建警报以便在发生故障时接收通知。 还可观看以下视频，了解如何使用“监视和管理”应用。
+本文介绍如何使用“监视和管理”应用监视、管理和调试数据工厂管道。 它还提供有关如何创建警报以在发生故障时收到通知的信息。 可以通过观看以下视频开始使用该应用程序：
+
+> [!NOTE]
+> 视频中所示的用户界面可能与门户中看到的内容不完全匹配。 它略显陈旧，但概念保持不变。 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-Data-Factory-Monitoring-and-Managing-Big-Data-Piplines/player]
 >
->
 
-## <a name="open-the-monitoring-and-management-app"></a>打开“监视和管理”应用
-若要打开“监视和管理”应用，请针对你的数据工厂单击“数据工厂”边栏选项卡上的“监视和管理”磁贴。
+## <a name="launch-the-monitoring-and-management-app"></a>启动“监视和管理”应用
+若要启动“监视和管理”应用，请针对数据工厂单击“数据工厂”边栏选项卡上的“监视和管理”磁贴。
 
 ![数据工厂主页上的“监视”磁贴](./media/data-factory-monitor-manage-app/MonitoringAppTile.png)
 
@@ -45,7 +49,13 @@ ms.openlocfilehash: 34141bb2c3c6e159e4ce3d567b830451c59ed84c
 > [!NOTE]
 > 如果 Web 浏览器停滞在“正在授权...”处，请清除“阻止第三方 Cookie 和站点数据”复选框，或在将其保持选中的状态下为 **login.microsoftonline.com** 创建一个例外，然后尝试再次打开该应用。
 
-如果未在底部的列表中看到活动窗口，请单击工具栏上的“刷新”按钮以刷新列表。 此外，为“开始时间”和“结束时间”筛选器设置正确的值。  
+
+在中间窗格中的“活动窗口”列表中，每次运行某个活动时，都可以看到一个活动窗口。 例如，如果将该活动计划为在五小时内每小时运行一次，将看到与五个数据切片关联的五个活动窗口。 如果在底部列表中看不到活动窗口，请执行以下操作：
+ 
+- 更新顶部的“开始时间”和“结束时间”筛选器以匹配管道的开始时间和结束时间，然后单击“应用”按钮。  
+- “活动窗口”列表不会自动刷新。 请单击“活动窗口”列表中工具栏上的“刷新”按钮。  
+
+如果没有用于测试这些步骤的数据工厂应用程序，请完成教程：[使用数据工厂将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 ## <a name="understand-the-monitoring-and-management-app"></a>了解“监视和管理”应用
 左侧有三个选项卡：“资源浏览器”、“监视视图”和“警报”。 第一个选项卡（**资源浏览器**）在默认情况下处于选中状态。
@@ -54,9 +64,9 @@ ms.openlocfilehash: 34141bb2c3c6e159e4ce3d567b830451c59ed84c
 您会看到如下内容：
 
 * 左侧窗格中的资源浏览器**树视图**。
-* 顶部的**图示视图**。
+* 中间窗格顶部的**图示视图**。
 * 中间窗格底部的“活动窗口”列表。
-* 右侧窗格中的“属性”和“活动窗口资源管理器”选项卡。
+* 右侧窗格中的“属性”、“活动窗口资源管理器”和“脚本”选项卡。
 
 在资源浏览器中，可在树视图的数据工厂中查看所有资源（管道、数据集、链接服务）。 在资源浏览器中选择对象时：
 
@@ -80,23 +90,31 @@ ms.openlocfilehash: 34141bb2c3c6e159e4ce3d567b830451c59ed84c
 
 ![正在运行的管道](./media/data-factory-monitor-manage-app/PipelineRunning.png)
 
-图示视图中有三个用于管道的命令栏按钮。 可以使用第二个按钮暂停管道。 暂停不会终止当前正在运行的活动，而是会允许其继续完成。 第三个按钮暂停管道并终止其现有的执行活动。 第一个按钮恢复管道。 暂停管道后，管道的颜色将更改为黄色：
+通过在图示视图中选择管道并使用命令栏上的按钮，可以暂停、恢复或终止管道。
 
-![磁贴上的“暂停”/“恢复”](./media/data-factory-monitor-manage-app/SuspendResumeOnTile.png)
+![命令栏上的“暂停”/“恢复”](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
+ 
+图示视图中有三个用于管道的命令栏按钮。 可以使用第二个按钮暂停管道。 暂停不会终止当前正在运行的活动，而是会允许其继续完成。 第三个按钮暂停管道并终止其现有的执行活动。 第一个按钮恢复管道。 暂停管道后，管道的颜色将改变。 例如，暂停的管道如下图中所示： 
+
+![暂停的管道](./media/data-factory-monitor-manage-app/PipelinePaused.png)
 
 可以通过使用 Ctrl 键对两个或更多管道进行多选。 可以使用命令栏按钮来同时暂停/恢复多个管道。
 
-![命令栏上的“暂停”/“恢复”](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
+还可以右键单击管道，然后选择相应选项以暂停、恢复或终止管道。 
 
-通过右键单击管道磁贴，然后单击“打开管道”，可以看到管道中的所有活动。
+![管道的上下文菜单](./media/data-factory-monitor-manage-app/right-click-menu-for-pipeline.png)
+
+单击“打开管道”选项可查看管道中的所有活动。 
 
 ![“打开管道”菜单](./media/data-factory-monitor-manage-app/OpenPipelineMenu.png)
 
-在打开的管道视图中，可以看到管道中的所有活动。 在此示例中，只有一个活动：复制活动。 若要返回到上一视图，请单击顶部痕迹菜单中的数据工厂名称。
+在打开的管道视图中，可以看到管道中的所有活动。 在此示例中，只有一个活动：复制活动。 
 
 ![打开的管道](./media/data-factory-monitor-manage-app/OpenedPipeline.png)
 
-在管道视图中，单击输出数据集或将鼠标悬停在输出数据集上时，可以看到该数据集的“活动窗口”弹出窗口。
+若要返回到上一视图，请单击顶部痕迹菜单中的数据工厂名称。
+
+在管道视图中，选择输出数据集或将鼠标悬停在输出数据集上时，可以看到该数据集的“活动窗口”弹出窗口。
 
 ![“活动窗口”弹出窗口](./media/data-factory-monitor-manage-app/ActivityWindowsPopup.png)
 
@@ -316,9 +334,4 @@ ms.openlocfilehash: 34141bb2c3c6e159e4ce3d567b830451c59ed84c
 使用以下按钮（以红色突出显示）可编辑、删除或禁用警报。
 
 ![警报按钮](./media/data-factory-monitor-manage-app/AlertButtons.png)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
