@@ -2,7 +2,7 @@
 title: "什么是服务运行状况通知 | Microsoft Docs"
 description: "借助服务运行状况通知，可以查看由 Microsoft Azure 发布的服务运行状况消息。"
 author: anirudhcavale
-manager: carmonm
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: c7ea129346c5fddcff9f824dc69478cf6fb1c67a
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
-
 
 ---
 # <a name="service-health-notifications"></a>服务运行状况通知
@@ -50,7 +50,7 @@ resourceProviderName | 受影响资源的资源提供程序的名称
 resourceType| 受影响资源的资源类型
 subStatus | 通常为相应 REST 调用的 HTTP 状态代码，但也可能包括用于描述子状态的其他字符串，例如以下常用值：OK（HTTP 状态代码：200）、Created（HTTP 状态代码：201）、Accepted（HTTP 状态代码：202）、No Content（HTTP 状态代码：204）、Bad Request（HTTP 状态代码：400）、Not Found（HTTP 状态代码：404）、Conflict（HTTP 状态代码：409）、Internal Server Error（HTTP 状态代码：500）、Service Unavailable（HTTP 状态代码：503）、Gateway Timeout（HTTP 状态代码：504）。
 eventTimestamp | 处理与事件对应的请求的 Azure 服务生成事件时的时间戳。
-submissionTimestamp |     事件可供查询的时间戳。
+submissionTimestamp |   事件可供查询的时间戳。
 subscriptionId | 其中记录了此事件的 Azure 订阅
 status | 描述操作状态的字符串。 部分常用值包括：Started、In Progress、Succeeded、Failed、Active、Resolved。
 operationName | 操作的名称。
@@ -68,15 +68,15 @@ Properties.communicationId | 与此事件关联的通信。
 
 
 ## <a name="viewing-your-service-health-notifications-in-the-azure-portal"></a>在 Azure 门户中查看服务运行状况通知
-1.    在[门户](https://portal.azure.com)中，导航到“监视”服务
+1.  在[门户](https://portal.azure.com)中，导航到“监视”服务
 
     ![监视](./media/monitoring-service-notifications/home-monitor.png)
-2.    单击“监视”选项打开“监视”边栏选项卡。 此边栏选项卡将所有监视设置和数据汇聚到一个合并视图中。 首次打开的是“活动日志”部分。
+2.  单击“监视”选项打开“监视”边栏选项卡。 此边栏选项卡将所有监视设置和数据汇聚到一个合并视图中。 首次打开的是“活动日志”部分。
 
-3.    现在单击“服务通知”部分
+3.  现在单击“服务通知”部分
 
     ![监视](./media/monitoring-service-notifications/service-health-summary.png)
-4.    单击任意行项以查看更多详细信息
+4.  单击任意行项以查看更多详细信息
 
 5. 单击“+添加活动日志警报”操作以接收通知，从而确保以后接受到此类型的服务通知。 若要深入了解如何配置服务通知警报，[请单击此处](monitoring-activity-log-alerts-on-service-notifications.md)
 

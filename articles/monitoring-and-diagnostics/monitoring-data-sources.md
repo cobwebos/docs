@@ -2,7 +2,7 @@
 title: "使用 Azure 中的监视数据 | Microsoft Docs"
 description: "了解现可在 Azure 上使用的所有监视数据源。"
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/27/2017
 ms.author: johnkem
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
 ms.openlocfilehash: 27a0b50107964c99334efbf457bfc2f680217ad4
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/25/2017
-
 
 ---
 # <a name="consume-monitoring-data-from-azure"></a>使用 Azure 中的监视数据

@@ -2,7 +2,7 @@
 title: "使用 Resource Manager 模板创建指标警报 | Microsoft Docs"
 description: "了解如何使用 Resource Manager 模板创建指标警报，以便通过电子邮件或 Webhook 接收通知。"
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -19,7 +19,6 @@ ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
 ms.openlocfilehash: 4ea07a1cade7e3007b0f85214b4d41a61b527001
 ms.contentlocale: zh-cn
 ms.lasthandoff: 12/22/2016
-
 
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报

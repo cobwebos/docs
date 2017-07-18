@@ -1,5 +1,4 @@
 ---
-
 title: "将 Azure AD 与应用集成入门 | Microsoft 文档"
 description: "本文是一篇入门指南，介绍如何将 Azure Active Directory (AD) 与本地应用程序和云应用程序集成。"
 services: active-directory
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/04/2017
 ms.author: markvi
+ms.reviewer: asteen
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 54e6bf0953135855d4dda2bc83c8dc06212c6eb5
 ms.openlocfilehash: 6b3f6889c747e72ee1c592b1b0dfb1d03d700ad3
 ms.contentlocale: zh-cn
 ms.lasthandoff: 02/03/2017
-
 
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>将 Azure Active Directory 与应用程序集成入门指南
