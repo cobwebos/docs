@@ -1,8 +1,8 @@
 ---
 title: "Azure Monitor 自动缩放常见指标 | Microsoft Docs"
 description: "了解自动缩放云服务、虚拟机和 Web 应用时常用的指标。"
-author: kamathashwin
-manager: carolz
+author: anirudhcavale
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/6/2016
-ms.author: ashwink
+ms.author: ancav
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 7f9fb67a28560f8cc48ba8be8011bc1991d09024
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/10/2017
-
 
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure 监视器自动缩放常用指标

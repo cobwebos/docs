@@ -1,8 +1,8 @@
 ---
 title: "针对 Azure 活动日志警报调用 Webhook | Microsoft 文档"
 description: "将活动日志事件路由到其他服务用于自定义操作。 例如发送短信、记录 bug，或者通过聊天/消息传送服务通知团队。"
-author: kamathashwin
-manager: carmonm
+author: johnkemnetz
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: ashwink
-translationtype: Human Translation
+ms.author: johnkem
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
 ms.openlocfilehash: 4ee65a10616fff81044c181fce8708a596e9e6de
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/31/2017
 
 ---
 # <a name="call-a-webhook-on-azure-activity-log-alerts"></a>针对 Azure 活动日志警报调用 Webhook
@@ -123,9 +124,4 @@ POST 操作对于所有基于活动日志的警报包含以下 JSON 有效负载
 * [Use Logic App to send an SMS via Twilio from an Azure alert](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)（使用逻辑应用通过 Twilio 从 Azure 警报发送短信）。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。
 * [Use Logic App to send a Slack message from an Azure alert](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)（使用逻辑应用从 Azure 警报发送 Slack 消息）。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。
 * [Use Logic App to send a message to an Azure Queue from an Azure alert](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)（使用逻辑应用从 Azure 警报将消息发送到 Azure 队列）。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 
