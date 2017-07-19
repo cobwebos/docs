@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: markvi
+ms.reviewer: nigu
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 87c73981c74fc763fd1aec6c283e934c77008441
 ms.openlocfilehash: d17fa0ffb0c55d49487804cd28d8903107069f06
 ms.contentlocale: zh-cn
 ms.lasthandoff: 11/17/2016
-
 
 ---
 # <a name="azure-active-directory-identity-protection---how-to-unblock-users"></a>Azure Active Directory Identity Protection - 如何取消阻止用户

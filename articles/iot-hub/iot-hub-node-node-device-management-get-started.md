@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: juanpere
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
-ms.openlocfilehash: 08a192a273ff91bcf9e75d1ff023dcc48f9bb6a2
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 7de541ac45fd277f3cfc91d598c654c24af187fc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/19/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 05/19/2017
 
 * 使用 Azure 门户创建 IoT 中心，以及如何在 IoT 中心创建设备标识。
 * 创建包含重新启动该设备的直接方法的模拟设备应用。 直接方法是从云中调用的。
-* 创建一个 .NET 控制台应用，其通过 IoT 中心在模拟设备应用上调用重新启动直接方法。
+* 创建一个 Node.js 控制台应用，其通过 IoT 中心直接重启模拟设备应用。
 
 在本教程结束时，将会创建两个 Node.js 控制台应用：
 
@@ -138,7 +138,7 @@ ms.lasthandoff: 05/19/2017
 > 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按 MSDN 文章 [Transient Fault Handling][lnk-transient-faults]（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。
 
 ## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>使用直接方法在设备上触发远程重新启动
-在本部分中，你将创建一个 .NET 控制台应用（使用 C#）以使用直接方法在设备上启动远程重新启动。 该应用使用设备孪生查询来搜索该设备的上次重新启动时间。
+此部分将创建一个 Node.js 控制台应用，此应用直接对设备进行远程重启。 该应用使用设备孪生查询来搜索该设备的上次重新启动时间。
 
 1. 创建一个名为 **triggerrebootondevice** 的空文件夹。  在 **triggerrebootondevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
    

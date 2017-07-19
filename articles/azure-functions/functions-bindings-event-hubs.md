@@ -14,39 +14,39 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/02/2016
+ms.date: 06/20/2017
 ms.author: wesmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 04a8563a0035992cfa4b7d25a4edc14e1db80e44
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: eaa97e31fbc2ffb8464b5ec2bd1f0eb5c59fdbd2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/22/2017
 
 
 ---
-# <a name="azure-functions-event-hub-bindings"></a>Azure Functions 事件中心绑定
+# <a name="azure-functions-event-hubs-bindings"></a>Azure Functions 事件中心绑定
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-本文介绍如何对 Azure Functions 的 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)绑定进行配置和编写代码。
+本文介绍如何配置和使用 Azure Functions 的 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)绑定。
 Azure Functions 支持事件中心的触发器和输出绑定。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-如果不熟悉 Azure 事件中心，请参阅 [Azure 事件中心概述](../event-hubs/event-hubs-what-is-event-hubs.md)。
+如果不熟悉 Azure 事件中心，请参阅 [事件中心概述](../event-hubs/event-hubs-what-is-event-hubs.md)。
 
 <a name="trigger"></a>
 
 ## <a name="event-hub-trigger"></a>事件中心触发器
 使用事件中心触发器来响应发送到事件中心事件流的事件。 若要设置触发器，必须具有事件中心的读取访问权限。
 
-函数的事件中心触发器使用 function.json 的 `bindings` 数组中的以下 JSON 对象：
+事件中心函数触发器使用 function.json 的 `bindings` 数组中的以下 JSON 对象：
 
 ```json
 {
     "type": "eventHubTrigger",
     "name": "<Name of trigger parameter in function signature>",
     "direction": "in",
-    "path": "<Name of the Event Hub>",
+    "path": "<Name of the event hub>",
     "consumerGroup": "Consumer group to use - see below",
     "connection": "<Name of app setting with connection string - see below>"
 }
@@ -56,17 +56,17 @@ Azure Functions 支持事件中心的触发器和输出绑定。
 `connection` 必须是应用设置的名称，该名称中包含事件中心命名空间的连接字符串。
 单击“命名空间”（而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须至少具有读取权限才可激活触发器。
 
-可在 host.json 文件中提供[其他设置](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json)来进一步优化事件中心触发器。  
+可使用 host.json 文件中提供的[其他设置](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json)进一步优化事件中心触发器。  
 
 <a name="triggerusage"></a>
 
 ## <a name="trigger-usage"></a>触发器使用情况
-触发事件中心触发器函数时，会将触发此函数的消息作为字符串传递到该函数中。
+触发事件中心触发器函数时，进行触发的消息将作为字符串传递到该函数中。
 
 <a name="triggersample"></a>
 
 ## <a name="trigger-sample"></a>触发器示例
-假定 function.json 的 `bindings` 数组中具有下面的事件中心触发器：
+假定 function.json 的 `bindings` 数组中具有以下事件中心触发器：
 
 ```json
 {
@@ -119,7 +119,7 @@ module.exports = function (context, myEventHubMessage) {
 
 <a name="output"></a>
 
-## <a name="event-hub-output-binding"></a>事件中心输出绑定
+## <a name="event-hubs-output-binding"></a>事件中心输出绑定
 使用事件中心输出绑定将事件写入到事件中心事件流。 必须具有事件中心的发送权限才可将事件写入到其中。
 
 输出绑定在 function.json 的 `bindings` 数组中使用以下 JSON 对象：

@@ -14,6 +14,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: markvi
+ms.reviewer: nigu
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 77031b3bbe2372bf2cac34bac45368ac40911641
 ms.openlocfilehash: 87070d7680a6d48e94099b47f9dc336a75332f6c
@@ -21,17 +22,13 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 12/29/2016
 
 ---
-<a id="azure-active-directory-identity-protection-playbook" class="xliff"></a>
-
-# Azure Active Directory Identity Protection 操作手册
+# <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection 操作手册
 此操作手册有助于：
 
 * 通过模拟风险事件和漏洞在 Identity Protection 环境中填充数据
 * 设置基于风险的条件访问策略并测试这些策略的影响
 
-<a id="simulating-risk-events" class="xliff"></a>
-
-## 模拟风险事件
+## <a name="simulating-risk-events"></a>模拟风险事件
 本部分向你提供模拟以下风险事件类型的步骤：
 
 * 从匿名 IP 地址登录（简单）
@@ -40,9 +37,7 @@ ms.lasthandoff: 12/29/2016
 
 不能以安全方式模拟其他风险事件。
 
-<a id="sign-ins-from-anonymous-ip-addresses" class="xliff"></a>
-
-### 从匿名 IP 地址登录
+### <a name="sign-ins-from-anonymous-ip-addresses"></a>从匿名 IP 地址登录
 此风险事件类型可标识已从标识为匿名代理 IP 地址的 IP 地址成功登录的用户。 这些代理由想要隐藏其设备的 IP 地址的用户使用，并且可能用于恶意目的。
 
 **若要模拟从匿名 IP 登录，请执行以下步骤**：
@@ -53,9 +48,7 @@ ms.lasthandoff: 12/29/2016
 
 登录将在 5 分钟内显示在 Identity Protection 仪表板上。 
 
-<a id="sign-ins-from-unfamiliar-locations" class="xliff"></a>
-
-### 从不熟悉的位置登录
+### <a name="sign-ins-from-unfamiliar-locations"></a>从不熟悉的位置登录
 不熟悉的位置风险是视为过去登录位置（IP、纬度/经度和 ASN）的实时登录评估机制，可确定新的/不熟悉的位置。 系统可存储用户以前的 IP、纬度/经度和 ASN，并将它们视为熟悉的位置。 如果登录位置与现有的任何熟悉位置不匹配，该登录位置将视为不熟悉的位置。
 
 Azure Active Directory Identity Protection：  
@@ -76,9 +69,7 @@ Azure Active Directory Identity Protection：
 
 登录将在 5 分钟内显示在 Identity Protection 仪表板上。
 
-<a id="impossible-travel-to-atypical-location" class="xliff"></a>
-
-### 不可能前往异常位置
+### <a name="impossible-travel-to-atypical-location"></a>不可能前往异常位置
 模拟不可能前往条件很难，因为该算法使用机器学习清除从熟悉设备的不可能前往等误报，或从目录中其他用户使用的 VPN 登录。 此外，此算法要求用户 3 到 14 天的登录历史记录，然后才能开始生成风险事件。
 
 **若要模拟不可能前往异常位置，请执行以下步骤**：
@@ -92,18 +83,14 @@ Azure Active Directory Identity Protection：
 登录将在 2-4 小时内显示在 Identity Protection 仪表板中。<br>
 由于涉及了复杂的机器学习模型，该登录有可能会失败。<br> 可能想要为多个 Azure AD 帐户复制这些步骤。
 
-<a id="simulating-vulnerabilities" class="xliff"></a>
-
-## 模拟漏洞
+## <a name="simulating-vulnerabilities"></a>模拟漏洞
 漏洞是 Azure AD 环境中可能由危险分子利用的弱点。 Azure AD Identity Protection 中当前显示了 3 种类型的漏洞，这些漏洞会利用 Azure AD 的其他功能。 设置这些功能后，这些漏洞将自动显示在 Identity Protection 仪表板上。
 
 * Azure AD [多重身份验证？](../multi-factor-authentication/multi-factor-authentication.md)
 * Azure AD [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)。
 * Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md)。 
 
-<a id="user-compromise-risk" class="xliff"></a>
-
-## 用户泄漏风险
+## <a name="user-compromise-risk"></a>用户泄漏风险
 **若要测试用户泄漏风险，请执行以下步骤**：
 
 1. 使用你的租户的全局管理员凭据登录 [https://portal.azure.com](https://portal.azure.com)。
@@ -126,9 +113,7 @@ Azure Active Directory Identity Protection：
     ![演练手册](./media/active-directory-identityprotection-playbook/201.png "Playbook")
     <br>
 
-<a id="sign-in-risk" class="xliff"></a>
-
-## 登录风险
+## <a name="sign-in-risk"></a>登录风险
 **若要测试登录风险，请执行以下步骤**：
 
 1. 使用你的租户的全局管理员凭据登录 [https://portal.azure.com](https://portal.azure.com)。
@@ -150,9 +135,7 @@ Azure Active Directory Identity Protection：
 ![演练手册](./media/active-directory-identityprotection-playbook/200.png "演练手册")
 
 
-<a id="see-also" class="xliff"></a>
-
-## 另请参阅
+## <a name="see-also"></a>另请参阅
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2017
+ms.date: 06/13/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 7f19efa7e09b0dce43851019f94285b2887c46d5
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 7af374232fd45da8769001cd520fa7d1734cbc4e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -46,7 +46,30 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 | arg1 |是 |int、string、array 或 object |要检查是否相等的第一个值。 |
 | arg2 |是 |int、string、array 或 object |要检查是否相等的第二个值。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+如果值相等，返回 **True**；否则返回 **False**。
+
+### <a name="remarks"></a>备注
+
+Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源。
+
+```json
+{
+    "condition": "[equals(parameters('newOrExisting'),'new')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageAccountName')]",
+    "apiVersion": "2017-06-01",
+    "location": "[resourceGroup().location]",
+    "sku": {
+        "name": "[variables('storageAccountType')]"
+    },
+    "kind": "Storage",
+    "properties": {}
+}
+```
+
+### <a name="example"></a>示例
 
 示例模板检查不同类型的值是否相等。 所有默认值都返回 True。
 
@@ -111,9 +134,14 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-如果值相等，返回 **True**；否则返回 **False**。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| checkInts | Bool | True |
+| checkStrings | Bool | True |
+| checkArrays | Bool | True |
+| checkObjects | Bool | True |
 
 <a id="less" />
 
@@ -129,7 +157,11 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 | arg1 |是 |int 或 string |用于小于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于小于比较的第二个值。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+如果第一个值小于第二个值，返回 **True**；否则返回 **False**。
+
+### <a name="example"></a>示例
 
 示例模板检查一个值是否小于另一个值。
 
@@ -139,16 +171,20 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 1
         },
         "secondInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 2
         },
         "firstString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "A"
         },
         "secondString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "a"
         }
     },
     "resources": [
@@ -166,9 +202,12 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-如果第一个值小于第二个值，返回 **True**；否则返回 **False**。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| checkInts | Bool | True |
+| checkStrings | Bool | False |
 
 <a id="lessorequals" />
 
@@ -184,7 +223,11 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 | arg1 |是 |int 或 string |用于小于或等于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于小于或等于比较的第二个值。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+如果第一个值小于或等于第二个值，返回 **True**；否则返回 **False**。
+
+### <a name="example"></a>示例
 
 示例模板检查一个值是否小于或等于另一个值。
 
@@ -194,16 +237,20 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 1
         },
         "secondInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 2
         },
         "firstString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "A"
         },
         "secondString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "a"
         }
     },
     "resources": [
@@ -221,9 +268,12 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-如果第一个值小于或等于第二个值，返回 **True**；否则返回 **False**。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| checkInts | Bool | True |
+| checkStrings | Bool | False |
 
 <a id="greater" />
 
@@ -239,7 +289,11 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 | arg1 |是 |int 或 string |用于大于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于大于比较的第二个值。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+如果第一个值大于第二个值，返回 **True**；否则返回 **False**。
+
+### <a name="example"></a>示例
 
 示例模板检查一个值是否大于另一个值。
 
@@ -249,16 +303,20 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 1
         },
         "secondInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 2
         },
         "firstString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "A"
         },
         "secondString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "a"
         }
     },
     "resources": [
@@ -276,9 +334,12 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-如果第一个值大于第二个值，返回 **True**；否则返回 **False**。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| checkInts | Bool | False |
+| checkStrings | Bool | True |
 
 <a id="greaterorequals" />
 
@@ -294,7 +355,11 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 | arg1 |是 |int 或 string |用于大于或等于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于大于或等于比较的第二个值。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+如果第一个值大于或等于第二个值，返回 **True**；否则返回 **False**。
+
+### <a name="example"></a>示例
 
 示例模板检查一个值是否大于或等于另一个值。
 
@@ -304,16 +369,20 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 1
         },
         "secondInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 2
         },
         "firstString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "A"
         },
         "secondString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "a"
         }
     },
     "resources": [
@@ -331,9 +400,13 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-如果第一个值大于或等于第二个值，返回 **True**；否则返回 **False**。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| checkInts | Bool | False |
+| checkStrings | Bool | True |
+
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure Resource Manager 模板中各部分的说明，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。

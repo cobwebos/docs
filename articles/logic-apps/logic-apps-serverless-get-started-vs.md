@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: LADocs; jehollan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 4ed26f1a30501d9ce67845795606f6d8e77ac53f
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 3672beda8a502e5fe2c8182076a8edef7ee9ebf6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/02/2017
 
 ---
 # <a name="build-a-serverless-app-in-visual-studio-with-logic-apps-and-functions"></a>使用逻辑应用和 Functions 在 Visual Studio 中构建无服务器应用
@@ -34,7 +34,7 @@ ms.lasthandoff: 05/09/2017
 * [用于 Visual Studio 的逻辑应用工具](https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio-18551)
 * [最新版 Azure SDK](https://azure.microsoft.com/downloads/)（2.9.1 或更高版本）
 * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
-* 用于在本地调试 Functions 的 [Azure Functions CLI](https://www.npmjs.com/package/azure-functions-cli)
+* 用于在本地调试 Functions 的 [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools)
 * 使用嵌入式逻辑应用设计器时访问 Web
 
 ## <a name="getting-started-with-a-deployment-template"></a>部署模板入门
@@ -94,3 +94,4 @@ ms.lasthandoff: 05/09/2017
 <!-- Image references -->
 [1]: ./media/logic-apps-serverless-get-started-vs/select-template.png
 [2]: ./media/logic-apps-serverless-get-started-vs/deploy.png
+

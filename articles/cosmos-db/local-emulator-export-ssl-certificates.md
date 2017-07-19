@@ -13,21 +13,21 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/23/2017
+ms.date: 06/06/2017
 ms.author: tvoellm
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: ef14df93b7870c7bc4be0f644d32cc45d15b7856
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 4add5028d50972316902cecd8c399781c012cb77
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
 
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>导出 Azure Cosmos DB 模拟器证书供 Java、Python 和 Node.js 使用
 
-[**下载模拟器**](https://aka.ms/documentdb-emulator)
+[**下载模拟器**](https://aka.ms/cosmosdb-emulator)
 
 为进行开发，Azure Cosmos DB 模拟器提供了一个模拟 Azure Cosmos DB 服务的本地环境（包括使用 SSL 连接）。 本文演介绍了如何导出 SSL 证书以用于不与 Windows 证书存储集成的语言和运行时，例如使用自己的[证书存储](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)的 Java、使用[套接字包装](https://docs.python.org/2/library/ssl.html)的 Python 和使用 [tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback) 的 Node.js。 可以在[使用 Azure Cosmos DB 模拟器进行开发和测试](./local-emulator.md)中了解有关模拟器的更多信息。
 
@@ -40,45 +40,45 @@ ms.lasthandoff: 05/31/2017
 
 ## <a name="certification-rotation"></a>证书旋转
 
-Azure Cosmos DB 本地模拟器中的证书在首次运行模拟器时生成。 证书有两个。 一个用于连接到本地模拟器，另一个用于管理模拟器中的机密。 要导出的证书是具有“Azure Cosmos DBEmulatorCertificate”友好名称的连接证书。
+Azure Cosmos DB 本地模拟器中的证书在首次运行模拟器时生成。 证书有两个。 一个用于连接到本地模拟器，另一个用于管理模拟器中的机密。 要导出的证书是具有“DocumentDBEmulatorCertificate”友好名称的连接证书。
 
 在 Windows 任务栏中运行的 Azure Cosmos DB 模拟器中，单击“重置数据”（如下所示），即可重新生成这两个证书。 如果重新生成证书并将它们安装到 Java 证书存储或在其他地方使用，则需要更新证书，否则应用程序将不再连接到本地模拟器。
 
-![Azure Cosmos DB 本地模拟器重置数据](./media/local-emulator/database-local-emulator-reset-data.png)
+![Azure Cosmos DB 本地模拟器重置数据](./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png)
 
 ## <a name="how-to-export-the-azure-cosmos-db-ssl-certificate"></a>如何导出 Azure Cosmos DB SSL 证书
 
-1. 通过运行 certlm.msc 启动 Windows 证书管理器，然后导航到“个人”->“证书”文件夹，打开友好名称为“CosmosDBEmulatorCertificate”的证书。
+1. 通过运行 certlm.msc 启动 Windows 证书管理器并导航到“个人”->“证书”文件夹，打开友好名称为 "DocumentDbEmulatorCertificate"的证书。
 
-    ![Azure Cosmos DB 本地模拟器导出步骤 1](./media/local-emulator/database-local-emulator-export-step-1.png)
+    ![Azure Cosmos DB 本地模拟器导出步骤 1](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-1.png)
 
 2. 单击“详细信息”，然后单击“确定”。
 
-    ![Azure Cosmos DB 本地模拟器导出步骤 2](./media/local-emulator/database-local-emulator-export-step-2.png)
+    ![Azure Cosmos DB 本地模拟器导出步骤 2](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png)
 
 3. 单击“复制到文件...”。
 
-    ![Azure Cosmos DB 本地模拟器导出步骤 3](./media/local-emulator/database-local-emulator-export-step-3.png)
+    ![Azure Cosmos DB 本地模拟器导出步骤 3](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png)
 
 4. 单击“下一步”。
 
-    ![Azure Cosmos DB 本地模拟器导出步骤 4](./media/local-emulator/database-local-emulator-export-step-4.png)
+    ![Azure Cosmos DB 本地模拟器导出步骤 4](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png)
 
 5. 单击“否，不导出私钥”，然后单击“下一步”。
 
-    ![Azure Cosmos DB 本地模拟器导出步骤 5](./media/local-emulator/database-local-emulator-export-step-5.png)
+    ![Azure Cosmos DB 本地模拟器导出步骤 5](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png)
 
 6. 单击“Base-64 编码 X.509 (.CER)”，然后单击“下一步”。
 
-    ![Azure Cosmos DB 本地模拟器导出步骤 6](./media/local-emulator/database-local-emulator-export-step-6.png)
+    ![Azure Cosmos DB 本地模拟器导出步骤 6](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png)
 
 7. 为证书指定名称。 在本示例中为“documentdbemulatorcert”，然后单击“下一步”。
 
-    ![Azure Cosmos DB 本地模拟器导出步骤 7](./media/local-emulator/database-local-emulator-export-step-7.png)
+    ![Azure Cosmos DB 本地模拟器导出步骤 7](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png)
 
 8. 单击“完成”。
 
-    ![Azure Cosmos DB 本地模拟器导出步骤 8](./media/local-emulator/database-local-emulator-export-step-8.png)
+    ![Azure Cosmos DB 本地模拟器导出步骤 8](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png)
 
 ## <a name="how-to-use-the-certificate-in-java"></a>如何在 Java 中使用证书
 
@@ -90,11 +90,11 @@ Azure Cosmos DB 本地模拟器中的证书在首次运行模拟器时生成。 
 
 ## <a name="how-to-use-the-certificate-in-python"></a>如何在 Python 中使用证书
 
-默认情况下，用于 DocumentDB 的 [Python SDK（版本 2.0.0 或更高版本）](documentdb-sdk-python.md)在连接到本地模拟器时不会尝试使用 SSL 证书。 但如果要使用 SSL 验证，可以按照 [Python 套接字包装器](https://docs.python.org/2/library/ssl.html)一文中的示例操作。
+默认情况下，用于 DocumentDB API 的 [Python SDK（版本 2.0.0 或更高版本）](documentdb-sdk-python.md)在连接到本地模拟器时不会尝试使用 SSL 证书。 但如果要使用 SSL 验证，可以按照 [Python 套接字包装器](https://docs.python.org/2/library/ssl.html)一文中的示例操作。
 
 ## <a name="how-to-use-the-certificate-in-nodejs"></a>如何在 Node.js 中使用证书
 
-默认情况下，用于 DocumentDB 的 [Node.js SDK（版本 1.10.1 或更高版本）](documentdb-sdk-node.md)在连接到本地模拟器时不会尝试使用 SSL 证书。 但如果要使用 SSL 验证，可以按照 [Node.js 文档](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)中的示例操作。
+默认情况下，用于 DocumentDB API 的 [Node.js SDK（版本 1.10.1 或更高版本）](documentdb-sdk-node.md)在连接到本地模拟器时不会尝试使用 SSL 证书。 但如果要使用 SSL 验证，可以按照 [Node.js 文档](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)中的示例操作。
 
 ## <a name="next-steps"></a>后续步骤
 

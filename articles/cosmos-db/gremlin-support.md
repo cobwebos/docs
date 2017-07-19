@@ -1,31 +1,31 @@
 ---
 title: "Azure Cosmos DB Gremlin 支持 | Microsoft Docs"
-description: "了解可在 Azure Cosmos DB 中使用的 Gremlin 语言及其功能和步骤"
-services: cosmosdb
+description: "了解可在 Azure Cosmos DB 中使用的 Apache TinkerPop Gremlin 语言及其功能和步骤"
+services: cosmos-db
 documentationcenter: 
 author: arramac
 manager: jhubbard
 editor: 
 tags: 
-ms.assetid: 
-ms.service: cosmosdb
+ms.assetid: 6016ccba-0fb9-4218-892e-8f32a1bcc590
+ms.service: cosmos-db
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 05/10/2017
+ms.date: 06/10/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: db2287782df66ecee0795adb483e253021d0c2cf
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: acea54d202d1117cf2dfb1d35ad48346daa9053d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
 
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin 图形支持
-Azure Cosmos DB 支持使用 [Gremlin]([Gremlin language](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)) 图形 API 创建图形实体以及执行图形查询和遍历操作。 可以使用 Gremlin 语言创建图形实体（顶点和边缘）、修改这些实体内部的属性、执行查询和遍历，以及删除实体。 
+Azure Cosmos DB 支持 [Apache Tinkerpop](http://tinkerpop.apache.org) 的图形遍历语言 [Gremlin]([Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps))，该语言是一种图形 API，用于创建图形实体以及执行图形查询操作。 可以使用 Gremlin 语言创建图形实体（顶点和边缘）、修改这些实体内部的属性、执行查询和遍历，以及删除实体。 
 
 Azure Cosmos DB 为图形数据库提供企业级的功能。 这些功能包括全局分布、存储和吞吐量独立缩放、10 毫秒以下的可预测延迟、自动编制索引和 99.99% 的 SLA 保证。 由于 Azure Cosmos DB 支持 TinkerPop/Gremlin，因此你可以轻松迁移使用其他图形数据库编写的应用程序，而无需更改代码。 此外，由于具有 Gremlin 支持，Azure Cosmos DB 可与支持 TinkerPop 的分析框架（例如 [Apache Spark GraphX](http://spark.apache.org/graphx/)）无缝集成。 
 
@@ -94,7 +94,7 @@ TinkerPop 是涵盖多种图形技术的标准。 因此，它使用标准的术
 
 从 Gremlin 操作返回结果时，Azure Cosmos DB 使用 [GraphSON 格式](https://github.com/thinkaurelius/faunus/wiki/GraphSON-Format)。 GraphSON 是 Gremlin 标准格式，它使用 JSON 来表示顶点、边缘和属性（单值和多值属性）。 
 
-例如，以下代码片段显示了 Azure Cosmos DB 中某个顶点的 GraphSON 表示形式。 
+例如，以下代码片段显示了从 Azure Cosmos DB *返回到客户端*的某个顶点的 GraphSON 表示形式。 
 
 ```json
   {
@@ -172,6 +172,7 @@ GraphSON 为顶点使用的属性如下：
 | --- | --- | --- | --- |
 | `addE` | 在两个顶点之间添加边缘 | [addE 步骤](http://tinkerpop.apache.org/docs/current/reference/#addedge-step) | |
 | `addV` | 将顶点添加到图形 | [addV 步骤](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) | |
+| `and` | 确保所有遍历都返回值 | [and 步骤](http://tinkerpop.apache.org/docs/current/reference/#and-step) | |
 | `as` | 用于向步骤的输出分配变量的步骤调制器 | [as 步骤](http://tinkerpop.apache.org/docs/current/reference/#as-step) | |
 | `by` | 与 `group` 和 `order` 配合使用的步骤调制器 | [by 步骤](http://tinkerpop.apache.org/docs/current/reference/#by-step) | |
 | `coalesce` | 返回第一个返回结果的遍历 | [coalesce 步骤](http://tinkerpop.apache.org/docs/current/reference/#coalesce-step) | |
@@ -209,4 +210,3 @@ Azure Cosmos DB 的写入优化引擎默认支持自动对顶点和边缘中的�
 ## <a name="next-steps"></a>后续步骤
 * 开始[使用我们的 SDK](create-graph-dotnet.md) 构建图形应用程序 
 * 详细了解 [Azure Cosmos DB 的图形支持](graph-introduction.md)
-

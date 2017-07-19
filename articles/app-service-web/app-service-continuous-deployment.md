@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/28/2016
 ms.author: dariagrigoriu
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 8f4bfb71e25691b3c3eec51186e533202a0f9db0
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/21/2017
-
 
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>连续部署到 Azure App Service
@@ -97,5 +97,4 @@ ms.lasthandoff: 03/21/2017
 [创建存储库 (GitHub)]: https://help.github.com/articles/create-a-repo
 [创建存储库 (BitBucket)]: https://confluence.atlassian.com/display/BITBUCKET/Create+an+Account+and+a+Git+Repo
 [VSTS 入门]: https://www.visualstudio.com/docs/vsts-tfs-overview
-[Continuous delivery to Azure using Visual Studio Team Services]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
 

@@ -22,8 +22,7 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 07/13/2017
 
 ---
-# 使用 Node 将模拟设备连接到 IoT 中心
-<a id="connect-your-simulated-device-to-your-iot-hub-using-node" class="xliff"></a>
+# <a name="connect-your-simulated-device-to-your-iot-hub-using-node"></a>使用 Node 将模拟设备连接到 IoT 中心
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
 本教程结束时，将会创建三个 Node.js 控制台应用：
@@ -46,8 +45,7 @@ ms.lasthandoff: 07/13/2017
 
 现在已创建 IoT 中心。 现已获得完成本教程的其余部分所需的 IoT 中心主机名和 IoT 中心连接字符串。
 
-## 创建设备标识
-<a id="create-a-device-identity" class="xliff"></a>
+## <a name="create-a-device-identity"></a>创建设备标识
 在本部分中，将创建一个 Node.js 控制台应用程序，用于在 IoT 中心的标识注册表中创建设备标识。 设备无法连接到 IoT 中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]中的**标识注册表**部分。 当你运行此控制台应用时，它将生成唯一的设备 ID 和密钥，当设备向 IoT 中心发送设备到云的消息时，可以用于标识设备本身。
 
 1. 新建名为 **createdeviceidentity**的空文件夹。 在命令提示符下使用以下命令，在 **createdeviceidentity** 文件夹中创建一个 package.json 文件。 接受所有默认值：
@@ -96,6 +94,8 @@ ms.lasthandoff: 07/13/2017
       }
     }
     ```
+   [!INCLUDE [iot-hub-pii-note-naming-device](../../includes/iot-hub-pii-note-naming-device.md)]
+
 7. 保存并关闭 **CreateDeviceIdentity.js** 文件。
 8. 若要运行 **createdeviceidentity** 应用程序，请在命令提示符下的 createdeviceidentity 文件夹中执行以下命令：
    
@@ -110,8 +110,7 @@ ms.lasthandoff: 07/13/2017
 > 
 
 <a id="D2C_node"></a>
-## 接收设备到云的消息
-<a id="receive-device-to-cloud-messages" class="xliff"></a>
+## <a name="receive-device-to-cloud-messages"></a>接收设备到云的消息
 在本部分中，将创建一个 Node.js 控制台应用程序，用于读取来自 IoT 中心的设备到云消息。 IoT 中心公开与[事件中心][lnk-event-hubs-overview]兼容的终结点，以便用户可读取设备到云的消息。 为了简单起见，本教程创建的基本读取器不适用于高吞吐量部署。 [Process device-to-cloud messages][lnk-process-d2c-tutorial]（处理设备到云的消息）教程介绍了如何大规模处理设备到云的消息。 [事件中心入门][lnk-eventhubs-tutorial]教程更详细介绍了如何处理来自事件中心的消息，此教程也适用于与 IoT 中心事件中心兼容的终结点。
 
 > [!NOTE]
@@ -174,8 +173,7 @@ ms.lasthandoff: 07/13/2017
     ```
 8. 保存并关闭 **ReadDeviceToCloudMessages.js** 文件。
 
-## 创建模拟设备应用程序
-<a id="create-a-simulated-device-app" class="xliff"></a>
+## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
 在本部分中，将创建一个 Node.js 控制台应用程序，用于模拟向 IoT 中心发送设备到云消息的设备。
 
 1. 创建名为 **simulateddevice** 的空文件夹。 在命令提示符下使用以下命令，在 **simulateddevice** 文件夹中创建一个 package.json 文件。 接受所有默认值：
@@ -248,8 +246,7 @@ ms.lasthandoff: 07/13/2017
 > 
 > 
 
-## 运行应用
-<a id="run-the-apps" class="xliff"></a>
+## <a name="run-the-apps"></a>运行应用
 现在可以运行应用了。
 
 1. 在命令提示符下的 **readdevicetocloudmessages** 文件夹中，运行以下命令开始监视 IoT 中心：
@@ -270,8 +267,7 @@ ms.lasthandoff: 07/13/2017
    
     ![显示发送到 IoT 中心的消息数的 Azure 门户“使用情况”磁贴][43]
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，然后在 IoT 中心的标识注册表中创建了设备标识。 你已使用此设备标识来让模拟设备应用向 IoT 中心发送设备到云的消息。 还创建了用于显示 IoT 中心所接收消息的应用。 
 
 若要继续了解 IoT 中心入门知识并浏览其他 IoT 方案，请参阅：

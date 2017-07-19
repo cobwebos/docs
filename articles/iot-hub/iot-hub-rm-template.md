@@ -20,7 +20,6 @@ ms.openlocfilehash: 5281f6af0e93da7aa1c72891c179afea99c6a26c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/16/2017
 
-
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>使用 Azure Resource Manager 模板创建 IoT 中心 (.NET)
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
@@ -121,6 +120,7 @@ ms.lasthandoff: 05/16/2017
       }
     }
     ```
+  [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 5. 在**服务器资源管理器**中，连接到你的 Azure 订阅，并在 Azure 存储帐户中创建名为 **templates** 的容器。 在“**属性**”面板中，将 **templates** 容器的“**公共读取访问权限**”权限设置为“**Blob**”。
 6. 在“**服务器资源管理器**”中，右键单击 **templates** 容器，然后单击“**查看 Blob 容器**”。 单击“**上载 Blob**”按钮，选择“**parameters.json**”和“**templates.json**”这两个文件，然后单击“**打开**”，将 JSON 文件上载到 **templates** 容器。 包含 JSON 数据的 Blob 的 URL 如下：
    

@@ -1,6 +1,6 @@
 ---
-title: "配置独立群集 | Microsoft 文档"
-description: "本文介绍如何配置独立的或专用的 Service Fabric 群集。"
+title: "配置 Azure Service Fabric 独立群集 | Microsoft Docs"
+description: "了解如何配置独立的或专用的 Service Fabric 群集。"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/17/2017
+ms.date: 06/02/2017
 ms.author: ryanwi
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 8192f9e36ebadd41d93ec3c2fa61b05e342d5bc1
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 3b65f9391a4ff5a641546f8d0048f36386a7efe8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -37,7 +38,7 @@ ms.lasthandoff: 03/30/2017
 
     "name": "SampleCluster",
     "clusterConfigurationVersion": "1.0.0",
-    "apiVersion": "2016-09-26",
+    "apiVersion": "01-2017",
 
 可为 Service Fabric 群集指定任何友好名称，只需将该名称分配到 **name** 变量即可。 **clusterConfigurationVersion** 是群集的版本号；每次升级 Service Fabric 群集时，都应该递增该号码。 不过，应该将 **apiVersion** 保留为默认值。
 
@@ -87,6 +88,10 @@ ClusterConfig.JSON 中的 **properties** 节用于配置群集，如下所示。
     "reliabilityLevel": "Bronze",
 
 请注意，由于一个主节点运行系统服务的一个副本，因此，实现 *Bronze* 可靠性级别，至少需要 3 个主节点；实现 *Silver* 可靠性级别，至少需要 5 个主节点；实现 *Gold* 可靠性级别，至少需要 7 个主节点；实现 *Platinum* 可靠性级别，至少需要 9 个主节点。
+
+如果没有在 clusterConfig.json 中指定 reliabilityLevel 属性，系统将基于你拥有的“Primary NodeType”节点数为你计算出最优化的 reliabilityLevel。 例如，如果有 4 个主节点，reliabilityLevel 将设置为青铜，如果有 5 个此类节点，reliabilityLevel 将设置为白银。 在不久的将来，我们将删除配置可靠性级别的选项，因为群集会自动检测并使用最佳的可靠性级别。
+
+ReliabilityLevel 是可升级的。 可以创建 clusterConfig.json v2，通过[独立群集配置升级](service-fabric-cluster-upgrade-windows-server.md)进行升降级。 还可以升级到没有指定 reliabilityLevel 的 clusterConfig.json v2，以便自动计算 reliabilityLevel。 
 
 ### <a name="diagnostics"></a>诊断
 可以使用 **diagnosticsStore** 节来配置参数，以便能够诊断和排查节点或群集故障，如以下代码片段中所示。 
@@ -183,6 +188,21 @@ ClusterConfig.JSON 中的 **properties** 节用于配置群集，如下所示。
             "value": "4096"
         }]
     }]
+
+### <a name="add-on-features"></a>附加功能
+若要配置附加功能，应将 apiVersion 配置为“2017-04”或更高版本，同时需要配置 addonFeatures：
+
+    "apiVersion": "04-2017",
+    "properties": {
+      "addOnFeatures": [
+          "DnsService",
+          "RepairManager"
+      ]
+    }
+
+### <a name="container-support"></a>容器支持
+若要为 Windows Server 容器和独立群集的 Hyper-V 容器启用容器支持，需要启用“DnsService”附加功能。
+
 
 ## <a name="next-steps"></a>后续步骤
 根据独立群集设置配置一个完整的 ClusterConfig.JSON 文件后，可以遵循[创建独立 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)一文中所述步骤部署群集，然后继续[使用 Service Fabric Explorer 可视化群集](service-fabric-visualizing-your-cluster.md)。

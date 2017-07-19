@@ -12,12 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/24/2017
+ms.date: 06/08/2017
 ms.author: pullabhk;markgal;
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: a42488d618c58b36fa8105c1b22fd32ca615d1b1
-ms.lasthandoff: 03/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: a8df63821af039b7a5ad34f065423701485ee7d8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -26,8 +27,13 @@ ms.lasthandoff: 03/27/2017
 
 可参考下表中所列的信息，排查使用 Azure 备份服务器时遇到的错误。
 
->
->
+
+## <a name="installation-issues"></a>安装问题
+
+| 操作 | 错误详细信息 | 解决方法 |
+|-----------|---------------|------------|
+|安装 | 安装程序无法更新注册表元数据。 此更新失败可能导致存储占用过高。 为避免发生这种情况，请更新 ReFS Trimming 注册表项。 | 调整注册表项 SYSTEM\CurrentControlSet\Control\FileSystem\RefsEnableInlineTrim。 将 Dword 值设置为 1。 |
+|安装 | 安装程序无法更新注册表元数据。 此更新失败可能导致存储占用过高。 为避免发生这种情况，请更新 Volume SnapOptimization 注册表项。 | 使用空字符串值创建注册表项 SOFTWARE\Microsoft Data Protection Manager\Configuration\VolSnapOptimization\WriteIds。 |
 
 ## <a name="registration-and-agent-related-issues"></a>注册和代理相关问题
 | 操作 | 错误详细信息 | 解决方法 |
@@ -43,6 +49,7 @@ ms.lasthandoff: 03/27/2017
 | 配置保护组 | DPM 无法枚举受保护计算机（受保护计算机名称）上的应用程序组件 | 在相关数据源/组件级别的“配置保护组”UI 屏幕上单击“刷新” |
 | 配置保护组 | 无法配置保护 | 如果受保护的服务器是 SQL Server，则请根据[此文](https://technet.microsoft.com/library/hh757977(v=sc.12).aspx)中的说明，检查是否已在受保护计算机上将 sysadmin 角色权限提供给系统帐户 (NTAuthority\System)
 | 配置保护组 | 此保护组的存储池中没有足够的可用空间 | 添加到存储池的磁盘[不应包含分区](https://technet.microsoft.com/library/hh758075(v=sc.12).aspx)。 删除磁盘上的任何现有卷，然后将其添加到存储池|
+| 策略更改 |无法修改备份策略。 错误：由于内部服务错误 [0x29834]，当前操作失败。 请稍后重试操作。 如果该问题仍然存在，请联系 Microsoft 支持部门。 |原因：<br/>当启用安全设置、尝试缩短保持期至低于以上指定的最小值和使用不受支持的版本时，将出现此错误（版本低于 MAB 版本 2.0.9052 和 Azure 备份服务器更新 1）。 <br/>建议的操作<br/> 在这种情况下，应将保留期时段设置为高于指定保留期时间段的最小值（以日计为七天、以周记为四周、以月计为三个月或以年计为一年）以进行策略相关的更新。 （可选）更新备份代理和 Azure 备份服务器来利用所有的安全性更新是首选方法。 |
 
 ## <a name="backup"></a>备份
 | 操作 | 错误详细信息 | 解决方法 |
@@ -54,4 +61,10 @@ ms.lasthandoff: 03/27/2017
 | 备份 | 在线恢复点创建失败 | 如果错误消息指出“未设置此服务器的加密通行短语， 请配置加密通行短语”，则请尝试配置加密通行短语。 如果该操作失败， <br> <ol><li>请检查是否存在暂存位置。 应存在注册表项 HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Config 中提到的名为“ScratchLocation”的位置。</li><li> 如果暂存位置存在，请尝试使用旧的通行短语重新注册。 **配置加密通行短语时，请将其保存在安全的位置**</li><ol>
 | 备份 | BMR 备份失败 | 如果 BMR 非常大，则可将某些应用程序文件移到 OS 驱动器，然后重试 |
 | 备份 | 访问文件/共享文件夹时出错 | 尝试根据[此处](https://technet.microsoft.com/library/hh757911.aspx)提供的建议修改防病毒设置|
+
+## <a name="change-passphrase"></a>更改通行短语
+| 操作 | 错误详细信息 | 解决方法 |
+| --- | --- | --- |
+| 更改通行短语 |输入的安全 PIN 不正确。 请提供正确的安全 PIN 来完成此操作。 |原因：<br/> 当执行关键操作（如更改通行短语）时输入无效或已过期的安全 PIN 将出现此错误。 <br/>建议的操作<br/> 若要完成该操作，必须输入有效的安全 PIN。 若要获取 PIN，登录到 Azure 门户并导航到“恢复服务保管库”>“设置”>“属性”>“生成安全 PIN”。 使用此 PIN 更改通行短语。 |
+| 更改通行短语 |操作失败。 ID：120002 |原因：<br/>当启用安全设置、尝试更改通行短语和使用不受支持的版本时，将出现此错误。<br/>建议的操作<br/> 若要更改通行短语，必须首先更新备份代理至最低版本 2.0.9052 并更新 Azure 备份服务器至最低更新 1，然后输入有效的安全 PIN。 若要获取 PIN，登录到 Azure 门户并导航到“恢复服务保管库”>“设置”>“属性”>“生成安全 PIN”。 使用此 PIN 更改通行短语。 |
 

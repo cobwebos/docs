@@ -12,16 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 06/07/2017
 ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 7e9ca0c15c29fb670b742d939107bb5d4a48245c
-ms.lasthandoff: 03/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 5c2cb05ced7841899c2bd19f627d13b86a4b05cc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/09/2017
 
 
 ---
 # <a name="network-performance-monitor-solution-in-log-analytics"></a>Log Analytics 中的网络性能监视器解决方案
+
+![网络性能监视器符号](./media/log-analytics-network-performance-monitor/npm-symbol.png)
 
 本文档介绍了如何设置和使用 Log Analytics 中的网络性能监视器解决方案，它可以帮助你监视网络的性能，即时检测出网络性能瓶颈。 通过使用网络性能监视器解决方案，可以监视两个网络、子网或服务器之间的丢失和延迟。 网络性能监视器会检测到诸如流量黑洞、路由错误和常规网络监视方法无法检测到的问题之类的网络问题。 只要突破网络链接的阈值，网络性能监视器就会生成警报并进行通知。 系统可以自动获知这些阈值，也可以配置这些阈值以使用自定义警报规则。 网络性能监视器确保及时检测到网络性能问题，然后将问题的根源本地化为特定网络段或设备。
 
@@ -178,7 +181,7 @@ NPM 提供了 ICMP 与 TCP 协议之间的选择，以便于执行综合事务�
 选择要使用的协议之前，请考虑以下信息：
 
 ##### <a name="discovering-multiple-network-routes"></a>发现多个网络路由
-发现多个路由时，TCP 提供更准确的结果，并且它在每个子网中需要使用的代理更少。 例如，一个或两个使用 TCP 的代理可以发现子网之间的所有冗余路径。 但是，你需要多个使用 ICMP 的代理才能达到类似结果。 使用 ICMP，如果两个子网之间有 *N* 个路由，则源或目标子网中需要 5*N* 个以上的代理。
+发现多个路由时，TCP 更为准确，并且在每个子网中需要使用的代理更少。 例如，一个或两个使用 TCP 的代理可以发现子网之间的所有冗余路径。 但是，你需要多个使用 ICMP 的代理才能达到类似结果。 使用 ICMP，如果两个子网之间有 *N* 个路由，则源或目标子网中需要 5*N* 个以上的代理。
 
 ##### <a name="accuracy-of-results"></a>结果的准确性
 路由器和交换机往往将较低的优先级分配给 ICMP ECHO 数据包（与 TCP 数据包相比）。 在某些情况下，当网络设备负载很重时，TCP 获取的数据将更准确地反映应用程序遇到的丢失和延迟情况。 这是因为大部分应用程序流量都是通过 TCP 传送的。 在这种情况下，与 TCP 相比，ICMP 提供的结果准确性较低。
@@ -199,9 +202,9 @@ TCP 协议要求 TCP 数据包发送到目标端口。 NPM 代理使用的默认
 如果在部署期间选择使用 ICMP，可以随时通过编辑默认监视规则来切换到 TCP。
 
 ##### <a name="to-edit-the-default-monitoring-rule"></a>编辑默认监视规则
-1.    导航到“网络性能” > “监视” > “配置” > “监视”，然后单击“默认规则” 。
-2.    滚动到“协议”部分，然后选择要使用的协议。
-3.    单击“保存”以应用设置。
+1.  导航到“网络性能” > “监视” > “配置” > “监视”，然后单击“默认规则” 。
+2.  滚动到“协议”部分，然后选择要使用的协议。
+3.  单击“保存”以应用设置。
 
 即使默认规则使用特定协议，也可以使用其他协议创建新规则。 甚至可以创建混合规则，其中一些规则使用 ICMP，另一些规则使用 TCP。
 
@@ -217,7 +220,7 @@ TCP 协议要求 TCP 数据包发送到目标端口。 NPM 代理使用的默认
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |![是](./media/log-analytics-network-performance-monitor/oms-bullet-green.png) |![是](./media/log-analytics-network-performance-monitor/oms-bullet-green.png) |![否](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |![否](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |![否](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |每隔 5 秒发送 TCP 握手/ICMP ECHO 消息，每隔 3 分钟发送数据 |
 
-解决方案使用综合事务来评估网络的运行状况。 网络中各个点安装的 OMS 代理将会相互交换 TCP 数据包或 ICMP Echo（取决于选择用于监视的协议）。 在此过程中，代理将了解往返时间和丢包情况（如果有）。 每个代理还会定期对其他代理执行跟踪路由，以全部找出网络中必须测试的各种路由。 使用此数据，代理就可以推断出网络延迟和丢包数字。 代理每隔 5 秒钟重复执行测试，聚合数据 3 分钟，然后将数据上载到 Log Analytics 服务。
+解决方案使用综合事务来评估网络的运行状况。 网络中各个点安装的 OMS 代理将会相互交换 TCP 数据包或 ICMP Echo（取决于选择用于监视的协议）。 在此过程中，代理将了解往返时间和丢包情况（如果有）。 每个代理还会定期对其他代理执行跟踪路由，以全部找出网络中必须测试的各种路由。 使用此数据，代理就可以推断出网络延迟和丢包数字。 代理每隔 5 秒钟重复执行测试，聚合数据 3 分钟，然后将数据上传到 Log Analytics 服务。
 
 > [!NOTE]
 > 尽管代理相互频繁地通信，但它们在进行测试时并不会产生大量网络流量。 代理仅仅依靠 TCP SYN-SYNACK-ACK 握手数据包确定丢失和延迟 - 不会交换任何数据包。 在此过程中，代理只在需要时才会进行相互通信，并且会对代理通信拓扑进行优化以减少网络流量。

@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
-ms.author: cephalin
+ms.author: cephalin;aelnably
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 673ea14ff534f237e06dd1d00586dad5736792d5
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 891359514e776e169bf05df7b84d2b99306f98bf
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中备份应用
-利用 [Azure App Service](../app-service/app-service-value-prop-what-is.md) 中的备份和还原功能，可以轻松地手动或按计划创建应用备份。 通过覆盖现有应用或还原为另一应用可将应用还原为先前状态的快照。 
+利用 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md) 中的备份和还原功能，可以轻松地手动或按计划创建应用备份。 通过覆盖现有应用或还原为另一应用可将应用还原为先前状态的快照。 
 
 有关从备份中还原应用的信息，请参阅[在 Azure 中还原应用](web-sites-restore.md)。
 
 <a name="whatsbackedup"></a>
 
 ## <a name="what-gets-backed-up"></a>备份的内容
-App Service 可将以下信息备份到你配置应用使用的 Azure 存储帐户和容器。 
+应用服务可将以下信息备份到你配置应用使用的 Azure 存储帐户和容器。 
 
 * 应用配置
 * 文件内容
@@ -51,7 +51,7 @@ App Service 可将以下信息备份到你配置应用使用的 Azure 存储帐�
 <a name="requirements"></a>
 
 ## <a name="requirements-and-restrictions"></a>要求和限制
-* 备份和还原功能要求 App Service 计划处于标准层或高级层。 有关缩放应用服务计划以使用更高层的详细信息，请参阅[增加 Azure 中的应用](web-sites-scale.md)。  
+* 备份和还原功能要求 应用服务计划处于标准层或高级层。 有关缩放应用服务计划以使用更高层的详细信息，请参阅[增加 Azure 中的应用](web-sites-scale.md)。  
   与标准层相比，高级层每日允许更多备份量。
 * 在与要备份的应用相同的订阅中，需要有一个 Azure 存储帐户和容器。 有关 Azure 存储帐户的详细信息，请参阅本文结尾处的[链接](#moreaboutstorage)。
 * 最多可备份 10 GB 的应用和数据库内容。 如果备份大小超过此限制，将会出错。
@@ -59,32 +59,35 @@ App Service 可将以下信息备份到你配置应用使用的 Azure 存储帐�
 <a name="manualbackup"></a>
 
 ## <a name="create-a-manual-backup"></a>创建手动备份
-1. 在 [Azure 门户](https://portal.azure.com)中，导航到应用的边栏选项卡，选择“设置”，然后选择“备份”。 将显示“备份”边栏选项卡。
+1. 在 [Azure 门户](https://portal.azure.com)中，导航到应用的边栏选项卡，然后选择“备份”。 将显示“备份”边栏选项卡。
    
     ![“备份”页面][ChooseBackupsPage]
    
    > [!NOTE]
-   > 若显示此消息，请单击该消息升级 App Service 计划，然后才能继续备份。
+   > 若显示以下消息，请单击该消息升级应用服务计划，然后才能继续备份。
    > 有关详细信息，请参阅[增加 Azure 中的应用](web-sites-scale.md)。  
-   > ![选择存储帐户](./media/web-sites-backup/01UpgradePlan.png)
+   > ![选择存储帐户](./media/web-sites-backup/01UpgradePlan1.png)
    > 
    > 
-2. 在“备份”边栏选项卡中，单击“存储: 未配置”来配置存储帐户。
+
+2. 在“备份”边栏选项卡中，单击“配置”
+![单击“配置”](./media/web-sites-backup/ClickConfigure1.png)********
+3. 在“备份配置”边栏选项卡中，单击“存储: 未配置”来配置存储帐户。
    
     ![选择存储帐户][ChooseStorageAccount]
-3. 选择“存储帐户”和“容器”来选择备份目标。 该存储帐户必须与要备份的应用属于同一订阅。 如果需要，可在各自的边栏选项卡中创建存储帐户或新容器。 完成后，单击“选择”。
+4. 选择“存储帐户”和“容器”来选择备份目标。 该存储帐户必须与要备份的应用属于同一订阅。 也可在各自的边栏选项卡中新建存储帐户或容器。 完成后，单击“选择”。
    
-    ![选择存储帐户](./media/web-sites-backup/02ChooseStorageAccount1.png)
-4. 在仍处于打开状态的“配置备份设置”边栏选项卡中，单击“数据库设置”、选择备份要包含的数据库（SQL 数据库、MySQL 或 PostgreSQL），然后单击“确定”。  
+    ![选择存储帐户](./media/web-sites-backup/02ChooseStorageAccount1-1.png)
+5. 在仍处于打开状态的“备份配置”边栏选项卡中，可配置“备份数据库”，然后选择备份要包含的数据库（SQL 数据库或 MySQL），然后单击“确定”。  
    
-    ![选择存储帐户](./media/web-sites-backup/03ConfigureDatabase.png)
+    ![选择存储帐户](./media/web-sites-backup/03ConfigureDatabase1.png)
    
    > [!NOTE]
    > 若要使数据库显示在此列表中，其连接字符串必须位于应用中“应用程序设置”边栏选项卡的“连接字符串”部分中。
    > 
    > 
-5. 在“配置备份设置”边栏选项卡中，单击“保存”。    
-6. 在“备份”边栏选项卡的命令栏中，单击“立即备份”。
+6. 在“备份配置”边栏选项卡中，单击“保存”。    
+7. 在“备份”边栏选项卡中，单击“备份”。
    
     ![BackUpNow 按钮][BackUpNow]
    
@@ -95,24 +98,12 @@ App Service 可将以下信息备份到你配置应用使用的 Azure 存储帐�
 <a name="automatedbackups"></a>
 
 ## <a name="configure-automated-backups"></a>配置自动执行的备份
-1. 在“备份”边栏选项卡中，单击“计划: 未配置”。 
+1. 在“备份配置”边栏选项卡中，将“计划备份”设置为“开”。 
    
-    ![选择存储帐户](./media/web-sites-backup/05ScheduleBackup.png)
-2. 在“备份计划设置”边栏选项卡上，将“计划备份”设为“开”，然后根据需要配置备份计划，并单击“确定”。
+    ![选择存储帐户](./media/web-sites-backup/05ScheduleBackup1.png)
+2. 此时将显示备份计划选项，将“计划备份”设置为“开”，然后按需配置备份计划，并单击“确定”。
    
     ![启用自动化的备份][SetAutomatedBackupOn]
-3. 在仍处于打开状态的“配置备份设置”边栏选项卡上单击“存储设置”，然后通过选择“存储帐户”和“容器”来选择备份目标。 该存储帐户必须与要备份的应用属于同一订阅。 如果需要，可在各自的边栏选项卡中创建存储帐户或新容器。 完成后，单击“选择”。
-   
-    ![选择存储帐户](./media/web-sites-backup/02ChooseStorageAccount1.png)
-4. 在“配置备份设置”边栏选项卡中，单击“数据库设置”，选择备份要包含的数据库（SQL 数据库、MySQL 或 PostgreSQL），然后单击“确定”。 
-   
-    ![选择存储帐户](./media/web-sites-backup/03ConfigureDatabase.png)
-   
-   > [!NOTE]
-   > 若要使数据库显示在此列表中，其连接字符串必须位于应用中“应用程序设置”边栏选项卡的“连接字符串”部分中。
-   >  如果使用 [MySQL 应用内产品](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)，由于连接字符串为在“应用程序设置”下的门户中公开，因此无法看见列出的任何数据库
-   > 
-5. 在“配置备份设置”边栏选项卡中，单击“保存”。    
 
 <a name="partialbackups"></a>
 
@@ -128,7 +119,7 @@ App Service 可将以下信息备份到你配置应用使用的 Azure 存储帐�
 ### <a name="exclude-files-from-your-backup"></a>从备份中排除文件
 假定应用中包含的日志文件和静态映像已经过备份且不会发生更改。 这种情况下，可排除这些文件夹和文件，以免其存储在将来的备份中。 若要从备份中排除文件和文件夹，请在应用的 `D:\home\site\wwwroot` 文件夹中创建一个 `_backup.filter` 文件。 指定要在此文件中排除的文件和文件夹列表。 
 
-访问文件的一种简单方式是使用 Kudu。 单击 Web 应用的“高级工具”->“转到”设置访问 Kudu。
+访问文件的一种简单方式是使用 Kudu。 单击 Web 应用的“高级工具”->“转到”设置，访问 Kudu。
 
 ![使用门户的 Kudu][kudu-portal]
 
@@ -169,23 +160,23 @@ App Service 可将以下信息备份到你配置应用使用的 Azure 存储帐�
 <a name="nextsteps"></a>
 
 ## <a name="next-steps"></a>后续步骤
-有关从备份中还原应用的信息，请参阅[在 Azure 中还原应用](web-sites-restore.md)。 还可使用 REST API 备份和还原 App Service 应用（请参阅[使用 REST 备份和还原 App Service 应用](websites-csm-backup.md)）。
+有关从备份中还原应用的信息，请参阅[在 Azure 中还原应用](web-sites-restore.md)。 还可使用 REST API 备份和还原 应用服务应用（请参阅[使用 REST 备份和还原 应用服务应用](websites-csm-backup.md)）。
 
 
 <!-- IMAGES -->
-[ChooseBackupsPage]:./media/web-sites-backup/01ChooseBackupsPage.png
-[ChooseStorageAccount]:./media/web-sites-backup/02ChooseStorageAccount.png
-[IncludedDatabases]:./media/web-sites-backup/03IncludedDatabases.png
-[BackUpNow]:./media/web-sites-backup/04BackUpNow.png
-[BackupProgress]:./media/web-sites-backup/05BackupProgress.png
-[SetAutomatedBackupOn]:./media/web-sites-backup/06SetAutomatedBackupOn.png
-[Frequency]:./media/web-sites-backup/07Frequency.png
-[StartDate]:./media/web-sites-backup/08StartDate.png
-[StartTime]:./media/web-sites-backup/09StartTime.png
-[SaveIcon]:./media/web-sites-backup/10SaveIcon.png
-[ImagesFolder]:./media/web-sites-backup/11Images.png
-[LogsFolder]:./media/web-sites-backup/12Logs.png
-[GhostUpgradeWarning]:./media/web-sites-backup/13GhostUpgradeWarning.png
+[ChooseBackupsPage]: ./media/web-sites-backup/01ChooseBackupsPage1.png
+[ChooseStorageAccount]: ./media/web-sites-backup/02ChooseStorageAccount-1.png
+[IncludedDatabases]: ./media/web-sites-backup/03IncludedDatabases.png
+[BackUpNow]: ./media/web-sites-backup/04BackUpNow1.png
+[BackupProgress]: ./media/web-sites-backup/05BackupProgress.png
+[SetAutomatedBackupOn]: ./media/web-sites-backup/06SetAutomatedBackupOn1.png
+[Frequency]: ./media/web-sites-backup/07Frequency.png
+[StartDate]: ./media/web-sites-backup/08StartDate.png
+[StartTime]: ./media/web-sites-backup/09StartTime.png
+[SaveIcon]: ./media/web-sites-backup/10SaveIcon.png
+[ImagesFolder]: ./media/web-sites-backup/11Images.png
+[LogsFolder]: ./media/web-sites-backup/12Logs.png
+[GhostUpgradeWarning]: ./media/web-sites-backup/13GhostUpgradeWarning.png
 [kudu-portal]:./media/web-sites-backup/kudu-portal.PNG
 
 

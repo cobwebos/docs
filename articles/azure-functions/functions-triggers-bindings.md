@@ -14,13 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 04/14/2017
+ms.date: 05/30/2017
 ms.author: donnam
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: f7d0ed4f43c68c73c967a401509f1a5ccac7da0b
+ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
+ms.openlocfilehash: cc41debb2523df77be4db05817a4c7ac55604439
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/23/2017
 
 
 ---
@@ -190,6 +190,23 @@ let Run(input: WorkItem, log: TraceWriter) =
     json
 ```
 
+## <a name="binding-datatype-property"></a>绑定 dataType 属性
+
+在 .NET中，使用类型来定义输入数据的数据类型。 例如，使用 `string` 绑定到队列触发器的文本和一个要读取为二进制内容的字节数组。
+
+对于动态键入的语言（如 JavaScript），请在绑定定义中使用 `dataType` 属性。 例如，若要以二进制格式读取 HTTP 请求的内容，请使用类型 `binary`：
+
+```json
+{
+    "type": "httpTrigger",
+    "name": "req",
+    "direction": "in",
+    "dataType": "binary"
+}
+```
+
+`dataType` 的其他选项是 `stream` 和 `string`。
+
 ## <a name="resolving-app-settings"></a>解析应用设置
 作为最佳做法，应使用应用设置（而不是配置文件）来管理密钥和连接字符串。 这会限制对这些密钥的访问，并可在公共源代码控制存储库中安全地存储 *function.json*。
 
@@ -307,6 +324,19 @@ Azure Functions 为在绑定中通过 `{rand-guid}` 绑定表达式生成 GUID �
 }
 ```
 
+### <a name="current-time"></a>当前时间
+
+可使用解析为 `DateTime.UtcNow` 的绑定表达式 `DateTime`。
+
+```json
+{
+  "type": "blob",
+  "name": "blobOutput",
+  "direction": "out",
+  "path": "my-output-container/{DateTime}"
+}
+```
+
 ## <a name="bind-to-custom-input-properties-in-a-binding-expression"></a>绑定到绑定表达式中的自定义输入属性
 
 绑定表达式还可以引用在触发器负载本身中定义的属性。 例如，可能想要通过 webhook 中提供的文件名动态绑定到 blob 存储文件。
@@ -377,6 +407,10 @@ module.exports = function (context, info) {
     context.done();
 }
 ```
+
+## <a name="configuring-binding-data-at-runtime"></a>在运行时配置绑定数据
+
+在 C# 和其他 .NET 语言中，可使用命令性绑定模式，而不是 function.json 中的声明式绑定。 当绑定参数需要在运行时（而非在设计时）计算时，命令性绑定很有用。 若要了解详细信息，请参阅 C# 开发人员参考中的[通过命令性绑定在运行时进行绑定](functions-reference-csharp.md#imperative-bindings)。
 
 ## <a name="next-steps"></a>后续步骤
 有关特定绑定的详细信息，请参阅以下文章：

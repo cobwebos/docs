@@ -24,7 +24,7 @@ ms.lasthandoff: 06/08/2017
 
 ---
 # <a name="service-limits-in-azure-search"></a>Azure 搜索中的服务限制
-对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是在“免费”、“基本”还是“标准”定价层上预配 Azure 搜索。[](search-create-service-portal.md)
+对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是在“免费”、“基本”还是“标准”定价层上[预配 Azure 搜索](search-create-service-portal.md)。
 
 * **免费**层是 Azure 订阅随附的多租户共享服务。 它是为现有订阅者提供的选项（无需额外费用），以便可以在注册专用资源前试用服务。
 * **基本**层为小规模生产工作负荷提供专用计算资源。

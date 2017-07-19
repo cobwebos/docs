@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/12/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 2cdfbadfc4cc28afe34b4d558f40bba6451f7388
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: bf45f4c80c73ab47698a39e310324e34a3e21e67
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -144,6 +145,7 @@ Azure 逻辑应用提供将流程自动化为一系列步骤的方法。 逻辑�
    1. 选择创建的队列，然后向“最大消息计数”输入 `175`
 
       ![在逻辑应用中，为服务总线连接指定最大消息计数](media/iot-hub-monitoring-notifications-with-azure-logic-apps/8_specify-maximum-message-count-for-service-bus-connection-logic-app-azure-portal.png)
+   1. 单击“保存”按钮保存所做的更改。
 
 1. 创建 SMTP 服务连接。
    1. 依次单击“新建步骤” > “添加操作”。
@@ -175,3 +177,4 @@ Azure 逻辑应用提供将流程自动化为一系列步骤的方法。 逻辑�
 逻辑应用已创建成功，它可以连接 IoT 中心和邮箱，以监视温度并发送通知。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
+

@@ -16,17 +16,17 @@ ms.date: 05/10/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: cd3b13b9988f51fd3755ced48714fdc18cf1ea3c
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 5f501bdb0a3c478a436d729dfe045ad8e39bd3bb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
 
 # <a name="how-to-partition-and-scale-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中分区和缩放
 
-[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 是一个全局分布式多模型数据库服务，旨在帮助实现快速、可预测的性能并且随着应用程序的增长无缝扩展。 本文概述如何对 Azure Cosmos DB 中的所有数据模型分区，并介绍如何配置 Azure Cosmos DB 容器，以便有效地缩放应用程序。
+[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 是一个全局分布式多模型数据库服务，旨在帮助实现快速、可预测的性能并且随着应用程序的增长无缝扩展。 本文概述如何对 Azure Cosmos DB 中的所有数据模型分区，并介绍如何配置 Azure Cosmos DB 容器，以便有效地缩放应用程序。
 
 在本 Azure Friday 视频中，Scott Hanselman 和 Azure Cosmos DB 首席工程经理 Shireesh Thota 会介绍有关分区和分区键的内容。
 

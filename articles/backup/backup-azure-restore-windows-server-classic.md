@@ -12,11 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/31/2017
+ms.date: 06/14/2017
 ms.author: saurse;trinadhk;markgal;
-translationtype: Human Translation
-ms.sourcegitcommit: be6bc58ab856309004904626db166331b29199a8
-ms.openlocfilehash: aa8ccc15971bed76d7ce8fd554e6a0f89d985fb8
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: e2eac02d194c8a3de653292664cb94a55aafc9b7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -27,18 +29,26 @@ ms.openlocfilehash: aa8ccc15971bed76d7ce8fd554e6a0f89d985fb8
 >
 >
 
-本文介绍如何从备份保管库还原数据。 若要还原数据，请在 Microsoft Azure 恢复服务 (MARS) 代理中使用“恢复数据”向导。 还原数据时，可能会：
+本文介绍如何从备份保管库中恢复数据并将其还原到服务器或计算机。 自 2017 年 3 月起，无法再在经典门户中创建备份保管库。
+
+> [!IMPORTANT]
+> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 从 2017 年 11 月 1 日起：
+>- 其余的所有备份保管库都将自动升级到恢复服务保管库。
+>- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
+>
+
+若要还原数据，请在 Microsoft Azure 恢复服务 (MARS) 代理中使用“恢复数据”向导。 还原数据时，可能会：
 
 * 将数据还原到备份时所在的同一台计算机。
 * 将数据还原到备用计算机。
 
-在 2017 年 1 月，Microsoft 发布了 MARS 代理的预览版更新。 除了 bug 修复外，此更新还启用了“即时还原”，以允许用户将可写入恢复点快照作为恢复卷装载。 然后，用户可以浏览恢复卷，并将文件复制到本地计算机，从而可以有选择地还原文件。
+在 2017 年 1 月，Microsoft 发布了 MARS 代理的预览版更新。 除了提供 Bug 修补程序外，此更新还启用了“即时还原”，允许用户将可写入恢复点快照作为恢复卷装载。 随后，用户便可以浏览恢复卷，并将文件复制到本地计算机，从而选择性地还原文件。
 
 > [!NOTE]
-> 如果想要使用即时还原还原数据，需要安装 [Azure 备份 2017 年 1 月更新](https://support.microsoft.com/en-us/help/3216528?preview)。 此外，必须在支持文章所列的区域中的保管库内保护备份数据。 请查阅 [Azure 备份 2017 年 1 月更新](https://support.microsoft.com/en-us/help/3216528?preview)以获取支持即时还原的区域的最新列表。 即时还原目前**并非**在所有区域都可用。
+> 如果想要使用“即时还原”来还原数据，请安装 [Azure 备份更新（2017 年 1 月）](https://support.microsoft.com/en-us/help/3216528?preview)。 此外，必须在支持文章所列的区域中的保管库内保护备份数据。 请查阅 [Azure 备份更新（2017 年 1 月）](https://support.microsoft.com/en-us/help/3216528?preview)以获取支持“即时还原”的区域的最新列表。 “即时还原”目前**并非**在所有区域都可用。
 >
 
-即时还原可以在 Azure 门户的恢复服务保管库中使用，也可以在经典门户的备份保管库中使用。 如果要使用即时还原，请下载 MARS 更新，并按照提及即时还原的过程进行操作。
+“即时还原”可以在 Azure 门户的恢复服务保管库中使用，也可以在经典门户的备份保管库中使用。 如果要使用即时还原，请下载 MARS 更新，并按照提及即时还原的过程进行操作。
 
 
 ## <a name="use-instant-restore-to-recover-data-to-the-same-machine"></a>使用即时还原将数据恢复到同一台计算机
@@ -161,7 +171,7 @@ ms.openlocfilehash: aa8ccc15971bed76d7ce8fd554e6a0f89d985fb8
     ![加密](./media/backup-azure-restore-windows-server-classic/encryption.png)
 11. 提供输入后，单击“**恢复**”，随即将会触发在提供的目标中还原备份文件的操作。
 
-## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>使用即时还原将数据还原到备用计算机
+## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>使用即时还原将数据还原到另一台计算机
 如果整个服务器断开连接，你仍可以将 Azure 备份中的数据恢复到另一台计算机。 下面的步骤演示了工作流。
 
 这些步骤中使用的术语包括：
@@ -171,7 +181,7 @@ ms.openlocfilehash: aa8ccc15971bed76d7ce8fd554e6a0f89d985fb8
 * *示例保管库* – *源计算机*和*目标计算机*注册到的恢复服务保管库。 <br/>
 
 > [!NOTE]
-> 无法将备份还原到运行较低操作系统版本的目标计算机。 例如，在 Windows 8 或更高版本的计算机上，可以还原在 Windows 7 计算机中创建的备份。 但是，在 Windows 8 计算机上创建的备份无法还原到 Windows 7 计算机。
+> 无法将备份还原到运行较低 操作系统版本的目标计算机。 例如，在 Windows 8 或更高版本的计算机上，可以还原在 Windows 7 计算机中创建的备份。 但是，在 Windows 8 计算机上创建的备份无法还原到 Windows 7 计算机。
 >
 >
 
@@ -209,15 +219,15 @@ ms.openlocfilehash: aa8ccc15971bed76d7ce8fd554e6a0f89d985fb8
 
 10. 在“浏览和恢复文件”窗格中，单击“浏览”打开 Windows 资源管理器并找到所需的文件和文件夹。
 
-    ![加密](./media/backup-azure-restore-windows-server/alternatemachine_browserecover_instantrestore.png)
+    ![Encryption](./media/backup-azure-restore-windows-server/alternatemachine_browserecover_instantrestore.png)
 
 11. 在 Windows 资源管理器中，从恢复卷复制文件和/或文件夹，并将其粘贴到“目标计算机”位置。 可以从恢复卷直接打开或流式传输文件，然后验证是否恢复了正确的版本。
 
-    ![加密](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
+    ![Encryption](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
 
 12. 完成还原文件和/或文件夹后，请在“浏览和恢复文件”窗格中单击“卸载”。 然后单击“是”，确认要卸载该卷。
 
-    ![加密](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
+    ![Encryption](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
 
     > [!Important]
     > 如果不单击“卸载”，恢复卷将保持装载六个小时（从装载时算起）。 装载卷时，不会运行任何备份操作。 计划为在装载卷时运行的任何备份操作将在卸载恢复卷后运行。
@@ -232,9 +242,4 @@ ms.openlocfilehash: aa8ccc15971bed76d7ce8fd554e6a0f89d985fb8
 * [Azure 备份概述](http://go.microsoft.com/fwlink/p/?LinkId=222425)
 * [备份 Azure 虚拟机](backup-azure-vms-introduction.md)
 * [备份 Microsoft 工作负荷](backup-azure-dpm-introduction.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

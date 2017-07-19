@@ -34,6 +34,8 @@
         }
    
     此方法将创建 ID 为 **myFirstDevice**的设备标识。 （如果该设备 ID 已在标识注册表中，代码就只检索现有的设备信息。）然后，应用程序将显示该标识的主密钥。 在模拟设备应用中使用此密钥连接到 IoT 中心。
+[!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
+
 7. 最后，在 **Main** 方法中添加以下行：
    
         registryManager = RegistryManager.CreateFromConnectionString(connectionString);

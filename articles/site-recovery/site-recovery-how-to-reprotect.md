@@ -11,18 +11,20 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: 
-ms.date: 02/13/2017
+ms.workload: storage-backup-recovery
+ms.date: 06/05/2017
 ms.author: ruturajd
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 3156ca5b2b8ba836e94d79a97b28bf591c799b48
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: d77f9c4e6365c95b0ea1bf4d00b9f2e9c35eefde
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
 # <a name="reprotect-from-azure-to-an-on-premises-site"></a>在本地站点中重新保护 Azure 上的虚拟机
+
+
 
 ## <a name="overview"></a>概述
 本文介绍如何将 Azure 虚拟机从 Azure 重新保护到本地站点。 准备好根据[使用 Azure Site Recovery 将 VMware 虚拟机和物理服务器复制到 Azure](site-recovery-failover.md) 将 VMware 虚拟机或 Windows/Linux 物理服务器从本地站点故障转移到 Azure 后，请遵循本文中的说明进行故障回复。
@@ -44,7 +46,7 @@ ms.lasthandoff: 04/27/2017
 
 * 若要故障回复到的虚拟机受 vCenter 服务器管理，需确保拥有在 vCenter 服务器上发现虚拟机所必需的权限。 [了解详细信息](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)。
 
-> [!WARNING] 
+> [!WARNING]
 > 如果本地主目标或虚拟机上存在快照，则重新保护会失败。 可以先删除主目标上的快照，然后再继续重新保护。 在重新保护作业期间，虚拟机上的快照将自动合并。
 
 * 故障回复之前，你需要创建两个其他组件：
@@ -103,6 +105,10 @@ ms.lasthandoff: 04/27/2017
 * [如何安装 Linux 主目标服务器](site-recovery-how-to-install-linux-master-target.md)
 
 
+### <a name="what-datastore-types-are-supported-on-the-on-premises-esxi-host-during-failback"></a>故障回复期间，本地 ESXi 主机支持哪些数据存储类型？
+
+目前，ASR 仅支持故障回复到 VMFS 数据存储。 不支持 vSAN 或 NFS 数据存储。 请注意，可保护在 vSAN 或 NFS 数据存储上运行的虚拟机。 由于此限制，如果使用 NFS 数据存储，则重新保护屏幕中的数据存储选择输入将为空；或会显示 vSAN 数据存储，但在执行作业时失败。 如果打算执行故障回复，则可在本地创建 VMFS 数据存储并故障回复到该数据存储。 此故障回复操作将引发完整下载 VMDK 的操作。 我们会在即将发布的版本中添加对 NFS 和 vSAN 数据存储的支持。
+
 #### <a name="common-things-to-check-after-completing-installation-of-the-master-target-server"></a>在完成主目标服务器的安装后要检查的常见事项
 
 * 如果虚拟机在 vCenter 服务器本地，主目标服务器需要访问本地虚拟机的 VMDK。 需要分配向虚拟机磁盘写入复制数据的访问权限。 确保在具有读写访问权限的主目标主机上装载本地虚拟机的数据存储。
@@ -129,7 +135,7 @@ ms.lasthandoff: 04/27/2017
    * Windows 的默认保留卷是 R 卷。
 
    * Linux 的默认保留卷是 /mnt/retention。
-   
+
    > [!IMPORTANT]
    > 如果使用的是 CS+PS 计算机或规模计算机或 PS+MT 计算机，则需要添加一个新驱动器。 新驱动器应满足上述要求。 如果保留驱动器不存在，则将不会在门户上的选择下拉列表中列出任何内容。 将驱动器添加到本地主目标后，驱动器将需要最多十五分钟才能在门户上的选择项中反映出来。 如果 15 分钟后未显示该驱动器，你还可以刷新配置服务器。
 

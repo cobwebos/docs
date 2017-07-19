@@ -10,6 +10,8 @@
     ![IoT 中心边栏选项卡][2]
    
    1. 在“名称”框中，输入 IoT 中心的名称。 如果该“名称”有效且可用，“名称”框中会出现绿色的勾选标记。
+    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
+   
    1. 选择 [定价和缩放层][lnk-pricing]。 本教程不需要特定的层。 对于本教程，请使用免费 F1 层。
    1. 在“资源组”中，创建资源组或选择现有的资源组。 有关详细信息，请参阅[使用资源组管理 Azure 资源][lnk-resource-groups]。
    1. 在“位置”中，选择托管 IoT 中心的位置。 对于本教程，请选择最近位置。

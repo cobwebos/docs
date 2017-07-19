@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
-translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 6cf48883d397a4b04e707111306d4596cd7af683
-ms.lasthandoff: 03/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 708bf39b69cf798ac44aca65cf7dee6fa9a24591
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/09/2017
 
 
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Log Analytics 中的 Azure Key Vault 分析解决方案
+
+![Key Vault 符号](./media/log-analytics-azure-keyvault/key-vault-analytics-symbol.png)
 
 你可以在 Log Analytics 中使用 Azure 密钥保管库解决方案来查看 Azure 密钥保管库 AuditEvent 日志。
 
@@ -35,8 +38,8 @@ ms.lasthandoff: 03/11/2017
 ## <a name="install-and-configure-the-solution"></a>安装和配置解决方案
 使用以下说明来安装和配置 Azure 密钥保管库解决方案：
 
-1. 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure Key Vault 解决方案。 
-2. 使用[门户](#enable-key-vault-diagnostics-in-the-portal)或 [PowerShell](#enable-key-vault-diagnostics-using-powershell) 为要监视的 Key Vault 资源启用诊断日志记录 
+1. 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure Key Vault 解决方案。
+2. 使用[门户](#enable-key-vault-diagnostics-in-the-portal)或 [PowerShell](#enable-key-vault-diagnostics-using-powershell) 为要监视的 Key Vault 资源启用诊断日志记录
 
 ### <a name="enable-key-vault-diagnostics-in-the-portal"></a>在门户中启用 Key Vault 诊断
 
@@ -62,8 +65,8 @@ $kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
 
 Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId  -WorkspaceId $workspaceId -Enabled $true
 ```
- 
- 
+
+
 
 ## <a name="review-azure-key-vault-data-collection-details"></a>查看 Azure 密钥保管库数据集合详细信息
 Azure Key Vault 解决方案直接从 Key Vault 收集诊断日志。
@@ -94,7 +97,7 @@ Azure Key Vault 解决方案直接从 Key Vault 收集诊断日志。
 ### <a name="to-view-details-for-any-operation"></a>查看任何操作的详细信息
 1. 在“**概述**”页上，单击“**Azure 密钥保管库**”磁贴。
 2. 在“**Azure 密钥保管库**”仪表板中，查看其中一个边栏选项卡中的摘要信息，然后单击一个以在日志搜索页查看其详细信息。
-   
+
     在任何日志搜索页上，都可以按时间、详细结果和日志搜索历史记录查看结果。 你也可以按方面进行筛选以缩减搜索结果。
 
 ## <a name="log-analytics-records"></a>Log Analytics 记录
@@ -116,7 +119,7 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
 | requestUri_s |请求的 URI |
 | 资源 |密钥保管库的名称 |
 | resourceGroup |密钥保管库的资源组 |
-| ResourceId |Azure 资源管理器资源 ID。 对于 Key Vault 日志而言，这是 Key Vault 资源 ID。 |
+| ResourceId |Azure Resource Manager 资源 ID。 对于 Key Vault 日志而言，这是 Key Vault 资源 ID。 |
 | ResourceProvider |*MICROSOFT.KEYVAULT* |
 | ResourceType | VAULTS |
 | ResultSignature |HTTP 状态（例如，确定） |
@@ -142,7 +145,7 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
   - 对于名称中包含 \_o 后缀的任何字段，数据将根据嵌套的字段名称拆分为单个字段。 例如，调用方的 UPN 存储在字段 `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s` 中
    - 字段 CallerIpAddress 已更改为 CallerIPAddress
    - 字段 RemoteIPCountry 不再存在
-4. 删除“Key Vault Analytics (已弃用)”解决方案。 如果使用的是 PowerShell，请使用 `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false` 
+4. 删除“Key Vault Analytics (已弃用)”解决方案。 如果使用的是 PowerShell，请使用 `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
 
 在发生此项更改之前收集的数据不会显示在新解决方案中。 可以继续使用旧类型和字段名称查询此数据。
 
@@ -151,5 +154,4 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)查看 Azure 密钥保管库的详细数据。
-
 

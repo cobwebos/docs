@@ -1,29 +1,27 @@
 ---
 title: "Azure Database for PostgreSQL 的连接库 | Microsoft Docs"
-description: "列出了客户端程序连接到 Azure Database for PostgreSQL 时可以使用的每个库或驱动程序。"
-keywords: "azure 云 postgresql postgres"
+description: "本文介绍了几个库和驱动程序，开发人员可在对应用程序编码以连接和查询 PostgreSQL 的 Azure 数据库时，使用这些库和驱动程序。"
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
-ms.service: postgresql - database
-ms.tgt_pltfrm: portal
+editor: jasonwhowell
+ms.service: postgresql-database
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 06/15/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 6bb3f393a8e9533b86919e9a1ebe3490ab838714
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 7099e26fd749820ab6869c0262e1f97d993ab7b2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/17/2017
 
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 的连接库
-本主题列出了客户端程序连接到 Azure Database for PostgreSQL 时可以使用的每个库或驱动程序。
+本主题列出了几个库和驱动程序，开发人员可在对应用程序编程以连接和查询 PostgreSQL 的 Azure 数据库时，使用这些库和驱动程序。
 
 ## <a name="client-interfaces"></a>客户端接口
-要连接到 PostgreSQL 服务器的大多数语言客户端库为外部项目，并且独立分发。 Windows、Linux 和 Mac 平台支持这些客户端库。 下面列出了一些常用的客户端驱动程序。
+要连接到 PostgreSQL 服务器的大多数语言客户端库为外部项目，并且独立分发。 Windows、Linux 和 Mac 平台支持这些客户端库。 下面列出了一些常用的客户端驱动程序：
+
 | 语言 | 客户端接口 | 其他信息 | **下载** |
 |--------------|----------------------------------------------------------------|-------------------------------------|--------------------------------------------------------------------|
 | Python | [psycopg](http://initd.org/psycopg/) | 符合 DB API 2.0 规范 | [下载](http://initd.org/psycopg/download/) |
@@ -38,7 +36,7 @@ ms.lasthandoff: 05/10/2017
 | C++ | [libpqxx](http://pqxx.org/) | 新样式 C++ 接口 | [下载](http://pqxx.org/download/software/) |
 
 ## <a name="next-steps"></a>后续步骤
-- 有关该服务的概述，请参阅 [Azure Database for PostgreSQL 概述](overview.md)。
-- 有关服务器的详细信息，请参阅 [Azure Database for PostgreSQL 服务器](concepts-servers.md)。
-- 若要创建第一个 PostgreSQL 服务器，请参阅[在 Azure 门户中创建 Azure Database for PostgreSQL](quickstart-create-server-database-portal.md)。
+使用所选语言阅读这些快速入门，了解如何连接并查询用于 PostgreSQL 的 Azure 数据库：
+
+[Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [.NET (C#)](./connect-csharp.md)
 

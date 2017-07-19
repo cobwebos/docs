@@ -1,6 +1,6 @@
 ---
-title: "将数据移入/移出 Azure SQL 数据仓库 | Microsoft Docs"
-description: "了解如何使用 Azure 数据工厂将数据移入和移出 Azure SQL 数据仓库"
+title: "从 Azure SQL 数据仓库复制数据/将数据复制到 Azure SQL 数据仓库| Microsoft Docs"
+description: "了解如何使用 Azure 数据工厂从 Azure SQL 数据仓库复制数据/将数据复制到 Azure SQL 数据仓库"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 06/04/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 02c5b7c8932a08bac4bc9e89bd7df3b3e5c57f94
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: bf4c327804e0e9d40512adacd7f13db56b799508
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/10/2017
 
 
 ---
-# <a name="move-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移出或移入 Azure SQL 数据仓库
+# <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 Azure SQL 数据仓库复制数据/将数据复制到 Azure SQL 数据仓库
 本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出 Azure SQL 数据仓库。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。  
 
 > [!TIP]
@@ -192,7 +192,7 @@ SQL 数据仓库 PolyBase 直接支持作为源并具有特定文件格式要求
 1. **源链接服务**的类型为：**AzureStorage** 或**使用服务主体身份验证的 AzureDataLakeStore**。  
 2. **输入数据集**的类型为：**AzureBlob** 或 **AzureDataLakeStore**，`type` 属性下的格式类型为 **OrcFormat** 或 **TextFormat**，其配置如下：
 
-   1. `rowDelimiter` 必须是 **\n**。
+   1. `rowDelimiter` 必须是 \n。
    2. `nullValue` 设置为**空字符串** ("")，或者 `treatEmptyAsNull` 设置为“true”。
    3. `encodingName` 设置为“utf-8”，即**默认**值。
    4. 未指定 `escapeChar`、`quoteChar`、`firstRowAsHeader` 和 `skipLineCount`。
@@ -328,13 +328,13 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 
 [!INCLUDE [data-factory-type-repeatability-for-sql-sources](../../includes/data-factory-type-repeatability-for-sql-sources.md)]
 
-### <a name="type-mapping-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的类型映射
+## <a name="type-mapping-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的类型映射
 如[数据移动活动](data-factory-data-movement-activities.md)一文中所述，复制活动通过以下 2 步方法执行从源类型到接收器类型的自动类型转换：
 
 1. 从本机源类型转换为 .NET 类型
 2. 从 .NET 类型转换为本机接收器类型
 
-将数据移入和移出 Azure SQL、SQL Server、Sybase 时，会使用以下从 SQL 类型到 .NET 类型的映射，反之亦然。
+将数据移入和移出 Azure SQL 数据仓库时，会使用以下从 SQL 类型到 .NET 类型的映射以及从 .NET 类型到 SQL 类型的映射。
 
 此映射与[用于 ADO.NET 的 SQL Server 数据类型映射](https://msdn.microsoft.com/library/cc716729.aspx)相同。
 

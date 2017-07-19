@@ -12,21 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2017
+ms.date: 06/19/2017
 ms.author: v-jysur
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 0aa41bbc0e0135737d352553607f48a39757bcc3
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 54974ef06efdae69ddbfa12b1ba9278b48b113d3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
 # <a name="centrally-manage-itsm-work-items-using-it-service-management-connector-preview"></a>使用 IT Service Management Connector（预览）集成管理 ITSM 工作项
 
+![IT Service Management Connector 符号](./media/log-analytics-itsmc/itsmc-symbol.png)
+
 可以使用 OMS Log Analytics 中的 IT Service Management Connector (ITSMC) 来集中监视和管理所有 ITSM 产品/服务中的工作项。
 
-IT Service Management Connector 可将现有的 IT 服务管理 (ITSM) 产品和服务与 OMS Log Analytics 相集成。  该解决方案与 ITSM 产品/服务双向集成，为 OMS 用户提供在 ITSM 解决方案中创建事件或警报的选项。 该连接器还可将 ITSM 解决方案中的事件和更改请求等数据导入 OMS Log Analytics。
+IT Service Management Connector 可将现有 IT 服务管理 (ITSM) 产品和服务与 OMS Log Analytics 集成。  该解决方案与 ITSM 产品/服务双向集成，为 OMS 用户提供在 ITSM 解决方案中创建事件或警报的选项。 该连接器还可将 ITSM 解决方案中的事件和更改请求等数据导入 OMS Log Analytics。
 
 使用 IT Service Management Connector 可以：
 
@@ -56,6 +58,12 @@ IT Service Management Connector 可将现有的 IT 服务管理 (ITSM) 产品和
 
 ![已连接 ITSMC](./media/log-analytics-itsmc/itsmc-overview-solution-in-connected-sources.png)
 
+> [!NOTE]
+
+> 默认情况下，IT Service Management Connector 每隔 24 小时刷新一次连接的数据。 若要立即刷新连接的数据以获取执行的任何编辑或模板更新，可单击连接旁边显示的“刷新”按钮。
+
+ ![ITSMC 刷新](./media/log-analytics-itsmc/itsmc-connection-refresh.png)
+
 ## <a name="management-packs"></a>管理包
 此解决方案不需要任何管理包。
 
@@ -73,11 +81,14 @@ IT Service Management Connector 支持以下 ITSM 产品/服务：
 
 ## <a name="using-the-solution"></a>使用解决方案
 
-将 OMS IT Service Management Connector 连接到 ITSM 服务后，Log Analytics 将开始从连接的 ITSM 产品/服务收集数据。
+将 OMS IT Service Management Connector 连接到 ITSM 服务后，Log Analytics 服务即会开始从连接的 ITSM 产品/服务收集数据。
 
 > [!NOTE]
-> - IT Service Management Connector 解决方案导入的数据以名为 **ServiceDesk_CL** 的事件形式显示在 Log Analytics 中。
+> - IT Service Management Connector 解决方案导入的数据在 Log Analytics 中显示为名为 **ServiceDesk_CL** 的事件。
 - 事件包含一个名为 **ServiceDeskWorkItemType_s** 的字段， 该字段的值可以是事件或更改请求，具体取决于 **ServiceDesk_CL** 事件中包含的工作项数据。
+
+## <a name="input-data"></a>输入数据
+从 ITSM 产品/服务导入的工作项。
 
 以下信息显示 IT Service Management Connector 收集的数据示例：
 
@@ -144,7 +155,54 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 说明
 - 计算机
 
-ITSM 数据的示例 Log Analytics 屏幕：
+## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow 事件的输出数据
+
+| OMS 字段 | ITSM 字段 |
+|:--- |:--- |
+| ServiceDeskId_s| Number |
+| IncidentState_s | 状态 |
+| Urgency_s |紧急性 |
+| Impact_s |影响|
+| Priority_s | Priority |
+| CreatedBy_s | 打开者 |
+| ResolvedBy_s | 解决者|
+| ClosedBy_s  | 关闭者 |
+| Source_s| 联系类型 |
+| AssignedTo_s | 已分配到  |
+| Category_s | 类别 |
+| Title_s|  简短说明 |
+| Description_s|  说明 |
+| CreatedDate_t|  已打开 |
+| ClosedDate_t| closed|
+| ResolvedDate_t|已解决|
+| 计算机  | 配置项 |
+
+## <a name="output-data-for-a-servicenow-change-request"></a>ServiceNow 更改请求的输出数据
+
+| OMS 字段 | ITSM 字段 |
+|:--- |:--- |
+| ServiceDeskId_s| Number |
+| CreatedBy_s | 请求者 |
+| ClosedBy_s | 关闭者 |
+| AssignedTo_s | 已分配到  |
+| Title_s|  简短说明 |
+| Type_s|  类型 |
+| Category_s|  类别 |
+| CRState_s|  状态|
+| Urgency_s|  紧急性 |
+| Priority_s| Priority|
+| Risk_s| 风险|
+| Impact_s| 影响|
+| RequestedDate_t  | 请求日期 |
+| ClosedDate_t | 关闭日期 |
+| PlannedStartDate_t  |     计划开始日期 |
+| PlannedEndDate_t  |   计划结束日期 |
+| WorkStartDate_t  | 实际开始日期 |
+| WorkEndDate_t | 实际结束日期|
+| Description_s | 说明 |
+| 计算机  | 配置项 |
+
+**ITSM 数据的示例 Log Analytics 屏幕：**
 
 ![Log Analytics 屏幕](./media/log-analytics-itsmc/itsmc-overview-sample-log-analytics.png)
 
@@ -207,6 +265,22 @@ IT Service Management Connector 目前支持与服务映射解决方案集成。
 4. 在“联系人类型”、“影响”、“紧急性”、“类别”和“子类别”文本框中提供相应的值，然后单击“创建”。
 
 将在 ITSM 中创建该工作项，在 OMS 中也可以查看它。
+
+## <a name="troubleshoot-itsm-connections-in-oms"></a>在 OMS 中对 ITSM 连接进行故障排除
+1.  如果从连接源的 UI 建立连接失败，并收到 **Error in saving connection**（保存连接出错）消息，请执行以下操作：
+ - 对于 ServiceNow、Cherwell 和 Provance 连接，请确保正确输入每个连接的用户名/密码和客户端 ID/客户端密码。 如果错误仍然存在，请检查在相应 ITSM 产品中是否拥有建立连接的足够权限。
+ - 对于 Service Manager，确保成功部署 Web 应用并创建混合连接。 若要验证是否已成功建立与本地 Service Manager 计算机的连接，请访问建立[混合连接](log-analytics-itsmc-connections.md#configure-the-hybrid-connection)文档中详细介绍的 Web 应用 URL。
+
+2.  如果未在 OMS 中同步来自 ServiceNow 的数据，请确保 ServiceNow 实例不处于休眠状态。 这种情况可能会在 ServiceNow 开发实例处于空闲状态时偶尔发生。 否则，请报告问题。
+3.  如果从 OMS 触发警报但未在 ITSM 产品中创建工作项，或配置项未创建/未链接到工作项，或出于任何一般信息的目的，请执行以下操作：
+ -  OMS 门户中的 IT Service Management Connector 解决方案可用于获取连接/工作项/计算机等的摘要。单击“状态”边栏选项卡中的错误消息，导航到“日志搜索”，然后使用错误消息中的详细信息查看包含错误的连接。
+ - 可使用 *Type=ServiceDeskLog_CL* 直接在**日志搜索**页中查看错误/相关信息。
+
+## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager Web 应用部署故障排除
+1.  如果 Web 应用部署出现任何问题，请确保在订阅中拥有提及的足够权限，能够创建/部署资源。
+2.  如果 **Object reference not set to instance of an object**（对象引用未设置为某个对象的实例）错误消息在运行[脚本](log-analytics-itsmc-service-manager-script.md)时出现，请确保在“用户配置”部分下输入有效的值。
+3.  如果未能创建服务总线中继命名空间，请确保在订阅中注册所需的资源提供程序。 如果未注册，请手动从 Azure 门户创建。 从 Azure 门户[创建混合连接](log-analytics-itsmc-connections.md#configure-the-hybrid-connection)时，也可进行创建。
+
 
 ## <a name="contact-us"></a>联系我们
 

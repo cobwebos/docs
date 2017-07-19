@@ -14,32 +14,31 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 06/13/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 2fd12dd32ed3c8479c7460cbc0a1cac3330ff4f4
-ms.openlocfilehash: 53dcaea155471d47eb61317c52d38524c05e4600
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: 5408bf986b67d420d4d1359961ec83510c97cd05
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
 
-# <a name="tips-for-improving-the-performance-and-reliability-of-azure-functions"></a>提高 Azure Functions 性能和可靠性的技巧
+# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>优化 Azure Functions 的性能和可靠性
 
-##<a name="overview"></a>概述
-
-本文提供实现 Function App 时需考虑的最佳做法集合。 请记住，Function App 是 Azure 应用服务中的应用。 因此，应用服务最佳做法也适用。
+本文为提高函数应用的性能和可靠性提供了指南。 
 
 
-## <a name="avoid-large-long-running-functions"></a>避免使用长时间运行的大型函数
+## <a name="avoid-long-running-functions"></a>避免使用长时间运行的函数
 
-长时间运行的大型函数可能会引起意外超时问题。 由于含有许多 Node.js 依赖项，函数规模可能会很大。 导入这些依赖项会导致加载时间增加，引起意外的超时问题。 Node.js 依赖项可由代码中的多个 `require()` 语句进行显式加载。 依赖项也可能是隐式的，具体取决于代码加载的具有其内部依赖项的单个模块。  
+长时间运行的大型函数可能会引起意外超时问题。 函数规模可能因含有许多 Node.js 依赖项而变大。 导入依赖项也会导致加载时间增加，引起意外的超时问题。 显式和隐式加载依赖项。 由代码加载的单个模块可能会加载自己的附加模块。  
 
-尽可能将大型函数重构为可协同工作且返回快速响应的较小函数集。 例如，webhook 或 HTTP 触发器函数可能需要在特定时间限制内确认响应。 可将 HTTP 触发器有效负载传递到由队列触发器函数处理的队列。 此方法允许延迟实际工作并返回即时响应。 Webhook 通常都需要即时响应。
+尽可能将大型函数重构为可协同工作且快速返回响应的较小函数集。 例如，webhook 或 HTTP 触发器函数可能需要在特定时间限制内确认响应；webhook 需要快速响应，这很常见。 可将 HTTP 触发器有效负载传递到由队列触发器函数处理的队列。 此方法允许延迟实际工作并返回即时响应。
 
 
-## <a name="cross-function-communication"></a>跨函数通信。
+## <a name="cross-function-communication"></a>跨函数通信
 
 集成多个函数时，将存储队列用于跨函数通信通常是最佳做法。  主要原因是因为存储队列成本更低、更易预配。 
 
@@ -50,7 +49,6 @@ ms.lasthandoff: 03/01/2017
 对于支持大容量通信，事件中心十分有用。
 
 
-
 ## <a name="write-functions-to-be-stateless"></a>将函数编写为无状态 
 
 如有可能，函数应为无状态和幂等。 将任何所需的状态信息与用户的数据相关联。 例如，正在处理的排序可能具有关联的 `state` 成员。 函数本身保持无状态时，该函数可根据该状态处理排序。 
@@ -58,7 +56,7 @@ ms.lasthandoff: 03/01/2017
 对于计时器触发器，特别建议采用幂等函数。 例如，如果有必须每天运行一次的内容，则编写它，使它可在一天内的任何时间运行，并生成相同的结果。 某天没有任何工作时，可退出该函数。 此外，如果未能完成以前的运行，则下次运行应从中断的位置继续运行。
 
 
-## <a name="write-defensive-functions"></a>编写防御函数。
+## <a name="write-defensive-functions"></a>编写防御函数
 
 假定任何时候函数都可能会遇到异常。 设计函数，使其具有在下次执行期间从上一失败点继续执行的能力。 请考虑需执行以下操作的方案：
 
@@ -74,7 +72,7 @@ ms.lasthandoff: 03/01/2017
 利用已为 Azure Functions 平台中使用的组件提供的防御措施。 有关示例，请参阅 [Azure 存储队列触发器](functions-bindings-storage-queue.md#trigger)文档中的**处理有害队列消息**。
  
 
-## <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>请勿在同一 Function App 中混合测试和生产代码。
+## <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>请勿在同一函数应用中混合测试和生产代码
 
 Function App 中的各函数共享资源。 例如，共享内存。 如果生产中使用的是 Function App，则请勿向其添加与测试相关的函数和资源。 生产代码执行期间，这可能会导致意外的开销。
 
@@ -92,18 +90,15 @@ Function App 中的各函数共享资源。 例如，共享内存。 如果生�
 
 ## <a name="use-async-code-but-avoid-taskresult"></a>使用异步代码，但避免使用 Task.Result
 
-异步编程是推荐的最佳做法。 但请始终避免引用 `Task.Result` 属性。 此方法实质上是对另一线程的锁上执行忙-等待操作。 持有锁可能会导致出现死锁。
+异步编程是推荐的最佳做法。 但请始终避免引用 `Task.Result` 属性。 这种方法会导致线程耗尽。
 
 
-
+[!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅以下资源：
 
-* [Azure Functions 开发人员参考](functions-reference.md)
-* [Azure Functions C# 开发人员参考](functions-reference-csharp.md)
-* [Azure Functions F# 开发人员参考](functions-reference-fsharp.md)
-* [Azure Functions NodeJS 开发人员参考](functions-reference-node.md)
-* [模式和实践 HTTP 性能优化](https://github.com/mspnp/performance-optimization/blob/master/ImproperInstantiation/docs/ImproperInstantiation.md)
+由于 Azure Functions 使用 Azure 应用服务，用户还应该了解应用服务准则。
+* [模式和实践 HTTP 性能优化](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)
 
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/23/2017
+ms.date: 06/16/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: ce90e15108ace97d86e7180d79e38652e1be9872
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 4ce302095fc36f046785ac45d1a9452de321113c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -46,7 +46,10 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 
 遵循以下步骤添加要收集的新 Windows 性能计数器。
 
-1. 按照 *object(instance)\counter* 格式在文本框中键入计数器的名称。  开始键入时，将会显示通用计数器的匹配列表。  可以选择列表中的计数器或者键入自己的计数器。  还可以通过指定 *object\counter* 返回特定计数器的所有实例。
+1. 按照 *object(instance)\counter* 格式在文本框中键入计数器的名称。  开始键入时，将会显示通用计数器的匹配列表。  可以选择列表中的计数器或者键入自己的计数器。  还可以通过指定 *object\counter* 返回特定计数器的所有实例。  
+
+    在从命名实例中收集 SQL Server 性能计数器时，所有命名实例计数器以 MSSQL$ 开头，并且后面接实例的名称。  例如，若要从命名 SQL 实例 INST2 的数据库性能对象收集所有数据库的“日志缓存命中率”计数器，请指定 `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`。 
+ 
 2. 单击 **+** 或按 **Enter** 将计数器添加到列表中。
 3. 添加计数器后，计数器将把 10 秒作为“**采样间隔**”的默认时间。  如果想要降低收集的性能数据的存储要求，可以将此值更改为更高值，最高可达 1800 秒（30 分钟）。
 4. 添加完计数器后，单击屏幕顶部的“**保存**”按钮保存配置。
@@ -217,6 +220,7 @@ Log Analytics 以指定的采样间隔在已安装相应计数器的所有代理
 | Type=Perf CounterName="% Processor Time" InstanceName="_Total"  &#124; measure avg(CounterValue) by Computer Interval 1HOUR |每小时所有计算机 CPU 使用率的平均值 |
 | Type=Perf Computer="MyComputer" CounterName=%* InstanceName=_Total &#124; measure percentile70(CounterValue) by CounterName Interval 1HOUR |每小时特定计算机的每个 % 百分比计数器的第 70 百分位数 |
 | Type=Perf CounterName="% Processor Time" InstanceName="_Total"  (Computer="MyComputer") &#124; measure min(CounterValue), avg(CounterValue), percentile75(CounterValue), max(CounterValue) by Computer Interval 1HOUR |每小时特定计算机的 CPU 使用率的平均值、最小值、最大值和第 75 百分位数 |
+| Type=Perf ObjectName="MSSQL$INST2:Databases" InstanceName=master | 所有性能数据来自命名 SQL Server 实例 INST2 的 master 数据库的数据库性能对象。  
 
 ## <a name="viewing-performance-data"></a>查看性能数据
 运行性能数据的日志查询时，默认情况下将显示**列表**视图。  若要以图像形式查看数据，单击“**指标**”。  若要详细查看图形，单击计数器旁的 **+**。  

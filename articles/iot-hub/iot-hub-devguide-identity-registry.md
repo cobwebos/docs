@@ -16,10 +16,10 @@ ms.date: 05/04/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 25183c6c3c69f7d4c2872252197e2dc8662fefd4
+ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.openlocfilehash: 6a69dc900eee2f539a2b1740c4e89132e2bd6db7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/06/2017
 
 
 ---
@@ -28,6 +28,8 @@ ms.lasthandoff: 05/10/2017
 ## <a name="overview"></a>概述
 
 每个 IoT 中心都有一个标识注册表，存储允许连接到 IoT 中心的设备的相关信息。 IoT 中心的标识注册表中必须先有设备的条目，然后该设备才能连接到 IoT 中心。 设备还必须基于标识注册表中存储的凭据向 IoT 中心进行身份验证。
+
+标识注册表中存储的设备 ID 区分大小写。
 
 概括地说，标识注册表是支持 REST 的设备标识资源集合。 向此标识注册表中添加条目时，IoT 中心将在服务中创建一组每设备资源，如包含未送达云到设备消息的队列。
 
@@ -177,7 +179,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 * [IoT 中心终结点][lnk-endpoints]，介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
 * [限制和配额][lnk-quotas]介绍了适用于 IoT 中心服务的配额，以及使用服务时预期会碰到的限制行为。
 * [Azure IoT 设备和服务 SDK][lnk-sdks] 列出了开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
-* [设备克隆和作业的 IoT 中心查询语言][lnk-query]介绍了可用来从 IoT 中心检索设备克隆和作业相关信息的 IoT 中心查询语言。
+* [设备孪生、作业和消息路由的 IoT 中心查询语言][lnk-query]一文介绍了可用于从 IoT 中心检索设备孪生和作业相关信息的 IoT 中心查询语言。
 * [IoT 中心 MQTT 支持][lnk-devguide-mqtt]提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
 ## <a name="next-steps"></a>后续步骤

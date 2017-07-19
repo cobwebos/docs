@@ -13,18 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2017
+ms.date: 05/30/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 06a97b48fed8f80679632f5c0320d4dd73b8e1e2
-ms.lasthandoff: 03/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 6032263848c469ce2f416306e5c91c29f4cb30e4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/02/2017
 
 
 ---
 # <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-the-classic-deployment-model"></a>捕获使用经典部署模型创建的 Azure Windows 虚拟机的映像。
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 有关 Resource Manager 模型的信息，请参阅[为 Azure 中运行的 Windows VM 创建副本](../../virtual-machines-windows-vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 有关资源管理器模型信息，请参阅[在 Azure 中捕获通用 VM 的托管映像](../capture-image-resource.md)。
 
 本文将演示如何捕获运行 Windows 的 Azure 虚拟机，可以将它用作映像来创建其他虚拟机。 此映像包含操作系统磁盘和任何附加到虚拟机的数据磁盘。 由于其不包括网络配置，因此创建使用此映像的其他虚拟机时，需设置网络配置。
 
@@ -55,7 +56,7 @@ Azure 将映像存储在“VM 映像(经典)”下，这是查看所有 Azure �
    * 单击 **“确定”**。
 
    ![运行 Sysprep](./media/capture-image/SysprepGeneral.png)
-5. Sysprep 将关闭虚拟机，这会在 Azure 经典门户中将虚拟机的状态更改为“已停止”。
+5. Sysprep 将关闭虚拟机，这会在 Azure 门户中将虚拟机的状态更改为“已停止”。
 6. 在 Azure 门户中，单击“虚拟机(经典)”，然后选择要捕获的虚拟机。 查看“更多服务”时，“VM 映像(经典)”组在“计算”下列出。
 
 7. 在命令栏中，单击“捕获”。

@@ -12,14 +12,14 @@ ms.devlang: cpp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/18/2017
+ms.date: 06/07/2017
 ms.author: andbuc
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 38fd72fda6ea5d03d72c950803b09dd0b9e34fe4
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: b02d79fcd9cd2a2ef0041aac4e85528263c8d58a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -27,68 +27,62 @@ ms.lasthandoff: 05/18/2017
 
 [!INCLUDE [iot-hub-iot-edge-getstarted-selector](../../includes/iot-hub-iot-edge-getstarted-selector.md)]
 
-## <a name="how-to-build-the-sample"></a>如何生成示例
-
-开始之前，必须[设置开发环境][lnk-setupdevbox]，以便在 Linux 上使用 SDK。
-
-1. 打开 shell。
-1. 浏览到本地 **iot-edge** 存储库副本中的根文件夹。
-1. 运行 **tools/build.sh** 脚本。 此脚本使用 **cmake** 实用工具在 **iot-edge** 存储库本地副本的根文件夹中创建一个名为 **build** 的文件夹，并生成一个生成文件。 然后，该脚本将生成解决方案并跳过单元测试和端到端测试。 如果想要生成并运行单元测试，请添加 **--run-unittests** 参数。 如果想要生成并运行端到端测试，请添加 **--run-e2e-tests**。
-
-> [!NOTE]
-> 每次运行 **build.sh** 脚本时，都会删除 **iot-edge** 存储库本地副本的根文件夹中的 **build** 文件夹并重新生成。
+[!INCLUDE [iot-hub-iot-edge-install-build-linux](../../includes/iot-hub-iot-edge-install-build-linux.md)]
 
 ## <a name="how-to-run-the-sample"></a>如何运行示例
 
-1. **build.sh** 脚本在 **iot-edge** 存储库的本地副本内的 **build** 文件夹中生成输出。 该输出包括此示例中使用的两个 IoT Edge 模块。
+**build.sh** 脚本在 **iot-edge** 存储库的本地副本内的 **build** 文件夹中生成输出。 该输出包括此示例中使用的两个 IoT Edge 模块。
 
-    生成脚本将 **liblogger.so** 放在 **build/modules/logger/** 文件夹中，将 **libhello\_world.so** 放在 **build/modules/hello_world/** 文件夹中。 按以下示例 JSON 设置文件中所示，将这些路径用于 **module path** 值。
-1. hello\_world\_sample 过程使用 JSON 配置文件的路径作为命令行参数。 以下示例 JSON 文件在 SDK 存储库的以下路径中提供：**samples/hello\_world/src/hello\_world\_lin.json**。 除非修改了生成脚本，将 IoT Edge 模块或示例可执行文件放置在非默认位置，否则，此配置文件可按原样工作。
+生成脚本将 **liblogger.so** 放在 **build/modules/logger/** 文件夹中，将 **libhello\_world.so** 放在 **build/modules/hello_world/** 文件夹中。 按以下示例 JSON 设置文件中所示，将这些路径用于 module path 值。
 
-   > [!NOTE]
-   > 模块路径相对于从中启动 hello\_world\_sample 可执行文件的当前工作目录，而不是可执行文件所在的目录。 示例 JSON 配置文件默认为在当前工作目录中写入“log.txt”。
+hello\_world\_sample 过程使用 JSON 配置文件的路径作为命令行参数。 以下示例 JSON 文件在 SDK 存储库的以下路径中提供：**samples/hello\_world/src/hello\_world\_lin.json**。 除非修改了生成脚本，将 IoT Edge 模块或示例可执行文件放置在非默认位置，否则，此配置文件可按原样工作。
 
-    ```json
-    {
-        "modules" :
-        [
-            {
-              "name" : "logger",
-              "loader": {
-                "name": "native",
-                "entrypoint": {
-                  "module.path": "./modules/logger/liblogger.so"
-                }
-              },
-              "args" : {"filename":"log.txt"}
+> [!NOTE]
+> 模块路径相对于从中启动 hello\_world\_sample 可执行文件的当前工作目录，而不是可执行文件所在的目录。 示例 JSON 配置文件默认为在当前工作目录中写入“log.txt”。
+
+```json
+{
+    "modules" :
+    [
+        {
+            "name" : "logger",
+            "loader": {
+            "name": "native",
+            "entrypoint": {
+                "module.path": "./modules/logger/liblogger.so"
+            }
             },
-            {
-                "name" : "hello_world",
-              "loader": {
-                "name": "native",
-                "entrypoint": {
-                  "module.path": "./modules/hello_world/libhello_world.so"
-                }
-              },
-                "args" : null
+            "args" : {"filename":"log.txt"}
+        },
+        {
+            "name" : "hello_world",
+            "loader": {
+            "name": "native",
+            "entrypoint": {
+                "module.path": "./modules/hello_world/libhello_world.so"
             }
-        ],
-        "links":
-        [
-            {
-                "source": "hello_world",
-                "sink": "logger"
-            }
-        ]
-    }
-    ```
-1. 导航到 **build** 文件夹。
+            },
+            "args" : null
+        }
+    ],
+    "links":
+    [
+        {
+            "source": "hello_world",
+            "sink": "logger"
+        }
+    ]
+}
+```
+
+1. 浏览到 iot-edge 存储库本地副本根路径中的“build”文件夹。
+
 1. 运行以下命令：
 
-   `./samples/hello_world/hello_world_sample ./../samples/hello_world/src/hello_world_lin.json`
+    ```sh
+    ./samples/hello_world/hello_world_sample ../samples/hello_world/src/hello_world_lin.json`
+    ```
 
 [!INCLUDE [iot-hub-iot-edge-getstarted-code](../../includes/iot-hub-iot-edge-getstarted-code.md)]
 
-<!-- Links -->
-[lnk-setupdevbox]: https://github.com/Azure/iot-edge/blob/master/doc/devbox_setup.md
 

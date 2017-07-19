@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 06/22/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 90c4cd42aa9dcef2cda4ec66e64393bf474b6a60
+ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
+ms.openlocfilehash: 7be5e5095b8aa6f2ae3d8c0b636883c4ff7ced63
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/22/2017
 
 
 ---
@@ -192,7 +192,7 @@ ms.lasthandoff: 05/11/2017
 1. 在“数据工厂”主页上，单击“复制数据[预览]”磁贴，以在单独的选项卡上启动“复制数据向导”。    
     
     > [!NOTE]
-    >    如果 Web 浏览器卡在“正在授权...”处，请禁用或取消选中“阻止第三方 Cookie 和站点数据”设置，或在保持启用的状态下为 **login.microsoftonline.com** 创建一个例外，然后尝试再次启动该向导。
+    >    如果 Web 浏览器卡在“正在授权...”处，请禁用或取消选中“阻止第三方 Cookie 和站点数据”设置，或在保持启用的状态下为 login.microsoftonline.com 创建一个例外，然后尝试再次启动该向导。
 2. 在“属性”  页中：
     1. 输入 CopyPipeline作为任务名称。 任务名称是数据工厂中管道的名称。
     2. 输入任务的说明（可选）。
@@ -223,16 +223,16 @@ ms.lasthandoff: 05/11/2017
     5. 单击“下一步”。
     ![复制工具 - 选择输入文件或文件夹](./media/data-factory-azure-blob-connector/chose-input-file-folder.png) 
 7. 在“文件格式设置”页上，可以看到分隔符以及向导通过分析文件自动检测到的架构。 
-    1. 确认“文件格式”已设为“文本格式”。 可在下拉列表中看到所有支持的格式。 例如：JSON、Avro、ORC 和 Parquet。 
-    2. 确认“列分隔符”已设为 `Comma (,)`。 可在下拉列表中看到数据工厂支持的其他列分隔符。 还可以指定自定义分隔符。 
-    3. 确认“行分隔符”已设为 `Carriage Return + Line feed (\r\n)`。 可在下拉列表中看到数据工厂支持的其他行分隔符。 还可以指定自定义分隔符。 
-    4. 确认“跳过行计数”已设为“0”。 如果想要跳过文件顶部的几行，请在此处输入数字。 
-    5. 确认未设置“第一数据行包含列名称”。 如果源文件的第一行包含列名称，请选择此选项。 
-    6. 确认未设置“将空列值视为 null”选项。 
-    7. 展开“高级设置”以查看可用的高级选项。 
-    8. 在页面底部，查看 emp.txt 文件的数据的“预览”。 
-    9. 单击底部的“架构”选项卡，查看复制向导通过查看源文件中的数据推断出来的架构。 
-    10. 检查分隔符并预览数据之后，请单击“下一步”。
+    1. 请确认以下选项：a. “文件格式”已设为“文本格式”。 可在下拉列表中看到所有支持的格式。 例如：JSON、Avro、ORC 和 Parquet。
+        b.在“磁贴徽标”下面，选择“删除上传的徽标”。 “列分隔符”已设为 `Comma (,)`。 可在下拉列表中看到数据工厂支持的其他列分隔符。 还可以指定自定义分隔符。
+        c. “行分隔符”已设为 `Carriage Return + Line feed (\r\n)`。 可在下拉列表中看到数据工厂支持的其他行分隔符。 还可以指定自定义分隔符。
+        d. “跳过行计数”已设为“0”。 如果想要跳过文件顶部的几行，请在此处输入数字。
+        e.  未设置“第一数据行包含列名”。 如果源文件的第一行包含列名称，请选择此选项。
+        f. 已设置“将空列值视为 null”选项。
+    2. 展开“高级设置”以查看可用的高级选项。
+    3. 在页面底部，查看 emp.txt 文件的数据的“预览”。
+    4. 单击底部的“架构”选项卡，查看复制向导通过查看源文件中的数据推断出来的架构。
+    5. 检查分隔符并预览数据之后，请单击“下一步”。
     ![复制工具 - 文件格式设置](./media/data-factory-azure-blob-connector/copy-tool-file-format-settings.png)  
 8. 在“目标数据存储”页上，选择“Azure Blob 存储”，然后单击“下一步”。 在本演练中，使用 Azure blob 存储同时作为源和目标数据存储。    
     ![复制工具 - 选择目标数据存储](media/data-factory-azure-blob-connector/select-destination-data-store.png)
@@ -243,13 +243,13 @@ ms.lasthandoff: 05/11/2017
    4. 选择 Azure 存储帐户。 
    5. 单击“下一步”。     
 10. 在“选择输出文件或文件夹”页上： 
-    1. 指定“文件夹路径”为 adfblobconnector/output/{年}/{月}/{日}。 输入 TAB。 
-    2. 对于“年”，请选择“yyyy”。 
-    3. 对于“月”，请确认它已设为“MM”。 
-    4. 对于“日”，请确认它已设为“dd”。 
-    5. 确认“压缩类型”已设为“无”。 
-    6. 确认“复制行为”已设为“合并文件”。 如果已存在具有相同名称的输出文件，新内容将添加到相同文件的末尾。  
-    7. 单击“下一步”。 
+    6. 指定“文件夹路径”为 adfblobconnector/output/{年}/{月}/{日}。 输入 TAB。
+    7. 对于“年”，请选择“yyyy”。
+    8. 对于“月”，请确认它已设为“MM”。
+    9. 对于“日”，请确认它已设为“dd”。
+    10. 确认“压缩类型”已设为“无”。
+    11. 确认“复制行为”已设为“合并文件”。 如果已存在具有相同名称的输出文件，新内容将添加到相同文件的末尾。
+    12. 单击“下一步”。
     ![复制工具 - 选择输出文件或文件夹](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
 11. 在“文件格式设置”页上，查看设置，然后单击“下一步”。 可在此处选择“向输出文件添加标题”。 如果选择该选项，将添加一个标题行，包含源架构的列名称。 查看源的架构时，可以重命名默认列名称。 例如，可以将第一列改为“名字”，而第二列改为“姓氏”。 然后，将生成输出文件和标题，其中这些名称为列名称。 
     ![复制工具 - 目标的文件格式设置](media/data-factory-azure-blob-connector/file-format-destination.png)

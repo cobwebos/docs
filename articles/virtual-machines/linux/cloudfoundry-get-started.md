@@ -16,15 +16,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-translationtype: Human Translation
-ms.sourcegitcommit: 89117c59ae8948eeb32b51a0ecd4fdf0a3a2edd7
-ms.openlocfilehash: d026d6d901374a91864edf9f6ee38d5450e7f179
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: fd51bf9e965d2efd5a6bea9de142ab2ec8d27836
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/20/2017
 
 ---
 
 # <a name="cloud-foundry-on-azure"></a>Azure 上的 Cloud Foundry
 
-Cloud Foundry 是一个开源的平台即服务 (PaaS)，用于构建、部署和运行以各种语言和框架开发的十二因素应用程序。 本文档介绍了在 Azure 上运行 Cloud Foundry 的选项及其入门知识。
+Cloud Foundry 是一种开源平台即服务 (PaaS)，用于生成、部署和操作以各种语言和框架开发的十二因素应用程序。 本文档介绍了在 Azure 上运行 Cloud Foundry 的选项及其入门知识。
 
 ## <a name="cloud-foundry-offerings"></a>Cloud Foundry 产品/服务
 
@@ -66,9 +68,4 @@ Cloud Foundry 非常适合用于开发敏捷软件，其中包括使用持续集
 ## <a name="next-steps"></a>后续步骤
 
 - [部署来自 Azure 应用商店的 Pivotal Cloud Foundry](https://azure.microsoft.com/en-us/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-
+- [将应用部署到 Azure 中的 Cloud Foundry](./cloudfoundry-deploy-your-first-app.md)

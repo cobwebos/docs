@@ -1,6 +1,6 @@
 ---
-title: "检测和诊断 Web 应用问题 - Azure Application Insights | Microsoft Docs"
-description: "分析崩溃，并检测和诊断应用程序中的性能问题"
+title: "AzureApplication Insights for DevOps 概述 | Microsoft Docs"
+description: "了解如何在 DevOps 环境中使用 Application Insights。"
 author: CFreemanwa
 services: application-insights
 documentationcenter: 
@@ -11,30 +11,27 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 06/26/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 05fe4996a8a9c886f2f1b61471dc80550633ecf6
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: c6bfa094f5f06483a9c59a1e0167e5fa7f8f053e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/16/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
-# <a name="detect-triage-and-diagnose-with-application-insights"></a>通过 Application Insights 检测、会审和诊断
+# <a name="overview-of-application-insights-for-devops"></a>Application Insights for DevOps 概述
 
-
-[Application Insights](app-insights-overview.md) 是面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 它有助于了解应用执行情况和处于活动状态时的使用情况。 如果没有问题，它可告知相关情况、帮助评估影响，并帮助确定原因。
+通过 [Application Insights](app-insights-overview.md) 可快速了解应用执行情况和处于活动状态时的使用情况。 如果有问题，它可告知相关情况、帮助评估影响，并帮助确定原因。
 
 以下是一个开发 Web 应用程序的团队的描述：
 
 * *“几天前 ，我们部署了‘次要’修补程序。没有运行广泛测试通过，但遗憾的是，有效负载发生了某些意外更改，致使前端和后端不兼容。很快，服务器异常数激增、警报拉响，我们意识到了情况的严重性。在 Application Insights 门户上单击几下鼠标后，我们从异常调用堆栈中获取了足够信息，缩小了问题范围。我们立即回滚，限制了受损范围。Application Insights 使这部分的开发周期变得简单易行。”*
 
-让我们来看看典型的 Web 开发团队如何使用 Application Insights 进行性能管理。 我们将关注 Fabrikam Bank 中开发联机银行系统 (OBS) 的团队。
+本文关注 Fabrikam Bank 开发网上银行系统（OBS）的团队，了解他们如何使用 Application Insights 快速响应客户并进行更新。  
 
-![银行网站示例](./media/app-insights-detect-triage-diagnose/03-bank.png)
-
-该团队运转的 devOps 周期如下：
+该团队工作的 DevOps 循环如下图所示：
 
 ![DevOps 循环](./media/app-insights-detect-triage-diagnose/00-devcycle.png)
 
@@ -62,9 +59,9 @@ Marcela Markova 是 OBS 团队的高级开发人员，负责监视联机性能�
 
 ![显示在前一段时间运行的 Web 测试](./media/app-insights-detect-triage-diagnose/04-webtests.png)
 
-但更重要的是，有关任何失败的警报将以电子邮件的形式发送到开发团队。 如此一来，他们几乎可在所有客户之前了解相关事项。
+但更重要的是，有关任何故障的警报以电子邮件的形式发送给开发团队。 如此一来，他们几乎可在所有客户之前了解相关事项。
 
-## <a name="monitor-performance-metrics"></a>监视性能指标
+## <a name="monitor-performance"></a>监视性能
 在 Application Insights 的“概述”页上，有一张表格显示各种[关键指标](app-insights-web-monitor-performance.md)。
 
 ![各种指标](./media/app-insights-detect-triage-diagnose/05-perfMetrics.png)
@@ -79,7 +76,7 @@ Marcela 有点担忧服务器响应图表。 该图显示服务器从用户浏�
 
 看起来没有任何资源限制的迹象，因此服务器响应图表中的凸起形状可能就是一个巧合。
 
-## <a name="alerts"></a>警报
+## <a name="set-alerts-to-meet-goals"></a>设置警报以实现目标
 不过，她愿意关注响应时间。 如果时间过长，她希望立即知道。
 
 因此，她设置了[警报](app-insights-metrics-explorer.md)，提示大于典型阈值的响应时间。 这使她确信，如果响应时间较慢，她就能知道。
@@ -88,14 +85,14 @@ Marcela 有点担忧服务器响应图表。 该图显示服务器从用户浏�
 
 可对其他各种指标设置警报。 例如，如果异常计数升高、可用内存降低或客户端请求出现峰值，可收到相关电子邮件。
 
-## <a name="smart-detection-alerts"></a>智能检测警报
+## <a name="stay-informed-with-smart-detection-alerts"></a>随时掌握智能检测警报相关信息
 第二天确实收到了 Application Insights 的警报电子邮件。 但当她打开时，她发现那不是之前设置的响应时间警报。 相反，该邮件告知她，失败的请求数猛增，换句话说就是，返回失败代码的请求数有 500 或更多。
 
 失败的请求是指用户看到了错误，通常是在代码引发异常后出现。 可能会显示一条消息，指出“很抱歉，当前无法更新你的详细信息。” 或者，最糟糕的情况是，堆栈转储将在用户屏幕（经由 Web 服务器）上显示。
 
 这条警报令她大为惊讶 ，因为上一次看到时，失败的请求计数还比较低，让人不用担心。 忙碌的服务器是会有少数失败。
 
-这对她而言也是一点惊喜，因为她不用配置此警报。 事实上，Application Insights 原本已经随附了智能检测。 它自动适应应用的常见失败模式，并“习惯”特定页面上、高负载情况下或与其他指标有关的失败。 它仅在计数超出预期时引发警报。
+这对她而言也是一点惊喜，因为她不用配置此警报。 Application Insights 包括智能检测。 它自动适应应用的常见失败模式，并“习惯”特定页面上、高负载情况下或与其他指标有关的失败。 它仅在计数超出预期时引发警报。
 
 ![主动诊断电子邮件](./media/app-insights-detect-triage-diagnose/21.png)
 
@@ -105,13 +102,13 @@ Marcela 有点担忧服务器响应图表。 该图显示服务器从用户浏�
 
 该电子邮件还显示发生了特殊异常，并且更有趣的是，该失败与调用特定数据库失败有关。 这解释了突然显示错误的原因，即使 Marcela 的团队最近没有部署任何更新。
 
-她选择了数据库团队的领导。 没错，他们在半小时前发布了修补程序，嗯，可能更改了一点架构....
+Marcella 根据此邮件联系数据库团队的领导。 她了解到，他们在半小时前发布了修补程序，可能更改了一点架构...
 
 于是，问题即将解决，这甚至赶在调查日志之前，并且在引发后 15 分钟内解决。 但 Marcela 单击链接，打开了 Application Insights。 它直接打开到失败的请求，她可以在依赖项调用的关联列表中看到失败的数据库调用。
 
 ![失败的请求](./media/app-insights-detect-triage-diagnose/23.png)
 
-## <a name="detecting-exceptions"></a>检测异常
+## <a name="detect-exceptions"></a>检测异常
 稍作设置，[异常](app-insights-asp-net-exceptions.md)将自动报告到 Application Insights。 通过将 [TrackException()](app-insights-api-custom-events-metrics.md#trackexception) 调用插入以下代码，还可以显式捕获它们：  
 
     var telemetry = new TelemetryClient();
@@ -153,30 +150,18 @@ TrackException 用于报告异常，因为它发送堆栈副本。 TrackEvent �
 
 ![在“诊断搜索”中，使用筛选器显示特定类型的数据](./media/app-insights-detect-triage-diagnose/appinsights-333facets.png)
 
-## <a name="monitoring-user-activity"></a>监视用户活动
-如果响应时间始终良好且极少出现异常，则开发团队可转为处理可用性。 他们就可考虑如何提升用户体验，以及如何鼓励更多用户实现所需目标。
 
-例如，用户的典型网站浏览过程反映在清晰的“漏斗图”上。 很多客户要查找不同类型贷款的费率。 其中部分客户要填写报价单。 在获得报价的客户当中，少部分人要进行贷款。
-
-![页面视图计数](./media/app-insights-detect-triage-diagnose/12-funnel.png)
-
-通过思考在哪里失去了最多客户，企业可以了解如何使更多用户继续前进到漏斗底部。 在某些情况下可能会出现用户体验 (UX) 失败，例如“下一步”按钮很难找到或说明不明显。 更有可能的是，客户减少是有更重要的业务原因：可能是贷款利率过高。
-
-无论原因是什么，数据可帮助团队了解用户情况。 可插入更多跟踪调用，了解更多详细信息。 TrackEvent() 可用于计算任何用户操作，涵盖有关个别按钮单击量的具体细节到还清贷款等重要成就。
-
-该团队已习惯掌握关于用户活动的信息。 如今，他们无论什么时候设计一项新功能，都能知道如何获取关于使用情况的反馈。 他们从开始就设计将跟踪调用插入功能。 在每个开发循环中都使用反馈改进功能。
-
-## <a name="proactive-monitoring"></a>主动监视
+## <a name="monitor-proactively"></a>主动监视
 Marcela 并不是坐等警报出现。 每次重新部署后不久，她都会查看 [响应时间](app-insights-web-monitor-performance.md)，观察整体数字和最慢请求表以及异常计数。  
 
 ![响应时间图和服务器响应时间网格。](./media/app-insights-detect-triage-diagnose/09-dependencies.png)
 
 她可以评估每个部署的性能影响，通常是将每周的情况与上一周情况进行比较。 如果情况突然恶化，她就向相关开发人员提出异常。
 
-## <a name="triage"></a>会审
+## <a name="triage-issues"></a>会审问题
 会审即评估问题的严重性和程度，是检测后执行的第一步操作。 我们应该在午夜召集团队吗？ 或者可以留到积压工作的下一个方便间隙吗？ 会审中会出现一些关键问题。
 
-发生的程度是怎样的？ “概述”边栏选项卡上的图表可让我们对此问题有一些了解。 例如，Fabrikam 应用程序在一个晚上生成了四个 Web 测试警告。 在早上看到此图表时，团队可看到确实有一些红点，虽然大多数测试是绿点。 深入研究可用性图表后，明显可以看出，所有这些间歇性问题都源自一个测试位置。 这明显是仅影响一个路由的网络问题，很有可能会自我清理。  
+发生的频率是多少？ “概述”边栏选项卡上的图表可让我们对此问题有一些了解。 例如，Fabrikam 应用程序在一个晚上生成了四个 Web 测试警告。 在早上看到此图表时，团队可看到确实有一些红点，虽然大多数测试是绿点。 深入研究可用性图表后，明显可以看出，所有这些间歇性问题都源自一个测试位置。 这明显是仅影响一个路由的网络问题，很有可能会自我清理。  
 
 相较而言，异常计数或响应时间图中出现显著和稳定提升的情况显然是要担忧的一件事。
 
@@ -186,16 +171,16 @@ Marcela 并不是坐等警报出现。 每次重新部署后不久，她都会�
 
 ![失败的请求和会话图](./media/app-insights-detect-triage-diagnose/10-failureRate.png)
 
-在缓慢响应情况下，将最慢响应请求表与每页的使用频率进行比较。
+缓慢响应时，将最慢响应请求表与每页的使用频率进行比较。
 
 受阻方案有多重要？ 如果是阻止特定用户情景的功能问题，这有很大关系吗？ 如果客户无法支付帐单，这就很严重了；如果他们无法更改屏幕颜色首选项，这或许可以等一下再来。 事件或异常的详细信息或者慢速页面的标识可告知客户在哪里遇到问题。
 
-## <a name="diagnosis"></a>诊断
+## <a name="diagnose-issues"></a>诊断问题
 诊断和调试并不完全一样。 开始跟踪代码前，应大概知道问题发生的原因、位置和时间。
 
 **何时发生？** 事件和指标图提供的历史记录视图使将影响与可能的原因联系起来变得简单。 如果响应时间或异常率间歇性出现峰值，请查看请求计数：如果在同一时间出现峰值，则应该是资源问题。 需要分配更多 CPU 或内存吗？ 或者这是因为无法管理负载的依赖项？
 
-**是我们的原因吗？**  如果特定类型的请求性能突然降低（例如当客户需要账户号声明时），则可能是外部子系统的原因，而非 Web 应用程序的原因。 在指标资源管理器中，选择“依赖项失败率”和“依赖项持续时间率”，然后将它们在过去几小时或几天的历史记录与检测到的问题进行比较。 如果有关联更改，则可能要归咎于外部子系统。  
+**是我们的原因吗？**  如果特定类型的请求性能突然降低（例如当客户需要帐户声明时），则可能是外部子系统的原因，而非 Web 应用程序的原因。 在指标资源管理器中，选择“依赖项失败率”和“依赖项持续时间率”，然后将它们在过去几小时或几天的历史记录与检测到的问题进行比较。 如果有关联更改，则可能要归咎于外部子系统。  
 
 ![依赖项失败和调用依赖项持续时间表](./media/app-insights-detect-triage-diagnose/11-dependencies.png)
 
@@ -207,7 +192,7 @@ Marcela 并不是坐等警报出现。 每次重新部署后不久，她都会�
 
 Fabrikam 的帐户间传输会间歇性出现问题，但只有某些帐户类型是这样。 为了更好地了解发生的事情，他们在代码的关键点中插入了 TrackTrace()，将帐户类型附加为每个调用的属性。 这简化了在“诊断搜索”中只筛选这些跟踪的操作。 他们也将参数值附加为跟踪调用的属性和度量值。
 
-## <a name="dealing-with-it"></a>处理
+## <a name="respond-to-discovered-issues"></a>响应发现的问题
 诊断出问题后，可计划解决。 可能需要回滚到最近更改，或者直接解决。 修复完成后，Application Insights 将告知操作是否成功。  
 
 Fabrikam Bank 开发团队采用比在使用 Application Insights 之前更结构化的方法处理衡量性能。
@@ -215,10 +200,25 @@ Fabrikam Bank 开发团队采用比在使用 Application Insights 之前更结�
 * 他们在 Application Insights“概述”页中根据特定度量值设置性能目标。
 * 他们从开始就设计将性能度量值插入应用程序，例如测量用户通过“漏斗”的指标。  
 
-## <a name="usage"></a>使用情况
-Application Insights 还可用于了解用户对应用执行了什么操作。 应用顺利运行后，该团队需要了解最受欢迎的功能、用户喜欢或难以使用的功能以及他们再次使用应用的频率。 这有助于确定接下来工作的优先级。 作为开发循环的一部分，他们还可以计划测量每个功能的成功程度。 [了解详细信息](app-insights-web-track-usage.md)。
 
-## <a name="your-applications"></a>应用程序
+## <a name="monitor-user-activity"></a>监视用户活动
+如果响应时间始终良好且极少出现异常，则开发团队可转为处理可用性。 他们就可考虑如何提升用户体验，以及如何鼓励更多用户实现所需目标。
+
+Application Insights 还可用于了解用户对应用执行了什么操作。 应用顺利运行后，该团队需要了解最受欢迎的功能、用户喜欢或难以使用的功能以及他们再次使用应用的频率。 这有助于确定接下来工作的优先级。 作为开发循环的一部分，他们还可以计划测量每个功能的成功程度。 
+
+例如，用户的典型网站浏览过程反映在清晰的“漏斗图”上。 很多客户要查找不同类型贷款的费率。 其中部分客户要填写报价单。 在获得报价的客户当中，少部分人要进行贷款。
+
+![页面视图计数](./media/app-insights-detect-triage-diagnose/12-funnel.png)
+
+通过思考在哪里失去了最多客户，企业可以了解如何使更多用户继续前进到漏斗底部。 在某些情况下可能会出现用户体验 (UX) 失败，例如“下一步”按钮很难找到或说明不明显。 更有可能的是，客户减少是有更重要的业务原因：可能是贷款利率过高。
+
+无论原因是什么，数据可帮助团队了解用户情况。 可插入更多跟踪调用，了解更多详细信息。 TrackEvent() 可用于计算任何用户操作，涵盖有关个别按钮单击量的具体细节到还清贷款等重要成就。
+
+该团队已习惯掌握关于用户活动的信息。 如今，他们无论什么时候设计一项新功能，都能知道如何获取关于使用情况的反馈。 他们从开始就设计将跟踪调用插入功能。 在每个开发循环中都使用反馈改进功能。
+
+[阅读有关跟踪使用情况的详细信息](app-insights-usage-overview.md)。
+
+## <a name="apply-the-devops-cycle"></a>应用 DevOps 循环
 这就是一个团队使用 Application Insights 解决个别问题和改进开发周期的方式。 希望本文能够给读者带来一些启发，知道如何借助 Application Insights 在自己的应用程序中进行性能管理。
 
 ## <a name="video"></a>视频

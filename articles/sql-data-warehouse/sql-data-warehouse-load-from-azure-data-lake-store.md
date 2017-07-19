@@ -16,19 +16,16 @@ ms.custom: loading
 ms.date: 01/25/2017
 ms.author: cakarst;barbkess
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: cb2d789a53ee2fa16db8d2553086a18043d4976e
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 6f8d220a64e04b7dfa021aacf68dadf0d55393bf
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
-
-
+ms.lasthandoff: 06/30/2017
 
 ---
 # <a name="load-data-from-azure-data-lake-store-into-sql-data-warehouse"></a>将数据从 Azure Data Lake Store 加载到 SQL 数据仓库中
 本文档提供了使用 PolyBase 从 Azure Data Lake Store (ADLS) 将自己的数据加载到 SQL 数据仓库中所需的所有步骤。
 虽然能够使用外部表对 ADLS 中存储的数据运行即席查询，但最佳做法是，建议将数据导入 SQL 数据仓库。
 估计时间：10 分钟，假定你具备需要完成的先决条件。
->
 在本教程中，你将了解如何：
 
 1. 创建要从 Azure Data Lake Store 加载的外部数据库对象。
@@ -42,12 +39,13 @@ ms.lasthandoff: 05/09/2017
 
 >[!NOTE] 
 > 要从 SQL 数据仓库连接到 Azure Data Lake，需要 Active Directory 应用程序的客户端 ID、密钥和 OAuth2.0 令牌终结点值。 有关如何获取这些值的详细信息可在上面的链接中找到。
+>注意：Azure Active Directory 应用注册使用“应用程序 ID”作为客户端 ID。
 
 * SQL Server Management Studio 或 SQL Server Data Tools，若要下载 SSMS 并进行连接，请参阅[查询 SSMS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-query-ssms)
 
 * Azure SQL 数据仓库，若要创建一个，请遵循：https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision
 
-* 未启用加密的 Azure Data Lake Store。 若要创建一个，请遵循：https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal
+* 启用或未启用加密的 Azure Data Lake Store。 若要创建一个，请遵循：https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal
 
 
 
@@ -81,6 +79,12 @@ WITH
     SECRET = '<key>'
 ;
 
+-- It should look something like this:
+CREATE DATABASE SCOPED CREDENTIAL ADLCredential
+WITH
+    IDENTITY = '536540b4-4239-45fe-b9a3-629f97591c0c@https://login.microsoftonline.com/42f988bf-85f1-41af-91ab-2d2cd011da47/oauth2/token',
+    SECRET = 'BjdIlmtKp4Fpyh9hIvr8HJlUida/seM5kQ3EpLAmeDI='
+;
 ```
 
 

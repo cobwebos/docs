@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: e3a8bc6b11cccf7f6b277e800dbcedcd90e87006
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: 5a6e4431ef25c66e1863a679f0db1363a83f4769
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -44,11 +44,12 @@ ms.lasthandoff: 06/03/2017
 1. [下载并安装 Git](https://git-scm.com/)
 1. [下载并安装 Java 7 JDK 或更高版本](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 1. [下载、安装并启动 MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
-1. [安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 ## <a name="prepare-local-mysql"></a>准备本地 MySQL 
 
@@ -56,7 +57,7 @@ ms.lasthandoff: 06/03/2017
 
 ### <a name="connect-to-mysql-server"></a>连接到 MySQL 服务器
 
-从命令行连接到本地 MySQL 服务器：
+在终端窗口中连接到你的本地 MySQL 服务器。 可使用此终端窗口运行本教程中的所有命令。
 
 ```bash
 mysql -u root -p
@@ -86,7 +87,7 @@ quit
 
 ### <a name="clone-the-sample"></a>克隆示例
 
-通过命令提示符导航到工作目录，然后克隆示例存储库。 
+在终端窗口中导航到工作目录，然后克隆示例存储库。 
 
 ```bash
 git clone https://github.com/azure-samples/mysql-spring-boot-todo
@@ -94,7 +95,7 @@ git clone https://github.com/azure-samples/mysql-spring-boot-todo
 
 ### <a name="configure-the-app-to-use-the-mysql-database"></a>将应用配置为使用 MySQL 数据库
 
-更新 `spring.datasource.password` 以及 spring-boot-mysql-todo/src/main/resources/application.properties 中的值，使用打开 MySQL 命令提示符时使用过的根密码：
+使用打开 MySQL 提示符时所用的根密码更新 `spring.datasource.password` 和 *spring-boot-mysql-todo/src/main/resources/application.properties* 中的值：
 
 ```
 spring.datasource.password=mysqlpass
@@ -109,14 +110,14 @@ cd spring-boot-mysql-todo
 mvnw package spring-boot:run
 ```
 
-打开浏览器并转到 http://localhost:8080，查看正在操作的示例。 向列表添加任务时，请在 MySQL 命令提示符处使用以下 SQL 命令，查看存储在 MySQL 中的数据。
+打开浏览器并转到 http://localhost:8080，查看正在操作的示例。 向列表添加任务时，请在 MySQL 提示符处使用以下 SQL 命令，查看 MySQL 中存储的数据。
 
 ```SQL
 use testdb;
 select * from todo_item;
 ```
 
-在命令提示符处按 `Ctrl`+`C` 停止应用程序。 
+在终端处按 `Ctrl`+`C` 停止应用程序。 
 
 ## <a name="create-an-azure-mysql-database"></a>创建 Azure MySQL 数据库
 

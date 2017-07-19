@@ -13,18 +13,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 06/05/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: e714d3585b78d28aba069464a444162103739657
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 04810ffa33d90d31003d0919c3edb2710fed453c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
-# <a name="azure-cosmos-db-sql-query-cheat-sheet-pdf"></a>Azure Cosmos DB SQL 查询备忘单 PDF
-Azure Cosmos DB SQL 查询备忘单通过在易于打印的 PDF 参考表中显示常见的数据库查询、关键字、内置函数和运算符，帮助快速编写用于 Azure Cosmos DB 数据的查询。 
+# <a name="azure-cosmos-db-documentdb-api-sql-query-cheat-sheet-pdf"></a>Azure Cosmos DB：DocumentDB API SQL 查询备忘单 PDF
+Azure Cosmos DB：DocumentDB API SQL 查询备忘单通过在易于打印的 PDF 参考表中显示常见的数据库查询、关键字、内置函数和运算符，帮助快速编写用于 DocumentDB API 数据的查询。 
 
 Cosmos DB 支持使用 [SQL](documentdb-sql-query.md) 的 JSON 文档的相关性查询、分层查询和空间查询，而无需指定一个架构或辅助索引。 除标准的 ANSI SQL 关键字和运算符之外，Cosmos DB 还支持 JavaScript 用户定义的函数 (UDF)、JavaScript 运算符和大量内置函数。
 

@@ -3,7 +3,7 @@ title: "Azure Cosmos DB 中的一致性级别 | Microsoft Docs"
 description: "Azure Cosmos DB 提供五种一致性级别来帮助你在最终一致性、可用性和延迟之间做出取舍。"
 keywords: "最终一致性, azure cosmos db, azure, Microsoft azure"
 services: cosmos-db
-author: syamkmsft
+author: mimig1
 manager: jhubbard
 editor: cgronlun
 documentationcenter: 
@@ -13,19 +13,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
-ms.author: syamk
+ms.date: 06/16/2017
+ms.author: mimig
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: b4f4a32a19c2145a18557a54d5a495ef0c8dec75
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: abca1eff9d0b79420e70da5a4c551eceda478491
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中的可优化数据一致性级别
-Azure Cosmos DB 是从无到有开发出来的，其设计考虑到了适合每个数据模型的全局分发。 它旨在提供可预测的低延迟保证、99.99%的可用性 SLA，以及多个完善定义的宽松一致性模型。 目前，Azure Cosmos DB 提供五种一致性级别：非常、有限过期、会话和最终级别。 
+Azure Cosmos DB 是从无到有开发出来的，其设计考虑到了适合每个数据模型的全局分发。 它旨在提供可预测的低延迟保证、99.99%的可用性 SLA，以及多个完善定义的宽松一致性模型。 Azure Cosmos DB 当前提供 5 种一致性级别：非常、有限过期、会话、一致前缀和最终级别。 
 
 除了分布式数据库提供的**非常一致性**和**最终一致性**模型以外，Azure Cosmos DB 还提供三个谨慎代码化和操作化的一致性模型，并已根据真实用例验证其有效性。 这些一致性级别是：**有限过期**、**会话**和**一致性前缀**。 总而言之，这五个一致性级别可让你在一致性、可用性和延迟之间做出合理的取舍。 
 
@@ -40,13 +40,13 @@ Azure Cosmos DB 是从无到有开发出来的，其设计考虑到了适合每�
  
 **一致性级别和保证**
 
-| 一致性级别    | 保证 |
+| 一致性级别 | 保证 |
 | --- | --- |
 | 非常 | 可线性化 |
-| 有限过期    | 一致前缀。 读取操作落后写入操作 k 个前缀或 t 时间间隔 |
-| 会话    | 一致前缀。 单调读取、单调写入、读取你的写入、写入跟随读取 |
-| 一致前缀    | 返回的更新是全部更新的某些前缀，不带间隔 |
-| 最终    | 失序读取 |
+| 有限过期 | 一致前缀。 读取操作落后写入操作 k 个前缀或 t 时间间隔 |
+| 会话   | 一致前缀。 单调读取、单调写入、读取你的写入、写入跟随读取 |
+| 一致前缀 | 返回的更新是全部更新的某些前缀，不带间隔 |
+| 最终  | 失序读取 |
 
 可以在 Cosmos DB 帐户上配置默认一致性级别（并且可在以后对特定读取请求重写一致性）。 在内部，默认一致性级别适用于可能跨地区的分区集内的数据。 大约 73% 的租户使用会话一致性，20% 的偏好有限过期。 我们观察到，3% 的客户一开始会试用各种一致性级别，然后才会确定选择适合其应用程序的具体一致性。 我们还观察到，仅 2% 的租户会请求重写一致性级别。 
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2017
+ms.date: 06/12/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 34fc513b6d4408e341fc5a723ca743daee39b85d
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 74982663b0501d3a5c7973a5f383e14e0f964696
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -58,7 +58,11 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 |:--- |:--- |:--- |:--- |
 | convertToArray |是 |整数、字符串、数组或对象 |要转换为数组的值。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+一个数组。
+
+### <a name="example"></a>示例
 
 以下示例演示如何对不同的类型使用 array 函数。
 
@@ -99,9 +103,13 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-一个数组。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| intOutput | Array | [1] |
+| stringOutput | Array | ["a"] |
+| objectOutput | Array | [{"a": "b", "c": "d"}] |
 
 <a id="coalesce" />
 
@@ -117,7 +125,11 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 | arg1 |是 |整数、字符串、数组或对象 |要测试是否为 null 的第一个值。 |
 | 其他参数 |否 |整数、字符串、数组或对象 |要测试是否为 null 的其他值。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+第一个非 null 参数的值，可以是字符串、整数、数组或对象。 如果所有参数都为 null，则为 null。 
+
+### <a name="example"></a>示例
 
 以下示例显示 coalesce 不同用法的输出。
 
@@ -128,7 +140,14 @@ Resource Manager 提供以下用于处理数组和对象的函数。
     "parameters": {
         "objectToTest": {
             "type": "object",
-            "defaultValue": {"first": null, "second": null}
+            "defaultValue": {
+                "null1": null, 
+                "null2": null,
+                "string": "default",
+                "int": 1,
+                "object": {"first": "default"},
+                "array": [1]
+            }
         }
     },
     "resources": [
@@ -136,27 +155,37 @@ Resource Manager 提供以下用于处理数组和对象的函数。
     "outputs": {
         "stringOutput": {
             "type": "string",
-            "value": "[coalesce(parameters('objectToTest').first, parameters('objectToTest').second, 'fallback')]"
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').string)]"
         },
         "intOutput": {
             "type": "int",
-            "value": "[coalesce(parameters('objectToTest').first, parameters('objectToTest').second, 1)]"
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').int)]"
         },
         "objectOutput": {
             "type": "object",
-            "value": "[coalesce(parameters('objectToTest').first, parameters('objectToTest').second, parameters('objectToTest'))]"
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').object)]"
         },
         "arrayOutput": {
             "type": "array",
-            "value": "[coalesce(parameters('objectToTest').first, parameters('objectToTest').second, array(1))]"
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').array)]"
+        },
+        "emptyOutput": {
+            "type": "bool",
+            "value": "[empty(coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2))]"
         }
     }
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-第一个非 null 参数的值，可以是字符串、整数、数组或对象。 如果所有参数都为 null，则为 null。 
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| stringOutput | String | default |
+| intOutput | int | 1 |
+| objectOutput | 对象 | {"first": "default"} |
+| arrayOutput | Array | [1] |
+| emptyOutput | Bool | True |
 
 <a id="concat" />
 
@@ -174,7 +203,10 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 此函数可以使用任意数量的参数，并可接受字符串或数组作为参数。
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+串联值的字符串或数组。
+
+### <a name="example"></a>示例
 
 以下示例演示如何组合两个数组。
 
@@ -211,6 +243,12 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 }
 ```
 
+上面具有默认值的示例的输出为：
+
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| 返回 | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+
 以下示例演示如何组合两个字符串值并返回串联的字符串。
 
 ```json
@@ -226,15 +264,18 @@ Resource Manager 提供以下用于处理数组和对象的函数。
     "resources": [],
     "outputs": {
         "concatOutput": {
-            "value": "[concat(parameters('prefix'), uniqueString(resourceGroup().id))]",
+            "value": "[concat(parameters('prefix'), '-', uniqueString(resourceGroup().id))]",
             "type" : "string"
         }
     }
 }
 ```
 
-### <a name="return-value"></a>返回值
-串联值的字符串或数组。
+上面具有默认值的示例的输出为：
+
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| concatOutput | String | prefix-5yj4yjf5mbg72 |
 
 <a id="contains" />
 
@@ -250,7 +291,11 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 | container |是 |数组、对象或字符串 |包含要查找的值的值。 |
 | itemToFind |是 |字符串或整数 |要查找的值。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+如果找到该项，则为 **True**；否则为 **False**。
+
+### <a name="example"></a>示例
 
 以下示例演示如何对不同的类型使用 contains：
 
@@ -303,9 +348,16 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-如果找到该项，则为 **True**；否则为 **False**。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| stringTrue | Bool | True |
+| stringFalse | Bool | False |
+| objectTrue | Bool | True |
+| objectFalse | Bool | False |
+| arrayTrue | Bool | True |
+| arrayFalse | Bool | False |
 
 <a id="createarray" />
 
@@ -321,7 +373,11 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 | arg1 |是 |字符串、整数、数组或对象 |数组中的第一个值。 |
 | 其他参数 |否 |字符串、整数、数组或对象 |数组中的其他值。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+一个数组。
+
+### <a name="example"></a>示例
 
 以下示例演示如何对不同的类型使用 createArray：
 
@@ -362,9 +418,14 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-一个数组。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| stringArray | Array | ["a", "b", "c"] |
+| intArray | Array | [1, 2, 3] |
+| objectArray | Array | [{"one": "a", "two": "b", "three": "c"}] |
+| arrayArray | Array | [["one", "two", "three"]] |
 
 <a id="empty" />
 
@@ -380,7 +441,11 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 |:--- |:--- |:--- |:--- |
 | itemToTest |是 |数组、对象或字符串 |要检查是否为空的值。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+如果该值为空，返回 **True**；否则返回 **False**。
+
+### <a name="example"></a>示例
 
 以下示例检查某个数组、对象和字符串是否为空。
 
@@ -421,9 +486,13 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-如果该值为空，返回 **True**；否则返回 **False**。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| arrayEmpty | Bool | True |
+| objectEmpty | Bool | True |
+| stringEmpty | Bool | True |
 
 <a id="first" />
 
@@ -438,7 +507,11 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索第一个元素或字符的值。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+数组中第一个元素的类型（字符串、整数、数组或对象），或字符串的第一个字符。
+
+### <a name="example"></a>示例
 
 以下示例演示如何对不同的类型使用 first 函数。
 
@@ -467,9 +540,12 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-数组中第一个元素或者字符串的第一个字符的类型（字符串、整数、数组或对象）。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| arrayOutput | String | one |
+| stringOutput | String | O |
 
 <a id="intersection" />
 
@@ -486,7 +562,11 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 | arg2 |是 |数组或对象 |用于查找通用元素的第二个值。 |
 | 其他参数 |否 |数组或对象 |用于查找通用元素的其他值。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+包含通用元素的数组或对象。
+
+### <a name="example"></a>示例
 
 以下示例演示如何对数组和对象使用 intersection：
 
@@ -527,9 +607,12 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-包含通用元素的数组或对象。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| objectOutput | 对象 | {"one": "a", "three": "c"} |
+| arrayOutput | Array | ["two", "three"] |
 
 <a id="last" />
 
@@ -544,7 +627,11 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索最后一个元素或字符的值。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+数组中最后一个元素的类型（字符串、整数、数组或对象），或字符串的最后一个字符。
+
+### <a name="example"></a>示例
 
 以下示例演示如何对不同的类型使用 last 函数。
 
@@ -573,9 +660,12 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-数组中最后一个元素或者字符串的最后一个字符的类型（字符串、整数、数组或对象）。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| arrayOutput | String | three |
+| stringOutput | String | e |
 
 <a id="length" />
 
@@ -590,7 +680,11 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |用于获取元素数的数组，或用于获取字符数的字符串。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+一个整数。 
+
+### <a name="example"></a>示例
 
 以下示例演示如何对数组和字符串使用 length：
 
@@ -626,6 +720,13 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 }
 ```
 
+上面具有默认值的示例的输出为：
+
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| arrayLength | int | 3 |
+| stringLength | int | 13 |
+
 创建资源时，可在数组中使用此函数指定迭代数。 在以下示例中，参数 **siteNames** 引用创建网站时要使用的名称数组。
 
 ```json
@@ -636,10 +737,6 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 ```
 
 有关在数组中使用此函数的详细信息，请参阅 [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)（在 Azure Resource Manager 中创建多个资源实例）。
-
-### <a name="return-value"></a>返回值
-
-一个整数。 
 
 <a id="min" />
 
@@ -654,7 +751,11 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最小值的集合。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+表示最小值的整数。
+
+### <a name="example"></a>示例
 
 以下示例演示如何对整数数组和整数列表使用 min：
 
@@ -682,9 +783,12 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-表示最小值的整数。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| arrayOutput | int | 0 |
+| intOutput | int | 0 |
 
 <a id="max" />
 
@@ -699,7 +803,11 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最大值的集合。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+表示最大值的整数。
+
+### <a name="example"></a>示例
 
 以下示例演示如何对整数数组和整数列表使用 max：
 
@@ -727,9 +835,12 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-表示最大值的整数。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| arrayOutput | int | 5 |
+| intOutput | int | 5 |
 
 <a id="range" />
 
@@ -745,7 +856,11 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 | startingInteger |是 |int |数组中的第一个整数。 |
 | numberofElements |是 |int |数组中的整数个数。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+整数数组。
+
+### <a name="example"></a>示例
 
 以下示例演示如何使用 range 函数：
 
@@ -773,9 +888,11 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-整数数组。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| rangeOutput | Array | [5, 6, 7] |
 
 <a id="skip" />
 
@@ -791,7 +908,11 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 | originalValue |是 |数组或字符串 |用于跳过的数组或字符串。 |
 | numberToSkip |是 |int |要跳过的元素或字符数。 如果此值小于或等于 0，则返回值中的所有元素或字符。 如果此值大于数组或字符串的长度，则返回空数组或字符串。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+数组或字符串。
+
+### <a name="example"></a>示例
 
 以下示例跳过数组中指定数目的元素，以及字符串中指定数目的字符。
 
@@ -835,9 +956,12 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-数组或字符串。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| arrayOutput | Array | ["three"] |
+| stringOutput | String | two three |
 
 <a id="take" />
 
@@ -853,7 +977,11 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 | originalValue |是 |数组或字符串 |要从中提取元素的数组或字符串。 |
 | numberToTake |是 |int |要提取的元素或字符数。 如果此值小于或等于 0，则返回空数组或字符串。 如果此值大于给定数组或字符串的长度，则返回数组或字符串中的所有元素。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+数组或字符串。
+
+### <a name="example"></a>示例
 
 以下示例从数组中提取指定数目的元素，并从字符串中提取指定数目的字符。
 
@@ -897,9 +1025,12 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-数组或字符串。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| arrayOutput | Array | ["one", "two"] |
+| stringOutput | String | on |
 
 <a id="union" />
 
@@ -916,7 +1047,11 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 | arg2 |是 |数组或对象 |用于联接元素的第二个值。 |
 | 其他参数 |否 |数组或对象 |用于联接元素的其他值。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+数组或对象。
+
+### <a name="example"></a>示例
 
 以下示例演示如何对数组和对象使用 union：
 
@@ -931,7 +1066,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
         },
         "secondObject": {
             "type": "object",
-            "defaultValue": {"four": "d", "five": "e", "six": "f"}
+            "defaultValue": {"three": "c", "four": "d", "five": "e"}
         },
         "firstArray": {
             "type": "array",
@@ -939,7 +1074,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
         },
         "secondArray": {
             "type": "array",
-            "defaultValue": ["four", "five"]
+            "defaultValue": ["three", "four"]
         }
     },
     "resources": [
@@ -957,9 +1092,12 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-数组或对象。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| objectOutput | 对象 | {"one": "a", "two": "b", "three": "c", "four": "d", "five": "e"} |
+| arrayOutput | Array | ["one", "two", "three", "four"] |
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure Resource Manager 模板中各部分的说明，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。

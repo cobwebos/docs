@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2017
+ms.date: 06/13/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
-ms.openlocfilehash: 47fb74c608315b256e88dd774af7cb5260529607
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 90706434eb78009bc56fc390cfa5a30e53827c19
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/29/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -445,7 +445,7 @@ Type=Event Computer=*SQL*
 | *aggregatedField* |待聚合的字段。 此字段对于 COUNT 聚合函数是可选的，但必须是现有数字字段 SUM、MAX、MIN、AVG STDDEV、PERCENTILE## 或 PCT##（## 是介于 1 和 99 之间的任意数字）。 aggregatedField 可以是 **Extend** 支持的任何函数。 |
 | *fieldAlias* |用于已计算的聚合值（可选）别名。 如果未指定，字段名为 **AggregatedValue**。 |
 | *groupField* |结果集分组所依据的字段名称。 |
-| *间隔* |时间间隔，格式为：**nnnNAME**。 **nnn** 是正整数。 **NAME** 是间隔名称。 支持的间隔名称区分大小写，包括：MILLISECOND[S]、SECOND[S]、MINUTE[S]、HOUR[S]、DAY[S]、MONTH[S] 和 YEAR[S] |
+| *间隔* |时间间隔，格式为：**nnnNAME**。 nnn 是正整数。 **NAME** 是间隔名称。 支持的间隔名称区分大小写，包括：MILLISECOND[S]、SECOND[S]、MINUTE[S]、HOUR[S]、DAY[S]、MONTH[S] 和 YEAR[S] |
 
 间隔选项仅可在日期/时间组字段（如 *TimeGenerated* 和 *TimeCreated*）中使用。 目前，该服务不强制这一点，但是将没有日期/时间的字段传递给后端会导致运行时错误。 实现架构验证时，服务 API 拒绝将没有日期/时间的字段用于间隔聚合的查询。 当前的*度量*实现支持间隔分组用于任何聚合函数。
 
@@ -692,7 +692,7 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | me
 
 
 ### <a name="extend"></a>Extend
-允许在查询中创建运行时字段。 如果想要执行聚合，还可以在 extend 后使用 measure 命令。
+允许在查询中创建运行时字段。 请注意，不能同时使用运行时字段和 measure 命令来执行聚合。
 
 **示例 1**
 

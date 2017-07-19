@@ -14,6 +14,8 @@
 
     `iothub-explorer create myDeviceId --connection-string`
 
+   [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
+
 记下结果中的设备连接字符串。 设备应用使用此设备连接字符串以设备身份连接到 IoT 中心。
 
 ![][img-identity]

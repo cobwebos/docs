@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 5/04/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 080b732d78731e6281e82ddc28a3e84ae8755ffa
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 0e9c10b77110efe90239863ee603acbd54b17ead
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -63,7 +63,7 @@ Application Insights 已根据以下依据之一检测到你的应用程序出�
   
   ![智能检测设置](./media/app-insights-proactive-diagnostics/smart_detection_configuration.png)
   
-  * 智能检测电子邮件中也包含了“取消订阅”链接 
+  * 可使用“智能检测”电子邮件中的“取消订阅”链接来停止接收电子邮件通知。
 
 每天只会针对每个 Application Insights 资源发送一封有关智能检测性能异常的电子邮件。 只有当天至少检测到一个新问题时，才会发送电子邮件。 你将不会收到任何重复的消息。 
 

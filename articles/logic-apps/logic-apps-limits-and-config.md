@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: LADocs; jehollan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 859f9a1ca9dbe166fd514c8eba868b466dbc4d2c
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 41fcccae7b3d306c25f4429d47e81884d88cd83e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -101,6 +101,8 @@ ms.lasthandoff: 05/18/2017
 |允许操作嵌套深度|5|可以添加嵌套工作流以根据需要对此进行扩展|
 |每个订阅每个区域的工作流数|1000||
 |每个工作流的触发数|10||
+|Switch 作用域事例限制|25||
+|每个工作流的变量数|250||
 |每个表达式的最大字符数|8,192||
 |最大 `trackedProperties` 大小（以字符为单位）|16,000|
 |`action`/`trigger` 名称限制|80||

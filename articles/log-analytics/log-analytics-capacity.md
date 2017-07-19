@@ -12,26 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 06/07/2017
 ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: a26b1f6c13b11d0fb6b47599fee43f955cbf7b7a
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: bb89bed9778056c52e47d984e5d559a4abf864a2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/09/2017
 
 
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>使用容量和性能解决方案（预览版）计划 Hyper-V 虚拟机容量
 
-![容量和性能解决方案](./media/log-analytics-capacity/capacity-solution.png) 可以使用 Log Analytics 中的容量和性能解决方案来帮助理解 Hyper-V 服务器的容量。 可以通过该解决方案查看在这些 Hyper-V 主机上运行的主机和 VM 的总体利用率（CPU、内存和磁盘），从而深入了解 Hyper-V 环境。 将收集在这些 Hyper-V 主机上运行的所有主机和 VM 的 CPU、内存和磁盘的指标。
+![容量和性能符号](./media/log-analytics-capacity/capacity-solution.png)
+
+可以使用 Log Analytics 中的容量和性能解决方案来帮助理解 Hyper-V 服务器的容量。 可以通过该解决方案查看在这些 Hyper-V 主机上运行的主机和 VM 的总体利用率（CPU、内存和磁盘），从而深入了解 Hyper-V 环境。 将收集在这些 Hyper-V 主机上运行的所有主机和 VM 的 CPU、内存和磁盘的指标。
 
 解决方案：
 
--    显示 CPU 和内存利用率最高和最低的主机
--    显示 CPU 和内存利用率最高和最低的 VM
--    显示 IOPS 和吞吐量利用率最高和最低的 VM
--    显示哪些 VM 运行在哪些主机上
--    显示群集共享卷中吞吐量、IOPS 和延迟较高的前几个磁盘
+-   显示 CPU 和内存利用率最高和最低的主机
+-   显示 CPU 和内存利用率最高和最低的 VM
+-   显示 IOPS 和吞吐量利用率最高和最低的 VM
+-   显示哪些 VM 运行在哪些主机上
+-   显示群集共享卷中吞吐量、IOPS 和延迟较高的前几个磁盘
 - 允许根据组进行自定义和筛选
 
 > [!NOTE]
