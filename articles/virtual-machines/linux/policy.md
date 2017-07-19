@@ -13,88 +13,135 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 04/13/2016
+ms.date: 06/28/2017
 ms.author: singhkay
-translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: b48a4e2fa913b865cf4b57693ef281e446541328
-ms.lasthandoff: 04/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: c1ad80a56627695f3594f4d9b60cd623fa9bcce3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/30/2017
 
 
 ---
-# <a name="apply-security-and-policies-to-linux-vms-with-azure-resource-manager"></a>使用 Azure Resource Manager 将安全措施和策略应用至 Linux VM
-通过使用策略，组织可以在整个企业中强制实施各种约定和规则。 强制实施所需行为有助于消除风险，同时为组织的成功做出贡献。 在本文中，我们将介绍如何使用 Azure Resource Manager 策略来为组织中的虚拟机定义所需行为。
+# <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>使用 Azure Resource Manager 向 Linux VM 应用策略
+通过使用策略，组织可以在整个企业中强制实施各种约定和规则。 强制实施所需行为有助于消除风险，同时为组织的成功做出贡献。 本文将介绍如何使用 Azure Resource Manager 策略，为组织中的虚拟机定义相应行为。
 
-下面概述了实现此目的的步骤
+有关策略简介，请参阅[使用策略管理资源并控制访问](../../azure-resource-manager/resource-manager-policy.md)。
 
-1. Azure Resource Manager 策略 101
-2. 为虚拟机定义策略
-3. 创建策略
-4. 应用策略
+## <a name="define-policy-for-permitted-virtual-machines"></a>定义有关获准虚拟机的策略
+若要确保组织的虚拟机与应用程序兼容，可以限制获准操作系统。 在以下策略示例中，只允许创建 Ubuntu 14.04.2-LTS 虚拟机。
 
-## <a name="azure-resource-manager-policy-101"></a>Azure Resource Manager 策略 101
-若要开始使用 Azure Resource Manager 策略，我们建议你先阅读以下文章，然后继续执行本文中的步骤。 以下文章介绍了策略的基本定义和结构以及如何评估策略，并提供了策略定义的各种示例。
-
-* [使用策略来管理资源和控制访问](../../azure-resource-manager/resource-manager-policy.md)
-
-## <a name="define-a-policy-for-your-virtual-machine"></a>为虚拟机定义策略
-企业中常用的一种方案可能是，只允许其用户在经测试可与 LOB 应用程序兼容的特定操作系统中创建虚拟机。 使用 Azure Resource Manager 策略可以通过几个步骤完成此任务。
-在此策略示例中，我们将只允许创建 Ubuntu 14.04.2-LTS 虚拟机。 策略定义如下所示
-
-```
-"if": {
-  "allOf": [
-    {
-      "field": "type",
-      "equals": "Microsoft.Compute/virtualMachines"
-    },
-    {
-      "not": {
-        "allOf": [
-          {
-            "field": "Microsoft.Compute/virtualMachines/imagePublisher",
-            "equals": "Canonical"
-          },
-          {
-            "field": "Microsoft.Compute/virtualMachines/imageOffer",
-            "equals": "UbuntuServer"
-          },
-          {
-            "field": "Microsoft.Compute/virtualMachines/imageSku",
-            "equals": "14.04.2-LTS"
-          }
+```json
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "in": [
+          "Microsoft.Compute/disks",
+          "Microsoft.Compute/virtualMachines",
+          "Microsoft.Compute/VirtualMachineScaleSets"
         ]
+      },
+      {
+        "not": {
+          "allOf": [
+            {
+              "field": "Microsoft.Compute/imagePublisher",
+              "in": [
+                "Canonical"
+              ]
+            },
+            {
+              "field": "Microsoft.Compute/imageOffer",
+              "in": [
+                "UbuntuServer"
+              ]
+            },
+            {
+              "field": "Microsoft.Compute/imageSku",
+              "in": [
+                "14.04.2-LTS"
+              ]
+            },
+            {
+              "field": "Microsoft.Compute/imageVersion",
+              "in": [
+                "latest"
+              ]
+            }
+          ]
+        }
       }
-    }
-  ]
-},
-"then": {
-  "effect": "deny"
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
 }
 ```
 
-可以轻松修改上述策略，以允许在虚拟机部署中使用经过以下更改的任何 Ubuntu LTS 映像
+使用通配符将上述策略修改为允许任何 Ubuntu LTS 映像： 
 
-```
+```json
 {
   "field": "Microsoft.Compute/virtualMachines/imageSku",
   "like": "*LTS"
 }
 ```
 
-#### <a name="virtual-machine-property-fields"></a>虚拟机属性字段
-下表描述了可在策略定义中用作字段的虚拟机属性。 有关策略字段的详细信息，请参阅[使用策略来管理资源和控制访问](../../resource-manager-policy.md)。
+若要了解策略字段，请参阅[策略别名](../../azure-resource-manager/resource-manager-policy.md#aliases)。
 
-| 字段名称 | 说明 |
-| --- | --- |
-| imagePublisher |指定映像的发布者 |
-| imageOffer |指定所选映像发布者的产品 |
-| imageSku |指定所选产品的 SKU |
-| imageVersion |指定所选 SKU 的映像版本 |
+## <a name="define-policy-for-using-managed-disks"></a>定义有关使用托管磁盘的策略
 
-## <a name="create-the-policy"></a>创建策略
-可以直接使用 REST API 或 PowerShell cmdlet 轻松创建策略。 可以详细了解如何[创建和分配策略](../../resource-manager-policy.md)。
+如果需要使用托管磁盘，请使用以下策略：
 
-## <a name="apply-the-policy"></a>应用策略
-创建策略后，需要根据定义的范围来应用它。 范围可以是订阅、资源组甚至资源。 可以详细了解如何[创建和分配策略](../../resource-manager-policy.md)。
+```json
+{
+  "if": {
+    "anyOf": [
+      {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/virtualMachines"
+          },
+          {
+            "field": "Microsoft.Compute/virtualMachines/osDisk.uri",
+            "exists": true
+          }
+        ]
+      },
+      {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/VirtualMachineScaleSets"
+          },
+          {
+            "anyOf": [
+              {
+                "field": "Microsoft.Compute/VirtualMachineScaleSets/osDisk.vhdContainers",
+                "exists": true
+              },
+              {
+                "field": "Microsoft.Compute/VirtualMachineScaleSets/osdisk.imageUrl",
+                "exists": true
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
+```
+
+## <a name="next-steps"></a>后续步骤
+* 定义策略规则后（如上述示例所示），需要创建策略定义并将其分配给作用域。 作用域可以是订阅、资源组或资源。 若要通过门户分配策略，请参阅[使用 Azure 门户分配和管理资源策略](../../azure-resource-manager/resource-manager-policy-portal.md)。 若要通过 REST API、PowerShell 或 Azure CLI 分配策略，请参阅[通过脚本分配和管理策略](../../azure-resource-manager/resource-manager-policy-create-assign.md)。
+* 有关资源策略的简介，请参阅[资源策略概述](../../azure-resource-manager/resource-manager-policy.md)。
+* 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](../../azure-resource-manager/resource-manager-subscription-governance.md)。
 

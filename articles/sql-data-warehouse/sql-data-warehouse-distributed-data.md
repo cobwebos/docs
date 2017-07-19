@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 10/31/2016
+ms.date: 06/29/2017
 ms.author: jrj;barbkess
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
-ms.openlocfilehash: 195b78a7f634d01f228c90efb34763e4175708ac
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: ec9b3cc391a75b4f3a75f95a2ff9613c0317bfa2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/24/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -65,12 +65,10 @@ ms.lasthandoff: 01/24/2017
 ### <a name="can-i-view-the-compute-nodes"></a>能否查看计算节点？
 每个计算节点都有一个节点 ID，可在与 SQL 数据仓库和并行数据仓库相关的系统视图中查看。  在名称以 sys.pdw_nodes 开头的系统视图中找到 node_id 列即可查看计算节点。 如需系统视图的列表，请参阅 [MPP 系统视图](sql-data-warehouse-reference-tsql-statements.md)。
 
-## <a name="Replicated"></a>并行数据仓库的复制表
-适用于：并行数据仓库
+## <a name="Replicated"></a> 复制的表
+复制的表在每个计算节点上存储表的完整副本。 复制表以后，无需在执行联接或聚合前在计算节点中间传输数据。 复制表仅适用于小型表，因为将整个表存储在每个计算节点上需要额外的存储。  
 
-除了使用分布式表，并行数据仓库还提供了复制表的选项。 复制表是指整个存储在每个计算节点上的表。 复制表以后，就不需要在用表进行联接或聚合操作之前在计算节点中传输表行。 复制表仅适用于小型表，因为将整个表存储在每个计算节点上需要额外的存储。  
-
-下图显示了一个存储在每个计算节点上的复制表。 复制表存储在分配给计算节点的所有磁盘上。 此磁盘策略通过 SQL Server 文件组实现。  
+下图显示了一个存储在每个计算节点上的复制表。 对于 SQL 数据仓库，复制的表由轮循机制表进行维护，并完全复制到每个计算节点上的首个分发数据库。 对于 Parallel 数据仓库，复制的表跨分配给计算节点的所有磁盘进行存储。  此磁盘策略通过 SQL Server 文件组实现。  
 
 ![复制表](media/sql-data-warehouse-distributed-data/replicated-table.png "复制表") 
 

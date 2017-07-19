@@ -16,10 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: mahender
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 06958522139d621f86afd8bf25128ee64cf822b3
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 56d6f7b5858a0e2122021e02718050a26e6defe4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/29/2017
 
 
 ---
@@ -35,10 +36,7 @@ Azure Functions 提供以下绑定：
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-> [!TIP]
->
-> 建议阅读这个有关 [HTTPClient](https://github.com/mspnp/performance-optimization/blob/master/ImproperInstantiation/docs/ImproperInstantiation.md) 的最佳做法文档。
->
+[!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
 <a name="httptrigger"></a>
 
@@ -58,7 +56,7 @@ HTTP 触发器将执行函数以响应 HTTP 请求。 可以对其自定义以�
     "type": "httpTrigger",
     "direction": "in",
     "authLevel": "function",
-    "methods": [ "GET" ],
+    "methods": [ "get" ],
     "route": "values/{id}"
 },
 ```
@@ -269,7 +267,7 @@ Webhook 授权由属于 HttpTrigger 的 webhook 接收器组件处理，其机�
 
 
 <a name="httptriggercsharp"></a>
-### <a name="http-trigger-sample-in-c"></a>C 中的 HTTP 触发器示例# #
+### <a name="http-trigger-sample-in-c"></a>C# 中的 HTTP 触发器示例 #
 ```csharp
 using System.Net;
 using System.Threading.Tasks;
@@ -296,7 +294,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 ```
 
 <a name="httptriggerfsharp"></a>
-### <a name="http-trigger-sample-in-f"></a>F 中的 HTTP 触发器示例# #
+### <a name="http-trigger-sample-in-f"></a>F# 中的 HTTP 触发器示例 #
 ```fsharp
 open System.Net
 open System.Net.Http
@@ -381,7 +379,7 @@ module.exports = function(context, req) {
 
 <a name="hooktriggercsharp"></a>
 
-### <a name="webhook-sample-in-c"></a>C 中的 Webhook 示例# #
+### <a name="webhook-sample-in-c"></a>C# 中的 Webhook 示例 #
 ```csharp
 #r "Newtonsoft.Json"
 
@@ -405,7 +403,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
 <a name="hooktriggerfsharp"></a>
 
-### <a name="webhook-sample-in-f"></a>F 中的 Webhook 示例# #
+### <a name="webhook-sample-in-f"></a>F# 中的 Webhook 示例 #
 ```fsharp
 open System.Net
 open System.Net.Http

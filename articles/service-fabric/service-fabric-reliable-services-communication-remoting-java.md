@@ -11,12 +11,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 03/09/2017
+ms.date: 06/30/2017
 ms.author: pakunapa
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 11e300b3b1d0433bd4790332593ada2d3eede883
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: dc4a362b5737bb424ca2c196c85f4c51b6ee5e30
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -86,6 +87,23 @@ CompletableFuture<String> message = helloWorldClient.helloWorldAsync();
 ```
 
 此远程处理框架将服务引发的异常传播到客户端。 因此，在客户端使用 `ServiceProxyBase` 的异常处理逻辑可直接处理服务引发的异常。
+
+## <a name="service-proxy-lifetime"></a>服务代理生存期
+由于 ServiceProxy 创建是轻量型操作，因此用户可根据需求随意创建，数目不限。 如有需要，用户可重复使用服务代理。 用户可以在异常情况下重复使用相同的代理。 每个 ServiceProxy 都包含用于通过线路发送消息的通信客户端。 在调用 API 时，我们通过内部检查来查看使用的通信客户端是否有效。 基于该结果，我们将重新创建通信客户端。 因此在异常情况下，用户无需重新创建 serviceproxy。
+
+### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory 生存期
+[FabricServiceProxyFactory](https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remoting.client._fabric_service_proxy_factory) 是为不同远程接口创建代理的工厂。 如果使用 API `ServiceProxyBase.create`创建代理，则框架创建 `FabricServiceProxyFactory`。
+在需要替代 [ServiceRemotingClientFactory](https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remoting.client._service_remoting_client_factory) 属性时，手动创建一个 FabricServiceProxyFactory 是有用的。
+Factory 是一项高成本操作。 `FabricServiceProxyFactory` 维护通信客户端的缓存。
+最佳做法是尽可能久地缓存 `FabricServiceProxyFactory`。
+
+## <a name="remoting-exception-handling"></a>远程异常处理
+服务 API 引发的所有远程异常都作为 RuntimeException 或 FabricException 发送回客户端。
+
+ServiceProxy 对为其创建的服务分区，处理所有故障转移异常。 如果存在故障转移异常（非暂时异常），它将重新解析终结点，并通过正确的终结点重试调用。 故障转移异常的重试次数无限。
+在 TransientExceptions 情况下，它仅重试调用。
+
+默认重试参数由 [OperationRetrySettings] 提供。 (https://docs.microsoft.com/zh-cn/java/api/microsoft.servicefabric.services.communication.client._operation_retry_settings) 用户可通过将 OperationRetrySettings 对象传递至 ServiceProxyFactory 构造函数来配置这些值。
 
 ## <a name="next-steps"></a>后续步骤
 * [确保 Reliable Services 的通信安全](service-fabric-reliable-services-secure-communication.md)

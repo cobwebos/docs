@@ -12,18 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2017
+ms.date: 06/29/2017
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 04ac94a1c07c3ad2a9384f5cf5fca1341ebfa0d8
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 5b894dac8fdc26999b6f3cbffaf7e6a98e68d000
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/30/2017
 
 
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>为导入作业准备硬盘驱动器
 
-WAImportExport 工具是可与 [Microsoft Azure 导入/导出服务](storage-import-export-service.md)一起使用的驱动器准备和修复工具。 可以使用此工具将数据复制到要寄送给 Azure 数据中心的硬盘驱动器。 完成某个导入作业后，可以使用此工具修复已损坏、丢失或与其他 Blob 冲突的任何 Blob。 通过某个已完成的导出作业收到驱动器后，可以使用此工具修复这些驱动器上已损坏或丢失的任何文件。 本文讲解此工具的工作原理。
+WAImportExport 工具是可与 [Microsoft Azure 导入/导出服务](storage-import-export-service.md)一起使用的驱动器准备和修复工具。 可以使用此工具将数据复制到要寄送给 Azure 数据中心的硬盘驱动器。 完成某个导入作业后，可以使用此工具修复已损坏、丢失或与其他 Blob 冲突的任何 Blob。 通过某个已完成的导出作业收到驱动器后，可以使用此工具修复这些驱动器上已损坏或丢失的任何文件。 本文介绍了如何使用此工具。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,7 +37,7 @@ WAImportExport 工具是可与 [Microsoft Azure 导入/导出服务](storage-imp
 
 ### <a name="preparing-disk-for-import-job"></a>为导入作业准备磁盘
 
-- **BitLocker** - 必须在运行 WAImportExport 工具的计算机上启用 BitLocker。 有关如何启用 BitLocker 的信息，请参阅[常见问题](#faq)。
+- **BitLocker** - 必须在运行 WAImportExport 工具的计算机上启用 BitLocker。 若要了解如何启用 BitLocker，请参阅 [FAQ](#faq)。
 - 可从运行 WAImportExport 工具的计算机访问的**磁盘**。 有关磁盘规格，请参阅[常见问题](#faq)。
 - **源文件** - 打算导入的文件必须可从复制计算机访问，无论这些文件是位于网络共享还是本地硬盘驱动器上。
 
@@ -51,7 +52,7 @@ WAImportExport 工具是可与 [Microsoft Azure 导入/导出服务](storage-imp
 
 ## <a name="download-and-install-waimportexport"></a>下载并安装 WAImportExport
 
-下载[最新版本的 WAImportExport.exe](https://www.microsoft.com/download/details.aspx?id=42659)。 将压缩文件的内容解压缩到计算机上的某个目录。
+下载[最新版本的 WAImportExport.exe](https://www.microsoft.com/download/details.aspx?id=55280)。 将压缩文件的内容解压缩到计算机上的某个目录。
 
 下一个任务是创建 CSV 文件。
 
@@ -59,9 +60,9 @@ WAImportExport 工具是可与 [Microsoft Azure 导入/导出服务](storage-imp
 
 ### <a name="what-is-dataset-csv"></a>什么是数据集 CSV
 
-数据集 CSV 文件是包含要复制到目标驱动器的目录列表和/或列表文件的 CSV 文件。 创建导入作业的第一个步骤是确定要导入哪些目录和文件， 这可以是目录列表、唯一文件列表或两者的组合。 包含某个目录时，该目录及其子目录中的所有文件都将成为导入作业的一部分。
+数据集 CSV 文件是 /dataset 标志的值，也是包含要复制到目标驱动器的目录列表和/或文件列表的 CSV 文件。 创建导入作业的第一个步骤是确定要导入哪些目录和文件， 这可以是目录列表、唯一文件列表或两者的组合。 包含某个目录时，该目录及其子目录中的所有文件都将成为导入作业的一部分。
 
-对于要导入的每个目录或文件，需要在 Azure Blob 服务中指定一个目标虚拟目录或 Blob。 这些目标将用作 WAImportExport 工具的输入。 请注意，目录应使用正斜杠字符“/”来分隔。
+对于要导入的每个目录或文件，必须在 Azure Blob 服务中指定目标虚拟目录或 Blob。 这些目标将用作 WAImportExport 工具的输入。 目录应用正斜杠字符“/”隔开。
 
 下表显示了 Blob 目标的一些示例：
 
@@ -84,10 +85,10 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 
 | 字段 | 说明 |
 | --- | --- |
-| BasePath | **[必需]**<br/>此参数的值表示要导入的值所在的来源。此工具将以递归方式复制位于此路径下的所有数据。<br><br/>**允许的值**：这必须是本地计算机上的有效路径或者是有效的共享路径，并且应当可以供用户访问。 目录路径必须是绝对路径（而不是相对路径）。如果路径以“\\”结尾，则表示目录；如果路径不以“\\”结尾，则表示文件。<br/>不允许在此字段中指定正则表达式。 如果路径包含空格，请将其输入在 "" 中。<br><br/>**示例**："c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
-| DstBlobPathOrPrefix | **[必需]**<br/> Windows Azure 存储帐户中的目标虚拟目录的路径。 虚拟目录可能存在，也可能不存在。 如果不存在，则导入/导出服务会创建一个。<br/><br/>在指定目标虚拟目录或 Blob 时，请确保使用有效的容器名称。 请记住，容器名称必须是小写的。 有关容器命名规则，请参阅 [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)（命名和引用容器、Blob 与元数据）。如果仅指定根，则源的目录结构将目标 Blob 容器中复制。如果所需的目录结构不同于源中的目录结构，可在 CSV 中包含多个映射行<br/><br/>可以指定容器，或者指定类似于 music/70s/ 的 Blob 前缀。 目标目录必须以容器名称开头，后接正斜杠“/”，并且可以选择包含以“/”结尾的虚拟 Blob 目录。<br/><br/>当目标容器为根容器时，必须显式指定包含正斜杠的根容器，例如 $root/。 由于根容器下的 Blob 的名称中不能包含“/”，因此当目标目录为根容器时，将不会复制源目录中的任何子目录。<br/><br/>**示例**<br/>如果目标 blob 路径是 https://mystorageaccount.blob.core.windows.net/video，则此字段的值可以为 video/  |
+| BasePath | **[必需]**<br/>此参数的值表示要导入的数据的源。 此工具将以递归方式复制此路径下的所有数据。<br><br/>**允许的值**：这必须是本地计算机上的有效路径或者是有效的共享路径，并且应当可以供用户访问。 目录路径必须是绝对路径（而非相对路径）。 如果路径以“\\”结尾，表示的是目录；如果路径不以“\\”结尾，表示的是文件。<br/>不允许在此字段中指定正则表达式。 如果路径包含空格，请将其输入在 "" 中。<br><br/>**示例**："c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
+| DstBlobPathOrPrefix | **[必需]**<br/> Windows Azure 存储帐户中的目标虚拟目录的路径。 虚拟目录可能存在，也可能不存在。 如果不存在，则导入/导出服务会创建一个。<br/><br/>在指定目标虚拟目录或 Blob 时，请确保使用有效的容器名称。 请记住，容器名称必须是小写的。 有关容器命名规则，请参阅[命名和引用容器、Blob 与元数据](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。 如果仅指定根，将在目标 Blob 容器中复制源的目录结构。 如果需要不同于源的目录结构，请在 CSV 中添加多行映射<br/><br/>可以指定容器，或者指定类似于 music/70s/ 的 Blob 前缀。 目标目录必须以容器名称开头，后接正斜杠“/”，并且可以选择包含以“/”结尾的虚拟 Blob 目录。<br/><br/>当目标容器为根容器时，必须显式指定包含正斜杠的根容器，例如 $root/。 由于根容器下的 Blob 的名称中不能包含“/”，因此当目标目录为根容器时，将不会复制源目录中的任何子目录。<br/><br/>**示例**<br/>如果目标 blob 路径是 https://mystorageaccount.blob.core.windows.net/video，则此字段的值可以为 video/  |
 | /BlobType | **[可选]** block &#124; page<br/>导入/导出服务当前支持 2 种 Blob。 页 Blob 和块 Blob。默认情况下，所有文件将以块 Blob 的形式导入。 \*.vhd 和 \*.vhdx 将以页 Blob 的形式导入。块 Blob 和页 Blob 的允许大小有限制。 有关详细信息，请参阅 [Storage scalability targets](storage-scalability-targets.md#scalability-targets-for-blobs-queues-tables-and-files)（存储可伸缩性目标）。  |
-| Disposition | **[可选]** rename &#124; no-overwrite &#124; overwrite <br/> 此字段指定导入期间 （也就是将数据从磁盘上载到存储帐户时）的复制行为。可用选项为：rename&#124;overwite&#124;no-overwrite。如果未指定任何值，则默认为“rename”。 <br/><br/>**Rename**：如果存在同名的对象，则在目标中创建一个副本。<br/>Overwrite：将文件覆盖为较新的文件。 最后修改的文件优先。<br/>**No-overwrite**：如果文件已存在，则跳过写入该文件。|
+| Disposition | **[可选]** rename &#124; no-overwrite &#124; overwrite <br/> 此字段指定导入期间 （即在将数据从磁盘上传到存储帐户时）发生复制行为。 可用选项包括：rename&#124;overwite&#124;no-overwrite。如果未指定任何选项，使用默认选项“rename”。 <br/><br/>**Rename**：若有同名对象，在目标中创建副本。<br/>Overwrite：将文件覆盖为较新的文件。 最后修改的文件优先。<br/>**No-overwrite**：如果文件已存在，则跳过写入该文件。|
 | MetadataFile | **[可选]** <br/>此字段的值是用户需要保留对象的元数据或者提供自定义元数据时可提供的元数据文件。 目标 Blob 的元数据文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](storage-import-export-file-format-metadata-and-properties.md) |
 | PropertiesFile | **[可选]** <br/>目标 Blob 的属性文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](storage-import-export-file-format-metadata-and-properties.md)。 |
 
@@ -95,9 +96,9 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 
 ### <a name="what-is-driveset-csv"></a>什么是驱动器集 CSV
 
-/InitialDriveSet 或 /AdditionalDriveSet 标志的值是一个 CSV 文件，其中包含要将驱动器号映射到的磁盘的列表，以便工具可以正确选择要准备的磁盘列表。 如果数据大小大于单个磁盘的大小，WAImportExport 工具将以优化方式在此 CSV 文件中所列的多个磁盘之间分发数据。
+/InitialDriveSet 或 /AdditionalDriveSet 标志的值是 CSV 文件，其中包含要将驱动器号映射到的磁盘的列表，以便此工具可以正确选择要准备的磁盘列表。 如果数据大小大于单个磁盘的大小，WAImportExport 工具将以优化方式在此 CSV 文件中所列的多个磁盘之间分发数据。
 
-在单个会话中可将数据写入到磁盘数量没有限制。 工具会根据磁盘大小和文件夹大小分发数据。 它会选择对于对象大小最有利的磁盘。 数据上载到存储帐户时，将融合回到数据集文件中指定的目录结构。 若要创建驱动器集 CSV，请遵循以下步骤。
+在单个会话中可将数据写入到磁盘数量没有限制。 工具会根据磁盘大小和文件夹大小分发数据。 它会选择最适合对象大小的磁盘。 上传到存储帐户时，数据会聚合回数据集文件中指定的目录结构。 若要创建驱动器集 CSV，请遵循以下步骤。
 
 ### <a name="create-basic-volume-and-assign-drive-letter"></a>创建基本卷并分配驱动器号
 
@@ -117,8 +118,8 @@ H,Format,SilentMode,Encrypt,
 | --- | --- |
 | DriveLetter | **[必需]**<br/> 作为目标提供给工具的每个驱动器上需有一个简单的 NTFS 卷，并分配有一个驱动器号。<br/> <br/>**示例**：R 或 r |
 | FormatOption | **[必需]** Format &#124; AlreadyFormatted<br/><br/> **Format**：指定将格式化磁盘上的所有数据。 <br/>**AlreadyFormatted**：如果指定此值，该工具将跳过格式化。 |
-| SilentOrPromptOnFormat | **[必需]** SilentMode &#124; PromptOnFormat<br/><br/>**SilentMode**：提供此值可让用户以无提示模式运行该工具。 <br/>**PromptOnFormat**：该工具在每次格式化时都将提示用户确认是否确实希望执行此操作。<br/><br/>如果未设置，则命令将中止并提示错误消息：“SilentOrPromptOnFormat 的值不正确: 无”。 |
-| Encryption | **[必需]** Encrypt &#124; AlreadyEncrypted<br/> 此字段的值确定要加密哪个磁盘，不加密哪个磁盘。 <br/><br/>**Encrypt**：该工具将格式化驱动器。 如果“FormatOption”字段的值为“Format”，则此字段的值必须是“Encrypt”。 如果在此情况下指定了“AlreadyEncrypted”，则会导致错误“指定了 Format 时，也必须指定 Encrypt”。<br/>**AlreadyEncrypted**：该工具将使用“ExistingBitLockerKey”字段中提供的 BitLockerKey 来加密驱动器。 如果“FormatOption”字段的值为“AlreadyFormatted”，则此字段的值可以是“Encrypt”或“AlreadyEncrypted” |
+| SilentOrPromptOnFormat | **[必需]** SilentMode &#124; PromptOnFormat<br/><br/>**SilentMode**：提供此值可让用户以无提示模式运行该工具。 <br/>**PromptOnFormat**：该工具在每次格式化时都将提示用户确认是否确实希望执行此操作。<br/><br/>如果未设置，命令将中止并显示错误消息：“SilentOrPromptOnFormat 的值 none 不正确” |
+| 加密 | **[必需]** Encrypt &#124; AlreadyEncrypted<br/> 此字段的值确定要加密哪个磁盘，不加密哪个磁盘。 <br/><br/>**Encrypt**：此工具将格式化驱动器。 如果“FormatOption”字段的值为“Format”，则此字段的值必须是“Encrypt”。 如果在此情况下指定了“AlreadyEncrypted”，则会导致错误“指定了 Format 时，也必须指定 Encrypt”。<br/>**AlreadyEncrypted**：此工具将使用“ExistingBitLockerKey”字段中提供的 BitLockerKey 来加密驱动器。 如果“FormatOption”字段的值为“AlreadyFormatted”，则此字段的值可以是“Encrypt”或“AlreadyEncrypted” |
 | ExistingBitLockerKey | **[必需]** 如果“Encryption”字段的值为“AlreadyEncrypted”<br/> 此字段的值是与特定磁盘关联的 BitLocker 密钥。 <br/><br/>如果“Encryption”字段的值为“Encrypt”，应将此字段留空。  如果在这种情况下指定 BitLocker 密钥，将导致错误“不应指定 Bitlocker 密钥”。<br/>  **示例**：060456-014509-132033-080300-252615-584177-672089-411631|
 
 ##  <a name="preparing-disk-for-import-job"></a>为导入作业准备磁盘
@@ -222,7 +223,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /ResumeSession
 |     /ManifestFile:&lt;DriveManifestFile&gt; | **必需** 仅适用于 RepairExport。<br/> 驱动器清单文件的路径。  |
 |     /PathMapFile:&lt;DrivePathMapFile&gt; | **可选**。 仅适用于 RepairImport。<br/> 包含驱动器根目录相对路径与实际文件位置之间的映射的文件（制表符分隔）的路径。 首次指定时，该字段中将填充目标为空的文件路径，也就是说，在 TargetDirectories 中找不到目录、访问目标被拒绝、名称无效，或者目标在多个目录中存在。 可以手动编辑路径映射文件来包含正确的目标路径，然后再次为工具指定该文件，以正确解析文件路径。  |
 |     /ExportBlobListFile:&lt;ExportBlobListFile&gt; | **必需**。 仅适用于 PreviewExport。<br/> 包含要导出的 Blob 的 Blob 路径列表或 Blob 路径前缀的 XML 文件的路径。 文件格式与导入/导出服务 REST API 的“放置作业”操作中的 Blob 列表 Blob 格式相同。  |
-|     /DriveSize:&lt;DriveSize&gt; | **必需**。 仅适用于 PreviewExport。<br/>  用于导出的驱动器的大小。 例如，500GB、1.5TB。注意：1GB = 1,000,000,000 字节，1TB = 1,000,000,000,000 字节  |
+|     /DriveSize:&lt;DriveSize&gt; | **必需**。 仅适用于 PreviewExport。<br/>  用于导出的驱动器的大小。 例如，500 GB、1.5 TB。 注意：1 GB = 1,000,000,000 字节，1 TB = 1,000,000,000,000 字节  |
 |     /DataSet:&lt;dataset.csv&gt; | **必需**<br/> 包含要复制到目标驱动器的目录列表和/或列表文件的 CSV 文件。  |
 |     /silentmode  | **可选**。<br/> 如果未指定，系统会提醒驱动器的要求，并且需要确认才能继续操作。  |
 
@@ -285,7 +286,7 @@ SaveCommandOutput: Completed
 [EndUpdateRecord]
 ```
 
-### <a name="sample-journal-file-jrn-for-session-which-records-the-trail-of-sessions"></a>会话的示例日记文件 (JRN)：记录会话跟踪
+### <a name="sample-journal-file-jrn-for-session-that-records-the-trail-of-sessions"></a>记录会话跟踪的会话示例日记文件 (JRN)
 
 ```
 [BeginUpdateRecord][2016/11/02 18:24:14.735][Type:NewJournalFile]
@@ -309,13 +310,13 @@ StorageAccountKey: *******
 
 WAImportExport 工具是可与 Microsoft Azure 导入/导出服务一起使用的驱动器准备和修复工具。 可以使用此工具将数据复制到要寄送给 Azure 数据中心的硬盘驱动器。 完成某个导入作业后，可以使用此工具修复已损坏、丢失或与其他 Blob 冲突的任何 Blob。 通过某个已完成的导出作业收到驱动器后，可以使用此工具修复这些驱动器上已损坏或丢失的任何文件。
 
-#### <a name="how-does-the-waimportexport-tool-work-on-multiple-sorce-dir-and-disks"></a>WAImportExport 工具如何在多个源目录和磁盘中工作？
+#### <a name="how-does-the-waimportexport-tool-work-on-multiple-source-dir-and-disks"></a>WAImportExport 工具如何处理多个源目录和磁盘？
 
-如果数据大小大于磁盘大小，WAImportExport 工具将以优化方式在磁盘之间分发数据。 到多个磁盘的数据复制可以并行或者按顺序执行。 可同时将数据写入到磁盘数量没有限制。 工具会根据磁盘大小和文件夹大小分发数据。 它会选择对于对象大小最有利的磁盘。 数据上载到存储帐户时，将融合回到指定的目录结构。
+如果数据大小大于磁盘大小，WAImportExport 工具将以优化方式在磁盘之间分发数据。 到多个磁盘的数据复制可以并行或者按顺序执行。 可同时将数据写入到磁盘数量没有限制。 工具会根据磁盘大小和文件夹大小分发数据。 它会选择最适合对象大小的磁盘。 数据上传到存储帐户时，将融合回到指定的目录结构。
 
 #### <a name="where-can-i-find-previous-version-of-waimportexport-tool"></a>在哪里可以找到上一个版本的 WAImportExport 工具？
 
-WAImportExport 工具包含 WAImportExport V1 工具所提供的全部功能。 用户可以使用 WAImportExport 工具指定多个源以及写入多个驱动器。 此外，用户可以轻松管理要在其中以单个 CSV 文件复制数据的源位置。 但是，如果需要 SAS 支持或者要将单个源复制到单个磁盘，可以 [下载 WAImportExport V1 工具] (http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409) 并参阅 [WAImportExport V1 Reference](storage-import-export-tool-how-to-v1.md)（WAImportExport V1 参考），获取 WAImportExport V1 用法的帮助。
+WAImportExport 工具包含 WAImportExport V1 工具所提供的全部功能。 使用 WAImportExport 工具，用户可以指定多个源，并写入多个驱动器。 此外，用户可以轻松管理要在其中以单个 CSV 文件复制数据的源位置。 但是，如果需要 SAS 支持或者要将单个源复制到单个磁盘，可以 [下载 WAImportExport V1 工具] (http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409) 并参阅 [WAImportExport V1 Reference](storage-import-export-tool-how-to-v1.md)（WAImportExport V1 参考），获取 WAImportExport V1 用法的帮助。
 
 #### <a name="what-is-a-session-id"></a>会话 ID 是什么？
 
@@ -343,21 +344,21 @@ SessionId 可以包含字母、0~9、下划线 (\_)、短划线 (-) 或井号 (#
 
 #### <a name="what-are-the-specifications-of-my-disk"></a>磁盘的规格是什么？
 
-一个或多个已连接到复制计算机的空 2.5/3.5 英寸 SATA II、III 或 SSD 硬盘驱动器。
+一个或多个已连接到复制计算机的空 2.5英寸或 3.5 英寸 SATA II、III 或 SSD 硬盘。
 
 #### <a name="how-can-i-enable-bitlocker-on-my-machine"></a>如何在计算机上启用 BitLocker？
 
-一种简单的检查方法是右键单击系统驱动器。 如果已启用该功能，则会显示 Bitlocker 的相关选项。 如果该功能处于禁用状态，则不会显示 Bitlocker。
+一种简单的检查方法是右键单击系统驱动器。 如果已启用该功能，则会显示 Bitlocker 的相关选项。 如果此功能处于禁用状态，将看不到相应选项。
 
 ![检查 BitLocker](./media/storage-import-export-tool-preparing-hard-drives-import/BitLocker.png)
 
 有关如何启用 BitLocker 的信息，请参阅[此文](https://technet.microsoft.com/library/cc766295.aspx)
 
-有可能你的计算机不带 tpm 芯片。 如果使用 tpm.msc 未返回任何输出，请查看下一条常见问题。
+也可能是因为计算机不带 TPM 芯片。 如果使用 tpm.msc 未返回任何输出，请查看下一条常见问题。
 
 #### <a name="how-to-disable-trusted-platform-module-tpm-in-bitlocker"></a>如何在 BitLocker 中禁用受信任的平台模块 (TPM)？
 > [!NOTE]
-> 仅当服务器中没有 TPM 时，才需要禁用 TPM 策略。如果用户的服务器中有受信任的 TPM，则不需要禁用 TPM。 
+> 只有在服务器中没有 TPM 时，才需要禁用 TPM 策略。 如果用户服务器中有受信任的 TPM，无需禁用 TPM。 
 > 
 
 若要在 BitLocker 中禁用 TPM，请执行以下步骤：<br/>
@@ -390,15 +391,15 @@ SessionId 可以包含字母、0~9、下划线 (\_)、短划线 (-) 或井号 (#
 
 #### <a name="what-will-be-the-hierarchy-of-my-data-when-it-appears-in-the-storage-account"></a>数据显示在存储帐户中时会采用哪种层次结构？
 
-尽管数据分散在多个磁盘之间，但数据上载到存储帐户时，将融合回到数据集 CSV 文件中指定的目录结构。
+尽管数据分散在多个磁盘之间，但数据上传到存储帐户时，将融合回到数据集 CSV 文件中指定的目录结构。
 
 #### <a name="how-many-of-the-input-disks-will-have-active-io-in-parallel-when-copy-is-in-progress"></a>复制正在进行时，有多少个输入磁盘会并行发生活动 IO？
 
-WAImportExport 工具根据输入文件的大小在输入磁盘之间分发数据。 也就是说，并行的活动磁盘数完全取决于输入数据的性质。 根据输入数据集中各个文件的大小，可能有一个或多个磁盘出现并行活动 IO。 有关详细信息，请参阅下一条常见问题。
+WAImportExport 工具根据输入文件的大小在输入磁盘之间分发数据。 也就是说，并行的活动磁盘数完全取决于输入数据的性质。 根据输入数据集中各个文件的大小，可能有一个或多个磁盘出现并行活动 IO。 有关详细信息，请参阅下一个问题。
 
 #### <a name="how-does-the-tool-distribute-the-files-across-the-disks"></a>工具如何在磁盘之间分发文件？
 
-WAImportExport 工具逐批读取和写入文件，每个批最多包含 100000 个文件。 也就是说，最多可以并行写入 100000 个文件。 如果这 100000 个文件已分发到多个驱动器，则会同时写入多个磁盘。 但是，工具是同时写入多个磁盘还是写入单个磁盘，则取决于批的累积大小。 例如，在处理小型文件时，如果这 100000 个文件全部能够装入一个驱动器，则处理此批期间，工具只写入一个磁盘。
+WAImportExport 工具逐批读取和写入文件，每个批最多包含 100000 个文件。 也就是说，最多可以并行写入 100000 个文件。 如果这 100000 个文件已分发到多个驱动器，则会同时写入多个磁盘。 不过，此工具是同时写入多个磁盘，还是写入一个磁盘，取决于批的累积大小。 例如，在处理小型文件时，如果这 100000 个文件全部能够装入一个驱动器，则处理此批期间，工具只写入一个磁盘。
 
 ### <a name="waimportexport-output"></a>WAImportExport 输出
 
@@ -406,7 +407,7 @@ WAImportExport 工具逐批读取和写入文件，每个批最多包含 100000 
 
 **.xml** - 对于使用 WAImportExport 工具准备的每个硬盘驱动器，该工具将创建一个日记文件，文件名为“`<DriveID>.xml`”，其中，DriveID 是与该工具从磁盘读取的驱动器关联的序列号。 在 Azure 门户中创建导入作业时，需要使用所有驱动器中的日记文件。 在工具中断的情况下，还可使用此日记文件来恢复驱动器准备操作。
 
-**.jrn** - 带 `.jrn` 后缀的日志文件包含硬盘驱动器的所有复制会话的状态。 它还包含创建导入作业所需的信息。 运行 WAImportExport 工具时，始终必须指定一个日志文件，以及一个复制会话 ID。
+**.jrn** - 后缀为 `.jrn` 的日志文件包含硬盘的所有复制会话状态。 它还包含创建导入作业所需的信息。 运行 WAImportExport 工具时，始终必须指定一个日志文件，以及一个复制会话 ID。
 
 ## <a name="next-steps"></a>后续步骤
 

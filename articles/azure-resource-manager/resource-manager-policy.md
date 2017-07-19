@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/03/2017
+ms.date: 06/27/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 951a7849beb9653083ed0112dbbb6cf57175469d
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: f27bc3689f228809e9db8f61485ea0c8b4b302d1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -31,8 +31,6 @@ ms.lasthandoff: 05/11/2017
 * 策略分配 - 应用策略定义的范围（订阅或资源组）
 
 本主题重点介绍策略定义。 有关策略分配的信息，请参阅[使用 Azure 门户分配和管理资源策略](resource-manager-policy-portal.md)或[通过脚本分配和管理策略](resource-manager-policy-create-assign.md)。
-
-Azure 提供了一些可降低必须要定义的策略数目的内置策略定义。 如果内置策略定义适用于你的方案，则请在分配范围时使用该定义。
 
 在创建和更新资源（PUT 和 PATCH 操作）时评估策略。
 
@@ -50,6 +48,22 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 * `Microsoft.Authorization/policyassignments/write` 分配策略的权限 
 
 **参与者**角色中未包括这些权限。
+
+## <a name="built-in-policies"></a>内置策略
+
+Azure 提供了一些可降低必须要定义的策略数目的内置策略定义。 继续进行策略定义之前，应考虑内置策略是否已提供所需的定义。 内置策略定义：
+
+* 允许的位置
+* 允许的资源类型
+* 允许的存储帐户 SKU
+* 允许的虚拟机 SKU
+* 应用标记和默认值
+* 强制实施标记和值
+* 不允许的资源类型
+* 需要 SQL Server 版本 12.0
+* 需要存储帐户加密
+
+你可以通过[门户](resource-manager-policy-portal.md)、[PowerShell](resource-manager-policy-create-assign.md#powershell) 或 [Azure CLI](resource-manager-policy-create-assign.md#azure-cli) 分配任何这些策略。
 
 ## <a name="policy-definition-structure"></a>策略定义结构
 使用 JSON 创建策略定义。 策略定义包含以下项的元素：
@@ -149,7 +163,7 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 
 **not** 语法反转条件的结果。 **allOf** 语法（与逻辑 **And** 操作相似）要求所有条件为 true。 **anyOf** 语法（与逻辑 **Or** 操作相似）要求一个或多个条件为 true。
 
-可以嵌套逻辑运算符。 以下示例显示了嵌套在 **And** 操作中的 **Not** 操作。 
+可以嵌套逻辑运算符。 以下示例显示了嵌套在 allOf 操作中的 not 操作。 
 
 ```json
 "if": {
@@ -194,27 +208,7 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 * `location`
 * `tags`
 * `tags.*` 
-* 属性别名
-
-可以使用属性别名来访问资源类型的特定属性。 支持的别名为：
-
-* Microsoft.CDN/profiles/sku.name
-* Microsoft.Compute/virtualMachines/imageOffer
-* Microsoft.Compute/virtualMachines/imagePublisher
-* Microsoft.Compute/virtualMachines/sku.name
-* Microsoft.Compute/virtualMachines/imageSku 
-* Microsoft.Compute/virtualMachines/imageVersion
-* Microsoft.SQL/servers/databases/edition
-* Microsoft.SQL/servers/databases/elasticPoolName
-* Microsoft.SQL/servers/databases/requestedServiceObjectiveId
-* Microsoft.SQL/servers/databases/requestedServiceObjectiveName
-* Microsoft.SQL/servers/elasticPools/dtu
-* Microsoft.SQL/servers/elasticPools/edition
-* Microsoft.SQL/servers/version
-* Microsoft.Storage/storageAccounts/accessTier
-* Microsoft.Storage/storageAccounts/enableBlobEncryption
-* Microsoft.Storage/storageAccounts/sku.name
-* Microsoft.Web/serverFarms/sku.name
+* 属性别名 - 有关列表，请参阅[别名](#aliases)。
 
 ### <a name="effect"></a>效果
 策略支持三种类型的效果 - `deny`、`audit` 和 `append`。 
@@ -237,127 +231,131 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 
 值可以是字符串或 JSON 格式对象。 
 
+## <a name="aliases"></a>别名
+
+可以使用属性别名来访问资源类型的特定属性。 
+
+**Microsoft.Cache/Redis**
+
+| 别名 | 说明 |
+| ----- | ----------- |
+| Microsoft.Cache/Redis/enableNonSslPort | 设置是否启用非 ssl Redis 服务器端口 (6379)。 |
+| Microsoft.Cache/Redis/shardCount | 设置要在高级群集缓存上创建的分片数。  |
+| Microsoft.Cache/Redis/sku.capacity | 设置要部署的 Redis 缓存的大小。  |
+| Microsoft.Cache/Redis/sku.family | 设置要使用的 SKU 系列。 |
+| Microsoft.Cache/Redis/sku.name | 设置要部署的 Redis 缓存类型。 |
+
+**Microsoft.Cdn/profiles**
+
+| 别名 | 说明 |
+| ----- | ----------- |
+| Microsoft.CDN/profiles/sku.name | 设置定价层的名称。 |
+
+**Microsoft.Compute/disks**
+
+| 别名 | 说明 |
+| ----- | ----------- |
+| Microsoft.Compute/imageOffer | 设置用于创建虚拟机的平台映像或应用商店映像的产品/服务。 |
+| Microsoft.Compute/imagePublisher | 设置用于创建虚拟机的平台映像或应用商店映像的发布者。 |
+| Microsoft.Compute/imageSku | 设置用于创建虚拟机的平台映像或应用商店映像的 SKU。 |
+| Microsoft.Compute/imageVersion | 设置用于创建虚拟机的平台映像或应用商店映像的版本。 |
+
+
+**Microsoft.Compute/virtualMachines**
+
+| 别名 | 说明 |
+| ----- | ----------- |
+| Microsoft.Compute/imageOffer | 设置用于创建虚拟机的平台映像或应用商店映像的产品/服务。 |
+| Microsoft.Compute/imagePublisher | 设置用于创建虚拟机的平台映像或应用商店映像的发布者。 |
+| Microsoft.Compute/imageSku | 设置用于创建虚拟机的平台映像或应用商店映像的 SKU。 |
+| Microsoft.Compute/imageVersion | 设置用于创建虚拟机的平台映像或应用商店映像的版本。 |
+| Microsoft.Compute/licenseType | 设置本地许可的映像或磁盘。 此值仅用于包含 Windows Server 操作系统的映像。  |
+| Microsoft.Compute/virtualMachines/imageOffer | 设置用于创建虚拟机的平台映像或应用商店映像的产品/服务。 |
+| Microsoft.Compute/virtualMachines/imagePublisher | 设置用于创建虚拟机的平台映像或应用商店映像的发布者。 |
+| Microsoft.Compute/virtualMachines/imageSku | 设置用于创建虚拟机的平台映像或应用商店映像的 SKU。 |
+| Microsoft.Compute/virtualMachines/imageVersion | 设置用于创建虚拟机的平台映像或应用商店映像的版本。 |
+| Microsoft.Compute/virtualMachines/osDisk.Uri | 设置 vhd URI。 |
+| Microsoft.Compute/virtualMachines/sku.name | 设置虚拟机的大小。 |
+
+**Microsoft.Compute/virtualMachines/extensions**
+
+| 别名 | 说明 |
+| ----- | ----------- |
+| Microsoft.Compute/virtualMachines/extensions/publisher | 设置扩展的发布者名称。 |
+| Microsoft.Compute/virtualMachines/extensions/type | 设置扩展的类型。 |
+| Microsoft.Compute/virtualMachines/extensions/typeHandlerVersion | 设置扩展的版本。 |
+
+**Microsoft.Compute/virtualMachineScaleSets**
+
+| 别名 | 说明 |
+| ----- | ----------- |
+| Microsoft.Compute/imageOffer | 设置用于创建虚拟机的平台映像或应用商店映像的产品/服务。 |
+| Microsoft.Compute/imagePublisher | 设置用于创建虚拟机的平台映像或应用商店映像的发布者。 |
+| Microsoft.Compute/imageSku | 设置用于创建虚拟机的平台映像或应用商店映像的 SKU。 |
+| Microsoft.Compute/imageVersion | 设置用于创建虚拟机的平台映像或应用商店映像的版本。 |
+| Microsoft.Compute/licenseType | 设置本地许可的映像或磁盘。 此值仅用于包含 Windows Server 操作系统的映像。 |
+| Microsoft.Compute/VirtualMachineScaleSets/computerNamePrefix | 设置规模集中所有虚拟机的计算机名前缀。 |
+| Microsoft.Compute/VirtualMachineScaleSets/osdisk.imageUrl | 设置用户映像的 blob URI。 |
+| Microsoft.Compute/VirtualMachineScaleSets/osdisk.vhdContainers | 设置用于存储规模集的操作系统磁盘的容器 URL。 |
+| Microsoft.Compute/VirtualMachineScaleSets/sku.name | 设置规模集中虚拟机的大小。 |
+| Microsoft.Compute/VirtualMachineScaleSets/sku.tier | 设置规模集中虚拟机的层级。 |
+  
+**Microsoft.Network/applicationGateways**
+
+| 别名 | 说明 |
+| ----- | ----------- |
+| Microsoft.Network/applicationGateways/sku.name | 设置网关的大小。 |
+
+**Microsoft.Network/virtualNetworkGateways**
+
+| 别名 | 说明 |
+| ----- | ----------- |
+| Microsoft.Network/virtualNetworkGateways/gatewayType | 设置此虚拟网关的类型。 |
+| Microsoft.Network/virtualNetworkGateways/sku.name | 配置网关 SKU 名称。 |
+
+**Microsoft.Sql/servers**
+
+| 别名 | 说明 |
+| ----- | ----------- |
+| Microsoft.Sql/servers/version | 设置服务器的版本。 |
+
+**Microsoft.Sql/databases**
+
+| 别名 | 说明 |
+| ----- | ----------- |
+| Microsoft.Sql/servers/databases/edition | 设置数据库的版本。 |
+| Microsoft.Sql/servers/databases/elasticPoolName | 设置数据库所处弹性池的名称。 |
+| Microsoft.Sql/servers/databases/requestedServiceObjectiveId | 设置数据库的已配置服务级别目标 ID。 |
+| Microsoft.Sql/servers/databases/requestedServiceObjectiveName | 设置数据库的已配置服务级别目标的名称。  |
+
+**Microsoft.Sql/elasticpools**
+
+| 别名 | 说明 |
+| ----- | ----------- |
+| servers/elasticpools | Microsoft.Sql/servers/elasticPools/dtu | 设置数据库弹性池的共享 DTU 总数。 |
+| servers/elasticpools | Microsoft.Sql/servers/elasticPools/edition | 设置弹性池的版本。 |
+
+**Microsoft.Storage/storageAccounts**
+
+| 别名 | 说明 |
+| ----- | ----------- |
+| Microsoft.Storage/storageAccounts/accessTier | 设置用于计费的访问层。 |
+| Microsoft.Storage/storageAccounts/accountType | 设置 SKU 名称。 |
+| Microsoft.Storage/storageAccounts/enableBlobEncryption | 设置在将数据存储于 blob 存储服务中时，服务是否对数据进行加密。 |
+| Microsoft.Storage/storageAccounts/enableFileEncryption | 设置在将数据存储于文件存储服务中时，服务是否对数据进行加密。 |
+| Microsoft.Storage/storageAccounts/sku.name | 设置 SKU 名称。 |
+| Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly | 设置为仅允许 https 流入存储服务。 |
+
+
 ## <a name="policy-examples"></a>策略示例
 
 以下主题包含策略示例：
 
 * 有关标记策略的示例，请参阅[将资源策略应用于标记](resource-manager-policy-tags.md)。
+* 有关命名和文本模式的示例，请参阅[应用名称和文本的资源策略](resource-manager-policy-naming-convention.md)。
 * 有关存储策略的示例，请参阅[将资源策略应用于存储帐户](resource-manager-policy-storage.md)。
 * 有关虚拟机策略的示例，请参阅[将资源策略应用于 Linux VM](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json) 和[将资源策略应用于 Windows WM](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
-### <a name="allowed-resource-locations"></a>允许的资源位置
-要指定允许的位置，请参阅[策略定义结构](#policy-definition-structure)中的示例。 要分配此策略定义，请使用带有资源 ID `/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c` 的内置策略。
-
-### <a name="not-allowed-resource-locations"></a>不允许的资源位置
-要指定不允许的位置，请使用下列策略定义：
-
-```json
-{
-  "properties": {
-    "parameters": {
-      "notAllowedLocations": {
-        "type": "array",
-        "metadata": {
-          "description": "The list of locations that are not allowed when deploying resources",
-          "strongType": "location",
-          "displayName": "Not allowed locations"
-        }
-      }
-    },
-    "displayName": "Not allowed locations",
-    "description": "This policy enables you to block locations that your organization can specify when deploying resources.",
-    "policyRule": {
-      "if": {
-        "field": "location",
-        "in": "[parameters('notAllowedLocations')]"
-      },
-      "then": {
-        "effect": "deny"
-      }
-    }
-  }
-}
-```
-
-### <a name="allowed-resource-types"></a>允许的资源类型
-以下示例显示只允许对 Microsoft.Resources、Microsoft.Compute、Microsoft.Storage 和 Microsoft.Network 资源类型进行部署的策略。 其余皆拒绝：
-
-```json
-{
-  "if": {
-    "not": {
-      "anyOf": [
-        {
-          "field": "type",
-          "like": "Microsoft.Resources/*"
-        },
-        {
-          "field": "type",
-          "like": "Microsoft.Compute/*"
-        },
-        {
-          "field": "type",
-          "like": "Microsoft.Storage/*"
-        },
-        {
-          "field": "type",
-          "like": "Microsoft.Network/*"
-        }
-      ]
-    }
-  },
-  "then": {
-    "effect": "deny"
-  }
-}
-```
-
-### <a name="set-naming-convention"></a>设置命名约定
-以下示例演示如何使用 **like** 条件支持的通配符。 该条件指明，如果名称符合所述模式 (namePrefix\*nameSuffix)，则拒绝请求：
-
-```json
-{
-  "if": {
-    "not": {
-      "field": "name",
-      "like": "namePrefix*nameSuffix"
-    }
-  },
-  "then": {
-    "effect": "deny"
-  }
-}
-```
-
-若要指定与某个模式匹配的资源名称，请使用 match 条件。 下面的示例要求名称以 `contoso` 开头并包含六个其他字母：
-
-```json
-{
-  "if": {
-    "not": {
-      "field": "name",
-      "match": "contoso??????"
-    }
-  },
-  "then": {
-    "effect": "deny"
-  }
-}
-```
-
-若要求日期模式为两个数字、短划线、三个字母、短划线和四个数字，请使用以下代码：
-
-```json
-{
-  "if": {
-    "field": "tags.date",
-    "match": "##-???-####"
-  },
-  "then": {
-    "effect": "deny"
-  }
-}
-```
 
 ## <a name="next-steps"></a>后续步骤
 * 定义策略规则之后，将其分配到某一范围。 若要通过门户分配策略，请参阅[使用 Azure 门户分配和管理资源策略](resource-manager-policy-portal.md)。 若要通过 REST API、PowerShell 或 Azure CLI 分配策略，请参阅[通过脚本分配和管理策略](resource-manager-policy-create-assign.md)。

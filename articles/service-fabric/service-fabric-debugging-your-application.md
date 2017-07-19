@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/07/2017
+ms.date: 06/29/2017
 ms.author: vturecek;mikhegn
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 6167f3edd3e99522a8997382d6569c82ea387d5c
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 2459025899a7f5ffebf44fa104ed112c0eb99dfa
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -41,7 +42,7 @@ ms.lasthandoff: 03/09/2017
    > Visual Studio 将附加到应用程序的所有实例。 单步执行代码时，断点可能被多个进程命中，从而产生并发会话。 尝试通过在线程 ID 上设置每个断点条件，或使用诊断事件，在命中后禁用断点、。
    > 
    > 
-4. “**诊断事件**”窗口将自动打开，以实时查看诊断事件。
+4. “诊断事件”窗口将自动打开，以实时查看诊断事件。
    
     ![查看实时诊断事件][diagnosticevents]
 5. 也可以在 Cloud Explorer 中打开“**诊断事件**”窗口。  在“**Service Fabric**”下，右键单击任何节点，然后选择“**查看流式跟踪”**。
@@ -54,7 +55,7 @@ ms.lasthandoff: 03/09/2017
     ```csharp
     ServiceEventSource.Current.ServiceMessage(this, "My ServiceMessage with a parameter {0}", result.Value.ToString());
     ```
-7. “**诊断事件**”窗口支持筛选、暂停和检查实时事件。  筛选是对事件消息及其内容进行的简单字符串搜索。
+7. “诊断事件”窗口支持实时筛选、暂停和检查事件。  筛选是对事件消息及其内容进行的简单字符串搜索。
    
     ![实时筛选、暂停和恢复或检查事件][diagnosticeventsactions]
 8. 调试服务与调试任何其他应用程序类似。 通常可以通过 Visual Studio 设置断点以方便进行调试。 即使可靠集合在多个节点间进行复制，它们仍会实现 IEnumerable。 这意味着，在调试时可以使用 Visual Studio 中的结果视图来查看其中存储的内容。 只需在代码的任意位置设置一个断点即可。

@@ -1,6 +1,6 @@
 ---
-title: "使用 CLI 与 Service Fabric 群集交互 | Microsoft 文档"
-description: "如何使用 Azure CLI 与 Service Fabric 群集交互"
+title: "Azure Service Fabric XPlat CLI 入门"
+description: "Azure Service Fabric XPlat CLI 入门"
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -12,17 +12,19 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/02/2017
+ms.date: 06/29/2017
 ms.author: subramar
-translationtype: Human Translation
-ms.sourcegitcommit: 615e7ea84aae45f384edb671a28e4ff98b4ade3a
-ms.openlocfilehash: d61b7a9c8199b15c8bb24e7146ea93a2f67fb0a7
-ms.lasthandoff: 01/05/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 9190b01b6ce42ea67ec7806c55a0013834d24211
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/04/2017
 
 ---
-# <a name="using-the-azure-cli-to-interact-with-a-service-fabric-cluster"></a>使用 Azure CLI 与 Service Fabric 群集交互
-可以使用 Linux 上的 Azure CLI 从 Linux 计算机与 Service Fabric 群集进行交互。
+
+# <a name="using-the-xplat-cli-to-interact-with-a-service-fabric-cluster"></a>使用 XPlat CLI 与 Service Fabric 群集交互
+
+可以在 Linux 计算机上使用 XPlat CLI 与 Service Fabric 群集进行交互。
 
 第一步是从 git 代表获取最新版本的 CLI，并且使用以下命令在你的路径中进行设置：
 
@@ -34,7 +36,8 @@ ms.lasthandoff: 01/05/2017
  azure servicefabric
 ```
 
-对于每个命令，它都支持，你可以键入命令的名称来获取该命令的帮助。 该命令支持自动完成功能。 例如，以下命令提供所有应用程序命令的帮助。 
+对于每个命令，它都支持，你可以键入命令的名称来获取该命令的帮助。
+该命令支持自动完成功能。 例如，以下命令提供所有应用程序命令的帮助。 
 
 ```sh
  azure servicefabric application 
@@ -80,55 +83,58 @@ source ~/azure.completion.sh
  azure servicefabric cluster connect --connection-endpoint http://localhost:19080 --client-connection-endpoint PublicIPorFQDN:19000
 ```
 
-可以使用 PowerShell 或 CLI 与通过 Azure 门户创建的 Linux Service Fabric 群集进行交互。 
+可以使用 PowerShell 或 CLI 与通过 Azure 门户创建的 Linux Service Fabric 群集进行交互。
 
 > [!WARNING]
 > 这些群集不安全，因此，可以通过在群集清单中添加公共 IP 地址打开你的单机。
 
-## <a name="using-the-azure-cli-to-connect-to-a-service-fabric-cluster"></a>使用 Azure CLI 连接到 Service Fabric 群集
+## <a name="using-the-xplat-cli-to-connect-to-a-service-fabric-cluster"></a>使用 XPlat CLI 连接到 Service Fabric 群集
+
 下面的 Azure CLI 命令介绍如何连接到安全的群集。 证书详细信息必须与群集节点上的证书匹配。
 
-```
+```sh
 azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert
 ```
 
 如果你的证书具有证书颁发机构 (CA)，则需要添加 --ca-cert-path 参数，如下例所示： 
 
-```
+```sh
  azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --ca-cert-path /tmp/ca1,/tmp/ca2 
 ```
+
 如果有多个 CA，则使用逗号作为分隔符。
 
-如果证书中的公用名与连接终结点不匹配，则可以使用参数 `--strict-ssl-false` 跳过验证，如下面的命令中所示： 
+如果证书中的公用名与连接终结点不匹配，则可以使用参数 `--strict-ssl-false` 跳过验证，如下面的命令中所示：
 
-```
+```sh
 azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --strict-ssl-false 
 ```
 
 如果想要跳过 CA 验证，可以添加 -reject-unauthorized-false 参数，如下面的命令中所示： 
 
-```
+```sh
 azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --reject-unauthorized-false 
 ```
 
-在连接后，你应能够运行其他 CLI 命令以与群集进行交互。 
+在连接后，你应能够运行其他 CLI 命令以与群集进行交互。
 
 ## <a name="deploying-your-service-fabric-application"></a>部署 Service Fabric 应用程序
+
 执行以下命令以复制、注册和启动 Service Fabric 应用程序：
 
-```
+```sh
 azure servicefabric application package copy [applicationPackagePath] [imageStoreConnectionString] [applicationPathInImageStore]
 azure servicefabric application type register [applicationPathinImageStore]
 azure servicefabric application create [applicationName] [applicationTypeName] [applicationTypeVersion]
 ```
 
-
 ## <a name="upgrading-your-application"></a>升级应用程序
+
 该进程类似于 [Windows 中的进程](service-fabric-application-upgrade-tutorial-powershell.md)。
 
-从项目根目录生成、复制、注册并创建你的应用程序。 如果应用程序实例名为 fabric:/MySFApp，并且类型为 MySFApp，则命令如下所示：
+从项目根目录生成、复制、注册并创建你的应用程序。 如果应用程序实例名为“`fabric:/MySFApp`”，且类型为 MySFApp，命令如下所示：
 
-```
+```sh
  azure servicefabric cluster connect http://localhost:19080
  azure servicefabric application package copy MySFApp fabric:ImageStore
  azure servicefabric application type register MySFApp
@@ -137,7 +143,7 @@ azure servicefabric application create [applicationName] [applicationTypeName] [
 
 对应用程序进行更改，并重新生成已修改的服务。  使用服务（和代码或配置或数据，具体视需要而定）的更新版本来更新已修改的服务清单文件 (ServiceManifest.xml)。 此外，使用应用程序的更新版本号和已修改的服务来修改应用程序的清单 (ApplicationManifest.xml)。  现在，使用以下命令复制并注册更新的应用程序：
 
-```
+```sh
  azure servicefabric cluster connect http://localhost:19080>
  azure servicefabric application package copy MySFApp fabric:ImageStore
  azure servicefabric application type register MySFApp
@@ -145,11 +151,11 @@ azure servicefabric application create [applicationName] [applicationTypeName] [
 
 现在，可以使用以下命令启动应用程序升级：
 
-```
- azure servicefabric application upgrade start -–application-name fabric:/MySFApp -–target-application-type-version 2.0  --rolling-upgrade-mode UnmonitoredAuto
+```sh
+ azure servicefabric application upgrade start -–application-name fabric:/MySFApp -–target-application-type-version 2.0 --rolling-upgrade-mode UnmonitoredAuto
 ```
 
-现在，可以使用 SFX 监视应用程序升级。 在几分钟后，应用程序将得到更新。  你还可以尝试出现错误的更新应用程序，检查 Service Fabric 中的自动回滚功能。
+现在，可以使用 SFX 监视应用程序升级。 在几分钟后，应用程序将得到更新。 你还可以尝试出现错误的更新应用程序，检查 Service Fabric 中的自动回滚功能。
 
 ## <a name="converting-from-pfx-to-pem-and-vice-versa"></a>从 PFX 转换到 PEM，反之亦然
 
@@ -170,36 +176,43 @@ openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 有关详细信息，请参阅 [OpenSSL 文档](https://www.openssl.org/docs/man1.0.1/apps/pkcs12.html)。
 
 <a id="troubleshooting"></a>
+
 ## <a name="troubleshooting"></a>故障排除
+
+
 ### <a name="copying-of-the-application-package-does-not-succeed"></a>复制应用程序包不成功
+
 检查是否已安装 `openssh`。 默认情况下，Ubuntu Desktop 不安装它。 使用以下命令安装它：
 
-```
- sudo apt-get install openssh-server openssh-client**
+```sh
+sudo apt-get install openssh-server openssh-client**
 ```
 
-如果问题仍然存在，请尝试通过使用以下命令更改 **sshd_config** 文件来对 ssh 禁用 PAM：
+如果此问题一再出现，请尝试运行以下命令来更改 `sshd_config` 文件，从而对 ssh 禁用 PAM：
 
 ```sh
- sudo vi /etc/ssh/sshd_config
+sudo vi /etc/ssh/sshd_config
 #Change the line with UsePAM to the following: UsePAM no
- sudo service sshd reload
+sudo service sshd reload
 ```
 
 如果问题仍然存在，请尝试通过执行以下命令增加 ssh 会话数：
 
 ```sh
- sudo vi /etc/ssh/sshd\_config
+sudo vi /etc/ssh/sshd\_config
 # Add the following to lines:
 # MaxSessions 500
 # MaxStartups 300:30:500
- sudo service sshd reload
+sudo service sshd reload
 ```
+
 尚不支持使用密钥（而是支持使用密码）进行 ssh 身份验证（因为该平台使用 ssh 来复制包），因此改为使用密码身份验证。
 
-
-
 ## <a name="next-steps"></a>后续步骤
-设置开发环境并将 Service Fabric 应用程序部署到 Linux 群集。
 
+[设置开发环境，并将 Service Fabric 应用程序部署到 Linux 群集。](service-fabric-get-started-linux.md)
+
+## <a name="related-articles"></a>相关文章
+
+* [Service Fabric 和 Azure CLI 2.0 入门](service-fabric-azure-cli-2-0.md)
 

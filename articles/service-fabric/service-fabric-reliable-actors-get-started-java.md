@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
-ms.openlocfilehash: 8ecc5208237d846d0e81914eee8874ea97744bc3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 450c60abeaaf96c7d82152d425265a6b6714f689
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -177,20 +179,29 @@ public class HelloWorldActorHost {
 最后，应用程序将打包执行组件服务，以及将来可能要为部署添加的其他任何服务。 其中包含执行组件服务包的 *ApplicationManifest.xml* 和占位符。
 
 ## <a name="run-the-application"></a>运行应用程序
-Yeoman 基架包含一个用于构建应用程序的 gradle 脚本，以及一个用于部署和取消部署应用程序的 bash 脚本。 若要运行应用程序，请先使用 gradle 构建应用程序：
+
+Yeoman 基架包含用于生成应用程序的 gradle 脚本，以及用于部署和删除应用程序的 bash 脚本。 若要部署应用程序，请先使用 gradle 生成应用程序：
 
 ```bash
 $ gradle
 ```
 
-这会生成可以使用 Service Fabric Azure CLI 部署的 Service Fabric 应用程序包。 Install.sh 脚本包含用于部署应用程序包的 Azure CLI 命令。 只需运行 install.sh 脚本即可部署：
+这会生成可以使用 Service Fabric CLI 工具部署的 Service Fabric 应用程序包。
 
-```bask
+### <a name="deploy-with-xplat-cli"></a>使用 XPlat CLI 进行部署
+
+如果使用的是 XPlat CLI，则 Install.sh 脚本包含用于部署应用程序包所必需的 Azure CLI 命令。 运行 install.sh 脚本以部署此应用程序。
+
+```bash
 $ ./install.sh
 ```
 
+### <a name="deploy-with-azure-cli-20"></a>使用 Azure CLI 2.0 进行部署
 
+如果使用的是 Azure CLI 2.0，请参阅[使用 Azure CLI 2.0 管理应用程序生命周期](service-fabric-application-lifecycle-azure-cli-2-0.md)的参考文档。
 
-<!--HONumber=Jan17_HO4-->
+## <a name="related-articles"></a>相关文章
 
+* [Service Fabric 和 Azure CLI 2.0 入门](service-fabric-azure-cli-2-0.md)
+* [Service Fabric XPlat CLI 入门](service-fabric-azure-cli.md)
 

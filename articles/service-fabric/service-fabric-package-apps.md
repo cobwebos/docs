@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 3/24/2017
+ms.date: 6/28/2017
 ms.author: ryanwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: f47fbe0e9c6cb4d09e6233f6d26211969a5c1f00
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 48e4ad774164b87d0cacb42f709e54af1d6f07b9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -175,6 +175,17 @@ PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApp
 同样，如果上传了压缩版本的包并需要使用未压缩的包，则必须更新版本以避免校验和不匹配。
 
 现在已将包进行了正确打包、验证和压缩（如需要），因此可以将其[部署](service-fabric-deploy-remove-applications.md)到一个或多个 Service Fabric 群集。
+
+### <a name="compress-packages-when-deploying-using-visual-studio"></a>使用 Visual Studio 部署时压缩程序包
+可以指示 Visual Studio 在部署时压缩程序包，具体方法为将 `CopyPackageParameters` 元素添加到发布配置文件，并将 `CompressPackage` 属性设置为 `true`。
+
+``` xml
+    <PublishProfile xmlns="http://schemas.microsoft.com/2015/05/fabrictools">
+        <ClusterConnectionParameters ConnectionEndpoint="mycluster.westus.cloudapp.azure.com" />
+        <ApplicationParameterFile Path="..\ApplicationParameters\Cloud.xml" />
+        <CopyPackageParameters CompressPackage="true"/>
+    </PublishProfile>
+```
 
 ## <a name="next-steps"></a>后续步骤
 [部署和删除应用程序][10]介绍如何使用 PowerShell 来管理应用程序实例

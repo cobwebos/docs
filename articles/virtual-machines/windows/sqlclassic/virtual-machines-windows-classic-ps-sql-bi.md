@@ -13,18 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/11/2017
+ms.date: 05/30/2017
 ms.author: asaxton
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: ee480f4382a93a2420f7c73f7259ce1f0a03d595
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 1d35dc01aba57dcf8a37db757138abbd7b22c8c5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/02/2017
 
 
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server Business Intelligence
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
 
 Microsoft Azure 虚拟机库包括含有 SQL Server 安装的映像。 库映像中支持的 SQL Server 版本是可以安装到本地计算机和虚拟机的相同安装文件。 本主题总结了在映像上安装的 SQL Server Business Intelligence (BI) 功能以及在预配虚拟机后所需的配置步骤。 本主题还介绍了 BI 功能和最佳实践的受支持的部署拓扑。
 
@@ -39,11 +40,12 @@ Microsoft Azure 虚拟机库包括含有 SQL Server 安装的映像。 库映像
 ## <a name="sql-server-images-available-in-azure-virtual-machine-gallery"></a>在 Azure 虚拟机库中提供的 SQL Server 映像
 Microsoft Azure 虚拟机库包括若干含有 Microsoft SQL Server 的映像。 虚拟机映像上安装的软件根据操作系统版本和 SQL Server 版本而有所不同。 Azure 虚拟机库中提供的映像列表频繁更改。
 
-![Azure VM 库中的 SQL 映像](./media/virtual-machines-windows-classic-ps-sql-bi/IC741367.png)
+<!--![SQL image in azure VM gallery](./media/virtual-machines-windows-classic-ps-sql-bi/IC741367.png)-->
+![Azure VM 库中的 SQL 映像](./media/virtual-machines-windows-classic-ps-sql-bi/vm-sql-images.png)
 
 ![PowerShell](./media/virtual-machines-windows-classic-ps-sql-bi/IC660119.gif) 以下 PowerShell 脚本返回 ImageName 中包含“SQL-Server”的 Azure 映像列表：
 
-    # assumes you have already uploaded a management certificate to your Microsoft Azure Subscription. View the thumbprint value from the "settings" menu in Azure classic portal.
+    # assumes you have already uploaded a management certificate to your Microsoft Azure Subscription. View the thumbprint value from the "Subscriptions" menu in Azure portal.
 
     $subscriptionID = ""    # REQUIRED: Provide your subscription ID.
     $subscriptionName = "" # REQUIRED: Provide your subscription name.
@@ -66,7 +68,7 @@ Microsoft Azure 虚拟机库包括若干含有 Microsoft SQL Server 的映像。
 * [SQL Server 2016 版本支持的功能](https://msdn.microsoft.com/library/cc645993.aspx)
 
 ### <a name="bi-features-installed-on-the-sql-server-virtual-machine-gallery-images"></a>SQL Server 虚拟机库映像上安装的 BI 功能
-下表总结了安装在适用于 SQL Server 的常见 Microsoft Azure 虚拟机库映像上的商业智能功能”
+下表总结了适用于 SQL Server 的常见 Microsoft Azure 虚拟机库映像上安装的商业智能功能：
 
 * SQL Server 2016 SP1 Enterprise
 * SQL Server 2016 SP1 Standard
@@ -156,20 +158,24 @@ SQL Server 的虚拟机库映像包括安装的 Reporting Services 本机模式�
      
       有关详细信息，请参阅[什么是云服务？](https://azure.microsoft.com/manage/services/cloud-services/what-is-a-cloud-service/)。
 
-**启动 Reporting Services 配置管理器。**
 
-1. 在 **Windows Server 2012/2016** 中：
-2. 在“开始”屏幕中，键入 **Reporting Services** 以查看应用列表。
-3. 右键单击“Reporting Services 配置管理器”并单击“以管理员身份运行”。
-4. 在 **Windows Server 2008 R2** 中：
-5. 单击“开始”屏幕，然后单击“所有程序”。
-6. 单击“Microsoft SQL Server 2016”。
-7. 单击“配置工具”。
-8. 右键单击“Reporting Services 配置管理器”并单击“以管理员身份运行”。
+**启动 Reporting Services 配置管理器**
 
-或
+在 **Windows Server 2012/2016** 中：
 
-1. 单击“开始”屏幕。
+1. 在“开始”屏幕中，键入 **Reporting Services** 以查看应用列表。
+2. 右键单击“Reporting Services 配置管理器”并单击“以管理员身份运行”。
+
+在 **Windows Server 2008 R2** 中：
+
+1. 单击“开始”屏幕，然后单击“所有程序”。
+2. 单击“Microsoft SQL Server 2016”。
+3. 单击“配置工具”。
+4. 右键单击“Reporting Services 配置管理器”并单击“以管理员身份运行”。
+
+或：
+
+1. 单击“启动”。
 2. 在“搜索程序和文件”对话框中，键入 **reporting services**。 如果 VM 运行的是 Windows Server 2012，则在 Windows Server 2012“开始”屏幕上键入 **reporting services**。
 3. 右键单击“Reporting Services 配置管理器”并单击“以管理员身份运行”。
    
@@ -239,7 +245,7 @@ SQL Server 的虚拟机库映像包括安装的 Reporting Services 本机模式�
 * **SQL Server Data Tools：远程**：在本地计算机上，在 SQL Server Data Tools 中创建一个包含 Reporting Services 报表的 Reporting Services 项目。 将项目配置为连接到 web 服务 URL。
   
     ![SSRS 项目的 ssdt 项目属性](./media/virtual-machines-windows-classic-ps-sql-bi/IC650114.gif)
-* 创建一个包含报表的 .VHD 硬盘驱动器，然后上载并附加该驱动器。
+* 创建一个包含报表的 .VHD 硬盘驱动器，然后上传并附加该驱动器。
   
   1. 在本地计算机上创建一个包含您的报表的 .VHD 硬盘驱动器。
   2. 创建并安装管理证书。

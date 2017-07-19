@@ -13,19 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 08/09/2016
+ms.date: 07/05/2017
 ms.author: sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ddf93a0db278fffa2aa45fdc73a1c7f57a84fb39
-ms.openlocfilehash: 14140a6aa8c8cccf658f8e98305659e8ae76dcad
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: 1925d4ff8f5b16a0df56de987f8653cfd8441c52
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/31/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
-<a id="azure-sql-database-query-performance-insight" class="xliff"></a>
-
-# Azure SQL 数据库查询性能见解
+# <a name="azure-sql-database-query-performance-insight"></a>Azure SQL 数据库查询性能见解
 管理和优化关系数据库性能是一项颇具挑战性的操作，需要投入大量的专业知识和时间。 查询性能见解通过提供以下内容减少数据库性能故障排除消耗的时间：
 
 * 深入洞察数据库资源 (DTU) 的消耗。 
@@ -35,22 +33,16 @@ ms.lasthandoff: 01/31/2017
 
 
 
-<a id="prerequisites" class="xliff"></a>
-
-## 先决条件
+## <a name="prerequisites"></a>先决条件
 * 查询性能见解要求已在数据库上启用 [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)。 如果未运行查询存储，该门户会提示将其打开。
 
-<a id="permissions" class="xliff"></a>
-
-## 权限
-需要具备以下[基于角色的访问控制](../active-directory/role-based-access-control-configure.md)权限才能使用查询性能见解： 
+## <a name="permissions"></a>权限
+需要具备以下[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)权限才能使用查询性能见解： 
 
 * 需要具备**读者**、**所有者**、**参与者**、**SQL 数据库参与者**或 **SQL Server 参与者**权限才能查看资源占用排名靠前的查询和图表。 
 * 需要具备**所有者**、**参与者**、**SQL 数据库参与者**或 **SQL Server 参与者**权限才能查看查询文本。
 
-<a id="using-query-performance-insight" class="xliff"></a>
-
-## 使用查询性能见解
+## <a name="using-query-performance-insight"></a>使用查询性能见解
 查询性能见解很容易使用：
 
 * 打开 [Azure 门户](https://portal.azure.com/)并找到要检查的数据库。 
@@ -67,9 +59,7 @@ ms.lasthandoff: 01/31/2017
 > 
 > 
 
-<a id="review-top-cpu-consuming-queries" class="xliff"></a>
-
-## 查看 DTU 消耗量靠前的查询
+## <a name="review-top-cpu-consuming-queries"></a>查看 DTU 消耗量靠前的查询
 在[门户](http://portal.azure.com)中执行以下操作：
 
 1. 浏览至 SQL 数据库并单击“**所有设置**” > “**支持 + 疑难解答**” > “**查询性能见解**”。 
@@ -90,7 +80,7 @@ ms.lasthandoff: 01/31/2017
      
      使用复选框选择或清除图表要包含或排除的单个查询。
 3. 如果感觉数据已过时，可单击“**刷新**”按钮。
-4. 可以使用滑块和缩放按钮更改检测间隔及检查峰值： ![设置](./media/sql-database-query-performance/zoom.png)
+4. 可以使用滑块和缩放按钮来更改观测间隔和检查峰值：![设置](./media/sql-database-query-performance/zoom.png)
 5. 或者，如果想要查看不同的视图，则可以选择“**自定义**”选项卡并设置：
    
    * 度量值（CPU、持续时间、执行计数）
@@ -100,9 +90,7 @@ ms.lasthandoff: 01/31/2017
      
      ![设置](./media/sql-database-query-performance/custom-tab.png)
 
-<a id="viewing-individual-query-details" class="xliff"></a>
-
-## 查看单个查询的详细信息
+## <a name="viewing-individual-query-details"></a>查看单个查询的详细信息
 若要查看查询详细信息，请执行以下操作：
 
 1. 单击排位靠前查询所在列表中的任意查询。
@@ -118,9 +106,7 @@ ms.lasthandoff: 01/31/2017
      ![查询详细信息][3]
 4. 或者，可使用滑块、缩放按钮或单击“**设置**”以自定义查询数据显示方式或选择不同的时间段。
 
-<a id="review-top-queries-per-duration" class="xliff"></a>
-
-## 根据持续时间查看热门查询
+## <a name="review-top-queries-per-duration"></a>根据持续时间查看热门查询
 在查询性能见解的最新更新中，我们引入了两个新度量值，他们可以帮助识别潜在的瓶颈：持续时间和执行计数。<br>
 
 长时间运行的查询长时间锁定资源、阻止其他用户和限制可伸缩性的可能性最大。 他们也最适合进行优化。<br>
@@ -138,9 +124,7 @@ ms.lasthandoff: 01/31/2017
      
      ![查询持续时间][4]
 
-<a id="review-top-queries-per-execution-count" class="xliff"></a>
-
-## 根据执行计数查看热门查询
+## <a name="review-top-queries-per-execution-count"></a>根据执行计数查看热门查询
 执行数高可能不会影响数据库本身，资源使用率可能偏低，但是整个应用程序可能会变慢。
 
 某些情况下，执行计数非常高可能会导致网络往返增加。 往返对性能存在重大影响。 他们受网络延迟和下游服务器延迟的制约。 
@@ -155,9 +139,7 @@ ms.lasthandoff: 01/31/2017
    
     ![查询执行计数][5]
 
-<a id="understanding-performance-tuning-annotations" class="xliff"></a>
-
-## 了解性能调优注释
+## <a name="understanding-performance-tuning-annotations"></a>了解性能调优注释
 在查询性能见解中查看工作负荷时，可能会注意到图表顶部上带有竖线的图标。<br>
 
 这些图标是注释；他们代表 [SQL Azure 数据库顾问](sql-database-advisor.md)执行的影响性能的操作。 通过悬停注释，可以获取操作的基本信息：
@@ -168,15 +150,11 @@ ms.lasthandoff: 01/31/2017
 
 ![查询注释详情][7]
 
-<a id="multiple-annotations" class="xliff"></a>
-
-### 多个注释。
+### <a name="multiple-annotations"></a>多个注释。
 由于缩放级别而导致距离彼此较近的注释折叠为一个注释，这是有可能的。 这会由特殊图标表示，单击该图标则会打开新的边栏选项卡，里面会显示分组注释列表。
 关联查询和性能调优操作可以帮助更好地了解自己的工作负荷。 
 
-<a id="optimizing-the-query-store-configuration-for-query-performance-insight" class="xliff"></a>
-
-## 优化查询性能见解的“查询存储”配置
+## <a name="optimizing-the-query-store-configuration-for-query-performance-insight"></a>优化查询性能见解的“查询存储”配置
 在使用查询性能见解的过程中，你可能会遇到以下查询存储消息：
 
 * “此数据库上的 Query Store 未正确配置。 请单击此处了解详细信息。”
@@ -192,9 +170,7 @@ Query Store 处于关闭状态或参数未设置为最优时会发生第二种�
 
 ![qds 按钮][9]
 
-<a id="recommended-retention-and-capture-policy" class="xliff"></a>
-
-### 建议的保留和捕获策略
+### <a name="recommended-retention-and-capture-policy"></a>建议的保留和捕获策略
 有两种类型的保留策略：
 
 * 基于大小的保留策略 - 如果设置为“自动”，则会在快要达到最大大小时自动清除数据。
@@ -232,14 +208,10 @@ Query Store 处于关闭状态或参数未设置为最优时会发生第二种�
     ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
 
 
-<a id="summary" class="xliff"></a>
-
-## 摘要
+## <a name="summary"></a>摘要
 查询性能见解可帮助你了解查询工作负荷的影响，以及它与数据库资源消耗的关系。 使用此功能可以了解排名靠前的消耗查询，并在发生问题之前轻松找出问题。
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 有关改善 SQL 数据库性能的其他建议，请单击“**查询性能见解**”边栏选项卡上的“[建议](sql-database-advisor.md)”。
 
 ![Performance Advisor](./media/sql-database-query-performance/ia.png)

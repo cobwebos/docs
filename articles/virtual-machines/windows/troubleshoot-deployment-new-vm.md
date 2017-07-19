@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 05/26/2017
+ms.date: 06/26/2017
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 8cf37f85236154183590dc07808222125b459acd
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 7453a6525b053e73fd8c935d578ffa9604d6e021
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
@@ -28,6 +28,11 @@ ms.lasthandoff: 03/31/2017
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
+
+## <a name="top-issues"></a>常见问题
+[!INCLUDE [support-disclaimer](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
+
+若有其他 VM 部署问题和疑问，请参阅[排查 Azure 中的 Windows 虚拟机部署问题](troubleshoot-deploy-vm.md)。
 
 ## <a name="collect-activity-logs"></a>收集活动日志
 若要开始故障排除，请收集活动日志，以识别与问题相关的错误。 以下链接包含有关要遵循的过程的详细信息。
@@ -40,17 +45,17 @@ ms.lasthandoff: 03/31/2017
 
 [!INCLUDE [virtual-machines-windows-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-table.md)]
 
-**Y：**如果 OS 是通用的 Windows，并且是使用通用设置上载和/或捕获的，则不会有任何错误。 同理，如果 OS 是通用的 Windows，并且是使用专用设置上载和/或捕获的，则不会有任何错误。
+**Y：**如果 OS 是通用的 Windows，并且是使用通用设置上载和/或捕获的，则不会有任何错误。 同理，如果 OS 是通用的 Windows，并且是使用专用设置上传和/或捕获的，则不会有任何错误。
 
 **上载错误：**
 
-**N<sup>1</sup>：**如果 OS 是通用的 Windows，但是以专用设置上载的，则会发生预配超时错误，并且 VM 会卡在 OOBE 屏幕上。
+N1：如果 OS 是通用的 Windows，但是以专用设置上传的，则会发生预配超时错误，并且 VM 会卡在 OOBE 屏幕上。**N<sup>1</sup>：**如果 OS 是通用的 Windows，但是以专用设置上载的，则会发生预配超时错误，并且 VM 会卡在 OOBE 屏幕上。
 
-**N<sup>2</sup>：**如果 OS 是专用的 Windows，但是以通用设置上载的，则会发生预配失败错误，并且 VM 会卡在 OOBE 屏幕上，因为新 VM 是以原始计算机名称、用户名和密码运行的。
+N2：如果 OS 是专用的 Windows，但是以通用设置上传的，则会发生预配失败错误，并且 VM 会卡在 OOBE 屏幕上，因为新 VM 是以原始计算机名称、**N<sup>2</sup>：**如果 OS 是专用的 Windows，但是以通用设置上载的，则会发生预配失败错误，并且 VM 会卡在 OOBE 屏幕上，因为新 VM 是以原始计算机名称、用户名和密码运行的。用户名和密码运行的。
 
 **解决方法**
 
-若要解决这两个错误，请[使用 Add-AzureRmVhd 上载原始 VHD](https://msdn.microsoft.com/library/mt603554.aspx)、可用的本地设置、以及与该 OS（通用/专用）相同的设置。 若要以通用设置上载，请记得先运行 sysprep。
+若要解决这两个错误，请[使用 Add-AzureRmVhd 上载原始 VHD](https://msdn.microsoft.com/library/mt603554.aspx)、可用的本地设置、以及与该 OS（通用/专用）相同的设置。 若要以通用设置上传，请记得先运行 sysprep。
 
 **捕获错误：**
 

@@ -14,16 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 2f0b7a04f4b732277abc65dd5fe0844d6e906496
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 78025789fd03d3c3a6cfb170329d9d51ac282034
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/28/2017
 
 ---
 
 # <a name="azure-load-balancer-overview"></a>Azure 负载均衡器概述
 
-Azure 负载均衡器可提高应用程序的可用性和网络性能。 它是第 4 层（TCP、UDP）类型的负载均衡器，可在负载平衡集中定义的运行状况良好的服务实例之间分配传入流量。
+Azure 负载均衡器可提高应用程序的可用性和网络性能。 它是第 4 层（TCP、UDP）类型的负载均衡器，可在负载均衡集中定义的运行状况良好的服务实例之间分配传入流量。
 
 可以将 Azure 负载均衡器配置为：
 
@@ -39,7 +40,7 @@ Azure 负载均衡器可提高应用程序的可用性和网络性能。 它是�
 
 ### <a name="azure-classic-deployment-model"></a>Azure 经典部署模型
 
-部署在云服务边界内的虚拟机可组合起来使用一个负载均衡器。 在此模型中，为云服务分配了一个公共 IP 地址和一个完全限定域名 FQDN。 负载均衡器使用云服务的公共 IP 地址进行端口转换以及对网络流量进行负载平衡。
+部署在云服务边界内的虚拟机可组合起来使用一个负载均衡器。 在此模型中，为云服务分配了一个公共 IP 地址和一个完全限定域名 FQDN。 负载均衡器使用云服务的公共 IP 地址进行端口转换以及对网络流量进行负载均衡。
 
 负载均衡的流量由终结点定义。 端口转换终结点在公共 IP 地址的公共分配端口与分配到特定虚拟机上的服务的本地端口之间存在一对一的关系。 负载均衡终结点在公共 IP 地址与分配到云服务中虚拟机上的服务的本地端口之间存在一对多的关系。
 
@@ -53,9 +54,9 @@ Azure 负载均衡器可提高应用程序的可用性和网络性能。 它是�
 
 在 Resource Manager 部署模型中，无需创建云服务。 创建负载均衡器以在多个虚拟机之间显式路由流量。
 
-公共 IP 地址是具有域标签（DNS 名称）的单个资源。 公共 IP 地址与负载均衡器资源关联。 对于接收负载平衡的网络流量的资源，负载均衡器规则和入站 NAT 规则使用公共 IP 地址作为 Internet 终结点。
+公共 IP 地址是具有域标签（DNS 名称）的单个资源。 公共 IP 地址与负载均衡器资源关联。 对于接收负载均衡的网络流量的资源，负载均衡器规则和入站 NAT 规则使用公共 IP 地址作为 Internet 终结点。
 
-将专用或公共 IP 地址分配给附加到虚拟机的网络接口资源。 将网络接口添加到负载均衡器的后端 IP 地址池后，负载均衡器就可以根据所创建的负载平衡规则发送负载平衡的网络流量。
+将专用或公共 IP 地址分配给附加到虚拟机的网络接口资源。 将网络接口添加到负载均衡器的后端 IP 地址池后，负载均衡器就可以根据所创建的负载均衡规则发送负载均衡的网络流量。
 
 下图显示了此模型中的 Azure 负载均衡器：
 
@@ -118,6 +119,10 @@ Azure 负载均衡器可提高应用程序的可用性和网络性能。 它是�
 可将多个负载均衡的公共 IP 地址分配给一组虚拟机。 可以通过此功能在同一组虚拟机上托管多个 SSL 网站和/或多个 SQL Server AlwaysOn 可用性组侦听器。 有关详细信息，请参阅[每个云服务多个 VIP](load-balancer-multivip.md)。
 
 [!INCLUDE [load-balancer-compare-tm-ag-lb-include.md](../../includes/load-balancer-compare-tm-ag-lb-include.md)]
+
+## <a name="limitations"></a>限制
+
+负载均衡器后端池可以包含任意 VM SKU，基本层除外。
 
 ## <a name="next-steps"></a>后续步骤
 

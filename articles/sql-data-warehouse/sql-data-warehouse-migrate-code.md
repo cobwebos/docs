@@ -13,21 +13,21 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: migrate
-ms.date: 01/30/2017
+ms.date: 06/23/2017
 ms.author: joeyong;barbkess
 ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 3fd5224983c723faefb8001888ae20e78acdb8ce
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: c6e6b890f5e2d0e31b10bbb6803adad02bf60248
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
 # <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>将 SQL 代码迁移到 SQL 数据仓库
-将代码从其他数据库迁移到 SQL 数据仓库时，你很可能需要更改代码库。 某些 SQL 数据仓库功能设计为以分布方式运行，因此可以大幅改善性能。 但是，为了保持性能和缩放性，某些功能还无法使用。
+本文介绍了将代码从其他数据库迁移到 SQL 数据仓库时可能需要做出的代码更改。 某些 SQL 数据仓库功能设计为以分布方式运行，因此可以大幅改善性能。 但是，为了保持性能和缩放性，某些功能还无法使用。
 
 ## <a name="common-t-sql-limitations"></a>常见的 T-SQL 限制
-以下列表汇总了最常用但却不受 Azure SQL 数据仓库支持的功能。 单击这些链接可以转到解决不支持功能的方法：
+下面的列表汇总了 SQL 数据仓库不支持的最常用功能。 单击相应链接可以查看不支持的功能对应的解决方法：
 
 * [对更新操作使用 ANSI 联接][ANSI joins on updates]
 * [对删除操作使用 ANSI 联接][ANSI joins on deletes]
@@ -80,7 +80,7 @@ SQL 数据仓库支持部分通用表表达式 (CTE)。  目前支持以下 CTE 
 * 用在通过 sp_prepare 进行准备的语句中时，CTE 的表现方式与 PDW 中的其他 SELECT 语句相同。 但是，如果 CTE 用作 sp_prepare 所准备的 CETAS 的一部分，则因为针对 sp_prepare 实现绑定的方式不同，CTE 的行为将与 SQL Server 和其他 PDW 语句不同。 如果引用 CTE 的 SELECT 使用了不在 CTE 中的错误列，sp_prepare 将会通过且不检测错误，但在 sp_execute 期间将引发错误。
 
 ## <a name="recursive-ctes"></a>递归 CTE
-SQL 数据仓库不支持递归 CTE。  递归 CTE 的迁移过程可能有点复杂，最好是将其分为多个步骤来进行。 通常你可以使用循环，并在循环访问递归的临时查询时填充临时表。 填充临时表之后，你可以使用单个结果集返回数据。 类似的方法已用于解决[结合 rollup/cube/grouping sets 选项的 Group By 子句][group by clause with rollup / cube / grouping sets options]一文中所述的 `GROUP BY WITH CUBE`。
+SQL 数据仓库不支持递归 CTE。  递归 CTE 的迁移过程可能有点复杂，最佳做法是将此过程拆分为多步过程。 通常你可以使用循环，并在循环访问递归的临时查询时填充临时表。 填充临时表之后，你可以使用单个结果集返回数据。 类似的方法已用于解决[结合 rollup/cube/grouping sets 选项的 Group By 子句][group by clause with rollup / cube / grouping sets options]一文中所述的 `GROUP BY WITH CUBE`。
 
 ## <a name="unsupported-system-functions"></a>不支持的系统函数
 还有一些不支持的系统函数。 在数据仓库中，你可能经常发现使用了下面这些主要函数：

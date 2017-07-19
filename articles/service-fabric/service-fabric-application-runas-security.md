@@ -12,17 +12,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/05/2017
+ms.date: 06/30/2017
 ms.author: mfussell
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: ce1291261cd8f65d44873217345ae6efaa515534
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: e673b45a43a06d18040c3437caf8765704d5c36a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
 # <a name="configure-security-policies-for-your-application"></a>配置应用程序的安全策略
-Azure Service Fabric 能够保护群集中以不同用户帐户运行的应用程序。 Service Fabric 还有助于在部署时使用用户帐户来保护应用程序所用的资源，例如文件、目录和证书。 这样，即使在共享托管环境中，也可确保运行的应用程序彼此更安全。
+使用 Azure Service Fabric，可以保护群集中以不同用户帐户运行的应用程序。 Service Fabric 还有助于在部署时使用用户帐户来保护应用程序所用的资源，例如文件、目录和证书。 这样，即使在共享托管环境中，也可确保运行的应用程序彼此更安全。
 
 默认情况下，Service Fabric 应用程序在运行 Fabric.exe 程序的帐户之下运行。 Service Fabric 还可让你使用应用程序清单中指定的本地用户帐户或本地系统帐户运行应用程序。 受支持的本地系统帐户类型为 **LocalUser**、**NetworkService**、**LocalService** 和 **LocalSystem**。
 
@@ -202,7 +203,7 @@ Echo "Test console redirection which writes to the application log folder on the
 在前面步骤中，你已了解如何将 RunAs 策略应用于 SetupEntryPoint。 让我们深入了解如何创建可作为服务策略应用的不同主体。
 
 ### <a name="create-local-user-groups"></a>创建本地用户组
-可以定义和创建允许将一个或多个用户添加到组的用户组。 如果不同的服务入口点有多个用户，而且这些用户需要拥有可在组级别使用的某些常用权限，则这种做法特别有用。 下面的示例演示一个名为 **LocalAdminGroup** 的具有管理员权限的本地组。 Customer1 和 Customer2 这两个用户已成为此本地组的成员。
+可以定义和创建允许将一个或多个用户添加到组的用户组。 如果不同的服务入口点对应有多个用户，而且这些用户需要拥有特定的常见组级别权限，这种做法就特别有用。 下面的示例演示一个名为 **LocalAdminGroup** 的具有管理员权限的本地组。 Customer1 和 Customer2 这两个用户已成为此本地组的成员。
 
 ```xml
 <Principals>
@@ -270,7 +271,7 @@ Echo "Test console redirection which writes to the application log folder on the
 </Policies>
 ```
 ### <a name="use-an-active-directory-domain-group-or-user"></a>使用 Active Directory 域组或用户
-对于使用独立安装程序在 Windows Server 上安装的 Service Fabric 实例，可以使用 Active Directory 用户或组帐户的凭据来运行服务。 注意：这是域中的本地 Active Directory，不是 Azure Active Directory (Azure AD)。 通过使用域用户或组，可以访问域中已被授予权限的其他资源（例如文件共享）。
+对于使用独立安装程序在 Windows Server 上安装的 Service Fabric 实例，可以使用 Active Directory 用户或组帐户的凭据来运行服务。 这是域中的本地 Active Directory，不是 Azure Active Directory (Azure AD)。 通过使用域用户或组，可以访问域中已被授予权限的其他资源（例如文件共享）。
 
 下面的示例演示名为 *TestUser* 的 Active Directory 用户，其域密码使用名为 *MyCert* 的证书进行了加密。 可以使用 `Invoke-ServiceFabricEncryptText` PowerShell 命令创建密码文本。 请参阅[管理 Service Fabric 应用程序中的机密](service-fabric-application-secret-management.md)获取详细信息。
 
@@ -304,7 +305,7 @@ Echo "Test console redirection which writes to the application log folder on the
 ```
 New-ADServiceAccount -name svc-Test$ -DnsHostName svc-test.contoso.com  -ServicePrincipalNames http/svc-test.contoso.com -PrincipalsAllowedToRetrieveManagedPassword SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$
 ```
-2. 在每个 service fabric 群集节点（例如 `SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$`）上，安装并测试 gMSA。
+2. 在每个 Service Fabric 群集节点（例如，`SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$`）上，安装并测试 gMSA。
 ```
 Add-WindowsFeature RSAT-AD-PowerShell
 Install-AdServiceAccount svc-Test$
@@ -330,7 +331,7 @@ Test-AdServiceAccount svc-Test$
 ```
 
 ## <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>为 HTTP 和 HTTPS 终结点分配安全访问策略
-如果向服务应用 RunAs 策略务，而服务清单声明具有 HTTP 协议的终结点资源，则必须指定 **SecurityAccessPolicy**，以确保分配给这些终结点的端口都已针对用来运行服务的 RunAs 用户帐户正确列入访问控制列表中。 否则，**http.sys** 将无权访问服务，并且将无法从客户端调用。 以下示例将 Customer3 帐户应用到名为 **ServiceEndpointName** 的终结点，并向它授予完全访问权限。
+如果向服务应用 RunAs 策略务，而服务清单声明具有 HTTP 协议的终结点资源，则必须指定 **SecurityAccessPolicy**，以确保分配给这些终结点的端口都已针对用来运行服务的 RunAs 用户帐户正确列入访问控制列表中。 否则，**http.sys** 将无权访问服务，并且将无法从客户端调用。 以下示例将 Customer1 帐户应用于名为“EndpointName”的终结点，并向它授予完全访问权限。
 
 ```xml
 <Policies>
@@ -351,7 +352,12 @@ Test-AdServiceAccount svc-Test$
   <EndpointBindingPolicy EndpointRef="EndpointName" CertificateRef="Cert1" />
 </Policies
 ```
+## <a name="upgrading-multiple-applications-with-https-endpoints"></a>使用 https 终结点升级多个应用程序
+请注意，使用 https时，不要将相同端口用于同一应用程序的不同实例。 原因是，Service Fabric 无法升级应用程序实例之一的证书。 例如，如果应用程序 1 或应用程序 2 都要将证书 1 升级为证书 2。 升级时，Service Fabric 可能已使用 http.sys 清除了证书 1 注册，即使其他应用程序仍在使用它，也不例外。 为了防止发生这种情况，Service Fabric 检测到另一个应用程序实例已在带证书的端口上注册（由于 http.sys），导致操作失败。
 
+因此，Service Fabric 不支持通过以下方法升级两个不同的服务：在不同的应用程序实例中使用同一端口。 也就是说，不能对同一端口上的不同服务使用同一证书。 如果需要在同一端口上使用共享证书，请务必将服务放置在具有放置约束的不同计算机上。 或者，如果可以，考虑将 Service Fabric 动态端口用于每个应用程序实例中的各个服务。 
+
+如果 https 升级失败，则会看到内容为“Windows HTTP Server API 不支持对共享端口的应用程序使用多个证书”的错误警告。
 
 ## <a name="a-complete-application-manifest-example"></a>完整应用程序清单的示例
 以下应用程序清单显示了许多不同的设置：

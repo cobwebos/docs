@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell 脚本 - 设置异地复制 - 入池 SQL 数据库 | Microsoft 文档"
-description: "Azure PowerShell 脚本示例 - 使用 PowerShell 为入池 Azure SQL 数据库设置活动异地复制"
+title: "PowerShell 示例 - 活动异地复制 - 共用 Azure SQL 数据库 | Microsoft Docs"
+description: "为共用 Azure SQL 数据库设置活动异地复制的 Azure PowerShell 示例脚本"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -14,19 +14,19 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 05/23/2017
+ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 3f62371eb84df1ba0f29ef2c6fe0da82674ed069
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 34a4970e9b0e99cbbbbc52788b00edab4a197755
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="configure-active-geo-replication-for-a-pooled-azure-sql-database-using-powershell"></a>使用 PowerShell 为入池 Azure SQL 数据库配置活动异地复制
+# <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-azure-sql-database"></a>使用 PowerShell 为共用 Azure SQL 数据库配置活动异地复制
 
-此示例 PowerShell 脚本为弹性池中的数据库配置活动异地复制，并将其故障转移到辅助副本。
+以下 PowerShell 脚本示例为弹性池中的 Azure SQL 数据库配置活动异地复制，并将其故障转移到 Azure SQL 数据库的次要副本。
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 

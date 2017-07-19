@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: d1f1852d720ebf51df9ec3207b070510b08a6483
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 5a6cc2db67bb60c84c9d9c08346074e9e05345f8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -42,7 +42,7 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
 
 ![BGP 拓扑](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crosspremv2v.png)
 
-你可以将这些部分组合在一起，以构建满足你的需要的更复杂的多希望传输网络。
+可以综合考虑这些任务，生成更复杂的多跃点传输网络，以满足需求。
 
 ## <a name ="enablebgp"></a>第 1 部分 - 在 Azure VPN 网关上配置 BGP
 以下配置步骤将设置 Azure VPN 网关的 BGP 参数，如下面的图中所示：

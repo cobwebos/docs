@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 02/03/2017
 ms.author: genemi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4421506f516e6a65b7ff9207ce13dfb86e7c3540
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: a49be9d5037af120e429a9cc7ae77ceda5e03236
 ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/17/2016
    * 选择要将事件的输出发送给环形缓冲区类型的目标，即 **package0.ring_buffer**。
 3. 启动事件会话。
 4. 发出几个简单的 SQL UPDATE 语句。
-5. 发出 SQL SELECT 以检索环形缓冲区的事件输出。
+5. 发出 SQL SELECT 语句，从环形缓冲区检索事件输出。
    
    * **sys.dm_xe_database_session_targets** 和其他动态管理视图 (DMV) 联接在一起。
 6. 停止事件会话。
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/17/2016
 * Azure 帐户和订阅。 你可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 可以在其中创建表的任何数据库。
   
-  * 或者，也可以快速[创建一个** AdventureWorksLT **演示数据库](sql-database-get-started.md)。
+  * 或者，也可以快速[创建一个 **AdventureWorksLT** 演示数据库](sql-database-get-started.md)。
 * SQL Server Management Studio (ssms.exe)，最好是每月更新版。 
   可从以下位置下载最新的 ssms.exe：
   

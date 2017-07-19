@@ -1,5 +1,5 @@
 ---
-title: "单一数据库的 Azure SQL 数据库性能 | Microsoft 文档"
+title: "Azure SQL 数据库性能优化指南 | Microsoft Docs"
 description: "此文可帮助你确定哪个服务层适合你的应用程序。 它还会提供调整建议使的应用程序可以充分利用 Azure SQL 数据库。"
 services: sql-database
 documentationcenter: na
@@ -16,210 +16,51 @@ ms.workload: data-management
 ms.date: 02/09/2017
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 984adf244596578a3301719e5ac2f68a841153bf
-ms.openlocfilehash: c01b8c174567f745e2803a1498ec0b9a762e94ae
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: dc0244f0e0949b172c391825057f5c14893a5158
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/23/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
-# <a name="azure-sql-database-and-performance-for-single-databases"></a>Azure SQL 数据库和单一数据库的性能
-Azure SQL 数据库提供了三个[服务层](sql-database-service-tiers.md)：基本、标准和高级。 每个服务层可严格隔离你的 SQL 数据库可以使用的资源，并保证相应服务级别的可预测性能。 在本文中，我们将提供指南，帮助你选择应用程序的服务层。 另外，还会讨论如何优化你的应用程序以充分利用 Azure SQL 数据库。
+# <a name="tuning-performance-in-azure-sql-database"></a>优化 Azure SQL 数据库性能
+
+借助 Azure SQL 数据库提供的[建议](sql-database-advisor.md)，可以提升数据库性能，也可以让 Azure SQL 数据库[自动适应应用程序](sql-database-automatic-tuning.md)并应用更改来提升工作负载性能。
+
+如果没有任何适用的建议，但仍有性能问题，可以使用下列方法来提升性能：
+1. 增加[服务层](sql-database-service-tiers.md)并向数据库提供更多资源。
+2. 优化应用程序，并应用一些可以提升性能的最佳做法。 
+3. 通过更改索引和查询来优化数据库，以便更有效地处理数据。
+
+这些都是手动方法，因为需要决定选择或需要哪些[服务层](sql-database-service-tiers.md)，以便重写应用程序或数据库代码，并部署所做的更改。
+
+## <a name="increasing-performance-tier-of-your-database"></a>增加数据库性能层
+
+Azure SQL 数据库提供以下四个[服务层](sql-database-service-tiers.md)可供选择：基本、标准、高级和高级 RS（通过数据库吞吐量单位 ([DTU](sql-database-what-is-a-dtu.md)) 衡量性能）。 每个服务层可严格隔离你的 SQL 数据库可以使用的资源，并保证相应服务级别的可预测性能。 在本文中，我们将提供指南，帮助你选择应用程序的服务层。 另外，还会讨论如何优化你的应用程序以充分利用 Azure SQL 数据库。
 
 > [!NOTE]
 > 本文侧重于 Azure SQL 数据库中单一数据库的性能指南。 有关弹性池的性能指南，请参阅[弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。 不过，请注意，你也可以将本文中的多项优化建议应用于弹性池中的数据库，获得类似的性能优势。
 > 
-> 
 
-有三个可以选择的 Azure SQL 数据库服务层（性能以数据库吞吐量单位 ([DTU](sql-database-what-is-a-dtu.md)) 进行衡量）：
-
-* **基本**。 基本服务层针对每个数据库提供各小时内的良好性能可预测性。 在基本数据库中，足够的资源可支持不具有多个并发请求的小型数据库中的良好性能。
-* **标准**。 标准服务层改进了具有多个并发请求的数据库（例如工作组和 Web 应用程序）的性能可预测性并提供良好的性能。 选择标准服务层数据库时，可以根据每分钟的可预测性能调整数据库应用程序的大小。
-* **高级**。 高级服务层针对每个高级数据库提供每秒的可预测性能。 选择高级服务层时，可以根据该数据库的峰值负载调整数据库应用程序的大小。 该计划消除了在易受延迟影响操作中性能变动可导致小型查询耗时超出预期的情况。 对于需要明确表明最大资源需求、性能变动或查询延迟的应用程序，此模型可大大简化开发和产品验证周期。
-
-在每个服务层，由你设置性能级别，因此你可以灵活地只为所需的容量付费。 你可以根据工作负荷变化向上或向下[调整容量](sql-database-service-tiers.md)。 例如，如果数据库工作负荷在返校购物季期间很高，则可在设定的时间内（七月到九月）提高数据库的性能级别， 而在高峰季结束之后降低性能级别。 可以按业务的季节性因素优化云环境，将支出降至最低。 此模型也很适合软件产品发布环节。 测试团队可在进行测试运行时分配容量，一旦完成测试，即释放该容量。 在容量请求模型中，只为所需容量付费，而避免在很少使用的专用资源上支出。
-
-## <a name="why-service-tiers"></a>为什么使用服务层？
-尽管每个数据库工作负荷可能各不相同，但服务层的目的就是在不同的性能级别下提供性能可预测性。 数据库资源要求繁杂的客户可以在更专用的计算环境中运行其数据库。
-
-### <a name="common-service-tier-use-cases"></a>常见服务层用例
-#### <a name="basic"></a>基本
-* **你刚开始使用 Azure SQL 数据库**。 开发中的应用程序通常不需要高性能级别。 基本数据库是较低价位的数据库开发的理想环境。
-* **数据库包含单个用户**。 将单个用户与某个数据库进行关联的应用程序通常在并发能力和性能方面不会有很高的要求。 这些应用程序是基本服务层的候选。
-
-#### <a name="standard"></a>标准
-* **数据库具有多个并发请求**。 同时为多个用户服务的应用程序通常需要更高的性能级别。 例如，获取需要更多资源的中等流量或部门应用程序的网站非常适合标准服务层。
-
-#### <a name="premium"></a>高级
-大多数高级服务层用例都具有一个或多个下列特征：
-
-* **高峰值负载**。 需要大量 CPU、内存或输入/输出 (I/O) 才能完成其操作的应用程序，都需要专用、高性能级别。 例如，已知较长时间使用多个 CPU 内核的数据库操作非常适合高级服务层。
-* **多个并发请求**。 某些数据库应用程序为多个并发请求服务，例如，为具有高流量的网站服务。 基本服务层和标准服务层对每个数据库的并发请求数都有限制。 需要更多连接的应用程序将需要选择合适的预留大小，以处理最大所需的请求数。
-* **低延迟时间**。 某些应用程序需要确保在最短时间内从数据库获得响应。 如果在更大范围的客户操作期间调用了特定存储过程，则有 99% 的时间可能要求在 20 毫秒内从该调用返回。 此类型的应用程序受益于高级服务层，以确保提供所需的计算能力。
+* **基本**：基本服务层可以准确预测各个数据库的每小时性能。 在基本数据库中，足够的资源可支持不具有多个并发请求的小型数据库中的良好性能。 需要使用基本服务层的典型用例为：
+  * **你刚开始使用 Azure SQL 数据库**。 开发中的应用程序通常不需要高性能级别。 基本数据库是用于数据库开发或测试的理想环境，价位较低。
+  * **数据库包含单个用户**。 将单个用户与某个数据库进行关联的应用程序通常在并发能力和性能方面不会有很高的要求。 这些应用程序是基本服务层的候选。
+* **标准**：标准服务层改进了性能预测，并能提升包含多个并发请求的数据库（如工作组和 Web 应用程序）的性能。 选择标准服务层数据库时，可以根据每分钟的可预测性能调整数据库应用程序的大小。
+  * **数据库具有多个并发请求**。 同时为多个用户服务的应用程序通常需要更高的性能级别。 例如，具有低到中等规模 IO 流量要求且支持多个并发查询的工作组或 Web 应用程序是标准服务层的最佳选择。
+* **高级**：高级服务层可预测各个高级数据库的每秒性能。 选择高级服务层时，可以根据该数据库的峰值负载调整数据库应用程序的大小。 该计划消除了在易受延迟影响操作中性能变动可导致小型查询耗时超出预期的情况。 对于需要明确表明最大资源需求、性能变动或查询延迟的应用程序，此模型可大大简化开发和产品验证周期。 大多数高级服务层用例都具有一个或多个下列特征：
+  * **高峰值负载**。 需要大量 CPU、内存或输入/输出 (I/O) 才能完成其操作的应用程序，都需要专用、高性能级别。 例如，已知较长时间使用多个 CPU 内核的数据库操作非常适合高级服务层。
+  * **多个并发请求**。 某些数据库应用程序为多个并发请求服务，例如，为具有高流量的网站服务。 基本服务层和标准服务层对每个数据库的并发请求数都有限制。 需要更多连接的应用程序将需要选择合适的预留大小，以处理最大所需的请求数。
+  * **低延迟时间**。 某些应用程序需要确保在最短时间内从数据库获得响应。 如果在更大范围的客户操作期间调用了特定存储过程，则有 99% 的时间可能要求在 20 毫秒内从该调用返回。 此类型的应用程序受益于高级服务层，以确保提供所需的计算能力。
+* **高级 RS**：高级 RS 层专为不需要最高可用性保证的 IO 密集型工作负载设计。 示例包括测试高性能工作负荷或数据库不是记录系统的分析工作负荷。
 
 SQL 数据库所需的服务级别取决于每个资源维度的峰值负载要求。 某些应用程序可能少量使用某个资源，但需要大量使用其他资源。
 
-## <a name="service-tier-capabilities-and-limits"></a>服务层功能和限制
-每个服务层和性能级别都与不同的限制和性能特征相关联。 此表描述单一数据库的这些特征。
+### <a name="service-tier-capabilities-and-limits"></a>服务层功能和限制
 
-[!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
+在每个服务层，由你设置性能级别，因此你可以灵活地只为所需的容量付费。 你可以根据工作负荷变化向上或向下[调整容量](sql-database-service-tiers.md)。 例如，如果数据库工作负荷在返校购物季期间很高，则可在设定的时间内（七月到九月）提高数据库的性能级别， 而在高峰季结束之后降低性能级别。 可以按业务的季节性因素优化云环境，将支出降至最低。 此模型也很适合软件产品发布环节。 测试团队可在进行测试运行时分配容量，一旦完成测试，即释放该容量。 在容量请求模型中，只为所需容量付费，而避免在很少使用的专用资源上支出。
 
-### <a name="maximum-in-memory-oltp-storage"></a>最大内存中 OLTP 存储
-可以使用 **sys.dm_db_resource_stats** 视图来监视 Azure 内存中存储的使用情况。 有关监视的详细信息，请参阅[监视内存中 OLTP 存储](sql-database-in-memory-oltp-monitoring.md)。
-
-### <a name="maximum-concurrent-requests"></a>最大并发请求数
-若要查看并发请求数，请在 SQL 数据库中运行以下 Transact-SQL 查询：
-
-    SELECT COUNT(*) AS [Concurrent_Requests]
-    FROM sys.dm_exec_requests R
-
-若要分析本地 SQL Server 数据库的工作负荷，请修改此查询以筛选要分析的特定数据库。 例如，如果有一个名为 MyDatabase 的本地数据库，此 TRANSACT-SQL 查询返回该数据库中的并发请求计数：
-
-    SELECT COUNT(*) AS [Concurrent_Requests]
-    FROM sys.dm_exec_requests R
-    INNER JOIN sys.databases D ON D.database_id = R.database_id
-    AND D.name = 'MyDatabase'
-
-这只是某一时刻的快照。 若要更好地了解工作负荷和并发请求要求，你将需要在一段时间内收集多个样本。
-
-### <a name="maximum-concurrent-logins"></a>最大并发登录数
-你可以通过分析用户和应用程序模式来了解登录频率。 还可以在测试环境中运行实际负荷，确保不会超过本文所讨论的这样或那样的限制。 没有单个查询或动态管理视图 (DMV) 可以为你显示并发登录计数或历史记录。
-
-如果多个客户端使用相同的连接字符串，该服务也会对每个登录名进行身份验证。 如果 10 个用户使用相同的用户名和密码同时连接到数据库，将有 10 个并发登录。 此限制仅适用于登录和身份验证期间。 如果相同的 10 个用户按顺序连接到数据库，则并发登录数将不会大于 1。
-
-> [!NOTE]
-> 此限制目前不适用于弹性池中的数据库。
-> 
-> 
-
-### <a name="maximum-sessions"></a>最大会话数
-若要查看当前活动会话数，请在 SQL 数据库中运行以下 Transact-SQL 查询：
-
-    SELECT COUNT(*) AS [Sessions]
-    FROM sys.dm_exec_connections
-
-如果你要分析本地 SQL Server 工作负荷，可以对查询进行修改，使之专注于特定的数据库。 如果考虑将数据库移至 Azure SQL 数据库，此查询可帮助你确定该数据库可能的会话需求。
-
-    SELECT COUNT(*)  AS [Sessions]
-    FROM sys.dm_exec_connections C
-    INNER JOIN sys.dm_exec_sessions S ON (S.session_id = C.session_id)
-    INNER JOIN sys.databases D ON (D.database_id = S.database_id)
-    WHERE D.name = 'MyDatabase'
-
-同样，这些查询将返回时间点计数。 如果在一段内收集多个样本，则会对会话的使用情况有最佳了解。
-
-对于 SQL 数据库分析，也可以通过查询 [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) 视图并查看 **active_session_count** 列获取会话的历史统计信息。 
-
-## <a name="monitor-resource-use"></a>监视资源使用情况
-
-可以使用 [SQL 数据库 Query Performance Insight](sql-database-query-performance.md) 和 [Query Store](https://msdn.microsoft.com/library/dn817826.aspx) 监视资源使用情况。
-
-也可以使用以下两个视图来监视使用情况：
-
-* [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
-* [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
-
-### <a name="sysdmdbresourcestats"></a>sys.dm_db_resource_stats
-你可以在每个 SQL 数据库中使用 [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) 视图。 **Sys.dm_db_resource_stats** 视图显示相对于服务层的最新资源使用数据。 CPU 平均百分比、数据 I/O、日志写入以及内存每 15 秒记录一次，持续记录 1 小时。
-
-由于此视图提供了更精细的资源使用情况，因此首先将 **sys.dm_db_resource_stats** 用于任何当前状态分析或故障排除。 例如，此查询显示过去一小时的当前数据库平均和最大资源使用情况：
-
-    SELECT  
-        AVG(avg_cpu_percent) AS 'Average CPU use in percent',
-        MAX(avg_cpu_percent) AS 'Maximum CPU use in percent',
-        AVG(avg_data_io_percent) AS 'Average data I/O in percent',
-        MAX(avg_data_io_percent) AS 'Maximum data I/O in percent',
-        AVG(avg_log_write_percent) AS 'Average log write use in percent',
-        MAX(avg_log_write_percent) AS 'Maximum log write use in percent',
-        AVG(avg_memory_usage_percent) AS 'Average memory use in percent',
-        MAX(avg_memory_usage_percent) AS 'Maximum memory use in percent'
-    FROM sys.dm_db_resource_stats;  
-
-有关其他查询，请参阅 [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) 中的示例。
-
-### <a name="sysresourcestats"></a>sys.resource_stats
-**master** 数据库中的 [Sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) 视图包含可帮助你监视 SQL 数据库在特定服务层和性能级别的性能。 每 5 分钟收集一次数据，并且会保留大约 35 天。 此视图可用于 SQL 数据库使用资源的方式的长期历史分析。
-
-下图显示一周内每小时的 P2 性能级别高级数据库的 CPU 资源使用情况。 此图形从周一开始，显示 5 个工作日，然后显示周末（应用程序上很少发生的情况）。
-
-![SQL 数据库资源使用情况](./media/sql-database-performance-guidance/sql_db_resource_utilization.png)
-
-从数据而言，此数据库当前有一个峰值 CPU 负载刚好超过相对于 P2 性能级别的 50% CPU 使用率（星期二中午）。 如果 CPU 是应用程序资源配置文件的决定因素，你可以决定 P2 是适当的性能级别以保证工作负荷始终适合。 如果希望应用程序可以随时间增长，最好具有额外的资源缓冲，以便应用程序不会达到性能级别的限制。 如果增加性能级别，则有助于避免当数据库没有足够能力有效处理请求（尤其是在易受延迟影响的环境中）时向客户显示错误。 一个示例是支持应用程序根据数据库调用结果绘制网页的数据库。
-
-其他应用程序类型可能以不同的方式解释同一图形。 例如，如果某个应用程序尝试每天处理工资数据并使用相同的图表，则在 P1 性能级别也许就能让此类“批处理作业”模型正常工作。 P1 性能级别有 100 个 DTU，P2 性能级别有 200 个 DTU。 P1 性能级别提供的性能是 P2 性能级别的一半。 因此，P2 中 50% 的 CPU 使用率相当于 P1 中 100 % 的 CPU 使用率。 如果应用程序没有超时，则作业耗时 2 小时或 2.5 小时完成并不重要（如果今天完成）。 此类别中的应用程序可能使用 P1 性能级别。 你可以充分利用一天之中资源使用率较低的时间段，以便“大峰值”可以溢出到当天稍后的某个低谷。 只要作业可以每天按时完成，P1 性能级别就适用于该类型的应用程序（且节省费用）。
-
-Azure SQL 数据库在每个服务器的 **master** 数据库的 **sys.resource_stats** 视图中，公开每个活动数据库的资源耗用信息。 表中的数据以 5 分钟为间隔收集而得。 对于基本、标准和高级服务层，数据可能需要再耗费 5 分钟才会出现在表中，以使此数据更有利于历史分析而非接近实时的分析。 查询 **sys.resource_stats** 视图，以查看数据库的最近历史记录和验证你选择的保留是否提供了所需的性能。
-
-> [!NOTE]
-> 你必须连接到逻辑 SQL 数据库服务器的 **master** 数据库，才能查询下面示例中的 **sys.resource_stats**。
-> 
-> 
-
-此示例演示如何公开此视图中的数据：
-
-    SELECT TOP 10 *
-    FROM sys.resource_stats
-    WHERE database_name = 'resource1'
-    ORDER BY start_time DESC
-
-![sys.resource_stats 目录视图](./media/sql-database-performance-guidance/sys_resource_stats.png)
-
-下面的示例演示你可以用不同方式使用 **sys.resource_stats** 目录视图，以获取有关 SQL 数据库如何使用资源的信息：
-
-1. 若要查看数据库 userdb1 过去一周的资源使用情况，可以运行此查询：
-   
-        SELECT *
-        FROM sys.resource_stats
-        WHERE database_name = 'userdb1' AND
-              start_time > DATEADD(day, -7, GETDATE())
-        ORDER BY start_time DESC;
-2. 若要评估你的工作负荷与性能级别的适合程度，需要向下钻取资源指标的每个方面：CPU、读取数、写入数、辅助进程数和会话数。 下面是使用 **sys.resource_stats** 的修订查询，用于报告这些资源度量值的平均值和最大值：
-   
-        SELECT
-            avg(avg_cpu_percent) AS 'Average CPU use in percent',
-            max(avg_cpu_percent) AS 'Maximum CPU use in percent',
-            avg(avg_data_io_percent) AS 'Average physical data I/O use in percent',
-            max(avg_data_io_percent) AS 'Maximum physical data I/O use in percent',
-            avg(avg_log_write_percent) AS 'Average log write use in percent',
-            max(avg_log_write_percent) AS 'Maximum log write use in percent',
-            avg(max_session_percent) AS 'Average % of sessions',
-            max(max_session_percent) AS 'Maximum % of sessions',
-            avg(max_worker_percent) AS 'Average % of workers',
-            max(max_worker_percent) AS 'Maximum % of workers'
-        FROM sys.resource_stats
-        WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
-3. 使用每个资源指标的平均值和最大值信息，可以评估你的工作负荷与所选性能级别的适合程度。 通常情况下，**sys.resource_stats** 中的平均值可提供一个用于目标大小的良好基准。 它应该是你的主要测量标杆。 例如，你可能正在使用 S2 性能级别的标准服务层。 CPU 平均使用率和 I/O 读写百分比低于 40%，平均辅助进程数低于 50，平均会话数低于 200。 你的工作负荷可能适合 S1 性能级别。 很容易查看你的数据库是否在辅助角色和会话限制内。 若要查看数据库是否适合 CPU 和读写数等更低性能级别，请将更低性能级别的 DTU 数除以当前性能级别的 DTU 数，然后将结果乘以 100：
-   
-    **S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40**
-   
-    结果是以百分比表示的两个性能级别之间的相对性能差异。 如果资源率使用不超出此量，则你的工作负荷可能适合更低的性能级别。 但是，你需要查看资源用量值的所有范围，并按百分比确定数据库工作负荷适合更低性能级别的频率。 以下查询将会根据此示例中计算得出的 40% 阈值，输出每个资源维度的适合百分比：
-   
-        SELECT
-            (COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU Fit Percent'
-            ,(COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Log Write Fit Percent'
-            ,(COUNT(database_name) - SUM(CASE WHEN avg_data_io_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Physical Data IO Fit Percent'
-        FROM sys.resource_stats
-        WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
-   
-    根据数据库服务级别目标 (SLO)，你可以决定工作负荷是否适合更低的性能级别。 如果数据库工作负荷 SLO 为 99.9%，而上述查询针对所有三个资源维度返回的值大于 99.9%，则工作负荷可能适合更低的性能级别。
-   
-    查看适合性百分比还可以深入分析是否应转到下一个更高的性能级别以满足 SLO。 例如，userdb1 显示过去一周的如下 CPU 使用率：
-   
-   | 平均 CPU 百分比 | 最大 CPU 百分比 |
-   | --- | --- |
-   | 24.5 |100.00 |
-   
-    平均 CPU 大约是性能级别限制的四分之一，这意味着它很适合数据库的性能级别限制。 但是，最大值显示该数据库达到了性能级别的限制。 在这种情况下，是否需要转到下一个更高的性能级别？ 查看工作负荷达到 100% 的次数，然后将这种情况与数据库工作负荷 SLO 进行比较。
-   
-        SELECT
-        (COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU fit percent'
-        ,(COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Log write fit percent'
-        ,(COUNT(database_name) - SUM(CASE WHEN avg_data_io_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Physical data I/O fit percent'
-        FROM sys.resource_stats
-        WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
-   
-    如果对于三个资源维度中的任何一个维度，此查询返回的值小于 99.9%，请考虑转到下一个更高的性能级别，或使用应用程序优化技术来减少 SQL 数据库上的负载。
-4. 本练习还应将未来预计的工作负荷增加考虑在内。
+### <a name="why-service-tiers"></a>为什么使用服务层？
+尽管每个数据库工作负荷可能各不相同，但服务层的目的就是在不同的性能级别下提供性能可预测性。 数据库资源要求繁杂的客户可以在更专用的计算环境中运行其数据库。
 
 ## <a name="tune-your-application"></a>优化应用程序
 在传统的本地 SQL Server 中，初始容量规划的过程通常与在生产环境中运行应用程序的过程分离。 首先，购买硬件和产品许可证，然后完成性能优化。 当使用 Azure SQL 数据库时，最好混杂运行和调整应用程序的过程。 使用按需支付容量的模型，你可以优化应用程序以使用目前所需的最少资源，而不是靠推测应用程序的未来增长计划过度配置硬件（这通常是不正确的做法）。 有些客户可能选择不优化应用程序，而是选择过度配置硬件资源。 如果不想在繁忙期更改关键应用程序，这个方法可能是一个不错的主意。 但是，在使用 Azure SQL 数据库中的服务层时，优化应用程序可以使资源需求降至最低并减少每月的费用。
@@ -229,13 +70,13 @@ Azure SQL 数据库在每个服务器的 **master** 数据库的 **sys.resource_
 
 * **因“闲聊”行为而性能变慢的应用程序**。 闲聊应用程序会进行过多的对网络延迟敏感的数据访问操作。 你可能需要修改这些类型的应用程序，以减少对 SQL 数据库进行的数据访问操作的数量。 例如，可以通过批处理即席查询或将查询移到存储过程等技术来提高应用程序性能。 有关详细信息，请参阅[批处理查询](#batch-queries)。
 * **具有不受整台计算机支持的密集型工作负荷的数据库**。 超过最高高级性能级别的资源的数据库可能受益于横向扩展工作负荷。 有关详细信息，请参阅[跨数据库分片](#cross-database-sharding)和[功能分区](#functional-partitioning)。
-* **具有非最优查询的应用程序**。 没有很好优化查询的应用程序（尤其是数据访问层中的那些应用程序），则可能不会受益于更高的性能级别。 其中包括缺少 WHERE 子句、缺少索引或统计信息过时的查询。 标准查询性能优化技术能够为这些应用程序带来好处。 有关详细信息，请参阅[缺少索引](#missing-indexes)和[查询优化和提示](#query-tuning-and-hinting)。
+* **具有非最优查询的应用程序**。 没有很好优化查询的应用程序（尤其是数据访问层中的那些应用程序），则可能不会受益于更高的性能级别。 其中包括缺少 WHERE 子句、缺少索引或统计信息过时的查询。 标准查询性能优化技术能够为这些应用程序带来好处。 有关详细信息，请参阅[缺少索引](#identifying-and-adding-missing-indexes)和[查询优化和提示](#query-tuning-and-hinting)。
 * **具有非最优数据访问设计的应用程序**。 选择较高的性能级别可能无法为存在固有数据访问并发问题（例如死锁）的应用程序带来好处。 应考虑通过使用 Azure 缓存服务或其他缓存技术将数据缓存在客户端，减少与 Azure SQL 数据库之间的往返次数。 请参阅[应用程序层缓存](#application-tier-caching)。
 
-## <a name="tuning-techniques"></a>优化方法
+## <a name="tune-your-database"></a>优化数据库
 在本节中，我们将了解一些用于优化 Azure SQL 数据库的技术，以获取应用程序的最佳性能，并以尽可能低的性能级别运行。 其中某些技术可与传统 SQL Server 优化最佳做法搭配使用，但其他技术是特定于 Azure SQL 数据库的。 在某些情况下，可以检查数据库的使用资源找到进一步优化的区域，并扩展传统 SQL Server 技术以便在 Azure SQL 数据库中使用。
 
-### <a name="azure-portal-tools"></a>Azure 门户工具
+### <a name="identify-performance-issues-using-azure-portal"></a>使用 Azure 门户发现性能问题
 Azure 门户中的以下工具可帮助分析和解决 SQL 数据库的性能问题：
 
 * [查询性能见解](sql-database-query-performance.md)
@@ -243,7 +84,9 @@ Azure 门户中的以下工具可帮助分析和解决 SQL 数据库的性能问
 
 Azure 门户提供了有关这两个工具以及使用方法的更多信息。 若要有效地诊断并更正问题，建议首先在 Azure 门户中尝试这两个工具。 建议使用接下来要讨论的手动优化方法，用于特殊案例中的缺少索引和查询优化。
 
-### <a name="missing-indexes"></a>缺少索引
+若要详细了解如何在 Azure SQL 数据库中发现问题，请参阅[性能监视](sql-database-single-database-monitor.md)一文。
+
+### <a name="identifying-and-adding-missing-indexes"></a>发现并添加缺失索引
 OLTP 数据库性能有一个常见问题与物理数据库设计有关。 设计和交付数据库架构时，通常不进行规模（负载或数据卷）测试。 遗憾的是，在规模较小时，查询计划的性能可能尚可接受，但在生产级数据卷下性能就会大幅降低。 此问题最常见的原因是缺乏相应的索引，无法满足筛选器或查询中的其他限制。 缺少索引经常导致表扫描，而此时索引搜寻即可满足要求。
 
 在此示例中，所选的查询计划在搜寻即可满足要求时使用扫描：

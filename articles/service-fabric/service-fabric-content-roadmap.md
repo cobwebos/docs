@@ -1,6 +1,6 @@
 ---
-title: "了解 Azure Service Fabric | Microsoft Docs"
-description: "Azure Service Fabric 的概述和入门指南。 了解 Service Fabric 并开始开发由微服务组成的可缩放、可靠且易于管理的应用程序。"
+title: "详细了解 Azure Service Fabric | Microsoft Docs"
+description: "了解 Azure Service Fabric 的核心概念和主要应用领域。 扩展概述了 Service Fabric 以及如何创建微服务。"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,64 +12,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/18/2017
+ms.date: 06/14/2017
 ms.author: ryanwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: e1b8eba3e6ed91f87c4f2adfbba19d8fe2712920
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: a4bc09d4b8b9f3bd207ffca977e9098d562bb9fd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>想要了解 Service Fabric 吗？
-此入门提供了 Service Fabric 的简要概述、对核心概念和术语的简介、入门指南以及对 Service Fabric 各个部分的概述。 此入门不包含全面的内容列表，但提供 Service Fabric 每个部分的概述和入门文章的链接。 
-
-## <a name="the-five-minute-overview"></a>五分钟概述
-Azure Service Fabric 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。 Service Fabric 解决了开发和管理云应用程序中的重大难题。 通过使用 Service Fabric，开发人员和管理员可以避免解决复杂的基础结构问题。 你可以专注于实现任务关键型、要求苛刻的工作负荷，你知道它们可缩放、可靠且易于管理。 Service Fabric 代表用于生成和管理这些企业级的一级云规模应用程序的下一代中间件平台。 
-
-这段简短 Channel9 视频介绍了 Service Fabric 和微服务：<center><a target="_blank" href="https://aka.ms/servicefabricvideo">  
-<img src="./media/service-fabric-content-roadmap/OverviewVid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
-
-## <a name="the-detailed-overview"></a>详细概述
-借助 Service Fabric，可以生成和管理由微服务构成的可缩放且可靠的应用程序。 这些微服务在计算机的共享池上以高密度运行，它们被称为群集。 它可以提供复杂运行时，用于构建分布式、可扩展的无状态和有状态微服务。 它还提供了全面的应用程序管理功能，用于设置、部署、监视、升级/修补和删除部署的应用程序。 请阅读 [Service Fabric 概述](service-fabric-overview.md)了解详细信息。
-
-为什么选择微服务设计方法？ 所有应用程序会随着时间而发展。 成功的应用程序因为有实用性而发展。 现在对要求了解多少，未来又有何变化？ 在已知以后可以重新设计应用程序的情况下，有时向外寻求概念证明才是驱动因素。 另一方面，公司谈论构建云时都期望成长和使用量。 问题在于成长和规模不可预测。 在知道应用可缩放以对不可预测的成长和使用量做出反应的情况下，开发人员希望快速获得原型。 [什么是微服务？](service-fabric-overview-microservices.md)说明了微服务设计方法如何应对这些挑战，以及如何创建可独立扩展或缩减、测试、部署和管理的微服务。
-
-Service Fabric 提供了一个可靠而灵活的平台，使你能够编写和运行多种类型的业务应用程序与服务。 还可以运行任何现有应用程序（以任意语言编写）。 这些应用程序和微服务可以为无状态或有状态，并且它们在各虚拟机间的资源平衡，可最大限度提高工作效率。 Service Fabric 的独特体系结构使你可以在应用程序中执行近实时数据分析、内存中计算、并行事务和事件处理。 你可以根据不断变化的资源要求轻松[向上或向下缩放应用程序](service-fabric-concepts-scalability.md)（其实是扩展或缩减）。 阅读[应用程序方案](service-fabric-application-scenarios.md)以及[模式和方案](service-fabric-patterns-and-scenarios.md)，了解可创建的应用程序和服务的类别以及客户案例研究。
-
-此内容较长的 Microsoft 虚拟大学视频介绍 Service Fabric 核心概念：<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">  
-<img src="./media/service-fabric-content-roadmap/CoreConceptsVid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
-
-## <a name="get-started-and-create-your-first-app"></a>开始使用并创建第一个应用 
-使用 Service Fabric SDK 和工具，可在 Windows、Linux 或 MacOS 环境中开发应用，并将这些应用部署到在 Windows 或 Linux 上运行的群集。 以下指南指导如何在几分钟内部署应用。 运行第一个应用程序后，下载并运行[示例应用](http://aka.ms/servicefabricsamples)。 具体而言，从[入门示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)开始
-
-### <a name="on-windows"></a>在 Windows 上
-Service Fabric SDK 包含一个用于 Visual Studio 的外接程序，它可提供用于创建、部署和调试 Service Fabric 应用程序的模板和工具。 这些主题会指导你完成在 Visual Studio 中创建你的第一个应用程序，并在开发计算机上运行该程序的过程。
-
-[设置开发环境](service-fabric-get-started.md)
-[创建第一个应用 (C#)](service-fabric-create-your-first-application-in-visual-studio.md)
-
-#### <a name="practical-hands-on-labs"></a>实际动手实验
-请尝试此全面的[动手实验第 1 部分](https://msdnshared.blob.core.windows.net/media/2016/07/SF-Lab-Part-I.docx)，熟悉 Service Fabric 的端到端开发流程。 了解如何创建一个无状态服务、配置监视和运行状况报告并执行应用程序升级。 阅读第 1 部分后，请参阅[动手实验第 2 部分](http://aka.ms/sflab2)，其将引导你创建有状态服务。
-
-下面的 Channel9 视频会指导你完成在 Visual Studio 中创建 C# 应用的过程：  
-<center><a target="_blank" href="https://channel9.msdn.com/Blogs/Azure/Creating-your-first-Service-Fabric-application-in-Visual-Studio">  
-<img src="./media/service-fabric-content-roadmap/first-app-vid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
-
-### <a name="on-linux"></a>在 Linux 上
-Service Fabric 提供用于在 Linux 上使用 .NET Core 和 Java 构建服务的 SDK。 这些主题会指导你在 Linux 上创建你的第一个 Java 或 C# 应用程序，并在开发计算机上运行该程序：[设置开发环境](service-fabric-get-started-linux.md)、[创建你的第一个应用 (Java)](service-fabric-create-your-first-linux-application-with-java.md) 和[创建你的第一个应用 (C#)](service-fabric-create-your-first-linux-application-with-csharp.md)。
-
-以下 Microsoft 虚拟大学视频逐步讲解了在 Linux 上创建 Java 应用的过程：  
-<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
-<img src="./media/service-fabric-content-roadmap/LinuxVid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
-
-### <a name="on-macos"></a>在 MacOS 上
-可在 MacOS X 上构建在 Linux 群集上运行的 Service Fabric 应用程序。 这些文章介绍了如何设置 Mac 进行开发，以及如何在 MacOS 上创建 Java 应用程序并在 Ubuntu 虚拟机上运行它：[设置开发环境](service-fabric-get-started-mac.md)和[创建你的第一个应用 (Java)](service-fabric-create-your-first-linux-application-with-java.md)。
+Azure Service Fabric 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。  不过，Service Fabric 的外围应用领域广泛，有很多东西需要学习。  本文简要说明了 Service Fabric，并介绍了核心概念、编程模型、应用程序生命周期、测试、群集和运行状况监视。 请参阅[概述](service-fabric-overview.md)和[什么是微服务？](service-fabric-overview-microservices.md)，概览相关信息，并了解如何使用 Service Fabric 创建微服务。 本文包含的内容列表虽不完整，但确实提供了 Service Fabric 每个应用领域的概述和入门文章链接。 
 
 ## <a name="core-concepts"></a>核心概念
 此处介绍基础知识，有关详细概念和介绍，可参阅 [Service Fabric 术语](service-fabric-technical-overview.md)、[应用程序模型](service-fabric-application-model.md)和[支持的编程模型](service-fabric-choose-framework.md)。
@@ -82,7 +36,7 @@ Service Fabric 提供用于在 Linux 上使用 .NET Core 和 Java 构建服务�
 <img src="./media/service-fabric-content-roadmap/RunTimeVid.png" WIDTH="240" HEIGHT="162"></a></td></tr>
 </table>
 
-### <a name="design-time-app-type-service-type-app-package-and-manifest-service-package-and-manifest"></a>设计时：应用类型、服务类型，应用包和清单、服务包和清单
+### <a name="design-time-application-type-service-type-application-package-and-manifest-service-package-and-manifest"></a>设计时：应用程序类型、服务类型，应用程序包和清单、服务包和清单
 应用程序类型是分配给服务类型集合的名称/版本。 这在 ApplicationManifest.xml 文件中定义，该文件嵌入到应用程序包目录中。 然后将应用程序包复制到 Service Fabric 群集的映像存储。 然后，可基于此应用程序类型，创建在群集内运行的命名应用程序。 
 
 服务类型是分配给服务的代码包、数据包、配置包的名称/版本。 这在 ServiceManifest.xml 文件中定义，该文件嵌入到服务包目录中。 然后，服务包目录由应用程序包的 ApplicationManifest.xml 文件引用。 在群集中创建命名应用程序后，你可以从应用程序类型的服务类型之一创建命名服务。 服务类型由其 ServiceManifest.xml 文件描述。 服务类型由在运行时加载的可执行代码服务配置设置和服务使用的静态数据组成。
@@ -93,7 +47,7 @@ Service Fabric 提供用于在 Linux 上使用 .NET Core 和 Java 构建服务�
 
 服务包是一个磁盘目录，其中包含服务类型的 ServiceManifest.xml 文件，该文件引用服务类型的代码、静态数据和配置包。 应用程序类型的 ApplicationManifest.xml 文件引用服务包目录中的文件。 例如，服务包可能引用构成数据库服务的代码、静态数据和配置包。
 
-### <a name="run-time-clusters-and-nodes-named-apps-named-services-partitions-and-replicas"></a>运行时：群集和节点、命名应用，命名服务、分区和副本
+### <a name="run-time-clusters-and-nodes-named-applications-named-services-partitions-and-replicas"></a>运行时：群集和节点、命名的应用程序、命名的服务、分区和副本
 [Service Fabric 群集](service-fabric-deploy-anywhere.md)是一组通过网络连接在一起的虚拟机或物理计算机，你的微服务将在其中部署和管理。 群集可以扩展到成千上万台计算机。
 
 属于群集一部分的计算机或 VM 称为节点。 需为每个节点分配节点名称（字符串）。 节点具有各种特征，如放置属性。 每个计算机或 VM 都有一个自动启动 Windows 服务 `FabricHost.exe`，此服务在引导时开始运行，然后启动两个可执行文件：`Fabric.exe` 和 `FabricGateway.exe`。 这两个可执行文件构成了节点。 在开发或测试方案中，你可以通过运行 `Fabric.exe` 和 `FabricGateway.exe` 的多个实例，在单台计算机或 VM 上托管多个节点。
@@ -117,14 +71,21 @@ Service Fabric 提供用于在 Linux 上使用 .NET Core 和 Java 构建服务�
 
 在分区中，无状态命名服务具有实例，而有状态命名服务具有副本。 通常，无状态命名服务只有一个分区，因为它们没有内部状态。 分区实例提供[可用性](service-fabric-availability-services.md)。 如果一个实例失败，其他实例可继续正常运行，然后 Service Fabric 将创建新的实例。 有状态命名服务在副本中保持其状态，每个分区都有自己的副本集。 在一个副本（以下称为“主副本”）上执行读取和写入操作。 因写入操作发生的状态更改将复制到其他多个副本（以下称为活动辅助副本）。 如果某个副本失败，Service Fabric 将从现有副本创建新副本。
 
+## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>无状态和有状态 Service Fabric 微服务
+使用 Service Fabric，可以生成包含微服务或容器的应用程序。 无状态微服务（例如网关、Web 代理）不维护除请求及其来自服务的响应之外任何可变状态。 Azure 云服务辅助角色是无状态服务的一个示例。 有状态微服务（例如，用户帐户、数据库、设备、购物车、队列）维护除请求及其响应之外的可变、授权状态。 当今的 Internet 规模应用程序包含无状态和有状态微服务的组合。 
+
+Service Fabric 的关键区别在于，大力注重使用[内置编程模型](service-fabric-choose-framework.md)或容器化有状态服务生成有状态服务。 [应用程序方案](service-fabric-application-scenarios.md)介绍了可使用有状态服务的方案。
+
+为何要将有状态和无状态的微服务一同使用？ 有以下两个主要原因：
+
+* 在同一台计算机上禁用代码和数据，可以生成高吞吐量、低延迟、容错联机事务处理 (OLTP) 服务。 一些示例包括互动商店、搜索、物联网 (IoT) 系统、交易系统、信用卡处理和欺诈检测系统，以及个人档案管理。
+* 可以简化应用程序设计。 有状态微服务删除了传统上需要用来处理纯无状态应用程序的可用性和延迟需求的附加队列和缓存。 有状态服务原本就具有高可用性和低延迟，减少了在应用程序中要作为一个整体进行管理的移动部件的数量。
+
 ## <a name="supported-programming-models"></a>支持的编程模型
 Service Fabric 提供了多种方法来编写和管理服务。 服务可以使用 Service Fabric API 来充分利用平台的功能和应用程序框架。 服务还可以是采用任何语言编写的任意编译可执行程序，并在 Service Fabric 群集上托管。 有关详细信息，请参阅[支持的编程模型](service-fabric-choose-framework.md)。
 
-### <a name="guest-executables"></a>来宾可执行文件
-[来宾可执行文件](service-fabric-deploy-existing-app.md)是（采用任何语言编写的）任意现有可执行文件，并在 Service Fabric 群集及其他服务上托管。 但是，来宾可执行文件不直接与 Service Fabric API 集成。 来宾可执行文件不会从平台所提供的完整功能集中获益，例如自定义健康和负载报告、服务终结点注册和有状态计算。
-
 ### <a name="containers"></a>容器
-默认情况下，Service Fabric 以进程形式部署和激活这些服务。 Service Fabric 还可以在[容器](service-fabric-containers-overview.md)中部署服务。 重要的是，你可以在同一应用程序中混合进程中的服务和容器中的服务。 目前，Service Fabric 支持在 Linux 上部署 Docker 容器，还支持在 Windows Server 2016 上部署 Windows Server 容器。 在 Service Fabric 应用程序模型中，容器表示放置多个服务副本的应用程序主机。 可以使用 Service Fabric 在容器中部署现有应用程序、无状态服务或有状态服务。 
+默认情况下，Service Fabric 以进程形式部署和激活这些服务。 Service Fabric 还可以在[容器](service-fabric-containers-overview.md)中部署服务。 重要的是，你可以在同一应用程序中混合进程中的服务和容器中的服务。 Service Fabric 支持在 Windows Server 2016 上部署 Linux 容器和 Windows 容器。 可以在容器中部署现有应用程序、无状态服务或有状态服务。 
 
 ### <a name="reliable-services"></a>Reliable Services
 [Reliable Services](service-fabric-reliable-services-introduction.md) 是一个用于编写服务的轻型框架，这些服务与 Service Fabric 平台集成并且受益于完整的平台功能集。 Reliable Services 可以是无状态的（与大多数服务平台类似，例如 Web 服务器或 Azure 云服务中的辅助角色），此时状态保存在外部解决方案中，例如 Azure DB 或 Azure 表存储。 Reliable Services 也可以是有状态的，此时状态使用 Reliable Collections 直接保存在服务中。 通过复制使状态具有[高可用性](service-fabric-availability-services.md)，以及通过[分区](service-fabric-concepts-partitioning.md)来分布状态，所有状态由 Service Fabric 自动管理。
@@ -132,7 +93,13 @@ Service Fabric 提供了多种方法来编写和管理服务。 服务可以使�
 ### <a name="reliable-actors"></a>Reliable Actors
 [Reliable Actor](service-fabric-reliable-actors-introduction.md) 框架在 Reliable Services 的基础上构建，是根据执行组件设计模式实现虚拟执行组件模式的应用程序框架。 Reliable Actor 框架使用称为执行组件的单线程执行的独立的计算单元和状态。 Reliable Actor 框架为执行组件提供内置通信，以及提供预设的状态暂留和扩展配置。
 
-## <a name="app-lifecycle"></a>应用生命周期
+### <a name="aspnet-core"></a>ASP.NET Core
+Service Fabric 与 [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) 集成，作为用于生成 Web 和 API 应用程序的第一类编程模型
+
+### <a name="guest-executables"></a>来宾可执行文件
+[来宾可执行文件](service-fabric-deploy-existing-app.md)是（采用任何语言编写的）任意现有可执行文件，并在 Service Fabric 群集及其他服务上托管。 来宾可执行文件不直接与 Service Fabric API 集成。 不过，它们仍受益于平台提供的功能，如自定义运行状况和负载报表以及服务可发现性（通过调用 REST API）。 它们还具有完整的应用程序生命周期支持。 
+
+## <a name="application-lifecycle"></a>应用程序生命周期
 与其他平台一样，Service Fabric 上的应用程序通常将经历以下几个阶段：设计、开发、测试、部署、升级、维护和删除。 Service Fabric 为云应用程序的整个应用程序生命周期提供一流的支持：从开发到部署、到日常管理和维护，再到最终解除授权。 服务模型使多个不同角色可以独立参与到应用程序生命周期中。 [Service Fabric 应用程序生命周期](service-fabric-application-lifecycle.md)一文提供了有关 API 的概述，以及在 Service Fabric 应用程序生命周期的各个阶段，它们是如何被不同角色所使用的。 
 
 可以使用 [PowerShell cmdlet](/powershell/module/ServiceFabric/)、[C# API](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)、[Java API](/java/api/system.fabric._application_management_client) 和 [REST API](/rest/api/servicefabric/) 管理整个应用生命周期。 还可以使用 [Visual Studio Team Services](service-fabric-set-up-continuous-integration.md) 或 [Jenkins](service-fabric-cicd-your-linux-java-application-with-jenkins.md) 等工具来设置连续集成/连续部署管道
@@ -141,8 +108,8 @@ Service Fabric 提供了多种方法来编写和管理服务。 服务可以使�
 <img src="./media/service-fabric-content-roadmap/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 
-## <a name="test-apps-and-services"></a>测试应用和服务
-若要创建真正的云规模服务，必须确保应用和服务能够承受现实中的故障。 故障分析服务是在 Service Fabric 基础上专为测试服务构建的。 借助故障分析服务 (service-fabric-testability-overview.md)，可以引发有意义的故障，并对你的应用程序运行完整的测试方案。 这些故障和方案将执行并验证服务在整个生命周期内要经历的大量状态和转换，所有一切都以受控、安全且一致的方式进行。
+## <a name="test-applications-and-services"></a>测试应用程序和服务
+若要创建真正的云规模服务，请务必确保应用程序和服务能够经受住现实中发生的故障。 故障分析服务是在 Service Fabric 基础上专为测试服务构建的。 借助故障分析服务 (service-fabric-testability-overview.md)，可以引发有意义的故障，并对你的应用程序运行完整的测试方案。 这些故障和方案将执行并验证服务在整个生命周期内要经历的大量状态和转换，所有一切都以受控、安全且一致的方式进行。
 
 [操作](service-fabric-testability-actions.md)使用单独故障针对某个服务进行测试。 服务开发人员可将这些操作用作构造块来编写复杂的方案。 模拟故障的示例包括：
 
@@ -166,7 +133,7 @@ Service Fabric 提供了多种方法来编写和管理服务。 服务可以使�
 </a></center>
 
 ### <a name="clusters-on-azure"></a>Azure 上的群集
-在 Azure 上运行 Service Fabric 群集可提供与其他 Azure 功能和服务的集成，这样可使群集的操作和管理更容易且更可靠。 群集是 Azure Resource Manager 资源，因此可以像 Azure 中的其他资源一样对群集进行建模。 Resource Manager 还可以轻松管理群集作为单个单元使用的所有资源。 Azure 上的群集与 Azure 诊断和 Log Analytics 集成。 群集 nodetype 是[虚拟机规模集](/azure/virtual-machine-scale-sets/index)，因此自动缩放功能是内置的。
+在 Azure 上运行 Service Fabric 群集可提供与其他 Azure 功能和服务的集成，这样可使群集的操作和管理更容易且更可靠。 群集是 Azure Resource Manager 资源，因此可以像 Azure 中的其他资源一样对群集进行建模。 Resource Manager 还可以轻松管理群集作为单个单元使用的所有资源。 Azure 上的群集与 Azure 诊断和 Log Analytics 集成。 群集节点类型是[虚拟机规模集](/azure/virtual-machine-scale-sets/index)，因此自动缩放功能是内置的。
 
 可以通过 [Azure 门户](service-fabric-cluster-creation-via-portal.md)、[模板](service-fabric-cluster-creation-via-arm.md)或 [Visual Studio](service-fabric-cluster-creation-via-visual-studio.md) 在 Azure 上创建群集。
 
@@ -175,7 +142,7 @@ Service Fabric 提供了多种方法来编写和管理服务。 服务可以使�
 由于 Linux 上的 Service Fabric 是预览版，因此某些在 Windows 上受支持的功能，在 Linux 上不受支持。 若要了解详细信息，请参阅 [Linux 上的 Service Fabric 与 Windows 上的 Service Fabric 之间的差异](service-fabric-linux-windows-differences.md)。
 
 ### <a name="standalone-clusters"></a>独立群集
-Service Fabric 提供一个安装包，用于在本地或者任何云提供程序上创建独立的 Service Fabric 群集。 独立群集可让你随时随地托管群集。 如果你的数据受符合性或法规约束，或者需要将数据保留在本地，可以托管你自己的群集和应用。 Service Fabric 可在多个托管环境中运行，而不发生任何更改，因此你对生成应用的了解在各个托管环境中都适用。 
+Service Fabric 提供一个安装包，用于在本地或者任何云提供程序上创建独立的 Service Fabric 群集。 独立群集可让你随时随地托管群集。 如果数据受符合性或法规约束，或者需要将数据保留在本地，可以托管自己的群集和应用程序。 Service Fabric 应用程序可在多个托管环境中运行，而不发生任何变化。因此，在应用程序生成方面的知识在各个托管环境中都适用。 
 
 [创建第一个独立的 Service Fabric 群集](service-fabric-get-started-standalone-cluster.md)
 

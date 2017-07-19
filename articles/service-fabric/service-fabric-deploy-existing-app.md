@@ -12,17 +12,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/07/2016
+ms.date: 07/02/2017
 ms.author: mfussell;mikhegn
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 16000dcb751bd96fba247c6209e85c581833681d
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: a1db3dda674ffe43587333d88f3816549af3019c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
 # <a name="deploy-a-guest-executable-to-service-fabric"></a>将来宾可执行文件部署到 Service Fabric
-可以在 Azure Service Fabric 中运行任何类型的应用程序，如 Node.js、Java 或本机应用程序。 Service Fabric 将这些类型的应用程序称为来宾可执行文件。
+可以在 Azure Service Fabric 中运行任何类型的代码（如 Node.js、Java 或 C++）作为服务。 Service Fabric 将这些类型的服务称为来宾可执行文件。
+
 来宾可执行文件由 Service Fabric 如同无状态服务一样进行处理。 因此，它们会基于可用性和其他指标放在群集中的节点上。 本文介绍了如何使用 Visual Studio 或命令行实用工具打包来宾可执行文件，并将其部署到 Service Fabric 群集中。
 
 在本文中，我们会介绍打包来宾可执行文件并将它部署到 Service Fabric 的步骤。  
@@ -34,6 +36,7 @@ ms.lasthandoff: 04/07/2017
 * 运行状况监视。 Service Fabric 运行状况监视功能可检测应用程序是否正在运行，并在出现故障时提供诊断信息。   
 * 应用程序生命周期管理。 除了提供无需停机的升级，Service Fabric 还可以在升级过程中报告坏健康事件时自动回滚到先前的版本。    
 * 密度。 可以在群集中运行多个应用程序，这样便无需使每个应用程序在自己的硬件上运行。
+* 可发现性：使用 REST，可以调用要在群集中查找其他服务的 Service Fabric 命名服务。 
 
 ## <a name="samples"></a>示例
 * [打包和部署来宾可执行文件的示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
@@ -43,7 +46,7 @@ ms.lasthandoff: 04/07/2017
 在部署来宾可执行文件期间，最好先了解 Service Fabric 打包和部署模型（如[应用程序模型](service-fabric-application-model.md)中所述）。 Service Fabric 打包模型依赖两个 XML 文件：应用程序清单和服务清单。 ApplicationManifest.xml 和 ServiceManifest.xml 文件的架构定义随 Service Fabric SDK 一起安装到 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*。
 
 * **应用程序清单**：应用程序清单用于描述应用程序。 其中会列出应用程序所包含的服务，以及用于定义应如何部署一个或多个服务的其他参数（如实例数）。
-  
+
   在 Service Fabric 中，应用程序就是一个部署和升级单元。 应用程序可以作为单一单元进行升级，从中可以管控潜在失败和可能的回滚。 Service Fabric 可保证要么升级成功，要么即使升级失败，也不会让应用程序处于未知或不稳定状态。
 * **服务清单**：服务清单描述服务的组件。 其中包括数据（如服务的名称和类型）及其代码和配置。 服务清单还包含一些可以用于在部署之后配置服务的其他参数。
 
@@ -70,24 +73,23 @@ ApplicationPackageRoot 包含定义应用程序的 ApplicationManifest.xml 文�
 
 > [!NOTE]
 > 如果不需要，就无需创建 `config` 和 `data` 目录。
-> 
-> 
+>
+>
 
 ## <a name="package-an-existing-executable"></a>打包现有可执行文件
 在打包来宾可执行文件时，可以选择是使用 Visual Studio 项目模板，还是[手动创建应用程序包](#manually)。 使用 Visual Studio 时，新的项目模板会为你创建应用程序包结构和清单文件。
 
 > [!TIP]
-> 将现有 Windows 可执行文件打包到服务中的最简单方法就是使用 Visual Studio。
-> 
-> 
+> 将现有 Windows 可执行文件打包到服务中的最简单方法就是使用 Visual Studio 以及在 Linux 上使用 Yeoman
+>
 
-## <a name="use-visual-studio-to-package-an-existing-executable"></a>使用 Visual Studio 打包现有可执行文件
+## <a name="use-visual-studio-to-package-and-deploy-an-existing-executable"></a>使用 Visual Studio 打包和部署现有可执行文件
 Visual Studio 提供 Service Fabric 服务模板来帮助你将来宾可执行文件部署到 Service Fabric 群集。
 
 1. 依次选择“**文件**” > “**新建项目**”，然后创建一个 Service Fabric 应用程序。
 2. 选择“**来宾可执行文件**”作为服务模板。
 3. 单击“**浏览**”，选择包含可执行文件的文件夹，然后填充剩余参数，从而创建服务。
-   * *代码包行为*。 可以设置为将文件夹中的所有内容复制到 Visual Studio 项目中，这在可执行文件不发生变化时很有用。 如果预期可执行文件会更改，并且希望能够动态选择新版本，则可以改为选择文件夹的链接。 请注意，在 Visual Studio 中创建应用程序项目时，可以使用链接的文件夹。 这样一来，可以从项目内链接到源位置，以便你能够在来宾可执行文件的源目标中对它进行更新。 在生成时，应用程序包中包括这些更新。
+   * *代码包行为*。 可以设置为将文件夹中的所有内容复制到 Visual Studio 项目中，这在可执行文件不发生变化时很有用。 如果预期可执行文件会更改，并且希望能够动态选择新版本，则可以改为选择文件夹的链接。 在 Visual Studio 中创建应用程序项目时，可以使用链接的文件夹。 这样一来，可以从项目内链接到源位置，以便你能够在来宾可执行文件的源目标中对它进行更新。 在生成时，应用程序包中包括这些更新。
    * *Program* 指定为了启动服务应运行的可执行文件。
    * *Arguments* 指定应传递给可执行文件的参数。 它可以是带有实参的形参的列表。
    * *WorkingFolder* 指定要启动的进程的工作目录。 你可以指定三个值：
@@ -98,6 +100,16 @@ Visual Studio 提供 Service Fabric 服务模板来帮助你将来宾可执行�
 5. 如果服务需要通信终结点，你现在可以在 ServiceManifest.xml 文件中添加协议、端口和类型。 例如： `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`。
 6. 现在，可以通过在 Visual Studio 中调试解决方案，针对本地群集执行打包和发布操作。 完成后，可以将应用程序发布到远程群集，也可以将解决方案签入源控件。
 7. 请转到本文末尾，了解如何查看在 Service Fabric Explorer 中运行的来宾可执行文件服务。
+
+## <a name="use-yoeman-to-package-and-deploy-an-existing-executable-on-linux"></a>使用 Yoeman 在 Linux 上打包和部署现有可执行文件
+
+用于在 Linux 上创建和部署来宾可执行文件的过程与部署 csharp 或 java 应用程序相同。
+
+1. 在终端中，键入 `yo azuresfguest`。
+2. 命名应用程序。
+3. 命名服务，并提供详细信息，包括可执行文件的路径以及调用该服务所必须使用的参数。
+
+Yeoman 创建应用程序包，其中包含相应的应用程序和清单文件，以及安装和卸载脚本。
 
 <a id="manually"></a>
 
@@ -123,8 +135,8 @@ Service Fabric 对应用程序根目录下的内容执行了 `xcopy`，因此除
 
 > [!NOTE]
 > 请务必添加应用程序需要的所有文件和依赖项。 Service Fabric 会复制群集中所有节点上的应用程序包的内容，将在群集中部署应用程序的服务。 包应包含应用程序运行所需的全部代码。 请不要假定依赖项已安装。
-> 
-> 
+>
+>
 
 ### <a name="edit-the-service-manifest-file"></a>编辑服务清单文件
 下一步是编辑服务清单文件以包含如下信息：
@@ -268,8 +280,8 @@ WorkingFolder 用于设置正确的工作目录，以便应用程序或初始化
 
 > [!WARNING]
 > 永远不要在生产中部署的应用程序中使用控制台重定向策略，因为这可能会影响应用程序故障转移。 *仅*将其用于本地开发和调试目的。  
-> 
-> 
+>
+>
 
 ```xml
 <EntryPoint>
@@ -331,19 +343,9 @@ Service Fabric 服务可以采用各种“配置”进行部署。 例如，可�
 
 ![磁盘上的位置](./media/service-fabric-deploy-existing-app/locationondisk2.png)
 
-如果使用服务器资源管理器转到目录，可以找到工作目录和服务的日志文件夹，如以下屏幕截图所示。
+如果使用服务器资源管理器转到目录，可以找到工作目录和服务的日志文件夹，如以下屏幕截图所示： 
 
 ![日志的位置](./media/service-fabric-deploy-existing-app/loglocation.png)
-
-## <a name="creating-a-guest-executable-using-yeoman-for-service-fabric-on-linux"></a>使用 Linux 上的 Yeoman for Service Fabric 创建来宾可执行文件
-
-用于在 Linux 上创建和部署来宾可执行文件的过程与部署 csharp 或 java 应用程序相同。 
-
-1. 在终端中，键入 `yo azuresfguest`。
-2. 命名应用程序。
-3. 选择第一个服务的类型并将其命名。 为来宾可执行文件选择“来宾二进制文件”（并为容器选择“来宾容器”），提供详细信息，其中包括可执行文件的路径和必须调用的参数。
-
-Yeoman 已创建应用程序包，其中包含相应的应用程序和清单文件，以及安装和卸载脚本。
 
 ## <a name="next-steps"></a>后续步骤
 在本文中，我们了解了如何打包来宾可执行文件并将它部署到 Service Fabric。 请参阅下面几篇文章，了解相关信息和任务。
@@ -352,5 +354,4 @@ Yeoman 已创建应用程序包，其中包含相应的应用程序和清单文�
 * [使用 REST 通过命名服务进行通信的两种来宾可执行文件（C# 和 nodejs）示例](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 * [部署多个来宾可执行文件](service-fabric-deploy-multiple-apps.md)
 * [使用 Visual Studio 创建第一个 Service Fabric 应用程序](service-fabric-create-your-first-application-in-visual-studio.md)
-
 
