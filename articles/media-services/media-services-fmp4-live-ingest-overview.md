@@ -14,24 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: cenkd;juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 307c9a377fce32c056a54d35f173efd1bafc4df5
+ms.translationtype: HT
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 75f117e206df1883ea9eb8a78f9e0ab62f569049
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/16/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
-# Azure 媒体服务零碎的 MP4 实时引入规范
-<a id="azure-media-services-fragmented-mp4-live-ingest-specification" class="xliff"></a>
+# <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure 媒体服务零碎的 MP4 实时引入规范
 本规范描述基于分片 MP4 的实时流引入协议和格式（适用于 Microsoft Azure 媒体服务）。 Microsoft Azure 媒体服务提供实时流服务，让客户使用 Microsoft Azure 作为云平台来实时流式传输实时事件和广播内容。 本文档还介绍了有关构建高度冗余和稳健的实时引入机制的最佳实践。
 
-## 1.一致表示法
-<a id="1-conformance-notation" class="xliff"></a>
+## <a name="1-conformance-notation"></a>1.一致表示法
 本文档中的关键字“必须”、“不得”、“需要”、“应”、“不应”、“应该”、“不能”、“建议”、“可以”和“可选”根据 RFC 2119 中所述予以解释。
 
-## 2.服务关系图
-<a id="2-service-diagram" class="xliff"></a>
+## <a name="2-service-diagram"></a>2.服务关系图
 下图显示 Microsoft Azure 媒体服务中实时流服务的高级体系结构：
 
 1. 实时编码器将实时源推送到通过 Microsoft Azure 媒体服务 SDK 创建并设置的通道。
@@ -41,12 +37,10 @@ ms.lasthandoff: 02/16/2017
 
 ![image1][image1]
 
-## 3.位流格式 – ISO 14496-12 分片 MP4
-<a id="3-bit-stream-format--iso-14496-12-fragmented-mp4" class="xliff"></a>
+## <a name="3-bit-stream-format--iso-14496-12-fragmented-mp4"></a>3.位流格式 – ISO 14496-12 分片 MP4
 本文档所述的实时流引入的有线格式基于 [ISO-14496-12]。 若要深入了解分片 MP4 格式以及点播视频文件和实时传送视频流引入的扩展，请参阅 [[MS-SSTR]](http://msdn.microsoft.com/library/ff469518.aspx)。
 
-### 实时引入格式定义
-<a id="live-ingest-format-definitions" class="xliff"></a>
+### <a name="live-ingest-format-definitions"></a>实时引入格式定义
 下方列出的特殊格式定义适用于 Microsoft Azure 媒体服务的实时引入：
 
 1. ‘ftyp’、LiveServerManifestBox 及 ‘moov’ 框必须连同每个请求 (HTTP POST) 一起发送。  必须在流的开头发送，每当需要恢复流引入时，编码器都必须重新连接。  有关详细信息，请参阅 [1] 中的“第 6 部分”。
@@ -58,14 +52,12 @@ ms.lasthandoff: 02/16/2017
 7. MP4 片段持续期间应该大约在 2 到 6 秒之间。
 8. 应该以递增顺序送达 MP4 片段时间戳和索引（TrackFragmentExtendedHeaderBox fragment_absolute_time 和 fragment_index）。  尽管 Azure 媒体服务在复制片段方面很有弹性，但是其根据媒体时间轴将片段重新排序的功能非常有限。
 
-## 4.协议格式 – HTTP
-<a id="4-protocol-format--http" class="xliff"></a>
+## <a name="4-protocol-format--http"></a>4.协议格式 – HTTP
 Microsoft Azure 媒体服务的 ISO 分片 MP4 实时引入使用长时间运行的标准 HTTP POST 请求，将以分片 MP4 格式打包的编码媒体数据传输到服务。 每个 HTTP POST 发送完整的分片 MP4 位流（“流”），其开头为标头框（‘ftyp’、“实时服务器清单框”及 ‘moov’ 框），后接一系列片段（‘moof’ 与 ‘mdat’ 框）。 有关 HTTP POST 请求的 URL 语法，请参阅 [1] 中的第 9.2 部分。 以下是 POST URL 的示例： 
 
     http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)
 
-### 要求
-<a id="requirements" class="xliff"></a>
+### <a name="requirements"></a>要求
 详细要求如下：
 
 1. 编码器应该使用相同的引入 URL 来发送包含空白“正文”（零内容长度）的 HTTP POST 请求，以此开始广播。 这可能有助于快速检测实时引入终结点是否有效，以及是否需要任何身份验证或其他条件。 服务器无法对每个 HTTP 协议传回 HTTP 响应，直到收到整个请求为止，包括 POST 正文。 由于实时事件具有长时间运行的性质，如果不执行此步骤，编码器在完成发送所有数据之前，无法检测任何错误。
@@ -76,12 +68,10 @@ Microsoft Azure 媒体服务的 ISO 分片 MP4 实时引入使用长时间运行
 6. 如 [1] 中第 9.2 部分所述，编码器不得使用 Events() 名词，以便实时引入 Microsoft Azure 媒体服务。
 7. 如果 HTTP POST 请求在流结束时终止或超时，并发生 TCP 错误，则编码器必须使用新连接发出新的 POST 请求，并遵循上述要求及以下附加要求：编码器必须为流中的每个数据轨迹重新发送前两个 MP4 片段并继续进行，但不在媒体时间轴上造成不连续情况。  为每个轨迹重新发送最后两个 MP4 片段可确保不会丢失数据。  换句话说，如果流包含音频和视频轨迹，并且当前 POST 请求失败，则编码器必须重新连接，然后为音频轨迹重新发送最后两个片段（先前已成功发送），为视频轨迹重新发送最后两个片段（先前已成功发送），以确保不会丢失任何数据。  编码器必须维护媒体片段的“转发”缓冲区，当重新连接时会重新发送此缓冲区。
 
-## 5.时间刻度
-<a id="5-timescale" class="xliff"></a>
+## <a name="5-timescale"></a>5.时间刻度
 [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) 介绍了 SmoothStreamingMedia（第 2.2.2.1 部分）、StreamElement（第 2.2.2.3 部分）、StreamFragmentElement（第 2.2.2.6 部分）和 LiveSMIL（第 2.2.7.3.1 部分）的“时间刻度”使用情况。 如果没有时间刻度值，则使用默认值 10,000,000 (10 MHz)。 尽管平滑流格式规范不会阻止使用其他时间刻度值，但大多数编码器实现会使用此默认值 (10 MHz) 来生成平滑流引入数据。 由于 [Azure 媒体动态打包](media-services-dynamic-packaging-overview.md)功能的原因，建议为视频流使用 90 kHz 时间刻度，为音频流使用 44.1 或 48.1 kHz 时间刻度。 如果不同的流采用不同的时间刻度值，则必须发送流级时间刻度。 请参阅 [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx)。     
 
-## 6.“流”的定义
-<a id="6-definition-of-stream" class="xliff"></a>
+## <a name="6-definition-of-stream"></a>6.“流”的定义
 “流”是指在撰写实时演播内容、处理流故障转移和冗余方案的实时引入中操作的基本单位。 “流”定义为一个唯一的分片 MP4 位流，其中可以包含单个轨迹或多个轨迹。 完整实时演播可包含一个或多个流，视实时编码器配置而定。 以下示例演示了使用流撰写完整实时演播内容的各种选项。
 
 **示例：** 
@@ -92,30 +82,25 @@ Microsoft Azure 媒体服务的 ISO 分片 MP4 实时引入使用长时间运行
 
 音频 – 128 kbps
 
-### 选项 1：在一个流中包含所有轨迹
-<a id="option-1-all-tracks-in-one-stream" class="xliff"></a>
+### <a name="option-1-all-tracks-in-one-stream"></a>选项 1：在一个流中包含所有轨迹
 在此选项中，单个编码器会生成所有音频/视频轨迹，并将其捆绑成一个分片 MP4 位流，系统将通过单个 HTTP POST 连接发送此流。 在此示例中，此实时演播只有一个流：
 
 ![image2][image2]
 
-### 选项 2：将每个轨迹包含在单独的流中
-<a id="option-2-each-track-in-a-separate-stream" class="xliff"></a>
+### <a name="option-2-each-track-in-a-separate-stream"></a>选项 2：将每个轨迹包含在单独的流中
 在此选项中，编码器在每个分片 MP4 位流中只放置一个轨迹，并通过多个独立的 HTTP 连接发布所有流。 这可通过一个或多个编码器来实现。 从实时引入的角度来看，此实时演播由四个流组成。
 
 ![image3][image3]
 
-### 选项 3：将音频轨迹与比特率最低的视频轨迹捆绑成一个流
-<a id="option-3-bundle-audio-track-with-the-lowest-bitrate-video-track-into-one-stream" class="xliff"></a>
+### <a name="option-3-bundle-audio-track-with-the-lowest-bitrate-video-track-into-one-stream"></a>选项 3：将音频轨迹与比特率最低的视频轨迹捆绑成一个流
 在此选项中，客户选择将音频轨迹与比特率最低的视频轨迹捆绑成一个分片 MP4 位流，并让另外两个视频轨迹分别保留在自己的流中。 
 
 ![Image4][image4]
 
-### 摘要
-<a id="summary" class="xliff"></a>
+### <a name="summary"></a>摘要
 上面显示的列表并不完整，只列出了此示例中部分可用的引入选项。 事实上，实时引入支持将轨迹以任何组合方式分组到流中。 客户和编码器供应商可以根据工程复杂性、编码器容量以及冗余与故障转移注意事项，来选择自己的实现。 不过请注意，在大多数情况下，整个实时演播只有一个音频轨迹，因此请务必确保包含音频轨迹的引入流是正常的。 在考虑到这个要点的情况下，用户通常会将音频轨迹放入其自己的流（如选项 2），或者将它与比特率最低的视频轨迹捆绑在一起（如选项 3）。 此外，若要获得更好的冗余与容错效果，强烈建议针对嵌入到 Microsoft Azure 媒体服务的实时引入，将同一个音频轨迹通过两个不同的流（选项 2 中采用冗余音频轨迹）发送，或者将音频轨迹与至少两个最低比特率视频轨迹捆绑在一起（选项 3 将音频与至少两个视频流捆绑在一起）。
 
-## 7.服务故障转移
-<a id="7-service-failover" class="xliff"></a>
+## <a name="7-service-failover"></a>7.服务故障转移
 根据实时流的性质，良好的故障转移支持是确保服务可用性的关键。 Microsoft Azure 媒体服务可以处理各种类型的故障，包括网络错误、服务器错误、存储问题，等等。当与实时编码器端的故障转移逻辑结合使用时，客户可以从云实现高度可靠的实时流服务。
 
 在本部分中，我们将讨论服务故障转移的方案。 在此案例中，服务的某个位置发生故障，且故障将自身记录为网络错误。 以下是如何实施编码器以处理服务故障转移的一些建议：
@@ -131,8 +116,7 @@ Microsoft Azure 媒体服务的 ISO 分片 MP4 实时引入使用长时间运行
    4. 必须重新发送为每个轨迹发送的最后两个片段，并恢复流式传输，但不在媒体时间轴上造成不连续情况。  MP4 片段时间戳必须连续递增，甚至可跨越 HTTP POST 请求。
 6. 如果未以匹配 MP4 片段持续时间的速率发送数据，则编码器应该终止 HTTP POST 请求。  不发送数据的 HTTP POST 请求可以防止 Azure 媒体服务在服务更新时很快与编码器断开连接。  出于此原因，稀疏（广告信号）轨迹的 HTTP POST 应该短暂留存，并在发送疏松片段之后立即终止。
 
-## 8.编码器故障转移
-<a id="8-encoder-failover" class="xliff"></a>
+## <a name="8-encoder-failover"></a>8.编码器故障转移
 编码器故障转移是第二种故障转移方案，必须妥善配置此方案才能进行端到端实时流式传送。 在此方案中，错误状况会发生在编码器端。 
 
 ![image5][image5]
@@ -146,8 +130,7 @@ Microsoft Azure 媒体服务的 ISO 分片 MP4 实时引入使用长时间运行
 5. 新流必须在语义上等同于上一个流，并可在标头与片段级别互换。
 6. 新的编码器应该尝试最大程度地减少数据丢失。  媒体片段的 fragment_absolute_time 与 fragment_index 应该从编码器上次停止的时间点开始增加。  fragment_absolute_time 与 fragment_index 应该连续增加，但允许视需要造成不连续情况。  Azure 媒体服务将忽略已收到并处理的片段，因此在片段重新发送端造成错误，好过在媒体时间轴上造成不连续情况。 
 
-## 9.编码器冗余
-<a id="9-encoder-redundancy" class="xliff"></a>
+## <a name="9-encoder-redundancy"></a>9.编码器冗余
 对于某些需要更高可用性与优质体验的重要实时事件，建议使用主动-主动冗余编码器，以实现无缝故障转移，且不会丢失数据。
 
 ![image6][image6]
@@ -156,18 +139,15 @@ Microsoft Azure 媒体服务的 ISO 分片 MP4 实时引入使用长时间运行
 
 此方案的要求与编码器故障转移的要求几乎相同，不同之处在于，第二组编码器将与主编码器同时运行。
 
-## 10.服务冗余
-<a id="10-service-redundancy" class="xliff"></a>
+## <a name="10-service-redundancy"></a>10.服务冗余
 对于高度冗余的全局分发，有时需要跨区域备份以处理区域灾难。 通过扩展“编码器冗余”拓扑，客户可以选择在不同的区域部署冗余服务，且该区域与第 2 组编码器连接。 客户还可与 CDN 提供商合作，将 GTM（全局流量管理器）放在两个服务部署之前，以此无缝路由客户端流量。 编码器的要求与“编码器冗余”方案相同，不同之处在于，第二组编码器必须指向不同的实时引入终结点。 下图演示了这种设置：
 
 ![image7][image7]
 
-## 11.特殊类型的引入格式
-<a id="11-special-types-of-ingestion-formats" class="xliff"></a>
+## <a name="11-special-types-of-ingestion-formats"></a>11.特殊类型的引入格式
 本部分介绍用于处理某些特定方案的某些特殊类型的实时引入格式。
 
-### 稀疏轨迹
-<a id="sparse-track" class="xliff"></a>
+### <a name="sparse-track"></a>稀疏轨迹
 当以丰富的客户端体验传递实时流演播时，通常需要传输与主要媒体数据时间同步的事件或带内信号。 动态实时广告插播就是一个例子。 这种类型的事件信号不同于一般音频/视频流，因为它具有稀疏的性质。 换句话说，信号数据通常不会连续发生，其间隔难以预测。 稀疏轨迹的概念专门用于引入和广播带内信号数据。
 
 以下是引入稀疏轨迹的建议实现方式：
@@ -184,8 +164,7 @@ Microsoft Azure 媒体服务的 ISO 分片 MP4 实时引入使用长时间运行
    6. 当时间戳值相等或更大的对应父轨迹片段可供客户端使用时，稀疏轨迹片段便可供客户端使用。 例如，如果稀疏片段的时间戳 t=1000，则预期在客户端看到视频（假设父轨迹名称为 video）片段时间戳为 1000 或以上后，便可下载 t=1000 的稀疏片段。 请注意，实际信号能够在演播时间轴上的不同位置上，极好地用于其指定用途。 在上述示例中，t=1000 的稀疏片段具有 XML 负载，可将广告插入到数秒后的位置上。
    7. 稀疏轨迹片段的负载可以采用各种不同的格式（例如 XML、文本或二进制等），具体取决于不同的方案。 
 
-### 冗余音频轨迹
-<a id="redundant-audio-track" class="xliff"></a>
+### <a name="redundant-audio-track"></a>冗余音频轨迹
 在典型的 HTTP 自适应流式传输方案中（例如平滑流或 DASH），通常在整个演播中只有一个音频轨迹。 具有多个质量级别的视频轨迹可让客户端在错误条件中选择，而音频轨迹不同于这类轨迹，当引入的流中有损坏的音频轨迹时，音频轨迹会是唯一的故障点。 
 
 为了解决此问题，Microsoft Azure 媒体服务支持实时引入冗余音频轨迹。 其思路与可通过不同的流多次发送音频轨迹相同。 尽管服务只会在客户端清单中注册音频轨迹一次，但它能够使用冗余的音频轨迹作为备份，在主音频轨迹发生问题时检索音频片段。 为了引入冗余音频轨迹，编码器必须：
@@ -199,12 +178,10 @@ Microsoft Azure 媒体服务的 ISO 分片 MP4 实时引入使用长时间运行
 2. 使用独立的流发送两个最低视频比特率。 其中每个流还应该包含每个唯一音频轨迹的副本。  例如，当支持多种语言时，这些流应包含每种语言的音频轨迹。
 3. 使用独立的服务器（编码器）实例来编码和发送 (1) 与 (2) 中所提到的冗余流。 
 
-## 媒体服务学习路径
-<a id="media-services-learning-paths" class="xliff"></a>
+## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## 提供反馈
-<a id="provide-feedback" class="xliff"></a>
+## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 [image1]: ./media/media-services-fmp4-live-ingest-overview/media-services-image1.png

@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: genemi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1f1c6c89c492d18e0678fa4650b6c5744dc9f7d1
-ms.openlocfilehash: 6766242bef4e6f976a621547941e8e34a4915c6c
+ms.translationtype: HT
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 6953166f21194f3cbcef3f260b3e7a50d5bf5460
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/07/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="extended-events-in-sql-database"></a>SQL 数据库中的扩展事件
@@ -55,7 +54,7 @@ ms.lasthandoff: 02/07/2017
 
 
 - PowerShell
-    - [对 Azure 存储空间使用 Azure PowerShell](../storage/storage-powershell-guide-full.md) - 提供有关 PowerShell 和 Azure 存储服务的综合信息。
+    - [对 Azure 存储使用 Azure PowerShell](../storage/storage-powershell-guide-full.md) - 提供有关 PowerShell 和 Azure 存储服务的综合信息。
 
 ## <a name="code-samples"></a>代码示例
 
@@ -196,9 +195,9 @@ SELECT
 
 ## <a name="related-links"></a>相关链接
 
-- [对 Azure 存储空间使用 Azure PowerShell](../storage/storage-powershell-guide-full.md)。
+- [对 Azure 存储使用 Azure PowerShell](../storage/storage-powershell-guide-full.md)。
 - [Azure 存储 Cmdlet](http://msdn.microsoft.com/library/dn806401.aspx)
-- [对 Azure 存储空间使用 Azure PowerShell](../storage/storage-powershell-guide-full.md) - 提供有关 PowerShell 和 Azure 存储服务的综合信息。
+- [对 Azure 存储使用 Azure PowerShell](../storage/storage-powershell-guide-full.md) - 提供有关 PowerShell 和 Azure 存储服务的综合信息。
 - [如何通过 .NET 使用 Blob 存储](../storage/storage-dotnet-how-to-use-blobs.md)
 - [CREATE CREDENTIAL (Transact-SQL)](http://msdn.microsoft.com/library/ms189522.aspx)
 - [CREATE EVENT SESSION (Transact-SQL)](http://msdn.microsoft.com/library/bb677289.aspx)
