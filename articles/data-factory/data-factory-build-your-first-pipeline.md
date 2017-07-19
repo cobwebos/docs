@@ -13,12 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 07/10/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
-ms.openlocfilehash: 590d8e7c90381c455e0145a9016bd888ab0dda2c
-ms.lasthandoff: 02/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: b01a03fa362f8a9677e625945a2864c77d49f1bb
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -49,7 +50,7 @@ ms.lasthandoff: 02/03/2017
     在本教程中，将创建两个链接服务：**Azure 存储**和 **Azure HDInsight**。 Azure 存储链接服务将保存输入/输出数据的 Azure 存储帐户链接到数据工厂。 Azure HDInsight 链接服务将用于转换数据的 Azure HDInsight 群集链接到数据工厂。 
 3. 创建输入和输出**数据集**。 输入数据集表示管道中活动的输入，输出数据集表示活动的输出。
 
-    在本教程中，输入和输出数据集指定 Azure Blob 存储中输入和输出数据的位置。 Azure 存储链接服务指定使用什么 Azure 存储帐户。 输入数据集指定输入文件所在位置，输出数据集指定输出文件将放置到的位置。 
+    在本教程中，输入和输出数据集指定 Azure Blob 存储中输入和输出数据的位置。 Azure 存储链接服务指定使用什么 Azure 存储帐户。 输入数据集指定输入文件所在位置，输出数据集指定输出文件所放置到的位置。 
 
 
 有关 Azure 数据工厂的详细概述，请参阅 [Azure 数据工厂简介](data-factory-introduction.md)一文。
@@ -82,11 +83,11 @@ adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 
 1. **Azure 订阅** - 如果没有 Azure 订阅，只需几分钟就能创建一个免费试用帐户。 如需了解如何获取免费试用帐户，请参阅[免费试用](https://azure.microsoft.com/pricing/free-trial/)一文。
 2. **Azure 存储** - 在本教程中，你将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)一文。 创建存储帐户后，记下**帐户名称**和**访问密钥**。 请参阅[查看、复制和重新生成存储访问密钥](../storage/storage-create-storage-account.md#view-and-copy-storage-access-keys)。
-3. 下载并查看位于以下网址的 Hive 查询文件 (**HQL**)：[https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql)。 这是转换输入数据以生成输出数据的查询。 
+3. 下载并查看位于以下网址的 Hive 查询文件 (**HQL**)：[https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql)。 此查询转换输入数据以生成输出数据。 
 4. 下载并查看位于以下网址的示例输入文件 (**input.log**)：[https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
 5. 在 Azure Blob 存储中创建一个名为 **adfgetstarted** 的 blob 容器。 
-6. 将 **partitionweblogs.hql** 文件上载到 **adfgetstarted** 容器中的 **script** 文件夹。 使用 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)等工具。 
-7. 将 **input.log** 文件上载到 **adfgetstarted** 容器中的 **inputdata** 文件夹。 
+6. 将 partitionweblogs.hql 文件上传到 adfgetstarted 容器中的 script 文件夹。 使用 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)等工具。 
+7. 将 input.log 文件上传到 adfgetstarted 容器中的 inputdata 文件夹。 
 
 具备先决条件之后，选择以下工具/SDK 之一完成本教程： 
 
@@ -108,3 +109,4 @@ Azure 门户和 Visual Studio 提供了生成数据工厂的 GUI 方式。 而 P
 
 
   
+
