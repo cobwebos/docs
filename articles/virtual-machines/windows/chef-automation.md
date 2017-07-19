@@ -13,12 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2015
+ms.date: 05/30/2017
 ms.author: diviso
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: aed46cbf5a57d73f4ce5bab42fdd20ae11d86373
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: b6db0fbb4e0de896994954974ddcc39daad9c125
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -59,7 +60,8 @@ Chef 工作站是我们的管理工作站，我们将在其中创建策略并执
 
 现在，我们需要下载 Azure 设置文件，以便 Chef 可以与我们的 Azure 订阅进行通信。
 
-从[此处](https://manage.windowsazure.com/publishsettings/)下载发布设置。
+<!--Download your publish settings from [here](https://manage.windowsazure.com/publishsettings/).-->
+使用 PowerShell Azure [Get-AzurePublishSettingsFile](https://docs.microsoft.com/en-us/powershell/module/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) 命令下载发布设置。 
 
 将发布设置文件保存到 C:\chef 中。
 
@@ -184,8 +186,8 @@ knife.rb 文件现在应类似于以下示例。
 
 现在导航到 C:\chef\cookbooks\webserver\templates\default\Default.htm.erb 文件。 通过添加一些简单的“Hello World”html 代码来编辑该文件，然后保存该文件。
 
-## <a name="upload-the-cookbook-to-the-chef-server"></a>将食谱上载到 Chef 服务器
-在此步骤中，我们将制作我们已在本地计算机上创建的食谱的副本并将其上载到 Chef 托管服务器。 上载完成后，指南将显示在“策略”选项卡下。
+## <a name="upload-the-cookbook-to-the-chef-server"></a>将食谱上传到 Chef 服务器
+在此步骤中，我们将制作我们已在本地计算机上创建的食谱的副本并将其上传到 Chef 托管服务器。 上传完成后，指南将显示在“策略”选项卡下。
 
     knife cookbook upload webserver
 
@@ -221,7 +223,7 @@ knife.rb 文件现在应类似于以下示例。
 
 如你所见，我的 HTML 代码富有创造性。
 
-不要忘记，还可以从 Azure 经典门户使用端口 3389 通过 RDP 会话进行连接。
+请记住，还可在 Azure 门户中使用端口 3389 通过 RDP 会话进行连接。
 
 希望这对你有所帮助！ 现在就使用 Azure 开始你的基础结构即代码之旅吧！
 

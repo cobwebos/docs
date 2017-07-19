@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-translationtype: Human Translation
-ms.sourcegitcommit: 1029c7e4c6a17ad2a290ff0783fc88692555b255
-ms.openlocfilehash: 89bec0e3af42b03ef21e3e8c4059f6aad86db4c0
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: d309f6c4749a80c81859b693a2bd5927e8fe0e54
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 03/02/2017
 这是演练的最后一步，[在 Azure 机器学习中开发预测分析解决方案](machine-learning-walkthrough-develop-predictive-solution.md)
 
 1. [创建机器学习工作区](machine-learning-walkthrough-1-create-ml-workspace.md)
-2. [上载现有数据](machine-learning-walkthrough-2-upload-data.md)
+2. [上传现有数据](machine-learning-walkthrough-2-upload-data.md)
 3. [创建新试验](machine-learning-walkthrough-3-create-new-experiment.md)
 4. [定型和评估模型](machine-learning-walkthrough-4-train-and-evaluate-models.md)
 5. [部署 Web 服务](machine-learning-walkthrough-5-publish-web-service.md)
@@ -48,6 +49,6 @@ Web 服务是一种 Azure Web 服务，可以两种方式之一使用 REST API �
 
 还可使用 R、C# 和 Python 编程语言中提供的起始代码开发自定义应用程序，以访问 Web 服务。
 
-可在[如何使用从机器学习实验中发布的 Azure 机器学习 Web 服务](machine-learning-consume-web-services.md)中找到完整的详细信息。
+可以在[如何使用 Azure 机器学习 Web 服务](machine-learning-consume-web-services.md)找到完整的详细信息。
 
 

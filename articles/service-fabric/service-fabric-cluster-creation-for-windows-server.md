@@ -3,7 +3,7 @@ title: "创建独立的 Azure Service Fabric 群集 | Microsoft Docs"
 description: "在运行 Windows Server 的任何本地或任意云计算机（物理或虚拟）上创建 Azure Service Fabric 群集。"
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: dkkapur
 manager: timlt
 editor: 
 ms.assetid: 31349169-de19-4be6-8742-ca20ac41eb9e
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/24/2017
-ms.author: chackdan;maburlik
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 3389684dca62a1b3c8297600c7c09ffef642c854
-ms.lasthandoff: 03/30/2017
-
+ms.date: 06/24/2017
+ms.author: chackdan;maburlik;dekapur
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 7543d98030ea143d537e0028801fd3efe3e4ff32
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/08/2017
 
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>创建在 Windows Server 上运行的独立群集
@@ -33,17 +33,17 @@ ms.lasthandoff: 03/30/2017
 
 <a id="getsupport"></a>
 
-## <a name="get-support-for-the-service-fabric-standalone-package"></a>获取 Service Fabric 独立包的支持
+## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>获取用于 Windows Server 的 Service Fabric 包的支持
 * 在 [Azure Service Fabric 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?)中询问社区关于 Windows Server 的 Service Fabric 独立包的信息。
 * 打开 [Service Fabric 专业支持](http://support.microsoft.com/oas/default.aspx?prid=16146)票证。  在[此处](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)了解有关 Microsoft 专业支持的详细信息。
 * 你还可以获取作为 [Microsoft 顶级支持](https://support.microsoft.com/en-us/premier)的一部分的对此包的支持。
 * 有关详细信息，请参阅 [Azure Service Fabric 支持选项](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-support)。
-* 若要以支持为目的收集日志，请运行 [Service Fabric 独立日志收集器](https://go.microsoft.com/fwlink/?linkid=842487)。
+* 若要出于支持目的收集日志，请运行 [Service Fabric 独立日志收集器](service-fabric-cluster-standalone-package-contents.md)。
 
 <a id="downloadpackage"></a>
 
-## <a name="download-the-service-fabric-standalone-package"></a>下载 Service Fabric 独立包
-若要创建群集，请使用可在此处找到的适用于 Windows Server（2012 R2 和更高版本）的 Service Fabric 独立包： <br>
+## <a name="download-the-service-fabric-for-windows-server-package"></a>下载用于 Windows Server 的 Service Fabric 包
+若要创建群集，请使用可在此处找到的用于 Windows Server 的 Service Fabric 包（Windows Server 2012 R2 和更高版本）： <br>
 [下载链接 - Service Fabric 独立包 - Windows Server](http://go.microsoft.com/fwlink/?LinkId=730690)
 
 在[此处](service-fabric-cluster-standalone-package-contents.md)查找有关包内容的详细信息。
@@ -67,7 +67,7 @@ ms.lasthandoff: 03/30/2017
 
 有关故障排除的详细信息，请参阅[计划和准备群集部署](service-fabric-cluster-standalone-deployment-preparation.md)中的环境设置部分。
 
-如果你已完成运行开发方案，则可以引用下面的“[删除群集](#removecluster_anchor)”部分的步骤，从计算机中删除 Service Fabric 群集。 
+如果已完成运行开发方案，则可以引用“[删除群集](#removecluster_anchor)”部分的步骤，从计算机中删除 Service Fabric 群集。 
 
 ### <a name="step-1b-create-a-multi-machine-cluster"></a>步骤 1B：创建多台计算机的群集
 在完成下面链接中详述的计划和准备步骤后，就可以使用群集配置文件创建生产群集。 <br>
@@ -75,39 +75,48 @@ ms.lasthandoff: 03/30/2017
 
 1. 从独立包文件夹中运行 *TestConfiguration.ps1* 脚本，以验证写入的配置文件：  
 
-```powershell
-.\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.json
-```
+    ```powershell
+    .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.json
+    ```
 
-可看到如下输出： 如果底部字段“Passed”的返回值为“True”，那么已通过完整性检查，并且根据输入配置群集看似可以部署。
+    可看到如下输出： 如果底部字段“Passed”的返回值为“True”，那么已通过完整性检查，并且根据输入配置群集看似可以部署。
 
-```
-Trace folder already exists. Traces will be written to existing trace folder: C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer\DeploymentTraces
-Running Best Practices Analyzer...
-Best Practices Analyzer completed successfully.
+    ```
+    Trace folder already exists. Traces will be written to existing trace folder: C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer\DeploymentTraces
+    Running Best Practices Analyzer...
+    Best Practices Analyzer completed successfully.
+    
+    LocalAdminPrivilege        : True
+    IsJsonValid                : True
+    IsCabValid                 : True
+    RequiredPortsOpen          : True
+    RemoteRegistryAvailable    : True
+    FirewallAvailable          : True
+    RpcCheckPassed             : True
+    NoConflictingInstallations : True
+    FabricInstallable          : True
+    Passed                     : True
+    ```
 
-
-LocalAdminPrivilege        : True
-IsJsonValid                : True
-IsCabValid                 : True
-RequiredPortsOpen          : True
-RemoteRegistryAvailable    : True
-FirewallAvailable          : True
-RpcCheckPassed             : True
-NoConflictingInstallations : True
-FabricInstallable          : True
-Passed                     : True
-```
-
-2. 创建群集：运行 *CreateServiceFabricCluster.ps1* 脚本，以便在配置中的每台计算机上部署 Service Fabric 群集。 
-```powershell
-.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -AcceptEULA
-```
+2. 创建群集：运行 CreateServiceFabricCluster.ps1 脚本，以便在配置中的每台计算机上部署 Service Fabric 群集。 
+    ```powershell
+    .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -AcceptEULA
+    ```
 
 > [!NOTE]
 > 部署跟踪被写入到运行 CreateServiceFabricCluster.ps1 PowerShell 脚本的 VM/计算机上。 这些信息可以从运行脚本的目录中的子文件夹 DeploymentTraces 中找到。 按照群集配置文件 FabricSettings 部分中的详述，若要查看是否已将 Service Fabric 正确部署到计算机，请查找 FabricDataRoot 目录（默认为 c:\ProgramData\SF）中的已安装文件。 同样，可以看到 FabricHost.exe 和 Fabric.exe 进程在任务管理器中运行。
 > 
 > 
+
+### <a name="step-1c-create-an-offline-internet-disconnected-cluster"></a>步骤 1C：创建脱机（Internet 断开）群集
+创建群集时自动下载 Service Fabric 运行时包。 将群集部署到未连接 Internet 的计算机时，需要单独下载 Service Fabric 运行时包，并在创建群集时提供指向它的路径。
+运行时包可从另一台连接到 Internet 的计算机单独下载：[下载链接 - Service Fabric 运行时 - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354)。 将运行时包复制到部署脱机群集的位置，并通过运行 `CreateServiceFabricCluster.ps1` 与 `-FabricRuntimePackagePath` 参数创建群集，如下所示： 
+
+```powershell
+CreateServiceFabricCluster.ps1 -ClusterConfigurationFilePath <path to ClusterConfig.json> -FabricRuntimePackagePath <path to MicrosoftAzureServiceFabric.cab>
+```
+其中 `<path to ClusterConfig.json>` 和 `<path to MicrosoftAzureServiceFabric.cab>` 分别是群集配置和运行时 .cab 文件的路径。
+
 
 ### <a name="step-2-connect-to-the-cluster"></a>步骤 2：连接到群集
 若要连接到安全群集，请参阅 [Service Fabric 连接到安全群集](service-fabric-connect-to-secure-cluster.md)。
@@ -146,7 +155,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>收集遥测数据以及如何选择不使用它
 默认情况下，产品收集 Service Fabric 使用情况的遥测数据来改进产品。 作为安装程序一部分运行的最佳实践分析工具检查与 [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) 的连接。 如果不可访问，安装将失败，除非你选择不使用遥测。
 
-1. 遥测管道尝试每日一次将以下数据上载到 [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1)。 这是尽力而为的上载，不会影响群集功能。 仅从运行故障转移管理器的主节点发送遥测数据。 其他节点不发送遥测数据。
+1. 遥测管道尝试每日一次将以下数据上传到 [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1)。 这是尽力而为的上传，不会影响群集功能。 仅从运行故障转移管理器的主节点发送遥测数据。 其他节点不发送遥测数据。
 2. 遥测数据由以下项组成：
 
 * 服务数量
@@ -168,7 +177,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 * IsContextComplete：True/False
 * ClusterId：这是为每个群集随机生成的 GUID
 * ServiceFabricVersion
-* 从其上载遥测数据的虚拟机或计算机的 IP 地址
+* 从其上传遥测数据的虚拟机或计算机的 IP 地址
 
 若要禁用遥测数据，请将以下内容添加到群集配置中的*属性*：*enableTelemetry: false*。
 
