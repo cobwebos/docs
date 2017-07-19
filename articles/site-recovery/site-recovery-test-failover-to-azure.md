@@ -15,17 +15,15 @@ ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: pratshar
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 0df4b3535449c88f11fa7a58811f68c82549558f
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 198640030b638720863ffae05543b32692608f1b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
-# <a name="test-----failover-to-azure-in-site-recovery"></a>Site Recovery 中到 Azure 的测试故障转移
-> [!div class="op_single_selector"]
-> * [到 Azure 的测试故障转移](./site-recovery-test-failover-to-azure.md)
-> * [测试故障转移（VMM 到 VMM）](./site-recovery-test-failover-vmm-to-vmm.md)
+# <a name="test--failover-to-azure-in-site-recovery"></a>Site Recovery 中到 Azure 的测试故障转移
+
 
 
 本文提供有关针对使用 Azure 作为恢复站点、受 Site Recovery 保护的虚拟机和物理服务器执行测试故障转移或灾难恢复演练的信息与说明。
@@ -50,7 +48,7 @@ ms.lasthandoff: 05/02/2017
     1.  **最新处理的**：此选项将恢复计划的所有虚拟机故障转移到已由 Site Recovery 服务处理的最新恢复点。 对虚拟机执行测试故障转移时，还会显示最新处理的恢复点的时间戳。 如果要针对恢复计划执行故障转移，可以转到单个虚拟机，并查看“最新恢复点”磁贴来获取此信息。 由于不会花费时间来处理未经处理的数据，此选项是 RTO（恢复时间目标）较低的故障转移选项。
     1.    **最新应用一致**：此选项将恢复计划的所有虚拟机故障转移到已由 Site Recovery 服务处理的最新应用程序一致恢复点。 对虚拟机执行测试故障转移时，还会显示最新应用一致性恢复点的时间戳。 如果要针对恢复计划执行故障转移，可以转到单个虚拟机，并查看“最新恢复点”磁贴来获取此信息。
     1.    **最新**：此选项首先处理已发送到 Site Recovery 服务的所有数据，为每个虚拟机创建恢复点，然后再将其故障转移到该恢复点。 此选项提供最低 RPO（恢复点目标），因为故障转移后创建的虚拟机将具有触发故障转移时已复制到 Site Recovery 服务的所有数据。
-    1.    **自定义**：如果正在对虚拟机执行测试故障转移，则可以使用此选项故障转移到特定恢复点。
+    1.  **自定义**：如果正在对虚拟机执行测试故障转移，则可以使用此选项故障转移到特定恢复点。
 1. 选择“Azure 虚拟网络”：提供将在其中创建测试虚拟机的 Azure 虚拟网络。 Site Recovery 尝试在名称相同的子网中创建测试虚拟机，并使用虚拟机的“计算与网络”设置中提供的同一 IP。 如果为测试故障转移提供的 Azure 虚拟网络中没有同名的子网，则会按字母顺序在第一个子网中创建测试虚拟机。 如果子网中没有相同 IP，则虚拟机将获取子网中可用的其他 IP 地址。 请阅读此部分以了解[详细信息](#creating-a-network-for-test-failover)
 1. 如果要故障转移到 Azure 并且启用了数据加密，请在“加密密钥”中，选择在安装提供程序期间启用数据加密时颁发的证书。 如果尚未在虚拟机上启用加密，则可以忽略此步骤。
 1. 在“**作业**”选项卡上跟踪故障转移进度。 在 Azure 门户中，你应当能够看到测试副本计算机。
@@ -77,19 +75,19 @@ ms.lasthandoff: 05/02/2017
 
 在某些情况下，虚拟机的故障转移需要额外的中间步骤，中间步骤通常耗费约 8 到 10 分钟才能完成。 这些情况如下：
 
-* VMware 虚拟机所使用的移动服务版本早于 9.8
-* 物理服务器 
+* VMware 虚拟机所用的移动服务版本早于 9.8
+* 物理服务器
 * VMware Linux 虚拟机
 * 作为物理服务器受到保护的 Hyper-V 虚拟机
-* VMware 虚拟机，其中下列驱动程序不作为启动驱动程序 
-    * storvsc 
-    * vmbus 
-    * storflt 
-    * intelide 
+* VMware 虚拟机，其中下列驱动程序不作为启动驱动程序
+    * storvsc
+    * vmbus
+    * storflt
+    * intelide
     * atapi
 * 未启用 DHCP 服务的 VMware 虚拟机（无论它们使用 DHCP 还是使用静态 IP 地址）
 
-在其他所有情况下，此中间步骤都非必需，因而故障转移的耗时将大大减少。 
+在其他所有情况下，此中间步骤都非必需，因而故障转移的耗时将大大减少。
 
 
 ## <a name="creating-a-network-for-test-failover"></a>创建用于测试故障转移的网络

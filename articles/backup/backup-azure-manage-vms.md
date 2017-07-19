@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: trinadhk;markgal
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: f8cb0030290d200ab79e340b9b0fe8f5765d49f0
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 35a21cb99ca4bad124a9f764cef9da453e1fe47f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -119,6 +120,11 @@ ms.lasthandoff: 03/18/2017
      有关创建备份策略的说明，请参阅[定义备份策略](backup-azure-manage-vms.md#defining-a-backup-policy)。
 
 [!INCLUDE [backup-create-backup-policy-for-vm](../../includes/backup-create-backup-policy-for-vm.md)]
+
+> [!NOTE]
+> 在管理备份策略时，请务必遵循[最佳做法](backup-azure-vms-introduction.md#best-practices)以获得最佳的备份性能
+>
+>
 
 ## <a name="on-demand-backup-of-a-virtual-machine"></a>虚拟机的按需备份
 为虚拟机配置保护后，可以对它执行按需备份。 如果初始备份已挂起，则按需备份将在恢复服务保管库中创建虚拟机的完整副本。 如果初始备份已完成，按需备份仅将以前快照的更改发送到恢复服务保管库。 也就是说，后续备份始终是增量备份。

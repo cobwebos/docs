@@ -1,6 +1,6 @@
 ---
 title: "Resource Manager 模板函数 | Microsoft Docs"
-description: "介绍在 Azure 资源管理器模板中检索值、处理字符串和数字以及检索部署信息时所用的函数。"
+description: "介绍在 Azure Resource Manager 模板中检索值、处理字符串和数字以及检索部署信息时所用的函数。"
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,18 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2017
+ms.date: 06/13/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: d7eecb36d8cb786c7eec5080cf37574c2fc93173
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 7e903f7e20cd5ef9aa1f09b93753231fee00e556
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
-# <a name="azure-resource-manager-template-functions"></a>Azure 资源管理器模板函数
+# <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager 模板函数
 本主题介绍可以在 Azure Resource Manager 模板中使用的所有函数。
+
+通过将函数分别扩进方括号（`[` 和 `]`）在模板中添加函数。 在部署过程中计算表达式。 尽管表达式编写为字符串文本，但其计算结果可以是其他 JSON 类型，例如数组、对象或整数。 如同在 JavaScript 中一样，函数调用的格式为 `functionName(arg1,arg2,arg3)`。 使用点和 [index] 运算符引用属性。
+
+模板表达式不能超过 24,576 个字符。
 
 模板函数及其参数不区分大小写。 例如，Resource Manager 将 **variables('var1')** 和 **VARIABLES('VAR1')** 视为相同。 在求值时，除非函数明确修改大小写（例如，使用 toUpper 或 toLower 进行修改），否则函数将保留大小写。 某些资源类型可能会提出大小写要求，而不考虑函数求值方式。
 
@@ -84,7 +88,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 <a id="variables" />
 
 ## <a name="deployment-value-functions"></a>部署值函数
-资源管理器提供以下函数，用于从与部署相关的模板和值部分获取值：
+Resource Manager 提供以下函数，用于从与部署相关的模板和值部分获取值：
 
 * [deployment](resource-group-template-functions-deployment.md#deployment)
 * [parameters](resource-group-template-functions-deployment.md#parameters)
@@ -102,7 +106,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 <a id="sub" />
 
 ## <a name="numeric-functions"></a>数值函数
-资源管理器提供以下用于处理整数的函数：
+Resource Manager 提供以下用于处理整数的函数：
 
 * [add](resource-group-template-functions-numeric.md#add)
 * [copyIndex](resource-group-template-functions-numeric.md#copyindex)
@@ -124,7 +128,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 <a id="subscription" />
 
 ## <a name="resource-functions"></a>资源函数
-资源管理器提供以下用于获取资源值的函数：
+Resource Manager 提供以下用于获取资源值的函数：
 
 * [listKeys and list{Value}](resource-group-template-functions-resource.md#listkeys)
 * [providers](resource-group-template-functions-resource.md#providers)
@@ -165,7 +169,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 <a id="uricomponenttostring" />
 
 ## <a name="string-functions"></a>字符串函数
-资源管理器提供以下用于处理字符串的函数：
+Resource Manager 提供以下用于处理字符串的函数：
 
 * [base64](resource-group-template-functions-string.md#base64)
 * [base64ToJson](resource-group-template-functions-string.md#base64tojson)

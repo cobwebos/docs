@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: LADocs; mandia
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: ff86340f18a2d3d13d55b7e0bcd4122d9b85ccd9
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: dd4e4282d774c2c336889b1df887806bfe512c10
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/20/2017
+ms.lasthandoff: 06/08/2017
 
 ---
 
@@ -731,7 +731,7 @@ Terminate 操作停止执行工作流运行，中止正在进行的所有操作�
 
 ## <a name="table-action"></a>表操作
 
-`table` 允许将一个项数组转换为 **CVS** 或 **HTML** 表。
+`table` 允许将一个项数组转换为 CSV或 HTML 表。
 
 假设 @triggerBody() 为
 
@@ -789,7 +789,7 @@ Terminate 操作停止执行工作流运行，中止正在进行的所有操作�
 |Name|必选|类型|说明|
 |--------|------------|--------|---------------|
 |from|是|Array|源数组。|
-|格式|是|String|格式可以为 **CVS**，也可以为 **HTML**。|
+|格式|是|String|格式可以为 CSV，也可以为 HTML。|
 |列|否|Array|列。 允许替代该表的默认形状。|
 |column header|否|String|列标题。|
 |column value|是|String|列的值。|

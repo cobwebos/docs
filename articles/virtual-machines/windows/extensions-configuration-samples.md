@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: abe6d13e4fcb323f5aceacaee3b9dc8ed51c8b61
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: a22962690854d273377f7295ab5dd49419f5a354
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -105,7 +106,7 @@ ms.lasthandoff: 04/03/2017
       }
 
 #### <a name="parameter-description"></a>参数说明：
-* fileUris：通过该扩展将下载到 VM 上的文件的 URL 列表（以逗号分隔）。 如果未指定，则不会下载任何文件。 如果文件在 Azure 存储空间中，则可以将 fileURL 标记为私有，且相应的 storageAccountName 和 storageAccountKey 可以作为私有参数传递以访问这些文件。
+* fileUris：通过该扩展将下载到 VM 上的文件的 URL 列表（以逗号分隔）。 如果未指定，则不会下载任何文件。 如果文件在 Azure 存储中，则可以将 fileURL 标记为私有，且相应的 storageAccountName 和 storageAccountKey 可以作为私有参数传递以访问这些文件。
 * commandToExecute：[必需参数]：此为将通过该扩展执行的命令。
 * storageAccountName：[可选参数]：用于访问这些 fileURL 的存储帐户名称（如果它们被标记为私有）。
 * storageAccountKey：[可选参数]：用于访问这些 fileURL 的存储帐户密匙（如果它们被标记为私有）。
@@ -358,6 +359,32 @@ ms.lasthandoff: 04/03/2017
             "storageAccountKey": "[listkeys(variables('accountid'), '2015-05-01-preview').key1]",
             "storageAccountEndPoint": "https://core.windows.net"
           }
+          }
+
+### <a name="octopus-deploy-tentacle-agent"></a>Octopus Deploy Tentacle 代理
+
+若要详细了解如何在 Azure 上配置 Octopus Deploy Tentacle，请参阅 [Octopus 文档](https://octopus.com/docs/installation/installing-tentacles/azure-virtual-machines)。
+
+          {
+            "publisher": "OctopusDeploy.Tentacle",
+            "type": "OctopusDeployWindowsTentacle",
+            "typeHandlerVersion": "2.0",
+            "autoUpgradeMinorVersion": "true",
+            "settings": {
+              "OctopusServerUrl": "(string, required) The url to the Octopus server portal.",
+              "Environments": [ "(array of strings, required) The environments to which the Tentacle should be added." ],
+              "Roles": [ "(array of strings, required) The roles to assign to the Tentacle." ],
+              "CommunicationMode": "(string, required) Whether the Tentacle should wait for connections from the server ('Listen') or should poll the server ('Poll').",
+              "Port": (int, required) The port to listen on for connections from the server (in 'Listen' mode), or the port on which to connect to the Octopus server ('Poll' mode).,
+              "PublicHostNameConfiguration": "(string, optional) If in listening mode, how the server should contact the Tentacle. Can be 'PublicIP', 'FQDN', 'ComputerName' or 'Custom'. Defaults to 'PublicIp'.",
+              "CustomPublicHostName": "(string, optional) If in listening mode, and 'PublicHostNameConfiguration' is set to 'Custom', the address that the server should use for this Tentacle.",
+              "MachinePolicy": "(string, optional) The Machine Policy to assign to the Tentacle. If not specified, uses the default Machine Policy.",
+              "Tenants": [ "(array of strings, optional) The tenants to assign to the Tentacle. The tenants feature must be enabled on the Octopus Server." ],
+              "TenantTags": [ "(array of strings, optional) The tenant tags to assign to the Tentacle, in the format 'TagSet/TagName'. The tenants feature must be enabled on the Octopus Server." ]
+            },
+            "protectedSettings": {
+              "ApiKey": "(string, required) The Api Key to use to connect to the Octopus server."
+            }
           }
 
 在上述示例中，请将版本号替换为最新版本号。

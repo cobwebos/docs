@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 2/24/2017
 ms.author: shlo
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 0850b42e15e2daf4868560a1518f7906c7ae0800
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: bfe86b8cfe9ad0fc9fbda7664873b2b590fc2805
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 05/02/2017
 [顶级保险公司改变保险行业](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20096)
 
 ## <a name="rockwell-automation"></a>罗克韦尔自动化
-[工业自动化公司，通过大数据解决方案节省 90% 的成本](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18356)
+[Industrial Automation Firm Cuts Costs up to 90 Percent with big data Solutions](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18356)（工业自动化公司利用大数据解决方案节省 90% 的成本）
 
 ## <a name="ziosk"></a>Ziosk
 [面对这个汉堡你有什么点子？Ziosk 可能已经知道了。](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)

@@ -1,54 +1,53 @@
 ---
 title: "设计你的第一个 Azure Database for MySQL 数据库 - Azure CLI | Microsoft Docs"
-description: "本教程介绍如何使用 Azure CLI 2.0 创建和管理 Azure Database for MySQL 服务器。"
+description: "本教程介绍如何使用 Azure CLI 2.0 从命令行创建和管理 Azure Database for MySQL 服务器。"
 services: mysql
 author: v-chenyh
 ms.author: v-chenyh
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
 ms.service: mysql-database
-ms.devlang: na
+ms.devlang: azure-cli
 ms.topic: article
-ms.tgt_pltfrm: portal
-ms.date: 05/10/2017
+ms.date: 06/13/2017
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 99238b9c0bcc7fa80e8c72cda25f7ed809cc5195
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: 590cba6cb58d0c0eaedb9f122ac048c33988004d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
 # <a name="design-your-first-azure-database-for-mysql-database"></a>设计你的第一个 Azure Database for MySQL 数据库
 
-Azure Database for MySQL 是 Microsoft 云中基于 MySQL Community Edition 数据库引擎的一种关系数据库服务。 在本教程中，需使用 Azure CLI（命令行接口）以及其他实用工具了解如何完成以下操作：
+Azure Database for MySQL 是 Microsoft 云中基于 MySQL Community Edition 数据库引擎的一种关系型数据库服务。 在本教程中，需使用 Azure CLI（命令行接口）以及其他实用工具了解如何完成以下操作：
 
 > [!div class="checklist"]
 > * 创建 Azure Database for MySQL
-> * 配置服务器防火墙 使用 [mysql 命令行工具](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)创建数据库
+> * 配置服务器防火墙
+> * 使用 [mysql 命令行工具](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)创建数据库
 > * 加载示例数据
 > * 查询数据
 > * 更新数据
 > * 还原数据
 
-[!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
+可在浏览器中使用 Azure Cloud Shell，或在自己的计算机上[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)，运行本教程中的代码块。
 
-## <a name="log-in-to-azure"></a>登录 Azure
+[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-使用 [az login](/cli/azure/#login) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
+如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
-```azurecli
-az login
+如果有多个订阅，请选择资源所在的相应订阅或对资源进行计费的订阅。 使用 [az account set](/cli/azure/account#set) 命令选择帐户下的特定订阅 ID。
+```azurecli-interactive
+az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
-按照命令提示说明，在浏览器中打开 URL https://aka.ms/devicelog，然后输入“命令提示”中生成的代码。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 使用 [az group create](https://docs.microsoft.com/cli/azure/group#create) 命令创建 [Azure 资源组](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。
 
 以下示例在 `westus` 位置创建名为 `mycliresource` 的资源组。
 
-```azurecli
+```azurecli-interactive
 az group create --name mycliresource --location westus
 ```
 
@@ -57,7 +56,7 @@ az group create --name mycliresource --location westus
 
 以下示例在资源组 `mycliresource` 中的 `westus` 处创建名为 `mycliserver` 的 Azure Database for MySQL 服务器。 该服务器的管理员登录名为 `myadmin`，密码为 `Password01!`。 该服务器是使用基本性能层以及在该服务器中的所有数据库之间共享的 50 个计算单元创建的。 可以根据应用程序需求增加或减少计算和存储。
 
-```azurecli
+```azurecli-interactive
 az mysql server create --resource-group mycliresource --name mycliserver
 --location westus --user myadmin --password Password01!
 --performance-tier Basic --compute-units 50
@@ -68,16 +67,14 @@ az mysql server create --resource-group mycliresource --name mycliserver
 
 以下示例创建用于预定义的地址范围的防火墙规则。 此示例展示完整的可能 IP 地址范围。
 
-```azurecli
-az mysql server firewall-rule create --resource-group mycliresource
---server mycliserver --name AllowYourIP --start-ip-address 0.0.0.0
---end-ip-address 255.255.255.255
+```azurecli-interactive
+az mysql server firewall-rule create --resource-group mycliresource --server mycliserver --name AllowYourIP --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
 
 ## <a name="get-the-connection-information"></a>获取连接信息
 
 若要连接到服务器，需要提供主机信息和访问凭据。
-```azurecli
+```azurecli-interactive
 az mysql server show --resource-group mycliresource --name mycliserver
 ```
 
@@ -169,9 +166,8 @@ SELECT * FROM inventory;
 - 目标服务器：提供一个要还原到的新服务器名称
 - 源服务器：提供想从其还原的服务器的名称
 - 位置：不能选择区域，此区域默认与源服务器相同
-- 定价层：还原服务器时不能更改此值。 此值与源服务器相同。 
 
-```azurecli
+```azurecli-interactive
 az mysql server restore --resource-group mycliresource --name mycliserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mycliserver
 ```
 
@@ -181,11 +177,13 @@ az mysql server restore --resource-group mycliresource --name mycliserver-restor
 本教程介绍：
 > [!div class="checklist"]
 > * 创建 Azure Database for MySQL
-> * 配置服务器防火墙 使用 [mysql 命令行工具](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)创建数据库
+> * 配置服务器防火墙
+> * 使用 [mysql 命令行工具](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)创建数据库
 > * 加载示例数据
 > * 查询数据
 > * 更新数据
 > * 还原数据
 
-[Azure Database for MySQL - Azure CLI 示例](./sample-scripts-azure-cli.md)
+> [!div class="nextstepaction"]
+> [Azure Database for MySQL - Azure CLI 示例](./sample-scripts-azure-cli.md)
 

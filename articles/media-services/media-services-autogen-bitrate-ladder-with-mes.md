@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2016
+ms.date: 06/06/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 244413be8b094605883445bb3cbf675b538b704e
-ms.lasthandoff: 03/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 3bad3219b087523125047f24d643ffdc5e24caa0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -29,12 +30,15 @@ ms.lasthandoff: 03/10/2017
 
 若要使用此功能，需在创建编码任务时指定“自适应流式处理”预设。 使用“自适应流式处理”预设时，MES 编码器会以智能方式为比特率阶梯设置一个上限。 但是，用户无法控制编码成本，因为是由服务确定要使用的层数和分辨率。 可以在本主题[末尾](#output)看到 MES 生成的输出层的示例，是使用“自适应流式处理”预设进行编码得来的。
 
+>[!NOTE]
+> 只有在生成可流式处理的输出资产时，才使用此预设。 具体而言，该输出资产将包含无音频和视频交错的 MP4 文件。 如果需要输出包含音频和视频交错的 MP4 文件（例如，作为渐进式下载文件使用），请使用列在[本部分](media-services-mes-presets-overview.md)的其中一个预设。
+
 ## <a id="encoding_with_dotnet"></a>使用媒体服务 .NET SDK 进行编码
 
 以下代码示例使用媒体服务 .NET SDK 执行下列任务：
 
 - 创建编码作业。
-- 获取对媒体编码器标准版编码器的引用。
+- 获取对 Media Encoder Standard 编码器的引用。
 - 向作业添加一个编码任务，指定使用“自适应流式处理”预设。 
 - 创建将包含所编码资产的输出资产。
 - 添加事件处理程序以检查作业进度。

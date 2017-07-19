@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 037045c4e76d0fb8e96944fe8a3235223594a034
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 3b2ddf764f54d2e7f23b02b5b593077938ac9355
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/29/2017
 
 
 ---
@@ -32,7 +33,7 @@ Azure 应用程序网关是服务形式的应用程序传送控制器 (ADC)，�
 
 **问：应用程序网关支持哪些功能？**
 
-应用程序网关支持 SSL 卸载和端到端 SSL、Web 应用程序防火墙（预览版）、基于 Cookie 的会话相关性、基于 URL 路径的路由、多站点托管，等等。 有关支持的功能的完整列表，请访问 [Introduction to Application Gateway](application-gateway-introduction.md)（应用程序网关简介）
+应用程序网关支持 SSL 卸载和端到端 SSL、Web 应用程序防火墙、基于 Cookie 的会话相关性、基于 URL 路径的路由、多站点托管，等等。 有关支持的功能的完整列表，请访问 [Introduction to Application Gateway](application-gateway-introduction.md)（应用程序网关简介）
 
 **问：应用程序网关与 Azure 负载均衡器之间有什么区别？**
 
@@ -78,6 +79,10 @@ Azure 应用程序网关是服务形式的应用程序传送控制器 (ADC)，�
 
 支持。应用程序网关会将 x-forwarded-for、x-forwarded-proto 和 x-forwarded-port 标头插入转发到后端的请求中。 x-forwarded-for 标头的格式是逗号分隔的“IP:端口”列表。 x-forwarded-proto 的有效值为 http 或 https。 x-forwarded-port 指定请求抵达应用程序网关时所在的端口。
 
+**问：部署应用程序网关需要多长时间？更新时我的应用程序网关是否仍正常工作？**
+
+预配新应用程序网关部署最多需 20 分钟。 更改实例大小/计数不会出现干扰，且在此期间网关处于活动状态。
+
 ## <a name="configuration"></a>配置
 
 **问：是否始终要将应用程序网关部署在虚拟网络中？**
@@ -90,11 +95,17 @@ Azure 应用程序网关是服务形式的应用程序传送控制器 (ADC)，�
 
 **问：是否可以在应用程序网关子网中部署其他任何组件？**
 
-不可以。但可以在子网中部署其他应用程序网关
+不可以。但可以在子网中部署其他应用程序网关。
 
 **问：应用程序网关子网是否支持网络安全组？**
 
-应用程序网关子网支持网络安全组，但必须为端口 65503-65534 添加例外，这样才能使后端正常运行。 不应阻止出站 Internet 连接。
+应用程序网关子网支持网络安全组，但存在以下限制：
+
+* 必须提交端口 65503-65534 上传入流量的异常，以便后台运行状况正常工作。
+
+* 不应阻止出站 Internet 连接。
+
+* 必须允许来自 AzureLoadBalancer 标记的流量。
 
 **问：应用程序网关有哪些限制？是否可以提高这些限制？**
 
@@ -122,7 +133,21 @@ Azure 应用程序网关是服务形式的应用程序传送控制器 (ADC)，�
 
 **问：自定义探测的 Host 字段是什么意思？**
 
-Host 字段指定要将探测数据发送到的名称。 仅在应用程序网关上配置了多站点的情况下适用，否则使用“127.0.0.1”。 此值不同于 VM 主机名，它采用 \<协议\>://\<主机\>:\<端口\>\<路径\> 格式。 
+Host 字段指定要将探测数据发送到的名称。 仅在应用程序网关上配置了多站点的情况下适用，否则使用“127.0.0.1”。 此值不同于 VM 主机名，它采用 \<协议\>://\<主机\>:\<端口\>\<路径\> 格式。
+
+**问：我可以将某些源 IP 的应用程序网关访问权限列入允许列表吗？**
+
+对应用程序网关子网使用 NSG 可以完成此操作。 应按列出的优先顺序对子网采取以下限制：
+
+* 允许来自源 IP/IP 范围的传入流量。
+
+* 允许来自所有源的请求传入端口 65503-65534，进行[后端运行状况通信](application-gateway-diagnostics.md)。
+
+* 允许 [NSG](../virtual-network/virtual-networks-nsg.md) 上的传入 Azure 负载均衡器探测（AzureLoadBalancer 标记）和入站虚拟网络流量（VirtualNetwork 标记）。
+
+* 使用“拒绝所有”规则阻止其他所有传入流量。
+
+* 允许所有目的地的 Internet 出站流量。
 
 ## <a name="performance"></a>性能
 
@@ -283,3 +308,4 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关应用程序网关的详细信息，请访问 [Introduction to Application Gateway](application-gateway-introduction.md)（应用程序网关简介）。
+

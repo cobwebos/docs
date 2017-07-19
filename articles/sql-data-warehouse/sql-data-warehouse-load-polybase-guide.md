@@ -12,13 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 10/31/2016
+ms.date: 6/5/2016
 ms.custom: loading
 ms.author: cakarst;barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: 1a82f9f1de27c9197bf61d63dd27c5191fec1544
-ms.openlocfilehash: 3e1bf2372762de474310c78d512a6a073c7a01b6
-ms.lasthandoff: 01/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 6938b92d8e5b46d908dc5b2155bdfdc89bb1dc8c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/07/2017
 
 
 
@@ -119,60 +120,19 @@ WHERE
     AND DateRequested > '12/31/2013'
     AND DateRequested < '01/01/2015';
 ```
+## <a name="isolate-loading-users"></a>隔离加载用户
+通常需要有多个用户可将数据加载到 SQL 数据仓库中。 由于 [CREATE TABLE AS SELECT (TRANSACT-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] 需要数据库的“控制”权限，因此最终将有多个用户具有所有架构的控制访问权限。 可使用 DENY CONTROL 语句限制这种情况。
 
+示例：考虑到为部门 A 使用数据库架构 schema_A，为部门 B 使用 schema_B；让数据库用户 user_A 和 user_B 分别作为部门 A 和 B 中加载的 PolyBase 用户。 两个用户均已被授予“控制”数据库权限。
+架构 A 和架构 B 的创建者现在使用 DENY 锁定其架构：
 
-## <a name="working-around-the-polybase-utf-8-requirement"></a>满足 PolyBase UTF-8 要求
-目前 PolyBase 支持加载 UTF-8 编码的数据文件。 由于 UTF-8 使用与 ASCII 相同的字符编码，PolyBase 也支持加载 ASCII 编码的数据。 但是，PolyBase 不支持其他字符编码，例如 UTF-16/Unicode 或扩展的 ASCII 字符。 扩展的 ASCII 包括具有重音符号的字符，例如德语中常见的变音符号。
+```sql
+   DENY CONTROL ON SCHEMA :: schema_A TO user_B;
+   DENY CONTROL ON SCHEMA :: schema_B TO user_A;
+```   
+ 在此情况下，现在 user_A 和 user_B 应被锁在其他部门的架构之外。
+ 
 
-满足这项要求的最佳方法是重新编写为 UTF-8 编码。
-
-有多种方法可实现此目的。 以下是两种使用 Powershell 的方法：
-
-### <a name="simple-example-for-small-files"></a>适用于小文件的简单示例
-以下是用于创建文件的一行简单 Powershell 脚本。
-
-```PowerShell
-Get-Content <input_file_name> -Encoding Unicode | Set-Content <output_file_name> -Encoding utf8
-```
-
-但是，尽管将数据重新编码的方法非常简单，但绝非最有效的做法。 以下 IO 流式处理示例要快得多，并可达到相同的效果。
-
-### <a name="io-streaming-example-for-larger-files"></a>适用于较大文件的 IO 流式处理示例
-以下代码示例更为复杂，但在流式处理从源到目标的数据行时要有效得多。 请对较大的文件应用此方法。
-
-```PowerShell
-#Static variables
-$ascii = [System.Text.Encoding]::ASCII
-$utf16le = [System.Text.Encoding]::Unicode
-$utf8 = [System.Text.Encoding]::UTF8
-$ansi = [System.Text.Encoding]::Default
-$append = $False
-
-#Set source file path and file name
-$src = [System.IO.Path]::Combine("C:\input_file_path\","input_file_name.txt")
-
-#Set source file encoding (using list above)
-$src_enc = $ansi
-
-#Set target file path and file name
-$tgt = [System.IO.Path]::Combine("C:\output_file_path\","output_file_name.txt")
-
-#Set target file encoding (using list above)
-$tgt_enc = $utf8
-
-$read = New-Object System.IO.StreamReader($src,$src_enc)
-$write = New-Object System.IO.StreamWriter($tgt,$append,$tgt_enc)
-
-while ($read.Peek() -ne -1)
-{
-    $line = $read.ReadLine();
-    $write.WriteLine($line);
-}
-$read.Close()
-$read.Dispose()
-$write.Close()
-$write.Dispose()
-```
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解如何将数据转移到 SQL 数据仓库，请参阅[数据迁移概述][data migration overview]。

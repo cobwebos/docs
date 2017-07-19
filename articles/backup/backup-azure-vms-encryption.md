@@ -16,10 +16,10 @@ ms.date: 04/24/2017
 ms.author: pajosh;markgal;trinadhk
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: d76fb43a1b045b98a14ae91ac339d53e9a48f1de
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: b6aed1f34a899f4e182f0cf48426ec2da88b51c2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 05/04/2017
 
 ## <a name="supported-scenarios"></a>支持的方案
 > [!NOTE]
-> 1. 仅资源管理器部署的虚拟机支持加密 VM 的备份和还原。 而经典虚拟机不支持。 <br>
+> 1. 仅 Resource Manager 部署的虚拟机支持加密 VM 的备份和还原。 而经典虚拟机不支持。 <br>
 > 2. 使用 Azure 磁盘加密（利用 Windows 行业标准的 BitLocker 功能和 Linux 的 DM-Crypt 功能来提供磁盘的加密）的 Windows 和 Linux 虚拟机支持。 <br>
 > 3. 仅同时使用 BitLocker 加密密钥和 Key 加密秘钥加密的虚拟机支持。 仅使用 BitLocker 加密密钥加密的虚拟机不支持。 <br>
 >
@@ -97,5 +97,6 @@ ms.lasthandoff: 05/04/2017
 | 备份 |验证失败，因为虚拟机仅使用 BEK 进行加密。 只能对同时使用 BEK 和 KEK 加密的虚拟机启用备份。 |应使用 BEK 和 KEK 加密虚拟机。 首先解密 VM，然后使用 BEK 和 KEK 对其进行加密。 使用 BEK 和 KEK 对 VM 进行加密后，即可启用备份。 了解有关如何[解密和加密 VM](../security/azure-security-disk-encryption.md) 的详细信息  |
 | 还原 |无法还原此加密 VM，因为与之关联的密钥保管库不存在。 |通过 [Azure 密钥保管库入门](../key-vault/key-vault-get-started.md)来创建密钥保管库。 请参阅文章[使用 Azure 备份还原密钥保管库秘钥和机密](backup-azure-restore-key-secret.md)，还原密钥和机密（如果它们不存在）。 |
 | 还原 |无法还原此加密 VM，因为与之关联的密钥和机密不存在。 |请参阅文章[使用 Azure 备份还原密钥保管库秘钥和机密](backup-azure-restore-key-secret.md)，还原密钥和机密（如果它们不存在）。 |
-| 还原 |备份服务没有权限访问你的订阅中的资源。 |如上所述，先使用[选择 VM 还原配置](backup-azure-arm-restore-vms.md#choosing-a-vm-restore-configuration)的**还原已备份磁盘**部分中提到的步骤还原磁盘。 之后，使用 PowerShell [从还原的磁盘创建 VM](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。
+| 还原 |备份服务没有权限访问你的订阅中的资源。 |如上所述，先使用[选择 VM 还原配置](backup-azure-arm-restore-vms.md#choosing-a-vm-restore-configuration)的**还原已备份磁盘**部分中提到的步骤还原磁盘。 之后，使用 PowerShell [从还原的磁盘创建 VM](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。 |
+|备份 | Azure 备份服务对 Key Vault 没有提供足够的权限，无法备份加密的虚拟机 | 虚拟机应同时使用 BitLocker 加密密钥和 Key 加密密钥进行加密。 之后，应启用备份。  使用[使用 AzureRM.RecoveryServices.Backup cmdlets 来备份虚拟机](backup-azure-vms-automation.md)中的 PowerShell 文档的“启用保护”部分提到的步骤，备份服务可在 PowerShell 中提供这些权限。 |  
 

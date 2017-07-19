@@ -13,18 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 05/30/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 8b823c42743bc477dceaa3270836de8ebd92c28f
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: bd14d9902f4061965c008454a14f91d3927f5b99
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/02/2017
 
 
 ---
 # <a name="create-a-windows-virtual-machine-with-powershell-and-the-classic-deployment-model"></a>使用 Powershell 和经典部署模型创建 Windows 虚拟机
 > [!div class="op_single_selector"]
-> * [Azure 经典门户 - Windows](tutorial.md)
+> * [Azure 门户 - Windows](tutorial.md)
 > * [PowerShell - Windows](create-powershell.md)
 > 
 > 
@@ -32,7 +33,7 @@ ms.lasthandoff: 04/27/2017
 <br>
 
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 了解如何[使用 Resource Manager 模型执行这些步骤](../../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 了解如何[使用 Resource Manager 模型执行这些步骤](../../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 这些步骤演示了如何使用构建基块方法自定义一组 Azure PowerShell 命令以创建和预配置基于 Windows 的 Azure 虚拟机。 可以使用此过程快速创建用于基于 Windows 的新虚拟机的命令集并扩展现有部署，或者创建多个命令集以快速构建出自定义开发/测试或 IT 专业环境。
 
@@ -103,7 +104,7 @@ ms.lasthandoff: 04/27/2017
 有关 D、DS 或 G 系列虚拟机的 InstanceSize 值，请参阅 [Azure 的虚拟机和云服务大小](https://msdn.microsoft.com/library/azure/dn197896.aspx)。
 
 > [!NOTE]
-> 如果具有带软件保障的企业协议，并且想要利用 Windows Server [混合使用权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)，请将 **-LicenseType** 参数添加到 **New-AzureVMConfig** cmdlet，并为典型用例传递值 **Windows_Server**。  请确保使用已上载的映像；不能将库中的标准映像与混合使用权益一起使用。
+> 如果具有带软件保障的企业协议，并且想要利用 Windows Server [混合使用权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)，请将 **-LicenseType** 参数添加到 **New-AzureVMConfig** cmdlet，并为典型用例传递值 **Windows_Server**。  请确保使用已上传的映像；不能将库中的标准映像与混合使用权益一起使用。
 > 
 > 
 
@@ -164,7 +165,7 @@ ms.lasthandoff: 04/27/2017
 
     New-AzureVM –ServiceName "<short name of the cloud service>" -VMs $vm1
 
-云服务的短名称是在 Azure 经典门户的云服务列表中或 Azure 门户的资源组列表中显示的名称。
+云服务的短名称是指 Azure 门户的云服务列表中或 Azure 门户的资源组列表中显示的名称。
 
 选项 2：在现有的云服务和虚拟网络中创建虚拟机。
 
@@ -180,7 +181,7 @@ ms.lasthandoff: 04/27/2017
 如果你要再次创建此虚拟机或类似的虚拟机，则可以：
 
 * 将此命令集保存为 PowerShell 脚本文件 (*.ps1)。
-* 在 Azure 经典门户的“自动化”部分中将此命令集保存为 Azure 自动化 Runbook。
+* 在 Azure 门户的“自动化帐户”部分中，将此命令集保存为 Azure 自动化 Runbook。
 
 ## <a id="examples"></a>示例
 以下是使用上述步骤构建 Azure PowerShell 命令集以创建基于 Windows 的 Azure 虚拟机的两个示例。

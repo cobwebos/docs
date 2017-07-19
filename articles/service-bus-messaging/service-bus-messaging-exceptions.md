@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/03/2017
+ms.date: 06/06/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 3b543b1c94122a037cdd3b16e25d60957add1cb7
-ms.lasthandoff: 03/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 93300ba995f2a556cb90fc657db5cf9ad56b9846
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -120,7 +121,8 @@ ConnectionsQuotaExceeded for namespace xxx.
    有时，服务总线服务在处理请求时会遇到延迟，例如，高流量时段。 在这种情况下，你可以在延迟后重试操作，直到操作成功为止。 如果多次尝试同一操作后仍然失败，请访问 [Azure 服务状态站点](https://azure.microsoft.com/status/)，看是否有任何已知的服务中断。
 
 ## <a name="next-steps"></a>后续步骤
-有关服务总线和事件中心 .NET API 的完整参考，请参阅 [Azure .NET API 参考](/dotnet/api/)。
+
+有关服务总线 .NET API 的完整参考，请参阅 [Azure .NET API 参考](/dotnet/api/overview/azure/servicebus)。
 
 若要了解有关 [服务总线](https://azure.microsoft.com/services/service-bus/)的详细信息，请参阅以下主题。
 

@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2017
+ms.date: 06/19/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: eeaab56b376ffd3123efb95a1223b7344dd6d187
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
+ms.openlocfilehash: 65709ef9f6cdd50fb8650a1a11c9321defb9cf5b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/21/2017
 
 
 ---
@@ -103,7 +104,7 @@ Azure Batch 可帮助用户在云中有效运行大规模并行的高性能计�
    5. 输入 **2** 作为“每个节点最大任务”设置的值。
    6. 单击“确定”创建池。
 
-#### <a name="azure-storage-explorer"></a>Azure 存储空间资源管理器
+#### <a name="azure-storage-explorer"></a>Azure 存储资源管理器
 [Azure 存储资源管理器 6（工具）](https://azurestorageexplorer.codeplex.com/)或 [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer)（来自 ClumsyLeaf 软件）。 可使用这些工具检查和更改 Azure 存储项目中的数据，包括云托管应用程序的日志。
 
 1. 创建名为 **mycontainer** 的容器，此容器具有专用访问权限（无匿名访问权限）
@@ -111,16 +112,16 @@ Azure Batch 可帮助用户在云中有效运行大规模并行的高性能计�
 
    ![](./media/data-factory-data-processing-using-batch/image3.png)
 
-   **Inputfolder** 和 **outputfolder** 是 **mycontainer** 中的顶级文件夹，且 **inputfolder** 含有具有日期时间戳 (YYYY-MM-DD-HH) 的子文件夹。
+   `Inputfolder` 和 `outputfolder` 是 `mycontainer` 中的顶级文件夹。 `inputfolder` 中具有带日期时间戳 (YYYY-MM-DD-HH) 的子文件夹。
 
-   如果正在使用 **Azure 存储资源管理器**，则下一步需要上传名称为 inputfolder/2015-11-16-00/file.txt、inputfolder/2015-11-16-01/file.txt 等的文件。 此步骤会自动创建文件夹。
+   如果正在使用 **Azure 存储资源管理器**，则下一步需要上传名称为 `inputfolder/2015-11-16-00/file.txt`、 `inputfolder/2015-11-16-01/file.txt` 等的文件。 此步骤会自动创建文件夹。
 3. 在计算机上创建一个文本文件 **file.txt**，其内容含有关键字 **Microsoft**。 例如：“test custom activity Microsoft test custom activity Microsoft”。
 4. 将该文件上传到 Azure Blob 存储中的以下输入文件夹。
 
    ![](./media/data-factory-data-processing-using-batch/image4.png)
 
-   如果正在使用 **Azure 存储资源管理器**，请将 **file.txt** 文件上传到 **mycontainer**。 单击工具栏上的“复制”，创建 blob 副本。 在“复制 Blob”对话框中，将“目标 blob 名”更改为“inputfolder/2015-11-16-00/file.txt”**.**。 重复此步骤，创建 inputfolder/2015-11-16-01/file.txt、inputfolder/2015-11-16-02/file.txt、inputfolder/2015-11-16-03/file.txt、inputfolder/2015-11-16-04/file.txt 等。 此操作会自动创建文件夹。
-5. 创建名为 **customactivitycontainer** 的另一容器。 将自定义活动 zip 文件上传至此容器。
+   如果正在使用 **Azure 存储资源管理器**，请将 **file.txt** 文件上传到 **mycontainer**。 单击工具栏上的“复制”，创建 blob 副本。 在“复制 Blob”对话框中，将“目标 blob 名”更改为 `inputfolder/2015-11-16-00/file.txt`。 重复此步骤以创建 `inputfolder/2015-11-16-01/file.txt`、`inputfolder/2015-11-16-02/file.txt`、`inputfolder/2015-11-16-03/file.txt`、`inputfolder/2015-11-16-04/file.txt`，依此类推。 此操作会自动创建文件夹。
+5. 创建另一个名为 `customactivitycontainer` 的容器。 将自定义活动 zip 文件上传至此容器。
 
 #### <a name="visual-studio"></a>Visual Studio
 安装 Microsoft Visual Studio 2012 或更高版本，创建用于数据工厂解决方案的自定义 Batch 活动。
@@ -157,7 +158,7 @@ public IDictionary<string, string> Execute(
 
    1. 启动 **Visual Studio 2012**/**2013/2015**。
    2. 单击“文件”，指向“新建”并单击“项目”。
-   3. 展开“模板”，然后选择“Visual C\#”。在此演练中使用的是 C\#，但也可使用任意 .NET 语言开发自定义活动。
+   3. 展开“模板”，然后选择“Visual C\#”。 在此演练中使用的是 C\#，但也可使用任意 .NET 语言开发自定义活动。
    4. 从右侧项目类型列表中选择“类库”。
    5. 对于“名称”，输入 **MyDotNetActivity**。
    6. 对于“位置”，选择“C:\\ADFGetStarted”。 如果不存在，则创建 **ADF** 文件夹。
@@ -368,7 +369,7 @@ public IDictionary<string, string> Execute(
 3. 在 **\\bin\\Debug** 文件夹内创建包含所有二进制文件的 zip 文件 **MyDotNetActivity.zip**。 可能需要包括 MyDotNetActivity.**pdb** 文件以便获取其他详细信息，例如出现故障时引发问题的源代码中的行号。
 
    ![](./media/data-factory-data-processing-using-batch/image5.png)
-4. 将 **MyDotNetActivity.zip** 作为 blob 上传到 blob 容器：**ADFTutorialDataFactory** 中 **StorageLinkedService** 链接服务使用的 Azure Blob 存储中的 **customactivitycontainer**。 创建 blob 容器 **customactivitycontainer**（如果不存在）。
+4. 将 MyDotNetActivity.zip 作为 blob 上传到 blob 容器：ADFTutorialDataFactory 中 StorageLinkedService 链接服务使用的 Azure Blob 存储中的 `customactivitycontainer`。 如果不存在容器 `customactivitycontainer`，则创建该容器。
 
 #### <a name="execute-method"></a>Execute 方法
 本部分提供有关 Excute 方法中代码的更多详细信息和说明。
@@ -447,7 +448,7 @@ public IDictionary<string, string> Execute(
 ### <a name="create-the-data-factory"></a>创建数据工厂
 在[创建自定义活动](#create-the-custom-activity)部分中，已创建了自定义活动，并已将具有二进制的 zip 文件和 PDB 文件上传到 Azure Blob 容器。 在本部分中，将通过使用**自定义活动**的**管道**创建 Azure **数据工厂**。
 
-自定义活动的输入数据集表示 blob 存储内输入文件夹 (mycontainer\\inputfolder) 中的 blob（文件）。 自定义活动的输出数据集表示 blob 存储内输出文件夹 (mycontainer\\outputfolder) 中的输出 blob。
+自定义活动的输入数据集表示 blob 存储内输入文件夹 (`mycontainer\\inputfolder`) 中的 blob（文件）。 自定义活动的输出数据集表示 blob 存储内输出文件夹 (`mycontainer\\outputfolder`) 中的输出 blob。
 
 将一个或多个文件拖至输入文件夹：
 
@@ -668,7 +669,7 @@ test custom activity Microsoft test custom activity Microsoft
     }
     ```
 
-    将为每个输入切片生成输出 blob/文件。 下面是每个切片的输出文件命名方式。 所有输出文件在一个输出文件夹中生成：**mycontainer\\outputfolder**。
+    将为每个输入切片生成输出 blob/文件。 下面是每个切片的输出文件命名方式。 所有输出文件在一个输出文件夹中生成：`mycontainer\\outputfolder`。
 
     | **切片** | **开始时间**          | **输出文件**       |
     |-----------|-------------------------|-----------------------|
@@ -771,7 +772,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    ![](./media/data-factory-data-processing-using-batch/image13.png)
 6. 使用 Azure 门户查看与**切片**关联的**任务**，并查看每个切片在哪些 VM 上运行。 请参阅[数据工厂和 Batch 集成](#data-factory-and-batch-integration)部分了解详细信息。
-7. 在 Azure Blob 存储中，**mycontainer** 的 **outputfolder** 中应有输出文件。
+7. 在 Azure Blob 存储中，`mycontainer` 的 `outputfolder` 中应有输出文件。
 
    ![](./media/data-factory-data-processing-using-batch/image15.png)
 
@@ -788,7 +789,7 @@ test custom activity Microsoft test custom activity Microsoft
 10. 现在，在 **OutputDataset** 边栏选项卡中，右键单击将**切片开始时间**设置为 **2015/11/16 01:00:00 AM** 的切片，然后单击“运行”，重新运行/重新处理切片。 现在，该切片有五个文件而非一个文件。
 
     ![](./media/data-factory-data-processing-using-batch/image17.png)
-11. 切片运行且其状态为**就绪**后，验证 blob 存储中 **mycontainer** 的 **outputfolder** 中的此切片的输出文件 (**2015-11-16-01.txt**) 中的内容。 该切片的每个文件都应有一个行。
+11. 切片运行且其状态为“就绪”后，在 blob 存储中验证 `mycontainer` 的 `outputfolder` 中此切片的输出文件 (**2015-11-16-01.txt**) 中的内容。 该切片的每个文件都应有一个行。
 
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-01/file.txt.
@@ -804,7 +805,7 @@ test custom activity Microsoft test custom activity Microsoft
 >
 
 #### <a name="data-factory-and-batch-integration"></a>数据工厂和 Batch 集成
-数据工厂服务在 Azure Batch 中创建一项作业，名称为：**adf-poolname:job-xxx**。
+数据工厂服务在 Azure Batch 中创建一个作业，名称为：`adf-poolname:job-xxx`。
 
 ![Azure 数据工厂 - Batch 作业](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
 
@@ -855,7 +856,7 @@ test custom activity Microsoft test custom activity Microsoft
    ![](./media/data-factory-data-processing-using-batch/image21.png)
 
    > [!NOTE]
-   > Azure Blob 存储中会出现一个**容器**，名为：**adfjobs**。 不会自动删除此容器，但解决方案测试完成后，可安全删除该容器。 同样，数据工厂解决方案会创建一个 Azure Batch **作业**，其名为：**adf-\<pool ID/name\>:job-0000000001**。 测试完解决方案后，可按需删除此作业。
+   > Azure Blob 存储中会出现一个容器，名为：`adfjobs`。 不会自动删除此容器，但解决方案测试完成后，可安全删除该容器。 同样，数据工厂解决方案会创建一个 Azure Batch **作业**，其名为：`adf-\<pool ID/name\>:job-0000000001`。 测试完解决方案后，可按需删除此作业。
    >
    >
 7. 自定义活动不使用包中的 **app.config** 文件。 因此，如果代码从配置文件读取任何连接字符串，其在运行时无效。 使用 Azure Batch 时的最佳做法是在 **Azure KeyVault** 中保存所有密钥，使用基于证书的服务主体来保护 keyvault，并将该证书分发到 Azure Batch 池。 然后，.NET 自定义活动可以在运行时从 KeyVault 访问机密。 此解决方案是一种通用解决方法，可以延伸到任何类型的密钥，而不仅仅是连接字符串。
@@ -865,12 +866,12 @@ test custom activity Microsoft test custom activity Microsoft
 #### <a name="extend-the-sample"></a>扩展该示例
 可扩展此示例，深入了解 Azure 数据工厂和 Azure Batch 功能。 例如，若要在不同时间范围处理切片，请执行以下步骤：
 
-1. 添加 **inputfolder** 中的以下子文件夹：2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08、2015-11-16-09，并将输入文件置于这些文件夹中。 将管道结束时间从 `2015-11-16T05:00:00Z` 更改为 `2015-11-16T10:00:00Z`。 在“关系图视图”中，双击“InputDataset”，并确认输入切片是否就绪。 双击“OuptutDataset”，查看输出切片的状态。 如果其处于“就绪”状态，请检查输出文件的输出文件夹。
+1. 添加 `inputfolder` 中的以下子文件夹：2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08、2015-11-16-09，并将输入文件置于这些文件夹中。 将管道结束时间从 `2015-11-16T05:00:00Z` 更改为 `2015-11-16T10:00:00Z`。 在“关系图视图”中，双击“InputDataset”，并确认输入切片是否就绪。 双击“OuptutDataset”，查看输出切片的状态。 如果其处于“就绪”状态，请检查输出文件夹中的输出文件。
 2. 增加或减少**并发**设置，了解其对解决方案性能的影响，尤其是对 Azure Batch 上进行的处理的影响。 （请参阅步骤 4：创建和运行管道，详细了解**并发**设置。）
 3. 创建含较高/较低的**每个 VM 的最大任务数**的池。 若要使用创建的新池，更新数据工厂解决方案中的 Azure Batch 链接服务。 （请参阅步骤 4：创建和运行管道，详细了解**每个 VM 的最大任务数**设置。）
-4. 创建带有**自动缩放**功能的 Azure Batch 池。 自动缩放 Azure 批处理池中的计算节点是指动态调整应用程序使用的处理能力。 
+4. 创建带有**自动缩放**功能的 Azure Batch 池。 自动缩放 Azure Batch 池中的计算节点是指动态调整应用程序使用的处理能力。 
 
-    此处的示例公式实现以下行为：最初创建池后，它以 1 个 VM 开始。 $PendingTasks 度量值定义处于正在运行状态和活动（已排队）状态的任务数。  该公式查找过去 180 秒内的平均挂起任务数，并相应地设置 TargetDedicated。 它可确保 TargetDedicated 永不超过 25 个 VM。 因此，随着新任务的提交，池会自动增长；随着任务的完成，VM 会逐个释放，并且自动缩放功能会收缩这些 VM。 可根据自己的需要调整 startingNumberOfVMs 和 maxNumberofVMs。
+    此处的示例公式实现以下行为：最初创建池后，它以 1 个 VM 开始。 $PendingTasks 度量值定义处于正在运行状态和活动（已排队）状态中的任务数。  该公式查找过去 180 秒内的平均挂起任务数，并相应地设置 TargetDedicated。 它可确保 TargetDedicated 永不超过 25 个 VM。 因此，随着新任务的提交，池会自动增长；随着任务的完成，VM 会逐个释放，并且自动缩放功能会收缩这些 VM。 可根据自己的需要调整 startingNumberOfVMs 和 maxNumberofVMs。
  
     自动缩放公式：
 

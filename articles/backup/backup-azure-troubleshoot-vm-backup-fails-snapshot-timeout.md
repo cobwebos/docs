@@ -1,34 +1,36 @@
 ---
-title: "排查 Azure 备份故障：快照 VM 子任务超时 | Microsoft Docs"
-description: "与以下错误相关的 Azure 备份失败的症状、原因与解决方法：无法与 VM 代理通信以获取快照状态 - 快照 VM 子任务超时"
+title: "Azure 备份故障排除：客户代理状态不可用 | Microsoft Docs"
+description: "与错误相关的 Azure 备份失败的症状、原因与解决方法：无法与 VM 代理通信"
 services: backup
 documentationcenter: 
 author: genlin
 manager: cshepard
 editor: 
+keywords: "Azure 备份；VM 代理；网络连接；"
 ms.assetid: 4b02ffa4-c48e-45f6-8363-73d536be4639
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 06/13/2017
 ms.author: genli;markgal;
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d7924d8aade1ea582faa0f319f8c1d16d5461fbc
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: dd4ac14a703663175bb477de587da8f4ad510c7c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/14/2017
 
 ---
 
-# <a name="troubleshoot-azure-backup-failure-snapshot-vm-sub-task-timed-out"></a>排查 Azure 备份故障：快照 VM 子任务超时
+# <a name="troubleshoot-azure-backup-failure-vm-agent-unable-to-communicate-with-azure-backup"></a>Azure 备份故障排除：VM 代理无法与 Azure 备份进行通信
 ## <a name="summary"></a>摘要
-注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 任意四个条件都可能阻止快照的触发，这反过来会导致备份失败。 本文提供排查步骤，以帮助解决与快照超时错误相关的备份故障。
+注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 任意四个条件都可能阻止快照的触发，这反过来会导致备份失败。 本文提供故障排查步骤，可帮助解决与 VM 代理和扩展通信相关的备份故障。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="symptom"></a>症状
-服务架构 (IaaS) VM 的 Azure 备份失败，在 [Azure 门户](https://portal.azure.com/)的作业错误详细信息中返回以下错误消息：“无法与 VM 代理进行通信以获取快照状态 - 快照 VM 子任务超时。”
+基础架构即服务 (IaaS) VM 的 Azure 备份失败，在 [Azure 门户](https://portal.azure.com/)中的作业错误详细信息中返回以下错误消息：“ VM 代理无法与 Azure 备份服务通信。”，“由于虚拟机上无网络连接，快照操作失败。”
 
 ## <a name="cause-1-the-vm-has-no-internet-access"></a>原因 1：VM 不具备 Internet 访问权限
 VM 无法根据部署要求访问 Internet，或者现有的限制阻止访问 Azure 基础结构。
@@ -49,6 +51,8 @@ VM 无法根据部署要求访问 Internet，或者现有的限制阻止访问 A
 2. 若要允许从 HTTP 代理服务器访问 Internet，如果你有规则，请将其添加到网络安全组。
 
 若要了解如何设置 HTTP 代理进行 VM 备份，请参阅[进行备份 Azure 虚拟机所需的环境准备](backup-azure-vms-prepare.md#using-an-http-proxy-for-vm-backups)。
+
+如果使用托管磁盘，可能需要在防火墙上打开另一个端口 (8443)。
 
 ## <a name="cause-2-the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>原因 2：VM 中安装的代理已过时（适用于 Linux VM）
 
@@ -77,10 +81,24 @@ VM 无法根据部署要求访问 Internet，或者现有的限制阻止访问 A
 如果我们需要 waagent 的详细日志记录，请执行以下步骤：
 
 1. 在 /etc/waagent.conf 文件中，找到以下行：**Enable verbose logging (y|n)**
-2. 将 **Logs.Verbose** 值从 n 更改为 y。
+2. 将 Logs.Verbose 值从 n 更改为 *y*。
 3. 保存更改，然后遵循本部分前面的步骤重新启动 waagent。
 
-## <a name="cause-3-the-backup-extension-fails-to-update-or-load"></a>原因 3：无法更新或加载备份扩展
+## <a name="cause-3-the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>原因 3：客户端安装在 VM 中，但无响应（对于 Windows VM）
+
+### <a name="solution"></a>解决方案
+VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理能够获取最新版本并重新启动通信。
+
+1. 验证是否可以在计算机 (services.msc) 的服务中查看 Windows 来宾代理服务
+2. 如果看不到，请验证是否在程序和功能中安装了 Windows 来宾代理服务。
+3. 如果在程序和功能中可查看到，请卸载 Windows 来宾代理。
+4. 下载并安装 [代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 你需要有管理员权限才能完成安装。
+5. 然后可以在服务中查看 Windows 来宾代理服务
+6. 尝试在门户中单击“立即备份”来运行按需/临时备份。
+
+还需验证是否**在系统中安装有 .NET 4.5**。 VM 代理需要与服务进行通信
+
+## <a name="cause-4-the-backup-extension-fails-to-update-or-load"></a>原因 4：备份扩展无法更新或加载
 如果无法加载扩展，则会由于无法创建快照而导致备份失败。
 
 ### <a name="solution"></a>解决方案
@@ -106,7 +124,7 @@ VMSnapshot for Linux（备份使用的扩展）的最新版本是 1.0.91.0。
 
 此过程会导致在下一次备份期间重新安装扩展。
 
-## <a name="cause-4-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>原因 4：无法检索快照状态或无法创建快照
+## <a name="cause-5-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>原因 5：无法检索快照状态或无法拍摄快照
 VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原因可能是它无法访问存储帐户，也可能是快照任务的执行被延迟。
 
 ### <a name="solution"></a>解决方案

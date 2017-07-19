@@ -1,27 +1,31 @@
 ---
-title: "向 Azure App Service 添加内容交付网络 (CDN) | Microsoft Docs"
-description: "向 Azure App Service 添加内容交付网络 (CDN)，以便在全球靠近客户的服务器缓存和交付静态文件。"
+title: "将 CDN 添加到 Azure App Service | Microsoft Docs"
+description: "向 Azure 应用服务添加内容交付网络 (CDN)，以便在全球靠近客户的服务器缓存和交付静态文件。"
 services: app-service\web
 author: syntaxc4
 ms.author: cfowler
-ms.date: 05/01/2017
+ms.date: 05/31/2017
 ms.topic: article
 ms.service: app-service-web
 manager: erikre
 ms.workload: web
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 7208abc0e6eaa9067c5bb36a09e1bfd276fe0b0c
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: a4f5113c4cc0ffb5fdd072e9a59743c83154c38c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/08/2017
 
 ---
-# <a name="add-a-content-delivery-network-cdn-to-an-azure-app-service"></a>向 Azure App Service 添加内容交付网络 (CDN)
+# <a name="add-a-content-delivery-network-cdn-to-an-azure-app-service"></a>向 Azure 应用服务添加内容交付网络 (CDN)
 
-[Azure 内容交付网络 (CDN)](../cdn/cdn-overview.md) 将静态 Web 内容缓存在按特定策略布置好的位置，以便提供最大的吞吐量，方便将内容交付给用户。 CDN 还会降低 Web 应用的服务器负载。 本教程介绍如何向 [Azure App Service 中的 Web 应用](app-service-web-overview.md)添加 Azure CDN。 
+[Azure 内容交付网络 (CDN)](../cdn/cdn-overview.md) 将静态 Web 内容缓存在按特定策略布置好的位置，以便提供最大的吞吐量，方便将内容交付给用户。 CDN 还会降低 Web 应用的服务器负载。 本教程介绍如何向 [Azure 应用服务中的 Web 应用](app-service-web-overview.md)添加 Azure CDN。 
 
-本教程介绍如何：
+下面是要使用的示例性静态 HTML 站点的主页：
+
+![示例应用主页](media/app-service-web-tutorial-content-delivery-network/sample-app-home-page.png)
+
+学习内容：
 
 > [!div class="checklist"]
 > * 创建 CDN 终结点。
@@ -29,19 +33,22 @@ ms.lasthandoff: 05/09/2017
 > * 使用查询字符串控制缓存的版本。
 > * 将自定义域用于 CDN 终结点。
 
-下面是要使用的示例性静态 HTML 站点的主页：
+## <a name="prerequisites"></a>先决条件
 
-![示例应用主页](media/app-service-web-tutorial-content-delivery-network/sample-app-home-page.png)
+完成本教程：
+
+- [安装 Git](https://git-scm.com/)
+- [安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-web-app"></a>创建 Web 应用
 
-若要创建将使用的 Web 应用，请按[静态 HTML 入门](app-service-web-get-started-html.md)的说明操作，但不要执行“清理资源”这一步。
-
-完成本教程以后，请让命令提示符保持打开状态，以便在本教程后面将所做的其他更改部署到 Web 应用。
+若要创建将使用的 Web 应用，通过“浏览到应用”步骤，按照[静态 HTML 快速入门](app-service-web-get-started-html.md)的说明操作。
 
 ### <a name="have-a-custom-domain-ready"></a>准备自定义域
 
-若要完成本教程的自定义域步骤，需要能够访问域提供商（例如 GoDaddy）的 DNS 注册表。 例如，若要添加 `contoso.com` 和 `www.contoso.com` 的 DNS 条目，必须有权配置 `contoso.com` 根域的 DNS 设置。
+若要完成本教程的自定义域步骤，需要拥有自定义域并能够访问域提供商（例如 GoDaddy）的 DNS 注册表。 例如，若要添加 `contoso.com` 和 `www.contoso.com` 的 DNS 条目，必须有权配置 `contoso.com` 根域的 DNS 设置。
 
 如果还没有域名，请考虑遵照[应用服务域教程](custom-dns-web-site-buydomains-web-app.md)使用 Azure 门户购买一个域。 
 
@@ -65,8 +72,8 @@ ms.lasthandoff: 05/09/2017
 
 | 设置 | 建议的值 | 说明 |
 | ------- | --------------- | ----------- |
-| **CDN 配置文件** | myCDNProfile | 选择“新建”创建新的 CDN 配置文件 CDN 配置文件是具有同一定价层的 CDN 终结点的集合。 |
-| **定价层** | 标准 Akamai | [定价层](../cdn/cdn-overview.md#azure-cdn-features)指定提供商和可用功能。 在本教程中，我们将使用标准 Akamai。 |
+| **CDN 配置文件** | myCDNProfile | 选择“新建”创建 CDN 配置文件。 CDN 配置文件是具有同一定价层的 CDN 终结点的集合。 |
+| **定价层** | 标准 Akamai | [定价层](../cdn/cdn-overview.md#azure-cdn-features)指定提供商和可用功能。 在本教程中，将使用 Standard Akamai。 |
 | **CDN 终结点名称** | azureedge.net 域中的任何唯一名称 | 可在 \<endpointname>.azureedge.net 域中访问缓存的资源。
 
 选择“创建” 。
@@ -89,7 +96,7 @@ http://<appname>.azurewebsites.net/css/bootstrap.css
 http://<endpointname>.azureedge.net/css/bootstrap.css
 ```
 
-通过浏览器导航到以下 URL，将会看到此前在 Azure Web 应用中运行的同一页面，但现在该页面由 CDN 提供。
+在浏览器中导航到以下 URL：
 
 ```
 http://<endpointname>.azureedge.net/index.html
@@ -97,7 +104,7 @@ http://<endpointname>.azureedge.net/index.html
 
 ![从 CDN 提供的示例应用主页](media/app-service-web-tutorial-content-delivery-network/sample-app-home-page-cdn.png)
 
-这表明 Azure CDN 已检索源 Web 应用的资产，并且是从 CDN 终结点提供这些资产。 
+ 将看到先前在 Azure web 应用中运行的同一页面。 Azure CDN 已检索源 Web 应用的资产，并且是从 CDN 终结点提供这些资产
 
 若要确保此页缓存在 CDN 中，请刷新页面。 有时候，需要通过两个请求来请求同一资产才能让 CDN 缓存请求的内容。
 
@@ -188,7 +195,7 @@ Azure CDN 提供以下缓存行为选项：
 * 绕过查询字符串的缓存
 * 缓存每个唯一的 URL 
 
-这其中的第一个选项为默认设置，这意味着，不管在访问资产的 URL 中使用什么查询字符串，资产的缓存版本只有一个。 
+这些 URL中的第一个为默认值，这意味着，不管在 URL 中使用什么查询字符串，资产的缓存版本只有一个。 
 
 在本教程的此部分，请将缓存行为更改为缓存每个唯一的 URL。
 
@@ -235,7 +242,10 @@ http://<endpointname>.azureedge.net/index.html?q=1
 
 ![CDN 标题中包含 V2（查询字符串 1）](media/app-service-web-tutorial-content-delivery-network/v2-in-cdn-title-qs1.png)
 
-此输出表明每个查询字符串的处理方式并不相同：q=1 以前用过，因此返回缓存的内容 (V2)，而 q=2 是新的，因此检索并返回最新的 Web 应用内容 (V3)。
+此输出显示每个查询字符串的处理方式不同：
+
+* 之前使用的是 q = 1 ，因此将返回缓存内容 (V2)。
+* 最近使用的是 q = 2，因此将检索最新的 Web 应用内容并将其返回 (V3)。
 
 有关详细信息，请参阅[使用查询字符串控制 Azure CDN 缓存行为](../cdn/cdn-query-string.md)。
 
@@ -261,7 +271,7 @@ http://<endpointname>.azureedge.net/index.html?q=1
 
 找到用于管理 CNAME 的部分。 你可能需要转至高级设置页面，并找到“CNAME”、“别名”或“子域”字样。
 
-创建一个新的 CNAME 记录，将所选子域（例如 **static** 或 **cdn**）映射到此前在门户中显示的“终结点主机名”。 
+创建一个 CNAME 记录，将所选子域（例如 static 或 cdn）映射到此前在门户中显示的“终结点主机名”。 
 
 ### <a name="enter-the-custom-domain-in-azure"></a>在 Azure 中输入自定义域
 
@@ -269,7 +279,7 @@ http://<endpointname>.azureedge.net/index.html?q=1
    
 Azure 会验证你所输入的域名是否存在 CNAME 记录。 如果该 CNAME 正确，将验证你的自定义域。
 
-将 CNAME 记录传播到 Internet 上的名称服务器需要一定的时间。 如果域并没有立即获得验证，而你确信 CNAME 记录是正确的，则请等待数分钟，然后重试。
+将 CNAME 记录传播到 Internet 上的名称服务器需要一定的时间。 如果没有立即验证域，请等待几分钟，然后重试。
 
 ### <a name="test-the-custom-domain"></a>测试自定义域
 
@@ -283,7 +293,7 @@ Azure 会验证你所输入的域名是否存在 CNAME 记录。 如果该 CNAME
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+你已了解：
 
 > [!div class="checklist"]
 > * 创建 CDN 终结点。
@@ -291,12 +301,11 @@ Azure 会验证你所输入的域名是否存在 CNAME 记录。 如果该 CNAME
 > * 使用查询字符串控制缓存的版本。
 > * 将自定义域用于 CDN 终结点。
 
-阅读以下文章，了解如何优化 CDN 性能。
+阅读以下文章，了解如何优化 CDN 性能：
 
 > [!div class="nextstepaction"]
 > [通过在 Azure CDN 中压缩文件来提高性能](../cdn/cdn-improve-performance.md)
 
 > [!div class="nextstepaction"]
 > [在 Azure CDN 终结点上预加载资产](../cdn/cdn-preload-endpoint.md)
-
 

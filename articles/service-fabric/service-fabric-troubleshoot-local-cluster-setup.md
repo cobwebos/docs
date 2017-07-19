@@ -3,7 +3,7 @@ title: "对本地 Service Fabric 群集设置进行故障排除 | Microsoft 文�
 description: "本文就本地开发群集的故障介绍一些建议"
 services: service-fabric
 documentationcenter: .net
-author: seanmck
+author: mikkelhegn
 manager: timlt
 editor: 
 ms.assetid: 97f4feaa-bba0-47af-8fdd-07f811fe2202
@@ -12,12 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/02/2017
-ms.author: seanmck
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0f0db912ac3cee02f4268996bf2409440afade86
-ms.lasthandoff: 11/17/2016
+ms.date: 06/07/2017
+ms.author: mikkelhegn
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: aa393f884b564cee81fcf75cc2eff895efea9471
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -57,7 +58,7 @@ ms.lasthandoff: 11/17/2016
 当你在 PowerShell 中连接到群集时，你将看到针对 System.Fabric.Common.AppTrace 的 TypeInitializationException 错误。
 
 #### <a name="solution"></a>解决方案
-在安装期间未正确设置路径变量。 请从 Windows 注销并重新登录。 这将完全刷新你的路径。
+在安装期间未正确设置路径变量。 从 Windows 注销并重新登录。 这将刷新你的路径。
 
 ### <a name="cluster-connection-fails-with-object-is-closed"></a>群集连接失败，并显示“对象已关闭”
 #### <a name="problem"></a>问题
@@ -78,12 +79,12 @@ ms.lasthandoff: 11/17/2016
 从 Visual Studio 调试时，系统出现 FabricConnectionDeniedException 错误。
 
 #### <a name="solution"></a>解决方案
-此错误通常在你尝试手动启动一个服务主机进程（而不是允许 Service Fabric 运行时为你启动该进程）时出现。
+此错误通常在手动启动一个服务主机进程（而不是允许 Service Fabric 运行时为你启动该进程）时出现。
 
 确保在你的解决方案中没有将任何服务项目设置为启动项目。 只应将 Service Fabric 应用程序项目设置为启动项目。
 
 > [!TIP]
-> 如果本地群集在设置后开始出现异常行为，则可使用本地群集管理器系统托盘应用程序来重置它。 该操作将删除现有群集，然后设置一个新的。 请注意，所有部署的应用程序和关联的数据都会被删除。
+> 如果本地群集在设置后开始出现异常行为，则可使用本地群集管理器系统托盘应用程序来重置它。 该操作将删除现有群集并设置一个新群集。 注意，所有部署的应用程序和关联的数据都会被删除。
 > 
 > 
 

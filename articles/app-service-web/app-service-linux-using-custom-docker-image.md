@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 9962766b0a1fdfe313b70ea65e08785ec8a97996
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: d55cfc354ad5a9fc0f06b671f441ba4a0616bb9a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -94,7 +94,10 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="troubleshooting"></a>故障排除 ##
 
-如果应用程序未能以自定义 Docker 映像启动，请检查 LogFiles/docker 目录中的 Docker 日志。 可通过 SCM 站点或 FTP 访问此目录。 
+如果应用程序未能以自定义 Docker 映像启动，请检查 LogFiles/docker 目录中的 Docker 日志。 可通过 SCM 站点或 FTP 访问此目录。
+若要从容器记录 `stdout` 和 `stderr`，需要在“诊断记录”下启用“Web 服务器记录”。
+
+![启用日志记录][8]
 
 ![使用 Kudu 查看 Docker 日志][7]
 
@@ -107,7 +110,7 @@ ms.lasthandoff: 05/10/2017
 * [Linux 上的 Azure Web 应用简介](./app-service-linux-intro.md)
 * [在 Linux 上的 Azure Web 应用中创建 Web 应用](./app-service-linux-how-to-create-web-app.md)
 * [在 Linux 上的 Azure Web 应用中使用针对 Node.js 的 PM2 配置](./app-service-linux-using-nodejs-pm2.md)
-* [Linux 上的 Azure App Service Web 应用常见问题解答](app-service-linux-faq.md)
+* [Linux 上的 Azure 应用服务 Web 应用常见问题解答](app-service-linux-faq.md)
 
 如有问题和疑问，请在[我们的论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)上发帖。
 
@@ -120,4 +123,5 @@ ms.lasthandoff: 05/10/2017
 [5]: ./media/app-service-linux-using-custom-docker-image/existingapp-configure-builtin.png
 [6]: ./media/app-service-linux-using-custom-docker-image/setting-port.png
 [7]: ./media/app-service-linux-using-custom-docker-image/kudu-docker-logs.png
+[8]: ./media/app-service-linux-using-custom-docker-image/logging.png
 

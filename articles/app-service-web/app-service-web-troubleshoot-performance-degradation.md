@@ -1,6 +1,6 @@
 ---
 title: "应用服务中 Web 应用性能缓慢 | Microsoft Docs"
-description: "本文将帮助你排查 Azure App Service 中 Web 应用性能缓慢的问题。"
+description: "本文将帮助你排查 Azure 应用服务中 Web 应用性能缓慢的问题。"
 services: app-service\web
 documentationcenter: 
 author: cephalin
@@ -16,14 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 5ea043ce3bcd0f500fd765f13764ea3ee83e1ba9
-ms.openlocfilehash: 83c3592014c73c0cf36d371d2752bc76b7c8a4e8
-ms.lasthandoff: 12/22/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: 97ef8d2693296fc2692be46afcedfd01b07d743f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/22/2017
 
 
 ---
-# <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>排查 Azure App Service 中 Web 应用性能缓慢的问题
+# <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>排查 Azure 应用服务中 Web 应用性能缓慢的问题
 本文将帮助排查 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)中 Web 应用性能缓慢的问题。
 
 如果你对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)，并单击“**获取支持**”。
@@ -78,7 +79,7 @@ ms.lasthandoff: 12/22/2016
 
 将使用 HTTP 响应代码监视运行时间，并且以毫秒为单位计算响应时间。 如果 HTTP 响应代码大于或等于 400 或响应时间超过 30 秒，则监视测试失败。 如果从所有指定的位置监视测试均成功，则终结点被视为可用。
 
-有关详细信息，请参阅[在 Azure App Service 中监视应用](web-sites-monitor.md)
+有关详细信息，请参阅[在 Azure 应用服务中监视应用](web-sites-monitor.md)
 
 另外，有关终结点监视的视频，请参阅[保持 Azure 网站运行以及终结点监视 - Stefan Schackow](https://channel9.msdn.com/Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow)。
 
@@ -112,14 +113,20 @@ Web 应用环境为 Web 服务器和 Web 应用中的日志记录信息提供了
 有关如何在应用程序中配置日志记录的详细说明，请参阅[在 Azure 应用服务中启用 Web 应用的诊断日志记录](web-sites-enable-diagnostic-log.md)。
 
 #### <a name="use-remote-profiling"></a>使用远程分析
-在 Azure App Service 中，可以远程分析 Web 应用、API 应用和 WebJob。 如果进程运行速度比预期缓慢，或者 HTTP 请求的延迟高于平时并且进程的 CPU 使用率偏高，则你可以远程分析进程并获取 CPU 采样调用堆栈，以分析进程活动和代码繁忙的路径。
+在 Azure 应用服务中，可以远程分析 Web 应用、API 应用和 WebJob。 如果进程运行速度比预期缓慢，或者 HTTP 请求的延迟高于平时并且进程的 CPU 使用率偏高，则你可以远程分析进程并获取 CPU 采样调用堆栈，以分析进程活动和代码繁忙的路径。
 
 有关详细信息，请参阅 [Azure 应用服务中的远程分析支持](https://azure.microsoft.com/blog/remote-profiling-support-in-azure-app-service)。
 
-#### <a name="use-the-azure-app-service-support-portal"></a>使用 Azure App Service 支持门户
+#### <a name="use-application-insights-profiler"></a>使用 Application Insights Profiler
+
+有时应用服务应用运行速度慢，因为某些代码不是以高性能方式编写的。 示例包括可并行运行的顺序代码和不需要的数据库锁争用。 删除代码中的这些瓶颈会提供应用性能，但是如果不设置详细的跟踪和日志，则很难检测到这些瓶颈。 Application Insights Profiler 有助于克服应用服务应用面临的这一难题。 
+
+Application Insights Profiler 使用最少的配置即可提供每个 Web 调用响应时间的统计信息，以及指示哪一行代码导致响应缓慢的跟踪信息。 有关详细信息，请参阅[使用 Application Insights 分析实时 Azure Web 应用](../application-insights/app-insights-profiler.md)。 
+
+#### <a name="use-the-azure-app-service-support-portal"></a>使用 Azure 应用服务支持门户
 在 Web 应用中，可通过查看 HTTP 日志、事件日志、进程转储等信息来排查与 Web 应用相关的问题。 可以使用支持门户 (**http://&lt;your app name>.scm.azurewebsites.net/Support**) 访问所有这些信息。
 
-Azure App Service 支持门户具有三个不同的选项卡，用于支持常见故障排除方案的三个步骤：
+Azure 应用服务支持门户具有三个不同的选项卡，用于支持常见故障排除方案的三个步骤：
 
 1. 观察当前行为
 2. 通过收集诊断信息和运行内置分析器进行分析
@@ -134,7 +141,7 @@ Azure App Service 支持门户具有三个不同的选项卡，用于支持常�
 有关 Azure 应用服务支持门户的详细信息，请参阅[用于支持 Azure 网站的站点扩展的最新更新](https://azure.microsoft.com/blog/new-updates-to-support-site-extension-for-azure-websites)。
 
 #### <a name="use-the-kudu-debug-console"></a>使用 Kudu 调试控制台
-Web Apps 随附可用于调试、浏览和上载文件的调试控制台，以及用于获取环境相关信息的 JSON 终结点。 此控制台称为 Web 应用的 *Kudu 控制台*或 *SCM 仪表板*。
+Web 应用随附可用于调试、浏览和上传文件的调试控制台，以及用于获取环境相关信息的 JSON 终结点。 此控制台称为 Web 应用的 *Kudu 控制台*或 *SCM 仪表板*。
 
 可以通过转到链接 **https://&lt;Your app name>.scm.azurewebsites.net/** 来访问此仪表板。
 
@@ -153,7 +160,7 @@ Kudu 的另一项有用功能是，如果应用程序引发第一次异常，你
 
 ### <a name="3-mitigate-the-issue"></a>3.缓解问题
 #### <a name="scale-the-web-app"></a>缩放 Web 应用
-在 Azure 应用服务中，为了提高性能和吞吐量，可以调整运行应用程序的规模。 向上缩放 Web 应用涉及到两个相关操作：将 App Service 计划更改为较高的定价层，以及在切换到较高的定价层后配置特定的设置。
+在 Azure 应用服务中，为了提高性能和吞吐量，可以调整运行应用程序的规模。 向上缩放 Web 应用涉及到两个相关操作：将应用服务计划更改为较高的定价层，以及在切换到较高的定价层后配置特定的设置。
 
 有关缩放的详细信息，请参阅[缩放 Azure 应用服务中的 Web 应用](web-sites-scale.md)。
 

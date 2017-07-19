@@ -12,17 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 06/07/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: c07e7fd218f2ec696e280f0cc6f199a090f424e6
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 13453a831c3d42a9e291976a4d5cc80ced5c4755
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/09/2017
 
 
 ---
 # <a name="optimize-your-sql-server-environment-with-the-sql-assessment-solution-in-log-analytics"></a>使用 Log Analytics 中的 SQL 评估解决方案优化 SQL Server 环境
+
+![“SQL 评估”符号](./media/log-analytics-sql-assessment/sql-assessment-symbol.png)
 
 可以使用 SQL 评估解决方案定期评估服务器环境的风险和运行状况。 本文将帮助你安装该解决方案，以便针对潜在问题采取纠正措施。
 
@@ -62,7 +65,7 @@ SQL 评估使用已启用的代理来收集 WMI 数据、注册表数据、性�
 
 下表显示代理的数据收集方法，是否需要 Operations Manager (SCOM)，以及代理收集数据的频率。
 
-| 平台 | 直接代理 | SCOM 代理 | Azure 存储空间 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
+| 平台 | 直接代理 | SCOM 代理 | Azure 存储 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |![是](./media/log-analytics-sql-assessment/oms-bullet-green.png) |![是](./media/log-analytics-sql-assessment/oms-bullet-green.png) |![否](./media/log-analytics-sql-assessment/oms-bullet-red.png) |![否](./media/log-analytics-sql-assessment/oms-bullet-red.png) |![是](./media/log-analytics-sql-assessment/oms-bullet-green.png) |7 天 |
 

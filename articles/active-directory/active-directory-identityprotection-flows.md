@@ -14,6 +14,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: markvi
+ms.reviewer: nigu
 ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: e81ef1d182108114305291273227ce2ac4dacf3f
@@ -21,9 +22,7 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 12/29/2016
 
 ---
-<a id="sign-in-experiences-with-azure-ad-identity-protection" class="xliff"></a>
-
-# Azure AD Identity Protection 中的登录体验
+# <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection 中的登录体验
 使用 Azure Active Directory Identity Protection 时，可以：
 
 * 要求用户注册多重身份验证
@@ -48,9 +47,7 @@ ms.lasthandoff: 12/29/2016
 * 遭到入侵的帐户恢复
 * 遭到入侵的帐户已阻止
 
-<a id="multi-factor-authentication-registration" class="xliff"></a>
-
-## 多重身份验证注册
+## <a name="multi-factor-authentication-registration"></a>多重身份验证注册
 在实施遭到入侵的帐户恢复流程和有风险的登录流程时，最佳用户体验就是用户能够自行恢复。 如果用户已注册多重身份验证，则其帐户已有一个关联的电话号码，可用于通过安全质询。 帐户遭到入侵后，无需技术支持人员或管理员的介入即可恢复正常。 因此，强烈建议要求用户注册多重身份验证。 
 
 管理员可以：
@@ -70,9 +67,7 @@ ms.lasthandoff: 12/29/2016
    
     ![补救](./media/active-directory-identityprotection-flows/142.png "补救")
 
-<a id="risky-sign-in-recovery" class="xliff"></a>
-
-## 有风险的登录恢复
+## <a name="risky-sign-in-recovery"></a>有风险的登录恢复
 管理员针对登录风险配置策略后，受影响的用户在尝试登录时会看到通知。 
 
 **有风险的登录流程包括两个步骤：** 
@@ -84,16 +79,12 @@ ms.lasthandoff: 12/29/2016
    
     ![补救](./media/active-directory-identityprotection-flows/121.png "补救")
 
-<a id="risky-sign-in-blocked" class="xliff"></a>
-
-## 有风险的登录已阻止
+## <a name="risky-sign-in-blocked"></a>有风险的登录已阻止
 管理员还可以选择设置一个登录风险策略，用于根据风险级别阻止用户登录。 若要解除阻止，最终用户必须联系管理员或技术服务人员，或者尝试从惯用的位置或设备登录。 在此情况下，无法通过解决多重身份验证质询来自行恢复。
 
 ![补救](./media/active-directory-identityprotection-flows/200.png "补救")
 
-<a id="compromised-account-recovery" class="xliff"></a>
-
-## 遭到入侵的帐户恢复
+## <a name="compromised-account-recovery"></a>遭到入侵的帐户恢复
 配置用户风险安全策略后，符合该策略中指定的用户风险级别的用户（因而也假设这些用户已遭到入侵）必须完成用户入侵恢复流程才能登录。 
 
 **用户入侵恢复流程包括三个步骤：**
@@ -109,23 +100,17 @@ ms.lasthandoff: 12/29/2016
    
    ![补救](./media/active-directory-identityprotection-flows/111.png "补救")
 
-<a id="compromised-account-blocked" class="xliff"></a>
-
-## 遭到入侵的帐户已阻止
+## <a name="compromised-account-blocked"></a>遭到入侵的帐户已阻止
 若要解除阻止某个已被用户风险安全策略阻止的用户，该用户必须与管理员或技术支持人员联系。 在此情况下，无法通过解决多重身份验证质询来自行恢复。
 
 ![补救](./media/active-directory-identityprotection-flows/104.png "补救")
 
-<a id="reset-password" class="xliff"></a>
-
-## 重置密码
+## <a name="reset-password"></a>重置密码
 如果遭到入侵的用户已被阻止登录，管理员可以为其生成临时密码。 在下一次登录期间，用户必须更改其密码。
 
 ![补救](./media/active-directory-identityprotection-flows/160.png "补救")
 
-<a id="see-also" class="xliff"></a>
-
-## 另请参阅
+## <a name="see-also"></a>另请参阅
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md) 
 
 

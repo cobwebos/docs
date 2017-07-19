@@ -13,15 +13,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: dariagrigoriu
-translationtype: Human Translation
-ms.sourcegitcommit: 0ab2e30165fe3dca0e00109e9b4e22a9a1433de5
-ms.openlocfilehash: 43cf4dad58ee0e12a233125049ab4e62411459fe
-ms.lasthandoff: 01/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
+ms.openlocfilehash: 86a2cd8ae9f97c606a378452e44eec8941700531
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/23/2017
 
 
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>为 Azure 应用服务配置部署凭据
-[Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)支持两种类型的凭据，这些凭据适用于[本地 GIT 部署](app-service-deploy-local-git.md)和 [FTP/S 部署](app-service-deploy-ftp.md)。
+[Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)支持两种类型的凭据，这些凭据适用于[本地 GIT 部署](app-service-deploy-local-git.md)和 [FTP/S 部署](app-service-deploy-ftp.md)。 这与 Azure Active Directory 凭据不同。
 
 * **用户级凭据**：一组适用于整个 Azure 帐户的凭据。 需要部署到任何订阅（Azure 帐户有权对其进行访问）中的任何应用的应用服务时，可以使用这组凭据。 这些是默认的凭据组，可以在“应用服务” > **&lt;app_name>** > “部署凭据”中对其进行配置。 这也是在门户 GUI（例如应用的[资源边栏选项卡](../azure-resource-manager/resource-group-portal.md#manage-resources)的“概览”和“属性”）中呈现的默认组。
 
@@ -32,7 +33,12 @@ ms.lasthandoff: 01/06/2017
 
 * **应用级凭据**：一组适用于每个应用的凭据。 若要只部署到该应用，则可使用这组凭据。 每个应用的凭据在创建应用时自动生成，可以在应用的发布配置文件中找到。 不能手动配置这些凭据，但可以随时针对某个应用重置它们。
 
-## <a name="a-nameuserscopeaset-and-reset-user-level-credentials"></a><a name="userscope"></a>设置和重置用户级凭据
+    > [!NOTE]
+    > 若要通过基于角色的访问控制 (RBAC) 向某用户授予这些凭据的访问权限，需要在 Web 应用上将其设置为参与者或更高级别。 读取器不可发布，因此无法访问这些凭据。
+    >
+    >
+
+## <a name="userscope"></a>设置和重置用户级凭据
 
 可以在应用的[资源边栏选项卡](../azure-resource-manager/resource-group-portal.md#manage-resources)中配置用户级凭据。 不管是在哪个应用中配置这些凭据，该凭据适用于所有应用以及 Azure 帐户中的所有订阅。 
 
@@ -60,7 +66,7 @@ ms.lasthandoff: 01/06/2017
 >
 >  
 
-## <a name="a-nameappscopeaget-and-reset-app-level-credentials"></a><a name="appscope"></a>获取和重置应用级凭据
+## <a name="appscope"></a>获取和重置应用级凭据
 就应用服务中的每个应用来说，其应用级凭据存储在 XML 发布配置文件中。
 
 获取应用级凭据：
@@ -89,3 +95,4 @@ ms.lasthandoff: 01/06/2017
 ## <a name="next-steps"></a>后续步骤
 
 了解如何使用这些凭据通过[本地 Git](app-service-deploy-local-git.md) 或 [FTP/S](app-service-deploy-ftp.md) 部署应用。
+

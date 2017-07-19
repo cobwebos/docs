@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: aaf3e9daca2fb810aa32b1b58acdade6ddfc1744
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 548b4af7619521e4b61b99b94c1d40f835e6efdb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -153,7 +153,7 @@ Microsoft Cognitive Toolki 也称为 CNTK，是一种开放源的深度学习工
 Caffe 是美国伯克利视觉与学习中心的深度学习框架。 位于 /opt/caffe。 示例位于 /opt/caffe/examples。
 
 #### <a name="h2o"></a>H2O
-H2O 是一种快速的内存中分布式机器学习和预测分析平台。 根环境和 py35 Anaconda 环境中都安装有 Python 包。 同时也会安装 R 包。 流 Web UI 以“java -jar /dsvm/tools/h2o/current/h2o.jar”开头。 浏览到 http://localhost:54321 开始体验。 示例笔记本也位于 JupyterHub。
+H2O 是一种快速的内存中分布式机器学习和预测分析平台。 根环境和 py35 Anaconda 环境中都安装有 Python 包。 同时也会安装 R 包。 从命令行启动 H2O，运行 `java -jar /dsvm/tools/h2o/current/h2o.jar`；可能需要配置各种[命令行选项](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line)。 首选可以浏览到 http://localhost:54321 访问 Flow Web UI。 示例笔记本也位于 JupyterHub。
 
 #### <a name="keras"></a>Keras
 Keras 是 Python 中的高级神经网络 API，能够在 Tensorflow 或 Theano 上运行。 位于根环境和 py35 Python 环境中。 

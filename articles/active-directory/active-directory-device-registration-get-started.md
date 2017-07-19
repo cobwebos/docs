@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: markvi
+ms.reviewer: jairoc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
 ms.openlocfilehash: 9934902811354ffa4047d70d995a6dd44be0229b
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/10/2017
-
 
 ---
 # <a name="get-started-with-azure-active-directory-device-registration"></a>Azure Active Directory 设备注册入门

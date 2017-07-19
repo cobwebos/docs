@@ -4,7 +4,7 @@ description: "汇总了 Azure Site Recovery 支持的操作系统和组件"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 
 ms.service: site-recovery
@@ -12,28 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/08/2017
+ms.date: 05/24/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: d53d4cfdc7b673d2816fa9372dedbed540380cce
-ms.lasthandoff: 04/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: db7ee5251f2e2016081e55ca4b295e284c8b08cf
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/15/2017
 
 
 ---
 # <a name="support-matrix-for-replication-to-a-secondary-site-with-azure-site-recovery"></a>用于使用 Azure Site Recovery 复制到辅助站点的支持矩阵
 
-> [!div class="op_single_selector"]
-> * [复制到 Azure](site-recovery-support-matrix-to-azure.md)
-> * [复制到本地位置](site-recovery-support-matrix-to-sec-site.md)
-
 本文汇总了使用 Azure Site Recovery 复制到辅助本地站点时所支持的内容。
 
 ## <a name="deployment-options"></a>部署选项
 
-**部署** | **VMware/物理服务器** | **Hyper-V（使用/不使用 SCVMM）
+**部署** | **VMware/物理服务器** | **Hyper-V（使用/不使用 SCVMM）**
 --- | --- | --- | ---
-**Azure 门户** | 本地 VMware VM 到辅助 VMware 站点。<br/><br/> 下载 [InMage Scout 用户指南](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf)（Azure 门户中未提供）。 | 将 VMM 云中的本地 Hyper-V VM 复制到辅助 VMM 云。<br></br> 支持 SCVMM  <br/><br/> 仅限标准 Hyper-V 副本。 不支持 SAN。
+**Azure 门户** | 本地 VMware VM 到辅助 VMware 站点。<br/><br/> 下载 [InMage Scout 用户指南](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf)（Azure 门户中未提供）。 | 将 VMM 云中的本地 Hyper-V VM 复制到辅助 VMM 云。<br></br> 如果没有 VMM，则不支持  <br/><br/> 仅限标准 Hyper-V 副本。 不支持 SAN。
 **经典门户** | 只能使用维护模式。 无法创建新的保管库。 | 仅限维护模式<br></br> 支持 SCVMM
 **PowerShell** | 不支持 | 支持<br></br> 支持 SCVMM
 
@@ -140,5 +137,6 @@ RDM | 是 | 不适用
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[部署先决条件](site-recovery-prereq.md)。
+- [将 VMM 云中的 Hyper-V VM 复制到辅助站点](site-recovery-vmm-to-vmm.md)
+- [将 VMware VM 和物理服务器复制到辅助站点](site-recovery-vmware-to-vmware.md)
 

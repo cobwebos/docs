@@ -1,6 +1,6 @@
 ---
-title: "Azure Web Apps 上节点应用程序的最佳做法和故障排除指南"
-description: "了解 Azure Web Apps 上节点应用程序的最佳做法和故障排除步骤。"
+title: "Azure Web 应用上节点应用程序的最佳做法和故障排除指南"
+description: "了解 Azure Web 应用上节点应用程序的最佳做法和故障排除步骤。"
 services: app-service\web
 documentationcenter: nodejs
 author: ranjithr
@@ -14,14 +14,15 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: ranjithr;wadeh
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 79e5329332c457c738c082277ee7b79eb8ead049
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 656c5b3e363bd2eaa7550ffc673606d26f7d06de
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/07/2017
 
 
 ---
-# <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-web-apps"></a>Azure Web Apps 上节点应用程序的最佳做法和故障排除指南
+# <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-web-apps"></a>Azure Web 应用上节点应用程序的最佳做法和故障排除指南
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
 本文介绍 Azure Web 应用上运行的[节点应用程序](app-service-web-get-started-nodejs.md)的最佳实践和故障排除步骤（使用 [iisnode](https://github.com/azure/iisnode)）。
@@ -42,7 +43,7 @@ ms.lasthandoff: 04/06/2017
     此设置控制 node.exe 的路径。 你可以设置此值以指向你的 node.exe 版本。
 * maxConcurrentRequestsPerProcess
   
-    此设置控制 iisnode 发送给每个 node.exe 的并发请求数目上限。 在 Azure Webapps 上，此设置的默认值为“无限”。 你不必担心此设置。 在 Azure Webapps 外部，默认值为 1024。 你可能想要根据应用程序获取的请求数目以及应用程序处理每个请求的速度，来配置此设置。
+    此设置控制 iisnode 发送给每个 node.exe 的并发请求数目上限。 在 Azure Web 应用上，此设置的默认值为“无限”。 你不必担心此设置。 在 Azure Webapps 外部，默认值为 1024。 你可能想要根据应用程序获取的请求数目以及应用程序处理每个请求的速度，来配置此设置。
 * maxNamedPipeConnectionRetry
   
     此设置控制 iisnode 将在命名管道上重试连接，以将请求发送至 node.exe 的次数上限。 此设置与 namedPipeConnectionRetryDelay 结合使用，可确定 iisnode 内每个请求的总超时。 在 Azure Webapps 上，默认值为 200。 总超时（秒）= (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1000
@@ -51,7 +52,7 @@ ms.lasthandoff: 04/06/2017
     此设置控制 iisnode 在每次重试通过命名管道将请求发送到 node.exe 之间所要等待的时间（毫秒）。 默认值为 250 毫秒。
     总超时（秒）= (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1000
   
-    在 Azure Web Apps 上，iisnode 的总超时默认为 200 \* 250 毫秒 = 50 秒。
+    在 Azure Web 应用上，iisnode 的总超时默认为 200 \* 250 毫秒 = 50 秒。
 * logDirectory
   
     此设置控制 iisnode 用于记录 stdout/stderr 的目录。 默认值是相对于主要脚本目录（主要 server.js 所在的目录）的 iisnode
@@ -114,7 +115,7 @@ ms.lasthandoff: 04/06/2017
 ### <a name="my-node-application-is-making-too-many-outbound-calls"></a>节点应用程序发出的出站调用太多。
 许多应用程序想要在其定期操作中进行出站连接。 例如，当请求传入时，节点应用程序会想连接别处的 REST API，并获取一些信息来处理请求。 建议在进行 http 或 https 调用时使用保持连接代理。 例如，你可以在进行这些出站调用时，使用 agentkeepalive 模块作为保持连接代理。 这可确保在 Azure WebApps VM 上重复使用套接字，从而减少为每个出站请求创建新套接字的开销。 此外，还可确保使用较少的套接字来发出许多出站请求，因此，不会超出每个 VM 分配的 maxSockets。 对于 Azure Webapps 的建议是将 agentKeepAlive maxSockets 值设置为每个 VM 总共 160 个套接字。 这意味着，如果你有 4 个 node.exe 在 VM 上运行，你需要将每个 node.exe 的 agentKeepAlive maxSockets 设置为 40，也就是每个 VM 总共 160 个。
 
-agentKeepALive 配置示例：
+[agentKeepALive ](https://www.npmjs.com/package/agentkeepalive) 配置示例：
 
 ```
 var keepaliveAgent = new Agent({    
@@ -248,13 +249,13 @@ http.createServer(function (req, res) {
 | 503 |1002 |检查 win32 错误代码的实际原因 – 无法将请求分派到 node.exe。 |
 | 503 |1003 |命名管道太忙 – 检查节点是否正耗用大量 CPU |
 
-NODE.exe 内有名为 NODE\_PENDING\_PIPE\_INSTANCES 的设置。 默认情况下，此值在 Azure Webapps 外部为 4。 这表示 node.exe 在命名管道上一次只能接受 4 个请求。 在 Azure Webapps 上，此值设置为 5000，应足以满足 Azure Webapps 上运行的大多数节点应用程序。 Azure Web 应用上不应出现 503.1003，因为 NODE\_PENDING\_PIPE\_INSTANCES 的值较高。  |
+NODE.exe 内有名为 NODE\_PENDING\_PIPE\_INSTANCES 的设置。 默认情况下，此值在 Azure Web 应用外部为 4。 这表示 node.exe 在命名管道上一次只能接受 4 个请求。 在 Azure Webapps 上，此值设置为 5000，应足以满足 Azure Webapps 上运行的大多数节点应用程序。 Azure Web 应用上不应出现 503.1003，因为 NODE\_PENDING\_PIPE\_INSTANCES 的值较高。  |
 
 ## <a name="more-resources"></a>更多资源
 请访问以下链接，了解有关 Azure 应用服务上的 node.js 应用程序的详细信息。
 
 * [Azure 应用服务中的 Node.js Web 应用入门](app-service-web-get-started-nodejs.md)
-* [如何在 Azure App Service 中调试 Node.js Web 应用](web-sites-nodejs-debug.md)
+* [如何在 Azure 应用服务中调试 Node.js Web 应用](web-sites-nodejs-debug.md)
 * [将 Node.js 模块与 Azure 应用程序一起使用](../nodejs-use-node-modules-azure-apps.md)
 * [Azure 应用服务 Web 应用：Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Node.js 开发人员中心](../nodejs-use-node-modules-azure-apps.md)

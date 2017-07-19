@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 4ffbe7e28d8b4c7d421bec477455a94609cd127a
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: e428b755f6696bd6d4047ad77579a8e9665dfbd8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
-# <a name="capture-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中捕获通用 VM 的托管映像
+# <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中创建通用 VM 的托管映像
 
-可以从在存储帐户中存储为托管磁盘或非托管磁盘的通用 VM 创建托管映像资源。 映像随后可用于创建多个使用托管磁盘进行存储的 VM。 
+可通过在存储帐户中存储为托管/非托管磁盘的通用 VM 创建托管的映像资源。 随后，该映像可用于创建多个 VM。 
 
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>使用 Sysprep 通用化 Windows VM
@@ -117,7 +117,7 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 
     ```powershell
     New-AzureRmImage -Image $image -ImageName $imageName -ResourceGroupName $rgName
-    ```    
+    ``` 
 
 
 
@@ -144,7 +144,7 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 3. 将 VM 标记为通用化。
 
     ```powershell
-    Set-AzureRmVm -ResourceGroupName $rgName -Name $vmName -Generalized    
+    Set-AzureRmVm -ResourceGroupName $rgName -Name $vmName -Generalized 
     ```
 4.  使用通用化的 OS VHD 创建映像。
 
@@ -185,10 +185,10 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 
     ```powershell
     New-AzureRmImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
-    ```    
+    ``` 
     
 
 ## <a name="next-steps"></a>后续步骤
-- 现在，你可以[从通用托管映像创建 VM](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。    
+- 现在，你可以[从通用托管映像创建 VM](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。  
 
 

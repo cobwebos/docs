@@ -12,12 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/17/2017
+ms.date: 06/08/2017
 ms.author: pajosh
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 41a7024b51bc7a3c9cf34dba97255ea61fd27924
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 1400fe83bec85a7ab1b4c96fb38abdaf6c944845
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -106,6 +107,13 @@ ms.lasthandoff: 04/07/2017
 通常情况下，执行关键操作时，将向订阅管理员发送包含该操作详细信息的电子邮件通知。 可以通过 Azure 门户为这些通知配置更多的电子邮件收件人。
 
 此文章中提到的安全功能提供对针对性攻击的防御机制。 更重要的是，在发生攻击的情况下，这些功能为你提供恢复数据的能力。
+
+## <a name="troubleshooting-errors"></a>排查错误
+| 操作 | 错误详细信息 | 解决方法 |
+| --- | --- | --- |
+| 策略更改 |无法修改备份策略。 错误：由于内部服务错误 [0x29834]，当前操作失败。 请稍后重试操作。 如果该问题仍然存在，请联系 Microsoft 支持部门。 |原因：<br/>当启用安全设置、尝试缩短保留期范围至低于以上指定的最小值和使用不受支持的版本时，将出现此错误（本文第一条注释已指定所支持的版本）。 <br/>建议的操作<br/> 在这种情况下，应将保留期时段设置为高于指定保留期时间段的最小值（以日计为七天、以周记为四周、以月计为三个月或以年计为一年）以进行策略相关的更新。 （可选）首选更新备份代理、Azure 备份服务器和/或 DPM UR 来利用所有的安全性更新。 |
+| 更改通行短语 |输入的安全 PIN 不正确。 (ID: 100130) 请提供正确的安全 PIN 来完成此操作。 |原因：<br/> 当执行关键操作（如更改通行短语）时输入无效或已过期的安全 PIN 将出现此错误。 <br/>建议的操作<br/> 若要完成该操作，必须输入有效的安全 PIN。 若要获取 PIN，登录到 Azure 门户并导航到“恢复服务保管库”>“设置”>“属性”>“生成安全 PIN”。 使用此 PIN 更改通行短语。 |
+| 更改通行短语 |操作失败。 ID：120002 |原因：<br/>当启用安全设置、尝试更改通行短语和使用不受支持的版本时，将出现此错误（本文第一条注释已指定有效版本）。<br/>建议的操作<br/> 若要更改通行短语，必须首先更新备份代理至最低版本 minimum 2.0.9052、更新Azure 备份服务器至最低更新 1 和/或更新 DPM 至最低 DPM 2012 R2 UR12 或 DPM 2016 UR2 （下载链接如下），然后输入有效的安全 PIN。 若要获取 PIN，登录到 Azure 门户并导航到“恢复服务保管库”>“设置”>“属性”>“生成安全 PIN”。 使用此 PIN 更改通行短语。 |
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 恢复服务保管库入门](backup-azure-vms-first-look-arm.md)，介绍如何启用这些功能。

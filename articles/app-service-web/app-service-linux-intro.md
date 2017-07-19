@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 036e5691ecc435da54f381563b5d798f065bfb7f
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 5d1dc8caab804914ac7e94be7f080b713674bc0a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -39,6 +39,7 @@ Linux Web 应用目前支持以下应用程序堆栈：
     * 6.2
     * 6.6
     * 6.9
+    * 6.10
 * PHP
     * 5.6
     * 7.0
@@ -94,11 +95,11 @@ Linux Web 应用只能在专用应用服务计划中使用，没有免费层或�
 * [在 Linux 上的 Azure Web 应用中创建 Web 应用](app-service-linux-how-to-create-web-app.md)
 * [如何使用 Linux 上 Azure Web 应用的自定义 Docker 映像](app-service-linux-using-custom-docker-image.md)
 * [在 Linux 上的 Azure Web 应用中使用针对 Node.js 的 PM2 配置](app-service-linux-using-nodejs-pm2.md)
-* [在 Linux 上的 Azure App Service Web 应用中使用 .NET Core](app-service-linux-using-dotnetcore.md)
-* [在 Linux 上的 Azure App Service Web 应用中使用 Ruby](app-service-linux-ruby-get-started.md)
-* [Linux 上的 Azure App Service Web 应用常见问题解答](app-service-linux-faq.md)
+* [在 Linux 上的 Azure 应用服务 Web 应用中使用 .NET Core](app-service-linux-using-dotnetcore.md)
+* [在 Linux 上的 Azure 应用服务 Web 应用中使用 Ruby](app-service-linux-ruby-get-started.md)
+* [Linux 上的 Azure 应用服务 Web 应用常见问题解答](app-service-linux-faq.md)
 * [SSH 对 Linux 上的 Azure Web 应用的支持](./app-service-linux-ssh-support.md)
-* [设置 Azure App Service 中的过渡环境](./web-sites-staged-publishing.md)
+* [设置 Azure 应用服务中的过渡环境](./web-sites-staged-publishing.md)
 * [使用 Linux 上的 Azure Web 应用进行 Docker 中心持续部署](./app-service-linux-ci-cd.md)
 
 

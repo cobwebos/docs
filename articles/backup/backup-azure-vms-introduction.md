@@ -13,12 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/5/2017
+ms.date: 5/22/2017
 ms.author: markgal;trinadhk
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: b6780e3dc0833c9a074ba85566848ac4246fa848
-ms.lasthandoff: 04/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 6d390a75df51a22aa4e60094f3e4ba945a5725ad
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -118,7 +119,8 @@ Azure 备份提供脚本框架。 若要确保备份 Linux VM 时的应用程序
 * 将 VM 备份安排在非高峰时间进行。 这样备份服务会使用 IOPS 将数据从客户存储帐户传输到保管库。
 * 确保策略在分布于不同存储帐户的 VM 上应用。 同一个备份计划所保护的来自单个存储帐户的磁盘总数不应超过 20 个。 如果一个存储帐户中有超过 20 个磁盘，请将这些 VM 分配到多个策略，以获取备份过程传输阶段所需的 IOPS。
 * 请勿将高级存储上运行的 VM 还原到同一存储帐户。 如果还原操作过程和备份操作同时进行，将减少备份的可用 IOPS。
-* 建议在不同的高级存储帐户上运行每个高级 VM，以此来确保最佳备份性能。
+* 对于高级 VM 备份，请确保托管高级磁盘的存储帐户具有至少 50％ 的闲置空间可用于暂存快照，以实现成功备份。 
+* 请确保 Linux VM 上为备份启用的 python 是 2.7 版
 
 ## <a name="data-encryption"></a>数据加密
 在备份过程中，Azure 备份不会加密数据。 但是，可以在 VM 中加密数据，然后无缝备份保护的数据（阅读有关[加密数据备份](backup-azure-vms-encryption.md)的详细信息）。
@@ -126,7 +128,7 @@ Azure 备份提供脚本框架。 若要确保备份 Linux VM 时的应用程序
 ## <a name="calculating-the-cost-of-protected-instances"></a>计算受保护实例的成本
 通过 Azure 备份进行备份的 Azure 虚拟机的收费依据 [Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。 受保护的实例计算基于虚拟机的实际大小，即虚拟机中除“资源磁盘”外的所有数据之和。
 
-VM 备份定价*并非*基于附加到虚拟机的每个数据磁盘的最大支持大小。 定价基于数据磁盘中存储的实际数据。 与此类似，备份存储空间的收费是基于 Azure 备份中存储的数据量，即每个恢复点中实际数据之和。
+VM 备份定价*并非*基于附加到虚拟机的每个数据磁盘的最大支持大小。 定价基于数据磁盘中存储的实际数据。 与此类似，备份存储的收费是基于 Azure 备份中存储的数据量，即每个恢复点中实际数据之和。
 
 以 A2 标准大小的虚拟机为例，该虚拟机有两个额外的数据磁盘，总大小为 1TB。 下表提供了其中每个磁盘上存储的实际数据：
 

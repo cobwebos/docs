@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/06/2017
 ms.author: garye
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 5bcdb2cd11ffa633bce4e0faee4f49d9053a662b
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 39761f94efc530452a41ef9f2130976803cff711
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -118,7 +118,7 @@ RRS 测试页显示你为实验定义的输入、输出和任何全局参数。 
 
 **使用**页提供访问 Web 服务所需的所有信息。 例如，提供 API 密钥以允许对服务的授权访问。
 
-有关访问机器学习 Web 服务的详细信息，请参阅[如何使用已部署的 Azure 机器学习 Web 服务](machine-learning-consume-web-services.md)。
+有关访问机器学习 Web 服务的详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](machine-learning-consume-web-services.md)。
 
 #### <a name="manage-your-new-web-service"></a>管理新 Web 服务
 可通过机器学习 Web 服务门户管理新的 Web 服务。 在[主门户页](https://services.azureml-test.net/)中，单击“Web 服务”。 在 Web 服务页中，可删除或复制服务。 若要监视特定服务，请单击该服务，然后单击“仪表板”。 若要监视与 Web 服务相关联的 Batch 作业，请单击“Batch 请求日志”。
@@ -158,7 +158,7 @@ RRS 测试页显示你为实验定义的输入、输出和任何全局参数。 
 
 仪表板提供访问 Web 服务所需的所有信息。 例如，提供 API 密钥以允许对服务的授权访问，并提供 API 帮助页以帮助你开始编写代码。
 
-有关访问机器学习 Web 服务的详细信息，请参阅[如何使用已部署的 Azure 机器学习 Web 服务](machine-learning-consume-web-services.md)。
+有关访问机器学习 Web 服务的详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](machine-learning-consume-web-services.md)。
 
 #### <a name="manage-your-classic-web-service"></a>管理经典 Web 服务
 可通过执行各种操作来监视 Web 服务。 可以将其更新，也可以将其删除。 除了部署经典 Web 服务时创建的默认终结点外，还可向其添加其他终结点。

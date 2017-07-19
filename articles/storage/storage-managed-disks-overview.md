@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2017
+ms.date: 06/15/2017
 ms.author: robinsh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: e36deaeba611896e793f40cf0e05b8771841816f
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 292a93bd1d355b8a39c59d220352ad465df46629
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -27,14 +27,11 @@ ms.lasthandoff: 05/03/2017
 
 Azure 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](storage-introduction.md)简化了 Azure IaaS VM 的磁盘管理。 你只需指定所需的类型（[高级](storage-premium-storage.md)或[标准](storage-standard-storage.md)）和磁盘大小，Azure 将为你创建和管理磁盘。
 
->[!NOTE]
->使用托管磁盘的 VM 要求端口 8443 上的出站流量将已安装 [VM 扩展](../virtual-machines/windows/extensions-features.md)的状态报告给 Azure 平台。 如果无法使用该端口，则为 VM 预配扩展会失败。 另外，如果将扩展安装在正在运行的 VM 上，该扩展的部署状态将为未知。 如果不能解除对端口 8443 的阻止，则必须使用非托管磁盘。 我们正在努力解决此问题。 有关更多详细信息，请参阅 [IaaS VM 磁盘常见问题](storage-faq-for-disks.md#managed-disks-and-port-8443)。 
->
->
-
 ## <a name="benefits-of-managed-disks"></a>托管磁盘的好处
 
-接下来让我们看一下使用托管磁盘可以获得的一些好处。
+让我们看看使用托管磁盘的一些好处，情观看 9 频道视频 - [托管磁盘使 Azure VM 更加可靠](https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency)。
+<br/>
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency/player]
 
 ### <a name="simple-and-scalable-vm-deployment"></a>简单且可缩放的 VM 部署
 
@@ -44,16 +41,16 @@ Azure 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](storage-intro
 
 ### <a name="better-reliability-for-availability-sets"></a>可用性集更加可靠
 
-通过确保可用性集中的 VM 的磁盘彼此之间完全隔离以避免单点故障，托管磁盘为可用性集提供了更佳的可靠性。 它通过自动将磁盘放置在不同的存储缩放单位（模块）中来实现这一点。 如果某个模块因硬件或软件故障而失败，则只有其磁盘在该模块上的 VM 实例会失败。 例如，假定某个应用程序在 5 台 VM 上运行并且这些 VM 位于一个可用性集中。 这些 VM 的磁盘不会存储在同一个模块中，因此，如果一个模块失败，该应用程序的其他实例可以继续运行。
+通过确保[可用性集中的 VM ](../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)的磁盘彼此之间完全隔离以避免单点故障，托管磁盘为可用性集提供了更佳的可靠性。 它通过自动将磁盘放置在不同的存储缩放单位（模块）中来实现这一点。 如果某个模块因硬件或软件故障而失败，则只有其磁盘在该模块上的 VM 实例会失败。 例如，假定某个应用程序在 5 台 VM 上运行并且这些 VM 位于一个可用性集中。 这些 VM 的磁盘不会存储在同一个模块中，因此，如果一个模块失败，该应用程序的其他实例可以继续运行。
 
 ### <a name="granular-access-control"></a>粒度访问控制
 
 可以使用 [Azure 基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-what-is.md) 将对托管磁盘的特定权限分配给一个或多个用户。 托管磁盘公开了各种操作，包括读取、写入（创建/更新）、删除，以及检索磁盘的[共享访问签名 (SAS) URI](storage-dotnet-shared-access-signature-part-1.md)。 可以仅将某人员执行其工作所需的操作的访问权限授予该人员。 例如，如果不希望某人员将某个托管磁盘复制到存储帐户，则可以选择不授予对该托管磁盘的导出操作的访问权限。 类似地，如果不希望某人员使用 SAS URI 复制某个托管磁盘，则可以选择不授予对该托管磁盘的该权限。
 
-### <a name="azure-backup-service-support"></a>Azure 备份服务支持 
-将 Azure 备份服务与托管磁盘配合使用，创建具有基于时间的备份、轻松 VM 还原和备份保留策略的备份作业。 托管磁盘仅支持使用本地冗余存储 (LRS) 作为复制选项；这意味着它在单个区域中保留三个数据副本。 对于区域性灾难恢复，必须使用 [Azure 备份服务](../backup/backup-introduction-to-azure-backup.md)和作为备份保管库的 GRS 存储帐户来备份不同区域中的 VM 磁盘。 有关详细信息，请参阅[为具有托管磁盘的 VM 使用 Azure 备份服务](../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)。 
+### <a name="azure-backup-service-support"></a>Azure 备份服务支持
+将 Azure 备份服务与托管磁盘配合使用，创建具有基于时间的备份、轻松 VM 还原和备份保留策略的备份作业。 托管磁盘仅支持使用本地冗余存储 (LRS) 作为复制选项；这意味着它在单个区域中保留三个数据副本。 对于区域性灾难恢复，必须使用 [Azure 备份服务](../backup/backup-introduction-to-azure-backup.md)和作为备份保管库的 GRS 存储帐户来备份不同区域中的 VM 磁盘。 有关详细信息，请参阅[为具有托管磁盘的 VM 使用 Azure 备份服务](../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)。
 
-## <a name="pricing-and-billing"></a>定价和计费 
+## <a name="pricing-and-billing"></a>定价和计费
 
 使用托管磁盘时，将考虑以下计费事项：
 
@@ -76,15 +73,17 @@ Azure 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](storage-intro
 
 下面是高级托管磁盘可用的磁盘大小：
 
-| **高级托管<br>磁盘类型**  | **P10** | **P20** | **P30**        |
-|------------------|---------|---------|----------------|
-| 磁盘大小        | 128 GB  | 512 GB  | 1024 GB (1 TB) |
+| **高级托管<br>磁盘类型** | **P4** | **P6** |**P10** | **P20** | **P30** | **P40** | **P50** | 
+|------------------|---------|---------|---------|---------|----------------|----------------|----------------|  
+| 磁盘大小        | 32 GB   | 64 GB   | 128 GB  | 512 GB  | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
 
-下面是标准托管磁盘可用的磁盘大小： 
 
-| **标准托管<br>磁盘类型** | **S4**  | **S6**  | **S10**        | **S20** | **S30**        |
-|------------------|---------|---------|----------------|---------|----------------|
-| 磁盘大小        | 32 GB   | 64 GB   | 128 GB  | 512 GB  | 1024 GB (1 TB) |
+下面是标准托管磁盘可用的磁盘大小：
+
+| **标准托管<br>磁盘类型** | **S4** | **S6** | **S10** | **S20** | **S30** | **S40** | **S50** |
+|------------------|---------|---------|--------|--------|----------------|----------------|----------------| 
+| 磁盘大小        | 32 GB   | 64 GB   | 128 GB | 512 GB | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
+
 
 **事务数**：将根据你对标准托管磁盘执行的事务数向你收费。 高级托管磁盘没有事务费用。
 
@@ -120,15 +119,12 @@ Azure 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](storage-intro
 
 ## <a name="managed-disks-and-encryption"></a>托管磁盘和加密
 
-以下介绍托管磁盘的两种加密方式。 第一种是存储服务加密 (SSE)，由存储服务执行。 第二种是 Azure 磁盘加密，可以在 VM 的 OS 和数据磁盘上启用。 
+以下介绍托管磁盘的两种加密方式。 第一种是存储服务加密 (SSE)，由存储服务执行。 第二种是 Azure 磁盘加密，可以在 VM 的 OS 和数据磁盘上启用。
 
 ### <a name="storage-service-encryption-sse"></a>存储服务加密 (SSE)
 
-Azure 存储支持自动对写入到存储帐户中的数据进行加密。 有关更多详细信息，请参考[静态数据的 Azure 存储服务加密](storage-service-encryption.md)。 托管磁盘上的数据是怎样的情况？ 当前，无法为托管磁盘启用存储服务加密。 但以后会发布此功能。 在此期间，你需要知道如何使用位于加密的存储帐户中且已将其自身加密的 VHD 文件。 
+[Azure 存储服务加密](storage-service-encryption.md) 可提供静态加密和保护你的数据，使你的组织能够信守在安全性与符合性方面所做的承诺。 默认情况下，所有托管磁盘都启用了 SSE，所有可用托管磁盘的区域都有快照和映像。 从 2017 年 6 月 10 日起，写入现有的托管磁盘中的所有新的托管磁盘/快照/映像和新数据都会通过 Microsoft 密钥管理自动静态加密。  有关详细信息请访问[托管磁盘常见问题解答页](storage-faq-for-disks.md#managed-disks-and-storage-service-encryption)。
 
-SSE 在数据写入到存储帐户时会对数据进行加密。 如果你有曾经使用 SSE 进行了加密的 VHD 文件，则无法使用该 VHD 文件来创建使用托管磁盘的 VM。 也无法将加密的非托管磁盘转换为托管磁盘。 最后，如果在该存储帐户上禁用加密，它不会反过来对 VHD 文件进行解密。 
-
-若要使用已加密的磁盘，必须首先将 VHD 文件复制到一个从未加密过的存储帐户。 然后，你可以创建具有托管磁盘的 VM 并在创建期间指定该 VHD 文件，或者将复制的 VHD 文件附加到某个具有托管磁盘且正在运行的 VM。 
 
 ### <a name="azure-disk-encryption-ade"></a>Azure 磁盘加密 (ADE)
 
@@ -138,7 +134,7 @@ Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘�
 
 有关托管磁盘的详细信息，请参考以下文章。
 
-### <a name="get-started-with-managed-disks"></a>托管磁盘入门 
+### <a name="get-started-with-managed-disks"></a>托管磁盘入门
 
 * [使用 Resource Manager 和 PowerShell 创建 VM](../virtual-machines/virtual-machines-windows-ps-create.md)
 
@@ -150,7 +146,9 @@ Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘�
 
 * [托管磁盘 PowerShell 示例脚本](https://github.com/Azure-Samples/managed-disks-powershell-getting-started)
 
-### <a name="compare-managed-disks-storage-options"></a>比较托管磁盘存储选项 
+* [在 Azure Resource Manager 模板中使用托管磁盘](storage-using-managed-disks-template-deployments.md)
+
+### <a name="compare-managed-disks-storage-options"></a>比较托管磁盘存储选项
 
 * [高级存储和磁盘](storage-premium-storage.md)
 

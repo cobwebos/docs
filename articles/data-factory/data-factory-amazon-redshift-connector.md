@@ -14,21 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 524b87d95d3060c780b296350797501847c80638
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: e3079b55036a514b31249e5930f40ab4346f437a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/07/2017
 
 
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 移动数据
 本文介绍如何使用 Azure 数据工厂中的复制活动从 Amazon Redshift 移动数据。 本文基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。 
 
-可以将数据从 Amazon Redshift 复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 Amazon Redshift 移至其他数据存储，但不支持将数据从其他数据存储移至 Amazon Redshift。
+可以将数据从 Amazon Redshift 复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 数据工厂当前支持将数据从 Amazon Redshift 移至其他数据存储，但不支持将数据从其他数据存储移至 Amazon Redshift。
 
 ## <a name="prerequisites"></a>先决条件
 * 如果要将数据移到本地数据存储，请在本地计算机上安装[数据管理网关](data-factory-data-management-gateway.md)。 然后，请向数据管理网关（使用计算机的 IP 地址）授予对 Amazon Redshift 群集的访问权限。 有关说明，请参阅[授予对群集的访问权限](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html)。
-* 如果正在将数据移动到 Azure 数据存储，请参阅 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)，了解 Microsoft Azure 数据中心使用的计算 IP 地址范围（包括 SQL 范围）。
+* 如果正在将数据移动到 Azure 数据存储，请参阅 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)，了解 Azure 数据中心使用的计算 IP 地址和 SQL 范围。
 
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从 Amazon Redshift 源移动数据。
@@ -62,7 +63,7 @@ ms.lasthandoff: 03/30/2017
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅 [Creating datasets](data-factory-create-datasets.md)（创建数据集）一文。 所有数据集类型（Azure SQL、Azure blob、Azure 表等）的结构、可用性和策略等部分类似。
 
-每种数据集的 **TypeProperties** 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型数据集（包括 Amazon Redshift 数据集）的 typeProperties 部分具有以下属性
+每个数据集类型的 **typeProperties** 节都不同。 它提供数据存储中数据位置的相关信息。 **RelationalTable** 类型数据集（包括 Amazon Redshift 数据集）的 typeProperties 部分具有以下属性
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
@@ -71,7 +72,7 @@ ms.lasthandoff: 03/30/2017
 ## <a name="copy-activity-properties"></a>复制活动属性
 有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
 
-另一方面，可用于此活动的 **typeProperties** 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
+但是，可用于此活动的 **typeProperties** 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
 
 复制活动的源是类型 **RelationalSource**（包括 Amazon Redshift）时，以下属性可用于 typeProperties 部分：
 
@@ -127,7 +128,7 @@ ms.lasthandoff: 03/30/2017
 ```
 **Amazon Redshift 输入数据集：**
 
-设置 **"external": true** 将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。 对于不是由管道中的活动生成的输入数据集，将此属性设置为 true。
+设置 `"external": true` 告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。 对于不是由管道中的活动生成的输入数据集，将此属性设置为 true。
 
 ```json
 {
@@ -262,7 +263,7 @@ ms.lasthandoff: 03/30/2017
 1. 从本机源类型转换为 .NET 类型
 2. 从 .NET 类型转换为本机接收器类型
 
-将数据移至 Amazon Redshift 时，将使用从 Amazon Redshift 类型到 .NET 类型的以下映射。
+将数据移至 Amazon Redshift 时，使用从 Amazon Redshift 类型到 .NET 类型的以下映射。
 
 | Amazon Redshift 类型 | 基于.NET 的类型 |
 | --- | --- |

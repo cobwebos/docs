@@ -20,7 +20,6 @@ ms.openlocfilehash: 7a68a2764d17b53164ded5096ddee68ab8c723ed
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/16/2017
 
-
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>使用 Azure 门户创建 IoT 中心
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
@@ -42,6 +41,8 @@ ms.lasthandoff: 05/16/2017
 
 ### <a name="choose-the-name-of-the-iot-hub"></a>选择 IoT 中心的名称
 若要创建 IoT 中心，必须为 IoT 中心命名。 此名称在所有 IoT 中心间必须唯一。 解决方案后端不允许中心重复，因此，中心的名称越独特越好。
+
+[!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
 ### <a name="choose-the-pricing-tier"></a>选择定价层
 可以从四个层中做选择：**免费**、**标准 1**、**标准 2** 和**标准 S3**。 免费层只允许 500 台设备连接到 IoT 中心，并且每天最多传输 8,000 条信息。

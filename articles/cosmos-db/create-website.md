@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 424889a00a20c8daf770098a43576783b813340c
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 633b88761de4d2c99cfd196cfac8e664fc83c546
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板部署 Azure Cosmos DB 和 Azure 应用服务 Web 应用
-本教程说明如何使用 Azure Resource Manager 模板来部署和集成 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web 应用以及示例 Web 应用程序。
+本教程说明如何使用 Azure Resource Manager 模板来部署和集成 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web 应用以及示例 Web 应用程序。
 
 使用 Azure Resource Manager 模板，你可以轻松自动化 Azure 资源的部署和配置。  本教程演示如何部署 Web 应用程序，以及自动配置 Azure Cosmos DB 帐户的连接信息。
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 05/31/2017
    
    ![示例待办事项应用程序](./media/create-website/image2.png)
 9. 继续在 Web 应用中创建几个任务，然后返回到 Azure 门户中的资源组边栏选项卡。 单击“资源”列表中的“Azure Cosmos DB 帐户”资源，然后单击“查询浏览器”。
-    ![屏幕截图：突出显示 myotherdocumentdbwebapp web 应用的“摘要”可重用功能区](./media/create-website/TemplateDeployment8.png)  
+    ![屏幕截图：突出显示 Web 应用的“摘要”可重用功能区](./media/create-website/TemplateDeployment8.png)  
 10. 运行默认查询“SELECT * FROM c”，并检查结果。  请注意，查询已检索你在上面的步骤 7 中创建的待办事项的 JSON 表示形式。  随意尝试查询；例如，尝试运行 SELECT * FROM c WHERE c.isComplete = true，返回所有标记为完成的待办事项。
     
     ![屏幕截图：显示查询结果的“查询资源管理器”和“结果”边栏选项卡](./media/create-website/image5.png)

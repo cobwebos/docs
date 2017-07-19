@@ -1,39 +1,39 @@
 ---
 title: "在 Azure Site Recovery 中创建恢复计划进行故障转移和恢复 | Microsoft Docs"
-description: "介绍如何创建并自定义用于在 Azure Site Recovery 中故障转移和恢复 VM 及物理服务器的恢复计划"
+description: "介绍如何在 Azure Site Recovery 中创建并自定义恢复计划，以故障转移和恢复 VM 及物理服务器"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 72408c62-fcb6-4ee2-8ff5-cab1218773f2
-ms.service: site-recovery
+ms.service: storage-backup-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/14/2017
+ms.date: 05/24/2017
 ms.author: raynew
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ab51cb8e11df43ba2157b11e25a1f29b19e4da9
-ms.openlocfilehash: e36f19e9c429c0e4b42e96b28b1ba995bd1bf167
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 618c6fead3dbad385c4ded39352eea0cfcf1b134
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/15/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
 # <a name="create-recovery-plans"></a>创建恢复计划
 
 
-本文介绍了如何在 [Azure Site Recovery](site-recovery-overview.md) 中创建和自定义恢复计划。
+本文介绍如何在 [Azure Site Recovery](site-recovery-overview.md) 中创建和自定义恢复计划。
 
 请将任何评论或问题发布到本文底部，或者发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)。
 
- 恢复计划执行以下操作：
+ 若要创建恢复计划，请执行以下操作：
 
 * 定义要一起信息故障转移再同时启动的计算机组。
 * 将计算机一起分组到恢复计划组中，为计算机之间的依赖关系建模。 例如，若要故障转移并启动特定的应用程序，可将该应用程序的所有 VM 分组到同一个恢复计划组中。
-* 故障转移。 你可以对恢复计划运行测试、计划或非计划的故障转移。
+* 运行故障转移。 你可以对恢复计划运行测试、计划或非计划的故障转移。
 
 
 ## <a name="create-a-recovery-plan"></a>创建恢复计划
@@ -72,7 +72,7 @@ ms.lasthandoff: 02/15/2017
 如果在部署中使用 VMM：
 
 * 恢复计划中的脚本在 VMM 服务帐户的上下文中运行。 确保此帐户可读取脚本所在的远程共享。 测试要在 VMM 服务帐户特权级别运行的脚本。
-* Windows PowerShell 模块中随附了 VMM cmdlet。 安装 VMM 控制台时会随附安装模块。 可在脚本中通过以下命令将其加载到脚本中： 
+* Windows PowerShell 模块中随附了 VMM cmdlet。 安装 VMM 控制台时会随附安装模块。 可在脚本中通过以下命令将其加载到脚本中：
    - Import-Module -Name virtualmachinemanager。 [了解详细信息](https://technet.microsoft.com/library/hh875013.aspx)。
 * 确保 VMM 部署中至少有一个库服务器。 VMM 服务器的库共享路径默认位于本地的 VMM 服务器，其文件夹名称为 MSCVMMLibrary。
     * 如果库共享路径在远程位置（或在本地，但不与 MSCVMMLibrary 共享），请按如下所示配置共享（例如使用 \\\libserver2.contoso.com\share\）：
@@ -94,7 +94,7 @@ ms.lasthandoff: 02/15/2017
 6. 执行恢复计划的故障转移，确保脚本按预期运行。
 
 
-### <a name="vmm-script"></a>VMM 脚本
+### <a name="add-a-vmm-script"></a>添加 VMM 脚本
 
 如果有一个 VMM 源站点，则可在 VMM 服务器上创建脚本，并将其纳入恢复计划。
 

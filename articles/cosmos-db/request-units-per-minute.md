@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: acomet
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: ea63b988a72801ae4c288048021a915b20a34794
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 0c597fa4afa816f9731edb744ae494b6ef928b9e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -114,7 +114,7 @@ await client.ReplaceOfferAsync(offerV2);
 
 **开发/测试环境：**适合。 在开发阶段，如果你要使用不同的工作负荷测试应用程序，RU/m 可在此阶段提供灵活性。 同时，[模拟器](local-emulator.md)也是一个用于测试 Azure Cosmos DB 的极佳免费工具。 但是，如果你想要在云环境中开始，RU/m 可为解决即席性能需求提供极大的灵活性。 这样就可以将更多的时间放在开发上，不需要一开始就过多地考虑性能需求。 我们建议从最小的 RU/s 预配开始，并启用 RU/m。
 
-**不可预测的高峰分钟粒度需求：**适合 – 节省：25-75%。 我们已看到了 RU/m 带来的极大改善，大多数生产方案都能适应该组。 如果某个 IoT 工作负荷在一分钟内多次出现高峰，或者在系统同时执行大量插入时运行查询，则你需要提供额外的容量来处理高峰需求。 我们建议应用下面所述的逐步方法来优化资源需求。
+**不可预测的高峰分钟粒度需求：**适合 – 节省：25-75%。 我们已看到了 RU/m 带来的极大改善，大多数生产方案都能适应该组。 如果某个 IoT 工作负荷在一分钟内多次出现高峰，或者在系统同时执行大量插入时运行查询，那么则需要提供额外的容量来处理高峰需求。 我们建议应用下面所述的逐步方法来优化资源需求。
 
  ![显示 5 分钟粒度请求消耗量的示意图](./media/request-units-per-minute/azure-cosmos-db-request-units-per-minute-consumption.png)
  
@@ -176,7 +176,7 @@ var query = client.CreateDocumentQuery<Book>(
 本文已介绍 Azure Cosmos DB 中的分区工作原理、如何创建分区集合，以及如何为应用程序选择适当的分区键。
 
 * 使用 Azure Cosmos DB 执行规模和性能测试。 有关示例，请参阅[使用 Azure Cosmos DB 执行性能和规模测试](performance-testing.md)。
-* 开始使用 [SDK](documentdb-sdk-dotnet.md) 或 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 编写代码
+* 开始使用 [SDK](documentdb-sdk-dotnet.md) 或 [REST API](/rest/api/documentdb/) 编写代码
 * 了解 Azure Cosmos DB 中的[预配吞吐量](request-units.md) 
 
 

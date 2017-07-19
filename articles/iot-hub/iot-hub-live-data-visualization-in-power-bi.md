@@ -4,7 +4,7 @@ description: "使用 Power BI 可视化从传感器收集的温度和湿度数�
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "实时数据可视化, 即时数据可视化, 传感器数据可视化"
 ms.assetid: e67c9c09-6219-4f0f-ad42-58edaaa74f61
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/29/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: ba25cdee46ce4ceb5acd5ff9da683a057f2bd733
-ms.lasthandoff: 04/25/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 404ab1682d9b77f22e60888340ffb70a101ed5d4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/15/2017
 
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>使用 Power BI 可视化 Azure IoT 中心的实时传感器数据
@@ -120,11 +120,7 @@ ms.lasthandoff: 04/25/2017
 
 ## <a name="create-and-publish-a-power-bi-report-to-visualize-the-data"></a>创建并发布实现数据可视化的 Power BI 报表
 
-1. 确保示例应用程序正在运行。 否则请运行以下命令，以便在 Pi 上运行该应用程序：
-
-   ```bash
-   gulp run
-   ```
+1. 确保示例应用程序正在设备上运行。 如果没有，请参考[设置设备](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started)中的教程。
 1. 登录到 [Power BI](https://powerbi.microsoft.com/en-us/) 帐户。
 1. 转到组工作区，该工作区是在为流分析作业创建输出时设置的。
 1. 单击“流式处理数据集”。
@@ -164,3 +160,4 @@ Microsoft 还提供 [Power BI 移动应用](https://powerbi.microsoft.com/en-us/
 还可以通过另一种方法可视化 Azure IoT 中心的数据。 请参阅[使用 Azure Web 应用可视化 Azure IoT 中心的实时传感器数据](iot-hub-live-data-visualization-in-web-apps.md)。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
+

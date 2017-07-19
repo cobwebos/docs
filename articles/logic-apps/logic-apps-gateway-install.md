@@ -13,13 +13,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 05/5/2017
+ms.date: 06/9/2017
 ms.author: LADocs; dimazaid; estfan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 8a1ae2ef790455383118bb55c34f6ca10fe0169e
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 7122b970c2e4703df9771e8ace4e710399ca3e6c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -76,19 +76,22 @@ ms.lasthandoff: 05/17/2017
 
 * 不要在会关闭、休眠或未连接到 Internet 的计算机上安装该网关，因为网关在这种情况下无法运行。 此外，在通过无线网络工作时，网关性能可能会下降。
 
-* 只能使用包含 Azure Active Directory (Azure AD) 管理的工作或学校电子邮件地址的 Azure 帐户登录。 需要使用此帐户将本地数据网关与基于 Azure AD 的帐户的 Azure 订阅相关联。
+* 安装期间，必须使用由 Azure Active Directory (Azure AD) 托管的[工作或学校帐户](https://docs.microsoft.com/azure/active-directory/sign-up-organization)（而不是 Microsoft 帐户）登录。 
 
-  > [!TIP] 
-  > 如果使用 Microsoft 帐户（例如 @outlook.com），可以使用 Azure 帐户[创建工作或学校电子邮件地址](../virtual-machines/windows/create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal)。 如果注册了 Office 365 产品但未提供实际工作电子邮件，登录地址可能类似于 jeff@contoso.onmicrosoft.com。 
+  后期在 Azure 门户中创建网关资源并将其与网关安装关联时，必须仍使用此工作或学校帐户。 在逻辑应用和本地数据源之间建立连接时，请选中此网关资源。 [为何必须使用 Azure AD 工作或学校帐户？](#why-azure-work-school-account)
+
+  > [!TIP]
+  > 如果注册了 Office 365 产品但未提供实际工作电子邮件，登录地址可能类似于 jeff@contoso.onmicrosoft.com。 
 
 * 如果使用版本低于 14.16.6317.4 的安装程序安装了现有网关，则无法通过运行最新的安装程序更改网关位置。 但是，可以使用最新的安装程序来安装改用所需位置的新网关。
   
   如果网关安装程序的版本低于 14.16.6317.4，但尚未安装网关，则你可以下载并使用最新的安装程序。
 
 <a name="install-gateway"></a>
+
 ## <a name="install-the-data-gateway"></a>安装数据网关
 
-1.    [在本地计算机上下载并运行网关安装程序](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409)。
+1.  [在本地计算机上下载并运行网关安装程序](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409)。
 
 2. 查看并接受使用条款和隐私声明。
 
@@ -96,29 +99,38 @@ ms.lasthandoff: 05/17/2017
 
 4. 出现提示时，请使用 Azure 工作或学校帐户而不是 Microsoft 帐户登录。
 
-5. 现在，将网关安装注册到[网关云服务](#gateway-cloud-service)。 
+   ![使用 Azure 工作或学校帐户登录](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
 
-     网关云服务可加密和存储数据源凭据与网关详细信息。 
-     该服务还会在云中用户（如逻辑应用）、本地数据网关与本地数据源之间路由查询及其结果。
+5. 现在，将安装的网关注册到[网关云服务](#gateway-cloud-service)。 选择“在此计算机上注册新网关”。
 
-     1. 为网关安装提供名称，然后创建恢复密钥。 
-     确认恢复密钥。
+   网关云服务可加密和存储数据源凭据与网关详细信息。 
+   该服务还会在逻辑应用、本地数据网关与本地数据源之间路由查询及其结果。
 
-        > [!IMPORTANT] 
-        > 恢复密钥必须至少包含八个字符。 请务必将该密钥保存在安全位置。 迁移、还原或接管现有网关时，也需要此密钥。
+6. 为网关安装提供名称。 创建恢复密钥，然后确认恢复密钥。 
 
-     2. 若要更改网关云服务的默认区域和网关安装使用的 Azure 服务总线，请选择“更改区域”。
+   > [!IMPORTANT] 
+   > 恢复密钥必须至少包含八个字符。 请务必将该密钥保存在安全位置。 迁移、还原或接管现有网关时，也需要此密钥。
 
-        例如，可以选择逻辑应用所在的同一区域，或者选择离本地数据源最近的区域，以便降低延迟。 网关资源和逻辑应用可以有不同的位置。
+   1. 若要更改网关云服务的默认区域和网关安装使用的 Azure 服务总线，请选择“更改区域”。
 
-        > [!IMPORTANT]
-        > 安装后无法更改此区域。 此区域还确定并限制可在其中为网关创建 Azure 资源的位置。 因此，在 Azure 中创建网关资源时，请确保资源位置与安装网关期间选择的区域匹配。
-        > 
-        > 如果以后想要为网关使用不同的区域，必须安装新网关。
+      ![更改区域](./media/logic-apps-gateway-install/change-region-gateway-install.png)
 
-     3. 完成后，选择“配置”。
+      默认区域是与 Azure AD 租户关联的区域。
 
-6. 现在，请遵照 Azure 门户中的步骤，以便可以[为网关创建 Azure 资源](../logic-apps/logic-apps-gateway-connection.md)。 
+   2. 在下一个窗格中，打开“选择区域”，选择其他区域。
+
+      ![选择其他区域](./media/logic-apps-gateway-install/select-region-gateway-install.png)
+
+      例如，可以选择逻辑应用所在的同一区域，或者选择离本地数据源最近的区域，以便降低延迟。 网关资源和逻辑应用可以有不同的位置。
+
+      > [!IMPORTANT]
+      > 安装后无法更改此区域。 此区域还确定并限制可在其中为网关创建 Azure 资源的位置。 因此，在 Azure 中创建网关资源时，请确保资源位置与安装网关期间选择的区域匹配。
+      > 
+      > 如果以后想要为网关使用不同的区域，必须安装新网关。
+
+   3. 准备就绪后，选择“完成”。
+
+7. 现在，请遵照 Azure 门户中的步骤，以便可以[为网关创建 Azure 资源](../logic-apps/logic-apps-gateway-connection.md)。 
 
 详细了解[数据网关的工作原理](#gateway-cloud-service)。
 
@@ -127,7 +139,12 @@ ms.lasthandoff: 05/17/2017
 若要执行这些任务，必须使用安装网关时指定的恢复密钥。
 
 1. 在计算机的“开始”菜单中，选择“本地数据网关”。
-2. 安装程序打开后，请提供要迁移、还原或接管的网关的恢复密钥。
+
+2. 安装程序打开后，使用之前用于安装网关的 Azure 工作或学校帐户登录。
+
+3. 选择“迁移”、“还原”或“接管”现有网关。
+
+4. 提供要迁移、还原或接管的网关的名称和恢复密钥。
 
 <a name="restart-gateway"></a>
 ## <a name="restart-the-gateway"></a>重新启动网关
@@ -199,7 +216,7 @@ TcpTestSucceeded       : True
 <a name="gateway-cloud-service"></a>
 ## <a name="how-does-the-data-gateway-work"></a>数据网关的工作原理
 
-数据网关可以加速和保护云中用户（如逻辑应用）、网关云服务与本地数据源之间的通信。 
+数据网关可以加速和保护逻辑应用、网关云服务与本地数据源之间的通信。 
 
 ![diagram-for-on-premises-data-gateway-flow](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
@@ -228,8 +245,10 @@ TcpTestSucceeded       : True
 **问**：网关是否必须安装在与数据源相同的计算机上？ <br/>
 **答**：不需要。 网关使用提供的连接信息连接到数据源。 从这种意义上讲，可将网关视为客户端应用程序。 网关只需能够连接到提供的服务器名称即可。
 
+<a name="why-azure-work-school-account"></a>
+
 **问**：为何必须使用 Azure 工作或学校帐户登录？ <br/>
-**答**：只能将本地数据网关与 Azure 工作或学校帐户相关联。 登录帐户存储在由 Azure Active Directory (Azure AD) 管理的租户中。 通常，Azure AD 帐户的 UPN 与电子邮件地址匹配。
+**答**：安装本地数据网关时只能使用 Azure 工作或学校帐户。 登录帐户存储在由 Azure Active Directory (Azure AD) 管理的租户中。 通常，Azure AD 帐户的用户主体名称 (UPN) 与电子邮件地址匹配。
 
 **问**：凭据存储在何处？ <br/>
 **答**：为数据源输入的凭据将会加密，并存储在网关云服务中。 凭据在本地数据网关中解密。

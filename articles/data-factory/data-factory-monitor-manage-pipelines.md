@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 05/18/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 223edfde090c9b77467e032198c2150fbaa56a5b
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 61bb5379cd94dd00814e14420947e7783999ff0a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -27,15 +28,11 @@ ms.lasthandoff: 04/12/2017
 > * [使用“监视和管理”应用](data-factory-monitor-manage-app.md)
 
 
-Azure 数据工厂提供存储、处理和数据移动服务的可靠且完整视图。 此服务提供的监视仪表板可用于执行以下任务：
+> [!IMPORTANT]
+> 通过监视和管理应用程序，可更好地监视和管理数据管道并解决出现的任何问题。 有关使用此应用的详细信息，请参阅[使用“监视和管理”应用监视和管理数据工厂管道](data-factory-monitor-manage-app.md)。 
 
-* 快速评估端到端数据管道的运行状况。
-* 识别问题，并根据需要采取纠正措施。
-* 跟踪数据沿袭。
-* 跨任何源跟踪数据之间的关系。
-* 查看作业执行、系统运行状况和依赖项的完整历史核算。
 
-本文介绍如何监视、管理和调试管道。 它还提供有关如何创建警报并获取故障通知的信息。
+本文介绍如何使用 Azure 门户和 PowerShell 监视、管理和调试管道。 本文还介绍如何创建警报和获取故障通知。
 
 ## <a name="understand-pipelines-and-activity-states"></a>了解管道和活动状态
 使用 Azure 门户，可以：
@@ -44,15 +41,13 @@ Azure 数据工厂提供存储、处理和数据移动服务的可靠且完整�
 * 查看管道中的活动。
 * 查看输入和输出数据集。
 
-本部分还介绍切片如何从某一状态转换为另一种状态。   
+本部分还介绍数据集切片如何从一个状态转换为另一状态。   
 
 ### <a name="navigate-to-your-data-factory"></a>导航到数据工厂
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在左侧菜单中，单击“数据工厂”。 如未看到，请单击“更多服务 >”，然后在“智能 + 分析”类别下单击“数据工厂”。
 
    ![“浏览全部”->“数据工厂”](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
-
-   应在“数据工厂”边栏选项卡中看到所有数据工厂。
 3. 在“数据工厂”边栏选项卡中，选择感兴趣的数据工厂。
 
     ![选择数据工厂](./media/data-factory-monitor-manage-pipelines/select-data-factory.png)
@@ -62,13 +57,11 @@ Azure 数据工厂提供存储、处理和数据移动服务的可靠且完整�
    ![“数据工厂”边栏选项卡](./media/data-factory-monitor-manage-pipelines/data-factory-blade.png)
 
 #### <a name="diagram-view-of-your-data-factory"></a>数据工厂的图示视图
-数据工厂的**图示**视图提供单个窗格来监视和管理数据工厂及其资产。
-
-若要查看数据工厂的**图示**视图，请在数据工厂的主页上单击“图示”。
+数据工厂的**图示**视图提供单个窗格来监视和管理数据工厂及其资产。 若要查看数据工厂的**图示**视图，请在数据工厂的主页上单击“图示”。
 
 ![图示视图](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
 
-可以放大、缩小、缩放到合适大小、缩放到 100%、锁定图示布局以及自动放置管道和表。 还可看到数据沿袭信息（即，显示选定项的上下游项）。
+可放大、缩小、缩放到合适大小、缩放到 100%、锁定图示布局，还可自动放置管道和数据集。 还可看到数据沿袭信息（即，显示选定项的上下游项）。
 
 ### <a name="activities-inside-a-pipeline"></a>管道中的活动
 1. 右键单击管道，然后单击“打开管道”查看管道中的所有活动以及该活动的输入和输出数据集。 如果管道包含多个活动且用户想要了解单个管道的操作沿袭，此功能非常有用。
@@ -172,17 +165,13 @@ Azure 数据工厂提供存储、处理和数据移动服务的可靠且完整�
 
 可以重置切片，将其从“就绪”或“失败”状态恢复到“等待”状态。 也可以将切片状态标记为“跳过”，从而避免执行活动而不处理切片。
 
-## <a name="manage-pipelines"></a>管理管道
-可以使用 Azure PowerShell 管理管道。 例如，通过运行 Azure PowerShell cmdlet，可以暂停和恢复管道。
+## <a name="pause-and-resume-pipelines"></a>暂停和恢复管道
+可以使用 Azure PowerShell 管理管道。 例如，通过运行 Azure PowerShell cmdlet，可以暂停和恢复管道。 
 
-### <a name="pause-and-resume-pipelines"></a>暂停和恢复管道
-还可以使用 **Suspend-AzureRmDataFactoryPipeline** PowerShell cmdlet 暂停/挂起管道。 如果问题得以解决之前不准备运行管道，此 cmdlet 非常有用。
+> [!NOTE] 
+> 图示视图不可用于暂停和恢复管道。 若想要使用用户界面，请使用监视和管理应用程序。 有关使用此应用的详细信息，请参阅文章[使用“监视和管理”应用监视和管理数据工厂管道](data-factory-monitor-manage-app.md)。 
 
-例如：在以下屏幕截图中，已在 **productrecgamalbox1dev** 数据工厂中通过 **PartitionProductsUsagePipeline** 识别问题，准备挂起该管道。
-
-![要挂起的管道](./media/data-factory-monitor-manage-pipelines/pipeline-to-be-suspended.png)
-
-若要挂起管道，请运行以下 PowerShell 命令：
+还可以使用 **Suspend-AzureRmDataFactoryPipeline** PowerShell cmdlet 暂停/挂起管道。 如果问题得以解决之前不准备运行管道，此 cmdlet 非常有用。 
 
 ```powershell
 Suspend-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
@@ -193,7 +182,7 @@ Suspend-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryNa
 Suspend-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
 ```
 
-使用 **PartitionProductsUsagePipeline** 解决问题后，可通过运行以下 PowerShell 命令来恢复挂起的管道：
+修复管道相关问题后，可通过运行下列 PowerShell 命令恢复挂起的管道：
 
 ```powershell
 Resume-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
@@ -203,8 +192,11 @@ Resume-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryNam
 ```powershell
 Resume-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
 ```
+
 ## <a name="debug-pipelines"></a>调试管道
 Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排查管道问题的丰富功能。
+
+> [!NOTE} 使用“监视和管理”应用来排查错误要简便得多。 有关使用此应用的详细信息，请参阅文章[使用“监视和管理”应用监视和管理数据工厂管道](data-factory-monitor-manage-app.md)。 
 
 ### <a name="find-errors-in-a-pipeline"></a>在管道中查找错误
 如果活动在管道中运行失败，则管道所生成数据集将因此故障而处于错误状态。 可以在 Azure 数据工厂中使用以下方法调试和解决错误。
@@ -221,7 +213,7 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
    ![出现错误的“活动运行详细信息”边栏选项卡](./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png)     
 
 #### <a name="use-powershell-to-debug-an-error"></a>使用 PowerShell 调试错误
-1. 启动 **Azure PowerShell**。
+1. 启动 **PowerShell**。
 2. 运行 **Get-AzureRmDataFactorySlice** 命令查看切片及其状态。 应看到“失败”状态的切片。        
 
     ```powershell   
@@ -233,7 +225,7 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
     Get-AzureRmDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
     ```
 
-   使用为 Set-AzureRmDataFactoryPipelineActivePeriod 指定的 StartDateTime 值替换 **StartDateTime**。
+   将“StartDateTime”替换为管道的开始时间。 
 3. 现在，运行 **Get-AzureRmDataFactoryRun** cmdlet 以获取有关切片活动运行的详细信息。
 
     ```powershell   
@@ -279,13 +271,18 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
     ```
 
 ## <a name="rerun-failures-in-a-pipeline"></a>管道中的重新运行故障
+
+> [!IMPORTANT]
+> 通过“监视和管理”应用，可更轻松地排查错误和返回有故障的切片。 有关使用此应用的详细信息，请参阅[使用“监视和管理”应用监视和管理数据工厂管道](data-factory-monitor-manage-app.md)。 
+
 ### <a name="use-the-azure-portal"></a>使用 Azure 门户
 排除和调试管道中的故障后，便可通过导航到错误切片并在命令栏上单击“运行”按钮来重新运行失败命令。
 
 ![重新运行失败的切片](./media/data-factory-monitor-manage-pipelines/rerun-slice.png)
 
 在切片因策略失败（例如：如果数据不可用）而未通过验证的情况下，在命令栏上单击“验证”按钮，可以解决故障并再次验证。
-![修复错误，然后验证](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
+
+![修复错误并验证](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
 ### <a name="use-azure-powershell"></a>使用 Azure PowerShell
 通过使用 **Set-AzureRmDataFactorySliceStatus** cmdlet，可以重新运行失败命令。 有关该 cmdlet 的语法和其他详细信息，请参阅 [Set-AzureRmDataFactorySliceStatus](https://msdn.microsoft.com/library/mt603522.aspx) 主题。

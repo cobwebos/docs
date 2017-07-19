@@ -4,7 +4,7 @@ description: "使用 iothub-explorer CLI 工具进行 Azure IoT 中心设备管�
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "azure iot 设备管理, azure iot 中心设备管理, 设备管理 iot, iot 中心设备管理"
 ms.assetid: b34f799a-fc14-41b9-bf45-54751163fffe
@@ -13,13 +13,13 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/10/2017
+ms.date: 06/15/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 480f0544f155365d94b325bbf799bb999268dc31
-ms.lasthandoff: 04/25/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 2234924251447bb32d7cca0623a4e8d4f8d4e7ff
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/17/2017
 
 ---
 # <a name="use-iothub-explorer-for-azure-iot-hub-device-management"></a>使用 iothub-explorer 进行 Azure IoT 中心设备管理
@@ -46,7 +46,7 @@ ms.lasthandoff: 04/25/2017
 
 ## <a name="what-you-learn"></a>学习内容
 
-将通过结合使用 iothub-explorer 和各种管理选项来进行了解。
+学习在开发计算机上如何使用 iothub-explorer 和各种管理选项。
 
 ## <a name="what-you-do"></a>准备工作
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 04/25/2017
   - 一个有效的 Azure 订阅。
   - 已在订阅中创建一个 Azure IoT 中心。
   - 一个可向 Azure IoT 中心发送消息的客户端应用程序。
-- iothub-explorer。 （[安装 iothub-explorer](https://github.com/azure/iothub-explorer)）
+- iothub-explorer。 （在开发计算机上[安装 iothub-explorer](https://github.com/azure/iothub-explorer)）
 
 ## <a name="connect-to-your-iot-hub"></a>连接到 IoT 中心
 
@@ -87,7 +87,7 @@ iothub-explorer device-method <your device Id> stop
 通过运行以下命令将所需属性间隔设置为 3000：
 
 ```bash
-iothub-explorer update-twin mydevice {\"properties\":{\"desired\":{\"interval\":3000}}}
+iothub-explorer update-twin <your device id> {\"properties\":{\"desired\":{\"interval\":3000}}}
 ```
 
 可通过设备读取此属性。
@@ -145,3 +145,4 @@ iothub-explorer query-twin "SELECT * FROM devices WHERE tags.role != 'temperatur
 现已了解如何结合使用 iothub-explorer 和各种管理选项。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
+
