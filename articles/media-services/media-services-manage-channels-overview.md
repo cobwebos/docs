@@ -14,12 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: e4bb75b0a45dd922479cbd40ad94190c30b4333f
+ms.translationtype: HT
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 2b727a56f43a727807d4452eefa4229d4d90406e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/13/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="overview-of-live-streaming-using-azure-media-services"></a>使用 Azure 媒体服务实时传送视频流概述

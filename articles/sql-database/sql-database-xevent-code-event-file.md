@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: genemi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fdbe5ff497b7acc9d8521b8ba1a016ae11bc69d2
-ms.openlocfilehash: 3bb6cc477b413a8636433038429e4defec1d2676
+ms.translationtype: HT
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: aeaed63e00b77f885312204f17f024af462dbf25
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/07/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL 数据库中扩展事件的事件文件目标代码
@@ -45,7 +44,7 @@ ms.lasthandoff: 02/07/2017
 * Azure 帐户和订阅。 你可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 可以在其中创建表的任何数据库。
   
-  * 或者，也可以快速[创建一个** AdventureWorksLT **演示数据库](sql-database-get-started.md)。
+  * 或者，也可以快速[创建一个 **AdventureWorksLT** 演示数据库](sql-database-get-started.md)。
 * SQL Server Management Studio (ssms.exe)，最好是每月更新版。 
   可从以下位置下载最新的 ssms.exe：
   
