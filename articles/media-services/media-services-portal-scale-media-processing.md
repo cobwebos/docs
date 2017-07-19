@@ -1,6 +1,6 @@
 ---
-title: " 使用 Azure 门户调整媒体处理的规模 | Microsoft Docs"
-description: "本教程逐步演示如何使用 Azure 门户调整媒体处理的规模。"
+title: "使用 Azure 门户缩放媒体处理 | Microsoft Docs"
+description: "本教程逐步介绍了如何使用 Azure 门户缩放媒体处理。"
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -12,11 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 07/04/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 3f9134fdff56e0ee5146cb7ccf08d168ebf84281
+ms.translationtype: Human Translation
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: e6ef52f7aee8b2a0d0dd6ebc99ad7a8c5c11f525
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -31,6 +33,14 @@ ms.openlocfilehash: 3f9134fdff56e0ee5146cb7ccf08d168ebf84281
 > 
 
 ## <a name="overview"></a>概述
+
+媒体服务帐户与保留单位类型关联，后者决定了编码处理任务的处理速度。 可以在以下保留单位类型中进行选择：**S1**、**S2** 或 **S3**。 例如，与 **S1** 保留单位类型相比，使用 **S2** 保留单位类型时，同一编码作业运行速度更快。
+
+除了指定保留单位类型，还可以指定为帐户预配保留单位 (RU)。 预配的 RU 数决定了给定帐户中可并发处理的媒体任务数。
+
+>[!NOTE]
+>RU 可用于并行化所有媒体处理，包括使用 Azure Media Indexer 为作业编制索引。 但是，与编码不同，索引作业使用更快的保留单位并不能更快地完成处理。
+
 > [!IMPORTANT]
 > 请确保查看[概述](media-services-scale-media-processing-overview.md)主题，获取有关调整媒体处理的规模主题的详细信息。
 > 
@@ -58,10 +68,5 @@ ms.openlocfilehash: 3f9134fdff56e0ee5146cb7ccf08d168ebf84281
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

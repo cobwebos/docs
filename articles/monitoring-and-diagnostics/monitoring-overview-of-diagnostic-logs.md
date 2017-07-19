@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 07/05/2017
 ms.author: johnkem; magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 300958a69fc854cb8db02120a383a4cbbfcacd7b
-ms.openlocfilehash: c3e766b2e4c7bd372dc9c7b9d675a76c2d14a4cc
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: d144dd60192a4b62db393db08b82efeaa8d45447
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/20/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -188,6 +188,7 @@ ms.lasthandoff: 05/20/2017
 | Azure Batch |[Azure Batch 诊断日志记录](../batch/batch-diagnostics.md) |
 | Customer Insights | 架构不可用。 |
 | 内容传送网络 | 架构不可用。 |
+| CosmosDB | 架构不可用。 |
 | 数据湖分析 |[访问 Azure Data Lake Analytics 的诊断日志](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[访问 Azure Data Lake Store 的诊断日志](../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | 事件中心 |[Azure 事件中心诊断日志](../event-hubs/event-hubs-diagnostic-logs.md) |
@@ -215,6 +216,7 @@ ms.lasthandoff: 05/20/2017
 |Microsoft.DataLakeAnalytics/accounts|请求|请求日志|
 |Microsoft.DataLakeStore/accounts|审核|审核日志|
 |Microsoft.DataLakeStore/accounts|请求|请求日志|
+|Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
 |Microsoft.EventHub/namespaces|ArchiveLogs|存档日志|
 |Microsoft.EventHub/namespaces|OperationalLogs|运行日志|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|自动缩放日志|
@@ -233,7 +235,6 @@ ms.lasthandoff: 05/20/2017
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Azure Site Recovery 事件|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicatedItems|Azure Site Recovery 复制项|
 |Microsoft.Search/searchServices|OperationLogs|操作日志|
-|Microsoft.ServerManagement/nodes|RequestLogs|请求日志|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|运行日志|
 |Microsoft.StreamAnalytics/streamingjobs|执行|执行|
 |Microsoft.StreamAnalytics/streamingjobs|创作|创作|

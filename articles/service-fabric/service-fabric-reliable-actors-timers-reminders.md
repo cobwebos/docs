@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/10/2017
+ms.date: 06/29/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 9d22438c6ca14ddb8843f4b72cae40e3b622e849
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 06b026ce06e0f16a77ac238de0af2263f272933c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -228,10 +229,7 @@ CompletableFuture reminderUnregistration = unregisterReminderAsync(reminder);
 如上所示， `UnregisterReminderAsync`(C#) 或 `unregisterReminderAsync`(Java) 方法接受 `IActorReminder`(C#) 或 `ActorReminder`(Java) 接口。 执行组件基类支持 `GetReminder`(C#) 或 `getReminder`(Java) 方法，该方法可用于通过传入提醒名称来检索 `IActorReminder`(C#) 或 `ActorReminder`(Java) 接口。 这十分方便，因为执行组件无需保存从 `RegisterReminder`(C#) 或 `registerReminder`(Java) 方法调用返回的 `IActorReminder`(C#) 或 `ActorReminder`(Java) 接口。
 
 ## <a name="next-steps"></a>后续步骤
+了解 Reliable Actor 事件和可重入性：
 * [执行组件事件](service-fabric-reliable-actors-events.md)
 * [执行组件可重入性](service-fabric-reliable-actors-reentrancy.md)
-* [执行组件诊断和性能监视](service-fabric-reliable-actors-diagnostics.md)
-* [执行组件 API 参考文档](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# 代码示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java 代码示例](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 

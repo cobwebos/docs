@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/07/2017
+ms.date: 07/02/2017
 ms.author: msfussell;mikhegn
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: d967d70c7fad45f7a10a5288623440491dcfffa3
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: b71723034e5f663986c49481072bfd6779d3d57b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/07/2017
 
 虽然本演练演示的是如何部署将 MongoDB 用作数据存储并具有 Node.js 前端的应用程序，但是你可以将这些步骤套用于任何与另一个应用程序具有依赖关系的应用程序。   
 
-可以使用 Visual Studio 生成包含多个来宾可执行文件的应用程序包。 请参阅[使用 Visual Studio 打包现有应用程序](service-fabric-deploy-existing-app.md#use-visual-studio-to-package-an-existing-executable)。 添加第一个来宾可执行文件后，右键单击应用程序项目，然后依次选择**“添加”->“新建 Service Fabric 服务”**，将第二个来宾可执行文件项目添加到解决方案中。 请注意，如果选择在 Visual Studio 项目中链接源，在生成的 Visual Studio 解决方案中可确保应用程序包与源中的更改保持同步。 
+可以使用 Visual Studio 生成包含多个来宾可执行文件的应用程序包。 请参阅[使用 Visual Studio 打包现有应用程序](service-fabric-deploy-existing-app.md)。 添加第一个来宾可执行文件后，右键单击应用程序项目，然后依次选择**“添加”->“新建 Service Fabric 服务”**，将第二个来宾可执行文件项目添加到解决方案中。 请注意，如果选择在 Visual Studio 项目中链接源，在生成的 Visual Studio 解决方案中可确保应用程序包与源中的更改保持同步。 
 
 ## <a name="samples"></a>示例
 * [打包和部署来宾可执行文件的示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)

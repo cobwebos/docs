@@ -2,7 +2,7 @@
 title: "Azure 监视器合作伙伴集成 | Microsoft Docs"
 description: "了解 Azure 监视器的合作伙伴，以及如何访问相关文档，以便与它们的产品集成。"
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -15,11 +15,10 @@ ms.topic: article
 ms.date: 5/9/2017
 ms.author: johnkem
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 18a45dd16e51e477758c3ba08f936a2e831dddb3
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 5914e8be1cf2671da7af1d190811e0e809039135
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
@@ -67,10 +66,7 @@ Datadog 是适用于云规模应用程序的全球领先监视服务，将服务
 [查看相关文档。][datadog-doc]
 
 ## <a name="dynatrace"></a>Dynatrace
-Dynatrace OneAgent 通过相应的 Azure 扩展机制来与 Azure VM 和应用服务集成。
-这样，便可以收集有关主机、网络和服务的性能指标。
-除了显示指标以外，还可以端到端地将环境可视化，显示从客户端到数据库层的事务。
-基于 AI 的问题关联与完全集成的根本原因分析（包括代码和数据库的方法级洞察），简化了故障排除和性能优化工作。
+Dynatrace OneAgent 通过相应的 Azure 扩展机制来与 Azure VM 和应用服务集成。 这样，Dynatrace OneAgent 便可以收集有关主机、网络和服务的性能指标。 除了显示指标以外，Dynatrace 还可以实现环境的端到端可视化，显示从客户端到数据库层的事务。 基于 AI 的问题关联与完全集成的根本原因分析（包括代码和数据库的方法级洞察），简化了故障排除和性能优化工作。
 
 [查看相关文档。][dynatrace-doc]
 
@@ -148,7 +144,7 @@ Sumo Logic 是一项安全的云本机计算机数据分析服务，可实时、
 [cloudmonix-doc]: http://cloudmonix.com/features/azure-management/ "CloudMonix 简介。"
 [cloudyn-doc]: https://www.cloudyn.com/azure-monitoring "Cloudyn 简介。"
 [datadog-doc]: http://docs.datadoghq.com/integrations/azure/ "Datadog 文档。"
-[dynatrace-doc]: https://blog.ruxit.com/ruxit-monitoring-azure-web-apps/ "Dynatrace 文档。"
+[dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dynatrace 文档。"
 [newrelic-doc]: https://newrelic.com/azure "NewRelic 文档。"
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie 文档。"
 [pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty 文档。"

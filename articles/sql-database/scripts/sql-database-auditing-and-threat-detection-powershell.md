@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell 脚本 - 配置数据库审核和威胁检测 | Microsoft 文档"
-description: "Azure PowerShell 脚本示例 - 使用 PowerShell 配置 SQL 数据库审核和威胁检测"
+title: "PowerShell 示例-审核-威胁检测-Azure SQL 数据库 | Microsoft Docs"
+description: "在 Azure SQL 数据库中配置审核和威胁检测的 Azure PowerShell 示例脚本"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -14,19 +14,19 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 05/23/2017
+ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 5bb1f0b4b6e548cf4164dae55d13cbebb660232f
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 228772ff6710596c916165a132db31f449d0a327
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="configure-sql-database-auditing-and-threat-detection-using-powershell"></a>使用 PowerShell 配置 SQL 数据库审核和威胁检测
+# <a name="use-powershell-to-configure-sql-database-auditing-and-threat-detection"></a>使用 PowerShell 配置 SQL 数据库审核和威胁检测
 
-此示例 PowerShell 脚本配置 SQL 数据库审核和威胁检测。 
+此 PowerShell 脚本示例配置 SQL 数据库审核和威胁检测。 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 

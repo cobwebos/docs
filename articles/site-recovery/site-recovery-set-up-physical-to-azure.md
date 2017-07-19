@@ -11,21 +11,21 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: backup-recovery
-ms.date: 06/05/2017
+ms.workload: storage-backup-recovery
+ms.date: 06/29/2017
 ms.author: anoopkv
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f849ea027022cc753bf818d7980170b5875221f0
-ms.openlocfilehash: 47431f934f092ea7c614599b6c8e3fe3a946a955
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 49b9d2e21dbcb612828a25f21ed4382327d6f64c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/13/2017
+ms.lasthandoff: 06/30/2017
 
 ---
 
 # <a name="set-up-the-source-environment-physical-server-to-azure"></a>设置源环境（物理服务器到 Azure）
 > [!div class="op_single_selector"]
-> * [VMware 虚拟机](./site-recovery-set-up-vmware-to-azure.md)
-> * [物理服务器](./site-recovery-set-up-physical-to-azure.md)
+> * [VMware 到 Azure](./site-recovery-set-up-vmware-to-azure.md)
+> * [物理机到 Azure](./site-recovery-set-up-physical-to-azure.md)
 
 本文介绍如何设置本地环境，以便开始将运行 Windows 或 Linux 的物理服务器复制到 Azure。
 

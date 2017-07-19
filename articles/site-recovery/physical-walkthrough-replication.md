@@ -1,0 +1,48 @@
+---
+title: "创建复制策略以便使用 Azure Site Recovery 将物理服务器复制到 Azure | Microsoft Docs"
+description: "总结了创建复制策略以便使用 Azure Site Recovery 服务将本地物理服务器复制到 Azure 的必要步骤"
+services: site-recovery
+documentationcenter: 
+author: rayne-wiselman
+manager: carmonm
+editor: 
+ms.assetid: d7874bd8-6626-4668-9ec9-dbd2d26f8f81
+ms.service: site-recovery
+ms.workload: storage-backup-recovery
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 06/27/2017
+ms.author: raynew
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 9ce23382001b54e7b9b7a58b8dd9aa61b400826d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/29/2017
+
+
+---
+# <a name="step-8-set-up-a-replication-policy-for-physical-server-replication-to-azure"></a>第 8 步：创建复制策略以便将物理服务器复制到 Azure
+
+
+本文介绍了如何创建复制策略，以便在 Azure 门户中使用 [Azure Site Recovery](site-recovery-overview.md) 服务将 Windows/Linux 物理服务器复制到 Azure。
+
+
+请将评论和问题发布到这篇文章的底部，或者发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)。
+
+
+## <a name="configure-a-policy"></a>配置策略
+
+1. 依次单击“Site Recovery 基础结构” > “复制策略” > “+复制策略”。
+2. 在“创建复制策略”中指定策略名称。
+3. 在“RPO 阈值”中：指定 RPO 限制。 此值表示多久创建一次数据恢复点。 如果连续复制超出此限制，将生成警报。
+4. 在“恢复点保留期”中，针对每个恢复点指定保留期窗口的长度（以小时为单位）。 可以将复制的虚拟机恢复到窗口中的任何点。 复制到高级存储的计算机最多支持 24 小时的保留期，复制到标准存储的计算机最多支持 72 小时的保留期。
+5. 在“应用一致性快照频率”中，指定创建包含应用程序一致性快照的恢复点的频率（以分钟为单位）。 单击“确定”创建该策略。
+
+    ![复制策略](./media/physical-walkthrough-replication/gs-replication2.png)
+8. 当你创建新策略时，该策略将自动与配置服务器关联。 默认情况下将自动创建一个匹配策略以用于故障回复。 例如，如果复制策略是 **rep-policy**，则故障回复策略将是 **rep-policy-failback**。 你从 Azure 启动故障回复之前，不会使用此策略。
+
+## <a name="next-steps"></a>后续步骤
+
+转到[第 9 步：安装 Mobility Service](physical-walkthrough-install-mobility.md)
+

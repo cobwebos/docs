@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/05/2017
+ms.date: 06/29/2017
 ms.author: anoopkv
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: cceda131fc9eaa74f6328c8dd68a8e3885877061
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 479bbd207bcf715138c340f9e4d2634120bab85c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 06/30/2017
 
 ---
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 05/02/2017
 故障回复期间，如果 Azure 虚拟网络与本地网络之间存在高延迟，建议将进程服务器部署在 Azure 中。 本指南介绍如何设置、配置和管理在 Azure 中运行的进程服务器。
 
 > [!NOTE]
-> 如果在故障转移期间使用了经典部署模型作为虚拟机的部署模型，则要使用本文。 如果使用了资源管理器部署模型作为部署模型，请按照[如何设置和配置故障回复进程服务器（资源管理器）](./site-recovery-vmware-setup-azure-ps-resource-manager.md)中的步骤进行操作
+> 如果在故障转移期间使用了经典部署模型作为虚拟机的部署模型，则要使用本文。 如果使用了 Resource Manager 部署模型作为部署模型，请按照[如何设置和配置故障回复进程服务器（Resource Manager）](./site-recovery-vmware-setup-azure-ps-resource-manager.md)中的步骤进行操作
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 06/23/2017
 ms.author: raprasa
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 11e60ab8dfada4b8b0e1cd73ca60dc428364dc68
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: a438b5079ae48c82fb2dbd5ce4547302364e0ef5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/26/2017
 
 
 ---
@@ -51,8 +51,9 @@ Cosmos DB 旨在进行[全球分布](distribute-data-globally.md) - 允许跨多
 ![GRS Azure 存储中所有 Cosmos DB 实体的定期完整备份](./media/online-backup-and-restore/automatic-backup.png)
 
 ## <a name="retention-period-for-a-given-snapshot"></a>给定屏幕快照的保留期
-如上面所述，我们将定期拍摄数据和每个合规性规则的屏幕快照，并将最新屏幕快照保留最多 90 天，最后将清除。 如果删除容器或帐户，Cosmos DB 会将最后一次备份内容保留 90 天。
+如上所述，每 4 小时生成一次数据快照，最后两个快照的保持期为 30 天。 根据我们的符合性规定，将在 90 天后清除快照。
 
+若要保留自己的快照，可以使用 Azure Cosmos DB [数据迁移工具](import-data.md#export-to-json-file)中的“导出到 JSON”选项，计划其他备份。 
 
 ## <a name="restore-database-from-the-online-backup"></a>从联机备份还原数据库
 如果意外删除了数据，可以 [file a support ticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)（提交支持票证）或[联系 Azure 支持](https://azure.microsoft.com/support/options/)，从上一次自动备份中还原数据。 对于要还原备份的特定屏幕快照，Cosmos DB 要求数据至少在该屏幕快照的备份周期持续时间内可用。

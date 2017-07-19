@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/21/2017
 ms.author: cynthn
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: de8ffb5ef81ac9ef4a9217f275f2c96973948eb1
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: d32980f05ad17a76793021d0a5355d597974a4e4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -34,7 +35,10 @@ ms.lasthandoff: 05/17/2017
 > * 列出订阅中的所有映像
 > * 删除映像
 
-本教程需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 还可以通过浏览器使用 [Cloud Shell](/azure/cloud-shell/quickstart)。
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -73,13 +77,13 @@ exit
 
 若要创建映像，需要解除分配 VM。 使用 [az vm deallocate](/cli//azure/vm#deallocate) 解除分配 VM。 
    
-```azurecli
+```azurecli-interactive 
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
 最后，使用 [az vm generalize](/cli//azure/vm#generalize) 将 VM 的状态设置为“已通用化”，以便 Azure 平台知道已通用化 VM。 只能从通用化 VM 创建映像。
    
-```azurecli
+```azurecli-interactive 
 az vm generalize --resource-group myResourceGroup --name myVM
 ```
 
@@ -87,7 +91,7 @@ az vm generalize --resource-group myResourceGroup --name myVM
 
 现在，可使用 [az image create](/cli//azure/image#create) 创建 VM 的映像。 以下示例从名为“myVM”的 VM 创建名为“myImage”的映像。
    
-```azurecli
+```azurecli-interactive 
 az image create \
     --resource-group myResourceGroup \
     --name myImage \
@@ -98,7 +102,7 @@ az image create \
 
 在具有映像后，便可以使用 [az vm create](/cli/azure/vm#create) 从映像创建一个或多个新 VM。 以下示例从名为“myImage”的映像创建名为“myVMfromImage”的映像。
 
-```azurecli
+```azurecli-interactive 
 az vm create \
     --resource-group myResourceGroup \
     --name myVMfromImage \
@@ -113,14 +117,14 @@ az vm create \
 
 以表格格式按名称列出所有映像。
 
-```azurecli
+```azurecli-interactive 
 az image list \
   --resource-group myResourceGroup
 ```
 
 删除映像。 此示例将从 *myResourceGroup* 中删除名为 *myOldImage* 的映像。
 
-```azurecli
+```azurecli-interactive 
 az image delete \
     --name myOldImage \
     --resource-group myResourceGroup

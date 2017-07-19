@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 4029b699b59bb12eaa9e24b487d2829b5fb26daf
-ms.openlocfilehash: 6780b422138fbe18adfe256e9f7aa279dfed1cd9
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 6d7eeaf460674c3ab98425a5412ffa465b9ffd1d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/30/2017
 
 
 ---
 # <a name="throttling-resource-manager-requests"></a>限制 Resource Manager 请求
-对于每个订阅和租户，Resource Manager 将每小时的读取请求数限制为 15,000 个，将每小时的写入请求数限制为 1,200 个。 如果应用程序或脚本达到这些限制，则需要限制请求。 本主题说明如何在达到限制之前确定剩余的请求数，以及达到限制时如何做出响应。
+对于每个订阅和租户，Resource Manager 将每小时的读取请求数限制为 15,000 个，将每小时的写入请求数限制为 1,200 个。 这些限制适用于每个 Azure Resource Manager 实例；每个 Azure 区域中有多个实例，Azure Resource Manager 部署到所有 Azure 区域。  因此，在实践中，限制实际上比上面列出的要高得多，因为用户请求通常是由多个不同的实例提供服务。
+
+如果应用程序或脚本达到这些限制，则需要限制请求。 本主题说明如何在达到限制之前确定剩余的请求数，以及达到限制时如何做出响应。
 
 达到限制时，你会收到 HTTP 状态代码“429 请求过多”。
 
@@ -38,10 +42,10 @@ ms.openlocfilehash: 6780b422138fbe18adfe256e9f7aa279dfed1cd9
 | x-ms-ratelimit-remaining-subscription-writes |划归到订阅的剩余写入数 |
 | x-ms-ratelimit-remaining-tenant-reads |划归到租户的剩余读取数 |
 | x-ms-ratelimit-remaining-tenant-writes |划归到租户的剩余写入数 |
-| x-ms-ratelimit-remaining-subscription-resource-requests |划归到订阅的剩余资源请求类型数。<br /><br />仅当服务重写了默认限制时，才返回此标头值。 Resource Manager 将累加此值而不是订阅读取/写入数。 |
-| x-ms-ratelimit-remaining-subscription-resource-entities-read |划归到订阅的剩余资源请求集合数。<br /><br />仅当服务重写了默认限制时，才返回此标头值。 此值提供剩余集合请求数（列出资源）。 |
-| x-ms-ratelimit-remaining-tenant-resource-requests |划归到租户的剩余资源请求类型数。<br /><br />仅当服务重写了默认限制时，才为租户级别的请求添加此标头。 Resource Manager 将累加此值而不是租户读取/写入数。 |
-| x-ms-ratelimit-remaining-tenant-resource-entities-read |划归到租户的剩余资源请求集合数。<br /><br />仅当服务重写了默认限制时，才为租户级别的请求添加此标头。 |
+| x-ms-ratelimit-remaining-subscription-resource-requests |划归到订阅的剩余资源类型请求数。<br /><br />仅当服务重写了默认限制时，才返回此标头值。 Resource Manager 将累加此值而不是订阅读取/写入数。 |
+| x-ms-ratelimit-remaining-subscription-resource-entities-read |划归到订阅的剩余资源类型集合请求数。<br /><br />仅当服务重写了默认限制时，才返回此标头值。 此值提供剩余集合请求数（列出资源）。 |
+| x-ms-ratelimit-remaining-tenant-resource-requests |划归到租户的剩余资源类型请求数。<br /><br />仅当服务重写了默认限制时，才为租户级别的请求添加此标头。 Resource Manager 将累加此值而不是租户读取/写入数。 |
+| x-ms-ratelimit-remaining-tenant-resource-entities-read |划归到租户的剩余资源类型集合请求数。<br /><br />仅当服务重写了默认限制时，才为租户级别的请求添加此标头。 |
 
 ## <a name="retrieving-the-header-values"></a>检索标头值
 检索代码或脚本中的这些标头值与检索任何标头值没有什么不同。 
@@ -109,9 +113,4 @@ silly: returnObject
 
 * 有关限制和配额的详细信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md)。
 * 若要了解如何处理异步 REST 请求，请参阅[跟踪异步 Azure 操作](resource-manager-async-operations.md)。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

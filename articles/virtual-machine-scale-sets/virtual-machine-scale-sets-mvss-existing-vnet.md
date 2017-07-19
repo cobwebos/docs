@@ -1,5 +1,5 @@
 ---
-title: "引用 Azure 规模集模板中的虚拟网络 | Microsoft Docs"
+title: "在 Azure 规模集模板中引用现有虚拟网络 | Microsoft Docs"
 description: "如何将虚拟网络添加到现有 Azure 虚拟机规模集模板"
 services: virtual-machine-scale-sets
 documentationcenter: 
@@ -13,17 +13,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/06/2017
+ms.date: 06/27/2017
 ms.author: negat
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 8e9caf7eebc17682b3204004e3a74331efbd04fb
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 28117d467b491704aed8d45e5eba42530579dfa2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="add-reference-to-a-virtual-network-to-an-azure-scale-set-template"></a>将虚拟网络引用添加到 Azure 规模集模板
+# <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>在 Azure 规模集模板中添加对现有虚拟网络的引用
 
 本文介绍了如何修改[最小可行规模集模板](./virtual-machine-scale-sets-mvss-start.md)，以便部署到现有虚拟网络而非创建新的虚拟网络。
 

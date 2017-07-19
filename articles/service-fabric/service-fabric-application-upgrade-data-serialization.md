@@ -12,19 +12,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/10/2017
+ms.date: 06/29/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d8cc770e863381bcc9dc4417bd2b1f91ac0a34e9
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 6aa3ac7842df4657fca7f6b4264e1c6fe52dc0c6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/01/2017
 
 
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>数据序列化如何影响应用程序升级
-在[应用程序滚动升级](service-fabric-application-upgrade.md)过程中，升级应用于部分节点，一次一个升级域。 在此过程中，一些升级域将位于较新版本的应用程序上，而一些升级域将位于较旧版本的应用程序上。 在滚动更新期间，新版本的应用程序必须能够读取旧版本的数据，并且旧版本的应用程序必须能够读取新版本的数据。 如果数据格式不向前和向后兼容，则升级可能会失败（或更糟），甚至可能丢失数据。 本文介绍数据格式的构成，并提供确保数据向前和向后兼容的最佳实践。
+在[应用程序滚动升级](service-fabric-application-upgrade.md)过程中，升级应用于部分节点，一次一个升级域。 在此过程中，一些升级域位于较新版本的应用程序上，而一些升级域位于较旧版本的应用程序上。 在滚动更新期间，新版本的应用程序必须能够读取旧版本的数据，并且旧版本的应用程序必须能够读取新版本的数据。 如果数据格式不向前和向后兼容，则升级可能会失败（或更糟），甚至可能丢失数据。 本文介绍数据格式的构成，并提供确保数据向前和向后兼容的最佳实践。
 
 ## <a name="what-makes-up-your-data-format"></a>数据格式由哪些部分构成？
-在 Azure Service Fabric 中，保留和复制的数据来自于你的 C# 类。 对于使用 [Reliable Collections](service-fabric-reliable-services-reliable-collections.md) 的应用程序，它是可靠词典和队列中的对象。 对于使用 [Reliable Actors](service-fabric-reliable-actors-introduction.md) 的应用程序，它是执行组件的备用状态。 这些 C# 类必须可序列化，以进行保留和复制。 因此，数据格式由已序列化的字段和属性及其序列化方式定义。 例如，在 `IReliableDictionary<int, MyClass>` 中，数据是一个序列化的 `int` 和一个序列化的 `MyClass`。
+在 Azure Service Fabric 中，保留和复制的数据来自于你的 C# 类。 对于使用 [Reliable Collections](service-fabric-reliable-services-reliable-collections.md) 的应用程序，此数据是可靠词典和队列中的对象。 对于使用 [Reliable Actors](service-fabric-reliable-actors-introduction.md) 的应用程序，它是执行组件的备用状态。 这些 C# 类必须可序列化，以进行保留和复制。 因此，数据格式由已序列化的字段和属性及其序列化方式定义。 例如，在 `IReliableDictionary<int, MyClass>` 中，数据是一个序列化的 `int` 和一个序列化的 `MyClass`。
 
 ### <a name="code-changes-that-result-in-a-data-format-change"></a>导致数据格式更改的代码更改
 由于数据格式由 C# 类确定，所以对类进行更改可能会导致数据格式更改。 必须格外小心，以确保滚动升级可以处理数据格式更改。 可能会导致数据格式更改的示例：
@@ -55,17 +57,12 @@ ms.openlocfilehash: d8cc770e863381bcc9dc4417bd2b1f91ac0a34e9
 ## <a name="next-steps"></a>后续步骤
 [使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)逐步讲解了如何使用 Visual Studio 进行应用程序升级。
 
-[使用 PowerShell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)逐步讲解了如何使用 PowerShell 进行应用程序升级。
+[使用 Powershell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)逐步讲解了如何使用 PowerShell 进行应用程序升级。
 
 使用[升级参数](service-fabric-application-upgrade-parameters.md)来控制应用程序的升级方式。
 
 参考[高级主题](service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。
 
 参考[对应用程序升级进行故障排除](service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

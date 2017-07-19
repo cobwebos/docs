@@ -12,11 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/10/2017
+ms.date: 06/29/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: eddca02c4fba88aee667216568beecc76ea65d7c
-ms.openlocfilehash: def92885587b11ce8275292680a524d0c8e31751
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 4ab1f83e88b262b1752300b2786340d9abca8154
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -26,7 +28,7 @@ ms.openlocfilehash: def92885587b11ce8275292680a524d0c8e31751
 ## <a name="cloud-service-project-to-service-fabric-application-project"></a>云服务项目到 Service Fabric 应用程序项目
  云服务项目和 Service Fabric 应用程序项目结构类似，两者都可代表应用程序的部署单位，也就是说，两者各自定义可在部署后运行应用程序的完整包。 云服务项目包含一个或多个 Web 角色和辅助角色。 同理，Service Fabric 应用程序项目包含一个或多个服务。 
 
-两者的差别在于，云服务项目结合应用程序部署与 VM 部署，因此其中包含 VM 配置设置，而 Service Fabric 应用程序项目只定义将要部署到 Service Fabric 群集中一组现有 VM 的应用程序。 Service Fabric 群集本身只可通过 ARM 模板或 Azure 门户部署一次，但可在群集中部署多个 Service Fabric 应用程序。
+两者的差别在于，云服务项目结合应用程序部署与 VM 部署，因此其中包含 VM 配置设置，而 Service Fabric 应用程序项目只定义将要部署到 Service Fabric 群集中一组现有 VM 的应用程序。 Service Fabric 群集本身只可通过 Resource Manager 模板或 Azure 门户部署一次，但可在群集中部署多个 Service Fabric 应用程序。
 
 ![Service Fabric 与云服务项目的比较][3]
 
@@ -260,9 +262,4 @@ Service Fabric 中的启动入口点是在 ServiceManifest.xml 中针对每个�
 <!--Image references-->
 [3]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/service-fabric-cloud-service-projects.png
 [4]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/worker-role-to-stateless-service.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

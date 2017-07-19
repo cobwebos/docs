@@ -14,13 +14,13 @@ ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/20/2017
+ms.date: 06/13/2017
 ms.author: daleche
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 608cbc0fd1cc1d73d28056909ed06618457bd9c0
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: ae081fc0432e36bf9f4d4f06f289386ddce37990
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/10/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -40,7 +40,7 @@ ms.lasthandoff: 04/10/2017
 你将重试 SQL 连接或重新建立连接，具体取决于以下各项：
 
 * **在尝试连接期间发生暂时性错误**：应该延迟数秒后再重试连接。
-* **执行某个 SQL 查询命令期间发生暂时性错误**：不应该立即重试该命令。 而应在一定的延迟之后建立新的连接。 然后可以重试该命令。
+* **执行 SQL 查询命令期间发生暂时性错误**：不得立即重试命令。 而应在一定的延迟之后建立新的连接。 然后可以重试该命令。
 
 <a id="j-retry-logic-transient-faults" name="j-retry-logic-transient-faults"></a>
 
@@ -53,10 +53,10 @@ ms.lasthandoff: 04/10/2017
 
 #### <a name="principles-for-retry"></a>重试原则
 * 如果错误是暂时性的，则应重新尝试打开连接。
-* 不应直接重试由于暂时性错误而失败的 SQL SELECT 语句。
+* 不得直接重试无法执行且出现暂时性错误的 SQL SELECT 语句。
   
   * 而是建立新的连接，然后重试 SELECT。
-* SQL UPDATE 语句由于暂时性错误而失败时，应该先建立新的连接，再重试 UPDATE。
+* 如果 SQL UPDATE 语句无法执行且出现暂时性错误，应先建立新连接，再重试 UPDATE。
   
   * 重试逻辑必须确保整个数据库事务完成，或整个事务已回滚。
 
@@ -157,7 +157,7 @@ ms.lasthandoff: 04/10/2017
 <a id="c-connection-string" name="c-connection-string"></a>
 
 ### <a name="connection-connection-string"></a>连接：连接字符串
-连接到 Azure SQL 数据库所需的连接字符串与连接到 Microsoft SQL Server 所需的字符串稍有不同。 可以从 [Azure 门户](https://portal.azure.com/)复制数据库的连接字符串。
+连接到 Azure SQL 数据库所需的连接字符串与连接到 Microsoft SQL Server 所需的字符串稍有不同。 可以通过 [Azure 门户](https://portal.azure.com/)复制数据库的连接字符串。
 
 [!INCLUDE [sql-database-include-connection-string-20-portalshots](../../includes/sql-database-include-connection-string-20-portalshots.md)]
 

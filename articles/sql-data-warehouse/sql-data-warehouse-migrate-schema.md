@@ -16,20 +16,52 @@ ms.custom: migrate
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
 ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 0630f43642a0be98c470032d32b74ca14ee144e5
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 07ca2321852e276502187e768177e7e82bdfd080
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
-# <a name="migrate-your-schema-to-sql-data-warehouse"></a>将架构迁移到 SQL 数据仓库
-以下摘要有助于理解 SQL Server 与 SQL 数据仓库之间的差异，方便用户迁移数据库。
+# <a name="migrate-your-schemas-to-sql-data-warehouse"></a>将架构迁移到 SQL 数据仓库
+有关如何将 SQL 架构迁移到 SQL 数据仓库的指南。 
 
-## <a name="table-migration"></a>表迁移
-在迁移表时，需熟悉 SQL 数据仓库表的表功能。  建议首先参阅[表概述][table overview]。  本文介绍了在创建表（例如表统计信息、分布、分区和索引）时需要考虑的最重要事项。  同时还介绍了一些[不支持的表功能][unsupported table features]和解决方法。
+## <a name="plan-your-schema-migration"></a>计划架构迁移
 
-SQL 数据仓库支持常见的业务数据类型。  请参阅[数据类型][data types]一文，了解受支持和[不支持的数据类型][unsupported data types]的列表。  [数据类型][data types]一文还包含一个用于识别[不支持的数据类型][unsupported data types]的查询。  转换数据类型时，请确保参阅[数据类型最佳实践][data type best practices]。
+计划迁移时，请参阅[表概述][table overview]，熟悉表设计注意事项，如统计、分布、分区和索引。  其中还列出了一些[不支持的表功能][unsupported table features]及其解决方法。
+
+## <a name="use-user-defined-schemas-to-consolidate-databases"></a>使用用户定义的架构合并数据库
+
+现有工作负载可能包含多个数据库。 例如，SQL Server 数据仓库可能包含临时数据库、数据仓库数据库和一些数据市场数据库。 在此拓扑中，每个数据库都作为独立的工作负载运行，并单独采用安全策略。
+
+相比之下，SQL 数据仓库在一个数据库中运行整个数据仓库工作负荷。 不允许跨数据库联接。 因此，SQL 数据仓库应将数据仓库使用的所有表都存储在一个数据库中。
+
+建议使用用户定义的架构，将现有工作负载合并到一个数据库中。 有关示例，请参阅[用户定义的架构](sql-data-warehouse-develop-user-defined-schemas.md)
+
+## <a name="use-compatible-data-types"></a>使用兼容的数据类型
+将数据类型修改为与 SQL 数据仓库兼容。 有关支持和不支持的数据类型的列表，请参阅[数据类型][data types]。 此主题介绍了不支持数据类型对应的解决方法。 此外，还可以在其中执行查询，以确定 SQL 数据仓库不支持的现有类型。
+
+## <a name="minimize-row-size"></a>最大限度地降低行大小
+为实现最佳性能，请最大限度地缩短表行长度。 由于行长度越短，性能就越高，因此请使用适用于数据的最小数据类型。 
+
+对于表行的宽度，PolyBase 设定的上限为 1MB。  如果打算使用 PolyBase 将数据加载到 SQL 数据仓库中，请将表更新为最大行宽不超过 1MB。 
+
+<!--
+- For example, this table uses variable length data but the largest possible size of the row is still less than 1 MB. PolyBase will load data into this table.
+
+- This table uses variable length data and the defined row width is less than one MB. When loading rows, PolyBase allocates the full length of the variable-length data. The full length of this row is greater than one MB.  PolyBase will not load data into this table.  
+
+-->
+
+## <a name="specify-the-distribution-option"></a>指定分布选项
+SQL 数据仓库是分布式数据库系统。 每个表都是跨计算节点进行分布或复制。 可以使用表选项来指定如何分布数据。 这些选项包括“轮循机制”、“已复制”或“已哈希分布”。 每个选项都有各自的利与弊。 如果不指定分布选项，SQL 数据仓库将使用“轮循机制”这一默认选项。
+
+- “轮循机制”为默认选项。 此选项最易于使用，并能尽快加载数据，但需要移动数据才能执行联接，这会降低查询性能。
+- “已复制”在每个计算节点上存储表的副本。 复制的表性能优异，因为无需移动数据，即可执行联接和聚合。 不过，此类表需要有额外的存储空间，因此最适合小型表。
+- “已哈希分布”通过哈希函数跨所有节点分布行。 哈希分布式表是 SQL 数据仓库的核心，因为它们旨在确保大型表具有高查询性能。 若要使用此选项，需要进行一些计划，以选择最适合对其分布数据的列。 不过，如果没有第一时间选择最适合的列，可以轻松地对其他列重新分布数据。 
+
+若要选择最适合每个表的分布选项，请参阅[分布式表](sql-data-warehouse-tables-distribute.md)。
+
 
 ## <a name="next-steps"></a>后续步骤
 成功将数据库架构迁移到 SQL 数据仓库后，请继续阅读下列文章之一：
@@ -49,7 +81,6 @@ SQL 数据仓库支持常见的业务数据类型。  请参阅[数据类型][da
 [unsupported table features]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
 [data types]: ./sql-data-warehouse-tables-data-types.md
 [unsupported data types]: ./sql-data-warehouse-tables-data-types.md#unsupported-data-types
-[data type best practices]: ./sql-data-warehouse-tables-data-types.md#data-type-best-practices
 
 <!--MSDN references-->
 

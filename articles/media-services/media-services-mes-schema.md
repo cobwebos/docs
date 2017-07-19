@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/12/2017
+ms.date: 06/12/2017
 ms.author: juliako
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: b35390c6eb912db966648bff4efb59cece2837b3
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: f8e6e1da776d680d48737ecb5ac7b9319901f121
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -56,13 +56,21 @@ ms.lasthandoff: 05/16/2017
 | Name | 类型 | 说明 |
 | --- | --- | --- |
 | **TwoPass**<br/><br/> minOccurs=“0” |**xs: boolean** |目前，仅支持单步编码。 |
-| **KeyFrameInterval**<br/><br/> minOccurs=“0”<br/><br/> **默认值 =“00:00:02”** |**xs: time** |确定 IDR 帧之间的（默认）间距。 |
+| **KeyFrameInterval**<br/><br/> minOccurs=“0”<br/><br/> **默认值 =“00:00:02”** |**xs: time** |确定 IDR 帧的固定间距（以秒为单位）。 亦称为“GOP 持续时间”。 请参阅下面的 **SceneChangeDetection**，此元素用于控制编码器能否偏离此值。 |
 | **SceneChangeDetection**<br/><br/> minOccurs=“0”<br/><br/> 默认值 =“false” |**xs: boolean** |如果设置为 true，编码器尝试在视频中检测场景更改，并插入 IDR 帧。 |
 | **复杂性**<br/><br/> minOccurs=“0”<br/><br/> 默认值 =“平衡” |**xs:string** |控制编码速度和视频质量之间的平衡。 可能是以下值之一：**速度****平衡**或**质量**<br/><br/> 默认值：**平衡** |
 | **SyncMode**<br/><br/> minOccurs=“0” | |将在未来版本中公开功能。 |
 | **H264Layers**<br/><br/> minOccurs=“0” |[H264Layers](media-services-mes-schema.md#H264Layers) |输出视频层的集合。 |
 
+### <a name="attributes"></a>属性
+| Name | 类型 | 说明 |
+| --- | --- | --- |
+| **条件** |**xs:string** | 当输入不包含视频时，建议强制编码器插入单色视频轨。 为此，请使用 Condition="InsertBlackIfNoVideoBottomLayerOnly"（仅在最低比特率处插入视频）或 Condition="InsertBlackIfNoVideo"（在所有输出比特率处插入视频）。 有关详细信息，请参阅[此](media-services-advanced-encoding-with-mes.md#a-idnovideoainsert-a-video-track-when-input-has-no-video)主题。|
+
 ## <a name="H264Layers"></a> H264Layers
+
+默认情况下，如果向编码器发送仅包含音频而不包含视频的输入，那么输出资产文件仅包含音频数据。 某些播放器可能无法处理此类输出流。 在这种情况下，可使用 H264Video 的 InsertBlackIfNoVideo 属性设置，强制编码器将视频轨添加到输出中。 有关详细信息，请参阅[此](media-services-advanced-encoding-with-mes.md#a-idnovideoainsert-a-video-track-when-input-has-no-video)主题。
+              
 ### <a name="elements"></a>元素
 | Name | 类型 | 说明 |
 | --- | --- | --- |

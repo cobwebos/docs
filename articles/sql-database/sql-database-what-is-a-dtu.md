@@ -17,10 +17,10 @@ ms.workload: NA
 ms.date: 04/13/2017
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: d233bea6d0314f0bda0ebfe6fb310f1c6b1579d1
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: fac947fa153d83b614dc35c3cc0d8e640bfe1c95
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/20/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -45,7 +45,7 @@ ms.lasthandoff: 04/20/2017
 ![SQL 数据库简介：按层和级别统计的单一数据库 DTU](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
 
 ## <a name="what-are-elastic-database-transaction-units-edtus"></a>弹性数据库事务单位 (eDTU) 的定义
-不需要为 SQL 数据库提供一组始终可用的专用资源 (DTU)（无论是否需要），可将数据库放在 SQL 数据库服务器上的[弹性池](sql-database-elastic-pool.md)中，该服务器在这些数据库之间共享资源池。 弹性池中的共享资源用弹性数据库事务单位或 eDTU 度量。 弹性池是一种简单的低成本高效益的解决方案，用于管理使用模式变化很大且不可预测的多个数据库的性能目标。 在弹性池中，可以确保不会出现一个数据库使用池中所有资源的情况，并且确保弹性池中的数据库始终可以使用最少的资源量。 有关详细信息，请参阅 [弹性池和服务层](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) 。
+不需要为 SQL 数据库提供一组始终可用的专用资源 (DTU)（无论是否需要），可将数据库放在 SQL 数据库服务器上的[弹性池](sql-database-elastic-pool.md)中，该服务器在这些数据库之间共享资源池。 弹性池中的共享资源用弹性数据库事务单位或 eDTU 度量。 弹性池是一种简单的低成本高效益的解决方案，用于管理使用模式变化很大且不可预测的多个数据库的性能目标。 在弹性池中，可以确保不会出现一个数据库使用池中所有资源的情况，并且确保弹性池中的数据库始终可以使用最少的资源量。 有关详细信息，请参阅[弹性池](sql-database-elastic-pool.md)。
 
 ![SQL 数据库简介：按层和级别统计的 eDTU](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 

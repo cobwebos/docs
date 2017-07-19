@@ -12,11 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/04/2017
+ms.date: 06/29/2017
 ms.author: abhisram
-translationtype: Human Translation
-ms.sourcegitcommit: 3ed67788fbbe0c4fb820cfd1525d8c9ee5154446
-ms.openlocfilehash: 1a8a36d3b6f14c75965afca970be808015059dbb
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 1c53a6bbe0152f6f2b9666e6059af7c6d02e481f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -116,7 +118,7 @@ Reliable Actors 运行时发布与并发相关的以下性能计数器。
 
 | 类别名称 | 计数器名称 | 说明 |
 | --- | --- | --- |
-| Service Fabric 执行组件 |# 稍后将获取执行组件锁定的执行组件调用数 |等待获取强制执行基于轮次的并发的每个执行组件锁的待处理执行组件调用次数。 |
+| Service Fabric 执行组件 |等待角色锁定的角色调用数 |等待获取强制执行基于轮次的并发的每个执行组件锁的待处理执行组件调用次数。 |
 | Service Fabric 执行组件 |每个锁等待的平均毫秒数 |获取强制执行基于轮次的并发的每个执行组件锁所用的时间（以毫秒为单位） |
 | Service Fabric 执行组件 |持有执行组件锁的平均毫秒数 |持有每个执行组件锁的时间（以毫秒为单位） |
 
@@ -162,7 +164,7 @@ Reliable Actors 运行时发布以下与执行组件激活和停用相关的性�
 
 | 类别名称 | 计数器名称 | 说明 |
 | --- | --- | --- |
-| Service Fabric 执行组件 |# 未完成的请求数 |正在服务中处理的请求数 |
+| Service Fabric 执行组件 |未完成的请求数 |正在服务中处理的请求数 |
 | Service Fabric 执行组件 |每个请求的平均毫秒数 |服务处理请求所用时间（以毫秒为单位） |
 | Service Fabric 执行组件 |反序列化请求的平均毫秒数 |当服务收到执行组件请求消息时对此请求消息进行反序列化所用的时间（以毫秒为单位） |
 | Service Fabric 执行组件 |序列化响应的平均毫秒数 |在将响应发送到客户端之前，在服务中序列化执行组件响应消息所用的时间（以毫秒为单位） |
@@ -172,9 +174,4 @@ Reliable Actors 运行时发布以下与执行组件激活和停用相关的性�
 * [执行组件 API 参考文档](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [代码示例](https://github.com/Azure/servicefabric-samples)
 * [PerfView 中的 EventSource 提供程序](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/24/2017
 ms.author: shlo
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 2748838279462a493983c397454cbcf13b2a82e6
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 1946fba8dd94d0b2815550e3825b092c1c6289ec
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/29/2017
 
 
 ---
@@ -37,6 +38,9 @@ ms.lasthandoff: 03/14/2017
 可使用 HDInsightStreamingActivity 活动调用 Azure 数据工厂管道中的 Hadoop Streaming 作业。 以下 JSON 片段显示在管道 JSON 文件中使用 HDInsightStreamingActivity 的语法。 
 
 数据工厂[管道](data-factory-create-pipelines.md)中的 HDInsight Streaming 活动将在[你自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或基于 Windows/Linux 的[按需](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 HDInsight Streaming 程序。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
+
+> [!NOTE] 
+> 如果是刚开始接触 Azure 数据工厂，请仔细阅读 [Azure 数据工厂简介](data-factory-introduction.md)，并学习[教程：生成首个数据管道](data-factory-build-your-first-pipeline.md)，然后再阅读本文。 
 
 ## <a name="json-sample"></a>JSON 示例
 HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt) 自动填充。 默认情况下，HDInsight 群集所用的容器名称就是群集本身的名称。 例如，如果群集名称为 myhdicluster，则关联的 blob 容器名称也是 myhdicluster。 
@@ -58,7 +62,7 @@ HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt
                         "<nameofthecluster>/example/apps/wc.exe",
                         "<nameofthecluster>/example/apps/cat.exe"
                     ],
-                    "fileLinkedService": "StorageLinkedService",
+                    "fileLinkedService": "AzureStorageLinkedService",
                     "getDebugInfo": "Failure"
                 },
                 "outputs": [
@@ -98,7 +102,7 @@ HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt
 7. 在“filePaths”部分，指定映射器和减压器可执行文件的路径。 在此示例中：blob 容器为 "adfsample/example/apps/wc.exe"adfsample，文件夹为 example/apps，可执行文件为 wc.exe。
 8. 对于 **fileLinkedService** 属性，指定表示 Azure 存储（包含“filePaths”部分中指定的文件）的 Azure 存储链接服务。
 9. 对于 **arguments** 属性，指定流式处理作业的参数。
-10. **getDebugInfo** 属性是可选元素。 将其设置为“Failure”时，仅针对失败下载日志。 将其设置为“All”时，不考虑执行状态，始终下载日志。
+10. **getDebugInfo** 属性是可选元素。 将其设置为“Failure”时，仅针对失败下载日志。 如果设置为“Always”，将始终下载日志，无论执行状态如何。
 
 > [!NOTE]
 > 如以上示例所示，为 Hadoop Streaming 活动的 **outputs** 属性指定输出数据集。 该数据集仅是推动管道计划所需的一个虚拟数据集。 无需为活动的 **inputs** 属性指定任何输入数据集。  

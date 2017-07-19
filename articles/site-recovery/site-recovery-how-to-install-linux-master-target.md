@@ -12,18 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 06/05/2017
+ms.date: 02/13/2017
 ms.author: ruturajd
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 60102ebb43efc8710f102450df5b98edcb1d4b39
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: c7c50c539149a929b15f50e4b52dc48d92534640
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
 # <a name="how-to-install-a-linux-master-target-server"></a>如何安装 Linux 主目标服务器
 故障转移虚拟机后，可将虚拟机故障回复到本地站点。 若要故障回复，需要在本地站点中重新保护 Azure 中的虚拟机。 对于此过程，需要安装一个本地主目标服务器用于接收流量。 如果受保护的虚拟机是 Windows 虚拟机，则需要安装 Windows 主目标。 对于 Linux 虚拟机，需要安装 Linux 主目标。 请阅读以下步骤，了解如何创建和安装 Linux 主目标。
+
+> [!IMPORTANT]
+> 自 master 目标服务器版本 9.10.0 起，只能在 Ubuntu 16.04 服务器上安装最新的 master 目标服务器。 不允许在 CentOS6.6 服务器上进行新安装。 不过，可以继续使用 9.10.0 版本升级旧版 master 目标服务器。
 
 ## <a name="overview"></a>概述
 本文提供有关安装 Linux 主目标的信息和说明。
@@ -50,99 +53,115 @@ ms.lasthandoff: 05/08/2017
 
 ## <a name="steps-to-deploy-the-master-target-server"></a>部署主目标服务器的步骤
 
-### <a name="install-centos-66-minimal"></a>安装 CentOS 6.6 Minimal
+**安装 Ubuntu 16.04.2 最简版**
 
-使用以下步骤安装 64 位 CentOS 6.6 操作系统：
+请按照以下步骤操作，安装 Ubuntu 16.04.2 64 位操作系统。
 
-1. 通过以下链接选择最接近的镜像，以下载 CentOS 6.6 Minimal 64 位 ISO。
+**第 1 步：**单击以下链接，选择最接近的镜像来下载 Ubuntu 16.04.2 最简版 64 位 ISO
 
-    <http://archive.kernel.org/centos-vault/6.6/isos/x86_64/CentOS-6.6-x86_64-minimal.iso>
+<https://www.ubuntu.com/download/server/thank-you?version=16.04.2&architecture=amd64>
 
-    <http://mirror.symnds.com/distributions/CentOS-vault/6.6/isos/x86_64/CentOS-6.6-x86_64-minimal.iso>
+将 Ubuntu 16.04.2 最简版 64 位 ISO 保存在 DVD 驱动器中，再启动系统。
 
-    <http://bay.uchicago.edu/centos-vault/6.6/isos/x86_64/CentOS-6.6-x86_64-minimal.iso>
+**第 2 步：**选择“英语”作为首选语言，再按 Enter。
 
-    <http://mirror.nsc.liu.se/centos-store/6.6/isos/x86_64/CentOS-6.6-x86_64-minimal.iso>
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image1.png)
 
-    将 CentOS 6.6 Minimal 64 位 ISO 放在 DVD 驱动器中，然后启动系统。
+**第 3 步：**选择“安装 Ubuntu Server”，再按 Enter
 
-    ![“欢迎使用 CentoOS 6.6”对话框](./media/site-recovery-how-to-install-linux-master-target/media/image1.png)
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image2.png)
 
-2. 单击“跳过”忽略媒体测试过程。
+**第 4 步：**选择“英语”作为首选语言，再按 Enter
 
-    ![选择“跳过”忽略媒体测试过程](./media/site-recovery-how-to-install-linux-master-target/media/image2.png)
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image3.png)
 
-3. 在安装程序的欢迎屏幕上单击“下一步”按钮。
+**第 5 步：**在“时区”选项列表中选择相应选项，再按 Enter
 
-    ![安装程序欢迎屏幕上的“下一步”按钮](./media/site-recovery-how-to-install-linux-master-target/media/image3.png)
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image4.png)
 
-4. 选择“英语”作为首选语言，然后单击“下一步”。
+**第 6 步：**选择默认选项“否”，再按 Enter
 
-    ![选择语言](./media/site-recovery-how-to-install-linux-master-target/media/image4.png)
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image5.png)
 
-5. 选择“美国英语”作为键盘布局，然后单击“下一步”。
+**第 7 步：**选择“英语(美国)”作为键盘原产地语言，再按 Enter
 
-    ![选择英语键盘布局](./media/site-recovery-how-to-install-linux-master-target/media/image5.png)
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image6.png)
 
-6. 选择“基本存储设备”，然后单击“下一步”。
+**第 8 步：**选择“英语(美国)”作为键盘布局，再按 Enter
 
-    ![选择存储设备](./media/site-recovery-how-to-install-linux-master-target/media/image6.png)
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image7.png)
 
-7. 此时将显示一条警告消息，指出硬盘驱动器中的现有数据将被删除。 请确保硬盘驱动器中不包含任何重要数据，然后单击“是，丢弃所有数据”。
+**第 9 步：**在“主机名”文本框中输入服务器的主机名，再单击“继续”按钮
 
-    ![警告消息，指出如果继续操作，将删除数据](./media/site-recovery-how-to-install-linux-master-target/media/image7.png)
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image8.png)
 
-8. 在“主机名”框中输入服务器的主机名，然后单击“配置网络”。 在“网络连接”对话框中选择网络接口，然后单击“编辑”按钮配置 IPV4Settings。
+**第 10 步：**在“文本框”中输入用于创建用户帐户的用户名，再单击“继续”按钮
 
-    ![选择主机名并配置 IPV4](./media/site-recovery-how-to-install-linux-master-target/media/image8.png)
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image9.png)
 
-9. 在“编辑系统 eth0”对话框中，选中“自动连接”复选框。 在“IPv4 设置”选项卡中，为“方法”选择“手动”，然后单击“添加”按钮。 提供“静态 IP”、“子网掩码”、“网关”和“DNS 服务器”详细信息。 单击“应用”保存详细信息。
+**第 11 步：**在“文本框”中输入新用户帐户的密码，再单击“继续”按钮
 
-    ![网络配置设置](./media/site-recovery-how-to-install-linux-master-target/media/image9.png)
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image10.png)
 
-10. 选择时区，然后单击“下一步”。
+**第 12 步：**在“文本框”中确认新用户的密码，再单击“继续”按钮
 
-    ![选择时区](./media/site-recovery-how-to-install-linux-master-target/media/image10.png)
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image11.png)
 
-11. 输入“Root 密码”并确认该密码，然后单击“下一步”。
+**第 13 步：**选择默认选项“否”，再按 Enter
 
-    ![添加密码](./media/site-recovery-how-to-install-linux-master-target/media/image11.png)
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image12.png)
 
-12. 选择“创建自定义布局”，然后单击“下一步”。
+**第 14 步：**选择默认选项“是”（如果显示的时区正确无误），再按 Enter。
 
-    ![选择安装类型](./media/site-recovery-how-to-install-linux-master-target/media/image12.png)
+可以选择“否”选项来重新配置时区。
 
-13. 选择“免费”分区，然后单击“创建”，创建使用 **ext4** 作为文件系统类型的 **/**、**/var/crash** 和 **/home** 分区。 创建使用 **swap** 作为文件系统类型的**交换分区**。 若要分配分区大小，请参考下表中的大小分配公式。
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image13.png)
 
-    > [!NOTE]
-    > Linux 主目标服务器不应为根或保留存储空间使用逻辑卷管理器 (LVM)。 默认情况下，Linux 主目标已配置为避免发现 LVM 分区和磁盘。
+**第 15 步：**在分区方法选项列表中选择“引导式 - 使用整个磁盘”，再按 Enter。
 
-    ![分区名称、分区大小和文件系统类型的表格](./media/site-recovery-how-to-install-linux-master-target/media/image13.png)
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image14.png)
 
-14. 创建分区后，单击“下一步”。
+**第 16 步：**在“选择要分区的磁盘”选项列表中选择相应的磁盘，再按 Enter。
 
-    ![显示分区选定值的对话框](./media/site-recovery-how-to-install-linux-master-target/media/image14.png)
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image15.png)
 
-15. 如果找到了任何现有设备，将显示一条警告消息，指出将要格式化该设备。 单击“格式化”，使用最新的分区表格式化硬盘驱动器。
+**第 17 步：**选择“是”，将更改写入磁盘，再按 Enter。
 
-    ![单击“格式化”按钮将磁盘格式化](./media/site-recovery-how-to-install-linux-master-target/media/image15.png)
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image16.png)
 
-16. 单击“将更改写入磁盘”，应用对磁盘所做的分区更改。
+**第 18 步：**选择默认选项，再选择“继续”按钮并按 Enter。
 
-    ![单击“将更改写入磁盘”](./media/site-recovery-how-to-install-linux-master-target/media/image16.png)
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image17.png)
 
-17. 选中“安装启动加载程序”选项，然后单击“下一步”在根分区上安装启动加载程序。
+**第 19 步：**选择相应选项来管理系统上的升级，再按 Enter
 
-    ![在根分区上安装启动加载程序](./media/site-recovery-how-to-install-linux-master-target/media/image17.png)
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image18.png)
+
+> [!WARNING]
+> 由于 Azure Site Recovery master 目标服务器需要非常具体的 Ubuntu 版本，因此必须确保已为虚拟机禁用内核升级。 如果启用，任意常规升级都会导致 master 目标服务器无法正常工作。 请务必选择“不自动更新”选项。
 
 
-18. 安装过程随即开始。 可以监视进度。
+**第 20 步：**可以继续选择默认选项。 若要对 SSH 连接使用 openSSH，请依次选择“OpenSSH 服务器”选项和“继续”。
 
-    ![显示安装进度的对话框](./media/site-recovery-how-to-install-linux-master-target/media/image18.png)
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image19.png)
 
-19. 成功完成安装后，将显示以下屏幕。 单击“重新启动”。
+**第 21 步：**选择选项“是”，再按 Enter
 
-    ![安装成功屏幕](./media/site-recovery-how-to-install-linux-master-target/media/image19.png)
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image20.png)
+
+**第 22 步：**选择用于启动加载程序安装的适当设备（最好是 /dev/sda），再按 Enter。
+
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image21.png)
+
+**第 23 步：**选择“继续”按钮，再按 Enter，完成安装。
+
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image22.png)
+
+安装完成后， 立即使用新用户凭据登录 VM（见第 10 步）。
+
+按照下面屏幕截图中的步骤操作，设置根用户密码，并以根用户身份登录，以执行其他操作。
+
+![](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image23.png)
 
 
 ### <a name="post-installation-steps"></a>安装后的步骤
@@ -176,83 +195,20 @@ ms.lasthandoff: 05/08/2017
 
     ![检查 disk.EnableUUID 是否存在](./media/site-recovery-how-to-install-linux-master-target/media/image21.png)
 
+#### <a name="disable-kernel-upgrades"></a>**禁用内核升级**
+
+由于 Azure Site Recovery master 目标服务器需要非常具体的 Ubuntu 版本，因此必须确保已为虚拟机禁用内核升级。 如果启用，任意常规升级都会导致 master 目标服务器无法正常工作。 请按照以下步骤操作，禁用内核升级。
+> [!IMPORTANT]
+> 需要在此处添加脚本步骤
+
 #### <a name="download-and-install-additional-packages"></a>下载并安装其他包
 
 > [!NOTE]
 > 在下载并安装其他包之前，请确保已建立 Internet 连接。 如果未建立 Internet 连接，则需要手动找到并安装这些 RPM 包。
 
 ```
-yum install -y xfsprogs perl lsscsi rsync wget kexec-tools
+apt-get install -y multipath-tools lsscsi python-pyasn1 lvm2 kpartx
 ```
-
-上述命令将从 CentOS 6.6 存储库下载并安装以下 15 个包。 如果无法访问 Internet，需要下载以下 RPM 包：
-
-
-bc-1.06.95-1.el6.x86\_64.rpm
-
-busybox-1.15.1-20.el6.x86\_64.rpm
-
-elfutils-libs-0.158-3.2.el6.x86\_64.rpm
-
-kexec-tools-2.0.0-280.el6.x86\_64.rpm
-
-lsscsi-0.23-2.el6.x86\_64.rpm
-
-lzo-2.03-3.1.el6\_5.1.x86\_64.rpm
-
-perl-5.10.1-136.el6\_6.1.x86\_64.rpm
-
-perl-Module-Pluggable-3.90-136.el6\_6.1.x86\_64.rpm
-
-perl-Pod-Escapes-1.04-136.el6\_6.1.x86\_64.rpm
-
-perl-Pod-Simple-3.13-136.el6\_6.1.x86\_64.rpm
-
-perl-libs-5.10.1-136.el6\_6.1.x86\_64.rpm
-
-perl-version-0.77-136.el6\_6.1.x86\_64.rpm
-
-rsync-3.0.6-12.el6.x86\_64.rpm
-
-snappy-1.1.0-1.el6.x86\_64.rpm
-
-wget-1.12-5.el6\_6.1.x86\_64.rpm
-
-
-#### <a name="install-additional-packages-for-specific-operating-systems"></a>安装特定操作系统的附加包
-
-> [!NOTE]
-> 如果受源保护的计算机为根设备或引导设备使用了 ReiserFS 或 XFS 文件系统，则应该在保护之前，在 Linux 主目标中下载并安装以下附加包。
-
-
-***ReiserFS（如果在 Suse11SP3 中使用。ReiserFS 不是 Suse11SP3 中的默认文件系统）***
-
-```
-cd /usr/local
-
-wget
-<http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
-
-wget
-<http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
-
-rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86\_64.rpm
-reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
-```
-
-***XFS（RHEL、CentOS 7 及更高版本）***
-
-```
-cd /usr/local
-
-wget
-<http://archive.kernel.org/centos-vault/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
-
-rpm -ivh xfsprogs-3.1.1-16.el6.x86\_64.rpm
-
-yum install device-mapper-multipath
-```
-在主目标上启用多路径包时需要此包。
 
 ### <a name="get-the-installer-for-setup"></a>获取安装程序
 
@@ -361,12 +317,14 @@ wget https://aka.ms/latestlinuxmobsvc -O latestlinuxmobsvc.tar.gz
 3. 运行以下命令安装主目标服务器并将它注册到配置服务器。
 
     ```
-    ./install -t both -a host -R MasterTarget -d /usr/local/ASR -i <Configuration Server IP Address> -p 443 -s y -c https -P passphrase.txt
+    ./install -q -d /usr/local/ASR -r MT -v VmWare
+    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
     ```
 
-    示例：./install -t both -a host -R MasterTarget -d /usr/local/ASR -i 104.40.75.37 -p 443 -s y -c https -P passphrase.txt
+    示例：/usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
 
     等到脚本执行完成。 如果成功注册主目标，门户中的“Site Recovery 基础结构”页上会列出该主目标。
+
 
 #### <a name="install-the-master-target-by-using-interactive-install"></a>使用交互式安装过程安装主目标
 
@@ -380,22 +338,31 @@ wget https://aka.ms/latestlinuxmobsvc -O latestlinuxmobsvc.tar.gz
 
     ![选择主目标的默认安装位置](./media/site-recovery-how-to-install-linux-master-target/image17.png)
 
+安装完成后，需要使用命令行注册配置服务器。
 
-3. 选择要配置的“全局”设置。
+1. 记下配置服务器的 IP 地址， 因为下一步骤需要用到。
 
-    ![配置全局设置](./media/site-recovery-how-to-install-linux-master-target/image18.png)
+2. 运行以下命令安装主目标服务器并将它注册到配置服务器。
 
-4. 指定配置服务器的 IP 地址。
+    ```
+    ./install -q -d /usr/local/ASR -r MT -v VmWare
+    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
+    ```
 
-5. 将配置服务器的端口指定为 443。
+    示例：/usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
 
-    ![指定配置服务器的 IP 地址和端口](./media/site-recovery-how-to-install-linux-master-target/image19.png)
+    等到脚本执行完成。 如果成功注册主目标，门户中的“Site Recovery 基础结构”页上会列出该主目标。
 
-6. 在配置服务器上从 C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase 复制配置服务器的通行短语，然后将它粘贴到“通行短语”框中。 即使在粘贴该文本之后，该框也会显示空白。
 
-7. 在菜单中转到“Quit”。
+### <a name="upgrade-the-master-target"></a>升级 master 目标服务器
 
-8. 等待安装和注册完成。
+运行安装程序。 它会自动检测是否在 master 目标服务器上安装了代理。 选择“是”进行升级。 安装完成后，可以运行下列命令，检查安装的 master 目标服务器版本。
+
+    ```
+        cat /usr/local/.vx_version
+    ```
+
+“版本”字段中显示了 master 目标服务器版本号。
 
 ### <a name="install-vmware-tools-on-the-master-target-server"></a>在主目标服务器上安装 VMware 工具
 

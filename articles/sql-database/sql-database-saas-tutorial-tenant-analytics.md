@@ -1,6 +1,6 @@
 ---
 title: "针对多个 Azure SQL 数据库运行分析查询 | Microsoft Docs"
-description: "针对多个 Azure SQL 数据库运行分布式查询"
+description: "将租户数据库中的数据提取到分析数据库以供离线分析"
 keywords: "sql 数据库教程"
 services: sql-database
 documentationcenter: 
@@ -14,19 +14,19 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 06/16/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 5331f9a7b46f1dd31d4aa246ad9d188b5a5afc19
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 4e32407d5f321198358e07980907c3420aaf56c6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
-# <a name="run-distributed-queries-across-multiple-azure-sql-databases"></a>针对多个 Azure SQL 数据库运行分布式查询
+# <a name="extract-data-from-tenant-databases-into-an-analytics-database-for-offline-analysis"></a>将租户数据库中的数据提取到分析数据库以供离线分析
 
-在本教程中，可以针对目录中的每个租户运行分析查询。 已创建运行查询的弹性作业。 该作业检索数据并将其加载到在编录服务器上创建的独立分析数据库。 可以对数据库进行查询，以便提取隐藏在所有租户的日常运行数据中的见解。 将会从返回结果式查询（位于租户分析数据库中）中创建表，作为作业的输出。
+在本教程中，将使用弹性作业对每个租户数据库运行查询。 此作业会提取门票销售数据，并将数据加载到分析数据库（或数据仓库）中，以供分析。 然后查询分析数据库，以便从所有租户的日常运行数据中提取见解。
 
 
 本教程将介绍如何执行下列操作：
@@ -47,7 +47,7 @@ SaaS 应用程序提供的大好机会之一是使用存储在云中的大量租
 
 ## <a name="get-the-wingtip-application-scripts"></a>获取 Wingtip 应用程序脚本
 
-Wingtip SaaS 脚本和应用程序源代码可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub 存储库中找到。 [下载 Wingtip SaaS 脚本的步骤](sql-database-wtp-overview.md#download-the-wingtip-saas-scripts)。
+Wingtip SaaS 脚本和应用程序源代码可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub 存储库中找到。 [下载 Wingtip SaaS 脚本的步骤](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts)。
 
 ## <a name="deploy-a-database-for-tenant-analytics-results"></a>部署租户分析结果的数据库
 
@@ -121,3 +121,4 @@ Wingtip SaaS 脚本和应用程序源代码可在 [WingtipSaaS](https://github.c
 
 * 其他[基于 Wingtip SaaS 应用程序编写的教程](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [弹性作业](sql-database-elastic-jobs-overview.md)
+

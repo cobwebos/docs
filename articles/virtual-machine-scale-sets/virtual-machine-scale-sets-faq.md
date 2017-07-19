@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/09/2017
+ms.date: 7/03/2017
 ms.author: negat
 ms.custom: na
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: de67dba5e615db8138957420a1db89d444a37d67
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 718732df4455831454245ea1a80d49e042c20f09
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -188,7 +188,7 @@ ms.lasthandoff: 05/10/2017
 }
 ```
  
-bpt id="p1" xmlns="urn:oasis:names:tc:xliff:document:1.2"> [</bpt>101-vm-sshkey GitHub 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json) 中使用了此 JSON 块。
+[101-vm-sshkey GitHub 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json) 中使用了此 JSON 块。
  
 [grelayhost.json GitHub 快速启动模板](https://github.com/ExchMaster/gadgetron/blob/master/Gadgetron/Templates/grelayhost.json)中也使用了此 OS 配置文件。
 
@@ -495,7 +495,7 @@ Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineSca
                             "loadBalancerBackendAddressPools": [
                                 {
                                     "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/loadBalancers/', variables('lbName'), '/backendAddressPools/addressPool1')]"
-                                }
+                                 }
                             ]
                         }
                     }
@@ -511,7 +511,7 @@ Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineSca
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>如何针对同一订阅和同一区域中的虚拟机规模集执行 VIP 交换？
 
-若要针对同一订阅和同一区域中的虚拟机规模集执行 VIP 交换，请参阅 [VIP 交换：Azure Resource Manager 中的蓝绿色部署](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/)。
+如果有两个包含 Azure 负载均衡器前端的虚拟机规模集，并且它们处于同一订阅和区域中，可以解除分配它们的公共 IP 地址，并将公共 IP 地址分配给其他资源。 有关示例，请参阅 [VIP 交换：Azure Resource Manager 中的蓝绿部署](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/)。 但这确实意味着延迟，因为要在网络一级解除分配/分配资源。 也可以使用支持快速切换过渡槽和生产槽的 [Azure 应用服务](https://azure.microsoft.com/en-us/services/app-service/)来托管应用程序。
  
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>如何为静态专用 IP 地址分配指定专用 IP 地址范围？
 
@@ -527,7 +527,49 @@ IP 地址是从指定的子网中选择的。
 
 若要将虚拟机规模集中第一个 VM 的 IP 地址添加到模板的输出中，请参阅 [ARM：获取 VMSS 的专用 IP](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips)。
 
+### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>能否将规模集与加速网络结合使用？
 
+是的。 若要使用加速网络，请在规模集的 networkInterfaceConfigurations 设置中将 enableAcceleratedNetworking 设置为 true。 例如
+```json
+"networkProfile": {
+    "networkInterfaceConfigurations": [
+    {
+        "name": "niconfig1",
+        "properties": {
+        "primary": true,
+        "enableAcceleratedNetworking" : true,
+        "ipConfigurations": [
+                ]
+            }
+            }
+        ]
+        }
+    }
+    ]
+}
+```
+
+### <a name="how-can-i-configure-the-dns-servers-used-by-a-scale-set"></a>如何才能配置规模集使用的 DNS 服务器？
+
+若要创建具有自定义 DNS 配置的 VM 规模集，请将 dnsSettings JSON 数据包添加到规模集的 networkInterfaceConfigurations 部分中。 示例：
+```json
+    "dnsSettings":{
+        "dnsServers":["10.0.0.6", "10.0.0.5"]
+    }
+```
+
+### <a name="how-can-i-configure-a-scale-set-to-assign-a-public-ip-address-to-each-vm"></a>如何才能将规模集配置为向每个 VM 分配公共 IP 地址？
+
+若要创建向每个 VM 分配公共 IP 地址的 VM 规模集，请确保 Microsoft.Compute/virtualMAchineScaleSets 资源的 API 版本为 2017-03-30，并将 publicipaddressconfiguration JSON 数据包添加到规模集的 ipConfigurations 部分中。 示例：
+
+```json
+    "publicipaddressconfiguration": {
+        "name": "pub1",
+        "properties": {
+        "idleTimeoutInMinutes": 15
+        }
+    }
+```
 
 ## <a name="scale"></a>缩放
 

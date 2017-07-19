@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI 脚本 - 缩放弹性池 | Microsoft 文档"
-description: "Azure CLI 脚本示例 - 缩放弹性数据库池"
+title: "CLI 示例 - 缩放 SQL 弹性池 - Azure SQL 数据库 | Microsoft Docs"
+description: "在 Azure SQL 数据库中缩放 SQL 弹性池的 Azure CLI 示例脚本"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -14,25 +14,25 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 04/24/2017
+ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 5ca7befc4b7ea031287b81ae6834496579b480fd
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: f1f178d05826e8d2a37b41f2f98ed0ddf83f542b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="scale-an-elastic-pool-in-azure-sql-database-using-the-azure-cli"></a>使用 Azure CLI 缩放 Azure SQL 数据库中的弹性池
+# <a name="use-azure-cli-to-scale-a-sql-elastic-pool-in-azure-sql-database"></a>使用 Azure CLI 在 Azure SQL 数据库中缩放 SQL 弹性池
 
-此示例 CLI 脚本创建弹性池，移动入池数据库，并更改性能级别。 
+以下 Azure CLI 脚本示例创建 SQL 弹性池，移动共用数据库，并更改弹性池性能级别。 
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 ## <a name="sample-script"></a>示例脚本
 

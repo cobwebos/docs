@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 5/16/2017
+ms.date: 6/29/2017
 ms.author: msfussell
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: fb73507ed596a65607d60f59d6834cc8bf5734f7
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 9dcec753e5f999a1bac07276373c0c25f89ec58d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/26/2017
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -57,44 +57,50 @@ Service Fabric 应用程序可以包含一个或多个容器，每个容器在�
 ```
 
 ## <a name="create-the-application"></a>创建应用程序
-1. 在终端中，键入 `yo azuresfguest`。
-2. 对于框架，选择“容器”。
-3. 为应用程序命名，例如 SimpleContainerApp
-4. 提供 DockerHub 存储库中容器映像的 URL。 此映像参数采用的格式为 [repo]/[image name]
+1. 在终端中，键入 `yo azuresfcontainer`。
+2. 为应用程序命名，例如 mycontainerap
+3. 提供 DockerHub 存储库中容器映像的 URL。 此映像参数采用的格式为 [repo]/[image name]
+4. 如果映像没有定义工作负载入口点，则需要显式指定输入命令以及要在容器内运行的以逗号分隔的一组命令，这将在启动后使容器保持运行。
 
 ![适用于容器的 Service Fabric Yeoman 生成器][sf-yeoman]
 
 ## <a name="deploy-the-application"></a>部署应用程序
+
+### <a name="using-xplat-cli"></a>使用 XPlat CLI
 生成应用程序后，可以使用 Azure CLI 将其部署到本地群集。
 
 1. 连接到本地 Service Fabric 群集。
 
-```bash
+    ```bash
     azure servicefabric cluster connect
-```
+    ```
 
 2. 使用模板中提供的安装脚本可将应用程序包复制到群集的映像存储、注册应用程序类型和创建应用程序的实例。
 
-```bash
+    ```bash
     ./install.sh
-```
+    ```
 
 3. 打开浏览器并导航到 http://localhost:19080/Explorer 的 Service Fabric Explorer（如果在 Mac OS X 上使用 Vagrant，则使用 VM 的专用 IP 替换 localhost）。
 4. 展开应用程序节点，注意现在有一个条目是用于你的应用程序类型，另一个条目用于该类型的第一个实例。
 5. 使用模板中提供的卸载脚本删除应用程序实例并取消注册应用程序类型。
 
-```bash
+    ```bash
     ./uninstall.sh
-```
+    ```
+
+### <a name="using-azure-cli-20"></a>使用 Azure CLI 2.0
+
+请参阅[使用 Azure CLI 2.0 管理应用程序生命周期](service-fabric-application-lifecycle-azure-cli-2-0.md)的参考文档。
 
 有关示例应用程序，请[查看 GitHub 上的 Service Fabric 容器代码示例](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
 ## <a name="adding-more-services-to-an-existing-application"></a>将更多服务添加到现有应用程序
 
-若要将其他容器服务添加到使用 `yo` 创建的应用程序，请执行以下步骤： 
+若要将其他容器服务添加到使用 `yo` 创建的应用程序，请执行以下步骤：
 
 1. 将目录更改为现有应用程序的根目录。  例如，如果 `MyApplication` 是 Yeoman 创建的应用程序，则使用 `cd ~/YeomanSamples/MyApplication`。
-2. 运行 `yo azuresfguest:AddService`
+2. 运行 `yo azuresfcontainer:AddService`
 
 <a id="manually"></a>
 
@@ -124,6 +130,9 @@ Service Fabric 应用程序可以包含一个或多个容器，每个容器在�
 
 可以指定含有逗号分隔命令集的可选 `Commands` 元素在容器内部运行，来提供输入命令。
 
+> [!NOTE]
+> 如果映像没有定义工作负载入口点，则需要显式指定 `Commands` 元素内的输入命令，以及要在容器内运行的一组以逗号分隔的命令，这将在启动后使容器保持运行。
+
 ## <a name="understand-resource-governance"></a>了解资源监管
 资源监管是一项容器功能，其限制容器可在主机上使用的资源。 在应用程序清单中指定的 `ResourceGovernancePolicy` 用于声明服务代码包的资源限制。 可以为以下资源设置资源限制：
 
@@ -135,8 +144,8 @@ Service Fabric 应用程序可以包含一个或多个容器，每个容器在�
 
 > [!NOTE]
 > 在以后版本中，将包含对指定特定块 IO 限制（例如 IOP、读/写 BPS）和其他的支持。
-> 
-> 
+>
+>
 
 ```xml
     <ServiceManifestImport>
@@ -209,7 +218,7 @@ Service Fabric 应用程序可以包含一个或多个容器，每个容器在�
     </ServiceManifestImport>
 ```
 
-在命名服务中注册后，可以轻松地在容器中的代码内使用[反向代理](service-fabric-reverseproxy.md)来执行容器到容器的通信。 将 http 侦听端口和想要与其通信的服务名称作为环境变量提供给反向代理，以此方式执行通信。 有关详细信息，请参阅后续部分。 
+在命名服务中注册后，可以轻松地在容器中的代码内使用[反向代理](service-fabric-reverseproxy.md)来执行容器到容器的通信。 将 http 侦听端口和想要与其通信的服务名称作为环境变量提供给反向代理，以此方式执行通信。 有关详细信息，请参阅后续部分。
 
 ## <a name="configure-and-set-environment-variables"></a>配置和设置环境变量
 对于部署在容器中的服务，或者部署为进程/来宾可执行文件的服务，可以在服务清单中为每个代码包指定环境变量。 可以在应用程序清单中明确重写这些环境变量的值，或者在部署期间将其指定为应用程序参数。
@@ -317,4 +326,9 @@ Service Fabric 应用程序可以包含一个或多个容器，每个容器在�
 
 <!-- Images -->
 [sf-yeoman]: ./media/service-fabric-deploy-container-linux/sf-container-yeoman1.png
+
+## <a name="related-articles"></a>相关文章
+
+* [Service Fabric 和 Azure CLI 2.0 入门](service-fabric-azure-cli-2-0.md)
+* [Service Fabric XPlat CLI 入门](service-fabric-azure-cli.md)
 

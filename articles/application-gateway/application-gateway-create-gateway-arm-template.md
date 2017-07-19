@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 0786e54c288f30b0039c1d0b88f5c5b5965eecef
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 46a036c5f1646197522874b1302b95947e90cdd8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 06/29/2017
 
 
 ---
@@ -83,7 +83,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
    * **properties**。 资源的属性列表。 此模板在应用程序网关创建期间，使用虚拟网络与公共 IP 地址。
 
    > [!NOTE]
-   > 有关模板的详细信息，请参阅：[资源管理器模板参考](/templates/)
+   > 有关模板的详细信息，请参阅：[Resource Manager 模板参考](/templates/)
 
 1. 导航回 [https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf)。
 1. 单击 **azuredeploy-parameters.json**，然后单击 **RAW**。
@@ -210,8 +210,15 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
 
 ## <a name="providing-certificate-data-to-resource-manager-templates"></a>对 Resource Manager 模板提供证书数据
 
-如果将 SSL 与模板一起使用，请提供 base64 字符串的证书，而不是上传证书。 若要将 .pfx 或 .cer 转换为 base64 字符串，请运行以下 PowerShell 命令。 此代码片段会证书将转换为 base64 字符串，以便将其提供给模板。 预期输出为一个字符串，它可以存储在变量中，并粘贴到模板中。
+如果将 SSL 与模板一起使用，请提供 base64 字符串的证书，而不是上传证书。 若要将 .pfx 或 .cer 转换为 base64 字符串，请运行以下命令之一。 以下命令可将证书转换为提供给模板的 base64 字符串。 预期输出为一个字符串，它可以存储在变量中，并粘贴到模板中。
 
+### <a name="macos"></a>macOS
+```bash
+cert=$( base64 <certificate path and name>.pfx )
+echo $cert
+```
+
+### <a name="windows"></a>Windows
 ```powershell
 [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("<certificate path and name>.pfx"))
 ```

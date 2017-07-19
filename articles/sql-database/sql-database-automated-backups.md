@@ -3,7 +3,7 @@ title: "Azure SQL 数据库备份 - 自动化、异地冗余 | Microsoft Docs"
 description: "SQL 数据库每隔几分钟会自动创建一个本地数据库备份，使用 Azure 读取访问异地冗余存储来提供异地冗余。"
 services: sql-database
 documentationcenter: 
-author: anosov1960
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: 3ee3d49d-16fa-47cf-a3ab-7b22aa491a8d
@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/02/2016
-ms.author: sashan
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: d849eeedae65c8cc35271c2e9b63236760c4629c
-ms.lasthandoff: 04/15/2017
+ms.date: 07/05/2017
+ms.author: carlrab
+ms.translationtype: Human Translation
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: cfd0d130186f851bc306065893b137c94cfb7d3d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -41,7 +42,6 @@ SQL 数据库使用 SQL Server 技术创建[完整](https://msdn.microsoft.com/l
 
 > [!NOTE]
 > 在 Azure 存储中，术语*复制*是指将文件从一个位置复制到另一个位置。 SQL *数据库复制*是指让多个辅助数据库与主数据库保持同步。 
-> 
 > 
 
 ## <a name="how-much-backup-storage-is-included-at-no-cost"></a>免费附送的备份存储空间有多少？
@@ -69,7 +69,6 @@ SQL 数据库提供高达备份存储的最大预配数据库存储空间两倍�
 > [!IMPORTANT]
 > 如果删除了托管 SQL 数据库的 Azure SQL 服务器，则属于该服务器的所有数据库也将被删除且不可恢复。 无法还原已删除的服务器。
 > 
-> 
 
 ## <a name="how-to-extend-the-backup-retention-period"></a>如何延长备份保留期？
 如果应用程序要求备份保留更长时间，可通过为每个数据库配置长期备份保留策略（LTR 策略）来延长内置保留期。 允许将内置保持期从 35 天延长为最多 10 年。 有关详细信息，请参阅[长期保留](sql-database-long-term-retention.md)。
@@ -79,6 +78,10 @@ SQL 数据库提供高达备份存储的最大预配数据库存储空间两倍�
 > [!TIP]
 > 有关操作指南，请参阅[从 Azure SQL 数据库长期备份保留进行配置和恢复](sql-database-long-term-backup-retention-configure.md)
 >
+
+## <a name="are-backups-encrypted"></a>备份已加密？
+
+为 Azure SQL 数据库启用 TDE 时，也会加密备份。 默认情况下，将所有新的 Azure SQL 数据库都配置为启用 TDE。 有关 TDE 的详细信息，请参阅[使用 Azure SQL 数据库进行透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)。
 
 ## <a name="next-steps"></a>后续步骤
 

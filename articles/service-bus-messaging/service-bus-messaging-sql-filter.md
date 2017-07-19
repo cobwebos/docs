@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/23/2017
+ms.date: 06/27/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: c5127a457e99772a52b76e28e7fd3a3e4dd861b0
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 3aaec8f9b6a3bbcf814f771405c3b589de6f7ae0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/28/2017
 
 
 ---
 
 # <a name="sqlfilter-syntax"></a>SQLFilter 语法
 
-*SqlFilter* 是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)的实例，代表基于 SQL 语言的筛选器表达式，该表达式针对 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 进行计算。 SqlFilter 支持 SQL-92 标准的子集。  
+SqlFilter 是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)的实例，代表基于 SQL 语言的筛选器表达式，该表达式针对 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 进行计算。 SqlFilter 支持 SQL-92 标准的子集。  
   
  本主题列出了有关 SqlFilter 语法的详细信息。  
   
@@ -87,7 +88,7 @@ ms.lasthandoff: 03/24/2017
 [[:IsLetter:]][_[:IsLetter:][:IsDigit:]]*  
 ```  
   
-这是指任何以字母开头且后跟一个或多个下划线/字母/数字的字符串。  
+此语法是指任何以字母开头且后跟一个或多个下划线/字母/数字的字符串。  
   
 `[:IsLetter:]` 是指其类别为 Unicode 字母的任何 Unicode 字符。 `System.Char.IsLetter(c)` 返回 `true`（如果 `c` 为 Unicode 字母）。  
   
@@ -240,11 +241,11 @@ ms.lasthandoff: 03/24/2017
   
  `[NOT] LIKE` 中的未知求值：  
   
--   如果任何操作数的求值结果为**未知**，则结果为**未知**。  
+-   如果任何操作数的求值结果为“未知”，则结果为“未知”。  
   
  `[NOT] IN` 中的未知求值：  
   
--   如果左侧操作数的求值结果为**未知**，则结果为**未知**。  
+-   如果左侧操作数的求值结果为“未知”，则结果为“未知”。  
   
  **AND** 运算符中的未知求值：  
   

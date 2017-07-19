@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell 脚本 - 将 SQL 数据库复制到新服务器 | Microsoft 文档"
-description: "Azure PowerShell 脚本示例 - 使用 PowerShell 将 SQL 数据库复制到新服务器"
+title: "PowerShell 示例 - 复制 - Azure SQL 数据库 - 新服务器 | Microsoft Docs"
+description: "将 SQL 数据库复制到新服务器的 Azure PowerShell 示例脚本"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -14,19 +14,19 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 05/23/2017
+ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: cb3412398e566cc16dadc8348241a603e78a098c
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 7b57e37a1bc9391c88c8170f59a39654bf895d47
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="copy-a-sql-database-to-a-new-server-using-powershell"></a>使用 PowerShell 将 SQL 数据库复制到新服务器
+# <a name="use-powershell-to-copy-a-sql-database-to-a-new-server"></a>使用 PowerShell 将 SQL 数据库复制到新服务器
 
-此示例 PowerShell 脚本在新服务器中创建现有数据库的副本。 
+以下 PowerShell 脚本示例在新服务器中创建现有数据库的副本。 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: "查询性能调整建议 - Azure SQL 数据库 | Microsoft Docs"
-description: "Azure SQL 数据库顾问为你的现有 SQL 数据库提供建议，这样可以提高当前的查询性能。"
+title: "性能建议 - Azure SQL 数据库 | Microsoft Docs"
+description: "Azure SQL 数据库提供有关 SQL 数据库的建议，以提升当前的查询性能。"
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -8,32 +8,45 @@ manager: jhubbard
 editor: monicar
 ms.assetid: 1db441ff-58f5-45da-8d38-b54dc2aa6145
 ms.service: sql-database
-ms.custom: monitor & manage
+ms.custom: monitor & tune
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 09/30/2016
+ms.date: 07/05/2017
 ms.author: sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: cf627b92399856af2b9a58ab155fac6730128f85
-ms.openlocfilehash: a8d0b08abc7e3c688f9ab79499b3459b33f06848
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: 357a25a665894c86ddb0f93beeb4dd59d8837489
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/02/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="sql-database-advisor"></a>SQL 数据库顾问
+# <a name="performance-recommendations"></a>性能建议
 
-Azure SQL 数据库可以学习和适应你的应用程序并提供自定义的建议，使你能够将 SQL 数据库的性能最大化。 Azure SQL 数据库顾问提供有关创建和删除索引、参数化查询，以及解决架构问题的建议。 该顾问通过分析 SQL 数据库的使用历史记录来评估性能。 提供的建议最适合运行数据库的典型工作负荷。 
+Azure SQL 数据库可以学习和适应你的应用程序并提供自定义的建议，使你能够将 SQL 数据库的性能最大化。 通过分析 SQL 数据库使用情况历史记录，可以持续评估性能。 提供的建议是以数据库唯一工作负载模式为依据，有助于提升性能。
 
-以下建议适用于 Azure SQL 数据库服务器。 现在你可以将创建和删除索引建议设置为自动应用，请参阅[自动索引管理](sql-database-advisor-portal.md#enable-automatic-index-management)以获取详细信息。
+> [!NOTE]
+> 建议通过对数据库启用“自动优化”来使用性能建议。 有关详细信息，请参阅[自动优化](sql-database-automatic-tuning.md)。
+>
 
-## <a name="create-index-recommendations"></a>创建索引建议
-当 SQL 数据库服务检测到丢失的索引（若已创建）有益于你的数据库工作负荷时，就会出现**创建索引**建议（仅限非群集索引）。
+## <a name="create-index-recommendations"></a>“创建索引”建议
+Azure SQL 数据库持续监视执行中的查询，并发现可以提升性能的索引。 确信缺少特定索引后，便会新建“创建索引”建议。 Azure SQL 数据库通过估计索引在一段时间内带来的性能提升，确信是否有必要创建索引。 根据估计的性能提升高低，将性能建议分为高、中或低三类。 
 
-## <a name="drop-index-recommendations"></a>删除索引建议
-当 SQL 数据库服务检测到重复的索引时，就会出现**删除索引**建议（当前处于预览状态，且仅适用于重复的索引）。
+通过应用建议创建的索引始终都会标记为 auto_created。 可以通过查看 sys.indexes 视图，确定哪些是 auto_created 索引。 自动创建的索引不会阻止 ALTER/RENAME 命令。 如果尝试删除包含自动创建的索引的列，那么命令将会传递下去，自动创建的索引会随列一起删除。 常规索引会阻止对已编制索引的列执行 ALTER/RENAME 命令。
+
+应用“创建索引”建议后，Azure SQL 数据库便会比较查询性能与基线性能。 如果新索引确实带来了性能提升，系统会将建议标记为成功，并生成影响力报表。 否则，索引将会自动还原。 这样，Azure SQL 数据库可确保应用的建议只会提升数据库性能。
+
+所有“创建索引”建议都有撤回策略，即如果在过去 20 分钟内数据库或池 DTU 使用率超过 80% 或存储空间使用率超过 90%，则不允许应用建议。 在这种情况下，将推迟应用建议。
+
+## <a name="drop-index-recommendations"></a>“删除索引”建议
+除了能够检测缺少的索引外，Azure SQL 数据库还能持续分析现有索引的性能。 Azure SQL 数据库会建议删除未使用的索引。 在以下两种情况下，建议删除索引：
+* 索引是另一索引的副本（已编入索引且包含的列、分区架构和筛选器都相同）
+* 长时间（93 天）未使用索引
+
+也会验证已实现的“删除索引”建议。 如果性能得到提升，将会生成影响力报表。 如果检测到性能降低，将会还原建议。
+
 
 ## <a name="parameterize-queries-recommendations"></a>参数化查询建议
 当具有一个或多个正在持续被重新编译但都以相同的查询执行计划结束的查询时，就会出现**参数化查询**建议。 这种状态提供了一个应用强制参数化的机会，其允许查询计划进行缓存并在将来可以被重复使用，从而改善性能和减少资源使用。 
@@ -65,12 +78,12 @@ Azure SQL 数据库可以学习和适应你的应用程序并提供自定义的�
 ## <a name="next-steps"></a>后续步骤
 监视建议并继续应用它们以优化性能。 数据库工作负荷是动态的，并且不断地更改。 SQL 数据库顾问将继续监视和提供可能提高数据库性能的建议。 
 
-* 有关如何在 Azure 门户中使用 SQL 数据库顾问的步骤，请参阅 [SQL Database Advisor in the Azure portal](sql-database-advisor-portal.md)（Azure 门户中的 SQL 数据库顾问）。
+* 请参阅 [Azure 门户中的性能建议](sql-database-advisor-portal.md)，了解如何在 Azure 门户中使用性能建议。
 * 若要了解和查看排名靠前的查询的性能影响，请参阅[查询性能见解](sql-database-query-performance.md)。
 
 ## <a name="additional-resources"></a>其他资源
 * [查询存储](https://msdn.microsoft.com/library/dn817826.aspx)
 * [创建索引](https://msdn.microsoft.com/library/ms188783.aspx)
-* [基于角色的访问控制](../active-directory/role-based-access-control-configure.md)
+* [基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)
 
 

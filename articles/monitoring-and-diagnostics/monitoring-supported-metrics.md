@@ -2,7 +2,7 @@
 title: "Azure 监视器指标 - 每种资源类型支持的指标 | Microsoft 文档"
 description: "可在 Azure 监视器中为每种资源类型使用的指标的列表。"
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/10/2017
+ms.date: 7/05/2017
 ms.author: johnkem
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: ff47eaa27351f8d1685090edc54d90e5e91a1de0
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: b034251438c65dd13d9ca0bb116699532e3960ef
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure 监视器支持的指标
@@ -27,8 +26,8 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 > [!NOTE]
 > 其他指标可在门户或旧版 API 中使用。 此列表仅包含可以通过合并的 Azure 监视器指标管道公共预览版使用的公共预览版指标。
-> 
-> 
+>
+>
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
 
@@ -90,8 +89,10 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 |度量值|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
-|CoreCount|核心计数|计数|总计|批处理帐户中的核心总数|
-|TotalNodeCount|节点计数|计数|总计|批处理帐户中的节点总数|
+|CoreCount|专用核心计数|计数|总计|批处理帐户中的专用核心总数|
+|TotalNodeCount|专用节点计数|计数|总计|批处理帐户中的专用节点总数|
+|LowPriorityCoreCount|低优先级核心计数|计数|总计|批处理帐户中的低优先级核心总数|
+|TotalLowPriorityNodeCount|低优先级节点计数|计数|总计|批处理帐户中的低优先级节点总数|
 |CreatingNodeCount|正在创建的节点计数|计数|总计|正在创建的节点数目|
 |StartingNodeCount|正在启动的节点计数|计数|总计|正在启动的节点数目|
 |WaitingForStartTaskNodeCount|正在等待启动任务的节点计数|计数|总计|正在等待启动任务完成的节点数目|
@@ -103,6 +104,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |RunningNodeCount|正在运行的节点计数|计数|总计|正在运行的节点数目|
 |LeavingPoolNodeCount|正在退出池的节点计数|计数|总计|正在退出池的节点数目|
 |UnusableNodeCount|不可用的节点计数|计数|总计|不可用的节点数目|
+|PreemptedNodeCount|已占用节点计数|计数|总计|已占用节点数|
 |TaskStartEvent|任务启动事件数|计数|总计|已启动的任务总数|
 |TaskCompleteEvent|任务完成事件数|计数|总计|已完成的任务总数|
 |TaskFailEvent|任务失败事件数|计数|总计|处于失败状态的已完成任务总数|
@@ -336,7 +338,41 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 |度量值|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
-|CustomerInsightsApiCalls|CustomerInsightsApiCalls|计数|总计||
+|DCIApiCalls|Customer Insights API 调用数|计数|总计||
+|DCIMappingImportOperationSuccessfulLines|映射导入操作成功行数|计数|总计||
+|DCIMappingImportOperationFailedLines|映射导入操作失败行数|计数|总计||
+|DCIMappingImportOperationTotalLines|映射导入操作总行数|计数|总计||
+|DCIMappingImportOperationRuntimeInSeconds|映射导入操作运行时（以秒为单位）|秒|总计||
+|DCIOutboundProfileExportSucceeded|出站配置文件导出成功|计数|总计||
+|DCIOutboundProfileExportFailed|出站配置文件导出失败|计数|总计||
+|DCIOutboundProfileExportDuration|出站配置文件导出持续时间|秒|总计||
+|DCIOutboundKpiExportSucceeded|出站 KPI 导出成功|计数|总计||
+|DCIOutboundKpiExportFailed|出站 KPI 导出失败|计数|总计||
+|DCIOutboundKpiExportDuration|出站 KPI 导出持续时间|秒|总计||
+|DCIOutboundKpiExportStarted|出站 KPI 导出已启动|秒|总计||
+|DCIOutboundKpiRecordCount|出站 KPI 记录计数|秒|总计||
+|DCIOutboundProfileExportCount|出站配置文件导出计数|秒|总计||
+|DCIOutboundInitialProfileExportFailed|出站初始配置文件导出失败|秒|总计||
+|DCIOutboundInitialProfileExportSucceeded|出站初始配置文件导出成功|秒|总计||
+|DCIOutboundInitialKpiExportFailed|出站初始 KPI 导出失败|秒|总计||
+|DCIOutboundInitialKpiExportSucceeded|出站初始 KPI 导出成功|秒|总计||
+|DCIOutboundInitialProfileExportDurationInSeconds|出站初始配置文件导出持续时间（以秒为单位）|秒|总计||
+|AdlaJobForStandardKpiFailed|标准 KPI 的 Adla 作业失败时间（以秒为单位）|秒|总计||
+|AdlaJobForStandardKpiTimeOut|标准 KPI 的 Adla 作业超时时间（以秒为单位）|秒|总计||
+|AdlaJobForStandardKpiCompleted|标准 KPI 的 Adla 作业完成时间（以秒为单位）|秒|总计||
+|ImportASAValuesFailed|导入 ASA 值失败计数|计数|总计||
+|ImportASAValuesSucceeded|导入 ASA 值成功计数|计数|总计||
+
+## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.DataLakeAnalytics/accounts
+
+|度量值|指标显示名称|计价单位|聚合类型|说明|
+|---|---|---|---|---|
+|JobEndedSuccess|成功作业数|计数|总计|成功作业计数。|
+|JobEndedFailure|失败作业数|计数|总计|失败作业计数。|
+|JobEndedCancelled|取消的作业数|计数|总计|取消的作业计数。|
+|JobAUEndedSuccess|成功 AU 时间|秒|总计|成功作业的总 AU 时间。|
+|JobAUEndedFailure|失败的 AU 时间|秒|总计|失败作业的总 AU 时间。|
+|JobAUEndedCancelled|已取消的 AU 时间|秒|总计|取消的作业的总 AU 时间。|
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
@@ -485,6 +521,13 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |---|---|---|---|---|
 |吞吐量|吞吐量|每秒字节数|平均值||
 
+## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
+
+|度量值|指标显示名称|计价单位|聚合类型|说明|
+|---|---|---|---|---|
+|BytesIn|BytesIn|计数|总计||
+|BytesOut|BytesOut|计数|总计||
+
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
 
 |度量值|指标显示名称|计价单位|聚合类型|说明|
@@ -548,10 +591,55 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |outgoing.mpns.dropped|MPNS 丢弃的通知数|计数|总计|被 MPNS 丢弃的推送的计数（MPNS 响应标头：X-NotificationStatus：QueueFull 或 Suppressed）。|
 |outgoing.mpns.pnserror|MPNS 错误数|计数|总计|因为与 MPNS 通信时发生错误而失败的推送的计数。|
 |outgoing.mpns.authenticationerror|MPNS 身份验证错误数|计数|总计|因为 PNS 未接受所提供的凭据或者凭据被阻止而失败的推送的计数。|
-|notificationhub.devices|通知中心设备数|计数|平均值|通知中心的设备计数|
-|notificationhub.pushes|通知中心推送通知数|计数|总计|通知中心内的推送通知的计数|
+|notificationhub.pushes|所有传出通知|计数|总计|通知中心的所有传出通知|
 |incoming.all.requests|所有传入请求数|计数|总计|通知中心的传入的请求数总计|
 |incoming.all.failedrequests|所有传入的失败请求数|计数|总计|通知中心的传入的失败请求数总计|
+
+## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
+
+|度量值|指标显示名称|计价单位|聚合类型|说明|
+|---|---|---|---|---|
+|qpu_metric|QPU|计数|平均值|QPU。 S1 范围为 0-100，S2 范围为 0-200，S4 范围为 0-400|
+|memory_metric|内存|字节|平均值|内存。 S1 范围为 0-25 GB，S2 范围为 0-50 GB，S4 范围为 0-100 GB|
+|TotalConnectionRequests|连接请求总数|计数|平均值|连接请求总数。 这些请求是到达的请求。|
+|SuccessfullConnectionsPerSec|每秒成功连接数|每秒计数|平均值|连接成功完成速率。|
+|TotalConnectionFailures|连接失败总数|计数|平均值|失败的连接尝试总数。|
+|CurrentUserSessions|当前用户会话数|计数|平均值|当前已建立的用户会话数。|
+|QueryPoolBusyThreads|查询池繁忙线程数|计数|平均值|查询线程池中的繁忙线程数。|
+|CommandPoolJobQueueLength|命令池作业队列长度|计数|平均值|命令线程池队列中的作业数。|
+|ProcessingPoolJobQueueLength|处理池作业队列长度|计数|平均值|处理线程池的队列中的非 I/O 作业数。|
+|CurrentConnections|连接: 当前连接数|计数|平均值|当前已建立的客户端连接的数量。|
+|CleanerCurrentPrice|内存: 清理器当前价格|计数|平均值|内存的当前价格，$/字节/时间，标准化为 1000。|
+|CleanerMemoryShrinkable|内存: 可收缩的清理器内存|字节|平均值|受后台清理器执行的清除影响的内存量（字节）。|
+|CleanerMemoryNonshrinkable|内存: 不可收缩的清理器内存|字节|平均值|不受后台清理器执行的清除影响的内存量（字节）。|
+|MemoryUsage|内存: 内存使用量|字节|平均值|服务器进程的内存使用量（在计算清理器内存价格时使用）。 等于计数器 Process\PrivateBytes 加上内存映射的数据的大小，并且将忽略由 xVelocity 内存中分析引擎 (VertiPaq) 映射或分配的超出了 xVelocity 引擎内存限制的任何内存。|
+|MemoryLimitHard|内存: 内存硬性限制|字节|平均值|内存硬性限制，来自配置文件。|
+|MemoryLimitHigh|内存: 内存上限|字节|平均值|内存上限，来自配置文件。|
+|MemoryLimitLow|内存: 内存下限|字节|平均值|内存下限，来自配置文件。|
+|MemoryLimitVertiPaq|内存: 内存 VertiPaq 限制|字节|平均值|内存中限制，来自配置文件。|
+|Quota|内存: 配额|字节|平均值|当前内存配额（字节）。 内存配额也称为内存授予或内存预留。|
+|QuotaBlocked|内存: 阻止的配额|计数|平均值|在其他内存配额被释放之前已阻止的当前的配额请求数。|
+|VertiPaqNonpaged|内存: VertiPaq 未分页|字节|平均值|工作集中被锁定的供内存中引擎使用的内存字节数。|
+|VertiPaqPaged|内存: VertiPaq 已分页|字节|平均值|用于内存中数据的已分页内存字节数。|
+|RowsReadPerSec|处理: 每秒读取的行数|每秒计数|平均值|从所有关系数据库中读取行的速率。|
+|RowsConvertedPerSec|处理: 每秒转换的行数|每秒计数|平均值|在处理过程中转换行的速率。|
+|RowsWrittenPerSec|处理: 每秒写入的行数|每秒计数|平均值|在处理过程中写入行的速率。|
+|CommandPoolBusyThreads|线程: 命令池繁忙线程数|计数|平均值|命令线程池中的繁忙线程数。|
+|CommandPoolIdleThreads|线程: 命令池空闲线程数|计数|平均值|命令线程池中的空闲线程数。|
+|LongParsingBusyThreads|线程: 长分析繁忙线程数|计数|平均值|长分析线程池中的繁忙线程数。|
+|LongParsingIdleThreads|线程: 长分析空闲线程数|计数|平均值|长分析线程池中的空闲线程数。|
+|LongParsingJobQueueLength|线程: 长分析作业队列长度|计数|平均值|长分析线程池队列中的作业数。|
+|ProcessingPoolBusyIOJobThreads|线程: 处理池繁忙 I/O 作业线程数|计数|平均值|处理线程池中正在运行 I/O 作业的线程数。|
+|ProcessingPoolBusyNonIOThreads|线程: 处理池繁忙非 I/O 线程数|计数|平均值|处理线程池中正在运行非 I/O 作业的线程数。|
+|ProcessingPoolIOJobQueueLength|线程: 处理池 I/O 作业队列长度|计数|平均值|处理线程池队列中的 I/O 作业数。|
+|ProcessingPoolIdleIOJobThreads|线程: 处理池空闲 I/O 作业线程数|计数|平均值|处理线程池中可用于 I/O 作业的空闲线程数。|
+|ProcessingPoolIdleNonIOThreads|线程: 处理池空闲非 I/O 线程数|计数|平均值|处理线程池中专用于非 I/O 作业的空闲线程数。|
+|QueryPoolIdleThreads|线程: 查询池空闲线程数|计数|平均值|处理线程池中可用于 I/O 作业的空闲线程数。|
+|QueryPoolJobQueueLength|线程: 查询池作业队列长度|计数|平均值|查询线程池队列中的作业数。|
+|ShortParsingBusyThreads|线程: 短分析繁忙线程数|计数|平均值|短分析线程池中的繁忙线程数。|
+|ShortParsingIdleThreads|线程: 短分析空闲线程数|计数|平均值|短分析线程池中的空闲线程数。|
+|ShortParsingJobQueueLength|线程: 短分析作业队列长度|计数|平均值|短分析线程池队列中的作业数。|
+|memory_thrashing_metric|内存抖动|百分比|平均值|平均内存抖动。|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
@@ -596,17 +684,33 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |度量值|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|
+|database_cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|
 |physical_data_read_percent|数据 IO 百分比|百分比|平均值|数据 IO 百分比|
+|database_physical_data_read_percent|数据 IO 百分比|百分比|平均值|数据 IO 百分比|
 |log_write_percent|日志 IO 百分比|百分比|平均值|日志 IO 百分比|
+|database_log_write_percent|日志 IO 百分比|百分比|平均值|日志 IO 百分比|
 |dtu_consumption_percent|DTU 百分比|百分比|平均值|DTU 百分比|
+|database_dtu_consumption_percent|DTU 百分比|百分比|平均值|DTU 百分比|
 |storage_percent|存储百分比|百分比|平均值|存储百分比|
 |workers_percent|辅助角色百分比|百分比|平均值|辅助角色百分比|
+|database_workers_percent|辅助角色百分比|百分比|平均值|辅助角色百分比|
 |sessions_percent|会话百分比|百分比|平均值|会话百分比|
+|database_sessions_percent|会话百分比|百分比|平均值|会话百分比|
 |eDTU_limit|eDTU 限制|计数|平均值|eDTU 限制|
 |storage_limit|存储限制|字节|平均值|存储限制|
 |eDTU_used|已用的 eDTU|计数|平均值|已用的 eDTU|
 |storage_used|已用的存储量|字节|平均值|已用的存储量|
+|database_storage_used|已用的存储量|字节|平均值|已用的存储量|
 |xtp_storage_percent|内存中 OLTP 存储百分比|百分比|平均值|内存中 OLTP 存储百分比|
+
+## <a name="microsoftsqlservers"></a>Microsoft.Sql/servers
+
+|度量值|指标显示名称|计价单位|聚合类型|说明|
+|---|---|---|---|---|
+|dtu_consumption_percent|DTU 百分比|百分比|平均值|DTU 百分比|
+|database_dtu_consumption_percent|DTU 百分比|百分比|平均值|DTU 百分比|
+|storage_used|已用的存储量|字节|平均值|已用的存储量|
+|database_storage_used|已用的存储量|字节|平均值|已用的存储量|
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 
@@ -635,7 +739,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |BytesReceived|数据输入|字节|总计|数据输入|
 |BytesSent|数据输出|字节|总计|数据输出|
 
-## <a name="microsoftwebsites-including-functions"></a>Microsoft.Web/sites（包括 Functions）
+## <a name="microsoftwebsites-excluding-functions"></a>Microsoft.Web/sites（不包括 Functions）
 
 |度量值|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
@@ -655,6 +759,16 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |MemoryWorkingSet|内存工作集|字节|平均值|内存工作集|
 |AverageMemoryWorkingSet|平均内存工作集|字节|平均值|平均内存工作集|
 |AverageResponseTime|平均响应时间|秒|平均值|平均响应时间|
+
+## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (Functions)
+
+|度量值|指标显示名称|计价单位|聚合类型|说明|
+|---|---|---|---|---|
+|BytesReceived|数据输入|字节|总计|数据输入|
+|BytesSent|数据输出|字节|总计|数据输出|
+|Http5xx|Http 服务器错误|计数|总计|Http 服务器错误|
+|MemoryWorkingSet|内存工作集|字节|平均值|内存工作集|
+|AverageMemoryWorkingSet|平均内存工作集|字节|平均值|平均内存工作集|
 |FunctionExecutionUnits|函数执行单位数|计数|平均值|函数执行单位数|
 |FunctionExecutionCount|函数执行计数|计数|平均值|函数执行计数|
 
@@ -685,5 +799,4 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 * [了解 Azure 监视器中的指标](monitoring-overview-metrics.md)
 * [针对指标创建警报](insights-receive-alert-notifications.md)
 * [将指标导出到存储、事件中心或 Log Analytics](monitoring-overview-of-diagnostic-logs.md)
-
 

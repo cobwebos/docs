@@ -8,13 +8,13 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 07/05/2017
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c8d75b0ce8bba4d0c065f86c199538b4a51f4bee
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: 7ea14ccd4ad825d3cf7aa796b0360ada4d55974a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 ---
 
@@ -49,6 +49,10 @@ Azure 行业领先的 99.99% 可用性服务级别协议 (SLA)（由 Microsoft �
 
 ## <a name="secure-your-data"></a>保护数据
 通过一系列对访问进行限制、对静止和运行中的数据进行保护以及帮助你监视活动的功能，Azure 数据库服务实现了用于 MySQL 的 Azure 数据库一贯具有的数据安全性。 有关 Azure 平台安全性的信息，请访问 [Azure 信任中心](https://www.microsoft.com/en-us/TrustCenter/Security/default.aspx)。
+
+用于 MySQL 的 Azure 数据库服务为静态数据使用存储加密。 在磁盘上加密所有数据（包括备份）。 该服务使用包含在 Azure 存储加密中的 AES 256 位密码，并且密钥由系统进行管理。 存储加密始终可用，并且不能禁用。
+
+默认情况下，将用于 MySQL 的 Azure 数据库服务配置为要求网络中传输的数据具备 [SSL 连接安全性](./concepts-ssl-connection-security.md)。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。  （可选）如果客户端应用程序不支持 SSL 连接，则可以禁止要求 SSL 连接到数据库服务。
 
 ## <a name="next-steps"></a>后续步骤
 现在，你已阅读了用于 MySQL 的 Azure 数据库的简介并回答了“什么是用于 MySQL 的 Azure 数据库”这个问题，因此可以继续完成以下内容：

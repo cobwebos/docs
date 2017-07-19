@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/06/2017
+ms.date: 06/29/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 41f9742befcc034f46f166b1f3f3d81ef67f83e7
-ms.lasthandoff: 03/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 3f447e049ccd33c77f422e8aa703ad6646f9ffa2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -141,11 +142,7 @@ internal static class Program
 ![Service Fabric 调试输出窗口][3]
 
 ## <a name="next-steps"></a>后续步骤
-* [Reliable Actors 如何使用 Service Fabric 平台](service-fabric-reliable-actors-platform.md)
-* [执行组件状态管理](service-fabric-reliable-actors-state-management.md)
-* [执行组件生命周期和垃圾回收](service-fabric-reliable-actors-lifecycle.md)
-* [执行组件 API 参考文档](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [代码示例](https://github.com/Azure/servicefabric-samples)
+了解有关 [Reliable Actors 如何使用 Service Fabric 平台](service-fabric-reliable-actors-platform.md)的详细信息。
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject.PNG
