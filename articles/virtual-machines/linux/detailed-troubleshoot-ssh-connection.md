@@ -14,17 +14,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: support-article
-ms.date: 03/07/2017
+ms.date: 05/18/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: df65c08a56596af2341b9cad4c89b5d18f6c6404
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: f31f17121fdb42f4ae911efde9e98bbd223d0680
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
-# <a name="detailed-ssh-troubleshooting-steps"></a>SSH 详细故障排除步骤
-有许多可能的原因会导致 SSH 客户端无法连接到 VM 上的 SSH 服务。 如果已经执行了较[常规的 SSH 故障排除步骤](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，则需要进一步排查连接问题。 本文将指导用户完成详细的故障排除步骤，以确定 SSH 连接失败的位置及其解决方法。
+# <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>对连接到 Azure 中 Linux VM 时出现的问题进行 SSH 故障排除的具体步骤
+有许多可能的原因会导致 SSH 客户端无法连接到 VM 上的 SSH 服务。 如果已经执行了较[常规的 SSH 故障排除步骤](troubleshoot-ssh-connection.md)，则需要进一步排查连接问题。 本文将指导用户完成详细的故障排除步骤，以确定 SSH 连接失败的位置及其解决方法。
 
 ## <a name="take-preliminary-steps"></a>采取预备步骤
 下图显示了与错误相关的组件。
@@ -95,7 +96,7 @@ ms.lasthandoff: 04/03/2017
 
 ![突出显示组织边缘设备的图表](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
 
-如果没有直接连接到 Internet 的计算机，可以在其自己的资源组或云服务中创建新的 Azure VM，然后进行使用。 有关详细信息，请参阅[在 Azure 中创建运行 Linux 的虚拟机](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 测试完成后，请删除资源组或 VM 以及云服务。
+如果没有直接连接到 Internet 的计算机，可以在其自己的资源组或云服务中创建新的 Azure VM，然后进行使用。 有关详细信息，请参阅[在 Azure 中创建运行 Linux 的虚拟机](quick-create-cli.md)。 测试完成后，请删除资源组或 VM 以及云服务。
 
 如果可以创建与直接连接到 Internet 的计算机之间的 SSH 连接，则检查你的组织边缘设备中是否存在以下问题：
 
@@ -113,7 +114,7 @@ ms.lasthandoff: 04/03/2017
 
 ![突出显示云服务终结点和 ACL 的图表](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot4.png)
 
-如果同一虚拟网络中没有其他 VM，可以轻松创建一个 VM。 有关详细信息，请参阅[使用 CLI 在 Azure 上创建 Linux VM](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 测试完成后，请删除多余的 VM。
+如果同一虚拟网络中没有其他 VM，可以轻松创建一个 VM。 有关详细信息，请参阅[使用 CLI 在 Azure 上创建 Linux VM](quick-create-cli.md)。 测试完成后，请删除多余的 VM。
 
 如果可以与同一虚拟网络中的某个 VM 建立 SSH 连接，请检查以下区域：
 
@@ -143,6 +144,6 @@ ms.lasthandoff: 04/03/2017
 * Azure 虚拟机上运行的入侵检测或网络监视软件阻止了 SSH 连接。
 
 ## <a name="additional-resources"></a>其他资源
-有关对应用程序访问进行故障排除的详细信息，请参阅 [Troubleshoot access to an application running on an Azure virtual machine](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（对在 Azure 虚拟机上运行的应用程序的访问进行故障排除）
+有关对应用程序访问进行故障排除的详细信息，请参阅 [Troubleshoot access to an application running on an Azure virtual machine](troubleshoot-app-connection.md)（对在 Azure 虚拟机上运行的应用程序的访问进行故障排除）
 
 

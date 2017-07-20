@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 05/23/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
-ms.openlocfilehash: cec0ceb0da57150e4bdd9f9a0f6d3e751c108523
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 00d030a502cf70ea9a5dea767f560cdf2919573e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -44,10 +46,13 @@ Log Analytics 从 OMS 工作区中已连接的源收集数据并将其存储在 
 
 ![配置 Windows 事件](./media/log-analytics-data-sources/configure-events.png)
 
-1. 在 OMS 控制台中，选择“**设置**”磁贴。
+1. 在 OMS 控制台，单击屏幕顶部的“设置”磁贴或者“设置”按钮。
 2. 选择“**数据**”。
 3. 单击要配置的数据源。
 4. 按照上表中每个数据源链接到的文档，了解有关其配置的详细信息。
+
+> [!NOTE]
+> 目前无法在 Azure 门户中配置 Log Analytics 数据源。
 
 ## <a name="data-collection"></a>数据收集
 数据源配置将在几分钟内传送到与 Log Analytics 直接连接的各个代理。  指定的数据从代理收集，并按特定于每个数据源的时间间隔直接传送到 Log Analytics。  请参阅每个数据源的文档以了解详情。
@@ -63,9 +68,4 @@ Log Analytics 所收集的所有数据都作为记录存储在 OMS 存储库。 
 * 了解[解决方案](log-analytics-add-solutions.md)如何将功能添加到 Log Analytics，以及如何将数据收集到 OMS 存储库。
 * 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。  
 * 配置[警报](log-analytics-alerts.md)以便主动向你通知从数据源和解决方案中收集的关键数据。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

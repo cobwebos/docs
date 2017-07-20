@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/23/2017
+ms.date: 05/23/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: eec118430c6262626728c3156634361c977ccb4b
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: c34fb7295e8f386f0e7cf2c1db6b26a3e49eae98
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -32,6 +33,9 @@ ms.lasthandoff: 03/29/2017
 ## <a name="create-an-alert-rule"></a>创建警报规则
 
 若要使用 OMS 门户创建警报规则，首先请针对应该调用警报的记录创建日志搜索。  然后，就可以使用“**警报**”按钮创建和配置警报规则。
+
+>[!NOTE]
+> 当前在 OMS 工作区中最多可以创建 250 个警报规则。 
 
 1. 从 OMS“概述”页中，单击“**日志搜索**”。
 2. 创建新的日志搜索查询，或选择已保存的日志搜索。 

@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: sedusch
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 258ccee349e07448ebebaebe64cd6fb6888d7ed4
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 7fa853983119ef4e570b768ca177d169c6e17153
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/20/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -46,8 +46,8 @@ ms.lasthandoff: 05/20/2017
 
 * SAP 说明 [2205917]：SUSE Linux Enterprise Server for SAP Applications 的建议 OS 设置
 * SAP 说明 [1944799]：SUSE Linux Enterprise Server for SAP Applications 的 SAP HANA 指导原则
-* [SAP HANA SR 性能优化方案][suse-hana-ha-guide]  
-  本指南包含用于在本地设置 SAP HANA 系统复制的全部所需信息。 请使用本指南作为基准。
+* [SAP HANA SR 性能优化方案][suse-hana-ha-guide]本指南包含用于在本地设置 SAP HANA 系统复制的全部所需信息。 请使用本指南作为基准。
+  
 ## <a name="deploying-linux"></a>部署 Linux
 
 SUSE Linux Enterprise Server for SAP Applications 中已随附 SAP HANA 的资源代理。

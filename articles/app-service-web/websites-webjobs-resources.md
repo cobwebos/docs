@@ -14,22 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2017
 ms.author: glenga
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: fc5c87e45f3c92172f01a462451bc145ce8b0b16
-ms.lasthandoff: 03/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 9023ca104fcab29bc0b16ecd3a6584848e2d453e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
 # <a name="azure-webjobs-documentation-resources"></a>Azure Web 作业文档资源
 ## <a name="overview"></a>概述
-本主题提供了有关如何使用 Azure Web 作业和 Azure WebJobs SDK 的文档资源的链接。 通过使用 Azure Web 作业，可以方便地在[应用服务 Web 应用、API 应用或移动应用](../app-service/app-service-value-prop-what-is.md)的上下文中将脚本或程序作为后台进程运行。 你可以上载和运行可执行文件，例如 cmd、bat、exe (.NET)、ps1、sh、php、py、js 和 jar。 这些程序将按计划 (cron) 或者连续地以 Web 作业的形式运行。
+本主题提供了有关如何使用 Azure Web 作业和 Azure WebJobs SDK 的文档资源的链接。 通过使用 Azure Web 作业，可以方便地在[应用服务 Web 应用、API 应用或移动应用](../app-service/app-service-value-prop-what-is.md)的上下文中将脚本或程序作为后台进程运行。 可上传和运行可执行文件，例如 cmd、bat、exe (.NET)、ps1、sh、php、py、js 和 jar。 这些程序将按计划 (cron) 或者连续地以 Web 作业的形式运行。
 
-[WebJobs SDK](websites-webjobs-resources.md) 用于简化针对 Web 作业执行的常见任务（如图像处理、队列处理、RSS 聚合、文件维护和发送电子邮件）编写的代码。 WebJobs SDK 的内置功能使用 Azure 存储空间和 Service Bus，用于计划任务和处理错误，以及用于许多其他常见方案。 此外，还可以扩展其设计，且拥有[用于扩展的开源存储库](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)。 [Azure Functions](../azure-functions/functions-overview.md)（当前以预览版提供）基于使用 C# 脚本、Node.js 和其他语言的 WebJobs SDK 的版本。 
+[WebJobs SDK](https://docs.microsoft.com/azure/app-service-web/websites-dotnet-webjobs-sdk) 用于简化针对 Web 作业执行的常见任务（如图像处理、队列处理、RSS 聚合、文件维护和发送电子邮件）编写的代码。 WebJobs SDK 的内置功能使用 Azure 存储和 Service Bus，用于计划任务和处理错误，以及用于许多其他常见方案。 此外，还可以扩展其设计，且拥有[用于扩展的开源存储库](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)。 [Azure Functions](../azure-functions/functions-overview.md)（当前以预览版提供）基于使用 C# 脚本、Node.js 和其他语言的 WebJobs SDK 的版本。 
 
 [!INCLUDE [app-service-web-webjobs-corenote](../../includes/app-service-web-webjobs-corenote.md)]
 
-使用 Visual Studio 中集成的工具，可以顺利地创建、部署和管理 Web 作业。 你可以从模板创建 Web 作业，还可以发布和管理（运行/停止/监视/调试）这些作业。 
+使用 Visual Studio 中集成的工具，可以顺利地创建、部署和管理 Web 作业。 可从模板创建 Web 作业，还可以发布和管理（运行、停止、监视和调试）这些作业。 
 
 Azure 门户中的 Web 作业仪表板提供了强大的管理功能，可让你全面控制 Web 作业的执行，包括调用 Web 作业中的各个函数。 该仪表板还会显示函数运行时和日志记录输出。 
 
@@ -38,7 +39,7 @@ Azure 门户中的 Web 作业仪表板提供了强大的管理功能，可让你
 * [Azure Web 作业功能很强大，快来试试吧！](http://www.troyhunt.com/2015/01/azure-webjobs-are-awesome-and-you.html) （Troy Hunt 的博客文章。）
 * [Azure Web 作业功能](https://azure.microsoft.com/blog/2014/10/22/webjobs-goes-into-full-production/)
 * [什么是 WebJobs SDK](websites-dotnet-webjobs-sdk.md)
-* [Microsoft 模式与实践中的后台作业指南](/documentation/articles/best-practices-background-jobs/)
+* [Microsoft 模式与实践中的后台作业指南](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs)
 * [宣布推出 Microsoft Azure WebJobs SDK 1.1.0 RTM](https://azure.microsoft.com/blog/azure-webjobs-sdk-1-1-0-rtm/)
 * [Azure WebJobs SDK 入门](websites-dotnet-webjobs-sdk-get-started.md)
 * [如何通过 WebJobs SDK 使用 Azure 队列存储](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)
@@ -88,13 +89,13 @@ Azure 门户中的 Web 作业仪表板提供了强大的管理功能，可让你
 
 ## <a name="scale"></a>缩放 Web 作业
 * [缩放 Azure 网站上的 Web 应用程序](http://msdn.microsoft.com/magazine/dn786914.aspx)
-* [Azure App Service：构建随时可投入业务的大规模 Web 应用](https://channel9.msdn.com/Events/Build/2014/3-626)。 介绍如何使用 Web 作业（包括 WebJobs SDK）缩放 Web 应用。
+* [Azure 应用服务：构建随时可投入业务的大规模 Web 应用](https://channel9.msdn.com/Events/Build/2014/3-626)。 介绍如何使用 Web 作业（包括 WebJobs SDK）缩放 Web 应用。
 * 视频
   * [向外缩放 WebJobs](http://channel9.msdn.com/Shows/Azure-Friday/Azure-WebJobs-105-Scaling-out-Web-Jobs)
 
 ## <a name="additional"></a>其他 Web 作业资源
 * [Magnus Mårtensson 发表的 Azure Web 作业 GA 博客文章](http://magnusmartensson.com/azure-webjobs-ga)
-* [在 Azure App Service 上运行 Powershell Web 作业](http://blogs.msdn.com/b/nicktrog/archive/2014/01/22/running-powershell-web-jobs-on-azure-websites.aspx)
+* [在 Azure 应用服务上运行 Powershell Web 作业](http://blogs.msdn.com/b/nicktrog/archive/2014/01/22/running-powershell-web-jobs-on-azure-websites.aspx)
 * [在 Azure 完成触发 Web 作业时接收通知](http://blog.amitapple.com/post/2014/03/webjobs-notification/)
 * [使用 Web 作业创建简单的 Web 应用备份保留策略](https://azure.microsoft.com/blog/2014/04/28/simple-web-site-backup-retention-policy-with-webjobs/)
 * [在处理第一个请求时 Azure Web 应用和云服务速度缓慢](http://wp.sjkp.dk/windows-azure-websites-and-cloud-services-slow-on-first-request/)。 演示如何使用 Web 作业来模拟仅适用于标准定价层的 AlwaysOn 功能。
@@ -109,7 +110,7 @@ Azure 门户中的 Web 作业仪表板提供了强大的管理功能，可让你
 * [WebJobs SDK 源代码](https://github.com/Azure/azure-webjobs-sdk)
 * [WebJobs SDK 扩展源代码](https://github.com/Azure/azure-webjobs-sdk-extensions)，其中包含[扩展性模型的详细指南](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)。  
 * [WebJobs SDK 脚本源代码](https://github.com/Azure/azure-webjobs-sdk-script/)（用于 [Azure Functions](../azure-functions/functions-overview.md)）
-* [使用 WebJobs SDK 将 FREB 文件上载到 Azure 存储的 Web 作业](http://thenextdoorgeek.com/post/WAWS-WebJob-to-upload-FREB-files-to-Azure-Storage-using-the-WebJobs-SDK)
+* [使用 WebJobs SDK 将 FREB 文件上传到 Azure 存储的 Web 作业](http://thenextdoorgeek.com/post/WAWS-WebJob-to-upload-FREB-files-to-Azure-Storage-using-the-WebJobs-SDK)
 * [在 Azure 外部托管 Web 作业，获得 Azure 托管 Web 作业的日志记录优势](http://bypassion.dk/?p=510)
 * [使用 Azure Web 作业生成数据导入工具](http://www.freshconsulting.com/building-data-import-tool-azure-webjobs/)
 * [Azure Functions 概述](../azure-functions/functions-overview.md)

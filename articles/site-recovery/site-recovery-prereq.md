@@ -12,24 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 03/27/2017
+ms.date: 06/23/2017
 ms.author: rajanaki
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 5ff598af73b6be727753ecac5b99f28bae19a417
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 1ed0bfe4f1b77db00dc858f010f72e084e77039e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/31/2017
 
 ---
 
-#  <a name="prerequisites-for-replication-to-azure-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 复制到 Azure 的先决条件
+#  <a name="prerequisites-for-replication-from-on-premises-to-azure-using-azure-site-recovery"></a>使用 Azure Site Recovery 从本地复制到 Azure 的先决条件
 
+> [!div class="op_single_selector"]
+> * [从 Azure 复制到 Azure](site-recovery-azure-to-azure-prereq.md)
+> * [从本地复制到 Azure](site-recovery-prereq.md)
 
-Azure Site Recovery 服务可协调本地物理服务器和虚拟机到云 (Azure) 或辅助数据中心的复制，进而促进业务连续性和灾难恢复 (BCDR) 策略。 当主要位置发生故障时，可以故障转移到辅助位置，使应用和工作负荷保持可用。 当主要位置恢复正常时，可以故障回复到主要位置。 有关 Site Recovery 的详细信息，请参阅[什么是 Site Recovery？](site-recovery-overview.md)。
+Azure Site Recovery 服务可协调 Azure 虚拟机到另一 Azure 区域的复制，以及本地物理服务器和虚拟机到云 (Azure) 或辅助数据中心的复制，进而促进业务连续性和灾难恢复 (BCDR) 策略。 当主要位置发生故障时，可以故障转移到辅助位置，使应用和工作负荷保持可用。 当主要位置恢复正常时，可以故障回复到主要位置。 有关 Site Recovery 的详细信息，请参阅[什么是 Site Recovery？](site-recovery-overview.md)。
 
-本文总结了开始使用 Site Recovery 复制到 Azure 所需的先决条件。
+本文总结了开始使用 Site Recovery 从本地复制到 Azure 所需的先决条件。
 
 欢迎在本文底部发表任何看法，或者在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)上咨询技术问题。
-
 
 ## <a name="azure-requirements"></a>Azure 要求
 
@@ -37,14 +40,14 @@ Azure Site Recovery 服务可协调本地物理服务器和虚拟机到云 (Azur
 --- | ---
 **Azure 帐户** | 一个 [Microsoft Azure](http://azure.microsoft.com/) 帐户。<br/><br/> 你可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。
 **Site Recovery 服务** | 有关 Site Recovery 定价的详细信息，请参阅[站点恢复定价](https://azure.microsoft.com/pricing/details/site-recovery/)。 |
-**Azure 存储空间** | 需要一个 Azure 存储帐户来存储复制数据，且该帐户必须与恢复服务保管库位于同一区域。 复制的数据存储在 Azure 存储中，发生故障转移时将创建 Azure VM。<br/><br/> 根据要用于故障转移 Azure VM 的资源模型，可在 [Azure Resource Manager 模型](../storage/storage-create-storage-account.md)或[经典模型](../storage/storage-create-storage-account-classic-portal.md)下设置帐户。<br/><br/>可使用[异地冗余存储](../storage/storage-redundancy.md#geo-redundant-storage)或本地冗余存储。 建议使用异地冗余存储，以便在发生区域性故障或无法恢复主要区域时可复原数据。<br/><br/> 可以使用标准或高级存储。 [高级存储](https://docs.microsoft.com/azure/storage/storage-premium-storage)通常用于 IO 性能一贯较高且延迟一贯较低、托管 IO 密集型工作负荷的虚拟机。 如果使用高级存储来存储复制数据，则还需要一个标准存储帐户来存储复制日志，以便捕获本地数据正在发生的更改。<br/><br/>
+**Azure 存储** | 需要一个 Azure 存储帐户来存储复制数据，且该帐户必须与恢复服务保管库位于同一区域。 复制的数据存储在 Azure 存储中，发生故障转移时将创建 Azure VM。<br/><br/> 根据要用于故障转移 Azure VM 的资源模型，可在 [Azure Resource Manager 模型](../storage/storage-create-storage-account.md)或[经典模型](../storage/storage-create-storage-account-classic-portal.md)下设置帐户。<br/><br/>可使用[异地冗余存储](../storage/storage-redundancy.md#geo-redundant-storage)或本地冗余存储。 建议使用异地冗余存储，以便在发生区域性故障或无法恢复主要区域时可复原数据。<br/><br/> 可以使用标准或高级存储。 [高级存储](https://docs.microsoft.com/azure/storage/storage-premium-storage)通常用于 IO 性能一贯较高且延迟一贯较低、托管 IO 密集型工作负荷的虚拟机。 如果使用高级存储来存储复制数据，则还需要一个标准存储帐户来存储复制日志，以便捕获本地数据正在发生的更改。<br/><br/>
 **存储限制** | 无法跨资源组、在订阅中或跨订阅移动 Site Recovery 中所用的存储帐户。<br/><br/> 目前不支持复制到印度中部和印度南部的高级存储帐户。
 **Azure 网络** | 需要一个 Azure VM 故障转移后可连接的 Azure 网络，且该网络必须与恢复服务保管库位于同一区域。<br/><br/> 在 Azure 门户中，可使用 [Resource Manager 模型](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)或[经典模型](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)创建网络。<br/><br/> 如果从 System Center Virtual Machine Manager 复制到 Azure，则需要在 Virtual Machine Manager VM 网络与 Azure 网络之间设置网络映射，确保 Azure VM 在故障转移后连接到适当的网络。
 **网络限制** | 无法跨资源组、在订阅中或跨订阅移动 Site Recovery 中所用的网络帐户。
 **网络映射** | 如果复制 Virtual Machine Manager 云中的 Hyper-V VM，则需要设置网络映射，以便在故障转移后创建 Azure VM 时，这些 VM 可以连接到相应的网络。
 
 >[!NOTE]
->以下部分介绍客户环境中各组件的先决条件。 若要深入了解对特定配置的支持，请阅读[支持矩阵](site-recovery-support-matrix.md)。
+>以下部分介绍客户环境中各组件的先决条件。 有关对特定配置的支持的更多详细信息，请阅读[支持矩阵](site-recovery-support-matrix.md)。
 >
 
 ## <a name="disaster-recovery-of-vmware-virtual-machines-or-physical-windows-or-linux-servers-to-azure"></a>将 VMware 虚拟机或物理 Windows/Linux 服务器灾难恢复到 Azure
@@ -67,7 +70,7 @@ Azure Site Recovery 服务可协调本地物理服务器和虚拟机到云 (Azur
 | --- | --- |
 | **本地** (VMware VM) | 复制的 VM 上应已安装并运行 VMware 工具。<br/><br/> VM 应符合创建 Azure VM 的 [Azure 先决条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。<br/><br/>受保护计算机上单个磁盘的容量不应超过 1,023 GB。 <br/><br/>安装驱动器上至少需要 2 GB 的可用空间才能安装组件。<br/><br/>如果想要实现多个 VM 之间的一致性，应在 VM 本地防火墙中打开端口 20004。<br/><br/>计算机名称应包含 1 到 63 个字符（字母、数字和连字符）。 名称必须以字母或数字开头，并以字母或数字结尾。 为计算机启用复制后，可以修改 Azure 名称。<br/><br/> |
 | **Windows 计算机**（物理机或 VMware） | 计算机应运行支持的 64 位操作系统：Windows Server 2012 R2、Windows Server 2012 或 Windows Server 2008 R2 SP1 及更高版本。<br/><br/> 操作系统应安装在驱动器 C 上。OS 磁盘应为 Windows 基本磁盘而不是动态磁盘。 数据磁盘可以是动态磁盘。<br/><br/>|
-| **Linux 计算机**（物理机或 VMware） | 需要支持的 64 位操作系统：Red Hat Enterprise Linux 6.7、6.8、7.1 或 7.2；Centos 6.5、6.6、6.7、6.8、7.0、7.1 或 7.2；运行 Red Hat 兼容内核或 Unbreakable Enterprise Kern Release 3 (UEK3) 的 Oracle Enterprise Linux 6.4 或 6.5；SUSE Linux Enterprise Server 11 SP3；SUSE Linux Enterprise Server 11 SP4。<br/><br/>在受保护计算机上的 /etc/hosts 文件中，部分所含条目应将本地主机名映射到与所有网络适配器相关联的 IP 地址。<br/><br/>如果要在故障转移后使用安全外壳客户端 (ssh) 连接运行 Linux 的 Azure 虚拟机，请确保将受保护的计算机上的安全外壳服务设置为在系统启动时自动启动，并且防火墙规则允许与其建立 ssh 连接。<br/><br/>主机名、装载点、设备名称，以及 Linux 系统路径和文件名（例如 /etc/ 和 /usr）只能采用英文形式。<br/><br/>下列目录（如果设置为单独的分区/文件系统）必须位于源服务器的同一磁盘（OS 磁盘）：/ (root)、/boot、/usr、/usr/local、/var 和 /etc<br/><br/>当前 XFS 文件系统上的 ASR 尚不支持 XFS v5 功能（如元数据校验和）。 请确保你的 XFS 文件系统未使用任何 v5 功能。 可使用 xfs_info 实用工具来检查分区的 XFS 超级块。 如果将 ftyp 设置为 1，则使用 XFSv5 功能。<br/><br/>在 Red Hat Enterprise Linux 7 和 CentOS 7 服务器上，必须安装和提供 lsof 实用工具。<br/><br/>
+| **Linux 计算机**（物理机或 VMware） | 需要支持的 64 位操作系统：Red Hat Enterprise Linux 6.7、6.8、7.1 或 7.2；Centos 6.5、6.6、6.7、6.8、7.0、7.1 或 7.2；Ubuntu 14.04 LTS 服务器（有关 Ubuntu 支持的内核版本列表，请参阅[支持的操作系统](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)）；运行 Red Hat 兼容内核或 Unbreakable Enterprise Kern Release 3 (UEK3) 的 Oracle Enterprise Linux 6.4 或 6.5；SUSE Linux Enterprise Server 11 SP3；SUSE Linux Enterprise Server 11 SP4。<br/><br/>在受保护计算机上的 /etc/hosts 文件中，部分所含条目应将本地主机名映射到与所有网络适配器相关联的 IP 地址。<br/><br/>如果要在故障转移后使用安全外壳客户端 (ssh) 连接运行 Linux 的 Azure 虚拟机，请确保将受保护的计算机上的安全外壳服务设置为在系统启动时自动启动，并且防火墙规则允许与其建立 ssh 连接。<br/><br/>主机名、装载点、设备名称，以及 Linux 系统路径和文件名（例如 /etc/ 和 /usr）只能采用英文形式。<br/><br/>下列目录（如果设置为单独的分区/文件系统）必须位于源服务器的同一磁盘（OS 磁盘）：/ (root)、/boot、/usr、/usr/local、/var 和 /etc<br/><br/>当前 XFS 文件系统上的 ASR 尚不支持 XFS v5 功能（如元数据校验和）。 请确保你的 XFS 文件系统未使用任何 v5 功能。 可使用 xfs_info 实用工具来检查分区的 XFS 超级块。 如果将 ftyp 设置为 1，则使用 XFSv5 功能。<br/><br/>在 Red Hat Enterprise Linux 7 和 CentOS 7 服务器上，必须安装和提供 lsof 实用工具。<br/><br/>
 
 
 ## <a name="disaster-recovery-of-hyper-v-virtual-machines-to-azure-no-virtual-machine-manager"></a>将 Hyper-V 虚拟机灾难恢复到 Azure（无 Virtual Machine Manager）

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2017
+ms.date: 06/19/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 44e0d7c920bc32bf3293ca5ab197b6d2332a43f8
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 662db10a30d4581a77c75204f49e7f5c731342ac
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -138,26 +138,26 @@ public IDictionary<string, string> Execute(
 
     ```csharp
 
-// Comment these lines if using VS 2017
-using System.IO;
-using System.Globalization;
-using System.Diagnostics;
-using System.Linq;
-// --------------------
+    // Comment these lines if using VS 2017
+    using System.IO;
+    using System.Globalization;
+    using System.Diagnostics;
+    using System.Linq;
+    // --------------------
 
-// Comment these lines if using <= VS 2015
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-// ---------------------
+    // Comment these lines if using <= VS 2015
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    // ---------------------
 
-using Microsoft.Azure.Management.DataFactories.Models;
-using Microsoft.Azure.Management.DataFactories.Runtime;
+    using Microsoft.Azure.Management.DataFactories.Models;
+    using Microsoft.Azure.Management.DataFactories.Runtime;
 
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Blob;
     ```
 6. 将**命名空间**名称更改为 **MyDotNetActivityNS**。
 
@@ -267,7 +267,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
         // get the folder path from the output dataset definition
         folderPath = GetFolderPath(outputDataset);
 
-        // log the output folder path    
+        // log the output folder path   
         logger.Write("Writing blob to the folder: {0}", folderPath);
     
         // create a storage object for the output blob.
@@ -303,7 +303,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
             return null;
         }
 
-        // get type properties of the dataset    
+        // get type properties of the dataset   
         AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
         if (blobDataset == null)
         {
@@ -389,18 +389,18 @@ using Microsoft.WindowsAzure.Storage.Blob;
     > 在 zip 文件中，用于自定义活动的所有文件必须在不包含任何子文件夹的**顶级**目录中。
 
     ![二进制输出文件](./media/data-factory-use-custom-activities/Binaries.png)
-14. 创建名为 **customactivitycontainer** 的 Blob 容器（如果不存在）。    
-15. 将 MyDotNetActivity.zip 作为 Blob 上载到 AzureStorageLinkedService 引用的**通用** Azure Blob 存储（不是热/冷 Blob 存储）中的 customactivitycontainer。  
+14. 创建名为 **customactivitycontainer** 的 Blob 容器（如果不存在）。 
+15. 将 MyDotNetActivity.zip 作为 Blob 上传到 AzureStorageLinkedService 引用的通用 Azure Blob 存储（不是热/冷 Blob 存储）中的 customactivitycontainer。  
 
 > [!IMPORTANT]
-> 若将此 .NET 活动项目添加到包含数据工厂项目的 Visual Studio 中的解决方案内，并从数据工厂应用程序项目添加对 .NET 活动项目的引用，则无需执行手动创建 zip 文件并将其上载到通用 Azure Blob 存储的最后两个步骤。 使用 Visual Studio 发布数据工厂实体时，发布过程将自动完成这些步骤。 有关详细信息，请参阅 [Visual Studio 中的数据工厂项目](#data-factory-project-in-visual-studio)部分。
+> 若将此 .NET 活动项目添加到包含数据工厂项目的 Visual Studio 中的解决方案内，并从数据工厂应用程序项目添加对 .NET 活动项目的引用，则无需执行手动创建 zip 文件并将其上传到通用 Azure Blob 存储的最后两个步骤。 使用 Visual Studio 发布数据工厂实体时，发布过程将自动完成这些步骤。 有关详细信息，请参阅 [Visual Studio 中的数据工厂项目](#data-factory-project-in-visual-studio)部分。
 
 ## <a name="create-a-pipeline-with-custom-activity"></a>创建包含自定义活动的管道
-现已创建自定义活动并将包含二进制的 zip 文件上载到**通用** Azure 存储帐户中的 Blob 容器。 在本部分，我们将创建一个 Azure 数据工厂，其中包含一个使用自定义活动的管道。
+现已创建自定义活动并将包含二进制的 zip 文件上传到**通用** Azure 存储帐户中的 Blob 容器。 在本部分，我们将创建一个 Azure 数据工厂，其中包含一个使用自定义活动的管道。
 
 自定义活动的输入数据集表示 Blob 存储中 adftutorial 容器的 customactivityinput 文件夹中的 Blob（文件）。 活动的输出数据集表示 Blob 存储中 adftutorial 容器的 customactivityoutput 文件夹中的输出 Blob。
 
-创建包含以下内容的 **file.txt** 文件，并将它上载到 **adftutorial** 容器的 **customactivityinput** 文件夹中。 创建 adftutorial 容器（如果不存在）。 
+创建包含以下内容的 **file.txt** 文件，并将它上传到 **adftutorial** 容器的 **customactivityinput** 文件夹中。 创建 adftutorial 容器（如果不存在）。 
 
 ```
 test custom activity Microsoft test custom activity Microsoft
@@ -690,7 +690,7 @@ test custom activity Microsoft test custom activity Microsoft
 ## <a name="troubleshoot-failures"></a>排除故障
 故障排除包括一些基本技巧：
 
-1. 如果看到以下错误，表示可能使用了热/冷 Blob 存储，而不是通用 Azure Blob 存储。 请将 zip 文件上载到**通用 Azure 存储帐户**。 
+1. 如果看到以下错误，表示可能使用了热/冷 Blob 存储，而不是通用 Azure Blob 存储。 请将 zip 文件上传到**通用 Azure 存储帐户**。 
  
     ```
     Error in Activity: Job encountered scheduling error. Code: BlobDownloadMiscError Category: ServerError Message: Miscellaneous error encountered while downloading one of the specified Azure Blob(s).

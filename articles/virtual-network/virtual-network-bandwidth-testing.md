@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: steveesp
-translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: d05bed3b92836bf496804c9d40b5a62a96ffbc3d
-ms.lasthandoff: 03/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: a2cbb6ca9197c7af0d1d30e87d58b0314507a531
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -128,6 +129,38 @@ ntttcp -s10.0.0.4 -t 300
 ```
  
 如果未给定时间参数，默认的测试持续时间为 60 秒
+
+## <a name="testing-between-vms-running-windows-and-linux"></a>测试在 Windows 和 Linux 之间运行的 VM：
+
+在此方案中，我们应启用非同步模式，以便可以运行测试。 通过对 Linux 使用“-N 标志”，对 Windows 使用“-ns 标志”完成操作。
+
+#### <a name="from-linux-to-windows"></a>从 Linux 到 Windows：
+
+接收方 <Windows>：
+
+``` bash
+ntttcp -r -m <2 x nr cores>,*,<Windows server IP>
+```
+
+发送方 <Linux>：
+
+``` bash
+ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
+```
+
+#### <a name="from-windows-to-linux"></a>从 Windows 到 Linux：
+
+接收方 <Linux>：
+
+``` bash 
+ntttcp -r -m <2 x nr cores>,*,<Linux server IP>
+```
+
+发送方 <Windows>：
+
+``` bash
+ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300
+```
 
 ## <a name="next-steps"></a>后续步骤
 * 根据得到的结果，也许能够为方案[优化网络吞吐量计算机](virtual-network-optimize-network-bandwidth.md)。
