@@ -2,10 +2,8 @@
 > * [Node.js](../articles/iot-hub/iot-hub-node-node-twin-getstarted.md)
 > * [C#/Node.js](../articles/iot-hub/iot-hub-csharp-node-twin-getstarted.md)
 > * [C#](../articles/iot-hub/iot-hub-csharp-csharp-twin-getstarted.md)
-> 
-> 
+> * [Java](../articles/iot-hub/iot-hub-java-java-twin-getstarted.md)
 
-## <a name="introduction"></a>介绍
 设备孪生是存储设备状态信息（元数据、配置和条件）的 JSON 文档。 IoT 中心为连接到它的每台设备保留一个设备孪生。
 
 使用设备克隆可以：
@@ -17,8 +15,6 @@
 
 > [!NOTE]
 > 设备孪生旨在执行同步以及查询设备的配置和条件。 [了解设备孪生][lnk-twins]中提供了有关何时使用设备孪生的详细信息。
-> 
-> 
 
 设备孪生存储在 IoT 中心内，其中包含：
 
@@ -33,8 +29,6 @@
 
 > [!NOTE]
 > 此时，只能从使用 MQTT 协议连接到 IoT 中心的设备访问设备克隆。 有关如何转换现有设备应用以使用 MQTT 的说明，请参阅 [MQTT 支持][lnk-devguide-mqtt]一文。
-> 
-> 
 
 本教程演示如何：
 
