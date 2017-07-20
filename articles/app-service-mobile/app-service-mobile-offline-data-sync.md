@@ -2,8 +2,8 @@
 title: "Azure 移动应用中的脱机数据同步 | Microsoft Docs"
 description: "Azure 移动应用脱机数据同步功能的概念参考和概述"
 documentationcenter: windows
-author: dhei
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 services: app-service\mobile
 ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
-ms.author: adrianha
+ms.author: glenga
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 15a3f9f40bdb84b939b30e33e5f2033411adc3cc
 ms.openlocfilehash: dc179f6186d501bc7c8e4ca72b2bf23e89a9443e

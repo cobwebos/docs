@@ -9,11 +9,11 @@ ms.technology: luis
 ms.topic: article
 ms.date: 03/01/2017
 ms.author: cahann
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 8bf05bdc9384410106b4fcc34b14789904241c89
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 7913b890a73098fcbf0dbe84217293e8a618a9f4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="language-understanding-intelligent-services-luis-frequently-asked-questions"></a>Language Understanding Intelligent Services (LUIS) Frequently Asked Questions
@@ -21,9 +21,21 @@ ms.lasthandoff: 06/29/2017
 This article contains answers to some frequently asked questions about LUIS.
 
 
-## <a name="i-want-to-build-an-app-in-luis-with-more-than-80-intents-what-should-i-do"></a>I want to build an app in LUIS with more than 80 intents. What should I do?
+## <a name="i-want-to-build-a-luis-app-with-more-than-80-intents-what-should-i-do"></a>I want to build a LUIS app with more than 80 intents. What should I do?
 
-Divide your intents into multiple LUIS apps, in which each app will group related intents. At runtime, you send the utterance to all the apps and pick the top firing intent with the highest confidence score. One best practice is to group related intents in one app.
+First, consider whether your system is using too many intents. Intents that are too similar can make it more difficult for LUIS to distinguish between them. Intents should be varied enough to capture the main tasks the user is asking for, but they don't need to capture every path your code takes. For example, BookFlight and BookHotel may be separate intents in a travel app, but BookInternationalFlight and BookDomesticFlight are too similar, and if your system needs to distinguish them, use entities or other logic rather than intents.
+
+If you cannot use fewer intents, divide your intents into multiple LUIS apps, by grouping together related intents. One best practice is to group related intents together if you're using multiple apps for your system. For example, if you're developing an office assistant that has over 80 intents, but 20 intents relate to scheduling meetings, 20 intents are about reminders, 20 intents are about getting information about colleagues, and 20 intents are for sending email, you can put the intent for each of those categories in a separate LUIS app. 
+
+When your system receives an utterance, you can use a variety of techniques to determine how to direct user utterances to LUIS apps:
+
+* Create a top-level LUIS app to determine the category of utterance, and then use the result to send the utterance to the LUIS app for that category.
+* Do some preprocessing on the utterance, like matching on regular expressions, to determine which LUIS app or set of apps receives it.
+
+Consider the following tradeoffs when deciding which approach you use with multiple LUIS apps:
+* **Saving suggested utterances for training** Your LUIS apps get a performance boost when you label the user utterances it receives, especially the [suggested utterances](./Label-Suggested-Utterances.md) that LUIS is relatively unsure of. Any LUIS app that doesn't receive an utterance won't have the benefit of learning from it.
+* **Calling LUIS apps in parallel instead of in series** It is a common to design a system to reduce to the number of REST API calls that happen in series to improve responsiveness. If you send the utterance to multiple LUIS apps and pick the intent with the highest score, you can call them in parallel by sending all the requests asynchronously. If you call a top-level LUIS app to determine a category, and then use the result to send the utterance to another LUIS app, the LUIS calls happen in series.
+
 
 
 ## <a name="i-want-to-build-an-app-in-luis-with-more-than-30-entities-what-should-i-do"></a>I want to build an app in LUIS with more than 30 entities. What should I do?

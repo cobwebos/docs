@@ -3,9 +3,9 @@ title: "使用 Azure 移动应用将推送通知添加到 iOS 应用"
 description: "了解如何使用 Azure 移动应用将推送通知发送到 iOS 应用。"
 services: app-service\mobile
 documentationcenter: ios
-manager: yochayk
+manager: syntaxc4
 editor: 
-author: ysxu
+author: ggailey777
 ms.assetid: fa503833-d23e-4925-8d93-341bb3fbab7d
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/10/2016
-ms.author: yuaxu
-translationtype: Human Translation
+ms.author: glenga
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: a21ae4b13479f66ada053153834a2b3cc5687e5a
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="add-push-notifications-to-your-ios-app"></a>将推送通知添加到 iOS 应用
@@ -30,25 +31,25 @@ ms.openlocfilehash: a21ae4b13479f66ada053153834a2b3cc5687e5a
 
 [iOS 模拟器不支持推送通知](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)。 需要一个物理 iOS 设备和 [Apple 开发人员计划成员身份](https://developer.apple.com/programs/ios/)。
 
-## <a name="a-nameconfigure-hubaconfigure-notification-hub"></a><a name="configure-hub"></a>配置通知中心
+## <a name="configure-hub"></a>配置通知中心
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a name="a-idregisteraregister-app-for-push-notifications"></a><a id="register"></a>为推送通知注册应用
+## <a id="register"></a>为推送通知注册应用
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
 ## <a name="configure-azure-to-send-push-notifications"></a>配置 Azure 以发送推送通知
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-## <a name="a-idupdate-serveraupdate-backend-to-send-push-notifications"></a><a id="update-server"></a>更新后端以发送推送通知
+## <a id="update-server"></a>更新后端以发送推送通知
 [!INCLUDE [app-service-mobile-dotnet-backend-configure-push-apns](../../includes/app-service-mobile-dotnet-backend-configure-push-apns.md)]
 
-## <a name="a-idadd-pushaadd-push-notifications-to-app"></a><a id="add-push"></a>将推送通知添加到应用
+## <a id="add-push"></a>将推送通知添加到应用
 [!INCLUDE [app-service-mobile-add-push-notifications-to-ios-app.md](../../includes/app-service-mobile-add-push-notifications-to-ios-app.md)]
 
-## <a name="a-idtestatest-push-notifications"></a><a id="test"></a>测试推送通知
+## <a id="test"></a>测试推送通知
 [!INCLUDE [Test Push Notifications in App](../../includes/test-push-notifications-in-app.md)]
 
-## <a name="a-idmoreamore"></a><a id="more"></a>其他信息
+## <a id="more"></a>其他信息
 * 使用模板可以灵活地发送跨平台推送和本地化推送。 [如何使用适用于 Azure 移动应用的 iOS 客户端库](app-service-mobile-ios-how-to-use-client-library.md#templates)说明了如何注册模板。
 
 <!-- Anchors.  -->
@@ -57,9 +58,4 @@ ms.openlocfilehash: a21ae4b13479f66ada053153834a2b3cc5687e5a
 
 <!-- URLs. -->
 [iOS 快速入门]: app-service-mobile-ios-get-started.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

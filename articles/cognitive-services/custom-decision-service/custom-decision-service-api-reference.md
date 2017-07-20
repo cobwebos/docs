@@ -8,11 +8,11 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: slivkins;marcozo;alekh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 6d930644d19ba495d691d384abbee8b955c4e8eb
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: 9262a067d0c6716ebdc24118219011c21187937a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 07/14/2017
 
 ---
 
@@ -138,7 +138,7 @@ $.ajax({
     contentType: "application/json" })
 ```
 
-Here `data` is the argument to the `callback()` function, as described previously. Using `data` in the click handling code requires some care. We provide an example in the [tutorial](custom-decision-service-tutorial.md#use-the-apis).
+Here `data` is the argument to the `callback()` function, as described previously. Using `data` in the click handling code requires some care. We provide an example in the [tutorial](custom-decision-service-tutorial-news.md#use-the-apis).
 
  For testing only, the Reward API can be invoked via [cURL](https://en.wikipedia.org/wiki/CURL):
 

@@ -8,11 +8,11 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: slivkins,marcozo,alekh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 556519bba53f004458059ab61a115bda0f5bb95d
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: b701629fb7a94e7a78e3a6f587508d2b856101bb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
+ms.lasthandoff: 07/14/2017
 
 ---
 
@@ -44,7 +44,7 @@ $.ajax({
     contentType: "application/json" })
 ```
 
-Here `data` is the argument to the `callback()` function, as described previously. We provide an implementation example in the [tutorial](custom-decision-service-tutorial.md#use-the-apis).
+Here `data` is the argument to the `callback()` function, as described previously. We provide an implementation example in the [tutorial](custom-decision-service-tutorial-news.md#use-the-apis).
 
 Finally, you need to provide the Action Set API, which returns the list of articles (actions) to be considered by Custom Decision Service. Implement this API as an RSS feed, as shown here:
 
@@ -67,5 +67,5 @@ Here each top-level `<item>` element describes an article. `<link>` is mandatory
 
 ### <a name="next-steps"></a>Next steps
 
-* Work through a [tutorial](custom-decision-service-tutorial.md) for a more in-depth example.
+* Work through a [tutorial](custom-decision-service-tutorial-news.md) for a more in-depth example.
 * Consult the [API reference](custom-decision-service-api-reference.md) to learn more about the provided functionality.

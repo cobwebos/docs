@@ -3,7 +3,7 @@ title: "从移动服务升级到 Azure 应用服务 - Node.js"
 description: "了解如何轻松将移动服务应用程序升级到应用服务移动应用"
 services: app-service\mobile
 documentationcenter: 
-author: dhei
+author: ggailey777
 manager: yochayk
 editor: 
 ms.assetid: c58f6df0-5aad-40a3-bddc-319c378218e3
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: mobile
 ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: adrianha
+ms.author: glenga
 ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 879854c4afc6fa5ac31f8e18dad0164e77f190cd

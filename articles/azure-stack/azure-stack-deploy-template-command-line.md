@@ -1,6 +1,6 @@
 ---
 title: Deploy templates with the command line in Azure Stack | Microsoft Docs
-description: Learn how to use the cross-platform command line interface (CLI) to deploy templates from inside the ClientVM or after using the VPN to connect to Azure Stack.
+description: Learn how to use the cross-platform command line interface (CLI) to deploy templates to Azure Stack.
 services: azure-stack
 documentationcenter: 
 author: heathl17
@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 07/10/2017
 ms.author: helaw
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 82a2475fd4f57a8a2f37dd45ad3870598465f789
-ms.openlocfilehash: 030e5ec3dea1ae498daf1936a9d92e9d11001704
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: cd1b61899ead7b4e86a81125841c1b37d019280b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/13/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
 # <a name="deploy-templates-in-azure-stack-using-the-command-line"></a>Deploy templates in Azure Stack using the command line
-Use the command line to deploy Azure Resource Manager templates to the Azure Stack POC. Azure Resource Manager templates deploy and provision all the resources for your application in a single, coordinated operation.
+Use the command line to deploy Azure Resource Manager templates to the Azure Stack Development Kit. Azure Resource Manager templates deploy and provision all the resources for your application in a single, coordinated operation.
 
 ## <a name="before-you-begin"></a>Before you begin
  - [Install and connect](azure-stack-connect-cli.md) to Azure Stack with Azure CLI
