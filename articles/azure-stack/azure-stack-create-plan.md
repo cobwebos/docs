@@ -15,15 +15,13 @@ ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 76f9de8744edf11510536405b6e91b92abd82642
+ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
+ms.openlocfilehash: ff34bcd6ba485806baf7963e11393633dd893fa7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
-# Create a plan in Azure Stack
-<a id="create-a-plan-in-azure-stack" class="xliff"></a>
+# <a name="create-a-plan-in-azure-stack"></a>Create a plan in Azure Stack
 [Plans](azure-stack-key-features.md) are groupings of one or more services. As a provider, you can create plans to offer to your tenants. In turn, your tenants subscribe to your offers to use the plans and services they include. This example shows you how to create a plan that includes the compute, network, and storage resource providers. This plan gives subscribers the ability to provision virtual machines.
 
 1. Sign in to the Azure Stack administrator portal (https://adminportal.local.azurestack.external). Enter the credentials for the account that you created during step 5 of the [Run the PowerShell script](azure-stack-run-powershell-script.md) section.
@@ -43,19 +41,19 @@ ms.lasthandoff: 07/10/2017
 6. Click **Quotas**, click **Microsoft.Storage (local)**, and then either select the default quota or click **Create new quota** to customize the quota.
 
    ![](media/azure-stack-create-plan/image04.png)
-7. Type a name for the quota, click **Quota Settings**, set the quota values and click **OK**, and then click **OK**.
+7. If you're creating a new quota, enter a name for the quota > set the quota values > click **OK** > click the name of the new quota.
 
    ![](media/azure-stack-create-plan/image06.png)
 8. Click **Microsoft.Network (local)**, and then either select the default quota or click **Create new quota** to customize the quota.
 
     ![](media/azure-stack-create-plan/image07.png)
-9. Type a name for the quota, click **Quota Settings**, set the quota values and click **OK**, and then click **OK**.
+9. If you're creating a new quota, type a name for the quota > set the quota values > click **OK** > click the name of the new quota.
 
     ![](media/azure-stack-create-plan/image08.png)
 10. Click **Microsoft.Compute (local)**, and then either select the default quota or click **Create new quota** to customize the quota.
 
     ![](media/azure-stack-create-plan/image09.png)
-11. Type a name for the quota, click **Quota Settings**, set the quota values and click **OK**, and then click **OK**.
+11. If you're creating a new quota, type a name for the quota > set the quota values > click **OK** > click the name of the new quota.
 
     ![](media/azure-stack-create-plan/image10.png)
 12. In the **Quotas** blade, click **OK**, and then in the **New Plan** blade, click **Create** to create the plan.
@@ -65,7 +63,6 @@ ms.lasthandoff: 07/10/2017
 
     ![](media/azure-stack-create-plan/image12.png)
 
-### Next steps
-<a id="next-steps" class="xliff"></a>
+### <a name="next-steps"></a>Next steps
 [Create an offer](azure-stack-create-offer.md)
 
