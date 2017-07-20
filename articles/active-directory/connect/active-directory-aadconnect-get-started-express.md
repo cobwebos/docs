@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/07/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 68e475891a91e4ae45a467cbda2b7b51c8020dbd
-ms.openlocfilehash: 240475240be76265c2a2f150a4a6d8f4aa0d3664
-ms.lasthandoff: 12/20/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 8a08f6e441a856a06bf7870747ca20af45a0364e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>通过快速设置开始使用 Azure AD Connect
@@ -36,7 +36,7 @@ ms.lasthandoff: 12/20/2016
 3. 在“欢迎”屏幕上，选中对应的框，同意许可条款，然后单击“继续”。  
 4. 在“快速设置”屏幕上，单击“使用快速设置”。  
    ![欢迎使用 Azure AD Connect](./media/active-directory-aadconnect-get-started-express/express.png)
-5. 在“连接到 Azure AD”屏幕上，输入 Azure AD 的全局管理员用户名和密码。 单击“下一步” 。  
+5. 在“连接到 Azure AD”屏幕上，输入 Azure AD 的全局管理员用户名和密码。 单击“下一步”。  
    ![连接到 Azure AD](./media/active-directory-aadconnect-get-started-express/connectaad.png)如果收到错误消息并出现连接问题，请参阅[排查连接问题](active-directory-aadconnect-troubleshoot-connectivity.md)。
 6. 在“连接到 AD DS”屏幕上，输入企业管理员帐户的用户名和密码。 可以采用 NetBios 或 FQDN 格式输入域部分，即 FABRIKAM\administrator 或 fabrikam.com\administrator。 单击“下一步”。  
    ![连接到 AD DS](./media/active-directory-aadconnect-get-started-express/connectad.png)
