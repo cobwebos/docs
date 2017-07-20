@@ -12,18 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 7/10/2017
+ms.date: 7/17/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 483c641c9705ad967ac9ea0c9591500288e7aa84
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: deb29f938ebde684a08af44c578c6993deebb7ff
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
-# Deploy the Azure Stack Development Kit
-<a id="deploy-the-azure-stack-development-kit" class="xliff"></a>
+# <a name="deploy-the-azure-stack-development-kit"></a>Deploy the Azure Stack Development Kit
 To deploy the development kit, you must complete the following steps:
 
 1. [Download the deployment package](https://azure.microsoft.com/overview/azure-stack/try/?v=try) to get the Cloudbuilder.vhdx.
@@ -35,8 +33,7 @@ To deploy the development kit, you must complete the following steps:
 > 
 > 
 
-## Download and extract the development kit
-<a id="download-and-extract-the-development-kit" class="xliff"></a>
+## <a name="download-and-extract-the-development-kit"></a>Download and extract the development kit
 1. Before you start the download, make sure that your computer meets the following prerequisites:
 
    * The computer must have at least 60 GB of free disk space.
@@ -58,8 +55,7 @@ To deploy the development kit, you must complete the following steps:
 > 
 > 
 
-## Prepare the development kit host
-<a id="prepare-the-development-kit-host" class="xliff"></a>
+## <a name="prepare-the-development-kit-host"></a>Prepare the development kit host
 1. Make sure that you can physically connect to the development kit host, or have physical console access (such as KVM). You must have such access after you reboot the development kit host in step 13 below.
 2. Make sure the development kit host meets the [minimum requirements](azure-stack-deploy.md). You can use the [Deployment Checker for Azure Stack](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) to confirm your requirements.
 3. Sign in as the Local Administrator to your development kit host.
@@ -92,8 +88,7 @@ To deploy the development kit, you must complete the following steps:
 14. When the preparation indicates **Completed**, click **Next**.
 15. Click **Reboot now** to boot into the cloudbuilder.vhdx and continue the deployment process.
 
-## Deploy the development kit
-<a id="deploy-the-development-kit" class="xliff"></a>
+## <a name="deploy-the-development-kit"></a>Deploy the development kit
 1. Sign in as the Local Administrator to the development kit host. Use the credentials specified in the previous steps.
 
     > [!IMPORTANT]
@@ -127,26 +122,30 @@ To deploy the development kit, you must complete the following steps:
    
     When the deployment succeeds, the PowerShell console displays: **COMPLETE: Action ‘Deployment’**.
    
-    If the deployment fails, you can rerun the installer and choose the **Rerun installation** option. Or, you can [redeploy](azure-stack-redeploy.md) it from scratch.
+If the deployment fails, you can use the following PowerShell rerun script from the same elevated PowerShell window:
+
+```powershell
+cd c:\CloudDeployment\Setup
+.\InstallAzureStackPOC.ps1 -Rerun
+```
+
+This script will restart the deployment from the last step that succeeded.
+
+Or, you can [redeploy](azure-stack-redeploy.md) from scratch.
 
 
-## Reset the password expiration to 180 days
-<a id="reset-the-password-expiration-to-180-days" class="xliff"></a>
+## <a name="reset-the-password-expiration-to-180-days"></a>Reset the password expiration to 180 days
 
 To make sure that the password for the development kit host doesn't expire too soon, follow these steps after you deploy:
 
-1. Sign in to the development kit host as azurestack\azurestackadmin.
+1. On the development kit host, open **Group Policy Management** and navigate to **Group Policy Management** – **Forest: azurestack.local** – **Domains** – **azurestack.local**.
+2. Right click on **MemberServer** and click **Edit**.
+3. In the Group Policy Management Editor, navigate to **Computer Configuration** – **Policies** – **Windows Settings** – **Security Settings** – **Account Policies** – **Password Policy**.
+4. In the right pane, double-click on **Maximum password age**.
+5. In the **Maximum password age Properties** dialog box, change the **Password will expire in** value to 180, then Click **OK**.
 
-2. Run the following command to display the current MaxPasswordAge of 42 days: `Get-ADDefaultDomainPasswordPolicy`
 
-3. Run the following command to update the MaxPasswordAge to 180 days:
-
-    `Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurestack.local`   
-
-4. Run the following command again to confirm the password age change: `Get-ADDefaultDomainPasswordPolicy`.
-
-## Next steps
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Next steps
 [Register Azure Stack with your Azure subscription](azure-stack-register.md)
 
 [Connect to Azure Stack](azure-stack-connect-azure-stack.md)
