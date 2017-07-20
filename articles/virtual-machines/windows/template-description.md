@@ -13,14 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 07/18/2017
 ms.author: davidmu
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
 ms.openlocfilehash: 907e5b80aeeee4ab2eb0466490ba9ef9b0348144
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/17/2017
-
 
 ---
 
@@ -40,7 +39,7 @@ ms.lasthandoff: 05/17/2017
     "name": "[concat('myVM', copyindex())]", 
     "location": "[resourceGroup().location]",
     "copy": {
-      "name": "virtualMachineLoop",    
+      "name": "virtualMachineLoop", 
       "count": "[parameters('numberOfInstances')]"
     },
     "dependsOn": [
@@ -48,7 +47,7 @@ ms.lasthandoff: 05/17/2017
     ], 
     "properties": { 
       "hardwareProfile": { 
-        "vmSize": "Standard_DS1_v2" 
+        "vmSize": "Standard_DS1" 
       }, 
       "osProfile": { 
         "computername": "[concat('myVM', copyindex())]", 
@@ -63,10 +62,10 @@ ms.lasthandoff: 05/17/2017
           "version": "latest" 
         }, 
         "osDisk": { 
-          "name": "[concat('myOSDisk', copyindex())]" 
+          "name": "[concat('myOSDisk', copyindex())]",
           "caching": "ReadWrite", 
           "createOption": "FromImage" 
-        }
+        },
         "dataDisks": [
           {
             "name": "[concat('myDataDisk', copyindex())]",
@@ -80,15 +79,14 @@ ms.lasthandoff: 05/17/2017
         "networkInterfaces": [ 
           { 
             "id": "[resourceId('Microsoft.Network/networkInterfaces',
-              concat('myNIC', copyindex())]" 
+              concat('myNIC', copyindex()))]" 
           } 
         ] 
-      }
+      },
       "diagnosticsProfile": {
         "bootDiagnostics": {
           "enabled": "true",
-          "storageUri": "[concat('https://', variables('storageName'), 
-            '.blob.core.windows.net"
+          "storageUri": "[concat('https://', variables('storageName'), '.blob.core.windows.net')]"
         }
       } 
     },
@@ -224,7 +222,7 @@ ms.lasthandoff: 05/17/2017
 
 ```
 "copy": {
-  "name": "virtualMachineLoop",    
+  "name": "virtualMachineLoop", 
   "count": "[parameters('numberOfInstances')]"
 },
 ```
@@ -233,7 +231,7 @@ ms.lasthandoff: 05/17/2017
 
 ```
 "osDisk": { 
-  "name": "[concat('myOSDisk', copyindex())]" 
+  "name": "[concat('myOSDisk', copyindex())]",
   "caching": "ReadWrite", 
   "createOption": "FromImage" 
 }
@@ -273,7 +271,7 @@ Resource Manager 将同时部署所有不依赖于其他所要部署的资源的
     "id": "[resourceId('Microsoft.Network/networkInterfaces',
       concat('myNIC', copyindex())]" 
   } ] 
-}
+},
 ```
 
 若要设置此属性，网络接口必须存在。 因此，需要指定依赖关系。 如果在一个资源（父级）内部定义了另一个资源（子级），则也需要设置依赖关系。 例如，诊断设置和自定义脚本扩展都定义为虚拟机的子资源。 只有存在该虚拟机，才能创建这些子资源。 因此，这两个资源都标记为依赖于该虚拟机。
@@ -323,7 +321,7 @@ Resource Manager 将同时部署所有不依赖于其他所要部署的资源的
   "name": "[concat('myOSDisk', copyindex())]",
   "caching": "ReadWrite", 
   "createOption": "FromImage" 
-}
+},
 ```
 
 ### <a name="create-new-virtual-machines-from-existing-managed-disks"></a>从现有托管磁盘创建新虚拟机
@@ -338,7 +336,7 @@ Resource Manager 将同时部署所有不依赖于其他所要部署的资源的
   }, 
   "caching": "ReadWrite",
   "createOption": "Attach" 
-}
+},
 ```
 
 ### <a name="create-new-virtual-machines-from-a-managed-image"></a>从托管映像创建新虚拟机
@@ -356,7 +354,7 @@ Resource Manager 将同时部署所有不依赖于其他所要部署的资源的
     "caching": "ReadWrite", 
     "createOption": "FromImage" 
   }
-}
+},
 ```
 
 ### <a name="attach-data-disks"></a>附加数据磁盘
@@ -372,7 +370,7 @@ Resource Manager 将同时部署所有不依赖于其他所要部署的资源的
     "caching": "ReadWrite",
     "createOption": "Empty"
   }
-]
+],
 ```
 
 ## <a name="extensions"></a>扩展

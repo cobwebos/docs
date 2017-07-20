@@ -3,7 +3,7 @@ title: "使用 Xamarin.Forms 移动应用入门"
 description: "按照本教程进行操作，开始使用 Azure 移动应用进行 Xamarin.Forms 开发"
 services: app-service\mobile
 documentationcenter: xamarin
-author: adrianhall
+author: dhei
 manager: adrianha
 editor: 
 ms.assetid: 5e692220-cc89-4548-96c8-35259722acf5
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 6b8c5c2ac2e721c4d6f73c7c17f34eadc041e0c9
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/20/2017
-
 
 ---
 # <a name="create-a-xamarinforms-app"></a>创建 Xamarin.Forms 应用
@@ -33,13 +33,13 @@ ms.lasthandoff: 01/20/2017
 若要完成本教程，您需要以下各项：
 
 * 有效的 Azure 帐户。 如果没有帐户，可以注册 Azure 试用版并获取多达 10 个免费的移动应用，即使在试用期结束之后仍可继续使用这些应用。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
-* Visual Studio with Xamarin。 有关说明，请参阅 [设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) 。 
+* Visual Studio with Xamarin。 有关说明，请参阅 [设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) 。
 * 安装了 Xcode v7.0 版或更高版本以及 Xamarin Studio Community 的 Mac。 请参阅[设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) 以及 [Mac 用户的设置、安装和验证](https://msdn.microsoft.com/library/mt488770.aspx) (MSDN)。
 
 > [!NOTE]
 > 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [试用应用服务](https://azure.microsoft.com/try/app-service/mobile/)，即可在应用服务中立即创建一个生存期较短的入门级移动应用。 你不需要使用信用卡，也不需要做出承诺。
-> 
-> 
+>
+>
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>创建新的 Azure 移动应用后端
 按照下列步骤创建新的移动应用后端。
@@ -60,12 +60,12 @@ ms.lasthandoff: 01/20/2017
 
 1. 在 Mac 或 Windows 计算机上，在浏览器窗口中打开 [Azure 门户] 。
 2. 在移动应用的“设置”边栏选项卡上，单击“开始使用”（在“移动”下）>“Xamarin.Forms”。 在步骤 3 下，单击“创建新应用”（如果尚未选择它）。  接下来，单击“下载”  按钮。
-   
+
    此时会下载包含已连接到移动应用的客户端应用程序的项目。 将压缩的项目文件保存到本地计算机，并记下保存位置。
 3. 解压缩下载的项目，然后在 Xamarin Studio 或 Visual Studio 中打开它。
-   
+
    ![][9]
-   
+
    ![][8]
 
 ## <a name="optional-run-the-ios-project"></a>（可选）运行 iOS 项目
@@ -80,11 +80,11 @@ ms.lasthandoff: 01/20/2017
 2. 在“生成”菜单上，单击“配置管理器”。
 3. 在“配置管理器”对话框中，选中 iOS 项目的“生成”和“部署”复选框。
 4. 按 **F5** 键生成项目，并在 iPhone 模拟器中启动应用。
-   
+
    > [!NOTE]
    > 如果遇到生成问题，请运行 NuGet 包管理器并更新到 Xamarin 支持包的最新版本。 有时快速入门项目可能会在更新到最新版本时滞后。    
-   > 
-   > 
+   >
+   >
 
 在应用中键入有意义的文本（例如 *Learn Xamarin*），然后单击“+”按钮。
 
@@ -94,8 +94,8 @@ ms.lasthandoff: 01/20/2017
 
 > [!NOTE]
 > 可在解决方案的可移植类库项目的 TodoItemManager.cs C# 文件中找到用于访问移动应用后端的代码。
-> 
-> 
+>
+>
 
 ## <a name="optional-run-the-android-project"></a>（可选）运行 Android 项目
 本部分用于运行适用于 Android 的 Xamarin droid 项目。 如果不使用 Android 设备，可以跳过本部分。
@@ -109,11 +109,11 @@ ms.lasthandoff: 01/20/2017
 2. 在“生成”菜单上，单击“配置管理器”。
 3. 在“配置管理器”对话框中，选中 Android 项目的“生成”和“部署”复选框。
 4. 按 **F5** 键生成项目，并在 Android 模拟器中启动应用。
-   
+
    > [!NOTE]
    > 如果遇到生成问题，请运行 NuGet 包管理器并更新到 Xamarin 支持包的最新版本。 有时快速入门项目可能会在更新到最新版本时滞后。    
-   > 
-   > 
+   >
+   >
 
 在应用中键入有意义的文本（例如 *Learn Xamarin*），然后单击“+”按钮。
 
@@ -123,8 +123,8 @@ ms.lasthandoff: 01/20/2017
 
 > [!NOTE]
 > 可在解决方案的可移植类库项目的 TodoItemManager.cs C# 文件中找到用于访问移动应用后端的代码。
-> 
-> 
+>
+>
 
 ## <a name="optional-run-the-windows-project"></a>（可选）运行 Windows 项目
 本部分用于运行适用于 Windows 设备的 Xamarin WinApp 项目。 如果不使用 Windows 设备，可以跳过本部分。
@@ -134,11 +134,11 @@ ms.lasthandoff: 01/20/2017
 2. 在“生成”菜单上，单击“配置管理器”。
 3. 在“配置管理器”对话框中，选中所选 Windows 项目的“生成”和“部署”复选框。
 4. 按 **F5** 键生成项目，并在 Windows 模拟器中启动应用。
-   
+
    > [!NOTE]
    > 如果遇到生成问题，请运行 NuGet 包管理器并更新到 Xamarin 支持包的最新版本。 有时快速入门项目可能会在更新到最新版本时滞后。    
-   > 
-   > 
+   >
+   >
 
 在应用中键入有意义的文本（例如 *Learn Xamarin*），然后单击“+”按钮。
 
@@ -148,8 +148,8 @@ ms.lasthandoff: 01/20/2017
 
 > [!NOTE]
 > 可在解决方案的可移植类库项目的 TodoItemManager.cs C# 文件中找到用于访问移动应用后端的代码。
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>后续步骤
 * [向应用添加身份验证](app-service-mobile-xamarin-forms-get-started-users.md)  
@@ -159,7 +159,7 @@ ms.lasthandoff: 01/20/2017
 * [为应用启用脱机同步](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
   了解如何使用移动应用后端向应用添加脱机支持。 脱机同步允许最终用户与移动应用进行交互（查看、添加或修改数据），即使在没有网络连接时也是如此。
 * [如何使用 Azure 移动应用的托管客户端](app-service-mobile-dotnet-how-to-use-client-library.md)  
-  了解如何在 Xamarin 应用中使用托管客户端 SDK。 
+  了解如何在 Xamarin 应用中使用托管客户端 SDK。
 
 <!-- Anchors. -->
 [Getting started with mobile app backends]:#getting-started
@@ -180,5 +180,4 @@ ms.lasthandoff: 01/20/2017
 [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=257546
 [Mobile app SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure 门户]: https://portal.azure.com/
-
 
