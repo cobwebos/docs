@@ -8,11 +8,11 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: slivkins;marcozo;alekh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: d8a45a2355a2209d15a3581c0662e67e869195a6
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: 53a8fc235392620a46b6e06fcfd73d2ea955f781
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
+ms.lasthandoff: 07/14/2017
 
 ---
 
@@ -39,5 +39,5 @@ To use Custom Decision Service for your application, register it on the portal. 
 ### <a name="next-steps"></a>Next steps
 
 * Get started to optimize [a webpage](custom-decision-service-get-started-browser.md) or [a smartphone app](custom-decision-service-get-started-app.md).
-* Work through a [tutorial](custom-decision-service-tutorial.md) for a more in-depth example.
+* Work through a [tutorial](custom-decision-service-tutorial-news.md) for a more in-depth example.
 * Consult the [API reference](custom-decision-service-api-reference.md) to learn more about the provided functionality.

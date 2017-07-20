@@ -8,7 +8,7 @@ manager: cshepard
 editor: 
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-webf
+ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
@@ -20,7 +20,6 @@ ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
 ms.openlocfilehash: d957bff779c3815706a682e8e78a1933218e361e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/15/2017
-
 
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用配置和管理常见问题解答

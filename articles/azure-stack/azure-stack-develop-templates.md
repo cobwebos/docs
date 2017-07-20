@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2017
+ms.date: 07/10/2017
 ms.author: helaw
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 12f198efcb7712b4f066e3db451d6683a85c8966
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: a8468616f924aebb91447b379cea3f926c39de48
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -33,7 +33,7 @@ Because Azure Stack is hosted in your datacenter, it has different service endpo
       '/',variables('OSDiskName'),'.vhd')]"}}
 
 ## <a name="api-versioning"></a>API versioning
-Azure service versions may differ between Azure and Azure Stack. Each resource requires the apiVersion attribute, which defines the capabilities offered. To ensure API version compatibility in Azure Stack TP3, the following are valid API versions for each Resource Provider:
+Azure service versions may differ between Azure and Azure Stack. Each resource requires the apiVersion attribute, which defines the capabilities offered. To ensure API version compatibility in Azure Stack, the following are valid API versions for each Resource Provider:
 
 | Resource Provider | apiVersion |
 | --- | --- |
@@ -52,7 +52,7 @@ Resource Manager [functions](../azure-resource-manager/resource-group-template-f
 * Reference values from other resources
 * Iterating on resources to deploy multiple instances 
 
-As you build your templates, some functions are not available in Azure Stack TP3, and should not be used. These functions are:
+As you build your templates, some functions are not available in Azure Stack Development Kit, and should not be used. These functions are:
 
 * Skip
 * Take

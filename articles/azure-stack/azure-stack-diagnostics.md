@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/11/2017
+ms.date: 7/10/2017
 ms.author: adshar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 7917727a2b29cab57e4ce6dce5b84cf176597da2
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: 70004cfd83360ac4c66fd4c90632d341709d2e6f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -96,13 +96,7 @@ To identify all the logs that get collected from all the components, refer to th
 ### <a name="to-run-get-azurestacklog"></a>To run Get-AzureStackLog
 1.  Log in as AzureStack\AzureStackAdmin on the host.
 2.  Open a PowerShell window as an administrator.
-3.  Run the following commands to import the PowerShell modules:
-
-    -   `cd C:\CloudDeployment\AzureStackDiagnostics\Microsoft.AzureStack.Diagnostics.DataCollection`
-
-    -   `Import-Module .\Microsoft.AzureStack.Diagnostics.DataCollection.psd1`
-
-4.  Run `Get-AzureStackLog`.  
+3.  Run `Get-AzureStackLog`.  
 
     **Examples**
 

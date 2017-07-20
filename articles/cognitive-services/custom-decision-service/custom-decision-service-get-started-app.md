@@ -8,11 +8,11 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: slivkins;marcozo;alekh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: cb3cec1a48fb1ad73cc08608fd928ff18a72e270
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: d4c660682b1eb75fe4feadc5ea7a58b3353b00fe
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
+ms.lasthandoff: 07/14/2017
 
 ---
 
@@ -84,5 +84,5 @@ Here each top-level `<item>` element describes an article. `<link>` is mandatory
 
 ### <a name="next-steps"></a>Next steps
 
-* Work through a [tutorial](custom-decision-service-tutorial.md) for a more in-depth example.
+* Work through a [tutorial](custom-decision-service-tutorial-news.md) for a more in-depth example.
 * Consult the [API reference](custom-decision-service-api-reference.md) to learn more about the provided functionality.

@@ -10,11 +10,11 @@ ms.technology: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 2562a16924b454a2bc837fb377a9ded78ea04099
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 4d4cfaef8c5d841ebb8c16e87865c17d2cecc08b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/13/2017
 
 ---
 
@@ -79,7 +79,7 @@ Blocked|InvalidRequest.Blocked
 
 - Renamed the `modulesRequested` query parameter to [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules).  
   
-- Ranamed the Annotations to Tags. See [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules) query parameter to Tags.  
+- Renamed the Annotations to Tags. See [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules) query parameter to Tags.  
 
 - Changed the list of supported markets of the ShoppingSources filter value to en-US only. See [imageType](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagetype).  
  

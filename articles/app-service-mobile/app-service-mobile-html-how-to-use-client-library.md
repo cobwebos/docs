@@ -3,8 +3,8 @@ title: "如何使用适用于 Azure 移动应用的 JavaScript SDK"
 description: "如何为 Azure 移动应用使用 v"
 services: app-service\mobile
 documentationcenter: javascript
-author: dhei
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: 53b78965-caa3-4b22-bb67-5bd5c19d03c4
 ms.service: app-service-mobile
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
-ms.author: adrianha
+ms.author: glenga
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 013956232d1fdfdc1f35741c25294a37b7e9bd92
 ms.openlocfilehash: 3914d5bdc8feff7d7de5c6f7255396acade341b9

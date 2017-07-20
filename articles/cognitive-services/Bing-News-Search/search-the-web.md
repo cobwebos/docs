@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/21/2016
 ms.author: scottwhi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: eb66b813fe4cb7676f37a8a5b95d43c64311e402
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 31108c5a34bc195c6a078f5af9d2fcebf1990292
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
+ms.lasthandoff: 07/08/2017
 
 ---
 
@@ -29,7 +29,7 @@ If you're building a news-only search results page to find news that's relevant 
 
 If you provide a search box where the user enters their search term, use the [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) to improve the experience. The API returns suggested query strings based on partial search terms as the user types.
 
-After the user enters their query term, URL encode the term before setting the [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#query) query parameter. For example, if the user enters *sailing dinghies*, set `q` to *sailing+dinghies* or *sailing%20dinghies*.
+After the user enters their query term, URL encode the term before setting the [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#query) query parameter. For example, if the user enters *sailing dinghies*, set `q` to *sailing+dinghies* or *sailing%20dinghies*.
 
 ## <a name="general-news"></a>General news
 

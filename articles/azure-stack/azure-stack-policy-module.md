@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/9/2017
 ms.author: helaw
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 7a3949a2036b12f4bd09b63a2ce10613f887e920
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 84e4d4ed9f6ff5c03378c8bd90c2ae659257a251
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/28/2017
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Manage Azure policy using the Azure Stack Policy Module
-The Azure Stack Policy module allows you to configure an Azure subscription with the same versioning and service availability as Azure Stack.  The module uses the **New-AzureRMPolicyAssignment** cmdlet to create an Azure policy, which limits the resource types and services available in a subscription.  Once complete, you can use your Azure subscription to develop apps for Azure Stack.  
+The Azure Stack Policy module allows you to configure an Azure subscription with the same versioning and service availability as Azure Stack.  The module uses the **New-AzureRMPolicyAssignment** cmdlet to create an Azure policy, which limits the resource types and services available in a subscription.  Once complete, you can use your Azure subscription to develop apps targeted for Azure Stack.  
 
 ## <a name="install-the-module"></a>Install the module
 1. Install the required version of the AzureRM PowerShell module, as described in Step1 of [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).   
