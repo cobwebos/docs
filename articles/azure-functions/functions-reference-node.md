@@ -14,13 +14,13 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 02/06/2017
+ms.date: 05/25/2017
 ms.author: chrande, glenga
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: ff8a92c66303c81075c8a42baaa841301d65daf1
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: fb0925f2d6eb8edede67cf208c735b7b2a0221ac
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/01/2017
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -136,6 +136,21 @@ context.log(message)
 context.log.warn("Something has happened."); 
 ```
 可以在 host.json 文件中为日志记录设置跟踪级别阈值或者将其关闭。  有关如何向日志进行写入的详细信息，请参阅下一节。
+
+## <a name="binding-data-type"></a>绑定数据类型
+
+若要定义输入绑定的数据类型，请使用绑定定义中的 `dataType` 属性。 例如，若要以二进制格式读取 HTTP 请求的内容，请使用类型 `binary`：
+
+```json
+{
+    "type": "httpTrigger",
+    "name": "req",
+    "direction": "in",
+    "dataType": "binary"
+}
+```
+
+`dataType` 的其他选项是 `stream` 和 `string`。
 
 ## <a name="writing-trace-output-to-the-console"></a>将跟踪输出写入到控制台 
 
@@ -268,7 +283,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 3. 转到 `D:\home\site\wwwroot`，然后将 package.json 文件拖到页面上半部分中的 **wwwroot** 文件夹上。  
     还可采用其他方式将文件上传到 Function App。 有关详细信息，请参阅[如何更新 Function App 文件](functions-reference.md#a-idfileupdatea-how-to-update-function-app-files)。 
 
-4. 上载 package.json 文件后，在 **Kudu 远程执行控制台**中运行 `npm install` 命令。  
+4. 上传 package.json 文件后，在 **Kudu 远程执行控制台**中运行 `npm install` 命令。  
     此操作将下载 package.json 文件中指定的包并重新启动 Function App。
 
 安装了所需的包后，可以通过调用 `require('packagename')` 将它们导入到函数中，如以下示例中所示：

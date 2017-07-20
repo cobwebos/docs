@@ -13,13 +13,14 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 4/13/2017
+ms.date: 6/15/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 387dcace5be29de52b465bc53fa81a3dbf876390
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: b7c328ac622190d64ea1b07ee459c7f8f5d1e0f4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -29,6 +30,8 @@ ms.lasthandoff: 04/19/2017
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
 在本教程中，用户首先将学习使用运行 Raspbian 的 Raspberry Pi 的基础知识。 然后将学习如何使用 [Azure IoT 中心](iot-hub-what-is-iot-hub.md)将设备无缝连接到云。 有关 Windows 10 IoT Core 的示例，请访问 [Windows 开发人员中心](http://www.windowsondevices.com/)。
+
+还没有工具包？ 请尝试 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)。 或在[此处](https://azure.microsoft.com/develop/iot/starter-kits)购买新工具包。
 
 ## <a name="what-you-do"></a>准备工作
 
@@ -97,7 +100,7 @@ ms.lasthandoff: 04/19/2017
 
    ![Raspbian 首选项菜单](media/iot-hub-raspberry-pi-kit-c-get-started/1_raspbian-preferences-menu.png)
 
-1. 在“接口”选项卡上，将“SPI”和“SSH”设置为“启用”，然后单击“确定”。
+1. 在“接口”选项卡上，将“SPI”和“SSH”设置为“启用”，然后单击“确定”。 如果没有物理传感器并且想要使用模拟的传感器数据，则此步骤是可选的。
 
    ![在 Raspberry Pi 上启用 SPI 和 SSH](media/iot-hub-raspberry-pi-kit-c-get-started/2_enable-spi-ssh-on-raspberry-pi.png)
 
@@ -109,6 +112,8 @@ ms.lasthandoff: 04/19/2017
 使用试验板和跳线，将 LED 灯和 BME280 连接到 Pi，如下所示。 如果没有该传感器，请跳过此部分。
 
 ![Raspberry Pi 和传感器连接](media/iot-hub-raspberry-pi-kit-c-get-started/3_raspberry-pi-sensor-connection.png)
+
+BME280 传感器可以收集温度和湿度数据。 如果设备和云之间有通信，LED 将闪烁。 
 
 对于传感器引脚，请使用以下接线：
 
@@ -163,17 +168,17 @@ ms.lasthandoff: 04/19/2017
 1. 通过运行以下命令，打开配置文件：
 
    ```bash
-   cd iot-hub-c-raspberry-pi-clientapp
-   nano config.json
+   cd iot-hub-c-raspberry-pi-client-app
+   nano config.h
    ```
 
    ![配置文件](media/iot-hub-raspberry-pi-kit-c-get-started/6_config-file.png)
 
-   此文件中有两个可以配置的宏。 第一个宏项是 `INTERVAL`，它确定发送到云的两条消息之间的时间间隔。 第二个宏项是 `SIMULATED_DATA`，它是一个布尔值，指示是否使用模拟的传感器数据。
+   此文件中有两个可配置的宏。 第一个是 `INTERVAL`，它确定发送到云的两条消息之间的时间间隔。 第二个是 `SIMULATED_DATA`，它是一个布尔值，指示是否使用模拟的传感器数据。
 
-   如果**没有传感器**，请将 `SIMULATED_DATA` 值设置为 `1`，使示例应用程序创建并使用模拟的传感器数据。
+   如果没有传感器，请将 `SIMULATED_DATA` 值设置为 `1`，使示例应用程序创建和使用模拟的传感器数据。
 
-1. 通过按“Control-O”>“Enter”>“Control-X”保存并退出。
+1. 通过按“Ctrl-O”>“Enter”>“Ctrl-X”保存并退出。
 
 ### <a name="build-and-run-the-sample-application"></a>生成并运行示例应用程序
 
@@ -191,7 +196,7 @@ ms.lasthandoff: 04/19/2017
    ```
 
    > [!NOTE] 
-   请确保将设备连接字符串复制并粘贴到单引号中。
+   确保将设备连接字符串复制并粘贴到单引号中。
 
 
 应看到以下输出，该输出显示传感器数据和发送到 IoT 中心的消息。
@@ -200,7 +205,7 @@ ms.lasthandoff: 04/19/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-此时已运行收集传感器数据并将其发送到 IoT 中心的示例应用程序。
+此时已运行示例应用程序，以收集传感器数据并将其发送到 IoT 中心。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 

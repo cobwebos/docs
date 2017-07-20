@@ -13,22 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 02/7/2017
+ms.date: 05/22/2017
 ms.author: cynthn
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: e308b75581ca5372a4de168895f2eeb140a69a78
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 527f3f33e2b5996c6fa7b7dc874123bba5ab39dd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/27/2017
 
 
 ---
-# <a name="create-a-vm-from-a-generalized-managed-vm-image"></a>从通用托管 VM 映像创建 VM
+# <a name="create-a-vm-from-a-managed-image"></a>从托管的映像创建 VM
 
 可在 Azure 中从托管 VM 映像创建多个 VM。 托管 VM 映像包含创建 VM（包括 OS 和数据磁盘）所需的信息。 构成映像的 VHD（包括 OS 磁盘和任何数据磁盘）均作为托管磁盘存储。 
-
-通用 VM 已使用 [Sysprep](generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 删除所有个人帐户信息。 若要创建通用 VM，可在本地 VM 上运行 Sysprep，然后[将 VHD 上传到 Azure](upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)；或者在现有 Azure VM 上运行 Sysprep，然后[捕获 VM 的映像](capture-image-resource.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-
 
 
 ## <a name="prerequisites"></a>先决条件

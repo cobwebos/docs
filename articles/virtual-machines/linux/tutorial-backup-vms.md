@@ -1,5 +1,5 @@
 ---
-title: "备份 Azure Linux VM | Microsoft Docs"
+title: "备份 Azure Linux VMs | Microsoft Docs"
 description: "使用 Azure 备份来备份 Linux VM，从而为其提供保护。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/05/2017
 ms.author: cynthn
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 8ec31be4c2cdd634a0e45b58a6afaeaca1c4896e
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 4dcfad63fdc610160bd47a3b900591fb06585005
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="back-up-linux--virtual-machines-in-azure"></a>在 Azure 中备份 Linux 虚拟机
@@ -43,13 +44,13 @@ Azure 备份服务创建快照后，数据将传输到保管库。 为最大限�
 
 
 ## <a name="create-a-backup"></a>创建备份
-在恢复服务保管库中创建一个简单的每日备份计划。 
+在恢复服务保管库中创建一个简单的已计划每日备份。 
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在左侧菜单中选择“虚拟机”。 
 3. 从列表中选择要备份的 VM。
 4. 在 VM 边栏选项卡上的“设置”部分中，单击“备份”。 此时将打开“启用备份”边栏选项卡。
-5. 在“恢复服务保管库”中，单击“新建”并提供新保管库的名称。 将在与虚拟机相同的资源组和位置中创建新保管库。
+5. 在“恢复服务保管库”中，单击“新建”并为新保管库提供名称。 将在与虚拟机相同的资源组和位置中创建新保管库。
 6. 单击“备份策略”。 对于本示例，请保留默认值，然后单击“确定”。
 7. 在“启用备份”边栏选项卡中，单击“启用备份”。 这会根据默认的计划创建每日备份。
 10. 若要创建初始恢复点，请在“备份”边栏选项卡中单击“立即备份”。
@@ -157,7 +158,7 @@ Azure 备份服务创建快照后，数据将传输到保管库。 为最大限�
 
     ![默认的 nginx 网页](./media/tutorial-backup-vms/nginx-working.png)
 
-18. 在本地计算机上，返回到 Azure 门户的浏览器选项卡，然后在“步骤 3: 恢复后卸载磁盘”中单击“卸载磁盘”按钮。 如果忘记执行此步骤，与装入点的连接将在 12 小时后自动关闭。 在这 12 个小时后，需要下载新的脚本来创建新的装入点。
+18. 在本地计算机上，返回到 Azure 门户的浏览器选项卡，然后在“步骤 3: 恢复后卸载磁盘”中单击“卸载磁盘”按钮。 如果忘记执行此步骤，与装入点的连接将在 12 小时后自动关闭。 在这 12 个小时后，若要创建新的装入点，需要下载新脚本。
 
 
 ## <a name="next-steps"></a>后续步骤

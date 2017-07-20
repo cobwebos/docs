@@ -2,6 +2,7 @@
 title: "将数据导入到 Azure Application Insights 中的 Analytics | Microsoft 文档"
 description: "导入要与应用遥测数据联接的静态数据，或者导入要使用 Analytics 查询的单独数据流。"
 services: application-insights
+keywords: "打开架构，导入数据"
 documentationcenter: 
 author: CFreemanwa
 manager: carmonm
@@ -13,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: d649644959d907ff7fd6c1de360b091682f13d5b
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 8504be28baf202c0b04ee89b18122b29a93588ab
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -37,9 +38,9 @@ ms.lasthandoff: 05/12/2017
 将数据发送到数据源很容易。 
 
 1. （一次）在“数据源”中定义数据的架构。
-2. （定期）将数据上载到 Azure 存储，并调用 REST API 向我们通知新数据正在等待引入。 几分钟内，数据即可用于在 Analytics中查询。
+2. （定期）将数据上传到 Azure 存储，并调用 REST API 向我们通知新数据正在等待引入。 几分钟内，数据即可用于在 Analytics中查询。
 
-上载的频率由用户以及用户希望数据可用于查询的速度决定。 将数据以较大块（但不要超过 1GB）的形式上载更高效。
+上传的频率由用户以及用户希望数据可用于查询的速度决定。 将数据以较大块（但不要超过 1GB）的形式上传更高效。
 
 > [!NOTE]
 > *有大量要分析的数据源？* [*请考虑使用* logstash *将数据传送到 Application Insights。*](https://github.com/Microsoft/logstash-output-application-insights)
@@ -55,7 +56,7 @@ ms.lasthandoff: 05/12/2017
  * 如果要将数据与已使用 Application Insights 设置的应用中的遥测数据进行联接或比较，可以对该应用使用此资源。
  * 对该资源具有参与者或所有者访问权限。
  
-2. Azure 存储。 用户上载到 Azure 存储，Analytics 将从那里获取数据。 
+2. Azure 存储。 用户上传到 Azure 存储，Analytics 将从那里获取数据。 
 
  * 我们建议为 Blob 创建一个专用的存储帐户。 如果与其他进程共享 Blob，那么我们的进程读取 Blob 将花费更长时间。
 
@@ -134,16 +135,16 @@ JSON 允许数据的部分映射，因此 JSON 格式的架构定义不必映射
 
 ## <a name="import-data"></a>导入数据
 
-若要导入数据，请将其上载到 Azure 存储、为其创建访问密钥，然后执行 REST API 调用。
+若要导入数据，请将其上传到 Azure 存储、为其创建访问密钥，然后执行 REST API 调用。
 
 ![添加新数据源](./media/app-insights-analytics-import/analytics-upload-process.png)
 
 可以手动执行以下过程，或者设置自动系统以定期执行此过程。 需要对每个要导入的数据块执行这些步骤。
 
-1. 将数据上载到 [Azure Blob 存储](../storage/storage-dotnet-how-to-use-blobs.md)。 
+1. 将数据上传到 [Azure Blob 存储](../storage/storage-dotnet-how-to-use-blobs.md)。 
 
  * Blob 可以是任何小于等于 1 GB 的大小（未压缩）。 从性能角度来看，数百 MB 大小的大型 Blob 十分理想。
- * 可以使用 Gzip 进行压缩，缩短上载时间和数据可供查询的延迟。 使用 `.gz` 文件扩展名。
+ * 可以使用 Gzip 进行压缩，缩短上传时间和数据可供查询的延迟。 使用 `.gz` 文件扩展名。
  * 最好使用单独的存储帐户执行此操作，避免不同服务中的调用降低性能。
  * 以高频率（每几秒钟）发送数据时，出于性能原因，建议使用多个存储帐户。
 

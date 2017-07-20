@@ -12,12 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 05/25/2017
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: e99294069f92f51d212b38b1c5ee12232c6dc77d
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: f3336d4b0036e1dc181de1f1296da521f68b9464
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/27/2017
 你可以配置自定义域以便访问 Azure 存储帐户中的 Blob 数据。 Blob 存储的默认终结点是 `<storage-account-name>.blob.core.windows.net`。 如果将自定义域和子域（例如 **www.contoso.com**）映射到存储帐户的 Blob 终结点，则用户可以使用该域访问存储帐户中的 Blob 数据。
 
 > [!IMPORTANT]
-> Azure 存储空间尚不支持对自定义域使用 HTTPS。 尽管我们暂时无法提供可以共享的具体时间表，但我们知晓客户对此功能非常感兴趣。
+> Azure 存储尚不支持以本机方式对自定义域使用 HTTPS。 目前可[使用 Azure CDN 通过 HTTPS 访问包含自定义域的 Blob](./storage-https-custom-domain-cdn.md)。
 >
 
 下表显示了 **mystorageaccount** 存储帐户中的 Blob 数据的一些示例 URL。 为存储帐户注册的自定义域是 **www.contoso.com**：
@@ -70,7 +71,7 @@ ms.lasthandoff: 04/27/2017
 1. 找到用于管理 CNAME 的部分。 你可能需要转至高级设置页面，并找到“**CNAME**”、“**别名**”或“**子域**”字样。
 1. 创建一个新的 CNAME 记录，并且提供子域别名，例如 **www** 或 **photos**。 然后以 **mystorageaccount.blob.core.windows.net** 格式（其中，*mystorageaccount* 是存储帐户名称）提供主机名称，这是 Blob 服务终结点。 要使用的主机名将显示在 [Azure 门户](https://portal.azure.com)中“自定义域”边栏选项卡的第一项中。
 1. 在 [Azure 门户](https://portal.azure.com)的“自定义域”边栏选项卡上的文本框中，输入自定义域的名称，包括子域。 例如，如果域是 **contoso.com**，子域别名是 **www**，则请输入 **www.contoso.com**。 如果子域是 **photos**，则请输入 **photos.contoso.com**。 必须输入子域。
-1. 在“自定义域”边栏选项卡上选择“保存”以注册自定义域。 如果注册成功，你将看到一条消息，提示你的存储帐户已成功更新。
+1. 在“自定义域”边栏选项卡上选择“保存”以注册自定义域。 如果注册成功，你会看到一个门户通知，提示存储帐户已成功更新。
 
 新的 CNAME 记录通过 DNS 传播后，只要用户具有适当的权限，他们就可以通过使用你的自定义域查看 Blob 数据。
 
@@ -86,7 +87,7 @@ ms.lasthandoff: 04/27/2017
 1. 创建一个新的 CNAME 记录，并且提供包括 *asverify* 子域的子域别名。 例如，**asverify.www** 或 **asverify.photos**。 然后以 **asverify.mystorageaccount.blob.core.windows.net** 格式（其中，**mystorageaccount** 是存储帐户名称）提供主机名称，这是 Blob 服务终结点。 要使用的主机名将显示在 [Azure 门户](https://portal.azure.com)中“自定义域”边栏选项卡的第二项中。
 1. 在 [Azure 门户](https://portal.azure.com)的“自定义域”边栏选项卡上的文本框中，输入自定义域的名称，包括子域。 请不要包含 asverify 例如，如果域是 **contoso.com**，子域别名是 **www**，则请输入 **www.contoso.com**。 如果子域是 **photos**，则请输入 **photos.contoso.com**。 必须输入子域。
 1. 选择“使用间接 CNAME 验证”复选框。
-1. 在“自定义域”边栏选项卡上选择“保存”以注册自定义域。 如果注册成功，你将看到一条消息，提示你的存储帐户已成功更新。 此时，你的自定义域已由 Azure 进行了验证，但传输到你的域的流量尚未路由到你的存储帐户。
+1. 在“自定义域”边栏选项卡上选择“保存”以注册自定义域。 如果注册成功，你会看到一个门户通知，提示存储帐户已成功更新。 此时，你的自定义域已由 Azure 进行了验证，但传输到你的域的流量尚未路由到你的存储帐户。
 1. 返回到 DNS 提供程序的网站，创建将子域映射到 Blob 服务终结点的另一条 CNAME 记录。 例如，将子域指定为 **www** 或 **photos**（不含 *asverify*），将主机名指定为 **mystorageaccount.blob.core.windows.net**（其中，**mystorageaccount** 是你的存储帐户名称）。 完成此步骤后，也就完成了你的自定义域的注册。
 1. 最后，可以删除之前创建的含 **asverify** 的 CNAME 记录，因为只需要将其作为中间步骤使用。
 
@@ -105,6 +106,17 @@ ms.lasthandoff: 04/27/2017
 ## <a name="deregister-a-custom-domain"></a>取消注册自定义域
 
 若要取消注册 Blob 存储终结点的自定义域，请使用以下过程之一。
+
+### <a name="azure-portal"></a>Azure 门户
+
+在 Azure 门户中执行以下操作，删除自定义域设置：
+
+1. 导航到 [Azure 门户](https://portal.azure.com)中的存储帐户。
+1. 在菜单边栏选项卡上的“BLOB 服务”下，选择“自定义域”以打开“自定义域”边栏选项卡。
+1. 清除包含自定义域名的文本框的内容。
+1. 选择“保存”按钮。
+
+成功删除自定义域后，你会看到一个门户通知，提示存储帐户已成功更新。
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
@@ -133,7 +145,7 @@ ms.lasthandoff: 04/27/2017
 使用 [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount) PowerShell cmdlet ，并为 `-CustomDomainName` 参数值指定一个空字符串 (`""`) 以删除自定义域注册。
 
 * 命令格式：
-  
+
   ```powershell
   Set-AzureRmStorageAccount `
       -ResourceGroupName "<resource-group-name>" `
@@ -150,11 +162,7 @@ ms.lasthandoff: 04/27/2017
       -CustomDomainName ""
   ```
 
-### <a name="azure-portal"></a>Azure 门户
-
-目前无法使用 Azure 门户删除自定义域注册。 这是已知问题。 目前我们暂时无法提供解决方案日期，但问题解决后我们会更新本文。 在此期间，请使用 Azure CLI 2.0 或 Azure PowerShell 删除自定义域设置。
-
 ## <a name="next-steps"></a>后续步骤
 * [将自定义域映射到 Azure 内容交付网络 (CDN) 终结点](../cdn/cdn-map-content-to-custom-domain.md)
-
+* [使用 Azure CDN 通过 HTTPS 访问包含自定义域的 Blob](./storage-https-custom-domain-cdn.md)
 

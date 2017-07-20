@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure Site Recovery 在站点之间进行 Hyper-V 复制的测试结果 | Microsoft 文档"
-description: "本文介绍了使用 Azure Site Recovery 进行本地到本地复制时的性能测试。"
+description: "本文介绍了使用 Azure Site Recovery 对 Hyper-V VM 进行本地到本地复制时的性能测试。"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,24 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 01/23/2017
+ms.date: 05/24/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: 1b95723ec9886835c5967c9efe95b4922390a847
-ms.openlocfilehash: 92b5200016b943c06ef7732344d4136bd3c491b7
-ms.lasthandoff: 02/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: a9bec774b5482de87eefcd0c87844a2adbd98bbe
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 
 ---
 # <a name="test-results-for-on-premises-to-on-premises-hyper-v-replication-with-site-recovery"></a>使用 Site Recovery 进行本地到本地 Hyper-V 复制的测试结果
+
 你可以使用 Microsoft Azure Site Recovery 来协调和管理从虚拟机和物理服务器到 Azure 或辅助数据中心的复制。 本文提供了我们在两个本地数据中心之间进行 Hyper-V 虚拟机复制时执行的性能测试的结果。
 
-## <a name="overview"></a>概述
+## <a name="test-goals"></a>测试目标
+
 测试目标是观察在稳定状态复制期间 Azure Site Recovery 的性能如何。 当虚拟机已完成初始复制并且在同步增量更改时会发生稳定状态复制。 使用稳定状态对性能进行测量非常重要，因为除非发生意外中断，这是大多数虚拟机保持的状态。
 
 测试部署包括两个本地站点，每个站点中有一台 VMM 服务器。 此测试部署是典型的总公司/分公司部署，总公司作为主站点，分公司作为辅助站点或恢复站点。
 
-### <a name="what-we-did"></a>我们的操作
+## <a name="what-we-did"></a>我们的操作
+
 下面是我们在测试过程中执行的操作：
 
 1. 使用 VMM 模板创建虚拟机。
@@ -41,8 +45,9 @@ ms.lasthandoff: 02/15/2017
 7. 捕获 12 个小时内的性能指标，需要确保所有虚拟机在那 12 个小时内都保持在预期的复制状态。
 8. 测量基准性能指标与复制性能指标之间的增量。
 
-## <a name="test-deployment-results"></a>测试部署结果
-### <a name="primary-server-performance"></a>主服务器性能
+
+## <a name="primary-server-performance"></a>主服务器性能
+
 * Hyper-V 副本以异步方式跟踪对日志文件的更改，从而最大限度地降低了主服务器上的存储开销。
 * Hyper-V 副本利用自我维护的内存缓存最大程度地降低用于跟踪的 IOPS 开销。 它将向 VHDX 进行的写入存储在内存中，并在将日志发送到恢复站点之前将它们刷新到日志文件中。 如果写入数达到了预先确定的限制，也会发生磁盘刷新。
 * 下图显示了复制的稳定状态 IOPS 开销。 我们可以看到由复制导致的 IOPS 开销大约为 5%，非常低。
@@ -57,7 +62,8 @@ Hyper-V 副本具有最小的 CPU 开销。 如图中所示，复制的开销范
 
 ![主服务器结果](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744915.png)
 
-### <a name="secondary-recovery-server-performance"></a>辅助（恢复）服务器性能
+## <a name="secondary-recovery-server-performance"></a>辅助（恢复）服务器性能
+
 Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最优化。 图中汇总了恢复服务器上的内存使用率。 所显示的内存开销是复制使用的内存占 Hyper-V 服务器上安装的总内存的百分比。
 
 ![辅助服务器结果](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744916.png)
@@ -71,12 +77,14 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 
 ![辅助服务器结果](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744918.png)
 
-### <a name="effect-of-replication-on-network-utilization"></a>复制对网络利用率的影响
+## <a name="effect-on-network-utilization"></a>对网络利用率的影响
+
 在现有的每秒 5 GB 带宽中，在主节点与恢复节点（启用了压缩功能）之间平均每秒使用了 275 MB 网络带宽。
 
 ![网络利用率结果](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744919.png)
 
-### <a name="effect-of-replication-on-virtual-machine-performance"></a>复制对虚拟机性能的影响
+## <a name="effect-on-vm-performance"></a>对 VM 性能的影响
+
 一个重要的注意事项是复制对在虚拟机上运行的生产工作负荷的影响。 如果主站点针对复制进行了充分的设置，则不应当对工作负荷产生任何影响。 Hyper-V 副本的轻量跟踪机制可以确保在虚拟机中运行的工作负荷在稳定状态复制期间不受影响。 下图中对此进行了解释。
 
 此图显示了在启用复制之前和之后运行各种工作负荷的虚拟机执行的 IOPS。 你可以看到两者之间没有差别。
@@ -87,11 +95,14 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 
 ![副本影响结果](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744921.png)
 
-### <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结束语
+
 我们的结果清晰地表明，与 Hyper-V 副本配合使用的 Azure Site Recovery 可以针对大型群集以最小的开销很好地进行扩展。  Azure Site Recovery 提供了简单的部署、复制、管理和监视。 Hyper-V 副本为成功进行复制扩展提供了必要的基础结构。 为规划最佳的部署，建议你下载 [Hyper-V Replica Capacity Planner](https://www.microsoft.com/download/details.aspx?id=39057)。
 
 ## <a name="test-environment-details"></a>测试环境详细信息
+
 ### <a name="primary-site"></a>主站点
+
 * 主站点具有一个群集，其中包含运行着 470 个虚拟机的五台 Hyper-V 服务器。
 * 各个虚拟机运行不同的工作负载，并且都启用了 Azure Site Recovery 保护。
 * 群集节点的存储是由一个 iSCSI SAN 提供的。 型号 - Hitachi HUS130。
@@ -102,10 +113,11 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 
 | 服务器 | RAM | 模型 | 处理器 | 处理器数目 | NIC | 软件 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 在群集中的 Hyper-V 服务器： <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB-HOST25 有 256 个 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20 GHz |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
+| 在群集中的 Hyper-V 服务器： <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB-HOST25 有 256 个 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
 | VMM 服务器 |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="secondary-recovery-site"></a>辅助（恢复）站点
+
 * 辅助站点具有一个六节点的故障转移群集。
 * 群集节点的存储是由一个 iSCSI SAN 提供的。 型号 - Hitachi HUS130。
 
@@ -113,12 +125,13 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 
 | 服务器 | RAM | 模型 | 处理器 | 处理器数目 | NIC | 软件 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 在群集中的 Hyper-V 服务器： <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell ™ PowerEdge ™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30 GHz |2 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
-| ESTLAB-HOST17 |128 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
-| ESTLAB-HOST24 |256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
+| 在群集中的 Hyper-V 服务器： <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell ™ PowerEdge ™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 @ 2.30GHz |2 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
+| ESTLAB-HOST17 |128 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
+| ESTLAB-HOST24 |256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
 | VMM 服务器 |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="server-workloads"></a>服务器工作负载
+
 * 针对测试用途，我们选取了企业客户方案中常用的工作负载。
 * 我们使用 [IOMeter](http://www.iometer.org) 与表中汇总的工作负载特性进行模拟。
 * 所有 IOMeter 配置文件都设置为写入随机字节以模拟工作负载的最坏情况写入模式。
@@ -131,7 +144,8 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 | 工作站/VDI |464 |66%34% |70%95% |11 |两者都 100% 随机 |
 | Web 文件服务器 |4864 |33%34%33% |95%95%95% |888 |全部 75% 随机 |
 
-### <a name="virtual-machine-configuration"></a>虚拟机配置
+### <a name="vm-configuration"></a>VM 配置
+
 * 主群集上有 470 个虚拟机。
 * 所有虚拟机都具有 VHDX 磁盘。
 * 虚拟机运行表中汇总的工作负载。 所有虚拟机都是使用 VMM 模板创建的。
@@ -145,7 +159,8 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 | Web 服务器 |149 |0.5 |1 |80 |6 |
 | 总计 |470 | | |96.83 TB |4108 |
 
-### <a name="azure-site-recovery-settings"></a>Azure Site Recovery 设置
+### <a name="site-recovery-settings"></a>Site Recovery 设置
+
 * 针对本地到本地保护配置了 Azure Site Recovery
 * VMM 服务器配置有四个云，包含 Hyper-V 群集服务器及其虚拟机。
 
@@ -157,6 +172,7 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 | PrimaryCloudRpo5m |235 |5 分钟 |无 |
 
 ### <a name="performance-metrics"></a>性能指标
+
 此表汇总了在部署中测量到的性能指标和计数器。
 
 | 度量值 | 计数器 |
@@ -170,5 +186,6 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 | VM 写入吞吐量 |\Hyper-V Virtual Storage Device(<VHD>)\Write Bytes/sec |
 
 ## <a name="next-steps"></a>后续步骤
-* [设置两个本地 VMM 站点之间的保护](site-recovery-vmm-to-vmm.md)
+
+[设置两个本地 VMM 站点之间的复制](site-recovery-vmm-to-vmm.md)
 

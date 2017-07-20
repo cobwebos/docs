@@ -14,12 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/23/2017
+ms.date: 05/30/2017
 ms.author: chrande
-translationtype: Human Translation
-ms.sourcegitcommit: bc96edb44dc8bbbbe4687806117990c9d3470fdc
-ms.openlocfilehash: adb70fc58321c11c0b57efc9810a44d0ab2c8a20
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 879be48150cfe13e31064475aa637f13f5f5f9d5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -59,7 +60,7 @@ Function.json 文件定义函数绑定和其他配置设置。 运行时使用�
 | `name` |字符串 |将用于函数中绑定数据的名称。 对于 C#，它将是参数名称；对于 JavaScript，它是键/值列表中的键。 |
 
 ## <a name="function-app"></a>函数应用
-函数应用由一个或多个经 Azure App Service 共同管理的独立函数组成。 函数应用中的所有函数共享相同的定价计划、连续部署和运行时版本。 由多种语言编写的函数可共享相同的函数应用。 将函数应用视为组织和共同管理函数的一种方法。 
+函数应用由一个或多个经 Azure 应用服务共同管理的独立函数组成。 函数应用中的所有函数共享相同的定价计划、连续部署和运行时版本。 由多种语言编写的函数可共享相同的函数应用。 将函数应用视为组织和共同管理函数的一种方法。 
 
 ## <a name="runtime-script-host-and-web-host"></a>运行时（脚本宿主和 web 主机）
 运行时或脚本宿主是基础 WebJobs SDK 主机，可侦听事件、收集和发送数据，并最终运行代码。 
@@ -69,14 +70,14 @@ Function.json 文件定义函数绑定和其他配置设置。 运行时使用�
 ## <a name="folder-structure"></a>文件夹结构
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-设置用于将函数部署到 Azure App Service 中的函数应用的项目时，可以将此文件夹结构视为站点代码。 可使用现有工具（如持续集成和部署或自定义部署脚本），完成时间包安装部署或代码转换部署。
+设置用于将函数部署到 Azure 应用服务中的函数应用的项目时，可以将此文件夹结构视为站点代码。 可使用现有工具（如持续集成和部署或自定义部署脚本），完成时间包安装部署或代码转换部署。
 
 > [!NOTE]
 > 确保将 `host.json` 文件和函数文件夹直接部署到 `wwwroot` 文件夹。 请勿在部署中包含 `wwwroot` 文件夹。 否则，最后将得到 `wwwroot\wwwroot` 文件夹。 
 > 
 > 
 
-## <a name="a-idfileupdatea-how-to-update-function-app-files"></a><a id="fileupdate"></a> 如何更新函数应用文件
+## <a id="fileupdate"></a> 如何更新函数应用文件
 通过 Azure 门户中内置函数编辑器可更新 function.json 文件和函数代码文件。 要上传或更新其他文件，例如 package.json 或 project.json 或是依赖项，必须使用其他部署方法。
 
 Function App 都建立在应用服务之上，因此所有[可用于标准 Web 应用的部署选项](../app-service-web/web-sites-deploy.md)也均可用于 Function App。 以下为可用的上传或更新函数应用文件的一些方法。 
@@ -96,9 +97,7 @@ Function App 都建立在应用服务之上，因此所有[可用于标准 Web �
 3. 导航到 `D:\home\site\wwwroot\` 更新 host.json 或导航到 `D:\home\site\wwwroot\<function_name>` 更新函数文件。
 4. 将想要上传的文件拖放到文件网格中相应的文件夹。 文件网格中有两个区域可放置文件。 对于 .zip 文件，会出现一个带标签的框，显示“将文件拖到此处进行上传并解压缩。” 对于其他文件类型，将文件拖放到“解压缩”框以外的文件网格中。
 
-#### <a name="to-use-ftp"></a>使用 FTP
-1. 请按[此处](../app-service-web/web-sites-deploy.md#ftp)的说明进行操作，配置 FTP。
-2. 连接到函数应用站点时，复制一个已更新 host.json 文件到 `/site/wwwroot` 或将函数文件复制到 `/site/wwwroot/<function_name>`。
+<!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --DonnaM -->
 
 #### <a name="to-use-continuous-deployment"></a>使用连续部署
 按照本主题中的说明 [Azure Functions 连续部署](functions-continuous-deployment.md) 进行操作。
@@ -106,8 +105,9 @@ Function App 都建立在应用服务之上，因此所有[可用于标准 Web �
 ## <a name="parallel-execution"></a>并行执行
 多个触发事件发生的速度超过了单线程函数运行的处理速度时，运行时可并行多次调用函数。  如果 Function App 正在使用[消耗量托管计划](functions-scale.md#how-the-consumption-plan-works)，则 Function App 可自动扩大。  无论应用是在消耗量托管计划还是常规[应用服务托管计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)上运行，每个 Function App 实例都可能使用多个线程并行处理并发函数调用。  每个 Function App 实例中并发函数的最大调用数根据所用触发器类型以及 Function App 中其他函数所用资源而有所不同。
 
-## <a name="azure-functions-pulse"></a>Azure Functions 脉冲
-脉冲是一个实时事件流，显示了函数的运行频率，以及成功和失败次数。 还可监视平均执行时间。 随着时间的推移我们将向其中添加更多功能和自定义项。 可从“监视”选项卡访问“脉冲”页。
+## <a name="functions-runtime-versioning"></a>Functions 运行时版本控制
+
+可使用 `FUNCTIONS_EXTENSION_VERSION` 应用设置配置 Functions 运行时的版本。 例如：值“~1”表示 Function App 将使用 1 作为其主版本。 Function Apps 在发布后，将升级到各自新的次要版本。 可在 Azure 门户的“设置”选项卡中查看 Function App 的确切版本。
 
 ## <a name="repositories"></a>存储库
 Azure Functions 代码为开放源，位于 GitHub 存储库：
@@ -134,6 +134,6 @@ Azure Functions 代码为开放源，位于 GitHub 存储库：
 * [Azure Functions F# 开发人员参考](functions-reference-fsharp.md)
 * [Azure Functions NodeJS 开发人员参考](functions-reference-node.md)
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
-* [Azure Functions：Azure App Service 团队博客之旅](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/)。 Azure Functions 的开发历史。
+* [Azure Functions：Azure 应用服务团队博客之旅](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/)。 Azure Functions 的开发历史。
 
 

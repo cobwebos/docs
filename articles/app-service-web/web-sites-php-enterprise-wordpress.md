@@ -1,6 +1,6 @@
 ---
 title: "Azure 上的企业级 WordPress | Microsoft Docs"
-description: "了解如何在 Azure App Service 上托管企业级 WordPress 网站"
+description: "了解如何在 Azure 应用服务上托管企业级 WordPress 网站"
 services: app-service\web
 documentationcenter: 
 author: sunbuild
@@ -14,15 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 10/24/2016
 ms.author: sumuth
-translationtype: Human Translation
-ms.sourcegitcommit: 541dd7bed5a4a9e306642b2c36dd7c9d45aec690
-ms.openlocfilehash: fcaff51b2897b1b0bce8b1c503adfd9425c9fbb4
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: b562e8cbc84fc3a1e7e6dab1845022dfcce692a3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
 # <a name="enterprise-class-wordpress-on-azure"></a>Azure 上的企业级 WordPress
-Azure App Service 为大规模任务关键型 [WordPress][wordpress] 站点提供了一个可缩放、安全且易用的环境。 Microsoft 自身在运营 [Office][officeblog] 和[必应][bingblog]博客等企业级站点。 本文说明如何使用 Microsoft Azure App Service 的 Web 应用功能，建立和维护一个可处理大量访客、基于云的企业级 WordPress 站点。
+Azure 应用服务为大规模任务关键型 [WordPress][wordpress] 站点提供了一个可缩放、安全且易用的环境。 Microsoft 自身在运营 [Office][officeblog] 和[必应][bingblog]博客等企业级站点。 本文说明如何使用 Microsoft Azure 应用服务的 Web 应用功能，建立和维护一个可处理大量访客、基于云的企业级 WordPress 站点。
 
 ## <a name="architecture-and-planning"></a>架构与规划
 基本的 WordPress 安装只有两个要求：
@@ -33,7 +34,7 @@ Azure App Service 为大规模任务关键型 [WordPress][wordpress] 站点提�
   > ClearDB 提供了几种 MySQL 配置。 每种配置具有不同的性能特征。 请参阅 [Azure 应用商店][cdbnstore]，了解通过 Azure 应用商店提供或在 [ClearDB 网站](http://www.cleardb.com/pricing.view)上直接显示的产品的相关信息。
   >
   >
-* **PHP 5.2.4 或更高版本**：Azure App Service 目前提供 [PHP 5.4、5.5 和 5.6 版本][phpwebsite]。
+* **PHP 5.2.4 或更高版本**：Azure 应用服务目前提供 [PHP 5.4、5.5 和 5.6 版本][phpwebsite]。
 
   > [!NOTE]
   > 我们建议始终运行最新版本的 PHP，以确保拥有最新的安全修补程序。
@@ -48,7 +49,7 @@ Azure App Service 为大规模任务关键型 [WordPress][wordpress] 站点提�
 尽管这允许创建多个站点 Web 应用实例以扩展应用程序，但所有内容都托管在特定地理区域的数据中心内。 如果此区域外的访客使用此站点，响应时间可能较长。 如果此区域的数据中心停机，那么应用程序也会停机。
 
 ### <a name="multi-region-deployment"></a>多区域部署
-通过使用 Azure [流量管理器][trafficmanager]，可在多个地理地区扩展 WordPress 站点，并为所有访客提供同一 URL。 所有访客都通过流量管理器接入，然后基于负载平衡配置被路由到某一区域。
+通过使用 Azure [流量管理器][trafficmanager]，可在多个地理地区扩展 WordPress 站点，并为所有访客提供同一 URL。 所有访客都通过流量管理器接入，然后基于负载均衡配置被路由到某一区域。
 
 ![一个托管在多个区域的 Azure Web 应用，使用 CDBR 高可用性路由器跨区域路由到 MySQL][multi-region-diagram]
 
@@ -67,7 +68,7 @@ Azure App Service 为大规模任务关键型 [WordPress][wordpress] 站点提�
 #### <a name="additional-requirements"></a>其他要求
 | 要执行以下操作... | 请使用以下方法... |
 | --- | --- |
-| **上载或存储大型文件** |[适用于使用 Blob 存储的 WordPress 插件][storageplugin] |
+| **上传或存储大型文件** |[适用于使用 Blob 存储的 WordPress 插件][storageplugin] |
 | **发送电子邮件** |[SendGrid][storesendgrid] 和[适用于使用 SendGrid 的 WordPress 插件][sendgridplugin] |
 | **自定义域名** |[在 Azure 应用服务中配置自定义域名][customdomain] |
 | **HTTPS** |[在 Azure 应用服务中启用 Web 应用的 HTTPS][httpscustomdomain] |
@@ -78,7 +79,7 @@ Azure App Service 为大规模任务关键型 [WordPress][wordpress] 站点提�
 #### <a name="availability-and-disaster-recovery"></a>可用性和灾难恢复
 | 要执行以下操作... | 请使用以下方法... |
 | --- | --- |
-| **对站点进行负载平衡**或**对站点进行地理分配** |[通过 Azure 流量管理器路由流量][trafficmanager] |
+| **对站点进行负载均衡**或**对站点进行地理分配** |[通过 Azure 流量管理器路由流量][trafficmanager] |
 | **备份和还原** |[在 Azure 应用服务中备份 Web 应用][backup]和[在 Azure 应用服务中还原 Web 应用][restore] |
 
 #### <a name="performance"></a>性能
@@ -91,7 +92,7 @@ Azure App Service 为大规模任务关键型 [WordPress][wordpress] 站点提�
 | **缩放应用程序** |[在 Azure 应用服务中扩展 Web 应用][websitescale]和 [ClearDB 高可用性路由][cleardbscale]。 如果选择托管和管理自己的 MySQL 安装，应考虑使用 [MySQL 群集 CGE][cge] 进行向外扩展。 |
 
 #### <a name="migration"></a>迁移
-若要将现有 WordPress 站点迁移到 Azure App Service，可使用两种方法：
+若要将现有 WordPress 站点迁移到 Azure 应用服务，可使用两种方法：
 
 * **[WordPress 导出][export]**：此方法可导出你的博客内容。 然后可使用 [WordPress 导入程序插件][import]，将该内容导入到 Azure 应用服务上的新 WordPress 站点。
 
@@ -162,12 +163,12 @@ Azure App Service 为大规模任务关键型 [WordPress][wordpress] 站点提�
 | --- | --- |
 | **设置应用服务计划模式、大小和启用缩放** |[在 Azure 应用服务中缩放 Web 应用][websitescale]。 |
 | **启用持久的数据库连接** |默认情况下，WordPress 不使用持久的数据库连接，这可能导致数据库的连接在多次连接后受到限制。 若要启用持久连接，请安装[持久连接适配器插件](https://wordpress.org/plugins/persistent-database-connection-updater/installation/)。 |
-| **提高性能** |<ul><li><p><a href="https://azure.microsoft.com/en-us/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/">禁用 ARR Cookie</a> 可在多个 Web 应用实例上运行 WordPress 时提高性能。</p></li><li><p>启用缓存。 可将 <a href="http://msdn.microsoft.com/library/azure/dn690470.aspx">Redis 缓存</a>（预览版）与 <a href="https://wordpress.org/plugins/redis-object-cache/">Redis 对象缓存 WordPress 插件</a>配合使用，或可使用 <a href="/gallery/store/">Azure 应用商店</a>中的一款其他缓存产品。</p></li><li><p><a href="http://ruslany.net/2010/03/make-wordpress-faster-on-iis-with-wincache-1-1/">使用 Wincache 加快 WordPress 的速度</a>。 默认情况下为 Web 应用启用 Wincache。</p></li><li><p>[在 Azure 应用服务中缩放 Web 应用][websitescale]并使用 <a href="http://www.cleardb.com/developers/cdbr/introduction">ClearDB 高可用性路由</a>或 <a href="http://www.mysql.com/products/cluster/">MySQL 群集 CGE</a>。</p></li></ul> |
+| **提高性能** |<ul><li><p><a href="https://azure.microsoft.com/en-us/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/">禁用 ARR Cookie</a> 可在多个 Web 应用实例上运行 WordPress 时提高性能。</p></li><li><p>启用缓存。 可将 <a href="http://msdn.microsoft.com/library/azure/dn690470.aspx">Redis 缓存</a>（预览版）与 <a href="https://wordpress.org/plugins/redis-object-cache/">Redis 对象缓存 WordPress 插件</a>配合使用，或可使用 <a href="/gallery/store/">Azure 应用商店</a>中的一款其他缓存产品。</p></li><li><p>[使用 Wincache 加快 WordPress 的速度](https://wordpress.org/plugins/w3-total-cache/)。 默认情况下为 Web 应用启用 Wincache。 配合使用 WinCache 和动态缓存时，请关闭 WinCache 的文件缓存，但让用户和会话缓存处于启用状态。 若要关闭文件缓存，请在系统级 .ini 文件中设置以下值：<br/><code>wincache.fcenabled = 0</code></p></li><li><p>[在 Azure 应用服务中缩放 Web 应用][websitescale]并使用 <a href="http://www.cleardb.com/developers/cdbr/introduction">ClearDB 高可用性路由</a>或 <a href="http://www.mysql.com/products/cluster/">MySQL 群集 CGE</a>。</p></li></ul> |
 | **使用 blob 作为存储** |<ol><li><p>[创建 Azure 存储帐户](../storage/storage-create-storage-account.md)。</p></li><li><p>了解如何[使用内容分发网络 (CDN)](../cdn/cdn-create-new-endpoint.md) 将 blob 中存储的数据分发到各个地区。</p></li><li><p>安装并配置<a href="https://wordpress.org/plugins/windows-azure-storage/">适用于 WordPress 的 Azure 存储插件</a>。</p><p>有关该插件的详细设置和配置信息，请参阅<a href="http://plugins.svn.wordpress.org/windows-azure-storage/trunk/UserGuide.docx">用户指南</a>。</p> </li></ol> |
 | **启用电子邮件** |使用 Azure 应用商店启用 <a href="https://azure.microsoft.com/en-us/marketplace/partners/sendgrid/sendgrid-azure/">SendGrid</a>。 安装适用于 WordPress 的 <a href="http://wordpress.org/plugins/sendgrid-email-delivery-simplified">SendGrid 插件</a>。 |
 | **配置自定义域名** |[在 Azure 应用服务中配置自定义域名][customdomain]。 |
 | **为自定义域名启用 HTTPS** |[在 Azure 应用服务中启用 Web 应用的 HTTPS][httpscustomdomain]。 |
-| **对站点进行负载平衡或地理分配** |[通过 Azure 流量管理器路由流量][trafficmanager]。 如果使用自定义域，请参阅[在 Azure 应用服务中配置自定义域名][customdomain]，了解如何使用含自定义域名的流量管理器。 |
+| **对站点进行负载均衡或地理分配** |[通过 Azure 流量管理器路由流量][trafficmanager]。 如果使用自定义域，请参阅[在 Azure 应用服务中配置自定义域名][customdomain]，了解如何使用含自定义域名的流量管理器。 |
 | **启用自动备份** |[在 Azure 应用服务中备份 Web 应用][backup]。 |
 | **启用诊断日志记录** |[在 Azure 应用服务中启用 Web 应用的诊断日志记录][log]。 |
 
@@ -211,7 +212,7 @@ Azure App Service 为大规模任务关键型 [WordPress][wordpress] 站点提�
 [storageplugin]: https://wordpress.org/plugins/windows-azure-storage/
 [sendgridplugin]: http://wordpress.org/plugins/sendgrid-email-delivery-simplified/
 [phpwebsite]: web-sites-php-configure.md
-[customdomain]: web-sites-custom-domain-name.md
+[customdomain]: app-service-web-tutorial-custom-domain.md
 [trafficmanager]: ../traffic-manager/traffic-manager-overview.md
 [backup]: web-sites-backup.md
 [restore]: web-sites-restore.md
@@ -223,7 +224,7 @@ Azure App Service 为大规模任务关键型 [WordPress][wordpress] 站点提�
 [staging]: web-sites-staged-publishing.md
 [monitor]: web-sites-monitor.md
 [log]: web-sites-enable-diagnostic-log.md
-[httpscustomdomain]: web-sites-configure-ssl-certificate.md
+[httpscustomdomain]: app-service-web-tutorial-custom-ssl.md
 [mysqlwindows]:../virtual-machines/windows/classic/mysql-2008r2.md
 [mysqllinux]:../virtual-machines/linux/classic/mysql-on-opensuse.md
 [cge]: http://www.mysql.com/products/cluster/

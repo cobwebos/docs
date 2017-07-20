@@ -4,7 +4,7 @@ description:
 services: 
 documentationcenter: 
 author: vikramdesai01
-manager: vikramdesai01
+manager: vikdesai
 editor: 
 tags: billing
 ms.assetid: e4c4d136-2826-4938-868f-a7e67ff6b025
@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: vikdesai
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 3453e80246393f15cf0ee2eb29b2fb1d53f77078
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 247782a86a0d20486513dff0dae0c1564b5ecb72
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -63,7 +64,7 @@ ms.lasthandoff: 04/26/2017
     ![显示计费读取者可在 Azure 门户中所见内容的屏幕截图](./media/billing-manage-access/billing-reader-view.png)
 
 > [!NOTE]
-> 计费读取者功能处于预览状态，且仅适用于 Azure 全局云。
+> 计费读取者功能处于预览状态，尚不支持企业 (EA) 订阅或非全局云。
 
 ## <a name="adding-users-to-other-roles"></a>将用户添加到其他角色
 
@@ -76,3 +77,4 @@ ms.lasthandoff: 04/26/2017
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 
 如果仍有疑问，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
+

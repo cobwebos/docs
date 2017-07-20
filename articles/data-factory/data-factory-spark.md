@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
+ms.date: 06/19/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 124f04eb39296899af501d506476ad966442fc3d
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: dbee3f1d0aae885325ef9efe9c2f48961495e8b9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/13/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -56,7 +56,7 @@ Spark 活动是 Azure 数据工厂支持的[数据转换活动](data-factory-dat
 1. 遵循[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)演练中的说明创建一个**通用 Azure 存储帐户**。  
 2. 遵循[在 Azure HDInsight 中创建 Apache Spark 群集](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md)教程中的说明**在 Azure HDInsight 中创建一个 Apache Spark 群集**。 将你在步骤 1 中创建的 Azure 存储帐户与此群集相关联。  
 3. 下载并查看位于以下网址的 python 脚本文件 **test.py**：[https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py)。  
-3.  将 **test.py** 上载到你的 Azure Blob 存储中 **adfspark** 容器中的 **pyFiles** 文件夹。 如果该容器和文件夹不存在，则创建它们。
+3.  将 **test.py** 上传到你的 Azure Blob 存储中 **adfspark** 容器中的 **pyFiles** 文件夹。 如果该容器和文件夹不存在，则创建它们。
 
 ### <a name="create-data-factory"></a>创建数据工厂
 首先，在此步骤中创建数据工厂。
@@ -193,7 +193,7 @@ Spark 活动是 Azure 数据工厂支持的[数据转换活动](data-factory-dat
     ```
     请注意以下几点：
     - **type** 属性设置为 **HDInsightSpark**。
-    - **rootPath** 设置为 **adfspark\\pyFiles**，其中，adfspark 是 Azure Blob 容器，pyFiles 是该容器中的文件夹。 在此示例中，Azure Blob 存储是与 Spark 群集关联的存储。 可将文件上载到不同的 Azure 存储。 如果这样做，请创建 Azure 存储链接服务，将该存储帐户链接到数据工厂。 然后，将该链接的服务的名称指定为 **sparkJobLinkedService** 属性的值。 请参阅 [Spark 活动属性](#spark-activity-properties)，了解有关 Spark 活动支持的此属性及其他属性的详细信息。  
+    - **rootPath** 设置为 **adfspark\\pyFiles**，其中，adfspark 是 Azure Blob 容器，pyFiles 是该容器中的文件夹。 在此示例中，Azure Blob 存储是与 Spark 群集关联的存储。 可将文件上传到不同的 Azure 存储。 如果这样做，请创建 Azure 存储链接服务，将该存储帐户链接到数据工厂。 然后，将该链接的服务的名称指定为 **sparkJobLinkedService** 属性的值。 请参阅 [Spark 活动属性](#spark-activity-properties)，了解有关 Spark 活动支持的此属性及其他属性的详细信息。  
     - **entryFilePath** 设置为 **test.py**，这是 python 文件。
     - **getDebugInfo** 属性设置为 **Always**，表示始终生成日志文件（无论成功还是失败）。
 
@@ -299,22 +299,22 @@ Spark 活动是 Azure 数据工厂支持的[数据转换活动](data-factory-dat
 | className | 应用程序的 Java/Spark main 类 | 否 |
 | arguments | Spark 程序的命令行参数列表。 | 否 |
 | proxyUser | 用于模拟执行 Spark 程序的用户帐户 | 否 |
-| sparkConfig | Spark 配置属性。 | 否 |
+| sparkConfig | 指定在以下主题中列出的 Spark 配置属性的值：[Spark 配置 - 应用程序属性](https://spark.apache.org/docs/latest/configuration.html#available-properties)。 | 否 |
 | getDebugInfo | 指定何时将 Spark 日志文件复制到 HDInsight 群集使用的（或者）sparkJobLinkedService 指定的 Azure 存储。 允许的值：None、Always 或 Failure。 默认值：None。 | 否 |
 | sparkJobLinkedService | 用于保存 Spark 作业文件、依赖项和日志的 Azure 存储链接服务。  如果未指定此属性的值，将使用与 HDInsight 群集关联的存储。 | 否 |
 
 ## <a name="folder-structure"></a>文件夹结构
 与 Pig 和 Hive 活动不同，Spark 活动不支持内联脚本。 与 Pig/Hive 作业相比，Spark 作业的可扩展性更高。 对于 Spark 作业，可以提供多个依赖项，例如 jar 包（放在 java CLASSPATH 中）、python 文件（放在 PYTHONPATH 中）和其他任何文件。
 
-在 HDInsight 链接服务引用的 Azure Blob 存储中创建以下文件夹结构。 然后，将依赖文件上载到 **entryFilePath** 表示的根文件夹中的相应子文件夹。 例如，将 python 文件上载到根文件夹的 pyFiles 子文件夹，将 jar 文件上载到根文件夹的 jars 子文件夹。 在运行时，数据工厂服务需要 Azure Blob 存储中的以下文件夹结构：     
+在 HDInsight 链接服务引用的 Azure Blob 存储中创建以下文件夹结构。 然后，将依赖文件上传到 **entryFilePath** 表示的根文件夹中的相应子文件夹。 例如，将 python 文件上传到根文件夹的 pyFiles 子文件夹，将 jar 文件上传到根文件夹的 jars 子文件夹。 在运行时，数据工厂服务需要 Azure Blob 存储中的以下文件夹结构：     
 
 | 路径 | 说明 | 必选 | 类型 |
 | ---- | ----------- | -------- | ---- |
-| 。    | Spark 作业在存储链接服务中的根路径    | 是 | 文件夹 |
+| 。 | Spark 作业在存储链接服务中的根路径  | 是 | 文件夹 |
 | &lt;用户定义&gt; | 指向 Spark 作业入口文件的路径 | 是 | 文件 |
-| ./jars | 此文件夹下的所有文件将上载并放置在群集的 java 类路径中 | 否 | 文件夹 |
-| ./pyFiles | 此文件夹下的所有文件将上载并放置在群集的 PYTHONPATH 中 | 否 | 文件夹 |
-| ./files | 此文件夹下的所有文件将上载并放置在执行器工作目录中 | 否 | 文件夹 |
+| ./jars | 此文件夹下的所有文件将上传并放置在群集的 java 类路径中 | 否 | 文件夹 |
+| ./pyFiles | 此文件夹下的所有文件将上传并放置在群集的 PYTHONPATH 中 | 否 | 文件夹 |
+| ./files | 此文件夹下的所有文件将上传并放置在执行器工作目录中 | 否 | 文件夹 |
 | ./archives | 此文件夹下的所有文件未经压缩 | 否 | 文件夹 |
 | ./logs | 来自 Spark 群集的日志所存储到的文件夹。| 否 | 文件夹 |
 

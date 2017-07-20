@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/13/2017
 ms.author: navale;tomfitz;
-translationtype: Human Translation
-ms.sourcegitcommit: 76864bfc1b59cfc4e6f39094c08394fe32482d17
-ms.openlocfilehash: b7957c52877b262506013a422cd1511dd0ee79a4
-ms.lasthandoff: 01/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 2f7ba23775545637de865f9ef63680ae22c62164
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -36,7 +37,7 @@ ms.lasthandoff: 01/14/2017
 
 ## <a name="authentication"></a>身份验证
 Azure Active Directory (AD) 负责处理 Resource Manager 的身份验证。 若要连接到任何 API，首先需要使用 Azure AD 进行身份验证，以接收可传递给每个请求的身份验证令牌。 由于我们要介绍对 REST API 的单纯直接调用，因此我们假设你不想通过提示输入用户名和密码进行身份验证。 我们还假定你未使用双因素身份验证机制。 因此，我们将创建所谓的 Azure AD 应用程序和一个用于登录的服务主体。 但请记住，Azure AD 支持多个身份验证过程，而这些过程全都可用于检索后续 API 请求所需的身份验证令牌。
-有关分步说明，请参阅 [Create Azure AD Application and Service Principle](resource-group-create-service-principal-portal.md)（创建 Azure AD 应用程序和服务主体）。
+有关分步说明，请参阅[创建 Azure AD 应用程序和服务主体](resource-group-create-service-principal-portal.md)。
 
 ### <a name="generating-an-access-token"></a>生成访问令牌
 通过向外调用位于 login.microsoftonline.com 的 Azure AD 来对 Azure AD 进行身份验证。 若要进行身份验证，需要提供以下信息：

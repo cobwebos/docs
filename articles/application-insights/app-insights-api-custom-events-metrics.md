@@ -3,7 +3,7 @@ title: "用于处理自定义事件和指标的 Application Insights API | Micro
 description: "在设备、桌面应用、网页或服务中插入几行代码，即可跟踪使用情况和诊断问题。"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 80400495-c67b-4468-a92e-abf49793a54d
 ms.service: application-insights
@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 03/31/2017
+ms.date: 05/17/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 64632e58330b8212be24b98f861a3a4f358e72df
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: 8793744f63388c5df04a167585d5f7b99ec7acee
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
+ms.lasthandoff: 05/19/2017
 
 
 ---
@@ -33,7 +33,7 @@ API 在所有平台中是一致的，只有一些微小的差异。
 | --- | --- |
 | [`TrackPageView`](#page-views) |页面、屏幕、边栏选项卡或窗体。 |
 | [`TrackEvent`](#trackevent) |用户操作和其他事件。 用于跟踪用户行为或监视性能。 |
-| [`TrackMetric`](#send-metrics) |性能度量，例如与特定事件不相关的队列长度。 |
+| [`TrackMetric`](#trackmetric) |性能度量，例如与特定事件不相关的队列长度。 |
 | [`TrackException`](#trackexception) |记录诊断的异常。 跟踪与其他事件的相关性，以及检查堆栈跟踪。 |
 | [`TrackRequest`](#trackrequest) |记录服务器请求的频率和持续时间以进行性能分析。 |
 | [`TrackTrace`](#tracktrace) |诊断日志消息。 还可以捕获第三方日志。 |
@@ -117,40 +117,26 @@ Visual Basic
 
 ![打开“筛选器”，展开“事件名称”，然后选择一个或多个值](./media/app-insights-api-custom-events-metrics/06-filter.png)
 
+### <a name="custom-events-in-analytics"></a>Analytics 中的自定义事件
 
-## <a name="send-metrics"></a>发送指标
+[Application Insights Analytics](app-insights-analytics.md) 的 `customEvents` 表格提供了遥测。 每行表示对应用中 `trackEvent(..)` 的调用。 
+
+如果正在进行[采样](app-insights-sampling.md)，那么 itemCount 属性将会显示大于 1 的值。 例如，itemCount==10 表明对 trackEvent() 调用了 10 次，采样进程只传输其中一次。 若要获取自定义事件的正确计数，应使用 `customEvent | summarize sum(itemCount)` 之类的代码。
+
+
+## <a name="trackmetric"></a>TrackMetric
 
 Application Insights 可绘制未附加到特定事件的指标。 例如，可以定期监视队列长度。 对指标而言，变化和趋势比单个度量值更具价值，因此统计图表非常实用。
 
-可通过两种方式发送指标：
+若要将指标发送到 Application Insights，可以使用 `TrackMetric(..)` API。 可通过两种方式发送指标： 
 
-* 推荐使用 **MetricManager**，这种方式发送指标非常方便，且可降低带宽。 它聚合应用中的指标，每隔一分钟将聚合的统计信息发送到门户。 Application Insights SDK for ASP.NET 版本 2.4 中 MetricManager 可用。
-* **TrackMetric** 将指标统计信息发送到门户。 可发送单一指标值，或执行聚合并使用 TrackMetric 发送统计信息。
+* 单个值。 每次在应用中执行测量时，会发送相应的值到 Application Insights。 例如，假设有个指标用于描述容器中项的数量。 在特定时间段，先将 3 个项放入容器中，然后从容器中移除 2 个项。 相应地，将会调用 `TrackMetric` 两次：首先传递值 `3`，然后传递值 `-2`。 Application Insights 会替你存储这两个值。 
 
-### <a name="metricmanager"></a>MetricManager
+* 聚合。 使用指标时，每个单次测量几乎无关紧要。 反而特定时间段内发生活动的摘要很重要。 此类摘要名为聚合。 在上一示例中，该时间段的聚合指标总数为 `1`，同时指标值的计数为 `2`. 使用聚合方法时，每个时间段将只调用一次 `TrackMetric` 并发送聚合值。 建议采用此方法是因为它可以通过发送更少的数据点到 Application Insights 同时仍然收集所有相关信息来显著降低成本和性能开销。
 
-(Application Insights for ASP.NET v2.4.0+)
+### <a name="examples"></a>示例:
 
-创建一个 MetricManager 实例，然后将其用作指标的工厂：
-
-*C#*
-```C#
-    // Initially:
-    var manager = new Microsoft.ApplicationInsights.Extensibility.MetricManager(telemetryClient);
-
-    // For each metric that you want to use:
-    var metric1 = manager.CreateMetric("m1", dimensions);
-
-    // Each time you want to record a measurement:
-    metric1.Track(value);
-
-```
-
-`dimensions` 是可选的字符串字典。 若要将[属性](#properties)附加到指标以便可按不同属性值分段，请使用它。 
-
-### <a name="trackmetric"></a>TrackMetric
-
-TrackMetric 是发送聚合指标的基本方法。 
+#### <a name="single-values"></a>单个值
 
 发送单一指标值：
 
@@ -169,59 +155,153 @@ TrackMetric 是发送聚合指标的基本方法。
     telemetryClient.TrackMetric(sample);
 ```
 
-但是，建议从应用发送指标前聚合指标，以减少带宽。
-如果使用最新版本的 SDK for ASP.NET，可使用 [`MetricManager`](#metricmanager) 执行此操作。 以下是一个聚合代码示例：
+#### <a name="aggregating-metrics"></a>聚合指标
+
+建议在应用发送指标前聚合指标，以减少带宽和成本同时提升性能。
+以下是一个聚合代码示例：
 
 *C#*
 
 ```C#
-    /// Accepts metric values and sends the aggregated values at 1-minute intervals.
-    class MetricAggregator
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+
+namespace MetricAggregationExample
+{
+    /// <summary>
+    /// Aggregates metric values for a single time period.
+    /// </summary>
+    internal class MetricAggregator
     {
-        private List<double> measurements = new List<double>();
-        private string name;
-        private TelemetryClient telemetryClient;
-        private BackgroundWorker thread;
-        private Boolean stop = false;
-        public void TrackMetric (double value)
+        private SpinLock _trackLock = new SpinLock();
+
+        public DateTimeOffset StartTimestamp    { get; }
+        public int Count                        { get; private set; }
+        public double Sum                       { get; private set; }
+        public double SumOfSquares              { get; private set; }
+        public double Min                       { get; private set; }
+        public double Max                       { get; private set; }
+        public double Average                   { get { return (Count == 0) ? 0 : (Sum / Count); } }
+        public double Variance                  { get { return (Count == 0) ? 0 : (SumOfSquares / Count)
+                                                                                  - (Average * Average); } }
+        public double StandardDeviation         { get { return Math.Sqrt(Variance); } }
+
+        public MetricAggregator(DateTimeOffset startTimestamp)
         {
-            lock (this)
-            {
-                measurements.Add(value);
-            }
+            this.StartTimestamp = startTimestamp;
         }
-        public MetricTelemetry Aggregate()
+
+        public void TrackValue(double value)
         {
-            lock (this)
+            bool lockAcquired = false;
+
+            try
             {
-                var sample = new MetricTelemetry();
-                sample.Name = "metric name";
-                sample.Count = measurements.Count;
-                sample.Max = measurements.Max();
-                sample.Min = measurements.Min();
-                sample.Sum = measurements.Sum();
-                var mean = sample.Sum / measurements.Count;
-                sample.StandardDeviation = Math.Sqrt(measurements.Sum(v => { var diff = v - mean; return diff * diff; }) / measurements.Count);
-                sample.Timestamp = DateTime.Now;
-                measurements.Clear();
-                return sample;
+                _trackLock.Enter(ref lockAcquired);
+
+                if ((Count == 0) || (value < Min))  { Min = value; }
+                if ((Count == 0) || (value > Max))  { Max = value; }
+                Count++;
+                Sum += value;
+                SumOfSquares += value * value;
             }
-        }
-        public MetricAggregator(string Name)
-        {
-            name = Name;
-            thread = new BackgroundWorker();
-            thread.DoWork += async (o, e) => {
-                while (!stop)
+            finally
+            {
+                if (lockAcquired)
                 {
-                    await Task.Delay(60000);
-                    telemetryClient.TrackMetric(this.Aggregate());
+                    _trackLock.Exit();
                 }
-            };
-            thread.RunWorkerAsync();
+            }
         }
-    }
+    }   // internal class MetricAggregator
+
+    /// <summary>
+    /// Accepts metric values and sends the aggregated values at 1-minute intervals.
+    /// </summary>
+    public sealed class Metric : IDisposable
+    {
+        private static readonly TimeSpan AggregationPeriod = TimeSpan.FromSeconds(60);
+
+        private bool _isDisposed = false;
+        private MetricAggregator _aggregator = null;
+        private readonly TelemetryClient _telemetryClient;
+
+        public string Name { get; }
+
+        public Metric(string name, TelemetryClient telemetryClient)
+        {
+            this.Name = name ?? "null";
+            this._aggregator = new MetricAggregator(DateTimeOffset.UtcNow);
+            this._telemetryClient = telemetryClient ?? throw new ArgumentNullException(nameof(telemetryClient));
+
+            Task.Run(this.AggregatorLoopAsync);
+        }
+
+        public void TrackValue(double value)
+        {
+            MetricAggregator currAggregator = _aggregator;
+            if (currAggregator != null)
+            {
+                currAggregator.TrackValue(value);
+            }
+        }
+
+        private async Task AggregatorLoopAsync()
+        {
+            while (_isDisposed == false)
+            {
+                try
+                {
+                    // Wait for end end of the aggregation period:
+                    await Task.Delay(AggregationPeriod).ConfigureAwait(continueOnCapturedContext: false);
+
+                    // Atomically snap the current aggregation:
+                    MetricAggregator nextAggregator = new MetricAggregator(DateTimeOffset.UtcNow);
+                    MetricAggregator prevAggregator = Interlocked.Exchange(ref _aggregator, nextAggregator);
+
+                    // Only send anything is at least one value was measured:
+                    if (prevAggregator != null && prevAggregator.Count > 0)
+                    {
+                        // Compute the actual aggregation period length:
+                        TimeSpan aggPeriod = nextAggregator.StartTimestamp - prevAggregator.StartTimestamp;
+                        if (aggPeriod.TotalMilliseconds < 1)
+                        {
+                            aggPeriod = TimeSpan.FromMilliseconds(1);
+                        }
+
+                        // Construct the metric telemetry item and send:
+                        var aggregatedMetricTelemetry = new MetricTelemetry(
+                                Name,
+                                prevAggregator.Count,
+                                prevAggregator.Sum,
+                                prevAggregator.Min,
+                                prevAggregator.Max,
+                                prevAggregator.StandardDeviation);
+                        aggregatedMetricTelemetry.Properties["AggregationPeriod"] = aggPeriod.ToString("c");
+
+                        _telemetryClient.Track(aggregatedMetricTelemetry);
+                    }
+                }
+                catch(Exception ex)
+                {
+                    // log ex as appropriate for your application
+                }
+            }
+        }
+
+        void IDisposable.Dispose()
+        {
+            _isDisposed = true;
+            _aggregator = null;
+        }
+    }   // public sealed class Metric
+}
 ```
+
 ### <a name="custom-metrics-in-metrics-explorer"></a>指标资源管理器中的自定义指标
 
 若要查看结果，请打开指标资源管理器并添加新图表。 编辑图表以显示指标。
@@ -234,12 +314,9 @@ TrackMetric 是发送聚合指标的基本方法。
 
 ### <a name="custom-metrics-in-analytics"></a>分析中的自定义指标
 
-遥测在 customMetrics 表中可用。 每行表示对应用中 trackMetric() 的调用。 因此，如果已使用 MetricManager 或你自己的聚合代码，每行不会表示单一度量值。 
-
+[Application Insights Analytics](app-insights-analytics.md) 的 `customMetrics` 表格提供了遥测。 每行表示对应用中 `trackMetric(..)` 的调用。
 * `valueSum` - 这是度量值的总和。 若要获取平均值，请除以 `valueCount`。
-* `valueCount` - 聚合到此 trackMetric 调用中的度量值个数。
-
-
+* `valueCount` - 聚合到此 `trackMetric(..)` 调用中的度量值个数。
 
 ## <a name="page-views"></a>页面视图
 在设备或网页应用中，加载每个屏幕或页面时默认将发送页面视图遥测数据。 但是，可以更改为在其他时间或不同时间跟踪页面视图。 例如，在显示选项卡或边栏选项卡的应用中，可以在用户每次打开新边栏选项卡时跟踪一个页面。
@@ -288,6 +365,31 @@ Visual Basic
 
 显示在指标资源管理器中的最终页面加载持续时间派生自开始调用与停止调用的间隔时间。 实际时间间隔由你决定。
 
+### <a name="page-telemetry-in-analytics"></a>Analytics 中的页面遥测
+
+[Analytics](app-insights-analytics.md)中有两个表展示了浏览器操作的数据：
+
+* `pageViews` 表包含关于 URL 和页标题的数据
+* `browserTimings` 表包含关于客户端性能的数据，例如处理传入数据所用的时间
+
+查找浏览器处理不同页面需要的时间：
+
+```
+browserTimings | summarize avg(networkDuration), avg(processingDuration), avg(totalDuration) by name 
+```
+
+发现不同浏览器的热门程度：
+
+```
+pageViews | summarize count() by client_Browser
+```
+
+若要将页面视图关联到 AJAX 调用，请联接依赖项：
+
+```
+pageViews | join (dependencies) on operation_Id 
+```
+
 ## <a name="trackrequest"></a>TrackRequest
 服务器 SDK 使用 TrackRequest 记录 HTTP 请求。
 
@@ -327,6 +429,17 @@ Visual Basic
 在搜索中，操作上下文可用于创建“相关项”列表：
 
 ![相关项](./media/app-insights-api-custom-events-metrics/21.png)
+
+### <a name="requests-in-analytics"></a>Analytics 中的请求 
+
+在 [Application Insights Analytics](app-insights-analytics.md) 中，请求出现在 `requests` 表中。
+
+如果正在进行[采样](app-insights-sampling.md)，那么 itemCount 属性将会显示大于 1 的值。 例如，itemCount==10 表明对 trackRequest() 调用了 10 次，采样进程只传输其中一次。 若要按请求名称获取正确的请求数和平均持续时间，请使用如下所示的代码：
+
+```AIQL
+requests | summarize count = sum(itemCount), avgduration = avg(duration) by name
+```
+
 
 ## <a name="trackexception"></a>TrackException
 将异常发送到 Application Insights：
@@ -371,6 +484,30 @@ SDK 将自动捕获许多异常，因此不一定需要显式调用 TrackExcepti
     })
     ```
 
+### <a name="exceptions-in-analytics"></a>Analytics 中的异常
+
+在 [Application Insights Analytics](app-insights-analytics.md) 中，异常出现在 `exceptions` 表中。
+
+如果正在进行[采样](app-insights-sampling.md)，那么 itemCount 属性将会显示大于 1 的值。 例如，itemCount==10 表明对 trackException() 调用了 10 次，采样进程只传输其中一次。 若要按异常类型获取正确的异常数，请使用如下所示的代码：
+
+```
+exceptions | summarize sum(itemCount) by type
+```
+
+虽然大部分重要的堆栈信息已提取到了单独的变量中，但可以扩展“详细信息”结构，获取更多信息。 由于这是一个动态结构，应该将结果转换为预期的类型。 例如：
+
+```AIQL
+exceptions
+| extend method2 = tostring(details[0].parsedStack[1].method)
+```
+
+若要将异常与相关请求关联，请使用联接：
+
+```
+exceptions
+| join (requests) on operation_Id 
+```
+
 ## <a name="tracktrace"></a>TrackTrace
 使用 TrackTrace 可以通过将“痕迹导航跟踪”发送到 Application Insights 来帮助诊断问题。 可以发送诊断数据区块，并在[诊断搜索](app-insights-diagnostic-search.md)中检查。
 
@@ -395,6 +532,13 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 
 在[搜索](app-insights-diagnostic-search.md)中，可轻松筛选出与特定数据库相关的所有特定严重性级别的消息。
 
+
+### <a name="traces-in-analytics"></a>Analytics 中的跟踪
+
+在 [Application Insights Analytics](app-insights-analytics.md) 中，对 TrackTrace 的调用出现在 `traces` 表中。
+
+如果正在进行[采样](app-insights-sampling.md)，那么 itemCount 属性将会显示大于 1 的值。 例如，itemCount==10 表明对 trackTrace() 调用了 10 次，采样进程只传输其中一次。 若要获取正确的跟踪调用数，应使用 `traces | summarize sum(itemCount)` 之类的代码。
+
 ## <a name="trackdependency"></a>TrackDependency
 可使用 TrackDependency 调用跟踪响应时间以及调用外部代码片段的成功率。 结果将显示在门户上的依赖项图表中。
 
@@ -417,6 +561,23 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 请记住，服务器 SDK 包含[依赖项模块](app-insights-asp-net-dependencies.md)，用于自动发现和跟踪特定的依赖项调用（例如，数据库和 REST API）。 必须在服务器上安装一个代理才能让模块正常运行。 如果想要跟踪自动跟踪未捕获的调用，或不想安装代理，可以使用此调用。
 
 若要关闭标准依赖项跟踪模块，请编辑 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 并删除对 `DependencyCollector.DependencyTrackingTelemetryModule` 的引用。
+
+### <a name="dependencies-in-analytics"></a>Analytics 中的依赖项
+
+在 [Application Insights Analytics](app-insights-analytics.md) 中，trackDependency 调用出现在 `dependencies` 表中。
+
+如果正在进行[采样](app-insights-sampling.md)，那么 itemCount 属性将会显示大于 1 的值。 例如，itemCount==10 表明对 trackDependency() 调用了 10 次，采样进程只传输其中一次。 若要按目标组件获取正确的依赖项数，请使用如下所示的代码：
+
+```
+dependencies | summarize sum(itemCount) by target
+```
+
+若要将依赖项与相关请求关联，请使用联接：
+
+```
+dependencies
+| join (requests) on operation_Id 
+```
 
 ## <a name="flushing-data"></a>刷新数据
 通常，SDK 在选定的时间发送数据，以便最大程度地降低对用户的影响。 但是，在某些情况下，可能需要刷新缓冲区，例如，在关闭的应用程序中使用 SDK 时。
@@ -587,6 +748,24 @@ Visual Basic
 > 请不要重复使用相同的遥测项实例（本示例中为 `event`）来调用 Track*() 多次。 这可能会导致使用不正确的配置发送遥测数据。
 >
 >
+
+### <a name="custom-measurements-and-properties-in-analytics"></a>在 Analytics 中自定义度量值和属性
+
+在 [Analytics](app-insights-analytics.md) 中，自定义指标和属性显示在每个遥测记录的 `customMeasurements` 和 `customDimensions` 属性中。
+
+例如，如果已向请求遥测添加名为 "game" 的属性，此查询将会计算 "game" 不同值的出现次数，同时显示自定义指标 "score" 的平均值：
+
+```
+requests
+| summarize sum(itemCount), avg(todouble(customMeasurements.score)) by tostring(customDimensions.game) 
+```
+
+请注意：
+
+* 从 customDimensions 或 customMeasurements JSON 中提取值的时候，会有动态类型，所以必须将其转换为 `tostring` 或 `todouble`。
+* 考虑到[采样](app-insights-sampling.md)的可能性，需要使用 `sum(itemCount)` 而非 `count()`。
+
+
 
 ## <a name="timed"></a>计时事件
 有时，需要绘制图表来呈现执行某个操作花费了多少时间。 例如，你可能想要知道用户在游戏中考虑如何选择时花费了多少时间。 为此，可以使用度量参数。
@@ -785,7 +964,6 @@ TelemetryClient 具有上下文属性，其中包含与所有遥测数据一起�
 * [搜索事件和日志](app-insights-diagnostic-search.md)
 
 * [故障排除](app-insights-troubleshoot-faq.md)
-
 
 
 

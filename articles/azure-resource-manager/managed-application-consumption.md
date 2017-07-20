@@ -8,13 +8,13 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 05/11/2017
+ms.date: 05/17/2017
 ms.author: gauravbh; tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 2763da60fe25f2ca55603ecfcbbcefe3e368c25d
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 041254b07584a52ae92e603f60a439050b747af1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -49,8 +49,7 @@ az group create --name managedResourceGroup --location westcentralus
 接下来，使用以下命令部署 mainResourceGroup 中的 applianceMainTemplate.json：
 
 ```azurecli
-az group deployment --name managedAppDeployment --resourceGroup mainResourceGroup 
-      --templateUri  
+az group deployment create --name managedAppDeployment --resourceGroup mainResourceGroup --templateUri  
 ```
 
 执行前面的模板时，它会提示你输入模板中定义的参数的值。 除了预配模板中的资源时所需的参数外，你还需要两个关键参数值：
@@ -94,9 +93,9 @@ az appliance definition show -n ravtestAppDef1 -g ravApplianceRG2
 
 门户中也支持使用 ISV 发布的托管应用程序。 可以按照以下步骤操作：
 
-从 Azure 门户中的“创建”边栏选项卡中选择托管应用程序 -
+从 Azure 门户中的“创建”边栏选项卡选择服务目录托管应用程序 -
 
-![](./media/managed-application-consumption/create-blade.png)
+![](./media/managed-application-consumption/create-service-catalog-managed-application.png)
 
 接下来，你会看到由各个 ISV/合作伙伴提供的产品的列表。 选择你要创建的产品并单击“创建”
 
