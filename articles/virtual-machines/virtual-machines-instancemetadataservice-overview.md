@@ -2,16 +2,16 @@
 title: "Azure 实例元数据服务概述 | Microsoft Docs"
 description: "一个 RESTful 接口，用于获取有关 VM 计算、网络和即将发生的维护事件的信息。"
 services: virtual-machines-windows, virtual-machines-linux,virtual-machines-scale-sets, cloud-services
-documentationcenter: 
+documentationcenter: virtual-machines
 author: harijay
 manager: timlt
 editor: 
-tags: 
-ms.service: azure-instancemetadataservice
+tags: azure-resource-manager
+ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: harijay
 ms.translationtype: Human Translation
