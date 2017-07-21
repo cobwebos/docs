@@ -369,6 +369,8 @@
               href: classic/hpcpack-cluster-namd.md
         - name: Azure 上的 SAP
           href: ../workloads/sap/get-started.md
+        - name: Azure 上的 Oracle
+          href: ../workloads/oracle/oracle-considerations.md
     - name: VM 上的 Docker
       items:
         - name: 使用 Azure Docker VM 扩展创建 Docker 主机

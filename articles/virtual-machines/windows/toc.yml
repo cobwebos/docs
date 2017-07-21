@@ -85,8 +85,6 @@
           href: preserving-maintenance.md
         - name: 重新启动维护
           href: impactful-maintenance.md
-        - name: 计划
-          href: planned-maintenance-schedule.md
     - name: VM 大小
       href: sizes.md
       items:
@@ -405,6 +403,8 @@
               href: troubleshoot-recovery-disks.md
             - name: Azure 门户
               href: troubleshoot-recovery-disks-portal.md
+        - name: 使用 PerfInsights 解决性能问题
+          href: how-to-use-perfInsights.md
 - name: 引用
   items:
     - name: Azure CLI

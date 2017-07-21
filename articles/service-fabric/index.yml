@@ -1,0 +1,126 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Service Fabric 文档
+metadata:
+  title: Azure Service Fabric 文档 - 教程和 API 参考 | Microsoft 文档
+  meta.description: >-
+    Learn how to use Service Fabric middleware platform to package and deploy
+    microservices for cloud-scale applications. Tutorials, API references, and
+    code samples.
+  services: service-fabric
+  author: carolz
+  manager: carolz
+  layout: LandingPage
+  ms.assetid: null
+  ms.service: service-fabric
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 01/23/2017
+  ms.author: carolz
+abstract:
+  description: >-
+    Azure Service Fabric 是一款分布式系统平台，可方便用户轻松打包、部署和管理可缩放的可靠微服务和容器。
+    开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放、可靠且易于管理的工作负荷。
+    参考我们的快速入门、教程和示例了解如何使用 Azure Service Fabric。
+  aside:
+    image:
+      alt: null
+      height: 140
+      src: >-
+        https://sec.ch9.ms/ch9/cf61/aa41e58e-ec9f-4f7b-982d-40daaaeacf61/IntroAzureServiceFabric_960.jpg
+      width: 250
+    title: 'Service Fabric 简介 (3:53)'
+    href: 'https://azure.microsoft.com/en-us/resources/videos/azure-service-fabric/'
+    width: 250
+sections:
+  - title: 5 分钟快速入门
+    items:
+      - type: paragraph
+        text: 了解如何将你的第一个 Service Fabric 应用程序部署到云：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: >-
+                https://docs.microsoft.com/en-us/azure/app-service-web/media/index/logo_net.svg
+            text: .NET
+            href: >-
+              https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-dotnet
+  - title: 分步教程
+    items:
+      - type: paragraph
+        text: 了解如何在 Azure 上部署、管理和监视安全的 Web 应用程序
+      - type: list
+        style: ordered
+        items:
+          - html: >-
+              <a href="service-fabric-tutorial-create-dotnet-app">部署 .NET
+              应用程序</a>
+          - html: >-
+              <a href="service-fabric-tutorial-create-cluster-azure-ps">直接迁移现有
+              .NET 应用程序</a>
+  - title: 免费 PluralSight 视频培训
+    items:
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: 使用 .NET 进行开发
+            href: >-
+              https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7
+            image:
+              src: >-
+                https://docs.microsoft.com/en-us/media/logos/logo_pluralsight.svg
+              href: >-
+                https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7
+          - title: 云模式和体系结构
+            href: >-
+              https://www.pluralsight.com/courses/microsoft-azure-dotnet-cloud-architecture?twoid=FEED65A23CB221A7
+            image:
+              src: >-
+                https://docs.microsoft.com/en-us/media/logos/logo_pluralsight.svg
+              href: >-
+                https://www.pluralsight.com/courses/microsoft-azure-dotnet-cloud-architecture?twoid=FEED65A23CB221A7
+  - title: 示例
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 脚本示例
+            html: >-
+              <p><a href="service-fabric-powershell-samples">Azure
+              PowerShell</a></p>
+          - title: .NET
+            html: >-
+              <p><a
+              href="https://azure.microsoft.com/en-us/resources/samples/service-fabric-dotnet-getting-started/">入门</a></p><p><a
+              href="https://github.com/Azure-Samples/service-fabric-dotnet-quickstart">投票</a></p><p><a
+              href="https://azure.microsoft.com/en-us/resources/samples/service-fabric-dotnet-web-reference-app/">Web
+              引用</a></p><p><a
+              href="https://azure.microsoft.com/en-us/resources/samples/service-fabric-dotnet-iot/">IoT</a></p><p><a
+              href="https://azure.microsoft.com/en-us/resources/samples/service-fabric-watchdog-service/">监视程序</a></p>
+          - title: Java
+            html: >-
+              <p><a
+              href="https://azure.microsoft.com/en-us/resources/samples/service-fabric-java-getting-started/">入门</a></p>
+  - title: 引用
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 命令行
+            html: >-
+              <p><a href="/cli/azure/sf">Azure CLI</a></p><p><a
+              href="/powershell/module/azurerm.servicefabric">PowerShell
+              (Azure)</a></p><p><a
+              href="/powershell/module/servicefabric/?view=azureservicefabricps">PowerShell</a></p>
+          - title: 语言
+            html: >-
+              <p><a href="/java/api/overview/azure/servicefabric">Java
+              API</a></p><p><a
+              href="/dotnet/api/overview/azure/service-fabric?view=azure-dotnet">.NET</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/servicefabric">REST API 参考</a></p>

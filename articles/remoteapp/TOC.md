@@ -25,6 +25,7 @@
 # 如何
 
 ## [从 Azure RemoteApp 迁移用户数据](remoteapp-migrate.md)
+## [迁移到 MyCloudIT](remoteapp-migrate-mycloudit.md)
 ## [迁移到 Citrix XenApp Essentials](remoteapp-migrate-citrix.md)
 ## 创建 RemoteApp 集合
 ### [需要哪个集合？](remoteapp-collections.md)
