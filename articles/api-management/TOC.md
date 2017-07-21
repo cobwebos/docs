@@ -1,268 +1,94 @@
-
-
 # 概述
-
-
 ## [什么是 API 管理？](api-management-key-concepts.md)
-
-
 # 入门
-
-
 ## [管理第一个 API](api-management-get-started.md)
-
-
 ## [借助速率限制保护 API](api-management-howto-product-with-rules.md)
-
-
 ## [添加缓存以提升性能](api-management-howto-cache.md)
-
-
 ## [常见问题](api-management-faq.md)
-
-
 # 如何
-
-
 ## 开发 API
-
-
 ### [添加和发布 API 产品](api-management-howto-add-products.md)
-
-
 ### [添加操作](api-management-howto-add-operations.md)
-
-
 ### [创建 API](api-management-howto-create-apis.md)
-
-
 ### [导入 API 定义](api-management-howto-import-api.md)
-
-
 ## 保护后端
-
-
 ### [使用 AAD 保护 Web API 后端](api-management-howto-protect-backend-with-aad.md)
-
-
 ### [连接到虚拟网络](api-management-using-with-vnet.md)
-
-
 ### [连接到内部虚拟网络](api-management-using-with-internal-vnet.md)
-
-
 ### [在内部 VNET 中集成应用程序网关](api-management-howto-integrate-internal-vnet-appgateway.md)
-
-
 ### [使用证书进行相互身份验证](api-management-howto-mutual-certificates.md)
-
-
 ## 配置策略
-
-
 ### [自定义缓存](api-management-sample-cache-by-key.md)
-
-
 ### [高级监视](api-management-log-to-eventhub-sample.md)
-
-
 ### [高级请求限制](api-management-sample-flexible-throttling.md)
-
-
 ### [使用外部服务](api-management-sample-send-request.md)
-
-
 ### [策略引用索引](api-management-policy-reference.md)
-
-
 ### [策略概述](api-management-howto-policies.md)
-
-
 ### [使用属性管理密码](api-management-howto-properties.md)
-
-
 ### [使用客户端证书身份验证保护 API](api-management-howto-mutual-certificates-for-clients.md)
-
-
 ## 自定义开发人员体验
-
-
 ### [修改页面内容和布局](api-management-modify-content-layout.md)
-
-
 ### [自定义页面元素的样式](api-management-customize-styles.md)
-
-
 ### [使用模板自定义系统页面](api-management-developer-portal-templates.md)
-
-
 ### [使用 AAD 进行身份验证](api-management-howto-aad.md)
-
-
 ### [使用 AAD B2C 进行身份验证](api-management-howto-aad-b2c.md)
-
-
 ### [委托身份验证](api-management-howto-setup-delegation.md)
-
-
 ### [电子邮件通知和模板](api-management-howto-configure-notifications.md)
-
-
 ### [启动控制台 OAuth 支持](api-management-howto-oauth2.md)
-
-
 ## 在生产环境中进行管理
-
-
 ### [管理组](api-management-howto-create-groups.md)
-
-
 ### [部署到多个 Azure 区域](api-management-howto-deploy-multi-region.md)
-
-
 ### [将事件记录到 Azure 事件中心](api-management-howto-log-event-hubs.md)
-
-
 ### [使用备份/还原设置灾难恢复](api-management-howto-disaster-recovery-backup-restore.md)
-
-
 ### [使用 API 检查器跟踪调用](api-management-howto-api-inspector.md)
-
-
 ### [管理用户帐户](api-management-howto-create-or-invite-developers.md)
-
-
 ### [使用自动化进行管理](automation-manage-api-management.md)
-
-
 ### [使用 Git 进行配置](api-management-configuration-repository-git.md)
-
-
 ### [使用 Azure Monitor 进行监视](api-management-howto-use-azure-monitor.md)
-
-
 ### [使用基于角色的访问控制](api-management-role-based-access-control.md)
-
+### 与 Service Fabric 集成
+#### [概述](../service-fabric/service-fabric-api-management-overview.md)
+#### [快速入门](../service-fabric/service-fabric-api-management-quick-start.md)
 
 # 引用
-
-
 ## [PowerShell](/powershell/azure/overview)
-
-
 ## [REST](/rest/api/apimanagement/)
-
-
 ## [REST（原始）](/rest/api/apimanagement/ApiManagementREST/api-management-REST)
-
-
 ## [策略](api-management-policies.md)
-
-
 ### 策略参考
-
-
 #### [访问限制策略](api-management-access-restriction-policies.md)
-
-
 #### [高级策略](api-management-advanced-policies.md)
-
-
 #### [身份验证策略](api-management-authentication-policies.md)
-
-
 #### [缓存策略](api-management-caching-policies.md)
-
-
 #### [跨域策略](api-management-cross-domain-policies.md)
-
-
 #### [转换策略](api-management-transformation-policies.md)
-
-
 ### [错误处理](api-management-error-handling-policies.md)
-
-
 ### [策略表达式](api-management-policy-expressions.md)
-
-
 ## [模板](api-management-developer-portal-templates-reference.md)
-
-
 ### 模板参考
-
-
 #### [API](api-management-api-templates.md)
-
-
 #### [产品](api-management-product-templates.md)
-
-
 #### [应用程序](api-management-application-templates.md)
-
-
 #### [问题](api-management-issue-templates.md)
-
-
 #### [用户配置文件](api-management-user-profile-templates.md)
-
-
 #### [页](api-management-page-templates.md)
-
-
 ### [数据模型参考](api-management-template-data-model-reference.md)
-
-
 ### [页面控件](api-management-page-controls.md)
-
-
 ### [模板资源](api-management-template-resources.md)
-
-
 # 资源
-
-
 ## [API 设计指南](../best-practices-api-design.md?toc=%2fazure%2fapi-management%2ftoc.json)
-
-
 ## [API 实现指南](../best-practices-api-implementation.md?toc=%2fazure%2fapi-management%2ftoc.json)
-
-
 ## [API 管理 - 与其他 Azure 服务完美配合](http://weblogs.asp.net/cschittko/api-management-plays-well-with-other-azure-services)
-
-
 ## [适用于 SmartBear Ready! API 的API 管理插件](http://smartbear.com/plugins/microsoft-azure-api-management-plugin/)
-
-
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
-
-
 ## [将事件中心连接到 API 管理](http://weblogs.asp.net/cschittko/connecting-eventhubs-to-api-management)
-
-
 ## [通过 HTTP 使用 SOAP WCF 服务](http://mostlydotnetdev.blogspot.nl/2015/03/azure-api-management-apim-consuming.html)
-
-
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt)
-
-
 ## [定价](https://azure.microsoft.com/pricing/details/api-management/)
-
-
 ## [使用 REST API 提供类似于 RBAC 的访问权限](http://blogs.msdn.com/b/katriend/archive/2015/12/21/using-the-azure-api-management-rest-api-as-workaround-to-rbac-functionality.aspx)
-
-
 ## [服务更新](https://azure.microsoft.com/updates/?product=api-management)
-
-
 ## [设置 PostMan 以调用 API 管理 API](http://www.bizbert.com/bizbert/2015/07/08/Setting+Up+PostMan+To+Call+The+Azure+Management+APIs.aspx)
-
-
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-api-management)
-
-
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=api-management) 
-
-
 ## [白皮书：基于云的 API 管理](http://j.mp/ms-apim-whitepaper)
 
