@@ -22,14 +22,10 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 02/06/2017
 
 ---
-<a id="azure-ad-connect-sync-how-to-manage-the-azure-ad-service-account" class="xliff"></a>
-
-# Azure AD Connect 同步：如何管理 Azure AD 服务帐户
+# <a name="azure-ad-connect-sync-how-to-manage-the-azure-ad-service-account"></a>Azure AD Connect 同步：如何管理 Azure AD 服务帐户
 Azure AD 连接器所使用的服务帐户应该是免费服务。 但如果需要重置其凭据，则可以参阅本主题。 例如，全局管理员错误地使用 PowerShell 对服务帐户重置了密码。
 
-<a id="reset-the-credentials" class="xliff"></a>
-
-## 重置凭据
+## <a name="reset-the-credentials"></a>重置凭据
 如果 Azure AD 连接器上定义的服务帐户由于身份验证问题无法联系 Azure AD，则可以重置密码。
 
 1. 登录到 Azure AD Connect 同步服务器并启动 PowerShell。
@@ -39,9 +35,7 @@ Azure AD 连接器所使用的服务帐户应该是免费服务。 但如果需�
 
 此 cmdlet 重置服务帐户的密码，并在 Azure AD 和同步引擎中更新该密码。
 
-<a id="known-issues-these-steps-can-solve" class="xliff"></a>
-
-## 这些步骤可以解决的已知问题
+## <a name="known-issues-these-steps-can-solve"></a>这些步骤可以解决的已知问题
 本部分列出了客户报告的，可以通过重置 Azure AD 服务帐户凭据解决的错误。
 
 - - -
@@ -54,9 +48,7 @@ AADSTS70002: 验证凭据时出错。 AADSTS50054: 使用旧密码进行身份�
 检索密码策略同步配置时出错。 Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException：  
 AADSTS70002: 验证凭据时出错。 AADSTS50054: 使用旧密码进行身份验证。
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 **概述主题**
 
 * [Azure AD Connect 同步：理解和自定义同步](active-directory-aadconnectsync-whatis.md)
