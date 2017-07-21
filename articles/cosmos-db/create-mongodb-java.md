@@ -11,7 +11,7 @@ ms.service: cosmos-db
 ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
-ms.devlang: dotnet
+ms.devlang: java
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: mimig
@@ -92,7 +92,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
     ```java
     Document queryResult = collection.find(Filters.eq("fruit", "apple")).first();
-    System.out.println(queryResult.toJson());        
+    System.out.println(queryResult.toJson());       
     ```
 
 ## <a name="update-your-connection-string"></a>更新连接字符串

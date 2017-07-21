@@ -12,12 +12,13 @@ ms.devlang: javascript
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/16/2017
+ms.date: 06/16/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 2e4220bedcb0091342fd9386669d523d4da04d1c
-ms.openlocfilehash: 312e9081c8597f59c32e99d594f2e729410986d8
-ms.lasthandoff: 12/16/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 4580bda5633f84a7c7af0dc85f3cea4951024836
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -56,7 +57,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 1. 使用文本编辑器打开 SimulatedDevice.js 文件。
 2. 修改 **connectCallback** 函数以处理从 IoT 中心发送的消息。 在此示例中，设备始终调用 **complete** 函数来向 IoT 中心通知它已处理消息。 **connectCallback** 函数的新版本类似于以下片段：
    
-    ```
+    ```javascript
     var connectCallback = function (err) {
       if (err) {
         console.log('Could not connect: ' + err);
@@ -90,26 +91,26 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 1. 创建名为 **sendcloudtodevicemessage** 的空文件夹。 在命令提示符处，使用以下命令在 **sendcloudtodevicemessage** 文件夹中创建一个 package.json 文件。 接受所有默认值：
    
-    ```
+    ```shell
     npm init
     ```
 2. 在命令提示符处，运行以下命令在 **sendcloudtodevicemessage** 文件夹中安装 **azure iothub** 包：
    
-    ```
+    ```shell
     npm install azure-iothub --save
     ```
 3. 通过文本编辑器，在 **sendcloudtodevicemessage**文件夹中创建一个 **SendCloudToDeviceMessage.js** 文件。
 4. 在 **SendCloudToDeviceMessage.js** 文件的开头添加以下 `require` 语句：
    
-    ```
+    ```javascript
     'use strict';
    
     var Client = require('azure-iothub').Client;
     var Message = require('azure-iot-common').Message;
     ```
-5. 将以下代码添加到 **SendCloudToDeviceMessage.js** 文件。 将 IoT 中心连接字符串占位符值替换为在 [IoT 中心入门]教程中创建的中心的 IoT 中心连接字符串。 将目标设备占位符替换为在 [IoT 中心入门]教程中添加的设备的设备 ID：
+5. 将以下代码添加到 **SendCloudToDeviceMessage.js** 文件。 将“{IoT 中心连接字符串}”占位符值替换为在 [IoT 中心入门]教程中创建的中心的 IoT 中心连接字符串。 将“{设备 id}”占位符替换为在 [IoT 中心入门]教程中添加的设备的设备 ID：
    
-    ```
+    ```javascript
     var connectionString = '{iot hub connection string}';
     var targetDevice = '{device id}';
    
@@ -117,7 +118,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     ```
 6. 添加以下函数，以便在控制台中列显操作结果：
    
-    ```
+    ```javascript
     function printResultFor(op) {
       return function printResult(err, res) {
         if (err) console.log(op + ' error: ' + err.toString());
@@ -127,7 +128,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     ```
 7. 添加以下函数，以便在控制台中列显送达反馈消息：
    
-    ```
+    ```javascript
     function receiveFeedback(err, receiver){
       receiver.on('message', function (msg) {
         console.log('Feedback message:')
@@ -137,7 +138,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     ```
 8. 添加以下代码，以便在设备确认收到云到设备的消息时将消息发送到设备，并处理反馈消息：
    
-    ```
+    ```javascript
     serviceClient.open(function (err) {
       if (err) {
         console.error('Could not connect: ' + err.message);
@@ -159,14 +160,14 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 1. 在 **simulateddevice** 文件夹中的命令提示符下，运行以下命令将遥测发送到 IoT 中心，并侦听云到设备的消息：
    
-    ```
+    ```shell
     node SimulatedDevice.js 
     ```
    
     ![运行模拟设备应用][img-simulated-device]
 2. 在 **sendcloudtodevicemessage** 文件夹中的命令提示符下，运行以下命令发送云到设备的消息并等待确认反馈：
    
-    ```
+    ```shell
     node SendCloudToDeviceMessage.js 
     ```
    

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: a2bc32193ad539053984794a411ae7307b8d8532
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: 777bddea6b1cb325a6f8ede00196b18e1746d80c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/15/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-a-secondary-vmm-site-using-the-azure-portal"></a>使用 Azure 门户将 VMM 云中的 Hyper-V 虚拟机复制到辅助 VMM 站点
@@ -30,7 +29,7 @@ ms.lasthandoff: 03/15/2017
 >
 >
 
-本文介绍如何在 Azure 门户中使用 [Azure Site Recovery](site-recovery-overview.md) 将 System Center Virtual Machine Manager (VMM) 云中管理的本地 Hyper-V 虚拟机复制到辅助站点。 详细了解此[方案体系结构](site-recovery-components.md#hyper-v-to-a-secondary-site)。
+本文介绍如何在 Azure 门户中使用 [Azure Site Recovery](site-recovery-overview.md) 将 System Center Virtual Machine Manager (VMM) 云中管理的本地 Hyper-V 虚拟机复制到辅助站点。 详细了解此[方案体系结构](site-recovery-components.md)。
 
 阅读本文后，请在底部发布评论，或者发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)。
 
@@ -104,7 +103,7 @@ ms.lasthandoff: 03/15/2017
     ![设置源](./media/site-recovery-vmm-to-vmm/set-source1.png)
 3. 在“添加服务器”中，检查“System Center VMM 服务器”是否出现在“服务器类型”中，以及 VMM 服务器是否符合[先决条件](#prerequisites)。
 4. 下载 Azure Site Recovery 提供程序安装文件。
-5. 下载注册密钥。 运行安装程序时需要用到此密钥。 生成的密钥有效期为&5; 天。
+5. 下载注册密钥。 运行安装程序时需要用到此密钥。 生成的密钥有效期为 5 天。
 
     ![设置源](./media/site-recovery-vmm-to-vmm/set-source3.png)
 6. 在 VMM 服务器上安装 Azure Site Recovery 提供程序。 不需要在 Hyper-V 主机服务器上显式安装任何组件。

@@ -14,20 +14,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 534397378a4d83414bfe62f2dd2c57678f09c429
-ms.lasthandoff: 03/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 126bc0658af3a27643bc0da2848545546f158f0c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/03/2017
 
 
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>如何在 Azure 中使用 SendGrid 发送电子邮件
 ## <a name="overview"></a>概述
-本指南演示了如何在 Azure 上使用 SendGrid 电子邮件服务执行常见编程任务。 相关示例用 C\#
-编写并支持 .NET Standard 1.3。 涉及的方案包括构建电子邮件、发送电子邮件、添加附件，以及启用各种邮件和跟踪设置。 有关 SendGrid 和发送电子邮件的详细信息，请参阅[后续步骤][Next steps]部分。
+本指南演示了如何在 Azure 上使用 SendGrid 电子邮件服务执行常见编程任务。 示例采用 C\# 编写并支持 .NET Standard 1.3。 涉及的方案包括构建电子邮件、发送电子邮件、添加附件，以及启用各种邮件和跟踪设置。 有关 SendGrid 和发送电子邮件的详细信息，请参阅[后续步骤][Next steps]部分。
 
 ## <a name="what-is-the-sendgrid-email-service"></a>什么是 SendGrid 电子邮件服务？
-SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的[事务电子邮件传递]、可缩放性、实时分析以及可用于简化自定义集成的灵活的 API。 常见的 SendGrid 用例包括：
+SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的[事务电子邮件传递]、伸缩性、实时分析以及可用于简化自定义集成的灵活的 API。 常见的 SendGrid 用例包括：
 
 * 自动向客户发送收据或购买确认。
 * 管理用于每月向客户发送传单和促销资料的通讯组列表。
@@ -70,7 +70,7 @@ SendGrid 的 .NET 类库名为 **SendGrid**。 其中包含以下命名空间：
 在你希望以编程方式访问 SendGrid 电子邮件服务的任何 C# 文件中，将以下代码命名空间声明添加到文件的顶部。
 
     using SendGrid;
-    using SendGrid.Helpers.Mail
+    using SendGrid.Helpers.Mail;
 
 ## <a name="how-to-create-an-email"></a>如何：创建电子邮件
 使用 **SendGridMessage** 对象创建电子邮件。 创建邮件对象后，可以设置属性和方法，包括电子邮件发件人、电子邮件收件人以及电子邮件的主题和正文。

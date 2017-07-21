@@ -3,7 +3,7 @@ title: "从移动服务升级到 Azure 应用服务 - Node.js"
 description: "了解如何轻松将移动服务应用程序升级到应用服务移动应用"
 services: app-service\mobile
 documentationcenter: 
-author: adrianhall
+author: ggailey777
 manager: yochayk
 editor: 
 ms.assetid: c58f6df0-5aad-40a3-bddc-319c378218e3
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile
 ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: adrianha
-translationtype: Human Translation
+ms.author: glenga
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 879854c4afc6fa5ac31f8e18dad0164e77f190cd
+ms.contentlocale: zh-cn
 ms.lasthandoff: 12/08/2016
-
 
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>将现有 Node.js Azure 移动服务升级到应用服务
@@ -33,8 +33,8 @@ ms.lasthandoff: 12/08/2016
 
 > [!TIP]
 > 建议在升级之前先[执行迁移](app-service-mobile-migrating-from-mobile-services.md)。 这样，就能在同一个应用服务计划中放置两个版本的应用程序，且无需支付额外的费用。
-> 
-> 
+>
+>
 
 ### <a name="improvements-in-mobile-apps-nodejs-server-sdk"></a>移动应用 Node.js 服务器 SDK 改进
 升级到新版[移动应用 SDK](https://www.npmjs.com/package/azure-mobile-apps) 可获得许多改进，包括：
@@ -96,12 +96,12 @@ ms.lasthandoff: 12/08/2016
 ### <a name="create-a-new-mobile-app"></a>创建新的移动应用
 1. 在 [Azure 门户]登录。
 2. 单击“+新建” > “Web + 移动” > “移动应用”，然后提供移动应用后端名称。
-3. 对于“资源组”，请选择现有资源组，或创建新组（使用与应用相同的名称。） 
-   
+3. 对于“资源组”，请选择现有资源组，或创建新组（使用与应用相同的名称。）
+
     可以选择其他应用服务计划或创建新的计划。 有关应用服务计划以及如何在不同定价层和所需位置中创建新计划的详细信息，请参阅 [Azure App Service 计划深入概述](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。
-4. 对于“应用服务计划”，请选择默认计划（位于[标准层](https://azure.microsoft.com/pricing/details/app-service/)）。 还可以选择不同的计划，或[创建一个新计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md#create-an-app-service-plan)。 应用服务计划的设置将确定与应用关联的[位置、功能、成本和计算资源](https://azure.microsoft.com/pricing/details/app-service/)。 
-   
-    做出有关计划的决定后，单击“创建”。 随后将创建移动应用后端。 
+4. 对于“应用服务计划”，请选择默认计划（位于[标准层](https://azure.microsoft.com/pricing/details/app-service/)）。 还可以选择不同的计划，或[创建一个新计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md#create-an-app-service-plan)。 应用服务计划的设置将确定与应用关联的[位置、功能、成本和计算资源](https://azure.microsoft.com/pricing/details/app-service/)。
+
+    做出有关计划的决定后，单击“创建”。 随后将创建移动应用后端。
 
 ### <a name="run-createviewssql"></a>运行 CreateViews.SQL
 带有基架的应用包含名为 `createViews.sql` 的文件。  必须对目标数据库执行此脚本。  可以通过“连接字符串”下的“设置”边栏选项卡从已迁移的移动服务获取目标数据库的连接字符串。  该字符串名为 `MS_TableConnectionString`。
@@ -127,7 +127,8 @@ Azure 移动应用允许在服务中配置 Azure Active Directory、Facebook、G
 ## <a name="updating-clients"></a>更新移动客户端
 在获得可正常运行的移动应用后端之后，可以在使用它的新版客户端应用程序上操作。 移动应用还包含新版客户端 SDK。与上述的服务器升级类似，需先删除所有对移动服务 SDK 的引用，然后再安装移动应用版本。
 
-版本间的其中一个主要更改是构造函数不再需要应用程序密钥。 现在只需传入移动应用的 URL。 例如，在 .NET 客户端中，`MobileServiceClient` 构造函数现在是：
+版本间的其中一个主要更改是构造函数不再需要应用程序密钥。
+现在只需传入移动应用的 URL。 例如，在 .NET 客户端中，`MobileServiceClient` 构造函数现在是：
 
         public static MobileServiceClient MobileService = new MobileServiceClient(
             "https://contoso.azurewebsites.net" // URL of the Mobile App

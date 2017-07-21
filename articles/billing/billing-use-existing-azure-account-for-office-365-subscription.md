@@ -4,7 +4,7 @@ description: "了解如何使用 Azure 帐户创建 Office 365 订阅"
 services: 
 documentationcenter: 
 author: JiangChen79
-manager: vikdesai
+manager: adpick
 editor: 
 tags: billing,top-support-issue
 ms.assetid: 
@@ -15,19 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: cjiang
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 553c896b01c78922d992b132ac897d272eb27517
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/12/2017
 
 
 ---
-# <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>使用 Azure 帐户注册 Office 365 订阅
+<a id="sign-up-for-an-office-365-subscription-with-your-azure-account" class="xliff"></a>
+# 使用 Azure 帐户注册 Office 365 订阅
 如果是 Azure 订阅者，则使用 Azure 帐户注册 Office 365 订阅。 如果是拥有 Azure 订阅的组织的成员，可在现有 Azure Active Directory (Azure AD) 中为用户创建 Office 365 订阅。 使用帐户（必须是 Azure Active Directory 租户中全局管理员或计费管理员目录角色的成员）注册 Office 365 订阅。 有关详细信息，请参阅[在 Azure AD 中检查我的帐户权限](#RoleInAzureAD)和[在 Azure Active Directory 中分配管理员角色](../active-directory/active-directory-assign-admin-roles.md)。
 
 如果已具有 Office 365 帐户和 Azure 订阅，请参阅[将 Office 365 租户与 Azure 订阅关联](billing-add-office-365-tenant-to-azure-subscription.md)。
 
-## <a name="get-an-office-365-subscription-by-using-your-azure-account"></a>使用 Azure 帐户获取 Office 365 订阅
+<a id="get-an-office-365-subscription-by-using-your-azure-account" class="xliff"></a>
+## 使用 Azure 帐户获取 Office 365 订阅
 
 1. 转到 [Office 365 产品页](https://products.office.com/business)，然后选择计划。
 2. 在页面右上角单击“登录”。
@@ -69,5 +72,6 @@ ms.lasthandoff: 04/12/2017
 
     ![显示 Azure 门户目录角色计费管理员的屏幕截图](./media/billing-use-existing-azure-account-office-365-subscription/billing-directoryrole-limited.png)
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
+<a id="need-help-contact-support" class="xliff"></a>
+## 需要帮助？ 联系支持人员。
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。 

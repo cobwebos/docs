@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye;raymondl
-translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 5d587618dd885ec30e35b13c5fd543c1a8853200
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 95aa1fa23d83ec0dcd00870179167e803bafbd16
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -122,7 +123,7 @@ Web 应用将显示含有作业状态的页面。
 
 * 通过机器学习工作室创建一个机器学习实验，请参阅 [Create your first experiment in Azure Machine Learning Studio](machine-learning-create-experiment.md)（在 Azure 机器学习工作室中创建你的第一个试验）
 * 如何将机器学习实验部署为 web 服务，请参阅 [Deploy an Azure Machine Learning web service](machine-learning-publish-a-machine-learning-web-service.md)（部署 Azure 机器学习 web 服务）
-* 访问 web 服务的其他方法，请参阅 [How to consume an Azure Machine Learning web service](machine-learning-consume-web-services.md)（如何使用 Azure 机器学习 web 服务）
+* 访问 web 服务的其他方法，请参阅[如何使用 Azure 机器学习 Web 服务](machine-learning-consume-web-services.md)
 
 [image1]: media/machine-learning-consume-web-service-with-web-app-template/rrs-web-template-flow.png
 [image2]: media/machine-learning-consume-web-service-with-web-app-template/bes-web-template-flow.png

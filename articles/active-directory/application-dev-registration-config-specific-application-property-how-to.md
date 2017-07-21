@@ -11,21 +11,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
 ms.openlocfilehash: 9a57185938ebe9af0ca1395e75545473f45b9889
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/18/2017
-
 
 ---
 
-# <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>如何填写自定义开发应用程序的特定字段
+<a id="how-to-fill-out-specific-fields-for-a-custom-developed-application" class="xliff"></a>
+
+# 如何填写自定义开发应用程序的特定字段
 
 本文简要介绍 [Azure 门户](https://portal.azure.com)中应用程序注册表单中的所有可用字段。
 
-## <a name="register-a-new-application"></a>注册新应用程序
+<a id="register-a-new-application" class="xliff"></a>
+
+## 注册新应用程序
 
 -   若要注册新应用程序，请导航到 [Azure 门户](https://portal.azure.com)。
 
@@ -35,7 +39,9 @@ ms.lasthandoff: 04/18/2017
 
 -   应用程序注册表单将打开。
 
-## <a name="fields-in-the-application-registration-form"></a>应用程序注册表单中的字段
+<a id="fields-in-the-application-registration-form" class="xliff"></a>
+
+## 应用程序注册表单中的字段
 
 
 | 字段            | 说明                                                                              |
@@ -59,6 +65,8 @@ ms.lasthandoff: 04/18/2017
 | 重定向 URI   | 对于本机应用程序，将在其中发送用户以获得成功授权。 Azure AD 会检查应用程序在 OAuth 2.0 请求中提供的重定向 URI 是否与门户中的某个注册值相匹配。                                                            |
 | 密钥            | 可以创建密钥以编程方式访问由 Azure AD 保护的 Web API，而无需任何用户交互。 在\*\*密钥\*\*页中，输入密钥说明和到期日期并保存以生成密钥。 请确保将其保存在安全位置，不然在以后将无法访问它。             |
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [使用 Azure Active Directory 管理应用程序](active-directory-enable-sso-scenario.md)
 

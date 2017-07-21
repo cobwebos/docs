@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: cephalin
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 6adc34f208c6c4363b73f6e42b4a4d6ae2e4483f
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 5f6537a45bcb092b5ef463e8069b9fc5582c14c2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 05/27/2017
 
 本文介绍如何在不停机的情况下，将活动自定义域迁移到 [Azure应用服务](../app-service/app-service-value-prop-what-is.md)。
 
-将实时站点及其域名迁移到应用服务时，该域名已在进行实时通信，而你不希望 DNS 解析在迁移过程中出现任何停机。 在这种情况下，请提前将域名绑定到用于域验证的 Azure 应用。 
+将实时站点及其域名迁移到应用服务时，该域名已在进行实时通信，而你不希望 DNS 解析在迁移过程中出现任何停机。 在这种情况下，请提前将域名绑定到用于域验证的 Azure 应用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,10 +44,10 @@ ms.lasthandoff: 05/27/2017
 
 请遵循以下步骤进行配置：
 
-1. 首先，按照[创建 DNS 记录](app-service-web-tutorial-custom-domain.md#create-a)中的步骤，使用 DNS 注册表创建验证 TXT 记录。
+1. 首先，按照[创建 DNS 记录](app-service-web-tutorial-custom-domain.md)中的步骤，使用 DNS 注册表创建验证 TXT 记录。
 其他 TXT 记录遵循从 &lt;*子域*>.&lt;*根域*> 映射到 &lt;*appname*>.azurewebsites.net 的约定。
 有关示例，请参见下表：  
- 
+
     <table cellspacing="0" border="1">
     <tr>
     <th>FQDN 示例</th>
@@ -75,7 +75,7 @@ ms.lasthandoff: 05/27/2017
 
     自定义域现已在 Azure 应用中启用。 只需通过域注册机构更新 DNS 记录。
 
-3. 最后，更新域的 DNS 记录，以指向 Azure 应用，如[创建 DNS 记录](app-service-web-tutorial-custom-domain.md#create-a)中所示。 
+3. 最后，更新域的 DNS 记录，以指向 Azure 应用，如[创建 DNS 记录](app-service-web-tutorial-custom-domain.md)中所示。
 
     DNS 传播开始后，应立即将用户流量重定向至 Azure 应用。
 
@@ -84,11 +84,10 @@ ms.lasthandoff: 05/27/2017
 
 > [!NOTE]
 > 如果想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以通过该页面在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
-> 
-> 
+>
+>
 
 [开始使用 Azure DNS](../dns/dns-getstarted-create-dnszone.md)  
 [在自定义域中为 web 应用创建 DNS 记录](../dns/dns-web-sites-custom-domain.md)  
 [将域委托给 Azure DNS](../dns/dns-domain-delegation.md)
-
 

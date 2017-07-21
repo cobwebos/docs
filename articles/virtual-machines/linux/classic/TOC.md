@@ -20,6 +20,7 @@
 ### [使用诊断 VM 扩展的 2.x 版监视 VM](diagnostic-extension-v2.md)
 ### [注入自定义数据](inject-custom-data.md)
 ### [重置 Linux 密码或密钥、修复 SSH 并检查磁盘](reset-access.md)
+### [维护](planned-maintenance-schedule.md)
 ### [使用 CLI 创建 Docker 主机](cli-use-docker.md)
 ### [使用门户创建 Docker 主机](portal-use-docker.md)
 ### [如何将 Docker 与 Swarm 一起使用](../../virtual-machines-linux-docker-swarm.md)
@@ -33,8 +34,8 @@
 ### [将 VM 与虚拟网络或云服务连接](connect-vms.md)
 
 ## 部署映像
-### [创建并上载 VHD](create-upload-vhd.md)
-### [创建并上载 FreeBSD VHD](freebsd-create-upload-vhd.md)
+### [创建并上传 VHD](create-upload-vhd.md)
+### [创建并上传 FreeBSD VHD](freebsd-create-upload-vhd.md)
 ### [Oracle VM 映像列表](oracle-images.md)
 
 ## 管理工作负荷
@@ -78,6 +79,7 @@
 
 
 # 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [定价](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)
 ## [区域可用性](https://azure.microsoft.com/regions/services)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-virtual-machine)

@@ -9,7 +9,7 @@
        
     在本快速入门教程中，我们将针对 MongoDB API 编程，因此，在填写表单时，请选择“MongoDB”。 但如果你有社交媒体应用的图形数据、来自目录应用的文档数据或键/值（表）数据，请意识到 Azure Cosmos DB 可以为所有任务关键型应用程序提供高度可用的全球分布式数据库服务平台。
 
-    使用作为指南的屏幕截图中的信息填写“新建帐户”边栏选项卡。 设置帐户时你将选择唯一的值，因此你的值将不会与屏幕截图完全匹配
+    以表中的信息作为指南，填写“新建帐户”边栏选项卡。
  
     ![“新 Azure Cosmos DB”边栏选项卡的屏幕截图](./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-2.png)
    

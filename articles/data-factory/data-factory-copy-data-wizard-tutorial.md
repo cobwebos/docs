@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/24/2017
+ms.date: 07/10/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
@@ -22,7 +22,8 @@ ms.lasthandoff: 05/17/2017
 
 
 ---
-# <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>教程：使用数据工厂复制向导创建带有复制活动的管道
+<a id="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard" class="xliff"></a>
+# 教程：使用数据工厂复制向导创建带有复制活动的管道
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [复制向导](data-factory-copy-data-wizard-tutorial.md)
@@ -39,10 +40,12 @@ ms.lasthandoff: 05/17/2017
 
 本教程说明如何创建 Azure 数据工厂、启动复制向导，以及执行一系列步骤来提供有关数据引入/移动方案的详细信息。 完成向导中的步骤后，向导会自动创建包含复制活动的管道，将数据从 Azure Blob 存储复制到 Azure SQL 数据库。 有关复制活动的详细信息，请参阅[数据移动活动](data-factory-data-movement-activities.md)。
 
-## <a name="prerequisites"></a>先决条件
+<a id="prerequisites" class="xliff"></a>
+## 先决条件
 执行本教程之前，请完成[教程概述](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)中的先决条件步骤。
 
-## <a name="create-data-factory"></a>创建数据工厂
+<a id="create-data-factory" class="xliff"></a>
+## 创建数据工厂
 本步中，使用 Azure 门户创建名为 **ADFTutorialDataFactory**的 Azure 数据工厂。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
@@ -71,7 +74,8 @@ ms.lasthandoff: 05/17/2017
    
    ![数据工厂主页](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
 
-## <a name="launch-copy-wizard"></a>启动复制向导
+<a id="launch-copy-wizard" class="xliff"></a>
+## 启动复制向导
 1. 在“数据工厂”边栏选项卡上单击“复制数据 [预览]”，启动“复制向导”。 
    
    > [!NOTE]
@@ -133,7 +137,8 @@ ms.lasthandoff: 05/17/2017
     
     ![复制工具 - 性能设置](./media/data-factory-copy-data-wizard-tutorial/summary-page.png)
 
-## <a name="launch-monitor-and-manage-application"></a>启动监视器和管理应用程序
+<a id="launch-monitor-and-manage-application" class="xliff"></a>
+## 启动监视器和管理应用程序
 1. 在“部署”页上单击以下链接：`Click here to monitor copy pipeline`。
    
    ![复制工具 - 部署成功](./media/data-factory-copy-data-wizard-tutorial/copy-tool-deployment-succeeded.png)  
@@ -149,7 +154,8 @@ ms.lasthandoff: 05/17/2017
 
     有关如何使用此应用程序的详细信息，请参阅[使用监视应用监视和管理管道](data-factory-monitor-manage-app.md)一文。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+## 后续步骤
 在本教程中，你在复制操作中使用了 Azure Blob 存储作为源数据存储，使用了 Azure SQL 数据库作为目标数据存储。 下表列出了复制活动支持的充当源和目标的数据存储： 
 
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]

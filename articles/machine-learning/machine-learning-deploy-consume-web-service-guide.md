@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-translationtype: Human Translation
-ms.sourcegitcommit: c10a35e4828e8da427f324ef3c3892e7e24cc72d
-ms.openlocfilehash: 489037b0ff43c7041f3e12a49525184e7eda0290
-ms.lasthandoff: 12/19/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 18edabe267ec06c08074d7a7a6d71435cedc8489
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -96,5 +97,5 @@ ms.lasthandoff: 12/19/2016
 * [适用于 Azure 机器学习 Web 服务的 Excel 加载项](machine-learning-excel-add-in-for-web-services.md)
 
 ### <a name="from-a-rest-based-client"></a>从基于 REST 的客户端
-Azure 机器学习 Web 服务是 RESTful API。 可以从各种平台使用这些 API，例如 .NET、Python、R、Java 等。[Microsoft Azure 机器学习 Web 服务门户](https://services.azureml.net)上的 Web 服务“使用”页提供示例代码，从而有助于开始操作。 有关详细信息，请参阅[如何使用已从机器学习实验部署的 Azure 机器学习 Web 服务](machine-learning-consume-web-services.md)。
+Azure 机器学习 Web 服务是 RESTful API。 可以从各种平台使用这些 API，例如 .NET、Python、R、Java 等。[Microsoft Azure 机器学习 Web 服务门户](https://services.azureml.net)上的 Web 服务“使用”页提供示例代码，从而有助于开始操作。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](machine-learning-consume-web-services.md)。
 

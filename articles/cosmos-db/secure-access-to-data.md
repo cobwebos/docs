@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: fb0217b1c51a4189dfeac8291bb932cbc571f385
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: b57a157bc47b09af34684b0d85ce4538782a5ff2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>保护对 Azure Cosmos DB 数据的访问
-本文概述了如何保护对 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 中存储的数据的访问。
+本文概述了如何保护对 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 中存储的数据的访问。
 
 Azure Cosmos DB 使用两种类型的密钥来验证用户身份并提供对其数据和资源的访问权限。 
 

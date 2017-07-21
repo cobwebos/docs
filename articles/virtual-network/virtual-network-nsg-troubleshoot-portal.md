@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3216868d867f4c840a610c45855d22575ded609c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: f01d3b43a7953697a6b03e176dace33448d95cd9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -41,7 +43,7 @@ ms.openlocfilehash: 3216868d867f4c840a610c45855d22575ded609c
 
 尽管本示例使用 TCP 端口 3389，但可以使用以下步骤在任何端口上判断入站和出站连接失败情况。
 
-### <a name="view-effective-security-rules-for-a-virtual-machine"></a>查看虚拟机的有效安全规则
+### <a name="vm"></a>查看虚拟机的有效安全规则
 完成以下步骤排查 VM 的 NSG 问题：
 
 可以从 VM 本身查看 NIC 上的完整有效安全规则列表。 如果有相应的权限，也可以从有效规则的边栏选项卡添加、修改和删除 NIC 与子网的 NSG 规则。
@@ -92,7 +94,7 @@ ms.openlocfilehash: 3216868d867f4c840a610c45855d22575ded609c
    
     打开与 VM 的 RDP 连接或使用 PsPing 工具，确认 TCP 端口 3389 是否已打开。 有关 PsPing 的详细信息，请阅读 [PsPing 下载页](https://technet.microsoft.com/sysinternals/psping.aspx)。
 
-### <a name="view-effective-security-rules-for-a-network-interface"></a>查看网络接口的有效安全规则
+### <a name="nic"></a>查看网络接口的有效安全规则
 如果特定的 NIC 影响了 VM 流量流，可以完成以下步骤，从网络接口上下文查看 NIC 的完整有效规则列表：
 
 1. 登录到 Azure 门户网站 https://portal.azure.com。
@@ -109,7 +111,7 @@ ms.openlocfilehash: 3216868d867f4c840a610c45855d22575ded609c
    > 
 4. 可以直接编辑与 NIC 和子网关联的 NSG 的规则。 若要了解操作方法，请阅读**查看虚拟机的有效安全规则**部分中的步骤 8。
 
-## <a name="view-effective-security-rules-for-a-network-security-group-nsg"></a>查看网络安全组 (NSG) 的有效安全规则
+## <a name="nsg"></a>查看网络安全组 (NSG) 的有效安全规则
 修改 NSG 规则时，可以查看在特定 VM 上添加规则产生的影响。 可以查看应用了给定 NSG 的所有 NIC 的完整有效安全规则列表，而无需从给定 NSG 的边栏选项卡切换上下文。 若要排查 NSG 中有效规则的问题，请完成以下步骤：
 
 1. 登录到 Azure 门户网站 https://portal.azure.com。
@@ -148,10 +150,5 @@ ms.openlocfilehash: 3216868d867f4c840a610c45855d22575ded609c
 * 如果已创建对等互连的 VNet，则默认情况下，VIRTUAL_NETWORK 标记会自动扩展，包含对等互连的 VNet 的前缀。 可以在 **ExpandedAddressPrefix** 列表中查看这些前缀，排查与 VNet 对等连接相关的任何问题。 
 * 只有当 NSG 与 VM 的 NIC 和/或子网关联时，才会显示有效安全规则。 
 * 如果没有任何 NSG 与 NIC 或子网关联，并且向 VM 分配了公共 IP 地址，则会打开所有端口以便进行入站和出站访问。 如果 VM 使用公共 IP 地址，我们强烈建议对 NIC 或子网应用 NSG。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

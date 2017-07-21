@@ -12,18 +12,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/17/2017
+ms.date: 06/02/2017
 ms.author: ryanwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 0753be48514bd2087b52fc85d27754c28dbcd58b
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 74b60c0c4c0941a053bd124281772502d0136f23
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric 术语概述
-Service Fabric 是一种分布式系统平台，可让你轻松打包、部署和管理可缩放、可靠的微服务。 本主题详细说明 Service Fabric 所使用的术语，以帮助了解文档中使用的术语。
+Service Fabric 是一种分布式系统平台，可让你轻松打包、部署和管理可缩放、可靠的微服务。 本主题详细介绍 Service Fabric 所使用的术语，帮助了解文档中使用的术语。
 
 以下 Microsoft Virtual Academy 视频中还讨论了本部分列出的概念：<a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">核心概念</a>、<a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tlkI046yC_2906218965">设计时概念</a>和<a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=x7CVH56yC_1406218965">运行时概念</a>。
 
@@ -54,29 +54,29 @@ Service Fabric 是一种分布式系统平台，可让你轻松打包、部署�
 
 **命名服务**：创建命名应用程序后，可以通过指定服务类型（使用其名称/版本），在群集中创建应用程序服务类型之一的实例。 需为每个服务类型实例分配一个 URI 名称，该名称归并到实例的命名应用程序的 URI 之下。 例如，如果在命名应用程序“MyNamedApp”中创建命名服务“MyDatabase”，则 URI 将类似于：`"fabric:/MyNamedApp/MyDatabase"`。 在一个命名应用程序中可以创建多个命名服务。 每个命名服务可以有自身的分区方案和实例/副本计数。
 
-**代码包**：一个磁盘目录，其中包含服务类型的可执行文件（通常是 EXE/DLL 文件）。 服务类型的 `ServiceManifest.xml` 文件引用代码包目录中的文件。 创建命名服务后，会将代码包复制到选定运行命名服务的一个或多个节点。 然后代码将开始运行。 有两种类型的代码包可执行文件：
+**代码包**：一个磁盘目录，其中包含服务类型的可执行文件（通常是 EXE/DLL 文件）。 服务类型的 `ServiceManifest.xml` 文件引用代码包目录中的文件。 创建命名服务后，会将代码包复制到选定来运行命名服务的一个或多个节点。 然后代码将开始运行。 有两种类型的代码包可执行文件：
 
 * **来宾可执行文件**：在主机操作系统（Windows 或 Linux）上按原样运行的可执行文件。 也就是说，这些可执行文件不会链接到或引用任何 Service Fabric 运行时文件，因此不会使用任何 Service Fabric 编程模型。 这些可执行文件不能使用某些 Service Fabric 功能，例如终结点发现的命名服务。 来宾可执行文件无法报告特定于每个服务实例的负载指标。
 * **服务主机可执行文件**：通过链接到 Service Fabric 运行时文件、启用 Service Fabric 功能来使用 Service Fabric 编程模型的可执行文件。 例如，命名服务实例可在 Service Fabric 命名服务中注册终结点，还可以报告负载指标。      
 
-**数据包**：一个磁盘目录，其中包含服务类型的静态只读数据文件（通常是照片、声音和视频文件）。 服务类型的 `ServiceManifest.xml` 文件引用数据包目录中的文件。 创建命名服务后，会将数据包复制到选定运行命名服务的一个或多个节点。  代码开始运行，现在即可访问数据文件。
+**数据包**：一个磁盘目录，其中包含服务类型的静态只读数据文件（通常是照片、声音和视频文件）。 服务类型的 `ServiceManifest.xml` 文件引用数据包目录中的文件。 创建命名服务后，会将数据包复制到选定来运行命名服务的一个或多个节点。  代码开始运行，现在即可访问数据文件。
 
 **配置包**：一个磁盘目录，其中包含服务类型的静态只读配置文件（通常是文本文件）。 服务类型的 `ServiceManifest.xml` 文件引用配置包目录中的文件。 创建命名服务后，会将配置包中的文件复制到选定运行命名服务的一个或多个节点。 然后，代码开始运行，现在即可访问配置文件。
 
 **容器**：默认情况下，Service Fabric 以进程形式部署和激活这些服务。 Service Fabric 还可以部署容器映像中的服务。 容器是在应用程序中将基础操作系统虚拟化的一种虚拟化技术。 每个应用程序及其运行时、依赖项和系统库都在容器中运行，在容器各自的独立操作系统构造范围内拥有完全专属访问权限。 Service Fabric 支持 Linux 上的 Docker 容器和 Windows Server 容器。  有关详细信息，请参阅 [Service Fabric 和容器](service-fabric-containers-overview.md)。
 
-**分区方案**：创建命名服务时，需要指定一个分区方案。 包含大量状态的服务将跨分区拆分数据，从而将数据分散在群集的节点上。 这样，命名服务的状态便可缩放。 在分区中，无状态命名服务具有实例，而有状态命名服务具有副本。 通常，无状态命名服务只有一个分区，因为它们没有内部状态。 分区实例提供可用性；如果一个实例失败，其他实例可继续正常运行，然后 Service Fabric 将创建新的实例。 有状态命名服务在副本中保持其状态，每个分区都有自身的副本集，其中包含保持同步的所有状态。 如果某个副本失败，Service Fabric 将从现有副本创建新副本。
+**分区方案**：创建命名服务时，需要指定一个分区方案。 包含大量状态的服务跨分区拆分数据，将状态分散在群集的节点上。 这样，命名服务的状态便可缩放。 在分区中，无状态命名服务具有实例，而有状态命名服务具有副本。 通常，无状态命名服务只有一个分区，因为它们没有内部状态。 分区实例提供可用性；如果一个实例失败，其他实例可继续正常运行，然后 Service Fabric 将创建新的实例。 有状态命名服务在副本中保持其状态，每个分区都有自身的副本集，其中包含保持同步的所有状态。 如果某个副本失败，Service Fabric 将从现有副本创建新副本。
 
 有关详细信息，请阅读 [Service Fabric Reliable Services 分区](service-fabric-concepts-partitioning.md)一文。
 
 ## <a name="system-services"></a>系统服务
 系统在每个群集中创建了一些系统服务，用于提供 Service Fabric 的平台功能。
 
-**命名服务**：每个 Service Fabric 群集均有一个命名服务，该服务将服务名称解析到群集中的某个位置。 使用类似于管理群集的 Internet 域名服务 (DNS) 的方式管理服务名称和属性。 客户端可以使用命名服务安全地与群集中的任何节点进行通信，以解析服务名称及其位置。  客户端将获得实际计算机 IP 地址及其当前运行位置所在的端口。 尽管应用程序会在群集内移动（例如因为故障、资源平衡或重设群集大小而导致的移动），仍可以开发能够解析当前网络位置的服务和客户端。
+**命名服务**：每个 Service Fabric 群集均有一个命名服务，该服务将服务名称解析到群集中的某个位置。 使用类似于管理群集的 Internet 域名服务 (DNS) 的方式管理服务名称和属性。 客户端可以使用命名服务安全地与群集中的任何节点进行通信，以解析服务名称及其位置。  应用程序在群集内移动，原因诸如故障、资源平衡或重设群集大小。 可开发解析当前网络位置的服务和客户端。 客户端将获得实际计算机 IP 地址及其当前运行位置所在的端口。
 
 有关使用搭配命名服务运行的客户端与服务通信 API 的详细信息，请阅读[与服务通信](service-fabric-connect-and-communicate-with-services.md)。
 
-**映像存储服务**：每个 Service Fabric 群集都有一个映像存储服务，其中保存已部署且版本化的应用程序包。 将应用程序包复制到映像存储，然后注册该应用程序包内包含的应用程序类型。 预配应用程序类型后，创建它的命名应用程序。 在删除某个应用程序类型的所有命名应用程序之后，可以从映像存储服务中注销该应用程序类型。
+**映像存储服务**：每个 Service Fabric 群集都有一个映像存储服务，其中保存已部署且版本化的应用程序包。 将应用程序包复制到映像存储，然后注册该应用程序包内包含的应用程序类型。 预配应用程序类型后，根据它创建命名应用程序。 在删除某个应用程序类型的所有命名应用程序之后，可以从映像存储服务中注销该应用程序类型。
 
 有关映像存储服务的详细信息，请参阅[了解 ImageStoreConnectionString 设置](service-fabric-image-store-connection-string.md)。
 
@@ -85,7 +85,7 @@ Service Fabric 是一种分布式系统平台，可让你轻松打包、部署�
 ## <a name="built-in-programming-models"></a>内置编程模型
 有一些 .NET Framework 编程模型可用于生成 Service Fabric 服务：
 
-**Reliable Services**：用于构建无状态和有状态服务的 API。 有状态服务将其状态存储在可靠集合（例如字典或队列）中。 你也可以插入各种通信堆栈，如 Web API 和 Windows Communication Foundation (WCF)。
+**Reliable Services**：用于构建无状态和有状态服务的 API。 有状态服务将其状态存储在可靠集合（例如字典或队列）中。 也可插入各种通信堆栈，如 Web API 和 Windows Communication Foundation (WCF)。
 
 **Reliable Actors**：用于通过虚拟执行组件编程模型构建无状态和有状态对象的 API。 如果你有大量的独立计算/状态单位，此模型可能十分有用。 由于此模型使用基于轮次的线程模型，因此最好避免使用向外调用其他执行组件或服务的代码，原因是只有在单个执行组件的所有出站请求都已完成后，该执行组件才能处理其他传入请求。
 

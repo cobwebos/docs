@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 3f6ae31f577eb1bc70a06e183518aadbc6279159
+ms.reviewer: asteen
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: ea2dc2762b556da837fa1d6674e01aba32face92
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>有关 Azure Active Directory 中应用程序管理的文章索引
@@ -54,7 +54,7 @@ ms.lasthandoff: 05/15/2017
 | 文章指南 |  |
 |:---:| --- |
 | 联合身份验证和其他登录类型简介 |[使用 Azure AD 进行单一登录](active-directory-appssoaccess-whatis.md) |
-| 通过已简化的单一登录配置步骤与 Azure AD 预先集成的数千个 SaaS 应用程序 |[Azure 应用程序库入门](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[支持联合身份验证的预先集成应用完整列表](http://aka.ms/aadfederatedapps)<br /><br />[如何将应用程序添加到 Azure AD 应用库](active-directory-app-gallery-listing.md) |
+| 通过已简化的单一登录配置步骤与 Azure AD 预先集成的数千个 SaaS 应用程序 |[Azure AD 应用程序库入门](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[支持联合身份验证的预先集成应用完整列表](http://aka.ms/aadfederatedapps)<br /><br />[如何将应用程序添加到 Azure AD 应用库](active-directory-app-gallery-listing.md) |
 | 超过 150 个应用教程，讲解如何为 [Salesforce](active-directory-saas-salesforce-tutorial.md)、[ServiceNow](active-directory-saas-servicenow-tutorial.md)、[Google Apps](active-directory-saas-google-apps-tutorial.md)、[Workday](active-directory-saas-workday-tutorial.md) 等应用配置单一登录 |[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md) |
 | 如何手动设置和自定义单一登录配置 |[如何为不在 Azure Active Directory 应用程序库中的应用配置联合单一登录](active-directory-saas-custom-apps.md)<br /><br />[如何为预先集成的应用自定义 SAML 令牌中颁发的声明](active-directory-saml-claims-customization.md) |
 | 使用 SAML 协议的联合应用的故障排除指南 |[排查基于 SAML 的单一登录问题](active-directory-saml-debugging.md) |
@@ -101,7 +101,7 @@ ms.lasthandoff: 05/15/2017
 | 有关使用第三方标识提供者启用 SSO 的指导 |[可用于启用单一登录的兼容第三方标识提供者列表](https://aka.ms/ssoproviders) |
 | Windows 10 用户如何通过 Azure AD Join 享受单一登录的优点 |[通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](active-directory-azureadjoin-overview.md) |
 
-Azure AD Connect 适用于[所有版本的 Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)。 Azure AD 自助密码重置适用于 [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) 和 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/)。 对本地 AD 进行密码写回是一项 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)功能。
+Azure AD Connect 适用于[所有版本的 Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)。 Azure AD 自助密码重置适用于 [Azure AD 基本版](https://azure.microsoft.com/pricing/details/active-directory/)和 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)。 对本地 AD 进行密码写回是一项 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)功能。
 
 ### <a name="conditional-access-enforce-additional-security-requirements-for-high-risk-apps"></a>条件性访问：强制高风险应用符合额外的安全要求
 对应用程序和资源设置单一登录后，可以在每次登录该应用程序时，强制符合特定的安全要求，进一步保护机密应用的安全。 例如，你可以使用 Azure AD 来要求每次访问特定的应用都需要执行多重身份验证，而不管该应用原本是否支持该功能。 条件性访问的另一个常见示例是请求用户连接到组织信任的网络，以便能够访问特别机密的应用程序。
@@ -142,7 +142,7 @@ Cloud App Discovery 是一项 [Azure AD Premium](https://azure.microsoft.com/pri
 | 如何针对用户预配进行报告和故障排除 |[针对自动用户预配进行报告](active-directory-saas-provisioning-reporting.md)<br><br>[预配通知](active-directory-saas-account-provisioning-notifications.md)<br><br>[对用户预配进行故障排除](active-directory-application-provisioning-content-map.md) |
 | 根据应用程序的属性值限制可以预配应用程序的人员 |[范围筛选器](active-directory-saas-scoping-filters.md) |
 
-自动化用户预配适用于所有版本的 Azure AD，每个用户最多十个应用程序。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 支持无限数目的应用程序。 如果组织拥有 [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) 或 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/)，则可以[使用组来管理要预配哪些用户](#managing-access-to-applications)。
+自动化用户预配适用于所有版本的 Azure AD，每个用户最多十个应用程序。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 支持无限数目的应用程序。 如果组织拥有 [Azure AD 基本版](https://azure.microsoft.com/pricing/details/active-directory/)或 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)，则可以[使用组来管理要预配哪些用户](#managing-access-to-applications)。
 
 ### <a name="building-applications-that-integrate-with-azure-ad"></a>构建与 Azure AD 集成的应用程序
 如果你的组织正在开发或维护业务线 (LoB) 应用程序，或者如果你是 Azure Active Directory 客户的应用开发人员，以下教程可帮助你将应用程序与 Azure AD 集成。
@@ -166,7 +166,7 @@ Cloud App Discovery 是一项 [Azure AD Premium](https://azure.microsoft.com/pri
 | 有关在 Azure AD 中设置组的说明 |[如何创建安全组](active-directory-accessmanagement-manage-groups.md)<br /><br />[如何指定组所有者](active-directory-accessmanagement-managing-group-owners.md)<br /><br />[如何使用“所有用户”组](active-directory-accessmanagement-dedicated-groups.md) |
 | 使用动态组通过基于属性的成员资格规则自动填充组成员资格 |[动态组成员身份：高级规则 ](active-directory-accessmanagement-groups-with-advanced-rules.md)<br /><br />[动态组成员身份疑难解答](active-directory-accessmanagement-troubleshooting.md) |
 
-基于组的应用程序访问管理适用于 [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) 和 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/)。 自助组管理、自助应用程序管理以及动态组是 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 功能。
+基于组的应用程序访问管理适用于 [Azure AD 基本版](https://azure.microsoft.com/pricing/details/active-directory/)和 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)。 自助组管理、自助应用程序管理以及动态组是 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 功能。
 
 ### <a name="b2b-collaboration-enable-partner-access-to-applications"></a>B2B 协作：启用应用程序的合作访问
 如果你的公司与其他公司合作，可能需要管理公司应用程序的合作访问。 Azure Active Directory B2B 协作提供简单且安全的方式来与合作伙伴共享应用程序。
@@ -201,9 +201,9 @@ Azure Active Directory 提供多个报告和警报，以帮助你监视组织对
 | Azure Active Directory 中报告功能的概述 |[Azure AD 报告入门](active-directory-reporting-getting-started.md) |
 | 如何监视用户的登录和应用使用情况 |[查看访问和使用情况报告](active-directory-view-access-usage-reports.md) |
 | 跟踪对可以访问特定应用程序所做更改的人员 |[Azure Active Directory 审核报告事件](active-directory-reporting-audit-events.md) |
-| 使用报告 API 将这些报告的数据导出到首选的工具 |[Azure AD Reporting API 入门](active-directory-reporting-api-getting-started.md) |
+| 使用报告 API 将这些报告的数据导出到首选的工具 |[Azure AD 报告 API 入门](active-directory-reporting-api-getting-started.md) |
 
-若要查看不同版本的 Azure Active Directory 随附哪些报告，请[单击此处](active-directory-view-access-usage-reports.md#report-editions)。
+若要查看不同版本的 Azure Active Directory 随附哪些报告，请[单击此处](active-directory-view-access-usage-reports.md)。
 
 ## <a name="see-also"></a>另请参阅
 [什么是 Azure Active Directory？](active-directory-whatis.md)

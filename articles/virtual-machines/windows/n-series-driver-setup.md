@@ -16,10 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 717f4969a91209576a504c94c31993b938770432
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 96921f4be8aabb6d960ee4f66acd6c07d7ba7f95
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/04/2017
 
 
 ---
@@ -64,7 +65,11 @@ ms.lasthandoff: 04/27/2017
 
 ![GPU 驱动程序属性](./media/n-series-driver-setup/GPU_driver_properties.png)
 
-若要查询 GPU 设备状态，请运行与驱动程序一起安装的 [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) 命令行实用工具。 
+若要查询 GPU 设备状态，请运行与驱动程序一起安装的 [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) 命令行实用工具。
+
+1. 打开命令提示符，并更改为 C:\Program Files\NVIDIA Corporation\NVSMI 目录。
+
+2. 运行 nvidia-smi。 如果安装了驱动程序，将看到如下输出。 请注意，除非当前正在 VM 上运行 GPU 工作负载，否则 GPU-Util 将显示 0%。
 
 ![NVIDIA 设备状态](./media/n-series-driver-setup/smi.png)  
 

@@ -1,9 +1,9 @@
 ---
 title: "收集和分析 OMS Log Analytics 中的 Syslog 消息 | Microsoft Docs"
-description: "Syslog 是普遍适用于 Linux 的事件日志记录协议。   本文介绍如何在 Log Analytics 中配置 Syslog 消息集合以及它们在 OMS 存储库中创建的记录的详细信息。"
+description: "Syslog 是普遍适用于 Linux 的事件日志记录协议。 本文介绍如何在 Log Analytics 中配置 Syslog 消息集合以及它们在 OMS 存储库中创建的记录的详细信息。"
 services: log-analytics
 documentationcenter: 
-author: bwren
+author: mgoedtel
 manager: carmonm
 editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/23/2017
-ms.author: bwren
+ms.date: 06/12/2017
+ms.author: magoedte;bwren
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
-ms.openlocfilehash: 6e92a79c0b7ea35f110c779922255d6ddc93ed7c
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 783b9b48251c5f092121288af8834e2caf31f5d7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/24/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/24/2017
 Syslog 是普遍适用于 Linux 的事件日志记录协议。  应用程序将发送可能存储在本地计算机或传递到 Syslog 收集器的消息。  安装适用于 Linux 的 OMS 代理后，它将配置本地 Syslog 后台程序，以将消息转发到此代理。  然后，此代理将消息发送到 Log Analytics，其中相应的记录将在 OMS 存储库中创建。  
 
 > [!NOTE]
-> Log Analytics 支持 rsyslog 或 syslog-ng 发送的消息集合。 不支持将 Red Hat Enterprise Linux 版本 5、CentOS 和 Oracle Linux 版本 (sysklog) 上的默认 syslog 守护程序用于 syslog 事件收集。 要从这些发行版的此版本中收集 syslog 数据，应安装并配置 [rsyslog 守护程序](http://rsyslog.com)以替换 sysklog。
+> 当 rsyslog 为默认守护程序时，Log Analytics 支持 rsyslog 或 syslog-ng 发送的消息集合。 不支持将 Red Hat Enterprise Linux 版本 5、CentOS 和 Oracle Linux 版本 (sysklog) 上的默认 syslog 守护程序用于 syslog 事件收集。 要从这些发行版的此版本中收集 syslog 数据，应安装并配置 [rsyslog 守护程序](http://rsyslog.com)以替换 sysklog。
 > 
 > 
 
@@ -137,20 +137,50 @@ syslog-ng 的配置文件位于 **/etc/syslog-ng/syslog-ng.conf**。  其默认�
     log { source(src); filter(f_user_oms); destination(d_oms); };
 
 
-### <a name="changing-the-syslog-port"></a>更改 Syslog 端口
-OMS 代理在端口 25224 侦听本地客户端上的 Syslog 消息。  通过向位于 **/etc/opt/microsoft/omsagent/conf/omsagent.conf** 的 OMS 代理配置文件添加以下部分内容，你可以更改此端口。  将**端口** 25224 替换为所需的端口号。  请注意，你还需要修改 Syslog 守护程序的配置文件，使其将消息发送到此端口。
+### <a name="collecting-data-from-additional-syslog-ports"></a>从其他 Syslog 端口收集数据
+OMS 代理在端口 25224 侦听本地客户端上的 Syslog 消息。  安装代理时，会应用默认的 syslog 配置，此配置位于以下位置： 
 
-    <source>
-      type syslog
-      port 25224
-      bind 127.0.0.1
-      protocol_type udp
-      tag oms.syslog
-    </source>
+* Rsyslog：`/etc/rsyslog.d/95-omsagent.conf`
+* Syslog-ng：`/etc/syslog-ng/syslog-ng.conf`
 
+可通过创建两个配置文件来更改端口号：FluentD 配置文件和 rsyslog-or-syslog-ng（取决于已安装的 Syslog 守护程序）。  
 
-## <a name="data-collection"></a>数据收集
-OMS 代理在端口 25224 侦听本地客户端上的 Syslog 消息。 Syslog 守护程序的配置文件将应用程序发送的 Syslog 消息转发到此端口（Syslog 消息将在此处被收集）。
+* FluentD 配置文件应为新文件（位于 `/etc/opt/microsoft/omsagent/conf/omsagent.d`），同时用自定义端口号替换“端口”条目中的值。
+
+        <source>
+          type syslog
+          port %SYSLOG_PORT%
+          bind 127.0.0.1
+          protocol_type udp
+          tag oms.syslog
+        </source>
+        <filter oms.syslog.**>
+          type filter_syslog
+        </filter>
+
+* 对于 rsyslog，应创建新的配置文件（位于 `/etc/rsyslog.d/`），同时用自定义端口号替换值 %SYSLOG_PORT%。  
+
+    > [!NOTE]
+    > 如果修改了配置文件 `95-omsagent.conf` 中的此值，代理应用默认配置时将覆盖此值。
+    > 
+
+        # OMS Syslog collection for workspace %WORKSPACE_ID%
+        kern.warning              @127.0.0.1:%SYSLOG_PORT%
+        user.warning              @127.0.0.1:%SYSLOG_PORT%
+        daemon.warning            @127.0.0.1:%SYSLOG_PORT%
+        auth.warning              @127.0.0.1:%SYSLOG_PORT%
+
+* 若要修改 syslog-ng 配置，应复制下面显示的示例配置，然后将自定义修改设置添加到 syslog-ng.conf 配置文件（位于 `/etc/syslog-ng/`）的末尾。  不要使用默认标签 %WORKSPACE_ID%_oms 或 %WORKSPACE_ID_OMS，请定义自定义标签，以帮助区分你的更改。  
+
+    > [!NOTE]
+    > 如果修改了配置文件中的默认值，代理应用默认配置时将覆盖这些值。
+    > 
+
+        filter f_custom_filter { level(warning) and facility(auth; };
+        destination d_custom_dest { udp("127.0.0.1" port(%SYSLOG_PORT%)); };
+        log { source(s_src); filter(f_custom_filter); destination(d_custom_dest); };
+
+完成更改后，需重启 Syslog 和 OMS 代理服务，确保配置更改生效。   
 
 ## <a name="syslog-record-properties"></a>Syslog 记录属性
 record 记录的类型为 **Syslog**，并且具有下表中的属性。

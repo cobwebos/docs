@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/23/2017
+ms.date: 06/27/2017
 ms.author: babanisa;sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: b8ed786fe0c049d9be7ba1ca1cb6adef1950b8e9
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 775900fcae1b2832a5d0951e2a4053562c21455e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -29,27 +30,28 @@ ms.lasthandoff: 03/24/2017
 * **[诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**。 可以配置诊断日志，以便更深入地了解作业内发生的所有情况。 诊断日志涵盖从创建作业开始到删除作业为止的所有活动，其中包括作业运行时发生的更新和活动。
 
 ## <a name="turn-on-diagnostic-logs"></a>启用诊断日志
-诊断日志默认已禁用。 若要启用诊断日志，请执行以下操作：
 
-1.    在 [Azure 门户](https://portal.azure.com)中，转到“流式处理作业”边栏选项卡。
+诊断日志默认已禁用。 若要启用诊断日志，请按照以下步骤操作：
 
-2.    在“监视”下面，转到“诊断日志”边栏选项卡。
+1.  在 [Azure 门户](https://portal.azure.com)中，转到“流式处理作业”边栏选项卡。
+
+2.  在“监视”下面，转到“诊断日志”边栏选项卡。
 
     ![在边栏选项卡中导航到诊断日志](./media/service-bus-diagnostic-logs/image1.png)  
 
-3.    单击“启用诊断”。
+3.  单击“启用诊断”。
 
     ![启用诊断日志](./media/service-bus-diagnostic-logs/image2.png)
 
-4.    对于“状态”，单击“打开”。
+4.  对于“状态”，单击“打开”。
 
     ![更改诊断日志的状态](./media/service-bus-diagnostic-logs/image3.png)
 
-5.    设置所需的存档目标，例如存储帐户、事件中心或 Azure Log Analytics。
+5.  设置所需的存档目标，例如存储帐户、事件中心或 Azure Log Analytics。
 
-6.    选择要收集的日志类别；例如“执行”或“创作”。
+6.  选择要收集的日志类别；例如“执行”或“创作”。
 
-7.    保存新的诊断设置。
+7.  保存新的诊断设置。
 
 新设置在大约 10 分钟后生效。 在此之后，日志将出现在“诊断日志”边栏选项卡上配置的存档目标中。
 
@@ -57,7 +59,7 @@ ms.lasthandoff: 03/24/2017
 
 ## <a name="diagnostic-logs-schema"></a>诊断日志架构
 
-所有日志均以 JavaScript 对象表示法 (JSON) 格式存储。 每个日志项目均包含字符串字段，这些字段采用以下示例中所述的格式。
+所有日志均以 JavaScript 对象表示法 (JSON) 格式存储。 每个条目均包含字符串字段，这些字段采用以下部分所述的格式。
 
 ## <a name="operation-logs-example"></a>操作日志示例
 
@@ -68,7 +70,7 @@ ms.lasthandoff: 03/24/2017
 Name | 说明
 ------- | -------
 ActivityId | 用于跟踪的内部 ID
-EventName | 操作名称             
+EventName | 操作名称           
 resourceId | Azure Resource Manager 资源 ID
 SubscriptionId | 订阅 ID
 EventTimeString | 操作时间
@@ -80,21 +82,23 @@ category | OperationalLogs
 下面是操作日志 JSON 字符串的示例：
 
 ```json
-Example:
 {
-     "ActivityId": "6aa994ac-b56e-4292-8448-0767a5657cc7",
-     "EventName": "Create Queue",
-     "resourceId": "/SUBSCRIPTIONS/1A2109E3-9DA0-455B-B937-E35E36C1163C/RESOURCEGROUPS/DEFAULT-SERVICEBUS-CENTRALUS/PROVIDERS/MICROSOFT.SERVICEBUS/NAMESPACES/SHOEBOXEHNS-CY4001",
-     "SubscriptionId": "1a2109e3-9da0-455b-b937-e35e36c1163c",
-     "EventTimeString": "9/28/2016 8:40:06 PM +00:00",
-     "EventProperties": "{\"SubscriptionId\":\"1a2109e3-9da0-455b-b937-e35e36c1163c\",\"Namespace\":\"shoeboxehns-cy4001\",\"Via\":\"https://shoeboxehns-cy4001.servicebus.windows.net/f8096791adb448579ee83d30e006a13e/?api-version=2016-07\",\"TrackingId\":\"5ee74c9e-72b5-4e98-97c4-08a62e56e221_G1\"}",
-     "Status": "Succeeded",
-     "Caller": "ServiceBus Client",
-     "category": "OperationalLogs"
+  "ActivityId": "6aa994ac-b56e-4292-8448-0767a5657cc7",
+  "EventName": "Create Queue",
+  "resourceId": "/SUBSCRIPTIONS/1A2109E3-9DA0-455B-B937-E35E36C1163C/RESOURCEGROUPS/DEFAULT-SERVICEBUS-CENTRALUS/PROVIDERS/MICROSOFT.SERVICEBUS/NAMESPACES/SHOEBOXEHNS-CY4001",
+  "SubscriptionId": "1a2109e3-9da0-455b-b937-e35e36c1163c",
+  "EventTimeString": "9/28/2016 8:40:06 PM +00:00",
+  "EventProperties": "{\"SubscriptionId\":\"1a2109e3-9da0-455b-b937-e35e36c1163c\",\"Namespace\":\"shoeboxehns-cy4001\",\"Via\":\"https://shoeboxehns-cy4001.servicebus.windows.net/f8096791adb448579ee83d30e006a13e/?api-version=2016-07\",\"TrackingId\":\"5ee74c9e-72b5-4e98-97c4-08a62e56e221_G1\"}",
+  "Status": "Succeeded",
+  "Caller": "ServiceBus Client",
+  "category": "OperationalLogs"
 }
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
+请访问以下链接，详细了解服务总线：
+
 * [服务总线简介](service-bus-messaging-overview.md)
 * [服务总线入门](service-bus-dotnet-get-started-with-queues.md)
 

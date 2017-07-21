@@ -5,73 +5,47 @@ services: mysql
 author: v-chenyh
 ms.author: v-chenyh
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
+editor: jasonwhowell
 ms.service: mysql-database
-ms.tgt_pltfrm: portal
-ms.devlang: azurecli
-ms.topic: article
-ms.custom: sample
-ms.date: 05/10/2017
+ms.devlang: azure-cli
+ms.topic: sample
+ms.custom: mvc
+ms.date: 05/31/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c54262218e6174dc85905cb067c334cc6a401946
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: 33316ff3db382d25a444d55772c6ee4d7b7ac418
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
 # <a name="monitor-and-scale-an-azure-database-for-mysql-server-using-azure-cli"></a>使用 Azure CLI 监视和缩放用于 MySQL 服务器的 Azure 数据库
 此示例 CLI 脚本在查询指标后将用于 MySQL 服务器的单个 Azure 数据库缩放为不同的性能级别。
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+[!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
+
+如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 ## <a name="sample-script"></a>示例脚本
-```bash
-#!/bin/bash
-
-# Create a resource group
-az group create \
---name myresource \
---location westus
-
-# Create a MySQL server in the resource group
-# Name of a server maps to DNS name and is thus required to be globally unique in Azure.
-# Substitute the <server_admin_password> with your own value.
-az mysql server create \
---name mysqlserver4demo \
---resource-group myresource \
---location westus \
---admin-user myadmin \
---admin-password <server_admin_password> \
---performance-tier Basic \
---compute-units 50 \
-
-# Monitor usage metrics - Compute
-az monitor metrics list \
---resource-id "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresource/providers/Microsoft.DBforMySQL/servers/mysqlserver4demo" \
---metric-names compute_consumption_percent \
---time-grain PT1M
-
-# Monitor usage metrics - Storage
-az monitor metrics list \
---resource-id "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresource/providers/Microsoft.DBforMySQL/servers/mysqlserver4demo" \
---metric-names storage_used \
---time-grain PT1M
-
-# Scale up the server to provision more Compute Units within the same Tier
-az mysql server update \
---resource-group myresource \
---name mysqlserver4demo \
---compute-units 100
-```
+在此示例脚本中，更改突出显示的行，以自定义管理员用户名和密码。 将 Azure Monitor 中使用的订阅 ID 替换为自己的订阅 ID。
+[!code-azurecli-interactive[主要](../../../cli_scripts/mysql/scale-mysql-server/scale-mysql-server.sh?highlight=15-16 "创建并缩放 Azure Database for MySQL。")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 运行脚本示例后，可以使用以下命令删除资源组以及与其关联的所有资源。
-```azurecli
-az group delete --name myresource
-```
+[!code-azurecli-interactive[主要](../../../cli_scripts/mysql/scale-mysql-server/delete-mysql.sh  "删除资源组。")]
+
+## <a name="script-explanation"></a>脚本说明
+此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
+
+| **命令** | **说明** |
+|---|---|
+| [az group create](/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
+| [az mysql server create](/cli/azure/mysql/server#create) | 创建用于托管数据库的 MySQL 服务器。 |
+| [az monitor metrics list](/cli/azure/monitor/metrics#list) | 列出资源的指标值。 |
+| [az group delete](/cli/azure/group#delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
-[用于 MySQL 的 Azure 数据库的 Azure CLI 示例](../sample-scripts-azure-cli.md)
+- 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure/overview)。
+- 尝试其他脚本：[Azure Database for MySQL 的 Azure CLI 示例](../sample-scripts-azure-cli.md)
+- 有关缩放的详细信息，请参阅[服务层](../concepts-service-tiers.md)和[计算单元和存储单元](../concepts-compute-unit-and-storage.md)。
 

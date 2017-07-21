@@ -23,7 +23,8 @@ ms.lasthandoff: 05/02/2017
 
 
 ---
-# <a name="create-an-application-gateway-by-using-the-azure-cli-20"></a>使用 Azure CLI 2.0 创建应用程序网关
+<a id="create-an-application-gateway-by-using-the-azure-cli-20" class="xliff"></a>
+# 使用 Azure CLI 2.0 创建应用程序网关
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-create-gateway-portal.md)
@@ -35,21 +36,24 @@ ms.lasthandoff: 05/02/2017
 
 Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关具有以下应用程序传递功能：HTTP 负载平衡、基于 Cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测，以及多站点支持。
 
-## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本
+<a id="cli-versions-to-complete-the-task" class="xliff"></a>
+## 用于完成任务的 CLI 版本
 
 可以使用以下 CLI 版本之一完成任务：
 
 * [Azure CLI 1.0](application-gateway-create-gateway-cli-nodejs.md) - 适用于经典部署模型和资源管理部署模型的 CLI。
 * [Azure CLI 2.0](application-gateway-create-gateway-cli.md) - 适用于资源管理部署模型的下一代 CLI
 
-## <a name="prerequisite-install-the-azure-cli-20"></a>先决条件：安装 Azure CLI 2.0
+<a id="prerequisite-install-the-azure-cli-20" class="xliff"></a>
+## 先决条件：安装 Azure CLI 2.0
 
 若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (Azure CLI)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2)。
 
 > [!NOTE]
 > 如果没有 Azure 帐户，则需要注册一个。 可以[在此处注册免费试用帐户](../active-directory/sign-up-organization.md)。
 
-## <a name="scenario"></a>方案
+<a id="scenario" class="xliff"></a>
+## 方案
 
 在此方案中，将学习如何使用 Azure 门户创建应用程序网关。
 
@@ -65,11 +69,13 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
 > [!NOTE]
 > 针对应用程序网关进行的其他配置（包括自定义运行状况探测、后端池地址以及其他规则）是在对应用程序网关配置以后配置的，不是在初始部署期间配置的。
 
-## <a name="before-you-begin"></a>开始之前
+<a id="before-you-begin" class="xliff"></a>
+## 开始之前
 
 Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请确保保留足够的地址空间，以便设置多个子网。 将应用程序网关部署到子网后，只能向该子网添加其他应用程序网关。
 
-## <a name="log-in-to-azure"></a>登录 Azure
+<a id="log-in-to-azure" class="xliff"></a>
+## 登录 Azure
 
 打开 **Microsoft Azure 命令提示符**，然后登录。 
 
@@ -92,7 +98,8 @@ az login -u "username"
 
 ![已成功登录][3]
 
-## <a name="create-the-resource-group"></a>创建资源组
+<a id="create-the-resource-group" class="xliff"></a>
+## 创建资源组
 
 在创建应用程序网关前，会创建资源组以包含应用程序网关。 以下显示该命令。
 
@@ -100,7 +107,8 @@ az login -u "username"
 az resource group create --name myresourcegroup --location "West US"
 ```
 
-## <a name="create-a-virtual-network-and-subnet"></a>创建虚拟网络和子网
+<a id="create-a-virtual-network-and-subnet" class="xliff"></a>
+## 创建虚拟网络和子网
 
 创建资源组后，会为应用程序网关创建虚拟网络。  在以下示例中，地址空间 10.0.0.0/16 定义用于虚拟网络，10.0.0.0/28 用于子网，如前面的方案说明中所示。
 
@@ -114,7 +122,8 @@ az network vnet create \
 --location eastus
 ```
 
-## <a name="create-the-application-gateway"></a>创建应用程序网关
+<a id="create-the-application-gateway" class="xliff"></a>
+## 创建应用程序网关
 
 创建虚拟网络和子网后，即已满足应用程序网关的先决条件。 此外，以下步骤还需要之前导出的 .pfx 证书和证书密码：用于后端的 IP 地址是后端服务器的 IP 地址。 这些值可以是虚拟网络中的专用 IP、公共 IP 或后端服务器的完全限定域名。
 
@@ -124,9 +133,9 @@ az network application-gateway create \
 --location eastus \
 --resource-group AdatumAppGatewayRG \
 --vnet-name AdatumAppGatewayVNET \
---vnet-address-prefix 10.0.0.0/16 \
+---vnet-address-prefix 10.0.0.0/16 \
 --subnet Appgatewaysubnet \
---subnet-address-prefix 10.0.0.0/28 \
+---subnet-address-prefix 10.0.0.0/28 \
 --servers 10.0.0.4 10.0.0.5 \
 --cert-file /mnt/c/Users/username/Desktop/application-gateway/fabrikam.pfx \
 --cert-password P@ssw0rd \
@@ -134,6 +143,7 @@ az network application-gateway create \
 --sku Standard_Small \
 --http-settings-cookie-based-affinity Enabled \
 --http-settings-protocol Http \
+--public-ip-address AdatumAppGatewayPIP \
 --frontend-port 443 \
 --routing-rule-type Basic \
 --http-settings-port 80
@@ -146,7 +156,8 @@ az network application-gateway create \
 此示例会创建基本的应用程序网关，提供的默认设置适用于侦听器、后端池、后端 http 设置以及规则。 它还会配置 SSL 卸载。 预配成功后，即可根据部署修改这些设置。
 如果在之前的步骤中已使用后端池定义 Web 应用程序，则在创建后，负载均衡即会开始。
 
-## <a name="delete-all-resources"></a>删除所有资源
+<a id="delete-all-resources" class="xliff"></a>
+## 删除所有资源
 
 若要删除在本文中创建的所有资源，请完成以下步骤：
 
@@ -154,7 +165,8 @@ az network application-gateway create \
 az group delete --name AdatumAppGatewayRG
 ```
  
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+## 后续步骤
 
 访问[创建自定义运行状况探测](application-gateway-create-probe-portal.md)，了解如何创建自定义运行状况探测
 

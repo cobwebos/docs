@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 3c04cee00b7dc7c8833daf21cdbca11a065e9dae
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 182a637ab98955129d269e2afc3ba581aa1a7c03
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/14/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -36,6 +36,9 @@ ms.lasthandoff: 03/14/2017
 > * [.NET 自定义活动](data-factory-use-custom-activities.md)
 
 数据工厂[管道](data-factory-create-pipelines.md)中的 HDInsight Pig 活动会在[你自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或基于 Windows/Linux 的[按需](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 Pig 查询。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
+
+> [!NOTE] 
+> 如果是刚开始接触 Azure 数据工厂，请仔细阅读 [Azure 数据工厂简介](data-factory-introduction.md)，并学习[教程：生成首个数据管道](data-factory-build-your-first-pipeline.md)，然后再阅读本文。 
 
 ## <a name="syntax"></a>语法
 
@@ -113,12 +116,12 @@ PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampl
 Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/sampleoutpig/' USING PigStorage (',');
 ```
 
-若要在数据工厂管道中执行此 Pig 脚本，请执行以下操作：
+若要在数据工厂管道中执行此 Pig 脚本，请执行以下步骤：
 
 1. 创建链接服务以注册[自己的 HDInsight 计算群集](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或配置[按需 HDInsight 计算群集](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)。 将此链接服务称作 **HDInsightLinkedService**。
 2. 创建[链接服务](data-factory-azure-blob-connector.md)以配置托管数据的 Azure Blob 存储的连接。 将此链接服务称作 **StorageLinkedService**。
 3. 创建指向输入和输出数据的[数据集](data-factory-create-datasets.md)。 将输入数据集称作 **PigSampleIn**，输出数据集称作 **PigSampleOut**。
-4. 将文件中的 Pig 查询复制到步骤 #2 中配置的 Azure Blob 存储。 如果托管数据的 Azure 存储与托管查询文件的 Azure 存储不同，请创建单独的 Azure 存储链接服务。 请参考活动配置中的链接服务。 使用 **scriptPath** 指定 pig 脚本文件和 **scriptLinkedService** 的路径。 
+4. 将文件中的 Pig 查询复制到步骤 #2 中配置的 Azure Blob 存储。 如果托管数据的 Azure 存储与托管查询文件的 Azure 存储不同，请创建单独的 Azure 存储链接服务。 请参考活动配置中的链接服务。 使用 **scriptPath** 指定 pig 脚本文件和“scriptLinkedService”的路径。 
    
    > [!NOTE]
    > 还可以使用 **script** 属性在活动定义中提供 Pig 脚本内联。 但不建议使用此方法，因为这需转义脚本中的所有特殊字符，并且可能导致调试问题。 最佳做法是遵循步骤 #4。

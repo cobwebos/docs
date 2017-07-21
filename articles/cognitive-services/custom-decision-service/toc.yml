@@ -1,16 +1,24 @@
-- name: 自定义决策服务
+- name: Custom Decision Service
   href: ../index.md
-- name: 概述
+- name: Overview
   href: custom-decision-service-overview.md
-- name: 入门
+- name: Get started
   items:
-  - name: 注册应用程序
-    href: custom-decision-service-get-started-register.md
-  - name: 从浏览器调用 API
-    href: custom-decision-service-get-started-browser.md
-  - name: 从应用调用 API
-    href: custom-decision-service-get-started-app.md
-- name: 教程
-  href: custom-decision-service-tutorial.md
-- name: API 参考
+    - name: Register your application
+      href: custom-decision-service-get-started-register.md
+    - name: Call API from a browser
+      href: custom-decision-service-get-started-browser.md
+    - name: Call API from an app
+      href: custom-decision-service-get-started-app.md
+- name: Tutorials
+  items:
+    - name: Article personalization
+      href: custom-decision-service-tutorial-news.md
+    - name: Machine learning in Custom Decision Service
+      href: custom-decision-service-tutorial-ml.md
+- name: API reference
   href: custom-decision-service-api-reference.md
+- name: Resources
+  items:
+    - name: Azure Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'

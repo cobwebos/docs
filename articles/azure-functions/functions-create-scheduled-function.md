@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 05/31/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: f35f693131bd1f4f47b161afb0a4f38d4f00bbd6
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 4442d0038a0604d3297871907c1d05d8d3916dcf
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
-
+ms.lasthandoff: 06/08/2017
 
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>在 Azure 中创建由计时器触发的函数
@@ -31,7 +31,9 @@ ms.lasthandoff: 05/25/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+完成本教程：
+
++ 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
@@ -47,7 +49,11 @@ ms.lasthandoff: 05/25/2017
 
 ## <a name="create-a-timer-triggered-function"></a>创建计时器触发的函数
 
-1. 展开 Function App，依次单击“函数”旁边的 **+** 按钮、与所需语言相对应的 **TimerTrigger** 模板。 然后使用表中指定的设置：
+1. 展开 Function App，单击“Functions”旁边的 + 按钮。 如果这是 Function App 中的第一个函数，请选择“自定义函数”。 此时将显示函数模板的完整集合。
+
+    ![Azure 门户中的 Functions 快速入门页](./media/functions-create-scheduled-function/add-first-function.png)
+
+2. 为所需语言选择 TimerTrigger 模板。 然后使用表中指定的设置：
 
     ![在 Azure 门户中创建计时器触发的函数。](./media/functions-create-scheduled-function/functions-create-timer-trigger.png)
 

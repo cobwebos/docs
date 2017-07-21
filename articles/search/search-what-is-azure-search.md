@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.date: 04/24/2017
 ms.author: ashmaka
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: db227bfea10255322c090e68b197cfb2dd1cf15b
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 99685748120b40cd02328f6ece0b8dde55042d61
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/08/2017
 
 ---
 # <a name="what-is-azure-search"></a>什么是 Azure 搜索？
@@ -31,7 +31,7 @@ Azure 搜索是一种搜索即服务云解决方案，它将服务器和基础�
 
 ### <a name="full-text-search-and-text-analysis"></a>全文搜索和文本分析
 
-[全文搜索](https://en.wikipedia.org/wiki/Full_text_search)是大多数基于搜索的应用的主要用例。 在 Azure 搜索中，查询可以使用[简单的查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)进行表述，它提供逻辑运算符、短语搜索运算符、后缀运算符、优先级运算符。 此外，[Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)可以启用模糊搜索、近似搜索、术语提升和正则表达式。 Azure 搜索还支持[自定义的词汇分析器](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)，以允许应用程序使用拼音匹配和正则表达式处理复杂的搜索查询。
+[全文搜索](search-lucene-query-architecture.md)是大多数基于搜索的应用的主要用例。 在 Azure 搜索中，查询可以使用[简单的查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)进行表述，它提供逻辑运算符、短语搜索运算符、后缀运算符、优先级运算符。 此外，[Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)可以启用模糊搜索、近似搜索、术语提升和正则表达式。 Azure 搜索还支持[自定义的词汇分析器](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)，以允许应用程序使用拼音匹配和正则表达式处理复杂的搜索查询。
 
 ### <a name="language-support"></a>语言支持
 

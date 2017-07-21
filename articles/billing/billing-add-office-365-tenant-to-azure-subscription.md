@@ -4,7 +4,7 @@ description: "了解如何将 Office 365 目录（租户）添加到 Azure 订�
 services: 
 documentationcenter: 
 author: JiangChen79
-manager: vikdesai
+manager: jlian
 editor: 
 tags: billing,top-support-issue
 ms.assetid: cc9c57c6-7bfd-4dea-9027-c75ef3737589
@@ -23,22 +23,26 @@ ms.lasthandoff: 02/22/2017
 
 
 ---
-# <a name="associate-an-office-365-tenant-to-an-azure-subscription"></a>将 Office 365 租户与 Azure 订阅关联
+<a id="associate-an-office-365-tenant-to-an-azure-subscription" class="xliff"></a>
+# 将 Office 365 租户与 Azure 订阅关联
 链接独立的 Azure 和 Office 365 订阅，以便可从 Azure 订阅访问 Office 365 租户。 若要链接订阅，请使用 Azure 服务管理员帐户登录 Azure，添加一个目录，然后将 Office 365 组织帐户添加到 Azure Active Directory 租户。
 
 如果希望 Azure Active Directory 实例中有面向用户的 Office 365 订阅或已安装 Office 365 帐户但未安装 Azure 帐户，请参阅[使用 Office 365 帐户注册 Azure](billing-use-existing-office-365-account-azure-subscription.md)。 
 
-## <a name="before-you-begin"></a>开始之前
+<a id="before-you-begin" class="xliff"></a>
+## 开始之前
 * 必须具有 Azure 订阅服务管理员凭据。 共同管理员帐户无法执行本文中的某些步骤。 若要更改服务管理员，请参阅[如何添加或更改 Azure 管理员角色](billing-add-change-azure-subscription-administrator.md#change-service-administrator-for-a-subscription)。
 * 必须具有 Office 365 租户的全局管理员凭据。
 * 服务管理员的电子邮件地址不能在 Office 365 租户中。
 * 服务管理员的电子邮件地址不能与 Office 365 租户的任何全局管理员的电子邮件地址匹配。
 * 如果使用的电子邮件地址既是 Microsoft 帐户又是组织帐户，则可暂时更改 Azure 订阅的服务管理员，以使用另一 Microsoft 帐户。 可在 [Microsoft 帐户注册页](https://signup.live.com/)上创建一个新的 Microsoft 帐户。
 
-## <a name="link-office-365-tenant-to-azure-subscription"></a>将 Office 365 租户链接到 Azure 订阅
+<a id="link-office-365-tenant-to-azure-subscription" class="xliff"></a>
+## 将 Office 365 租户链接到 Azure 订阅
 若要将 Office 365 租户与 Azure 订阅关联，请执行以下步骤：
 
-### <a name="step-1-add-office-365-tenant-to-your-azure-subscription"></a>步骤 1：将 Office 365 租户添加到 Azure 订阅
+<a id="step-1-add-office-365-tenant-to-your-azure-subscription" class="xliff"></a>
+### 步骤 1：将 Office 365 租户添加到 Azure 订阅
 
 1. 使用服务管理员凭据登录到 [Azure 经典门户](https://manage.windowsazure.com/)。
 
@@ -98,7 +102,8 @@ ms.lasthandoff: 02/22/2017
    
 5. 选择“完成”![完成图标](./media/billing-add-office-365-tenant-to-azure-subscription/s38_complete-icon.png)。
 
-### <a name="step-3-add-your-office-365-organizational-accounts-as-co-administrators-to-the-azure-active-directory-tenant"></a>步骤 3：向 Azure Active Directory 租户添加 Office 365 组织帐户作为共同管理员
+<a id="step-3-add-your-office-365-organizational-accounts-as-co-administrators-to-the-azure-active-directory-tenant" class="xliff"></a>
+### 步骤 3：向 Azure Active Directory 租户添加 Office 365 组织帐户作为共同管理员
    
 1. 选择“管理员”选项卡，然后选择“添加”。
    
@@ -121,7 +126,8 @@ ms.lasthandoff: 02/22/2017
    
     ![Azure 登录页的屏幕截图](./media/billing-add-office-365-tenant-to-azure-subscription/s324_azure-sign-in-with-co-admin.png)
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
+<a id="need-help-contact-support" class="xliff"></a>
+## 需要帮助？ 联系支持人员。
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
 
 

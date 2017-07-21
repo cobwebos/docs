@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 2/17/2017
+ms.date: 06/05/2017
 ms.author: asgang
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: f78a857a795031f6188635091c76431cd5440d1c
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 9b22bcffeb1c79179511cd56aa1e79ee292eb992
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
 
 
-# <a name="replicate-applications"></a>复制应用程序
+# <a name="replicate-applications-running-on-vmware-vms-to-azure"></a>将在 VMware VM 上运行的应用程序复制到 Azure
+
 
 
 本文介绍如何设置 VMware 上运行的虚拟机到 Azure 的复制。
@@ -59,13 +60,10 @@ ms.lasthandoff: 05/17/2017
     ![启用复制](./media/site-recovery-vmware-to-azure/enable-replication2.png)
 
 6. 在“目标”中，选择要在其中创建故障转移虚拟机的订阅和资源组。 选择希望在 Azure 中为故障转移虚拟机使用的部署模型（经典或资源管理）。
-
-
 7. 选择要用于复制数据的 Azure 存储帐户。 请注意：
 
    * 可以选择高级或标准存储帐户。 如果选择高级帐户，则需要指定其他标准存储帐户来持续写入复制日志。 这些帐户必须位于与恢复服务保管库相同的区域中。
    * 若要使用已有帐户以外的存储帐户，可以创建帐户*占位链接：使用 Resource Manager 创建存储帐户（将在“入门”中介绍）*。 若要使用 Resource Manager 模型创建存储帐户，请单击“新建”。 如果想要使用经典模型创建存储帐户，请[在 Azure 门户中](../storage/storage-create-storage-account-classic-portal.md)执行该操作。
-
 
 8. 选择 Azure VM 在故障转移后启动时所要连接的 Azure 网络和子网。 该网络必须位于与恢复服务保管库相同的区域中。 选择“立即为选定的计算机配置”，将网络设置应用到选择保护的所有计算机。 选择“稍后配置”以选择每个计算机的 Azure 网络。 如果没有网络，需要[创建一个](#set-up-an-azure-network)。 若要使用 Resource Manager 创建网络，请单击“新建”。 如果想要使用经典模型创建网络，请[在 Azure 门户中](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)执行该操作。 选择适用的子网。 。
 
@@ -73,25 +71,19 @@ ms.lasthandoff: 05/17/2017
 9. 在“虚拟机” > “选择虚拟机”中，单击并选择要复制的每个计算机。 只能选择可以启用复制的计算机。 。
 
     ![启用复制](./media/site-recovery-vmware-to-azure/enable-replication5.png)
-10. 在“属性” > “配置属性”中，选择进程服务器在计算机上自动安装移动服务时使用的帐户。 默认情况下会复制所有磁盘。 单击“所有磁盘”并清除不想要复制的所有磁盘。 。 可以稍后再设置其他属性。
+10. 在“属性” > “配置属性”中，选择进程服务器在计算机上自动安装移动服务时使用的帐户。  
+11. 默认情况下会复制所有磁盘。 若要从复制中排除磁盘，请单击“所有磁盘”，然后清除不想复制的所有磁盘。  。 可以稍后再设置其他属性。 [详细了解](site-recovery-exclude-disk.md)如何排除磁盘。
 
     ![启用复制](./media/site-recovery-vmware-to-azure/enable-replication6.png)
 
-
-> [!NOTE]
-> 默认情况下将复制计算机上的所有磁盘。 可以[从复制中排除磁盘](site-recovery-exclude-disk.md)。 例如，你可能不想要复制包含临时数据，或者每当重新启动计算机或应用程序时刷新的数据（例如 pagefile.sys 或 SQL Server tempdb）的磁盘。
->
-
-
-
-11. 在“复制设置” > “配置复制设置”中，检查是否选择了正确的复制策略。 可以在“设置” > “复制策略”> 策略名称 >“编辑设置”中修改复制策略设置。 应用到策略的更改将应用于复制计算机和新计算机。
-12. 如果要将计算机集合到复制组，请启用“多 VM 一致性”并指定组的名称。 。 请注意：
+12. 在“复制设置” > “配置复制设置”中，检查是否选择了正确的复制策略。 可以在“设置” > “复制策略”> 策略名称 >“编辑设置”中修改复制策略设置。 应用到策略的更改将应用于复制计算机和新计算机。
+13. 如果要将计算机集合到复制组，请启用“多 VM 一致性”并指定组的名称。 。 请注意：
 
     * 复制组中的计算机将一起复制，并在故障转移时获得崩溃一致且应用一致的共享恢复点。
     * 我们建议你将 VM 和物理服务器集合在一起，使其镜像你的工作负荷。 启用多 VM 一致性可能会影响工作负荷性能，因此，仅当计算机运行相同的工作负荷并且你需要一致性时，才应使用该设置。
 
     ![启用复制](./media/site-recovery-vmware-to-azure/enable-replication7.png)
-13. 单击“启用复制”。 可以在“设置” > “作业” > “Site Recovery 作业”中，跟踪“启用保护”作业的进度。 在“完成保护”作业运行之后，计算机就可以进行故障转移了。
+14. 单击“启用复制”。 可以在“设置” > “作业” > “Site Recovery 作业”中，跟踪“启用保护”作业的进度。 在“完成保护”作业运行之后，计算机就可以进行故障转移了。
 
 > [!NOTE]
 > 如果计算机已准备好进行推送安装，则启用保护后，将安装移动服务组件。 在计算机上安装该组件后，某个保护作业将启动但会失败。 发生这种失败后，需要手动重新启动每台计算机。 重启后，保护作业重新启动，初始复制开始。
@@ -99,43 +91,34 @@ ms.lasthandoff: 05/17/2017
 >
 
 ## <a name="view-and-manage-vm-properties"></a>查看和管理 VM 属性
+
 建议你验证源计算机的属性。 请记住，Azure VM 名称应符合 [Azure 虚拟机要求](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。
 
 1. 单击“设置” > “复制的项”，然后选择计算机。 “概要”边栏选项卡显示有关计算机设置和状态的信息。
 2. 在“属性”中，可以查看 VM 的复制和故障转移信息。
 3. 在“计算和网络” > “计算属性”中，可以指定 Azure VM 名称和目标大小。 根据需要修改名称，使其符合 Azure 要求。
-![启用复制](./media/site-recovery-vmware-to-azure/VMProperties_AVSET.png)
+    ![启用复制](./media/site-recovery-vmware-to-azure/VMProperties_AVSET.png)
+ 
+4.  可以选择计算机会在故障转移后成为其中一部分的[资源组](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines)。 在故障转移前，可以随时更改此设置。 在故障转移后，如果将计算机迁移到其他资源组，则计算机的保护设置会中断。
+5. 如果需要计算机在故障转移后成为某个[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)的一部分，可以选择一个。 选择可用性集时，请记住：
 
-*资源组*
+    * 仅会列出属于指定资源组的可用性集  
+    * 具有不同虚拟网络的计算机不能属于同一可用性集
+    * 仅大小相同的虚拟机可以属于同一可用性集
+5. 你还可以查看和添加目标网络、子网的相关信息，以及要分配到 Azure VM 的 IP 地址。
+6. 在“磁盘”中，可以看到 VM 上将要复制的操作系统和数据磁盘。
 
-  * 可以选择计算机会在故障转移后成为其中一部分的[资源组](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines)。 在故障转移前，可以随时更改此设置。
+### <a name="network-adapters-and-ip-addressing"></a>网络适配器和 IP 寻址 
 
-> [!NOTE]
-> 在故障转移后，如果将计算机迁移到其他资源组，则计算机的保护设置会中断。
+- 可以设置目标 IP 地址。 如果未提供地址，故障转移的计算机将使用 DHCP。 如果设置了无法用于故障转移的地址，故障转移将不会正常工作。 如果地址可用于测试故障转移网络，则同一个目标 IP 地址可用于测试故障转移。
+- 网络适配器数目根据你为目标虚拟机指定的大小来确定，如下所述：
+    - 如果源计算机上的网络适配器数小于或等于目标计算机大小允许的适配器数，则目标的适配器数将与源相同。
+    - 如果源虚拟机的适配器数大于目标大小允许的数目，则使用目标大小允许的最大数目。
+    - 例如，如果源计算机有两个网络适配器，而目标计算机大小支持四个，则目标计算机将有两个适配器。 如果源计算机有两个适配器，但支持的目标大小只支持一个，则目标计算机只有一个适配器。
+    - 如果虚拟机有多个网络适配器，它们将全部连接到同一个网络。
+    - 如果虚拟机有多个网络适配器，列表中显示的第一个适配器将成为 Azure 虚拟机中的*默认*网络适配器。
+   
 
-*可用性集*
-
-如果需要计算机在故障转移后成为某个[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)的一部分，可以选择一个。
-选择可用性集时，请记住：
-
-* 仅会列出属于指定资源组的可用性集  
-* 具有不同虚拟网络的计算机不能属于同一可用性集
-* 仅大小相同的虚拟机可以属于同一可用性集
-
-*网络属性*
-
-你还可以查看和添加目标网络、子网的相关信息，以及要分配到 Azure VM 的 IP 地址。 注意以下事项：
-
-   * 可以设置目标 IP 地址。 如果未提供地址，故障转移的计算机将使用 DHCP。 如果设置了无法用于故障转移的地址，故障转移将不会正常工作。 如果地址可用于测试故障转移网络，则同一个目标 IP 地址可用于测试故障转移。
-   * 网络适配器数目根据你为目标虚拟机指定的大小来确定，如下所述：
-
-     * 如果源计算机上的网络适配器数小于或等于目标计算机大小允许的适配器数，则目标的适配器数将与源相同。
-     * 如果源虚拟机的适配器数大于目标大小允许的数目，则使用目标大小允许的最大数目。
-     * 例如，如果源计算机有两个网络适配器，而目标计算机大小支持四个，则目标计算机将有两个适配器。 如果源计算机有两个适配器，但支持的目标大小只支持一个，则目标计算机只有一个适配器。     
-   * 如果虚拟机有多个网络适配器，它们将全部连接到同一个网络。
-   * 如果虚拟机有多个网络适配器，列表中显示的第一个适配器将成为 Azure 虚拟机中的*默认*网络适配器。
-
-4. 在“磁盘”中，可以看到 VM 上将要复制的操作系统和数据磁盘。
 
 
 ## <a name="common-issues"></a>常见问题

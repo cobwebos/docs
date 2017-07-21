@@ -12,19 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/13/2017
+ms.date: 06/07/2017
 ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: cfdc507d5e45fc716940bd4607631ba500bf4c59
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 1ad56a54f094f3c314596b3a7c9fecd09647d065
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/09/2017
 
 
 ---
 
 # <a name="view-azure-activity-logs"></a>查看 Azure 活动日志
 
- ![Azure 活动日志符号](./media/log-analytics-activity/activity-log-analytics.png) Activity Log Analytics 决方案有助于分析和搜索所有 Azure 订阅的 [Azure 活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)。 Azure 活动日志是一种日志，可使用户了解对订阅中的资源执行的操作。 “活动日志”此前称为“审核日志”或“操作日志”，因为它报告订阅的各种事件。
+![“Azure 活动日志”符号](./media/log-analytics-activity/activity-log-analytics.png)
+
+Activity Log Analytics 解决方案有助于分析和搜索所有 Azure 订阅的 [Azure 活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)。 Azure 活动日志是一种日志，可使用户了解对订阅中的资源执行的操作。 “活动日志”此前称为“审核日志”或“操作日志”，因为它报告订阅的各种事件。
 
 通过活动日志，可确定对订阅中的资源进行的任何写入操作（PUT、POST、DELETE）的*内容*、*执行者*和*时间*。 还可以了解操作和其他相关属性的状态。 活动日志不包括读取 (GET) 操作或针对使用经典部署模型的资源的操作。
 

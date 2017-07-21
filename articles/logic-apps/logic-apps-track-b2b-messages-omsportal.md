@@ -13,16 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2016
-ms.author: padmavc
+ms.author: LADocs; padmavc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 4d68fde29e85fcf9aa623b4d798262bcd486a8bb
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: d1c61ba220b4334f053428a23e620e8004fc60f7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
 # <a name="track-b2b-messages-in-the-operations-management-suite-portal"></a>在 Operations Management Suite 门户中跟踪 B2B 消息
+
+![日志应用 B2B 符号](./media/logic-apps-track-b2b-messages-omsportal/logic-apps-b2b-symbol.png)
+
 B2B 通信涉及到两个正在运行的业务流程或应用程序之间的消息交换。 在 Operations Management Suite 门户中使用以下基于 Web 的跟踪功能，以确认消息是否已正确地得到了处理：
 
 * 消息计数和状态
@@ -56,7 +59,7 @@ B2B 通信涉及到两个正在运行的业务流程或应用程序之间的消�
 6. 选择“添加”以将“逻辑应用 B2B”消息添加到主页。  
 ![选择添加](media/logic-apps-track-b2b-messages-omsportal/omshomepage3.png)
 
-7. 主页上将显示“逻辑应用 B2B消息”。   
+7. 主页上会显示“逻辑应用 B2B消息”。   
 ![选择主页](media/logic-apps-track-b2b-messages-omsportal/omshomepage4.png)
 
 ## <a name="track-data-in-the-operations-management-suite-portal"></a>在 Operations Management Suite 门户中跟踪数据
@@ -67,9 +70,10 @@ B2B 通信涉及到两个正在运行的业务流程或应用程序之间的消�
 2. 在主页上选择“逻辑应用 B2B 消息”以查看 AS2 和 X12 消息状态。  数据以一天为基础。
 ![选择逻辑应用 B2B 消息](media/logic-apps-track-b2b-messages-omsportal/omshomepage5.png)
 
-3. 按状态选择 AS2 或 X12 消息以转到消息列表。 下一张屏幕快照显示了 AS2 消息状态。 AS2 和 X12 消息状态属性说明稍后将显示在“消息列表属性说明”中。  
+3. 按状态选择 AS2、X12 或 EDIFACT 消息以转到消息列表。 下一张屏幕快照显示了 AS2 消息状态。 AS2 和 X12 消息状态属性说明稍后将显示在“消息列表属性说明”中。  
 ![选择 AS2 消息状态](media/logic-apps-track-b2b-messages-omsportal/as2messagelist.png)
-4. 选择 AS2 或 X12 消息列表中的某行以转到日志搜索。  日志搜索将列出具有相同运行 ID 的所有操作。
+
+4. 选择 AS2、X12 或 EDIFACT 消息列表中的某行以转到日志搜索。  日志搜索将列出具有相同运行 ID 的所有操作。
 ![选择消息状态](media/logic-apps-track-b2b-messages-omsportal/logsearch.png)
 
 ## <a name="message-list-property-descriptions"></a>消息列表属性说明
@@ -92,8 +96,8 @@ B2B 通信涉及到两个正在运行的业务流程或应用程序之间的消�
 
 | 属性 | 说明 |
 | --- | --- |
-| 发送方 | 在接收设置中配置的来宾合作伙伴，或在 AS2 协议的发送设置中配置的主机合作伙伴。 |
-| 接收方 | 在接收设置中配置的主机合作伙伴，或在 AS2 协议的发送设置中配置的来宾合作伙伴。 |
+| 发送方 | 在接收设置中配置的来宾合作伙伴，或在 X12 协议的发送设置中配置的主机合作伙伴。 |
+| 接收方 | 在接收设置中配置的主机合作伙伴，或在 X12 协议的发送设置中配置的来宾合作伙伴。 |
 | 逻辑应用 | 其中配置了 AS2 操作的逻辑应用。 |
 | 状态 | X12 消息状态 <br>成功 = 接收或发送了正确的 X12 消息，未配置功能确认 <br>成功 = 接收或发送了正确的 X12 消息，已配置和接收功能确认，或者已发送功能确认 <br>失败 = 接收或发送了错误的 X12 消息 <br>挂起 = 接收或发送了正确的 X12 消息，已配置功能确认，预计可以进行功能确认。 |
 | Ack | 功能确认 (997) 状态 <br>已接受 = 接收或发送了正面的功能确认 <br>已拒绝 = 接收或发送了负面的功能确认 <br>挂起 = 预计会有功能确认，但未收到 <br>挂起 = 生成了功能确认，但无法将其发送给合作伙伴 <br>不需要 = 未配置功能确认 |
@@ -103,6 +107,24 @@ B2B 通信涉及到两个正在运行的业务流程或应用程序之间的消�
 | ICN | X12 消息的交换控制编号。 |
 | TSCN | X12 消息的事务集控制编号。 |
 | Timestamp | X12 操作处理消息的时间。 |
+
+
+#### <a name="edifact-message-list-property-descriptions"></a>EDIFACT 消息列表属性说明
+
+| 属性 | 说明 |
+| --- | --- |
+| 发送方 | 在接收设置中配置的来宾合作伙伴，或在 EDIFACT 协议的发送设置中配置的主机合作伙伴。 |
+| 接收方 | 在接收设置中配置的主机合作伙伴，或在 EDIFACT 协议的发送设置中配置的来宾合作伙伴。 |
+| 逻辑应用 | 其中配置了 AS2 操作的逻辑应用。 |
+| 状态 | EDIFACT 消息状态 <br>成功 = 接收或发送了正确的 X12 消息，未配置功能确认 <br>成功 = 接收或发送了正确的 X12 消息，已配置和接收功能确认，或者已发送功能确认 <br>失败 = 接收或发送了错误的 X12 消息 <br>挂起 = 接收或发送了正确的 X12 消息，已配置功能确认，预计可以进行功能确认。 |
+| Ack | 功能确认 (997) 状态 <br>已接受 = 接收或发送了正面的功能确认 <br>已拒绝 = 接收或发送了负面的功能确认 <br>挂起 = 预计会有功能确认，但未收到 <br>挂起 = 生成了功能确认，但无法将其发送给合作伙伴 <br>不需要 = 未配置功能确认 |
+| 方向 | EDIFACT 消息方向。 |
+| 相关性 ID | 用于关联逻辑应用中所有触发器和操作的 ID。 |
+| 消息类型 |  EDIFACT 消息类型。 |
+| ICN | EDIFACT 消息的交换控制编号。 |
+| TSCN | EDIFACT 消息的事务集控制编号。 |
+| Timestamp | EDIFACT 操作处理消息的时间。 |
+
 
 ## <a name="queries-in-the-operations-management-suite-portal"></a>Operations Management Suite 门户中的查询
 

@@ -12,15 +12,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/04/2017
+ms.date: 06/29/2017
 ms.author: vturecek
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 6356b4e69892b90ff74aa9db0157930dc00f4a08
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 
 ---
-# <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric 可测试性方案：服务通信
+# Service Fabric 可测试性方案：服务通信
+<a id="service-fabric-testability-scenarios-service-communication" class="xliff"></a>
 在 Azure Service Fabric 中，自然显露了微服务和面向服务的体系结构风格。 在这些类型的分布式体系结构中，组件化微服务应用程序通常由需要相互通信的多个服务组成。 即使在最简单的情况下，一般至少有一个无状态 Web 服务和一个有状态数据存储服务，这些服务都需要通信。
 
 服务到服务通信是一个应用程序的至关重要的集成点，因为每个服务向其他服务公开一个远程 API。 使用一组涉及 I/O 的 API 边界通常需要非常谨慎，并且要进行大量的测试和验证。
@@ -33,7 +36,8 @@ ms.openlocfilehash: 6356b4e69892b90ff74aa9db0157930dc00f4a08
 
 无论是使用 Service Fabric 提供的内置服务通信组件还是构建你自己的通信组件，测试服务之间的交互都是确保应用程序恢复能力的关键部分。
 
-## <a name="prepare-for-services-to-move"></a>准备要移动的服务
+## 准备要移动的服务
+<a id="prepare-for-services-to-move" class="xliff"></a>
 服务实例可能随着时间的推移而四处移动。 在采用加载度量值进行配置以实现量身定制的最佳资源平衡时尤其如此。 即使在升级、故障转移、扩大和其他随着分布式系统的生命周期的演化而出现的各种情形下，Service Fabric 也会移动你的服务实例以最大可能地提高可用性的地方。
 
 因为服务在群集内四处移动，当与服务通信时，你的客户端和其他服务应准备好处理两种方案：
@@ -47,7 +51,8 @@ ms.openlocfilehash: 6356b4e69892b90ff74aa9db0157930dc00f4a08
 * 服务延迟有可能暂时性增大，因为服务实例再次启动其侦听程序。 这取决于服务在移动之后有多快启动侦听程序。
 * 在服务打开新的节点后，任何现有连接都需要关闭并重新打开。 正常的节点关闭或重新启动会等待现有连接正常关闭。
 
-### <a name="test-it-move-service-instances"></a>测试：移动服务实例
+### 测试：移动服务实例
+<a id="test-it-move-service-instances" class="xliff"></a>
 使用 Service Fabric 的可测试工具，我们可以编写一个测试方案，以不同的方式测试这些情形。
 
 1. 移动一个有状态服务的主副本。
@@ -71,12 +76,14 @@ ms.openlocfilehash: 6356b4e69892b90ff74aa9db0157930dc00f4a08
    
     ```
 
-## <a name="maintain-service-availability"></a>维持服务可用性
+## 维持服务可用性
+<a id="maintain-service-availability" class="xliff"></a>
 作为一款平台，Service Fabric 旨在为服务提供高可用性。 但是，底层基础结构问题在极端情况下仍然可能导致服务不可用。 因此也必须测试这些方案。
 
 有状态服务使用基于仲裁的系统来复制状态以获得高可用性。 这意味着副本的仲裁必须可用才能执行写操作。 在极少数情况下，例如普遍出现的硬件故障，副本的仲裁可能不可用。 在这种情况下，你将不能执行写操作，但是仍然能够执行读操作。
 
-### <a name="test-it-write-operation-unavailability"></a>测试：写操作不可用
+### 测试：写操作不可用
+<a id="test-it-write-operation-unavailability" class="xliff"></a>
 使用 Service Fabric 中的可测试性工具可以注入一个引入仲裁丢失的故障作为测试。 尽管这种情况很少见，但是取决于有状态服务的客户端和服务准备好处理无法向有状态服务进行写请求的情形非常重要。 有状态服务本身知晓这种可能性并且能够以得当的方式将其告知调用方也非常重要。
 
 可以使用 **Invoke-ServiceFabricPartitionQuorumLoss PowerShell** cmdlet 引入仲裁丢失：
@@ -89,14 +96,10 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 在本示例中，我们将 `QuorumLossMode` 设置为 `QuorumReplicas` 以指出我们希望引入仲裁丢失而不关闭所有副本。 这样就仍然能够进行读操作。 若要测试整个分区不可用的情形，可将此开关设置为 `AllReplicas`。
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 [了解有关可测试性操作的详细信息](service-fabric-testability-actions.md)
 
 [了解有关可测试性方案的详细信息](service-fabric-testability-scenarios.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -22,7 +22,8 @@
 ## [Hadoop 沙盒](hdinsight-hadoop-emulator-get-started.md)
 ## [Data Lake 工具与 Hortonworks 沙盒](hdinsight-hadoop-emulator-visual-studio.md)
 ## [适用于 Visual Studio 的工具](hdinsight-hadoop-visual-studio-tools-get-started.md)
-## [HDInsight 存储选项](hdinsight-hadoop-use-blob-storage.md)
+## [使用 Azure 存储的 HDInsight](hdinsight-hadoop-use-blob-storage.md)
+## [使用 Azure Data Lake Store 的 HDInsight](hdinsight-hadoop-use-data-lake-store.md)
 
 # 如何
 ## 使用 Hadoop 执行批处理查询
@@ -74,7 +75,7 @@
 ### [通过脚本操作将外部包与 Jupyter 配合使用](hdinsight-apache-spark-python-package-installation.md)
 ### [使用本地 Jupyter 笔记本](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 ### [远程作业与 Livy](hdinsight-apache-spark-livy-rest-interface.md)
-### [使用 IntelliJ 远程调试作业](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+### [使用 IntelliJ 通过 VPN 远程调试作业](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 ### [管理资源](hdinsight-apache-spark-resource-manager.md)
 ### [跟踪和调试作业](hdinsight-apache-spark-job-debugging.md)
 ### [已知问题](hdinsight-apache-spark-known-issues.md)
@@ -105,14 +106,18 @@
 ### [配置 Hive 策略](hdinsight-domain-joined-run-hive.md)
 ## 使用 Kafka（预览版）
 ### [复制 Kafka 数据](hdinsight-apache-kafka-mirroring.md)
+### [配置 Kafka 的存储和可伸缩性](hdinsight-apache-kafka-scalability.md)
+### [配置数据的高可用性](hdinsight-apache-kafka-high-availability.md)
 ### [与虚拟网络配合使用](hdinsight-apache-kafka-connect-vpn-gateway.md)
-### [与 Spark 配合使用](hdinsight-apache-spark-with-kafka.md)
+### [与 Spark 配合使用（结构化流）](hdinsight-apache-kafka-spark-structured-streaming.md)
+### [与 Spark 配合使用 (DStream)](hdinsight-apache-spark-with-kafka.md)
 ### [与 Storm 配合使用](hdinsight-apache-storm-with-kafka.md)
 ## 开发
 ### [开发 C# 流式处理 MapReduce 程序](hdinsight-hadoop-dotnet-csharp-mapreduce-streaming.md)
 ### [开发 Java MapReduce 程序](hdinsight-develop-deploy-java-mapreduce-linux.md)
 ### [开发 Scalding MapReduce 作业](hdinsight-hadoop-mapreduce-scalding.md)
 ### [使用 HDInsight 工具创建 Spark 应用](hdinsight-apache-spark-eclipse-tool-plugin.md)
+### [使用 HDInsight 工具通过 SSH 远程调试 Spark 应用](hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 ### [使用空边缘节点](hdinsight-apps-use-edge-node.md)
 ### [开发 Python 流式处理程序](hdinsight-hadoop-streaming-python.md)
 ### [处理和分析 JSON 文档](hdinsight-using-json-in-hive.md)
@@ -132,6 +137,7 @@
 ## 扩展群集
 ### [使用 Bootstrap 自定义群集](hdinsight-hadoop-customize-cluster-bootstrap.md)
 ### [使用脚本操作自定义群集](hdinsight-hadoop-customize-cluster-linux.md)
+### [将 HDInsight 连接到本地网络](connect-on-premises-network.md)
 ### [开发脚本操作](hdinsight-hadoop-script-actions-linux.md)
 ### [安装和使用 Presto](hdinsight-hadoop-install-presto.md)
 ### [安装或更新 Mono](hdinsight-hadoop-install-mono.md)
@@ -141,7 +147,7 @@
 ### [使用 R](hdinsight-hadoop-r-scripts-linux.md)
 ### [使用 Solr](hdinsight-hadoop-solr-install-linux.md)
 ### [使用虚拟网络](hdinsight-extend-hadoop-virtual-network.md)
-### [使用 Zeppelin](hdinsight-apache-spark-use-zeppelin-notebook.md)
+### [使用 Zeppelin](hdinsight-apache-spark-zeppelin-notebook.md)
 ### 构建 HDInsight 应用程序
 #### [安装 HDInsight 应用](hdinsight-apps-install-applications.md)
 #### [安装自定义应用](hdinsight-apps-install-custom-applications.md)
@@ -166,7 +172,7 @@
 ### [使用 Ambari Web UI 管理群集](hdinsight-hadoop-manage-ambari.md)
 #### [使用 Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
 ### [添加存储帐户](hdinsight-hadoop-add-storage.md)
-### [上载 Hadoop 作业的数据](hdinsight-upload-data.md)
+### [上传 Hadoop 作业的数据](hdinsight-upload-data.md)
 ### [将多个 HDInsight 群集与 Data Lake Store 配合使用](hdinsight-multiple-clusters-data-lake-store.md)
 ### [使用 Sqoop 导入和导出数据](hdinsight-use-sqoop.md)
 #### [使用 SSH 进行连接](hdinsight-use-sqoop-mac-linux.md)
@@ -180,19 +186,25 @@
 ### [可用性和可靠性](hdinsight-high-availability-linux.md)
 ### [将 HDInsight 群集升级到更新的版本](hdinsight-upgrade-cluster.md)
 ### [为 HDInsight 群集修补 OS](hdinsight-os-patching.md)
-## 故障排除
-### [适用于 Linux 的提示](hdinsight-hadoop-linux-information.md)
-### [分析 HDInsight 日志](hdinsight-debug-jobs.md)
-### [使用 YARN 日志调试应用](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-### [启用堆转储](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-### [通过 WebHCat 修复错误](hdinsight-hadoop-templeton-webhcat-debug-errors.md)
-### [使用 Ambari 视图调试 Tez 作业](hdinsight-debug-ambari-tez-view.md)
-### [更多疑难解答](hdinsight-hadoop-stack-trace-error-messages.md)
+## [故障排除](hdinsight-troubleshoot-guide.md)
+### [HBASE 故障排除](hdinsight-troubleshoot-hbase.md)
+### [HDFS 故障排除](hdinsight-troubleshoot-hdfs.md)
+### [HIVE 故障排除](hdinsight-troubleshoot-hive.md)
+### [Spark 故障排除](hdinsight-troubleshoot-spark.md)
+### [STORM 故障排除](hdinsight-troubleshoot-storm.md)
+### [YARN 故障排除](hdinsight-troubleshoot-yarn.md)
+### 资源
+#### [有关在 Linux 上使用 HDInsight 的信息](hdinsight-hadoop-linux-information.md)
+#### [Hadoop 内存和性能](hdinsight-hadoop-stack-trace-error-messages.md)
+#### [在 Linux 上访问 Hadoop YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+#### [为 Hadoop 服务启用堆转储](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+#### [分析 HDInsight 日志](hdinsight-debug-jobs.md)
+#### [了解和解决 WebHCat 错误](hdinsight-hadoop-templeton-webhcat-debug-errors.md)
 #### [通过 Hive 设置解决内存不足错误](hdinsight-hadoop-hive-out-of-memory-error-oom.md)
+#### [使用 Ambari 视图调试 Tez 作业](hdinsight-debug-ambari-tez-view.md)
 #### [优化 Hive 查询](hdinsight-hadoop-optimize-hive-query.md)
-#### [Hive 查询性能](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
 
-# 参考
+# 引用
 ## [PowerShell](/powershell/module/azurerm.hdinsight)
 ## [.NET (Hadoop)](https://msdn.microsoft.com/library/mt271028.aspx)
 ## [.NET (HBase)](https://www.nuget.org/packages/Microsoft.HBase.Client/)
@@ -222,6 +234,8 @@
 ### [使用 Ambari API 监视群集](hdinsight-monitor-use-ambari-api.md)
 
 # 资源
-## [用于 HDInsight 的 Windows 工具](hdinsight-hadoop-windows-tools.md)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [在论坛上获取帮助](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
+## [Microsoft 大数据专业程序](https://academy.microsoft.com/en-us/professional-program/big-data/)
+## [用于 HDInsight 的 Windows 工具](hdinsight-hadoop-windows-tools.md)

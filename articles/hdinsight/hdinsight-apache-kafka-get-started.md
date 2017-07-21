@@ -13,16 +13,17 @@ ms.devlang:
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2017
+ms.date: 06/23/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: f92d71542a2aa797b84f8742f74a02fea895e25a
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 80d4aced5e4f4b053b3b5f30a6fc383f1c4d6d27
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 07/04/2017
 
 ---
-# <a name="start-with-apache-kafka-preview-on-hdinsight"></a>HDInsight 上的 Apache Kafka（预览版）入门
+# HDInsight 上的 Apache Kafka（预览版）入门
+<a id="start-with-apache-kafka-preview-on-hdinsight" class="xliff"></a>
 
 了解如何在 Azure HDInsight 上创建和使用 [Apache Kafka](https://kafka.apache.org) 群集。 Kafka 是开源分布式流式处理平台，可与 HDInsight 配合使用。 通常将其用作消息代理，因为它可提供类似于发布-订阅消息队列的功能。
 
@@ -31,13 +32,15 @@ ms.lasthandoff: 05/17/2017
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="prerequisites"></a>先决条件
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
 
 * [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 或类似程序，如 OpenJDK。
 
 * [Apache Maven](http://maven.apache.org/) 
 
-## <a name="create-a-kafka-cluster"></a>创建 Kafka 群集
+## 创建 Kafka 群集
+<a id="create-a-kafka-cluster" class="xliff"></a>
 
 使用以下步骤创建 Kafka on HDInsight 群集：
 
@@ -68,25 +71,35 @@ ms.lasthandoff: 05/17/2017
      
     ![选择群集类型](./media/hdinsight-apache-kafka-get-started/set-hdinsight-cluster-type.png)
 
-    > [!NOTE]
-    > 如果 Azure 订阅无权访问 Kafka 预览版，将显示有关如何获取预览版的访问权限的说明。 将显示类似于下图的说明：
-    >
-    > ![预览版消息：如果要在 HDInsight 上部署托管 Apache Kafka 群集，请向我们发送请求访问预览版的电子邮件](./media/hdinsight-apache-kafka-get-started/no-kafka-preview.png)
-
 4. 选择群集类型后，使用“选择”按钮设置群集类型。 接下来，使用“下一步”按钮完成基本配置。
 
 5. 在“存储”边栏选项卡中，选择或创建存储帐户。 对于本文档中的步骤，请让此边栏选项卡上的其他字段保留默认值。 使用“下一步”按钮保存存储配置。
 
     ![设置 HDInsight 的存储帐户设置](./media/hdinsight-apache-kafka-get-started/set-hdinsight-storage-account.png)
 
-6. 在“摘要”边栏选项卡中，查看群集的配置。 使用“编辑”链接更改不正确的设置。 最后，使用“创建”按钮创建群集。
+6. 从“应用程序(可选)”边栏选项卡中，选择“下一步”继续。 此示例不需要任何应用程序。
+
+7. 从“群集大小”边栏选项卡中，选择“下一步”继续。
+
+    > [!WARNING]
+    > 若要确保 Kafka on HDInsight 的可用性，群集必须至少包含 3 个辅助节点。
+
+    ![设置 Kafka 群集大小](./media/hdinsight-apache-kafka-get-started/kafka-cluster-size.png)
+
+    > [!NOTE]
+    > 每个辅助角色节点条目的磁盘数控制 Kafka on HDInsight 的可伸缩性。 有关详细信息，请参阅[配置 Kafka on HDInsight 的存储和可伸缩性](hdinsight-apache-kafka-scalability.md)。
+
+8. 从“高级设置”边栏选项卡中，选择“下一步”继续。
+
+9. 在“摘要”边栏选项卡中，查看群集的配置。 使用“编辑”链接更改不正确的设置。 最后，使用“创建”按钮创建群集。
    
     ![群集配置摘要](./media/hdinsight-apache-kafka-get-started/hdinsight-configuration-summary.png)
    
     > [!NOTE]
     > 创建群集可能需要 20 分钟。
 
-## <a name="connect-to-the-cluster"></a>连接至群集
+## 连接至群集
+<a id="connect-to-the-cluster" class="xliff"></a>
 
 使用 SSH 从客户端连接到群集：
 
@@ -113,9 +126,9 @@ ms.lasthandoff: 05/17/2017
 2. 使用以下命令，通过从 Ambari 检索的信息设置环境变量。 将 __CLUSTERNAME__ 替换为 Kafka 群集的名称。 使用创建群集时使用的登录（管理员）密码替换 __PASSWORD__。
 
     ```bash
-    export KAFKAZKHOSTS=`curl --silent -u admin:'PASSWORD' -G http://headnodehost:8080/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")'`
+    export KAFKAZKHOSTS=`curl --silent -u admin:'PASSWORD' -G https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")'`
 
-    export KAFKABROKERS=`curl --silent -u admin:'PASSWORD' -G http://headnodehost:8080/api/v1/clusters/CLUSTERNAME/services/HDFS/components/DATANODE | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")'`
+    export KAFKABROKERS=`curl --silent -u admin:'PASSWORD' -G https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")'`
 
     echo '$KAFKAZKHOSTS='$KAFKAZKHOSTS
     echo '$KAFKABROKERS='$KAFKABROKERS
@@ -134,12 +147,13 @@ ms.lasthandoff: 05/17/2017
     >
     > 应在检索 Zookeeper 和中转站主机信息后尽快使用这些信息，确保信息有效。
 
-## <a name="create-a-topic"></a>创建主题
+## 创建主题
+<a id="create-a-topic" class="xliff"></a>
 
 Kafka 在名为 topics 的类别中存储数据流。 与群集头节点建立 SSH 连接后，使用随 Kafka 提供的脚本创建主题：
 
 ```bash
-/usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
+/usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
 ```
 
 此命令使用存储在 `$KAFKAZKHOSTS` 中的主机信息连接到 Zookeeper，然后创建名为 **test** 的 Kafka 主题。 通过使用以下脚本列出主题可确认已创建该主题：
@@ -150,7 +164,8 @@ Kafka 在名为 topics 的类别中存储数据流。 与群集头节点建立 S
 
 此命令的输出列出了 Kafka 主题，其中包含 **test** 主题。
 
-## <a name="produce-and-consume-records"></a>生成和使用记录
+## 生成和使用记录
+<a id="produce-and-consume-records" class="xliff"></a>
 
 Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使用。 生成者从 Kafka 代理检索记录。 HDInsight 群集中的每个辅助角色节点都是 Kafka 代理。
 
@@ -167,14 +182,15 @@ Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使�
 2. 使用随 Kafka 提供的脚本从主题中读取记录：
    
     ```bash
-    /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $KAFKAZKHOSTS --topic test --from-beginning
+    /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic test --from-beginning
     ```
    
     此命令从主题中检索并显示记录。 使用 `--from-beginning` 告知使用者从流的开头开始，以检索所有记录。
 
 3. 使用 __Ctrl + C__ 阻止使用者。
 
-## <a name="producer-and-consumer-api"></a>生成者和使用者 API
+## 生成者和使用者 API
+<a id="producer-and-consumer-api" class="xliff"></a>
 
 还可使用 [Kafka API](http://kafka.apache.org/documentation#api) 以编程方式生成和使用记录。 使用以下步骤下载、构建基于 Java 的生成者和使用者：
 
@@ -223,7 +239,8 @@ Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使�
 
 6. 使用 __Ctrl + C__ 让使用者退出。
 
-### <a name="multiple-consumers"></a>多个使用者
+### 多个使用者
+<a id="multiple-consumers" class="xliff"></a>
 
 Kafka 的一个重要概念是使用者在读取记录时使用使用者组（由组 ID 定义）。 让多个使用者使用同一个组会导致对主题的读取进行负载均衡操作。 组中的每个使用者接收一部分记录。 若要实时查看此过程，请使用以下步骤：
 
@@ -245,7 +262,8 @@ Kafka 的一个重要概念是使用者在读取记录时使用使用者组（�
 
 存储在 Kafka 中的记录都按在分区中接收的顺序进行存储。 若要在分区内实现记录的有序交付，请创建一个使用者组，其中的使用者实例数与分区数匹配。 若要在主题内实现记录的有序交付，请创建仅含一个使用者实例的使用者组。
 
-## <a name="streaming-api"></a>流式处理 API
+## 流式处理 API
+<a id="streaming-api" class="xliff"></a>
 
 已将流式处理 API 添加到 Kafka 版本 0.10.0 中；早期版本依赖于 Apache Spark 或 Storm 进行流式处理。
 
@@ -272,7 +290,7 @@ Kafka 的一个重要概念是使用者在读取记录时使用使用者组（�
 4. `scp` 命令完成复制文件后，使用 SSH 连接到群集，然后使用以下命令创建 `wordcounts` 主题：
 
     ```bash
-    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic wordcounts --zookeeper $KAFKAZKHOSTS
+    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic wordcounts --zookeeper $KAFKAZKHOSTS
     ```
 
 5. 接下来，使用以下命令启动流式处理过程：
@@ -320,20 +338,26 @@ Kafka 的一个重要概念是使用者在读取记录时使用使用者组（�
 
 7. 使用 __Ctrl + C__ 让使用者退出，然后使用 `fg` 命令将流式处理后台任务恢复到前台。 同样，使用 __Ctrl + C__ 使它退出。
 
-## <a name="delete-the-cluster"></a>删除群集
+## 删除群集
+<a id="delete-the-cluster" class="xliff"></a>
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="troubleshoot"></a>故障排除
+## 故障排除
+<a id="troubleshoot" class="xliff"></a>
 
 如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](hdinsight-administer-use-portal-linux.md#create-clusters)。
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 在本文档中，已了解在 HDInsight 上使用 Apache Kafka 的基本知识。 使用以下内容，详细了解如何使用 Kafka：
 
+* [通过 HDInsight 上的 Kafka 确保数据的高可用性](hdinsight-apache-kafka-high-availability.md)
+* [通过使用 Kafka on HDInsight 配置托管磁盘增加可伸缩性](hdinsight-apache-kafka-scalability.md)
 * kafka.apache.org 处的 [Apache Kafka 文档](http://kafka.apache.org/documentation.html)。
 * [使用 MirrorMaker 创建 Kafka on HDInsight 的副本](hdinsight-apache-kafka-mirroring.md)
 * [将 Apache Storm 与 Kafka on HDInsight 结合使用](hdinsight-apache-storm-with-kafka.md)
 * [将 Apache Spark 与 Kafka on HDInsight 结合使用](hdinsight-apache-spark-with-kafka.md)
 * [通过 Azure 虚拟网络连接到 Kafka](hdinsight-apache-kafka-connect-vpn-gateway.md)
+

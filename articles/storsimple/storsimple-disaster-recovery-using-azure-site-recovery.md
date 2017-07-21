@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/13/2017
+ms.date: 06/09/2017
 ms.author: vidarmsft
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 3c7c972cdc395e2e20e7f6a296a2ffab6efad66d
-ms.lasthandoff: 04/15/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: b4d575587eec1bcf43c33c7faeb8360ec67b5214
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>使用 Azure Site Recovery 针对 StorSimple 上托管的文件共享创建自动灾难恢复解决方案
@@ -123,7 +123,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    > 这将导致文件共享暂时不可用。
    >
    >
-2. 通过 Azure Site Recovery 门户为文件服务器 VM [启用虚拟机保护](../site-recovery/site-recovery-hyper-v-site-to-azure.md#enable-replication)。
+2. 通过 Azure Site Recovery 门户为文件服务器 VM [启用虚拟机保护](../site-recovery/site-recovery-hyper-v-site-to-azure.md)。
 3. 初始同步开始时，可以再次重新连接目标。 转到 iSCSI 发起程序，选择 StorSimple 设备，然后单击“连接”。
 4. 当同步完成且 VM 的状态为“受保护”时，请选择 VM，选择“配置”选项卡，然后相应地更新 VM 的网络（这是已故障转移的 VM 所属的网络）。 如果网络未显示，则表示同步仍在进行。
 
@@ -140,9 +140,18 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 ## <a name="create-a-recovery-plan"></a>创建恢复计划
 可以在 ASR 中创建恢复计划，将文件共享的故障转移过程自动化。 发生中断时，只需按一下鼠标就能在几分钟内让文件共享重新联机。 若要启用此自动化功能，需要一个 Azure 自动化帐户。
 
-#### <a name="to-create-the-account"></a>创建帐户
+#### <a name="to-create-an-automation-account"></a>创建自动化帐户
 1. 转到 Azure 门户 &gt;“自动化”部分。
-2. 创建新的自动化帐户。 将该帐户保留在创建 StorSimple 云设备和存储帐户的同一个地区/区域。
+2. 单击“+ 添加”按钮，打开下面的边栏选项卡。
+
+   ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image11.png)
+
+   * 名称 - 输入新的自动化帐户
+   * 订阅 - 选择订阅
+   * 资源组 - 创建新的/选择现有的资源组
+   * 位置 - 选择位置，将该帐户保留在创建 StorSimple 云设备和存储帐户的同一个地区/区域。
+   * 创建 Azure 运行方式帐户 - 选择“是”选项。
+
 3. 转到自动化帐户，依次单击“Runbook”&gt;“浏览库”，将所需的全部 runbook 导入该自动化帐户。
 4. 通过在库中查找“灾难恢复”标记，添加以下 runbook：
 
@@ -153,13 +162,12 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    * 启动 StorSimple 虚拟设备
 
      ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image3.png)
+
 5. 通过以下方式发布所有脚本：在自动化帐户中选择 runbook，依次单击“编辑”&gt;“发布”，然后在显示验证消息时单击“是”。 完成此步骤后，“Runbook”选项卡将如下所示：
 
     ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image4.png)
-6. 在自动化帐户中，转到“资产”选项卡 &gt; 依次单击“凭据”&gt;“+ 添加凭据”，然后添加 Azure 凭据 – 将资产命名为 AzureCredential。
 
-   使用 Windows PowerShell 凭据。 这应该是包含组织 ID、用户名和密码的凭据，它有权访问此 Azure 订阅并且已禁用多重身份验证。 只有满足此要求，才能在故障转移期间代表用户进行身份验证，使 DR 站点上的文件服务器卷启动。
-7. 在自动化帐户中，选择“资产”选项卡 &gt; 依次单击“变量”&gt;“添加变量”，然后添加以下变量。 可以选择将这些资产加密。 这些变量特定于恢复计划。 如果恢复计划（将在下一步骤中创建）名为 TestPlan，则变量应该是 TestPlan-StorSimRegKey、TestPlan-AzureSubscriptionName，等等。
+6. 在自动化帐户中，选择“资产”选项卡 &gt; 依次单击“变量”&gt;“添加变量”，然后添加以下变量。 可以选择将这些资产加密。 这些变量特定于恢复计划。 如果恢复计划（将在下一步骤中创建）名为 TestPlan，则变量应该是 TestPlan-StorSimRegKey、TestPlan-AzureSubscriptionName，等等。
 
    * *RecoveryPlanName***-StorSimRegKey**：StorSimple Manager 服务的注册密钥。
    * *RecoveryPlanName***-AzureSubscriptionName**：Azure 订阅的名称。
@@ -178,8 +186,8 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 
    ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image5.png)
 
-8. 转到“恢复服务”部分，然后选择前面创建的 Azure Site Recovery 保管库。
-9. 从“管理”组中选择“恢复计划 (Site Recovery)”选项，然后创建新的恢复计划，如下所示：
+7. 转到“恢复服务”部分，然后选择前面创建的 Azure Site Recovery 保管库。
+8. 从“管理”组中选择“恢复计划 (Site Recovery)”选项，然后创建新的恢复计划，如下所示：
 
    a.  单击“+ 恢复计划”按钮，将打开以下边栏选项卡。
 
@@ -291,7 +299,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 
   > [!IMPORTANT]
   > 请从 Azure 门户手动运行备份，然后再次运行恢复计划。
-  
+
 * 克隆作业超时：如果克隆卷花费的时间超过每个脚本的 Azure Site Recovery 限制（目前为 120 分钟），StorSimple 脚本将会超时。
 * 时间同步错误：StorSimple 脚本出错，指出尽管在门户中备份成功，但事实上备份失败。 发生此问题的可能原因是 StorSimple 设备的时间没有与时区中的当前时间同步。
 

@@ -2,7 +2,7 @@
 title: "存档 Azure 活动日志 | Microsoft Docs"
 description: "了解如何存档 Azure 活动日志，将其长期保留在存储帐户中。"
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2016
 ms.author: johnkem
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaa162df8a6cd60cb174242e6a353439f2da58b4
 ms.openlocfilehash: eb3a0ad811a4286df1bac963904bd9154c0ccfa3
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/10/2016
 
 ---
 # <a name="archive-the-azure-activity-log"></a>存档 Azure 活动日志
@@ -167,10 +168,5 @@ azure insights logprofile add --name my_log_profile --storageId /subscriptions/s
 * [下载 blob 进行分析](../storage/storage-dotnet-how-to-use-blobs.md#download-blobs)
 * [将活动日志流式传输到事件中心](monitoring-stream-activity-logs-event-hubs.md)
 * [详细了解活动日志](monitoring-overview-activity-logs.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

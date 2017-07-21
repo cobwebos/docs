@@ -1,6 +1,6 @@
 ---
-title: "准备好要上载到 Azure 的 Windows VHD | Microsoft Docs"
-description: "如何在上载到 Azure 之前准备好 Windows VHD 或 VHDX"
+title: "准备好要上传到 Azure 的 Windows VHD | Microsoft Docs"
+description: "如何在上传到 Azure 之前准备好 Windows VHD 或 VHDX"
 services: virtual-machines-windows
 documentationcenter: 
 author: genlin
@@ -13,22 +13,23 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 1/11/2017
+ms.date: 5/26/2017
 ms.author: glimoli;genli
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 104063500a33dfe55c56467517a5002c562772df
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 4d8972e5a18cbe471ec4c5baa53992cc23fad129
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
-# <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上载到 Azure 的 Windows VHD 或 VHDX
-若要将 Windows VM 从本地上载到 Azure，必须准备好虚拟硬盘（VHD 或 VHDX）。 Azure 仅支持采用 VHD 文件格式且具有固定大小磁盘的第 1 代虚拟机。 VHD 允许的最大大小为 1,023 GB。 可以将第 1 代虚拟机从 VHDX 转换为 VHD 文件格式，从动态扩展磁盘转换为固定大小磁盘。 但无法更改虚拟机的代次。 有关详细信息，请参阅[是否应在 Hyper-V 中创建第 1 代或第 2 代虚拟机？](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)
+# <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
+若要将 Windows VM 从本地上传到 Azure，必须准备好虚拟硬盘（VHD 或 VHDX）。 Azure 仅支持采用 VHD 文件格式且具有固定大小磁盘的第 1 代虚拟机。 VHD 允许的最大大小为 1,023 GB。 可以将第 1 代虚拟机从 VHDX 转换为 VHD 文件格式，从动态扩展磁盘转换为固定大小磁盘。 但无法更改虚拟机的代次。 有关详细信息，请参阅[是否应在 Hyper-V 中创建第 1 代或第 2 代虚拟机？](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)
 
 ## <a name="convert-the-virtual-disk-to-vhd-and-fixed-size-disk"></a>将虚拟磁盘转换为 VHD 和固定大小磁盘 
-如果要将虚拟磁盘转换为 Azure 所需的格式，请使用本部分中所述的方法之一。 运行虚拟磁盘转换过程之前，请备份 VM，并确保 Windows VHD 在本地服务器上正常工作。 在尝试转换磁盘或将其上载到 Azure 之前，请解决 VM 本身内部的所有错误。
+如果要将虚拟磁盘转换为 Azure 所需的格式，请使用本部分中所述的方法之一。 运行虚拟磁盘转换过程之前，请备份 VM，并确保 Windows VHD 在本地服务器上正常工作。 在尝试转换磁盘或将其上传到 Azure 之前，请解决 VM 本身内部的所有错误。
 
-转换磁盘后，创建使用转换后磁盘的 VM。 启动并登录到该 VM，完成要上载的 VM 的准备工作。
+转换磁盘后，创建使用转换后磁盘的 VM。 启动并登录到该 VM，完成要上传的 VM 的准备工作。
 
 ### <a name="convert-disk-using-hyper-v-manager"></a>使用 Hyper-V 管理器转换磁盘
 1. 打开 Hyper-V 管理器，在左侧选择本地计算机。 在本地计算机上面的菜单中，单击“操作” > “编辑磁盘”。
@@ -52,7 +53,7 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 
 ## <a name="set-windows-configurations-for-azure"></a>设置 Azure 的 Windows 配置
 
-在打算上载到 Azure 的虚拟机上，从具有[管理权限](https://technet.microsoft.com/library/cc947813.aspx)的命令提示符窗口运行以下所有命令。
+在打算上传到 Azure 的虚拟机上，从具有[管理权限](https://technet.microsoft.com/library/cc947813.aspx)的命令提示符窗口运行以下所有命令。
 
 1. 删除路由表中的所有静态持久性路由：
    
@@ -249,7 +250,7 @@ sc config RemoteRegistry start= auto
 4. 为了确保磁盘正常运行且一致，请在命令提示符窗口中运行 `CHKDSK /f` 命令。 键入“Y”计划检查并重新启动 VM。
 5. 卸载与物理组件相关的任何其他第三方软件和驱动程序，或卸载任何其他虚拟化技术。
 6. 确保第三方应用程序未使用端口 3389。 此端口用于 Azure 中的 RDP 服务。 可以在命令提示符窗口中运行 `netstat -anob` 以查看应用程序使用的端口。
-7. 如果要上载的 Windows VHD 是域控制器，请遵循[这些附加步骤](https://support.microsoft.com/kb/2904015)来准备磁盘。
+7. 如果要上传的 Windows VHD 是域控制器，请遵循[这些附加步骤](https://support.microsoft.com/kb/2904015)来准备磁盘。
 8. 重新启动 VM，确保 Windows 仍可正常运行，并可以使用 RDP 连接来访问它。
 9. 重置当前本地管理员密码，确保可以使用此帐户通过 RDP 连接登录 Windows。 此访问权限由“允许通过远程桌面服务登录”组策略对象控制。 可以在本地组策略编辑器中“计算机配置\Windows 设置\安全设置\本地策略\用户权限分配”下查看此对象。
 
@@ -260,23 +261,34 @@ sc config RemoteRegistry start= auto
    * [KB3115224](https://support.microsoft.com/kb/3115224)：对运行 Windows Server 2012 R2 或 Windows Server 2012 主机的 VM 所做的可靠性改进
    * [KB3140410](https://support.microsoft.com/kb/3140410)：MS16-031：Microsoft Windows 安全更新，解决权限提升过程中的问题：2016 年 3 月 8 日
    * [KB3063075](https://support.microsoft.com/kb/3063075)：在 Microsoft Azure 中运行 Windows Server 2012 R2 虚拟机时记录了许多的 ID 129 事件
-   * [KB3137061](https://support.microsoft.com/kb/3137061)：发生网络中断和数据损坏后，Microsoft Azure VM 无法恢复
    * [KB3114025](https://support.microsoft.com/kb/3114025)：从 Windows 8.1 或 Server 2012 R2 访问 Azure 文件存储时性能不佳
    * [KB3033930](https://support.microsoft.com/kb/3033930)：该修补程序提升了 Windows 中 Azure 服务每个进程的 RIO 缓冲区的 64K 限制
    * [KB3004545](https://support.microsoft.com/kb/3004545)：无法在 Windows 中通过 VPN 连接访问托管服务的 Azure 中的虚拟机
    * [KB3082343](https://support.microsoft.com/kb/3082343)：当 Azure 站点到站点 VPN 隧道使用 Windows Server 2012 R2 RRAS 时跨界 VPN 连接断开
-   * [KB3140410](https://support.microsoft.com/kb/3140410)：MS16-031：Microsoft Windows 安全更新，解决权限提升过程中的问题：2016 年 3 月 8 日
    * [KB3146723](https://support.microsoft.com/kb/3146723)：MS16-048：描述 CSRSS 的安全更新：2016 年 4 月 12 日
    * [KB2904100](https://support.microsoft.com/kb/2904100)：Windows 中发生磁盘 I/O 期间系统会冻结
      
 ## 运行 Sysprep <a id="step23"></a>    
-如果想要创建一个要部署到多个 VM 的映像，则在将 VHD 上载到 Azure 之前，需要[通过运行 Sysprep 来通用化该映像](generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 无需运行 Sysprep 即可使用专用 VHD。 有关详细信息，请参阅以下文章：
+如果想要创建一个要部署到多个 VM 的映像，则在将 VHD 上传到 Azure 之前，需要通过运行 Sysprep 来通用化该映像。 无需运行 Sysprep 即可使用专用 VHD。 
+
+Sysprep 将删除所有个人帐户信息及其他某些数据，并准备好要用作映像的计算机。 有关 Sysprep 的详细信息，请参阅[如何使用 Sysprep：简介](http://technet.microsoft.com/library/bb457073.aspx)。
+
+确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+
+1. 登录到 Windows 虚拟机。
+2. 以管理员身份打开“命令提示符”窗口。 将目录切换到 **%windir%\system32\sysprep**，然后运行 `sysprep.exe`。
+3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。
+4. 在“关机选项”中选择“关机”。
+5. 单击 **“确定”**。
    
-   * [使用 Sysprep 通用化 Windows 虚拟机](generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-   * [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)（针对服务器角色的 Sysprep 支持）
+    ![启动 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
+6. Sysprep 在完成运行后会关闭虚拟机。 请勿重启 VM。
+
+
+
 
 ## <a name="complete-recommended-configurations"></a>完成建议的配置
-以下设置不影响 VHD 上载。 但是，我们强烈建议你配置这些设置。
+以下设置不影响 VHD 上传。 但是，我们强烈建议你配置这些设置。
 
 * 安装 [Azure 虚拟机代理](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 安装该代理后，可以启用 VM 扩展。 VM 扩展实现了要用于 VM 的大多数关键功能，例如重置密码、配置 RDP 和其他许多功能。
 * 转储日志可帮助排查 Windows 崩溃问题。 启用转储日志收集：
@@ -299,6 +311,6 @@ sc config RemoteRegistry start= auto
     ```
 
 ## <a name="next-steps"></a>后续步骤
-* [将 Windows VM 映像上载到 Azure 以进行 Resource Manager 部署](upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [将 Windows VM 映像上传到 Azure 以进行 Resource Manager 部署](upload-generalized-managed.md)
 
 

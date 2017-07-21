@@ -12,26 +12,30 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 07/13/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f59028a2f909914222236f3b3575afd0949b4277
 ms.openlocfilehash: c89e206462856d25a81729e7028065ac1cd13ef3
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/23/2017
 
 ---
 
-# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>存在现有的租户时如何使用 Azure AD Connect
+# 存在现有的租户时如何使用 Azure AD Connect
+<a id="azure-ad-connect-when-you-have-an-existent-tenant" class="xliff"></a>
 有关如何使用 Azure AD Connect 的大多数主题假设一开始使用的是新 Azure AD 租户，其中不包含任何用户或其他对象。 但是，如果你一开始使用的 Azure AD 租户中填充了用户和其他对象，现在想要使用 Connect，那么，本主题适合你阅读。
 
-## <a name="the-basics"></a>基础知识
+## 基础知识
+<a id="the-basics" class="xliff"></a>
 Azure AD 中的对象在云中 (Azure AD) 或本地掌控。 对于单个对象而言，无法在本地管理一些属性，在 Azure AD 中管理另一些属性。 每个对象都有一个标志，指示对象的管理位置。
 
 可以在本地管理一些用户，在云中管理另一些用户。 下面是此配置的常见应用情景：某家组织既有会计人员，也有销售人员。 会计人员有本地 AD 帐户，但销售人员没有，他们在 Azure AD 中有帐户。 这样，就需要在本地管理一些用户，在 Azure AD 中管理另一些用户。
 
 如果你最初在 Azure AD 中管理用户，而这些用户同时又在本地 AD 中，后来你想要使用 Connect，那么，就需要考虑到其他一些因素。
 
-## <a name="sync-with-existing-users-in-azure-ad"></a>与 Azure AD 中的现有用户同步
+## 与 Azure AD 中的现有用户同步
+<a id="sync-with-existing-users-in-azure-ad" class="xliff"></a>
 安装 Azure AD Connect 并开始同步时，Azure AD 同步服务（在 Azure AD 中）将针对每个新对象执行检查，尝试查找匹配的现有对象。 此过程使用三个属性：**userPrincipalName**、**proxyAddresses** 和 **sourceAnchor**/**immutableID**。 根据 **userPrincipalName** 和 **proxyAddresses** 执行的匹配称为**软匹配**。 根据 **sourceAnchor** 执行的匹配称为**硬匹配**。 对于 **proxyAddresses** 属性，只会将包含 **SMTP:**（即主要电子邮件地址）的值用于评估。
 
 只会针对来自 Connect 的新对象评估匹配。 如果更改现有对象，使它与其中的任一属性匹配，则看到的是错误。
@@ -48,17 +52,21 @@ Azure AD 中的对象在云中 (Azure AD) 或本地掌控。 对于单个对象�
 
 如果使用软匹配匹配了对象，则 **sourceAnchor** 已添加到 Azure AD 中的对象，因此以后可以使用硬匹配。
 
-### <a name="hard-match-vs-soft-match"></a>硬匹配与软匹配
+### 硬匹配与软匹配
+<a id="hard-match-vs-soft-match" class="xliff"></a>
 对于全新的 Connect 安装，软匹配与硬匹配之间没有实质的差别。 主要差别在于灾难恢复情形。 如果解除了装有 Azure AD Connect 的服务器，可以重新安装一个新实例，而不会丢失任何数据。 在初始安装期间，会向 Connect 发送一个包含 sourceAnchor 的对象。 然后，客户端 (Azure AD Connect) 便可以评估匹配，与在 Azure AD 中执行相同的操作相比，速度要快得多。 硬匹配同时由 Connect 和 Azure AD 评估。 软匹配只由 Azure AD 评估。
 
-### <a name="other-objects-than-users"></a>除用户以外的其他对象
+### 除用户以外的其他对象
+<a id="other-objects-than-users" class="xliff"></a>
 用户通常具有 userPrincipalName 和 proxyAddresses，因此匹配很轻松。 但其他对象（例如安全组）没有这些属性。 在这种情况下，只能使用 sourceAnchor 执行硬匹配。 sourceAnchor 始终是本地经过 Base64 转换的 **objectGUID**，因此，在需要两个对象匹配时，必须更新 Azure AD 中的值。 只能使用 PowerShell 更新 sourceAnchor/immutableID，而不能通过门户更新。
 
-## <a name="create-a-new-on-premises-active-directory-from-data-in-azure-ad"></a>基于 Azure AD 中的数据创建新的本地 Active Directory
+## 基于 Azure AD 中的数据创建新的本地 Active Directory
+<a id="create-a-new-on-premises-active-directory-from-data-in-azure-ad" class="xliff"></a>
 某些客户最初在 Azure AD 中使用仅限云的解决方案，而没有构建本地 AD。 后来，他们想要使用本地资源，并希望基于 Azure AD 数据构建本地 AD。 对于这种情况，Azure AD Connect 无法起到作用。 它不会创建本地用户，并且没有能力将本地密码设置为与 Azure AD 中的密码相同。
 
 如果你计划添加本地 AD 的唯一原因是支持 LOB（业务线应用），也许应该考虑改用 [Azure AD 域服务](../../active-directory-domain-services/index.md)。
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
 

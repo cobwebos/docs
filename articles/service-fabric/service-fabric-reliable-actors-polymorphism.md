@@ -3,7 +3,7 @@ title: "Reliable Actors 框架中的多形性 | Microsoft 文档"
 description: "在 Reliable Actors 框架中构建 .NET 接口和类型的层次结构，以便重用功能和 API 定义。"
 services: service-fabric
 documentationcenter: .net
-author: seanmck
+author: vturecek
 manager: timlt
 editor: vturecek
 ms.assetid: ef0eeff6-32b7-410d-ac69-87cba8b8fd46
@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/28/2017
-ms.author: seanmck
-translationtype: Human Translation
+ms.date: 06/29/2017
+ms.author: vturecek
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: 87f99a9e6df2103f70968c10556242ddb268e9e4
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
 
 

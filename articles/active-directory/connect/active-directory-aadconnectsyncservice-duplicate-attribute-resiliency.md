@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/24/2017
+ms.date: 07/12/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 1209acfb13d53288b1ff0ed232c44c3fdcd3a9f4
-ms.lasthandoff: 03/10/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 7a8700e70f64851a0c5e5e8c6b31ec7a6884a96c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>标识同步和重复属性复原

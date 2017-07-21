@@ -6,7 +6,7 @@ metadata:
   title: Azure Linux 虚拟机文档 - 教程和 API 参考
   meta.description: Learn how to create a virtual machine using the Linux distribution of your choice. Documentation shows different ways to create VM templates.
   services: virtual-machines\linux
-  author: apexprodleads
+  author: czeumault
   manager: carolz
   ms.service: virtual-machines-linux
   ms.tgt_pltfrm: na
@@ -29,7 +29,7 @@ sections:
 - title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: 'Learn how to deploy an NGINX web-server within a Virtual Machine running Ubuntu:'
+    text: 了解如何在运行 Ubuntu 的虚拟机中部署 NGINX Web 服务器：
   - type: list
     style: icon48
     items: 
@@ -39,7 +39,7 @@ sections:
       href: https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - image: 
         src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/portal.svg
-      text: Azure Portal
+      text: Azure 门户
       href: https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - image: 
         src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/logo_powershell.svg
@@ -48,44 +48,44 @@ sections:
 - title: 分步教程
   items:
   - type: paragraph
-    text: Learn how to deploy, manage, and scale Linux VMs on Azure
+    text: 了解如何在 Azure 上部署、管理和缩放 Linux VM
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/virtual-machines/linux/tutorial-manage-vm">Create and manage Linux VMs</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-manage-disks">Create and manage VM disks</a></li>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-automate-vm-deployment">Automate VM configuration</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-custom-images">Create custom VM images</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-availability-sets">Create highly available VMs</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-create-vmss">Create a VM scale set</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-load-balancer">Load balance VMs</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-virtual-network">Manage VMs and virtual networks</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-backup-vms">Backup VMs</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-monitoring">Monitor VMs</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-azure-security">Manage security on VMs</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">Create a CI/CD infrastructure with Jenkins, Docker, and GitHub</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-manage-vm">创建和管理 Linux VM</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-manage-disks">创建和管理 VM 磁盘</a></li>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-automate-vm-deployment">自动执行 VM 配置</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-custom-images">创建自定义 VM 映像</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-availability-sets">创建高度可用的 VM</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-create-vmss">创建 VM 规模集</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-load-balancer">对 VM 进行负载均衡</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-virtual-network">管理 VM 和虚拟网络</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-backup-vms">备份 VM</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-monitoring">监视 VM</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-azure-security">管理 VM 上的安全性</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">使用 Jenkins、Docker 和 GitHub 创建 CI/CD 基础结构</a>
 - title: 免费 PluralSight 视频培训
   items:
   - type: list
     style: cards
     className: cardsW
     items:
-    - html: <p><a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Managing Infrastructure</a></p>
+    - html: '<p><a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">管理基础结构</a></p>'
       image: 
         src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/video-training-infrastructure.png
         href: https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - html: <p><a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Getting Started with Virtual Machines</a></p>
+    - html: '<p><a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">虚拟机入门</a></p>'
       image: 
         src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/video-training-vms.png
         href: https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - html: <p><a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Getting Started with IaaS Monitoring</a></p>
+    - html: '<p><a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">IaaS 监视入门</a></p>'
       image: 
         src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/video-training-iaas-monitoring.png
         href: https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
 - title: 示例
   items:
   - type: paragraph
-    text: Deploy your first application to Azure.
+    text: 将你的第一个应用程序部署到 Azure。
   - type: list
     style: unordered
     className: spaced noBullet
@@ -101,6 +101,6 @@ sections:
     - title: 命令行
       html: <p><a href="/cli/azure/vm">Azure CLI</a></p><p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p>
     - title: 语言
-      html: <p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node​.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>
+      html: '<p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>'
     - title: REST
-      html: <p><a href="/rest/api/compute">REST API Reference</a></p>
+      html: <p><a href="/rest/api/compute">REST API 参考</a></p>

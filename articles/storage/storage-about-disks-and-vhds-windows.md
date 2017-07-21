@@ -12,12 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 06/15/2017
 ms.author: robinsh
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 3b9d6eb9bcc4afe0e68920bbd5da7c259ceb0c67
-ms.lasthandoff: 04/06/2017
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: 953704c7eb8613d321a15a9f245118f87d33b51e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -33,10 +34,10 @@ ms.lasthandoff: 04/06/2017
 下面介绍 VM 会如何使用磁盘。
 
 ### <a name="operating-system-disk"></a>操作系统磁盘
-每个虚拟机都附加了一个操作系统磁盘。 默认情况下，它注册为 SATA 驱动器并标为 C: 盘。 此磁盘的最大容量为 1023 GB。 
+每个虚拟机都附加了一个操作系统磁盘。 默认情况下，它注册为 SATA 驱动器并标为 C: 盘。 此磁盘最大容量为 2048 GB。 
 
 ### <a name="temporary-disk"></a>临时磁盘
-每个 VM 包含一个临时磁盘。 临时磁盘为应用程序和进程提供短期存储存储空间，仅用于存储页面或交换文件等数据。 在[维护事件](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-planned-vs-unplanned-maintenance)期间或[重新部署 VM](../virtual-machines/windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 时，临时磁盘上的数据可能会丢失。 在 VM 标准重启期间，临时驱动器上的数据应会保留。
+每个 VM 包含一个临时磁盘。 临时磁盘为应用程序和进程提供短期存储存储空间，仅用于存储页面或交换文件等数据。 在[维护事件](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)期间或[重新部署 VM](../virtual-machines/windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 时，临时磁盘上的数据可能会丢失。 在 VM 标准重启期间，临时驱动器上的数据应会保留。
 
 临时磁盘默认标记为 D: 盘，用于存储 pagefile.sys。 若要将此磁盘重新映射到其他驱动器号，请参阅 [Change the drive letter of the Windows temporary disk](../virtual-machines/windows/change-drive-letter.md)（更改 Windows 临时磁盘的驱动器号）。 临时磁盘的大小因虚拟机的大小而异。 有关详细信息，请参阅 [Sizes for Windows virtual machines](../virtual-machines/windows/sizes.md)（Windows 虚拟机的大小）。
 
@@ -44,7 +45,7 @@ ms.lasthandoff: 04/06/2017
 
 
 ### <a name="data-disk"></a>数据磁盘
-数据磁盘是附加到虚拟机的 VHD，用于存储应用程序数据或其他需要保留的数据。 数据磁盘注册为 SCSI 驱动器并且带有所选择的字母标记。 每个数据磁盘的最大容量为 1023 GB。 虚拟机的大小决定了可附加的磁盘数目，以及可用来托管磁盘的存储类型。
+数据磁盘是附加到虚拟机的 VHD，用于存储应用程序数据或其他需要保留的数据。 数据磁盘注册为 SCSI 驱动器并且带有所选择的字母标记。 每个数据磁盘的最大容量为 4095 GB。 虚拟机的大小决定了可附加的磁盘数目，以及可用来托管磁盘的存储类型。
 
 > [!NOTE]
 > 有关虚拟机容量的详细信息，请参阅 [Sizes for Windows virtual machines](../virtual-machines/windows/sizes.md)（Windows 虚拟机的大小）。
@@ -63,6 +64,7 @@ ms.lasthandoff: 04/06/2017
 
 可以运行此命令来检查 TRIM 设置。 打开 Windows VM 上的命令提示符，键入：
 
+
 ```
 fsutil behavior query DisableDeleteNotify
 ```
@@ -73,10 +75,13 @@ fsutil behavior query DisableDeleteNotify
 fsutil behavior set DisableDeleteNotify 0
 ```
 
+> [!NOTE]
+> 注意：从 Windows Server 2012/Windows 8 及更高版本开始支持 TRIM，请参阅 [New API allows apps to send "TRIM and Unmap" hints to storage media](https://msdn.microsoft.com/windows/compatibility/new-api-allows-apps-to-send-trim-and-unmap-hints)（新 API 允许应用向存储媒体发送“TRIM 和 Unmap”提示）。
+> 
+
 <!-- Might want to match next-steps from overview of managed disks -->
 ## <a name="next-steps"></a>后续步骤
 * [附加磁盘](../virtual-machines/windows/attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)可为 VM 添加额外的存储。
-* [将 Windows VM 映像上传到 Azure](../virtual-machines/windows/upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，以便在创建新 VM 时使用。
 * [更改 Windows 临时磁盘的驱动器号](../virtual-machines/windows/change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)，使应用程序能够将 D: 盘用于数据。
 
 

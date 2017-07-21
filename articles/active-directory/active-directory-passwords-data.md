@@ -6,14 +6,14 @@ keywords:
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-editor: gahug
+ms.reviewer: gahug
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: Human Translation
@@ -22,9 +22,9 @@ ms.openlocfilehash: f7ecb22ee46d83867453e035f8a639bc7f7f2d81
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/08/2017
 
-
 ---
-# <a name="deploy-password-reset-without-requiring-end-user-registration"></a>在无需最终用户注册的情况下部署密码重置
+# 在无需最终用户注册的情况下部署密码重置
+<a id="deploy-password-reset-without-requiring-end-user-registration" class="xliff"></a>
 
 部署自助密码重置 (SSPR) 要求身份验证数据必须存在。 某些组织让其用户自己输入其身份验证数据，但多数组织倾向于与 Active Directory 中的现有数据进行同步。 如果你的本地目录中有正确设置格式的数据，并[使用快速设置配置了 Azure AD Connect](./connect/active-directory-aadconnect-get-started-express.md)，则无需用户交互，就会向 Azure AD 和 SSPR 提供数据。
 
@@ -33,7 +33,8 @@ ms.lasthandoff: 05/08/2017
 > [!NOTE]
 > 密码重置不支持电话分机。 即使采用“+1 4255551234X12345”格式，在拨出电话前也会删除分机。
 
-## <a name="fields-populated"></a>填充的字段
+## 填充的字段
+<a id="fields-populated" class="xliff"></a>
 
 如果在 Azure AD Connect 中使用默认设置，将进行以下映射。
 
@@ -43,11 +44,13 @@ ms.lasthandoff: 05/08/2017
 | mobile | 移动电话 | 电话 |
 
 
-## <a name="security-questions-and-answers"></a>安全问题和答案
+## 安全问题和答案
+<a id="security-questions-and-answers" class="xliff"></a>
 
 安全问题和答案安全地存储在 Azure AD 租户中，用户仅可通过 [SSPR 注册门户](https://aka.ms/ssprsetup)进行访问。 管理员无法查看或修改其他用户问题和答案的内容。
 
-### <a name="what-happens-when-a-user-registers"></a>当用户注册时会发生什么情况？
+### 当用户注册时会发生什么情况？
+<a id="what-happens-when-a-user-registers" class="xliff"></a>
 
 当用户注册时，注册页面设置以下字段：
 
@@ -57,7 +60,8 @@ ms.lasthandoff: 05/08/2017
 
 如果你提供了“移动电话”或“备用电子邮件”的值，用户可以立即使用这些值重置密码，即使他们尚未注册该服务。 此外，用户在首次注册时将看到这些值，并可随意进行修改。 成功注册之后，这些值将分别保存在“身份验证电话”和“身份验证电子邮件”字段中。
 
-## <a name="set-and-read-authentication-data-using-powershell"></a>使用 PowerShell 设置和读取身份验证数据
+## 使用 PowerShell 设置和读取身份验证数据
+<a id="set-and-read-authentication-data-using-powershell" class="xliff"></a>
 
 可以使用 PowerShell 设置以下字段
 
@@ -65,11 +69,13 @@ ms.lasthandoff: 05/08/2017
 * 移动电话
 * 办公电话 - 仅当未与本地目录同步时，才能设置
 
-### <a name="using-powershell-v1"></a>使用 PowerShell V1
+### 使用 PowerShell V1
+<a id="using-powershell-v1" class="xliff"></a>
 
 若要开始，需要[下载并安装 Azure AD PowerShell 模块](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule)。 安装后，可以按照以下步骤配置每个字段。
 
-#### <a name="set-authentication-data-with-powershell-v1"></a>使用 PowerShell V1 设置身份验证数据
+#### 使用 PowerShell V1 设置身份验证数据
+<a id="set-authentication-data-with-powershell-v1" class="xliff"></a>
 
 ```
 Connect-MsolService
@@ -81,7 +87,8 @@ Set-MsolUser -UserPrincipalName user@domain.com -PhoneNumber "+1 1234567890"
 Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com") -MobilePhone "+1 1234567890" -PhoneNumber "+1 1234567890"
 ```
 
-#### <a name="read-authentication-data-with-powershellpowershell-v1"></a>使用 PowerShell V1 读取身份验证数据
+#### 使用 PowerShell V1 读取身份验证数据
+<a id="read-authentication-data-with-powershellpowershell-v1" class="xliff"></a>
 
 ```
 Connect-MsolService
@@ -93,7 +100,8 @@ Get-MsolUser -UserPrincipalName user@domain.com | select PhoneNumber
 Get-MsolUser | select DisplayName,UserPrincipalName,AlternateEmailAddresses,MobilePhone,PhoneNumber | Format-Table
 ```
 
-#### <a name="authentication-phone-and-authentication-email-can-only-be-read-using-powershell-v1-using-the-commands-that-follow"></a>身份验证电话和身份验证电子邮件只能通过 Powershell V1 使用以下命令进行读取
+#### 身份验证电话和身份验证电子邮件只能通过 Powershell V1 使用以下命令进行读取
+<a id="authentication-phone-and-authentication-email-can-only-be-read-using-powershell-v1-using-the-commands-that-follow" class="xliff"></a>
 
 ```
 Connect-MsolService
@@ -101,7 +109,8 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select Email
 ```
 
-### <a name="using-powershell-v2"></a>使用 PowerShell V2
+### 使用 PowerShell V2
+<a id="using-powershell-v2" class="xliff"></a>
 
 若要开始，需要[下载并安装 Azure AD V2 PowerShell 模块](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/Azure%20AD%20Cmdlets/AzureAD/index.md)。 安装后，可以按照以下步骤配置每个字段。
 
@@ -113,7 +122,8 @@ Install-Module AzureADPreview
 Connect-AzureAD
 ```
 
-#### <a name="set-authentication-data-with-powershell-v2"></a>使用 PowerShell V2 设置身份验证数据
+#### 使用 PowerShell V2 设置身份验证数据
+<a id="set-authentication-data-with-powershell-v2" class="xliff"></a>
 
 ```
 Connect-AzureAD
@@ -125,7 +135,8 @@ Set-AzureADUser -ObjectId user@domain.com -TelephoneNumber "+1 1234567890"
 Set-AzureADUser -ObjectId user@domain.com -OtherMails @("emails@domain.com") -Mobile "+1 1234567890" -TelephoneNumber "+1 1234567890"
 ```
 
-### <a name="read-authentication-data-with-powershell-v2"></a>使用 PowerShell V2 读取身份验证数据
+### 使用 PowerShell V2 读取身份验证数据
+<a id="read-authentication-data-with-powershell-v2" class="xliff"></a>
 
 ```
 Connect-AzureAD
@@ -137,7 +148,8 @@ Get-AzureADUser -ObjectID user@domain.com | select TelephoneNumber
 Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,TelephoneNumber | Format-Table
 ```
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 以下链接提供了有关使用 Azure AD 进行密码重置的其他信息
 

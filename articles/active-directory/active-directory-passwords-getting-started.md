@@ -6,22 +6,21 @@ keywords:
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-editor: gahug
+ms.reviewer: gahug
 ms.assetid: bde8799f-0b42-446a-ad95-7ebb374c3bec
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/12/2017
+ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 5a338029cea5f448fc4d84a1a9c01c867ecd5028
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 52f89520fef8fc9ddb6e8e10a59ec35600affb2a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/13/2017
-
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="quick-start-azure-ad-self-service-password-reset"></a>快速入门：Azure AD 自助密码重置
@@ -46,17 +45,17 @@ IT 管理员可以让用户通过自助密码重置 (SSPR) 这种简单的方法
         * **手机**：允许用户选择是通过其配置的手机号码接电话，还是接收含代码的短信
         * **办公电话**：通过用户配置的办公电话号码呼叫用户，告知其代码
         * **安全问题**：要求你选择
-            * 注册所需的问题数：成功注册所需的最少问题数，即用户可以选择回答更多的问题，以便创建一个问题池，其中的问题可供抽取。 此选项可以设置为 3-5 个问题，该数目必须大于或等于重置所需的问题数。
-            * 重置所需的问题数：可以设置为 3-5 个问题，用户必须正确回答这些问题才能重置或解锁密码。
+            * 注册所需的问题数 - 成功注册所需的最少问题数，即用户可以选择回答更多的问题，以便创建一个问题池，其中的问题可供抽取。 此选项可以设置为 3-5 个问题，该数目必须大于或等于重置所需的问题数。
                 * 可以添加自定义问题，只需在选择安全问题时单击“自定义”按钮即可
+            * 重置所需的问题数 - 可以设置为 3-5 个问题，用户必须正确回答这些问题才能重置或解锁密码。
 
 4. 自定义（建议）：用于更改“联系管理员”链接，使之指向你所定义的页面或电子邮件地址
 
 5. 注册（可选）：此屏幕为管理员提供以下选项：
     * 要求用户在登录时注册
-    * 要求用户在特定天数过后重新确认其身份验证信息
+    * 用户必须在几天后重新确认其身份验证信息
 
-6. 通知（可选）：为管理员提供以下选项：
+6. 可选：“通知”屏幕为管理员提供以下选项：
     * 重置密码时通知用户
     * 当其他管理员重置其密码时通知所有管理员
 
@@ -67,7 +66,7 @@ IT 管理员可以让用户通过自助密码重置 (SSPR) 这种简单的方法
 
 ## <a name="configure-synchronization-to-existing-identity-source"></a>配置到现有标识源的同步
 
-若要启用本地标识到 Azure AD 的同步，需在组织的服务器上安装并配置 [Azure AD Connect](./connect/active-directory-aadconnect.md)。 该应用程序负责将用户和组从现有的标识源同步到 Azure AD 域。
+若要启用本地标识到 Azure AD 的同步，需在组织的服务器上安装并配置 [Azure AD Connect](./connect/active-directory-aadconnect.md)。 该应用程序负责将用户和组从现有的标识源同步到 Azure AD 租户。
 
 * [从 DirSync 或 Azure AD Sync 升级到 Azure AD Connect](./connect/active-directory-aadconnect-dirsync-deprecated.md)
 * [通过快速设置开始使用 Azure AD Connect](./connect/active-directory-aadconnect-get-started-express.md)
@@ -75,7 +74,7 @@ IT 管理员可以让用户通过自助密码重置 (SSPR) 这种简单的方法
 
 ## <a name="disabling-self-service-password-reset"></a>禁用自助密码重置
 
-禁用自助密码重置很简单，只需打开 Azure AD 租户，转到“密码重置”>“属性”，然后在“已启用自助密码重置”下选择“无人”即可。
+禁用自助密码重置很简单：打开 Azure AD 租户，转到“密码重置”>“属性”> 在“已启用自助密码重置”下选择“无人”
 
 ## <a name="next-steps"></a>后续步骤
 以下链接提供有关使用 Azure AD 进行密码重置的其他信息

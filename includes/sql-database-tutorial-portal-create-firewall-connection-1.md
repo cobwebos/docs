@@ -1,0 +1,106 @@
+## 登录到 Azure 门户
+<a id="log-in-to-the-azure-portal" class="xliff"></a>
+
+登录到 [Azure 门户](https://portal.azure.com/)。
+
+## 使用 Azure 门户创建空白 SQL 数据库
+<a id="create-a-blank-sql-database-using-the-azure-portal" class="xliff"></a>
+
+创建 Azure SQL 数据库时，会使用定义好的一组[计算和存储资源](../articles/sql-database/sql-database-service-tiers.md)。 数据库在 [Azure 资源组](../articles/azure-resource-manager/resource-group-overview.md)和 [Azure SQL 数据库逻辑服务器](../articles/sql-database/sql-database-features.md)中创建。 
+
+按照以下步骤创建空的 SQL 数据库。 
+
+1. 单击 Azure 门户左上角的“新建”按钮。
+
+2. 从“新建”页中选择“数据库”，然后从“数据库”页中选择“SQL 数据库”。 
+
+   ![创建空数据库](../articles/sql-database/media/sql-database-design-first-database/create-empty-database.png)
+
+3. 如上图所示，在“SQL 数据库”窗体中填写以下信息：   
+
+   | 设置 | 建议的值 | 说明 |
+   | --------| --------------- | ----------- | 
+   | **数据库名称** | mySampleDatabase | 如需有效的数据库名称，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 | 
+   | **订阅** | 你的订阅  | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
+   | **资源组** | myResourceGroup | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 |
+   | **选择源** | 空白数据库 | 指定创建空白数据库。 |
+   ||||
+
+4. 单击“服务器”，为新数据库创建并配置新服务器。 使用以下信息填写“新建服务器”窗体： 
+
+   | 设置 | 建议的值 | 说明 |
+   | --------| --------------- | ----------- | 
+   | **服务器名称** | 任何全局唯一名称。 | 如需有效的服务器名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 | 
+   | 服务器管理员登录名 | 任何有效的名称。 | 如需有效的登录名，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。|
+   | **密码** | 任何有效的密码。 | 密码必须至少有八个字符，且必须包含以下类别中的三个类别的字符：大写字符、小写字符、数字以及非字母数字字符。 |
+   | **位置** | 任何有效的位置。 | 有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。 |
+   ||||
+
+   ![创建数据库 - 服务器](../articles/sql-database/media/sql-database-design-first-database/create-database-server.png)
+
+5. 单击“选择”。
+
+6. 单击“定价层”为新数据库指定服务层和性能级别。 对于本教程，请选择 **20 DTU** 和 **250** GB 存储。
+
+   ![创建数据库 - s1](../articles/sql-database/media/sql-database-design-first-database/create-empty-database-pricing-tier.png)
+
+7. 单击“应用” 。  
+
+8. 选择空白数据库的“排序规则”（就本教程来说，请使用默认值）。 有关排序规则的详细信息，请参阅 [Collations](https://docs.microsoft.com/sql/t-sql/statements/collations)（排序规则）
+
+9. 单击“创建”预配数据库。 大约需要一分半的时间才能完成预配。 
+
+10. 在工具栏上，单击“通知”可监视部署过程。
+
+   ![通知](../articles/sql-database/media/sql-database-get-started-portal/notification.png)
+
+## 通过 Azure 门户创建服务器级防火墙规则
+<a id="create-a-server-level-firewall-rule-using-the-azure-portal" class="xliff"></a>
+
+SQL 数据库服务会在服务器级别创建防火墙。 一开始，防火墙会阻止外部工具和应用程序连接到服务器或服务器上的任何数据库。 通过创建防火墙规则打开特定的 IP 地址以后，即可进行连接。 按照以下步骤为客户端 IP 地址创建 [SQL 数据库服务器级防火墙规则](../articles/sql-database/sql-database-firewall-configure.md)，并只允许通过针对你的 IP 地址打开的 SQL 数据库防火墙建立外部连接。 
+
+
+> [!NOTE]
+> 通过端口 1433 进行的 Azure SQL 数据库通信。 只有在网络的防火墙允许通过端口 1433 的出站流量以后，才能连接到 SQL 数据库。
+
+
+1. 部署完成后，在左侧菜单中单击“SQL 数据库”，然后在“SQL 数据库”页上单击“mySampleDatabase”。 此时会打开数据库的概览页，显示完全限定的服务器名称（例如 mynewserver20170313.database.windows.net），并且会提供进行进一步配置所需的选项。 请复制此完全限定的服务器名称，供以后使用。
+
+   > [!IMPORTANT]
+   > 在后续的快速入门中，需提供此完全限定的服务器名称才能连接到服务器及其数据库。
+   > 
+
+   ![服务器名称](../articles/sql-database/media/sql-database-get-started-portal/server-name.png) 
+
+2. 如上图所示，在工具栏上单击“设置服务器防火墙”。 此时会打开 SQL 数据库服务器的“防火墙设置”页。 
+
+   ![服务器防火墙规则](../articles/sql-database/media/sql-database-get-started-portal/server-firewall-rule.png) 
+
+
+3. 在工具栏上单击“添加客户端 IP”，将当前的 IP 地址添加到新的防火墙规则。 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
+
+4. 单击“保存” 。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
+
+   ![设置服务器防火墙规则](../articles/sql-database/media/sql-database-get-started-portal/server-firewall-rule-set.png) 
+
+4. 单击“确定”，然后关闭“防火墙设置”页。
+
+你现在可以使用 SQL Server Management Studio (SSMS) 之类的工具连接到 Azure SQL 数据库服务器及其数据库。 该连接源自此 IP 地址，并使用以前创建的服务器管理员帐户。
+
+
+> [!IMPORTANT]
+> 默认情况下，所有 Azure 服务都允许通过 SQL 数据库防火墙进行访问。 在此页上单击“关”即可对所有 Azure 服务执行禁用操作。
+
+
+## 通过 Azure 门户获取连接字符串值
+<a id="get-connection-string-values-using-the-azure-portal" class="xliff"></a>
+
+请在 Azure 门户中获取 Azure SQL 数据库服务器的完全限定服务器名称。 请使用 SQL Server Management Studio 通过完全限定的服务器名称连接到服务器。
+
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
+
+2. 从左侧菜单中选择“SQL 数据库”，然后单击“SQL 数据库”页上的数据库。 
+
+3. 在数据库的“Azure 门户”页的“概要”窗格中，找到并复制“服务器名称”。
+
+   ![连接信息](../articles/sql-database/media/sql-database-get-started-portal/server-name.png) 

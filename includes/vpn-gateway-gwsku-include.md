@@ -1,17 +1,39 @@
-创建虚拟网络网关时，需要指定要使用的网关 SKU。 如果选择更高级的网关 SKU，则将为该网关分配更多的 CPU 和网络带宽，这样使网关能够支持到虚拟网络更高的吞吐量。
+创建虚拟网络网关时，需要指定要使用的网关 SKU。 根据工作负荷、吞吐量、功能和、SLA 的类型，选择满足需求的 SKU。
 
-VPN 网关可以使用以下 SKU：
+[!INCLUDE [classic SKU](./vpn-gateway-classic-sku-support-include.md)]
 
-* 基本
-* 标准
-* HighPerformance
+[!INCLUDE [Aggregated throughput by SKU](./vpn-gateway-table-gwtype-aggtput-include.md)]
 
-VPN 网关不使用 UltraPerformance 网关 SKU。 有关 UltraPerformance SKU 的信息，请参阅 [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md) 文档。
+###  <a name="workloads"></a>生产与开发-测试工作负荷
 
-选择 SKU 时，请注意以下事项：
+由于 SLA 和功能集的差异，建议使用以下 SKU 比较生产与开发-测试：
 
-* 如果想要使用 PolicyBased VPN 类型，必须使用基本 SKU。 任何其他 SKU 均不支持 PolicyBased VPN（之前称为静态路由）。
-* 基本 SKU 不支持 BGP。
-* 基本 SKU 不支持 ExpressRoute-VPN 网关共存配置。
-* 只能在高性能 SKU 上配置主动-主动 S2S VPN 网关连接。
+| **工作负载**                       | SKU               |
+| ---                                | ---                    |
+| 生产、关键工作负荷 | VpnGw1、VpnGw2、VpnGw3 |
+| 开发-测试或概念证明   | 基本                  |
+|                                    |                        |
 
+如果使用旧版 SKU，则推荐使用的生产 SKU 为标准和高性能 SKU。 有关旧版 SKU 的信息，请参阅[网关 SKU（旧版）](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md)。
+
+###  <a name="feature"></a>网关 SKU 功能集
+
+新版网关 SKU 简化了网关上提供的功能集：
+
+| **SKU**| **功能**|
+| ---    | ---         |
+|基本   | 基于路由：10 个隧道，含 P2S<br>基于策略 (IKEv1)：1 个隧道；不含 P2S|
+| VpnGw1、VpnGw2、VpnGw3 |基于路由的 VPN 多达 30 个隧道 (*) <br>P2S、BGP、主动-主动、自定义 IPsec/IKE 策略、ExpressRoute/VPN 共存 |
+|        |             |
+
+(*) 可以对“PolicyBasedTrafficSelectors”进行配置，以便将基于路由的 VPN 网关（VpnGw1、VpnGw2、VpnGw3）连接到多个本地的基于策略的防火墙设备。 有关详细信息，请参阅[使用 PowerShell 将 VPN 网关连接到多个本地的基于策略的 VPN 设备](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)。
+
+###  <a name="resize"></a>调整网关 SKU 大小
+
+1. 可以在 VpnGw1 SKU、VpnGw2 SKU 和 VpnGw3 SKU 之间调整大小。
+2. 使用旧版网关 SKU 时，仍可在基本、标准和高性能 SKU 之间调整大小。
+2. 不能从基本/标准/高性能 SKU 调整为新版 VpnGw1/VpnGw2/VpnGw3 SKU， 而只能[迁移](#migrate)到新版 SKU。
+
+###  <a name="migrate"></a>从旧版 SKU 迁移到新版 SKU
+
+[!INCLUDE [Migrate SKU](./vpn-gateway-migrate-legacy-sku-include.md)]

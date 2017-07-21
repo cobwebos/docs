@@ -12,16 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/03/2017
+ms.date: 06/29/2017
 ms.author: nitinme
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4ecf4f8594f7a274bec231fb74c4caa22c3cc354
 ms.openlocfilehash: b5f2ae124ca3276e15e0d1f75d655ec346bf8ee8
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/06/2017
 
 
 ---
-# <a name="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics"></a>使用 Azure Stream Analytics 从 Azure 存储 Blob 流处理数据到 Data Lake Store
+<a id="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics" class="xliff"></a>
+# 使用 Azure Stream Analytics 从 Azure 存储 Blob 流处理数据到 Data Lake Store
 在本文中，将学习如何使用 Azure Data Lake Store 作为 Azure 流分析作业的输出。 本文演示了一个简单的方案：从 Azure 存储 blob（输入）读取数据并将数据写入 Data Lake Store（输出）。
 
 > [!NOTE]
@@ -29,7 +31,8 @@ ms.lasthandoff: 01/06/2017
 >
 >
 
-## <a name="prerequisites"></a>先决条件
+<a id="prerequisites" class="xliff"></a>
+## 先决条件
 在开始阅读本教程前，你必须具有：
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
@@ -38,7 +41,8 @@ ms.lasthandoff: 01/06/2017
   
 * **Azure Data Lake Store 帐户**。 遵循[使用 Azure 门户，实现 Azure Data Lake Store 入门](data-lake-store-get-started-portal.md) 中的说明。 假设有一个名为 **asadatalakestore** 的 Data Lake Store 帐户。 
 
-## <a name="create-a-stream-analytics-job"></a>创建流分析作业
+<a id="create-a-stream-analytics-job" class="xliff"></a>
+## 创建流分析作业
 首先创建流分析作业，其中包括输入源和输出目标。 对于本教程中，源是一个 Azure blob 容器，目标位于 Data Lake Store。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
@@ -51,7 +55,8 @@ ms.lasthandoff: 01/06/2017
     > 请确保在存储帐户所在的同一区域中创建作业，否则将产生在区域之间移动数据的额外成本。
     >
 
-## <a name="create-a-blob-input-for-the-job"></a>创建作业的 Blob 输入
+<a id="create-a-blob-input-for-the-job" class="xliff"></a>
+## 创建作业的 Blob 输入
 
 1. 打开流分析作业页，在左窗格中单击“输入”选项卡，然后单击“添加”。
 
@@ -74,7 +79,8 @@ ms.lasthandoff: 01/06/2017
     单击“创建” 。 现在门户将添加该输入并测试与其的连接。
 
 
-## <a name="create-a-data-lake-store-output-for-the-job"></a>创建作业的 Data Lake Store 输出
+<a id="create-a-data-lake-store-output-for-the-job" class="xliff"></a>
+## 创建作业的 Data Lake Store 输出
 
 1. 打开流分析作业页，单击“输出”选项卡，然后单击“添加”。
 
@@ -102,7 +108,8 @@ ms.lasthandoff: 01/06/2017
     
     单击“创建” 。 现在门户将添加该输出并测试与其的连接。
     
-## <a name="run-the-stream-analytics-job"></a>运行流分析作业
+<a id="run-the-stream-analytics-job" class="xliff"></a>
+## 运行流分析作业
 
 1. 若要运行流分析作业，必须从“查询”选项卡运行查询。 对于本教程，通过将占位符替换为作业输入和输出别名，可运行示例查询，如下面的屏幕截图所示。
 
@@ -126,6 +133,7 @@ ms.lasthandoff: 01/06/2017
 
     在“数据资源管理器”窗格中，可以看到输出已写入到 Data Lake Store 输出设置中指定的文件夹路径 (`streamanalytics/job/output/{date}/{time}`)。  
 
-## <a name="see-also"></a>另请参阅
+<a id="see-also" class="xliff"></a>
+## 另请参阅
 * [创建 HDInsight 群集以使用 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
 

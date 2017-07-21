@@ -3,7 +3,7 @@ title: "Analytics - Azure Application Insights 的强大搜索工具 | Microsoft
 description: "Analytics - Application Insights 的强大诊断搜索工具的概述。 "
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 0a2f6011-5bcf-47b7-8450-40f284274b24
 ms.service: application-insights
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 717269a2c0e0b1a3d332e627154eacd2d2c5001e
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: 969d4f5c76c0f91c13622cb91d137c7be8007505
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
+ms.lasthandoff: 05/19/2017
 
 
 ---
@@ -46,6 +46,10 @@ ms.lasthandoff: 04/12/2017
 
 我们将计算不同的客户端 IP 地址，并按过去 7 天内每天的小时时间值对其进行分组。 
 
+> [!NOTE]
+> 若要获取 24 小时以前的结果，请在查询中显式包括“时间戳”，或者使用时间范围下拉菜单。
+>
+
 让我们用条形图演示法来显示下结果，选择从不同的响应代码堆栈结果：
 
 ![选择条形图，x 和 y 轴，然后是分段](./media/app-insights-analytics/020.png)
@@ -54,7 +58,7 @@ ms.lasthandoff: 04/12/2017
 
 此外，还有功能强大的统计操作：
 
-![](./media/app-insights-analytics/025.png)
+![统计查询的结果](./media/app-insights-analytics/025.png)
 
 该语言具有许多相当不错的功能：
 
@@ -83,21 +87,24 @@ ms.lasthandoff: 04/12/2017
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
 
+
+## <a name="query-examples"></a>查询示例
+
+尝试使用以下演练来展示使用分析的功能：
+
+ *    [请求期间自动诊断峰值和步骤跳跃](https://analytics.applicationinsights.io/demo#/discover/query/results/chart?title=Automatic%20diagnostics%20of%20sudden%20spikes%20or%20step%20jumps%20in%20requests%20duration&shared=true)
+ *    [通过时序分析来分析性能下降](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Analyzing%20performance%20degradations%20with%20time%20series%20analysis&shared=true)
+ *    [分析应用程序的 autocluster 和 diffpatterns 故障](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Analyzing%20application%20failures%20with%20autocluster%20and%20diffpatterns&shared=true)
+ *    [时序分析的高级形状检测](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Advanced%20shape%20detection%20with%20time%20series%20analysis&shared=true)
+ *    [使用滑动窗口操作分析应用程序使用情况（滚动 MAU/DAU 等）](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Using%20sliding%20window%20calculations%20to%20analyze%20usage%20metrics:%20rolling%20MAU~2FDAU%20and%20cohorts&shared=true)
+ *    [基于调试日志分析检测服务中断](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Detection%20of%20service%20disruptions%20based%20on%20regression%20analysis%20of%20trace%20logs&shared=true)以及[此处](https://maximshklar.wordpress.com/2017/02/16/finding-trends-in-traces-with-smart-data-analytics)的相关博客文章。
+ *    [使用简单调试日志分析应用程序性能](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Profiling%20applications'%20performance%20with%20simple%20debug%20logs&shared=true)以及[此处](https://yossiattasblog.wordpress.com/2017/03/13/first-blog-post/)的相关博客文章
+ *    [使用简单调试日志测量代码流中每个步骤的持续时间](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Measuring%20the%20duration%20of%20each%20step%20in%20your%20code%20flow%20using%20simple%20debug%20logs&shared=true)以及[此处](https://yossiattasblog.wordpress.com/2017/03/14/measuring-the-duration-of-each-step-in-your-code-flow-using-simple-debug-logs/)的相关博客文章
+ *    [使用简单调试日志分析并发](https://analytics.applicationinsights.io/demo#/discover/query/results/chart?title=Analyzing%20concurrency%20with%20simple%20debug%20logs&shared=true)以及[此处](https://yossiattasblog.wordpress.com/2017/03/23/analyzing-concurrency-using-simple-debug-logs/)的相关博客文章
+
+
+
 ## <a name="next-steps"></a>后续步骤
 * 我们建议用户从[语言教程](app-insights-analytics-tour.md)开始。 
-
-### <a name="query-examples"></a>查询示例
-
-* 尝试使用以下演练来展示使用分析的功能：
- 1.    [请求期间自动诊断峰值和步骤跳跃](https://analytics.applicationinsights.io/demo#/discover/query/results/chart?title=Automatic%20diagnostics%20of%20sudden%20spikes%20or%20step%20jumps%20in%20requests%20duration&shared=true)
- 2.    [通过时序分析来分析性能下降](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Analyzing%20performance%20degradations%20with%20time%20series%20analysis&shared=true)
- 3.    [分析应用程序的 autocluster 和 diffpatterns 故障](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Analyzing%20application%20failures%20with%20autocluster%20and%20diffpatterns&shared=true)
- 4.    [时序分析的高级形状检测](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Advanced%20shape%20detection%20with%20time%20series%20analysis&shared=true)
- 5.    [使用滑动窗口操作分析应用程序使用情况（滚动 MAU/DAU 等）](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Using%20sliding%20window%20calculations%20to%20analyze%20usage%20metrics:%20rolling%20MAU~2FDAU%20and%20cohorts&shared=true)
- 6.    [基于调试日志分析检测服务中断](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Detection%20of%20service%20disruptions%20based%20on%20regression%20analysis%20of%20trace%20logs&shared=true)以及[此处](https://maximshklar.wordpress.com/2017/02/16/finding-trends-in-traces-with-smart-data-analytics)的相关博客文章。
- 7.    [使用简单调试日志分析应用程序性能](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Profiling%20applications'%20performance%20with%20simple%20debug%20logs&shared=true)以及[此处](https://yossiattasblog.wordpress.com/2017/03/13/first-blog-post/)的相关博客文章
- 8.    [使用简单调试日志测量代码流中每个步骤的持续时间](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Measuring%20the%20duration%20of%20each%20step%20in%20your%20code%20flow%20using%20simple%20debug%20logs&shared=true)以及[此处](https://yossiattasblog.wordpress.com/2017/03/14/measuring-the-duration-of-each-step-in-your-code-flow-using-simple-debug-logs/)的相关博客文章
- 9.    [使用简单调试日志分析并发](https://analytics.applicationinsights.io/demo#/discover/query/results/chart?title=Analyzing%20concurrency%20with%20simple%20debug%20logs&shared=true)以及[此处](https://yossiattasblog.wordpress.com/2017/03/23/analyzing-concurrency-using-simple-debug-logs/)的相关博客文章
-
-
-
+* [使用 Analytics](app-insights-analytics-using.md) 的详细信息。 
+* [语言参考](app-insights-analytics-reference.md)。 

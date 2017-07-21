@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2017
+ms.date: 07/18/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
 ms.openlocfilehash: 032467e0885d574a7b0f4a1c043e1800e5cc4071
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/29/2016
 
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的访问控制要求
@@ -79,10 +80,5 @@ ms.openlocfilehash: 032467e0885d574a7b0f4a1c043e1800e5cc4071
 
 ## <a name="see-also"></a>另请参阅
 [设计注意事项概述](active-directory-hybrid-identity-design-considerations-overview.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

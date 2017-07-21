@@ -12,19 +12,19 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: c5ec6dc244cc70591806dab171a289a0e55ff0a0
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: f344ef59c3d6f9f99989a37e78f161b8be948916
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 06/26/2017
 
 ---
 # <a name="bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>将现有的自定义 SSL 证书绑定到 Azure Web 应用
 
-本教程介绍如何将从受信任证书颁发机构那里购买的自定义 SSL 证书绑定到 [Azure Web 应用](app-service-web-overview.md)。 完成本教程后，你便可以访问自定义 DNS 域的 HTTPS 终结点上的 Web 应用。
+Azure Web 应用提供高度可缩放的自修补 Web 托管服务。 本教程介绍如何将从受信任证书颁发机构那里购买的自定义 SSL 证书绑定到 [Azure Web 应用](app-service-web-overview.md)。 完成本教程后，你便可以访问自定义 DNS 域的 HTTPS 终结点上的 Web 应用。
 
 ![包含自定义 SSL 证书的 Web 应用](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 
@@ -36,13 +36,12 @@ ms.lasthandoff: 06/01/2017
 > * 为应用实施 HTTPS
 > * 使用脚本自动执行 SSL 证书绑定
 
-> [!TIP]
-> 如果需要获取自定义 SSL 证书，可以直接在 Azure 门户中获取，然后将其绑定到 Web 应用。 请遵循[应用服务证书教程](web-sites-purchase-ssl-web-site.md)。 
->
-> 
+> [!NOTE]
+> 如果需要获取自定义 SSL 证书，可以直接在 Azure 门户中获取，然后将其绑定到 Web 应用。 请遵循[应用服务证书教程](web-sites-purchase-ssl-web-site.md)。
 
 ## <a name="prerequisites"></a>先决条件
-在遵循本教程之前，请确保已完成以下操作：
+
+完成本教程：
 
 - [创建应用服务应用](/azure/app-service/)
 - [将自定义 DNS 名称映射到 Web 应用](app-service-web-tutorial-custom-domain.md)
@@ -60,45 +59,45 @@ ms.lasthandoff: 06/01/2017
 * 包含证书链中的所有中间证书
 
 > [!NOTE]
-> **椭圆曲线加密 (ECC) 证书**可用于应用服务，但本文不予讨论。 请咨询证书颁发机构，了解有关创建 ECC 证书的确切步骤。
-> 
->
+> 椭圆曲线加密 (ECC) 证书可用于应用服务，但本文不予讨论。 请咨询证书颁发机构，了解有关创建 ECC 证书的确切步骤。
 
 ## <a name="prepare-your-web-app"></a>准备 Web 应用
+
 若要将自定义 SSL 证书绑定到 Web 应用，[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/)必须位于“基本”、“标准”或“高级”层。 在此步骤中，请确保 Web 应用位于受支持的定价层。
 
 ### <a name="log-in-to-azure"></a>登录 Azure
 
-打开 Azure 门户。 为此，请使用你的 Azure 帐户登录到 [https://portal.azure.com](https://portal.azure.com)。
+打开 [Azure 门户](https://portal.azure.com)。
 
 ### <a name="navigate-to-your-web-app"></a>导航到你的 Web 应用
+
 在左侧菜单中单击“应用服务”，然后单击 Web 应用的名称。
 
 ![选择 Web 应用](./media/app-service-web-tutorial-custom-ssl/select-app.png)
 
-现已进入 Web 应用的边栏选项卡（_边栏选项卡_：水平打开的门户页）。  
+登录到 Web 应用的管理页。  
 
 ### <a name="check-the-pricing-tier"></a>检查定价层
 
-在 Web 应用边栏选项卡的左侧导航窗格中，向下滚动到“设置”部分，然后选择“扩大(应用服务计划)”。
+在 Web 应用页的左侧导航窗格中，滚动到“设置”部分，然后选择“增加(应用服务计划)”。
 
 ![扩展菜单](./media/app-service-web-tutorial-custom-ssl/scale-up-menu.png)
 
-检查以确保 Web 应用不在“免费”或“共享”层中。 深蓝色的框突出显示了 Web 应用的当前层。 
+检查以确保 Web 应用不在“免费”或“共享”层中。 深蓝色的框突出显示了 Web 应用的当前层。
 
 ![检查定价层](./media/app-service-web-tutorial-custom-ssl/check-pricing-tier.png)
 
-“免费”和“共享”层不支持自定义 SSL。 如果你需要进行纵向扩展，请按照下一部分操作。 否则，请关闭“选择定价层”边栏选项卡并跳到[上传和绑定 SSL 证书](#upload)。
+“免费”或“共享”层不支持自定义 SSL。 如果需要增加，请按照下一部分中的步骤进行操作。 否则，请关闭“选择定价层”页并跳转到[上传和绑定 SSL 证书](#upload)。
 
 ### <a name="scale-up-your-app-service-plan"></a>纵向扩展应用服务计划
 
-选择“基本”、“标准”或“高级”层。 
+选择“基本”、“标准”或“高级”层。
 
 单击“选择”。
 
 ![选择定价层](./media/app-service-web-tutorial-custom-ssl/choose-pricing-tier.png)
 
-当看到以下通知时，说明缩放操作已完成。
+看到以下通知时，说明缩放操作已完成。
 
 ![扩展通知](./media/app-service-web-tutorial-custom-ssl/scale-notification.png)
 
@@ -106,19 +105,47 @@ ms.lasthandoff: 06/01/2017
 
 ## <a name="bind-your-ssl-certificate"></a>绑定 SSL 证书
 
-现已准备好将 SSL 证书上传到 Web 应用。 
+现已准备好将 SSL 证书上传到 Web 应用。
+
+### <a name="merge-intermediate-certificates"></a>合并中间证书
+
+如果证书颁发机构在证书链中提供了多个证书，则需按顺序合并证书。 
+
+若要执行此操作，请在文本编辑器中打开收到的所有证书。 
+
+创建名为 mergedcertificate.crt 的合并证书文件。 在文本编辑器中，将每个证书的内容复制到此文件。 证书顺序应如以下模板所示：
+
+```
+-----BEGIN CERTIFICATE-----
+<your Base64 encoded SSL certificate>
+-----END CERTIFICATE-----
+
+-----BEGIN CERTIFICATE-----
+<Base64 encoded intermediate certificate 1>
+-----END CERTIFICATE-----
+
+-----BEGIN CERTIFICATE-----
+<Base64 encoded intermediate certificate 2>
+-----END CERTIFICATE-----
+
+-----BEGIN CERTIFICATE-----
+<Base64 encoded root certificate>
+-----END CERTIFICATE-----
+```
 
 ### <a name="export-certificate-to-pfx"></a>将证书导出为 PFX
 
-必须导出自定义 SSL 证书（其中包含生成证书请求时所用的私钥）。
+导出合并的 SSL 证书（其中包含生成证书请求时所用的私钥）。
 
-如果使用 OpenSSL 生成了证书请求，则已创建一个私钥。 若要将证书导出为 PFX，请运行以下命令：
+如果使用 OpenSSL 生成证书请求，则已创建私钥文件。 若要将证书导出为 PFX，请运行以下命令。 替换占位符 &lt;private-key-file> 和 &lt;merged-certificate-file>。
 
-```bash
-openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
+```
+openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>  
 ```
 
-如果使用 IIS 或 _Certreq.exe_ 生成了证书请求，请先在本地计算机上安装证书，然后遵循[导出包含私钥的证书](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx)中的步骤将其导出为 PFX。
+出现提示时，定义导出密码。 稍后将 SSL 证书上传到应用服务时需使用此密码。
+
+如果使用 IIS 或 Certreq.exe 生成证书请求，请将证书安装到本地计算机，然后[将证书导出为 PFX](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx)。
 
 ### <a name="upload-your-ssl-certificate"></a>上传 SSL 证书
 
@@ -126,7 +153,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
 单击“上传证书”。
 
-在“PFX 证书文件”中选择你的 PFX 文件。 在“证书密码”中，键入导出 PFX 文件时创建的密码。
+在“PFX 证书文件”中选择 PFX 文件。 在“证书密码”中，键入导出 PFX 文件时创建的密码。
 
 单击“上传” 。
 
@@ -138,16 +165,19 @@ openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
 ### <a name="bind-your-ssl-certificate"></a>绑定 SSL 证书
 
-随后应可在“SSL 证书”页中看到上传的证书。
-
 在“SSL 绑定”部分中，单击“添加绑定”。
 
-在“添加 SSL 绑定”边栏选项卡中，使用下拉列表选择要保护的域名，然后选择要使用的证书。 
+在“添加 SSL 绑定”页中，使用下拉列表选择要保护的域名，然后选择要使用的证书。
+
+> [!NOTE]
+> 如果已上传证书，但未在“主机名”下拉列表中看到域名，请尝试刷新浏览器页面。
+>
+>
 
 在“SSL 类型”中，选择是要使用**[服务器名称指示 (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** 还是使用基于 IP 的 SSL。
-   
-- **基于 SNI 的 SSL** - 可添加多个基于 SNI 的 SSL 绑定。 选择此选项可以使用多个 SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI（在[服务器名称指示](http://wikipedia.org/wiki/Server_Name_Indication)中了解更全面的浏览器支持信息）。
-- **基于 IP 的 SSL** - 只能添加一个基于 IP 的 SSL 绑定。 选择此选项只能使用一个 SSL 证书来保护专用公共 IP 地址。 若要保护多个域，必须使用同一个 SSL 证书来保护所有这些域。 这是 SSL 绑定的传统选项。 
+
+- 基于 SNI 的 SSL - 可添加多个基于 SNI 的 SSL 绑定。 选择此选项可以使用多个 SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI（在[服务器名称指示](http://wikipedia.org/wiki/Server_Name_Indication)中了解更全面的浏览器支持信息）。
+- 基于 IP 的 SSL - 只能添加一个基于 IP 的 SSL 绑定。 选择此选项只能使用一个 SSL 证书来保护专用公共 IP 地址。 若要保护多个域，必须使用同一个 SSL 证书来保护所有这些域。 这是 SSL 绑定的传统选项。
 
 单击“添加绑定”。
 
@@ -159,17 +189,18 @@ openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
 ## <a name="remap-a-record-for-ip-ssl"></a>重新映射 IP SSL 的 A 记录
 
-如果不在 Web 应用中使用基于 IP 的 SSL，请跳到[针对自定义域测试 HTTPS](#test)。 
+如果不在 Web 应用中使用基于 IP 的 SSL，请跳到[针对自定义域测试 HTTPS](#test)。
 
-默认情况下，Web 应用使用共享的公共 IP 地址。 将证书与基于 IP 的 SSL 绑定后，应用服务会立即为 Web 应用创建新的专用 IP 地址。
+默认情况下，Web 应用使用共享的公共 IP 地址。 将证书与基于 IP 的 SSL 绑定时，应用服务会为 Web 应用创建新的专用 IP 地址。
 
 如果已将 A 记录映射到 Web 应用，请使用这个新的专用 IP 地址更新域注册表。
 
-将使用新的专用 IP 地址更新 Web 应用的“自定义域”页。 [复制此 IP 地址](app-service-web-tutorial-custom-domain.md#info)，然后[将 A 记录重新映射](app-service-web-tutorial-custom-domain.md#create-a)到此新 IP 地址。
+将使用新的专用 IP 地址更新 Web 应用的“自定义域”页。 [复制此 IP 地址](app-service-web-tutorial-custom-domain.md#info)，然后[将 A 记录重新映射](app-service-web-tutorial-custom-domain.md#map-an-a-record)到此新 IP 地址。
 
 <a name="test"></a>
 
 ## <a name="test-https"></a>测试 HTTPS
+
 接下来只需确保 HTTPS 适用于自定义域。 在不同的浏览器中浏览到 `https://<your.custom.domain>`，查看是否能够打开你的 Web 应用。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
@@ -177,29 +208,24 @@ openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 > [!NOTE]
 > 如果 Web 应用显示证书验证错误，可能是因为使用了自签名证书。
 >
-> 如果不是这样，可能是在将证书导出为 PFX 文件时遗漏了中间证书。 
->
->
+> 如果不是这样，可能是在将证书导出为 PFX 文件时遗漏了中间证书。
 
 <a name="bkmk_enforce"></a>
 
 ## <a name="enforce-https"></a>实施 HTTPS
-如果仍要允许对 Web 应用进行 HTTP 访问，请跳过此步骤。 
 
-应用服务*不*强制实施 HTTPS，因此任何人仍可使用 HTTP 访问你的 Web 应用。 如果想要对 Web 应用强制实施 HTTPS，可以在 Web 应用的 _web.config_ 文件中定义重写规则。 无论 Web 应用的语言框架如何，应用服务都会使用此文件。
+应用服务*不*强制实施 HTTPS，因此任何人仍可使用 HTTP 访问你的 Web 应用。 如果想要对 Web 应用强制实施 HTTPS，请在 Web 应用的 web.config 文件中定义重写规则。 无论 Web 应用的语言框架如何，应用服务都会使用此文件。
 
 > [!NOTE]
-> 存在语言特定的请求重定向。 ASP.NET MVC 可使用 [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) 筛选器，而非 _web.config_ 中的重写规则（请参阅[将安全的 ASP.NET MVC 5 应用部署到 Web 应用](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)）。
-> 
-> 
+> 存在语言特定的请求重定向。 ASP.NET MVC 可使用 [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) 筛选器，而非 web.config 中的重写规则。
 
 如果你是 .NET 开发人员，应该比较熟悉此文件。 此文件位于解决方案的根目录中。
 
 或者，如果你使用 PHP、Node.js、Python 或 Java 进行开发，我们可能会在应用服务中替你生成此文件。
 
-遵循[使用 FTP/S 将应用部署到 Azure 应用服务](app-service-deploy-ftp.md)中的说明连接到 Web 应用的 FTP 终结点。 
+遵循[使用 FTP/S 将应用部署到 Azure 应用服务](app-service-deploy-ftp.md)中的说明连接到 Web 应用的 FTP 终结点。
 
-此文件应位于 _/home/site/wwwroot_ 中。 如果不是，请使用以下 XML 在此文件夹中创建 _web.config_：
+此文件应位于 _/home/site/wwwroot_ 中。 如果不是，请使用以下 XML 在此文件夹中创建 web.config 文件：
 
 ```xml   
 <?xml version="1.0" encoding="UTF-8"?>
@@ -207,7 +233,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
   <system.webServer>
     <rewrite>
       <rules>
-        <!-- BEGIN rule TAG FOR HTTPS REDIRECT -->
+        <!-- BEGIN rule ELEMENT FOR HTTPS REDIRECT -->
         <rule name="Force HTTPS" enabled="true">
           <match url="(.*)" ignoreCase="false" />
           <conditions>
@@ -215,18 +241,34 @@ openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
           </conditions>
           <action type="Redirect" url="https://{HTTP_HOST}/{R:1}" appendQueryString="true" redirectType="Permanent" />
         </rule>
-        <!-- END rule TAG FOR HTTPS REDIRECT -->
+        <!-- END rule ELEMENT FOR HTTPS REDIRECT -->
       </rules>
     </rewrite>
   </system.webServer>
 </configuration>
 ```
 
-对于现有的 _web.config_，只需将整个 `<rule>` 标记复制到 _web.config_ 的 `configuration/system.webServer/rewrite/rules` 元素中。 如果 _web.config_ 中已有其他 `<rule>` 标记，请将复制的 `<rule>` 标记放置在其他 `<rule>` 标记的前面。
+对于现有的 web.config 文件，请将整个 `<rule>` 元素复制到 web.config 的 `configuration/system.webServer/rewrite/rules` 元素中。 如果 web.config 中已有其他 `<rule>` 元素，请将复制的 `<rule>` 元素放置在其他 `<rule>` 元素的前面。
 
 每当用户对你的 Web 应用发出 HTTP 请求时，此规则都会将 HTTP 301（永久重定向）返回到 HTTPS 协议。 例如，将请求从 `http://contoso.com` 重定向到 `https://contoso.com`。
 
 有关 IIS URL 重写模块的详细信息，请参阅 [URL 重写](http://www.iis.net/downloads/microsoft/url-rewrite)文档。
+
+## <a name="enforce-https-for-web-apps-on-linux"></a>对 Linux 上的 Web 应用强制实施 HTTPS
+
+Linux 上的应用服务不会强制实施 HTTPS，因此所有人仍可使用 HTTP 访问你的 Web 应用。 若要对 Web 应用强制实施 HTTPS，请在 Web 应用的 .htaccess 文件中定义重写规则。 
+
+遵循[使用 FTP/S 将应用部署到 Azure 应用服务](app-service-deploy-ftp.md)中的说明连接到 Web 应用的 FTP 终结点。
+
+在 /home/site/wwwroot 中，使用以下代码创建 .htaccess 文件：
+
+```
+RewriteEngine On
+RewriteCond %{HTTP:X-ARR-SSL} ^$
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+```
+
+每当用户对你的 Web 应用发出 HTTP 请求时，此规则都会将 HTTP 301（永久重定向）返回到 HTTPS 协议。 例如，将请求从 `http://contoso.com` 重定向到 `https://contoso.com`。
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 
@@ -234,10 +276,10 @@ openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
 ### <a name="azure-cli"></a>Azure CLI
 
-以下命令上传已导出的 PFX 文件并获取指纹。 
+以下命令上传已导出的 PFX 文件并获取指纹。
 
 ```bash
-thumprint=$(az appservice web config ssl upload \
+thumbprint=$(az appservice web config ssl upload \
     --name <app_name> \
     --resource-group <resource_group_name> \
     --certificate-file <path_to_PFX_file> \
@@ -269,7 +311,8 @@ New-AzureRmWebAppSSLBinding `
     -CertificatePassword <PFX_password> `
     -SslState SniEnabled
 ```
-## <a name="what-you-have-learned"></a>你已了解
+
+## <a name="next-steps"></a>后续步骤
 
 本教程介绍了如何：
 
@@ -278,4 +321,9 @@ New-AzureRmWebAppSSLBinding `
 > * 将自定义 SSL 证书绑定到应用服务
 > * 为应用实施 HTTPS
 > * 使用脚本自动执行 SSL 证书绑定
+
+继续学习下一教程，了解如何使用 Azure 内容交付网络。
+
+> [!div class="nextstepaction"]
+> [向 Azure 应用服务添加内容交付网络 (CDN)](app-service-web-tutorial-content-delivery-network.md)
 

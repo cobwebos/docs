@@ -1,8 +1,8 @@
 ---
 title: "使用 Azure 虚拟机进行高级自动缩放 | Microsoft 文档"
 description: "使用包含多个规则和配置文件的 Resource Manager 与 VM 规模集，通过缩放操作发送电子邮件和调用 Webhook URL。"
-author: kamathashwin
-manager: carmonm
+author: anirudhcavale
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2016
-ms.author: ashwink
+ms.author: ancav
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 6f1234381a6aad9632d88825aab1a5bf304a20fb
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/10/2017
-
 
 ---
 

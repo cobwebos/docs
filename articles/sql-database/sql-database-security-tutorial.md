@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 05/07/2017
+ms.date: 06/28/2017
 ms.author: daredis
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 34815f5b716a38f957392d8955f924eeb6fe621e
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: cb267625cb6ea279b4094b1cc4d456cfd7542cca
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -31,23 +31,40 @@ SQL 数据库通过限制对数据库的访问来保护数据，具体措施包�
 只需几个简单的步骤，即可大大提升数据库抵御恶意用户或未经授权的访问的能力。 在本教程中，你将学习： 
 
 > [!div class="checklist"]
-> * 为服务器和/或数据库设置防火墙规则
+> * 在 Azure 门户中创建服务器的服务器级防火墙规则
+> * 使用 SSMS 创建数据库的数据库级防火墙规则
 > * 使用安全连接字符串连接到数据库
 > * 管理用户访问权限
 > * 通过加密保护数据
 > * 启用 SQL 数据库审核
 > * 启用 SQL 数据库威胁检测
 
-若要完成本教程，请确保已安装 Excel 和最新版的 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS)。
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
+## <a name="prerequisites"></a>先决条件
 
-## <a name="set-up-firewall-rules-for-your-database"></a>设置数据库的防火墙规则
+若要完成本教程，请确保符合以下条件：
 
-SQL 数据库受 Azure 中的防火墙保护。 默认情况下，将拒绝与服务器和服务器内数据库的所有连接，连接自其他 Azure 服务的连接除外。 最安全的配置是将“允许访问 Azure 服务”设置为“关闭”。 如果需要从 Azure VM 或云服务连接到数据库，则应创建[保留 IP](../virtual-network/virtual-networks-reserved-public-ip.md)，且仅允许保留的 IP 地址通过防火墙进行访问。 
+- 已安装最新版 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。 
+- 已安装 Microsoft Excel
+- 已创建 Azure SQL 服务器和数据库。请参阅[在 Azure 门户中创建 Azure SQL 数据库](sql-database-get-started-portal.md)、[使用 Azure CLI 创建单一 Azure SQL 数据库](sql-database-get-started-cli.md)和[使用 PowerShell 创建单一 Azure SQL 数据库](sql-database-get-started-powershell.md)。 
+
+## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
+
+登录到 [Azure 门户](https://portal.azure.com/)。
+
+## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>在 Azure 门户中创建服务器级防火墙规则
+
+SQL 数据库受 Azure 中的防火墙保护。 默认情况下，将拒绝与服务器和服务器内数据库的所有连接，连接自其他 Azure 服务的连接除外。 有关详细信息，请参阅 [Azure SQL 数据库服务器级和数据库级防火墙规则](sql-database-firewall-configure.md)。
+
+最安全的配置是将“允许访问 Azure 服务”设置为“关闭”。 如果需要从 Azure VM 或云服务连接到数据库，则应创建[保留 IP](../virtual-network/virtual-networks-reserved-public-ip.md)，且仅允许保留的 IP 地址通过防火墙进行访问。 
 
 按照以下步骤为服务器创建 [SQL 数据库服务器级防火墙规则](sql-database-firewall-configure.md)，以允许从特定 IP 地址进行连接。 
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+> [!NOTE]
+> 如果已根据前面的教程或快速入门之一在 Azure 中创建了示例数据库，并要使用这些教程使用的同一 IP 地址在计算机上执行本教程，可以跳过这一步，因为已创建服务器级防火墙规则。
+>
+
 1. 从左侧菜单中单击“SQL 数据库”，然后在“SQL 数据库”页单击要为其配置防火墙规则的数据库。 此时将打开数据库的概述页，其中显示了完全限定的服务器名称（例如 **mynewserver-20170313.database.windows.net**），并提供了其他配置的选项。
 
       ![服务器防火墙规则](./media/sql-database-security-tutorial/server-firewall-rule.png) 
@@ -66,13 +83,17 @@ SQL 数据库受 Azure 中的防火墙保护。 默认情况下，将拒绝与�
 > 通过端口 1433 进行的 SQL 数据库通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到 Azure SQL 数据库服务器，除非你的 IT 部门打开了端口 1433。
 >
 
-如果要求对同一逻辑服务器内的不同数据库采用不同的防火墙设置，则必须为每个数据库创建数据库级规则。 数据库级防火墙规则只能通过使用 Transact-SQL 语句进行配置，而且只能在配置了第一个服务器级防火墙规则后才能配置。 按照以下步骤操作，创建特定于数据库的防火墙规则。
+## <a name="create-a-database-level-firewall-rule-using-ssms"></a>使用 SSMS 创建数据库级防火墙规则
+
+使用数据库级防火墙规则，可以为同一逻辑服务器内的各个数据库创建不同的防火墙设置，并创建可移植的防火墙规则。也就是说，这些规则在[故障转移](sql-database-geo-replication-overview.md)期间与数据库一起转移，而不是存储在 SQL 服务器上。 数据库级防火墙规则只能通过使用 Transact-SQL 语句进行配置，而且只能在配置了第一个服务器级防火墙规则后才能配置。 有关详细信息，请参阅 [Azure SQL 数据库服务器级和数据库级防火墙规则](sql-database-firewall-configure.md)。
+
+按照以下步骤操作，创建特定于数据库的防火墙规则。
 
 1. 例如，使用 [SQL Server Management Studio](./sql-database-connect-query-ssms.md) 连接到数据库。
 
 2. 在对象资源管理器中，右键单击要为其添加防火墙规则的数据库，然后单击“新建查询”。 此时会打开一个空白查询窗口，该窗口连接到数据库。
 
-3. 在查询窗口中输入以下查询：
+3. 在查询窗口中，将 IP 地址修改为公共 IP 地址，再执行以下查询：
 
     ```sql
     EXECUTE sp_set_database_firewall_rule N'Example DB Rule','0.0.0.4','0.0.0.4';
@@ -80,9 +101,14 @@ SQL 数据库受 Azure 中的防火墙保护。 默认情况下，将拒绝与�
 
 4. 在工具栏上，单击“执行”创建防火墙规则。
 
-## <a name="connect-to-your-database-using-a-secure-connection-string"></a>使用安全连接字符串连接到数据库
+## <a name="view-how-to-connect-an-application-to-your-database-using-a-secure-connection-string"></a>了解如何使用安全连接字符串将应用程序与数据库相连
 
-若要确保客户端和 SQL 数据库之间安全的加密连接，连接字符串必须配置为 1) 请求加密连接和 2) 不信任服务器证书。 这会使用传输层安全性 (TLS) 建立连接并减少中间人攻击的风险。 可从 Azure 门户为支持的客户端驱动程序的 SQL 数据库获得正确配置的连接字符串，如 ADO.net 的以下屏幕截图所示。
+若要确保客户端应用程序与 SQL 数据库的连接安全且已加密，必须将连接字符串配置为：
+
+- 请求实现加密连接；以及
+- 不信任服务器证书。 
+
+这会使用传输层安全性 (TLS) 建立连接并减少中间人攻击的风险。 可从 Azure 门户为支持的客户端驱动程序的 SQL 数据库获得正确配置的连接字符串，如 ADO.net 的以下屏幕截图所示。
 
 1. 从左侧菜单中选择“SQL 数据库”，然后单击“SQL 数据库”页上的数据库。
 
@@ -92,8 +118,11 @@ SQL 数据库受 Azure 中的防火墙保护。 默认情况下，将拒绝与�
 
     ![ADO.NET 连接字符串](./media/sql-database-security-tutorial/adonet-connection-string.png)
 
+> [!TIP]
+> 有关使用 Azure SQL 数据库创建 .NET 应用程序的示例，请参阅[在 Azure 中使用 SQL 数据库生成 ASP.NET 应用程序](/app-service-web/app-service-web-tutorial-dotnet-sqldatabase.md)。
+>
 
-## <a name="user-management"></a>用户管理
+## <a name="creating-database-users"></a>创建数据库用户
 
 创建任何用户前，必须首先从 Azure SQL 数据库支持的两种身份验证类型中选择一种类型： 
 
@@ -112,7 +141,7 @@ Azure Active Directory 身份验证，使用 Azure Active Directory 管理的标
 3. 在查询窗口中输入以下查询：
 
     ```sql
-    CREATE USER ApplicationUserUse' WITH PASSWORD = 'YourStrongPassword1';
+    CREATE USER ApplicationUser WITH PASSWORD = 'YourStrongPassword1';
     ```
 
 4. 在工具栏上，单击“执行”创建用户。
@@ -120,8 +149,8 @@ Azure Active Directory 身份验证，使用 Azure Active Directory 管理的标
 5. 默认情况下，用户可连接到数据库，但没有读取或写入数据的权限。 若要向新建用户授予这些权限，可在新的查询窗口中执行以下两个命令
 
     ```sql
-    ALTER ROLE db_datareader ADD MEMBER ApplicationUserUser;
-    ALTER ROLE db_datawriter ADD MEMBER ApplicationUserUser;
+    ALTER ROLE db_datareader ADD MEMBER ApplicationUser;
+    ALTER ROLE db_datawriter ADD MEMBER ApplicationUser;
     ```
 
 最好在数据库级别创建这些非管理员帐户以连接到数据库，除非需要执行创建新用户等管理员任务。 请查看 [Azure Active Directory 教程](./sql-database-aad-authentication-configure.md)，了解如何使用 Azure Active Directory 进行身份验证。
@@ -129,7 +158,7 @@ Azure Active Directory 身份验证，使用 Azure Active Directory 管理的标
 
 ## <a name="protect-your-data-with-encryption"></a>通过加密保护数据
 
-Azure SQL 数据库透明数据加密 (TDE) 会自动加密静态数据，无需对访问加密数据库的应用程序做任何更改。 要为数据库启用 TDE，请按照下列步骤操作：
+Azure SQL 数据库透明数据加密 (TDE) 会自动加密静态数据，无需对访问加密数据库的应用程序做任何更改。 对于新创的数据库，TDE 默认处于开启状态。 若要为数据库启用 TDE 或验证 TDE 是否开启，请按照以下步骤操作：
 
 1. 从左侧菜单中选择“SQL 数据库”，然后单击“SQL 数据库”页上的数据库。 
 
@@ -137,38 +166,35 @@ Azure SQL 数据库透明数据加密 (TDE) 会自动加密静态数据，无需
 
     ![透明数据加密](./media/sql-database-security-tutorial/transparent-data-encryption-enabled.png)
 
-3. 将“数据加密”设置为打开，然后单击“保存”。
+3. 必要时，将“数据加密”设置为“开”，再单击“保存”。
 
 加密进程在后台启动。 可以使用 [SQL Server Management Studio](./sql-database-connect-query-ssms.md) 连接到 SQL 数据库并查询 `sys.dm_database_encryption_keys` 视图的 encryption_state 列，来监视进度。
 
-## <a name="enable-sql-database-auditing"></a>启用 SQL 数据库审核
+## <a name="enable-sql-database-auditing-if-necessary"></a>启用 SQL 数据库审核（必要时）
 
 Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 审核可帮助你一直保持遵从法规、了解数据库活动，以及深入了解可以指明潜在安全违规的偏差和异常。 请按照以下步骤操作，为 SQL 数据库创建默认审核策略：
 
-1. 从左侧菜单中选择“SQL 数据库”，然后单击“SQL 数据库”页上的数据库。
+1. 从左侧菜单中选择“SQL 数据库”，然后单击“SQL 数据库”页上的数据库。 
 
-2. 在“设置”边栏选项卡中，选择“审核和威胁检测”。
+2. 在“设置”边栏选项卡中，选择“审核和威胁检测”。 请注意，服务器级审核已禁用，可以单击“查看服务器设置”链接，在此上下文中查看或修改服务器审核设置。
 
     ![“审核”边栏选项卡](./media/sql-database-security-tutorial/auditing-get-started-settings.png)
 
-3. 在数据库审核配置边栏选项卡中，可以选中“从服务器继承审核设置”复选框，指定根据服务器的设置对数据库进行审核。 如果选中此选项，将会看到“查看服务器审核设置”链接，可以使用该链接在此上下文中查看或修改服务器审核设置。
-
-    ![继承设置](./media/sql-database-security-tutorial/auditing-get-started-server-inherit.png)
-
-4. 若要启用不同于在数据库级别指定的审核类型（或位置），请**取消选中**“从服务器继承审核设置”选项，将审核设置为“打开”，然后选择“Blob”审核类型。
-
-    > 如果启用了服务器 Blob 审核，数据库配置的审核将与服务器 Blob 审核并存。
+3. 若要启用不同于在数据库一级指定的审核类型（或位置），请将“审核”设置为“开”，再选择“Blob”作为“审核类型”。 如果启用了服务器 Blob 审核，数据库配置的审核将与服务器 Blob 审核并存。
 
     ![启用审核](./media/sql-database-security-tutorial/auditing-get-started-turn-on.png)
 
-5. 选择“存储详细信息”打开“审核日志存储”边栏选项卡。 选择日志要保存到的 Azure 存储帐户以及保留期（超过此期限的旧日志将被删除），然后单击底部的“确定”。 **提示：**为所有审核的数据库使用相同的存储帐户，以便充分利用审核报告模板。
+4. 选择“存储详细信息”打开“审核日志存储”边栏选项卡。 选择日志要保存到的 Azure 存储帐户以及保留期（超过此期限的旧日志将被删除），然后单击底部的“确定”。 
 
-    ![导航窗格](./media/sql-database-security-tutorial/auditing-get-started-storage-details.png)
+   > [!TIP]
+   > 请对所有已审核的数据库使用同一存储帐户，以充分利用审核报告模板。
+   > 
 
-6. 若要自定义审核的事件，可以使用 PowerShell 或 REST API - 有关更多详细信息，请参阅[自动化 (PowerShell/REST API)](#subheading-7) 部分。
+5. 单击“保存” 。
 
-7. 单击“保存” 。
-
+> [!IMPORTANT]
+> 若要自定义审核的事件，可以使用 PowerShell 或 REST API - 有关更多详细信息，请参阅[自动化 (PowerShell/REST API)](sql-database-auditing.md#subheading-7) 部分。
+>
 
 ## <a name="enable-sql-database-threat-detection"></a>启用 SQL 数据库威胁检测
 
@@ -188,7 +214,7 @@ Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储
 
     ![导航窗格](./media/sql-database-security-tutorial/td-turn-on-threat-detection.png)
 
-    检测到异常数据库活动时，你将收到电子邮件通知。 电子邮件将提供可疑安全事件的相关信息，包括异常活动的性质、数据库名称、服务器名称和事件时间。 此外，还会提供可能原因和建议操作的相关信息，以帮助你调查和缓解数据库的潜在威胁。 后续步骤将引导你完成收到此类电子邮件后所需执行的操作：
+    如果检测到异常数据库活动，便会立即发送电子邮件通知。 电子邮件将提供可疑安全事件的相关信息，包括异常活动的性质、数据库名称、服务器名称和事件时间。 此外，还会提供可能原因和建议操作的相关信息，以帮助你调查和缓解数据库的潜在威胁。 后续步骤将引导你完成收到此类电子邮件后所需执行的操作：
 
     ![威胁检测电子邮件](./media/sql-database-threat-detection-get-started/4_td_email.png)
 

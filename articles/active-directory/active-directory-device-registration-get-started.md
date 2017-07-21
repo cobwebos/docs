@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2017
+ms.date: 06/23/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.reviewer: jairoc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
 ms.openlocfilehash: 9934902811354ffa4047d70d995a6dd44be0229b
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/10/2017
-
 
 ---
 # <a name="get-started-with-azure-active-directory-device-registration"></a>Azure Active Directory 设备注册入门
@@ -51,19 +52,19 @@ Azure Active Directory 设备注册支持的方案：Azure Active Directory 设�
 
 **若要启用 Azure Active Directory 设备注册服务，请执行以下操作：**
 
-1.    以管理员身份登录到 Microsoft Azure 门户。
+1.  以管理员身份登录到 Microsoft Azure 门户。
 
-2.    在左窗格中选择“Active Directory”。
+2.  在左窗格中选择“Active Directory”。
 
-3.    在“目录”选项卡中选择你的目录。
+3.  在“目录”选项卡中选择你的目录。
 
-4.    单击 **“配置”**。
+4.  单击 **“配置”**。
 
-5.    滚动到“设备”。
+5.  滚动到“设备”。
 
-6.    为用户选择“全部”可以将其设备注册到 AZURE AD 中。
+6.  为用户选择“全部”可以将其设备注册到 AZURE AD 中。
 
-7.    选择你想要按每个用户授权的设备的最大数目。
+7.  选择你想要按每个用户授权的设备的最大数目。
 
 注册 Microsoft Intune 或适用于 Office 365 的移动设备管理需要进行设备注册。 如果已配置其中的任一服务，则会选中“全部”并禁用“无”。 请确保这些项正确配置，并且具有相应的许可。
 
@@ -79,19 +80,19 @@ Azure Active Directory 设备注册支持的方案：Azure Active Directory 设�
 
 **若要查看和管理 Azure Active Directory 中的设备对象，请执行以下操作：**
  
-1.    以管理员身份登录到 Microsoft Azure 门户。
+1.  以管理员身份登录到 Microsoft Azure 门户。
 
-2.    在左窗格中选择“Active Directory”。
+2.  在左窗格中选择“Active Directory”。
 
-3.    选择你的目录。
+3.  选择你的目录。
 
-4.    选择“用户”。 
+4.  选择“用户”。 
 
 5.  单击要查看其设备的用户。
 
-6.    选择“设备”。
+6.  选择“设备”。
 
-7.    选择“已注册的设备”。
+7.  选择“已注册的设备”。
 
 现在，你可以查看、阻止或取消阻止用户的已注册设备。
 已加入本地域并自动注册的 Windows 10 设备不会显示在“用户”选项卡下。 请使用 Get-MsolDevice PowerShell 命令查找你企业中的所有设备。 

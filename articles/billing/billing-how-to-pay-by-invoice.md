@@ -4,7 +4,7 @@ description: "说明如何用发票为 Azure 订阅付款"
 services: 
 documentationcenter: 
 author: genlin
-manager: vikdesai
+manager: jlian
 editor: 
 tags: billing
 ms.service: billing
@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: genli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
 ms.openlocfilehash: 4452a4310f3b66ee2f27f43b0c48012c1a610b5b
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/21/2017
 
 

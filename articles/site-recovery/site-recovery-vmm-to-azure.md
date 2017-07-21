@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/14/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 7de37f106e33d425b3b497cec640bac3fa4afa74
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: b53e7f5454cd97f013fdce052f0a990a44958dee
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-site-recovery-in-the-azure-portal"></a>在 Azure 门户中使用 Site Recovery 将 VMM 云中的 Hyper-V 虚拟机复制到 Azure
@@ -42,7 +41,7 @@ ms.lasthandoff: 05/17/2017
 按照该文操作，完成以下部署步骤：
 
 
-1. [深入了解](site-recovery-components.md#hyper-v-to-azure)此部署的体系结构。 此外，[深入了解](site-recovery-hyper-v-azure-architecture.md) Hyper-V 复制在 Site Recovery 中的工作原理。
+1. [深入了解](site-recovery-components.md)此部署的体系结构。 此外，[深入了解](site-recovery-hyper-v-azure-architecture.md) Hyper-V 复制在 Site Recovery 中的工作原理。
 2. 验证先决条件和限制。
 3. 设置 Azure 网络和存储帐户。
 4. 准备本地 VMM 服务器和 Hyper-V 主机。

@@ -3,7 +3,7 @@ title: "Azure Active Directory 登录活动报告 API 参考 |Microsoft 文档"
 description: "Azure Active Directory 登录活动报告 API 的参考信息"
 services: active-directory
 documentationcenter: 
-author: dhanyahk
+author: MarkusVi
 manager: femila
 editor: 
 ms.assetid: ddcd9ae0-f6b7-4f13-a5e1-6cbf51a25634
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/16/2017
+ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 077c39d1a6f61aba7b184ee616a93f30cdb7d12c
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
+ms.openlocfilehash: d83f1a899ba38dab2c1c1661adede87db6f88c20
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/17/2017
 
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-reference"></a>Azure Active Directory 登录活动报告 API 参考
@@ -29,10 +29,9 @@ Azure AD 报告提供一个用于通过代码或相关工具访问登录活动�
 
 请参阅:
 
-* [登录活动](active-directory-reporting-azure-portal.md#sign-in-activities)，其中介绍了详细的概念信息
+* [登录活动](active-directory-reporting-azure-portal.md#activity-reports)，其中介绍了详细的概念信息
 * [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started.md)，获取有关报告 API 的详细信息。
 
-有关疑问、问题或反馈，请联系 [AAD 报告帮助](mailto:aadreportinghelp@microsoft.com)。
 
 ## <a name="who-can-access-the-api-data"></a>谁可以访问 API 数据？
 * “安全管理员”或“安全读者”角色中的用户和服务主体

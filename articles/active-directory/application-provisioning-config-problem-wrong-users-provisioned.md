@@ -11,23 +11,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: 5ccb9e920ce8e1c95b9ce0ffc8626f2dcf3783d8
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/11/2017
-
 
 ---
 
-# <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>预配到 Azure AD 库应用程序的用户组错误
+<a id="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application" class="xliff"></a>
+
+# 预配到 Azure AD 库应用程序的用户组错误
 
 将哪些用户预配到应用主要取决于已将哪些用户和组**分配**到该应用程序。
 
 使用以下资源，了解如何查看已将哪些用户和组分配到 Azure Active Directory 中的应用程序。
 
-## <a name="assign-a-user-directly-as-an-administrator"></a>以管理员身份直接将用户分配到应用程序
+<a id="assign-a-user-directly-as-an-administrator" class="xliff"></a>
+
+## 以管理员身份直接将用户分配到应用程序
 
 若要直接将一个或多个用户分配到应用程序，请执行以下步骤：
 
@@ -65,7 +69,9 @@ ms.lasthandoff: 04/11/2017
 
 如果已配置预配且已对应用运行预配，新用户应会在约 10 分钟后预配到应用程序。 查看**审核日志**了解详细信息。
 
-## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>以管理员身份直接将组分配到应用程序
+<a id="assign-a-group-directly-to-an-application-as-an-administrator" class="xliff"></a>
+
+## 以管理员身份直接将组分配到应用程序
 
 若要直接将一个或多个组分配到应用程序，请执行以下步骤：
 
@@ -110,6 +116,8 @@ ms.lasthandoff: 04/11/2017
 
 如果启用了预配组，请务必查看属性映射以确保相应字段正用于“匹配 ID”。 这可以是显示名称或电子邮件别名，因为如果匹配属性为空或未为 Azure AD 中的组填充该属性，就不会预配组及其成员。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配](active-directory-saas-app-provisioning.md)
 

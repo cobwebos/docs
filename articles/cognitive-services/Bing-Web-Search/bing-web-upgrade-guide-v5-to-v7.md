@@ -10,11 +10,11 @@ ms.technology: bing-web-search
 ms.topic: article
 ms.date: 0151/2017
 ms.author: scottwhi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 5d30b6b79e3f98c5f4039f9bdae563bfdb0e0831
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 12a3f8f47e2b7b442a16d389e2e54337510a10bd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/13/2017
 
 ---
 
@@ -76,11 +76,15 @@ Blocked|InvalidRequest.Blocked
 
 ## <a name="non-breaking-changes"></a>Non-breaking changes  
 
+### <a name="headers"></a>Headers
+
+- Added the optional [Pragma](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#pragma) request header. By default, Bing returns cached content, if available. To prevent Bing from returning cached content, set the Pragma header to no-cache (for example, Pragma: no-cache).
+
 ### <a name="query-parameters"></a>Query parameters
 
 - Added the [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#answercount) query parameter. Use this parameter to specify the number of answers that you want the response to include. The answers are chosen based on ranking. For example, if you set this parameter to three (3), the response includes the top three ranked answers.  
   
-- Added the [promote](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#promote) query parameter. Use this parameter along with `answerCount` to explicitly include one or more answer types, regardless of their ranking. For example, to promote videos and images into the response, you’d set promote to *videos,images*. The list of answers that you want to promote does not count against the `answerCount` limit. For example, if `answerCount` is 2 and `promote` is set to *videos,images*, the response could include webpages, entities, videos, and images.
+- Added the [promote](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#promote) query parameter. Use this parameter along with `answerCount` to explicitly include one or more answer types, regardless of their ranking. For example, to promote videos and images into the response, you’d set promote to *videos,images*. The list of answers that you want to promote does not count against the `answerCount` limit. For example, if `answerCount` is 2 and `promote` is set to *videos,images*, the response might include webpages, news, videos, and images.
 
 ### <a name="object-changes"></a>Object changes
 

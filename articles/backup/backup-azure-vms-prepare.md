@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/25/2017
 ms.author: markgal;trinadhk;
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 045dfff9a439674c220a962907d2fe91f2fe0b35
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 072efdccaa8df5d430314d753a437b524986b53c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -32,7 +33,7 @@ ms.lasthandoff: 04/26/2017
 在备份 Azure 虚拟机 (VM) 之前，必须满足三个条件。
 
 * 你需要*在与 VM 相同的区域*中创建备份保管库，或标识现有的备份保管库。
-* 在 Azure 公共 Internet 地址和 Azure 存储空间终结点之间建立网络连接。
+* 在 Azure 公共 Internet 地址和 Azure 存储终结点之间建立网络连接。
 * 在 VM 上安装 VM 代理。
 
 如果确定环境满足这些条件，请转到[备份 VM 的文章](backup-azure-vms.md)。 否则，请继续阅读本文，其中将会引导你逐步完成准备环境来备份 Azure VM 的过程。
@@ -89,10 +90,10 @@ ms.lasthandoff: 04/26/2017
 若要将 Azure 数据中心 IP 范围加入允许列表，请参阅 [Azure 网站](http://www.microsoft.com/en-us/download/details.aspx?id=41653)，获取有关 IP 范围的详细信息和说明。
 
 ### <a name="using-an-http-proxy-for-vm-backups"></a>使用 HTTP 代理进行 VM 备份
-备份 VM 时，VM 上的备份扩展会使用 HTTPS API 将快照管理命令发送到 Azure 存储空间。 将通过 HTTP 代理路由备份扩展流量，因为它是为了访问公共 Internet 而配置的唯一组件。
+备份 VM 时，VM 上的备份扩展会使用 HTTPS API 将快照管理命令发送到 Azure 存储。 将通过 HTTP 代理路由备份扩展流量，因为它是为了访问公共 Internet 而配置的唯一组件。
 
 > [!NOTE]
-> 至于应该使用何种代理软件，我们不提供任何建议。 请确保你选取的代理可以进行下述配置步骤。
+> 至于应该使用何种代理软件，我们不提供任何建议。 请确保所选代理具有出站粘性且可用于执行以下配置步骤。 请确保第三方软件不修改代理设置
 >
 >
 

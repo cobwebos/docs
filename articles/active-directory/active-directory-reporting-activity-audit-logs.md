@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory 门户中的“审核活动”报告 | Microsoft Docs"
 description: "Azure Active Directory 门户中的审核活动报告简介"
 services: active-directory
@@ -13,17 +12,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 07/05/2017
 ms.author: markvi
+ms.reviewer: dhanyahk
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: d8c49272789e7d33c6f0684875765a1ecea5a2ff
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
 
-
 ---
-# <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“审核活动”报告 
+# Azure Active Directory 门户中的“审核活动”报告
+<a id="audit-activity-reports-in-the-azure-active-directory-portal" class="xliff"></a> 
 
 通过 Azure Active Directory (Azure AD) 中的报告，可以获取确定环境运行状况所需的信息。
 
@@ -38,13 +38,15 @@ Azure AD 中的报告体系结构由以下部分组成：
 
 本主题对审核活动进行了概述。
  
-## <a name="who-can-access-the-data"></a>谁可以访问该数据？
+## 谁可以访问该数据？
+<a id="who-can-access-the-data" class="xliff"></a>
 * 安全管理员或安全读者角色中的用户
 * 全局管理员
 * 各用户（非管理员）可以查看自己的活动
 
 
-## <a name="audit-logs"></a>审核日志
+## 审核日志
+<a id="audit-logs" class="xliff"></a>
 
 Azure Active Directory 中的审核日志为符合性提供系统活动的记录。  
 所有审核数据的第一个入口点为 **Azure Active Directory** 的“活动”部分中的“审核日志”。
@@ -74,7 +76,8 @@ Azure Active Directory 中的审核日志为符合性提供系统活动的记录
 ![审核日志](./media/active-directory-reporting-activity-audit-logs/22.png "审核日志")
 
 
-## <a name="filtering-audit-logs"></a>筛选审核日志
+## 筛选审核日志
+<a id="filtering-audit-logs" class="xliff"></a>
 
 若要将所报告数据的范围缩小到适当的级别，可以使用以下字段筛选审核数据：
 
@@ -134,14 +137,16 @@ Azure Active Directory 中的审核日志为符合性提供系统活动的记录
 若要获取所有审核活动的列表，可以使用图形 API（https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta，其中， $tenantdomain 为域名），也可以参阅[审核报告事件](active-directory-reporting-audit-events.md#list-of-audit-report-events)一文。
 
 
-## <a name="audit-logs-shortcuts"></a>审核日志快捷方式
+## 审核日志快捷方式
+<a id="audit-logs-shortcuts" class="xliff"></a>
 
 除了 **Azure Active Directory**，Azure 门户还提供了两个额外的进行数据审核的入口点：
 
 - 用户和组
 - 企业应用程序
 
-### <a name="users-and-groups-audit-logs"></a>用户和组审核日志
+### 用户和组审核日志
+<a id="users-and-groups-audit-logs" class="xliff"></a>
 
 使用基于用户和组的审核报表，可以获得如下问题的答案：
 
@@ -165,7 +170,8 @@ Azure Active Directory 中的审核日志为符合性提供系统活动的记录
 
 ![审核日志](./media/active-directory-reporting-activity-audit-logs/93.png "审核日志")
 
-### <a name="enterprise-applications-audit-logs"></a>企业应用程序审核日志
+### 企业应用程序审核日志
+<a id="enterprise-applications-audit-logs" class="xliff"></a>
 
 通过基于应用程序的审核报表，可以获得如下问题的答案：
 
@@ -184,7 +190,8 @@ Azure Active Directory 中的审核日志为符合性提供系统活动的记录
 ![审核日志](./media/active-directory-reporting-activity-audit-logs/25.png "审核日志")
 
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 请参阅 [Azure Active Directory 报表指南](active-directory-reporting-guide.md)。
 
 

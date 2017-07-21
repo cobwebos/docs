@@ -12,24 +12,31 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
 ms.openlocfilehash: a17bf35abb54eded78d112ac4b25ddebaf5fb5e8
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/05/2017
 
 ---
-# <a name="generic-sql-connector-step-by-step"></a>通用 SQL 连接器分步说明
+<a id="generic-sql-connector-step-by-step" class="xliff"></a>
+
+# 通用 SQL 连接器分步说明
 本主题是一份循序渐进的指南。 其中将会创建一个简单的示例 HR 数据库，然后使用它导入一些用户及其组成员身份。
 
-## <a name="prepare-the-sample-database"></a>准备示例数据库
+<a id="prepare-the-sample-database" class="xliff"></a>
+
+## 准备示例数据库
 在运行 SQL Server 的服务器上，运行[附录 A](#appendix-a) 中的 SQL 脚本。此脚本创建名为 GSQLDEMO 的示例数据库。 创建的数据库的对象模型如下图所示：  
 ![对象模型](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/objectmodel.png)
 
 还会创建要用于连接到数据库的用户。 在本演练中，用户名为 FABRIKAM\SQLUser 并位于域中。
 
-## <a name="create-the-odbc-connection-file"></a>创建 ODBC 连接文件
+<a id="create-the-odbc-connection-file" class="xliff"></a>
+
+## 创建 ODBC 连接文件
 通用 SQL 连接器使用 ODBC 连接到远程服务器。 首先，需要创建一个包含 ODBC 连接信息的文件。
 
 1. 在服务器上启动 ODBC 管理实用工具：  
@@ -59,7 +66,9 @@ ms.openlocfilehash: a17bf35abb54eded78d112ac4b25ddebaf5fb5e8
 
 现在，我们已有了所需的文件，可以开始创建连接器了。
 
-## <a name="create-the-generic-sql-connector"></a>创建通用 SQL 连接器
+<a id="create-the-generic-sql-connector" class="xliff"></a>
+
+## 创建通用 SQL 连接器
 1. 在同步服务管理器 UI 中，依次选择“连接器”和“创建”。 选择“通用 SQL (Microsoft)”，并为它指定描述性的名称。  
    ![Connector1](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector1.png)
 2. 找到在上一节中创建的 DSN 文件并将其上载到服务器。 提供用于连接到数据库的凭据。  
@@ -80,7 +89,9 @@ ms.openlocfilehash: a17bf35abb54eded78d112ac4b25ddebaf5fb5e8
    ![Connector9](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector9.png)
 10. 在“选择对象类型”和“选择属性”中，选择这两种对象类型和所有属性。 在“配置定位点”页上，单击“完成”。
 
-## <a name="create-run-profiles"></a>创建运行配置文件
+<a id="create-run-profiles" class="xliff"></a>
+
+## 创建运行配置文件
 1. 在同步服务管理器 UI 中，依次选择“连接器”和“配置运行配置文件”。 单击“新建配置文件”。 从“完全导入”开始。  
    ![Runprofile1](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/runprofile1.png)
 2. 选择类型“完全导入(仅暂存)”。  
@@ -96,14 +107,18 @@ ms.openlocfilehash: a17bf35abb54eded78d112ac4b25ddebaf5fb5e8
 6. 可选：如果需要，可以配置更多运行配置文件。 本演练只使用“完全导入”。
 7. 单击“确定”完成运行配置文件的更改。
 
-## <a name="add-some-test-data-and-test-the-import"></a>添加一些测试数据，并测试导入
+<a id="add-some-test-data-and-test-the-import" class="xliff"></a>
+
+## 添加一些测试数据，并测试导入
 在示例数据库中填写一些测试数据。 准备就绪后，请依次选择“运行”和“完全导入”。
 
 以下是拥有两个电话号码的用户和一个包含一些成员的组。  
 ![cs1](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/cs1.png)  
 ![cs2](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/cs2.png)  
 
-## <a name="appendix-a"></a>附录 A
+<a id="appendix-a" class="xliff"></a>
+
+## 附录 A
 **用于创建示例数据库的 SQL 脚本**
 
 ```SQL
@@ -202,9 +217,4 @@ GO
 ALTER TABLE [dbo].[USERPHONE] CHECK CONSTRAINT [FK_USERPHONE_USER]
 GO
 ```
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

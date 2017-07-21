@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: ff0b234f27e2d5068cc0dcdc73e32e60f8622633
-ms.lasthandoff: 03/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: f8917ca67aa5f15ccc11030fd0292ac803d9e994
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -113,6 +114,9 @@ private static async void SendDeviceToCloudMessagesAsync()
 若要深入了解如何处理来自服务总线队列的消息，请参阅[队列入门][Service Bus queue]教程。
 
 1. 按[队列入门][Service Bus queue]中所述，创建服务总线队列。 队列必须与 IoT 中心位于同一订阅和区域中。 记下命名空间和队列名称。
+
+    > [!NOTE]
+    > 用作 IoT 中心终结点的服务总线队列和主题不得启用会话或重复检测选项。 如果启用了其中任一选项，该终结点会在 Azure 门户中显示为“无法访问”。
 
 2. 在 Azure 门户中，打开 IoT 中心并单击“终结点”。
     

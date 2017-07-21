@@ -1,5 +1,6 @@
 
-## <a name="about-vhds"></a>关于 VHD
+## 关于 VHD
+<a id="about-vhds" class="xliff"></a>
 
 Azure 中使用的 VHD 是在 Azure 的标准或高级存储帐户中作为页 Blob 存储的 .vhd 文件。 有关页 Blob 的详细信息，请参阅[了解块 Blob 和页 Blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/)。 有关高级存储的详细信息，请参阅[高性能高级存储和 Azure VM](../articles/storage/storage-premium-storage.md)。
 
@@ -15,25 +16,33 @@ Azure 中所有要用作磁盘或映像创建来源的 .vhd 文件都是只读�
 > 如果你从存储空间删除了源 .vhd 文件或删除了你的存储帐户，Microsoft 无法为你恢复数据。
 > 
 
-## <a name="types-of-disks"></a>磁盘类型 
+## 磁盘类型
+<a id="types-of-disks" class="xliff"></a> 
 
-在创建磁盘时，有两种适用于存储的性能层可供选择 -- 标准存储和高级存储。 另外还有两类磁盘 -- 非托管磁盘和托管磁盘 -- 这两类磁盘可以驻留在任一性能层中。  
+Azure 磁盘具备 99.999% 的可用性。 Azure 磁盘持续提供企业级持久性，年化故障率为 0%，达到行业领先水平。
 
-### <a name="standard-storage"></a>标准存储 
+在创建磁盘时，有两种适用于存储的性能层可供选择 -- 标准存储和高级存储。 另外还有两类磁盘 -- 非托管磁盘和托管磁盘 -- 这两类磁盘可以驻留在任一性能层中。
+
+
+### 标准存储
+<a id="standard-storage" class="xliff"></a> 
 
 标准存储受 HDD 支持，可以在确保性能的同时提供经济高效的存储。 标准存储可以在一个数据中心进行本地复制，也可以通过主要数据中心和辅助数据中心实现异地冗余。 有关存储复制的详细信息，请参阅 [Azure 存储复制](../articles/storage/storage-redundancy.md)。 
 
 若要详细了解如何将标准存储与 VM 磁盘结合使用，请参阅[标准存储和磁盘](../articles/storage/storage-standard-storage.md)。
 
-### <a name="premium-storage"></a>高级存储 
+### 高级存储
+<a id="premium-storage" class="xliff"></a> 
 
-高级存储受 SSD 支持，为运行 I/O 密集型工作负荷的 VM 提供高性能、低延迟的磁盘支持。 可以将高级存储与 DS、DSv2、GS 或 FS 系列的 Azure VM 结合使用。 有关详细信息，请参阅[高级存储](../articles/storage/storage-premium-storage.md)。
+高级存储受 SSD 支持，为运行 I/O 密集型工作负荷的 VM 提供高性能、低延迟的磁盘支持。 可以将高级存储与 DS、DSv2、GS、Ls 或 FS 系列的 Azure VM 结合使用。 有关详细信息，请参阅[高级存储](../articles/storage/storage-premium-storage.md)。
 
-### <a name="unmanaged-disks"></a>非托管磁盘
+### 非托管磁盘
+<a id="unmanaged-disks" class="xliff"></a>
 
 非托管磁盘是一直被 VM 使用的传统类型的磁盘。 有了这些以后，即可创建自己的存储帐户并在创建磁盘时指定该存储帐户。 必须确保不将太多磁盘置于同一存储帐户中，因为可能会超过存储帐户的[可伸缩性目标](../articles/storage/storage-scalability-targets.md)（例如 20,000 IOPS），导致 VM 数受限。 使用非托管磁盘时，必须确定如何最大程度地使用一个或多个存储帐户，以便充分利用 VM 的性能。
 
-### <a name="managed-disks"></a>托管磁盘 
+### 托管磁盘
+<a id="managed-disks" class="xliff"></a> 
 
 托管磁盘为用户在后台处理存储帐户的创建/管理，确保用户不需担心存储帐户的可伸缩性限制。 用户只需指定磁盘大小和性能层（标准/高级），然后 Azure 就会为用户创建和管理磁盘。 即使在添加磁盘或者对 VM 进行上下伸缩的时候，用户也不需担心所使用的存储。 
 
@@ -41,7 +50,8 @@ Azure 中所有要用作磁盘或映像创建来源的 .vhd 文件都是只读�
 
 建议为新 VM 使用 Azure 托管磁盘，并将之前的非托管磁盘转换为托管磁盘，以便充分利用托管磁盘中提供的多项功能。
 
-### <a name="disk-comparison"></a>磁盘比较
+### 磁盘比较
+<a id="disk-comparison" class="xliff"></a>
 
 下表针对托管磁盘和非托管磁盘比较了高级和标准两个性能层，方便用户确定要使用的具体层。
 
@@ -50,6 +60,7 @@ Azure 中所有要用作磁盘或映像创建来源的 .vhd 文件都是只读�
 | 磁盘类型 | 固态硬盘 (SSD) | 硬盘驱动器 (HDD)  |
 | 概述  | 基于 SSD 的高性能、低延迟磁盘支持，适用于运行 IO 密集型工作负荷或托管任务关键型生产环境的 VM | 基于 HDD 的经济高效型磁盘支持，适用于开发/测试 VM 方案 |
 | 方案  | 生产和性能敏感型工作负荷 | 开发/测试, 非关键, <br>很少访问 |
-| 磁盘大小 | P10：128 GB<br>P20：512 GB<br>P30：1024 GB | 非托管磁盘：1 GB – 1 TB <br><br>托管磁盘：<br> S4：32 GB <br>S6：64 GB <br>S10：128 GB <br>S20：512 GB <br>S30：1024 GB |
-| 每个磁盘的最大吞吐量 | 200 MB/秒 | 60 MB/秒 |
-| 每个磁盘的最大 IOPS | 5000 IOPS | 500 IOPS |
+| 磁盘大小 | P4：32 GB（仅托管磁盘）<br>P6：64 GB（仅托管磁盘）<br>P10：128 GB<br>P20：512 GB<br>P30：1024 GB<br>P40：2048 GB<br>P50：4095 GB | 非托管磁盘：1 GB - 4 TB (4095 GB) <br><br>托管磁盘：<br> S4：32 GB <br>S6：64 GB <br>S10：128 GB <br>S20：512 GB <br>S30：1024 GB <br>S40：2048 GB<br>S50：4095 GB| 
+| 每个磁盘的最大吞吐量 | 250 MB/秒 | 60 MB/秒 | 
+| 每个磁盘的最大 IOPS | 7,500 IOPS | 500 IOPS | 
+

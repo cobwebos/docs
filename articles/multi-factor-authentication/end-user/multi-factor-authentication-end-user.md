@@ -5,40 +5,41 @@ services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: curtland
 ms.assetid: e02cc045-2ac0-41ff-b07f-e9255e320383
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/15/2017
+ms.date: 06/15/2017
 ms.author: kgremban
+ms.reviewer: yossib
 ms.custom: end-user
-translationtype: Human Translation
-ms.sourcegitcommit: 4ff028f88e984f28bc0f4a228aabed1fabc90560
-ms.openlocfilehash: dd9b0692dbc044e4bed26cfe7e9e4be11450a595
-ms.lasthandoff: 12/22/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: 6527e624ce9c911b201881ffd409c57b2f065ef3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/22/2017
 
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Azure Multi-Factor Authentication 对我而言有什么用途？
 假设 IT 部门的某位同事或者你的老板向你发送了一封电子邮件，指出他们已对你的帐户添加了附加的安全验证。  那么，这是什么意思呢？
 
-不要担心。  这只是表示你的组织想要采取一些额外的措施，来确保使用你帐户登入 Office 365 等产品的用户是你本人。  这种验证是使用你的用户名、密码和电话的组合来实现的。  其中的电话包括你的办公电话或智能手机电话号码。
+不要担心。 你的组织只是想要采取一些额外的措施，来确保使用你帐户登入的是你本人。 这种验证是使用你的用户名、密码和电话的组合来实现的。  
 
-因此，你要做的第一件事就是完成注册过程。  不过，在开始执行该过程之前，还需要对几件事做出决定。
+因此，要做的第一件事就是完成注册过程。  不过，在开始执行该过程之前，还需要对几件事做出决定。
 
 * **通过办公电话还是手机号码** - 选择是使用办公电话还是手机号码。
 * **通过手机通话、短信还是移动应用** - 如果使用手机，请选择是接听电话、接收短信还是使用移动应用。
 * **使用移动应用中的通知还是验证码** - 如果使用移动应用，请选择是接收需要回应的通知还是验证码。
 
 > [!NOTE]
-> 请注意，你的 IT 部门可能会禁用上述一个或多个选项。  如果存在这种情况，在注册过程中这些禁用的选项将不可用。  
+> 你的 IT 部门可能会禁用上述一个或多个选项。  如果是这样，这些选项在注册过程中将不可用。  
 
-在确定验证方法后，你可以开始注册。  使用[设置体验](multi-factor-authentication-end-user-first-time.md)链接开始逐步完成注册过程。
+在确定验证方法后，你可以开始注册。 使用[设置体验](multi-factor-authentication-end-user-first-time.md)链接开始逐步完成注册过程。
 
-## <a name="how-to-get-going-with-multi-factor-authentication"></a>如何开始使用 Multi-Factor Authentication
-选择下面的主题之一以开始。
+## <a name="how-to-get-going-with-two-step-verification"></a>如何使用双重验证
+选择这些主题之一以开始。
 
 | 主题 | 说明 |
 |:--- |:--- |

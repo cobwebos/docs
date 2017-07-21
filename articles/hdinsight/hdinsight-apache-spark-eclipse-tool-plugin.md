@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: d83e84e8ea2158ecf6c8b966732ca1d8961389e0
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 013a3175d5e19689629d1d0ea3b413184e71c485
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -87,7 +87,7 @@ ms.lasthandoff: 05/18/2017
    * 确保 Spark SDK 已设置为你下载 SDK 的位置。 下载位置的链接包含在本文前面的[先决条件](#prerequisites)中。 也可以从包含在此对话框中的链接下载 SDK。
 
     ![“新建 HDInsight Scala 项目”对话框](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-3.png)
-4.    在下一个对话框中，单击“库”选项卡并保留默认值，然后单击“完成”。 
+4.  在下一个对话框中，单击“库”选项卡并保留默认值，然后单击“完成”。 
    
     ![“库”选项卡](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-4.png)
 
@@ -208,7 +208,7 @@ ms.lasthandoff: 05/18/2017
 ### <a name="tools-and-extensions"></a>工具和扩展
 * [使用用于 IntelliJ 的 Azure 工具包创建和提交 Spark Scala 应用程序](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [使用用于 IntelliJ 的 Azure 工具包远程调试 Spark 应用程序](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](hdinsight-apache-spark-zeppelin-notebook.md)
 * [在 HDInsight 的 Spark 群集中可用于 Jupyter 笔记本的内核](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](hdinsight-apache-spark-jupyter-notebook-install-locally.md)

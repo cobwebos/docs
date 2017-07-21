@@ -2,7 +2,7 @@
 title: "存档 Azure 诊断日志 | Microsoft Docs"
 description: "了解如何存档 Azure 诊断日志，将其长期保留在存储帐户中。"
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2016
 ms.author: johnkem
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 3e82377c36da1563931bc0301daa4534e6f82377
 ms.openlocfilehash: e3413236445f3f6034a228dc93624d3fdc9b87ad
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/10/2016
 
 ---
 # <a name="archive-azure-diagnostic-logs"></a>存档 Azure 诊断日志
@@ -133,10 +134,5 @@ azure insights diagnostic set --resourceId /subscriptions/s1id1234-5679-0123-456
 * [下载 blob 进行分析](../storage/storage-dotnet-how-to-use-blobs.md#download-blobs)
 * [将诊断日志流式传输到事件中心](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [详细了解诊断日志](monitoring-overview-of-diagnostic-logs.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

@@ -11,12 +11,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 03/09/2017
+ms.date: 06/30/2017
 ms.author: pakunapa
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 5640901dae5d8c9d8619865be66b6c188a059363
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: c4634e3d8efb1745fffcfe3e647e43d867038716
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -93,7 +94,7 @@ ms.lasthandoff: 04/03/2017
             ...
         </Section>
         ```
-        在这种情况下，`CreateServiceReplicaListeners` 方法如下所示：
+        在这种情况下，`CreateServiceInstanceListeners` 方法如下所示：
 
         ```java
         protected List<ServiceInstanceListener> createServiceInstanceListeners() {

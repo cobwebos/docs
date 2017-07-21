@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/04/2017
+ms.date: 06/29/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: e7ed94a3aa24d401e073cf260453550b4c67f47e
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: c5971a137d9081be8c5978f481ec42a1f91e5a56
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -29,14 +29,13 @@ ms.lasthandoff: 05/18/2017
 > * [.NET SDK](data-lake-store-get-started-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
-> * [Azure CLI](data-lake-store-get-started-cli.md)
 > * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
 >
 
-了解如何使用 Azure CLI 2.0 来创建 Azure Data Lake Store 帐户以及执行基本操作，如创建文件夹、上载和下载数据文件、删除帐户等。有关 Data Lake Store 的详细信息，请参阅 [Data Lake Store 概述](data-lake-store-overview.md)。
+了解如何使用 Azure CLI 2.0 来创建 Azure Data Lake Store 帐户以及执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户等。有关 Data Lake Store 的详细信息，请参阅 [Data Lake Store 概述](data-lake-store-overview.md)。
 
 Azure CLI 2.0 是 Azure 的新命令行体验，用于管理 Azure 资源。 它可以在 macOS、Linux 和 Windows 上使用。 有关详细信息，请参阅 [Overview of Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview)（Azure CLI 2.0 概述）。 也可查看 [Azure Data Lake Store CLI 2.0 reference](https://docs.microsoft.com/cli/azure/dls)（Azure Data Lake Store CLI 2.0 参考），获取命令和语法的完整列表。
 
@@ -50,7 +49,7 @@ Azure CLI 2.0 是 Azure 的新命令行体验，用于管理 Azure 资源。 它
 
 ## <a name="authentication"></a>身份验证
 
-本文对 Data Lake Store 使用一种较为简单的身份验证方法，可以在其中以最终用户的身份登录。 系统会根据登录用户的访问级别监管对 Data Lake Store 帐户和文件系统的访问权限。 不过，也可以使用其他方法在 Data Lake Store 中进行身份验证，即**最终用户身份验证**或**服务到服务身份验证**。 有关如何进行身份验证的说明和详细信息，请参阅[使用 Azure Active Directory 进行 Data Lake Store 身份验证](data-lake-store-authenticate-using-active-directory.md)。
+本文对 Data Lake Store 使用一种较为简单的身份验证方法，可以在其中以最终用户的身份登录。 系统会根据登录用户的访问级别监管对 Data Lake Store 帐户和文件系统的访问权限。 不过，也可以使用其他方法在 Data Lake Store 中进行身份验证，即**最终用户身份验证**或**服务到服务身份验证**。 有关如何进行身份验证的说明和详细信息，请参阅[最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)或[服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
 
 
 ## <a name="log-in-to-your-azure-subscription"></a>登录到 Azure 订阅
@@ -96,11 +95,11 @@ az dls fs create --account mydatalakestore --path /mynewfolder --folder
 > 
 >
 
-## <a name="upload-data-to-a-data-lake-store-account"></a>将数据上载到 Data Lake Store 帐户
+## <a name="upload-data-to-a-data-lake-store-account"></a>将数据上传到 Data Lake Store 帐户
 
-可以直接将数据上载到 Data Lake Store 的根级别，也可以上载到在帐户中创建的文件夹。 下面的代码片段演示了如何将一些示例数据上传到上一节中创建的文件夹 (**mynewfolder**)。
+可以直接将数据上传到 Data Lake Store 的根级别，也可以上传到在帐户中创建的文件夹。 下面的代码片段演示了如何将一些示例数据上传到上一节中创建的文件夹 (**mynewfolder**)。
 
-如果正在查找一些示例数据进行上载，可以从 **Azure Data Lake Git 存储库** 获取 [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)文件夹。 下载文件，并将其存储在计算机的本地目录，如 C:\sampledata\.
+如果正在查找一些示例数据进行上传，可以从 **Azure Data Lake Git 存储库** 获取 [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)文件夹。 下载文件，并将其存储在计算机的本地目录中，如 C:\sampledata\。
 
 ```azurecli
 az dls fs upload --account mydatalakestore --source-path "C:\SampleData\AmbulanceData\vehicle1_09142014.csv" --destination-path "/mynewfolder/vehicle1_09142014.csv"
@@ -150,7 +149,7 @@ az dls fs list --account mydatalakestore --path /mynewfolder
 
 * 使用以下命令，**下载文件**。 请确保指定的目标路径已存在。
   
-    ```azurecli        
+    ```azurecli     
     az dls fs download --account mydatalakestore --source-path /mynewfolder/vehicle1_09142014_copy.csv --destination-path "C:\mysampledata\vehicle1_09142014_copy.csv"
     ```
 

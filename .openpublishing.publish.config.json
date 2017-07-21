@@ -58,5 +58,6 @@
       "url": "https://github.com/Azure/azure-docs-powershell-samples",
       "branch": "master"
     }
-  ]
+  ],
+  "continue_with_document_error": true
 }

@@ -1,6 +1,6 @@
 ## <a name="create-a-device-identity"></a>创建设备标识
 
-本部分使用名为 [iothub-explorer][iot-hub-explorer] 的 Node.js 工具为本教程创建设备标识。
+本部分使用名为 [iothub-explorer][iot-hub-explorer] 的 Node.js 工具为本教程创建设备标识。 设备 ID 区分大小写。
 
 1. 在命令行环境中运行以下命令：
 
@@ -13,6 +13,8 @@
 1. 最后，以下使用命令创建名为 `myDeviceId` 的新设备标识：
 
     `iothub-explorer create myDeviceId --connection-string`
+
+   [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
 记下结果中的设备连接字符串。 设备应用使用此设备连接字符串以设备身份连接到 IoT 中心。
 

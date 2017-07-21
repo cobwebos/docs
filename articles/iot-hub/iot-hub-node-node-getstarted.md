@@ -1,6 +1,6 @@
 ---
 title: "Azure IoT 中心入门 (Node) | Microsoft 文档"
-description: "如何使用用于 Node.js 的 Azure IoT SDK，将设备到云的消息从设备发送到 Azure IoT 中心。 将创建一个用于发送消息的模拟设备、一个用于在注册表中标识注册设备的服务应用，以及一个用于从 IoT 中心读取设备到云消息的服务应用。"
+description: "了解如何通过用于 Node.js 的 IoT SDK 将设备到云消息发送到 Azure IoT 中心。 创建模拟的设备和服务应用，以便通过 IoT 中心注册设备、发送消息和读取消息。"
 services: iot-hub
 documentationcenter: nodejs
 author: dominicbetts
@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 05/22/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: b04fe441cf83ed616b0464eec83a6caf3a449532
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 3df643a517250d85200a887f5c4e62ed6c66c9c4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/23/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="connect-your-simulated-device-to-your-iot-hub-using-node"></a>使用 Node 将模拟设备连接到 IoT 中心
@@ -95,6 +94,8 @@ ms.lasthandoff: 05/23/2017
       }
     }
     ```
+   [!INCLUDE [iot-hub-pii-note-naming-device](../../includes/iot-hub-pii-note-naming-device.md)]
+
 7. 保存并关闭 **CreateDeviceIdentity.js** 文件。
 8. 若要运行 **createdeviceidentity** 应用程序，请在命令提示符下的 createdeviceidentity 文件夹中执行以下命令：
    

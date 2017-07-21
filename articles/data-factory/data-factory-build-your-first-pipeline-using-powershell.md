@@ -1,5 +1,5 @@
 ---
-title: "构建第一个数据工厂 (PowerShell) | Microsoft 文档"
+title: "构建第一个数据工厂 (PowerShell) | Microsoft Docs"
 description: "本教程使用 Azure PowerShell 创建一个示例 Azure 数据工厂管道。"
 services: data-factory
 documentationcenter: 
@@ -12,17 +12,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 04/17/2017
+ms.date: 07/10/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 6615fc7f23a8a53ae0b8d855f5b157c3787a1f06
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: d3908e2984889656a70b5295eab19164ad3bfa95
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
-# <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>教程：使用 Azure PowerShell 构建第一个 Azure 数据工厂
+<a id="tutorial-build-your-first-azure-data-factory-using-azure-powershell" class="xliff"></a>
+# 教程：使用 Azure PowerShell 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-build-your-first-pipeline.md)
 > * [Azure 门户](data-factory-build-your-first-pipeline-using-editor.md)
@@ -42,12 +43,14 @@ ms.lasthandoff: 05/18/2017
 > 
 > 一个管道可以有多个活动。 而且，你可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
 
-## <a name="prerequisites"></a>先决条件
+<a id="prerequisites" class="xliff"></a>
+## 先决条件
 * 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。
 * 遵循 [How to install and configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。
 * （可选）本文不会介绍所有数据工厂 cmdlet。 有关数据工厂 cmdlet 的综合文档，请参阅 [Data Factory Cmdlet Reference](/powershell/module/azurerm.datafactories) （数据工厂 cmdlet 参考）。
 
-## <a name="create-data-factory"></a>创建数据工厂
+<a id="create-data-factory" class="xliff"></a>
+## 创建数据工厂
 本步骤使用 Azure PowerShell 创建名为 **FirstDataFactoryPSH**的 Azure 数据工厂。 数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 例如，将数据从源复制到目标数据存储的复制活动，以及运行 Hive 脚本来转换输入数据的 HDInsight Hive 活动。 首先，在此步骤中创建数据工厂。
 
 1. 启动 Azure PowerShell 并运行以下命令。 在本教程结束之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行这些命令。
@@ -57,7 +60,7 @@ ms.lasthandoff: 05/18/2017
     ```    
    * 运行以下命令查看此帐户的所有订阅。
     ```PowerShell
-    Get-AzureRmSubscription    
+    Get-AzureRmSubscription 
     ```
    * 运行以下命令选择要使用的订阅。 此订阅应与 Azure 门户中使用的订阅相同。
     ```PowerShell
@@ -95,10 +98,12 @@ ms.lasthandoff: 05/18/2017
 
 在创建管道之前，需要创建一些数据工厂项。 首先创建链接服务用于将数据存储/计算机链接到数据存储，然后定义输入和输出数据集来表示链接的数据存储中的输入/输出数据，接下来创建管道，其中的某个活动使用这些数据集。
 
-## <a name="create-linked-services"></a>创建链接服务
+<a id="create-linked-services" class="xliff"></a>
+## 创建链接服务
 在此步骤中，将 Azure 存储帐户和按需 Azure HDInsight 群集链接到数据工厂。 Azure 存储帐户保留本示例中管道的输入和输出数据。 HDInsight 链接服务用于运行本示例中管道活动指定的 Hive 脚本。 识别方案中使用的数据存储/计算服务，创建链接的服务将这些服务链接到数据工厂。
 
-### <a name="create-azure-storage-linked-service"></a>创建 Azure 存储链接服务
+<a id="create-azure-storage-linked-service" class="xliff"></a>
+### 创建 Azure 存储链接服务
 在此步骤中，将 Azure 存储帐户链接到数据工厂。 使用相同的 Azure 存储帐户来存储输入/输出数据和 HQL 脚本文件。
 
 1. 在 C:\ADFGetStarted 文件夹中，创建包含以下内容的名为 StorageLinkedService.json 的 JSON 文件。 创建 ADFGetStarted 文件夹（如果不存在）。
@@ -134,7 +139,8 @@ ms.lasthandoff: 05/18/2017
     ```
     如果在教程的中途关闭 Azure PowerShell，则下次启动 Azure PowerShell 时必须运行 **Get-AzureRmDataFactory** cmdlet 才能完成教程。
 
-### <a name="create-azure-hdinsight-linked-service"></a>创建 Azure HDInsight 链接服务
+<a id="create-azure-hdinsight-linked-service" class="xliff"></a>
+### 创建 Azure HDInsight 链接服务
 在此步骤中，将按需 HDInsight 群集链接到数据工厂。 HDInsight 群集在运行时自动创建，在处理完成之后删除，并且会空闲指定的一段时间。 可以使用自己的 HDInsight 群集，而不使用按需 HDInsight 群集。 有关详细信息，请参阅 [Compute Linked Services](data-factory-compute-linked-services.md) （计算链接服务）。
 
 1. 在 **C:\ADFGetStarted** 文件夹中，创建包含以下内容的名为 **HDInsightOnDemandLinkedService**.json 的 JSON 文件。
@@ -175,10 +181,12 @@ ms.lasthandoff: 05/18/2017
     New-AzureRmDataFactoryLinkedService $df -File .\HDInsightOnDemandLinkedService.json
     ```
 
-## <a name="create-datasets"></a>创建数据集
+<a id="create-datasets" class="xliff"></a>
+## 创建数据集
 此步骤创建数据集来代表 Hive 处理的输入和输出数据。 这些数据集引用前面在本教程中创建的 **StorageLinkedService** 。 链接服务指向 Azure 存储帐户，数据集指定用于保存输入和输出数据的存储中的容器、文件夹和文件名。
 
-### <a name="create-input-dataset"></a>创建输入数据集
+<a id="create-input-dataset" class="xliff"></a>
+### 创建输入数据集
 1. 在 **C:\ADFGetStarted** 文件夹中，创建包含以下内容的名为 **InputTable.json** 的 JSON 文件：
 
     ```json
@@ -223,7 +231,8 @@ ms.lasthandoff: 05/18/2017
     New-AzureRmDataFactoryDataset $df -File .\InputTable.json
     ```
 
-### <a name="create-output-dataset"></a>创建输出数据集
+<a id="create-output-dataset" class="xliff"></a>
+### 创建输出数据集
 现在，创建输出数据集来表示 Azure Blob 存储中存储的输出数据。
 
 1. 在 **C:\ADFGetStarted** 文件夹中，创建包含以下内容的名为 **OutputTable.json** 的 JSON 文件：
@@ -255,7 +264,8 @@ ms.lasthandoff: 05/18/2017
     New-AzureRmDataFactoryDataset $df -File .\OutputTable.json
     ```
 
-## <a name="create-pipeline"></a>创建管道
+<a id="create-pipeline" class="xliff"></a>
+## 创建管道
 此步骤创建第一个具有 **HDInsightHive** 活动的管道。 每月获取输入切片（frequency：Month；interval：1），每月生成输出切片，活动的计划程序属性也设置为每月。 输出数据集的设置必须与活动计划程序匹配。 当前，输出数据集驱动计划，因此即使活动并未生成任何输出，也必须创建输出数据集。 如果活动没有任何输入，可以跳过创建输入数据集。 本部分结尾说明以下 JSON 中使用的属性。
 
 1. 在 C:\ADFGetStarted 文件夹中，创建包含以下内容的名为 MyFirstPipelinePSH.json 的 JSON 文件：
@@ -329,7 +339,8 @@ ms.lasthandoff: 05/18/2017
     ```
 3. 恭喜，现已使用 Azure PowerShell 成功创建第一个管道！
 
-## <a name="monitor-pipeline"></a>监视管道
+<a id="monitor-pipeline" class="xliff"></a>
+## 监视管道
 本步骤使用 Azure PowerShell 监视 Azure 数据工厂的运行情况。
 
 1. 运行 **Get-AzureRmDataFactory** 并将输出分配给 **$df** 变量。
@@ -394,7 +405,8 @@ ms.lasthandoff: 05/18/2017
 >
 >
 
-## <a name="summary"></a>摘要
+<a id="summary" class="xliff"></a>
+## 摘要
 本教程通过在 HDInsight hadoop 群集上运行 Hive 脚本，创建了一个 Azure 数据工厂来处理数据。 在 Azure 门户中使用数据工厂编辑器执行了以下步骤：
 
 1. 创建了 Azure **数据工厂**。
@@ -404,10 +416,12 @@ ms.lasthandoff: 05/18/2017
 3. 创建了两个 **数据集**，描述管道中 HDInsight Hive 活动的输入和输出数据。
 4. 创建了包含 **HDInsight Hive** 活动的**管道**。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+## 后续步骤
 本文创建了可在按需 Azure HDInsight 群集上运行 Hive 脚本、包含转换活动（HDInsight 活动）的管道。 若要了解如何使用复制活动将数据从 Azure Blob 复制到 Azure SQL，请参阅 [Tutorial: Copy data from an Azure Blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)（教程：将数据从 Azure Blob 复制到 Azure SQL）。
 
-## <a name="see-also"></a>另请参阅
+<a id="see-also" class="xliff"></a>
+## 另请参阅
 | 主题 | 说明 |
 |:--- |:--- |
 | [Data Factory Cmdlet Reference](/powershell/module/azurerm.datafactories) |参阅有关数据工厂 cmdlet 的综合文档 |

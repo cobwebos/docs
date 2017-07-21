@@ -1,6 +1,6 @@
 ---
-title: "教程 - 使用用于 Node.js 的 Azure 批处理客户端库 | Microsoft Docs"
-description: "了解 Azure 批处理的基本概念，并使用 Node.js 构建简单的解决方案。"
+title: "教程 - 使用用于 Node.js 的 Azure Batch 客户端库 | Microsoft Docs"
+description: "了解 Azure Batch 的基本概念，并使用 Node.js 构建简单的解决方案。"
 services: batch
 author: shwetams
 manager: timlt
@@ -12,10 +12,10 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 23e833b9eb926c81fd8c02cd96d43da8cffcaa43
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: c48171d8634a651718a0775183414f463c6a468c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 06/16/2017
 
 ---
 
@@ -28,20 +28,20 @@ ms.lasthandoff: 05/04/2017
 >
 >
 
-了解使用 [Azure 批处理 Node.js SDK](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/) 在 Node.js 中生成批处理客户端的基础知识。 我们采用分步方式来了解一个批处理应用程序的方案，然后通过 Node.js 客户端设置该方案。  
+了解使用 [Azure Batch Node.js SDK](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/) 在 Node.js 中生成批处理客户端的基础知识。 我们采用分步方式来了解一个批处理应用程序的方案，然后通过 Node.js 客户端设置该方案。  
 
 ## <a name="prerequisites"></a>先决条件
 本文假设你有 Node.js 的实践知识并熟悉 Linux， 同时还假设你已设置 Azure 帐户并具有创建批处理和存储服务所需的访问权限。
 
-我们建议你在完成本文概述的步骤之前，先阅读 [Azure 批处理技术概述](batch-technical-overview.md)。
+我们建议你在完成本文概述的步骤之前，先阅读 [Azure Batch 技术概述](batch-technical-overview.md)。
 
 ## <a name="the-tutorial-scenario"></a>教程方案
-让我们了解批处理工作流方案。 我们有一个简单的以 Python 编写的脚本，该脚本从 Azure Blob 存储容器下载所有 csv 文件，并将其转换为 JSON。 若要并行处理多个存储帐户容器，可将脚本部署为 Azure 批处理作业。
+让我们了解批处理工作流方案。 我们有一个简单的以 Python 编写的脚本，该脚本从 Azure Blob 存储容器下载所有 csv 文件，并将其转换为 JSON。 若要并行处理多个存储帐户容器，可将脚本部署为 Azure Batch 作业。
 
-## <a name="azure-batch-architecture"></a>Azure 批处理体系结构
-下图描绘了如何使用 Azure 批处理和 Node.js 客户端来伸缩 Python 脚本。
+## <a name="azure-batch-architecture"></a>Azure Batch 体系结构
+下图描绘了如何使用 Azure Batch 和 Node.js 客户端来伸缩 Python 脚本。
 
-![Azure 批处理方案](./media/batch-nodejs-get-started/BatchScenario.png)
+![Azure Batch 方案](./media/batch-nodejs-get-started/BatchScenario.png)
 
 node.js 客户端通过一个准备任务（稍后详细介绍）和一系列其他任务部署批处理作业，具体取决于存储帐户中的容器数。 可以从 GitHub 存储库下载脚本。
 
@@ -60,20 +60,20 @@ node.js 客户端通过一个准备任务（稍后详细介绍）和一系列其
 
 现在，让我们一步步按过程来构建 Node.js 客户端：
 
-### <a name="step-1-install-azure-batch-sdk"></a>步骤 1：安装 Azure 批处理 SDK
+### <a name="step-1-install-azure-batch-sdk"></a>步骤 1：安装 Azure Batch SDK
 
-可以使用 npm install 命令安装用于 Node.js 的 Azure 批处理 SDK。
+可以使用 npm install 命令安装用于 Node.js 的 Azure Batch SDK。
 
 `npm install azure-batch`
 
 该命令安装最新版的 azure-batch Node SDK。
 
 >[!Tip]
-> 在 Azure Function App 中，若要运行 npm install 命令，可以转到 Azure Function 的“设置”选项卡中的“Kudu 控制台”。 在此示例中，目的是安装用于 Node.js 的 Azure 批处理 SDK。
+> 在 Azure Function App 中，若要运行 npm install 命令，可以转到 Azure Function 的“设置”选项卡中的“Kudu 控制台”。 在此示例中，目的是安装用于 Node.js 的 Azure Batch SDK。
 >
 >
 
-### <a name="step-2-create-an-azure-batch-account"></a>步骤 2：创建 Azure 批处理帐户
+### <a name="step-2-create-an-azure-batch-account"></a>步骤 2：创建 Azure Batch 帐户
 
 可以通过 [Azure 门户](batch-account-create-portal.md)或命令行 ([PowerShell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](https://docs.microsoft.com/cli/azure/overview)) 创建该帐户。
 
@@ -83,17 +83,17 @@ node.js 客户端通过一个准备任务（稍后详细介绍）和一系列其
 
 `az group create -n "<resource-group-name>" -l "<location>"`
 
-接下来，创建 Azure 批处理帐户。
+接下来，创建 Azure Batch 帐户。
 
 `az batch account create -l "<location>"  -g "<resource-group-name>" -n "<batch-account-name>"`
 
-每个批处理帐户都有其相应的访问密钥。 需要使用这些密钥才能在 Azure 批处理帐户中创建更多的资源。 对生产环境有利的做法是使用 Azure Key Vault 来存储这些密钥。 然后即可为应用程序创建服务主体。 应用程序可以使用该服务主体创建一个 OAuth 令牌，以便访问密钥保管库中的密钥。
+每个批处理帐户都有其相应的访问密钥。 需要使用这些密钥才能在 Azure Batch 帐户中创建更多的资源。 对生产环境有利的做法是使用 Azure Key Vault 来存储这些密钥。 然后即可为应用程序创建服务主体。 应用程序可以使用该服务主体创建一个 OAuth 令牌，以便访问密钥保管库中的密钥。
 
 `az batch account keys list -g "<resource-group-name>" -n "<batch-account-name>"`
 
 复制并存储可在后续步骤中使用的密钥。
 
-### <a name="step-3-create-an-azure-batch-service-client"></a>步骤 3：创建 Azure 批处理服务客户端
+### <a name="step-3-create-an-azure-batch-service-client"></a>步骤 3：创建 Azure Batch 服务客户端
 以下代码片段首先导入 azure-batch Node.js 模块，然后创建批处理服务客户端。 需先使用从前一步骤复制的批处理帐户密钥创建 SharedKeyCredentials 对象。
 
 ```nodejs
@@ -117,18 +117,18 @@ var batch_client = new batch.ServiceClient(credentials,accountUrl);
 
 ```
 
-Azure 批处理 URI 可以在 Azure 门户的“概览”选项卡中找到。 它的格式为：
+Azure Batch URI 可以在 Azure 门户的“概览”选项卡中找到。 它的格式为：
 
 `https://accountname.location.batch.azure.com`
 
 请参阅屏幕截图：
 
-![Azure 批处理 URI](./media/batch-nodejs-get-started/azurebatchuri.png)
+![Azure Batch URI](./media/batch-nodejs-get-started/azurebatchuri.png)
 
 
 
-### <a name="step-4-create-an-azure-batch-pool"></a>步骤 4：创建 Azure 批处理池
-Azure 批处理池包含多个 VM（也称批处理节点）。 Azure 批处理服务将任务部署在这些节点上并对其进行管理。 可以为池定义以下配置参数。
+### <a name="step-4-create-an-azure-batch-pool"></a>步骤 4：创建 Azure Batch 池
+Azure Batch 池包含多个 VM（也称批处理节点）。 Azure Batch 服务将任务部署在这些节点上并对其进行管理。 可以为池定义以下配置参数。
 
 * 虚拟机映像类型
 * 虚拟机节点大小
@@ -156,13 +156,13 @@ var numVMs = 4
 ```
 
 > [!Tip]
-> 如需可供 Azure 批处理使用的 Linux VM 映像及其 SKU ID 的列表，请参阅[虚拟机映像列表](batch-linux-nodes.md#list-of-virtual-machine-images)。
+> 如需可供 Azure Batch 使用的 Linux VM 映像及其 SKU ID 的列表，请参阅[虚拟机映像列表](batch-linux-nodes.md#list-of-virtual-machine-images)。
 >
 >
 
-定义池配置后，可以创建 Azure 批处理池。 批处理池命令可创建 Azure 虚拟机节点并对其进行准备，使之能够接收要执行的任务。 每个池都应有一个可在后续步骤中引用的唯一 ID。
+定义池配置后，可以创建 Azure Batch 池。 批处理池命令可创建 Azure 虚拟机节点并对其进行准备，使之能够接收要执行的任务。 每个池都应有一个可在后续步骤中引用的唯一 ID。
 
-以下代码片段可创建 Azure 批处理池。
+以下代码片段可创建 Azure Batch 池。
 
 ```nodejs
 // Create a unique Azure Batch pool ID
@@ -262,10 +262,10 @@ var cloudPool = batch_client.pool.get(poolid,function(error,result,request,respo
 ```
 
 
-### <a name="step-4-submit-an-azure-batch-job"></a>步骤 5：提交 Azure 批处理作业
-Azure 批处理作业是包含相似任务的逻辑组。 在我们的方案中，它是指“将 csv 处理成 JSON”。 这里的每个任务可能都在处理每个 Azure 存储容器中存在的 csv 文件。
+### <a name="step-4-submit-an-azure-batch-job"></a>步骤 5：提交 Azure Batch 作业
+Azure Batch 作业是包含相似任务的逻辑组。 在我们的方案中，它是指“将 csv 处理成 JSON”。 这里的每个任务可能都在处理每个 Azure 存储容器中存在的 csv 文件。
 
-这些任务会并行运行，并且跨多个节点部署，由 Azure 批处理服务进行协调。
+这些任务会并行运行，并且跨多个节点部署，由 Azure Batch 服务进行协调。
 
 > [!Tip]
 > 可以使用 [maxTasksPerNode](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) 属性指定能够在单个节点上同时运行的最大任务数。
@@ -285,7 +285,7 @@ Azure 批处理作业是包含相似任务的逻辑组。 在我们的方案中�
 >
 >
 
-准备任务在提交 Azure 批处理作业时指定。 以下是准备任务配置参数：
+准备任务在提交 Azure Batch 作业时指定。 以下是准备任务配置参数：
 
 * **ID**：准备任务的唯一标识符
 * **commandLine**：用于执行任务可执行文件的命令行
@@ -319,7 +319,7 @@ var job_prep_task_config = {id:"installprereq",commandLine:"sudo sh startup_prer
 ```
 
 
-### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>步骤 6：为作业提交 Azure 批处理任务
+### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>步骤 6：为作业提交 Azure Batch 任务
 
 创建“process csv”作业以后，让我们创建该作业的任务。 假设我们有四个容器，则必须创建四个任务，一个容器一个任务。
 
@@ -328,7 +328,7 @@ var job_prep_task_config = {id:"installprereq",commandLine:"sudo sh startup_prer
 * container name：要从其中下载文件的存储容器
 * pattern：文件名称模式的可选参数
 
-假设我们有四个容器，分别为“con1”、“con2”、“con3”、“con4”。以下代码显示了如何将任务提交到我们此前创建的 Azure 批处理作业“process csv”。
+假设我们有四个容器，分别为“con1”、“con2”、“con3”、“con4”。以下代码显示了如何将任务提交到我们此前创建的 Azure Batch 作业“process csv”。
 
 ```nodejs
 // storing container names in an array
@@ -355,7 +355,7 @@ var container_list = ["con1","con2","con3","con4"]
     });
 ```
 
-该代码将多个任务添加到池。 每个任务在所创建的 VM 池中的一个节点上执行。 如果任务数超出池中的 VM 数或 maxTasksPerNode 属性，则任务会等待节点可用。 此业务流程由 Azure 批处理自动处理。
+该代码将多个任务添加到池。 每个任务在所创建的 VM 池中的一个节点上执行。 如果任务数超出池中的 VM 数或 maxTasksPerNode 属性，则任务会等待节点可用。 此业务流程由 Azure Batch 自动处理。
 
 门户提供了有关任务和作业状态的详细视图。 也可使用列表，获取 Azure Node SDK 中的函数。 文档[链接](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html)中提供了详细信息。
 

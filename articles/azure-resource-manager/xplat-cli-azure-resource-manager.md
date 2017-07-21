@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2016
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: bd6f81ee12a7bb655166cf059236175bfb9994e5
-ms.lasthandoff: 03/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 3ad4e68b90979fd7f9d3ddf5278e65e19cb07152
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -45,18 +46,18 @@ Azure 命令行接口 (Azure CLI) 是可以配合 Resource Manager 部署和管�
 
 
 ### <a name="resources"></a>资源
- 若要列出组中的所有资源，例如名为 *testRG* 的资源，请使用以下命令。
+ 若要列出组中的所有资源，例如名为 testRG 的资源，请使用以下命令：
 
     azure resource list testRG
 
-若要查看组中的单个资源，例如名为 *MyUbuntuVM* 的 VM，请使用如下命令。
+若要查看组中的单个资源，例如名为 MyUbuntuVM 的 VM，请使用如下命令：
 
     azure resource show testRG MyUbuntuVM Microsoft.Compute/virtualMachines -o "2015-06-15"
 
 注意 **Microsoft.Compute/virtualMachines** 参数。 此参数表示要请求其信息的资源的类型。
 
 > [!NOTE]
-> 使用除 **list** 命令以外的 **azure resource** 命令时，必须使用 **-o** 参数指定资源的 API 版本。 如果不确定要使用哪个 API 版本，请查阅模板文件并查找资源的 apiVersion 字段。 有关 Resource Manager 中 API 版本的详细信息，请参阅 [Resource Manager 提供程序、区域、API 版本和架构](resource-manager-supported-services.md)。
+> 使用除 **list** 命令以外的 **azure resource** 命令时，必须使用 **-o** 参数指定资源的 API 版本。 如果不确定要使用哪个 API 版本，请查阅模板文件并查找资源的 apiVersion 字段。 有关 Resource Manager 中 API 版本的详细信息，请参阅 [Resource Manager 提供程序和类型](resource-manager-supported-services.md)。
 > 
 > 
 
@@ -81,7 +82,7 @@ Azure 命令行接口 (Azure CLI) 是可以配合 Resource Manager 部署和管�
 
 除了使用 **-o** 参数指定资源的 API 版本以外，还可以使用 **-p** 参数传递包含任何必需或其他属性的 JSON 格式字符串。
 
-若要删除现有资源（例如虚拟机资源），请使用如下命令。
+若要删除现有资源（例如虚拟机资源），请使用如下命令：
 
     azure resource delete testRG MyUbuntuVM Microsoft.Compute/virtualMachines -o "2015-06-15"
 
@@ -110,7 +111,7 @@ Azure 命令行接口 (Azure CLI) 是可以配合 Resource Manager 部署和管�
 
     azure policy definition create MyPolicy -p c:\temp\policy.json
 
-此命令显示如下所示的输出。
+此命令显示如下所示的输出：
 
     + Creating policy definition MyPolicy data:    PolicyName:             MyPolicy data:    PolicyDefinitionId:     /subscriptions/########-####-####-####-############/providers/Microsoft.Authorization/policyDefinitions/MyPolicy
 

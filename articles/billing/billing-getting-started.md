@@ -4,7 +4,7 @@ description: "了解如何在你的 Azure 帐单上避免意外费用。 将成�
 services: 
 documentationcenter: 
 author: jlian
-manager: mattstee
+manager: tonguyen
 editor: 
 tags: billing
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
@@ -15,9 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2017
 ms.author: jlian
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
 ms.openlocfilehash: 539a3e628dfec1088f683652bc9b743b87875d36
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/26/2017
 
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 858ed6ca4355c36c728ae88bf9488f362d487646
-ms.openlocfilehash: 7ffef4a8dcd10fa6608d200b4ca34fb3517c0cc6
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: d50a4bdbafccd645ca339b2dd1ab97456704e3ae
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/22/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="replicate-vmware-virtual-machines-and-physical-servers-to-azure-with-azure-site-recovery-using-the-classic-portal-legacy"></a>在经典门户（旧版）中使用 Azure Site Recovery 将 VMware 虚拟机和物理服务器复制到 Azure
@@ -60,12 +59,12 @@ ms.lasthandoff: 02/22/2017
 
 按如下方式进行迁移：
 
-1. 了解[经典门户中的增强型部署](site-recovery-vmware-to-azure-classic.md#enhanced-deployment)。 查看增强的[体系结构](site-recovery-vmware-to-azure-classic.md#scenario-architecture)和[先决条件](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment)。
+1. 了解[经典门户中的增强型部署](site-recovery-vmware-to-azure-classic.md)。 查看增强的[体系结构](site-recovery-vmware-to-azure-classic.md)和[先决条件](site-recovery-vmware-to-azure-classic.md)。
 2. 从当前复制的计算机中卸载移动服务。 将这些计算机添加到新保护组时，会在它们上面安装新版本的服务。
-3. 下载[保管库注册密钥](site-recovery-vmware-to-azure-classic.md#step-4-download-a-vault-registration-key)，然后[运行统一安装向导](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server)，以便安装配置服务器、进程服务器和主目标服务器组件。 详细了解[容量规划](site-recovery-vmware-to-azure-classic.md#capacity-planning)。
-4. [设置凭据](site-recovery-vmware-to-azure-classic.md#step-6-set-up-credentials-for-the-vcenter-server)供 Site Recovery 用于访问 VMware 服务器，以自动发现 VMware VM。 了解[所需权限](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)。
-5. 添加 [vCenter 服务器或 vSphere 主机](site-recovery-vmware-to-azure-classic.md#step-7-add-vcenter-servers-and-esxi-hosts)。 可能需要 15 分钟以上，服务器才会出现在站点恢复门户中。
-6. 创建[新的保护组](site-recovery-vmware-to-azure-classic.md#step-8-create-a-protection-group)。 门户进行刷新以发现和显示虚拟机的时间可能长达 15 分钟。 如果你不想等待，可选中管理服务器名称（请勿单击），然后单击“**刷新**”。
+3. 下载[保管库注册密钥](site-recovery-vmware-to-azure-classic.md)，然后[运行统一安装向导](site-recovery-vmware-to-azure-classic.md)，以便安装配置服务器、进程服务器和主目标服务器组件。 详细了解[容量规划](site-recovery-vmware-to-azure-classic.md)。
+4. [设置凭据](site-recovery-vmware-to-azure-classic.md)供 Site Recovery 用于访问 VMware 服务器，以自动发现 VMware VM。 了解[所需权限](site-recovery-vmware-to-azure-classic.md)。
+5. 添加 [vCenter 服务器或 vSphere 主机](site-recovery-vmware-to-azure-classic.md)。 可能需要 15 分钟以上，服务器才会出现在站点恢复门户中。
+6. 创建[新的保护组](site-recovery-vmware-to-azure-classic.md)。 门户进行刷新以发现和显示虚拟机的时间可能长达 15 分钟。 如果你不想等待，可选中管理服务器名称（请勿单击），然后单击“**刷新**”。
 7. 在新的保护组下，单击“**迁移计算机**”。
 
     ![添加帐户](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration1.png)
@@ -109,7 +108,7 @@ ms.lasthandoff: 02/22/2017
 | **本地计算机** |本地 VMware 虚拟机，或运行 Windows 或 Linux 的物理服务器。 |配置要应用到一个或多个计算机的复制设置。 你可以将故障转移单个计算机，更常见的做法是在恢复方案中聚合多个计算机。 |
 | **移动服务** |在要保护的每个虚拟机或物理服务器上安装<br/><br/> 可以手动安装，也可以在启用计算机复制时由进程服务器自动推送并安装。 |移动服务在初始复制（重新同步）期间将数据发送到进程服务器。 当计算机处于受保护的状态后（重新同步完成后），移动服务将捕获内存中的磁盘写入，并将其发送到进程服务器。 Windows 服务器的应用程序一致性是使用 VSS 实现的。 |
 | **Azure Site Recovery 保管库** |使用 Azure 订阅创建 Site Recovery 保管库，并在保管库中注册服务器。 |保管库可协调和安排本地站点与 Azure 之间的数据复制、故障转移和恢复。 |
-| **复制机制** |**在 Internet 上** - 在 Internet 上使用安全 SSL/TLS 通道通信，并将数据从受保护的本地服务器复制到 Azure。 这是默认选项。<br/><br/> **VPN/ExpressRoute** - 通过 VPN 连接通信，并在本地服务器与 Azure 之间复制数据。 需要在本地站点与 Azure 网络之间设置站点到站点 VPN 或 ExpressRoute 连接。<br/><br/> 需要选择在站点恢复部署期间你要如何进行复制。 配置机制后，你无法在不影响现有计算机的复制的前提下更改该机制。 |无论是哪个选项，都不需要你在受保护的计算机上打开任何入站网络端口。 所有网络通信都从本地站点启动。 |
+| **复制机制** |**通过 Internet** 通过 Internet 使用安全 SSL/TLS 通道通信，并将数据从受保护的本地服务器复制到 Azure。 这是默认选项。<br/><br/> **VPN/ExpressRoute** - 通过 VPN 连接通信，并在本地服务器与 Azure 之间复制数据。 需要在本地站点与 Azure 网络之间设置站点到站点 VPN 或 ExpressRoute 连接。<br/><br/> 需要选择在站点恢复部署期间你要如何进行复制。 配置机制后，你无法在不影响现有计算机的复制的前提下更改该机制。 |无论是哪个选项，都不需要你在受保护的计算机上打开任何入站网络端口。 所有网络通信都从本地站点启动。 |
 
 ## <a name="capacity-planning"></a>容量规划
 需要考虑的主要方面：
@@ -360,13 +359,13 @@ ms.lasthandoff: 02/22/2017
 1. 将使用这些终结点创建 Windows 主目标服务器 VM。 请注意，仅当通过 Internet 进行连接时，才创建公共终结点。
 
    * 自定义：进程服务器使用公用端口来通过 Internet 发送复制数据。 处理服务器使用专用端口 9443 来通过 VPN 将复制数据发送到主目标服务器。
-   * 自定义&1;：进程服务器使用公用端口来通过 Internet 发送元数据。 处理服务器使用专用端口 9080 来通过 VPN 将元数据发送到主目标服务器。
+   * 自定义 1：进程服务器使用公用端口来通过 Internet 发送元数据。 处理服务器使用专用端口 9080 来通过 VPN 将元数据发送到主目标服务器。
    * PowerShell：专用端口 5986
    * 远程桌面：专用端口 3389
 2. 将使用这些终结点创建 Linux 主目标服务器 VM。 请注意，仅当你通过 Internet 进行连接时，才创建公共终结点。
 
    * 自定义：进程服务器使用公用端口通过 Internet 发送复制数据。 处理服务器使用专用端口 9443 来通过 VPN 将复制数据发送到主目标服务器。
-   * 自定义&1;：进程服务器使用公用端口通过 Internet 发送元数据。 处理服务器使用专用端口 9080 来通过 VPN 将元数据发送到主目标服务器
+   * 自定义 1：进程服务器使用公用端口通过 Internet 发送元数据。 处理服务器使用专用端口 9080 来通过 VPN 将元数据发送到主目标服务器
    * SSH：专用端口 22
 
      > [!WARNING]
@@ -393,7 +392,7 @@ ms.lasthandoff: 02/22/2017
    4. 运行 **tar –xvzf Microsoft-ASR_UA_8.4.0.0_RHEL6-64***
       ![Linux 主目标服务器](./media/site-recovery-vmware-to-azure-classic-legacy/linux-tar.png)，从 gzip 压缩的安装程序中提取文件
    5. 确保你位于 tar 文件内容提取到的目录中。
-   6. 使用命令 **echo*`<passphrase>`* >passphrase.txt**，将配置服务器密码复制到本地文件
+   6. 使用命令 **echo *`<passphrase>`* >passphrase.txt**，将配置服务器密码复制到本地文件
    7. 运行命令“**sudo ./install -t both -a host -R MasterTarget -d /usr/local/ASR -i *`<Configuration server internal IP address>`* -p 443 -s y -c https -P passphrase.txt**”。
 
       ![注册目标服务器](./media/site-recovery-vmware-to-azure-classic-legacy/linux-mt-install.png)
@@ -472,10 +471,10 @@ ms.lasthandoff: 02/22/2017
 3. 如果运行的虚拟机或物理服务器上已安装移动服务，你可以按如下所示获取服务更新：
 
    * **选项 1**：下载更新程序：
-     * [Windows Server（仅限&64; 位）](http://download.microsoft.com/download/8/4/8/8487F25A-E7D9-4810-99E4-6C18DF13A6D3/Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe)
+     * [Windows Server（仅限 64 位）](http://download.microsoft.com/download/8/4/8/8487F25A-E7D9-4810-99E4-6C18DF13A6D3/Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe)
      * [CentOS 6.4、6.5、6.6（仅限 64 位）](http://download.microsoft.com/download/7/E/D/7ED50614-1FE1-41F8-B4D2-25D73F623E9B/Microsoft-ASR_UA_8.4.0.0_RHEL6-64_GA_28Jul2015_release.tar.gz)
      * [Oracle Enterprise Linux 6.4、6.5（仅限 64 位）](http://download.microsoft.com/download/5/2/6/526AFE4B-7280-4DC6-B10B-BA3FD18B8091/Microsoft-ASR_UA_8.4.0.0_OL6-64_GA_28Jul2015_release.tar.gz)
-     * [SUSE Linux Enterprise Server SP3（仅限&64; 位）](http://download.microsoft.com/download/B/4/2/B4229162-C25C-4DB2-AD40-D0AE90F92305/Microsoft-ASR_UA_8.4.0.0_SLES11-SP3-64_GA_28Jul2015_release.tar.gz)
+     * [SUSE Linux Enterprise Server SP3（仅限 64 位）](http://download.microsoft.com/download/B/4/2/B4229162-C25C-4DB2-AD40-D0AE90F92305/Microsoft-ASR_UA_8.4.0.0_SLES11-SP3-64_GA_28Jul2015_release.tar.gz)
      * 在更新进程服务器之后，进程服务器上的 C:\pushinstallsvc\repository 文件夹中会提供移动服务的更新版本。
    * **选项 2**：如果计算机上安装了旧版移动服务，可以从管理门户自动升级计算机上的移动服务。
 
@@ -568,7 +567,7 @@ ms.lasthandoff: 02/22/2017
 
 | 源操作系统 | 进程服务器上的移动服务包 |
 | --- | --- |
-| Windows Server（仅限&64; 位） |`C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe` |
+| Windows Server（仅限 64 位） |`C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe` |
 | CentOS 6.4、6.5、6.6（仅限 64 位） |`C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_RHEL6-64_GA_28Jul2015_release.tar.gz` |
 | SUSE Linux Enterprise Server 11 SP3（仅限 64 位） |`C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_SLES11-SP3-64_GA_28Jul2015_release.tar.gz` |
 | Oracle Enterprise Linux 6.4、6.5（仅限 64 位） |`C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_OL6-64_GA_28Jul2015_release.tar.gz` |
@@ -630,7 +629,7 @@ ms.lasthandoff: 02/22/2017
 * 系统会每隔 15 分钟发现虚拟机一次，在发现之后，最多需要 15 分钟时间虚拟机才会出现在 Azure Site Recovery 中。
 * 虚拟机上的环境更改（例如 VMware 工具安装）最多也可能需要 15 分钟时间才能在 Site Recovery 中更新。
 * 可以在“**配置服务器**”页上 vCenter 服务器/ESXi 主机的“**上次联系时间**”字段中，查看上次发现的时间。
-* 如果你已创建保护组，并在其后添加 vCenter 服务器或 ESXi 主机，则 Azure Site Recovery 门户需要&15; 分钟刷新，而虚拟机也需要&15; 分钟才会列在“**向保护组添加计算机**”对话框中。
+* 如果你已创建保护组，并在其后添加 vCenter 服务器或 ESXi 主机，则 Azure Site Recovery 门户需要 15 分钟刷新，而虚拟机也需要 15 分钟才会列在“**向保护组添加计算机**”对话框中。
 * 如果要立即将计算机添加到保护组，而不想等待完成计划的发现，请选中配置服务器（请勿单击），然后单击“**刷新**”按钮。
 * 将虚拟机或物理机添加到保护组时，进程服务器将自动推送并在源服务器上安装移动服务（如果尚未安装）。
 * 为了使自动推送机制发挥作用，请确保你已按上一步所述设置你的受保护的计算机。

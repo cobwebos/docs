@@ -12,13 +12,13 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2017
+ms.date: 06/08/2017
 ms.author: LADocs; mandia
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 09a2373585f49a39192a841072d86e395ff311db
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 91b2f16611b88aa4b9395ca301d88042065ad9dd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/10/2017
 
 
 ---
@@ -40,9 +40,9 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="create-an-as2-agreement"></a>创建 AS2 协议
 
-1.    登录 [Azure 门户](http://portal.azure.com "Azure portal")。  
+1.  登录 [Azure 门户](http://portal.azure.com "Azure portal")。  
 
-2.    在左侧菜单中，选择“更多服务”。 在搜索框中，输入“集成”作为筛选器。 在结果列表中，选择“集成帐户”。
+2.  在左侧菜单中，选择“更多服务”。 在搜索框中，输入“集成”作为筛选器。 在结果列表中，选择“集成帐户”。
 
     > [!TIP]
     > 如果未看到“更多服务”，可能需要先展开菜单。 在折叠的菜单顶部，选择“显示菜单”。
@@ -81,7 +81,7 @@ ms.lasthandoff: 05/10/2017
 
 设置协议属性后，可以配置此协议如何识别和处理从合作伙伴接收的传入消息。
 
-1.    在“添加”下面，选择“接收设置”。
+1.  在“添加”下面，选择“接收设置”。
 根据要与其交换消息的合作伙伴达成的协议来配置这些属性。 有关属性说明，请参阅本部分中的表格。
 
     ![配置“接收设置”](./media/logic-apps-enterprise-integration-agreements/agreement-4.png)
@@ -90,7 +90,7 @@ ms.lasthandoff: 05/10/2017
 
 3. 如需对所有传入消息进行签名，请选择“应对消息进行签名”。 在“证书”列表中，选择现有的[来宾合作伙伴公共证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)来验证消息的签名。 如果没有该证书，可以创建一个。
 
-4.    如果要对所有传入消息进行加密，请选择“应对消息进行加密”。 在“证书”列表中，选择现有的[宿主合作伙伴公共证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)来解密传入的消息。 如果没有该证书，可以创建一个。
+4.  如果要对所有传入消息进行加密，请选择“应对消息进行加密”。 在“证书”列表中，选择现有的[宿主合作伙伴公共证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)来解密传入的消息。 如果没有该证书，可以创建一个。
 
 5. 若要压缩消息，请选择“应对消息进行压缩”。
 
@@ -121,10 +121,10 @@ ms.lasthandoff: 05/10/2017
 
 可以配置此协议如何识别和处理发送给合作伙伴的传出消息。
 
-1.    在“添加”下面，选择“发送设置”。
+1.  在“添加”下面，选择“发送设置”。
 根据要与其交换消息的合作伙伴达成的协议来配置这些属性。 有关属性说明，请参阅本部分中的表格。
 
-    ![设置“发送设置”属性](./media/logic-apps-enterprise-integration-agreements/agreement-5.png)
+    ![设置“发送设置”属性](./media/logic-apps-enterprise-integration-agreements/agreement-51.png)
 
 2. 若要将签名的消息发送到合作伙伴，请选择“启用消息签名”。 若要对消息签名，请在“MIC 算法”列表中，选择“宿主合作伙伴专用证书 MIC 算法”。 在“证书”列表中，选择现有的[宿主合作伙伴专用证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。
 
@@ -141,9 +141,11 @@ ms.lasthandoff: 05/10/2017
 
 8. 若要接收所发送消息的异步 MDN，请选择“请求异步 MDN”。 如果选择此选项，请输入要将 MDN 发送到的 URL。
 
-9. 若要启用回执的不可否认性，请选择“启用 NRR”。
+9. 若要启用回执的不可否认性，请选择“启用 NRR”。  
 
-10. 完成后，请务必选择“确定”保存设置。
+10. 若要指定要在 MIC 中使用或者在 AS2 消息或 MDN 的传出标头中签名的算法格式，请选择“SHA2 算法格式”。  
+
+11. 完成后，请务必选择“确定”保存设置。
 
 协议现已准备就绪，可以处理符合所选设置的传出消息。
 
@@ -162,14 +164,15 @@ ms.lasthandoff: 05/10/2017
 | 要求发送异步 MDN |要求将异步 MDN 发送到此协议。 |
 | 代码 |指定要将 MDN 发送到的 URL。 |
 | 启用 NRR |需要回执的不可否认性 (NRR)，这是一种通信属性，提供数据已按址接收到的证据。 |
+| SHA2 算法格式 |选择要在 MIC 中使用或者在 AS2 消息或 MDN 的传出标头中签名的算法格式 |
 
 ## <a name="find-your-created-agreement"></a>查找创建的协议
 
-1.    设置完所有协议属性后，请在“添加”边栏选项卡中选择“确定”来完成创建协议，并返回到集成帐户边栏选项卡。
+1.  设置完所有协议属性后，请在“添加”边栏选项卡中选择“确定”来完成创建协议，并返回到集成帐户边栏选项卡。
 
     新添加的协议随即会出现在“协议”列表中。
 
-2.    还可以在集成帐户概述中查看协议。 在集成帐户边栏选项卡中选择“概述”，然后选择“协议”磁贴。 
+2.  还可以在集成帐户概述中查看协议。 在集成帐户边栏选项卡中选择“概述”，然后选择“协议”磁贴。 
 
     ![选择“协议”磁贴可查看所有协议](./media/logic-apps-enterprise-integration-agreements/agreement-6.png)
 

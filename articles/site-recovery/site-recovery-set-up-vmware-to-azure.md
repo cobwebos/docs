@@ -11,21 +11,21 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: backup-recovery
-ms.date: 06/05/2017
+ms.workload: storage-backup-recovery
+ms.date: 06/29/2017
 ms.author: anoopkv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eccc927550aef4c9cd71ffad64d2eddedb74326e
-ms.openlocfilehash: 18627223bdb4f0986f07f17233ce7daf29cb7dd9
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: a2fabc56463c8cbf0b8a76b7a84369ed8e535486
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/13/2017
+ms.lasthandoff: 07/14/2017
 
 ---
 
 # <a name="set-up-the-source-environment-vmware-to-azure"></a>设置源环境（VMware 到 Azure）
 > [!div class="op_single_selector"]
-> * [VMware 虚拟机](./site-recovery-set-up-vmware-to-azure.md)
-> * [物理服务器](./site-recovery-set-up-physical-to-azure.md)
+> * [VMware 到 Azure](./site-recovery-set-up-vmware-to-azure.md)
+> * [物理机到 Azure](./site-recovery-set-up-physical-to-azure.md)
 
 本文介绍如何设置本地环境，以便开始将 VMware 上运行的虚拟机复制到 Azure。
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 02/13/2017
 
 本文假设你已创建：
 - [Azure 门户](http://portal.azure.com "Azure 门户")中的恢复服务保管库。
-- VMware vCenter 中可用于[自动发现](./site-recovery-vmware-to-azure.md#vmware-account-permissions)的专用帐户。
+- VMware vCenter 中可用于[自动发现](./site-recovery-vmware-to-azure.md)的专用帐户。
 - 用于安装配置服务器的虚拟机。
 
 ## <a name="configuration-server-minimum-requirements"></a>配置服务器的最低要求

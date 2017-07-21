@@ -16,10 +16,10 @@ ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 17289f6401b36ff6e6a201564aa387f42c712699
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 2d6e1ba60d1f81aa1a9d3afde4ac9b621b01f04d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure 应用服务、虚拟机、Service Fabric 和云服务的比较
@@ -33,7 +33,7 @@ Azure 应用服务是大多数 Web 应用的最佳选择。 部署和管理都�
 如果现有应用程序需要大幅修改才能在应用服务或 Service Fabric 中运行，可选择虚拟机来简化到云的迁移。 但相比于 Azure 应用服务和 Service Fabric，正确配置、保护和维护 VM 需要更多的时间和 IT 专业知识。 如果你考虑采用 Azure 虚拟机，请确保将修补、更新和管理 VM 环境所需的持续性维护工作纳入考虑。 Azure 虚拟机是服务架构 (IaaS)，而应用服务和 Service Fabric 是平台即服务 (Paas)。 
 
 ## <a name="features"></a>功能比较
-下表比较了应用服务、云服务、虚拟机和 Service Fabric 的功能，帮助用户做出最佳选择。 若要了解每个选项的 SLA 的当前信息，请参阅 [Azure 服务级别协议](/support/legal/sla/)。
+下表比较了应用服务、云服务、虚拟机和 Service Fabric 的功能，帮助用户做出最佳选择。 若要了解每个选项的 SLA 的当前信息，请参阅 [Azure 服务级别协议](https://azure.microsoft.com/support/legal/sla/)。
 
 | 功能 | 应用服务（Web 应用） | 云服务（web 角色） | 虚拟机 | Service Fabric | 说明 |
 | --- | --- | --- | --- | --- | --- |
@@ -56,8 +56,8 @@ Azure 应用服务是大多数 Web 应用的最佳选择。 部署和管理都�
 | Visual Studio 集成 |X |X |X |X | |
 | 远程调试 |X |X |X | | |
 | 使用 TFS 部署代码 |X |X |X |X | |
-| 使用 [Azure 虚拟网络](/services/virtual-network/)进行网络隔离 |X |X |X |X |另请参阅 [Azure 网站的虚拟网络集成](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) |
-| 支持 [Azure 流量管理器](/services/traffic-manager/) |X |X |X |X | |
+| 使用 [Azure 虚拟网络](/azure/virtual-network/)进行网络隔离 |X |X |X |X |另请参阅 [Azure 网站的虚拟网络集成](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) |
+| 支持 [Azure 流量管理器](/azure/traffic-manager/) |X |X |X |X | |
 | 集成的端点监视 |X |X |X | | |
 | 对服务器的远程桌面访问 | |X |X |X | |
 | 安装任何自定义 MSI | |X |X |X |Service Fabric 可按[来宾可执行文件](../service-fabric/service-fabric-deploy-existing-app.md)的形式托管任何可执行文件，还可在 VM 上安装任意应用。 |
@@ -144,7 +144,7 @@ Azure 应用服务是适合该情况的强大解决方案，原因是其可免�
 如果应用服务不支持开源框架，则可在其他某个 Azure Web 托管选项上运行该框架。 使用虚拟机，可以在计算机映像（基于 Windows 或 Linux）上安装和配置软件。
 
 ### <a id="lob"></a>我有一个需要连接到公司网络的业务线应用程序
-如果你想要创建业务线应用程序，你的网站可能需要直接访问公司网络上的服务或数据。 可在应用服务、Service Fabric 和虚拟机上使用 [Azure 虚拟网络服务](/services/virtual-network/)来实现此目的。 可在应用服务上使用 [VNET 集成功能](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)，该功能使 Azure 应用程序能够像在公司网络上一样运行。
+如果你想要创建业务线应用程序，你的网站可能需要直接访问公司网络上的服务或数据。 可在应用服务、Service Fabric 和虚拟机上使用 [Azure 虚拟网络服务](/azure/virtual-network/)来实现此目的。 可在应用服务上使用 [VNET 集成功能](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)，该功能使 Azure 应用程序能够像在公司网络上一样运行。
 
 ### <a id="mobile"></a>我想为移动客户端托管 REST API 或 web 服务
 利用基于 HTTP 的 Web 服务，你可以支持各种客户端，包括移动客户端。 如 ASP.NET Web API 的框架与 Visual Studio 集成，能够更加轻松地创建和使用 REST 服务。  这些服务来自 web 端点，因此可使用 Azure 上的任何 web 托管技巧支持此方案。 但应用服务托管 REST API 的理想选择。 通过应用服务，可以：
@@ -162,31 +162,31 @@ Azure 应用服务是适合该情况的强大解决方案，原因是其可免�
 ## <a id="nextsteps"></a>后续步骤
 若要深入了解 3 个 Web 托管选项，请参阅 [Azure 简介](../fundamentals-introduction-to-azure.md)。
 
-若要开始使用为应用程序选择的选项，请参阅以下资源：
+若要开始使用为你的应用程序选择的选项，请参阅以下资源：
 
-* [Azure 应用服务](/documentation/services/app-service/)
-* [Azure 云服务](/documentation/services/cloud-services/)
-* [Azure 虚拟机](/documentation/services/virtual-machines/)
-* [Service Fabric](/documentation/services/service-fabric)
+* [Web 应用](/azure/app-service/)
+* [Azure 云服务](/azure/cloud-services/)
+* [Azure 虚拟机](/azure/virtual-machines/)
+* [Service Fabric](/azure/service-fabric/)
 
 <!-- URL List -->
 
-[Azure App Service]: /services/app-service/
-[Cloud Services]: http://go.microsoft.com/fwlink/?LinkId=306052
-[Virtual Machines]: http://go.microsoft.com/fwlink/?LinkID=306053
-[Service Fabric]: /services/service-fabric
+[Azure App Service]: /azure/app-service/
+[Cloud Services]: /azure/cloud-services/
+[Virtual Machines]: /azure/virtual-machines/
+[Service Fabric]: /azure/service-fabric/
 [ClearDB]: http://www.cleardb.com/
 [WebJobs]: http://go.microsoft.com/fwlink/?linkid=390226&clcid=0x409
-[Configuring an SSL certificate for an Azure Website]: http://www.windowsazure.com/develop/net/common-tasks/enable-ssl-web-site/
-[azurestore]: http://www.windowsazure.com/gallery/store/
-[scripting]: http://www.windowsazure.com/documentation/scripts/?services=web-sites
-[dotnet]: http://www.windowsazure.com/develop/net/
-[nodejs]: http://www.windowsazure.com/develop/nodejs/
-[PHP]: http://www.windowsazure.com/develop/php/
-[Python]: http://www.windowsazure.com/develop/python/
-[servicebus]: http://www.windowsazure.com/documentation/services/service-bus/
-[sqldatabase]: http://www.windowsazure.com/documentation/services/sql-database/
-[Storage]: http://www.windowsazure.com/documentation/services/storage/
+[Configuring an SSL certificate for an Azure Website]: app-service-web-tutorial-custom-ssl.md
+[azurestore]: https://azuremarketplace.microsoft.com/en-us/marketplace/apps
+[scripting]: https://azure.microsoft.com/documentation/scripts/?services=web-sites
+[dotnet]: https://azure.microsoft.com/develop/net/
+[nodejs]: https://azure.microsoft.com/develop/nodejs/
+[PHP]: https://azure.microsoft.com/develop/php/
+[Python]: https://azure.microsoft.com/develop/python/
+[servicebus]: /azure/service-bus/
+[sqldatabase]: /azure/sql-database/
+[Storage]: /azure/storage/
 
 <!-- IMG List -->
 

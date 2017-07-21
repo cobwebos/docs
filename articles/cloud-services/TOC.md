@@ -21,8 +21,6 @@
 #### [队列存储和连接的服务](../storage/vs-storage-cloud-services-getting-started-queues.md)
 #### [表存储和连接的服务](../storage/vs-storage-cloud-services-getting-started-tables.md)
 ### 配置程序包以实现连续构建和部署
-#### [Visual Studio Team Services 和 Git](cloud-services-continuous-delivery-use-vso-git.md)
-#### [Visual Studio Team Services](cloud-services-continuous-delivery-use-vso.md)
 #### [TFS 和 Team Build](cloud-services-dotnet-continuous-delivery.md)
 ### [配置角色的流量规则](cloud-services-enable-communication-role-instances.md)
 ### [处理云服务生命周期事件](cloud-services-role-lifecycle-dotnet.md)
@@ -102,16 +100,21 @@
 ### [常见部署问题](cloud-services-troubleshoot-deployment-problems.md)
 ### [角色未能启动](cloud-services-troubleshoot-roles-that-fail-start.md)
 ### [恢复指南](cloud-services-disaster-recovery-guidance.md)
-### [云服务常见问题](cloud-services-faq.md)
+### 云服务常见问题
+#### [应用程序和服务可用性常见问题解答](cloud-services-application-and-service-availability-faq.md)
+#### [配置和管理常见问题解答](cloud-services-configuration-and-management-faq.md)
+#### [连接和网络常见问题解答](cloud-services-connectivity-and-networking-faq.md)
+#### [部署常见问题解答](cloud-services-deployment-faq.md)
 
-# 参考
+# 引用
 ## [.csdef XMLSchema](https://msdn.microsoft.com/library/azure/ee758711)
 ## [.cscfg XMLSchema](https://msdn.microsoft.com/library/azure/ee758710)
 ## [REST](https://msdn.microsoft.com/library/azure/ee460812)
 
 # 资源
-## [定价](https://azure.microsoft.com/pricing/details/cloud-services/)
-## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment)
-## [视频](https://azure.microsoft.com/documentation/videos/index/?services=cloud-services)
-## [服务更新](https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform=)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment)
+## [定价](https://azure.microsoft.com/pricing/details/cloud-services/)
+## [服务更新](https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform=)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=cloud-services)

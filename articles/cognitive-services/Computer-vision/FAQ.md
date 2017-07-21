@@ -9,10 +9,11 @@ ms.technology: computer-vision
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: juliakuz
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 6d7d7fcf6c75dcd4d791d84183e8eb60691fe1de
-ms.lasthandoff: 04/19/2017
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: a56bae41591e93682b9afa15695e492b19c82fd5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/11/2017
 
 ---
 
@@ -29,7 +30,7 @@ ms.lasthandoff: 04/19/2017
 
 **Question**: *Can Computer Vision be used locally without an internet connection?*
 
-**Answer**: We currently do not offer an on-premise or local solution.
+**Answer**: We currently do not offer an on-premises or local solution.
 
 -----
 
@@ -42,7 +43,7 @@ ms.lasthandoff: 04/19/2017
 | Danish (da-DK)  | Dutch (nl-NL)     | English           | Finnish (fi-FI)            |French (fr-FR)
 | German (de-DE)  | Greek (el-GR)     | Hungarian (hu-HU) | Italian (it-IT)            | Japanese (ja-JP)
 | Korean (ko-KR)  | Norwegian (nb-NO) | Polish (pl-PL)    | Portuguese (pt-BR) (pt-PT) | Russian (ru-RU)
-| Spanish (es-ES)    | Swedish (sv-SV)      | Turkish (tr-TU)   |                            |
+| Spanish (es-ES)   | Swedish (sv-SV)     | Turkish (tr-TU)   |                            |
 
 -----
 

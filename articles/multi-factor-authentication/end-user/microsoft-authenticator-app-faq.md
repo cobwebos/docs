@@ -5,20 +5,21 @@ services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: librown
 ms.assetid: f04d5bce-e99e-4f75-82d1-ef6369be3402
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 06/17/2017
 ms.author: kgremban
+ms.reviewer: librown
 ms.custom: end-user
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 731275c72422a622e1d49f7d362447ef3361338b
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: 62242f356afd55a7f9e432faa6cdf3be74b7c18c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/22/2017
 
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator 应用常见问题解答
@@ -31,13 +32,13 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 
 ### <a name="what-are-the-codes-in-the-app-for-why-does-the-number-keep-counting-down"></a>此应用中的代码有哪些用途？ 为什么数字会保持倒计数？
 
-打开 Microsoft 验证器应用时，将看到已添加的帐户以及按每个已添加的帐户列出的六位或八位数字。 你可能会看到倒计时的三十秒计时器。
+打开 Microsoft 验证器应用时，将看到已添加的帐户以及按每个已添加的帐户列出的六位或八位数字。 你可能会看到倒计时的 30 秒计时器。
 
 登录到帐户时，将使用这些代码。 输入用户名和密码后，可能需要输入验证码。 打开 Microsoft 验证器应用，并复制当前显示的代码。 在登录页中输入该代码，以完成登录。
 
-代码每隔 30 秒更改一次的原因是，使你永远不会使用同一代码两次。 它不像你应记住的密码。 其思想是，只有有权访问你的手机的人员知道你的验证码。
+代码每隔 30 秒更改一次的原因是，使你永远不会使用同一代码两次。 它不像你应记住的密码。 原理在于只有有权访问你的手机的人才知道你的验证码。
 
-这些代码不需要 Internet 或数据，因此你不必担心使用电话服务进行登录，也不必担心应用将用完你的流量套餐。 关闭该应用后，该应用不会在后台继续运行，因此不会耗尽你的电池。 可以关闭该应用，并在下次登录之前忽略它。  
+这些验证码不需要 Internet 或数据，因此你不必担心使用电话服务进行登录。 关闭该应用后，该应用不会在后台继续运行，不会耗尽电量。 可以关闭该应用，并在下次登录之前忽略它。  
 
 ### <a name="i-only-get-notifications-when-i-have-the-app-open-if-the-app-isnt-open-i-dont-get-any-notifications"></a>仅当应用处于打开状态时才会收到通知。 如果应用未打开，不会收到任何通知。
 
@@ -47,9 +48,9 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 
 - 手机是否进入“免打扰”或“静音”模式？ 在这些模式下，应用可能不会发送通知。
 - 是否能从其他应用接收通知？ 如果不能，可能是手机出现网络连接问题或出现 Android/Apple 通知频道问题。 第一种问题可通过手机设置解决，但对于第二个问题，可能需要联系服务提供商获取帮助。
-- 是否应用上的某些帐户可以收到通知而其他帐户不能？ 如果是这样的话，从应用中删除有问题的帐户，然后重新添加该帐户以重新启用推送通知。 
+- 是否应用上的某些帐户可以收到通知而其他帐户不能？ 如果是这样的话，从应用中删除有问题的帐户，然后重新添加该帐户以启用推送通知。 
 
-如果已实施这些故障排除建议，但问题仍然存在，请向我们发送诊断日志（转到应用设置，然后选择“帮助和反馈”以及“发送日志”），再转到 [Microsoft 验证器应用论坛](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)，告诉我们所遇到的问题以及到目前为止已尝试过的步骤。 
+如果尝试过这些建议的故障排除方法，但仍然有问题，请向我们发送你的日志以供诊断。 请转到应用程序设置，然后选择“帮助和反馈”和“发送日志”。 然后，请转到 [ 应用论坛](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)告诉我们你所遇到的问题以及目前为止你已尝试过步骤。 
 
 ### <a name="im-already-using-the-microsoft-authenticator-application-for-verification-codes-how-do-i-switch-to-one-click-push-notifications"></a>我已使用 Microsoft Authenticator 应用程序生成验证代码。 如何切换到一键式推送通知？
 通过推送通知批准登录仅适用于个人 Microsoft 帐户或工作和学校 Microsoft 帐户，并不适用于 Google 或 Facebook 等第三方帐户。 如果你拥有工作或学校 Microsoft 帐户，你的组织可以选择禁用此选项。
@@ -94,7 +95,7 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 
 ### <a name="why-does-the-microsoft-authenticator-app-allow-you-to-approve-a-request-without-unlocking-the-device"></a>为什么 Microsoft Authenticator 应用允许在不解锁设备的情况下批准请求？
 
-这是设计使然。 双重验证要求提供两项证明：一件你知道的事和一件你拥有的物品。 你知道的事是密码。 你拥有的物品是你的手机（已使用 Microsoft Authenticator 应用设置，并已注册为 MFA 证明）。因此，拥有手机和批准请求符合第二个身份验证因素的标准。 
+同意验证请求时无需解锁设备，因为仅需证明的是你带了你的电话。 双重验证要求提供两项证明：一件你知道的事和一件你拥有的物品。 你只需知道密码。 你拥有的物品是你的手机（已使用 Microsoft Authenticator 应用设置，并已注册为 MFA 证明）。因此，拥有手机和批准请求符合第二个身份验证因素的标准。 
 
 ### <a name="what-does-the-lock-icon-in-the-account-list-mean"></a>帐户列表中的锁状图标是什么意思？
 

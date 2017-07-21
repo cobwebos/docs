@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2016
 ms.author: rclaus
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017, mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: d47447007c3bac51dc9ee0a17948ef9a42377a22
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 981b87540070dff18a01d6bf3dce24a675b451aa
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="azure-and-linux"></a>Azure 和 Linux
@@ -44,7 +44,7 @@ Microsoft Azure 资源分布在世界各地的多个地理区域。  一个“�
 ## <a name="azure-virtual-machines--instances"></a>Azure 虚拟机和实例
 Microsoft Azure 支持运行由多家合作伙伴提供和维护的众多热门 Linux 分发版。  可以在 Azure 应用商店中找到 Red Hat Enterprise、CentOS、Debian、Ubuntu、CoreOS、RancherOS 和 FreeBSD 等分发版。 我们积极与各大 Linux 社区合作以便为 [Azure 认可的 Linux 分发版](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)列表添加更多成员。
 
-如果首选的 Linux 分发版目前不在库中，可以通过[在 Azure 中创建和上载 Linux VHD](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 来“自带 Linux”VM。
+如果首选的 Linux 分发版目前不在库中，可以通过[在 Azure 中创建和上传 Linux VHD](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 来“自带 Linux”VM。
 
 借助 Azure 虚拟机，用户可以采用灵活的方式部署各种计算解决方案。 几乎可以在任何操作系统（Windows、Linux 或从我们不断增长的合作伙伴列表中的任一合作伙伴自定义创建的操作系统）上部署几乎任何工作负荷和任何语言。 没有找到所需的映像？  别担心，你也可以使用本地的自有映像。
 
@@ -52,7 +52,6 @@ Microsoft Azure 支持运行由多家合作伙伴提供和维护的众多热门 
 在 Azure 中部署 VM 时，将从一系列大小中选择一个适合工作负荷的 VM 大小。 大小还会影响虚拟机的处理能力、内存和存储容量。 收费的依据是 VM 的运行时长及其消耗的分配资源量。 [虚拟机大小](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)的完整列表。
 
 下面是从我们提供的系列（A、D、DS、G 和 GS）之一中选择 VM 大小的基本指导原则。
-
 * A 系列 VM 是高性价比的入门级 VM，适用于轻度工作负荷和开发/测试方案。 所有区域都广泛提供此系列 VM，它们可用于连接和使用虚拟机可用的所有标准资源。
 * A 系列大小 (A8 - A11) 是特殊的计算密集型配置，适用于高性能计算群集应用程序。
 * D 系列的 VM 旨在运行需要更高计算能力和临时磁盘性能的应用程序。 D 系列 VM 为临时磁盘提供更快的处理器、更高的内存内核比和固态驱动器 (SSD)。
@@ -94,7 +93,7 @@ Microsoft 与合作伙伴紧密合作，以确保可用映像进行更新并针�
 * Docker - [Azure 应用商店 - 具有 Docker Swarm 的 Azure 容器服务](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
 * Jenkins - [Azure 应用商店 - CloudBees Jenkins Platform](https://azure.microsoft.com/marketplace/partners/cloudbees/jenkins-platformjenkins-platform/)
 
-## <a name="getting-setup-on-azure"></a>在 Azure 上获取安装程序
+## <a name="getting-started-with-linux-on-azure"></a>Azure 上的 Linux 入门
 若要开始使用 Azure，需要 Azure 帐户、已安装 Azure CLI 和一对 SSH 公钥和私钥。
 
 ### <a name="sign-up-for-an-account"></a>注册帐户

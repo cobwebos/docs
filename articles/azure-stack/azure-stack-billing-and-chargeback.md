@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/08/2016
+ms.date: 07/10/2016
 ms.author: alfredop
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 68258b5b618f5ab71bc48efcf1e2728bf36fa1da
-ms.lasthandoff: 04/27/2017
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: c8e80b9288d3c12a4c3ccb5e4ea5b95fc5049349
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -33,7 +34,7 @@ Azure Stack contains the infrastructure to collect and aggregate usage data for 
 
 Azure Stack Resource providers, such as Compute, Storage, and Network, generate usage data at hourly intervals for each subscription. The usage data contains information about the resource used such as resource name, meter name, meter ID, quantity used etc. To learn about the meters ID resources, refer to the [usage API FAQ](azure-stack-usage-related-faq.md) article. 
 
-After the usage data has been collected, it is [reported to Azure](azure-stack-usage-reporting.md) to generate a bill, which can be viewed through the Azure billing portal. The Azure billing portal shows the usage data only for the chargeable resources. In addition to the chargeable resources, Azure Stack captures usage data for a broader set of resources, which you can access in your Azure Stack environment through REST APIs or PowerShell. Service administrators can retrieve the usage data for all tenant subscriptions whereas a tenant can get only their usage details.
+After the usage data has been collected, it is [reported to Azure](azure-stack-usage-reporting.md) to generate a bill, which can be viewed through the Azure billing portal. The Azure billing portal shows the usage data only for the chargeable resources. In addition to the chargeable resources, Azure Stack captures usage data for a broader set of resources, which you can access in your Azure Stack environment through REST APIs or PowerShell. Azure Stack cloud administrators can retrieve the usage data for all user subscriptions whereas a user can get only their usage details.
 
 ## <a name="retrieve-usage-information"></a>Retrieve usage information
 

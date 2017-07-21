@@ -14,16 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2016
 ms.author: aelnably
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
 ms.openlocfilehash: 9ebfa91c7972ab3c264032ead8376c23c1197a4b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
 # <a name="azure-app-service-app-cloning-using-azure-portal"></a>使用 Azure 门户克隆 Azure 应用服务应用
 [Azure 应用服务 Web 应用](http://go.microsoft.com/fwlink/?LinkId=529714)中的克隆功能可以轻松将现有 Web 应用克隆到位于不同或相同区域中的新建应用。 这样，客户就可以跨不同区域部署许多应用。
 
-应用克隆目前仅支持高级层 App Service 计划。 新功能使用与 Web 应用备份功能相同的限制，具体请参阅[在 Azure 应用服务中备份 Web 应用](web-sites-backup.md)。
+应用克隆目前仅支持高级层应用服务计划。 新功能使用与 Web 应用备份功能相同的限制，具体请参阅[在 Azure 应用服务中备份 Web 应用](web-sites-backup.md)。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -70,9 +72,4 @@ Web 应用必须在“高级”模式下运行，才能为 Web 应用创建副�
 <!--Image references-->
 [1]: ./media/app-service-web-app-cloning-portal/CloningBlade.png
 [2]: ./media/app-service-web-app-cloning-portal/CloneSettings.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

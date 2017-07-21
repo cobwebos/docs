@@ -20,7 +20,6 @@ ms.openlocfilehash: d55de6c3f49abf3ac117dcb265dd7f1bcaa05f24
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/16/2017
 
-
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>使用 Azure Resource Manager 模板创建 IoT 中心 (PowerShell)
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
@@ -136,6 +135,7 @@ New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
     ```powershell
     New-AzureRmResourceGroupDeployment -ResourceGroupName MyIoTRG1 -TemplateFile C:\templates\template.json -hubName abcmyiothub
     ```
+  [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 4. 输出将显示你创建的 IoT 中心的密钥。
 5. 若要验证应用程序中是否添加了新 IoT 中心，可以访问 [Azure 门户][lnk-azure-portal]并查看资源列表，或使用 **Get-AzureRmResource** PowerShell cmdlet。
 

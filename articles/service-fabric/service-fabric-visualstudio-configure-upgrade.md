@@ -3,8 +3,8 @@ title: "配置 Service Fabric 应用程序的升级 | Microsoft 文档"
 description: "了解如何使用 Microsoft Visual Studio 来配置 Service Fabric 应用程序的升级设置。"
 services: service-fabric
 documentationcenter: na
-author: cawaMS
-manager: paulyuk
+author: mikkelhegn
+manager: mfussell
 editor: tglee
 ms.assetid: 1757ba85-0b7b-4f16-8a23-2ddaa61c86c6
 ms.service: service-fabric
@@ -12,21 +12,22 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 11/18/2016
-ms.author: cawa
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 121f1d485e34ba30d3e6c2e5d91da633771e80ab
+ms.date: 06/29/2017
+ms.author: mikkelhegn
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 314b29a56e4651222822f40a116af97a7372ff2c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/01/2017
 
 
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>在 Visual Studio 中配置 Service Fabric 应用程序的升级
-Azure Service Fabric 的 Visual Studio 工具提供发布到本地或远程群集的升级支持。 在测试和调试期间将应用程序升级到较新的版本而不是替换应用程序有两个优点：
+Azure Service Fabric 的 Visual Studio 工具提供发布到本地或远程群集的升级支持。 在测试和调试期间将应用程序升级到较新的版本而不是替换应用程序的三种方案：
 
 * 应用程序数据不在升级期间丢失。
 * 可用性仍然很高，因此，如果有足够的服务实例分散到升级域，则在升级期间不有任何服务中断。
-
-在应用程序进行升级时，可以对该应用程序运行测试。
+* 在应用程序进行升级时，可以对该应用程序运行测试。
 
 ## <a name="parameters-needed-to-upgrade"></a>升级所需的参数
 可以选择的部署类型有两种：常规或升级。 常规部署会将群集上所有先前的部署信息和数据都清除，而升级部署则将其保留。 当你在 Visual Studio 中升级 Service Fabric应用程序时，需要提供应用程序升级参数和运行状况检查策略。 应用程序升级参数可帮助控制升级，而运行状况检查策略可确定升级是否成功。 有关详细信息，请参阅 [Service Fabric 应用程序升级：升级参数](service-fabric-application-upgrade-parameters.md)。
@@ -88,9 +89,3 @@ Service Fabric 应用程序中的每个服务可能有自身的运行状况策�
 ```
 ## <a name="next-steps"></a>后续步骤
 有关部署应用程序的详细信息，请参阅[在 Azure Service Fabric 中部署现有应用程序](service-fabric-deploy-existing-app.md)。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

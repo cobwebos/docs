@@ -15,13 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 2b25b4f4925962b1e4de681d268e78909a93eccd
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 77f50a830c38b3a90110845e58ee7cbb28742c10
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/28/2017
 
 ---
+
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>适用于 Linux 的虚拟机扩展和功能
 
 Azure 虚拟机扩展是小型应用程序，可在Azure 虚拟机上提供部署后配置和自动化任务。 例如，如果虚拟机要求安装软件、防病毒保护或 Docker 配置，便可以使用 VM 扩展来完成这些任务。 可以使用 Azure CLI、PowerShell、Azure Resource Manager 模板和 Azure 门户运行 Azure VM 扩展。 扩展可与新虚拟机部署捆绑在一起，或者针对任何现有系统运行。
@@ -39,7 +40,7 @@ Azure 虚拟机扩展是小型应用程序，可在Azure 虚拟机上提供部�
 
 除了进程特定的扩展外，“自定义脚本”扩展也可用于 Windows 和 Linux 虚拟机。 适用于 Linux 的“自定义脚本”扩展允许在虚拟机上运行任何 Bash 脚本。 在设计需要本机 Azure 工具无法提供的配置的 Azure 部署时，自定义脚本很有用。 有关详细信息，请参阅 [Linux VM Custom Script extension](extensions-customscript.md)（Linux VM“自定义脚本”扩展）。
 
-若要完成在端到端应用程序部署中使用 VM 扩展的示例，请参阅[将应用程序自动部署到 Azure 虚拟机](../windows/dotnet-core-1-landing.md)。
+若要完成在端到端应用程序部署中使用 VM 扩展的示例，请参阅[将应用程序自动部署到 Azure 虚拟机](../linux/dotnet-core-1-landing.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -130,7 +131,7 @@ VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过�
 }
 ```
 
-有关详细信息，请参阅 [Authoring Azure Resource Manager templates with Linux VM extensions](../windows/extensions-authoring-templates.md)（使用 Linux VM 扩展创作 Azure Resource Manager 模板）。
+有关详细信息，请参阅 [Authoring Azure Resource Manager templates with Linux VM extensions](../linux/extensions-authoring-templates.md)（使用 Linux VM 扩展创作 Azure Resource Manager 模板）。
 
 ## <a name="secure-vm-extension-data"></a>保护 VM 扩展数据
 

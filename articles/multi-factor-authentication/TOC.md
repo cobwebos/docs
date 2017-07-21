@@ -15,6 +15,7 @@
 ### [配置设置](multi-factor-authentication-whats-next.md)
 ### [MFA 中的报告](multi-factor-authentication-manage-reports.md)
 ### [使用现有网络策略服务器](multi-factor-authentication-nps-extension.md)
+#### [NPS 扩展的高级配置](nps-extension-advanced-configuration.md)
 ### [创建身份验证提供程序](multi-factor-authentication-get-started-auth-provider.md)
 ### 本地 Azure MFA
 #### [安装用户门户](multi-factor-authentication-get-started-portal.md)
@@ -48,3 +49,5 @@
 ### [常见问题](multi-factor-authentication-faq.md)
 ### [提问](https://social.msdn.microsoft.com/Forums/newthread?category=windowsazureplatform&forum=windowsazureactiveauthentication&prof=required)
 ### [NPS 扩展错误](multi-factor-authentication-nps-errors.md)
+# 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)

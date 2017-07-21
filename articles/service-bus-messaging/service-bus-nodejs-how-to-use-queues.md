@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: a28be325d17bfbe2c5e22bf43e6143e520d6e39f
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: b6fdf3932ca1b8b84e0ac1667f1eb286abb51671
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/19/2017
 
 
 ---
@@ -64,7 +64,7 @@ var azure = require('azure');
 ```
 
 ### <a name="set-up-an-azure-service-bus-connection"></a>设置 Azure 服务总线连接
-Azure 模块将读取环境变量 AZURE\_SERVICEBUS\_NAMESPACE and AZURE\_SERVICEBUS\_ACCESS\_KEY 以获取连接到服务总线所需的信息。 如果未设置这些环境变量，则在调用 **createServiceBusService** 时必须指定帐户信息。
+Azure 模块将读取环境变量 AZURE\_SERVICEBUS\_CONNECTION\_STRING 以获取连接到服务总线所需的信息。 如果未设置此环境变量，则在调用 **createServiceBusService** 时必须指定帐户信息。
 
 有关在 Azure 云服务的配置文件中设置环境变量的示例，请参阅[使用存储的 Node.js 云服务][Node.js Cloud Service with Storage]。
 

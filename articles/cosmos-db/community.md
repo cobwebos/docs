@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/07/2017
 ms.author: andrl
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 371976a35ae285942decaf8e22651e98f6217a95
+ms.translationtype: HT
+ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
+ms.openlocfilehash: 4be7f077fa5bc03531baf2443c663f1d8bc4a1c8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/15/2017
 
 ---
 # <a name="community-portal"></a>社区门户
@@ -57,7 +56,7 @@ DoQmentDB 是一个以 Node.js Promise 为基础的客户端，可在 Azure Cosm
 ### <a name="swagger-rest-api-for-documentdb"></a>DocumentDB 的 Swagger REST API
 作者：Howard Edidin
 
-可以轻松部署为 API 应用的 Azure Cosmos DB DocumentDB REST API Swagger 文件。
+适用于 DocumentDB API 的可以轻松部署为 API 应用的 Azure Cosmos DB REST API Swagger 文件。
 
 在 [GitHub](https://github.com/HEDIDIN/DocumentDB-REST/tree/master/DocumentDBRestApi) 上了解相关信息。
 
@@ -105,7 +104,7 @@ fluent-plugin-documentdb 是用于输出到 Azure Cosmos DB DocumentDB API 的 F
 |[南佛罗里达编解码器：NoSQL for .NET 开发人员使用 Azure DocumentDB 在 10 分钟内完成](http://www.fladotnet.com/codecamp/Agenda.aspx)| [Santosh Hari](https://twitter.com/_s_hari)|佛罗里达州戴维|2017 年 3 月 11 日|[#sflcc](https://twitter.com/search?q=%23sflcc&ref_src=twsrc%5Etfw)|
 |[奥兰多编解码器：NoSQL for .NET 开发人员使用 Azure DocumentDB 在 10 分钟内完成](http://orlandocodecamp.com/Sessions/Details/20)| [Santosh Hari](https://twitter.com/_s_hari)|佛罗里达州桑福德|2017 年 4 月 8 日|[#OrlandoCC](https://twitter.com/hashtag/OrlandoCC?src=hash&ref_src=twsrc%5Etfw)|
 |[Global Azure Bootcamp：使用 Azure Functions 和 DocumentDB 在 Azure 中进行的无服务器计算](https://www.eventbrite.com/e/2017-global-azure-bootcamp-atlanta-usa-tickets-31817713638)| [Josh Lane](https://twitter.com/jplane)|亚特兰大|2017 年 4 月 22 日|[#GlobalAzure](https://twitter.com/hashtag/GlobalAzure?src=hash)|
-|[NDC Olso 2017: Azure DocumentDB - 可能尚未使用的最佳 NoSQL 数据库](http://ndcoslo.com/talk/azure-documentdb-the-best-nosql-database-youre-probably-not-using-yet/)|[Josh Lane](https://twitter.com/jplane)|奥斯陆，挪威|2017 年 6 月 14 日|[#ndcoslo](https://twitter.com/search?q=%23ndcoslo)|
+|[NDC Olso 2017: Azure DocumentDB - 可能尚未使用的最佳 NoSQL 数据库](http://ndcoslo.com/talk/azure-cosmos-db-the-best-nosql-database-youre-probably-not-using-yet/)|[Josh Lane](https://twitter.com/jplane)|奥斯陆，挪威|2017 年 6 月 14 日|[#ndcoslo](https://twitter.com/search?q=%23ndcoslo)|
 
 *要演讲或举办活动吗？[让我们知道](mailto:askcosmosdb@microsoft.com)我们能为你做些什么！*
 

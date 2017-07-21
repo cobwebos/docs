@@ -9,4 +9,4 @@
   - 如果使用的是企业证书解决方案，请使用通用名称值格式“name@yourdomain.com”生成客户端证书，而不要使用“域名\用户名”格式。
   - 请确保客户端证书基于“用户”证书模板，该模板使用“客户端身份验证”（而不是“智能卡登录”等）作为使用列表中的第一项。可以通过双击客户端证书，然后查看“详细信息”>“增强型密钥用法”来检查证书。
 
-- **自签名根证书：**如果根据[为点到站点连接创建自签名根证书](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientcert)一文的说明从自签名根证书生成了客户端证书，该证书会自动安装在用于生成该证书的计算机上。 如果想要在另一台客户端计算机上安装客户端证书，则需导出该证书。 请按照文章中的说明[导出证书](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport)。
+- 自签名根证书：按以下说明生成客户端证书：[使用 PowerShell 和 Windows 10 生成客户端证书](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientcert)。 说明中包括参数，这些参数是创建兼容 P2S 的客户端证书所必需的。 生成客户端证书时，该证书会自动安装在用于生成它的计算机上。 如果想要在另一台客户端计算机上安装客户端证书，则需以 .pfx 格式导出该证书以及整个证书链。 这样就会创建一个 .pfx 文件，你可以将该文件安装在客户端计算机上，其中包含必需的根证书信息。 请按说明[导出证书](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport)。

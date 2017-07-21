@@ -4,7 +4,7 @@ description: "介绍如何使用 StorSimple Snapshot Manager MMC 管理单元查
 services: storsimple
 documentationcenter: NA
 author: SharS
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: bf4dcff6-c819-4766-b9d9-9922831cb200
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 04/26/2016
+ms.date: 06/05/2017
 ms.author: v-sharos
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: b31f6d51399dc0533d8cbefcafc3b55762cb6cf1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>使用 StorSimple Snapshot Manager查看和管理备份作业
+
 ## <a name="overview"></a>概述
 “**作用域**”窗格中的“**作业**”节点显示你以交互方式或通过配置的策略启动的“**已计划**”、“**过去 24 小时**”和“**正在运行**”的备份任务。 
 
@@ -38,9 +41,7 @@ ms.openlocfilehash: b31f6d51399dc0533d8cbefcafc3b55762cb6cf1
    * **上次运行时间** – 最近一个已计划快照的日期和时间
      
      > [!NOTE]
-     > 对于一次性快照，“**下次运行时间**”和“**上次运行时间**”将是相同的。 
-     > 
-     > 
+     > 对于一次性快照，“**下次运行时间**”和“**上次运行时间**”将是相同的。
      
      ![已计划的备份作业](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_scheduled.png) 
 3. 若要对特定的作业执行其他操作，请在“**结果**”窗格中右键单击作业名称，然后从菜单选项中进行选择。
@@ -63,14 +64,14 @@ ms.openlocfilehash: b31f6d51399dc0533d8cbefcafc3b55762cb6cf1
      ![过去 24 小时内运行的作业](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_Last_24_hours.png) 
 3. 若要对特定的作业执行其他操作，请在“**结果**”窗格中右键单击作业名称，然后从菜单选项中进行选择。
    
-    ![删除作业](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Delete_backup.png) 
+    ![删除作业](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Delete_backup.png)
 
 ## <a name="view-currently-running-jobs"></a>查看当前正在运行的作业
 使用以下过程查看当前正在运行的作业。
 
 #### <a name="to-view-currently-running-jobs"></a>查看当前正在运行的作业
 1. 单击桌面图标启动 StorSimple Snapshot Manager。
-2. 在“**作用域**”窗格中，展开“**作业**”节点，然后单击“**正在运行**”。 根据你指定的“**查看**”选项，以下信息将显示在“**结果**”窗格中： 
+2. 在“**作用域**”窗格中，展开“**作业**”节点，然后单击“**正在运行**”。 根据你指定的“**查看**”选项，以下信息将显示在“**结果**”窗格中：
    
    * **名称** – 已计划快照的名称。
    * **开始时间** – 快照开始的日期和时间。
@@ -87,10 +88,5 @@ ms.openlocfilehash: b31f6d51399dc0533d8cbefcafc3b55762cb6cf1
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[使用 StorSimple Snapshot Manager 管理你的 StorSimple 解决方案](storsimple-snapshot-manager-admin.md)。
 * 了解如何[使用 StorSimple Snapshot Manager 管理备份目录](storsimple-snapshot-manager-manage-backup-catalog.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

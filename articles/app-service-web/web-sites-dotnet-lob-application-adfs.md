@@ -14,29 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 08/31/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
-ms.openlocfilehash: 22fe6397120c36e1aa716f4711fbe9e7c72d17e8
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 1895094b28d9596eec644078b6f9a877b526b89e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/02/2017
 
 
 ---
 # <a name="create-a-line-of-business-azure-app-with-ad-fs-authentication"></a>使用 AD FS 身份验证创建业务线 Azure 应用
-本文说明如何使用本地 [Active Directory 联合身份验证服务](http://technet.microsoft.com/library/hh831502.aspx)作为标识提供者，在 [Azure App Service](../app-service/app-service-value-prop-what-is.md) 中创建 ASP.NET MVC 业务线应用程序。 如果要在 Azure 应用服务中创建业务线应用程序，并且组织要求在现场存储目录数据，则可以使用此方案。
+本文说明如何使用本地 [Active Directory 联合身份验证服务](http://technet.microsoft.com/library/hh831502.aspx)作为标识提供者，在 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md) 中创建 ASP.NET MVC 业务线应用程序。 如果要在 Azure 应用服务中创建业务线应用程序，并且组织要求在现场存储目录数据，则可以使用此方案。
 
 > [!NOTE]
-> 有关 Azure App Service 的不同企业身份验证和授权选项的概述，请参阅[在 Azure 应用中使用本地 Active Directory 进行身份验证](web-sites-authentication-authorization.md)。
+> 有关 Azure 应用服务的不同企业身份验证和授权选项的概述，请参阅[在 Azure 应用中使用本地 Active Directory 进行身份验证](web-sites-authentication-authorization.md)。
 > 
 > 
 
 <a name="bkmk_build"></a>
 
 ## <a name="what-you-will-build"></a>要生成的项目
-您将在 Azure App Service Web Apps 中生成具有以下功能的基本 ASP.NET 应用程序：
+您将在 Azure 应用服务 Web 应用中生成具有以下功能的基本 ASP.NET 应用程序：
 
 * 根据 AD FS 对用户进行身份验证
 * 使用 `[Authorize]` 授权用户执行不同操作
-* 用于在 Visual Studio 中进行调试和发布到 App Service Web Apps 的静态配置（配置一次，随时调试和发布）  
+* 用于在 Visual Studio 中进行调试和发布到应用服务 Web 应用的静态配置（配置一次，随时调试和发布）  
 
 <a name="bkmk_need"></a>
 
@@ -119,13 +120,13 @@ ms.lasthandoff: 04/11/2017
 
 <a name="bkmk_deploy"></a>
 
-## <a name="deploy-the-sample-application-to-azure-app-service-web-apps"></a>将示例应用程序部署到 Azure App Service Web Apps 中
+## <a name="deploy-the-sample-application-to-azure-app-service-web-apps"></a>将示例应用程序部署到 Azure 应用服务 Web 应用中
 现在，请将应用程序发布到应用服务 Web 应用中的 Web 应用，同时保留调试环境。 请注意，你将要在建立 RP 与 AD FS 之间的信任关系之前发布应用程序，因此身份验证还不起作用。 不过，如果现在就执行此操作，则可以获得 Web 应用 URL，稍后可以使用此 URL 来配置 RP 信任。
 
 1. 右键单击项目，然后选择“发布”。
    
     ![](./media/web-sites-dotnet-lob-application-adfs/01-publish-website.png)
-2. 选择“Microsoft Azure App Service”。
+2. 选择“Microsoft Azure 应用服务”。
 3. 如果尚未登录 Azure，请单击“登录”，然后使用 Azure 订阅的 Microsoft 帐户进行登录。
 4. 登录后，单击“新建”，创建一个 Web 应用。
 5. 填写所有必填字段。 稍后，您将要连接到本地数据，因此不需要为此 Web 应用创建数据库。
@@ -142,9 +143,9 @@ ms.lasthandoff: 04/11/2017
    &lt;add key="ida:RPIdentifier" value="<mark>[e.g. https://mylobapp.azurewebsites.net/]</mark>" xdt:Transform="SetAttributes" xdt:Locator="Match(key)" /&gt;
    &lt;/appSettings&gt;</pre>
 
-完成后，您的项目中将配置有两个 RP 标识符，一个用于 Visual Studio 中的调试环境，另一个用于 Azure 中发布的 Web 应用。 你将为 AD FS 中两个环境的每一个设置 RP 信任。 在调试期间，将使用 Web.config 中的应用设置来使**调试**配置适用于 AD FS。 发布配置（默认情况下，会发布**版本**配置）后，将上载转换的 Web.config，其中包含 Web.Release.config 中的应用设置更改。
+完成后，您的项目中将配置有两个 RP 标识符，一个用于 Visual Studio 中的调试环境，另一个用于 Azure 中发布的 Web 应用。 你将为 AD FS 中两个环境的每一个设置 RP 信任。 在调试期间，将使用 Web.config 中的应用设置来使**调试**配置适用于 AD FS。 发布配置（默认情况下，会发布 **版本** 配置）后，将上传转换的 Web.config，其中包含 Web.Release.config 中的应用设置更改。
 
-如果您想将 Azure 中已发布的 Web 应用附加到调试器（即必须上载已发布的 Web 应用中的代码调试符号），则可以克隆一个调试配置进行 Azure 调试，但自身需要使用 Web.Release.config 中的应用设置进行自定义 Web.config 转换（例如 Web.AzureDebug.config）。 这样，你可以跨不同的环境中维护静态配置。
+如果您想将 Azure 中已发布的 Web 应用附加到调试器（即必须上传已发布的 Web 应用中的代码调试符号），则可以克隆一个调试配置进行 Azure 调试，但自身需要使用 Web.Release.config 中的应用设置进行自定义 Web.config 转换（例如 Web.AzureDebug.config）。 这样，你可以跨不同的环境中维护静态配置。
 
 <a name="bkmk_rptrusts"></a>
 
@@ -287,10 +288,13 @@ ms.lasthandoff: 04/11/2017
     }
    
     <mark>[Authorize(Roles="Domain Admins")]</mark>
-    public ActionResult Contact()  {      ViewBag.Message = "Your contact page.";
+    public ActionResult Contact()
+    {
+        ViewBag.Message = "Your contact page.";
    
         return View();
-    }  </pre>
+    }
+    </pre>
    
     由于我已在 AD FS 实验室环境中向“测试组”添加了**测试用户**，因此我将使用“测试组”在 `About` 上测试授权。 对于 `Contact`，我将测试**测试用户**不属于的**域管理员**的反面情况。
 3. 键入 `F5` 启动调试器并登录，然后单击“关于”。 如果经过身份验证的用户已获得该操作的授权，那么您现在应该可以成功查看 `~/About/Index` 页面。
@@ -338,19 +342,18 @@ ms.lasthandoff: 04/11/2017
 6. 再次使用 `F5` 运行调试器。 现在，单击“联系人”会显示信息更丰富（但不严重）的错误消息：
    
     ![](./media/web-sites-dotnet-lob-application-adfs/14-unauthorized-forbidden.png)
-7. 再次将应用程序发布到 Azure App Service Web Apps 中，并测试实时应用程序的行为。
+7. 再次将应用程序发布到 Azure 应用服务 Web 应用中，并测试实时应用程序的行为。
 
 <a name="bkmk_data"></a>
 
 ## <a name="connect-to-on-premises-data"></a>连接到本地数据
 使用 AD FS 而不是 Azure Active Directory 实施业务线应用程序的一个原因是，既能符合法规要求，同时可将组织数据保留在外部。 这可能还意味着，您在 Azure 中的 Web 应用必须访问本地数据库，因为您不得使用 [SQL 数据库](/services/sql-database/)作为 Web 应用的数据层。
 
-Azure App Service Web 应用支持通过以下这两种方法访问本地数据库：[混合连接](../biztalk-services/integration-hybrid-connection-overview.md)和[虚拟网络](web-sites-integrate-with-vnet.md)。 有关详细信息，请参阅[对 Azure App Service Web 应用使用 VNET 集成和混合连接](https://azure.microsoft.com/blog/2014/10/30/using-vnet-or-hybrid-conn-with-websites/)。
+Azure 应用服务 Web 应用支持通过以下这两种方法访问本地数据库：[混合连接](../biztalk-services/integration-hybrid-connection-overview.md)和[虚拟网络](web-sites-integrate-with-vnet.md)。 有关详细信息，请参阅[对 Azure 应用服务 Web 应用使用 VNET 集成和混合连接](https://azure.microsoft.com/blog/2014/10/30/using-vnet-or-hybrid-conn-with-websites/)。
 
 <a name="bkmk_resources"></a>
 
 ## <a name="further-resources"></a>其他资源
-* [通过 SSL 和 Authorize 属性保护应用程序](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md#protect-the-application-with-ssl-and-the-authorize-attribute)
 * [在 Azure 应用中使用本地 Active Directory 进行身份验证](web-sites-authentication-authorization.md)
 * [使用 Azure Active Directory 身份验证创建业务线 Azure 应用](web-sites-dotnet-lob-application-azure-ad.md)
 * [在 Visual Studio 2013 中将本地组织的身份验证选项 (ADFS) 与 ASP.NET 结合使用](http://www.cloudidentity.com/blog/2014/02/12/use-the-on-premises-organizational-authentication-option-adfs-with-asp-net-in-visual-studio-2013/)

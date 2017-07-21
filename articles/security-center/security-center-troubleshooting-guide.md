@@ -4,7 +4,7 @@ description: "本文档可以帮助排除 Azure 安全中心中的问题。"
 services: security-center
 documentationcenter: na
 author: YuriDio
-manager: swadhwa
+manager: mbaldwin
 editor: 
 ms.assetid: 44462de6-2cc5-4672-b1d3-dbb4749a28cd
 ms.service: security-center
@@ -12,20 +12,25 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/15/2017
+ms.date: 06/16/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: b9f4a8b185f9fb06f8991b6da35a5d8c94689367
-ms.openlocfilehash: dbbec729c14d0d9dc5781e7a88a1db3f66f7df97
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: fa70dffc2a4bade44e1dec583bdfcf7b5dae6801
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/17/2017
 
 
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 安全中心故障排除指南
 本指南适用于信息技术 (IT) 专业人员、信息安全分析人员，以及那些组织中正在使用 Azure 安全中心并需要进行排除安全中心相关问题的云管理员。
 
+>[!NOTE] 
+>自 2017 年 6 月初开始，安全中心将使用 Microsoft Monitoring Agent 来收集和存储数据。 请参阅 [Azure 安全中心平台迁移](security-center-platform-migration.md)，了解详细信息。 本文中的信息表示转换到 Microsoft Monitoring Agent 后的安全中心功能。
+>
+
 ## <a name="troubleshooting-guide"></a>故障排除指南
-本指南介绍如何排除安全中心的相关问题。 安全中心完成的大部分故障排除将首先通过查看失败组件的 [审核日志](https://azure.microsoft.com/updates/audit-logs-in-azure-preview-portal/) 记录展开。 通过审核日志，你可以确定：
+本指南介绍如何排除安全中心的相关问题。 安全中心完成的大部分故障排除首先通过查看失败组件的[审核日志](https://azure.microsoft.com/updates/audit-logs-in-azure-preview-portal/)记录展开。 通过审核日志，你可以确定：
 
 * 哪些操作已发生
 * 谁启动了该操作
@@ -35,47 +40,48 @@ ms.lasthandoff: 02/16/2017
 
 审核日志包含针对资源执行的所有写入操作（PUT、POST、DELETE），但它不包含读取属性 (GET)。
 
-## <a name="troubleshooting-monitoring-agent-installation-in-windows"></a>Windows 中的监视代理安装故障排除
-安全中心监视代理用于执行数据收集。 启用数据收集并在目标计算机中正确安装代理后，应执行以下进程：
+## <a name="microsoft-monitoring-agent"></a>Microsoft Monitoring Agent
+安全中心使用 Microsoft Monitoring Agent（Operations Management Suite 和 Log Analytics 服务同样适用此代理）从 Azure 虚拟机中收集安全数据。 启用数据收集并在目标计算机中正确安装代理后，应执行以下进程：
 
-* ASMAgentLauncher.exe - Azure 监视代理 
-* ASMMonitoringAgent.exe - Azure 安全监视扩展
-* ASMSoftwareScanner.exe – Azure 扫描管理器
+* HealthService.exe
 
-Azure 安全监视扩展将扫描各种安全相关的配置，并从虚拟机中收集安全日志。 扫描管理器将用作修补扫描仪。
+如果打开服务管理控制台 (services.msc)，还会看到 Microsoft Monitoring Agent 服务正在运行，如下所示：
 
-如果成功执行安装，应该会看到一个与下面目标 VM 的审核日志中类似的条目：
+![服务](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
 
-![审核日志](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig1.png)
+若要查看拥有的代理版本，请打开“任务管理器”，在“进程”选项卡中找到“Microsoft Monitoring Agent 服务”，右键单击此选项，然后单击“属性”。 在“详细信息”选项卡中，查看文件版本，如下所示：
 
-此外可以通过读取位于 *%systemdrive%\windowsazure\logs*（示例：C:\WindowsAzure\Logs）的代理日志，获取有关安装过程的详细信息。
+![文件](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
+   
 
-> [!NOTE]
-> 如果 Azure 安全中心代理产生错误行为，将需要重新启动目标 VM，因为没有命令来停止和启动代理。
+## <a name="microsoft-monitoring-agent-installation-scenarios"></a>Microsoft Monitoring Agent 安装方案
+在计算机上安装 Microsoft Monitoring Agent 时，有两种可产生不同结果的安装方案。 支持的方案有：
 
+* 安全中心自动安装代理：在此方案中，可在“安全中心”和“日志搜索”这两个位置查看警报。 系统将向资源所属订阅的安全策略中配置的电子邮件地址，发送电子邮件通知。
+。
+* 在位于 Azure 中的 VM 上手动安装代理：在此方案中，如果使用 2017 年 2 月前手动下载和安装的代理，则仅当对工作区所属订阅进行筛选时，才可在安全中心门户中查看警报。 如果对资源所属订阅进行筛选，则无法看到任何警报。 系统将向工作区所属订阅的安全策略中配置的电子邮件地址，发送电子邮件通知。
 
-如果仍有数据收集方面的问题，可按以下步骤卸载代理：
+>[!NOTE]
+> 若要避免第二个方案中所述的行为，请确保下载最新版本的代理。
+> 
 
-1. 在 **Azure 门户**中选择存在数据收集问题的虚拟机，然后单击“扩展”。
-2. 右键单击“Microsoft.Azure.Security.Monitoring”，然后选择单击“卸载”。
+## <a name="troubleshooting-monitoring-agent-network-requirements"></a>监视代理网络要求故障排除
+若要让代理连接和注册到安全中心，必须允许其访问包括端口号和域 URL 在内的网络资源。
 
-![删除代理](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig4.png)
+- 对于代理服务器，需确保在代理设置中配置适当的代理服务器资源。 阅读本文，详细了解[如何更改代理设置](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-windows-agents#configure-proxy-settings)。
+- 对于限制 Internet 访问的防火墙，需要将其配置为允许访问 OMS。 代理设置中不需要任何操作。
 
-Azure 安全监视扩展应该会在数分钟内自行重新安装。
+下表显示通信所需的资源。
 
-## <a name="troubleshooting-monitoring-agent-installation-in-linux"></a>Linux 中的监视代理安装故障排除
-在 Linux 系统中进行 VM 代理安装故障排除时，应确保该扩展已下载到 /var/lib/waagent/。 可以运行以下命令验证其是否已安装：
+| 代理资源 | 端口 | 绕过 HTTPS 检查 |
+|---|---|---|
+| *.ods.opinsights.azure.com | 443 | 是 |
+| *.oms.opinsights.azure.com | 443 | 是 |
+| *.blob.core.windows.net | 443 | 是 |
+| *.azure-automation.net | 443 | 是 |
 
-`cat /var/log/waagent.log` 
+如果遇到代理载入问题，请务必阅读[如何排查 Operations Management Suite 载入问题](https://support.microsoft.com/en-us/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues)一文。
 
-可以查看的用于故障排除的其他日志文件有： 
-
-* /var/log/mdsd.err
-* /var/log/azure/
-
-在正常运行的系统中，应该会看到 TCP 29130 上 mdsd 进程的连接。 这是与 mdsd 进程进行通信的系统日志。 可以通过运行以下命令来验证此行为：
-
-`netstat -plantu | grep 29130`
 
 ## <a name="troubleshooting-endpoint-protection-not-working-properly"></a>有关终结点保护无法正常工作的疑难解答
 
@@ -96,7 +102,7 @@ Azure 安全监视扩展应该会在数分钟内自行重新安装。
 如果在加载“安全中心”仪表板时遇到问题，请确保将订阅注册到安全中心的用户（即第一个通过订阅打开安全中心的用户）以及需要启用数据收集功能的用户为订阅的*所有者* 或*参与者*。 从该时刻开始，在订阅上为*读者* 的 also user 即可查看 dashboard/alerts/recommendation/policy。
 
 ## <a name="contacting-microsoft-support"></a>请联系 Microsoft 支持人员
-可以使用本文中提供的指南来识别一些问题，还可以在安全中心公共 [论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter)中查找记录的其他问题。 但是，如果需要进一步进行故障排除，可以使用 **Azure 门户**打开新的支持请求，如下所示： 
+可以使用本文中提供的指南来识别一些问题，还可以在安全中心公共 [论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter)中查找记录的其他问题。 但是，如果需要进一步故障排除，则可使用 Azure 门户打开新的支持请求，如下所示： 
 
 ![Microsoft 支持部门](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 

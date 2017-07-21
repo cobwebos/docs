@@ -17,10 +17,10 @@ ms.date: 05/02/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 817f6763ba663de994a40aefcda31dc8466ef12a
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: c0026cc516834c57ad5707b5e8684f963dca7c71
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -36,9 +36,10 @@ ms.lasthandoff: 06/01/2017
 > * 查看运行中的负载均衡器
 > * 从负载均衡器中添加和删除 VM
 
-本教程需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 ## <a name="azure-load-balancer-overview"></a>Azure 负载均衡器概述
 Azure 负载均衡器是位于第 4 层（TCP、UDP）的负载均衡器，通过在正常运行的 VM 之间分发传入流量提供高可用性。 负载均衡器的运行状况探测监视每个 VM 上的给定端口，并仅将流量分发给可操作的 VM。

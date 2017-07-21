@@ -1,6 +1,6 @@
 ---
 title: "Azure IoT 中心入门 (Python) | Microsoft Docs"
-description: "本文介绍如何通过用于 Python 的 Azure IoT SDK 将消息从模拟设备发送到 Azure IoT 中心。"
+description: "了解如何通过用于 Python 的 IoT SDK 将设备到云消息发送到 Azure IoT 中心。 创建模拟的设备和服务应用，以便通过 IoT 中心注册设备、发送消息和读取消息。"
 services: iot-hub
 author: dsk-2015
 manager: timlt
@@ -13,12 +13,11 @@ ms.workload: na
 ms.date: 04/22/2017
 ms.author: dkshir
 ms.custom: na
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 572dfc8965957c4667d4124b045ffbb835786a94
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 05268924a182575b3df66fb6dad6bcac2700ec0c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/23/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="connect-your-simulated-device-to-your-iot-hub-using-python"></a>使用 Python 将模拟设备连接到 IoT 中心
@@ -78,6 +77,8 @@ ms.lasthandoff: 05/23/2017
     CONNECTION_STRING = "[IoTHub Connection String]"
     DEVICE_ID = "MyFirstPythonDevice"
     ```
+   [!INCLUDE [iot-hub-pii-note-naming-device](../../includes/iot-hub-pii-note-naming-device.md)]
+
 3. 添加以下函数，输出部分设备信息。
 
     ```python

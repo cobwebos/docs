@@ -20,16 +20,19 @@ ms.openlocfilehash: fcf9cc661da0d8e65b385bfddeded0a3e5d0d3e2
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/10/2017
 
-
 ---
-# <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 监视 REST API 演练
+<a id="azure-monitoring-rest-api-walkthrough" class="xliff"></a>
+
+# Azure 监视 REST API 演练
 本文说明如何执行身份验证，使代码能够遵循 [Microsoft Azure 监视器 REST API 参考](https://msdn.microsoft.com/library/azure/dn931943.aspx)。         
 
 使用 Azure 监视器 API 能够以编程方式检索可用的默认指标定义（例如 CPU 时间、请求等指标类型）、粒度和指标值。 检索定义后，可将数据保存在独立的数据存储（例如 Azure SQL 数据库、Azure Cosmos DB 或 Azure Data Lake）中。 然后，可以根据需要从该处执行其他分析。
 
 除了处理各种指标数据点以外，如本文中所示，使用监视 API 还能列出警报规则、查看活动日志以及执行其他许多操作。 有关可用操作的完整列表，请参阅 [Microsoft Azure 监视器 REST API 参考](https://msdn.microsoft.com/library/azure/dn931943.aspx)。
 
-## <a name="authenticating-azure-monitor-requests"></a>对 Azure 监视器请求进行身份验证
+<a id="authenticating-azure-monitor-requests" class="xliff"></a>
+
+## 对 Azure 监视器请求进行身份验证
 第一步是对请求进行身份验证。
 
 针对 Azure 监视器 API 执行的所有任务都使用 Azure Resource Manager 身份验证模型。 因此，所有请求必须使用 Azure Active Directory (Azure AD) 进行身份验证。 对客户端应用程序进行身份验证的方法之一是创建 Azure AD 服务主体，并检索身份验证 (JWT) 令牌。 以下示例脚本演示如何通过 PowerShell 创建 Azure AD 服务主体。 有关更详细的演练，请参阅有关[使用 Azure PowerShell 创建用于访问资源的服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-password)的文档。 还可以[通过 Azure 门户创建服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)。
@@ -70,7 +73,7 @@ $subscription = Get-AzureRmSubscription -SubscriptionId $subscriptionId
 
 $clientId = $azureAdApplication.ApplicationId.Guid
 $tenantId = $subscription.TenantId
-$authUrl = "https://login.windows.net/${tenantId}"
+$authUrl = "https://login.microsoftonline.com/${tenantId}"
 
 $AuthContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext]$authUrl
 $cred = New-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential -ArgumentList ($clientId, $pwd)
@@ -90,7 +93,9 @@ $authHeader = @{
 1. 列出资源的指标定义
 2. 检索指标值
 
-## <a name="retrieve-metric-definitions"></a>检索指标定义
+<a id="retrieve-metric-definitions" class="xliff"></a>
+
+## 检索指标定义
 > [!NOTE]
 > 若要使用 Azure 监视器 REST API 检索指标定义，请使用“2016-03-01”作为 API 版本。
 >
@@ -111,7 +116,9 @@ Invoke-RestMethod -Uri $request `
 
 有关详细信息，请参阅 [List the metric definitions for a resource in Azure Monitor REST API](https://msdn.microsoft.com/library/azure/mt743621.aspx)（在 Azure 监视器 REST API 中列出资源的指标定义）文档。
 
-## <a name="retrieve-metric-values"></a>检索指标值
+<a id="retrieve-metric-values" class="xliff"></a>
+
+## 检索指标值
 知道可用的指标定义后，即可检索相关的指标值。 将指标的名称“value”（而不是“localizedValue”）用于任何筛选请求（例如，检索“CpuTime”和“Requests”指标数据点）。 如果未指定筛选器，将返回默认指标。
 
 > [!NOTE]
@@ -151,7 +158,9 @@ $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourc
                    -Verbose).Value | ConvertTo-Json
 ```
 
-### <a name="use-armclient"></a>使用 ARMClient
+<a id="use-armclient" class="xliff"></a>
+
+### 使用 ARMClient
 替代 PowerShell（如上所示）的做法是在 Windows 计算机上使用 [ARMClient](https://github.com/projectkudu/ARMClient)。 ARMClient 将自动处理 Azure AD 身份验证（及生成的 JWT 令牌）。 以下步骤概述如何使用 ARMClient 检索指标数据：
 
 1. 安装 [Chocolatey](https://chocolatey.org/) 和 [ARMClient](https://github.com/projectkudu/ARMClient)。
@@ -161,7 +170,9 @@ $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourc
 
 ![Alt "通过 ARMClient 使用 Azure 监视器 REST API"](./media/monitoring-rest-api-walkthrough/armclient_metricdefinitions.png)
 
-## <a name="retrieve-the-resource-id"></a>检索资源 ID
+<a id="retrieve-the-resource-id" class="xliff"></a>
+
+## 检索资源 ID
 使用 REST API 确实有助于了解可用的指标定义、粒度和相关值。 使用 [Azure 管理库](https://msdn.microsoft.com/library/azure/mt417623.aspx)时，这些信息很有用。
 
 对于上述代码，要使用的资源 ID 是所需 Azure 资源的完整路径。 例如，若要针对某个 Azure Web 应用执行查询，资源 ID 将是：
@@ -180,27 +191,37 @@ $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourc
 
 还可以通过其他方法检索资源 ID，包括使用 Azure 资源浏览器，以及通过 Azure 门户、PowerShell 或 Azure CLI 查看所需的资源。
 
-### <a name="azure-resource-explorer"></a>Azure 资源浏览器
+<a id="azure-resource-explorer" class="xliff"></a>
+
+### Azure 资源浏览器
 若要查找所需资源的资源 ID，一种有效的方法是使用 [Azure 资源浏览器](https://resources.azure.com)工具。 导航到所需的资源，然后查看如以下屏幕截图中所示的 ID：
 
 ![Alt "Azure 资源浏览器"](./media/monitoring-rest-api-walkthrough/azure_resource_explorer.png)
 
-### <a name="azure-portal"></a>Azure 门户
+<a id="azure-portal" class="xliff"></a>
+
+### Azure 门户
 还可以从 Azure 门户获取资源 ID。 为此，请导航到所需的资源，然后选择“属性”。 资源 ID 将显示在“属性”边栏选项卡中，如以下屏幕截图中所示：
 
 ![Alt "Azure 门户的“属性”边栏选项卡中显示的资源 ID"](./media/monitoring-rest-api-walkthrough/resourceid_azure_portal.png)
 
-### <a name="azure-powershell"></a>Azure PowerShell
+<a id="azure-powershell" class="xliff"></a>
+
+### Azure PowerShell
 也可以使用 Azure PowerShell cmdlet 检索资源 ID。 例如，若要获取某个 Azure Web 应用的资源 ID，请执行 Get-AzureRmWebApp cmdlet，如以下屏幕截图中所示：
 
 ![Alt "通过 PowerShell 获取资源 ID"](./media/monitoring-rest-api-walkthrough/resourceid_powershell.png)
 
-### <a name="azure-cli"></a>Azure CLI
+<a id="azure-cli" class="xliff"></a>
+
+### Azure CLI
 若要使用 Azure CLI 检索资源 ID，请执行“azure webapp show”命令并指定“-json”选项，如以下屏幕截图中所示：
 
 ![Alt "通过 PowerShell 获取资源 ID"](./media/monitoring-rest-api-walkthrough/resourceid_azurecli.png)
 
-## <a name="retrieve-activity-log-data"></a>检索活动日志数据
+<a id="retrieve-activity-log-data" class="xliff"></a>
+
+## 检索活动日志数据
 除了处理指标定义和相关值以外，还可以检索有关 Azure 资源的其他有趣的深入信息。 例如，可查询[活动日志](https://msdn.microsoft.com/library/azure/dn931934.aspx)数据。 以下示例演示如何使用 Azure 监视器 REST API 查询 Azure 订阅在特定日期范围内的活动日志数据：
 
 ```PowerShell
@@ -213,7 +234,9 @@ $request = "https://management.azure.com/subscriptions/${subscriptionId}/provide
                    -Verbose).Value | ConvertTo-Json
 ```
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 * 查看[监视概述](monitoring-overview.md)。
 * 查看 [Azure 监视器支持的指标](monitoring-supported-metrics.md)。
 * 查看 [Microsoft Azure 监视器 REST API 参考](https://msdn.microsoft.com/library/azure/dn931943.aspx)。

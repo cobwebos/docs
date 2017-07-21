@@ -17,10 +17,10 @@ ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
 ms.author: LADocs; jehollan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 32a5cfdb520c745dbd0fa5c433849bd3783a364e
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: c92692db23ac59f67890e26cce6b2d3272e8901d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/01/2017
 
 ---
 
@@ -32,9 +32,9 @@ ms.lasthandoff: 05/11/2017
 
 * [请求](../connectors/connectors-native-reqres.md)
 
-* [API 连接 Webhook](logic-apps-workflow-actions-triggers.md#api-connection)
+* [API 连接 Webhook](logic-apps-workflow-actions-triggers.md#api-connection-trigger)
 
-* [HTTP Webhook](../connectors/connectors-native-http.md)
+* [HTTP Webhook](../connectors/connectors-native-webhook.md)
 
    > [!NOTE]
    > 尽管本文中的示例使用“请求”触发器，但你也可以使用任何所列的 HTTP 触发器，所有原理同样适用于其他触发器类型。
@@ -211,7 +211,7 @@ ms.lasthandoff: 05/11/2017
 
 ## <a name="reference-content-from-an-incoming-request"></a>引用传入请求中的内容
 
-如果内容的类型为 `application/json`，你可以引用传入请求中的属性。 否则，内容被视为可以传递给其他 API 的单个二进制单元。 对于工作流中的此内容，在未转换的情况下不能引用它。 例如，如果传递 `application/xml` 内容，可以使用 `@xpath()` 执行 XPath 提取，或使用 `@json()` 将 XML 转换为 JSON。 了解[处理内容类型](../logic-apps/logic-apps-content-type.md)。
+如果内容的类型为 `application/json`，你可以引用传入请求中的属性。 否则，内容被视为可以传递给其他 API 的单个二进制单元。 若要引用工作流中的此内容，则必须转换此内容。 例如，如果传递 `application/xml` 内容，可以使用 `@xpath()` 执行 XPath 提取，或使用 `@json()` 将 XML 转换为 JSON。 了解[处理内容类型](../logic-apps/logic-apps-content-type.md)。
 
 若要从传入请求中获取输出，可以使用 `@triggerOutputs()` 函数。 输出可能如以下示例所示：
 
@@ -277,9 +277,11 @@ ms.lasthandoff: 05/11/2017
 
 答：Azure 使用共享访问签名 (SAS) 安全生成逻辑应用回调 URL。 此签名以查询参数的形式传递。在触发逻辑应用之前必须验证此签名。 Azure 使用每个逻辑应用的机密密钥、触发器名称和执行的操作的唯一组合生成签名。 因此，除非用户对机密逻辑应用密钥拥有访问权限，否则他们无法生成有效的签名。
 
-   > [!NOTE]
-   > 对于生产/安全系统，强烈建议不要直接从浏览器调用逻辑应用，因为 URL 中包含共享访问密钥，并且由于逻辑应用客户之间共享域而无法管理安全内容策略。
-
+   > [!IMPORTANT]
+   > 对于生产和安全系统，强烈建议不要直接从浏览器中调用逻辑应用，因为：
+   > 
+   > * URL 中会出现共享访问密钥。
+   > * 由于跨逻辑应用客户的共享域，将无法管理安全内容策略。
 
 #### <a name="q-can-i-configure-http-endpoints-further"></a>问：是否可以进一步配置 HTTP 终结点？
 

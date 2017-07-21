@@ -14,6 +14,7 @@
 ### [了解规模集模板](virtual-machine-scale-sets-mvss-start.md)
 ### [使用现有虚拟网络](virtual-machine-scale-sets-mvss-existing-vnet.md)
 ### [使用自定义映像](virtual-machine-scale-sets-mvss-custom-image.md)
+### [将基于来宾的自动缩放与 Linux 规模集模板配合使用](virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md)
 
 ## 部署
 ### [使用门户进行创建](virtual-machine-scale-sets-portal-create.md)
@@ -32,10 +33,11 @@
 ## 管理
 ### [使用 PowerShell 管理 Windows 规模集](virtual-machine-scale-sets-windows-manage.md)
 ### [自动缩放和规模集](virtual-machine-scale-sets-autoscale-overview.md)
+### [高级自动缩放](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [规模集中的垂直缩放](virtual-machine-scale-sets-vertical-scale-reprovision.md)
 ### [规模集升级](virtual-machine-scale-sets-upgrade-scale-set.md)
-### [高级自动缩放](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [使用 DSC 和规模集](virtual-machine-scale-sets-dsc.md)
+### [规模集网络](virtual-machine-scale-sets-networking.md)
 ### [将模板转换为托管磁盘](virtual-machine-scale-sets-convert-template-to-md.md)
 
 ## 故障排除
@@ -50,7 +52,8 @@
 ## [REST](/rest/api/virtualmachinescalesets/)
 
 # 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)
 ## 定价 
 ### [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)
 ### [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)

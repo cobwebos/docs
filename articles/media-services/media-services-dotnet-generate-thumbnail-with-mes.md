@@ -1,6 +1,6 @@
 ---
-title: "如何使用媒体编码器标准通过 .NET 来生成缩略图"
-description: "本主题介绍如何使用 .NET 通过媒体编码器标准同时对资产进行编码和生成缩略图。"
+title: "如何使用 Media Encoder Standard 通过 .NET 来生成缩略图"
+description: "本主题介绍如何使用 .NET 通过 Media Encoder Standard 同时对资产进行编码和生成缩略图。"
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1c28e756548b69d336b7f66ae9fbfa3c9259f787
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 46bc735bb288a29828903a5d1891c78c2bfae86a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>如何使用媒体编码器标准通过 .NET 来生成缩略图
-本主题介绍如何使用媒体服务 .NET SDK 通过媒体编码器标准来对资产进行编码和生成缩略图。 本主题定义了 XML 和 JSON 缩略图预设，可用于创建同时执行编码和生成缩略图的任务。 [此](https://msdn.microsoft.com/library/mt269962.aspx)文档包含这些预设所用元素的说明。
+# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>如何使 Media Encoder Standard 通过 .NET 来生成缩略图
+本主题介绍如何使用媒体服务 .NET SDK 通过 Media Encoder Standard 来对资产进行编码和生成缩略图。 本主题定义了 XML 和 JSON 缩略图预设，可用于创建同时执行编码和生成缩略图的任务。 [此](https://msdn.microsoft.com/library/mt269962.aspx)文档包含这些预设所用元素的说明。
 
 请务必仔细阅读[注意事项](media-services-dotnet-generate-thumbnail-with-mes.md#considerations)部分。
 
@@ -29,7 +31,7 @@ ms.openlocfilehash: 1c28e756548b69d336b7f66ae9fbfa3c9259f787
 以下代码示例使用媒体服务 .NET SDK 执行下列任务：
 
 * 创建编码作业。
-* 获取对媒体编码器标准版编码器的引用。
+* 获取对 Media Encoder Standard 编码器的引用。
 * 加载预设 [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) 或 [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json)，其中包含生成缩略图所需的编码预设和信息。 可以在某一文件中保存此 [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) 或 [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json)，并使用以下代码来加载该文件。
   
             // Load the XML (or JSON) from the local file.
@@ -172,7 +174,7 @@ ms.openlocfilehash: 1c28e756548b69d336b7f66ae9fbfa3c9259f787
             }
         }
 
-## <a name="a-idjsonathumbnail-json-preset"></a><a id="json"></a>缩略图 JSON 预设
+## <a id="json"></a>缩略图 JSON 预设
 有关架构的信息，请参阅[此](https://msdn.microsoft.com/library/mt269962.aspx)主题。
 
     {
@@ -274,7 +276,7 @@ ms.openlocfilehash: 1c28e756548b69d336b7f66ae9fbfa3c9259f787
     }
 
 
-## <a name="a-idxmlathumbnail-xml-preset"></a><a id="xml"></a>缩略图 XML 预设
+## <a id="xml"></a>缩略图 XML 预设
 有关架构的信息，请参阅[此](https://msdn.microsoft.com/library/mt269962.aspx)主题。
 
     <?xml version="1.0" encoding="utf-16"?>
@@ -373,10 +375,5 @@ ms.openlocfilehash: 1c28e756548b69d336b7f66ae9fbfa3c9259f787
 
 ## <a name="see-also"></a>另请参阅
 [媒体服务编码概述](media-services-encode-asset.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

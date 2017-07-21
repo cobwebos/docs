@@ -14,17 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/02/2016
 ms.author: yanacai
-translationtype: Human Translation
-ms.sourcegitcommit: a5bb452582f05981a17c2514e0e40db0571bf61d
-ms.openlocfilehash: f9b485bfbfbeb8a95ae1908ef6b1733b9cc6999a
+ms.translationtype: Human Translation
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: aac455520ab62d69b406a254a54b0f000ea2e5bc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/26/2017
 
 
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>调试失败的 U-SQL 作业的用户定义 C# 代码
-
-了解如何使用针对 Visual Studio 的 Azure Data Lake 工具调试失败且显示用户定义代码 bug 的 U-SQL 作业。
-
-## <a name="background"></a>背景
 
 U-SQL 通过 C# 提供扩展性模型，用户可以编写用户定义的 C# 代码（如用户定义的提取器和化简器等），实现更大的扩展性（详细了解 [U-SQL 用户定义的代码](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#user-defined-functions---udf)）。 但是，没有开发人员可以编写代码而不出错，并且在大型数据系统中调试很难，因为许多系统仅提供有限的运行时调试信息（如日志等）。 
 
@@ -34,15 +32,10 @@ U-SQL 通过 C# 提供扩展性模型，用户可以编写用户定义的 C# 代
 
 > [!VIDEO https://e0d1.wpc.azureedge.net/80E0D1/OfficeMixProdMediaBlobStorage/asset-d3aeab42-6149-4ecc-b044-aa624901ab32/b0fc0373c8f94f1bb8cd39da1310adb8.mp4?sv=2012-02-12&sr=c&si=a91fad76-cfdd-4513-9668-483de39e739c&sig=K%2FR%2FdnIi9S6P%2FBlB3iLAEV5pYu6OJFBDlQy%2FQtZ7E7M%3D&se=2116-07-19T09:27:30Z&rscd=attachment%3B%20filename%3DDebugyourcustomcodeinUSQLADLA.mp4]
 >
->
 
 > [!NOTE]
 > 如果不具有以下两个窗口升级： [Microsoft Visual C++ 2015 Redistributable Update 2](https://www.microsoft.com/download/details.aspx?id=51682) 和[适用于 Windows 的通用 C 运行时](https://www.microsoft.com/download/details.aspx?id=50410&wa=wsignin1.0)，Visual Studio 可能会挂起或崩溃。
 > 
-> 
-
-## <a name="prerequisites"></a>先决条件
-* 通读完[入门](data-lake-analytics-data-lake-tools-get-started.md)这篇文章。
 
 ## <a name="download-failed-vertex-to-local"></a>将失败顶点下载到本地
 
@@ -127,13 +120,7 @@ U-SQL 通过 C# 提供扩展性模型，用户可以编写用户定义的 C# 代
 
 * [U-SQL 可编程性指南](data-lake-analytics-u-sql-programmability-guide.md)
 * [为 Azure Data Lake Analytics 作业开发 U-SQL 用户定义的运算符](data-lake-analytics-u-sql-develop-user-defined-operators.md)
-* [教程：Azure Data Lake Analytics U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)
 * [教程：使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
 
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

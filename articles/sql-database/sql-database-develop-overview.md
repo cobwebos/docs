@@ -8,17 +8,18 @@ manager: jhubbard
 editor: genemi
 ms.assetid: 67c02204-d1bd-4622-acce-92115a7cde03
 ms.service: sql-database
-ms.custom: development
+ms.custom: develop apps
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 338fa476377e9ff04c9a1f4e585f790b92a59f87
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 50024fdb487e859b870a1025b23790f1cc5d1a18
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -66,7 +67,7 @@ Azure SQL 数据库提供用于在 SQL 数据库中限制访问、保护数据�
 ## <a name="network-considerations"></a>网络注意事项
 * 在托管你的客户端程序的计算机上，确保防火墙允许端口 1433 上的传出 TCP 通信。  详细信息：[配置 Azure SQL 数据库防火墙](sql-database-configure-firewall-settings.md)
 * 客户端在 Azure 虚拟机 (VM) 上运行时，如果客户端程序连接到 SQL 数据库，则必须打开 VM 上的某些端口范围。 详细信息：[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)
-* 与 Azure SQL 数据库建立的客户端连接有时会绕过代理直接与数据库交互。 除 1433 以外的端口变得非常重要。 详细信息：[用于 ADO.NET 4.5 和 SQL 数据库 的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)
+* 与 Azure SQL 数据库建立的客户端连接有时会绕过代理直接与数据库交互。 除 1433 以外的端口变得非常重要。 有关详细信息，请参阅 [Azure SQL 数据库连接体系结构](sql-database-develop-direct-route-ports-adonet-v12.md)和[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-connectivity-architecture.md)。
 
 ## <a name="data-sharding-with-elastic-scale"></a>数据分片和弹性缩放
 弹性缩放简化了扩展（和缩减）过程。 

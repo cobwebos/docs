@@ -1,5 +1,5 @@
 ---
-title: "排查应用程序网关的网关无效 (502) 错误 | Microsoft Docs"
+title: "排查 Azure 应用程序网关的网关无效 (502) 错误 | Microsoft Docs"
 description: "了解如何排查应用程序网关 502 错误"
 services: application-gateway
 documentationcenter: na
@@ -13,27 +13,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/16/2016
+ms.date: 05/09/2017
 ms.author: amsriva
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 178cd0e1c20947c952a2abb4bad253272da9fcd4
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: cbf9c552c4818b3925f449081539f1db6d61918e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/08/2017
 
 
 ---
 
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>排查应用程序网关中的网关无效错误
 
+了解如何对使用应用程序网关时收到网关无效 (502) 错误进行故障排除。
+
 ## <a name="overview"></a>概述
 
-配置 Azure 应用程序网关之后，用户可能遇到的一个错误是“服务器错误: 502 - Web 服务器在作为网关或代理服务器时收到了无效响应”。 此错误可能是以下主要原因造成的：
+配置应用程序网关之后，用户可能遇到的一个错误是“服务器错误: 502 - Web 服务器在充当网关或代理服务器时收到无效响应”。 此错误可能是以下主要原因造成的：
 
-* Azure 应用程序网关的后端池未配置或为空。
-* VM 规模集中没有正常运行的 VM 或实例。
-* VM 规模集的后端 VM 或实例未响应默认的运行状况探测。
-* 自定义运行状况探测的配置无效或不正确。
-* 请求超时，或用户请求出现连接问题。
+* Azure 应用程序网关的[后端池未配置或为空](#empty-backendaddresspool)。
+* [VM 规模集](#unhealthy-instances-in-backendaddresspool)中没有正常运行的 VM 或实例。
+* VM 规模集的后端 VM 或实例[未响应默认的运行状况探测](#problems-with-default-health-probe.md)。
+* [自定义运行状况探测的配置](#problems-with-custom-health-probe.md)无效或不正确。
+* 用户请求出现[连接问题或请求超时](#request-time-out)。
 
 ## <a name="empty-backendaddresspool"></a>BackendAddressPool 为空
 

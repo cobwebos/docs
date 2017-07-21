@@ -3,7 +3,7 @@ title: "在 Application Insights 中查看日志浏览 .NET 跟踪日志"
 description: "搜索使用 Trace、NLog 或 Log4Net 生成的日志。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 0c2a084f-6e71-467b-a6aa-4ab222f17153
 ms.service: application-insights
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/3/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1b0c902adff1d60a04fb3cddef5862256d54f813
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: e562e6a1a6c2b8203f3d5a9a2ee5680372499693
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/19/2017
 
 
 ---
@@ -96,6 +96,19 @@ NuGet 包安装必要的程序集，并且还修改 web.config 或 app.config。
  * `Name` 指定要收集的 EventSource 的名称。
  * `Level` 指定要收集的日志记录级别。 可为 `Critical`、`Error`、`Informational`、`LogAlways`、`Verbose`、`Warning` 中的一个。
  * `Keywords`（可选）指定要使用的关键字组合的整数值。
+
+## <a name="using-diagnosticsource-events"></a>使用 DiagnosticSource 事件
+可配置要作为跟踪发送到 Application Insights 的 [System.Diagnostics.DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) 事件。 首先，安装 [`Microsoft.ApplicationInsights.DiagnosticSourceListener`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) NuGet 包。 然后编辑 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 文件的 `TelemetryModules` 部分。
+
+```xml
+    <Add Type="Microsoft.ApplicationInsights.DiagnsoticSourceListener.DiagnosticSourceTelemetryModule, Microsoft.ApplicationInsights.DiagnosticSourceListener">
+      <Sources>
+        <Add Name="MyDiagnosticSourceName" />
+      </Sources>
+    </Add>
+```
+
+对于要跟踪的每个 DiagnosticSource，请在 DiagnosticSource 名称中添加包含 `Name` 属性集的项。
 
 ## <a name="using-etw-events"></a>使用 ETW 事件
 可配置要作为跟踪发送到 Application Insights 的 ETW 事件。 首先，安装 `Microsoft.ApplicationInsights.EtwCollector` NuGet 包。 然后编辑 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 文件的 `TelemetryModules` 部分。

@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0a4e73e9c8a66fca132b1f26913ee8ef5e397269
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1303815755584e912891d501018b257b96e5f063
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -51,9 +53,4 @@ Azure 安全信息站点目前包括以下类别：
 >
 
 请不吝发表意见！ 如果想要添加其他类别，请告诉我们！ 如果想要在现有类别中添加文章，也请告诉我们！ 可以在下面的“意见”部分留下你的意见，或向我们写信：[azsecinfosite@microsoft.com](mailto:azsecinfosite@microsoft.com)，我们会将你的建议添加到我们的计划中。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

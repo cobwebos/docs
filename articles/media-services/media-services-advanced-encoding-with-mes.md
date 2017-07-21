@@ -1,6 +1,6 @@
 ---
 title: "通过自定义 MES 预设执行高级编码 | Microsoft Docs"
-description: "本主题说明如何通过自定义媒体编码器标准任务预设执行高级编码。"
+description: "本主题说明如何通过自定义 Media Encoder Standard 任务预设执行高级编码。"
 services: media-services
 documentationcenter: 
 author: juliako
@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 06/29/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 01448fcff64e99429e2ee7df916b110c869307fb
-ms.openlocfilehash: 7776ac35f1a8a30c959286a9e31beb666f5fc799
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 25a13ad3738286795f45bbdec681614356bd3db8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -27,6 +28,10 @@ ms.lasthandoff: 03/02/2017
 ## <a name="overview"></a>概述
 
 本主题演示如何自定义 Media Encoder Standard 预设。 [通过使用自定义预设的 Media Encoder Standard 进行编码](media-services-custom-mes-presets-with-dotnet.md)主题演示如何使用 .NET 创建编码任务和执行此任务的作业。 自定义预设后，请将其提供给编码任务。 
+
+>[!NOTE]
+>如果使用的是 XML 预设，请务必保留元素顺序，如下面的 XML 示例所示（例如，KeyFrameInterval 应在 SceneChangeDetection 前面）。
+>
 
 本主题演示了执行以下编码任务的自定义预设。
 
@@ -489,7 +494,7 @@ ms.lasthandoff: 03/02/2017
 
 ## <a id="overlay"></a>创建覆盖层
 
-媒体编码器标准允许你在现有视频上覆盖图像。 目前支持以下格式：png、jpg、gif 和 bmp。 下面定义的预设是视频覆盖层的基本示例。
+Media Encoder Standard 允许你在现有视频上覆盖图像。 目前支持以下格式：png、jpg、gif 和 bmp。 下面定义的预设是视频覆盖层的基本示例。
 
 除了定义预设文件外，你还必须让媒体服务知道资产中的哪个文件是覆盖层图像，哪个文件是你要在其上覆盖图像的源视频。 视频文件必须是**主**文件。
 
@@ -806,11 +811,11 @@ ms.lasthandoff: 03/02/2017
 
 * 输入视频应只有一个音轨。
 * 输入视频的帧速率应该都相同。
-* 必须将视频上载到不同的资产，并将视频设置为每个资产中的主文件。
+* 必须将视频上传到不同的资产，并将视频设置为每个资产中的主文件。
 * 需要知道视频的持续时间。
 * 以下预设示例假设所有输入视频的起始时间戳都为零。 如果视频具有不同的起始时间戳（通常是实时存档的情况），则需要修改 StartTime 值。
 * JSON 预设会显式引用输入资产的 AssetID 值。
-* 示例代码假设 JSON 预设已保存到本地文件（例如“C:\supportFiles\preset.json”）。 同时假设已通过上载两个视频文件创建了两个资产，并且你知悉生成的 AssetID 值。
+* 示例代码假设 JSON 预设已保存到本地文件（例如“C:\supportFiles\preset.json”）。 同时假设已通过上传两个视频文件创建了两个资产，并且你知悉生成的 AssetID 值。
 * 代码片段和 JSON 预设显示连接两个视频文件的示例。 你可以将其扩展至两个以上的视频，方法是：
 
   1. 重复调用 task. InputAssets.Add() 以便依次添加更多视频。
@@ -905,19 +910,20 @@ ms.lasthandoff: 03/02/2017
       ]
     }
 
-## <a id="crop"></a>使用媒体编码器标准版裁剪视频
+## <a id="crop"></a>使用 Media Encoder Standard 裁剪视频
 请参阅[使用 Media Encoder Standard 剪辑视频](media-services-crop-video.md)主题。
 
 ## <a id="no_video"></a>在输入不包含视频时插入视频轨迹
+
 默认情况下，如果要向编码器发送仅包含音频而不包含视频的输入，则输出资产将包含仅有音频数据的文件。 某些播放器（包括 Azure 媒体播放器）（请参阅[此处](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)）可能无法处理这样的流。 对于这种方案，可使用此设置来强制编码器将单色视频轨迹添加到输出。
 
 > [!NOTE]
 > 强制编码器插入输出视频轨迹会增加输出资产的大小，从而增加编码任务的相关成本。 应运行测试来验证此成本增加对每月费用的影响不大。
 >
->
 
 ### <a name="inserting-video-at-only-the-lowest-bitrate"></a>仅以最低比特率插入视频
-假设要使用多比特率编码预设（如[“H264 多比特率 720p”](media-services-mes-preset-h264-multiple-bitrate-720p.md)）对整个输入目录进行编码以实现流式处理，且输入目录中混合了视频文件和仅音频文件。 在此方案中，如果输入不包含视频，用户可能想要强制编码器仅以最低比特率插入单色视频轨迹，而不是按每个输出比特率插入视频。 要实现此目的，需要指定“InsertBlackIfNoVideoBottomLayerOnly”标志。
+
+假设要使用多比特率编码预设（如[“H264 多比特率 720p”](media-services-mes-preset-h264-multiple-bitrate-720p.md)）对整个输入目录进行编码以实现流式处理，且输入目录中混合了视频文件和仅音频文件。 在此方案中，如果输入不包含视频，用户可能想要强制编码器仅以最低比特率插入单色视频轨迹，而不是按每个输出比特率插入视频。 为此，需要使用“InsertBlackIfNoVideoBottomLayerOnly”标志。
 
 可使用[此部分](media-services-mes-presets-overview.md)中所述的任何 MES 预设，并进行以下修改：
 
@@ -932,9 +938,30 @@ ms.lasthandoff: 03/02/2017
     }
 
 #### <a name="xml-preset"></a>XML 预设
-    <KeyFrameInterval>00:00:02</KeyFrameInterval>
-    <StretchMode>AutoSize</StretchMode>
-    <Condition>InsertBlackIfNoVideoBottomLayerOnly</Condition>
+
+使用 XML 时，请使用 Condition="InsertBlackIfNoVideoBottomLayerOnly" 作为“H264Video”元素的属性，并使用 Condition="InsertSilenceIfNoAudio" 作为“AACAudio”的属性。
+    
+    . . .
+    <Encoding>  
+    <H264Video Condition="InsertBlackIfNoVideoBottomLayerOnly">  
+      <KeyFrameInterval>00:00:02</KeyFrameInterval>
+      <SceneChangeDetection>true</SceneChangeDetection>  
+      <StretchMode>AutoSize</StretchMode>
+      <H264Layers>  
+    <H264Layer>  
+      . . .
+    </H264Layer>  
+      </H264Layers>  
+      <Chapters />  
+    </H264Video>  
+    <AACAudio Condition="InsertSilenceIfNoAudio">  
+      <Profile>AACLC</Profile>  
+      <Channels>2</Channels>  
+      <SamplingRate>48000</SamplingRate>  
+      <Bitrate>128</Bitrate>  
+    </AACAudio>  
+    </Encoding>  
+    . . .
 
 ### <a name="inserting-video-at-all-output-bitrates"></a>按所有输出比特率插入视频
 假设要使用多比特率编码预设（如[“H264 多比特率 720p”](media-services-mes-preset-H264-Multiple-Bitrate-720p.md)）对整个输入目录进行编码以实现流式处理，且输入目录中混合了视频文件和仅音频文件。 在此方案中，如果输入不包含视频，用户可能想要强制编码器按所有输出比特率插入单色视频轨迹。 这可确保对于视频轨迹和音频曲目的数目，输出资产都是同源的。 要实现此目的，需要指定“InsertBlackIfNoVideo”标志。
@@ -952,9 +979,30 @@ ms.lasthandoff: 03/02/2017
     }
 
 #### <a name="xml-preset"></a>XML 预设
-    <KeyFrameInterval>00:00:02</KeyFrameInterval>
-    <StretchMode>AutoSize</StretchMode>
-    <Condition>InsertBlackIfNoVideo</Condition>
+
+使用 XML 时，请使用 Condition="InsertBlackIfNoVideo" 作为“H264Video”元素的属性，并使用 Condition="InsertSilenceIfNoAudio" 作为“AACAudio”的属性。
+
+    . . .
+    <Encoding>  
+    <H264Video Condition="InsertBlackIfNoVideo">  
+      <KeyFrameInterval>00:00:02</KeyFrameInterval>
+      <SceneChangeDetection>true</SceneChangeDetection>  
+      <StretchMode>AutoSize</StretchMode>
+      <H264Layers>  
+    <H264Layer>  
+      . . .
+    </H264Layer>  
+      </H264Layers>  
+      <Chapters />  
+    </H264Video>  
+    <AACAudio Condition="InsertSilenceIfNoAudio">  
+      <Profile>AACLC</Profile>  
+      <Channels>2</Channels>  
+      <SamplingRate>48000</SamplingRate>  
+      <Bitrate>128</Bitrate>  
+    </AACAudio>  
+    </Encoding>  
+    . . .  
 
 ## <a id="rotate_video"></a>旋转视频
 [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) 支持旋转 0/90/180/270 度。 默认行为是“自动”，即尝试在传入的视频文件中检测旋转元数据并对其进行补偿。 将以下 **Sources** 元素包含在[此部分](media-services-mes-presets-overview.md)定义的其中一个预设中：

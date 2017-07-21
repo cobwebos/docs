@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: krnese
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2b9a8b5d7b889926f1cdbb6787fea1579dd21190
-ms.openlocfilehash: 941bc07fa9be765403e8fe541caf660eef15585e
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: 3e9321255b65d46af59d0ee478e214df795664ac
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/22/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="deploy-the-mobility-service-with-azure-automation-dsc-for-replication-of-vm"></a>使用 Azure Automation DSC 部署移动服务以复制 VM
@@ -210,8 +209,8 @@ configuration ASRMobilityService {
 >
 >
 
-## <a name="step-3-upload-to-automation-dsc"></a>步骤 3：上载到 Automation DSC
-由于所进行的 DSC 配置会导入所需的 DSC 资源模块 (xPSDesiredStateConfiguration)，因此，需要先将该模块导入 Automation 中，然后才能上载 DSC 配置。
+## <a name="step-3-upload-to-automation-dsc"></a>步骤 3：上传到 Automation DSC
+由于所进行的 DSC 配置会导入所需的 DSC 资源模块 (xPSDesiredStateConfiguration)，因此，需要先将该模块导入 Automation 中，然后才能上传 DSC 配置。
 
 登录到你的 Automation 帐户，浏览到“**资产**” > “**模块**”，然后单击“**浏览库**”。
 
@@ -228,7 +227,7 @@ configuration ASRMobilityService {
 $AAAccount = Get-AzureRmAutomationAccount -ResourceGroupName 'KNOMS' -Name 'KNOMSAA'
 ```
 
-使用以下 cmdlet 将配置上载到 Automation DSC：
+使用以下 cmdlet 将配置上传到 Automation DSC：
 
 ```powershell
 $ImportArgs = @{
@@ -252,7 +251,7 @@ $AAAccount | Start-AzureRmAutomationDscCompilationJob -ConfigurationName ASRMobi
 
 ![检索作业](./media/site-recovery-automate-mobilitysevice-install/retrieve-job.png)
 
-现在，已成功发布 DSC 配置并将其上载到 Automation DSC。
+现在，已成功发布 DSC 配置并将其上传到 Automation DSC。
 
 ## <a name="step-4-onboard-machines-to-automation-dsc"></a>步骤 4 ：将计算机加入 Automation DSC
 > [!NOTE]
@@ -512,5 +511,5 @@ New-AzureRmResourceGroupDeployment @RGDeployArgs -Verbose
 ```
 
 ## <a name="next-steps"></a>后续步骤
-部署移动服务代理以后，即可为虚拟机[启用复制](site-recovery-vmware-to-azure.md#enable-replication)。
+部署移动服务代理以后，即可为虚拟机[启用复制](site-recovery-vmware-to-azure.md)。
 

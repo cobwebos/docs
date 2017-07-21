@@ -11,12 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2017
+ms.date: 06/05/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 454957b439e327b08dcd6e7f4acee37963970458
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.openlocfilehash: c8ac99f63bd6700349bb352b2c880a2ffedf7457
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/06/2017
 
 
 ---
@@ -106,7 +107,7 @@ ms.lasthandoff: 04/12/2017
 
 ### <a name="using-ssh-public-key-authentication"></a>使用 SSH 公钥身份验证
 
-若要使用基本身份验证，请将 `authenticationType` 设置为 `SshPublicKey`，并指定除上一部分所述 SFTP 连接器泛型属性以外的下列属性：
+若要使用 SSH 公钥身份验证，请将 `authenticationType` 设置为`SshPublicKey`，并且除上一部分所述 SFTP 连接器泛型属性外，还需指定下列属性：
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- | --- |
@@ -114,6 +115,9 @@ ms.lasthandoff: 04/12/2017
 | privateKeyPath | 指定网关可以访问的私钥文件的绝对路径。 | 指定 `privateKeyPath` 或 `privateKeyContent`。 <br><br> 仅当从本地 SFTP 服务器复制数据时才适用。 |
 | privateKeyContent | 私钥内容的序列化字符串。 复制向导可以读取私钥文件，并自动提取私钥的内容。 如果使用其他任何工具/SDK，请改用 privateKeyPath 属性。 | 指定 `privateKeyPath` 或 `privateKeyContent`。 |
 | passPhrase | 如果密钥文件受通行短语保护，请指定用于解密私钥的通行短语/密码。 | 如果私钥文件受通行短语的保护，则为 Yes。 |
+
+> [!NOTE]
+> SFTP 连接器仅支持 OpenSSH 密钥。 请确保密钥文件格式正确。 可使用 Putty 工具将 .ppk 格式转换为 OpenSSH 格式。
 
 #### <a name="example-sshpublickey-authentication-using-private-key-filepath"></a>示例：使用私钥 filePath 进行 SshPublicKey 身份验证
 
@@ -164,7 +168,7 @@ ms.lasthandoff: 04/12/2017
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | folderPath |文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅 [Sample linked service and dataset definitions](#sample-linked-service-and-dataset-definitions)（链接服务和数据集定义示例）。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
-| fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称将采用以下格式： <br/><br/>Data<Guid>.txt（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
+| fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称将采用以下格式： <br/><br/>Data.<Guid>.txt（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
 | fileFilter |指定在 folderPath 中选择一部分文件而不是所有文件时要使用的筛选器。<br/><br/>允许的值为：`*`（多个字符）和 `?`（单个字符）。<br/><br/>示例 1：`"fileFilter": "*.log"`<br/>示例 2：`"fileFilter": 2014-1-?.txt"`<br/><br/> fileFilter 适用于 FileShare 输入数据集。 HDFS 不支持此属性。 |否 |
 | partitionedBy |partitionedBy 可用于指定时序数据的动态 folderPath 和 filename。 例如，folderPath 可针对每小时的数据参数化。 |否 |
 | 格式 | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |

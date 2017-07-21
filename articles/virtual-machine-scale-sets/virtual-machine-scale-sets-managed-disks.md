@@ -13,12 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/21/2017
+ms.date: 6/01/2017
 ms.author: negat
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 4ec20a30f423d4b30e953f873100be90167f987b
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: f9cc157f25e70a8154614b659fb7e59b7fd06ed1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -45,7 +46,7 @@ az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --dat
 
 ## <a name="api-versions"></a>API 版本
 
-使用托管磁盘的规模集的当前正式发布的 API 版本为 `2016-04-30-preview`。 即使在支持托管磁盘的新 API 版本中，使用非托管磁盘的规模集也可以与当前一样继续工作。 但是，使用非托管磁盘的规模集无法获得托管磁盘的优点，即使在这些新的 API 版本中也是如此。
+带有托管磁盘的规模集需要 `2016-04-30-preview` 或更高版本的 Microsoft.Compute APi。 即使在支持托管磁盘的新 API 版本中，使用非托管磁盘的规模集也可以与当前一样继续工作。 但是，使用非托管磁盘的规模集无法获得托管磁盘的优点，即使在这些新的 API 版本中也是如此。
 
 ## <a name="next-steps"></a>后续步骤
 

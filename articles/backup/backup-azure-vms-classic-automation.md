@@ -12,13 +12,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
+ms.date: 06/14/2017
 ms.author: markgal;trinadhk;jimpark
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 82b7541ab1434179353247ffc50546812346bda9
-ms.openlocfilehash: aa1934447b53b725a08cebb47da9171a136b76ff
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: f7474aac1cd70243de25c4a2a73332d94b7bcaea
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -29,7 +30,13 @@ ms.lasthandoff: 03/02/2017
 >
 >
 
-本文演示如何使用 Azure PowerShell 来备份和恢复 Azure VM。 Azure 有两个用于创建和处理资源的不同部署模型：Resouce Manager 部署模型和经典部署模型。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+本文演示如何使用 Azure PowerShell 来备份和恢复 Azure VM。 Azure 具有用于创建和处理资源的两个不同的部署模型：Resource Manager 和经典。 本文介绍如何使用经典部署模型将数据备份到备份保管库。 如果尚未在订阅中创建备份保管库，请参阅[使用 AzureRM.RecoveryServices.Backup cmdlet 来备份虚拟机](backup-azure-vms-automation.md)一文中的 Resource Manager 版本。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
+
+> [!IMPORTANT]
+> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 从 2017 年 11 月 1 日起：
+>- 其余的所有备份保管库都将自动升级到恢复服务保管库。
+>- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
+>
 
 ## <a name="concepts"></a>概念
 本文专门介绍用于备份虚拟机的 PowerShell cmdlet。 有关如何保护 Azure VM 的介绍，请参阅[在 Azure 中计划 VM 备份基础结构](backup-azure-vms-introduction.md)。

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 0a66567d7381f38787f9aa7652c944e4bb3aef82
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 311cee724fc77256748153b5167d2a38ccba9775
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -41,19 +41,21 @@ ms.lasthandoff: 05/09/2017
 创建新的 Application Insights 资源时，基本计划是默认的计划，满足大多数客户的要求。
 
 * 在基本计划中，将按数据量（Application Insights 收到的遥测数据的字节数）对用户收费。 数据量的衡量标准是 Application Insights 从用户应用程序收到的未压缩 JSON 数据包的大小。
+对于[导入到 Analytics 中的表格数据](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-import)，按发送到 Application Insights 的文件的未压缩大小来度量数据量。  
 * 每个应用的头 1 GB 免费，因此，如果只是进行试验或开发，可能不需付费。
 * 定价未考虑[实时指标流](app-insights-live-stream.md)数据。
-* 已推出[连续导出](app-insights-export-telemetry.md)，在使用基本计划时需额外付费（按 GB），但在 2017 年 3 月初之前仍属免费。
+* 已推出[连续导出](app-insights-export-telemetry.md)，在使用基本计划时需额外付费（按 GB）。
 
 ### <a name="enterprise-plan"></a>企业计划
 
-* 在企业计划中，应用可以使用 Application Insights 的所有功能。 [连续导出](app-insights-export-telemetry.md)和 [Log Analytics 连接器](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409)已推出，在使用企业计划时不额外收费。
+* 在企业计划中，应用可以使用 Application Insights 的所有功能。 [连续导出](app-insights-export-telemetry.md)和 
+
+[Log Analytics 连接器](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409)已推出，在使用企业计划时不额外收费。
 * 将按在企业计划中为任何应用发送遥测数据的节点收费。 
  * *节点* 是托管应用的物理/虚拟服务器计算机或平台即服务角色实例。
  * 开发计算机、客户端浏览器和移动设备不计为节点。
  * 如果应用有多个组件（例如 Web 服务和后端辅助角色）发送遥测数据，则会对其分开计数。
- * 定价未考虑[实时指标流](app-insights-live-stream.md)数据。
-* 在订阅中，将按节点而非应用计费。 如果有 5 个节点在为 12 个应用发送遥测数据，则按 5 个节点计费。
+ * 定价未考虑[实时指标流](app-insights-live-stream.md)数据。在订阅中，将按节点而非应用计费。 如果有 5 个节点在为 12 个应用发送遥测数据，则按 5 个节点计费。
 * 虽然是按月计费，但对于从应用发送遥测数据的节点来说，实际上是按小时计费。 小时费率为月费/744（每月的小时数，每月按 31 天算）。
 * 每天为每个检测到的节点分配的数据量为 200 MB（时间粒度为小时）。 分配的数据如果未使用，不会从当天转到第二天。
  * 如果选择“企业”定价选项，将根据该订阅中向 Application Insights 资源发送遥测数据的节点数为每个订阅提供每日数据限额。 因此，如果全天有 5 个节点在发送数据，则该订阅中的所有 Application Insights 资源可以共用 1 GB 的数据限额。 无所谓某些节点是否比其他节点发送更多数据，因为所有节点发送的数据都计入同一个数据限额。 如果 Application Insights 资源在特定的某一天收到的数据量超出了为该订阅分配的每日数据限额，则会对超额数据按 GB 计费。 
@@ -79,9 +81,18 @@ ms.lasthandoff: 05/09/2017
 [多步骤 Web 测试](app-insights-monitor-web-app-availability.md#multi-step-web-tests)会额外收费。 此类测试是指执行一系列操作的 Web 测试。 
 
 单页“ping 测试”不单独计费。 进行 ping 测试和多步测试时发送的遥测数据将与应用发送的其他遥测数据一起计费。
+ 
+## <a name="operations-management-suite-subscription-entitlement"></a>Operations Management Suite 订阅权利
 
-## <a name="review-pricing-plan-and-estimate-costs-for-your-application-insights-resource"></a>查看 Application Insights 资源的定价计划并进行费用估算
-在应用程序的 Application Insights 资源中打开“功能 + 定价”边栏选项卡。
+按照[最近的公告](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/)，购买 Microsoft Operations Management Suite E1 和 E2 的客户能够以附加组件的形式获取 Application Insights 企业版，而没有额外费用。 具体而言，Operations Management Suite E1 和 E2 的每个单位都包含对 Application Insights 企业计划的 1 个节点的权利。 如上所述，每个 Application Insights 节点包含每天最多 200 MB 的引入数据（独立于 Log Analytics 数据引入），并且数据会保留 90 天，无额外费用。 
+
+> [!NOTE]
+> 若要确保获取此权利，必须在企业定价计划中具有 Application Insights 资源。 此权利仅作为节点进行应用，因此基本计划中的 Application Insights 资源不会实现任何优势。 请注意，此权利在“功能 + 定价”边栏选项卡上显示的估计成本中不可见。 
+>
+ 
+## <a name="review-pricing-plans-and-estimate-costs"></a>检查定价计划和估计成本
+
+通过 Applicaition Insights 可以轻松了解可用的定价计划以及基于最近使用模式的可能成本。 首先在 Azure 门户的 Application Insights 资源中打开“功能 + 定价”边栏选项卡：
 
 ![选择“定价”。](./media/app-insights-pricing/01-pricing.png)
 

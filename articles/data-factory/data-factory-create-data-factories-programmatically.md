@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2017
+ms.date: 07/10/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
 ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
@@ -20,21 +20,28 @@ ms.openlocfilehash: 2f33c266c14b62f51745ff67069358c007bc00a2
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/13/2017
 
-
 ---
-# <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure 数据工厂 .NET SDK 创建、监视和管理 Azure 数据工厂
-## <a name="overview"></a>概述
+<a id="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk" class="xliff"></a>
+
+# 使用 Azure 数据工厂 .NET SDK 创建、监视和管理 Azure 数据工厂
+<a id="overview" class="xliff"></a>
+
+## 概述
 可使用数据工厂 .NET SDK 以编程方式创建、监视和管理 Azure 数据工厂。 可根据本文所含演练创建示例 .NET 控制台应用程序，从而创建和监视数据工厂。 
 
 > [!NOTE]
 > 本文不会介绍所有数据工厂 .NET API。 有关数据工厂 .NET API 的综合文档，请参阅 [Data Factory .NET API Reference](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1)（数据工厂 .NET API 参考）。 
 
-## <a name="prerequisites"></a>先决条件
+<a id="prerequisites" class="xliff"></a>
+
+## 先决条件
 * Visual Studio 2012、2013 或 2015
 * 下载并安装 [Azure .NET SDK](http://azure.microsoft.com/downloads/)。
 * Azure PowerShell。 遵循 [How to install and configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装 Azure PowerShell。 使用 Azure PowerShell 创建 Azure Active Directory 应用程序。
 
-### <a name="create-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中创建应用程序
+<a id="create-an-application-in-azure-active-directory" class="xliff"></a>
+
+### 在 Azure Active Directory 中创建应用程序
 创建一个 Azure Active Directory 应用程序，为该应用程序创建服务主体，然后将其分配到 **数据工厂参与者** 角色。
 
 1. 启动 **PowerShell**。
@@ -90,7 +97,7 @@ ms.lasthandoff: 05/13/2017
 9. 获取应用程序 ID。
 
     ```PowerShell
-    $azureAdApplication    
+    $azureAdApplication 
     ```
     记下输出中的应用程序 ID (applicationID)。
 
@@ -101,7 +108,9 @@ ms.lasthandoff: 05/13/2017
 * 应用程序 ID
 * 密码（在第一条命令中指定）
 
-## <a name="walkthrough"></a>演练
+<a id="walkthrough" class="xliff"></a>
+
+## 演练
 在本演练中，将使用包含复制活动的管道创建数据工厂。 复制活动将数据从 Azure blob 存储中的一个文件夹复制到同一 blob 存储中的另一个文件夹。 
 
 复制活动在 Azure 数据工厂中执行数据移动。 该活动由全球可用的服务提供支持，能以安全、可靠、可缩放的方式在各种数据存储区间复制数据。 有关复制活动的详细信息，请参阅 [Data Movement Activities](data-factory-data-movement-activities.md) （数据移动活动）。
@@ -124,7 +133,7 @@ ms.lasthandoff: 05/13/2017
     <?xml version="1.0" encoding="utf-8" ?>
     <configuration>
         <appSettings>
-            <add key="ActiveDirectoryEndpoint" value="https://login.windows.net/" />
+            <add key="ActiveDirectoryEndpoint" value="https://login.microsoftonline.com/" />
             <add key="ResourceManagerEndpoint" value="https://management.azure.com/" />
             <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
 
@@ -458,7 +467,9 @@ ms.lasthandoff: 05/13/2017
     * 管道： **PipelineBlobSample**
 19. 验证 **adftutorial** 容器中的 **apifactoryoutput** 文件夹内是否创建了一个输出文件。
 
-## <a name="get-a-list-of-failed-data-slices"></a>获取失败的数据切片的列表 
+<a id="get-a-list-of-failed-data-slices" class="xliff"></a>
+
+## 获取失败的数据切片的列表 
 
 ```csharp
 // Parse the resource path
@@ -497,7 +508,9 @@ do
 while (response != null);
 ```
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 请参阅以下示例，该示例使用 .NET SDK 创建将数据从 Azure blob 存储复制到 Azure SQL 数据库的管道： 
 
 - [创建用于将数据从 Blob 存储复制到 SQL 数据库的管道](data-factory-copy-activity-tutorial-using-dotnet-api.md)

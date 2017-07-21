@@ -1,5 +1,5 @@
 ---
-title: "通过 Python SDK 开始使用 Azure Data Lake Store | Microsoft 文档"
+title: "通过 Python SDK 开始使用 Azure Data Lake Store | Microsoft Docs"
 description: "了解如何使用 Python SDK 处理 Data Lake Store 帐户和文件系统。"
 services: data-lake-store
 documentationcenter: 
@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/03/2017
+ms.date: 06/29/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 9e4efc9de7979c98fcb4afbe530c73e9013326c3
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: fb8715b715cc69136ad3a1ca3bf82df3afd2948a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -30,14 +31,13 @@ ms.lasthandoff: 04/06/2017
 > * [.NET SDK](data-lake-store-get-started-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
-> * [Azure CLI](data-lake-store-get-started-cli.md)
 > * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
 >
 
-了解如何使用 Python SDK for Azure 和 Azure Data Lake Store 执行基本操作，如创建文件夹、上载和下载数据文件等。有关 Data Lake 的详细信息，请参阅 [Azure Data Lake Store](data-lake-store-overview.md)。
+了解如何使用 Python SDK for Azure 和 Azure Data Lake Store 执行基本操作，如创建文件夹、上传和下载数据文件等。有关 Data Lake 的详细信息，请参阅 [Azure Data Lake Store](data-lake-store-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 04/06/2017
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-* **创建 Azure Active Directory 应用程序**。 使用 Azure AD 应用程序对 Data Lake Store 应用程序进行 Azure AD 身份验证。 有不同的方式可进行 Azure AD 身份验证，即“最终用户身份验证”或“服务到服务身份验证”。 有关如何进行身份验证的说明和详细信息，请参阅[使用 Azure Active Directory 进行 Data Lake Store 身份验证](data-lake-store-authenticate-using-active-directory.md)。
+* **创建 Azure Active Directory 应用程序**。 使用 Azure AD 应用程序对 Data Lake Store 应用程序进行 Azure AD 身份验证。 有不同的方式可进行 Azure AD 身份验证，即“最终用户身份验证”或“服务到服务身份验证”。 有关如何进行身份验证的说明和详细信息，请参阅[最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)或[服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
 
 ## <a name="install-the-modules"></a>安装模块
 
@@ -117,7 +117,7 @@ pip install azure-datalake-store
 
 ### <a name="end-user-authentication-for-filesystem-operations"></a>针对文件系统操作的最终用户身份验证
 
-使用此方法对 Azure AD 文件系统操作（创建文件夹、上载文件，等等）进行身份验证。 请对现有的 Azure AD **本机客户端**应用程序使用这种身份验证。 不应为你为其提供凭据的 Azure AD 用户配置多重身份验证。
+使用此方法对 Azure AD 文件系统操作（创建文件夹、上传文件，等等）进行身份验证。 请对现有的 Azure AD **本机客户端**应用程序使用这种身份验证。 不应为你为其提供凭据的 Azure AD 用户配置多重身份验证。
 
     tenant_id = 'FILL-IN-HERE'
     client_id = 'FILL-IN-HERE'
@@ -134,7 +134,7 @@ pip install azure-datalake-store
 
 ### <a name="service-to-service-authentication-with-client-secret-for-filesystem-operations"></a>对文件系统操作使用结合客户端密码的服务到服务身份验证
 
-使用此方法对 Azure AD 文件系统操作（创建文件夹、上载文件，等等）进行身份验证。 可以使用以下代码片段通过应用程序/服务主体的客户端机密对应用程序进行非交互式身份验证。 请对现有的 Azure AD“Web 应用”应用程序使用这种身份验证。
+使用此方法对 Azure AD 文件系统操作（创建文件夹、上传文件，等等）进行身份验证。 可以使用以下代码片段通过应用程序/服务主体的客户端机密对应用程序进行非交互式身份验证。 请对现有的 Azure AD“Web 应用”应用程序使用这种身份验证。
 
     token = lib.auth(tenant_id = 'FILL-IN-HERE', client_secret = 'FILL-IN-HERE', client_id = 'FILL-IN-HERE')
 
@@ -157,7 +157,7 @@ pip install azure-datalake-store
 
 ### <a name="multi-factor-authentication-for-filesystem-management"></a>用于文件系统管理的多重身份验证
 
-使用此方法对 Azure AD 文件系统操作（创建文件夹、上载文件，等等）进行身份验证。 可以使用以下代码片段通过多重身份验证在应用程序中进行身份验证。 请对现有的 Azure AD“Web 应用”应用程序使用这种身份验证。
+使用此方法对 Azure AD 文件系统操作（创建文件夹、上传文件，等等）进行身份验证。 可以使用以下代码片段通过多重身份验证在应用程序中进行身份验证。 请对现有的 Azure AD“Web 应用”应用程序使用这种身份验证。
 
     token = lib.auth(tenant_id='FILL-IN-HERE')
 
@@ -220,7 +220,7 @@ pip install azure-datalake-store
     ## Create a directory
     adlsFileSystemClient.mkdir('/mysampledirectory')
 
-## <a name="upload-a-file"></a>上载文件
+## <a name="upload-a-file"></a>上传文件
 
 
     ## Upload a file

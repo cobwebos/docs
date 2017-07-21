@@ -13,13 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/27/2017
-ms.author: anandy;billmath
+ms.date: 07/17/2017
+ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: ed3b3b114af2844405779f65fa8c3e89ae6a6c35
-ms.lasthandoff: 03/08/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 9119a4523c66415925223b5de10ca0fb4a7147b2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/04/2017
 
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>在 Azure 中部署 Active Directory 联合身份验证服务
@@ -119,8 +120,8 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 | contosodcset |DC/ADFS |3 |5 |
 | contosowapset |WAP |3 |5 |
 
-### <a name="4----deploy-virtual-machines"></a>4.  部署虚拟机
-下一步是部署虚拟机，用于在基础结构中托管不同角色。 建议每个可用性集中至少有两个计算机。 为基本部署创建六个虚拟机。
+### <a name="4-deploy-virtual-machines"></a>4.部署虚拟机
+下一步是部署虚拟机，用于在基础结构中托管不同角色。 建议每个可用性集中至少有两个计算机。 为基本部署创建四个虚拟机。
 
 | 计算机 | 角色 | 子网 | 可用性集 | 存储帐户 | IP 地址 |
 |:---:|:---:|:---:|:---:|:---:|:---:|
@@ -146,8 +147,8 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 * 将两个服务器提升为使用 DNS 的副本域控制器
 * 使用服务器管理器安装 AD FS 角色，以配置 AD FS 服务器。
 
-### <a name="6----deploying-internal-load-balancer-ilb"></a>6.  部署内部负载均衡器 (ILB)
-**6.1.  创建 ILB**
+### <a name="6-deploying-internal-load-balancer-ilb"></a>6.部署内部负载均衡器 (ILB)
+**6.1.创建 ILB**
 
 若要部署 ILB，请在 Azure 门户选择“负载均衡器”，然后单击“添加”(+)。
 
@@ -162,9 +163,9 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 * **方案**：由于此负载均衡器将放在 AD FS 服务器的前面以便只用于内部网络连接，因此请选择“内部”
 * **虚拟网络**：选择要在其中部署 AD FS 的虚拟网络
 * **子网**：在此处选择内部子网
-* **IP 地址分配**：动态
+* **IP 地址分配**：静态
 
-![Internal 负载均衡器](./media/active-directory-aadconnect-azure-adfs/ilbdeployment1.png)
+![内部负载均衡器](./media/active-directory-aadconnect-azure-adfs/ilbdeployment1.png)
 
 单击“创建”并部署 ILB 之后，它应会显示在负载均衡器列表中：
 
@@ -172,7 +173,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 
 下一步是配置后端池和后端探测。
 
-**6.2.  配置 ILB 后端池**
+**6.2.配置 ILB 后端池**
 
 在“负载均衡器”面板中选择新建的 ILB。 此时将打开设置面板。 
 
@@ -183,7 +184,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 
 ![配置 ILB 后端池](./media/active-directory-aadconnect-azure-adfs/ilbdeployment3.png)
 
-**6.3.  配置探测**
+**6.3.配置探测**
 
 在 ILB 设置面板中选择“探测”。
 
@@ -192,7 +193,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 
 ![配置 ILB 探测](./media/active-directory-aadconnect-azure-adfs/ilbdeployment4.png)
 
-**6.4.  创建负载均衡规则**
+**6.4.创建负载均衡规则**
 
 为了有效地平衡流量，应该为 ILB 设置负载均衡规则。 若要创建负载均衡规则，请执行以下操作： 
 
@@ -202,23 +203,23 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 
 ![配置 ILB 平衡规则](./media/active-directory-aadconnect-azure-adfs/ilbdeployment5.png)
 
-**6.5.  更新 ILB 的 DNS**
+**6.5.更新 ILB 的 DNS**
 
 转到你的 DNS 服务器，并为 ILB 创建 CNAME。 该 CNAME 应适用于 IP 地址指向 ILB 的 IP 地址的联合身份验证服务。 例如，如果 ILB DIP 地址是 10.3.0.8，而安装的联合身份验证服务是 fs.contoso.com，请为指向 10.3.0.8 的 fs.contoso.com 创建 CNAME。
 这可确保所有与 fs.contoso.com 相关的通信都在 ILB 上结束，并且会得到适当的路由。
 
-### <a name="7----configuring-the-web-application-proxy-server"></a>7.  配置 Web 应用程序代理服务器
-**7.1.  配置 Web 应用程序代理服务器以访问 AD FS 服务器**
+### <a name="7-configuring-the-web-application-proxy-server"></a>7.配置 Web 应用程序代理服务器
+**7.1.配置 Web 应用程序代理服务器以访问 AD FS 服务器**
 
-为了确保 Web 应用程序代理服务器能够访问 ILB 后面的 AD FS 服务器，请在 %systemroot%\system32\drivers\etc\hosts 中为 ILB 创建一条记录。 请注意，可分辨名称 (DN) 应是联合身份验证服务的名称，例如 fs.contoso.com。 IP 条目应是 ILB 的 IP 地址条目（如示例中的&10;.3.0.8）。
+为了确保 Web 应用程序代理服务器能够访问 ILB 后面的 AD FS 服务器，请在 %systemroot%\system32\drivers\etc\hosts 中为 ILB 创建一条记录。 请注意，可分辨名称 (DN) 应是联合身份验证服务的名称，例如 fs.contoso.com。 IP 条目应是 ILB 的 IP 地址条目（如示例中的 10.3.0.8）。
 
-**7.2.  安装 Web 应用程序代理角色**
+**7.2.安装 Web 应用程序代理角色**
 
 在确保 Web 应用程序代理服务器能够访问 ILB 后面的 AD FS 服务器之后，接下来可以安装 Web 应用程序代理服务器。 不要将 Web 应用程序代理服务器加入域。 通过选择“远程访问”角色，将 Web 应用程序代理角色安装在两个 Web 应用程序代理服务器上。 服务器管理器将引导你完成 WAP 安装。
 有关如何部署 WAP 的详细信息，请阅读 [Install and Configure the Web Application Proxy Server](https://technet.microsoft.com/library/dn383662.aspx)（安装和配置 Web 应用程序代理服务器）。
 
-### <a name="8----deploying-the-internet-facing-public-load-balancer"></a>8.  部署面向 Internet 的（公共）负载均衡器
-**8.1.  创建面向 Internet 的（公共）负载均衡器**
+### <a name="8--deploying-the-internet-facing-public-load-balancer"></a>8.部署面向 Internet 的（公共）负载均衡器
+**8.1.创建面向 Internet 的（公共）负载均衡器**
 
 在 Azure 门户中选择“负载均衡器”，然后单击“添加”。 在“创建负载均衡器”面板中输入以下信息
 
@@ -232,7 +233,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 
 ![负载均衡器列表](./media/active-directory-aadconnect-azure-adfs/elbdeployment2.png)
 
-**8.2.  向公共 IP 分配 DNS 标签**
+**8.2.向公共 IP 分配 DNS 标签**
 
 在“负载均衡器”面板中单击新建的负载均衡器条目，以显示配置面板。 遵循以下步骤来配置公共 IP 的 DNS 标签：
 
@@ -244,26 +245,26 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 
 ![配置面向 Internet 的负载均衡器 (DNS)](./media/active-directory-aadconnect-azure-adfs/elbdeployment4.png)
 
-**8.3.  为面向 Internet 的（公共）负载均衡器配置后端池** 
+**8.3.为面向 Internet 的（公共）负载均衡器配置后端池** 
 
 遵循创建内部负载均衡器所用的相同步骤，将面向 Internet 的（公共）负载均衡器的后端池配置为 WAP 服务器的可用性集。 例如，contosowapset。
 
 ![配置面向 Internet 的负载均衡器的后端池](./media/active-directory-aadconnect-azure-adfs/elbdeployment5.png)
 
-**8.4.  配置探测**
+**8.4.配置探测**
 
 遵循配置内部负载均衡器所用的相同步骤来配置 WAP 服务器后端池的探测。
 
 ![配置面向 Internet 的负载均衡器的探测](./media/active-directory-aadconnect-azure-adfs/elbdeployment6.png)
 
-**8.5.  创建负载均衡规则**
+**8.5.创建负载均衡规则**
 
 遵循在 ILB 中所用的相同步骤来配置 TCP 443 的负载均衡规则。
 
 ![配置面向 Internet 的负载均衡器的平衡规则](./media/active-directory-aadconnect-azure-adfs/elbdeployment7.png)
 
-### <a name="9----securing-the-network"></a>9.  保护网络
-**9.1.  保护内部子网**
+### <a name="9-securing-the-network"></a>9.保护网络
+**9.1.保护内部子网**
 
 总体而言，需要创建以下规则来有效保护内部子网（按如下所列的顺序）
 
@@ -276,7 +277,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 
 [comment]: <> (![INT 访问规则（入站）](./media/active-directory-aadconnect-azure-adfs/nsgintinbound.png)) [comment]: <> (![INT 访问规则（出站）](./media/active-directory-aadconnect-azure-adfs/nsgintoutbound.png))
 
-**9.2.  保护外围网络子网**
+**9.2.保护外围网络子网**
 
 | 规则 | 说明 | 流向 |
 |:--- |:--- |:---:|
@@ -292,7 +293,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 �
 > 
 > 
 
-### <a name="10----test-the-ad-fs-sign-in"></a>10.  测试 AD FS 登录
+### <a name="10-test-the-ad-fs-sign-in"></a>10.测试 AD FS 登录
 测试 AD FS 的最简单方法是使用 IdpInitiatedSignon.aspx 页。 若要执行此操作，必须在 AD FS 属性中启用 IdpInitiatedSignOn。 请遵循以下步骤来验证你的 AD FS 设置
 
 1. 使用 PowerShell 在 AD FS 服务器上运行以下 cmdlet，以将它设置为启用。

@@ -1,6 +1,6 @@
 ---
 title: "Azure Service Fabric 修补业务流程应用程序 | Microsoft Docs"
-description: "用于在 Service Fabric 群集中自动修补 OS 的应用程序。"
+description: "用于在 Service Fabric 群集中自动修补操作系统的应用程序。"
 services: service-fabric
 documentationcenter: .net
 author: novino
@@ -15,73 +15,67 @@ ms.workload: na
 ms.date: 5/9/2017
 ms.author: nachandr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: a3554881e7db894c602e73feb385b5b361837409
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 3fc66d775f97333ad497cf3773643c188ec7c1d6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
 
-# <a name="application-to-patch-windows-os-in-your-service-fabric-cluster"></a>用于在 Service Fabric 群集中修补 Windows OS 的应用程序
+# <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
 
-修补业务流程应用程序是一个 Service Fabric 应用程序，可以自动修补 Azure 中或本地 Service Fabric 群集上的 OS，而无需停机。
+修补业务流程应用程序是一个 Azure Service Fabric 应用程序，可在 Azure 上的Service Fabric 群集中自动修补操作系统，而无需停机。
 
-修补业务流程应用程序包括以下突出功能：
+修补业务流程应用提供以下功能：
 
-1. **自动 OS 更新安装**：修补业务流程应用程序可确保自动下载和安装更新，并在适当的情况下重新启动节点。
-    无需停机即可在所有群集节点上完成此操作。
+- 自动的操作系统更新安装。 自动下载并安装操作系统更新。 可根据需要重新启动群集节点，且无需让群集停机。
 
-1. **群集感知的修补和运行状况集成**：修补业务流程应用程序在应用更新的同时，可在群集运行过程中对其进行监视，每次更新一个节点或者一个升级域。 
-    只要它检测到由于修补过程问题而导致群集运行状况变差，就会停止修补过程，防止问题恶化。
+- 群集感知修补和运行状况集成。 在应用更新时，修补业务流程应用会监视群集节点的运行状况。 群集节点的升级方式为一次一个节点，或一次一个升级域。 如果群集的运行状况由于修补进程而恶化，此时修补将停止以防止问题加重。
 
-1. **支持所有 Service Fabric 群集**：该应用程序的兼容性足够高，可在 Azure Service Fabric 群集和独立群集中工作。
-    > [!NOTE]
-    > 对独立群集的支持即将推出。
+## <a name="internal-details-of-the-app"></a>应用的内部详细信息
 
-## <a name="link-to-download-the-application-package"></a>用于下载应用程序包的链接
+修补业务流程应用由以下子组件组成：
 
-从[下载链接](https://go.microsoft.com/fwlink/P/?linkid=849590)下载该应用程序
-
-## <a name="internal-details-of-the-application"></a>应用程序的内部详细信息
-
-修补业务流程应用程序由以下子组件构成：
-
-- **协调器服务**：一个有状态服务。 该服务负责
+- 协调器服务：此有状态服务负责：
     - 协调整个群集上的 Windows 更新作业。
     - 存储已完成的 Windows 更新操作的结果。
-- **节点代理服务**：一个无状态服务，在所有 Service Fabric 群集节点上运行。 该服务负责
-    - 引导节点代理 NTService。
+- 节点代理服务：此无状态服务在所有 Service Fabric 群集节点上运行。 该服务负责：
+    - 启动节点代理 NTService。
     - 监视节点代理 NTService。
-- **节点代理 NTService**：一个 Windows NT 服务。 节点代理 NTService 以较高的特权 (SYSTEM) 运行。 相比之下，节点代理服务和协调器服务以较低级别的特权 (NETWORK SERVICE) 运行。 该服务负责在所有群集节点上执行以下 Windows 更新作业。
+- 节点代理 NTService：此 Windows NT 服务以更高级别的特权 (SYSTEM) 运行。 相比之下，节点代理服务和协调器服务以较低级别的特权 (NETWORK SERVICE) 运行。 该服务负责在所有群集节点上执行以下 Windows 更新作业：
     - 在节点上禁用自动 Windows 更新。
-    - 根据用户提供的策略下载和安装 Windows 更新。
-    - 安装 Windows 更新后重新启动计算机
+    - 根据用户提供的策略下载并安装 Windows 更新。
+    - 安装 Windows 更新后重新启动计算机。
     - 将 Windows 更新的结果上传到协调器服务。
-    - 操作失败时，重试次数用完后报告运行状况。
+    - 在某个操作用完所有重试次数后失败时报告运行状况。
 
 > [!NOTE]
-> 修补业务流程应用程序使用 Service Fabric 系统服务“修复管理器”来禁用/启用节点和执行运行状况检查。 修补业务流程应用程序创建的修复任务跟踪每个节点的 Windows 更新进度。
+> 修补业务流程应用使用 Service Fabric“修复管理器系统服务”来禁用/启用节点和执行运行状况检查。 修补业务流程应用创建的修复任务跟踪每个节点的 Windows 更新进度。
 
-## <a name="prerequisites-for-using-the-application"></a>使用该应用程序需满足的先决条件
+## <a name="prerequisites"></a>先决条件
 
-### <a name="ensure-service-fabric-version-is-55-or-above"></a>确保 Service Fabric 版本为 5.5 或以上
+### <a name="minimum-supported-service-fabric-runtime-version"></a>支持的最低 Service Fabric 运行时版本
 
-可以在装有 Service Fabric 运行时 v5.5 或更高版本的群集上运行修补业务流程应用程序。
+#### <a name="azure-clusters"></a>Azure 群集
+修补业务流程应用必须在 Service Fabric 运行时版本为 v5.5 或更高版本的 Azure 群集上运行。
 
-### <a name="enable-repair-manager-service-if-not-running-already"></a>启用修复管理器服务（如果尚未运行）
+#### <a name="standalone-on-premise-clusters"></a>独立本地群集
+修补业务流程应用必须在 Service Fabric 运行时版本为 v5.6 或更高版本的独立群集上运行。
 
-修补业务流程应用程序需要在群集上启用修复管理器系统服务。
+### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>启用修复管理器服务（如果尚未运行）
 
-#### <a name="service-fabric-clusters-on-azure"></a>Azure 上 的 Service Fabric 群集
+修补业务流程应用需要在群集上启用修复管理器系统服务。
 
-银级持久性层中的 Azure 群集默认已启用修复管理器。 金级持久性层中的 Azure 群集不一定已启用修复管理器，具体取决于这些群集是多久前创建的。 铜级持久性层中的 Azure 群集默认未启用修复管理器服务。 
+#### <a name="azure-clusters"></a>Azure 群集
 
-如果在 Service Fabric 资源管理器中的系统服务部分下面未看到修复管理器服务运行，可以使用 [Azure Resource Manager 模板](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)在新的/现有的 Service Fabric 群集上启用该服务。
+银级持久层中的 Azure 群集默认启用修复管理器服务。 黄金级耐久层中的 Azure 群集可能启用或不启用修复管理器服务，具体取决于这些群集的创建时间。 铜级持久层中的 Azure 群集默认不启用修复管理器服务。 如果已启用该服务，可以看到它在 Service Fabric Explorer 的系统服务部分中运行。
 
-首先，请获取要部署的群集的模板。 可以使用示例模板，或者创建自定义 Resource Manager 模板。 然后，可使用以下步骤启用修复管理器：
+可使用 [Azure Resource Manager 模板](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)在新的或现有 Service Fabric 群集上启用修复管理器服务。 获取要部署的群集的模板。 可以使用示例模板，或者创建自定义 Resource Manager 模板。 
 
-1. 首先，检查 `apiversion` 是否针对 `Microsoft.ServiceFabric/clusters` 资源设置为 `2017-07-01-preview`，如以下代码片段所示。 如果不同，需要将 `apiVersion` 更新为值 `2017-07-01-preview`
+启用修复管理器服务：
+
+1. 首先，检查 `apiversion` 是否针对 `Microsoft.ServiceFabric/clusters` 资源设置为 `2017-07-01-preview`，如以下代码片段所示。 如果不同，需要将 `apiVersion` 更新为值 `2017-07-01-preview`：
 
     ```json
     {
@@ -93,7 +87,7 @@ ms.lasthandoff: 05/18/2017
     }
     ```
 
-2. 现在，通过在 `fabricSettings` 节后面添加以下 `addonFeaturres` 节来启用修复管理器服务，如下所示
+2. 现在，通过在 `fabricSettings` 节后面添加以下 `addonFeatures` 节来启用修复管理器服务：
 
     ```json
     "fabricSettings": [
@@ -104,39 +98,61 @@ ms.lasthandoff: 05/18/2017
         ],
     ```
 
-3. 通过这些更改更新群集模板后，应用更改并等待升级完成。 完成后，现在可看到修复管理器系统服务在群集中运行，该服务在 Service Fabric 资源管理器中的系统服务部分下称为 `fabric:/System/RepairManagerService`。 
+3. 通过这些更改更新群集模板后，应用更改并等待升级完成。 现在可以看到修复管理器系统服务在群集中运行。 它在 Service Fabric Explorer 中的系统服务部分中被称为 `fabric:/System/RepairManagerService`。 
 
-#### <a name="standalone-on-premise-clusters"></a>独立本地群集
+### <a name="standalone-on-premises-clusters"></a>独立本地群集
 
-> [!NOTE]
-> 对独立群集的支持即将推出
+可以使用[独立 Windows 群集的配置设置](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest)在新的和现有的 Service Fabric 群集上启用修复管理器服务。
 
-### <a name="disable-automatic-windows-update-on-all-nodes"></a>在所有节点上禁用自动 Windows 更新。
+启用修复管理器服务：
 
-在 Service Fabric 群集上启用自动 Windows 更新可能导致失去可用性，因为多个节点可能同时重新启动以完成更新。
+1. 首先需要检查[常规群集配置](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest#general-cluster-configurations)中的 `apiversion` 是否设置为 `04-2017` 或更高：
 
-修补业务流程应用程序默认会尝试在每个群集节点上禁用自动 Windows 更新。
+    ```json
+    {
+        "name": "SampleCluster",
+        "clusterConfigurationVersion": "1.0.0",
+        "apiVersion": "04-2017",
+        ...
+    }
+    ```
 
-但是，如果设置由管理员/组策略管理，我们建议显式将 Windows 更新策略设置为“下载之前发出通知”。
+2. 现在，通过在 `fabricSettings` 节后面添加以下 `addonFeaturres` 节来启用修复管理器服务，如下所示：
 
+    ```json
+    "fabricSettings": [
+        ...      
+        ],
+        "addonFeatures": [
+            "RepairManager"
+        ],
+    ```
 
-### <a name="optional-enable-windows-azure-diagnostics"></a>可选：启用 Windows Azure 诊断
+3. 通过这些更改更新群集清单后，使用已更新的群集清单[创建新群集](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server)或[升级群集配置](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server#Upgrade-the-cluster-configuration)。 群集使用已更新的群集清单运行后，就可以看到修复管理器系统服务在群集中运行，该服务在 Service Fabric Explorer 中的系统服务部分下被称为 `fabric:/System/RepairManagerService`。
 
-在接下来的几天，将会收集修补业务流程应用程序的日志作为 Service Fabric 日志本身的一部分。 但是，只有在完成该过程后，才会在本地为每个群集节点收集日志。 我们建议将 Windows Azure 诊断 (WAD) 配置为将日志从所有节点上传到一个中心位置。
+### <a name="disable-automatic-windows-update-on-all-nodes"></a>在所有节点上禁用自动 Windows 更新
 
-[此文](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-how-to-setup-wad)详细介绍了有关启用 WAD 的步骤。
+自动 Windows 更新可能导致可用性丢失，因为多个群集节点可能同时重启。 修补业务流程应用默认会尝试在每个群集节点上禁用自动 Windows 更新。 但是，如果设置由管理员或组策略管理，我们建议显式将 Windows 更新策略设置为“下载之前发出通知”。
 
-将会针对以下固定提供程序 ID 生成修补业务流程应用程序的日志。
+### <a name="optional-enable-azure-diagnostics"></a>可选：启用 Azure 诊断
+
+修补业务流程应用的日志在每个群集节点上本地进行收集。 此外对于运行 Service Fabric 运行时版本 `5.6.220.9494` 及更高版本的群集，其日志会作为 Service Fabric 日志的一部分进行收集。
+
+对于运行 Service Fabric 运行时版本低于 `5.6.220.9494` 的群集，我们建议配置 Azure 诊断以便将日志从所有节点上传到中心位置。
+
+有关启用 Azure 诊断的详细信息，请参阅[使用 Azure 诊断收集日志](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-how-to-setup-wad)。
+
+修补业务流程应用的日志将以下列固定提供程序 ID 而生成：
 
 - e39b723c-590c-4090-abb0-11e3e6616346
 - fc0028ff-bfdc-499f-80dc-ed922c52c5e9
 - 24afa313-0d3b-4c7c-b485-1047fd964b60
 - 05dc046c-60e9-4ef7-965e-91660adffa68
 
-在 Azure Resource Manager 模板中的“WadCfg”节中添加以下节： 
+在 Resource Manager 模板中的 `WadCfg` 节中添加以下节： 
 
 ```json
-"PatchOrchestrationApplication": \[
+"PatchOrchestrationApplication": [
   {
     "provider": "e39b723c-590c-4090-abb0-11e3e6616346",
     "scheduledTransferPeriod": "PT5M",
@@ -165,189 +181,217 @@ ms.lasthandoff: 05/18/2017
     "eventDestination": " PatchOrchestrationApplicationTable"
     }
   },
-\]
+]
 ```
 
 > [!NOTE]
-> 如果 Service Fabric 群集由多个节点类型构成，则必须为所有“WadCfg”节添加上述节。
+> 如果 Service Fabric 群集具有多个节点类型，则必须在所有 `WadCfg` 节中添加上述节。
 
-## <a name="configuring-the-application"></a>配置应用程序
+## <a name="download-the-app-package"></a>下载应用包
 
-用户可以根据需要设置以下配置，以调整修补业务流程应用程序的行为。
+从该[下载链接](https://go.microsoft.com/fwlink/P/?linkid=849590)下载应用程序。
 
-在创建/更新应用程序的过程中传入应用程序参数可以替代默认值。 可以通过在 cmdlet `Start-ServiceFabricApplicationUpgrade` 或 `New-ServiceFabricApplication` 中指定 `ApplicationParameter` 来提供应用程序参数
+## <a name="configure-the-app"></a>配置应用
+
+可配置修补业务流程应用的行为来满足需求。 在创建或更新应用程序的过程中，通过传入应用程序参数来替代默认值。 可以通过在 cmdlet `Start-ServiceFabricApplicationUpgrade` 或 `New-ServiceFabricApplication` 中指定 `ApplicationParameter` 来提供应用程序参数。
 
 |**Parameter**        |**类型**                          | **详细信息**|
 |:-|-|-|
-|MaxResultsToCache    |Long                              | 应缓存的 Windows 更新结果历史记录数上限。 <br>默认值为 3000（假设） <br> - 节点数为 20 <br> - 节点上每月发生的更新次数为 5 <br> - 每个操作的结果数可为 10 <br> - 应存储过去 3 个月的结果 |
-|TaskApprovalPolicy   |枚举 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy 指示 CoordinatorService 用于在 Service Fabric 群集节点上安装 Windows 更新的策略<br>                         允许值包括： <br><br>                                                           <b>NodeWise</b> - 每次在一个节点上安装 Windows 更新 <br>                                                           <b>UpgradeDomainWise</b> - 每次在一个升级域上安装 Windows 更新（属于一个升级域的所有节点都可以安装 Windows 更新）
-|LogsDiskQuotaInMB   |Long  <br> （默认值：1024）               |可在节点本地保存的修补业务流程应用程序日志的最大大小，以 MB 为单位
-| WUQuery               | 字符串<br>（默认值："IsInstalled=0"）                | 查询以获取 Windows 更新，有关详细信息，请参阅 [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)。
-| InstallWindowsOSOnlyUpdates | Bool <br> （默认值：True）                 | 此标志用于安装 Windows OS 更新。            |
-| WUOperationTimeOutInMinutes | int <br>（默认值：90）                   | 指定任何 Windows 更新操作（搜索/下载/安装）的超时。 在指定的超时内未完成的操作将被中止。       |
-| WURescheduleCount     | int <br> （默认值：5）                  | 此配置确定在操作持续失败的情况下，服务重新计划 Windows 更新的最大次数          |
-| WURescheduleTimeInMinutes | int <br>（默认值：30） | 此配置确定在持续失败的情况下，服务重新计划 Windows 更新的间隔 |
-| WUFrequency           | 逗号分隔的字符串（默认值："Weekly, Wednesday, 7:00:00"）     | 安装 Windows 更新的频率。 格式和可能值如下 <br>-   Monthly,DD,HH:MM:SS Ex: Monthly,5,12:22:32 <br> -   Weekly,DAY,HH:MM:SS Ex: Weekly, Tuesday, 12:22:32  <br> -   Daily, HH:MM:SS Ex: Daily, 12:22:32  <br> - None - 表示不应执行 Windows 更新  <br><br> 注意：所有时间采用 UTC 格式|
-| AcceptWindowsUpdateEula | Bool <br>（默认值：True） | 如果设置此标志，应用程序将代表计算机的所有者接受 Windows 更新的 EULA。              |
+|MaxResultsToCache    |Long                              | 应缓存的 Windows 更新结果的最大数。 <br>在假定以下情况时，默认值为 3000： <br> - 节点数为 20。 <br> - 节点上每月发生的更新次数为 5。 <br> - 每个操作的结果数可为 10。 <br> - 过去三个月的结果应已存储。 |
+|TaskApprovalPolicy   |枚举 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy 指示协调器服务用于跨 Service Fabric 群集节点安装 Windows 更新的策略。<br>                         允许值包括： <br>                                                           <b>NodeWise</b>。 每次在一个节点上安装 Windows 更新。 <br>                                                           <b>UpgradeDomainWise</b>。 每次在一个升级域上安装 Windows 更新。 （在最大程度情况下，属于升级域的所有节点都可进行 Windows 更新。）
+|LogsDiskQuotaInMB   |Long  <br> （默认值：1024）               |可在节点本地持久保存的修补业务流程应用日志的最大大小，以 MB 为单位。
+| WUQuery               | 字符串<br>（默认值："IsInstalled=0"）                | 用于获取 Windows 更新的查询。 有关详细信息，请参阅 [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)。
+| InstallWindowsOSOnlyUpdates | Bool <br> （默认值：True）                 | 此标志允许安装 Windows 操作系统更新。            |
+| WUOperationTimeOutInMinutes | int <br>（默认值：90）                   | 指示任何 Windows 更新操作（搜索、下载或安装）的超时。 在指定的超时内未完成的操作将被中止。       |
+| WURescheduleCount     | int <br> （默认值：5）                  | 在操作持续失败的情况下，服务重新计划 Windows 更新的最大次数。          |
+| WURescheduleTimeInMinutes | int <br>（默认值：30） | 在持续失败的情况下，服务重新计划 Windows 更新的间隔。 |
+| WUFrequency           | 逗号分隔的字符串（默认值："Weekly, Wednesday, 7:00:00"）     | 安装 Windows 更新的频率。 其格式和可能的值包括： <br>-   Monthly, DD,HH:MM:SS，例如：Monthly, 5,12:22:32。 <br> -   Weekly,DAY,HH:MM:SS，例如：Weekly, Tuesday, 12:22:32。  <br> -   Daily, HH:MM:SS，例如：Daily, 12:22:32。  <br> - None 表示不应执行 Windows 更新。  <br><br> 请注意，所有时间均采用 UTC。|
+| AcceptWindowsUpdateEula | Bool <br>（默认值：True） | 通过设置此标志，该应用程序将代表计算机所有者接受 Windows 更新的最终用户许可协议。              |
 
+> [!TIP]
+> 若要立即进行 Windows 更新，请依据应用程序部署时间设置 `WUFrequency`。 例如，假设拥有一个 5 节点测试群集，并计划在大约 UTC 下午 5:00 部署应用。 如果假定应用程序升级或部署最多需要 30 分钟，请将 WUFrequency 设置为“Daily, 17:30:00”。
 
-## <a name="steps-to-deploy-the-application"></a>部署应用程序的部署
+## <a name="deploy-the-app"></a>部署应用
 
-1. 完成所有必备步骤来准备群集。
-1. 部署应用程序 - 可以使用[此处](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)所述的步骤通过 PowerShell 完成。
-1. 若要在部署时配置应用程序，请在 cmdlet `New-ServiceFabricApplication` 中使用 `ApplicationParamater`
+1. 完成所有先决条件步骤来准备群集。
+2. 像部署任何其他 Service Fabric 应用那样部署修补业务流程应用。 可以使用 PowerShell 部署应用。 请按照[使用 PowerShell 部署和删除应用程序](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)中的步骤操作。
+3. 若要在部署时配置应用程序，将 `ApplicationParamater` 传递至 `New-ServiceFabricApplication` cmdlet。 为方便起见，我们随应用程序一同提供了脚本 Deploy.ps1。 使用脚本：
 
-    为了方便用户，我们连同应用程序一起提供了脚本 Deploy.ps1。 使用方式：
-
-    - 使用 `Connect-ServiceFabricCluster` 连接到 Service Fabric 群集
-    - 结合相应的 `ApplicationParameter` 值执行 PowerShell 脚本 Deploy.ps1
-
-> [!NOTE]
-> 将脚本和应用程序文件夹 PatchOrchestrationApplication 保存在同一目录中。
-
-## <a name="steps-to-upgrade-the-application"></a>升级应用程序的部署
-
-若要使用 PowerShell 升级现有的修补业务流程应用程序，请参阅[此文](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-tutorial-powershell)所述的应用程序升级步骤。
-
-如果只想要更改应用程序的应用程序参数，请在现有的应用程序版本中为 cmdlet `Start-ServiceFabricApplicationUpgrade` 提供 `ApplicationParamater`
-
-## <a name="steps-to-remove-the-application"></a>删除应用程序的部署
-
-若要删除应用程序，请参阅[此文](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)所述的步骤。
-
-为了方便用户，我们连同应用程序一起提供了脚本 Undeploy.ps1。 使用方式：
-    - 使用 ```Connect-ServiceFabricCluster``` 连接到 Service Fabric 群集
-    - 执行 PowerShell 脚本 Undeploy.ps1
+    - 使用 `Connect-ServiceFabricCluster` 连接到 Service Fabric 群集。
+    - 结合相应的 `ApplicationParameter` 值执行 PowerShell 脚本 Deploy.ps1。
 
 > [!NOTE]
-> 将脚本和应用程序文件夹 PatchOrchestrationApplication 保存在同一目录中。
+> 保持脚本和应用程序文件夹 PatchOrchestrationApplication 位于同一目录中。
 
-## <a name="viewing-the-windows-update-results"></a>查看 Windows 更新结果
+## <a name="upgrade-the-app"></a>升级应用
 
-修补业务流程应用程序公开了 REST API 用于向用户显示历史结果。
+若要使用 PowerShell 升级现有的修补业务流程应用，请按照[使用 PowerShell 进行 Service Fabric 应用程序升级](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-tutorial-powershell)中的步骤操作。
 
-若要查询 Windows 更新结果，可以登录到群集，找到协调器服务的主副本地址，然后在浏览器中点击该 URL。
-http://&lt;REPLICA-IP&gt;:&lt;ApplicationPort&gt;/PatchOrchestrationApplication/v1/GetWindowsUpdateResults。CoordinatorService 的 REST 终结点提供了动态端口用于检查对 ServiceFabric 资源管理器的确切 URL 引用。
-例如：在以下示例中，结果将在 `http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults`
-![REST 终结点的映像](media/service-fabric-patch-orchestration-application/Rest_Endpoint.png)中提供
+## <a name="remove-the-app"></a>删除应用
+
+若要删除应用，请按照[使用 PowerShell 部署和删除应用程序](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)中的步骤操作。
+
+为方便起见，我们随应用程序一同提供了脚本 Undeploy.ps1。 使用脚本：
+
+  - 使用 ```Connect-ServiceFabricCluster``` 连接到 Service Fabric 群集。
+
+  - 执行 PowerShell 脚本 Undeploy.ps1。
+
+> [!NOTE]
+> 保持脚本和应用程序文件夹 PatchOrchestrationApplication 位于同一目录中。
+
+## <a name="view-the-windows-update-results"></a>查看 Windows 更新结果
+
+修补业务流程应用公开了 REST API，以向用户显示历史结果。 JSON 结果的示例：
+```json
+[
+  {
+    "NodeName": "_stg1vm_1",
+    "WindowsUpdateOperationResults": [
+      {
+        "OperationResult": 0,
+        "NodeName": "_stg1vm_1",
+        "OperationTime": "2017-05-21T11:46:52.1953713Z",
+        "UpdateDetails": [
+          {
+            "UpdateId": "7392acaf-6a85-427c-8a8d-058c25beb0d6",
+            "Title": "Cumulative Security Update for Internet Explorer 11 for Windows Server 2012 R2 (KB3185319)",
+            "Description": "A security issue has been identified in a Microsoft software product that could affect your system. You can help protect your system by installing this update from Microsoft. For a complete listing of the issues that are included in this update, see the associated Microsoft Knowledge Base article. After you install this update, you may have to restart your system.",
+            "ResultCode": 0
+          }
+        ],
+        "OperationType": 1,
+        "WindowsUpdateQuery": "IsInstalled=0",
+        "WindowsUpdateFrequency": "Daily,10:00:00",
+        "RebootRequired": false
+      }
+    ]
+  },
+  ...
+]
+```
+如果尚未计划更新，JSON 结果将为空。
+
+请登录到群集以查询 Windows 更新结果。 然后找出协调器服务的主副本地址，并在浏览器中点击此 URL：http://&lt;REPLICA-IP&gt;:&lt;ApplicationPort&gt;/PatchOrchestrationApplication/v1/GetWindowsUpdateResults。
+
+协调器服务的 REST 终结点有一个动态端口。 若要检查确切的 URL，请参考 Service Fabric Explorer。 例如，可在 `http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults` 处获取结果。
+
+![REST 终结点的图像](media/service-fabric-patch-orchestration-application/Rest_Endpoint.png)
 
 
-如果在群集上启用了反向代理，则用户也可以从群集外部访问该 URL。
-需要访问的终结点：http://&lt;SERVERURL&gt;:&lt;REVERSEPROXYPORT&gt;/PatchOrchestrationApplication/CoordinatorService/v1/GetWindowsUpdateResults。可以遵循[此文](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy)所述的步骤在群集上启用反向代理。 
+如果在群集上启用了反向代理，则也可以从群集外部访问该 URL。
+需要访问的终结点：http://&lt;SERVERURL&gt;:&lt;REVERSEPROXYPORT&gt;/PatchOrchestrationApplication/CoordinatorService/v1/GetWindowsUpdateResults。
+
+若要在群集上启用反向代理，请按照 [Azure Service Fabric 中的反向代理](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy)中的步骤操作。 
 
 > 
 > [!WARNING]
-> 配置反向代理后，可从群集外部访问群集中公开 HTTP 终结点的所有微服务。
+> 配置反向代理后，公开 HTTP 终结点的群集中的所有微服务都可从群集外部进行访问。
 
-## <a name="diagnostics--health-events"></a>诊断/运行状况事件
+## <a name="diagnosticshealth-events"></a>诊断/运行状况事件
 
-### <a name="collecting-patch-orchestration-application-logs"></a>收集修补业务流程应用程序日志
+### <a name="collect-patch-orchestration-app-logs"></a>收集修补业务流程应用日志
 
-在接下来的几天，将会收集修补业务流程应用程序日志作为 Service Fabric 日志的一部分。
-在此之前，可以使用以下方法之一收集日志
+修补业务流程应用日志是作为 Service Fabric（运行时版本为 `5.6.220.9494` 及更高版本）日志的一部分进行收集的。
+对于运行 Service Fabric 运行时版本低于 `5.6.220.9494` 的群集，可通过以下方法之一来收集日志。
 
 #### <a name="locally-on-each-node"></a>在每个节点本地
 
-在每个 Service Fabric 群集节点本地收集日志。 日志的访问位置为 \[Service Fabric\_Installation\_Drive\]:\\PatchOrchestrationApplication\\logs
+在每个 Service Fabric 群集节点本地收集日志。 日志的访问位置为 \[Service Fabric\_Installation\_Drive\]:\\PatchOrchestrationApplication\\logs。
 
-例如：如果 Service Fabric 安装在“D”驱动器上，则路径为 D:\\PatchOrchestrationApplication\\logs
+例如：如果 Service Fabric 安装在“D”驱动器上，则路径为 D:\\PatchOrchestrationApplication\\logs。
 
 #### <a name="central-location"></a>中心位置
 
-如果在执行必备步骤期间配置了 WAD，则 Azure 存储中将会提供修补业务流程应用程序的日志。
+如果在执行先决条件步骤的过程中配置了 Azure 诊断，则 Azure 存储中将会提供修补业务流程应用的日志。
 
 ### <a name="health-reports"></a>运行状况报告
 
-对于以下情况下，修补业务流程应用程序还会针对 CoordinatorService 或 NodeAgentService 发布运行状况报告
+对于以下情况，修补业务流程应用还会针对协调器服务或节点代理服务发布运行状况报告：
 
-#### <a name="windows-update-operation-failed"></a>Windows 更新操作失败
+#### <a name="a-windows-update-operation-failed"></a>Windows 更新操作失败
 
-如果某个节点上的 Windows 更新操作失败，将会针对 NodeAgentService 生成运行状况报告。
-运行状况报告的详细信息将包含有问题的节点名称。
+如果某个节点上的 Windows 更新操作失败，将会针对节点代理服务生成运行状况报告。 运行状况报告的详细信息将包含有问题的节点名称。
 
 在有问题的节点上成功完成修补后，将自动清除该报告。
 
-#### <a name="node-agent-ntservice-is-down"></a>节点代理 NTService 已关闭
+#### <a name="the-node-agent-ntservice-is-down"></a>节点代理 NTService 关闭
 
-如果节点上的 NodeAgentNTService 已关闭，将会针对 NodeAgentService 生成警告级别的运行状况报告
+如果某个节点上的节点代理 NTService 关闭，将会针对节点代理服务生成警告级别的运行状况报告。
 
-#### <a name="repair-manager-is-not-enabled"></a>修复管理器未启用
+#### <a name="the-repair-manager-service-is-not-enabled"></a>未启用修复管理器服务
 
-如果在群集上找不到修复管理器服务，将会针对 CoordinatorService 生成警告级别的运行状况报告。
+如果在群集上找不到修复管理器服务，将会针对协调器服务生成警告级别的运行状况报告。
 
-## <a name="frequently-asked-questions"></a>常见问题解答：
+## <a name="frequently-asked-questions"></a>常见问题
 
-问： **修补业务流程应用程序正在运行时，我发现群集处于错误状态**。
+问： 为什么在修补业务流程应用运行时，我发现群集处于错误状态？
 
-A. 在安装过程中，修补业务流程应用程序将会禁用和/或重新启动节点，这可能会暂时导致群集停止运行状况变差。
+A. 在安装过程中，修补业务流程应用会禁用或重新启动节点，这可能会暂时导致群集的运行状况变差。
 
 根据应用程序的策略，执行修补操作期间可以有一个节点关闭，或者整个升级域同时关闭。
 
-请务必注意，在 Windows 更新安装结束时，重新启动后节点将会重新启用。
+在 Windows 更新安装结束时，重新启动后节点将会重新启用。
 
-示例：在以下案例中，由于有 2 个节点关闭并且违反了 MaxPercentageUnhealthNodes 策略，因此群集暂时进入错误状态。 这是一个暂时性的错误，在修补操作继续后即可修复。
+在下面的示例中，由于两个节点关闭且违反了 MaxPercentageUnhealthNodes 策略，群集暂时进入了错误状态。 这是一个暂时性的错误，在修补操作继续后即可恢复。
 
-![不正常群集的示意图](media/service-fabric-patch-orchestration-application/MaxPercentage_causing_unhealthy_cluster.png)
+![不正常群集的图像](media/service-fabric-patch-orchestration-application/MaxPercentage_causing_unhealthy_cluster.png)
 
-如果问题持续出现，请参阅“故障排除”部分
+如果问题持续出现，请参阅“故障排除”部分。
 
-问： **是否可以针对独立群集使用修补业务流程应用程序？**
+问： 修补业务流程应用处于警告状态
 
-A. 目前不可以，对独立群集的支持即将推出。
+A. 检查针对应用程序发布的运行状况报告是否是根本原因。 通常，警告中会包含问题的详细信息。 如果该问题是暂时性的，则应用程序应该会自动从此状态中恢复。
 
-问： **修补业务流程应用程序处于警告状态**
+问： 如果群集运行不正常，而我需要进行紧急的操作系统更新，该怎么办？
 
-A. 检查针对应用程序发布的运行状况报告是否是根本原因。 通常，警告中会包含问题的详细信息。
-如果该问题是暂时性的，则应用程序应会自动从此状态恢复。
+A. 群集运行不正常时，修补业务流程应用不会安装更新。 请尝试将群集恢复正常状态，消除修补业务流程应用工作流的阻碍。
 
-问： **群集运行不正常。但是，需要紧急执行 OS 更新**
+问： 为何跨群集运行修补需要花费很长时间？
 
-A. 群集运行不正常时，修补业务流程应用程序不会安装更新。
-请尝试将群集恢复正常状态，消除修补业务流程应用程序工作流的阻碍。
+A. 修补业务流程应用所需的时长主要取决于以下因素：
 
-问： **为何运行群集修补需要花费很长时间？**
-
-A. 修补业务流程应用程序花费的时间主要取决于以下因素：
-
-- CoordinatorService 的策略 - `NodeWise` 的默认策略导致每次只修补一个节点。尤其是对于较大的群集，我们建议使用 `UpgradeDomainWise` 策略来更快地修补群集。
-- 可下载并安装的更新数 - 下载并安装 某个更新所花费的时间不应超过数小时。
+- 协调器服务的策略。 
+  - 默认策略 `NodeWise` 指定一次只修补一个节点。 尤其是在更大的群集中，我们建议使用 `UpgradeDomainWise` 策略以实现更快的跨群集修补。
+- 可下载并安装的更新数。 
+- 下载和安装更新所需的平均时间，不应超过两个小时。
 - VM 的性能和网络带宽。
 
 ## <a name="disclaimers"></a>免责声明
 
-- 修补业务流程应用程序会代表用户接受 Windows 更新的 EULA。 可以在应用程序的配置中选择性地关闭该设置。
+- 修补业务流程应用代表用户接受 Windows 更新的最终用户许可协议。 可以在应用程序的配置中选择性地关闭该设置。
 
-- 修补业务流程应用程序会收集遥测数据来跟踪使用情况和性能。
-    应用程序遥测遵循 Service Fabric 运行时的遥测设置（默认设置）。
+- 修补业务流程应用会收集遥测来跟踪使用情况和性能。 应用程序遥测遵循 Service Fabric 运行时的遥测设置（默认设置）。
 
-## <a name="troubleshooting-help"></a>故障排除步骤
+## <a name="troubleshooting"></a>故障排除
 
-### <a name="node-not-coming-back-to-up-state"></a>节点无法恢复启动状态
+### <a name="a-node-is-not-coming-back-to-up-state"></a>节点无法恢复启动状态
 
-**节点可能持续处于“正在禁用”状态**如果由于挂起的安全检查而无法禁用针对操作计划的节点，则可能会发生此情况。 若要纠正此情况，请确保有足够多的节点处于正常状态。
+节点可能会卡在“正在禁用”状态，因为：
 
-**节点可能会出于以下原因已持续处于“已禁用”状态**
+安全检查处于挂起中。 若要纠正此情况，请确保有足够多的节点处于正常状态。
 
-- 已手动禁用节点。
-- 某个正在进行的 Azure 基础结构作业导致禁用了节点。
-- 修补节点的修补业务流程应用程序暂时禁用了节点。
+节点可能会卡在“已禁用”状态，因为：
 
-**节点可能会出于以下原因已持续处于“关闭”状态**
+- 节点已被手动禁用。
+- 某个正在进行的 Azure 基础结构作业导致节点被禁用。
+- 修补节点的修补业务流程应用暂时禁用了节点。
+
+节点可能会卡在关闭状态，因为：
 
 - 已手动将节点置于关闭状态。
-- 节点正在重新启动（可能由修补业务流程应用程序触发）。
-- VM/计算机故障或网络连接问题导致节点关闭。
+- 节点正在重新启动（可能由修补业务流程应用触发）。
+- VM 或计算机故障、网络连接问题导致节点关闭。
 
 ### <a name="updates-were-skipped-on-some-nodes"></a>在某些节点上跳过了更新
 
-修补业务流程应用程序会尝试根据重新计划策略安装 Windows 更新。 服务会根据应用程序策略尝试恢复节点并跳过更新。
+修补业务流程应用根据重新计划策略尝试安装 Windows 更新。 服务根据应用程序策略尝试恢复节点并跳过更新。
 
-在这种情况下，将会针对节点代理服务生成警告级别的运行状况报告。
-Windows 更新结果也会包含可能的失败原因。
+在这种情况下，将针对节点代理服务生成警告级别的运行状况报告。 Windows 更新结果也包含可能的失败原因。
 
-### <a name="health-of-the-cluster-goes-to-error-while-update-was-getting-installed"></a>安装更新时群集运行状况为出错
+### <a name="the-health-of-the-cluster-goes-to-error-while-the-update-installs"></a>安装更新时群集运行状况出错
 
-如果不正常的 Windows 更新使特定节点或升级域上的应用程序/群集的运行状况变差，则在群集恢复正常之前，修补业务流程应用程序不会继续进行任何后续的 Windows 更新操作。
+发生故障的 Windows 更新会使特定节点或升级域上的应用程序或群集的运行状况恶化。 修补业务流程应用会终止任何后续的 Windows 更新操作，直到群集再次正常运行。
 
-管理员必须介入并了解 Windows 更新为何导致应用程序/群集的运行状况变差。
+管理员必须介入，并判断为何 Windows 更新会导致应用程序或群集运行不正常。
 

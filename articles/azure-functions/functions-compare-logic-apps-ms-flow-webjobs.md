@@ -17,10 +17,10 @@ ms.date: 09/08/2016
 ms.author: chrande; glenga
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 0f35d79870301bcba9f009f7dbc00696ce426458
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 31661e5840a6b65f54f9df027a7e3ecab8768055
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>在流、逻辑应用、函数和 WebJobs 之间进行选择
@@ -50,7 +50,7 @@ ms.lasthandoff: 05/10/2017
 | --- | --- | --- |
 | 目标受众 |办公室工作人员、业务用户 |IT 专业人士、开发人员 |
 | 方案 |自助服务 |关键任务 |
-| 设计工具 |仅浏览器、UI |浏览器和 [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[代码视图](../logic-apps/logic-apps-author-definitions.md)可用 |
+| 设计工具 |浏览器内和移动应用、仅 UI |浏览器和 [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[代码视图](../logic-apps/logic-apps-author-definitions.md)可用 |
 | DevOps |临时，在生产中开发 |[Azure 资源管理](../logic-apps/logic-apps-arm-provision.md)中的源控件、测试、支持及自动化和可管理性 |
 | 管理员体验 |[https://flow.microsoft.com](https://flow.microsoft.com) |[https://portal.azure.com](https://portal.azure.com) |
 | “安全” |标准做法：对敏感数据的[数据主权](https://wikipedia.org/wiki/Technological_Sovereignty)、[静态加密](https://wikipedia.org/wiki/Data_at_rest#Encryption)等。 |Azure 的安全保证：[Azure 安全性](https://www.microsoft.com/trustcenter/Security/AzureSecurity)、[安全中心](https://azure.microsoft.com/services/security-center/)、[审核日志](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)等等。 |

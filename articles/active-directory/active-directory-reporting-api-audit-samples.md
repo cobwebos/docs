@@ -3,7 +3,7 @@ title: "Azure Active Directory 报告审核 API 示例 | Microsoft 文档"
 description: "如何开始使用 Azure Active Directory 报告 API"
 services: active-directory
 documentationcenter: 
-author: dhanyahk
+author: MarkusVi
 manager: femila
 editor: 
 ms.assetid: de8b8ec3-49b3-4aa8-93fb-e38f52c99743
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/16/2017
 ms.author: dhanyahk;markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 665b613db31b15b6f6d2826a0795be6275c832ca
-ms.openlocfilehash: 8216fa7ab092b2d0225d075d933fa56fbab56f40
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: aab705688079601bbce93455f7dda80cdd733110
 ms.contentlocale: zh-cn
-ms.lasthandoff: 12/29/2016
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="azure-active-directory-reporting-audit-api-samples"></a>Azure Active Directory 报告审核 API 示例
@@ -29,7 +29,7 @@ Azure AD 报告向你提供了一个允许你使用代码或相关工具访问�
 
 请参阅:
 
-* [审核日志](active-directory-reporting-azure-portal.md#audit-logs)，获取更多概念性信息
+* [审核日志](active-directory-reporting-azure-portal.md#activity-reports)，获取更多概念性信息
 * [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started.md)，获取有关报告 API 的详细信息。
 
 有关疑问、问题或反馈，请联系 [AAD 报告帮助](mailto:aadreportinghelp@microsoft.com)。
@@ -100,7 +100,7 @@ Azure AD 报告向你提供了一个允许你使用代码或相关工具访问�
 
     CLIENT_ID="your-application-client-id-here"         # Should be a ~35 character string insert your info here
     CLIENT_SECRET="your-application-client-secret-here" # Should be a ~44 character string insert your info here
-    LOGIN_URL="https://login.windows.net"
+    LOGIN_URL="https://login.microsoftonline.com"
     TENANT_DOMAIN="your-directory-name-here.onmicrosoft.com"    # For example, contoso.onmicrosoft.com
 
     TOKEN_INFO=$(curl -s --data-urlencode "grant_type=client_credentials" --data-urlencode "client_id=$CLIENT_ID" --data-urlencode "client_secret=$CLIENT_SECRET" "$LOGIN_URL/$TENANT_DOMAIN/oauth2/token?api-version=1.0")
@@ -130,7 +130,7 @@ Azure AD 报告向你提供了一个允许你使用代码或相关工具访问�
 
     client_id = 'your-application-client-id-here'
     client_secret = 'your-application-client-secret-here'
-    login_url = 'https://login.windows.net/'
+    login_url = 'https://login.microsoftonline.com/'
     tenant_domain = 'your-directory-name-here.onmicrosoft.com'
 
     # Get an OAuth access token

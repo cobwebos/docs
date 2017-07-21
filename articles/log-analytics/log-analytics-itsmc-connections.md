@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2017
+ms.date: 05/29/2017
 ms.author: v-jysur
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 732d968112913b252b40a37abc24f4de5d37999f
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: e4f2e0a23aa52a0e02e7047916b77fb15107defa
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/16/2017
 
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector-preview"></a>将 ITSM 产品/服务与 IT Service Management Connector（预览版）相连接
@@ -38,10 +38,10 @@ ms.lasthandoff: 05/09/2017
 
 请确保满足以下先决条件：
 
-- 已安装 IT Service Management Connector
+- 已安装 IT Service Management Connector。
 详细信息：[配置](log-analytics-itsmc-overview.md#configuration)。
 - 已部署并配置 Service Manager Web 应用程序（Web 应用）。 [此处](#create-and-deploy-service-manager-web-app-service)提供了有关 Web 应用的信息。
-- 已创建并配置混合连接。 详细信息：[配置混合连接](#configure-the-hybrid-connector-role)。
+- 已创建并配置混合连接。 详细信息：[配置混合连接](#configure-the-hybrid-connection)。
 - 支持的 Service Manager 版本：2012 R2 或 2016。
 - 用户角色：[高级操作员](https://technet.microsoft.com/library/ff461054.aspx)。
 
@@ -100,7 +100,7 @@ ms.lasthandoff: 05/09/2017
 
 该脚本将使用指定的名称（以及使该名称保持唯一的其他几个字符串）创建 Web 应用。 它将生成 **Web 应用 URL**、**客户端 ID** 和**客户端机密**。
 
-请保存这些值，因为在使用 IT Service Management Connector 创建连接时需要用到。
+请保存这些值，因为在与 IT Service Management Connector 建立连接时需要用到。
 
 **检查 Web 应用安装**
 
@@ -110,7 +110,7 @@ ms.lasthandoff: 05/09/2017
 
 ### <a name="configure-the-hybrid-connection"></a>配置混合连接
 
-使用以下过程来连接混合连接器角色，该角色可将 Service Manager 实例与 OMS 中的 IT Service Management Connector 相连接。
+使用以下过程来配置混合连接，以便将 Service Manager 实例与 OMS 中的 IT Service Management Connector 相连接。
 
 1. 在“Azure 资源”下面找到 Service Manager Web 应用。
 2. 单击“设置” > “网络”。
@@ -162,7 +162,7 @@ ms.lasthandoff: 05/09/2017
 ![混合连接成功](./media/log-analytics-itsmc/itsmc-hybrid-connection-listener-set-up-successful.png)
 > [!NOTE]
 
-> 创建混合连接后，请通过访问部署的 Service Manager Web 应用来验证和测试该连接。 在尝试连接到 OMS 中的 IT Service Management Connector 之前，请确保连接成功。
+> 创建混合连接后，请通过访问部署的 Service Manager Web 应用来验证和测试该连接。 请确保该连接成功后，再尝试连接到 OMS 中的 IT Service Management Connector。
 
 下图显示了成功连接的详细信息：
 
@@ -176,11 +176,13 @@ ms.lasthandoff: 05/09/2017
 
 请确保满足以下先决条件：
 
-- 已安装 IT Service Management Connector 详细信息：[配置](log-analytics-itsmc-overview.md#configuration)。
-- 已生成并可提供 ServiceNow 产品的客户端 ID 和客户端机密。  有关如何生成客户端 ID 和机密的信息，请参阅 [OAuth 设置](http://wiki.servicenow.com/index.php?title=OAuth_Setup)。
+- 已安装 IT Service Management Connector。 详细信息：[配置](log-analytics-itsmc-overview.md#configuration)。
 - ServiceNow 支持的版本 – Fuji、Geneva、Helsinki。
-- 已安装用于 Microsoft OMS 集成的用户应用（ServiceNow 应用），并已配置集成用户角色。 [了解详细信息](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.0 )。
-- 用户角色：集成用户角色。 [此处](#create-integration-user-role-in-servicenow-app)提供了有关如何创建集成用户角色的信息。
+
+ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
+- 生成 ServiceNow 产品的客户端 ID 和客户端密码。 有关如何生成客户端 ID 和机密的信息，请参阅 [OAuth 设置](http://wiki.servicenow.com/index.php?title=OAuth_Setup)。
+- 安装用于 Microsoft OMS 集成的用户应用（ServiceNow 应用）。 [了解详细信息](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.0 )。
+- 为安装的用户应用创建集成用户角色。 [此处](#create-integration-user-role-in-servicenow-app)提供了有关如何创建集成用户角色的信息。
 
 
 ### <a name="connection-procedure"></a>**连接过程**
@@ -223,14 +225,14 @@ ms.lasthandoff: 05/09/2017
 
 使用以下过程：
 
-1.    访问 [ServiceNow 应用商店](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.0)，并在 ServiceNow 实例中安装**用于 ServiceNow 和 Microsoft OMS 集成的用户应用**。
-2.    安装后，请访问 ServiceNow 实例的左侧导航栏，然后搜索并选择 Microsoft OMS 集成器。  
-3.    单击“安装清单”。
+1.  访问 [ServiceNow 应用商店](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.0)，并在 ServiceNow 实例中安装**用于 ServiceNow 和 Microsoft OMS 集成的用户应用**。
+2.  安装后，请访问 ServiceNow 实例的左侧导航栏，然后搜索并选择 Microsoft OMS 集成器。  
+3.  单击“安装清单”。
 
     如果用户角色尚未创建，状态将显示为“未完成”。
 
-4.    在“创建集成用户”旁边的文本框中，输入可连接到 OMS 中的 IT Service Management Connector 的用户的用户名。
-5.    输入此用户的密码，然后单击“确定”。  
+4.  在“创建集成用户”旁边的文本框中，输入可连接到 OMS 中的 IT Service Management Connector 的用户的用户名。
+5.  输入此用户的密码，然后单击“确定”。  
 
 >[!NOTE]
 
@@ -241,10 +243,10 @@ ms.lasthandoff: 05/09/2017
 默认角色：
 - personalize_choices
 - import_transformer
--     x_mioms_microsoft.user
--     itil
--     template_editor
--     view_changer
+-   x_mioms_microsoft.user
+-   itil
+-   template_editor
+-   view_changer
 
 成功创建用户后，“检查安装清单”的状态将改为“已完成”，同时会列出针对应用创建的用户角色的详细信息。
 
@@ -267,7 +269,7 @@ ms.lasthandoff: 05/09/2017
 
 请确保满足以下先决条件：
 
-- 已安装 IT Service Management Connector 详细信息：[配置](log-analytics-itsmc-overview.md#configuration)。
+- 已安装 IT Service Management Connector。 详细信息：[配置](log-analytics-itsmc-overview.md#configuration)。
 - Provance 应用应已注册到 Azure AD，并且可提供客户端 ID。 有关详细信息，请参阅[如何配置 Active Directory 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)。
 - 用户角色：管理员。
 
@@ -311,7 +313,7 @@ ms.lasthandoff: 05/09/2017
 
 请确保满足以下先决条件：
 
-- 已安装 IT Service Management Connector 详细信息：[配置](log-analytics-itsmc-overview.md#configuration)。
+- 已安装 IT Service Management Connector。 详细信息：[配置](log-analytics-itsmc-overview.md#configuration)。
 - 已生成客户端 ID。 详细信息：[为 Cherwell 生成客户端 ID](#generate-client-id-for-cherwell)。
 - 用户角色：管理员。
 

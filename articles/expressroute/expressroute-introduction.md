@@ -1,5 +1,5 @@
 ---
-title: "ExpressRoute 概述：通过专用连接将本地网络扩展到 Azure | Microsoft 文档"
+title: "ExpressRoute 概述：通过专用连接将本地网络扩展到 Azure | Microsoft Docs"
 description: "此 ExpressRoute 技术概述介绍了如何使用 ExpressRoute 连接，以便用户通过专用连接将本地网络扩展到 Azure。"
 documentationcenter: na
 services: expressroute
@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/12/2017
+ms.date: 07/14/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: a36fce44efb3c32f83f33b19d2bca5ad73782a1b
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: d1e513933ea647a1afe9a4eb214bb9216d3bb20a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
-
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="expressroute-overview"></a>ExpressRoute 概述

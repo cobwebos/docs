@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 7d58748c4b0195246fffafe2e5544678b83dfd60
-ms.lasthandoff: 04/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 51459dae8d09d7051ab74c9fe57cc29e38b8b9ab
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/14/2017
 
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常见问题
@@ -40,7 +41,7 @@ ms.lasthandoff: 04/14/2017
 * [API 管理网关 IP 地址是否不变？是否可以在防火墙规则中使用它？](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)
 * [是否可以使用 AD FS 安全配置 OAuth 2.0 授权服务器？](#can-i-configure-an-oauth-20-authorization-server-with-adfs-security)
 * [API 管理使用何种路由方法部署到多个地理位置？](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
-* [是否可以使用 Azure 资源管理器模板创建 API 管理服务实例？](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
+* [是否可以使用 Azure Resource Manager 模板创建 API 管理服务实例？](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
 * [是否可以为后端使用自签名 SSL 证书？](#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)
 * [为何在尝试克隆 GIT 存储库时得到身份验证失败？](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
 * [API 管理是否适用于 Azure ExpressRoute ？](#does-api-management-work-with-azure-expressroute)
@@ -65,7 +66,7 @@ ms.lasthandoff: 04/14/2017
 * 使用 HTTP 基本身份验证。 有关详细信息，请参阅[配置 SharePoint](api-management-howto-create-apis.md#configure-api-settings)。
 * 使用[如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全](api-management-howto-mutual-certificates.md)中所述的 SSL 相互身份验证。
 * 在后端服务上使用 IP 允许列表。 如果有标准或高级层 API 管理实例，则网关的 IP 地址保持不变。 可设置允许列表以允许此 IP 地址。 可在 Azure 门户中的仪表板上获取 API 管理实例的 IP 地址。
-* 将 API 管理实例连接到 Azure 虚拟网络。 
+* 将 API 管理实例连接到 Azure 虚拟网络。
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>如何将 API 管理服务实例复制到新实例？
 如果要将 API 管理实例复制到新实例，则有多个选项。 你可以：
@@ -94,6 +95,7 @@ ms.lasthandoff: 04/14/2017
 2. 使用 `Set-AzureRmContext -SubscriptionID <subscriptionGUID>` 将上下文设置为具有该服务的订阅。
 3. 使用 `Get-AzureRmApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` 获取单一登录 URL。
 4. 使用 URL 访问管理员门户。
+
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>我想要添加的策略为何在策略编辑器中不可用？
 如果要添加的策略在策略管理器中显示为变暗或有阴影，请确保处于该策略的正确范围内。 每个策略声明都设计为在特定范围和策略部分中使用。 若要查看策略部分和策略范围，请参阅 [API 管理策略](https://msdn.microsoft.com/library/azure/dn894080.aspx)中的策略的用法部分。
 
@@ -103,6 +105,7 @@ ms.lasthandoff: 04/14/2017
 * 在 API 管理中，可将 API 配置为表示不同版本。 例如，可具有两个不同的 API，MyAPIv1 和 MyAPIv2。 开发人员可选择该开发人员要使用的版本。
 * 还可使用不包含版本段的服务 URL 配置 API，例如 https://my.api。 然后，在每个操作的[重写 URL](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) 模板上配置版本段。 例如，可使操作带有名为 /resource 的 [URL 模板](api-management-howto-add-operations.md#url-template)和名为 /v1/Resource 的[重写 URL](api-management-howto-add-operations.md#rewrite-url-template) 模板。 可为每个操作单独更改版本段值。
 * 如果希望在 API 的服务 URL 中保留“默认”版本段，请在选定操作上设置使用[设置后端服务](https://msdn.microsoft.com/library/azure/dn894083.aspx#SetBackendService)策略的策略以更改后端请求路径。
+
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>如何在单个 API 中设置多个环境？
 若要在单个 API 中设置多个环境（例如，一个测试环境和一个生产环境），则有两个选项。 你可以：
 
@@ -129,9 +132,9 @@ ms.lasthandoff: 04/14/2017
 若要了解如何使用 Active Directory 联合身份验证 (AD FS) 安全配置 OAuth 2.0 授权服务器，请参阅[在 API 管理中使用 ADFS](https://phvbaars.wordpress.com/2016/02/06/using-adfs-in-api-management/)。
 
 ### <a name="what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations"></a>API 管理使用何种路由方法部署到多个地理位置？
-API 管理使用[性能流量路由方法](../traffic-manager/traffic-manager-routing-methods.md#performance-traffic-routing-method)部署到多个地理位置。 传入流量路由到最近的 API 网关。 如果一个区域处于脱机状态，则传入流量自动路由到下一个最近的网关。 在[流量管理器路由方法](../traffic-manager/traffic-manager-routing-methods.md)中了解有关路由方法的详细信息。
+API 管理使用[性能流量路由方法](../traffic-manager/traffic-manager-routing-methods.md#a-name--priorityapriority-traffic-routing-method)部署到多个地理位置。 传入流量路由到最近的 API 网关。 如果一个区域处于脱机状态，则传入流量自动路由到下一个最近的网关。 在[流量管理器路由方法](../traffic-manager/traffic-manager-routing-methods.md)中了解有关路由方法的详细信息。
 
-### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>是否可以使用 Azure 资源管理器模板创建 API 管理服务实例？
+### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>是否可以使用 Azure Resource Manager 模板创建 API 管理服务实例？
 是的。 请参阅 [Azure API 管理服务](http://aka.ms/apimtemplate)快速入门模板。
 
 ### <a name="can-i-use-a-self-signed-ssl-certificate-for-a-back-end"></a>是否可以为后端使用自签名 SSL 证书？

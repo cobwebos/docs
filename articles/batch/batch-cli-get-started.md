@@ -16,14 +16,15 @@ ms.date: 05/11/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 19014e65920b16d2efbaa475b7c17b2a4e3a8471
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a818a41e2e11926c2dee27e081ae8ffc0a4a6298
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/13/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
-# <a name="manage-batch-resources-with-azure-cli"></a>使用 Azure CLI 管理 Batch 资源
+# 使用 Azure CLI 管理 Batch 资源
+<a id="manage-batch-resources-with-azure-cli" class="xliff"></a>
 
 Azure CLI 2.0 是 Azure 的新命令行体验，用于管理 Azure 资源。 它可以在 macOS、Linux 和 Windows 上使用。 Azure CLI 2.0 已经过优化，可以从命令行管理 Azure 资源。 可以使用 Azure CLI 管理 Azure Batch 帐户，以及管理池、作业、任务等资源。 对于通过 Batch API、Azure 门户和 Batch PowerShell cmdlet 执行的任务，许多都可以使用 Azure CLI 来编写脚本。
 
@@ -31,7 +32,8 @@ Azure CLI 2.0 是 Azure 的新命令行体验，用于管理 Azure 资源。 它
 
 Microsoft 建议使用最新版的 Azure CLI，即 2.0 版。 有关 2.0 版的详细信息，请参阅 [Azure Command Line 2.0 now generally available](https://azure.microsoft.com/blog/announcing-general-availability-of-vm-storage-and-network-azure-cli-2-0/)（Azure 命令行 2.0 现已公开发布）。
 
-## <a name="set-up-the-azure-cli"></a>设置 Azure CLI
+## 设置 Azure CLI
+<a id="set-up-the-azure-cli" class="xliff"></a>
 
 若要安装 Azure CLI，请执行[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli.md) 中概述的步骤。
 
@@ -40,7 +42,8 @@ Microsoft 建议使用最新版的 Azure CLI，即 2.0 版。 有关 2.0 版的�
 > 
 > 
 
-## <a name="command-help"></a>命令帮助
+## 命令帮助
+<a id="command-help" class="xliff"></a>
 
 在每个命令后面追加 `-h` 即可在 Azure CLI 中显示该命令的帮助文本。 忽略任何其他选项。 例如：
 
@@ -57,14 +60,16 @@ Microsoft 建议使用最新版的 Azure CLI，即 2.0 版。 有关 2.0 版的�
 
 另请参阅 Azure CLI 参考文档，详细了解[适用于 Batch 的 Azure CLI 命令](https://docs.microsoft.com/cli/azure/batch)。 
 
-## <a name="log-in-and-authenticate"></a>登录并进行身份验证
+## 登录并进行身份验证
+<a id="log-in-and-authenticate" class="xliff"></a>
 
 若要将 Azure CLI 与 Batch 配合使用，需登录并进行身份验证。 请执行两个简单的步骤：
 
 1. **登录到 Azure。** 登录到 Azure 即可访问 Azure Resource Manager 命令，包括 [Batch Management 服务](batch-management-dotnet.md)命令。  
 2. **登录到 Batch 帐户。** 登录到 Batch 帐户即可访问 Batch 服务命令。   
 
-### <a name="log-in-to-azure"></a>登录 Azure
+### 登录 Azure
+<a id="log-in-to-azure" class="xliff"></a>
 
 可以通过多种不同的方式登录到 Azure，详见[使用 Azure CLI 2.0 登录](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)：
 
@@ -84,7 +89,8 @@ az login
 
 [示例 shell 脚本](#sample-shell-scripts)部分列出的示例也演示了如何以交互方式登录到 Azure，从而启动 Azure CLI 会话。 登录后，即可调用命令来处理 Batch Management 资源，包括 Batch 帐户、密钥、应用程序包和配额。  
 
-### <a name="log-in-to-your-batch-account"></a>登录到 Batch 帐户
+### 登录到 Batch 帐户
+<a id="log-in-to-your-batch-account" class="xliff"></a>
 
 若要使用 Azure CLI 来管理 Batch 资源（例如池、作业和任务），需登录到 Batch 帐户并进行身份验证。 若要登录到 Batch 服务，请使用 [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#login) 命令。 
 
@@ -120,7 +126,8 @@ az login
 
 [示例 shell 脚本](#sample-shell-scripts)部分列出的示例演示了如何在使用 Azure AD 和共享密钥的情况下，通过 Azure CLI 登录到 Batch 帐户。
 
-## <a name="sample-shell-scripts"></a>示例 shell 脚本
+## 示例 shell 脚本
+<a id="sample-shell-scripts" class="xliff"></a>
 
 下表中列出的示例脚本演示如何将 Azure CLI 命令与 Batch 服务和 Batch Management 服务配合使用，以便完成常规任务。 这些示例脚本涵盖可以在用于 Batch 的 Azure CLI 中使用的许多命令。 
 
@@ -131,7 +138,8 @@ az login
 | [管理批处理池](./scripts/batch-cli-sample-manage-pool.md) | 演示如何创建、管理池并调整其大小。 |
 | [使用批处理运行作业和任务](./scripts/batch-cli-sample-run-job.md) | 演示如何运行作业和添加任务。 |
 
-## <a name="json-files-for-resource-creation"></a>用于创建资源的 JSON 文件
+## 用于创建资源的 JSON 文件
+<a id="json-files-for-resource-creation" class="xliff"></a>
 
 创建 Batch 资源（如池和作业）时，可以指定包含新资源配置的 JSON 文件，而无需将资源的参数作为命令行选项传递。 例如：
 
@@ -150,7 +158,8 @@ az batch pool create my_batch_pool.json
 > 
 > 
 
-## <a name="efficient-queries-for-batch-resources"></a>适用于 Batch 资源的高效查询
+## 适用于 Batch 资源的高效查询
+<a id="efficient-queries-for-batch-resources" class="xliff"></a>
 
 每个 Batch 资源类型都支持 `list` 命令，该命令可查询 Batch 帐户并列出该类型的资源。 例如，可以列出帐户中的池以及作业中的任务：
 
@@ -173,20 +182,23 @@ az batch task list --job-id job001
 
 若要详细了解如何使用 OData 子句执行高效的列表查询，请参阅[高效查询 Azure Batch 服务](batch-efficient-list-queries.md)。
 
-## <a name="troubleshooting-tips"></a>故障排除提示
+## 故障排除提示
+<a id="troubleshooting-tips" class="xliff"></a>
 
 排查 Azure CLI 问题时，可以参考以下提示：
 
 * 使用 `-h` 获取任何 CLI 命令的 **帮助文本**
 * 使用 `-v` 和 `-vv` 显示**详细的**命令输出。 包括 `-vv` 标志时，Azure CLI 显示实际的 REST 请求和响应。 使用这些开关可以方便地显示完整的错误输出。
 * 可以使用 `--json` 选项查看 **JSON 格式的命令输出**。 例如， `az batch pool show pool001 --json` 以 JSON 格式显示 pool001 的属性。 然后，可以复制并修改此输出，以便在 `--json-file` 中使用（请参阅本文前面的 [JSON 文件](#json-files) ）。
+<!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 * [Batch 论坛][batch_forum]由 Batch 团队成员监管。 如果遇到问题或需要具体操作方面的帮助，可将问题发布到该论坛。
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 * 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
 * 有关 Batch 资源的详细信息，请参阅[适用于开发人员的 Azure Batch 概述](batch-api-basics.md)。
-* 请参阅 [Application deployment with Azure Batch application packages](batch-application-packages.md) （使用 Azure Batch 应用程序包部署应用程序），了解如何使用此功能来管理和部署 Batch 计算节点上执行的应用程序。
+* 请参阅[使用 Batch 应用程序包将应用程序部署到计算节点](batch-application-packages.md)，了解如何使用此功能来管理和部署 Batch 计算节点上执行的应用程序。
 
 [batch_forum]: https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md

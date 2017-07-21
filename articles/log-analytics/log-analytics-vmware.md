@@ -12,16 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 06/07/2017
 ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
-ms.openlocfilehash: 813120692232096275f3a7500c3b54e16af26b77
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: a9fc8427e76ee8fa48fa8f1ad452c6fe9b544ce2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/09/2017
 
 ---
 
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Log Analytics 中的 VMware 监视（预览版）解决方案
+
+![VMware 符号](./media/log-analytics-vmware/vmware-symbol.png)
+
 Log Analytics 中的 VMware 监视解决方案是一个有助于创建针对大型 VMware 日志的集中式日志记录和监视方法的解决方案。 本文介绍如何使用该解决方案在单个位置对 ESXi 主机进行故障排除、捕获和管理。 使用该解决方案，你可以看到在单个位置中看到所有 ESXi 主机的详细数据。 可以看到通过 ESXi 主机日志提供的 VM 和 ESXi 主机的重要事件计数、状态及趋势。 可以通过查看和搜索集中式 ESXi 主机日志进行故障排除。 而且，可以基于日志搜索查询创建警报。
 
 解决方案使用 ESXi 主机的本机 syslog功能将数据推送到具有 OMS 代理的目标 VM。 但是，该解决方案不会将文件写入到目标 VM 内的 syslog 中。 OMS 代理打开端口 1514 并对它进行侦听。 当接收到数据后，OMS 代理将数据推送到 OMS 中。
@@ -29,7 +33,7 @@ Log Analytics 中的 VMware 监视解决方案是一个有助于创建针对大�
 ## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
 使用以下信息来安装和配置解决方案。
 
-* 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将 VMware监视解决方案添加到 OMS 工作区。
+* 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将 VMware 监视解决方案添加到 OMS 工作区。
 
 #### <a name="supported-vmware-esxi-hosts"></a>受支持的 VMware ESXi 主机
 vSphere ESXi 主机 5.5 和 6.0
@@ -40,10 +44,10 @@ vSphere ESXi 主机 5.5 和 6.0
    ![系统日志流](./media/log-analytics-vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>配置系统日志收集
-1. 为 VSphere 设置 syslog 转发。 有关帮助设置 syslog 转发的详细信息，请参阅[在 ESXi 5.x 和 6.0 上配置 syslog (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)。 转到“**ESXi 主机配置**” > “**软件**” > “**高级设置**” > “**Syslog**”。
+1. 为 VSphere 设置 syslog 转发。 有关帮助设置 syslog 转发的详细信息，请参阅[在 ESXi 5.x 和 6.0 上配置 syslog (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)。 转到“ESXi 主机配置” > “软件” > “高级设置” > “Syslog”。
    ![vsphereconfig](./media/log-analytics-vmware/vsphere1.png)  
-2. 在“*Syslog.global.logHost*”字段中，添加 Linux 服务器和端口号 *1514*。 例如，`tcp://hostname:1514` 或 `tcp://123.456.789.101:1514`
-3. 为 syslog 打开 ESXi 主机防火墙。 “**ESXi 主机配置**” > “**软件**” > “**安全配置文件**” > “**防火墙**”并打开“**属性**”。  
+2. 在“Syslog.global.logHost”字段中，添加 Linux 服务器和端口号 *1514*。 例如，`tcp://hostname:1514` 或 `tcp://123.456.789.101:1514`
+3. 为 syslog 打开 ESXi 主机防火墙。 “ESXi 主机配置” > “软件” > “安全配置文件” > “防火墙”并打开“属性”。  
 
     ![vspherefw](./media/log-analytics-vmware/vsphere2.png)  
 
@@ -75,13 +79,13 @@ VMware 监视解决方案使用已启用的 OMS Agent for Linux 从 ESXi 主机�
 
 下表显示数据收集方法以及有关如何收集数据的其他详细信息。
 
-| 平台 | OMS Agent for Linux | SCOM 代理 | Azure 存储空间 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
+| 平台 | OMS Agent for Linux | SCOM 代理 | Azure 存储 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |![是](./media/log-analytics-vmware/oms-bullet-green.png) |![否](./media/log-analytics-vmware/oms-bullet-red.png) |![否](./media/log-analytics-vmware/oms-bullet-red.png) |![否](./media/log-analytics-containers/oms-bullet-red.png) |![否](./media/log-analytics-vmware/oms-bullet-red.png) |每隔 3 分钟 |
 
 下表显示了由 VMware 监视解决方案所收集的数据字段示例：
 
-| 字段名称 | description |
+| 字段名称 | 说明 |
 | --- | --- |
 | Device_s |VMware 存储设备 |
 | ESXIFailure_s |失败类型 |
@@ -108,7 +112,7 @@ VMware 磁贴显示在 OMS 门户中。 它提供任何失败的高级视图。 
 ![磁贴](./media/log-analytics-vmware/tile.png)
 
 #### <a name="navigate-the-dashboard-view"></a>导航仪表板视图
-在“**VMware**”仪表板视图中，边栏选项卡的组织方式如下：
+在“VMware”仪表板视图中，边栏选项卡的组织方式如下：
 
 * 失败状态计数
 * 按事件计数排名靠前的主机
@@ -131,7 +135,7 @@ VMware 磁贴显示在 OMS 门户中。 它提供任何失败的高级视图。 
 
 可以通过单击 ESXi 主机或事件类型进一步了解相关信息。
 
-单击 ESXi 主机名时，可查看该 ESXi 主机的信息。 如果要缩小包含事件类型的结果范围，将 `“ProcessName_s=EVENT TYPE”` 添加到搜索查询中。 可以在搜索筛选器中选择“**ProcessName**”。 将会缩小信息范围。
+单击 ESXi 主机名时，可查看该 ESXi 主机的信息。 如果要缩小包含事件类型的结果范围，将 `“ProcessName_s=EVENT TYPE”` 添加到搜索查询中。 可以在搜索筛选器中选择“ProcessName”。 将会缩小信息范围。
 
 ![钻取](./media/log-analytics-vmware/eventhostdrilldown.png)
 
@@ -150,7 +154,7 @@ VMware 磁贴显示在 OMS 门户中。 它提供任何失败的高级视图。 
 ![查询](./media/log-analytics-vmware/queries.png)
 
 #### <a name="save-queries"></a>保存查询
-保存搜索查询是 OMS 中的标准功能，可帮助你记录发现的任何有用查询。 创建有用的查询后，单击“**收藏夹**”将其保存下来。 已保存的查询可在以后从“[我的仪表板](log-analytics-dashboards.md)”页（可在其中创建你自己的自定义仪表板）轻松地对其进行重复使用。
+保存搜索查询是 OMS 中的标准功能，可帮助你记录发现的任何有用查询。 创建有用的查询后，单击“收藏夹”将其保存下来。 已保存的查询可在以后从“我的仪表板”[](log-analytics-dashboards.md)页（可在其中创建你自己的自定义仪表板）轻松地对其进行重复使用。
 
 ![DockerDashboardView](./media/log-analytics-vmware/dockerdashboardview.png)
 

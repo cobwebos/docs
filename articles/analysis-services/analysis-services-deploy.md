@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/17/2017
+ms.date: 06/01/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 04b809a6fdd7b993a048a67f66a9851c2a7bf3d2
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 0b15399cade0a9dc21b2274a64172d65f2f4e877
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -29,12 +29,12 @@ ms.lasthandoff: 05/18/2017
 ## <a name="before-you-begin"></a>开始之前
 若要开始，您需要：
 
-* Azure 中的 **Analysis Services 服务器**。 若要了解详细信息，请参阅[在 Azure 中创建 Analysis Services](analysis-services-create-server.md)。
-* SSDT 中的**表格模型项目**或 Analysis Services 实例上兼容级别为 1200 或更高版本的现有表格模型。 从未创建过？ 请尝试 [Adventure Works 教程](https://msdn.microsoft.com/library/hh231691.aspx)。
+* Azure 中的 **Analysis Services 服务器**。 若要了解详细信息，请参阅[创建 Azure Analysis Services 服务器](analysis-services-create-server.md)。
+* SSDT 中的表格模型项目或兼容级别为 1200 或更高的现有表格模型。 从未创建过？ 请尝试 [Adventure Works 教程](https://msdn.microsoft.com/library/hh231691.aspx)。
 * **本地网关** - 如果你组织的网络中有一个或多个本地数据源，则需要安装[本地数据网关](analysis-services-gateway.md)。 网关对于云中的服务器是必需的，可帮助服务器连接到本地数据源，以在模型中处理和刷新数据。
 
 > [!TIP]
-> 在部署之前，请确保可以在表中处理数据。 在 SSDT 中，单击“模型” > “处理” > “全部处理”。 如果处理失败，则部署也将失败。
+> 在部署之前，请确保可以在表中处理数据。 在 SSDT 中，单击“模型” > “处理” > “全部处理”。 如果处理失败，将无法成功部署。
 > 
 > 
 

@@ -7,7 +7,7 @@ author: chaosrealm
 manager: pablocas
 editor: 
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: search
 ms.devlang: rest-api
 ms.topic: article
 ms.tgt_pltfrm: NA
@@ -19,7 +19,6 @@ ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 333f8320820a1729a14ffc2e29446e7452aa768e
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/10/2017
-
 
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>使用索引器连接 Cosmos DB 和 Azure 搜索
@@ -285,3 +284,4 @@ Azure 搜索支持创建和管理数据源（包括 Cosmos DB）以及针对这�
 
 * 若要了解有关 Azure Cosmos DB 的详细信息，请参阅 [Cosmos DB 服务页](https://azure.microsoft.com/services/documentdb/)。
 * 若要了解有关 Azure 搜索的详细信息，请参阅[搜索服务页](https://azure.microsoft.com/services/search/)。
+

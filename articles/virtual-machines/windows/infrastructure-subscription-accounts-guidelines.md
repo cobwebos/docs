@@ -13,23 +13,26 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 06/26/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: b210c73d577016f465de6d323de7b43f2baf760a
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
 
 
 ---
-# <a name="azure-subscription-and-accounts-guidelines-for-windows-vms"></a>适用于 Windows VM 的 Azure 订阅和帐户准则
+<a id="azure-subscription-and-accounts-guidelines-for-windows-vms" class="xliff"></a>
+# 适用于 Windows VM 的 Azure 订阅和帐户准则
 
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
 
 本文重点介绍如何随环境和用户群的增长实行订阅和帐户管理。
 
-## <a name="implementation-guidelines-for-subscriptions-and-accounts"></a>订阅和帐户的实施准则
+<a id="implementation-guidelines-for-subscriptions-and-accounts" class="xliff"></a>
+## 订阅和帐户的实施准则
 决策：
 
 * 需要使用哪一组订阅和帐户来托管 IT 工作负荷或基础结构？
@@ -41,7 +44,8 @@ ms.lasthandoff: 03/31/2017
 * 根据此逻辑层次结构，定义所需帐户和每个帐户下的订阅。
 * 使用命名约定创建订阅和帐户集。
 
-## <a name="subscriptions-and-accounts"></a>订阅和帐户
+<a id="subscriptions-and-accounts" class="xliff"></a>
+## 订阅和帐户
 若要使用 Azure，需要一个或多个 Azure 订阅。 虚拟机 (VM) 或虚拟网络等资源存在于这些订阅中。
 
 * 企业客户通常具有企业许可登记表，该表是层次结构中的最顶层资源并与一个或多个帐户相关联。
@@ -66,7 +70,8 @@ ms.lasthandoff: 03/31/2017
 
 我们通过可下载的文件为企业协议中的单个帐户或所有帐户提供详细的计费信息。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+## 后续步骤
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]
 
 

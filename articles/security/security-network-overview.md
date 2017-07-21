@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/27/2017
 ms.author: terrylan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: e74f3f7ed4ab0a7a37047b1277e76b6695f3884f
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 27243856d0c6b70c7515b6bde66b99ef6160eb36
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -123,7 +123,7 @@ Azure 网络支持以下安全远程访问方案：
 
 了解更多：
 
-* [使用 Azure 门户创建具有站点到站点 VPN 连接的资源管理器 VNet](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [使用 Azure 门户创建具有站点到站点 VPN 连接的 Resource Manager VNet](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 * [规划和设计 VPN 网关](../vpn-gateway/vpn-gateway-plan-design.md)
 
 ### <a name="connect-your-on-premises-network-to-an-azure-virtual-network-with-a-dedicated-wan-link"></a>通过专用的 WAN 链路将本地网络连接到 Azure 虚拟网络
@@ -149,7 +149,7 @@ Azure 网络支持以下安全远程访问方案：
 
 了解更多：
 
-* [使用 Azure 资源管理器和 PowerShell 配置 VNet 到 VNet 连接](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+* [使用 Azure Resource Manager 和 PowerShell 配置 VNet 到 VNet 连接](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
 ## <a name="availability"></a>可用性
 可用性是任何安全程序的一个重要组成部分。 如果你的用户和系统无法访问他们需要通过网络访问的内容，可视为该服务已遭到入侵。 Azure 具有支持以下高可用性机制的网络技术：
@@ -164,7 +164,7 @@ Azure 网络支持以下安全远程访问方案：
 * 提高性能 – 在跨多个设备对连接进行负载均衡时，单个设备不必占用处理器命中。 相反，提供内容的处理和内存需求遍布多个设备。
 
 ### <a name="http-based-load-balancing"></a>基于 HTTP 的负载均衡
-运行基于 Web 的服务的组织通常希望在这些 Web 服务前面具有基于 HTTP 的负载均衡器，以帮助确保足够级别的性能和高可用性。 与传统的基于网络的负载均衡器相比，由基于 HTTP 的负载均衡器所做的负载平衡决策基于 HTTP 协议的特征，而不是基于网络和传输层协议的特征。
+运行基于 Web 的服务的组织通常希望在这些 Web 服务前面具有基于 HTTP 的负载均衡器，以帮助确保足够级别的性能和高可用性。 与传统的基于网络的负载均衡器相比，由基于 HTTP 的负载均衡器所做的负载均衡决策基于 HTTP 协议的特征，而不是基于网络和传输层协议的特征。
 
 为了给你的基于 Web 的服务提供基于 HTTP 的负载均衡，Azure 为你提供了 Azure 应用程序网关。 Azure 应用程序网关支持：
 
@@ -179,7 +179,7 @@ Azure 网络支持以下安全远程访问方案：
 
 ### <a name="network-level-load-balancing"></a>网络级别的负载均衡
 与基于 HTTP 的负载均衡相比，网络级别负载均衡基于 IP 地址和端口（TCP 或 UDP）号做出负载均衡决策。
-通过使用 Azure 负载均衡器，你可以在 Azure 中获得网络级别负载平衡的优点。 Azure 负载均衡器的一些主要特征包括：
+通过使用 Azure 负载均衡器，你可以在 Azure 中获得网络级别负载均衡的优点。 Azure 负载均衡器的一些主要特征包括：
 
 * 基于 IP 地址和端口号的网络级别负载均衡
 * 支持任何应用程序层协议
@@ -220,7 +220,7 @@ Azure 网络支持以下安全远程访问方案：
 了解更多：
 
 * [虚拟网络概述](../virtual-network/virtual-networks-overview.md)
-* [管理虚拟网络 (VNet) 使用的 DNS 服务器](../virtual-network/virtual-networks-manage-dns-in-vnet.md)
+* [管理虚拟网络 (VNet) 使用的 DNS 服务器](../virtual-network/virtual-network-manage-network.md#dns-servers)
 
 对于外部 DNS 解析，你有两个选项：
 

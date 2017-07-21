@@ -2,7 +2,7 @@
 title: "操作组中的短信通知行为 |Microsoft Docs"
 description: "短信格式，以及回复短信以取消订阅、重新订阅或请求帮助。"
 author: anirudhcavale
-manager: carmonm
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: 10f33898fb86bd2449994a153d99cb59dc6078d6
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
-
 
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>操作组中的短信通知行为

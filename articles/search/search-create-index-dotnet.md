@@ -1,5 +1,5 @@
 ---
-title: "使用 .NET SDK 创建 Azure 搜索索引 | Microsoft Docs"
+title: "创建索引（.NET API - Azure 搜索）| Microsoft Docs"
 description: "使用 Azure 搜索 .NET SDK 在代码中创建索引。"
 services: search
 documentationcenter: 
@@ -15,15 +15,15 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/22/2017
 ms.author: brjohnst
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
-ms.openlocfilehash: 0531b5c3b63a3fa54bb331f3d8d09c8119e789ea
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 2f2160f9b4383f9220c81a7233612a767e296109
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/22/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
-# <a name="create-an-azure-search-index-using-the-net-sdk"></a>使用 .NET SDK 创建 Azure 搜索索引
+# 使用 .NET SDK 创建 Azure 搜索索引
+<a id="create-an-azure-search-index-using-the-net-sdk" class="xliff"></a>
 > [!div class="op_single_selector"]
 > * [概述](search-what-is-an-index.md)
 > * [门户](search-create-index-portal.md)
@@ -41,7 +41,8 @@ ms.lasthandoff: 05/22/2017
 >
 >
 
-## <a name="identify-your-azure-search-services-admin-api-key"></a>确定 Azure 搜索服务的管理 API 密钥
+## 确定 Azure 搜索服务的管理 API 密钥
+<a id="identify-your-azure-search-services-admin-api-key" class="xliff"></a>
 现在，已预配 Azure 搜索服务，差不多可以使用 .NET SDK 向服务终结点发出请求了。 首先，需要获取已为预配的搜索服务生成的其中一个管理 API 密钥。 每次向服务发出请求时，NET SDK 都会发送这个 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
 1. 若要查找服务的 API 密钥，请登录到 [Azure 门户](https://portal.azure.com/)
@@ -57,7 +58,8 @@ ms.lasthandoff: 05/22/2017
 
 <a name="CreateSearchServiceClient"></a>
 
-## <a name="create-an-instance-of-the-searchserviceclient-class"></a>创建 SearchServiceClient 类的实例
+## 创建 SearchServiceClient 类的实例
+<a id="create-an-instance-of-the-searchserviceclient-class" class="xliff"></a>
 若要开始使用 Azure 搜索 .NET SDK，需要创建 `SearchServiceClient` 类的实例。 此类具有几个构造函数。 需要将搜索服务名称和 `SearchCredentials` 对象用作参数。 `SearchCredentials` 包装 API 密钥。
 
 以下代码使用应用程序配置文件（在使用[示例应用程序](http://aka.ms/search-dotnet-howto)时为 `appsettings.json`）中存储的搜索服务名称和 API 密钥的值创建一个新 `SearchServiceClient`：
@@ -82,7 +84,8 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 
 <a name="DefineIndex"></a>
 
-## <a name="define-your-azure-search-index"></a>定义 Azure 搜索索引
+## 定义 Azure 搜索索引
+<a id="define-your-azure-search-index" class="xliff"></a>
 只需调用一次 `Indexes.Create` 方法即可创建索引。 此方法以定义 Azure 搜索索引的 `Index` 对象作为参数。 需要创建 `Index` 对象，并对其进行初始化，如下所示：
 
 1. 将 `Index` 对象的 `Name` 属性设置为索引的名称。
@@ -172,7 +175,8 @@ var definition = new Index()
 };
 ```
 
-## <a name="create-the-index"></a>创建索引
+## 创建索引
+<a id="create-the-index" class="xliff"></a>
 获得已初始化的 `Index` 对象后，只需对 `SearchServiceClient` 对象调用 `Indexes.Create` 即可创建索引：
 
 ```csharp
@@ -192,7 +196,8 @@ serviceClient.Indexes.Delete("hotels");
 > 
 > 
 
-## <a name="next-steps"></a>后续步骤
-创建 Azure 搜索索引后，就可以 [将内容上载到索引中](search-what-is-data-import.md) ，以便可以开始搜索数据。
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
+创建 Azure 搜索索引后，就可以 [将内容上传到索引中](search-what-is-data-import.md) ，以便可以开始搜索数据。
 
 

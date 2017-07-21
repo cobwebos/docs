@@ -13,16 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/07/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
-ms.openlocfilehash: a6bb1c4b3a4972cdab9b99c548ef918a4d1070a0
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 780728950199bac6a317767ef1db4462b3fe6ffd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/04/2017
 
 ---
-# <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>德国 Microsoft 云中的 Azure AD Connect - 公共预览版
-## <a name="introduction"></a>介绍
+# 德国 Microsoft 云中的 Azure AD Connect - 公共预览版
+<a id="azure-ad-connect-in-microsoft-cloud-germany---public-preview" class="xliff"></a>
+## 介绍
+<a id="introduction" class="xliff"></a>
 Azure AD Connect 提供本地 Active Directory 和 Azure Active Directory 之间的同步。
 当前， [德国 Microsoft 云](https://www.microsoft.com/de-de/cloud/deutschland/default.aspx) 中的许多方案必须由运营商完成。 使用“德国 Microsoft 云”时，必须注意以下几点：
 
@@ -35,12 +38,13 @@ Azure AD Connect 提供本地 Active Directory 和 Azure Active Directory 之间
 * 以下功能不可用：
   * Azure AD Connect Health
   * 自动更新
-  * 密码写回
-
-## <a name="download"></a>下载
+ 
+## 下载
+<a id="download" class="xliff"></a>
 可从门户内的 Azure AD Connect 边栏选项卡下载 Azure AD Connect。  使用下面的说明找到 Azure AD Connect 边栏选项卡。
 
-### <a name="the-azure-ad-connect-blade"></a>Azure AD Connect 边栏选项卡
+### Azure AD Connect 边栏选项卡
+<a id="the-azure-ad-connect-blade" class="xliff"></a>
 登录 Azure 门户后，执行以下操作：
 
 1. 转到“浏览”
@@ -59,15 +63,12 @@ Azure AD Connect 提供本地 Active Directory 和 Azure Active Directory 之间
 | 上次同步 |上次成功执行同步的时间。 |
 | 联合域 |显示当前配置的联合域数。 |
 
-## <a name="installation"></a>安装
+## 安装
+<a id="installation" class="xliff"></a>
 若要安装 Azure AD Connect，可使用 [此处](active-directory-aadconnect.md#install-azure-ad-connect)的文档。
 
-## <a name="advanced-features-and-additional-information"></a>高级功能和其他信息
+## 高级功能和其他信息
+<a id="advanced-features-and-additional-information" class="xliff"></a>
 有关自定义设置或高级配置的其他信息和指南，请从 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)入手。  此页提供了有关其他指南的信息以及链接。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

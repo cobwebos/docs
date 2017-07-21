@@ -14,7 +14,7 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 07/12/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
@@ -22,9 +22,9 @@ ms.openlocfilehash: f98d769542f5a52d659f561e970f0a7e9dce9fd9
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/02/2017
 
-
 ---
-# <a name="use-c-with-mapreduce-streaming-on-hadoop-in-hdinsight"></a>在 HDInsight 中的 Hadoop 上将 C# 与 MapReduce 流式处理配合使用
+# 在 HDInsight 中的 Hadoop 上将 C# 与 MapReduce 流式处理配合使用
+<a id="use-c-with-mapreduce-streaming-on-hadoop-in-hdinsight" class="xliff"></a>
 
 了解如何在 HDInsight 上使用 C# 创建 MapReduce 解决方案。
 
@@ -33,13 +33,15 @@ ms.lasthandoff: 05/02/2017
 
 Hadoop 流式处理是一个实用工具，通过它可以使用脚本或可执行文件运行 MapReduce 作业。 在本示例中，.NET 用于为单词计数解决方案实现映射器和化简器。
 
-## <a name="net-on-hdinsight"></a>HDInsight 上的 .NET
+## HDInsight 上的 .NET
+<a id="net-on-hdinsight" class="xliff"></a>
 
 __基于 Linux 的 HDInsight__ 群集使用 [Mono (https://mono-project.com)](https://mono-project.com) 运行 .NET 应用程序。 Mono 版本 4.2.1 包含在 HDInsight 版本 3.5 中。 有关包含在 HDInsight 中的 Mono 版本的详细信息，请参阅 [HDInsight 组件版本](hdinsight-component-versioning.md)。 若要使用 Mono 的特定版本，请参阅[安装或更新 Mono](hdinsight-hadoop-install-mono.md) 文档。
 
 有关 Mono 与 .NET Framework 版本的兼容性的详细信息，请参阅 [Mono 兼容性](http://www.mono-project.com/docs/about-mono/compatibility/)。
 
-## <a name="how-hadoop-streaming-works"></a>Hadoop 流式处理的工作原理
+## Hadoop 流式处理的工作原理
+<a id="how-hadoop-streaming-works" class="xliff"></a>
 
 在本文档中用于流式处理的基本流程如下所示：
 
@@ -51,7 +53,8 @@ __基于 Linux 的 HDInsight__ 群集使用 [Mono (https://mono-project.com)](ht
 
 有关流式处理的详细信息，请参阅 [Hadoop 流式处理 (https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html)](https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html)。
 
-## <a name="prerequisites"></a>先决条件
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
 
 * 熟悉编写和生成面向 .NET Framework 4.5 的 C# 代码。 本文档中的各个步骤都使用 Visual Studio 2017。
 
@@ -61,7 +64,8 @@ __基于 Linux 的 HDInsight__ 群集使用 [Mono (https://mono-project.com)](ht
 
 * HDInsight 群集上的 Hadoop。 有关创建群集的详细信息，请参阅[创建 HDInsight 群集](hdinsight-provision-clusters.md)。
 
-## <a name="create-the-mapper"></a>创建映射器
+## 创建映射器
+<a id="create-the-mapper" class="xliff"></a>
 
 在 Visual Studio 中，创建名为 __mapper__ 的新__控制台应用程序__。 针对该应用程序使用以下代码：
 
@@ -98,7 +102,8 @@ namespace mapper
 
 创建该应用程序后，生成它以在项目目录中生成 `/bin/Debug/mapper.exe` 文件。
 
-## <a name="create-the-reducer"></a>创建化简器
+## 创建化简器
+<a id="create-the-reducer" class="xliff"></a>
 
 在 Visual Studio 中，创建名为 __reducer__ 的新__控制台应用程序__。 针对该应用程序使用以下代码：
 
@@ -151,7 +156,8 @@ namespace reducer
 
 创建该应用程序后，生成它以在项目目录中生成 `/bin/Debug/reducer.exe` 文件。
 
-## <a name="upload-to-storage"></a>上载到存储
+## 上载到存储
+<a id="upload-to-storage" class="xliff"></a>
 
 1. 在 Visual Studio 中，打开“服务器资源管理器”。
 
@@ -177,7 +183,8 @@ namespace reducer
 
     上传“mapper.exe”完成后，请为“reducer.exe”文件重复该上传过程。
 
-## <a name="run-a-job-using-an-ssh-session"></a>运行作业：使用 SSH 会话
+## 运行作业：使用 SSH 会话
+<a id="run-a-job-using-an-ssh-session" class="xliff"></a>
 
 1. 使用 SSH 连接到 HDInsight 群集。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
@@ -222,7 +229,8 @@ namespace reducer
         yourselves      3
         youth   17
 
-## <a name="run-a-job-using-powershell"></a>运行作业：使用 PowerShell
+## 运行作业：使用 PowerShell
+<a id="run-a-job-using-powershell" class="xliff"></a>
 
 使用以下 PowerShell 脚本运行 MapReduce 作业，并下载结果。
 
@@ -240,7 +248,8 @@ namespace reducer
     yourselves      3
     youth   17
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 有关将 MapReduce 与 HDInsight 配合使用的详细信息，请参阅[将 MapReduce 与 HDInsight 配合使用](hdinsight-use-mapreduce.md)。
 

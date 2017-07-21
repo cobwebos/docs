@@ -15,16 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: hanuk;robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 1cc14b99a4c0dfeb9eec0afaf72200e93cd22e12
-ms.lasthandoff: 03/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 7dc61a4ea5f7ce9749a3280562e42223dfdbde17
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/28/2017
 
 
 ---
 # <a name="running-cassandra-with-linux-on-azure-and-accessing-it-from-nodejs"></a>在 Azure 上将 Cassandra 与 Linux 一起运行以及通过 Node.js 对其进行访问
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 请参阅 [Datastax Enterprise](https://azure.microsoft.com/documentation/templates/datastax) 的 Resource Manager 模板和 [CentOS 上 Spark 群集和 Cassandra](https://azure.microsoft.com/documentation/templates/spark-and-cassandra-on-centos/)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 请参阅 [Datastax Enterprise](https://azure.microsoft.com/documentation/templates/datastax) 的 Resource Manager 模板和 [CentOS 上 Spark 群集和 Cassandra](https://azure.microsoft.com/documentation/templates/spark-and-cassandra-on-centos/)。
 
 ## <a name="overview"></a>概述
 Microsoft Azure 是一种开放式的云平台，该平台运行 Microsoft 软件和非 Microsoft 软件，其中包括：操作系统、应用程序服务器、消息传递中间件，以及 SQL 数据库和 NoSQL 数据库，采用商业模型和开源模型。 在包括 Azure 在内的公共云上构建可复原的服务需要针对应用程序服务器和存储层进行仔细的规划和周到的体系结构设计。 Cassandra 具有分布式的存储体系结构，这自然有助于构建可用性高的系统，此类系统在发生群集故障时容错性很强。 Cassandra 是云级别的 NoSQL 数据库，由 Apache Software Foundation 在 cassandra.apache.org 上进行维护；Cassandra 是以 Java 编写的，因此可以运行在 Windows 和 Linux 平台上。
@@ -56,7 +57,7 @@ Cassandra 可以部署到单个或多个 Azure 区域，具体取决于工作负
 
 请注意，在撰写本文的时候，Azure 并不允许将一组 VM 显式映射到特定的容错域；因此，即使采用图 1 所示的部署模型，也极有可能会将所有虚拟机映射到两个容错域，而不是四个容错域。
 
-**对 Thrift 通信进行负载均衡：**Web 服务器中的 Thrift 客户端库通过内部负载均衡器连接到群集。 在使用云服务托管 Cassandra 群集的情况下，这需要执行相关过程，以便将内部负载均衡器添加到“数据”子网（参见图 1）。 定义好内部负载均衡器以后，每个节点都需要添加进行过负载平衡的终结点，并使用以前定义的负载均衡器名称对负载平衡集进行标注。 有关详细信息，请参阅 [Azure 内部负载均衡](../../../load-balancer/load-balancer-internal-overview.md)。
+**对 Thrift 通信进行负载均衡：**Web 服务器中的 Thrift 客户端库通过内部负载均衡器连接到群集。 在使用云服务托管 Cassandra 群集的情况下，这需要执行相关过程，以便将内部负载均衡器添加到“数据”子网（参见图 1）。 定义好内部负载均衡器以后，每个节点都需要添加进行过负载均衡的终结点，并使用以前定义的负载均衡器名称对负载均衡集进行标注。 有关详细信息，请参阅 [Azure 内部负载均衡](../../../load-balancer/load-balancer-internal-overview.md)。
 
 **群集种子：**必须选择可用性最高的节点作为种子，因为新节点需要与种子节点进行通信才能发现群集的拓扑。 将会从每个可用性集中选择一个节点作为种子节点，以免出现单节点故障。
 
@@ -86,7 +87,7 @@ Cassandra 的上述数据中心感知型复制和一致性模型可以很方便�
 
 **基于位置远近的部署：**多租户应用程序如果进行了清楚的从租户用户到区域的映射，则适合采用多区域群集，因为后者的延迟较低。 例如，适合教育机构使用的学习管理系统可以在美国东部地区和美国西部地区部署分布式群集，为这两个地区的校园提供事务处理和分析服务。 数据在读取和写入时可以在本地保持一致，最终会在这两个地区保持一致。 此外还有其他示例，例如媒体分发、电子商务等。不管什么示例，只要其服务对象是集中在某个地理区域的用户群，都适合此部署模型。
 
-**高可用性：**若要实现软硬件的高可用性，冗余很重要；有关详细信息，请参阅“在 Microsoft Azure 中构建可靠的云系统”。 在 Microsoft Azure 中，若要实现真正的冗余，唯一可靠的方式是部署多区域群集。 应用程序可以采用主动-主动或主动-被动模式进行部署。如果某个区域停机，Azure 流量管理器可以将流量重定向到活动区域。  对于单区域部署来说，如果可用性为 99.9，则双区域部署可以获得 99.9999 的可用性，通过以下公式进行计算：(1-(1-0.999) *(1-0.999))*100)；有关详细信息，请参阅上面的说明。
+**高可用性：**若要实现软硬件的高可用性，冗余很重要；有关详细信息，请参阅“在 Microsoft Azure 中构建可靠的云系统”。 在 Microsoft Azure 中，若要实现真正的冗余，唯一可靠的方式是部署多区域群集。 应用程序可以采用主动-主动或主动-被动模式进行部署。如果某个区域停机，Azure 流量管理器可以将流量重定向到活动区域。  如果单区域部署的可用性为 99.9，双区域部署可以实现 99.9999 的可用性，计算公式为：(1-(1-0.999) * (1-0.999))*100)；有关详细信息，请参阅上面的说明。
 
 **灾难恢复：**多区域 Cassandra 群集如果设计得当，可以承受灾难性的数据中心中断情况。 如果某个区域停机，可以通过部署到其他区域的应用程序为最终用户提供服务。 与任何其他业务连续性实施一样，该应用程序必须承受某种程度的数据丢失，因为数据位于异步管道中。 不过，与传统数据恢复过程相比，Cassandra 提供的恢复过程要快得多。 图 2 显示了典型的多区域部署模型，每个区域有 8 个节点。 两个区域互为镜像以确保对称性；实际设计取决于工作负荷类型（例如，是事务性还是分析性）、RPO、RTO、数据一致性和可用性要求。
 
@@ -123,7 +124,7 @@ Cassandra 的上述数据中心感知型复制和一致性模型可以很方便�
 <tr><td>Ubuntu    </td><td>[Microsoft Azure](https://azure.microsoft.com/) </td><td>14.04 LTS</td></tr>
 </table>
 
-由于下载 JRE 需要手动接受 Oracle 许可证，为了简化部署，可先将所有必需软件下载到桌面，然后再将其上载到进行群集部署之前需要创建的 Ubuntu 模板映像中。
+由于下载 JRE 需要手动接受 Oracle 许可证，为了简化部署，可先将所有必需软件下载到桌面，然后再将其上传到进行群集部署之前需要创建的 Ubuntu 模板映像中。
 
 将以上软件下载到本地计算机上某个已知 的下载目录（例如，Windows 上的 %TEMP%/downloads 或者大多数 Linux 分发或 Mac 上的 ~/Downloads）。
 
@@ -166,7 +167,7 @@ Azure 在进行配置时需要用 PEM 或 DER 编码的 X509 公钥。 按照如
 单击右键头，保留屏幕 #3 中的默认设置，然后单击“检查”按钮完成 VM 预配过程。 几分钟后，名为“ubuntu-template”的 VM 将处于“正在运行”状态。
 
 ### <a name="install-the-necessary-software"></a>安装必要的软件
-#### <a name="step-1-upload-tarballs"></a>步骤 1：上载 tarball
+#### <a name="step-1-upload-tarballs"></a>步骤 1：上传 tarball
 使用 scp 或 pscp，通过以下命令格式将以前下载的软件复制到 ~/downloads 目录：
 
 ##### <a name="pscp-server-jre-8u5-linux-x64targz-localadminhk-cas-templatecloudappnethomelocaladmindownloadsserver-jre-8u5-linux-x64targz"></a>pscp server-jre-8u5-linux-x64.tar.gz localadmin@hk-cas-template.cloudapp.net:/home/localadmin/downloads/server-jre-8u5-linux-x64.tar.gz
@@ -303,15 +304,13 @@ Azure 在进行配置时需要用 PEM 或 DER 编码的 X509 公钥。 按照如
 这将需要数秒钟的时间，然后映像就会出现在映像库中的“我的映像”部分。 成功捕获映像后，将会自动删除源 VM。 
 
 ## <a name="single-region-deployment-process"></a>单区域部署过程
-**步骤 1：创建虚拟网络**登录到 Azure 经典门户，然后使用下表中的属性创建虚拟网络。 请参阅[在 Azure 经典门户中配置只使用云的虚拟网络](../../../virtual-network/virtual-networks-create-vnet-classic-portal.md)，了解此过程的详细步骤。      
+**第 1 步：创建虚拟网络**：登录 Azure 门户，再创建虚拟网络（经典），属性如下表所示。 请参阅[使用 Azure 门户创建虚拟网络（经典）](../../../virtual-network/virtual-networks-create-vnet-classic-pportal.md)，了解此过程的详细步骤。      
 
 <table>
 <tr><th>VM 属性名称</th><th>值</th><th>备注</th></tr>
 <tr><td>Name</td><td>vnet-cass-west-us</td><td></td></tr>
 <tr><td>区域</td><td>美国西部</td><td></td></tr>
-<tr><td>DNS 服务器    </td><td>无</td><td>将其忽略，因为我们不使用 DNS 服务器</td></tr>
-<tr><td>配置点到站点 VPN</td><td>无</td><td> 将其忽略</td></tr>
-<tr><td>配置站点到站点 VPN</td><td>无</td><td> 将其忽略</td></tr>
+<tr><td>DNS 服务器</td><td>无</td><td>将其忽略，因为我们不使用 DNS 服务器</td></tr>
 <tr><td>地址空间</td><td>10.1.0.0/16</td><td></td></tr>    
 <tr><td>起始 IP</td><td>10.1.0.0</td><td></td></tr>    
 <tr><td>CIDR </td><td>/16 (65531)</td><td></td></tr>
@@ -348,7 +347,7 @@ Azure 在进行配置时需要用 PEM 或 DER 编码的 X509 公钥。 按照如
 1. 在特定区域创建空的云服务
 2. 从以前捕获的映像创建 VM，然后将其附加到以前创建的虚拟网络；对所有 VM 重复此过程
 3. 将内部负载均衡器添加到云服务，然后将其附加到“数据”子网
-4. 对于以前创建的每个 VM，可以通过一个已连接到以前创建的内部负载均衡器的负载平衡集添加进行 Thrift 通信的负载平衡终结点
+4. 对于以前创建的每个 VM，可以通过一个已连接到以前创建的内部负载均衡器的负载均衡集添加进行 Thrift 通信的负载均衡终结点
 
 以上过程可以通过 Azure 经典门户来执行；使用 Windows 计算机（如果无法访问 Windows 计算机，则可使用 Azure 上的 VM）；使用以下 PowerShell 脚本自动预配所有 8 个 VM。
 

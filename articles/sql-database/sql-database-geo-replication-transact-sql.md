@@ -16,10 +16,10 @@ ms.workload: NA
 ms.date: 04/14/2017
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: dad35a2b3beb2b07d5b12afb8a04ba48f8b8ef7e
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: e5011c1c67e051616d53621b72e46ba894ca3c02
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -103,7 +103,7 @@ ms.lasthandoff: 05/18/2017
 2. 打开“数据库”文件夹、展开“系统数据库”、右键单击“master”，然后单击“新建查询”。
 3. 使用以下语句显示具有异地复制链接的所有数据库。
    
-        SELECT database_id, start_date, modify_date, partner_server, partner_database, replication_state_desc, role, secondary_allow_connections_desc FROM [sys].geo_replication_links;
+        SELECT database_id, start_date, modify_date, partner_server, partner_database, replication_state_desc, role, secondary_allow_connections_desc FROM sys.geo_replication_links;
 4. 单击“执行”运行查询。
 5. 打开“数据库”文件夹、展开“系统数据库”、右键单击“MyDB”，然后单击“新建查询”。
 6. 使用以下语句显示复制延迟和辅助数据库 MyDB 上次复制的开始时间。
@@ -117,7 +117,7 @@ ms.lasthandoff: 05/18/2017
 9. 单击“执行”运行查询。
 
 ## <a name="next-steps"></a>后续步骤
-* 若要深入了解活动异地复制，请参阅[活动异地复制](sql-database-geo-replication-overview.md)
+* 若要详细了解故障转移组和活动异地复制，请参阅[故障转移组](sql-database-geo-replication-overview.md)
 * 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)
 
 

@@ -2,7 +2,7 @@
 title: "使用 Resource Manager 模板创建指标警报 | Microsoft Docs"
 description: "了解如何使用 Resource Manager 模板创建指标警报，以便通过电子邮件或 Webhook 接收通知。"
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/13/2017
+ms.date: 6/21/2017
 ms.author: johnkem
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
 ms.openlocfilehash: 4ea07a1cade7e3007b0f85214b4d41a61b527001
+ms.contentlocale: zh-cn
 ms.lasthandoff: 12/22/2016
-
 
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
@@ -109,9 +109,9 @@ ms.lasthandoff: 12/22/2016
         },
         "windowSize": {
             "type": "string",
-            "defaultValue": "00:05:00",
+            "defaultValue": "PT5M",
             "metadata": {
-                "description": "Period of time used to monitor alert activity based on the threshold. Must be between 00:05:00 and 24:00:00. ISO 8601 duration format."
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between five minutes and one day. ISO 8601 duration format."
             }
         },
         "sendToServiceOwners": {
@@ -241,7 +241,7 @@ ms.lasthandoff: 12/22/2016
         "metricName": "Percentage CPU",
         "operator": "GreaterThan",
         "threshold": "80",
-        "windowSize": "00:10:00",
+        "windowSize": "PT5M",
         "aggregation": "Average",
         "customEmails": "",
         "sendToServiceOwners": true,

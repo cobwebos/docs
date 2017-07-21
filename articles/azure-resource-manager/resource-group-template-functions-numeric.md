@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 06/13/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 66984bef9e82df80818eea31bd37de524b567b33
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: f14bc4e8091eb1f0dccb761d9df1c931b9b77732
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -51,7 +51,11 @@ Resource Manager 提供以下用于处理整数的函数：
 |operand1 |是 |int |要添加的第一个数。 |
 |operand2 |是 |int |要添加的第二个数。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+一个整数，包含参数的总和。
+
+### <a name="example"></a>示例
 
 以下示例将添加两个参数。
 
@@ -62,12 +66,14 @@ Resource Manager 提供以下用于处理整数的函数：
     "parameters": {
         "first": {
             "type": "int",
+            "defaultValue": 5,
             "metadata": {
                 "description": "First integer to add"
             }
         },
         "second": {
             "type": "int",
+            "defaultValue": 3,
             "metadata": {
                 "description": "Second integer to add"
             }
@@ -84,9 +90,11 @@ Resource Manager 提供以下用于处理整数的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-一个整数，包含参数的总和。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| addResult | int | 8 |
 
 <a id="copyindex" />
 
@@ -110,7 +118,7 @@ Resource Manager 提供以下用于处理整数的函数：
  
 有关如何使用 **copyIndex** 的完整说明，请参阅 [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)（在 Azure Resource Manager 中创建多个资源实例）。
 
-### <a name="examples"></a>示例
+### <a name="example"></a>示例
 
 以下示例显示名称中包含 copy 循环和索引值。 
 
@@ -146,7 +154,11 @@ Resource Manager 提供以下用于处理整数的函数：
 | operand1 |是 |int |被除数。 |
 | operand2 |是 |int |除数。 不能为 0。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+一个表示商的整数。
+
+### <a name="example"></a>示例
 
 以下示例将一个参数除以另一个参数。
 
@@ -157,12 +169,14 @@ Resource Manager 提供以下用于处理整数的函数：
     "parameters": {
         "first": {
             "type": "int",
+            "defaultValue": 8,
             "metadata": {
                 "description": "Integer being divided"
             }
         },
         "second": {
             "type": "int",
+            "defaultValue": 3,
             "metadata": {
                 "description": "Integer used to divide"
             }
@@ -179,9 +193,11 @@ Resource Manager 提供以下用于处理整数的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-一个表示商的整数。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| divResult | int | 2 |
 
 <a id="float" />
 
@@ -196,7 +212,10 @@ Resource Manager 提供以下用于处理整数的函数：
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |string 或 int |要转换为浮点数的值。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+一个浮点数。
+
+### <a name="example"></a>示例
 
 以下示例演示如何使用 float 将参数传递给逻辑应用：
 
@@ -214,9 +233,6 @@ Resource Manager 提供以下用于处理整数的函数：
         },
 ```
 
-### <a name="return-value"></a>返回值
-一个浮点数。
-
 <a id="int" />
 
 ## <a name="int"></a>int
@@ -230,7 +246,11 @@ Resource Manager 提供以下用于处理整数的函数：
 |:--- |:--- |:--- |:--- |
 | valueToConvert |是 |string 或 int |要转换为整数的值。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+转换后的值的整数值。
+
+### <a name="example"></a>示例
 
 以下示例将用户提供的参数值转换为整数。
 
@@ -239,25 +259,28 @@ Resource Manager 提供以下用于处理整数的函数：
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "appId": { "type": "string" }
-    },
-    "variables": { 
-        "intValue": "[int(parameters('appId'))]"
+        "stringToConvert": { 
+            "type": "string",
+            "defaultValue": "4"
+        }
     },
     "resources": [
     ],
     "outputs": {
-        "divResult": {
+        "intResult": {
             "type": "int",
-            "value": "[variables('intValue')]"
+            "value": "[int(parameters('stringToConvert'))]"
         }
     }
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-一个整数。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| intResult | int | 4 |
+
 
 <a id="min" />
 
@@ -272,7 +295,11 @@ Resource Manager 提供以下用于处理整数的函数：
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最小值的集合。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+一个整数，表示集合中的最小值。
+
+### <a name="example"></a>示例
 
 以下示例演示如何对整数数组和整数列表使用 min：
 
@@ -300,9 +327,12 @@ Resource Manager 提供以下用于处理整数的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-一个整数，表示集合中的最小值。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| arrayOutput | int | 0 |
+| intOutput | int | 0 |
 
 <a id="max" />
 
@@ -317,7 +347,11 @@ Resource Manager 提供以下用于处理整数的函数：
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最大值的集合。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+一个整数，表示集合中的最大值。
+
+### <a name="example"></a>示例
 
 以下示例演示如何对整数数组和整数列表使用 max：
 
@@ -345,9 +379,12 @@ Resource Manager 提供以下用于处理整数的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-一个整数，表示集合中的最大值。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| arrayOutput | int | 5 |
+| intOutput | int | 5 |
 
 <a id="mod" />
 
@@ -363,7 +400,10 @@ Resource Manager 提供以下用于处理整数的函数：
 | operand1 |是 |int |被除数。 |
 | operand2 |是 |int |非零除数。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+一个表示余数的整数。
+
+### <a name="example"></a>示例
 
 以下示例将返回一个参数除以另一个参数后所得的余数。
 
@@ -374,12 +414,14 @@ Resource Manager 提供以下用于处理整数的函数：
     "parameters": {
         "first": {
             "type": "int",
+            "defaultValue": 7,
             "metadata": {
                 "description": "Integer being divided"
             }
         },
         "second": {
             "type": "int",
+            "defaultValue": 3,
             "metadata": {
                 "description": "Integer used to divide"
             }
@@ -396,8 +438,11 @@ Resource Manager 提供以下用于处理整数的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
-一个表示余数的整数。
+上面具有默认值的示例的输出为：
+
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| modResult | int | 1 |
 
 <a id="mul" />
 
@@ -413,7 +458,11 @@ Resource Manager 提供以下用于处理整数的函数：
 | operand1 |是 |int |要乘以的第一个数。 |
 | operand2 |是 |int |要乘以的第二个数。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+
+一个表示积的整数。
+
+### <a name="example"></a>示例
 
 以下示例将一个参数乘以另一个参数。
 
@@ -424,12 +473,14 @@ Resource Manager 提供以下用于处理整数的函数：
     "parameters": {
         "first": {
             "type": "int",
+            "defaultValue": 5,
             "metadata": {
                 "description": "First integer to multiply"
             }
         },
         "second": {
             "type": "int",
+            "defaultValue": 3,
             "metadata": {
                 "description": "Second integer to multiply"
             }
@@ -446,9 +497,11 @@ Resource Manager 提供以下用于处理整数的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-一个表示积的整数。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| mulResult | int | 15 |
 
 <a id="sub" />
 
@@ -464,7 +517,10 @@ Resource Manager 提供以下用于处理整数的函数：
 | operand1 |是 |int |被减数。 |
 | operand2 |是 |int |减数。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
+一个表示减后结果的整数。
+
+### <a name="example"></a>示例
 
 以下示例将一个参数减另一个参数。
 
@@ -475,12 +531,14 @@ Resource Manager 提供以下用于处理整数的函数：
     "parameters": {
         "first": {
             "type": "int",
+            "defaultValue": 7,
             "metadata": {
                 "description": "Integer subtracted from"
             }
         },
         "second": {
             "type": "int",
+            "defaultValue": 3,
             "metadata": {
                 "description": "Integer to subtract"
             }
@@ -497,8 +555,11 @@ Resource Manager 提供以下用于处理整数的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
-一个表示减后结果的整数。
+上面具有默认值的示例的输出为：
+
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| subResult | int | 4 |
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure Resource Manager 模板中各部分的说明，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。

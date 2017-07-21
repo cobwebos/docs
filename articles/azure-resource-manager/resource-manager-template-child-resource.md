@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 06/01/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: d7560b689d7cea56d40ffa2db9542f74a649f9c1
-ms.lasthandoff: 03/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 5b6ce5526f354008eb4a697deec737876f22391f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -29,6 +30,16 @@ ms.lasthandoff: 03/03/2017
 子资源名称的格式为：`{parent-resource-name}/{child-resource-name}`
 
 但是，你可以根据它是嵌套在父资源中，还是独自在最高级别，以不同方式在模板中指定类型和名称。 本主题演示如何处理这两种方法。
+
+向资源构造完全限定的引用时，类型和名称的分段组合顺序并不是这两者的简单串联。  相反，在命名空间后，需采用“类型/名称”对从最不具体到最具体的序列：
+
+```json
+{resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]*
+```
+
+例如：
+
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` 正确，`Microsoft.Compute/virtualMachines/extensions/myVM/myExt` 不正确
 
 ## <a name="nested-child-resource"></a>嵌套的子资源
 定义子资源的最简单方法是将其嵌套在父资源中。 以下示例演示了 SQL Server 中嵌套的 SQL 数据库。

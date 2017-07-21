@@ -1,6 +1,6 @@
 ---
-title: "从本地 Git 部署到 Azure App Service"
-description: "了解如何实现从本地 Git 部署到 Azure App Service。"
+title: "从本地 Git 部署到 Azure 应用服务"
+description: "了解如何实现从本地 Git 部署到 Azure 应用服务。"
 services: app-service
 documentationcenter: 
 author: dariagrigoriu
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2016
 ms.author: dariagrigoriu
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 6e476e1dc550f246027c015dee75850236baa9a9
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: da848aec495a8248fd4791f350d439e937831d01
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="local-git-deployment-to-azure-app-service"></a>从本地 Git 部署到 Azure App Service
+# <a name="local-git-deployment-to-azure-app-service"></a>从本地 Git 部署到 Azure 应用服务
 本教程说明如何将应用从本地计算机上的 Git 存储库部署到 [Azure 应用服务]。 应用服务支持结合 [Azure 门户]中的“本地 Git”部署选项使用此方法。  
 在根据[此处](app-service-web-get-started.md)所述使用 [Azure 命令行接口]创建应用服务应用时，将自动执行本文中所述的许多 Git 命令。
 
@@ -43,8 +44,10 @@ ms.lasthandoff: 04/27/2017
 1. 启动一个命令行工具，例如 **GitBash** (Windows) 或 **Bash** (Unix Shell)。 在 OS X 系统上，可以通过 **Terminal** 应用程序访问命令行。
 2. 导航到要部署的内容所在的目录。
 3. 使用以下命令可初始化新的 Git 存储库：
-   
-        git init
+
+```bash  
+git init
+```
 
 ## <a name="Step2"></a>步骤 2：提交内容
 应用服务支持用各种编程语言创建的应用程序。 
@@ -54,11 +57,15 @@ ms.lasthandoff: 04/27/2017
    * 使用文本编辑器，在 Git 存储库的根中创建一个名为 **index.html** 的新文件。
    * 添加以下文本作为 index.html 文件的内容并保存该文件：*Hello Git!*
 2. 在命令行中，验证当前位置是否在 Git 存储库的根目录下。 然后使用以下命令将文件添加到存储库中：
-   
-        git add -A 
+
+```bash  
+git add -A
+```
 3. 接下来，使用以下命令将更改提交到存储库：
-   
-        git commit -m "Hello Azure App Service"
+
+```bash  
+git commit -m "Hello Azure App Service"
+```  
 
 ## <a name="Step3"></a>步骤 3：启用应用服务应用存储库
 执行以下步骤为应用服务应用启用 Git 存储库。
@@ -88,10 +95,11 @@ ms.lasthandoff: 04/27/2017
    > 
    > 
 4. 使用刚刚创建的新 **azure** 远程命令将内容推送到应用服务。
-   
-        git push azure master
-   
-    当你在 Azure 门户中重置部署凭据时，系统将提示你输入以前创建的密码。 输入该密码（请注意，在键入密码时，Gitbash 不会将星号回显到控制台）。 
+
+```bash  
+git push azure master
+```
+    You will be prompted for the password you created earlier when you reset your deployment credentials in the Azure Portal. Enter the password (note that Gitbash does not echo asterisks to the console as you type your password). 
 5. 返回到 Azure 门户中的应用。 最近推送的日志条目应显示在“部署”边栏选项卡中。 
    
     ![](./media/app-service-deploy-local-git/deployment_history.png)
@@ -121,8 +129,9 @@ ms.lasthandoff: 04/27/2017
 
 **解决方法**：请再次执行推送操作，并指定 master 分支。 例如：
 
-    git push azure master
-
+```bash  
+git push azure master
+```
 - - -
 **症状**：src refspec [分支名] 不匹配任何内容。
 
@@ -130,8 +139,9 @@ ms.lasthandoff: 04/27/2017
 
 **解决方法**：请再次执行推送操作，并指定 master 分支。 例如：
 
-    git push azure master
-
+```bash  
+git push azure master
+```
 - - -
 **症状**：RPC 失败；结果 = 22，HTTP 代码 = 502。
 
@@ -139,8 +149,9 @@ ms.lasthandoff: 04/27/2017
 
 **解决方法**：在本地计算机上更改 Git 配置，以增大 postBuffer
 
-    git config --global http.postBuffer 524288000
-
+```bash  
+git config --global http.postBuffer 524288000
+```
 - - -
 **症状**：错误 - 已将更改提交到远程存储库，但未更新 Web 应用。
 

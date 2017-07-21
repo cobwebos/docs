@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/07/2017
 ms.author: rajram
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: a0a420adc57a0bcbb3779183324ab7bfafcb5bf1
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 4faccae708b5407d1eb64e746824a23688bc5834
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -39,7 +39,7 @@ Azure Monitor 自动缩放仅适用于虚拟机规模集 (VMSS)、云服务、�
 
 可以使用顶部的筛选器窗格来缩小列表的范围，以选择特定资源组中的资源、选择特定的资源类型或选择特定的资源。
 
-对于每个资源，可以看到其当前实例计数和自动缩放状态。 自动缩放状态可以是
+对于每个资源，将会看到其当前实例计数和自动缩放状态。 自动缩放状态可以是
 
 - 未配置：尚未对此资源启用自动缩放设置
 - 已启用：对此资源启用了自动缩放设置
@@ -69,7 +69,7 @@ Azure Monitor 自动缩放仅适用于虚拟机规模集 (VMSS)、云服务、�
 - 单击“添加缩放条件”
 - 设置缩放模式和规则的方式与设置默认条件相同
 - 为计划选择“重复特定的星期日期”
-- 选择星期日期，以及在选定的星期日期应该应用缩放条件的开始/结束时间。
+- 选择星期日期，以及在选定的星期日期应该应用缩放条件的开始/结束时间
 
 ![基于计划的缩放条件][9]
 ## <a name="scale-differently-on-specific-dates"></a>在特定的日期以不同的方式缩放
@@ -78,7 +78,7 @@ Azure Monitor 自动缩放仅适用于虚拟机规模集 (VMSS)、云服务、�
 - 单击“添加缩放条件”
 - 设置缩放模式和规则的方式与设置默认条件相同
 - 为计划选择“指定开始/结束日期”
-- 选择开始/结束日期，以及在选定的日期应该应用缩放条件的开始/结束时间。
+- 选择开始/结束日期，以及在选定的日期应该应用缩放条件的开始/结束时间
 
 ![基于日期的缩放条件][10]
 
@@ -123,3 +123,4 @@ Azure Monitor 自动缩放仅适用于虚拟机规模集 (VMSS)、云服务、�
 [12]: ./media/monitoring-autoscale-get-started/scale-definition-json.png
 [13]: ./media/monitoring-autoscale-get-started/disable-autoscale.png
 [14]: ./media/monitoring-autoscale-get-started/set-manualscale.png
+

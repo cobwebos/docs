@@ -13,13 +13,14 @@ ms.devlang: nodejs
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 4/17/2017
+ms.date: 6/15/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 231d9f2e4a501f20a47b1cec55c75fba4c2e57c8
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 9e9198f827d0906f65f59322126ef27ba6428d3e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -193,6 +194,7 @@ ms.lasthandoff: 04/20/2017
 3. 然后导航至存储库文件夹，运行下列命令来安装所有程序包，该过程可能需要几分钟时间。
    
    ```bash
+   cd iot-hub-node-intel-edison-client-app
    npm install
    ```
 
@@ -207,9 +209,9 @@ ms.lasthandoff: 04/20/2017
 
    ![配置文件](media/iot-hub-intel-edison-kit-node-get-started/13_configure_file.png)
 
-   此文件中有两个可配置的宏。 第一个是 `INTERVAL`，它确定发送到云的两条消息之间的时间间隔。 第二个是 `SIMULATED_DATA`，它是一个布尔值，指示是否使用模拟的传感器数据。
+   此文件中有两个可配置的宏。 第一个是 `INTERVAL`，它确定发送到云的两条消息之间的时间间隔。 第二个是 `simulatedData`，它是一个布尔值，指示是否使用模拟的传感器数据。
 
-   如果没有传感器，请将 `SIMULATED_DATA` 值设置为 `1`，使示例应用程序创建和使用模拟的传感器数据。
+   如果没有传感器，请将 `simulatedData` 值设置为 `true`，使示例应用程序创建和使用模拟的传感器数据。
 
 1. 通过按“Control-O”>“Enter”>“Control-X”保存并退出。
 
@@ -232,3 +234,4 @@ ms.lasthandoff: 04/20/2017
 此时已运行示例应用程序，以收集传感器数据并将其发送到 IoT 中心。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
+

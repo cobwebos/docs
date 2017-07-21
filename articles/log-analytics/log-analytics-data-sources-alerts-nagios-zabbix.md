@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 6659e1ccbe2b2d918039bf45fbecf199606cd201
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 0b64c32e1031e704d50aab0b38eaea41e27d134b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/10/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 05/09/2017
 
     sudo usermod -a -G nagios omsagent
 
-2.    修改位于 (`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`) 处的配置文件。 确保以下条目存在且未注释掉︰  
+2.  修改位于 (`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`) 处的配置文件。 确保以下条目存在且未注释掉︰  
 
         <source>  
           type tail  
@@ -59,10 +59,16 @@ ms.lasthandoff: 05/09/2017
 
 在 Nagios 服务器上执行以下步骤来收集警报。
 
-2.    修改位于 (`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`) 处的配置文件。 确保以下条目存在且未注释掉。  将用户名和密码更改为适合你的 Zabbix 环境的值。
+1. 修改位于 (`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`) 处的配置文件。 确保以下条目存在且未注释掉。  将用户名和密码更改为适合你的 Zabbix 环境的值。
 
         <source>
-         type zabbix_alerts    run_interval 1m    tag oms.zabbix    zabbix_url http://localhost/zabbix/api_jsonrpc.php    zabbix_username Admin    zabbix_password zabbix   </source>
+         type zabbix_alerts
+         run_interval 1m
+         tag oms.zabbix
+         zabbix_url http://localhost/zabbix/api_jsonrpc.php
+         zabbix_username Admin
+         zabbix_password zabbix
+        </source>
 
 2. 重新启动 omsagent 守护程序
 

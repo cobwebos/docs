@@ -13,13 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/18/2017
+ms.date: 07/05/2017
 ms.author: jroth
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 49dd3d64b8f6bc8e0dc40d40db909648f287a068
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: d61334063cfaa8707cdd811490e14b359ead40b9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>使用 SQL Server 代理扩展在 Azure 虚拟机上自动完成管理任务（经典）
@@ -32,7 +33,7 @@ ms.lasthandoff: 04/27/2017
 Azure 虚拟机上运行的 SQL Server IaaS 代理扩展 (SQLIaaSAgent) 可以自动执行管理任务。 本主题概述了该扩展支持的服务以及有关安装、状态及删除的说明。
 
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 若要查看本文中的 Resource Manager 版本，请参阅[适用于 SQL Server VM Resource Manager 的 SQL Server 代理扩展](../sql/virtual-machines-windows-sql-server-agent-extension.md)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 若要查看本文中的 Resource Manager 版本，请参阅[适用于 SQL Server VM Resource Manager 的 SQL Server 代理扩展](../sql/virtual-machines-windows-sql-server-agent-extension.md)。
 
 ## <a name="supported-services"></a>支持的服务
 SQL Server IaaS 代理扩展支持以下管理任务：
@@ -49,6 +50,7 @@ SQL Server IaaS 代理扩展支持以下管理任务：
 ### <a name="operating-system"></a>操作系统：
 * Windows Server 2012
 * Windows Server 2012 R2
+* Windows Server 2016
 
 ### <a name="sql-server-versions"></a>SQL Server 版本：
 * SQL Server 2012

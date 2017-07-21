@@ -1,43 +1,45 @@
-- name: "必应 Web 搜索文档"
+- name: Bing Web Search Documentation
   href: ../index.md
-- name: "概述"
+- name: Overview
   items:
-    - name: "搜索 Web"
+    - name: Search the web
       href: search-the-web.md
-    - name: "从 v5 升级到 v7 预览"
+    - name: Upgrade from v5 to v7 Preview
       href: bing-web-upgrade-guide-v5-to-v7.md
-    - name: "使用和显示要求"
+    - name: Use and display requirements
       href: UseAndDisplayRequirements.md
-- name: "快速入门"
+- name: Quickstarts
   expanded: true
   items:
-  - name: "入门"
+  - name: Get started
     href: quick-start.md
-- name: "如何"
+- name: How to
   items:
-  - name: "筛选答案"
+  - name: Filter answer
     href: filter-answers.md
-  - name: "排名结果"
+  - name: Rank results
     href: rank-results.md
-  - name: "处理搜索词突出显示"
+  - name: Handle hit highlighting
     href: hit-highlighting.md
-  - name: "网页"
+  - name: Page webpages
     href: paging-webpages.md
-  - name: "调整和裁剪缩略图"
+  - name: Resize and crop thumbnails
     href: resize-and-crop-thumbnails.md
-- name: "教程"
+- name: Tutorials
   items:
-  - name: "C# 排名教程"
+  - name: 'C# Ranking Tutorial'
     href: csharp-ranking-tutorial.md
-- name: "引用"
+- name: Reference
   items:
-  - name: "REST v5"
+  - name: REST v5
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference
-  - name: "REST v7 预览"
+  - name: REST v7 Preview
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference
-- name: "资源"
+- name: Resources
   items:
-  - name: "订阅密钥"
+  - name: Azure Roadmap
+    href: https://azure.microsoft.com/roadmap/
+  - name: Subscription key
     href: https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api
-  - name: "试试看！"
+  - name: Try it!
     href: https://dev.cognitive.microsoft.com/docs/services/56b43eeccf5ff8098cef3807/operations/56b4447dcf5ff8098cef380d

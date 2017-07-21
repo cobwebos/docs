@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 05/5/2017
+ms.date: 06/9/2017
 ms.author: LADocs; dimazaid; estfan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 8446790af6af160c4b2d463191405faaed68bf0e
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 4b6f21c7949493ac1f95e7c0f255e5c96613adf1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -56,9 +56,9 @@ ms.lasthandoff: 05/17/2017
 
 * 必须已[在本地计算机上安装数据网关](logic-apps-gateway-install.md)。
 
-* 需要一个 Azure 帐户，以便使用其工作或学校电子邮件地址来[安装本地数据网关](logic-apps-gateway-install.md#requirements)。
+* 登录 Azure 门户时，必须使用用于[安装本地数据网关](logic-apps-gateway-install.md#requirements)的同一工作或学校帐户。 登录帐户还必须具有 Azure 订阅，以便在 Azure 门户中为网关安装创建网关资源时使用。
 
-* 网关安装不能是已被其他 Azure 网关资源声明的安装。 只能将网关安装关联到一个网关资源。 声明发生在创建网关资源的时候，一旦声明，安装就不能供其他资源使用。
+* 网关安装不能已被 Azure 网关资源声明。 只能将网关安装关联到一个 Azure 网关资源。 声明发生在创建网关资源的时候，一旦声明，安装就不能供其他资源使用。
 
 ## <a name="set-up-the-data-gateway-connection"></a>设置数据网关连接
 

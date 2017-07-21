@@ -1,9 +1,9 @@
 ---
-title: "Azure Functions 存储 blob 绑定 | Microsoft Docs"
+title: "Azure Functions Blob 存储绑定 | Microsoft Docs"
 description: "了解如何在 Azure Functions 中使用 Azure 存储触发器和绑定。"
 services: functions
 documentationcenter: na
-author: christopheranderson
+author: lindydonna
 manager: erikre
 editor: 
 tags: 
@@ -14,101 +14,111 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/06/2017
-ms.author: chrande, glenga
+ms.date: 05/25/2017
+ms.author: donnam, glenga
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 198a8421636945bdf60c4ed519d065617a7fc287
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: b819bf4461f14033dd2c00331e3c3e4d0fbafde6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
 # <a name="azure-functions-blob-storage-bindings"></a>Azure Functions Blob 存储绑定
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-本文介绍如何在 Azure Functions 中配置和编码 Azure 存储 blob 绑定。 Azure Functions 支持 Azure 存储 blob 的触发、输入以及输出绑定。
+本文介绍如何在 Azure Functions 中配置和使用 Azure Blob 存储绑定。 Azure Functions 支持 Azure Blob 存储使用触发器、输入以及输出绑定。 有关所有绑定中提供的功能，请参阅 [Azure Functions 触发器和绑定概念](functions-triggers-bindings.md)。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> 不支持[仅 blob 存储帐户](../storage/storage-create-storage-account.md#blob-storage-accounts)。 Azure Functions 需要一个通用存储帐户与 blob 搭配使用。 
-> 
+> 不支持[仅 blob 存储帐户](../storage/storage-create-storage-account.md#blob-storage-accounts)。 Blob 存储触发器和绑定需要使用常规用途存储帐户。 
 > 
 
 <a name="trigger"></a>
+<a name="storage-blob-trigger"></a>
+## <a name="blob-storage-triggers-and-bindings"></a>Blob 存储触发器和绑定
 
-## <a name="storage-blob-trigger"></a>存储 blob 触发器
-使用 Azure 存储 blob 触发器可以监视新的和已更新的 blob 的存储容器，并在检测到更改时运行函数代码。 
+如果使用 Azure Blob 存储触发器，在检测到新的或更新的 blob 时，将调用函数代码。 Blob 内容会作为输入提供给函数。
 
-函数的存储 blob 触发器在 function.json 的 `bindings` 数组中使用以下 JSON 对象：
+使用 Functions 门户中的“集成”选项卡定义 Blob 存储触发器。 门户在 function.json 中的“绑定”部分创建以下定义：
 
 ```json
 {
-    "name": "<Name of input parameter in function signature>",
+    "name": "<The name used to identify the trigger data in your code>",
     "type": "blobTrigger",
     "direction": "in",
     "path": "<container to monitor, and optionally a blob name pattern - see below>",
-    "connection":"<Name of app setting - see below>"
+    "connection": "<Name of app setting - see below>"
 }
 ```
 
-注意以下事项：
+定义 Blob 输入和输出绑定时，将 `blob` 作为绑定类型：
 
-* 有关 `path`，请参阅[名称模式](#pattern)了解如何设置 blob 名称模式的格式。
-* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 若要手动创建此应用设置，请参阅[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md)。 
+```json
+{
+  "name": "<The name used to identify the blob input in your code>",
+  "type": "blob",
+  "direction": "in", // other supported directions are "inout" and "out"
+  "path": "<Path of input blob - see below>",
+  "connection":"<Name of app setting - see below>"
+},
+```
 
-基于消耗计划运行时，如果 Function App 处于空闲状态，则在处理新 Blob 时，可能会出现长达 10 分钟的延迟。 Function App 运行以后，Blob 处理速度会加快。 若要避免这种初始延迟，可以使用常规的应用服务计划并启用“始终可用”，或者使用其他机制来触发 Blob 处理，例如使用包含 Blob 名称的队列消息。 
+* `path` 属性支持绑定表达式和筛选器参数。 请参阅[名称模式](#pattern)。
+* `connection` 属性必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，选择存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。
 
-另请参阅以下副标题以了解详细信息：
-
-* [名称模式](#pattern)
-* [Blob 回执](#receipts)
-* [处理有害 blob](#poison)
+> [!NOTE]
+> 在消耗计划中使用 Blob 触发器时，函数应用处于空闲状态后，处理新 Blob 的过程中可能会出现长达 10 分钟的延迟。 函数应用运行后，就会立即处理 Blob。 若要避免此初始延迟，请考虑以下选项之一：
+> - 使用已启用“始终可用”的应用服务计划。
+> - 使用另一种机制来触发 Blob 处理，例如包含 Blob 名称的队列消息。 有关示例，请参阅[具有 Blob 输入绑定的队列触发器](#input-sample)。
 
 <a name="pattern"></a>
 
 ### <a name="name-patterns"></a>名称模式
-可以在 `path` 属性中指定 blob 名称模式。 例如：
+可以在 `path` 属性中指定 Blob 名称模式，它可以是一个筛选器或绑定表达式。 请参阅[绑定表达式和模式](functions-triggers-bindings.md#binding-expressions-and-patterns)。
+
+例如，若要筛选以字符串 "original" 开头的 blob，请使用以下定义。 此路径会在输入容器中找到名为 original-Blob1.txt 的 blob，并且函数代码中 `name` 变量的值为 `Blob1`。
 
 ```json
 "path": "input/original-{name}",
 ```
 
-此路径将在输入容器中找到名为 original-Blob1.txt 的 blob，并且函数代码中 `name` 变量的值为 `Blob1`。
-
-另一个示例：
+若要单独绑定到 blob 文件名和扩展名，请使用两种模式。 此路径还会找到名为 original-Blob1.txt 的 blob，并且函数代码中 `blobname` 和 `blobextension` 变量的值为 original-Blob1 和 txt 。
 
 ```json
 "path": "input/{blobname}.{blobextension}",
 ```
 
-此路径还会找到名为 original-Blob1.txt 的 blob，并且函数代码中 `blobname` 和 `blobextension` 变量的值为 original-Blob1 和 txt 。
-
-可通过使用文件扩展名的固定值限制 blob 的文件类型。 例如：
+可通过使用文件扩展名的固定值限制 blob 的文件类型。 例如，若仅需触发 .png 文件，请使用以下模式：
 
 ```json
 "path": "samples/{name}.png",
 ```
 
-在此情况下，仅示例容器中的 .png blob 触发函数。
-
-大括号在名称模式中为特殊字符。 若要指定名称中包含大括号的 blob 名称，可增加大括号。 例如：
+大括号在名称模式中为特殊字符。 若要指定名称中包含大括号的 blob 名称，可使用两个大括号对大括号进行转义。 以下示例会在映像容器中找到名为 {20140101}-soundfile.mp3 的 blob，函数代码中的 `name` 变量值将为 soundfile .mp3。 
 
 ```json
 "path": "images/{{20140101}}-{name}",
 ```
 
-此路径将在映像容器中找到名为 {20140101}-soundfile.mp3 的 blob，函数代码中的 `name` 变量值将为 soundfile .mp3。 
+### <a name="trigger-metadata"></a>触发器元数据
+
+Blob 触发器提供了几个元数据属性。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 这些值和 [CloudBlob](https://docs.microsoft.com/en-us/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob?view=azure-dotnet) 具有相同的语义。
+
+- BlobTrigger。 键入 `string`。 触发 blob 路径
+- Uri。 键入 `System.Uri`。 主位置的 blob 的 URI。
+- Properties。 键入 `Microsoft.WindowsAzure.Storage.Blob.BlobProperties`。 Blob 的系统属性。
+- Metadata。 键入 `IDictionary<string,string>`。 Blob 的用户定义元数据。
 
 <a name="receipts"></a>
 
 ### <a name="blob-receipts"></a>Blob 回执
-Azure Functions 运行时确保没有为相同的新 blob 或更新 blob 多次调用 blob 触发器函数。 为此，它会维护 blob 回执，以确定是否已处理给定的 blob 版本。
+Azure Functions 运行时确保没有为相同的新 blob 或更新 blob 多次调用 blob 触发器函数。 为了确定是否已处理给定的 blob 版本，它会维护 blob 回执。
 
-Blob 回执存储在 Function App（由 `AzureWebJobsStorage` 应用设置指定）的 Azure 存储帐户中名为 azure-webjobs-hosts 的容器中。 Blob 回执包含以下信息：
+Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名为 azure-webjobs-hosts 的容器中（由 `AzureWebJobsStorage` 应用设置定义）。 Blob 回执包含以下信息：
 
-* 触发的函数（“&lt;function app name>.Functions.&lt;function name>”，例如“functionsf74b96f7.Functions.CopyBlob”）
+* 触发的函数（"&lt;function app name>.Functions.&lt;function name>"，例如："MyFunctionApp.Functions.CopyBlob"）
 * 容器名称
 * Blob 类型（"BlockBlob" 或 "PageBlob"）
 * Blob 名称
@@ -119,7 +129,9 @@ Blob 回执存储在 Function App（由 `AzureWebJobsStorage` 应用设置指定
 <a name="poison"></a>
 
 ### <a name="handling-poison-blobs"></a>处理有害 blob
-blob 触发函数失败时，Azure Functions 对于给定 blob 默认重试该函数最多 5 次（包括第一次尝试）。 如果 5 次尝试全部失败，Functions 会将消息添加到名为 webjobs-blobtrigger-poison 的存储队列。 有害 Blob 的队列消息是包含以下属性的 JSON 对象：
+当给定 blob 的 blob 触发函数失败时，Azure Functions 将默认重试该函数共计 5 次。 
+
+如果 5 次尝试全部失败，Azure Functions 会将消息添加到名为 webjobs-blobtrigger-poison 的存储队列。 有害 Blob 的队列消息是包含以下属性的 JSON 对象：
 
 * FunctionId（格式为 &lt;function app name>.Functions.&lt;function name>）
 * BlobType（"BlockBlob" 或 "PageBlob"）
@@ -128,35 +140,27 @@ blob 触发函数失败时，Azure Functions 对于给定 blob 默认重试该�
 * ETag（blob 版本标识符，例如："0x8D1DC6E70A277EF"）
 
 ### <a name="blob-polling-for-large-containers"></a>大容器的 blob 轮询
-如果绑定监视的 blob 容器包含 10,000 多个 blob，则 Functions 运行时将扫描日志文件，监视新的或更改的 blob。 此过程不是实时过程。 创建 blob 之后数分钟或更长时间内可能仍不会触发函数。 此外，[存储日志创建于“尽力而为”的基础上](https://msdn.microsoft.com/library/azure/hh343262.aspx)。 并不能保证捕获了所有事件。 在某些情况下可能会遗漏某些日志。 如果应用程序不接受大容器的 blob 触发器的速度和可靠性限制，建议在创建 blob 时创建[队列消息](../storage/storage-dotnet-how-to-use-queues.md)，并使用[队列触发器](functions-bindings-storage-queue.md)而不是 blob 触发器来处理 blob。
+如果受监视的 blob 容器包含 10,000 多个 blob，则 Functions 运行时将扫描日志文件，监视新的或更改的 blob。 此过程不是实时过程。 创建 blob 之后数分钟或更长时间内可能仍不会触发函数。 此外，[将“尽力”创建存储日志](/rest/api/storageservices/About-Storage-Analytics-Logging)。 并不能保证捕获了所有事件。 在某些情况下可能会遗漏某些日志。 如果需要更快或更可靠的 blob 处理，在创建 blob 时，请考虑创建[队列消息](../storage/storage-dotnet-how-to-use-queues.md) 
+。 然后，使用[队列触发器](functions-bindings-storage-queue.md)而不是 blob 触发器来处理 blob。
 
 <a name="triggerusage"></a>
 
-## <a name="trigger-usage"></a>触发器使用情况
-在 C# 函数中，通过在函数签名中使用命名参数来绑定到输入 blob 数据，如 `<T> <name>`。
-其中 `T` 是数据要进行反序列化的目标数据类型，`paramName` 是在[触发器 JSON ](#trigger) 中指定的名称。 在 Node.js 函数中，使用 `context.bindings.<name>` 访问输入 blob 数据。
+## <a name="using-a-blob-trigger-and-input-binding"></a>使用 blob 触发器和输入绑定
+在 .NET 函数中，使用 `Stream paramName` 等方法参数访问 blob 数据。 其中，`paramName` 是在[触发器配置](#trigger)中指定的值。 在 Node.js 函数中，使用 `context.bindings.<name>` 访问输入 blob 数据。
 
-blob 可以反序列化为以下任何类型：
-
-* 任何[对象](https://msdn.microsoft.com/library/system.object.aspx) - 适用于 JSON 序列化的 blob 数据。
-  如果声明自定义输入类型（如 `FooType`），Azure Functions 会尝试将 JSON 数据反序列化为指定类型。
-* 字符串 - 适用于文本 blob 数据。
-
-在 C# 函数中，还可绑定到以下任意类型，Functions 运行时将尝试使用此类型反序列化此 blob 数据：
+在.NET 中，可以绑定到以下列表中的任何类型。 如果用作输入绑定，其中某些类型需要 function.json 中的 `inout` 绑定方向。 此方向不受标准编辑器支持，因此必须使用高级编辑器。
 
 * `TextReader`
 * `Stream`
-* `ICloudBlob`
-* `CloudBlockBlob`
-* `CloudPageBlob`
-* `CloudBlobContainer`
-* `CloudBlobDirectory`
-* `IEnumerable<CloudBlockBlob>`
-* `IEnumerable<CloudPageBlob>`
-* 由 [ICloudBlobStreamBinder](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md#icbsb) 反序列化的其他类型 
+* `ICloudBlob`（需要 "inout" 绑定方向）
+* `CloudBlockBlob`（需要 "inout" 绑定方向）
+* `CloudPageBlob`（需要 "inout" 绑定方向）
+* `CloudAppendBlob`（需要 "inout" 绑定方向）
+
+如果需要文本 blob，还可以绑定到 .NET `string` 类型。 由于整个 blob 内容都会加载到内存，因此仅建议 blob 比较小时才这么做。 平时，最好使用 `Stream` 或 `CloudBlockBlob` 类型。
 
 ## <a name="trigger-sample"></a>触发器示例
-假设有以下定义存储 blob 触发器的 function.json：
+假设有以下定义 blob 存储触发器的 function.json：
 
 ```json
 {
@@ -167,7 +171,7 @@ blob 可以反序列化为以下任何类型：
             "type": "blobTrigger",
             "direction": "in",
             "path": "samples-workitems",
-            "connection":""
+            "connection":"MyStorageAccount"
         }
     ]
 }
@@ -180,26 +184,31 @@ blob 可以反序列化为以下任何类型：
 
 <a name="triggercsharp"></a>
 
-### <a name="trigger-usage-in-c"></a>C# 中的触发器用法 #
+### <a name="blob-trigger-examples-in-c"></a>C# 中的 blob 触发器示例 #
 
 ```cs
-public static void Run(string myBlob, TraceWriter log)
+// Blob trigger sample using a Stream binding
+public static void Run(Stream myBlob, TraceWriter log)
 {
-    log.Info($"C# Blob trigger function processed: {myBlob}");
+   log.Info($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
 }
 ```
 
-<!--
-<a name="triggerfsharp"></a>
-### Trigger usage in F# ##
-```fsharp
+```cs
+// Blob trigger binding to a CloudBlockBlob
+#r "Microsoft.WindowsAzure.Storage"
 
-``` 
--->
+using Microsoft.WindowsAzure.Storage.Blob;
+
+public static void Run(CloudBlockBlob myBlob, string name, TraceWriter log)
+{
+    log.Info($"C# Blob trigger function Processed blob\n Name:{name}\nURI:{myBlob.StorageUri}");
+}
+```
 
 <a name="triggernodejs"></a>
 
-### <a name="trigger-usage-in-nodejs"></a>Node.js 中触发器的使用情况
+### <a name="trigger-example-in-nodejs"></a>Node.js 中的触发器示例
 
 ```javascript
 module.exports = function(context) {
@@ -207,53 +216,26 @@ module.exports = function(context) {
     context.done();
 };
 ```
+<a name="outputusage"></a> <a name=storage-blob-output-binding"></a>
 
-<a name="input"></a>
+## <a name="using-a-blob-output-binding"></a>使用 Blob 输出绑定
 
-## <a name="storage-blob-input-binding"></a>存储 Blob 输入绑定
-Azure 存储 blob 输入绑定可让用户在函数中使用存储容器中的 blob。 
+在 .NET 函数中，应使用函数签名中的 `out string` 参数，或者使用以下列表中的一种类型。 在 Node.js 函数中，使用 `context.bindings.<name>` 访问输出 blob。
 
-函数的存储 blob 输入在 function.json 的 `bindings` 数组中使用以下 JSON 对象：
+在 .NET 函数中，可输出到以下任意类型：
 
-```json
-{
-  "name": "<Name of input parameter in function signature>",
-  "type": "blob",
-  "direction": "in"
-  "path": "<Path of input blob - see below>",
-  "connection":"<Name of app setting - see below>"
-},
-```
-
-注意以下事项：
-
-* `path` 必须包含容器名称和 blob 名称。 例如，如果函数中有[队列触发器](functions-bindings-storage-queue.md)，则可以使用 `"path": "samples-workitems/{queueTrigger}"` 指向 `samples-workitems` 容器中的一个 blob，其名称与触发器消息中指定的 blob 名称相匹配。   
-* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 若要手动创建此应用设置，请参阅[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md)。 
-
-<a name="inputusage"></a>
-
-## <a name="input-usage"></a>输入使用情况
-在 C# 函数中，通过在函数签名中使用命名参数来绑定到输入 blob 数据，如 `<T> <name>`。
-其中 `T` 是数据要进行反序列化的目标数据类型，`paramName` 是在[输入绑定](#input)中指定的名称。 在 Node.js 函数中，使用 `context.bindings.<name>` 访问输入 blob 数据。
-
-blob 可以反序列化为以下任何类型：
-
-* 任何[对象](https://msdn.microsoft.com/library/system.object.aspx) - 适用于 JSON 序列化的 blob 数据。
-  如果声明自定义输入类型（如 `InputType`），Azure Functions 会尝试将 JSON 数据反序列化为指定类型。
-* 字符串 - 适用于文本 blob 数据。
-
-在 C# 函数中，还可绑定到以下任意类型，Functions 运行时将尝试使用此类型反序列化此 blob 数据：
-
-* `TextReader`
+* `out string`
+* `TextWriter`
 * `Stream`
+* `CloudBlobStream`
 * `ICloudBlob`
 * `CloudBlockBlob` 
 * `CloudPageBlob` 
 
-<a name="inputsample"></a>
+<a name="input-sample"></a>
 
-## <a name="input-sample"></a>输入示例
-假设有以下定义[存储队列触发器](functions-bindings-storage-queue.md)、存储 blob 输入和存储 blob 输出的 function.json：
+## <a name="queue-trigger-with-blob-input-and-output-sample"></a>带 blob 输入和输出的队列触发器示例
+假设有以下 function.json，其定义了[队列存储触发器](functions-bindings-storage-queue.md)、blob 存储输入和 blob 存储输出。 请注意 `queueTrigger` 元数据属性的使用。 在 blob 输入和输出 `path` 属性中：
 
 ```json
 {
@@ -291,82 +273,29 @@ blob 可以反序列化为以下任何类型：
 
 <a name="incsharp"></a>
 
-### <a name="input-usage-in-c"></a>C# 中的输入用法 #
+### <a name="blob-binding-example-in-c"></a>C# 中的 blob 绑定示例 #
 
 ```cs
-public static void Run(string myQueueItem, string myInputBlob, out string myOutputBlob, TraceWriter log)
+// Copy blob from input to output, based on a queue trigger
+public static void Run(string myQueueItem, Stream myInputBlob, out string myOutputBlob, TraceWriter log)
 {
     log.Info($"C# Queue trigger function processed: {myQueueItem}");
     myOutputBlob = myInputBlob;
 }
 ```
 
-<!--
-<a name="infsharp"></a>
-### Input usage in F# ##
-```fsharp
-
-``` 
--->
-
 <a name="innodejs"></a>
 
-### <a name="input-usage-in-nodejs"></a>Node.js 中输入使用情况
+### <a name="blob-binding-example-in-nodejs"></a>Node.js 中的 blob 绑定示例
 
 ```javascript
+// Copy blob from input to output, based on a queue trigger
 module.exports = function(context) {
     context.log('Node.js Queue trigger function processed', context.bindings.myQueueItem);
     context.bindings.myOutputBlob = context.bindings.myInputBlob;
     context.done();
 };
 ```
-
-<a name="output"></a>
-
-## <a name="storage-blob-output-binding"></a>存储 Blob 输出绑定
-借助 Azure 存储 blob 输出绑定，用户可将 blob 写入到函数中的存储容器。 
-
-函数的存储 blob 输出在 function.json 的 `bindings` 数组中使用以下 JSON 对象：
-
-```json
-{
-  "name": "<Name of output parameter in function signature>",
-  "type": "blob",
-  "direction": "out",
-  "path": "<Path of input blob - see below>",
-  "connection": "<Name of app setting - see below>"
-}
-```
-
-注意以下事项：
-
-* `path` 必须包含容器名称和要写入的 blob 名称。 例如，如果函数中有[队列触发器](functions-bindings-storage-queue.md)，则可以使用 `"path": "samples-workitems/{queueTrigger}"` 指向 `samples-workitems` 容器中的一个 blob，其名称与触发器消息中指定的 blob 名称相匹配。   
-* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 若要手动创建此应用设置，请参阅[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md)。 
-
-<a name="outputusage"></a>
-
-## <a name="output-usage"></a>输出使用情况
-在 C# 函数中，通过在函数签名中使用名为 `out` 的参数（如 `out <T> <name>`）绑定到输出 blob，其中 `T` 是要序列化数据的目标数据类型，`paramName` 是在[输出绑定](#output)中指定的名称。 在 Node.js 函数中，使用 `context.bindings.<name>` 访问输出 blob。
-
-可使用以下任意类型写入输出 blob：
-
-* 任何[对象](https://msdn.microsoft.com/library/system.object.aspx) - 有助于 JSON 序列化。
-  如果声明自定义输出类型（例如 `out OutputType paramName`），Azure Functions 将尝试将对象序列化为 JSON。 如果函数退出时输出参数为 null，则 Functions 运行时将创建一个 blob 作为 null 对象。
-* 字符串 - (`out string paramName`) 适用于文本 blob 数据。 Functions 运行时仅在函数退出时字符串参数为非 null 才创建 blob。
-
-在 C# 函数中，还可输出到以下任意类型：
-
-* `TextWriter`
-* `Stream`
-* `CloudBlobStream`
-* `ICloudBlob`
-* `CloudBlockBlob` 
-* `CloudPageBlob` 
-
-<a name="outputsample"></a>
-
-## <a name="output-sample"></a>输出示例
-请参阅[输入示例](#inputsample)。
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]

@@ -6,13 +6,13 @@ author: alekh
 manager: slivkins
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/03/2017
-ms.author: alekha;slivkins
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: c404362d98509517f41bd1cb4f01f6e13d2d19af
+ms.date: 06/02/2017
+ms.author: slivkins;marcozo;alekh
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: c04194f2f11350b3c097b725851b651297af6c71
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 07/14/2017
 
 ---
 
@@ -33,7 +33,7 @@ Some common-use cases for Custom Decision Service include:
 * Optimizing ad placements or web pages that the ad directs to.
 * Ranking recommended items on a shopping website.
 
-We are currently in *free public preview*, focused on personalizing a list of articles on a website or an app. Feature extraction works best for English language content. [Limited functionality](../Text-Analytics/overview.md) is offered for some other languages, such as Spanish, French, German, Portuguese, and Japanese. This documentation is revised as we are ready to advertise more functionality.
+We are currently in *free public preview*, focused on personalizing a list of articles on a website or an app. Feature extraction works best for English language content. We offer [limited functionality](../Text-Analytics/overview.md) for some other languages, such as Spanish, French, German, Portuguese, and Japanese. This documentation is revised as we are ready to advertise more functionality.
 
 Custom Decision Service can be applied to applications that are not in the content personalization domain. Such applications might be a good fit for a custom preview. Contact us to learn more.
 
@@ -46,7 +46,7 @@ Custom Decision Service can be used in two learning modes. The APIs are identica
 
 ### <a name="pooled-learning-mode"></a>Pooled learning mode
 
-Custom Decision Service learns from the click patterns of users in response to the content presented in your application. Learning can be slow if your application has relatively low traffic. This problem is pronounced for dynamic content, such as news. Such applications might not have enough time to learn the quality of an article and apply this learning before new content arrives.
+Custom Decision Service learns from the click patterns of users as they respond to the content presented in your application. Learning can be slow if your application has relatively low traffic. This problem is pronounced for dynamic content, such as news. Such applications might not have enough time to learn the quality of an article and apply this learning before new content arrives.
 
 For *low-traffic applications with dynamic content*, we recommend pooling data across multiple applications. By using the pooled data, we learn a single model for all applications that sign up for this learning mode. Then we use this model to customize their content. For example, you might promote a breaking news story if users on other websites were interested in it, even before anyone read it on your website. User privacy is respected because the raw data is never shared with any individual application. Only the decisions made by the system are shared.
 
@@ -73,5 +73,6 @@ Several terms frequently occur in our documentation:
 
 ## <a name="next-steps"></a>Next steps
 
-* Get started with Custom Decision Service to optimize [a webpage](custom-decision-service-get-started-browser.md) or [a smartphone app](custom-decision-service-get-started-app.md).
+* [Register your application](custom-decision-service-get-started-register.md) with Custom Decision Service
+* Get started to optimize [a webpage](custom-decision-service-get-started-browser.md) or [a smartphone app](custom-decision-service-get-started-app.md).
 * Consult the [API reference](custom-decision-service-api-reference.md) to learn more about the provided functionality.

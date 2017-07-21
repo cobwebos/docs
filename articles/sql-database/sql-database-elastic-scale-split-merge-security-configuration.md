@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7eecd3cc01cc708c3da1efb1cbb3b1cddb86d6f0
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: 7e6ccf51a4b75eef16a7df5c1a1018954af8e5dd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 06/22/2017
 
 
 ---
@@ -29,8 +29,8 @@ ms.lasthandoff: 11/17/2016
 ## <a name="configuring-certificates"></a>配置证书
 通过两种方式配置证书。 
 
-1. [配置 SSL 证书](#To-Configure-the-SSL#Certificate)
-2. [配置客户端证书](#To-Configure-Client-Certificates) 
+1. [配置 SSL 证书](#to-configure-the-ssl-certificate)
+2. [配置客户端证书](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>获取证书
 可从公共证书颁发机构 (CA) 或 [Windows 证书服务](http://msdn.microsoft.com/library/windows/desktop/aa376539.aspx)中获取证书。 这些方法是获取证书的首选方法。
@@ -53,43 +53,43 @@ ms.lasthandoff: 11/17/2016
 若要对通信进行加密并对服务器进行身份验证，需要使用 SSL 证书。 从下面的三个方案中选择最适合的方案，然后执行其所有步骤：
 
 ### <a name="create-a-new-self-signed-certificate"></a>创建新的自签名证书
-1. [创建自签名证书](#Create-a-Self-Signed-Certificate)
-2. [为自签名 SSL 证书创建 PFX 文件](#Create-PFX-file-for-Self-Signed-SSL-Certificate)
-3. [将 SSL 证书上传到云服务](#Upload-SSL-Certificate-to-Cloud-Service)
-4. [在服务配置文件中更新 SSL 证书](#Update-SSL-Certificate-in-Service-Configuration-File)
-5. [导入 SSL 证书颁发机构](#Import-SSL-Certification-Authority)
+1. [创建自签名证书](#create-a-self-signed-certificate)
+2. [为自签名 SSL 证书创建 PFX 文件](#create-pfx-file-for-self-signed-ssl-certificate)
+3. [将 SSL 证书上传到云服务](#upload-ssl-certificate-to-cloud-service)
+4. [在服务配置文件中更新 SSL 证书](#update-ssl-certificate-in-service-configuration-file)
+5. [导入 SSL 证书颁发机构](#import-ssl-certification-authority)
 
 ### <a name="to-use-an-existing-certificate-from-the-certificate-store"></a>使用证书存储中的现有证书
-1. [从证书存储中导出 SSL 证书](#Export-SSL-Certificate-From-Certificate-Store)
-2. [将 SSL 证书上传到云服务](#Upload-SSL-Certificate-to-Cloud-Service)
-3. [在服务配置文件中更新 SSL 证书](#Update-SSL-Certificate-in-Service-Configuration-File)
+1. [从证书存储中导出 SSL 证书](#export-ssl-certificate-from-certificate-store)
+2. [将 SSL 证书上传到云服务](#upload-ssl-certificate-to-cloud-service)
+3. [在服务配置文件中更新 SSL 证书](#update-ssl-certificate-in-service-configuration-file)
 
 ### <a name="to-use-an-existing-certificate-in-a-pfx-file"></a>在 PFX 文件中使用现有证书
-1. [将 SSL 证书上传到云服务](#Upload-SSL-Certificate-to-Cloud-Service)
-2. [在服务配置文件中更新 SSL 证书](#Update-SSL-Certificate-in-Service-Configuration-File)
+1. [将 SSL 证书上传到云服务](#upload-ssl-certificate-to-cloud-service)
+2. [在服务配置文件中更新 SSL 证书](#update-ssl-certificate-in-service-configuration-file)
 
 ## <a name="to-configure-client-certificates"></a>配置客户端证书
 若要对服务请求进行身份验证，需要使用客户端证书。 从下面的三个方案中选择最适合的方案，然后执行其所有步骤：
 
 ### <a name="turn-off-client-certificates"></a>禁用客户端证书
-1. [禁用基于客户端证书的身份验证](#Turn-Off-Client-Certificate-Based-Authentication)
+1. [禁用基于客户端证书的身份验证](#turn-off-client-certificate-based-authentication)
 
 ### <a name="issue-new-self-signed-client-certificates"></a>颁发新的自签名客户端证书
-1. [创建自签名证书颁发机构](#Create-a-Self-Signed-Certification-Authority)
-2. [将 CA 证书上传到云服务](#Upload-CA-Certificate-to-Cloud-Service)
-3. [在服务配置文件中更新 CA 证书](#Update-CA-Certificate-in-Service-Configuration-File)
-4. [颁发客户端证书](#Issue-Client-Certificates)
-5. [为客户端证书创建 PFX 文件](#Create-PFX-files-for-Client-Certificates)
+1. [创建自签名证书颁发机构](#create-a-self-signed-certification-authority)
+2. [将 CA 证书上传到云服务](#upload-ca-certificate-to-cloud-service)
+3. [在服务配置文件中更新 CA 证书](#update-ca-certificate-in-service-configuration-file)
+4. [颁发客户端证书](#issue-client-certificates)
+5. [为客户端证书创建 PFX 文件](#create-pfx-files-for-client-certificates)
 6. [导入客户端证书](#Import-Client-Certificate)
-7. [复制客户端证书指纹](#Copy-Client-Certificate-Thumbprints)
-8. [在服务配置文件中配置允许的客户端](#Configure-Allowed-Clients-in-the-Service-Configuration-File)
+7. [复制客户端证书指纹](#copy-client-certificate-thumbprints)
+8. [在服务配置文件中配置允许的客户端](#configure-allowed-clients-in-the-service-configuration-file)
 
 ### <a name="use-existing-client-certificates"></a>使用现有客户端证书
-1. [查找 CA 公钥](#Find-CA-Public Key)
+1. [查找 CA 公钥](#find-ca-public-key)
 2. [将 CA 证书上传到云服务](#Upload-CA-certificate-to-cloud-service)
 3. [在服务配置文件中更新 CA 证书](#Update-CA-Certificate-in-Service-Configuration-File)
 4. [复制客户端证书指纹](#Copy-Client-Certificate-Thumbprints)
-5. [在服务配置文件中配置允许的客户端](#Configure-Allowed-Clients-in-the-Service-Configuration File)
+5. [在服务配置文件中配置允许的客户端](#configure-allowed-clients-in-the-service-configuration-file)
 6. [配置客户端证书吊销检查](#Configure-Client-Certificate-Revocation-Check)
 
 ## <a name="allowed-ip-addresses"></a>允许的 IP 地址
@@ -99,19 +99,19 @@ ms.lasthandoff: 11/17/2016
 若要加密存储在元数据存储中的凭据，需要使用证书。 从下面的三个方案中选择最适合的方案，然后执行其所有步骤：
 
 ### <a name="use-a-new-self-signed-certificate"></a>使用新的自签名证书
-1. [创建自签名证书](#Create-a-Self-Signed-Certificate)
-2. [为自签名加密证书创建 PFX 文件](#Create-PFX-file-for-Self-Signed-Encryption-Certificate)
-3. [将加密证书上传到云服务](#Upload-Encryption-Certificate-to-Cloud-Service)
-4. [在服务配置文件中更新加密证书](#Update-Encryption-Certificate-in-Service-Configuration-File)
+1. [创建自签名证书](#create-a-self-signed-certificate)
+2. [为自签名加密证书创建 PFX 文件](#create-pfx-file-for-self-signed-ssl-certificate)
+3. [将加密证书上传到云服务](#upload-encryption-certificate-to-cloud-service)
+4. [在服务配置文件中更新加密证书](#update-encryption-certificate-in-service-configuration-file)
 
 ### <a name="use-an-existing-certificate-from-the-certificate-store"></a>使用证书存储中的现有证书
-1. [从证书存储中导出加密证书](#Export-Encryption-Certificate-From-Certificate-Store)
-2. [将加密证书上传到云服务](#Upload-Encryption-Certificate-to-Cloud-Service)
-3. [在服务配置文件中更新加密证书](#Update-Encryption-Certificate-in-Service-Configuration-File)
+1. [从证书存储中导出加密证书](#export-encryption-certificate-from-certificate-store)
+2. [将加密证书上传到云服务](#upload-encryption-certificate-to-cloud-service)
+3. [在服务配置文件中更新加密证书](#update-encryption-certificate-in-service-configuration-file)
 
 ### <a name="use-an-existing-certificate-in-a-pfx-file"></a>在 PFX 文件中使用现有证书
-1. [将加密证书上传到云服务](#Upload-Encryption-Certificate-to-Cloud-Service)
-2. [在服务配置文件中更新加密证书](#Update-Encryption-Certificate-in-Service-Configuration-File)
+1. [将加密证书上传到云服务](#upload-encryption-certificate-to-cloud-service)
+2. [在服务配置文件中更新加密证书](#update-encryption-certificate-in-service-configuration-file)
 
 ## <a name="the-default-configuration"></a>默认配置
 默认配置拒绝对 HTTP 终结点的所有访问。 这是推荐的设置，因为对这些终结点的请求可能包含敏感信息，如数据库凭据。
@@ -207,13 +207,13 @@ ms.lasthandoff: 11/17/2016
   * 是，导出私钥
   * 包括证书路径中的所有证书（如果可能）*导出所有扩展属性
 
-## <a name="upload-ssl-certificate-to-cloud-service"></a>将 SSL 证书上载到云服务
-使用带有 SSL 密钥对的现有或生成的 .PFX 文件上载证书：
+## <a name="upload-ssl-certificate-to-cloud-service"></a>将 SSL 证书上传到云服务
+使用带有 SSL 密钥对的现有或生成的 .PFX 文件上传证书：
 
 * 输入用于保护私钥信息的密码
 
 ## <a name="update-ssl-certificate-in-service-configuration-file"></a>在服务配置文件中更新 SSL 证书
-在服务配置文件中，使用已上载到云服务的证书指纹更新以下设置的指纹值：
+在服务配置文件中，使用已上传到云服务的证书指纹更新以下设置的指纹值：
 
     <Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
 
@@ -252,7 +252,7 @@ ms.lasthandoff: 11/17/2016
 * -e，带有证书到期日期
 
 ## <a name="find-ca-public-key"></a>查找 CA 公钥
-所有客户端证书都必须由服务信任的证书颁发机构颁发。 为了将证书上载到云服务，需要查找颁发了客户端证书（将用于身份验证）的证书颁发机构提供的公钥。
+所有客户端证书都必须由服务信任的证书颁发机构颁发。 为了将证书上传到云服务，需要查找颁发了客户端证书（将用于身份验证）的证书颁发机构提供的公钥。
 
 如果具有公钥的文件不可用，则将其从证书存储中导出：
 
@@ -271,11 +271,11 @@ ms.lasthandoff: 11/17/2016
   * 包括证书路径中的所有证书（如果可能）。
   * 导出所有扩展属性。
 
-## <a name="upload-ca-certificate-to-cloud-service"></a>将 CA 证书上载到云服务
-使用带有 CA 公钥的现有或生成的 .CER 文件上载证书。
+## <a name="upload-ca-certificate-to-cloud-service"></a>将 CA 证书上传到云服务
+使用带有 CA 公钥的现有或生成的 .CER 文件上传证书。
 
 ## <a name="update-ca-certificate-in-service-configuration-file"></a>在服务配置文件中更新 CA 证书
-在服务配置文件中，使用已上载到云服务的证书指纹更新以下设置的指纹值：
+在服务配置文件中，使用已上传到云服务的证书指纹更新以下设置的指纹值：
 
     <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
 
@@ -335,7 +335,7 @@ ms.lasthandoff: 11/17/2016
 * 在打开的“证书”对话框中，选择“详细信息”选项卡
 * 确保“显示”可显示全部内容
 * 选择列表中名为“Thumbprint”的字段
-* 复制指纹的值 **删除第一个数字前不可见的 Unicode 字符** 删除所有空格
+* 复制指纹的值 **删除第一个数字前不可见的 Unicode 字符 **删除所有空格
 
 ## <a name="configure-allowed-clients-in-the-service-configuration-file"></a>在服务配置文件中配置允许的客户端
 在服务配置文件中，使用以逗号分隔的客户端证书（允许访问服务）的指纹列表更新以下设置的值：
@@ -360,7 +360,7 @@ ms.lasthandoff: 11/17/2016
 
 * 是，导出私钥
 * 导出所有扩展属性
-* 将证书上载到云服务时，你将需要密码。
+* 将证书上传到云服务时，你将需要密码。
 
 ## <a name="export-encryption-certificate-from-certificate-store"></a>从证书存储中导出加密证书
 * 查找证书
@@ -370,13 +370,13 @@ ms.lasthandoff: 11/17/2016
   * 包括证书路径中的所有证书（如果可能） 
 * 导出所有扩展属性
 
-## <a name="upload-encryption-certificate-to-cloud-service"></a>将加密证书上载到云服务
-使用带有加密密钥对的现有或生成的 .PFX 文件上载证书：
+## <a name="upload-encryption-certificate-to-cloud-service"></a>将加密证书上传到云服务
+使用带有加密密钥对的现有或生成的 .PFX 文件上传证书：
 
 * 输入用于保护私钥信息的密码
 
 ## <a name="update-encryption-certificate-in-service-configuration-file"></a>在服务配置文件中更新加密证书
-在服务配置文件中，使用已上载到云服务的证书指纹更新以下设置的指纹值：
+在服务配置文件中，使用已上传到云服务的证书指纹更新以下设置的指纹值：
 
     <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
 
@@ -402,16 +402,16 @@ ms.lasthandoff: 11/17/2016
 ## <a name="export-certificate"></a>导出证书
 在**证书导出向导**中：
 
-1. 单击“下一步” 。
+1. 单击“下一步”。
 2. 选择“是”，然后选择“导出私钥”。
-3. 单击“下一步” 。
+3. 单击“下一步”。
 4. 选择所需的输出文件格式。
 5. 选中所需的选项。
 6. 选中“密码”。
 7. 输入强密码并进行确认。
-8. 单击“下一步” 。
+8. 单击“下一步”。
 9. 在证书的存储位置键入或浏览文件名（使用 .PFX 扩展名）。
-10. 单击“下一步” 。
+10. 单击“下一步”。
 11. 单击“完成” 。
 12. 单击 **“确定”**。
 
@@ -422,7 +422,7 @@ ms.lasthandoff: 11/17/2016
    
    * 如果只有在当前用户下运行的进程将访问该服务，请选择“当前用户”
    * 如果此计算机中的其他进程将访问该服务，请选择“本地计算机”
-2. 单击“下一步” 。
+2. 单击“下一步”。
 3. 如果要从文件中导入，请确认文件路径。
 4. 如果要导入 .PFX 文件，请执行以下操作：
    1. 输入用于保护私钥的密码
@@ -435,7 +435,7 @@ ms.lasthandoff: 11/17/2016
    * 如果已选中“受信任的根证书颁发机构”存储，请单击“是”。
 9. 在所有对话框窗口上单击“确定”。
 
-## <a name="upload-certificate"></a>上载证书
+## <a name="upload-certificate"></a>上传证书
 在 [Azure 门户中](https://portal.azure.com/)
 
 1. 选择“云服务”。

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2017
 ms.author: rodend;karlku;tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: c46ea77c591b9c5914f83b9d5c1498b4f397a617
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: ce4e19738a66629c7dd587da50f71f6675c159e8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -48,7 +49,7 @@ ms.lasthandoff: 03/31/2017
 > 
 > 
 
-下图描绘了基架的组件。 基础依赖于坚实的部门、帐户和订阅计划。 支柱包括 Resource Manager 策略和强有力的命名标准。 基架的剩余部分来自可实现一个安全、可管理环境的核心 Azure 功能与特性。
+下图描绘了基架的组件。 基础依赖于坚实的部门、帐户和订阅计划。 支柱包括 Resource Manager 策略和强有力的命名标准。 基架的剩余部分由 Azure 核心功能和特性构成，它们实现一个可托管的安全环境。
 
 ![基架组件](./media/resource-manager-subscription-governance/components.png)
 

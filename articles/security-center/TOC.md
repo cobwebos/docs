@@ -5,11 +5,13 @@
 ## 方案
 ### [事件响应](security-center-incident-response.md)
 ### [使用建议增强安全性](security-center-using-recommendations.md)
+## [平台迁移](security-center-platform-migration.md)
 
 # 入门
 ## [快速入门](security-center-get-started.md)
 ## [规划和操作](security-center-planning-and-operations-guide.md)
 ## [权限](security-center-permissions.md)
+## [支持的平台](security-center-os-coverage.md)
 ## [合作伙伴集成](security-center-partner-integration.md)
 ## [常见问题](security-center-faq.md)
 
@@ -17,6 +19,7 @@
 
 ## 预防
 ### [设置安全策略](security-center-policies.md)
+### [实时访问](security-center-just-in-time.md)
 ### [实施安全建议](security-center-recommendations.md)
 
 ### [应用程序建议](security-center-application-recommendations.md)
@@ -69,6 +72,7 @@
 ## [Azure 安全性](/azure/security/)
 
 # 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [Azure 安全性、隐私性与合规性博客](http://blogs.msdn.com/b/azuresecurity/)
 ## [定价](security-center-pricing.md)
 ## [服务概述](https://azure.microsoft.com/services/security-center/)

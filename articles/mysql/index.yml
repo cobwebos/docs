@@ -20,13 +20,13 @@ sections:
 - title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: 'Learn how to create a MySQL database on Azure using:'
+    text: 了解如何通过以下方式创建 Azure 上的 MySQL 数据库：
   - type: list
     style: icon48
     items: 
     - image: 
         src: /azure/virtual-machines/linux/media/index/portal.svg
-      text: Azure Portal
+      text: Azure 门户
       href: /azure/mysql/quickstart-create-mysql-server-database-using-azure-portal
     - image: 
         src: /azure/virtual-machines/linux/media/index/cli.svg
@@ -35,12 +35,12 @@ sections:
 - title: 分步教程
   items:
   - type: paragraph
-    text: 'Learn how to design your database and develop apps:'
+    text: 了解如何设计数据库和开发应用：
   - type: list
     style: ordered
     items:
-    - html: Design a Database&#58; <a href="/azure/mysql/tutorial-design-database-using-portal">Azure portal</a> | <a href="/azure/mysql/tutorial-design-database-using-cli">Azure CLI</a>
-    - html: Create a Web App&#58; <a href="../app-service-web/app-service-web-create-web-app-from-marketplace.md?toc=%2fazure%2fmysql%2ftoc.json">Wordpress - Portal</a> | <a href="../app-service-web/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json">PHP - Azure CLI</a>
+    - html: '设计数据库&#58; <a href="/azure/mysql/tutorial-design-database-using-portal">Azure 门户</a> | <a href="/azure/mysql/tutorial-design-database-using-cli">Azure CLI</a>'
+    - html: '创建 Web 应用&#58; <a href="../app-service-web/app-service-web-create-web-app-from-marketplace.md?toc=%2fazure%2fmysql%2ftoc.json">Wordpress - 门户</a> | <a href="../app-service-web/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json">PHP - Azure CLI</a>'
 - title: 引用
   items:
   - type: list

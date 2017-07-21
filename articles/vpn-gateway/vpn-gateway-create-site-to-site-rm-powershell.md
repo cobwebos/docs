@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/01/2017
+ms.date: 05/31/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: f10a6889944b1dde4f579e575389fa7bab28c51a
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 4c828be440ffd278b03be70254ae1fe1c7160bf5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -28,11 +28,11 @@ ms.lasthandoff: 05/09/2017
 本文介绍如何使用 PowerShell 创建站点到站点 VPN 网关连接，以便从本地网络连接到 VNet。 本文中的步骤适用于 Resource Manager 部署模型。 也可使用不同的部署工具或部署模型来创建此配置，方法是从以下列表中选择另一选项：
 
 > [!div class="op_single_selector"]
-> * [Resource Manager - Azure 门户](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-> * [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
-> * [Resource Manager - CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
-> * [经典 - Azure 门户](vpn-gateway-howto-site-to-site-classic-portal.md)
-> * [经典 - 经典门户](vpn-gateway-site-to-site-create.md)
+> * [Azure 门户](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
+> * [Azure 门户（经典）](vpn-gateway-howto-site-to-site-classic-portal.md)
+> * [经典门户（经典）](vpn-gateway-site-to-site-create.md)
 > 
 >
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 05/09/2017
 
 在开始配置之前，请验证你是否符合以下条件：
 
-* 验证你是否需要使用 Resource Manager 部署模型。 [!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)] 
+* 验证你是否需要使用 Resource Manager 部署模型。 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-rm-include.md)]
 * 一台兼容的 VPN 设备和能够对其进行配置的人员。 有关兼容的 VPN 设备和设备配置的详细信息，请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。
 * 一个用于 VPN 设备的面向外部的公共 IPv4 地址。 此 IP 地址不得位于 NAT 之后。
 * 如果不熟悉本地网络配置中的 IP 地址范围，则需咨询能够为你提供此类详细信息的人员。 创建此配置时，必须指定 IP 地址范围前缀，Azure 会将该前缀路由到本地位置。 本地网络的任何子网都不得与要连接到的虚拟网络子网重叠。
@@ -74,19 +74,21 @@ Gateway IP Config       = gwipconfig1
 VPNType                 = RouteBased 
 GatewayType             = Vpn 
 ConnectionName          = myGWConnection
+
 ```
+
 
 ## <a name="Login"></a>1.连接到订阅
 
-[!INCLUDE [vpn-gateway-ps-login](../../includes/vpn-gateway-ps-login-include.md)]
+[!INCLUDE [PowerShell login](../../includes/vpn-gateway-ps-login-include.md)]
 
 ## <a name="VNet"></a>2.创建虚拟网络和网关子网
 
-如果还没有虚拟网络，请创建。 创建虚拟网络时，请确保你指定的地址空间不与本地网络的任一个地址空间相重叠。 对于此配置，你还需要一个网关子网。 虚拟网关使用的网关子网包含 VPN 网关服务使用的 IP 地址。 创建网关子网时，必须将其命名为“GatewaySubnet”。 如果将其命名为其他名称，也将创建子网，但 Azure 不将它视为网关子网。
+如果还没有虚拟网络，请创建。 创建虚拟网络时，请确保你指定的地址空间不与本地网络的任一个地址空间相重叠。
 
-指定的网关子网的大小取决于要创建的 VPN 网关配置。 尽管创建的网关子网最小可为 /29，但建议选择 /27 或 /28，创建包含更多地址的更大子网。 使用更大的网关子网可以有足够的 IP 地址来应对未来可能会有的配置。
+[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-include.md)]
 
-[!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
+[!INCLUDE [No NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ### <a name="to-create-a-virtual-network-and-a-gateway-subnet"></a>若要创建虚拟网络和网关子网
 
@@ -98,7 +100,7 @@ ConnectionName          = myGWConnection
 New-AzureRmResourceGroup -Name testrg -Location 'West US'
 ```
 
-创建虚拟网络。 
+创建虚拟网络。
 
 1. 设置变量。
 
@@ -140,21 +142,21 @@ New-AzureRmResourceGroup -Name testrg -Location 'West US'
 * *GatewayIPAddress* 是本地 VPN 设备的 IP 地址。 VPN 设备不能位于 NAT 之后。
 * *AddressPrefix* 是本地地址空间。
 
-- 若要添加具有单个地址前缀的局域网网关：
+若要添加具有单个地址前缀的局域网网关：
 
   ```powershell
   New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
   -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.0.0.0/24'
   ```
 
-- 若要添加具有多个地址前缀的局域网网关：
+若要添加具有多个地址前缀的局域网网关：
 
   ```powershell
   New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
   -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix @('10.0.0.0/24','20.0.0.0/24')
   ```
 
-- 若要为本地网关修改 IP 地址前缀：<br>
+若要为本地网关修改 IP 地址前缀：<br>
 有时你的局域网网关前缀会有变化。 修改你的 IP 地址前缀时采取的步骤取决于是否已创建 VPN 网关连接。 请参阅本文的 [修改本地网关的 IP 地址前缀](#modify) 部分。
 
 ## <a name="PublicIP"></a>4.请求公共 IP 地址
@@ -185,12 +187,12 @@ $gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name gwipconfig1 -Subnet
 
 * 站点到站点配置的 *-GatewayType* 为 *Vpn*。 网关类型永远是你要实现的配置的特定类型。 例如，其他网关配置可能需要 -GatewayType ExpressRoute。
 * *-VpnType* 可以是 *RouteBased*（在某些文档中称为动态网关）或 *PolicyBased*（在某些文档中称为静态网关）。 有关 VPN 网关类型的详细信息，请参阅[关于 VPN 网关](vpn-gateway-about-vpngateways.md)。
-* *-GatewaySku* 可以是 Basic、Standard 或 HighPerformance。 某些 SKU 存在配置限制。 有关详细信息，请参阅[网关 SKU](vpn-gateway-about-vpngateways.md#gateway-skus)。
+* 选择要使用的网关 SKU。 某些 SKU 存在配置限制。 有关详细信息，请参阅[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn `
--VpnType RouteBased -GatewaySku Standard
+-VpnType RouteBased -GatewaySku VpnGw1
 ```
 
 ## <a name="ConfigureVPNDevice"></a>7.配置 VPN 设备
@@ -234,7 +236,7 @@ VPN 连接有几种不同的验证方式。
 
 ## <a name="connectVM"></a>连接到虚拟机
 
-[!INCLUDE [Connect to VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
+[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
 
 
 ## <a name="modify"></a>修改本地网关的 IP 地址前缀
@@ -245,9 +247,10 @@ VPN 连接有几种不同的验证方式。
 
 ## <a name="modifygwipaddress"></a>修改本地网关的 IP 地址
 
-[!INCLUDE [Modify gw IP](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
+[!INCLUDE [Modify gateway IP address](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
 *  连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。
 * 有关 BGP 的信息，请参阅 [BGP 概述](vpn-gateway-bgp-overview.md)和[如何配置 BGP](vpn-gateway-bgp-resource-manager-ps.md)。
+

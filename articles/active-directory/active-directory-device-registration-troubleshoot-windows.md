@@ -11,21 +11,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 06/23/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.reviewer: jairoc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
 ms.openlocfilehash: 2faf328e6622b9a1e3b529d62b61061659041fbd
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/10/2017
-
 
 ---
 # <a name="troubleshooting-auto-registration-of-domain-joined-computers-to-azure-ad--windows-10-and-windows-server-2016"></a>排查已加入 Azure AD 域的计算机的自动注册问题 - Windows 10 和 Windows Server 2016
 
 本主题是适用于以下客户端：
 
--    Windows 10
--    Windows Server 2016
+-   Windows 10
+-   Windows Server 2016
 
 对于其他 Windows 客户端，请参阅[排查已加入 Azure AD 域的计算机的自动注册问题 - Windows 下层客户端](active-directory-device-registration-troubleshoot-windows-legacy.md)。
 

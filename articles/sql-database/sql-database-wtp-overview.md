@@ -1,111 +1,116 @@
 ---
-title: "Azure SQL 数据库示例多租户应用 | Microsoft Docs"
-description: "Azure SQL 数据库示例 Wingtip 票证 (WTP) 应用简介"
+title: "Wingtip SaaS 简介 - Azure SQL 数据库多租户应用 | Microsoft Docs"
+description: "借助使用 Azure SQL 数据库的示例多租户应用程序，了解 Wingtip SaaS 应用"
 keywords: "sql 数据库教程"
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: jhubbard
-editor: 
-ms.assetid: 
 ms.service: sql-database
-ms.custom: tutorial
+ms.custom: scale out apps
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
-ms.date: 05/10/2017
-ms.author: billgib; sstein
+ms.topic: article
+ms.date: 06/09/2017
+ms.author: sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 265eab8104d8af7c510a88dffb9d70a2b3b37631
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: 6d4a5df599137e95ca5458fae74b8daa565b0338
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 06/22/2017
 
 
 ---
-# <a name="introduction-to-the-wingtip-tickets-platform-wtp-sample-saas-application"></a>Wingtip 票证平台 (WTP) 示例 SaaS 应用程序简介
+# <a name="introduction-to-the-wingtip-saas-application"></a>Wingtip SaaS 应用程序简介
 
-Wingtip 票证平台 (WTP) SaaS 应用程序是一个示例性的多租户应用，用于演示 SQL 数据库的独特优势。 该应用使用租户各有数据库（一种 SaaS 应用程序模式）为多个租户提供服务。 WTP 应用旨在展示支持 SaaS 方案（包括 SaaS 设计及管理模式）的 Azure SQL 数据库功能。 [WTP 应用的部署时间不到五分钟](sql-database-saas-tutorial.md)，可以快速启动并运行！
+Wingtip SaaS 应用程序是一个示例多租户应用，用于演示 SQL 数据库的独特优势。 该应用使用租户各有数据库（一种 SaaS 应用程序模式）为多个租户提供服务。 该应用旨在展示支持 SaaS 方案（包括多个 SaaS 设计及管理模式）的 Azure SQL 数据库功能。 Wingtip SaaS 应用的部署时间不到五分钟，可快速启动并运行！
 
-部署 WTP 应用后，请浏览基于初始部署的[教程系列](#sql-database-saas-tutorials)。 每个教程都重点介绍在 SaaS 应用程序中实施的典型任务。 任务在实施时遵循 SaaS 模式，以便充分利用 SQL 数据库的内置功能。 介绍的模式包括：预配新租户、还原租户数据库、跨所有租户运行分布式查询，以及在所有租户数据库中推出架构更改。 每个教程都包括可重用脚本，附带十分有助于理解的详细介绍，并在应用程序中实施相同的 SaaS 管理模式。
+可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) github 存储库获取应用程序源代码和管理脚本。 若要运行这些脚本，请将[Learning Modules 文件夹下载](#download-and-unblock-the-wingtip-saas-scripts)到本地计算机。
 
-虽然 WTP 应用程序作为示例应用程序来说比较完整且功能强大，但必须专注于与数据层相关的核心 SaaS 模式，这一点很重要。 换句话说，请专注于数据层，不要将过多精力放在分析应用本身上。 了解如何实现这些核心 SaaS 模式对于在应用程序中实现这些模式很重要，同时可考虑按特定的业务要求进行任何必需的修改。
+## <a name="sql-database-wingtip-saas-tutorials"></a>SQL 数据库 Wingtip SaaS 教程
+
+部署该应用后，请浏览基于初始部署的以下教程。 这些教程探索常见的 SaaS 模式，这些模式利用 SQL 数据库、SQL 数据仓库和其他 Azure 服务的内置功能。 教程包括 PowerShell 脚本，附带十分有助于理解的详细介绍，并在应用程序中实施相同的 SaaS 管理模式。
+
+
+| 教程 | 说明 |
+|:--|:--|
+|[部署和浏览 Wingtip SaaS 应用程序](sql-database-saas-tutorial.md)| 从此处开始！ 向 Azure 订阅部署并浏览 Wingtip SaaS 应用程序。 |
+|[预配和编录租户](sql-database-saas-tutorial-provision-and-catalog.md)| 了解应用程序如何使用目录数据库连接到租户，以及目录如何将租户映射到其数据。 |
+|[监视和管理性能](sql-database-saas-tutorial-performance-monitoring.md)| 了解如何使用 SQL 数据库的监视功能，以及如何在超出性能阈值时设置警报。 |
+|[使用 Log Anaytics 进行监视 (OMS)](sql-database-saas-tutorial-log-analytics.md) | 了解如何使用 [Log Analytics](../log-analytics/log-analytics-overview.md) 跨多个池监视大量资源。 |
+|[还原单个租户](sql-database-saas-tutorial-restore-single-tenant.md)| 了解如何将租户数据库还原到先前的时间点。 还包括在使现有租户数据库保持联机的情况下，还原为并行数据库的步骤。 |
+|[管理租户架构](sql-database-saas-tutorial-schema-management.md)| 了解如何在所有 Wingtip SaaS 租户中更新架构和更新引用数据。 |
+|[运行即席分析](sql-database-saas-tutorial-adhoc-analytics.md) | 创建即席分析数据库并对所有租户运行实时分布式查询。  |
+|[运行租户分析](sql-database-saas-tutorial-tenant-analytics.md) | 将租户数据提取到分析数据库或数据仓库，从而运行脱机分析查询。 |
 
 
 
 ## <a name="application-architecture"></a>应用程序体系结构
 
-WTP 使用租户各有数据库模型，并使用 SQL 弹性池来最大程度地提高效率。
-使用租户目录来预配管理和连接性。
-集成应用、池、数据库监视和警报 (OMS)。
-跨租户架构和引用数据管理（弹性数据库作业）。
-跨租户查询、运行分析（弹性查询）。
-使用按地理分布的数据扩大访问范围。
-业务连续性单租户恢复 (PITR) 大规模 DR（异地还原、异地复制、自动 DR）租户自助式管理（通过管理 API 进行）用于从自我错误中恢复的 PITR。
-
-核心 Wingtip 应用程序，使用一个池和三个示例租户，以及一个目录数据库。
-
-![WTP 体系结构](media/sql-database-wtp-overview/wtp-architecture.png)
+Wingtip SaaS 应用使用租户各有数据库模型，并使用 SQL 弹性池来最大程度地提高效率。 为了预配租户并将其映射到租户数据，需使用目录数据库。 核心 Wingtip SaaS 应用程序使用一个池和三个示例租户，外加目录数据库。 完成许多 Wingtip SaaS 教程后，初始部署中会存在附加设备，这是因为引入了分析数据库，跨数据库架构管理等。
 
 
-## <a name="sql-database-wtp-saas-tutorials"></a>SQL 数据库 WTP SaaS 教程
-
-以下教程基于初始部署的 [Wingtip 票证平台 SaaS 应用程序示例](sql-database-saas-tutorial.md)：
-
-| 区域 | 说明 | 脚本位置 |
-|:--|:--|:--|
-|[“预配和编录租户”教程](sql-database-saas-tutorial-provision-and-catalog.md)| 预配新租户并将其注册到目录中 | [GitHub 上的脚本](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules/Provision%20and%20Catalog) |
-|[“视和管理性能”教程](sql-database-saas-tutorial-performance-monitoring.md)| 监视和管理数据库和池的性能 | [GitHub 上的脚本](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules/Performance%20Monitoring%20and%20Management) |
-|[“还原单个租户”教程](sql-database-saas-tutorial-restore-single-tenant.md)| 还原租户数据库 | [GitHub 上的脚本](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules/Business%20Continuity%20and%20Disaster%20Recovery/RestoreTenant) |
-|[“管理租户架构”教程](sql-database-saas-tutorial-schema-management.md)| 跨所有租户执行查询  | [GitHub 上的脚本](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules/Schema%20Management) |
-|[“运行即席分析”教程](sql-database-saas-tutorial-adhoc-analytics.md) | 创建即席分析数据库并对所有租户运行查询。  | [GitHub 上的脚本](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules/Operational%20Analytics/Adhoc%20Analytics) |
-|[“使用 Log Analytics (OMS) 进行管理”教程](sql-database-saas-tutorial-log-analytics.md) | 配置和浏览 Log Analytics | [GitHub 上的脚本](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules/Performance%20Monitoring%20and%20Management/LogAnalytics) |
-|[“运行租户分析”教程](sql-database-saas-tutorial-tenant-analytics.md) | 设置和运行租户分析查询 | [GitHub 上的脚本](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules/Operational%20Analytics/Tenant%20Analytics) |
-
-## <a name="get-the-wingtip-application-scripts"></a>获取 Wingtip 应用程序脚本
-
-Wingtip 票证脚本和应用程序源代码可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub 存储库中找到。 脚本文件位于 [Learning Modules 文件夹](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules)中。 将 **Learning Modules** 文件夹下载到本地计算机，保持其文件夹结构不变。
-
-## <a name="working-with-the-wtp-powershell-scripts"></a>使用 WTP PowerShell 脚本
-
-使用 WTP 应用程序的好处是可以分析提供的脚本，并且可以查看不同的 SaaS 模式是如何实现的。
-
-若要查看提供的脚本和模块并对其逐步分析以加深理解，请使用 [Windows PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise)。 大多数带 *Demo-* 前缀的脚本所包含的变量可以在执行前修改，因此使用 PowerShell ISE 可以简化这些脚本的使用。
-
-每次进行 WTP 应用部署时，都会有一个 **UserConfig.psm1** 文件，其中包含两个用于设置资源组和用户名称值的参数，而这些值是在部署过程中定义的。 部署完成后，请编辑 **UserConfig.psm1** 模块，设置 _ResourceGroupName_ 和 _Name_ 参数。 这些值是成功运行其他脚本所必须使用的，因此建议在部署完成后设置它们！
+![Wingtip SaaS 体系结构](media/sql-database-wtp-overview/app-architecture.png)
 
 
+学习教程及使用应用时，应关注 SaaS 模式，因为其与数据层相关。 换句话说，请专注于数据层，不要将过多精力放在分析应用本身上。 了解如何实现这些 SaaS 模式对于在应用程序中实现这些模式很重要，同时可考虑按特定的业务要求进行任何必需的修改。
+
+## <a name="download-and-unblock-the-wingtip-saas-scripts"></a>下载和取消阻止 Wingtip SaaS 脚本
+
+从外部源下载和提取 zip 文件时，可执行内容（脚本、ddl）可能受 Windows 阻止。 从 zip 文件提取脚本时，在提取前请按以下步骤取消阻止 .zip 文件。 这可确保允许运行该脚本。
+
+1. 浏览到 [Wingtip SaaS github 存储库](https://github.com/Microsoft/WingtipSaaS)。
+1. 单击“克隆或下载”。
+1. 单击“下载 ZIP”并保存文件。
+1. 右键单击“WingtipSaaS-master.zip”文件，并选择“属性”。
+1. 在“常规”选项卡上，选择“取消阻止”。
+1. 单击 **“确定”**。
+1. 解压缩文件。
+
+脚本位于 ..\\WingtipSaaS-master\\Learning Modules 文件夹中。
+
+
+## <a name="working-with-the-wingtip-saas-powershell-scripts"></a>使用 Wingtip SaaS PowerShell 脚本
+
+若要充分利用示例，需深入了解提供的脚本。 使用断点并分步执行脚本，详细检查不同 SaaS 模式实现方式的详细信息。 为了轻松地分步执行提供的脚本和模块，获得最佳理解，建议使用 [PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise)。
+
+### <a name="update-the-configuration-file-for-your-deployment"></a>为部署更新配置文件
+
+使用在部署期间设置的资源组和用户值编辑 UserConfig.psm1 文件：
+
+1. 打开 PowerShell ISE，并加载 ...\\Learning Modules\\UserConfig.psm1 
+1. 使用部署（仅限 10 和 11 行）的特定值，更新 ResourceGroupName 和 Name。
+1. 保存更改！
+
+只需在此处设置这些值，无需在每个脚本中更新这些特定于部署的值。
 
 ### <a name="execute-scripts-by-pressing-f5"></a>按 F5 执行脚本
 
-多个脚本使用 *$PSScriptRoot* 来启用文件夹导航，该变量仅在脚本是按 **F5** 执行的情况下才能进行进行计算。  突出显示和运行某个选择的内容 (**F8**) 可能会生成错误，因此请在运行 WTP 脚本时按 **F5**。
+多个脚本使用 $PSScriptRoot 来浏览文件夹，且仅在按 F5 执行脚本时才对 $PSScriptRoot 求值。  突出显示和运行某个选择的内容 (F8) 时，可能会生成错误，因此请在运行脚本时按 F5。
 
 ### <a name="step-through-the-scripts-to-examine-the-implementation"></a>以分步执行脚本的方式检查实现情况
 
-浏览脚本的真正价值在于通过分步执行脚本来了解其功能。 请查看第一级 _Demo-_ 脚本，这些脚本提供了易读的概略性工作流，显示了完成每个任务所需的步骤。 进一步深入分析各个调用，了解不同 SaaS 模式的实现细节。
+了解脚本的最好方式就是单步执行脚本，了解它们的用途。 查看包含的 Demo- 脚本，该脚本提供了一个简单易懂的高级工作流。 Demo- 脚本演示完成每个任务所需的步骤，设置断点并深入分析各个调用，查看不同 SaaS 模式的实现细节。
 
-有关使用和[调试 PowerShell 脚本](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)的提示：
+探索和单步执行 PowerShell 脚本的提示：
 
-* 在 PowerShell ISE 中打开和配置 demo- 脚本。
-* 按 **F5** 执行脚本或继续操作。 不建议使用 **F8**，因为在运行选择的脚本时不对 *$PSScriptRoot* 求值。
+* 在 PowerShell ISE 中打开 Demo- 脚本。
+* 按 F5 执行或继续（不建议使用 F8，因为在运行选择的脚本时不对 $PSScriptRoot 求值）。
 * 单击或选择一个行并按 **F9** 即可放置断点。
 * 使用 **F10** 逐过程执行函数或脚本调用。
 * 使用 **F11** 单步执行函数或脚本调用。
 * 使用 **Shift + F11** 跳出当前函数或脚本调用。
 
 
-
-
 ## <a name="explore-database-schema-and-execute-sql-queries-using-ssms"></a>使用 SSMS 浏览数据库架构并执行 SQL 查询
 
-使用 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 连接和浏览 WTP 服务器和数据库。
+使用 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 连接和浏览应用程序服务器和数据库。
 
-WTP 示例应用最初有两个可以连接到其中的 SQL 数据库服务器 - *tenants1* 服务器和编录服务器：
+部署最初有两个要连接的 SQL 数据库服务器 - tenants1-&lt;User&gt; 服务器和 catalog-&lt;User&gt; 服务器。 为确保成功连接演示，两台服务器的[防火墙规则](sql-database-firewall-configure.md)都允许所有 IP 通过。
 
 
 1. 打开 *SSMS* 并连接到 *tenants1-&lt;User&gt;.database.windows.net* 服务器。
-2. 单击“连接” > “数据库引擎...”：
+1. 单击“连接” > “数据库引擎...”：
 
    ![编录服务器](media/sql-database-wtp-overview/connect.png)
 
@@ -115,7 +120,7 @@ WTP 示例应用最初有两个可以连接到其中的 SQL 数据库服务器 -
 
 1. 重复步骤 2-3，连接到 *catalog-&lt;User&gt;.database.windows.net* 服务器。
 
-成功连接后，会看到两个服务器。 你看到的数据库可能会多一些或少一些，具体取决于预配的租户数：
+成功连接后，会看到两个服务器。 你的数据库列表可能会有所不同，具体取决于已预配的租户：
 
 ![对象资源管理器](media/sql-database-wtp-overview/object-explorer.png)
 
@@ -123,4 +128,4 @@ WTP 示例应用最初有两个可以连接到其中的 SQL 数据库服务器 -
 
 ## <a name="next-steps"></a>后续步骤
 
-[部署 Wingtip 票证 SaaS 应用程序示例](sql-database-saas-tutorial.md)
+[部署 Wingtip SaaS 应用程序](sql-database-saas-tutorial.md)

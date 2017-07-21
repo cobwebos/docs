@@ -3,8 +3,8 @@ title: "移动应用和移动服务中的客户端与服务器 SDK 版本控制 
 description: "客户端 SDK 列表，以及移动服务与 Azure 移动应用的服务器 SDK 版本兼容性"
 services: app-service\mobile
 documentationcenter: 
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: 35b19672-c9d6-49b5-b405-a6dcd1107cd5
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: adrianha
-translationtype: Human Translation
+ms.author: glenga
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
 ms.openlocfilehash: d74137dc3c994cb05e02c4f866043eabf134fcdd
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/09/2017
-
 
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>移动应用和移动服务中的客户端与服务器版本控制
@@ -47,8 +47,8 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 > [!NOTE]
 > 移动服务和移动应用之间有许多行为发生了变化，尤其是在脱机同步、身份验证和推送通知方面。 应该在完成测试之后才选择不要进行版本检查，确保这些行为的更改不会影响应用功能。
-> 
-> 
+>
+>
 
 ## <a name="summary-of-compatibility-for-all-versions"></a>所有版本的兼容性摘要
 下图显示了所有客户端与服务器类型之间的兼容性。 后端根据使用的服务器 SDK 分类为移动**服务**或移动**应用**。
@@ -130,5 +130,4 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 [Mobile App Server SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
 [将移动服务迁移到 Azure App Service]: app-service-mobile-migrating-from-mobile-services.md
-
 

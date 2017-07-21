@@ -2,24 +2,23 @@
 title: "请求单位和估计吞吐量 - Azure Cosmos DB | Microsoft Docs"
 description: "了解如何理解、指定和估计 Azure Cosmos DB 中的请求单位需求。"
 services: cosmos-db
-author: syamkmsft
+author: mimig1
 manager: jhubbard
 editor: mimig
 documentationcenter: 
 ms.assetid: d0a3c310-eb63-4e45-8122-b7724095c32f
-ms.service: Azure Cosmos DB
+ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
-ms.author: syamk
+ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: f263aaad1ba2a902401d8210727f146cb92f4ea8
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 95adddc01ee2814515c20f36e8503de30454a8f4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/04/2017
 
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB 中的请求单位数
@@ -28,11 +27,11 @@ ms.lasthandoff: 05/31/2017
 ![吞吐量计算器][5]
 
 ## <a name="introduction"></a>介绍
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 由 Microsoft 提供，是全球分布式多模型数据库。 使用 Azure Cosmos DB，无需租用虚拟机、部署软件或监视数据库。 Azure Cosmos DB 由 Microsoft 顶尖工程师操作和持续监视，以提供一流的可用性、性能和数据保护。 可以使用选择的 API 访问数据，因为 [DocumentDB SQL](documentdb-sql-query.md)（文档）、MongoDB（文档）、[Azure 表存储](https://azure.microsoft.com/services/storage/tables/)（键值）和 [Gremlin](https://tinkerpop.apache.org/gremlin.html)（图）都可在本地获得支持。 Azure Cosmos DB 的货币是请求单位 (RU)。 借助 RU，无需保留读取、写入容量或预配 CPU、内存和 IOPS.
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 由 Microsoft 提供，是全球分布式多模型数据库。 使用 Azure Cosmos DB，无需租用虚拟机、部署软件或监视数据库。 Azure Cosmos DB 由 Microsoft 顶尖工程师操作和持续监视，以提供一流的可用性、性能和数据保护。 可以使用选择的 API 访问数据，因为 [DocumentDB SQL](documentdb-sql-query.md)（文档）、MongoDB（文档）、[Azure 表存储](https://azure.microsoft.com/services/storage/tables/)（键值）和 [Gremlin](https://tinkerpop.apache.org/gremlin.html)（图）都可在本地获得支持。 Azure Cosmos DB 的货币是请求单位 (RU)。 借助 RU，无需保留读取/写入容量或预配 CPU、内存和 IOPS。
 
-Azure Cosmos DB 支持不同操作（包括读取、写入、复杂图形查询等）的许多 API。 并非所有请求都是相同的，因此系统会根据请求所需的计算量为它们分配规范化数量的**请求单位**。 操作的请求单位数是确定性的，可以通过响应标头跟踪 Azure Cosmos DB 中的任何操作消耗的请求单位数。 
+Azure Cosmos DB 支持不同操作（范围从简单读取、写入到复杂图形查询等）的许多 API。 并非所有请求都是相同的，因此系统会根据请求所需的计算量为它们分配规范化数量的请求单位。 操作的请求单位数是确定性的，可以通过响应标头跟踪 Azure Cosmos DB 中的任何操作消耗的请求单位数。 
 
-若要提供可预测的性能，需要以 100 RU/秒为单位，保留吞吐量。 对于每个 100 RU/秒块，可附加一个 1,000 RU/分钟块。 将每秒预配和每分钟预配结合可发挥非常强大的作用，因为无需预配峰值，与任何只使用每秒预配的服务相比，可节省高达 75% 的成本。
+若要提供可预测的性能，需要以 100 RU/秒为单位保留吞吐量。 对于每个 100 RU/秒块，可附加一个 1,000 RU/分钟块。 将每秒预配和每分钟预配结合可发挥非常强大的作用，因为无需预配峰值负载，与任何只使用每秒预配的服务相比，可节省高达 75% 的成本。
 
 阅读本文之后，你将能够回答以下问题：  
 

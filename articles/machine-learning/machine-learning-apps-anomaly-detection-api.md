@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 04/24/2017
+ms.date: 06/05/2017
 ms.author: alok;rotimpe
-translationtype: Human Translation
-ms.sourcegitcommit: a384756abaca45fc6863f8bc59dc3d6cb4fa974a
-ms.openlocfilehash: ae9a4f99d5b38944f38534021523e2153ce7f0d0
-ms.lasthandoff: 01/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 5ddc02905fbb7f9f7c5deb9b970101788d824642
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -61,17 +62,19 @@ ms.lasthandoff: 01/07/2017
 若要调用该 API，需要知道终结点位置和 API 密钥。  这两项以及调用该 API 的示例代码可从 [AzureML Web 服务](https://services.azureml.net/webservices/)页获得。  导航到所需的 API，然后单击“使用”选项卡可找到它们。  请注意，可以像调用 Swagger API 一样调用该 API（即，使用 URL 参数 `format=swagger`），也可以像调用非 Swagger API 一样调用该 API（即，不使用 `format` URL 参数）。  代码示例使用 Swagger 格式。  下面是采用非 Swagger 格式的示例请求和响应。  这些示例针对季节性终结点。  非季节性终结点与它类似。
 
 ### <a name="sample-request-body"></a>示例请求正文
-该请求包含两个对象：`input1` 和 `GlobalParameters`。  在下面的示例请求中，某些参数是显式发送的，而其他参数则不是（向下滚动可找到每个终结点的完整参数列表）。  未在请求中显式发送的参数将使用下面给出的默认值。
+该请求包含两个对象：`Inputs` 和 `GlobalParameters`。  在下面的示例请求中，某些参数是显式发送的，而其他参数则不是（向下滚动可找到每个终结点的完整参数列表）。  未在请求中显式发送的参数将使用下面给出的默认值。
 
     {
-        "input1": {
-            "ColumnNames": ["Time", "Data"],
-            "Values": [
-                ["5/30/2010 18:07:00", "1"],
-                ["5/30/2010 18:08:00", "1.4"],
-                ["5/30/2010 18:09:00", "1.1"]
-            ]
-        },
+                "Inputs": {
+                        "input1": {
+                                "ColumnNames": ["Time", "Data"],
+                                "Values": [
+                                        ["5/30/2010 18:07:00", "1"],
+                                        ["5/30/2010 18:08:00", "1.4"],
+                                        ["5/30/2010 18:09:00", "1.1"]
+                                ]
+                        }
+                },
         "GlobalParameters": {
             "tspikedetector.sensitivity": "3",
             "zspikedetector.sensitivity": "3",

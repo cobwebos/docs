@@ -11,14 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: terminal
 ms.topic: hero-article
-ms.date: 05/19/2017
+ms.date: 06/10/2017
 ms.author: anhoh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 300958a69fc854cb8db02120a383a4cbbfcacd7b
-ms.openlocfilehash: caf3b69b25ccd15322054a0bbf95fc2a5816e00a
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 44972270a13f5ab5b3aa22557b36e80ae406a4a6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/20/2017
-
+ms.lasthandoff: 06/13/2017
 
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB：在 Gremlin 控制台中创建、查询和遍历图形
@@ -65,56 +64,86 @@ Gremlin 控制台基于 Groovy/Java，在 Linux、Mac 和 Windows 上运行。 �
 
 很好！ 完成设置后，我们开始运行一些控制台命令。
 
+现在尝试一个简单的 count() 命令。 在控制台的提示符处键入以下内容：
+```
+:> g.V().count()
+```
+
+> [!TIP]
+> 注意到文本 g.V().count() 前的 :> 了吗？ 
+>
+> 这是命令的一部分，也需要键入。 通过 Azure Cosmos DB 使用 Gremlin 控制台时，这一部分非常重要。  
+>
+> 省略此 :> 前缀将指示控制台在本地执行命令，通常针对一个内存中图表执行。
+> 使用此 : > 则指示控制台执行远程命令，此时针对 Cosmos DB（localhost 仿真器或一个 > Azure 实例）执行。
+
+
 ## <a name="create-vertices-and-edges"></a>创建顶点和边缘
 
-首先，请为 *Thomas*、*Mary Kay*、*Robin* 和 *Ben* 添加四个人员顶点。
+首先为 Thomas、Mary Kay、Robin、Ben 和 Jack 添加五个人员顶点。
 
 输入 (Thomas)：
 
 ```
-:> g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44)
+:> g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44).property('userid', 1)
 ```
 
 输出：
 
 ```
-==>[id:1eb91f79-94d7-4fd4-b026-18f707952f21,label:person,type:vertex,properties:[firstName:[[id:ec5fcfbe-040e-48c3-b961-31233c8b1801,value:Thomas]],lastName:[[id:86e5b580-0bca-4bc2-bc53-a46f92c1a182,value:Andersen]],age:[[id:2caeab3c-c66d-4098-b673-40a8101bb72a,value:44]]]]
+==>[id:796cdccc-2acd-4e58-a324-91d6f6f5ed6d,label:person,type:vertex,properties:[firstName:[[id:f02a749f-b67c-4016-850e-910242d68953,value:Thomas]],lastName:[[id:f5fa3126-8818-4fda-88b0-9bb55145ce5c,value:Andersen]],age:[[id:f6390f9c-e563-433e-acbf-25627628016e,value:44]],userid:[[id:796cdccc-2acd-4e58-a324-91d6f6f5ed6d|userid,value:1]]]]
 ```
 输入 (Mary Kay)：
 
 ```
-:> g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39)
+:> g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39).property('userid', 2)
+
 ```
 
 输出：
 
 ```
-==>[id:899a9d37-6701-48fc-b0a1-90950be7e0f4,label:person,type:vertex,properties:[firstName:[[id:c79c5599-8646-47d1-9a49-3456200518ce,value:Mary Kay]],lastName:[[id:c1362095-9dcc-479d-ab21-86c1b6d4ffc1,value:Andersen]],age:[[id:0b530408-bfae-4e8f-98ad-c160cd6e6a8f,value:39]]]]
+==>[id:0ac9be25-a476-4a30-8da8-e79f0119ea5e,label:person,type:vertex,properties:[firstName:[[id:ea0604f8-14ee-4513-a48a-1734a1f28dc0,value:Mary Kay]],lastName:[[id:86d3bba5-fd60-4856-9396-c195ef7d7f4b,value:Andersen]],age:[[id:bc81b78d-30c4-4e03-8f40-50f72eb5f6da,value:39]],userid:[[id:0ac9be25-a476-4a30-8da8-e79f0119ea5e|userid,value:2]]]]
+
 ```
 
 输入 (Robin)：
 
 ```
-:> g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield')
+:> g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield').property('userid', 3)
 ```
 
 输出：
 
 ```
-==>[id:953aefd9-5a54-4033-9b3a-d4dc3049f720,label:person,type:vertex,properties:[firstName:[[id:bbda02e0-8a96-4ca1-943e-621acbb26824,value:Robin]],lastName:[[id:f0291ad3-05a3-40ec-aabb-6538a7c331e3,value:Wakefield]]]]
+==>[id:8dc14d6a-8683-4a54-8d74-7eef1fb43a3e,label:person,type:vertex,properties:[firstName:[[id:ec65f078-7a43-4cbe-bc06-e50f2640dc4e,value:Robin]],lastName:[[id:a3937d07-0e88-45d3-a442-26fcdfb042ce,value:Wakefield]],userid:[[id:8dc14d6a-8683-4a54-8d74-7eef1fb43a3e|userid,value:3]]]]
 ```
 
 输入 (Ben)：
 
 ```
-:> g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller')
+:> g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller').property('userid', 4)
+
 ```
 
 输出：
 
 ```
-==>[id:81c891d9-beca-4c87-9009-13a826c9ed9a,label:person,type:vertex,properties:[firstName:[[id:3a3b53d3-888c-46da-bb54-1c42194b1e18,value:Ben]],lastName:[[id:48c6dd50-79c4-4585-ab71-3bf998061958,value:Miller]]]]
+==>[id:ee86b670-4d24-4966-9a39-30529284b66f,label:person,type:vertex,properties:[firstName:[[id:a632469b-30fc-4157-840c-b80260871e9a,value:Ben]],lastName:[[id:4a08d307-0719-47c6-84ae-1b0b06630928,value:Miller]],userid:[[id:ee86b670-4d24-4966-9a39-30529284b66f|userid,value:4]]]]
 ```
+
+输入 (Jack)：
+
+```
+:> g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').property('userid', 5)
+```
+
+输出：
+
+```
+==>[id:4c835f2a-ea5b-43bb-9b6b-215488ad8469,label:person,type:vertex,properties:[firstName:[[id:4250824e-4b72-417f-af98-8034aa15559f,value:Jack]],lastName:[[id:44c1d5e1-a831-480a-bf94-5167d133549e,value:Connor]],userid:[[id:4c835f2a-ea5b-43bb-9b6b-215488ad8469|userid,value:5]]]]
+```
+
 
 接下来，为人员之间的关系添加边缘。
 
@@ -234,10 +263,10 @@ Gremlin 控制台基于 Groovy/Java，在 Linux、Mac 和 Windows 上运行。 �
 
 现在，我们从图形数据库中删除某个顶点。
 
-输入（删除 Robin 顶点）：
+输入（删除 Jack 顶点）：
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Robin').drop()
+:> g.V().hasLabel('person').has('firstName', 'Jack').drop()
 ```
 
 ## <a name="clear-your-graph"></a>清除图形
@@ -247,6 +276,7 @@ Gremlin 控制台基于 Groovy/Java，在 Linux、Mac 和 Windows 上运行。 �
 输入：
 
 ```
+:> g.E().drop()
 :> g.V().drop()
 ```
 
@@ -260,7 +290,7 @@ Gremlin 控制台基于 Groovy/Java，在 Linux、Mac 和 Windows 上运行。 �
 
 如果不打算继续使用此应用，请删除本快速入门教程在 Azure 门户中创建的所有资源，步骤如下：  
 
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击已创建资源的名称。**** 
+1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击已创建资源的名称。 
 2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，然后单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
@@ -269,3 +299,4 @@ Gremlin 控制台基于 Groovy/Java，在 Linux、Mac 和 Windows 上运行。 �
 
 > [!div class="nextstepaction"]
 > [使用 Gremlin 查询](tutorial-query-graph.md)
+

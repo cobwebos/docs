@@ -15,10 +15,11 @@ ms.topic: article
 ms.date: 08/31/2016
 ms.author: trinadhk;markgal;
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 82b7541ab1434179353247ffc50546812346bda9
-ms.openlocfilehash: d00235d788dbe1674eac219a7c708a8ecd53ccc5
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 4abc72962f5a67851aee9d64d7c8125e72d0ec09
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -34,7 +35,12 @@ ms.lasthandoff: 03/02/2017
 > [!NOTE]
 > Azure 有两种用于创建和使用资源的部署模型： [Resource Manager 部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。 有关使用经典部署模型 VM 的详细信息，请参阅[准备好环境以备份 Azure 虚拟机](backup-azure-vms-prepare.md)。
 >
+> [!IMPORTANT]
+>从 2017 年 3 月份开始，无法再使用经典门户来创建备份保管库。
 >
+> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 从 2017 年 11 月 1 日起：
+>- 其余的所有备份保管库都将自动升级到恢复服务保管库。
+>- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
 
 ## <a name="manage-protected-virtual-machines"></a>管理受保护的虚拟机
 若要管理受保护的虚拟机，请执行以下操作：

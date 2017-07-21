@@ -16,10 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 6fcdd64759cb12ae8804bd0cc8dc4edfeec949bd
-ms.lasthandoff: 04/03/2017
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: 201ccd523e49d638ace50fbc0ffdceb705b35473
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -31,10 +32,8 @@ ms.lasthandoff: 04/03/2017
 该环境包含：
 
 * 两个位于可用性集中的 VM。
-* 端口 80 上有一个带负载平衡规则的负载均衡器。
+* 端口 80 上有一个带负载均衡规则的负载均衡器。
 * 网络安全组 (NSG) 规则，阻止 VM 接受不需要的流量。
-
-![基本环境概述](./media/create-cli-complete/environment_overview.png)
 
 若要创建此自定义环境，需要在 Resource Manager 模式 (`azure config mode arm`) 下安装最新的 [Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 此外，还需要一个 JSON 分析工具。 本示例使用 [jq](https://stedolan.github.io/jq/)。
 
@@ -47,7 +46,7 @@ ms.lasthandoff: 04/03/2017
 
 
 ## <a name="quick-commands"></a>快速命令
-如果需要快速完成任务，请参阅以下部分，其中详细说明了用于将 VM 上载到 Azure 的基本命令。 本文档的余下部分（从[此处](#detailed-walkthrough)开始）提供了每个步骤的更详细信息和上下文。
+如果需要快速完成任务，请参阅以下部分，其中详细说明了用于将 VM 上传到 Azure 的基本命令。 本文档的余下部分（从[此处](#detailed-walkthrough)开始）提供了每个步骤的更详细信息和上下文。
 
 确保已登录 [Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 并使用 Resource Manager 模式：
 
@@ -621,7 +620,7 @@ azure network public-ip show myResourceGroup myPublicIP --json | jq '.'
 ```
 
 ## <a name="create-a-load-balancer-and-ip-pools"></a>创建负载均衡器和 IP 池
-创建负载均衡器时，可以将流量分散到多个 VM。 负载平衡器还可以在执行维护或承受重负载时运行多个 VM 来响应用户请求，为应用程序提供冗余。 以下示例创建一个名为 `myLoadBalancer` 的负载均衡器：
+创建负载均衡器时，可以将流量分散到多个 VM。 负载均衡器还可以在执行维护或承受重负载时运行多个 VM 来响应用户请求，为应用程序提供冗余。 以下示例创建一个名为 `myLoadBalancer` 的负载均衡器：
 
 ```azurecli
 azure network lb create --resource-group myResourceGroup --location westeurope \

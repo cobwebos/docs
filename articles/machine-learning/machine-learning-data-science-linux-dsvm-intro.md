@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: d8ae05316b424af7d87c3c5ebdac575bcc04998d
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: f5c33212da13b33be60488992d93305807c98d38
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
 # <a name="provision-the-linux-data-science-virtual-machine"></a>预配 Linux 数据科研虚拟机
 Linux 数据科学虚拟机是基于 CentOS 的 Azure 虚拟机，附带一组预安装的工具。 这些工具通常用于进行数据分析和机器学习。 所含关键软件组件包括：
 
+* 操作系统： Linux CentOS 分发版。
 * Microsoft R Server Developer Edition
 * Anaconda Python 分发版（2.7 和 3.5 版），包括常用数据分析库
 * JuliaPro - 具有常用科学和数据分析库的 Julia 语言的特选分发
@@ -62,7 +63,7 @@ Linux 数据科学虚拟机可大大减轻这种负担。 使用它快速开始�
 创建 Linux 数据科学虚拟机之前，必须具备以下条件：
 
 * **Azure 订阅**：若要获取订阅，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/free/)。
-* **Azure 存储帐户**：若要创建账户，请参阅[创建 Azure 存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)。 或者，如果不想使用现有帐户，则可以在创建 VM 过程中创建存储帐户。
+* **Azure 存储帐户**：若要创建帐户，请参阅[创建 Azure 存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)。 或者，如果不想使用现有帐户，则可以在创建 VM 过程中创建存储帐户。
 
 ## <a name="create-your-linux-data-science-virtual-machine"></a>创建 Linux 数据科学虚拟机
 以下是创建 Linux 数据科学虚拟机实例的步骤：

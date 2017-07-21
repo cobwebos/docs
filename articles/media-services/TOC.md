@@ -1,14 +1,18 @@
 # [概述](media-services-overview.md)
+## [方案和可用性](scenarios-and-availability.md)
 ## [概念](media-services-concepts.md)
 
 # 入门
 ## [创建和管理帐户](media-services-portal-create-account.md)
 ## [设置开发环境](media-services-set-up-computer.md)
-###[.NET](media-services-dotnet-how-to-use.md)
-###[REST](media-services-rest-how-to-use.md)  
-## 以编程方式连接
-### [.NET](media-services-dotnet-connect-programmatically.md)
-### [REST](media-services-rest-connect-programmatically.md)
+### [.NET](media-services-dotnet-how-to-use.md)
+### [REST](media-services-rest-how-to-use.md)  
+## [使用 AAD 身份验证访问 API](media-services-use-aad-auth-to-access-ams-api.md)
+### [使用门户管理 AAD 身份验证](media-services-portal-get-started-with-aad.md)
+### [使用 .NET 访问 API](media-services-dotnet-get-started-with-aad.md)
+### [使用 REST 访问 API](media-services-rest-connect-with-aad.md)
+### [使用 CLI 创建和配置 AAD 应用](media-services-cli-create-and-configure-aad-app.md)
+### [使用 PowerShell 创建和配置 AAD 应用](media-services-powershell-create-and-configure-aad-app.md)
 
 ## 传送点播视频
 ### [门户](media-services-portal-vod-get-started.md)
@@ -35,13 +39,13 @@
 #### [跨多个存储帐户管理资产](meda-services-managing-multiple-storage-accounts.md)
 ### [配额和限制](media-services-quotas-and-limitations.md)
 
-## 上载内容
-### 将文件上载到帐户中
+## 上传内容
+### 将文件上传到帐户中
 #### [门户](media-services-portal-upload-files.md)
 #### [.NET](media-services-dotnet-upload-files.md)
 #### [REST](media-services-rest-upload-files.md)
-### [使用 Aspera 上载大型文件](media-services-upload-files-with-aspera.md)
-### [使用 StorSimple 上载文件](media-services-upload-files-from-storsimple.md)
+### [使用 Aspera 上传大型文件](media-services-upload-files-with-aspera.md)
+### [使用 StorSimple 上传文件](media-services-upload-files-from-storsimple.md)
 ### [复制现有的 Blob](media-services-copying-existing-blob.md)
 
 ## [对内容进行编码](media-services-encode-asset.md)
@@ -129,14 +133,13 @@
 ### [使用合作伙伴将 Widevine 许可证传送到媒体服务](media-services-licenses-partner-integration.md)
 ### [使用 PlayReady 和/或 Widevine 动态通用加密](media-services-protect-with-drm.md)
 ### [流式传输受 Apple FairPlay 保护的 HLS 内容](media-services-protect-hls-with-fairplay.md)
+### [DRM 子系统的混合设计](hybrid-design-drm-sybsystem.md)
 ### [使用多重 DRM 的 CENC 和访问控制](media-services-cenc-with-multidrm-access-control.md)
 ### [使用 Axinom 将 Widevine 许可证传送到媒体服务](media-services-axinom-integration.md)
 ### [使用 castLabs 将 Widevine 许可证传送到媒体服务](media-services-castlabs-integration.md)
-
-### 资产传送
-#### 配置资产传送策略
-##### [.NET](media-services-dotnet-configure-asset-delivery-policy.md)
-##### [REST](media-services-rest-configure-asset-delivery-policy.md)
+### 配置资产传送策略
+#### [.NET](media-services-dotnet-configure-asset-delivery-policy.md)
+#### [REST](media-services-rest-configure-asset-delivery-policy.md)
 ### 创建内容密钥
 #### [.NET](media-services-dotnet-create-contentkey.md)
 #### [REST](media-services-rest-create-contentkey.md)
@@ -149,6 +152,7 @@
 ### [使用门户分析媒体](media-services-portal-analyze.md)
 ### [使用 Indexer 2 进行处理](media-services-process-content-with-indexer2.md)
 ### [使用 Indexer 进行处理](media-services-index-content.md)
+#### [任务预设](indexer-task-preset.md)
 ### [使用 Hyperlapse 进行处理](media-services-hyperlapse-content.md)
 ### [使用 Face Detector 进行处理](media-services-face-and-emotion-detection.md)
 ### [使用 Motion Detector 进行处理](media-services-motion-detection.md)
@@ -214,10 +218,11 @@
 ## [PowerShell (Resource Manager)](/powershell/module/azurerm.media)
 ## [PowerShell（服务管理）](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)
-## [REST](/rest/api/media)
+## [REST](/rest/api/media/mediaservice)  
 
 # 资源
-## [发行说明](media-services-release-notes.md)
-## [定价](https://azure.microsoft.com/pricing/details/media-services/)
 ## [Azure 媒体服务社区](media-services-community.md)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [定价](https://azure.microsoft.com/pricing/details/media-services/)
+## [发行说明](media-services-release-notes.md)
 ## [视频](https://azure.microsoft.com/resources/videos/index/?services=media-services)

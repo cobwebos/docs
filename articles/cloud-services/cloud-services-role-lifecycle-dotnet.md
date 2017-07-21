@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 07/18/2017
 ms.author: adegeo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 9924c7352300c70e949fb86a19dfaf68b9fe8b50
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>在 .NET 中自定义 Web 角色或辅助角色的生命周期
@@ -81,10 +82,5 @@ public override bool OnStart()
 
 ## <a name="next-steps"></a>后续步骤
 了解如何[创建云服务包](cloud-services-model-and-package.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

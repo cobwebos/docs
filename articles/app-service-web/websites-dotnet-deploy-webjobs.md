@@ -1,6 +1,6 @@
 ---
 title: "使用 Visual Studio 部署 Web 作业"
-description: "了解如何使用 Visual Studio 将 Azure Web 作业部署到 Azure App Service Web 应用。"
+description: "了解如何使用 Visual Studio 将 Azure Web 作业部署到 Azure 应用服务 Web 应用。"
 services: app-service
 documentationcenter: 
 author: ggailey777
@@ -14,15 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/27/2016
 ms.author: glenga
-translationtype: Human Translation
-ms.sourcegitcommit: fcbd9e10e4cc336dc6ea37f84201249e14b1af91
-ms.openlocfilehash: 9f792f6ea082461f3304516fc9b4c3273e2f50b8
-ms.lasthandoff: 12/08/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 5b0808afdadcf4d86a9a2d07ee6fc63b80b22993
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/02/2017
 
 
 ---
-# <a name="deploy-webjobs-using-visual-studio"></a>使用 Visual Studio 部署 Web 作业
-## <a name="overview"></a>概述
+# 使用 Visual Studio 部署 Web 作业
+<a id="deploy-webjobs-using-visual-studio" class="xliff"></a>
+## 概述
+<a id="overview" class="xliff"></a>
 本主题介绍如何使用 Visual Studio 将控制台应用程序项目作为 [Azure Web 作业](http://go.microsoft.com/fwlink/?LinkId=390226)部署到[应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)中的 Web 应用。 有关如何使用 [Azure 门户](https://portal.azure.com)部署 Web 作业的信息，请参阅[使用 Web 作业运行后台任务](web-sites-create-web-jobs.md)。
 
 当 Visual Studio 部署启用 Web 作业的控制台应用程序项目时，它会执行两个任务：
@@ -43,10 +46,11 @@ ms.lasthandoff: 12/08/2016
 
 ![显示链接到 Web 项目的 Web 作业项目的插图](./media/websites-dotnet-deploy-webjobs/link.png)
 
-## <a name="prerequisites"></a>先决条件
-安装用于 .NET 的 Azure SDK 后，即可在 Visual Studio 2015 中使用 Web 作业部署功能：
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
+安装用于 .NET 的 Azure SDK 后，即可在 Visual Studio 中使用 Web 作业部署功能：
 
-* [用于 .NET 的 Azure SDK (Visual Studio 2015)](http://go.microsoft.com/fwlink/?linkid=518003)。
+* [用于 .NET 的 Azure SDK (Visual Studio)](https://azure.microsoft.com/downloads/)。
 
 ## <a id="convert"></a>为现有控制台应用程序项目启用 Web 作业部署
 可以使用两个选项：
@@ -70,7 +74,7 @@ ms.lasthandoff: 12/08/2016
 3. 完成[“添加 Azure Web 作业”](#configure)对话框，然后单击“确定”。 
 
 ### <a id="convertnolink"></a>不使用 Web 项目启用 Web 作业部署
-1. 右键单击“解决方案资源管理器”中的控制台应用程序项目，然后单击“发布为 Azure Web 作业”。 
+1. 右键单击“解决方案资源管理器”中的控制台应用程序项目，然后单击“发布为 Azure Web 作业...”。 
    
     ![发布为 Azure Web 作业](./media/websites-dotnet-deploy-webjobs/paw.png)
    
@@ -90,12 +94,12 @@ ms.lasthandoff: 12/08/2016
     创建一个项目，该项目配置为在针对位于相同解决方案中的 Web 项目进行部署时，自动以 Web 作业的方式部署。 要在运行相关 Web 应用程序的同一 Web 应用中运行 Web 作业时，请使用此选项。
 
 > [!NOTE]
-> Web 作业新建项目模板会自动安装 NuGet 包，并在 *Program.cs* 中包含适用于 [WebJobs SDK](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs) 的代码。 如果不想使用 WebJobs SDK，或者想要使用计划 Web 作业（而不是连续 Web 作业），请删除或更改 *Program.cs* 中的 `host.RunAndBlock` 语句。
+> Web 作业新建项目模板会自动安装 NuGet 包，并在 *Program.cs* 中包含适用于 [WebJobs SDK](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs) 的代码。 如果不希望使用 WebJobs SDK，请删除或更改 *Program.cs* 中的 `host.RunAndBlock` 语句。
 > 
 > 
 
 ### <a id="createnolink"></a>为独立的 Web 作业使用 Web 作业新建项目模板
-1. 依次单击“文件” > “新建项目”，然后在“新建项目”对话框中，依次单击“云” > “Microsoft Azure Web 作业”。
+1. 依次单击“文件” > “新建项目”，然后在“新建项目”对话框中，依次单击“云” > “Azure WebJob (.NET Framework)”。
    
     ![显示了 Web 作业模板的“新建项目”对话框](./media/websites-dotnet-deploy-webjobs/np.png)
 2. 按照前述说明，[将控制台应用程序项目设为独立的 Web 作业项目](#convertnolink)。
@@ -109,20 +113,14 @@ ms.lasthandoff: 12/08/2016
 2. 完成[“添加 Azure Web 作业”](#configure)对话框，然后单击“确定”。
 
 ## <a id="configure"></a>添加 Azure Web 作业对话框
-“添加 Azure Web 作业”对话框可让你输入 Web 作业的名称和计划设置。 
+使用“添加 Azure WebJob”对话框可以输入你的 WebJob 的 WebJob 名称和运行模式。 
 
 ![“添加 Azure Web 作业”对话框](./media/websites-dotnet-deploy-webjobs/aaw2.png)
 
 此对话框中的字段对应于 Azure 门户中“新建作业”对话框中的字段。 有关详细信息，请参阅[使用 Web 作业运行后台任务](web-sites-create-web-jobs.md)。
 
-对于计划的 Web 作业（而不是连续 Web 作业），Visual Studio 将创建 [Azure 计划程序](/services/scheduler/)作业集合（如果不存在），然后在该集合中创建一个作业：
-
-* 计划程序作业集合命名为 *WebJobs-{regionname}*，其中的 *{regionname}* 表示托管 Web 应用的区域。 例如：WebJobs-WestUS。
-* 计划程序作业命名为 *{webappname}-{webjobname}*。 例如：MyWebApp-MyWebJob。 
-
 > [!NOTE]
 > * 有关命令行部署的信息，请参阅[启用 Azure Web 作业的命令行或连续传送](https://azure.microsoft.com/blog/2014/08/18/enabling-command-line-or-continuous-delivery-of-azure-webjobs/)。
-> * 如果已配置“定期作业”，并将周期频率设置为分钟数，则无法免费使用 Azure 计划程序。 其他频率（小时数、天数等）是免费的。
 > * 如果你部署了某个 Web 作业，但后来想要更改该 Web 作业的类型并重新部署，那么，你需要删除 webjobs-publish-settings.json 文件。 这样，Visual Studio 就会再次显示发布选项，使你可以更改 Web 作业的类型。
 > * 如果你部署了某个 Web 作业，并随后将运行模式从连续更改为非连续（或相反），则在你重新部署时，Visual Studio 将在 Azure 中创建新的 Web 作业。 如果更改了其他计划设置但保持运行模式不变，或在计划模式与按需模式之间切换，则 Visual Studio 会更新现有的作业，而不是创建新的作业。
 > 
@@ -134,22 +132,17 @@ ms.lasthandoff: 12/08/2016
         {
           "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
           "webJobName": "WebJob1",
-          "startTime": "2014-06-23T00:00:00-08:00",
-          "endTime": "2014-06-27T00:00:00-08:00",
-          "jobRecurrenceFrequency": "Minute",
-          "interval": 5,
-          "runMode": "Scheduled"
+          "startTime": "null",
+          "endTime": "null",
+          "jobRecurrenceFrequency": "null",
+          "interval": null,
+          "runMode": "Continuous"
         }
 
 你可以编辑此文件目录，Visual Studio 将提供 IntelliSense。 在 [http://schemastore.org](http://schemastore.org/schemas/json/webjob-publish-settings.json) 中可查看存储的文件架构。  
 
-> [!NOTE]
-> * 如果已配置“定期作业”，并将周期频率设置为分钟数，则无法免费使用 Azure 计划程序。 其他频率（小时数、天数等）是免费的。
-> 
-> 
-
 ## <a id="webjobslist"></a>webjobs-list.json
-如果将已启用 Web 作业的项目链接到 Web 项目，Visual Studio 会将 Web 作业项目的名称存储在 Web 项目 *Properties* 文件夹的 *webjobs-list.json* 文件中。 该列表可能包含多个 Web 作业项目，如以下示例：
+如果将已启用 Web 作业的项目链接到 Web 项目，Visual Studio 会将 Web 作业项目的名称存储在 Web 项目 *Properties* 文件夹的 *webjobs-list.json* 文件中。 该列表可能包含多个 Web 作业项目，如以下示例所示：
 
         {
           "$schema": "http://schemastore.org/schemas/json/webjobs-list.json",
@@ -168,7 +161,7 @@ ms.lasthandoff: 12/08/2016
 ## <a id="deploy"></a>部署 Web 作业项目
 已链接到 Web 项目的 Web 作业项目会通过 Web 项目自动部署。 有关 Web 项目部署的信息，请参阅[如何部署到 Web 应用](web-sites-deploy.md)。
 
-若要自动部署某个 Web 作业项目，请在“解决方案资源管理器”中右键单击该项目，然后单击“发布为 Azure Web 作业”。 
+若要自动部署某个 Web 作业项目，请在“解决方案资源管理器”中右键单击该项目，然后单击“发布为 Azure Web 作业...”。 
 
 ![发布为 Azure Web 作业](./media/websites-dotnet-deploy-webjobs/paw.png)
 

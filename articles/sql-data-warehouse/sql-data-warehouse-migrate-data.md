@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: migrate
-ms.date: 10/31/2016
+ms.date: 06/29/2017
 ms.author: joeyong;barbkess
 ms.translationtype: Human Translation
 ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
@@ -23,12 +23,14 @@ ms.lasthandoff: 03/17/2017
 
 
 ---
-# <a name="migrate-your-data"></a>迁移数据
+<a id="migrate-your-data" class="xliff"></a>
+# 迁移数据
 数据可以使用各种工具从不同源移动到 SQL 数据仓库中。  ADF 复制、SSIS 和 bcp 都可用来实现此目标。 但是，随着数据量的增加，你应该考虑将数据迁移过程划分成多个步骤。 这样，你便有机会优化每个步骤以提高性能和弹性，确保顺利迁移数据。
 
 本文首先讨论 ADF 复制、SSIS 和 bcp 的简单迁移方案。 然后稍微深入讨论如何优化迁移。
 
-## <a name="azure-data-factory-adf-copy"></a>Azure 数据工厂 (ADF) 复制
+<a id="azure-data-factory-adf-copy" class="xliff"></a>
+## Azure 数据工厂 (ADF) 复制
 [ADF 复制][ADF Copy]属于 [Azure 数据工厂][Azure Data Factory]。 你可以使用 ADF 复制将数据导出到位于本地存储的平面文件、保留在 Azure Blob 存储中的远程平面文件，或者直接导出到 SQL 数据仓库。
 
 如果数据从平面文件开始，则在开始将数据载入 SQL 数据仓库之前，首先要将数据传输到 Azure 存储 Blob。 将数据传输到 Azure Blob 存储后，可以选择再次使用 [ADF 复制][ADF Copy]，将数据推送到 SQL 数据仓库。
@@ -41,7 +43,8 @@ PolyBase 还提供高性能的选项来加载数据。 但是，这意味着要�
 
 请参阅以下文章，获取一些很好的 [ADF 示例][ADF samples]。
 
-## <a name="integration-services"></a>Integration Services
+<a id="integration-services" class="xliff"></a>
+## Integration Services
 集成服务 (SSIS) 是一个功能强大且灵活的提取、转换和加载 (ETL) 工具，支持复杂的工作流、数据转换，以及多个数据加载选项。 使用 SSIS 可以单纯将数据传输到 Azure，或作为更广泛迁移的一部分。
 
 > [!NOTE]
@@ -60,7 +63,8 @@ SSIS 将连接到 SQL 数据仓库，就像连接到 SQL Server 部署一样。 
 
 有关详细信息，请参阅 [SSIS 文档][SSIS documentation]。
 
-## <a name="bcp"></a>bcp
+<a id="bcp" class="xliff"></a>
+## bcp
 bcp 是专为平面文件数据导入和导出所设计的命令行实用程序。 数据导出期间可以进行某些转换。 若要执行简单的转换，请使用查询来选择和转换数据。 导出之后，可将平面文件直接加载到目标 SQL 数据仓库数据库。
 
 > [!NOTE]
@@ -82,7 +86,8 @@ bcp 的限制包括：
 
 有关详细信息，请参阅[使用 bcp 将数据载入 SQL 数据仓库][Use bcp to load data into SQL Data Warehouse]。
 
-## <a name="optimizing-data-migration"></a>优化数据迁移
+<a id="optimizing-data-migration" class="xliff"></a>
+## 优化数据迁移
 SQLDW 数据迁移过程可以有效地划分成三个独立的步骤：
 
 1. 导出源数据
@@ -91,34 +96,40 @@ SQLDW 数据迁移过程可以有效地划分成三个独立的步骤：
 
 每个步骤可以单独进行优化，创建稳健、可重新启动且富有弹性的迁移过程，让每个步骤发挥最高的性能。
 
-## <a name="optimizing-data-load"></a>优化数据加载
+<a id="optimizing-data-load" class="xliff"></a>
+## 优化数据加载
 反过来看，加载数据最快的方式是通过 PolyBase。 优化 PolyBase 加载过程对上述步骤规定了先决条件，最好先了解这一点。 它们具有以下特点：
 
 1. 数据文件的编码
 2. 数据文件的格式
 3. 数据文件的位置
 
-### <a name="encoding"></a>编码
+<a id="encoding" class="xliff"></a>
+### 编码
 PolyBase 要求数据文件必须为 UTF-8 或 UTF-16FE。 
 
 
 
-### <a name="format-of-data-files"></a>数据文件的格式
+<a id="format-of-data-files" class="xliff"></a>
+### 数据文件的格式
 PolyBase 规定要有固定的行终止符 \n 或换行符。 数据文件必须符合此标准。 字符串或列终止符没有任何限制。
 
 在 PolyBase 中，必须将文件中的每个列定义为外部表的一部分。 请确保所有导出的列都是必需的，且类型符合所需的标准。
 
 有关支持的数据类型的详细信息，请参阅前面的 [迁移架构] 一文。
 
-### <a name="location-of-data-files"></a>数据文件的位置
+<a id="location-of-data-files" class="xliff"></a>
+### 数据文件的位置
 SQL 数据仓库只使用 PolyBase 从 Azure Blob 存储加载数据。 因此，数据必须先传输到 Blob 存储。
 
-## <a name="optimizing-data-transfer"></a>优化数据传输
+<a id="optimizing-data-transfer" class="xliff"></a>
+## 优化数据传输
 数据迁移过程中，最慢的一部分是将数据传输到 Azure。 不只网络带宽可能是个问题，网络可靠性也可能会严重阻碍进度。 默认情况下，将数据迁移到 Azure 是通过 Internet 完成的，因此很可能会发生传输错误。 但是，这些错误可能需要重新发送整个或部分数据。
 
 幸运的是，有多个选项可以提升此过程的速度和恢复能力：
 
-### <a name="expressrouteexpressroute"></a>[ExpressRoute][ExpressRoute]
+<a id="expressrouteexpressroute" class="xliff"></a>
+### [ExpressRoute][ExpressRoute]
 可以考虑使用 [ExpressRoute][ExpressRoute] 加快传输速度。 [ExpressRoute][ExpressRoute] 提供可靠的 Azure 专用连接，这种连接不经由公共 Internet。 这不是一项强制措施。 但是，从本地或共置设备向 Azure 推送数据时，它会改善吞吐量。
 
 使用 [ExpressRoute][ExpressRoute] 的优点包括：
@@ -132,7 +143,8 @@ SQL 数据仓库只使用 PolyBase 从 Azure Blob 存储加载数据。 因此�
 
 感兴趣吗？ 有关详细信息和定价，请访问 [ExpressRoute 文档][ExpressRoute documentation]。
 
-### <a name="azure-import-and-export-service"></a>Azure 导入和导出服务
+<a id="azure-import-and-export-service" class="xliff"></a>
+### Azure 导入和导出服务
 Azure 导入和导出服务是一个数据传输进程，用于将大量 (GB++) 和巨量 (TB++) 的数据传输到 Azure。 它涉及到将数据写入磁盘并传送到 Azure 数据中心。 然后代用户将磁盘内容载入 Azure 存储 Blob。
 
 导入导出过程的概略性视图如下：
@@ -145,7 +157,8 @@ Azure 导入和导出服务是一个数据传输进程，用于将大量 (GB++) 
 6. 你的数据将传输到 Azure Blob 存储容器
 7. 使用 PolyBase 将数据载入 SQLDW
 
-### <a name="azcopyazcopy-utility"></a>[AZCopy][AZCopy] 实用程序
+<a id="azcopyazcopy-utility" class="xliff"></a>
+### [AZCopy][AZCopy] 实用程序
 [AZCopy][AZCopy] 实用程序是将数据传输到 Azure 存储 Blob 的一个极佳工具。 它旨在用于少量 (MB++) 到极大量 (GB++) 的数据传输。 将数据传输到 Azure 时，[AZCopy] 还能提供高度灵活的吞吐量，因此是数据传输措施的理想选择。 传输后，你可以使用 PolyBase 将数据载入 SQL 数据仓库。 你还可以使用“执行进程”任务将 AZCopy 合并到 SSIS 包中。
 
 若要使用 AZCopy，必须先下载并安装它。 可用版本包括[生产版][production version]和[预览版][preview version]。
@@ -165,22 +178,26 @@ AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/myconta
 
 完整文档：[AZCopy][AZCopy]。
 
-## <a name="optimizing-data-export"></a>优化数据导出
+<a id="optimizing-data-export" class="xliff"></a>
+## 优化数据导出
 除了确保导出符合 PolyBase 规定的要求外，你还可以设法优化数据导出，以进一步改善过程。
 
 
 
-### <a name="data-compression"></a>数据压缩
+<a id="data-compression" class="xliff"></a>
+### 数据压缩
 PolyBase 可以读取 gzip 压缩数据。 如果你可以将数据压缩成 gzip 文件，就能将网络上推送的数据量减到最少。
 
-### <a name="multiple-files"></a>多个文件
+<a id="multiple-files" class="xliff"></a>
+### 多个文件
 将大型表分割成多个文件不仅有助于改善导出速度，还有助于重新开始传输，以及数据进入 Azure Blob 存储之后的整体易管理性。 PolyBase 的众多优点之一是可以读取文件夹内的所有文件，并将其视为一个表。 因此，最好将每个表的文件隔离到它自身的文件夹中。
 
 PolyBase 还支持名为“递归文件夹遍历”的功能。 你可以使用此功能来进一步增强所导出数据的组织方式，以改善数据管理。
 
 若要深入了解如何使用 PolyBase 加载数据，请参阅[使用 PolyBase 将数据载入 SQL 数据仓库][Use PolyBase to load data into SQL Data Warehouse]。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+## 后续步骤
 有关迁移的详细信息，请参阅[将解决方案迁移到 SQL 数据仓库][Migrate your solution to SQL Data Warehouse]。
 有关更多开发技巧，请参阅[开发概述][development overview]。
 

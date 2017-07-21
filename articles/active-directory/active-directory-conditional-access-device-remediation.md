@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/11/2017
+ms.date: 07/05/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: 42dcc653b50698cf8ce8145dfb51f27be7ece440
-ms.lasthandoff: 04/12/2017
-
+ms.reviewer: jairoc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4d7704c03bece51957efa2a56577b8808cc62c79
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="you-cant-get-there-from-here-on-a-windows-device"></a>在 Windows 设备上无法切换位置
@@ -46,7 +47,7 @@ ms.lasthandoff: 04/12/2017
 
 ![针对不支持的浏览器的“无法从此处访问”消息](./media/active-directory-conditional-access-device-remediation/02.png "方案")
 
-唯一的修复方法是在设备平台上使用应用程序支持的浏览器。 有关受支持浏览器的完整列表，请参阅[支持的浏览器](active-directory-conditional-access-supported-apps.md#supported-browsers)。  
+唯一的修复方法是在设备平台上使用应用程序支持的浏览器。 有关受支持浏览器的完整列表，请参阅[支持的浏览器](active-directory-conditional-access-supported-apps.md#supported-browsers-for-device-based-policies)。  
 
 
 ## <a name="supported-versions-of-windows"></a>支持的 Windows 版本

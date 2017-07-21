@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 07/10/2017
 ms.author: helaw
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9c4b7cbdeba7e27b49996f5bcbfd7e62a0d92353
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: eb6e67dc4707b2b999efcceec1c55dc950c5996e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 07/10/2017
 
 
 ---
 # <a name="deploy-templates-using-the-azure-stack-portal"></a>Deploy templates using the Azure Stack portal
-Use the portal to deploy Azure Resource Manager templates to the Azure Stack POC.
+Use the portal to deploy Azure Resource Manager templates to the Azure Stack development kit.
 
 Resource Manager templates deploy and provision all the resources for your application in a single, coordinated operation.
 

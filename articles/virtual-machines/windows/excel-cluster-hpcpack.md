@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 04/11/2017
+ms.date: 06/01/2017
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 8c40a0d44463c75e92444b393336db1daf270ee1
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: acd2ee7fb94c43493ffd9ffee157f2c3e795b63e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -60,7 +61,7 @@ ms.lasthandoff: 04/27/2017
    
    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“参数”页上，输入或修改模板参数的值。 （单击每个设置旁边的图标可获得帮助信息。）下面的屏幕中将显示示例值。 本示例将在 *hpc.local* 域中创建名为 *hpc01* 的群集，该群集由 1 个头节点和 2 个计算节点组成。 将从包含 Microsoft Excel 的 HPC Pack VM 映像创建计算节点。
    
-   ![输入参数][parameters]
+   ![输入参数][parameters-new-portal]
    
    > [!NOTE]
    > 将在 Windows Server 2012 R2 上从 HPC Pack 2012 R2 的[最新应用商店映像](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)自动创建头节点 VM。 当前，该映像基于 HPC Pack 2012 R2 Update 3。
@@ -78,11 +79,11 @@ ms.lasthandoff: 04/27/2017
    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在“法律条款”页上，查看条款。 如果同意条款，请单击“购买”。 在完成为模板设置值后，单击“创建”。
 4. 在部署完成时（通常需要花费大约 30 分钟），从群集头节点导出群集证书文件。 在稍后的步骤中，将在客户端计算机上导入此公用证书，为安全 HTTP 绑定提供服务器端身份验证。
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 从 Azure 门户通过远程桌面连接到头节点。
+   a.在“横幅徽标”下面，选择“删除上传的徽标”。 在 Azure 门户中，通过远程桌面转到仪表板，选择头节点，然后在页面顶部单击“连接”以进行连接。
    
-    ![连接到头节点][connect]
+    <!-- ![Connect to the head node][connect] -->
    
-   b. 在证书管理器中使用标准过程导出不带私钥的头节点证书（位于 Cert:\LocalMachine\My 下）。 在此示例中，导出 *CN = hpc01.eastus.cloudapp.azure.com*。
+   b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在证书管理器中使用标准过程导出不带私钥的头节点证书（位于 Cert:\LocalMachine\My 下）。 在此示例中，导出 *CN = hpc01.eastus.cloudapp.azure.com*。
    
    ![导出证书][cert]
 
@@ -251,7 +252,7 @@ HPC Pack 部署脚本可运行一段时间。 此脚本的一项功能是导出�
    'HPCExcelClient.OpenSession headNode:=HPC_ClusterScheduler, remoteWorkbookPath:=HPCWorkbookPath
    HPCExcelClient.OpenSession headNode:=HPC_ClusterScheduler, remoteWorkbookPath:=HPCWorkbookPath, UserName:="hpc\azureuser", Password:="<YourPassword>"
    ```
-9. 将 Excel 工作簿复制到某个上载目录，例如 D:\Excel\Upload。 此目录在 VBA 宏的 HPC_DependsFiles 常量中指定。
+9. 将 Excel 工作簿复制到某个上传目录，例如 D:\Excel\Upload。 此目录在 VBA 宏的 HPC_DependsFiles 常量中指定。
 10. 若要在 Azure 中的群集上运行该工作簿，请单击工作表上的“群集”按钮。
 
 ### <a name="run-excel-udfs"></a>运行 Excel UDF
@@ -332,12 +333,12 @@ HPC Pack 部署脚本可运行一段时间。 此脚本的一项功能是导出�
 ```
 
 ### <a name="use-nettcp-binding"></a>使用 NetTcp 绑定
-若要使用 NetTcp 绑定，配置与连接到本地群集时类似。 需要在头节点 VM 上打开几个终结点。 例如，如果已使用 HPC Pack IaaS 部署脚本创建群集，请在 Azure 经典门户中设置终结点，如下所示。
+若要使用 NetTcp 绑定，配置与连接到本地群集时类似。 需要在头节点 VM 上打开几个终结点。 例如，如果已使用 HPC Pack IaaS 部署脚本创建群集，请在 Azure 门户中设置终结点，如下所示。
 
 1. 停止 VM。
 2. 分别为会话、代理、代理工作线程和数据服务添加 TCP 端口 9090、9087、9091、9094
    
-    ![配置终结点][endpoint]
+    ![配置终结点][endpoint-new-portal]
 3. 启动 VM。
 
 除了将头名称变更为 IaaS 群集完整名称外，SOA 客户端应用程序不需要进行任何更改。
@@ -351,6 +352,7 @@ HPC Pack 部署脚本可运行一段时间。 此脚本的一项功能是导出�
 [github]: ./media/excel-cluster-hpcpack/github.png
 [template]: ./media/excel-cluster-hpcpack/template.png
 [parameters]: ./media/excel-cluster-hpcpack/parameters.png
+[parameters-new-portal]: ./media/excel-cluster-hpcpack/parameters-new-portal.png
 [create]: ./media/excel-cluster-hpcpack/create.png
 [connect]: ./media/excel-cluster-hpcpack/connect.png
 [cert]: ./media/excel-cluster-hpcpack/cert.png
@@ -359,5 +361,6 @@ HPC Pack 部署脚本可运行一段时间。 此脚本的一项功能是导出�
 [options]: ./media/excel-cluster-hpcpack/options.png
 [run]: ./media/excel-cluster-hpcpack/run.png
 [endpoint]: ./media/excel-cluster-hpcpack/endpoint.png
+[endpoint-new-portal]: ./media/excel-cluster-hpcpack/endpoint-new-portal.png
 [udf]: ./media/excel-cluster-hpcpack/udf.png
 

@@ -13,17 +13,18 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 02/23/2017
+ms.date: 06/07/2017
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: 08682b7986cc2210ed21f254e2a9a63b5355e583
-ms.openlocfilehash: c7094a92355a199e9b94bc695c8499271b9adc39
-ms.lasthandoff: 02/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: d41a02b837d2cd0c478abdcf3068a5ccf7ed1b6f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/08/2017
 
 
 ---
 # <a name="service-limits-in-azure-search"></a>Azure 搜索中的服务限制
-对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是在“免费”、“基本”还是“标准”定价层上预配 Azure 搜索。[](search-create-service-portal.md)
+对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是在“免费”、“基本”还是“标准”定价层上[预配 Azure 搜索](search-create-service-portal.md)。
 
 * **免费**层是 Azure 订阅随附的多租户共享服务。 它是为现有订阅者提供的选项（无需额外费用），以便可以在注册专用资源前试用服务。
 * **基本**层为小规模生产工作负荷提供专用计算资源。
@@ -45,7 +46,7 @@ ms.lasthandoff: 02/24/2017
 | 资源 | 免费 | 基本 | S1 | S2 | S3 | S3 HD |
 | --- | --- | --- | --- | --- | --- | --- |
 | 索引：每个索引的最大字段 |1000 |100 <sup>1</sup> |1000 |1000 |1000 |1000 |
-| 索引：每个索引的最大计分配置文件 |16 |16 |16 |16 |16 |16 |
+| 索引：每个索引的最大计分配置文件 |100 |100 |100 |100 |100 |100 |
 | 索引：每个配置文件的最大函数 |8 |8 |8 |8 |8 |8 |
 | 索引器：每次调用的最大索引编制负载 |10,000 个文档 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |N/A <sup>2</sup> |
 | 索引器：最长运行时间 |3 分钟 |24 小时 |24 小时 |24 小时 |24 小时 |N/A <sup>2</sup> |
@@ -68,7 +69,7 @@ ms.lasthandoff: 02/24/2017
 ## <a name="workload-limits-queries-per-second"></a>工作负荷限制（每秒查询次数）
 | 资源 | 免费 | 基本 | S1 | S2 | S3 | S3 HD |
 | --- | --- | --- | --- | --- | --- | --- |
-| QPS |不适用 |每个副本大约&3; 个 |每个副本大约&15; 个 |每个副本大约&60; 个 |每个副本大于&60; 个 |每个副本大于&60; 个 |
+| QPS |不适用 |每个副本大约 3 个 |每个副本大约 15 个 |每个副本大约 60 个 |每个副本大于 60 个 |每个副本大于 60 个 |
 
 每秒查询次数 (QPS) 是基于启发所得的近似值，它使用模拟及实际的客户工作负荷获得估计值。 精确的 QPS 吞吐量因数据和查询性质而异。
 
@@ -79,7 +80,7 @@ ms.lasthandoff: 02/24/2017
 ## <a name="api-request-limits"></a>API 请求限制
 * 每个请求最大 16 MB <sup>1</sup>
 * 最大 8 KB URL 长度
-* 每个索引上载、合并或删除的批次最多包含 1000 个文档
+* 每个索引上传、合并或删除的批次最多包含 1000 个文档
 * $Orderby 子句中最多 32 字段
 * 最大搜索词大小为 UTF-8 编码文本的 32,766 字节（32 KB 减 2 个字节）
 

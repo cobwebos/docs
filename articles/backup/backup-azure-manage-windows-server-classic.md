@@ -12,11 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 06/14/2017
 ms.author: markgal;
-translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 41d02237708517c782d64aeadcafd053fcd6523d
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 7218366ec8455bc2d8747446319bac79e7b8abea
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -30,7 +32,13 @@ ms.openlocfilehash: 41d02237708517c782d64aeadcafd053fcd6523d
 本文概述了可通过 Azure 经典门户和 Microsoft Azure 备份代理完成的备份管理任务。
 
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
+
+> [!IMPORTANT]
+> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 从 2017 年 11 月 1 日起：
+>- 其余的所有备份保管库都将自动升级到恢复服务保管库。
+>- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
+>
 
 ## <a name="management-portal-tasks"></a>管理门户任务
 1. 登录到[管理门户](https://manage.windowsazure.com)。
@@ -192,9 +200,4 @@ Azure 备份代理提供的“限制”选项卡可让你控制在数据传输�
 * [从 Azure 还原 Windows Server 或 Windows 客户端](backup-azure-restore-windows-server.md)
 * 若要了解有关 Azure 备份的详细信息，请参阅 [Azure 备份概述](backup-introduction-to-azure-backup.md)
 * 访问 [Azure 备份论坛](http://go.microsoft.com/fwlink/p/?LinkId=290933)
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

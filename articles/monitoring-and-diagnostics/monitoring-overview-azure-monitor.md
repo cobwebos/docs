@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/12/2017
 ms.author: robb
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: 726a33b5cad8b44c520d6c59d418fec1bbfc6fa5
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 72b0c11f8bea24fc8777e3e0d7712577fab8ef97
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 05/10/2017
 
 
 ## <a name="azure-monitor-and-microsofts-other-monitoring-products"></a>Azure Monitor 和 Microsoft 的其他监视产品
-Azure Monitor 针对 Microsoft Azure 中的大多数服务提供基本级别的基础结构指标和日志。 尚未将其数据放置到 Azure Monitor 中的 Azure 服务在将来会将数据放置到其中。 
+Azure Monitor 针对 Microsoft Azure 中的大多数服务提供基本级别的基础结构指标和日志。 如果 Azure 服务尚未将数据置于 Azure Monitor 中，今后将会把数据置于其中。
 
 Microsoft 还提供了其他产品和服务，用以为还具有本地安装的开发人员、DevOps 或 IT 运营人员提供其他监视功能。 若要了解这些不同的产品和服务以及它们如何协作，请参阅 [Microsoft Azure 中的监视功能](monitoring-overview.md)。
 
@@ -138,7 +138,7 @@ Microsoft 还提供了其他产品和服务，用以为还具有本地安装的�
 * [PowerShell](insights-powershell-samples.md)  
 * [跨平台的命令行接口 (CLI)](insights-cli-samples.md)
 * [REST API](https://docs.microsoft.com/rest/api/monitor/)
-* [.NET SDK](https://msdn.microsoft.com/library/dn802153.aspx)
+* [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
 
 ## <a name="next-steps"></a>后续步骤
 详细了解以下内容

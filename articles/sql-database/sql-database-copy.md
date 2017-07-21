@@ -3,23 +3,23 @@ title: "复制 Azure SQL 数据库 | Microsoft Docs"
 description: "创建 Azure SQL 数据库的副本"
 services: sql-database
 documentationcenter: 
-author: anosov1960
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: 5aaf6bcd-3839-49b5-8c77-cbdf786e359b
 ms.service: sql-database
 ms.custom: load & move data
 ms.devlang: NA
-ms.date: 04/05/2017
-ms.author: sashan;carlrab
+ms.date: 06/15/2017
+ms.author: carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: af953e16103951fe2fd283898b3c466a1ebe91fd
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 67c42b8df2f1d12ceecd127ab24d359a6de8ef43
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -39,7 +39,7 @@ ms.lasthandoff: 04/27/2017
 
 如果使用 [Azure Active Directory](../active-directory/active-directory-whatis.md)，则完全无需管理副本中的凭据。 但是，将数据库复制到新服务器时，基于登录名的访问可能不起作用，因为登录名在新服务器上不存在。 若要了解如何在将数据库复制到其他逻辑服务器时管理登录名，请参阅[灾难恢复后如何管理 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。 
 
-复制成功之后，重新映射其他用户之前，只有启动复制的登录名，即数据库所有者，才能登录到新数据库。 若要在复制操作完成后解析登录名，请参阅[解析登录名](sql-database-copy.md#resolve-logins.md)。
+复制成功之后，重新映射其他用户之前，只有启动复制的登录名，即数据库所有者，才能登录到新数据库。 若要在复制操作完成后解析登录名，请参阅[解析登录名](#resolve-logins)。
 
 ## <a name="copy-a-database-by-using-the-azure-portal"></a>使用 Azure 门户复制数据库
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 04/27/2017
 
 ## <a name="copy-a-database-by-using-powershell"></a>使用 PowerShell 复制数据库
 
-若要使用 PowerShell 复制数据库，请使用 [`New-AzureRmSqlDatabaseCopy`](/powershell/module/azurerm.sql/new-azurermsqldatabasecopy) cmdlet。 
+若要使用 PowerShell 复制数据库，请使用 [New-AzureRmSqlDatabaseCopy](/powershell/module/azurerm.sql/new-azurermsqldatabasecopy) cmdlet。 
 
 ```PowerShell
 New-AzureRmSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `

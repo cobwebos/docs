@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 05/26/2017
+ms.date: 05/31/2017
 ms.author: genli
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 3ba81282cd7b58cc118497c14e911fc89815d6d4
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: bd832efd3902dd61be1a8b64396eaadf1cd76e24
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -49,7 +49,7 @@ RDP 连接涉及以下组件：
 ## <a name="preliminary-steps"></a>预备步骤
 在继续进行详细故障排除之前，
 
-* 在 Azure 经典门户或 Azure 门户中检查虚拟机的状态，查看是否存在任何明显问题。
+* 在 Azure 门户中检查虚拟机的状态，查看是否存在任何明显问题。
 * 按照[基本故障排除指南中常见 RDP 错误的快速修复步骤](troubleshoot-rdp-connection.md#quick-troubleshooting-steps)操作
 
 在执行这些步骤后，尝试通过远程桌面重新连接到 VM。

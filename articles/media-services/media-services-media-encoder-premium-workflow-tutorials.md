@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 07/19/2017
 ms.author: christoc;xpouyat;juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 602f86f17baffe706f27963e8d9963f082971f54
 ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>高级媒体编码器高级工作流教程
@@ -66,10 +67,10 @@ ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
   * [通过脚本组件修改剪辑列表](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_modify_clip_list)
   * [添加 ClippingEnabled 便利属性](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_clippingenabled_prop)
 
-## <a name="a-idmxftomp4aencoding-mxf-into-a-single-bitrate-mp4"></a><a id="MXF_to_MP4"></a>将 MXF 编码为单比特率 MP4
+## <a id="MXF_to_MP4"></a>将 MXF 编码为单比特率 MP4
 在本演练中，我们将使用来自 .MXF 输入文件 AAC-HE 编码的音频来创建单比特率 .MP4 文件。
 
-### <a name="a-idmxftomp4startnewastarting-a-new-workflow"></a><a id="MXF_to_MP4_start_new"></a>启动新工作流
+### <a id="MXF_to_MP4_start_new"></a>启动新工作流
 打开“工作流设计器”，然后选择“文件”-“新建工作区”-“转码蓝图”
 
 新的工作流将显示 3 个元素：
@@ -82,7 +83,7 @@ ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
 
 新编码工作流
 
-### <a name="a-idmxftomp4withfileinputausing-the-media-file-input"></a><a id="MXF_to_MP4_with_file_input"></a>使用媒体文件输入
+### <a id="MXF_to_MP4_with_file_input"></a>使用媒体文件输入
 为了接受我们的输入媒体文件，请从添加媒体文件输入组件开始。 若要将组件添加到工作流，请在“存储库”搜索框中查找它，然后将所需的项拖放到设计器窗格。 对“媒体文件输入”执行此操作，并将“主源文件”组件从“媒体文件输入”连接到“文件名”输入插针。
 
 ![连接的媒体文件输入](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-file-input.png)
@@ -101,7 +102,7 @@ ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
 
 配置的输入和输出属性
 
-### <a name="a-idmxftomp4streamsainspecting-media-streams"></a><a id="MXF_to_MP4_streams"></a>检查媒体流
+### <a id="MXF_to_MP4_streams"></a>检查媒体流
 通常我们想要知道经过工作流之后流的外观。 若要在工作流中的任一时间点检查流，只需单击任何组件上的输出或输入插针。 在此情况下，请尝试从我们的“媒体文件输入”单击“未压缩的视频”输出插针。 将打开一个对话框，让你检查输出视频。
 
 ![检查未压缩的视频输出插针](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-inspecting-uncompressed-video-output.png)
@@ -110,7 +111,7 @@ ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
 
 在本例中，它告诉我们要对一段接近 2 分钟的视频以 4:2:2 采样率、每秒 24 帧的速率处理 1920x1080 输入。
 
-### <a name="a-idmxftomp4filegenerationaadding-a-video-encoder-for-mp4-file-generation"></a><a id="MXF_to_MP4_file_generation"></a>添加视频编码器用于生成 .MP4 文件
+### <a id="MXF_to_MP4_file_generation"></a>添加视频编码器用于生成 .MP4 文件
 请注意，现在，“未压缩的视频”和多个“未压缩的音频”输出插针可供用于我们的媒体文件输入。 若要为输入视频编码，我们需要一个编码组件 - 在此情况下用于生成 .MP4 文件。
 
 若要将视频流编码成 H.264，请将 AVC 视频编码器组件添加到设计器图面。 此组件将未压缩的视频流作为输入，并在其输出插针上提供 AVC 压缩视频流。
@@ -136,7 +137,7 @@ ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
 
 连接的 AVC 主编码器
 
-### <a name="a-idmxftomp4audioaencoding-the-audio-stream"></a><a id="MXF_to_MP4_audio"></a>为音频流编码
+### <a id="MXF_to_MP4_audio"></a>为音频流编码
 此时，我们已将视频编码，但仍需要压缩原始未压缩的音频流。 对此，我们将使用 AAC 编码器 (Dolby) 组件进行 AAC 编码。 将该组件添加到工作流。
 
 ![未连接的 AVC 编码器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-unconnected-aac-encoder.png)
@@ -161,14 +162,14 @@ ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
 
 将“扬声器位置分配器”的输出连接到“AAC 编码器”的输入。 然后，告诉 AAC 编码器使用“2.0 (L,R)”声道预设，让它知道要将立体声音频处理为输入。
 
-### <a name="a-idmxftomp4audioandfideoamultiplexing-audio-and-video-streams-into-an-mp4-container"></a><a id="MXF_to_MP4_audio_and_fideo"></a>将音频和视频流多路复用到 MP4 容器
+### <a id="MXF_to_MP4_audio_and_fideo"></a>将音频和视频流多路复用到 MP4 容器
 假设我们有 AVC 编码的视频流和 AAC 编码的音频流，我们可以将两者捕获为 .MP4 容器。 将不同的流混合为单一流的过程称为“多路复用”（“muxing”）。 在本例中，我们正在将音频和视频流交错到单个一致的 .MP4 包。 为 .MP4 容器协调此操作的组件称为 ISO MPEG-4 多路复用器。 将一个多路复用器添加到设计器图面，并将 AVC 视频编码器和 AAC 编码器连接到其输入。
 
 ![连接的 MPEG4 多路复用器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-mpeg4-multiplexer.png)
 
 连接的 MPEG4 多路复用器
 
-### <a name="a-idmxftomp4writingmp4awriting-the-mp4-file"></a><a id="MXF_to_MP4_writing_mp4"></a>写入 MP4 文件
+### <a id="MXF_to_MP4_writing_mp4"></a>写入 MP4 文件
 写入输出文件时，将使用“文件输出”组件。 我们可以将它连接到 ISO MPEG-4 多路复用器的输出，让其将输出写入到磁盘。 为此，请将容器 (MPEG-4) 输出插针连接到“文件输出”的“写入”输入插针。
 
 ![连接的文件输出](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-file-output.png)
@@ -202,7 +203,7 @@ ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
 
 文件表达式解析输出目录
 
-### <a name="a-idmxftomp4assetfromoutputacreating-a-media-services-asset-from-the-output-file"></a><a id="MXF_to_MP4_asset_from_output"></a>从输出文件创建媒体服务资产
+### <a id="MXF_to_MP4_asset_from_output"></a>从输出文件创建媒体服务资产
 尽管我们已编写一个 MP4 输出文件，我们仍需要指出此文件属于媒体服务因为执行此工作流生成的输出资产。 为此，请使用工作流画布上的“输出文件/资产”节点。 所有传入到此节点的文件将成为生成的 Azure 媒体服务资产的一部分。
 
 将“文件输出”组件连接到“输出文件/资产”组件以完成工作流。
@@ -211,10 +212,10 @@ ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
 
 *已完成的工作流*
 
-### <a name="a-idmxftomp4testatest-the-finished-workflow-locally"></a><a id="MXF_to_MP4_test"></a>在本地测试完成的工作流
+### <a id="MXF_to_MP4_test"></a>在本地测试完成的工作流
 若要在本地测试工作流，请按顶部工具栏中的播放按钮。 工作流完成执行后，请检查配置的输出文件夹中生成的输出。 你将看到从 MXF 输入源文件编码完成的 MP4 输出文件。
 
-## <a name="a-idmxftomp4withdynpackagingaencoding-mxf-into-mp4---multibitrate-dynamic-packaging-enabled"></a><a id="MXF_to_MP4_with_dyn_packaging"></a>将 MXF 编码为多比特率 MP4 - 动态打包已启用
+## <a id="MXF_to_MP4_with_dyn_packaging"></a>将 MXF 编码为多比特率 MP4 - 动态打包已启用
 在本演练中，我们将使用来自单个 .MXF 输入文件 AAC 编码的音频来创建一组多比特率 MP4 文件。
 
 想要将多比特率资产输出用于结合 Azure 媒体服务提供的动态打包功能时，需要对每个不同的比特率与分辨率生成多个 GOP 对齐的 MP4 文件。 为此，可以先完成[将 MXF 编码为单比特率 MP4](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4) 演练。
@@ -223,7 +224,7 @@ ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
 
 启动工作流
 
-### <a name="a-idmxftomp4withdynpackagingmoreoutputsaadding-one-or-more-additional-mp4-outputs"></a><a id="MXF_to_MP4_with_dyn_packaging_more_outputs"></a>添加一个或多个其他 MP4 输出
+### <a id="MXF_to_MP4_with_dyn_packaging_more_outputs"></a>添加一个或多个其他 MP4 输出
 我们生成的 Azure 媒体服务资产中的每个 MP4 文件，将支持不同的比特率与分辨率。 让我们将一个或多个 MP4 输出文件添加到工作流。
 
 为了确保使用相同的设置来创建视频编码器，最方便的方式是复制现有的 AVC 视频编码器，并设置其他分辨率与比特率的组合（让我们添加 960x540，每秒 25 帧，2.5 Mbps 的组合）。 若要复制现有的编码器，请在设计器图面中执行复制粘贴。
@@ -258,7 +259,7 @@ ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
 
 注意：可以对要添加到资产输出的任何其他比特率和分辨率组合重复此过程。
 
-### <a name="a-idmxftomp4withdynpackagingconfoutputnamesaconfiguring-the-file-output-names"></a><a id="MXF_to_MP4_with_dyn_packaging_conf_output_names"></a>配置文件输出名称
+### <a id="MXF_to_MP4_with_dyn_packaging_conf_output_names"></a>配置文件输出名称
 我们已将多个文件添加到输出资产。 这使得需要确定每个输出文件的文件名彼此不同，并甚至可能应用文件命名约定，使得能够从文件名清楚知道要处理的是什么。
 
 文件输出命名可以通过设计器中的表达式来控制。 打开其中一个“文件输出”组件的属性窗格，然后打开“文件属性”的表达式编辑器。 第一个输出文件是通过以下表达式配置的（请参阅有关[从 MXF 转为单比特率 MP4 输出](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)的教程）：
@@ -276,7 +277,7 @@ ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
 
 执行临时测试回合，以确保正确生成这两个 MP4 输出文件。
 
-### <a name="a-idmxftomp4withdynpackagingaudiotracksaadding-a-separate-audio-track"></a><a id="MXF_to_MP4_with_dyn_packaging_audio_tracks"></a>添加单独的音轨
+### <a id="MXF_to_MP4_with_dyn_packaging_audio_tracks"></a>添加单独的音轨
 如我们稍后所见，生成要随着我们的 MP4 输出文件发送的 .ism 文件时，我们也将需要仅限音频的 MP4 文件作为自适应流的音轨。 若要创建此文件，请将附加的多路复用器添加到工作流（ISO-MPEG-4 多路复用器），并将 AAC 编码器的输出插针与其音轨 1 输入插针连接。
 
 ![已添加音频多路复用器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-audio-muxer-added.png)
@@ -291,7 +292,7 @@ ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
 
 用于创建输出文件的音频多路复用器
 
-### <a name="a-idmxftomp4withdynpackagingismfileaadding-the-ism-smil-file"></a><a id="MXF_to_MP4_with_dyn_packaging_ism_file"></a>添加 .ISM SMIL 文件
+### <a id="MXF_to_MP4_with_dyn_packaging_ism_file"></a>添加 .ISM SMIL 文件
 为了让动态打包能在我们的媒体服务资产中结合这两个 MP4 文件（仅限音频的 MP4）运行，我们还需要一个清单文件（也称为“SMIL”文件：同步多媒体集成语言）。 此文件可向 Azure 媒体服务指出哪些 MP4 文件可供动态打包，以及要考虑进行音频流式处理的文件。 包含单个音频流的一组 MP4 的典型清单文件类似于下面：
 
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
@@ -323,17 +324,17 @@ ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
 
 已完成 MXF 到多比特率 MP4 的工作流
 
-## <a name="a-idmxftomultibitratemp4aencoding-mxf-into-multibitrate-mp4---enhanced-blueprint"></a><a id="MXF_to__multibitrate_MP4"></a>将 MXF 编码为多比特率 MP4 - 增强的蓝图
+## <a id="MXF_to__multibitrate_MP4"></a>将 MXF 编码为多比特率 MP4 - 增强的蓝图
 在[前一个工作流演练](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)中，我们已了解单个 MXF 输入资产如何转换成输出资产，其具有多比特率 MP4 文件、仅限音频的 MP4 文件和用于与 Azure 媒体服务动态打包结合使用的清单文件。
 
 本演练将演示如何增强一些方面并提高其方便性。
 
-### <a name="a-idmxftomultibitratemp4overviewaworkflow-overview-to-enhance"></a><a id="MXF_to_multibitrate_MP4_overview"></a>要增强的工作流概述
+### <a id="MXF_to_multibitrate_MP4_overview"></a>要增强的工作流概述
 ![要增强的多比特率 MP4 工作流](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-multibitrate-mp4-workflow-to-enhance.png)
 
 要增强的多比特率 MP4 工作流
 
-### <a name="a-idmxftomultibitratemp4filenamingafile-naming-conventions"></a><a id="MXF_to__multibitrate_MP4_file_naming"></a>文件命名约定
+### <a id="MXF_to__multibitrate_MP4_file_naming"></a>文件命名约定
 在前面的工作流中，我们已将一个简单的表达式指定为生成输出文件名的基础。 不过，我们有一些重复项目：所有单个输出文件组件都指定了此类表达式。
 
 例如，我们的第一个视频文件的文件输出组件使用了此表达式配置：
@@ -348,7 +349,7 @@ ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
 
 假设我们将从单个 MP4 文件的比特率驱动文件名的配置。 我们将力求在一个中心位置（在图形的根目录）配置的这些比特率，将从该位置访问它们，以配置和驱动文件名生成。 为此，我们从来自两个 AVC 编码器的比特率属性发布到我们的工作流根目录开始，使其成为可从根目录及从 AVC 编码器访问。 （即使显示在两个不同的位置，也只有一个基本值。）
 
-### <a name="a-idmxftomultibitratemp4publishingapublishing-component-properties-onto-the-workflow-root"></a><a id="MXF_to__multibitrate_MP4_publishing"></a>将组件属性发布到工作流根目录
+### <a id="MXF_to__multibitrate_MP4_publishing"></a>将组件属性发布到工作流根目录
 打开第一个 AVC 编码器，转到“比特率(kbps)”属性，然后从下拉列表中选择“发布”。
 
 ![发布比特率属性](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publishing-bitrate-property.png)
@@ -384,7 +385,7 @@ ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
 
 请注意，对这三个值的任何更改还会重新配置并更改所链接（和发布源位置）的单个组件的值。
 
-### <a name="a-idmxftomultibitratemp4outputfilesahave-generated-output-file-names-rely-on-published-property-values"></a><a id="MXF_to__multibitrate_MP4_output_files"></a>使生成的输出文件名依赖于发布的属性值
+### <a id="MXF_to__multibitrate_MP4_output_files"></a>使生成的输出文件名依赖于发布的属性值
 不要对我们生成的文件名进行硬编码，我们现在可以在每个“文件输出”组件上更改文件名，以依赖刚刚在图形根目录上发布的表达式属性。 从第一个文件输出开始，查找文件属性，然后编辑表达式，如下所示：
 
     ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4
@@ -405,15 +406,15 @@ ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
 
 如果我们现在更改任何视频或音频文件的比特率，将重新配置单个编码器，并对所有项目自动使用基于比特率的文件名约定。
 
-## <a name="a-idthumbnailstomultibitratemp4aadding-thumbnails-to-multibitrate-mp4-output"></a><a id="thumbnails_to__multibitrate_MP4"></a>将缩略图添加到多比特率 MP4 输出
+## <a id="thumbnails_to__multibitrate_MP4"></a>将缩略图添加到多比特率 MP4 输出
 从[通过 MXF 输入生成多比特率 MP4 输出](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)的工作流开始，我们现在要将缩略图添加到输出。
 
-### <a name="a-idthumbnailstomultibitratemp4overviewaworkflow-overview-to-add-thumbnails-to"></a><a id="thumbnails_to__multibitrate_MP4_overview"></a>要将缩略图添加到的工作流概述
+### <a id="thumbnails_to__multibitrate_MP4_overview"></a>要将缩略图添加到的工作流概述
 ![要从中开始的多比特率 MP4 工作流](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-multibitrate-mp4-workflow-to-start-from.png)
 
 要从中开始的多比特率 MP4 工作流
 
-### <a name="a-idthumbnailstomultibitratemp4withjpgaadding-jpg-encoding"></a><a id="thumbnails_to__multibitrate_MP4__with_jpg"></a>添加 JPG 编码
+### <a id="thumbnails_to__multibitrate_MP4__with_jpg"></a>添加 JPG 编码
 缩略图生成核心是可以输出 JPG 文件的 JPG 编码器组件。
 
 ![JPG 编码器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-jpg-encoder.png)
@@ -434,7 +435,7 @@ JPG 编码器
 
 让我们通过将模式设置为时间（秒）及间隔设置为 60，每隔一分钟创建缩略图。
 
-### <a name="a-idthumbnailstomultibitratemp4colorspaceadealing-with-color-space-conversion"></a><a id="thumbnails_to__multibitrate_MP4_color_space"></a>处理颜色空间转换
+### <a id="thumbnails_to__multibitrate_MP4_color_space"></a>处理颜色空间转换
 尽管逻辑上可看到帧门限和媒体文件输入的未压缩的视频插针现在已可连接，如果我们想执行此操作，则收到警告。
 
 ![输入颜色空间错误](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-input-color-space-error.png)
@@ -451,7 +452,7 @@ JPG 编码器
 
 在属性窗口中，从“预设”列表中选择 BGR 24 项。
 
-### <a name="a-idthumbnailstomultibitratemp4writingthumbnailsawriting-the-thumbnails"></a><a id="thumbnails_to__multibitrate_MP4_writing_thumbnails"></a>编写缩略图
+### <a id="thumbnails_to__multibitrate_MP4_writing_thumbnails"></a>编写缩略图
 不同于 MP4 视频，JPG 编码器组件将输出多个文件。 为了解决此问题，可以使用“场景搜索 JPG 文件编写器”组件：它采用传入的 JPG 缩略图并写出，每个文件名末尾加上不同的数字。 （数字通常表示缩略图取自流中的秒数/单位数。）
 
 ![引入场景搜索 JPG 文件写入器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-scene-search-jpg-file-writer.png)
@@ -472,7 +473,7 @@ JPG 编码器
 
 将“场景搜索 JPG 文件编写器”连接到“输出文件/资产”节点。
 
-### <a name="a-idthumbnailstomultibitratemp4errorsadetecting-errors-in-a-workflow"></a><a id="thumbnails_to__multibitrate_MP4_errors"></a>在工作流中检测错误
+### <a id="thumbnails_to__multibitrate_MP4_errors"></a>在工作流中检测错误
 将颜色空间转换器的输入连接到原始未压缩的视频输出。 现在，对工作流执行本地测试回合。 工作流很可能突然停止执行，并在发生错误之组件上以红色外框指示：
 
 ![颜色空间转换器错误](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-color-space-converter-error.png)
@@ -493,22 +494,22 @@ JPG 编码器
 
 在数据类型更新器中更新颜色空间标准
 
-### <a name="a-idthumbnailstomultibitratemp4finishafinished-workflow"></a><a id="thumbnails_to__multibitrate_MP4_finish"></a>已完成的工作流
+### <a id="thumbnails_to__multibitrate_MP4_finish"></a>已完成的工作流
 现在，我们已完成工作流，接着执行另一个测试回合来查看它的传递。
 
 ![包含缩略图的多个 mp4 输出的已完成工作流](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-for-multi-mp4-thumbnails.png)
 
 包含缩略图的多个 mp4 输出的已完成工作流
 
-## <a name="a-idtimebasedtrimatime-based-trimming-of-multibitrate-mp4-output"></a><a id="time_based_trim"></a>对多比特率 MP4 输出进行基于时间的修剪
+## <a id="time_based_trim"></a>对多比特率 MP4 输出进行基于时间的修剪
 从[通过 MXF 输入生成多比特率 MP4 输出](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)的工作流开始，我们现在将基于时间戳修剪源视频。
 
-### <a name="a-idtimebasedtrimstartaworkflow-overview-to-start-adding-trimming-to"></a><a id="time_based_trim_start"></a>要在其中开始添加修剪的工作流概述
+### <a id="time_based_trim_start"></a>要在其中开始添加修剪的工作流概述
 ![要在其中添加修剪的起始工作流](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-starting-workflow-to-add-trimming.png)
 
 要在其中添加修剪的起始工作流
 
-### <a name="a-idtimebasedtrimusestreamtrimmerausing-the-stream-trimmer"></a><a id="time_based_trim_use_stream_trimmer"></a>使用流修剪器
+### <a id="time_based_trim_use_stream_trimmer"></a>使用流修剪器
 流修剪器组件允许根据计时信息（秒、分等等）修剪输入流的开头和末尾。 修剪器不支持基于帧的修剪。
 
 ![流修剪器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-stream-trimmer.png)
@@ -553,12 +554,12 @@ JPG 编码器
 
     ${ROOT_TrimmingEndTime}
 
-### <a name="a-idtimebasedtrimfinishafinished-workflow"></a><a id="time_based_trim_finish"></a>已完成的工作流
+### <a id="time_based_trim_finish"></a>已完成的工作流
 ![已完成的工作流](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-time-base-trimming.png)
 
 *已完成的工作流*
 
-## <a name="a-idscriptingaintroducing-the-scripted-component"></a><a id="scripting"></a>引入脚本组件
+## <a id="scripting"></a>引入脚本组件
 脚本组件可以在工作流执行阶段执行任意脚本。 有四个可以执行的不同脚本，每个都具有特定特征，以及在工作流生命周期中的位置：
 
 * **commandScript**
@@ -568,7 +569,7 @@ JPG 编码器
 
 脚本组件的文档更详细说明了上述各个脚本。 在[下一部分](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim)，**realizeScript** 脚本组件将用于在工作流启动时快速构造剪辑列表 xml。 在组件安装期间调用此脚本，这种情况在其生命周期中只发生一次。
 
-### <a name="a-idscriptinghelloworldascripting-within-a-workflow-hello-world"></a><a id="scripting_hello_world"></a>在工作流中编写脚本：Hello World
+### <a id="scripting_hello_world"></a>在工作流中编写脚本：Hello World
 将脚本组件拖放到设计器图面上，并重命名（例如，“SetClipListXML”）。
 
 ![添加脚本组件](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-add-scripted-comp.png)
@@ -619,15 +620,15 @@ Hello world 日志输出
 
 有关访问节点路径的日志输出
 
-## <a name="a-idframebasedtrimaframe-based-trimming-of-multibitrate-mp4-output"></a><a id="frame_based_trim"></a>对多比特率 MP4 输出进行基于帧的修剪
+## <a id="frame_based_trim"></a>对多比特率 MP4 输出进行基于帧的修剪
 从[通过 MXF 输入生成多比特率 MP4 输出](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)的工作流开始，我们现在将基于帧计数修剪源视频。
 
-### <a name="a-idframebasedtrimstartablueprint-overview-to-start-adding-trimming-to"></a><a id="frame_based_trim_start"></a>要在其中开始添加修剪的蓝图概述
+### <a id="frame_based_trim_start"></a>要在其中开始添加修剪的蓝图概述
 ![要在其中开始添加修剪的工作流](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-workflow-start-adding-trimming-to.png)
 
 要在其中开始添加修剪的工作流
 
-### <a name="a-idframebasedtrimcliplistausing-the-clip-list-xml"></a><a id="frame_based_trim_clip_list"></a>使用剪辑列表 XML
+### <a id="frame_based_trim_clip_list"></a>使用剪辑列表 XML
 在所有以前的工作流教程中，我们使用“媒体文件输入”组件作为视频输入源。 不过，在此特定方案中，我们将改为使用剪辑列表源组件。 请注意，这应该不是最好的工作方式；只在有实际原因这么做时才使用剪辑列表源（如同在以下情况下，我们使用剪辑列表修剪功能）。
 
 若要从“媒体文件输入”切换到“剪辑列表源”，请将“剪辑列表源”组件拖放到设计图面，并将“剪辑列表 XML”插针连接到工作流设计器的“剪辑列表 XML”插针。 这应会根据输入视频，以输出插针填充剪辑列表源。 现在，从剪辑列表源将“未压缩的视频”和“未压缩的音频”插针连接到相应的“AVC 编码器”和“音频流交错器”。 现在删除媒体文件输入。
@@ -672,7 +673,7 @@ Hello world 日志输出
 
 脚本组件属性
 
-### <a name="a-idframebasedtrimmodifycliplistamodifying-the-clip-list-from-a-scripted-component"></a><a id="frame_based_trim_modify_clip_list"></a>通过脚本组件修改剪辑列表
+### <a id="frame_based_trim_modify_clip_list"></a>通过脚本组件修改剪辑列表
 在我们可以重新写入工作流启动时生成的剪辑列表 XML 之前，需要访问剪辑列表 XML 属性和内容。 可按如下所示执行操作：
 
     // get cliplist xml:
@@ -802,7 +803,7 @@ Hello world 日志输出
 
 此时，只要需要，我们可以在让更改随着时间应用时执行及修改工作流。    
 
-### <a name="a-idframebasedtrimclippingenabledpropaadding-a-clippingenabled-convenience-property"></a><a id="frame_based_trim_clippingenabled_prop"></a>添加 ClippingEnabled 便利属性
+### <a id="frame_based_trim_clippingenabled_prop"></a>添加 ClippingEnabled 便利属性
 因为可能不要始终进行修剪，让通过添加方便的布尔值标志（可指出是否要启用修剪/剪辑）来完成工作流。
 
 如前面一样，将一个新属性发布到类型为“BOOLEAN”、名为“ClippingEnabled”的工作流的根目录。
@@ -824,7 +825,7 @@ Hello world 日志输出
     }
 
 
-### <a name="a-idcodeacomplete-code"></a><a id="code"></a>完整代码
+### <a id="code"></a>完整代码
     import javax.xml.parsers.*;
     import org.xml.sax.*;
     import org.w3c.dom.*;
@@ -938,9 +939,4 @@ Hello world 日志输出
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

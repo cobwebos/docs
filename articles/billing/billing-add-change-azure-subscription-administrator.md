@@ -4,7 +4,7 @@ description: "描述如何添加或更改 Azure 共同管理员、服务管理�
 services: 
 documentationcenter: 
 author: genlin
-manager: vikdesai
+manager: jlian
 editor: 
 tags: billing
 ms.assetid: 13a72d76-e043-4212-bcac-a35f4a27ee26
@@ -13,12 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/17/2017
+ms.date: 06/13/2017
 ms.author: genli
-translationtype: Human Translation
-ms.sourcegitcommit: 6d438cde704323a07cc125eb75d08cb64b2432ec
-ms.openlocfilehash: 00b71701c4c114007e2d9a6d23f20b3df5fb2534
-ms.lasthandoff: 02/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 782489e7551fef3daed4de8212821e93f7777535
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -99,16 +100,16 @@ ms.lasthandoff: 02/21/2017
 
 | 管理角色 | 限制 | 说明 |
 | --- | --- | --- |
-| 帐户管理员 (AA) |每个 Azure 帐户&1; 个帐户管理员 |这是注册或购买了 Azure 订阅的人员，有权访问[帐户中心](https://account.windowsazure.com/Home/Index)并执行各种管理任务。 其中包括能够创建订阅、取消订阅、更改订阅的帐单，以及更改服务管理员。 |
-| 服务管理员 (SA) |每个 Azure 订阅&1; 个服务管理员 |此角色有权管理 [Azure 门户](https://portal.azure.com)中的服务。 默认情况下，新订阅的帐户管理员也是服务管理员。 |
-| [Azure 经典门户](https://manage.windowsazure.com)中的共同管理员 (CA) |每个订阅&200; 个共同管理员 |此角色具有与服务管理员一样的访问特权，但不能更改订阅与 Azure 目录之间的关联关系。 |
+| 帐户管理员 (AA) |每个 Azure 帐户 1 个帐户管理员 |这是注册或购买了 Azure 订阅的人员，有权访问[帐户中心](https://account.windowsazure.com/Home/Index)并执行各种管理任务。 其中包括能够创建订阅、取消订阅、更改订阅的帐单，以及更改服务管理员。 |
+| 服务管理员 (SA) |每个 Azure 订阅 1 个服务管理员 |此角色有权管理 [Azure 门户](https://portal.azure.com)中的服务。 默认情况下，新订阅的帐户管理员也是服务管理员。 |
+| [Azure 经典门户](https://manage.windowsazure.com)中的共同管理员 (CA) |每个订阅 200 个共同管理员 |此角色具有与服务管理员一样的访问特权，但不能更改订阅与 Azure 目录之间的关联关系。 |
 
 可以使用 Azure Active Directory 基于角色的访问控制 (RBAC) 将用户添加到多个角色。 有关更多信息，请参阅 [Azure Active Directory 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。
 
 ## <a name="limitations-and-restrictions-for-admin-accounts"></a>管理员帐户的限制和约束
 * 每个订阅都与一个 Azure AD 目录（也称默认目录）相关联。 若要查找与订阅相关联的默认目录，请转到 [Azure 经典门户](https://manage.windowsazure.com/)，然后选择**“设置”** > **“订阅”**。 选中订阅 ID 即可查找默认目录。
 * 如果使用 Microsoft 帐户登录，则只能将默认目录中的其他 Microsoft 帐户或用户添加为共同管理员。
-* 如果使用组织帐户登录，则可将组织中的其他组织帐户添加为共同管理员。 例如，abby@contoso.com 可以添加 bob@contoso.com 作为服务管理员或共同管理员，但不能添加 john@notcontoso.com，除非 john@noncontoso.com 是位于默认目录中。 使用组织帐户登录的用户可以继续将 Microsoft 帐户用户添加为服务管理员或共同管理员。
+* 如果使用组织帐户登录，则可将组织中的其他组织帐户添加为共同管理员。 例如，abby@contoso.com 可以添加 bob@contoso.com 作为服务管理员或共同管理员，但不能添加 john@notcontoso.com，除非 john@notcontoso.com 是位于默认目录中。 使用组织帐户登录的用户可以继续将 Microsoft 帐户用户添加为服务管理员或共同管理员。
 * 既可使用组织帐户登录 Azure，请注意对服务管理员和共同管理员帐户要求方面的下述更改：
 
   | 登录方法 | 将 Microsoft 帐户或默认目录中的用户添加为 CA 或 SA？ | 将同一组织中的组织帐户添加为 CA 或 SA？ | 将另一组织中的组织帐户添加为 CA 或 SA？ |

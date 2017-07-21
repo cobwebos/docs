@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 中不到 5 分钟创建你的第一个 Python Web 应用 | Microsoft Docs"
-description: "在应用服务 Web 应用中快速部署第一个 Python Hello World 应用。"
+title: "在 Azure 中创建 Python Web 应用 | Microsoft Docs"
+description: "数分钟内在 Azure 应用服务 Web 应用中部署首个 Python Hello World。"
 services: app-service\web
 documentationcenter: 
 author: syntaxc4
@@ -16,38 +16,44 @@ ms.date: 03/17/2017
 ms.author: cfowler
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: df34052acc401fb5bb1e3f808c649c0ea0bcf33c
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 233db1cb74a6c81cf044953ecdf6e9de6cc50ee8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 06/28/2017
 
 ---
-# <a name="create-a-python-application-on-web-app"></a>在 Web 应用中创建 Python 应用程序
+# 在 Azure 中创建 Python Web 应用
+<a id="create-a-python-web-app-in-azure" class="xliff"></a>
 
-本快速入门教程逐步讲解如何开发 Python 应用并将其部署到 Azure。 我们将使用 Azure App Service 运行该应用，再使用 Azure CLI 在其中创建并配置一个新的 Web 应用。 然后，我们使用 git 将该 Python 应用部署到 Azure。
+[Azure Web 应用](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview)提供高度可缩放、自修补的 Web 托管服务。  本快速入门教程演示如何开发 Python 应用并将其部署到 Azure Web 应用。 使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建 Web 应用，并使用 Git 将 Python 代码示例部署到 Web 应用。
 
-![hello-world-in-browser](media/app-service-web-get-started-python/hello-world-in-browser.png)
+![在 Azure 中运行应用的示例](media/app-service-web-get-started-python/hello-world-in-browser.png)
 
-可以在 Mac、Windows 或 Linux 计算机上执行以下步骤。 大约 5 分钟内应可完成下面的所有步骤。
+可以在 Mac、Windows 或 Linux 计算机上执行以下步骤。 安装先决条件后，大约需要五分钟完成这些步骤。
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
 
-## <a name="prerequisites"></a>先决条件
+完成本教程：
 
-运行本示例之前，请在本地安装以下必备组件：
+1. [安装 Git](https://git-scm.com/)
+1. [安装 Python](https://www.python.org/downloads/)
 
-1. [下载并安装 git](https://git-scm.com/)
-1. [下载并安装 Python](https://www.python.org/downloads/)
-1. 下载并安装 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="download-the-sample"></a>下载示例
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-将 Hello World 示例应用存储库克隆到本地计算机。
+如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+
+## 下载示例
+<a id="download-the-sample" class="xliff"></a>
+
+在终端窗口中，运行以下命令，将示例应用存储库克隆到本地计算机。
 
 ```bash
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 ```
 
-> [!TIP]
-> 此外，也可以[下载示例](https://github.com/Azure-Samples/Python-docs-hello-world/archive/master.zip) zip 文件并将其解压缩。
+使用此终端窗口运行本快速入门中的所有命令。
 
 切换到包含示例代码的目录。
 
@@ -55,181 +61,52 @@ git clone https://github.com/Azure-Samples/python-docs-hello-world
 cd Python-docs-hello-world
 ```
 
-## <a name="run-the-app-locally"></a>在本地运行应用
+## 在本地运行应用
+<a id="run-the-app-locally" class="xliff"></a>
 
-打开一个终端窗口并使用针对该示例的 `Python` 命令行启动内置的 Python Web 服务器，在本地运行该应用程序。
+打开终端窗口并使用 `Python` 命令启动内置 Python Web 服务器，在本地运行应用程序。
 
 ```bash
 python main.py
 ```
 
-打开 Web 浏览器并导航到该示例。
-
-```bash
-http://localhost:5000
-```
+打开 Web 浏览器并导航到 http://localhost:5000 处的示例应用。
 
 页面中会显示该示例应用发出的 **Hello World** 消息。
 
-![localhost-hello-world-in-browser](media/app-service-web-get-started-python/localhost-hello-world-in-browser.png)
+![本地运行应用的示例](media/app-service-web-get-started-python/localhost-hello-world-in-browser.png)
 
 在终端窗口中，按 **Ctrl+C** 退出 Web 服务器。
 
-## <a name="log-in-to-azure"></a>登录 Azure
+[!INCLUDE [Log in to Azure](../../includes/login-to-azure.md)] 
 
-现在，我们将在终端窗口中使用 Azure CLI 2.0 创建所需的资源用于在 Azure 中托管该 Python 应用。 使用 [az login](/cli/azure/#login) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
+[!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)] 
 
-```azurecli
-az login
+[!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group.md)] 
+
+[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan.md)] 
+
+[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app.md)] 
+
+![空 Web 应用页面](media/app-service-web-get-started-python/app-service-web-service-created.png)
+
+已在 Azure 中新建了一个空的 Web 应用。
+
+## 配置为使用 Python
+<a id="configure-to-use-python" class="xliff"></a>
+
+使用 [az webapp config set](/cli/azure/webapp/config#set) 命令将 Web 应用配置为使用 Python 版本 `3.4`。
+
+```azurecli-interactive
+az webapp config set --python-version 3.4 --name <app_name> --resource-group myResourceGroup
 ```
 
-## <a name="configure-a-deployment-user"></a>配置部署用户
 
-对于 FTP 和本地 Git 部署，需在服务器上配置一个部署用户，用于对部署进行身份验证。 创建部署用户是一次性的配置。请记下用户名和密码，因为要在下面的步骤中用到。
+以这种方式设置 Python 版本将使用平台提供的默认容器。 若要使用自己的容器，请参阅 [az webapp config container set](/cli/azure/webapp/config/container#set) 命令的 CLI 参考。
 
-> [!NOTE]
-> 在 Web 应用中进行 FTP 和本地 Git 部署时需要一个部署用户。
-> `username` 和 `password` 是帐户级别的凭据，因此不同于 Azure 订阅凭据。 **只需创建这些凭据一次**。
->
+[!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git.md)] 
 
-使用 [az appservice web deployment user set](/cli/azure/appservice/web/deployment/user#set) 命令创建帐户级别的凭据。
-
-```azurecli
-az appservice web deployment user set --user-name <username> --password <password>
-```
-
-## <a name="create-a-resource-group"></a>创建资源组
-
-使用 [az group create](/cli/azure/group#create) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源（例如 Web 应用、数据库和存储帐户）的逻辑容器。
-
-```azurecli
-az group create --name myResourceGroup --location westeurope
-```
-
-## <a name="create-an-azure-app-service"></a>创建 Azure 应用服务
-
-使用 [az appservice plan create](/cli/azure/appservice/plan#create) 命令创建应用服务计划。
-
-[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
-
-以下示例使用**免费**定价层创建名为 `quickStartPlan` 的应用服务计划。
-
-```azurecli
-az appservice plan create --name quickStartPlan --resource-group myResourceGroup --sku FREE
-```
-
-创建应用服务计划后，Azure CLI 将显示类似于以下示例的信息。
-
-```json
-{
-"appServicePlanName": "quickStartPlan",
-"geoRegion": "North Europe",
-"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/quickStartPlan",
-"kind": "app",
-"location": "North Europe",
-"maximumNumberOfWorkers": 1,
-"name": "quickStartPlan",
-"provisioningState": "Succeeded",
-"resourceGroup": "myResourceGroup",
-"sku": {
-  "capacity": 0,
-  "family": "F",
-  "name": "F1",
-  "size": "F1",
-  "tier": "Free"
-},
-"status": "Ready",
-"type": "Microsoft.Web/serverfarms",
-}
-```
-
-## <a name="create-a-web-app"></a>创建 Web 应用
-
-创建应用服务计划后，请在 `quickStartPlan` 应用服务计划中创建 Web 应用。 该 Web 应用提供托管空间用于部署代码，并提供一个 URL 用于查看已部署的应用程序。 使用 [az appservice web create](/cli/azure/appservice/web#create) 命令创建该 Web 应用。
-
-在以下命令中，请将出现的 `<app_name>` 占位符替换为你自己的唯一应用名称。 `<app_name>` 将用作 Web 应用的默认 DNS 站点，因此，该名称需要在 Azure 中的所有应用之间保持唯一。 稍后，可以先将任何自定义 DNS 条目映射到 Web 应用，然后向用户公开该条目。
-
-```azurecli
-az appservice web create --name <app_name> --resource-group myResourceGroup --plan quickStartPlan
-```
-
-创建 Web 应用后，Azure CLI 将显示类似于以下示例的信息。
-
-```json
-{
-  "clientAffinityEnabled": true,
-  "defaultHostName": "<app_name>.azurewebsites.net",
-  "enabled": true,
-  "enabledHostNames": [
-    "<app_name>.azurewebsites.net",
-    "<app_name>.scm.azurewebsites.net"
-  ],
-  "hostNames": [
-    "<app_name>.azurewebsites.net"
-  ],
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/<app_name>",
-  "kind": "app",
-  "location": "North Europe",
-  "outboundIpAddresses": "13.69.190.80,13.69.191.239,13.69.186.193,13.69.187.34",
-  "resourceGroup": "myResourceGroup",
-  "serverFarmId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/quickStartPlan",
-  "state": "Running",
-  "type": "Microsoft.Web/sites",
-}
-```
-
-浏览到该站点查看新建的 Web 应用。
-
-```bash
-http://<app_name>.azurewebsites.net
-```
-
-![app-service-web-service-created](media/app-service-web-get-started-python/app-service-web-service-created.png)
-
-现在，我们已在 Azure 中创建一个空的新 Web 应用。 接下来，将 Web 应用配置为使用 Python 并将其部署到 Python 中。
-
-## <a name="configure-to-use-python"></a>配置为使用 Python
-
-使用 [az appservice web config update](/cli/azure/app-service/web/config#update) 命令将 Web 应用配置为使用 Python 版本 `3.4`。
-
-> [!TIP]
-> 以这种方式设置 Python 版本会使用平台提供的默认容器。如果你想要使用自己的容器，请参阅 [az appservice web config container update](https://docs.microsoft.com/cli/azure/appservice/web/config/container#update) 命令的 CLI 参考文章。
-
-```azurecli
-az appservice web config update --python-version 3.4 --name <app-name> --resource-group myResourceGroup
-```
-
-## <a name="configure-local-git-deployment"></a>配置本地 Git 部署
-
-可以通过不同的方法部署到 Web 应用，包括 FTP、本地 Git，以及 GitHub、Visual Studio Team Services 和 Bitbucket。
-
-使用 [az appservice web source-control config-local-git](/cli/azure/appservice/web/source-control#config-local-git) 命令配置对 Web 应用的本地 git 访问。
-
-```azurecli
-az appservice web source-control config-local-git --name <app_name> --resource-group myResourceGroup --query url --output tsv
-```
-
-复制终端的输出，因为下一步骤将要用到。
-
-```bash
-https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
-```
-
-## <a name="push-to-azure-from-git"></a>从 Git 推送到 Azure
-
-将 Azure 远程功能添加到本地 Git 存储库。
-
-```bash
-git remote add azure <paste-previous-command-output-here>
-```
-
-推送到 Azure 远程功能以部署应用程序。 系统将提示你输入前面在创建部署用户期间提供的密码。
-
-```azurecli
-git push azure master
-```
-
-在部署期间，Azure 应用服务会向 Git 告知其进度。
+[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
 
 ```bash
 Counting objects: 18, done.
@@ -273,7 +150,8 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-## <a name="browse-to-the-app"></a>浏览到应用
+## 浏览到应用
+<a id="browse-to-the-app" class="xliff"></a>
 
 使用 Web 浏览器浏览到已部署的应用程序。
 
@@ -281,59 +159,52 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 http://<app_name>.azurewebsites.net
 ```
 
-此时，显示 Hello World 消息的页面正在使用作为 Azure 应用服务 Web 应用运行的 Python 代码运行。
+Python 示例代码在 Azure 应用服务 Web 应用中运行。
 
-![hello-world-in-browser](media/app-service-web-get-started-python/hello-world-in-browser.png)
+![在 Azure 中运行应用的示例](media/app-service-web-get-started-python/hello-world-in-browser.png)
 
-## <a name="updating-and-deploying-the-code"></a>更新和部署代码
+**祝贺你！** 现已将第一个 Python 应用部署到应用服务。
 
-使用本地文本编辑器打开 Python 应用中的 `main.py` 文件，然后对 `return` 语句旁边的字符串中的文本稍微进行更改：
+## 更新并重新部署代码
+<a id="update-and-redeploy-the-code" class="xliff"></a>
+
+使用本地文本编辑器在 Python 应用中打开 `main.py` 文件，然后对 `return` 语句旁边的文本稍微进行更改：
 
 ```python
 return 'Hello, Azure!'
 ```
 
-提交在 git 中所做的更改，然后将代码更改推送到 Azure。
+提交在 Git 中所做的更改，然后将代码更改推送到 Azure。
 
 ```bash
 git commit -am "updated output"
 git push azure master
 ```
 
-完成部署后，切换回在“浏览到应用步骤”中打开的浏览器窗口，然后点击“刷新”。
+完成部署后，切换回“浏览到应用”[](#browse-to-the-app)步骤中打开的浏览器窗口，然后刷新页面。
 
-![hello-azure-in-browser](media/app-service-web-get-started-python/hello-azure-in-browser.png)
+![已更新的在 Azure 中运行应用的示例](media/app-service-web-get-started-python/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>管理新 Azure Web 应用
+## 管理新 Azure Web 应用
+<a id="manage-your-new-azure-web-app" class="xliff"></a>
 
-转到 Azure 门户，查看刚刚创建的 Web 应用。
+转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理创建的 Web 应用。
 
-为此，请登录到 [https://portal.azure.com](https://portal.azure.com)。
+在左侧菜单中单击“应用服务”，然后单击 Azure Web 应用的名称。
 
-从左侧菜单中单击“应用服务”，然后单击 Azure Web 应用的名称。
+![在门户中导航到 Azure Web 应用](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
 
-![在门户中导航到 Azure Web 应用](./media/app-service-web-get-started-python/app-service-list.png)
+将看到 Web 应用的概述页。 在此处可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 
 
-现已进入 Web 应用的_边栏选项卡_（水平打开的门户页）。
+![Azure 门户中的应用服务边栏选项卡](media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-detail.png)
 
-默认情况下，Web 应用的边栏选项卡显示“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 边栏选项卡左侧的选项卡显示可以打开的不同配置页。
-
-![Azure 门户中的应用服务边栏选项卡](media/app-service-web-get-started-python/app-service-detail.png)
-
-边栏选项卡中的这些选项卡显示了可添加到 Web 应用的许多强大功能。 以下列表只是列出了一部分可用的功能：
-
-* 映射自定义 DNS 名称
-* 绑定自定义 SSL 证书
-* 配置持续部署
-* 扩展和缩减
-* 添加用户身份验证
-
-**祝贺你！** 现已将第一个 Python 应用部署到应用服务。
+左侧菜单提供用于配置应用的不同页面。 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 > [!div class="nextstepaction"]
-> [浏览示例 Web 应用 CLI 脚本](app-service-cli-samples.md)
+> [将 Python 与 PostgreSQL 配合使用](app-service-web-tutorial-docker-python-postgresql-app.md)
 

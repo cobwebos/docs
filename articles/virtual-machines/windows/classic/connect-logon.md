@@ -1,6 +1,6 @@
 ---
 title: "登录到经典 Azure VM | Microsoft Docs"
-description: "使用 Azure 经典门户登录到使用经典部署模型创建的 Windows 虚拟机。"
+description: "使用 Azure 门户登录到使用经典部署模型创建的 Windows 虚拟机。"
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -13,12 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 02/17/2017
+ms.date: 05/30/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 08a75e9ccf952097416e82ed42fb26a43d0f39f0
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 43d54de7e875de9212c23c49ad0539bf2272a312
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -33,7 +34,7 @@ Learn how to [perform these steps using new Azure portal](../connect-logon.md?to
 -->
 
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关如何使用 Resource Manager 模型登录到 VM 的信息，请参阅[此处](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 有关如何使用 Resource Manager 模型登录到 VM 的信息，请参阅[此处](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ## <a name="connect-to-the-virtual-machine"></a>连接到虚拟机
 1. 登录到 Azure 门户。

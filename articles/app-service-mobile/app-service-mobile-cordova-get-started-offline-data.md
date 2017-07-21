@@ -2,8 +2,8 @@
 title: "为 Azure 移动应用启用脱机同步 (Cordova) | Microsoft Docs"
 description: "了解如何在 Cordova 应用程序中使用应用服务移动应用来缓存和同步脱机数据"
 documentationcenter: cordova
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 services: app-service\mobile
 ms.assetid: 1a3f685d-f79d-4f8b-ae11-ff96e79e9de9
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-cordova-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/30/2016
-ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: 425ad7581ec92aed306d4a1c22fbc00e7105a1c1
-ms.openlocfilehash: af80f8fac043f3c0f4c666fffd60b89c2b43818d
-ms.lasthandoff: 02/16/2017
-
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: d6a0be5d9c876984a323a65f9e0ce73668e94cb8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>为 Cordova 移动应用启用脱机同步
@@ -173,7 +173,7 @@ ms.lasthandoff: 02/16/2017
 
 5. （可选）使用 Visual Studio 查看 Azure SQL 数据库表，以了解后端数据库中的数据是否未更改。
 
-    在 Visual Studio 中，打开“服务器资源管理器”。 导航到“Azure”->“SQL 数据库”中的数据库。 右键单击数据库并选择“在 SQL Server 对象资源管理器中打开” ****。 现在便可以浏览 SQL 数据库表及其内容。
+    在 Visual Studio 中，打开“服务器资源管理器”。 导航到“Azure”->“SQL 数据库”中的数据库。 右键单击数据库并选择“在 SQL Server 对象资源管理器中打开”。 现在便可以浏览 SQL 数据库表及其内容。
 
 ## <a name="optional-test-the-reconnection-to-your-mobile-backend"></a>（可选）测试与移动后端的重新连接
 

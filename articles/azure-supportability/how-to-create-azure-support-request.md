@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: gangan
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2a5da389d4e8120b604cb7a435ab30373bec2376
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 70a4762383d64dc8d568c628cf260ebd8f2d179d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -55,7 +57,7 @@ Azure 客户可在 Azure 门户 [https://portal.azure.com](https://portal.azure.
 ![“基本信息”边栏选项卡](./media/how-to-create-azure-support-request/Basics.png)
 
 > [!NOTE]
-> Azure 提供对订阅管理（诸如计费、配额调整和帐户转帐等事项）的无限支持。 对于技术支持，需要支持计划。 [了解关于支持计划的详细信息](https://azure.microsoft.com/support/plans)。
+> Azure 提供对订阅管理（诸如计费、配额调整和帐户转移等事项）的无限支持。 对于技术支持，需要支持计划。 [了解关于支持计划的详细信息](https://azure.microsoft.com/support/plans)。
 > 
 > 
 
@@ -67,7 +69,7 @@ Azure 客户可在 Azure 门户 [https://portal.azure.com](https://portal.azure.
 继续上面的虚拟机连接示例，你将填写此表格以指示网络连接问题，并且提供有关该问题的进一步详细信息，包括遇到该问题的大致时间。
 
 ## <a name="related-help"></a>相关帮助
-对于某些问题，我们提供用于解决该问题的相关帮助链接。 如果建议的文档没有帮助，可以继续创建支持请求的过程。
+对于某些问题，我们提供用于解决该问题的相关帮助链接。 如果建议的文档没有帮助，可以继续完成支持请求的创建过程。
 ![相关帮助](./media/how-to-create-azure-support-request/RelatedHelp.png)
 
 ## <a name="contact-information"></a>联系信息
@@ -106,10 +108,5 @@ Azure 客户可在 Azure 门户 [https://portal.azure.com](https://portal.azure.
 
 ## <a name="learn-more"></a>了解详细信息
 [Azure 支持常见问题](https://azure.microsoft.com/support/faq)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -12,24 +12,26 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/01/2017
+ms.date: 07/11/2017
 ms.author: kdotchko
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 94389b06fda751716e1d593a85232ce37dae0b57
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 886bf3ce3979b7ef52ca29b7731562c5768596a2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 06/01/2017
 
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
+
 IoT 中心让设备能够在端口 8883 上使用 [MQTT v3.1.1][lnk-mqtt-org] 协议，或在端口 443 上使用基于 WebSocket 的 MQTT v3.1.1 协议来与 IoT 中心设备终结点通信。 IoT 中心要求使用 TLS/SSL 保护所有设备通信（因此，IoT 中心不支持端口 1883 上的非安全连接）。
 
 ## <a name="connecting-to-iot-hub"></a>连接到 IoT 中心
+
 设备既可以通过 [Azure IoT SDK][lnk-device-sdks] 中的库使用 MQTT 协议连接到 IoT 中心，也可以直接使用 MQTT 协议连接到 IoT 中心。
 
 ## <a name="using-the-device-sdks"></a>使用设备 SDK
+
 支持 MQTT 协议的[设备 SDK][lnk-device-sdks] 可用于 Java、Node.js、C、C# 和 Python。 设备 SDK 使用标准 IoT 中心连接字符串来连接到 IoT 中心。 若要使用 MQTT 协议，必须将客户端协议参数设置为 **MQTT**。 默认情况下，设备 SDK 在 **CleanSession** 标志设置为 **0** 的情况下连接到 IoT 中心，并使用 **QoS 1** 来与 IoT 中心交换消息。
 
 当设备连接到 IoT 中心时，设备 SDK 将提供方法让设备在 IoT 中心发送和接收消息。
@@ -45,7 +47,8 @@ IoT 中心让设备能够在端口 8883 上使用 [MQTT v3.1.1][lnk-mqtt-org] �
 | [Python][lnk-sample-python] |IoTHubTransportProvider.MQTT |
 
 ### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>将设备应用从 AMQP 迁移到 MQTT
-如果使用[设备 SDK][lnk-device-sdks]，则从使用 AMQP 切换到 MQTT 需要在客户端初始化中更改协议参数，如上所述。
+
+如果使用[设备 SDK][lnk-device-sdks]，则从使用 AMQP 切换到 MQTT 需要在客户端初始化中更改协议参数，如前面所述。
 
 执行此操作时，请确保检查下列各项：
 
@@ -53,7 +56,7 @@ IoT 中心让设备能够在端口 8883 上使用 [MQTT v3.1.1][lnk-mqtt-org] �
 * MQTT 在接收[“云到设备”消息][lnk-messaging]时不支持*拒绝*操作。 如果后端应用需要接收来自设备应用的响应，请考虑使用[直接方法][lnk-methods]。
 
 ## <a name="using-the-mqtt-protocol-directly"></a>直接使用 MQTT 协议
-如果设备无法使用设备 SDK，仍可使用 MQTT 协议连接到公共设备终结点。 在 **CONNECT** 数据包中，设备应使用以下值：
+如果设备无法使用设备 SDK，仍可在 8883 端口使用 MQTT 协议连接到公共设备终结点。 在 **CONNECT** 数据包中，设备应使用以下值：
 
 * **ClientId** 字段使用 **deviceId**。
 * “**用户名**”字段使用 `{iothubhostname}/{device_id}/api-version=2016-11-14`，其中 {iothubhostname} 是 IoT 中心的完整 CName。
@@ -77,6 +80,7 @@ IoT 中心让设备能够在端口 8883 上使用 [MQTT v3.1.1][lnk-mqtt-org] �
 对于 MQTT 连接和断开连接数据包，IoT 中心会在**操作监视**频道发布事件，并提供可帮助对连接问题进行故障排除的其他信息。
 
 ### <a name="sending-device-to-cloud-messages"></a>发送“设备到云”消息
+
 成功建立连接后，设备可以使用 `devices/{device_id}/messages/events/` 或 `devices/{device_id}/messages/events/{property_bag}` 作为**主题名称**将消息发送到 IoT 中心。 `{property_bag}` 元素可让设备使用 URL 编码格式发送包含其他属性的消息。 例如：
 
 ```
@@ -97,9 +101,10 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 有关详细信息，请参阅[消息传送开发人员指南][lnk-messaging]。
 
 ### <a name="receiving-cloud-to-device-messages"></a>接收“云到设备”消息
+
 若要从 IoT 中心接收消息，设备应使用 `devices/{device_id}/messages/devicebound/#` 作为**主题筛选器**来进行订阅。 主题筛选器中的多级通配符 **#** 仅用于允许设备接收主题名称中的其他属性。 IoT 中心不允许使用 **#** 或 **?** 用于筛选子主题的通配符。 由于 IoT 中心不是一般用途的发布-订阅消息传送中转站，因此它仅支持存档的主题名称和主题筛选器。
 
-请注意，在设备成功订阅 `devices/{device_id}/messages/devicebound/#` 主题筛选器表示的设备特定终结点前，设备不会从 IoT 中心收到任何消息。 成功建立订阅后，设备仅会开始收到建立订阅后发送给它的“云到设备”消息。 如果设备在 **CleanSession** 标志设置为 **0** 的情况下进行连接，则订阅在经历不同的会话后将仍然持久存在。 在此情况下，下次使用 **CleanSession 0** 进行连接时，设备会收到断开连接时发送给它的未处理消息。 但是，如果设备使用设置为 **1** 的 **CleanSession** 标志，在订阅其设备终结点前，它不会从 IoT 中心收到任何消息。
+在设备成功订阅 `devices/{device_id}/messages/devicebound/#` 主题筛选器表示的设备特定终结点前，不会从 IoT 中心收到任何消息。 成功建立订阅后，设备仅会开始收到建立订阅后发送给它的云到设备消息。 如果设备在 **CleanSession** 标志设置为 0 的情况下进行连接，则订阅在经历不同的会话后仍然持久存在。 在此情况下，下次使用 CleanSession 0 进行连接时，设备会收到断开连接时发送给它的未处理消息。 但是，如果设备使用设置为 1 的 CleanSession 标志，在订阅其设备终结点前，它不会从 IoT 中心收到任何消息。
 
 如有任何消息属性，IoT 中心将传送包含**主题名称** `devices/{device_id}/messages/devicebound/` 或 `devices/{device_id}/messages/devicebound/{property_bag}` 的消息。 `{property_bag}` 包含 URL 编码的消息属性键/值对。 属性包中只包含应用程序属性和用户可设置的系统属性（例如 **messageId** 或 **correlationId**）。 系统属性名称具有前缀 **$**，但应用程序属性使用没有前缀的原始属性名称。
 
@@ -107,10 +112,10 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 ### <a name="retrieving-a-device-twins-properties"></a>检索设备克隆的属性
 
-首先，设备订阅 `$iothub/twin/res/#`，接收操作的响应。 然后，它向主题 `$iothub/twin/GET/?$rid={request id}` 发送一条空消息，其中包含 **request id** 的填充值。 服务随后会发送一条响应消息，其中包含关于主题 `$iothub/twin/res/{status}/?$rid={request id}` 的设备孪生数据，并且使用与请求相同的 **request id**。
+首先，设备订阅 `$iothub/twin/res/#`，接收操作的响应。 然后，它向主题 `$iothub/twin/GET/?$rid={request id}` 发送一条空消息，其中包含 **request id** 的填充值。 服务随后会发送一条响应消息，其中包含关于主题 `$iothub/twin/res/{status}/?$rid={request id}` 的设备孪生数据，并且使用与请求相同的 request id。
 
 request id 可以是消息属性值的任何有效值（如 [IoT 中心消息传送开发人员指南][lnk-messaging]中所述），且需要验证确保状态是整数。
-响应正文将包含设备孪生的 properties 节：
+响应正文包含设备孪生的 properties 部分：
 
 标识注册表项的正文限制为“properties”成员，例如：
 
@@ -193,10 +198,10 @@ JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应
 有关详细信息，请参阅[直接方法开发人员指南][lnk-methods]。
 
 ### <a name="additional-considerations"></a>其他注意事项
+
 最后，如果需要自定义云端的 MQTT 协议行为，则应检查 [Azure IoT 协议网关][lnk-azure-protocol-gateway]，可以通过它部署直接与 IoT 中心连接的高性能自定义协议网关。 Azure IoT 协议网关可让你自定义设备协议，以适应要重建的 MQTT 部署或其他自定义协议。 但是，这种方法要求运行并使用自定义协议网关。
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅 IoT 中心开发人员指南中的 [MQTT 支持相关说明][lnk-mqtt-devguide]。
 
 若要了解有关 MQTT 协议的详细信息，请参阅 [MQTT 文档][lnk-mqtt-docs]。
 
@@ -222,7 +227,6 @@ JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应
 [lnk-sample-python]: https://github.com/Azure/azure-iot-sdk-python/tree/master/device/samples
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer
 [lnk-sas-tokens]: iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app
-[lnk-mqtt-devguide]: iot-hub-devguide-messaging.md#notes-on-mqtt-support
 [lnk-azure-protocol-gateway]: iot-hub-protocol-gateway.md
 
 [lnk-devices]: https://catalog.azureiotsuite.com/

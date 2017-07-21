@@ -1,6 +1,6 @@
 ---
-title: "针对 VMware 复制到 Azure，规划容量和缩放 | Microsoft Docs"
-description: "将 VMware VM 复制到 Azure 时，请使用本文规划容量和进行缩放"
+title: "规划容量和缩放以便使用 Azure Site Recovery 将 VMware 复制到 Azure | Microsoft Docs"
+description: "请阅读本文了解如何规划容量和缩放，以便使用 Azure Site Recovery 将 VMware VM 复制到 Azure"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,22 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/05/2017
+ms.date: 05/24/2017
 ms.author: rayne
-translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 86366359e065c9a9b4a52136254588e67125fb5f
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 8b580ac239bfb6d7b633fb03d4cfb91b168b0610
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>通过 Azure Site Recovery，针对 VMware 复制规划容量和缩放
 
-请阅读本文，了解将本地 VMware VM 和物理服务器复制到 Azure 时，如何使用 [Azure Site Recovery](site-recovery-overview.md) 规划容量和缩放。
+请阅读本文，了解如何规划容量和缩放，以便使用 [Azure Site Recovery](site-recovery-overview.md) 将本地 VMware VM 和物理服务器复制到 Azure。
 
 ## <a name="how-do-i-start-capacity-planning"></a>如何开始容量规划？
 
-使用 [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner-doc) 收集有关复制环境的信息。 这包括有关兼容和不兼容的虚拟机、每个 VM 的磁盘数以及每个磁盘的数据改动的信息。 它还介绍了成功复制和测试故障转移的网络带宽要求，以及所需的 Azure 基础结构。
+为 VMware 复制运行 [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner-doc) 以收集有关复制环境的信息。 [详细了解](site-recovery-deployment-planner.md)此工具。 需要收集有关兼容的和不兼容 VM、每个 VM 的磁盘以及每个磁盘数据变化的信息。 该工具还介绍了成功复制和测试故障转移所需的网络带宽要求，以及所需的 Azure 基础结构。
 
 ## <a name="capacity-considerations"></a>容量注意事项
 
@@ -79,7 +80,7 @@ ms.lasthandoff: 03/22/2017
 
 ## <a name="control-network-bandwidth"></a>控制网络带宽
 
-可以使用[部署规划器工具](https://aka.ms/asr-deployment-planner-doc)来计算复制（包括初始复制，然后增量复制）所需的带宽。 若要控制复制所用的带宽量，可以使用几个选项：
+使用[部署计划器工具](site-recovery-deployment-planner.md)计算复制（初始复制和增量复制）所需的带宽后，可以使用下列几个选项来控制用于复制的带宽量：
 
 * **限制带宽**：复制到 Azure 的 VMware 流量会经过特定的进程服务器。 可以在运行进程服务器的计算机上限制带宽。
 * **控制带宽**：可以使用几个注册表项来控制用于复制的带宽：
@@ -87,6 +88,7 @@ ms.lasthandoff: 03/22/2017
   * **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DownloadThreadsPerVM** 指定故障回复期间用于数据传输的线程数。
 
 ### <a name="throttle-bandwidth"></a>限制带宽
+
 1. 在作为进程服务器的计算机上打开 Azure 备份 MMC 管理单元。 默认情况下，备份的快捷方式位于桌面上或在以下文件夹中：C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin 中。
 2. 在管理单元中，单击“更改属性”。
 
@@ -140,9 +142,7 @@ ms.lasthandoff: 03/22/2017
 3. 在“选择目标进程服务器”中，选择要使用的新进程服务器，然后选择该服务器将要处理的虚拟机。 单击信息图标，获取服务器的相关信息。 为了帮助你做出负载决策，随后会显示将每个所选虚拟机复制到新进程服务器所需的平均空间。 单击复选标记，开始复制到新的进程服务器。
 
 
+## <a name="next-steps"></a>后续步骤
 
-
-
-
-
+下载并运行 [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner)
 

@@ -14,11 +14,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2017
+ms.date: 06/29/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 7e18325426bac86d89ff0235e18ddca9fd21e8de
-ms.openlocfilehash: 41a58493c8931e8ce241ce31ecb1ca20b5a82cb3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: cbdc964b16cbc6cf291dbc4b6f60b20d67d9fc41
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -26,7 +28,7 @@ ms.openlocfilehash: 41a58493c8931e8ce241ce31ecb1ca20b5a82cb3
 
 ##<a name="overview"></a>概述
 
-在 Microsoft Azure 媒体服务 (AMS) 中，**流式处理终结点**表示一个流服务，该服务可以直接将内容传递给客户端播放器应用程序，也可以传递给内容支付网络 (CDN) 以进一步分发。 媒体服务还提供无缝 Azure CDN 集成。 StreamingEndpoint 服务的出站流可以是媒体服务帐户中的实时流、点播视频或渐进式下载的资产。 每个 Azure 媒体服务帐户均包括一个默认的流式处理终结点。 可以在该帐户下创建其他流式处理终结点。 有两个版本的流式处理终结点：1.0 和 2.0。 从 2017 年 1 月 10 日开始，任何新创建的 AMS 帐户将包括版本 2.0 的**默认**流式处理终结点。 可添加到此帐户的其他流式处理终结点也是版本 2.0。 此更改不会影响现有帐户；现有流式处理终结点将是版本 1.0，可以升级到版本 2.0。 此更改将导致行为、计费和功能更改（有关详细信息，请参阅下面所述的**流式处理类型和版本**部分）。
+在 Microsoft Azure 媒体服务 (AMS) 中，**流式处理终结点**表示一个流服务，该服务可以直接将内容传递给客户端播放器应用程序，也可以传递给内容支付网络 (CDN) 以进一步分发。 媒体服务还提供无缝 Azure CDN 集成。 StreamingEndpoint 服务的出站流可以是媒体服务帐户中的实时流、点播视频或渐进式下载的资产。 每个 Azure 媒体服务帐户均包括一个默认的流式处理终结点。 可以在帐户下创建其他流式处理终结点。 有两个版本的流式处理终结点：1.0 和 2.0。 从 2017 年 1 月 10 日开始，任何新创建的 AMS 帐户将包括版本 2.0 的**默认**流式处理终结点。 可添加到此帐户的其他流式处理终结点也是版本 2.0。 此更改不会影响现有帐户；现有流式处理终结点将是版本 1.0，可以升级到版本 2.0。 此更改将导致行为、计费和功能更改（有关详细信息，请参阅下面所述的**流式处理类型和版本**部分）。
 
 此外，从 2.15 版本（已于 2017 年 1 月发布）开始，Azure 媒体服务对于流式处理终结点实体添加了以下属性：**CdnProvider**、**CdnProfile**、**FreeTrialEndTime**、**StreamingEndpointVersion**。 有关这些属性的详细概述，请参阅[此文](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)。 
 
@@ -54,10 +56,10 @@ ms.openlocfilehash: 41a58493c8931e8ce241ce31ecb1ca20b5a82cb3
 
 对于在 2017 年 1 月 10 日发行版之前创建 AMS 帐户的用户，可以使用**经典**类型的流式处理终结点。 此类型属于流式处理终结点版本“1.0”。
 
-如果**“1.0”版**的流式处理终结点的高级流单元 (SU) 数 > =&1;，则它将是高级流式处理终结点，并且无需任何其他配置步骤就会提供所有 AMS 功能（就像**标准/高级**类型一样）。
+如果**“1.0”版**的流式处理终结点的高级流单元 (SU) 数 > = 1，则它将是高级流式处理终结点，并且无需任何其他配置步骤就会提供所有 AMS 功能（就像**标准/高级**类型一样）。
 
 >[!NOTE]
->**经典**流式处理终结点（版本“1.0”且 0 个 SU）提供有限的功能，并且不包括 SLA。 建议迁移到**标准**类型，以便获得更佳体验并可使用动态打包或加密等功能以及**标准**类型附带的其他功能。 若要迁移到**标准**类型，请转到 [Azure 门户](https://portal.azure.com/)，选择“选择加入标准类型”。 有关迁移的详细信息，请参阅[迁移](#migration-between-types)部分。
+>**经典**流式处理终结点（版本“1.0”且 0 个 SU）提供有限的功能，并且不包括 SLA。 建议迁移到“标准”类型，以便改进体验，并使用动态打包或加密等功能，以及“标准”类型附带的其他功能。 若要迁移到**标准**类型，请转到 [Azure 门户](https://portal.azure.com/)，选择“选择加入标准类型”。 有关迁移的详细信息，请参阅[迁移](#migration-between-types)部分。
 >
 >请注意，此操作无法回退，并且会对定价有影响。
 >
@@ -78,8 +80,8 @@ ms.openlocfilehash: 41a58493c8931e8ce241ce31ecb1ca20b5a82cb3
 功能|标准|高级
 ---|---|---
 前 15 天免费| 是 |否
-吞吐量 |未使用 Azure CDN 时，最多可达 600 Mbps。 使用 CDN 进行缩放。|每个流单元 (SU)&200; Mbps。 使用 CDN 进行缩放。
-SLA | 99.9|99.9（每个 SU&200; Mbps）。
+吞吐量 |未使用 Azure CDN 时，最多可达 600 Mbps。 使用 CDN 进行缩放。|每个流单元 (SU) 200 Mbps。 使用 CDN 进行缩放。
+SLA | 99.9|99.9（每个 SU 200 Mbps）。
 CDN|Azure CDN、第三方 CDN 或没有 CDN。|Azure CDN、第三方 CDN 或没有 CDN。
 按比例计费| 每日|每日
 动态加密|是|是
@@ -112,10 +114,5 @@ IP 筛选/G20/自定义主机|是|是
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

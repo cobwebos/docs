@@ -41,8 +41,8 @@ ms.lasthandoff: 05/11/2017
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0",
       "parameters": {
-            "storageAccountName": {
-                "type": "String"
+          "storageAccountName": {
+              "type": "String"
           }
       },
       "resources": [{
@@ -54,10 +54,10 @@ ms.lasthandoff: 05/11/2017
               "name": "Standard_LRS"
           },
           "kind": "Storage",
-          "properties": {        
+          "properties": {       
           }
       }],
-      "outputs": {        
+      "outputs": {      
       }
   }
   ```
@@ -102,7 +102,7 @@ ms.lasthandoff: 05/11/2017
               "Parameters": {
                   "storageAccountName": {
                       "value": "[parameters('storageAccountName')]"
-                  }                
+                  }             
               }
           }
       }]
@@ -118,13 +118,13 @@ ms.lasthandoff: 05/11/2017
 接下来，创建你希望用来代表客户管理资源的用户组或应用程序。 此用户组或应用程序对托管资源组具有角色所描述的权限。 角色可以是任何内置的 RBAC 角色，例如**所有者**或**参与者**。 也可以授权个体用户来管理资源，但通常你分配此权限来使用用户组。 若要创建新的 Active Directory 用户组，请使用：
 
 ```azurecli
-az ad group create –display-name "name" –mail-nickname "nickname"
+az ad group create --display-name "name" --mail-nickname "nickname"
 ```
 
 也可以使用现有组。 你需要具有新创建的或现有用户组的对象 Id。 下面的示例展示了如何从用于创建组的显示名称获取对象 ID。
 
 ```azurecli
-az ad group show –group "groupName"
+az ad group show --group "groupName"
 ```
 
 示例：
@@ -210,3 +210,4 @@ az managedapp definition create -n ravtestAppDef4 -l "westcentralus"
 * 有关文件示例，请参阅[托管应用程序示例](https://github.com/Azure/azure-managedapp-samples/tree/master/samples)。
 * 若要了解使用者体验，请参阅[使用 Azure 托管应用程序](managed-application-consumption.md)。
 * 若要了解如何为托管应用程序创建 UI 定义文件，请参阅 [CreateUiDefinition 入门](managed-application-createuidefinition-overview.md)。
+

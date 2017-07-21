@@ -12,16 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/03/2017
+ms.date: 06/29/2017
 ms.author: nitinme
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ab9c4bc6e2e68a3522bbc3fe23ea33760f03b620
 ms.openlocfilehash: 10926263ee2657dc96fb1873733d349cf0956e92
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/05/2017
 
 
 ---
-# <a name="comparing-azure-data-lake-store-and-azure-blob-storage"></a>比较 Azure Data Lake Store 与 Azure 存储 Blob
+# 比较 Azure Data Lake Store 与 Azure 存储 Blob
+<a id="comparing-azure-data-lake-store-and-azure-blob-storage" class="xliff"></a>
 本文中的表总结了 Azure Data Lake Store 和 Azure 存储 Blob 在一些大数据处理的关键方面之间的差异。 Azure Blob 存储是一个常规用途和可扩展的对象存储，适用于多种存储方案。 Azure Data Lake Store 是一个超大规模存储库，优化用于大数据分析工作负荷。
 
 |  | Azure Data Lake Store | Azure Blob 存储 |
@@ -47,7 +49,8 @@ ms.lasthandoff: 01/05/2017
 | 区域可用性 |参见[此处](https://azure.microsoft.com/regions/#services) |参见[此处](https://azure.microsoft.com/regions/#services) |
 | 价格 |参阅[定价](https://azure.microsoft.com/pricing/details/data-lake-store/) |参阅[定价](https://azure.microsoft.com/pricing/details/storage/) |
 
-### <a name="next-steps"></a>后续步骤
+### 后续步骤
+<a id="next-steps" class="xliff"></a>
 * [Overview of Azure Data Lake Store](data-lake-store-overview.md)
 * [Data Lake Store 入门](data-lake-store-get-started-portal.md)
 

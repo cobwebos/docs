@@ -15,20 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 691caf95971ccdd37b12bbc178627f25b228a782
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: ecde5dd3211bfbb290e6910d7d55136d079c6cf3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/26/2017
 
 
 ---
 # <a name="how-to-capture-a-classic-linux-virtual-machine-as-an-image"></a>How to capture a classic Linux virtual machine as an image（如何捕获用作映像的经典 Linux 虚拟机）
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 了解如何[使用 Resource Manager 模型执行这些步骤](../capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 了解如何[使用 Resource Manager 模型执行这些步骤](../capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 本文将演示如何捕获运行 Linux 的经典 Azure 虚拟机 (VM) 作为创建其他虚拟机的映像。 此映像包括操作系统磁盘和附加到 VM 的数据磁盘。 它不包括网络配置，因此在使用此映像创建其他 VM 时需要进行网络配置。
 
-Azure 在“映像”下存储映像，以及任何已上载的映像。 有关映像的详细信息，请参阅[关于 Azure 中的虚拟机映像][About Virtual Machine Images in Azure]。
+Azure 在“映像”下存储映像，以及任何已上传的映像。 有关映像的详细信息，请参阅[关于 Azure 中的虚拟机映像][About Virtual Machine Images in Azure]。
 
 ## <a name="before-you-begin"></a>开始之前
 这些步骤假定已使用经典部署模型创建了 Azure VM 并配置了操作系统，包括附加任何数据磁盘。 如果需要创建 VM，请阅读[如何创建 Linux 虚拟机][How to Create a Linux Virtual Machine]。
@@ -57,9 +58,13 @@ Azure 在“映像”下存储映像，以及任何已上载的映像。 有关�
 4. 键入 **Exit** 关闭 SSH 客户端。
 
    > [!NOTE]
-   > 剩余步骤假定已在客户端计算机上[安装 Azure CLI](../../../cli-install-nodejs.md)。 以下所有步骤也可以在 [Azure 经典门户][Azure classic portal]中执行。
+   > 剩余步骤假定已在客户端计算机上[安装 Azure CLI](../../../cli-install-nodejs.md)。 以下所有步骤也可在 [Azure 门户](http://portal.azure.com)中执行。
 
 5. 从客户端计算机中打开 Azure CLI 并登录到你的 Azure 订阅。 有关详细信息，请阅读[从 Azure CLI 连接到 Azure 订阅](../../../xplat-cli-connect.md)。
+
+   > [!NOTE]
+   > 登录到 Azure 门户。
+
 6. 请确保你是在服务管理模式下：
 
     ```azurecli
@@ -71,9 +76,10 @@ Azure 在“映像”下存储映像，以及任何已上载的映像。 有关�
     ```azurecli
     azure vm shutdown myVM
     ```
+   如果需要，可使用 `azure vm list` 查看在订阅中创建的所有 VM 列表
 
    > [!NOTE]
-   > 可以使用 `azure vm list` 查看在订阅中创建的所有 VM 的列表
+   > 如果在使用 Azure 门户，选择 VM 并单击“停止”即可关闭 VM。
 
 8. 停止 VM 后，捕获映像。 以下示例捕获名为 `myVM` 的 VM，并创建名为 `myNewVM` 的通用映像：
 
@@ -82,6 +88,9 @@ Azure 在“映像”下存储映像，以及任何已上载的映像。 有关�
     ```
 
     `-t` 子命令将删除原始虚拟机。
+
+    > [!NOTE]
+    > 在 Azure 门户中，你可以从中心菜单中选择“映像”以捕获映像。 需提供以下映像信息：名称、资源组、位置、操作系统类型和存储 blob 路径。
 
 9. 新映像现在会出现在映像列表中，可以用于配置任何新的 VM。 你可以使用以下命令来查看它：
 
@@ -96,11 +105,10 @@ Azure 在“映像”下存储映像，以及任何已上载的映像。 有关�
 ## <a name="next-steps"></a>后续步骤
 该映像已就绪，可用于创建 VM。 可以使用 Azure CLI 命令 `azure vm create` 并提供所创建的映像名称。 有关详细信息，请参阅[将 Azure CLI 与经典部署模型配合使用](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)。
 
-此外，也可以使用 [Azure 经典门户][Azure classic portal]创建自定义 VM，方法是使用**从库中**方法并选择所创建的映像。 有关详细信息，请参阅[如何创建自定义 VM][How to Create a Custom Virtual Machine]。
+此外，也可以使用 [Azure 门户](http://portal.azure.com)创建自定义 VM，方法是使用**映像**方法并选择所创建的映像。 有关详细信息，请参阅[如何创建自定义 VM][How to Create a Custom Virtual Machine]。
 
 **另请参阅：**[Azure Linux 代理用户指南](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[Azure classic portal]:http://manage.windowsazure.com
 [About Virtual Machine Images in Azure]:../../virtual-machines-linux-classic-about-images.md
 [How to Create a Custom Virtual Machine]:create-custom.md
 [How to Attach a Data Disk to a Virtual Machine]:attach-disk.md

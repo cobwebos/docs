@@ -14,14 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 85a4c87447681bd21698143b4228d94c0877d1b9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="configuring-an-app-service-environment"></a>配置 App Service 环境
-## <a name="overview"></a>概述
+# 配置应用服务环境
+<a id="configuring-an-app-service-environment" class="xliff"></a>
+## 概述
+<a id="overview" class="xliff"></a>
 高级别 Azure 应用服务环境包括几个主要组件：
 
 * 在应用服务环境托管服务中运行的计算资源
@@ -30,7 +34,8 @@ ms.openlocfilehash: 85a4c87447681bd21698143b4228d94c0877d1b9
 * 经典 (V1) 或 Resource Manager(V2) Azure 虚拟网络 (VNet) 
 * 内部运行应用服务环境托管服务的子网
 
-### <a name="compute-resources"></a>计算资源
+### 计算资源
+<a id="compute-resources" class="xliff"></a>
 你可以将计算资源用于你的四个资源池。  每个应用服务环境 (ASE) 都有一组前端和三个可能的工作节点池。 你不需要三个辅助角色池都使用，如果需要，可以只使用其中一个或两个。
 
 租户无法直接访问资源池（前端和辅助角色）中的主机。 你无法使用远程桌面协议 (RDP) 来连接它们、更改其预配，或充当其管理员。
@@ -45,7 +50,7 @@ ms.openlocfilehash: 85a4c87447681bd21698143b4228d94c0877d1b9
 * 无法立即添加新的前端实例。 它们可能需要 2 到 3 小时来预配。
 * 若要进一步微调，你应监视前端池的 CPU 百分比、内存百分比和活动请求等度量值。 如果运行 P3 时 CPU 或内存百分比超出 70%，请添加更多前端。 如果每个前端的活动请求数目平均达到 15,000 到 20,000 个请求，也应该添加更多前端。 总体目标是在运行 P3 时，将 CPU 和内存百分比维持在 70% 以下，将每个前端的活动请求平均数维持在 15,000 个请求以下。  
 
-**辅助角色**：辅助角色是实际运行应用的位置。 当你增加 App Service 计划时，将用尽关联辅助角色池中的辅助角色。
+**辅助角色**：辅助角色是实际运行应用的位置。 当你增加应用服务计划时，将用尽关联辅助角色池中的辅助角色。
 
 * 无法立即添加辅助角色。 无论添加多少辅助角色，都可能需要 2 到 3 小时来预配。
 * 缩放任何池的计算资源大小时，每个更新域都需要 2 到 3 小时来完成缩放。 ASE 中有 20 个更新域。 如果缩放包含 10 个实例的辅助角色池的计算大小，可能需要 20 到 30 个小时才能完成。
@@ -59,20 +64,23 @@ ms.openlocfilehash: 85a4c87447681bd21698143b4228d94c0877d1b9
 如果应用需要更多计算资源，则无法利用前面的指导。 你可以改为在另一个辅助角色池中填充具有所需大小的辅助角色，并将应用转移到该池，而无需更改托管那些应用的辅助角色池的大小。
 
 * 在另一个辅助角色池中创建具有所需计算大小的其他实例。 这将需要 2 到 3 小时来完成。
-* 将需要更大大小且托管应用的 App Service 计划重新分配到新配置的辅助角色池。 这是一个快速操作，在一分钟内应可完成。  
+* 将需要更大大小且托管应用的应用服务计划重新分配到新配置的辅助角色池。 这是一个快速操作，在一分钟内应可完成。  
 * 如果不再需要那些未使用的实例，请缩减第一个辅助角色池。 此操作大约需要 30 分钟来完成。
 
 **自动缩放**：可帮助管理计算资源消耗的工具之一。 你可以针对前端或辅助角色池执行自动缩放。 你可以执行以下操作：早上增加任何池类型的实例，而晚上减少实例。 或者，可以在辅助角色池中可用的辅助角色数目低于特定阈值时添加实例。
 
 如果你想要设置有关计算资源池度量值的自动缩放规则，请记得考虑预配所需的时间。 有关自动调整应用服务环境规模的详细信息，请参阅[如何配置应用服务环境中的自动调整规模][ASEAutoscale]。
 
-### <a name="storage"></a>存储
-每个 ASE 配置了 500 GB 的存储空间。 此空间用于 ASE 中的所有应用。 此存储空间属于 ASE 的一部分，目前无法切换为使用你的存储空间。 如果调整虚拟网络路由或安全性，你仍然需要允许访问 Azure 存储空间，否则 ASE 将无法正常工作。
+### 存储
+<a id="storage" class="xliff"></a>
+每个 ASE 配置了 500 GB 的存储空间。 此空间用于 ASE 中的所有应用。 此存储空间属于 ASE 的一部分，目前无法切换为使用你的存储空间。 如果调整虚拟网络路由或安全性，你仍然需要允许访问 Azure 存储，否则 ASE 将无法正常工作。
 
-### <a name="database"></a>数据库
+### 数据库
+<a id="database" class="xliff"></a>
 数据库会保存定义环境的信息，以及在其中运行的应用的详细信息。 这也是 Azure 保存的订阅的一部分。 但是你无法直接进行操作。 如果调整虚拟网络路由或安全性，你仍然需要允许访问 SQL Azure，否则 ASE 将无法正常工作。
 
-### <a name="network"></a>网络
+### 网络
+<a id="network" class="xliff"></a>
 与 ASE 配合使用的 VNet 可以是在创建 ASE 时创建的 VNet，也可以是现有的 VNet。 如果在创建 ASE 期间创建子网，将会强制 ASE 位于与虚拟网络相同的资源组。 如果想要 ASE 所使用的资源组不同于 VNet 的资源组，那么需要使用 Resource Manager 模板创建 ASE。
 
 用于 ASE 的虚拟网络有一些限制：
@@ -86,20 +94,22 @@ ms.openlocfilehash: 85a4c87447681bd21698143b4228d94c0877d1b9
 
 用于托管 ASE 的 VNet 可以使用专用 RFC1918 IP 地址或使用公共 IP 地址。  如果想要使用 RFC1918（10.0.0.0/8、172.16.0.0/12、192.168.0.0/16）未涵盖的 IP 范围，则必须在创建 ASE 之前，创建 VNet 和子网以供 ASE 使用。
 
-因为此功能将 Azure App Service 置于虚拟网络中，这意味着托管在 ASE 中的应用现在可直接访问通过 ExpressRoute 或站点到站点虚拟专用网 (VPN) 提供的资源。 应用服务环境中的应用不需要其他网络功能即可访问托管应用服务环境的虚拟网络可用的资源。 这意味着无需使用 VNET 集成或混合连接，即可访问虚拟网络内部或连接到虚拟网络的资源。 但你仍可以使用这两项功能访问网络中未连接到虚拟网络的资源。
+因为此功能将 Azure 应用服务置于虚拟网络中，这意味着托管在 ASE 中的应用现在可直接访问通过 ExpressRoute 或站点到站点虚拟专用网 (VPN) 提供的资源。 应用服务环境中的应用不需要其他网络功能即可访问托管应用服务环境的虚拟网络可用的资源。 这意味着无需使用 VNET 集成或混合连接，即可访问虚拟网络内部或连接到虚拟网络的资源。 但你仍可以使用这两项功能访问网络中未连接到虚拟网络的资源。
 
 例如，你可以使用 VNET 集成来与订阅中未连接到 ASE 所在虚拟网络的虚拟网络集成。 像平时一样，你仍可使用混合连接来访问其他网络中的资源。  
 
 如果虚拟网络配置了 ExpressRoute VPN，则应注意 ASE 的某些路由要求。 某些用户定义的路由 (UDR) 配置与 ASE 不兼容。 有关使用 ExpressRoute 在虚拟网络中运行 ASE 的更多详细信息，请参阅[使用 ExpressRoute 在虚拟网络中运行应用服务环境][ExpressRoute]。
 
-#### <a name="securing-inbound-traffic"></a>保护入站流量
+#### 保护入站流量
+<a id="securing-inbound-traffic" class="xliff"></a>
 有两种主要方法可控制 ASE 的入站流量。  可以使用网络安全组 (NSG) 来控制哪些 IP 地址可以访问 ASE（请参阅[如何控制应用服务环境中的入站流量](app-service-app-service-environment-control-inbound-traffic.md)），也可以使用内部负载均衡器 (ILB) 配置 ASE。  如果你要使用 NSG 限制对 ILB ASE 的访问，这些功能也可以一起使用。
 
 当你创建 ASE 时，它会在 VNet 中创建 VIP。  VIP 有两种类型：外部和内部。  当你创建具有外部 VIP 的 ASE 时，可以通过 Internet 可路由 IP 地址访问 ASE 中的应用。 如果你选择内部 VIP，ASE 会使用 ILB 进行配置，并且无法通过 Internet 直接访问。  ILB ASE 仍需要外部 VIP，但它只用来进行 Azure 管理和维护访问。  
 
 在 ILB ASE 创建期间，你需要提供 ILB ASE 所用的子域，而且必须针对你指定的子域管理自己的 DNS。  因为你设置了子域名称，所以也需要管理用于 HTTPS 访问的证书。  创建 ASE 之后，系统会提示你提供证书。  若要了解有关创建和使用 ILB ASE 的详细信息，请参阅[在应用服务环境中使用内部负载均衡器][ILBASE]。 
 
-## <a name="portal"></a>门户
+## 门户
+<a id="portal" class="xliff"></a>
 可以使用 Azure 门户中的 UI 来管理和监视应用服务环境。 如果有 ASE，则可能会在边栏上看到应用服务符号。 此符号用于表示 Azure 门户中的应用服务环境：
 
 ![应用服务环境符号][1]
@@ -110,27 +120,29 @@ ms.openlocfilehash: 85a4c87447681bd21698143b4228d94c0877d1b9
 
 这是第一个边栏选项卡，其中显示 ASE 的某些属性和每个资源池的度量值图表。 “基本信息”块中显示的某些属性同时也是超链接，将打开与其关联的边栏选项卡。 例如，可选择**虚拟网络**名称，以打开与运行 ASE 的虚拟网络关联的 UI。 “应用服务计划”和“应用”将分别打开不同的边栏选项卡，其中列出位于 ASE 中的项。  
 
-### <a name="monitoring"></a>监视
+### 监视
+<a id="monitoring" class="xliff"></a>
 图表可让你查看每个资源池中各种不同的性能度量值。 对于前端池，可以监视平均 CPU 和内存。 对于辅助角色池，可以监视已用和可用的数量。
 
-多个 App Service 计划可以使用同一个辅助角色池中的辅助角色。 工作负荷不是通过与前端服务器相同的方式分布，因此 CPU 和内存使用率不能提供很多有用的信息。 更重要的是要跟踪已用和可用的辅助角色数目，特别是在管理此系统以供他人使用时。  
+多个应用服务计划可以使用同一个辅助角色池中的辅助角色。 工作负荷不是通过与前端服务器相同的方式分布，因此 CPU 和内存使用率不能提供很多有用的信息。 更重要的是要跟踪已用和可用的辅助角色数目，特别是在管理此系统以供他人使用时。  
 
 你也可以使用所有可在图表中跟踪的度量值来设置警报。 在此设置警报的效果与在应用服务的其他位置相同。 可从“警报”UI 部分设置警报，也可以钻取到任何度量值 UI 并选择“添加警报”进行设置。
 
 ![度量值 UI][3]
 
-刚刚所讨论的度量值是应用服务环境度量值。 另外也有可在 App Service 计划级别使用的度量值。 在其中监视 CPU 和内存是很合理的做法。
+刚刚所讨论的度量值是应用服务环境度量值。 另外也有可在应用服务计划级别使用的度量值。 在其中监视 CPU 和内存是很合理的做法。
 
-在 ASE 中，所有 App Service 计划都是专用的 App Service 计划。 这意味着，只有在分配给该 App Service 计划的主机上运行的应用才是该 App Service 计划中的应用。 若要查看有关应用服务计划的详细信息，可从 ASE UI 中的任何列表或通过访问**浏览应用服务计划**（其中列出了全部计划）显示应用服务计划。   
+在 ASE 中，所有应用服务计划都是专用的应用服务计划。 这意味着，只有在分配给该应用服务计划的主机上运行的应用才是该应用服务计划中的应用。 若要查看有关应用服务计划的详细信息，可从 ASE UI 中的任何列表或通过访问**浏览应用服务计划**（其中列出了全部计划）显示应用服务计划。   
 
-### <a name="settings"></a>设置
+### 设置
+<a id="settings" class="xliff"></a>
 ASE 边栏选项卡中有一个包含几项重要功能的“设置”部分：
 
 “设置” > “属性”：“设置”边栏选项卡在显示 ASE 边栏选项卡时会自动打开。 位于顶部的是“属性”。 此处显示了许多与“基本信息”重复的项，但“虚拟 IP 地址”和“出站 IP 地址”是非常有用的项。
 
 ![“设置”边栏选项卡和“属性”][4]
 
-“设置” > “IP 地址”：在 ASE 中创建 IP 安全套接字层 (SSL) 应用时，需要有一个 IP SSL 地址。 若要获取该地址，你的 ASE 需要拥有一些可分配的 IP SSL 地址。 创建的 ASE 最初有一个 IP SSL 地址用于此目的，但你可以添加更多地址。 额外的 IP SSL 地址需要付费，如[应用服务定价][AppServicePricing]（在 SSL 连接一节中）所述。 额外的价格是 IP SSL 价格。
+“设置” > “IP 地址”：在 ASE 中创建 IP 安全套接字层 (SSL) 应用时，需要有一个 IP SSL 地址。 若要获取该地址，你的 ASE 需要拥有一些可分配的 IP SSL 地址。 创建的 ASE 最初有一个 IP SSL 地址用于此目的，但你可以添加更多地址。 额外的 IP SSL 地址需要付费，如[应用服务定价][AppServicePricing]（在有关 SSL 连接的一节中）所述。 额外的价格是 IP SSL 价格。
 
 “设置” > “前端池” / “辅助角色池”：其中的每个资源池边栏选项卡可让你查看有关该资源池的信息，并获得全面缩放该资源池所需的控制权。  
 
@@ -138,7 +150,8 @@ ASE 边栏选项卡中有一个包含几项重要功能的“设置”部分：
 
 ![辅助角色池设置 UI][5]
 
-### <a name="portal-scale-capabilities"></a>门户缩放功能
+### 门户缩放功能
+<a id="portal-scale-capabilities" class="xliff"></a>
 共有三种缩放操作：
 
 * 更改 ASE 中可供 IP SSL 使用的 IP 地址数。
@@ -159,7 +172,8 @@ ASE 边栏选项卡中有一个包含几项重要功能的“设置”部分：
 
 ![缩放设置 UI][7]
 
-## <a name="fault-tolerance-considerations"></a>容错注意事项
+## 容错注意事项
+<a id="fault-tolerance-considerations" class="xliff"></a>
 可将应用服务环境配置为总共使用最多 55 个计算资源。 在这 55 个计算资源中，只有 50 个可用于承载工作负荷。 其原因有两个。 至少有 2 个前端计算资源。  还剩最多 53 个来支持辅助角色池分配。 为了提供容错功能，还需根据以下规则分配额外计算资源：
 
 * 每个辅助角色池至少需要 1 个无法被分配工作负荷的额外计算资源。
@@ -180,15 +194,17 @@ ASE 边栏选项卡中有一个包含几项重要功能的“设置”部分：
 
 容错是很重要的环节，但在缩放超过特定阈值时必须留意。 如果想要从 20 个实例添加更多容量，请缩放到 22 或更高，因为 21 并不额外添加任何容量。 缩放到 40 以上时也是一样，下一个添加容量的数为 42。  
 
-## <a name="deleting-an-app-service-environment"></a>删除 App Service 环境
+## 删除应用服务环境
+<a id="deleting-an-app-service-environment" class="xliff"></a>
 如果想要删除应用服务环境，只需使用“应用服务环境”边栏选项卡顶部的“删除”操作即可。 当执行此操作时，系统将提示你输入应用服务环境的名称，以确认你确实想要执行此操作。 请注意，删除应用服务环境时，将同时删除其中包含的所有内容。  
 
 ![删除应用服务环境 UI][9]  
 
-## <a name="getting-started"></a>入门
+## 入门
+<a id="getting-started" class="xliff"></a>
 若要开始使用应用服务环境，请参阅[如何创建应用服务环境](app-service-web-how-to-create-an-app-service-environment.md)。
 
-有关 Azure App Service 平台的详细信息，请参阅 [Azure App Service](../app-service/app-service-value-prop-what-is.md)。
+有关 Azure 应用服务平台的详细信息，请参阅 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)。
 
 [!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
@@ -217,9 +233,4 @@ ASE 边栏选项卡中有一个包含几项重要功能的“设置”部分：
 [ASEAutoscale]: http://azure.microsoft.com/documentation/articles/app-service-environment-auto-scale/
 [ExpressRoute]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-network-configuration-expressroute/
 [ILBASE]: http://azure.microsoft.com/documentation/articles/app-service-environment-with-internal-load-balancer/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

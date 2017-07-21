@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 06/29/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 3a2166fefc8d0b1602562b753e0413be458fae98
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: e9a858addb768ce051fccce0eaf83e49a83da21b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/30/2017
 
 
 ---
 # <a name="assign-and-manage-resource-policies"></a>分配和管理资源策略
 
-若要实施策略，必须执行以下 3 个步骤：
+若要实现策略，必须按照以下步骤操作：
 
-1. 使用 JSON 定义策略规则。
-2. 通过上一步中创建的 JSON，在订阅中创建策略定义。 此步骤使策略可用于分配，但不向订阅应用规则。
-3. 将策略分配到作用域（如订阅或资源组）。 现可强制执行策略规则。
-
-Azure 提供了一些预定义策略，可降低要定义的策略数目。 如果预定义策略适用于你的方案，请跳过前两个步骤，直接将预定义策略分配到作用域。
+1. 检查策略定义（包括 Azure 提供的内置策略），确定订阅中是否已有满足需求的策略。
+2. 如果有，获取此策略的名称。
+3. 如果没有，使用 JSON 定义策略规则，并将它添加为订阅中的策略定义。 此步骤使策略可用于分配，但不向订阅应用规则。
+4. 无论属于上述哪种情况，都将策略分配到作用域（如订阅或资源组）。 现可强制执行策略规则。
 
 本文着重介绍通过 REST API、PowerShell 或 Azure CLI 创建策略定义以及将该定义分配到作用域的步骤。 如果想要通过门户分配策略，请参阅[使用 Azure 门户分配和管理资源策略](resource-manager-policy-portal.md)。 本文不关注用于创建策略定义的语法。 有关策略语法的信息，请参阅[资源策略概述](resource-manager-policy.md)。
 
@@ -144,30 +144,55 @@ GET /subscriptions/{id}/providers?$expand=resourceTypes/aliases&api-version=2015
 
 在继续完成 PowerShell 示例之前，请确保你[已安装最新版本](/powershell/azure/install-azurerm-ps)的 Azure PowerShell。 版本 3.6.0 中添加了策略参数。 如果使用较早版本，示例将返回一个错误，指示“找不到参数”。
 
-### <a name="create-policy-definition"></a>创建策略定义
-可使用 `New-AzureRmPolicyDefinition` cmdlet 创建策略定义。 以下示例创建仅允许北欧和西欧资源的策略定义。
+### <a name="view-policy-definitions"></a>查看策略定义
+若要查看订阅中的所有策略定义，请运行以下命令：
 
 ```powershell
-$policy = New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain regions" -Policy '{
-   "if": {
-     "not": {
-       "field": "location",
-       "in": "[parameters(''allowedLocations'')]"
-     }
-   },
-   "then": {
-     "effect": "deny"
-   }
- }' -Parameter '{
-     "allowedLocations": {
-       "type": "array",
-       "metadata": {
-         "description": "An array of permitted locations for resources.",
-         "strongType": "location",
-         "displayName": "List of locations"
-       }
-     }
- }'
+Get-AzureRmPolicyDefinition
+```
+
+此命令可返回所有可用的策略定义，包括内置策略。 返回的每个策略的格式如下：
+
+```powershell
+Name               : e56962a6-4747-49cd-b67b-bf8b01975c4c
+ResourceId         : /providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c
+ResourceName       : e56962a6-4747-49cd-b67b-bf8b01975c4c
+ResourceType       : Microsoft.Authorization/policyDefinitions
+Properties         : @{displayName=Allowed locations; policyType=BuiltIn; description=This policy enables you to
+                     restrict the locations your organization can specify when deploying resources. Use to enforce
+                     your geo-compliance requirements.; parameters=; policyRule=}
+PolicyDefinitionId : /providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c
+```
+
+继续创建策略定义前，请先查看内置策略。 如果找到实施所需限制的内置策略，可以跳过创建策略定义这一步。 改为将内置策略分配到相应的作用域。
+
+### <a name="create-policy-definition"></a>创建策略定义
+可使用 `New-AzureRmPolicyDefinition` cmdlet 创建策略定义。
+
+```powershell
+$policy = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy to specify access tier." -Policy '{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Storage/storageAccounts"
+      },
+      {
+        "field": "kind",
+        "equals": "BlobStorage"
+      },
+      {
+        "not": {
+          "field": "Microsoft.Storage/storageAccounts/accessTier",
+          "equals": "cool"
+        }
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}'
 ```            
 
 输出存储在 `$policy` 对象中，这将在策略分配过程中使用。 
@@ -175,39 +200,41 @@ $policy = New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description 
 可提供包含策略规则的 .json 文件路径，而不是指定 JSON 作为参数。
 
 ```powershell
-$policy = New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain regions" -Policy "c:\policies\storageskupolicy.json"
+$policy = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy to specify access tier." -Policy "c:\policies\coolAccessTier.json"
 ```
 
 ### <a name="assign-policy"></a>分配策略
 
-通过 `New-AzureRmPolicyAssignment` cmdlet 将策略应用于所需作用域:
+使用 `New-AzureRmPolicyAssignment` cmdlet 将策略应用于相应的作用域。 下面的示例展示了如何将策略分配到资源组。
 
 ```powershell
 $rg = Get-AzureRmResourceGroup -Name "ExampleGroup"
+New-AzureRMPolicyAssignment -Name accessTierAssignment -Scope $rg.ResourceId -PolicyDefinition $policy
+```
+
+若要分配需要参数的策略，请创建包含这些值的对象。 下面的示例展示了如何检索内置策略并传递参数值：
+
+```powershell
+$rg = Get-AzureRmResourceGroup -Name "ExampleGroup"
+$policy = Get-AzureRmPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/e5662a6-4747-49cd-b67b-bf8b01975c4c
 $array = @("West US", "West US 2")
-$param = @{"allowedLocations"=$array}
-New-AzureRMPolicyAssignment -Name regionPolicyAssignment -Scope $rg.ResourceId -PolicyDefinition $policy -PolicyParameterObject $param
+$param = @{"listOfAllowedLocations"=$array}
+New-AzureRMPolicyAssignment -Name locationAssignment -Scope $rg.ResourceId -PolicyDefinition $policy -PolicyParameterObject $param
 ```
 
-### <a name="view-policies"></a>查看策略
+### <a name="view-policy-assignment"></a>查看策略分配
 
-若要获取所有策略分配，请使用：
-
-```powershell
-Get-AzureRmPolicyAssignment
-```
-
-若要获取特定策略，请使用：
+若要获取特定策略分配，请运行以下命令：
 
 ```powershell
 $rg = Get-AzureRmResourceGroup -Name "ExampleGroup"
-(Get-AzureRmPolicyAssignment -Name regionPolicyAssignment -Scope $rg.ResourceId
+(Get-AzureRmPolicyAssignment -Name accessTierAssignment -Scope $rg.ResourceId
 ```
 
 若要查看某一策略定义的策略规则，请使用：
 
 ```powershell
-(Get-AzureRmPolicyDefinition -Name regionPolicyDefinition).Properties.policyRule | ConvertTo-Json
+(Get-AzureRmPolicyDefinition -Name coolAccessTier).Properties.policyRule | ConvertTo-Json
 ```
 
 ### <a name="remove-policy-assignment"></a>删除策略分配 
@@ -218,39 +245,70 @@ $rg = Get-AzureRmResourceGroup -Name "ExampleGroup"
 Remove-AzureRmPolicyAssignment -Name regionPolicyAssignment -Scope /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
 ```
 
-## <a name="azure-cli-20"></a>Azure CLI 2.0
+## <a name="azure-cli"></a>Azure CLI
+
+### <a name="view-policy-definitions"></a>查看策略定义
+若要查看订阅中的所有策略定义，请运行以下命令：
+
+```azurecli
+az policy definition list
+```
+
+此命令可返回所有可用的策略定义，包括内置策略。 返回的每个策略的格式如下：
+
+```azurecli
+{                                                            
+  "description": "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements.",                      
+  "displayName": "Allowed locations",                                                                                                                "id": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c",                                                 "name": "e56962a6-4747-49cd-b67b-bf8b01975c4c",                                                                                                    "policyRule": {                                                                                                                                      "if": {                                                                                                                                              "not": {                                                                                                                                             "field": "location",                                                                                                                               "in": "[parameters('listOfAllowedLocations')]"                                                                                                   }                                                                                                                                                },                                                                                                                                                 "then": {                                                                                                                                            "effect": "Deny"                                                                                                                                 }                                                                                                                                                },                                                                                                                                                 "policyType": "BuiltIn"
+}
+```
+
+继续创建策略定义前，请先查看内置策略。 如果找到实施所需限制的内置策略，可以跳过创建策略定义这一步。 改为将内置策略分配到相应的作用域。
 
 ### <a name="create-policy-definition"></a>创建策略定义
 
-可结合策略定义命令使用 Azure CLI 2.0 来创建策略定义。 以下示例将创建仅允许北欧和西欧资源的策略。
+可以将 Azure CLI 与策略定义命令结合使用来创建策略定义。
 
 ```azurecli
-az policy definition create --name regionPolicyDefinition --description "Policy to allow resource creation only in certain regions" --rules '{    
-  "if" : {
-    "not" : {
-      "field" : "location",
-      "in" : ["northeurope" , "westeurope"]
-    }
+az policy definition create --name coolAccessTier --description "Policy to specify access tier." --rules '{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Storage/storageAccounts"
+      },
+      {
+        "field": "kind",
+        "equals": "BlobStorage"
+      },
+      {
+        "not": {
+          "field": "Microsoft.Storage/storageAccounts/accessTier",
+          "equals": "cool"
+        }
+      }
+    ]
   },
-  "then" : {
-    "effect" : "deny"
+  "then": {
+    "effect": "deny"
   }
 }'    
 ```
 
 ### <a name="assign-policy"></a>分配策略
 
-可以使用策略分配命令将策略应用到所需范围：
+可以使用策略分配命令，将策略应用于相应的作用域。 下面的示例展示了如何将策略分配到资源组。
 
 ```azurecli
-az policy assignment create --name regionPolicyAssignment --policy regionPolicyDefinition --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
+az policy assignment create --name coolAccessTierAssignment --policy coolAccessTier --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
 ```
 
-### <a name="view-policy-definition"></a>查看策略定义
-若要获取策略定义，请使用以下命令：
+### <a name="view-policy-assignment"></a>查看策略分配
+
+若要查看策略分配，请提供策略分配名称和作用域：
 
 ```azurecli
-az policy definition show --name regionPolicyAssignment
+az policy assignment show --name coolAccessTierAssignment --scope "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}"
 ```
 
 ### <a name="remove-policy-assignment"></a>删除策略分配 
@@ -258,62 +316,7 @@ az policy definition show --name regionPolicyAssignment
 若要删除策略分配，请使用：
 
 ```azurecli
-az policy assignment delete --name regionPolicyAssignment --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
-```
-
-## <a name="azure-cli-10"></a>Azure CLI 1.0
-
-### <a name="create-policy-definition"></a>创建策略定义
-
-可以结合策略定义命令使用 Azure CLI 来创建策略定义。 以下示例将创建仅允许北欧和西欧资源的策略。
-
-```azurecli
-azure policy definition create --name regionPolicyDefinition --description "Policy to allow resource creation only in certain regions" --policy-string '{    
-  "if" : {
-    "not" : {
-      "field" : "location",
-      "in" : ["northeurope" , "westeurope"]
-    }
-  },
-  "then" : {
-    "effect" : "deny"
-  }
-}'    
-```
-
-可以指定包含策略的 .json 文件路径，而无需指定内联策略。
-
-```azurecli
-azure policy definition create --name regionPolicyDefinition --description "Policy to allow resource creation only in certain regions" --policy "path-to-policy-json-on-disk"
-```
-
-### <a name="assign-policy"></a>分配策略
-
-可以使用策略分配命令将策略应用到所需范围：
-
-```azurecli
-azure policy assignment create --name regionPolicyAssignment --policy-definition-id /subscriptions/{subscription-id}/providers/Microsoft.Authorization/policyDefinitions/{policy-name} --scope    /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
-```
-
-此处的范围是指定的资源组的名称。 如果 policy-definition-id 参数的值未知，可以通过 Azure CLI 获取该值。 
-
-```azurecli
-azure policy definition show {policy-name}
-```
-
-### <a name="view-policy"></a>查看策略
-若要获取策略，请使用以下命令：
-
-```azurecli
-azure policy definition show {definition-name} --json
-```
-
-### <a name="remove-policy-assignment"></a>删除策略分配 
-
-若要删除策略分配，请使用：
-
-```azurecli
-azure policy assignment delete --name regionPolicyAssignment --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
+az policy assignment delete --name coolAccessTier --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
 ```
 
 ## <a name="next-steps"></a>后续步骤

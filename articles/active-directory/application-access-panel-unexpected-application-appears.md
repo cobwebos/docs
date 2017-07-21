@@ -11,27 +11,33 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: 2429ebef69aaddf28d10cd77bf4ce9072ea71476
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/11/2017
-
 
 ---
 
-# <a name="how-applications-appear-on-the-access-panel"></a>应用程序为何在访问面板上显示
+<a id="how-applications-appear-on-the-access-panel" class="xliff"></a>
+
+# 应用程序为何在访问面板上显示
 
 访问面板是一个基于 Web 的门户，在 Azure Active Directory (Azure AD) 中拥有工作或学校帐户的用户可以使用它来查看和启动 Azure AD 管理员已授权他们访问的基于云的应用程序。 这些应用程序代替用户配置在 Azure AD 门户中。 管理员可以直接向用户或用户所在组提供应用程序，这会导致应用程序出现在用户的访问面板上。
 
-## <a name="general-issues-to-check-first"></a>首先要检查的常规问题
+<a id="general-issues-to-check-first" class="xliff"></a>
+
+## 首先要检查的常规问题
 
 -   如果刚将应用程序从用户或用户所在组中删除，请在几分钟后重新登录该用户的访问面板以查看应用程序是否已删除。
 
 -   如果刚将许可证从用户或用户所在组中删除，则可能要花较长时间，具体取决于被更改的组的大小和复杂程度。 在登录访问面板前，请多等一会儿。
 
-## <a name="problems-related-to-assigning-applications-to-users"></a>有关为用户分配应用程序的问题
+<a id="problems-related-to-assigning-applications-to-users" class="xliff"></a>
+
+## 有关为用户分配应用程序的问题
 
 如果用户以前被分配到应用程序，则可能会在其访问面板中看到该应用程序。 以下是一些检查方式：
 
@@ -40,7 +46,9 @@ ms.lasthandoff: 04/11/2017
 -   [检查用户是否符合与应用程序相关的许可证](#check-if-a-user-is-under-a-license-related-to-the-application)
 
 
-### <a name="check-if-a-user-is-assigned-to-the-application"></a>检查用户是否被分配给应用程序
+<a id="check-if-a-user-is-assigned-to-the-application" class="xliff"></a>
+
+### 检查用户是否被分配给应用程序
 
 若要检查用户是否被分配给应用程序，请按照下列步骤操作：
 
@@ -62,7 +70,9 @@ ms.lasthandoff: 04/11/2017
 
   * 若要将用户从应用程序中删除，请**单击用户对应的行**，然后选择“删除”。
 
-### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>检查用户是否符合与应用程序相关的许可证
+<a id="check-if-a-user-is-under-a-license-related-to-the-application" class="xliff"></a>
+
+### 检查用户是否符合与应用程序相关的许可证
 
 要检查用户的已分配许可证，请执行以下步骤：
 
@@ -82,7 +92,9 @@ ms.lasthandoff: 04/11/2017
 
    * 如果已向用户分配 Office 许可证，则第一方 Office 应用程序将显示在用户的访问面板中。
 
-## <a name="problems-related-to-assigning-applications-to-groups"></a>有关为组分配应用程序的问题
+<a id="problems-related-to-assigning-applications-to-groups" class="xliff"></a>
+
+## 有关为组分配应用程序的问题
 
 用户可能会在访问面板中看到应用程序，这是因为他们是某个组的成员，而该组已经被分配给应用程序。 以下是一些检查方式：
 
@@ -90,7 +102,9 @@ ms.lasthandoff: 04/11/2017
 
 -   [检查用户是否是被分配许可证的组的成员](#check-if-a-user-is-a-member-of-a-group-assigned-to-a-license)
 
-### <a name="check-a-users-group-memberships"></a>检查用户的组成员身份
+<a id="check-a-users-group-memberships" class="xliff"></a>
+
+### 检查用户的组成员身份
 
 要检查组的成员身份，请执行以下步骤：
 
@@ -112,7 +126,9 @@ ms.lasthandoff: 04/11/2017
 
    * 若要将用户从组中删除，请**单击组对应的行**，并选择删除。
 
-### <a name="check-if-a-user-is-a-member-of-a-group-assigned-to-a-license"></a>检查用户是否是被分配许可证的组的成员
+<a id="check-if-a-user-is-a-member-of-a-group-assigned-to-a-license" class="xliff"></a>
+
+### 检查用户是否是被分配许可证的组的成员
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，以**全局管理员**身份登录
 
@@ -135,7 +151,9 @@ ms.lasthandoff: 04/11/2017
   * 如果已向组分配 Office 许可证，则某个第一方 Office 应用程序可能会显示在用户的访问面板中。
 
 
-## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>如果这些故障排除步骤未解决此问题
+<a id="if-these-troubleshooting-steps-do-not-the-resolve-the-issue" class="xliff"></a>
+
+## 如果这些故障排除步骤未解决此问题
 
 打开支持票证，并提供以下信息（如有）：
 
@@ -151,6 +169,8 @@ ms.lasthandoff: 04/11/2017
 
 -   Fiddler 跟踪
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [使用 Azure Active Directory 管理应用程序](active-directory-enable-sso-scenario.md)
 

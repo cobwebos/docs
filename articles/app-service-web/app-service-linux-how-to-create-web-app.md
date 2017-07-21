@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: f4bf4138ce3a9a2495a0a0fd46e149f6ac96d82d
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 49091d4a85bed23927850f9c0bbc5ea8b6e8c9e1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -49,15 +49,15 @@ ms.lasthandoff: 05/10/2017
 ## <a name="deploy-your-web-app"></a>部署 Web 应用
 从管理门户选择“部署选项”后，即可使用本地 Git 或 GitHub 存储库部署应用程序。 说明的其余部分类似于非 Linux Web 应用。 可以按照[本地 Git 部署](app-service-deploy-local-git.md)或[连续部署](app-service-continuous-deployment.md)中的说明部署应用。
 
-也可使用 FTP 将应用程序上载到站点。 可以从诊断日志部分获取 Web 应用的 FTP 终结点，如下图所示：
+也可使用 FTP 将应用程序上传到站点。 可以从诊断日志部分获取 Web 应用的 FTP 终结点，如下图所示：
 
 ![诊断日志][4]
 
 ## <a name="next-steps"></a>后续步骤
 * [什么是 Linux 上的 Azure Web 应用？](app-service-linux-intro.md)
 * [在 Linux 上的 Azure Web 应用中使用针对 Node.js 的 PM2 配置](app-service-linux-using-nodejs-pm2.md)
-* [在 Linux 上的 Azure App Service Web 应用中使用 Ruby](app-service-linux-ruby-get-started.md)
-* [Linux 上的 Azure App Service Web 应用常见问题解答](app-service-linux-faq.md)
+* [在 Linux 上的 Azure 应用服务 Web 应用中使用 Ruby](app-service-linux-ruby-get-started.md)
+* [Linux 上的 Azure 应用服务 Web 应用常见问题解答](app-service-linux-faq.md)
 
 <!--Image references-->
 [1]: ./media/app-service-linux-how-to-create-a-web-app/top-level-create.png

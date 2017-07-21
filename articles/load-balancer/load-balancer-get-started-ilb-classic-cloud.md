@@ -1,6 +1,6 @@
 ---
 title: "为 Azure 云服务创建内部负载均衡器 | Microsoft 文档"
-description: "了解如何在经典部署模型中使用 PowerShell 创建内部负载平衡器"
+description: "了解如何在经典部署模型中使用 PowerShell 创建内部负载均衡器"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -14,13 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: e32ffa81f7465682579eec92087b98aebbe3c4a8
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 8dbc951416d577fa7f534c2eab1605c6bee61fce
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="get-started-creating-an-internal-load-balancer-classic-for-cloud-services"></a>开始为云服务创建内部负载平衡器（经典）
+# 开始为云服务创建内部负载均衡器（经典）
+<a id="get-started-creating-an-internal-load-balancer-classic-for-cloud-services" class="xliff"></a>
 
 > [!div class="op_single_selector"]
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-classic-ps.md)
@@ -28,20 +31,22 @@ ms.openlocfilehash: e32ffa81f7465682579eec92087b98aebbe3c4a8
 > * [云服务](../load-balancer/load-balancer-get-started-ilb-classic-cloud.md)
 
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../azure-resource-manager/resource-manager-deployment-model.md)。  本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 了解如何[使用 Resource Manager 模型执行这些步骤](load-balancer-get-started-ilb-arm-ps.md)。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../azure-resource-manager/resource-manager-deployment-model.md)。  本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 了解如何[使用 Resource Manager 模型执行这些步骤](load-balancer-get-started-ilb-arm-ps.md)。
 
-## <a name="configure-internal-load-balancer-for-cloud-services"></a>为云服务配置内部负载平衡器
+## 为云服务配置内部负载均衡器
+<a id="configure-internal-load-balancer-for-cloud-services" class="xliff"></a>
 
-虚拟机和云服务都支持内部负载平衡器。 在区域虚拟网络外部的云服务中创建的内部负载平衡器终结点将只能在该云服务中进行访问。
+虚拟机和云服务都支持内部负载均衡器。 在区域虚拟网络外部的云服务中创建的内部负载均衡器终结点将只能在该云服务中进行访问。
 
-在云服务中创建第一个部署期间必须设置内部负载平衡器配置，如下面的示例中所示。
+在云服务中创建第一个部署期间必须设置内部负载均衡器配置，如下面的示例中所示。
 
 > [!IMPORTANT]
-> 运行以下步骤的先决条件是已为云部署创建虚拟网络。 你需要虚拟网络名称和子网名称，以便创建内部负载平衡。
+> 运行以下步骤的先决条件是已为云部署创建虚拟网络。 你需要虚拟网络名称和子网名称，以便创建内部负载均衡。
 
-### <a name="step-1"></a>步骤 1
+### 步骤 1
+<a id="step-1" class="xliff"></a>
 
-在 Visual Studio 中打开云部署的服务配置文件 (.cscfg)，并在网络配置的最后一个“`</Role>`”项下添加以下节，以便创建内部负载平衡。
+在 Visual Studio 中打开云部署的服务配置文件 (.cscfg)，并在网络配置的最后一个“`</Role>`”项下添加以下节，以便创建内部负载均衡。
 
 ```xml
 <NetworkConfiguration>
@@ -53,7 +58,7 @@ ms.openlocfilehash: e32ffa81f7465682579eec92087b98aebbe3c4a8
 </NetworkConfiguration>
 ```
 
-让我们为网络配置文件添加值，以便显示其外观。 在此示例中，假定你创建了一个名为“test_vnet”的子网，其中包含一个名为 test_subnet 的子网 10.0.0.0/24 并具有静态 IP 10.0.0.4。 负载平衡器将名为 testLB。
+让我们为网络配置文件添加值，以便显示其外观。 在此示例中，假定你创建了一个名为“test_vnet”的 VNet，其中包含一个名为 test_subnet 的子网 10.0.0.0/24 并具有静态 IP 10.0.0.4。 负载均衡器将名为 testLB。
 
 ```xml
 <NetworkConfiguration>
@@ -67,9 +72,10 @@ ms.openlocfilehash: e32ffa81f7465682579eec92087b98aebbe3c4a8
 
 有关负载均衡器架构的详细信息，请参阅[添加负载均衡器](https://msdn.microsoft.com/library/azure/dn722411.aspx)。
 
-### <a name="step-2"></a>步骤 2
+### 步骤 2
+<a id="step-2" class="xliff"></a>
 
-更改服务定义 (.csdef) 文件，以便向内部负载平衡添加终结点。 创建角色实例的那一刻，服务定义文件会将角色实例添加到内部负载平衡。
+更改服务定义 (.csdef) 文件，以便向内部负载均衡添加终结点。 创建角色实例的那一刻，服务定义文件会将角色实例添加到内部负载均衡。
 
 ```xml
 <WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
@@ -89,17 +95,13 @@ ms.openlocfilehash: e32ffa81f7465682579eec92087b98aebbe3c4a8
 </WorkerRole>
 ```
 
-将使用 testLB 负载平衡器对网络流量进行负载平衡，将端口 80 用于传入请求，也在端口 80 上发送到辅助角色实例。
+将使用 testLB 负载均衡器对网络流量进行负载均衡，将端口 80 用于传入请求，也在端口 80 上发送到辅助角色实例。
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 
 [使用源 IP 关联配置负载均衡器分发模式](load-balancer-distribution-mode.md)
 
 [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

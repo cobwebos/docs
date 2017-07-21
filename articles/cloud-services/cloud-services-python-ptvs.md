@@ -12,14 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: hero-article
-ms.date: 11/16/2016
+ms.date: 07/18/2017
 ms.author: adegeo
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 6b21f38ddd64278db26d7042349470805b799203
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/18/2017
-
 
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>用于 Visual Studio 的 Python 工具中的 Python Web 角色和辅助角色

@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 05/25/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 02ecc95d97719908a18f615dc3e19af2a563cc73
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8ccb94ea1b415c93d9dc3faefab3cbf8fb075b89
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 05/26/2017
 * 熟悉基于 Linux 的 HDInsight 群集的创建过程。 有关详细信息，请参阅[在 HDInsight 上创建 Spark](hdinsight-apache-spark-jupyter-spark-sql.md)。
 
   > [!IMPORTANT]
-  > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
+  > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 * Web 浏览器。
 

@@ -4,7 +4,7 @@ description: "示例应用程序在 Adafruit Feather M0 WiFi 上运行，监视�
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "arduino 从 web 控制 led, arduino 通过 web 控制 led"
 ROBOTS: NOINDEX
@@ -17,33 +17,43 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4f9feb665ac93028023df86889ca53a64ac2ec0e
 ms.openlocfilehash: 63113841ca836681232e0aa43b15b444f8bb92e2
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/28/2017
 
-
 ---
-# <a name="run-a-sample-application-to-receive-cloud-to-device-messages"></a>运行示例应用程序，接收云到设备消息
+<a id="run-a-sample-application-to-receive-cloud-to-device-messages" class="xliff"></a>
+
+# 运行示例应用程序，接收云到设备消息
 在本文中，需要在 Adafruit Feather M0 WiFi Arduino 开发板上部署示例应用程序。
 
 示例应用程序监视来自 IoT 中心的传入消息。 此外还需在计算机上运行 gulp 任务，将消息从 IoT 中心发送到 Arduino 开发板。 示例应用程序在收到这些消息后，就会让 LED 闪烁。 如果遇到任何问题，请在[故障排除页][troubleshooting]上查找解决方法。
 
-## <a name="what-you-will-do"></a>执行的操作
+<a id="what-you-will-do" class="xliff"></a>
+
+## 执行的操作
 * 将示例应用程序连接到 IoT 中心。
 * 部署并运行示例应用程序。
 * 将消息从 IoT 中心发送到 Arduino 开发板，使 LED 闪烁。
 
-## <a name="what-you-will-learn"></a>你要学习的知识
+<a id="what-you-will-learn" class="xliff"></a>
+
+## 你要学习的知识
 本文介绍：
 * 如何监视来自 IoT 中心的传入消息。
 * 如何将云到设备消息从 IoT 中心发送到 Arduino 开发板。
 
-## <a name="what-you-need"></a>所需条件
+<a id="what-you-need" class="xliff"></a>
+
+## 所需条件
 * 设置 Arduino 开发板以供使用。 若要了解如何设置 Arduino 开发板，请参阅[配置设备][configure-your-device]。
 * 在 Azure 订阅中创建的一个 IoT 中心。 若要了解如何创建 IoT 中心，请参阅[创建 Azure IoT 中心][create-your-azure-iot-hub]。
 
-## <a name="connect-the-sample-application-to-your-iot-hub"></a>将示例应用程序连接到 IoT 中心
+<a id="connect-the-sample-application-to-your-iot-hub" class="xliff"></a>
+
+## 将示例应用程序连接到 IoT 中心
 
 1. 确保位于存储库文件夹 `iot-hub-c-feather-m0-getting-started` 中。
 
@@ -101,7 +111,9 @@ ms.lasthandoff: 01/28/2017
    * 将 **[IoT device connection string]** 替换为通过运行 `az iot device show-connection-string --hub-name {my hub name} --device-id {device id}` 命令获取的设备连接字符串。
    * 将 **[IoT hub connection string]** 替换为通过运行 `az iot hub show-connection-string --name {my hub name}` 命令获取的 IoT 中心连接字符串。
 
-## <a name="deploy-and-run-the-sample-application"></a>部署并运行示例应用程序
+<a id="deploy-and-run-the-sample-application" class="xliff"></a>
+
+## 部署并运行示例应用程序
 运行以下命令，在 Arduino 开发板上部署并运行示例应用程序：
 
 ```bash
@@ -121,10 +133,14 @@ gulp 命令将示例应用程序部署到 Arduino 开发板。 然后，它会�
 
 ![包含 gulp 命令和闪烁消息的示例应用程序][sample-application]
 
-## <a name="summary"></a>摘要
+<a id="summary" class="xliff"></a>
+
+## 摘要
 已成功将消息从 IoT 中心发送到 Arduino 开发板，使 LED 闪烁。 下一任务为可选任务：更改 LED 的亮起和熄灭行为。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [更改 LED 的亮起和熄灭行为][change-the-on-and-off-led-behavior]
 
 

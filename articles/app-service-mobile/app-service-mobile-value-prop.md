@@ -3,7 +3,7 @@ title: "什么是移动应用"
 description: "了解应用服务为企业移动应用带来的优势。"
 services: app-service\mobile
 documentationcenter: 
-author: adrianhall
+author: ggailey777
 manager: yochayk
 editor: 
 ms.assetid: 4e96cb9d-a632-4cf6-8219-0810d8ade3f9
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/01/2016
-ms.author: adrianha
-translationtype: Human Translation
+ms.author: glenga
+ms.translationtype: Human Translation
 ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
 ms.openlocfilehash: 8ce0a0e7b06f85090c07052056ddd67b97b2ee8b
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/29/2017
-
 
 ---
 # <a name="getting-started"> </a>什么是移动应用？
@@ -38,14 +38,14 @@ Azure App Service 是面向专业开发人员的完全托管型 [平台即服务
 以下功能对于支持云的移动开发十分重要：
 
 * **身份验证和授权** - 从不断增多的标识提供者（包括适用于企业身份验证的 Azure Active Directory，以及 Facebook、Google、Twitter 和 Microsoft 帐户等社交提供者）列表中选择。  Azure 移动应用可为每个提供者提供 OAuth 2.0 服务。  还可以为标识提供者集成 SDK，获取特定于提供者的功能。
-  
+
   深入了解 [身份验证功能]。
 * **数据访问** - Azure 移动应用提供已链接到 SQL Azure 或本地 SQL Server 且适合移动用途的 OData v3 数据源。  此服务基于 Entity Framework，可轻松与其他 NoSQL 和 SQL 数据提供程序集成，包括 [Azure 表存储]、MongoDB、[DocumentDB] 和 SaaS API 提供程序（如 Office 365 和 Salesforce.com）。
 * **脱机同步** - 使用客户端 SDK 可以轻松构建稳健且响应灵敏的移动应用程序，用于处理可与后端数据自动同步的脱机数据集，包括冲突解决支持。
-  
+
   深入了解 [数据功能]。
 * **推送通知** - 客户端 SDK 与 Azure 通知中心的注册功能紧密集成，可将推送通知同时发送给数百万用户。
-  
+
   深入了解 [推送通知功能]。
 * **客户端 SDK** - 我们提供整套客户端 SDK 来全面满足本机开发（[iOS]、[Android] 和 [Windows]）、跨平台开发（[用于 iOS 和 Android 的 Xamarin]、[Xamarin Forms]）和混合应用程序开发 ([Apache Cordova]) 要求。  每个客户端 SDK 附带 MIT 许可证，并且是开源的。
 
@@ -53,19 +53,19 @@ Azure App Service 是面向专业开发人员的完全托管型 [平台即服务
 一般而言，以下平台功能可用于移动生产站点。
 
 * **自动缩放** - 使用应用服务可以快速缩放，以处理任何传入的客户负载。 手动选择 VM 的数量和大小，或者设置自动缩放，根据负载或计划来缩放移动应用后端。
-  
+
   深入了解 [自动缩放]。
 * **过渡环境** - 应用服务可以运行多个版本的站点，使用户能够执行 A/B 测试，在大型 DevOps 计划中进行生产测试，以及对新后端执行现场过渡。
-  
+
   深入了解 [过渡环境]。
 * **连续部署** - 应用服务可与常用 SCM 系统集成，使用户能够将新版后端推送到 SCM 系统的分支以便自动部署。
-  
+
   深入了解 [部署选项]。
 * **虚拟网络** - 应用服务可以使用虚拟网络、ExpressRoute 或混合连接与本地资源建立连接。
-  
+
   深入了解[混合连接]、[虚拟网络]和 [ExpressRoute]。
 * **隔离/专用环境** - 应用服务可以在一个完全隔离的专用环境中运行，安全运行大规模的 Azure 应用服务应用。  这很适合用于需要大规模、隔离或安全网络访问的应用程序工作负荷。
-  
+
   深入了解 [应用服务环境]。
 
 ## <a name="getting-started"></a>入门
@@ -76,8 +76,8 @@ Azure App Service 是面向专业开发人员的完全托管型 [平台即服务
 
 > [!NOTE]
 > 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/mobile/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
-> 
-> 
+>
+>
 
 <!-- URLs. -->
 [Migrate your Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/11/2016
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 94a4d2b85c845b135201fd919e8eac64a5e1cb37
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 2bcdff44f6c3169779c3dd018706eea8275825ca
 ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -29,15 +29,6 @@ Windows 提供了各种[性能计数器](http://www.codeproject.com/Articles/859
 ![Application Insights 中报告的性能计数器](./media/app-insights-performance-counters/counters-by-server-instance.png)
 
 （性能计数器不适用于 Azure Web 应用。 但是可以[将 Azure 诊断发送到 Application Insights](app-insights-azure-diagnostics.md)。）
-
-## <a name="configure"></a>配置
-如果服务器计算机上尚未安装 Application Insights 状态监视器，需要安装它才能看到性能计数器。
-
-在每个服务器实例上，下载并运行[状态监视器安装程序](http://go.microsoft.com/fwlink/?LinkId=506648)。 如果已安装它，无需重新进行安装。
-
-* *我已在开发期间[在应用中安装 Application Insights SDK](app-insights-asp-net.md)。是否仍需要状态监视器？*
-  
-    是，需要状态监视器来收集 ASP.NET Web 应用的性能计数器。 你可能已经知道，状态监视器还可用于[监视已是实时应用的 Web 应用](app-insights-monitor-performance-live-website-now.md)，无需在开发期间安装 SDK。
 
 ## <a name="view-counters"></a>查看计数器
 “服务器”边栏选项卡显示一组默认的性能计数器。 

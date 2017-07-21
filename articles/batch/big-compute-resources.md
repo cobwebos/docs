@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: big-compute
 ms.date: 03/17/2017
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: aff11fe3d7e4cea3580f73d54a53d9624e4f3ac9
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 18be9f503b57117a7e8f5f0a4e9c93614cc7755b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="big-compute-in-azure-technical-resources-for-batch-and-high-performance-computing"></a>Azure 中的大型计算：用于批处理和高性能计算的技术资源
@@ -30,7 +30,7 @@ ms.lasthandoff: 04/03/2017
 * [Batch 和 HPC 解决方案](batch-hpc-solutions.md)
 * [视频：使用 Azure 和 HPC 在云中进行大型计算](https://azure.microsoft.com/documentation/videos/teched-europe-2014-big-compute-in-the-cloud-with-high-performance-computing-on-azure/)
 
-## <a name="azure-batch"></a>Azure 批处理
+## <a name="azure-batch"></a>Azure Batch
 [Batch](https://azure.microsoft.com/services/batch/) 是一种平台服务，可让用户轻松地在 Linux 和 Windows 应用程序中启用云功能并运行作业，而无需设置和管理群集与作业计划程序。 使用 SDK 可将不同语言的客户端应用与 Azure Batch 集成，将数据迁移到 Azure，以及生成作业运行管道。
 
 * [文档](https://azure.microsoft.com/documentation/services/batch/)
@@ -77,7 +77,7 @@ HPC Pack 是在 Microsoft Azure 和 Windows Server 技术基础之上构建的 M
 * [MPI 论坛](https://social.microsoft.com/Forums/en-us/home?forum=windowshpcmpi)
 
 ## <a name="compute-intensive-instances"></a>计算密集型实例
-Azure 提供了[一系列 VM 大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，包括能够连接到后端 RDMA 网络的[计算密集型 H 系列](../virtual-machines/windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)实例，以运行 Linux 和 Windows HPC 工作负荷。 
+Azure 提供了[一系列 VM 大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，包括能够连接到后端 RDMA 网络的[计算密集型 H 系列](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)实例，以运行 Linux 和 Windows HPC 工作负荷。 
 
 * [设置 Linux RDMA 群集以运行 MPI 应用程序](../virtual-machines/linux/classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [通过 Microsoft HPC Pack 设置 Windows RDMA 群集以运行 MPI 应用程序](../virtual-machines/windows/classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)

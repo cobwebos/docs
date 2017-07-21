@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure 数据工厂将数据移入/移出文件系统 | Microsoft Docs"
-description: "了解如何使用 Azure 数据工厂将数据移入和移出本地文件系统。"
+title: "使用 Azure 数据工厂向/从文件系统复制数据 | Microsoft Docs"
+description: "了解如何使用 Azure 数据工厂向或从本地文件系统复制数据。"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: bd38aa5e4dd50b11f52afdc9dfc0f22c8c072f67
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: d25f1346ae35f7733ac3ca95c59a12616a60cc93
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/10/2017
 
 
 ---
-# <a name="move-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出本地文件系统
+# <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>使用 Azure 数据工厂向或从本地文件系统复制数据
 本文介绍如何使用 Azure 数据工厂中的复制活动向/从本地文件系统复制数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
 
 ## <a name="supported-scenarios"></a>支持的方案

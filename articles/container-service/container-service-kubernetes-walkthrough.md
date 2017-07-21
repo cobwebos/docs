@@ -1,9 +1,9 @@
 ---
-title: "Azure 中的 Kubernetes 群集快速入门 | Microsoft 文档"
-description: "在 Azure 容器服务中部署 Kubernetes 群集并开始使用"
+title: "快速入门 - 适用于 Linux 的 Azure Kubernetes 群集 | Microsoft Docs"
+description: "快速学习在 Azure 容器服务中使用 Azure CLI 为 Linux 容器创建 Kubernetes 群集。"
 services: container-service
 documentationcenter: 
-author: anhowe
+author: neilpeterson
 manager: timlt
 editor: 
 tags: acs, azure-container-service, kubernetes
@@ -14,191 +14,145 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
-ms.author: anhowe
+ms.date: 07/18/2017
+ms.author: nepeters
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 0604a85192ed632b621113b98cc44172c584ea01
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 3be2079d205d6bfd4c796e5f6abcd7ac5fe595a2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 07/19/2017
 
 ---
 
-# <a name="get-started-with-a-kubernetes-cluster-in-container-service"></a>容器服务中的 Kubernetes 群集入门
+# <a name="deploy-kubernetes-cluster-for-linux-containers"></a>为 Linux 容器部署 Kubernetes 群集
 
+Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南详细介绍如何在 [Azure 容器服务](container-service-intro.md)中使用 Azure CLI 部署 [Kubernetes](https://kubernetes.io/docs/home/) 群集。 部署群集后，使用 Kubernetes `kubectl` 命令行工具连接到群集，并部署第一个 Linux 容器。
 
-本演练介绍如何使用 Azure CLI 2.0 命令在 Azure 容器服务中创建 Kubernetes 群集。 然后，可以使用 `kubectl` 命令行工具来开始使用群集中的容器。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-下图显示了一个容器服务群集的体系结构，其中具有一个 Linux 主节点和两个 Linux 代理节点。 主节点提供 Kubernetes REST API。 代理节点分组在 Azure 可用性集中，运行用户的容器。 所有 VM 在相同的专用虚拟网络中，并完全可以相互访问。
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-![Azure 上的 Kubernetes 群集映像](media/container-service-kubernetes-walkthrough/kubernetes.png)
+如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
-如需更多背景知识，请参阅 [Azure 容器服务简介](container-service-intro.md)和 [Kubernetes documentation](https://kubernetes.io/docs/home/)（Kubernetes 文档）。
+## <a name="create-a-resource-group"></a>创建资源组
 
-## <a name="prerequisites"></a>先决条件
-要使用 Azure CLI 2.0 创建 Azure 容器服务群集，用户必须：
-* 具有一个 Azure 帐户（[获取免费试用版](https://azure.microsoft.com/pricing/free-trial/)）
-* 已安装并设置 [Azure CLI 2.0](/cli/azure/install-az-cli2)
+使用 [az group create](/cli/azure/group#create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑组。 
 
-另外，你需要（或者可以使用 Azure CLI 在部署群集期间自动生成）以下项：
+以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
-* **SSH RSA 公钥**：若要提前创建安全外壳 (SSH) RSA 密钥，请参阅 [macOS 和 Linux](../virtual-machines/linux/mac-create-ssh-keys.md) 或 [Windows](../virtual-machines/linux/ssh-from-windows.md) 指南。 
-
-* **服务主体客户端 ID 和机密**：有关如何创建 Azure Active Directory 服务主体的步骤和其他信息，请参阅[关于 Kubernetes 群集的服务主体](container-service-kubernetes-service-principal.md)。
-
- 本文中的命令示例自动生成 SSH 密钥和服务主体。
-
-## <a name="create-your-kubernetes-cluster"></a>创建 Kubernetes 群集
-
-下面是使用 Azure CLI 2.0 创建群集的简要 bash shell 命令。 
-
-### <a name="create-a-resource-group"></a>创建资源组
-若要创建群集，首先需要在[提供了](https://azure.microsoft.com/regions/services/) Azure 容器服务的位置创建资源组。 运行类似于以下内容的命令：
-
-```azurecli
-RESOURCE_GROUP=my-resource-group
-LOCATION=westus
-az group create --name=$RESOURCE_GROUP --location=$LOCATION
+```azurecli-interactive 
+az group create --name myResourceGroup --location eastus
 ```
 
-### <a name="create-a-cluster"></a>创建群集
-使用 `az acs create` 命令与 `--orchestrator-type=kubernetes`，在资源组中创建 Kubernetes 群集。 有关命令语法，请参阅 `az acs create` [帮助](/cli/azure/acs#create)。
+## <a name="create-kubernetes-cluster"></a>创建 Kubernetes 群集
+使用 [az acs create](/cli/azure/acs#create) 命令在 Azure 容器服务中创建 Kubernetes 群集。 
 
-此版本的命令自动为 Kubernetes 群集生成 SSH RSA 密钥和服务主体。
+以下示例创建名为 myK8sCluster 的群集，其中包含一个 Linux 主节点和两个 Linux 代理节点。 本示例创建 SSH 密钥（如果默认位置中不存在的话）。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 更新群集名称，使其适应环境。 
 
 
 
-```azurecli
-DNS_PREFIX=some-unique-value
-CLUSTER_NAME=any-acs-cluster-name
-az acs create --orchestrator-type=kubernetes --resource-group $RESOURCE_GROUP --name=$CLUSTER_NAME --dns-prefix=$DNS_PREFIX --generate-ssh-keys
+```azurecli-interactive 
+az acs create --orchestrator-type=kubernetes \
+    --resource-group myResourceGroup \
+    --name=myK8sCluster \
+    --generate-ssh-keys 
 ```
 
-数分钟后，命令完成，你会有一个可以运行的 Kubernetes 群集。
+几分钟后，该命令完成并显示有关部署的信息。
 
-> [!IMPORTANT]
-> 如果帐户没有创建 Azure AD 服务主体所需的权限，该命令会生成类似于“权限不足，无法完成操作”的错误 有关详细信息，请参阅[关于 Kubernetes 群集的服务主体](container-service-kubernetes-service-principal.md)。
-> 
-
-
-
-### <a name="connect-to-the-cluster"></a>连接至群集
+## <a name="install-kubectl"></a>安装 kubectl
 
 若要从客户端计算机连接到 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/)。 
 
-如果尚未安装 `kubectl`，可通过 `az acs kubernetes install-cli` 进行安装。 （也可从 [Kubernetes 站点](https://kubernetes.io/docs/tasks/kubectl/install/)下载。）
+如果使用 Azure CloudShell，则 `kubectl` 已安装。 如果想在本地安装，可以使用 [az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli) 命令。
 
-```azurecli
-sudo az acs kubernetes install-cli
+以下 Azure CLI 示例向系统安装 `kubectl`。 如果在 macOS 或 Linux 上运行 Azure CLI，可能需要将该命令与 `sudo` 一起运行。
+
+```azurecli-interactive 
+az acs kubernetes install-cli 
 ```
 
-> [!TIP]
-> 默认情况下，此命令将 `kubectl` 二进制文件安装到 Linux 或 macOS 系统上的 `/usr/local/bin/kubectl`，或者安装到 Windows 上的 `C:\Program Files (x86)\kubectl.exe`。 若要指定其他安装路径，请使用 `--install-location` 参数。
->
-> 安装 `kubectl` 后，请确保其目录位于系统路径中，否则请将其添加到该路径。 
->
+## <a name="connect-with-kubectl"></a>连接 kubectl
 
+若要配置 `kubectl` 以连接到 Kubernetes 群集，请运行 [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) 命令。 下面的示例下载 Kubernetes 群集的群集配置。
 
-然后运行以下命令，将主 Kubernetes 群集配置下载到 `~/.kube/config` 文件：
-
-```azurecli
-az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
+```azurecli-interactive 
+az acs kubernetes get-credentials --resource-group=myResourceGroup --name=myK8sCluster
 ```
 
-有关安装和配置 `kubectl` 的更多选项，请参阅[连接到 Azure 容器服务群集](container-service-connect.md)。
+若要验证从计算机到群集的连接，请尝试运行：
 
-此时应可从计算机访问群集。 可尝试运行：
-
-```bash
+```azurecli-interactive
 kubectl get nodes
 ```
 
-验证是否可以在群集中看到计算机列表。
+`kubectl` 列出主节点和代理节点。
 
-## <a name="create-your-first-kubernetes-service"></a>创建第一个 Kubernetes 服务
+```azurecli-interactive
+NAME                    STATUS                     AGE       VERSION
+k8s-agent-98dc3136-0    Ready                      5m        v1.5.3
+k8s-agent-98dc3136-1    Ready                      5m        v1.5.3
+k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.5.3
 
-完成本演练后，用户将知道如何：
-* 部署 Docker 应用程序并向世界公开
-* 使用 `kubectl exec` 在容器中运行命令 
-* 访问 Kubernetes 仪表板
-
-### <a name="start-a-container"></a>启动容器
-可以通过运行以下语句来运行容器（本示例中为 Nginx Web 服务器）：
-
-```bash
-kubectl run nginx --image nginx
 ```
 
-此命令将启动其中一个节点上 pod 中的 Nginx Docker 容器。
 
-若要查看正在运行的容器，请运行：
+## <a name="deploy-an-nginx-container"></a>部署 NGINX 容器
 
-```bash
+可在包含一个或多个容器的 Kubernetes pod 内运行 Docker 容器。 
+
+下面的命令将启动其中一个节点上 Kubernetes pod 中的 NGINX Docker 容器。 在此情况下，容器会运行从 [Docker 中心](https://hub.docker.com/_/nginx/)的一个映像中拉取的 NGINX Web 服务器。
+
+```azurecli-interactive
+kubectl run nginx --image nginx
+```
+若要查看容器是否正在运行，请运行：
+
+```azurecli-interactive
 kubectl get pods
 ```
 
-### <a name="expose-the-service-to-the-world"></a>向世界公开该服务
-若要在全球公开该服务，请创建 `LoadBalancer` 类型的 Kubernetes `Service`：
+## <a name="view-the-nginx-welcome-page"></a>查看 NGINX 欢迎页
+若要使用公共 IP 地址公开 NGINX 服务器，请键入以下命令：
 
-```bash
+```azurecli-interactive
 kubectl expose deployments nginx --port=80 --type=LoadBalancer
 ```
 
-此命令将导致 Kubernetes 创建具有公用 IP 地址的 Azure 负载均衡器规则。 更改传播到负载均衡器需要几分钟时间。 有关详细信息，请参阅[对 Azure 容器服务中 Kubernetes 群集内的容器进行负载均衡](container-service-kubernetes-load-balancing.md)。
+通过使用此命令，Kubernetes 创建服务，并使用该服务公共 IP 地址创建 [Azure 负载均衡器规则](container-service-kubernetes-load-balancing.md)。 
 
-运行以下命令来监视来自 `pending` 的服务更改，以显示外部 IP 地址：
+运行以下命令，以便查看服务的状态。
 
-```bash
-watch 'kubectl get svc'
+```azurecli-interactive
+kubectl get svc
 ```
 
-  ![图像：观看从挂起到外部 IP 地址的转换](media/container-service-kubernetes-walkthrough/kubernetes-nginx3.png)
-
-看到外部 IP 地址后，可以在浏览器中浏览到它：
-
-  ![浏览到 Nginx 的映像](media/container-service-kubernetes-walkthrough/kubernetes-nginx4.png)  
-
-
-### <a name="browse-the-kubernetes-ui"></a>浏览 Kubernetes UI
-若要查看 Kubernetes Web 界面，可以使用：
-
-```bash
-kubectl proxy
-```
-此命令在 localhost 上运行经过身份验证的代理，以便查看在 [http://localhost:8001/ui](http://localhost:8001/ui) 上运行的 Kubernetes Web UI。 有关详细信息，请参阅 [在 Azure 容器服务中使用 Kubernetes Web UI](container-service-kubernetes-ui.md)。
-
-![Kubernetes 仪表板的映像](media/container-service-kubernetes-walkthrough/kubernetes-dashboard.png)
-
-### <a name="remote-sessions-inside-your-containers"></a>在容器内的远程会话
-Kubernetes 允许用户在远程 Docker 容器（在群集中运行）内运行命令。
-
-```bash
-# Get the name of your nginx pods
-kubectl get pods
+IP 地址最初显示为 `pending`。 几分钟后，将设置服务的外部 IP 地址：
+  
+```azurecli-interactive
+NAME         CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE       
+kubernetes   10.0.0.1       <none>          443/TCP        21h       
+nginx        10.0.111.25    52.179.3.96     80/TCP         22m
 ```
 
-使用 pod 名称，可以在 pod 上运行远程命令。 例如：
+可以使用所选的 Web 浏览器在外部 IP 地址查看默认 NGINX 欢迎页：
 
-```bash
-kubectl exec <pod name> date
+![浏览到 Nginx 的映像](media/container-service-kubernetes-walkthrough/kubernetes-nginx4.png)  
+
+
+## <a name="delete-cluster"></a>删除群集
+如果不再需要群集，可以使用 [az group delete](/cli/azure/group#delete) 命令删除资源组、容器服务及所有相关资源。
+
+```azurecli-interactive 
+az group delete --name myResourceGroup
 ```
-
-也可使用 `-it` 标志获取完全交互式会话：
-
-```bash
-kubectl exec <pod name> -it bash
-```
-
-![容器内的远程会话](media/container-service-kubernetes-walkthrough/kubernetes-remote.png)
-
 
 
 ## <a name="next-steps"></a>后续步骤
 
-若要使用 Kubernetes 群集完成更多操作，请参阅以下资源：
+在此快速入门中，已部署了 Kubernetes 群集、使用 `kubectl` 进行连接并部署了具有 NGINX 容器的 pod。 若要详细了解 Azure 容器服务，请继续学习 Kubernetes 群集教程。
 
-* [Kubernetes 训练营](https://katacoda.com/embed/kubernetes-bootcamp/1/) - 介绍如何部署、伸缩、更新和调试容器化应用程序。
-* [Kubernetes 用户指南](http://kubernetes.io/docs/user-guide/) - 介绍如何在现有 Kubernetes 群集中运行程序。
-* [Kubernetes 示例](https://github.com/kubernetes/kubernetes/tree/master/examples) - 提供有关如何使用 Kubernetes 运行实际应用程序的示例。
+> [!div class="nextstepaction"]
+> [管理 ACS Kubernetes 群集](./container-service-tutorial-kubernetes-prepare-app.md)
 

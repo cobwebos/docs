@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 3/14/2017
+ms.date: 06/14/2017
 ms.author: markgal;trinadhk
-translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: 28f8ed91cd2305fdad5105428e50d1d9b3370dd9
-ms.lasthandoff: 03/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: d8be07fe4cd3fd50827fb7021a75eb05b6f075e0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -27,11 +28,16 @@ Azure 备份服务提供两种类型的保管库：备份保管库和恢复服�
 | **部署类型** | **门户** | **保管库名称** |
 | --- | --- | --- |
 | 经典 |经典 |备份保管库 |
-| 资源管理器 |Azure |恢复服务保管库 |
+| Resource Manager |Azure |恢复服务保管库 |
 
 > [!NOTE]
 > 备份保管库无法保护 Resource Manager 部署的解决方案。 但是，可以使用恢复服务保管库保护使用经典部署的服务器和 VM。  
 >
+
+> [!IMPORTANT]
+> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 从 2017 年 11 月 1 日起：
+>- 其余的所有备份保管库都将自动升级到恢复服务保管库。
+>- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
 >
 
 本文中使用“保管库”一词来泛指备份保管库或恢复服务保管库。 需要区分保管库时，则使用正式名称“备份保管库”或“恢复服务保管库”。

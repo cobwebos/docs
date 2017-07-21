@@ -1,6 +1,6 @@
 ---
 title: "如何通过 Java 使用 Azure 服务总线主题 | Microsoft Docs"
-description: "了解如何在 Azure 中使用服务总线主题和订阅。 代码示例是针对 Java 应用程序编写的。"
+description: "在 Azure 中使用服务总线主题和订阅。"
 services: service-bus-messaging
 documentationcenter: java
 author: sethmanheim
@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 03/23/2017
+ms.date: 06/28/2017
 ms.author: sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 7132d1e42963d2e419d2bf1b7866ca5888f8719d
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 03cc66659c599b07623e4ba4757b8512a67577b1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/24/2017
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -152,7 +152,7 @@ BrokeredMessage message = new BrokeredMessage("MyMessage");
 service.sendTopicMessage("TestTopic", message);
 ```
 
-发送到服务总线主题的消息是 [BrokeredMessage][BrokeredMessage] 类的实例。 [BrokeredMessage][BrokeredMessage] *对象包含一组标准方法（如* *setLabel* *和* *TimeToLive** ），一个用来保存自定义应用程序特定属性的字典和大量任意的应用程序数据。应用程序可通过将任何可序列化对象传入到 [BrokeredMessage][BrokeredMessage] 的构造函数中来设置消息的正文，然后使用适当的 **DataContractSerializer** 序列化对象。或者，也可以提供 **java.io.InputStream** 。
+发送到服务总线主题的消息是 [BrokeredMessage][BrokeredMessage] 类的实例。 [BrokeredMessage][BrokeredMessage]* 对象包含一组标准方法（如 setLabel 和 TimeToLive）、一个用来保存自定义应用程序特定属性的字典和大量任意应用程序数据。 应用程序可通过将任何可序列化对象传入到 [BrokeredMessage][BrokeredMessage] 的构造函数中来设置消息的正文，然后使用适当的 DataContractSerializer 序列化对象。 或者，也可以提供 java.io.InputStream。
 
 以下示例演示了如何将五条测试消息发送到我们在前面的代码片段中获得的 `TestTopic` **MessageSender**。
 请注意每条消息的 **MessageNumber** 属性值如何随循环迭代而变化（这将确定接收消息的订阅）：

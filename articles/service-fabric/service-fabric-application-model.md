@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 3/02/2017
+ms.date: 6/28/2017
 ms.author: ryanwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 31bd58f5b64f4b7636e1fe973cf78ac87bb9175f
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: fa7b48225698a2e210d61656ffff0225227e2ab5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -26,21 +26,21 @@ ms.lasthandoff: 05/10/2017
 本文概述 Azure Service Fabric 应用程序模型以及如何通过清单文件定义应用程序和服务。
 
 ## <a name="understand-the-application-model"></a>了解应用程序模型
-应用程序是由执行一个或多个特定功能的成分服务组成的集合。 服务执行完整且独立的功能（它们可以独立于其他服务启动和运行），并由代码、配置和数据组成。 对于每个服务，代码由可执行二进制文件组成，配置由可在运行时加载的服务设置组成，数据则由可供该服务使用的任意静态数据组成。 可对此层次应用程序模型中的每个组件进行独立的版本控制和升级。
+应用程序是由执行一个或多个特定功能的成分服务组成的集合。 服务执行完整且独立的功能，可以独立于其他服务启动和运行。  服务由代码、配置和数据组成。 对于每个服务，代码由可执行二进制文件组成，配置由可在运行时加载的服务设置组成，数据则由可供该服务使用的任意静态数据组成。 可对此层次应用程序模型中的每个组件进行独立的版本控制和升级。
 
 ![Service Fabric 应用程序模型][appmodel-diagram]
 
 应用程序类型是一个应用程序分类，包含大量服务类型。 服务类型是一个服务分类。 该分类可以具有不同的设置和配置，但核心功能保持相同。 服务实例是相同服务类型的不同服务配置变体。  
 
-应用程序和服务的类（或“类型”）是通过 XML 文件（应用程序清单和服务清单）进行描述的，这些文件是从群集映像存储实例化应用程序所依据的模板。 ServiceManifest.xml 和 ApplicationManifest.xml 文件的架构定义随 Service Fabric SDK 和工具一起安装到 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*。
+通过 XML 文件（应用程序清单和服务清单）描述应用程序和服务的类（或“类型”）。  清单即模板，可对照这样的模板从群集的映像存储区中使应用程序实例化。 ServiceManifest.xml 和 ApplicationManifest.xml 文件的架构定义随 Service Fabric SDK 和工具一起安装到 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*。
 
-即使在由同一 Service Fabric 节点托管时，不同应用程序实例的代码也将作为单独的进程运行。 此外，可以独立管理每个应用程序实例的生命周期（即 升级）。 下图显示了应用程序类型如何由服务类型组成，而服务类型又如何由代码、配置和包组成。 为了简化示意图，这里只显示了 `ServiceType4` 的代码/配置/数据包，不过每个服务类型包括其中的部分或全部包类型。
+即使在由同一 Service Fabric 节点托管时，不同应用程序实例的代码也将作为单独的进程运行。 此外，可以独立管理每个应用程序实例的生命周期（如升级）。 下图显示了应用程序类型如何由服务类型组成，而服务类型又如何由代码、配置和数据包组成。 为了简化示意图，这里只显示了 `ServiceType4` 的代码/配置/数据包，不过每个服务类型包括其中的部分或全部包类型。
 
 ![Service Fabric 应用程序类型和服务类型][cluster-imagestore-apptypes]
 
-使用了两种不同的清单文件来描述应用程序和服务，即服务清单和应用程序清单。 后续部分将详细介绍这两种清单。
+使用了两种不同的清单文件来描述应用程序和服务，即服务清单和应用程序清单。 以下部分详细介绍了清单。
 
-群集中可以有一个或多个服务类型实例处于活动状态。 例如，有状态服务实例或副本通过复制位于群集中不同节点上的副本之间的状态实现高可靠性。 这种复制本质上是提供冗余，使服务即使在群集中的一个节点失败时也可用。 [分区服务](service-fabric-concepts-partitioning.md)进一步跨群集中的节点划分其状态（和该状态的访问模式）。
+群集中可以有一个或多个服务类型实例处于活动状态。 例如，有状态服务实例或副本通过复制位于群集中不同节点上的副本之间的状态实现高可靠性。 复制本质上是提供冗余，使服务即使在群集中的一个节点失败时也可用。 [分区服务](service-fabric-concepts-partitioning.md)进一步跨群集中的节点划分其状态（和该状态的访问模式）。
 
 下图显示应用程序和服务实例、分区与副本之间的关系。
 
@@ -82,24 +82,24 @@ ms.lasthandoff: 05/10/2017
 </ServiceManifest>
 ```
 
-**Version** 特性是未结构化的字符串，并且不由系统进行分析。 这些特性用于对每个组件进行版本控制，以进行升级。
+**Version** 特性是未结构化的字符串，并且不由系统进行分析。 版本特性用于对每个组件进行版本控制，以进行升级。
 
-**ServiceTypes** 声明此清单中的 **CodePackages** 支持哪些服务类型。 当一种服务针对这些服务类型之一进行实例化时，可激活此清单中声明的所有代码包，方法是运行这些代码包的入口点。 生成的进程应在运行时注册所支持的服务类型。 请注意，在清单级别而不是代码包级别声明服务类型。 因此，当存在多个代码包时，每当系统查找任何一种声明的服务类型时，它们都将被激活。
+**ServiceTypes** 声明此清单中的 **CodePackages** 支持哪些服务类型。 当一种服务针对这些服务类型之一进行实例化时，可激活此清单中声明的所有代码包，方法是运行这些代码包的入口点。 生成的进程应在运行时注册所支持的服务类型。 在清单级别而不是代码包级别声明服务类型。 因此，当存在多个代码包时，每当系统查找任何一种声明的服务类型时，它们都将被激活。
 
-**SetupEntryPoint** 是特权入口点，以与 Service Fabric（通常是 *LocalSystem* 帐户）相同的凭据先于任何其他入口点运行。 **EntryPoint** 指定的可执行文件通常是长时间运行的服务主机。 提供单独的设置入口点可避免长时间使用高特权运行服务主机。 由 **EntryPoint** 指定的可执行文件在 **SetupEntryPoint** 成功退出后运行。 如果总是终止或出现故障，则将监视并重启所产生的过程（再次从 **SetupEntryPoint** 开始）。 
+**SetupEntryPoint** 是特权入口点，以与 Service Fabric（通常是 *LocalSystem* 帐户）相同的凭据先于任何其他入口点运行。 **EntryPoint** 指定的可执行文件通常是长时间运行的服务主机。 提供单独的设置入口点可避免长时间使用高特权运行服务主机。 由 **EntryPoint** 指定的可执行文件在 **SetupEntryPoint** 成功退出后运行。 如果进程总是终止或出现故障，则监视并重启所产生的过程（再次从“SetupEntryPoint”开始）。  
 
-**SetupEntryPoint** 的典型使用场景是需要在服务启动之前运行可执行文件，或需要使用提升的权限来执行操作时。 例如：
+“SetupEntryPoint”的典型使用场景是在服务启动之前运行可执行文件，或使用提升的权限来执行操作时。 例如：
 
 * 设置和初始化服务可执行文件所需的环境变量。 这并不限于通过 Service Fabric 编程模型编写的可执行文件。 例如，npm.exe 需要配置一些环境变量来部署 node.js 应用程序。
 * 通过安装安全证书设置访问控制。
 
 有关如何配置 **SetupEntryPoint** 的详细信息，请参阅[配置服务设置入口点的策略](service-fabric-application-runas-security.md)
 
-**EnvironmentVariables** 提供为此代码包设置的环境变量列表。 这些变量可以在 `ApplicationManifest.xml` 中重写，以便为不同的服务实例提供不同的值。 
+**EnvironmentVariables** 提供为此代码包设置的环境变量列表。 环境变量可以在 `ApplicationManifest.xml` 中重写，以便为不同的服务实例提供不同的值。 
 
 **DataPackage** 声明一个由 **Name** 特性命名的文件夹，该文件夹中包含进程将在运行时使用的静态数据。
 
-**ConfigPackage** 声明一个由 **Name** 特性命名的文件夹，该文件夹中包含 *Settings.xml* 文件。 此文件包含进程用户定义的键值对设置，进程可在运行时读回这些设置。 升级期间，如果仅更改了 **ConfigPackage** **版本**，则不重启正在运行的进程。 相反，回调会向进程通知配置设置已更改，以便可以重新动态加载这些设置。 下面是 *Settings.xml* 文件的一个示例：
+**ConfigPackage** 声明一个由 **Name** 特性命名的文件夹，该文件夹中包含 *Settings.xml* 文件。 此设置文件包含用户定义的键值对设置部分，进程可在运行时读回这些设置。 升级期间，如果仅更改了 **ConfigPackage** **版本**，则不重启正在运行的进程。 相反，回调会向进程通知配置设置已更改，以便可以重新动态加载这些设置。 下面是 *Settings.xml* 文件的一个示例：
 
 ```xml
 <Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -153,9 +153,9 @@ For more information about other features supported by service manifests, refer 
 </ApplicationManifest>
 ```
 
-类似于服务清单，**Version** 特性是未结构化的字符串，并且不由系统进行分析。 这些特性也用于对每个组件进行版本控制，以进行升级。
+类似于服务清单，**Version** 特性是未结构化的字符串，并且不由系统进行分析。 版本特性也用于对每个组件进行版本控制，以进行升级。
 
-**ServiceManifestImport** 包含对组成此应用程序类型的服务清单的引用。 导入的服务清单将确定此应用程序类型中哪些服务类型有效。 在 ServiceManifestImport 中，可以重写 Settings.xml 文件中的配置值和 ServiceManifest.xml 文件中的环境变量。 
+**ServiceManifestImport** 包含对组成此应用程序类型的服务清单的引用。 导入的服务清单将确定此应用程序类型中哪些服务类型有效。 在 ServiceManifestImport 中，可以重写 Settings.xml 中的配置值和 ServiceManifest.xml 文件中的环境变量。 
 
 
 **DefaultServices** 声明每当一个应用程序依据此应用程序类型进行实例化时自动创建的服务实例。 默认服务只是提供便利，创建后，它们的行为在每个方面都与常规服务类似。 它们与应用程序实例中的任何其他服务一起升级，并且也可以将它们删除。
@@ -186,7 +186,7 @@ For more information about other features supported by application manifests, re
 
 [配置应用程序的安全策略][12]介绍如何在安全策略下运行服务，从而对访问进行限制。
 
-[应用程序托管模型][13]说明已部署的 Servic Fabric 服务和服务主机进程二者的副本（或实例）之间的关系。
+[应用程序托管模型][13]说明已部署的服务和服务主机进程二者的副本（或实例）之间的关系。
 
 <!--Image references-->
 [appmodel-diagram]: ./media/service-fabric-application-model/application-model.png

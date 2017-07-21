@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/17/2017
+ms.date: 06/30/2017
 ms.author: dekapur
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 7c3311800af27016b7f993b375055bbc65d9a727
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: e8b6709d4b2cbb71fdf2d83c9a95998ab147b4ba
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -49,7 +50,7 @@ ms.lasthandoff: 04/27/2017
 * **应用程序事件**：从服务代码发出，使用 Visual Studio 模板提供的 EventSource 帮助器类写出的事件。 有关如何从应用程序写入日志的详细信息，请参阅[在本地计算机开发设置中监视和诊断服务](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)。
 
 ## <a name="deploy-the-diagnostics-extension"></a>部署诊断扩展
-收集日志的第一个步骤是将诊断扩展部署在 Service Fabric 群集的每个 VM 上。 诊断扩展将收集每个 VM 上的日志，并将它们上载到指定的存储帐户。 根据使用的是 Azure 门户还是 Azure Resource Manager，步骤稍有不同。 另外，步骤还会根据扩展是在创建群集时部署的，还是针对现有群集部署的，而有所不同。 让我们看看每个方案的步骤。
+收集日志的第一个步骤是将诊断扩展部署在 Service Fabric 群集的每个 VM 上。 诊断扩展将收集每个 VM 上的日志，并将它们上传到指定的存储帐户。 根据使用的是 Azure 门户还是 Azure Resource Manager，步骤稍有不同。 另外，步骤还会根据扩展是在创建群集时部署的，还是针对现有群集部署的，而有所不同。 让我们看看每个方案的步骤。
 
 ### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-through-the-portal"></a>在通过门户创建群集过程中部署诊断扩展
 若要在创建群集过程中将诊断扩展部署到群集中的 VM，需使用下图所示的“诊断设置”面板。 若要启用 Reliable Actors 或 Reliable Services 事件收集，请确保“诊断”设置为“**打开**”（默认设置）。 创建群集后，无法使用门户更改这些设置。
@@ -81,7 +82,7 @@ Azure 支持团队*需要*借助日志解决你创建的任何支持请求。 �
 4. 运行 **deploy.ps1** 并填入订阅 ID、资源组名称（使用相同的名称更新配置）和唯一的部署名称。
 
 ### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-by-using-azure-resource-manager"></a>使用 Azure Resource Manager 在创建群集过程中部署诊断扩展
-若要使用 Resource Manager 创建群集，需要在创建群集之前，将诊断配置 JSON 添加到整个 Resource Manager 模板。 我们将在 Resource Manager 模板示例中提供包含五个 VM 的群集 Resource Manager 模板，并在演示 Resource Manager 模板示例的过程中添加诊断配置。 可以在 Azure 示例库中的以下位置找到该示例：[包含诊断 Resource Manager 模板示例的五节点群集](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype-wad)。
+若要使用 Resource Manager 创建群集，需要在创建群集之前，将诊断配置 JSON 添加到整个 Resource Manager 模板。 我们将在 Resource Manager 模板示例中提供包含五个 VM 的群集 Resource Manager 模板，并在演示 Resource Manager 模板示例的过程中添加诊断配置。 可以在 Azure 示例库中的以下位置找到该示例：[包含诊断 Resource Manager 模板示例的五节点群集](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)。
 
 若要查看 Resource Manager 模板中的诊断设置，请打开 azuredeploy.json 文件并搜索 **IaaSDiagnostics**。 若要使用此模板创建群集，请在上面的链接中选择“**部署到 Azure**”按钮。
 
@@ -213,7 +214,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $
     }
 ```
 
-## <a name="update-diagnostics-to-collect-and-upload-logs-from-new-eventsource-channels"></a>更新诊断以从新的 EventSource 通道收集并上载日志
+## <a name="update-diagnostics-to-collect-and-upload-logs-from-new-eventsource-channels"></a>更新诊断以从新的 EventSource 通道收集并上传日志
 若要将诊断更新为从新的 EventSource 通道（表示要部署的新应用程序）收集日志，请执行[前一部分](#deploywadarm)中相同的步骤，其中描述了现有群集的诊断设置。
 
 在使用 `New-AzureRmResourceGroupDeployment` PowerShell 命令应用配置更新之前，请更新 template.json 文件中的 `EtwEventSourceProviderConfiguration` 节，添加新 EventSource 通道的条目。 事件源的名称定义为 Visual Studio 生成的 ServiceEventSource.cs 文件中的代码的一部分。

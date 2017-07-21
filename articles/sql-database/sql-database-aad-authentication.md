@@ -17,10 +17,10 @@ ms.workload: data-management
 ms.date: 05/10/2017
 ms.author: rickbyh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: a8c7e1859fa630fbfcebd39d0304a6e7657ac43b
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 89ffa95a5889e4ebdf26f4b001edce3c5ce81ce2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -111,8 +111,6 @@ Azure Active Directory 身份验证支持使用 Azure AD 标识连接到数据�
 - 有关数据库主体的详细信息，请参阅[主体](https://msdn.microsoft.com/library/ms181127.aspx)。
 - 有关数据库角色的详细信息，请参阅[数据库角色](https://msdn.microsoft.com/library/ms189121.aspx)。
 - 有关 SQL 数据库中的防火墙规则的详细信息，请参阅 [SQL 数据库防火墙规则](sql-database-firewall-configure.md)。
-- 有关使用 SQL Server 身份验证的教程，请参阅 [SQL 身份验证和授权](sql-database-control-access-sql-authentication-get-started.md)。
-- 有关使用 Azure Active Directory 身份验证的教程，请参阅[ 身份验证和授权](sql-database-control-access-aad-authentication-get-started.md)。
 
 <!--Image references-->
 

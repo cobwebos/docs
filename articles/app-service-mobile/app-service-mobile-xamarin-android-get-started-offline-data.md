@@ -2,8 +2,8 @@
 title: "为 Azure 移动应用启用脱机同步 (Xamarin Android)"
 description: "了解如何在 Xamarin Android 应用程序中使用应用服务移动应用缓存和同步脱机数据"
 documentationcenter: xamarin
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 services: app-service\mobile
 ms.assetid: 91d59e4b-abaa-41f4-80cf-ee7933b32568
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: adrianha
-translationtype: Human Translation
+ms.author: glenga
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 29cd1d3583dfcba5c1057ae1e81376930f52f887
 ms.openlocfilehash: 1152fcf551aa02264d626f87e97bc3f69b4f6778
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/08/2017
-
 
 ---
 # <a name="enable-offline-sync-for-your-xamarinandroid-mobile-app"></a>为 Xamarin.Android 移动应用启用脱机同步
@@ -43,9 +43,9 @@ ms.lasthandoff: 02/08/2017
 在本部分中，将断开与移动应用后端的连接，以模拟脱机情况。 添加数据项时，异常处理程序将指示该应用处于脱机模式。 在此状态下，新项已添加到本地存储，在以连接状态执行推送时，这些新项将同步到移动应用后端。
 
 1. 在共享项目中编辑 ToDoActivity.cs。 更改 **applicationURL** 以指向无效的 URL：
-   
+
          const string applicationURL = @"https://your-service.azurewebsites.fail";
-   
+
     还可以通过在设备上禁用 wifi 和手机网络或使用飞行模式来演示脱机行为。
 2. 按 **F5** 生成并运行应用。 请注意，在应用启动时，同步刷新将失败。
 3. 输入新项，并注意每次单击“保存”时，推送将失败，并显示 [CancelledByNetworkError] 状态。 但是，新的待办事项在推送到移动应用后端之前，存在于本地存储中。  在生产应用中，如果取消显示这些异常，客户端应用的行为就像它仍连接到移动应用后端一样。
@@ -60,44 +60,44 @@ ms.lasthandoff: 02/08/2017
 2. 按 **F5** 键重新生成并运行应用。 执行 `OnRefreshItemsSelected` 方法时，应用使用推送和拉取操作将本地更改与 Azure 移动应用后端同步。
 3. （可选）使用 SQL Server 对象资源管理器或 Fiddler 之类的 REST 工具查看更新后的数据。 请注意，数据已在 Azure 移动应用后端数据库和本地存储之间进行同步。
 4. 在应用程序中，单击要在本地存储区中完成的几个项旁边的复选框。
-   
+
    `CheckItem` 调用 `SyncAsync`，将每个已完成项与移动应用后端同步。 `SyncAsync` 同时调用推送和拉取操作。 **每当对客户端已更改的表执行拉取操作时，始终会自动执行推送操作**。 这可确保本地存储中的所有表以及关系都保持一致。 此行为可能会导致意外的推送。 有关此行为的详细信息，请参阅 [Azure 移动应用中的脱机数据同步]。
 
 ## <a name="review-the-client-sync-code"></a>查看客户端同步代码
 完成[创建 Xamarin Android 应用]教程时下载的 Xamarin 客户端项目已包含使用本地 SQLite 数据库支持脱机同步的代码。 下面简要概述了在教程代码中已包含的内容。 有关功能的概念性概述，请参阅 [Azure 移动应用中的脱机数据同步]。
 
 * 表操作之前，必须初始化本地存储区。 `ToDoActivity.OnCreate()` 执行 `ToDoActivity.InitLocalStoreAsync()` 时，对本地存储数据库进行初始化。 此方法将使用 Azure 移动应用客户端 SDK 提供的 `MobileServiceSQLiteStore` 类创建一个本地 SQLite 数据库。
-  
+
     `DefineTable` 方法与所提供的类型中的字段相匹配的本地存储中创建一个表 `ToDoItem` 这种情况下。 该类型无需包括远程数据库中的所有列。 可以只存储列的子集。
-  
+
         // ToDoActivity.cs
         private async Task InitLocalStoreAsync()
         {
             // new code to initialize the SQLite store
             string path = Path.Combine(System.Environment
                 .GetFolderPath(System.Environment.SpecialFolder.Personal), localDbFilename);
-  
+
             if (!File.Exists(path))
             {
                 File.Create(path).Dispose();
             }
-  
+
             var store = new MobileServiceSQLiteStore(path);
             store.DefineTable<ToDoItem>();
-  
+
             // Uses the default conflict handler, which fails on conflict
             // To use a different conflict handler, pass a parameter to InitializeAsync.
             // For more details, see http://go.microsoft.com/fwlink/?LinkId=521416.
             await client.SyncContext.InitializeAsync(store);
         }
 * `ToDoActivity` 的 `toDoTable` 成员属于 `IMobileServiceSyncTable` 类型而不是 `IMobileServiceTable` 类型。 MobileServiceSyncTable 会将所有创建、读取、更新和删除 (CRUD) 表操作定向到本地存储数据库。
-  
+
     通过调用 `IMobileServiceSyncContext.PushAsync()` 决定将更改推送到 Azure 移动应用后端的时间。 对于调用 `PushAsync` 时客户端应用修改的所有表，此同步上下文通过跟踪和推送这些表中的更改来帮助保持表关系。
-  
+
     每当刷新 todoitem 列表或者添加或完成 todoitem 时，所提供的代码便会调用 `ToDoActivity.SyncAsync()` 进行同步。 每次本地更改后，该代码同步。
-  
+
     在所提供的代码中，将查询远程 `TodoItem` 表中的所有记录，但它还可以筛选记录，只需将查询 ID 和查询传递给 `PushAsync` 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步]中的增量同步部分。
-  
+
         // ToDoActivity.cs
         private async Task SyncAsync()
         {

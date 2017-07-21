@@ -1,5 +1,5 @@
 ---
-title: "教程：使用 .NET API 创建包含复制活动的管道 | Microsoft 文档"
+title: "教程：使用 .NET API 创建包含复制活动的管道 | Microsoft Docs"
 description: "本教程使用 .NET API 创建包含复制活动的 Azure 数据工厂管道。"
 services: data-factory
 documentationcenter: 
@@ -12,17 +12,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/11/2017
+ms.date: 07/10/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 7e0b9b84eb34e17506824fde11ef9f5c5d180ee1
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 59d8b23291adb1e680e70898f5bb82bb699be19d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 06/14/2017
 
 ---
-# <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>教程：使用 .NET API 创建包含复制活动的管道
+<a id="tutorial-create-a-pipeline-with-copy-activity-using-net-api" class="xliff"></a>
+
+# 教程：使用 .NET API 创建包含复制活动的管道
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [复制向导](data-factory-copy-data-wizard-tutorial.md)
@@ -44,13 +45,17 @@ ms.lasthandoff: 05/18/2017
 > 
 > 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
 
-## <a name="prerequisites"></a>先决条件
+<a id="prerequisites" class="xliff"></a>
+
+## 先决条件
 * 请阅读 [教程概述和先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 了解教程概述，并完成 **先决条件** 步骤。
 * Visual Studio 2012、2013 或 2015
 * 下载并安装 [Azure .NET SDK](http://azure.microsoft.com/downloads/)
 * Azure PowerShell。 遵循 [How to install and configure Azure PowerShell](../powershell-install-configure.md) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装 Azure PowerShell。 使用 Azure PowerShell 创建 Azure Active Directory 应用程序。
 
-### <a name="create-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中创建应用程序
+<a id="create-an-application-in-azure-active-directory" class="xliff"></a>
+
+### 在 Azure Active Directory 中创建应用程序
 创建一个 Azure Active Directory 应用程序，为该应用程序创建服务主体，然后将其分配到 **数据工厂参与者** 角色。
 
 1. 启动 **PowerShell**。
@@ -106,7 +111,7 @@ ms.lasthandoff: 05/18/2017
 9. 获取应用程序 ID。
 
     ```PowerShell
-    $azureAdApplication    
+    $azureAdApplication 
     ```
     记下输出中的应用程序 ID (applicationID)。
 
@@ -117,7 +122,9 @@ ms.lasthandoff: 05/18/2017
 * 应用程序 ID
 * 密码（在第一条命令中指定）
 
-## <a name="walkthrough"></a>演练
+<a id="walkthrough" class="xliff"></a>
+
+## 演练
 1. 使用 Visual Studio 2012/2013/2015 创建 C# .NET 控制台应用程序。
    1. 启动 **Visual Studio** 2012/2013/2015。
    2. 单击“文件”，指向“新建”并单击“项目”。
@@ -138,7 +145,7 @@ ms.lasthandoff: 05/18/2017
     <?xml version="1.0" encoding="utf-8" ?>
     <configuration>
         <appSettings>
-            <add key="ActiveDirectoryEndpoint" value="https://login.windows.net/" />
+            <add key="ActiveDirectoryEndpoint" value="https://login.microsoftonline.com/" />
             <add key="ResourceManagerEndpoint" value="https://management.azure.com/" />
             <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
 
@@ -206,7 +213,7 @@ ms.lasthandoff: 05/18/2017
     );
     ```
 
-    数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 例如，将数据从源复制到目标数据存储的复制活动，以及运行 Hive 脚本，将输入数据转换为产品输出数据的 HDInsight Hive 活动。 首先，在此步骤中创建数据工厂。
+    数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 例如，将数据从源复制到目标数据存储的复制活动，以及运行 Hive 脚本来将输入数据转换为产品输出数据的 HDInsight Hive 活动。 首先，在此步骤中创建数据工厂。
 8. 将以下用于创建 **Azure 存储链接服务**的代码添加到 **Main** 方法。
 
    > [!IMPORTANT]
@@ -516,7 +523,9 @@ ms.lasthandoff: 05/18/2017
    * 管道： **PipelineBlobSample**
 20. 验证是否在指定的 Azure SQL 数据库中的“emp”表内创建了两条员工记录。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 有关数据工厂 .NET API 的完整文档，请参阅[数据工厂 .NET API 参考](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1)。
 
 在本教程中，你在复制操作中使用了 Azure Blob 存储作为源数据存储，使用了 Azure SQL 数据库作为目标数据存储。 下表列出了复制活动支持的充当源和目标的数据存储： 

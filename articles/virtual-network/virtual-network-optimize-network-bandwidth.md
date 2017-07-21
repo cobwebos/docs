@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2017
+ms.date: 06/30/2017
 ms.author: steveesp
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 50be31e179bf52e009596fbc68339dfb5a1aa1e4
-ms.openlocfilehash: d53b1cae9845be32bd053ef196203ea83df06b10
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 1340048d5d518caff3397f671d0c75caaab4b5ac
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/15/2017
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -36,7 +36,7 @@ Azure 虚拟机 (VM) 的默认网络设置可以进一步针对网络吞吐量�
     ```powershell
     Name                    : Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
-    Enabled                 : False
+    Enabled              : False
     ```
 2. 输入以下命令启用 RSS：
 
@@ -49,7 +49,7 @@ Azure 虚拟机 (VM) 的默认网络设置可以进一步针对网络吞吐量�
     ```powershell
     Name                    :Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
-    Enabled                 : True
+    Enabled              : True
     ```
 
 ## <a name="linux-vm"></a>Linux VM
@@ -58,7 +58,7 @@ Azure 虚拟机 (VM) 的默认网络设置可以进一步针对网络吞吐量�
 
 ### <a name="ubuntu"></a>Ubuntu
 
-若要获得优化功能，首先需更新到 2017 年 1 月以后的最新支持版本，该版本是：
+若要获得优化功能，首先需更新到 2017 年 6 月以后的最新支持版本，该版本是：
 ```json
 "Publisher": "Canonical",
 "Offer": "UbuntuServer",
@@ -81,7 +81,7 @@ apt-get -y upgrade
 
 ### <a name="centos"></a>CentOS
 
-若要获得优化功能，首先需更新到 2017 年 1 月以后的最新支持版本，该版本是：
+若要获得优化功能，首先需更新到 2017 年 5 月以后的最新支持版本，该版本是：
 ```json
 "Publisher": "OpenLogic",
 "Offer": "CentOS",
@@ -89,7 +89,7 @@ apt-get -y upgrade
 "Version": "latest"
 ```
 更新完成后，安装最新 Linux Integration Services (LIS)。
-吞吐量优化功能在从 4.1.3 开始的 LIS 中。 输入以下命令安装 LIS：
+吞吐量优化功能在从 4.2 开始的 LIS 中。 输入以下命令安装 LIS：
 
 ```bash
 sudo yum update
@@ -100,20 +100,27 @@ sudo yum install microsoft-hyper-v
 ### <a name="red-hat"></a>Red Hat
 
 若要获得优化功能，首先需更新到 2017 年 1 月以后的最新支持版本，该版本是：
-
-“发布者”：“RedHat”，“产品/服务”：“RHEL”，“Sku”：“7.3”，“版本”：“7.3.20161104”
-
+```json
+"Publisher": "RedHat"
+"Offer": "RHEL"
+"Sku": "7.3"
+"Version": "7.3.2017062722"
+```
 更新完成后，安装最新 Linux Integration Services (LIS)。
-吞吐量优化功能在从 4.1.3 开始的 LIS 中。 输入以下命令下载并安装 LIS：
+吞吐量优化功能在从 4.2 开始的 LIS 中。 输入以下命令下载并安装 LIS：
 
 ```bash
-mkdir lis4.1.3
-cd lis4.1.3
-wget https://download.microsoft.com/download/7/6/B/76BE7A6E-E39F-436C-9353-F4B44EF966E9/lis-rpms-4.1.3.tar.gz
-tar xvzf lis-rpms-4.1.3.tar.gz
+mkdir lis4.2.1
+cd lis4.2.1
+wget https://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.1-1.tar.gz
+tar xvzf lis-rpms-4.2.1-1.tar.gz
 cd LISISO
-install.sh #or upgrade.sh if previous LIS was previously installed
+install.sh #or upgrade.sh if prior LIS was previously installed
 ```
- 
-查看[下载页](https://www.microsoft.com/download/details.aspx?id=51612)，详细了解适用于 Hyper-V 的 Linux Integration Services 版本 4.1。
+
+查看[下载页](https://www.microsoft.com/download/details.aspx?id=55106)，详细了解适用于 Hyper-V 的 Linux Integration Services 版本 4.2。
+
+## <a name="next-steps"></a>后续步骤
+* 现在，虚拟机进行了优化，请参阅[带宽/吞吐量测试 Azure VM](virtual-network-bandwidth-testing.md)，查阅方案的结果。
+* 通过 [Azure 虚拟网络常见问题解答 (FAQ)](virtual-networks-faq.md) 了解详细信息
 

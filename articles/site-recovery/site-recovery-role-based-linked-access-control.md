@@ -12,13 +12,13 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 06/28/2017
 ms.author: manayar
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 08a4d0fa673a37c61e57daed66ab6768e0276ca8
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 9dd74014bf05234a83c7678b67b42b96cd8b8d64
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -26,7 +26,11 @@ ms.lasthandoff: 05/12/2017
 
 Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访问管理。 通过 RBAC 可分离团队中的职责，并按需仅向用户授予执行特定作业的特定访问权限。
 
-Azure 提供各种内置角色来控制资源管理操作。 详细了解 [Azure RBAC 内置角色](../active-directory/role-based-access-built-in-roles.md)
+Azure Site Recovery 提供了 3 个用于控制 Site Recovery 管理操作的内置角色。 详细了解 [Azure RBAC 内置角色](../active-directory/role-based-access-built-in-roles.md)
+
+* [Site Recovery 参与者](../active-directory/role-based-access-built-in-roles.md#site-recovery-contributor) - 此角色拥有管理恢复服务保管库中 Azure Site Recovery 操作所需的全部权限。 不过，拥有此角色的用户既无法创建或删除恢复服务保管库，也无法向其他用户分配访问权限。 此角色最适合分配给灾难恢复管理员，这样他们就可以为应用程序或整个组织（视情况而定）启用和管理灾难恢复。
+* [Site Recovery 操作员](../active-directory/role-based-access-built-in-roles.md#site-recovery-operator) - 此角色有权执行和管理故障转移和故障回复操作。 拥有此角色的用户无法启用或禁用复制、无法创建或删除保管库，也无法注册新的基础结构或向其他用户分配访问权限。 此角色最适合分配给灾难恢复操作员，这样他们就可以在实际或模拟灾难情形（如 DR 钻取）下，遵循应用程序所有者或 IT 管理员的指示，对虚拟机或应用程序进行故障转移。 灾难解决后，DR 操作员可以重新保护和故障回复虚拟机。
+* [Site Recovery 读者](../active-directory/role-based-access-built-in-roles.md#site-recovery-reader) - 此角色有权查看所有 Site Recovery 管理操作。 此角色最适合分配给 IT 监视主管，这样他们就可以在需要时监视当前保护状态并创建支持票证。
 
 若要定义自己的角色以便实现进一步控制，请参阅如何[在 Azure 中生成自定义角色](../active-directory/role-based-access-control-custom-roles.md)。
 

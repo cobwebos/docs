@@ -13,10 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
-ms.author: estfan
-translationtype: Human Translation
-ms.sourcegitcommit: 03cd3f4edd7bb7895efa02475411d813ef44b8b3
-ms.openlocfilehash: 6006df4b4ecd6dede94c1013881ddf699e741e51
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 0625787ddcbc0091e70b111f687e25929720ad15
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -78,7 +80,7 @@ ms.openlocfilehash: 6006df4b4ecd6dede94c1013881ddf699e741e51
     现在，添加相应步骤解码从贸易合作伙伴收到的 X12 数据，并在 JSON 对象中输出项目。 
     若要通知合作伙伴已收到数据，可以在 HTTP 响应操作中发送回包含 AS2 消息处置通知 (MDN) 的响应。
 
-12. 若要添加“响应”操作，请选择“添加操作”。
+12.    若要添加“响应”操作，请选择“添加操作”。
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-14.png)
 
@@ -111,9 +113,4 @@ ms.openlocfilehash: 6006df4b4ecd6dede94c1013881ddf699e741e51
 
 ## <a name="learn-more"></a>了解详细信息
 [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

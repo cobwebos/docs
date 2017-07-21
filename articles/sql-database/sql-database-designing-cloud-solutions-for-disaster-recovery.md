@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.date: 04/21/2017
 ms.author: sashan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: b1b67a83a25159414a80382030903d300aad71f7
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 40fe0ae04eb94322356ed19773512e3bc383639c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/18/2017
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 05/18/2017
 如果服务中断发生在次要区域中，主数据库和辅助数据库之间的复制链接将暂停，但由于主数据库未受影响，因此不会触发故障转移。 这种情况下，应用程序可用性未发生改变，但是暴露了应用程序的运行，因此在两个区域连续失败的情况下应用程序具有更高风险。
 
 > [!NOTE]
-> 我们仅建议使用单个 DR 区域进行部署配置。 这是因为大多数 Azure 地理位置都有两个区域。 这些配置不会保护你的应用程序免受这两个区域的灾难性故障的影响。 在此类失败的不可能事件中，你可以使用[异地恢复操作](sql-database-disaster-recovery.md#recover-using-geo-restore)在第三个区域中恢复数据库。
+> 对于灾难恢复，建议将应用程序部署配置限于两个区域。 这是因为大多数 Azure 地理位置仅有两个区域。 如果两个区域同时发生灾难性故障，此配置不会为你的应用程序提供保护。  在此类失败的不可能事件中，你可以使用[异地恢复操作](sql-database-disaster-recovery.md#recover-using-geo-restore)在第三个区域中恢复数据库。
 >
 
 服务中断缓解后，辅助数据库自动与主数据库重新同步。 在同步过程中，主数据库的性能可能会略微受影响，具体取决于需要进行同步的数据量。 下图说明了次要区域中的服务中断。

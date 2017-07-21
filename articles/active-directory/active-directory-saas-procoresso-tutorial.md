@@ -21,7 +21,9 @@ ms.lasthandoff: 04/12/2017
 
 
 ---
-# <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>教程：Azure Active Directory 与 Procore SSO 的集成
+<a id="tutorial-azure-active-directory-integration-with-procore-sso" class="xliff"></a>
+
+# 教程：Azure Active Directory 与 Procore SSO 的集成
 
 在本教程中，了解如何将 Procore SSO 与 Azure Active Directory (Azure AD) 集成。
 
@@ -41,7 +43,9 @@ To enable single sign-on with Procore SSO, it must be configured to use Azure Ac
 >This embedded guide is brand new in the new Azure portal, and we’d love to hear your thoughts. Use the Feedback ? button at the top of the portal to provide feedback. The older guide for using the [Azure classic portal](https://manage.windowsazure.com) to configure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
 
 
-## <a name="prerequisites"></a>先决条件
+<a id="prerequisites" class="xliff"></a>
+
+## 先决条件
 
 若要配置 Azure AD 与 Procore SSO 的集成，需要以下项：
 
@@ -56,13 +60,17 @@ To enable single sign-on with Procore SSO, it must be configured to use Azure Ac
 - 不应使用生产环境，除非有此必要。
 - 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
-## <a name="scenario-description"></a>方案描述
+<a id="scenario-description" class="xliff"></a>
+
+## 方案描述
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 Procore SSO
 2. 配置并测试 Azure AD 单一登录
 
-## <a name="adding-procore-sso-from-the-gallery"></a>从库添加 Procore SSO
+<a id="adding-procore-sso-from-the-gallery" class="xliff"></a>
+
+## 从库添加 Procore SSO
 若要配置 Procore SSO 与 Azure AD 的集成，需要从库中将 Procore SSO 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Procore SSO，请执行以下步骤：**
@@ -87,7 +95,9 @@ To enable single sign-on with Procore SSO, it must be configured to use Azure Ac
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+<a id="configuring-and-testing-azure-ad-single-sign-on" class="xliff"></a>
+
+##  配置和测试 Azure AD 单一登录
 本部分需根据名为“Britta Simon”的测试用户的情况，配置和测试 Procore SSO 的 Azure AD 单一登录。
 
 若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Procore SSO 用户。 换句话说，需要建立 Azure AD 用户与 Procore SSO 中相关用户之间的链接关系。
@@ -102,7 +112,9 @@ To enable single sign-on with Procore SSO, it must be configured to use Azure Ac
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+<a id="configuring-azure-ad-single-sign-on" class="xliff"></a>
+
+### 配置 Azure AD 单一登录
 
 本部分将在 Azure 管理门户中启用 Azure AD 单一登录并在 Procore SSO 应用程序中配置单一登录。
 
@@ -165,7 +177,9 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 - For additional information on deploying single sign-on to users, see [this article](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users).-->
 
 
-### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+<a id="creating-an-azure-ad-test-user" class="xliff"></a>
+
+### 创建 Azure AD 测试用户
 本部分的目的是在 Azure 管理门户中创建名为 Britta Simon 的测试用户。
 
 ![创建 Azure AD 用户][100]
@@ -196,7 +210,9 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
     d.单击“下一步”。 单击“创建” 。
  
-### <a name="creating-a-procore-sso-test-user"></a>创建 Procore SSO 测试用户
+<a id="creating-a-procore-sso-test-user" class="xliff"></a>
+
+### 创建 Procore SSO 测试用户
 
 请按照以下步骤在其端上创建 Procore 测试用户。
 
@@ -206,7 +222,7 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
     ![配置单一登录](./media/active-directory-saas-procoresso-tutorial/Procore_sso_directory.png)
 
-3. 单击“添加人员”****选项以打开窗体，然后执行以下选项 -
+3. 单击**“添加人员”**选项以打开窗体，然后执行以下选项 -
 
     ![配置单一登录](./media/active-directory-saas-procoresso-tutorial/Procore_user_add.png)
 
@@ -228,7 +244,9 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
     
     ![配置单一登录](./media/active-directory-saas-procoresso-tutorial/Procore_user_save.png)    
 
-### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+<a id="assigning-the-azure-ad-test-user" class="xliff"></a>
+
+### 分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Procore SSO 的权限，允许她使用 Azure 单一登录。
 
@@ -258,13 +276,17 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
 7. 在“添加分配”对话框中单击“分配”按钮。
     
-### <a name="testing-single-sign-on"></a>测试单一登录
+<a id="testing-single-sign-on" class="xliff"></a>
+
+### 测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://msdn.microsoft.com/library/dn308586)（访问面板简介）。 当在访问面板中单击 Procore SSO 磁贴时，应当会自动登录到 Procore SSO 应用程序。
 
-## <a name="additional-resources"></a>其他资源
+<a id="additional-resources" class="xliff"></a>
+
+## 其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)

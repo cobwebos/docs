@@ -10,7 +10,12 @@
 ### [云服务](cdn-cloud-service-with-cdn.md)
 ### [存储](cdn-create-a-storage-account-with-cdn.md)
 ### [跨域资源共享](cdn-cors.md)
-
+## 优化内容
+### [优化概述](cdn-optimization-overview.md)
+####[大型文件优化](cdn-large-file-optimization.md)
+####[媒体流优化](cdn-media-streaming-optimization.md)
+####[动态站点加速](cdn-dynamic-site-acceleration.md)
+ 
 ## 管理
 ### [在自定义域上启用 HTTPS](cdn-custom-ssl.md)
 ### [使用 PowerShell 进行管理](cdn-manage-powershell.md)
@@ -55,11 +60,13 @@
 # 资源
 ##  [规则引擎参考](cdn-rules-engine-reference.md)
 ### [规则引擎条件表达式](cdn-rules-engine-reference-conditional-expressions.md)
-### [规则引擎匹配条件](cdn-rules-engine-reference-match-conditions.md)
 ### [规则引擎功能](cdn-rules-engine-reference-features.md)
+### [规则引擎匹配条件](cdn-rules-engine-reference-match-conditions.md)
 ## [Azure CDN 的 POP 位置](cdn-pop-locations.md)
-## [服务更新](https://azure.microsoft.com/updates/?product=cdn)
-## [定价](https://azure.microsoft.com/pricing/details/cdn/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)
+## [定价](https://azure.microsoft.com/pricing/details/cdn/)
+## [服务更新](https://azure.microsoft.com/updates/?product=cdn)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-cdn)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
+

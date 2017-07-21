@@ -5,16 +5,15 @@ services: cognitive services
 documentationcenter: 
 author: juliako
 manager: erikre
-ms.service: video-indexer
+ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/02/2017
+ms.date: 07/10/2017
 ms.author: juliako;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 7fb678fa803c6451cf23ce48b768e902ea98676a
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 5fdfdae7ea4baa71386f600d65509b665cae6e81
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="use-azure-video-indexer-api"></a>Use Azure Video Indexer API
@@ -27,18 +26,18 @@ This article shows how the developers can take advantage of the Video Indexer AP
 
 1. Sign in.
 
-    To start developing with Video Indexer, you must first Sign In to the [Video Indexer](http://vi.microsoft.com) portal. 
+    To start developing with Video Indexer, you must first Sign In to the [Video Indexer](https://videobreakdown.portal.azure-api.net) portal. 
     
     ![Sign up](./media/video-indexer-use-apis/video-indexer-api01.png)
 
     If signing in with an AAD account (for example, alice@contoso.onmicrosoft.com) you must go through two preliminary steps: 
     
-    1.     Contact us to register your AAD organization’s domain (contoso.onmicrosoft.com).
-    2.     Your AAD organization’s admin must first sign in to grant the portal permissions to your org. 
+    1.  Contact us to register your AAD organization’s domain (contoso.onmicrosoft.com).
+    2.  Your AAD organization’s admin must first sign in to grant the portal permissions to your org. 
     
 2. Subscribe.
 
-    In the [Products](https://videobreakdown.portal.azure-api.net/products) page, select Production and subscribe. 
+    Select the [Products](https://videobreakdown.portal.azure-api.net/products) tab. Then, select Production and subscribe. 
     
     ![Sign up](./media/video-indexer-use-apis/video-indexer-api02.png)
     

@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 06/29/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: e4bb75b0a45dd922479cbd40ad94190c30b4333f
-ms.lasthandoff: 01/13/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 2b727a56f43a727807d4452eefa4229d4d90406e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="overview-of-live-streaming-using-azure-media-services"></a>使用 Azure 媒体服务实时传送视频流概述
@@ -121,7 +121,7 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 >
 >
 
-### <a name="a-idstatesachannel-states-and-how-they-map-to-the-billing-mode"></a><a id="states"></a>通道状态及其如何映射到计费模式
+### <a id="states"></a>通道状态及其如何映射到计费模式
 频道的当前状态。 可能的值包括：
 
 * **已停止**。 这是通道在创建后的初始状态（除非在门户中选择了自动启动）。此状态下不会发生计费。 在此状态下，可以更新频道属性，但不允许进行流式传输。

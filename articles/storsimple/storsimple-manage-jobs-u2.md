@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d1d1f4d581721994fe7417ae970ad70f9a7b3368
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6df1b27ce76de7a781ecc40af8430114d80b20d6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -40,8 +42,8 @@ ms.openlocfilehash: d1d1f4d581721994fe7417ae970ad70f9a7b3368
   * **状态** – 正在运行、已完成、已取消、失败、正在取消或已完成但有错误。
   * **实体** – 作业可以与卷、备份策略或设备相关联。 例如，克隆作业与卷相关联，计划备份作业与备份策略相关联。 设备作业是在执行灾难恢复 (DR) 或还原操作后创建的。
   * **设备** – 在其上启动作业的设备的名称。
-  * **启动时间** – 启动作业的时间。
-  * **进度** – 正在运行的作业的完成百分比。 对于已完成的作业，此项应该始终是 100%。
+  * **启动时间** - 启动作业的时间。
+  * **进度** - 正在运行的作业的完成百分比。 对于已完成的作业，此项应该始终是 100%。
 
 作业列表每 30 秒刷新一次。
 
@@ -80,10 +82,5 @@ ms.openlocfilehash: d1d1f4d581721994fe7417ae970ad70f9a7b3368
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[管理 StorSimple 备份策略](storsimple-manage-backup-policies.md)。
 * 了解如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

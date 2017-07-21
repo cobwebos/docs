@@ -12,11 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 06/29/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: da455a350f61e17425cd308d0fdc8bb5294a0b76
 ms.openlocfilehash: 574921fdecdadaa48c572685f7486d4e7b1d25f4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -48,7 +50,7 @@ Microsoft Azure 媒体服务可用于向多种客户端技术（例如，iOS、X
 2. [使用 Media Encoder Standard 编码器生成 H.264 MP4 自适应比特率集](media-services-dotnet-encode-with-media-encoder-standard.md)。
 3. [流式传输内容](media-services-deliver-content-overview.md)。
 
-## <a name="a-idunsupportedformatsaformats-that-are-not-supported-by-dynamic-packaging"></a><a id="unsupported_formats"></a>动态打包不支持的格式
+## <a id="unsupported_formats"></a>动态打包不支持的格式
 动态打包不支持以下源文件格式。
 
 * Dolby Digital MP4 文件。
@@ -59,10 +61,5 @@ Microsoft Azure 媒体服务可用于向多种客户端技术（例如，iOS、X
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

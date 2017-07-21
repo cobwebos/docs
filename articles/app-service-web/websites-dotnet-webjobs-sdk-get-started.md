@@ -1,5 +1,5 @@
 ---
-title: "在 Azure App Service 中创建 .NET Web 作业 | Microsoft Docs"
+title: "在 Azure 应用服务中创建 .NET Web 作业 | Microsoft Docs"
 description: "使用 ASP.NET MVC 和 Azure 创建多层应用。 前端在 Azure App Service 中的 Web 应用中运行，后端以 Web 作业的形式运行。 应用程序使用实体框架、SQL 数据库和 Azure 存储队列和 Blob。"
 services: app-service
 documentationcenter: .net
@@ -12,53 +12,52 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2016
+ms.date: 6/14/2017
 ms.author: glenga
-translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 31fa57771aaa2d4d6e4e0d387e045fb28e378887
-ms.lasthandoff: 04/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 31fd4523794d71b5fbf6d55ba97f3b744b8d5d38
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/16/2017
 
 
 ---
-# <a name="create-a-net-webjob-in-azure-app-service"></a>在 Azure App Service 中创建 .NET Web 作业
+# <a name="create-a-net-webjob-in-azure-app-service"></a>在 Azure 应用服务中创建 .NET Web 作业
 本教程演示如何为使用 [WebJobs SDK](websites-dotnet-webjobs-sdk.md) 的简单多层 ASP.NET MVC 5 应用程序编写代码。
 
 [!INCLUDE [app-service-web-webjobs-corenote](../../includes/app-service-web-webjobs-corenote.md)]
 
-[WebJobs SDK](websites-webjobs-resources.md) 用于简化针对 Web 作业执行的常见任务（如图像处理、队列处理、RSS 聚合、文件维护和发送电子邮件）编写的代码。 WebJobs SDK 的内置功能使用 Azure 存储空间和 Service Bus，用于计划任务和处理错误，以及用于许多其他常见方案。 此外，还可以扩展其设计，且拥有[用于扩展的开源存储库](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)。
+[WebJobs SDK](websites-webjobs-resources.md) 用于简化针对 Web 作业执行的常见任务（如图像处理、队列处理、RSS 聚合、文件维护和发送电子邮件）编写的代码。 WebJobs SDK 的内置功能使用 Azure 存储和 Service Bus，用于计划任务和处理错误，以及用于许多其他常见方案。 此外，还可以扩展其设计，且拥有[用于扩展的开源存储库](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)。
 
-应用程序示例为广告公告板。 用户可以上载广告图像，然后后端进程将图像转换成缩略图。 广告列表页显示缩略图，广告详细信息页显示完整大小的图像。 下面是屏幕截图：
+应用程序示例为广告公告板。 用户可以上传广告图像，然后后端进程将图像转换成缩略图。 广告列表页显示缩略图，广告详情页显示完整大小的图像。 下面是屏幕截图：
 
 ![广告列表](./media/websites-dotnet-webjobs-sdk-get-started/list.png)
 
-此应用程序示例可处理 [Azure 队列](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) 和 [Azure blob](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)。 本教程演示如何将应用程序部署到 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) 和 [Azure SQL 数据库](http://msdn.microsoft.com/library/azure/ee336279)。
+此应用程序示例可处理 [Azure 队列](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) 和 [Azure blob](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)。 本教程演示如何将应用程序部署到 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714) 和 [Azure SQL 数据库](http://msdn.microsoft.com/library/azure/ee336279)。
 
 ## <a id="prerequisites"></a>先决条件
 本教程假设你知道如何在 Visual Studio 中处理 [ASP.NET MVC 5](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) 项目。
 
-本教程针对 Visual Studio 2013 编写。 如果尚未安装 Visual Studio，则在安装 Azure SDK for .NET 时会自动安装 Visual Studio。
-
-本教程可以配合 Visual Studio 2015 使用，但在本地运行应用程序之前，必须将 Web.config 和 App.config 文件中 SQL Server LocalDB 连接字符串的 `Data Source` 部分从 `Data Source=(localdb)\v11.0` 更改为 `Data Source=(LocalDb)\MSSQLLocalDB`。
+本教程最初是针对 Visual Studio 2013 编写的，但可也用于更高版本的 Visual Studio。 如果使用的是 Visual Studio 2015 或 2017，请注意，在本地运行应用程序前，必须将 Web.config 和 App.config 文件中 SQL Server LocalDB 连接字符串的 `Data Source` 部分从 `Data Source=(localdb)\v11.0` 更改为 `Data Source=(LocalDb)\MSSQLLocalDB`。
 
 > [!NOTE]
-> <a name="note"></a>你需要一个 Azure 帐户才能完成本教程：
+> <a name="note"></a>必须有一个 Azure 帐户，才能完成本教程：
 >
-> * 可以 [免费建立一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)：获取可用来试用付费版 Azure 服务的信用额度，甚至在用完信用额度后，你仍可以保留帐户和使用免费的 Azure 服务（如网站）。 你的信用卡将永远不会付费，除非你显式更改设置并要求付费。
-> * 你可以 [激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)：MSDN 订阅每月为你提供可用来试用付费版 Azure 服务的信用额度。
+> * 可以[免费建立一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)：获取可用来试用付费版 Azure 服务的信用额度，甚至在用完信用额度后，仍可以保留帐户和使用免费的 Azure 服务（如网站）。 你的信用卡将永远不会付费，除非你显式更改设置并要求付费。
+> * 可[激活 Visual Studio 订阅用户月度 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)：订阅每月为用户提供可用于付费版 Azure 服务的信用额度。
 >
-> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
+> 如果您想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到 [试用应用服务](https://azure.microsoft.com/try/app-service/)，您可以在应用服务中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
 >
 >
 
 ## <a id="learn"></a>学习内容
 本教程介绍如何执行以下任务：
 
-* 在计算机上安装 Azure SDK 进行 Azure 开发。
+* 通过安装 Azure SDK 使计算机可进行 Azure 开发（仅适用于 Visual Studio 2013 和 2015 用户）。
 * 创建控制台应用程序项目，在部署关联的 Web 项目时，该应用程序项目将自动部署为 Azure Web 作业。
 * 在开发计算机上本地测试 WebJobs SDK 后端。
 * 将包含 Web 作业后端的应用程序发布到应用服务中的 Web 应用。
-* 上载文件并将其存储在 Azure Blob 服务中。
+* 上传文件并将其存储在 Azure Blob 服务中。
 * 使用 Azure WebJobs SDK 处理 Azure 存储队列和 Blob。
 
 ## <a id="contosoads"></a>应用程序体系结构
@@ -68,12 +67,11 @@ ms.lasthandoff: 04/10/2017
 
 ![广告表](./media/websites-dotnet-webjobs-sdk-get-started/adtable.png)
 
-当用户上载一个图像时，Web 应用将在 [Azure blob](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) 中存储图像，并将广告信息存储在带有指向 blob 的 URL 的数据库中。 同时，它将一条消息写入 Azure 队列。 在作为 Azure Web 作业运行的后端进程中，WebJobs SDK 将轮询新消息的队列。 显示新消息时，Web 作业将创建该图像的缩略图，并为该广告更新缩略图 URL 数据库字段。 下图介绍应用程序各部分之间如何交互：
+当用户上传一个图像时，Web 应用将在 [Azure blob](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) 中存储图像，并将广告信息存储在带有指向 blob 的 URL 的数据库中。 同时，它将一条消息写入 Azure 队列。 在作为 Azure Web 作业运行的后端进程中，WebJobs SDK 将轮询新消息的队列。 显示新消息时，Web 作业将创建该图像的缩略图，并为该广告更新缩略图 URL 数据库字段。 下图介绍应用程序各部分之间如何交互：
 
 ![Contoso 广告体系结构](./media/websites-dotnet-webjobs-sdk-get-started/apparchitecture.png)
 
-[!INCLUDE [install-sdk](../../includes/install-sdk-2015-2013.md)]
-
+[!INCLUDE [install-sdk](../../includes/install-sdk-2017-2015-2013.md)]  
 本教程中的说明不适用于 Azure SDK for .NET 2.7.1 或更高版本。
 
 ## <a id="storage"></a>创建 Azure 存储帐户
@@ -82,11 +80,15 @@ Azure 存储帐户可提供在云中存储队列和 Blob 数据的资源。 并�
 在实际应用程序中，通常会为应用程序数据与记录数据创建单独帐户，并为测试数据与生产数据创建单独帐户。 对于本教程，你将只使用一个帐户。
 
 1. 在 Visual Studio 中，打开“服务器资源管理器”窗口。
-2. 右键单击“Azure”节点，然后单击“连接到 Microsoft Azure”。
+2. 右键单击“Azure”节点，然后单击“连接到 Microsoft Azure 订阅...”。
+   
    ![连接到 Azure](./media/websites-dotnet-webjobs-sdk-get-started/connaz.png)
+
 3. 使用 Azure 凭据登录。
 4. 在 Azure 节点下右键单击“存储”，然后单击“创建存储帐户”。
+   
    ![创建存储帐户](./media/websites-dotnet-webjobs-sdk-get-started/createstor.png)
+   
 5. 在“创建存储帐户”对话框中，输入存储帐户的名称。
 
     该名称必须唯一（其他 Azure 存储帐户不能使用该名称）。 如果输入的名称已被使用，可以进行更改。
@@ -97,7 +99,7 @@ Azure 存储帐户可提供在云中存储队列和 Blob 数据的资源。 并�
     此设置指定将托管存储帐户的 Azure 数据中心。 对于本教程，所做的选择不会带来明显的差异。 但是，对于生产 Web 应用，希望 Web 服务器和存储帐户在同一区域，以最大程度减少延迟和数据传出费用。 Web 应用（稍后创建）数据中心应尽可能靠近访问 Web 应用的浏览器，以最大程度减少延迟。
 7. 将“复制”下拉列表设置为“本地冗余”。
 
-    为存储帐户启用地域复制时，会将存储内容复制到辅助数据中心，这样就能够在主要位置发生重大灾难时将故障转移到该位置。 地域复制可能会产生额外的成本。 对于测试和开发帐户，你通常不希望因为地域复制而付款。 有关详细信息，请参阅[创建、管理或删除存储帐户](../storage/storage-create-storage-account.md)。
+    为存储帐户启用异地复制时，会将存储内容复制到辅助数据中心，这样就能够在主要位置发生重大灾难时将故障转移到该位置。 异地复制可能会产生额外的成本。 对于测试和开发帐户，你通常不希望因为异地复制而付款。 有关详细信息，请参阅[创建、管理或删除存储帐户](../storage/storage-create-storage-account.md)。
 8. 单击“创建” 。
 
     ![新的存储帐户](./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png)
@@ -120,36 +122,40 @@ Azure 存储帐户可提供在云中存储队列和 Blob 数据的资源。 并�
 
     存储连接字符串是一个示例，包含存储帐户名称和访问密钥的占位符。 需要将此字符串替换为包含存储帐户的名称和密钥的连接字符串。  
 
-    <pre class="prettyprint">&lt;connectionStrings&gt;
-      &lt;add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;" providerName="System.Data.SqlClient" /&gt;
-      &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt;
-    &lt;/connectionStrings&gt;</pre>
-
+    ```
+    <connectionStrings>
+        <add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;" providerName="System.Data.SqlClient" />
+        <add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=[accountname];AccountKey=[accesskey]"/>
+    </connectionStrings>
+    ```
     存储连接字符串名为 AzureWebJobsStorage，因为这是 WebJobs SDK 默认使用的名称。 在此处之所以使用同一名称，是因为在 Azure 环境中只能设置一个连接字符串值。
 2. 在“服务器资源管理器”中，右键单击“存储”节点下的存储帐户，然后单击“属性”。
 
     ![单击存储帐户属性](./media/websites-dotnet-webjobs-sdk-get-started/storppty.png)
 3. 在“属性”窗口中，单击“存储帐户密钥”，然后单击省略号。
 
-    ![新的存储帐户](./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png)
+    ![存储帐户密钥](./media/websites-dotnet-webjobs-sdk-get-started/stor-account-keys.png)
 4. 复制“连接字符串”。
 
     ![“存储帐户密钥”对话框](./media/websites-dotnet-webjobs-sdk-get-started/cpak.png)
 5. 将 *Web.config* 文件中的存储连接字符串替换为刚复制的连接字符串。 在粘贴之前，请确保选择引号括住的所有内容，但不包括引号本身。
 6. 打开 ContosoAdsWebJob 项目中的 *App.config* 文件。
 
-    此文件包含两个存储连接字符串：一个用于应用程序数据，另一个用于日志记录。 可以为应用程序数据和日志记录使用单独的存储帐户，也可以[为数据使用多个存储帐户](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/MultipleStorageAccountsEndToEndTests.cs)。 对于本教程，将使用一个存储帐户。 连接字符串包含存储帐户密钥的占位符。
+    此文件包含两个存储连接字符串：一个用于应用程序数据，另一个用于日志记录。 可以为应用程序数据和日志记录使用单独的存储帐户，也可以[为数据使用多个存储帐户](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/MultipleStorageAccountsEndToEndTests.cs)。 对于本教程，你将使用一个存储帐户。 连接字符串包含存储帐户密钥的占位符。
 
-      <pre class="prettyprint">&lt;configuration&gt;
-    &lt;connectionStrings&gt;
-        &lt;add name="AzureWebJobsDashboard" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt;
-        &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt;
-        &lt;add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;"/&gt;
-    &lt;/connectionStrings&gt;
-        &lt;startup&gt;
-            &lt;supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" /&gt;
-    &lt;/startup&gt;
-   &lt;/configuration&gt;</pre>
+    ```
+    <configuration>
+        <connectionStrings>
+            <add name="AzureWebJobsDashboard" connectionString="DefaultEndpointsProtocol=https;AccountName=[accountname];AccountKey=[accesskey]"/>
+            <add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=[accountname];AccountKey=[accesskey]"/>
+            <add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;"/>
+    </connectionStrings>
+        <startup>
+            <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
+    </startup>
+    </configuration>
+
+    ```
 
     默认情况下，WebJobs SDK 将查找名为 AzureWebJobsStorage 和 AzureWebJobsDashboard 的连接字符串。 作为替代方法，可以根据需要[存储该连接字符串，并将其显式传递给 `JobHost` 对象](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#config)。
 7. 将两个存储连接字符串替换为先前复制的连接字符串。
@@ -167,7 +173,7 @@ Azure 存储帐户可提供在云中存储队列和 Blob 数据的资源。 并�
 
     ![显示后端正在运行的控制台应用程序窗口](./media/websites-dotnet-webjobs-sdk-get-started/backendrunning.png)
 3. 在浏览器中，单击“创建广告”。
-4. 输入一些测试数据并选择一个要上载的图像，然后单击“创建”。
+4. 输入一些测试数据，选择要上传的图像，然后单击“创建”。
 
     ![创建页面](./media/websites-dotnet-webjobs-sdk-get-started/create.png)
 
@@ -194,84 +200,25 @@ Azure 存储帐户可提供在云中存储队列和 Blob 数据的资源。 并�
 在云中运行时创建一些广告后，请查看 WebJobs SDK 仪表板，以了解该仪表板提供的丰富功能。
 
 ### <a name="deploy-to-web-apps"></a>部署到 Web 应用
+
 1. 关闭浏览器和控制台应用程序窗口。
-2. 在“解决方案资源管理器”中，右键单击 ContosoAdsWeb 项目，然后单击“发布”。
-3. 在“发布 Web”向导的“配置文件”步骤中，单击“Microsoft Azure Web 应用”。
+2. 按照[使用 SQL 数据库发布到 Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-tutorial-dotnet-sqldatabase#publish-to-azure-with-sql-database) 部分中的步骤操作。
+3. 完成部署步骤后，请继续执行本文中的其余任务。
 
-    ![选择 Azure Web 应用发布目标](./media/websites-dotnet-webjobs-sdk-get-started/pubweb.png)
-4. 登录 Azure（如果尚未登录）。
-5. 单击“新建” 。
-
-    根据你安装的 Azure SDK for.NET 版本，对话框可能与屏幕截图略有不同。
-
-    ![单击“新建”](./media/websites-dotnet-webjobs-sdk-get-started/clicknew.png)
-6. 在“在 Microsoft Azure 上创建 Web 应用”对话框中，在“Web 应用名称”框中输入唯一名称。
-
-    完整的 URL 将包含你在此处输入的内容和 .azurewebsites.net（如“Web 应用名称”文本框的旁边所示）。 例如，如果 Web 应用名称为 ContosoAds，则 URL 将为 ContosoAds.azurewebsites.net。
-7. 在[应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)下拉列表中，选择“创建新的应用服务计划”。 输入 App Service 计划的名称，例如 ContosoAdsPlan。
-8. 在[资源组](../azure-resource-manager/resource-group-overview.md)下拉列表中，选择“新建资源组”。
-9. 输入资源组的名称，例如 ContosoAdsGroup。
-10. 在“区域”下拉列表中，选择你为存储帐户所选的同一区域。
-
-    此设置指定你的 Web 应用将在哪个 Azure 数据中心运行。 在同一数据中心保留 Web 应用和存储帐户可以最大程度地减少延迟和数据传出费用。
-11. 在“数据库服务器”下拉列表中选择“创建新的服务器”。
-12. 输入数据库服务器的名称，例如 contosoadsserver + 数字或你的姓名，使服务器名称保持唯一。
-
-    服务器名称必须唯一。 该名称可以包含小写字母、数字和短划线， 但尾部不能包含短划线。
-
-    或者，如果你的订阅已有一台服务器，可从下拉列表中选择该服务器。
-13. 输入管理员的“数据库用户名”和“数据库密码”。
-
-    如果选择了“新建 SQL 数据库服务器”，则在此处不要输入现有名称和密码。应输入新的名称和密码，现在定义的名称和密码将在以后访问数据库时使用。 如果你选择之前创建的服务器，系统将提示你已创建的管理用户帐户的密码。
-14. 单击“创建” 。
-
-    ![在 Microsoft Azure 对话框中创建 Web 应用](./media/websites-dotnet-webjobs-sdk-get-started/newdb.png)
-
-    Visual Studio 将创建解决方案、Web 项目、Azure 中的 Web 应用和 Azure SQL 数据库实例。
-15. 在“发布 Web”向导的“连接”步骤中，单击“下一步”。
-
-    ![连接步骤](./media/websites-dotnet-webjobs-sdk-get-started/connstep.png)
-16. 在“设置”步骤中，清除“在运行时使用此连接字符串”复选框，然后单击“下一步”。
-
-    ![设置步骤](./media/websites-dotnet-webjobs-sdk-get-started/settingsstep.png)
-
-    不需要使用发布对话框设置 SQL 连接字符串，因为稍后会在 Azure 环境中设置该值。
-
-    可以忽略此页面上的警告。
-
-    * 通常，在 Azure 中运行时使用的存储帐户不同于在本地运行时使用的存储帐户，但对于本教程，将在两个环境中使用相同的存储帐户。 因此，不需要转换 AzureWebJobsStorage 连接字符串。 即使要在云中使用不同的存储帐户，也无需转换连接字符串，因为应用程序在 Azure 中运行时将使用 Azure 环境设置。 稍后，将会在教程中遇到这种情况。
-    * 对于本教程，不需要更改用于 ContosoAdsContext 数据库的数据模型，因此无需使用 Entity Framework Code First 迁移进行部署。 应用程序首次尝试访问 SQL 数据时，Code First 自动创建新的数据库。
-
-    对于本教程，使用“文件发布选项”下的选项默认值。
-17. 在“预览”步骤中，单击“开始预览”。
-
-    ![单击“开始预览”](./media/websites-dotnet-webjobs-sdk-get-started/previewstep.png)
-
-    可以忽略有关未发布数据库的警告。 Entity Framework Code First 创建数据库；不需要发布该数据库。
-
-    预览窗口显示 Web 作业项目中复制到 Web 应用的 *app_data\jobs\continuous* 文件夹的二进制文件和配置文件。
-
-    ![预览窗口中的 Web 作业文件](./media/websites-dotnet-webjobs-sdk-get-started/previewwjfiles.png)
-18. 单击“发布” 。
-
-    Visual Studio 部署该应用程序，并在浏览器中打开主页 URL。
-
-    只有在学习下一节在 Azure 环境中设置连接字符串后，才可使用该 Web 应用。 将会看到错误页或主页，具体取决于在前面选择的 Web 应用和数据库创建选项。
-
-### <a name="configure-the-web-app-to-use-your-azure-sql-database-and-storage-account"></a>将 Web 应用配置为使用 Azure SQL 数据库和存储帐户。
+### <a name="configure-the-web-app-to-use-your-azure-sql-database-and-storage-account"></a>将 Web 应用配置为使用 Azure SQL 数据库和存储帐户
 最佳安全做法是[避免将敏感信息（如连接字符串）放置在源代码存储库中存储的文件内](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control#secrets)。 Azure 提供一种方法实现此目的：可在 Azure 环境中设置连接字符串和其他设置值，在 Azure 中运行应用程序时，ASP.NET 配置 API 自动提取这些值。 可以使用**服务器资源管理器**、Azure 门户、Windows PowerShell 或跨平台命令行界面在 Azure 中设置这些值。 有关详细信息，请参阅[应用程序字符串和连接字符串的工作原理](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)。
 
-在本节中，将使用**服务器资源管理器**在 Azure 中设置连接字符串值。
+在本节中，将使用“服务器资源管理器”在 Azure 中设置连接字符串值。
 
 1. 在“服务器资源管理器”中，右键单击“Azure”>“应用服务”>“{你的资源组}”下的 Web 应用，然后单击“查看设置”。
 
     “Azure Web 应用”窗口将在“配置”选项卡上打开。
-2. 将 DefaultConnection 连接字符串的名称更改为 ContosoAdsContext。
+2. 将 DefaultConnection 连接字符串的名称更改为在[使用 SQL 数据库发布到 Azure ](https://docs.microsoft.com/azure/app-service-web/app-service-web-tutorial-dotnet-sqldatabase#publish-to-azure-with-sql-database)一文中配置 SQL 数据库时选择的名称。
 
     使用关联的数据库创建 Web 应用时，Azure 已自动创建此连接字符串，因此它已具有正确的连接字符串值。 只需将名称更改为代码要查找的值。
-3. 添加名为 AzureWebJobsStorage 和 AzureWebJobsDashboard 的两个新连接字符串。 将类型设置为“自定义”，并将连接字符串值设置为前面针对 *Web.config* 和 *App.config* 文件使用的相同值。 （确保包括整个连接字符串而不仅仅是访问密钥，且不包括引号。）
+3. 添加名为 AzureWebJobsStorage 和 AzureWebJobsDashboard 的两个新连接字符串。 将数据库类型设置为“自定义”，并将连接字符串值设置为之前为 Web.config 和 App.config 文件使用的相同值。 （确保包括整个连接字符串而不仅仅是访问密钥，且不包括引号。）
 
-    WebJobs SDK 使用这两个连接字符串：一个用于应用程序数据，另一个用于日志记录。 如前面所看到的，Web 前端代码也使用用于应用程序数据的连接字符串。
+    WebJobs SDK 使用这两个连接字符串：一个用于应用程序数据，另一个用于日志记录。 如前面所示，Web 前端代码也使用用于应用程序数据的连接字符串。
 4. 单击“保存” 。
 
     ![Azure 门户中的连接字符串](./media/websites-dotnet-webjobs-sdk-get-started/azconnstr.png)
@@ -282,19 +229,18 @@ Azure 存储帐户可提供在云中存储队列和 Blob 数据的资源。 并�
 7. 刷新地址栏中包含 Web 应用 URL 的浏览器窗口。
 
     此时将显示主页。
-8. 就像在本地运行应用程序时一样创建一个广告。
+8. 就像[在本地运行应用程序](https://docs.microsoft.com/azure/app-service-web/websites-dotnet-webjobs-sdk-get-started#a-idrunarun-the-application-locally)时一样创建一个广告。
 
    “索引”页首先不会显示缩略图。
 9. 几秒钟后刷新页面，随后会显示缩略图。
 
-   如果未显示缩略图，可能需要等待大约一分钟，让 Web 作业重新启动。 如果在刷新页面后仍未显示缩略图，可能是 Web 作业没有自动启动。 在此情况下，转到[经典门户](https://manage.windowsazure.com)页中 Web 应用的“Web 作业”选项卡，然后单击“启动”。
+   如果未显示缩略图，可能需要等待大约一分钟，让 Web 作业重新启动。 如果在刷新页面后仍未显示缩略图，可能是 Web 作业没有自动启动。 在这种情况下，请转到 [Azure 门户](https://portal.azure.com/)中的 App Services 边栏选项卡，找到 Web 应用，然后单击“开始”。
 
 ### <a name="view-the-webjobs-sdk-dashboard"></a>“Web 作业”选项卡
-1. 在[经典门户](https://manage.windowsazure.com)中，选择你的 Web 应用。
-2. 单击“Web 作业”选项卡。
-3. 单击 Web 作业“日志”列中的 URL。
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择“应用服务”边栏选项卡，找到 Web 应用，并选择“Web 作业”。
+3. 选择“日志”选项卡。
 
-    ![“Web 作业”选项卡](./media/websites-dotnet-webjobs-sdk-get-started/wjtab.png)
+    ![“日志”选项卡](./media/websites-dotnet-webjobs-sdk-get-started/log-tab.png)
 
     WebJobs SDK 仪表板中将打开一个新的浏览器选项卡。 仪表板显示正在运行的 Web 作业，以及 WebJobs SDK 触发的代码中的函数列表。
 4. 单击某个函数可以查看有关其执行的详细信息。
@@ -306,9 +252,18 @@ Azure 存储帐户可提供在云中存储队列和 Blob 数据的资源。 并�
     单击此页上的“重放函数”按钮会导致 WebJobs SDK 框架再次调用该函数，并且可以首先更改传递给该函数的数据。
 
 > [!NOTE]
-> 完成测试后，请删除 Web 应用和 SQL 数据库实例。 Web 应用免费，但 SQL 数据库实例和存储帐户收费（由于较小，因此费用很低）。 此外，如果保持 Web 应用运行，则找到 URL 的任何人都可以创建和查看广告。 在经典门户中，转到 Web 应用的“仪表板”选项卡，然后单击页面底部的“删除”按钮。 然后，可以选中用于同时删除 SQL 数据库实例的复选框。 如果只想暂时防止其他人访问 Web 应用，请单击“停止”。 在这种情况下，SQL 数据库和存储帐户会继续收费。 如果不再需要 SQL 数据库和存储帐户，可以遵循类似过程将其删除。
+> 完成测试后，请考虑删除 Web 应用、存储帐户和 SQL 数据库实例。 Web 应用免费，但 SQL 存储帐户和数据库实例收费（虽然大小较小，费用很低）。 此外，如果保持 Web 应用运行，则找到 URL 的任何人都可以创建和查看广告。 
 >
 >
+
+### <a name="delete-your-web-app"></a>删除 Web 应用
+在门户中，转到“应用服务”边栏选项卡，找到并选择 Web 应用，然后单击“删除”。 如果只想暂时防止其他人访问 Web 应用，请单击“停止”。 在这种情况下，SQL 数据库和存储帐户会继续收费。
+
+### <a name="delete-your-storage-account"></a>删除存储帐户
+若要删除存储帐户，请参阅[删除存储帐户](https://docs.microsoft.com/azure/storage/storage-create-storage-account#delete-a-storage-account)。 
+
+### <a name="delete-your-database"></a>删除数据库
+若要删除 SQL 数据库，请参阅 [Azure SQL 数据库 REST API](https://docs.microsoft.com/rest/api/sql/) 文档。
 
 ## <a id="create"></a>从头开始创建应用程序
 在本节中，将执行以下任务：
@@ -322,28 +277,25 @@ Azure 存储帐户可提供在云中存储队列和 Blob 数据的资源。 并�
 * 查看用于处理 Azure Blob 和队列及 WebJobs SDK 的代码部分。
 
 ### <a name="create-a-visual-studio-solution-with-a-web-project-and-class-library-project"></a>创建包含 Web 项目的 Visual Studio 解决方案和类库项目
-1. 在 Visual Studio 中，从“文件”菜单中选择“新建” > “项目”。
-2. 在“新建项目”对话框中，依次选择“Visual C#” > “Web” > “ASP.NET Web 应用程序”。
+1. 在 Visual Studio 中，选择“文件” > “新建” > “项目”。
+2. 在“新建项目”对话框中，依次选择“Visual C#” > “Web” > “ASP.NET Web 应用程序 (.NET Framework)”。
 3. 将项目命名为 ContosoAdsWeb，将解决方案命名为 ContosoAdsWebJobsSDK（如果要将解决方案放置在与下载的解决方案相同的文件夹中，请更改此解决方案名称），然后单击“确定”。
 
     ![新建项目](./media/websites-dotnet-webjobs-sdk-get-started/newproject.png)
-4. 在“新建 ASP.NET 项目”对话框中选择 MVC 模板，然后清除“Microsoft Azure”下的“在云中托管”复选框。
-
-    选中“在云中托管”可让 Visual Studio 自动创建新的 Azure Web 应用和 SQL 数据库。 由于前面已创建这些网站和数据库，因此现在创建项目时不需要执行此操作。 如果要新建，请选中该复选框。 然后，可以按照之前部署应用程序时的方式配置新的 Web 应用和 SQL 数据库。
-5. 单击“更改身份验证”。
+4. 在“新建 ASP.NET Web 应用程序”对话框中，选择 MVC 模板，然后选择“更改身份验证”。
 
     ![更改身份验证](./media/websites-dotnet-webjobs-sdk-get-started/chgauth.png)
-6. 在“更改身份验证”对话框中，选择“无身份验证”，然后单击“确定”。
+5. 在“更改身份验证”对话框中，选择“无身份验证”，然后单击“确定”。
 
     ![无身份验证](./media/websites-dotnet-webjobs-sdk-get-started/noauth.png)
-7. 在“新建 ASP.NET 项目”对话框中，单击“确定”。
+6. 在“新建 ASP.NET Web 应用程序”对话框中，单击“确定”。
 
     Visual Studio 创建解决方案和 Web 项目。
-8. 在“解决方案资源管理器”中，右键单击该解决方案（而非项目），然后依次选择“添加” > “新建项目”。
-9. 在“添加新项目”对话框中，依次选择“Visual C#” > “Windows 桌面” > “类库”模板。  
-10. 将项目命名为 *ContosoAdsCommon*，然后单击“确定”。
+7. 在“解决方案资源管理器”中，右键单击该解决方案（而非项目），然后依次选择“添加” > “新建项目”。
+8. 在“添加新项目”对话框中，依次选择“Visual C#” > “Windows 经典桌面” > “类库 (.NET Framework)”模板。  
+9. 将项目命名为 *ContosoAdsCommon*，然后单击“确定”。
 
-    此项目将包含前端和后端将要使用的实体框架上下文与数据模型。 或者，也可以在 Web 项目中定义 EF 相关的类，并从 Web 作业项目引用该项目。 但是，这样会使 Web 作业项目引用它不需要的 Web 程序集。
+    此项目将包含前端和后端将要使用的实体框架上下文与数据模型。 或者，也可在 Web 项目中定义 EF 相关的类，并从 Web 作业项目引用该项目。 但是，这样会使 Web 作业项目引用它不需要的 Web 程序集。
 
 ### <a name="add-a-console-application-project-that-has-webjobs-deployment-enabled"></a>在启用 Web 作业部署的情况下添加控制台应用程序项目
 1. 右键单击 Web 项目（而非解决方案或类库项目），然后依次单击“添加” > “新建 Azure Web 作业项目”。
@@ -377,11 +329,12 @@ Web 作业项目的 new-project 模板自动安装 WebJobs SDK NuGet 包 [Micros
 ### <a name="set-project-references"></a>设置项目引用
 Web 项目和 Web 作业项目都处理 SQL 数据库，因此两者都需要引用 ContosoAdsCommon 项目。
 
-1. 在 ContosoAdsWeb 项目中，设置对 ContosoAdsCommon 项目的引用。 （右键单击 ContosoAdsWeb 项目，然后依次单击“添加” > “引用”。 在“引用管理器”对话框中，依次选择“解决方案” > “项目” > “ContosoAdsCommon”，然后单击“确定”。）
-2. 在 ContosoAdsWebJob 项目中，设置对 ContosAdsCommon 项目的引用。
-
+1. 在 ContosoAdsWeb 项目中，设置对 ContosoAdsCommon 项目的引用。 （右键单击 ContosoAdsWeb 项目，然后依次单击“添加” > “引用”。 
+2. 在“引用管理器”对话框中，依次选择“项目” > “解决方案” > “ContosoAdsCommon”，然后单击“确定”。）
+   
     WebJob 项目需要通过引用来处理图像和访问连接字符串。
-3. 在 ContosoAdsWebJob 项目中，设置对 `System.Drawing` 和 `System.Configuration` 的引用。
+
+4. 在 ContosoAdsWebJob 项目中，设置对 `System.Drawing` 和 `System.Configuration` 的引用。
 
 ### <a name="add-code-and-configuration-files"></a>添加代码和配置文件
 本教程未说明如何[使用基架创建 MVC 控制器和视图](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)、如何[编写适用于 SQL Server 数据库的实体框架代码](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc)，或者[ASP.NET 4.5 的异步编程基础知识](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices#async)。 因此，其余所有操作是将已下载解决方案中的代码和配置文件复制到新解决方案。 完成该操作后，以下部分将演示并说明代码的关键部分。
@@ -392,7 +345,7 @@ Web 项目和 Web 作业项目都处理 SQL 数据库，因此两者都需要引
 
    * *Ad.cs*
    * *ContosoAdscontext.cs*
-   * *BlobInformation.cs*<br/><br/>
+   * *BlobInformation.cs*
 2. 在 ContosoAdsWeb 项目中，从下载的项目添加以下文件。
 
    * *Web.config*
@@ -400,7 +353,7 @@ Web 项目和 Web 作业项目都处理 SQL 数据库，因此两者都需要引
    * 在 *Controllers* 文件夹中：*AdController.cs*
    * 在 *Views\Shared* 文件夹中：*_Layout.cshtml* 文件
    * 在 *Views\Home* 文件夹中：*Index.cshtml*
-   * 在 *Views\Ad* 文件夹（首先创建该文件夹）中：五个 *.cshtml* 文件<br/><br/>
+   * 在 *Views\Ad* 文件夹（首先创建该文件夹）中：五个 *.cshtml* 文件
 3. 在 ContosoAdsWebJob 项目中，添加已下载项目中的以下文件。
 
    * *App.config*（将文件类型筛选器更改为“所有文件”）
@@ -509,7 +462,7 @@ ContosoAdsContext 类指定 DbSet 集合中使用的 Ad 类，实体框架将存
         var storageAccount = CloudStorageAccount.Parse
             (ConfigurationManager.ConnectionStrings["AzureWebJobsStorage"].ToString());
 
-然后，它获取对 *图像* Blob 容器的引用，创建尚不存在的容器，并在新容器上设置访问权限。 默认情况下，新容器仅允许拥有存储帐户凭据的客户端访问 Blob。 Web 应用需要将 Blob 公开，以便它可以使用指向图像 Blob 的 URL 显示图像。
+然后，它获取对图像 Blob 容器的引用，创建尚不存在的容器，并在新容器上设置访问权限。 默认情况下，新容器仅允许拥有存储帐户凭据的客户端访问 Blob。 Web 应用需要将 Blob 公开，以便它可以使用指向图像 Blob 的 URL 显示图像。
 
         var blobClient = storageAccount.CreateCloudBlobClient();
         var imagesBlobContainer = blobClient.GetContainerReference("images");
@@ -540,9 +493,9 @@ ContosoAdsContext 类指定 DbSet 集合中使用的 Ad 类，实体框架将存
         <li>@Html.ActionLink("All", "Index", "Ad", null, null)</li>
 
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb - AdController.cs
-在 *AdController.cs* 文件中，构造函数调用 `InitializeStorage` 方法来创建 Azure 存储客户端库对象，它提供一个用于处理 Blob 和队列的 API。
+在 *AdController.cs* 文件中，构造函数调用 `InitializeStorage` 方法来创建 Azure 存储客户端库对象，此类对象提供一个用于处理 Blob 和队列的 API。
 
-然后，代码获取对*图像* Blob 容器的引用，正如用户之前在 *Global.asax.cs* 中看到的那样。 在执行该操作时，它设置适用于 Web 应用的默认[重试策略](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling)。 对于超过暂时性故障反复重试超过一分钟的 Web 应用程序，默认指数回退重试策略将其可能挂起。 此处指定的重试策略将在每次尝试后等待 3 秒，最多可尝试 3 次。
+然后，代码获取对图像 Blob 容器的引用，正如之前在 Global.asax.cs 中所见。 在执行该操作时，它设置适用于 Web 应用的默认[重试策略](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling)。 对于超过暂时性故障反复重试超过一分钟的 Web 应用程序，默认指数回退重试策略将其可能挂起。 此处指定的重试策略将在每次尝试后等待三秒，最多可尝试三次。
 
         var blobClient = storageAccount.CreateCloudBlobClient();
         blobClient.DefaultRequestOptions.RetryPolicy = new LinearRetry(TimeSpan.FromSeconds(3), 3);
@@ -570,7 +523,7 @@ ContosoAdsContext 类指定 DbSet 集合中使用的 Ad 类，实体框架将存
             ad.ImageURL = blob.Uri.ToString();
         }
 
-执行上载的代码位于 `UploadAndSaveBlobAsync` 方法中。 它将创建 Blob 的 GUID 名称，上载和保存该文件，并将引用返回已保存的 Blob。
+执行上载的代码位于 `UploadAndSaveBlobAsync` 方法中。 它将创建 Blob 的 GUID 名称，上传和保存该文件，并将引用返回已保存的 Blob。
 
         private async Task<CloudBlockBlob> UploadAndSaveBlobAsync(HttpPostedFileBase imageFile)
         {
@@ -583,7 +536,7 @@ ContosoAdsContext 类指定 DbSet 集合中使用的 Ad 类，实体框架将存
             return imageBlob;
         }
 
-HttpPost `Create` 方法上载 Blob 并更新数据库后，将创建队列消息，以通知后端进程图像已准备好转换为缩略图。
+HttpPost `Create` 方法上传 Blob 并更新数据库后，将创建队列消息，以通知后端进程图像已准备好转换为缩略图。
 
         BlobInformation blobInfo = new BlobInformation() { AdId = ad.AdId, BlobUri = new Uri(ad.ImageURL) };
         var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
@@ -686,7 +639,7 @@ HttpPost `Edit` 方法的代码类似，不同之处在于如果用户选择新�
         [Blob("images/{BlobName}", FileAccess.Read)] Stream input,
         [Blob("images/{BlobNameWithoutExtension}_thumbnail.jpg")] CloudBlockBlob outputBlob)
 
-    Blob 名称来自队列消息中收到的 `BlobInformation` 对象的属性（`BlobName` 和 `BlobNameWithoutExtension`）。 若要获取存储客户端库的完整功能，可以使用兼容 Blob 的 `CloudBlockBlob` 类。 如果要重用为使用 `Stream` 对象编写的代码，可以使用 `Stream` 类。
+    Blob 名称来自队列消息中收到的 `BlobInformation` 对象的属性（`BlobName` 和 `BlobNameWithoutExtension`）。 若要获取存储客户端库的完整功能，可以使用 `CloudBlockBlob` 类处理 Blob。 如果要重用为使用 `Stream` 对象编写的代码，可以使用 `Stream` 类。
 
 有关如何编写使用 WebJobs SDK 属性的函数的详细信息，请参阅以下资源：
 
@@ -719,7 +672,7 @@ Web 作业在 Web 应用的上下文中运行，并且不可单独缩放。 例�
 若要确保 Web 作业始终在 Web 应用的所有实例上运行，必须启用 [AlwaysOn](http://weblogs.asp.net/scottgu/archive/2014/01/16/windows-azure-staging-publishing-support-for-web-sites-monitoring-improvements-hyper-v-recovery-manager-ga-and-pci-compliance.aspx) 功能。
 
 ### <a name="using-the-webjobs-sdk-outside-of-webjobs"></a>在 Web 作业的外部使用 WebJobs SDK
-使用 WebJobs SDK 的程序无需在 Azure 中的 Web 作业内运行。 它可以在本地运行，也可以在其他环境（例如云服务辅助角色或 Windows 服务）中运行。 但是，只能通过 Azure Web 应用访问 WebJobs SDK 仪表板。 若要使用仪表板，需要通过在经典门户的“配置”选项卡上设置 AzureWebJobsDashboard 连接字符串，以将 Web 应用连接到所用的存储帐户。 然后，可以使用以下 URL 访问仪表板：
+使用 WebJobs SDK 的程序无需在 Azure 中的 Web 作业内运行。 它可以在本地运行，也可以在其他环境（例如云服务辅助角色或 Windows 服务）中运行。 但是，只能通过 Azure Web 应用访问 WebJobs SDK 仪表板。 若要使用仪表板，需要通过在经典门户的“配置”选项卡上设置 AzureWebJobsDashboard 连接字符串，以将 Web 应用连接到所用的存储帐户。 然后，可使用以下 URL 访问仪表板：
 
 https://{webappname}.scm.azurewebsites.net/azurejobs/#/functions
 

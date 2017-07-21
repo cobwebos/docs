@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 2/14/2017
+ms.date: 06/29/2017
 ms.author: anoopkv
-translationtype: Human Translation
-ms.sourcegitcommit: 96e6696818a0de2fadd55ff7e0ccee350d2666ad
-ms.openlocfilehash: 5578dea457f3eeda72e3a1e4e61382cdf0de285d
-ms.lasthandoff: 02/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 091f0884417535427c52beee7bcdc5ed1dd83315
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/30/2017
 
 ---
 
@@ -26,9 +27,9 @@ ms.lasthandoff: 02/22/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-**支持 VMware vCenter 和 VMware vSphere ESX 主机** | **详细信息**
---- | ---
-**本地 VMware 服务器** | 一台或多台 VMware vSphere 服务器，运行带有最新更新的 6.0、5.5 或 5.1。 服务器应位于配置服务器（或单独的进程服务器）所在的同一网络。<br/><br/> 建议使用一台 vCenter 服务器（运行带有最新更新的 6.0 或 5.5）来管理主机。 部署版本 6.0 时，只有 5.5 版中提供的功能才受支持。
+**支持 VMware vCenter 和 VMware vSphere ESX 主机** | **详细信息** |
+|--- | --- |
+|**本地 VMware 服务器** | 一台或多台 VMware vSphere 服务器，运行带有最新更新的 6.0、5.5 或 5.1。 服务器应位于配置服务器（或单独的进程服务器）所在的同一网络。<br/><br/> 建议使用一台 vCenter 服务器（运行带有最新更新的 6.0 或 5.5）来管理主机。 部署版本 6.0 时，只有 5.5 版中提供的功能才受支持。|
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>为自动发现准备帐户
 Site Recovery 需要 VMware 的访问权限，以便进程服务器可以自动发现虚拟机，以及实现虚拟机的故障转移和故障回复。
@@ -42,7 +43,7 @@ Site Recovery 需要 VMware 的访问权限，以便进程服务器可以自动�
 |--- | --- | --- | ---|
 |**进程服务器自动发现 VMware 虚拟机** | 至少需要一个只读用户 | 数据中心对象 –> 传播到子对象、角色=只读 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 若要限制访问权限，请在选中“传播到子对象”的情况下将“无访问权”角色分配给子对象（vSphere 主机、数据存储、虚拟机和网络）。|
 |**故障转移** | 至少需要一个只读用户 | 数据中心对象 –> 传播到子对象、角色=只读 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 若要限制访问权限，请在选中“传播到子对象”的情况下将“无访问权”角色分配给子对象（vSphere 主机、数据存储、虚拟机和网络）。<br/><br/> 用于迁移，但不用于完全复制、故障转移和故障回复。|
-|**故障转移和故障回复** | 建议创建一个拥有所需权限的角色 (AzureSiteRecoveryRole)，然后将它分配到 VMware 用户或组 | 数据中心对象 –> 传播到子对象、角色=AzureSiteRecoveryRole<br/><br/> 数据存储->分配空间、浏览数据存储、低级别文件操作、删除文件、更新虚拟机文件<br/><br/> 网络 -> 网络分配<br/><br/> 资源 -> 将 VM 分配到资源池、迁移关闭的 VM、迁移打开的 VM<br/><br/> 任务 -> 创建任务、更新任务<br/><br/> 虚拟机 -> 配置<br/><br/> 虚拟机 -> 交互 -> 回答问题、设备连接、配置 CD 媒体、配置软盘媒体、关闭电源、打开电源、安装 VMware 工具<br/><br/> 虚拟机 -> 清单 -> 创建、注册、取消注册<br/><br/> 虚拟机 -> 预配 -> 允许虚拟机下载、允许虚拟机文件上载<br/><br/> 虚拟机 -> 快照 -> 删除快照 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 若要限制访问权限，请在选中“传播到子对象”的情况下将“无访问权”角色分配给子对象（vSphere 主机、数据存储、虚拟机和网络）。|
+|**故障转移和故障回复** | 建议创建一个拥有所需权限的角色 (AzureSiteRecoveryRole)，然后将它分配到 VMware 用户或组 | 数据中心对象 –> 传播到子对象、角色=AzureSiteRecoveryRole<br/><br/> 数据存储->分配空间、浏览数据存储、低级别文件操作、删除文件、更新虚拟机文件<br/><br/> 网络 -> 网络分配<br/><br/> 资源 -> 将 VM 分配到资源池、迁移关闭的 VM、迁移打开的 VM<br/><br/> 任务 -> 创建任务、更新任务<br/><br/> 虚拟机 -> 配置<br/><br/> 虚拟机 -> 交互 -> 回答问题、设备连接、配置 CD 媒体、配置软盘媒体、关闭电源、打开电源、安装 VMware 工具<br/><br/> 虚拟机 -> 清单 -> 创建、注册、取消注册<br/><br/> 虚拟机 -> 预配 -> 允许虚拟机下载、允许虚拟机文件上传<br/><br/> 虚拟机 -> 快照 -> 删除快照 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 若要限制访问权限，请在选中“传播到子对象”的情况下将“无访问权”角色分配给子对象（vSphere 主机、数据存储、虚拟机和网络）。|
 
 ## <a name="create-an-account-to-connect-to-vmware-vcenter-server-vmware-vsphere-exsi-host"></a>创建帐户以连接到 VMware vCenter 服务器/VMware vSphere EXSi 主机
 1. 使用桌面上的快捷方式登录到配置服务器并启动 cspsconfigtool.exe 。

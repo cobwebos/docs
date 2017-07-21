@@ -7,6 +7,7 @@
 ## [URL 路由](application-gateway-url-route-overview.md)
 ## [多站点](application-gateway-multi-site-overview.md)
 ## [端到端 SSL](application-gateway-backend-ssl.md)
+## [重定向](application-gateway-redirect-overview.md)
 ## [Websocket](application-gateway-websocket.md)
 ## [服务限制](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)
 # 入门
@@ -37,10 +38,13 @@
 ## 配置多站点托管
 ### [门户](application-gateway-create-multisite-portal.md)
 ### [PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
+## 配置重定向
+### [PowerShell](application-gateway-configure-redirect-powershell.md)
 ## 配置运行状况探测
 ### [门户](application-gateway-create-probe-portal.md)
 ### [PowerShell](application-gateway-create-probe-ps.md)
 ### [PowerShell（经典）](application-gateway-create-probe-classic-ps.md)
+## [Azure 安全中心集成](application-gateway-integration-security-center.md)
 ## [结合使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)
 ## 故障排除
 ### [排查应用程序网关中的错误](application-gateway-troubleshooting-502.md)
@@ -63,8 +67,9 @@
 ## [负载均衡器](/azure/load-balancer/)
 ## [流量管理器](/azure/traffic-manager/)
 # 资源
-## [定价](https://azure.microsoft.com/pricing/details/application-gateway/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-application-gateway)
+## [定价](https://azure.microsoft.com/pricing/details/application-gateway/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=application-gateway)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-application-gateway)

@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 07/18/2017
 ms.author: Mingfeiy;willzhan;Juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 30bd93e54da4b8e7fcb58fcdc1f5c1bb5240fa53
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 25b4da6a555fa2a5e029eadbea45eb6148518e70
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>使用 castLabs 将 Widevine 许可证传送到 Azure 媒体服务
@@ -77,8 +78,8 @@ castLabs 和 AMS 均支持用于授予许可证的 JWT（JSON Web 令牌）令�
 若要使用控制台应用程序，请执行以下操作：
 
 1. 更改 app.config 以设置 AMS 凭据、castLabs 凭据、STS 配置和共享密钥。
-2. 将资源上载到 AMS。
-3. 从上载的资源中获取 UUID 并更改 Program.cs 文件中的第 32 行：
+2. 将资源上传到 AMS。
+3. 从上传的资源中获取 UUID 并更改 Program.cs 文件中的第 32 行：
    
       var objIAsset = _context.Assets.Where(x => x.Id == "nb:cid:UUID:dac53a5d-1500-80bd-b864-f1e4b62594cf").FirstOrDefault();
 4. 使用 AssetId 来命名 castLabs 系统中的资源（Program.cs 文件中的第 44 行）。
@@ -111,10 +112,5 @@ castLabs 和 AMS 均支持用于授予许可证的 JWT（JSON Web 令牌）令�
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

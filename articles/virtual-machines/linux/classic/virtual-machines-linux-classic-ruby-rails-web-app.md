@@ -13,12 +13,13 @@ ms.workload: web
 ms.tgt_pltfrm: vm-linux
 ms.devlang: ruby
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 06/27/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: 7b3c6da0e158c2824a5feb084a13eafe265762ce
-ms.lasthandoff: 01/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 4735a1789c33b7cc51896e26ec8e079f9b0de7d9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -28,21 +29,25 @@ ms.lasthandoff: 01/05/2017
 本教程使用 Ubuntu Server 14.04 LTS 进行了验证。 如果你使用不同 Linux 分发，则可能需要修改安装 Rails 的步骤。
 
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../../../azure-resource-manager/resource-manager-deployment-model.md)。  本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
-> 
-> 
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../../../azure-resource-manager/resource-manager-deployment-model.md)。  本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
+>
+>
 
 ## <a name="create-an-azure-vm"></a>创建 Azure VM
 首先，使用 Linux 映像创建 Azure VM。
 
-若要创建 VM，可以使用 Azure 经典门户或 Azure 命令行接口 (CLI)。
+若要创建 VM，可以使用 Azure 门户或 Azure 命令行接口 (CLI)。
 
-### <a name="azure-management-portal"></a>Azure 管理门户
-1. 登录 [Azure 经典门户](http://manage.windowsazure.com)
-2. 单击“新” > “计算” > “虚拟机” > “快速创建”。 选择 Linux 映像。
-3. 输入密码。
+### <a name="azure-portal"></a>Azure 门户
+1. 登录到 [Azure 门户](https://portal.azure.com)
+2. 单击“新建”，再在搜索框中键入“Ubuntu Server 14.04”。 单击搜索返回的条目。 对于部署模型，选择“经典”，再单击“创建”。
+3. 在“基本信息”边栏选项卡中，输入以下必填字段的值：“名称”（对于 VM）、“用户名”、“身份验证类型”和相应凭据、Azure “订阅”、“资源组”和“位置”。
 
-预配 VM 后，单击 VM 名称，然后单击“仪表板”。 找到“SSH 详细信息”下列出的 SSH 终结点。
+   ![创建新的 Ubuntu 映像](./media/virtual-machines-linux-classic-ruby-rails-web-app/createvm.png)
+
+4. 预配 VM 后，依次单击 VM 名称和“设置”类别中的“终结点”。 找到“独立”下列出的 SSH 终结点。
+
+   ![默认终结点](./media/virtual-machines-linux-classic-ruby-rails-web-app/endpointsnewportal.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 执行[创建运行 Linux 的虚拟机][vm-instructions]中的步骤。
@@ -54,20 +59,25 @@ ms.lasthandoff: 01/05/2017
 ## <a name="install-ruby-on-rails"></a>在 Rails 上安装 Ruby
 1. 使用 SSH 连接到 VM。
 2. 从 SSH 会话中，使用以下命令在虚拟机上安装 Ruby：
-   
+
         sudo apt-get update -y
         sudo apt-get upgrade -y
-        sudo apt-get install ruby ruby-dev build-essential libsqlite3-dev zlib1g-dev nodejs -y
-   
+
+        sudo apt-add-repository ppa:brightbox/ruby-ng
+        sudo apt-get update
+        sudo apt-get install ruby2.4
+
+        > [!TIP]
+        > The brightbox repository contains the current Ruby distribution.
+
     安装可能需要几分钟时间。 安装完成后，使用以下命令验证 Ruby 是否已安装：
-   
+
         ruby -v
-   
-    这将返回已安装的 Ruby 的版本。
+
 3. 使用以下命令安装 Rails：
-   
+
         sudo gem install rails --no-rdoc --no-ri -V
-   
+
     使用 --no-rdoc 和 --no-ri 标志可跳过安装文档，这样可加快速度。
     执行此命令可能需要花费较长时间，添加 -V 可显示有关安装进度的信息。
 
@@ -91,28 +101,32 @@ ms.lasthandoff: 01/05/2017
     [2015-06-09 23:34:23] INFO  WEBrick::HTTPServer#start: pid=27766 port=3000
 
 ## <a name="add-an-endpoint"></a>添加终结点
-1. 转到 [Azure 经典门户][management-portal]并选择 VM。
-   
-    ![虚拟机列表][vmlist]
-2. 选择页面顶部的“终结点”，然后单击页面底部的“+添加终结点”。
-   
-    ![终结点页面][endpoints]
-3. 在“添加终结点”对话框中，选择“添加独立终结点”，然后单击“下一步”箭头。
-   
-    ![新建终结点对话框][new-endpoint1]
-4. 在下一个对话框页中，输入以下信息：
-   
+1. 转到 [Azure 门户][https://portal.azure.com]，并选择 VM。
+
+2. 选择页面左侧“设置”中的“终结点”。
+
+3. 单击页面顶部的“添加”。
+
+4. 在“添加终结点”对话框中，输入以下信息：
+
    * **名称**：HTTP
    * **协议**：TCP
-   * **公共端口**：80
+   * **公用端口**：80
    * **专用端口**：3000
-     
-     这将创建一个公用端口 80，以便将流量路由到专用端口 3000，即 Rails 服务器侦听的端口。
-     
-     ![新建终结点对话框][new-endpoint]
-5. 单击复选标记以保存该终结点。
-6. 此时应显示一条消息，指出“正在更新”。 此消息消失后，终结点即处于活动状态。 现在你可以通过导航到虚拟机的 DNS 名称来测试你的应用程序。 网站应显示如下：
-   
+   * **浮动 IP 地址**：已禁用
+   * **访问控制列表 - 顺序**：1001，或设置此访问规则优先级的其他值。
+   * **访问控制列表 - 名称**：allowHTTP
+   * **访问控制列表 - 操作**：允许
+   * **访问控制列表 - 远程子网**：1.0.0.0/16
+
+     此终结点有一个公用端口 80，可以将流量路由到专用端口 3000，即 Rails 服务器侦听的端口。 访问控制列表规则允许端口 80 上有公用流量。
+
+     ![new-endpoint](./media/virtual-machines-linux-classic-ruby-rails-web-app/createendpoint.png)
+
+5. 单击“确定”，保存此终结点。
+
+6. 应该会看到一条内容为“正在保存虚拟机终结点”的消息。 此消息消失后，终结点即处于活动状态。 现在你可以通过导航到虚拟机的 DNS 名称来测试你的应用程序。 网站应显示如下：
+
     ![默认 rails 页面][default-rails-cloud]
 
 ## <a name="next-steps"></a>后续步骤
@@ -129,7 +143,6 @@ ms.lasthandoff: 01/05/2017
 <!-- WA.com links -->
 [blobs]:../../../storage/storage-ruby-how-to-use-blob-storage.md
 [cdn-howto]:https://azure.microsoft.com/develop/ruby/app-services/
-[management-portal]:https://manage.windowsazure.com/
 [tables]:../../../storage/storage-ruby-how-to-use-table-storage.md
 [vm-instructions]:createportal.md
 

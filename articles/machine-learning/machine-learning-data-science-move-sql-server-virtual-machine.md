@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 53cb04a042288fe9ad0c3945717c8d7121912752
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 6bb75685a38e261a2a8c12aef1de6629e2bb9008
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/08/2017
 
 
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>将数据移到 Azure 虚拟机上的 SQL Server
-本主题概述了用于将数据从平面文件（CSV 或 TSV 格式）或从本地 SQL Server 移到 Azure 虚拟机上的 SQL Server 的选项。 将数据移到云中的这些任务是“团队数据科学流程”的一部分。
+本主题概述了用于将数据从平面文件（CSV 或 TSV 格式）或从本地 SQL Server 移动到 Azure 虚拟机上的 SQL Server 的选项。 将数据移到云中的这些任务是“团队数据科学流程”的一部分。
 
 有关概述将数据移到 Azure SQL 数据库进行机器学习的选项的主题，请参阅[将数据移到 Azure SQL 数据库进行 Azure 机器学习](machine-learning-data-science-move-sql-azure.md)。
 

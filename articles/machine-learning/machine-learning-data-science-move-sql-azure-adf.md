@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: b34362203984a368bb74395e3e9f466b086b7521
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 5d887e20a03e160df70ac4f3484da1ada4b592d2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/08/2017
 
 
 ---
-# <a name="move-data-from-an-on-premise-sql-server-to-sql-azure-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从本地 SQL 服务器转移到 SQL Azure
-本主题演示如何使用 Azure 数据工厂 (ADF)，以通过 Azure Blob 存储将数据从本地 SQL Server 数据库移到 SQL Azure 数据库。
+# <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从本地 SQL 服务器移到 SQL Azure
+本主题演示如何使用 Azure 数据工厂 (ADF)，通过 Azure Blob 存储将数据从本地 SQL Server 数据库移到 SQL Azure 数据库。
 
 有关汇总了用于将数据移到 Azure SQL 数据库的各种选项的表格，请参阅[将数据移到 Azure SQL 数据库进行 Azure 机器学习](machine-learning-data-science-move-sql-azure.md)。
 
@@ -62,10 +63,10 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 >
 >
 
-## <a name="upload-data"></a>将数据上传到本地 SQL Server
+## <a name="upload-data"></a> 将数据上传到本地 SQL Server
 我们使用 [NYC 出租车数据集](http://chriswhong.com/open-data/foil_nyc_taxi/)来演示迁移过程。 该文章所述的 NYC 出租车数据集在 Azure Blob 存储 [NYC 出租车数据](http://www.andresmh.com/nyctaxitrips/)上可用。 该数据具有两个文件，trip_data.csv 文件（包含行程详情）和 trip_far.csv 文件（包含每次行程的费用详情）。 [NYC 出租车行程数据集说明](machine-learning-data-science-process-sql-walkthrough.md#dataset)中介绍了这些文件的示例和说明。
 
-可将此处提供的流程调整为自己的一组数据，或者使用 NYC 出租车数据集遵循所述的步骤进行操作。 若要将 NYC 出租车数据集上传到本地 SQL Server 数据库中，请按照[将数据批量导入 SQL Server 数据库](machine-learning-data-science-process-sql-walkthrough.md#dbload)中概述的过程进行操作。 这些说明适用于 Azure 虚拟机上的 SQL Server，但是上传到本地 SQL Server 的过程是相同的。
+可将此处提供的流程调整为自己的一组数据，或者使用 NYC 出租车数据集遵循所述的步骤进行操作。 若要将 NYC 出租车数据集上传到本地 SQL Server 数据库，请按照[将数据批量导入 SQL Server 数据库](machine-learning-data-science-process-sql-walkthrough.md#dbload)中概述的过程进行操作。 这些说明适用于 Azure 虚拟机上的 SQL Server，但是上传到本地 SQL Server 的过程是相同的。
 
 ## <a name="create-adf"></a>创建 Azure 数据工厂
 [创建 Azure 数据工厂](../data-factory/data-factory-build-your-first-pipeline-using-editor.md#create-data-factory)中提供了在 [Azure 门户](https://portal.azure.com/)中创建新的 Azure 数据工厂和资源组的相关说明。 将新的 ADF 实例命名为 adfdsp，将创建的资源组命名为 adfdsprg。
@@ -93,7 +94,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 若要创建适用于本地 SQL Server 的链接服务，请执行以下操作：
 
 * 在 Azure 经典门户的 ADF 登陆页面上，单击“数据存储”
-* 选择“SQL”，然后输入本地 SQL Server 的用户名和密码凭据。 需要将服务器名称输入为**完全限定的服务器名称\实例名称 (servername\instancename)**。 将链接服务命名为 *adfonpremsql*。
+* 选择 "SQL"，然后输入本地 SQL Server 的用户名和密码凭据。 需要将服务器名称输入为**完全限定的服务器名称\实例名称 (servername\instancename)**。 将链接服务命名为 *adfonpremsql*。
 
 ### <a name="adf-linked-service-blob-store"></a>适用于 Blob 的链接服务
 若要创建适用于 Azure Blob 存储帐户的链接服务，请执行以下操作：
@@ -118,7 +119,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 
 表中基于 JSON 的定义使用以下名称：
 
-* 本地 SQL server 中的**表名**为 nyctaxi_data
+* 本地 SQL server 中的“表名”为 nyctaxi_data
 * Azure Blob 存储帐户中的**容器名**为 containername  
 
 此 ADF 管道所需的表定义有 3 个：
@@ -245,12 +246,12 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
             "name": "AMLDSProcessPipeline",
             "properties":
             {
-                "description" : "This pipeline has one Copy activity that copies data from an on-premise SQL to Azure blob",
+                "description" : "This pipeline has one Copy activity that copies data from an on-premises SQL to Azure blob",
                  "activities":
                 [
                     {
                         "name": "CopyFromSQLtoBlob",
-                        "description": "Copy data from on-premise SQL server to blob",     
+                        "description": "Copy data from on-premises SQL server to blob",     
                         "type": "CopyActivity",
                         "inputs": [ {"name": "OnPremSQLTable"} ],
                         "outputs": [ {"name": "OutputBlobTable"} ],

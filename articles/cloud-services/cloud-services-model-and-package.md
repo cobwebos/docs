@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 07/05/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: 40add25104b2d86a5d68d297ad7a52cc111002f4
-ms.openlocfilehash: e0c03a4aff4f84d0f4f2d79220e34e8c86791bff
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: cca4d126a5c5f012af6afb9a31d0aedc0f7eb155
+ms.openlocfilehash: 7aebd5bd168799e1a88bad0e78ba3a164bfcfccd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>什么是云服务模型以及如何将其打包？
@@ -120,7 +121,7 @@ ms.openlocfilehash: e0c03a4aff4f84d0f4f2d79220e34e8c86791bff
 ## <a name="serviceconfigurationcscfg"></a>ServiceConfiguration.cscfg
 你的云服务设置的配置由 **ServiceConfiguration.cscfg** 文件中的值确定。 指定要为此文件中每个角色部署的实例数。 在服务定义文件中定义的配置设置值已添加到服务配置文件中。 与云服务相关联的所有管理证书的指纹也会添加到该文件中。 [Azure 服务配置架构（.cscfg 文件）](https://msdn.microsoft.com/library/azure/ee758710.aspx)为服务配置文件提供允许的格式。
 
-服务配置文件不与该应用程序一起打包，但将作为一个单独的文件上载到 Azure 中并用于配置云服务。 无需重新部署云服务即可上载新的服务配置文件。 云服务正在运行时可以更改云服务的配置值。 以下示例显示了可为 Web 角色和辅助角色定义的配置设置：
+服务配置文件不与该应用程序一起打包，但将作为一个单独的文件上传到 Azure 中并用于配置云服务。 无需重新部署云服务即可上传新的服务配置文件。 云服务正在运行时可以更改云服务的配置值。 以下示例显示了可为 Web 角色和辅助角色定义的配置设置：
 
 ```xml
 <?xml version="1.0"?>
@@ -197,7 +198,7 @@ Azure 仅允许 Web 角色有一个入口点。 即所有通信都通过一个 I
 
 
 ## <a name="changing-the-configuration-of-a-role"></a>更改角色的配置
-当云服务在 Azure 中运行时，可以更新其配置而无需使服务处于脱机状态。 要更改配置信息，可以上载新的配置文件或就地编辑配置文件，并将其应用于正在运行的服务。 可对服务配置进行以下更改：
+当云服务在 Azure 中运行时，可以更新其配置而无需使服务处于脱机状态。 要更改配置信息，可以上传新的配置文件或就地编辑配置文件，并将其应用于正在运行的服务。 可对服务配置进行以下更改：
 
 * **更改配置设置的值**  
   当配置设置改变时，角色实例可以选择在实例处于联机状态时应用此更改，或选择正常回收实例并在实例处于脱机状态时应用此更改。
@@ -224,7 +225,7 @@ Azure 仅允许 Web 角色有一个入口点。 即所有通信都通过一个 I
 ## <a name="servicepackagecspkg"></a>ServicePackage.cspkg
 要将应用程序部署为 Azure 中的云服务，必须首先以适当的格式打包该应用程序。 可以使用 **CSPack** 命令行工具（与 [Azure SDK](https://azure.microsoft.com/downloads/) 一起安装）来创建包文件作为 Visual Studio 的替代。
 
-**CSPack** 使用服务定义文件和服务配置文件的内容来定义包的内容。 **CSPack** 生成可以使用 [Azure 门户](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)上载到 Azure 的应用程序包文件 (.cspkg)。 默认情况下，该应用程序包名为 `[ServiceDefinitionFileName].cspkg`，但可以通过使用 **CSPack** 的 `/out` 选项指定不同的名称。
+**CSPack** 使用服务定义文件和服务配置文件的内容来定义包的内容。 **CSPack** 生成可以使用 [Azure 门户](cloud-services-how-to-create-deploy-portal.md#create-and-deploy) 上传到 Azure 的应用程序包文件 (.cspkg)。 默认情况下，该应用程序包名为 `[ServiceDefinitionFileName].cspkg`，但可以通过使用 **CSPack** 的 `/out` 选项指定不同的名称。
 
 **CSPack** 位于  
 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\[sdk-version]\bin\`
@@ -295,9 +296,4 @@ cspack [DirectoryName]\[ServiceDefinition]
 [vs_deploy]: ../vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md
 [vs_reconfigure]: ../vs-azure-tools-configure-roles-for-cloud-service.md
 [vs_create]: ../vs-azure-tools-azure-project-create.md
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

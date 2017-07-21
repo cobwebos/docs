@@ -1,6 +1,6 @@
 ---
-title: "在 Linux 上的 Azure App Service Web 应用中使用 Ruby | Microsoft Docs"
-description: "在 Linux 上的 Azure App Service Web 应用中使用 Ruby。"
+title: "在 Linux 上的 Azure 应用服务 Web 应用中使用 Ruby | Microsoft Docs"
+description: "在 Linux 上的 Azure 应用服务 Web 应用中使用 Ruby。"
 keywords: "azure 应用服务, web 应用, faq, linux, oss, ruby"
 services: app-service
 documentationCenter: 
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: aelnably;wesmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 5aeef6f31dacb1b27c605d39a35a81bd0211e06a
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: ad724b99426c1873c173da905c89b471ee64ffa6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -45,11 +45,14 @@ ms.lasthandoff: 05/10/2017
 
 创建 Ruby Web 应用后，可以使用 Git 或 FTP 对其进行部署。
 
+了解有关创建 Ruby 应用的详细信息，请查阅[入门指南](app-service-linux-ruby-get-started.md)
+
 ## <a name="next-steps"></a>后续步骤
 * [什么是 Linux Web 应用？](app-service-linux-intro.md)
 * [在 Linux Web 应用中创建 Web 应用](app-service-linux-how-to-create-web-app.md)
 * [从本地 Git 部署到 Azure 应用服务](app-service-deploy-local-git.md)
-* [Linux 上的 Azure App Service Web 应用常见问题解答](app-service-linux-faq.md)
+* [Linux 上的 Azure 应用服务 Web 应用常见问题解答](app-service-linux-faq.md)
+* [使用 Linux 上的 Azure Web 应用创建 Ruby 应用](app-service-linux-ruby-get-started.md)
 
 <!--Image references-->
 [1]: ./media/app-service-linux-using-ruby/New-Linux.png

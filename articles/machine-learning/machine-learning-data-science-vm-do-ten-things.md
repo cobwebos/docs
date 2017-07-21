@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: gokuma;weig;bradsev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c35d1548262f25e65c391c927919b8acf1411e10
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 467626354cff5643f5f6e602b9d7b72c6c1281ec
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -805,16 +805,16 @@ Azure Cosmos DB 是云中的 NoSQL 数据库。 它允许你使用 JSON 等文�
 若要从 DSVM 访问 Azure Cosmos DB，需要执行以下每个必要步骤。
 
 1. 安装 DocumentDB Python SDK（在命令提示符下运行 ```pip install pydocumentdb```）
-2. 在 [Azure 门户](https://portal.azure.com)中，创建 Azure Cosmos DB 帐户和 DocumentDB 数据库
+2. 从 [Azure 门户](https://portal.azure.com)创建 Azure Cosmos DB 帐户和数据库
 3. 从[此处](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)下载“Azure Cosmos DB 迁移工具”，然后解压缩到所选目录
 4. 使用迁移工具（安装 Cosmos DB 迁移工具所在目录中的 dtui.exe）的以下命令参数将[公共 blob](https://cahandson.blob.core.windows.net/samples/volcano.json) 上存储的 JSON 数据（火山数据）导入 Cosmos DB。 输入以下源和目标位置参数。
    
     /s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1
 
-导入数据后，可以转到 Jupyter 并打开标题为 *DocumentDBSample* 的 Notebook，其中包含用于访问 DocumentDB 和执行一些基本查询的 python 代码。 通过访问 DocumentDB 的[文档页](https://azure.microsoft.com/documentation/learning-paths/documentdb/)可以了解有关该服务的详细信息。
+导入数据后，可以转到 Jupyter 并打开标题为 *DocumentDBSample* 的 Notebook，其中包含用于访问 DocumentDB 和执行一些基本查询的 python 代码。 访问服务的[文档页](https://docs.microsoft.com/azure/cosmos-db/)可了解有关 Cosmos DB 的详细信息。
 
 ## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8.使用 Power BI Desktop 生成报表和仪表板
-让我们在 Power BI 中可视化我们在上述 Cosmos DB 示例中看到的火山 JSON 文件，以获取对数据的视觉洞察。 [Power BI 文章](../documentdb/documentdb-powerbi-visualize.md)中提供了详细步骤。 大致步骤如下所示：
+让我们在 Power BI 中可视化我们在上述 Cosmos DB 示例中看到的火山 JSON 文件，以获取对数据的视觉洞察。 [Power BI 文章](../cosmos-db/powerbi-visualize.md)中提供了详细步骤。 大致步骤如下所示：
 
 1. 打开 Power BI Desktop 并执行“获取数据”。 指定如下 URL：https://cahandson.blob.core.windows.net/samples/volcano.json
 2. 应该将导入的 JSON 记录看作列表
@@ -842,7 +842,7 @@ Azure Cosmos DB 是云中的 NoSQL 数据库。 它允许你使用 JSON 等文�
 
 ![Power BI Desktop](./media/machine-learning-data-science-vm-do-ten-things/PowerBIVolcanoData.png)
 
-可以使用数据模型开始生成报表和可视化效果。 可以遵循此 [Power BI 文章](../documentdb/documentdb-powerbi-visualize.md#build-the-reports)中的步骤生成报表。 最终结果将是如下所示的报表。
+可以使用数据模型开始生成报表和可视化效果。 可以遵循此 [Power BI 文章](../cosmos-db/powerbi-visualize.md#build-the-reports)中的步骤生成报表。 最终结果将是如下所示的报表。
 
 ![Power BI Desktop 报表视图 - Power BI 连接器](./media/machine-learning-data-science-vm-do-ten-things/power_bi_connector_pbireportview2.png)
 

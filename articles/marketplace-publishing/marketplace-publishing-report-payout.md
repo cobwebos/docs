@@ -22,8 +22,12 @@ ms.lasthandoff: 02/11/2017
 
 
 ---
-# <a name="understand-your-azure-marketplace-payout-reports"></a>了解 Azure 应用商店付款报表
-## <a name="access-and-view-your-payout-reports"></a>访问和查看付款报表
+<a id="understand-your-azure-marketplace-payout-reports" class="xliff"></a>
+
+# 了解 Azure 应用商店付款报表
+<a id="access-and-view-your-payout-reports" class="xliff"></a>
+
+## 访问和查看付款报表
 尽管我们转换到开发人员中心，但一些付款报表可通过 https://dev.windows.com/zh-cn 处的开发人员中心获取，而其他报表仍可在 https://publish.windowsazure.com 处的发布门户中找到。
 
 对于与现代付款关联的任何应用商店产品/服务，付款报表现在可在**开发人员中心**中获取；这当前包括：
@@ -38,7 +42,9 @@ ms.lasthandoff: 02/11/2017
 
 在每个季度结束后的 45 天可以获取报表，会在任何退款之后对报表进行计算。
 
-### <a name="access-payout-reports-in-dev-center"></a>访问开发人员中心的付款报表
+<a id="access-payout-reports-in-dev-center" class="xliff"></a>
+
+### 访问开发人员中心的付款报表
 1. 导航到 https://dev.windows.com/zh-cn 处的开发人员中心。
 2. 单击“仪表板”。
 
@@ -47,7 +53,9 @@ ms.lasthandoff: 02/11/2017
 
     ![DashboardPayoutSummary][2]
 
-## <a name="view-your-payout-reports-in-dev-center"></a>查看开发人员中心的付款报表
+<a id="view-your-payout-reports-in-dev-center" class="xliff"></a>
+
+## 查看开发人员中心的付款报表
 每个季度付款报表会记录该季度内发生的所有交易。
 
 * 保留金额指示在即将到来的付款周期之外产生的任何付款（例如此金额将移动到下个月即将到来的付款）。  此金额通常是 $0（除非客户提前付款）。
@@ -60,7 +68,9 @@ ms.lasthandoff: 02/11/2017
 
     ![PayoutSummaryPaymentStatementsFilterControl][4]
 
-## <a name="view-your-payout-reports-in-publishing-portal"></a>查看发布门户中的付款报表
+<a id="view-your-payout-reports-in-publishing-portal" class="xliff"></a>
+
+## 查看发布门户中的付款报表
 每个季度付款报表会记录该季度内发生的所有交易。
 
 1. 导航到 https://publish.windowsazure.com 处的发布门户。
@@ -69,7 +79,9 @@ ms.lasthandoff: 02/11/2017
 
     ![accessingpayoutreport][5]
 
-### <a name="read-your-payout-reports"></a>阅读付款报表
+<a id="read-your-payout-reports" class="xliff"></a>
+
+### 阅读付款报表
 每个季度付款报表会记录该季度内发生的所有交易。
 
 * 如果正在查找与特定季度相关的总帐条目，请从下拉列表中选择该季度的付款报表。 例如，如果你对 2015 年 4 月到 6 月的总帐条目感兴趣，请从下拉列表中选择该日期范围。
@@ -78,7 +90,9 @@ ms.lasthandoff: 02/11/2017
 * “财务摘要”面板按类别显示余额、贷方和借方。
 * 总帐条目显示各项交易。
 
-## <a name="definitions"></a>定义
+<a id="definitions" class="xliff"></a>
+
+## 定义
 **“财务摘要”面板：**
 
 ![financialdefinitions][7]
@@ -87,7 +101,9 @@ ms.lasthandoff: 02/11/2017
 
 ![ledgerdefinitions][8]
 
-## <a name="payout-questions"></a>付款问题
+<a id="payout-questions" class="xliff"></a>
+
+## 付款问题
 如果你对付款有问题，请与我们的支持团队联系。
 
 ![payoutquestions][9]
@@ -97,7 +113,9 @@ ms.lasthandoff: 02/11/2017
 3. 选择“付款相关的查询”。
 4. 单击“启动请求”。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 有关其他支持查询，请通过 <https://portal.azure.com> 记录问题。
 
 [1]: ./media/marketplace-publishing-report-payout/LandingPage-DashboardHighlight.png

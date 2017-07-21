@@ -16,11 +16,11 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/02/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 27c790db456c3e650a624b46df77d4cdce202fa7
+ms.translationtype: HT
+ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
+ms.openlocfilehash: 916c92cab39306352fdf9dff0e0685fd61832d16
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 07/15/2017
 
 ---
 
@@ -28,9 +28,9 @@ ms.lasthandoff: 05/15/2017
 
 此示例使用 Azure CLI 获取 MongoDB 应用的 Azure Cosmos DB 连接字符串。 
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -50,10 +50,10 @@ az group delete --name myResourceGroup
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
-| [az cosmosdb update](/cli/azure/cosmosdb/name#update) | 更新 Azure Cosmos DB 帐户。 |
-| [az cosmosdb list-connection-strings](/cli/azure/cosmosdb/list-connection-strings) | 获取帐户的连接字符串。|
-| [az group delete](/cli/azure/resource#delete) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
+| [az cosmosdb update](https://docs.microsoft.com/cli/azure/cosmosdb#update) | 更新 Azure Cosmos DB 帐户。 |
+| [az cosmosdb list-connection-strings](https://docs.microsoft.com/cli/azure/cosmosdb#list-connection-strings) | 获取帐户的连接字符串。|
+| [az group delete](https://docs.microsoft.com/cli/azure/group#delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

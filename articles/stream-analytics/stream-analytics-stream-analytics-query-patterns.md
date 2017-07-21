@@ -15,20 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/28/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 976e765a906896c236497d074ca2a8c5fb1f1c53
-ms.lasthandoff: 05/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 3eb5d7e7198dbfbb8ffe47728d0fa532c49a294c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/04/2017
 
 
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>常用流分析使用模式的查询示例
 ## <a name="introduction"></a>介绍
-Azure 流分析中的查询采用类似 SQL 的查询语言来表述，该语言的文档说明请参见[流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)指南。  本文档概述了以真实情况为基础的多个常见查询模式的解决方案。  此工作仍在进行中，将继续使用新的模式不断进行更新。
+Azure 流分析中的查询语言与 SQL 查询语言类似，具体可参见[流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)指南。  本文档概述了以真实情况为基础的多个常见查询模式的解决方案。  此工作仍在进行中，将继续使用新的模式不断进行更新。
 
 ## <a name="query-example-data-type-conversions"></a>查询示例：数据类型转换
 **说明**：定义输入流上属性的类型。
-例如，车重在输入流中是字符串格式的，需要转换为 INT 才能执行 SUM 操作。
+例如，在输入流中，车重是字符串，需要将其转换为 INT 类型才能执行 SUM 运算。
 
 **输入**：
 
@@ -54,7 +55,7 @@ Azure 流分析中的查询采用类似 SQL 的查询语言来表述，该语言
         Make,
         TumblingWindow(second, 10)
 
-**说明**：对“重量”字段使用 CAST 语句，以便指定其类型（请在[此处](https://msdn.microsoft.com/library/azure/dn835065.aspx)查看受支持数据类型列表）。
+**说明**：使用 CAST 语句指定 Weight 字段的类型（请在[此处](https://msdn.microsoft.com/library/azure/dn835065.aspx)查看受支持数据类型列表）。
 
 ## <a name="query-example-using-likenot-like-to-do-pattern-matching"></a>查询示例：使用 Like/Not like 进行模式匹配
 **说明**：查看事件中某个字段值是否符合特定模式，例如，返回以 A 开头，以 9 结尾的牌照
@@ -83,11 +84,11 @@ Azure 流分析中的查询采用类似 SQL 的查询语言来表述，该语言
     WHERE
         LicensePlate LIKE 'A%9'
 
-**说明**：使用 LIKE 语句查看 LicensePlate 字段值是否以 A 开头、后面所跟的字符串是否包含 0 个或 0 个以上字符，以及是否以 9 结尾。 
+**说明**：使用 LIKE 语句查看 LicensePlate 字段值是否以 A 开头，以 9 结尾，中间不包含任何字符或包含多个字符。 
 
 ## <a name="query-example-specify-logic-for-different-casesvalues-case-statements"></a>查询示例：指定不同案例/值的逻辑（CASE 语句）
-**说明**：根据某些条件，为字段提供不同的计算操作。
-例如，提供关于在特殊情况 1 时，相同制造商的汽车通过数量的字符串说明。
+**说明**：按条件对字段进行各种计算。
+例如，当同一制造商的汽车通过数量为 1 时，为这种特殊情况提供一个字符串说明。
 
 **输入**：
 
@@ -192,7 +193,7 @@ Azure 流分析中的查询采用类似 SQL 的查询语言来表述，该语言
 
 ## <a name="query-example-counting-unique-values"></a>查询示例：对唯一值进行计数
 **说明**：计算时间窗口内流中显示的唯一字段值数。
-例如，在 2 秒时段中，多少唯一制造商的汽车通过收费亭？
+例如，在 2 秒钟内，相同制造商的汽车分别有多少辆通过收费亭？
 
 **输入**：
 
@@ -507,7 +508,7 @@ GROUP BY
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [Azure 流分析入门](stream-analytics-get-started.md)
+* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

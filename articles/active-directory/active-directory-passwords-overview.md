@@ -1,19 +1,18 @@
 ---
-
 title: "Azure AD 自助服务密码重置概述 | Microsoft Docs"
 description: "Azure AD 中的自助服务密码重置对组织有什么用处？"
 services: active-directory
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-editor: gahug
+ms.reviewer: gahug
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: Human Translation
@@ -21,7 +20,6 @@ ms.sourcegitcommit: 300958a69fc854cb8db02120a383a4cbbfcacd7b
 ms.openlocfilehash: 9f72a4900f20282827ff939aa41bc4f306e547a3
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/20/2017
-
 
 ---
 # <a name="azure-ad-self-service-password-reset-for-the-it-professional"></a>面向 IT 专业人员的 Azure AD 自助服务密码重置

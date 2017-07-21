@@ -17,7 +17,7 @@ ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: de9453e6764279c481e569542433d095772f304d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -28,15 +28,15 @@ ms.lasthandoff: 05/10/2017
 
 在数据工厂解决方案中，可以创建一个或多个数据[管道](data-factory-create-pipelines.md)。 “管道”是共同执行一项任务的活动的逻辑分组。 这些管道位于创建数据工厂的区域。 
 
-尽管数据工厂只能在美国西部、美国东部和北欧区域使用，但数据移动服务可在全球多个区域[](data-factory-data-movement-activities.md#global)使用。 数据工厂服务确保数据不会离开某个地理区域，除非在数据移动服务尚未部署到该区域的情况下，明确指示服务使用备用区域。 
+尽管数据工厂只能在美国西部、美国东部和北欧区域使用，但数据移动服务可在[全球多个区域](data-factory-data-movement-activities.md#global)使用。 数据工厂服务确保数据不会离开某个地理区域，除非在数据移动服务尚未部署到该区域的情况下，明确指示服务使用备用区域。 
 
 除使用证书加密的云数据存储的链接服务凭据外，Azure 数据工厂本身不存储任何其他数据。 它允许创建数据驱动的工作流，协调[受支持数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)之间的数据移动，以及使用[计算服务](data-factory-compute-linked-services.md)在其他区域或本地环境中处理数据。 它还允许使用编程方式及 UI 机制来 [监视和管理工作流](data-factory-monitor-manage-pipelines.md) 。
 
 使用 Azure 数据工厂的数据移动已获得以下认证：
--    [HIPAA/HITECH](https://www.microsoft.com/en-us/trustcenter/Compliance/HIPAA)  
--    [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
--    [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
--    [CSA STAR](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
+-   [HIPAA/HITECH](https://www.microsoft.com/en-us/trustcenter/Compliance/HIPAA)  
+-   [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
+-   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
+-   [CSA STAR](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
      
 如果你对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://www.microsoft.com/TrustCenter/default.aspx)。 
 
@@ -120,7 +120,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
  
 还可以使用 [IPSec VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md) 或 [快速路由](../expressroute/expressroute-introduction.md) 进一步保护本地网络和 Azure 之间的通信信道。
 
-虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 IPSec VPN（站点到站点）或快速路由（私有对等互连）将本地网络连接到 Azure 虚拟网络 (VNet)        
+虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 IPSec VPN（站点到站点）或快速路由（私有对等互连）将本地网络连接到 Azure 虚拟网络 (VNet)     
 
 下表基于混合数据移动的源和目标位置的不同组合，总结了相关的网络和网关配置建议。
 
@@ -142,7 +142,7 @@ IPSec VPN：
 
 ### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>网关的防火墙配置和白名单 IP 地址
 
-#### <a name="firewall-requirements-for-on-premiseprivate-network"></a>本地/专用网络的防火墙要求    
+#### <a name="firewall-requirements-for-on-premiseprivate-network"></a>本地/专用网络的防火墙要求   
 在企业中，企业防火墙在组织的中央路由器上运行。 并且，Windows 防火墙在安装网关的本地计算机上作为守护程序运行。 
 
 下表提供了企业防火墙的出站端口和域要求。
@@ -152,7 +152,7 @@ IPSec VPN：
 | `*.servicebus.windows.net` | 443, 80 | 用于将网关连接到数据工厂中的数据移动服务 |
 | `*.core.windows.net` | 443 | 使用[暂存复制](data-factory-copy-activity-performance.md#staged-copy)功能时，由网关用于连接到 Azure 存储帐户。 | 
 | `*.frontend.clouddatahub.net` | 443 | 用于将网关连接到 Azure 数据工厂服务。 | 
-| `*.database.windows.net` | 1433    | （可选）目标为 Azure SQL 数据库/Azure SQL 数据仓库时需要。 在不打开端口 1433 的情况下，使用暂存复制功能将数据复制到 Azure SQL 数据库/Azure SQL 数据仓库。 | 
+| `*.database.windows.net` | 1433   | （可选）目标为 Azure SQL 数据库/Azure SQL 数据仓库时需要。 在不打开端口 1433 的情况下，使用暂存复制功能将数据复制到 Azure SQL 数据库/Azure SQL 数据仓库。 | 
 | `*.azuredatalakestore.net` | 443 | （可选）目标为 Azure Data Lake Store 时需要 | 
 
 > [!NOTE] 

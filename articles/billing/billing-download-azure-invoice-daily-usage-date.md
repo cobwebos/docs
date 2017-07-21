@@ -5,7 +5,7 @@ keywords: "帐单发票, 发票下载, azure 发票, azure 使用情况"
 services: 
 documentationcenter: 
 author: genlin
-manager: ruchic
+manager: tonguyen
 editor: 
 tags: billing
 ms.assetid: 6d568d1d-3bd6-4348-97d0-1098b5fe0661
@@ -17,9 +17,10 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
 ms.openlocfilehash: ae3f3343cf10a6b2f3aa49dccae6d0ac906dba5c
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/26/2017
 
 

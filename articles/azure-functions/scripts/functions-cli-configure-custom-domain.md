@@ -17,21 +17,22 @@ ms.date: 06/01/2017
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: cd7ab0bbe92fa32d23a841b0b17bee8510f6b406
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: 6fcea6d32f9dd25b0fafb4f895f60d8320ac9df8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 # <a name="map-a-custom-domain-to-a-function-app"></a>将自定义域映射到 Function App
 
 此示例脚本使用相关资源创建 Function App，然后将 `www.<yourdomain>` 映射到它。 若要映射到自定义域，必须在应用服务计划（而不是消耗计划）中创建 Function App。 Azure Functions 仅支持使用 A 记录映射自定义域。
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+
 
 ## <a name="sample-script"></a>示例脚本
 

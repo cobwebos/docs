@@ -1,5 +1,5 @@
 ---
-title: "在 Azure Data Lake Store 中使用 .NET SDK 开发应用程序 | Microsoft 文档"
+title: "在 Azure Data Lake Store 中使用 .NET SDK 开发应用程序 | Microsoft Docs"
 description: "使用 Azure Data Lake Store .NET SDK 创建 Data Lake Store 帐户，在 Data Lake Store 中执行基本操作"
 services: data-lake-store
 documentationcenter: 
@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 05/09/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 74ea95349faa7ee3376050c22b4bb2375837b5c0
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: f637b8617c4a9ed3be1eb0932a94b0ffcc7c8f7e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -29,14 +29,13 @@ ms.lasthandoff: 05/10/2017
 > * [.NET SDK](data-lake-store-get-started-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
-> * [Azure CLI](data-lake-store-get-started-cli.md)
 > * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
 >
 
-了解如何使用 [Azure Data Lake Store .NET SDK](https://msdn.microsoft.com/library/mt581387.aspx) 执行基本操作，如创建文件夹、上载和下载数据文件等。有关 Data Lake 的详细信息，请参阅 [Azure Data Lake Store](data-lake-store-overview.md)。
+了解如何使用 [Azure Data Lake Store .NET SDK](https://msdn.microsoft.com/library/mt581387.aspx) 执行基本操作，如创建文件夹、上传和下载数据文件等。有关 Data Lake 的详细信息，请参阅 [Azure Data Lake Store](data-lake-store-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
 * **Visual Studio 2013、2015 或 2017**。 以下说明使用 Visual Studio 2015 Update 2。
@@ -45,7 +44,7 @@ ms.lasthandoff: 05/10/2017
 
 * **Azure Data Lake Store 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)
 
-* **创建 Azure Active Directory 应用程序**。 使用 Azure AD 应用程序对 Data Lake Store 应用程序进行 Azure AD 身份验证。 有不同的方式可进行 Azure AD 身份验证，即“最终用户身份验证”或“服务到服务身份验证”。 有关如何进行身份验证的说明和详细信息，请参阅[使用 Azure Active Directory 进行 Data Lake Store 身份验证](data-lake-store-authenticate-using-active-directory.md)。
+* **创建 Azure Active Directory 应用程序**。 使用 Azure AD 应用程序对 Data Lake Store 应用程序进行 Azure AD 身份验证。 有不同的方式可进行 Azure AD 身份验证，即“最终用户身份验证”或“服务到服务身份验证”。 有关如何进行身份验证的说明和详细信息，请参阅[最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)或[服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
 
 ## <a name="create-a-net-application"></a>创建 .NET 应用程序
 1. 打开 Visual Studio，创建一个控制台应用程序。
@@ -194,7 +193,7 @@ ms.lasthandoff: 05/10/2017
         await _adlsFileSystemClient.FileSystem.MkdirsAsync(_adlsAccountName, path);
     }
 
-## <a name="upload-a-file"></a>上载文件
+## <a name="upload-a-file"></a>上传文件
 以下代码片段演示了 `UploadFile` 方法，使用该方法可以将文件上传到 Data Lake Store 帐户。
 
     // Upload a file
@@ -203,7 +202,7 @@ ms.lasthandoff: 05/10/2017
         _adlsFileSystemClient.FileSystem.UploadFile(_adlsAccountName, srcFilePath, destFilePath, overwrite:force);
     }
 
-SDK 支持在本地文件路径与 Data Lake Store 文件路径之间进行递归上载和下载。    
+SDK 支持在本地文件路径与 Data Lake Store 文件路径之间进行递归上传和下载。    
 
 ## <a name="get-file-or-directory-info"></a>获取文件或目录信息
 以下代码片段演示了 `GetItemInfo` 方法，使用该方法可以检索有关 Data Lake Store 中文件和目录的信息。
@@ -248,7 +247,7 @@ SDK 支持在本地文件路径与 Data Lake Store 文件路径之间进行递�
 下面的代片码段演示了 `DownloadFile` 方法，使用该方法可以从 Data Lake Store 帐户下载文件。
 
     // Download file
-       public static void DownloadFile(string srcFilePath, string destFilePath)
+    public static void DownloadFile(string srcFilePath, string destFilePath)
     {
          _adlsFileSystemClient.FileSystem.DownloadFile(_adlsAccountName, srcFilePath, destFilePath);
     }

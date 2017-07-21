@@ -1,5 +1,5 @@
 ---
-title: "什么是 Apache Storm - Azure HDInsight | Microsoft Docs"
+title: "什么是 Apache Storm？ - Azure HDInsight | Microsoft Docs"
 description: "Apache Storm 用于实时处理数据流。 可以通过 Azure HDInsight 轻松地在 Azure 云中创建 Storm 群集。 使用 Visual Studio 时，可以通过 C# 创建 Storm 解决方案，然后将其部署到 HDInsight Storm 群集。"
 services: hdinsight
 documentationcenter: 
@@ -18,14 +18,14 @@ ms.workload: big-data
 ms.date: 05/12/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 9c17268d775d0c54468a38a85c746d624f449a9d
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 0d565c29767e778873dad2421c93b62455706f27
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
-# <a name="what-is-apache-storm-on-azure-hdinsight"></a>什么是 Azure HDInsight 上的 Apache Storm
+# <a name="what-is-apache-storm-on-azure-hdinsight"></a>什么是 Azure HDInsight 上的 Apache Storm？
 
 [Apache Storm](http://storm.apache.org/) 是一种容错的分布式开源计算系统。 可以将 Storm 群集与 Hadoop 配合使用，以便实时处理数据流。 Storm 解决方案还提供有保障的数据处理功能，能够重播第一次未成功处理的数据。
 

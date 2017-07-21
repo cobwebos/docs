@@ -12,19 +12,19 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 000440fb2c38eadc0ffdcab84a3c23bb034e834f
+ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
+ms.openlocfilehash: f98b876658c3257ad2b9162dea053f879ba1f1f0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/23/2017
 
 ---
 # <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>将现有的自定义 DNS 名称映射到 Azure Web 应用
 
-本教程介绍如何将现有的自定义 DNS 名称映射到 [Azure Web 应用](app-service-web-overview.md)。 
+[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。 本教程介绍如何将现有的自定义 DNS 名称映射到 Azure Web 应用。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
@@ -36,51 +36,52 @@ ms.lasthandoff: 05/09/2017
 > * 使用 CNAME 记录映射通配符域（例如 `*.contoso.com`）
 > * 使用脚本自动执行域映射
 
-可以使用 **CNAME 记录**或 **A 记录**将自定义 DNS 名称映射到应用服务。
+可以使用 **CNAME 记录**或 **A 记录**将自定义 DNS 名称映射到应用服务。 
 
 > [!NOTE]
 > 我们建议对除根域（例如 `contoso.com`）以外的所有自定义 DNS 名称使用 CNAME。 
-> 
-> 
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程，需要能够访问域提供商（例如 GoDaddy）的 DNS 注册表，并且有权编辑域的配置。 
+完成本教程：
 
-例如，若要添加 `contoso.com` 和 `www.contoso.com` 的 DNS 条目，必须有权配置 `contoso.com` 根域的 DNS 设置。 
+* [创建应用服务应用](/azure/app-service/)，或使用为另一教程创建的应用。
+* 购买域名，确保可以访问域提供商（如 GoDaddy）的 DNS 注册表。
 
-> [!NOTE]
-> 如果没有现有的域名，请考虑遵照[应用服务域教程](custom-dns-web-site-buydomains-web-app.md)使用 Azure 门户购买一个域。 
->
->
+  例如，若要添加 `contoso.com` 和 `www.contoso.com` 的 DNS 条目，必须能够配置 `contoso.com` 根域的 DNS 设置。
 
-## <a name="prepare-your-app"></a>准备应用程序
-若要映射自定义 DNS 名称，[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/)必须位于付费层（“共享”、“基本”、“标准”或“高级”）。 在此步骤中，需确保应用服务计划位于受支持的定价层。
+  > [!NOTE]
+  > 如果现有还没有域名，请考虑[使用 Azure 门户购买域](custom-dns-web-site-buydomains-web-app.md)。 
+
+## <a name="prepare-the-app"></a>准备应用
+
+若要映射自定义 DNS 名称到 Web 应用，Web 应用的[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/)必须位于付费层（“共享”、“基本”、“标准”或“高级”）。 在此步骤中，需确保应用服务计划位于受支持的定价层。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
-打开 Azure 门户。 为此，请使用你的 Azure 帐户登录到 [https://portal.azure.com](https://portal.azure.com)。
+打开 [Azure 门户](https://portal.azure.com)，然后使用 Azure 帐户登录。
 
-### <a name="navigate-to-your-app"></a>导航到你的应用
-在左侧菜单中单击“应用服务”，然后单击应用的名称。
+### <a name="navigate-to-the-app-in-the-azure-portal"></a>导航到 Azure 门户中的应用
+
+从左侧菜单中选择“应用服务”，然后选择应用名称。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/select-app.png)
 
-现已进入应用服务应用的边栏选项卡（_边栏选项卡_：水平打开的门户页）。  
+将看到应用服务应用的管理页。  
 
 ### <a name="check-the-pricing-tier"></a>检查定价层
 
-在应用边栏选项卡的左侧导航窗格中，向下滚动到“设置”部分，然后选择“扩大(应用服务计划)”。
+在应用页的左侧导航窗格中，向下滚动到“设置”部分，然后选择“增加(应用服务计划)”。
 
 ![扩展菜单](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-检查以确保应用不在“免费”层中。 深蓝色的框突出显示了应用的当前层。 
+蓝色边框突出显示了应用的当前层。 检查以确保应用不在“免费”层中。 **免费**层不支持自定义 DNS。 
 
 ![检查定价层](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-**免费**层不支持自定义 DNS。 如果你需要进行纵向扩展，请按照下一部分操作。 否则，请关闭“选择定价层”边栏选项卡并跳到[映射 CNAME 记录](#cname)或[映射 A 记录](#a)。
+如果应用服务计划不**免费**，请关闭**选择定价层**页面并跳转到[映射 CNAME记录](#cname)。
 
-### <a name="scale-up-your-app-service-plan"></a>纵向扩展应用服务计划
+### <a name="scale-up-the-app-service-plan"></a>增加应用服务计划
 
 选择任一非免费层（“共享”、“基本”、“标准”或“高级”）。 
 
@@ -88,7 +89,7 @@ ms.lasthandoff: 05/09/2017
 
 ![检查定价层](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
-当看到以下通知时，说明缩放操作已完成。
+看到以下通知时，说明缩放操作已完成。
 
 ![缩放操作确认](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
 
@@ -96,58 +97,56 @@ ms.lasthandoff: 05/09/2017
 
 ## <a name="map-a-cname-record"></a>映射 CNAME 记录
 
-教程示例将为 `www` 子域 (`www.contoso.com`) 添加 CNAME 记录。 
+在教程示例中，为 `www` 子域（例如 `www.contoso.com`）添加 CNAME 记录。
 
 ### <a name="access-dns-records-with-domain-provider"></a>通过域提供商访问 DNS 记录
 
-首先，请登录到域提供商的网站。
+请登录到域提供商的网站。
 
-查找管理 DNS 记录的页面。 每个域提供商都有其自己的 DNS 记录界面，因此你应当查阅你的提供商的文档。 查找站点中标签为“域名”、“DNS”或“名称服务器管理”的链接或区域。 
+查找管理 DNS 记录的页面。 每个域提供商都有自己的 DNS 记录界面，因此请查阅提供商的文档。 查找站点中标签为“域名”、“DNS”或“名称服务器管理”的链接或区域。 
 
-通常可通过查看帐户信息，然后查找如“我的域”之类的链接，便可以找到连接。 然后，找到用于管理 DNS 记录的链接。 此链接可能命名为“区域文件”、“DNS 记录”或“高级配置”。
+通常通过查看帐户信息，然后查找如“我的域”之类的链接，便可以找到 DNS 记录管理页面。 转到该页面，然后查找名称类似于“区域文件”、“DNS 记录”或“高级配置”的链接。
 
-以下屏幕截图是 DNS 记录页的一个示例：
+以下屏幕截图是 DNS 记录管理页的一个示例：
 
 ![示例 DNS 记录页](./media/app-service-web-tutorial-custom-domain/example-record-ui.png)
 
-在示例屏幕截图中，单击“添加”以创建记录。 某些提供商提供了不同的链接来添加不同的记录类型。 同样，你需要查阅你的提供商的文档。
+在示例屏幕截图中，选择“添加”以创建记录。 某些提供商提供了不同的链接来添加不同的记录类型。 同样，请查阅提供商的文档。
 
 > [!NOTE]
-> 对于某些提供商（例如 GoDaddy），在你单击单独的“保存更改”链接之前，这些 DNS 记录不会生效。 
->
->
+> 对于某些提供商（例如 GoDaddy），在你选择单独的“保存更改”链接之前，这些 DNS 记录不会生效。 
 
 ### <a name="create-the-cname-record"></a>创建 CNAME 记录
 
 添加一条 CNAME 记录，以便将子域映射到应用的默认主机名 (`<app_name>.azurewebsites.net`)。
 
-在 `www.contoso.com` 域示例中，CNAME 记录应会将名称 `www` 指向 `<app_name>.azurewebsites.net`。
+在 `www.contoso.com` 域示例中，添加将名称 `www` 映射到 `<app_name>.azurewebsites.net` 的 CNAME 记录。
 
-DNS 记录页如以下屏幕截图所示：
+添加 CNAME 后，DNS 记录页与以下示例相似：
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/cname-record.png)
 
-### <a name="enable-the-cname-record-mapping-in-your-app"></a>在应用中启用 CNAME 记录映射
+### <a name="enable-the-cname-record-mapping-in-azure"></a>在 Azure 中启用 CNAME 记录映射
 
-现在，可将配置的 DNS 名称添加到应用。
-
-在应用边栏选项卡的左侧导航窗格中，单击“自定义域”。 
+在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”。 
 
 ![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-在应用的“自定义域”边栏选项卡中，需要将完全限定的自定义 DNS 名称 (`www.contoso.com`) 添加到列表。
+在应用的“自定义域”页中，将完全限定的自定义 DNS 名称添加到 (`www.contoso.com`) 列表。
 
-单击“添加主机名”旁边的 **+** 图标。
+选择“添加主机名”旁边的 **+** 图标。
 
 ![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-键入前面为其配置了 CNAME 记录的完全限定域名（例如 `www.contoso.com`），然后单击“验证”。
+键入已添加 CNAME 记录的完全限定的域名，如 `www.contoso.com`。 
 
-否则，“添加主机名”按钮会被激活。 
+选择“验证”。
 
-确保“主机名记录类型”设置为“CNAME 记录(example.com)”。
+“添加主机名”按钮会被激活。 
 
-单击“添加主机名”将 DNS 名称添加到应用。
+确保“主机名记录类型”设置为“CNAME (www.example.com 或任何子域)”。
+
+选择“添加主机名”。
 
 ![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
@@ -163,15 +162,15 @@ DNS 记录页如以下屏幕截图所示：
 
 ## <a name="map-an-a-record"></a>映射 A 记录
 
-在教程示例中，你希望为根域 `contoso.com` 添加 A 记录。 
+在教程示例中，为根域（例如 `contoso.com`）添加 A 记录。 
 
 <a name="info"></a>
 
-### <a name="copy-your-apps-ip-address"></a>复制应用的 IP 地址
+### <a name="copy-the-apps-ip-address"></a>复制应用的 IP 地址
 
-若要映射 A 记录，需要应用的外部 IP 地址。 可以在“自定义域”边栏选项卡中找到此 IP 地址。
+若要映射 A 记录，需要应用的外部 IP 地址。 可以在 Azure 门户中应用的“自定义域”页中找到此 IP 地址。
 
-在应用边栏选项卡的左侧导航窗格中，单击“自定义域”。 
+在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”。 
 
 ![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
@@ -181,62 +180,58 @@ DNS 记录页如以下屏幕截图所示：
 
 ### <a name="access-dns-records-with-domain-provider"></a>通过域提供商访问 DNS 记录
 
-首先，请登录到域提供商的网站。
+请登录到域提供商的网站。
 
-查找管理 DNS 记录的页面。 每个域提供商都有其自己的 DNS 记录界面，因此你应当查阅你的提供商的文档。 查找站点中标签为“域名”、“DNS”或“名称服务器管理”的链接或区域。 
+查找管理 DNS 记录的页面。 每个域提供商都有自己的 DNS 记录界面，因此请查阅提供商的文档。 查找站点中标签为“域名”、“DNS”或“名称服务器管理”的链接或区域。 
 
-通常可通过查看帐户信息，然后查找如“我的域”之类的链接，便可以找到连接。 然后，找到用于管理 DNS 记录的链接。 此链接可能命名为“区域文件”、“DNS 记录”或“高级配置”。
+通常通过查看帐户信息，然后查找如“我的域”之类的链接，便可以找到 DNS 记录管理页面。 转到该页面，然后查找名称类似于“区域文件”、“DNS 记录”或“高级配置”的链接。
 
-以下屏幕截图是 DNS 记录页的一个示例：
+以下屏幕截图是 DNS 记录管理页的一个示例：
 
 ![示例 DNS 记录页](./media/app-service-web-tutorial-custom-domain/example-record-ui.png)
 
-在示例屏幕截图中，单击“添加”以创建记录。 某些提供商提供了不同的链接来添加不同的记录类型。 同样，你需要查阅你的提供商的文档。
+在示例屏幕截图中，选择“添加”以创建记录。 某些提供商提供了不同的链接来添加不同的记录类型。 同样，请查阅提供商的文档。
 
 > [!NOTE]
-> 对于某些提供商（例如 GoDaddy），在你单击单独的“保存更改”链接之前，这些 DNS 记录不会生效。 
->
->
-
-<a name="create-a"></a>
+> 对于某些提供商（例如 GoDaddy），在你选择单独的“保存更改”链接之前，这些 DNS 记录不会生效。 
 
 ### <a name="create-the-a-record"></a>创建 A 记录
 
-若要将 A 记录映射到应用，应用服务通常需要**两个** DNS 记录：
+若要将 A 记录映射到应用，应用服务需要两个DNS 记录：
 
-- 要映射到应用 IP 地址的 **A** 记录。
-- 要映射到应用默认主机名 `<app_name>.azurewebsites.net` 的 **TXT** 记录。 此记录使得应用服务可以验证你是否拥有要映射的自定义域。
+- 要映射到应用 IP 地址的 A 记录。
+- 要映射到应用默认主机名 `<app_name>.azurewebsites.net` 的 TXT 记录。 应用服务仅在配置时使用此记录，以验证你是否拥有自定义域。 自定义域经过验证并且在应用服务中配置后，可以删除此 TXT 记录。 
 
-`www.contoso.com` 域示例根据下表创建 A 和 TXT 记录（`@` 通常表示根域）。 
+`contoso.com` 域示例根据下表创建 A 和 TXT 记录（`@` 通常表示根域）。 
 
 | 记录类型 | 主机 | 值 |
 | - | - | - |
 | A | `@` | 在[复制应用的 IP 地址](#info)步骤中复制的 IP 地址 |
 | TXT | `@` | `<app_name>.azurewebsites.net` |
 
-DNS 记录页应如以下屏幕截图所示：
+添加记录后，DNS 记录页与以下示例相似：
 
 ![DNS 记录页](./media/app-service-web-tutorial-custom-domain/a-record.png)
 
 <a name="enable-a"></a>
 
-### <a name="enable-the-a-record-mapping-in-your-app"></a>在应用中启用 A 记录映射
+### <a name="enable-the-a-record-mapping-in-the-app"></a>在应用中启用 A 记录映射
 
-现在，可将配置的 DNS 名称添加到应用。
+在 Azure 门户中返回到应用的“自定义域”页。将完全限定的自定义 DNS 名称（例如 `contoso.com`）添加到列表。
 
-在 Azure 门户中返回到应用的“自定义域”页。需要将完全限定的自定义 DNS 名称 (`contoso.com`) 添加到列表。
-
-单击“添加主机名”旁边的 **+** 图标。
+选择“添加主机名”旁边的 **+** 图标。
 
 ![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name.png)
 
-键入前面为其配置了 A 记录的完全限定域名（例如 `contoso.com`），然后单击“验证”。
+键入已配置 A 记录的完全限定的域名，如 `contoso.com`。
 
-否则，“添加主机名”按钮会被激活。 
+选择“验证”。
+
+“添加主机名”按钮会被激活。 
 
 确保“主机名记录类型”设置为“A 记录 (example.com)”。
 
-单击“添加主机名”将 DNS 名称添加到应用。
+选择“添加主机名”。
 
 ![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
 
@@ -252,74 +247,66 @@ DNS 记录页应如以下屏幕截图所示：
 
 ## <a name="map-a-wildcard-domain"></a>映射通配符域
 
-还可以将[通配符 DNS](https://en.wikipedia.org/wiki/Wildcard_DNS_record)（例如 `*.contoso.com`）映射到应用服务应用。 
-
-此处的步骤说明如何使用 CNAME 记录映射通配符域 `*.contoso.com`。 
+在教程示例中，你通过添加 CNAME 记录将[通配符 DNS 名称](https://en.wikipedia.org/wiki/Wildcard_DNS_record)（例如 `*.contoso.com`）映射到应用服务应用。 
 
 ### <a name="access-dns-records-with-domain-provider"></a>通过域提供商访问 DNS 记录
 
-首先，请登录到域提供商的网站。
+请登录到域提供商的网站。
 
-查找管理 DNS 记录的页面。 每个域提供商都有其自己的 DNS 记录界面，因此你应当查阅你的提供商的文档。 查找站点中标签为“域名”、“DNS”或“名称服务器管理”的链接或区域。 
+查找管理 DNS 记录的页面。 每个域提供商都有自己的 DNS 记录界面，因此请查阅提供商的文档。 查找站点中标签为“域名”、“DNS”或“名称服务器管理”的链接或区域。 
 
-通常可通过查看帐户信息，然后查找如“我的域”之类的链接，便可以找到连接。 然后，找到用于管理 DNS 记录的链接。 此链接可能命名为“区域文件”、“DNS 记录”或“高级配置”。
+通常通过查看帐户信息，然后查找如“我的域”之类的链接，便可以找到 DNS 记录管理页面。 转到该页面，然后查找名称类似于“区域文件”、“DNS 记录”或“高级配置”的链接。
 
-以下屏幕截图是 DNS 记录页的一个示例：
+以下屏幕截图是 DNS 记录管理页的一个示例：
 
 ![示例 DNS 记录页](./media/app-service-web-tutorial-custom-domain/example-record-ui.png)
 
-在示例屏幕截图中，单击“添加”以创建记录。 某些提供商提供了不同的链接来添加不同的记录类型。 同样，你需要查阅你的提供商的文档。
+在示例屏幕截图中，选择“添加”以创建记录。 某些提供商提供了不同的链接来添加不同的记录类型。 同样，请查阅提供商的文档。
 
 > [!NOTE]
-> 对于某些提供商（例如 GoDaddy），在你单击单独的“保存更改”链接之前，这些 DNS 记录不会生效。 
->
->
+> 对于某些提供商（例如 GoDaddy），在你选择单独的“保存更改”链接之前，这些 DNS 记录不会生效。 
 
 ### <a name="create-the-cname-record"></a>创建 CNAME 记录
 
-添加一条 CNAME 记录，以便将通配符域名映射到应用的默认主机名 (`<app_name>.azurewebsites.net`)。
+添加一条 CNAME 记录，以便将通配符域名称名映射到应用的默认主机名 (`<app_name>.azurewebsites.net`)。
 
-在 `*.contoso.com` 域示例中，CNAME 记录应会将名称 `*` 指向 `<app_name>.azurewebsites.net`。
+在 `*.contoso.com` 域示例中， CNAME 记录将把名称 `*` 映射到 `<app_name>.azurewebsites.net`。
 
-DNS 记录页如以下屏幕截图所示：
+添加 CNAME 时，DNS 记录页与以下示例相似：
 
-![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/cname-record.png)
+![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
 
-### <a name="enable-the-cname-record-mapping-in-your-app"></a>在应用中启用 CNAME 记录映射
+### <a name="enable-the-cname-record-mapping-in-the-app"></a>在应用中启用 CNAME 记录映射
 
-现在，可以添加与通配符域名匹配的任何子域。
+现在，可以将任何与通配符名称匹配的子域添加到应用中（例如 `sub1.contoso.com` 和`sub2.contoso.com` 匹配 `*.contoso.com`）。 
 
-对于 `*.contoso.com` 通配符域示例，现在可以添加 `sub1.contoso.com` 和 `sub2.contoso.com`。 
-
-在应用边栏选项卡的左侧导航窗格中，单击“自定义域”。 
+在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”。 
 
 ![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-单击“添加主机名”旁边的 **+** 图标。
+选择“添加主机名”旁边的 **+** 图标。
 
 ![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-键入与通配符域匹配的子域的完全限定域名（例如 `sub1.contoso.com`），然后单击“验证”。
+键入与通配符域相匹配的完全限定的域名（例如 `sub1.contoso.com`），然后选择“验证”。
 
-否则，“添加主机名”按钮会被激活。 
+“添加主机名”按钮会被激活。 
 
-确保“主机名记录类型”设置为“CNAME 记录(example.com)”。
+确保“主机名记录类型”设置为“CNAME 记录 (www.example.com 或任何子域)”。
 
-单击“添加主机名”将 DNS 名称添加到应用。
+选择“添加主机名”。
 
 ![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
 
 新主机名可能需要经过一段时间后才会反映在应用的“自定义域”页面中。 请尝试刷新浏览器来更新数据。
 
-可以再次单击 **+** 图标，添加另一个与通配符域匹配的主机名。
-
-例如，使用上述相同步骤添加 `sub2.contoso.com`。
+再次选择 **+** 图标，添加另一个与通配符域匹配的主机名。 例如，添加 `sub2.contoso.com`。
 
 ![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 ## <a name="test-in-browser"></a>在浏览器中测试
 
-在浏览器中，浏览至你之前配置的 DNS 名称（`contoso.com` 和 `www.contoso.com`）。
+浏览至你之前配置的 DNS 名称（例如，`contoso.com`、`www.contoso.com`、`sub1.contoso.com` 和 `sub2.contoso.com`）。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
@@ -334,11 +321,11 @@ DNS 记录页如以下屏幕截图所示：
 ```bash 
 az appservice web config hostname add \
     --webapp <app_name> \
-    --resource-group <resourece_group_name> \ 
+    --resource-group <resource_group_name> \ 
     --name <fully_qualified_domain_name> 
 ``` 
 
-有关详细信息，请参阅[将自定义域映射到 Web 应用](scripts/app-service-cli-configure-custom-domain.md) 
+有关详细信息，请参阅[将自定义域映射到 Web 应用](scripts/app-service-cli-configure-custom-domain.md)。 
 
 ### <a name="azure-powershell"></a>Azure PowerShell 
 
@@ -347,7 +334,7 @@ az appservice web config hostname add \
 ```PowerShell  
 Set-AzureRmWebApp `
     -Name <app_name> `
-    -ResourceGroupName <resourece_group_name> ` 
+    -ResourceGroupName <resource_group_name> ` 
     -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net") 
 ```
 
@@ -363,7 +350,7 @@ Set-AzureRmWebApp `
 > * 使用 CNAME 记录映射通配符域
 > * 使用脚本自动执行域映射
 
-转到下一教程，了解如何向它绑定自定义 SSL 证书。
+转到下一教程，了解如何将自定义 SSL 证书绑定到 Web 应用。
 
 > [!div class="nextstepaction"]
 > [将现有的自定义 SSL 证书绑定到 Azure Web 应用](app-service-web-tutorial-custom-ssl.md)

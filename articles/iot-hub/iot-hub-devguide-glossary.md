@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/02/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 2fad3e3fb88d447b377ccfce052035640c1360c3
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: c3646fef95bc06f8febe45718f4f9aeb9aefb42a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -39,7 +39,7 @@ ms.lasthandoff: 05/16/2017
 提供了多种语言的_设备 SDK_，方便用户创建与 IoT 中心交互的[设备应用](#device-app)。 IoT 中心教程介绍了如何使用这些设备 SDK。 可以在此 GitHub [存储库](https://github.com/Azure/azure-iot-sdks)中找到有关设备 SDK 的源代码和更多信息。
 
 ## <a name="azure-iot-edge"></a>Azure IoT Edge
-可以使用 TIoT Edge 编写应用程序，使连接到网关的设备能够与 [IoT 中心](#iot-hub)通信。 IoT Edge 教程介绍了如何使用此服务。 可以在此 GitHub [存储库](https://github.com/Azure/iot-edge)中找到有关 Azure IoT Edge 的源代码和更多信息。
+可以使用 IoT Edge 编写应用程序，使连接到网关的设备能够与 [IoT 中心](#iot-hub)通信。 IoT Edge 教程介绍了如何使用此服务。 可以在此 GitHub [存储库](https://github.com/Azure/iot-edge)中找到有关 Azure IoT Edge 的源代码和更多信息。
 
 ## <a name="azure-iot-service-sdks"></a>Azure IoT 服务 SDK
 提供了多种语言的_服务 SDK_，方便用户创建与 IoT 中心交互的[后端应用](#back-end-app)。 IoT 中心教程介绍了如何使用这些服务 SDK。 可以在此 GitHub [存储库](https://github.com/Azure/azure-iot-sdks)中找到有关服务 SDK 的源代码和进一步信息。
@@ -80,7 +80,7 @@ ms.lasthandoff: 05/16/2017
 可在 IoT 中心创建自定义[终结点](iot-hub-devguide-endpoints.md)传递由[路由规则](#routing-rules)调度的消息。 自定义终结点直接连接事件中心、服务总线队列或服务总线主题。
 
 ## <a name="custom-gateway"></a>自定义网关
-网关使不能直接连接到 [IoT 中心](#iot-hub)的设备能建立连接。 可以使用 [Azure IoT Edge](#azure-iot-gateway-sdk) 生成自定义网关，以便使用自定义逻辑处理消息、自定义协议转换和进行边缘上的其他处理。
+网关使不能直接连接到 [IoT 中心](#iot-hub)的设备能建立连接。 可以使用 [Azure IoT Edge](#azure-iot-edge) 生成自定义网关，以便使用自定义逻辑处理消息、自定义协议转换和进行边缘上的其他处理。
 
 ## <a name="data-point-message"></a>数据点消息
 数据点消息是指[设备到云](#device-to-cloud)的消息，其中包含[遥测](#telemetry)数据（例如风速或温度）。
@@ -191,7 +191,7 @@ Azure IoT 套件将多个 Azure 服务与预配置解决方案打包在一起。
 使用[作业 REST API](https://docs.microsoft.com/rest/api/iothub/jobapi) 可以管理 IoT 中心内运行的[作业](#job)。
 
 ## <a name="module"></a>模块
-在 [Azure IoT Edge](iot-hub-linux-gateway-sdk-get-started.md) 中，[模块](iot-hub-linux-gateway-sdk-get-started.md)是执行特定任务的组件。 任务可能包括从设备引入消息、转换消息，或者将消息发送到 IoT 中心。 中转站负责在模块之间转发消息。 Azure IoT Edge 包括一组示例模块。 用户还可以创建自己的自定义模块。
+在 [Azure IoT Edge](iot-hub-linux-iot-edge-get-started.md) 中，[模块](iot-hub-linux-iot-edge-get-started.md)是执行特定任务的组件。 任务可能包括从设备引入消息、转换消息，或者将消息发送到 IoT 中心。 中转站负责在模块之间转发消息。 Azure IoT Edge 包括一组示例模块。 用户还可以创建自己的自定义模块。
 
 ## <a name="mqtt"></a>MQTT
 [MQTT](http://mqtt.org/) 是 [IoT 中心](#iot-hub)支持与设备进行通信的消息传递协议之一。 有关 IoT 中心支持的消息传递协议的详细信息，请参阅[使用 IoT 中心发送和接收消息](iot-hub-devguide-messaging.md)。
@@ -224,7 +224,7 @@ Azure IoT 套件将多个 Azure 服务与预配置解决方案打包在一起。
 连接到云服务时使用重试策略来处理[暂时性错误](https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx)。
 
 ## <a name="routing-rules"></a>路由规则
-需要在 IoT 中心配置[路由规则](iot-hub-devguide-messaging.md#routing-rules)，将设备到云消息路由到[内置终结点](#built-in-endpoints)或[自定义终结点](#custom-endpoints)，以供解决方案后端处理。
+需要在 IoT 中心配置[路由规则](iot-hub-devguide-messages-read-custom.md)，将设备到云消息路由到[内置终结点](#built-in-endpoints)或[自定义终结点](#custom-endpoints)，以供解决方案后端处理。
 
 ## <a name="sasl-plain"></a>SASL PLAIN
 SASL PLAIN 是一种协议，[AMQP](#advanced-message-queue-protocol) 协议使用它来传输安全令牌。

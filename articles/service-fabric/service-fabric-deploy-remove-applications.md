@@ -1,6 +1,6 @@
 ---
-title: "Service Fabric 应用程序部署 | Microsoft 文档"
-description: "如何在 Service Fabric 中部署和删除应用程序"
+title: "Azure Service Fabric 应用程序部署 | Microsoft Docs"
+description: "如何在 Service Fabric 中使用 PowerShell 部署和删除应用程序。"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/23/2017
+ms.date: 06/01/2017
 ms.author: ryanwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: ae79f305e22095f560f4d97aaa4300b4a8ba20d3
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 00b19fdb0a4cac44fc1d338a580fe4500ac50463
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -44,7 +44,7 @@ ms.lasthandoff: 05/05/2017
 2. 如果不再需要该应用程序类型，则将其取消注册
 3. 从映像存储中删除应用程序包
 
-如果使用 Visual Studio 来部署和调试本地开发群集上的应用程序，则将通过 PowerShell 脚本自动处理上述所有步骤。[](service-fabric-publish-app-remote-cluster.md)  可在应用程序项目的 *Scripts* 文件夹中找到此脚本。 本文提供了有关这些脚本正在执行什么操作的背景，以便你可以在 Visual Studio 外部执行相同的操作。 
+如果使用 [Visual Studio 来部署和调试](service-fabric-publish-app-remote-cluster.md) 本地开发群集上的应用程序，则将通过 PowerShell 脚本自动处理上述所有步骤。  可在应用程序项目的 *Scripts* 文件夹中找到此脚本。 本文提供了有关这些脚本正在执行什么操作的背景，以便你可以在 Visual Studio 外部执行相同的操作。 
  
 ## <a name="connect-to-the-cluster"></a>连接至群集
 在运行本文中的任何 PowerShell 命令之前，请始终先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) 连接到 Service Fabric 群集。 若要连接到本地部署群集，请运行以下命令：
@@ -55,11 +55,11 @@ PS C:\>Connect-ServiceFabricCluster
 
 有关连接到远程群集或连接到使用 Azure Active Directory、X509 证书或 Windows Active Directory 保护的群集的示例，请参阅[连接到安全群集](service-fabric-connect-to-secure-cluster.md)。
 
-## <a name="upload-the-application-package"></a>上载应用程序包
-上载应用程序包会将其放在一个可由内部 Service Fabric 组件访问的位置。
+## <a name="upload-the-application-package"></a>上传应用程序包
+上传应用程序包会将其放在一个可由内部 Service Fabric 组件访问的位置。
 如果要在本地验证应用程序包，请使用 [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) cmdlet。
 
-[Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 命令用来将应用程序包上载到群集映像存储。
+[Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 命令用来将应用程序包上传到群集映像存储。
 Service Fabric SDK PowerShell 模块中包含的 **Get-ImageStoreConnectionStringFromClusterManifest** cmdlet，用于获取映像存储连接字符串。  要导入 SDK 模块，请运行：
 
 ```powershell
@@ -134,7 +134,7 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 对包进行压缩后，便可根据需要将其上传到一个或多个 Service Fabric 群集。 压缩包和未压缩包的部署机制相同。 如果为压缩包，则存储在群集映像存储等位置，并且在应用程序运行前在节点上解压缩。
 
 
-以下示例将包上载到映像存储中名为“MyApplicationV1”的文件夹中：
+以下示例将包上传到映像存储中名为“MyApplicationV1”的文件夹中：
 
 ```powershell
 PS C:\> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -ApplicationPackagePathInImageStore MyApplicationV1 -ImageStoreConnectionString (Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)) -TimeoutSec 1800
@@ -154,7 +154,7 @@ Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\Se
 有关映像存储和映像存储连接字符串的补充信息，请参阅[了解映像存储连接字符串](service-fabric-image-store-connection-string.md)。
 
 ## <a name="register-the-application-package"></a>注册应用程序包
-应用程序清单中声明的应用程序类型和版本会在注册应用程序包时可供使用。 系统将读取上一步中上载的程序包，验证此包，处理包的内容，并将已处理的包复制到内部系统位置。  
+应用程序清单中声明的应用程序类型和版本会在注册应用程序包时可供使用。 系统将读取上一步中上传的程序包，验证此包，处理包的内容，并将已处理的包复制到内部系统位置。  
 
 运行 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) cmdlet 以在群集中注册应用程序类型并使其可用于部署：
 

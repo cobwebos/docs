@@ -11,12 +11,22 @@
     href: quickstart-create-server-database-portal.md
   - name: 创建 DB - Azure CLI
     href: quickstart-create-server-database-azure-cli.md
-  - name: 连接
-    items:
-    - name: Node.js
-      href: connect-nodejs.md
+  - name: 连接和查询
+    items: 
     - name: Python
       href: connect-python.md
+    - name: Node.js
+      href: connect-nodejs.md
+    - name: Java
+      href: connect-java.md
+    - name: Ruby
+      href: connect-ruby.md
+    - name: PHP
+      href: connect-php.md
+    - name: .NET
+      href: connect-csharp.md
+    - name: Go
+      href: connect-go.md
 - name: 教程
   items:
   - name: 1 - 设计数据库
@@ -27,6 +37,10 @@
       href: tutorial-design-database-using-azure-cli.md
   - name: 2 - 设计 Web 应用 - Python
     href: ../app-service-web/app-service-web-tutorial-docker-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
+- name: 示例
+  items:
+  - name: Azure CLI
+    href: sample-scripts-azure-cli.md
 - name: 概念
   items:
   - name: 数据库和服务器
@@ -57,10 +71,6 @@
     items:
     - name: 连接库
       href: concepts-connection-libraries.md
-- name: 示例
-  items:
-  - name: Azure CLI
-    href: sample-scripts-azure-cli.md
 - name: 操作指南
   items:
   - name: 防火墙规则
@@ -73,6 +83,8 @@
     items:
     - name: Azure 门户
       href: howto-restore-server-portal.md
+    - name: Azure CLI
+      href: howto-restore-server-cli.md
   - name: 迁移数据库
     items:
     - name: 转储和还原
@@ -93,12 +105,16 @@
     href: /cli/azure/postgres
 - name: 资源
   items:
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/
   - name: 定价
     href: https://azure.microsoft.com/pricing/details/postgresql/
   - name: MSDN 论坛
     href: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL
   - name: 堆栈溢出
     href: http://stackoverflow.com/questions/tagged/azure-database-postgresql
+  - name: 视频
+    href: videos.md    
   - name: 反馈论坛
     href: https://feedback.azure.com/forums/597976-azure-database-for-postgresql
   - name: 上市区域

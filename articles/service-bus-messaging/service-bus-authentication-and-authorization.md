@@ -1,6 +1,6 @@
 ---
 title: "Azure 服务总线身份验证和授权 | Microsoft Docs"
-description: "共享访问签名 (SAS) 身份验证概述。"
+description: "使用共享访问签名 (SAS) 身份验证向服务总线验证应用程序。"
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
@@ -12,16 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/21/2017
+ms.date: 06/27/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 4eaae725c62f66de1b50fd2c7094f3e6e89281be
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 5ed7558cfff9991734e909e06e8bac9181131381
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/28/2017
 
 
 ---
 # <a name="service-bus-authentication-and-authorization"></a>服务总线身份验证和授权
+
 可通过两种方式向 Azure 服务总线验证应用程序，即使用共享访问签名 (SAS) 身份验证，或通过 Azure Active Directory 访问控制（也称为访问控制服务或 ACS）进行身份验证。 通过共享访问签名身份验证，应用程序能够使用在命名空间或在关联了特定权限的实体上配置的访问密钥向服务总线进行身份验证。 然后可以使用此密钥生成共享访问签名令牌，客户端可用它向服务总线进行身份验证。
 
 > [!IMPORTANT]
@@ -32,7 +34,7 @@ ms.lasthandoff: 04/27/2017
 
 可以在服务总线命名空间上配置用于 SAS 的密钥。 该密钥将应用到该命名空间中的所有消息传送实体。 可在服务总线队列和主题上配置密钥。 [Azure 中继](../service-bus-relay/relay-authentication-and-authorization.md)也支持 SAS。
 
-若要使用 SAS，可在由以下项构成的命名空间、队列或主题上配置 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 对象：
+若要使用 SAS，可以为命名空间、队列或主题配置 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 对象。 此规则由以下元素组成：
 
 * 标识此规则的 KeyName。
 * PrimaryKey，用于对 SAS 令牌进行签名/验证的加密密钥。
@@ -67,6 +69,7 @@ New-AzureSBNamespace <namespaceName> "<Region>” -CreateACSNamespace $false
 Azure.NET SDK 2.0 版和更高版本支持服务总线的 ACS 身份验证。 此身份验证支持 [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider)。 允许将连接字符串作为参数的所有 API 都支持 ACS 连接字符串。
 
 ## <a name="next-steps"></a>后续步骤
+
 有关 SAS 的详细信息，请继续阅读[使用共享访问签名进行服务总线身份验证](service-bus-sas.md)。
 
 有关 Azure 中继身份验证和授权的相关信息，请参阅 [Azure 中继身份验证和授权](../service-bus-relay/relay-authentication-and-authorization.md)。 

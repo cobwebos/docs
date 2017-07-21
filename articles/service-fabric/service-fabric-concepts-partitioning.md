@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/17/2017
+ms.date: 06/30/2017
 ms.author: msfussell
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 0379cd02fe663fbe9f024bc2f786186b0ea1358b
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 3c1e80305cb65f41a6981b99f69e8b87f89599ac
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -130,8 +131,10 @@ Service Fabric 提供了三个分区方案可供选择：
 2. 在“**新建项目**”对话框中，选择 Service Fabric 应用程序。
 3. 将项目命名为“AlphabetPartitions”。
 4. 在“**创建服务**”对话框中，选择“**有状态**”服务并将它称为“Alphabet.Processing”，如下图所示。
-   
-    ![有状态服务屏幕截图](./media/service-fabric-concepts-partitioning/createstateful.png)
+       ![Visual Studio 中的新建服务对话框][1]
+
+  <!--  ![Stateful service screenshot](./media/service-fabric-concepts-partitioning/createstateful.png)-->
+
 5. 设置分区数。 打开 AlphabetPartitions 项目的 ApplicationPackageRoot 文件夹中的 Applicationmanifest.xml 文件，然后将参数 Processing_PartitionCount 更新为 26，如下所示。
    
     ```xml
@@ -371,3 +374,4 @@ Service Fabric 提供了三个分区方案可供选择：
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
 
+[1]: ./media/service-fabric-create-your-first-application-in-visual-studio/new-project-dialog-2.png

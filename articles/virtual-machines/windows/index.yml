@@ -6,7 +6,7 @@ metadata:
   title: Azure Windows 虚拟机文档 - 教程和 API 参考
   meta.description: Learn how to create Windows virtual machines. Documentation helps you plan, deploy, and manage a virtual machine computing environment in the cloud.
   services: virtual-machines\windows
-  author: apexprodleads
+  author: czeumault
   manager: carolz
   ms.service: virtual-machines-windows
   ms.tgt_pltfrm: na
@@ -29,13 +29,13 @@ sections:
 - title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: 'Learn how to deploy an IIS web-server within a Virtual Machine running Windows Server 2016:'
+    text: 了解如何在运行 Windows Server 2016 的虚拟机中部署 IIS Web 服务器：
   - type: list
     style: icon48
     items: 
     - image: 
         src: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/portal.svg
-      text: Azure Portal
+      text: Azure 门户
       href: https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - image: 
         src: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/logo_powershell.svg
@@ -48,43 +48,44 @@ sections:
 - title: 分步教程
   items:
   - type: paragraph
-    text: Learn how to deploy, manage, and monitor Windows VMs on Azure
+    text: 了解如何在 Azure 上部署、管理和监视 Windows VM
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/virtual-machines/windows/tutorial-manage-vm">Create and manage Windows VMs</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-manage-data-disk">Create and manage VM disks</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-automate-vm-deployment">Automate VM configuration</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-custom-images">Create custom VM images</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-availability-sets">Create highly available VMs</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-create-vmss">Create a VM scale set</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-load-balancer">Load balance VMs</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-virtual-network">Manage VMs with virtual networks</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-backup-vms">Backup VMs</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-monitoring">Monitor VMs</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-azure-security">Manage security on VMs</a>
+    - html: <a href="/azure/virtual-machines/windows/tutorial-manage-vm">创建和管理 Windows VM</a>
+    - html: <a href="/azure/virtual-machines/windows/tutorial-manage-data-disk">创建和管理 VM 磁盘</a>
+    - html: <a href="/azure/virtual-machines/windows/tutorial-automate-vm-deployment">自动执行 VM 配置</a>
+    - html: <a href="/azure/virtual-machines/windows/tutorial-custom-images">创建自定义 VM 映像</a>
+    - html: <a href="/azure/virtual-machines/windows/tutorial-availability-sets">创建高度可用的 VM</a>
+    - html: <a href="/azure/virtual-machines/windows/tutorial-create-vmss">创建 VM 规模集</a>
+    - html: <a href="/azure/virtual-machines/windows/tutorial-load-balancer">对 VM 进行负载均衡</a>
+    - html: <a href="/azure/virtual-machines/windows/tutorial-virtual-network">使用虚拟网络管理 VM</a>
+    - html: <a href="/azure/virtual-machines/windows/tutorial-backup-vms">备份 VM</a>
+    - html: <a href="/azure/virtual-machines/windows/tutorial-monitoring">监视 VM</a>
+    - html: <a href="/azure/virtual-machines/windows/tutorial-azure-security">管理 VM 上的安全性</a>
+    - html: <a href="/azure/virtual-machines/windows/tutorial-vsts-iis-cicd">使用 Visual Studio 创建持续集成管道</a>
 - title: 免费 PluralSight 视频培训
   items:
   - type: list
     style: cards
     className: cardsW
     items:
-    - html: <p><a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Managing Infrastructure</a></p>
+    - html: '<p><a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">管理基础结构</a></p>'
       image: 
         src: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-infrastructure.png
         href: https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - html: <p><a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Getting Started with Virtual Machines</a></p>
+    - html: '<p><a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">虚拟机入门</a></p>'
       image: 
         src: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-vms.png
         href: https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - html: <p><a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Getting Started with IaaS Monitoring</a></p>
+    - html: '<p><a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">IaaS 监视入门</a></p>'
       image: 
         src: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-iaas-monitoring.png
         href: https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
 - title: 示例
   items:
   - type: paragraph
-    text: Deploy your first application to Azure.
+    text: 将你的第一个应用程序部署到 Azure。
   - type: list
     style: unordered
     className: spaced noBullet
@@ -100,6 +101,6 @@ sections:
     - title: 命令行
       html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/vm">Azure CLI</a></p>
     - title: 语言
-      html: <p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node​.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>
+      html: '<p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>'
     - title: REST
-      html: <p><a href="/rest/api/compute">Compute REST API Reference</a></p>
+      html: <p><a href="/rest/api/compute">计算 REST API 参考</a></p>

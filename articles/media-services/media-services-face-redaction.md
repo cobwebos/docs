@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/16/2017
+ms.date: 07/11/2017
 ms.author: juliako;
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 2600c5cec36a8a44a85a62d6672d6ae57343f20c
-ms.lasthandoff: 04/18/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: f439a24c0bcca1742ca47770021bbe179a0b4b2f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>使用 Azure 媒体分析进行面部修订
@@ -60,37 +60,51 @@ ms.lasthandoff: 04/18/2017
 | 输出资产 |foo_thumb%06d.jpg [foo_thumb000001.jpg, foo_thumb000002.jpg] |裁剪后的 jpg 文件，显示每个检测到的面部，其中的数字指示面部的标签 ID |
 
 #### <a name="output-example"></a>输出示例：
+
     {
       "version": 1,
-      "timescale": 50,
+      "timescale": 24000,
       "offset": 0,
-      "framerate": 25.0,
+      "framerate": 23.976,
       "width": 1280,
       "height": 720,
       "fragments": [
         {
           "start": 0,
-          "duration": 2,
-          "interval": 2,
+          "duration": 48048,
+          "interval": 1001,
           "events": [
-            [  
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [
               {
-                "id": 1,
-                "x": 0.306415737,
-                "y": 0.03199235,
-                "width": 0.15357475,
-                "height": 0.322126418
+                "index": 13,
+                "id": 1138,
+                "x": 0.29537,
+                "y": -0.18987,
+                "width": 0.36239,
+                "height": 0.80335
               },
               {
-                "id": 2,
-                "x": 0.5625317,
-                "y": 0.0868245438,
-                "width": 0.149155334,
-                "height": 0.355517566
+                "index": 13,
+                "id": 2028,
+                "x": 0.60427,
+                "y": 0.16098,
+                "width": 0.26958,
+                "height": 0.57943
               }
-            ]
-          ]
-        },
+            ],
 
     … truncated
 
@@ -120,12 +134,11 @@ ms.lasthandoff: 04/18/2017
      2
      3
  
-## <a name="attribute-descriptions"></a>属性说明
+## <a name="elements-of-the-output-json-file"></a>输出 JSON 文件中的元素
+
 修订 MP 提供高精确度的面部位置检测和跟踪功能，可在一个视频帧中检测到最多 64 张人脸。 正面的面部可提供最佳效果，而检测和跟踪侧面的面部和较小的面部（小于或等于 24x24 像素）可能具有一定难度。
 
-对于已检测并跟踪到的面部，将返回其坐标，以指示面部位置，还将返回面部 ID 编号，以表示正在跟踪该人员的面部。 在正面面部长时间于帧中消失或重叠的情况下，面部 ID 编号很容易重置，导致某些人员被分配多个 ID。
-
-有关属性的详细说明，请参阅[使用 Azure 媒体分析检测面部和情感](media-services-face-and-emotion-detection.md)主题。
+[!INCLUDE [media-services-analytics-output-json](../../includes/media-services-analytics-output-json.md)]
 
 ## <a name="sample-code"></a>代码示例
 以下程序演示如何：

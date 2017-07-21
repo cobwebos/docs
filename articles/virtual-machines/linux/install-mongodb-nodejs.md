@@ -12,16 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/20/2016
+ms.date: 05/11/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: ec6b94eec9364f25a630f290316048c8ac838b62
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: c97ade0a3d95824f723aad55776de861fe49441f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/12/2017
 
 
 ---
-# <a name="how-to-install-and-configure-mongodb-on-a-linux-vm-using-the-azure-cli-10"></a>如何使用 Azure CLI 1.0 在 Linux VM 上安装和配置 MongoDB
+# 如何使用 Azure CLI 1.0 在 Linux VM 上安装和配置 MongoDB
+<a id="how-to-install-and-configure-mongodb-on-a-linux-vm-using-the-azure-cli-10" class="xliff"></a>
 [MongoDB](http://www.mongodb.org) 是一个流行的开源、高性能 NoSQL 数据库。 本文说明如何使用 Resource Manager 部署模型在 Azure 中的 Linux VM 上安装和配置 MongoDB。 文中提供了一些示例，详细说明如何执行以下操作：
 
 * [手动安装和配置基本 MongoDB 实例](#manually-install-and-configure-mongodb-on-a-vm)
@@ -29,18 +31,22 @@ ms.lasthandoff: 04/03/2017
 * [使用 Resource Manager 模板创建包含副本集的复杂 MongoDB 分片群集](#create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template)
 
 
-## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本
+## 用于完成任务的 CLI 版本
+<a id="cli-versions-to-complete-the-task" class="xliff"></a>
 可以使用以下 CLI 版本之一完成任务：
 
 - Azure CLI 1.0 – 用于经典部署模型和资源管理部署模型（本文）的 CLI
-- [Azure CLI 2.0](create-cli-complete-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - 适用于资源管理部署模型的下一代 CLI
+- [Azure CLI 2.0](create-cli-complete-nodejs.md) - 适用于资源管理部署模型的下一代 CLI
 
 
-## <a name="manually-install-and-configure-mongodb-on-a-vm"></a>在 VM 上手动安装和配置 MongoDB
-MongoDB 为 Red Hat/CentOS、SUSE、Ubuntu 和 Debian 等 Linux 分发版[提供了安装说明](https://docs.mongodb.com/manual/administration/install-on-linux/)。 以下示例使用 `~/.ssh/id_rsa.pub` 中存储的 SSH 密钥创建 `CentOS` VM。 出现提供存储帐户名称、DNS 名称和管理员凭据的提示时，请输入所需的信息：
+## 在 VM 上手动安装和配置 MongoDB
+<a id="manually-install-and-configure-mongodb-on-a-vm" class="xliff"></a>
+MongoDB 为 Red Hat/CentOS、SUSE、Ubuntu 和 Debian 等 Linux 分发版[提供了安装说明](https://docs.mongodb.com/manual/administration/install-on-linux/)。 以下示例使用 ~/.ssh/id_rsa.pub 中存储的 SSH 密钥创建 CentOS VM。 出现提供存储帐户名称、DNS 名称和管理员凭据的提示时，请输入所需的信息：
 
 ```azurecli
-azure vm quick-create --ssh-publickey-file ~/.ssh/id_rsa.pub --image-urn CentOS
+azure vm quick-create \
+    --image-urn CentOS \
+    --ssh-publickey-file ~/.ssh/id_rsa.pub 
 ```
 
 使用上述 VM 创建步骤结束时显示的公共 IP 地址登录到 VM：
@@ -49,24 +55,24 @@ azure vm quick-create --ssh-publickey-file ~/.ssh/id_rsa.pub --image-urn CentOS
 ssh azureuser@40.78.23.145
 ```
 
-若要为 MongoDB 添加安装源，请按如下所示创建一个 `yum` 存储库文件：
+若要为 MongoDB 添加安装源，请按如下所示创建一个 yum 存储库文件：
 
 ```bash
-sudo touch /etc/yum.repos.d/mongodb-org-3.2.repo
+sudo touch /etc/yum.repos.d/mongodb-org-3.4.repo
 ```
 
 打开该 MongoDB 存储库文件进行编辑。 添加以下行：
 
 ```sh
-[mongodb-org-3.2]
+[mongodb-org-3.4]
 name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/
 gpgcheck=1
 enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc
+gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
 ```
 
-按如下所示使用 `yum` 安装 MongoDB：
+按如下所示使用 yum 安装 MongoDB：
 
 ```bash
 sudo yum install -y mongodb-org
@@ -109,22 +115,23 @@ sudo chkconfig mongod on
 ```
 
 
-## <a name="create-basic-mongodb-instance-on-centos-using-a-template"></a>使用模板在 CentOS 上创建基本 MongoDB 实例
+## 使用模板在 CentOS 上创建基本 MongoDB 实例
+<a id="create-basic-mongodb-instance-on-centos-using-a-template" class="xliff"></a>
 可以使用 GitHub 中的以下 Azure 快速入门模板，在单个 CentOS VM 上创建基本的 MongoDB 实例。 此模板使用适用于 Linux 的自定义脚本扩展将 `yum` 存储库添加到新建的 CentOS VM，然后安装 MongoDB。
 
 * [CentOS 上的基本 MongoDB 实例](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 
-以下示例在 `WestUS` 区域中创建名为 `myResourceGroup` 的资源组。 按如下所示输入自己的值：
+以下示例在 `eastus` 区域中创建名为 `myResourceGroup` 的资源组。 按如下所示输入自己的值：
 
 ```azurecli
-azure group create --name myResourceGroup --location WestUS \
+azure group create \
+    --name myResourceGroup \
+    --location eastus \
     --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 ```
 
 > [!NOTE]
-> 创建部署后的几秒内，Azure CLI 会返回到提示符，但安装和配置需要几分钟才能完成。 使用 `azure group deployment show myResourceGroup` 检查部署状态，并相应地输入资源组的名称。 等到 `ProvisioningState` 显示“成功”，然后尝试通过 SSH 连接到 VM。
-> 
-> 
+> 创建部署后的几秒内，Azure CLI 会返回到提示符，但安装和配置需要几分钟才能完成。 使用 `azure group deployment show myResourceGroup` 检查部署状态，并相应地输入资源组的名称。 等到 ProvisioningState 显示“已成功”后，尝试通过 SSH 连接到 VM。
 
 完成部署后，通过 SSH 连接到 VM。 按以下示例中所示，使用 `azure vm show` 命令获取 VM 的 IP 地址：
 
@@ -132,7 +139,7 @@ azure group create --name myResourceGroup --location WestUS \
 azure vm show --resource-group myResourceGroup --name myLinuxVM
 ```
 
-在靠近输出的末尾处显示了 `Public IP address`。 使用 VM 的 IP 地址通过 SSH 连接到 VM：
+在靠近输出末尾处显示了公共 IP 地址。 使用 VM 的 IP 地址通过 SSH 连接到 VM：
 
 ```bash
 ssh azureuser@138.91.149.74
@@ -156,33 +163,34 @@ test
 ```
 
 
-## <a name="create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template"></a>使用模板在 CentOS 上创建复杂的 MongoDB 分片群集
-可以使用 Github 中的以下 Azure 快速入门模板创建复杂的 MongoDB 分片群集。 此模板遵循 [MongoDB 分片群集最佳实践](https://docs.mongodb.com/manual/core/sharded-cluster-components/)来提供冗余和高可用性。 该模板将创建两个分片，其中每个副本集包含三个节点。 另外，它还会创建一个包含三个节点的配置服务器副本集，以及两个 `mongos` 路由器服务器（用于对各个分片中的应用程序提供一致性）。
+## 使用模板在 CentOS 上创建复杂的 MongoDB 分片群集
+<a id="create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template" class="xliff"></a>
+可以使用 Github 中的以下 Azure 快速入门模板创建复杂的 MongoDB 分片群集。 此模板遵循 [MongoDB 分片群集最佳实践](https://docs.mongodb.com/manual/core/sharded-cluster-components/)来提供冗余和高可用性。 该模板将创建两个分片，其中每个副本集包含三个节点。 另外，它还会创建一个配置服务器副本集和两个 mongos 路由器服务器，前者包含 3 个节点的，后者用于确保各分片中的应用程序保持一致。
 
 * [CentOS 上的 MongoDB 分片群集](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-sharding-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-sharding-centos/azuredeploy.json
 
 > [!WARNING]
 > 部署这种复杂 MongoDB 分片群集需要 20 个以上的核心（每个区域中一个订阅的默认核心计数通常为 20 个）。 请提出 Azure 支持请求，以增加核心计数。
-> 
-> 
 
-以下示例在 `WestUS` 区域中创建名为 `myResourceGroup` 的资源组。 按如下所示输入自己的值：
+以下示例在 eastus 区域中创建名为 myResourceGroup 的资源组。 按如下所示输入自己的值：
 
 ```azurecli
-azure group create --name myResourceGroup --location WestUS \
+azure group create \
+    --name myResourceGroup \
+    --location eastus \
     --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-sharding-centos/azuredeploy.json
 ```
 
 > [!NOTE]
-> 创建部署后的几秒内，Azure CLI 会返回到提示符，但安装和配置可能需要一小时以上才能完成。 使用 `azure group deployment show myResourceGroup` 检查部署状态，并相应地调整资源组的名称。 等到 `ProvisioningState` 显示“成功”，然后连接到 VM。
-> 
-> 
+> 创建部署后的几秒内，Azure CLI 会返回到提示符，但安装和配置可能需要一小时以上才能完成。 使用 `azure group deployment show myResourceGroup` 检查部署状态，并相应地调整资源组的名称。 等到 ProvisioningState 显示“已成功”后，可连接到 VM。
 
-## <a name="next-steps"></a>后续步骤
-在上述示例中，你已在本地从 VM 连接到 MongoDB 实例。 如果想要从另一个 VM 或网络连接到 MongoDB 实例，请确保[创建相应的网络安全组规则](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
+在上述示例中，你已在本地从 VM 连接到 MongoDB 实例。 如果想要从另一个 VM 或网络连接到 MongoDB 实例，请确保[创建相应的网络安全组规则](nsg-quickstart.md)。
 
 有关使用模板创建这些规则的详细信息，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/resource-group-overview.md)。
 
-Azure Resource Manager 模板使用自定义脚本扩展在 VM 上下载并执行脚本。 有关详细信息，请参阅[在 Linux 虚拟机上使用 Azure 自定义脚本扩展](extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+Azure Resource Manager 模板使用自定义脚本扩展在 VM 上下载并执行脚本。 有关详细信息，请参阅[在 Linux 虚拟机上使用 Azure 自定义脚本扩展](extensions-customscript.md)。
 
 

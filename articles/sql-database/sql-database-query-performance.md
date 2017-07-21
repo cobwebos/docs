@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 08/09/2016
+ms.date: 07/05/2017
 ms.author: sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ddf93a0db278fffa2aa45fdc73a1c7f57a84fb39
-ms.openlocfilehash: 14140a6aa8c8cccf658f8e98305659e8ae76dcad
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: 1925d4ff8f5b16a0df56de987f8653cfd8441c52
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/31/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -37,7 +37,7 @@ ms.lasthandoff: 01/31/2017
 * 查询性能见解要求已在数据库上启用 [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)。 如果未运行查询存储，该门户会提示将其打开。
 
 ## <a name="permissions"></a>权限
-需要具备以下[基于角色的访问控制](../active-directory/role-based-access-control-configure.md)权限才能使用查询性能见解： 
+需要具备以下[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)权限才能使用查询性能见解： 
 
 * 需要具备**读者**、**所有者**、**参与者**、**SQL 数据库参与者**或 **SQL Server 参与者**权限才能查看资源占用排名靠前的查询和图表。 
 * 需要具备**所有者**、**参与者**、**SQL 数据库参与者**或 **SQL Server 参与者**权限才能查看查询文本。
@@ -67,7 +67,7 @@ ms.lasthandoff: 01/31/2017
     ![查询性能见解][1]
    
     排位靠前的查询视图随即打开并列出 CPU 消耗量靠前的查询。
-2. 单击图表周围以获取详细信息。<br>最前面一行显示数据库的整体 DTU 百分比，条形显示所选查询在所选时间间隔内消耗的 CPU 百分比（例如，如果选择了“**过去一周**”，则每个条代表&1; 天）。
+2. 单击图表周围以获取详细信息。<br>最前面一行显示数据库的整体 DTU 百分比，条形显示所选查询在所选时间间隔内消耗的 CPU 百分比（例如，如果选择了“**过去一周**”，则每个条代表 1 天）。
    
     ![排名靠前的查询][2]
    
@@ -80,7 +80,7 @@ ms.lasthandoff: 01/31/2017
      
      使用复选框选择或清除图表要包含或排除的单个查询。
 3. 如果感觉数据已过时，可单击“**刷新**”按钮。
-4. 可以使用滑块和缩放按钮更改检测间隔及检查峰值： ![设置](./media/sql-database-query-performance/zoom.png)
+4. 可以使用滑块和缩放按钮来更改观测间隔和检查峰值：![设置](./media/sql-database-query-performance/zoom.png)
 5. 或者，如果想要查看不同的视图，则可以选择“**自定义**”选项卡并设置：
    
    * 度量值（CPU、持续时间、执行计数）

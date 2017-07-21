@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: fef61e6155471a0459957ea0c510698cfa787fdc
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: f40ceb542a0ee51e17ee539db4dbc91c11e056f2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/29/2017
 
 
 ---
@@ -31,8 +32,10 @@ ms.lasthandoff: 03/18/2017
 在回答下面的规划问题之前，请考虑以下事项：
 
 * 你在 Azure 中创建的所有内容都由一个或多个资源组成。 虚拟机 (VM) 是一种资源，VM 所用的网络适配器接口 (NIC) 是一个资源，NIC 所用的公共 IP 地址是一种资源，NIC 所连接到的 VNet 也是一种资源。
-* 在 [Azure 区域](https://azure.microsoft.com/regions/#services)和订阅中创建资源。 资源只能连接位于相同区域和订阅中的 VNet。
-* 可以使用 Azure [VPN 网关](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)将 VNet 互联。 还可以按这种方式跨区域和订阅连接 VNet。
+* 在 [Azure 区域](https://azure.microsoft.com/regions/#services)和订阅中创建资源。 资源只能连接位于相同区域和订阅中的虚拟网络。
+* 可以使用以下方式将虚拟网络相互连接：
+    * [虚拟网络对等互联](virtual-network-peering-overview.md)：虚拟网络必须位于同一 Azure 区域。 对等虚拟网络中的资源之间的带宽与资源连接到同一个虚拟网络的带宽相同。
+    * Azure [VPN 网关](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)：虚拟网络可以在相同或不同的 Azure 区域中。 通过 VPN 网关连接的虚拟网络中的资源之间的带宽受限于 VPN 网关带宽。
 * 可以使用 Azure 中提供的一种[连接选项](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-ipsecike-vpn-tunnel)，将 VNet 连接到本地网络。
 * 不同的资源可以集中归入[资源组](../azure-resource-manager/resource-group-overview.md#resource-groups)，这样可便于将资源作为一个单元来管理。 资源组可以包含多个区域中的资源，只要资源属于同一订阅即可。
 
@@ -174,7 +177,7 @@ VNet 包含以下属性。
     是的。 因为连接到本地数据中心的用户必须能够通过加密隧道访问应用程序。
 4. 你需要将多少个 IaaS VM 用于你的解决方案？
 
-    200 个 IaaS VM。 App1、App2 和 App3 各需要 5 个 Web 服务器、2 个应用程序服务器和 2 个数据库服务器。 每个应用程序总共需要 9 个 IaaS VM，或总共需要 36 个 IaaS VM。 App5 和 App6 各需要 5 个 Web 服务器和 2 个数据库服务器。 每个应用程序总共需要 7 个 IaaS VM，或总共需要 14 个 IaaS VM。 因此，每个 Azure 区域中的所有应用程序需要 50 个 IaaS VM。 由于我们需要使用 4 个区域，因此将有 200 个 IaaS VM。
+    200 个 IaaS VM。 App1、App2、App3 和 App4 各需要 5 个 Web 服务器、2 个应用程序服务器和 2 个数据库服务器。 每个应用程序总共需要 9 个 IaaS VM，或总共需要 36 个 IaaS VM。 App5 和 App6 各需要 5 个 Web 服务器和 2 个数据库服务器。 每个应用程序总共需要 7 个 IaaS VM，或总共需要 14 个 IaaS VM。 因此，每个 Azure 区域中的所有应用程序需要 50 个 IaaS VM。 由于我们需要使用 4 个区域，因此将有 200 个 IaaS VM。
 
     你还需要在每个 VNet 中或本地数据中心内提供 DNS 服务器，以便在 Azure IaaS VM 和本地网络之间解析名称。
 5. 是否需要基于 VM 组（即前端 Web 服务器和后端数据库服务器）隔离流量？
@@ -248,7 +251,7 @@ VNet 包含以下属性。
 
 ## <a name="next-steps"></a>后续步骤
 * 根据方案[部署虚拟网络](virtual-networks-create-vnet-arm-template-click.md)。
-* 了解如何对 IaaS VM 进行[负载平衡](../load-balancer/load-balancer-overview.md)，以及如何[管理通过多个 Azure 区域的路由](../traffic-manager/traffic-manager-overview.md)。
+* 了解如何对 IaaS VM 进行[负载均衡](../load-balancer/load-balancer-overview.md)，以及如何[管理通过多个 Azure 区域的路由](../traffic-manager/traffic-manager-overview.md)。
 * 详细了解 [NSG 以及如何规划和设计 NSG 解决方案](virtual-networks-nsg.md)。
 * 详细了解[跨界连接和 VNet 连接选项](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-ipsecike-vpn-tunnel)。
 

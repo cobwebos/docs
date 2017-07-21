@@ -3,8 +3,8 @@ title: "使用移动服务时，应用服务有何作用？"
 description: "了解应用服务为现有的移动服务项目带来的优势。"
 services: app-service\mobile
 documentationcenter: ios
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: 26b68a11-8352-4f78-acd2-e4e0ec177781
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/01/2016
-ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f3b75c10ed0012d682562eb943cb67fc8176ddbb
-ms.lasthandoff: 12/08/2016
-
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: e23a4f182e6bb0ba53927aa6195967c2464e4233
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/11/2017
 
 ---
 # <a name="getting-started"> </a>使用移动服务时，应用服务有何作用？
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/08/2016
 * 除了混合连接以外，还可使用 VPN 和 VNet 连接到本地资源
 * 使用 NewRelic 或 AppInsights 对应用进行监视、发出警报和故障排除
 * 更广泛的基础计算资源与定价层
-* 内置自动缩放、负载平衡和性能监视。
+* 内置自动缩放、负载均衡和性能监视。
 * 内置过渡、备份、回滚和生产测试功能
 
 ## <a name="new-hosting-features"></a>新托管功能
@@ -64,5 +64,4 @@ ms.lasthandoff: 12/08/2016
 使用 *Azure 应用服务* ，可以为移动应用创建多个专用测试和过渡环境。 可以在部署之前使用这些环境执行测试。 无需停机即可切换到生产环境。 预先加载 Web 应用，确保最佳客户体验。
 
 可以遵循此 *教程* ，开始将 [应用服务](app-service-mobile-migrating-from-mobile-services.md)用于现有移动服务。
-
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/15/2017
+ms.date: 06/13/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 9932ac04699f49b7a3ea3dabe4d380fdc4d05ec1
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 0db4ba33c3a6720ba447e27f530ca97c992fbb72
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -70,6 +70,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 |:--- |:--- |:--- |:--- |
 | inputString |是 |字符串 |要以 base64 表示形式返回的值。 |
 
+### <a name="return-value"></a>返回值
+
+包含 base64 表示形式的字符串。
+
 ### <a name="examples"></a>示例
 
 以下示例演示如何使用 base64 函数。
@@ -111,9 +115,13 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-包含 base64 表示形式的字符串。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| base64Output | String | b25lLCB0d28sIHRocmVl |
+| toStringOutput | String | one, two, three |
+| toJsonOutput | 对象 | {"one": "a", "two": "b"} |
 
 <a id="base64tojson" />
 
@@ -127,6 +135,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | base64Value |是 |字符串 |要转换为 JSON 对象的 base64 表示形式。 |
+
+### <a name="return-value"></a>返回值
+
+一个 JSON 对象。
 
 ### <a name="examples"></a>示例
 
@@ -169,9 +181,13 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-一个 JSON 对象。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| base64Output | String | b25lLCB0d28sIHRocmVl |
+| toStringOutput | String | one, two, three |
+| toJsonOutput | 对象 | {"one": "a", "two": "b"} |
 
 <a id="base64tostring" />
 
@@ -185,6 +201,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | base64Value |是 |字符串 |要转换为字符串的 base64 表示形式。 |
+
+### <a name="return-value"></a>返回值
+
+转换后的 base64 值的字符串。
 
 ### <a name="examples"></a>示例
 
@@ -227,9 +247,13 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-转换后的 base64 值的字符串。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| base64Output | String | b25lLCB0d28sIHRocmVl |
+| toStringOutput | String | one, two, three |
+| toJsonOutput | 对象 | {"one": "a", "two": "b"} |
 
 <a id="bool" />
 
@@ -243,6 +267,9 @@ Resource Manager 提供以下用于处理字符串的函数：
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串或整数 |要转换为布尔值的值。 |
+
+### <a name="return-value"></a>返回值
+转换后的值的布尔值。
 
 ### <a name="examples"></a>示例
 
@@ -274,8 +301,14 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
-一个布尔值。
+上面具有默认值的示例的输出为：
+
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| trueString | Bool | True |
+| falseString | Bool | False |
+| trueInt | Bool | True |
+| falseInt | Bool | False |
 
 <a id="concat" />
 
@@ -290,6 +323,9 @@ Resource Manager 提供以下用于处理字符串的函数：
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串或数组 |串联的第一个值。 |
 | 其他参数 |否 |字符串 |按顺序排列的串联的其他值。 |
+
+### <a name="return-value"></a>返回值
+串联值的字符串或数组。
 
 ### <a name="examples"></a>示例
 
@@ -308,12 +344,18 @@ Resource Manager 提供以下用于处理字符串的函数：
     "resources": [],
     "outputs": {
         "concatOutput": {
-            "value": "[concat(parameters('prefix'), uniqueString(resourceGroup().id))]",
+            "value": "[concat(parameters('prefix'), '-', uniqueString(resourceGroup().id))]",
             "type" : "string"
         }
     }
 }
 ```
+
+上面具有默认值的示例的输出为：
+
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| concatOutput | String | prefix-5yj4yjf5mbg72 |
 
 以下示例演示如何组合两个数组。
 
@@ -350,8 +392,11 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
-串联值的字符串或数组。
+上面具有默认值的示例的输出为：
+
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| 返回 | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
 <a id="contains" />
 
@@ -366,6 +411,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 |:--- |:--- |:--- |:--- |
 | container |是 |数组、对象或字符串 |包含要查找的值的值。 |
 | itemToFind |是 |字符串或整数 |要查找的值。 |
+
+### <a name="return-value"></a>返回值
+
+如果找到该项，则为 **True**；否则为 **False**。
 
 ### <a name="examples"></a>示例
 
@@ -420,9 +469,16 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-如果找到该项，则为 **True**；否则为 **False**。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| stringTrue | Bool | True |
+| stringFalse | Bool | False |
+| objectTrue | Bool | True |
+| objectFalse | Bool | False |
+| arrayTrue | Bool | True |
+| arrayFalse | Bool | False |
 
 <a id="datauri" />
 
@@ -437,6 +493,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 |:--- |:--- |:--- |:--- |
 | stringToConvert |是 |字符串 |要转换为数据 URI 的值。 |
 
+### <a name="return-value"></a>返回值
+
+要格式化为数据 URI 的字符串。
+
 ### <a name="examples"></a>示例
 
 以下示例将值转换为数据 URI，然后将数据 URI 转换为字符串：
@@ -469,9 +529,12 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-要格式化为数据 URI 的字符串。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | String | Hello, World! |
 
 <a id="datauritostring" />
 
@@ -486,6 +549,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 |:--- |:--- |:--- |:--- |
 | dataUriToConvert |是 |字符串 |要转换的数据 URI 值。 |
 
+### <a name="return-value"></a>返回值
+
+包含转换后的值的字符串。
+
 ### <a name="examples"></a>示例
 
 以下示例将值转换为数据 URI，然后将数据 URI 转换为字符串：
@@ -518,9 +585,12 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-包含转换后的值的字符串。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | String | Hello, World! |
 
 <a id="empty" /> 
 
@@ -534,6 +604,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |是 |数组、对象或字符串 |要检查是否为空的值。 |
+
+### <a name="return-value"></a>返回值
+
+如果该值为空，返回 **True**；否则返回 **False**。
 
 ### <a name="examples"></a>示例
 
@@ -576,9 +650,13 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-如果该值为空，返回 **True**；否则返回 **False**。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| arrayEmpty | Bool | True |
+| objectEmpty | Bool | True |
+| stringEmpty | Bool | True |
 
 <a id="endswith" />
 
@@ -593,6 +671,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字符串 |包含要查找的项的值。 |
 | stringToFind |是 |字符串 |要查找的值。 |
+
+### <a name="return-value"></a>返回值
+
+如果字符串的最后一个或多个字符与该值匹配，则为 **True**；否则为 **False**。
 
 ### <a name="examples"></a>示例
 
@@ -632,9 +714,16 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-如果字符串的最后一个或多个字符与该值匹配，则为 **True**；否则为 **False**。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| startsTrue | Bool | True |
+| startsCapTrue | Bool | True |
+| startsFalse | Bool | False |
+| endsTrue | Bool | True |
+| endsCapTrue | Bool | True |
+| endsFalse | Bool | False |
 
 <a id="first" />
 
@@ -648,6 +737,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索第一个元素或字符的值。 |
+
+### <a name="return-value"></a>返回值
+
+第一个字符的字符串，或者数组中第一个元素的类型（字符串、整数、数组或对象）。
 
 ### <a name="examples"></a>示例
 
@@ -678,9 +771,12 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-第一个字符的字符串，或者数组中第一个元素的类型（字符串、整数、数组或对象）。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| arrayOutput | String | one |
+| stringOutput | String | O |
 
 <a id="indexof" />
 
@@ -695,6 +791,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字符串 |包含要查找的项的值。 |
 | stringToFind |是 |字符串 |要查找的值。 |
+
+### <a name="return-value"></a>返回值
+
+一个整数，表示要查找的项的位置。 该值从零开始。 如果未找到该项，则返回 -1。
 
 ### <a name="examples"></a>示例
 
@@ -730,10 +830,15 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-一个整数，表示要查找的项的位置。 该值从零开始。 如果未找到该项，则返回 -1。
-
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| firstT | int | 0 |
+| lastT | int | 3 |
+| firstString | int | 2 |
+| lastString | int | 0 |
+| notFound | int | -1 |
 
 <a id="last" />
 
@@ -747,6 +852,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索最后一个元素或字符的值。 |
+
+### <a name="return-value"></a>返回值
+
+最后一个字符的字符串，或者数组中最后一个元素的类型（字符串、整数、数组或对象）。
 
 ### <a name="examples"></a>示例
 
@@ -777,9 +886,12 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-最后一个字符的字符串，或者数组中最后一个元素的类型（字符串、整数、数组或对象）。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| arrayOutput | String | three |
+| stringOutput | String | e |
 
 <a id="lastindexof" />
 
@@ -794,6 +906,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字符串 |包含要查找的项的值。 |
 | stringToFind |是 |字符串 |要查找的值。 |
+
+### <a name="return-value"></a>返回值
+
+一个整数，表示要查找的项的最后一个位置。 该值从零开始。 如果未找到该项，则返回 -1。
 
 ### <a name="examples"></a>示例
 
@@ -829,10 +945,15 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-一个整数，表示要查找的项的最后一个位置。 该值从零开始。 如果未找到该项，则返回 -1。
-
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| firstT | int | 0 |
+| lastT | int | 3 |
+| firstString | int | 2 |
+| lastString | int | 0 |
+| notFound | int | -1 |
 
 <a id="length" />
 
@@ -846,6 +967,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |用于获取元素数的数组，或用于获取字符数的字符串。 |
+
+### <a name="return-value"></a>返回值
+
+一个整数。 
 
 ### <a name="examples"></a>示例
 
@@ -883,9 +1008,12 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-一个整数。 
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| arrayLength | int | 3 |
+| stringLength | int | 13 |
 
 <a id="padleft" />
 
@@ -904,6 +1032,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 如果原始字符串的长度超过要填充的字符数，则不会添加任何字符。
 
+### <a name="return-value"></a>返回值
+
+一个字符串，其中至少包含指定的字符数。
+
 ### <a name="examples"></a>示例
 
 以下示例演示如何通过添加零字符直到字符总数，来填充用户提供的参数值。 
@@ -916,25 +1048,23 @@ Resource Manager 提供以下用于处理字符串的函数：
         "testString": {
             "type": "string",
             "defaultValue": "123"
-        },
-        "totalCharacters": {
-            "type": "int",
-            "defaultValue": 10
         }
     },
     "resources": [],
     "outputs": {
         "stringOutput": {
             "type": "string",
-            "value": "[padLeft(parameters('testString'),parameters('totalCharacters'),'0')]"
+            "value": "[padLeft(parameters('testString'),10,'0')]"
         }
     }
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-一个字符串，其中至少包含指定的字符数。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| stringOutput | String | 0000000123 |
 
 <a id="replace" />
 
@@ -950,6 +1080,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 | originalString |是 |字符串 |包含某一个字符串的所有实例均替换为另一个字符串的值。 |
 | oldString |是 |字符串 |要从原始字符串中删除的字符串。 |
 | newString |是 |字符串 |要添加以替代已删除字符串的字符串。 |
+
+### <a name="return-value"></a>返回值
+
+包含被替换字符的字符串。
 
 ### <a name="examples"></a>示例
 
@@ -979,9 +1113,12 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-包含被替换字符的字符串。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| firstOutput | String | 1231231234 |
+| secodeOutput | String | 123-123-xxxx |
 
 <a id="skip" />
 
@@ -996,6 +1133,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |用于跳过的数组或字符串。 |
 | numberToSkip |是 |int |要跳过的元素或字符数。 如果此值小于或等于 0，则返回值中的所有元素或字符。 如果此值大于数组或字符串的长度，则返回空数组或字符串。 |
+
+### <a name="return-value"></a>返回值
+
+数组或字符串。
 
 ### <a name="examples"></a>示例
 
@@ -1041,9 +1182,12 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-数组或字符串。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| arrayOutput | Array | ["three"] |
+| stringOutput | String | two three |
 
 <a id="split" />
 
@@ -1058,6 +1202,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 |:--- |:--- |:--- |:--- |
 | inputString |是 |字符串 |要拆分的字符串。 |
 | delimiter |是 |字符串或字符串数组 |用于拆分字符串的分隔符。 |
+
+### <a name="return-value"></a>返回值
+
+字符串数组。
 
 ### <a name="examples"></a>示例
 
@@ -1094,9 +1242,12 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-字符串数组。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| firstOutput | Array | ["one", "two", "three"] |
+| secondOutput | Array | ["one", "two", "three"] |
 
 <a id="startswith" />
 
@@ -1111,6 +1262,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字符串 |包含要查找的项的值。 |
 | stringToFind |是 |字符串 |要查找的值。 |
+
+### <a name="return-value"></a>返回值
+
+如果字符串的最前面一个或多个字符与该值匹配，则为 **True**；否则为 **False**。
 
 ### <a name="examples"></a>示例
 
@@ -1150,10 +1305,16 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-如果字符串的最前面一个或多个字符与该值匹配，则为 **True**；否则为 **False**。
-
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| startsTrue | Bool | True |
+| startsCapTrue | Bool | True |
+| startsFalse | Bool | False |
+| endsTrue | Bool | True |
+| endsCapTrue | Bool | True |
+| endsFalse | Bool | False |
 
 <a id="string" />
 
@@ -1167,6 +1328,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |是 | 任意 |要转换为字符串的值。 可以转换任何类型的值，包括对象和数组。 |
+
+### <a name="return-value"></a>返回值
+
+转换后的值的字符串。
 
 ### <a name="examples"></a>示例
 
@@ -1215,9 +1380,13 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-一个字符串。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| objectOutput | String | {"valueA":10,"valueB":"Example Text"} |
+| arrayOutput | String | ["a","b","c"] |
+| intOutput | String | 5 |
 
 <a id="substring" />
 
@@ -1233,6 +1402,23 @@ Resource Manager 提供以下用于处理字符串的函数：
 | stringToParse |是 |字符串 |从中提取子字符串的原始字符串。 |
 | startIndex |否 |int |子字符串的从零开始的字符位置。 |
 | length |否 |int |子字符串的字符数。 必须引用该字符串内的一个位置。 |
+
+### <a name="return-value"></a>返回值
+
+子字符串。
+
+### <a name="remarks"></a>备注
+
+子字符串延伸超出字符串末尾时，函数失败。 以下示例失败，并出现错误“索引和长度参数必须引用字符串内的一个位置。 索引参数“0”，长度参数“11”，字符串参数长度“10”。”。
+
+```json
+"parameters": {
+    "inputString": { "type": "string", "value": "1234567890" }
+},
+"variables": { 
+    "prefix": "[substring(parameters('inputString'), 0, 11)]"
+}
+```
 
 ### <a name="examples"></a>示例
 
@@ -1258,16 +1444,12 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-以下示例失败，并出现错误“索引和长度参数必须引用字符串内的一个位置。 索引参数“0”，长度参数“11”，字符串参数长度“10”。”。
+上面具有默认值的示例的输出为：
 
-```json
-"parameters": {
-    "inputString": { "type": "string", "value": "1234567890" }
-},
-"variables": { 
-    "prefix": "[substring(parameters('inputString'), 0, 11)]"
-}
-```
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| substringOutput | String | two |
+
 
 <a id="take" />
 
@@ -1282,6 +1464,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |要从中提取元素的数组或字符串。 |
 | numberToTake |是 |int |要提取的元素或字符数。 如果此值小于或等于 0，则返回空数组或字符串。 如果此值大于给定数组或字符串的长度，则返回数组或字符串中的所有元素。 |
+
+### <a name="return-value"></a>返回值
+
+数组或字符串。
 
 ### <a name="examples"></a>示例
 
@@ -1327,9 +1513,12 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-数组或字符串。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| arrayOutput | Array | ["one", "two"] |
+| stringOutput | String | on |
 
 <a id="tolower" />
 
@@ -1344,6 +1533,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 |:--- |:--- |:--- |:--- |
 | stringToChange |是 |字符串 |要转换为小写的值。 |
 
+### <a name="return-value"></a>返回值
+
+转换成小写形式的字符串。
+
 ### <a name="examples"></a>示例
 
 以下示例将参数值转换为小写和大写。
@@ -1371,6 +1564,13 @@ Resource Manager 提供以下用于处理字符串的函数：
     }
 }
 ```
+
+上面具有默认值的示例的输出为：
+
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| toLowerOutput | String | one two three |
+| toUpperOutput | String | ONE TWO THREE |
 
 <a id="toupper" />
 
@@ -1385,6 +1585,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 |:--- |:--- |:--- |:--- |
 | stringToChange |是 |字符串 |要转换为大写的值。 |
 
+### <a name="return-value"></a>返回值
+
+转换成大写形式的字符串。
+
 ### <a name="examples"></a>示例
 
 以下示例将参数值转换为小写和大写。
@@ -1413,6 +1617,13 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
+上面具有默认值的示例的输出为：
+
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| toLowerOutput | String | one two three |
+| toUpperOutput | String | ONE TWO THREE |
+
 <a id="trim" />
 
 ## <a name="trim"></a>trim
@@ -1425,6 +1636,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | stringToTrim |是 |字符串 |要剪裁的值。 |
+
+### <a name="return-value"></a>返回值
+
+前后不含空白字符的字符串。
 
 ### <a name="examples"></a>示例
 
@@ -1450,6 +1665,12 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
+上面具有默认值的示例的输出为：
+
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| 返回 | String | one two three |
+
 <a id="uniquestring" />
 
 ## <a name="uniquestring"></a>uniqueString
@@ -1471,8 +1692,6 @@ Resource Manager 提供以下用于处理字符串的函数：
 返回的值不是随机字符串，而是哈希函数的结果。 返回的值长度为 13 个字符。 并非全局唯一。 可能需要根据命名约定使用前缀来组合值，以创建有意义的名称。 以下示例显示了返回值的格式。 实际值随提供的参数而变化。
 
     tcvhiyu5h2o5o
-
-### <a name="examples"></a>示例
 
 以下示例演示如何使用 uniqueString 创建通用级别唯一值。
 
@@ -1505,7 +1724,29 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 ### <a name="return-value"></a>返回值
 
-包含 13 个字符的字符串
+包含 13 个字符的字符串。
+
+### <a name="examples"></a>示例
+
+以下示例从唯一字符串返回结果：
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "uniqueRG": {
+            "value": "[uniqueString(resourceGroup().id)]",
+            "type" : "string"
+        },
+        "uniqueDeploy": {
+            "value": "[uniqueString(resourceGroup().id, deployment().name)]",
+            "type" : "string"
+        }
+    }
+}
+```
 
 <a id="uri" />
 
@@ -1522,6 +1763,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 | relativeUri |是 |字符串 |要添加到基本 uri 字符串的相对 uri 字符串。 |
 
 **baseUri** 参数的值可包含特定文件，但在构造 URI 时，只使用基路径。 例如，将 `http://contoso.com/resources/azuredeploy.json`作为 baseUri 参数传递会生成 `http://contoso.com/resources/` 的基 URI。
+
+### <a name="return-value"></a>返回值
+
+表示基值和相对值的绝对 URI 的字符串。
 
 ### <a name="examples"></a>示例
 
@@ -1560,9 +1805,13 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-表示基值和相对值的绝对 URI 的字符串。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
 <a id="uricomponent" />
 
@@ -1577,6 +1826,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 |:--- |:--- |:--- |:--- |
 | stringToEncode |是 |字符串 |要编码的值。 |
 
+### <a name="return-value"></a>返回值
+
+URI 编码值的字符串。
+
 ### <a name="examples"></a>示例
 
 以下示例演示如何使用 uri、uriComponent 和 uriComponentToString：
@@ -1608,9 +1861,14 @@ Resource Manager 提供以下用于处理字符串的函数：
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-URI 编码值的字符串。
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+
 
 <a id="uricomponenttostring" />
 
@@ -1625,6 +1883,10 @@ URI 编码值的字符串。
 |:--- |:--- |:--- |:--- |
 | uriEncodedString |是 |字符串 |要转换为字符串的 URI 编码值。 |
 
+### <a name="return-value"></a>返回值
+
+URI 编码值的解码字符串。
+
 ### <a name="examples"></a>示例
 
 以下示例演示如何使用 uri、uriComponent 和 uriComponentToString：
@@ -1656,9 +1918,14 @@ URI 编码值的字符串。
 }
 ```
 
-### <a name="return-value"></a>返回值
+上面具有默认值的示例的输出为：
 
-URI 编码值的解码字符串。
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure Resource Manager 模板中各部分的说明，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。

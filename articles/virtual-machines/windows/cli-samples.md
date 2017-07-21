@@ -17,14 +17,15 @@ ms.date: 02/27/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 35ddd5c90dfba7e2e368a5f69e33616998581ff7
+ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.openlocfilehash: f4b2e8a5583855df7472af3fbef01ac641caf6bf
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
+ms.lasthandoff: 06/06/2017
 
 
 ---
-# <a name="azure-cli-samples-for-windows-virtual-machines"></a>适用于 Windows 虚拟机的 Azure CLI 示例
+# 适用于 Windows 虚拟机的 Azure CLI 示例
+<a id="azure-cli-samples-for-windows-virtual-machines" class="xliff"></a>
 
 下表包含指向使用部署 Windows 虚拟机的 Azure CLI 生成的 bash 脚本的链接。
 
@@ -38,6 +39,8 @@ ms.lasthandoff: 03/31/2017
 | [创建 VM 并运行 DSC 配置](./../scripts/virtual-machines-windows-cli-sample-create-iis-using-dsc.md?toc=%2fcli%2fazure%2ftoc.json) | 创建一个虚拟机，并使用 Azure Desired State Configuration (DSC) 扩展来安装 IIS。 |
 |**网络虚拟机**||
 | [保护虚拟机之间的网络流量](./../scripts/virtual-machines-windows-cli-sample-create-vm-nsg.md?toc=%2fcli%2fazure%2ftoc.json) | 创建两个虚拟机、所有相关资源以及内部和外部网络安全组 (NSG)。 |
+|**保护虚拟机**||
+| [对 VM 和数据磁盘进行加密](./../scripts/virtual-machines-windows-cli-sample-encrypt-vm.md?toc=%2fcli%2fazure%2ftoc.json) | 创建 Azure Key Vault、加密密钥和服务主体，然后对 VM 进行加密。 |
 |**监视虚拟机**||
 | [使用 Operations Management Suite 监视 VM](./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md?toc=%2fcli%2fazure%2ftoc.json) | 创建一个虚拟机，安装 Operations Management Suite 代理，并在 OMS 工作区中注册该 VM。  |
 | | |

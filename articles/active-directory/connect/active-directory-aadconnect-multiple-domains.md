@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: fa1c3d9cb07d417f5dbde41d6269fb1d157c3104
 ms.openlocfilehash: a6a97cd187036222f5a47e55670da613117a2318
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>与 Azure AD 联合的多域支持
@@ -144,7 +145,7 @@ ms.openlocfilehash: a6a97cd187036222f5a47e55670da613117a2318
     c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
 
 [!NOTE]
-正则表达式的最后一个数字设置根域中父域的数目。 如果此处为 bmcontoso.com，则必须有两个父域。 如果保留三个父域（即：corp.bmcontoso.com），则该数字为&3;。 最终可以确定一个范围，匹配值将始终匹配域的最大值。 “{2,3}”将匹配两到三个域（即：bmfabrikam.com 和 corp.bmcontoso.com）。
+正则表达式的最后一个数字设置根域中父域的数目。 如果此处为 bmcontoso.com，则必须有两个父域。 如果保留三个父域（即：corp.bmcontoso.com），则该数字为 3。 最终可以确定一个范围，匹配值将始终匹配域的最大值。 “{2,3}”将匹配两到三个域（即：bmfabrikam.com 和 corp.bmcontoso.com）。
 
 请使用以下步骤添加自定义声明，以支持子域。
 
@@ -162,10 +163,5 @@ ms.openlocfilehash: a6a97cd187036222f5a47e55670da613117a2318
     ![替换声明](./media/active-directory-multiple-domains/sub2.png)
 
 5. 单击“确定”。  单击“应用”。  单击“确定”。  关闭“AD FS 管理”。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

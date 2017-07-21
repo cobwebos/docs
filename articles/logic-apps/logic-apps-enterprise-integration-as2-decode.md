@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/27/2016
 ms.author: LADocs; padmavc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b92cfff10dc0f10ebd4554d1614a23fb7dc46a37
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: a7920b2509fe368c6f7d55e17fe0bf0020c4562c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -41,7 +41,7 @@ ms.lasthandoff: 05/10/2017
 
 2. 解码 AS2 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，然后将操作添加到逻辑应用。
 
-3.    在搜索框中，输入“AS2”作为筛选器。 选择“AS2 - 解码 AS2 消息”。
+3.  在搜索框中，输入“AS2”作为筛选器。 选择“AS2 - 解码 AS2 消息”。
    
     ![搜索“AS2”](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage1.png)
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 05/10/2017
     | 连接名称 * |为连接输入任何名称。 |
     | 集成帐户 * |输入集成帐户的名称。 确保集成帐户和逻辑应用位于同一 Azure 位置。 |
 
-5.    完成后，连接详细信息应如此示例所示。 若要完成连接创建，请选择“创建”。
+5.  完成后，连接详细信息应如此示例所示。 若要完成连接创建，请选择“创建”。
 
     ![集成连接详细信息](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage3.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Subscribe to an offer and then provision a VM in Azure Stack (tenant) | Microsoft Docs
-description: As a tenant, learn how to subscribe to an offer and then provision a VM in Azure Stack.
+title: Subscribe to an offer | Microsoft Docs
+description: As a tenant, learn how to subscribe to an offer.
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -12,19 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 3/1/2017
+ms.date: 7/03/2017
 ms.author: erikje
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 02c7fac4607685db8a3a1507fc604274720b0913
-ms.lasthandoff: 04/06/2017
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: 3cd87ebe9827249d32f15b5de0ad8521d0282c47
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/10/2017
 
 
 ---
-# <a name="subscribe-to-an-offer"></a>Subscribe to an offer
+# Subscribe to an offer
+<a id="subscribe-to-an-offer" class="xliff"></a>
 Now that you've [created an offer](azure-stack-create-offer.md), test that your tenants can create a subscription.
 
-1. On the Azure Stack POC computer, log in to `https://portal.local.azurestack.external` as [a tenant](azure-stack-connect-azure-stack.md) and click **Get a Subscription**.
+1. [Sign in](azure-stack-connect-azure-stack.md) to the Azure Stack tenant portal (https://portal.local.azurestack.external) and click **Get a Subscription**.
 
    ![](media/azure-stack-subscribe-plan-provision-vm/image01.png)
 2. In the **Display Name** field, type a name for your subscription, click **Offer**, click one of the offers in the **Choose an offer** blade, and then click **Create**.
@@ -34,15 +36,17 @@ Now that you've [created an offer](azure-stack-create-offer.md), test that your 
 
 After you subscribe to an offer, refresh the portal to see which services are part of the new subscription.
 
-# <a name="subscribe-to-an-add-on-plan"></a>Subscribe to an add-on plan
+## Subscribe to an add-on plan
+<a id="subscribe-to-an-add-on-plan" class="xliff"></a>
 If the offer has an add-on plan, tenants can add them to their subscription at any time.  
 
-1. In the tenant portal, select More services > Subscriptions .
+1. In the tenant portal, select **More services** > **Subscriptions**.
 
-2. Click on the subscription > Add Plan button, and select the add-on plan.
+2. Click on the subscription > **Add Plan** button, and select the add-on plan.
 
 
 
-## <a name="next-steps"></a>Next steps
+## Next steps
+<a id="next-steps" class="xliff"></a>
 [Provision a virtual machine](azure-stack-provision-vm.md)
 

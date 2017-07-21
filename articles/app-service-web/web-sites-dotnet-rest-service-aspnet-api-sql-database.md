@@ -15,14 +15,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/29/2016
 ms.author: riande
-translationtype: Human Translation
-ms.sourcegitcommit: 3f6bb2604d6f20e299ae5583a0ad215f02b9b803
-ms.openlocfilehash: 016d44cb57d5ad76dc0b115be6fbac6835d84396
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 64c18f2cfabbb7af6ffd89b4c2a9095fca1cf799
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/02/2017
 
 
 ---
-# <a name="create-a-rest-service-using-aspnet-web-api-and-sql-database-in-azure-app-service"></a>在 Azure App Service 中使用 ASP.NET Web API 和 SQL 数据库创建 REST 服务
+# <a name="create-a-rest-service-using-aspnet-web-api-and-sql-database-in-azure-app-service"></a>在 Azure 应用服务中使用 ASP.NET Web API 和 SQL 数据库创建 REST 服务
 本教程将展示如何使用 Visual Studio 2013 或 Visual Studio 2013 社区版中的“发布 Web”向导将 ASP.NET Web 应用部署到 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)。 
 
 可以免费注册一个 Azure 帐户，而且，如果还没有 Visual Studio 2013，则此 SDK 会自动安装 Visual Studio 2013 for Web Express。 这样就能够完全免费地开始针对 Azure 进行开发了。
@@ -663,13 +664,11 @@ XSRF 攻击不同于网络钓鱼攻击。 网络钓鱼攻击需要与受害者�
 该应用程序现在是运行在云中，使用 SQL 数据库存储其数据。 在 Azure 中测试应用程序完成后，将其删除。 该应用程序是公开的并且没有限制访问的机制。
 
 > [!NOTE]
-> 如果想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](https://azure.microsoft.com/try/app-service/)，可以通过该页面在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
+> 如果想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以通过该页面在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
 ## <a name="next-steps"></a>后续步骤
-实际的应用程序需要身份验证和授权，你可以使用成员资格数据库实现此目的。 教程[使用 OAuth、成员资格以及 SQL 数据库部署安全的 ASP.NET MVC 应用程序](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)基于本教程，其中介绍了如何部署包含成员资格数据库的 Web 应用程序。
-
 另一种在 Azure 应用程序中存储数据的方法是使用 Azure 存储，该方法以 Blob 和表的形式提供非关系数据存储。 以下链接提供了更多有关 Web API、ASP.NET MVC 以及 Window Azure 的信息。
 
 * [使用 MVC 的 Entity Framework 入门][EFCodeFirstMVCTutorial]
@@ -682,7 +681,7 @@ XSRF 攻击不同于网络钓鱼攻击。 网络钓鱼攻击需要与受害者�
 请提供有关你喜欢的内容或者你希望看到改善的内容的反馈，不仅关于教程本身，也关于它所演示的产品。 你的反馈将帮助我们确定优先改进哪些方面。 我们特别希望确定大家对于对配置和部署成员资格数据库的流程进行更多自动化的兴趣有多大。 
 
 ## <a name="whats-changed"></a>发生的更改
-* 有关从网站更改为 App Service 的指南，请参阅 [Azure App Service 及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 有关从网站更改为 应用服务的指南，请参阅 [Azure 应用服务及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- bookmarks -->
 [Add an OAuth Provider]: #addOauth

@@ -1,6 +1,6 @@
 ---
-title: "将数据移入/移出 Azure SQL 数据库 | Microsoft Docs"
-description: "了解如何使用 Azure Data Factory 将数据移入和移出 Azure SQL 数据库。"
+title: "向/从 Azure SQL 数据库复制数据 | Microsoft Docs"
+description: "了解如何使用 Azure 数据工厂向/从 Azure SQL 数据库复制数据。"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -12,20 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 06/04/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 4bc3ab14d7b2960a0732743edc31e12eb320b5ad
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: a64d13fa7dc5f50c259b98774be80b603dce400a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="move-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>使用 Azure Data Factory 将数据移入和移出 Azure SQL 数据库
+# 使用 Azure 数据工厂向 Azure SQL 数据库以及从 Azure SQL 数据库复制数据
+<a id="copy-data-to-and-from-azure-sql-database-using-azure-data-factory" class="xliff"></a>
 本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出 Azure SQL 数据库。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。  
 
-## <a name="supported-scenarios"></a>支持的方案
+## 支持的方案
+<a id="supported-scenarios" class="xliff"></a>
 可以将数据**从 Azure SQL 数据库**复制到以下数据存储：
 
 [!INCLUDE [data-factory-supported-sinks](../../includes/data-factory-supported-sinks.md)]
@@ -34,10 +36,12 @@ ms.lasthandoff: 05/05/2017
 
 [!INCLUDE [data-factory-supported-sources](../../includes/data-factory-supported-sources.md)]
 
-## <a name="supported-authentication-type"></a>支持的身份验证类型
+## 支持的身份验证类型
+<a id="supported-authentication-type" class="xliff"></a>
 Azure SQL 数据库连接器支持基本身份验证。
 
-## <a name="getting-started"></a>入门
+## 入门
+<a id="getting-started" class="xliff"></a>
 可以使用不同的工具/API 创建包含复制活动的管道，以将数据移入/移出 Azure SQL 数据库。
 
 创建管道的最简单方法是使用**复制向导**。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
@@ -55,7 +59,8 @@ Azure SQL 数据库连接器支持基本身份验证。
 
 对于特定于 Azure SQL 数据库的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息： 
 
-## <a name="linked-service-properties"></a>链接服务属性
+## 链接服务属性
+<a id="linked-service-properties" class="xliff"></a>
 Azure SQL 链接服务可将 Azure SQL 数据库链接到数据工厂。 下表描述了 Azure SQL 链接服务的专属 JSON 元素。
 
 | 属性 | 说明 | 必选 |
@@ -66,7 +71,8 @@ Azure SQL 链接服务可将 Azure SQL 数据库链接到数据工厂。 下表�
 > [!IMPORTANT]
 > 配置 [Azure SQL 数据库防火墙](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)数据库服务器以[允许 Azure 服务访问该服务器](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)。 此外，如果将数据从 Azure 外部（包括配有数据工厂网关的本地数据源）复制到 Azure SQL 数据库，请针对将数据发送到 Azure SQL 数据库的计算机配置适当 IP 地址范围。
 
-## <a name="dataset-properties"></a>数据集属性
+## 数据集属性
+<a id="dataset-properties" class="xliff"></a>
 若要指定数据集来表示 Azure SQL 数据库中的输入或输出数据，可以将数据集的类型属性设置为：**AzureSqlTable**。 将数据集的 **linkedServiceName** 属性设置为 Azure SQL 链接服务的名称。  
 
 有关可用于定义数据集的节和属性的完整列表，请参阅 [Creating datasets](data-factory-create-datasets.md)（创建数据集）一文。 结构、可用性和数据集 JSON 的策略等部分与所有数据集类型（Azure SQL、Azure blob、Azure 表等）类似。
@@ -77,7 +83,8 @@ Azure SQL 链接服务可将 Azure SQL 数据库链接到数据工厂。 下表�
 | --- | --- | --- |
 | tableName |链接服务引用的 Azure SQL 数据库实例中的表名称或视图名称。 |是 |
 
-## <a name="copy-activity-properties"></a>复制活动属性
+## 复制活动属性
+<a id="copy-activity-properties" class="xliff"></a>
 有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
 
 > [!NOTE]
@@ -87,7 +94,8 @@ Azure SQL 链接服务可将 Azure SQL 数据库链接到数据工厂。 下表�
 
 若要从 Azure SQL 数据库移动数据，请在复制活动中将源类型设置为 **SqlSource**。 同样，若要将数据移动到 Azure SQL 数据库，请在复制活动中将接收器类型设置为 **SqlSink**。 本部分提供 SqlSource 和 SqlSink 支持的属性列表。
 
-### <a name="sqlsource"></a>SqlSource
+### SqlSource
+<a id="sqlsource" class="xliff"></a>
 在复制活动中，如果源类型为 **SqlSource**，则可在 **typeProperties** 部分中使用以下属性：
 
 | 属性 | 说明 | 允许的值 | 必选 |
@@ -105,7 +113,8 @@ Azure SQL 链接服务可将 Azure SQL 数据库链接到数据工厂。 下表�
 >
 >
 
-### <a name="sqlsource-example"></a>SqlSource 示例
+### SqlSource 示例
+<a id="sqlsource-example" class="xliff"></a>
 
 ```JSON
 "source": {
@@ -137,20 +146,22 @@ END
 GO
 ```
 
-### <a name="sqlsink"></a>SqlSink
+### SqlSink
+<a id="sqlsink" class="xliff"></a>
 **SqlSink** 支持以下属性：
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。 |timespan<br/><br/> 示例：“00:30:00”（30 分钟）。 |否 |
 | writeBatchSize |缓冲区大小达到 writeBatchSize 时将数据插入 SQL 表。 |整数（行数） |否（默认值：10000） |
-| sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 有关详细信息，请参阅[重复性部分](#repeatability-during-copy)。 |查询语句。 |否 |
-| sliceIdentifierColumnName |指定复制活动要填充自动生成切片标识符的列名，以便在重新运行时清除特定切片的数据。 有关详细信息，请参阅[重复性部分](#repeatability-during-copy)。 |数据类型为 binary(32) 的列的列名。 |否 |
+| sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 有关详细信息，请参阅[可重复复制](#repeatable-copy)。 |查询语句。 |否 |
+| sliceIdentifierColumnName |指定复制活动要填充自动生成切片标识符的列名，以便在重新运行时清除特定切片的数据。 有关详细信息，请参阅[可重复复制](#repeatable-copy)。 |数据类型为 binary(32) 的列的列名。 |否 |
 | sqlWriterStoredProcedureName |在目标表中更新/插入数据的存储过程的名称。 |存储过程的名称。 |否 |
 | storedProcedureParameters |存储过程的参数。 |名称/值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |否 |
 | sqlWriterTableType |指定要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |表类型名称。 |否 |
 
-#### <a name="sqlsink-example"></a>SqlSink 示例
+#### SqlSink 示例
+<a id="sqlsink-example" class="xliff"></a>
 
 ```JSON
 "sink": {
@@ -167,10 +178,12 @@ GO
 }
 ```
 
-## <a name="json-examples-for-copying-data-to-and-from-sql-database"></a>向/从 SQL 数据库复制数据的 JSON 示例
+## 向/从 SQL 数据库复制数据的 JSON 示例
+<a id="json-examples-for-copying-data-to-and-from-sql-database" class="xliff"></a>
 以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们演示如何在 Azure SQL 数据库和 Azure Blob 存储中复制和粘贴数据。 但是，可使用 Azure 数据工厂中的复制活动将数据**直接**从任何源复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
 
-### <a name="example-copy-data-from-azure-sql-database-to-azure-blob"></a>示例：将数据从 Azure SQL 数据库复制到 Azure Blob
+### 示例：将数据从 Azure SQL 数据库复制到 Azure Blob
+<a id="example-copy-data-from-azure-sql-database-to-azure-blob" class="xliff"></a>
 此示例定义以下数据工厂实体：
 
 1. [AzureSqlDatabase](#linked-service-properties) 类型的链接服务。
@@ -362,7 +375,8 @@ GO
 
 有关 SqlSource 和 BlobSink 支持的属性列表，请参阅 [Sql Source](#sqlsource) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 部分。
 
-### <a name="example-copy-data-from-azure-blob-to-azure-sql-database"></a>示例：将数据从 Azure Blob 复制到 Azure SQL 数据库
+### 示例：将数据从 Azure Blob 复制到 Azure SQL 数据库
+<a id="example-copy-data-from-azure-blob-to-azure-sql-database" class="xliff"></a>
 此示例定义以下数据工厂实体：  
 
 1. [AzureSqlDatabase](#linked-service-properties) 类型的链接服务。
@@ -548,7 +562,8 @@ GO
 ```
 有关 SqlSink 和 BlobSource 支持的属性列表，请参阅 [Sql Sink](#sqlsink) 和 [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) 部分。
 
-## <a name="identity-columns-in-the-target-database"></a>目标数据库中的标识列
+## 目标数据库中的标识列
+<a id="identity-columns-in-the-target-database" class="xliff"></a>
 本部分举例说明了如何将数据从不含标识列的源表复制到含标识列的目标表。
 
 **源表：**
@@ -619,24 +634,18 @@ create table dbo.TargetTbl
 
 请注意，源表和目标表具有不同架构（目标表具有一个额外标识列）。 在本方案中，需在不包含标识列的目标数据集定义中指定 **structure** 属性。
 
-## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
-若要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
-
-## <a name="repeatable-copy"></a>可重复复制
-将数据复制到 SQL Server 数据库时，默认情况下复制活动将数据追加到接收器表后面。 若要改为执行 UPSERT，请参阅[可重复写入 SqlSink](data-factory-repeatable-copy.md#repeatable-write-to-sqlsink) 一文。 
-
-从关系数据源复制数据时，请注意可重复性，以免发生意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试策略，以便在出现故障时重新运行切片。 无论以哪种方式重新运行切片，都需要确保读取相同的数据，而与运行切片的次数无关。 请参阅[从关系源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
-
-## <a name="invoke-stored-procedure-from-sql-sink"></a>调用 SQL 接收器的存储过程
+## 调用 SQL 接收器的存储过程
+<a id="invoke-stored-procedure-from-sql-sink" class="xliff"></a>
 有关在管道的复制活动中调用 SQL 接收器的存储过程的示例，请参阅[在复制活动中调用 SQL 接收器的存储过程](data-factory-invoke-stored-procedure-from-copy-activity.md)一文。 
 
-## <a name="sql-database-to-net-type-mapping"></a>SQL 数据库到 .NET 类型的映射
+## Azure SQL 数据库的类型映射
+<a id="type-mapping-for-azure-sql-database" class="xliff"></a>
 如[数据移动活动](data-factory-data-movement-activities.md)一文中所述，复制活动通过以下 2 步方法执行从源类型到接收器类型的自动类型转换：
 
 1. 从本机源类型转换为 .NET 类型
 2. 从 .NET 类型转换为本机接收器类型
 
-将数据移入和移出 Azure SQL 时，会使用以下从 SQL 类型到 .NET 类型的映射，反之亦然。 此映射与用于 ADO.NET 的 SQL Server 数据类型映射相同。
+将数据移入和移出 Azure SQL 数据库时，会使用以下从 SQL 类型到 .NET 类型的映射以及从 .NET 类型到 SQL 类型的映射。 此映射与用于 ADO.NET 的 SQL Server 数据类型映射相同。
 
 | SQL Server 数据库引擎类型 | .NET Framework 类型 |
 | --- | --- |
@@ -673,6 +682,17 @@ create table dbo.TargetTbl
 | varchar |String, Char[] |
 | xml |Xml |
 
-## <a name="performance-and-tuning"></a>性能和优化
+## 将源映射到接收器列
+<a id="map-source-to-sink-columns" class="xliff"></a>
+若要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
+
+## 可重复复制
+<a id="repeatable-copy" class="xliff"></a>
+将数据复制到 SQL Server 数据库时，默认情况下复制活动将数据追加到接收器表后面。 若要改为执行 UPSERT，请参阅[可重复写入 SqlSink](data-factory-repeatable-copy.md#repeatable-write-to-sqlsink) 一文。 
+
+从关系数据源复制数据时，请注意可重复性，以免发生意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试策略，以便在出现故障时重新运行切片。 无论以哪种方式重新运行切片，都需要确保读取相同的数据，而与运行切片的次数无关。 请参阅[从关系源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
+
+## 性能和优化
+<a id="performance-and-tuning" class="xliff"></a>
 请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
 

@@ -3,8 +3,8 @@ title: "适用于 Xamarin.Android 应用的 Azure 移动应用入门"
 description: "按照本教程进行操作，开始使用 Azure 移动应用进行 Xamarin Android 开发"
 services: app-service\mobile
 documentationcenter: xamarin
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
-ms.author: adrianha
-translationtype: Human Translation
+ms.author: glenga
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 4d34bb29df95ae83952d8f421f3f2a9118ad5e1d
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/20/2017
-
 
 ---
 # <a name="create-a-xamarinandroid-app"></a>创建 Xamarin.Android 应用
@@ -41,8 +41,8 @@ ms.lasthandoff: 01/20/2017
 
 > [!NOTE]
 > 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service](https://azure.microsoft.com/try/app-service/mobile/)（试用应用服务）。  可以立即在应用服务中创建一个短期的入门级移动应用。 你不需要使用信用卡，也不需要做出承诺。
-> 
-> 
+>
+>
 
 ## <a name="create-an-azure-mobile-app-backend"></a>创建 Azure 移动应用后端
 按照这些步骤创建移动应用后端。
@@ -56,19 +56,19 @@ ms.lasthandoff: 01/20/2017
 
 ## <a name="download-and-run-the-xamarinandroid-app"></a>下载并运行 Xamarin.Android 应用
 1. 在“下载并运行 Xamarin.Android 项目”下，单击“下载”按钮。
-   
+
       将压缩的项目文件保存到本地计算机，并记下保存位置。
 2. 按 **F5** 键生成项目并启动该应用。
 3. 在应用中键入有意义的文本（例如“完成教程”），然后单击“添加”图标。
-   
+
     ![][10]
-   
+
     来自请求的数据被插入到 TodoItem 表。 移动应用后端返回存储在表中的项，数据显示在列表中。
-   
+
    > [!NOTE]
    > 可以查看访问移动应用后端以查询和插入数据的代码，这些代码在 ToDoActivity.cs C# 文件中。
-   > 
-   > 
+   >
+   >
 
 ## <a name="next-steps"></a>后续步骤
 * [向应用添加脱机同步](app-service-mobile-xamarin-android-get-started-offline-data.md)

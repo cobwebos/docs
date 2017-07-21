@@ -3,7 +3,7 @@ title: "在 Visual Studio 中管理应用程序 | Microsoft 文档"
 description: "使用 Visual Studio 来创建、开发、打包、部署和调试 Service Fabric 应用程序和服务。"
 services: service-fabric
 documentationcenter: .net
-author: seanmck
+author: mikkelhegn
 manager: timlt
 editor: 
 ms.assetid: c317cb7e-7eae-466e-ba41-6aa2518be5cf
@@ -12,11 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2017
-ms.author: seanmck;mikhegn
-translationtype: Human Translation
-ms.sourcegitcommit: 60d440c75d6352d5e65e0158e439df9db2315ecd
-ms.openlocfilehash: 70c393f1185844bb26ff1f89cb69cb06b51fc155
+ms.date: 06/07/2017
+ms.author: mikkelhegn
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 3f6a47a15b74a7ceb6504b2834be62e76ab70bcc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -27,57 +29,51 @@ ms.openlocfilehash: 70c393f1185844bb26ff1f89cb69cb06b51fc155
 默认情况下，部署一个应用程序会将以下步骤合并为一个简单的操作：
 
 1. 创建应用程序包
-2. 将应用程序包上载到映像存储
+2. 将应用程序包上传到映像存储
 3. 注册应用程序类型
 4. 删除任何正在运行的应用程序实例
-5. 创建新的应用程序实例
+5. 删除应用程序实例
 
-在 Visual Studio 中，也可以通过按 **F5** 部署应用程序，然后将调试器附加到所有应用程序实例。 你可以按 **Ctrl+F5** 部署应用程序而不进行调试，也可以使用发布配置文件将应用程序发布到本地或远程群集。 有关详细信息，请参阅[使用 Visual Studio 将应用程序发布到远程群集](service-fabric-publish-app-remote-cluster.md)。
+在 Visual Studio 中，按 F5 部署应用程序，然后将调试程序附加到所有应用程序实例。 你可以按 **Ctrl+F5** 部署应用程序而不进行调试，也可以使用发布配置文件将应用程序发布到本地或远程群集。 有关详细信息，请参阅[使用 Visual Studio 将应用程序发布到远程群集](service-fabric-publish-app-remote-cluster.md)。
 
 ### <a name="application-debug-mode"></a>应用程序调试模式
-默认情况下，停止调试或（如果你在部署应用时未附加调试器）重新部署应用程序时，Visual Studio 会删除应用程序类型的现有实例。 在这种情况下，该应用程序的所有数据将被删除。 在本地调试时，可能需要保留在测试新版本的应用程序时已经创建的数据、想要让应用程序继续运行，或想要后续的调试会话升级应用程序。 Visual Studio Service Fabric 工具提供**应用程序调试模式**属性，可控制在调试会话结束之后，**F5** 操作是卸载应用程序、继续运行应用程序，还是在后续调试会话中升级（而不是删除或重新部署）应用程序。
+Visual Studio 提供一个名为“应用程序调试模式”的属性，它控制 Visual Studio 在调试时如何处理应用程序部署。
 
 #### <a name="to-set-the-application-debug-mode-property"></a>设置“应用程序调试模式”属性
-1. 在应用程序项目的快捷菜单上，选择“**属性**”（或按 **F4** 键）。
+1. 在 Service Fabric 应用程序项目 (*.sfproj) 的快捷菜单上，选择“属性”（或按 F4 键）。
 2. 在“**属性**”窗口中，设置“**应用程序调试模式**”属性。
 
-    ![设置“应用程序调试模式”属性][debugmodeproperty]
+![设置“应用程序调试模式”属性][debugmodeproperty]
 
-下面介绍了可用的“**应用程序调试模式**”选项。
+#### <a name="application-debug-modes"></a>应用程序调试模式
 
-1. **自动升级**：在调试会话结束后，应用程序继续运行。 再按一次 **F5**，便会将部署视为一次升级，使用未受监视的自动模式将应用程序快速升级到较高版本（附加了日期字符串）。 此升级过程会保留你在上一个调试会话中输入的任何数据。
-2. **保留应用程序**：在调试会话结束后，应用程序在群集中继续运行。 再按一次 **F5**，便会删除应用程序，然后将新生成的应用程序部署到群集。
-3. **删除应用程序**：在调试会话结束后，删除应用程序。
+1. 刷新应用程序此模式能快速更改和调试代码并支持调试时编辑静态 Web 文件。 此模式只能在本地开发群集处于 [1 节点模式](/service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode)下时有效。
+2. **删除应用程序**：在调试会话结束后，删除应用程序。
+3. 自动升级调试会话结束时，应用程序继续运行。 下一个调试会话将部署视为升级。 此升级过程会保留你在上一个调试会话中输入的任何数据。
+4. 保留应用程序调试会话结束时，应用程序在群集中继续运行。 在下一个调试会话开始时将删除应用程序。
 
-对于**自动升级**，数据是通过应用 Service Fabric 的应用程序升级功能予以保留，但会出于性能（而非安全性）优化的目的进行优化。 若要详细了解如何升级应用程序，以及如何在真实环境中执行升级，请参阅 [Service Fabric 应用程序升级](service-fabric-application-upgrade.md)。
-
-![附加了日期的新应用程序版本的示例][preservedata]
-
-> [!NOTE]
-> 1.1 版之前的适用于 Visual Studio 的 Service Fabric 工具版本不具有此属性。 对于 1.1 版及更低版本，请使用“**启动时保留数据**”属性实现相同的效果。 “保留应用程序”选项是在用于 Visual Studio 的 Service Fabric 工具 1.2 版本中引入的。
->
->
+对于自动升级，数据是通过应用 Service Fabric 的应用程序升级功能予以保留。 若要详细了解如何升级应用程序，以及如何在真实环境中执行升级，请参阅 [Service Fabric 应用程序升级](service-fabric-application-upgrade.md)。
 
 ## <a name="add-a-service-to-your-service-fabric-application"></a>向 Service Fabric 应用程序添加服务
 可以向你的应用程序中添加新的服务来扩展其功能。  为了确保应用程序包中包含服务，请通过“**新建 Fabric 服务...**”菜单项添加服务。
 
-![将新的 Fabric 服务添加到你的应用程序中][newservice]
+![添加新的 Service Fabric 服务][newservice]
 
 选择要添加到你的应用程序的 Service Fabric 项目类型，并指定服务的名称。  请参阅[为服务选择框架](service-fabric-choose-framework.md)，这篇文章有助于你确定要使用的服务类型。
 
-![选择要添加到你的应用程序的 Fabric 服务项目类型][addserviceproject]
+![选择要添加到应用程序的 Service Fabric 服务项目类型][addserviceproject]
 
-新的服务会添加到你的解决方案和现有应用程序包中。 服务引用和默认的服务实例会添加到应用程序清单中。 将在下次部署应用程序时创建并启动服务。
+新的服务会添加到解决方案和现有的应用程序包中。 服务引用和默认服务实例将添加到应用程序清单中，导致服务创建并在下次部署应用程序时启动。
 
 ![新的服务会添加到应用程序清单中][newserviceapplicationmanifest]
 
 ## <a name="package-your-service-fabric-application"></a>打包 Service Fabric 应用程序
-要将应用程序及其服务部署到群集中，你需要创建应用程序包。  该包会组织应用程序清单、服务清单和特定布局的其他必要文件。  Visual Studio 设置和管理“pkg”目录中应用程序项目的文件夹中的包。  单击“**应用程序**”上下文菜单中的“**包**”可创建或更新应用程序包。  如果使用自定义 Powershell 脚本部署应用程序，你可能要执行此操作。
+要将应用程序及其服务部署到群集中，你需要创建应用程序包。  该包整理应用程序清单、服务清单和特定布局的其他必要文件。  Visual Studio 设置和管理“pkg”目录中应用程序项目的文件夹中的包。  单击“**应用程序**”上下文菜单中的“**包**”可创建或更新应用程序包。
 
 ## <a name="remove-applications-and-application-types-using-cloud-explorer"></a>使用云资源管理器删除应用程序和应用程序类型
 可以在 Visual Studio 中使用 Cloud Explorer（可通过“**视图**”菜单启动）执行基本的群集管理操作。 例如，可以删除本地或远程群集上的应用程序和取消设置其上的应用程序类型。
 
-![删除应用程序](./media/service-fabric-manage-application-in-visual-studio/removeapplication.png)
+![删除应用程序][removeapplication]
 
 > [!TIP]
 > 有关更丰富的群集管理功能，请参阅[使用 Service Fabric Explorer 可视化群集](service-fabric-visualizing-your-cluster.md)。
@@ -97,11 +93,5 @@ ms.openlocfilehash: 70c393f1185844bb26ff1f89cb69cb06b51fc155
 [manageservicefabric]: ./media/service-fabric-manage-application-in-visual-studio/manageservicefabric.png
 [newservice]:./media/service-fabric-manage-application-in-visual-studio/newservice.png
 [newserviceapplicationmanifest]:./media/service-fabric-manage-application-in-visual-studio/newserviceapplicationmanifest.png
-[preservedata]:./media/service-fabric-manage-application-in-visual-studio/preservedata.png
 [debugmodeproperty]:./media/service-fabric-manage-application-in-visual-studio/debugmodeproperty.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
-
+[removeapplication]:./media/service-fabric-manage-application-in-visual-studio/removeapplication.png

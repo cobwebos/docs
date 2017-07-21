@@ -8,17 +8,17 @@ manager: garavd
 editor: 
 ms.assetid: 
 ms.service: site-recovery
-ms.workload: backup-recovery
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 2/21/2017
+ms.date: 06/29/2017
 ms.author: nisoneji
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 5c716069bdff2a23bf81b2d2d0793a8616cf9c83
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: a6fdab66a6a41e352d07e3b6f3c58eb331c0d93f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -68,7 +68,7 @@ Site Recovery Deployment Planner 公共预览版是一个命令行工具，目�
 
 | 服务器要求 | 说明|
 |---|---|
-|分析和吞吐量测量| <ul><li>操作系统：Microsoft Windows Server 2012 R2<br>（理想情况下，至少符合[配置服务器的建议大小](https://aka.ms/asr-v2a-on-prem-components)）</li><li>计算机配置：8 个 vCPU，16 GB RAM，300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://developercenter.vmware.com/tool/vsphere_powercli/6.0)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>可在此服务器中通过 Internet 访问 Azure</li><li>Azure 存储帐户</li><li>服务器上的管理员访问权限</li><li>至少 100 GB 的可用磁盘空间（假定有 1000 个 VM，每个平均包含 3 个磁盘，分析时间为 30 天）</li><li>VMware vCenter 统计信息级别设置应设置为 2 或更高级别</li></ul>|
+|分析和吞吐量测量| <ul><li>操作系统：Microsoft Windows Server 2012 R2<br>（理想情况下，至少符合[配置服务器的建议大小](https://aka.ms/asr-v2a-on-prem-components)）</li><li>计算机配置：8 个 vCPU，16 GB RAM，300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>可在此服务器中通过 Internet 访问 Azure</li><li>Azure 存储帐户</li><li>服务器上的管理员访问权限</li><li>至少 100 GB 的可用磁盘空间（假定有 1000 个 VM，每个平均包含 3 个磁盘，分析时间为 30 天）</li><li>VMware vCenter 统计信息级别设置应设置为 2 或更高级别</li></ul>|
 | 报告生成 | 装有 Microsoft Excel 2013 或更高版本的 Windows 电脑或 Windows Server |
 | 用户权限 | 用于在分析期间访问 VMware vCenter 服务器/VMware vSphere ESXi 主机的用户帐户的只读权限 |
 
@@ -140,11 +140,11 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 | -Operation | StartProfiling |
 | -Server | 要分析其 VM 的 vCenter 服务器/vSphere ESXi 主机的完全限定域名或 IP 地址。|
 | -User | 用于连接到 vCenter 服务器/vSphere ESXi 主机的用户名。 该用户至少需要拥有只读访问权限。|
-| -VMListFile |    一个文件，其中包含要分析的 VM 的列表。 文件路径可以是绝对或相对路径。 此文件应该每行包含一个 VM 名称/IP 地址。 此文件中指定的虚拟机名称应与 vCenter 服务器/vSphere ESXi 主机上的 VM 名称相同。<br>例如，VMList.txt 文件包含以下 VM：<ul><li>virtual_machine_A</li><li>10.150.29.110</li><li>virtual_machine_B</li><ul> |
+| -VMListFile | 一个文件，其中包含要分析的 VM 的列表。 文件路径可以是绝对或相对路径。 此文件应该每行包含一个 VM 名称/IP 地址。 此文件中指定的虚拟机名称应与 vCenter 服务器/vSphere ESXi 主机上的 VM 名称相同。<br>例如，VMList.txt 文件包含以下 VM：<ul><li>virtual_machine_A</li><li>10.150.29.110</li><li>virtual_machine_B</li><ul> |
 | -NoOfDaysToProfile | 运行分析的天数。 建议运行分析 15 天以上，确保在指定时间段内观察环境中的工作负荷模式，并根据该模式提供准确的建议。 |
 | -Directory | （可选）通用命名约定 (UNC) 或本地目录路径，用于存储在分析期间生成的分析数据。 如果未指定目录名称，将使用当前路径下名为“ProfiledData”的目录作为默认目录。 |
 | -Password | （可选）用于连接到 vCenter 服务器/vSphere ESXi 主机的密码。 如果现在不指定密码，则在执行命令时，系统会提示你指定密码。|
-| -StorageAccountName | （可选）存储帐户名称，用于确定在将数据从本地复制到 Azure 时可实现的吞吐量。 该工具会将测试数据上载到此存储帐户来计算吞吐量。|
+| -StorageAccountName | （可选）存储帐户名称，用于确定在将数据从本地复制到 Azure 时可实现的吞吐量。 该工具会将测试数据上传到此存储帐户来计算吞吐量。|
 | -StorageAccountKey | （可选）用于访问存储帐户的存储帐户密钥。 转到 Azure 门户 >“存储帐户”> <*存储帐户名称*> >“设置”>“访问密钥”> 密钥 1（或经典存储帐户的主访问密钥）。 |
 | -Environment | （可选）这是你的目标 Azure 存储帐户环境。 此项可能采用下述三个值之一：AzureCloud、AzureUSGovernment、AzureChinaCloud。 默认值为 AzureCloud。 当目标 Azure 区域为 Azure 美国政府版或 Azure 中国云时，请使用此参数。 |
 
@@ -205,10 +205,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_Pro
 | -StartDate | （可选）采用 MM-DD-YYYY:HH:MM 格式（24 小时制）的开始日期和时间。 “StartDate”必须与“EndDate”一起指定。 如果指定 StartDate，将会根据从 StartDate 到 EndDate 收集的分析数据生成报告。 |
 | -EndDate | （可选）采用 MM-DD-YYYY:HH:MM 格式（24 小时制）的结束日期和时间。 “EndDate”必须与“StartDate”一起指定。 如果指定 EndDate，将会根据从 StartDate 到 EndDate 收集的分析数据生成报告。 |
 | -GrowthFactor | （可选）增长系数，以百分比表示。 默认值为 30%。 |
-| -UseManagedDisks | （可选）UseManagedDisks - 是/否。 默认值为“是”。 可以放置到单个存储帐户的虚拟机数的计算取决于是否为故障转移/测试性故障转移选择了托管磁盘。 |
-
-对于单个存储帐户来说，放置数在计算时要考虑到：对虚拟机进行的故障转移/测试性故障转移是在托管磁盘而不是非托管磁盘上完成的。 |
-
+| -UseManagedDisks | （可选）UseManagedDisks - 是/否。 默认值为“是”。 计算可放置到单个存储帐户中的虚拟机数量时要考虑到：对虚拟机进行的故障转移/测试性故障转移是在托管磁盘而不是非托管磁盘上完成的。 |
 
 #### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>示例 1：当分析数据位于本地驱动器上时，使用默认值生成报告
 ```
@@ -290,12 +287,12 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com 
 |-|-|
 | -Operation | GetThroughput |
 | -Directory | （可选）UNC 或本地目录路径，其中存储了分析数据（在分析期间生成的文件）。 需要使用此数据来生成报告。 如果未指定目录名称，请使用“ProfiledData”目录。 |
-| -StorageAccountName | 存储帐户名称，用于确定在将数据从本地复制到 Azure 时消耗的带宽。 该工具会将测试数据上载到此存储帐户来确定消耗的带宽。 |
+| -StorageAccountName | 存储帐户名称，用于确定在将数据从本地复制到 Azure 时消耗的带宽。 该工具会将测试数据上传到此存储帐户来确定消耗的带宽。 |
 | -StorageAccountKey | 用于访问存储帐户的存储帐户密钥。 转到 Azure 门户 >“存储帐户”> <存储帐户名称> >“设置”>“访问密钥”> 密钥 1（或经典存储帐户的主访问密钥）。 |
 | -VMListFile | 一个文件，其中包含一系列可以通过分析来计算所消耗带宽的 VM。 文件路径可以是绝对或相对路径。 此文件应该每行包含一个 VM 名称/IP 地址。 此文件中指定的 VM 名称应与 vCenter 服务器/vSphere ESXi 主机上的 VM 名称相同。<br>例如，VMList.txt 文件包含以下 VM：<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
 | -Environment | （可选）这是你的目标 Azure 存储帐户环境。 此项可能采用下述三个值之一：AzureCloud、AzureUSGovernment、AzureChinaCloud。 默认值为 AzureCloud。 当目标 Azure 区域为 Azure 美国政府版或 Azure 中国云时，请使用此参数。 |
 
-该工具将在指定的目录中创建多个 64 MB 的 asrvhdfile<#>.vhd 文件（其中“#”是文件编号）。 该工具会将这些文件上载到存储帐户来确定吞吐量。 测出吞吐量后，该工具会从存储帐户和本地服务器中删除所有这些文件。 如果该工具在计算吞吐量时因故被终止，它不会从存储或本地服务器中删除这些文件。 你需要手动删除这些文件。
+该工具将在指定的目录中创建多个 64 MB 的 asrvhdfile<#>.vhd 文件（其中“#”是文件编号）。 该工具会将这些文件上传到存储帐户来确定吞吐量。 测出吞吐量后，该工具会从存储帐户和本地服务器中删除所有这些文件。 如果该工具在计算吞吐量时因故被终止，它不会从存储或本地服务器中删除这些文件。 你需要手动删除这些文件。
 
 吞吐量是根据指定时间点测量的，也是在其他所有系数保持相同的前提下，Site Recovery 可实现的最大吞吐量。 例如，如果任何应用程序在相同的网络中开始消耗更多的带宽，则在复制期间实际吞吐量会有所变化。 如果从配置服务器运行 GetThroughput 命令，该工具无法识别任何受保护的 VM 和正在进行的复制。 如果是在受保护 VM 的数据变动量高时运行 GetThroughput 操作，则所测吞吐量的结果会有所不同。 建议在分析期间的不同时间点运行该工具，了解在不同时间能够达到的吞吐量水平。 在报告中，该工具将显示最后一个测得的吞吐量。
 
@@ -531,14 +528,14 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 
 **复制存储目标** | **平均源磁盘 I/O 大小** |**平均源磁盘数据变动量** | **每天的总源磁盘数据变动量**
 ---|---|---|---
-标准存储 | 8 KB    | 2 MBps | 每个磁盘 168 GB
-高级 P10 磁盘 | 8 KB    | 2 MBps | 每个磁盘 168 GB
-高级 P10 磁盘 | 16 KB | 4 MBps |    每个磁盘 336 GB
+标准存储 | 8 KB | 2 MBps | 每个磁盘 168 GB
+高级 P10 磁盘 | 8 KB | 2 MBps | 每个磁盘 168 GB
+高级 P10 磁盘 | 16 KB | 4 MBps | 每个磁盘 336 GB
 高级 P10 磁盘 | 至少 32 KB | 8 MBps | 每个磁盘 672 GB
-高级 P20 或 P30 磁盘 | 8 KB    | 5 MBps | 每个磁盘 421 GB
+高级 P20 或 P30 磁盘 | 8 KB  | 5 MBps | 每个磁盘 421 GB
 高级 P20 或 P30 磁盘 | 至少 16 KB |10 MBps | 每个磁盘 842 GB
 
-这是在假设存在 30% 的 I/O 重叠的情况下给出的平均数。 Site Recovery 能够根据重叠率、较大的写入大小和实际工作负荷 I/O 行为处理更高的吞吐量。 上述数字假定通常情况下存在大约 5 分钟的积压工作。 也就是说，数据在上载后会在 5 分钟内进行处理并创建恢复点。
+这是在假设存在 30% 的 I/O 重叠的情况下给出的平均数。 Site Recovery 能够根据重叠率、较大的写入大小和实际工作负荷 I/O 行为处理更高的吞吐量。 上述数字假定通常情况下存在大约 5 分钟的积压工作。 也就是说，数据在上传后会在 5 分钟内进行处理并创建恢复点。
 
 这些限制基于我们的测试，但无法涵盖所有可能的应用程序 I/O 组合。 实际结果可能因应用程序 I/O 组合而异。 为获得最佳结果，我们始终建议使用测试性故障转移执行广泛的应用程序测试，获取真实的性能视图，即使在规划部署后，也应如此。
 

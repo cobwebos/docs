@@ -11,23 +11,29 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
 ms.openlocfilehash: 9f3caff0e998d670ce82b847525a63f2a85572d3
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/18/2017
-
 
 ---
 
-# <a name="how-to-add-a-multi-tenant-application-to-the-azure-ad-application-gallery"></a>如何将多租户应用程序添加到 Azure AD 应用程序库
+<a id="how-to-add-a-multi-tenant-application-to-the-azure-ad-application-gallery" class="xliff"></a>
 
-## <a name="what-is-the-azure-ad-application-gallery"></a>什么是 Azure AD 应用程序库？
+# 如何将多租户应用程序添加到 Azure AD 应用程序库
+
+<a id="what-is-the-azure-ad-application-gallery" class="xliff"></a>
+
+## 什么是 Azure AD 应用程序库？
 
 Azure AD 应用程序库是一种很好的方法，可以将应用程序呈现在数以百万计的 Azure Active Directory 客户面前，从而扩大了应用程序在应用商店中的影响和市场宣传。 以下步骤说明如何列出 Azure AD 应用程序库中的应用程序。
 
-## <a name="if-your-application-supports-saml-or-openidconnect"></a>如果应用程序支持 SAML 或 OpenIDConnect
+<a id="if-your-application-supports-saml-or-openidconnect" class="xliff"></a>
+
+## 如果应用程序支持 SAML 或 OpenIDConnect
 如果某个多租户应用程序要在 Azure AD 应用程序库中列出，首先必须确保应用程序支持以下单一登录技术之一：
 
 1. **OpenID Connect** - 与 Azure AD 直接集成，使用 OpenID Connect 进行身份验证，并使用 Azure AD 许可 API 进行配置。 如果你刚刚开始集成并且你的应用程序不支持 SAML，则这是建议的模式。
@@ -35,9 +41,13 @@ Azure AD 应用程序库是一种很好的方法，可以将应用程序呈现�
 
 如果应用程序支持以下单一登录模式之一，并且想要列出 Azure AD 应用程序库中的多租户应用程序，可以按照以下文档中的步骤操作。 若要快速入门，请将电子邮件发送到 **waadpartners@microsoft.com**。
 
-## <a name="if-your-application-does-not-support-saml-or-openidconnect"></a>如果应用程序不支持 SAML 或 OpenIDConnect
+<a id="if-your-application-does-not-support-saml-or-openidconnect" class="xliff"></a>
+
+## 如果应用程序不支持 SAML 或 OpenIDConnect
 即使应用程序不支持以下模式之一，我们仍可使用密码单一登录技术将其集成到库。 如果要浏览此选项，可以将电子邮件发送到 **waadpartners@microsoft.com**。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [如何列出 Azure Active Directory 应用程序库中的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)
 

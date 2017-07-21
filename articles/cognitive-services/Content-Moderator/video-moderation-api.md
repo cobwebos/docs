@@ -9,10 +9,11 @@ ms.technology: content-moderator
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: sajagtap
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 3c539cf5b6c65f14134ed8ce060f9029b10968b6
-ms.lasthandoff: 04/12/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: a06db8535501682a600bca8ba9894e341e0dbd2a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/14/2017
 
 ---
 
@@ -24,12 +25,8 @@ Today, online viewers are generating billions of video views across popular and 
 
 The Content Moderator video moderation capability is powered by the adult content classifier running within the **Azure Media Services**. The capability is currently in private preview and available at no charge. Here are the steps you need to follow to try the service:
 
-1. [Sign up](https://azure.microsoft.com/en-us/free/) for a free Microsoft Azure subscription if you don't have one already.
-1. [Submit a support request](https://ms.portal.azure.com/#create/Microsoft.Support) for enabling the East US 2 region for your Azure Subscription ID.
-1. [Contact us](https://cognitive.uservoice.com/ "Contact Us") with your Azure Subscription ID for enabling the Video Content Moderator in the East US 2 region.
-1. [Create a **Media Services** account](https://ms.portal.azure.com/#create/Microsoft.MediaService) in the East US 2 region on the Azure portal.
-
-The free tiers can help you in evaluating the video moderation with your content. Depending on your volumes and purchase options, your expenses will include just the media storage and compute costs.
+1. [Create a **Media Services** account](https://ms.portal.azure.com/#create/Microsoft.MediaService) on the Azure portal.
+1. [Contact us](https://cognitive.uservoice.com/ "Contact Us") with your Azure Subscription ID for enabling the Content Moderator in your region.
 
 ## <a name="code-sample"></a>Code Sample
 
@@ -175,42 +172,42 @@ The following is a sample C# program set that will get you started with your fir
 ## <a name="sample-response-json"></a>Sample Response (JSON)
 
     {
-          "version": 1,
-          "timescale": 1000,
-          "offset": 0,
-          "framerate": 29.97,
-          "width": 1440,
+        "version": 1,
+        "timescale": 1000,
+        "offset": 0,
+        "framerate": 29.97,
+        "width": 1440,
         "height": 1080,
         "fragments": [
         {
-              "start": 0,
-              "duration": 1067,
-              "interval": 1067,
-              "events": [
+            "start": 0,
+            "duration": 1067,
+            "interval": 1067,
+            "events": [
               [
-                  {
+                {
                     "isAdultContent": false,
                     "adultConfidence": 0.05699,
                     "index": 0,
                     "timestamp": 0
-                  }
+                }
              ]
-              ]
+            ]
         },
         {
-              "start": 7474,
-              "duration": 1067,
-              "interval": 1067,
-              "events": [
+            "start": 7474,
+            "duration": 1067,
+            "interval": 1067,
+            "events": [
             [
-                {
+              {
                     "isAdultContent": true,
                     "adultConfidence": 0.51886,
                     "index": 224,
                     "timestamp": 7474
-                }
+              }
             ]
-             ]
+           ]
         }
       ]
     }

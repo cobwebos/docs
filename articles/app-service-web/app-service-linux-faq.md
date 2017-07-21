@@ -1,6 +1,6 @@
 ---
-title: "Linux 上的 Azure App Service Web 应用常见问题解答 | Microsoft Docs"
-description: "Linux 上的 Azure App Service Web 应用常见问题解答。"
+title: "Linux 上的 Azure 应用服务 Web 应用常见问题解答 | Microsoft Docs"
+description: "Linux 上的 Azure 应用服务 Web 应用常见问题解答。"
 keywords: "Azure 应用服务, Web 应用, 常见问题解答, Linux, oss"
 services: app-service
 documentationCenter: 
@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: dcce8d855f8c37d40fe8f09ef0a97e46b342e3cf
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 3fb0f6b26f36ef4044c9733ace05c4f59909ddda
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
 
-# <a name="azure-app-service-web-app-on-linux-faq"></a>Linux 上的 Azure App Service Web 应用常见问题解答
+# <a name="azure-app-service-web-app-on-linux-faq"></a>Linux 上的 Azure 应用服务 Web 应用常见问题解答
 
 [!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
 
@@ -62,6 +62,10 @@ ms.lasthandoff: 05/10/2017
 
 **答：**可以。
 
+**问：**是否可以使用 **Web 部署**来部署我的 Web 应用？
+
+**答：**可以，需要将名为 `UseWebDeployScm` 的应用设置设置为 `false`。
+
 ## <a name="language-support"></a>语言支持
 
 **问：**是否支持未编译的 .NET Core 应用？
@@ -70,7 +74,7 @@ ms.lasthandoff: 05/10/2017
 
 **问：**是否支持将 Composer 用作 PHP 应用的依赖关系管理器？
 
-**答：**否。 需要使用所有依赖项部署 PHP 应用。 我们计划在以后的版本中添加完整部署体验。
+**答：**可以。 在 Git 部署过程中，Kudu 应检测到你正在部署 PHP 应用程序（得益于 composer.json 文件的存在），并且会为你触发 composer 安装。
 
 ## <a name="custom-containers"></a>自定义容器
 
@@ -110,7 +114,7 @@ ms.lasthandoff: 05/10/2017
 
 **问：**使用公共预览版时的定价是什么？
 
-**答：**根据 Azure App Service 常规定价，按照应用运行小时数的一半计费。 这意味着你将获得 Azure 应用服务常规定价的 50% 的折扣。
+**答：**根据 Azure 应用服务常规定价，按照应用运行小时数的一半计费。 这意味着你将获得 Azure 应用服务常规定价的 50% 的折扣。
 
 ## <a name="other"></a>其他
 
@@ -126,6 +130,6 @@ ms.lasthandoff: 05/10/2017
 * [什么是 Linux 上的 Azure Web 应用？](app-service-linux-intro.md)
 * [在 Linux 上的 Azure Web 应用中创建 Web 应用](app-service-linux-how-to-create-web-app.md)
 * [SSH 对 Linux 上的 Azure Web 应用的支持](./app-service-linux-ssh-support.md)
-* [设置 Azure App Service 中的过渡环境](./web-sites-staged-publishing.md)
+* [设置 Azure 应用服务中的过渡环境](./web-sites-staged-publishing.md)
 * [使用 Linux 上的 Azure Web 应用进行 Docker 中心持续部署](./app-service-linux-ci-cd.md)
 

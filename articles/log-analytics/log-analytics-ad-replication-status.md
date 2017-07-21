@@ -12,17 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 06/07/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: ffae86cb963f0df7f879effbace073d7e830cd94
-ms.lasthandoff: 02/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: b45dbdf7aaca9fa7db06e5312b6918c24814c30e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/09/2017
 
 
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>使用 Log Analytics 监视 Active Directory 复制状态
+
+![AD 复制状态符号](./media/log-analytics-ad-replication-status/ad-replication-status-symbol.png)
 
 Active Directory 是企业 IT 环境的关键组件。 若要确保高可用性和高性能，每个域控制器都有其自己的 Active Directory 数据库副本。 域控制器会彼此相互复制，以便在整个企业内传播更改。 这一复制过程中的失败可能导致整个企业内出现各种问题。
 
@@ -32,14 +35,14 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 使用以下信息来安装和配置解决方案。
 
 * 必须在作为要评估的域成员的域控制器上，或在配置为将 AD 复制数据发送到 OMS 的成员服务器上安装代理。 若要了解如何将 Windows 计算机连接到 OMS，请参阅[将 Windows 计算机连接到 Log Analytics](log-analytics-windows-agents.md)。 如果你的域控制器已经是你要连接到 OMS 的现有 System Center Operations Manager 环境的一部分，请参阅[将 Operations Manager 连接到 Log Analytics](log-analytics-om-agents.md)。
-* 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将 Active Directory 复制状况解决方案添加到 OMS 工作区。  无需进一步的配置。
+* 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将 Active Directory 复制状态解决方案添加到 OMS 工作区。  无需进一步的配置。
 
 ## <a name="ad-replication-status-data-collection-details"></a>AD 复制状态数据收集详细信息
 下表显示了 AD 复制状态的数据收集方法和其他数据收集方式的详细信息。
 
-| 平台 | 直接代理 | SCOM 代理 | Azure 存储空间 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
+| 平台 | 直接代理 | SCOM 代理 | Azure 存储 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |![是](./media/log-analytics-ad-replication-status/oms-bullet-green.png) |![是](./media/log-analytics-ad-replication-status/oms-bullet-green.png) |![否](./media/log-analytics-ad-replication-status/oms-bullet-red.png) |![否](./media/log-analytics-ad-replication-status/oms-bullet-red.png) |![是](./media/log-analytics-ad-replication-status/oms-bullet-green.png) |每隔 5 天 |
+| Windows |![是](./media/log-analytics-ad-replication-status/oms-bullet-green.png) |![是](./media/log-analytics-ad-replication-status/oms-bullet-green.png) |![否](./media/log-analytics-ad-replication-status/oms-bullet-red.png) |![否](./media/log-analytics-ad-replication-status/oms-bullet-red.png) |![是](./media/log-analytics-ad-replication-status/oms-bullet-green.png) |每 5 天 |
 
 ## <a name="optionally-enable-a-non-domain-controller-to-send-ad-data-to-oms"></a>（可选）启用非域控制器以将 AD 数据发送到 OMS
 如果你不需要将任何域控制器直接连接到 OMS，则可以使用域中任何其他连接 OMS 的计算机来收集 AD 复制状态解决方案包的数据，并让它发送数据。
@@ -79,20 +82,20 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 
 顶部的圆环图可让你了解在你的环境中哪些错误频繁或较少出现。
 
-这可以显示何时多个域控制器会遇到相同的复制错误。 在这种情况下，你可在一个域控制器上发现/识别解决方案，然后在受相同错误影响的其他域控制器上重复该解决方案。
+并且，还可以通过此圆环图查看多个域控制器遇到相同复制错误的情况。 在这种情况下，你可在一个域控制器上发现/识别解决方案，然后在受相同错误影响的其他域控制器上重复该解决方案。
 
 ### <a name="tombstone-lifetime"></a>逻辑删除生存期
 逻辑删除生存期确定已删除的对象（称为逻辑删除）保留在 Active Directory 数据库中的时间长度。 当已删除的对象超过逻辑删除生存期时，垃圾回收进程自动将其从 Active Directory 数据库中删除。
 
 在最新版本的 Windows 中，默认逻辑删除生存期为 180 天；但在较早的版本中为 60 天，Active Directory 管理员可以显式更改它。
 
-请务必了解你是否有接近或超过逻辑删除生存期复制错误。 如果有两个域控制器遇到的复制错误的保留时间超过逻辑删除生存期，则即使已解决基础复制错误，也会禁用这两个域控制器之间的复制。
+了解你是否有接近或超过逻辑删除生存期的复制错误是非常重要的。 如果有两个域控制器遇到的复制错误的保留时间超过逻辑删除生存期，则即使已解决基础复制错误，也会禁用这两个域控制器之间的复制。
 
-逻辑删除生存期边栏选项卡可帮助识别这种危险可能发生的位置。 **超过 100 % TSL** 类别中的每个错误表示一个至少在逻辑删除生存期内，尚未在其源和目标服务器之间复制的分区。
+逻辑删除生存期边栏选项卡可帮助识别这种危险可能发生的位置。 **超过 100 % TSL** 类别中的每个错误表示至少在林的逻辑删除生存期内，尚未在其源和目标服务器之间复制的分区。
 
 在此情况下，仅修复复制错误是不够的。 你至少需要手动调查，识别和清理延迟对象，然后才可以重新启动复制。 你甚至可能需要取消配置域控制器。
 
-除了识别保留时间超过逻辑删除生存期的任何复制错误，你还需要留意任何落入 **50-75% TSL** 或 **75-100% TSL** 类别的错误。
+除了识别保留时间超过逻辑删除生存期的任何复制错误，你还需要留意任何属于 **50-75% TSL** 或 **75-100% TSL** 类别的错误。
 
 这些是明显延迟（不是暂时的）的错误，因此，它们可能需要你的干预才能解决。 值得庆幸的是，它们尚未到达逻辑删除生存期。 如果立即和在达到逻辑删除生存期*之前*解决这些问题，则可以最少的手动干预来重新启动复制。
 
@@ -127,7 +130,7 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 答：不需要，只需要添加一个域控制器。 如果 OMS 工作区中有多个域控制器，则所有域控制器的数据发送到 OMS。
 
 **问：我不想将任何域控制器添加到我的 OMS 工作区。是否仍可以使用 AD 复制状态解决方案？**
-答：是的。 可以设置注册表项来实现此目的。 请参阅[允许非域控制器将 AD 数据发送到 OMS](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms)。
+答：是的。 可以设置注册表项的值来实现此目的。 请参阅[允许非域控制器将 AD 数据发送到 OMS](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms)。
 
 **问：执行数据收集的进程名称是什么？**
 答：AdvisorAssessment.exe
@@ -147,7 +150,7 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 ## <a name="troubleshoot-data-collection-problems"></a>数据收集问题疑难解答
 为了收集数据，AD 复制状态解决方案包需要至少一个域控制器以连接到你的 OMS 工作区。 执行此操作时，你将看到一条消息，指出“**仍在收集数据**”。
 
-如果你需要帮助连接域控制器之一，则可以查看[将 Windows 计算机连接到 Log Analytics](log-analytics-windows-agents.md) 文档。 或者，如果域控制器已连接到现有 System Center Operations Manager 环境，则可以查看[将 System Center Operations Manager 连接到 Log Analytics](log-analytics-om-agents.md) 文档。
+如果你在连接某个域控制器时需要帮助，可以查看[将 Windows 计算机连接到 Log Analytics](log-analytics-windows-agents.md) 文档。 或者，如果域控制器已连接到现有 System Center Operations Manager 环境，则可以查看[将 System Center Operations Manager 连接到 Log Analytics](log-analytics-om-agents.md) 文档。
 
 如果不希望将任何域控制器直接连接到 OMS 或 SCOM，请参阅[允许非域控制器将 AD 数据发送到 OMS](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms)。
 

@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/24/2016
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4fb0f4e61ec98546e7044bf760d24a1ba932fe5b
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: bb55a7a4bff0fd4319de6f6ce958686ad8a4142b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -59,10 +61,5 @@ Microsoft Azure StorSimple 设备中的卷容器包含一个或多个卷，这�
 ## <a name="next-steps"></a>后续步骤
 * 详细了解[管理 StorSimple 卷](storsimple-manage-volumes.md)。 
 * 了解有关如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)的详细信息。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: dfa9f6e4bc95a1cd99f84e58167192d951960a7a
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 4043c68a3c8559eab6f5e4352bb599015366e5b5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/06/2017
 网络安全组 (NSG) 包含一系列安全规则，这些规则可以允许或拒绝流向连接到 Azure 虚拟网络 (VNet) 的资源的网络流量。 可以将 NSG 关联到子网、单个 VM（经典）或附加到 VM 的单个网络接口 (NIC) (Resource Manager)。 将 NSG 关联到子网时，规则适用于连接到该子网的所有资源。 也可通过将 NSG 关联到 VM 或 NIC 来进一步限制流量。
 
 > [!NOTE]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../resource-manager-deployment-model.md)。 这篇文章介绍如何使用这两种模型，但 Microsoft 建议大多数最新部署使用资源管理器模型。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../resource-manager-deployment-model.md)。 这篇文章介绍如何使用这两种模型，但 Microsoft 建议大多数最新部署使用 Resource Manager 模型。
 
 ## <a name="nsg-resource"></a>NSG 资源
 NSG 包含以下属性：
@@ -122,7 +123,7 @@ NSG 包含两组规则：入站规则和出站规则。 在每组中，规则的
 ## <a name="implementation"></a>实现
 可以使用以下工具，在 Resource Manager 部署模型或经典部署模型中实现 NSG：
 
-| 部署工具 | 经典 | 资源管理器 |
+| 部署工具 | 经典 | Resource Manager |
 | --- | --- | --- |
 | Azure 门户   | 是 | [是](virtual-networks-create-nsg-arm-pportal.md) |
 | PowerShell     | [是](virtual-networks-create-nsg-classic-ps.md) | [是](virtual-networks-create-nsg-arm-ps.md) |
@@ -182,7 +183,7 @@ NSG 包含两组规则：入站规则和出站规则。 在每组中，规则的
 1. 分隔 WEB 和 DB 服务器之间的流量。
 2. 负载均衡规则将流量从负载均衡器转发到端口 80 上的所有 Web 服务器。
 3. 负载均衡器 NAT 规则将传入端口 50001 上的负载均衡器的流量转发到 WEB1 VM 上的端口 3389。
-4. 不能从 Internet 访问前端或后端 VM，要求 1 和 3 例外。
+4. 不能从 Internet 访问前端或后端 VM，要求 2 和 3 例外。
 5. 不能从 WEB 或 DB 服务器进行出站 Internet 访问。
 6. 允许从 FrontEnd 子网访问任何 Web 服务器的端口 3389。
 7. 允许从 FrontEnd 子网访问任何 DB 服务器的端口 3389。

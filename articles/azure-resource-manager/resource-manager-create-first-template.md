@@ -15,10 +15,10 @@ ms.date: 04/18/2017
 ms.topic: get-started-article
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 745e115409a5b1e5e4f343ca0a5bb922272d3020
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 80fd9d79652e4f0d9c4c524e3a762bcc3462bb53
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/02/2017
 
 ---
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 05/11/2017
        {
          "name": "string",
          "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2016-05-01",
+         "apiVersion": "2016-12-01",
          "sku": {
            "name": "string"
          },
@@ -102,6 +102,8 @@ ms.lasthandoff: 05/11/2017
    }
    ```
 
+  VS Code 可能表示 2016-12-01 不是有效的 API 版本。 如果使用模板参考文档中的版本号，则可以忽略此警告。 若未使用资源提供程序中的最新版本号更新架构，会看到此警告。 
+  
   上面的示例包括许多占位符值，以及某些在存储帐户中可能不需要的属性。
 
 ## <a name="set-values-for-storage-account"></a>设置存储帐户的值
@@ -117,7 +119,7 @@ ms.lasthandoff: 05/11/2017
      {
        "name": "string",
        "type": "Microsoft.Storage/storageAccounts",
-       "apiVersion": "2016-05-01",
+       "apiVersion": "2016-12-01",
        "sku": {
          "name": "string"
        },
@@ -156,7 +158,7 @@ ms.lasthandoff: 05/11/2017
     {
       "name": "string",
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-05-01",
+      "apiVersion": "2016-12-01",
       "sku": {
         "name": "string"
       },
@@ -199,7 +201,7 @@ VS Code 会再次帮助你，为你建议可用的函数。
     {
       "name": "string",
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-05-01",
+      "apiVersion": "2016-12-01",
       "sku": {
         "name": "string"
       },
@@ -328,7 +330,7 @@ VS Code 会再次帮助你，为你建议可用的函数。
     {
       "name": "[variables('storageName')]",
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-05-01",
+      "apiVersion": "2016-12-01",
       "sku": {
         "name": "[parameters('storageSKU')]"
       },

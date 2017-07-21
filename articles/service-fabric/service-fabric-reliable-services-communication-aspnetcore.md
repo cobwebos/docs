@@ -12,33 +12,38 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 03/22/2017
+ms.date: 05/02/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: cce66615ebe457ed7230401d154ddad07941f5bc
-ms.lasthandoff: 03/23/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 8ac4d409f7363e8b4ae98be659a627ac8db8d787
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/10/2017
 
 ---
 
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>Service Fabric Reliable Services 中的 ASP.NET Core
 
-ASP.NET Core 是新的开源跨平台框架，用于构建现代基于云的连接 Internet 的应用程序，如 Web 应用、IoT 应用和移动后端。 虽然 ASP.NET Core 应用可在 .NET Core 或完整的 .NET Framework 上运行，但 Service Fabric 服务当前只能在完整的 .NET Framework 上运行。 这意味着在构建 ASP.NET Core Service Fabric 服务时，仍必须以完整的 .NET Framework 为目标。
+ASP.NET Core 是新的开源跨平台框架，用于构建现代基于云的连接 Internet 的应用程序，如 Web 应用、IoT 应用和移动后端。 
+
+本文详细说明了如何使用 NuGet 包的 Microsoft.ServiceFabric.AspNetCore. 集在 Service Fabric Reliable Services 中托管 ASP.NET Core 服务。
+
+有关 Service Fabric 中 ASP.NET Core 的入门教程以及如何设置开发环境的说明，请参阅[使用 ASP.NET Core 为应用程序构建 Web 前端](service-fabric-add-a-web-frontend.md)。
+
+本文的其余部分假定你已熟悉 ASP.NET Core。 如果不熟悉，我们建议通读一遍 [ASP.NET Core 基础知识](https://docs.microsoft.com/aspnet/core/fundamentals/index)。
+
+## <a name="aspnet-core-in-the-service-fabric-environment"></a>Service Fabric 环境中的 ASP.NET Core
+
+虽然 ASP.NET Core 应用可在 .NET Core 或完整的 .NET Framework 上运行，但 Service Fabric 服务当前只能在完整的 .NET Framework 上运行。 这意味着在构建 ASP.NET Core Service Fabric 服务时，仍必须以完整的 .NET Framework 为目标。
 
 在 Service Fabric 中可通过两种不同方法使用 ASP.NET Core：
  - **作为来宾可执行文件托管**。 这主要用于在 Service Fabric 上运行现有 ASP.NET Core 应用程序，无需更改代码。
- - **在 Reliable Service 内部运行**。 这可实现与 Service Fabric 运行时更好地集成以及有状态的 ASP.NET Core 服务。
+ - **在 Reliable Service 内部运行**。 这可改善与 Service Fabric 运行时的集成，实现有状态的 ASP.NET Core 服务。
 
 本文的其余部分说明如何借助 Service Fabric SDK 提供的 ASP.NET Core 集成组件在 Reliable Service 内部使用 ASP.NET Core。 
 
-> [!NOTE]
->本文的其余部分假定你熟悉 ASP.NET Core 中的托管。 若要了解有关在 ASP.NET Core 中托管的详细信息，请参阅：[Introduction to hosting in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/hosting)（在 ASP.NET Core 中托管的简介）。
-
-> [!NOTE]
-> 若要在 Visual Studio 2015 中使用 ASP.NET Core 开发 Reliable Services，则需要安装 [.NET Core VS 2015 Tooling Preview 2](https://www.microsoft.com/net/download/core)。
-
 ## <a name="service-fabric-service-hosting"></a>Service Fabric 服务托管
+
 在 Service Fabric 中，服务的一个或多个实例和/或副本在*服务主机进程*（运行服务代码的可执行文件）中运行。 服务作者拥有服务主机进程，Service Fabric 将为服务作者激活并监视此进程。
 
 传统的 ASP.NET（最高为 MVC 5）通过 System.Web.dll 与 IIS 紧密耦合。 ASP.NET Core 在 Web 服务器和 Web 应用程序之间提供分隔。 这使 Web 应用程序可在不同 Web 服务器之间移植，并且还允许 Web 服务器*自托管*，这意味着你可以在自己的进程（而不是由 IIS 等专用 Web 服务器软件拥有的进程）中启动 Web 服务器。 

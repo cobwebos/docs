@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 9ded95283b52f0fc21ca5b99df8e72e1e152fe1c
-ms.openlocfilehash: c56a568fa003ec45e92279e070e6309763071827
-ms.lasthandoff: 01/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 3acefebb9d1007a0c035fa561191ca43a3f66896
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -48,7 +49,7 @@ IoT 中心本身不中转消息，而是充当关联 Azure 存储帐户的调度
 
 
 ## <a name="initialize-a-file-upload"></a>初始化文件上传
-IoT 中心有一个终结点，专供设备在上载文件时请求用于存储的 SAS URI。 设备可以使用以下 JSON 正文向 IoT 中心的 `{iot hub}.azure-devices.net/devices/{deviceId}/files` 发送 POST，从而启动文件上载过程：
+IoT 中心有一个终结点，专供设备在上传文件时请求用于存储的 SAS URI。 设备可以使用以下 JSON 正文向 IoT 中心的 `{iot hub}.azure-devices.net/devices/{deviceId}/files` 发送 POST，从而启动文件上传过程：
 
 ```json
 {
@@ -68,16 +69,16 @@ IoT 中心返回以下数据，供设备用来上传文件：
 }
 ```
 
-### <a name="deprecated-initialize-a-file-upload-with-a-get"></a>已弃用：使用 GET 初始化文件上载
+### <a name="deprecated-initialize-a-file-upload-with-a-get"></a>已弃用：使用 GET 初始化文件上传
 
 > [!NOTE]
 > 本部分介绍已弃用的功能，这些功能用于从 IoT 中心接收 SAS URI。 应使用前面所述的 POST 方法。
 
-IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储空间的 SAS URI，另一个用于通知 IoT 中心已完成上传。 设备通过在 `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}` 向 IoT 中心发送 GET 来启动文件上载过程。 IoT 中心将返回特定于要上传的文件的 SAS URI，以及上传完成后要使用的相关性 ID。
+IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储空间的 SAS URI，另一个用于通知 IoT 中心已完成上传。 设备通过在 `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}` 向 IoT 中心发送 GET 来启动文件上传过程。 IoT 中心将返回特定于要上传的文件的 SAS URI，以及上传完成后要使用的相关性 ID。
 
 ## <a name="notify-iot-hub-of-a-completed-file-upload"></a>通知 IoT 中心已完成文件上传
 
-设备负责使用 Azure 存储 SDK 将文件上传到存储空间。 上载完成后，设备会使用以下 JSON 正文向 IoT 中心的 `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` 发送 POST：
+设备负责使用 Azure 存储 SDK 将文件上传到存储空间。 上传完成后，设备会使用以下 JSON 正文向 IoT 中心的 `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` 发送 POST：
 
 ```json
 {
@@ -88,11 +89,11 @@ IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储�
 }
 ```
 
-`isSuccess` 的值为布尔值，表示文件是否上传成功。 `statusCode` 的状态代码表示将文件上载到存储时的状态，`statusDescription` 对应于 `statusCode`。
+`isSuccess` 的值为布尔值，表示文件是否上传成功。 `statusCode` 的状态代码表示将文件上传到存储时的状态，`statusDescription` 对应于 `statusCode`。
 
 ## <a name="reference-topics"></a>参考主题：
 
-以下参考主题详细介绍了如何从设备上载文件。
+以下参考主题详细介绍了如何从设备上传文件。
 
 ## <a name="file-upload-notifications"></a>文件上传通知
 
@@ -122,13 +123,13 @@ IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储�
 }
 ```
 
-## <a name="file-upload-notification-configuration-options"></a>文件上载通知配置选项
+## <a name="file-upload-notification-configuration-options"></a>文件上传通知配置选项
 
 每个 IoT 中心都为文件上传通知公开以下配置选项：
 
 | 属性 | 说明 | 范围和默认值 |
 | --- | --- | --- |
-| **enableFileUploadNotifications** |控制是否将文件上载通知写入文件通知终结点。 |布尔型。 默认值：True。 |
+| **enableFileUploadNotifications** |控制是否将文件上传通知写入文件通知终结点。 |布尔型。 默认值：True。 |
 | **fileNotifications.ttlAsIso8601** |文件上传通知的默认 TTL。 |ISO_8601 间隔上限为 48 小时（下限为 1 分钟）。 默认值：1 小时。 |
 | **fileNotifications.lockDuration** |文件上传通知队列的锁定持续时间。 |5 到 300 秒（最小为 5 秒）。 默认值：60 秒。 |
 | **fileNotifications.maxDeliveryCount** |文件上传通知队列的最大传递计数。 |1 到 100。 默认值：100。 |
@@ -140,7 +141,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 * [IoT 中心终结点][lnk-endpoints]，介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
 * [限制和配额][lnk-quotas]介绍了适用于 IoT 中心服务的配额，以及使用服务时预期会碰到的限制行为。
 * [Azure IoT 设备和服务 SDK][lnk-sdks] 列出了开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
-* [设备克隆和作业的 IoT 中心查询语言][lnk-query]介绍了可用来从 IoT 中心检索设备克隆和作业相关信息的 IoT 中心查询语言。
+* [设备孪生、作业和消息路由的 IoT 中心查询语言][lnk-query]一文介绍了可用于从 IoT 中心检索设备孪生和作业相关信息的 IoT 中心查询语言。
 * [IoT 中心 MQTT 支持][lnk-devguide-mqtt]提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
@@ -169,7 +170,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 [lnk-initialize]: iot-hub-devguide-file-upload.md#initialize-a-file-upload
 [lnk-notify]: iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload
 [lnk-service-notification]: iot-hub-devguide-file-upload.md#file-upload-notifications
-[lnk-lifecycle]: iot-hub-devguide-messaging.md#message-lifecycle
+[lnk-lifecycle]: iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-lifecycle
 [lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
 
 [lnk-devguide-identities]: iot-hub-devguide-identity-registry.md

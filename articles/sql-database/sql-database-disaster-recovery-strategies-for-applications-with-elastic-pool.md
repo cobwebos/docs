@@ -1,5 +1,5 @@
 ---
-title: "使用 SQL 数据库异地复制设计灾难恢复云解决方案 | Microsoft Docs"
+title: "设计灾难恢复解决方案 - Azure SQL 数据库 | Microsoft Docs"
 description: "了解如何通过选择合适的故障转移模式来设计可实现灾难恢复的云解决方案。"
 services: sql-database
 documentationcenter: 
@@ -16,10 +16,10 @@ ms.workload: NA
 ms.date: 04/07/2017
 ms.author: sashan;carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: f8da648fd38da894cd2d9fbbac09ac69d24be3fb
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: 4f5131fdd2ca83e7a0a2f986a2fa1e3551814c6e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/22/2017
 
 
 ---

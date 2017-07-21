@@ -11,21 +11,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
 ms.openlocfilehash: 5b133afd82afecbfab250c2760404a4173086fa5
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/18/2017
-
 
 ---
 
-# <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>找不到应用程序代理应用程序的工作连接器组
+<a id="no-working-connector-group-found-for-an-application-proxy-application" class="xliff"></a>
+
+# 找不到应用程序代理应用程序的工作连接器组
 
 本文将帮助解决与 Azure Active Directory 集成的应用程序代理应用程序在未检测到连接器时遇到的常见问题。
 
-## <a name="overview-of-steps"></a>步骤概述
+<a id="overview-of-steps" class="xliff"></a>
+
+## 步骤概述
 如果连接器组中没有适用于应用程序的工作连接器，可以通过几种方法解决此问题：
 
 -   如果组中没有任何连接器，可以：
@@ -48,7 +52,9 @@ ms.lasthandoff: 04/18/2017
 
    ![Azure 门户中的连接器组管理](./media/application-proxy-connectivity-no-working-connector/app-proxy.png)
 
-## <a name="download-a-new-connector"></a>下载新连接器
+<a id="download-a-new-connector" class="xliff"></a>
+
+## 下载新连接器
 
 若要下载新连接器，请使用该页顶部的“下载连接器”按钮。
 
@@ -56,17 +62,23 @@ ms.lasthandoff: 04/18/2017
 
    ![从 Azure 门户下载连接器](./media/application-proxy-connectivity-no-working-connector/download-connector.png)
    
-## <a name="move-an-active-connector"></a>移动活动连接器
+<a id="move-an-active-connector" class="xliff"></a>
+
+## 移动活动连接器
 
 如果具有的活动连接器应属于组并且直接可见目标后端应用程序，可将该连接器移入已分配的组。 若要执行此操作，请单击“连接器”。 在“连接器组”字段中，使用下拉列表选择正确的组，然后单击“保存”。
 
-## <a name="resolve-an-inactive-connector"></a>解决处于不活动状态的连接器
+<a id="resolve-an-inactive-connector" class="xliff"></a>
+
+## 解决处于不活动状态的连接器
 
 如果仅该组中的连接器处于不活动状态，则这些连接器所在的计算机可能并未解除阻止所有必要的端口。
 
 有关调查此问题的详细信息，请参阅端口故障排除文档。
 
-## <a name="next-steps"></a>后续步骤
+<a id="next-steps" class="xliff"></a>
+
+## 后续步骤
 [了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md)
 
 

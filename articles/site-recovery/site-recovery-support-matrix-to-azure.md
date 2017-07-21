@@ -12,20 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 01/25/2017
+ms.date: 06/05/2017
 ms.author: rajanaki
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 711fb0715b7f12e12a742136f75af8069cbc83d8
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 6664cb20393ec5f588c8eeb119d6f606a0072861
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/15/2017
 
 
 ---
-# <a name="azure-site-recovery-support-matrix-for-replicating-to-azure"></a>用于复制到 Azure 的 Azure Site Recovery 支持矩阵
-
-> [!div class="op_single_selector"]
-> * [复制到 Azure](site-recovery-support-matrix-to-azure.md)
-> * [复制到归客户所有的辅助站点](site-recovery-support-matrix-to-sec-site.md)
+# <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>用于从本地复制到 Azure 的 Azure Site Recovery 支持矩阵
 
 
 本文总结了复制和恢复到 Azure 时 Azure Site Recovery 支持的配置和组件。 有关 Azure Site Recovery 要求的详细信息，请参阅[先决条件](site-recovery-prereq.md)。
@@ -68,16 +65,23 @@ ms.lasthandoff: 04/18/2017
 复制到 Azure 时，受保护的虚拟机必须符合 [Azure 要求](#failed-over-azure-vm-requirements)。
 下表汇总了使用 Azure Site Recovery 时多种部署方案中的已复制操作系统支持。 该支持适用于在所提及的 OS 上运行的所有工作负荷。
 
- **VMware/物理服务器** | **Hyper-V（具有/不具有 Virtual Machine Manager）** |
+ **VMware/物理服务器** | **Hyper-V（使用/不使用 VMM）** |
 --- | --- |
-64 位 Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 及其更高版本<br/><br/> Red Hat Enterprise Linux 6.7、6.8、7.1、7.2 <br/><br/> CentOS 6.5、6.6、6.7、6.8、7.0、7.1、7.2 <br/><br/> Oracle Enterprise Linux 6.4、6.5（运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3 (UEK3)） <br/><br/> SUSE Linux Enterprise Server 11 SP3 <br/><br/> SUSE Linux Enterprise Server 11 SP4 <br/>（不支持复制计算机从 SLES 11 SP3 升级到 SLES 11 SP4。 如果已将复制计算机从 SLES 11SP3 升级到 SLES 11 SP4，则需要禁用复制，并在升级后再次对计算机启用保护。） | [Azure 支持的](https://technet.microsoft.com/library/cc794868.aspx)任何来宾 OS
+64 位 Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 及其更高版本<br/><br/> Red Hat Enterprise Linux 6.7、6.8、7.1、7.2 <br/><br/>CentOS 6.5、6.6、6.7、6.8、7.0、7.1、7.2 <br/><br/>Ubuntu 14.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Oracle Enterprise Linux 6.4、6.5（运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3 (UEK3)） <br/><br/> SUSE Linux Enterprise Server 11 SP3 <br/><br/> SUSE Linux Enterprise Server 11 SP4 <br/>（不支持复制计算机从 SLES 11 SP3 升级到 SLES 11 SP4。 如果已将复制计算机从 SLES 11SP3 升级到 SLES 11 SP4，则需要禁用复制，并在升级后再次对计算机启用保护。） | [Azure 支持的](https://technet.microsoft.com/library/cc794868.aspx)任何来宾 OS
 
 
 >[!IMPORTANT]
 >（适用于复制到 Azure 的 VMware/物理服务器）
 >
 > 在 Red Hat Enterprise Linux Server 7+ 和 CentOS 7+ 服务器上，从 Azure Site Recovery 移动服务版本 9.8 开始支持内核版本 3.10.0-514。<br/><br/>
-> 使用内核版本为 3.10.0-514，且移动服务版本低于版本 9.8 的客户需要先禁用复制，将移动服务的版本更新至版本 9.8，然后再重新启用复制。  
+> 使用内核版本为 3.10.0-514，且移动服务版本低于版本 9.8 的客户需要先禁用复制，将移动服务的版本更新至版本 9.8，然后再重新启用复制。
+
+
+### <a name="supported-ubuntu-kernel-versions-for-vmwarephysical-servers"></a>VMware/物理服务器支持的 Ubuntu 内核版本
+
+**版本** | **移动服务版本** | **内核版本** |
+--- | --- | --- |
+14.04 LTS | 9.9 | 3.13.0-24-generic 到 3.13.0-117-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-75-generic |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-linux-vmwarephysical-servers"></a>Linux 上支持的文件系统和来宾存储配置（VMware/物理服务器）
 
@@ -90,7 +94,7 @@ ms.lasthandoff: 04/18/2017
 
 >[!Note]
 > 在 Linux 服务器中，下列目录（如果设置为单独的分区/文件系统）必须位于源服务器的同一磁盘（OS 磁盘）：   / (root)、/boot、/usr、/usr/local、/var 和 /etc<br/><br/>
-> 当前 XFS 文件系统上的 ASR 尚不支持 XFS v5 功能（如元数据校验和）。 请确保你的 XFS 文件系统未使用任何 v5 功能。 可使用 xfs_info 实用工具来检查分区的 XFS 超级块。 如果将 ftyp 设置为 1，则使用 XFSv5 功能。 
+> 当前 XFS 文件系统上的 ASR 尚不支持 XFS v5 功能（如元数据校验和）。 请确保你的 XFS 文件系统未使用任何 v5 功能。 可使用 xfs_info 实用工具来检查分区的 XFS 超级块。 如果将 ftyp 设置为 1，则使用 XFSv5 功能。
 >
 
 
@@ -163,7 +167,7 @@ RDM | 是<br/><br/> 不适用于物理服务器 | 不适用
 排除磁盘 | 是 | 是
 多路径 (MPIO) | 不适用 | 是
 
-**Azure 存储空间** | **VMware/物理服务器** | **Hyper-V（具有/不具有 Virtual Machine Manager）**
+**Azure 存储** | **VMware/物理服务器** | **Hyper-V（具有/不具有 Virtual Machine Manager）**
 --- | --- | ---
 LRS | 是 | 是
 GRS | 是 | 是

@@ -13,44 +13,103 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
+ms.date: 06/16/2017
 ms.author: jeffstok
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 42f77fbea2ac9572940e8c428999c79d6b4b6e23
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 421bdfb3132bc8c9f193bcca8d55c9cf9eba1c3b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
-# <a name="what-is-stream-analytics"></a>什么是流分析？
-Azure 流分析是一种完全托管的、经济高效的实时事件处理引擎，可帮助开启来自数据的深入见解。 通过流分析，可以针对设备、传感器、网站、社交媒体、应用程序、基础设施系统等的数据流，轻松地设置实时分析计算。
 
-只需在 Azure 门户中单击几下，你便可创建一个流分析作业，用于指定流式数据的输入源，你的作业结果的输出接收器以及用类似 SQL 的语言表示的数据转换。 你可以在 Azure 门户中监视并调整作业的规模/速度，从几千字节扩展到千兆字节或者每秒处理更多事件。
+# 什么是流分析？
+<a id="what-is-stream-analytics" class="xliff"></a>
 
-流分析利用了 Microsoft Research 在开发可调性极强且适用于时间敏感型处理的流式处理引擎方面多年的工作成果，并进行了语言集成，因此可以直观地指定各种语句。
+Azure 流分析是完全托管的事件处理引擎，可以用来设置针对流式处理数据的实时分析计算。 数据可能来自设备、传感器、网站、社交媒体源、应用程序、基础结构系统等。 
 
-## <a name="what-can-i-use-stream-analytics-for"></a>流分析有什么用途？
-在现今这个时代，每天都有大量的数据在缆线上高速流动。 那些能够实时处理这种流式数据并采取相应行动的组织可以极大地改进效率，让自己在市场中始终处于卓尔不群的地位。 各行各业都可以找到进行实时流式分析的方案：由金融服务公司提供的个性化实时股票交易分析和提醒；实时检测欺诈行为；数据和身份保护服务；对物理对象（物联网，简称 IoT）中嵌入的传感器和激励器所生成的数据进行可靠的引入和分析；Web 点击流分析；当客户体验在某个时间范围内出现下降的趋势时，客户关系管理 (CRM) 应用程序会进行提醒。 为了在竞争激烈的现代商业环境中获得成功，企业需要寻找最灵活、最可靠且最经济有效的方式来执行此类实时事件流数据分析。
+## 流分析有什么用途？
+<a id="what-can-i-use-stream-analytics-for" class="xliff"></a>
 
-## <a name="key-capabilities-and-benefits"></a>主要功能和优点
-* **易用性：** 流分析支持简单的声明性查询模型，用于描述各种转换。 为了优化易用性，流分析使用 T-SQL 变量，不再需要客户处理在技术上复杂的流处理系统。 使用浏览器内查询编辑器中的 [流分析查询语言](https://msdn.microsoft.com/library/azure/dn834998.aspx) ，通过 intelli-sense auto-complete 可以帮助你便捷地实现时序查询，包括临时联接、开窗聚合、临时筛选器，以及其他常见的操作（例如联接、聚合、投影和筛选）。 此外，依据示例数据文件进行浏览器内查询测试还可实现快速、迭代的开发。  
-* **可伸缩性：** 流分析具有很强的事件吞吐量处理能力，最大吞吐量为 1GB/秒。 与 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)和 [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)集成后，该解决方案就可以每秒引入数百万个来自已连接设备、点击流、日志文件等的事件。 为此，流分析利用了事件中心的分区功能，每个分区产生的吞吐量为 1MB/秒。 用户可以在查询定义中将计算分成多个逻辑步骤，每个步骤都可以进一步细分，以提高可伸缩性。  
-* **可靠性、可重复性和快速恢复：** 流分析是云中的一种托管服务，可在发生故障时，通过内置的恢复功能防止数据丢失并确保业务连续性。 由于能够在内部维持相关状态，因此服务提供的可重复结果确保可以对事件进行存档并在未来重新处理，始终获得相同的结果。 由此，当客户进行根原分析和假设情况分析等时便可以及时回去调查计算结果。  
-* **低成本：** 作为一种云服务，流分析已经过优化，用户只需很少的成本即可运行和维护各种实时分析解决方案。 服务经过构建，让你可以根据流式处理单元使用量和系统处理的数据量实现现用现付。 使用情况取决于已处理事件的数量，以及在群集中预配的处理相应流分析作业所需的计算能力。  
-* **引用数据：** 用户可以通过流分析来指定和使用引用数据。 这些引用数据可以是历史数据，也可以只是在一段时间内更改次数较少的非流式处理数据。 系统简化了引用数据的使用，将其视同其他传入事件流，可以与其他实时引入的事件流进行联接以执行各种转换。  
-* **用户定义的函数：** 流分析通过与 Azure 机器学习集成定义机器学习服务中作为流分析查询的一部分的函数调用。 这将扩展流分析的功能，从而利用现有 Azure 机器学习解决方案。 关于这方面的详细信息，请参阅 [机器学习集成教程](stream-analytics-machine-learning-integration-tutorial.md)。
-* **连接性：** 流分析可以直接连接到 Azure 事件中心和 Azure IoT 中心进行流引入，并可以连接到 Azure Blob 服务进行历史数据引入。 结果可以从流分析写入 Azure 存储 Blob 或表、Azure SQL 数据库、Azure Data Lake Store、Azure Cosmos DB、事件中心、Azure 服务总线主题或队列和 Power BI，然后从中可以对结果进行可视化，用工作流进行进一步处理，通过 [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) 用于批量分析或者作为一系列事件再次处理。 使用事件中心时，可以将多个流分析与其他数据源和处理引擎组合在一起，而不会失去计算的流处理本质。  
+可以使用流分析检查来自设备或进程的大量数据流，从数据流提取信息，以及查找模式、趋势和关系。 然后，可以根据数据中的信息执行应用程序任务。 例如，可以引发警报、启动自动化工作流、向 Power BI 之类的报告工具馈送信息，或者将数据存储起来，供以后调查之用。 
 
-## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+流式分析方案的示例包括：
 
-## <a name="next-steps"></a>后续步骤
-我们已经向你介绍了流分析，这是一种托管服务，适用于对物联网的数据进行流式分析。 若要了解有关此服务的详细信息，请参阅：
+* 由金融服务公司提供的个性化实时股票交易分析和提醒。
+* 通过检查事务数据来实时检测欺诈事件。 
+* 数据和身份保护服务。
+* 分析在物理对象（物联网，简称 IoT）中嵌入的传感器和传动器生成的数据。
+* Web 点击流分析。
+* 客户关系管理 (CRM) 应用程序，其功能包括：当客户体验在某个时间范围内不佳时发出警报。
 
-* [Azure 流分析入门](stream-analytics-get-started.md)
-* [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+## 流分析工作原理
+<a id="how-does-stream-analytics-work" class="xliff"></a>
+
+下图绘制的是流式分析管道，说明了如何引入和分析数据，然后发送数据进行演示或操作。 
+
+![流分析管道](./media/stream-analytics-introduction/stream_analytics_intro_pipeline.png)
+
+流分析一开始需要流式处理数据源。 可以使用 Azure 事件中心或 IoT 中心将数据从设备引入 Azure。 也可从数据存储（例如 Azure Blob 存储）拉取数据。 
+
+若要检查流，可创建一项流式分析作业，以便指定数据的来源。 该作业还指定了转换&mdash;如何查找数据、模式或关系。 就此任务来说，流式分析支持类似 SQL 的查询语言，该语言用于对某个时段的流式处理数据进行筛选、排序、聚合和联接。
+
+最后，该作业会指定一个输出，以便向其发送转换的数据。 这样就可以针对所分析的信息来控制后续操作。 例如，可以针对分析执行以下操作：
+
+* 发送更改设备设置的命令。 
+* 将数据发送到受进程监视的队列，该进程会根据发现的情况采取操作。 
+* 将数据发送到 Power BI 仪表板进行报告。
+* 将数据发送到 Data Lake Store、SQL Server 数据库或 Azure Blob/表存储之类的存储。
+
+当作业处于运行状态时，可以对其进行监视并调整其每秒处理的事件数。 也可以通过作业生成进行故障排除所需的诊断日志。
+
+## 主要功能和优点
+<a id="key-capabilities-and-benefits" class="xliff"></a>
+
+流分析经过专门的设计，具有易用、灵活且经济的特点，并可根据作业大小进行缩放。
+
+### 连接到多个输入和输出
+<a id="connectivity-to-many-inputs-and-outputs" class="xliff"></a>
+
+流分析可直接连接到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)和 [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)进行流引入，并可连接到 [Azure Blob 存储服务](https://docs.microsoft.com/azure/storage/storage-introduction#blob-storage-accounts)进行历史数据引入。 如果从事件中心获取数据，则可组合使用流分析与其他数据源和处理引擎。
+
+作业输入也可包括引用数据（静态数据或缓慢变化的数据）。 可以通过将流式处理数据联接到该引用数据来执行查找操作，其方式与数据库查询方式相同。
+
+可以多向路由流分析作业的输出。 可以将其写入存储，例如 Azure 存储 Blob/表、Azure SQL DB、Azure Data Lake Store 或 Azure Cosmos DB。 可以在该处通过 Azure HDInsight 对数据进行批处理分析。 可以将输出发送到供其他进程使用的其他服务，例如事件中心、Azure 服务总线主题或队列。 可以将输出发送到 Power BI，使之可视化。
+
+### 易于使用
+<a id="ease-of-use" class="xliff"></a>
+
+若要定义转换，可使用简单的声明性[流分析查询语言](https://msdn.microsoft.com/library/azure/dn834998.aspx)，不需编程即可进行复杂的分析。 查询语言采用流式处理数据作为其输入。 然后，你可以对数据进行筛选和排序、对值进行聚合、执行计算、对数据进行联接（在流内进行，或者以引用数据作为联接目标），以及使用地理空间函数。 可以在门户中使用 IntelliSense 和语法检查来编辑查询，还可以使用可从实时流中提取的示例数据来测试查询。
+
+### 可扩展查询语言
+<a id="extensible-query-language" class="xliff"></a>
+
+可以通过定义和调用其他函数来扩展查询语言的功能。 可以在 Azure 机器学习服务中定义函数调用，以便利用 Azure 机器学习解决方案。 也可集成 JavaScript 用户定义函数 (UDF)，以便在流分析查询过程中执行复杂的计算。
+
+### 可伸缩性
+<a id="scalability" class="xliff"></a>
+
+流分析每秒可处理多达 1 GB 的传入数据。 与 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)和 [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)集成后，即可通过作业每秒引入数百万个来自已连接设备、点击流、日志文件等的事件。 使用事件中心的分区功能，可以将计算分成多个逻辑步骤，每个步骤还可以进一步细分，以提高可伸缩性。
+
+### 低成本
+<a id="low-cost" class="xliff"></a>
+
+流分析已作为云服务优化，让你始终享受低成本的便利。 你可以根据流单元使用量和系统处理的数据量即用即付。 使用情况取决于已处理事件的数量，以及在群集中预配的处理流分析作业所需的计算能力。
+
+### 可靠性、快速恢复和可重复性
+<a id="reliability-quick-recovery-and-repeatability" class="xliff"></a>
+
+作为云中的托管服务，流分析有助于防止数据丢失，确保业务连续性。 如果发生故障，该服务会提供内置的恢复功能。 由于能够在内部维持相关状态，因此服务提供的可重复结果确保可以对事件进行存档并在未来重新处理，始终获得相同的结果。 因此，你可以在进行根本原因分析、假设情况分析等操作时，及时回过头去调查计算结果。
+
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
+
+* 入门方式：[在 IoT 设备中试验输入和查询](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md)。
+* 构建[端到端流式分析解决方案](stream-analytics-real-time-fraud-detection.md)，通过检查电话元数据来找出欺诈性电话。
+* 了解适用于流分析且类似 SQL 的查询语言，以及独特的概念（例如[开窗函数](stream-analytics-window-functions.md)）。
+* 了解如何[缩放流式分析作业](stream-analytics-scale-jobs.md)。 
+* 了解如何[集成流式分析和 Azure 机器学习](stream-analytics-machine-learning-integration-tutorial.md)。
+* 在 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)中查找流分析问题的答案。
 
 

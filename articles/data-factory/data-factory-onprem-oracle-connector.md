@@ -1,6 +1,6 @@
 ---
-title: "使用数据工厂将数据移出/移入 Oracle | Microsoft Docs"
-description: "了解如何使用 Azure 数据工厂将数据移入/移出本地 Oracle 数据库。"
+title: "使用数据工厂向/从 Oracle 复制数据 | Microsoft Docs"
+description: "了解如何使用 Azure 数据工厂向/从本地 Oracle 数据库复制数据复制。"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 06/04/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 18fffb6cae9107b9301ff702d483b598836ac180
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: bb6af719fe6f1a30c5933ce4342a4c0c072f3ff4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/10/2017
 
 
 ---
-# <a name="move-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入/移出本地 Oracle
+# <a name="copy-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>使用 Azure 数据工厂向/从本地 Oracle 复制数据
 本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出本地 Oracle 数据库。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
 
 ## <a name="supported-scenarios"></a>支持的方案
@@ -570,15 +570,15 @@ User Id=<username>;Password=<password>;",
 | CHAR |String |
 | CLOB |String |
 | DATE |DateTime |
-| FLOAT |小数 |
-| INTEGER |小数 |
+| FLOAT |十进制、字符串（如果精度 > 28） |
+| INTEGER |十进制、字符串（如果精度 > 28） |
 | INTERVAL YEAR TO MONTH |Int32 |
 | INTERVAL DAY TO SECOND |TimeSpan |
 | LONG |String |
 | LONG RAW |Byte[] |
 | NCHAR |String |
 | NCLOB |String |
-| NUMBER |小数 |
+| NUMBER |十进制、字符串（如果精度 > 28） |
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |

@@ -1,25 +1,25 @@
 ---
 title: "Azure Cosmos DB：在 .NET 中使用表 API 进行开发 | Microsoft Docs"
 description: "了解如何通过 .NET 使用 Azure Cosmos DB 的表 API 进行开发"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: 4b22cb49-8ea2-483d-bc95-1172cd009498
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: arramac
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: fff65034ea725fced95a291a8f206b993e8404a4
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 061e79be546a80d254f2915313d747cf69cee9d2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB：在 .NET 中使用表 API 进行开发
@@ -48,12 +48,12 @@ Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduct
 
 如果当前使用 Azure 表存储，可以通过“高级表”预览获得以下好处：
 
-- 具有多宿主的统包[全局分发](../documentdb/documentdb-distribute-data-globally.md)与[自动和手动故障转移](../documentdb/documentdb-regional-failovers.md)
+- 具有多宿主的统包[全局分发](distribute-data-globally.md)与[自动和手动故障转移](regional-failover.md)
 - 支持针对所有属性的自动架构不可知索引（“辅助索引”）和快速查询 
 - 支持跨任意数量的区域实现[存储和吞吐量的独立缩放](partition-data.md)
-- 支持[按表的专用吞吐量](../documentdb/documentdb-request-units.md)，可以从每秒数百个请求扩展到每秒数百万个请求
-- 支持[五个可调整一致性级别](../documentdb/documentdb-consistency-levels.md)，可基于应用程序需要权衡可用性、延迟和一致性
-- 单个区域内可用性达 99.99%，可添加更多区域以提高可用性，以及获得可通用的[行业领先的综合 SLA](https://azure.microsoft.com/support/legal/sla/documentdb/v1_1/)
+- 支持[按表的专用吞吐量](request-units.md)，可以从每秒数百个请求扩展到每秒数百万个请求
+- 支持[五个可调整一致性级别](consistency-levels.md)，可基于应用程序需要权衡可用性、延迟和一致性
+- 单个区域内可用性达 99.99%，可添加更多区域以提高可用性，以及获得可通用的[行业领先的综合 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/)
 - 使用现有的 Azure 存储 .NET SDK，而不会更改应用程序的任何代码
 
 预览期间，Azure Cosmos DB 使用 .NET SDK 支持表 API。 可从 NuGet 下载 [Azure 存储预览版 SDK](https://aka.ms/premiumtablenuget)，其具有与 [Azure 存储 SDK](https://www.nuget.org/packages/WindowsAzure.Storage) 相同的类和方法签名，但也可以使用表 API 连接到 Azure Cosmos DB 帐户。
@@ -77,11 +77,11 @@ Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduct
 > [!TIP]
 > * 已有一个 Azure Cosmos DB 帐户？ 如果有，请跳到[设置 Visual Studio 解决方案](#SetupVS)。
 > * 是否具有 Azure DocumentDB 帐户？ 如果有，则该帐户现为 Azure Cosmos DB 帐户，你可以直接跳到[设置 Visual Studio 解决方案](#SetupVS)。  
-> * 如果使用 Azure Cosmos DB Emulator，请遵循 [Azure Cosmos DB Emulator](../documentdb/documentdb-nosql-local-emulator.md) 中的步骤设置该模拟器，然后直接跳到[设置 Visual Studio 解决方案](#SetupVS)。 
+> * 如果使用 Azure Cosmos DB Emulator，请遵循 [Azure Cosmos DB Emulator](local-emulator.md) 中的步骤设置该模拟器，然后直接跳到[设置 Visual Studio 解决方案](#SetupVS)。 
 >
 >
 
-[!INCLUDE [cosmosdb-create-dbaccount-table](../../includes/cosmosdb-create-dbaccount-table.md)] 
+[!INCLUDE [cosmosdb-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)] 
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
@@ -143,9 +143,9 @@ Azure Cosmos DB 支持大量 Azure 表存储 API 中不可用的功能。 可以
 | TableConnectionMode  | Azure Cosmos DB 支持两种连接模式。 在`Gateway`模式下，将始终向 Azure Cosmos DB 网关发出请求，该网关会将其转发到相应的数据分区。 在`Direct`连接模式下，客户端会提取表到分区的映射，且会直接针对数据分区发出请求。 建议使用`Direct`（默认）。  |
 | TableConnectionProtocol | Azure Cosmos DB 支持两种连接协议 - `Https` 和 `Tcp`。 默认为 `Tcp`，并推荐使用该协议，因为它更轻质。 |
 | TablePreferredLocations | 以逗号分隔的首选（多主页）位置列表，用于读取。 每个 Azure Cosmos DB 帐户可与 1-30+ 个区域关联。 每个客户端实例可按首选顺序指定这些区域的一个子集以实现低延迟的读取。 必须使用这些区域的[显示名称](https://msdn.microsoft.com/library/azure/gg441293.aspx)命名这些区域，例如 `West US`。 另请参阅[多宿主 API](tutorial-global-distribution-table.md)。
-| TableConsistencyLevel | 通过在后列五个定义完善的一致性级别之间进行选择，可在延迟、一致性和可用性之间权衡：`Strong`、`Session`、`Bounded-Staleness`、`ConsistentPrefix` 和 `Eventual`。 默认值为 `Session`。 一致性级别的选择会在多区域设置中产生显著的性能差异。 有关详细信息，请参阅[一致性级别](../documentdb/documentdb-consistency-levels.md)。 |
-| TableThroughput | 表的保留吞吐量以请求单位 (RU) /秒表示。 单个表可支持数百至数百万的 RU/s。 请参阅[请求单位](../documentdb/documentdb-request-units.md)。 默认为 `400` |
-| TableIndexingPolicy | 针对表中所有列的一致和自动辅助索引 | 符合索引策略规范的 JSON 字符串。 若要查看如何将索引策略更改为包括/排除特定列，请参阅[索引策略](../documentdb/documentdb-indexing-policies.md)。 | 所有属性的自动索引（字符串哈希、数字范围） |
+| TableConsistencyLevel | 通过在后列五个定义完善的一致性级别之间进行选择，可在延迟、一致性和可用性之间权衡：`Strong`、`Session`、`Bounded-Staleness`、`ConsistentPrefix` 和 `Eventual`。 默认值为 `Session`。 一致性级别的选择会在多区域设置中产生显著的性能差异。 有关详细信息，请参阅[一致性级别](consistency-levels.md)。 |
+| TableThroughput | 表的保留吞吐量以请求单位 (RU) /秒表示。 单个表可支持数百至数百万的 RU/s。 请参阅[请求单位](request-units.md)。 默认为 `400` |
+| TableIndexingPolicy | 针对表中所有列的一致和自动辅助索引 | 符合索引策略规范的 JSON 字符串。 若要查看如何将索引策略更改为包括/排除特定列，请参阅[索引策略](indexing-policies.md)。 | 所有属性的自动索引（字符串哈希、数字范围） |
 | TableQueryMaxItemCount | 配置单个往返过程中按每个表查询所返回的最大项数。 默认为 `-1`，使 Azure Cosmos DB 在运行时能够动态确定该值。 |
 | TableQueryEnableScan | 如果查询无法使用任何筛选器的索引，则无论如何要通过扫描运行它。 默认值为 `false`。|
 | TableQueryMaxDegreeOfParallelism | 用于执行跨分区查询的并行度。 `0` 是不使用任何预提取的串行，`1` 是使用预提取的串行，更高的值会增加并行度的速率。 默认为 `-1`，使 Azure Cosmos DB 在运行时能够动态确定该值。 |
@@ -167,7 +167,7 @@ Azure Cosmos DB 支持大量 Azure 表存储 API 中不可用的功能。 可以
 
       <!--Table creation options -->
       <add key="TableThroughput" value="700"/>
-      <add key="TableIndexingPolicy" value="{""indexingMode"": ""Consistent""}">
+      <add key="TableIndexingPolicy" value="{""indexingMode"": ""Consistent""}"/>
 
       <!-- Table query options -->
       <add key="TableQueryMaxItemCount" value="-1"/>
@@ -201,11 +201,11 @@ table.CreateIfNotExists();
 在表创建方式上存在一个重要差异。 与 Azure 存储的基于消耗的事务模型不同，Azure Cosmos DB 保留吞吐量。 保留模型具有两个主要优势：
 
 * 吞吐量是专用/保留的，因此如果请求速率处于配置的吞吐量水平或其以下，则用户将不会受到限制
-* 保留模型[对吞吐量大的工作负荷而言更为经济高效](../documentdb/documentdb-key-value-store-cost.md)
+* 保留模型[对吞吐量大的工作负荷而言更为经济高效](key-value-store-cost.md)
 
 可通过以 RU（请求单位）/秒的形式配置 `TableThroughput` 的设置，来配置默认吞吐量。 
 
-对 1-KB 实体的 1 次读取规范化为 1 RU，并将根据其他操作的 CPU、内存和 IOPS 消耗量将其规范化为固定 RU 值。 详细了解 [Azure Cosmos DB 中的请求单位 (../documentdb/documentdb-request-units.md)。
+对 1-KB 实体的 1 次读取规范化为 1 RU，并将根据其他操作的 CPU、内存和 IOPS 消耗量将其规范化为固定 RU 值。 详细了解 [Azure Cosmos DB 中的请求单位](request-units.md)。
 
 > [!NOTE]
 > 虽然表存储 SDK 当前不支持修改吞吐量，但可在任何时候通过 Azure 门户或 Azure CLI 即时更改吞吐量。
@@ -308,7 +308,7 @@ foreach (CustomerEntity entity in table.ExecuteQuery(emailQuery))
 }
 ```
 
-在预览版中，对于表 API，Azure Cosmos DB 支持与 Azure 表存储相同的查询功能。 Azure Cosmos DB 还支持排序、聚合、地理空间查询、层次结构和各种内置函数。 在将来的服务更新中，表 API 将提供更多功能。 有关这些功能的概述，请参阅 [Azure Cosmos DB 查询](../documentdb/documentdb-sql-query.md)。 
+在预览版中，对于表 API，Azure Cosmos DB 支持与 Azure 表存储相同的查询功能。 Azure Cosmos DB 还支持排序、聚合、地理空间查询、层次结构和各种内置函数。 在将来的服务更新中，将在表 API 中提供更多的功能。 有关这些功能的概述，请参阅 [Azure Cosmos DB 查询](documentdb-sql-query.md)。 
 
 ## <a name="replace-an-entity"></a>替换实体
 若要更新实体，请从表服务中检索它，修改实体对象，然后将更改保存回表服务。 以下代码将更改现有客户的电话号码。 

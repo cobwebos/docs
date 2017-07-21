@@ -1,5 +1,5 @@
 ---
-title: "构建第一个数据工厂（Resource Manager 模板）| Microsoft 文档"
+title: "构建第一个数据工厂（Resource Manager 模板）| Microsoft Docs"
 description: "本教程使用 Azure Resource Manager 模板创建一个示例 Azure 数据工厂管道。"
 services: data-factory
 documentationcenter: 
@@ -12,17 +12,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 04/17/2017
+ms.date: 07/10/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 6f5adabca6a66f30e175a00d0ce2064f9d47d1fa
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 7303b51a4a107e63e4c6514f7bf8f33a3ba00e39
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/11/2017
 
 
 ---
-# <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure Resource Manager 模板构建第一个 Azure 数据工厂
+# 教程：使用 Azure Resource Manager 模板构建第一个 Azure 数据工厂
+<a id="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template" class="xliff"></a>
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-build-your-first-pipeline.md)
 > * [Azure 门户](data-factory-build-your-first-pipeline-using-editor.md)
@@ -42,12 +43,14 @@ ms.lasthandoff: 05/18/2017
 > 
 > 本教程中的管道只有一类活动：HDInsightHive。 一个管道可以有多个活动。 而且，你可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。 
 
-## <a name="prerequisites"></a>先决条件
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
 * 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。
 * 遵循 [How to install and configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。
 * 若要了解 Azure Resource Manager 模板，请参阅 [Authoring Azure Resource Manager Templates](../azure-resource-manager/resource-group-authoring-templates.md) （创作 Azure Resource Manager 模板）。 
 
-## <a name="in-this-tutorial"></a>本教程的内容
+## 本教程的内容
+<a id="in-this-tutorial" class="xliff"></a>
 | 实体 | 说明 |
 | --- | --- |
 | Azure 存储链接服务 |将 Azure 存储帐户链接到数据工厂。 Azure 存储帐户保留本示例中管道的输入和输出数据。 |
@@ -56,11 +59,12 @@ ms.lasthandoff: 05/18/2017
 | Azure Blob 输出数据集 |引用 Azure 存储链接服务。 链接服务引用 Azure 存储帐户，Azure Blob 数据集指定用于保存输出数据的存储中的容器、文件夹和文件名。 |
 | 数据管道 |管道包含一个使用输入数据集并生成输出数据集的、HDInsightHive 类型的活动。 |
 
-数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 有两种类型的活动：[数据移动活动](data-factory-data-movement-activities.md)和[数据转换活动](data-factory-data-transformation-activities.md)。 本教程将创建包含一个活动（复制活动）的管道。
+数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 有两种类型的活动：[数据移动活动](data-factory-data-movement-activities.md)和[数据转换活动](data-factory-data-transformation-activities.md)。 本教程将创建包含一个活动（Hive 活动）的管道。
 
 以下部分提供了用于定义数据工厂实体的完整 Resource Manager 模板，以便你可以快速完成整个教程并测试模板。 若要了解每个数据工厂实体的定义方式，请参阅[模板中的数据工厂实体](#data-factory-entities-in-the-template)部分。
 
-## <a name="data-factory-json-template"></a>数据工厂 JSON 模板
+## 数据工厂 JSON 模板
+<a id="data-factory-json-template" class="xliff"></a>
 用于定义数据工厂的顶级 Resource Manager 模板是： 
 
 ```json
@@ -263,7 +267,8 @@ ms.lasthandoff: 05/18/2017
 > 
 > 
 
-## <a name="parameters-json"></a>参数 JSON
+## 参数 JSON
+<a id="parameters-json" class="xliff"></a>
 创建名为 **ADFTutorialARM-Parameters.json**、包含 Azure Resource Manager 模板参数的 JSON 文件。  
 
 > [!IMPORTANT]
@@ -309,7 +314,8 @@ ms.lasthandoff: 05/18/2017
 > 
 > 
 
-## <a name="create-data-factory"></a>创建数据工厂
+## 创建数据工厂
+<a id="create-data-factory" class="xliff"></a>
 1. 启动 **Azure PowerShell** 并运行以下命令： 
    * 运行以下命令并输入用于登录 Azure 门户的用户名和密码。
     ```PowerShell
@@ -329,7 +335,8 @@ ms.lasthandoff: 05/18/2017
     New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFGetStarted\ADFTutorialARM.json -TemplateParameterFile C:\ADFGetStarted\ADFTutorialARM-Parameters.json
     ```
 
-## <a name="monitor-pipeline"></a>监视管道
+## 监视管道
+<a id="monitor-pipeline" class="xliff"></a>
 1. 登录到 [Azure 门户](https://portal.azure.com/)后，单击“浏览”，然后选择“数据工厂”。
      ![“浏览”->“数据工厂”](./media/data-factory-build-your-first-pipeline-using-arm/BrowseDataFactories.png)
 2. 在“数据工厂”边栏选项卡中，单击创建的数据工厂 (**TutorialFactoryARM**)。    
@@ -356,8 +363,10 @@ ms.lasthandoff: 05/18/2017
 > 
 > 
 
-## <a name="data-factory-entities-in-the-template"></a>模板中的数据工厂实体
-### <a name="define-data-factory"></a>定义数据工厂
+## 模板中的数据工厂实体
+<a id="data-factory-entities-in-the-template" class="xliff"></a>
+### 定义数据工厂
+<a id="define-data-factory" class="xliff"></a>
 如以下示例中所示，在 Resource Manager 模板中定义数据工厂：  
 
 ```json
@@ -376,7 +385,8 @@ dataFactoryName 定义为：
 ```
 它是基于资源组 ID 的唯一字符串。  
 
-### <a name="defining-data-factory-entities"></a>定义数据工厂实体
+### 定义数据工厂实体
+<a id="defining-data-factory-entities" class="xliff"></a>
 JSON 模板中定义了以下数据工厂实体： 
 
 * [Azure 存储链接服务](#azure-storage-linked-service)
@@ -385,7 +395,8 @@ JSON 模板中定义了以下数据工厂实体：
 * [Azure Blob 输出数据集](#azure-blob-output-dataset)
 * [包含复制活动的数据管道](#data-pipeline)
 
-#### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
+#### Azure 存储链接服务
+<a id="azure-storage-linked-service" class="xliff"></a>
 在本部分中指定 Azure 存储帐户的名称和密钥。 有关用于定义 Azure 存储链接服务的 JSON 属性的详细信息。请参阅 [Azure Storage linked service](data-factory-azure-blob-connector.md#azure-storage-linked-service)（Azure 存储链接服务）。 
 
 ```json
@@ -393,21 +404,22 @@ JSON 模板中定义了以下数据工厂实体：
     "type": "linkedservices",
     "name": "[variables('azureStorageLinkedServiceName')]",
     "dependsOn": [
-          "[variables('dataFactoryName')]"
+        "[variables('dataFactoryName')]"
     ],
     "apiVersion": "2015-10-01",
     "properties": {
-          "type": "AzureStorage",
-          "description": "Azure Storage linked service",
-          "typeProperties": {
+        "type": "AzureStorage",
+        "description": "Azure Storage linked service",
+        "typeProperties": {
             "connectionString": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',parameters('storageAccountKey'))]"
-          }
+        }
     }
 }
 ```
 **connectionString** 使用 storageAccountName 和 storageAccountKey 参数。 可以使用配置文件传递这些参数的值。 该定义还使用了模板中定义的变量 azureStroageLinkedService 和 dataFactoryName。 
 
-#### <a name="hdinsight-on-demand-linked-service"></a>HDInsight 按需链接服务
+#### HDInsight 按需链接服务
+<a id="hdinsight-on-demand-linked-service" class="xliff"></a>
 有关用于定义 HDInsight 按需链接服务的 JSON 属性的详细信息。请参阅 [Compute linked services](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)（计算链接服务）。  
 
 ```json
@@ -415,17 +427,17 @@ JSON 模板中定义了以下数据工厂实体：
     "type": "linkedservices",
     "name": "[variables('hdInsightOnDemandLinkedServiceName')]",
     "dependsOn": [
-          "[variables('dataFactoryName')]"
+        "[variables('dataFactoryName')]"
     ],
     "apiVersion": "2015-10-01",
     "properties": {
-          "type": "HDInsightOnDemand",
-          "typeProperties": {
+        "type": "HDInsightOnDemand",
+        "typeProperties": {
             "clusterSize": 1,
             "timeToLive": "00:05:00",
             "osType": "windows",
             "linkedServiceName": "[variables('azureStorageLinkedServiceName')]"
-          }
+        }
     }
 }
 ```
@@ -439,7 +451,8 @@ JSON 模板中定义了以下数据工厂实体：
 
 有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
 
-#### <a name="azure-blob-input-dataset"></a>Azure Blob 输入数据集
+#### Azure Blob 输入数据集
+<a id="azure-blob-input-dataset" class="xliff"></a>
 指定包含输入数据的 Blob 容器、文件夹和文件的名称。 有关用于定义 Azure Blob 数据集的 JSON 属性的详细信息，请参阅 [Azure Blob dataset properties](data-factory-azure-blob-connector.md#dataset-properties)（Azure Blob 数据集属性）。 
 
 ```json
@@ -447,32 +460,33 @@ JSON 模板中定义了以下数据工厂实体：
     "type": "datasets",
     "name": "[variables('blobInputDatasetName')]",
     "dependsOn": [
-          "[variables('dataFactoryName')]",
-          "[variables('azureStorageLinkedServiceName')]"
+        "[variables('dataFactoryName')]",
+        "[variables('azureStorageLinkedServiceName')]"
     ],
     "apiVersion": "2015-10-01",
     "properties": {
-          "type": "AzureBlob",
-          "linkedServiceName": "[variables('azureStorageLinkedServiceName')]",
-          "typeProperties": {
+        "type": "AzureBlob",
+        "linkedServiceName": "[variables('azureStorageLinkedServiceName')]",
+        "typeProperties": {
             "fileName": "[parameters('inputBlobName')]",
             "folderPath": "[concat(parameters('blobContainer'), '/', parameters('inputBlobFolder'))]",
             "format": {
-                  "type": "TextFormat",
-                  "columnDelimiter": ","
+                "type": "TextFormat",
+                "columnDelimiter": ","
             }
-          },
-          "availability": {
+        },
+        "availability": {
             "frequency": "Month",
             "interval": 1
-          },
-          "external": true
+        },
+        "external": true
     }
 }
 ```
 此定义使用参数模板中定义的以下参数：blobContainer、inputBlobFolder 和 inputBlobName。 
 
-#### <a name="azure-blob-output-dataset"></a>Azure Blob 输出数据集
+#### Azure Blob 输出数据集
+<a id="azure-blob-output-dataset" class="xliff"></a>
 指定用于保存输出数据的 Blob 容器和文件夹的名称。 有关用于定义 Azure Blob 数据集的 JSON 属性的详细信息，请参阅 [Azure Blob dataset properties](data-factory-azure-blob-connector.md#dataset-properties)（Azure Blob 数据集属性）。  
 
 ```json
@@ -480,31 +494,32 @@ JSON 模板中定义了以下数据工厂实体：
     "type": "datasets",
     "name": "[variables('blobOutputDatasetName')]",
     "dependsOn": [
-          "[variables('dataFactoryName')]",
-          "[variables('azureStorageLinkedServiceName')]"
+        "[variables('dataFactoryName')]",
+        "[variables('azureStorageLinkedServiceName')]"
     ],
     "apiVersion": "2015-10-01",
     "properties": {
-          "type": "AzureBlob",
-          "linkedServiceName": "[variables('azureStorageLinkedServiceName')]",
-          "typeProperties": {
+        "type": "AzureBlob",
+        "linkedServiceName": "[variables('azureStorageLinkedServiceName')]",
+        "typeProperties": {
             "folderPath": "[concat(parameters('blobContainer'), '/', parameters('outputBlobFolder'))]",
             "format": {
-                  "type": "TextFormat",
-                  "columnDelimiter": ","
+                "type": "TextFormat",
+                "columnDelimiter": ","
             }
-          },
-          "availability": {
+        },
+        "availability": {
             "frequency": "Month",
             "interval": 1
-          }
+        }
     }
 }
 ```
 
 此定义使用参数模板中定义的以下参数：blobContainer 和 outputBlobFolder。 
 
-#### <a name="data-pipeline"></a>数据管道
+#### 数据管道
+<a id="data-pipeline" class="xliff"></a>
 定义一个管道，用于在按需 Azure HDInsight 群集上通过运行 Hive 脚本来转换数据。 有关用于定义本示例中所述管道的 JSON 元素的说明，请参阅 [Pipeline JSON](data-factory-create-pipelines.md#pipeline-json)（管道 JSON）。 
 
 ```json
@@ -512,56 +527,57 @@ JSON 模板中定义了以下数据工厂实体：
     "type": "datapipelines",
     "name": "[variables('pipelineName')]",
     "dependsOn": [
-          "[variables('dataFactoryName')]",
-          "[variables('azureStorageLinkedServiceName')]",
-          "[variables('hdInsightOnDemandLinkedServiceName')]",
-          "[variables('blobInputDatasetName')]",
-          "[variables('blobOutputDatasetName')]"
+        "[variables('dataFactoryName')]",
+        "[variables('azureStorageLinkedServiceName')]",
+        "[variables('hdInsightOnDemandLinkedServiceName')]",
+        "[variables('blobInputDatasetName')]",
+        "[variables('blobOutputDatasetName')]"
     ],
     "apiVersion": "2015-10-01",
     "properties": {
-          "description": "Pipeline that transforms data using Hive script.",
-          "activities": [
+        "description": "Pipeline that transforms data using Hive script.",
+        "activities": [
         {
-              "type": "HDInsightHive",
-              "typeProperties": {
+            "type": "HDInsightHive",
+            "typeProperties": {
                 "scriptPath": "[concat(parameters('blobContainer'), '/', parameters('hiveScriptFolder'), '/', parameters('hiveScriptFile'))]",
                 "scriptLinkedService": "[variables('azureStorageLinkedServiceName')]",
                 "defines": {
-                      "inputtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('inputBlobFolder'))]",
-                      "partitionedtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('outputBlobFolder'))]"
+                    "inputtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('inputBlobFolder'))]",
+                    "partitionedtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('outputBlobFolder'))]"
                 }
-              },
-              "inputs": [
+            },
+            "inputs": [
             {
-                  "name": "[variables('blobInputDatasetName')]"
+                "name": "[variables('blobInputDatasetName')]"
             }
-              ],
-              "outputs": [
+            ],
+            "outputs": [
             {
-                  "name": "[variables('blobOutputDatasetName')]"
+                "name": "[variables('blobOutputDatasetName')]"
             }
-              ],
-              "policy": {
+            ],
+            "policy": {
                 "concurrency": 1,
                 "retry": 3
-              },
-              "scheduler": {
+            },
+            "scheduler": {
                 "frequency": "Month",
                 "interval": 1
-              },
-              "name": "RunSampleHiveActivity",
-              "linkedServiceName": "[variables('hdInsightOnDemandLinkedServiceName')]"
+            },
+            "name": "RunSampleHiveActivity",
+            "linkedServiceName": "[variables('hdInsightOnDemandLinkedServiceName')]"
         }
-          ],
-          "start": "2016-10-01T00:00:00Z",
-          "end": "2016-10-02T00:00:00Z",
-          "isPaused": false
+        ],
+        "start": "2016-10-01T00:00:00Z",
+        "end": "2016-10-02T00:00:00Z",
+        "isPaused": false
     }
 }
 ```
 
-## <a name="reuse-the-template"></a>重复使用模板
+## 重复使用模板
+<a id="reuse-the-template" class="xliff"></a>
 本教程创建了一个用于定义数据工厂实体的模板，以及一个用于传递参数值的模板。 若要使用同一个模板将数据工厂实体部署到不同的环境，可为每个环境创建一个参数文件，然后在部署到该环境时使用该文件。     
 
 示例：  
@@ -577,7 +593,8 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
 
 可以重复使用该模板来执行重复的任务。 例如，你需要创建许多数据工厂，其中包含用于实现相同逻辑的一个或多个管道，但每个数据工厂使用不同的 Azure 存储和 Azure SQL 数据库帐户。 在这种情况下，可以在同一个环境（开发、测试或生产）中使用包含不同参数文件的同一个模板来创建数据工厂。 
 
-## <a name="resource-manager-template-for-creating-a-gateway"></a>用于创建网关的 Resource Manager 模板
+## 用于创建网关的 Resource Manager 模板
+<a id="resource-manager-template-for-creating-a-gateway" class="xliff"></a>
 下面是用于在后端创建逻辑网关的示例 Resource Manager 模板。 在本地计算机或 Azure IaaS VM 上安装网关，然后使用密钥向数据工厂服务注册该网关。 有关详细信息，请参阅 [Move data between on-premises and cloud](data-factory-move-data-between-onprem-and-cloud.md) （在本地与云之间移动数据）。
 
 ```json
@@ -614,7 +631,8 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
 ```
 此模板使用名为 GatewayUsingARM 的网关创建名为 GatewayUsingArmDF 的数据工厂。 
 
-## <a name="see-also"></a>另请参阅
+## 另请参阅
+<a id="see-also" class="xliff"></a>
 | 主题 | 说明 |
 |:--- |:--- |
 | [管道](data-factory-create-pipelines.md) |帮助你了解 Azure 数据工厂中的管道和活动，以及如何利用它们为方案或业务构造端对端数据驱动工作流。 |

@@ -1,5 +1,5 @@
 ---
-title: "通过 Azure PowerShell 开始使用 Azure Data Lake Analytics | Microsoft 文档"
+title: "通过 Azure PowerShell 开始使用 Azure Data Lake Analytics | Microsoft Docs"
 description: "使用 Azure PowerShell 创建 Data Lake Analytics 帐户，使用 U-SQL 创建 Data Lake Analytics 作业，并提交该作业。 "
 services: data-lake-analytics
 documentationcenter: 
@@ -15,59 +15,61 @@ ms.workload: big-data
 ms.date: 05/04/2017
 ms.author: edmaca
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 6985dff332928d704f30e167c3bddb62bcc6cac1
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: faf17bcac66a70fc78bb171e172886fd2dcadca8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
-# <a name="tutorial-get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>教程：通过使用 Azure PowerShell 实现 Azure Data Lake Analytics 入门
+# <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>通过 Azure PowerShell 开始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 了解如何使用 Azure PowerShell 创建 Azure Data Lake Analytics 帐户，然后提交并运行 U-SQL 作业。 有关 Data Lake Analytics 的详细信息，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
+
 开始学习本教程之前，必须做好以下准备：
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **一个 Azure Data Lake Analytics 帐户**。 请参阅 [Data Lake Analytics 入门](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-get-started-portal)。
 * **配备 Azure PowerShell 的工作站**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
+## <a name="log-in-to-azure"></a>登录 Azure
+
+本教程假定观看者已熟悉如何使用 Azure PowerShell。 具体而言，观看者需要知道如何登录到 Azure。 如需帮助，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps)。
+
+使用订阅名称登录：
+
+```
+Login-AzureRmAccount -SubscriptionName "ContosoSubscription"
+```
+
+除订阅名称外，还可使用订阅 ID 登录：
+
+```
+Login-AzureRmAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+```
+
+如果成功，此命令的输出将类似于以下文本：
+
+```
+Environment           : AzureCloud
+Account               : joe@contoso.com
+TenantId              : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+SubscriptionId        : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+SubscriptionName      : ContosoSubscription
+CurrentStorageAccount :
+```
+
 ## <a name="preparing-for-the-tutorial"></a>准备教程
-若要创建 Data Lake Analytics 帐户，首先需定义：
 
-* **Azure 资源组**：必须在 Azure 资源组中创建一个 Data Lake Analytics 帐户。
-* **Data Lake Analytics 帐户名**：Data Lake 帐户名只能包含小写字母和数字。
-* **位置**：支持 Data Lake Analytics 的 Azure 数据中心之一。
-* **默认的 Data Lake Store 帐户**：每个 Data Lake Analytics 帐户都有一个默认的 Data Lake Store 帐户。 这些帐户必须位于同一位置。
-
-本教程中的 PowerShell 代码片段使用上述变量来存储该信息
+本教程中的 PowerShell 代码片段使用上述变量来存储该信息：
 
 ```
 $rg = "<ResourceGroupName>"
-$adls = "<DataLakeAccountName>"
+$adls = "<DataLakeStoreAccountName>"
 $adla = "<DataLakeAnalyticsAccountName>"
 $location = "East US 2"
-```
-
-## <a name="create-a-data-lake-analytics-account"></a>创建 Data Lake Analytics 帐户
-
-如果还没有资源组，请创建一个，因为需要使用它。 
-
-```
-New-AzureRmResourceGroup -Name  $rg -Location $location
-```
-
-每个 Data Lake Analytics 帐户都需要一个默认的 Data Lake Store 帐户，用于存储日志。 可以重复使用现有的帐户，也可以创建新帐户。 
-
-```
-New-AdlStore -ResourceGroupName $rg -Name $adls -Location $location
-```
-
-资源组和 Data Lake Store 帐户可用以后，请创建 Data Lake Analytics 帐户。
-
-```
-New-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla -Location $location -DefaultDataLake $adls
 ```
 
 ## <a name="get-information-about-a-data-lake-analytics-account"></a>获取有关 Data Lake Analytics 帐户的信息
@@ -78,9 +80,10 @@ Get-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla
 
 ## <a name="submit-a-u-sql-job"></a>提交 U-SQL 作业
 
-使用以下 U-SQL 脚本创建文本文件。
+创建一个 PowerShell 变量以保存 U-SQL 脚本。
 
 ```
+$script = @"
 @a  = 
     SELECT * FROM 
         (VALUES
@@ -91,26 +94,29 @@ Get-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla
 OUTPUT @a
     TO "/data.csv"
     USING Outputters.Csv();
+
+"@
 ```
 
 提交该脚本。
 
 ```
-Submit-AdlJob -AccountName $adla –ScriptPath "d:\test.usql"Submit
+$job = Submit-AdlJob -AccountName $adla –Script $script
 ```
 
-## <a name="monitor-u-sql-jobs"></a>监视 U-SQL 作业
-
-列出帐户中的所有作业。 输出包括当前运行的作业以及最近完成的那些作业。
+或者，可将脚本保存为文件，然后使用以下命令提交：
 
 ```
-Get-AdlJob -Account $adla
+$filename = "d:\test.usql"
+$script | out-File $filename
+$job = Submit-AdlJob -AccountName $adla –ScriptPath $filename
 ```
 
-获取特定作业的状态。
+
+获取特定作业的状态。 继续使用此 cmdlet，直至作业完成。
 
 ```
-Get-AdlJob -AccountName $adla -JobId $job.JobId
+$job = Get-AdlJob -AccountName $adla -JobId $job.JobId
 ```
 
 可以使用 Wait-AdlJob cmdlet，而不必反复调用 Get-AdlAnalyticsJob 直至作业完成。
@@ -119,31 +125,10 @@ Get-AdlJob -AccountName $adla -JobId $job.JobId
 Wait-AdlJob -Account $adla -JobId $job.JobId
 ```
 
-作业完成后，可以列出文件夹中的文件，检查输出文件是否存在。
+下载输出文件。
 
 ```
-Get-AdlStoreChildItem -Account $adls -Path "/"
-```
-
-检查文件是否存在。
-
-```
-Test-AdlStoreItem -Account $adls -Path "/data.csv"
-```
-
-## <a name="uploading-and-downloading-files"></a>上传和下载文件
-
-下载 U-SQL 脚本的输出。
-
-```
-Export-AdlStoreItem -AccountName $adls -Path "/data.csv"  -Destination "D:\data.csv"
-```
-
-
-上传一个文件，用作 U-SQL 脚本的输入。
-
-```
-Import-AdlStoreItem -AccountName $adls -Path "D:\data.tsv" -Destination "/data_copy.csv" 
+Export-AdlStoreItem -AccountName $adls -Path "/data.csv" -Destination "C:\data.csv"
 ```
 
 ## <a name="see-also"></a>另请参阅

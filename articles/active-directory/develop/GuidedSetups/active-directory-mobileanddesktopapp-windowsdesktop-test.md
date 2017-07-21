@@ -16,10 +16,10 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: bf8b96f7d7e73a978a66ed2f3dd307c348ef695f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 972cc48057c13271d725b0c973c3ccf651ad27c4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -54,7 +54,6 @@ API 调用结果屏幕上应显示 Microsoft Graph API 调用返回的用户个�
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>有关作用域和委派权限的详细信息
 Graph API 需要 `user.read` 作用域来读取用户个人资料。 默认情况下，在我们的注册门户上注册的每个应用程序中，都会自动添加此作用域。 某些其他 Graph API 及后端服务器的自定义 API 需要其他作用域。 例如，对于 Graph，需要 `Calendars.Read` 才能列出用户的日历。 若要在应用程序环境中访问用户的日历，则需要添加 `Calendars.Read` 委派应用程序注册的信息，然后将 `Calendars.Read` 添加到 `AcquireTokenAsync` 调用。 增加作用域数量时，用户可能收到接受其他许可的提示。
 
-如果后端 API 不需要作用域（不推荐），则可以将 `ClientId` 用作 `AcquireTokenAsync` 调用中的作用域。
 <!--end-collapse-->
 
 

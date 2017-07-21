@@ -9,11 +9,11 @@ ms.technology: speech
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: prrajan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: c8d4c29e2c8a8fe9e4b23fce5574c8f530bae18c
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 113a3acbd67f1f1434450a014e65813534b751cf
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="speech-protocol"></a>Speech Protocol
@@ -59,6 +59,27 @@ Web socket upgrade requests that do not include the *X-ConnectionId*, that do no
 ## <a name="authorization"></a>Authorization 
 
 In addition to the standard web socket handshake headers, speech requests require an *Authorization* header. Connection requests without this header are rejected by the service with a 403 Forbidden HTTP response.
+
+The *Authorization* header must contain a JSON Web Token (JWT) access token.
+
+For information about subscribing and obtaining API keys that are used to retrieve valid JWT access tokens, see [Get Started for Free](https://www.microsoft.com/cognitive-services/en-US/sign-up?ReturnUrl=/cognitive-services/en-us/subscriptions?productId=%2fproducts%2fBing.Speech.Preview).
+
+The API key is passed to the token service. For example:
+
+```
+POST https://api.cognitive.microsoft.com/sts/v1.0/issueToken
+Content-Length: 0
+```
+
+The required header information for token access is as follows.
+
+Name    | Format    | Description
+---------|---------|--------
+Ocp-Apim-Subscription-Key | ASCII   | Your subscription key
+
+The token service returns the JWT access token as `text/plain`. Then the JWT is passed as a `Base64 access_token` to the handshake as an authorization header prefixed with the string `Bearer`. For example:
+
+`Authorization: Bearer [Base64 access_token]`
 
 ## <a name="cookies"></a>Cookies
 

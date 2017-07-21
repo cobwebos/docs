@@ -16,19 +16,20 @@ ms.topic: hero-article
 ms.date: 05/24/2017
 ms.author: andrela
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 2d1092af00c1bce3e47d980a512a25eff1f0d9b6
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b25ef8333a2836f976a974d6ea6e7fdcea2745e3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
 
-# <a name="azure-sql-database-use-ruby-to-connect-and-query-data"></a>Azure SQL 数据库：使用 Ruby 进行连接和数据查询
+# Azure SQL 数据库：使用 Ruby 进行连接和数据查询
+<a id="azure-sql-database-use-ruby-to-connect-and-query-data" class="xliff"></a>
 
-本快速入门演示了如何通过 Mac OS 和 Ubuntu Linux 平台使用 [Ruby](https://Ruby.org) 连接到 Azure SQL 数据库，然后使用 Transact-SQL 语句在数据库中查询、插入、更新和删除数据。
+本快速入门演示了如何通过 Mac OS 和 Ubuntu Linux 平台使用 [Ruby](https://www.ruby-lang.org) 连接到 Azure SQL 数据库，然后使用 Transact-SQL 语句在数据库中查询、插入、更新和删除数据。
 
-## <a name="prerequisites"></a>先决条件
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
 
 此快速入门使用以下某个快速入门中创建的资源作为其起点：
 
@@ -36,11 +37,13 @@ ms.lasthandoff: 05/26/2017
 - [创建 DB - CLI](sql-database-get-started-cli.md)
 - [创建 DB - PowerShell](sql-database-get-started-powershell.md)
 
-## <a name="install-ruby-and-database-communication-libraries"></a>安装 Ruby 和数据库通信库
+## 安装 Ruby 和数据库通信库
+<a id="install-ruby-and-database-communication-libraries" class="xliff"></a>
 
 本部分中的步骤假定你熟悉使用 Ruby 开发，但不熟悉如何使用 Azure SQL 数据库。 如果你不熟悉如何使用 Ruby 进行开发，请转到[使用 SQL Server 生成应用](https://www.microsoft.com/en-us/sql-server/developer-get-started/)并选择 **Ruby**，然后选择操作系统。
 
-### <a name="mac-os"></a>**Mac OS**
+### **Mac OS**
+<a id="mac-os" class="xliff"></a>
 打开终端并导航到要在其中创建 Ruby 脚本的目录。 输入以下命令以安装 **brew**、**FreeTDS** 和 **TinyTDS**。
 
 ```bash
@@ -51,7 +54,8 @@ brew install FreeTDS
 gem install tiny_tds
 ```
 
-### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
+### **Linux (Ubuntu)**
+<a id="linux-ubuntu" class="xliff"></a>
 打开终端并导航到要在其中创建 Ruby 脚本的目录。 输入以下命令以安装 **FreeTDS** 和 **TinyTDS**。
 
 ```bash
@@ -64,7 +68,8 @@ make install
 gem install tiny_tds
 ```
 
-## <a name="get-connection-information"></a>获取连接信息
+## SQL Server 连接信息
+<a id="sql-server-connection-information" class="xliff"></a>
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称、数据库名称和登录信息。
 
@@ -77,7 +82,8 @@ gem install tiny_tds
 4. 如果忘了服务器的登录信息，请导航到 SQL 数据库服务器页，以查看服务器管理员名称并重置密码（如果需要）。
     
 
-## <a name="select-data"></a>选择数据
+## 选择数据
+<a id="select-data" class="xliff"></a>
 通过以下代码将 [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 函数与 [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql) Transact-SQL 语句配合使用来按类别查询前 20 个产品。 TinyTDS::Client 函数接受查询并返回结果集。 可使用 [result.each do |row|](https://github.com/rails-sqlserver/tiny_tds) 循环访问结果集。 将 server、database、username 和 password 参数替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。
 
 ```ruby
@@ -100,7 +106,8 @@ result.each do |row|
 end
 ```
 
-## <a name="insert-data"></a>插入数据
+## 插入数据
+<a id="insert-data" class="xliff"></a>
 通过以下代码将 [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 函数与 [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) Transact-SQL 语句配合使用来将新产品插入到 SalesLT.Product 表中。 将 server、database、username 和 password 参数替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。
 
 本示例介绍了如何安全地执行 INSERT 语句，传递参数以保护应用程序免遭 [SQL 注入](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx)漏洞的危害，然后检索自动生成的[主键](https://docs.microsoft.com/sql/relational-databases/tables/primary-and-foreign-key-constraints)值。    
@@ -138,7 +145,8 @@ end
 insert('BrandNewProduct', '200989', 'Blue', 75, 80, '7/1/2016')
 ```
 
-## <a name="update-data"></a>更新数据
+## 更新数据
+<a id="update-data" class="xliff"></a>
 通过以下代码将 [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 函数与 [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql) Transact-SQL 语句配合使用来更新之前添加的新产品。 将 server、database、username 和 password 参数替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。
 
 ```ruby
@@ -159,7 +167,8 @@ end
 update('BrandNewProduct', 500, client)
 ```
 
-## <a name="delete-data"></a>删除数据
+## 删除数据
+<a id="delete-data" class="xliff"></a>
 通过以下代码将 [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 函数与 [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL 语句配合使用来删除之前添加的新产品。 将 server、database、username 和 password 参数替换为使用 AdventureWorksLT 示例数据创建数据库时指定的值。
 
 ```ruby
@@ -190,7 +199,8 @@ end
 delete('BrandNewProduct', client)
 ```
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 - [设计第一个 Azure SQL 数据库](sql-database-design-first-database.md)
 - [TinyTDS 的 GitHub 存储库](https://github.com/rails-sqlserver/tiny_tds)
 - [报告问题/提出问题](https://github.com/rails-sqlserver/tiny_tds/issues)

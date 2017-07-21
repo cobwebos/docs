@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/15/2017
+ms.date: 06/27/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 6d5572a2fa7a89d51ec62e3ae05bdc9939ca3a24
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 7abc3f238d08694c9f7359479cdce07bfb3d87bd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-powershell"></a>使用 PowerShell 配置与 VNet 的点到站点连接
+# 使用 PowerShell 配置与 VNet 的点到站点连接
+<a id="configure-a-point-to-site-connection-to-a-vnet-using-powershell" class="xliff"></a>
 
 
 本文介绍如何在 Resource Manager 部署模型中使用 PowerShell 通过点到站点连接来创建 VNet。 也可使用不同的部署工具或部署模型来创建此配置，方法是从以下列表中选择另一选项：
@@ -49,7 +50,8 @@ P2S 连接有以下要求：
 * 必须生成 VPN 客户端配置包，并将其安装在每个进行连接的客户端计算机上。 客户端配置包配置本机 VPN 客户端，该客户端已经位于操作系统中，具有连接到 VNet 所需的信息。
 
 
-## <a name="before-beginning"></a>开始之前
+## 开始之前
+<a id="before-beginning" class="xliff"></a>
 
 * 确保你拥有 Azure 订阅。 如果你还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial)。
 * 安装最新版本的 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
@@ -151,7 +153,9 @@ P2S 连接有以下要求：
 
 ## <a name="Certificates"></a>3 - 生成证书
 
-Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 请将根证书的公钥信息上传到 Azure， 然后即可将该公钥视为“可信”公钥。 必须根据可信根证书生成客户端证书，然后将其安装在每个客户端计算机的 Certificates-Current User/个人证书存储中。 当客户端启动到 VNet 的连接时，使用证书进行身份验证。 有关如何生成和安装证书的详细信息，请参阅[点到站点的证书](vpn-gateway-certificates-point-to-site.md)。
+Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 请将根证书的公钥信息上传到 Azure， 然后即可将该公钥视为“可信”公钥。 必须根据可信根证书生成客户端证书，然后将其安装在每个客户端计算机的 Certificates-Current User/个人证书存储中。 当客户端启动到 VNet 的连接时，使用证书进行身份验证。 
+
+如果使用自签名证书，这些证书必须使用特定的参数创建。 可以按照 [PowerShell 和 Windows 10](vpn-gateway-certificates-point-to-site.md) 或 [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)（如果没有 Windows 10）的说明，创建自签名证书。 生成自签名根证书和客户端证书时，必须按说明中的步骤操作，这一点很重要。 否则，生成的证书将不兼容 P2S 连接，你会收到连接错误。
 
 ### <a name="cer"></a>步骤 1 - 获取根证书的 .cer 文件
 
@@ -258,7 +262,8 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 
 可以在 Azure 中添加和删除受信任的根证书。 删除根证书时，如果客户端的证书是从该根生成的，则客户端不能进行身份验证，因此无法进行连接。 如果希望客户端进行身份验证和连接，则需安装新客户端证书，该证书是从委托（上传）给 Azure 的根证书生成的。
 
-### <a name="to-add-a-trusted-root-certificate"></a>添加受信任的根证书
+### 添加受信任的根证书
+<a id="to-add-a-trusted-root-certificate" class="xliff"></a>
 
 最多可以将 20 个根证书 .cer 文件添加到 Azure。 以下步骤用于添加根证书：
 
@@ -289,7 +294,8 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
   -VirtualNetworkGatewayName "VNet1GW"
   ```
 
-### <a name="to-remove-a-root-certificate"></a>删除根证书
+### 删除根证书
+<a id="to-remove-a-root-certificate" class="xliff"></a>
 
 1. 声明变量。
 
@@ -317,7 +323,8 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 
 常见的做法是使用根证书管理团队或组织级别的访问权限，然后使用吊销的客户端证书针对单个用户进行精细的访问控制。
 
-### <a name="to-revoke-a-client-certificate"></a>吊销客户端证书
+### 吊销客户端证书
+<a id="to-revoke-a-client-certificate" class="xliff"></a>
 
 1. 检索客户端证书指纹。 有关详细信息，请参阅[如何检索证书的指纹](https://msdn.microsoft.com/library/ms734695.aspx)。
 2. 将信息复制到一个文本编辑器，删除所有空格，使之成为一个连续的字符串。 该字符串在下一步声明为变量。
@@ -343,7 +350,8 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
   ```
 6. 添加指纹后，不再可以使用证书来连接。 客户端在尝试使用此证书进行连接时，会收到一条消息，指出证书不再有效。
 
-### <a name="to-reinstate-a-client-certificate"></a>恢复客户端证书
+### 恢复客户端证书
+<a id="to-reinstate-a-client-certificate" class="xliff"></a>
 
 可以通过从吊销的客户端证书列表中删除指纹来恢复客户端证书。
 
@@ -371,5 +379,7 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-point-to-site-faq-include.md)]
 
-## <a name="next-steps"></a>后续步骤
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
 连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。 若要详细了解网络和虚拟机，请参阅 [Azure 和 Linux VM 网络概述](../virtual-machines/linux/azure-vm-network-overview.md)。
+

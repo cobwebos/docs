@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9364a1449ba17568c82832bc1e97d40febbb30ab
 ms.openlocfilehash: 51eafa16bd918a065f896ba89dec54d2340b5c69
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/27/2017
-
 
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>续订 Office 365 和 Azure Active Directory 的联合身份验证证书
@@ -40,7 +40,7 @@ ms.lasthandoff: 01/27/2017
 >
 >
 
-Azure AD 将尝试监视联合元数据，并按照此元数据的指示更新令牌签名证书。 在令牌签名证书过期前&30; 天，Azure AD 会通过轮询联合元数据，检查是否已有新的证书。
+Azure AD 将尝试监视联合元数据，并按照此元数据的指示更新令牌签名证书。 在令牌签名证书过期前 30 天，Azure AD 会通过轮询联合元数据，检查是否已有新的证书。
 
 * 如果它能成功轮询联合元数据并检索到新证书，则不会向用户发送电子邮件通知，或者在 Office 365 门户中显示警告。
 * 如果由于无法访问联合元数据或者未启用自动证书滚动更新而无法检索新的令牌签名证书，Azure AD 将发出电子邮件通知，并在 Office 365 门户中显示警告。
@@ -145,7 +145,7 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 5. 若要生成新的证书，请在 PowerShell 命令提示符下执行以下命令：`PS C:\>Update-ADFSCertificate –CertificateType token-signing`。
 6. 通过再次运行以下命令来验证更新：PS C:\>Get-ADFSCertificate –CertificateType token-signing
 
-此时会列出两个证书，其中一个的 **NotAfter** 日期大约为未来的&1; 年，其 **IsPrimary** 值为 **False**。
+此时会列出两个证书，其中一个的 **NotAfter** 日期大约为未来的 1 年，其 **IsPrimary** 值为 **False**。
 
 ### <a name="step-2-update-the-new-token-signing-certificates-for-the-office-365-trust"></a>步骤 2：更新 Office 365 信任的新令牌签名证书
 使用要用于信任的新令牌签名证书更新 Office 365。

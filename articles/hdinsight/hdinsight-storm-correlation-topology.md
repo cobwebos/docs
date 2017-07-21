@@ -17,10 +17,10 @@ ms.date: 03/01/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 21ce246fab787e06576a295ec4ea45ae3fdfc379
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2d35232cdb9d7076c27e98f7c2300ec910479e8d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="correlate-events-that-arrive-at-different-times-using-storm-and-hbase"></a>使用 Storm 和 HBase 关联在不同时间到达的事件
@@ -41,7 +41,7 @@ ms.lasthandoff: 05/18/2017
 * HDInsight 群集上的 Apache HBase（基于 Linux 或 Windows）。
 
   > [!IMPORTANT]
-  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 * 开发环境中采用 [Java](https://java.com) 1.7 或更高版本。 将拓扑提交到 HDInsight 群集时，Java 用于打包拓扑。
 

@@ -12,31 +12,31 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2017
+ms.date: 07/11/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: d0aea6ffc04792e7e70a15accf92de05c553ff46
-ms.lasthandoff: 04/20/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: c1485205f49dae28adbddbf679fc120a6e52bff6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/07/2017
 
 ---
-# <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-azure-data-factory-copy-wizard"></a>在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库[复制向导]
+# <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>在不到 15 分钟的时间里通过数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库
 [Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)是一种基于云的向外扩展数据库，可以处理大量数据（关系数据和非关系数据）。  SQL 数据仓库在大规模并行处理 (MPP) 体系结构的基础上构建，已针对企业数据仓库工作负荷进行优化。  它通过灵活地缩放存储以及独立计算提供云灵活性。
 
-现在通过使用 **Azure 数据工厂**，Azure SQL 数据仓库入门变得前所未有地简单。  Azure 数据工厂是一个完全托管的基于云的数据集成服务，它可用于使用现有系统的数据填充 SQL 数据仓库，在节省宝贵时间的同时评估 SQL 数据仓库并在其上生成分析解决方案。  以下是使用 Azure 数据工厂将数据加载到 Azure SQL 数据仓库的主要优点：
+现在通过使用 **Azure 数据工厂**，Azure SQL 数据仓库入门变得前所未有地简单。  Azure 数据工厂是一个完全托管的基于云的数据集成服务，它可用于使用现有系统中的数据填充 SQL 数据仓库，在节省宝贵时间的同时评估 SQL 数据仓库并生成分析解决方案。 以下是使用 Azure 数据工厂将数据加载到 Azure SQL 数据仓库的主要优点：
 
 * **轻松设置**：无需脚本的 5 步直观的向导。
 * **丰富的数据存储支持**：对一组丰富的本地和基于云的数据存储的内置支持。
 * **安全且合规**：通过 HTTPS 或 ExpressRoute 传输数据，并且全局服务可确保数据不会离开地理边界
 * **通过使用 PolyBase 提供无与伦比的性能** - 使用 Polybase 是将数据移动到 Azure SQL 数据仓库的最高效的方法。 使用临时 blob 功能，可以实现所有类型的数据存储（包括 Azure Blob 存储）的高加载速度，默认情况下，Polybase 支持此功能。
 
-本文演示了如何使用数据工厂复制向导在不到 15 分钟的时间里以超过 1.2 GBps 的吞吐量将 1 TB 数据从 Azure Blob 存储加载到 Azure SQL 数据仓库。
+本文演示了如何使用数据工厂复制向导在不到 15 分钟的时间里以超过 1.2 GBps 的吞吐量将 1-TB 数据从 Azure Blob 存储加载到 Azure SQL 数据仓库。
 
 本文提供了使用复制向导将数据移动到 Azure SQL 数据仓库的分步说明。
 
 > [!NOTE]
-> 有关数据工厂将数据移入/移出 Azure SQL 数据仓库的功能的一般信息，请参阅[使用 Azure 数据工厂将数据移入和移出 Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md)一文。
+>  有关数据工厂将数据移入/移出 Azure SQL 数据仓库的功能的一般信息，请参阅[使用 Azure 数据工厂将数据移入和移出 Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md)一文。
 >
 > 还可以使用 Azure 门户、Visual Studio、PowerShell 等生成管道。有关在 Azure 数据工厂中使用复制活动的分步说明的快速演练，请参阅[教程：将数据从 Azure Blob 复制到 Azure SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。  
 >
@@ -59,7 +59,7 @@ ms.lasthandoff: 04/20/2017
   > [!NOTE]
   > 从 Azure Blob 加载时，数据加载性能与在 SQL 数据仓库中配置的 DWU 数直接成正比：
   >
-  > 加载 1 TB 数据到 1,000 DWU SQL 数据仓库花费 87 分钟（~200MBps 吞吐量）加载 1 TB 数据到 2,000 DWU SQL 数据仓库花费 46 分钟（~380MBps 吞吐量）加载 1 TB 数据到 6,000 DWU SQL 数据仓库花费 14 分钟（~1.2GBps 吞吐量）
+  > 加载 1 TB 数据到 1,000 DWU SQL 数据仓库花费 87 分钟（~200 MBps 吞吐量）加载 1 TB 数据到 2,000 DWU SQL 数据仓库花费 46 分钟（~380 MBps 吞吐量）加载 1 TB 数据到 6,000 DWU SQL 数据仓库花费 14 分钟（~1.2 GBps 吞吐量）
   >
   >
 
@@ -139,12 +139,12 @@ ms.lasthandoff: 04/20/2017
 
 1. 输入 **CopyFromBlobToAzureSqlDataWarehouse** 作为**任务名称**
 2. 选择“立即运行一次”选项。   
-3. 单击“资源组名称” 的 Azure 数据工厂。  
+3. 单击“下一步”。  
 
     ![复制向导 - 属性页](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
 ## <a name="step-2-configure-source"></a>步骤 2：配置源
-本部分说明配置源的步骤：包含 1 TB TPC-H 行项目文件的 Azure Blob。
+本部分说明配置源的步骤：包含 1-TB TPC-H 行项目文件的 Azure Blob。
 
 1. 选择“Azure Blob 存储”作为数据存储，并单击“下一步”。
 

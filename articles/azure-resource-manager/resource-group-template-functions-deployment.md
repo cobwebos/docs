@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2017
+ms.date: 06/13/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: ce888415b6a5f82fb3d49834b055f8afe97442a8
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: af2deef5a2e2c7cff8f485f7ea6846a0e087ecca
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>用于 Azure Resource Manager 模板的部署函数 
 
-资源管理器提供以下函数，用于从与部署相关的模板和值部分获取值：
+Resource Manager 提供以下函数，用于从与部署相关的模板和值部分获取值：
 
 * [deployment](#deployment)
 * [parameters](#parameters)
@@ -38,32 +38,6 @@ ms.lasthandoff: 04/28/2017
 `deployment()`
 
 返回有关当前部署操作的信息。
-
-### <a name="examples"></a>示例
-
-下面的示例返回部署对象：
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "subscriptionOutput": {
-            "value": "[deployment()]",
-            "type" : "object"
-        }
-    }
-}
-```
-
-以下示例演示如何根据父模板的 URI，使用 deployment() 链接到另一个模板。
-
-```json
-"variables": {  
-    "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"  
-}
-```  
 
 ### <a name="return-value"></a>返回值
 
@@ -113,7 +87,57 @@ ms.lasthandoff: 04/28/2017
 }
 ```
 
+### <a name="remarks"></a>备注
 
+可以根据父模板的 URI，使用 deployment() 链接到另一个模板。
+
+```json
+"variables": {  
+    "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"  
+}
+```  
+
+### <a name="example"></a>示例
+
+下面的示例返回部署对象：
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "subscriptionOutput": {
+            "value": "[deployment()]",
+            "type" : "object"
+        }
+    }
+}
+```
+
+上面的示例返回下列对象：
+
+```json
+{
+  "name": "deployment",
+  "properties": {
+    "template": {
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "resources": [],
+      "outputs": {
+        "subscriptionOutput": {
+          "type": "Object",
+          "value": "[deployment()]"
+        }
+      }
+    },
+    "parameters": {},
+    "mode": "Incremental",
+    "provisioningState": "Accepted"
+  }
+}
+```
 
 <a id="parameters" />
 
@@ -128,9 +152,13 @@ ms.lasthandoff: 04/28/2017
 |:--- |:--- |:--- |:--- |
 | parameterName |是 |字符串 |要返回的参数名称。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
 
-以下示例演示了 parameters 函数的简化用法。
+指定的参数的值。
+
+### <a name="remarks"></a>备注
+
+通常情况下，使用参数来设置资源值。 下面的示例将网站的名称设置为部署过程中传递的参数值。
 
 ```json
 "parameters": { 
@@ -140,7 +168,7 @@ ms.lasthandoff: 04/28/2017
 },
 "resources": [
    {
-      "apiVersion": "2014-06-01",
+      "apiVersion": "2016-08-01",
       "name": "[parameters('siteName')]",
       "type": "Microsoft.Web/Sites",
       ...
@@ -148,9 +176,72 @@ ms.lasthandoff: 04/28/2017
 ]
 ```
 
-### <a name="return-value"></a>返回值
+### <a name="example"></a>示例
 
-参数的类型。
+以下示例演示了 parameters 函数的简化用法。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "stringParameter": {
+            "type" : "string",
+            "defaultValue": "option 1"
+        },
+        "intParameter": {
+            "type": "int",
+            "defaultValue": 1
+        },
+        "objectParameter": {
+            "type": "object",
+            "defaultValue": {"one": "a", "two": "b"}
+        },
+        "arrayParameter": {
+            "type": "array",
+            "defaultValue": [1, 2, 3]
+        },
+        "crossParameter": {
+            "type": "string",
+            "defaultValue": "[parameters('stringParameter')]"
+        }
+    },
+    "variables": {},
+    "resources": [],
+    "outputs": {
+        "stringOutput": {
+            "value": "[parameters('stringParameter')]",
+            "type" : "string"
+        },
+        "intOutput": {
+            "value": "[parameters('intParameter')]",
+            "type" : "int"
+        },
+        "objectOutput": {
+            "value": "[parameters('objectParameter')]",
+            "type" : "object"
+        },
+        "arrayOutput": {
+            "value": "[parameters('arrayParameter')]",
+            "type" : "array"
+        },
+        "crossOutput": {
+            "value": "[parameters('crossParameter')]",
+            "type" : "string"
+        }
+    }
+}
+```
+
+上面具有默认值的示例的输出为：
+
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| stringOutput | String | option 1 |
+| intOutput | int | 1 |
+| objectOutput | 对象 | {"one": "a", "two": "b"} |
+| arrayOutput | Array | [1, 2, 3] |
+| crossOutput | String | option 1 |
 
 <a id="variables" />
 
@@ -165,26 +256,82 @@ ms.lasthandoff: 04/28/2017
 |:--- |:--- |:--- |:--- |
 | variableName |是 |String |要返回的变量名称。 |
 
-### <a name="examples"></a>示例
+### <a name="return-value"></a>返回值
 
-以下示例使用变量值。
+指定的变量的值。
+
+### <a name="remarks"></a>备注
+
+通常情况下，使用变量通过仅构造一次复杂值来简化模板。 下面的示例为存储帐户构造唯一的名称。
 
 ```json
 "variables": {
-  "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
+    "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
 },
 "resources": [
-  {
-    "type": "Microsoft.Storage/storageAccounts",
-    "name": "[variables('storageName')]",
-    ...
-  }
+    {
+        "type": "Microsoft.Storage/storageAccounts",
+        "name": "[variables('storageName')]",
+        ...
+    },
+    {
+        "type": "Microsoft.Compute/virtualMachines",
+        "dependsOn": [
+            "[variables('storageName')]"
+        ],
+        ...
+    }
 ],
 ```
 
-### <a name="return-value"></a>返回值
+### <a name="example"></a>示例
 
-变量的类型。
+示例模板返回了不同的变量值。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {
+        "var1": "myVariable",
+        "var2": [ 1,2,3,4 ],
+        "var3": "[ variables('var1') ]",
+        "var4": {
+            "property1": "value1",
+            "property2": "value2"
+        }
+    },
+    "resources": [],
+    "outputs": {
+        "exampleOutput1": {
+            "value": "[variables('var1')]",
+            "type" : "string"
+        },
+        "exampleOutput2": {
+            "value": "[variables('var2')]",
+            "type" : "array"
+        },
+        "exampleOutput3": {
+            "value": "[variables('var3')]",
+            "type" : "string"
+        },
+        "exampleOutput4": {
+            "value": "[variables('var4')]",
+            "type" : "object"
+        }
+    }
+}
+```
+
+上面具有默认值的示例的输出为：
+
+| Name | 类型 | 值 |
+| ---- | ---- | ----- |
+| exampleOutput1 | String | myVariable |
+| exampleOutput2 | Array | [1, 2, 3, 4] |
+| exampleOutput3 | String | myVariable |
+| exampleOutput4 |  对象 | {"property1": "value1", "property2": "value2"} |
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure Resource Manager 模板中各部分的说明，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。

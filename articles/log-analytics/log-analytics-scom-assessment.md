@@ -12,18 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/12/2017
+ms.date: 06/07/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 97ae17912eaa7508e3ae1315800408664a340837
-ms.lasthandoff: 03/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 6754505e7f58a8e7305987db9204271ca9b93870
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/09/2017
 
 
 ---
 
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-assessment-preview-solution"></a>使用 System Center Operations Manager 评估（预览版）解决方案优化环境
+
+![“System Center Operations Manager 评估”符号](./media/log-analytics-scom-assessment/scom-assessment-symbol.png)
 
 可以使用 System Center Operations Manager 评估解决方案定期评估 System Center Operations Manager 服务器环境的风险和运行状况。 本文将帮助你安装、配置和使用该解决方案，以便针对潜在问题采取纠正措施。
 
@@ -57,7 +60,7 @@ ms.lasthandoff: 03/11/2017
 1. [设置 System Center Operations Manager 评估的运行方式帐户](#operations-manager-run-as-accounts-for-oms)  
 2. [配置 System Center Operations Manager 评估规则](#configure-the-assessment-rule)
 
-# <a name="system-center-operations-manager-assessment-data-collection-details"></a>System Center Operations Manager 评估数据收集详细信息
+## <a name="system-center-operations-manager-assessment-data-collection-details"></a>System Center Operations Manager 评估数据收集详细信息
 
 System Center Operations Manager 评估使用启用的服务器，通过 Windows PowerShell、SQL 查询和文件信息收集器收集 WMI 数据、注册表数据、EventLog 数据和 Operations Manager 数据。
 
@@ -155,8 +158,8 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 1. 在 Operations Manager 控制台的“创作”工作区的“规则”窗格中，搜索规则“Microsoft System Center Advisor SCOM 评估运行评估规则”。
 2. 在搜索结果中，选择包含“类型: 管理服务器”字样的规则。
 3. 右键单击该规则，然后单击“重写” > “对于类为管理服务器的特定对象”。
-4.    在可用管理服务器列表中，选择要在其上运行该规则的管理服务器。
-5.    请务必将“已启用”参数值的重写值更改为 **True**。  
+4.  在可用管理服务器列表中，选择要在其上运行该规则的管理服务器。
+5.  请务必将“已启用”参数值的重写值更改为 **True**。  
     ![重写参数](./media/log-analytics-scom-assessment/rule.png)
 
 继续在此窗口中操作，使用下一个过程配置运行频率。

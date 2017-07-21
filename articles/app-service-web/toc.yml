@@ -2,297 +2,359 @@
   href: index.yml
 - name: 概述
   items:
-  - name: 关于 Web 应用
-    href: app-service-web-overview.md
-  - name: 比较托管选项
-    href: choose-web-site-cloud-service-vm.md
+    - name: 关于 Web 应用
+      href: app-service-web-overview.md
+    - name: 比较托管选项
+      href: choose-web-site-cloud-service-vm.md
 - name: 快速入门
   expanded: true
   items:
-  - name: 创建 .NET 应用
-    href: app-service-web-get-started-dotnet.md
-  - name: 创建 Node.js 应用
-    href: app-service-web-get-started-nodejs.md
-  - name: 创建 PHP 应用
-    href: app-service-web-get-started-php.md
-  - name: 创建 Java 应用
-    href: app-service-web-get-started-java.md
-  - name: 创建 Python 应用
-    href: app-service-web-get-started-python.md
-  - name: 创建静态 HTML 站点
-    href: app-service-web-get-started-html.md
+    - name: 创建 .NET 应用
+      href: app-service-web-get-started-dotnet.md
+    - name: 创建 Node.js 应用
+      href: app-service-web-get-started-nodejs.md
+    - name: 创建 PHP 应用
+      href: app-service-web-get-started-php.md
+    - name: 创建 Java 应用
+      href: app-service-web-get-started-java.md
+    - name: 创建 Python 应用
+      href: app-service-web-get-started-python.md
+    - name: 创建静态 HTML 站点
+      href: app-service-web-get-started-html.md
 - name: 教程
   items:
-  - name: 1 - 将 .NET 与 SQL DB 配合使用
-    href: app-service-web-tutorial-dotnet-sqldatabase.md
-  - name: 1 - 将 Node.js 与 MongoDB 配合使用
-    href: app-service-web-tutorial-nodejs-mongodb-app.md
-  - name: 1 - 将 PHP 与 MySQL 配合使用
-    href: app-service-web-tutorial-php-mysql.md 
-  - name: 1 - 将 WordPress 与 MySQL 配合使用
-    href: app-service-web-create-web-app-from-marketplace.md
-  - name: 1 - 将 Python 与 PostgreSQL 配合使用
-    href: app-service-web-tutorial-docker-python-postgresql-app.md
-  - name: 2 - 映射自定义域
-    href: app-service-web-tutorial-custom-domain.md
-  - name: 3 - 绑定 SSL 证书
-    href: app-service-web-tutorial-custom-ssl.md
-  - name: 4 - 添加内容交付网络
-    href: app-service-web-tutorial-content-delivery-network.md
-#  - name: 5 - Monitor your app
-#    href: app-service-web-tutorial-monitoring.md
+    - name: 1 - 将 .NET 与 SQL DB 配合使用
+      href: app-service-web-tutorial-dotnet-sqldatabase.md
+    - name: 1 - 将 Node.js 与 MongoDB 配合使用
+      href: app-service-web-tutorial-nodejs-mongodb-app.md
+    - name: 1 - 将 PHP 与 MySQL 配合使用
+      href: app-service-web-tutorial-php-mysql.md
+    - name: 1 - 将 WordPress 与 MySQL 配合使用
+      href: app-service-web-create-web-app-from-marketplace.md
+    - name: 1 - 将 Python 与 PostgreSQL 配合使用
+      href: app-service-web-tutorial-docker-python-postgresql-app.md
+    - name: 2 - 映射自定义域
+      href: app-service-web-tutorial-custom-domain.md
+    - name: 3 - 绑定 SSL 证书
+      href: app-service-web-tutorial-custom-ssl.md
+    - name: 4 - 添加 CDN
+      href: app-service-web-tutorial-content-delivery-network.md
 - name: 示例
   items:
-  - name: Azure CLI
-    href: app-service-cli-samples.md
-  - name: PowerShell
-    href: app-service-powershell-samples.md
+    - name: Azure CLI
+      href: app-service-cli-samples.md
+    - name: PowerShell
+      href: app-service-powershell-samples.md
 - name: 概念
   items:
-  - name: 应用服务的工作方式
-    href: ../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-  - name: 应用服务计划
-    href: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-  - name: 应用服务环境
-    href: app-service-app-service-environment-intro.md
-  - name: 身份验证和授权
-    href: ../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-  - name: 使用本地 AD 进行身份验证
-    href: web-sites-authentication-authorization.md
+    - name: 应用服务的工作方式
+      href: >-
+        ../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+    - name: 应用服务计划
+      href: >-
+        ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+    - name: 应用服务环境
+      href: ../app-service/app-service-environment/intro.md
+    - name: 身份验证和授权
+      href: >-
+        ../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+    - name: 使用本地 AD 进行身份验证
+      href: web-sites-authentication-authorization.md
 - name: 操作指南
   items:
-  - name: 开发应用
-    items:
-    - name: ASP.NET
+    - name: 开发应用
       items:
-      - name: 将 ASP.NET 应用与 SQL 数据库配合使用
-        href: web-sites-dotnet-get-started.md
-      - name: 使用 VS Code 开发 ASP.NET Core 应用
-        href: web-sites-create-web-app-using-vscode.md
-    - name: PHP
+        - name: ASP.NET
+          items:
+            - name: 将 ASP.NET 应用与 SQL 数据库配合使用
+              href: web-sites-dotnet-get-started.md
+            - name: 使用 VS Code 开发 ASP.NET Core 应用
+              href: web-sites-create-web-app-using-vscode.md
+        - name: PHP
+          items:
+            - name: 将 Laravel 应用与 MySQL 配合使用
+              href: app-service-web-php-get-started.md
+            - name: 设置 PHP 项目
+              href: web-sites-php-configure.md
+            - name: 设置 WordPress Multisite
+              href: web-sites-php-convert-wordpress-multisite.md
+        - name: Node.js
+          items:
+            - name: 将 Sails.js 应用与 NOSQL DB 配合使用
+              href: app-service-web-nodejs-sails.md
+            - name: 使用 io.js
+              href: web-sites-nodejs-iojs.md
+            - name: 调试 Node.js 应用
+              href: web-sites-nodejs-debug.md
+        - name: Java
+          items:
+            - name: 将 Java 应用与 Eclipse 配合使用
+              href: app-service-web-eclipse-create-hello-world-web-app.md
+            - name: 将 Java 应用与 IntelliJ 配合使用
+              href: app-service-web-intellij-create-hello-world-web-app.md
+            - name: 使用用于 Java 的 Azure SDK
+              href: java-create-azure-website-using-java-sdk.md
+            - name: 上传现有应用
+              href: web-sites-java-add-app.md
+        - name: Python
+          items:
+            - name: 将 Django 应用与 MySQL 配合使用
+              href: web-sites-python-ptvs-django-mysql.md
+        - name: 使用 SendGrid 发送电子邮件
+          href: sendgrid-dotnet-how-to-send-email.md
+        - name: 配置运行时
+          items:
+            - name: Windows 上的 PHP
+              href: web-sites-php-configure.md
+            - name: Java
+              href: web-sites-java-add-app.md
+            - name: Python
+              href: web-sites-python-configure.md
+        - name: 配置应用程序
+          items:
+            - name: 使用应用设置
+              href: web-sites-configure.md
+        - name: Linux 上的 Web 应用
+          items:
+            - name: 概述
+              href: app-service-linux-intro.md
+            - name: 在 Linux 上创建 Web 应用
+              href: app-service-linux-how-to-create-web-app.md
+            - name: Linux 上的 Ruby Web 应用
+              href: app-service-linux-ruby-get-started.md
+            - name: Linux 上的 Node.js Web 应用
+              href: app-service-linux-using-nodejs-pm2.md
+            - name: Linux 上的 .NET Core Web 应用
+              href: app-service-linux-using-dotnetcore.md
+            - name: Linux 上的自定义 Docker Web 应用
+              href: app-service-linux-using-custom-docker-image.md
+            - name: 通过 SSH 连接
+              href: app-service-linux-ssh-support.md
+            - name: 连续部署
+              href: app-service-linux-ci-cd.md
+            - name: Linux 上的 Web 应用常见问题解答
+              href: app-service-linux-faq.md
+    - name: 部署到 Azure
+      href: web-sites-deploy.md
       items:
-      - name: 将 Laravel 应用与 MySQL 配合使用
-        href: app-service-web-php-get-started.md
-      - name: 设置 PHP 项目
-        href: web-sites-php-configure.md
-      - name: 设置 WordPress Multisite
-        href: web-sites-php-convert-wordpress-multisite.md
-    - name: Node.js
+        - name: 通过 FTP 进行部署
+          href: app-service-deploy-ftp.md
+        - name: 通过云同步进行部署
+          href: app-service-deploy-content-sync.md
+        - name: 持续部署
+          href: app-service-continuous-deployment.md
+        - name: 部署到过渡环境
+          href: web-sites-staged-publishing.md
+        - name: 从本地 Git 进行部署
+          href: app-service-deploy-local-git.md
+        - name: 使用模板进行部署
+          href: app-service-deploy-complex-application-predictably.md
+        - name: 敏捷部署
+          href: app-service-agile-software-development.md
+        - name: Beta 版测试
+          href: app-service-web-test-in-production-controlled-test-flight.md
+        - name: 设置部署凭据
+          href: app-service-deployment-credentials.md
+        - name: 映射自定义域
+          items:
+            - name: 购买域
+              href: custom-dns-web-site-buydomains-web-app.md
+            - name: 使用流量管理器映射域
+              href: web-sites-traffic-manager-custom-domain-name.md
+            - name: 映射 GoDaddy 域
+              href: web-sites-godaddy-custom-domain-name.md
+            - name: 迁移活动域
+              href: app-service-custom-domain-name-migrate.md
+        - name: 从 IIS 迁移
+          href: web-sites-migration-from-iis-server.md
+        - name: 在生产环境中进行测试
+          href: app-service-web-test-in-production-get-start.md
+        - name: 将功能添加到 Web 应用
+          href: app-service-web-get-started-2.md
+    - name: 连接到数据库/资源
       items:
-      - name: 将 Sails.js 应用与 NOSQL DB 配合使用
-        href: app-service-web-nodejs-sails.md
-      - name: 使用 io.js
-        href: web-sites-nodejs-iojs.md
-      - name: 调试 Node.js 应用
-        href: web-sites-nodejs-debug.md
-    - name: Java
+        - name: 连接到本地数据
+          href: web-sites-hybrid-connection-get-started.md
+        - name: 连接到 Azure VNet
+          href: web-sites-integrate-with-vnet.md
+        - name: 使用 PowerShell 连接到 Azure VNet
+          href: app-service-vnet-integration-powershell.md
+        - name: 连接到 Azure VM 上的 MongoDB
+          href: web-sites-dotnet-store-data-mongodb-vm.md
+    - name: 安全应用
       items:
-      - name: 将 Java 应用与 Eclipse 配合使用
-        href: app-service-web-eclipse-create-hello-world-web-app.md
-      - name: 将 Java 应用与 IntelliJ 配合使用
-        href: app-service-web-intellij-create-hello-world-web-app.md
-      - name: 使用用于 Java 的 Azure SDK
-        href: java-create-azure-website-using-java-sdk.md
-      - name: 上传现有应用
-        href: web-sites-java-add-app.md
-    - name: Python
+        - name: 对用户进行身份验证
+          items:
+            - name: 使用 Azure AD 进行身份验证
+              href: >-
+                ../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+            - name: 使用 Facebook 进行身份验证
+              href: >-
+                ../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+            - name: 使用 Google 进行身份验证
+              href: >-
+                ../app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+            - name: 使用 Microsoft 帐户进行身份验证
+              href: >-
+                ../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+            - name: 使用 Twitter 进行身份验证
+              href: >-
+                ../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+            - name: 使用本地 AD 进行身份验证
+              href: web-sites-authentication-authorization.md
+            - name: 将应用与多租户数据库配合使用
+              href: web-sites-dotnet-entity-framework-row-level-security.md
+        - name: 实施 HTTPS
+          href: 'web-sites-configure-ssl-certificate.md#enforce-https-on-your-app'
+        - name: 配置 TLS 相互身份验证
+          href: app-service-web-configure-tls-mutual-auth.md
+    - name: 缩放应用
       items:
-      - name: 将 Django 应用与 MySQL 配合使用
-        href: web-sites-python-ptvs-django-mysql.md
-    - name: 使用 SendGrid 发送电子邮件
-      href: sendgrid-dotnet-how-to-send-email.md
-    - name: 配置运行时
+        - name: 纵向扩展
+          href: web-sites-scale.md
+        - name: 向外扩展
+          href: >-
+            ../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+        - name: 使用流量管理器进行负载均衡
+          href: web-sites-traffic-manager.md
+        - name: 使用应用服务环境提供高可伸缩性
+          href: >-
+            ../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+        - name: 使用 Azure CDN 扩大全球覆盖范围
+          href: cdn-websites-with-cdn.md
+        - name: 通过 Memcache 连接到 Redis 缓存
+          href: web-sites-connect-to-redis-using-memcache-protocol.md
+        - name: 创建 Redis 缓存
+          href: >-
+            ../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+        - name: 使用 Azure Redis 缓存管理会话状态
+          href: web-sites-dotnet-session-state-caching.md
+    - name: 监视
       items:
-      - name: Windows 上的 PHP
-        href: web-sites-php-configure.md
-      - name: Java
-        href: web-sites-java-add-app.md
-      - name: Python
-        href: web-sites-python-configure.md
-    - name: 配置应用程序
+        - name: 监视应用
+          href: web-sites-monitor.md
+        - name: 启用日志
+          href: web-sites-enable-diagnostic-log.md
+        - name: 流式传输日志
+          href: web-sites-streaming-logs-and-console.md
+    - name: 备份内容
       items:
-      - name: 使用应用设置
-        href: web-sites-configure.md
-    - name: Linux 上的 Web 应用
+        - name: 备份应用
+          href: web-sites-backup.md
+        - name: 从备份还原应用
+          href: web-sites-restore.md
+        - name: 使用 REST API 进行备份
+          href: websites-csm-backup.md
+    - name: 管理应用资源
       items:
-      - name: 概述
-        href: app-service-linux-intro.md
-      - name: 在 Linux 上创建 Web 应用
-        href: app-service-linux-how-to-create-web-app.md
-      - name: Linux 上的 Ruby Web 应用
-        href: app-service-linux-ruby-get-started.md
-      - name: Linux 上的 Node.js Web 应用
-        href: app-service-linux-using-nodejs-pm2.md
-      - name: Linux 上的 .NET Core Web 应用
-        href: app-service-linux-using-dotnetcore.md
-      - name: Linux 上的自定义 Docker Web 应用
-        href: app-service-linux-using-custom-docker-image.md
-      - name: 通过 SSH 连接
-        href: app-service-linux-ssh-support.md
-      - name: 连续部署
-        href: app-service-linux-ci-cd.md
-      - name: Linux 上的 Web 应用常见问题解答
-        href: app-service-linux-faq.md
-  - name: 部署到 Azure
-    href: web-sites-deploy.md
-    items:
-    - name: 通过 FTP 进行部署
-      href: app-service-deploy-ftp.md
-    - name: 通过云同步进行部署
-      href: app-service-deploy-content-sync.md
-    - name: 持续部署
-      href: app-service-continuous-deployment.md
-    - name: 部署到过渡环境
-      href: web-sites-staged-publishing.md
-    - name: 从本地 Git 进行部署
-      href: app-service-deploy-local-git.md
-    - name: 使用模板进行部署
-      href: app-service-deploy-complex-application-predictably.md
-    - name: 敏捷部署
-      href: app-service-agile-software-development.md
-    - name: Beta 版测试
-      href: app-service-web-test-in-production-controlled-test-flight.md
-    - name: 设置部署凭据
-      href: app-service-deployment-credentials.md
-    - name: 映射自定义域
+        - name: 使用 PowerShell 克隆应用
+          href: app-service-web-app-cloning.md
+        - name: 使用门户克隆应用
+          href: app-service-web-app-cloning-portal.md
+        - name: 移动资源
+          href: app-service-move-resources.md
+        - name: 将 Azure Resource Manager 与 PowerShell 配合使用
+          href: app-service-web-app-azure-resource-manager-powershell.md
+        - name: 使用 Azure 自动化管理应用
+          href: automation-manage-web-app.md
+    - name: 应用服务环境
       items:
-      - name: 购买域
-        href: custom-dns-web-site-buydomains-web-app.md
-      - name: 使用流量管理器映射域
-        href: web-sites-traffic-manager-custom-domain-name.md
-      - name: 映射 GoDaddy 域
-        href: web-sites-godaddy-custom-domain-name.md
-      - name: 迁移活动域
-        href: app-service-custom-domain-name-migrate.md
-    - name: 从 IIS 迁移
-      href: web-sites-migration-from-iis-server.md
-    - name: 在生产环境中进行测试
-      href: app-service-web-test-in-production-get-start.md
-    - name: 将功能添加到 Web 应用
-      href: app-service-web-get-started-2.md
-  - name: 连接到数据库/资源
-    items:
-    - name: 连接到本地数据
-      href: web-sites-hybrid-connection-get-started.md
-    - name: 连接到 Azure VNet
-      href: web-sites-integrate-with-vnet.md
-    - name: 使用 PowerShell 连接到 Azure VNet
-      href: app-service-vnet-integration-powershell.md
-    - name: 连接到 Azure VM 上的 MongoDB
-      href: web-sites-dotnet-store-data-mongodb-vm.md
-  - name: 安全应用
-    items:
-    - name: 对用户进行身份验证
-      items:
-      - name: 使用 Azure AD 进行身份验证
-        href: ../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-      - name: 使用 Facebook 进行身份验证
-        href: ../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-      - name: 使用 Google 进行身份验证
-        href: ../app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-      - name: 使用 Microsoft 帐户进行身份验证
-        href: ../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-      - name: 使用 Twitter 进行身份验证
-        href: ../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-      - name: 使用本地 AD 进行身份验证
-        href: web-sites-authentication-authorization.md
-      - name: 将应用与多租户数据库配合使用
-        href: web-sites-dotnet-entity-framework-row-level-security.md
-    - name: 实施 HTTPS
-      href: web-sites-configure-ssl-certificate.md#enforce-https-on-your-app
-    - name: 配置 TLS 相互身份验证
-      href: app-service-web-configure-tls-mutual-auth.md
-  - name: 缩放应用
-    items:
-    - name: 纵向扩展
-      href: web-sites-scale.md
-    - name: 向外扩展
-      href: ../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-    - name: 使用流量管理器进行负载均衡
-      href: web-sites-traffic-manager.md
-    - name: 使用应用服务环境提供高可伸缩性
-      href: ../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-    - name: 使用 Azure CDN 扩大全球覆盖范围
-      href: cdn-websites-with-cdn.md
-    - name: 通过 Memcache 连接到 Redis 缓存
-      href: web-sites-connect-to-redis-using-memcache-protocol.md
-    - name: 创建 Redis 缓存
-      href: ../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-    - name: 使用 Azure Redis 缓存管理会话状态
-      href: web-sites-dotnet-session-state-caching.md
-  - name: 监视
-    items:
-    - name: 监视应用
-      href: web-sites-monitor.md
-    - name: 启用日志
-      href: web-sites-enable-diagnostic-log.md
-    - name: 流式传输日志
-      href: web-sites-streaming-logs-and-console.md
-  - name: 备份内容
-    items:
-    - name: 备份应用
-      href: web-sites-backup.md
-    - name: 从备份还原应用
-      href: web-sites-restore.md
-    - name: 使用 REST API 进行备份
-      href: websites-csm-backup.md
-  - name: 管理应用资源
-    items:
-    - name: 使用 PowerShell 克隆应用
-      href: app-service-web-app-cloning.md
-    - name: 使用门户克隆应用
-      href: app-service-web-app-cloning-portal.md
-    - name: 移动资源
-      href: app-service-move-resources.md
-    - name: 将 Azure Resource Manager 与 PowerShell 配合使用
-      href: app-service-web-app-azure-resource-manager-powershell.md
-    - name: 使用 Azure 自动化管理应用
-      href: automation-manage-web-app.md
+        - name: 使用应用服务环境
+          href: ../app-service/app-service-environment/using-an-ase.md
+        - name: 创建外部应用服务环境
+          href: ../app-service/app-service-environment/create-external-ase.md
+        - name: 使用 Azure Resource Manager 进行创建
+          href: ../app-service/app-service-environment/create-from-template.md
+        - name: 使用内部负载均衡器进行创建
+          href: ../app-service/app-service-environment/create-ilb-ase.md
+        - name: 网络注意事项
+          href: ../app-service/app-service-environment/network-info.md
+        - name: 配置自定义设置
+          href: ./app-service-app-service-environment-custom-settings.md
+        - name: 与 Web 应用程序防火墙集成
+          href: ./app-service-app-service-environment-web-application-firewall.md
+        - name: 地理上分散的缩放
+          href: ./app-service-app-service-environment-geo-distributed-scale.md
+        - name: 管理地址列表
+          href: ../app-service/app-service-environment/management-addresses.md
 - name: 引用
   items:
-  - name: CLI 2.0
-    href: /cli/azure/appservice
-  - name: PowerShell
-    href: /powershell
-  - name: REST API
-    href: /rest/api/appservice/
+    - name: CLI 2.0
+      href: /cli/azure/appservice
+    - name: PowerShell
+      href: /powershell
+    - name: REST API
+      href: /rest/api/appservice/
+    - name: 应用服务环境
+      href: ../app-service/app-service-environment/readme.md
 - name: 资源
   items:
-  - name: 故障排除
-    items:
-    - name: 使用 Visual Studio 排除故障
-      href: web-sites-dotnet-troubleshoot-visual-studio.md
-    - name: 对 Node.js 应用进行故障排除
-      href: app-service-web-nodejs-best-practices-and-troubleshoot-guide.md
-    - name: 排查 HTTP 502 和 503 错误
-      href: app-service-web-troubleshoot-http-502-http-503.md
-    - name: 排查性能问题
-      href: app-service-web-troubleshoot-performance-degradation.md
-    - name: 常见问题
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 故障排除
       items:
-      - name: 可用性、性能和应用程序常见问题解答
-        href: app-service-web-availability-performance-application-issues-faq.md
-      - name: 部署常见问题解答
-        href: app-service-web-deployment-faq.md
-      - name: 开放源代码技术常见问题解答
-        href: app-service-web-open-source-technologies-faq.md
-      - name: 配置和管理常见问题解答
-        href: app-service-web-configuration-and-management-faq.md
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/app-service/
-  - name: 配额信息
-    href: ../azure-subscription-service-limits.md#app-service-limits
-  - name: 服务更新和发行说明
-    href: https://azure.microsoft.com/updates/?product=app-service
-  - name: 最佳实践
-    href: app-service-best-practices.md
-  - name: 示例
-    href: https://azure.microsoft.com/resources/samples/?service=app-service
-  - name: 视频
-    href: https://azure.microsoft.com/resources/videos/index/?services=app-service
-  - name: Cookbook
-    items:
-    - name: 参考体系结构
-      href: ../guidance/guidance-ra-app-service.md
-    - name: 部署脚本
-      href: https://azure.microsoft.com/documentation/scripts/
+        - name: 使用 Visual Studio 排除故障
+          href: web-sites-dotnet-troubleshoot-visual-studio.md
+        - name: 对 Node.js 应用进行故障排除
+          href: app-service-web-nodejs-best-practices-and-troubleshoot-guide.md
+        - name: 排查 HTTP 502 和 503 错误
+          href: app-service-web-troubleshoot-http-502-http-503.md
+        - name: 排查性能问题
+          href: app-service-web-troubleshoot-performance-degradation.md
+        - name: 常见问题
+          items:
+            - name: 可用性、性能和应用程序常见问题解答
+              href: >-
+                app-service-web-availability-performance-application-issues-faq.md
+            - name: 部署常见问题解答
+              href: app-service-web-deployment-faq.md
+            - name: 开放源代码技术常见问题解答
+              href: app-service-web-open-source-technologies-faq.md
+            - name: 配置和管理常见问题解答
+              href: app-service-web-configuration-and-management-faq.md
+    - name: 应用服务环境 v1
+      items:
+        - name: 概述
+          href: app-service-app-service-environment-intro.md
+        - name: 如何创建应用服务环境
+          href: app-service-web-how-to-create-an-app-service-environment.md
+        - name: 在应用服务环境中创建 Web 应用
+          href: app-service-web-how-to-create-a-web-app-in-an-ase.md
+        - name: 使用内部负载均衡器
+          href: app-service-environment-with-internal-load-balancer.md
+        - name: 配置应用服务环境
+          href: app-service-web-configure-an-app-service-environment.md
+        - name: 在应用服务环境中缩放应用
+          href: app-service-web-scale-a-web-app-in-an-app-service-environment.md
+        - name: 网络体系结构概述
+          href: app-service-app-service-environment-network-architecture-overview.md
+        - name: 实施分层的安全体系结构
+          href: app-service-app-service-environment-layered-security.md
+        - name: 如何控制入站流量
+          href: app-service-app-service-environment-control-inbound-traffic.md
+        - name: 安全连接到后端资源
+          href: >-
+            app-service-app-service-environment-securely-connecting-to-backend-resources.md
+        - name: 使用 ExpressRoute 的网络配置详细信息
+          href: >-
+            app-service-app-service-environment-network-configuration-expressroute.md
+        - name: 在应用服务环境中自动缩放
+          href: ../app-service/app-service-environment-auto-scale.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/app-service/'
+    - name: 配额信息
+      href: '../azure-subscription-service-limits.md#app-service-limits'
+    - name: 服务更新和发行说明
+      href: 'https://azure.microsoft.com/updates/?product=app-service'
+    - name: 最佳实践
+      href: app-service-best-practices.md
+    - name: 示例
+      href: 'https://azure.microsoft.com/resources/samples/?service=app-service'
+    - name: 视频
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=app-service'
+    - name: Cookbook
+      items:
+        - name: 参考体系结构
+          href: ../guidance/guidance-ra-app-service.md
+        - name: 部署脚本
+          href: 'https://azure.microsoft.com/documentation/scripts/'

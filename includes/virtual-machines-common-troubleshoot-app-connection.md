@@ -8,9 +8,10 @@
 > [!NOTE]
 > Azure 具有用于创建和处理资源的两个不同的部署模型： [Resource Manager 和经典](../articles/resource-manager-deployment-model.md)。 这篇文章介绍如何使用这两种模型，但 Microsoft 建议大多数最新部署使用 Resource Manager 模型。
 
-如果你对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。****
+如果你对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
 
-## <a name="quick-start-troubleshooting-steps"></a>快速入门故障排除步骤
+## 快速入门故障排除步骤
+<a id="quick-start-troubleshooting-steps" class="xliff"></a>
 如果在连接到应用程序时发生问题，请尝试以下一般故障排除步骤。 执行每个步骤之后，尝试重新连接到应用程序：
 
 * 重启虚拟机
@@ -25,7 +26,8 @@
 
 有关详细信息，请参阅[终结点连接（RDP/SSH/HTTP 等故障）疑难解答](https://social.msdn.microsoft.com/Forums/azure/en-US/538a8f18-7c1f-4d6e-b81c-70c00e25c93d/troubleshooting-endpoint-connectivity-rdpsshhttp-etc-failures?forum=WAVirtualMachinesforWindows)。
 
-## <a name="detailed-troubleshooting-overview"></a>详细故障排除概述
+## 详细故障排除概述
+<a id="detailed-troubleshooting-overview" class="xliff"></a>
 有四个主要区域需要对 Azure 虚拟机上运行的应用程序的访问进行故障排除。
 
 ![对无法启动应用程序进行故障排除](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access1.png)
@@ -45,7 +47,8 @@
 
 若要确定问题根源并进行更正，请执行以下步骤。
 
-## <a name="step-1-access-application-from-target-vm"></a>步骤 1：从目标 VM 访问应用程序
+## 步骤 1：从目标 VM 访问应用程序
+<a id="step-1-access-application-from-target-vm" class="xliff"></a>
 尝试使用适当的客户端程序，从运行该程序的 VM 访问应用程序。 使用本地主机名、本地 IP 地址或环回地址 (127.0.0.1)。
 
 ![直接从 VM 启动应用程序](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access2.png)
@@ -113,7 +116,13 @@
 * 从客户端计算机到 Azure 虚拟机的出站应用程序请求流量。
 * 来自 Azure 虚拟机的入站应用程序响应流量。
 
-## <a name="additional-resources"></a>其他资源
+## 步骤 4：如果无法访问应用程序，请使用“IP 验证”来检查设置。
+<a id="step-4-if-you-cannot-access-the-application-use-ip-verify-to-check-the-settings" class="xliff"></a> 
+
+有关详细信息，请参阅 [Azure network monitoring overview](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview)（Azure 网络监视概述）。 
+
+## 其他资源
+<a id="additional-resources" class="xliff"></a>
 [对与基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md)
 
 [对于基于 Linux 的 Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](../articles/virtual-machines/linux/troubleshoot-ssh-connection.md)

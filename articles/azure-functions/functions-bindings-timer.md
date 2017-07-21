@@ -7,7 +7,7 @@ author: christopheranderson
 manager: erikre
 editor: 
 tags: 
-keywords: "Azure Functions, Functions, 事件处理, 动态计算, 无服务体系结构"
+keywords: "Azure Functions，函数，事件处理，动态计算，无服务体系结构"
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.service: functions
 ms.devlang: multiple
@@ -16,15 +16,17 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/27/2017
 ms.author: chrande; glenga
-ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 2542d8c750fc7e1bcc31a9c0eb1672402facfd58
-ms.openlocfilehash: 146884833e968767c14d7e4f924762a592e427e2
-ms.lasthandoff: 03/01/2017
+ms.custom: 
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: 12a793c4df497f221dbd592ca3d249b8c1f65e04
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/22/2017
 
 
 ---
-# <a name="schedule-code-execution-with-azure-functions"></a>使用 Azure Functions 计划代码执行
+# <a name="azure-functions-timer-trigger"></a>Azure Functions 计时器触发器
+
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 本文介绍了如何在 Azure Functions 中对计时器触发器进行配置和编写代码。 Azure Functions 有一个计时器触发器绑定，允许用户根据定义的计划运行函数代码。 
@@ -60,13 +62,13 @@ CRON 表达式使用的默认时区为协调世界时 (UTC)。 若要让 CRON �
 
 ```json
 "schedule": "0 0 15 * * *",
-```    
+``` 
 
 或者，可以为名为 `WEBSITE_TIME_ZONE` 的 Function App 添加新的应用设置，并将值设置为**东部标准时间**。  然后，以下 CRON 表达式可用于东部时间上午 10:00： 
 
 ```json
 "schedule": "0 0 10 * * *",
-```    
+``` 
 
 
 <a name="examples"></a>
@@ -149,7 +151,7 @@ CRON 表达式使用的默认时区为协调世界时 (UTC)。 若要让 CRON �
 
 <a name="triggercsharp"></a>
 
-### <a name="trigger-sample-in-c"></a>C 中的触发器示例# #
+### <a name="trigger-sample-in-c"></a>C# 中的触发器示例 #
 ```csharp
 public static void Run(TimerInfo myTimer, TraceWriter log)
 {
@@ -163,7 +165,7 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
 
 <a name="triggerfsharp"></a>
 
-### <a name="trigger-sample-in-f"></a>F 中的触发器示例# #
+### <a name="trigger-sample-in-f"></a>F# 中的触发器示例 #
 ```fsharp
 let Run(myTimer: TimerInfo, log: TraceWriter ) =
     if (myTimer.IsPastDue) then

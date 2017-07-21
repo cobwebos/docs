@@ -14,15 +14,14 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/12/2017
+ms.date: 07/07/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: b7bc7ff8342cdd51f4513e40e98f2a2659009d2b
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 36285fbaf1da3c566d338bd5612eebad327eaf50
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>以 Java 语言创建 Apache Storm 拓扑
@@ -178,7 +177,7 @@ Maven 插件允许你自定义项目的构建阶段。 例如，如何编译项�
 
 ### <a name="add-plug-ins"></a>添加插件
 
-对于以 Java 语言实现的 Apache Storm 拓扑，[Exec Maven 插件](http://mojo.codehaus.org/exec-maven-plugin/)十分有用，因为它可让你轻松地在开发环境本地运行拓扑。 在 `pom.xml` 文件的 `<plugins>` 部分中添加以下内容，以包括 Exec Maven 插件：
+对于以 Java 语言实现的 Apache Storm 拓扑，[Exec Maven 插件](http://www.mojohaus.org/exec-maven-plugin/)十分有用，因为它可让你轻松地在开发环境本地运行拓扑。 在 `pom.xml` 文件的 `<plugins>` 部分中添加以下内容，以包括 Exec Maven 插件：
 
 ```xml
 <plugin>

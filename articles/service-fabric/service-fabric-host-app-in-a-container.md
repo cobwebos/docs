@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/10/2017
+ms.date: 05/19/2017
 ms.author: mikhegn
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: a965fcb9dd5caf9656af5ae381b25baaaa01ec6d
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 56788914452c0f3a7072d6b2805866072b9b7fea
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/23/2017
 
 ---
 
@@ -30,21 +30,19 @@ ms.lasthandoff: 05/10/2017
 
 1. 安装 [Docker CE for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)，以便在 Windows 10 上运行容器。
 2. 熟悉 [Windows 10 容器快速入门][link-container-quickstart]。
-3. 在本文中，我们使用 **Fabrikam Fiber**，可从[此处][link-fabrikam-github]下载该示例应用。
+3. 本教程中将使用 Fabrikam Fiber CallCenter，可从[此处][link-fabrikam-github]下载该示例应用。
 4. [Azure PowerShell][link-azure-powershell-install]
 5. [用于 Visual Studio 2017 的持续交付工具扩展][link-visualstudio-cd-extension]
+6. [Azure 订阅][link-azure-subscription]和 [Visual Studio Team Services 帐户][link-vsts-account]。 使用所有服务的免费层即可完成本教程。
 
 >[!NOTE]
->如果这是首次在计算机上运行 Windows 容器映像，Docker CE 必须下拉容器的基础映像。 本教程中使用的映像大小为 14 GB。 继续操作并在 Powershell 中运行以下命令，拉取基础映像：
->
->```cmd
->docker pull microsoft/mssql-server-windows-developer
->docker pull microsoft/aspnet:4.6.2
->```
+>如果这是首次在计算机上运行 Windows 容器映像，Docker CE 必须下载容器的基础映像。 本教程中使用的映像为 14 GB。 继续操作并在 Powershell 中运行以下命令，拉取基础映像：
+>1. docker pull microsoft/mssql-server-windows-developer
+>2. docker pull microsoft/aspnet:4.6.2
 
 ## <a name="containerize-the-application"></a>容器化应用程序
 
-若要开始在容器中运行应用程序，我们需要在 Visual Studio 中添加对项目的 **Docker 支持**。 向应用程序添加 **Docker 支持**后，会发生两件事。 首先，项目中会添加一个 _docker_ 文件。 此新文件描述容器映像的生成方式。 其次，解决方案中会添加一个新的 _docker compose_ 项目。 此新项目包含几个 docker-compose 文件，可用于描述容器的运行方式。
+若要开始在容器中运行应用程序，我们需要在 Visual Studio 中添加对项目的 **Docker 支持**。 向应用程序添加 **Docker 支持**后，会发生两件事。 首先，项目中会添加一个 _docker_ 文件。 此新文件描述容器映像的生成方式。 其次，解决方案中会添加一个新的 _docker compose_ 项目。 新项目包含一些 docker-compose 文件。 Docker-compose 文件可用于描述容器的运行方式。
 
 有关使用 [Visual Studio 容器工具][link-visualstudio-container-tools]的详细信息。
 
@@ -56,10 +54,10 @@ ms.lasthandoff: 05/10/2017
 
 ### <a name="add-support-for-sql"></a>添加 SQL 支持
 
-此应用程序使用 SQL 作为数据提供程序，因此需要 SQL Server 才能运行该应用程序。 在本教程中，我们使用在容器中运行的 SQL Server。
-若要告知 Docker 我们想要在容器中运行 SQL Server，可在 docker-compose 项目的 docker-compose.override.yml 文件中引用 SQL Server 容器映像。 这样一来，在 Visual Studio 中调试应用程序时，将使用在容器中运行的 SQL Server。
+此应用程序使用 SQL 作为数据提供程序，因此需要 SQL Server 才能运行该应用程序。 本教程中使用在容器中运行的 SQL Server 进行本地调试。
+若要在容器中运行 SQL Server，调试时可在 docker-compose.override.yml 文件中引用 SQL Server 容器映像。 
 
-1. 打开“解决方案资源管理器”。****
+1. 打开“解决方案资源管理器”。
 
 2. 打开 **docker-compose** > **docker-compose.yml** > **docker-compose.override.yml**。
 
@@ -82,16 +80,13 @@ ms.lasthandoff: 05/10/2017
    >[!NOTE]
    >可以使用选择的任何 SQL Server 进行本地调试，只要可通过主机访问。 但是，**localdb** 不支持 `container -> host` 通信。
 
-   >[!NOTE]
-   >如果始终想要在容器中运行 SQL Server，可以选择将前述内容添加到 docker-compose.yml 文件，而不添加到 docker compose.override.yml 文件。
-
+   >[!WARNING]
+   >在容器中运行 SQL Server 不支持在容器停止时保留数据。 请勿对生产使用此配置。
 
 4. 修改 `fabrikamfiber.web` 节点，添加名为 `depends_on:` 的新子节点。 这样可确保 `db` 服务（SQL Server 容器）在 Web 应用程序 (fabrikamfiber.web) 之前启动。
 
    ```yml
      fabrikamfiber.web:
-       ports:
-         - "80"
        depends_on:
          - db
    ```
@@ -100,7 +95,6 @@ ms.lasthandoff: 05/10/2017
 
    ```xml
    <add name="FabrikamFiber-Express" connectionString="Data Source=db,1433;Database=FabrikamFiber;User Id=sa;Password=Password1;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
-   
    <add name="FabrikamFiber-DataWarehouse" connectionString="Data Source=db,1433;Database=FabrikamFiber;User Id=sa;Password=Password1;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
    ```
 
@@ -115,27 +109,32 @@ ms.lasthandoff: 05/10/2017
 
 应用程序现在已为在容器中生成和打包做好准备。 在计算机上生成容器映像后，即可将其推送到任何容器注册表并下拉到任何主机上运行。
 
-在本教程的其余部分，使用 Visual Studio Team Services 生成和部署容器、将其推送到 Azure 容器注册表并部署到 Service Fabric（在 Azure 中运行）。
+本教程的其余部分中使用 Visual Studio Team Services 将容器部署到 Service Fabric（在 Azure 中运行）。
 
 ## <a name="create-a-service-fabric-cluster"></a>创建 Service Fabric 群集
 
 如果已经拥有要在其中部署应用程序的 Service Fabric 群集，则可以跳过此步骤。 否则，让我们继续创建 Service Fabric 群集。
 
 >[!NOTE]
->以下过程创建由自签名证书进行保护的 Service Fabric 群集，该证书放在 KeyVault 中，作为部署的一部分创建。 有关使用 Azure Active Directory 身份验证的详细信息，请参阅[使用 Azure Resource Manager 创建 Service Fabric 群集][link-servicefabric-create-secure-clusters]一文。
+>以下过程创建单节点（单虚拟机）预览版 Service Fabric 群集，该群集由位于 KeyVault 中的自签名证书保护。
+>单节点群集无法扩展超出一个虚拟机，并且预览版群集无法升级到较新版本。
+>若要计算在 Azure 中运行 Service Fabric 群集的成本，请使用 [Azure 定价计算器][link-azure-pricing-calculator]。
+>有关创建 Service Fabric 群集的详细信息，请参阅[使用 Azure Resource Manager 创建 Service Fabric 群集][link-servicefabric-create-secure-clusters]一文。
 
-1. 下载下文中引用的 Azure 模板和参数文件的本地副本。
-    * [适用于 Service Fabric 的 Azure Resource Manager 模板][link-sf-clustertemplate]：定义 Service Fabric 群集的 Resource Manager 模板。
-    * [模板参数文件][link-sf-clustertemplate-parameters]：用于自定义群集部署的参数文件。
+1. 从以下 GitHub 存储库中下载 Azure Resource Manager 模板和参数文件的本地副本：
+    * [Service Fabric 的 Azure Resource Manager 模板][link-sf-clustertemplate]
+       - azuredeploy.json - 定义 Service Fabric 群集的 Azure Resource Manager 模板。
+       - azuredeploy.parameters.json - 用于自定义群集部署的参数文件。
 2. 自定义参数文件中的以下参数：
   
-   | 参数       | 说明 |
-   | --------------- | ----------- |
-   | clusterName     | 群集的名称。 |
-   | adminUserName   | 群集虚拟机上的本地管理员帐户。 |
-   | adminPassword   | 群集虚拟机上的本地管理员帐户的密码。 |
-   | clusterLocation | 要在其中部署群集的 Azure 区域。 |
-   | vmInstanceCount | 群集中的节点数（可以为 1） |
+   | 参数       | 说明 | 建议的值 |
+   | --------------- | ----------- | --------------- |
+   | clusterLocation | 要在其中部署群集的 Azure 区域。 | 例如 westeurope、eastasia、eastus |
+   | clusterName     | 群集的名称。 | 例如 bobs-sfpreviewcluster |
+   | adminUserName   | 群集虚拟机上的本地管理员帐户。 | 任何有效的 Windows Server 用户名 |
+   | adminPassword   | 群集虚拟机上的本地管理员帐户的密码。 | 任何有效的 Windows Server 密码 |
+   | clusterCodeVersion | 要运行的 Service Fabric 版本。 （255.255.X.255 是预览版）。 | 255.255.5713.255 |
+   | vmInstanceCount | 群集中的虚拟机数量（可以是 1 或 3-99 之间的数字）。 | **1** |
 
 3. 打开 **PowerShell**。
 4. **登录** Azure。
@@ -159,13 +158,13 @@ ms.lasthandoff: 05/10/2017
 7. 通过运行以下命令**创建群集**：
 
    ```powershell
-   New-AzureRmServiceFabricCluster 
-       -TemplateFile C:\users\me\downloads\PreviewSecureClusters.json `
-       -ParameterFile C:\users\me\downloads\myCluster.parameters.json `
-       -CertificateOutputFolder C:\users\me\desktop\ `
-       -CertificatePassword $pwd `
-       -CertificateSubjectName "mycluster.westeurope.cloudapp.azure.com" `
-       -ResourceGroupName myclusterRG
+      New-AzureRmServiceFabricCluster
+          -TemplateFile C:\Users\me\Desktop\azuredeploy.json `
+          -ParameterFile C:\Users\me\Desktop\azuredeploy.parameters.json `
+          -CertificateOutputFolder C:\Users\me\Desktop\ `
+          -CertificatePassword $pwd `
+          -CertificateSubjectName "mycluster.westeurope.cloudapp.azure.com" `
+          -ResourceGroupName myclusterRG
    ```
 
    >[!NOTE]
@@ -173,7 +172,55 @@ ms.lasthandoff: 05/10/2017
    
     完成配置后，将输出有关在 Azure 中创建的群集的信息，并将证书复制到 -CertificateOutputFolder 目录。
 
-8. **双击**要在本地计算机上安装的证书。
+8. 双击证书打开证书导入向导。
+
+9. 使用默认设置，但务必勾选“将此密钥标记为可导出” 复选框（在“私钥保护”步骤中）。 本教程中稍后将 Azure 容器注册表配置为 Service Fabric 群集身份验证时，Visual Studio 需要导出该证书。
+
+10. 现在可以在浏览器中打开 Service Fabric Explorer。 URL 是 PowerShell CmdLet 输出中的 ManagementEndpoint，例如 https://mycluster.westeurope.cloudapp.azure.com:19080 
+
+>[!NOTE]
+>打开 Service Fabric Explorer 时会看到证书错误，因为使用的是自签名证书。 在Microsoft Edge 中，必须单击“详细信息”，然后单击“转到网页”链接。 在 Chrome 中，必须单击“高级”，然后单击“继续”链接。
+
+>[!NOTE]
+>如果群集创建失败，始终可以重新运行命令，这样可以更新已部署的资源。 如果在失败部署的过程中创建了证书，则将创建新的证书。 若要解决群集创建问题，请访问：[使用 Azure Resource Manager 创建 Service Fabric 群集][link-servicefabric-create-secure-clusters]一文。
+
+## <a name="getting-the-application-ready-for-the-cloud"></a>让应用程序准备好使用云
+
+在 Azure 中若要让应用程序准备好在 Service Fabric 中运行，需要完成以下两个步骤：
+
+1. 公开想要通过其访问 Service Fabric 群集中的 Web 应用程序的端口
+2. 为应用程序提供生产准备就绪 SQL 数据库
+
+### <a name="1-exposing-the-web-application-in-service-fabric"></a>1.公开 Service Fabric 中的 Web 应用程序
+默认情况下，配置的 Service Fabric 群集在 Azure 负载均衡器中的端口 80 处于打开状态，Azure 负载均衡器负责均衡传入到群集的流量。 可以通过 docker-compose.yml 文件公开此端口上的容器。
+
+1. 打开“解决方案资源管理器”。
+
+2. 打开 docker-compose > docker-compose.yml。
+
+3. 修改 `fabrikamfiber.web` 节点，添加名为 `ports:` 的新子节点和字符串 `- "80:80"`。 完成后的 docker-compose.yml 文件应如下所示：
+
+   ```yml
+      version: '3'
+
+      services:
+        fabrikamfiber.web:
+          image: fabrikamfiber.web
+          build:
+            context: .\FabrikamFiber.Web
+            dockerfile: Dockerfile
+          ports:
+            - "80:80"
+   ```
+
+### <a name="2-provide-a-production-ready-sql-database-for-our-application"></a>2.为应用程序提供生产准备就绪 SQL 数据库
+容器化此应用程序并启用本地调试时，将应用程序设置为运行容器中的 SQL Server。 本地调试应用程序时，这是一个不错的解决方案，因为无需保留数据库中的数据。 但是在生产中运行时，需要将数据保留在数据库中。 目前无法保证将数据保留在容器中，因此无法将生产数据存储在容器中的 SQL Server 中。
+
+因此，如果服务需要永久 SQL 数据库，建议使用 Azure SQL 数据库。 若要在 Azure 中设置和运行托管 SQL Server，请访问 [Azure SQL 数据库快速入门] [[link-azure-sql]] 一文。
+
+>[!NOTE]
+>在 FabrikamFiber.Web 项目中，请务必在 web.release.config 文件中将连接字符串更改为 SQL Server。
+>如果 SQL 数据库不可访问，此应用程序将无法正常运行。 可以选择继续操作，在不使用 SQL Server 的情况下部署应用程序。
 
 ## <a name="deploy-with-visual-studio"></a>使用 Visual Studio 进行部署
 
@@ -213,9 +260,13 @@ ms.lasthandoff: 05/10/2017
 
    ![设置 Service Fabric 持续集成][image-setup-ci]
    
-   完成配置后，无论何时将更新推送到存储库，容器都会部署到 Service Fabric 中。
+   完成配置后，容器会部署到 Service Fabric。 每次将更新推送给存储库时将执行新版本。
+   
+   >[!NOTE]
+   >生成容器映像大约需要 15 分钟。
+   >首次部署到 Service Fabric 群集时会下载 Windows Server Core 容器的基础映像。 下载另需 5-10 分钟才能完成。
 
-7. 使用**团队资源管理器****开始生成**，并查看在 Service Fabric 中运行的容器应用程序。
+7. 使用群集的 URL 浏览到 Fabrikam Call Center 应用程序，例如 *http://mycluster.westeurope.cloudapp.azure.com*
 
 现在，已容器化并部署 Fabrikam 呼叫中心解决方案，可以打开 [Azure 门户][link-azure-portal]并查看在 Service Fabric 中运行的应用程序。 若要试用应用程序，可打开 Web 浏览器并转到 Service Fabric 群集的 URL。
 
@@ -236,10 +287,12 @@ ms.lasthandoff: 05/10/2017
 [link-servicefabric-createapp]: service-fabric-create-your-first-application-in-visual-studio.md
 [link-azure-portal]: https://portal.azure.com
 [link-sf-clustertemplate]: https://aka.ms/securepreviewonelineclustertemplate
-[link-sf-clustertemplate-parameters]: https://aka.ms/securepreviewonelineclusterparameters
+[link-azure-pricing-calculator]: https://azure.microsoft.com/en-us/pricing/calculator/
+[link-azure-subscription]: https://azure.microsoft.com/en-us/free/
+[link-vsts-account]: https://www.visualstudio.com/team-services/pricing/
+[link-azure-sql]: /sql-database
 
 [image-web-preview]: media/service-fabric-host-app-in-a-container/fabrikam-web-sample.png
 [image-source-control]: media/service-fabric-host-app-in-a-container/add-to-source-control.png
 [image-publish-repo]: media/service-fabric-host-app-in-a-container/publish-repo.png
 [image-setup-ci]: media/service-fabric-host-app-in-a-container/configure-continuous-integration.png
-

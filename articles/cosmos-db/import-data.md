@@ -13,19 +13,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2017
+ms.date: 06/06/2017
 ms.author: anhoh
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 7b3bf2ebb02b748801f418066e9f16cb0197cde5
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 23a4a82dbdb611f4da90562af936fca28da9b24d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/13/2017
 
 ---
 # <a name="how-to-import-data-into-azure-cosmos-db-for-the-documentdb-api"></a>如何将数据导入用于 DocumentDB API 的 Azure Cosmos DB？
 
-本教程提供有关使用 Azure Cosmos DB 数据迁移工具的说明，该工具可从各种源（包括 JSON 文件、CSV 文件、SQL、MongoDB、Azure 表存储、Amazon DynamoDB 和 DocumentDB 集合）将数据导入 Azure Cosmos DB 中。 还可在从单个分区集合迁移到 DocumentDB API 的多分区集合时使用数据迁移工具。
+本教程介绍了如何使用 Azure Cosmos DB，即可以从各种源（包括 JSON 文件、CSV 文件、SQL、MongoDB、Azure 表存储、Amazon DynamoDB 和 Azure Cosmos DB DocumentDB API 集合）将数据导入集合中的 DocumentDB API 数据迁移工具，以用于 Azure Cosmos DB 和 DocumentDB API。 还可在从单个分区集合迁移到 DocumentDB API 的多分区集合时使用数据迁移工具。
 
 仅在将数据导入 Azure Cosmos DB 以用于 DocumentDB API 时，数据迁移工具才起作用。 目前不支持导入用于表 API 或图形 API 的数据。 
 
@@ -112,7 +112,7 @@ ms.lasthandoff: 05/31/2017
 
 借助 MongoDB 源导入程序选项，可从单个 MongoDB 集合中导入，并且选择使用查询筛选文档和/或使用投影来修改文档结构。  
 
-![MongoDB 源选项的屏幕截图 - documentdb 与 mongodb 对比](./media/import-data/mongodbsource.png)
+![MongoDB 源选项的屏幕截图](./media/import-data/mongodbsource.png)
 
 连接字符串是标准 MongoDB 格式：
 
@@ -142,7 +142,7 @@ ms.lasthandoff: 05/31/2017
 
 借助 MongoDB 导出 JSON 文件源导入程序选项，可以导入一个或多个通过 mongoexport 实用程序生成的 JSON 文件。  
 
-![MongoDB 导出源选项的屏幕截图 - documentdb 与 mongodb 对比](./media/import-data/mongodbexportsource.png)
+![MongoDB 导出源选项的屏幕截图](./media/import-data/mongodbexportsource.png)
 
 添加包含 MongoDB 导出 JSON 文件的文件夹以供导入时，可以选择递归搜索子文件夹中的文件。
 
@@ -253,7 +253,7 @@ Amazon DynamoDB 连接字符串的格式为：
 
 下面是一个用于从 Amazon DynamoDB 中导入的命令行示例︰
 
-    dt.exe /s:DynamoDB /s.ConnectionString:ServiceURL=https://dynamodb.us-east-1.amazonaws.com;AccessKey=<accessKey>;SecretKey=<secretKey> /s.Request:"{   """TableName""": """ProductCatalog""" }" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:catalogCollection /t.CollectionThroughput:2500
+    dt.exe /s:DynamoDB /s.ConnectionString:ServiceURL=https://dynamodb.us-east-1.amazonaws.com;AccessKey=<accessKey>;SecretKey=<secretKey> /s.Request:"{   """TableName""": """ProductCatalog""" }" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<Azure Cosmos DB Endpoint>;AccountKey=<Azure Cosmos DB Key>;Database=<Azure Cosmos DB Database>;" /t.Collection:catalogCollection /t.CollectionThroughput:2500
 
 ## <a id="BlobImport"></a>从 Azure Blob 存储中导入文件
 借助 JSON 文件、MongoDB 导出文件和 CSV 文件源导入程序选项，可以从 Azure Blob 存储中导入一个或多个文件。 在指定 Blob 容器 URL 和帐户密钥后，只需提供正则表达式来选择要导入的文件。
@@ -264,7 +264,7 @@ Amazon DynamoDB 连接字符串的格式为：
 
     dt.exe /s:JsonFile /s.Files:"blobs://<account key>@account.blob.core.windows.net:443/importcontainer/.*" /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:doctest
 
-## <a id="DocumentDBSource"></a>从 DocumentDB 中导入
+## <a id="DocumentDBSource"></a>从 Azure Cosmos DB DocumentDB API 集合导入的具体步骤
 借助 Azure Cosmos DB 源导入程序选项，可从一个或多个 Azure Cosmos DB 集合中导入数据，并且（可选）使用查询来筛选文档。  
 
 ![Azure Cosmos DB 源选项的屏幕截图](./media/import-data/documentdbsource.png)
@@ -315,7 +315,7 @@ Azure Cosmos DB 源导入程序选项具有下列高级选项：
     dt.exe /s:CosmosDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /s.Collection:StoresSub /t:JsonFile /t.File:StoresExport.json /t.Overwrite /t.CollectionThroughput:2500
 
 > [!TIP]
-> Azure Cosmos DB 数据导入工具还支持从 [Azure Cosmos DB 模拟器](local-emulator.md)导入数据。 从本地模拟器导入数据时，请将终结点设置为 https://localhost:<port>。 
+> Azure Cosmos DB 数据导入工具还支持从 [Azure Cosmos DB 模拟器](local-emulator.md)导入数据。 从本地模拟器导入数据时，请将终结点设置为 `https://localhost:<port>`。 
 > 
 > 
 
@@ -339,7 +339,7 @@ HBase Stargate 连接字符串的格式为︰
 
     dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<username>;Password=<password> /s.Table:Contacts /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:hbaseimport
 
-## <a id="DocumentDBBulkTarget"></a>导入到 DocumentDB（批量导入）
+## <a id="DocumentDBBulkTarget"></a>导入到 DocumentDB API（批量导入）的具体步骤
 借助 Azure Cosmos DB 批量导入程序，可以使用 Azure Cosmos DB 存储过程从任何可用的源选项导入，以提高效率。 该工具支持导入到一个单分区的 Azure Cosmos DB 集合以及分片导入，从而可跨多个单分区 Azure Cosmos DB 集合对数据进行分区。 有关将数据分区的详细信息，请参阅 [Azure Cosmos DB 中的分区和扩展](partition-data.md)。 该工具将创建、执行，然后删除目标集合中存储的过程。  
 
 ![Azure Cosmos DB 批量选项的屏幕截图](./media/import-data/documentdbbulk.png)
@@ -403,7 +403,7 @@ Azure Cosmos DB 批量导入程序具有下列高级附加选项：
 > 
 > 
 
-## <a id="DocumentDBSeqTarget"></a>导入到 DocumentDB（顺序记录导入）
+## <a id="DocumentDBSeqTarget"></a>导入到 DocumentDB API（依序记录导入）的具体步骤
 借助 Azure Cosmos DB 顺序记录导入程序，可以从任何可用的源选项中逐条导入记录。 如果要导入到已达到存储过程配额的现有集合中，可以选择此选项。 该工具支持导入到单个（单分区和多分区）Azure Cosmos DB 集合以及分片导入，从而可跨多个单分区和/或多分区 Azure Cosmos DB 集合对数据进行分区。 有关将数据分区的详细信息，请参阅 [Azure Cosmos DB 中的分区和扩展](partition-data.md)。
 
 ![Azure Cosmos DB 顺序记录导入选项的屏幕截图](./media/import-data/documentdbsequential.png)
@@ -414,7 +414,7 @@ Azure Cosmos DB 连接字符串的格式为：
 
 Azure Cosmos DB 帐户连接字符串可从 Azure 门户的“密钥”边栏选项卡中检索到（如[如何管理 Azure Cosmos DB 帐户](manage-account.md)中所述），但是需要将数据库的名称追加到连接字符串后面（格式如下）：
 
-    Database=<CosmosDB Database>;
+    Database=<Azure Cosmos DB Database>;
 
 > [!NOTE]
 > 使用“验证”命令来确保可以访问在连接字符串字段中指定的 Azure Cosmos DB 实例。

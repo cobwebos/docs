@@ -12,97 +12,39 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 06/22/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: ae830de628770d470268db5fd32ca620f9b6c30b
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: 87d2509c8fc6a97f7d9e7e1257fe827e5926158f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/26/2017
 
 
 ---
-# <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>安装和配置远程桌面以连接到 Azure 中的 Linux VM
-通常使用安全外壳 (SSH) 连接从命令行管理 Azure 中的 Linux 虚拟机 (VM)。 如果不熟悉 Linux，或者要快速进行故障排除，使用远程桌面可能会更方便。 本文详细介绍如何使用 Resource Manager 部署模型为 Linux VM 安装和配置桌面环境 ([xfce](https://www.xfce.org)) 和远程桌面 ([xrdp](http://www.xrdp))。 还可以[使用经典部署模型对 VM 执行这些步骤](classic/remote-desktop.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)。
+# 安装和配置远程桌面以连接到 Azure 中的 Linux VM
+<a id="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure" class="xliff"></a>
+通常使用安全外壳 (SSH) 连接从命令行管理 Azure 中的 Linux 虚拟机 (VM)。 如果不熟悉 Linux，或者要快速进行故障排除，使用远程桌面可能会更方便。 本文详细介绍如何使用 Resource Manager 部署模型为 Linux VM 安装和配置桌面环境 ([xfce](https://www.xfce.org)) 和远程桌面 ([xrdp](http://www.xrdp))。
 
 
-## <a name="prerequisites"></a>先决条件
+## 先决条件
+<a id="prerequisites" class="xliff"></a>
 本文需要 Azure 中的现有 Linux VM。 如果需要创建 VM，请使用以下方法之一：
 
-- [Azure CLI 2.0](../linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [Azure CLI 1.0](quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Azure 门户](../linux/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-用户还需登录到[活动 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
+- [Azure CLI 2.0](quick-create-cli.md)
+- [Azure 门户](quick-create-portal.md)
 
 
-## <a name="quick-commands"></a>快速命令
-如果需要快速完成任务，以下部分详细说明了在 VM 上安装和配置远程桌面所需的基本命令。 本文档的余下部分（[从此处开始](#install-graphical-environment-on-linux-vm)）提供了每个步骤的更详细信息和上下文。
-
-以下示例在 Ubuntu VM 上安装轻型 [xfce4](https://www.xfce.org/) 桌面环境。 其他分发版和桌面环境略有不同。 例如，使用 **yum** 在 Red Hat Enterprise Linux 上安装并配置适当的 **selinux** 规则，或者使用 **zypper** 在 SUSE 上安装。
-
-通过 SSH 连接到你的 VM。 安装 xfce 桌面环境，如下所示：
-
-```bash
-sudo apt-get update
-sudo apt-get install xfce4
-```
-
-安装 xrdp，如下所示：
-
-```bash
-sudo apt-get install xrdp
-```
-
-配置 xrdp 以使用 xfce 作为桌面环境，如下所示：
-
-```bash
-echo xfce4-session >~/.xsession
-```
-
-重新启动 xrdp 服务：
-
-```bash
-sudo service xrdp restart
-```
-
-如果当前仅使用 SSH 密钥进行身份验证，请为用户帐户设置密码：
-
-```bash
-sudo passwd ops
-```
-
-退出 Linux VM 的 SSH 会话。 使用本地计算机上的 Azure CLI 创建网络安全组规则，以允许远程桌面流量。 将 [az network nsg rule create](/cli/azure/network/nsg/rule#create) 与 Azure CLI 2.0 配合使用。 以下示例在 `myNetworkSecurityGroup` 中创建一个名为 `myNetworkSecurityGroupRule` 的规则，以允许 tcp 端口 3389 上的流量：
-    
-```azurecli
-az network nsg rule create --resource-group myResourceGroup \
-    --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRule \
-    --protocol tcp --direction inbound --priority 1010 \
-    --source-address-prefix * --source-port-range * \
-    --destination-address-prefix * --destination-port-range 3389 \
-    --access allow
-```
-
-或者，使用 Azure CLI 1.0：
-
-```azurecli
-azure network nsg rule create --resource-group myResourceGroup \
-    --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRule \
-    --protocol tcp --direction inbound --priority 1010 \
-    --destination-port-range 3389 --access allow
-```
-
-使用所选的远程桌面客户端连接到 Linux VM。
-
-![使用远程桌面客户端连接到 xrdp](./media/use-remote-desktop/remote-desktop-client.png)
-
-## <a name="install-a-desktop-environment-on-your-linux-vm"></a>在 Linux VM 上安装桌面环境
+## 在 Linux VM 上安装桌面环境
+<a id="install-a-desktop-environment-on-your-linux-vm" class="xliff"></a>
 Azure 中的大多数 Linux VM 默认情况下未安装桌面环境。 通常使用 SSH 连接（而不是桌面环境）来管理 Linux VM。 Linux 中有各种可以选择的桌面环境。 根据所选的桌面环境，可能会占用 1 到 2 GB 的磁盘空间，并需要 5 到 10 分钟来安装和配置所有所需的包。
 
-以下示例在 Ubuntu VM 上安装轻型 [xfce4](https://www.xfce.org/) 桌面环境。 其他分发的命令略有不同（例如，使用 **yum** 在 Red Hat Enterprise Linux 上安装并配置适当的 **selinux** 规则，或者使用 **zypper** 在 SUSE 上安装）。
+以下示例在 Ubuntu VM 上安装轻型 [xfce4](https://www.xfce.org/) 桌面环境。 其他发行版的命令略有不同（例如，使用 `yum` 在 Red Hat Enterprise Linux 上安装并配置适当的 `selinux` 规则，或者使用 `zypper` 在 SUSE 上安装）。
 
-首先，通过 SSH 连接到 VM。 以下示例使用用户名 `ops` 连接到名为 `myvm.westus.cloudapp.azure.com` 的 VM：
+首先，通过 SSH 连接到 VM。 以下示例使用用户名 *azureuser* 连接到名为 *myvm.westus.cloudapp.azure.com* 的 VM：
 
 ```bash
-ssh ops@myvm.westus.cloudapp.azure.com ~/.ssh/id_rsa.pub
+ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
 如果要使用 Windows 并且需要有关使用 SSH 的详细信息，请参阅[如何将 SSH 密钥用于 Windows](ssh-from-windows.md)。
@@ -114,7 +56,8 @@ sudo apt-get update
 sudo apt-get install xfce4
 ```
 
-## <a name="install-and-configure-a-remote-desktop-server"></a>安装和配置远程桌面服务器
+## 安装和配置远程桌面服务器
+<a id="install-and-configure-a-remote-desktop-server" class="xliff"></a>
 安装桌面环境后，请配置远程桌面服务来侦听传入连接。 [xrdp](http://xrdp.org) 是大多数 Linux 分发版中提供的开源远程桌面协议 (RDP) 服务器，可与 xfce 完美配合。 在 Ubuntu VM 上安装 xrdp，如下所示：
 
 ```bash
@@ -134,43 +77,37 @@ sudo service xrdp restart
 ```
 
 
-## <a name="set-a-local-user-account-password"></a>设置本地用户帐户密码
-如果在创建 VM 时已为用户帐户创建密码，请跳过此步骤。 如果仅使用 SSH 密钥身份验证，并且未设置本地帐户密码，请在使用 xrdp 之前指定密码以登录到 VM。 xrdp 无法接受使用 SSH 密钥进行身份验证。 以下示例为用户帐户 `ops` 指定密码：
+## 设置本地用户帐户密码
+<a id="set-a-local-user-account-password" class="xliff"></a>
+如果在创建 VM 时已为用户帐户创建密码，请跳过此步骤。 如果仅使用 SSH 密钥身份验证，并且未设置本地帐户密码，请在使用 xrdp 之前指定密码以登录到 VM。 xrdp 无法接受使用 SSH 密钥进行身份验证。 以下示例为用户帐户 *azureuser* 指定密码：
 
 ```bash
-sudo passwd ops
+sudo passwd azureuser
 ```
 
 > [!NOTE]
-> 指定密码不会将 sshd 配置更新为允许密码登录（如果当前不允许）。 从安全角度看，你可能想要使用基于密钥的身份验证通过 SSH 隧道连接到 VM，然后连接到 xrdp。 如果是这样，请跳过以下创建网络安全组规则的步骤，以允许远程桌面流量。
+> 指定密码不会将 SSHD 配置更新为允许密码登录（如果当前不允许）。 从安全角度看，你可能想要使用基于密钥的身份验证通过 SSH 隧道连接到 VM，然后连接到 xrdp。 如果是这样，请跳过以下创建网络安全组规则的步骤，以允许远程桌面流量。
 
 
-## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>为远程桌面流量创建网络安全组规则
+## 为远程桌面流量创建网络安全组规则
+<a id="create-a-network-security-group-rule-for-remote-desktop-traffic" class="xliff"></a>
 若要允许远程桌面流量到达 Linux VM，需要创建网络安全组规则以允许端口 3389 上的 TCP 访问 VM。 有关网络安全组规则的详细信息，请参阅[什么是网络安全组？](../../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 还可以[使用 Azure 门户创建网络安全组规则](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-以下示例创建名为 `myNetworkSecurityGroupRule` 的网络安全组规则以 `allow` `tcp` 端口 `3389` 上的流量。
+以下示例使用 [az network nsg rule create](/cli/azure/network/nsg/rule#create) 创建名为 *myNetworkSecurityGroupRule* 的网络安全组规则以*允许* *tcp* 端口 *3389* 上的流量。
 
-- 将 [az network nsg rule create](/cli/azure/network/nsg/rule#create) 与 Azure CLI 2.0 配合使用：
-    
-    ```azurecli
-    az network nsg rule create --resource-group myResourceGroup \
-        --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRule \
-        --protocol tcp --direction inbound --priority 1010 \
-        --source-address-prefix '*' --source-port-range '*' \
-        --destination-address-prefix '*' --destination-port-range 3389 \
-        --access allow
-    ```
+```azurecli
+az network nsg rule create \
+    --resource-group myResourceGroup \
+    --nsg-name myNetworkSecurityGroup \
+    --name myNetworkSecurityGroupRule \
+    --protocol tcp \
+    --priority 1010 \
+    --destination-port-range 3389
+```
 
-- 或者，使用 Azure CLI 1.0：
 
-    ```azurecli
-    azure network nsg rule create --resource-group myResourceGroup \
-        --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRule \
-        --protocol tcp --direction inbound --priority 1010 \
-        --destination-port-range 3389 --access allow
-    ```
-
-## <a name="connect-your-linux-vm-with-a-remote-desktop-client"></a>使用远程桌面客户端连接 Linux VM
+## 使用远程桌面客户端连接 Linux VM
+<a id="connect-your-linux-vm-with-a-remote-desktop-client" class="xliff"></a>
 打开本地的远程桌面客户端，并连接到 Linux VM 的 IP 地址或 DNS 名称。 输入 VM 上的用户帐户的用户名和密码，如下所示：
 
 ![使用远程桌面客户端连接到 xrdp](./media/use-remote-desktop/remote-desktop-client.png)
@@ -180,7 +117,8 @@ sudo passwd ops
 ![通过 xrdp 连接 xfce 桌面环境](./media/use-remote-desktop/xfce-desktop-environment.png)
 
 
-## <a name="troubleshoot"></a>故障排除
+## 故障排除
+<a id="troubleshoot" class="xliff"></a>
 如果无法使用远程桌面客户端连接到 Linux VM，请在 Linux VM上使用 `netstat` 验证 VM 是否正在侦听 RDP 连接，如下所示：
 
 ```bash
@@ -200,7 +138,7 @@ tcp     0     0      0.0.0.0:3389       0.0.0.0:*     LISTEN     53188/xrdp
 sudo service xrdp restart
 ```
 
-请在 Ubuntu VM 上的 `/var/log` 中查看日志，以获得该服务可能未响应的原因的指示。 也可以在远程桌面连接尝试期间监视 syslog 以查看任何错误：
+请查看 Ubuntu VM 上的 */var/log*Thug 中的日志，以获得该服务可能未响应的原因的指示。 也可以在远程桌面连接尝试期间监视 syslog 以查看任何错误：
 
 ```bash
 tail -f /var/log/syslog
@@ -208,12 +146,13 @@ tail -f /var/log/syslog
 
 其他 Linux 分发（例如，Red Hat Enterprise Linux 和 SUSE）重新启动服务的方式可能有所不同，并且可能需要更换要查看的日志文件位置。
 
-如果用户在远程桌面客户端中未收到任何响应，并且在系统日志中看不到任何事件，则此行为指示远程桌面流量无法到达 VM。 查看网络安全组规则，以确保有规则允许端口 3389 上的 TCP。 有关详细信息，请参阅[排查应用程序连接问题](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+如果用户在远程桌面客户端中未收到任何响应，并且在系统日志中看不到任何事件，则此行为指示远程桌面流量无法到达 VM。 查看网络安全组规则，以确保有规则允许端口 3389 上的 TCP。 有关详细信息，请参阅[排查应用程序连接问题](../windows/troubleshoot-app-connection.md)。
 
 
-## <a name="next-steps"></a>后续步骤
-有关为 Linux VM 创建 SSH 密钥和在 Linux VM 上使用 SSH 密钥的详细信息，请参阅[在 Azure 中为 Linux VM 创建 SSH 密钥](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+## 后续步骤
+<a id="next-steps" class="xliff"></a>
+有关为 Linux VM 创建 SSH 密钥和在 Linux VM 上使用 SSH 密钥的详细信息，请参阅[在 Azure 中为 Linux VM 创建 SSH 密钥](mac-create-ssh-keys.md)。
 
-有关从 Windows 使用 SSH 的信息，请参阅[如何在 Windows 中使用 SSH 密钥](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+有关从 Windows 使用 SSH 的信息，请参阅[如何在 Windows 中使用 SSH 密钥](ssh-from-windows.md)。
 
 

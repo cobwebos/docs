@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
 ms.openlocfilehash: 9245a2ce63746f039a3015a5a0cda2ff05cf950e
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/14/2017
 
-
 ---
-# <a name="generic-ldap-connector-technical-reference"></a>泛型 LDAP 连接器技术参考
+<a id="generic-ldap-connector-technical-reference" class="xliff"></a>
+
+# 泛型 LDAP 连接器技术参考
 本指南介绍泛型 LDAP 连接器。 本文适用于以下产品：
 
 * Microsoft 标识管理器 2016 (MIM2016)
@@ -33,7 +35,9 @@ ms.lasthandoff: 03/14/2017
 提到 IETF RFC 时，本文档使用 (RFC [RFC 编号]/[RFC 文档中的部分]) 格式，例如：(RFC 4512/4.3)。
 可以在 http://tools.ietf.org/html/rfc4500 上找到详细信息（需要以正确的 RFC 编号替换 4500）。
 
-## <a name="overview-of-the-generic-ldap-connector"></a>泛型 LDAP 连接器概述
+<a id="overview-of-the-generic-ldap-connector" class="xliff"></a>
+
+## 泛型 LDAP 连接器概述
 使用泛型 LDAP 连接器可将同步服务与 LDAP v3 服务器集成。
 
 IETF RFC 中未指定某些操作和架构元素，例有关要执行增量导入的项目。 对于这些操作，仅支持显式指定的 LDAP 目录。
@@ -47,7 +51,9 @@ IETF RFC 中未指定某些操作和架构元素，例有关要执行增量导�
 | 操作 |支持在所有 LDAP 目录上执行以下操作： <li>完全导入</li><li>导出</li>只支持在指定目录上执行以下操作：<li>增量导入</li><li>设置密码、更改密码</li> |
 | 架构 |<li>在 LDAP 架构中检测到架构（RFC3673 和 RFC4512/4.2）</li><li>支持结构化类、aux 类和 extensibleObject 对象类 (RFC4512/4.3)</li> |
 
-### <a name="delta-import-and-password-management-support"></a>增量导入和密码管理支持
+<a id="delta-import-and-password-management-support" class="xliff"></a>
+
+### 增量导入和密码管理支持
 支持增量导入和密码管理的目录：
 
 * Microsoft Active Directory 轻型目录服务 (AD LDS)
@@ -93,23 +99,33 @@ IETF RFC 中未指定某些操作和架构元素，例有关要执行增量导�
   * 支持所有操作进行增量导入
   * 支持设置密码和更改密码
 
-### <a name="prerequisites"></a>先决条件
+<a id="prerequisites" class="xliff"></a>
+
+### 先决条件
 在使用连接器之前，请确保在同步服务器上安装以下软件：
 
 * Microsoft .NET 4.5.2 Framework 或更高版本
 
-### <a name="detecting-the-ldap-server"></a>检测 LDAP 服务器
+<a id="detecting-the-ldap-server" class="xliff"></a>
+
+### 检测 LDAP 服务器
 连接器依赖各种技术来检测和识别 LDAP 服务器。 连接器使用根 DSE（供应商名称和版本），并检查架构，找出已知存在某些 LDAP 服务器中的唯一对象和属性。 如果找到此数据，则用于预先填充连接器的配置选项。
 
-### <a name="connected-data-source-permissions"></a>连接的数据源权限
+<a id="connected-data-source-permissions" class="xliff"></a>
+
+### 连接的数据源权限
 若要在连接的目录中的对象上执行导入及导出操作，连接器帐户必须具有足够的权限。 连接器需要写入权限才能导出，需要读取权限才能导入。 权限设置是在目标目录本身的管理体验内执行。
 
-### <a name="ports-and-protocols"></a>端口和协议
+<a id="ports-and-protocols" class="xliff"></a>
+
+### 端口和协议
 连接器使用配置中指定的端口号，默认情况下，LDAP 使用 389，LDAPS 使用 636。
 
 对于 LDAPS，必须使用 SSL 3.0 或 TLS。 不支持 SSL 2.0，并且无法激活。
 
-### <a name="required-controls-and-features"></a>必需的控件和功能
+<a id="required-controls-and-features" class="xliff"></a>
+
+### 必需的控件和功能
 LDAP 服务器必须提供以下 LDAP 控件/功能，连接器才能正常运行：  
 `1.3.6.1.4.1.4203.1.5.3` True/False 筛选器
 
@@ -135,7 +151,9 @@ True/False 筛选器通常不被报告为受 LDAP 目录支持，并且可能出
 
 连接器尝试检测这些选项是否在服务器上。 如果检测不到这些选项，连接器属性的“全局”页上会出现警告。 并非所有 LDAP 服务器都显示其支持的所有控件/功能，即使出现此警告，连接器也可能正常运行。
 
-### <a name="delta-import"></a>增量导入
+<a id="delta-import" class="xliff"></a>
+
+### 增量导入
 只有在检测到支持目录时，才可使用增量导入。 当前使用以下方法：
 
 * LDAP Accesslog。 请参阅 [http://www.openldap.org/doc/admin24/overlays.html#Access Logging](http://www.openldap.org/doc/admin24/overlays.html#Access Logging)
@@ -143,17 +161,23 @@ True/False 筛选器通常不被报告为受 LDAP 目录支持，并且可能出
 * TimeStamp。 对于 Novell/NetIQ eDirectory，连接器使用最后的日期/时间来获取已创建和更新的对象。 Novell/NetIQ eDirectory 不提供等效方法来检索已删除的对象。 如果 LDAP 服务器上没有其他作用中的增量导入方法，也可以使用此选项。 此选项无法导入已删除的对象。
 * USNChanged。 请参阅：[https://msdn.microsoft.com/library/ms677627.aspx](https://msdn.microsoft.com/library/ms677627.aspx)
 
-### <a name="not-supported"></a>不支持
+<a id="not-supported" class="xliff"></a>
+
+### 不支持
 不支持以下 LDAP 功能：
 
 * 服务器之间的 LDAP 路由 (RFC 4511/4.1.10)
 
-## <a name="create-a-new-connector"></a>创建新连接器
+<a id="create-a-new-connector" class="xliff"></a>
+
+## 创建新连接器
 若要创建泛型 LDAP 连接器，请在“同步服务”中选择“管理代理”和“创建”。 选择“泛型 LDAP (Microsoft)”连接器。
 
 ![CreateConnector](./media/active-directory-aadconnectsync-connector-genericldap/createconnector.png)
 
-### <a name="connectivity"></a>连接
+<a id="connectivity" class="xliff"></a>
+
+### 连接
 在“连接”页上，必须指定“主机”、“端口”和“绑定”信息。 根据选择的“绑定”，以下部分可能提供其他信息。
 
 ![连接](./media/active-directory-aadconnectsync-connector-genericldap/connectivity.png)
@@ -175,7 +199,9 @@ True/False 筛选器通常不被报告为受 LDAP 目录支持，并且可能出
 
 如果使用了可扩展对象 (RFC4512/4.3)，请选择“在架构中包含可扩展属性”。启用此选项可在所有对象上使用每个属性。 选择此选项会使架构变得很大，因此除非连接的目录使用此功能，否则建议不要选择此选项。
 
-### <a name="global-parameters"></a>全局参数
+<a id="global-parameters" class="xliff"></a>
+
+### 全局参数
 在“全局参数”页面上配置差异更改日志的 DN 和其他 LDAP 功能。 该页面预先填充了 LDAP 服务器提供的信息。
 
 ![连接](./media/active-directory-aadconnectsync-connector-genericldap/globalparameters.png)
@@ -213,14 +239,18 @@ True/False 筛选器通常不被报告为受 LDAP 目录支持，并且可能出
 
 在其他分区列表中，可以添加其他未自动检测到的命名空间。 例如，如果有多个应同时一起导入的服务器构成了一个逻辑群集，则可以使用此设置。 就如同 Active Directory 可以在一个林中有多个域，而所有域都共享一个架构，在此框中输入其他命名空间就可以模拟此状况。 每个命名空间都可以从不同的服务器导入，可在“配置分区和层次结构”页上进一步配置。 使用 Ctrl+Enter 来换行。
 
-### <a name="configure-provisioning-hierarchy"></a>配置预配层次结构
+<a id="configure-provisioning-hierarchy" class="xliff"></a>
+
+### 配置预配层次结构
 此页用于将 DN 组件（例如 OU）映射到应该预配的对象类型（例如 organizationalUnit）。
 
 ![预配层次结构](./media/active-directory-aadconnectsync-connector-genericldap/provisioninghierarchy.png)
 
 通过配置预配层次结构，可以将连接器配置为根据需要自动创建结构。 例如，如果有命名空间 dc=contoso,dc=com 并且预配了一个新对象（cn=Joe、ou=Seattle、c=US、dc=contoso、dc=com），则连接器可以创建国家/地区类型为美国，organizationalUnit 为西雅图的对象（如果目录中尚不存在这些项）。
 
-### <a name="configure-partitions-and-hierarchies"></a>配置分区和层次结构
+<a id="configure-partitions-and-hierarchies" class="xliff"></a>
+
+### 配置分区和层次结构
 在分区和层次结构页面上，选择具有你打算导入和导出的对象的所有命名空间。
 
 ![分区](./media/active-directory-aadconnectsync-connector-genericldap/partitions.png)
@@ -236,7 +266,9 @@ True/False 筛选器通常不被报告为受 LDAP 目录支持，并且可能出
 
 ![仅搜索所选容器](./media/active-directory-aadconnectsync-connector-genericldap/partitions-only-selected-containers.png)
 
-### <a name="configure-anchors"></a>配置定位点
+<a id="configure-anchors" class="xliff"></a>
+
+### 配置定位点
 此页面始终有一个预配置值，并且无法更改。 如果已识别服务器供应商，可以使用不可变的属性（例如对象的 GUID）填充定位点。 如果供应商尚未检测到或者已知没有不可变属性，连接器将使用 dn（可分辨名称）作为定位点。
 
 ![anchors](./media/active-directory-aadconnectsync-connector-genericldap/anchors.png)
@@ -258,16 +290,22 @@ True/False 筛选器通常不被报告为受 LDAP 目录支持，并且可能出
 | RadiantOne VDS |dn |
 | Sun One Directory 服务器 |dn |
 
-## <a name="other-notes"></a>其他说明
+<a id="other-notes" class="xliff"></a>
+
+## 其他说明
 本部分提供此连接器特定层面的信息，或因为其他原因而要知道的重要信息。
 
-### <a name="delta-import"></a>增量导入
+<a id="delta-import" class="xliff"></a>
+
+### 增量导入
 Open LDAP 中的增量水印是 UTC 日期/时间。 出于此原因，FIM 同步服务与 Open LDAP 之间的时钟必须同步。 如果没有同步，则可能省略增量更改日志中的某些项目。
 
 对于 Novell eDirectory，增量导入不会检测任何对象删除。 出于此原因，必须定期运行完整导入才能找到所有已删除的对象。
 
 对于包含基于日期/时间的增量更改日志的目录，强烈建议定期运行完整导入。 此过程可使同步引擎找出并消除 LDAP 服务器与连接器空间中当前内容之间的差异。
 
-## <a name="troubleshooting"></a>故障排除
+<a id="troubleshooting" class="xliff"></a>
+
+## 故障排除
 * 有关如何启用记录来排查连接器问题的信息，请参阅[如何启用连接器的 ETW 跟踪](http://go.microsoft.com/fwlink/?LinkId=335731)。
 

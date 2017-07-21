@@ -16,9 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: glenga
-translationtype: Human Translation
-ms.sourcegitcommit: a64af1a9f969c5ce5a7e2f18ca23451ac96f1a13
-ms.openlocfilehash: 7abd7b0921c029ff159935d89905d3c502aba643
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: fa3d37b963c1bb6b58127b9180cd657d7b1dabcc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -43,7 +45,7 @@ function.json 文件提供以下属性：
 * `connection`：此连接字符串必须为**应用程序设置**连接字符串，且设置为用于通知中心的 DefaultFullSharedAccessSignature 值。
 * `direction`：必须设置为“out”。 
 * `platform`：平台属性表明通知面向的通知平台。 必须是以下值之一：
-  * `template`：如果从输出绑定省略平台属性，则此为默认平台。 模板通知可用于面向 Azure 通知中心上配置的任何平台。 有关一般情况下使用模板通过 Azure 通知中心发送跨平台通知的详细信息，请参阅[模板](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)。
+  * 默认情况下，如果从输出绑定中省略平台属性，则模板通知可用于面向 Azure 通知中心上配置的任何平台。 有关一般情况下使用模板通过 Azure 通知中心发送跨平台通知的详细信息，请参阅[模板](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)。
   * `apns`：Apple Push Notification 服务。 有关配置 APNS 的通知中心和在客户端应用中接收通知的详细信息，请参阅[通过 Azure 通知中心将推送通知发送到 iOS](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md) 
   * `adm`[Amazon Device Messaging](https://developer.amazon.com/device-messaging)。 有关配置 ADM 的通知中心和在 Kindle 应用中接收通知的详细信息，请参阅 [Kindle 应用通知中心入门](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md) 
   * `gcm`：[Google Cloud Messaging](https://developers.google.com/cloud-messaging/)。 同样支持 Firebase Cloud Messaging 这一新版本的 GCM。 有关配置 GCM/FCM 的通知中心和在 Android 客户端应用中接收通知的详细信息，请参阅[通过 Azure 通知中心将推送通知发送到 Android](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)
@@ -294,10 +296,5 @@ private static TemplateNotification GetTemplateNotification(string message)
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

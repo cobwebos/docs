@@ -1,6 +1,6 @@
 # 概述
 ## [什么是 Resource Manager？](resource-group-overview.md)
-## [支持的服务](resource-manager-supported-services.md)
+## [资源提供程序和类型](resource-manager-supported-services.md)
 ## [Resource Manager 部署和经典部署](resource-manager-deployment-model.md)
 ## [订阅监管](resource-manager-subscription-governance.md)
 ## [托管应用程序](managed-application-overview.md)
@@ -67,16 +67,21 @@
 
 ## 设置资源策略
 ### [什么是资源策略？](resource-manager-policy.md)
-### [门户策略分配](resource-manager-policy-portal.md)
-### [脚本策略分配](resource-manager-policy-create-assign.md)
-### [资源标记策略](resource-manager-policy-tags.md)
-### [存储策略](resource-manager-policy-storage.md)
-### [Linux VM 策略](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Windows VM 策略](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [使用门户分配策略](resource-manager-policy-portal.md)
+### [使用脚本分配策略](resource-manager-policy-create-assign.md)
+### 示例
+#### [标记](resource-manager-policy-tags.md)
+#### [命名约定](resource-manager-policy-naming-convention.md)
+#### [网络](resource-manager-policy-network.md)
+#### [存储](resource-manager-policy-storage.md)
+#### [Linux VM](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+#### [Windows VM](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
 ## 使用托管应用程序
-### [发布托管应用程序](managed-application-publishing.md)
-### [使用托管应用程序](managed-application-consumption.md)
+### [发布服务目录应用程序](managed-application-publishing.md)
+### [使用服务目录应用程序](managed-application-consumption.md)
+### [发布应用商店应用程序](managed-application-author-marketplace.md)
+### [使用应用商店应用程序](managed-application-consume-marketplace.md)
 ### [创建 UI 定义](managed-application-createuidefinition-overview.md)
 
 ## 审核
@@ -85,6 +90,11 @@
 
 ## 故障排除
 ### [常见部署错误](resource-manager-common-deployment-errors.md)
+### [了解部署错误](resource-manager-troubleshoot-tips.md)
+### [RequestDisallowedByPolicy 错误](resource-manager-policy-requestdisallowedbypolicy-error.md)
+### 虚拟机部署错误
+#### [Linux](../virtual-machines/linux/troubleshoot-deploy-vm.md)
+#### [Windows](../virtual-machines/windows/troubleshoot-deploy-vm.md)
 
 # 引用
 ## [模板格式](/azure/templates/)
@@ -118,8 +128,9 @@
 ## [REST](/rest/api/resources/)
 
 # 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [服务更新](https://azure.microsoft.com/updates/?product=azure-resource-manager)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [限制请求](resource-manager-request-limits.md)
 ## [跟踪异步操作](resource-manager-async-operations.md)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)
-## [服务更新](https://azure.microsoft.com/updates/?product=azure-resource-manager)

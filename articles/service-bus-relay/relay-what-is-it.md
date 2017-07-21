@@ -12,17 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 03/09/2017
+ms.date: 06/14/2017
 ms.author: sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 9fd40892c77630bd4f0b7abf5c3458a6dc200402
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 74a0837b7149236faa45ef2cda0a0aee7c46a31b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/10/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
 # <a name="what-is-azure-relay"></a>什么是 Azure 中继？
+
 Azure 中继服务简化了混合应用程序，通过允许安全地向公有云公开位于企业网络内的服务，无需打开防火墙连接，也无需对企业网络基础结构进行彻底更改。 中继支持各种不同的传输协议和 Web 服务标准。
 
 中继服务支持传统的单向流量、请求/响应流量和对等流量。 它还支持 Internet 范围的事件分发，以实现发布/订阅方案和双向套接字通信，从而提高点到点通信效率。 
@@ -48,15 +49,19 @@ Azure 中继具有两项功能：
 | **多个 RPC 编程模型** | |x |
 
 ## <a name="hybrid-connections"></a>混合连接
+
 [Azure 中继混合连接](relay-hybrid-connections-protocol.md)功能是在现有中继功能的基础上演进的安全开放协议，可在包含基本 WebSocket 功能（明确包括常用 Web 浏览器中的 WebSocket API）的任何平台和任何语言中实现。 混合连接基于 HTTP 和 WebSocket。
 
 ## <a name="wcf-relays"></a>WCF 中继
+
 WCF 中继适用于整个 .NET Framework (NETFX) 和 WCF。 可以使用一套 WCF“中继”绑定在本地服务与中继服务之间发起连接。 在幕后，中继绑定将映射到新的传输绑定元素，这些元素旨在创建与云中服务总线集成的 WCF 通道组件。
 
 ## <a name="service-history"></a>服务历史记录
-混合连接取代了以前的“BizTalk 服务”功能，后者构建在 Azure 服务总线 WCF 中继的基础之上。 新的混合连接功能为现有 WCF 中继功能做了补充，在可预见的未来，这两项服务功能将在中继服务中共存。 它们共享一个公用网关，但实现方式有所不同。
+
+混合连接取代了以前的“BizTalk 服务”功能，后者构建在 Azure 服务总线 WCF 中继的基础之上。 新的混合连接功能为现有 WCF 中继功能做了补充，在可预见的未来，这两项服务功能将在 Azure 中继服务中共存。 它们共享一个公用网关，但实现方式有所不同。
 
 ## <a name="next-steps"></a>后续步骤：
+
 * [中继常见问题](relay-faq.md)
 * [创建命名空间](relay-create-namespace-portal.md)
 * [.NET 入门](relay-hybrid-connections-dotnet-get-started.md)

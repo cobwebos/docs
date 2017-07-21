@@ -15,14 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/05/2017
+ms.date: 06/26/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: e75bc8b74f965a0d4509b6967f1cdc7fa32eec56
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: db5dff01c0459db746eace0c9a4535aeccd4dcfa
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="use-the-beeline-client-with-apache-hive"></a>将 Beeline 客户端与 Apache Hive 配合使用
@@ -33,7 +32,7 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
 
 | 运行 Beeline 的位置 | parameters |
 | --- | --- | --- |
-| 到头节点或边缘节点的 SSH 连接 | `-u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -n admin` |
+| 到头节点或边缘节点的 SSH 连接 | `-u 'jdbc:hive2://headnodehost:10001/;transportMode=http'` |
 | 群集外部 | `-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password` |
 
 > [!NOTE]
@@ -48,7 +47,7 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
 * 基于 Linux 的 HDInsight 上的 Hadoop 群集。
 
   > [!IMPORTANT]
-  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 * SSH 客户端或本地 Beeline 客户端。 本文档中的大多数步骤都假定你从与群集的 SSH 会话中使用 Beeline。 有关从群集外部运行 Beeline 的信息，请参阅[远程使用 Beeline](#remote) 部分。
 
@@ -56,22 +55,20 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
 
 ## <a id="beeline"></a>使用 Beeline
 
-1. 启动 Beeline 时，必须提供用于 HDInsight 群集上的 HiveServer2 的连接字符串。 还必须提供用于群集登录的帐户名（通常为 `admin`）。 如果从群集外部运行命令，则还必须提供群集登录密码。 可使用下表查找要使用的连接字符串格式和参数：
+1. 启动 Beeline 时，必须提供用于 HDInsight 群集上的 HiveServer2 的连接字符串。 若要从群集外部运行命令，则还必须提供群集登录帐户名（默认的 `admin`）和密码。 可使用下表查找要使用的连接字符串格式和参数：
 
     | 运行 Beeline 的位置 | parameters |
     | --- | --- | --- |
-    | 到头节点或边缘节点的 SSH 连接 | `-u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -n admin` |
+    | 到头节点或边缘节点的 SSH 连接 | `-u 'jdbc:hive2://headnodehost:10001/;transportMode=http'` |
     | 群集外部 | `-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password` |
 
     例如，可以使用以下命令从与群集的 SSH 会话启动 Beeline：
 
     ```bash
-    beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -n admin
+    beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
     ```
 
-    此命令启动 Beeline 客户端，并连接到群集头节点上的 HiveServer2。 `-n` 参数用于提供群集登录帐户。 默认登录名是 `admin`。 如果在群集创建过程中使用了其他名称，则使用该名称而不是 `admin`。
-
-    命令完成后，将出现 `jdbc:hive2://headnodehost:10001/>` 提示符。
+    此命令启动 Beeline 客户端，并连接到群集头节点上的 HiveServer2。 命令完成后，将出现 `jdbc:hive2://headnodehost:10001/>` 提示符。
 
 2. Beeline 命令以 `!` 字符开头，例如，`!help` 将显示帮助。 但是，`!` 对于某些命令可以省略。 例如，`help` 也是有效的。
 
@@ -86,7 +83,7 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
 
 3. 使用以下命令显示 hivesampletable 的架构：
 
-    ```bash
+    ```hiveql
     describe hivesampletable;
     ```
 
@@ -193,10 +190,10 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
 
 3. 若要保存文件，请使用 **Ctrl**+**_X**，然后输入 **Y**，最后按 **Enter**。
 
-4. 使用以下命令以通过 Beeline 运行该文件。 将 **HOSTNAME** 替换为前面获取的头节点名称，将 **PASSWORD** 替换为 admin 帐户的密码：
+4. 使用以下命令以通过 Beeline 运行该文件：
 
     ```bash
-    beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -n admin -i query.hql
+    beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i query.hql
     ```
 
     > [!NOTE]
@@ -232,6 +229,15 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
 将连接字符串中的 `clustername` 替换为 HDInsight 群集名称。
 
 将 `admin` 替换为群集登录名称，并将 `password` 替换为群集登录密码。
+
+## <a id="sparksql"></a>将 Beeline 与 Spark 配合使用
+
+Spark 提供自己的 HiveServer2 实现（通常称为 Spark Thrift 服务器）。 此服务使用 Spark SQL 而不是 Hive 来解析查询，并且可以根据查询改善性能。
+
+若要连接到 HDInsight 群集上 Spark 的 Spark Thrift 服务器，请使用端口 `10002` 而不是 `10001`。 例如，`beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'`。
+
+> [!IMPORTANT]
+> Spark Thrift 服务器不能通过 Internet 直接访问。 只能从 SSH 会话或 HDInsight 群集所在的同一 Azure 虚拟网络内连接到它。
 
 ## <a id="summary"></a><a id="nextsteps"></a>后续步骤
 
