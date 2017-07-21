@@ -1,14 +1,14 @@
 ---
 title: "Azure PowerShell 脚本示例 - 将快照作为 VHD 导出/复制到不同区域中的存储帐户 | Microsoft Docs"
 description: "Azure PowerShell 脚本示例 - 将快照作为 VHD 导出/复制到不同区域中的存储帐户"
-services: managed-disks
+services: virtual-machines-windows
 documentationcenter: storage
-author: ramankum
+author: ramankumarlive
 manager: kavithag
-editor: ramankum
+editor: tysonn
 tags: azure-service-management
 ms.assetid: 
-ms.service: managed-disks-windows
+ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
@@ -23,8 +23,7 @@ ms.lasthandoff: 06/08/2017
 
 ---
 
-# 使用 PowerShell 将托管快照作为 VHD 导出/复制到不同区域中的存储帐户
-<a id="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell" class="xliff"></a>
+# <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>使用 PowerShell 将托管快照作为 VHD 导出/复制到不同区域中的存储帐户
 
 此脚本将托管快照导出到不同区域中的存储帐户。 它首先生成快照的 SAS URI，然后使用该 SAS URI 将快照复制到不同区域中的存储帐户。 可以使用此脚本在不同区域中维护托管磁盘的副本以备用于灾难恢复。  
 
@@ -32,14 +31,12 @@ ms.lasthandoff: 06/08/2017
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## 示例脚本
-<a id="sample-script" class="xliff"></a>
+## <a name="sample-script"></a>示例脚本
 
 [!code-powershell[main](../../../powershell_scripts/storage/copy-snapshot-to-storage-account/copy-snapshot-to-storage-account.ps1 "复制快照")]
 
 
-## 脚本说明
-<a id="script-explanation" class="xliff"></a>
+## <a name="script-explanation"></a>脚本说明
 
 此脚本使用以下命令生成托管快照的 SAS URI 并使用该 SAS URI 将快照复制到一个存储帐户。 表中的每条命令均链接到特定于命令的文档。
 
@@ -49,8 +46,7 @@ ms.lasthandoff: 06/08/2017
 | [New-AzureStorageContext](/powershell/module/azure.storage/New-AzureStorageContext) | 使用帐户名称和密钥创建存储帐户上下文。 可以使用此上下文对存储帐户执行读取/写入操作。 |
 | [Start-AzureStorageBlobCopy](/powershell/module/azure.storage/Start-AzureStorageBlobCopy) | 将快照的基础 VHD 复制到存储帐户 |
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 [基于 VHD 创建托管磁盘](./../scripts/storage-windows-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
