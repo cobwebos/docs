@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/07/2017
+ms.date: 07/20/2017
 ms.author: jeedes
+ms.reviewer: jeedes
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
 ms.openlocfilehash: 61999ebea05371c53e5ff27644a68039db1aef96
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/18/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>教程：Azure Active Directory 与 Amazon Web Services (AWS) 集成
@@ -133,7 +133,7 @@ To enable single sign-on with Amazon Web Services (AWS), it must be configured t
     | 属性名称  | 属性值 | 命名空间 |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
-    | 角色               | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
+    | 角色            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
     
     >[!TIP]
     >你需要在 Azure AD 中配置用户预配以从 AWS 控制台中提取所有角色。 请参阅下文中的预配步骤。
@@ -172,13 +172,13 @@ To enable single sign-on with Amazon Web Services (AWS), it must be configured t
    
     ![配置单一登录][14]
  
-      a. 对于“提供者类型”，请选择“SAML”。
+    a. 对于“提供者类型”，请选择“SAML”。
 
-      b. 在“提供者名称”文本框中，键入提供者名称（例如：*WAAD*）。
+    b. 在“提供者名称”文本框中，键入提供者名称（例如：*WAAD*）。
 
-      c. 若要上传下载的元数据文件，请单击“选择文件”。
+    c. 若要上传下载的元数据文件，请单击“选择文件”。
 
-      d. 单击“下一步”。
+    d. 单击“下一步”。
 
 13. 在“验证提供者信息”对话框页上，单击“创建”。 
     
@@ -192,25 +192,25 @@ To enable single sign-on with Amazon Web Services (AWS), it must be configured t
     
     ![配置单一登录][17] 
 
-      a. 在“角色名称”文本框中，键入角色名称（例如：*TestUser*）。 
+    a. 在“角色名称”文本框中，键入角色名称（例如：*TestUser*）。 
 
-      b. 单击“下一步”。
+    b. 单击“下一步”。
 
 16. 在“选择角色类型”对话框中，执行以下步骤： 
     
     ![配置单一登录][18] 
 
-      a. 选择“标识提供者角色的访问权限”。 
+    a. 选择“标识提供者角色的访问权限”。 
 
-      b. 在**授予 SAML 提供程序的 Web 单一访问 (WebSSO) 访问权限**部分中，单击“选择”。
+    b. 在**授予 SAML 提供程序的 Web 单一访问 (WebSSO) 访问权限**部分中，单击“选择”。
 
 17. 在“建立信任”对话框中，执行以下步骤：  
     
     ![配置单一登录][19] 
 
-      a. 对于 SAML 提供者，选择之前创建的 SAML 提供者（例如：*WAAD*）
+    a. 对于 SAML 提供者，选择之前创建的 SAML 提供者（例如：*WAAD*）
   
-      b. 单击“下一步”。
+    b. 单击“下一步”。
 
 18. 在“验证角色信任”对话框中，单击“下一步”。
     
@@ -224,7 +224,7 @@ To enable single sign-on with Amazon Web Services (AWS), it must be configured t
     
     ![配置单一登录][34]
  
-      a. 单击“创建角色”。
+    a. 单击“创建角色”。
 
     b. 创建所需数量的角色，并将其映射到标识提供者。
 

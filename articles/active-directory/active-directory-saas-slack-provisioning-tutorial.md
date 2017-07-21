@@ -5,18 +5,20 @@ services: active-directory
 documentationcenter: 
 author: asmalser-msft
 writer: asmalser-msft
-manager: stevenpo
+manager: sakula
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 07/20/2017
 ms.author: asmalser-msft
-translationtype: Human Translation
+ms.reviewer: asmalser
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a3c339de98250f43c71f7dd9706888c6715ca2ef
 ms.openlocfilehash: e39f2202e83cdf66b85f1cc02a9320ec9e31472e
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/08/2017
 
 ---
@@ -46,9 +48,9 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ### <a name="important-tips-for-assigning-users-to-slack"></a>将用户分配到 Slack 的重要提示
 
-*    建议将单个 Azure AD 用户分配到 Slack 以测试预配配置。 其他用户和/或组可以稍后分配。
+*   建议将单个 Azure AD 用户分配到 Slack 以测试预配配置。 其他用户和/或组可以稍后分配。
 
-*    将用户分配到 Slack 时，必须在分配对话框中选择“用户”或“组”角色。 “默认访问权限”角色不可用于预配。
+*   将用户分配到 Slack 时，必须在分配对话框中选择“用户”或“组”角色。 “默认访问权限”角色不可用于预配。
 
 
 ## <a name="configuring-user-provisioning-to-slack"></a>为 Slack 配置用户预配 
@@ -61,17 +63,17 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>若要在 Azure AD 中为 Slack 配置自动用户帐户预配，请执行以下操作：
 
 
-1)    在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
+1)  在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
 
 2) 如果已为 Slack 配置单一登录，请使用搜索字段搜索 Slack 实例。 否则，请选择“添加”并在应用程序库中搜索“Slack”。 从搜索结果中选择 Slack，并将其添加到应用程序列表。
 
-3)    选择 Slack 实例，然后选择“预配”选项卡。
+3)  选择 Slack 实例，然后选择“预配”选项卡。
 
-4)    将“预配模式”设置为“自动”。
+4)  将“预配模式”设置为“自动”。
 
 ![Slack 预配](./media/active-directory-saas-slack-provisioning-tutorial/Slack1.PNG)
 
-5)    在“管理员凭据”部分下，单击“授权”。 这将在新的浏览器窗口中打开“Slack 授权”对话框。 
+5)  在“管理员凭据”部分下，单击“授权”。 这将在新的浏览器窗口中打开“Slack 授权”对话框。 
 
 6) 在新窗口中，使用团队管理员帐户登录到 Slack。 在显示的授权对话框中，选择要启用预配的 Slack 团队，然后选择“授权”。 完成后，返回到 Azure 门户完成预配配置。
 
