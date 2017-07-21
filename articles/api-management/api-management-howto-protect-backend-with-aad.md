@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 690f820b3beb6b7d5d68732b94470602a92e9268
-ms.openlocfilehash: bf0d72f97a32771f86bdff62029fb43e279b6842
-ms.lasthandoff: 02/23/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 0dfb4102904c2e972e6617fd3851fb1c50147357
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>如何使用 Azure Active Directory 和 API 管理保护 Web API 后端
@@ -500,7 +501,7 @@ public class CalcController : ApiController
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
-    <openid-config url="https://login.windows.net/DemoAPIM.onmicrosoft.com/.well-known/openid-configuration" />
+    <openid-config url="https://login.microsoftonline.com/DemoAPIM.onmicrosoft.com/.well-known/openid-configuration" />
     <required-claims>
         <claim name="aud">
             <value>https://DemoAPIM.NOTonmicrosoft.com/APIMAADDemo</value>

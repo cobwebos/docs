@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 05/26/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: e7519981642c438ca25b0479324ee159545bac8e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9c19dc502acd1af4c3193e033d3caefe895624be
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -39,7 +39,7 @@ Pig 是一个平台，可以使用名为 *Pig Latin* 的过程语言为 Hadoop �
 | [远程桌面](hdinsight-hadoop-use-pig-remote-desktop.md)（HDInsight 3.2 和 3.3） |✔ |✔ |Windows |Windows |
 
 > [!IMPORTANT]
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 ## <a id="why"></a>为何使用 Pig
 
@@ -109,7 +109,7 @@ HDInsight 可以使用各种方法来运行 Pig Latin 作业。 使用下表来�
 | [远程桌面](hdinsight-hadoop-use-pig-remote-desktop.md)（HDInsight 3.2 和 3.3） |✔ |✔ |Windows |Windows |
 
 > [!IMPORTANT]
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 ## <a name="pig-and-sql-server-integration-services"></a>Pig 和 SQL Server Integration Services
 

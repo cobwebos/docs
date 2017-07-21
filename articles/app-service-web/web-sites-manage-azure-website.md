@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: rachelap
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 08a84ace63465e7c058add69a25687fe46c7ea07
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 9e19618a1b24bbdf3163ddfc3423c5c932dcd7af
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="manage-a-web-app-in-azure-app-service"></a>管理 Azure 应用服务中的 Web 应用
@@ -78,10 +77,6 @@ Azure 应用服务在五个层中提供：免费、共享、基本、标准和�
 
 请考虑使用[过渡部署](web-sites-staged-publishing.md)。 此选项允许向与生产部署并行运行的过渡部署发布更新。 
 
-如果使用 Visual Studio Team Services，则可以通过源控件设置持续部署：
-
-* [使用 Team Foundation 版本控制 (TFVC)](../cloud-services/cloud-services-continuous-delivery-use-vso.md) 
-* [使用 Git](../cloud-services/cloud-services-continuous-delivery-use-vso-git.md)
 
 <!-- Anchors. -->
 

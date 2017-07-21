@@ -12,16 +12,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 05/25/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
-ms.openlocfilehash: 4f12a4b3ba9c1d0b7ed10cf5d766bcea60205d24
-ms.lasthandoff: 02/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: adb9a12899e9040cd83d522c734448989636fe29
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/01/2017
 
 
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT 中心开发人员指南
+
 Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备和单个解决方案后端之间实现安全可靠的双向通信。
 
 Azure IoT 中心提供：
@@ -33,17 +35,23 @@ Azure IoT 中心提供：
 
 本 IoT 中心开发人员指南包括以下文章：
 
-* [使用 IoT 中心发送和接收消息][devguide-messaging]说明 IoT 中心公开的消息传送功能（从设备到云和从云到设备）。 此文章还介绍了以下主题：消息路由、消息格式、支持的通信协议及其使用的端口号等。
 * [从设备到云通信指南][lnk-d2c-guidance]可帮助用户在从设备到云的消息、设备孪生的报告属性和文件上传之间做出选择。
 * [云到设备的通信指南][lnk-c2d-guidance]有助于在直接方法、设备孪生的所需属性和云到设备的消息之间做出选择。
-* [从设备上载文件][devguide-upload]介绍如何从设备上载文件。 此文章还介绍了上传过程可发送的通知等主题。
+* [使用 IoT 中心进行设备到云和云到设备的消息传送][devguide-messaging]介绍了 IoT 中心公开的消息传送功能（从设备到云和从云到设备）。
+  * [将设备到云的消息发送到 IoT 中心][devguide-messages-d2c]。
+  * [通过内置终结点读取设备到云的消息][devguide-builtin].
+  * [对设备到云的消息使用自定义终结点和路由规则][devguide-custom]。
+  * [从 IoT 中心发送云到设备的消息][devguide-messages-c2d]。
+  * [创建和读取 IoT 中心消息][devguide-format]。
+* [从设备上传文件][devguide-upload]介绍如何从设备上传文件。 此文章还介绍了上传过程可发送的通知等主题。
 * [管理 IoT 中心中的设备标识][devguide-identities]说明各 IoT 中心的标识注册表存储的信息，以及访问和修改这些信息的方式。
 * [控制对 IoT 中心的访问][devguide-security]说明用于向设备和云组件授予 IoT 中心功能访问权限的安全模型。 此文章包括有关使用令牌和 X.509 证书的信息，以及可以授予的权限的详细信息。
 * [使用设备孪生同步状态和配置][devguide-device-twins]说明*设备孪生*概念，以及它公开的功能，如使用设备孪生来同步设备。 此文章包括有关设备孪生中存储的数据的信息。
 * [在设备上调用直接方法][devguide-directmethods]说明直接方法的生命周期，介绍有关如何从后端应用调用设备方法以及在设备上处理直接方法的信息。
 * [在多台设备上计划作业][devguide-jobs]介绍如何在多台设备上计划作业。 此文章介绍如何提交作业，以在执行直接方法，使用设备孪生更新设备时执行任务。 它还介绍如何查询作业的状态。
+* [参考 - 选择通信协议][devguide-protocol]介绍了用于设备通信且受 IoT 中心支持的通信协议，并列出了应该打开的端口。
 * [参考 - IoT 中心终结点][devguide-endpoints]说明了每个 IoT 中心针对运行时和管理操作公开的各种终结点。 此文章还介绍了如何在 IoT 中心创建附加终结点，以及如何使用现场网关使设备能够连接到非标准方案中的 IoT 中心终结点。
-* [参考 - 设备孪生和作业的 IoT 中心查询语言][devguide-query]说明了可用于从中心检索设备孪生和作业信息的 IoT 中心查询语言。
+* [参考 - 设备孪生、作业和消息路由的 IoT 中心查询语言][devguide-query]介绍了可用于从中心检索设备孪生和作业相关信息的 IoT 中心查询语言。
 * [参考 - 配额和限制][devguide-quotas]总结了 IoT 中心服务中设置的配额，以及当超过配额时可以预期看到的限制行为。
 * [参考 - 定价][devguide-pricing]提供有关 IoT 中心的不同 SKU 和定价的常规信息，以及 IoT 中心如何将各种 IoT 中心功能作为消息计量的详细信息。
 * [参考 - 设备和服务 SDK][devguide-sdks] 列出了开发与 IoT 中心交互的设备和服务应用时可使用的 Azure IoT SDK。 此文章包括指向联机 API 文档的链接。
@@ -66,5 +74,10 @@ Azure IoT 中心提供：
 [devguide-pricing]: iot-hub-devguide-pricing.md
 [lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md
 [lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
-
+[devguide-messages-d2c]: iot-hub-devguide-messages-d2c.md
+[devguide-builtin]: iot-hub-devguide-messages-read-builtin.md
+[devguide-custom]: iot-hub-devguide-messages-read-custom.md
+[devguide-messages-c2d]: iot-hub-devguide-messages-c2d.md
+[devguide-format]: iot-hub-devguide-messages-construct.md
+[devguide-protocol]: iot-hub-devguide-protocols.md
 

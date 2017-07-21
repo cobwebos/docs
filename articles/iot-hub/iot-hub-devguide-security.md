@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 444b01ffc7cccf0951ecb4d032d42667a99f639c
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 6287fa716c708cf35a5d124756c488929a93b435
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -397,8 +398,8 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 | --- | --- |
 | **RegistryRead** |授予对标识注册表的读取访问权限。 有关详细信息，请参阅[标识注册表][lnk-identity-registry]。 <br/>后端云服务将使用此权限。 |
 | **RegistryReadWrite** |授予对标识注册表的读取和写入访问权限。 有关详细信息，请参阅[标识注册表][lnk-identity-registry]。 <br/>后端云服务将使用此权限。 |
-| **ServiceConnect** |授予对面向云服务的通信和监视终结点的访问权限。 <br/>授予接收设备到云消息、发送云到设备消息和检索相应传送确认的权限。 <br/>授予检索文件上载的传送确认的权限。 <br/>授予访问设备孪生以更新标记和所需属性、检索报告属性和运行查询的权限。 <br/>后端云服务将使用此权限。 |
-| **DeviceConnect** |授予对面向设备的终结点的访问权限。 <br/>授予发送设备到云消息和接收云到设备消息的权限。 <br/>授予从设备执行文件上载的权限。 <br/>授予接收设备孪生所需属性通知和更新设备孪生报告属性的权限。 <br/>授予执行文件上载的权限。 <br/>此权限由设备使用。 |
+| **ServiceConnect** |授予对面向云服务的通信和监视终结点的访问权限。 <br/>授予接收设备到云消息、发送云到设备消息和检索相应传送确认的权限。 <br/>授予检索文件上传的传送确认的权限。 <br/>授予访问设备孪生以更新标记和所需属性、检索报告属性和运行查询的权限。 <br/>后端云服务将使用此权限。 |
+| **DeviceConnect** |授予对面向设备的终结点的访问权限。 <br/>授予发送设备到云消息和接收云到设备消息的权限。 <br/>授予从设备执行文件上传的权限。 <br/>授予接收设备孪生所需属性通知和更新设备孪生报告属性的权限。 <br/>授予执行文件上传的权限。 <br/>此权限由设备使用。 |
 
 ## <a name="additional-reference-material"></a>其他参考资料
 
@@ -407,7 +408,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 * [IoT 中心终结点][lnk-endpoints]，介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
 * [限制和配额][lnk-quotas]介绍了适用于 IoT 中心服务的配额，以及使用服务时预期会碰到的限制行为。
 * [Azure IoT 设备和服务 SDK][lnk-sdks] 列出了开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
-* [设备克隆和作业的 IoT 中心查询语言][lnk-query]介绍了可用来从 IoT 中心检索设备克隆和作业相关信息的 IoT 中心查询语言。
+* [设备孪生、作业和消息路由的 IoT 中心查询语言][lnk-query]一文介绍了可用于从 IoT 中心检索设备孪生和作业相关信息的 IoT 中心查询语言。
 * [IoT 中心 MQTT 支持][lnk-devguide-mqtt]提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
 ## <a name="next-steps"></a>后续步骤

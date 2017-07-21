@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 590e2bc759567cf3d679e261592dff1e699ba295
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 746cad19093fd2a1ad23ddd9412394f8d9da331c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="integrate-azure-ad-into-an-android-app"></a>将 Azure AD 集成到 Android 应用中
@@ -174,7 +173,7 @@ dependencies {
             ....
         <application/>
 
-4. 在主要活动中创建 AuthenticationContext 的实例。 有关此调用的详细信息不在本主题的范围内，但你可以通过查看 [Android 本机客户端示例](https://github.com/AzureADSamples/NativeClient-Android)来快速入门。 在下面的示例中，SharedPreferences 是默认缓存，机构采用 `https://login.windows.net/yourtenant.onmicrosoft.com` 形式：
+4. 在主要活动中创建 AuthenticationContext 的实例。 有关此调用的详细信息不在本主题的范围内，但你可以通过查看 [Android 本机客户端示例](https://github.com/AzureADSamples/NativeClient-Android)来快速入门。 在下面的示例中，SharedPreferences 是默认缓存，机构采用 `https://login.microsoftonline.com/yourtenant.onmicrosoft.com` 形式：
 
     `mContext = new AuthenticationContext(MainActivity.this, authority, true); // mContext is a field in your activity`
 
@@ -264,7 +263,7 @@ Microsoft Intune 公司门户应用提供了代理组件。 帐户是在 Account
 ### <a name="authority-url-and-ad-fs"></a>机构 URL 和 AD FS
 Active Directory 联合身份验证服务 (AD FS) 不会识别为生产 STS，因此，你需要关闭实例发现，并在 AuthenticationContext 构造函数中传递 false。
 
-机构 URL 需要 STS 实例和[租户名称](https://login.windows.net/yourtenant.onmicrosoft.com)。
+机构 URL 需要 STS 实例和[租户名称](https://login.microsoftonline.com/yourtenant.onmicrosoft.com)。
 
 ### <a name="querying-cache-items"></a>查询缓存项
 ADAL 在 SharedPreferences 中提供了默认缓存，以及一些简单的缓存查询函数。 你可以使用以下命令从 AuthenticationContext 中获取当前缓存：

@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2017
+ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 4e4a4f4e299dc2747eb48bbd2e064cd80783211c
-ms.openlocfilehash: cd11ef761a39b47e2426766cba64b3975595f4d4
-ms.lasthandoff: 04/04/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 3674670e10500d2992539ab60fbdb31b666fcf9a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/13/2017
 
 ---
 

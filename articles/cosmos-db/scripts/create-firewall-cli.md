@@ -16,11 +16,11 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/02/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: c37d4ed3353d302ecfb2f673e890ffc3869f1844
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: 51f61901e1b1615e48582690dea701a01a56ebca
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 07/18/2017
 
 ---
 
@@ -50,10 +50,10 @@ az group delete --name myResourceGroup
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
-| [az cosmosdb create](/cli/azure/cosmosdb/name#create) | 创建 Azure CosmosDB 帐户。 |
-| [az cosmosdb update](/cli/azure/sql/server#create) | 更新 Azure CosmosDB 帐户，将防火墙设置加入其中。 |
-| [az group delete](/cli/azure/resource#delete) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
+| [az cosmosdb create](https://docs.microsoft.com/cli/azure/cosmosdb#create) | 创建 Azure CosmosDB 帐户。 |
+| [az cosmosdb update](https://docs.microsoft.com/cli/azure/cosmosdb#update) | 更新 Azure CosmosDB 帐户，将防火墙设置加入其中。 |
+| [az group delete](https://docs.microsoft.com/cli/azure/group#delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

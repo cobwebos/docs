@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: c9df0fedfb39ee162334304d56eb4df3a96dcd3e
+ms.translationtype: HT
+ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
+ms.openlocfilehash: 342a305a4bbdc1526a9316a35819d06996702a5b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 07/14/2017
 
 ---
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 05/09/2017
 > * 查看运行中的负载均衡器
 > * 从负载均衡器中添加和删除 VM
 
-本教程需要 Azure PowerShell 模块 3.6 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
+本教程需要 Azure PowerShell 模块 3.6 或更高版本。 可以运行 ` Get-Module -ListAvailable AzureRM` 来查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 
 
 ## <a name="azure-load-balancer-overview"></a>Azure 负载均衡器概述
@@ -112,12 +112,20 @@ Add-AzureRmLoadBalancerProbeConfig `
   -ProbeCount 2
 ```
 
+使用 [Set-AzureRmLoadBalancer](/powershell/module/azurerm.network/set-azurermloadbalancer) 更新负载均衡器：
+
+```powershell
+Set-AzureRmLoadBalancer -LoadBalancer $lb
+```
+
 ### <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 负载均衡器规则用于定义将流量分配给 VM 的方式。 定义传入流量的前端 IP 配置和后端 IP 池以接收流量，同时定义所需源和目标端口。 若要确保仅正常运行的 VM 接收流量，还需定义要使用的运行状况探测。
 
 使用 [Add-AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/add-azurermloadbalancerruleconfig) 创建一个负载均衡器规则。 以下示例创建名为“myLoadBalancerRule”的负载均衡器规则并平衡端口 80 上的流量：
 
 ```powershell
+$probe = Get-AzureRmLoadBalancerProbeConfig -LoadBalancer $lb -Name myHealthProbe
+
 Add-AzureRmLoadBalancerRuleConfig `
   -Name myLoadBalancerRule `
   -LoadBalancer $lb `
@@ -125,7 +133,8 @@ Add-AzureRmLoadBalancerRuleConfig `
   -BackendAddressPool $lb.BackendAddressPools[0] `
   -Protocol Tcp `
   -FrontendPort 80 `
-  -BackendPort 80
+  -BackendPort 80 `
+  -Probe $probe
 ```
 
 使用 [Set-AzureRmLoadBalancer](/powershell/module/azurerm.network/set-azurermloadbalancer) 更新负载均衡器：
@@ -142,9 +151,12 @@ Set-AzureRmLoadBalancer -LoadBalancer $lb
 使用 [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) 创建虚拟网络。 以下示例创建具有“mySubnet”的名为“myVnet”的虚拟网络：
 
 ```powershell
+# Create subnet config
 $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
   -Name mySubnet `
   -AddressPrefix 192.168.1.0/24
+
+# Create the virtual network
 $vnet = New-AzureRmVirtualNetwork `
   -ResourceGroupName myResourceGroupLoadBalancer `
   -Location EastUS `
@@ -158,6 +170,7 @@ $vnet = New-AzureRmVirtualNetwork `
 以下示例创建一个名为“myNetworkSecurityGroup”的网络安全组规则，并将其应用于 mySubnet：
 
 ```powershell
+# Create security rule config
 $nsgRule = New-AzureRmNetworkSecurityRuleConfig `
   -Name myNetworkSecurityGroupRule `
   -Protocol Tcp `
@@ -168,16 +181,22 @@ $nsgRule = New-AzureRmNetworkSecurityRuleConfig `
   -DestinationAddressPrefix * `
   -DestinationPortRange 80 `
   -Access Allow
+
+# Create the network security group
 $nsg = New-AzureRmNetworkSecurityGroup `
   -ResourceGroupName myResourceGroupLoadBalancer `
   -Location EastUS `
   -Name myNetworkSecurityGroup `
   -SecurityRules $nsgRule
+
+# Apply the network security group to a subnet
 Set-AzureRmVirtualNetworkSubnetConfig `
   -VirtualNetwork $vnet `
   -Name mySubnet `
   -NetworkSecurityGroup $nsg `
   -AddressPrefix 192.168.1.0/24
+
+# Update the virtual network
 Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 ```
 

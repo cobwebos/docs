@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2017
+ms.date: 05/23/2017
 ms.author: boltean
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 1a24e3293445e6e42c8d1e8a9a38c7377120b902
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 85f5f044faddd5180f0c19d3f2c235b20f6373d5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -65,6 +66,9 @@ IP 筛选器规则在 IoT 中心服务级别进行应用。 因此，IP 筛选�
 
 > [!NOTE]
 > 拒绝 IP 地址即可阻止其他 Azure 服务（例如门户中的 Azure 流分析、Azure 虚拟机或设备资源管理器）与 IoT 中心交互。
+
+> [!WARNING]
+> 如果使用 Azure 流分析 (ASA) 从已启用 IP 筛选的 IoT 中心读取消息，请在 ASA 连接字符串中使用事件中心兼容的名称和 IoT 中心终结点。
 
 ## <a name="delete-an-ip-filter-rule"></a>删除 IP 筛选器规则
 

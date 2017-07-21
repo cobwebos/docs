@@ -4,7 +4,7 @@ description: "介绍如何在 SharePoint 服务器场中安装、配置或删除
 services: storsimple
 documentationcenter: NA
 author: SharS
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 36c20b75-f2e5-4184-a6b5-9c5e618f79b2
 ms.service: storsimple
@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/11/2016
+ms.date: 06/06/2017
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
-ms.openlocfilehash: 8c7bcc959c15399e8be96eb8f37634d2763a3115
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8910471e09b9ecc797005818538ccfc6a91c68a9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -28,8 +30,7 @@ StorSimple Adapter for SharePoint 充当远程 BLOB 存储 (RBS) 提供程序，
 
 > [!NOTE]
 > StorSimple Adapter for SharePoint 支持 SharePoint Server 2010 远程 BLOB 存储 (RBS)。 它不支持 SharePoint Server 2010 外部 BLOB 存储 (EBS)。
-> 
-> 
+
 
 * 若要下载 StorSimple Adapter for SharePoint，请转到 Microsoft 下载中心中的 [StorSimple Adapter for SharePoint][1]。
 * 有关规划 RBS 和 RBS 限制的信息，请转到[决定在 SharePoint 2013 中使用 RBS][2]或[规划 RBS (SharePoint Server 2010)][3]。
@@ -85,11 +86,9 @@ RBS 的 Microsoft Azure StorSimple 实现具有以下优势：
 
 > [!WARNING]
 > 如果尚未启用 RBS，则不建议将内容数据库转移到 StorSimple 设备。 这种配置未经测试。
-> 
-> 
 
 ## <a name="storsimple-adapter-for-sharepoint-installation"></a>StorSimple Adapter for SharePoint 安装
-在安装 StorSimple Adapter for SharePoint 之前，必须配置 StorSimple 设备并确保 SharePoint 服务器场和 SQL Server 实例化满足所有先决条件。 该教程介绍配置要求，以及安装和升级 StorSimple Adapter for SharePoint 的过程。 
+在安装 StorSimple Adapter for SharePoint 之前，必须配置 StorSimple 设备并确保 SharePoint 服务器场和 SQL Server 实例化满足所有先决条件。 该教程介绍配置要求，以及安装和升级 StorSimple Adapter for SharePoint 的过程。
 
 ## <a name="configure-prerequisites"></a>配置先决条件
 在安装 StorSimple Adapter for SharePoint 之前，请确保 StorSimple 设备、SharePoint 服务器场和 SQL Server 实例化满足以下先决条件。
@@ -97,47 +96,44 @@ RBS 的 Microsoft Azure StorSimple 实现具有以下优势：
 ### <a name="system-requirements"></a>系统要求
 StorSimple Adapter for SharePoint 支持以下硬件和软件：
 
-* 支持的操作系统 – Windows Server 2008 R2 SP1、Windows Server 2012 或 Windows Server 2012 R2 
+* 支持的操作系统 – Windows Server 2008 R2 SP1、Windows Server 2012 或 Windows Server 2012 R2
 * 支持的 SharePoint 版本 – SharePoint Server 2010 或 SharePoint Server 2013
 * 支持的 SQL Server 版本 – SQL Server 2008 Enterprise Edition、SQL Server 2008 R2 Enterprise Edition 或 SQL Server 2012 Enterprise Edition
 * 支持的 StorSimple 设备 – StorSimple 8000 系列、StorSimple 7000 系列或 StorSimple 5000 系列。
 
 ### <a name="storsimple-device-configuration-prerequisites"></a>StorSimple 设备配置先决条件
-StorSimple 设备是一个块设备，因此需要一个可以托管数据的文件服务器。 我们建议使用单独的服务器，而不要使用 SharePoint 场中的现有服务器。 此文件服务器必须与托管内容数据库的 SQL Server 计算机在同一局域网 (LAN) 中。 
+StorSimple 设备是一个块设备，因此需要一个可以托管数据的文件服务器。 我们建议使用单独的服务器，而不要使用 SharePoint 场中的现有服务器。 此文件服务器必须与托管内容数据库的 SQL Server 计算机在同一局域网 (LAN) 中。
 
 > [!TIP]
 > * 如果为了实现高可用性而配置了 SharePoint 场，则还应该部署文件服务器以实现高可用性。
 > * 如果未将内容数据库存储在 StorSimple 设备上，请使用支持 RBS 的传统的高可用性最佳实践。 SQL Server 群集支持 RBS，但 SQL Server 镜像不支持 RBS。 
-> 
-> 
 
-请确保 StorSimple 设备已正确配置，并配置了相应的卷来支持 SharePoint 部署，并且可以从 SQL Server 计算机访问这些卷。 如果尚未部署和配置 StorSimple 设备，请转到[部署本地 StorSimple 设备](storsimple-deployment-walkthrough.md)。 请记下 StorSimple 设备的 IP 地址，因为在 StorSimple Adapter for SharePoint 安装过程中需要用到。 
+
+请确保 StorSimple 设备已正确配置，并配置了相应的卷来支持 SharePoint 部署，并且可以从 SQL Server 计算机访问这些卷。 如果尚未部署和配置 StorSimple 设备，请转到[部署本地 StorSimple 设备](storsimple-8000-deployment-walkthrough-u2.md)。 请记下 StorSimple 设备的 IP 地址，因为在 StorSimple Adapter for SharePoint 安装过程中需要用到。
 
 此外，请确保要用于 BLOB 外部化的卷满足以下要求：
 
 * 该卷必须使用 64 KB 分配单元大小进行格式化。
-* Web 前端 (WFE) 服务器和应用程序服务器必须能够通过通用命名约定 (UNC) 路径访问该卷。 
+* Web 前端 (WFE) 服务器和应用程序服务器必须能够通过通用命名约定 (UNC) 路径访问该卷。
 * 必须将 SharePoint 服务器场配置为写入该卷。
 
 > [!NOTE]
 > 安装并配置适配器后，所有 BLOB 外部化必须通过 StorSimple 设备（该设备将为 SQL Server 提供卷并管理存储层）执行。 不能将其他任何目标用于 BLOB 外部化。
-> 
-> 
 
-如果打算使用 StorSimple Snapshot Manager 来创建 BLOB 和数据库数据的快照，请务必在数据库服务器上安装 StorSimple Snapshot Manager，以便它可以使用 SQL 编写器服务来实现 Windows 卷影复制服务 (VSS)。 
+
+如果打算使用 StorSimple Snapshot Manager 来创建 BLOB 和数据库数据的快照，请务必在数据库服务器上安装 StorSimple Snapshot Manager，以便它可以使用 SQL 编写器服务来实现 Windows 卷影复制服务 (VSS)。
 
 > [!IMPORTANT]
-> StorSimple Snapshot Manager 不支持 SharePoint VSS 编写器，并且不能创建应用程序一致性 SharePoint 数据快照。 在使用 SharePoint 的情况下，StorSimple Snapshot Manager 只提供崩溃一致性备份。 
-> 
-> 
+> StorSimple Snapshot Manager 不支持 SharePoint VSS 编写器，并且不能创建应用程序一致性 SharePoint 数据快照。 在使用 SharePoint 的情况下，StorSimple Snapshot Manager 只提供崩溃一致性备份。
+
 
 ## <a name="sharepoint-farm-configuration-prerequisites"></a>SharePoint 场配置先决条件
 确保已正确配置 SharePoint 服务器场，如下所述：
 
-* 验证 SharePoint 服务器场是否处于正常状态，并检查以下事项： 
+* 验证 SharePoint 服务器场是否处于正常状态，并检查以下事项：
 * 场中注册的所有 SharePoint WFE 服务器和应用程序服务器均正在运行，并且可以从要安装 StorSimple Adapter for SharePoint 的服务器 Ping 通。
 * 每个 WFE 服务器和应用程序服务器上均正在运行 SharePoint 定时服务（SPTimerV3 或 SPTimerV4）。
-* SharePoint 定时服务及在其下运行 SharePoint 管理中心站点的 IIS 应用程序池具有管理特权。 
+* SharePoint 定时服务及在其下运行 SharePoint 管理中心站点的 IIS 应用程序池具有管理特权。
 * 确保 Internet Explorer 增强的安全上下文 (IE ESC) 已禁用。 遵循以下步骤禁用 IE ESC：
   
   1. 关闭 Internet Explorer 的所有实例。
@@ -168,8 +164,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 
 > [!TIP]
 > StorSimple Adapter for SharePoint 已插入 SharePoint 管理中心页，因此可以在 SharePoint 场中的每个内容数据库上启用或禁用 RBS。 不过，在内容服务器上启用或禁用 RBS 会导致 IIS 重置，这可能会使 SharePoint Web (WFE) 前端暂时不可用，具体取决于场配置。 （前端负载均衡器的使用、当前服务器工作负荷等多种因素可能会限制或消除这种中断现象的发生。）为了避免用户受到服务中断的影响，我们建议仅在计划的维护时间窗口启用或禁用 RBS。
-> 
-> 
+
 
 [!INCLUDE [storsimple-sharepoint-adapter-configure-rbs](../../includes/storsimple-sharepoint-adapter-configure-rbs.md)]
 
@@ -182,8 +177,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 
 > [!IMPORTANT]
 > RBS 维护程序会占用大量资源。 应将它安排为仅在 SharePoint 场中的活动较少的时段内运行。
-> 
-> 
+
 
 ### <a name="delete-orphaned-blobs-immediately"></a>立即删除孤立的 BLOB
 如果需要立即删除孤立的 BlOB，请参考以下说明。 请注意，这些说明举例说明如何在包含以下组件的 SharePoint 2013 环境中执行此操作：
@@ -195,7 +189,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 [!INCLUDE [storsimple-sharepoint-adapter-garbage-collection](../../includes/storsimple-sharepoint-adapter-garbage-collection.md)]
 
 ## <a name="upgrade-or-reinstall-the-storsimple-adapter-for-sharepoint"></a>升级或重新安装 StorSimple Adapter for SharePoint
-使用以下过程升级 SharePoint 服务器，然后重新安装 StorSimple Adapter for SharePoint，或者在现有 SharePoint 服务器场中升级或重新安装该适配器。 
+使用以下过程升级 SharePoint 服务器，然后重新安装 StorSimple Adapter for SharePoint，或者在现有 SharePoint 服务器场中升级或重新安装该适配器。
 
 > [!IMPORTANT]
 > 在尝试升级 SharePoint 软件和/或升级或重新安装 StorSimple Adapter for SharePoint 之前，请查看以下信息：
@@ -204,8 +198,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 > * 升级/重新安装所需的时间取决于 SharePoint 服务器场中的 SharePoint 数据库总数。
 > * 升级/重新安装完成后，需要为内容数据库启用 RBS。 有关详细信息，请参阅[配置 RBS](#configure-rbs)。
 > * 如果要配置 RBS 的 SharePoint 场包含大量的数据库（超过 200 个），“SharePoint 管理中心”页可能会超时。 如果发生这种情况，请刷新页面。 这不会影响配置过程。
-> 
-> 
+
 
 [!INCLUDE [storsimple-upgrade-sharepoint-adapter](../../includes/storsimple-upgrade-sharepoint-adapter.md)]
 
@@ -213,9 +206,8 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 以下过程介绍如何将 BLOB 移回 SQL Server 内容数据库，然后卸载 StorSimple Adapter for SharePoint。 
 
 > [!IMPORTANT]
-> 必须先将 BLOB 移回内容数据库，然后才能卸载适配器软件。 
-> 
-> 
+> 必须先将 BLOB 移回内容数据库，然后才能卸载适配器软件。
+
 
 ### <a name="before-you-begin"></a>开始之前
 在将数据移回 SQL Server 内容数据库并开始适配器删除过程之前，请先收集以下信息：
@@ -230,10 +222,10 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 
 #### <a name="to-move-the-blobs-back-to-the-content-databases"></a>将 BLOB 移回内容数据库
 1. 下载每个外部化对象。
-2. 打开“SharePoint 管理中心”页，浏览到“系统设置”。 
+2. 打开“SharePoint 管理中心”页，浏览到“系统设置”。
 3. 在“Azure StorSimple”下面，单击“配置 StorSimple Adapter”。
 4. 在“配置 StorSimple Adapter”页上，单击每个要从外部 BLOB 存储中删除的内容数据库下面的“禁用”按钮。 
-5. 从 SharePoint 中删除对象，然后将其重新上载。
+5. 从 SharePoint 中删除对象，然后将其重新上传。
 
 也可以使用 SharePoint 随附的 Microsoft` RBS Migrate()` PowerShell cmdlet。 有关详细信息，请参阅[将内容移入或移出 RBS](https://technet.microsoft.com/library/ff628255.aspx)。
 
@@ -260,7 +252,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 
 #### <a name="to-use-the-control-panel-to-uninstall-the-adapter"></a>使用控制面板卸载适配器
 1. 打开控制面板，然后单击“程序和功能”。
-2. 选择“StorSimple Adapter for SharePoint”，然后单击“卸载”。 
+2. 选择“StorSimple Adapter for SharePoint”，然后单击“卸载”。
 
 ## <a name="next-steps"></a>后续步骤
 [详细了解 StorSimple](storsimple-overview.md)。
@@ -272,9 +264,4 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 [4]: https://technet.microsoft.com/library/ff628569(v=office.14).aspx
 [5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
 [8]: https://technet.microsoft.com/en-us/library/ff943565.aspx
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

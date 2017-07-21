@@ -17,16 +17,14 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/26/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 93ea31b4469f21e92337a768668ae6d93bbc6ba6
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: db5dff01c0459db746eace0c9a4535aeccd4dcfa
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
-# 将 Beeline 客户端与 Apache Hive 配合使用
-<a id="use-the-beeline-client-with-apache-hive" class="xliff"></a>
+# <a name="use-the-beeline-client-with-apache-hive"></a>将 Beeline 客户端与 Apache Hive 配合使用
 
 了解如何使用 [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) 在 HDInsight 上运行 Hive 查询。
 
@@ -49,7 +47,7 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
 * 基于 Linux 的 HDInsight 上的 Hadoop 群集。
 
   > [!IMPORTANT]
-  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 * SSH 客户端或本地 Beeline 客户端。 本文档中的大多数步骤都假定你从与群集的 SSH 会话中使用 Beeline。 有关从群集外部运行 Beeline 的信息，请参阅[远程使用 Beeline](#remote) 部分。
 
@@ -85,7 +83,7 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
 
 3. 使用以下命令显示 hivesampletable 的架构：
 
-    ```bash
+    ```hiveql
     describe hivesampletable;
     ```
 

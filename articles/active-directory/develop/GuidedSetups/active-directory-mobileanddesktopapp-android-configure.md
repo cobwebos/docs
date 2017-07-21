@@ -16,8 +16,8 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: 9b23f34300248ff87ed4a6abbeb6cfdda6570581
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 945b09ccdb7537987da33d32d94a3ccacd829ffd
 ms.contentlocale: zh-cn
 
 
@@ -35,7 +35,7 @@ ms.contentlocale: zh-cn
 1. 转到 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com/portal/register-app)注册应用程序
 2. 输入应用程序的名称和你的电子邮件 
 3. 确保取消选中“指导式设置”选项
-4. 单击`Add Platforms`，然后选择`Native Application`并单击“保存”
+4. 单击`Add Platform`，然后选择`Native Application`并单击“保存”
 5.  打开 `MainActivity`（在 `app` > `java` > `{host}.{namespace}` 下）
 6.  用刚注册的应用程序 ID 替换行（以 `final static String CLIENT_ID` 开头）中的 [在此处输入应用程序 ID]：
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/10/2017
 ms.author: seanmck
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 2bfbb3b8f7282ec8ae8abe9597230a3485221ecf
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 0d1d795a4d6965de6cdc2b9bd81a24a27a255566
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/25/2017
 
 ---
 
@@ -77,9 +77,14 @@ OS 更新的难题在于，它们通常需要重新启动计算机，而这会�
 
 如果在部署应用程序之前想要创建群集来测试应用程序，我们建议将这些群集动态创建为[持续集成/持续部署管道](service-fabric-set-up-continuous-integration.md)的一部分。
 
+
+### <a name="how-do-i-upgrade-my-operating-system-for-example-from-windows-server-2012-to-windows-server-2016"></a>如何升级操作系统（例如从 Windows Server 2012 升级到 Windows Server 2016）？
+
+我们致力于改善体验，但现在升级由你负责。 必须升级群集虚拟机上的操作系统映像，一次升级一个 VM。 
+
 ## <a name="container-support"></a>容器支持
 
-### <a name="why-are-my-containers-that-are-deployed-to-sf-are-unable-to-resolve-dns-addresses"></a>为什么部署到 SF 的容器无法解析 DNS 地址？
+### <a name="why-are-my-containers-that-are-deployed-to-sf-unable-to-resolve-dns-addresses"></a>为什么部署到 SF 的容器无法解析 DNS 地址？
 
 已在 5.6.204.9494 版本的群集上报告了此问题 
 

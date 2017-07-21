@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/15/2017
 ms.author: rclaus
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 8f95c79637db39208267e477735aefb9bec14512
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: 9174f7c8d16ff311312980fbe4d35996ec7ac832
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -65,7 +65,7 @@ Oracle Real RAC 可用于减少本地多节点群集配置中单一节点的故�
 
 可以在 Azure 上使用[数据防护、活动数据防护](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html)或 [Oracle Golden Gate](http://www.oracle.com/technetwork/middleware/goldengate) 实现 Oracle Database Enterprise Edition（不带 RAC）的高可用性和灾难恢复，其中两个数据库位于两个单独的虚拟机中。 这两个虚拟机应都位于相同的[虚拟网络](https://azure.microsoft.com/documentation/services/virtual-network/)，以确保它们能够通过专用持久性 IP 地址相互访问。  另外，建议将虚拟机放置在同一可用性集中，以便 Azure 将它们置于单独的容错域和升级域中。  如想拥有地理冗余，则可将这两个数据库复制到两个不同区域，并将两个实例与 VPN 网关连接起来。
 
-“[在 Azure 上实现 Oracle Data Guard](configuring-oracle-dataguard.md)”教程介绍了解基本安装过程，以便在 Azure 上试用。  
+“[在 Azure 上实现 Oracle Data Guard](configure-oracle-dataguard.md)”教程介绍了解基本安装过程，以便在 Azure 上试用。  
 
 有了 Oracle 数据防护，可以通过一个虚拟机中的主数据库、另一个虚拟机中的辅助（备用）数据库和它们之间的单向复制设置实现高可用性。 结果是对数据库副本的读取访问权限。 使用 Oracle GoldenGate，可以配置两个数据库之间的双向复制。 若要了解如何使用这些工具为数据库设置高可用性解决方案，请参阅 Oracle 网站上的[活动数据防护](http://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html)和 [GoldenGate](http://docs.oracle.com/goldengate/1212/gg-winux/index.html) 文档。 如果需要对数据库副本的读写访问权限，可以使用 [Oracle 活动数据防护](http://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html)。
 

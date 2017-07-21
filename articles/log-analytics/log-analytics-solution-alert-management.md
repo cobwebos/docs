@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/07/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 885de1e94e3ce520621dc8dc7a4a495501f6a429
-ms.openlocfilehash: 35b4c30de20c46312bd7e4524a4264450184138a
-ms.lasthandoff: 02/18/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: 3714730dce9c856f602cf46e013b1ff6a89cfb07
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="alert-management-solution-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) 中的警报管理解决方案
 
 ![警报管理图标](media/log-analytics-solution-alert-management/icon.png)
 
-警报管理解决方案可帮助你分析 Log Analytics 存储库中的所有警报。  这些警报可能来自各种源，包括 [Log Analytics 创建](log-analytics-alerts.md)或是[从 Nagios 或 Zabbix 导入](log-analytics-linux-agents.md#linux-alerts)的警报。  解决方案还会从任何[连接的 System Center Operations Manager (SCOM) 管理组](log-analytics-om-agents.md)导入警报。
+警报管理解决方案可帮助你分析 Log Analytics 存储库中的所有警报。  这些警报可能来自各种源，包括 [Log Analytics 创建](log-analytics-alerts.md)或是[从 Nagios 或 Zabbix 导入](log-analytics-linux-agents.md)的警报。  解决方案还会从任何[连接的 System Center Operations Manager (SCOM) 管理组](log-analytics-om-agents.md)导入警报。
 
 ## <a name="prerequisites"></a>先决条件
 解决方案会处理 Log Analytics 存储库中具有 **Alert** 类型的任何记录，因此必须执行收集这些记录所需的任何配置。
 
 - 对于 Log Analytics 警报，[创建警报规则](log-analytics-alerts.md)以直接在存储库中创建警报记录。
-- 对于 Nagios 和 Zabbix 警报，[配置这些服务器](log-analytics-linux-agents.md#linux-alerts)以将警报发送到 Log Analytics。
+- 对于 Nagios 和 Zabbix 警报，[配置这些服务器](log-analytics-linux-agents.md)以将警报发送到 Log Analytics。
 - 对于 SCOM 警报，[将 Operations Manager 管理组连接到 Log Analytics 工作区](log-analytics-om-agents.md)。  在 SCOM 中创建的任何警报都会导入到 Log Analytics 中。  
 
 ## <a name="configuration"></a>配置
@@ -85,7 +85,7 @@ ms.lasthandoff: 02/18/2017
 
 | 属性 | 说明 |
 |:--- |:--- |
-| 类型 |*Alert* |
+| Type |*Alert* |
 | SourceSystem |*OpsManager* |
 | AlertContext |导致生成警报的数据项的详细信息（XML 格式）。 |
 | AlertDescription |警报的详细说明。 |
