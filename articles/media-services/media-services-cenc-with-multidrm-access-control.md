@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2016
 ms.author: willzhan;kilroyh;yanmf;juliako
-translationtype: Human Translation
-ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
-ms.openlocfilehash: 1ea286a04c84d031fcefa8dc771cbdef9d8a9b72
-ms.lasthandoff: 02/16/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 63f2638cd0d50d1aa9a3b6864daba0b8854768d7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="cenc-with-multi-drm-and-access-control-a-reference-design-and-implementation-on-azure-and-azure-media-services"></a>使用多重 DRM 的 CENC 和访问控制：Azure 与 Azure 媒体服务的参考设计和实现
@@ -274,7 +274,7 @@ Azure AD 使用行业标准，通过 Azure AD 在本身与应用程序之间建�
 
 以下文档提供了有关 Azure AD 密钥滚动更新的详细信息：[有关 Azure AD 中签名密钥滚动更新的重要信息](../active-directory/active-directory-signing-key-rollover.md)。
 
-在[公钥 - 私钥对](https://login.windows.net/common/discovery/keys/)之间，
+在[公钥 - 私钥对](https://login.microsoftonline.com/common/discovery/keys/)之间，
 
 * Azure Active Directory 使用私钥生成 JWT 令牌；
 * 应用程序（例如 AMS 中的 DRM 许可证传送服务）使用公钥验证 JWT 令牌；

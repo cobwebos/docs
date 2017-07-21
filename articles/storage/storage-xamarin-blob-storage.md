@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 2ef27dc58e12d1b9e8eed54239332a53860ddd52
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 0952c0e7189dd360098744a7e19b04cd330cb617
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/27/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="how-to-use-blob-storage-from-xamarin"></a>如何通过 Xamarin 使用 Blob 存储
@@ -45,7 +44,7 @@ Xamarin 使开发人员能够通过共享的 C# 代码库来使用其本机用�
 现在，应该有了这样一个应用程序：单击某个按钮即可让计数器递增。
 
 ## <a name="create-container-and-upload-blob"></a>创建容器并上传 Blob
-接下来，需要在 `(Portable)` 项目中，向 `MyClass.cs` 添加一些代码。 此代码将创建一个容器并在其中上载 Blob。 `MyClass.cs` 应如下所示：
+接下来，需要在 `(Portable)` 项目中，向 `MyClass.cs` 添加一些代码。 此代码将创建一个容器并在其中上传 Blob。 `MyClass.cs` 应如下所示：
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;

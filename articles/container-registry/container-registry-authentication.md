@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
-ms.openlocfilehash: 2372d9d4dc190e7583bcc513042a85e970325e14
+ms.translationtype: HT
+ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
+ms.openlocfilehash: aa2a6bf3d7d9ec22020036851fc0f2bca37e31bf
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/21/2017
+ms.lasthandoff: 07/15/2017
 
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>使用私有 Docker 容器注册表进行身份验证
@@ -53,7 +53,7 @@ docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my
 
 可将多个服务主体分配到注册表中，这样就可为不同的用户或应用程序定义访问权限。 服务主体也在开发人员或 DevOps 方案中启用到注册表的“无外设”连接，如以下示例所示：
 
-  * 从注册表到业务流程系统的容器部署（包括 DC/OS、Docker Swarm 和 Kubernetes）。 还可将容器注册表拉取到相关 Azure 服务，例如[容器服务](../container-service/index.yml)、[应用服务](../app-service/index.md)、[批处理](../batch/index.md)和 [Service Fabric](../service-fabric/index.md) 等。
+  * 从注册表到业务流程系统的容器部署（包括 DC/OS、Docker Swarm 和 Kubernetes）。 还可将容器注册表拉取到相关 Azure 服务，例如[容器服务](../container-service/index.yml)、[应用服务](../app-service/index.md)、[批处理](../batch/index.md)和 [Service Fabric](/azure/service-fabric/) 等。
 
   * 构建容器映像并将它们推送到注册表的持续集成和部署解决方案（例如 Visual Studio Team Services 或 Jenkins）。
 

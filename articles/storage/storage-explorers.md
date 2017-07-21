@@ -1,6 +1,6 @@
 ---
 title: "适用于 Azure 存储的工具 | Microsoft Docs"
-description: "可用于查看 Azure 存储空间数据或与之交互的工具列表。"
+description: "可用于查看 Azure 存储数据或与之交互的工具列表。"
 services: storage
 documentationcenter: 
 author: dineshmurthy
@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: dineshmurthy
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 85ef906d680df8f6848b323d79a09b8414ed0817
+ms.translationtype: HT
+ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
+ms.openlocfilehash: 620efda06d8225b21b6bb9b104b79061ebb6515c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/06/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="azure-storage-client-tools"></a>Azure 存储客户端工具
-Azure 存储空间用户经常要使用 Azure 存储客户端工具来查看其数据或者与数据交互。 下表列出了可用于实现此目的的多种工具。 我们在每个能够枚举和/或访问数据抽象的块中打上“X”。 该表还指明了工具是否免费。 “试用”表示存在免费试用版，但完整版产品不是免费的。 “是/否”表示有一个免费版本，而提供的其他版本需要购买。
+Azure 存储用户经常要使用 Azure 存储客户端工具来查看其数据或者与数据交互。 下表列出了可用于实现此目的的多种工具。 我们在每个能够枚举和/或访问数据抽象的块中打上“X”。 该表还指明了工具是否免费。 “试用”表示存在免费试用版，但完整版产品不是免费的。 “是/否”表示有一个免费版本，而提供的其他版本需要购买。
 
 我们只提供了可用的 Azure 存储客户端工具的快照。 这些工具的功能可能会不断改进和扩展。 如果有任何更正或更新，请发表评论告知我们。 同样，如果你认为还应在此处列出其他工具，也请发表评论告知我们 - 我们会很乐意添加它们。
 
@@ -156,7 +155,7 @@ Azure 存储空间用户经常要使用 Azure 存储客户端工具来查看其�
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://azurestorageexplorer.codeplex.com/">Azure 存储空间资源管理器</a></td>
+    <td><a href="https://github.com/sebagomez/azurestorageexplorer">Azure 存储资源管理器</a></td>
     <td>X</td>
     <td>X</td>
     <td></td>

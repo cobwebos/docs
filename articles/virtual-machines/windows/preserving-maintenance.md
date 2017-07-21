@@ -3,7 +3,7 @@ title: "Azure 中 Windows VM 的 VM 保留维护 | Microsoft Docs"
 description: "用于内存保留更新的就地 VM 迁移。"
 services: virtual-machines-windows
 documentationcenter: 
-author: 
+author: zivr
 manager: timlt
 editor: 
 tags: azure-service-management,azure-resource-manager
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2017
-ms.author: 
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: bc903f7523295da704ea8f0128dd553e3fdd96a9
-ms.lasthandoff: 03/31/2017
+ms.author: zivr
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 8888bafbc3aba24168312b611a9b4fbde25f376d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -37,4 +38,5 @@ ms.lasthandoff: 03/31/2017
 
 多实例更新（针对可用性集中的虚拟机）一次应用一个更新域。
 
-通过调用元数据服务计划事件，虚拟机中运行的应用程序可获知即将进行的更新。 有关计划事件的详细信息，请参阅 [Azure 元数据服务 - 计划事件](../virtual-machines-scheduled-events.md)。
+这些更新对某些应用程序的影响可能比对其他应用程序的影响大。 例如，执行实时事件处理、媒体流或转码或高吞吐量网络方案的应用程序可能无法容忍暂停 30 秒钟。 通过调用 [Azure 元数据服务](../virtual-machines-instancemetadataservice-overview.md)的[计划事件](../virtual-machines-scheduled-events.md) API，虚拟机中运行的应用程序可获知即将进行的更新。
+

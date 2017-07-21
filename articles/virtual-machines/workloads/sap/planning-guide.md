@@ -17,10 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d55582868c09781891a8dcd6e535f6dc4f472b5f
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 38edb0b299f04cee0e0c77336a662b2465744630
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -78,21 +79,21 @@ ms.lasthandoff: 04/03/2017
 [azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
 [azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
 
-[dbms-guide]:dbms-guide.md 
-[dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
-[dbms-guide-2.2]:dbms-guide.md#c8e566f9-21b7-4457-9f7f-126036971a91 
-[dbms-guide-2.3]:dbms-guide.md#10b041ef-c177-498a-93ed-44b3441ab152 
-[dbms-guide-2]:dbms-guide.md#65fa79d6-a85f-47ee-890b-22e794f51a64 
-[dbms-guide-3]:dbms-guide.md#871dfc27-e509-4222-9370-ab1de77021c3 
-[dbms-guide-5.5.1]:dbms-guide.md#0fef0e79-d3fe-4ae2-85af-73666a6f7268 
-[dbms-guide-5.5.2]:dbms-guide.md#f9071eff-9d72-4f47-9da4-1852d782087b 
-[dbms-guide-5.6]:dbms-guide.md#1b353e38-21b3-4310-aeb6-a77e7c8e81c8 
-[dbms-guide-5.8]:dbms-guide.md#9053f720-6f3b-4483-904d-15dc54141e30 
-[dbms-guide-5]:dbms-guide.md#3264829e-075e-4d25-966e-a49dad878737 
-[dbms-guide-8.4.1]:dbms-guide.md#b48cfe3b-48e9-4f5b-a783-1d29155bd573 
-[dbms-guide-8.4.2]:dbms-guide.md#23c78d3b-ca5a-4e72-8a24-645d141a3f5d 
+[dbms-guide]:dbms-guide.md
+[dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f
+[dbms-guide-2.2]:dbms-guide.md#c8e566f9-21b7-4457-9f7f-126036971a91
+[dbms-guide-2.3]:dbms-guide.md#10b041ef-c177-498a-93ed-44b3441ab152
+[dbms-guide-2]:dbms-guide.md#65fa79d6-a85f-47ee-890b-22e794f51a64
+[dbms-guide-3]:dbms-guide.md#871dfc27-e509-4222-9370-ab1de77021c3
+[dbms-guide-5.5.1]:dbms-guide.md#0fef0e79-d3fe-4ae2-85af-73666a6f7268
+[dbms-guide-5.5.2]:dbms-guide.md#f9071eff-9d72-4f47-9da4-1852d782087b
+[dbms-guide-5.6]:dbms-guide.md#1b353e38-21b3-4310-aeb6-a77e7c8e81c8
+[dbms-guide-5.8]:dbms-guide.md#9053f720-6f3b-4483-904d-15dc54141e30
+[dbms-guide-5]:dbms-guide.md#3264829e-075e-4d25-966e-a49dad878737
+[dbms-guide-8.4.1]:dbms-guide.md#b48cfe3b-48e9-4f5b-a783-1d29155bd573
+[dbms-guide-8.4.2]:dbms-guide.md#23c78d3b-ca5a-4e72-8a24-645d141a3f5d
 [dbms-guide-8.4.3]:dbms-guide.md#77cd2fbb-307e-4cbf-a65f-745553f72d2c
-[dbms-guide-8.4.4]:dbms-guide.md#f77c1436-9ad8-44fb-a331-8671342de818 
+[dbms-guide-8.4.4]:dbms-guide.md#f77c1436-9ad8-44fb-a331-8671342de818
 [dbms-guide-900-sap-cache-server-on-premises]:dbms-guide.md#642f746c-e4d4-489d-bf63-73e80177a0a8
 
 [dbms-guide-figure-100]:media/virtual-machines-shared-sap-dbms-guide/100_storage_account_types.png
@@ -106,26 +107,26 @@ ms.lasthandoff: 04/03/2017
 [dbms-guide-figure-900]:media/virtual-machines-shared-sap-dbms-guide/900-sap-cache-server-on-premises.png
 
 [deployment-guide]:deployment-guide.md
-[deployment-guide-2.2]:deployment-guide.md#42ee2bdb-1efc-4ec7-ab31-fe4c22769b94 
-[deployment-guide-3.1.2]:deployment-guide.md#3688666f-281f-425b-a312-a77e7db2dfab 
+[deployment-guide-2.2]:deployment-guide.md#42ee2bdb-1efc-4ec7-ab31-fe4c22769b94
+[deployment-guide-3.1.2]:deployment-guide.md#3688666f-281f-425b-a312-a77e7db2dfab
 [deployment-guide-3.2]:deployment-guide.md#db477013-9060-4602-9ad4-b0316f8bb281
-[deployment-guide-3.3]:deployment-guide.md#54a1fc6d-24fd-4feb-9c57-ac588a55dff2 
-[deployment-guide-3.4]:deployment-guide.md#a9a60133-a763-4de8-8986-ac0fa33aa8c1 
-[deployment-guide-3]:deployment-guide.md#b3253ee3-d63b-4d74-a49b-185e76c4088e 
-[deployment-guide-4.1]:deployment-guide.md#604bcec2-8b6e-48d2-a944-61b0f5dee2f7 
+[deployment-guide-3.3]:deployment-guide.md#54a1fc6d-24fd-4feb-9c57-ac588a55dff2
+[deployment-guide-3.4]:deployment-guide.md#a9a60133-a763-4de8-8986-ac0fa33aa8c1
+[deployment-guide-3]:deployment-guide.md#b3253ee3-d63b-4d74-a49b-185e76c4088e
+[deployment-guide-4.1]:deployment-guide.md#604bcec2-8b6e-48d2-a944-61b0f5dee2f7
 [deployment-guide-4.2]:deployment-guide.md#7ccf6c3e-97ae-4a7a-9c75-e82c37beb18e
-[deployment-guide-4.3]:deployment-guide.md#31d9ecd6-b136-4c73-b61e-da4a29bbc9cc 
-[deployment-guide-4.4.2]:deployment-guide.md#6889ff12-eaaf-4f3c-97e1-7c9edc7f7542 
-[deployment-guide-4.4]:deployment-guide.md#c7cbb0dc-52a4-49db-8e03-83e7edc2927d 
-[deployment-guide-4.5.1]:deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 
-[deployment-guide-4.5.2]:deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f 
-[deployment-guide-4.5]:deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca 
-[deployment-guide-5.1]:deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 
+[deployment-guide-4.3]:deployment-guide.md#31d9ecd6-b136-4c73-b61e-da4a29bbc9cc
+[deployment-guide-4.4.2]:deployment-guide.md#6889ff12-eaaf-4f3c-97e1-7c9edc7f7542
+[deployment-guide-4.4]:deployment-guide.md#c7cbb0dc-52a4-49db-8e03-83e7edc2927d
+[deployment-guide-4.5.1]:deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4
+[deployment-guide-4.5.2]:deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f
+[deployment-guide-4.5]:deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca
+[deployment-guide-5.1]:deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2
 [deployment-guide-5.2]:deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1
-[deployment-guide-5.3]:deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 
+[deployment-guide-5.3]:deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8
 
-[deployment-guide-configure-monitoring-scenario-1]:deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b 
-[deployment-guide-configure-proxy]:deployment-guide.md#baccae00-6f79-4307-ade4-40292ce4e02d 
+[deployment-guide-configure-monitoring-scenario-1]:deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b
+[deployment-guide-configure-proxy]:deployment-guide.md#baccae00-6f79-4307-ade4-40292ce4e02d
 [deployment-guide-figure-100]:media/virtual-machines-shared-sap-deployment-guide/100-deploy-vm-image.png
 [deployment-guide-figure-1000]:media/virtual-machines-shared-sap-deployment-guide/1000-service-properties.png
 [deployment-guide-figure-11]:deployment-guide.md#figure-11
@@ -148,7 +149,7 @@ ms.lasthandoff: 04/03/2017
 [deployment-guide-figure-azure-cli-installed]:deployment-guide.md#402488e5-f9bb-4b29-8063-1c5f52a892d0
 [deployment-guide-figure-azure-cli-version]:deployment-guide.md#0ad010e6-f9b5-4c21-9c09-bb2e5efb3fda
 [deployment-guide-install-vm-agent-windows]:deployment-guide.md#b2db5c9a-a076-42c6-9835-16945868e866
-[deployment-guide-troubleshooting-chapter]:deployment-guide.md#564adb4f-5c95-4041-9616-6635e83a810b 
+[deployment-guide-troubleshooting-chapter]:deployment-guide.md#564adb4f-5c95-4041-9616-6635e83a810b
 
 [deploy-template-cli]:../../../resource-group-template-deploy-cli.md
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
@@ -178,32 +179,32 @@ ms.lasthandoff: 04/03/2017
 [msdn-set-azurermvmaemextension]:https://msdn.microsoft.com/library/azure/mt670598.aspx
 
 [planning-guide]:planning-guide.md  
-[planning-guide-1.2]:planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff 
-[planning-guide-11]:planning-guide.md#7cf991a1-badd-40a9-944e-7baae842a058 
-[planning-guide-11.4.1]:planning-guide.md#5d9d36f9-9058-435d-8367-5ad05f00de77 
-[planning-guide-11.5]:planning-guide.md#4e165b58-74ca-474f-a7f4-5e695a93204f 
-[planning-guide-2.1]:planning-guide.md#1625df66-4cc6-4d60-9202-de8a0b77f803 
-[planning-guide-2.2]:planning-guide.md#f5b3b18c-302c-4bd8-9ab2-c388f1ab3d10 
-[planning-guide-3.1]:planning-guide.md#be80d1b9-a463-4845-bd35-f4cebdb5424a 
-[planning-guide-3.2.1]:planning-guide.md#df49dc09-141b-4f34-a4a2-990913b30358 
-[planning-guide-3.2.2]:planning-guide.md#fc1ac8b2-e54a-487c-8581-d3cc6625e560 
-[planning-guide-3.2.3]:planning-guide.md#18810088-f9be-4c97-958a-27996255c665 
-[planning-guide-3.2]:planning-guide.md#8d8ad4b8-6093-4b91-ac36-ea56d80dbf77 
-[planning-guide-3.3.2]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 
-[planning-guide-5.1.1]:planning-guide.md#4d175f1b-7353-4137-9d2f-817683c26e53 
+[planning-guide-1.2]:planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff
+[planning-guide-11]:planning-guide.md#7cf991a1-badd-40a9-944e-7baae842a058
+[planning-guide-11.4.1]:planning-guide.md#5d9d36f9-9058-435d-8367-5ad05f00de77
+[planning-guide-11.5]:planning-guide.md#4e165b58-74ca-474f-a7f4-5e695a93204f
+[planning-guide-2.1]:planning-guide.md#1625df66-4cc6-4d60-9202-de8a0b77f803
+[planning-guide-2.2]:planning-guide.md#f5b3b18c-302c-4bd8-9ab2-c388f1ab3d10
+[planning-guide-3.1]:planning-guide.md#be80d1b9-a463-4845-bd35-f4cebdb5424a
+[planning-guide-3.2.1]:planning-guide.md#df49dc09-141b-4f34-a4a2-990913b30358
+[planning-guide-3.2.2]:planning-guide.md#fc1ac8b2-e54a-487c-8581-d3cc6625e560
+[planning-guide-3.2.3]:planning-guide.md#18810088-f9be-4c97-958a-27996255c665
+[planning-guide-3.2]:planning-guide.md#8d8ad4b8-6093-4b91-ac36-ea56d80dbf77
+[planning-guide-3.3.2]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92
+[planning-guide-5.1.1]:planning-guide.md#4d175f1b-7353-4137-9d2f-817683c26e53
 [planning-guide-5.1.2]:planning-guide.md#e18f7839-c0e2-4385-b1e6-4538453a285c
-[planning-guide-5.2.1]:planning-guide.md#1b287330-944b-495d-9ea7-94b83aff73ef 
-[planning-guide-5.2.2]:planning-guide.md#57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3 
-[planning-guide-5.2]:planning-guide.md#6ffb9f41-a292-40bf-9e70-8204448559e7 
-[planning-guide-5.3.1]:planning-guide.md#6e835de8-40b1-4b71-9f18-d45b20959b79 
-[planning-guide-5.3.2]:planning-guide.md#a43e40e6-1acc-4633-9816-8f095d5a7b6a 
-[planning-guide-5.4.2]:planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 
-[planning-guide-5.5.1]:planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 
-[planning-guide-5.5.3]:planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d 
-[planning-guide-7.1]:planning-guide.md#3e9c3690-da67-421a-bc3f-12c520d99a30 
-[planning-guide-7]:planning-guide.md#96a77628-a05e-475d-9df3-fb82217e8f14 
-[planning-guide-9.1]:planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 
-[planning-guide-azure-premium-storage]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 
+[planning-guide-5.2.1]:planning-guide.md#1b287330-944b-495d-9ea7-94b83aff73ef
+[planning-guide-5.2.2]:planning-guide.md#57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3
+[planning-guide-5.2]:planning-guide.md#6ffb9f41-a292-40bf-9e70-8204448559e7
+[planning-guide-5.3.1]:planning-guide.md#6e835de8-40b1-4b71-9f18-d45b20959b79
+[planning-guide-5.3.2]:planning-guide.md#a43e40e6-1acc-4633-9816-8f095d5a7b6a
+[planning-guide-5.4.2]:planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1
+[planning-guide-5.5.1]:planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646
+[planning-guide-5.5.3]:planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d
+[planning-guide-7.1]:planning-guide.md#3e9c3690-da67-421a-bc3f-12c520d99a30
+[planning-guide-7]:planning-guide.md#96a77628-a05e-475d-9df3-fb82217e8f14
+[planning-guide-9.1]:planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3
+[planning-guide-azure-premium-storage]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92
 
 [planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
@@ -235,7 +236,7 @@ ms.lasthandoff: 04/03/2017
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
-[sap-pam]:https://support.sap.com/pam 
+[sap-pam]:https://support.sap.com/pam
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
@@ -379,7 +380,7 @@ Microsoft Azure 是 Microsoft 提供的一个云服务平台，它提供了各�
 
 另请阅读 [SCN Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes)，其中包含适用于 Linux 的所有 SAP 说明。
 
-可以在[此文][azure-subscription-service-limits-subscription]中找到有关 Azure 订阅的常规默认限制和最大限制。 
+可以在[此文][azure-subscription-service-limits-subscription]中找到有关 Azure 订阅的常规默认限制和最大限制。
 
 ## <a name="possible-scenarios"></a>可能的方案
 SAP 通常被视为企业中最关键的应用程序之一。 通常，这些应用程序的体系结构和操作非常复杂，因此，符合可用性与性能方面的要求十分重要。
@@ -570,15 +571,15 @@ Microsoft Azure 虚拟机使用不同的存储类型。 在 Azure 虚拟机服�
 
 以上表述适用于已通过 SAP 认证的 VM 类型。 具有优异 IOPS 和吞吐量的 VM 系列可供某些 DBMS 功能使用。 有关详细信息，请参阅 [DBMS Deployment Guide][dbms-guide]（DBMS 部署指南）。
 
-Microsoft Azure 存储提供持久性存储，以及 SAN 存储所具有的典型保护和冗余级别。 基于 Azure 存储空间的磁盘是 Azure 存储服务中的虚拟硬盘容器 (VHD)。 本地 OS 磁盘（Windows C:\,，Linux / ( /dev/sda1 )）存储在 Azure 存储中，装载到 VM 的其他卷/磁盘也存储在此处。
+Microsoft Azure 存储提供持久性存储，以及 SAN 存储所具有的典型保护和冗余级别。 基于 Azure 存储的磁盘是 Azure 存储服务中的虚拟硬盘容器 (VHD)。 本地 OS 磁盘（Windows C:\,，Linux / ( /dev/sda1 )）存储在 Azure 存储中，装载到 VM 的其他卷/磁盘也存储在此处。
 
-可以从本地上载现有的 VHD 容器，或者从 Azure 内部创建空的 VHD 容器，然后将其附加到部署的 VM。 这些 VHD 称为 Azure 磁盘。
+可以从本地上传现有的 VHD 容器，或者从 Azure 内部创建空的 VHD 容器，然后将其附加到部署的 VM。 这些 VHD 称为 Azure 磁盘。
 
-在 Azure 存储空间中创建或上载 VHD 容器后，可将这些容器装载和附加到现有的虚拟机，以及复制现有的（未装载的）VHD 容器。
+在 Azure 存储中创建或上传 VHD 容器后，可将这些容器装载和附加到现有的虚拟机，以及复制现有的（未装载的）VHD 容器。
 
 由于这些存储容器是持久性的，因此，在重新启动和重新创建虚拟机实例时，这些容器中的数据和更改将会安全保留。 即使删除了某个实例或整个托管服务，这些 VHD 也会保持安全并可重新部署；另外，非 OS 磁盘还可装载到其他 VM。
 
-在 Azure 存储空间网络中，可以配置不同的冗余级别：
+在 Azure 存储网络中，可以配置不同的冗余级别：
 
 * 可以选择的最低级别为“本地冗余”，相当于 Azure 区域的相同数据中心内有三个数据副本（请参阅 [Azure 区域][planning-guide-3.1]一章）。
 * 区域冗余存储可将三个映像分散到同一 Azure 区域内的不同数据中心。
@@ -586,7 +587,7 @@ Microsoft Azure 存储提供持久性存储，以及 SAN 存储所具有的典�
 
 另请参阅以下文章顶部表格中有关不同冗余选项的信息：<https://azure.microsoft.com/pricing/details/storage/>
 
-有关 Azure 存储空间的详细信息，请参阅：
+有关 Azure 存储的详细信息，请参阅：
 
 * <https://azure.microsoft.com/documentation/services/storage/>
 * <https://azure.microsoft.com/services/site-recovery>
@@ -607,7 +608,7 @@ Microsoft 在 2015 年 4 月推出了 Azure 高级存储。 推出高级存储�
 
 因此引入了许多更改，其中两项最重要的更改是：
 
-* Azure 存储空间节点中的 SSD 磁盘使用方式
+* Azure 存储节点中的 SSD 磁盘使用方式
 * Azure 计算节点的本地 SSD 支持的新读取缓存
 
 相比于标准存储的容量不随磁盘（或 VHD）的大小而更改，高级存储目前有 3 种不同的磁盘类别，本文末尾的“常见问题”部分前面提供了说明：<https://azure.microsoft.com/pricing/details/storage/>
@@ -635,7 +636,7 @@ Microsoft 在 2015 年 4 月推出了 Azure 高级存储。 推出高级存储�
 
     http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>
 
-如前所述，此字符串必须唯一标识存储在 Azure 存储空间中的 VHD。
+如前所述，此字符串必须唯一标识存储在 Azure 存储中的 VHD。
 
 ### <a name="61678387-8868-435d-9f8c-450b2424f5bd"></a>Microsoft Azure 网络
 Microsoft Azure 将提供一种网络基础结构，可让我们映射想要使用 SAP 软件映射的所有方案。 功能包括：
@@ -782,7 +783,7 @@ ExpressRoute 强制隧道由通过 ExpressRoute BGP 对等互连会话广告默�
 
 ## <a name="managing-azure-assets"></a>管理 Azure 资产
 ### <a name="azure-portal"></a>Azure 门户
-Azure 门户是用于管理 Azure VM 部署的三个界面之一。 基本的管理任务（例如，从映像部署 VM）可以通过该 Azure 门户来完成。 此外，Azure 门户也能很好地处理创建存储帐户、虚拟网络和其他 Azure 组件这样的任务。 但是，若要执行将 VHD 从本地上载到 Azure 或者复制 Azure 中的 VHD 等功能，则需要使用第三方工具，或者通过 PowerShell 或 CLI 进行管理。
+Azure 门户是用于管理 Azure VM 部署的三个界面之一。 基本的管理任务（例如，从映像部署 VM）可以通过该 Azure 门户来完成。 此外，Azure 门户也能很好地处理创建存储帐户、虚拟网络和其他 Azure 组件这样的任务。 但是，若要执行将 VHD 从本地上传到 Azure 或者复制 Azure 中的 VHD 等功能，则需要使用第三方工具，或者通过 PowerShell 或 CLI 进行管理。
 
 ![Microsoft Azure 门户 - 虚拟机概览][planning-guide-figure-800]
 
@@ -795,7 +796,7 @@ Azure 门户是用于管理 Azure VM 部署的三个界面之一。 基本的管
 
 Azure 门户提供了基本的功能用于部署和配置 VM 以及其他许多 Azure 服务。 但是，Azure 门户并未包括所有可用的功能。 在 Azure 门户中，无法执行如下所述的任务：
 
-* 将 VHD 上载到 Azure
+* 将 VHD 上传到 Azure
 * 复制 VM
 
 [comment]: <> (MShermannd TODO：适用于 SAP VM 的自动化服务支持此操作吗？)
@@ -839,7 +840,7 @@ Azure CLI 提供了一组开源且跨平台的命令，这些命令可以用于 
 Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此，请务必了解这些方法之间的差异，因为 VM 的准备工作根据部署方法的不同而异。 总体而言，我们将探讨以下方案：
 
 #### <a name="4d175f1b-7353-4137-9d2f-817683c26e53"></a>使用非通用化磁盘将 VM 从本地移至 Azure
-你打算将某个特定 SAP 系统从本地移至 Azure。 可以通过将包含 OS、SAP 二进制文件和 DBMS 二进制文件的 VHD，以及包含 DBMS 数据和日志文件的 VHD 上载到 Azure 来实现此目的。 与[下面的方案 2][planning-guide-5.1.2] 相反，需要将 Azure VM 中的主机名、SAP SID 和 SAP 用户帐户保留为与本地环境中的配置相同。 因此，不需要通用化映像。 有关本地准备步骤以及如何向 Azure 上载非通用化 VM 或 VHD 的信息，请参阅本文档的[准备使用非通用化磁盘将 VM 从本地移到 Azure][planning-guide-5.2.1] 一章。 有关在 Azure 中部署此类映像的详细步骤，请参阅[部署指南][deployment-guide]中的[方案 3：使用非通用化 Azure VHD 和 SAP 从本地移动 VM][deployment-guide-3.4] 一章。
+你打算将某个特定 SAP 系统从本地移至 Azure。 可以通过将包含 OS、SAP 二进制文件和 DBMS 二进制文件的 VHD，以及包含 DBMS 数据和日志文件的 VHD 上传到 Azure 来实现此目的。 与[下面的方案 2][planning-guide-5.1.2] 相反，需要将 Azure VM 中的主机名、SAP SID 和 SAP 用户帐户保留为与本地环境中的配置相同。 因此，不需要通用化映像。 有关本地准备步骤以及如何向 Azure 上传非通用化 VM 或 VHD 的信息，请参阅本文档的[准备使用非通用化磁盘将 VM 从本地移到 Azure][planning-guide-5.2.1] 一章。 有关在 Azure 中部署此类映像的详细步骤，请参阅[部署指南][deployment-guide]中的[方案 3：使用非通用化 Azure VHD 和 SAP 从本地移动 VM][deployment-guide-3.4] 一章。
 
 #### <a name="e18f7839-c0e2-4385-b1e6-4538453a285c"></a>使用特定于客户的映像部署 VM
 由于 OS 或 DBMS 版本存在特定的修补程序要求，Azure 应用商店中提供的映像可能并不符合需要。 因此，可能需要使用自己的、以后可以多次部署的“专用”OS/DBMS VM 映像创建一个 VM。 若要准备这样一个可供复制的“专用”映像，必须考虑以下要素：
@@ -862,13 +863,13 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 >
 
 - - -
-如果已将 SAP 内容安装在本地 VM 中（尤其是对于双层系统），则可以在部署 Azure VM 之后，通过 SAP Software Provisioning Manager 支持的实例重命名过程来修改 SAP 系统设置（SAP 说明 [1619720]）。 有关本地准备步骤以及如何将通用 VM 上载到 Azure 的信息，请参阅本文档的章节[准备使用特定于客户的映像为 SAP 部署 VM][planning-guide-5.2.2] 和[将 VHD 从本地上载到 Azure][planning-guide-5.3.2]。 有关在 Azure 中部署此类映像的详细步骤，请参阅 [Deployment Guide][deployment-guide]（部署指南）中的 [Scenario 2: Deploying a VM with a custom image for SAP][deployment-guide-3.3]（方案 2：使用自定义映像为 SAP 部署 VM）一章。
+如果已将 SAP 内容安装在本地 VM 中（尤其是对于双层系统），则可以在部署 Azure VM 之后，通过 SAP Software Provisioning Manager 支持的实例重命名过程来修改 SAP 系统设置（SAP 说明 [1619720]）。 有关本地准备步骤以及如何将通用 VM 上传到 Azure 的信息，请参阅本文档的章节[准备使用特定于客户的映像为 SAP 部署 VM][planning-guide-5.2.2] 和[将 VHD 从本地上传到 Azure][planning-guide-5.3.2]。 有关在 Azure 中部署此类映像的详细步骤，请参阅 [Deployment Guide][deployment-guide]（部署指南）中的 [Scenario 2: Deploying a VM with a custom image for SAP][deployment-guide-3.3]（方案 2：使用自定义映像为 SAP 部署 VM）一章。
 
 #### <a name="deploying-a-vm-out-of-the-azure-marketplace"></a>部署从 Azure 应用商店中取出的 VM
 想要从 Azure 应用商店中取出某个 Microsoft 或第三方 VM 映像以用于部署 VM。 将该 VM 部署到 Azure 中后，你需要像在本地环境中一样，遵照相同的指导原则并使用相同的工具在 VM 内部安装 SAP 软件和/或 DBMS。 有关更详细的部署说明，请参阅 [Deployment Guide][deployment-guide]（部署指南）中的 [Scenario 1: Deploying a VM out of the Azure Marketplace for SAP][deployment-guide-3.2]（方案 1：为 SAP 部署从 Azure 应用商店中取出的 VM）。
 
 ### <a name="6ffb9f41-a292-40bf-9e70-8204448559e7"></a>为 Azure 准备包含 SAP 的 VM
-将 VM 上载到 Azure 之前，需要确保这些 VM 和 VHD 符合特定的要求。 根据所用的部署方法，准备工作将有细微的差异。
+将 VM 上传到 Azure 之前，需要确保这些 VM 和 VHD 符合特定的要求。 根据所用的部署方法，准备工作将有细微的差异。
 
 #### <a name="1b287330-944b-495d-9ea7-94b83aff73ef"></a>准备使用非通用化磁盘将 VM 从本地移到 Azure
 一种常用的部署方法是将运行 SAP 系统的现有 VM 从本地移到 Azure。 该 VM 以及其中包含的 SAP 系统只应使用相同的主机名、并且很有可能使用相同的 SAP SID 在 Azure 中运行。 在此情况下，VM 的来宾 OS 不应该针对多个部署通用化。 如果本地网络已扩展到 Azure 中（请参阅本文档中的[跨界 - 将单个或多个 SAP VM 部署到 Azure 中并要求完全集成到本地网络][planning-guide-2.2]一章），则在该 VM 中使用的域帐户甚至都有可能与以前在本地使用的域帐户相同。
@@ -878,8 +879,8 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 * 包含操作系统的 VHD 的最大大小最初只能是 127GB。 此限制已在 2015 年 3 月底消除。 现在，包含操作系统的 VHD 可以有高达 1TB 的大小，Azure 存储托管任何其他 VHD 也是一样。
 
 [comment]: <> (MShermannd TODO：必须检查 CLI 是否也转换为静态)
-* 它需要采用固定的 VHD 格式。 Azure 尚不支持动态 VHD 或采用 VHDx 格式的 VHD。 当你使用 PowerShell cmdlet 或 CLI 上载 VHD 时，动态 VHD 将转换为静态 VHD
-* 已装载到 VM、并且应该在 Azure 中再次装载到 VM 的 VHD 也需要采用固定的 VHD 格式。 OS 磁盘的相同大小限制也适用于数据磁盘。 VHD 可以有 1TB 的大小上限。 当你使用 PowerShell cmdlet 或 CLI 上载 VHD 时，动态 VHD 将转换为静态 VHD
+* 它需要采用固定的 VHD 格式。 Azure 尚不支持动态 VHD 或采用 VHDx 格式的 VHD。 当你使用 PowerShell cmdlet 或 CLI 上传 VHD 时，动态 VHD 将转换为静态 VHD
+* 已装载到 VM、并且应该在 Azure 中再次装载到 VM 的 VHD 也需要采用固定的 VHD 格式。 OS 磁盘的相同大小限制也适用于数据磁盘。 VHD 可以有 1TB 的大小上限。 当你使用 PowerShell cmdlet 或 CLI 上传 VHD 时，动态 VHD 将转换为静态 VHD
 * 使用管理员特权添加另一个本地帐户，该帐户可供 Microsoft 支持人员使用，或者在部署 VM 之前分配为上下文以供服务和应用程序短暂访问，并可供其他适当的用户使用。
 * 如果将仅限云的部署方案（请参阅本文档的[仅限云 - 在不将依赖项部署到本地客户网络的情况下将虚拟机部署到 Azure 中][planning-guide-2.1]一章）与本部署方法结合使用，则在 Azure 中部署 Azure 磁盘后，域帐户可能会失效。 对于用于运行 DBMS 等服务或 SAP 应用程序的帐户，尤其如此。 因此，需要将这种域帐户替换为 VM 本地帐户，并删除 VM 中的内部域帐户。 如果按照本文档的[跨界 - 将单个或多个 SAP VM 部署到 Azure 中并要求完全集成到本地网络][planning-guide-2.2]一章中所述将 VM 部署在跨界方案中，则在 VM 映像中保留本地域用户不会出现问题。
 * 如果在本地运行系统时域帐户已用作 DBMS 登录名或用户，并且应该将这些 VM 部署在仅限云方案中，那么，就需要删除这些域用户。 需确保以登录名/用户的形式将本地管理员以及另一个 VM 本地用户添加为 DBMS 中的管理员。
@@ -888,12 +889,12 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 - - -
 > ![Windows][Logo_Windows] Windows
 >
-> 在此方案中，无需通用化 (sysprep) VM 就能在 Azure 中上载和部署该 VM。
+> 在此方案中，无需通用化 (sysprep) VM 就能在 Azure 中上传和部署该 VM。
 > 确保驱动器 D:\ 未被使用。按照本文档的[为附加的磁盘设置自动装载][planning-guide-5.5.3]一章中所述为附加的磁盘设置磁盘自动装载。
 >
 > ![Linux][Logo_Linux] Linux
 >
-> 在此方案中，无需通用化 ( waagent -deprovision) VM 就能在 Azure 中上载和部署该 VM。
+> 在此方案中，无需通用化 ( waagent -deprovision) VM 就能在 Azure 中上传和部署该 VM。
 > 请确保 /mnt/resource 未被使用，并已通过 uuid 装载所有磁盘。 对于 OS 磁盘，请确保引导加载程序条目也反映了基于 uuid 的装载。
 >
 >
@@ -907,8 +908,8 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 * 包含操作系统的 VHD 的最大大小最初只能是 127GB。 此限制已在 2015 年 3 月底消除。 现在，包含操作系统的 VHD 可以有高达 1TB 的大小，Azure 存储托管任何其他 VHD 也是一样。
 
 [comment]: <> (MShermannd TODO：必须检查 CLI 是否也转换为静态)
-* 它需要采用固定的 VHD 格式。 Azure 尚不支持动态 VHD 或采用 VHDx 格式的 VHD。 当你使用 PowerShell cmdlet 或 CLI 上载 VHD 时，动态 VHD 将转换为静态 VHD
-* 已装载到 VM、并且应该在 Azure 中再次装载到 VM 的 VHD 也需要采用固定的 VHD 格式。 OS 磁盘的相同大小限制也适用于数据磁盘。 VHD 可以有 1TB 的大小上限。 当你使用 PowerShell cmdlet 或 CLI 上载 VHD 时，动态 VHD 将转换为静态 VHD
+* 它需要采用固定的 VHD 格式。 Azure 尚不支持动态 VHD 或采用 VHDx 格式的 VHD。 当你使用 PowerShell cmdlet 或 CLI 上传 VHD 时，动态 VHD 将转换为静态 VHD
+* 已装载到 VM、并且应该在 Azure 中再次装载到 VM 的 VHD 也需要采用固定的 VHD 格式。 OS 磁盘的相同大小限制也适用于数据磁盘。 VHD 可以有 1TB 的大小上限。 当你使用 PowerShell cmdlet 或 CLI 上传 VHD 时，动态 VHD 将转换为静态 VHD
 * 由于已注册为 VM 中的用户的所有域用户将不会存在于仅限云方案中（请参阅本文档的[仅限云 - 在不将依赖项部署到本地客户网络的情况下将虚拟机部署到 Azure 中][planning-guide-2.1]一章），因此，在 Azure 中部署该映像后，使用这种域帐户的服务可能无法工作。 对于用于运行 DBMS 等服务或 SAP 应用程序的帐户，尤其如此。 因此，需要将这种域帐户替换为 VM 本地帐户，并删除 VM 中的内部域帐户。 如果按照本文档的[跨界 - 将单个或多个 SAP VM 部署到 Azure 中并要求完全集成到本地网络][planning-guide-2.2]一章中所述将 VM 部署在跨界方案中，则在 VM 映像中保留本地域用户可能不会出现问题。
 * 使用管理员特权添加另一个本地帐户，该帐户可供 Microsoft 支持人员在调查问题时使用，或者在部署 VM 之前分配为上下文以供服务和应用程序短暂访问，并可供其他适当的用户使用。
 * 如果采用仅限云部署，并且在本地运行系统时域帐户已用作 DBMS 登录名或用户，那么，就应该删除这些域用户。 需确保以登录名/用户的形式将本地管理员以及另一个 VM 本地用户添加为 DBMS 的管理员。
@@ -943,29 +944,29 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 >
 > ![Linux][Logo_Linux] Linux
 >
-> [如何捕获 Linux 虚拟机以用作 Resource Manager 模板][virtual-machines-linux-capture-image-resource-manager]
+> [如何捕获用作 Resource Manager 模板的 Linux 虚拟机][/linux/capture-image.md#step-2-create-vm-image]
 >
 >
 
 - - -
 ### <a name="transferring-vms-and-vhds-between-on-premises-to-azure"></a>在本地与 Azure 之间传输 VM 和 VHD
-由于无法通过 Azure 门户上载 VM 映像和磁盘，因此需要使用 Azure PowerShell cmdlet 或 CLI。 另一种可行的方法是使用“AzCopy”工具。 该工具可在本地与 Azure 之间（双向）复制 VHD。 它还可以在 Azure 区域之间复制 VHD。 有关如何下载和使用 AzCopy，请参阅[此文档][storage-use-azcopy]。
+由于无法通过 Azure 门户上传 VM 映像和磁盘，因此需要使用 Azure PowerShell cmdlet 或 CLI。 另一种可行的方法是使用“AzCopy”工具。 该工具可在本地与 Azure 之间（双向）复制 VHD。 它还可以在 Azure 区域之间复制 VHD。 有关如何下载和使用 AzCopy，请参阅[此文档][storage-use-azcopy]。
 
-第三种替代做法是使用面向 GUI 的各种第三方工具。 但是，请确保这些工具支持 Azure 页 Blob。 在本文档中，需要使用页 Blob 存储（以下网页中介绍了差异：<https://msdn.microsoft.com/library/windowsazure/ee691964.aspx>）。 另外，Azure 提供的工具能够非常高效地压缩需要上载的 VM 和 VHD。 这种优势非常重要，因为这种压缩效率可以减少上载时间（具体的上载时间根据从本地设施和目标 Azure 部署区域与 Internet 网络之间的上载链路的情况而有一定的差异）。 我们可以合理地推测出这样一个结论：将位于欧洲的某个 VM 或 VHD 上载到位于美国的 Azure 数据中心所需的时间，比将同一个 VM/VHD 上载到位于欧洲的 Azure 数据中心所需的时间要长。
+第三种替代做法是使用面向 GUI 的各种第三方工具。 但是，请确保这些工具支持 Azure 页 Blob。 在本文档中，需要使用页 Blob 存储（以下网页中介绍了差异：<https://msdn.microsoft.com/library/windowsazure/ee691964.aspx>）。 另外，Azure 提供的工具能够非常高效地压缩需要上传的 VM 和 VHD。 这种优势非常重要，因为这种压缩效率可以减少上传时间（具体的上传时间根据从本地设施和目标 Azure 部署区域与 Internet 网络之间的上传链路的情况而有一定的差异）。 我们可以合理地推测出这样一个结论：将位于欧洲的某个 VM 或 VHD 上传到位于美国的 Azure 数据中心所需的时间，比将同一个 VM/VHD 上传到位于欧洲的 Azure 数据中心所需的时间要长。
 
 #### <a name="a43e40e6-1acc-4633-9816-8f095d5a7b6a"></a>将 VHD 从本地上载到 Azure
-若要从本地网络上载现有的 VM 或 VHD，这种 VM 或 VHD 需要满足本文档的[准备使用非通用化磁盘将 VM 从本地移到 Azure][planning-guide-5.2.1] 一章中列出的要求。
+若要从本地网络上传现有的 VM 或 VHD，这种 VM 或 VHD 需要满足本文档的[准备使用非通用化磁盘将 VM 从本地移到 Azure][planning-guide-5.2.1] 一章中列出的要求。
 
-此类 VM 不需要通用化，在本地端将它关闭后，随时可以将它上载并保持它在关闭时所处的状态和形式。 对于不包含任何操作系统的其他 VHD，也同样如此。
+此类 VM 不需要通用化，在本地端将它关闭后，随时可以将它上传并保持它在关闭时所处的状态和形式。 对于不包含任何操作系统的其他 VHD，也同样如此。
 
-##### <a name="uploading-a-vhd-and-making-it-an-azure-disk"></a>上载 VHD 并使其成为 Azure 磁盘
-在本例中，我们将要上载一个包含或不包含 OS 的 VHD 并使其成为 Azure 中的磁盘，然后将它作为数据磁盘装载到 VM，或者将它用作 OS 磁盘。 此过程包含多个步骤
+##### <a name="uploading-a-vhd-and-making-it-an-azure-disk"></a>上传 VHD 并使其成为 Azure 磁盘
+在本例中，我们将要上传一个包含或不包含 OS 的 VHD 并使其成为 Azure 中的磁盘，然后将它作为数据磁盘装载到 VM，或者将它用作 OS 磁盘。 此过程包含多个步骤
 
 **Powershell**
 
 * 使用 *Login-AzureRmAccount* 登录到订阅
 * 使用 *Set-AzureRmContext* 和参数 SubscriptionId 或 SubscriptionName 设置订阅上下文 - 请参阅 <https://msdn.microsoft.com/library/mt619263.aspx>
-* 使用 *Add-AzureRmVhd* 将 VHD 上载到 Azure 存储帐户 - 请参阅 <https://msdn.microsoft.com/library/mt603554.aspx>
+* 使用 *Add-AzureRmVhd* 将 VHD 上传到 Azure 存储帐户 - 请参阅 <https://msdn.microsoft.com/library/mt603554.aspx>
 * 使用 *Set-AzureRmVMOSDisk* 将新 VM 配置的 OS 磁盘设置为 VHD - 请参阅 <https://msdn.microsoft.com/library/mt603746.aspx>
 * 使用 *New-AzureRmVM* 从 VM 配置创建新的 VM - 请参阅 <https://msdn.microsoft.com/library/mt603754.aspx>
 * 使用 *Add-AzureRmVMDataDisk* 将数据磁盘添加新的 VM - 请参阅 <https://msdn.microsoft.com/library/mt603673.aspx>
@@ -975,42 +976,42 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 * 使用 *azure config mode arm* 切换到 Azure Resource Manager 模式
 * 使用 *azure login* 登录到订阅
 * 使用 *azure account set `<subscription name or id`>* 选择订阅
-* 使用 azure storage blob upload 上传 VHD - 请参阅 [结合使用 Azure CLI 与 Azure 存储空间][storage-azure-cli]
-* 使用 *azure vm create* 和参数 -d 创建新的 VM，并将上载的 VHD 指定为 OS 磁盘
+* 使用 azure storage blob upload 上传 VHD - 请参阅 [结合使用 Azure CLI 与 Azure 存储][storage-azure-cli]
+* 使用 *azure vm create* 和参数 -d 创建新的 VM，并将上传的 VHD 指定为 OS 磁盘
 * 使用 *vm disk attach-new* 将数据磁盘添加到新 VM
 
 **模板**
 
-* 使用 Powershell 或 Azure CLI 上载 VHD
+* 使用 Powershell 或 Azure CLI 上传 VHD
 * 使用引用 VHD 的 JSON 模板部署 VM，如[此 JSON 模板示例](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-from-specialized-vhd/azuredeploy.json)中所示。
 
 #### <a name="deployment-of-a-vm-image"></a>部署 VM 映像
-若要从本地网络上载现有的 VM 或 VHD 以将其用作 Azure VM 映像，这种 VM 或 VHD 需要满足本文档的[准备使用特定于客户的映像为 SAP 部署 VM][planning-guide-5.2.2] 一章中列出的要求。
+若要从本地网络上传现有的 VM 或 VHD 以将其用作 Azure VM 映像，这种 VM 或 VHD 需要满足本文档的[准备使用特定于客户的映像为 SAP 部署 VM][planning-guide-5.2.2] 一章中列出的要求。
 
-* 在 Windows 上使用sysprep  或者在 Linux 上使用 waagent -deprovision 将 VM 通用化 - 请参阅 [Sysprep Technical Reference](https://technet.microsoft.com/library/cc766049.aspx)（Sysprep 技术参考）（适用于 Windows）或 [如何捕获 Linux 虚拟机以用作 Resource Manager 模板][virtual-machines-linux-capture-image-resource-manager-capture]（适用于 Linux）
+* 在 Windows 上使用 sysprep 或者在 Linux 上使用 waagent -deprovision 将 VM 通用化 - 请参阅适用于 Windows 的 [Sysprep 技术参考](https://technet.microsoft.com/library/cc766049.aspx)或适用于 Linux 的 [如何捕获用作 Resource Manager 模板的 Linux 虚拟机][/linux/capture-image.md#step-2-create-vm-image]
 * 使用 *Login-AzureRmAccount* 登录到订阅
 * 使用 *Set-AzureRmContext* 和参数 SubscriptionId 或 SubscriptionName 设置订阅上下文 - 请参阅 <https://msdn.microsoft.com/library/mt619263.aspx>
-* 使用 *Add-AzureRmVhd* 将 VHD 上载到 Azure 存储帐户 - 请参阅 <https://msdn.microsoft.com/library/mt603554.aspx>
+* 使用 *Add-AzureRmVhd* 将 VHD 上传到 Azure 存储帐户 - 请参阅 <https://msdn.microsoft.com/library/mt603554.aspx>
 * 使用 *Set-AzureRmVMOSDisk -SourceImageUri -CreateOption fromImage* 将新 VM 配置的 OS 磁盘设置为 VHD - 请参阅 <https://msdn.microsoft.com/library/mt603746.aspx>
 * 使用 *New-AzureRmVM* 从 VM 配置创建新的 VM - 请参阅 <https://msdn.microsoft.com/library/mt603754.aspx>
 
 **Azure CLI**
 
-* 在 Windows 上使用sysprep  或者在 Linux 上使用 waagent -deprovision 将 VM 通用化 - 请参阅 [Sysprep Technical Reference](https://technet.microsoft.com/library/cc766049.aspx)（Sysprep 技术参考）（适用于 Windows）或 [如何捕获 Linux 虚拟机以用作 Resource Manager 模板][virtual-machines-linux-capture-image-resource-manager-capture]（适用于 Linux）
+* 在 Windows 上使用 sysprep 或者在 Linux 上使用 waagent -deprovision 将 VM 通用化 - 请参阅适用于 Windows 的 [Sysprep 技术参考](https://technet.microsoft.com/library/cc766049.aspx)或适用于 Linux 的 [如何捕获用作 Resource Manager 模板的 Linux 虚拟机][/linux/capture-image.md#step-2-create-vm-image]
 * 使用 *azure config mode arm* 切换到 Azure Resource Manager 模式
 * 使用 *azure login* 登录到订阅
 * 使用 *azure account set `<subscription name or id`>* 选择订阅
-* 使用 azure storage blob upload 上传 VHD - 请参阅 [结合使用 Azure CLI 与 Azure 存储空间][storage-azure-cli]
-* 使用 *azure vm create* 和参数 -Q 创建新的 VM，并将上载的 VHD 指定为 OS 磁盘
+* 使用 azure storage blob upload 上传 VHD - 请参阅 [结合使用 Azure CLI 与 Azure 存储][storage-azure-cli]
+* 使用 *azure vm create* 和参数 -Q 创建新的 VM，并将上传的 VHD 指定为 OS 磁盘
 
 **模板**
 
-* 在 Windows 上使用sysprep  或者在 Linux 上使用 waagent -deprovision 将 VM 通用化 - 请参阅 [Sysprep Technical Reference](https://technet.microsoft.com/library/cc766049.aspx)（Sysprep 技术参考）（适用于 Windows）或 [如何捕获 Linux 虚拟机以用作 Resource Manager 模板][virtual-machines-linux-capture-image-resource-manager-capture]（适用于 Linux）
-* 使用 Powershell 或 Azure CLI 上载 VHD
+* 在 Windows 上使用 sysprep 或者在 Linux 上使用 waagent -deprovision 将 VM 通用化 - 请参阅适用于 Windows 的 [Sysprep 技术参考](https://technet.microsoft.com/library/cc766049.aspx)或适用于 Linux 的 [如何捕获用作 Resource Manager 模板的 Linux 虚拟机][/linux/capture-image.md#step-2-create-vm-image]
+* 使用 Powershell 或 Azure CLI 上传 VHD
 * 使用引用映像 VHD 的 JSON 模板部署 VM，如[此 JSON 模板示例](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json)中所示。
 
 #### <a name="downloading-vhds-to-on-premises"></a>将 VHD 下载到本地
-Azure 基础结构即服务不仅能够上载 VHD 和 SAP 系统， 而且你还可以在其中将 SAP 系统从 Azure 移回到本地。
+Azure 基础结构即服务不仅能够上传 VHD 和 SAP 系统， 而且你还可以在其中将 SAP 系统从 Azure 移回到本地。
 
 下载期间，VHD 不能为活动状态。 在下载已装载到 VM 的 VHD 时，甚至还要关闭 VM。 如果你只想要下载数据库内容，然后使用此内容在本地安装新系统，并且如果在下载和设置新系统期间，Azure 中的系统仍可以正常运行，那么，你可以通过执行将压缩的数据库备份到 VHD，并只下载该 VHD 而不是同时下载 OS 基本 VM，来避免停机时间过长。
 
@@ -1050,10 +1051,10 @@ SAP 系统，甚至是支持 SAP 应用程序层的专用 DBMS 服务器，都�
 ##### <a name="cli"></a>CLI
 可按[此文][storage-azure-cli-copy-blobs]中所述，使用 Azure CLI 来复制 VHD
 
-##### <a name="azure-storage-tools"></a>Azure 存储空间工具
+##### <a name="azure-storage-tools"></a>Azure 存储工具
 * <http://azurestorageexplorer.codeplex.com/releases/view/125870>
 
-还可在以下网页中找到专业版本的 Azure 存储空间资源管理器：
+还可在以下网页中找到专业版本的 Azure 存储资源管理器：
 
 * <http://www.cerebrata.com/>
 * <http://clumsyleaf.com/products/cloudxplorer>
@@ -1165,7 +1166,7 @@ sudo service waagent restart
 有关建议的交换文件大小的详细信息，请参阅 SAP 说明 [1597355]
 
 - - -
-用于 DBMS 数据文件的 VHD 数目以及托管这些 VHD 的 Azure 存储空间类型应该根据 IOPS 要求和所需的延迟来确定。 [此文][virtual-machines-sizes]中说明了确切的配额
+用于 DBMS 数据文件的 VHD 数目以及托管这些 VHD 的 Azure 存储类型应该根据 IOPS 要求和所需的延迟来确定。 [此文][virtual-machines-sizes]中说明了确切的配额
 
 过去 2 年的 SAP 部署经验提供了一些教训，摘要如下：
 
@@ -1198,7 +1199,7 @@ sudo service waagent restart
 
 ![使用 Azure 标准存储附加/分离磁盘][planning-guide-figure-1400]
 
-需要确定是要创建全新的空 VHD（将在基础 VM 所在的同一个存储帐户中创建），还是要选择以前上载的、现在应该附加到该 VM 的现有 VHD。
+需要确定是要创建全新的空 VHD（将在基础 VM 所在的同一个存储帐户中创建），还是要选择以前上传的、现在应该附加到该 VM 的现有 VHD。
 
 **重要说明**：对于 Azure 标准存储，请**不要**使用主机缓存。 因此，应该将“主机缓存首选项”保留为默认值“无”。 使用 Azure 高级存储时，如果 I/O 特征大多数读取为类似对数据库数据文件的一般 I/O 流量，则应该启用“读取缓存”。 在数据库事务日志文件中，不建议使用缓存。
 
@@ -1662,7 +1663,7 @@ azure vm disk attach-new --resource-group $rgName --vm-name SAPERPDemo --size-in
 #### <a name="solution-design"></a>解决方案设计
 为启用 SAP 监视而开发的解决方案构建在 Azure VM 代理和扩展框架的体系结构之上。 Azure VM 代理和扩展框架的思路是允许在 VM 中安装 Azure VM 扩展库中提供的软件应用程序。 这种概念所依据的原则思想是允许（例如，在使用适用于 SAP 的 Azure 监视扩展时）将特殊的功能部署到 VM 中，并在部署时配置此类软件。
 
-从 2014 年 2 月开始，在 Azure 门户中创建 VM 时，用于处理 VM 中特定 Azure VM 扩展的“Azure VM 代理”将按默认注入到 Windows VM 中。 对于 SUSE 或 Red Hat Linux，VM 代理已是 Azure 应用商店映像的一部分。 如果用户将 Linux VM 从本地上载到 Azure，则必须手动安装 VM 代理。
+从 2014 年 2 月开始，在 Azure 门户中创建 VM 时，用于处理 VM 中特定 Azure VM 扩展的“Azure VM 代理”将按默认注入到 Windows VM 中。 对于 SUSE 或 Red Hat Linux，VM 代理已是 Azure 应用商店映像的一部分。 如果用户将 Linux VM 从本地上传到 Azure，则必须手动安装 VM 代理。
 
 适用于 SAP 的 Azure 监视解决方案的基本构建块如下所示：
 
@@ -1748,7 +1749,7 @@ Azure 虚拟机上目前没有提供单一 VM SLA。 若要大致了解单一 VM
 #### <a name="azure-storage-redundancy"></a>Azure 存储冗余
 始终复制 Microsoft Azure 存储帐户中的数据以确保持久性和高可用性，并且即使在遇到临时硬件故障时也符合 Azure 存储 SLA 要求
 
-由于 Azure 存储空间默认保留 3 个数据映像，因此不需要部署跨多个 Azure 磁盘的 RAID5 或 RAID1。
+由于 Azure 存储默认保留 3 个数据映像，因此不需要部署跨多个 Azure 磁盘的 RAID5 或 RAID1。
 
 可在以下文章中找到更多详细信息：<http://azure.microsoft.com/documentation/articles/storage-redundancy/>
 
@@ -1760,7 +1761,7 @@ Azure 虚拟机上目前没有提供单一 VM SLA。 若要大致了解单一 VM
 >
 >
 
-高可用性的另一个重要基础结构要素是存储。 例如 Azure 存储空间 SLA 可用性为 99,9%。 如果用户将所有 VM 及其磁盘部署到单个 Azure 存储帐户，当 Azure 存储空间不可用时，将导致 Azure 存储帐户中的所有 VM 以及这些 VM 内运行的所有 SAP 组件不可用。  
+高可用性的另一个重要基础结构要素是存储。 例如 Azure 存储 SLA 可用性为 99,9%。 如果用户将所有 VM 及其磁盘部署到单个 Azure 存储帐户，当 Azure 存储不可用时，将导致 Azure 存储帐户中的所有 VM 以及这些 VM 内运行的所有 SAP 组件不可用。  
 
 也可以针对每个 VM 使用专用存储帐户，而不是将所有 VM 放入单个 Azure 存储帐户；这样，就可以通过使用多个独立的 Azure 存储帐户，来增加整体 VM 和 SAP 应用程序可用性。
 

@@ -4,7 +4,7 @@ description: "介绍了用来监视 StorSimple 设备状态的发光二极管 (L
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 59dee7b9-ca6d-4fd9-96e6-a0071e8d248e
 ms.service: storsimple
@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/18/2016
+ms.date: 06/05/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0b8efafadee9bb7636bb204b55758f18a86cf049
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0d44f94719bff0cb58b3727050598e55f4774e66
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -135,7 +137,7 @@ StorSimple 设备包含了用于主控制器和 EBOD 控制器模块的 LED
 ### <a name="controller-indicator-leds"></a>控制器指示器 LED
 | LED | 说明 |
 | --- | --- |
-| ID LED（蓝色） |指示所标识的模块。 如果蓝色 LED 在某个正在运行的控制器上闪烁，则该控制器是活动控制器，另一个是备用控制器。 有关详细信息，请参阅[识别设备上的活动控制器](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device)。 |
+| ID LED（蓝色） |指示所标识的模块。 如果蓝色 LED 在某个正在运行的控制器上闪烁，则该控制器是活动控制器，另一个是备用控制器。 有关详细信息，请参阅[识别设备上的活动控制器](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)。 |
 | 故障 LED（琥珀色） |表示控制器中存在故障。 |
 | 正常 LED（绿色） |稳定的绿色表示控制器正常。 闪烁的绿色表示存在控制器 VPD 配置错误。 |
 | SAS 活动 LED（绿色） |稳定的绿色表示连接中当前没有活动。 闪烁的绿色表示连接中有正在进行的活动。 |
@@ -209,12 +211,11 @@ StorSimple 设备包含了与主机箱和 EBOD 机箱关联的有声警报。 �
 > * 在警报状态 S1 下，如果在 2 分钟内没有按静音按钮，则状态将自动转变为 S2 或 S3。  
 > * 清除故障状况后，警报状态 S1 到 S4 将恢复为 S0。  
 > * 严重故障状态 S4 可以由任何其他状态转变而来。  
-> 
-> 
 
-可以通过按下操作面板上的静音按钮使有声警报静音。 如果没有手动操作静音开关，则两分钟后将自动静音。 当警报静音后，它会继续间歇性地短暂鸣叫以指示问题仍然存在。 当所有问题都清除后，警报将静音。  
 
-下表描述了各种警报状况。  
+可以通过按下操作面板上的静音按钮使有声警报静音。 如果没有手动操作静音开关，则两分钟后将自动静音。 当警报静音后，它会继续间歇性地短暂鸣叫以指示问题仍然存在。 当所有问题都清除后，警报将静音。
+
+下表描述了各种警报状况。
 
 ### <a name="alarm-conditions"></a>警报状况
 | 状态 | 严重性 | 警报 | 操作面板 LED |
@@ -240,7 +241,7 @@ StorSimple 设备包含了与主机箱和 EBOD 机箱关联的有声警报。 �
 | 电力不足 |警告 |无 |模块故障 |
 
 ## <a name="next-steps"></a>后续步骤
-详细了解 [StorSimple 硬件组件和状态](storsimple-monitor-hardware-status.md)。
+详细了解 [StorSimple 硬件组件和状态](storsimple-8000-monitor-hardware-status.md)。
 
 [1]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE01.png
 [2]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE02.png
@@ -249,10 +250,5 @@ StorSimple 设备包含了与主机箱和 EBOD 机箱关联的有声警报。 �
 [5]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE05.png
 [6]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE06.png
 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

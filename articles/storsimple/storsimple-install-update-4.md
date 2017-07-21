@@ -12,12 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 04/03/2017
+ms.date: 05/30/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 3457601f1d295d17d50725ec19cae96ae6efb5b6
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 7dc2f29db64218b9db17eaf555c43a7ad282ea07
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -47,7 +48,7 @@ Update 4 包括设备软件、USM 固件、LSI 驱动程序和固件、Storport 
 
 验证确保设备运行的是 **StorSimple 8000 系列 Update 4 (6.3.9600.17820)**。 还应修改“上次更新日期”。 
 
-* 现在，会显示“维护模式更新已发布”（此消息可能会在安装更新后持续显示长达 24 小时）。 维护模式更新为中断性更新，会导致设备停机，只能通过设备的 Windows PowerShell 接口应用。 
+* 现在，会显示“维护模式更新已发布”（此消息可能会在安装更新后持续显示长达 24 小时）。 维护模式更新为中断性更新，会导致设备停机，只能通过设备的 Windows PowerShell 接口应用。
  
 * 下载维护模式更新时，需使用[下载修补程序](#to-download-hotfixes)中列出的步骤搜索并下载 KB4011837，以便安装磁盘固件更新（其他更新此时应已安装）。 按照[安装和验证维护模式修补程序](#to-install-and-verify-maintenance-mode-hotfixes)中列出的步骤安装维护模式更新。 
 
@@ -76,9 +77,9 @@ Update 4 包括设备软件、USM 固件、LSI 驱动程序和固件、Storport 
 
 | 顺序 | KB | 说明 | 更新类型 | 安装时间 |在文件夹中安装|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4011839 |软件更新 |常规 <br></br>非中断性 |~ 25 分钟 |FirstOrderUpdate|
+| 1. |KB4011839 <br> （2 个文件） |设备软件更新 <br> CiS/MDS 代理更新 |常规 <br></br>非中断性 |~ 25 分钟 |FirstOrderUpdate <br> _先安装设备软件更新，再进行 Cis/MDS 代理更新_|
 | 2A. |KB4011841 <br> KB4011842 |LSI 驱动程序和固件更新 <br> USM 固件更新（版本 3.38） |常规 <br></br>非中断性 |~ 3 小时 <br> （包括 2A. + 2B. + 2C.）|SecondOrderUpdate|
-| 2B. |KB3139398、KB3108381 <br> KB3205400、KB3142030 <br> KB3197873、KB3197873 <br> KB3192392、KB3153704 <br> KB3174644、KB3139914  |OS 安全更新包 |常规 <br></br>非中断性 |- |SecondOrderUpdate|
+| 2B. |KB3139398、KB3108381 <br> KB3205400、KB3142030 <br> KB3197873、KB3192392  <br> KB3153704、KB3174644 <br> KB3139914  |OS 安全更新包 |常规 <br></br>非中断性 |- |SecondOrderUpdate|
 | 2C. |KB3210083、KB3103616 <br> KB3146621、KB3121261 <br> KB3123538 |OS 更新包 |常规 <br></br>非中断性 |- |SecondOrderUpdate|
 
 除了前面表中显示的所有更新，可能还需安装磁盘固件更新。 运行 `Get-HcsFirmwareVersion` cmdlet 即可验证是否需要磁盘固件更新。 如果运行的是固件版本 `XMGJ`、`XGEG`、`KZ50`、`F6C2`、`VR08`、`N002``0106`，则不需安装这些更新。

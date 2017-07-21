@@ -14,12 +14,11 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/27/2017
 ms.author: ruturajd
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 795dd0c05daf560e5a271fef5356eb83d72a6112
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: dde0bb6b4f6bc10afdd7d40adc6689d42b37de81
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="fail-back-vmware-virtual-machines-and-physical-servers-to-the-on-premises-site"></a>将 VMware 虚拟机和物理服务器故障回复到本地站点
@@ -70,7 +69,7 @@ ms.lasthandoff: 06/16/2017
 ## <a name="prerequisites"></a>先决条件
 * 要对 VMware VM 和物理服务器进行故障回复，需要 VMware 环境。 不支持故障回复到物理服务器。
 * 要进行故障回复，必须在最初设置保护时，就已经创建 Azure 网络。 故障回复需要进行 VPN 或 ExpressRoute 连接，从 Azure VM 所在的 Azure 网络连接到本地站点。
-* 如需故障回复到的 VM 受 vCenter 服务器管理，请确保拥有在 vCenter 服务器上发现 VM 所必需的权限。 有关详细信息，请参阅[通过 Azure Site Recovery 将 VMware 虚拟机和物理服务器复制到 Azure](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)。
+* 如需故障回复到的 VM 受 vCenter 服务器管理，请确保拥有在 vCenter 服务器上发现 VM 所必需的权限。 有关详细信息，请参阅[通过 Azure Site Recovery 将 VMware 虚拟机和物理服务器复制到 Azure](site-recovery-vmware-to-azure-classic.md)。
 * 如果 VM 上存在快照，重新保护会失败。 你可以删除这些快照或磁盘。
 * 故障回复之前，请创建以下组件：
   * **在 Azure 中创建进程服务器**。 该组件是在故障回复过程中创建并保持运行的 Azure VM。 完成故障回复后，可以删除该 VM。
@@ -110,7 +109,7 @@ ms.lasthandoff: 06/16/2017
  * 映像的名称为 Microsoft Azure Site Recovery 进程服务器 V2。 选择“经典”作为部署模型。
 
        ![Select "Classic" as the Process Server deployment model](./media/site-recovery-failback-azure-to-vmware-classic/templatename.png)
- * 按照[将 VMware 虚拟机和物理服务器复制到 Azure Site Recovery](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server) 中的说明安装进程服务器。
+ * 按照[将 VMware 虚拟机和物理服务器复制到 Azure Site Recovery](site-recovery-vmware-to-azure-classic.md) 中的说明安装进程服务器。
 7. 如果选择 Resource Manager Azure 网络，请通过提供以下信息部署进程服务器：
 
   * 要将服务器部署到的资源组的名称
@@ -123,7 +122,7 @@ ms.lasthandoff: 06/16/2017
 
     ![在“添加进程服务器”对话框中输入信息](./media/site-recovery-failback-azure-to-vmware-classic/psinputsadd.png)
 
-8. 单击 **“确定”**。 此操作会触发一个作业，该作业在进程服务器安装期间创建一个 Resource Manager 部署类型虚拟机。 若要将服务器注册到配置服务器，请按照[通过 Azure Site Recovery 将 VMware 虚拟机和物理服务器复制到 Azure](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server) 中的步骤在 VM 中运行安装程序。 还会触发一个用于部署进程服务器的作业。
+8. 单击 **“确定”**。 此操作会触发一个作业，该作业在进程服务器安装期间创建一个 Resource Manager 部署类型虚拟机。 若要将服务器注册到配置服务器，请按照[通过 Azure Site Recovery 将 VMware 虚拟机和物理服务器复制到 Azure](site-recovery-vmware-to-azure-classic.md) 中的步骤在 VM 中运行安装程序。 还会触发一个用于部署进程服务器的作业。
 
   进程服务器会列出在“配置服务器” > “关联服务器” > “进程服务器”选项卡上。
 
@@ -142,7 +141,7 @@ ms.lasthandoff: 06/16/2017
 1. 如果要在 Windows 上设置主目标服务器，请通过需在其中安装主目标服务器的 VM 打开快速启动页。
 2. 下载 Azure Site Recovery 统一安装程序向导的安装文件。
 3. 运行安装程序，然后在“开始之前”中选择“添加额外的进程服务器以扩大部署”。
-4. 完成向导，完成方式与[安装管理服务器](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server)时采用的方式相同。 在“配置服务器详细信息”页上，指定此主目标服务器的 IP 地址，并输入访问 VM 所需的密码。
+4. 完成向导，完成方式与[安装管理服务器](site-recovery-vmware-to-azure-classic.md)时采用的方式相同。 在“配置服务器详细信息”页上，指定此主目标服务器的 IP 地址，并输入访问 VM 所需的密码。
 
 ### <a name="set-up-a-linux-vm-as-the-master-target-server"></a>将 Linux VM 安装为主目标服务器
 若要将运行主目标服务器的管理服务器设置为 Linux VM，需至少安装 CentOS 6.6 操作系统。 接下来，检索每个 SCSI 硬盘的 SCSI ID，安装一些其他软件包，并应用一些自定义更改。
@@ -232,7 +231,7 @@ ms.lasthandoff: 06/16/2017
 完成重新保护后，VM 会复制回 Azure，这时可以执行故障转移。
 
 ### <a name="resolve-common-failback-issues"></a>解决常见故障回复问题
-* 如果执行只读的用户 vCenter 发现并保护虚拟机，操作将成功且故障转移可正常工作。 进行重新保护期间，操作会失败，因为无法发现数据存储。 征兆是在重新保护期间不会列出数据存储。 若要解决此问题，可以使用具有适当权限的帐户更新 vCenter 凭据并重试该作业。 有关详细信息，请参阅[通过 Azure Site Recovery 将 VMware 虚拟机和物理服务器复制到 Azure](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)
+* 如果执行只读的用户 vCenter 发现并保护虚拟机，操作将成功且故障转移可正常工作。 进行重新保护期间，操作会失败，因为无法发现数据存储。 征兆是在重新保护期间不会列出数据存储。 若要解决此问题，可以使用具有适当权限的帐户更新 vCenter 凭据并重试该作业。 有关详细信息，请参阅[通过 Azure Site Recovery 将 VMware 虚拟机和物理服务器复制到 Azure](site-recovery-vmware-to-azure-classic.md)
 * 在故障回复 Linux VM 并在本地运行它时，会看到网络管理器程序包已从该计算机卸载。 发生此卸载的原因是 VM 在 Azure 中恢复时，网络管理器程序包遭到删除。
 * 当 VM 以静态 IP 地址配置且故障转移到 Azure 时，将通过 DHCP 获取 IP 地址。 当故障转移回复到本地时，该 VM 会继续使用 DHCP 获取 IP 地址。 如有需要，请手动登录到该计算机并将 IP 地址设置回静态地址。
 * 如果使用 ESXi 5.5 免费版或 vSphere 6 虚拟机监控程序免费版，则故障转移会成功，但故障回复不会成功。 要启用故障回复，请升级为程序的评估许可证。

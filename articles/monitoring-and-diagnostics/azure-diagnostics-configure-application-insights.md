@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2016
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: f6848fef5b23a864496565334b22dc2e2e8d1492
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: f2428661af016071268b1c30a933226c1e804fbb
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -32,17 +33,38 @@ Azure 诊断扩展 1.5 引入了接收器 - 可将诊断数据发送到的附加
 Application Insights 接收器的示例配置：
 
 ```XML
-    <SinksConfig>
-        <Sink name="ApplicationInsights">
-          <ApplicationInsights>{Insert InstrumentationKey}</ApplicationInsights>
-          <Channels>
-            <Channel logLevel="Error" name="MyTopDiagData"  />
-            <Channel logLevel="Verbose" name="MyLogData"  />
-          </Channels>
-        </Sink>
-      </SinksConfig>
+<SinksConfig>
+    <Sink name="ApplicationInsights">
+      <ApplicationInsights>{Insert InstrumentationKey}</ApplicationInsights>
+      <Channels>
+        <Channel logLevel="Error" name="MyTopDiagData"  />
+        <Channel logLevel="Verbose" name="MyLogData"  />
+      </Channels>
+    </Sink>
+</SinksConfig>
 ```
-
+```JSON
+"SinksConfig": {
+    "Sink": [
+        {
+            "name": "ApplicationInsights",
+            "ApplicationInsights": "{Insert InstrumentationKey}",
+            "Channels": {
+                "Channel": [
+                    {
+                        "logLevel": "Error",
+                        "name": "MyTopDiagData"
+                    },
+                    {
+                        "logLevel": "Error",
+                        "name": "MyLogData"
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
 - **接收器**的 *name* 属性是用于唯一标识该接收器的字符串值。
 
 - **ApplicationInsights** 元素指定要将 Azure 诊断数据发送到的 Application Insights 资源的检测键。
@@ -79,9 +101,8 @@ Application Insights 接收器的示例配置：
        sinks="ApplicationInsights.MyTopDiagData"> <!-- All info below sent to this channel -->
     <DiagnosticInfrastructureLogs />
     <PerformanceCounters>
-      <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT3M" sinks="ApplicationInsights.MyLogData/>
+      <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT3M" />
       <PerformanceCounterConfiguration counterSpecifier="\Memory\Available MBytes" sampleRate="PT3M" />
-      <PerformanceCounterConfiguration counterSpecifier="\Web Service(_Total)\Bytes Total/Sec" sampleRate="PT3M" />
     </PerformanceCounters>
     <WindowsEventLog scheduledTransferPeriod="PT1M">
       <DataSource name="Application!*" />
@@ -101,7 +122,61 @@ Application Insights 接收器的示例配置：
   </SinksConfig>
 </WadCfg>
 ```
-
+```JSON
+"WadCfg": {
+    "DiagnosticMonitorConfiguration": {
+        "overallQuotaInMB": 4096,
+        "sinks": "ApplicationInsights.MyTopDiagData", "_comment": "All info below sent to this channel",
+        "DiagnosticInfrastructureLogs": {
+        },
+        "PerformanceCounters": {
+            "PerformanceCounterConfiguration": [
+                {
+                    "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
+                    "sampleRate": "PT3M"
+                },
+                {
+                    "counterSpecifier": "\\Memory\\Available MBytes",
+                    "sampleRate": "PT3M"
+                }
+            ]
+        },
+        "WindowsEventLog": {
+            "scheduledTransferPeriod": "PT1M",
+            "DataSource": [
+                {
+                    "name": "Application!*"
+                }
+            ]
+        },
+        "Logs": {
+            "scheduledTransferPeriod": "PT1M",
+            "scheduledTransferLogLevelFilter": "Verbose",
+            "sinks": "ApplicationInsights.MyLogData", "_comment": "This specific info sent to this channel"
+        }
+    },
+    "SinksConfig": {
+        "Sink": [
+            {
+                "name": "ApplicationInsights",
+                "ApplicationInsights": "{Insert InstrumentationKey}",
+                "Channels": {
+                    "Channel": [
+                        {
+                            "logLevel": "Error",
+                            "name": "MyTopDiagData"
+                        },
+                        {
+                            "logLevel": "Verbose",
+                            "name": "MyLogData"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
+```
 在上面的配置中，以下各行的含义如下所述：
 
 ### <a name="send-all-the-data-that-is-being-collected-by-azure-diagnostics"></a>发送 Azure 诊断收集的所有数据
@@ -109,17 +184,35 @@ Application Insights 接收器的示例配置：
 ```XML
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights">
 ```
+```JSON
+"DiagnosticMonitorConfiguration": {
+    "overallQuotaInMB": 4096,
+    "sinks": "ApplicationInsights",
+}
+```
 
 ### <a name="send-only-error-logs-to-the-application-insights-sink"></a>只将错误日志发送到 Application Insights 接收器
 
 ```XML
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights.MyTopDiagdata">
 ```
+```JSON
+"DiagnosticMonitorConfiguration": {
+    "overallQuotaInMB": 4096,
+    "sinks": "ApplicationInsights.MyTopDiagData",
+}
+```
 
 ### <a name="send-verbose-application-logs-to-application-insights"></a>将详细的应用程序日志发送到 Application Insights
 
 ```XML
 <Logs scheduledTransferPeriod="PT1M" scheduledTransferLogLevelFilter="Verbose" sinks="ApplicationInsights.MyLogData"/>
+```
+```JSON
+"DiagnosticMonitorConfiguration": {
+    "overallQuotaInMB": 4096,
+    "sinks": "ApplicationInsights.MyLogData",
+}
 ```
 
 ## <a name="limitations"></a>限制
@@ -129,6 +222,7 @@ Application Insights 接收器的示例配置：
 - **无法将 Azure 诊断扩展收集的 Blob 数据发送到 Application Insights。** 例如，*Directories* 节点下指定的任何数据。 对于故障转储，实际故障转储将发送到 Blob 存储，并只会将生成了故障转储的通知发送到 Application Insights。
 
 ## <a name="next-steps"></a>后续步骤
+* 了解如何在 Application Insights 中[查看 Azure 诊断信息](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-cloudservices#view-azure-diagnostic-events)。
 * 使用 [PowerShell](../cloud-services/cloud-services-diagnostics-powershell.md) 为应用程序启用 Azure 诊断扩展。
 * 使用 [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) 为应用程序启用 Azure 诊断扩展。
 

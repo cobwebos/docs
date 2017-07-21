@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2017
 ms.author: 
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 08da5407cc5ddceeba21a558dc0de1008a566bab
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 09fc9021e8dfb910d1a81178434ca2e27c0bacf7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -37,4 +38,4 @@ ms.lasthandoff: 04/03/2017
 
 多实例更新（针对可用性集中的虚拟机）一次应用一个更新域。
 
-通过调用元数据服务计划事件，虚拟机中运行的应用程序可获知即将进行的更新。 有关计划事件的详细信息，请参阅 [Azure 元数据服务 - 计划事件](../virtual-machines-scheduled-events.md)。
+这些更新对某些应用程序的影响可能比对其他应用程序的影响大。 例如，执行实时事件处理、媒体流或转码或高吞吐量网络方案的应用程序可能无法容忍暂停 30 秒钟。 通过调用 [Azure 元数据服务](../virtual-machines-instancemetadataservice-overview.md)的[计划事件](../virtual-machines-scheduled-events.md) API，虚拟机中运行的应用程序可获知即将进行的更新。

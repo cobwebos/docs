@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/15/2017
+ms.date: 05/15/2017
 ms.author: kgremban
 ms.custom: end-user
-translationtype: Human Translation
-ms.sourcegitcommit: 3fd5b85f718313d8267157157e45965b2b21f2db
-ms.openlocfilehash: 60c84a5f5c675b012f2504f6fe222f35ce4d0646
-ms.lasthandoff: 02/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: fac7f969f943312fca1eacc41dca3b8e65cf2024
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 ---
 # <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication 中的应用密码是什么？
@@ -62,8 +63,9 @@ ms.lasthandoff: 02/03/2017
 4. 单击“创建” 。
 5. 输入应用密码的名称，然后单击“下一步”
 6. 将应用密码复制到剪贴板，然后将它粘贴到你的应用。
-
+   
    ![云](./media/multi-factor-authentication-end-user-app-passwords/app2.png)
+
 
 ### <a name="to-delete-app-passwords-in-the-azure-portal"></a>在 Azure 门户中删除应用密码
 1. 登录到 Azure 经典门户。
@@ -81,17 +83,14 @@ ms.lasthandoff: 02/03/2017
 1. 登录 [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. 单击右上角的名称，然后选择“配置文件”。
 3. 选择“其他安全性验证”。
-
    ![选择“其他安全性验证”- 屏幕截图](./media/multi-factor-authentication-end-user-manage/myapps1.png)
 
 4. 选择“应用密码”。
-
    ![选择“应用密码”- 屏幕截图](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
 
 5. 单击“创建” 。
 6. 输入应用密码的名称，然后单击“下一步”。
 7. 将应用密码复制到剪贴板，然后将它粘贴到你的应用。
-
    ![创建应用密码](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
 
 ### <a name="to-delete-an-app-password-using-the-myapps-portal"></a>使用 Myapps 门户删除应用密码

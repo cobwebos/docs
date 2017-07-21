@@ -2,7 +2,7 @@
 title: "Azure 活动日志概述 | Microsoft Docs"
 description: "了解什么是 Azure 活动日志，以及如何通过它了解发生在 Azure 订阅中的事件。"
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: johnkem
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
-ms.openlocfilehash: c123b76b0e4c95cfebcc79063fb1c3a27efc8646
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: d0e436e2392a532cec813e0a8c5ab15c9ca35cf1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="overview-of-the-azure-activity-log"></a>Azure 活动日志概述

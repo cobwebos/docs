@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/02/2017
+ms.date: 07/06/2017
 ms.author: ganesr;cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 23b88e4dd3af3cd3e1e13f80890311bdbfb7fe84
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 964ea38569062a7127f60dd6309b328db263bf6f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 07/11/2017
 
 
 ---
@@ -57,43 +57,6 @@ ms.lasthandoff: 05/03/2017
 
 此操作不涉及停机。 只要迁移正在进行，就可以继续在本地和 Microsoft 之间传输数据。
 
-## <a name="prepare-your-virtual-network-for-migration"></a>针对迁移准备虚拟网络
-必须确保要迁移的虚拟网络的网络没有不必要的项目。 若要下载虚拟网络配置并根据需要对其进行更新，请运行以下 PowerShell cmdlet：
-
-```powershell
-Add-AzureAccount
-Select-AzureSubscription -SubscriptionName <VNET Subscription>
-Get-AzureVNetConfig -ExportToFile C:\virtualnetworkconfig.xml
-```
-      
-必须确保从要迁移的虚拟网络中删除对 <ConnectionsToLocalNetwork> 的所有引用。 以下代码片段演示了示例网络配置：
-
-```
-    <VirtualNetworkSite name="MyVNet" Location="East US">
-        <AddressSpace>
-            <AddressPrefix>10.0.0.0/8</AddressPrefix>
-        </AddressSpace>
-        <Subnets>
-            <Subnet name="Subnet-1">
-                <AddressPrefix>10.0.0.0/11</AddressPrefix>
-            </Subnet>
-            <Subnet name="GatewaySubnet">
-                <AddressPrefix>10.32.0.0/28</AddressPrefix>
-            </Subnet>
-        </Subnets>
-        <Gateway>
-            <ConnectionsToLocalNetwork>
-            </ConnectionsToLocalNetwork>
-        </Gateway>
-    </VirtualNetworkSite>
-```
- 
-如果 <ConnectionsToLocalNetwork> 不为空，请删除其下的引用，然后重新提交网络配置。 可以运行以下 PowerShell cmdlet 来实现此目的：
-
-```powershell
-Set-AzureVNetConfig -ConfigurationPath c:\virtualnetworkconfig.xml
-```
-
 ## <a name="migrate-virtual-networks-gateways-and-associated-deployments"></a>迁移虚拟网络、网关和关联的部署
 
 迁移所需步骤取决于资源是位于同一订阅中还是不同订阅中，还是两种情况都存在。
@@ -121,71 +84,6 @@ Set-AzureVNetConfig -ConfigurationPath c:\virtualnetworkconfig.xml
 
   ```powershell
   Move-AzureVirtualNetwork -Abort $vnetName
-  ```
-
-### <a name="migrate-virtual-networks-gateways-and-associated-deployments-in-a-different-subscription-from-that-of-the-expressroute-circuit"></a>迁移与 ExpressRoute 线路不属同一订阅的虚拟网络、网关和关联的部署
-
-1. 确保已将 ExpressRoute 线路从经典环境转移到 Resource Manager 环境。
-2. 确保已针对迁移进行了相应的虚拟网络准备。
-3. 确保 ExpressRoute 线路可以同时在经典环境和 Resource Manager 环境中使用。 若要让线路能够同时在经典环境和 Resource Manager 环境中使用，请使用以下 PowerShell 脚本：
-
-  ```powershell
-  Login-AzureRmAccount
-  Select-AzureRmSubscription -SubscriptionName <My subscription>
-  $circuit = Get-AzureRmExpressRouteCircuit -Name <CircuitName> -ResourceGroupName <ResourceGroup Name> 
-  $circuit.AllowClassicOperations = $true
-  Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
-  ```
-4. 在 Resource Manager 环境中创建授权。 若要了解如何创建授权，请参阅[如何将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)。 若要创建授权，请使用以下 PowerShell 代码片段：
-
-  ```powershell
-  circuit = Get-AzureRmExpressRouteCircuit -Name <CircuitName> -ResourceGroupName <ResourceGroup Name> 
-  Add-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -Name "AuthorizationForMigration"
-  Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
-  $circuit = Get-AzureRmExpressRouteCircuit -Name MigrateCircuit -ResourceGroupName MigrateRGWest
-
-  $id = $circuit.id 
-  $auth1 = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -Name "AuthorizationForMigration"
-
-  $key=$auth1.AuthorizationKey 
- ```
-
-    请记下线路 ID 和授权密钥。 在迁移完成后，如果要将线路连接到虚拟网络，则需使用这些元素。
-  
-5. 删除与虚拟网络关联的专用线路链接。 若要在经典环境中删除线路链接，请使用以下 cmdlet：
-
-  ```powershell
-  $skey = Get-AzureDedicatedCircuit | select ServiceKey
-  Remove-AzureDedicatedCircuitLink -ServiceKey $skey -VNetName $vnetName
-  ```  
-
-6. 注册订阅，以便进行资源迁移。 若要针对资源迁移来注册订阅，请使用以下 PowerShell 代码片段：
-
-  ```powershell
-  Select-AzureRmSubscription -SubscriptionName <Your Subscription Name>
-  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
-  Get-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
-  ```
-7. 验证、准备和迁移。 若要转移虚拟网络，请使用以下 PowerShell 代码片段：
-
-  ```powershell
-  Move-AzureVirtualNetwork -Prepare $vnetName  
-  Move-AzureVirtualNetwork -Commit $vnetName
-  ```
-
-    也可通过运行以下 PowerShell cmdlet 来中止迁移：
-
-  ```powershell
-  Move-AzureVirtualNetwork -Abort $vnetName
-  ```
-8. 将虚拟网络连接回 ExpressRoute 线路。 以下 PowerShell 代码片段在特定订阅的上下文中运行，而虚拟网络在该订阅中创建。 不得在创建线路的订阅中运行此代码片段。 使用在步骤 4 中记下的线路 ID（充当 PeerID）和授权密钥。
-
-  ```powershell
-  Select-AzureRMSubscription –SubscriptionName <customer subscription>  
-  $gw = Get-AzureRmVirtualNetworkGateway -Name $vnetName-Default-Gateway -ResourceGroupName ($vnetName + "-Migrated")
-  $vnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroup  ($vnetName + "-Migrated")  
-
-  New-AzureRmVirtualNetworkGatewayConnection -Name  ($vnetName + "-GwConn") -ResourceGroupName ($vnetName + "-Migrated")  -Location $vnet.Location -VirtualNetworkGateway1 $gw -PeerId $id -ConnectionType ExpressRoute -AuthorizationKey $key
   ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -3,7 +3,7 @@ title: "Azure Active Directory 报告审核 API 示例 | Microsoft 文档"
 description: "如何开始使用 Azure Active Directory 报告 API"
 services: active-directory
 documentationcenter: 
-author: dhanyahk
+author: MarkusVi
 manager: femila
 editor: 
 ms.assetid: de8b8ec3-49b3-4aa8-93fb-e38f52c99743
@@ -14,41 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/16/2017
 ms.author: dhanyahk;markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 665b613db31b15b6f6d2826a0795be6275c832ca
-ms.openlocfilehash: 8216fa7ab092b2d0225d075d933fa56fbab56f40
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: aab705688079601bbce93455f7dda80cdd733110
 ms.contentlocale: zh-cn
-ms.lasthandoff: 12/29/2016
+ms.lasthandoff: 07/19/2017
 
 ---
-<a id="azure-active-directory-reporting-audit-api-samples" class="xliff"></a>
-
-# Azure Active Directory 报告审核 API 示例
+# <a name="azure-active-directory-reporting-audit-api-samples"></a>Azure Active Directory 报告审核 API 示例
 本主题包含在有关 Azure Active Directory 报告 API 的主题集合中。  
 Azure AD 报告向你提供了一个允许你使用代码或相关工具访问审核数据的 API。
 本主题提供**审核 API** 的示例代码。
 
 请参阅:
 
-* [审核日志](active-directory-reporting-azure-portal.md#audit-logs)，获取更多概念性信息
+* [审核日志](active-directory-reporting-azure-portal.md#activity-reports)，获取更多概念性信息
 * [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started.md)，获取有关报告 API 的详细信息。
 
 有关疑问、问题或反馈，请联系 [AAD 报告帮助](mailto:aadreportinghelp@microsoft.com)。
 
 
-<a id="prerequisites" class="xliff"></a>
-
-## 先决条件
+## <a name="prerequisites"></a>先决条件
 需要先完成[访问 Azure AD 报告 API 的先决条件](active-directory-reporting-api-prerequisites.md)，然后才能使用本主题中的示例。  
 
-<a id="known-issue" class="xliff"></a>
-
-## 已知问题
+## <a name="known-issue"></a>已知问题
 如果租户位于欧盟区域，将无法执行应用身份验证。 在我们解决此问题之前，请使用“用户身份验证”来访问审核 API。 
 
-<a id="powershell-script" class="xliff"></a>
-
-## PowerShell 脚本
+## <a name="powershell-script"></a>PowerShell 脚本
     # This script will require registration of a Web Application in Azure Active Directory (see https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)
 
     # Constants
@@ -93,16 +86,12 @@ Azure AD 报告向你提供了一个允许你使用代码或相关工具访问�
     $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 
-<a id="executing-the-powershell-script" class="xliff"></a>
-
-### 执行 PowerShell 脚本
+### <a name="executing-the-powershell-script"></a>执行 PowerShell 脚本
 完成脚本编辑后，运行该脚本并确认从审核日志报告返回预期的数据。
 
 该脚本以 JSON 格式从审核报告返回输出。 它还将创建具有相同输出的 `audit.json` 文件。 你可通过修改脚本以从其他报告返回数据来进行实验，并注释掉你不需要的输出格式。
 
-<a id="bash-script" class="xliff"></a>
-
-## Bash 脚本
+## <a name="bash-script"></a>Bash 脚本
     #!/bin/bash
 
     # Author: Ken Hoff (kenhoff@microsoft.com)
@@ -130,9 +119,7 @@ Azure AD 报告向你提供了一个允许你使用代码或相关工具访问�
 
     echo $REPORT | ./jq-win64.exe -r '.value' | ./jq-win64.exe -r ".[]"
 
-<a id="python-script" class="xliff"></a>
-
-## Python 脚本
+## <a name="python-script"></a>Python 脚本
     # Author: Michael McLaughlin (michmcla@microsoft.com)
     # Date: January 20, 2016
     # This requires the Python Requests module: http://docs.python-requests.org
@@ -177,9 +164,7 @@ Azure AD 报告向你提供了一个允许你使用代码或相关工具访问�
 
 
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 * 是否要自定义本主题中的示例？ 请查看 [Azure Active Directory 审核 API 参考](active-directory-reporting-api-audit-reference.md)。 
 * 如果你想要查看使用 Azure Active Directory 报告 API 的完整概述，请参阅 [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started.md)。
 * 如果你要查找有关 Azure Active Directory 报告的详细信息，请参阅 [Azure Active Directory 报告指南](active-directory-reporting-guide.md)。  

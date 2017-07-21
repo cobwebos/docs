@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 64dbff3e5e8cff538effe8a0623e48e81420f16a
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: df60686e7eeb4902bb9df045e28442ade2ad2cb7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>流分析中的机器学习集成
@@ -37,7 +36,7 @@ Microsoft Azure 机器学习是一个协作型拖放式工具，可用于根据�
 每个终结点都具有批处理执行和同步执行的 API。 流分析使用同步执行。 在 AzureML 工作室中，特定的服务命名为[请求/响应服务](../machine-learning/machine-learning-consume-web-services.md)。
 
 ## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>流分析作业所需的机器学习资源
-出于流分析作业处理的目的，请求/响应终结点、[apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md#get-an-azure-machine-learning-authorization-key) 和 swagger 定义对于成功执行而言都是必需项。 流分析提供附加的终结点，用于构造 swagger 终结点的 url、查找接口并向用户返回默认 UDF 定义。
+出于流分析作业处理的目的，请求/响应终结点、[apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md) 和 swagger 定义对于成功执行而言都是必需项。 流分析提供附加的终结点，用于构造 swagger 终结点的 url、查找接口并向用户返回默认 UDF 定义。
 
 ## <a name="configure-a-stream-analytics-and-machine-learning-udf-via-rest-api"></a>通过 REST API 配置流分析和机器学习 UDF
 使用 REST API，可以将作业配置为调用 Azure 机器语言函数。 步骤如下：

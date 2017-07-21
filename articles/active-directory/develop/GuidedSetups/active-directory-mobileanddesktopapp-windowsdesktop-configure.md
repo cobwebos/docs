@@ -16,8 +16,8 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: 12c89a6fcbb6d299b64e6b0ec9d1dba29bb41d16
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1dfaa7ade664e43dcb9aa788b0197ca17e6ec4cc
 ms.contentlocale: zh-cn
 
 
@@ -35,7 +35,7 @@ ms.contentlocale: zh-cn
 1. 转到 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com/portal/register-app)注册应用程序
 2. 输入应用程序的名称和你的电子邮件 
 3. 确保取消选中“指导式设置”选项
-4. 单击`Add Platforms`，然后选择`Native Application`并单击“保存”
+4. 单击`Add Platform`，然后选择`Native Application`并单击“保存”
 5. 复制应用程序 ID 中的 GUID，返回 Visual Studio，打开 `App.xaml.cs`，然后用刚才注册的应用程序 ID 替换 `your_client_id_here`：
 
 ```csharp
