@@ -19,6 +19,7 @@
 
 ## 预防
 ### [设置安全策略](security-center-policies.md)
+### [实时访问](security-center-just-in-time.md)
 ### [实施安全建议](security-center-recommendations.md)
 
 ### [应用程序建议](security-center-application-recommendations.md)
