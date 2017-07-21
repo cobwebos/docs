@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 07/20/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: c547afd9535eb4764caf6b37d4e38a22f6e88186
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="create-contentkeys-with-net"></a>使用 .NET 创建内容密钥
@@ -67,7 +68,7 @@ ms.openlocfilehash: c547afd9535eb4764caf6b37d4e38a22f6e88186
         EnvelopeEncryption = 4
     }
 
-## <a name="a-idenvelopecontentkeyacreate-envelope-type-contentkey"></a><a id="envelope_contentkey"></a>创建信封类型 ContentKey
+## <a id="envelope_contentkey"></a>创建信封类型 ContentKey
 以下代码段创建信封加密类型的内容密钥。 然后，它将密钥与指定的资产关联。
 
     static public IContentKey CreateEnvelopeTypeContentKey(IAsset asset)
@@ -104,7 +105,7 @@ call
 
 
 
-## <a name="a-idcommoncontentkeyacreate-common-type-contentkey"></a><a id="common_contentkey"></a>创建公共类型 ContentKey
+## <a id="common_contentkey"></a>创建公共类型 ContentKey
 以下代码段创建公共加密类型的内容密钥。 然后，它将密钥与指定的资产关联。
 
     static public IContentKey CreateCommonTypeContentKey(IAsset asset)
@@ -147,10 +148,5 @@ call
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

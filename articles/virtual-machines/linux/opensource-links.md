@@ -1,6 +1,6 @@
 ---
 title: "Azure 上的 Linux 和开源计算 | Microsoft Docs"
-description: "列出 Azure 上的 Linux 和开源计算文章，包括基本的 Linux 用法，关于在 Azure 上运行或上载 Linux 映像的一些基本概念，以及关于特定技术或优化的其他内容。"
+description: "列出 Azure 上的 Linux 和开源计算文章，包括基本的 Linux 用法，关于在 Azure 上运行或上传 Linux 映像的一些基本概念，以及关于特定技术或优化的其他内容。"
 services: virtual-machines-linux
 documentationcenter: 
 author: squillace
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/27/2016
 ms.author: rasquill
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 0b273631d3d725aded0e92bbe0be0479484cb3bd
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
+ms.openlocfilehash: 1cdd0e68368d2dc376ee45df67bf5e75288d4ca3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="linux-and-open-source-computing-on-azure"></a>Azure 上的 Linux 和开源计算
 查找在经典部署模型中创建和管理基于 Linux 的虚拟机所需的所有文档。
 
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
 
 ## <a name="get-started"></a>入门
 * [Azure 上的 Linux 简介](intro-on-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [使用经典部署模型创建的 Azure 虚拟机的常见问题](classic/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [关于虚拟机的映像](../windows/classic/about-images.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [上载自己的发行版映像](classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)（以及使用 [Azure 认可的发行版](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)的说明）
+* [上传自己的发行版映像](classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)（以及使用 [Azure 认可的发行版的说明](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)）
 * [使用 Azure 经典门户登录到 Linux VM](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="set-up"></a>设置
@@ -73,7 +73,7 @@ ms.lasthandoff: 04/03/2017
 * [Azure 基础结构服务实施准则](../windows/infrastructure-subscription-accounts-guidelines.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [选择 Linux 用户名](usernames.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [如何在经典部署模型中为虚拟机配置可用性集](../windows/classic/configure-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [如何在 Azure VM 上安排计划内的维护](planned-maintenance-schedule.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [如何在 Azure VM 上安排计划内的维护](classic/planned-maintenance-schedule.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [管理虚拟机的可用性](../windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure 中 Linux 虚拟机的计划内维护](planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
@@ -138,7 +138,7 @@ ms.lasthandoff: 04/03/2017
 * [在 Azure Linux VM 上安装 Hadoop](http://blogs.msdn.com/b/benjguin/archive/2013/04/05/how-to-install-hadoop-on-windows-azure-linux-virtual-machines.aspx)
 * [Azure HDInsight](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
-### <a name="relational-database"></a>关系数据库
+### <a name="relational-database"></a>关系型数据库
 * [Microsoft Azure 中的 MySQL 高可用性体系结构](http://download.microsoft.com/download/6/1/C/61C0E37C-F252-4B33-9557-42B90BA3E472/MySQL_HADR_solution_in_Azure.pdf)
 * [使用 ILB 通过 corosync、pg_bouncer 安装 Postgres](https://github.com/chgeuer/postgres-azure)
 

@@ -13,12 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/17/2016
+ms.date: 07/20/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.reviewer: jesakowi
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 095497656a1c6ed1fe5322b6015de750d8fd6f15
 ms.openlocfilehash: 3706ed729a525526a415d3a3367e6b8245ead812
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/07/2016
 
 ---
 
@@ -215,10 +217,5 @@ ms.openlocfilehash: 3706ed729a525526a415d3a3367e6b8245ead812
 （**ClientId** 是 FabrikamMail 的服务主体对象 ID（刚刚创建），**PrincipalId** 是用户对象 ID（属于许可用户），**ResourceId** 是 Exchange 的服务主体对象 ID，Scope 是 Exchange 中已许可的权限）。
 
 如果不允许用户许可，他们将看到一个屏幕，指出必须获取权限。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 07/20/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: b4211cef3b4f3ffa2c0c97fd7650606f3eef7008
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="using-partners-to-deliver-widevine-licenses-to-azure-media-services"></a>使用合作伙伴将 Widevine 许可证传送到 Azure 媒体服务
@@ -42,10 +43,5 @@ Microsoft Azure 媒体服务可让你传送使用 Widevine DRM 保护的 MPEG DA
 [使用 PlayReady 和/或 Widevine 动态通用加密](media-services-protect-with-drm.md)
 
 [Mingfei 的博客](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
