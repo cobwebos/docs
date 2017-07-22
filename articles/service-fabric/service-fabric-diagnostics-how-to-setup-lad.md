@@ -3,7 +3,7 @@ title: "使用 Linux Azure 诊断收集日志 | Microsoft Docs"
 description: "本文介绍如何将 Azure 诊断设置为从 Azure 中运行的 Service Fabric Linux 群集收集日志。"
 services: service-fabric
 documentationcenter: .net
-author: mani-ramaswamy
+author: rwike77
 manager: timlt
 editor: 
 ms.assetid: a160d469-8b7d-4560-82dd-8500db34a44a
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/28/2017
-ms.author: subramar
+ms.author: ryanwi
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: 46b62b0ebc5b81241815e3b5b4fa3fe275b88af1
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/27/2017
-
 
 ---
 # <a name="collect-logs-by-using-azure-diagnostics"></a>使用 Azure 诊断收集日志
