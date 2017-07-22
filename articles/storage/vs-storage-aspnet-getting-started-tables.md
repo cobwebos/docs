@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2016
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 5840ec74f6af2e373d9ebb34b0f6e13094c33f19
-ms.openlocfilehash: ca603d4833336ddee1474d365d57159bc288303f
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: d9cb32483d3f582bbeb0ccc6a204a8b6d9ea5c96
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>开始使用 Azure 表存储和 Visual Studio 连接服务 (ASP.NET)
@@ -31,7 +32,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
 
 ##<a name="prerequisites"></a>先决条件
 
-* [Microsoft Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)
+* [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure 存储帐户](storage-create-storage-account.md#create-a-storage-account)
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
@@ -713,8 +714,4 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
 
   * [Azure Blob 存储和 Visual Studio 连接服务入门 (ASP.NET)](./vs-storage-aspnet-getting-started-blobs.md)
   * [开始使用 Azure 队列存储和 Visual Studio 连接服务 (ASP.NET)](./vs-storage-aspnet-getting-started-queues.md)
-
-
-<!--HONumber=Feb17_HO3-->
-
 

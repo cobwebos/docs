@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
-ms.openlocfilehash: 91b138ee9590a66c63e2055eaeace82b4e719ae5
-ms.lasthandoff: 01/24/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: 0aeb02c8a07728cd17aa937614c5c20dd0bf102b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="amqp-10-support-in-service-bus"></a>服务总线的 AMQP 1.0 支持
@@ -60,7 +60,7 @@ AMQP 1.0 是一种国际标准，已通过 ISO 和 IEC 的认证，认证编号�
 * 随时可找到知识渊博的工作人员
 * 风险较低且可控
 
-## <a name="amqp-10-and-service-bus"></a>AMQP 1.0 和服务总线
+## <a name="amqp-10-and-service-bus"></a>AMQP 1.0 和 Service Bus
 Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列使用有效的二进制协议的平台利用队列和发布/订阅中转消息传送功能。 此外，你还可以生成由结合使用多个语言、框架和操作系统构建的组件组成的应用程序。
 
 下图显示了一个部署示例，其中 Java 客户端运行在 Linux 上，并使用标准 Java 消息服务 (JMS) API 写入数据；而 .NET 客户端运行在 Windows 上，并通过服务总线使用 AMQP 1.0 交换消息。
@@ -90,16 +90,12 @@ Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列�
 
 * [使用 AMQP 通过 .NET 使用服务总线]
 * [使用 AMQP 通过 Java 使用服务总线]
-* [使用 AMQP 通过 Python 使用服务总线]
-* [使用 AMQP 通过 PHP 使用服务总线]
 * [在 Azure Linux VM 上安装 Apache Qpid Proton-C]
 * [适用于 Windows Server 的服务总线中的 AMQP]
 
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
 [使用 AMQP 通过 .NET 使用服务总线]: service-bus-amqp-dotnet.md
 [使用 AMQP 通过 Java 使用服务总线]: service-bus-amqp-java.md
-[使用 AMQP 通过 Python 使用服务总线]: service-bus-amqp-python.md
-[使用 AMQP 通过 PHP 使用服务总线]: service-bus-amqp-php.md
 [在 Azure Linux VM 上安装 Apache Qpid Proton-C]: service-bus-amqp-apache.md
 [适用于 Windows Server 的服务总线中的 AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
 
