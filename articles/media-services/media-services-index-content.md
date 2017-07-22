@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 07/20/2017
 ms.author: adsolank;juliako;johndeu
-translationtype: Human Translation
-ms.sourcegitcommit: dd0c9ce36fcb831b053b75b5fecd6f149b3bbb0e
-ms.openlocfilehash: 33e7cfdb4a2b4cd38e85b6f5e07c09a431a086c4
-ms.lasthandoff: 11/22/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 1e93e97e52475da8ca09e36f2bdd754e3ee91d3b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>使用 Azure Media Indexer 为媒体文件编制索引
@@ -142,7 +142,7 @@ ms.lasthandoff: 11/22/2016
         return processor;
     }  
 <!-- __ -->
-### <a name="a-idoutputfilesaoutput-files"></a><a id="output_files"></a>输出文件
+### <a id="output_files"></a>输出文件
 默认情况下，索引作业生成以下输出文件。 这些文件将存储在第一个输出资产中。
 
 如果有多个输入媒体文件，索引器会为名为“JobResult.txt”的作业输出生成清单文件。 对于每个输入媒体文件，生成的 AIB、SAMI、TTML、WebVTT 和关键字文件将依序编号，并使用“别名”来命名。
@@ -239,7 +239,7 @@ ms.lasthandoff: 11/22/2016
 
 生成相同的输出（与成功的作业一样）。 你可以参考输出清单文件，以根据“错误”列的值查明哪些输入文件失败。 对于失败的输入文件，不会生成相应的 AIB、SAMI、TTML、WebVTT 和关键字文件。
 
-### <a name="a-idpreseta-task-preset-for-azure-media-indexer"></a><a id="preset"></a>Azure Media Indexer 的任务预设
+### <a id="preset"></a>Azure Media Indexer 的任务预设
 可以通过连同任务一起提供可选任务预设，来自定义 Azure Media Indexer 的处理操作。  下面描述了此配置 xml 文件的格式。
 
 | 名称 | 必需 | 说明 |
@@ -248,7 +248,7 @@ ms.lasthandoff: 11/22/2016
 | **metadata** |false |用于词汇自适应的指定资产文件的元数据。  在准备索引器以使其能够识别非标准词汇（例如专有名词）时，该元素非常有用。<br/>`<metadata key="..." value="..."/>` <br/><br/>可以提供预定义**键**的**值**。 当前支持以下键：<br/><br/>“title”和“description”- 用于词汇适应，以微调作业的语言模型及改进语音辨识准确度。  值将植入 Internet 搜索以查找上下文相关的文本文档，并在执行索引任务期间使用内容来扩大内部字典。<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
 | **features** <br/><br/> 在版本 1.2 中添加。 目前，唯一支持的功能是语音识别（“ASR”）。 |false |语音识别功能具有以下设置键：<table><tr><th><p>键</p></th>        <th><p>说明</p></th><th><p>示例值</p></th></tr><tr><td><p>语言</p></td><td><p>要在多媒体文件中识别的自然语言。</p></td><td><p>英语、西班牙语</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>以分号分隔的所需输出字幕格式的列表（如果有）</p></td><td><p>ttml; sami; webvtt</p></td></tr><tr><td><p>GenerateAIB</p></td><td><p>布尔标志，指定是否需要 AIB 文件（用于 SQL Server 和客户索引器 IFilter）。  有关详细信息，请参阅 <a href="http://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/">Using AIB Files with Azure Media Indexer and SQL Server</a>（在 Azure 媒体索引器和 SQL Server 中使用 AIB 文件）。</p></td><td><p>True; False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>布尔标志，指定是否需要关键字 XML 文件。</p></td><td><p>True；False。 </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>布尔型标志，指定是否强制完整字幕（不考虑可信度）。  </p><p>默认值为 false，在此情况下，将忽略最终字幕输出中可信度小于 50% 的单词和短语并将其替换为省略号（“...”）。  省略号可用于字幕质量控制和审核。</p></td><td><p>True；False。 </p></td></tr></table> |
 
-### <a name="a-iderrorcodesaerror-codes"></a><a id="error_codes"></a>错误代码
+### <a id="error_codes"></a>错误代码
 如果发生错误，Azure Media Indexer 应返回以下错误代码之一：
 
 | 代码 | 名称 | 可能的原因 |
@@ -264,7 +264,7 @@ ms.lasthandoff: 11/22/2016
 | 4000 |分批编制索引部分成功 |一些输入媒体文件无法编制索引。 有关详细信息，请参阅<a href="#output_files">输出文件</a>。 |
 | 其他 |内部错误 |请联系支持团队。 indexer@microsoft.com |
 
-## <a name="a-idsupportedlanguagesasupported-languages"></a><a id="supported_languages"></a>支持的语言
+## <a id="supported_languages"></a>支持的语言
 当前支持英语和西班牙语。 有关详细信息，请参阅 [the v1.2 release blog post](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/)（v1.2 版本博客文章）。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径

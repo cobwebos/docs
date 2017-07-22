@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2016
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 5840ec74f6af2e373d9ebb34b0f6e13094c33f19
-ms.openlocfilehash: 003ca36c80274c4cad430ac67cf8cf3551d4137a
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 8fd13efdbdd98c6d7dff1b88a6b232a08aa5a13d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务 (ASP.NET)
@@ -27,11 +28,11 @@ ms.openlocfilehash: 003ca36c80274c4cad430ac67cf8cf3551d4137a
 
 Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中的服务。 Blob 存储可以存储任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。 Blob 存储也称为对象存储。
 
-本教程介绍如何针对 Azure Blob 存储的一些常见使用方案编写 ASP.NET 代码。 方案包括创建 Blob 容器，以及上载、列出、下载和删除 Blob。
+本教程介绍如何针对 Azure Blob 存储的一些常见使用方案编写 ASP.NET 代码。 方案包括创建 Blob 容器，以及上传、列出、下载和删除 Blob。
 
 ##<a name="prerequisites"></a>先决条件
 
-* [Microsoft Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)
+* [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure 存储帐户](storage-create-storage-account.md#create-a-storage-account)
 
 [!INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
@@ -145,9 +146,9 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 以下步�
 
     如前所述，**CloudBlobContainer.CreateIfNotExists** 方法返回 **true** 的前提是容器原本不存在，是新建的。 因此，如果在容器存在的情况下运行该应用，此方法会返回 **false**。 若要多次运行应用，必须在再次运行应用之前删除容器。 可通过 **CloudBlobContainer.Delete** 方法删除容器。 还可以使用 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)或 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)删除容器。  
 
-## <a name="upload-a-blob-into-a-blob-container"></a>将 Blob 上载到 Blob 容器中
+## <a name="upload-a-blob-into-a-blob-container"></a>将 Blob 上传到 Blob 容器中
 
-[创建 Blob 容器](#create-a-blob-container)以后，即可将文件上传到该容器中。 本部分介绍如何将本地文件上载到 Blob 容器。 相关步骤假定用户已创建名为 test-blob-container 的 Blob 容器。 
+[创建 Blob 容器](#create-a-blob-container)以后，即可将文件上传到该容器中。 本部分介绍如何将本地文件上传到 Blob 容器。 相关步骤假定用户已创建名为 test-blob-container 的 Blob 容器。 
 
 > [!NOTE]
 > 
@@ -185,7 +186,7 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 以下步�
     CloudBlobContainer container = blobClient.GetContainerReference("test-blob-container");
     ```
 
-1. 如前所述，Azure 存储支持不同的 Blob 类型。 若要检索页 Blob 引用，请调用 **CloudBlobContainer.GetPageBlobReference** 方法。 若要检索块 Blob 引用，请调用 **CloudBlobContainer.GetBlockBlobReference** 方法。 通常情况下，推荐使用块 Blob 类型。 （将 <blob-name>* 更改为在上载 Blob 后需要提供给 Blob 的名称。）
+1. 如前所述，Azure 存储支持不同的 Blob 类型。 若要检索页 Blob 引用，请调用 **CloudBlobContainer.GetPageBlobReference** 方法。 若要检索块 Blob 引用，请调用 **CloudBlobContainer.GetBlockBlobReference** 方法。 通常情况下，推荐使用块 Blob 类型。 （将 <blob-name>* 更改为在上传 Blob 后需要提供给 Blob 的名称。）
 
     ```csharp
     CloudBlockBlob blob = container.GetBlockBlobReference(<blob-name>);
@@ -469,8 +470,4 @@ Blob 容器是由 Blob 和文件夹组成的嵌套式层次结构。 以下步�
 
   * [开始使用 Azure 表存储和 Visual Studio 连接服务 (ASP.NET)](./vs-storage-aspnet-getting-started-tables.md)
   * [开始使用 Azure 队列存储和 Visual Studio 连接服务 (ASP.NET)](./vs-storage-aspnet-getting-started-queues.md)
-
-
-<!--HONumber=Jan17_HO1-->
-
 

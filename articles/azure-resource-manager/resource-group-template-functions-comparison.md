@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/13/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 7af374232fd45da8769001cd520fa7d1734cbc4e
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: d993bd5cae5fa2f0a6eda999c95b10bd1c268be2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>用于 Azure Resource Manager 模板的比较函数
@@ -204,7 +203,7 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 
 上面具有默认值的示例的输出为：
 
-| Name | 类型 | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
 | checkStrings | Bool | False |
@@ -402,7 +401,7 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 
 上面具有默认值的示例的输出为：
 
-| Name | 类型 | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | checkInts | Bool | False |
 | checkStrings | Bool | True |

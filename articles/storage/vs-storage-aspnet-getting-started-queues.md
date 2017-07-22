@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/23/2016
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 5840ec74f6af2e373d9ebb34b0f6e13094c33f19
-ms.openlocfilehash: 4e5638938c8e9fa0de12aa273d03f3eead35a383
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 76b0d5e270e16a317ce8a7b424c06c867b537a8e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>开始使用 Azure 队列存储和 Visual Studio 连接服务 (ASP.NET)
@@ -31,7 +32,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
 
 ##<a name="prerequisites"></a>先决条件
 
-* [Microsoft Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)
+* [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure 存储帐户](storage-create-storage-account.md#create-a-storage-account)
 
 [!INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
@@ -579,8 +580,4 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
 
   * [Azure Blob 存储和 Visual Studio 连接服务入门 (ASP.NET)](./vs-storage-aspnet-getting-started-blobs.md)
   * [开始使用 Azure 表存储和 Visual Studio 连接服务 (ASP.NET)](./vs-storage-aspnet-getting-started-tables.md)
-
-
-<!--HONumber=Jan17_HO1-->
-
 
