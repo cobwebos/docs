@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 07/20/2017
 ms.author: helaw
 ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
-ms.openlocfilehash: 47c0870c984fd90adc65a407eb39ec7f37612510
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: d0f68c191c271c58bfa1578802322b69130b3cef
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -48,7 +48,9 @@ Starting with the [20170627.1](azure-stack-updates.md#determine-the-current-vers
 * Tenants are able to browse the full marketplace without a subscription, and will see administrative items like plans and offers.  These items are non-functional to tenants.
 * When selecting an infrastructure role instance,  you see an error showing a reference error. Use the browser’s refresh functionality to refresh the Admin Portal.
 * The "move" button is disabled on the Resource Group blade.  This is expected behavior, because moving resource groups between subscriptions is not currently supported.
-* You will receive repeated notifications for syndicated marketplace items that have completed downloading
+* You will receive repeated notifications for syndicated marketplace items that have completed downloading.
+* You are not able to view permissions to your subscription using the Azure Stack portals.  As a work around, you can verify permissions using Powershell.
+* You must add `-TenantID` as a flag when exporting a completed deployment as an automation script from the portal.
 
 #### <a name="services"></a>Services
 * Key Vault services must be created from the tenant portal or tenant API.  If you are logged in as an administrator, make sure to use the tenant portal to create new Key Vault vaults, secrets, and keys.
