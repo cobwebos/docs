@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 7/17/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: deb29f938ebde684a08af44c578c6993deebb7ff
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ce2978d345262b68b177a38a978133a71da2806f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="deploy-the-azure-stack-development-kit"></a>Deploy the Azure Stack Development Kit
@@ -72,7 +72,7 @@ To deploy the development kit, you must complete the following steps:
     # Download file
     Invoke-WebRequest $uri -OutFile ($LocalPath + '\' + 'asdk-installer.ps1')
     ```
-6. Open an elevated PowerShell console > navigate to the asdk-installer.ps1 script > run it > click **Prepare vhdx**.
+6. Open an elevated PowerShell console > run the C:\AzureStack_Installer\asdk-installer.ps1 script > click **Prepare vhdx**.
 7. On the **Select Cloudbuilder vhdx** page of the installer, browse to and select the cloudbuilder.vhdx file that you downloaded in the previous steps.
 8. Optional: Check the **Add drivers** box to specify a folder containing additional drivers that you want on the host.
 9. On the **Optional settings** page, provide the local administrator account for the development kit host. If you don't provide these credentials, you'll need KVM access to the host during the install process below.
@@ -94,7 +94,7 @@ To deploy the development kit, you must complete the following steps:
     > [!IMPORTANT]
     > For Azure Active Directory deployments, Azure Stack requires access to the Internet, either directly or through a transparent proxy. The deployment supports exactly one NIC for networking. If you have multiple NICs, make sure that only one is enabled (and all others are disabled) before running the deployment script in the next section.
     
-2. Open an elevated PowerShell console > navigate to the asdk-installer.ps1 script > run it > click **Install**.
+2. Open an elevated PowerShell console > run the \AzureStack_Installer\asdk-installer.ps1 script (which may be on a different drive in the Cloudbuilder.vhdx) > click **Install**.
 3. In the **Type** box, select **Azure Cloud** or **ADFS**.
     - **Azure Cloud**: Azure Active Directory is the identity provider. Use this parameter to specify a specific directory where the AAD account has global admin permissions. Full name of an AAD Directory tenant in the format of .onmicrosoft.com. 
     - **ADFS**: The default stamp Directory Service is the identity provider, the default account to sign in with is azurestackadmin@azurestack.local, and the password to use is the one you provided as part of the setup.
