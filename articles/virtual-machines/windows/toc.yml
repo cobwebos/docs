@@ -366,6 +366,8 @@
               href: migration-classic-resource-manager-faq.md
     - name: 故障排除
       items:
+        - name: 将 Azure VM 添加到现有可用性集的可支持性
+          href: ../virtual-machines-availability-set-supportability.md
         - name: 了解系统重启
           href: understand-vm-reboot.md
         - name: 远程桌面连接
