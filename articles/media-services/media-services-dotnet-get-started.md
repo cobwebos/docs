@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 01/10/2017
+ms.date: 07/16/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 124eff2edccb6b4ad56ee39a2b37e892ef8c6cb4
-ms.lasthandoff: 04/18/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
+ms.openlocfilehash: a8e69933b977f60d09837f0f0360a274ef1b5dcd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/18/2017
 
 ---
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 04/18/2017
 1. 启动流式处理终结点（使用 Azure 门户）
 2. 创建和配置 Visual Studio 项目。
 3. 连接到媒体服务帐户。
-2. 上载视频文件。
+2. 上传视频文件。
 3. 将源文件编码为一组自适应比特率 MP4 文件。
 4. 发布资产并获取流式处理和渐进式下载 URL。  
 5. 播放内容。
@@ -49,7 +49,7 @@ ms.lasthandoff: 04/18/2017
 ## <a name="overview"></a>概述
 本教程将引导你完成使用用于 .NET 的 Azure 媒体服务 (AMS) SDK 实施视频点播 (VoD) 内容传送应用程序的步骤。
 
-本教程介绍了基本的媒体服务工作流，以及进行媒体服务开发需要用到的最常见编程对象和任务。 完成本教程后，你就能够流式传输或渐进下载你已上载、编码和下载的示例媒体文件。
+本教程介绍了基本的媒体服务工作流，以及进行媒体服务开发需要用到的最常见编程对象和任务。 完成本教程后，你就能够流式传输或渐进下载你已上传、编码和下载的示例媒体文件。
 
 ### <a name="ams-model"></a>AMS 模型
 
@@ -81,37 +81,8 @@ ms.lasthandoff: 04/18/2017
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-1. 在 Visual Studio 中创建新的 C# 控制台应用程序。 输入“名称”、“位置”和“解决方案名称”，然后单击“确定”。
-2. 使用 [windowsazure.mediaservices.extensions](https://www.nuget.org/packages/windowsazure.mediaservices.extensions) NuGet 包安装 **Azure 媒体服务 .NET SDK 扩展**。  媒体服务.NET SDK 扩展是一组扩展方法和帮助器函数，可简化你的代码，并令使用媒体服务进行开发变得更加容易。 安装此包也会安装 **媒体服务 .NET SDK** 并添加所有其他必需的依赖项。
-
-    若要使用 NuGet 添加引用，请执行以下操作：在解决方案资源管理器中，在项目名称上单击鼠标右键按钮，选择“管理 NuGet 包”。 然后，搜索 **windowsazure.mediaservices.extensions**，并单击“安装”。
-
-3. 添加对 System.Configuration 程序集的引用。 此程序集包含用于访问配置文件（例如，App.config）的 **System.Configuration.ConfigurationManager** 类。
-
-    若要添加引用，请执行以下操作：在解决方案资源管理器中，在项目名称上单击鼠标右键按钮，选择“添加” > “引用...”，然后在搜索框中键入配置。
-
-4. 打开 App.config 文件（如果该文件未按默认添加到项目中，请添加）并在该文件中添加 *appSettings* 节。 如以下示例中所示设置 Azure 媒体服务帐户名和帐户密钥的值。 若要获取帐户名称和密钥信息，请转到 [Azure 门户](https://portal.azure.com/)并选择 AMS 帐户。 然后，选择“设置” > “密钥”。 “管理密钥”窗口显示帐户名称、主密钥和辅助密钥。 复制帐户名称和主密钥的值。
-
-        <configuration>
-        ...
-          <appSettings>
-            <add key="MediaServicesAccountName" value="Media-Services-Account-Name" />
-            <add key="MediaServicesAccountKey" value="Media-Services-Account-Key" />
-          </appSettings>
-
-        </configuration>
-5. 使用以下代码覆盖位于 Program.cs 文件开头的现有 **using** 语句。
-
-        using System;
-        using System.Collections.Generic;
-        using System.Linq;
-        using System.Text;
-        using System.Threading.Tasks;
-        using System.Configuration;
-        using System.Threading;
-        using System.IO;
-        using Microsoft.WindowsAzure.MediaServices.Client;
-6. 创建新的文件夹（文件夹可以位于本地驱动器上的任何位置），然后复制需要编码和流处理或渐进式下载的 .mp4 文件。 在此示例中，我们使用了“C:\VideoFiles”路径。
+1. 设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+2. 创建新的文件夹（文件夹可以位于本地驱动器上的任何位置），然后复制需要编码和流处理或渐进式下载的 .mp4 文件。 在此示例中，我们使用了“C:\VideoFiles”路径。
 
 ## <a name="connect-to-the-media-services-account"></a>连接到媒体服务帐户
 
@@ -129,66 +100,62 @@ ms.lasthandoff: 04/18/2017
     class Program
     {
         // Read values from the App.config file.
-        private static readonly string _mediaServicesAccountName =
-            ConfigurationManager.AppSettings["MediaServicesAccountName"];
-        private static readonly string _mediaServicesAccountKey =
-            ConfigurationManager.AppSettings["MediaServicesAccountKey"];
+        private static readonly string _AADTenantDomain =
+        ConfigurationManager.AppSettings["AADTenantDomain"];
+        private static readonly string _RESTAPIEndpoint =
+        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
 
-        // Field for service context.
         private static CloudMediaContext _context = null;
-        private static MediaServicesCredentials _cachedCredentials = null;
 
         static void Main(string[] args)
         {
-            try
-            {
-                // Create and cache the Media Services credentials in a static class variable.
-                _cachedCredentials = new MediaServicesCredentials(
-                                _mediaServicesAccountName,
-                                _mediaServicesAccountKey);
-                // Used the chached credentials to create CloudMediaContext.
-                _context = new CloudMediaContext(_cachedCredentials);
+        try
+        {
+            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
-                // Add calls to methods defined in this section.
-        // Make sure to update the file name and path to where you have your media file.
-                IAsset inputAsset =
-                    UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.None);
+            _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
-                IAsset encodedAsset =
-                    EncodeToAdaptiveBitrateMP4s(inputAsset, AssetCreationOptions.None);
+            // Add calls to methods defined in this section.
+            // Make sure to update the file name and path to where you have your media file.
+            IAsset inputAsset =
+            UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.None);
 
-                PublishAssetGetURLs(encodedAsset);
-            }
-            catch (Exception exception)
-            {
-                // Parse the XML error message in the Media Services response and create a new
-                // exception with its content.
-                exception = MediaServicesExceptionParser.Parse(exception);
+            IAsset encodedAsset =
+            EncodeToAdaptiveBitrateMP4s(inputAsset, AssetCreationOptions.None);
 
-                Console.Error.WriteLine(exception.Message);
-            }
-            finally
-            {
-                Console.ReadLine();
-            }
+            PublishAssetGetURLs(encodedAsset);
+        }
+        catch (Exception exception)
+        {
+            // Parse the XML error message in the Media Services response and create a new
+            // exception with its content.
+            exception = MediaServicesExceptionParser.Parse(exception);
+
+            Console.Error.WriteLine(exception.Message);
+        }
+        finally
+        {
+            Console.ReadLine();
+        }
         }
     }
 
-## <a name="create-a-new-asset-and-upload-a-video-file"></a>创建新资产并上载视频文件
+## <a name="create-a-new-asset-and-upload-a-video-file"></a>创建新资产并上传视频文件
 
-在媒体服务中，可以将数字文件上载（引入）到资产中。 **资产**实体可以包含视频、音频、图片、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据。）上载文件完成后，相关内容即安全地存储在云中供后续处理和流式处理。 资产中的文件称为 **资产文件**。
+在媒体服务中，可以将数字文件上传（引入）到资产中。 **资产**实体可以包含视频、音频、图片、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据。）上传文件完成后，相关内容即安全地存储在云中供后续处理和流式处理。 资产中的文件称为 **资产文件**。
 
-下面定义的 **UploadFile** 方法调用 **CreateFromFile**（在 .NET SDK Extensions 中定义）。 **CreateFromFile** 创建指定的源文件所要上载到的新资产。
+下面定义的 **UploadFile** 方法调用 **CreateFromFile**（在 .NET SDK Extensions 中定义）。 **CreateFromFile** 创建指定的源文件所要上传到的新资产。
 
 **CreateFromFile** 方法采用 **AssetCreationOptions**，可用于指定以下任一资产创建选项：
 
 * **无** - 不使用加密。 这是默认值。 请注意，使用此选项时，你的内容在传送过程中或静态存储过程中都不会受到保护。
   如果计划使用渐进式下载交付 MP4，则使用此选项。
-* **StorageEncrypted** - 使用此选项可以通过高级加密标准 (AES) 256 位加密在本地加密明文内容，然后将其上载到 Azure 存储空间中以加密形式静态存储相关内容。 受存储加密保护的资产将在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上载为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
-* **CommonEncryptionProtected** - 上载经过通用加密或 PlayReady DRM 加密并受其保护的内容（例如，受 PlayReady DRM 保护的平滑流）时使用此选项。
-* **EnvelopeEncryptionProtected** - 如果要上载使用 AES 加密的 HLS，请使用此选项。 请注意，Transform Manager 必须已对文件进行编码和加密。
+* **StorageEncrypted** - 使用此选项可以通过高级加密标准 (AES) 256 位加密在本地加密明文内容，然后将其上传到 Azure 存储中以加密形式静态存储相关内容。 受存储加密保护的资产将在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上传为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
+* **CommonEncryptionProtected** - 上传经过通用加密或 PlayReady DRM 加密并受其保护的内容（例如，受 PlayReady DRM 保护的平滑流）时使用此选项。
+* **EnvelopeEncryptionProtected** - 如果要上传使用 AES 加密的 HLS，请使用此选项。 请注意，Transform Manager 必须已对文件进行编码和加密。
 
-**CreateFromFile** 方法还允许你指定回调，以报告文件的上载进度。
+**CreateFromFile** 方法还允许你指定回调，以报告文件的上传进度。
 
 在以下示例中，指定了 **None** 作为资产选项。
 
@@ -217,7 +184,7 @@ ms.lasthandoff: 04/18/2017
 
 若要利用动态打包，需将夹层（源）文件编码或转换成一组自适应比特率 MP4 文件或自适应比特率平滑流文件。  
 
-以下代码演示如何提交编码作业。 该作业所包含的一项任务会指定要使用 **媒体编码器标准**将夹层文件转码成一组自适应比特率 MP4。 代码会提交作业，并等待作业完成。
+以下代码演示如何提交编码作业。 该作业所包含的一项任务会指定要使用 **Media Encoder Standard**将夹层文件转码成一组自适应比特率 MP4。 代码会提交作业，并等待作业完成。
 
 作业完成后，你即可流式处理资产，或渐进式下载转码后所创建的 MP4 文件。
 
