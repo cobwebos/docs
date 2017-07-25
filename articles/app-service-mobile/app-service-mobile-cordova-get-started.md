@@ -3,8 +3,8 @@ title: "在 Azure 应用服务移动应用中创建 Cordova 应用 | Microsoft D
 description: "遵循本教程开始使用 Azure 移动应用后端进行 Apache Cordova 开发"
 services: app-service\mobile
 documentationcenter: javascript
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 tags: 
 keywords: "cordova,javascript,移动,客户端"
@@ -14,13 +14,13 @@ ms.workload: na
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: hero-article
-ms.date: 10/30/2016
-ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: bf5691dbf4aaae585373de454ad7a0672dd17b84
-ms.openlocfilehash: aab35cdbbc6dc73551ca436985b51e5fe7a50fb6
-ms.lasthandoff: 12/01/2016
-
+ms.date: 07/07/2017
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 251e36364d0440890dc30dc5267be9f775d95933
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="create-an-apache-cordova-app"></a>创建 Apache Cordova 应用
@@ -34,7 +34,7 @@ ms.lasthandoff: 12/01/2016
 ## <a name="prerequisites"></a>先决条件
 若要完成本教程，需要具备以下先决条件：
 
-* 装有 [Visual Studio Community 2015] 或更高版本的电脑。
+* 装有 [Visual Studio Community 2017] 或更高版本的电脑。
 * [用于 Apache Cordova 的 Visual Studio 工具]
 * [有效的 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 12/01/2016
 
 <!-- URLs -->
 [Azure portal]: https://portal.azure.com/
-[Visual Studio Community 2015]: http://www.visualstudio.com/
+[Visual Studio Community 2017]: http://www.visualstudio.com/
 [用于 Apache Cordova 的 Visual Studio 工具]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
 [脱机数据]: app-service-mobile-offline-data-sync.md
 [身份验证]: app-service-mobile-auth.md

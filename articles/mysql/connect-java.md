@@ -11,20 +11,18 @@ ms.custom: mvc
 ms.topic: hero-article
 ms.devlang: java
 ms.date: 06/20/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 7b9048731fed94a71dc8fb7125961265232fb65c
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 0190fb5a88f766369e6462965e47686c5f289551
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/13/2017
 
 ---
 
-# Azure Database for MySQL：使用 Java 进行连接并查询数据
-<a id="azure-database-for-mysql-use-java-to-connect-and-query-data" class="xliff"></a>
+# <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Java 进行连接并查询数据
 本快速入门演示了如何使用 Java 应用程序连接到 Azure Database for MySQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文中的步骤假定你熟悉如何使用 Java 进行开发，但不熟悉如何使用 Azure Database for MySQL。
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 此快速入门使用以下任意指南中创建的资源作为起点：
 - [使用 Azure 门户创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [使用 Azure CLI 创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-cli.md)
@@ -34,19 +32,17 @@ ms.lasthandoff: 06/28/2017
 - 将 JDBC jar 文件（例如 mysql-connector-java-5.1.42-bin.jar）包括到应用程序类路径中。
 - 确保在配置 Azure Database for MySQL 连接安全性时，已打开防火墙并对 SSL 设置进行了调整，以便应用程序能够成功进行连接。
 
-## 获取连接信息
-<a id="get-connection-information" class="xliff"></a>
+## <a name="get-connection-information"></a>获取连接信息
 获取连接到 Azure Database for MySQL 所需的连接信息。 需要完全限定的服务器名称和登录凭据。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在 Azure 门户中的左侧菜单中，单击“所有资源”，然后搜索已创建的服务器，例如 **myserver4demo**。
+2. 在左窗格中单击“所有资源”，然后搜索已创建的服务器（例如 **myserver4demo**）。
 3. 单击服务器名称。
 4. 选择服务器的“属性”页。 记下“服务器名称”和“服务器管理员登录名”。
  ![Azure Database for MySQL 服务器名称](./media/connect-java/1_server-properties-name-login.png)
 5. 如果忘了服务器的登录信息，请导航到“概览”页，以查看服务器管理员登录名并重置密码（如果需要）。
 
-## 进行连接，创建表，然后插入数据
-<a id="connect-create-table-and-insert-data" class="xliff"></a>
+## <a name="connect-create-table-and-insert-data"></a>进行连接，创建表，然后插入数据
 通过以下代码进行连接，然后使用函数和 **INSERT** SQL 语句加载数据。 [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) 方法用于连接到 MySQL。 [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) 和 execute() 方法用于删除和创建表。 使用 prepareStatement 对象来生成 insert 命令，通过 setString() 和 setInt() 来绑定参数值。 executeUpdate() 方法为每组参数运行该命令，以便插入值。 
 
 将 host、database、user 和 password 参数替换为创建你自己的服务器和数据库时指定的值。
@@ -148,8 +144,7 @@ public class CreateTableInsertRows {
 
 ```
 
-## 读取数据
-<a id="read-data" class="xliff"></a>
+## <a name="read-data"></a>读取数据
 使用以下代码，通过 **SELECT** SQL 语句读取数据。 [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) 方法用于连接到 MySQL。 使用 [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) 和 executeQuery() 方法来连接和运行 select 语句。 结果使用 [ResultSet](https://docs.oracle.com/javase/tutorial/jdbc/basics/retrieving.html) 对象处理。 
 
 将 host、database、user 和 password 参数替换为创建你自己的服务器和数据库时指定的值。
@@ -236,8 +231,7 @@ public class ReadTable {
 }
 ```
 
-## 更新数据
-<a id="update-data" class="xliff"></a>
+## <a name="update-data"></a>更新数据
 使用以下代码，通过 **UPDATE** SQL 语句更改数据。 [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) 方法用于连接到 MySQL。 使用 [prepareStatement()](http://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) 和 executeUpdate() 方法来准备和运行 update 语句。 
 
 将 host、database、user 和 password 参数替换为创建你自己的服务器和数据库时指定的值。
@@ -318,8 +312,7 @@ public class UpdateTable {
 }
 ```
 
-## 删除数据
-<a id="delete-data" class="xliff"></a>
+## <a name="delete-data"></a>删除数据
 使用以下代码，通过 **DELETE** SQL 语句删除数据。 [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) 方法用于连接到 MySQL。  使用 [prepareStatement()](http://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) 和 executeUpdate() 方法来准备和运行 update 语句。 
 
 将 host、database、user 和 password 参数替换为创建你自己的服务器和数据库时指定的值。
@@ -400,8 +393,7 @@ public class DeleteTable {
 }
 ```
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
 > [使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL](concepts-migrate-dump-restore.md)
 

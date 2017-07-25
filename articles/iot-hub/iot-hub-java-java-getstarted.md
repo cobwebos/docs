@@ -16,20 +16,19 @@ ms.date: 06/29/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 7d95ba163712c8a3610839029fe3453bd5c308a8
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 7f0fbaf5d8e0379fc67ad62ea7c9ab63c6737150
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 07/19/2017
 
 ---
-# 使用 Java 将模拟设备连接到 IoT 中心
-<a id="connect-your-simulated-device-to-your-iot-hub-using-java" class="xliff"></a>
+# <a name="connect-your-device-to-your-iot-hub-using-java"></a>使用 Java 将设备连接到 IoT 中心
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
 在本教程结束时，将获得三个 Java 控制台应用：
 
-* **create-device-identity**，用于创建设备标识和关联的安全密钥以连接模拟设备应用。
-* **read-d2c-messages**，显示模拟设备应用发送的遥测数据。
+* **create-device-identity**，用于创建设备标识和关联的安全密钥以连接设备应用。
+* **read-d2c-messages**，显示设备应用发送的遥测数据。
 * **simulated-device**，它使用前面创建的设备标识连接到 IoT 中心，并使用 MQTT 协议每秒发送遥测消息一次。
 
 > [!NOTE]
@@ -49,8 +48,7 @@ ms.lasthandoff: 07/13/2017
 
 现在已创建 IoT 中心。 获取 IoT 中心主机名、IoT 中心连接字符串、IoT 中心主密钥、与事件中心兼容的名称以及与事件中心兼容的终结点后，接下来需要完成本教程。
 
-## 创建设备标识
-<a id="create-a-device-identity" class="xliff"></a>
+## <a name="create-a-device-identity"></a>创建设备标识
 本部分将创建一个 Java 控制台应用程序，用于在 IoT 中心的标识注册表中创建设备标识。 设备无法连接到 IoT 中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]中的**标识注册表**部分。 当你运行此控制台应用时，它将生成唯一的设备 ID 和密钥，当设备向 IoT 中心发送设备到云的消息时，可以用于标识设备本身。
 
 1. 创建名为 iot-java-get-started 的空文件夹。 在命令提示符下使用以下命令，在 iot-java-get-started 文件夹中创建名为 **create-device-identity** 的 Maven 项目。 请注意，这是一条很长的命令：
@@ -95,6 +93,7 @@ ms.lasthandoff: 07/13/2017
     private static final String connectionString = "{yourhubconnectionstring}";
     private static final String deviceId = "myFirstJavaDevice";
     ```
+[!INCLUDE [iot-hub-pii-note-naming-device](../../includes/iot-hub-pii-note-naming-device.md)]
 
 8. 修改 **main** 方法的签名，包含如下所示的异常：
 
@@ -165,8 +164,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
 > [!NOTE]
 > IoT 中心标识注册表只存储设备标识，以启用对 IoT 中心的安全访问。 它存储设备 ID 和密钥作为安全凭据，以及启用或禁用标志（可用于禁用对单个设备的访问）。 如果应用需要存储其他特定于设备的元数据，则应使用特定于应用的存储。 有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]。
 
-## 接收设备到云的消息
-<a id="receive-device-to-cloud-messages" class="xliff"></a>
+## <a name="receive-device-to-cloud-messages"></a>接收设备到云的消息
 
 在本部分中，你将创建一个 Java 控制台应用程序，用于读取来自 IoT 中心的设备到云消息。 IoT 中心公开与[事件中心][lnk-event-hubs-overview]兼容的终结点，以便用户可读取设备到云的消息。 为了简单起见，本教程创建的基本读取器不适用于高吞吐量部署。 [Process device-to-cloud messages][lnk-process-d2c-tutorial]（处理设备到云的消息）教程介绍了如何大规模处理设备到云的消息。 [事件中心入门][lnk-eventhubs-tutorial]教程更详细介绍了如何处理来自事件中心的消息，此教程也适用于与 IoT 中心事件中心兼容的终结点。
 
@@ -305,10 +303,12 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     mvn clean package -DskipTests
     ```
 
-## 创建模拟设备应用程序
-<a id="create-a-simulated-device-app" class="xliff"></a>
+<<<<<<< HEAD
+## <a name="create-a-device-app"></a>创建设备应用
+=======
+## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
 
-在本部分中，你将创建一个 Java 控制台应用程序，用于模拟向 IoT 中心发送设备到云消息的设备。
+>>>>>>> master 在本部分中，你将创建一个 Java 控制台应用程序，用于模拟向 IoT 中心发送设备到云消息的设备。
 
 1. 在命令提示符下使用以下命令，在*创建设备标识*部分中创建的 iot-java-get-started 文件夹中创建名为 **simulated-device** 的 Maven 项目。 请注意，这是一条很长的命令：
 
@@ -378,11 +378,19 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
       }
     }
     ```
+<<<<<<< HEAD
+9. 在 **App** 类中添加以下嵌套的 **EventCallback** 类，以显示 IoT 中心在处理来自设备应用的消息时返回的确认状态。 处理消息时，此方法还会通知应用中的主线程：
+   
+    ```
+    private static class EventCallback implements IotHubEventCallback
+    {
+=======
 
-9. 在 **App** 类中添加以下嵌套的 **EventCallback** 类，以显示 IoT 中心在处理来自模拟设备应用的消息时返回的确认状态。 处理消息时，此方法还会通知应用中的主线程：
+9. Add the following nested **EventCallback** class inside the **App** class to display the acknowledgement status that the IoT hub returns when it processes a message from the simulated device app. This method also notifies the main thread in the app when the message has been processed:
 
     ```java
     private static class EventCallback implements IotHubEventCallback {
+>>>>>>> master
       public void execute(IotHubStatusCode status, Object context) {
         System.out.println("IoT Hub responded to message with status: " + status.name());
    
@@ -467,8 +475,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
 > [!NOTE]
 > 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按 MSDN 文章 [Transient Fault Handling][lnk-transient-faults]（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。
 
-## 运行应用
-<a id="run-the-apps" class="xliff"></a>
+## <a name="run-the-apps"></a>运行应用
 
 现在可以运行应用了。
 
@@ -492,10 +499,12 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
 
     ![显示发送到 IoT 中心的消息数的 Azure 门户“使用情况”磁贴][43]
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
+<<<<<<< HEAD 在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，然后在 IoT 中心的标识注册表中创建了设备标识。 已使用此设备标识来让设备应用向 IoT 中心发送设备到云的消息。 还创建了用于显示 IoT 中心所接收消息的应用。 
+=======
 
 在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，然后在 IoT 中心的标识注册表中创建了设备标识。 你已使用此设备标识来让模拟设备应用向 IoT 中心发送设备到云的消息。 还创建了用于显示 IoT 中心所接收消息的应用。
+>>>>>>> master
 
 若要继续了解 IoT 中心入门知识并浏览其他 IoT 方案，请参阅：
 

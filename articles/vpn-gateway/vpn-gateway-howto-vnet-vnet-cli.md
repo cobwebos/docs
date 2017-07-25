@@ -15,17 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/22/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: a05c878f876eadc5160ef9765f764595cade76a9
+ms.translationtype: HT
+ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
+ms.openlocfilehash: cad933cc453f1bfdbf29914ca3a9a6029108e70f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>使用 Azure CLI 配置 VNet 到 VNet 的 VPN 网关连接
 
-本文介绍如何在虚拟网络之间创建 VPN 网关连接。 虚拟网络可以位于相同或不同的区域，也可以来自相同或不同的订阅。 本文中的步骤适用于 Resource Manager 部署模型并使用 Azure CLI。 也可使用不同的部署工具或部署模型来创建此配置，方法是从以下列表中选择另一选项：
+本文介绍如何在虚拟网络之间创建 VPN 网关连接。 虚拟网络可以位于相同或不同的区域，也可以来自相同或不同的订阅。 从不同的订阅连接 VNet 时，订阅不需要与相同的 Active Directory 租户相关联。 本文中的步骤适用于 Resource Manager 部署模型并使用 Azure CLI。 也可使用不同的部署工具或部署模型来创建此配置，方法是从以下列表中选择另一选项：
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -257,7 +256,7 @@ ms.lasthandoff: 06/20/2017
 
 ![v2v 示意图](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
 
-例如，连接 TestVNet1 和 TestVNet5。 VNet 驻留在不同订阅中。 此配置的步骤将添加额外的 VNet 到 VNet 连接，将 TestVNet1 连接到 TestVNet5。
+例如，连接 TestVNet1 和 TestVNet5。 VNet 驻留在不同订阅中。 订阅不需要与相同的 Active Directory 租户相关联。 此配置的步骤将添加额外的 VNet 到 VNet 连接，将 TestVNet1 连接到 TestVNet5。
 
 ### <a name="TestVNet1diff"></a>步骤 5 - 创建并配置 TestVNet1
 

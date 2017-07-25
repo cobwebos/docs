@@ -12,18 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/03/2017
+ms.date: 07/19/2017
 ms.author: kaanan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 8fdf343f2d70dce4f9457277affcfd6e5dae3b78
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: af9285946fc25840c5419ee095e08bf155579ae1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
-# ExpressRoute 合作伙伴和对等位置
-<a id="expressroute-partners-and-peering-locations" class="xliff"></a>
+# <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
 > [!div class="op_single_selector"]
 > * [按提供商列出的位置](expressroute-locations.md)
@@ -39,8 +37,7 @@ ms.lasthandoff: 07/06/2017
 
 如果你至少与地缘政治区域内的一个 ExpressRoute 位置连接，你将有权访问地缘政治区域内所有区域中的 Azure 服务。
 
-### 地缘政治区域中 ExpressRoute 位置与 Azure 区域的映射。
-<a id="azure-regions-to-expressroute-locations-within-a-geopolitical-region" class="xliff"></a>
+### <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a>地缘政治区域中 ExpressRoute 位置与 Azure 区域的映射。
 下表提供了地缘政治区域内 ExpressRoute 位置与 Azure 区域的映射。
 
 | **地缘政治区域** | **Azure 区域** | **ExpressRoute 位置** |
@@ -54,8 +51,7 @@ ms.lasthandoff: 07/06/2017
 | **印度** |印度西部、印度中部、印度南部 |金奈、孟买 |
 | **韩国** |韩国中部、韩国南部 |釜山、首尔 |
 
-### 国家/地区云的区域和地缘政治边界
-<a id="regions-and-geopolitical-boundaries-for-national-clouds" class="xliff"></a>
+### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>国家/地区云的区域和地缘政治边界
 下表提供了国家/地区云的区域和地缘政治边界的信息。
 
 | **地缘政治区域** | **Azure 区域** | **ExpressRoute 位置** |
@@ -71,8 +67,7 @@ ms.lasthandoff: 07/06/2017
 下表显示按服务提供商列出的位置。 若要按位置查看可用的提供商，请参阅[按位置列出的服务提供商](expressroute-locations-providers.md#locations)。
 
 
-### 生产 Azure
-<a id="production-azure" class="xliff"></a>
+### <a name="production-azure"></a>生产 Azure
 | **服务提供商** | **Microsoft Azure** | **Office 365 和 Dynamics 365** | **位置** |
 | --- | --- | --- | --- |
 | **[AARNet](https://www.aarnet.edu.au/network-and-services/cloud-services-applications/azure-expressroute/)** |支持 |支持 |墨尔本、悉尼 |
@@ -96,7 +91,7 @@ ms.lasthandoff: 07/06/2017
 | **[InterCloud](https://www.intercloud.com/)** |支持 |支持 |阿姆斯特丹、伦敦、新加坡、华盛顿特区 |
 | **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |支持 |支持 |大坂、东京 |
 | **Internet 解决方案 - 云连接** |支持 |支持 |阿姆斯特丹、伦敦 |
-| **[Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |支持 |支持 |阿姆斯特丹、伦敦、巴黎 |
+| **[Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |支持 |支持 |阿姆斯特丹、都柏林、伦敦、巴黎 |
 | **Jisc** |支持 |支持 |伦敦 |
 | **KINX** |支持 |支持 |首尔 |
 | **[KPN](http://www.kpn.com/cloudconnect)** | 支持 | 支持 | 阿姆斯特丹 | 
@@ -128,11 +123,9 @@ ms.lasthandoff: 07/06/2017
 
  **+** 表示即将推出
 
-### 国家/地区云环境
-<a id="national-cloud-environment" class="xliff"></a>
+### <a name="national-cloud-environment"></a>国家/地区云环境
 
-### 美国政府云
-<a id="us-government-cloud" class="xliff"></a>
+### <a name="us-government-cloud"></a>美国政府云
 | **服务提供商** | **Microsoft Azure** | **Office 365** | **位置** |
 | --- | --- | --- | --- |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |支持 |支持 |芝加哥、华盛顿特区 |
@@ -141,16 +134,14 @@ ms.lasthandoff: 07/06/2017
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持 | 支持 | 芝加哥、达拉斯 |
 | **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** |支持 |支持 |芝加哥、达拉斯、纽约、华盛顿特区 |
 
-### 中国
-<a id="china" class="xliff"></a>
+### <a name="china"></a>中国
 | **服务提供商** | **Microsoft Azure** | **Office 365** | **位置** |
 | --- | --- | --- | --- |
 | **中国电信** |支持 |不支持 |北京、上海 |
 
 若要了解详细信息，请参阅 [位于中国的 ExpressRoute](http://www.windowsazure.cn/home/features/expressroute/)。
 
-### 德国
-<a id="germany" class="xliff"></a>
+### <a name="germany"></a>德国
 | **服务提供商** | **Microsoft Azure** | **Office 365** | **位置** |
 | --- | --- | --- | --- |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |支持 |不支持 |柏林+、法兰克福 |
@@ -159,8 +150,7 @@ ms.lasthandoff: 07/06/2017
 | **Interxion** |支持 |不支持 |法兰克福 |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持  | 不支持 | 柏林 |
 
-## 通过 Exchange 提供商建立的连接
-<a id="connectivity-through-exchange-providers" class="xliff"></a>
+## <a name="connectivity-through-exchange-providers"></a>通过 Exchange 提供商建立的连接
 
 如果前面部分中未列出你的连接服务提供商，你仍可以建立连接。
 
@@ -178,8 +168,7 @@ ms.lasthandoff: 07/06/2017
 * 从 Exchange 连接服务提供商处订购一条 ExpressRoute 线路以连接到 Microsoft。
   * 根据 [创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md) 中的步骤来设置连接。
 
-## 通过其他服务提供商建立的连接
-<a id="connectivity-through-additional-service-providers" class="xliff"></a>
+## <a name="connectivity-through-additional-service-providers"></a>通过其他服务提供商建立的连接
 
 | **连接服务提供商** | **Exchange** | **位置** |
 | --- | --- | --- |
@@ -219,8 +208,7 @@ ms.lasthandoff: 07/06/2017
 | **[Zertia](http://www.zertia.es/index.php/novedades)**| Level 3 | 马德里 |
 | **[Zirro](https://zirro.com/services/)**| Equinix | 蒙特利尔、多伦多 |
 
-## 通过数据中心提供商建立的连接
-<a id="connectivity-through-datacenter-providers" class="xliff"></a>
+## <a name="connectivity-through-datacenter-providers"></a>通过数据中心提供商建立的连接
 | **提供程序** | **Exchange** |
 | --- | --- |
 | **[Cyrus One](https://cyrusone.com/enterprise-data-center-services/connectivity-and-interconnection/cloud-connectivity-reaching-amazon-microsoft-google-and-more/microsoft-azure-expressroute/?doing_wp_cron=1498512235.6733090877532958984375)** | Megaport |
@@ -229,8 +217,7 @@ ms.lasthandoff: 07/06/2017
 | **[RagingWire Data Centers](http://www.ragingwire.com/wholesale/wholesale-data-centers-worldwide-nexcenters)** | 控制台 |
 | **[T5 Datacenters](http://t5datacenters.com/network-cloud-connect/)** | 控制台 |
 
-## 通过国家科研与教育网络 (NREN) 建立的连接
-<a id="connectivity-through-national-research-and-education-networks-nren" class="xliff"></a>
+## <a name="connectivity-through-national-research-and-education-networks-nren"></a>通过国家科研与教育网络 (NREN) 建立的连接
 
 | **提供程序**|
 | --- |
@@ -246,8 +233,7 @@ ms.lasthandoff: 07/06/2017
 
 * 如果连接提供商未在此处列出，请查看其是否连接到上面列出的任何 ExpressRoute Exchange 合作伙伴。
 
-## ExpressRoute 系统集成商
-<a id="expressroute-system-integrators" class="xliff"></a>
+## <a name="expressroute-system-integrators"></a>ExpressRoute 系统集成商
 根据网络的规模，有时，很难启用专用连接来满足需要。 你可以与下表中列出的任一系统集成商合作，以帮助将你加入 ExpressRoute。
 
 | **系统集成商** | **所在洲** |
@@ -272,8 +258,7 @@ ms.lasthandoff: 07/06/2017
 | **[Vigilant.IT](https://vigilant.it/expressroute)** | 澳大利亚 |
 
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 * 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
 * 确保符合所有先决条件。 请参阅 [ExpressRoute 先决条件](expressroute-prerequisites.md)。
 

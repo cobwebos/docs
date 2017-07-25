@@ -12,12 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: hero-article
-ms.date: 10/05/2016
+ms.date: 07/17/2017
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1dc9885e4cdbad1153ac476e3f0c0068ec391374
-
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 1b87a2ebb35b31ee3d3139ecead6267e62eb1033
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-ios-apps-in-objective-c"></a>适用于 Objective C 中 iOS 应用的 Azure Mobile Engagement 入门
@@ -35,13 +36,13 @@ ms.openlocfilehash: 1dc9885e4cdbad1153ac476e3f0c0068ec391374
 
 > [!NOTE]
 > 若要完成本教程，你必须有一个有效的 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-ios-get-started)。
-> 
-> 
+>
+>
 
-## <a name="a-idsetupazmeasetup-mobile-engagement-for-your-ios-app"></a><a id="setup-azme"></a>为 iOS 应用设置 Mobile Engagement
+## <a id="setup-azme"></a>为 iOS 应用设置 Mobile Engagement
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>将应用连接到 Mobile Engagement 后端
+## <a id="connecting-app"></a>将应用连接到 Mobile Engagement 后端
 本教程提供的“基本集成”是收集数据和发送推送通知的最低要求。 在“ [Mobile Engagement iOS SDK 集成](mobile-engagement-ios-sdk-overview.md)
 
 我们将通过 XCode 创建基本应用，以演示该集成。
@@ -53,44 +54,44 @@ ms.openlocfilehash: 1dc9885e4cdbad1153ac476e3f0c0068ec391374
 1. 下载 [Mobile Engagement iOS SDK]。
 2. 将 .tar.gz 文件解压缩到计算机中的一个文件夹中。
 3. 右键单击该项目，然后选择“ **将文件添加到**”。
-   
+
     ![][1]
-4. 导航到在其中解压缩 SDK 的文件夹，选择 `EngagementSDK` 文件夹，然后按“ **确定**”。
-   
+4. 导航到 SDK 解压缩到的文件夹，选择 `EngagementSDK` 文件夹，单击左下角的“选项”，确保已选中“需要时复制项”和目标对应的复选框，然后按“确定”。
+
     ![][2]
 5. 打开“构建阶段”选项卡，然后在“将二进制文件链接到库”菜单中添加框架，如下所示：
-   
+
     ![][3]
 6. 返回到 Azure 门户，在应用的“ **连接信息** ”页中复制连接字符串。
-   
+
     ![][4]
 7. 在 **AppDelegate.m** 文件中，添加以下代码行。
-   
+
         #import "EngagementAgent.h"
 8. 现在将连接字符串粘贴在 `didFinishLaunchingWithOptions` 代理中。
-   
+
         - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         {
               [...]   
               [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];
               [...]
         }
-9. `setTestLogEnabled` 是一个可选语句，可启用使你能够确定问题的 SDK 日志。 
+9. `setTestLogEnabled` 是一个可选语句，可启用使你能够确定问题的 SDK 日志。
 
-## <a name="a-idmonitoraenable-realtime-monitoring"></a><a id="monitor"></a>启用实时监视
+## <a id="monitor"></a>启用实时监视
 为了开始发送数据并确保用户处于活动状态，必须将至少一个屏幕（活动）发送到 Mobile Engagement 后端。
 
 1. 打开 **ViewController.h** 文件并导入 **EngagementViewController.h**：
-   
-    `# import "EngagementViewController.h"`
+
+    `#import "EngagementViewController.h"`
 2. 现在通过 `EngagementViewController` 替换 **ViewController** 接口的超类：
-   
+
     `@interface ViewController : EngagementViewController`
 
-## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>将应用与实时监视相连接
+## <a id="monitor"></a>将应用与实时监视相连接
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="a-idintegratepushaenable-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>启用推送通知和应用内消息传送
+## <a id="integrate-push"></a>启用推送通知和应用内消息传送
 在市场推广活动中，可以使用 Mobile Engagement 通过推送通知和应用内消息传送与 REACH 模块和用户进行交互。 在 Mobile Engagement 门户中，此模块称为 REACH。
 以下各部分将介绍如何设置应用以接收推送通知。
 
@@ -106,11 +107,11 @@ ms.openlocfilehash: 1dc9885e4cdbad1153ac476e3f0c0068ec391374
 
 ### <a name="modify-your-application-delegate"></a>修改你的应用程序代理
 1. 回到 **AppDeletegate.m** 文件中，导入 Engagement Reach 模块。
-   
+
         #import "AEReachModule.h"
         #import <UserNotifications/UserNotifications.h>
 2. 在 `application:didFinishLaunchingWithOptions` 方法中，创建 Reach 模块并将其传递到你现有的 Engagement 初始化行︰
-   
+
         - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
             AEReachModule * reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
             [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}" modules:reach, nil];
@@ -120,7 +121,7 @@ ms.openlocfilehash: 1dc9885e4cdbad1153ac476e3f0c0068ec391374
 
 ### <a name="enable-your-app-to-receive-apns-push-notifications"></a>启用应用接收 APNS 推送通知
 1. 将以下行添加到 `application:didFinishLaunchingWithOptions` 方法中：
-   
+
         if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0)
         {
             if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_9_x_Max)
@@ -137,21 +138,20 @@ ms.openlocfilehash: 1dc9885e4cdbad1153ac476e3f0c0068ec391374
             [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
         }
 2. 如下所示添加 `application:didRegisterForRemoteNotificationsWithDeviceToken` 方法：
-   
+
         - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
         {
              [[EngagementAgent shared] registerDeviceToken:deviceToken];
             NSLog(@"Registered Token: %@", deviceToken);
         }
 3. 如下所示添加 `didFailToRegisterForRemoteNotificationsWithError` 方法：
-   
+
         - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
         {
-   
            NSLog(@"Failed to get token, error: %@", error);
         }
 4. 如下所示添加 `didReceiveRemoteNotification:fetchCompletionHandler` 方法：
-   
+
         - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
         {
             [[EngagementAgent shared] applicationDidReceiveRemoteNotification:userInfo fetchCompletionHandler:handler];
@@ -167,10 +167,4 @@ ms.openlocfilehash: 1dc9885e4cdbad1153ac476e3f0c0068ec391374
 [2]: ./media/mobile-engagement-ios-get-started/xcode-select-engagement-sdk.png
 [3]: ./media/mobile-engagement-ios-get-started/xcode-build-phases.png
 [4]: ./media/mobile-engagement-ios-get-started/app-connection-info-page.png
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

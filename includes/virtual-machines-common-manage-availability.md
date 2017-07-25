@@ -1,5 +1,4 @@
-## 了解 VM 重启 - 维护和停机
-<a id="understand-vm-reboots---maintenance-vs-downtime" class="xliff"></a>
+## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>了解 VM 重启 - 维护和停机
 有三种情况可能会导致 Azure 中的虚拟机受影响：计划外硬件维护、意外停机、计划内维护。
 
 * 当 Azure 平台预测硬件或者与物理计算机关联的任何平台组件即将发生故障时，就会发生计划外硬件维护事件。 当预测到故障时，平台会发出计划外硬件维护事件，以便减少对托管在该硬件上的虚拟机的影响。 Azure 使用实时迁移技术将虚拟机从故障硬件迁移到健康的物理计算机。 实时迁移是一项 VM 保留操作，只能短时间暂停虚拟机。 将会保留内存、打开的文件以及网络连接，但事件前后的性能可能会降低。 在无法使用实时迁移的情况下，VM 会出现意外停机，如下所述。
@@ -18,8 +17,7 @@
 * [将每个应用程序层配置到不同的可用性集中]
 * [将负载均衡器与可用性集组合在一起]
 
-## 在可用性集中配置多个虚拟机以确保冗余
-<a id="configure-multiple-virtual-machines-in-an-availability-set-for-redundancy" class="xliff"></a>
+## <a name="configure-multiple-virtual-machines-in-an-availability-set-for-redundancy"></a>在可用性集中配置多个虚拟机以确保冗余
 若要为应用程序提供冗余，建议你将两个或更多虚拟机组合到一个可用性集中。 这种配置可以确保在发生计划内或计划外维护事件时，至少有一个虚拟机可用，并满足 99.95% 的 Azure SLA 要求。 有关详细信息，请参阅[虚拟机的 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)。
 
 > [!IMPORTANT]
@@ -32,8 +30,7 @@
 <!--Image reference-->
    ![更新域和容错域配置的概念图](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
-## 为可用性集中的 VM 使用托管磁盘
-<a id="use-managed-disks-for-vms-in-an-availability-set" class="xliff"></a>
+## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>为可用性集中的 VM 使用托管磁盘
 如果当前使用的 VM 没有托管磁盘，则强烈建议你[在可用性集中转换 VM，以便使用托管磁盘](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md)。
 
 通过确保可用性集中的 VM 的磁盘彼此之间完全隔离以避免单点故障，[托管磁盘](../articles/storage/storage-managed-disks-overview.md)为可用性集提供了更佳的可靠性。 它通过自动将磁盘放置在不同的存储群集中来实现这一点。 如果某个存储群集因硬件或软件故障而失败，则只有其磁盘在该模块上的 VM 实例会失败。
@@ -51,8 +48,7 @@
 2. 在向存储帐户添加更多 VHD 之前，请**查看存储帐户中非托管磁盘的数量[限制](../articles/storage/storage-scalability-targets.md)**
 3. **为可用性集中的每个 VM 使用单独的存储帐户。** 同一可用性集中的多个 VM 不能共享存储帐户。 不同可用性集中的 VM 共享存储帐户是可以接受的，只要遵循上述最佳做法即可
 
-## 将每个应用程序层配置到不同的可用性集中
-<a id="configure-each-application-tier-into-separate-availability-sets" class="xliff"></a>
+## <a name="configure-each-application-tier-into-separate-availability-sets"></a>将每个应用程序层配置到不同的可用性集中
 如果你的虚拟机几乎都是相同的，并且对你的应用程序的用途是一样的，我们建议你针对每个应用程序层配置可用性集。  如果将两个不同的层置于同一可用性集中，则同一应用程序层中的所有虚拟机可以同时重启。 通过在可用性集中为每个层配置至少两个虚拟机，可以确保每个层中至少有一个虚拟机可用。
 
 例如，可以将运行 IIS、Apache、Nginx 的应用程序前端的所有虚拟机置于单个可用性集中。 请确保仅将前端虚拟机置于同一可用性集中。 同样，请确保仅将数据层虚拟机置于其自身的可用性集中，例如已复制的 SQL Server 虚拟机或 MySQL 虚拟机。
@@ -60,8 +56,7 @@
 <!--Image reference-->
    ![应用程序层](./media/virtual-machines-common-manage-availability/application-tiers.png)
 
-## 将负载均衡器与可用性集组合在一起
-<a id="combine-a-load-balancer-with-availability-sets" class="xliff"></a>
+## <a name="combine-a-load-balancer-with-availability-sets"></a>将负载均衡器与可用性集组合在一起
 将 [Azure 负载均衡器](../articles/load-balancer/load-balancer-overview.md) 与可用性集组合在一起，以获取最大的应用程序复原能力。 Azure 负载均衡器将流量分布到多个虚拟机中。 对于标准层虚拟机来说，Azure 负载均衡器已包括在内。 并非所有虚拟机层都包括 Azure 负载均衡器。 有关对虚拟机进行负载均衡的更多信息，请阅读[对虚拟机进行负载均衡](../articles/virtual-machines/virtual-machines-linux-load-balance.md)。
 
 如果没有将负载均衡器配置为对多个虚拟机上的流量进行平衡，则任何计划内维护事件都会影响唯一的那个处理流量的虚拟机，导致应用程序层中断。 将同一层的多个虚拟机置于相同的负载均衡器和可用性集下可以确保至少有一个虚拟机实例能够持续处理流量。

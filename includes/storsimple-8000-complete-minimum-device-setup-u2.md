@@ -1,8 +1,10 @@
 <!--author=alkohli last changed: 01/12/17-->
 
-#### 完成最低要求的 StorSimple 设备设置
-<a id="to-complete-the-minimum-storsimple-device-setup" class="xliff"></a>
+#### <a name="to-complete-the-minimum-storsimple-device-setup"></a>完成最低要求的 StorSimple 设备设置
 
+   > [!NOTE]
+   > 完成最低要求的设备设置后，将无法更改设备名称。
+   
 1. 从“设备”边栏选项卡中的表格式设备列表中，选择并单击你的设备。 该设备处于“就绪可设置”状态。 “配置设备”边栏选项卡随即打开。
 
      ![StorSimple 最低要求设备设置网络接口](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig1.png)
@@ -26,9 +28,6 @@
 1. 单击 **“确定”**。 设备配置将启动。 当设备配置完成时，你将收到通知。 在“设备”边栏选项卡中，设备状态将更改为“联机”。
 
     ![StorSimple 最低要求设备设置网络接口](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
-
-   > [!NOTE]
-   > 通过访问“设备设置”边栏选项卡，你可以随时修改所有其他设备设置。
 
 <!--Link reference-->
 [Test]: https://technet.microsoft.com/library/dn715782(v=wps.630).aspx
