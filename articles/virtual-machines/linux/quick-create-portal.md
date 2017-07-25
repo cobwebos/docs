@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/02/2017
+ms.date: 07/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 8c51af189e8086a509d44546882e1b26605dddae
+ms.translationtype: HT
+ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
+ms.openlocfilehash: d009020e86fdfed6a45b5b63b9664c623bcb1843
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 07/18/2017
 
 ---
 
@@ -48,7 +48,7 @@ ssh-keygen -t rsa -b 2048
 
 1. 单击 Azure 门户左上角的“新建”按钮。
 
-2. 选择“计算”，选择 **Ubuntu Server 16.04 LTS**，确保 **Resource Manager** 是选择的部署模型。 单击“创建”  按钮。 
+2. 选择“计算”，然后选择“Ubuntu Server 16.04 LTS”。 
 
 3. 输入虚拟机信息。 对于“身份验证类型”，请选择“SSH 公钥”。 粘贴“SSH 公钥”时，请务必删除所有前导或尾随空格。 完成后，单击“确定”。
 
@@ -58,7 +58,7 @@ ssh-keygen -t rsa -b 2048
 
     ![显示 VM 大小的屏幕截图](./media/quick-create-portal/create-linux-vm-portal-sizes.png)  
 
-5. 在“设置”边栏选项卡上，在“使用托管磁盘”下选择“是”，为其余设置保留默认值，然后单击“确定”。
+5. 在设置边栏选项卡中保留默认值，然后单击“确定”。
 
 6. 在摘要页上，单击“确定”以开始虚拟机部署。
 

@@ -16,10 +16,6 @@
 | **[应用服务计划](../articles/azure-functions/functions-scale.md)** | 消耗量计划 | 确保在创建新计划时，在“大小”下选择“消耗量”。  |
 | **[存储帐户](../articles/storage/storage-create-storage-account.md#create-a-storage-account)** | 全局唯一名称 | 使用现有的存储帐户，或者创建一个新的。   |
 
-单击“创建”，在 Azure 中使用这些设置创建 Function App。 
-
-预配完成后，单击“发布”将项目代码部署到新的 Function App。 
+单击“创建”，在 Azure 中使用这些设置创建 Function App。 完成预配后，请记下“站点 URL”值，这是函数应用在 Azure 中的地址。 
 
 ![Azure 本地运行时](./media/functions-vstools-publish/functions-vstools-publish-profile.png)
-
-记下“站点 URL”值，这是 Azure 中 Function App 的地址。 

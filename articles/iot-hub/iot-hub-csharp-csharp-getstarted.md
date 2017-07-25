@@ -16,20 +16,19 @@ ms.date: 05/08/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 103d64ea73c309f387ff90d181f472ad246d3026
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 2734a90284432ee218efb4fea68684de4b069dd6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 07/19/2017
 
 ---
-# 使用 .NET 将模拟设备连接到 IoT 中心
-<a id="connect-your-simulated-device-to-your-iot-hub-using-net" class="xliff"></a>
+# <a name="connect-your-device-to-your-iot-hub-using-net"></a>使用 .NET 将设备连接到 IoT 中心
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
 本教程结束时，将会创建三个 .NET 控制台应用：
 
-* **CreateDeviceIdentity**，用于创建设备标识和关联的安全密钥以连接模拟设备应用。
-* **ReadDeviceToCloudMessages**，显示模拟设备应用发送的遥测数据。
+* **CreateDeviceIdentity**，用于创建设备标识和关联的安全密钥以连接设备应用。
+* **ReadDeviceToCloudMessages**，显示设备应用发送的遥测数据。
 * **SimulatedDevice**，它使用前面创建的设备标识连接到 IoT 中心，并使用 MQTT 协议每秒发送一次遥测消息。
 
 可以下载或克隆 Visual Studio 解决方案，其中包含 GitHub 提供的三个应用。
@@ -56,8 +55,7 @@ git clone https://github.com/Azure-Samples/iot-hub-dotnet-simulated-device-clien
 [!INCLUDE [iot-hub-get-started-create-device-identity-csharp](../../includes/iot-hub-get-started-create-device-identity-csharp.md)]
 
 <a id="D2C_csharp"></a>
-## 接收设备到云的消息
-<a id="receive-device-to-cloud-messages" class="xliff"></a>
+## <a name="receive-device-to-cloud-messages"></a>接收设备到云的消息
 本部分将创建一个 .NET 控制台应用，用于从 IoT 中心读取设备到云的消息。 IoT 中心公开与 [Azure 事件中心][lnk-event-hubs-overview]兼容的终结点，以让用户读取设备到云的消息。 为了简单起见，本教程创建的基本读取器不适用于高吞吐量部署。 若要了解如何大规模处理设备到云的消息，请参阅[处理设备到云的消息][lnk-process-d2c-tutorial]教程。 若要深入了解如何处理来自事件中心的消息，请参阅[事件中心入门][lnk-eventhubs-tutorial]教程。 （本教程适用与 IoT 中心和事件中心相兼容的终结点。）
 
 > [!NOTE]
@@ -101,7 +99,7 @@ git clone https://github.com/Azure-Samples/iot-hub-dotnet-simulated-device-clien
     }
    ```
    
-    此方法使用 **EventHubReceiver** 实例接收来自所有 IoT 中心设备到云接收分区的消息。 请注意在创建 **EventHubReceiver** 对象时传递 `DateTime.Now` 参数的方式，使它仅接收启动后发送的消息。 此筛选器在测试环境中非常有用，因为这样可以看到当前的消息集。 在生产环境中，代码应确保处理所有消息。 有关详细信息，请参阅[如何处理 IoT 中心设备到云的消息][lnk-process-d2c-tutorial]教程。
+    此方法使用 **EventHubReceiver** 实例接收来自所有 IoT 中心设备到云接收分区的消息。 请注意在创建 **EventHubReceiver** 对象时传递 `DateTime.Now` 参数的方式，使它仅接收启动后发送的消息。 此筛选器在测试环境中非常有用，因为这样可以看到当前的消息集。 在生产环境中，代码应确保处理所有消息。 有关详细信息，请参阅教程[如何处理 IoT 中心设备到云的消息][lnk-process-d2c-tutorial]。
 7. 最后，在 **Main** 方法中添加以下行：
    
    ```csharp
@@ -127,8 +125,7 @@ git clone https://github.com/Azure-Samples/iot-hub-dotnet-simulated-device-clien
     Task.WaitAll(tasks.ToArray());
    ```
 
-## 创建模拟设备应用程序
-<a id="create-a-simulated-device-app" class="xliff"></a>
+## <a name="create-a-device-app"></a>创建设备应用
 本部分将创建一个 .NET 控制台应用，用于模拟向 IoT 中心发送设备到云消息的设备。
 
 1. 在 Visual Studio 中，使用“控制台应用(.NET Framework)”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 确保 .NET Framework 版本为 4.5.1 或更高。 将项目命名为 **SimulatedDevice**。
@@ -196,30 +193,28 @@ git clone https://github.com/Azure-Samples/iot-hub-dotnet-simulated-device-clien
    
    默认情况下，.NET Framework 应用中的 **Create** 方法会创建一个 **DeviceClient** 实例，该实例使用 AMQP 协议与 IoT 中心通信（UWP 和 PCL 客户端默认使用 HTTP）。若要使用 MQTT 或 HTTP 协议，请使用 **Create** 方法的重写，它使用户能够指定协议。 如果使用 HTTP 协议，则还应在项目中添加 **Microsoft.AspNet.WebApi.Client** NuGet 包，以包含 **System.Net.Http.Formatting** 命名空间。
 
-本教程将逐步讲解创建 IoT 中心模拟设备应用的步骤。 也可以使用 [Azure IoT 中心的连接服务][lnk-connected-service] Visual Studio 扩展将所需的代码添加到设备应用。
+本教程指导你完成创建 IoT 中心设备应用的步骤。 也可以使用 [Azure IoT 中心的连接服务][lnk-connected-service] Visual Studio 扩展将所需的代码添加到设备应用。
 
 > [!NOTE]
 > 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按 MSDN 文章 [Transient Fault Handling][lnk-transient-faults]（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。
 > 
 > 
 
-## 运行应用
-<a id="run-the-apps" class="xliff"></a>
+## <a name="run-the-apps"></a>运行应用
 现在可以运行应用了。
 
 1. 在 Visual Studio 的“解决方案资源管理器”中右键单击解决方案，然后单击“设置启动项目”。 选择“多个启动项目”，然后针对“ReadDeviceToCloudMessages”和“SimulatedDevice”项目选择“启动”作为操作。
    
     ![启动项目属性][41]
-2. 按 **F5** 启动这两个应用，使其运行。 来自 **SimulatedDevice** 应用的控制台输出会显示模拟设备应用发送到 IoT 中心的消息。 来自 **ReadDeviceToCloudMessages** 应用的控制台输出则会显示 IoT 中心接收的消息。
+2. 按 **F5** 启动这两个应用，使其运行。 来自 **SimulatedDevice** 应用的控制台输出会显示设备应用发送到 IoT 中心的消息。 来自 **ReadDeviceToCloudMessages** 应用的控制台输出则会显示 IoT 中心接收的消息。
    
     ![来自应用的控制台输出][42]
 3. [Azure 门户][lnk-portal]中的“使用情况”磁贴显示发送到 IoT 中心的消息数：
    
     ![Azure 门户的“使用情况”磁贴][43]
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
-在本教程中，你已在 Azure 门户中配置了 IoT 中心，并在 IoT 中心的标识注册表中创建了设备标识。 你已使用此设备标识来让模拟设备应用向 IoT 中心发送设备到云的消息。 还创建了用于显示 IoT 中心所接收消息的应用。 
+## <a name="next-steps"></a>后续步骤
+在本教程中，你已在 Azure 门户中配置了 IoT 中心，并在 IoT 中心的标识注册表中创建了设备标识。 已使用此设备标识来让设备应用向 IoT 中心发送设备到云的消息。 还创建了用于显示 IoT 中心所接收消息的应用。 
 
 若要继续了解 IoT 中心入门知识并浏览其他 IoT 方案，请参阅：
 

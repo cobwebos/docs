@@ -1,7 +1,6 @@
-<!--author=alkohli last changed: 01/12/2017-->
+<!--author=alkohli last changed: 07/19/2017-->
 
-#### 创建卷
-<a id="to-create-a-volume" class="xliff"></a>
+#### <a name="to-create-a-volume"></a>创建卷
 1. 从“设备”边栏选项卡中的设备列表中，选择你的设备。 单击“+ 添加卷”。
 
     ![添加新版本](./media/storsimple-8000-create-volume-u2/step5createvol1.png)
@@ -12,7 +11,7 @@
 
    2. 从下拉列表中，选择要在其中添加卷的卷容器。 
 
-   3.  键入卷的“名称”  。
+   3.  键入卷的“名称”  。 创建卷后，无法重命名卷。
 
    4. 在下拉列表中，选择卷的“类型”。 对于需要本地保证、低延迟和高性能的工作负荷，请选择“本地固定”  卷。 对于所有其他数据，请选择“分层”  卷。 如果将此卷用于存档数据，请选中“将此卷用于不常访问的存档数据” 。
       

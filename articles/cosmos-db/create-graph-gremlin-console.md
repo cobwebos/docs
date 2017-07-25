@@ -2,7 +2,7 @@
 title: "Azure Cosmos DB 教程：在 Apache TinkerPop Gremlin 控制台中创建、查询和遍历 | Microsoft Docs"
 description: "有关使用 Azure Cosmos DB 图形 API 创建顶点、边缘和查询的 Azure Cosmos DB 快速入门教程。"
 services: cosmos-db
-author: AndrewHoh
+author: dennyglee
 manager: jhubbard
 editor: monicar
 ms.assetid: bf08e031-718a-4a2a-89d6-91e12ff8797d
@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: terminal
 ms.topic: hero-article
-ms.date: 06/10/2017
-ms.author: anhoh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 44972270a13f5ab5b3aa22557b36e80ae406a4a6
+ms.date: 07/14/2017
+ms.author: denlee
+ms.translationtype: HT
+ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
+ms.openlocfilehash: 82ddc351359318dab82c95d3e3b9b97ba3e3b4a8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/13/2017
+ms.lasthandoff: 07/17/2017
 
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB：在 Gremlin 控制台中创建、查询和遍历图形
@@ -47,35 +47,40 @@ Gremlin 控制台基于 Groovy/Java，在 Linux、Mac 和 Windows 上运行。 �
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a id="ConnectAppService"></a>连接到应用服务
-1. 在启动 Gremlin 控制台之前，请在 *apache-tinkerpop-gremlin-console-3.2.4/conf* 目录中创建或修改 *remote-secure.yaml* 配置文件。
+1. 在启动 Gremlin 控制台之前，请在 apache-tinkerpop-gremlin-console-3.2.4/conf 目录中创建或修改 remote-secure.yaml 配置文件。
 2. 填写 *host*、*port*、*username*、*password*、*connectionPool* 和 *serializer* 配置：
 
     设置|建议的值|说明
     ---|---|---
-    主机|***.graphs.azure.com|可从 Azure 门户中检索的图形服务 URI
-    端口|443|设置为 443
-    用户名|*你的用户名*|格式为 `/dbs/<db>/colls/<coll>` 的资源。
-    密码|*主密钥*|Azure Cosmos DB 的主密钥
-    ConnectionPool|{enableSsl: true}|SSL 的连接池设置
-    序列化程序|{ className:org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV1d0,<br> config: { serializeResultToString: true }}|设置为此值
+    hosts|[***.graphs.azure.com]|参阅以下屏幕截图。 这是 Azure 门户的“概述”页上的“Gremlin URI”值，方括号中已删除尾部的 :443/。<br><br>也可以在“密钥”选项卡中使用“URI”值来检索此值：删除 https://，将 documents 更改为 graphs 并删除尾部的 :443/ 即可。
+    端口|443|设置为 443。
+    username|*你的用户名*|采用 `/dbs/<db>/colls/<coll>` 格式的资源，其中，`<db>` 是数据库名称，`<coll>` 是集合名称。
+    password|*主密钥*| 请参阅下面的第二幅屏幕截图。 这是主密钥，可以从 Azure 门户的“密钥”页上的“主密钥”框中检索到。 使用该框左侧的复制按钮可复制该值。
+    connectionPool|{enableSsl: true}|SSL 的连接池设置。
+    serializer|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV1d0,<br> config: { serializeResultToString: true }}|请设置为此值，并在粘贴此值时删除所有 `\n` 换行符。
 
-3. 在终端中运行 *bin/gremlin.bat* 或 *bin/gremlin.sh* 启动 [Gremlin 控制台](http://tinkerpop.apache.org/docs/3.2.4/tutorials/getting-started/)。
-4. 在终端中运行 *:remote connect tinkerpop.server conf/remote-secure.yaml* 连接到应用服务。
+    对于“主机”值，请复制“概述”页中的“Gremlin URI”值：![在 Azure 门户中的“概述”页上查看和复制“Gremlin URI”值](./media/create-graph-gremlin-console/gremlin-uri.png)
+
+    对于“密码”值，请复制“密钥”页中的“主密钥”：![在 Azure 门户中的“密钥”页上查看和复制主密钥](./media/create-graph-gremlin-console/keys.png)
+
+
+3. 在终端中运行 `bin/gremlin.bat` 或 `bin/gremlin.sh` 启动[Gremlin 控制台](http://tinkerpop.apache.org/docs/3.2.4/tutorials/getting-started/)。
+4. 在终端中运行 `:remote connect tinkerpop.server conf/remote-secure.yaml` 连接到应用服务。
 
 很好！ 完成设置后，我们开始运行一些控制台命令。
 
-现在尝试一个简单的 count() 命令。 在控制台的提示符处键入以下内容：
+现在尝试一个简单的 count() 命令。 在控制台的提示符下键入以下命令：
 ```
 :> g.V().count()
 ```
 
 > [!TIP]
-> 注意到文本 g.V().count() 前的 :> 了吗？ 
+> 注意到文本 `g.V().count()` 前面的 `:>` 了吗？ 
 >
 > 这是命令的一部分，也需要键入。 通过 Azure Cosmos DB 使用 Gremlin 控制台时，这一部分非常重要。  
 >
-> 省略此 :> 前缀将指示控制台在本地执行命令，通常针对一个内存中图表执行。
-> 使用此 : > 则指示控制台执行远程命令，此时针对 Cosmos DB（localhost 仿真器或一个 > Azure 实例）执行。
+> 省略此 `:>` 前缀将指示控制台在本地执行命令，通常针对一个内存中图表执行。
+> 使用此 `:>` 则指示控制台执行远程命令，此时针对 Cosmos DB（localhost 仿真器或一个 > Azure 实例）执行。
 
 
 ## <a name="create-vertices-and-edges"></a>创建顶点和边缘

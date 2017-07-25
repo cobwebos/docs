@@ -1,7 +1,8 @@
 
 1. 访问 [Azure 门户]。
-2. 依次单击“浏览全部” > “移动应用”> 创建的后端。
+2. 单击“应用服务”> 创建的后端。
 3. 在移动应用设置中，依次单击“快速启动” > “Cordova”。
+![突出显示移动应用快速启动的 Azure 门户][quickstart]
 4. 在“配置客户端应用程序”下，选择“创建新应用”，然后单击“下载”。
 2. 将已下载的 ZIP 文件解压到硬盘上的目录，导航到解决方案文件 (.sln)，并使用 Visual Studio 打开。
 3. 在 Visual Studio 中，从启动箭头旁边的下拉列表中选择解决方案平台（Android、iOS 或 Windows）。 单击下拉列表中的绿色箭头，选择特定的部署设备或仿真程序。 可以使用默认 Android 平台和 Ripple 仿真程序。 更高级的教程（例如推送通知）要求选择支持的设备或仿真程序。
@@ -10,8 +11,10 @@
 
 后端会将请求中的数据插入 SQL 数据库的 TodoItem 表中，并将新存储项的相关信息返回到移动应用。 移动应用会在列表中显示此数据。
 
-![](./media/app-service-mobile-cordova-quickstart/quickstart-startup.png)
-
 可以针对其他平台重复步骤 3 至 5。
 
+<!-- Images. -->
+[quickstart]: ./media/app-service-mobile-configure-new-backend/quickstart.png
+
+<!-- URLs -->
 [Azure 门户]: https://portal.azure.com/
