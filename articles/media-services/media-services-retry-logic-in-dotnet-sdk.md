@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 07/21/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: e22a16c0929b28c475aa4caa0465651603713112
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>适用于 .NET 的媒体服务 SDK 中的重试逻辑
@@ -47,7 +48,7 @@ ms.openlocfilehash: e22a16c0929b28c475aa4caa0465651603713112
 | StorageException |否 |是 |否 |否 |
 | IOException |否 |是 |否 |否 |
 
-### <a name="a-namewebexceptionstatusa-webexception-status-codes"></a><a name="WebExceptionStatus"></a> WebException 状态代码
+### <a name="WebExceptionStatus"></a> WebException 状态代码
 下表显示了对其执行重试逻辑的 WebException 错误代码。 [WebExceptionStatus](http://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) 枚举定义状态代码。  
 
 | 状态 | Web 请求 | 存储 | 查询 | SaveChanges |
@@ -65,7 +66,7 @@ ms.openlocfilehash: e22a16c0929b28c475aa4caa0465651603713112
 | 超时 |是 |是 |是 |否 |
 | ProtocolError <br/>ProtocolError 上的重试由 HTTP 状态代码处理控制。 有关详细信息，请参阅 [HTTP 错误和状态代码](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)。 |是 |是 |是 |是 |
 
-### <a name="a-namehttpstatuscodea-http-error-status-codes"></a><a name="HTTPStatusCode"></a> HTTP 错误状态代码
+### <a name="HTTPStatusCode"></a> HTTP 错误状态代码
 查询和 SaveChanges 操作引发 DataServiceClientException、DataServiceQueryException 或 DataServiceQueryException 时，HTTP 错误状态代码将返回在 StatusCode 属性中。  下表显示了对其执行重试逻辑的错误代码。  
 
 | 状态 | Web 请求 | 存储 | 查询 | SaveChanges |
@@ -86,10 +87,5 @@ ms.openlocfilehash: e22a16c0929b28c475aa4caa0465651603713112
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
