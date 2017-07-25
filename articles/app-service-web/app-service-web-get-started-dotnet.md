@@ -15,11 +15,11 @@ ms.topic: hero-article
 ms.date: 06/14/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 2b447bcc5930550af3996cb40925ab59d203dc7c
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: b5a7f3ebe5e95d3838e71b7b17b91e85da0d51a2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-an-aspnet-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Web 应用
@@ -32,7 +32,7 @@ ms.lasthandoff: 06/20/2017
 
 完成本教程：
 
-* 使用以下工作负荷安装 [Visual Studio 2017](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx)：
+* 使用以下工作负荷安装 [Visual Studio 2017](https://www.visualstudio.com/downloads/)：
     - **ASP.NET 和 Web 开发**
     - **Azure 开发**
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 06/20/2017
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-在“创建应用服务”对话框中，选择“添加帐户”，然后登录到你的 Azure 订阅。 如果已经登录，请确保该帐户包含你的 Azure 订阅。 可以选择登录帐户来添加正确的帐户。
+在“创建应用服务”对话框中，选择“添加帐户”，然后登录到你的 Azure 订阅。 如果已登录，请从下拉列表中选择包含所需订阅的帐户。
 
 > [!NOTE]
 > 如果已经登录，请先不要选择“创建”。
@@ -82,8 +82,6 @@ ms.lasthandoff: 06/20/2017
 >
    
 ![登录 Azure](./media/app-service-web-get-started-dotnet/sign-in-azure.png)
-
-登录后，可在此对话框中创建 Azure Web 应用所需的所有资源。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -113,9 +111,7 @@ ms.lasthandoff: 06/20/2017
 
 ## <a name="create-and-publish-the-web-app"></a>创建并发布 Web 应用
 
-在“Web 应用名称”中，键入唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）。 Web 应用的 URL 为 `http://<app_name>.azurewebsites.net`，其中 `<app_name>` 是 Web 应用名称。 
-
-可以接受自动生成的名称，它是唯一的。
+在“Web 应用名称”中，键入唯一的应用名称（有效字符为 `a-z`、`0-9` 和 `-`），或接受自动生成的唯一名称。 Web 应用的 URL 为 `http://<app_name>.azurewebsites.net`，其中 `<app_name>` 是 Web 应用名称。
 
 选择“创建”开始创建 Azure 资源。
 
@@ -125,7 +121,7 @@ ms.lasthandoff: 06/20/2017
 
 ![已在 Azure 中发布的 ASP.NET Web 应用](./media/app-service-web-get-started-dotnet/published-azure-web-app.png)
 
-URL 使用前面指定的 Web 应用名称，其格式为 `http://<app_name>.azurewebsites.net`。 
+在[创建和发布步骤](#create-and-publish-the-web-app)中指定的 Web 应用名称用作 `http://<app_name>.azurewebsites.net` 格式的 URL 前缀。
 
 恭喜，你的 ASP.NET Web 应用已在 Azure App Service 中实时运行！
 
