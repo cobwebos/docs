@@ -13,24 +13,21 @@ ms.devlang: R
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 06/28/2017
+ms.date: 07/13/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: a42138ae234313c7c6cbfcaa8b851ad47f82133b
+ms.translationtype: HT
+ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
+ms.openlocfilehash: ee4298b91f4e2b215b5faabaad96323f4ef234b8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
-# 开始使用 R Server on HDInsight
-<a id="get-started-using-r-server-on-hdinsight" class="xliff"></a>
+# <a name="get-started-using-r-server-on-hdinsight"></a>开始使用 R Server on HDInsight
 
 HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项允许 R 脚本使用 Spark 和 MapReduce 运行分布式计算。 在本文档中，你会了解如何在 HDInsight 群集上创建 R Server，然后运行 R 脚本，以演示如何使用 Spark 进行分布式 R 计算。
 
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 
 * **Azure 订阅**：在开始学习本教程之前，必须有 Azure 订阅。 请参阅[获取 Microsoft Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)一文了解详细信息。
 * **安全外壳 (SSH) 客户端**：SSH 客户端可用于远程连接到 HDInsight 群集，并直接在群集上运行命令。 有关详细信息，请参阅[对 HDInsight 使用 SSH](hdinsight-hadoop-linux-use-ssh-unix.md)。
@@ -40,8 +37,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
 > 本文档中的步骤假设使用密码。
 
 
-## 自动创建群集
-<a id="automated-cluster-creation" class="xliff"></a>
+## <a name="automated-cluster-creation"></a>自动创建群集
 
 可以使用 Azure Resource Manager 模板、SDK 和 PowerShell 自动创建 HDInsight R Server。
 
@@ -51,8 +47,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
 
 
 <a name="create-hdi-custer-with-aure-portal"></a>
-## 使用 Azure 门户创建群集
-<a id="create-the-cluster-using-the-azure-portal" class="xliff"></a>
+## <a name="create-the-cluster-using-the-azure-portal"></a>使用 Azure 门户创建群集
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -158,8 +153,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
    >
 
 <a name="connect-to-rstudio-server"></a>
-## 连接到 RStudio Server
-<a id="connect-to-rstudio-server" class="xliff"></a>
+## <a name="connect-to-rstudio-server"></a>连接到 RStudio Server
 
 如果已选择在安装中包括 RStudio Server 社区版，则可通过两种不同方法访问 RStudio 登录。
 
@@ -177,8 +171,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
    > 无论使用哪种方法，首次登录时都需进行两次身份验证。  第一次身份验证时，提供群集管理员用户 ID 和密码。 第二次提示时，提供 SSH 用户 ID 和密码。 后续登录只需要 SSH 密码和用户 ID。
 
 <a name="connect-to-edge-node"></a>
-## 连接到 R Server 边缘节点
-<a id="connect-to-the-r-server-edge-node" class="xliff"></a>
+## <a name="connect-to-the-r-server-edge-node"></a>连接到 R Server 边缘节点
 
 使用以下命令，通过 SSH 连接到 HDInsight 群集的 R Server 边缘节点：
 
@@ -202,8 +195,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
     sername@ed00-myrser:~$
 
 <a name="enable-concurrent-users"></a>
-## 允许多个并发用户
-<a id="enable-multiple-concurrent-users" class="xliff"></a>
+## <a name="enable-multiple-concurrent-users"></a>允许多个并发用户
 
 可以启用多个并发用户，方法是：为在其上运行 RStudio Community 版本的边缘节点添加更多用户。
 
@@ -232,14 +224,12 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
 2. 在边缘节点中添加更多的 Linux 用户
 3. 通过已创建的用户使用 RStudio Community 版本
 
-### 步骤 1：使用创建的 SSH 用户登录到边缘节点
-<a id="step-1-use-the-created-ssh-user-to-log-in-to-the-edge-node" class="xliff"></a>
+### <a name="step-1-use-the-created-ssh-user-to-log-in-to-the-edge-node"></a>步骤 1：使用创建的 SSH 用户登录到边缘节点
 
 下载任意 SSH 工具（例如 Putty），然后使用现有的 SSH 用户登录。 然后，按[使用 SSH 连接到 HDInsight (Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md) 中提供的说明访问边缘节点。 基于 HDInsight 群集的 R Server 的边缘节点地址为：clustername-ed-ssh.azurehdinsight.net
 
 
-### 步骤 2：在边缘节点中添加更多的 Linux 用户
-<a id="step-2-add-more-linux-users-in-edge-node" class="xliff"></a>
+### <a name="step-2-add-more-linux-users-in-edge-node"></a>步骤 2：在边缘节点中添加更多的 Linux 用户
 
 若要将用户添加到边缘节点，请执行以下命令：
 
@@ -253,8 +243,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
 当系统提示输入“当前 Kerberos 密码:”时，只需按 Enter 将其忽略即可。 `useradd` 命令中的 `-m` 选项指示系统会为用户创建主文件夹，该文件夹是 RStudio Community 版本所需的。
 
 
-### 步骤 3：通过已创建的用户使用 RStudio Community 版本
-<a id="step-3-use-rstudio-community-version-with-the-user-created" class="xliff"></a>
+### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>步骤 3：通过已创建的用户使用 RStudio Community 版本
 
 使用已创建的用户登录到 RStudio：
 
@@ -345,8 +334,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
 
 
 <a name="use-r-console"></a>
-## 使用 R 控制台
-<a id="use-the-r-console" class="xliff"></a>
+## <a name="use-the-r-console"></a>使用 R 控制台
 
 1. 在 SSH 会话中，使用以下命令启动 R 控制台：  
 
@@ -382,8 +370,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
     rxHadoopListFiles("wasbs:///")
 
 
-## 从 Microsoft R Server 或 Microsoft R Client 的远程实例使用 HDI 上的 R Server
-<a id="using-r-server-on-hdi-from-a-remote-instance-of-microsoft-r-server-or-microsoft-r-client" class="xliff"></a>
+## <a name="using-r-server-on-hdi-from-a-remote-instance-of-microsoft-r-server-or-microsoft-r-client"></a>从 Microsoft R Server 或 Microsoft R Client 的远程实例使用 HDI 上的 R Server
 
 可从台式机或笔记本电脑上运行的 Microsoft R Server 或 Microsoft R Client 远程实例设置对 HDI Hadoop Spark 计算上下文的访问。 请参阅[创建 Spark 计算上下文](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started.md)中的**使用 Microsoft R Server 作为 Hadoop 客户端**小节。 为此，需在笔记本电脑上定义 RxSpark 计算上下文时指定以下选项：hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches 和 sshProfileScript。 例如：
 
@@ -411,8 +398,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
     )
 
 
-## 使用计算上下文
-<a id="use-a-compute-context" class="xliff"></a>
+## <a name="use-a-compute-context"></a>使用计算上下文
 
 借助计算上下文，用户可控制是在边缘节点上本地执行计算，还是将计算分布到 HDInsight 群集的节点之间。
 
@@ -536,8 +522,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
    > 也可以使用 MapReduce 将计算分布到群集节点之间。 有关计算上下文的详细信息，请参阅[适用于 R Server on HDInsight 的计算上下文选项](hdinsight-hadoop-r-server-compute-contexts.md)。
 
 
-## 将 R 代码分布到多个节点
-<a id="distribute-r-code-to-multiple-nodes" class="xliff"></a>
+## <a name="distribute-r-code-to-multiple-nodes"></a>将 R 代码分布到多个节点
 
 使用 R Server，可轻松利用现有 R 代码并使用 `rxExec` 跨多个群集节点运行代码。 执行参数扫描或模拟时，可以使用此函数。 以下代码是 `rxExec` 的用法示例：
 
@@ -562,8 +547,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
     "wn3-myrser"
 
 
-## 访问 Hive 和 Parquet 中的数据
-<a id="accessing-data-in-hive-and-parquet" class="xliff"></a>
+## <a name="accessing-data-in-hive-and-parquet"></a>访问 Hive 和 Parquet 中的数据
 
 通过 R Server 9.1 中提供的功能，可直接访问 Hive 和 Parquet 中的数据，以供 Spark 计算上下文中的 ScaleR 函数使用。 这些功能通过名为 RxHiveData 和 RxParquetData 的新 ScaleR 数据源函数提供，它们通过使用 Spark SQL 将数据直接加载到 Spark DataFrame 中，供 ScaleR 进行分析。  
 
@@ -603,8 +587,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
 有关如何使用这些新函数的其他信息，请通过使用 `?RxHivedata` 和 `?RxParquetData` 命令查看 R Server 中的联机帮助。  
 
 
-## 在边缘节点上安装其他 R 包
-<a id="install-additional-r-packages-on-the-edge-node" class="xliff"></a>
+## <a name="install-additional-r-packages-on-the-edge-node"></a>在边缘节点上安装其他 R 包
 
 如果要在边缘节点上安装其他 R 包，可以在通过 SSH 连接到边缘节点时，直接从 R 控制台内部使用 `install.packages()`。 但是，如果需要在群集的辅助角色节点上安装 R 包，则必须使用脚本操作。
 
@@ -651,8 +634,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
 4. 选择“创建”运行脚本。 脚本完成后，可在所有辅助角色节点上使用 R 包。
 
 
-## 使用 Microsoft R Server 操作化
-<a id="using-microsoft-r-server-operationalization" class="xliff"></a>
+## <a name="using-microsoft-r-server-operationalization"></a>使用 Microsoft R Server 操作化
 
 完成数据建模后，可以操作模型以进行预测。 若要配置 Microsoft R Server 操作化，请执行以下步骤：
 
@@ -660,10 +642,15 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
 
     ssh -L USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
-使用 ssh 之后，将目录更改到以下目录并使用 sudo 运行 dotnet dll：
+使用 ssh 之后，请更改相关版本的目录并使用 sudo 运行 dotnet dll： 
 
-    cd /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil
-    sudo dotnet Microsoft.DeployR.Utils.AdminUtil.dll
+- 对于 Microsoft R Server 9.1：
+
+    cd /usr/lib64/microsoft-r/rserver/o16n/9.1.0   sudo dotnet Microsoft.RServer.Utils.AdminUtil/Microsoft.RServer.Utils.AdminUtil.dll
+
+- 对于 Microsoft R Server 9.0：
+
+    cd /usr/lib64/microsoft-deployr/9.0.1   sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
 若要使用单机配置配置 Microsoft R Server 操作化，请执行以下操作：
 
@@ -686,8 +673,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
 
 在此阶段，操作化的配置已完成。 现在，可以使用 RClient 上的“mrsdeploy”包连接到边缘节点上的操作化，并开始使用其功能（如[远程执行](https://msdn.microsoft.com/microsoft-r/operationalize/remote-execution)和 [Web 服务](https://msdn.microsoft.com/microsoft-r/mrsdeploy/mrsdeploy-websrv-vignette)）。 可能需要通过 SSH 登录设置端口转发隧道，具体取决于群集是否设置在虚拟网络上。 以下部分介绍如何设置此隧道。
 
-### 虚拟网络上的 RServer 群集
-<a id="rserver-cluster-on-virtual-network" class="xliff"></a>
+### <a name="rserver-cluster-on-virtual-network"></a>虚拟网络上的 RServer 群集
 
 请确保允许流量通过端口 12800 到达边缘节点。 这样，便可以使用边缘节点连接到操作化功能。
 
@@ -703,8 +689,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
 
 如果 `remoteLogin()` 无法连接到边缘节点，但你可以使用 SSH 连接到边缘节点，则需验证是否已正确设置允许端口 12800 上的流量的规则。 如果仍遇到此问题，则解决方法是通过 SSH 设置端口转发隧道。 有关说明，请参阅以下部分。
 
-### RServer 群集未设置在虚拟网络上
-<a id="rserver-cluster-not-set-up-on-virtual-network" class="xliff"></a>
+### <a name="rserver-cluster-not-set-up-on-virtual-network"></a>RServer 群集未设置在虚拟网络上
 
 如果群集未设置在 vnet 上，或者如果通过 vnet 连接时遇到问题，可以使用 SSH 端口转发隧道：
 
@@ -726,11 +711,9 @@ SSH 会话处于活动状态后，来自计算机端口 12800 的流量将通过
     )
 
 
-## 如何在 HDInsight 辅助节点上缩放 Microsoft R Server 操作化计算节点
-<a id="how-to-scale-microsoft-r-server-operationalization-compute-nodes-on-hdinsight-worker-nodes" class="xliff"></a>
+## <a name="how-to-scale-microsoft-r-server-operationalization-compute-nodes-on-hdinsight-worker-nodes"></a>如何在 HDInsight 辅助节点上缩放 Microsoft R Server 操作化计算节点
 
-### 解除辅助节点的授权
-<a id="decommission-the-worker-nodes" class="xliff"></a>
+### <a name="decommission-the-worker-nodes"></a>解除辅助节点的授权
 
 Microsoft R Server 当前未通过 Yarn 管理。 如果辅助角色节点未解除授权，Yarn 资源管理器将无法正常工作，因为它不知道服务器所占用的资源。 为了避免这种情况，建议在扩大计算节点前解除辅助角色节点的授权。
 
@@ -749,8 +732,7 @@ Microsoft R Server 当前未通过 Yarn 管理。 如果辅助角色节点未解
 * 取消选择辅助角色节点并选择头节点
 * 选择“操作” > “所选主机”>“主机” > “重启所有组件”
 
-### 在每个已解除授权的辅助节点上配置计算节点
-<a id="configure-compute-nodes-on-each-decommissioned-worker-nodes" class="xliff"></a>
+### <a name="configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>在每个已解除授权的辅助节点上配置计算节点
 
 1. 通过 SSH 登录到每个已解除授权的辅助角色节点。
 2. 使用 `dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll` 运行管理实用工具。
@@ -758,8 +740,7 @@ Microsoft R Server 当前未通过 Yarn 管理。 如果辅助角色节点未解
 4. 输入“c”以选择选项“C. 计算节点”。 这将在辅助角色节点上配置计算节点。
 5. 退出管理实用工具。
 
-### 在 Web 节点上添加计算节点详细信息
-<a id="add-compute-nodes-details-on-web-node" class="xliff"></a>
+### <a name="add-compute-nodes-details-on-web-node"></a>在 Web 节点上添加计算节点详细信息
 
 将所有已解除授权的辅助角色节点配置为运行计算节点后，回到边缘节点，在 Microsoft R Server Web 节点的配置中添加已解除授权的辅助角色节点的 IP 地址：
 
@@ -770,14 +751,12 @@ Microsoft R Server 当前未通过 Yarn 管理。 如果辅助角色节点未解
     ![通过命令行解除辅助节点的授权](./media/hdinsight-hadoop-r-server-get-started/get-started-op-cmd.png)
 
 
-## 故障排除
-<a id="troubleshoot" class="xliff"></a>
+## <a name="troubleshoot"></a>故障排除
 
 如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](hdinsight-administer-use-portal-linux.md#create-clusters)。
 
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 现在，应了解如何创建包括 R Server 的新 HDInsight 群集，以及从 SSH 会话使用 R 控制台的基础知识。 以下主题介绍管理和使用 R Server on HDInsight 的其他方式：
 

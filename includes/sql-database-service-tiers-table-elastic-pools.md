@@ -5,8 +5,7 @@ sql-database-resource-limits.md
 sql-database-service-tiers.md  
 -->
  
-### 基本弹性池限制
-<a id="basic-elastic-pool-limits" class="xliff"></a>
+### <a name="basic-elastic-pool-limits"></a>基本弹性池限制
 
 | 池大小 (eDTU)  | **50** | **100** | **200** | **300** | **400** | **800** | **1200** | **1600** |
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
@@ -21,8 +20,7 @@ sql-database-service-tiers.md
 | 每个数据库的最大数据存储 | 2 GB | 2 GB | 2 GB | 2 GB | 2 GB | 2 GB | 2 GB | 2 GB | 
 ||||||||
 
-### 标准弹性池限制
-<a id="standard-elastic-pool-limits" class="xliff"></a>
+### <a name="standard-elastic-pool-limits"></a>标准弹性池限制
 
 | 池大小 (eDTU)  | **50** | **100** | **200**** | **300**** | **400**** | **800****| 
 |:---|---:|---:|---:| ---: | ---: | ---: | 
@@ -34,11 +32,10 @@ sql-database-service-tiers.md
 | 每个池的最大并发会话数 | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 | 每个数据库的最小 eDTU 数** | 0, 10, 20, 50 | 0, 10, 20, 50, 100 | 0, 10, 20, 50, 100, 200 | 0, 10, 20, 50, 100, 200, 300 | 0, 10, 20, 50, 100, 200, 300, 400 | 0, 10, 20, 50, 100, 200, 300, 400, 800 |
 | 每个数据库的最大 eDTU 数** | 10, 20, 50 | 10, 20, 50, 100 | 10, 20, 50, 100, 200 | 10, 20, 50, 100, 200, 300 | 10, 20, 50, 100, 200, 300, 400 | 10, 20, 50, 100, 200, 300, 400, 800 | 
-| 每个数据库的最大数据存储 | 250 GB | 250 GB | 250 GB | 250 GB | 250 GB | 250 GB |
+| 每个数据库的最大数据存储 | 50 GB | 100 GB | 200 GB | 250 GB | 250 GB | 250 GB |
 ||||||||
 
-### 标准弹性池限制（续）
-<a id="standard-elastic-pool-limits-continued" class="xliff"></a> 
+### <a name="standard-elastic-pool-limits-continued"></a>标准弹性池限制（续） 
 
 | 池大小 (eDTU)  |  **1200**** | **1600**** | **2000**** | **2500**** | **3000**** |
 |:---|---:|---:|---:| ---: | ---: |
@@ -53,8 +50,7 @@ sql-database-service-tiers.md
 | 每个数据库的最大数据存储 | 250 GB | 250 GB | 250 GB | 250 GB | 250 GB | 
 ||||||||
 
-### 高级弹性池限制
-<a id="premium-elastic-pool-limits" class="xliff"></a>
+### <a name="premium-elastic-pool-limits"></a>高级弹性池限制
 
 | 池大小 (eDTU)  | **125** | **250** | **500** | **1000** | **1500*****| 
 |:---|---:|---:|---:| ---: | ---: | 
@@ -66,11 +62,10 @@ sql-database-service-tiers.md
 | 每个池的最大并发会话数 | 30000 | 30000 | 30000 | 30000 | 30000 | 
 | 每个数据库的最小 eDTU 数 | 0, 25, 50, 75, 125 | 0, 25, 50, 75, 125, 250 | 0, 25, 50, 75, 125, 250, 500 | 0, 25, 50, 75, 125, 250, 500, 1000 | 0, 25, 50, 75, 125, 250, 500, 1000 | 
 | 每个数据库的最大 eDTU 数 | 25, 50, 75, 125 | 25, 50, 75, 125, 250 | 25, 50, 75, 125, 250, 500 | 25, 50, 75, 125, 250, 500, 1000 | 25, 50, 75, 125, 250, 500, 1000 |
-| 每个数据库的最大数据存储 | 500 GB | 500 GB | 500 GB | 500 GB | 500 GB | 
+| 每个数据库的最大数据存储 | 250 GB | 500 GB | 500 GB | 500 GB | 500 GB | 
 ||||||||
 
-### 高级弹性池限制（续）
-<a id="premium-elastic-pool-limits-continued" class="xliff"></a> 
+### <a name="premium-elastic-pool-limits-continued"></a>高级弹性池限制（续） 
 
 | 池大小 (eDTU) | **2000***** | **2500***** | **3000***** | **3500***** | **4000*****|
 |:---|---:|---:|---:| ---: | ---: | 
@@ -85,8 +80,7 @@ sql-database-service-tiers.md
 | 每个数据库的最大数据存储 | 500 GB | 500 GB | 500 GB | 500 GB | 500 GB | 
 ||||||||
 
-### 高级 RS 弹性池限制
-<a id="premium-rs-elastic-pool-limits" class="xliff"></a>
+### <a name="premium-rs-elastic-pool-limits"></a>高级 RS 弹性池限制
 
 | 池大小 (eDTU)  | **125** | **250** | **500** | **1000** |
 |:---|---:|---:|---:| ---: | ---: | 
@@ -98,7 +92,7 @@ sql-database-service-tiers.md
 | 每个池的最大并发会话数 | 30000 | 30000 | 30000 | 30000 |
 | 每个数据库的最小 eDTU 数 | 0, 25, 50, 75, 125 | 0, 25, 50, 75, 125, 250 | 0, 25, 50, 75, 125, 250, 500 | 0, 25, 50, 75, 125, 250, 500, 1000 |
 | 每个数据库的最大 eDTU 数 | 25, 50, 75, 125 | 25, 50, 75, 125, 250 | 25, 50, 75, 125, 250, 500 | 25, 50, 75, 125, 250, 500, 1000 | 
-| 每个数据库的最大数据存储 | 500 GB | 500 GB | 500 GB | 500 GB | 
+| 每个数据库的最大数据存储 | 250 GB | 500 GB | 500 GB | 500 GB | 
 ||||||||
 
 > [!IMPORTANT]
@@ -107,5 +101,5 @@ sql-database-service-tiers.md
 >
 >\*\* 每个数据库的最小/最大 eDTU 数至少为 200 eDTU 的为公共预览版。
 >
->\*\*\* 对于 eDTU 至少为 500 的高级池来说，每个池的默认最大数据存储为 750 GB。 若要提高每个高级池的最大数据存储大小（对应于至少 1000 的 eDTU），必须使用 Azure 门户或 [PowerShell](../articles/sql-database/sql-database-elastic-pool-manage-powershell.md#change-the-storage-limit-for-an-elastic-pool) 显式选择该大小。 存储超过 1000 TB 的高级池目前在以下区域中处于公共预览状态：美国东部 2、美国西部、美国弗吉尼亚州政府、西欧、德国中部、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。 对于所有其他区域，每个池的最大存储上限目前为 750 GB。
+>\*\*\* 对于 eDTU 至少为 500 的高级池来说，每个池的默认最大数据存储为 750 GB。 若要提高每个高级池的最大数据存储大小（对应于至少 1000 的 eDTU），必须使用 Azure 门户、[PowerShell](../articles/sql-database/sql-database-elastic-pool.md#manage-sql-database-elastic-pools-using-powershell)、[Azure CLI](../articles/sql-database/sql-database-elastic-pool.md#manage-sql-database-elastic-pools-using-the-azure-cli) 或 [REST API](../articles/sql-database/sql-database-elastic-pool.md#manage-sql-database-elastic-pools-using-the-rest-api) 显式选择该大小。 存储超过 1000 TB 的高级池目前在以下区域中处于公共预览状态：美国东部 2、美国西部、美国弗吉尼亚州政府、西欧、德国中部、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。 对于所有其他区域，每个池的最大存储上限目前为 750 GB。
 >

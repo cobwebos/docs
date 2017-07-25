@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/07/2017
+ms.date: 07/13/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: e358f6d1937a45f375777cea1153b975a745a719
-ms.openlocfilehash: 08ba157ba783d00069750cdc1c80d13111b6a670
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 7049af4567947d3d799a38c5a3940ba25a2c0f18
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/13/2017
 
 ---
 
@@ -35,7 +37,7 @@ Azure AD Connect 是 DirSync 的后继产品。 你将在本主题中了解可�
 如果不是从 DirSync 升级，请参阅 [相关文档](#related-documentation) 了解其他应用场景。
 
 ## <a name="upgrade-from-dirsync"></a>从 DirSync 升级
-根据当前的 DirSync 部署，可以使用不同的升级选项。 如果预期的升级时间少于&3; 小时，建议执行就地升级。 如果预期的升级时间超过&3; 小时，建议在另一台服务器上进行并行部署。 如果对象数目超过 50,000 个，预计需要 3 个多小时才能完成升级。
+根据当前的 DirSync 部署，可以使用不同的升级选项。 如果预期的升级时间少于 3 小时，建议执行就地升级。 如果预期的升级时间超过 3 小时，建议在另一台服务器上进行并行部署。 如果对象数目超过 50,000 个，预计需要 3 个多小时才能完成升级。
 
 | 方案 |
 | --- | --- |
@@ -134,7 +136,7 @@ Azure AD Connect 是 DirSync 的后继产品。 你将在本主题中了解可�
 1. 运行 Azure AD Connect 安装程序 (MSI)。
 2. 看到“欢迎使用 Azure AD Connect”屏幕时，请单击窗口右上角的“X”退出安装向导。
 3. 打开命令提示符。
-4. 从 Azure AD Connect 的安装位置（默认值：C:\Program Files\Microsoft Azure Active Directory Connect）执行以下命令： `AzureADConnect.exe /ForceExport`。
+4. 从 Azure AD Connect 的安装位置（默认值：C:\Program Files\Microsoft Azure Active Directory Connect）执行以下命令：`AzureADConnect.exe /ForceExport`。
 5. 单击“导出设置”按钮。 在单独的服务器上安装 Azure AD Connect 时，会将当前 DirSync 中的这些设置迁移到新的 Azure AD Connect 安装位置。
 
 ![分析已完成](./media/active-directory-aadconnect-dirsync-upgrade-get-started/forceexport.png)
@@ -147,7 +149,7 @@ Azure AD Connect 是 DirSync 的后继产品。 你将在本主题中了解可�
 1. 运行 Azure AD Connect 安装程序 (MSI)。
 2. 看到“欢迎使用 Azure AD Connect”屏幕时，请单击窗口右上角的“X”退出安装向导。
 3. 打开命令提示符。
-4. 从 Azure AD Connect 的安装位置（默认值：C:\Program Files\Microsoft Azure Active Directory Connect）执行以下命令： `AzureADConnect.exe /migrate`。
+4. 从 Azure AD Connect 的安装位置（默认值：C:\Program Files\Microsoft Azure Active Directory Connect）执行以下命令：`AzureADConnect.exe /migrate`。
    Azure AD Connect 安装向导将会启动并显示以下屏幕：  
    ![输入你的 Azure AD 凭据](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ImportSettings.png)
 5. 选择从 DirSync 安装中导出的设置文件。
@@ -157,7 +159,7 @@ Azure AD Connect 是 DirSync 的后继产品。 你将在本主题中了解可�
    * 用于连接 SQL Server 的服务帐户（如果你的 SQL Server 数据库位于远程，则此帐户必须是域服务帐户）。
      可以在此屏幕上看到以下选项：  
      ![输入你的 Azure AD 凭据](./media/active-directory-aadconnect-dirsync-upgrade-get-started/advancedsettings.png)
-7. 单击“资源组名称” 的 Azure 数据工厂。
+7. 单击“下一步”。
 8. 在“已准备好配置”页上，保留选中“配置完成后立即开始同步过程”。 服务器当前为[过渡模式](active-directory-aadconnectsync-operations.md#staging-mode)，更改不会导出到 Azure AD。
 9. 单击“安装” 。
 10. 安装完成后，请注销并再次登录到 Windows，然后即可使用同步服务管理器或同步规则编辑器，或者尝试进行其他任何配置更改。
@@ -216,9 +218,4 @@ Azure AD Connect 现在为活动服务器，不得切换回去使用现有的 Di
 若要了解有关这些常见主题的详细信息，请参阅[计划程序以及如何触发同步](active-directory-aadconnectsync-feature-scheduler.md)。
 
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

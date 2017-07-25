@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/09/2017
+ms.date: 07/19/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: db97edd3c4fbfdbe955c49cc9a58de30c5085305
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: b382225b9e355148279181fbf6238eb1e08f382d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/13/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="azure-resource-manager-overview"></a>Azure Resource Manager 概述
@@ -82,7 +81,7 @@ Resource Manager 提供一致的管理层，用于管理通过 Azure PowerShell�
 ## <a name="resource-providers"></a>资源提供程序
 每个资源提供程序都会提供一组用于 Azure 服务的资源和操作。 例如，若要存储密钥和密码，可以使用 **Microsoft.KeyVault** 资源提供程序。 此资源提供程序提供名为“保管库”的资源类型，用于创建密钥保管库。 
 
-资源类型的名称采用以下格式：{resource-provider}/{resource-type}。 例如，密钥保管库类型为 Microsoft.KeyVault\vaults。
+资源类型的名称采用以下格式：{resource-provider}/{resource-type}。 例如，Key Vault 类型为 **Microsoft.KeyVault/vaults**。
 
 开始部署资源之前，应了解可用的资源提供程序。 了解资源提供程序和资源的名称可帮助确定要部署到 Azure 的资源。 此外，还需要知道每种资源类型的有效位置和 API 版本。 有关详细信息，请参阅[资源提供程序和类型](resource-manager-supported-services.md)。
 
@@ -258,49 +257,28 @@ Resource Manager 可让你创建自定义策略来管理资源。 创建的策�
 可创建许多其他类型的策略。 有关详细信息，请参阅 [使用策略来管理资源和控制访问](resource-manager-policy.md)。
 
 ## <a name="sdks"></a>SDK
-Azure SDK 适用于多种语言和平台。
-每种语言实现可通过其生态系统包管理器和 GitHub 来使用。
-
-其中每个 SDK 中的代码是从 Azure RESTful API 规范生成的。
-这些规范是开放源代码，基于 Swagger 2.0 规范。
-SDK 代码是通过名为 AutoRest 的开源项目生成的。
-AutoRest 将这些 RESTful API 规范转换成采用多种语言的客户端库。
-如果你想要改进 SDK 中生成的代码的任何方面，可以使用整个工具集来创建 SDK，该工具集属于开放式工具集，免费提供且基于广泛采用的 API 规范格式。
+Azure SDK 适用于多种语言和平台。 每种语言实现可通过其生态系统包管理器和 GitHub 来使用。
 
 以下是我们的开放源代码 SDK 存储库。 欢迎提出反馈、问题和要求。
 
-[.NET](https://github.com/Azure/azure-sdk-for-net) | [Java](https://github.com/Azure/azure-sdk-for-java) | [Node.js](https://github.com/Azure/azure-sdk-for-node) | [PHP](https://github.com/Azure/azure-sdk-for-php) | [Python](https://github.com/Azure/azure-sdk-for-python) | [Ruby](https://github.com/Azure/azure-sdk-ruby)
+* [用于 .NET 的 Azure SDK](https://github.com/Azure/azure-sdk-for-net)
+* [适用于 Java 的 Azure 管理库](https://github.com/Azure/azure-sdk-for-java)
+* [用于 Node.js 的 Azure SDK](https://github.com/Azure/azure-sdk-for-node)
+* [用于 PHP 的 Azure SDK](https://github.com/Azure/azure-sdk-for-php)
+* [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python)
+* [用于 Ruby 的 Azure SDK](https://github.com/Azure/azure-sdk-for-ruby)
+
+有关在资源中使用这些语言的信息，请参阅：
+
+* [面向 .NET 开发人员的 Azure](/dotnet/azure/?view=azure-dotnet)
+* [面向 Java 开发人员的 Azure](/java/azure/)
+* [面向 Node.js 开发人员的 Azure](/nodejs/azure/)
+* [面向 Python 开发人员的 Azure](/python/azure/)
 
 > [!NOTE]
 > 如果 SDK 未提供所需的功能，也可以直接调用 [Azure REST API](https://docs.microsoft.com/rest/api/resources/) 。
 > 
 > 
-
-## <a name="samples"></a>示例
-### <a name="net"></a>.NET
-* [管理 Azure 资源和资源组](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
-* [使用模板部署启用 SSH 的 VM](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/)
-
-### <a name="java"></a>Java
-* [管理 Azure 资源](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource/)
-* [管理 Azure 资源组](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group/)
-* [使用模板部署启用 SSH 的 VM](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
-
-### <a name="nodejs"></a>Node.js
-* [管理 Azure 资源和资源组](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
-* [使用模板部署启用 SSH 的 VM](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
-
-### <a name="python"></a>Python
-* [管理 Azure 资源和资源组](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
-* [使用模板部署启用 SSH 的 VM](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
-
-### <a name="ruby"></a>Ruby
-* [管理 Azure 资源和资源组](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
-* [使用模板部署启用 SSH 的 VM](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-template-deployment/)
-
-除了这些示例，还可以在示例库中搜索示例。
-
-[.NET](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=dotnet) | [Java](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=java) | [Node.js](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=nodejs) | [Python](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=python) | [Ruby](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=ruby)
 
 ## <a name="next-steps"></a>后续步骤
 * 有关使用模板的简单介绍，请参阅[从现有资源导出 Azure Resource Manager 模板](resource-manager-export-template.md)。

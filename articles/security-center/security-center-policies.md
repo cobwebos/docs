@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 07/18/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 2593e6846c897644017083b49ad4ba8219696c6c
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: aefec15c72c6cf8389a29b03be70abb4c7f020b9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>在 Azure 安全中心设置安全策略
@@ -43,7 +42,7 @@ ms.lasthandoff: 06/17/2017
     ![定义策略](./media/security-center-policies/security-center-policies-fig1-ga.png)
 3. 所选订阅的“安全策略”边栏选项卡在打开时会显示一组选项。 此边栏选项卡中的可用选项包括：
 
-   * **预防策略**：使用此选项配置每个订阅或资源组的策略。  
+   * **预防策略**：使用此选项配置每个订阅的策略。  
    * **电子邮件通知**：使用此选项配置电子邮件通知，让其在每天第一次出现警报时发送，以及在警报的严重性高的情况下发送。 只能根据订阅策略配置电子邮件首选项。 请阅读 [Provide security contact details in Azure Security Center](security-center-provide-security-contact-details.md) （在 Azure 安全中心提供安全方面的联系细节），详细了解如何配置电子邮件通知。
    * **定价层**：使用此选项升级所选定价层。 请参阅[安全中心定价](security-center-pricing.md)，详细了解各种定价选项。
 4. 确保“从虚拟机收集数据”选项为“启用”。 通过此选项，可使用 Microsoft Monitoring Agent（Operations Management Suite 和 Log Analytics 服务同样使用此代理）实现对现有和新资源的自动日志收集。 通过此代理收集的数据存储在与 Azure 订阅关联的现有 Log Analytics 工作区或新工作区中，具体取决于 VM 的地理位置。

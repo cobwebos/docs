@@ -1,163 +1,138 @@
 ---
-title: "创建第一个 Azure 微服务应用程序 | Microsoft 文档"
-description: "使用 Visual Studio 创建、部署和调试 Service Fabric 应用程序"
+title: "使用 C# 创建 Azure Service Fabric Reliable Service"
+description: "使用 Visual Studio 创建、部署和调试基于 Azure Service Fabric 的 Reliable Service 应用程序。"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: vturecek
 ms.assetid: c3655b7b-de78-4eac-99eb-012f8e042109
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/05/2017
+ms.date: 06/28/2017
 ms.author: ryanwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: dea338477ca82eead9e272ed9a1709cb2643f743
+ms.translationtype: HT
+ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
+ms.openlocfilehash: f93298e6483fd8c9dfda835964aeebd1a430af69
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 07/15/2017
 
 ---
-# <a name="create-your-first-azure-service-fabric-application"></a>创建第一个 Azure Service Fabric 应用程序
-> [!div class="op_single_selector"]
-> * [C# - Windows](service-fabric-create-your-first-application-in-visual-studio.md)
-> * [Java-Linux](service-fabric-create-your-first-linux-application-with-java.md)
-> * [C# - Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
-> 
-> 
 
-Service Fabric SDK 包含一个用于 Visual Studio 的外接程序，它可提供用于创建、部署和调试 Service Fabric 应用程序的模板和工具。 本主题介绍在 Visual Studio 2017 或 Visual Studio 2015 中创建用户的第一个应用程序的过程。
+# <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>创建你的第一个 C# Service Fabric 有状态 Reliable Services 应用程序
+
+了解如何在数分钟内在 Windows 上部署你的第一个适用于 .NET 的 Service Fabric 应用程序。 完成后，你会有一个本地群集，与 Reliable Service 应用程序一起运行。
 
 ## <a name="prerequisites"></a>先决条件
-开始之前，请确保已 [设置开发环境](service-fabric-get-started.md)。
 
-## <a name="video-walkthrough"></a>视频演练
-下面的视频介绍了本教程中的步骤：
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Creating-your-first-Service-Fabric-application-in-Visual-Studio/player]
-> 
-> 
+开始之前，请确保已 [设置开发环境](service-fabric-get-started.md)。 其中包括安装 Service Fabric SDK 和 Visual Studio 2017 或 2015。
 
 ## <a name="create-the-application"></a>创建应用程序
-Service Fabric 应用程序可以包含一个或多个服务，每个服务都在提供应用程序功能时具有特定角色。 使用“新建项目”向导创建应用程序项目以及第一个服务项目。 如果愿意，稍后还可以添加更多服务。
 
-1. 以管理员身份启动 Visual Studio。
-2. 单击“文件”>“新建项目”>“云”>“Service Fabric 应用程序”。
-3. 命名应用程序，然后单击“确定” 。
+以管理员身份启动 Visual Studio。
+
+使用 `CTRL`+`SHIFT`+`N` 创建一个项目
+
+在“新建项目”对话框中，选择“云”>“Service Fabric 应用程序”。
+
+将应用程序命名为“MyApplication”，然后按“确定”。
+
    
-    ![Visual Studio 中的新建项目对话框][1]
-4. 在下一页上，选择“有状态”  作为要包括在应用程序中的第一种服务类型。 命名它，然后单击“确定” 。
-   
-    ![Visual Studio 中的新建服务对话框][2]
-   
-   > [!NOTE]
-   > 有关选项的详细信息，请参阅 [Service Fabric 编程模型概述](service-fabric-choose-framework.md)。
-   > 
-   > 
-   
-    Visual Studio 会创建应用程序项目和有状态服务项目，并在解决方案资源管理器中显示它们。
-   
-    ![创建使用有状态服务的应用程序之后的解决方案资源管理器][3]
-   
-    应用程序项目不直接包含任何代码。 而是引用一组服务项目。 此外，它包含三种其他类型的内容：
-   
-   * **发布配置文件**：用于为不同环境管理工具首选项。
-   * **脚本**：包括用于部署/升级应用程序的 PowerShell 脚本。 Visual Studio 在幕后使用脚本。 还可以在命令行处直接调用该脚本。
-   * **应用程序定义**：包括 *ApplicationPackageRoot*下的应用程序清单。 关联应用程序参数文件位于 *ApplicationParameters*下，它们定义应用程序并使您可以专门为给定环境对其进行配置。
-     
-     有关服务项目的内容概述，请参阅 [Reliable Services 入门](service-fabric-reliable-services-quick-start.md)。
+![Visual Studio 中的新建项目对话框][1]
+
+可以在下一对话框中创建任何类型的 Service Fabric 应用程序。 对于本快速入门教程，请选择“有状态服务”。
+
+将服务命名为“MyStatefulService”，然后按“确定”。
+
+![Visual Studio 中的新建服务对话框][2]
+
+
+Visual Studio 会创建应用程序项目和有状态服务项目，并在解决方案资源管理器中显示它们。
+
+![创建使用有状态服务的应用程序之后的解决方案资源管理器][3]
+
+应用程序项目 (MyApplication) 不直接包含任何代码。 而是引用一组服务项目。 此外，它包含三种其他类型的内容：
+
+* 发布配置文件  
+部署到不同环境所需的配置文件。
+
+* 脚本  
+用于部署/升级应用程序的 PowerShell 脚本。
+
+* 应用程序定义  
+在 ApplicationPackageRoot 下添加说明应用程序组合情况的 ApplicationManifest.xml 文件。 关联的应用程序参数文件位于 ApplicationParameters 下，这些文件可以用来指定特定于环境的参数。 Visual Studio 会在将内容部署到特定环境时，选择在关联的发布配置文件中指定的应用程序参数文件。
+    
+有关服务项目的内容概述，请参阅 [Reliable Services 入门](service-fabric-reliable-services-quick-start.md)。
 
 ## <a name="deploy-and-debug-the-application"></a>部署和调试应用程序
-现在已具有应用程序，尝试运行它。
 
-1. 按 F5 以部署应用程序以便进行调试。
+有了应用程序后，请运行它。
+
+在 Visual Studio 中按 `F5`，部署用于调试的应用程序。
+
+>[!NOTE]
+>首次在本地运行和部署应用程序时，Visual Studio 会创建用于调试的本地群集。 这可能需要一些时间。 群集创建状态显示在 Visual Studio 输出窗口中。
+
+群集准备就绪时，将从 SDK 随附的本地群集系统托盘管理器应用程序收到通知。
    
-   > [!NOTE]
-   > 首次部署需要一段时间，因为 Visual Studio 要创建本地群集以用于开发。 本地群集只在单台计算机上运行在多计算机群集中生成的相同平台代码。 群集创建状态显示在 Visual Studio 输出窗口中。
-   > 
-   > 
+![本地群集系统托盘通知][4]
+
+应用程序启动后，Visual Studio 会自动显示诊断事件查看器，可以在其中查看来自服务的跟踪输出。
    
-    群集准备就绪时，将从 SDK 随附的本地群集系统托盘管理器应用程序收到通知。
+![诊断事件查看器][5]
+
+我们使用的有状态服务模板直接显示在 MyStatefulService.cs 的 `RunAsync` 方法中递增的计数器值。
+
+展开事件之一可查看更多详细信息，包括运行代码的节点。 在此例中，它是 \_Node\_2，不过在你的计算机上可能会有所不同。
    
-    ![本地群集系统托盘通知][4]
-2. 应用程序启动后，Visual Studio 会自动显示诊断事件查看器，在其中可以查看来自服务的跟踪输出。
-   
-    ![诊断事件查看器][5]
-   
-    对于有状态服务模板，消息只显示在 MyStatefulService.cs 的 `RunAsync` 方法中递增的计数器值。
-3. 展开事件之一可查看更多详细信息，包括运行代码的节点。 在此例中，它是 _Node_2，不过在你的计算机上可能会有所不同。
-   
-    ![诊断事件查看器详细信息][6]
-   
-    本地群集包含在单台计算机上托管的五个节点。 它会模拟一个五节点群集，其中节点处于不同计算机上。 在本地群集上取下一个节点，以模拟丢失一台计算机的情况，同时练习 Visual Studio 调试器。
-   
-   > [!NOTE]
-   > 项目模板发出的应用程序诊断事件会使用包含的 `ServiceEventSource` 类。 有关详细信息，请参阅 [如何在本地监视和诊断服务](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)。
-   > 
-   > 
-4. 在服务项目中查找派生自 StatefulService 的类（例如 MyStatefulService），然后在 `RunAsync` 方法的第一行上设置断点。
-   
-    ![有状态服务 RunAsync 方法中的断点][7]
-5. 右键单击本地群集管理器系统托盘应用并选择“管理本地群集”以启动 Service Fabric Explorer。
-   
-    ![从本地群集管理器启动 Service Fabric 资源管理器][systray-launch-sfx]
-   
-    Service Fabric Explorer 提供群集的可视表示形式--包括部署到其中的应用程序集和构成它的物理节点集。 要了解有关 Service Fabric Explorer 的详细信息，请参阅 [可视化群集](service-fabric-visualizing-your-cluster.md)。
-6. 在左窗格中，展开“群集”>“节点”，然后查找运行代码的节点。
-7. 单击“操作”>“停用（重启）”来模拟计算机重启。 或者，从左窗格中的节点列表视图停用节点。）
-   
-    ![在 Service Fabric 资源管理器中停止节点][sfx-stop-node]
-   
-    随着你在一个节点上进行的计算无缝地故障转移到另一个节点，你应立即在 Visual Studio 中看到命中了断点。
-8. 返回到诊断事件查看器并观察消息。 计数器在继续递增，即使事件实际上来自不同的节点。
-   
-    ![故障转移之后的诊断事件查看器][diagnostic-events-viewer-detail-post-failover]
+![诊断事件查看器详细信息][6]
+
+本地群集包含在单台计算机上托管的五个节点。 在生产环境中，每个节点都托管在不同的物理或虚拟机上。 在本地群集上取下一个节点，以模拟丢失一台计算机的情况，同时练习 Visual Studio 调试器。
+
+在“解决方案资源管理器”窗口中，打开“MyStatefulService.cs”。 
+
+找到 `RunAsync` 方法，在该方法的第一行中设置一个断点。
+
+![有状态服务 RunAsync 方法中的断点][7]
+
+右键单击“本地群集管理器”系统托盘应用程序并选择“管理本地群集”，以便启动 Service Fabric Explorer 工具。
+
+![从本地群集管理器启动 Service Fabric 资源管理器][systray-launch-sfx]
+
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 提供以视觉方式呈现群集的功能。 它包括部署到其中的应用程序集，以及充当组成成分的物理节点集。
+
+在左窗格中，展开“群集”>“节点”，然后查找运行代码的节点。
+
+单击“操作”>“停用（重启）”来模拟计算机重启。
+
+![在 Service Fabric 资源管理器中停止节点][sfx-stop-node]
+
+随着你在一个节点上进行的计算无缝地故障转移到另一个节点，你应立即在 Visual Studio 中看到命中了断点。
+
+
+接下来，返回到诊断事件查看器并观察消息。 计数器在继续递增，即使事件实际上来自不同的节点。
+
+![故障转移之后的诊断事件查看器][diagnostic-events-viewer-detail-post-failover]
 
 ## <a name="cleaning-up-the-local-cluster-optional"></a>清理本地群集（可选）
-结束之前，请务必记住该本地群集是真实的。 停止调试器会删除您的应用程序实例，并注销应用程序类型。 不过，群集将继续在后台运行。 可通过几个选项对群集进行管理：
 
-1. 若要关闭群集，但保留应用程序数据和跟踪，请在系统托盘应用中单击“停止本地群集”  。
-2. 要完全删除群集，请在系统托盘应用中单击“删除本地群集”  。 此选项会导致下次在 Visual Studio 中按 F5 时部署较慢。 仅当在一段时间内不想使用本地群集时，或者当需要回收资源时，才删除群集。
+请记住，此本地群集是真实的。 停止调试器会删除您的应用程序实例，并注销应用程序类型。 不过，群集会继续在后台运行。 做好停止本地群集的准备以后，有多个选项可以选择。
 
-## <a name="deploy-your-application-to-an-azure-cluster"></a>将应用程序部署到 Azure 群集
-在本地部署应用程序以后，即可将同一应用程序部署到 Azure。 [在 Azure 上创建你的第一个 Service Fabric 群集](service-fabric-get-started-azure-cluster.md)文档介绍了使用 Azure PowerShell 或门户的步骤。
+### <a name="keep-application-and-trace-data"></a>保留应用程序和跟踪数据
 
-设置 Azure 群集以后，即可按照[发布到 Azure 群集](service-fabric-publish-app-remote-cluster.md)一文中的说明，将该应用程序从 Visual Studio 发布到 Azure。  
+右键单击“本地群集管理器”系统托盘应用程序，然后选择“停止本地群集”，以便关闭群集。
 
-## <a name="switch-cluster-mode-of-your-local-development-cluster"></a>切换本地开发群集的群集模式
-默认情况下，本地开发群集配置为一个 5 节点群集运行，这对于调试在多个节点中部署的服务很有用。 不过，将应用程序部署到 5 节点的开发群集中可能需要一些时间。 如果想要快速循环访问代码更改，而不需要在 5 个节点上运行应用，可以将开发群集切换到单节点模式。 若要在单节点群集上运行代码，请右键单击系统任务栏中的本地群集管理器，并选择“切换群集模式”->“1 个节点”。  
+### <a name="delete-the-cluster-and-all-data"></a>删除群集和所有数据
 
-![切换群集模式][switch-cluster-mode]
+右键单击“本地群集管理器”系统托盘应用程序，然后选择“删除本地群集”，以便删除群集。 
 
-更改群集模式时将重置开发群集，并删除所有在群集上预配或运行的应用程序。
-
-也可使用 PowerShell 更改群集模式：
-
-1. 以管理员身份启动新的 PowerShell 窗口。
-2. 从 SDK 文件夹运行群集设置脚本：
-   
-    ```powershell
-    & "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1" -CreateOneNodeCluster
-    ```
-   
-    群集设置需要一段时间。 完成设置后，您应会看到类似于下面的输出：
-   
-    ![群集设置输出][cluster-setup-success-1-node]
-
-
+如果选择此选项，Visual Studio 会在你下次运行应用程序时重新部署群集。 如果在一段时间内不想使用本地群集，或者需要回收资源，请选择此选项。
 
 ## <a name="next-steps"></a>后续步骤
-* 了解如何[在 Azure 中创建群集](service-fabric-cluster-creation-via-portal.md)或[在 Windows 上创建独立群集](service-fabric-cluster-creation-for-windows-server.md)。
-* 尝试使用 [Reliable Services](service-fabric-reliable-services-quick-start.md) 或 [Reliable Actors](service-fabric-reliable-actors-get-started.md) 编程模型创建服务。
-* 尝试将 [Windows 容器](service-fabric-deploy-container.md)或现有应用部署为[来宾可执行文件](service-fabric-deploy-existing-app.md)。
-* 了解如何使用 [Web 服务前端](service-fabric-add-a-web-frontend.md)向 Internet 服务公开服务。
-* 演练 [动手实验](https://msdnshared.blob.core.windows.net/media/2016/07/SF-Lab-Part-I.docx) 并创建一个无状态服务、配置监视和运行状况报告，然后执行应用程序升级。
-* 了解 [Service Fabric 支持选项](service-fabric-support.md)
-
+阅读有关 [Reliable Services](service-fabric-reliable-services-introduction.md) 的更多内容。
 <!-- Image References -->
 
 [1]: ./media/service-fabric-create-your-first-application-in-visual-studio/new-project-dialog.png

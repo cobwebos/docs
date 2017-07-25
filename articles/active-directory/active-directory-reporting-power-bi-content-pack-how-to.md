@@ -13,22 +13,20 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
-ms.openlocfilehash: ab95f61e2d88f82bf2b24aea786c7dbadfb9c0fe
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 5c642bb814a279756e8391f12fdc86b6ec0b4a8f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/22/2017
+ms.lasthandoff: 07/20/2017
 
 ---
-# 如何使用 Azure Active Directory Power BI 内容包
-<a id="how-to-use-the-azure-active-directory-power-bi-content-pack" class="xliff"></a>
+# <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>如何使用 Azure Active Directory Power BI 内容包
 
 作为 IT 管理员，了解用户如何使用 Azure Active Directory 功能十分重要。 这样才能规划 IT 基础结构和通信，提高使用率并充分利用 AAD 功能。 使用 Azure Active Directory Power BI 内容包可以进一步分析数据，了解如何针对极度依赖的各种功能，通过该数据深入洞察 Azure Active Directory 中发生的情况。  将 Azure Active Directory API 集成到 Power BI 中以后，即可轻松下载预建的内容包，并通过 Power BI 提供的丰富的可视化体验洞察 Azure Active Directory 中的所有活动。 可以轻松地创建自己的仪表板并将其与组织中的任何其他人共享。 
 
 本主题提供的分步说明介绍如何在环境中安装和使用内容包。
 
-## 安装
-<a id="installation" class="xliff"></a>  
+## <a name="installation"></a>安装  
 
 若要安装 Power BI 内容包，请执行以下步骤：
 
@@ -69,13 +67,11 @@ ms.lasthandoff: 06/22/2017
  
     ![Azure Active Directory Power BI 内容包](./media/active-directory-reporting-power-bi-content-pack-how-to/08.png) 
 
-## 此内容包有哪些功能？
-<a id="what-can-i-do-with-this-content-pack" class="xliff"></a>
+## <a name="what-can-i-do-with-this-content-pack"></a>此内容包有哪些功能？
 
 在介绍此内容包的功能之前，让我们快速预览一下内容包中的各种报表。 报表数据可回溯到“过去 30 天”。
 
-### 包括在此版 Azure Active Directory 日志内容包中的报表
-<a id="reports-included-in-this-version-of-azure-active-directory-logs-content-pack" class="xliff"></a>
+### <a name="reports-included-in-this-version-of-azure-active-directory-logs-content-pack"></a>包括在此版 Azure Active Directory 日志内容包中的报表
 
 应用使用情况和趋势报表：了解在组织中使用的应用、哪些应用使用最频繁以及相应的使用时间。 可以通过此报表了解最近在组织中推出的应用的使用情况，或者了解哪些应用常用。 这样可以发现用户不使用的应用，从而改进使用情况。
 
@@ -100,8 +96,7 @@ ms.lasthandoff: 06/22/2017
 
 SSPR 漏斗图：了解如何在组织中进行密码重置。 通过 SSPR 工具了解用户进行密码重置尝试的次数，以及其中有多少次获得成功。 通过 SSPR 漏斗图深入了解密码重置失败情况，并了解某些失败的发生原因。 可以通过此报表更深入地了解组织中 SSPR 工具的使用情况，以便进行正确的决策。
 
-## 自定义 Azure AD 活动内容包
-<a id="customizing-azure-ad-activity-content-pack" class="xliff"></a>
+## <a name="customizing-azure-ad-activity-content-pack"></a>自定义 Azure AD 活动内容包
 
 更改可视化效果：可以通过单击“编辑报表”并选择所要的可视化效果来更改报表可视化效果。
  
@@ -129,15 +124,13 @@ SSPR 漏斗图：了解如何在组织中进行密码重置。 通过 SSPR 工�
 
 
 
-## 计划每日刷新 Power BI 报表
-<a id="scheduling-a-daily-refresh-of-your-power-bi-report" class="xliff"></a>
+## <a name="scheduling-a-daily-refresh-of-your-power-bi-report"></a>计划每日刷新 Power BI 报表
 
 若要计划每日刷新 Power BI 报表，请转到“数据集”>“设置”>“计划刷新”，然后对其进行设置，如下所示。
  
 ![Azure Active Directory Power BI 内容包](./media/active-directory-reporting-power-bi-content-pack-how-to/15.png) 
 
-## 更新到较新版本的内容包
-<a id="updating-to-newer-version-of-content-pack" class="xliff"></a>
+## <a name="updating-to-newer-version-of-content-pack"></a>更新到较新版本的内容包
 
 若要更新内容包以获取较新的版本，请执行以下操作：
 
@@ -149,11 +142,12 @@ SSPR 漏斗图：了解如何在组织中进行密码重置。 通过 SSPR 工�
 
 新版内容包能够正常使用以后，即可根据需要删除旧的版本，方法是：删除与该内容包关联的基础报表和数据集。
 
-## 仍然存在问题？
-<a id="still-having-issues" class="xliff"></a> 
+## <a name="still-having-issues"></a>仍然存在问题？ 
 
 请查看[故障排除指南](active-directory-reporting-troubleshoot-content-pack.md)。 有关 Power BI 的常规帮助，请查看这些[帮助文章](https://powerbi.microsoft.com/en-us/documentation/powerbi-service-get-started/)。
  
 
+## <a name="next-steps"></a>后续步骤
 
+有关报告的概述，请参阅 [Azure Active Directory 报告](active-directory-reporting-azure-portal.md)。
 

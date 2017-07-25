@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/05/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 769377af7bf62d35c45c6e2e7b0ae3311b784894
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 457ba9c9f74bc9d88800607a2f78a3c3c96cea07
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>在运行时使用 Application Insights 检测 Web 应用
@@ -42,10 +41,10 @@ ms.lasthandoff: 05/10/2017
 | [更详细异常](app-insights-asp-net-exceptions.md) | |是 |
 | [依赖项诊断](app-insights-asp-net-dependencies.md) |在 NET 4.6+ 上，但更少详细信息 |是，完整的详细信息：结果代码、SQL 命令文本、HTTP 谓词|
 | [系统性能计数器](app-insights-performance-counters.md) |是 |是 |
-| [自定义遥测 API][api] |是 | |
-| [跟踪日志集成](app-insights-asp-net-trace-logs.md) |是 | |
-| [页面视图和用户数据](app-insights-javascript.md) |是 | |
-| 无需重新生成代码 |否 | |
+| [自定义遥测 API][api] |是 |否 |
+| [跟踪日志集成](app-insights-asp-net-trace-logs.md) |是 |否 |
+| [页面视图和用户数据](app-insights-javascript.md) |是 |否 |
+| 需要重新生成代码 |是 | 否 |
 
 
 ## <a name="monitor-a-live-azure-web-app"></a>监视实时 Azure Web 应用

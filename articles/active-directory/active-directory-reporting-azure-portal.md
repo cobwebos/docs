@@ -1,7 +1,6 @@
 ---
-
 title: "Azure Active Directory 报告 | Microsoft Docs"
-description: "列出 Azure Active Directory 的各种可用报告"
+description: "概述 Azure Active Directory 报告。"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -13,190 +12,110 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/05/2017
+ms.date: 07/13/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: c7fe995f097c72ab5275249538fe2bb65efac256
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
+ms.openlocfilehash: 738c8f4a56586b87f03973ec258b0a3023affa60
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 07/17/2017
 
 ---
 # <a name="azure-active-directory-reporting"></a>Azure Active Directory 报告
 
+可以通过 Azure Active Directory 报告了解环境情况。  
+可以将提供的数据用于：
 
-*本文档是 [Azure Active Directory 报告指南](active-directory-reporting-guide.md)的一部分。*
+- 确定用户如何使用你的应用和服务
+- 检测影响环境运行状况的潜在风险
+- 排查妨碍用户完成其工作的问题  
 
-通过 Azure Active Directory (Azure AD) 中的报告，可以获取确定环境运行状况所需的信息。
+报告体系结构依赖于两大支柱：
 
-报表包含两个主要区域：
+- 安全报表
+- 活动报表
 
-* **登录活动** — 有关托管应用程序的使用和用户登录活动的信息
-* **审核日志** - 有关用户和组管理、托管应用程序和目录活动的系统活动信息
+![报告](./media/active-directory-reporting-azure-portal/01.png)
 
-根据查找的数据范围，可以在 [Azure 门户](https://portal.azure.com)中通过单击“用户和组”或者服务列表中的“企业应用程序”来访问这些报告。
 
-## <a name="sign-in-activities"></a>登录活动
-### <a name="user-sign-in-activities"></a>用户登录活动
-通过用户登录报表提供的信息，可以找到一些问题的答案，例如：
 
-* 什么是用户的登录模式？
-* 多少用户超过一周都有登录行为？
-* 这些登录的状态怎样？
+## <a name="security-reports"></a>安全报表
 
-该数据的入口点为“概览”部分的“用户和组”下面的用户登录图。
+Azure Active Directory 中的安全报表有助于保护组织的标识。  
+Azure Active Directory 中有两种类型的安全报表：
 
- ![报告](./media/active-directory-reporting-azure-portal/05.png "报告")
+- 标记为存在风险的用户 - 可以通过[标记为存在风险的用户的安全报表](active-directory-reporting-security-user-at-risk.md)大致了解可能已遭到入侵的用户帐户。
 
-用户登录图显示指定时间内所有用户的按周汇总的登录信息。 默认时间为 30 天。
+- 风险登录 - 可以通过[风险登录安全报表](active-directory-reporting-security-risky-sign-ins.md)了解可能由非用户帐户合法拥有者进行的登录尝试。 
 
-![报告](./media/active-directory-reporting-azure-portal/02.png "报告")
+访问安全报表需要什么 Azure AD 许可证？  
+所有版本的 Azure Active Directory 都提供标记为存在风险的用户的报表和风险登录报表。  
+但是，各版本的报表粒度级别有所不同： 
 
-单击登录图中的某一天时，可以获取登录活动的详细列表。
+- 在“Azure Active Directory 免费版和基本版”中，你已经获得了一个列表，其中包含标记为存在风险的用户和风险登录。 
 
-![报告](./media/active-directory-reporting-azure-portal/03.png "报告")
+- Azure Active Directory Premium 1 版本还允许你检查每个报表中检测到的部分潜在性风险事件，从而扩展了该模型。 
 
-登录活动列表中的每一行提供了有关所选登录的详细信息，例如：
+- Azure Active Directory Premium 2 版本提供有关潜在风险事件的最详细信息，并且还允许配置可自动响应已配置风险级别的安全策略。
 
-* 登录者是谁？
-* 相关的 UPN 是什么？
-* 登录的目标应用程序是哪个？
-* 登录的 IP 地址是多少？
-* 登录的状态怎样？
 
-### <a name="usage-of-managed-applications"></a>托管应用程序的使用情况
-通过登录数据的以应用程序为中心的视图，可以回答如下问题：
+## <a name="activity-reports"></a>活动报表
 
-* 谁正在使用我的应用程序？
-* 组织中最常用的 3 个应用程序是哪些？
-* 我最近推出了一个应用程序。 它用起来怎样？
+Azure Active Directory 中有两种类型的活动报表：
 
-该数据的入口点为“概览”部分的“企业应用程序”下面的组织过去 30 天的报告中最常用的 3 个应用程序。
+- 审核日志 - 可以通过[审核日志活动报表](active-directory-reporting-activity-audit-logs.md)访问在租户中执行的每个任务的历史记录。
 
- ![报告](./media/active-directory-reporting-azure-portal/06.png "报告")
+- 登录 -  可以通过[登录活动报表](active-directory-reporting-activity-sign-ins.md)来确定谁执行了审核日志报表所报告的任务。
 
-应用程序使用情况图显示指定时间内最常用的 3 个应用程序的按周汇总的登录情况。 默认时间为 30 天。
 
-![报告](./media/active-directory-reporting-azure-portal/78.png "报告")
 
-如果需要，可以将焦点设置在特定应用程序上。
+审核日志报表提供系统活动记录以确保符合性。
+可以通过提供的数据和其他内容来解决常见方案的问题，例如：
 
-![报告](./media/active-directory-reporting-azure-portal/single_spp_usage_graph.png "报告")
+- 我的租户中有人获得了访问管理员组的权限。 谁给予他们访问权限？ 
 
-单击应用程序使用情况图中的某一天时，可以获取登录活动的详细列表。
+- 我想要了解登录到特定应用的用户的列表，因为我最近将该应用上架了，想要了解其是否正常运行
 
-![报告](./media/active-directory-reporting-azure-portal/top_app_sign_ins.png "报告")
+- 我想要知道在我的租户中进行了多少次密码重置
 
-**登录** 选项可提供应用程序的所有登录事件的完整概览。
 
-![报告](./media/active-directory-reporting-azure-portal/85.png "报告")
+访问审核日志报表需要什么 Azure AD 许可证？  
+审核日志报表适用于你有许可证的功能。 如果有特定功能的许可证，则还可以访问其审核日志信息。
 
-使用列选择器可以选择想要显示的数据字段。
+有关更多详细信息，请参阅 [Azure Active Directory 特性和功能](https://www.microsoft.com/cloud-platform/azure-active-directory-features)中的“比较免费版、基本版和高级版中正式推出的功能”。   
 
-![报告](./media/active-directory-reporting-azure-portal/column_chooser.png "报告")
 
-### <a name="filtering-sign-ins"></a>筛选登录信息
-可以使用以下字段筛选登录信息，以限制显示的数据量：
 
-* 日期和时间 
-* 用户的用户主体名称
-* 应用程序名称
-* 客户端名称
-* 登录状态
+可以通过“登录活动报表”找到如下所示问题的答案：
 
-![报告](./media/active-directory-reporting-azure-portal/293.png "报告")
+- 什么是用户的登录模式？
+- 多少用户超过一周都有登录行为？
+- 这些登录的状态怎样？
 
-用于筛选登录活动的条目的另一种方法是搜索特定条目。
-搜索方法能够将登录信息的范围限定在特定的**用户**、**组**或**应用程序**。
 
-![报告](./media/active-directory-reporting-azure-portal/84.png "报告")
+访问登录活动报表需要什么 Azure AD 许可证？  
+若要访问登录活动报表，租户必须具有与之关联的 Azure AD Premium 许可证。
 
-## <a name="audit-logs"></a>审核日志
-Azure Active Directory 中的审核日志为合规性提供了系统活动的记录。
 
-Azure 门户中主要有三种与审核相关的活动：
+## <a name="programmatic-access"></a>以编程方式访问
 
-* 用户和组   
-* 应用程序
-* Directory   
+除了用户界面，Azure Active Directory 报告还允许[以编程方式访问](active-directory-reporting-api-getting-started-azure-portal.md)报告数据。 对于你的应用程序（如 SIEM 系统、审核）和商业智能工具，这些报告的数据可能非常有用。 Azure AD 报告 API 通过一组基于 REST 的 API，可提供对该数据的编程访问权限。 可从各种编程语言和工具中调用这些 API。 
 
-有关审核报表活动的完整列表，请参阅 [审核报表事件的列表](active-directory-reporting-audit-events.md#list-of-audit-report-events)。
-
-所有审核数据的入口点为 **Azure Active Directory** 的“活动”部分中的“审核日志”。
-
-![审核](./media/active-directory-reporting-azure-portal/61.png "审核")
-
-审核日志有一个列表视图，其中显示参与者（人员）、活动（内容）和目标。
-
-![审核](./media/active-directory-reporting-azure-portal/345.png "审核")
-
-通过单击列表视图中的项，可以获得更多详情。
-
-![审核](./media/active-directory-reporting-azure-portal/873.png "审核")
-
-### <a name="users-and-groups-audit-logs"></a>用户和组审核日志
-使用基于用户和组的审核报表，可以获得如下问题的答案：
-
-* 对用户应用了哪种类型的更新？
-* 更改了多少用户？
-* 更改了多少密码？
-* 管理员在目录中做了什么？
-* 添加了哪些组？
-* 是否存在成员身份已更改的组？
-* 是否已更改组的所有者？
-* 向组或用户分配了哪些许可证？
-
-如果只想查看与用户和组相关的审核数据，可以在“用户和组”的“活动”部分中的“审核日志”下方查找筛选视图。
-
-![审核](./media/active-directory-reporting-azure-portal/93.png "审核")
-
-### <a name="application-audit-logs"></a>应用程序审核日志
-通过基于应用程序的审核报表，可以获得如下问题的答案：
-
-* 已添加或更新的应用程序有哪些？
-* 已删除的应用程序有哪些？
-* 应用程序的服务原则是否有变化？
-* 应用程序的名称是否已更改？
-* 哪些用户同意使用应用程序？
-
-如果只想查看与应用程序相关的审核数据，可以在“企业应用程序”的“活动”部分中的“审核日志”下方查找筛选视图。
-
-![审核](./media/active-directory-reporting-azure-portal/134.png "审核")
-
-### <a name="filtering-audit-logs"></a>筛选审核日志
-可以使用以下字段筛选登录信息，以限制显示的数据量：
-
-* 日期和时间
-* 执行组件的用户主体名称
-* 活动类型
-* 活动
-
-![审核](./media/active-directory-reporting-azure-portal/356.png "审核")
-
-“活动类型”列表的内容将绑定到此边栏选项卡的入口点。  
-如果入口点是 Azure Active Directory，则此列表包含所有可能的活动类型：
-
-* 应用程序 
-* 组 
-* 用户
-* 设备
-* Directory
-* 策略
-* 其他
-
-![审核](./media/active-directory-reporting-azure-portal/825.png "审核")
-
-按活动类型限定列出的活动的范围。
-例如，如果将“组”选为“活动类型”，则“活动”列表仅包含与组相关的活动。   
-
-![审核](./media/active-directory-reporting-azure-portal/654.png "审核")
-
-用于筛选审核日志的条目的另一种方法是搜索特定条目。
-
-![审核](./media/active-directory-reporting-azure-portal/237.png "审核")
 
 ## <a name="next-steps"></a>后续步骤
-请参阅 [Azure Active Directory 报表指南](active-directory-reporting-guide.md)。
+
+若要详细了解 Azure Active Directory 中的各种报表类型，请参阅：
+
+- [标记为存在风险的用户的报表](active-directory-reporting-security-user-at-risk.md)
+- [风险登录报表](active-directory-reporting-security-risky-sign-ins.md)
+- [审核日志报表](active-directory-reporting-activity-audit-logs.md)
+- [登录日志报表](active-directory-reporting-activity-sign-ins.md)
+
+若要详细了解如何使用报告 API 来访问报告数据，请参阅： 
+
+- [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started-azure-portal.md)
 
 
+<!--Image references-->
+[1]: ./media/active-directory-reporting-azure-portal/ic195031.png

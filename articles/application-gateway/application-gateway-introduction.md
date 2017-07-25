@@ -13,14 +13,13 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 04/27/2017
+ms.date: 07/10/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: e9dfb5a744a7c63ef9805b1341236c4f3c57ec4d
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 17fc7e6a19b835e08360d1bf638d69aabb14e121
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="overview-of-application-gateway"></a>应用程序网关概述
@@ -43,6 +42,7 @@ Microsoft Azure 应用程序网关是一个专用的虚拟设备，以服务形�
 * **[多站点路由](application-gateway-multi-site-overview.md)** - 应用程序网关允许在单个应用程序网关上合并最多 20 个网站。
 * **[WebSocket 支持](application-gateway-websocket.md)** - 应用程序网关的另一个重要功能是对 WebSocket 的本机支持。
 * **[运行状况监视](application-gateway-probe-overview.md)** - 应用程序网关提供默认的后端资源运行状况监视，以及用于监视更多特定方案的自定义探测。
+* **[请求重定向](application-gateway-redirect-overview.md)** - 使用此功能可将 HTTP 请求重定向到 HTTPS 侦听器。
 * **[高级诊断](application-gateway-diagnostics.md)** - 应用程序网关提供完整的诊断和访问日志。 防火墙日志可用于已启用 WAF 的应用程序网关资源。
 
 ## <a name="benefits"></a>优点
