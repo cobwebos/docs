@@ -290,7 +290,8 @@
 ## 监视和诊断
 ### [监视和诊断应用程序](service-fabric-diagnostics-overview.md)
 ### 生成事件
-#### [生成基础结构级别事件](service-fabric-diagnostics-event-generation-infra.md)
+#### [生成平台级别事件](service-fabric-diagnostics-event-generation-infra.md)
+##### [运行通道](service-fabric-diagnostics-event-generation-operational.md)
 ##### [Reliable Services 事件](service-fabric-reliable-services-diagnostics.md)
 ##### [Reliable Actors 事件](service-fabric-reliable-actors-diagnostics.md)
 ##### [性能指标](service-fabric-diagnostics-event-generation-perf.md)

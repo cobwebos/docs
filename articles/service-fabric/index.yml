@@ -23,16 +23,6 @@ abstract:
     Azure Service Fabric 是一款分布式系统平台，可方便用户轻松打包、部署和管理可缩放的可靠微服务和容器。
     开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放、可靠且易于管理的工作负荷。
     参考我们的快速入门、教程和示例了解如何使用 Azure Service Fabric。
-  aside:
-    image:
-      alt: null
-      height: 140
-      src: >-
-        https://sec.ch9.ms/ch9/cf61/aa41e58e-ec9f-4f7b-982d-40daaaeacf61/IntroAzureServiceFabric_960.jpg
-      width: 250
-    title: 'Service Fabric 简介 (3:53)'
-    href: 'https://azure.microsoft.com/en-us/resources/videos/azure-service-fabric/'
-    width: 250
 sections:
   - title: 5 分钟快速入门
     items:

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 09/15/2016
 ms.author: zachal
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: e85d5563a314964ad1ed43c693cdebe7a30297de
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
-
 
 ---
 # <a name="windows-vmss-and-desired-state-configuration-with-azure-resource-manager-templates"></a>在 Azure Resource Manager 模板中使用 Windows VMSS 和 Desired State Configuration
@@ -56,6 +56,7 @@ ms.lasthandoff: 03/31/2017
                   "protectedSettings": {
                       "configurationUrlSasToken": "[parameters('_artifactsLocationSasToken')]"
                   }
+              }
 
 ```
 
@@ -89,6 +90,7 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
                     }
                 }
             ]
+        }
 ```
 
 ## <a name="detailed-settings-information"></a>详细设置信息

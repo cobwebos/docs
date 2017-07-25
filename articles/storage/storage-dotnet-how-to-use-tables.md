@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 04/10/2017
 ms.author: marsma
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: bcd59c9951965fb1304bb8da678fd1f04ddded14
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 16a9dad1b01fdbef5ec8949bf9ff25497f33d994
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="get-started-with-azure-table-storage-using-net"></a>通过 .NET 开始使用 Azure 表存储
@@ -37,8 +36,8 @@ Azure 表存储是一项用于在云中存储结构化 NoSQL 数据的服务，�
 
 若要成功完成本教程，需要具备以下先决条件：
 
-* [Microsoft Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)
-* [适用于 .NET 的 Azure 存储空间客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
+* [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
+* [适用于 .NET 的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
 * [适用于 .NET 的 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 * [Azure 存储帐户](storage-create-storage-account.md#create-a-storage-account)
 

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 50024fdb487e859b870a1025b23790f1cc5d1a18
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 94257b68b3a0f62f4ade727277a904ceec082c05
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="sql-database-application-development-overview"></a>SQL 数据库应用程序开发概述
@@ -36,7 +35,7 @@ ms.lasthandoff: 06/08/2017
 * 详细信息：[用于 SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)
 
 ## <a name="tools"></a>工具 
-可以利用开源工具，如 [cheetah](https://github.com/wunderlist/cheetah)、[sql-cli](https://www.npmjs.com/package/sql-cli)、[VS Code](https://code.visualstudio.com/)。 此外，Azure SQL 数据库可与 Microsoft 工具（如 [Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) 和 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx)）配合使用。  还可以使用 Azure 管理门户、PowerShell 和 REST API 帮助提高工作效率。
+可以利用开源工具，如 [cheetah](https://github.com/wunderlist/cheetah)、[sql-cli](https://www.npmjs.com/package/sql-cli)、[VS Code](https://code.visualstudio.com/)。 此外，Azure SQL 数据库可与 Microsoft 工具（如 [Visual Studio](https://www.visualstudio.com/downloads/) 和 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx)）配合使用。  还可以使用 Azure 管理门户、PowerShell 和 REST API 帮助提高工作效率。
 
 ## <a name="resource-limitations"></a>资源限制
 Azure SQL 数据库使用两种不同的机制管理可用于数据库的资源：资源调控和强制限制。

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 756141fda3148726af0030a010465ee14e8ce6b6
+ms.translationtype: HT
+ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
+ms.openlocfilehash: 1eb90d44797d66f3e09811918ce5a7f4ad4287c6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="different-ways-to-create-a-linux-virtual-machine-in-azure"></a>在 Azure 中创建 Linux 虚拟机的不同方式
@@ -70,7 +69,7 @@ Azure CLI 1.0 可通过 npm 包、发行版提供的程序包或 Docker 容器�
 * [使用 Azure 门户创建 Linux VM](quick-create-portal.md) 
 
 ## <a name="operating-system-and-image-choices"></a>操作系统和映像选项
-创建 VM 时，可根据要运行的操作系统选择映像。 Azure 及其合作伙伴提供了许多映像，其中一些映像包括预安装的应用程序和工具。 也可上载自己的某个映像（请参阅[以下部分](#use-your-own-image)）。
+创建 VM 时，可根据要运行的操作系统选择映像。 Azure 及其合作伙伴提供了许多映像，其中一些映像包括预安装的应用程序和工具。 也可上传自己的某个映像（请参阅[以下部分](#use-your-own-image)）。
 
 ### <a name="azure-images"></a>Azure 映像
 使用 `azure vm image` CLI 命令，按发布者、发行版本和内部版本查看可用的内容。
@@ -99,8 +98,6 @@ azure vm image list-skus --location eastus --publisher Canonical --offer UbuntuS
 azure vm image list --location eastus --publisher Canonical --offer UbuntuServer --sku 16.04.0-LTS
 ```
 
-请参阅[使用 Azure CLI 导航并选择 Azure 虚拟机映像](cli-ps-findimage.md#use-azure-cli-10)，获取有关浏览和使用可用映像的更多示例。
-
 `azure vm quick-create` 和 `azure vm create` 命令提供的别名可用于快速访问较常见的发行版及其最新版本。 使用别名比每次创建 VM 时都指定发布者、产品/服务、SKU 和版本要快速：
 
 | 别名 | 发布者 | 产品 | SKU | 版本 |
@@ -114,11 +111,11 @@ azure vm image list --location eastus --publisher Canonical --offer UbuntuServer
 | UbuntuLTS |Canonical |UbuntuServer |14.04.4-LTS |最新 |
 
 ### <a name="use-your-own-image"></a>使用你自己的映像
-如果需要特定自定义，可以通过*捕获*现有的 Azure VM 使用基于该 VM 的映像。 也可以上载本地创建的映像。 有关受支持的发行版以及如何使用你自己的映像的详细信息，请参阅以下文章：
+如果需要特定自定义，可以通过*捕获*现有的 Azure VM 使用基于该 VM 的映像。 也可以上传本地创建的映像。 有关受支持的发行版以及如何使用你自己的映像的详细信息，请参阅以下文章：
 
 * [Azure endorsed distributions（Azure 认可的分发版）](endorsed-distros.md)
 * [Information for non-endorsed distributions（有关未认可分发版的信息）](create-upload-generic.md)
-* [上载自定义磁盘映像并从其创建 Linux VM](upload-vhd.md)
+* [上传自定义磁盘映像并从其创建 Linux VM](upload-vhd.md)
 * [如何捕获用作 Resource Manager 模板的 Linux 虚拟机](capture-image.md)。
   
   * 用于捕获现有 VM 的快速入门示例命令：

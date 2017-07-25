@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: e4851e872349fa6483e1f1a340d0968e845a3518
-ms.openlocfilehash: c286b748822d6667f5682c13b7d4c870a3caab65
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 7a94fd5065de93384460e851627a9813d439956b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="manage-azure-resources-through-portal"></a>通过门户管理 Azure 资源
@@ -31,7 +32,7 @@ ms.openlocfilehash: c286b748822d6667f5682c13b7d4c870a3caab65
 
 本主题说明如何将 [Azure 门户](https://portal.azure.com)与 [Azure Resource Manager](resource-group-overview.md) 配合使用来管理 Azure 资源。 若要了解如何通过门户部署资源，请参阅[使用 Resource Manager 模板和 Azure 门户部署资源](resource-group-template-deploy-portal.md)。
 
-目前，并非每种服务都支持门户或资源管理器。 对于这些服务，需要使用[经典门户](https://manage.windowsazure.com)。 若要了解每种服务的状态，请参阅 [Azure 门户可用性图表](https://azure.microsoft.com/features/azure-portal/availability/)。
+目前，并非每种服务都支持门户或 Resource Manager。 对于这些服务，需要使用[经典门户](https://manage.windowsazure.com)。 若要了解每种服务的状态，请参阅 [Azure 门户可用性图表](https://azure.microsoft.com/features/azure-portal/availability/)。
 
 ## <a name="manage-resource-groups"></a>管理资源组
 
@@ -138,10 +139,5 @@ ms.openlocfilehash: c286b748822d6667f5682c13b7d4c870a3caab65
 * 若要通过门户部署资源，请参阅[使用 Resource Manager 模板和 Azure 门户部署资源](resource-group-template-deploy-portal.md)。
 * 若要管理对资源的访问，请参阅[使用角色分配管理对 Azure 订阅资源的访问](../active-directory/role-based-access-control-configure.md)。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

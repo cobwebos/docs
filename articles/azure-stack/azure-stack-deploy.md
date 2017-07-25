@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 07/11/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 53ce1a32daf9bcef501427e09568c2edf3c4f2bb
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: dd4e8ac2d1a5201bb29c5810d1a81b421e2b4737
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure Stack deployment prerequisites
@@ -119,31 +119,61 @@ Make sure there is a DHCP server available on the network that the NIC connects 
 ### <a name="internet-access"></a>Internet access
 Azure Stack requires access to the Internet, either directly or through a transparent proxy. Azure Stack does not support the configuration of a web proxy to enable Internet access. Both the host IP and the new IP assigned to the MAS-BGPNAT01 (by DHCP or static IP) must be able to access Internet. Ports 80 and 443 are used under the graph.windows.net and login.microsoftonline.com domains.
 
-## <a name="turn-off-telemetry-optional"></a>Turn off telemetry (optional)
-Microsoft Azure Stack includes Windows Server 2016 and SQL Server 2014. Neither of these products are changed from default settings and both are described by the Microsoft Enterprise Privacy Statement. Azure Stack also contains open source software which has not been modified to send telemetry to Microsoft. When a customer provides a Microsoft Azure account, Azure Stack collects the following information:
+## <a name="telemetry"></a>Telemetry
 
-- billing information as detailed in [Get consumption data for an Azure subscription](https://msdn.microsoft.com/en-us/library/azure/mt219001) and [Azure Stack Usage API FAQs](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-usage-related-faq)
+Telemetry helps us shape future versions of Azure Stack. It lets us respond quickly to feedback, provide new features, and improve quality. Microsoft Azure Stack includes Windows Server 2016 and SQL Server 2014. Neither of these products are changed from default settings and both are described by the Microsoft Enterprise Privacy Statement. Azure Stack also contains open source software which has not been modified to send telemetry to Microsoft. Here are some examples of Azure Stack telemetry data:
+
 - deployment registration information
 - when an alert is opened and closed
 - the number of network resources
-- information about Azure-consistent storage
 
 To support telemetry data flow, port 443 (HTTPS) must be open in your network. The client endpoint is https://vortex-win.data.microsoft.com.
 
-If you don’t want to provide telemetry for Azure Stack, you can turn it off on the development kit host. 
+If you don’t want to provide telemetry for Azure Stack, you can turn it off on the development kit host and the infrastructure virtual machines as explained below.
+
+### <a name="turn-off-telemetry-on-the-development-kit-host-optional"></a>Turn off telemetry on the development kit host (optional)
 
 >[!NOTE]
-If you want to turn off telemetry for Azure Stack, you must do so before you run the deployment script.
+If you want to turn off telemetry for the development kit host, you must do so before you run the deployment script.
 
-To turn off telemetry, follow these steps:
+Before [running the asdk-installer.ps1 script]() to deploy the development kit host, boot into the CloudBuilder.vhdx and run the following script in an elevated PowerShell window:
+```powershell
+### Get current AllowTelmetry value on DVM Host
+(Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
+-Name AllowTelemetry).AllowTelemetry
+### Set & Get updated AllowTelemetry value for ASDK-Host 
+Set-ItemProperty-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
+-Name "AllowTelemetry" -Value '0'  
+(Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
+-Name AllowTelemetry).AllowTelemetry
+```
 
-1. Before running the deployment script, open Registry Editor on the development kit host and navigate to the following path:  Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection
-2. Double-click the **AllowTelemetry** key > change the **Value data** to 0 > click **OK**.
+Setting **AllowTelemetry** to 0 turns off telemetry for both Windows and Azure Stack deployment. Only critical security events from the operating system are sent. The setting controls Windows telemetry across all hosts and infrastructure VMs, and is reapplied to new nodes/VMs when scale-out operations occur.
 
-Setting **AllowTelemetry** to 0 turns off telemetry for both Windows and Azure Stack. The setting controls Windows telemetry across all hosts and infrastructure VMs, and is reapplied to new nodes/VMs when scale-out operations occur. Only critical security events from the operating system are sent.
+
+### <a name="turn-off-telemetry-on-the-infrastructure-virtual-machines-optional"></a>Turn off telemetry on the infrastructure virtual machines (optional)
+
+After the deployment is successful, run the following script in an elevated PowerShell window (as the AzureStack\AzureStackAdmin user) on the development kit host:
+
+```powershell
+$AzSVMs= get-vm |  where {$_.Name -like "AzS-*"}
+### Show current AllowTelemetry value for all AzS-VMs
+invoke-command -computername $AzSVMs.name {(Get-ItemProperty -Path `
+"HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name AllowTelemetry).AllowTelemetry}
+### Set & Get updated AllowTelemetry value for all AzS-VMs
+invoke-command -computername $AzSVMs.name {Set-ItemProperty -Path `
+"HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name "AllowTelemetry" -Value '0'}
+invoke-command -computername $AzSVMs.name {(Get-ItemProperty -Path `
+"HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name AllowTelemetry).AllowTelemetry}
+```
 
 To configure SQL Server telemetry, see [How to configure SQL Server 2016](https://support.microsoft.com/en-us/help/3153756/how-to-configure-sql-server-2016-to-send-feedback-to-microsoft).
 
+### <a name="usage-reporting"></a>Usage reporting
+
+Through registration, Azure Stack is also configured to forward usage information to Azure. Usage reporting is controlled independently from telemetry. You can turn off usage reporting when [registering](azure-stack-register.md) by using the script on Github. Just set the **$reportUsage** parameter to **$false**.
+
+Usage data is formatted as detailed in the [Report Azure Stack usage data to Azure](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-usage-reporting). Azure Stack Development Kit users are not actually charged. This functionality is included in the development kit so that you can test to see how usage reporting works. 
 
 
 ## <a name="next-steps"></a>Next steps

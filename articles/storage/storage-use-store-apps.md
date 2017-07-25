@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff0c9f9c800b0e4764efb88e43087bd96fa820e9
-ms.openlocfilehash: 7b02809da6082886b4e2982a698cef09212b6862
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 43d38584270fbbbe6fa4e4ff8cef72ca44e14acc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="how-to-use-azure-storage-in-windows-store-apps"></a>如何在 Windows 应用商店应用中使用 Azure 存储
@@ -27,7 +26,7 @@ ms.lasthandoff: 07/06/2017
 本指南演示了如何开始开发使用 Azure 存储的 Windows 应用商店应用程序。
 
 ## <a name="download-required-tools"></a>下载所需工具
-* [Visual Studio](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx) 便于生成、调试、本地化、包装和部署 Windows 应用商店应用。 需要 Visual Studio 2012 或更高版本。
+* [Visual Studio](https://www.visualstudio.com/downloads/) 便于生成、调试、本地化、包装和部署 Windows 应用商店应用。 需要 Visual Studio 2012 或更高版本。
 * [Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage)提供了用于使用 Azure 存储的 Windows 运行时类库。
 * [适用于 Windows 应用商店应用的 WCF 数据服务工具](http://www.microsoft.com/download/details.aspx?id=30714)利用 Visual Studio 中对 Windows 应用商店应用程序的客户端 OData 支持，扩展了“添加服务引用”体验。
 

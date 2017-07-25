@@ -15,16 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: 5dab5330ec286872fae8a880f0afec4b2ff88f8c
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: 1d289c09465cb8d5e4bfa569441dffcbf562b3bf
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 07/22/2017
 
 ---
-# 使用门户删除虚拟网络网关
-<a id="delete-a-virtual-network-gateway-using-the-portal" class="xliff"></a>
+# <a name="delete-a-virtual-network-gateway-using-the-portal"></a>使用门户删除虚拟网络网关
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](vpn-gateway-delete-vnet-gateway-portal.md)
@@ -37,26 +35,25 @@ ms.lasthandoff: 06/23/2017
 
 - 如果想要保留资源组中的某些资源，则删除虚拟网络网关的过程会略微复杂一些。 在删除虚拟网络网关之前，必须先删除任何依赖于该网关的资源。 遵循的步骤取决于创建的连接类型，以及每个连接的依赖资源。
 
+## <a name="delete-a-vpn-gateway"></a>删除 VPN 网关
+
 若要删除虚拟网络网关，必须先删除与该虚拟网络网关相关的每个资源。 由于存在依赖关系，必须按特定的顺序删除资源。
 
 [!INCLUDE [delete gateway](../../includes/vpn-gateway-delete-vnet-gateway-portal-include.md)]
 
 此时，虚拟网络网关已删除。 接下来的步骤将帮助你删除不再使用的任何资源。
 
-### 删除本地网络网关
-<a id="to-delete-the-local-network-gateway" class="xliff"></a>
+### <a name="to-delete-the-local-network-gateway"></a>删除本地网络网关
 
 1. 在“所有资源”中，找到与每个连接相关联的本地网络网关。
 2. 在本地网络网关的“概述”边栏选项卡上，单击“删除”。
 
-### 删除网关的公共 IP 地址资源
-<a id="to-delete-the-public-ip-address-resource-for-the-gateway" class="xliff"></a>
+### <a name="to-delete-the-public-ip-address-resource-for-the-gateway"></a>删除网关的公共 IP 地址资源
 
 1. 在“所有资源”中，找到已分配给网关的公共 IP 地址资源。 如果虚拟网络网关采用主动-主动配置，将显示两个公共 IP 地址。 
 2. 在公共 IP 地址的“概述”页上，单击“删除”，然后单击“是”进行确认。
 
-### 删除网关子网
-<a id="to-delete-the-gateway-subnet" class="xliff"></a>
+### <a name="to-delete-the-gateway-subnet"></a>删除网关子网
 
 1. 在“所有资源”中，找到虚拟网络。 
 2. 在“子网”边栏选项卡上，单击“GatewaySubnet”，然后单击“删除”。 

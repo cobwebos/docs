@@ -12,12 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 07/20/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.reviewer: jeedes
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6a01f53ce05aa8084f0a18e56714b1790cfce912
 ms.openlocfilehash: 00dcedb09ea63b4337b2b730746fb2f5a1f27e64
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/15/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>教程：Azure Active Directory 与 Qlik Sense Enterprise 集成
@@ -372,9 +374,4 @@ ms.openlocfilehash: 00dcedb09ea63b4337b2b730746fb2f5a1f27e64
 [qs51]: ./media/active-directory-saas-qliksense-enterprise-tutorial/tutorial_qliksenseenterprise_51.png
 [qs52]: ./media/active-directory-saas-qliksense-enterprise-tutorial/tutorial_qliksenseenterprise_52.png
 [qs53]: ./media/active-directory-saas-qliksense-enterprise-tutorial/tutorial_qliksenseenterprise_53.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 07/20/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.reviewer: jeedes
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: 8b0417d131bc25225e777285b9e4bfbaa97aad8f
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/29/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>教程：Azure Active Directory 与 GitHub 集成
@@ -126,10 +127,10 @@ ms.lasthandoff: 03/29/2017
 4. 在“用户属性”部分中，为“用户标识符”选择“user.mail”。
 
     ![配置单一登录](./media/active-directory-saas-github-tutorial/tutorial_github_attribute_new01.png)
-     
+    
 5. 在“SAML 签名证书”部分中，单击“创建新证书”。
 
-     ![配置单一登录](./media/active-directory-saas-github-tutorial/tutorial_github_03.png)
+    ![配置单一登录](./media/active-directory-saas-github-tutorial/tutorial_github_03.png)
 
 6. 在“创建新证书”对话框中，单击日历图标，然后选择“到期日期”。 然后单击“保存”按钮。
 
@@ -167,9 +168,9 @@ ms.lasthandoff: 03/29/2017
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **登录 URL**：输入 Azure AD 上的“配置 GitHub”部分中显示的“SAML 单一登录服务 URL”
 
-      b.保留“数据库类型”设置，即设置为“共享”。 **颁发者**：输入 Azure AD 上的“配置 GitHub”部分中显示的“SAML 实体 ID”
+    b.保留“数据库类型”设置，即设置为“共享”。 **颁发者**：输入 Azure AD 上的“配置 GitHub”部分中显示的“SAML 实体 ID”
 
-       c. **公共证书**：在记事本中打开从 Azure AD 下载的证书，并复制包括“BEGIN CERTIFICATE”和“END CERTIFICATE”在内的内容
+    c. **公共证书**：在记事本中打开从 Azure AD 下载的证书，并复制包括“BEGIN CERTIFICATE”和“END CERTIFICATE”在内的内容
 
     ![设置](./media/active-directory-saas-github-tutorial/tutorial_github_config_github_051.png)
 

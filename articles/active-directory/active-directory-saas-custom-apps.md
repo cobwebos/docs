@@ -11,14 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 07/20/2017
 ms.author: asmalser
+ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 18415c92d50a00c14823685857ab7e2624334ec7
 ms.openlocfilehash: b4a1bb3211da8c02d48ebad69d5e1cbb4de2c45d
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/01/2017
-
 
 ---
 # <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录

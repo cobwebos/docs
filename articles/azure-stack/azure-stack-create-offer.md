@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: 705df51cab15fc8273dc7057a13a47784c1d1bde
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 3d7360a1fb1c0cf42d77b3f39bf92c30438c2e01
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Create an offer in Azure Stack
@@ -44,6 +44,11 @@ Offers must be made public for tenants to get the full view when subscribing. Of
 * **Decommissioned**: Closed to new subscribers. The cloud administrator can use decommissioned to prevent future subscriptions, but leave current subscribers untouched.
 
 Changes to the offer are not immediately visible to the tenant. To see the changes, you might have to logout/login to see the new subscription in the “Subscription picker” when creating resources/resource groups.
+
+> [!NOTE]
+>You can also create default offers, plans, and quotas by using PowerShell as explained in the [Azure Stack Service Administrator readme](https://github.com/Azure/AzureStack-Tools/tree/master/ServiceAdmin).
+>
+
 
 ## <a name="next-steps"></a>Next steps
 [Subscribe to an offer and then provision a VM](azure-stack-subscribe-plan-provision-vm.md)
