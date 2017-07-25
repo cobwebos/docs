@@ -12,14 +12,13 @@ ms.devlang: node.js
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2017
+ms.date: 07/26/2017
 ms.author: dobett
 ms.translationtype: Human Translation
 ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
 ms.openlocfilehash: 3d41a3665ffb2217ecbe1ad53853f0e9d30fac34
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/03/2017
-
 
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-send-simulated-telemetry-using-nodejs"></a>使用 Node.js 将 Raspberry Pi 3 连接到远程监视解决方案，并发送模拟遥测数据
@@ -52,33 +51,44 @@ ms.lasthandoff: 05/03/2017
 
 1. 使用以下命令更新 Raspberry Pi：
 
-    `sudo apt-get update`
+    ```sh
+    sudo apt-get update
+    ```
 
 1. 使用以下命令将 Node.js 二进制文件下载到 Raspberry Pi 上：
 
-    `wget https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.gz`
+    ```sh
+    wget https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.gz
+    ```
 
 1. 使用以下命令安装二进制文件：
 
-    `sudo tar -C /usr/local --strip-components 1 -xzf node-v6.10.2-linux-armv7l.tar.gz`
+    ```sh
+    sudo tar -C /usr/local --strip-components 1 -xzf node-v6.10.2-linux-armv7l.tar.gz
+    ```
 
 1. 使用以下命令验证已成功安装 Node.js v6.10.2：
 
-    `node --version`
+    ```sh
+    node --version
+    ```
 
 ### <a name="clone-the-repositories"></a>克隆存储库
 
 如果尚未这样做，请通过在 Pi 上的终端中运行以下命令，克隆所需的存储库：
 
-`cd ~`
-
-`git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit.git`
+```sh
+cd ~
+git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit.git
+```
 
 ### <a name="update-the-device-connection-string"></a>更新设备连接字符串
 
 使用以下命令在 **nano** 编辑器中打开示例源文件：
 
-`nano ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/simulator/remote_monitoring.js`
+```sh
+nano ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/simulator/remote_monitoring.js
+```
 
 查找行：
 
@@ -92,13 +102,16 @@ var connectionString = 'HostName=[Your IoT hub name].azure-devices.net;DeviceId=
 
 运行以下命令以安装示例的必备组件包：
 
-`cd ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/simulator`
-
-`npm install`
+```sh
+cd ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/simulator
+npm install
+```
 
 现在可以在 Raspberry Pi 上运行示例程序。 输入以下命令：
 
-`sudo node ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/simulator/remote_monitoring.js`
+```sh
+sudo node ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/simulator/remote_monitoring.js
+```
 
 以下示例输出是在 Raspberry Pi 的命令提示符下看到的输出示例：
 
@@ -111,7 +124,6 @@ var connectionString = 'HostName=[Your IoT hub name].azure-devices.net;DeviceId=
 ## <a name="next-steps"></a>后续步骤
 
 有关 Azure IoT 的更多示例和文档，请访问 [Azure IoT 开发人员中心](https://azure.microsoft.com/develop/iot/)。
-
 
 [img-raspberry-output]: ./media/iot-suite-raspberry-pi-kit-node-get-started-simulator/app-output.png
 

@@ -12,14 +12,13 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/25/2017
+ms.date: 07/25/2017
 ms.author: dobett
 ms.translationtype: Human Translation
 ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
 ms.openlocfilehash: 971f23a01b53ed6d7d19438567392e0b43b57120
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/03/2017
-
 
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-enable-remote-firmware-updates-using-c"></a>使用 C 将 Raspberry Pi 3 连接到远程监视解决方案并启用远程固件更新
@@ -33,17 +32,17 @@ ms.lasthandoff: 05/03/2017
 
 本教程使用：
 
-- Raspbian OS、C 编程语言和 Microsoft Azure IoT SDK for C 实现示例设备。
-- 使用 IoT 套件远程监视预配置解决方案作为基于云的后端。
+* Raspbian OS、C 编程语言和 Microsoft Azure IoT SDK for C 实现示例设备。
+* 使用 IoT 套件远程监视预配置解决方案作为基于云的后端。
 
 ## <a name="overview"></a>概述
 
 在本教程中，你将完成以下步骤：
 
-- 将远程监视预配置解决方案的实例部署到 Azure 订阅。 此步骤会自动部署并配置多个 Azure 服务。
-- 将设备和传感器设置为与计算机和远程监视解决方案通信。
-- 更新用于连接到远程监视解决方案的示例设备代码，并发送可在解决方案仪表板上查看的遥测数据。
-- 使用示例设备代码更新客户端应用程序。
+* 将远程监视预配置解决方案的实例部署到 Azure 订阅。 此步骤会自动部署并配置多个 Azure 服务。
+* 将设备和传感器设置为与计算机和远程监视解决方案通信。
+* 更新用于连接到远程监视解决方案的示例设备代码，并发送可在解决方案仪表板上查看的遥测数据。
+* 使用示例设备代码更新客户端应用程序。
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-prerequisites](../../includes/iot-suite-raspberry-pi-kit-prerequisites.md)]
 
@@ -64,15 +63,18 @@ ms.lasthandoff: 05/03/2017
 
 如果尚未这样做，请通过在 Pi 上运行以下命令，克隆所需的存储库：
 
-`cd ~`
-
-`git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-c-raspberrypi-getstartedkit.git`
+```sh
+cd ~
+git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-c-raspberrypi-getstartedkit.git
+```
 
 ### <a name="update-the-device-connection-string"></a>更新设备连接字符串
 
 使用以下命令在 **nano** 编辑器中打开示例配置文件：
 
-`nano ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/advanced/config/deviceinfo`
+```sh
+nano ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/advanced/config/deviceinfo
+```
 
 将占位符值替换为在本教程开始时创建并保存的设备 ID 和 IoT 中心信息。
 
@@ -89,19 +91,23 @@ HostName=youriothubname.azure-devices.net;DeviceId=yourdeviceid;SharedAccessKey=
 
 如果尚未这样做，请通过在 Raspberry Pi 上的终端中运行以下命令，为适用于 C 的 Microsoft Azure IoT 设备 SDK 安装必备组件包：
 
-`sudo apt-get update`
-
-`sudo apt-get install g++ make cmake git libcurl4-openssl-dev libssl-dev uuid-dev`
+```sh
+sudo apt-get update
+sudo apt-get install g++ make cmake git libcurl4-openssl-dev libssl-dev uuid-dev
+```
 
 现在可以在 Raspberry Pi 上生成示例解决方案：
 
-`chmod +x ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/advanced/1.0/build.sh`
-
-`~/iot-remote-monitoring-c-raspberrypi-getstartedkit/advanced/1.0/build.sh`
+```sh
+chmod +x ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/advanced/1.0/build.sh
+~/iot-remote-monitoring-c-raspberrypi-getstartedkit/advanced/1.0/build.sh
+```
 
 现在可以在 Raspberry Pi 上运行示例程序。 输入以下命令：
 
-  `sudo ~/cmake/remote_monitoring/remote_monitoring`
+  ```sh
+  sudo ~/cmake/remote_monitoring/remote_monitoring
+  ```
 
 以下示例输出是在 Raspberry Pi 的命令提示符下看到的输出示例：
 

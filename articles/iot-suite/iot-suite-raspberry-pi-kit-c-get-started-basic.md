@@ -12,14 +12,13 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/24/2017
+ms.date: 07/25/2017
 ms.author: dobett
 ms.translationtype: Human Translation
 ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
 ms.openlocfilehash: ce8809a8e464e5a6815ced6e5609e5196a896057
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/03/2017
-
 
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-send-telemetry-from-a-real-sensor-using-c"></a>使用 C 将 Raspberry Pi 3 连接到远程监视解决方案，并从实际传感器发送遥测数据
@@ -58,17 +57,19 @@ ms.lasthandoff: 05/03/2017
 
 如果尚未这样做，请通过在 Pi 上的终端中运行以下命令，克隆所需的存储库：
 
-`cd ~`
-
-`git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-c-raspberrypi-getstartedkit.git`
-
-`git clone --recursive https://github.com/WiringPi/WiringPi.git`
+```sh
+cd ~
+git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-c-raspberrypi-getstartedkit.git
+git clone --recursive https://github.com/WiringPi/WiringPi.git
+```
 
 ### <a name="update-the-device-connection-string"></a>更新设备连接字符串
 
 使用以下命令在 **nano** 编辑器中打开示例源文件：
 
-`nano ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/basic/remote_monitoring/remote_monitoring.c`
+```sh
+nano ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/basic/remote_monitoring/remote_monitoring.c
+```
 
 找到以下行：
 
@@ -83,19 +84,23 @@ static const char* connectionString = "HostName=[IoTHub Name].azure-devices.net;
 
 通过在 Raspberry Pi 上的终端中运行以下命令，为适用于 C 的 Microsoft Azure IoT 设备 SDK 安装必备组件包：
 
-`sudo apt-get update`
-
-`sudo apt-get install g++ make cmake git libcurl4-openssl-dev libssl-dev uuid-dev`
+```sh
+sudo apt-get update
+sudo apt-get install g++ make cmake git libcurl4-openssl-dev libssl-dev uuid-dev
+```
 
 现在可以在 Raspberry Pi 上生成已更新的示例解决方案：
 
-`chmod +x ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/basic/build.sh`
-
-`~/iot-remote-monitoring-c-raspberrypi-getstartedkit/basic/build.sh`
+```sh
+chmod +x ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/basic/build.sh
+~/iot-remote-monitoring-c-raspberrypi-getstartedkit/basic/build.sh
+```
 
 现在可以在 Raspberry Pi 上运行示例程序。 输入以下命令：
 
-  `sudo ~/cmake/remote_monitoring/remote_monitoring`
+```sh
+sudo ~/cmake/remote_monitoring/remote_monitoring
+```
 
 以下示例输出是在 Raspberry Pi 的命令提示符下看到的输出示例：
 
@@ -108,7 +113,6 @@ static const char* connectionString = "HostName=[IoTHub Name].azure-devices.net;
 ## <a name="next-steps"></a>后续步骤
 
 有关 Azure IoT 的更多示例和文档，请访问 [Azure IoT 开发人员中心](https://azure.microsoft.com/develop/iot/)。
-
 
 [img-raspberry-output]: ./media/iot-suite-raspberry-pi-kit-c-get-started-basic/appoutput.png
 
