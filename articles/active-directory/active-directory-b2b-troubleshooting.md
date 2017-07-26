@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 04/12/2017
+ms.date: 05/25/2017
 ms.author: sasubram
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 4ae08f16db8c0b8cd2e918d25aa546f1da615af1
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 42229b338063634480551f26896963d8add5e071
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -34,12 +35,13 @@ ms.lasthandoff: 04/27/2017
 
 ## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>B2B 来宾用户没有显示在 SharePoint Online/OneDrive 人员选取器中 
  
-默认情况下，搜索现有来宾用户的功能在 SharePoint Online 人员选取器中处于关闭状态以匹配旧行为。
-你可以使用“ShowPeoplePickerSuggestionsForGuestUsers”设置在租户和网站集级别启用此功能。 这可以使用 Set-SPOTenant 和 Set-SPOSite cmdlet 进行设置，这将允许用户搜索目录中的所有现有来宾用户。 租户范围中的更改不会影响已经预配的 SPO 站点。
+默认情况下，搜索现有来宾用户的功能在 SharePoint Online (SPO) 人员选取器中处于“关闭”状态以匹配旧行为。
+
+可使用“ShowPeoplePickerSuggestionsForGuestUsers”设置在租户和网站集级别启用此功能。 可使用 Set-SPOTenant 和 Set-SPOSite cmdlet 设置此功能，这将允许用户搜索目录中的所有现有来宾用户。 租户范围中的更改不会影响已经预配的 SPO 站点。
 
 ## <a name="invitations-have-been-disabled-for-directory"></a>已对目录禁用邀请
 
-如果你收到错误消息指示你无权邀请用户，请验证你的用户帐户是否有权邀请外部用户。 这可以在“用户设置”下完成：
+如果收到无权邀请用户的通知，请在“用户设置”下验证用户帐户是否有权邀请外部用户：
 
 ![](media/active-directory-b2b-troubleshooting/external-user-settings.png)
 
@@ -57,13 +59,13 @@ ms.lasthandoff: 04/27/2017
 
 ### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>外部用户尚未存在于联合域中
 
-在外部用户正在使用联合身份验证解决方案的情况下，在该解决方案中，身份验证在本地执行，而该用户尚未存在于 Azure Active Directory 中，因此无法邀请该用户。
+如果使用联合身份验证，并且用户在 Azure Active Directory 中不存在，则无法邀请该用户。
 
 若要解决此问题，外部用户的管理员必须将该用户的帐户同步到 Azure Active Directory。
 
 ## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>“\#”（这通常不是有效字符）如何与 Azure AD 进行同步？
 
-“\#”是 Azure AD B2B 协作或外部用户的 UPN 中的保留字符（即，如果 user@contoso.com 被邀请，将变为 user_contoso.com#EXT@fabrikam.onmicrosoft.com），因此不允许来自本地的 UPN 中的 \# 登录到 Azure 门户。
+由于受邀帐户 user@contoso.com 变为 user_contoso.com#EXT@fabrikam.onmicrosoft.com，“\#”是 Azure AD B2B 协作或外部用户的 UPN 中的保留字符。 因此，不允许来自本地的 UPN 中的 \# 登录到 Azure 门户。 
 
 ## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>我将外部用户添加到同步组时，收到错误
 
@@ -75,7 +77,12 @@ ms.lasthandoff: 04/27/2017
 
 ## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>我发现邀请消息有时不包含自定义消息
 
-为了遵守隐私法规，如果邀请者在资源组织（也称为邀请租户）中不具有电子邮件地址，或当应用服务主体发送邀请时，API 不会在电子邮件邀请中包含自定义消息。 如果这对你而言是一个重要方案，那么可以禁止 API 发送邀请电子邮件，并通过所选的电子邮件机制发送邮件。 请记得咨询所属组织的法律顾问，以确保通过这种方式发送的任何电子邮件均符合隐私法。
+为遵守隐私法规，在以下情况下，API 不会在电子邮件邀请中包含自定义邮件：
+
+- 邀请方在邀请租户中没有电子邮件地址
+- 应用服务主体发送邀请
+
+如果此方案非常重要，则可取消 API 邀请电子邮件，并通过所选的电子邮件机制发送邮件。 请咨询所属组织的法律顾问，确保通过这种方式发送的任何电子邮件均符合隐私法规。
 
 ## <a name="next-steps"></a>后续步骤
 

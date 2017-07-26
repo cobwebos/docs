@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: dde3d1b1b0708d49ac713e18242c3376d301c675
-ms.lasthandoff: 04/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 4fdd007c2cfad7b42f26ab2cacfba06d95c8dad3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -37,7 +38,7 @@ ms.lasthandoff: 04/10/2017
 
 |属性|说明|
 |---|---|
-|**每个数据包的最大字节数（字节）** | 从每个数据包捕获的字节数，如果留空，将捕获所有字节。 从每个数据包捕获的字节数，如果留空，将捕获所有字节。 如果仅需要 IPv4 标头 - 请在此处指示 60 |
+|**每个数据包的最大字节数（字节）** | 从每个数据包捕获的字节数，如果留空，将捕获所有字节。 从每个数据包捕获的字节数，如果留空，将捕获所有字节。 如果仅需要 IPv4 标头 - 请在此处指示 34 |
 |**每个会话的最大字节数（字节）** | 达到会话结束值后，该会话中捕获的字节总数。|
 |**时间限制（秒）** | 为数据包捕获会话设置时间约束。 默认值为 18000 秒或 5 小时。|
 

@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 8f544b781bbf11214183bc0f46215bb9e16c9f55
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 330f733440932a769eb0fe6031cd0d947a820080
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -40,9 +40,9 @@ ms.lasthandoff: 05/17/2017
 
 创建连接后，输入 Office 365 用户属性，如用户 ID。 本主题中的 **REST API 参考**介绍了这些属性。
 
-## <a name="view-the-swagger"></a>查看 Swagger
+## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
-请参阅 [Swagger 详细信息](/connectors/officeusers/)。
+在[连接器详细信息](/connectors/officeusers/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
 
 ## <a name="more-connectors"></a>更多连接器
 返回到 [API 列表](apis-list.md)。

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: e7dad0f943375f1bf2996564558e313416506506
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: e0adac5193ae412845c8413dfee6b5557096359a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -148,7 +149,7 @@ Azure 开发测试实验室的作用域中存在两种定义用户权限的角�
 创建 VM 和[从 Windows PowerShell 部署 Azure Resource Manager 模板](../azure-resource-manager/resource-group-template-deploy.md)时，可使用 [VSTS 任务扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)或[生成 Azure Resource Manager 模板](devtest-lab-add-vm.md#save-azure-resource-manager-template)。
 
 ### <a name="how-do-i-move-my-existing-azure-vms-into-my-azure-devtest-labs-lab"></a>如何将现有 Azure VM 移到 Azure 开发测试实验室？
-我们正设计解决方案，直接将 VM 移动到 Azure 开发测试实验室，但目前你可以将现有 VM 复制到 Azure 开发测试实验室，如下所示：
+请按照以下步骤来将现有 VM 复制到 Azure 开发测试实验室：
 
 1. 使用此 [Windows PowerShell 脚本](https://github.com/Azure/azure-devtestlab/blob/master/Scripts/CopyVHDFromVMToLab.ps1)复制现有 VM 的 VHD 文件
 2. 在 Azure 开发测试实验室内[创建自定义映像](devtest-lab-create-template.md)。

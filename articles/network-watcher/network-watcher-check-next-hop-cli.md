@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure 网络观察程序“下一跃点”功能查找下一跃点 - Azure CLI | Microsoft 文档"
+title: "使用 Azure 网络观察程序“下一跃点”功能查找下一跃点 - Azure CLI 2.0 | Microsoft Docs"
 description: "本文将介绍如何使用 Azure CLI 通过“下一跃点”功能查找下一跃点类型和 ip 地址。"
 services: network-watcher
 documentationcenter: na
@@ -14,26 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 49939946f887c51fbc2a135c28236407f5569f48
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: d1ee6870ba0188ff2c473e4cca12a5bdc1f97d3d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/26/2017
 
 
 ---
 
-# <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-azure-cli"></a>使用 Azure CLI 通过 Azure 网络观察程序中的“下一跃点”功能找到下一跃点类型
+# <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-azure-cli-20"></a>使用 Azure CLI 2.0 通过 Azure 网络观察程序中的“下一跃点”功能找到下一跃点类型
 
 > [!div class="op_single_selector"]
 > - [Azure 门户](network-watcher-check-next-hop-portal.md)
 > - [PowerShell](network-watcher-check-next-hop-powershell.md)
-> - [CLI](network-watcher-check-next-hop-cli.md)
+> - [CLI 1.0](network-watcher-check-next-hop-cli-nodejs.md)
+> - [CLI 2.0](network-watcher-check-next-hop-cli.md)
 > - [Azure REST API](network-watcher-check-next-hop-rest.md)
-
 
 “下一跃点”是网络观察程序的一项功能，提供基于指定的虚拟机获取下一跃点类型和 IP 地址的功能。 此功能对于确定离开虚拟机的流量是否通过网关、Internet 或虚拟网络到达其目标很有用。
 
-本文使用适用于 Windows、Mac 和 Linux 的跨平台 Azure CLI 1.0。 对于 CLI 支持，网络观察程序当前使用 Azure CLI 1.0。
+本文使用资源管理部署模型的新一代 CLI (Azure CLI 2.0)，其适用于 Windows、Mac 和 Linux。
+
+若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (Azure CLI)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2)。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -48,10 +51,13 @@ ms.lasthandoff: 03/28/2017
 
 ## <a name="get-next-hop"></a>获取下一跃点
 
-为了获取下一跃点，我们将调用 `azure netowrk watcher next-hop` cmdlet。 我们向该 cmdlet 传递网络观察程序资源组 NetworkWatcher、虚拟机 ID、源 IP 地址和目标 IP 地址。 在此示例中，目标 IP 地址属于另一个虚拟网络中的 VM。 在两个虚拟网络之间有一个虚拟网络网关。
+为了获取下一跃点，我们将调用 `az network watcher show-next-hop` cmdlet。 我们向该 cmdlet 传递网络观察程序资源组 NetworkWatcher、虚拟机 ID、源 IP 地址和目标 IP 地址。 在此示例中，目标 IP 地址属于另一个虚拟网络中的 VM。 在两个虚拟网络之间有一个虚拟网络网关。
+
+如果尚未这样做，请安装并配置最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/#login) 登录 Azure 帐户。 然后，运行以下命令：
 
 ```azurecli
-azure network watcher next-hop -g resourceGroupName -n networkWatcherName -t targetResourceId -a <source-ip> -d <destination-ip>
+az network watcher show-next-hop --resource-group <resourcegroupName> --vm <vmNameorID> --source-ip <source-ip> --dest-ip <destination-ip>
+
 ```
 
 > [!NOTE]
@@ -61,9 +67,12 @@ azure network watcher next-hop -g resourceGroupName -n networkWatcherName -t tar
 
 完成后，将提供结果。 将返回下一跃点 IP 地址和它所属的资源类型。
 
-```
-data:    Next Hop Ip Address             : 10.0.1.2
-info:    network watcher next-hop command OK
+```azurecli
+{
+    "nextHopIpAddress": null,
+    "nextHopType": "Internet",
+    "routeTableId": "System Route"
+}
 ```
 
 以下列表显示当前可用的 NextHopType 值：

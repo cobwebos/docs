@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure 网络观察程序安全组视图分析网络安全性 - Azure CLI | Microsoft 文档"
-description: "本文将介绍如何使用 Azure CLI 通过安全组视图分析虚拟机安全性。"
+title: "使用 Azure 网络观察程序安全组视图分析网络安全性 - Azure CLI 2.0 | Microsoft Docs"
+description: "本文将介绍如何使用 Azure CLI 2.0 通过安全组视图分析虚拟机安全性。"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,23 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 9c539f5885a5014f98ccc1083c93daa4eee3646c
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 1756e14819e3b7c79361c193413a1fcd7f24a4e6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/26/2017
 
 ---
 
-# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>使用 Azure CLI 通过安全组视图分析虚拟机安全性
+# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli-20"></a>使用 Azure CLI 2.0 通过安全组视图分析虚拟机安全性
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
-> - [CLI](network-watcher-security-group-view-cli.md)
+> - [CLI 1.0](network-watcher-security-group-view-cli-nodejs.md)
+> - [CLI 2.0](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
 安全组视图返回已应用于虚拟机的已配置的有效网络安全规则。 此功能可用于审核和诊断已在 VM 上配置以确保正确允许或拒绝流量的网络安全组和规则。 在本文中，我们将说明如何使用 Azure CLI 检索虚拟机的已配置的有效安全规则
 
-本文使用适用于 Windows、Mac 和 Linux 的跨平台 Azure CLI 1.0。 对于 CLI 支持，网络观察程序当前使用 Azure CLI 1.0。
+
+本文使用资源管理部署模型的新一代 CLI (Azure CLI 2.0)，其适用于 Windows、Mac 和 Linux。
+
+若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (Azure CLI)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2)。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -45,21 +50,21 @@ ms.lasthandoff: 03/28/2017
 需要虚拟机才能运行 `vm list` cmdlet。 以下命令列出资源组中的虚拟机：
 
 ```azurecli
-azure vm list -g resourceGroupName
+az vm list -resource-group resourceGroupName
 ```
 
 知道虚拟机后，可以使用 `vm show` cmdlet 获取其资源 ID：
 
 ```azurecli
-azure vm show -g resourceGroupName -n virtualMachineName
+az vm show -resource-group resourceGroupName -name virtualMachineName
 ```
 
 ## <a name="retrieve-security-group-view"></a>检索安全组视图
 
-下一步是检索安全组视图结果。 添加“--json”标志将设置 json 中结果的格式。
+下一步是检索安全组视图结果。
 
 ```azurecli
-azure network watcher security-group-view -g resourceGroupName -n networkWatcherName -t targetResourceId --json
+az network watcher show-security-group-view --resource-group resourceGroupName --vm vmName
 ```
 
 ## <a name="viewing-the-results"></a>查看结果
@@ -70,43 +75,84 @@ azure network watcher security-group-view -g resourceGroupName -n networkWatcher
 {
   "networkInterfaces": [
     {
-      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/networkInterfaces/testnic",
+      "id": "/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{nicName}",
+      "resourceGroup": "{resourceGroupName}",
       "securityRuleAssociations": {
+        "defaultSecurityRules": [
+          {
+            "access": "Allow",
+            "description": "Allow inbound traffic from all VMs in VNET",
+            "destinationAddressPrefix": "VirtualNetwork",
+            "destinationPortRange": "*",
+            "direction": "Inbound",
+            "etag": null,
+            "id": "/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups//providers/Microsoft.Network/networkSecurityGroups/{nsgName}/defaultSecurityRules/AllowVnetInBound",
+            "name": "AllowVnetInBound",
+            "priority": 65000,
+            "protocol": "*",
+            "provisioningState": "Succeeded",
+            "resourceGroup": "",
+            "sourceAddressPrefix": "VirtualNetwork",
+            "sourcePortRange": "*"
+          }...
+        ],
+        "effectiveSecurityRules": [
+          {
+            "access": "Deny",
+            "destinationAddressPrefix": "*",
+            "destinationPortRange": "0-65535",
+            "direction": "Outbound",
+            "expandedDestinationAddressPrefix": null,
+            "expandedSourceAddressPrefix": null,
+            "name": "DefaultOutboundDenyAll",
+            "priority": 65500,
+            "protocol": "All",
+            "sourceAddressPrefix": "*",
+            "sourcePortRange": "0-65535"
+          },
+          {
+            "access": "Allow",
+            "destinationAddressPrefix": "VirtualNetwork",
+            "destinationPortRange": "0-65535",
+            "direction": "Outbound",
+            "expandedDestinationAddressPrefix": [
+              "10.1.0.0/24",
+              "168.63.129.16/32"
+            ],
+            "expandedSourceAddressPrefix": [
+              "10.1.0.0/24",
+              "168.63.129.16/32"
+            ],
+            "name": "DefaultRule_AllowVnetOutBound",
+            "priority": 65000,
+            "protocol": "All",
+            "sourceAddressPrefix": "VirtualNetwork",
+            "sourcePortRange": "0-65535"
+          },...
+        ],
         "networkInterfaceAssociation": {
-          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/networkInterfaces/testvm",
+          "id": "/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{nicName}",
+          "resourceGroup": "{resourceGroupName}",
           "securityRules": [
             {
-              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Network/networkSecurityGroups/test-nsg/securityRules/default-allow-rdp",
-              "protocol": "TCP",
-              "sourcePortRange": "*",
-              "destinationPortRange": "3389",
-              "sourceAddressPrefix": "*",
-              "destinationAddressPrefix": "*",
               "access": "Allow",
-              "priority": 1000,
+              "description": null,
+              "destinationAddressPrefix": "*",
+              "destinationPortRange": "3389",
               "direction": "Inbound",
-              "provisioningState": "Succeeded",
+              "etag": "W/\"efb606c1-2d54-475a-ab20-da3f80393577\"",
+              "id": "/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{nsgName}/securityRules/default-allow-rdp",
               "name": "default-allow-rdp",
-              "etag": "W/\"00000000-0000-0000-0000-000000000000\""
+              "priority": 1000,
+              "protocol": "TCP",
+              "provisioningState": "Succeeded",
+              "resourceGroup": "{resourceGroupName}",
+              "sourceAddressPrefix": "*",
+              "sourcePortRange": "*"
             }
           ]
         },
-        "defaultSecurityRules": [
-          {
-            "id": "/subscriptions//resourceGroups//providers/Microsoft.Network/networkSecurityGroups//defaultSecurityRules/",
-            "description": "Allow inbound traffic from all VMs in VNET",
-            "protocol": "*",
-            "sourcePortRange": "*",
-            "destinationPortRange": "*",
-            "sourceAddressPrefix": "VirtualNetwork",
-            "destinationAddressPrefix": "VirtualNetwork",
-            "access": "Allow",
-            "priority": 65000,
-            "direction": "Inbound",
-            "provisioningState": "Succeeded",
-            "name": "AllowVnetInBound"
-          }
-        ]
+        "subnetAssociation": null
       }
     }
   ]

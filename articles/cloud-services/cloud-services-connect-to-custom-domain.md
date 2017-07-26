@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 07/18/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 5489762a7a392e4e4098d85cba22d560e9858267
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: bc7e9a53f71eff828eaf8c45c104c5dc73018824
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>将 Azure 云服务角色连接到 Azure 中托管的自定义 AD 域控制器
@@ -29,12 +29,12 @@ ms.lasthandoff: 04/27/2017
 1. 本教程使用 PowerShell，因此请确保 Azure PowerShell 已安装并已准备就绪。 有关设置 Azure PowerShell 的帮助，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 2. AD 域控制器和 Web/辅助角色实例需要在 VNet 中。
 
-请遵循以下分步指南，如果你遇到任何问题，请在下面留言。 我们将回复你（没错，我们真的会阅读留言）。
+请遵循以下分步指南，如果你遇到任何问题，请在本文末尾留言。 我们将回复你（没错，我们真的会阅读留言）。
 
 由云服务引用的网络必须为**经典虚拟网络**。
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
-你可以使用 Azure 经典门户或 PowerShell 在 Azure 中创建虚拟网络。 在本教程中，我们将使用 PowerShell。 若要使用 Azure 经典门户创建虚拟网络，请参阅[创建虚拟网络](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)。
+可以使用 Azure 门户或 PowerShell 在 Azure 中创建虚拟网络。 在本教程中，我们将使用 PowerShell。 若要使用 Azure 门户创建虚拟网络，请参阅[创建虚拟网络](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)。
 
 ```powershell
 #Create Virtual Network
@@ -88,7 +88,7 @@ New-AzureQuickVM -Windows -ServiceName $vmsvc1 -Name $vm1 -ImageName $imgname -A
 ## <a name="promote-your-virtual-machine-to-a-domain-controller"></a>将虚拟机提升为域控制器
 若要将虚拟机配置为 AD 域控制器，需要登录 VM 并对其进行配置。
 
-若要登录 VM，你可以通过 PowerShell 获取 RDP 文件；请使用以下命令。
+若要登录 VM，你可以通过 PowerShell 获取 RDP 文件；请使用以下命令：
 
 ```powershell
 # Get RDP file
@@ -98,7 +98,7 @@ Get-AzureRemoteDesktopFile -ServiceName $vmsvc1 -Name $vm1 -LocalPath <rdp-file-
 登录 VM 后，请根据[如何设置客户 AD 域控制器](http://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx)中的分步指导，将虚拟机设置为 AD 域控制器。
 
 ## <a name="add-your-cloud-service-to-the-virtual-network"></a>将云服务添加到虚拟网络
-接下来，你需要将云服务部署添加到刚刚创建的 VNet。 为此，请使用 Visual Studio 或选择的编辑器将相关节添加到 cscfg，以修改云服务 cscfg。
+接下来，需要将云服务部署添加到新的 VNet。 为此，请使用 Visual Studio 或选择的编辑器将相关节添加到 cscfg，以修改云服务 cscfg。
 
 ```xml
 <ServiceConfiguration serviceName="[hosted-service-name]" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="[os-family]" osVersion="*">
@@ -150,7 +150,7 @@ Set-AzureServiceADDomainExtension -Service <your-cloud-service-hosted-service-na
 
 这就是所有的操作。
 
-云服务现在应已加入自定义域控制器。 如果你想要深入了解用于配置 AD 域扩展的其他选项，请如下所示使用 PowerShell 帮助。
+云服务应已加入自定义域控制器。 如果你想要深入了解用于配置 AD 域扩展的其他选项，请使用 PowerShell 帮助。 下面是一些示例：
 
 ```powershell
 help Set-AzureServiceADDomainExtension

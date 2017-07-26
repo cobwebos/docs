@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 2bb378984cdeb7fc5b6fddd933d1019b3bfd1232
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: d4614b0ceff0ec0d36dbb1a136551f985f2fc1a1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -40,9 +40,9 @@ GitHub 是用于托管服务的基于 Web 的 Git 存储库。 它提供 Git 的
 > [!INCLUDE [Steps to create a connection to GitHub](../../includes/connectors-create-api-github.md)]
 > 
 
-## <a name="view-the-swagger"></a>查看 Swagger
+## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
-请参阅 [Swagger 详细信息](/connectors/github/)。
+在[连接器详细信息](/connectors/github/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
 
 ## <a name="more-connectors"></a>更多连接器
 返回到 [API 列表](apis-list.md)。

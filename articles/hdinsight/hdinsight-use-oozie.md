@@ -14,13 +14,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: e6749bdf73acc9c05e71c85410bb3d95c57a0a9f
-ms.lasthandoff: 12/08/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 10726bdaf1aa0a98276747868771999625ccf5e5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.lasthandoff: 12/08/2016
 
 Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。 它与 Hadoop 堆栈集成，支持 Apache MapReduce、Apache Pig、Apache Hive 和 Apache Sqoop 的 Hadoop 作业。 它也能用于安排特定于某系统的作业，例如 Java 程序或 shell 脚本。
 
-你要根据本教程中的说明实现的工作流包含两个操作：
+遵循本教程中的说明实现工作流包含两个操作：
 
 ![工作流关系图][img-workflow-diagram]
 
@@ -60,7 +61,7 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。 它与 Ha
 > 
 
 ### <a name="prerequisites"></a>先决条件
-在开始阅读本教程前，你必须具有：
+开始学习本教程之前，必须具有以下项：
 
 * **配备 Azure PowerShell 的工作站**。 
   
@@ -581,7 +582,7 @@ Azure PowerShell 目前不提供任何用于定义 Oozie 作业的 cmdlet。 可
 
 **重新运行教程**
 
-若要重新运行该工作流，必须删除以下内容：
+若要重新运行该工作流，必须删除以下项：
 
 * Hive 脚本输出文件
 * log4jLogsCount 表中的数据

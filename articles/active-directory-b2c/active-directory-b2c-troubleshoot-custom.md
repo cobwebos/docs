@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/04/2017
 ms.author: saeeda
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 07eddeb35c2b88b2de08270d9ff5de317cc09ec7
+ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
+ms.openlocfilehash: db658319637f1a45616091e034a0fc4db44885d4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/22/2017
 
 ---
 
@@ -101,8 +101,8 @@ traces \| where timestamp > ago(1d) | 查看 Azure AD B2C 为前一天生成的�
 
 可在[此处](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)了解更多有关 Analytics 工具的信息。
 
-^[!NOTE]
-^社区已开发一个用户旅程查看器来帮助标识开发人员。  Microsoft 不支持它，严格按原样提供。  它将读取 Application Insights 实例，并提供用户旅程事件的有序视图。  可以获取源代码并将其部署在你自己的解决方案中。
+>[!NOTE]
+>社区已开发一个用户旅程查看器来帮助标识开发人员。  Microsoft 不支持它，严格按原样提供。  它将读取 Application Insights 实例，并提供用户旅程事件的有序视图。  可以获取源代码并将其部署在你自己的解决方案中。
 
 [不支持的自定义策略示例和相关工具的 Github 存储库](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
 

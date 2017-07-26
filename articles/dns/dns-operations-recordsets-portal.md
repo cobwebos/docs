@@ -16,18 +16,19 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 850bf9ef5300c72a9e7903be5bf991301d4b574f
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 001b80ccba43beab44f6a598f820df65a85a345f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/01/2017
 
 ---
 
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>使用 Azure 门户管理 DNS 记录和记录集
 
 > [!div class="op_single_selector"]
-> * [Azure 门户](dns-operations-recordsets-portal.md)
-> * [Azure CLI](dns-operations-recordsets-cli.md)
+> * [在 Azure 应用服务中创建 Java Web 应用](dns-operations-recordsets-portal.md)
+> * [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
+> * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
 本文演示如何通过使用 Azure 门户来管理 DNS 区域的记录集和记录。
@@ -125,5 +126,5 @@ Azure 门户可用于从记录集中删除记录。 请注意，从记录集中�
 
 * 有关 Azure DNS 的详细信息，请参阅 [Azure DNS 概述](dns-overview.md)。
 * 有关自动执行 DNS 的详细信息，请参阅[使用 .NET SDK 创建 DNS 区域和记录集](dns-sdk.md)。
-* 有关反向 DNS 记录的详细信息，请参阅[如何使用 PowerShell 管理服务的反向 DNS 记录](dns-reverse-dns-record-operations-ps.md)。
+* 有关反向 DNS 记录的详细信息，请参阅 [Azure 中的反向 DNS 和支持概述](dns-reverse-dns-overview.md)。
 

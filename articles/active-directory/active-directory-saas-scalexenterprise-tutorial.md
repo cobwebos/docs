@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 9c780d89093a6d29a22cd1e5504dcc36b39056ea
+ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
+ms.openlocfilehash: 0ebed0c2605862426384c0e219e52c9d626b6246
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 04/28/2017
 - 可以让用户使用其 Azure AD 帐户自动登录到 ScaleX Enterprise（单一登录）
 - 可以在一个中心位置（即 Azure 门户）中管理帐户
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅。 [什么是使用 Azure Active Directory 的应用程序访问与单一登录？](active-directory-appssoaccess-whatis.md)
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅。 [Azure Active Directory](active-directory-appssoaccess-whatis.md) 的应用程序访问与单一登录是什么。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -209,13 +209,13 @@ ms.lasthandoff: 04/28/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-scalexenterprise-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d. 单击“创建” 。
+    d.单击“下一步”。 单击“创建” 。
  
 ### <a name="creating-a-scalex-enterprise-test-user"></a>创建 ScaleX Enterprise 测试用户
 
@@ -261,7 +261,7 @@ ms.lasthandoff: 04/28/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问与单一登录？](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
 
 
 

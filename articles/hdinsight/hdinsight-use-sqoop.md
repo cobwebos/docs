@@ -14,14 +14,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 1901613b3e0db19f86247ee78828eccd58fb026b
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 8e77153493b6f37f5f48116b86bad6b25a50d1a1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 04/27/2017
 
 [Sqoop][sqoop-user-guide-1.4.4] 是一种专用于在 Hadoop 群集和关系数据库之间传输数据的工具。 可以使用此工具将数据从关系数据库管理系统 (RDBMS)（如 SQL Server、MySQL 或 Oracle）中导入到 Hadoop 分布式文件系统 (HDFS)，在 Hadoop 中使用 MapReduce 或 Hive 转换数据，然后回过来将数据导出到 RDBMS。 在本教程中，你要为你的关系数据库使用 SQL Server 数据库。
 
-有关 HDInsight 群集上支持的 Sqoop 版本，请参阅 [HDInsight 提供的群集版本有哪些新增功能？][hdinsight-versions]。
+有关 HDInsight 群集上支持的 Sqoop 版本，请参阅 [HDInsight 提供的群集版本有哪些新增功能？][hdinsight-versions]
 
 ## <a name="understand-the-scenario"></a>了解方案
 
@@ -62,7 +62,7 @@ HDInsight 群集带有某些示例数据。 可使用以下两个示例：
   | sessionid |bigint |
   | sessionpagevieworder |bigint |
 
-需要首先将 *sample.log* 和 *hivesampletable* 导出到 Azure SQL 数据库或 SQL Server，然后使用以下路径将包含移动设备数据的表导回到 HDInsight：
+首先，需要将 sample.log 和 hivesampletable 导出到 Azure SQL 数据库或 SQL Server，然后使用以下路径将包含移动设备数据的表导回到 HDInsight：
 
     /tutorials/usesqoop/importeddata
 
@@ -114,7 +114,7 @@ HDInsight 群集带有某些示例数据。 可使用以下两个示例：
 * **Azure SQL 数据库**：用户必须为 Azure SQL 数据库服务器配置防火墙规则以允许从工作站进行访问。 有关创建 Azure SQL 数据库和配置防火墙的说明，请参阅 [开始使用 Azure SQL 数据库][sqldatabase-get-started]。 
   
   > [!NOTE]
-  > 默认情况下，可以从 Azure HDInsight 这样的 Azure 服务连接 Azure SQL 数据库。 如果禁用了此防火墙设置，则必须从 Azure 门户启用它。 有关创建 Azure SQL 数据库和配置防火墙规则的说明，请参阅[创建和配置 SQL 数据库][sqldatabase-create-configue]。
+  > 默认情况下，可以从 Azure HDInsight 这样的 Azure 服务连接 Azure SQL 数据库。 如果禁用了此防火墙设置，则需要从 Azure 门户启用它。 有关创建 Azure SQL 数据库和配置防火墙规则的说明，请参阅[创建和配置 SQL 数据库][sqldatabase-create-configue]。
   > 
   > 
 * **SQL Server**：如果你的 HDInsight 群集与 SQL Server 位于 Azure 中的同一虚拟网络，你可以使用本文中的步骤对 SQL Server 数据库执行数据导入和导出操作。

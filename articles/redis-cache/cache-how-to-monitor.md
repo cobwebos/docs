@@ -12,62 +12,77 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 07/13/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
-ms.openlocfilehash: 3ef5dcbcb5f8f6a57de575af20028875b9f920ea
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: a1c7afab747b917ae979a41e63739a4f726265fc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 ---
 # <a name="how-to-monitor-azure-redis-cache"></a>如何监视 Azure Redis 缓存
-Azure Redis 缓存提供了用于监视缓存实例的几个选项。 可以查看度量值、将度量值图表固定到启动面板、自定义监视图表的日期和时间范围、在图表中添加和删除度量值，以及设置符合特定条件时发出的警报。 借助这些工具，可以监视 Azure Redis 缓存实例的运行状况，以及管理缓存应用程序。
+Azure Redis 缓存使用 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 提供用于监视缓存实例的几个选项。 可以查看度量值、将度量值图表固定到启动面板、自定义监视图表的日期和时间范围、在图表中添加和删除度量值，以及设置符合特定条件时发出的警报。 借助这些工具，可以监视 Azure Redis 缓存实例的运行状况，以及管理缓存应用程序。
 
-启用缓存诊断后，将约每 30 秒收集一次 Azure Redis 缓存实例的度量值并进行存储，以便将它们显示在度量值图表中并根据警报规则进行评估。
+每分钟使用 Redis [INFO](http://redis.io/commands/info) 命令收集约两次 Azure Redis 缓存实例的指标，然后将其自动存储 30 天（请参阅[导出缓存指标](#export-cache-metrics)以配置不同保留期策略），以便这些指标可以显示在指标图表中并由预警规则进行评估。 深入了解用于每个缓存指标的不同 INFO 值，请参阅[可用指标和报告间隔](#available-metrics-and-reporting-intervals)。
 
-使用 Redis [INFO](http://redis.io/commands/info) 命令收集缓存指标。 深入了解用于每个缓存指标的不同 INFO 值，请参阅[可用指标和报告间隔](#available-metrics-and-reporting-intervals)。
+<a name="view-cache-metrics"></a>
 
-若要查看缓存指标，请[浏览](cache-configure.md#configure-redis-cache-settings)到 [Azure 门户](https://portal.azure.com)中的缓存实例。 可在“Redis 指标”边栏选项卡上访问 Azure Redis 缓存实例的指标。
+若要查看缓存指标，请[浏览](cache-configure.md#configure-redis-cache-settings)到 [Azure 门户](https://portal.azure.com)中的缓存实例。  Azure Redis 缓存在“概述”边栏选项卡和“Redis 指标”边栏选项卡上提供一些内置图表。 通过添加或删除度量值以及更改报告间隔可以自定义每个图表。
 
-![Redis 指标][redis-cache-redis-metrics-blade]
+![Redis 指标](./media/cache-how-to-monitor/redis-cache-redis-metrics-blade.png)
 
-> [!IMPORTANT]
-> 如果“Redis 指标”边栏选项卡中显示了以下消息，请按照[启用缓存诊断](#enable-cache-diagnostics)部分中的步骤启用缓存诊断。
-> 
-> `Monitoring may not be enabled. Click here to turn on Diagnostics.`
-> 
-> 
+## <a name="view-pre-configured-metrics-charts"></a>查看预配置的指标图表
 
-“Redis 指标”边栏选项卡上有显示缓存指标的“监视”图表。 通过添加或删除度量值以及更改报告间隔可以自定义每个图表。 若要查看和配置操作和警报，“Redis 缓存”边栏选项卡上有“操作”部分，该部分显示缓存**事件**和**警报规则**。
+“概述”边栏选项卡具有以下预配置的监视图表。
 
-## <a name="enable-cache-diagnostics"></a>启用缓存诊断
-Azure Redis 缓存提供如下功能：将诊断数据存储在存储帐户中，以便可以使用希望访问的任何工具以及直接处理数据。 为了收集、存储缓存诊断并将其显示在 Azure 门户中，必须配置一个存储帐户。 同一区域和订阅中的缓存共享相同的诊断存储帐户，当配置更改时，它将应用于订阅中位于该区域的所有缓存。
+* [监视图表](#monitoring-charts)
+* [使用情况图表](#usage-charts)
 
-若要启用和配置缓存诊断，请导航到缓存实例的“Redis 缓存”边栏选项卡。 如果尚未启用诊断，则将显示一条消息，而不会显示诊断图。
+### <a name="monitoring-charts"></a>监视图表
+“概述”边栏选项卡中的“监视”部分有“命中数和未命中数”、“获取数和设置数”、“连接数”以及“总命令数”图表。
 
-![启用缓存诊断][redis-cache-enable-diagnostics]
+![监视图表](./media/cache-how-to-monitor/redis-cache-monitoring-part.png)
 
-单击该消息以显示“指标”边栏选项卡，然后单击“诊断设置”，以启用和配置缓存服务实例的诊断设置。
+### <a name="usage-charts"></a>图表使用情况
+“概述”边栏选项卡中的“使用情况”部分有“Redis 服务器负载”、“内存使用情况”、“网络带宽”和“CPU 使用率”图表，并且还显示缓存实例的“定价层”。
 
-![诊断设置][redis-cache-diagnostic-settings]
+![图表使用情况](./media/cache-how-to-monitor/redis-cache-usage-part.png)
 
-![配置诊断][redis-cache-configure-diagnostics]
+“定价层”显示缓存定价层，并可用于将缓存[缩放](cache-how-to-scale.md)到不同的定价层。
 
-单击“打开”按钮，启用缓存诊断并显示诊断配置。
+## <a name="view-metrics-with-azure-monitor"></a>通过 Azure Monitor 查看指标
+若要使用 Azure Monitor 查看 Redis 指标和创建自定义图表，从“资源菜单”单击“指标”，并使用所需的指标、报告间隔、图表类型等对图表进行自定义。
 
-单击“存储帐户”右侧的箭头，选择一个用于保存诊断数据的存储帐户。 为了获得最佳性能，请在与缓存相同的区域中选择一个存储帐户。
+![Redis 指标](./media/cache-how-to-monitor/redis-cache-monitor.png)
 
-诊断设置配置完成后，单击“保存”以保存配置。 注意，更改可能需要几分钟才能生效。
+有关使用 Azure Monitor 处理指标的详细信息，请参阅 [Microsoft Azure 中的指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
 
-> [!IMPORTANT]
-> 同一区域和订阅中的缓存共享相同的诊断存储设置，当配置更改（诊断启用/禁用或更改存储帐户）时，它将应用于订阅中位于该区域的所有缓存。
-> 
-> 
+<a name="how-to-view-metrics-and-customize-chart"></a>
+<a name="enable-cache-diagnostics"></a>
+## <a name="export-cache-metrics"></a>导出缓存指标
+默认情况下，Azure Monitor 中的缓存指标将被[存储 30 天](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#store-and-archive)，然后将被删除。 若要延长缓存指标的保存时间，使其超过 30 天，可以为缓存指标[指定存储帐户](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)，并指定“保留期（天）”策略。 
 
-若要查看存储的度量值，请检查名称开头为 `WADMetrics` 的存储帐户中的表。 有关访问 Azure 门户外部的存储指标的详细信息，请参阅[访问 Redis 缓存监视数据](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)示例。
+若要配置缓存指标的存储帐户：
+
+1. 从“Redis 缓存”边栏选项卡中的“资源菜单”单击“诊断”。
+2. 单击“打开”。
+3. 选中“存档到存储帐户”。
+4. 选择要在其中存储缓存指标的存储帐户。
+5. 选中“1 分钟”复选框，并指定“保留期（天）”策略。 如果不想应用任何保留期策略也不想永久保留数据，可将“保留期（天）”设置为“0”。
+6. 单击“保存” 。
+
+![Redis 诊断](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
+
+>[!NOTE]
+>除了将缓存指标存档至存储区外，还可以[将其流式传输到事件中心或将其发送到 Log Analytics](../monitoring-and-diagnostics/monitoring-overview-metrics.md#export-metrics)。
+>
+>
+
+若要访问指标，可按前文所述在 Azure 门户中查看它们，还可以使用 [Azure Monitor 指标 REST API](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api) 对其进行访问。
 
 > [!NOTE]
-> Azure 门户仅显示存储在所选存储帐户中的指标。 如果更改存储帐户，以前配置的存储帐户中的数据仍可供下载，但并不会显示在 Azure 门户中。  
+> 如果更改存储帐户，以前配置的存储帐户中的数据仍可供下载，但并不会显示在 Azure 门户中。  
 > 
 > 
 
@@ -88,6 +103,7 @@ Azure Redis 缓存提供如下功能：将诊断数据存储在存储帐户中�
 | 连接的客户端数 |指定的报告间隔期间，客间户端与缓存的连接数。 此值映射到 Redis INFO 命令输出中的 `connected_clients`。 一旦达到了[连接限制](cache-configure.md#default-redis-server-configuration)，则对缓存的后续连接尝试将失败。 注意，即使没有任何活动的客户端应用程序，由于内部进程和连接，仍可能存在一些连接的客户端的实例。 |
 | 逐出的密钥数 |由于 `maxmemory` 限制，指定的报告间隔期间从缓存中逐出的项目数。 此值映射到 Redis INFO 命令输出中的 `evicted_keys`。 |
 | 过期的密钥数 |指定的报告间隔期间，缓存中过期的项目数。 此值映射到 Redis INFO 命令输出中的 `expired_keys`。 |
+| 总密钥数  | 上一个报表时期中，缓存中的最大密钥数。 此值映射到 Redis INFO 命令输出中的 `keyspace`。 由于基本指标系统的限制，对于启用了群集的缓存，“总密钥数”返回报告间隔期间具有最大密钥数的分片的最大密钥数。  |
 | 获取数 |指定的报告间隔期间，缓存中的获取操作数。 此值是以下 Redis INFO 所有命令中的值的总和：`cmdstat_get`、`cmdstat_hget`、`cmdstat_hgetall`、`cmdstat_hmget`、`cmdstat_mget`、`cmdstat_getbit` 和 `cmdstat_getrange`，并且等效于报告间隔期间缓存命中和未命中数的总和。 |
 | Redis 服务器负载 |Redis 服务器忙于处理消息并且非空闲等待消息的周期百分比。 如果此计数器达到 100，则意味着 Redis 服务器已达到性能上限并且 CPU 无法更快地工作。 如果看到高 Redis 服务器负载，则将在客户端看到超时异常。 在这种情况下，应该考虑将数据扩大或分区到多个缓存。 |
 | 设置数 |指定的报告间隔期间，对缓存的设置操作数。 此值是以下 Redis INFO 所有命令中的值的总和：`cmdstat_set`、`cmdstat_hset`、`cmdstat_hmset`、`cmdstat_hsetnx`、`cmdstat_lset`、`cmdstat_mset`、`cmdstat_msetnx`、`cmdstat_setbit`、`cmdstat_setex`、`cmdstat_setrange` 和 `cmdstat_setnx`。 |
@@ -98,218 +114,40 @@ Azure Redis 缓存提供如下功能：将诊断数据存储在存储帐户中�
 | 缓存读取量 |指定报告间隔期间，从缓存中读取的数据量，以每秒兆字节数（MB/秒）为单位。 此值来源于支持虚拟机的网络接口卡，该虚拟机托管缓存，但并不特定于 Redis。 **此值对应于该缓存使用的网络带宽。如果要针对服务器端网络带宽限制设置警报，则可使用此 `Cache Read` 计数器来创建警报。请参阅[此表](cache-faq.md#cache-performance)，了解各种缓存定价层和大小所遵循的带宽限制。** |
 | 缓存写入量 |指定报告间隔期间，写入缓存中的数据量，以每秒兆字节数（MB/秒）为单位。 此值来源于支持虚拟机的网络接口卡，该虚拟机托管缓存，但并不特定于 Redis。 此值对应于从客户端发送到缓存的数据的网络带宽。 |
 
-## <a name="how-to-view-metrics-and-customize-charts"></a>如何查看度量值和自定义图表
-可在“Redis 指标”边栏选项卡上查看缓存的指标概述。 若要访问“Redis 指标”边栏选项卡，请选择“所有设置” > “Redis 指标”。
+<a name="operations-and-alerts"></a>
+## <a name="alerts"></a>警报
+可配置为基于指标和活动日志接收警报。 通过 Azure Monitor 可配置警报，使警报触发时执行以下操作：
 
-![Redis 指标][redis-cache-redis-metrics]
+* 发送电子邮件通知
+* 调用 Webhook
+* 调用 Azure 逻辑应用
 
-“Redis 指标”边栏选项卡包含以下图表。
+若要配置缓存的预警规则，从“资源菜单”单击“预警规则”。
 
-| Redis 指标图表 | 显示的度量值 |
-| --- | --- |
-| 缓存读取和缓存写入 |缓存读取量 |
-| 缓存写入量 | |
-| 连接的客户端数 |连接的客户端数 |
-| 命中数和未命中数 |缓存命中数 |
-| 缓存未命中数 | |
-| 总命令数 |总操作数 |
-| 获取数和设置数 |获取数 |
-| 设置数 | |
-| CPU 使用率 |CPU |
-| 内存用量 |已用内存 |
-| 已用内存 RSS | |
-| Redis 服务器负载 |服务器负载 |
-| 密钥计数 |总密钥数 |
-| 逐出的密钥数 | |
-| 过期的密钥数 | |
+![监视](./media/cache-how-to-monitor/redis-cache-monitoring.png)
 
-要显示特定图表上指标的更详细视图，或者若要自定义图表，请从“Redis 指标”边栏选项卡中单击所需的图表，以显示该图表的“指标”边栏选项卡。
+有关配置和使用警报的详细信息，请参阅[警报概述](../monitoring-and-diagnostics/insights-alerts-portal.md)。
 
-![度量边栏选项卡][redis-cache-metric-blade]
-
-对图表中所显示指标设置的任何警报均列于该图表的“指标”边栏选项卡的底部。
-
-若要添加或删除指标或更改报告间隔，请选择“编辑图表”。
-
-若要向图标中添加度量值或从图表中删除度量值，请单击度量值名称旁的复选框。 若要更改报告间隔，请单击所需的间隔。 若要更改“图表类型”，请单击所需的样式。 完成所需更改后，请单击“保存”。 
-
-![编辑图表][redis-cache-edit-chart]
-
-单击“保存”后，更改将一直保留，直到用户退出“指标”边栏选项卡为止。 当稍后返回时，将再次看到原始的度量值和时间范围。 有关自定义图表的详细信息，请参阅[监视服务指标](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)。
-
-若要在图表上查看指定时间段的度量值，请将鼠标悬停在图表上对应于所需时间的某一特定栏或点，就会显示该间隔的度量值。
-
-![查看图表的详细信息][redis-cache-view-chart-details]
-
-## <a name="how-to-monitor-a-premium-cache-with-clustering"></a>如何监视含群集的高级缓存
-已启用[群集](cache-how-to-premium-clustering.md)的高级缓存最多可具有 10 个分片。 每个分片都有它自己的度量值，而且这些度量值会聚合在一起，作为一个整体为缓存提供度量值。 每个度量值均包含两个版本。 一个度量值测量整个缓存的性能，名称中包含 `(Shard 0-9)` 的另一个度量值版本则测量缓存中单个分片的性能。 例如，如果缓存有 3 个分片，`Cache Hits` 就是整个缓存的命中总数，而 `Cache Hits (Shard 2)` 就只是该缓存分片的命中数。
-
-每个监视图表均显示缓存的顶级度量值以及每个缓存分片的度量值。
-
-![监视][redis-cache-premium-monitor]
-
-将鼠标悬停在数据点上会显示该时间点的详细信息。 
-
-![监视][redis-cache-premium-point-summary]
-
-较大的值通常是缓存的聚合值，而较小的值是分片的单个度量值。 请注意，在此示例中有三个分片，缓存命中均匀地分布在这些分片中。
-
-![监视][redis-cache-premium-point-shard]
-
-若要查看更多详细信息，请单击图表在“指标”边栏选项卡上查看展开的视图。
-
-![监视][redis-cache-premium-chart-detail]
-
-默认情况下，每个图表均包含顶级缓存性能计数器以及单个分片的性能计数器。 可以在“编辑图表”边栏选项卡上自定义这些项。
-
-![监视][redis-cache-premium-edit]
-
-有关可用性能计数器的详细信息，请参阅[可用指标和报告间隔](#available-metrics-and-reporting-intervals)。
-
-## <a name="operations-and-alerts"></a>操作和警报
-“Redis 缓存”边栏选项卡上的“操作”部分有“事件”和“警报规则”部分。
-
-![操作][redis-cache-operations-events]
-
-若要查看最近缓存操作的列表，请单击“事件”图表，显示“事件”边栏选项卡。 操作示例包括检索和重新生成访问密钥以及警规则的激活和解析。 有关每个事件的详细信息，请单击“事件”边栏选项卡中的事件。
-
-有关事件的详细信息，请参阅[查看事件和审核日志](../monitoring-and-diagnostics/insights-debugging-with-events.md)。
-
-“警报规则”部分显示缓存实例的警报计数。 警报规则可用于监视缓存实例，并且每当特定度量值达到规则中所定义的阈值时都将收到一封电子邮件。 
-
-约每隔五分钟评估一次警报规则，并且当警报规则激活时，将发送任何已配置的通知。 警报规则的激活和通知不会立刻进行处理；可能会延迟若干分钟，才会激活警报规则和发送通知。
-
-可从特定监视图表的“指标”边栏选项卡，或“警报规则”边栏选项卡查看和设置警报规则。
-
-警报规则具有以下属性。
-
-| 警报规则属性 | 说明 |
-| --- | --- |
-| 资源 |由警报规则评估的资源。 从 Redis 缓存创建警报规则时，缓存为资源。 |
-| 名称 |在当前缓存实例内唯一标识警报规则的名称。 |
-| 说明 |警报规则的可选说明。 |
-| 度量值 |将由警报规则监视的度量值。 有关缓存度量值的列表，请参阅可用度量值和报告间隔。 |
-| 条件 |警报规则的条件运算符。 可能的选项是：大于、大于或等于、小于、小于或等于 |
-| 阈值 |用于与使用条件属性指定的运算符的度量值进行比较的值。 根据度量值，此值可能以字节/秒、字节、% 计或者以计数计。 |
-| 周期 |指定度量值的平均值用于警报规则比较的周期。 例如，如果该周期在最近一个小时，则前一个小时间隔内度量值的平均值将用于比较。 如果想要在活动中由于高峰达到该阈值时得到通知，则适用较短的周期。 若要在存在高于阈值的持续活动时得到通知，则使用较长的周期。 |
-| 电子邮件服务和协同管理员 |如果为 true，则当警报被激活时，服务管理员和协同管理员将通过电子邮件得到通知。 |
-| 其他管理员电子邮件 |当警报被激活时，要通知的其他管理员的可选电子邮件地址。 |
-
-每个警报规则激活仅发送一个通知。 一旦超过规则的阈值并发送了一条通知，则该规则要在该度量值低于阈值后才会重新进行评估。 如果该度量值随后超出了阈值，则将重新激活警报并发送新通知。
-
-若要查看所有缓存实例的警报规则，请单击“Redis 缓存”边栏选项卡中的“警报规则”部分。 若仅要查看使用特定指标的警报规则，请导航到包含该指标的图表的“指标”边栏选项卡。
-
-![警报规则][redis-cache-alert-rules]
-
-若要添加警报规则，请从“指标”边栏选项卡或“警报规则”边栏选项卡，单击“添加警报”。 
-
-在“添加警报”规则边栏选项卡输入所需规则条件，然后单击“确定”。 
-
-![添加警报规则][redis-cache-add-alert]
+## <a name="activity-logs"></a>活动日志
+活动日志提供针对 Azure Redis 缓存实例执行的操作的详细信息。 活动日志以前称为“审核日志”或“操作日志”。 通过活动日志，可确定对 Azure Redis 缓存实例执行的任何写入操作 (PUT、POST、DELETE) 的“操作内容、操作人员和操作时间”。 
 
 > [!NOTE]
-> 通过从“指标”边栏选项卡单击“添加警报”创建警报规则时，仅该边栏选项卡中的图表上显示的指标会出现在“指标”下拉列表中。 通过从“警报规则”边栏选项卡单击“添加警报”创建警报规则时，所有缓存指标在“指标”下拉列表中均可用。
-> 
-> 
+> 活动日志不包括读取 (GET) 操作。
+>
+>
 
-保存警报规则后，它将出现在“警报规则”边栏选项卡，以及显示警报规则中所用度量值的任何图表的“指标”边栏选项卡上。 若要编辑警报规则，请单击警报规则名称，以显示“编辑规则”边栏选项卡。 在“编辑规则”边栏选项卡中，可以编辑该规则的属性、删除或禁用警报规则，或重新启用之前禁用的规则。
+若要查看缓存的活动日志，从“资源菜单”单击“活动日志”。
 
-> [!NOTE]
-> 对规则属性所做的任何更改可能会花些时间才会反映在“警报规则”边栏选项卡或“指标”边栏选项卡上。
-> 
-> 
-
-激活警报规则时，将根据警报规则的配置发送一封电子邮件，并且“Redis 缓存”边栏选项卡上的“警报规则”部分将显示一个警报图标。
-
-当警报条件评估结果不再为 true 时，警报规则将被视为已解决。 解决警报规则条件之后，警报图标将替换为复选标记。 有关警报激活和解析的详细信息，请单击“Redis 缓存”边栏选项卡上的“事件”部分，查看“事件”边栏选项卡上的事件。
-
-有关 Azure 中的警报的详细信息，请参阅[Receive alert notifications](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)（接收警报通知）。
-
-## <a name="metrics-on-the-redis-cache-blade"></a>“Redis 缓存”边栏选项卡上的度量值
-“Redis 缓存”边栏选项卡显示以下类别的指标。
-
-* [监视图表](#monitoring-charts)
-* [使用情况图表](#usage-charts)
-
-### <a name="monitoring-charts"></a>监视图表
-“监视”部分有“命中数和未命中数”、“获取数和设置数”、“连接数”以及“总命令数”图表。
-
-![监视图表][redis-cache-monitoring-part]
-
-“监视”图表将显示以下指标。
-
-| 监视图表 | 缓存度量值 |
-| --- | --- |
-| 命中数和未命中数 |缓存命中数 |
-| 缓存未命中数 | |
-| 获取数和设置数 |获取数 |
-| 设置数 | |
-| 连接 |连接的客户端数 |
-| 总命令数 |总操作数 |
-
-有关本部分中查看指标和自定义单个图表的信息，请参阅以下[如何查看指标和自定义指标图表](#how-to-view-metrics-and-customize-charts)部分。
-
-### <a name="usage-charts"></a>图表使用情况
-“使用情况”部分有“Redis 服务器负载”、“内存使用情况”、“网络带宽”和“CPU 使用率”图表，并且还显示缓存实例的“定价层”。
-
-![图表使用情况][redis-cache-usage-part]
-
-“定价层”显示缓存定价层，并可用于将缓存[缩放](cache-how-to-scale.md)到不同的定价层。
-
-“使用情况”图表显示以下指标。
-
-| 使用情况图表 | 缓存度量值 |
-| --- | --- |
-| Redis 服务器负载 |服务器负载 |
-| 内存用量 |已用内存 |
-| 网络带宽 |缓存写入量 |
-| CPU 使用率 |CPU |
-
-有关本部分中查看指标和自定义单个图表的信息，请参阅以下[如何查看指标和自定义指标图表](#how-to-view-metrics-and-customize-charts)部分。
-
-<!-- IMAGES -->
-
-[redis-cache-enable-diagnostics]: ./media/cache-how-to-monitor/redis-cache-enable-diagnostics.png
-
-[redis-cache-diagnostic-settings]: ./media/cache-how-to-monitor/redis-cache-diagnostic-settings.png
-
-[redis-cache-configure-diagnostics]: ./media/cache-how-to-monitor/redis-cache-configure-diagnostics.png
-
-[redis-cache-monitoring-part]: ./media/cache-how-to-monitor/redis-cache-monitoring-part.png
-
-[redis-cache-usage-part]: ./media/cache-how-to-monitor/redis-cache-usage-part.png
-
-[redis-cache-metric-blade]: ./media/cache-how-to-monitor/redis-cache-metric-blade.png
-
-[redis-cache-edit-chart]: ./media/cache-how-to-monitor/redis-cache-edit-chart.png
-
-[redis-cache-view-chart-details]: ./media/cache-how-to-monitor/redis-cache-view-chart-details.png
-
-[redis-cache-operations-events]: ./media/cache-how-to-monitor/redis-cache-operations-events.png
-
-[redis-cache-alert-rules]: ./media/cache-how-to-monitor/redis-cache-alert-rules.png
-
-[redis-cache-add-alert]: ./media/cache-how-to-monitor/redis-cache-add-alert.png
-
-[redis-cache-premium-monitor]: ./media/cache-how-to-monitor/redis-cache-premium-monitor.png
-
-[redis-cache-premium-edit]: ./media/cache-how-to-monitor/redis-cache-premium-edit.png
-
-[redis-cache-premium-chart-detail]: ./media/cache-how-to-monitor/redis-cache-premium-chart-detail.png
-
-[redis-cache-premium-point-summary]: ./media/cache-how-to-monitor/redis-cache-premium-point-summary.png
-
-[redis-cache-premium-point-shard]: ./media/cache-how-to-monitor/redis-cache-premium-point-shard.png
-
-[redis-cache-redis-metrics]: ./media/cache-how-to-monitor/redis-cache-redis-metrics.png
-
-[redis-cache-redis-metrics-blade]: ./media/cache-how-to-monitor/redis-cache-redis-metrics-blade.png
+有关活动日志的详细信息，请参阅 [Azure 活动日志概述](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)。
 
 
 
 
 
 
-<!--HONumber=Jan17_HO2-->
+
+
+
+
 
 

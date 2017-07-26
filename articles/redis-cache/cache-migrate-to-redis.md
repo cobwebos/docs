@@ -12,17 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 03/08/2017
+ms.date: 05/30/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: af5e181ce254fefe55c847d9988dd8245c75e864
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 0fbfb945c66926794721f2ce8cc183dac51ecb27
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/31/2017
 
 
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-redis-cache"></a>从托管缓存服务迁移到 Azure Redis 缓存
 在将使用 Azure 托管缓存服务的应用程序迁移到 Azure Redis 缓存时，你只需对应用程序略做更改，具体情况取决于缓存应用程序所使用的托管缓存服务功能。 API 虽非完全相同，但却极为类似，而且使用托管缓存服务来访问缓存的多数现有代码，只需略做更改即可重复使用。 本主题介绍了为迁移托管缓存服务应用程序以使用 Azure Redis 缓存，如何进行必要的配置和应用程序更改；还介绍了如何使用 Azure Redis 缓存的某些功能实现托管缓存服务缓存功能。
+
+>[!NOTE]
+>托管缓存服务和角色中缓存在 2016 年 11 月 30 日[停用](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)。 如果要将角色中缓存部署迁移到 Azure Redis 缓存，可按照本文中的步骤执行。
 
 ## <a name="migration-steps"></a>迁移步骤
 若要将托管缓存服务应用程序迁移为使用 Azure Redis 缓存，需执行以下步骤。
@@ -59,7 +63,7 @@ Microsoft Azure Redis 缓存提供以下层：
 
 * **基本** - 单个节点。 多种大小，最大 53 GB。
 * **标准** - 双节点主/副本配置。 多种大小，最大 53 GB。 99.9% SLA。
-* **高级** - 双节点主/副本配置，最多有 10 个分片。 从 6 GB 到 530 GB 的多种大小（有关详细信息，请与我们联系）。 标准层的所有功能加上其他功能，包括支持 [Redis 群集](cache-how-to-premium-clustering.md)、[Redis 持久性](cache-how-to-premium-persistence.md)和 [Azure 虚拟网络](cache-how-to-premium-vnet.md)。 99.9% SLA。
+* **高级** - 双节点主/副本配置，最多有 10 个分片。 多个大小（从 6 GB 到 530 GB）。 标准层的所有功能加上其他功能，包括支持 [Redis 群集](cache-how-to-premium-clustering.md)、[Redis 持久性](cache-how-to-premium-persistence.md)和 [Azure 虚拟网络](cache-how-to-premium-vnet.md)。 99.9% SLA。
 
 每个级别在功能和定价方面存在差异。 在本指南的后面将介绍这些功能，而有关定价的详细信息，则请参阅[缓存定价详细信息](https://azure.microsoft.com/pricing/details/cache/)。
 

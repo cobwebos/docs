@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory B2C：修改自定义策略中的注册和配置自我断言提供程序"
+title: "Azure Active Directory B2C：修改自定义策略中的注册和配置自断言提供程序"
 description: "有关在注册中添加声明和配置用户输入的演练"
 services: active-directory-b2c
 documentationcenter: 
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.date: 04/29/2017
 ms.author: joroja
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 9f7ee61c9c2ee3c68b215dde81e718db183d3870
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 8731ff3a42e12d145bc259597812aded8333a095
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/23/2017
 
 ---
-# <a name="azure-active-directory-b2c-modify-signup-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C：修改注册以添加新声明和配置用户输入。
+# <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C：修改注册以添加新声明和配置用户输入。
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -37,61 +37,62 @@ ms.lasthandoff: 05/08/2017
 
 ## <a name="define-the-claim-its-display-name-and-the-user-input-type"></a>定义声明、其显示名称和用户输入类型
 我们请求用户输入其所在城市。  将以下元素添加到 TrustFrameWorkExtensions 策略文件中的 `<ClaimsSchema>` 元素：
-```
-        <ClaimType Id="city">
-            <DisplayName>city</DisplayName>
-            <DataType>string</DataType>
-            <UserHelpText>Your city</UserHelpText>
-            <UserInputType>TextBox</UserInputType>
-        </ClaimType>
+
+```xml
+<ClaimType Id="city">
+  <DisplayName>city</DisplayName>
+  <DataType>string</DataType>
+  <UserHelpText>Your city</UserHelpText>
+  <UserInputType>TextBox</UserInputType>
+</ClaimType>
 ```
 此处可以选择其他选项来自定义声明。  有关完整的架构，请参阅**标识体验框架技术参考指南**。  本指南即将在参考部分中发布。
 
-* <DisplayName> 是一个字符串，用于定义面向用户的*标签*
+* `<DisplayName>` 是一个字符串，用于定义面向用户的*标签*
 
-* <UserHelpText> 可帮助用户了解需要提供哪些信息
+* `<UserHelpText>` 可帮助用户了解需要提供哪些信息
 
-* <UserInputType> 提供下面突出显示的四个选项：
+* `<UserInputType>` 提供下面突出显示的四个选项：
     * `TextBox`
-```
-        <ClaimType Id="city">
-            <DisplayName>city where you work</DisplayName>
-            <DataType>string</DataType>
-            <UserHelpText>Your city</UserHelpText>
-            <UserInputType>TextBox</UserInputType>
-        </ClaimType>
-```
-
-    * `RadioSingleSelectduration` 强制单项选择。
-```
-    <ClaimType Id="city">
-      <DisplayName>city where you work</DisplayName>
-      <DataType>string</DataType>
-      <UserInputType>RadioSingleSelect</UserInputType>
-      <Restriction>
-        <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
-        <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
-        <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
-      </Restriction>
-    </ClaimType>
+```xml
+<ClaimType Id="city">
+  <DisplayName>city where you work</DisplayName>
+  <DataType>string</DataType>
+  <UserHelpText>Your city</UserHelpText>
+  <UserInputType>TextBox</UserInputType>
+</ClaimType>
 ```
 
-    * `DropdownSingleSelect` 只允许选择一个有效值。
+    * `RadioSingleSelectduration` - 强制单选。
+```xml
+<ClaimType Id="city">
+  <DisplayName>city where you work</DisplayName>
+  <DataType>string</DataType>
+  <UserInputType>RadioSingleSelect</UserInputType>
+  <Restriction>
+    <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
+    <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
+    <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
+  </Restriction>
+</ClaimType>
+```
+
+    * `DropdownSingleSelect` - 只允许选择有效值。
 
 ![下拉列表选项的屏幕截图](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
 
 
-```
+```xml
 <ClaimType Id="city">
-       <DisplayName>city where you work</DisplayName>
-       <DataType>string</DataType>
-       <UserInputType>DropdownSingleSelect</UserInputType>
-       <Restriction>
-         <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
-         <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
-         <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
-       </Restriction>
-     </ClaimType>
+  <DisplayName>city where you work</DisplayName>
+  <DataType>string</DataType>
+  <UserInputType>DropdownSingleSelect</UserInputType>
+  <Restriction>
+    <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
+    <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
+    <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
+  </Restriction>
+</ClaimType>
 ```
 
 
@@ -100,133 +101,126 @@ ms.lasthandoff: 05/08/2017
 ![多项选择选项的屏幕截图](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
 
 
-```
+```xml
 <ClaimType Id="city">
-        <DisplayName>Receive updates from which cities?</DisplayName>
-        <DataType>string</DataType>
-        <UserInputType>CheckboxMultiSelect</UserInputType>
-        <Restriction>
-          <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
-          <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
-          <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
-        </Restriction>
-      </ClaimType>
+  <DisplayName>Receive updates from which cities?</DisplayName>
+  <DataType>string</DataType>
+  <UserInputType>CheckboxMultiSelect</UserInputType>
+  <Restriction>
+    <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
+    <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
+    <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
+  </Restriction>
+</ClaimType>
 ```
 
-## <a name="add-the-claim-to-the-singupsign-user-journey"></a>将声明添加到注册/登录用户旅程
+## <a name="add-the-claim-to-the-sign-upsign-in-user-journey"></a>将声明添加到用户注册/登录过程
 
 1. 将声明作为 `<OutputClaim ClaimTypeReferenceId="city"/>` 添加到技术配置文件 `LocalAccountSignUpWithLogonEmail`（可在 TrustFrameworkBase 策略文件中找到）。  请注意，此技术配置文件使用 SelfAssertedAttributeProvider。
 
-```xml
-<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
-          <DisplayName>Email signup</DisplayName>
-          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-          <Metadata>
-            <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
-            <Item Key="ContentDefinitionReferenceId">api.localaccountsignup</Item>
-            <Item Key="language.button_continue">Create</Item>
-          </Metadata>
-          <CryptographicKeys>
-            <Key Id="issuer_secret" StorageReferenceId="TokenSigningKeyContainer" />
-          </CryptographicKeys>
-          <InputClaims>
-            <InputClaim ClaimTypeReferenceId="email" />
-          </InputClaims>
-          <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="objectId" />
-            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
-            <OutputClaim ClaimTypeReferenceId="newPassword" Required="true" />
-            <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
-            <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
-            <OutputClaim ClaimTypeReferenceId="authenticationSource" />
-            <OutputClaim ClaimTypeReferenceId="newUser" />
-<!-- Optional claims, to be collected from the user -->
-            <OutputClaim ClaimTypeReferenceId="givenName" />
-            <OutputClaim ClaimTypeReferenceId="surName" />
-
-            <OutputClaim ClaimTypeReferenceId="city"/>
-
-          </OutputClaims>
-          <ValidationTechnicalProfiles>
-            <ValidationTechnicalProfile ReferenceId="AAD-UserWriteUsingLogonEmail" />
-          </ValidationTechnicalProfiles>
-          <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
-        </TechnicalProfile>
-```
+  ```xml
+  <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
+    <DisplayName>Email signup</DisplayName>
+    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Metadata>
+      <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
+      <Item Key="ContentDefinitionReferenceId">api.localaccountsignup</Item>
+      <Item Key="language.button_continue">Create</Item>
+    </Metadata>
+    <CryptographicKeys>
+      <Key Id="issuer_secret" StorageReferenceId="TokenSigningKeyContainer" />
+    </CryptographicKeys>
+    <InputClaims>
+      <InputClaim ClaimTypeReferenceId="email" />
+    </InputClaims>
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="objectId" />
+      <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
+      <OutputClaim ClaimTypeReferenceId="newPassword" Required="true" />
+      <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
+      <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
+      <OutputClaim ClaimTypeReferenceId="authenticationSource" />
+      <OutputClaim ClaimTypeReferenceId="newUser" />
+      <!-- Optional claims, to be collected from the user -->
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surName" />
+      <OutputClaim ClaimTypeReferenceId="city"/>
+    </OutputClaims>
+    <ValidationTechnicalProfiles>
+      <ValidationTechnicalProfile ReferenceId="AAD-UserWriteUsingLogonEmail" />
+    </ValidationTechnicalProfiles>
+    <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
+  </TechnicalProfile>
+  ```
 
 2. 将声明作为 `<PersistedClaim ClaimTypeReferenceId="city" />` 添加到 AAD-UserWriteUsingLogonEmail，以便在从用户收集声明后将其写入 AAD 目录。 如果不想要在目录中保留该声明供将来使用，可以跳过此步骤。
 
-```xml
-<!-- Technical profiles for local accounts -->
-        <TechnicalProfile Id="AAD-UserWriteUsingLogonEmail">
-          <Metadata>
-            <Item Key="Operation">Write</Item>
-            <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">true</Item>
-          </Metadata>
-          <IncludeInSso>false</IncludeInSso>
-          <InputClaims>
-            <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" Required="true" />
-          </InputClaims>
-          <PersistedClaims>
-            <!-- Required claims -->
-            <PersistedClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" />
-            <PersistedClaim ClaimTypeReferenceId="newPassword" PartnerClaimType="password" />
-            <PersistedClaim ClaimTypeReferenceId="displayName" DefaultValue="unknown" />
-            <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration" />
-            <!-- Optional claims. -->
-            <PersistedClaim ClaimTypeReferenceId="givenName" />
-            <PersistedClaim ClaimTypeReferenceId="surname" />
-
-            <PersistedClaim ClaimTypeReferenceId="city" />
-
-          </PersistedClaims>
-          <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="objectId" />
-            <OutputClaim ClaimTypeReferenceId="newUser" PartnerClaimType="newClaimsPrincipalCreated" />
-            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
-            <OutputClaim ClaimTypeReferenceId="userPrincipalName" />
-            <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
-          </OutputClaims>
-          <IncludeTechnicalProfile ReferenceId="AAD-Common" />
-          <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
-        </TechnicalProfile>
-```
+  ```xml
+  <!-- Technical profiles for local accounts -->
+  <TechnicalProfile Id="AAD-UserWriteUsingLogonEmail">
+    <Metadata>
+      <Item Key="Operation">Write</Item>
+      <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">true</Item>
+    </Metadata>
+    <IncludeInSso>false</IncludeInSso>
+    <InputClaims>
+      <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" Required="true" />
+    </InputClaims>
+    <PersistedClaims>
+      <!-- Required claims -->
+      <PersistedClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" />
+      <PersistedClaim ClaimTypeReferenceId="newPassword" PartnerClaimType="password" />
+      <PersistedClaim ClaimTypeReferenceId="displayName" DefaultValue="unknown" />
+      <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration" />
+      <!-- Optional claims. -->
+      <PersistedClaim ClaimTypeReferenceId="givenName" />
+      <PersistedClaim ClaimTypeReferenceId="surname" />
+      <PersistedClaim ClaimTypeReferenceId="city" />
+    </PersistedClaims>
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="objectId" />
+      <OutputClaim ClaimTypeReferenceId="newUser" PartnerClaimType="newClaimsPrincipalCreated" />
+      <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
+      <OutputClaim ClaimTypeReferenceId="userPrincipalName" />
+      <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
+    </OutputClaims>
+    <IncludeTechnicalProfile ReferenceId="AAD-Common" />
+    <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
+  </TechnicalProfile>
+  ```
 
 3. 将声明作为 `<OutputClaim ClaimTypeReferenceId="city" />` 添加到在用户登录时读取目录的技术配置文件
 
-```xml
-<TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
-  <Metadata>
-    <Item Key="Operation">Read</Item>
-    <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
-    <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">An account could not be found for the provided user ID.</Item>
-  </Metadata>
-  <IncludeInSso>false</IncludeInSso>
-  <InputClaims>
-    <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames" Required="true" />
-  </InputClaims>
-  <OutputClaims>
-    <!-- Required claims -->
-    <OutputClaim ClaimTypeReferenceId="objectId" />
-    <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
-    <!-- Optional claims -->
-    <OutputClaim ClaimTypeReferenceId="userPrincipalName" />
-    <OutputClaim ClaimTypeReferenceId="displayName" />
-    <OutputClaim ClaimTypeReferenceId="otherMails" />
-    <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
-
-    <OutputClaim ClaimTypeReferenceId="city" />
-
-  </OutputClaims>
-  <IncludeTechnicalProfile ReferenceId="AAD-Common" />
-</TechnicalProfile>
-```
+  ```xml
+  <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
+    <Metadata>
+      <Item Key="Operation">Read</Item>
+      <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
+      <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">An account could not be found for the provided user ID.</Item>
+    </Metadata>
+    <IncludeInSso>false</IncludeInSso>
+    <InputClaims>
+      <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames" Required="true" />
+    </InputClaims>
+    <OutputClaims>
+      <!-- Required claims -->
+      <OutputClaim ClaimTypeReferenceId="objectId" />
+      <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
+      <!-- Optional claims -->
+      <OutputClaim ClaimTypeReferenceId="userPrincipalName" />
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="otherMails" />
+      <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
+      <OutputClaim ClaimTypeReferenceId="city" />
+    </OutputClaims>
+    <IncludeTechnicalProfile ReferenceId="AAD-Common" />
+  </TechnicalProfile>
+  ```
 
 4. 将 `<OutputClaim ClaimTypeReferenceId="city" />` 添加到 RP 策略文件 SignUporSignIn.xml，以便在用户旅程成功完成后，在令牌中将此声明发送到应用程序。
 
-
-```xml
-<RelyingParty>
+  ```xml
+  <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <TechnicalProfile Id="PolicyProfile">
       <DisplayName>PolicyProfile</DisplayName>
@@ -238,9 +232,7 @@ ms.lasthandoff: 05/08/2017
         <OutputClaim ClaimTypeReferenceId="email" />
         <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
         <OutputClaim ClaimTypeReferenceId="identityProvider" />
-
         <OutputClaim ClaimTypeReferenceId="city" />
-
       </OutputClaims>
       <SubjectNamingInfo ClaimType="sub" />
     </TechnicalProfile>
@@ -249,14 +241,16 @@ ms.lasthandoff: 05/08/2017
 
 ## <a name="test-the-custom-policy-using-run-now"></a>使用“立即运行”测试自定义策略
 
-       1. Open the **Azure AD B2C Blade** and navigate to **Identity Experience Framework > Custom policies**.
-       2. Select the custom policy that you uploaded, and click the **Run now** button.
-       3. You should be able to sign up using an email address.
+1. 打开“Azure AD B2C 边栏选项卡”并导航到“标识体验框架”>“自定义策略”。
+2. 选择上传的自定义策略，然后单击“立即运行”按钮。
+3. 现在，应该可以使用电子邮件地址注册。
 
-测试模式下的注册屏幕应类似于：![修改的注册选项的屏幕截图](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
+测试模式下的注册屏幕应类似于：
+
+![修改后的注册选项屏幕截图](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
 
   返回给应用程序的令牌现在包含 `city` 声明，如下所示
-```
+```json
 {
   "exp": 1493596822,
   "nbf": 1493593222,
@@ -276,21 +270,20 @@ ms.lasthandoff: 05/08/2017
 }
 ```
 
-## <a name="optional-remove-email-verification-from-signup-journey"></a>（可选）从注册旅程中删除电子邮件验证
+## <a name="optional-remove-email-verification-from-signup-journey"></a>可选：从注册旅程中删除电子邮件验证
 
 若要跳过电子邮件验证，策略作者可以选择删除 `PartnerClaimType="Verified.Email"`。 电子邮件地址是必需的，但除非删除了 “Required” = true，否则不会验证该地址。  请仔细考虑此选项是否适合你的用例！
 
 在初学者包中 TrustFrameworkBase 策略文件的 `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` 内，默认已启用验证的电子邮件：
+```xml
+<OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
 ```
-            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
-            ```
 
-## Next steps
+## <a name="next-steps"></a>后续步骤
 
-
-Add the new claim to the flows for social account logins by changing the TechnicalProfiles listed below. These are used by social/federated account logins to write and read the user data using the alternativeSecurityId as the locator.
-```
-  <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
-  <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
+通过更改下面列出的技术配置文件，将新的声明添加到社交帐户登录流。 社交/联合帐户登录使用上述方法来写入和读取将 alternativeSecurityId 用作定位符的用户数据。
+```xml
+<TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
+<TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
 ```
 

@@ -2,252 +2,269 @@
 title: "教程：Azure Active Directory 与 Tableau Server 集成 | Microsoft 文档"
 description: "了解如何在 Azure Active Directory 和 Tableau Server 之间配置单一登录。"
 services: active-directory
-documentationcenter: 
+documentationCenter: na
 author: jeevansd
 manager: femila
-editor: 
 ms.assetid: c1917375-08aa-445c-a444-e22e23fa19e0
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 06/18/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d8845ecb86acef651fdc8d6a64ebcae82b54dcd8
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: 6b35609d88fbbf649e15863901d521886db2a4d6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/22/2017
+
 
 ---
-
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>教程：Azure Active Directory 与 Tableau Server 集成
-本教程的目的是说明如何将 Tableau Server 与 Azure Active Directory (Azure AD) 集成。
+
+本教程介绍如何将 Tableau Server 与 Azure Active Directory (Azure AD) 集成。
 
 将 Tableau Server 与 Azure AD 集成提供以下优势：
 
-* 可在 Azure AD 中控制谁有权访问 Tableau Server
-* 可以让用户使用其 Azure AD 帐户自动登录到 Tableau Server 单一登录 (SSO)
-* 可使用 Azure 经典门户在一个中心位置管理帐户
+- 可在 Azure AD 中控制谁有权访问 Tableau Server
+- 可以让用户使用其 Azure AD 帐户自动登录到 Tableau Server（单一登录）
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
 ## <a name="prerequisites"></a>先决条件
+
 若要配置 Azure AD 与 Tableau Server 的集成，需要以下项：
 
-* Azure AD 订阅
-* 已启用 Tableau Server SSO 的订阅
+- 一个 Azure AD 订阅
+- 已启用 Tableau Server 单一登录的订阅
 
->[!NOTE]
->不建议使用生产环境测试本教程中的步骤。
->
->
+> [!NOTE]
+> 不建议使用生产环境测试本教程中的步骤。
 
 测试本教程中的步骤应遵循以下建议：
 
-* 不应使用生产环境，除非有此必要。
-* 如果没有 Azure AD 试用环境，可以获取[一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
+- 除非必要，请勿使用生产环境。
+- 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
 ## <a name="scenario-description"></a>方案描述
-本教程旨在介绍如何在测试环境中测试 Azure AD SSO。 
-
-本教程中概述的方案包括两个主要构建基块：
+在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Tableau Server
-2. 配置和测试 Azure AD SSO
+2. 配置和测试 Azure AD 单一登录
 
-## <a name="add-tableau-server-from-the-gallery"></a>从库中添加 Tableau Server
+## <a name="adding-tableau-server-from-the-gallery"></a>从库中添加 Tableau Server
 若要配置 Tableau Server 与 Azure AD 的集成，需要从库中将 Tableau Server 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Tableau Server，请执行以下步骤：**
 
-1. 在 **Azure 经典门户**的左侧导航窗格上，单击“Active Directory”。 
-   
+1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+
     ![Active Directory][1]
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
-3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
-   
+
+2. 导航到“企业应用程序”。 转到“所有应用程序”。
+
     ![应用程序][2]
-4. 在页面底部单击“添加”。
-   
+    
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+
     ![应用程序][3]
-5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
-   
-    ![应用程序][4]
-6. 在搜索框中，键入“Tableau Server”。
-   
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_01.png)
-7. 在结果窗格中，选择“Tableau Server”，然后单击“完成”以添加该应用程序。
-   
-    ![在库中选择应用](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_02.png)
 
-## <a name="configure-and-test-azure-ad-sso"></a>配置和测试 Azure AD SSO
-本部分的目的是说明如何基于名为“Britta Simon”的测试用户配置和测试 Tableau Server 的 Azure AD 单一登录。
+4. 在搜索框中，键入“Tableau Server”。
 
-若要运行 SSO，Azure AD 需要知道与 Azure AD 用户相对应的 Tableau Server 用户。 换句话说，需要在 Azure AD 用户与 Tableau Server 中相关用户之间建立链接关系。
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_search.png)
 
-通过将 Azure AD 中“用户名”的值分配为 Tableau Server 中“用户名”的值来建立此链接关系。
+5. 在结果面板中，选择“Tableau Server”，然后单击“添加”按钮添加该应用程序。
+
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_addfromgallery.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Tableau Server 的 Azure AD 单一登录。
+
+若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Tableau Server 用户。 换句话说，需要在 Azure AD 用户与 Tableau Server 中相关用户之间建立链接关系。
+
+可通过将 Azure AD 中“用户名”的值指定为 Tableau Server 中“用户名”的值来建立此链接关系。
 
 若要配置和测试 Tableau Server 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户能够使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Tableau Server 测试用户](#creating-a-tableauserver-test-user)** - 在 Tableau Server 中创建 Britta Simon 的对应用户，将其链接到她的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 能够使用 Azure AD 单一登录。
+3. **[创建 Tableau Server 测试用户](#creating-a-tableau-server-test-user)** - 在 Tableau Server 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
-本部分旨在介绍如何在 Azure 经典门户中启用 Azure AD SSO 并在 Tableau Server 应用程序中配置 SSO。
+### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-Tableau Server 应用程序需要采用特定格式的 SAML 断言。 以下屏幕截图显示一个示例。 
+在本部分中，将在 Azure 门户中启用 Azure AD 单一登录，并在 Tableau Server 应用程序中配置单一登录。
 
-![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_51.png) 
+**若要配置 Tableau Server 的 Azure AD 单一登录，请执行以下步骤：**
 
-**若要配置 Tableau Server 的 Azure AD SSO，请执行以下步骤：**
+1. 在 Azure 门户中的“Tableau Server”应用程序集成页上，单击“单一登录”。
 
-1. 在 Azure 经典门户的“Tableau Server”应用程序集成页上，单击顶部菜单中的“属性”。
-   
-    ![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/tutorial_general_81.png) 
-2. 在“SAML 令牌属性”对话框中，执行以下步骤：
+    ![配置单一登录][4]
 
-   1. 单击“添加用户属性”，打开“添加用户属性”对话框。
+2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+ 
+    ![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_samlbase.png)
 
-    ![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/tutorial_general_82.png) 
-   2. 在“属性名称”文本框中，键入“username”。
-   3. 从“属性值”列表中，选择“user.displayname”。
-   4. 单击“完成”。    
+3. 在“Tableau Server 域和 URL”部分中，执行以下步骤：
 
-3. 在顶部菜单中，单击“快速启动”。
-   
-    ![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/tutorial_general_83.png)  
-4. 单击“配置单一登录”，打开“配置单一登录”对话框。
-   
-    ![配置单一登录][6] 
-5. 在“你希望用户如何登录 Tableau Server”页上，选择“Azure AD 单一登录”，然后单击“下一步”。
-   
-    ![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_03.png) 
-6. 在“配置应用设置”对话框页上，执行以下步骤，然后单击“下一步”：
-   
-    ![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_04.png) 
+    ![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_url.png)
 
-   1. 在“登录 URL”文本框中，键入 Tableau Server 的 URL。 
-   2. 在“标识符”框中，复制 URL。
-   3. 单击“资源组名称” 的 Azure 数据工厂。
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://azure.<domain name>.link`
+    
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://azure.<domain name>.link`
 
-7. 在“配置 Tableau Server 的单一登录”页上，执行以下步骤并单击“下一步”：
-   
-    ![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_05.png) 
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://azure.<domain name>.link/wg/saml/SSO/index.html`
+     
+    > [!NOTE] 
+    > 上面的值不是实际值。 稍后，将使用实际 URL 和标识符从“Tableau Server”配置页中更新这些值。 
 
-   1. 单击“下载元数据”，然后在计算机上保存该文件。
-   2. 单击“下一步”。
+4. Tableau Server 应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分中管理这些属性的值。 以下屏幕截图显示了同一个示例。
+    
+    ![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/3.png)
+    
+5. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，然后执行以下步骤：
+    
+    | 属性名称 | 属性值 |
+    | ---------------| --------------- |    
+    | username | *user.displayname* |
 
+    a. 单击“添加属性”，打开“添加属性”对话框。
+
+    ![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/tutorial_officespace_04.png)
+
+    ![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/tutorial_officespace_05.png)
+    
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
+    
+    c. 在“值”列表中，选择为该行显示的属性值。
+    
+    d. 单击“确定”
+
+
+6. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+
+    ![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_certificate.png) 
+
+7. 单击“保存”按钮。
+
+    ![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/tutorial_general_400.png)
+<CS>
 8. 若要为应用程序配置 SSO，需要以管理员身份登录 Tableau Server 租户。
    
-   1. 在 Tableau Server 配置中，单击“SAML”选项卡。
+   a. 在 Tableau Server 配置中，单击“SAML”选项卡。
   
     ![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_001.png) 
-   2. 选中“使用 SAML 进行单一登录”复选框。
-   3. 找到从 Azure 经典门户下载的联合元数据文件，然后在“SAML Idp 元数据文件”中上载它。
-   4. Tableau Server 返回 URL（Tableau Server 用户将要访问的 URL），例如 http://tableau_server。 不建议使用 http://localhost。 不支持使用带尾部反斜杠的 URL（例如，http://tableau_server/）。 复制 **Tableau Server 返回 URL** 并将其粘贴到 Azure AD“登录 URL”文本框中，如步骤 3 中所示
-   5. SAML 实体 ID - 此实体 ID 唯一标识安装到 IdP 的 Tableau Server。 可以在此处再次输入 Tableau Server URL（如果需要），但它不必须是 Tableau Server URL。 复制 **SAML 实体 ID** 并将其粘贴到 Azure AD“标识符”文本框中，如步骤 3 中所示。
-   6. 单击“导出元数据文件”，并在文本编辑器应用程序中打开该文件。 找到包含 Http Post 和索引 0 的断言使用者服务 URL 并复制该 URL。 现在将其粘贴到 Azure AD“回复 URL”文本框中，如步骤 3 中所示。 
-   7. 在“Tableau Server 配置”页中单击“确定”按钮。
+  
+   b. 选中“使用 SAML 进行单一登录”复选框。
+   
+   c. Tableau Server 返回 URL（Tableau Server 用户将要访问的 URL），例如 http://tableau_server。 不建议使用 http://localhost。 不支持使用带尾部反斜杠的 URL（例如，http://tableau_server/）。 在“Tableau Server 域和 URL”部分中，复制“Tableau Server 返回 URL”并将其粘贴到 Azure AD“登录 URL”文本框中。
+   
+   d. SAML 实体 ID - 此实体 ID 唯一标识安装到 IdP 的 Tableau Server。 可以在此处再次输入 Tableau Server URL（如果需要），但它不必须是 Tableau Server URL。 在“Tableau Server 域和 URL”部分中，复制“SAML 实体 ID”并将其粘贴到 Azure AD“标识符”文本框中。
+     
+   e. 单击“导出元数据文件”，并在文本编辑器应用程序中打开该文件。 找到包含 Http Post 和索引 0 的断言使用者服务 URL 并复制该 URL。 现在将其粘贴到“Tableau Server 域和 URL”部分中的 Azure AD“答复 URL”文本框中。
+   
+   f. 找到从 Azure 门户下载的联合元数据文件，然后在“SAML Idp 元数据文件”中上传它。
+   
+   g. 在“Tableau Server 配置”页中单击“确定”按钮。
    
     >[!NOTE] 
+    >客户必须上传 Tableau Server SAML SSO 配置中的任何证书，SSO 流程中会将其忽略。
     >如果需要帮助在 Tableau Server 上配置 SAML，请参阅此文：[配置 SAML](http://onlinehelp.tableau.com/current/server/en-us/config_saml.htm)。
     >
+<CE>
 
-9. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
-   
-    ![Azure AD 单一登录][10]
-10. 在“单一登录确认”页上，单击“完成”。 
-   
-    ![Azure AD 单一登录][11]
+> [!TIP]
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-本部分的目的是在 Azure 经典门户中创建名为 Britta Simon 的测试用户。
+### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-* 在“用户列表”中，选择“Britta Simon”。
-
-![创建 Azure AD 用户][20]
+![创建 Azure AD 用户][100]
 
 **若要在 Azure AD 中创建测试用户，请执行以下步骤：**
 
-1. 在 **Azure 经典门户**中，在左侧导航窗格上，单击“Active Directory”。
-   
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_09.png) 
-2. 在“目录”列表中，选择要启用目录集成的目录。
-3. 若要显示用户列表，请在顶部菜单中，单击“用户”。
-   
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_03.png) 
-4. 若要打开“添加用户”对话框，请在底部工具栏中单击“添加用户”。
-   
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_04.png)
-5. 在“告诉我们有关此用户的信息”对话框页上，执行以下步骤：
-   
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_05.png) 
-   
-   1. 对于“用户类型”，选择“组织中的新用户”。
-   2. 在“用户名”文本框中，键入“BrittaSimon”。
-   3. 单击“下一步”。
-6. 在“用户配置文件”对话框页上，执行以下步骤：
-   
-   ![创建 Azure AD 测试用户](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_06.png) 
-   
-   1. 在“名字”文本框中，键入“Britta”。  
-   2. 在“姓氏”文本框中，键入“Simon”。
-   3. 在“显示名称”文本框中，键入“Britta Simon”。
-   4. 在“角色”列表中，选择“用户”。
-   5. 单击“资源组名称” 的 Azure 数据工厂。
-7. 在“获取临时密码”对话框页上，单击“创建”。
-   
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_07.png) 
-8. 在“获取临时密码”对话框页上，执行以下步骤：
-   
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_08.png) 
-   
-   1. 写下“新密码”的值。
-   2. 单击“完成”。   
+1. 在 **Azure 门户**的左侧导航窗格中，单击“Azure Active Directory”图标。
 
-### <a name="create-a-tableau-server-test-user"></a>创建 Tableau Server 测试用户
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_01.png) 
+
+2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+    
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_02.png) 
+
+3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+ 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_03.png) 
+
+4. 在“用户”对话框页上，执行以下步骤：
+ 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_04.png) 
+
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
+
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+
+    c. 选择“显示密码”并记下“密码”的值。
+
+    d.单击“下一步”。 单击“创建” 。
+ 
+### <a name="creating-a-tableau-server-test-user"></a>创建 Tableau Server 测试用户
+
 本部分的目的是在 Tableau Server 中创建名为“Britta Simon”的用户。 需要在 Tableau Server 中预配所有用户。 
 
-用户的用户名应与在 **username** 的 Azure AD 自定义属性中配置的值匹配。 使用正确的映射，此集成应可实现[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)。
+用户的用户名应与在 **username** 的 Azure AD 自定义属性中配置的值匹配。 使用正确的映射，此集成应可实现[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)。
 
 >[!NOTE]
 >如果需要手动创建用户，需要联系组织中的 Tableau Server 管理员。
 > 
 > 
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-本部分的目的是通过授予 Britta Simon 访问 Tableau Server 的权限，允许她使用 Azure SSO。
+### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
+在本部分中，通过授予 Britta Simon 访问 Tableau Server 的权限，允许她使用 Azure 单一登录。
 
 ![分配用户][200] 
 
 **若要将 Britta Simon 分配到 Tableau Server，请执行以下步骤：**
 
-1. 在 Azure 经典门户中，若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
-   
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+
     ![分配用户][201] 
+
 2. 在应用程序列表中，选择“Tableau Server”。
-   
-    ![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_50.png) 
-3. 在顶部菜单中，单击“用户”。
-   
+
+    ![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_app.png) 
+
+3. 在左侧菜单中，单击“用户和组”。
+
+    ![分配用户][202] 
+
+4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+
     ![分配用户][203]
-4. 在“用户”列表中，选择“Britta Simon”。
-5. 在底部工具栏中，单击“分配”。
 
-![分配用户][205]
+5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-### <a name="test-single-sign-on"></a>测试单一登录
-本部分旨在使用“访问面板”测试你的 Azure AD 单一登录配置。
+6. 在“用户和组”对话框中单击“选择”按钮。
+
+7. 在“添加分配”对话框中单击“分配”按钮。
+    
+### <a name="testing-single-sign-on"></a>测试单一登录
+
+在本部分中，将使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Tableau Server”磁贴时，用户应自动登录到 Tableau Server 应用程序。
+有关访问面板的详细信息，请参阅 [introduction to the Access Panel](https://msdn.microsoft.com/library/dn308586)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
+
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+
+
 
 <!--Image references-->
 
@@ -256,14 +273,11 @@ Tableau Server 应用程序需要采用特定格式的 SAML 断言。 以下屏�
 [3]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_04.png
 
-[6]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_05.png
-[10]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_06.png
-[11]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_07.png
-[20]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_100.png
+[100]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_100.png
 
 [200]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_200.png
 [201]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_203.png
-[204]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_204.png
-[205]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_205.png
+
 

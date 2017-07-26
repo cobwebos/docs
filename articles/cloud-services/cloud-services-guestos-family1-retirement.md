@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/21/2017
+ms.date: 5/21/2017
 ms.author: raiye
-translationtype: Human Translation
-ms.sourcegitcommit: 0994765e37dd8ee1fa6a639a2ed60c913cb170fe
-ms.openlocfilehash: 578059c397319147c8716e2152901dfdc15a28cd
-ms.lasthandoff: 12/08/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 3178a09dab1cb972a3460d54dc9908fb95cce68b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -28,16 +29,16 @@ ms.lasthandoff: 12/08/2016
 
 **2014 年 11 月 3 日** - 来宾 OS 系列 1 的延长支持结束，该系列完全停用。 仍基于系列 1 的所有服务将受影响。 我们随时可能会停止这些服务。 除非你自己手动升级你的服务，否则无法保证你的服务将继续运行。
 
-如果你还有其他疑问，请访问[云服务论坛](http://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc)或[联系 Azure 支持人员](https://azure.microsoft.com/support/options/)。
+如果有其他疑问，请访问[云服务论坛](http://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc)或[联系 Azure 支持人员](https://azure.microsoft.com/support/options/)。
 
 ## <a name="are-you-affected"></a>了解你是否受到影响
 如果存在下列任一情况，则表示你的云服务已受到影响：
 
 1. 你在云服务的 ServiceConfiguration.cscfg 文件中显式指定了值“osFamily = 1”。
 2. 你未在云服务的 ServiceConfiguration.cscfg 文件中显式指定 osFamily 的值。 当前，系统对此情况使用默认值“1”。
-3. Azure 经典门户将你的来宾操作系统系列值列为“Windows Server 2008”。
+3. Azure 门户将来宾操作系统系列值列为“Windows Server 2008”。
 
-若要了解你的哪个云服务在运行哪个 OS 系列，你可以在 Azure PowerShell 中运行以下脚本，但必须首先[设置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 有关该脚本的其他详细信息，请参阅 [Azure 来宾 OS 系列 1 生命周期终结：2014 年 6 月](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)。 
+若要了解你的哪个云服务在运行哪个 OS 系列，你可以在 Azure PowerShell 中运行以下脚本，但必须首先[设置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 有关该脚本的详细信息，请参阅 [Azure 来宾 OS 系列 1 生命周期终结：2014 年 6 月](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)。
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {
@@ -74,5 +75,4 @@ foreach($subscription in Get-AzureSubscription) {
 
 ## <a name="next-steps"></a>后续步骤
 查看最新的[来宾 OS 版本](cloud-services-guestos-update-matrix.md)。
-
 

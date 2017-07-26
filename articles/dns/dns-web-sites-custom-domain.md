@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: dd020bf625510eb90af2e1ad19c155831abd7e75
-ms.openlocfilehash: a2a429873c30f526a0de05d4018f53f3a83bbe28
-ms.lasthandoff: 02/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: b054a41ecd69ee1c802d8403fe4b25128f016e3c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/31/2017
 
 ---
 
@@ -54,9 +55,9 @@ $rs= New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -
 
 ### <a name="step-2"></a>步骤 2
 
-使用分配的 $rs 变量将 IPv4 值添加到以前创建的记录集 "@"。 分配的 IPv4 值将是 Web 应用的 IP 地址。
+使用分配的 $rs 变量将 IPv4 值添加到以前创建的记录集“@”。 分配的 IPv4 值将是 Web 应用的 IP 地址。
 
-若要查找 Web 应用的 IP 地址，请按照[在 Azure App Service 中配置自定义域名](../app-service-web/web-sites-custom-domain-name.md#vip)中的步骤执行操作。
+若要查找 Web 应用的 IP 地址，请按照[在 Azure 应用服务中配置自定义域名](../app-service-web/app-service-web-tutorial-custom-domain.md)中的步骤执行操作。
 
 ```powershell
 Add-AzureRMDnsRecordConfig -RecordSet $rs -Ipv4Address "<your web app IP address>"
@@ -64,7 +65,7 @@ Add-AzureRMDnsRecordConfig -RecordSet $rs -Ipv4Address "<your web app IP address
 
 ### <a name="step-3"></a>步骤 3
 
-确认对记录集的更改。 使用 `Set-AzureRMDnsRecordSet` 将对记录集的变更上载到 Azure DNS：
+确认对记录集的更改。 使用 `Set-AzureRMDnsRecordSet` 将对记录集的变更上传到 Azure DNS：
 
 ```powershell
 Set-AzureRMDnsRecordSet -RecordSet $rs
@@ -201,5 +202,5 @@ Set-AzureRMDnsRecordSet -RecordSet $rs
 
 ## <a name="next-steps"></a>后续步骤
 
-请按照 [为 App Service 配置自定义域名](../app-service-web/web-sites-custom-domain-name.md)中的步骤来配置 Web 应用，以便使用自定义域。
+请按照 [为应用服务配置自定义域名](../app-service-web/web-sites-custom-domain-name.md)中的步骤来配置 Web 应用，以便使用自定义域。
 

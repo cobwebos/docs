@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/06/2017
+ms.date: 05/04/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: cfa0320b6c83cf169c64eb5f1932e96bd172f827
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: 6f43423096f0e74f41afea275e4ec9801dc2cea5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/19/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/27/2017
 > * [使用门户](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [使用 PowerShell（对于默认存储）](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [使用 PowerShell（对于其他存储）](data-lake-store-hdinsight-hadoop-use-powershell.md)
-> * [使用资源管理器](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
+> * [使用 Resource Manager](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 >
 >
 
@@ -38,12 +39,9 @@ ms.lasthandoff: 04/27/2017
 
 下面是结合使用 HDInsight 和 Data Lake Store 的一些重要注意事项：
 
-* HDInsight 版本 3.5 提供创建 HDInsight 群集（可访问作为默认存储的 Data Lake Store）的选项。
+* HDInsight 3.5 和 3.6 版提供创建 HDInsight 群集（可访问作为默认存储的 Data Lake Store）的选项。
 
-* HDInsight 版本 3.2、3.4 和 3.5 提供创建 HDInsight 群集（可访问作为其他存储的 Data Lake Store）的选项。
-
-* 对于 HBase 群集（Windows 和 Linux），Data Lake Store **不支持**用作存储选项（包括默认存储和其他存储）。
-
+* HDInsight 3.2、3.4 和 3.5 和 3.6 版提供创建 HDInsight 群集（可访问作为其他存储的 Data Lake Store）的选项。
 
 本文中将设置 Hadoop 群集，其中 Data Lake Store 作为其他存储。 有关如何将 Data Lake Store 用作默认存储来创建 Hadoop 群集的说明，请参阅[使用 Azure 门户创建具有 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。
 

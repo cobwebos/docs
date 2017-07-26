@@ -16,10 +16,10 @@ ms.date: 05/15/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 1199840da725afdae3ee69a26db9ceedb2ab37e3
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 74809ce12a2a273a18ff3e0559aefd79fb4d2da7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/26/2017
 
 ---
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 05/17/2017
 了解如何使用脚本操作，将其他 Azure 存储帐户添加到使用 Linux 作为操作系统的现有 HDInsight 群集。
 
 > [!IMPORTANT]
-> 本文档中的信息介绍在创建群集后，如何将其他存储添加到此群集。 若要深入了解如何在群集创建期间添加其他存储帐户，请参阅[创建基于 Linux 的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md#use-additional-storage)文档中的__使用其他存储__部分。
+> 本文档中的信息介绍在创建群集后，如何将其他存储添加到此群集。 有关在创建群集期间添加存储帐户的信息，请参阅[使用 Hadoop、Spark、Kafka 等设置 HDInsight 中的群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 ## <a name="how-it-works"></a>工作原理
 
@@ -122,7 +122,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 
 2. 从页面左侧的服务列表中选择“HDFS”。 然后，在页面中心选择“配置”选项卡。
 
-3. 在“筛选...”字段中，输入值 __fs.azure.account__。 这将返回已添加到群集的任何其他存储帐户的条目。 条目的类型为两种：__keyprovider__ 和 __key__。 这两种类型都包含存储帐户名称，作为密钥名称的一部分。 
+3. 在“筛选...”字段中，输入值 __fs.azure.account__。 这将返回已添加到群集的任何其他存储帐户的条目。 条目的类型为两种：__keyprovider__ 和 __key__。 这两种类型都包含存储帐户名称，作为密钥名称的一部分。
 
     以下是名为 __mystorage__ 的存储帐户的示例条目：
 
@@ -150,3 +150,4 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 ## <a name="next-steps"></a>后续步骤
 
 你已了解如何将其他存储帐户添加到现有 HDInsight 群集。 有关脚本操作的详细信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)
+

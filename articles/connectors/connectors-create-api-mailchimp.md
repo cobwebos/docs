@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 26732369241c9d922b50f4a72808b9bdb8497e6e
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 46de91881f84183d0359755f49a115e712a7033b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -39,9 +39,9 @@ MailChimp 是 SaaS 服务，允许企业管理和自动化电子邮件市场营�
 > 
 
 
-## <a name="view-the-swagger"></a>查看 Swagger
+## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
-请参阅 [Swagger 详细信息](/connectors/mailchimp/)。
+在[连接器详细信息](/connectors/mailchimp/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
 
 ## <a name="more-connectors"></a>更多连接器
 返回到 [API 列表](apis-list.md)。

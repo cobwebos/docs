@@ -6,21 +6,21 @@ keywords:
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
+ms.reviewer: gahug
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: end-user
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: bd0175558a94a146a365e8c1a32522f1e54c184e
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 485dfa067bd64312f6ae68a533117db1556318ed
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 05/26/2017
 
 ---
 # <a name="register-for-self-service-password-reset"></a>注册自助密码重置
@@ -45,6 +45,16 @@ ms.lasthandoff: 05/03/2017
 在“身份验证电话”或“身份验证电子邮件”中输入数据时，这些数据在全局目录中不可见。 只有你和你的管理员能够看到该数据。 只有你能够看到安全问题的答案。
 
 管理员可能会要求你在一段时间过后确认身份验证方法，确保你注册的方法仍然适用。
+
+## <a name="common-problems-and-their-solutions"></a>常见问题及其解决方法
+
+ 以下是一些常见的错误案例及其解决方法：
+
+| 错误案例| 看到什么错误？| 解决方案 |
+| --- | --- | --- |
+| 在输入我的用户 ID 后，出现了“请联系管理员”页面 | 请与管理员联系 <br> <br> 我们检测到你的用户帐户密码不受 Microsoft 管理。 因此，我们无法自动重置密码。 <br> <br> 你需要与 IT 人员联系以获得任何进一步帮助。 | 你之所以看到此消息，是因为 IT 人员在本地环境中管理你的密码，而不允许你从“无法访问帐户链接”重置密码。 <br> <br> 若要重置密码，请直接向 IT 人员寻求帮助，使其了解你想要重置密码，从而为你启用此功能。|
+| 在输入我的用户 ID 后，出现“你的帐户未针对密码重置进行启用”错误 | 未针对密码重置启用帐户 <br> <br> 很抱歉， IT 人员尚未将你的帐户设置为可使用此服务。 <br> <br> 如果你愿意，我们可以联系你所在组织的管理员为你重置密码。 | 你之所以看到此消息，是因为 IT 人员未为你的组织启用“从无法访问帐户”链接重置密码的功能，或未授权你使用该功能。 <br> <br> 若要重置密码，请单击“联系管理员”链接，向公司 IT 人员发送电子邮件，使其了解你想要重置密码，从而为你启用此功能。 |
+| 在输入我的用户 ID 后，出现了“我们无法验证你的帐户”错误 | 我们无法验证你的帐户 <br> <br> 如果你愿意，我们可以联系你所在组织的管理员为你重置密码。 | 你之所以看到此消息，是因为已经为你启用了密码重置，但你并未注册使用此服务。 若要注册密码重置，请在重新获取帐户访问权限后转到 http://aka.ms/ssprsetup。 <br> <br> 若要重置密码，请单击“联系管理员”链接以向公司 IT 人员发送电子邮件。 |
 
 ## <a name="next-steps"></a>后续步骤
 

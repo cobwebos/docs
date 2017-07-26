@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/15/2017
 ms.author: corywink
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 9b92801609dfc8d14352a50edd10f8902c87c661
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 9f850175be843b29432c4803a150ddb2ec79780d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -95,6 +95,14 @@ ms.lasthandoff: 05/10/2017
 
 请参阅 Eric Golpe 的博客文章[删除 Azure AD 租户的演练][lnk-delete-aad-tennant]。
 
+### <a name="what-is-opc-ua"></a>OPC UA 是什么？
+
+OPC 统一体系结构 (UA) 于 2008 年发布，是一种独立于平台、面向服务的互操作性标准，用于各种工业系统和设备，如工业用电脑、PLC 和传感器。 OPC UA 将各 OPC 经典规范的所有功能集成到一种具有内置安全性的可扩展框架。 它是一种由 OPC 基金会倡导的标准。 [OPC 基金会][lnk-opc-foundation]是一个非营利组织，其 440 多位成员具有一个共同目标：使用 OPC 规范提供基础结构、规范、技术和流程以促进多供应商、多平台、安全和可靠互操作性。
+
+### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-preconfigured-solution"></a>为什么 Microsoft 为互联工厂预配置解决方案选择 OPC UA？
+
+Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独立于平台、已获得行业认可和已经过验证的标准。 它是 Industrie 4.0 (RAMI4.0) 参考体系结构解决方案的必要条件，可确保大量制造流程和设备之间的互操作性。 Microsoft 了解到客户对生成 Industrie 4.0 解决方案的需求。 OPC UA 支持有助于降低客户实现其目标的障碍，并为其提供即时业务价值。
+
 ### <a name="next-steps"></a>后续步骤
 
 你还可以浏览 IoT 套件预配置的解决方案的一些其他特性和功能：
@@ -102,6 +110,7 @@ ms.lasthandoff: 05/10/2017
 * [预见性维护预配置解决方案概述][lnk-predictive-overview]
 * [从源头保障 IoT 的安全][lnk-security-groundup]
 
+[lnk-opc-foundation]: http://opcfoundation.org/
 [lnk-predictive-overview]: iot-suite-predictive-overview.md
 [lnk-security-groundup]: securing-iot-ground-up.md
 
