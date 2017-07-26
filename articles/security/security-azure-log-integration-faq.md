@@ -12,12 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2017
+ms.date: 06/26/2017
 ms.author: TomSh
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: f539fc2945b9c6646660d50713d11dd7d822d06f
-ms.lasthandoff: 03/31/2017
+ms.custom: azlog
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: e6aefe5f16e7148f7837a8741355c61851618495
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -33,6 +35,16 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="how-can-i-see-the-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs-from"></a>如何查看 Azure 日志集成从中提取 Azure VM 日志的存储帐户？
 运行 **azlog source list** 命令。
+
+## <a name="how-can-i-tell-which-subscription-the-azure-log-integration-logs-are-from"></a>如何判断 Azure 日志集成日志来自哪个订阅？
+
+如果审核日志放置在 AzureResourcemanagerJson 目录中，则日志文件名称中具有订阅 ID。 AzureSecurityCenterJson 文件夹中的日志也是如此。 例如：
+
+20170407T070805_2768037.0000000023.1111e5ee-1111-111b-a11e-1e111e1111dc.json
+
+Azure Active Directory 审核日志的名称包含租户 ID。
+
+从事件中心读取的诊断日志的名称不包括订阅 ID，但包括在创建事件中心源的过程中指定的友好名称。 
 
 ## <a name="how-can-i-update-the-proxy-configuration"></a>如何更新代理配置？
 如果代理设置不允许直接访问 Azure 存储，请打开 **c:\Program Files\Microsoft Azure Log Integration** 中的 **AZLOG.EXE.CONFIG** 文件。 更新文件，以将组织的代理地址包括在 **defaultProxy** 部分中。 完成更新后，并使用命令 **net stop azlog** 和 **net start azlog** 停止和启动该服务。
@@ -113,6 +125,9 @@ ms.lasthandoff: 03/31/2017
 
 如果在安装和配置过程中遇到问题，请打开[支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)，选择“日志集成”作为需要请求支持的服务。
 
+### <a name="can-i-use-azure-log-integration-to-integrate-network-watcher-logs-into-my-siem"></a>可以使用 Azure 日志集成将网络观察程序日志集成到 SIEM 吗？
+
+网络观察程序生成大量的日志记录信息，这些日志不会发送到 SIEM。 网络观察程序日志唯一支持的目标是存储帐户。 Azlog 不支持读取这些日志，也不向 SIEM 提供这些日志
 
 <!--Image references-->
 [1]: ./media/security-azure-log-integration-faq/event-xml.png

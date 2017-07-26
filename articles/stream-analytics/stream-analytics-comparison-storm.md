@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/24/2017
+ms.date: 06/27/2017
 ms.author: jeffstok
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 5b5aa75756d2a7061d531d50a59a2c52dfb75cbe
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 4c0c7c185943eb292d816e2047de930245a3e1e1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
-# <a name="help-choosing-a-streaming-analytics-platform-apache-storm-comparison-to-azure-stream-analytics"></a>帮助你选择流分析平台：Apache Storm 与 Azure 流分析的比较
-使用 Apache Storm 与 Azure 流分析之间的这种比较获取有关选择云分析平台的指导。 了解流分析与 Apache Storm（Azure HDInsight 上的一种托管服务）的价值主张，以便为你的业务用例选择适当的解决方案。
+# <a name="choosing-a-streaming-analytics-platform-comparing-apache-storm-and-azure-stream-analytics"></a>选择流分析平台：Apache Storm 与 Azure 流分析的比较
+Azure 提供了多种用于流数据分析的解决方案：[Azure 流分析](https://docs.microsoft.com/azure/stream-analytics/)和 [Azure HDInsight 上的 Apache Storm](https://azure.microsoft.com/services/hdinsight/apache-storm/)。 这两个分析平台都具备 PaaS 解决方案的优势。 但这些平台的功能以及配置和管理方式却存在一些显著差异。 
 
-这两种分析平台都具有 PaaS 解决方案的优势，但几项主要功能却存在各种差异。 下面列出了这些服务的功能和限制，以帮助你选择所需的解决方案来实现目标。
+本文提供对功能的并排比较，帮助你选择 Apache Storm 或 Azure 流分析作为云分析平台。 
 
-## <a name="storm-comparison-to-stream-analytics-general-features"></a>Storm 与流分析的比较：常规功能
+## <a name="general-features"></a>常规功能
 
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
@@ -52,24 +52,24 @@ ms.lasthandoff: 05/10/2017
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>开放源</strong>
+                    <strong>是否是开放源？</strong>
                 </p>
             </td>
             <td width="204" valign="top">
                 <p>
-否，Azure 流分析是一种 Microsoft 专有产品/服务。
+不可以。 Azure 流分析是一种 Microsoft 专有产品/服务。
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-是，Apache Storm 是一种由 Apache 授权的技术。
+是的。 Apache Storm 是一种由 Apache 授权的技术。
                 </p>
             </td>
         </tr>
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>由 Microsoft 提供支持</strong>
+                    <strong>是否由 Microsoft 提供支持？</strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -89,12 +89,12 @@ ms.lasthandoff: 05/10/2017
             </td>
             <td width="204" valign="top">
                 <p>
-无硬件要求。 Azure 流分析是一种 Azure 服务。
+无。 Azure 流分析是一种 Azure 服务。
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-无硬件要求。 Apache Storm 是一种 Azure 服务。
+无。 Apache Storm 是一种 Azure 服务。
                 </p>
             </td>
         </tr>
@@ -106,42 +106,41 @@ ms.lasthandoff: 05/10/2017
             </td>
             <td width="204" valign="top">
                 <p>
-使用 Azure 流分析，客户可以部署和监视流式处理作业。
+用户可部署和监视流式处理作业。
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-通过 Apache Storm on HDInsight，客户可以部署和监视整个群集，而群集可以托管多个 Storm 作业和其他工作负荷（包括批处理）。
+用户可部署和监视整个群集，而群集可以托管多个 Storm 作业和其他工作负荷（包括批处理）。
                 </p>
             </td>
         </tr>
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>价格</strong>
+                    <strong>定价</strong>
                 </p>
             </td>
             <td width="204" valign="top">
                 <p>
-流分析通过处理的数据量以及流式处理单位的数目（作业每小时运行的）来定价。
+按照处理的数据量以及作业每小时运行所需的流式处理单元数来定价。 
                 </p>
-                <p>
-                    <a href="http://azure.microsoft.com/pricing/details/stream-analytics/">更多定价信息可在此处找到。</a>
+                    <p>有关详细信息，请参阅<a href="http://azure.microsoft.com/pricing/details/stream-analytics/">流分析定价</a>。</p>
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-就 Apache Storm on HDInsight 来说，采购单位是根据群集计算的，而收费则根据群集所运行的时间来计算，与部署的作业无关。
+采购单位根据群集计算，收费则根据群集的运行时间来计算，与部署的作业无关。
                 </p>
                 <p>
-                    <a href="http://azure.microsoft.com/pricing/details/hdinsight/">更多定价信息可在此处找到。</a>
+有关详细信息，请参阅 <a href="http://azure.microsoft.com/pricing/details/hdinsight/">HDInsight 定价</a>。
                 </p>
             </td>
         </tr>
     </tbody>
 </table>
 
-## <a name="authoring-on-each-analytics-platform"></a>在每个分析平台上创作 ##
+## <a name="authoring"></a>创作
 
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
@@ -165,24 +164,24 @@ ms.lasthandoff: 05/10/2017
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>功能：SQL DSL</strong>
+                    <strong>功能：是否支持 SQL DSL？</strong>
                 </p>
             </td>
             <td width="204" valign="top">
                 <p>
-是，提供易用的 SQL 语言支持。
+是的。 流分析提供类似于 SQL 的语言，以便创建转换。
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-否，用户必须使用 Java C# 编写代码或使用 Trident API。
+不能。 用户需使用 Java 或 C# 编写代码，或使用 Trident API。
                 </p>
             </td>
         </tr>
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>功能：临时运算符</strong>
+                    <strong>功能：临时运算符？</strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -204,12 +203,12 @@ ms.lasthandoff: 05/10/2017
             </td>
             <td width="204" valign="top">
                 <p>
-通过 Azure 门户获得对示例数据的交互式创作和调试体验。
+用户可通过 Azure 门户使用派生自实时流的示例数据，创建、调试和监视作业。
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-就 .NET 来说，用户可通过 Visual Studio 获得开发、调试和监视体验；就 Java 和其他语言来说，开发人员可以使用自己选择的 IDE。
+对于 .NET，用户可通过 Visual Studio 进行开发、调试和监视。 对于 Java 或其他语言，用户可使用自己选择的 IDE。
                 </p>
             </td>
         </tr>
@@ -221,53 +220,53 @@ ms.lasthandoff: 05/10/2017
             </td>
             <td width="204" valign="top">
                 <p>
-流分析提供基本的作业状态和操作日志来帮助进行调试，但目前用户无法灵活地选择包括在日志中的内容以及内容的多少（即详细模式）。
+可借助基本作业状态和操作日志进行调试。 流分析目前不允许用户指定日志中包含哪些内容或多少内容（即详细模式）。
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-提供详细日志是为了方便进行调试。 可以通过两种方式向用户提供日志，一种是通过 Visual Studio，另一种是由用户通过 RDP 进入群集来访问日志。
+提供详细日志。 用户可通过 Visual Studio 访问日志，或通过登录到群集来直接访问日志。
                 </p>
             </td>
         </tr>
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>支持 UDF（用户定义函数）</strong>
+                    <strong>对用户定义函数 (UDF) 的支持</strong>
                 </p>
             </td>
             <td width="204" valign="top">
                 <p>
-目前不支持 UDF。
+查询支持 JavaScript UDF。 有关详细信息，请参阅 <a href="https://docs.microsoft.com/azure/stream-analytics/stream-analytics-javascript-user-defined-functions">JavaScript UDF 集成</a>。
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-UDF 可以使用 C#、Java 或用户选择的语言进行编写。
+可使用 C#、Java 或任何其他语言编写 UDF。
                 </p>
             </td>
         </tr>
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>可扩展 - 自定义代码</strong>
+                    <strong>是否支持使用自定义代码的可扩展性？</strong>
                 </p>
             </td>
             <td width="204" valign="top">
                 <p>
-没有在流分析中提供可扩展代码支持。
+否。 没有在流分析中提供可扩展代码支持。
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-是，可以在 Storm 上使用 C#、Java 或其他支持的语言来编写自定义代码。
+是的。 用户可使用 C#、Java 或 Storm 上支持的任何其他语言编写自定义代码。
                 </p>
             </td>
         </tr>
     </tbody>
 </table>
 
-## <a name="data-sources-and-outputs"></a>数据源和输出 ##
+## <a name="data-sources-inputs-and-outputs"></a>数据源（输入）和输出 ##
 
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
@@ -295,12 +294,12 @@ UDF 可以使用 C#、Java 或用户选择的语言进行编写。
                 </p>
             </td>
             <td width="204" valign="top">
-                <p>支持的输入源为 Azure 事件中心和 Azure Blob。
+                <p>Azure 事件中心和 Azure Blob 存储。
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-提供的连接器适用于事件中心、Service Bus、Kafka 等。不支持的连接器可通过自定义代码来实现。
+连接器适用于 Azure 事件中心、Azure 服务总线、Kafka 等。 用户可使用自定义代码创建其他连接器。
                 </p>
             </td>
         </tr>
@@ -312,12 +311,11 @@ UDF 可以使用 C#、Java 或用户选择的语言进行编写。
             </td>
             <td width="204" valign="top">
                 <p>
-支持的输入格式为 Avro、JSON、CSV。
-                </p>
+Avro、JSON、CSV </p>
             </td>
             <td width="246" valign="top">
                 <p>
-任何格式均可通过自定义代码来实现。
+用户可使用自定义代码来实现任何格式。
                 </p>
             </td>
         </tr>
@@ -329,12 +327,12 @@ UDF 可以使用 C#、Java 或用户选择的语言进行编写。
             </td>
             <td width="204" valign="top">
                 <p>
-流式处理作业可能有多个输出。 支持的输出：Azure 事件中心、Azure Blob 存储、Azure 表、Azure SQL DB 和 PowerBI。
+流式处理作业可以有多个输出。 支持的输出：Azure 事件中心、Azure Blob 存储、Azure 表存储、Azure SQL DB 和 Power BI。
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-拓扑中支持多种输出，每种输出都可以有进行下游处理的自定义逻辑。 开箱即用的 Storm 提供的连接器适用于 PowerBI、Azure 事件中心、Azure Blob 存储、Azure Cosmos DB、SQL 和 HBase。 不支持的连接器可通过自定义代码来实现。
+Storm 在拓扑中支持多种输出，每种输出都可以具有用于下游处理的自定义逻辑。 Storm 包括适用于 Power BI、Azure 事件中心、Azure Blob 存储、Azure Cosmos DB、SQL 和 HBase 的连接器。 用户可使用自定义代码创建其他连接器。    
                 </p>
             </td>
         </tr>
@@ -346,12 +344,12 @@ UDF 可以使用 C#、Java 或用户选择的语言进行编写。
             </td>
             <td width="204" valign="top">
                 <p>
-流分析要求使用 UTF-8 数据格式。
+必须使用 UTF-8 对数据进行格式化。
                 </p>
-            </td>
+            </td>   
             <td width="246" valign="top">
                 <p>
-任何数据编码格式均可通过自定义代码来实现。
+用户可使用自定义代码来实现任何数据编码格式。
                 </p>
             </td>
         </tr>
@@ -384,24 +382,15 @@ UDF 可以使用 C#、Java 或用户选择的语言进行编写。
                 <p>
                     <strong>作业部署模型</strong>
                 </p>
-                <p>
-                    - <strong>Azure 门户</strong>
-                </p>
-                <p>
-                    - <strong>Visual Studio</strong>
-                </p>
-                <p>
-                    - <strong>PowerShell</strong>
-                </p>
             </td>
             <td width="204" valign="top">
                 <p>
-部署是通过 Azure 门户、PowerShell 和 REST API 实现的。
+Azure 门户、PowerShell 和 REST API。
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-部署是通过 Azure 门户、PowerShell、Visual Studio 和 REST API 实现的。
+Azure 门户、PowerShell、Visual Studio 和 REST API。
                 </p>
             </td>
         </tr>
@@ -413,15 +402,12 @@ UDF 可以使用 C#、Java 或用户选择的语言进行编写。
             </td>
             <td width="204" valign="top">
                 <p>
-监视是通过 Azure 门户和 REST API 实现的。
-                </p>
-                <p>
-用户还可以配置 Azure 警报。
+监视是使用 Azure 门户和 REST API 实现的。 用户还可以配置 Azure 警报。
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-监视是通过 Storm UI 和 REST API 实现的。
+监视是使用 Storm UI 和 REST API 实现的。
                 </p>
             </td>
         </tr>
@@ -433,12 +419,12 @@ UDF 可以使用 C#、Java 或用户选择的语言进行编写。
             </td>
             <td width="204" valign="top">
                 <p>
-每个作业的流式处理单位数。 每个流式处理单位的处理速度高达 1 MB/秒。 默认的最大值为 50 个单位。 可通过调用来提高限制。
+可伸缩性取决于每个作业的流式处理单位 (SU) 数目。 每个流式处理单位的处理速度高达 1 MB/秒，最大值为 50 个单位。 有关详细信息，请参阅<a href="https://docs.microsoft.com/azure/stream-analytics/stream-analytics-scale-jobs">通过扩展增大吞吐量</a>。
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-HDI Storm 群集中的节点数。 节点数没有限制（最高限制由 Azure 配额来定义）。 可通过调用来提高限制。
+可伸缩性取决于 HDInsight Storm 群集中的节点数。 节点数的上限由用户的 Azure 配额来定义。
                 </p>
             </td>
         </tr>
@@ -450,14 +436,12 @@ HDI Storm 群集中的节点数。 节点数没有限制（最高限制由 Azure
             </td>
             <td width="204" valign="top">
                 <p>
-用户可以提高或降低流式处理单位数来提高数据处理速度或优化成本。
+用户可以提高或降低流式处理单位数来提高数据处理速度（上限为 1 GB/秒）或优化成本。
                 </p>
-                <p>
-提高到 1 GB/秒 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-用户可以根据需要来增大或缩小群集。
+用户可以增大或缩小群集。
                 </p>
             </td>
         </tr>
@@ -502,17 +486,18 @@ HDI Storm 群集中的节点数。 节点数没有限制（最高限制由 Azure
                 </p>
             </td>
             <td width="204" valign="top">
-                <p>
-SLA：99.9% 的运行时间 </p>
-                <p>
-从故障自动恢复 </p>
-                <p>
-内置有状态临时运算符恢复功能。
-                </p>
+                <ul>
+                <li>SLA：99.9% 的运行时间</li>
+                <li>从故障自动恢复</li>
+                <li>内置有状态临时运算符恢复功能</li>
+                </ul>
             </td>
             <td width="246" valign="top">
                 <p>
-SLA：99.9% 的 Storm 群集运行时间。 Apache Storm 是一种容错性的流式处理平台，不过，客户必须负责确保其流式处理作业不间断运行。
+SLA：99.9% 的 Storm 群集运行时间。 
+                </p>
+                <p>
+Apache Storm 是一种容错性流式处理平台。 但是，用户必须负责确保流式处理作业不间断运行。
                 </p>
             </td>
         </tr>
@@ -548,7 +533,7 @@ SLA：99.9% 的 Storm 群集运行时间。 Apache Storm 是一种容错性的�
             </td>
             <td width="204" valign="top">
                 <p>
-内置可配置的策略，方便重新排序、删除事件或调整事件时间。
+内置可配置策略可以重新排序、删除事件或调整事件时间。
                 </p>
             </td>
             <td width="246" valign="top">
@@ -565,15 +550,12 @@ SLA：99.9% 的 Storm 群集运行时间。 Apache Storm 是一种容错性的�
             </td>
             <td width="204" valign="top">
                 <p>
-Azure Blob（带有最大大小为 100 MB 的内存中查找缓存）提供引用数据。 该服务管理引用数据的刷新。
+Azure Blob 存储提供引用数据，内存中缓存最大大小为 100 MB。 引用数据由服务刷新。
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-数据大小没有限制。 连接器适用于 HBase、Azure Cosmos DB、SQL Server 和 Azure。 不支持的连接器可通过自定义代码来实现。
-                </p>
-                <p>
-引用数据的刷新必须由自定义代码处理。
+数据大小没有限制。 连接器适用于 HBase、Azure Cosmos DB、SQL Server 和 Azure。 用户可使用自定义代码创建其他连接器。 必须使用自定义代码刷新引用数据。
                 </p>
             </td>
         </tr>
@@ -585,7 +567,7 @@ Azure Blob（带有最大大小为 100 MB 的内存中查找缓存）提供引�
             </td>
             <td width="204" valign="top">
                 <p>
-可以在 ASA 作业创建过程<a href="http://blogs.msdn.com/b/streamanalytics/archive/2015/05/24/real-time-scoring-of-streaming-data-using-machine-learning-models.aspx">（专用预览）</a>中通过将已发布的 Azure 机器学习模型配置为各种功能来完成。
+可在作业创建过程中将已发布的 Azure 机器学习模型配置为各种函数。 有关详细信息，请参阅<a href="https://docs.microsoft.com/azure/stream-analytics/stream-analytics-scale-with-machine-learning-functions">使用机器学习函数进行缩放</a>。
                 </p>
             </td>
             <td width="246" valign="top">

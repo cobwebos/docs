@@ -14,10 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: e9607d2426192eca990261e5ef3b4e06b25b1dec
-ms.lasthandoff: 03/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: efa459f6b382ff22c94802e1250836d5f622b4ed
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/29/2017
 
 
 ---
@@ -80,6 +81,7 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程
          , nib = require('nib')
        //, sio = require('..//..//lib//socket.io'); //Original
          , sio = require('socket.io');                //Updated
+         var port = process.env.PORT || 3000;         //Updated
 3. 为了确保应用程序侦听正确端口，请在记事本或你喜爱的编辑器中打开 server.js，然后通过将 **3000** 替换为 **process.env.port** 来更改以下行，如下所示：
    
        //app.listen(3000, function () {            //Original
@@ -105,11 +107,20 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程
 1. 通过发出以下命令启动模拟器：
    
        PS C:\node\chatapp\WorkerRole1> Start-AzureEmulator -Launch
+   
+   > [!NOTE]
+   > 如果启动模拟器遇到问题，如 Start-AzureEmulator：发生意外故障。  详细信息：遇到意外错误。通信对象 System.ServiceModel.Channels.ServiceChannel 不能用于通信，因为它处于“出错”状态。
+   
+      重新安装 AzureAuthoringTools v 2.7.1 和 AzureComputeEmulator v 2.7 - 请确保版本匹配。
+   >
+   >
+
+
 2. 打开浏览器并导航到 **http://127.0.0.1**。
 3. 当浏览器窗口打开时，输入一个昵称，然后按 Enter。
-   这样，您就可以以特定昵称发布消息。 要测试多用户功能，请使用同一 URL 打开另外的浏览器窗口但输入不同的昵称。
+   这样，就可以用特定昵称发布消息。 要测试多用户功能，请使用同一 URL 打开另外的浏览器窗口但输入不同的昵称。
    
-   ![显示来自用户&1; 和用户&2; 的聊天消息的两个浏览器窗口](./media/cloud-services-nodejs-chat-app-socketio/socketio-8.png)
+   ![显示来自用户 1 和用户 2 的聊天消息的两个浏览器窗口](./media/cloud-services-nodejs-chat-app-socketio/socketio-8.png)
 4. 测试应用程序之后，发出以下命令停止仿真程序：
    
        PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator

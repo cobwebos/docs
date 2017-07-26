@@ -3,7 +3,7 @@ title: "使用 Azure 门户管理 Azure Data Lake Analytics | Microsoft Docs"
 description: "了解如何管理 Data Lake Analytics 帐户、数据源、用户和作业。"
 services: data-lake-analytics
 documentationcenter: 
-author: edmacauley
+author: saveenr
 manager: jhubbard
 editor: cgronlun
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
@@ -14,242 +14,227 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 86711ba89442c3569b570bbf3ea2d1661a469011
-ms.openlocfilehash: 34be29749075b9953950ffd64d2526430307d33e
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: 43bb5a1aa246004346765d1be4aea236ca17abd2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 ---
-# <a name="manage-azure-data-lake-analytics-using-azure-portal"></a>使用 Azure 门户管理 Azure Data Lake Analytics
+# <a name="manage-azure-data-lake-analytics-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-了解如何使用 Azure 门户管理 Azure Data Lake Analytics 帐户、帐户数据源、用户和作业。 若要查看使用其他工具的管理主题，请单击页面顶部的选项卡选择器。
-
-**先决条件**
-
-开始学习本教程之前，必须做好以下准备：
-
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+了解如何使用 Azure 门户管理 Azure Data Lake Analytics 帐户、帐户数据源、用户和作业。 若要查看有关使用其他工具的管理主题，请单击页面顶部的一个选项卡。
 
 <!-- ################################ -->
 <!-- ################################ -->
-## <a name="manage-accounts"></a>管理帐户
-运行任何 Data Lake Analytics 作业之前，必须具有 Data Lake Analytics 帐户。 与 Azure HDInsight 不同，只需在运行作业时为 Data Lake Analytics 帐户付费。  只需在其运行作业时付费。  有关详细信息，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。  
 
-**创建 Data Lake Analytics 帐户**
+## <a name="manage-data-lake-analytics-accounts"></a>管理 Data Lake Analytics 帐户
+
+### <a name="create-an-account"></a>创建帐户
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 依次单击“新建”、“智能 + 分析”、“Data Lake Analytics”。
-3. 键入或选择以下值：
-   
-    ![Azure Data Lake Analytics 门户边栏选项卡](./media/data-lake-analytics-get-started-portal/data-lake-analytics-portal-create-adla.png)
-   
-   * **名称**：Data Lake Analytics 帐户的名称。
-   * **订阅**：选择用于 Analytics 帐户的 Azure 订阅。
-   * **资源组**。 选择现有的 Azure 资源组或创建新的资源组。 那么，你可以使用 Azure 资源管理器以组的方式处理应用程序中的资源。 有关详细信息，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。 
-   * **位置**。 为 Data Lake Analytics 帐户选择 Azure 数据中心。 
-   * **Data Lake Store**：每个 Data Lake Analytics 帐户都有一个从属 Data Lake Store 帐户。 Data Lake Analytics 帐户和从属 Data Lake Store 帐户必须位于同一个 Azure 数据中心。 按照说明创建新的 Data Lake Store 帐户，或选择现有帐户。
-4. 单击“创建” 。 随后将转到门户主页屏幕。 此时，一个新磁贴已添加到启动板，其中的标签显示“正在部署 Azure Data Lake Analytics”。 需要花一些时间来创建一个 Data Lake Analytics 帐户。 帐户创建后，门户将在新的边栏选项卡上打开该帐户。
+2. 单击“新建” > “智能 + 分析” > “Data Lake Analytics”。
+3. 为以下项选择值： 
+   1. 名称：Data Lake Analytics 帐户的名称。
+   2. 订阅：用于帐户的 Azure 订阅。
+   3. 资源组：要在其中创建帐户的 Azure 资源组。 
+   4. 位置：Data Lake Analytics 帐户的 Azure 数据中心。 
+   5. Data Lake Store：要用于 Data Lake Analytics 帐户的默认存储。 Azure Data Lake Store 帐户和 Data Lake Analytics 帐户必须位于同一位置。
+4. 单击“创建” 。 
 
-创建 Data Lake Analytics 帐户后，可以添加其他 Data Lake Store 帐户和 Azure 存储帐户。 有关说明，请参阅 [Manage Data lake Analytics account data sources](data-lake-analytics-manage-use-portal.md#manage-account-data-sources)（管理 Data Lake Analytics 帐户数据源）。
+### <a name="delete-a-data-lake-analytics-account"></a>删除 Data Lake Analytics 帐户
 
-<a name="access-adla-account"></a>**访问/打开 Data Lake Analytics 帐户**
+删除 Data Lake Analytics 帐户前，先删除其默认 Data Lake Store 帐户。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 单击左侧菜单上的“Data Lake Analytics”。  如果看不到，请单击“更多服务”，然后单击“智能 + 分析”下的“Data Lake Analytics”。
-3. 单击想要访问的 Data Lake Analytics 帐户。 帐户将在新的边栏选项卡中打开。
-
-**删除 Data Lake Analytics 帐户**
-
-1. 打开想要删除的 Data Lake Analytics 帐户。 有关说明，请参阅[访问 Data Lake Analytics 帐户](#access-adla-account)。
-2. 单击边栏选项卡顶部按钮菜单中的“删除”。
-3. 键入帐户名称，然后单击“删除” 。
-
-删除 Data Lake Analytics 帐户不会删除从属 Data Lake Store 帐户。 有关删除 Data Lake Storage 帐户的说明，请参阅[删除 Data Lake Store 帐户](../data-lake-store/data-lake-store-get-started-portal.md#delete-azure-data-lake-store-account)。
+1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
+2. 单击“删除” 。
+3. 键入帐户名称。
+4. 单击“删除” 。
 
 <!-- ################################ -->
 <!-- ################################ -->
-## <a name="manage-account-data-sources"></a>管理帐户数据源
-Data Lake Analytics 当前支持以下数据源：
 
-* [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Azure 存储](../storage/storage-introduction.md)
+## <a name="manage-data-sources"></a>管理数据源
 
-创建 Data Lake Analytics 帐户时，必须指定一个 Azure Data Lake Store 帐户作为默认存储帐户。 默认 Data Lake Store 帐户用于存储作业元数据和作业审核日志。 创建 Data Lake Analytics 帐户后，可添加其他 Data Lake Store 帐户和/或 Azure 存储帐户。 
+Data Lake Analytics 支持以下数据源：
 
-<a name="default-adl-account"></a>**查找默认 Data Lake Storage 帐户**
+* Data Lake Store
+* Azure 存储
 
-* 打开想要管理的 Data Lake Analytics 帐户。 有关说明，请参阅[访问 Data Lake Analytics 帐户](#access-adla-account)。 默认 Data Lake Store 在“基本”中显示：
-  
-    ![Azure Data Lake Analytics 添加数据源](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-default-adl-storage-account.png)
+可使用数据资源管理器来浏览数据源和执行基本文件管理操作。 
 
-**添加更多数据源**
+### <a name="add-a-data-source"></a>添加数据源
 
-1. 打开想要管理的 Data Lake Analytics 帐户。 有关说明，请参阅[访问 Data Lake Analytics 帐户](#access-adla-account)。
-2. 单击“设置”，然后单击“数据源”。 此时应看到列出的默认 Data Lake Store 帐户。 
+1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
+2. 单击“数据源”。
 3. 单击“添加数据源”。
-   
-    ![Azure Data Lake Analytics 添加数据源](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-add-data-source.png)
-   
-    若要添加 Azure Data Lake Store 帐户，需要帐户名称和此帐户的访问权限才能对其进行查询。
-    若要添加 Azure Blob 存储，需要存储帐户和帐户密钥，可通过导航到门户中的存储帐户找到。
+    
+   * 若要添加 Data Lake Store 帐户，需要帐户名称和此帐户的访问权限才能对其进行查询。
+   * 若要添加 Azure Blob 存储，需要存储帐户和帐户密钥。 若要找到它们，请在门户中转到存储帐户。
 
-<a name="explore-data-sources"></a>**浏览数据源**    
+## <a name="set-up-firewall-rules"></a>设置防火墙规则
 
-1. 打开想要管理的 Analytics 帐户。 有关说明，请参阅[访问 Data Lake Analytics 帐户](#access-adla-account)。
-2. 单击“设置”，然后单击“数据资源管理器”。 
-   
-    ![Azure Data Lake Analytics 数据资源管理器](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-data-explorer.png)
-3. 单击 Data Lake Store 帐户以打开帐户。
-   
-    ![Azure Data Lake Analytics 数据资源管理器存储帐户](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-explore-adls.png)
-   
-    对于每个 Data Lake Store 帐户，均可以
-   
-   * **新文件夹**：添加新文件夹。
-   * **上传**：将文件从工作站上传到存储帐户。
-   * **访问**：配置访问权限。
-   * **重命名文件夹**：重命名文件夹。
-   * **文件夹属性**：显示文件或文件夹属性，如 WASB 路径、WEBHDFS 路径以及上次修改时间等。
-   * **删除文件夹**：删除文件夹。
+可使用 Data Lake Analytics 进一步在网络级别锁定访问 Data Lake Analytics 帐户的权限。 可启用防火墙、指定 IP 地址或定义受信任客户端的 IP 地址范围。 启用这些度量值后，只有具有定义范围内的 IP 地址的客户端才可连接到 Azure Data Lake Store。
 
-<a name="upload-data-to-adls"></a> **将文件上传到 Data Lake Store 帐户**
+如果其他 Azure 服务（如 Azure 数据工厂或 VM）连接到 Data Lake Analytics 帐户，请确保将“允许 Azure 服务”切换为“启用”。 
 
-1. 在门户中，单击左侧菜单中的“浏览” ，然后单击“Data Lake Store”。
-2. 单击想要向其中上传数据的 Data Lake Store 帐户。 若要查找默认 Data Lake Storage 帐户，请参阅[此处](#default-adl-account)。
-3. 单击顶部菜单中的“数据资源管理器”。
-4. 单击“新目录”创建一个新的文件夹，或单击文件夹名称更改文件夹。
-5. 单击顶部菜单中的“上传”以上传文件。
+### <a name="set-up-a-firewall-rule"></a>设置防火墙规则。
 
-<a name="upload-data-to-wasb"></a>**将文件上传到 Azure Blob 存储帐户**
+1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
+2. 在左侧菜单中，单击“防火墙”。
 
-请参阅[在 HDInsight 中上传 Hadoop 作业的数据](../hdinsight/hdinsight-upload-data.md)。  此信息适用于 Data Lake Analytics。
+## <a name="add-a-new-user"></a>添加新用户
 
-## <a name="manage-users"></a>管理用户
-Data Lake Analytics 通过 Azure Active Directory 使用基于角色的访问控制。 创建 Data Lake Analytics 帐户时，该帐户中将添加“订阅管理员”角色。 可添加具有以下角色的其他用户和安全组：
+可以使用“添加用户向导”轻松预配新的 Data Lake 用户。
 
-| 角色 | 说明 |
-| --- | --- |
-| 所有者 |允许管理一切，包括对资源的访问权限。 |
-| 参与者 |访问门户；提交和监视作业。 若要提交作业，参与者需要对 Data Lake Store 帐户的读取或写入权限。 |
-| DataLakeAnalyticsDeveloper |提交、监视和取消作业。  这些用户只能取消自己的作业。 他们不能管理自己的帐户，例如，添加用户、更改权限或删除帐户。 若要运行作业，他们需要对 Data Lake Store 帐户的读取或写入权限 |
-| 读取器 |允许查看所有内容，但不能进行任何更改。 |
-| DevTest 实验室用户 |允许查看一切内容，并可连接、启动、重启和关闭虚拟机。 |
-| 用户访问管理员 |允许你管理用户对 Azure 资源的访问权限。 |
+1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
+2. 在左侧的“入门”下，单击“添加用户向导”。
+3. 选择一个用户，然后单击“选择”。
+4. 选择一个角色，然后单击“选择”。 若要设置要使用 Azure Data Lake 的新的开发人员，请选择“Data Lake Analytics 开发人员”角色。
+5. 选择 U-SQL 数据库的访问控制列表 (ACL)。 如果对所选内容满意，请单击“选择”。
+6. 选择文件的 ACL。 对于默认存储，不要更改根文件夹“/”和 /system 文件夹的 ACL。 单击“选择”。
+7. 查看所选的所有更改，然后单击“运行”。
+8. 完成向导后，单击“完成”。
 
-有关创建 Azure Active Directory 用户和安全组的信息，请参阅[什么是 Azure Active Directory](../active-directory/active-directory-whatis.md)。
+## <a name="manage-role-based-access-control"></a>管理基于角色的访问控制
 
-**将用户或安全组添加到 Data Lake Analytics 帐户**
+与其他 Azure 服务一样，可使用基于角色的访问控制 (RBAC) 来控制用户与服务交互的方式。
 
-1. 打开想要管理的 Analytics 帐户。 有关说明，请参阅[访问 Data Lake Analytics 帐户](#access-adla-account)。
-2. 单击“设置”，然后单击“用户”。 还可以单击“概要”标题栏上的“访问”，如以下屏幕截图所示：
-   
-    ![Azure Data Lake Analytics 帐户添加用户](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-access-button.png)
-3. 在“用户”边栏选项卡中，单击“添加”。
-4. 选择一个角色并添加用户，然后单击“确定”。
+标准 RBAC 角色具有以下功能：
+* 所有者：可提交作业、监视作业、从任何用户取消作业以及配置帐户。
+* 参与者：可提交作业、监视作业、从任何用户取消作业以及配置帐户。
+* 读者：可监视作业。
+
+使用 Data Lake Analytics 开发人员角色使 U-SQL 开发人员能够使用 Data Lake Analytics 服务。 可使用 Data Lake Analytics 开发人员角色执行以下操作：
+* 提交作业。
+* 监视作业状态以及任何用户提交的作业进度。
+* 查看任何用户提交的作业中的 U-SQL 脚本。
+* 只取消自己的作业。
+
+### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>将用户或安全组添加到 Data Lake Analytics 帐户
+
+1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
+2. 单击“访问控制 (IAM)” > “添加”。
+3. 选择角色。
+4. 添加用户。
+5. 单击 **“确定”**。
 
 >[!NOTE]
->如果此用户或安全组需要提交作业，也需要为其授予 Data Lake Store 上的权限。 有关详细信息，请参阅[保护 Data Lake Store 中的数据](../data-lake-store/data-lake-store-secure-data.md)
+>如果用户或安全组需要提交作业，还需要对存储帐户的权限。 有关详细信息，请参阅[保护 Data Lake Store 中存储的数据](../data-lake-store/data-lake-store-secure-data.md)。
 >
 
 <!-- ################################ -->
 <!-- ################################ -->
+
 ## <a name="manage-jobs"></a>管理作业
-必须拥有 Data Lake Analytics 帐户，才能运行任何 U-SQL 作业。  有关详细信息，请参阅[管理 Data Lake Analytics 帐户](#manage-data-lake-analytics-accounts)。
 
-<a name="create-job"></a>**创建作业**
+### <a name="submit-a-job"></a>提交作业
 
-1. 打开想要管理的 Analytics 帐户。 有关说明，请参阅[访问 Data Lake Analytics 帐户](#access-adla-account)。
-2. 单击“新建作业”。
-   
-    ![创建 Azure Data Lake Analytics U-SQL 作业](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-create-job-button.png)
-   
-    应看到新的边栏选项卡，类似于：
-   
-    ![创建 Azure Data Lake Analytics U-SQL 作业](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-new-job.png)
-   
-    可为每个作业配置
+1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
 
-    |Name|说明|
-    |----|-----------|
-    |作业名称|输入作业的名称。|
-    |Priority|数字越小优先级越高。 如果队列有两个作业，将首先运行优先级低的作业|
-    |并行度 |可同时进行的计算进程的最大数量。 增加此数量可以提高性能，但也会增加成本。|
-    |脚本|输入作业的 U-SQL 脚本。|
+2. 单击“新建作业”。 对每个作业配置以下各项：
 
-    通过使用相同的接口，还可以浏览链接数据源，并将其他文件添加到链接的数据源。 
-1. 若要提交作业，请单击“提交作业”。
+    1. 作业名称：作业的名称。
+    2. 优先级：数字越小优先级越高。 如果队列有两个作业，将先运行优先级值低的作业。
+    3. 并行：为此作业保留的最大计算进程数。
 
-**提交作业**
+3. 单击“提交”。
 
-请参阅[创建 Data Lake Analytics 作业](#create-job)。
+### <a name="monitor-jobs"></a>监视作业
 
-<a name="monitor-jobs"></a>**监视作业**
+1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
+2. 单击“查看所有作业”。 将显示帐户中所有活动作业和最近已完成作业的列表。
+3. 根据需要单击“筛选器”，帮助按“时间范围”、“作业名称”和“作者”值查找作业。 
 
-1. 打开想要管理的 Analytics 帐户。 有关说明，请参阅[访问 Data Lake Analytics 帐户](#access-adla-account)。 作业管理面板显示基本作业信息：
-   
-    ![管理 Azure Data Lake Analytics U-SQL 作业](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-manage-jobs.png)
-2. 单击“作业管理”，如上一张屏幕截图中所示。
-   
-    ![管理 Azure Data Lake Analytics U-SQL 作业](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-manage-jobs-details.png)
-3. 单击列表中的作业。 或单击“筛选器”查找作业：
-   
-    ![筛选 Azure Data Lake Analytics U-SQL 作业](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-filter-jobs.png)
-   
-    可按“时间范围”、“作业名称”和“作者”筛选作业。
-4. 如果想要重新提交作业，请单击“重新提交”。
+## <a name="manage-policies"></a>管理策略
 
-**重新提交作业**
+### <a name="account-level-policies"></a>帐户级策略
 
-请参阅[监视 Data Lake Analytics 作业](#monitor-jobs)。
+这些策略适用于 Data Lake Analytics 帐户中的所有作业。
 
-## <a name="monitor-account-usage"></a>监视帐户使用情况
-**监视帐户使用情况**
+#### <a name="maximum-number-of-aus-in-a-data-lake-analytics-account"></a>Data Lake Analytics 帐户中的最大 AU 数
+由策略控制 Data Lake Analytics 帐户可使用的分析单位 (AU) 总数。 默认情况下，该值设置为 250。 例如，如果此值设置为 250 个 AU，可以运行一个作业，向它分配 250 个 AU；也可以运行 10 个作业，每个作业分配 25 个 AU。 提交的其他作业将进行排队，直到完成正在运行的作业。 正在运行的作业完成后，释放 AU，用于要运行的已排队作业。
 
-1. 打开想要管理的 Analytics 帐户。 有关说明，请参阅[访问 Data Lake Analytics 帐户](#access-adla-account)。 “使用情况”面板显示使用情况：
-   
-    ![监视 Azure Data Lake Analytics 使用情况](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-monitor-usage.png)
-2. 双击此窗格可查看更多详细信息。
+更改 Data Lake Analytics 帐户的 AU 数：
 
-## <a name="view-u-sql-catalog"></a>查看 U-SQL 目录
-可使用 [U-SQL 目录](data-lake-analytics-use-u-sql-catalog.md)组织数据和代码，以便通过 U-SQL 脚本共享数据和代码。 目录启用 Azure Data Lake 中数据的最高可能性能。 可从 Azure 门户查看 U-SQL 目录。
+1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
+2. 单击“属性”。
+3. 在“最大 AU 数”下，移动滑块选择一个值，或在文本框中输入值。 
+4. 单击“保存” 。
 
-**浏览 U-SQL 目录**
+> [!NOTE]
+> 如果需要的数量大于默认 AU 数 (250)，在门户中单击“帮助 + 支持”提交支持请求。 可增加 Data Lake Analytics 帐户中可用的 AU 数。
+>
 
-1. 打开想要管理的 Analytics 帐户。 有关说明，请参阅[访问 Data Lake Analytics 帐户](#access-adla-account)。
-2. 单击顶部菜单中的“数据资源管理器”。
-3. 依次展开“目录”、“主要”、“表格”或“表值函数”**或“程序集”****。 以下屏幕截图显示一个表值函数。
-   
-    ![Azure Data Lake Analytics 数据资源管理器存储帐户](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-explore-catalog.png)
+#### <a name="maximum-number-of-jobs-that-can-run-simultaneously"></a>可同时运行的最大作业数
+策略控制可同时运行多少个作业。 默认情况下，此值设置为 20。 如果 Data Lake Analytics 有 AU 可用，将立即计划运行新的作业，直到运行作业的总数到达此策略的值。 达到可同时运行的最大作业数时，后续作业将按优先级进行排队，直到一个或多个正在运行的作业完成（具体取决于 AU 可用性）。
 
-<!-- ################################ -->
-<!-- ################################ -->
-## <a name="use-azure-resource-manager-groups"></a>使用 Azure Resource Manager 组
-应用程序通常由许多组件构成，例如 Web 应用、数据库、数据库服务器、存储和第三方服务。 可使用 Azure Resource Manager 以组（称为 Azure 资源组）的方式处理应用程序中的资源。 可以通过单个协调的操作为应用程序部署、更新、监视或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 你可以通过查看整个组的累积费用，明确了解组织的帐单开支。 有关详细信息，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。 
+更改可同时运行的作业数：
 
-Data Lake Analytics 服务可包括以下组件：
+1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
+2. 单击“属性”。
+3. 在“运行作业的最大数”****下，移动滑块选择一个值，或在文本框中输入值。 
+4. 单击“保存” 。
 
-* Azure Data Lake Analytics 帐户
-* 所需的默认 Azure Data Lake Store 帐户
-* 其他 Azure Data Lake Store 帐户
-* 其他 Azure 存储帐户
+> [!NOTE]
+> 如果需运行的作业数大于默认作业数 (20)，请在门户中单击“帮助 + 支持”提交支持请求。 可增加 Data Lake Analytics 帐户中可同时运行的作业数。
+>
 
-可在一个资源管理组下创建所有这些组件，使其更易于管理。
+#### <a name="how-long-to-keep-job-metadata-and-resources"></a>保留作业元数据和资源的时长 
+用户运行 U-SQL 作业时，Data Lake Analytics 服务保留所有相关的文件。 相关的文件包括 U-SQL 脚本、U-SQL 脚本中引用的 DLL 文件、编译的资源和统计信息。 文件位于默认 Azure Data Lake 存储帐户的 /system/ 文件夹中。 此策略控制要将这些资源存储多长时间，再自动删除它们（默认值为 30 天）。 可使用这些文件对将来要重新运行的作业进行调试和性能优化。
 
-![Azure Data Lake Analytics 帐户和存储](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-arm-structure.png)
+更改保留作业元数据和资源的时长：
 
-Data Lake Analytics 帐户和从属存储帐户必须位于同一个 Azure 数据中心。
-但资源管理组可以位于不同的数据中心。  
+1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
+2. 单击“属性”。
+3. 在“保留作业查询的天数”****下，移动滑块选择一个值，或在文本框中输入值。  
+4. 单击“保存” 。
 
-## <a name="see-also"></a>另请参阅
-* [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
-* [Get started with Data Lake Analytics using Azure portal](data-lake-analytics-get-started-portal.md)
+### <a name="job-level-policies"></a>作业级策略
+通过作业级策略，可控制单个用户（或特定安全组成员）可在提交的作业上设置的最大 AU 数和最高优先级。 这样就可以控制用户所产生的成本。 它还允许控制计划作业可能对在同一 Data Lake Analytics 帐户中的运行且优先级较高的生产作业产生的影响。
+
+Data Lake Analytics 有两个可在作业级别设置的策略：
+
+* 每个作业的 AU 限制：用户只可以提交所含 AU 数不超过此数字的作业。 默认情况下，此限制与帐户的最大 AU 限制相同。
+* 优先级：用户只可提交优先级低于或等于此值的作业。 请注意，数字越大优先级越低。 默认情况下，此值设置为 1，这可能是最高的优先级。
+
+对每个帐户都设有默认策略。 默认策略适用于帐户的所有用户。 可为特定用户和组设置其他策略。 
+
+> [!NOTE]
+> 帐户级策略和作业级策略同时应用。
+>
+
+#### <a name="add-a-policy-for-a-specific-user-or-group"></a>添加用于特定用户或组的策略
+
+1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
+2. 单击“属性”。
+3. 在“作业提交限制”下，单击“添加策略”按钮。 然后选择或输入以下设置：
+    1. 计算策略名称：输入策略名称，提醒策略的用途。
+    2. 选择用户或组：选择此策略适用的用户或组。
+    3. 设置作业 AU 限制：设置适用于所选用户或组的 AU 限制。
+    4. 设置优先级限制：设置适用于所选用户或组的优先级限制。
+
+4. 单击“确定” 。
+
+5. 新策略在“默认”策略表的“作业提交限制”下列出。 
+
+#### <a name="delete-or-edit-an-existing-policy"></a>删除或编辑现有策略
+
+1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
+2. 单击“属性”。
+3. 在“作业提交限制”下找到要编辑的策略。
+4.  若要查看“删除”和“编辑”选项，请在表的最右侧的列中，单击“...”。
+
+### <a name="additional-resources-for-job-policies"></a>有关作业策略的其他资源
+* [策略概述博客文章](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-overview/)
+* [帐户级策略博客文章](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-account-level-policy/)
+* [作业级策略博客文章](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-job-level-policy/)
+
+## <a name="next-steps"></a>后续步骤
+
+* [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
+* [使用 Azure 门户实现 Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)
 * [使用 Azure PowerShell 管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-powershell.md)
-* [使用 Azure 门户监视 Azure Data Lake Analytics 作业以及对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

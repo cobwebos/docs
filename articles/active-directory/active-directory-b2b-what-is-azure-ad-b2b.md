@@ -13,12 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 04/12/2017
-ms.author: sasubram
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: 9cd8edf47059a5f574489a604156890d157c8b1a
-ms.lasthandoff: 04/13/2017
+ms.date: 06/27/2017
+ms.author: curtand
+ms.custom: aaddev
+ms.reviewer: sasubram
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: fbc12a52555b190d43b5e953fd4d19923a25b0ed
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -27,11 +30,11 @@ ms.lasthandoff: 04/13/2017
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/AhwrweCBdsc" frameborder="0" allowfullscreen></iframe>
 
-借助 Azure AD 企业到企业 (B2B) 协作功能，任何使用 Azure AD 的组织都能安全可靠地与来自任何其他组织的用户协同工作（无论这些组织的规模大小、是否使用 Azure AD 以及是否具有 IT 部门）。 
+借助 Azure AD 企业到企业 (B2B) 协作功能，任何使用 Azure AD 的组织都能安全可靠地与来自任何其他组织的用户协同工作（无论这些组织的规模大小）。 这些组织可使用/不使用 Azure AD，甚至可具有/不具有 IT 部门。 
 
-使用 Azure AD 的组织可以向其合作伙伴提供文档、资源和应用程序的访问权限，同时保持对企业数据的完全控制。 开发人员可以使用 Azure AD 企业到企业 API 编写应用程序，用于以安全的方式将两个组织凝聚在一起，同时使最终用户能无缝且直观地进行导航。
+使用 Azure AD 的组织可以向其合作伙伴提供文档、资源和应用程序的访问权限，同时保持对自己企业数据的完全控制。 开发人员可使用 Azure AD 企业到企业 API 编写应用程序，以更安全的方式将两个组织凝聚在一起。 此外，最终用户可非常轻松地进行导航。
 
-多达 **97%** 的我方客户都表示 Azure AD B2B 协作对他们非常重要。
+我方 97% 的客户都表示 Azure AD B2B 协作对他们非常重要。
 
 ![饼图](media/active-directory-b2b-what-is-azure-ad-b2b/97-percent-support.png)
 
@@ -51,7 +54,7 @@ ms.lasthandoff: 04/13/2017
 
 * 提供对任何企业应用或数据的访问权限，同时应用 Azure AD 支持的高级授权策略
 
-* 无缝用户体验
+* 方便用户
 
 * 应用和数据的企业级安全性
 
@@ -67,7 +70,7 @@ ms.lasthandoff: 04/13/2017
 
 管理员可在 [Azure 门户](https://portal.azure.com)添加 B2B 协作（来宾）用户。
 
-![饼图](media/active-directory-b2b-what-is-azure-ad-b2b/adding-b2b-users-admin.png)
+![添加来宾用户](media/active-directory-b2b-what-is-azure-ad-b2b/adding-b2b-users-admin.png)
 
 ### <a name="enable-your-collaborators-to-bring-their-own-identity"></a>允许协作者自带标识
 
@@ -84,14 +87,17 @@ B2B 协作者可以使用自己选择的标识登录。 如果用户没有 Micro
 
 ### <a name="authorization-policies-protect-your-corporate-content"></a>授权策略保护企业内容
 
-管理员可以建立条件访问策略（如多重身份验证），此类策略可在租户级别、应用程序级别上实施或针对特定用户实施，以保护企业应用和数据。
+可通过以下级别强制执行多重身份验证等条件访问策略：
+- 租户级别
+- 应用程序级别
+- 针对特定用户，保护企业应用和数据
 
 ![添加成员](media/active-directory-b2b-what-is-azure-ad-b2b/add-member.png)
 
 ### <a name="use-our-apis-and-sample-code-to-easily-build-applications-to-onboard"></a>使用 API 和示例代码轻松生成要载入的应用程序
 使用按组织需求自定义的方法引入外部合作伙伴。
 
-使用 [Azure AD B2B 邀请 API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)，组织可以深入自定义其载入体验（包括创建自助注册门户），为此我们在 Github 上提供了代码示例：<https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web>
+使用 [B2B 协作邀请 API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)，可自定义载入体验，包括创建自助服务注册门户。 我们在 [Github](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web) 上提供自助服务门户的示例代码。
 
 ![注册门户](media/active-directory-b2b-what-is-azure-ad-b2b/sign-up-portal.png)
 

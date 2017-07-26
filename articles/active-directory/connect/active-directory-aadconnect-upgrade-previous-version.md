@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 02/08/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 085706dacdcb0cd5a4169ccac4dc7fd8b8ddb6e0
-ms.lasthandoff: 03/03/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 03de42352b92692a0fa5c6ee3f335592cb2b66c1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/30/2017
 
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect：从旧版升级到最新版本
@@ -46,6 +46,8 @@ ms.lasthandoff: 03/03/2017
 ![就地升级](./media/active-directory-aadconnect-upgrade-previous-version/inplaceupgrade.png)
 
 如果已更改现成的同步规则，这些规则将在系统升级完成之后重置为默认配置。 为了确保配置在每次升级之后得到保留，请务必按照[更改默认配置的最佳做法](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)中所述的步骤来更改配置。
+
+在就地升级过程中，可能会引入更改，要求在升级完成后执行特定同步活动（包括完全导入步骤和完全同步步骤）。 若要推迟这些活动，请参考[如何在升级后推迟完全同步](#how-to-defer-full-synchronization-after-upgrade)部分。
 
 ## <a name="swing-migration"></a>交叉迁移
 如果部署复杂或者有多个对象，在活动的系统上进行就地升级可能不切合实际。 对于某些客户来说，此过程可能要花费几天时间，在此期间无法处理任何增量更改。 如果打算对配置进行重大更改，并且希望在将这些更改推送到云之前对其进行测试，则也可以使用此方法。
@@ -89,6 +91,42 @@ ms.lasthandoff: 03/03/2017
 3. 过渡服务器上的连接器 GUID 不同，因此必须更改。 若要获取 GUID，请启动“同步规则编辑器”，选择表示同一个已连接系统的现成规则之一，然后单击“导出”。 将 PS1 文件中的 GUID 替换为过渡服务器中的 GUID。
 4. 在 PowerShell 命令提示符下运行 PS1 文件。 这将在过渡服务器上创建自定义同步规则。
 5. 针对所有自定义规则重复此步骤。
+
+## <a name="how-to-defer-full-synchronization-after-upgrade"></a>如何在升级后推迟完全同步
+在就地升级过程中，可能会引入更改，要求执行特定同步活动（包括完全导入步骤和完全同步步骤）。 例如，在受影响的连接器上，连接器架构更改要求执行“完全导入”步骤，现成同步规则更改要求执行“完全同步”步骤。 升级过程中，Azure AD Connect 确定必需执行哪些同步活动，并将它们记录为“替代”。 在以下同步周期中，同步计划程序将选取并执行这些替代。 成功执行替代后，会将其移除。
+
+在某些情况下，可能不希望在升级后立即执行这些替代。 例如，具有大量已同步对象，并希望在工作时间结束后再执行同步步骤。 若要移除这些替代，请执行以下操作：
+
+1. 在升级过程中，取消选中“在配置完成后启动同步流程”选项。 这将禁用同步计划程序，并防止在替代移除之前自动进入同步周期。
+
+   ![DisableFullSyncAfterUpgrade](./media/active-directory-aadconnect-upgrade-previous-version/disablefullsync01.png)
+
+2. 升级完成后，运行以下 cmdlet，找出添加的替代：`Get-ADSyncSchedulerConnectorOverride | fl`
+
+   >[!NOTE]
+   > 该替代特定于连接器。 以下示例中，已在本地 AD 连接器和 Azure AD 连接器中添加完全导入步骤和完全同步步骤。
+
+   ![DisableFullSyncAfterUpgrade](./media/active-directory-aadconnect-upgrade-previous-version/disablefullsync02.png)
+
+3. 记下已添加的现有替代。
+   
+4. 若要删除任意连接器上的完全导入和完全同步替代，请运行以下 cmdlet：`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
+
+   若要删除所有连接器上的替代，请执行以下 PowerShell 脚本：
+
+   ```
+   foreach ($connectorOverride in Get-ADSyncSchedulerConnectorOverride)
+   {
+       Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier $connectorOverride.ConnectorIdentifier.Guid -FullSyncRequired $false -FullImportRequired $false
+   }
+   ```
+
+5. 若要恢复计划程序，请运行以下 cmdlet：`Set-ADSyncScheduler -SyncCycleEnabled $true`
+
+   >[!IMPORTANT]
+   > 请务必尽早执行必需的同步步骤。 可使用 Synchronization Service Manager 手动执行这些步骤，或使用 Set-ADSyncSchedulerConnectorOverride cmdlet 重新添加替代。
+
+若要在任意连接器上添加完全导入和完全同步替代，请运行以下 cmdlet：`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
 
 ## <a name="next-steps"></a>后续步骤
 深入了解如何[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)。

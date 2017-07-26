@@ -17,21 +17,20 @@ ms.date: 05/08/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f8b63e5831897d3a45298b0415bb2d6d44ab0de1
-ms.openlocfilehash: 7df8805139b6e3cc23041a8201b496fb7fce8063
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 684cb55c0bf2abfa1fc1410d7fc1224a220c2713
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/01/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
 # <a name="what-is-microsoft-azure-active-directory-licensing-in-the-azure-classic-portal"></a>什么是 Azure 经典门户中的 Microsoft Azure Active Directory 许可？
 
 > [!div class="op_single_selector"]
-> * [Azure 门户](active-directory-licensing-get-started-azure-portal.md)
-> * [Azure 经典门户](active-directory-licensing-what-is.md)
+> * [获取 Azure 门户说明](active-directory-licensing-get-started-azure-portal.md)
+> * [Azure 经典门户信息](active-directory-licensing-what-is.md)
 >
 >
-
 
 Azure Active Directory (Azure AD) 是 Microsoft 的标识即服务 (IDaaS) 解决方案与平台。 Azure AD 提供许多功能与技术版本，从可配合任何 Microsoft 服务（例如 Office 365、Dynamics、Microsoft Intune 和 Azure）使用的 Azure AD 免费版（Azure AD 在此模式中不产生任何使用费），到许多 Azure AD 付费版，例如 Enterprise Mobility Suite (EMS)、Azure AD Premium 与 Basic，以及 Azure 多重身份验证 (MFA)。 与许多 Microsoft 联机服务（如 Office 365、Microsoft Intune 和 Azure AD）一样，大多数 Azure AD 付费版都是通过向每位用户授权来提供。 在这些情况下，购买的服务以一个或多个订阅来表示，每个订阅在租户中包含预先购买数目的许可证。 基于用户的权利是通过许可证分配、在用户与产品之间创建关联、为用户启用服务组件并占用一个预付费许可证来实现的。
 

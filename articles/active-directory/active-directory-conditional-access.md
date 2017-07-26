@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory 条件性访问 | Microsoft 文档"
-description: "使用 Azure Active Directory 中的条件性访问控制检查对应用程序的访问进行身份验证时的特定条件。"
+title: "Azure 经典门户中的条件访问 | Microsoft Docs"
+description: "使用 Azure 经典门户中的条件访问控制，在对应用程序的访问进行身份验证时检查特定条件。"
 services: active-directory
 keywords: "对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略"
 documentationcenter: 
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/07/2017
 ms.author: markvi
+ms.reviewer: calebb
+ms.custom: oldportal
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 31659a7394a34cf8fb5b6ff11c955bdc9f8b65bb
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: b19fd8c0c41638ffec5fda32b6b1a855be2abc7b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/28/2017
-
+ms.lasthandoff: 07/06/2017
 
 ---
-# <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件性访问
+# <a name="conditional-access-in-the-azure-classic-portal"></a>Azure 经典门户中的条件访问
 
-> [!div class="op_single_selector"]
-> * [Azure 经典门户](active-directory-conditional-access.md)
-> * [Azure 门户](active-directory-conditional-access-azure-portal.md)
+本主题介绍 Azure 经典门户中的条件访问。 有关 Azure Active Directory 中条件访问的最新信息，请参阅 [Azure Active Directory 中的条件访问](active-directory-conditional-access-azure-portal.md)。
+
 
 Azure Active Directory (Azure AD) 条件性访问中的控制功能是帮助保护云中和本地的资源的一种简单方式。 条件性访问策略如多重身份验证可帮助抵御凭据被盗和被骗的风险。 其他条件性访问策略可帮助维持组织的数据的安全。 例如，除了要求提供凭据，你可能还有一个策略，即只有在移动设备管理系统中（如 Microsoft Intune）注册的设备才可以访问你组织的敏感服务。
 

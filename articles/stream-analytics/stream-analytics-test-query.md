@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeffstok
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 039ea499f3bfc594472ddc6de59220c4600769f1
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 9ca96196d2d4b898c79556867b5ff8d8be0f66dc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/01/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
@@ -37,7 +37,7 @@ ms.lasthandoff: 05/01/2017
 
     ![流分析查询编辑器测试示例数据](media/stream-analytics-test-query/stream-analytics-test-query-editor-test.png)
 
-查询的输出显示在浏览器中，并带有下载结果的一个链接，使你能保存测试输出以供稍后使用。 现在可以轻松反复地修改查询，并对其进行重复测试，以查看输出有何变化。
+浏览器中显示查询输出和下载结果链接，便于保存测试输出以供稍后使用。 现在可以轻松反复地修改查询，并对其进行重复测试，以查看输出有何变化。
 
 ![流分析查询编辑器示例输出](media/stream-analytics-test-query/stream-analytics-test-query-editor-samples-output.png)
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 05/01/2017
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [Azure 流分析入门](stream-analytics-get-started.md)
+* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

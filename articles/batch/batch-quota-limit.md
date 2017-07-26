@@ -12,14 +12,14 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/05/2017
+ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 56e8f5579da2b5bed7975f25f0779c54d70cb886
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: f3f69ed8d3a985afe07e648e7512a88b25278ced
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/26/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -43,7 +43,7 @@ ms.lasthandoff: 04/26/2017
 
 ## <a name="quotas-in-user-subscription-mode"></a>用户订阅模式中的配额
 
-对于池分配模式设置为**用户订阅**的批处理帐户，将在创建池时，在订阅中直接创建批处理 VM 和其他资源（例如存储帐户）。 Azure 批处理核心配额不会应用到在此模式下创建的帐户。 对于此类帐户，将应用订阅中的区域计算核心数和其他资源的配额。 在 [Azure 订阅和服务的限制、配额和约束](../azure-subscription-service-limits.md)中详细了解这些配额。
+对于池分配模式设置为**用户订阅**的批处理帐户，将在创建池时，在订阅中直接创建批处理 VM 和其他资源（例如存储帐户）。 Azure Batch 核心配额不会应用到在此模式下创建的帐户。 对于此类帐户，将应用订阅中的区域计算核心数和其他资源的配额。 在 [Azure 订阅和服务的限制、配额和约束](../azure-subscription-service-limits.md)中详细了解这些配额。
 
 针对在用户订阅模式下创建的帐户规划资源用量时，请注意，每 40 个 Linux VM 或每 20 个 Windows VM 需要以下批处理资源（此外，还需要计算核心）：
 
@@ -72,8 +72,10 @@ ms.lasthandoff: 04/26/2017
 | 每个 Batch 帐户的[应用程序](batch-application-packages.md)数 |20 |
 | 每个应用程序的应用程序包数 |40 |
 | 应用程序包大小（每个） |约 195GB<sup>1</sup> |
+| 启动任务最大大小 | 32,768 个字符<sup>2</sup> |
 
-<sup>1</sup> 最大的块 Blob 大小的 Azure 存储空间限制
+<sup>1</sup> 最大的块 Blob 大小的 Azure 存储限制<br />
+<sup>2</sup> 包括资源文件和环境变量
 
 ## <a name="view-batch-quotas"></a>查看 Batch 配额
 可在 [Azure 门户][portal]中查看批处理帐户配额。

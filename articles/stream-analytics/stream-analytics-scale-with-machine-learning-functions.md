@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 90be27584e22740d92d149810f5d0a6991cfa20b
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 2a363dfeb4492b79872d95a2ab080ee034cf64d8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/01/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
@@ -27,14 +27,14 @@ ms.lasthandoff: 05/01/2017
 设置流分析作业，并通过它运行某些示例数据，这通常很简单。 但当我们需要运行数据量更大的相同作业时，该怎么办？ 我们要了解如何配置流分析作业，以便可以缩放它。 本文档将关注使用机器学习函数缩放流分析作业的特殊方面。 有关在一般情况下如何缩放流分析作业的信息，请参阅文章[缩放作业](stream-analytics-scale-jobs.md)。
 
 ## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>流分析中的 Azure 机器学习函数是什么？
-流分析中的机器学习函数可像流分析查询语言中的常规函数调用那样使用。 但是在后台，函数调数用实际上是 Azure 机器学习 Web 服务请求数。 机器学习 Web 服务支持在相同的 Web 服务 API 调用中“批处理”多个行（这称为“微批处理”），从而提高整体吞吐量。 请参阅以下文章，获取详细信息：[流分析中的 Azure 机器学习函数](https://blogs.technet.microsoft.com/machinelearning/2015/12/10/azure-ml-now-available-as-a-function-in-azure-stream-analytics/)和 [Azure 机器学习 Web 服务](../machine-learning/machine-learning-consume-web-services.md#request-response-service-rrs)。
+流分析中的机器学习函数可像流分析查询语言中的常规函数调用那样使用。 但是在后台，函数调数用实际上是 Azure 机器学习 Web 服务请求数。 机器学习 Web 服务支持在相同的 Web 服务 API 调用中“批处理”多个行（这称为“微批处理”），从而提高整体吞吐量。 请参阅以下文章，获取详细信息：[流分析中的 Azure 机器学习函数](https://blogs.technet.microsoft.com/machinelearning/2015/12/10/azure-ml-now-available-as-a-function-in-azure-stream-analytics/)和 [Azure 机器学习 Web 服务](../machine-learning/machine-learning-consume-web-services.md)。
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>使用机器学习函数配置流分析作业
 在配置流分析作业的机器学习函数时，需要考虑两个参数：机器学习函数调用数的批大小和为流分析作业预配的流式处理单位 (SU)。 若要确定这些参数的相应值，请首先确定延迟和吞吐量，即流分析作业延迟和每个 SU 的吞吐量。 虽然额外的 SU 会增加运行作业的成本，但可能会始终将 SU 添加到某个作业，以增加分区良好的流分析查询吞吐量。
 
 因此，请务必确定运行流分析作业的延迟*公差*。 运行 Azure 机器学习服务请求产生的额外延迟自然会随着批大小的增加而增加，这将恶化流分析作业延迟现象。 另一方面，增加批大小支持流分析作业使用相同数量的机器学习 Web 服务请求处理 * 更多事件。 增加机器学习 Web 服务延迟通常与增加批大小呈子线性关系，所以在任何给定的情况下，请务必考虑机器学习 Web 服务的最经济有效的批大小。 Web 服务请求的默认批大小为 1000，可使用[流分析 REST API](https://msdn.microsoft.com/library/mt653706.aspx "流分析 REST API") 或[用于流分析的 PowerShell 客户端](stream-analytics-monitor-and-manage-jobs-use-powershell.md "用于流分析的 PowerShell 客户端")修改大小。
 
-确定批大小后，可根据函数每秒需要处理的事件数来确定流式处理单位 (SU) 数量。 有关流式处理单位的详细信息，请参阅文章[流分析缩放作业](stream-analytics-scale-jobs.md#configuring-streaming-units)。
+确定批大小后，可根据函数每秒需要处理的事件数来确定流式处理单位 (SU) 数量。 有关流式处理单位的详细信息，请参阅[流分析缩放作业](stream-analytics-scale-jobs.md)。
 
 一般情况下，除 1 个 SU 作业和 3 个 SU 作业可获得 20 个并发连接外，每 6 个 SU 也具有 20 个机器学习 Web 服务的并发连接。  例如，如果输入数据率为每秒 200000 个事件，并且批大小仍为默认的 1000，则生成的、具有 1000 项事件微批处理的 Web 服务为 200 毫秒。 这意味着每个连接在一秒内可以请求 5 次机器学习 Web 服务。 通过 20 个连接，流分析作业可在 200 毫秒内处理 20000 个事件，因而在 1 秒内可处理 100000 个事件。 因此，若要每秒处理 200000 个事件，流分析作业需要 40 个并发连接，这也就是 12 个 SU。 下图显示了从流分析作业到机器学习 Web 服务终结点的请求：每 6 个 SU 最多具有 20 个机器学习 Web 服务的并发连接。
 
@@ -119,9 +119,8 @@ ms.lasthandoff: 05/01/2017
 ## <a name="next-steps"></a>后续步骤
 若要了解流分析的更多内容，请参阅：
 
-* [Azure 流分析入门](stream-analytics-get-started.md)
+* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
 
