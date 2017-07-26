@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/18/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 3c228be32539050123b01c5ccd74547b0d04ed28
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: a3d5cb909dbfcb00f3fbfa0165bb6cd58eb18688
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -32,11 +32,6 @@ ms.lasthandoff: 05/10/2017
 * 使用操作获取数据行、插入新行，甚至删除。 例如，在 Dynamics CRM Online 中创建记录时（触发器），则在 Azure SQL 数据库中插入行（操作）。 
 
 本主题演示了如何在逻辑应用中使用 SQL 数据库连接器，还列出了相关操作。
-
-> [!NOTE]
-> 此文章版本适用于逻辑应用通用版本 (GA)。 
-> 
-> 
 
 若要了解有关逻辑应用的详细信息，请参阅[什么是逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)和[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
@@ -73,8 +68,9 @@ ms.lasthandoff: 05/10/2017
    > 
 5. **保存**更改（工具栏的左上角）。 你的逻辑应用将保存，并且可能自动启用。
 
-## <a name="view-the-swagger"></a>查看 Swagger
-请参阅 [Swagger 详细信息](/connectors/sql/)。 
+## <a name="connector-specific-details"></a>特定于连接器的详细信息
+
+在[连接器详细信息](/connectors/sql/)中查看在 Swagger 中定义的触发器和操作，并查看限制。 
 
 ## <a name="next-steps"></a>后续步骤
 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。

@@ -13,24 +13,24 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/09/2017
+ms.date: 06/01/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 88d0c2495a13ccf02f7d0e56ce7158ac80dcc2d5
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: ff96602642c56a3cd02aeada056c059573707731
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
 # <a name="connect-with-excel"></a>使用 Excel 进行连接
 
-在 Azure 中创建服务器并向其部署表格模型后，便可以连接并开始浏览数据。 
+在 Azure 中创建服务器并向其部署表格模型后，便可以连接并开始浏览数据。
 
 
 ## <a name="connect-in-excel"></a>在 Excel 中连接
 
-可通过使用 Excel 2016 中的“获取数据”或较低版本中的 Power Query 在 Excel 中连接到服务器。 不支持使用 Power Pivot 中的“导入表向导”进行连接。 
+可通过使用 Excel 2016 中的“获取数据”在 Excel 中连接到服务器。 不支持使用 Power Pivot 中的“导入表向导”进行连接。 
 
 **在 Excel 2016 中连接**
 

@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure 网络观察程序管理数据包捕获 - Azure CLI | Microsoft 文档"
-description: "此页说明如何使用 Azure CLI 管理网络观察程序的数据包捕获功能"
+title: "使用 Azure 网络观察程序管理数据包捕获 - Azure CLI 2.0 | Microsoft Docs"
+description: "此页说明如何使用 Azure CLI 2.0 管理网络观察程序的数据包捕获功能"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,24 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 89e58686dcefb784a865f7842e78ef4d00f5783c
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: c94eb46f31f2f19b843ccd7bf77b8a39943a07d4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/26/2017
 
 ---
 
-# <a name="manage-packet-captures-with-azure-network-watcher-using-azure-cli"></a>通过 Azure CLI 使用 Azure 网络观察程序管理数据包捕获
+# <a name="manage-packet-captures-with-azure-network-watcher-using-azure-cli-20"></a>通过 Azure CLI 2.0 使用 Azure 网络观察程序管理数据包捕获
 
 > [!div class="op_single_selector"]
 > - [Azure 门户](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
-> - [CLI](network-watcher-packet-capture-manage-cli.md)
+> - [CLI 1.0](network-watcher-packet-capture-manage-cli-nodejs.md)
+> - [CLI 2.0](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
 
 使用网络观察程序数据包捕获，可以创建捕获会话以跟踪进出虚拟机的流量。 为捕获会话提供了筛选器以确保仅捕获所需的流量。 数据包捕获有助于以主动和被动方式诊断网络异常。 其他用途包括收集网络统计信息，获得网络入侵信息，调试客户端与服务器之间的通信，等等。 由于能够远程触发数据包捕获，此功能可减轻手动运行数据包捕获的负担，并可在所需计算机上运行，从而可节省宝贵的时间。
 
-本文使用适用于 Windows、Mac 和 Linux 的跨平台 Azure CLI 1.0。 对于 CLI 支持，网络观察程序当前使用 Azure CLI 1.0。
+本文使用资源管理部署模型的新一代 CLI (Azure CLI 2.0)，其适用于 Windows、Mac 和 Linux。
+
+若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (Azure CLI)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2)。
 
 本文将引导你完成当前可用于数据包捕获的不同管理任务。
 
@@ -54,18 +58,18 @@ ms.lasthandoff: 03/31/2017
 
 ### <a name="step-1"></a>步骤 1
 
-在来宾虚拟机上运行 `azure vm extension set` cmdlet 以安装数据包捕获代理。
+在来宾虚拟机上运行 `az vm extension set` cmdlet 以安装数据包捕获代理。
 
 对于 Windows 虚拟机：
 
 ```azurecli
-azure vm extension set -g resourceGroupName -m virtualMachineName -p Microsoft.Azure.NetworkWatcher -r AzureNetworkWatcherExtension -n NetworkWatcherAgentWindows -o 1.4
+az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentWindows --version 1.4
 ```
 
 对于 Linux 虚拟机：
 
 ```azurecli
-azure vm extension set -g resourceGroupName -m virtualMachineName -p Microsoft.Azure.NetworkWatcher -r AzureNetworkWatcherExtension -n NetworkWatcherAgentLinux -o 1.4
+az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux--version 1.4
 ````
 
 ### <a name="step-2"></a>步骤 2
@@ -73,18 +77,29 @@ azure vm extension set -g resourceGroupName -m virtualMachineName -p Microsoft.A
 若要确保已安装代理，请运行 `vm extension get` cmdlet 并向其传递资源组和虚拟机的名称。 检查结果列表，以确保已安装代理。
 
 ```azurecli
-azure vm extension get -g resourceGroupName -m virtualMachineName
+az vm extension show -resource-group resourceGroupName --vm-name virtualMachineName --name NetworkWatcherAgentWindows
 ```
 
-以下示例是运行 `azure vm extension get` 后的响应的实例
+以下示例是运行 `az vm extension show` 后的响应的实例
 
-```
-info:    Executing command vm extension get
-+ Looking up the VM "virtualMachineName"
-data:    Publisher                       Name                     Version  State
-data:    ------------------------------  -----------------------  -------  ---------
-data:    Microsoft.Azure.NetworkWatcher  NetworkWatcherAgentTest  1.4      Succeeded
-info:    vm extension get command OK
+```json
+{
+  "autoUpgradeMinorVersion": true,
+  "forceUpdateTag": null,
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/NetworkWatcherAgentWindows",
+  "instanceView": null,
+  "location": "westcentralus",
+  "name": "NetworkWatcherAgentWindows",
+  "protectedSettings": null,
+  "provisioningState": "Succeeded",
+  "publisher": "Microsoft.Azure.NetworkWatcher",
+  "resourceGroup": "{resourceGroupName}",
+  "settings": null,
+  "tags": null,
+  "type": "Microsoft.Compute/virtualMachines/extensions",
+  "typeHandlerVersion": "1.4",
+  "virtualMachineExtensionType": "NetworkWatcherAgentWindows"
+}
 ```
 
 ## <a name="start-a-packet-capture"></a>启动数据包捕获
@@ -93,10 +108,10 @@ info:    vm extension get command OK
 
 ### <a name="step-1"></a>步骤 1
 
-下一步是检索网络观察程序实例。 将此变量传递给步骤 4 中的 `network watcher show` cmdlet。
+下一步是检索网络观察程序实例。 在步骤 4 中，会将网络观察程序的名称传递给 `az network watcher show` cmdlet。
 
 ```azurecli
-azure network watcher show -g resourceGroup -n networkWatcherName
+az network watcher show -resource-group resourceGroup -name networkWatcherName
 ```
 
 ### <a name="step-2"></a>步骤 2
@@ -112,86 +127,128 @@ azure storage account list
 可以使用筛选器来限制数据包捕获存储的数据。 以下示例为数据包捕获设置了多个筛选器。  前三个筛选器仅收集从本地 IP 10.0.0.3 发往目标端口 20、80 和 443 的传出 TCP 流量。  最后一个筛选器仅收集 UDP 流量。
 
 ```azurecli
-azure network watcher packet-capture create -g resourceGroupName -w networkWatcherName -n packetCaptureName -t targetResourceId -o storageAccountResourceId -f "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
+az network watcher packet-capture create --resource-group {resoureceurceGroupName} --vm {vmName} --name packetCaptureName --storage-account gwteststorage123abc --filters "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
 ```
 
-可以为数据包捕获定义多个筛选器。 如果要使用复杂的筛选器结构，最好将筛选器用作 json 文件来避免语法错误。 例如，使用标志“-r”（而不是“-f”），并传递包含以下筛选器的 json 文件的位置：
+以下示例是运行 `az network watcher packet-capture create` cmdlet 后的预期输出。
 
 ```json
-[
+{
+  "bytesToCapturePerPacket": 0,
+  "etag": "W/\"b8cf3528-2e14-45cb-a7f3-5712ffb687ac\"",
+  "filters": [
     {
-        "protocol":"TCP",
-        "remoteIPAddress":"1.1.1.1-255.255.255",
-        "localIPAddress":"10.0.0.3",
-        "remotePort":"20"
+      "localIpAddress": "10.0.0.3",
+      "localPort": "",
+      "protocol": "TCP",
+      "remoteIpAddress": "1.1.1.1-255.255.255",
+      "remotePort": "20"
     },
     {
-        "protocol":"TCP",
-        "remoteIPAddress":"1.1.1.1-255.255.255",
-        "localIPAddress":"10.0.0.3",
-        "remotePort":"80"
+      "localIpAddress": "10.0.0.3",
+      "localPort": "",
+      "protocol": "TCP",
+      "remoteIpAddress": "1.1.1.1-255.255.255",
+      "remotePort": "80"
     },
     {
-        "protocol":"TCP",
-        "remoteIPAddress":"1.1.1.1-255.255.255",
-        "localIPAddress":"10.0.0.3",
-        "remotePort":"443"
+      "localIpAddress": "10.0.0.3",
+      "localPort": "",
+      "protocol": "TCP",
+      "remoteIpAddress": "1.1.1.1-255.255.255",
+      "remotePort": "443"
     },
     {
-        "protocol":"UDP"
+      "localIpAddress": "",
+      "localPort": "",
+      "protocol": "UDP",
+      "remoteIpAddress": "",
+      "remotePort": ""
     }
-]
-```
-
-
-以下示例是运行 `network watcher packet-capture create` cmdlet 后的预期输出。
-
-```
-data:    Name                            : packetCaptureName
-data:    Etag                            : W/"d59bb2d2-dc95-43da-b740-e0ef8fcacecb"
-data:    Target                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Compute/virtualMachines/testVM
-data:    Bytes To Capture Per Packet     : 0
-data:    Total Bytes Per Session         : 1073741824
-data:    Time Limit In Seconds           : 18000
-data:    Storage Location:
-data:      Storage Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/testStorage
-data:      Storage Path                  : https://testStorage.blob.core.windows.net/network-watcher-logs/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/testRG/providers/microsoft.compute/virtualmachines/testVM/2017/02/17/packetcapture_01_21_18_145.cap
-data:    Filters                         : []
-data:    Provisioning State              : Succeeded
-info:    network watcher packet-capture create command OK
+  ],
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus/pa
+cketCaptures/packetCaptureName",
+  "name": "packetCaptureName",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "NetworkWatcherRG",
+  "storageLocation": {
+    "filePath": null,
+    "storageId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/gwteststorage123abc",
+    "storagePath": "https://gwteststorage123abc.blob.core.windows.net/network-watcher-logs/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/{resourceGroupName}/p
+roviders/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapture_16_22_34_630.cap"
+  },
+  "target": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
+  "timeLimitInSeconds": 18000,
+  "totalBytesPerSession": 1073741824
+}
 ```
 
 ## <a name="get-a-packet-capture"></a>获取数据包捕获
 
-运行 `network watcher packet-capture show` cmdlet，检索当前正在运行的或已完成的数据包捕获的状态。
+运行 `az network watcher packet-capture show` cmdlet，检索当前正在运行的或已完成的数据包捕获的状态。
 
 ```azurecli
-azure network watcher packet-capture show -g resourceGroupName -w networkWatcherName -n packetCaptureName
+az network watcher packet-capture show --name packetCaptureName --location westcentralus
 ```
 
-以下示例是 `network watcher packet-capture show` cmdlet 的输出。 以下示例是捕获完成后的输出结果。 PacketCaptureStatus 值为“已停止”，StopReason 为 TimeExceeded。 此值显示数据包捕获已成功完成，并已运行了限定的时间。
+以下示例是 `az network watcher packet-capture show` cmdlet 的输出。 以下示例是捕获完成后的输出结果。 PacketCaptureStatus 值为“已停止”，StopReason 为 TimeExceeded。 此值显示数据包捕获已成功完成，并已运行了限定的时间。
 
 ```
-data:    Name                            : packetCaptureName
-data:    Etag                            : W/"d59bb2d2-dc95-43da-b740-e0ef8fcacecb"
-data:    Target                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Compute/virtualMachines/testVM
-data:    Bytes To Capture Per Packet     : 0
-data:    Total Bytes Per Session         : 1073741824
-data:    Time Limit In Seconds           : 18000
-data:    Storage Location:
-data:      Storage Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/testStorage
-data:      Storage Path                  : https://testStorage.blob.core.windows.net/network-watcher-logs/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/testRG/providers/microsoft.compute/virtualmachines/testVM/2017/02/17/packetcapture_01_21_18_145.cap
-data:    Filters                         : []
-data:    Provisioning State              : Succeeded
-info:    network watcher packet-capture show command OK
+{
+  "bytesToCapturePerPacket": 0,
+  "etag": "W/\"b8cf3528-2e14-45cb-a7f3-5712ffb687ac\"",
+  "filters": [
+    {
+      "localIpAddress": "10.0.0.3",
+      "localPort": "",
+      "protocol": "TCP",
+      "remoteIpAddress": "1.1.1.1-255.255.255",
+      "remotePort": "20"
+    },
+    {
+      "localIpAddress": "10.0.0.3",
+      "localPort": "",
+      "protocol": "TCP",
+      "remoteIpAddress": "1.1.1.1-255.255.255",
+      "remotePort": "80"
+    },
+    {
+      "localIpAddress": "10.0.0.3",
+      "localPort": "",
+      "protocol": "TCP",
+      "remoteIpAddress": "1.1.1.1-255.255.255",
+      "remotePort": "443"
+    },
+    {
+      "localIpAddress": "",
+      "localPort": "",
+      "protocol": "UDP",
+      "remoteIpAddress": "",
+      "remotePort": ""
+    }
+  ],
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus/packetCaptures/packetCaptureName",
+  "name": "packetCaptureName",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "NetworkWatcherRG",
+  "storageLocation": {
+    "filePath": null,
+    "storageId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/gwteststorage123abc",
+    "storagePath": "https://gwteststorage123abc.blob.core.windows.net/network-watcher-logs/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/{resourceGroupName}/providers/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapt
+ure_16_22_34_630.cap"
+  },
+  "target": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
+  "timeLimitInSeconds": 18000,
+  "totalBytesPerSession": 1073741824
+}
 ```
 
 ## <a name="stop-a-packet-capture"></a>停止数据包捕获
 
-运行 `network watcher packet-capture stop` cmdlet 后，如果捕获会话正在进行，它将停止。
+运行 `az network watcher packet-capture stop` cmdlet 后，如果捕获会话正在进行，它将停止。
 
 ```azurecli
-azure network watcher packet-capture stop -g resourceGroupName -w networkWatcherName -n packetCaptureName
+az network watcher packet-capture stop --name packetCaptureName --location westcentralus
 ```
 
 > [!NOTE]
@@ -200,7 +257,7 @@ azure network watcher packet-capture stop -g resourceGroupName -w networkWatcher
 ## <a name="delete-a-packet-capture"></a>删除数据包捕获
 
 ```azurecli
-azure network watcher packet-capture delete -g resourceGroupName -w networkWatcherName -n packetCaptureName
+az network watcher packet-capture delete --name packetCaptureName --location westcentralus
 ```
 
 > [!NOTE]
@@ -208,7 +265,7 @@ azure network watcher packet-capture delete -g resourceGroupName -w networkWatch
 
 ## <a name="download-a-packet-capture"></a>下载数据包捕获
 
-完成数据包捕获会话后，可以将捕获文件上载到 blob 存储或 VM 上的本地文件。 数据包捕获的存储位置是在创建会话时定义的。 用于访问这些保存到存储帐户的捕获文件的便利工具是 Microsoft Azure 存储资源管理器，可以在此处下载：http://storageexplorer.com/
+完成数据包捕获会话后，可以将捕获文件上传到 blob 存储或 VM 上的本地文件。 数据包捕获的存储位置是在创建会话时定义的。 用于访问这些保存到存储帐户的捕获文件的便利工具是 Microsoft Azure 存储资源管理器，可以在此处下载：http://storageexplorer.com/
 
 如果指定了存储帐户，则数据包捕获文件将保存到以下位置的存储帐户：
 

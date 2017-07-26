@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/18/2017
+ms.date: 06/14/2017
 ms.author: owend
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 9a298a5869d449c974267483eb779f45bc6b7abc
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
+ms.openlocfilehash: d41dc3c05d0d0cd0d9466c43bbebadcffd21e0dd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/23/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/20/2017
 在 Azure 中创建 Analysis Services 服务器后，可能会有一些需要立即执行或在稍后操作期间执行的管理任务。 例如，处理刷新数据、控制谁有权访问服务器上的模型，或者监视服务器的运行状况。 某些管理任务仅可在 Azure 门户中执行，而其他一些可在 SQL Server Management Studio (SSMS) 中执行，还有部分在两者中均可执行。
 
 ## <a name="azure-portal"></a>Azure 门户
-在 [Azure 门户](http://portal.azure.com/)中，可创建和删除服务器、监控服务器资源和更改大小，并可管理有权访问服务器的人员。  如果遇到问题，可提交支持请求。
+在 [Azure 门户](http://portal.azure.com/)中，可创建和删除服务器、监控服务器资源、更改大小和管理有权访问服务器的人员。  如果遇到问题，可提交支持请求。
 
 ![在 Azure 中获取服务器名称](./media/analysis-services-manage/aas-manage-portal.png)
 
@@ -48,7 +49,7 @@ ms.lasthandoff: 04/20/2017
    
     ![在 Azure 中获取服务器名称](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 2. 在 SSMS >“对象资源管理器”中，单击“连接” > “Analysis Services”。
-3. 在“连接到服务器”对话框中，粘贴服务器名称，然后在“身份验证”中选择以下选项之一：
+3. 在“连接到服务器”对话框中，粘贴服务器名称，然后在“身份验证”中选择以下身份验证类型之一：
    
     选择“Windows 身份验证”，以使用 Windows 域\用户名和密码凭据。
 
@@ -59,7 +60,7 @@ ms.lasthandoff: 04/20/2017
     ![在 SSMS 中连接](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 
 ## <a name="server-administrators-and-database-users"></a>服务器管理员和数据库用户
-Azure Analysis Services 中存在两种类型的用户，即服务器管理员和数据库用户。 这两种类型的用户必须存在于 Azure Active Directory 中，且必须由组织电子邮件地址或 UPN 指定。 这不同于通过 Windows 域用户名支持服务器管理员和数据库用户的本地表格模型数据库。 有关详细信息，请参阅[管理 Azure Analysis Services 中的用户](analysis-services-manage-users.md)。
+Azure Analysis Services 中存在两种类型的用户，即服务器管理员和数据库用户。 这两种类型的用户必须存在于 Azure Active Directory 中，且必须由组织电子邮件地址或 UPN 指定。 若要了解详细信息，请参阅[身份验证和用户权限](analysis-services-manage-users.md)。
 
 
 ## <a name="troubleshooting-connection-problems"></a>连接问题疑难解答

@@ -4,7 +4,7 @@ description: "OMS 中的解决方案通常在 Azure 自动化中包含 Runbook �
 services: operations-management-suite
 documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 5281462e-f480-4e5e-9c19-022f36dce76d
 ms.service: operations-management-suite
@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/17/2017
+ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: a86a20e1e83f412a06f54bb195180b9d2af98ca6
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: c1909183a33ed03d8165671cff25cc8b83b77733
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/26/2017
 
 
 ---
 # <a name="adding-azure-automation-resources-to-an-oms-management-solution-preview"></a>将 Azure 自动化资源添加到 OMS 管理解决方案（预览版）
 > [!NOTE]
 > 这是在 OMS 中创建管理解决方案的初步文档，当前仅提供预览版。 如下所述的全部架构均会有变动。   
-> 
-> 
+
 
 [OMS 中的管理解决方案](operations-management-suite-solutions.md)通常在 Azure 自动化中包含 Runbook 以自动执行各种进程，例如收集和处理监控数据。  除了 Runbook，自动化帐户还包含资产，例如支持在解决方案中使用的 Runbook 的变量和计划。  本文介绍如何在解决方案中包含 Runbook 和其相关资源。
 
@@ -273,8 +273,20 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../automation/aut
 |:--- |:--- |
 | description | 变量的可选说明。 |
 | isEncrypted | 指定是否应加密变量。 |
-| type | 变量的数据类型。 |
+| type | 当前此属性无效。  初始值决定该变量的数据类型。 |
 | value | 变量的值。 |
+
+> [!NOTE]
+> 当前，“类型”属性对正在创建的变量无效。  变量的数据类型由值决定。  
+
+如果设置变量的初始值，则该值必须配置为正确的数据类型。  下表提供了允许的不同数据类型及其语法。  请注意，JSON 中的值应始终使用引号括起来，任何特殊字符位于引号内。  例如，字符串值应通过将字符串用引号括起来进行指定（使用转义字符 (\\)），而数字值应使用一组引号进行指定。
+
+| 数据类型 | 说明 | 示例 | 解析为 |
+|:--|:--|:--|:--|
+| 字符串   | 将值括在双引号中。  | “\"Hello world\"” | “Hello world” |
+| numeric  | 用单引号将数字值括起来。| “64” | 64 |
+| 布尔值  | 引号中的“true”或“false”。  请注意，此值必须为小写。 | "true" | 是 |
+| datetime | 序列化日期值。<br>可以在 PowerShell 中使用 ConvertTo-Json cmdlet 为特定日期生成此值。<br>示例：get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>模块
 管理解决方案不需要定义 Runbook 使用的[全局模块](../automation/automation-integration-modules.md)，因为它们始终都在自动化帐户中可用。  需要包括 runbook 使用的任何其他模块资源。

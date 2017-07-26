@@ -12,12 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 04/07/2017
+ms.date: 05/20/2017
 ms.author: TomSh
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 2752ae92fbbbb284756215a53dcab054881bd08a
-ms.lasthandoff: 04/13/2017
+ms.custom: azlog
+ms.translationtype: Human Translation
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 02b3095bb77a122fddd74e636395628333a13936
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -31,9 +33,9 @@ Azure 日志集成 (AzLog) 使你能够将 Azure 资源中的原始日志集成�
 >[!NOTE]
 >SIEM 自身能够将 Azure 日志集成的输出集成到 SIEM。 有关详细信息，请参阅文章[将 Azure 日志集成与本地 SIEM 集成](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/)。
 
-请注意 - 运行 Azure 日志集成服务的实体计算机或虚拟计算机必须使用 Windows Server 2008 R2 或更高版本的操作系统（最好使用 Windows Server 2012 R2 或 Windows Server 2016）。 
+请注意 - 运行 Azure 日志集成服务的实体计算机或虚拟计算机必须使用 Windows Server 2008 R2 或更高版本的操作系统（最好使用 Windows Server 2012 R2 或 Windows Server 2016）。
 
-实体计算机可以在本地（或主机托管服务提供商网站上）运行。 如果选择在虚拟机上运行 Azure 日志集成服务，则该虚拟机可以位于本地或公有云中，例如 Microsoft Azure。 
+实体计算机可以在本地（或主机托管服务提供商网站上）运行。 如果选择在虚拟机上运行 Azure 日志集成服务，则该虚拟机可以位于本地或公有云中，例如 Microsoft Azure。
 
 运行 Azure 日志集成服务的实体计算机或虚拟计算机需要通过网络连接到 Azure 公有云。 本文中的步骤介绍了有关配置的详细信息。
 
@@ -41,12 +43,20 @@ Azure 日志集成 (AzLog) 使你能够将 Azure 资源中的原始日志集成�
 安装 AzLog 至少需要以下各项：
 * 一个 **Azure 订阅**。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/free/)。
 * 用于 Windows Azure 诊断日志记录的**存储帐户**（可以使用预先配置的存储帐户，也可以新建一个帐户 - 本文稍后将演示如何配置存储帐户）
+  >[!NOTE]
+  可能无需存储帐户，具体取决于你的方案。 对于本文中所述的 Azure 诊断方案，需要一个存储帐户。
 * **两个系统**：一个计算机运行 Azure 日志集成服务，一个计算机被监视并将其日志记录信息发送给运行 Azlog 服务的计算机。
    * 要监视的计算机 – 这台计算机是作为 [Azure 虚拟机](../virtual-machines/virtual-machines-windows-overview.md)运行的 VM
    * 运行 Azure 日志集成服务的计算机；这台计算机会收集所有的日志信息，而这些日志信息随后会被导入到 SIEM 中。
     * 此系统可以位于本地也可以位于 Microsoft Azure 中。  
     * 需要在 64 位版本的 Windows server 2008 R2 SP1 或更高版本中运行，并且需要安装 .NET 4.5.1。 可以按照标题为[如何：确定所安装的 .NET Framework 版本](https://msdn.microsoft.com/library/hh925568)的文章进行操作，以确定所安装的 .NET 版本  
     必须连接到 Azure 诊断日志记录所使用的 Azure 存储帐户。 本文稍后将介绍如何确认此连接
+
+有关使用 Azure 门户创建虚拟机的过程的快速演示，请观看以下视频。
+
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Log-Integration-Videos-Create-a-Virtual-Machine/player]
+
+
 
 ## <a name="deployment-considerations"></a>部署注意事项
 测试 Azure 日志集成时，可以使用任何系统，只要它满足最低操作系统要求。 但是在生产环境中，负载可能需要你进行缩放。
@@ -79,6 +89,10 @@ Azure 日志集成服务会收集安装了该服务的计算机中的遥测数�
 * 关于已处理的查询数量和事件数量的指标
 * 关于正在使用哪些 Azlog.exe 命令行选项的统计信息
 
+以下视频介绍了安装过程。
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Log-Integration-Videos-Install-Azure-Log-Integration/player]
+
+
 
 ## <a name="post-installation-and-validation-steps"></a>安装后和验证步骤
 完成了基本的安装例程之后，就可以执行以下安装后和验证步骤了：
@@ -97,7 +111,7 @@ Azure 日志集成服务会收集安装了该服务的计算机中的遥测数�
 
       ![Azure 诊断设置](./media/security-azure-log-integration-get-started/azure-monitoring-not-enabled-large.png)
       >[!NOTE]
-      如果你在创建虚拟机时未启用监视，会为你提供启用监视的选项，如上所示。 
+      如果你在创建虚拟机时未启用监视，会为你提供启用监视的选项，如上所示。
 5. 现在我们重新将注意力放回 Azure 日志集成计算机。 我们需要验证已安装 Azure 日志集成的系统是否连接到了存储帐户。 运行 Azure 日志集成服务的实体计算机或虚拟计算机需要访问存储帐户，以便按每台被监视系统上的配置检索由 Azure 诊断记录的信息。  
   1. 可在[此处](http://storageexplorer.com/)下载 Azure 存储资源管理器。
   2. 执行安装例程
@@ -137,7 +151,11 @@ Azure 日志集成服务会收集安装了该服务的计算机中的遥测数�
  9. 运行 ``Azlog source add <FriendlyNameForTheSource> WAD <StorageAccountName> <StorageKey> `` </br> 例如 ``Azlog source add Azlogtest WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==``如果希望将订阅 ID 显示在事件 XML 中，请将订阅 ID 追加到友好名称中：``Azlog source add <FriendlyNameForTheSource>.<SubscriptionID> WAD <StorageAccountName> <StorageKey>``。或者例如 ``Azlog source add Azlogtest.YourSubscriptionID WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==``
 
 >[!NOTE]  
-最多等待 60 分钟，然后查看从存储帐户拉取的事件。 若要查看，请在 Azlog 集成器上打开“**事件查看器 > Windows 日志 > 已转发事件**”。
+最多等待 60 分钟，然后查看从存储帐户拉取的事件。 若要查看，请在 Azlog 集成器上打开“事件查看器 > Windows 日志 > 已转发事件”。
+
+可在此处观看视频，回顾上面介绍的步骤。
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Log-Integration-Videos-Enable-Diagnostics-and-Storage/player]
+
 
 ## <a name="what-if-data-is-not-showing-up-in-the-forwarded-events-folder"></a>如果在“已转发事件”文件夹中未显示数据，该怎么办？
 如果在 1 小时之后，在“**已转发事件**”文件夹中仍未显示数据，请执行以下操作：
@@ -153,6 +171,7 @@ Azure 日志集成服务会收集安装了该服务的计算机中的遥测数�
   </ol>
 3. 请确保在运行命令 **Azlog source list** 时，会列出通过命令 **Azlog source add** 添加的存储帐户。
 4. 转到“**事件查看器 > Windows 日志 > 应用程序**”以查看是否存在从 Azure 日志集成报告的任何错误。
+
 
 如果在安装和配置过程中遇到问题，请打开[支持请求](../azure-supportability/how-to-create-azure-support-request.md)，选择“日志集成”作为需要请求支持的服务。
 

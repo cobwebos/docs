@@ -1,6 +1,6 @@
 ---
-title: "数据源连接 | Microsoft Docs"
-description: "介绍 Azure Analysis Services 中数据模型的数据源连接。"
+title: "Azure Analysis Services 中支持的数据源 | Microsoft Docs"
+description: "介绍 Azure Analysis Services 中数据模型支持的数据源。"
 services: analysis-services
 documentationcenter: 
 author: minewiskan
@@ -13,22 +13,49 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/14/2017
+ms.date: 06/01/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: aebabd15e781e726def545960ce3c1ec7674c530
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: a0fe91568d747148b3940e9c90db15481c765a9c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
-# <a name="datasource-connections"></a>数据源连接
+# <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
+Azure Analysis Services 服务器支持连接到云中的数据源和组织中的本地数据源。 始终添加其他受支持的数据源。 请经常返回查看。 
+
+当前支持以下数据源：
+
+| 云  |
+|---|
+| Azure Blob 存储*  |
+| Azure SQL 数据库  |
+| Azure 数据仓库 |
+
+
+| 本地  |   |   |   |
+|---|---|---|---|
+| Access 数据库  | 文件夹* | Oracle Database  | Teradata 数据库 |
+| Active Directory*  | JSON 文档*  | Postgre SQL 数据库*  |XML 表* |
+| Analysis Services  | 二进制文件中的行*  | SAP HANA*  |
+| 分析平台系统  | MySQL 数据库  | SAP Business Warehouse*  | |
+| Dynamics CRM*  | OData 源*  | SharePoint*  |
+| Excel 工作簿  | ODBC 查询  | SQL 数据库  |
+| Exchange*  | OLE DB  | Sybase 数据库  |
+
+\* 仅限表格 1400 模型。 
+
+> [!IMPORTANT]
+> 连接到本地数据源需要将[本地数据网关](analysis-services-gateway.md)安装在环境中的计算机上。
+
+## <a name="data-providers"></a>数据提供程序
+
 连接到某些数据源时，Azure Analysis Services 中的数据模型可能需要不同的数据提供程序。 在某些情况下，使用本机提供程序（如 SQL Server Native Client (SQLNCLI11)）连接到数据源的表格模型可能返回错误。
 
-例如，对于连接到云数据源（如 Azure SQL 数据库）的内存中数据模型或 DirectQuery 数据模型，如果使用了 SQLOLEDB 之外的本机提供程序，则可能会看到错误消息：“提供程序‘SQLNCLI11.1’未注册”。 或者，在某个 DirectQuery 模型连接到本地数据源时，如果使用了本机提供程序，则可能会看到错误消息：**“创建 OLE DB 行集时出错。‘LIMIT’附近的语法不正确”**。
+对于连接到云数据源（如 Azure SQL 数据库）的数据模型，如果使用了 SQLOLEDB 之外的本机提供程序，则可能会看到错误消息：“提供程序‘SQLNCLI11.1’未注册”。 或者，在某个 DirectQuery 模型连接到本地数据源时，如果使用了本机提供程序，则可能会看到错误消息：**“创建 OLE DB 行集时出错。‘LIMIT’附近的语法不正确”**。
 
-## <a name="data-source-providers"></a>数据源提供程序
 连接到云或本地的数据源时，内存中或 DirectQuery 数据模型支持以下数据源提供程序：
 
 ### <a name="cloud"></a>云

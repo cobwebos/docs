@@ -1,5 +1,5 @@
 ---
-title: "在 Azure Functions 中使用警报和数据包捕获执行主动网络监视 | Microsoft Docs"
+title: "通过警报和 Azure Functions，使用数据包捕获执行主动网络监视 | Microsoft Docs"
 description: "本文介绍如何使用 Azure 网络观察程序创建警报触发的数据包捕获"
 services: network-watcher
 documentationcenter: na
@@ -14,40 +14,39 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 5fd017b6f7645220ee7572e50c02265de41e938c
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 70e78af25c7087aa0eb59697aa9b51d615480085
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
-# <a name="use-packet-capture-to-do-proactive-network-monitoring-with-alerts-and-azure-functions"></a>在 Azure Functions 中使用警报和数据包捕获执行主动网络监视
+# <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>通过警报和 Azure Functions，使用数据包捕获执行主动网络监视
 
-网络观察程序数据包捕获功能可以创建捕获会话来跟踪传入和传出虚拟机的流量。 可在捕获文件中包含一个定义的筛选器，以便只跟踪想要监视的流量。 然后，将此数据存储在存储 Blob 中或来宾计算机本地。
+网络观察程序数据包捕获功能可以创建捕获会话，跟踪传入和传出虚拟机的流量。 可在捕获文件中包含一个定义的筛选器，使其只跟踪要监视的流量。 然后，将此数据存储在存储 Blob 中或来宾计算机本地。
 
-可以通过 Azure Functions 等其他自动化方案远程启动此功能。 数据包捕获提供基于定义的网络异常运行主动捕获的功能。 其他用途包括收集网络统计信息、获取网络入侵信息、调试客户端与服务器之间的通信，等等。
+可以通过 Azure Functions 等其他自动化方案远程启动此功能。 数据包捕获提供基于定义的网络异常运行主动捕获的功能。 其他用途包括收集网络统计信息、获取有关网络入侵的信息、调试客户端通信等等。
 
-Azure 中部署的资源全天候运行， 但你或你的同事无法全天候主动监视所有资源的状态。 如果凌晨 2 点出现问题，会发生什么情况？
+Azure 中部署的资源全天候运行。 但你或你的同事无法全天候主动监视所有资源的状态。 例如，如果凌晨 2 点出现问题，会发生什么情况？
 
-在 Azure 生态系统中使用网络观察程序、警报和 Functions，可以主动针对网络中的问题做出响应，并使用数据和工具来解决问题。
+在 Azure 生态系统中使用网络观察程序、警报和函数，可以主动使用数据和工具做出响应，解决网络中的问题。
 
 ![方案][scenario]
 
 ## <a name="prerequisites"></a>先决条件
 
-* 安装最新版本的 [Azure PowerShell](/powershell/azure/install-azurerm-ps)
-* 准备好网络观察程序的现有实例，或者[创建网络观察程序的实例](network-watcher-create.md)。
-* 在上述网络观察程序所在的同一区域中准备好一个装有 [Windows 扩展](../virtual-machines/windows/extensions-nwa.md)或 [Linux 虚拟机扩展](../virtual-machines/linux/extensions-nwa.md)的现有虚拟机。
+* 最新版本的 [Azure PowerShell](/powershell/azure/install-azurerm-ps)。
+* 网络观察程序的现有实例。 [创建网络观察程序的实例](network-watcher-create.md)（如果还没有这样一个实例的话）。
+* 在网络观察程序所在的同一区域中的现有虚拟机，装有 [Windows 扩展](../virtual-machines/windows/extensions-nwa.md)或 [Linux 虚拟机扩展](../virtual-machines/linux/extensions-nwa.md)。
 
 ## <a name="scenario"></a>方案
 
 在本示例中，VM 发送的 TCP 段数超过平常，出现问题时你希望能够收到警报。 此处所示的 TCP 段只是用作示例，但你可以使用任何警报条件。
 
-收到警报时，你希望获得数据包级别的数据来了解通信量为何提高。 这样，便可以采取措施让计算机恢复日常通信。
+收到警报时，希望收到数据包级别的数据，了解通信量为何提高。 然后，便可以采取措施让虚拟机恢复日常通信。
 
-本方案假设已安装网络观察程序的现有实例，并且使用一个包含可用的有效虚拟机的资源组。
-
-在本示例中，VM 发送的 TCP 段数超过平常，出现问题时你希望能够收到警报。 TCP 段只是用作示例，我们可以使用任何警报条件。 收到警报时，你希望获得数据包级别的数据来了解通信量为何提高，以便可以采取措施让计算机恢复日常通信。
+本方案假设已具有网络观察程序的现有实例，以及一个包含有效虚拟机的资源组。
 
 以下列表了提供发生的工作流概述：
 
@@ -55,52 +54,54 @@ Azure 中部署的资源全天候运行， 但你或你的同事无法全天候�
 1. 该警报通过 Webhook 调用 Azure 函数。
 1. Azure 函数处理警报，并启动网络观察程序数据包捕获会话。
 1. 数据包捕获在 VM 上运行并收集流量。
-1. 将数据包捕获文件上载到存储帐户进行审查和诊断。
+1. 将数据包捕获文件上传到存储帐户进行审查和诊断。
 
-为了自动完成此过程，我们在 VM 上创建并连接了一个发生事件时要触发的警报，同时创建了一个用于调用网络观察程序的函数。
+为了自动完成此过程，我们在 VM 上创建并连接了一个发生事件时要触发的警报。 还创建了用于调入网络观察程序的函数。
 
 此方案执行以下任务：
 
 * 创建一个启动数据包捕获的 Azure 函数。
 * 在虚拟机上创建警报规则，并将警报规则配置为调用该 Azure 函数。
 
-## <a name="creating-an-azure-function"></a>创建 Azure 函数
+## <a name="create-an-azure-function"></a>创建 Azure 函数
 
 第一步是创建一个 Azure 函数来处理警报并创建数据包捕获。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，单击“新建” > “计算” > “Function App”
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“新建” > “计算” > “Function App”。
 
-    ![创建 Function App][1-1]
+    ![创建一个函数应用][1-1]
 
-2. 在“Function App”中输入以下值，然后单击“确定”创建 Function App：
+2. 在“Function App”边栏选项卡中输入以下值，然后选择“确定”以创建应用：
 
     |**设置** | **值** | **详细信息** |
     |---|---|---|
-    |**应用名称**|PacketCaptureExample|Function App 的名称|
-    |**订阅**|[你的订阅]|选择要在其中创建 Function App 的订阅。||
-    |**资源组**|PacketCaptureRG|为包含 Function App 的资源组命名。|
-    |**托管计划**|使用计划| Function App 要使用的计划类型。 选项包括“使用计划”或“应用服务计划”。 |
-    |**位置**|美国中部| 要在其中创建 Function App 的区域。|
-    |**存储帐户**|{autogenerated}| 这是 Azure Functions 用作常规用途存储的存储帐户。|
+    |**应用名称**|PacketCaptureExample|函数应用的名称。|
+    |**订阅**|[订阅]要为其创建函数应用的订阅。||
+    |**资源组**|PacketCaptureRG|包含函数应用的资源组。|
+    |**托管计划**|使用计划| 函数应用使用的计划类型。 选项包括“使用计划”或“Azure 应用服务计划”。 |
+    |**位置**|美国中部| 要在其中创建函数应用的区域。|
+    |**存储帐户**|{autogenerated}| Azure Functions 需用于常规存储的存储帐户。|
 
-3. 在 Function Apps 的“PacketCaptureExample”边栏选项卡上，单击“函数” > “自定义函数”下面的 **+**。 选择“HttpTrigger Powershell”，填写剩余的信息，然后单击“创建”以创建函数。
+3. 在 Function Apps 的“PacketCaptureExample”边栏选项卡上，选择“函数” > “自定义函数” >“+”。
+
+4. 选择“HttpTrigger-Powershell”，然后输入其余信息。 最后，选择“创建”以创建函数。
 
     |**设置** | **值** | **详细信息** |
     |---|---|---|
     |**方案**|试验|方案的类型|
     |**为函数命名**|AlertPacketCapturePowerShell|函数的名称|
-    |**授权级别**|函数|函数的授权级别。|
+    |**授权级别**|函数|函数的授权级别|
 
 ![函数示例][functions1]
 
 > [!NOTE]
 > PowerShell 模板处于试验阶段且没有完全支持。
 
-自定义项是此示例所必需的，并在以下步骤中说明：
+自定义项是此示例所必需的，并在以下步骤中说明。
 
-### <a name="adding-modules"></a>添加模块
+### <a name="add-modules"></a>添加模块
 
-若要使用网络观察程序 PowerShell cmdlet，需要将最新 PowerShell 模块上传到 Function App。
+若要使用网络观察程序 PowerShell cmdlet，将最新 PowerShell 模块上传到函数应用。
 
 1. 在已安装最新 Azure PowerShell 模块的本地计算机上，运行以下 PowerShell 命令：
 
@@ -116,15 +117,17 @@ Azure 中部署的资源全天候运行， 但你或你的同事无法全天候�
 
     * AzureRM.Resources
 
-    ![powershell 文件夹][functions5]
+    ![PowerShell 文件夹][functions5]
 
-1. 导航到“Function App 设置” > “转到应用服务编辑器”。
+1. 选择“函数应用设置” > “转到应用服务编辑器”。
 
-    ![函数 kudu][functions2]
+    ![函数应用设置][functions2]
 
-1. 右键单击 AlertPacketCapturePowershell 文件夹，并创建一个名为 **azuremodules** 的文件夹。 继续为所需的每个模块创建子文件夹。
+1. 右键单击 AlertPacketCapturePowershell 文件夹，然后创建一个名为 azuremodules 的文件夹。 
 
-    ![函数 kudu][functions3]
+4. 为每个所需模块创建子文件夹。
+
+    ![文件夹和子文件夹][functions3]
 
     * AzureRM.Network
 
@@ -132,49 +135,53 @@ Azure 中部署的资源全天候运行， 但你或你的同事无法全天候�
 
     * AzureRM.Resources
 
-1. 右键单击 **AzureRM.Network** 子文件夹，然后单击“上传文件”。 导航到 Azure 模块的安装位置，在本地 AzureRM.Network 文件夹中选择该文件夹中的所有文件，然后单击“确定”。  对 AzureRM.Profile 和 AzureRM.Resources 重复这些步骤。
+1. 右键单击 AzureRM.Network 子文件夹，然后选择“上传文件”。 
 
-    ![上载文件][functions6]
+6. 转到 Azure 模块。 在本地 AzureRM.Network 文件夹中，选择文件夹中的所有文件。 然后选择“确定”。 
+
+7. 对 AzureRM.Profile 和 AzureRM.Resources 重复这些步骤。
+
+    ![上传文件][functions6]
 
 1. 完成后，每个文件夹应具有来自本地计算机的 PowerShell 模块文件。
 
-    ![powershell 文件][functions7]
+    ![PowerShell 文件][functions7]
 
 ### <a name="authentication"></a>身份验证
 
-若要使用 PowerShell cmdlet，必须进行身份验证。 需要在 Function App 中配置身份验证。 若要配置身份验证，将配置环境变量，并需要将加密密钥文件上传到 Function App。
+若要使用 PowerShell cmdlet，必须进行身份验证。 配置函数应用中的身份验证。 若要配置身份验证，必须配置环境变量，并将加密密钥文件上传到函数应用。
 
 > [!NOTE]
-> 此方案仅提供如何使用 Azure Functions 实现身份验证的一个示例，还可以通过其他方法来执行此操作。
+> 此方案仅提供如何使用 Azure Functions 实现身份验证的一个示例。 还可以通过其他方法执行此操作。
 
 #### <a name="encrypted-credentials"></a>加密凭据
 
-以下 PowerShell 脚本创建了一个名为 **PassEncryptKey.key** 的密钥文件，并提供了所提供密码的加密版本。  此密码是为用于身份验证的 Azure AD 应用程序定义的同一密码。
+以下 PowerShell 脚本创建名为 PassEncryptKey.key 的密钥文件。 它还提供所提供密码的加密版本。 此密码是为用于身份验证的 Azure Active Directory 应用程序定义的同一密码。
 
 ```powershell
-#variables
+#Variables
 $keypath = "C:\temp\PassEncryptKey.key"
 $AESKey = New-Object Byte[] 32
 $Password = "<insert a password here>"
 
-#keys
+#Keys
 [Security.Cryptography.RNGCryptoServiceProvider]::Create().GetBytes($AESKey) 
 Set-Content $keypath $AESKey
 
-#get encrypted password
+#Get encrypted password
 $secPw = ConvertTo-SecureString -AsPlainText $Password -Force
 $AESKey = Get-content $KeyPath
 $Encryptedpassword = $secPw | ConvertFrom-SecureString -Key $AESKey
 $Encryptedpassword
 ```
 
-在 Function App 的应用服务编辑器中，在 **AlertPacketCapturePowerShell** 下创建一个名为 **keys** 的文件夹，并上载前面的 PowerShell 示例所创建的 **PassEncryptKey.key** 文件。
+在函数应用的应用服务编辑器中，在 AlertPacketCapturePowerShell 下创建一个名为 keys 的文件夹。 然后上传在之前的 PowerShell 示例中创建的 PassEncryptKey.key。
 
 ![函数密钥][functions8]
 
 ### <a name="retrieve-values-for-environment-variables"></a>检索环境变量的值
 
-最终必需的配置是设置访问用于身份验证的值所需的环境变量。 以下列表列出了创建的环境变量：
+最后一项要求是设置访问用于身份验证的值所必需的环境变量。 以下列表显示创建的环境变量：
 
 * AzureClientID
 
@@ -187,7 +194,7 @@ $Encryptedpassword
 
 客户端 ID 是 Azure Active Directory 中应用程序的应用程序 ID。
 
-1. 如果你还没有应用程序可使用，请运行以下示例以创建应用程序。
+1. 如果还没有可使用的应用程序，请运行以下示例创建应用程序。
 
     ```powershell
     $app = New-AzureRmADApplication -DisplayName "ExampleAutomationAccount_MF" -HomePage "https://exampleapp.com" -IdentifierUris "https://exampleapp1.com/ExampleFunctionsAccount" -Password "<same password as defined earlier>"
@@ -199,11 +206,11 @@ $Encryptedpassword
    > [!NOTE]
    > 创建应用程序时使用的密码应与先前在保存密钥文件时创建的密码相同。
 
-1. 在 Azure 门户中，导航到“订阅”> 选择要使用的订阅 >“访问控制(IAM)”。
+1. 在 Azure 门户中，选择“订阅”。 选择要使用的订阅，然后选择“访问控制(IAM)”。
 
-    ![函数 iam][functions9]
+    ![函数 IAM][functions9]
 
-1. 选择要使用的帐户并单击“属性”。 复制应用程序 ID。
+1. 选择要使用的帐户，然后选择“属性”。 复制应用程序 ID。
 
     ![函数应用程序 ID][functions10]
 
@@ -217,19 +224,19 @@ $Encryptedpassword
 
 #### <a name="azurecredpassword"></a>AzureCredPassword
 
-AzureCredPassword 环境变量的值是通过运行以下 PowerShell 示例获得的值。 此示例是前面的**加密凭据**部分中显示的同一示例。 所需的值是 `$Encryptedpassword` 变量的输出。  这是我们使用 PowerShell 脚本加密的服务主体密码。
+AzureCredPassword 环境变量的值是通过运行以下 PowerShell 示例获得的值。 此示例是前面的“加密凭据”部分中显示的同一示例。 所需的值是 `$Encryptedpassword` 变量的输出。  这是使用 PowerShell 脚本加密的服务主体密码。
 
 ```powershell
-#variables
+#Variables
 $keypath = "C:\temp\PassEncryptKey.key"
 $AESKey = New-Object Byte[] 32
 $Password = "<insert a password here>"
 
-#keys
+#Keys
 [Security.Cryptography.RNGCryptoServiceProvider]::Create().GetBytes($AESKey) 
 Set-Content $keypath $AESKey
 
-#get encrypted password
+#Get encrypted password
 $secPw = ConvertTo-SecureString -AsPlainText $Password -Force
 $AESKey = Get-content $KeyPath
 $Encryptedpassword = $secPw | ConvertFrom-SecureString -Key $AESKey
@@ -238,94 +245,94 @@ $Encryptedpassword
 
 ### <a name="store-the-environment-variables"></a>存储环境变量
 
-1. 导航到 Function App，单击“Function App 设置” > “配置应用设置”
+1. 转到函数应用。 然后选择“函数应用设置” > “配置应用设置”。
 
     ![配置应用设置][functions11]
 
-1. 将环境变量及其值添加到应用设置并单击“保存”
+1. 将环境变量及其值添加到应用设置，然后选择“保存”。
 
-    ![应用程序设置][functions12]
+    ![应用设置][functions12]
 
 ### <a name="add-powershell-to-the-function"></a>将 PowerShell 添加到函数
 
-现在，可以从 Azure 函数内部调用网络观察程序。 根据要求，此函数的实现有所不同。 但是，代码的常规流程大致如下：
+现可从 Azure 函数内部调用网络观察程序。 根据要求，此函数的实现有所不同。 但是，代码的常规流程如下所示：
 
-1. 处理输入参数
-2. 查询现有的数据包捕获，验证限制并解决名称冲突
-3. 使用适当的参数创建数据包捕获
-4. 定期轮询数据包捕获，直到完成
-5. 通知用户数据包捕获会话已完成
+1. 处理输入参数。
+2. 查询现有的数据包捕获，验证限制并解决名称冲突。
+3. 使用适当的参数创建数据包捕获。
+4. 定期轮询数据包捕获，直到完成。
+5. 通知用户数据包捕获会话已完成。
 
-以下示例采用 PowerShell 语言，可在 Azure 函数中使用。 有需要为 subscriptionId、resourceGroupName 和 storageAccountName 替换的值。
+以下示例为 PowerShell 代码，可在函数中使用。 存在需要为 subscriptionId、resourceGroupName 和 storageAccountName 替换的值。
 
 ```powershell
-#Import Azure PowerShell modules required to make calls to Network Watcher
-Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Profile\AzureRM.Profile.psd1" -Global
-Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Network\AzureRM.Network.psd1" -Global
-Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Resources\AzureRM.Resources.psd1" -Global
+            #Import Azure PowerShell modules required to make calls to Network Watcher
+            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Profile\AzureRM.Profile.psd1" -Global
+            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Network\AzureRM.Network.psd1" -Global
+            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Resources\AzureRM.Resources.psd1" -Global
 
-#Process Alert Request Body
-$requestBody = Get-Content $req -Raw | ConvertFrom-Json
+            #Process alert request body
+            $requestBody = Get-Content $req -Raw | ConvertFrom-Json
 
-#Storage Account Id to save captures in
-$storageaccountid = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}"
+            #Storage account ID to save captures in
+            $storageaccountid = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}"
 
-#Packet Capture Vars
-$packetcapturename = "PSAzureFunction"
-$packetCaptureLimit = 10
-$packetCaptureDuration = 10
+            #Packet capture vars
+            $packetcapturename = "PSAzureFunction"
+            $packetCaptureLimit = 10
+            $packetCaptureDuration = 10
 
-#Credentials
-$tenant = $env:AzureTenant
-$pw = $env:AzureCredPassword
-$clientid = $env:AzureClientId
-$keypath = "D:\home\site\wwwroot\AlertPacketCapturePowerShell\keys\PassEncryptKey.key"
+            #Credentials
+            $tenant = $env:AzureTenant
+            $pw = $env:AzureCredPassword
+            $clientid = $env:AzureClientId
+            $keypath = "D:\home\site\wwwroot\AlertPacketCapturePowerShell\keys\PassEncryptKey.key"
 
-#Authentication
-$secpassword = $pw | ConvertTo-SecureString -Key (Get-Content $keypath)
-$credential = New-Object System.Management.Automation.PSCredential ($clientid, $secpassword)
-Add-AzureRMAccount -ServicePrincipal -Tenant $tenant -Credential $credential #-WarningAction SilentlyContinue | out-null
+            #Authentication
+            $secpassword = $pw | ConvertTo-SecureString -Key (Get-Content $keypath)
+            $credential = New-Object System.Management.Automation.PSCredential ($clientid, $secpassword)
+            Add-AzureRMAccount -ServicePrincipal -Tenant $tenant -Credential $credential #-WarningAction SilentlyContinue | out-null
 
 
-#Get the VM that fired the Alert
-if($requestBody.context.resourceType -eq "Microsoft.Compute/virtualMachines")
-{
-    Write-Output ("Subscription ID: {0}" -f $requestBody.context.subscriptionId)
-    Write-Output ("Resource Group:  {0}" -f $requestBody.context.resourceGroupName)
-    Write-Output ("Resource Name:  {0}" -f $requestBody.context.resourceName)
-    Write-Output ("Resource Type:  {0}" -f $requestBody.context.resourceType)
+            #Get the VM that fired the alert
+            if($requestBody.context.resourceType -eq "Microsoft.Compute/virtualMachines")
+            {
+                Write-Output ("Subscription ID: {0}" -f $requestBody.context.subscriptionId)
+                Write-Output ("Resource Group:  {0}" -f $requestBody.context.resourceGroupName)
+                Write-Output ("Resource Name:  {0}" -f $requestBody.context.resourceName)
+                Write-Output ("Resource Type:  {0}" -f $requestBody.context.resourceType)
 
-    #Get the Network Watcher in the VM's Region
-    $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $requestBody.context.resourceRegion}
-    $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+                #Get the Network Watcher in the VM's region
+                $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $requestBody.context.resourceRegion}
+                $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
 
-    #Get existing packetCaptures
-    $packetCaptures = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher
+                #Get existing packetCaptures
+                $packetCaptures = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher
 
-    #Remove existing packet capture created by the function if it exists
-    $packetCaptures | %{if($_.Name -eq $packetCaptureName)
-    { 
-        Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName $packetCaptureName
-    }}
+                #Remove existing packet capture created by the function (if it exists)
+                $packetCaptures | %{if($_.Name -eq $packetCaptureName)
+                { 
+                    Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName $packetCaptureName
+                }}
 
-    #Initiate Packet Capture on the VM that fired the alert
-    if ((Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher).Count -lt $packetCaptureLimit){
-        echo "Initiating Packet Capture"
-        New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $requestBody.context.resourceId -PacketCaptureName $packetCaptureName -StorageAccountId $storageaccountid -TimeLimitInSeconds $packetCaptureDuration
-        Out-File -Encoding Ascii -FilePath $res -inputObject "Packet Capture created on ${requestBody.context.resourceID}"
-    }
-} 
-``` 
+                #Initiate packet capture on the VM that fired the alert
+                if ((Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher).Count -lt $packetCaptureLimit){
+                    echo "Initiating Packet Capture"
+                    New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $requestBody.context.resourceId -PacketCaptureName $packetCaptureName -StorageAccountId $storageaccountid -TimeLimitInSeconds $packetCaptureDuration
+                    Out-File -Encoding Ascii -FilePath $res -inputObject "Packet Capture created on ${requestBody.context.resourceID}"
+                }
+            } 
+ ``` 
+#### <a name="retrieve-the-function-url"></a>检索函数 URL 
+1. 创建函数后，请将警报配置为调用与该函数相关联的 URL。 若要获取此值，请从 Function App 中复制函数 URL。
 
-创建函数后，请将警报配置为调用与该函数相关联的 URL。 若要获取此值，请从 Function App 中复制函数 URL。
+    ![查找函数 URL][functions13]
 
-![查找函数 URL 1][functions13]
+2. 复制函数应用的函数 URL。
 
-复制 Function App 的函数 URL。
+    ![复制函数 URL][2]
 
-![查找函数 URL 2][2]
-
-如果需要在 webhook POST 请求的有效负载中使用自定义属性，请参阅[针对 Azure 指标警报配置 webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
+如果需要在 webhook POST 请求的有效负载中使用自定义属性，请参阅[针对 Azure 指标警报配置 webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md)。
 
 ## <a name="configure-an-alert-on-a-vm"></a>在 VM 上配置警报
 
@@ -333,7 +340,7 @@ if($requestBody.context.resourceType -eq "Microsoft.Compute/virtualMachines")
 
 ### <a name="create-the-alert-rule"></a>创建警报规则
 
-导航到现有虚拟机并添加警报规则。 有关配置警报的更详细文档，请参阅[在 Azure Monitor 中为 Azure 服务创建警报 - Azure 门户](../monitoring-and-diagnostics/insights-alerts-portal.md)。 在边栏选项卡中输入以下值，然后单击“确定”
+转到现有虚拟机，然后添加警报规则。 有关配置警报的更详细文档，请参阅[在 Azure Monitor 中为 Azure 服务创建警报 - Azure 门户](../monitoring-and-diagnostics/insights-alerts-portal.md)。 在“警报规则”边栏选项卡中输入以下值，然后选择“确定”。
 
   |**设置** | **值** | **详细信息** |
   |---|---|---|
@@ -341,22 +348,22 @@ if($requestBody.context.resourceType -eq "Microsoft.Compute/virtualMachines")
   |**说明**|发送的 TCP 段已超出阈值|警报规则的说明。||
   |**指标**|发送的 TCP 段| 用于触发警报的指标。 |
   |**条件**|大于| 评估指标时要使用的条件。|
-  |**阈值**|100| 这是要触发警报的指标的值，应将此值设置为环境的有效值。|
-  |**时间段**|过去 5 分钟| 确定要在其中查找指标阈值的时间段。|
-  |**Webhook**|[Function App 中的 Webhook URL]| 这是前面的步骤创建的 Function App 的 Webhook URL。|
+  |**阈值**|100| 触发警报的指标值。 此值应设置为环境的有效值。|
+  |**时间段**|过去五分钟| 确定要在其中查找指标阈值的时间段。|
+  |**Webhook**|[函数应用中的 Webhook URL]| 来自前面步骤创建的函数应用的 Webhook URL。|
 
 > [!NOTE]
-> 默认情况下不启用 TCP 段计量。 请访问[启用监视和诊断](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md)，详细了解如何启用其他指标
+> 默认情况下不启用 TCP 段计量。 请访问[启用监视和诊断](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md)，详细了解如何启用其他指标。
 
 ## <a name="review-the-results"></a>查看结果
 
-在警报触发器条件的后面，将创建一个数据包捕获。 导航到网络观察程序并单击“数据包捕获”。 从此页面中，可以单击数据包捕获文件链接下载数据包捕获
+在警报触发器条件的后面，会创建一个数据包捕获。 转到网络观察程序，然后选择“数据包捕获”。 在此页面上，可以选择数据包捕获文件链接，下载数据包捕获。
 
 ![查看数据包捕获][functions14]
 
-如果捕获文件存储在本地，可以通过登录到虚拟机来检索捕获文件。
+如果捕获文件存储在本地，可以通过登录到虚拟机，检索捕获文件。
 
-有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/storage-dotnet-how-to-use-blobs.md)。 另一个可以使用的工具是存储资源管理器。 有关存储资源管理器的详细信息可以在此链接中找到：[存储资源管理器](http://storageexplorer.com/)。
+有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/storage-dotnet-how-to-use-blobs.md)。 另一个可以使用的工具是[存储资源管理器](http://storageexplorer.com/)。
 
 下载捕获后，可以使用能够读取 **.cap** 文件的任何工具来查看捕获。 下面提供了其中两个工具的链接：
 

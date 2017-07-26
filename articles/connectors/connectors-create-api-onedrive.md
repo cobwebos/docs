@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 10/18/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: c5567b2f6fdc9a5708ce611faa372d481d815e7f
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 63bd33bf4e09b98aa53dcfec9fcc4a0109204952
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -62,7 +62,7 @@ ms.lasthandoff: 05/17/2017
 3. 选择“编辑”按钮并设置“频率”和“间隔”值。 例如，如果你希望触发器每 15 分钟轮询一次，将“频率”设置为“分钟”，将“间隔”设置为“15”。 
    
     ![](./media/connectors-create-api-onedrive/trigger-properties.png)
-4. “保存”更改（工具栏的左上角）。 你的逻辑应用将保存，并且可能自动启用。
+4. **保存**更改（工具栏的左上角）。 你的逻辑应用将保存，并且可能自动启用。
 
 ## <a name="use-an-action"></a>使用操作
 操作是指在逻辑应用中定义的工作流所执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
@@ -88,9 +88,9 @@ ms.lasthandoff: 05/17/2017
 5. **保存**更改（工具栏的左上角）。 你的逻辑应用将保存，并且可能自动启用。
 
 
-## <a name="view-the-swagger"></a>查看 Swagger
+## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
-请参阅 [Swagger 详细信息](/connectors/onedriveconnector/)。
+在[连接器详细信息](/connectors/onedriveconnector/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
 
 ## <a name="more-connectors"></a>更多连接器
 返回到 [API 列表](apis-list.md)。

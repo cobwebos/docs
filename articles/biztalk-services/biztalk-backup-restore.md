@@ -14,21 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: 589b95fdd05478305fa8ef629fc6758bdd716da6
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: c55d1ab124441c42101b4ad60924a9ea28231408
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/01/2017
 
 
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk 服务：备份和还原
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 Azure BizTalk 服务包括备份和还原功能。 本主题介绍如何使用 Azure 经典门户备份和还原 BizTalk 服务。
 
 还可使用 [BizTalk 服务 REST API](http://go.microsoft.com/fwlink/p/?LinkID=325584) 备份 BizTalk 服务。 
 
 > [!NOTE]
 > 无论版本为何，均不备份混合连接。 必须重新创建混合连接。
-> 
-> 
+
 
 ## <a name="before-you-begin"></a>开始之前
 * 备份和还原可能不适用于所有版本。 请参阅 [BizTalk 服务：版本图表](biztalk-editions-feature-chart.md)。
@@ -50,7 +54,7 @@ Azure BizTalk 服务包括备份和还原功能。 本主题介绍如何使用 A
 
 [计划备份](#backupschedule)
 
-#### <a name="a-namebackupnowaon-demand-backup"></a><a name="backupnow"></a>按需备份
+#### <a name="backupnow"></a>按需备份
 1. 在 Azure 经典门户中，选择“BizTalk 服务”，然后选择要备份的 BizTalk 服务。
 2. 在“仪表板”选项卡上，选择页面底部的“备份”。
 3. 输入备份名称。 例如，输入 *myBizTalkService*BU*Date*。
@@ -58,7 +62,7 @@ Azure BizTalk 服务包括备份和还原功能。 本主题介绍如何使用 A
 
 完成备份后，在存储帐户中创建一个使用您输入的备份名称的容器。 此容器包含您的 BizTalk 服务备份配置。
 
-#### <a name="a-namebackupscheduleaschedule-a-backup"></a><a name="backupschedule"></a>计划备份
+#### <a name="backupschedule"></a>计划备份
 1. 在 Azure 经典门户中，选择“BizTalk 服务”，选择要计划备份的 BizTalk 服务名称，然后选择“配置”选项卡。
 2. 将“备份状态”设置为“自动”。 
 3. 选择用于存储备份的“存储帐户”，输入创建备份的“频率”，以及保留备份的时长（**保留天数**）：
@@ -109,7 +113,7 @@ Azure BizTalk 服务包括备份和还原功能。 本主题介绍如何使用 A
 
 还原成功完成后，新 BizTalk 服务将在 Azure 经典门户的 BizTalk 服务页上的挂起状态中列出。
 
-### <a name="a-namepostrestoreaafter-restoring-a-backup"></a><a name="postrestore"></a>还原备份后
+### <a name="postrestore"></a>还原备份后
 BizTalk 服务始终在“挂起”状态中还原。 在此状态下，您可在新环境正常运行前进行任何配置更改，其中包括：
 
 * 如果使用 Azure BizTalk 服务 SDK 创建 BizTalk 服务应用程序，可能需要更新这些应用程序中的访问控制 (ACS) 凭据以使用还原的环境。
@@ -209,10 +213,5 @@ BizTalk 服务始终在“挂起”状态中还原。 在此状态下，您可�
 [Restore]: ./media/biztalk-backup-restore/restore-ui.png
 [AutomaticBU]: ./media/biztalk-backup-restore/AutomaticBU.png
 [RestoreBizTalkService]: ./media/biztalk-backup-restore/RestoreBizTalkServiceWindow.png
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

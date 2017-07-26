@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/29/2017
+ms.date: 05/30/2017
 ms.author: sethm;clemensv
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 31bf24034558582eb138251207580e8f7fd7ddaf
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 5abdbf70d4fdb2c7feb0f3537ecc0f2abf0775a0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -40,7 +41,8 @@ Azure 事件中心安全模型满足以下要求：
 所有令牌使用 SAS 密钥进行签名。 通常，所有令牌使用同一密钥进行签名。 客户端不知道密钥；这可以防止其他客户端生成令牌。
 
 ### <a name="create-the-sas-key"></a>创建 SAS 密钥
-创建 Azure 事件中心命名空间时，此服务将生成名为 **RootManageSharedAccessKey** 的 256 位 SAS 密钥。 此密钥授予对命名空间的发送、侦听和管理权限。 你可以创建其他密钥。 建议生成一个密钥，用于授予对特定事件中心的发送权限。 对于本主题的其余部分，假设将此密钥命名为 **EventHubSendKey**。
+
+创建事件中心命名空间时，此服务将生成名为 RootManageSharedAccessKey 的 256 位 SAS 密钥。 此密钥授予对命名空间的发送、侦听和管理权限。 还可创建其他密钥。 建议生成一个密钥，用于授予对特定事件中心的发送权限。 对于本主题的其余部分，假设将此密钥命名为 **EventHubSendKey**。
 
 在创建事件中心时，以下示例将创建一个仅限发送的密钥：
 
@@ -63,6 +65,7 @@ nm.CreateEventHub(ed);
 ```
 
 ### <a name="generate-tokens"></a>生成令牌
+
 可以使用 SAS 密钥生成令牌。 对于每个客户端只能生成一个令牌。 然后，可以使用以下方法生成令牌。 所有令牌都使用 **EventHubSendKey** 密钥生成。 将为每个令牌分配一个唯一 URI。
 
 ```csharp
@@ -88,7 +91,7 @@ SharedAccessSignature sr=contoso&sig=nPzdNN%2Gli0ifrfJwaK4mkK0RqAB%2byJUlt%2bGFm
 ### <a name="sending-data"></a>发送数据
 创建令牌后，将为每个客户端设置其自身唯一的令牌。
 
-当客户端向事件中心发送数据时，客户端会在发送请求中标记其令牌。 为了防止攻击者窃听和盗取令牌，客户端与事件中心之间的通信必须通过加密通道进行。
+客户端向事件中心发送数据时，客户端会使用令牌标记其发送请求。 为了防止攻击者窃听和盗取令牌，客户端与事件中心之间的通信必须通过加密通道进行。
 
 ### <a name="blacklisting-clients"></a>将客户端列入黑名单
 如果令牌被攻击者盗取，攻击者可能会模拟令牌已被盗的客户端。 将客户端列入黑名单会导致客户端不可用，直至该客户端收到使用其他发布者的新令牌。
@@ -96,7 +99,6 @@ SharedAccessSignature sr=contoso&sig=nPzdNN%2Gli0ifrfJwaK4mkK0RqAB%2byJUlt%2bGFm
 ## <a name="authentication-of-back-end-applications"></a>后端应用程序的身份验证
 
 为了对使用事件中心客户端生成的数据的后端应用程序进行身份验证，事件中心采用了与服务总线主题所用模型类似的安全模型。 事件中心使用者组相当于服务总线主题的订阅。 如果创建使用者组的请求附带了一个用于授予对事件中心或者对事件中心所属命名空间的管理权限的令牌，则客户端可以创建该使用者组。 如果接收请求附带了一个用于授予对使用者组、事件中心或者事件中心所属命名空间的接收权限的令牌，则允许客户端使用该使用者组的数据。
-
 
 当前版本的服务总线不支持对单个订阅使用 SAS 规则。 对于事件中心使用者组也是如此。 将来会添加对这两项功能的 SAS 支持。
 

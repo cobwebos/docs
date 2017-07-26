@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 04/13/2017
+ms.date: 05/23/2017
 ms.author: sasubram
 ms.translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
-ms.openlocfilehash: 9397e197c25c43fc2dfc37ef4fd005cea8a02003
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: bfedbbf8b26e1b129584a6a644e64a15635f5723
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/29/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -44,7 +44,7 @@ ms.lasthandoff: 04/29/2017
 使用 [B2B 邀请 API](active-directory-b2b-api.md)，几乎可以自定义有关邀请者过程的所有内容。
 
 ### <a name="can-an-invited-external-user-leave-the-organization-after-being-invited"></a>受邀的外部用户在受邀后能否离开组织？
-目前，受邀的外部用户在受邀后不能离开组织。
+邀请方组织管理员可以从其目录中删除 B2B 协作来宾用户，但来宾用户不能自行离开邀请组织目录。 
 
 ### <a name="can-guest-users-reset-their-multi-factor-authentication-method"></a>来宾用户是否可以重置其多重身份验证方法？
 是的。 来宾用户可以像普通用户一样重置其多重身份验证方法。
@@ -53,20 +53,20 @@ ms.lasthandoff: 04/29/2017
 邀请方组织执行多重身份验证。 邀请方组织必须确保为其使用多重身份验证的 B2B 用户提供足够的许可证。
 
 ### <a name="what-if-a-partner-organization-already-has-multi-factor-authentication-set-up-can-we-trust-their-multi-factor-authentication-and-not-use-our-own-multi-factor-authentication"></a>如果合作伙伴组织已设置多重身份验证会怎样？ 我们是否可以信任他们的多重身份验证，而不使用我们自己的多重身份验证？
-此功能已计划在将来的版本中推出。 到时，你将能够选择要从你的（邀请方组织的）多重身份验证中排除的特定合作伙伴。
+计划在将来的版本中推出此功能，这样一来就可以选择要从（邀请方组织的）多重身份验证中排除的特定合作伙伴。
 
 ### <a name="how-can-i-use-delayed-invitations"></a>如何使用延迟的邀请？
-某家组织想要添加 B2B 协作用户，根据需要将这些用户预配到应用程序中，然后发送邀请。 为此，可以使用 B2B 协作邀请 API 自定义加入工作流。
+某家组织想要添加 B2B 协作用户，根据需要将这些用户预配到应用程序中，然后发送邀请。 可以使用 B2B 协作邀请 API 自定义载入工作流。
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>是否可将来宾用户指定为受限制的管理员？
 绝对是。 有关详细信息，请参阅[将来宾用户添加到角色](active-directory-users-assign-role-azure-portal.md)。
 
 ### <a name="does-azure-ad-b2b-collaboration-allow-b2b-users-to-access-the-azure-portal"></a>Azure AD B2B 协作是否允许 B2B 用户访问 Azure 门户？
-除非 B2B 协作用户被分配了受限制的管理员或全局管理员角色，否则他们应该不需要访问 Azure 门户。 但是，被分配了受限制的管理员或全局管理员角色的 B2B 协作用户可以访问门户。 另外，如果未被分配这些管理员角色之一的来宾用户访问门户，该用户可以访问某些部分的体验。 来宾用户角色具有目录中的某些权限。
+除非 B2B 协作用户被分配了受限制的管理员或全局管理员角色，否则他们不需要对 Azure 门户的访问权限。 但是，被分配了受限制的管理员或全局管理员角色的 B2B 协作用户可以访问门户。 另外，如果未被分配这些管理员角色之一的来宾用户访问门户，该用户可以访问某些部分的体验。 来宾用户角色具有目录中的某些权限。
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>我能否阻止来宾用户访问 Azure 门户？
 能！ 配置此策略时请小心，避免意外阻止成员和管理员的访问。
-若要阻止来宾用户访问 [Azure 门户](https://portal.azure.com)，可以在 Windows Azure 服务管理 API 中使用条件访问策略：
+若要阻止来宾用户访问 [Azure 门户](https://portal.azure.com)，可以在 Windows Azure 经典部署模型 API 中使用条件访问策略：
 1. 修改“所有用户”组，使其仅包含成员。
   ![修改组屏幕截图](media/active-directory-b2b-faq/modify-all-users-group.png)
 2. 创建包含来宾用户的动态组。
@@ -79,21 +79,27 @@ ms.lasthandoff: 04/29/2017
 是的。 Azure AD B2B 协作同时支持多重身份验证和使用者电子邮件帐户。
 
 ### <a name="do-you-plan-to-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>你们是否有计划支持 Azure AD B2B 协作用户的密码重置？
-是的。 以下是要注意的有关 B2B 用户自助密码重置 (SSPR) 的详细信息，该用户从其标识租户被邀请到资源租户：
+是的。 下面是从合作伙伴组织中邀请的 B2B 用户的自助服务密码重置 (SSPR) 重要详细信息：
  
 * SSPR 只会在 B2B 用户的标识租户中发生。
 * 如果标识租户是 Microsoft 帐户，则使用 Microsoft 帐户 SSPR 机制。
-* 如果标识租户是实时 (JIT) 或活跃租户，则会发送密码重置电子邮件。
+* 如果标识租户是实时 (JIT) 或“活跃”租户，则会发送密码重置电子邮件。
 * 对于其他租户，将为 B2B 用户遵循标准的 SSPR 流程。 与 B2B 用户的成员 SSPR 类似，在资源上下文中，租户将被阻止。 
 
-### <a name="is-password-reset-available-for-users-in-a-viral-tenant"></a>密码重置是否适用于病毒性租户中的用户？
-不会。
+### <a name="is-password-reset-available-for-guest-users-in-a-just-in-time-jit-or-viral-tenant-who-accepted-invitations-with-a-work-or-school-email-address-but-who-didnt-have-a-pre-existing-azure-ad-account"></a>密码重置是否适用于实时 (JIT) 或“活跃”租户中的来宾用户（这些用户使用工作或学校电子邮件地址接受邀请，但没有预先存在的 Azure AD 帐户）？
+是的。 可发送密码重置邮件，允许用户在 JIT 租户中重置其密码。
 
 ### <a name="does-microsoft-dynamics-crm-provide-online-support-for-azure-ad-b2b-collaboration"></a>Microsoft Dynamics CRM 是否为 Azure AD B2B 协作提供联机支持？
 目前，Microsoft Dynamics CRM 不会为 Azure AD B2B 协作提供联机支持。 但是，我们计划将来支持此功能。
 
 ### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>新创建的 B2B 协作用户的初始密码的生存期是什么？
-Azure AD 具有固定的字符集、密码强度和帐户锁定要求，同样适用于所有 Azure AD 云用户帐户。 云用户帐户是指未与其他标识提供者，例如 Microsoft 帐户、Facebook、Active Directory 联合身份验证服务，甚至另一个云租户（适用于 B2B 协作）联合的帐户。 对于联合帐户，密码策略取决于在本地租户中应用的策略和用户的 Microsoft 帐户设置。
+Azure AD 具有固定的字符集、密码强度和帐户锁定要求，同样适用于所有 Azure AD 云用户帐户。 云用户帐户是没有与其他标识提供者联合的帐户，例如  
+* Microsoft 帐户
+* Facebook
+* Active Directory 联合身份验证服务
+* 其他云租户（用于 B2B 协作）
+
+对于联合帐户，密码策略取决于在本地租户中应用的策略和用户的 Microsoft 帐户设置。
 
 ### <a name="an-organization-might-want-to-have-different-experiences-in-their-applications-for-tenant-users-and-guest-users-is-there-standard-guidance-for-this-is-the-presence-of-the-identity-provider-claim-the-correct-model-to-use"></a>组织可能希望在其应用程序中为租户用户和来宾用户提供不同的体验。 是否有针对此事项的标准指南？ 标识提供者声明是否是可用的适当模型？
  来宾用户可以使用任何标识提供者进行身份验证。 有关详细信息，请参阅 [B2B 协作用户的属性](active-directory-b2b-user-properties.md)。 使用 **UserType** 属性确定用户体验。 令牌中当前未包括 **UserType** 声明。 应用程序应当使用图形 API 从目录中查询用户并获取其 UserType。
@@ -104,9 +110,9 @@ Azure AD 具有固定的字符集、密码强度和帐户锁定要求，同样�
 我们还力邀你在 [B2B 协作意见](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas)中提交意见并为未来的功能投票。
 
 ### <a name="can-we-send-an-invitation-that-is-automatically-redeemed-so-that-the-user-is-just-ready-to-go-or-does-the-user-always-have-to-click-through-to-the-redemption-url"></a>是否可以发送自动兑换的邀请，以便用户只需“准备前往”即可？ 或者，用户始终需要单击到达兑换 URL？
-如果邀请方组织中发出邀请的用户同时也是受邀组织（B2B 用户组织）的成员，则该 B2B 用户无需兑换该邀请。
+如果邀请方组织中发出邀请的用户同时也是合作伙伴组织的成员，则该邀请无需 B2B 用户兑换。
 
-为此，我们建议在受邀组织中邀请一个用户加入邀请方组织。 [在资源组织中将此用户添加到来宾邀请者角色。](active-directory-b2b-add-guest-to-role.md) 该用户可以使用登录 UI、PowerShell 脚本或 API 邀请受邀组织中的其他用户。 这样，该组织中的 B2B 用户便不需要兑换其邀请。
+建议在合作伙伴组织中邀请一个用户加入邀请方组织。 [在资源组织中将此用户添加到来宾邀请者角色。](active-directory-b2b-add-guest-to-role.md) 该用户可以使用登录 UI、PowerShell 脚本或 API 邀请合作伙伴组织中的其他用户。 之后，该组织的 B2B 协作用户无需兑换其邀请。
 
 ### <a name="how-does-b2b-collaboration-work-when-the-invited-partner-is-using-federation-to-add-their-own-on-premises-authentication"></a>受邀合作伙伴使用联合添加自己的本地身份验证时，B2B 协作如何工作？
 如果合作伙伴具有联合到本地身份验证基础架构的 Azure AD 租户，则会自动实现本地单一登录 (SSO)。 如果合作伙伴没有 Azure AD 租户，则会为新用户创建 Azure AD 帐户。 

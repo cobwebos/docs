@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 批处理中的用户帐户下运行任务 | Microsoft Docs"
-description: "配置用于在 Azure 批处理中运行任务的用户帐户"
+title: "在 Azure Batch 中的用户帐户下运行任务 | Microsoft Docs"
+description: "配置用于在 Azure Batch 中运行任务的用户帐户"
 services: batch
 author: tamram
 manager: timlt
@@ -12,22 +12,23 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 04/18/2017
+ms.date: 05/22/2017
 ms.author: tamram
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 8c18a6898aa25bbc04040cf2b5c3d05ce0af035e
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: d408c0565c0ed81fc97cc2b3976a4fc233e31302
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 ---
 
 # <a name="run-tasks-under-user-accounts-in-batch"></a>在批处理中的用户帐户下运行任务
 
-Azure 批处理中的任务始终在用户帐户下运行。 默认情况下，任务在没有管理员权限的标准用户帐户下运行。 这些默认用户帐户设置通常足以满足操作需要。 但是，对于某些方案，如果能够配置用于运行任务的用户帐户，则会很有帮助。 本文介绍用户帐户的类型以及如何为方案配置这些帐户。
+Azure Batch 中的任务始终在用户帐户下运行。 默认情况下，任务在没有管理员权限的标准用户帐户下运行。 这些默认用户帐户设置通常足以满足操作需要。 但是，对于某些方案，如果能够配置用于运行任务的用户帐户，则会很有帮助。 本文介绍用户帐户的类型以及如何为方案配置这些帐户。
 
 ## <a name="types-of-user-accounts"></a>用户帐户的类型
 
-Azure 批处理提供两种类型的用户帐户来运行任务：
+Azure Batch 提供两种类型的用户帐户来运行任务：
 
 - **自动用户帐户。** 自动用户帐户是批处理服务自动创建的内置用户帐户。 默认情况下，任务在自动用户帐户下运行。 可为任务配置自动用户规范，指明任务应在哪个自动用户帐户下运行。 使用自动用户规范可以指定将要运行任务的自动用户帐户的提升级别和范围。 
 
@@ -164,26 +165,94 @@ task.UserIdentity = new UserIdentity(new AutoUserSpecification(scope: AutoUserSc
 
 若要在批处理中创建命名用户帐户，请在池中添加一个用户帐户集合。 以下代码片段演示如何在 .NET、Java 和 Python 中创建命名用户帐户。 这些代码片段演示如何在池中创建管理员和非管理员命名帐户。 这些示例使用云服务配置创建池，但你在使用虚拟机配置创建 Windows 或 Linux 池时，可以使用相同的方法。
 
-#### <a name="batch-net-example"></a>Batch .NET 示例
+#### <a name="batch-net-example-windows"></a>Batch .NET 示例 (Windows)
 
 ```csharp
 CloudPool pool = null;
 Console.WriteLine("Creating pool [{0}]...", poolId);
 
+// Create a pool using the cloud service configuration.
 pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
-    targetDedicated: 3,                                                         
+    targetDedicatedComputeNodes: 3,                                                         
     virtualMachineSize: "small",                                                
     cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));   
 
+// Add named user accounts.
 pool.UserAccounts = new List<UserAccount>
 {
-    new UserAccount(AdminUserAccountName, AdminPassword, ElevationLevel.Admin),
-    new UserAccount(NonAdminUserAccountName, NonAdminPassword, ElevationLevel.NonAdmin),
+    new UserAccount("adminUser", "xyz123", ElevationLevel.Admin),
+    new UserAccount("nonAdminUser", "123xyz", ElevationLevel.NonAdmin),
 };
- 
-pool.Commit();
+
+// Commit the pool.
+await pool.CommitAsync();
 ```
+
+#### <a name="batch-net-example-linux"></a>Batch .NET 示例 (Linux)
+
+```csharp
+CloudPool pool = null;
+
+// Obtain a collection of all available node agent SKUs.
+List<NodeAgentSku> nodeAgentSkus =
+    batchClient.PoolOperations.ListNodeAgentSkus().ToList();
+
+// Define a delegate specifying properties of the VM image to use.
+Func<ImageReference, bool> isUbuntu1404 = imageRef =>
+    imageRef.Publisher == "Canonical" &&
+    imageRef.Offer == "UbuntuServer" &&
+    imageRef.Sku.Contains("14.04");
+
+// Obtain the first node agent SKU in the collection that matches
+// Ubuntu Server 14.04. 
+NodeAgentSku ubuntuAgentSku = nodeAgentSkus.First(sku =>
+    sku.VerifiedImageReferences.Any(isUbuntu1404));
+
+// Select an ImageReference from those available for node agent.
+ImageReference imageReference =
+    ubuntuAgentSku.VerifiedImageReferences.First(isUbuntu1404);
+
+// Create the virtual machine configuration to use to create the pool.
+VirtualMachineConfiguration virtualMachineConfiguration =
+    new VirtualMachineConfiguration(imageReference, ubuntuAgentSku.Id);
+
+Console.WriteLine("Creating pool [{0}]...", poolId);
+
+// Create the unbound pool.
+pool = batchClient.PoolOperations.CreatePool(
+    poolId: poolId,
+    targetDedicatedComputeNodes: 3,                                             
+    virtualMachineSize: "Standard_A1",                                      
+    virtualMachineConfiguration: virtualMachineConfiguration);                  
+
+// Add named user accounts.
+pool.UserAccounts = new List<UserAccount>
+{
+    new UserAccount(
+        name: "adminUser",
+        password: "xyz123",
+        elevationLevel: ElevationLevel.Admin,
+        linuxUserConfiguration: new LinuxUserConfiguration(
+            uid: 12345,
+            gid: 98765,
+            sshPrivateKey: new Guid().ToString()
+            )),
+    new UserAccount(
+        name: "nonAdminUser",
+        password: "123xyz",
+        elevationLevel: ElevationLevel.NonAdmin,
+        linuxUserConfiguration: new LinuxUserConfiguration(
+            uid: 45678,
+            gid: 98765,
+            sshPrivateKey: new Guid().ToString()
+            )),
+};
+
+// Commit the pool.
+await pool.CommitAsync();
+```
+
 
 #### <a name="batch-java-example"></a>批处理 Java 示例
 
@@ -268,4 +337,4 @@ task.UserIdentity = new UserIdentity(AdminUserAccountName);
 
 ### <a name="batch-forum"></a>Batch 论坛
 
-MSDN 上的 [Azure 批处理论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch)是探讨批处理服务以及咨询相关问题的一个好去处。 欢迎前往浏览这些精华贴子，并发布你在构建批处理解决方案时遇到的问题。
+MSDN 上的 [Azure Batch 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch)是探讨批处理服务以及咨询相关问题的一个好去处。 欢迎前往浏览这些精华贴子，并发布你在构建批处理解决方案时遇到的问题。

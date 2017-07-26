@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/06/2017
+ms.date: 05/23/2017
 ms.author: sasubram
-translationtype: Human Translation
-ms.sourcegitcommit: 42f93a638ea0bb5139063b76b223fd811ba58fb4
-ms.openlocfilehash: 98bf824831f60a70877e8c41f8b60c339df173d6
-ms.lasthandoff: 02/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 149a493f7b369415f0a2726dd6a576f0195c13d9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -64,7 +65,7 @@ Azure Active Directory (Azure AD) B2B 协作适用于与 Azure AD 集成的大�
 
   ![Dropbox 菜单中的“管理控制台”链接](media/active-directory-b2b-configure-saas-apps/dropbox-menu.png)
 
-7. 在“身份验证”对话框中选择“更多”，上载证书，然后在“登录 URL”框中输入 SAML 单一登录 URL。
+7. 在“身份验证”对话框中选择“更多”，上传证书，然后在“登录 URL”框中输入 SAML 单一登录 URL。
 
   ![折叠的“身份验证”对话框中的“更多”链接](media/active-directory-b2b-configure-saas-apps/dropbox-auth-01.png)
 
@@ -77,11 +78,11 @@ Azure Active Directory (Azure AD) B2B 协作适用于与 Azure AD 集成的大�
 在 Dropbox 应用中设置来宾或成员用户后，他们会收到来自 Dropbox 的单独邀请。 若要使用 Dropbox 单一登录，受邀者必须单击邀请中的某个链接接受邀请。
 
 ## <a name="box"></a>Box
-使用基于 SAML 协议的联合身份验证，可让用户使用其 Azure AD 帐户对 Box 来宾用户进行身份验证。 在此过程中，需要将元数据上载到 Box.com。
+使用基于 SAML 协议的联合身份验证，可让用户使用其 Azure AD 帐户对 Box 来宾用户进行身份验证。 在此过程中，需要将元数据上传到 Box.com。
 
 1. 从企业应用添加 Box 应用。
 
-2. 执行以下操作来配置单一登录：
+2. 按以下顺序来配置单一登录：
 
   ![配置 Box 单一登录](media/active-directory-b2b-configure-saas-apps/configure-box-sso.png)
 
@@ -94,7 +95,7 @@ Azure Active Directory (Azure AD) B2B 协作适用于与 Azure AD 集成的大�
 
  d. 若要开始将 Box.com 租户配置为使用 Azure AD 作为标识提供者，请下载元数据文件并将其保存到本地驱动器。
 
- e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 将元数据文件转发给 Box 支持团队，他们将为你配置单一登录。
+ e. 将元数据文件转发给 Box 支持团队，他们将为你配置单一登录。
 
 3. 为了在 Azure AD 中启用自动用户设置，请在左窗格中选择“预配”，然后选择“授权”。
 

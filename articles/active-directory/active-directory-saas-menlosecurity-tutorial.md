@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 05/08/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
-ms.openlocfilehash: baf984be59e19f7503c36b12d2b90570ce957edf
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 75366abafa551d21630b0edddb65db23b9ea9d42
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/29/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 04/29/2017
 - 可以让用户使用其 Azure AD 帐户自动登录到 Menlo Security（单一登录）
 - 可以在一个中心位置（即 Azure 门户）中管理帐户
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅。 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅。 [什么是使用 Azure Active Directory 的应用程序访问和单一登录](active-directory-appssoaccess-whatis.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -178,13 +178,13 @@ ms.lasthandoff: 04/29/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-menlosecurity-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d. 单击“创建” 。
+    d.单击“下一步”。 单击“创建” 。
  
 ### <a name="creating-a-menlo-security-test-user"></a>创建 Menlo Security 测试用户
  
@@ -224,12 +224,12 @@ ms.lasthandoff: 04/29/2017
 
 在本部分中，测试 Azure AD 单一登录配置。
 
-通过任何预置的 URL（例如 `https://safe.menlosecurity.com/http://www.cnn.com/`）登录到应用程序并输入 Azure AD 凭据。 在身份验证成功后，你将被重定向到相应的网站。
+在“InPrivate”或“Incognito”模式中打开浏览器窗口以触发新的身份验证。  在 Internet Explorer 中，使用 Ctrl+Shift+P。  在 Chrome 中，使用 Ctrl+Shift+N。  在专用浏览窗口中，浏览到受保护的资源并执行 Azure AD 登录。  成功登录后，将会转到隔离会话中的请求站点。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问与单一登录？](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
 
 
 

@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/25/2016
+ms.date: 05/22/2017
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 226e86703843b026d20123543cf5311a5355aad4
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
+ms.openlocfilehash: 333d2f26ce043a167fb84858c8327cb39e868ffa
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -32,9 +33,9 @@ ms.lasthandoff: 03/25/2017
 
 ### <a name="step-1-create-a-worker-role"></a>步骤 1：创建辅助角色
 1. 启动 **Visual Studio**。
-2. 从面向 .NET Framework 4.5 的**云**模板创建一个新的 **Azure 云服务**项目。  将该项目命名为“WadExample”。
+2. 从面向 .NET Framework 4.5 的云模板创建 Azure 云服务项目。  将该项目命名为“WadExample”。
 3. 选择“辅助角色”并单击“确定”。 随后将创建该项目。
-4. 在“解决方案资源管理器”中，双击 **WorkerRole1** 属性文件。
+4. 在“解决方案资源管理器”中，双击 WorkerRole1 属性文件。
 5. 在“配置”选项卡中，取消选中“启用诊断”，以禁用 Diagnostics 1.0（Azure SDK 2.4 和更低版本）。
 6. 生成解决方案以验证无误。
 
@@ -132,7 +133,7 @@ namespace WorkerRole1
 4. 在“创建云服务和存储帐户”对话框中输入一个“名称”（例如“WadExample”），然后选择区域或地缘组。
 5. 将“环境”设置为“过渡”。
 6. 适当地修改任何其他**设置**，然后单击“发布”。
-7. 完成部署后，在 Azure 经典门户中验证云服务是否处于“正在运行”状态。
+7. 完成部署后，在 Azure 门户中验证云服务是否处于“正在运行”状态。
 
 ### <a name="step-4-create-your-diagnostics-configuration-file-and-install-the-extension"></a>步骤 4：创建 Diagnostics 配置文件并安装扩展
 1. 通过执行以下 PowerShell 命令来下载公共配置文件架构定义：
@@ -186,7 +187,7 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 ```
 
 ### <a name="step-6-look-at-your-telemetry-data"></a>步骤 6：查看遥测数据
-在 Visual Studio 的“服务器资源管理器”中，导航到 wadexample 存储帐户。 在云服务大约运行 5 分钟后，你应该会看到表 **WADEnumsTable**、**WADHighFreqTable**、**WADMessageTable**、**WADPerformanceCountersTable** 和 **WADSetOtherTable**。 双击其中一个表即可查看已收集的遥测数据。
+在 Visual Studio 的“服务器资源管理器”中，导航到 wadexample 存储帐户。 在云服务大约运行 5 分钟后，你应该会看到表 WADEnumsTable、WADHighFreqTable、WADMessageTable、WADPerformanceCountersTable 和 WADSetOtherTable。 双击其中一个表即可查看已收集的遥测数据。
 
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
@@ -197,7 +198,7 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 如果遇到问题，请参阅 [Azure 诊断疑难解答](../azure-diagnostics-troubleshooting.md)，以获取有关常见问题的帮助。
 
 ## <a name="next-steps"></a>后续步骤
-若要更改你收集的数据、排查问题或者了解有关诊断的一般信息，请参阅[与虚拟机相关的 Azure 诊断文章列表](../monitoring-and-diagnostics/azure-diagnostics.md#cloud-services-using-azure-diagnostics)。
+若要更改你收集的数据、排查问题或者了解有关诊断的一般信息，请参阅[有关 Azure 虚拟机的诊断文章列表](../monitoring-and-diagnostics/azure-diagnostics.md#cloud-services-using-azure-diagnostics)。
 
 [EventSource Class]: http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 

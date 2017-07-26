@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ums.workload: na
 ms.date: 05/09/2017
 ms.author: barclayn
+ms.custom: azlog
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 5e135be1e21173add3236f851609f1df0a5b0dee
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: d4cf9f394f209fe3dfd633f6ca2954e9770d5949
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -51,6 +52,11 @@ Azure Active Directory 审核事件可以帮助识别 Azure Active Directory 中
 
 * **C:\Users\azlog\AzureActiveDirectoryJson**
 * **C:\Users\azlog\AzureActiveDirectoryJsonLD**
+
+请观看以下视频，回顾本文中所述的步骤。
+
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Log-Integration-Videos-Azure-AD-Integration/player]
+
 
 将标准 SIEM 文件转发器连接器指向相应的文件夹，以将数据发送给 SIEM 实例。 根据所使用的 SIEM 产品，你可能需要某些字段映射。
 

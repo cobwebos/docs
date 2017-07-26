@@ -12,13 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 03/02/2017
+ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 12b121783f6d95a952441f1a570d58af9ec1eb7a
-ms.lasthandoff: 03/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 465306d2de8d1dbe6ba1f0cd74be720b78a50de3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -153,10 +154,11 @@ new CloudTask("4", "cmd.exe /c echo 4")
 
 依赖关系操作基于父任务的退出条件。 可为以下任一退出条件指定依赖关系操作；对于 .NET，请参阅 [ExitConditions][net_exitconditions] 类了解详细信息：
 
-- 发生计划错误时
-- 任务退出并返回 **ExitCodes** 属性定义的退出代码时
-- 任务退出并返回处于 **ExitCodeRanges** 属性指定的范围内的退出代码时
-- 任务退出并返回 **ExitCodes** 或 **ExitCodeRanges** 未定义的退出代码（默认设置），或者任务退出并返回计划错误，并且未设置 **SchedulingError** 属性时 
+- 发生预处理错误时。
+- 发生文件上传错误时。 如果任务退出，并返回通过“exitCodes”或“exitCodeRanges”指定的退出代码，然后遇到文件上传错误，则优先执行退出代码指定的操作。
+- 任务退出并返回“ExitCodes”属性定义的退出代码时。
+- 任务退出并返回处于“ExitCodeRanges”属性指定的范围内的退出代码时。
+- 如果任务退出，并返回非由“ExitCodes”或“ExitCodeRanges”定义的退出代码，或者如果任务退出，并返回预处理错误，而“PreProcessingError”属性未设置，或者如果任务失败，并返回文件上传错误，而“FileUploadError”属性未设置，则为默认情况。 
 
 若要在 .NET 中指定依赖关系操作，请为退出条件设置 [ExitOptions][net_exitoptions].[DependencyAction][net_dependencyaction] 属性。 **DependencyAction** 属性采用以下两个值之一：
 
@@ -165,29 +167,29 @@ new CloudTask("4", "cmd.exe /c echo 4")
 
 对于退出代码 0，**DependencyAction** 属性的默认设置为 **Satisfy**；对于其他退出条件，其默认设置为 **Block**。
 
-以下代码片段设置父任务的 **DependencyAction** 属性。 如果父任务退出并返回计划错误或指定的错误代码，依赖任务将被阻止。 如果父任务退出并返回其他任何非零错误，依赖任务将符合运行的条件。
+以下代码片段设置父任务的 **DependencyAction** 属性。 如果父任务退出并返回预处理错误或指定的错误代码，则依赖任务将被阻止。 如果父任务退出并返回其他任何非零错误，依赖任务将符合运行的条件。
 
 ```csharp
 // Task A is the parent task.
 new CloudTask("A", "cmd.exe /c echo A")
 {
     // Specify exit conditions for task A and their dependency actions.
-    ExitConditions = new ExitConditions()
+    ExitConditions = new ExitConditions
     {
-        // If task A exits with a scheduling error, block any downstream tasks (in this example, task B).
-        SchedulingError = new ExitOptions()
+        // If task A exits with a pre-processing error, block any downstream tasks (in this example, task B).
+        PreProcessingError = new ExitOptions
         {
             DependencyAction = DependencyAction.Block
         },
         // If task A exits with the specified error codes, block any downstream tasks (in this example, task B).
-        ExitCodes = new List<ExitCodeMapping>()
+        ExitCodes = new List<ExitCodeMapping>
         {
             new ExitCodeMapping(10, new ExitOptions() { DependencyAction = DependencyAction.Block }),
             new ExitCodeMapping(20, new ExitOptions() { DependencyAction = DependencyAction.Block })
         },
         // If task A succeeds or fails with any other error, any downstream tasks become eligible to run 
         // (in this example, task B).
-        Default = new ExitOptions()
+        Default = new ExitOptions
         {
             DependencyAction = DependencyAction.Satisfy
         }
@@ -212,7 +214,7 @@ new CloudTask("B", "cmd.exe /c echo B")
 使用 Batch 的[应用程序包](batch-application-packages.md)功能，可以轻松地部署任务在计算节点上执行的应用程序并对其进行版本控制。
 
 ### <a name="installing-applications-and-staging-data"></a>安装应用程序和暂存数据
-有关准备节点以运行任务的方法概述，请参阅 Azure 批处理论坛中的 [Installing applications and staging data on Batch compute nodes][forum_post]（在批处理计算节点上安装应用程序和暂存数据）。 此帖子由某个 Azure 批处理团队成员编写，是一篇很好的入门教程，介绍如何使用不同的方法将应用程序、任务输入数据和其他文件复制到计算节点。
+有关准备节点以运行任务的方法概述，请参阅 Azure Batch 论坛中的 [Installing applications and staging data on Batch compute nodes][forum_post]（在批处理计算节点上安装应用程序和暂存数据）。 此帖子由某个 Azure Batch 团队成员编写，是一篇很好的入门教程，介绍如何使用不同的方法将应用程序、任务输入数据和其他文件复制到计算节点。
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
 [github_taskdependencies]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies

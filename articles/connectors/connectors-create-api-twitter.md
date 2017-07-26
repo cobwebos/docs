@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/18/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 7b4e14ff2e7e6575574e9da412d29cc2c228990f
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: be8163043535833ce45b3d50939a537406cf8152
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -101,8 +101,9 @@ ms.lasthandoff: 05/10/2017
 7. 保存工作，然后发送带有 #Seattle 井号标签的推文以激活工作流。  
 
 
-## <a name="view-the-swagger"></a>查看 Swagger
-请参阅 [Swagger 详细信息](/connectors/twitterconnector/)。 
+## <a name="connector-specific-details"></a>特定于连接器的详细信息
+
+在[连接器详细信息](/connectors/twitterconnector/)中查看在 Swagger 中定义的触发器和操作，并查看限制。 
 
 ## <a name="next-steps"></a>后续步骤
 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
