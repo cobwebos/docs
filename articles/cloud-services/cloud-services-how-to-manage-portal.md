@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/27/2016
+ms.date: 07/05/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a8f1bf660c44f7716767d3244a7d6e7f7acf8a83
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: c4ec436df17926114e3e27eabc8ed12761c9614e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/31/2017
 
 ---
 # <a name="how-to-manage-cloud-services"></a>如何管理云服务
@@ -28,12 +28,12 @@ ms.lasthandoff: 04/27/2017
 >
 >
 
-可以在 Azure 门户的“云服务(经典)”区域中管理云服务。 本文介绍在管理云服务时可以执行的一些常见操作。 其中包括更新、删除、缩放过渡部署并将其升级为生产部署。
+在 Azure 门户的“云服务(经典)”区域中，可以更新服务角色或部署、将预留部署提升到生产、将资源链接到云服务，以便查看资源依赖关系并对资源进行整体缩放，以及删除云服务或部署。
 
 有关如何缩放云服务的详细信息，请参阅[此文](cloud-services-how-to-scale-portal.md)。
 
 ## <a name="how-to-update-a-cloud-service-role-or-deployment"></a>如何：更新云服务角色或部署
-如果需要更新云服务的应用程序代码，请使用云服务边栏选项卡上的“更新”。 可以更新一个角色或所有角色。 若要进行更新，可以上载新服务包或服务配置文件。
+如果需要更新云服务的应用程序代码，请使用云服务边栏选项卡上的“更新”。 可以更新一个角色或所有角色。 若要进行更新，可以上传新服务包或服务配置文件。
 
 1. 在 [Azure 门户][Azure portal]中，选择要更新的云服务。 此步骤将打开云服务实例边栏选项卡。
 2. 在边栏选项卡中，单击“更新”按钮。
@@ -78,9 +78,9 @@ ms.lasthandoff: 04/27/2017
 
 成功的部署交换有两个先决条件：
 
-- 如果想要将静态 IP 地址用于生产槽，也必须为过渡槽保留一个静态 IP 地址。 否则，交换将失败。
+- 如果想要将静态 IP 地址用于生产槽，也必须为过渡槽保留一个静态 IP 地址。 否则，交换失败。
 
-- 执行交换前，你的角色的所有实例必须都在运行。 可以在 Azure 门户的概述边栏选项卡中或使用 [Windows PowerShell 中的 Get-AzureRole 命令](/powershell/module/azure/get-azurerole?view=azuresmps-3.7.0)检查实例的状态。
+- 执行交换前，你的角色的所有实例必须都在运行。 可在 Azure 门户的“概述”边栏选项卡中检查实例的状态。 或者，可以使用 Windows PowerShell 中的 [Get-azurerole](/powershell/module/azure/get-azurerole?view=azuresmps-3.7.0) 命令。
 
 请注意，来宾 OS 更新和服务修复操作也会导致部署交换失败。 有关详细信息，请参阅[排查云服务部署问题](cloud-services-troubleshoot-deployment-problems.md)。
 
@@ -112,8 +112,14 @@ Azure 门户不会像当前 Azure 经典门户一样将资源链接在一起。 
 
 > [!NOTE]
 > 删除云服务时，如果已配置详细监视，则必须从存储帐户中手动删除数据。 有关在何处查找度量值表的信息，请参阅[此](cloud-services-how-to-monitor.md)文章。
->
->
+
+
+## <a name="how-to-find-more-information-about-failed-deployments"></a>如何：查找有关部署失败的详细信息
+“概述”边栏选项卡顶部有一个状态栏。 单击状态栏时，会打开新的边栏选项卡并显示错误信息。 如果部署没有任何错误，则信息边栏选项卡为空白。
+
+![云服务交换](./media/cloud-services-how-to-manage-portal/status-info.png)
+
+
 
 [Azure portal]: https://portal.azure.com
 

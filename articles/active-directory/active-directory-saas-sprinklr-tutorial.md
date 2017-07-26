@@ -1,197 +1,307 @@
 ---
 title: "教程：Azure Active Directory 与 Sprinklr 集成 | Microsoft 文档"
-description: "了解如何使用 Sprinklr 与 Azure Active Directory 来启用单一登录、自动化预配和其他功能！"
+description: "了解如何在 Azure Active Directory 与 Sprinklr 之间配置单一登录。"
 services: active-directory
+documentationCenter: na
 author: jeevansd
-documentationcenter: na
 manager: femila
 ms.assetid: b33938a1-25a5-484c-8e75-7dc6de2d534d
 ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 3/10/2017
+ms.date: 06/10/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 44b5314a250d88f7ea2f8db2c1270a9090f083cd
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 6e1622cd55e3b0e8063604ac9dc0cb0673fa9753
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/16/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>教程：Azure Active Directory 与 Sprinklr 集成
-本教程的目的是说明 Azure 与 Sprinklr 的集成。  
-在本教程中概述的方案假定您已具有以下各项：
 
-* 一个有效的 Azure 订阅
-* Sprinklr 租户
+在本教程中，了解如何将 Sprinklr 与 Azure Active Directory (Azure AD) 集成。
 
-完成本教程后，已向 Sprinklr 分配的 Azure AD 用户将能够在 Sprinklr 公司站点（服务提供商发起的登录）或使用[访问面板简介](active-directory-saas-access-panel-introduction.md)单一登录到应用程序。
+将 Sprinklr 与 Azure AD 集成可提供以下优势：
 
-在本教程中概述的方案由以下构建基块组成：
+- 可在 Azure AD 中控制谁有权访问 Sprinklr
+- 可以让用户使用其 Azure AD 帐户自动登录到 Sprinklr（单一登录）
+- 可以在一个中心位置（即 Azure 门户）中管理帐户
 
-1. 为 Sprinklr 启用应用程序集成
-2. 配置单一登录 (SSO)
-3. 配置用户设置
-4. 分配用户
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-![方案](./media/active-directory-saas-sprinklr-tutorial/IC782900.png "方案")
+## <a name="prerequisites"></a>先决条件
 
-## <a name="enable-the-application-integration-for-sprinklr"></a>为 Sprinklr 启用应用程序集成
-本部分的目的是概述如何为 Sprinklr 启用应用程序集成。
+若要配置 Azure AD 与 Sprinklr 的集成，需要以下项：
 
-**若要为 Sprinklr 启用应用程序集成，请执行以下步骤：**
+- 一个 Azure AD 订阅
+- 已启用 Sprinklr 单一登录的订阅
 
-1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
-   
-    ![Active Directory](./media/active-directory-saas-sprinklr-tutorial/IC700993.png "Active Directory")
+> [!NOTE]
+> 不建议使用生产环境测试本教程中的步骤。
 
-2. 在“目录”列表中，选择要启用目录集成的目录。
+测试本教程中的步骤应遵循以下建议：
 
-3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
-   
-    ![应用程序](./media/active-directory-saas-sprinklr-tutorial/IC700994.png "应用程序")
+- 除非必要，请勿使用生产环境。
+- 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
-4. 在页面底部单击“添加”。
-   
-    ![添加应用程序](./media/active-directory-saas-sprinklr-tutorial/IC749321.png "添加应用程序")
+## <a name="scenario-description"></a>方案描述
+在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
-5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
-   
-    ![从库添加应用程序](./media/active-directory-saas-sprinklr-tutorial/IC749322.png "从库添加应用程序")
+1. 从库添加 Sprinklr
+2. 配置和测试 Azure AD 单一登录
 
-6. 在搜索框中，键入“Sprinklr”。
-   
-    ![应用程序库](./media/active-directory-saas-sprinklr-tutorial/IC782901.png "应用程序库")
+## <a name="adding-sprinklr-from-the-gallery"></a>从库添加 Sprinklr
+若要配置 Sprinklr 与 Azure AD 的集成，需要从库中将 Sprinklr 添加到托管 SaaS 应用列表。
 
-7. 在结果窗格中，选择“Sprinklr”，然后单击“完成”以添加该应用程序。
-   
-    ![Sprinklr](./media/active-directory-saas-sprinklr-tutorial/IC782902.png "Sprinklr")
+**若要从库添加 Sprinklr，请执行以下步骤：**
 
-## <a name="configure-single-sign-on"></a>配置单一登录
-本部分的目的是概述如何让用户使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 Sprinklr 进行身份验证。 
+1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
 
+    ![Active Directory][1]
 
-在此过程中，需要创建 base-64 编码的证书文件。  
+2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
-如果不熟悉此过程，请参阅[如何将二进制证书转换为文本文件](http://youtu.be/PlgrzUZ-Y1o)。
-
-**若要配置单一登录，请执行以下步骤：**
-
-1. 在 Azure 经典门户中的“Sprinklr”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
-   
-    ![配置单一登录](./media/active-directory-saas-sprinklr-tutorial/IC782903.png "配置单一登录")
-
-2. 在“你希望用户如何登录 Sprinklr”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
-   
-    ![配置单一登录](./media/active-directory-saas-sprinklr-tutorial/IC782904.png "配置单一登录")
-
-3. 在“配置应用 URL”页上的“Sprinklr 登录 URL”文本框中，使用模式“*https://\<tenant-name\>.sprinklr.com*”键入 URL，然后单击“下一步”。
-   
-    ![配置应用 URL](./media/active-directory-saas-sprinklr-tutorial/IC782905.png "配置应用 URL")
-
-4. 在“配置 Sprinklr 的单一登录”页上，若要下载证书，请单击“下载证书”，然后将证书文件保存在计算机上。
-   
-    ![配置单一登录](./media/active-directory-saas-sprinklr-tutorial/IC782906.png "配置单一登录")
-
-5. 在另一个 Web 浏览器窗口中，以管理员身份登录 Sprinklr 公司站点。
-
-6. 转到“管理”\>“设置”。
-   
-    ![管理](./media/active-directory-saas-sprinklr-tutorial/IC782907.png "Administration")
-
-7. 从左侧窗格转到“管理合作伙伴”\>“单一登录”。
-   
-    ![管理合作伙伴](./media/active-directory-saas-sprinklr-tutorial/IC782908.png "Manage Partner")
-
-8. 单击“+添加单一登录”。
-   
-    ![单一登录](./media/active-directory-saas-sprinklr-tutorial/IC782909.png "Single Sign-Ons")
-
-9. 在“单一登录”页上，执行以下步骤：
-   
-    ![单一登录](./media/active-directory-saas-sprinklr-tutorial/IC782910.png "Single Sign-Ons")
-  1. 在“名称”文本框中，键入配置名称（例如：*WAADSSOTest*）。
-  2. 选择“启用”。
-  3. 选择“使用新 SSO 证书”。
-  4. 根据下载的证书创建 **base-64 编码**文件。  
-  
-     >[!TIP]
-     >有关详细信息，请参阅 [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)（如何将二进制证书转换为文本文件）。 
-     >    
-     
-  5. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“标识提供者证书”文本框。
-  6. 在 Azure 经典门户的“配置 Sprinklr 的 SSO”对话框中：
-     *  复制“标识提供者 ID”值，然后将其粘贴到“实体 ID”文本框中。
-     * 复制“远程登录 URL”值，然后将其粘贴到“标识提供者登录 URL”文本框中。
-     * 复制“远程注销 URL”值，然后将其粘贴到“标识提供者注销 URL”文本框中。
-  7. 对于“SAML 用户 ID 类型”，请选择“断言包含用户的 sprinklr.com 用户名”。
-  8. 对于“SAML 用户 ID 位置”，请选择“用户 ID 位于 Subject 语句的 NameIdentifier 元素中”。
-  9. 单击“保存” 。
-       
-    ![SAML](./media/active-directory-saas-sprinklr-tutorial/IC782911.png "SAML")
-10. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
+    ![应用程序][2]
     
-    ![配置单一登录](./media/active-directory-saas-sprinklr-tutorial/IC782912.png "配置单一登录")
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-## <a name="configure-user-provisioning"></a>配置用户设置
-要使 AAD 用户能够登录进行访问，必须将这些用户预配到 Sprinklr 应用程序中。  
-本部分介绍如何在 Sprinklr 中创建 AAD 用户帐户。
+    ![应用程序][3]
 
-### <a name="to-provision-a-user-account-in-sprinklr-perform-the-following-steps"></a>若要在 Sprinklr 中预配用户帐户，请执行以下步骤：
+4. 在搜索框中，键入 **Sprinklr**。
+
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-sprinklr-tutorial/tutorial_sprinklr_search.png)
+
+5. 在结果窗格中选择“Sprinklr”，然后单击“添加”按钮添加该应用程序。
+
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-sprinklr-tutorial/tutorial_sprinklr_addfromgallery.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+在本部分中，基于一个名为“Britta Simon”的测试用户使用 Sprinklr 配置和测试 Azure AD 单一登录。
+
+若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Sprinklr 用户。 换句话说，需要建立 Azure AD 用户与 Sprinklr 中相关用户之间的链接关系。
+
+可通过将 Azure AD 中“用户名”的值指定为 Sprinklr 中“用户名”的值来建立此链接关系。
+
+若要配置和测试 Sprinklr 的 Azure AD 单一登录，需要完成以下构建基块：
+
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
+2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+3. **[创建 Sprinklr 测试用户](#creating-a-sprinklr-test-user)** - 在 Sprinklr 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+
+### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+
+在本部分，将在 Azure 门户中启用 Azure AD 单一登录并在 Sprinklr 应用程序中配置单一登录。
+
+**若要配置 Sprinklr 的 Azure AD 单一登录，请执行以下步骤：**
+
+1. 在 Azure 门户中的“Sprinklr”应用程序集成页上，单击“单一登录”。
+
+    ![配置单一登录][4]
+
+2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+ 
+    ![配置单一登录](./media/active-directory-saas-sprinklr-tutorial/tutorial_sprinklr_samlbase.png)
+
+3. 在“Sprinklr 域和 URL”部分中执行以下步骤：
+
+    ![配置单一登录](./media/active-directory-saas-sprinklr-tutorial/tutorial_sprinklr_url.png)
+
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.sprinklr.com`
+
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.sprinklr.com`
+
+    > [!NOTE] 
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新该值。 请联系 [Sprinklr 客户端支持团队](https://www.sprinklr.com/contact-us/)获取这些值。 
+ 
+4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+
+    ![配置单一登录](./media/active-directory-saas-sprinklr-tutorial/tutorial_sprinklr_certificate.png) 
+
+5. 单击“保存”按钮。
+
+    ![配置单一登录](./media/active-directory-saas-sprinklr-tutorial/tutorial_general_400.png)
+
+6. 在“Sprinklr 配置”部分中，单击“配置 Sprinklr”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+
+7. 在另一个 Web 浏览器窗口中，以管理员身份登录 Sprinklr 公司站点。
+
+8. 转到“管理”\>“设置”。
+   
+    ![管理](./media/active-directory-saas-sprinklr-tutorial/ic782907.png "Administration")
+
+9. 从左侧窗格转到“管理合作伙伴”\>“单一登录”。
+   
+    ![管理合作伙伴](./media/active-directory-saas-sprinklr-tutorial/ic782908.png "Manage Partner")
+
+10. 单击“+添加单一登录”。
+   
+    ![单一登录](./media/active-directory-saas-sprinklr-tutorial/ic782909.png "Single Sign-Ons")
+
+11. 在“单一登录”页上，执行以下步骤：
+   
+    ![单一登录](./media/active-directory-saas-sprinklr-tutorial/ic782910.png "Single Sign-Ons")
+
+    a. 在“名称”文本框中，键入配置名称（例如：*WAADSSOTest*）。
+
+    b. 选择“启用”。
+
+    c. 选择“使用新 SSO 证书”。
+             
+    e. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“标识提供者证书”文本框。
+
+    f. 将从 Azure 门户复制的“SAML 实体 ID”值粘贴到“实体 ID”文本框中。
+
+    g. 将从 Azure 门户复制的“SAML 单一登录服务 URL”值粘贴到“标识提供者登录 URL”文本框中。
+
+    h. 将从 Azure 门户复制的“注销 URL”值粘贴到“标识提供者注销 URL”文本框中。
+     
+    i. 对于“SAML 用户 ID 类型”，请选择“断言包含用户的 sprinklr.com 用户名”。
+
+    j. 对于“SAML 用户 ID 位置”，请选择“用户 ID 位于 Subject 语句的 NameIdentifier 元素中”。
+
+    k. 单击“保存”。
+       
+    ![SAML](./media/active-directory-saas-sprinklr-tutorial/ic782911.png "SAML")
+
+> [!TIP]
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+
+### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
+
+![创建 Azure AD 用户][100]
+
+**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+
+1. 在 **Azure 门户**的左侧导航窗格中，单击“Azure Active Directory”图标。
+
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-sprinklr-tutorial/create_aaduser_01.png) 
+
+2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+    
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-sprinklr-tutorial/create_aaduser_02.png) 
+
+3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+ 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-sprinklr-tutorial/create_aaduser_03.png) 
+
+4. 在“用户”对话框页上，执行以下步骤：
+ 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-sprinklr-tutorial/create_aaduser_04.png) 
+
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
+
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+
+    c. 选择“显示密码”并记下“密码”的值。
+
+    d.单击“下一步”。 单击“创建” 。
+ 
+### <a name="creating-a-sprinklr-test-user"></a>创建 Sprinklr 测试用户
+
 1. 以管理员身份登录 Sprinklr 公司站点。
 
 2. 转到“管理”\>“设置”。
    
-    ![管理](./media/active-directory-saas-sprinklr-tutorial/IC782907.png "Administration")
+    ![管理](./media/active-directory-saas-sprinklr-tutorial/ic782907.png "Administration")
 
 3. 从左侧窗格转到“管理客户端”\>“用户”。
    
-    ![设置](./media/active-directory-saas-sprinklr-tutorial/IC782914.png "设置")
+    ![设置](./media/active-directory-saas-sprinklr-tutorial/ic782914.png "设置")
 
 4. 单击“添加用户”。
    
-    ![设置](./media/active-directory-saas-sprinklr-tutorial/IC782915.png "设置")
+    ![设置](./media/active-directory-saas-sprinklr-tutorial/ic782915.png "设置")
 
 5. 在“编辑用户”对话框中，执行以下步骤：
    
-    ![编辑用户](./media/active-directory-saas-sprinklr-tutorial/IC782916.png "Edit user") 
-  1. 在“电子邮件”、“名字”和“姓氏”文本框中，键入要预配的 Azure AD 用户帐户的信息。
-  2. 选择“禁用密码”。
-  3. 选择一种**语言**。
-  4. 选择**用户类型**。
-  5. 单击“更新”。
+    ![编辑用户](./media/active-directory-saas-sprinklr-tutorial/ic782916.png "Edit user") 
+
+    a. 在“电子邮件”、“名字”和“姓氏”文本框中，键入要预配的 Azure AD 用户帐户的信息。
+
+    b. 选择“禁用密码”。
+
+    c. 选择“语言”。
+
+    d. 选择“用户类型”。
+
+    e. 单击“更新”。
    
      >[!IMPORTANT]
      >必须选择“禁用密码”才能让用户通过标识提供者登录。 
-     > 
-
+     
 6. 单击“角色”，然后执行以下步骤：
    
-    ![合作伙伴角色](./media/active-directory-saas-sprinklr-tutorial/IC782917.png "Partner Roles")
- 1. 从“全局”列表中，选择“ALL\_Permissions”。  
- 2. 单击“更新”。
+    ![合作伙伴角色](./media/active-directory-saas-sprinklr-tutorial/ic782917.png "Partner Roles")
+
+    a. 从“全局”列表中，选择“ALL\_Permissions”。  
+
+    b. 单击“更新”。
 
 >[!NOTE]
->可以使用任何其他 Sprinklr 用户帐户创建工具或 Sprinklr 提供的 API 来预配 AAD 用户帐户。 
-> 
+>可以使用任何其他 Sprinklr 用户帐户创建工具或 Sprinklr 提供的 API 来预配 Azure AD 用户帐户。 
 
-## <a name="assign-users"></a>分配用户
-若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
+### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-**若要将用户分配到 Sprinklr，请执行以下步骤：**
+在本部分，通过授予 Britta Simon 访问 Sprinklr 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 经典门户中，创建一个测试帐户。
+![分配用户][200] 
 
-2. 在“Sprinklr”应用程序集成页上，单击“分配用户”。
-   
-    ![分配用户](./media/active-directory-saas-sprinklr-tutorial/IC782918.png "分配用户")
+**若要将 Britta Simon 分配到 Sprinklr，请执行以下步骤：**
 
-3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
-   
-    ![是](./media/active-directory-saas-sprinklr-tutorial/IC767830.png "是")
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
 
-如果要测试 SSO 设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+    ![分配用户][201] 
+
+2. 在应用程序列表中，选择“Sprinklr”。
+
+    ![配置单一登录](./media/active-directory-saas-sprinklr-tutorial/tutorial_sprinklr_app.png) 
+
+3. 在左侧菜单中，单击“用户和组”。
+
+    ![分配用户][202] 
+
+4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+
+    ![分配用户][203]
+
+5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+
+6. 在“用户和组”对话框中单击“选择”按钮。
+
+7. 在“添加分配”对话框中单击“分配”按钮。
+    
+### <a name="testing-single-sign-on"></a>测试单一登录
+
+在本部分中，将使用访问面板测试 Azure AD 单一登录配置。
+
+在访问面板中单击 Sprinklr 磁贴时，应会自动登录到 Sprinklr 应用程序。有关访问面板的详细信息，请参阅[访问面板简介](active-directory-saas-access-panel-introduction.md)。 
+
+## <a name="additional-resources"></a>其他资源
+
+* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+
+
+
+<!--Image references-->
+
+[1]: ./media/active-directory-saas-sprinklr-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-sprinklr-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-sprinklr-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-sprinklr-tutorial/tutorial_general_04.png
+
+[100]: ./media/active-directory-saas-sprinklr-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-sprinklr-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-sprinklr-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-sprinklr-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-sprinklr-tutorial/tutorial_general_203.png
 
 

@@ -1,12 +1,11 @@
-#### 创建云设备
-<a id="to-create-a-cloud-appliance" class="xliff"></a>
+#### <a name="to-create-a-cloud-appliance"></a>创建云设备
 
 1. 在 Azure 门户中，转到“StorSimple Device Manager”服务。
 2. 转到“设备”边栏选项卡。 从“服务摘要”边栏选项卡中的命令栏中，单击“创建云设备”。
     ![StorSimple 创建云设备](./media/storsimple-8000-create-cloud-appliance-u2/sca-create1.png)
 3. 在“创建云设备”边栏选项卡中，指定以下详细信息。
    
-    ![StorSimple 创建云设备](./media/storsimple-8000-create-cloud-appliance-u2/sca-create2.png)
+    ![StorSimple 创建云设备](./media/storsimple-8000-create-cloud-appliance-u2/sca-create2m.png)
    
    1. **名称** – 云设备的唯一名称。
    2. **型号** – 选择云设备的型号。 8010 设备提供 30 TB 的标准存储，而 8020 提供 64 TB 的高级存储。 指定 8010 来从备份部署项目级别检索方案。 选择 8020 来部署高性能、低延迟工作负荷，或用作灾难恢复的辅助设备。

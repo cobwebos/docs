@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2017
+ms.date: 07/17/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 3a8f878502f6a7237212b467b2259fcbb48000ff
-ms.openlocfilehash: d0775971c76c5745f90cb6c5268fda5a2c905093
-ms.lasthandoff: 02/13/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: e3de7c26af5cbc930defe542727a1250825fb1f8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 管理资产和相关的实体
@@ -34,7 +34,8 @@ ms.lasthandoff: 02/13/2017
 > 自 2017 年 4 月 1 日起，即使记录总数低于最大配额，也将自动删除帐户中所有超过 90 天的作业记录，及其相关的任务记录。 例如，将于 2017 年 4 月 1 日自动删除帐户中 2016 年 12 月 31 日前的所有作业记录。 在需要时，可使用本主题中所述的代码存档作业/任务信息。
 
 ## <a name="prerequisites"></a>先决条件
-请参阅[设置环境](media-services-set-up-computer.md)
+
+设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
 
 ## <a name="get-an-asset-reference"></a>获取资产引用
 一个常见的任务是获取对媒体服务中某个现有资产的引用。 以下代码示例演示了如何根据资产 ID，从服务器上下文对象上的资产集合中获取资产引用。

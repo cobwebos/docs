@@ -6,20 +6,21 @@ keywords:
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
+ms.reviewer: gahug
 ms.assetid: 618c5908-5bf6-4f0d-bf88-5168dfb28a88
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/12/2017
+ms.date: 07/17/2017
 ms.author: joflore
+ms.custom: it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 02826ffad9838c3e22721cc3c189e8cc13020059
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 44426571e3fd8aed090ccccc0dcc46dca8098906
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 05/25/2017
 
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD 中的自助密码重置深入探讨
@@ -77,7 +78,7 @@ SSPR 的工作原理 该选项在界面中意味着什么？ 请继续阅读，�
 
 仅当用户在管理员已启用并要求使用的身份验证方法中输入了数据时，他们才能重置其密码。
 
-如果用户不希望在目录中公开其移动电话号码，但仍想使用该号码来重置密码，则管理员不应在目录中填充该号码，而用户必须通过[密码重置注册门户](http://aka.ms/ssprsetup)填充其“身份验证电话”属性。 管理员仍可在用户的配置文件中看到此信息，但此信息不会发布到其他位置。 如果 Azure 管理员帐户注册了用户的身份验证电话号码，该号码将填充到移动电话字段并且会公开。
+如果用户不希望在目录中公开其移动电话号码，但仍想使用该号码来重置密码，则管理员不应在目录中填充该号码，而用户必须通过[密码重置注册门户](http://aka.ms/ssprsetup)填充其“身份验证电话”属性。 管理员可在用户的配置文件中看到此信息，但此信息不会发布到其他位置。 如果 Azure 管理员帐户注册了用户的身份验证电话号码，该号码将填充到移动电话字段并且会公开。
 
 ### <a name="number-of-authentication-methods-required"></a>所需身份验证方法的数量
 
@@ -242,7 +243,12 @@ Azure AD Connect 工具定期将 ping/keepalive 发送到服务总线终结点�
 4. 在“权限”选项卡中，单击“添加”
 5. 选择要将权限应用到的帐户（通过 Azure AD Connect 安装程序）
 6. 在“应用到”下拉框中，选择“下级用户对象”
-7. 在“权限”下面，选中与“重置密码”、“更改密码”、“对‘lockoutTime’的写权限”和“对‘pwdLastSet’的写权限”对应的框
+7. 在“权限”下选中对应于以下内容的框
+    * 使密码不过期
+    * 重置密码
+    * 更改密码
+    * 写入 lockoutTime
+    * 写入 pwdLastSet
 8. 单击“应用”/“确定”，直到已应用并退出所有打开的对话框。
 
 ## <a name="how-does-password-reset-work-for-b2b-users"></a>B2B 用户如何使用密码重置？
@@ -256,9 +262,9 @@ Azure AD Connect 工具定期将 ping/keepalive 发送到服务总线终结点�
 
 ## <a name="next-steps"></a>后续步骤
 
-以下链接提供有关使用 Azure AD 进行密码重置的其他信息
+以下链接提供了有关使用 Azure AD 进行密码重置的其他信息
 
-* [**快速入门**](active-directory-passwords-getting-started.md) - 启动并运行 Azure AD 自助密码管理 
+* [**快速入门**](active-directory-passwords-getting-started.md) - 启动并运行 Azure AD 自助服务密码管理 
 * [**授权**](active-directory-passwords-licensing.md) - 配置 Azure AD 授权
 * [**数据**](active-directory-passwords-data.md) - 了解所需的数据以及如何使用它进行密码管理
 * [**推出**](active-directory-passwords-best-practices.md) - 使用此处提供的指南计划 SSPR 并将其部署到用户
@@ -266,7 +272,7 @@ Azure AD Connect 工具定期将 ping/keepalive 发送到服务总线终结点�
 * [**密码写回**](active-directory-passwords-writeback.md) - 如何对本地目录使用密码写回
 * [**自定义**](active-directory-passwords-customize.md) - 自定义公司的 SSPR 体验的外观。
 * [**报告**](active-directory-passwords-reporting.md) - 了解用户是否访问 SSPR 功能、在何时在何处访问
-* [**常见问题**](active-directory-passwords-faq.md) - 如何？ 为什么？ 什么？ 何处？ 谁？ 何时？ - 始终要问的问题的答案
+* [**常见问题**](active-directory-passwords-faq.md) - 如何？ 为什么？ 什么？ 何处？ 谁？ 何时？ - 常见问题的答案
 * [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何解决使用 SSPR 时遇到的常见问题
 
 

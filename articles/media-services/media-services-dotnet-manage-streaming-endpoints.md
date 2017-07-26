@@ -1,5 +1,4 @@
 ---
-
 title: "使用 .NET SDK 管理流式处理终结点。 | Microsoft Docs"
 description: "本主题说明如何使用 Azure 门户管理流式处理终结点。"
 services: media-services
@@ -14,15 +13,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 07/18/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 4f61f7c0fd50065d341ae1ce182a033395857579
-ms.openlocfilehash: 68011ef634b1f3bdeb7c219a46e1307698a12f7e
-
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 2aecdd9337a74a27c8116ee14efac8103b3eb548
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/19/2017
 
 ---
-
 
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>使用 .NET SDK 管理流式处理终结点
 
@@ -50,104 +49,90 @@ ms.openlocfilehash: 68011ef634b1f3bdeb7c219a46e1307698a12f7e
 
 有关如何缩放流式处理终结点的信息，请参阅[此](media-services-portal-scale-streaming-endpoints.md)主题。
 
+## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-###<a name="set-up-the-visual-studio-project"></a>设置 Visual Studio 项目
+设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
 
-1. 在 Visual Studio 2015 中创建新的 C# 控制台应用程序。  
-2. 生成解决方案。
-3. 使用 **NuGet** 安装[最新的 Azure 媒体服务 .NET SDK 包](https://www.nuget.org/packages/windowsazure.mediaservices/)。   
-4. 将 appSettings 部分添加到 .config 文件中，并更新媒体服务名称和密钥值。 
-    
-        <appSettings>
-          <add key="MediaServicesAccountName" value="Media-Services-Account-Name"/>
-          <add key="MediaServicesAccountKey" value="Media-Services-Account-Key"/>
-        </appSettings>
-
-###<a name="add-code-that-manages-streaming-endpoints"></a>添加管理流式处理终结点的代码
+## <a name="add-code-that-manages-streaming-endpoints"></a>添加管理流式处理终结点的代码
     
 将 Program.cs 中的代码替换为以下代码：
 
     using System;
-    using System.Collections.Generic;
     using System.Configuration;
     using System.Linq;
     using Microsoft.WindowsAzure.MediaServices.Client;
     using Microsoft.WindowsAzure.MediaServices.Client.Live;
-    
+
     namespace AMSStreamingEndpoint
     {
         class Program
         {
-            // Read values from the App.config file.
-            private static readonly string _mediaServicesAccountName =
-                ConfigurationManager.AppSettings["MediaServicesAccountName"];
-            private static readonly string _mediaServicesAccountKey =
-                ConfigurationManager.AppSettings["MediaServicesAccountKey"];
-    
-            // Field for service context.
-            private static CloudMediaContext _context = null;
-            private static MediaServicesCredentials _cachedCredentials = null;
-    
-            static void Main(string[] args)
+        // Read values from the App.config file.
+        private static readonly string _AADTenantDomain =
+        ConfigurationManager.AppSettings["AADTenantDomain"];
+        private static readonly string _RESTAPIEndpoint =
+        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+
+        private static CloudMediaContext _context = null;
+
+        static void Main(string[] args)
+        {
+            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+            _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
+
+            var defaultStreamingEndpoint = _context.StreamingEndpoints.Where(s => s.Name.Contains("default")).FirstOrDefault();
+            ExamineStreamingEndpoint(defaultStreamingEndpoint);
+
+            IStreamingEndpoint newStreamingEndpoint = AddStreamingEndpoint();
+            UpdateStreamingEndpoint(newStreamingEndpoint);
+            DeleteStreamingEndpoint(newStreamingEndpoint);
+        }
+
+        static public void ExamineStreamingEndpoint(IStreamingEndpoint streamingEndpoint)
+        {
+            Console.WriteLine(streamingEndpoint.Name);
+            Console.WriteLine(streamingEndpoint.StreamingEndpointVersion);
+            Console.WriteLine(streamingEndpoint.FreeTrialEndTime);
+            Console.WriteLine(streamingEndpoint.ScaleUnits);
+            Console.WriteLine(streamingEndpoint.CdnProvider);
+            Console.WriteLine(streamingEndpoint.CdnProfile);
+            Console.WriteLine(streamingEndpoint.CdnEnabled);
+        }
+
+        static public IStreamingEndpoint AddStreamingEndpoint()
+        {
+            var name = "StreamingEndpoint" + DateTime.UtcNow.ToString("hhmmss");
+            var option = new StreamingEndpointCreationOptions(name, 1)
             {
-                // Create and cache the Media Services credentials in a static class variable.
-                _cachedCredentials = new MediaServicesCredentials(
-                                _mediaServicesAccountName,
-                                _mediaServicesAccountKey);
-                // Used the cached credentials to create CloudMediaContext.
-                _context = new CloudMediaContext(_cachedCredentials);
-    
-                var defaultStreamingEndpoint = _context.StreamingEndpoints.Where(s=>s.Name.Contains("default")).FirstOrDefault();
-                ExamineStreamingEndpoint(defaultStreamingEndpoint);
-    
-                IStreamingEndpoint newStreamingEndpoint = AddStreamingEndpoint();
-                UpdateStreamingEndpoint(newStreamingEndpoint);
-                DeleteStreamingEndpoint(newStreamingEndpoint);
-            }
-    
-            static public void ExamineStreamingEndpoint(IStreamingEndpoint streamingEndpoint)
-            {
-                Console.WriteLine(streamingEndpoint.Name);
-                Console.WriteLine(streamingEndpoint.StreamingEndpointVersion);
-                Console.WriteLine(streamingEndpoint.FreeTrialEndTime);
-                Console.WriteLine(streamingEndpoint.ScaleUnits);
-                Console.WriteLine(streamingEndpoint.CdnProvider);
-                Console.WriteLine(streamingEndpoint.CdnProfile);
-                Console.WriteLine(streamingEndpoint.CdnEnabled);
-            }
-    
-            static public IStreamingEndpoint AddStreamingEndpoint()
-            {
-                var name = "StreamingEndpoint" + DateTime.UtcNow.ToString("hhmmss");
-                var option = new StreamingEndpointCreationOptions(name, 1)
-                {
-                    StreamingEndpointVersion = new Version("2.0"),
-                    CdnEnabled = true,
-                    CdnProfile = "CdnProfile",
-                    CdnProvider = CdnProviderType.PremiumVerizon
-                };
-    
-                var streamingEndpoint = _context.StreamingEndpoints.Create(option);
-    
-                return streamingEndpoint;
-            }
-    
-            static public void UpdateStreamingEndpoint(IStreamingEndpoint streamingEndpoint)
-            {
-                if(streamingEndpoint.StreamingEndpointVersion == "1.0")
-                    streamingEndpoint.StreamingEndpointVersion = "2.0";
-    
-                streamingEndpoint.CdnEnabled = false;
-                streamingEndpoint.Update();
-            }
-    
-            static public void DeleteStreamingEndpoint(IStreamingEndpoint streamingEndpoint)
-            {
-                streamingEndpoint.Delete();
-            }
+            StreamingEndpointVersion = new Version("2.0"),
+            CdnEnabled = true,
+            CdnProfile = "CdnProfile",
+            CdnProvider = CdnProviderType.PremiumVerizon
+            };
+
+            var streamingEndpoint = _context.StreamingEndpoints.Create(option);
+
+            return streamingEndpoint;
+        }
+
+        static public void UpdateStreamingEndpoint(IStreamingEndpoint streamingEndpoint)
+        {
+            if (streamingEndpoint.StreamingEndpointVersion == "1.0")
+            streamingEndpoint.StreamingEndpointVersion = "2.0";
+
+            streamingEndpoint.CdnEnabled = false;
+            streamingEndpoint.Update();
+        }
+
+        static public void DeleteStreamingEndpoint(IStreamingEndpoint streamingEndpoint)
+        {
+            streamingEndpoint.Delete();
+        }
         }
     }
-    
+
 
 ## <a name="next-steps"></a>后续步骤
 查看媒体服务学习路径。
@@ -156,10 +141,5 @@ ms.openlocfilehash: 68011ef634b1f3bdeb7c219a46e1307698a12f7e
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

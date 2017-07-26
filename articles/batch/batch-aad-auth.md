@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 04/27/2017
+ms.date: 06/20/2017
 ms.author: tamram
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 92090975e8e4e38b3ea99045c226a2777ef86405
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: 9c03bde919c46cd301229255c0b12ee69dda6f78
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -108,8 +108,12 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 
 3. 打开应用程序的“设置”边栏选项卡。 在“API 访问”部分中，选择“所需的权限”。
 4. 在“所需的权限”边栏选项卡中，单击“添加”按钮。
-5. 在步骤 1 中搜索 **MicrosoftAzureBatch**，选择“Microsoft Azure 批处理(MicrosoftAzureBatch)”，然后单击“选择”按钮。
-6. 在步骤 2 中，选中“访问 Azure 批处理服务”旁边的复选框，然后单击“选择”按钮。
+5. 在步骤 1 中，搜索“Batch API”。 搜索每一条字符串，直到找到此 API：
+    1. MicrosoftAzureBatch。
+    2. Microsoft Azure Batch。 较新的 Azure AD 租户可能使用此名称。
+    3. ddbf3205-c6bd-46ae-8127-60eb93363864 是此 Batch API 的 ID。 
+6. 找到此 Batch API 后，将其选中并单击“选择”按钮。
+6. 在步骤 2 中，选中“访问 Azure Batch 服务”旁边的复选框，然后单击“选择”按钮。
 7. 单击“完成”按钮。
 
 现在，“所需权限”边栏选项卡显示 Azure AD 应用程序已有对 ADAL 和 Batch 服务 API 的访问权限。 首次向 Azure AD 注册应用程序时，将自动向 ADAL 授予权限。

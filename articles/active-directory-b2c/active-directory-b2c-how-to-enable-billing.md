@@ -12,10 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2016
 ms.author: joroja
-translationtype: Human Translation
-ms.sourcegitcommit: 43224628d5726ac2fb0e8c27c649421af7ceeee4
-ms.openlocfilehash: 6cf375fbfe265a53591b9987ebd32db6df73fcb4
-ms.lasthandoff: 02/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 5b9955b2af7f20a79981315fa33a0eb5380a5465
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -29,17 +30,17 @@ Azure Active Directory B2C (Azure AD B2C) 不断发生的使用费将在 Azure �
 https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 ## <a name="step-1---create-an-azure-ad-b2c-tenant"></a>步骤 1 - 创建 Azure AD B2C 租户
-
-首先必须完成 B2C 租户的创建。 如果已创建目标 B2C 租户，则可跳过此步骤。 [Azure AD B2C 入门](https://azure.microsoft.com/documentation/articles/active-directory-b2c-get-started/)
+首先必须完成 B2C 租户的创建。 如果已创建目标 B2C 租户，则可跳过此步骤。 [Azure AD B2C 入门](active-directory-b2c-get-started.md)
 
 ## <a name="step-2---open-azure-portal-in-the-azure-ad-tenant-that-shows-your-azure-subscription"></a>步骤 2 - 在 Azure AD 租户中打开 Azure 门户显示 Azure 订阅
-导航到 portal.azure.com。 切换到 Azure AD 租户，显示想要使用的 Azure 订阅。 此 Azure AD 租户不同于 B2C 租户。 在 Azure 门户中，单击仪表板右上角的帐户名选择 Azure AD 租户。 需要使用 Azure 订阅才能继续操作。 [获取 Azure 订阅](https://account.windowsazure.com/signup?showCatalog=True)
+导航到 [Azure 门户](https://portal.azure.com)。 切换到 Azure AD 租户，显示想要使用的 Azure 订阅。 此 Azure AD 租户不同于 B2C 租户。 在 Azure 门户中，单击仪表板右上角的帐户名选择 Azure AD 租户。 需要使用 Azure 订阅才能继续操作。 [获取 Azure 订阅](https://account.windowsazure.com/signup?showCatalog=True)
 
 ![切换到 Azure AD 租户](./media/active-directory-b2c-how-to-enable-billing/SelectAzureADTenant.png)
 
 ## <a name="step-3---create-a-b2c-tenant-resource-in-azure-marketplace"></a>步骤 3 - 在 Azure 应用商店中创建 B2C 租户资源
 单击“应用商店”图标，或者选择仪表板左上角的绿色“+”符号，打开应用商店。  搜索并选择 Azure Active Directory B2C。 选择“创建”。
-![选择应用商店](./media/active-directory-b2c-how-to-enable-billing/marketplace.png)
+
+![选择“Marketplace”](./media/active-directory-b2c-how-to-enable-billing/marketplace.png)
 
 ![搜索 AD B2C](./media/active-directory-b2c-how-to-enable-billing/searchb2c.png)
 
@@ -75,12 +76,5 @@ Azure AD B2C 资源创建对话框中包含以下参数：
 ## <a name="next-steps"></a>后续步骤
 针对每个 B2C 租户完成这些步骤后，将会根据 Azure Direct 或企业协议详细信息在 Azure 订阅中计费。
 - 在选定的 Azure 订阅中查看使用情况和计费
-- 通过[使用报告 API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-usage-reporting-api) 查看详细的每日使用报告
-
-
-
-<!--Reference style links - using these makes the source content way more readable than using inline links-->
-[gog]: http://google.com/        
-[yah]: http://search.yahoo.com/  
-[msn]: http://search.msn.com/    
+- 通过[使用报告 API](active-directory-b2c-reference-usage-reporting-api.md) 查看详细的每日使用报告
 

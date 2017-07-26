@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 04/12/2017
+ms.date: 05/25/2017
 ms.author: sasubram
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 3d7801d8a53ac048333e43ee64724c11c25bf6a8
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 6e49cb202ed03bf50fb9ca34d34924cda434829c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -29,7 +30,7 @@ Azure Active Directory (Azure AD) 企业对企业 (B2B) 协作用户是 UserType
 
 根据邀请方组织的需要，Azure AD B2B 协作用户可以处于以下帐户状态之一：
 
-- 状态 1：驻留在 Azure AD 的外部实例中，代表宿主组织中的来宾用户。 在这种情况下，B2B 用户需使用属于其宿主租户的 Azure AD 帐户进行登录。 如果该用户的外部组织在邀请时未使用 Azure AD，则在用户兑换其邀请期间将在 Azure AD 验证用户的电子邮件地址后在 Azure AD 中创建来宾用户。 这也称为适时 (JIT) 租户或促销型租户。
+- 状态 1：驻留在 Azure AD 的外部实例中，代表邀请方组织中的来宾用户。 在这种情况下，B2B 用户需使用属于受邀方租户的 Azure AD 帐户进行登录。 如果合作伙伴组织不使用 Azure AD，仍会在 Azure AD 中创建来宾用户。 相应要求是，他们兑换自己的邀请，并由 Azure AD 验证其电子邮件地址。 此安排也称为实时 (JIT) 租户或“促销型”租户。
 
 - 状态 2：驻留在 Microsoft 帐户中，代表宿主组织中的来宾用户。 在这种情况下，来宾用户需使用 Microsoft 帐户登录。 受邀用户的非 Microsoft 帐户社交标识（google.com 或类似项）在兑换产品期间将创建为 Microsoft 帐户。
 
@@ -52,10 +53,10 @@ Azure Active Directory (Azure AD) 企业对企业 (B2B) 协作用户是 UserType
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Azure AD B2B 协作用户的关键属性
 ### <a name="usertype"></a>UserType
-此属性表示用户与宿主租户之间的关系。 它可以使用两个值：
+此属性表示用户与宿主租户之间的关系。 此属性可以具有两个值：
 - 成员：此值表示宿主组织的某位员工，即组织的工资单中的某个用户。 例如，此用户应当对仅限内部站点具有访问权限。 此用户不被视为外部协作者。
 
-- 来宾：此值表示不被视为公司内部人员的用户。 此用户可能是外部协作者、合作伙伴、客户或类似用户。举例来说，他们没有打算进入 CEO 内部备忘录或享受公司福利。
+- 来宾：此值指示不视为公司内部用户的用户，例如外部协作者、合作伙伴、客户或类似的用户。 此类用户不需要接收 CEO 的内部备注，或享受（比如）公司效益。
 
   > [!NOTE]
   > UserType 与用户的登录方式、用户的目录角色等等之间没有关系。 此属性只是指明该用户与宿主组织之间的关系，使该组织能够实施依赖于此属性的策略。
@@ -76,7 +77,7 @@ Azure Active Directory (Azure AD) 企业对企业 (B2B) 协作用户是 UserType
   > Source 和 UserType 是独立的属性。 Source 的值并不暗示特定的 UserType 值。
 
 ## <a name="can-azure-ad-b2b-users-be-added-as-members-instead-of-guests"></a>是否可将 Azure AD B2B 用户添加为成员而非来宾？
-通常，Azure AD B2B 用户和来宾用户是同义词。 因此，默认情况下，Azure AD B2B 协作用户将添加为 UserType = Guest 的用户。 但在某些情况下，合作伙伴组织又是一家更大型上级组织的成员，而宿主组织也属于该大型组织。 如果是这样，宿主组织可能希望将合作伙伴组织中的用户视为成员而非来宾。 在这种情况下，可以使用 Azure AD B2B 邀请管理器 API 将合作伙伴组织中的用户作为成员添加或邀请到宿主组织。
+通常，Azure AD B2B 用户和来宾用户是同义词。 因此，默认情况下，Azure AD B2B 协作用户将添加为 UserType = Guest 的用户。 但在某些情况下，合作伙伴组织又是一家更大型上级组织的成员，而宿主组织也属于该大型组织。 如果是这样，宿主组织可能希望将合作伙伴组织中的用户视为成员而非来宾。 可以使用 Azure AD B2B 邀请管理器 API 将合作伙伴组织中的用户作为成员添加或邀请到宿主组织。
 
 ## <a name="filter-for-guest-users-in-the-directory"></a>对目录中的来宾用户进行筛选
 
@@ -86,9 +87,9 @@ Azure Active Directory (Azure AD) 企业对企业 (B2B) 协作用户是 UserType
 目前，用户可使用 PowerShell 将 UserType 从 Member 转换为 Guest，反之亦然。 但是，UserType 属性应该表示用户与组织之间的关系。 因此，只有当用户与组织之间的关系发生更改时，才应当更改此属性的值。 如果用户的关系发生更改，是否应当解决诸如用户主体名称 (UPN) 是否应更改之类的问题？ 用户是否应该继续有权访问同样的资源？ 是否应该分配邮箱？ 因此，我们不建议使用 PowerShell 以原子活动的形式更改 UserType。 此外，为防止使用 PowerShell 导致此属性成为不可变的，我们也不建议对此值产生依赖关系。
 
 ## <a name="remove-guest-user-limitations"></a>删除来宾用户限制
-在某些情况下，你可能想要为来宾用户提供更高的特权。 在这种情况下，可将来宾用户添加到任何角色，甚至可在目录中删除默认的来宾用户限制，向用户提供与成员相同的特权。
+在某些情况下，你可能想要为来宾用户提供更高的特权。 可将来宾用户添加到任何角色，甚至可在目录中删除默认的来宾用户限制，向用户提供与成员相同的特权。
 
-可以禁用默认的来宾用户限制，以便为公司目录中的来宾用户提供与作为成员的常规用户相同的目录权限。
+可以禁用默认的来宾用户限制，便于为公司目录中的来宾用户提供与成员用户相同的权限。
 
 ![删除来宾用户限制](media/active-directory-b2b-user-properties/remove-guest-limitations.png)
 

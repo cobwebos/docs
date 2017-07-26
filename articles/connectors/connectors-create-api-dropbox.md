@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 07/15/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 953a99a1fc09a960c94eebbc0486e4782e5dd87c
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 0d09580c60fd620811b539147439d0922839fe7e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -62,9 +62,9 @@ ms.lasthandoff: 05/17/2017
    ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-4.PNG)  
 6. 保存所做工作，并在 Dropbox 中新建文件以激活工作流。  
 
-## <a name="view-the-swagger"></a>查看 Swagger
+## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
-请参阅 [Swagger 详细信息](/connectors/dropbox/)。
+在[连接器详细信息](/connectors/dropbox/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
 
 ## <a name="more-connectors"></a>更多连接器
 返回到 [API 列表](apis-list.md)。

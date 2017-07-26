@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/27/2016
+ms.date: 05/18/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 76f59384db37967a9210ba5efa49b25788d21cdc
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: e66a3390c08b66e0f2f38725425cd78a36004118
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -112,7 +113,7 @@ ms.lasthandoff: 04/27/2017
     ![链接页 1](./media/cloud-services-how-to-manage/CloudServices_LinkedResources_LinkPage1.png)
 
 4. 单击“创建新资源”或“链接现有资源”。
-5. 选择要链接的资源类型。 在 [Azure 经典门户](http://manage.windowsazure.com/)中，单击“SQL 数据库”。 （预览版 Azure 经典门户不支持将存储帐户链接到云服务。）
+5. 选择要链接的资源类型。 在 [Azure 经典门户](http://manage.windowsazure.com/)中，单击“SQL 数据库”。 （仅 Azure 经典门户支持将存储帐户链接到云服务。）
 6. 若要完成数据库配置，请按照 Azure 经典门户的“SQL 数据库”区域的帮助中的说明操作。
 
     可以在消息区域中跟踪链接操作的进度。

@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 06/01/2017
+ms.date: 06/14/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 1782c7e5f7cd710d6e17a26197f9fcc84c967902
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 458459e9bed5ebee6188b5f282e66df1e2a988a8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -39,8 +39,8 @@ ms.lasthandoff: 05/18/2017
 > 
 
 ## <a name="to-create-a-server-in-azure-portal"></a>在 Azure 门户中创建服务器
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 单击“+ 新建” > “智能 + 分析” > “Analysis Services”。
+1. 登录到 [Azure 门户](https://portal.azure.com)。  
+2. 单击“+ 新建” > “数据 + 分析” > “Analysis Services”。
 3. 在“Analysis Services”边栏选项卡中，填写必填字段，然后按“创建”。
    
     ![创建服务器](./media/analysis-services-create-server/aas-create-server-blade.png)

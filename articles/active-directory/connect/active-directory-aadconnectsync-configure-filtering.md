@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 07/12/2017
 ms.author: billmath
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: a78679782f538121c2451a6e2d1519f457ad057c
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 635affebf9130c2bfb38e84cc144ee4838504777
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/25/2017
 
 ---
 
@@ -254,7 +254,7 @@ Azure AD Connect 安装向导将始终创建此配置。
 1. 通过使用属于 **ADSyncAdmins** 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
 2. 从开始菜单启动“同步规则编辑器”。
 3. 在“规则类型”下，单击“出站”。
-4. 查找名为 **Out to AAD – User Join SOAInAD** 的规则，然后单击“编辑”。
+4. 查找名为 Out to AAD – User Join 的规则，然后单击“编辑”。
 5. 在弹出窗口中，回答“是”创建规则的副本。
 6. 在“说明”页上，将“优先顺序”更改为某个尚未使用的值，例如 50。
 7. 单击左侧导航栏中的“范围筛选器”，然后单击“添加子句”。 在“属性”中选择“mail”。 在“运算符”中选择“ENDSWITH”。 在“值”中键入 **@contoso.com**，然后单击“添加子句”。 在“属性”中选择“userPrincipalName”。 在“运算符”中选择“ENDSWITH”。 在“值”中键入 **@contoso.com**。

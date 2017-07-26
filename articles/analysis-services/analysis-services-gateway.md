@@ -13,17 +13,22 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/18/2017
+ms.date: 05/26/2017
 ms.author: owend
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: e47fa44d87ad29054b833ee4bf201ac4d72e1e6e
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: f8c9e9ab8b8728202ec3f049b309d96d883022f4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/03/2017
 
 
 ---
 # <a name="on-premises-data-gateway"></a>本地数据网关
 本地数据网关的作用好似一架桥，提供本地数据源与云中的 Azure Analysis Services 服务器之间的安全数据传输。
+
+最新版本的网关支持使用“获取数据”和 SSDT 中的 M 查询连接到本地数据源的表格 1400 模型。 
+
+若要详细了解受支持的数据源，请参阅 [Azure Analysis Services 中支持的数据源](analysis-services-datasource.md)。
 
 网关可以安装在连网的计算机上。 对于 Azure 订阅中有的每个 Azure Analysis Services 服务器，必须安装一个网关。 例如，如果在连接到本地数据源的 Azure 订阅中有两个服务器，则必须在两台连网的独立计算机上安装一个网关。
 
@@ -48,14 +53,6 @@ ms.lasthandoff: 04/20/2017
 * 若要更改已配置网关的服务器名称，需要重新安装并配置新网关。
 * 在某些情况下，使用本机提供程序（如 SQL Server Native Client (SQLNCLI11)）连接到数据源的表格模型可能返回错误。 若要了解详细信息，请参阅[数据源连接](analysis-services-datasource.md)。
 
-## <a name="supported-on-premises-data-sources"></a>支持的本地数据源
-网关支持 Azure Analysis Services 服务器与以下本地数据源之间的连接：
-
-* SQL Server
-* SQL 数据仓库
-* APS
-* Oracle
-* Teradata
 
 ## <a name="download"></a>下载
  [下载网关](https://aka.ms/azureasgateway)
@@ -128,7 +125,7 @@ ms.lasthandoff: 04/20/2017
 
 如果在安装和配置网关时遇到问题，请参阅 [Power BI 网关疑难解答](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem-tshoot/)。 如果认为防火墙有问题，请参阅“防火墙或代理”部分。
 
-如果认为遇到的是网关代理问题，请参阅 [配置 Power BI 网关的代理设置](https://powerbi.microsoft.com/documentation/powerbi-gateway-proxy.md)。
+如果认为遇到的是网关代理问题，请参阅 [配置 Power BI 网关的代理设置](https://powerbi.microsoft.com/documentation/powerbi-gateway-proxy)。
 
 ### <a name="telemetry"></a>遥测
 遥测可用于监视和排错。 

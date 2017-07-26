@@ -1,5 +1,5 @@
 ---
-title: "使用 .NET SDK 管理 HDInsight 中的 Hadoop 群集 | Microsoft Docs"
+title: "使用 .NET SDK 管理 HDInsight 中的 Hadoop 群集 - Azure | Microsoft Docs"
 description: "了解如何使用 HDInsight .NET SDK 针对 HDInsight 中的 Hadoop 群集执行管理任务。"
 services: hdinsight
 editor: cgronlun
@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/25/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ec710057c2016175f65578a9d6884f7273b65169
-ms.openlocfilehash: f2a762ad64feeef91802429cdd959cec67b73473
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: c10471425fa1202ddb7fe35d0adf4ef33509f268
 ms.contentlocale: zh-cn
-ms.lasthandoff: 12/20/2016
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -167,7 +167,7 @@ ms.lasthandoff: 12/20/2016
     
     HDInsight 群集上提供了 Storm Web UI：
     
-    ![HDInsight Storm 缩放重新平衡](./media/hdinsight-administer-use-management-portal/hdinsight-portal-scale-cluster-storm-rebalance.png)
+    ![HDInsight Storm 规模重新平衡](./media/hdinsight-administer-use-management-portal/hdinsight-portal-scale-cluster-storm-rebalance.png)
     
     以下是有关如何使用 CLI 命令重新平衡 Storm 拓扑的示例：
     
@@ -253,15 +253,15 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 
 请参阅[在 HDInsight 中将 Oozie 与 Hadoop 配合使用以定义和运行工作流](hdinsight-use-oozie-linux-mac.md)。
 
-## <a name="upload-data-to-azure-blob-storage"></a>将数据上载到 Azure Blob 存储
-请参阅[将数据上载到 HDInsight][hdinsight-upload-data]。
+## <a name="upload-data-to-azure-blob-storage"></a>将数据上传到 Azure Blob 存储
+请参阅[将数据上传到 HDInsight][hdinsight-upload-data]。
 
 ## <a name="see-also"></a>另请参阅
 * [HDInsight .NET SDK 参考文档](https://msdn.microsoft.com/library/mt271028.aspx)
 * [使用 Azure 门户管理 HDInsight][hdinsight-admin-portal]
 * [使用命令行接口管理 HDInsight][hdinsight-admin-cli]
 * [创建 HDInsight 群集][hdinsight-provision]
-* [将数据上载到 HDInsight][hdinsight-upload-data]
+* [将数据上传到 HDInsight][hdinsight-upload-data]
 * [Azure HDInsight 入门][hdinsight-get-started]
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/

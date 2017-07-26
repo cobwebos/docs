@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 04/21/2017
+ms.date: 05/22/2017
 ms.author: brjohnst
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 2c7032e74dc59eb610b8860338486afc52e3abbe
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
+ms.openlocfilehash: 552a7ab193e12d2e72da494166d774e974c85d47
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/22/2017
 
 
 ---
@@ -42,11 +43,11 @@ Azure 搜索 .NET SDK 的当前版本现已正式发布。 如果想要提供反
 如果你已在使用较旧版本的 Azure 搜索 .NET SDK，并且想要升级到最新的正式发布版本，[文本](search-dotnet-sdk-migration.md)介绍了操作方法。
 
 ## <a name="requirements-for-the-sdk"></a>SDK 的要求
-1. Visual Studio 2015。
+1. Visual Studio 2017。
 2. 你自己的 Azure 搜索服务。 要使用 SDK，需要你的服务的名称以及一个或多个 API 密钥。 [在门户中创建服务](search-create-service-portal.md)将帮助你完成这些步骤。
 3. 在 Visual Studio 中，通过使用“管理 NuGet 程序包”来下载 Azure 搜索 .NET SDK [NuGet 程序包](http://www.nuget.org/packages/Microsoft.Azure.Search)。 只需在 NuGet.org 上搜索程序包名称 `Microsoft.Azure.Search`。
 
-Azure 搜索 .NET SDK 支持针对 .NET Framework 4.5、.NET Core 的应用程序以及与[可移植类库 (PCL) 配置文件 111](https://docs.microsoft.com/dotnet/articles/standard/library) 兼容的应用。
+Azure 搜索 .NET SDK 支持面向 .NET Framework 4.6 和 .NET Core 的应用程序。
 
 ## <a name="core-scenarios"></a>核心方案
 需要在你的搜索应用程序中完成几项操作。 在本教程中，我们将介绍以下核心方案：
@@ -64,7 +65,10 @@ Azure 搜索 .NET SDK 支持针对 .NET Framework 4.5、.NET Core 的应用程�
 // This sample shows how to delete, create, upload documents and query an index
 static void Main(string[] args)
 {
-    SearchServiceClient serviceClient = CreateSearchServiceClient();
+    IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+    IConfigurationRoot configuration = builder.Build();
+
+    SearchServiceClient serviceClient = CreateSearchServiceClient(configuration);
 
     Console.WriteLine("{0}", "Deleting index...\n");
     DeleteHotelsIndexIfExists(serviceClient);
@@ -77,7 +81,7 @@ static void Main(string[] args)
     Console.WriteLine("{0}", "Uploading documents...\n");
     UploadDocuments(indexClient);
 
-    ISearchIndexClient indexClientForQueries = CreateSearchIndexClient();
+    ISearchIndexClient indexClientForQueries = CreateSearchIndexClient(configuration);
 
     RunQueries(indexClientForQueries);
 
@@ -91,13 +95,13 @@ static void Main(string[] args)
 > 
 >
 
-我们将逐步进行介绍。 首先，我们需要创建一个新的 `SearchServiceClient`。 此对象使你可以管理索引。 若要构建一个，需要提供你的 Azure 搜索服务名称以及管理 API 密钥。
+我们将逐步进行介绍。 首先，我们需要创建一个新的 `SearchServiceClient`。 此对象使你可以管理索引。 若要构建一个，需要提供你的 Azure 搜索服务名称以及管理 API 密钥。 可以在[示例应用程序](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)的 `appsettings.json` 文件中输入此信息。
 
 ```csharp
-private static SearchServiceClient CreateSearchServiceClient()
+private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
 {
-    string searchServiceName = "myservice";
-    string adminApiKey = "Put your API admin key here";
+    string searchServiceName = configuration["SearchServiceName"];
+    string adminApiKey = configuration["SearchServiceAdminApiKey"];
 
     SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(adminApiKey));
     return serviceClient;
@@ -140,7 +144,7 @@ UploadDocuments(indexClient);
 最后，我们执行一些搜索查询，并显示结果。 这次我们使用不同的 `SearchIndexClient`：
 
 ```csharp
-ISearchIndexClient indexClientForQueries = CreateSearchIndexClient();
+ISearchIndexClient indexClientForQueries = CreateSearchIndexClient(configuration);
 
 RunQueries(indexClientForQueries);
 ```
@@ -148,17 +152,17 @@ RunQueries(indexClientForQueries);
 我们将在以后详细地查看 `RunQueries` 方法。 下面是用于创建新 `SearchIndexClient` 的代码：
 
 ```csharp
-private static SearchIndexClient CreateSearchIndexClient()
+private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
 {
-    string searchServiceName = "myservice";
-    string queryApiKey = "Put one of your API query keys here";
+    string searchServiceName = configuration["SearchServiceName"];
+    string queryApiKey = configuration["SearchServiceQueryApiKey"];
 
     SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "hotels", new SearchCredentials(queryApiKey));
     return indexClient;
 }
 ```
 
-这次我们使用查询密钥，因为我们不需要对索引进行写访问。
+这次我们使用查询密钥，因为我们不需要对索引进行写访问。 可以在[示例应用程序](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)的 `appsettings.json` 文件中输入此信息。
 
 如果使用有效服务名称和 API 密钥运行此应用程序，输出应如下所示：
 
@@ -324,9 +328,15 @@ private static void UploadDocuments(ISearchIndexClient indexClient)
 最后，`UploadDocuments` 方法延迟了两秒钟。 编制索引在 Azure 搜索服务中异步进行，因此，示例应用程序需要等待很短时间，以确保文档可用于搜索。 此类延迟通常仅在演示、测试和示例应用程序中是必需的。
 
 #### <a name="how-the-net-sdk-handles-documents"></a>.NET SDK 如何处理文档
-用户可能想知道 Azure 搜索 .NET SDK 如何将用户定义的类（如 `Hotel` ）的实例上载到索引。 为了帮助回答这个问题，请看 `Hotel` 类：
+用户可能想知道 Azure 搜索 .NET SDK 如何将用户定义的类（如 `Hotel` ）的实例上传到索引。 为了帮助回答这个问题，请看 `Hotel` 类：
 
 ```csharp
+using System;
+using Microsoft.Azure.Search;
+using Microsoft.Azure.Search.Models;
+using Microsoft.Spatial;
+using Newtonsoft.Json;
+
 // The SerializePropertyNamesAsCamelCase attribute is defined in the Azure Search .NET SDK.
 // It ensures that Pascal-case property names in the model class are mapped to camel-case
 // field names in the index.

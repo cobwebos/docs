@@ -12,13 +12,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 06/01/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: ba842028ecda47b8011cba948d7c92417214c2d0
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: db04507d50b6dfe767ede4479fe0b02af2461576
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 05/05/2017
 > 
 > 
 
-使用 .abf 扩展名保存备份。 对于内存中表格模型，将存储模型数据和元数据。 对于直接查询表格模型，将仅存储模型元数据。 备份可以进行压缩和加密，具体取决于选择的选项。 
+使用 abf 扩展名保存备份。 对于内存中表格模型，将存储模型数据和元数据。 对于 DirectQuery 表格模型，将仅存储模型元数据。 备份可以进行压缩和加密，具体取决于选择的选项。 
 
 
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 05/05/2017
 
     ![选择容器](./media/analysis-services-backup/aas-backup-container.png)
 
-5. 保存备份设置。 每当更改存储设置或启用/禁用备份后，都必须保存更改。
+5. 保存备份设置。
 
     ![保存备份设置](./media/analysis-services-backup/aas-backup-save.png)
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 05/05/2017
 
 2. 在“备份数据库” > “备份文件”中，单击“浏览”。
 
-3. 在“文件另存为”对话框中，验证文件夹路径，然后键入备份文件的名称。 默认情况下，文件名称具有 .abf 扩展名。 
+3. 在“文件另存为”对话框中，验证文件夹路径，然后键入备份文件的名称。 
 
 4. 在“备份数据库”对话框中，选择选项。
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 05/05/2017
 
 
 > [!NOTE]
-> 如果要从本地 SQL Server Analysis Services 服务器还原表格模型数据库，必须先从该模型的角色中删除所有域用户，然后再将这些用户作为 Azure Active Directory 用户重新添加到这些角色。 角色将是相同的。
+> 如果要从本地服务器还原，必须先从该模型的角色中删除所有域用户，然后再将这些用户作为 Azure Active Directory 用户重新添加到这些角色。
 > 
 > 
 

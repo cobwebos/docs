@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 8fd5fe4141f24ed0d98251e9c589b7fea5ee3f1c
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: d5a8aa0cd274132798a0d8484a950926761dae7f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -29,19 +29,22 @@ ms.lasthandoff: 05/09/2017
 > [!div class="op_single_selector"]
 > - [Azure 门户](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
-> - [CLI](network-watcher-nsg-flow-logging-cli.md)
+> - [CLI 1.0](network-watcher-nsg-flow-logging-cli-nodejs.md)
+> - [CLI 2.0](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 
 网络安全组流日志是网络观察程序的一项功能，可用于查看有关通过网络安全组的入口和出口 IP 流量的信息。 这些流日志以 json 格式编写，并基于每个规则显示出站和入站流、流所适用的 NIC、有关流的 5 元组信息（源/目标 IP、源/目标端口、协议），以及是允许还是拒绝流量。
 
-本文使用适用于 Windows、Mac 和 Linux 的跨平台 Azure CLI 1.0。 对于 CLI 支持，网络观察程序当前使用 Azure CLI 1.0。
+本文使用资源管理部署模型的新一代 CLI (Azure CLI 2.0)，其适用于 Windows、Mac 和 Linux。
+
+若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (Azure CLI)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2)。
 
 ## <a name="register-insights-provider"></a>注册 Insights 提供程序
 
 要使流日志记录正常工作，必须注册 **Microsoft.Insights** 提供程序。 如果不确定 **Microsoft.Insights** 提供程序是否已注册，请运行以下脚本。
 
 ```azurecli
-azure provider register --namespace Microsoft.Insights --subscription <subscriptionid>
+az provider register --namespace Microsoft.Insights
 ```
 
 ## <a name="enable-network-security-group-flow-logs"></a>启用网络安全组流日志
@@ -49,7 +52,7 @@ azure provider register --namespace Microsoft.Insights --subscription <subscript
 以下示例显示了用于启用流日志的命令：
 
 ```azurecli
-azure network watcher configure-flow-log -g resourceGroupName -n networkWatcherName -t nsgId -i storageAccountId -e true
+az network watcher flow-log configure --resource-group resourceGroupName --enabled true --nsg nsgName --storage-account storageAccountName
 ```
 
 ## <a name="disable-network-security-group-flow-logs"></a>禁用网络安全组流日志
@@ -57,7 +60,7 @@ azure network watcher configure-flow-log -g resourceGroupName -n networkWatcherN
 使用以下示例禁用流日志：
 
 ```azurecli
-azure network watcher configure-flow-log -g resourceGroupName -n networkWatcherName -t nsgId -i storageAccountId -e false
+az network watcher flow-log configure --resource-group resourceGroupName --enabled false --nsg nsgName
 ```
 
 ## <a name="download-a-flow-log"></a>下载流日志

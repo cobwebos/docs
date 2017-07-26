@@ -1,10 +1,10 @@
 ---
-title: SMTP | Microsoft Docs
-description: "使用 Azure App Service 创建逻辑应用。 连接到 SMTP 以发送电子邮件。"
+title: "在 Azure 逻辑应用中使用 SMTP 连接器 | Microsoft Docs"
+description: "使用 Azure 应用服务创建逻辑应用。 连接到 SMTP 以发送电子邮件。"
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: msftman
-manager: erikre
+author: MandiOhlinger
+manager: anneta
 editor: 
 tags: connectors
 ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
@@ -14,10 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/15/2016
-ms.author: deonhe
-translationtype: Human Translation
-ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
-ms.openlocfilehash: 3a0fdef111fbd4a9f7491e247f2236cf70b89dca
+ms.author: mandia; ladocs
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 1cf96bbf8bd215d7ddb3c99860a5cb4e668be3c2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -27,7 +29,7 @@ ms.openlocfilehash: 3a0fdef111fbd4a9f7491e247f2236cf70b89dca
 若要使用 [任何连接器](apis-list.md) ，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md) 开始操作。
 
 ## <a name="connect-to-smtp"></a>连接到 SMTP
-需要先创建到任何服务的*连接*，然后逻辑应用才能访问该服务。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。 例如，若要连接到 SMTP，首先需要 SMTP *连接*。 若要创建连接，需要提供通常用于访问要连接到的服务的凭据。 因此在 SMTP 示例中，需要连接名称、SMTP 服务器地址和用户登录信息的凭据，以便创建到 SMTP 的连接。 [了解有关连接的详细信息]()  
+需要先创建到任何服务的*连接*，然后逻辑应用才能访问该服务。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。 例如，若要连接到 SMTP，首先需要 SMTP 连接。 若要创建连接，请输入通常用于访问要连接到的服务的凭据。 因此在 SMTP 示例中，输入连接名称、SMTP 服务器地址和用户登录信息的凭据，以便创建到 SMTP 的连接。  
 
 ### <a name="create-a-connection-to-smtp"></a>创建到 SMTP 的连接
 > [!INCLUDE [Steps to create a connection to SMTP](../../includes/connectors-create-api-smtp.md)]
@@ -64,63 +66,9 @@ ms.openlocfilehash: 3a0fdef111fbd4a9f7491e247f2236cf70b89dca
    ![](../../includes/media/connectors-create-api-smtp/using-smtp-action-4.PNG)  
 6. 保存工作，以便激活工作流。  
 
-## <a name="technical-details"></a>技术详细信息
-下面详细介绍了此连接支持的触发器、操作和响应：
+## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
-## <a name="smtp-triggers"></a>SMTP 触发器
-SMTP 没有触发器。 
+在[连接器详细信息](/connectors/smtpconnector/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
 
-## <a name="smtp-actions"></a>SMTP 操作
-SMTP 具有以下操作：
-
-| 操作 | 说明 |
-| --- | --- |
-| [发送电子邮件](connectors-create-api-smtp.md#send-email) |此操作将一封电子邮件发送给一个或多个收件人。 |
-
-### <a name="action-details"></a>操作详细信息
-下面详细介绍了此连接器的操作和触发器及其响应：
-
-### <a name="send-email"></a>发送电子邮件
-此操作将一封电子邮件发送给一个或多个收件人。 
-
-| 属性名称 | 显示名称 | 说明 |
-| --- | --- | --- |
-| 如果 |如果 |指定由分号分隔的电子邮件地址，如 recipient1@domain.com;recipient2@domain.com |
-| CC |cc |指定由分号分隔的电子邮件地址，如 recipient1@domain.com;recipient2@domain.com |
-| 使用者 |使用者 |电子邮件主题 |
-| 正文 |正文 |电子邮件正文 |
-| 从 |从 |发件人的电子邮件地址，如 sender@domain.com |
-| IsHtml |属于 HTML |以 HTML 格式 (true/false) 发送电子邮件 |
-| Bcc |bcc |指定由分号分隔的电子邮件地址，如 recipient1@domain.com;recipient2@domain.com |
-| 重要性 |重要性 |电子邮件的重要性（高、正常或低） |
-| ContentData |附件内容数据 |内容数据（对于流，base64 编码，对于字符串，按原样） |
-| ContentType |附件内容类型 |内容类型 |
-| ContentTransferEncoding |附件内容传输编码 |内容传输编码（base64 或无） |
-| FileName |附件文件名 |文件名 |
-| ContentId |附件内容 ID |内容 ID |
-
-* 指示属性是必需的
-
-## <a name="http-responses"></a>HTTP 响应
-上述操作和触发器可以返回以下一个或多个 HTTP 状态代码： 
-
-| Name | 说明 |
-| --- | --- |
-| 200 |确定 |
-| 202 |已接受 |
-| 400 |错误的请求 |
-| 401 |未授权 |
-| 403 |禁止 |
-| 404 |未找到 |
-| 500 |内部服务器错误。 发生未知错误。 |
-| default |操作失败。 |
-
-## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-
+## <a name="more-connectors"></a>更多连接器
+返回到 [API 列表](apis-list.md)。

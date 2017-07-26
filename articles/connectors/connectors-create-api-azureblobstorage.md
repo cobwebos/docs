@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 05/02/2017
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: a52cc8d5685fad849bf8ea2a4c4f8fde3f340bde
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: bc7908868828bd1628633cf9e57f8c44f8000827
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -71,9 +71,9 @@ ms.lasthandoff: 05/10/2017
 > [!TIP]
 > [存储资源管理器](http://storageexplorer.com/)是用于管理多个存储帐户的出色工具。
 
-## <a name="view-the-swagger"></a>查看 Swagger
+## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
-请参阅 [Swagger 详细信息](/connectors/azureblobconnector/)。 
+在[连接器详细信息](/connectors/azureblobconnector/)中查看在 Swagger 中定义的触发器和操作，并查看限制。 
 
 ## <a name="next-steps"></a>后续步骤
 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。

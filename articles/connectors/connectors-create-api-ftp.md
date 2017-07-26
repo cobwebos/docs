@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 07/22/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 0dd751d9c824f27bdb25681908cb0dca5116100b
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 61bfbedfd4f1e84b6976099323a32f3a720634c0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -88,8 +88,9 @@ ms.lasthandoff: 05/10/2017
 
 现在可以添加另一个操作（[如“SQL Server - 插入行”](connectors-create-api-sqlazure.md)操作），将新文件或已修改文件的内容插入到 SQL 数据库表中。  
 
-## <a name="view-the-swagger"></a>查看 Swagger
-请参阅 [Swagger 详细信息](/connectors/ftpconnector/)。 
+## <a name="connector-specific-details"></a>特定于连接器的详细信息
+
+在[连接器详细信息](/connectors/ftpconnector/)中查看在 Swagger 中定义的触发器和操作，并查看限制。 
 
 ## <a name="next-steps"></a>后续步骤
 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)

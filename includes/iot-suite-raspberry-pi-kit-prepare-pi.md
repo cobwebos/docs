@@ -69,19 +69,21 @@ Raspbian 的默认凭据为用户名 **pi** 和密码 **raspberry**。 在 GUI �
 
 在运行示例应用程序之前，必须在 Raspberry Pi 上启用串行外围设备接口 (SPI) 总线。 Raspberry Pi 通过 SPI 总线与 BME280 传感器设备通信。 使用以下命令编辑配置文件：
 
-`sudo nano /boot/config.txt`
+```sh
+sudo nano /boot/config.txt
+```
 
 查找行：
 
-```
-#dtparam=spi=on
-```
+`#dtparam=spi=on`
 
 - 若要取消注释行，请删除开头的 `#`。
 - 保存所做的更改（按 **Ctrl-O**，然后按 **Enter**），然后退出编辑器（按 **Ctrl-X**）。
 - 若要启用 SPI，请重新启动 Raspberry Pi。 重新启动会断开终端的连接，在 Raspberry Pi 重新启动后需再次登录：
 
-  `sudo reboot`
+  ```sh
+  sudo reboot
+  ```
 
 
 [img-connection-diagram]: media/iot-suite-raspberry-pi-kit-prepare-pi/rpi2_remote_monitoring.png

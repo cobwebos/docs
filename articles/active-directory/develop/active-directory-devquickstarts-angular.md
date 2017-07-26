@@ -3,7 +3,7 @@ title: "Azure AD AngularJS 入门 | Microsoft Docs"
 description: "如何生成一个与 Azure AD 集成以方便登录，并使用 OAuth 调用 Azure AD 保护 API 的 AngularJS 单页面应用程序。"
 services: active-directory
 documentationcenter: 
-author: dstrockis
+author: jmprieur
 manager: mbaldwin
 editor: 
 ms.assetid: f2991054-8146-4718-a5f7-59b892230ad7
@@ -13,10 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: a9997b6a6d30fbd2d21dee5d9c1e3ea92dfa97ab
-ms.openlocfilehash: 0ace1ee96d9266db9310ba73c36788a787a9dd15
+ms.author: jmprieur
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 797b6236afad45e3e308ce073a8beb90cb7e94a1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -29,6 +32,7 @@ ms.openlocfilehash: 0ace1ee96d9266db9310ba73c36788a787a9dd15
 对于浏览器中运行的 javascript 应用程序，Azure AD 提供 Active Directory 身份验证库 (ADAL)，即 adal.js。 adal.js 的唯一用途就是方便应用获取访问令牌。 为了演示这种简便性，我们生成了一个 AngularJS 待办事项列表应用程序，其中包括：
 
 * 使用 Azure AD 作为标识提供程序将用户登录到应用。
+
 * 显示有关用户的一些信息。
 * 使用 Azure AD 提供的持有者令牌安全调用应用的待办事项列表 API。
 * 从应用程序中注销用户。
@@ -45,7 +49,7 @@ ms.openlocfilehash: 0ace1ee96d9266db9310ba73c36788a787a9dd15
 若要使应对用户进行身份验证并获取令牌，首先需要在 Azure AD 租户中注册该应用：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在顶部栏上，单击你的帐户。 在“目录”列表下选择要注册应用程序的 Azure AD 租户。
+2. 如果登录到多个目录，可能需要确保正在查看正确目录。 若要执行此操作，在顶部栏上，单击你的帐户。 在“目录”列表下选择要注册应用程序的 Azure AD 租户。
 3. 在左窗格中，单击“更多服务”，然后选择“Azure Active Directory”。
 4. 单击“应用注册”，然后选择“添加”。
 5. 根据提示创建一个新的 Web 应用程序和/或 Web API：
@@ -61,6 +65,7 @@ ms.openlocfilehash: 0ace1ee96d9266db9310ba73c36788a787a9dd15
 ## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>步骤 2：安装 ADAL 并配置单页面应用
 将应用程序注册到 Azure AD 后，可以安装 adal.js 并编写标识相关的代码。
 
+### <a name="configure-the-javascript-client"></a>配置 JavaScript 客户端
 首先，使用程序包管理器控制台将 adal.js 添加到 TodoSPA 项目：
   1. 下载 [adal.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/master/lib/adal.js) 并将其添加到 `App/Scripts/` 项目目录。
   2. 下载 [adal-angular.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/master/lib/adal-angular.js) 并将其添加到 `App/Scripts/` 项目目录。
@@ -73,6 +78,7 @@ ms.openlocfilehash: 0ace1ee96d9266db9310ba73c36788a787a9dd15
     ...
     ```
 
+### <a name="configure-the-back-end-server"></a>配置后端服务器
 要使单页面应用的后端待办事项列表 API 接受来自浏览器的令牌，后端需要有关应用注册的配置信息。 在 TodoSPA 项目中，打开 `web.config`。 替换 `<appSettings>` 部分中的元素值，反映在 Azure 门户中使用的值。 只要使用 ADAL，你的代码就会引用这些值。
   * `ida:Tenant` 是 Azure AD 租户的域，例如 contoso.onmicrosoft.com。
   * `ida:Audience` 是从门户复制的应用程序的客户端 ID。
@@ -156,9 +162,4 @@ Adal.js 与 AngularJS 路由和 HTTP 提供程序集成，以便可以帮助保�
 现在，你可以转到其他方案。 可能需要：[从单页面应用调用 CORS Web API](https://github.com/AzureAdSamples/SinglePageApp-WebAPI-AngularJS-DotNet)。
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

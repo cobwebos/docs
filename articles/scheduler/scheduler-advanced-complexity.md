@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e329d152ea6a95c8cdfa6a507504601d4e0957cd
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: 20c3e3c1cb85308cad47054c2efa87f61cae0f22
+ms.contentlocale: zh-cn
+ms.lasthandoff: 05/19/2017
 
 
 ---
@@ -32,7 +33,7 @@ Azure 计划程序允许你为作业指定不同的一次性计划和重复性�
 * 周期性数据清理 – 例如，每日删除 3 个月以前的所有推文
 * 存档 – 例如，每月向备份服务推送发票历史记录
 * 请求外部数据 – 例如，每隔 15 分钟从 NOAA 提取新的滑雪天气报告
-* 图像处理 – 例如，在每个工作日的非高峰时间，使用云计算来压缩当天上载的图像
+* 图像处理 – 例如，在每个工作日的非高峰时间，使用云计算来压缩当天上传的图像
 
 在本文中，我们将会演练你可以使用 Azure 计划程序创建的示例作业。 我们将提供用于描述每个计划的 JSON 数据。 如果你熟悉[计划程序 REST API](https://msdn.microsoft.com/library/mt629143.aspx)，可以使用与此相同的 JSON 来[创建 Azure 计划程序作业](https://msdn.microsoft.com/library/mt629145.aspx)。
 
@@ -42,7 +43,7 @@ Azure 计划程序允许你为作业指定不同的一次性计划和重复性�
 * 在特定的日期和时间运行一次
 * 运行并重复明确的次数
 * 立即运行，然后重复
-* 运行并每隔 *n* 分钟、小时、天、周、月在特定的时间开始重复
+* 运行并每隔 n 分钟、小时、天、周、月在特定的时间开始重复
 * 运行并根据每周或每月的频率重复，不过，只会在特定的日期、特定的星期或特定的月份日次重复
 * 运行并在某个时间段中的多个时间重复 - 例如，每月的最后一个星期五和星期一，或者每天的 5:15AM 和 5:15PM
 
@@ -129,7 +130,7 @@ Azure 计划程序作业中的日期时间引用遵循 [ISO-8601 规范](http://
 | **分钟数** |运行作业的小时中的分钟 |<ul><li>整数，或</li><li>整数数组</li></ul> |
 | **小时数** |运行作业的日期中的小时 |<ul><li>整数，或</li><li>整数数组</li></ul> |
 | **工作日** |运行作业的星期日期。 只能配合每周频率指定。 |<ul><li>"Monday"、"Tuesday"、"Wednesday"、"Thursday"、"Friday"、"Saturday" 或 "Sunday"</li><li>上述任意值的数组（最大数组大小为 7）</li></ul>*不*区分大小写 |
-| **monthlyOccurrences** |确定运行作业的月份日期。 只能配合每月频率指定。 |<ul><li>MonthlyOccurence 对象的数组：</li></ul> <pre>{ "day": *day*,<br />  "occurrence": *occurence*<br />}</pre><p> *day* 是运行作业的星期日期，例如，{Sunday} 表示月份中的每个星期日。 必需。</p><p>*Occurrence* 是月份中重复的日期，例如 {Sunday, -1} 表示月份中的最后一个星期日。 可选。</p> |
+| **monthlyOccurrences** |确定运行作业的月份日期。 只能配合每月频率指定。 |<ul><li>MonthlyOccurrence 对象的数组：</li></ul> <pre>{ "day": *day*,<br />  "occurrence": *occurrence*<br />}</pre><p> *day* 是运行作业的星期日期，例如，{Sunday} 表示月份中的每个星期日。 必需。</p><p>*Occurrence* 是月份中重复的日期，例如 {Sunday, -1} 表示月份中的最后一个星期日。 可选。</p> |
 | **monthDays** |运行作业的月份日期。 只能配合每月频率指定。 |<ul><li><= -1 且 >= -31 的任何值。</li><li>>= 1 且 <= 31 的任何值。</li><li>上述值的数组</li></ul> |
 
 ## <a name="examples-recurrence-schedules"></a>示例：循环计划
@@ -160,7 +161,7 @@ Azure 计划程序作业中的日期时间引用遵循 [ISO-8601 规范](http://
 | <code>{"minutes":[0], "hours":[6], "monthDays":[-1]}</code> |在月份最后一天的 6AM 运行。 如果你要在月份的最后一天运行作业，请使用 -1 而不是日期 28、29、30 或 31。 |
 | <code>{"minutes":[0], "hours":[6], "monthDays":[1,-1]}</code> |在每月第一天和最后一天的 6AM 运行 |
 | <code>{monthDays":[1,-1]}</code> |在每月第一天和最后一天的开始时间运行 |
-| <code>{monthDays":[1,14]}</code> |在每月第一天和第&14; 天的开始时间运行 |
+| <code>{monthDays":[1,14]}</code> |在每月第一天和第 14 天的开始时间运行 |
 | <code>{monthDays":[2]}</code> |在月份第二天的开始时间运行 |
 | <code>{"minutes":[0], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1}]}</code> |在每月第一个星期五的 5AM 运行 |
 | <code>{"monthlyOccurrences":[{"day":"friday", "occurrence":1}]}</code> |在每月第一个星期五的开始时间运行 |
