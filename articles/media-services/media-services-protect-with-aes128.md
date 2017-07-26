@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 07/18/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 3d292501fba980edcb567e7da7c79e8f1d90d1dd
-ms.lasthandoff: 03/14/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 4996df4623a706e51ab00538c17590ebf2d71fc4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="using-aes-128-dynamic-encryption-and-key-delivery-service"></a>使用 AES-128 动态加密和密钥传送服务
@@ -71,10 +71,10 @@ ms.lasthandoff: 03/14/2017
 ## <a name="current-limitations"></a>当前限制
 如果你添加或更新资产的传送策略，则必须删除现有定位符（如果有）并创建新定位符。
 
-## <a id="create_asset"></a>创建资产并将文件上载到资产
-为了对视频进行管理、编码和流式处理，必须首先将内容上载到 Microsoft Azure 媒体服务中。 上载完成后，相关内容即安全地存储在云中供后续处理和流式处理。 
+## <a id="create_asset"></a>创建资产并将文件上传到资产
+为了对视频进行管理、编码和流式处理，必须首先将内容上传到 Microsoft Azure 媒体服务中。 上传完成后，相关内容即安全地存储在云中供后续处理和流式处理。 
 
-有关详细信息，请参阅 [将文件上载到媒体服务帐户](media-services-dotnet-upload-files.md)。
+有关详细信息，请参阅 [将文件上传到媒体服务帐户](media-services-dotnet-upload-files.md)。
 
 ## <a id="encode_asset"></a>将包含文件的资产编码为自适应比特率 MP4 集
 使用动态加密时，你只需创建包含一组多码率 MP4 文件或多码率平滑流源文件的资产。 然后，点播流服务器会确保你以选定的协议按清单或分段请求中的指定格式接收流。 因此，你只需以单一存储格式存储文件并为其付费，然后媒体服务服务就会基于客户端的请求构建并提供相应响应。 有关详细信息，请参阅 [动态打包概述](media-services-dynamic-packaging-overview.md) 主题。
@@ -84,7 +84,7 @@ ms.lasthandoff: 03/14/2017
 >
 >此外，若要使用动态打包和动态加密，你的资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流式处理文件。
 
-有关如何编码的说明，请参阅 [如何使用媒体编码器标准版对资产进行编码](media-services-dotnet-encode-with-media-encoder-standard.md)。
+有关如何编码的说明，请参阅 [如何使用 Media Encoder Standard 对资产进行编码](media-services-dotnet-encode-with-media-encoder-standard.md)。
 
 ## <a id="create_contentkey"></a>创建内容密钥并将其与编码资产相关联
 在媒体服务中，内容密钥包含用于加密资产的密钥。
@@ -220,402 +220,382 @@ ms.lasthandoff: 03/14/2017
         return key;
     }
 
+## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
+
+1. 设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+2. 将以下元素添加到 app.config 文件中定义的 **appSettings**：
+
+        <add key="Issuer" value="http://testacs.com"/>
+        <add key="Audience" value="urn:test"/>
+
 ## <a id="example"></a>示例
-1. 创建新的控制台项目。
-2. 使用 NuGet 安装和添加 Azure 媒体服务.NET SDK 扩展。 安装此包也会安装适用于 .NET 的媒体服务 SDK 并添加所有其他必需的依赖项。
-3. 添加包含帐户名称和密钥信息的配置文件：
 
-        <?xml version="1.0" encoding="utf-8"?>
-        <configuration>
-            <startup> 
-                <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
-            </startup>
-              <appSettings>
-
-                <add key="MediaServicesAccountName" value="AccountName"/>
-                <add key="MediaServicesAccountKey" value="AccountKey"/>
-
-                <add key="Issuer" value="http://testacs.com"/>
-                <add key="Audience" value="urn:test"/>
-              </appSettings>
-        </configuration>
-
-1. 使用本部分中所示的代码覆盖 Program.cs 文件中的代码。
+使用本部分中所示的代码覆盖 Program.cs 文件中的代码。
  
-    >[!NOTE]
-    >不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
+>[!NOTE]
+>不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
 
-    请务必将变量更新为指向输入文件所在的文件夹。
+请务必将变量更新为指向输入文件所在的文件夹。
 
-        using System;
-        using System.Collections.Generic;
-        using System.Configuration;
-        using System.IO;
-        using System.Linq;
-        using System.Net;
-        using System.Security.Cryptography;
-        using System.Text;
-        using System.Threading.Tasks;
-        using Microsoft.WindowsAzure.MediaServices.Client;
-        using Newtonsoft.Json.Linq;
-        using System.Threading;
-        using Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization;
-        using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
-        using System.Web;
-        using System.Globalization;
+    using System;
+    using System.Collections.Generic;
+    using System.Configuration;
+    using System.IO;
+    using System.Linq;
+    using System.Security.Cryptography;
+    using Microsoft.WindowsAzure.MediaServices.Client;
+    using System.Threading;
+    using Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization;
+    using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
 
-        namespace AESDynamicEncryptionAndKeyDeliverySvc
+    namespace AESDynamicEncryptionAndKeyDeliverySvc
+    {
+        class Program
         {
-            class Program
+        // Read values from the App.config file.
+        private static readonly string _AADTenantDomain =
+        ConfigurationManager.AppSettings["AADTenantDomain"];
+        private static readonly string _RESTAPIEndpoint =
+        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+
+        // A Uri describing the issuer of the token.  
+        // Must match the value in the token for the token to be considered valid.
+        private static readonly Uri _sampleIssuer =
+            new Uri(ConfigurationManager.AppSettings["Issuer"]);
+        // The Audience or Scope of the token.  
+        // Must match the value in the token for the token to be considered valid.
+        private static readonly Uri _sampleAudience =
+            new Uri(ConfigurationManager.AppSettings["Audience"]);
+
+        // Field for service context.
+        private static CloudMediaContext _context = null;
+
+        private static readonly string _mediaFiles =
+            Path.GetFullPath(@"../..\Media");
+
+        private static readonly string _singleMP4File =
+            Path.Combine(_mediaFiles, @"BigBuckBunny.mp4");
+
+        static void Main(string[] args)
+        {
+            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+            _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
+
+            bool tokenRestriction = false;
+            string tokenTemplateString = null;
+
+            IAsset asset = UploadFileAndCreateAsset(_singleMP4File);
+            Console.WriteLine("Uploaded asset: {0}", asset.Id);
+
+            IAsset encodedAsset = EncodeToAdaptiveBitrateMP4Set(asset);
+            Console.WriteLine("Encoded asset: {0}", encodedAsset.Id);
+
+            IContentKey key = CreateEnvelopeTypeContentKey(encodedAsset);
+            Console.WriteLine("Created key {0} for the asset {1} ", key.Id, encodedAsset.Id);
+            Console.WriteLine();
+
+            if (tokenRestriction)
+            tokenTemplateString = AddTokenRestrictedAuthorizationPolicy(key);
+            else
+            AddOpenAuthorizationPolicy(key);
+
+            Console.WriteLine("Added authorization policy: {0}", key.AuthorizationPolicyId);
+            Console.WriteLine();
+
+            CreateAssetDeliveryPolicy(encodedAsset, key);
+            Console.WriteLine("Created asset delivery policy. \n");
+            Console.WriteLine();
+
+            if (tokenRestriction && !String.IsNullOrEmpty(tokenTemplateString))
             {
-                // Read values from the App.config file.
-                private static readonly string _mediaServicesAccountName =
-                    ConfigurationManager.AppSettings["MediaServicesAccountName"];
-                private static readonly string _mediaServicesAccountKey =
-                    ConfigurationManager.AppSettings["MediaServicesAccountKey"];
-
-                // A Uri describing the issuer of the token.  
-                // Must match the value in the token for the token to be considered valid.
-                private static readonly Uri _sampleIssuer =
-                    new Uri(ConfigurationManager.AppSettings["Issuer"]);
-                // The Audience or Scope of the token.  
-                // Must match the value in the token for the token to be considered valid.
-                private static readonly Uri _sampleAudience =
-                    new Uri(ConfigurationManager.AppSettings["Audience"]);
-
-                // Field for service context.
-                private static CloudMediaContext _context = null;
-                private static MediaServicesCredentials _cachedCredentials = null;
-
-                private static readonly string _mediaFiles =
-                    Path.GetFullPath(@"../..\Media");
-
-                private static readonly string _singleMP4File =
-                    Path.Combine(_mediaFiles, @"BigBuckBunny.mp4");
-
-
-                static void Main(string[] args)
-                {
-                    // Create and cache the Media Services credentials in a static class variable.
-                    _cachedCredentials = new MediaServicesCredentials(
-                                    _mediaServicesAccountName,
-                                    _mediaServicesAccountKey);
-                    // Used the chached credentials to create CloudMediaContext.
-                    _context = new CloudMediaContext(_cachedCredentials);
-
-                    bool tokenRestriction = false;
-                    string tokenTemplateString = null;
-
-                    IAsset asset = UploadFileAndCreateAsset(_singleMP4File);
-                    Console.WriteLine("Uploaded asset: {0}", asset.Id);
-
-                    IAsset encodedAsset = EncodeToAdaptiveBitrateMP4Set(asset);
-                    Console.WriteLine("Encoded asset: {0}", encodedAsset.Id);
-
-                    IContentKey key = CreateEnvelopeTypeContentKey(encodedAsset);
-                    Console.WriteLine("Created key {0} for the asset {1} ", key.Id, encodedAsset.Id);
-                    Console.WriteLine();
-
-                    if (tokenRestriction)
-                        tokenTemplateString = AddTokenRestrictedAuthorizationPolicy(key);
-                    else
-                        AddOpenAuthorizationPolicy(key);
-
-                    Console.WriteLine("Added authorization policy: {0}", key.AuthorizationPolicyId);
-                    Console.WriteLine();
-
-                    CreateAssetDeliveryPolicy(encodedAsset, key);
-                    Console.WriteLine("Created asset delivery policy. \n");
-                    Console.WriteLine();
-
-                    if (tokenRestriction && !String.IsNullOrEmpty(tokenTemplateString))
-                    {
-                        // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
-                        // back into a TokenRestrictionTemplate class instance.
-                        TokenRestrictionTemplate tokenTemplate =
-                            TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
-
-                        // Generate a test token based on the data in the given TokenRestrictionTemplate.
-                        // Note, you need to pass the key id Guid because we specified 
-                        // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
-                        Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
-
-                        //The GenerateTestToken method returns the token without the word “Bearer” in front
-                        //so you have to add it in front of the token string. 
-                        string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey);
-                        Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
-                        Console.WriteLine();
-                    }
-
-                    // You can use the bit.ly/aesplayer Flash player to test the URL 
-                    // (with open authorization policy). 
-                    // Paste the URL and click the Update button to play the video. 
-                    //
-                    string URL = GetStreamingOriginLocator(encodedAsset);
-                    Console.WriteLine("Smooth Streaming Url: {0}/manifest", URL);
-                    Console.WriteLine();
-                    Console.WriteLine("HLS Url: {0}/manifest(format=m3u8-aapl)", URL);
-                    Console.WriteLine();
-
-                    Console.ReadLine();
-                }
-
-                static public IAsset UploadFileAndCreateAsset(string singleFilePath)
-                {
-                    if (!File.Exists(singleFilePath))
-                    {
-                        Console.WriteLine("File does not exist.");
-                        return null;
-                    }
-
-                    var assetName = Path.GetFileNameWithoutExtension(singleFilePath);
-                    IAsset inputAsset = _context.Assets.Create(assetName, AssetCreationOptions.StorageEncrypted);
-
-                    var assetFile = inputAsset.AssetFiles.Create(Path.GetFileName(singleFilePath));
-
-                    Console.WriteLine("Created assetFile {0}", assetFile.Name);
-
-
-                    Console.WriteLine("Upload {0}", assetFile.Name);
-
-                    assetFile.Upload(singleFilePath);
-                    Console.WriteLine("Done uploading {0}", assetFile.Name);
-
-                    return inputAsset;
-                }
-
-                static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
-                {
-                    // Declare a new job.
-                    IJob job = _context.Jobs.Create("Media Encoder Standard Job");
-                    // Get a media processor reference, and pass to it the name of the 
-                    // processor to use for the specific task.
-                    IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
-
-                    // Create a task with the encoding details, using a string preset.
-                    // In this case "Adaptive Streaming" preset is used.
-                    ITask task = job.Tasks.AddNew("My encoding task",
-                        processor,
-                        "Adaptive Streaming",
-                        TaskOptions.None);
-
-                    // Specify the input asset to be encoded.
-                    task.InputAssets.Add(asset);
-                    // Add an output asset to contain the results of the job. 
-                    // This output is specified as AssetCreationOptions.None, which 
-                    // means the output asset is not encrypted. 
-                    task.OutputAssets.AddNew("Output asset",
-                        AssetCreationOptions.StorageEncrypted);
-
-                    job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
-                    job.Submit();
-                    job.GetExecutionProgressTask(CancellationToken.None).Wait();
-
-                    return job.OutputMediaAssets[0];
-                }
-
-                private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-                {
-                    var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
-                    ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
-
-                    if (processor == null)
-                        throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
-
-                    return processor;
-                }
-
-                static public IContentKey CreateEnvelopeTypeContentKey(IAsset asset)
-                {
-                    // Create envelope encryption content key
-                    Guid keyId = Guid.NewGuid();
-                    byte[] contentKey = GetRandomBuffer(16);
-
-                    IContentKey key = _context.ContentKeys.Create(
-                                            keyId,
-                                            contentKey,
-                                            "ContentKey",
-                                            ContentKeyType.EnvelopeEncryption);
-
-                    // Associate the key with the asset.
-                    asset.ContentKeys.Add(key);
-
-                    return key;
-                }
-
-                static public void AddOpenAuthorizationPolicy(IContentKey contentKey)
-                {
-                    // Create ContentKeyAuthorizationPolicy with Open restrictions 
-                    // and create authorization policy             
-                    IContentKeyAuthorizationPolicy policy = _context.
-                                            ContentKeyAuthorizationPolicies.
-                                            CreateAsync("Open Authorization Policy").Result;
-
-                    List<ContentKeyAuthorizationPolicyRestriction> restrictions =
-                        new List<ContentKeyAuthorizationPolicyRestriction>();
-
-                    ContentKeyAuthorizationPolicyRestriction restriction =
-                        new ContentKeyAuthorizationPolicyRestriction
-                        {
-                            Name = "HLS Open Authorization Policy",
-                            KeyRestrictionType = (int)ContentKeyRestrictionType.Open,
-                            Requirements = null // no requirements needed for HLS
-                                };
-
-                    restrictions.Add(restriction);
-
-                    IContentKeyAuthorizationPolicyOption policyOption =
-                        _context.ContentKeyAuthorizationPolicyOptions.Create(
-                        "policy",
-                        ContentKeyDeliveryType.BaselineHttp,
-                        restrictions,
-                        "");
-
-                    policy.Options.Add(policyOption);
-
-                    // Add ContentKeyAutorizationPolicy to ContentKey
-                    contentKey.AuthorizationPolicyId = policy.Id;
-                    IContentKey updatedKey = contentKey.UpdateAsync().Result;
-                    Console.WriteLine("Adding Key to Asset: Key ID is " + updatedKey.Id);
-                }
-
-                public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
-                {
-                    string tokenTemplateString = GenerateTokenRequirements();
-
-                    IContentKeyAuthorizationPolicy policy = _context.
-                                            ContentKeyAuthorizationPolicies.
-                                            CreateAsync("HLS token restricted authorization policy").Result;
-
-                    List<ContentKeyAuthorizationPolicyRestriction> restrictions =
-                            new List<ContentKeyAuthorizationPolicyRestriction>();
-
-                    ContentKeyAuthorizationPolicyRestriction restriction =
-                            new ContentKeyAuthorizationPolicyRestriction
-                            {
-                                Name = "Token Authorization Policy",
-                                KeyRestrictionType = (int)ContentKeyRestrictionType.TokenRestricted,
-                                Requirements = tokenTemplateString
-                            };
-
-                    restrictions.Add(restriction);
-
-                    //You could have multiple options 
-                    IContentKeyAuthorizationPolicyOption policyOption =
-                        _context.ContentKeyAuthorizationPolicyOptions.Create(
-                            "Token option for HLS",
-                            ContentKeyDeliveryType.BaselineHttp,
-                            restrictions,
-                            null  // no key delivery data is needed for HLS
-                            );
-
-                    policy.Options.Add(policyOption);
-
-                    // Add ContentKeyAutorizationPolicy to ContentKey
-                    contentKey.AuthorizationPolicyId = policy.Id;
-                    IContentKey updatedKey = contentKey.UpdateAsync().Result;
-                    Console.WriteLine("Adding Key to Asset: Key ID is " + updatedKey.Id);
-
-                    return tokenTemplateString;
-                }
-
-                static public void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
-                {
-                    Uri keyAcquisitionUri = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.BaselineHttp);
-
-                    string envelopeEncryptionIV = Convert.ToBase64String(GetRandomBuffer(16));
-
-                    // When configuring delivery policy, you can choose to associate it
-                    // with a key acquisition URL that has a KID appended or
-                    // or a key acquisition URL that does not have a KID appended  
-                    // in which case a content key can be reused. 
-
-                    // EnvelopeKeyAcquisitionUrl:  contains a key ID in the key URL.
-                    // EnvelopeBaseKeyAcquisitionUrl:  the URL does not contains a key ID
-
-                    // The following policy configuration specifies: 
-                    // key url that will have KID=<Guid> appended to the envelope and
-                    // the Initialization Vector (IV) to use for the envelope encryption.
-
-                    Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
-                        new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
-                    {
-                                {AssetDeliveryPolicyConfigurationKey.EnvelopeKeyAcquisitionUrl, keyAcquisitionUri.ToString()}
-                    };
-
-                    IAssetDeliveryPolicy assetDeliveryPolicy =
-                        _context.AssetDeliveryPolicies.Create(
-                                    "AssetDeliveryPolicy",
-                                    AssetDeliveryPolicyType.DynamicEnvelopeEncryption,
-                                    AssetDeliveryProtocol.SmoothStreaming | AssetDeliveryProtocol.HLS | AssetDeliveryProtocol.Dash,
-                                    assetDeliveryPolicyConfiguration);
-
-                    // Add AssetDelivery Policy to the asset
-                    asset.DeliveryPolicies.Add(assetDeliveryPolicy);
-                    Console.WriteLine();
-                    Console.WriteLine("Adding Asset Delivery Policy: " +
-                        assetDeliveryPolicy.AssetDeliveryPolicyType);
-                }
-
-                static public string GetStreamingOriginLocator(IAsset asset)
-                {
-
-                    // Get a reference to the streaming manifest file from the  
-                    // collection of files in the asset. 
-
-                    var assetFile = asset.AssetFiles.Where(f => f.Name.ToLower().
-                                                EndsWith(".ism")).
-                                                FirstOrDefault();
-
-                    // Create a 30-day readonly access policy. 
-                    // You cannot create a streaming locator using an AccessPolicy that includes write or delete permissions.            
-                    IAccessPolicy policy = _context.AccessPolicies.Create("Streaming policy",
-                        TimeSpan.FromDays(30),
-                        AccessPermissions.Read);
-
-                    // Create a locator to the streaming content on an origin. 
-                    ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
-                        policy,
-                        DateTime.UtcNow.AddMinutes(-5));
-
-                    // Create a URL to the manifest file. 
-                    return originLocator.Path + assetFile.Name;
-                }
-
-                static private string GenerateTokenRequirements()
-                {
-                    TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
-
-                    template.PrimaryVerificationKey = new SymmetricVerificationKey();
-                    template.AlternateVerificationKeys.Add(new SymmetricVerificationKey());
-                    template.Audience = _sampleAudience.ToString();
-                    template.Issuer = _sampleIssuer.ToString();
-
-                    template.RequiredClaims.Add(TokenClaim.ContentKeyIdentifierClaim);
-
-                    return TokenRestrictionTemplateSerializer.Serialize(template);
-                }
-
-                static private void JobStateChanged(object sender, JobStateChangedEventArgs e)
-                {
-                    Console.WriteLine(string.Format("{0}\n  State: {1}\n  Time: {2}\n\n",
-                        ((IJob)sender).Name,
-                        e.CurrentState,
-                        DateTime.UtcNow.ToString(@"yyyy_M_d__hh_mm_ss")));
-                }
-
-                static private byte[] GetRandomBuffer(int size)
-                {
-                    byte[] randomBytes = new byte[size];
-                    using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
-                    {
-                        rng.GetBytes(randomBytes);
-                    }
-
-                    return randomBytes;
-                }
+            // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
+            // back into a TokenRestrictionTemplate class instance.
+            TokenRestrictionTemplate tokenTemplate =
+                TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
+
+            // Generate a test token based on the data in the given TokenRestrictionTemplate.
+            // Note, you need to pass the key id Guid because we specified 
+            // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
+            Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
+
+            //The GenerateTestToken method returns the token without the word “Bearer” in front
+            //so you have to add it in front of the token string. 
+            string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey);
+            Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
+            Console.WriteLine();
             }
+
+            // You can use the bit.ly/aesplayer Flash player to test the URL 
+            // (with open authorization policy). 
+            // Paste the URL and click the Update button to play the video. 
+            //
+            string URL = GetStreamingOriginLocator(encodedAsset);
+            Console.WriteLine("Smooth Streaming Url: {0}/manifest", URL);
+            Console.WriteLine();
+            Console.WriteLine("HLS Url: {0}/manifest(format=m3u8-aapl)", URL);
+            Console.WriteLine();
+
+            Console.ReadLine();
         }
+
+        static public IAsset UploadFileAndCreateAsset(string singleFilePath)
+        {
+            if (!File.Exists(singleFilePath))
+            {
+            Console.WriteLine("File does not exist.");
+            return null;
+            }
+
+            var assetName = Path.GetFileNameWithoutExtension(singleFilePath);
+            IAsset inputAsset = _context.Assets.Create(assetName, AssetCreationOptions.StorageEncrypted);
+
+            var assetFile = inputAsset.AssetFiles.Create(Path.GetFileName(singleFilePath));
+
+            Console.WriteLine("Created assetFile {0}", assetFile.Name);
+
+
+            Console.WriteLine("Upload {0}", assetFile.Name);
+
+            assetFile.Upload(singleFilePath);
+            Console.WriteLine("Done uploading {0}", assetFile.Name);
+
+            return inputAsset;
+        }
+
+        static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
+        {
+            // Declare a new job.
+            IJob job = _context.Jobs.Create("Media Encoder Standard Job");
+            // Get a media processor reference, and pass to it the name of the 
+            // processor to use for the specific task.
+            IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
+
+            // Create a task with the encoding details, using a string preset.
+            // In this case "Adaptive Streaming" preset is used.
+            ITask task = job.Tasks.AddNew("My encoding task",
+            processor,
+            "Adaptive Streaming",
+            TaskOptions.None);
+
+            // Specify the input asset to be encoded.
+            task.InputAssets.Add(asset);
+            // Add an output asset to contain the results of the job. 
+            // This output is specified as AssetCreationOptions.None, which 
+            // means the output asset is not encrypted. 
+            task.OutputAssets.AddNew("Output asset",
+            AssetCreationOptions.StorageEncrypted);
+
+            job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
+            job.Submit();
+            job.GetExecutionProgressTask(CancellationToken.None).Wait();
+
+            return job.OutputMediaAssets[0];
+        }
+
+        private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+        {
+            var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
+            ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
+
+            if (processor == null)
+            throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+
+            return processor;
+        }
+
+        static public IContentKey CreateEnvelopeTypeContentKey(IAsset asset)
+        {
+            // Create envelope encryption content key
+            Guid keyId = Guid.NewGuid();
+            byte[] contentKey = GetRandomBuffer(16);
+
+            IContentKey key = _context.ContentKeys.Create(
+                keyId,
+                contentKey,
+                "ContentKey",
+                ContentKeyType.EnvelopeEncryption);
+
+            // Associate the key with the asset.
+            asset.ContentKeys.Add(key);
+
+            return key;
+        }
+
+        static public void AddOpenAuthorizationPolicy(IContentKey contentKey)
+        {
+            // Create ContentKeyAuthorizationPolicy with Open restrictions 
+            // and create authorization policy             
+            IContentKeyAuthorizationPolicy policy = _context.
+                ContentKeyAuthorizationPolicies.
+                CreateAsync("Open Authorization Policy").Result;
+
+            List<ContentKeyAuthorizationPolicyRestriction> restrictions =
+            new List<ContentKeyAuthorizationPolicyRestriction>();
+
+            ContentKeyAuthorizationPolicyRestriction restriction =
+            new ContentKeyAuthorizationPolicyRestriction
+            {
+            Name = "HLS Open Authorization Policy",
+            KeyRestrictionType = (int)ContentKeyRestrictionType.Open,
+            Requirements = null // no requirements needed for HLS
+        };
+
+            restrictions.Add(restriction);
+
+            IContentKeyAuthorizationPolicyOption policyOption =
+            _context.ContentKeyAuthorizationPolicyOptions.Create(
+            "policy",
+            ContentKeyDeliveryType.BaselineHttp,
+            restrictions,
+            "");
+
+            policy.Options.Add(policyOption);
+
+            // Add ContentKeyAutorizationPolicy to ContentKey
+            contentKey.AuthorizationPolicyId = policy.Id;
+            IContentKey updatedKey = contentKey.UpdateAsync().Result;
+            Console.WriteLine("Adding Key to Asset: Key ID is " + updatedKey.Id);
+        }
+
+        public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
+        {
+            string tokenTemplateString = GenerateTokenRequirements();
+
+            IContentKeyAuthorizationPolicy policy = _context.
+                ContentKeyAuthorizationPolicies.
+                CreateAsync("HLS token restricted authorization policy").Result;
+
+            List<ContentKeyAuthorizationPolicyRestriction> restrictions =
+            new List<ContentKeyAuthorizationPolicyRestriction>();
+
+            ContentKeyAuthorizationPolicyRestriction restriction =
+            new ContentKeyAuthorizationPolicyRestriction
+            {
+                Name = "Token Authorization Policy",
+                KeyRestrictionType = (int)ContentKeyRestrictionType.TokenRestricted,
+                Requirements = tokenTemplateString
+            };
+
+            restrictions.Add(restriction);
+
+            //You could have multiple options 
+            IContentKeyAuthorizationPolicyOption policyOption =
+            _context.ContentKeyAuthorizationPolicyOptions.Create(
+            "Token option for HLS",
+            ContentKeyDeliveryType.BaselineHttp,
+            restrictions,
+            null  // no key delivery data is needed for HLS
+            );
+
+            policy.Options.Add(policyOption);
+
+            // Add ContentKeyAutorizationPolicy to ContentKey
+            contentKey.AuthorizationPolicyId = policy.Id;
+            IContentKey updatedKey = contentKey.UpdateAsync().Result;
+            Console.WriteLine("Adding Key to Asset: Key ID is " + updatedKey.Id);
+
+            return tokenTemplateString;
+        }
+
+        static public void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
+        {
+            Uri keyAcquisitionUri = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.BaselineHttp);
+
+            string envelopeEncryptionIV = Convert.ToBase64String(GetRandomBuffer(16));
+
+            // When configuring delivery policy, you can choose to associate it
+            // with a key acquisition URL that has a KID appended or
+            // or a key acquisition URL that does not have a KID appended  
+            // in which case a content key can be reused. 
+
+            // EnvelopeKeyAcquisitionUrl:  contains a key ID in the key URL.
+            // EnvelopeBaseKeyAcquisitionUrl:  the URL does not contains a key ID
+
+            // The following policy configuration specifies: 
+            // key url that will have KID=<Guid> appended to the envelope and
+            // the Initialization Vector (IV) to use for the envelope encryption.
+
+            Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
+            new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
+            {
+            {AssetDeliveryPolicyConfigurationKey.EnvelopeKeyAcquisitionUrl, keyAcquisitionUri.ToString()}
+            };
+
+            IAssetDeliveryPolicy assetDeliveryPolicy =
+            _context.AssetDeliveryPolicies.Create(
+                "AssetDeliveryPolicy",
+                AssetDeliveryPolicyType.DynamicEnvelopeEncryption,
+                AssetDeliveryProtocol.SmoothStreaming | AssetDeliveryProtocol.HLS | AssetDeliveryProtocol.Dash,
+                assetDeliveryPolicyConfiguration);
+
+            // Add AssetDelivery Policy to the asset
+            asset.DeliveryPolicies.Add(assetDeliveryPolicy);
+            Console.WriteLine();
+            Console.WriteLine("Adding Asset Delivery Policy: " +
+            assetDeliveryPolicy.AssetDeliveryPolicyType);
+        }
+
+        static public string GetStreamingOriginLocator(IAsset asset)
+        {
+
+            // Get a reference to the streaming manifest file from the  
+            // collection of files in the asset. 
+
+            var assetFile = asset.AssetFiles.Where(f => f.Name.ToLower().
+                EndsWith(".ism")).
+                FirstOrDefault();
+
+            // Create a 30-day readonly access policy. 
+            // You cannot create a streaming locator using an AccessPolicy that includes write or delete permissions.            
+            IAccessPolicy policy = _context.AccessPolicies.Create("Streaming policy",
+            TimeSpan.FromDays(30),
+            AccessPermissions.Read);
+
+            // Create a locator to the streaming content on an origin. 
+            ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
+            policy,
+            DateTime.UtcNow.AddMinutes(-5));
+
+            // Create a URL to the manifest file. 
+            return originLocator.Path + assetFile.Name;
+        }
+
+        static private string GenerateTokenRequirements()
+        {
+            TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
+
+            template.PrimaryVerificationKey = new SymmetricVerificationKey();
+            template.AlternateVerificationKeys.Add(new SymmetricVerificationKey());
+            template.Audience = _sampleAudience.ToString();
+            template.Issuer = _sampleIssuer.ToString();
+
+            template.RequiredClaims.Add(TokenClaim.ContentKeyIdentifierClaim);
+
+            return TokenRestrictionTemplateSerializer.Serialize(template);
+        }
+
+        static private void JobStateChanged(object sender, JobStateChangedEventArgs e)
+        {
+            Console.WriteLine(string.Format("{0}\n  State: {1}\n  Time: {2}\n\n",
+            ((IJob)sender).Name,
+            e.CurrentState,
+            DateTime.UtcNow.ToString(@"yyyy_M_d__hh_mm_ss")));
+        }
+
+        static private byte[] GetRandomBuffer(int size)
+        {
+            byte[] randomBytes = new byte[size];
+            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
+            {
+            rng.GetBytes(randomBytes);
+            }
+
+            return randomBytes;
+        }
+        }
+    }
 
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
