@@ -3,8 +3,8 @@ title: "PowerShell 示例 - 活动异地复制 - 共用 Azure SQL 数据库 | Mi
 description: "为共用 Azure SQL 数据库设置活动异地复制的 Azure PowerShell 示例脚本"
 services: sql-database
 documentationcenter: sql-database
-author: janeng
-manager: jstrauss
+author: CarlRabeler
+manager: jhubbard
 editor: carlrab
 tags: azure-service-management
 ms.assetid: 
@@ -14,8 +14,8 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 06/23/2017
-ms.author: janeng
+ms.date: 07/25/2017
+ms.author: carlrab
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: 34a4970e9b0e99cbbbbc52788b00edab4a197755
