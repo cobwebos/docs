@@ -22,8 +22,7 @@ ms.lasthandoff: 06/07/2017
 
 
 ---
-# 使用 Azure 机器学习 Web 服务参数
-<a id="use-azure-machine-learning-web-service-parameters" class="xliff"></a>
+# <a name="use-azure-machine-learning-web-service-parameters"></a>使用 Azure 机器学习 Web 服务参数
 发布包含可配置参数的模块的实验，创建 Azure 机器学习 Web 服务。 在某些情况下，当 Web 服务在运行时，可能会要更改模块行为。 *Web 服务参数*允许执行此任务。 
 
 常见示例为设置[导入数据][reader]模块，以便 Web 服务受访问时，已发布的 Web 服务的用户能够指定不同的数据源。 或配置[导出数据][writer]模块以指定其他目标。 其他一些示例包括为[特征哈希][feature-hashing]模块更改位数或为[基于筛选器的功能选择][filter-based-feature-selection]模块更改所需功能数。 
@@ -32,8 +31,7 @@ ms.lasthandoff: 06/07/2017
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## 如何设置和使用 Web 服务参数
-<a id="how-to-set-and-use-web-service-parameters" class="xliff"></a>
+## <a name="how-to-set-and-use-web-service-parameters"></a>如何设置和使用 Web 服务参数
 单击模块参数旁边的图标，并选择“设为 Web 服务参数”，定义 Web 服务参数。 这创建新的 Web 服务参数，并将其连接到该模块参数。 然后在 Web 服务受访问时，用户可指定 Web 服务参数的值，并且要应用到模块参数。
 
 定义 Web 服务参数后，它可用于实验中其他任何模块参数。 如果定义关联一个模块参数的 Web 服务参数，可将同一 Web 服务参数用于其他任何模块，前提是参数使用相同类型的值。 例如，如果 Web 服务参数是数字值，则它仅可用于使用数字值的模块参数。 当用户设置 Web 服务参数的值时，该参数将应用于所有关联的模块参数。
@@ -47,8 +45,7 @@ Web 服务的 API 文档包括向 Web 服务用户提供的有关访问 Web 服�
 > 
 > 
 
-## 示例
-<a id="example" class="xliff"></a>
+## <a name="example"></a>示例
 例如，假设我们在做将信息发送到 Azure Blob 存储的[导出数据][writer]模块的实验。 我们将定义名为“Blob 路径”的 Web 服务参数，该参数允许 Web 服务用户在服务受访问时更改指向 Blob 存储的路径。
 
 1. 在机器学习工作室中，单击[导出数据][writer]模块，将其选中。 属性显示在实验画布右侧的“属性”窗格中。
@@ -77,9 +74,8 @@ Web 服务的 API 文档包括向 Web 服务用户提供的有关访问 Web 服�
 
 访问 Web 服务时，Web 服务的用户现在可为[导出数据][writer]模块指定新目标。
 
-## 详细信息
-<a id="more-information" class="xliff"></a>
-有关更详细的示例，请参阅[机器学习博客](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx)中的“Web 服务参数”[](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx)条目。
+## <a name="more-information"></a>详细信息
+有关更详细的示例，请参阅 [机器学习博客](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) 中的 [Web 服务参数](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) 条目。
 
 有关访问机器学习 Web 服务的详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](machine-learning-consume-web-services.md)。
 

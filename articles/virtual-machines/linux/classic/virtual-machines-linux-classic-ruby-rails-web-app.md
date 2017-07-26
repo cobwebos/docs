@@ -101,7 +101,7 @@ ms.lasthandoff: 06/30/2017
     [2015-06-09 23:34:23] INFO  WEBrick::HTTPServer#start: pid=27766 port=3000
 
 ## <a name="add-an-endpoint"></a>添加终结点
-1. 转到 [Azure 门户][https://portal.azure.com]，并选择 VM。
+1. 转到 [Azure 门户] [https://portal.azure.com] ，并选择 VM。
 
 2. 选择页面左侧“设置”中的“终结点”。
 
