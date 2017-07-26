@@ -1,6 +1,6 @@
 ---
-title: "配置 Operations Management Suite (OMS) 中的服务映射 | Microsoft Docs"
-description: "服务映射是 Operations Management Suite (OMS) 解决方案，可自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。  本文提供了有关在环境中部署服务映射并在各种方案中使用它的详细信息。"
+title: "在 Operations Management Suite 中配置服务映射 | Microsoft Docs"
+description: "服务映射是 Operations Management Suite 解决方案，可自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文提供了有关在环境中部署服务映射并在各种方案中使用它的详细信息。"
 services: operations-management-suite
 documentationcenter: 
 author: daveirwin1
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: e0c74ef9fa2fa2e0b69a3730d7af30969d60e3f8
-ms.lasthandoff: 04/20/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 9af6c0fc3df2863c8e7b9a6a62acf5ba6b7d2d0a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/09/2017
 
 ---
-# <a name="configuring-service-map-solution-in-operations-management-suite-oms"></a>配置 Operations Management Suite (OMS) 中的服务映射解决方案
-服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 它允许你如所想一般作为提供重要服务的互连系统查看服务器。  服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
+# <a name="configure-service-map-in-operations-management-suite"></a>在 Operations Management Suite 中配置服务映射
+服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 借助它，你可以按照自己的想法，将服务器作为提供重要服务的互连系统。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
 
-本文介绍了配置服务映射和载入代理的详细信息。  有关使用服务映射的信息，请参阅[使用 Operations Management Suite (OMS) 中的服务映射解决方案](operations-management-suite-service-map.md)
+本文介绍了配置服务映射和载入代理的详细信息。 有关使用服务映射的信息，请参阅[使用 Operations Management Suite 中的服务映射解决方案](operations-management-suite-service-map.md)。
 
 ## <a name="dependency-agent-downloads"></a>依赖关系代理下载
 | 文件 | 操作系统 | 版本 | SHA-256 |
@@ -34,123 +34,82 @@ ms.lasthandoff: 04/20/2017
 
 
 ## <a name="connected-sources"></a>连接的源
-服务映射从 Microsoft 依赖关系代理获取其数据。  依赖关系代理依赖 OMS 代理连接到 OMS。  这意味着服务器必须首先安装和配置 OMS 代理，然后才能安装依赖关系代理。  下表介绍了服务映射解决方案支持的连接的源。
+服务映射从 Microsoft 依赖关系代理获取其数据。 依赖关系代理依赖 OMS 代理连接到 Operations Management Suite。 这意味着服务器必须首先安装和配置 OMS 代理，然后才能安装依赖关系代理。 下表介绍了服务映射解决方案支持的连接的源。
 
 | 连接的源 | 支持 | 说明 |
 |:--|:--|:--|
-| Windows 代理 | 是 | 服务映射从 Windows 代理计算机分析和收集数据。  <br><br>除 [OMS 代理](../log-analytics/log-analytics-windows-agents.md)以外，Windows 代理还需要 Microsoft 依赖关系代理。  有关操作系统版本的完整列表，请参阅[受支持的操作系统](#supported-operating-systems)。 |
-| Linux 代理 | 是 | 服务映射从 Linux 代理计算机分析和收集数据。  <br><br>除 [OMS 代理](../log-analytics/log-analytics-linux-agents.md)以外，Linux 代理还需要 Microsoft 依赖关系代理。  有关操作系统版本的完整列表，请参阅[受支持的操作系统](#supported-operating-systems)。 |
-| SCOM 管理组 | 是 | 服务映射在连接的 [System Center Operations Manager (SCOM) 管理组](../log-analytics/log-analytics-om-agents.md)中从 Windows 和 Linux 代理分析和收集数据。 <br><br>需要从 SCOM 代理计算机直接连接到 OMS。 数据直接从管理组转发到 OMS 存储库。|
-| Azure 存储帐户 | 否 | 服务映射从代理计算机收集数据，因此其中任何数据都不会从 Azure 存储中收集。 |
+| Windows 代理 | 是 | 服务映射从 Windows 代理计算机分析和收集数据。 <br><br>除 [OMS 代理](../log-analytics/log-analytics-windows-agents.md)以外，Windows 代理还需要 Microsoft 依赖关系代理。 有关操作系统版本的完整列表，请参阅[受支持的操作系统](#supported-operating-systems)。 |
+| Linux 代理 | 是 | 服务映射从 Linux 代理计算机分析和收集数据。 <br><br>除 [OMS 代理](../log-analytics/log-analytics-linux-agents.md)以外，Linux 代理还需要 Microsoft 依赖关系代理。 有关操作系统版本的完整列表，请参阅[受支持的操作系统](#supported-operating-systems)。 |
+| System Center Operations Manager 管理组 | 是 | 服务映射在连接的 [System Center Operations Manager 管理组](../log-analytics/log-analytics-om-agents.md)中从 Windows 和 Linux 代理分析和收集数据。 <br><br>需要从 System Center Operations Manager 代理计算机直接连接到 Operations Management Suite。 数据从管理组转发到 Operations Management Suite 存储库。|
+| Azure 存储帐户 | 否 | 服务映射从代理计算机中收集数据，因此其中任何数据都不会从 Azure 存储中收集。 |
 
 服务映射仅支持 64 位平台。
 
-在 Windows 上，SCOM 和 OMS 使用 Microsoft Monitoring Agent (MMA) 收集和发送监视数据。  （此代理称为 SCOM 代理、OMS 代理、MMA 或直接代理，具体取决于上下文。）SCOM 和 OMS 提供全新的不同 MMA 版本，但这些版本分别向 SCOM 和 OMS 报告，或同时向两者报告。  在 Linux 上，适用于 Linux 的 OMS 代理收集监视数据并将其发送到 OMS。  可在具有 OMS 直接代理的服务器或已通过 SCOM 管理组连接到 OMS 的服务器上使用服务映射。  在本文档中，我们引用所有代理作为“OMS 代理”（不管是使用 Linux 还是 Windows，也不管是连接到 SCOM MG 还是直接连接到 OMS），除非上下文需要代理的特定部署名称。
+在 Windows 中，System Center Operations Manager 和 Operations Management Suite 都可使用 Microsoft Monitoring Agent (MMA) 收集和发送监视数据。 （根据上下文，可将此代理称为 System Center Operations Manager 代理、OMS 代理、Log Analytics 代理、MMA 或直接代理。）System Center Operations Manager 和 Operations Management Suite 提供不同的 MMA 即开即用版本。 每个版本可向 System Center Operations Manager 报告，或向 Operations Management Suite 报告，也可同时向两者报告。  
 
-服务映射代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。  服务映射数据始终由 OMS 代理直接或通过 OMS 网关传输到 OMS。
+在 Linux 上，适用于 Linux 的 OMS 代理收集监视数据并将其发送到 Operations Management Suite。 可对具有 OMS 直接代理的服务器或通过 System Center Operations Manager 管理组附加到 Operations Management Suite 的服务器使用服务映射。  
+
+在本文中，所有代理称为“OMS 代理”（无论是在 Linux 或 Windows 上，无论是连接到 System Center Operations Manager 管理组还是直接连接到 Operations Management Suite）。 仅在上下文需要时使用代理的特殊部署名称。
+
+服务映射代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。 服务映射数据始终由 OMS 代理直接或通过 OMS 网关传输到 Operations Management Suite。
 
 ![服务映射代理](media/oms-service-map/agents.png)
 
-如果你是使用已连接到 OMS 的管理组的 SCOM 客户：
+如果是 System Center Operations Manager 客户，且拥有连接到 Operations Management Suite 的管理组，则需注意以下几点：
 
-- 如果你的 SCOM 代理可以访问连接到 OMS 的 Internet，无需进行额外配置。  
-- 如果 SCOM 代理无法通过 Internet 访问 OMS，需要配置 OMS 网关才能使用 SCOM。
+- 若 System Center Operations Manager 代理可访问 Internet 以连接到 Operations Management Suite，则无需进行附加配置。  
+- 若 System Center Operations Manager 代理无法通过 Internet 访问 Operations Management Suite，则需配置 OMS 网关以适用于 System Center Operations Manager。
   
-如果你使用的是 OMS 直接代理，需要配置 OMS 代理本身才能连接到 OMS 或 OMS 网关。  可从 [https://www.microsoft.com/download/details.aspx?id=52666](https://www.microsoft.com/download/details.aspx?id=52666) 下载 OMS 网关
+如果使用 OMS 直接代理，则需配置 OMS 代理本身才能连接到 Operations Management Suite 或 OMS 网关。 可从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=52666)下载 OMS 网关。
 
+### <a name="management-packs"></a>管理包
+在 Operations Management Suite 工作区中激活服务映射时，将向该工作区中的所有 Windows 服务器发送 300KB 的管理包。 若在[连接的管理组](../log-analytics/log-analytics-om-agents.md)中使用 System Center Operations Manager 代理，则会从 System Center Operations Manager 部署服务映射管理包。 若直接连接代理，Operations Management Suite 会传送管理包。
 
-### <a name="avoiding-duplicate-data"></a>避免重复数据
+管理包名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor。 它将写入 %Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\。 管理包所使用的数据源是 %Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll。
 
-如果你是 SCOM 客户，不应将 SCOM 代理配置为直接与 OMS 通信，否则数据将报告两次。  在服务映射中，这将导致计算机在计算机列表中出现两次。
-
-应仅在以下位置之一中配置 OMS：
-
-- 托管计算机的 SCOM 控制台 Operations Management Suite 面板
-- MMA 属性中的 Azure 操作见解配置
-
-在两个配置中使用相同的工作区将导致数据重复。 将两个配置用于不同的工作区可能导致配置冲突（一个启用了服务映射解决方案，而另一个却没有），这可能阻止数据完全流向服务映射。  
-
-即使 SCOM 控制台的 OMS 配置中未指定计算机本身，但如果实例组（如“Windows Server 实例组”）处于活动状态，仍可能导致计算机通过 SCOM 接收 OMS 配置。
-
-
-
-## <a name="management-packs"></a>管理包
-在 OMS 工作区中激活服务映射时，将向该工作区中的所有 Microsoft 监视代理发送 300KB 的管理包。  如果在[连接的管理组](../log-analytics/log-analytics-om-agents.md)中使用 SCOM 代理，则将从 SCOM 部署服务映射管理包。  如果代理直接连接，MP 将由 OMS 传送。
-
-MP 名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor*。  它将写入 *%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\*。  管理包所使用的数据源是 *%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll*。
-
-
-
-## <a name="configuration"></a>配置
-除了 Windows 和 Linux 计算机已安装代理并连接到 OMS 之外，还必须从服务映射解决方案下载依赖关系代理安装程序，然后将其作为根或管理安装在每个托管服务器上。  在向 OMS 报告的服务器上安装了服务映射代理后，服务映射依赖关系映射将在 10 分钟内显示。
-
-
-### <a name="migrating-from-bluestripe-factfinder"></a>从 BlueStripe FactFinder 迁移
-在各个阶段中，服务映射将 BlueStripe 技术传送到 OMS。 FactFinder 仍受现有客户支持，但不再用于单独购买。  此预览版本的依赖关系代理仅与 OMS 通信。  如果是现有 FactFinder 客户，请针对服务映射标识一组未由 FactFinder 托管的测试服务器。 
-
-### <a name="download-the-dependency-agent"></a>下载依赖关系代理
-除了提供计算机和 OMS 之间连接的 Microsoft 管理代理 (MMA) 和 OMS Linux 代理外，服务映射分析的所有计算机还必须安装依赖关系代理。  在 Linux 上，适用于 Linux 的 OMS 代理必须在依赖关系代理之前安装。 
-
-![“服务映射”磁贴](media/oms-service-map/additional_configuration.png)
-
-若要下载依赖关系代理，请单击“服务映射”磁贴中的“配置解决方案”，打开“依赖关系代理”边栏选项卡。  “依赖关系代理”边栏选项卡具有 Windows 和 Linux 代理的链接。 有关在不同的系统上安装代理的详细信息，请参阅以下部分。
-
-### <a name="install-the-dependency-agent"></a>安装依赖关系代理
-
-#### <a name="microsoft-windows"></a>Microsoft Windows
+## <a name="installation"></a>安装
+### <a name="install-the-dependency-agent-on-microsoft-windows"></a>在 Microsoft Windows 上安装依赖关系代理
 需要管理员特权才能安装或卸载代理。
 
-使用 InstallDependencyAgent-Windows.exe 在 Windows 计算机上安装依赖关系代理。 如果在没有任何选项的情况下运行此可执行文件，它将启动一个向导，此向导以交互方式指导用户进行安装。  
+使用 InstallDependencyAgent-Windows.exe 在 Windows 计算机上安装依赖关系代理。 如果在没有任何选项的情况下运行此可执行文件，它将启动一个向导，以交互方式指导用户安装。  
 
 使用以下步骤在每台 Windows 计算机上安装依赖关系代理：
 
-1.    确保按照“将计算机直接连接到 OMS”中的说明安装 OMS 代理。
-2.    下载 Windows 代理，并使用以下命令运行它： <br>*InstallDependencyAgent-Windows.exe*
-3.    按照向导安装代理。
-4.    如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 在 Windows 代理上，日志目录是 *C:\Program Files\Microsoft Dependency Agent\logs*。 
+1.  请按照[将 Windows 计算机连接到 Azure 中的 Log Analytics 服务](../log-analytics/log-analytics-windows-agents.md)中的说明安装 OMS 代理。
+2.  下载 Windows 代理，并使用以下命令运行： <br>`InstallDependencyAgent-Windows.exe`
+3.  按照向导安装代理。
+4.  如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 在 Windows 代理上，日志目录是 %Programfiles%\Microsoft Dependency Agent\logs。 
 
-管理员可通过“控制面板”卸载适用于 Windows 的依赖关系代理。
-
-
-#### <a name="linux"></a>Linux
-需要根目录访问才能安装或配置代理。
-
-使用 InstallDependencyAgent-Linux64.bin（具有自解压二进制文件的 Shell 脚本）在 Linux 计算机上安装依赖关系代理。 可运行具有 sh 的文件或将执行权限添加到文件本身。
- 
-使用以下步骤在每台 Linux 计算机上安装依赖关系代理：
-
-1.    确保按照[从 Linux 计算机收集和管理数据。OMS 代理需要在 Linux 依赖关系代理之前安装](https://technet.microsoft.com/library/mt622052.aspx)中的说明安装 OMS 代理。
-2.    使用以下命令将 Linux 依赖关系代理安装为根：<br>*sh InstallDependencyAgent-Linux64.bin*。
-3.    如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 在 Linux 代理上，日志目录是 */var/opt/microsoft/dependency-agent/log*。
-
-### <a name="uninstalling-the-dependency-agent-on-linux"></a>卸载 Linux 上的依赖关系代理
-若要从 Linux 中彻底卸载依赖关系代理，必须删除代理本身以及随该代理自动安装的连接器。  可使用以下单个命令同时卸载这两项：
-
-    rpm -e dependency-agent dependency-agent-connector
-
-
-### <a name="installing-from-a-command-line"></a>从命令行安装
-上一部分提供了有关使用默认选项安装依赖关系监视器代理的指南。  以下部分提供了有关使用自定义选项从命令行安装代理的指南。
-
-#### <a name="windows"></a>Windows
-使用下表中的选项从命令行进行安装。 若要查看安装标志列表，请运行带有 /? 标志，如下所示。
+#### <a name="windows-command-line"></a>Windows 命令行
+使用下表中的选项从命令行进行安装。 若要查看安装标志列表，请使用 /? 标志运行安装程序，如下所示。
 
     InstallDependencyAgent-Windows.exe /?
 
 | 标志 | 说明 |
 |:--|:--|
+| /? | 获取命令行选项列表。 |
 | /S | 执行无提示安装，无用户提示。 |
 
-默认情况下，Windows 依赖关系代理的文件放置在 *C:\Program Files\Microsoft Dependency Agent* 中。
+默认情况下，Windows 依赖关系代理的文件放置在 C:\Program Files\Microsoft Dependency Agent 中。
 
+### <a name="install-the-dependency-agent-on-linux"></a>在 Linux 上安装依赖关系代理
+需要根目录访问才能安装或配置代理。
 
-#### <a name="linux"></a>Linux
-使用下表中的选项进行安装。 若要查看安装标志列表，请运行带有 -help 标志的安装程序，如下所示。
+使用 InstallDependencyAgent-Linux64.bin（具有自解压二进制文件的 Shell 脚本）在 Linux 计算机上安装依赖关系代理。 可使用 sh 运行文件或将执行权限添加到文件本身。
+ 
+使用以下步骤在每台 Linux 计算机上安装依赖关系代理：
+
+1.  按照[从 Linux 计算机收集和管理数据](https://technet.microsoft.com/library/mt622052.aspx)中的说明安装 OMS 代理。
+2.  使用以下命令将 Linux 依赖关系代理安装为根：<br>`sh InstallDependencyAgent-Linux64.bin`
+3.  如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 在 Linux 代理上，日志目录是 /var/opt/microsoft/dependency-agent/log。
+
+若要查看安装标志列表，请运行带有 -help 标志的安装程序，如下所示。
 
     InstallDependencyAgent-Linux64.bin -help
 
 | 标志 | 说明 |
 |:--|:--|
+| -help | 获取命令行选项列表。 |
 | -s | 执行无提示安装，无用户提示。 |
 | --check | 检查权限和操作系统，但不安装代理。 |
 
@@ -164,57 +123,122 @@ MP 名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor*。  它将�
 | 服务可执行文件 | /opt/microsoft/dependency-agent/bin/microsoft-dependency-agent<br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
 | 二进制存储文件 | /var/opt/microsoft/dependency-agent/storage |
 
+## <a name="installation-script-examples"></a>安装脚本示例
+若要轻松地在多个服务器上同时部署依赖关系代理，请使用脚本。 可使用以下脚本示例下载依赖关系代理，并在 Windows 或 Linux 上进行安装。
 
+### <a name="powershell-script-for-windows"></a>适用于 Windows 的 PowerShell 脚本
+```PowerShell
+Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDependencyAgent-Windows.exe
+
+.\InstallDependencyAgent-Windows.exe /S
+```
+
+### <a name="shell-script-for-linux"></a>适用于 Linux 的 Shell 脚本
+```
+wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDependencyAgent-Linux64.bin
+sh InstallDependencyAgent-Linux64.bin -s
+```
+
+## <a name="desired-state-configuration"></a>Desired State Configuration
+若通过 Desired State Configuration 部署依赖关系代理，可使用 xPSDesiredStateConfiguration 模块和少量代码进行操作，如下所示：
+```
+configuration ServiceMap {
+
+Import-DscResource -ModuleName xPSDesiredStateConfiguration
+
+$DAPackageLocalPath = "C:\InstallDependencyAgent-Windows.exe"
+
+Node localhost
+{ 
+    # Download and install the Dependency Agent
+    xRemoteFile DAPackage 
+    {
+        Uri = "https://aka.ms/dependencyagentwindows"
+        DestinationPath = $DAPackageLocalPath
+    }
+
+    xPackage DA
+    {
+        Ensure="Present"
+        Name = "Dependency Agent"
+        Path = $DAPackageLocalPath
+        Arguments = '/S'
+        ProductId = ""
+        InstalledCheckRegKey = "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\DependencyAgent"
+        InstalledCheckRegValueName = "DisplayName"
+        InstalledCheckRegValueData = "Dependency Agent"
+        DependsOn = "[xRemoteFile]DAPackage"
+    }
+  }
+}
+```
+
+## <a name="uninstallation"></a>卸载
+### <a name="uninstall-the-dependency-agent-on-windows"></a>卸载 Windows 上的依赖关系代理
+管理员可通过“控制面板”卸载适用于 Windows 的依赖关系代理。
+
+管理员还可以运行 %Programfiles%\Microsoft Dependency Agent\Uninstall.exe 卸载依赖关系代理。
+
+### <a name="uninstall-the-dependency-agent-on-linux"></a>卸载 Linux 上的依赖关系代理
+若要从 Linux 中彻底卸载依赖关系代理，必须删除代理本身以及随该代理自动安装的连接器。 可使用以下单个命令同时卸载这两项：
+
+    rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="troubleshooting"></a>故障排除
-如果安装或运行服务映射时遇到任何问题，可通过本部分内容了解如何启动和运行服务映射。  如果仍然无法解决问题，请联系 Microsoft 支持部门。
+如果安装或运行服务映射时遇到任何问题，可通过本部分内容获得帮助。 如果仍然无法解决问题，请联系 Microsoft 支持部门。
 
-### <a name="dependency-agent-installation-issues"></a>依赖关系代理安装问题
+### <a name="dependency-agent-installation-problems"></a>依赖关系代理安装问题
 #### <a name="installer-asks-for-a-reboot"></a>安装程序要求重启
-安装或卸载依赖关系代理时，通常不需要重启。  但在极少数的某些情况下，Windows Server 需要重启才能继续安装。  依赖关系（通常是 Microsoft VC++ 可再发行组件）因锁定的文件而需要重启时会发生这种情况。
+安装或卸载依赖关系代理时，通常不需要重启。 在极少数的某些情况下，Windows Server 需要重启才能继续安装。 依赖关系（通常是 Microsoft Visual C++ 可再发行组件）因锁定的文件而需要重启时会发生这种情况。
 
-#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--codenumber"></a>消息“无法安装依赖关系代理：Visual Studio 运行时库安装失败 (code = [code_number])。”
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--codenumber-appears"></a>将显示“无法安装依赖关系代理：Visual Studio 运行时库安装失败 (code = [code_number])”消息
 
-Microsoft 依赖关系代理基于 Microsoft Visual Studio 运行时库。 尝试安装库时遇到问题。 运行时库安装程序在 %LOCALAPPDATA%\temp 文件夹中创建日志。 该文件为 dd_vcredist_arch_yyyymmddhhmmss.log，其中体系结构为“x86”或“amd64”，yyyymmddhhmmss 为创建该日志时的日期和时间（24 小时制）。 此日志提供有关安装被阻止的问题的详细信息。
+Microsoft 依赖关系代理基于 Microsoft Visual Studio 运行时库。 如果安装库时出现问题，将收到一条消息。 
 
-这可能对首次自行安装[最新运行时库](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)很有帮助。
+运行时库安装程序在 %LOCALAPPDATA%\temp 文件夹中创建日志。 该文件为 dd_vcredist_arch_yyyymmddhhmmss.log，其中体系结构为“x86”或“amd64”，yyyymmddhhmmss 为创建该日志时的日期和时间（24 小时制）。 该日志提供有关阻止安装的问题的详细信息。
 
-下面是一些代码号和建议的解决方法。
+这可能有助于首次自行安装[最新运行时库](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。
+
+下表列出了代码号和建议的解决方法。
 
 | 代码 | 说明 | 解决方法 |
 |:--|:--|:--|
-| 0x17 | 库安装程序需要尚未安装的 Windows 更新。 | 查看最新的库安装程序日志（详见上文）。<br><br>如果对“Windows8.1-KB2999226-x64.msu”的引用后跟一行文字“错误 0x80240017：未能执行 MSU 包”，则代表安装 KB2999226 时所需的必备组件还未安装。  请遵循 https://support.microsoft.com/kb/2999226 的必备组件部分中的说明。  请注意，可能需要运行 Windows 更新并重新启动多次，才能安装好所需的必备组件。<br><br>再次运行 Microsoft 依赖关系代理安装程序。 |
+| 0x17 | 库安装程序需要尚未安装的 Windows 更新。 | 查看最新的库安装程序日志。<br><br>如果对“Windows8.1-KB2999226-x64.msu”的引用后跟一行文字“错误 0x80240017：未能执行 MSU 包”，则表示没有安装 KB2999226 所需的必备组件。 请遵循 [Windows 中的 Universal C Runtime](https://support.microsoft.com/kb/2999226) 中必备组件部分的说明。 可能需要运行 Windows 更新并重新启动多次，才能安装好必备组件。<br><br>再次运行 Microsoft 依赖关系代理安装程序。 |
 
 ### <a name="post-installation-issues"></a>安装后的问题
-#### <a name="server-doesnt-show-in-service-map"></a>服务映射中不显示服务器
+#### <a name="server-doesnt-appear-in-service-map"></a>服务映射中不显示服务器
 如果已成功安装依赖关系代理，但在服务映射解决方案中看不到服务器：
-1. 依赖关系代理是否已安装成功？  可通过检查是否已安装并运行服务来验证这一点。<br><br>
-**Windows**：查找名为“Microsoft 依赖关系代理”的服务<br>
-**Linux**：查找名为“microsoft-dependency-agent”的运行中进程
+* 依赖关系代理是否已安装成功？ 可通过检查是否已安装并运行服务来验证这一点。<br><br>
+Windows：查找名为“Microsoft 依赖关系代理”的服务<br>
+Linux：查找名为“microsoft-dependency-agent”的运行中进程
 
-2. 是否处于 [OMS/Log Analytics 的免费定价层](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)？  免费计划允许最多 5 个仅有的服务映射服务器。  服务映射中将不再有任何其他的服务器，即使前 5 个服务器不再发送数据。
+* 是否属于 [Operations Management Suite/Log Analytics 的免费定价层](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)？ 免费计划允许最多 5 个仅有的服务映射服务器。 服务映射中将不再有任何其他的服务器，即使前 5 个服务器不再发送数据。
 
-3. 服务器是否正在向 OMS 发送日志和性能数据？  转到日志搜索，并为计算机运行以下查询： 
+* 服务器是否正在向 Operations Management Suite 发送日志和性能数据？ 转到日志搜索，并为计算机运行以下查询： 
 
         * Computer="<your computer name here>" | measure count() by Type
         
-结果中是否有多种不同的事件？  是否为最新数据？  如果是，则表示 OMS 代理正常运行并与 OMS 服务通信。 如果不是，请在服务器上检查 OMS 代理：[用于 Windows 的 OMS 代理疑难解答](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues)。  [用于 Linux 的 OMS 代理疑难解答](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md)。
+  结果中是否有多种不同的事件？ 是否为最新数据？ 如果是，则表示 OMS 代理正常运行并与 Operations Management Suite 服务通信。 如果不是，请在服务器上检查 OMS 代理：[用于 Windows 的 OMS 代理疑难解答](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues)或[用于 Linux 的 OMS 代理疑难解答](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md)。
 
-#### <a name="server-shows-in-service-map-but-has-no-processes"></a>服务器会在服务映射中显示，但没有任何进程
-如果在服务映射中看到了服务器，但没有任何进程或连接数据，则表明已安装并运行依赖关系代理，但未加载内核驱动程序。  若要找出未加载驱动程序的原因，请检查 wrapper.log 文件 (Windows) 或 service.log 文件 (Linux)。  文件的最后一行应该指出了内核未能加载的原因（例如，内核不受支持，如果更新了内核，则 Linux 上可能出现这种情况）。
+#### <a name="server-appears-in-service-map-but-has-no-processes"></a>服务器会在服务映射中显示，但没有任何进程
+如果在服务映射中看到了服务器，但没有任何进程或连接数据，则表明已安装并运行依赖关系代理，但未加载内核驱动程序。 
 
-Windows：C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log
-
-Linux：/var/opt/microsoft/dependency-agent/log/service.log
+请检查 C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file（针对 Windows）或 /var/opt/microsoft/dependency-agent/log/service.log file（针对 Linux）。 文件的最后几行应指出为何未加载内核。 例如，如果更新内核，则内核在 Linux 上可能不受支持。
 
 ## <a name="data-collection"></a>数据收集
-根据系统依赖关系的复杂性，可预计每个代理每天传输大约 25MB。  每个代理每 15 秒发送一次服务映射依赖关系数据。  
+根据系统依赖关系的复杂性，可预计每个代理每天传输大约 25MB。 每个代理每 15 秒发送一次服务映射依赖关系数据。  
 
 依赖关系代理通常消耗 0.1% 的系统内存和 0.1% 的系统 CPU。
 
+## <a name="supported-azure-regions"></a>支持的 Azure 区域
+服务映射当前在以下 Azure 区域中提供：
+- 美国东部
+- 欧洲西部
+- 美国中西部
+
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
-以下部分列出了依赖关系代理支持的操作系统。   任何操作系统都不支持 32 位体系结构。
+以下部分列出了依赖关系代理支持的操作系统。 服务映射不支持任何操作系统的 32 位体系结构。
 
 ### <a name="windows-server"></a>Windows Server
 - Windows Server 2016
@@ -231,13 +255,13 @@ Linux：/var/opt/microsoft/dependency-agent/log/service.log
 ### <a name="red-hat-enterprise-linux-centos-linux-and-oracle-linux-with-rhel-kernel"></a>Red Hat Enterprise Linux、CentOS Linux 和 Oracle Linux（具有 RHEL 内核）
 - 仅默认版本和 SMP Linux 内核版本受支持。
 - 任何 Linux 分发版都不支持非标准内核版本（例如 PAE 和 Xen）。 例如，不支持版本字符串为“2.6.16.21-0.8-xen”的系统。
-- 不支持自定义内核（包括标准内核的重新编译）
-- 不支持 Centos Plus 内核。
-- Oracle Unbreakable Kernel (UEK) 将在下面的其他部分中介绍。
+- 不支持自定义内核（包括标准内核的重新编译）。
+- 不支持 CentOSPlus 内核。
+- 本文后面部分会介绍 Oracle Unbreakable Enterprise Kernel (UEK)。
 
 
 #### <a name="red-hat-linux-7"></a>Red Hat Linux 7
-| OS 版本。 | 内核版本 |
+| OS 版本 | 内核版本 |
 |:--|:--|
 | 7.0 | 3.10.0-123 |
 | 7.1 | 3.10.0-229 |
@@ -245,7 +269,7 @@ Linux：/var/opt/microsoft/dependency-agent/log/service.log
 | 7.3 | 3.10.0-514 |
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
-| OS 版本。 | 内核版本 |
+| OS 版本 | 内核版本 |
 |:--|:--|
 | 6.0 | 2.6.32-71 |
 | 6.1 | 2.6.32-131 |
@@ -258,17 +282,17 @@ Linux：/var/opt/microsoft/dependency-agent/log/service.log
 | 6.8 | 2.6.32-642 |
 
 #### <a name="red-hat-linux-5"></a>Red Hat Linux 5
-| OS 版本。 | 内核版本 |
+| OS 版本 | 内核版本 |
 |:--|:--|
 | 5.8 | 2.6.18-308 |
 | 5.9 | 2.6.18-348 |
 | 5.10 | 2.6.18-371 |
 | 5.11 | 2.6.18-398<br>2.6.18-400<br>2.6.18-402<br>2.6.18-404<br>2.6.18-406<br>2.6.18-407<br>2.6.18-408<br>2.6.18-409<br>2.6.18-410<br>2.6.18-411<br>2.6.18-412<br>2.6.18-416<br>2.6.18-417<br>2.6.18-419 |
 
-#### <a name="oracle-enterprise-linux-w-unbreakable-kernel-uek"></a>具有 Unbreakable Kernel (UEK) 的 Oracle Enterprise Linux
+#### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>具有 Unbreakable Enterprise Kernel (UEK) 的 Oracle Enterprise Linux
 
 #### <a name="oracle-linux-6"></a>Oracle Linux 6
-| OS 版本。 | 内核版本
+| OS 版本 | 内核版本
 |:--|:--|
 | 6.2 | Oracle 2.6.32-300 (UEK R1) |
 | 6.3 | Oracle 2.6.39-200 (UEK R2) |
@@ -278,7 +302,7 @@ Linux：/var/opt/microsoft/dependency-agent/log/service.log
 
 #### <a name="oracle-linux-5"></a>Oracle Linux 5
 
-| OS 版本。 | 内核版本
+| OS 版本 | 内核版本
 |:--|:--|
 | 5.8 | Oracle 2.6.32-300 (UEK R1) |
 | 5.9 | Oracle 2.6.39-300 (UEK R2) |
@@ -288,7 +312,7 @@ Linux：/var/opt/microsoft/dependency-agent/log/service.log
 #### <a name="suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server
 
 #### <a name="suse-linux-11"></a>SUSE Linux 11
-| OS 版本。 | 内核版本
+| OS 版本 | 内核版本
 |:--|:--|
 | 11 | 2.6.27 |
 | 11 SP1 | 2.6.32 |
@@ -297,12 +321,12 @@ Linux：/var/opt/microsoft/dependency-agent/log/service.log
 | 11 SP4 | 3.0.101 |
 
 #### <a name="suse-linux-10"></a>SUSE Linux 10
-| OS 版本。 | 内核版本
+| OS 版本 | 内核版本
 |:--|:--|
 | 10 SP4 | 2.6.16.60 |
 
 ## <a name="diagnostic-and-usage-data"></a>诊断和使用情况数据
-Microsoft 通过使用服务映射服务，自动收集使用情况和性能数据。 Microsoft 使用此数据提供和改进服务映射服务的质量、安全性和完整性。 数据包括有关软件配置的信息（如操作系统和版本），还包括 IP 地址、DNS 名称和工作站名称，以便提供准确高效的疑难解答功能。 我们不收集姓名、地址或其他联系信息。
+Microsoft 通过使用服务映射服务，自动收集使用情况和性能数据。 Microsoft 使用此数据提供和改进服务映射服务的质量、安全性和完整性。 数据包括有关软件配置的信息（如操作系统和版本）。 还包括 IP 地址、DNS 名称和工作站名称，能够准确高效地排除故障。 我们不收集姓名、地址或其他联系信息。
 
 有关数据收集和使用的详细信息，请参阅 [Microsoft Online Services 隐私声明](https://go.microsoft.com/fwlink/?LinkId=512132)。
 

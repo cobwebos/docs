@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/12/2017
+ms.date: 05/25/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 86ec34dccb4518c31d9762e68f272382ee544713
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 41019b4ae022602d2688399d1fc309151174e157
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -31,9 +31,9 @@ ms.lasthandoff: 05/15/2017
 
 1. 使用独立的应用程序将消息引入 Azure 事件中心。
 
-2. 使用 HDInsight 上的 Spark 群集中运行的应用程序从事件中心实时读取消息。
+2. 借助两种不同的方法，可使用 Azure HDInsight 上的 Spark 群集中运行的应用程序从事件中心实时检索消息。
 
-3. 将数据路由到不同的输出，例如 Azure 存储 Blob、Hive 表和 SQL 表。 
+3. 生成流式分析管道以将数据保存到不同的存储系统，或动态地从数据中获得见解。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 05/15/2017
 
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
 
-## <a name="what-is-apache-spark-streaming"></a>什么是 Apache Spark 流式处理？
+## <a name="spark-streaming-concepts"></a>Spark Streaming 概念
 
 有关 Spark 流式处理的详细说明，请参阅 [Apache Spark 流式处理概述](http://spark.apache.org/docs/latest/streaming-programming-guide.html#overview)。 HDInsight 将相同的流式处理功能引入到 Azure 上的 Spark 群集。  
 
@@ -53,28 +53,28 @@ ms.lasthandoff: 05/15/2017
 
 2. 运行一个本地独立应用程序，以便生成事件并将其推送到 Azure 事件中心。 [https://github.com/hdinsight/spark-streaming-data-persistence-examples](https://github.com/hdinsight/spark-streaming-data-persistence-examples) 网页中发布了一个用于执行此操作的示例应用程序。
 
-3. 在 Spark 群集上，运行从 Azure 事件中心读取流事件并将其写入不同位置（例如 Azure Blob、Hive 表和 SQL 数据库表）的事件中心 Azure 示例。
+3. 在 Spark 群集上远程运行从 Azure 事件中心读取流式处理事件的流式处理应用程序，并执行各种数据处理/分析操作。
 
 ## <a name="create-an-azure-event-hub"></a>创建 Azure 事件中心
 
-1. 登录到 [Azure 门户](https://manage.windowsazure.com)，然后单击屏幕左上角的“新建”。
+1. 登录到 [Azure 门户](https://ms.portal.azure.com)，然后单击屏幕左上角的“新建”。
 
 2. 单击“物联网”，然后单击“事件中心”。
-   
+
     ![为 Spark 流式处理示例创建事件中心](./media/hdinsight-apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "为 Spark 流式处理示例创建事件中心")
 
 3. 在“创建命名空间”  边栏选项卡中，输入命名空间名称。 选择定价层（基本或标准）。 另外，请选择一个 Azure 订阅、资源组以及要创建该资源的位置。 单击“创建”  创建命名空间。
-   
-    ![提供 Spark 流式处理示例的事件中心名称](./media/hdinsight-apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "提供 Spark 流式处理示例的事件中心名称")
+
+      ![提供 Spark 流式处理示例的事件中心名称](./media/hdinsight-apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "提供 Spark 流式处理示例的事件中心名称")
 
     > [!NOTE]
-       > 应选择与 HDInsight 中 Apache Spark 群集相同的“位置”，以降低延迟和成本。
-       > 
-       > 
+    > 应选择与 HDInsight 中 Apache Spark 群集相同的“位置”，以降低延迟和成本。
+    >
+    >
 
 4. 在“事件中心”命名空间列表中，单击新创建的命名空间。      
-   
-    
+
+
 5. 在命名空间边栏选项卡中，单击“事件中心”，然后单击“+ 事件中心”创建新的事件中心。
    
     ![为 Spark 流式处理示例创建事件中心](./media/hdinsight-apache-spark-eventhub-streaming/hdinsight-open-event-hubs-blade-for-spark-streaming-example.png "为 Spark 流式处理示例创建事件中心")
@@ -101,14 +101,124 @@ ms.lasthandoff: 05/15/2017
 
 1. 确保已在运行此应用程序的计算机上安装以下组件。
 
-    * Oracle Java 开发工具包。 可以从[此处](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)安装。
-    * Java IDE。 本文使用 IntelliJ IDEA 15.0.1。 可以从[此处](https://www.jetbrains.com/idea/download/)安装。
+    * Oracle Java 开发工具包。 可从[此处](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)进行安装。
+    * Apache Maven。 可以从[此处](https://maven.apache.org/download.cgi)下载它。 [此处](https://maven.apache.org/install.html)提供安装 Maven 的说明。
 
-2. 在 IntelliJ IDEA 中打开应用程序 **EventhubsSampleEventProducer**。
+2. 打开命令提示符并导航到克隆示例 Scala 应用程序的 GitHub 存储库的位置，然后运行以下命令生成应用程序。
 
-3. 生成项目。 在“生成”菜单中，单击“创建项目”。 根据 IntelliJ IDEA 配置，将在某个位置创建输出 jar。 该位置通常在 **\classes\artifacts** 下面。
+        mvn package
+
+3. 在 **/target** 目录下创建应用程序的输出 jar (**com-microsoft-azure-eventhubs-client-example-0.2.0.jar**)。 稍后在本文中使用此 JAR 测试完整的解决方案。
 
 ## <a name="create-application-to-receive-messages-from-event-hub-into-a-spark-cluster"></a>创建用于在 Spark 群集中从事件中心接收消息的应用程序 
+
+可使用两种方法连接 Spark Streaming 和 Azure 事件中心：基于接收方的连接和基于 Direct-DStream 的连接。 2017 年 1 月，在 2.0.3 版中引入了基于 Direct-DStream 的连接。 它旨在取代原来基于接收方的连接，因为其具有更高的性能和资源效率。 如需更多详细信息，请访问 [https://github.com/hdinsight/spark-eventhubs](https://github.com/hdinsight/spark-eventhubs)。 Direct DStream 仅支持 Spark 2.0+。
+
+### <a name="build-applications-with-the-dependency-to-spark-eventhubs-connector"></a>使用依赖项在 spark-eventhubs 连接器中生成应用程序
+
+我们还会在 GitHub 中发布 Spark-EventHubs 的过渡版本。 若要使用 Spark-EventHubs 的过渡版本，第一步是通过向 pom.xml 添加以下条目，将 GitHub 指为源存储库：
+
+```xml
+<repository>
+      <id>spark-eventhubs</id>
+      <url>https://raw.github.com/hdinsight/spark-eventhubs/maven-repo/</url>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+</repository>
+```
+
+然后，可将以下依赖项添加到项目中，以使用预发布版本。
+
+Maven 依赖项
+
+```xml
+<!-- https://mvnrepository.com/artifact/com.microsoft.azure/spark-streaming-eventhubs_2.11 -->
+<dependency>
+    <groupId>com.microsoft.azure</groupId>
+    <artifactId>spark-streaming-eventhubs_2.11</artifactId>
+    <version>2.0.4</version>
+</dependency>
+```
+
+SBT 依赖项
+
+```
+// https://mvnrepository.com/artifact/com.microsoft.azure/spark-streaming-eventhubs_2.11
+libraryDependencies += "com.microsoft.azure" % "spark-streaming-eventhubs_2.11" % "2.0.4"
+```
+
+### <a name="direct-dstream-connection"></a>Direct DStream 连接
+
+可从以下网址下载包含使用 Direct DStream 的示例的预建 jar 文件：[http://central.maven.org/maven2/com/microsoft/azure/spark-streaming-eventhubs_2.11/2.0.4/spark-streaming-eventhubs_2.11-2.0.4.jar](http://central.maven.org/maven2/com/microsoft/azure/spark-streaming-eventhubs_2.11/2.0.4/spark-streaming-eventhubs_2.11-2.0.4.jar)。
+
+Jar 文件包含三个示例，其源代码可从以下网址下载：[https://github.com/hdinsight/spark-eventhubs/tree/master/examples/src/main/scala/com/microsoft/spark/streaming/examples/directdstream](https://github.com/hdinsight/spark-eventhubs/tree/master/examples/src/main/scala/com/microsoft/spark/streaming/examples/directdstream)。
+
+以 [WindowingWordCount](https://github.com/hdinsight/spark-eventhubs/blob/master/examples/src/main/scala/com/microsoft/spark/streaming/examples/directdstream/WindowingWordCount.scala) 为例：
+
+```scala
+private def createStreamingContext(
+  sparkCheckpointDir: String,
+  batchDuration: Int,
+  namespace: String,
+  eventHunName: String,
+  eventhubParams: Map[String, String],
+  progressDir: String) = {
+val ssc = new StreamingContext(new SparkContext(), Seconds(batchDuration))
+ssc.checkpoint(sparkCheckpointDir)
+val inputDirectStream = EventHubsUtils.createDirectStreams(
+  ssc,
+  namespace,
+  progressDir,
+  Map(eventHunName -> eventhubParams))
+
+inputDirectStream.map(receivedRecord => (new String(receivedRecord.getBody), 1)).
+  reduceByKeyAndWindow((v1, v2) => v1 + v2, (v1, v2) => v1 - v2, Seconds(batchDuration * 3),
+    Seconds(batchDuration)).print()
+
+ssc
+}
+
+def main(args: Array[String]): Unit = {
+
+if (args.length != 8) {
+  println("Usage: program progressDir PolicyName PolicyKey EventHubNamespace EventHubName" +
+    " BatchDuration(seconds) Spark_Checkpoint_Directory maxRate")
+  sys.exit(1)
+}
+
+val progressDir = args(0)
+val policyName = args(1)
+val policykey = args(2)
+val namespace = args(3)
+val name = args(4)
+val batchDuration = args(5).toInt
+val sparkCheckpointDir = args(6)
+val maxRate = args(7)
+
+val eventhubParameters = Map[String, String] (
+  "eventhubs.policyname" -> policyName,
+  "eventhubs.policykey" -> policykey,
+  "eventhubs.namespace" -> namespace,
+  "eventhubs.name" -> name,
+  "eventhubs.partition.count" -> "32",
+  "eventhubs.consumergroup" -> "$Default",
+  "eventhubs.maxRate" -> s"$maxRate"
+)
+
+val ssc = StreamingContext.getOrCreate(sparkCheckpointDir,
+  () => createStreamingContext(sparkCheckpointDir, batchDuration, namespace, name,
+    eventhubParameters, progressDir))
+
+ssc.start()
+ssc.awaitTermination()
+}
+```
+
+在上述示例中，`eventhubParameters` 是特定于单个 EventHubs 实例的参数，并且必须将它传递到构造 Direct DStream 对象到事件中心命名空间的映射的 `createDirectStreams` API。 通过 Direct DStream 对象，可调用 Spark Streaming API 框架提供的任何 DStream API。 在此示例中，我们计算最后 3 个微批处理 (micro batch) 间隔内每个单词的出现频率。
+
+### <a name="receiver-based-connection"></a>基于接收方的连接
 
 [https://github.com/hdinsight/spark-streaming-data-persistence-examples](https://github.com/hdinsight/spark-streaming-data-persistence-examples) 中提供了用于接收事件并将其路由到不同目标的，以 Scala 编写的 Spark 流式处理示例应用程序。 请遵循以下步骤更新应用程序的事件中心配置并创建输出 jar。
 
@@ -126,7 +236,7 @@ ms.lasthandoff: 05/15/2017
    
     ![Apache Spark 流式处理示例 - 设置编译器](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-java-8-compiler.png "Apache Spark 流式处理示例 - 设置编译器")
 5. 打开 **pom.xml** 并确保 Spark 版本正确。 在 `<properties>` 节点下查找以下代码片段，并检查 Spark 版本。
-   
+
         <scala.version>2.11.8</scala.version>
         <scala.compat.version>2.11.8</scala.compat.version>
         <scala.binary.version>2.11</scala.binary.version>
@@ -136,14 +246,14 @@ ms.lasthandoff: 05/15/2017
      
      1. 在已打开应用程序的 IntelliJ IDEA 窗口中，依次单击“文件”、“项目结构”和“库”。 
      2. 单击添加图标（![添加图标](./media/hdinsight-apache-spark-eventhub-streaming/add-icon.png)），单击“Java”，然后导航到 JDBC 驱动程序 jar 所下载到的位置。 按照提示将 jar 文件添加到项目库。
-        
+
          ![添加缺少的依赖项](./media/hdinsight-apache-spark-eventhub-streaming/add-missing-dependency-jars.png "添加缺少的依赖项 jar")
      3. 单击“应用” 。
 
 7. 创建输出 jar 文件。 执行以下步骤。
-   
-   1. 在“项目结构”对话框中，单击“项目”，然后单击加号。 在弹出的对话框中，单击“JAR”，然后单击“从包含依赖项的模块”。
-      
+
+   1. 在“项目结构”对话框中，单击“项目”，然后单击加号。 在弹出的对话框中，单击“JAR”，然后单击“从包含依赖项的模块”。      
+       
        ![Apache Spark 流式处理示例 - 创建 JAR](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-create-jar.png "Apache Spark 流式处理示例 - 创建 JAR")
    2. 在“从模块创建 JAR”对话框中，单击“主类”旁边的省略号 (![ellipsis](./media/hdinsight-apache-spark-eventhub-streaming/ellipsis.png))。
    3. 在“选择主类”对话框中，选择任何可用的类，然后单击“确定”。
@@ -152,7 +262,7 @@ ms.lasthandoff: 05/15/2017
    4. 在“从模块创建 JAR”对话框中，确保已选择“提取到目标 JAR”选项，然后单击“确定”。 这会创建包含所有依赖项的单个 JAR。
       
        ![Apache Spark 流式处理示例 - 从模块创建 jar](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-create-jar-from-modules.png "Apache Spark 流式处理示例 - 从模块创建 jar")
-   5. “输出布局”选项卡列出了所有包含为 Maven 项目一部分的 jar。 你可以选择并删除 Scala 应用程序不直接依赖的 jar。 对于此处创建的应用程序，可以删除最后一个（**microsoft-spark-streaming-examples** 编译输出）以外的所有 jar。 选择要删除的 jar，然后单击“删除”图标 (![delete icon](./media/hdinsight-apache-spark-eventhub-streaming/delete-icon.png))。
+   5. “输出布局”选项卡列出了所有包含为 Maven 项目一部分的 jar。 你可以选择并删除 Scala 应用程序不直接依赖的 jar。 对于此处创建的应用程序，可删除最后一个 jar（**spark-streaming-data-persistence-examples 编译输出**）以外的所有 jar。 选择要删除的 jar，然后单击“删除”图标 (![delete icon](./media/hdinsight-apache-spark-eventhub-streaming/delete-icon.png))。
       
        ![Apache Spark 流式处理示例 - 删除已提取的 jar](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-delete-output-jars.png "Apache Spark 流式处理示例 - 删除已提取的 jar")
       
@@ -175,10 +285,10 @@ ms.lasthandoff: 05/15/2017
 本文使用 Livy 在 Spark 群集上远程运行 Apache Spark 流式处理应用程序。 有关如何在 HDInsight Spark 群集上使用 Livy 的详细介绍，请参阅[向 Azure HDInsight 上的 Apache Spark 群集远程提交作业](hdinsight-apache-spark-livy-rest-interface.md)。 在开始运行 Spark 流式处理应用程序之前，必须完成一些准备工作：
 
 1. 启动本地独立应用程序，以生成事件并将其发送到事件中心。 使用以下命令来执行此操作：
-   
-        java -cp com-microsoft-azure-eventhubs-client-example.jar com.microsoft.eventhubs.client.example.EventhubsClientDriver --eventhubs-namespace "mysbnamespace" --eventhubs-name "myeventhub" --policy-name "mysendpolicy" --policy-key "<policy key>" --message-length 32 --thread-count 32 --message-count -1
 
-2. 将流式 jar (**spark-streaming-data-persistence-examples.jar**) 复制到与群集关联的 Azure Blob 存储。 这样，jar 便可供 Livy 访问。 可以使用命令行实用工具 [**AzCopy**](../storage/storage-use-azcopy.md) 来执行此操作。 可以使用其他许多客户端来上载数据。 有关详细信息，请参阅[在 HDInsight 中上传 Hadoop 作业的数据](hdinsight-upload-data.md)。
+        java -cp com-microsoft-azure-eventhubs-client-example-0.2.0.jar com.microsoft.eventhubs.client.example.EventhubsClientDriver --eventhubs-namespace "mysbnamespace" --eventhubs-name "myeventhub" --policy-name "mysendpolicy" --policy-key "<policy key>" --message-length 32 --thread-count 32 --message-count -1
+
+2. 将流式 jar (**spark-streaming-data-persistence-examples.jar**) 复制到与群集关联的 Azure Blob 存储。 这样，jar 便可供 Livy 访问。 可以使用命令行实用工具 [**AzCopy**](../storage/storage-use-azcopy.md) 来执行此操作。 可以使用其他许多客户端来上传数据。 有关详细信息，请参阅[在 HDInsight 中上传 Hadoop 作业的数据](hdinsight-upload-data.md)。
 3. 将 CURL 安装在要运行这些应用程序的计算机上。 我们将使用 CURL 来调用 Livy 终结点，以远程运行作业。
 
 ### <a name="run-the-spark-streaming-application-to-receive-the-events-into-an-azure-storage-blob-as-text"></a>运行 Spark 流式处理应用程序，将事件以文本形式接收到 Azure 存储 Blob 中
@@ -201,8 +311,8 @@ ms.lasthandoff: 05/15/2017
 
 > [!NOTE]
 > 不需要创建用作参数的输出文件夹（EventCheckpoint、EventCount/EventCount10）。 流应用程序将为你创建。
-> 
-> 
+>
+>
 
 运行命令时，你应会看到类似于下面的输出：
 
@@ -320,6 +430,7 @@ Spark 流式处理应用程序将继续运行，直到被终止。 若要终止�
 
 ## <a name="seealso"></a>另请参阅
 * [概述：Azure HDInsight 上的 Apache Spark](hdinsight-apache-spark-overview.md)
+* [基于接收方的连接和 Direct DStream 连接的设计](https://www.slideshare.net/NanZhu/seattle-sparkmeetup032317)
 
 ### <a name="scenarios"></a>方案
 * [Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](hdinsight-apache-spark-use-bi-tools.md)
@@ -334,7 +445,7 @@ Spark 流式处理应用程序将继续运行，直到被终止。 若要终止�
 ### <a name="tools-and-extensions"></a>工具和扩展
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely（使用 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Spark 应用程序）](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](hdinsight-apache-spark-zeppelin-notebook.md)
 * [在 HDInsight 的 Spark 群集中可用于 Jupyter 笔记本的内核](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
@@ -350,6 +461,5 @@ Spark 流式处理应用程序将继续运行，直到被终止。 若要终止�
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[azure-management-portal]: https://manage.windowsazure.com/
-[azure-create-storageaccount]: ../storage-create-storage-account/ 
+[azure-create-storageaccount]: ../storage-create-storage-account/
 

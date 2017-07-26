@@ -1,5 +1,5 @@
 ---
-title: "创建非交互式身份验证 .NET HDInsight 应用程序 | Microsoft Docs"
+title: "创建非交互式身份验证 .NET HDInsight 应用程序 - Azure | Microsoft Docs"
 description: "了解如何创建非交互式身份验证 .NET HDInsight 应用程序。"
 editor: cgronlun
 manager: jhubbard
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 2b8638ffc3287346a71f591370367655c450e376
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 7821a9e60e60ff01cff06db2a6f216a260c1c41a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/19/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---

@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 03/31/2017
+ms.date: 06/06/2017
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 70b04cde5fe877355c1dea29c78df3dcb8277973
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: bb4cb64260f489e1b316140e4214933cf2b334cd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -36,6 +37,7 @@ ms.lasthandoff: 04/07/2017
 | [查询索引](search-get-started-portal.md) | 使用内置的示例数据创建和查询索引。 利用门户中的工具，可快速了解查询类型和搜索参数。 | 2017 年 2 月 |
 | [下一步：<br/>.NET 中的代码](search-howto-dotnet-sdk.md) | C# 演练演示如何使用 Azure 搜索 .NET 库执行连接、索引和查询操作。 | 2016 年 11 月 |
 | [下一步：<br/>REST 中的代码](search-create-index-rest-api.md) | 查看用于在任何平台上用任何编程语言创建 Azure 搜索索引的 REST 调用和 JSON 有效负载。 | 2016 年 12 月 |
+| [Azure 搜索中全文搜索的工作原理](search-lucene-query-architecture.md) | Azure 搜索中全文搜索工作负载的体系结构及概述。 | 2017 年 3 月 |
 
 ## <a name="code-samples"></a>代码示例
 
@@ -55,6 +57,7 @@ ms.lasthandoff: 04/07/2017
 
 | 链接 | 说明 |
 |-------|-------------|
+|[搜索分析器演示](http://alice.unearth.ai) | 一个实时演示网站，显示标准 Lucene 分析器、Lucene 英语分析器和 Microsoft 自然语言处理器的查询输出。 对于每个搜索术语输入，可以查看每个分析器输出的并行比较。 |
 |[New York City (NYC) Jobs portal demo for Azure Search](http://aka.ms/azjobsdemo)（New York City (NYC) Jobs 门户对 Azure 搜索的演示） | 使用 NYC Open Data Initiative 中的数据来演示 Azure 搜索功能的实时 ASP.NET 网站。 该应用使用[简单查询语法](https://msdn.microsoft.com/library/azure/dn798920.aspx)。 你可以修改代码来试用 [Lucene 语法](https://msdn.microsoft.com/library/azure/mt589323.aspx)。 |
 |[Tate Art Gallery Demo](https://rawgit.com/liamca/azure-search-tate-art-gallery/master/Demo/index.html)（Tate Art Gallery 演示） | 使用 Tate Art Gallery 中示例数据的托管 ASP.NET 网站。 请先尝试搜索“现代”、“照片”和“画像”等词。
 |[Azure Search Demo Site](https://searchsamples.azurewebsites.net/#/)（Azure 搜索演示站点） | Azure 搜索的演示应用集合。 使用 Azure 搜索试用媒体搜索、地理位置搜索和产品库存应用。 |

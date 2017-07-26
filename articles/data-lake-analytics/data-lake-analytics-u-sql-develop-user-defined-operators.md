@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: ef310a094667f390addd5d0df3dc68d67100d2f4
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: fdee02fb60b633c26704fc1774dfc3a7825b5e0d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -27,16 +27,13 @@ ms.lasthandoff: 05/09/2017
 
 有关为 U-SQL 开发通用程序集的说明，请参阅[为 Azure Data Lake Analytics 作业开发 U-SQL 程序集](data-lake-analytics-u-sql-develop-assemblies.md)
 
-## <a name="define-and-use-user-defined-operator-in-u-sql"></a>在 U-SQL 中定义和使用用户定义的运算符
+## <a name="define-and-use-a-user-defined-operator-in-u-sql"></a>在 U-SQL 中定义和使用用户定义的运算符
 **创建和提交 U-SQL 作业**
 
-1. 在“文件”菜单中，单击“新建”，然后单击“项目”。
-2. 选择“U-SQL 项目”类型。
-
-    ![新建 U-SQL Visual Studio 项目](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
-3. 单击 **“确定”**。 Visual Studio 将创建包含 Script.usql 文件的解决方案。
-4. 在“解决方案资源管理器”中，展开 Script.usql，然后单击 “Script.usql.cs”。
-5. 将以下代码粘贴到文件中：
+1. 在 Visual Studio 中，选择“文件”>“新建”>“项目”>“U-SQL 项目”。
+2. 单击“确定”。 Visual Studio 将创建包含 Script.usql 文件的解决方案。
+3. 在“解决方案资源管理器”中，展开 Script.usql，然后单击 “Script.usql.cs”。
+4. 将以下代码粘贴到文件中：
 
         using Microsoft.Analytics.Interfaces;
         using System.Collections.Generic;
@@ -51,7 +48,7 @@ ms.lasthandoff: 05/09/2017
                         "Deutschland", "Germany"
                     },
                     {
-                        "Schwiiz", "Switzerland"
+                        "Suisse", "Switzerland"
                     },
                     {
                         "UK", "United Kingdom"

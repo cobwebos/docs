@@ -12,13 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/20/2017
+ms.date: 06/01/2017
 ms.author: TomSh
+ms.custom: azlog
 ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 616a29b3f7db817e63a3a3673b845cc86752af77
+ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.openlocfilehash: 1adabc7f249d9b01f3ad1a819f75b2ef47f72998
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/23/2017
+ms.lasthandoff: 06/06/2017
+
 
 
 ---
@@ -45,6 +47,9 @@ Azure 针对每个 Azure 服务生成大量日志记录。 这些日志代表三
 
 Azure 日志集成目前支持集成 Azure 活动日志、Azure 订阅中 Windows 虚拟机上的 Windows 事件日志、Azure 安全中心警报、Azure 诊断日志和 Azure Active Directory 审核日志。
 
+>[!NOTE]
+虽然 Azure 日志集成解决方案免费，但由于日志文件信息存储，将会产生 Azure 存储费用。
+
 下表解释了日志类别和 SIEM 集成详细信息
 
 | 日志类型  |支持 JSON (Splunk, ELK) 的 Log Analytics| ArcSight  | QRadar  |   
@@ -55,8 +60,8 @@ Azure 日志集成目前支持集成 Azure 活动日志、Azure 订阅中 Window
 | 诊断日志（资源日志） | 是 | 需要最终用户创建 FlexConnector JSON 分析文件。 相关操作请参见 ArcSight 文档。 | 必须创建日志源扩展。 有关详细信息，请参阅 QRadar 文档 |
 | VM 日志 | 通过 Forwarded 事件，则为是；通过 JSON，则为否 | 通过 Forwarded 事件，则为是 | 通过 Forwarded 事件，则为是 |
 
->[!NOTE]
-虽然 Azure 日志集成解决方案免费，但由于日志文件信息存储，将会产生 Azure 存储费用。
+有关支持的日志类型的附加信息，请访问[常见问题解答](security-azure-log-integration-faq.md)
+
 
 通过 [Azure 日志集成 MSDN 论坛](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration)可以获得社区帮助。 在此论坛中，AzLog 社区可以对如何充分利用 Azure 日志集成相互提问和回答，并提供提示和技巧。 此外，Azure 日志集成团队也会关注此论坛，并尽可能地提供帮助。
 

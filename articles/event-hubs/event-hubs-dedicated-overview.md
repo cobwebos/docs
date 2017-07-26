@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 06/01/2017
 ms.author: sethm;babanisa
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: fa0d49498db74ec81c98f3df9317d42cdd31ab46
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: b3af61ec0923a0d9d207cee790d59aa9254a578b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -55,13 +56,13 @@ ms.lasthandoff: 04/19/2017
 * 零维护：由我们负责管理负载均衡、操作系统更新、安全修补程序及分区。
 * 固定的月度定价。
 
-专用事件中心还会删除一些标准产品的吞吐量限制。 基本层和标准层的吞吐量可达每秒 1000 个事件，或每 TU 1 MBps 的入口量，以及两倍的出口量。 专用规模产品对入口和出口事件计数不设限制。 这些限制仅由购买的事件中心处理容量管理。
+专用事件中心还会删除一些标准产品的吞吐量限制。 基本层和标准层的吞吐量单位可达每秒 1000 个事件，或者每个 TU 每秒 1 MB 的流入量和两倍的流出量。 专用规模产品对入口和出口事件计数不设限制。 这些限制仅由购买的事件中心处理容量管理。
 
 该服务针对最大的遥测用户，也可提供给具有企业协议的客户。
 
 ## <a name="how-to-onboard"></a>如何加入
 
-专用事件中心平台通过企业协议提供给公众，它具有不同大小的 CU。 每个 CU 提供约等于 200 吞吐量计价单位。 通过添加或删除 CU，可以在一个月内随时扩展或缩小容量，满足自身需求。 专用计划独一无二，用户可从事件中心产品团队处获得适合自己的灵活部署，提供一种亲身实践操作体验。 
+专用事件中心平台通过企业协议提供，它具有不同大小的 CU。 每个 CU 提供约等于 200 吞吐量计价单位。 通过添加或删除 CU，可以在一个月内随时扩展或缩小容量，满足自身需求。 专用计划独一无二，用户可从事件中心产品团队处获得适合自己的灵活部署，提供一种亲身实践操作体验。 
 
 ## <a name="next-steps"></a>后续步骤
 请与你的 Microsoft 销售代表或 Microsoft 支持部门联系，以获其他关于事件中心专用容量的详细信息。 还可访问以下链接，了解有关事件中心的详细信息：

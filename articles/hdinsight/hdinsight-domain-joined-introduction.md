@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/31/2016
 ms.author: saurinsh
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 21078a82e979af251a08bca70d623c80949d064a
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 9f6de5b516da110b93a1e0cddf835b2bcec77bb7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -29,8 +30,9 @@ ms.lasthandoff: 03/25/2017
 
 > [!NOTE]
 > 本文所述的预览版新功能仅适用于 Hive 工作负荷中的基于 Linux 的 HDInsight 群集。 其他工作负荷，如 HBase、Spark、 Storm 和 Kafka，将在以后的版本中启用这些功能。
->
->
+
+> [!IMPORTANT]
+> 在加入域的 HDInsight 上未启用 Oozie。
 
 ## <a name="benefits"></a>优点
 企业安全性包含四大支柱 – 外围安全性、身份验证、授权和加密。

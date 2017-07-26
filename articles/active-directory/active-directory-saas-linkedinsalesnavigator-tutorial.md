@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2017
+ms.date: 06/14/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ddf4affe72c6413501ffa00747c110f8761ed70e
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: ef26a16e79d9c9b0654634960b57dc59827b2c24
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -118,11 +118,11 @@ ms.lasthandoff: 05/10/2017
 
     ![配置单一登录](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
 
-6. 在 Azure 门户上的“LinkedIn Sales Navigator 域和 URL”部分中，如果要在“IDP”发起的模式下配置应用程序，请执行以下步骤：
+6. 在 Azure 门户的“LinkedIn Sales Navigator 域和 URL”部分中，如果想要以“已启动 IDP”模式配置应用程序，请执行以下步骤。
 
     ![配置单一登录](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url1.png)
 
-    a. 在“标识符”文本框中，输入从 LinkedIn 门户复制的“实体 ID” 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“标识符”文本框中，输入从 LinkedIn 门户复制的“实体 ID” 
 
     b. 在“回复 URL”文本框中，输入从 LinkedIn 门户复制的“断言使用者访问(ACS) URL”
 
@@ -136,37 +136,52 @@ ms.lasthandoff: 05/10/2017
 
     ![配置单一登录](./media/active-directory-saas-linkedinsalesnavigator-tutorial/updateusermail.png)
     
-9. 在“用户属性”部分，单击“查看和编辑所有其他用户属性”并设置属性。 用户需要添加另一个名为 **department** 的声明，且值需要映射到 **user.department**。
+9. 在“用户属性”部分，单击“查看和编辑所有其他用户属性”并设置属性。 用户需要添加名为 email、department、firstname 和 lastname 的四个声明，并分别映射值 user.mail、user.department、user.givenname 和 user.surname
 
     | 属性名称 | 属性值 |
     | --- | --- |    
+    | email| user.mail |
     | department| user.department |
-
-   ![创建 Azure AD 测试用户](./media/active-directory-saas-linkedinsalesnavigator-tutorial/userattribute.png)
-
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“添加属性”打开属性对话框。
-
-   ![创建 Azure AD 测试用户](./media/active-directory-saas-linkedinsalesnavigator-tutorial/adduserattribute.png)
+    | 名| user.givenname |
+    | 姓| user.surname |
+    
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-linkedinsalesnavigator-tutorial/userattribute.png)
+    
+    a.在“横幅徽标”下面，选择“删除上传的徽标”。 单击“添加属性”打开属性对话框。
+    
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_attribute_04.png)
+    
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_attribute_05.png)
    
     b. 在“名称”文本框中，键入为该行显示的属性名称。
     
     c. 在“值”列表中，选择为该行显示的属性值。
     
-    d.单击“下一步”。 单击“确定”
+    d. 单击“确定”
 
-10. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存 XML 文件。
+10. 对 name 属性执行以下步骤
+
+    a.在“横幅徽标”下面，选择“删除上传的徽标”。 单击该属性打开“编辑属性”窗口。
+
+    ![配置单一登录](./media/active-directory-saas-linkedinsalesnavigator-tutorial/url_update.png)
+
+    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 从“命名空间”中删除 URL 值。
+    
+    c. 单击“确定”保存设置。
+
+11. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存 XML 文件。
 
     ![配置单一登录](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_certificate.png) 
 
-11. 单击“保存”按钮。
+12. 单击“保存”按钮。
 
     ![配置单一登录](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_general_400.png)
 
-12. 转到“LinkedIn 管理设置”分区。 单击“上载 XML 文件”上载从 Azure 门户下载的元数据 XML 文件。
+13. 转到“LinkedIn 管理设置”分区。 单击“上传 XML 文件”上传从 Azure 门户下载的元数据 XML 文件。
 
     ![配置单一登录](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
 
-13. 单击“打开”启用 SSO。 SSO 状态将从“未连接”更改为“已连接”
+14. 单击“打开”启用 SSO。 SSO 状态将从“未连接”更改为“已连接”
 
     ![配置单一登录](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
 

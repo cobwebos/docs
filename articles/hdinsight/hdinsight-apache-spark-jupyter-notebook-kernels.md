@@ -18,10 +18,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: c5813341f0d70a3c04e915d243d2a9717cad1fc9
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 6cfd1c1e7b22f5460b78687c815d149e6c6deac9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -73,8 +73,7 @@ HDInsight Spark 群集提供可在 Spark 上的 Jupyter 笔记本中用于测试
 
     因此，不需要运行如下语句来设置上下文：
 
-          sc = SparkContext('yarn-client')
-          sqlContext = HiveContext(sc)
+        sc = SparkContext('yarn-client')    sqlContext = HiveContext(sc)
 
     可以直接在应用程序中使用预设上下文。
 
@@ -137,7 +136,7 @@ HDInsight Spark 群集提供可在 Spark 上的 Jupyter 笔记本中用于测试
 
 ## <a name="where-are-the-notebooks-stored"></a>笔记本存储在何处？
 
-Jupyter 笔记本保存在与 **/HdiNotebooks** 文件夹下面的群集关联的存储帐户中。  可以从存储帐户访问在 Jupyter 内部创建的笔记本、文本文件和文件夹。  例如，如果使用 Jupyter 创建文件夹 **myfolder** 和笔记本 **myfolder/mynotebook.ipynb**，可在存储帐户中通过 `/HdiNotebooks/myfolder/mynotebook.ipynb` 访问该笔记本。  反之亦然，如果直接将笔记本上载到 `/HdiNotebooks/mynotebook1.ipynb` 中的存储帐户，则可以从 Jupyter 查看该笔记本。  即使删除了群集，笔记本也仍会保留在存储帐户中。
+Jupyter 笔记本保存在与 **/HdiNotebooks** 文件夹下面的群集关联的存储帐户中。  可以从存储帐户访问在 Jupyter 内部创建的笔记本、文本文件和文件夹。  例如，如果使用 Jupyter 创建文件夹 **myfolder** 和笔记本 **myfolder/mynotebook.ipynb**，可在存储帐户中通过 `/HdiNotebooks/myfolder/mynotebook.ipynb` 访问该笔记本。  反之亦然，如果直接将笔记本上传到 `/HdiNotebooks/mynotebook1.ipynb` 中的存储帐户，则可以从 Jupyter 查看该笔记本。  即使删除了群集，笔记本也仍会保留在存储帐户中。
 
 将笔记本保存到存储帐户的方式与 HDFS 兼容。 因此，如果通过 SSH 访问群集，可按以下代码片段中所示使用文件管理命令：
 
@@ -172,7 +171,7 @@ Google Chrome 仅支持 Spark HDInsight 群集中的 Jupyter 笔记本。
 ### <a name="tools-and-extensions"></a>工具和扩展
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely（使用 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Spark 应用程序）](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](hdinsight-apache-spark-zeppelin-notebook.md)
 * [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 

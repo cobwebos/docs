@@ -1,10 +1,10 @@
 ---
-title: "将 Apache Kafka 与 Storm on HDInsight 配合使用 | Microsoft Docs"
+title: "将 Apache Kafka 与 Storm on HDInsight 配合使用 - Azure | Microsoft Docs"
 description: "同时安装 Apache Kafka 和 Apache Storm on HDInsight。 了解如何使用 Storm 附带的 KafkaBolt 和 KafkaSpout 组件写入到 Kafka，然后从中进行读取。 此外，还了解如何使用 Flux 框架来定义和提交 Storm 拓扑。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
-manager: paulettm
+manager: jhubbard
 editor: cgronlun
 ms.assetid: e4941329-1580-4cd8-b82e-a2258802c1a7
 ms.service: hdinsight
@@ -13,12 +13,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/20/2017
+ms.date: 06/13/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: dcda5e27cbcadff054c8085b72a1b6fb1c07b889
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
+ms.openlocfilehash: d241dbcdd9dc711769faa69488e3f32acbe5d40c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/21/2017
 
 ---
 # <a name="use-apache-kafka-preview-with-storm-on-hdinsight"></a>将 Apache Kafka（预览版）与 Storm on HDInsight 配合使用
@@ -57,9 +58,12 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 1. 使用以下按钮登录到 Azure，然后在 Azure 门户中打开模板。
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-storm-cluster-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-storm-cluster-in-vnet.1.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
     Azure Resource Manager 模板位于 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-storm-cluster-in-vnet.json**。
+
+    > [!WARNING]
+    > 若要确保 Kafka on HDInsight 的可用性，群集必须至少包含 3 个辅助节点。 此模板创建的 Kafka 群集包含三个辅助角色节点。
 
 2. 使用以下指南来填充“自定义部署”边栏选项卡上的条目：
    
@@ -101,11 +105,11 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 此项目包含两种拓扑：
 
 * **KafkaWriter**：由 **writer.yaml** 文件定义，此拓扑使用 Apache Storm 提供的 KafkaBolt 向 Kafka 写入随机的句子。
-  
+
     此拓扑使用自定义 **SentenceSpout** 组件生成随机的句子。
 
 * **KafkaReader**：由 **reader.yaml** 文件定义，此拓扑使用 Apache Storm 提供的 KafkaSpout 从 Kafka 读取数据，然后将数据记录到 stdout。
-  
+
     此拓扑使用自定义 **PrinterBolt** 组件记录从 Kafka 读取的数据。
 
 ### <a name="flux"></a>Flux
@@ -125,11 +129,13 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 ## <a name="create-a-kafka-topic"></a>创建 Kafka 主题
 
 1. 使用 SSH 连接到 Kafka 群集。 将 `USERNAME` 替换为创建群集时所用的 SSH 用户名。 将 `BASENAME` 替换为创建群集时所用的基名称。
-   
-        ssh USERNAME@kafka-BASENAME-ssh.azurehdinsight.net
-   
+
+    ```bash
+    ssh USERNAME@kafka-BASENAME-ssh.azurehdinsight.net
+    ```
+
     出现提示时，请输入在创建群集时使用的密码。
-   
+
     有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 2. 与 Kafka 群集建立 SSH 连接后，使用以下命令设置 HTTP 登录名和群集名称的变量。 本部分中的其他步骤会使用这些值。
@@ -195,8 +201,6 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 ## <a name="download-and-compile-the-project"></a>下载并编译项目
 
 1. 在开发环境中，从 [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka) 下载项目，打开一个命令行，并将目录更改为下载该项目的位置。
-
-    花费一些时间来检查代码和了解项目的工作原理。
 
 2. 从 **hdinsight-storm-java-kafka** 目录，使用以下命令来编译该项目并创建用于部署的包：
 
@@ -350,5 +354,3 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 有关更多可用于 Storm on HDInsight 的示例拓扑，请参阅[示例 Storm 拓扑和组件](hdinsight-storm-example-topology.md)。
 
 有关在基于 Linux 的 HDInsight 上部署和监视拓扑的详细信息，请参阅[在基于 Linux 的 HDInsight 上部署和管理 Apache Storm 拓扑](hdinsight-storm-deploy-monitor-topology-linux.md)
-
-

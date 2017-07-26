@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 05/08/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: d129ea9e5f3e320ccd705028f9860188babe2fe4
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 77eb83b80312eca401e6f60d57ed6a5668ea442e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -33,11 +33,9 @@ ms.lasthandoff: 05/09/2017
 
 下面是结合使用 HDInsight 和 Data Lake Store 的一些重要注意事项：
 
-* HDInsight 版本 3.5 提供创建 HDInsight 群集（可访问作为默认存储的 Data Lake Store）的选项。
+* HDInsight 版本 3.5 和 3.6 提供创建 HDInsight 群集（可访问作为默认存储的 Data Lake Store）的选项。
 
 * 创建 HDInsight 群集（可访问作为默认存储的 Data Lake Store）的选项*不可用于* HDInsight Premium 群集。
-
-* 对于 HBase 群集（Windows 和 Linux），*不支持*将 Data Lake Store 默认和附加存储选项。
 
 若要通过 PowerShell 来配置可以使用 Data Lake Store 的 HDInsight，请遵循后续五个部分中的说明。
 
@@ -46,7 +44,7 @@ ms.lasthandoff: 05/09/2017
 
 * **一个 Azure 订阅**：转到[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure PowerShell 1.0 或更高版本**：参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
-* **Windows 软件开发工具包 (SDK)**：若要安装 Windows SDK，请转到[适用于 Windows 10 的下载内容和工具](https://dev.windows.com/en-us/downloads)。 可以使用 Windows SDK 来创建安全证书。
+* **Windows 软件开发工具包 (SDK)**：若要安装 Windows SDK，请转到[适用于 Windows 10 的下载内容和工具](https://dev.windows.com/en-us/downloads)。 该 SDK 用于创建安全证书。
 * **Azure Active Directory 服务主体**：本教程将介绍如何在 Azure Active Directory (Azure AD) 中创建服务主体。 但是，只有 Azure AD 管理员才能创建服务主体。 管理员可以跳过此先决条件部分，继续阅读本教程。
 
     >[!NOTE]
@@ -187,7 +185,7 @@ ms.lasthandoff: 05/09/2017
         # Set these variables
 
         $location = "East US 2"
-        $storageAccountName = $dataLakeStoreName                          # Data Lake Store account name
+        $storageAccountName = $dataLakeStoreName                       # Data Lake Store account name
         $storageRootPath = "<Storage root path you specified earlier>" # E.g. /clusters/hdiadlcluster
         $clusterName = "<unique cluster name>"
         $clusterNodes = <ClusterSizeInNodes>            # The number of nodes in the HDInsight cluster
@@ -205,7 +203,7 @@ ms.lasthandoff: 05/09/2017
                -DefaultStorageAccountType AzureDataLakeStore `
                -DefaultStorageAccountName "$storageAccountName.azuredatalakestore.net" `
                -DefaultStorageRootPath $storageRootPath `
-               -Version "3.5" `
+               -Version "3.6" `
                -SshCredential $sshCredentials `
                -AadTenantId $tenantId `
                -ObjectId $objectId `
@@ -251,7 +249,7 @@ ms.lasthandoff: 05/09/2017
 
     hdfs dfs -ls adl:///
 
-可以使用 `hdfs dfs -put` 命令将一些文件上载到 Data Lake Store，然后使用 `hdfs dfs -ls` 验证是否已成功上载这些文件。
+可以使用 `hdfs dfs -put` 命令将一些文件上载到 Data Lake Store，并使用 `hdfs dfs -ls` 验证是否已成功上载这些文件。
 
 ## <a name="see-also"></a>另请参阅
 * [Azure 门户：创建使用 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)

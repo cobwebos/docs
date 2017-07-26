@@ -12,14 +12,13 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/05/2017
+ms.date: 07/24/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 03c8e18636e1182b301e1bcf418c727265d8b478
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: e97f22340f869ef31d7b4c7b9857bf0d1d5400c5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 06/08/2017
 
 ---
 # <a name="connect-your-azure-iot-edge-gateway-to-the-remote-monitoring-preconfigured-solution-and-send-telemetry-from-a-sensortag"></a>将 Azure IoT Edge 网关连接到远程监视预配置解决方案，并从 SensorTag 发送遥测
@@ -28,7 +27,7 @@ ms.lasthandoff: 05/16/2017
 
 本教程介绍如何使用 Azure IoT Edge 将温度和湿度数据从 SensorTag 设备发送到远程监视预配置解决方案。 SensorTag 使用蓝牙连接到 Intel NUC 网关。 本教程使用：
 
-- 可实现示例网关 的 Azure IoT Edge。
+- 可实现示例网关的 Azure IoT Edge。
 - 使用 IoT 套件远程监视预配置解决方案作为基于云的后端。
 
 ## <a name="overview"></a>概述
@@ -166,7 +165,7 @@ args": [
   {
     "macAddress": "<<AA:BB:CC:DD:EE:FF>>",
     "deviceId": "<<Azure IoT Hub Device ID>>",
-    "deviceKey": "<<Azure IoT Hub Device Key>>>"
+    "deviceKey": "<<Azure IoT Hub Device Key>>"
   }
 ]
 ```

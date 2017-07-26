@@ -15,18 +15,16 @@ ms.workload: big-data
 ms.date: 05/03/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 71a839d9c076d33c404a56bf0544666dc86eaa4d
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: 2bfd7d8a4c06b1b40a9852d21908e7c1c785b91d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Accessing diagnostic logs for Azure Data Lake Analytics（访问 Azure Data Lake Analytics 的诊断日志）
 
-了解如何为 Data Lake Analytics 帐户启用诊断日志记录以及如何查看为帐户收集的日志。
-
-组织可以为 Azure Data Lake Analytics 帐户启用诊断日志记录，以便收集数据访问审核跟踪。 此记录提供如下信息：
+通过诊断日志记录可以收集数据访问审核线索。 此记录提供如下信息：
 
 * 访问数据的用户列表。
 * 数据被访问的频率。
@@ -34,9 +32,9 @@ ms.lasthandoff: 05/27/2017
 
 ## <a name="enable-logging"></a>启用日志记录
 
-1. 登录到新的 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 打开 Data Lake Analytics 帐户，并从“监视部分”中选择“诊断日志”。 接下来，选择“打开诊断”。
+2. 打开 Data Lake Analytics 帐户，并从“监视”部分选择“诊断日志”。 接下来，选择“打开诊断”。
 
     ![打开诊断以收集审核和请求日志](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
@@ -46,16 +44,16 @@ ms.lasthandoff: 05/27/2017
 
    * 将“状态”设置为“开启”，启用诊断日志记录。
 
-   * 可选择以两种不同的方式存储/处理数据。
+   * 可选择以三种不同的方式存储/处理数据。
 
      * 选择“存档到存储帐户”，将日志存储到 Azure 存储帐户。 如果想要将数据存档，请使用此选项。 如果选择此选项，必须提供一个 Azure 存储帐户，以将日志保存到其中。
 
      * 选择“流式传输到事件中心”将日志数据流式传输到 Azure 事件中心。 具有下游处理管道来实时分析传入日志时使用此选项。 若选择此选项，必须提供要使用的 Azure 事件中心的详细信息。
 
      * 选择“发送到 Log Analytics”，将数据发送到 Log Analytics 服务。 如需使用 Log Analytics 收集和分析日志，请使用此选项。
-   * 指定是要获取审核日志还是请求日志，或者两者都获取。
+   * 指定是要获取审核日志还是请求日志，或者两者都获取。  请求日志会捕获每个 API 请求，审核日志则记录由该 API 请求触发的所有操作。
 
-   * 指定数据必须保留的天数。
+   * 在“存档到存储帐户”中指定数据将保留的天数。
 
    * 单击“保存” 。
 
@@ -66,29 +64,24 @@ ms.lasthandoff: 05/27/2017
 
 ## <a name="view-logs"></a>查看日志
 
-有两种方式用于查看 Data Lake Analytics 帐户日志数据。
+### <a name="use-the-data-lake-analytics-view"></a>使用 Data Lake Analytics 视图
 
-* 从 Data Lake Analytics 帐户设置查看
-* 从存储数据的 Azure 存储帐户查看
-
-### <a name="using-the-data-lake-analytics-settings-view"></a>使用 Data Lake Analytics 设置查看
-
-1. 从 Data Lake Analytics 帐户边栏选项卡中，选择“诊断日志”，然后选择要显示日志的条目。
+1. 从 Data Lake Analytics 帐户边栏选项卡中的“监视”下，选择“诊断日志”，然后选择要显示日志的条目。
 
     ![查看诊断日志记录](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs.png "查看诊断日志记录")
 
 2. 日志按“审核日志”和“请求日志”分类。
 
-    ![日志项](./media/data-lake-analytics-diagnostic-logs/diagnostic-log-entries.png)
+    ![日志条目](./media/data-lake-analytics-diagnostic-logs/diagnostic-log-entries.png)
 
    * 请求日志捕获 Data Lake Analytics 帐户上作出的每个 API 请求。
-   * 审核日志类似于请求日志，但提供 Data Lake Analytics 帐户上正在执行的操作的更详细的分解结构。 例如，一个单一上传 API 调用请求日志可能导致审核日志中有多个“附加”操作。
+   * 审核日志类似于请求日志，但提供 Data Lake Analytics 帐户上正在执行的操作的更详细的分解结构。 例如，请求日志中的单个上传 API 调用可能会导致其审核日志中有多个“追加​​”操作。
 
-3. 单击日志条目的“下载”链接下载日志。
+3. 单击日志条目的“下载”链接下载该日志。
 
-### <a name="from-the-azure-storage-account-that-contains-log-data"></a>从包含日志数据的 Azure 存储帐户查看
+### <a name="use-the-azure-data-lake-storage-account-that-contains-log-data"></a>使用其中包含日志数据的 Azure Data Lake 存储帐户
 
-1. 打开与日志记录的 Data Lake Analytics 关联的 Azure 存储帐户边栏选项卡，然后单击 Blob。 “Blob 服务”边栏选项卡上会列出两个容器。
+1. 打开与日志记录的 Data Lake Analytics 关联的 Azure Data Lake 存储帐户边栏选项卡，然后单击“Blob”。 “Blob 服务”边栏选项卡上会列出两个容器。
 
     ![查看诊断日志记录](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs-storage-account.png "查看诊断日志记录")
 
@@ -125,7 +118,7 @@ ms.lasthandoff: 05/27/2017
 
 ## <a name="log-structure"></a>日志结构
 
-审核和请求日志格式为 JSON。 本部分介绍请求和审核日志的 JSON 结构。
+审核和请求日志采用结构化的 JSON 格式。
 
 ### <a name="request-logs"></a>请求日志
 
@@ -164,12 +157,12 @@ ms.lasthandoff: 05/27/2017
 | Name | 类型 | 说明 |
 | --- | --- | --- |
 | time |String |日志时间戳（采用 UTC） |
-| resourceId |String |操作发生所在的资源的 ID |
+| resourceId |String |操作发生所在的资源的标识符 |
 | category |String |日志类别。 例如，“请求”。 |
 | operationName |String |被记录的操作的名称。 例如，GetAggregatedJobHistory。 |
 | resultType |String |操作状态，例如，200。 |
 | callerIpAddress |String |作出请求的客户端 的IP 地址 |
-| correlationId |String |日志的 ID。 此值可用于分组相关的日志条目 |
+| correlationId |String |日志的标识符。 此值可用于分组相关的日志条目。 |
 | identity |对象 |生成日志的标识 |
 | properties |JSON |请参阅下节（请求日志属性架构），了解详细信息 |
 
@@ -180,13 +173,13 @@ ms.lasthandoff: 05/27/2017
 | HttpMethod |String |用于此操作的 HTTP 方法。 例如 GET。 |
 | 路径 |String |操作执行所在的路径 |
 | RequestContentLength |int |HTTP 请求的内容长度 |
-| ClientRequestId |String |唯一标识此请求的 ID |
+| ClientRequestId |String |唯一标识此请求的标识符 |
 | StartTime |String |服务器接收请求的时间 |
 | EndTime |String |服务器发送响应的时间 |
 
 ### <a name="audit-logs"></a>审核日志
 
-此处是 JSON 格式的审核日志中的一个示例条目。 每个 Blob 具有一个名为 **records** 的根对象，该对象包含一组日志对象
+此处是 JSON 格式的审核日志中的一个示例条目。 每个 Blob 具有一个名为 **records** 的根对象，该对象包含一组日志对象。
 
     {
     "records":
@@ -216,7 +209,7 @@ ms.lasthandoff: 05/27/2017
 | Name | 类型 | 说明 |
 | --- | --- | --- |
 | time |String |日志时间戳（采用 UTC） |
-| resourceId |String |操作发生所在的资源的 ID |
+| resourceId |String |操作发生所在的资源的标识符 |
 | category |String |日志类别。 例如，“审核”。 |
 | operationName |String |被记录的操作的名称。 例如，JobSubmitted。 |
 | resultType |String |作业状态的字状态 (operationName)。 |
@@ -225,7 +218,7 @@ ms.lasthandoff: 05/27/2017
 | 属性 |JSON |请参阅下节（审核日志属性架构），了解详细信息 |
 
 > [!NOTE]
-> **resultType** 和 **resultSignature** 提供操作结果信息，如果某项操作已完成，只包含一个值。 例如，当 **operationName** 包含 **JobStarted** 值或 **JobEnded** 值时，它们只包含一个值。
+> **resultType** 和 **resultSignature** 提供操作结果信息，如果某项操作已完成，只包含一个值。 例如，当 operationName 包含 JobStarted 值或 JobEnded 值时，它们只包含一个值。
 >
 >
 
@@ -237,12 +230,12 @@ ms.lasthandoff: 05/27/2017
 | JobName |String |提供给作业的名称 |
 | JobRunTime |String |用于处理作业的运行时 |
 | SubmitTime |String |提交作业的时间（采用 UTC） |
-| StartTime |String |作业提交后开始运行的时间（采用 UTC）。 |
-| EndTime |String |作业结束时间。 |
-| 并行度 |String |在提交期间为该作业请求的 Data Lake Analytics 单位数。 |
+| StartTime |String |作业提交后开始运行的时间（采用 UTC） |
+| EndTime |String |作业结束时间 |
+| 并行度 |String |在提交期间为此作业请求的 Data Lake Analytics 单元数 |
 
 > [!NOTE]
-> **SubmitTime**、**StartTime**、**EndTime** 和 **Parallelism** 提供操作信息，并且如果某一操作已开始或已完成，则只包含一个值。 例如，**operationName** 指示 **JobSubmitted** 后，**SubmitTime** 将包含一个值。
+> SubmitTime、StartTime、EndTime 和 Parallelism 提供操作信息，并且如果某一操作已开始或已完成，则只包含一个值。 例如，operationName 含有值 JobSubmitted 后，SubmitTime 将仅包含一个值。
 
 ## <a name="process-the-log-data"></a>处理日志数据
 

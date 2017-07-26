@@ -1,5 +1,5 @@
 ---
-title: "在 HDInsight 中调试 Hadoop：查看日志和解释错误消息 | Microsoft Docs"
+title: "在 HDInsight 中调试 Hadoop：查看日志和解释错误消息 - Azure |Microsoft Docs"
 description: "了解你在使用 PowerShell 管理 HDInsight 时可能会收到的错误消息，以及恢复正常的步骤。"
 services: hdinsight
 tags: azure-portal
@@ -16,10 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: a2b32f23381ed1f9912edf6432f029e51bdf1be4
-ms.openlocfilehash: bcf2791f0e1788d7d18a4efc123066aaf633d549
-ms.lasthandoff: 02/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 3031644e2975fd59edff13c7a9da1efa418e8abd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -66,7 +67,7 @@ Azure HDInsight 中的每个 Hadoop 群集都有一个用作默认文件系统�
 访问这些表中的数据可以使用许多工具：
 
 * Visual Studio
-* Azure 存储空间资源管理器
+* Azure 存储资源管理器
 * Power Query for Excel
 
 #### <a name="use-power-query-for-excel"></a>使用 Power Query for Excel
@@ -131,7 +132,7 @@ Power Query 可以从 [www.microsoft.com/en-us/download/details.aspx?id=39379](h
 
 可使用 YARN UI 执行以下操作：
 
-* **获取群集状态**。 在左窗格中展开“群集”，然后单击“关于”。 此时会显示群集状态详细信息，例如总分配内存、所用核心数、群集资源管理器状态、群集版本等。
+* **获取群集状态**。 在左窗格中展开“群集”，然后单击“关于”。 此时会显示群集状态详细信息，例如总分配内存、所用核心数、群集 Resource Manager 状态、群集版本等。
   
     ![启动群集仪表板](./media/hdinsight-debug-jobs/hdi-debug-yarn-cluster-state.png)
 * **获取节点状态**。 在左窗格中展开“群集”，然后单击“节点”。 此时会列出群集中的所有节点、每个节点的 HTTP 地址、分配给每个节点的资源等。

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 7d8eb5972d35eac6cb55fc393090cfcc21ec341c
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 2aeaffdd5ab552e18677cbd1a24a748dd14bf172
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/02/2017
 
 ---
 
@@ -33,6 +34,12 @@ ms.lasthandoff: 03/31/2017
 导航到“更多服务” > “网络” > “网络观察程序”。 可以选择要为其启用网络观察程序的所有订阅。 此操作在每个可用的区域中创建网络观察程序。
 
 ![创建网络观察程序][1]
+
+使用门户启用网络观察程序时，网络观察程序实例的名称会自动设置为 NetworkWatcher_region_name，其中，region_name 对应启用实例的 Azure 区域。  例如，在美国中西部区域启用的网络观察程序的名称为 NetworkWatcher_westcentralus
+
+此外，网络观察程序实例会自动添加到名为 NetworkWatcherRG 的资源组。  如果资源组不存在，则要进行创建。
+
+若想自定义网络观察程序实例的名称和放置该实例的资源组名称，可使用下方介绍的 Powershell、REST API 或 ARMClient 方法。  在每个选项中，必须先有资源组，然后才可将网络观察程序放在其中。  
 
 ## <a name="create-a-network-watcher-with-powershell"></a>使用 PowerShell 创建网络观察程序
 

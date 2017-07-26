@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 06/09/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: bc6749f583de752592b0b49548c5a42321cac7b3
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 8e550b8caaece7a27612686135752336483aa662
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/10/2017
 
 
 ---
@@ -99,7 +99,7 @@ ms.lasthandoff: 05/16/2017
         +---------------+-------------+
         |tableName      |isTemporary  |
         +---------------+-------------+
-        |hvactemptable  |true         |
+        |hvactemptable  |true        |
         |hivesampletable|false        |
         |hvac           |false        |
         +---------------+-------------+
@@ -114,6 +114,11 @@ ms.lasthandoff: 05/16/2017
 9. 关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。
 
 ## <a name="powerbi"></a>使用 Power BI 进行 Spark 数据可视化
+
+> [!NOTE]
+> 本部分仅适用于 Spark 1.6 on HDInsight 3.4 和 Spark 2.0 on HDInsight 3.5。
+>
+>
 
 将数据另存为表后，可以使用 Power BI 来连接数据并以可视化方式呈现，以便创建报告、仪表板等。
 
@@ -214,7 +219,7 @@ ms.lasthandoff: 05/16/2017
 ### <a name="tools-and-extensions"></a>工具和扩展
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely（使用 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Spark 应用程序）](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](hdinsight-apache-spark-zeppelin-notebook.md)
 * [在 HDInsight 的 Spark 群集中可用于 Jupyter 笔记本的内核](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
