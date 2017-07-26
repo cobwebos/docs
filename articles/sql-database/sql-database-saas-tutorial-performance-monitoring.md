@@ -103,7 +103,7 @@ New-TenantBatch 脚本使用嵌套或链接形式的一组 [Resource Manager](..
 Wingtip 是一个 SaaS 应用，而 SaaS 应用上的实际负载通常是偶发的，不可预测。 为了模拟该负载，负载生成器将生成分布在所有租户上的随机化负载。 显现该负载模式需要几分钟，因此让负载生成器运行 3-5 分钟，然后再尝试按以下部分所述监视负载。
 
 > [!IMPORTANT]
-> 负载生成器在本地 PowerShell 会话中作为一系列作业运行。 请让“Demo-PerformanceMonitoringAndManagement.ps1”选项卡保持打开状态！ 如果关闭该选项卡或暂停计算机，负载生成器会停止。 负载生成器保持处于作业调用状态，在这种状态下，它在生成器启动后预配的任何新租户上生成负载。。 使用 Ctrl-C 停止调用新作业并退出脚本。 负载生成器将继续运行，但只在现有租户上运行。
+> 负载生成器在本地 PowerShell 会话中作为一系列作业运行。 请让“Demo-PerformanceMonitoringAndManagement.ps1”选项卡保持打开状态！ 如果关闭该选项卡或暂停计算机，负载生成器会停止。 负载生成器保持处于作业调用状态，在这种状态下，它在生成器启动后预配的任何新租户上生成负载。 使用 Ctrl-C 停止调用新作业并退出脚本。 负载生成器将继续运行，但只在现有租户上运行。
 
 ## <a name="monitor-resource-usage-using-the-azure-portal"></a>通过 Azure 门户监视资源使用情况
 
