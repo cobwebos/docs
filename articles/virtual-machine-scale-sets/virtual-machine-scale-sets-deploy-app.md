@@ -43,7 +43,7 @@ ms.lasthandoff: 06/01/2017
 
    现在可按需安装应用程序。 但是如果现在安装应用程序，升级应用程序时可能会更复杂，因为可能需要先删除该应用程序。 可改用此步骤来安装应用程序可能需要的所有先决条件，如特定运行时或操作系统功能。
 
-3. 按照 [Linux][ 或 linux-vm-capture]Windows[][windows-vm-capture] 的“捕获计算机”教程执行操作。
+3. 按照 [Linux][linux-vm-capture] 或 [Windows][windows-vm-capture] 的“捕获计算机”教程执行操作。
 
 4. 使用在上一步中捕获的映像 URI 创建[虚拟机规模集][vmss-create]。
 
