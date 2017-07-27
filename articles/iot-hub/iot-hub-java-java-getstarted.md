@@ -16,10 +16,10 @@ ms.date: 06/29/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: 7f0fbaf5d8e0379fc67ad62ea7c9ab63c6737150
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 0c8a4b518c6946781c2340f79ab479612b595c74
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="connect-your-device-to-your-iot-hub-using-java"></a>使用 Java 将设备连接到 IoT 中心
@@ -303,12 +303,8 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     mvn clean package -DskipTests
     ```
 
-<<<<<<< HEAD
 ## <a name="create-a-device-app"></a>创建设备应用
-=======
-## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
-
->>>>>>> master 在本部分中，你将创建一个 Java 控制台应用程序，用于模拟向 IoT 中心发送设备到云消息的设备。
+在本部分中，会创建一个 Java 控制台应用程序，用于模拟向 IoT 中心发送设备到云消息的设备。
 
 1. 在命令提示符下使用以下命令，在*创建设备标识*部分中创建的 iot-java-get-started 文件夹中创建名为 **simulated-device** 的 Maven 项目。 请注意，这是一条很长的命令：
 
@@ -378,19 +374,10 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
       }
     }
     ```
-<<<<<<< HEAD
 9. 在 **App** 类中添加以下嵌套的 **EventCallback** 类，以显示 IoT 中心在处理来自设备应用的消息时返回的确认状态。 处理消息时，此方法还会通知应用中的主线程：
    
-    ```
-    private static class EventCallback implements IotHubEventCallback
-    {
-=======
-
-9. Add the following nested **EventCallback** class inside the **App** class to display the acknowledgement status that the IoT hub returns when it processes a message from the simulated device app. This method also notifies the main thread in the app when the message has been processed:
-
     ```java
     private static class EventCallback implements IotHubEventCallback {
->>>>>>> master
       public void execute(IotHubStatusCode status, Object context) {
         System.out.println("IoT Hub responded to message with status: " + status.name());
    
@@ -500,15 +487,12 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     ![显示发送到 IoT 中心的消息数的 Azure 门户“使用情况”磁贴][43]
 
 ## <a name="next-steps"></a>后续步骤
-<<<<<<< HEAD 在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，然后在 IoT 中心的标识注册表中创建了设备标识。 已使用此设备标识来让设备应用向 IoT 中心发送设备到云的消息。 还创建了用于显示 IoT 中心所接收消息的应用。 
-=======
-
-在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，然后在 IoT 中心的标识注册表中创建了设备标识。 你已使用此设备标识来让模拟设备应用向 IoT 中心发送设备到云的消息。 还创建了用于显示 IoT 中心所接收消息的应用。
->>>>>>> master
+在本教程中，已在 Azure 门户中配置了新的 IoT 中心，然后在 IoT 中心的标识注册表中创建了设备标识。 已使用此设备标识来让设备应用向 IoT 中心发送设备到云的消息。 还创建了用于显示 IoT 中心所接收消息的应用。
 
 若要继续了解 IoT 中心入门知识并浏览其他 IoT 方案，请参阅：
 
-* [连接你的设备][lnk-connect-device]
+* 
+            [连接设备][lnk-connect-device]
 * [设备管理入门][lnk-device-management]
 * [Azure IoT 边缘入门][lnk-iot-edge]
 

@@ -16,14 +16,13 @@ ms.tgt_pltfrm: na
 ms.date: 01/13/2017
 ms.author: brjohnst
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 7676262b7bca47444aee7b10a131c01e6b697e7b
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: bdd952869143c6ca6374bb9264db5bcba1f32b50
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 07/26/2017
 
 ---
-# 使用 .NET SDK 将数据上传到 Azure 搜索
-<a id="upload-data-to-azure-search-using-the-net-sdk" class="xliff"></a>
+# <a name="upload-data-to-azure-search-using-the-net-sdk"></a>使用 .NET SDK 将数据上传到 Azure 搜索
 > [!div class="op_single_selector"]
 > * [概述](search-what-is-data-import.md)
 > * [.NET](search-import-data-dotnet.md)
@@ -35,7 +34,8 @@ ms.lasthandoff: 07/12/2017
 
 在开始本演练前，应已 [创建 Azure 搜索索引](search-what-is-an-index.md)。 本文还假定已创建 `SearchServiceClient` 对象，如 [使用 .NET SDK 创建 Azure 搜索索引](search-create-index-dotnet.md#CreateSearchServiceClient)中所示。
 
-请注意，本文中的所有示例代码均用 C# 编写。 可以 [在 GitHub 上](http://aka.ms/search-dotnet-howto)找到完整的源代码。
+> [!NOTE]
+> 本文中的所有示例代码均用 C# 编写。 可以 [在 GitHub 上](http://aka.ms/search-dotnet-howto)找到完整的源代码。 也可参阅 [Azure 搜索 .NET SDK](search-howto-dotnet-sdk.md)，以便更详细地了解示例代码。
 
 要使用 .NET SDK 将文档推送到索引，需要执行以下操作：
 
@@ -43,8 +43,7 @@ ms.lasthandoff: 07/12/2017
 2. 创建包含要添加、修改或删除的文档的 `IndexBatch` 。
 3. 调用 `SearchIndexClient` 的 `Documents.Index` 方法，将 `IndexBatch` 发送到搜索索引。
 
-## 创建 SearchIndexClient 类的实例
-<a id="create-an-instance-of-the-searchindexclient-class" class="xliff"></a>
+## <a name="create-an-instance-of-the-searchindexclient-class"></a>创建 SearchIndexClient 类的实例
 若要使用 Azure 搜索 .NET SDK 将数据导入到索引中，需要创建 `SearchIndexClient` 类的实例。 可以自己构造此实例，但如果已有可调用其 `Indexes.GetClient` 方法的 `SearchServiceClient` 实例会更容易。 例如，下面是如何从名为 `serviceClient` 的 `SearchServiceClient` 获取名为“hotels”的索引的 `SearchIndexClient`：
 
 ```csharp
@@ -58,8 +57,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 
 `SearchIndexClient` 具有 `Documents` 属性。 此属性提供在索引中添加、修改、删除或查询文档所需的所有方法。
 
-## 确定要使用的索引操作
-<a id="decide-which-indexing-action-to-use" class="xliff"></a>
+## <a name="decide-which-indexing-action-to-use"></a>确定要使用的索引操作
 若要使用 .NET SDK 导入数据，需要将数据打包到 `IndexBatch` 对象中。 `IndexBatch` 封装 `IndexAction` 对象的集合，其中每个对象均包含一个文档和一个属性，用于指示 Azure 搜索要对该文档上执行什么操作（上传、合并、删除等）。 根据选择的以下操作，每个文档必须仅包含某些特定的字段：
 
 | 操作 | 说明 | 每个文档必需的字段 | 说明 |
@@ -71,8 +69,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 
 可以指定要用于 `IndexBatch` 和 `IndexAction` 类的各个静态方法的操作，如下一部分中所示。
 
-## 构造 IndexBatch
-<a id="construct-your-indexbatch" class="xliff"></a>
+## <a name="construct-your-indexbatch"></a>构造 IndexBatch
 知道要对文档执行哪些操作后，就可以构造 `IndexBatch`了。 以下示例演示如何创建包含几个不同操作的 Batch。 请注意，此示例使用一个名为 `Hotel` 的自定义类，它映射到“hotels”索引中的文档。
 
 ```csharp
@@ -135,8 +132,7 @@ var batch = IndexBatch.New(actions);
 > 
 > 
 
-## 将数据导入到索引
-<a id="import-data-to-the-index" class="xliff"></a>
+## <a name="import-data-to-the-index"></a>将数据导入到索引
 获得已初始化的 `IndexBatch` 对象后，便可以通过对 `SearchIndexClient` 对象调用 `Documents.Index` 将其发送到索引。 以下示例说明如何调用 `Index`，以及需要执行的一些额外步骤：
 
 ```csharp
@@ -164,8 +160,7 @@ Thread.Sleep(2000);
 
 <a name="HotelClass"></a>
 
-### .NET SDK 如何处理文档
-<a id="how-the-net-sdk-handles-documents" class="xliff"></a>
+### <a name="how-the-net-sdk-handles-documents"></a>.NET SDK 如何处理文档
 用户可能想知道 Azure 搜索 .NET SDK 如何将用户定义的类（如 `Hotel` ）的实例上传到索引。 为了帮助回答这个问题，让我们看一下 `Hotel` 类，该类映射到 [使用 .NET SDK 创建 Azure 搜索索引](search-create-index-dotnet.md#DefineIndex)中定义的索引架构：
 
 ```csharp
@@ -241,8 +236,7 @@ public partial class Hotel
 
 由于此原因，最佳做法是建议在模型类中使用可以为 null 的类型。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 填充 Azure 搜索索引后，即可发出查询，搜索文档。 有关详细信息，请参阅 [查询 Azure 搜索索引](search-query-overview.md) 。
 
 
