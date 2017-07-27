@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/29/2017
 ms.author: nisoneji
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: a6fdab66a6a41e352d07e3b6f3c58eb331c0d93f
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: 4d96483a971d5c4a0c2cc240620e7a9b289f597d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner
@@ -456,7 +455,9 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 **VM 兼容性**：值为“是”和“是\*”。  “是\*”针对 VM 适用于 [Azure 高级存储](https://aka.ms/premium-storage-workload)的情况。 在这里，所分析的高变动量或 IOPS 磁盘适合 P20 或 P30 类别，但考虑到磁盘大小，因此将其归入较低的 P10 或 P20 类别。 存储帐户决定了根据大小对磁盘分类时，可将磁盘归入哪种高级存储磁盘类型。 例如：
 * <128 GB 为 P10。
 * 128 GB 到 512 GB 为 P20。
-* 512 GB 到 1023 GB 为 P30。
+* 512 GB 到 1024 GB 为 P30。
+* 1025 GB 到 2048 GB 为 P40。
+* 2049 GB 到 4095 GB 为 P50。
 
 如果某个磁盘按工作负荷特征应归入 P20 或 P30 类别，但按大小应归入较低的高级存储磁盘类型，则该工具会将该 VM 标记为“是\*”。 该工具还建议你根据建议的高级存储磁盘类型更改源磁盘大小，或者在故障转移后更改目标磁盘类型。
 
@@ -494,7 +495,8 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 
 **VM 兼容性**：指示给定的 VM 为何无法与 Site Recovery 兼容使用。 将会针对 VM 的每个不兼容磁盘说明原因，而根据已发布的[存储限制](https://aka.ms/azure-storage-scalbility-performance)，这些原因不外乎：
 
-* 磁盘大小超出 1023 GB。 Azure 存储目前不支持大于 1 TB 的磁盘大小。
+* 磁盘大小超出 4095 GB。 Azure 存储目前不支持大于 4095 GB 的数据磁盘大小。
+* OS 磁盘大于 2048 GB。 Azure 存储目前不支持大于 2048 GB 的 OS 磁盘大小。
 * 启动类型是 EFI。 Azure Site Recovery 目前仅支持 BIOS 启动类型的虚拟机。
 
 * VM 总大小（复制 + TFO）超出系统支持的存储帐户大小限制 (35 TB)。 当 VM 中的单个磁盘的性能特征超出系统支持的适用于标准存储的 Azure 或 Site Recovery 最大限制时，通常会表现出这种不兼容性。 如果出现这种情况，则必须将 VM 置于高级存储区域。 但是，高级存储帐户支持的最大大小为 35 TB，并且无法跨多个存储帐户保护单个需要保护的 VM。 另请注意，在受保护 VM 上执行测试性故障转移时，该故障转移运行时所使用的存储帐户与进行复制时所使用的存储帐户相同。 在这种情况下，可以在设置时将磁盘大小加倍，既可进行复制，又可成功地进行测试性故障转移。
@@ -560,6 +562,15 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 
 
 ## <a name="version-history"></a>版本历史记录
+
+### <a name="131"></a>1.3.1
+更新时间：2017 年 7 月 19 日
+
+添加了以下新功能：
+
+* 在报表生成过程中添加了对大型磁盘 (> 1TB) 的支持。 现在可以使用 Deployment Planner 来计划磁盘大小超出 1 TB（最大为 4095 GB）的虚拟机的复制。
+阅读有关 [Azure Site Recovery 中的大型磁盘支持](https://azure.microsoft.com/en-us/blog/azure-site-recovery-large-disks/)的更多内容
+
 
 ### <a name="13"></a>1.3
 更新时间：2017 年 5 月 9 日

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/14/2017
+ms.date: 07/21/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: 46766e29287ca130e68aa0f027cbb1ded2526af3
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 5f57cbdb1678dd61eda449d2103125d8db83892e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/17/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>在 Log Analytics 中分析数据使用情况
@@ -110,13 +110,15 @@ Log Analytics [警报](log-analytics-alerts-creating.md)使用搜索查询。 �
 
 “按解决方案统计的数据量”图表显示每个解决方案发送的数据量，以及发送最多数据的解决方案。 顶部的图表显示每个解决方案在一段时间发送的总数据量。 可以据此确定某个解决方案在一段时间发送的数据量是过多、大致持平还是过少。 解决方案列表显示发送最多数据的 10 个解决方案。 
 
+这两个图表显示所有数据。 某些数据收费，某些数据免费。 如果只想专注于收费数据，请修改搜索页上的查询，使之包括 `IsBillable=true`。  
+
 ![数据量图表](./media/log-analytics-usage/log-analytics-usage-data-volume.png)
 
 查看“一段时间的数据量”图表。 若要查看为特定计算机发送最多数据的解决方案和数据类型，请单击计算机的名称。 单击列表中第一台计算机的名称。
 
 在以下屏幕截图中，“日志管理/性能”数据类型为计算机发送了最多的数据。 
-![计算机的数据量](./media/log-analytics-usage/log-analytics-usage-data-volume-computer.png)
 
+![计算机的数据量](./media/log-analytics-usage/log-analytics-usage-data-volume-computer.png)
 
 接下来回到“使用情况”仪表板，查看“按解决方案统计的数据量”图表。 若要查看为解决方案发送最多数据的计算机，请单击列表中解决方案的名称。 单击列表中第一个解决方案的名称。 
 
@@ -124,16 +126,31 @@ Log Analytics [警报](log-analytics-alerts-creating.md)使用搜索查询。 �
 
 ![解决方案的数据量](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)
 
+根据需要执行其他分析，确定某个解决方案或数据类型中的大型卷。 查询示例如下：
+
++ “安全”解决方案
+  - `Type=SecurityEvent | measure count() by EventID`
++ “日志管理”解决方案
+  - `Type=Usage Solution=LogManagement IsBillable=true | measure count() by DataType`
++ “性能”数据类型
+  - `Type=Perf | measure count() by CounterPath`
+  - `Type=Perf | measure count() by CounterName`
++ “事件”数据类型
+  - `Type=Event | measure count() by EventID`
+  - `Type=Event | measure count() by EventLog, EventLevelName`
++ “Syslog”数据类型
+  - `Type=Syslog | measure count() by Facility, SeverityLevel`
+  - `Type=Syslog | measure count() by ProcessName`
 
 通过以下步骤减少所收集日志的量：
 
 | 高数据量来源 | 如何减少数据量 |
 | -------------------------- | ------------------------- |
-| 安全性事件            | 选择[通用或最低安全性事件](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/) <br> 更改安全审核策略。 例如，关闭[审核筛选平台](https://technet.microsoft.com/library/dd772749(WS.10).aspx)事件。 |
+| 安全性事件            | 选择[通用或最低安全性事件](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/) <br> 更改安全审核策略，只收集所需事件。 具体而言，请查看是否需要收集以下对象的事件： <br> - [审核筛选平台](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [审核注册表](https://docs.microsoft.com/windows/device-security/auditing/audit-registry)<br> - [审核文件系统](https://docs.microsoft.com/windows/device-security/auditing/audit-file-system)<br> - [审核内核对象](https://docs.microsoft.com/windows/device-security/auditing/audit-kernel-object)<br> - [审核句柄操作](https://docs.microsoft.com/windows/device-security/auditing/audit-handle-manipulation)<br> - [审核可移动存储](https://docs.microsoft.com/windows/device-security/auditing/audit-removable-storage) |
 | 性能计数器       | 更改[性能计数器配置](log-analytics-data-sources-performance-counters.md)如下： <br> - 降低收集频率 <br> - 减少性能计数器数 |
 | 事件日志                 | 更改[事件日志配置](log-analytics-data-sources-windows-events.md)如下： <br> - 减少收集的事件日志数 <br> - 仅收集必需的事件级别。 例如，不收集“信息”级别事件 |
 | Syslog                     | 更改 [syslog 配置](log-analytics-data-sources-syslog.md)如下： <br> - 减少收集的设施数 <br> - 仅收集必需的事件级别。 例如，不收集“信息”和“调试”级别事件 |
-| 不需解决方案的计算机中的解决方案数据 | 使用[解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)，只从必需的计算机组收集数据。
+| 不需解决方案的计算机中的解决方案数据 | 使用[解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)，只从必需的计算机组收集数据。 |
 
 ### <a name="check-if-there-are-more-nodes-than-expected"></a>查看节点数是否超出预期
 如果你位于“按节点(OMS)”定价层，则根据所用节点和解决方案数收费。 可以在使用情况仪表板的产品/服务部分中查看使用了每项产品的多少个节点。
@@ -148,4 +165,9 @@ Log Analytics [警报](log-analytics-alerts-creating.md)使用搜索查询。 �
 ## <a name="next-steps"></a>后续步骤
 * 若要了解如何使用搜索语言，请参阅 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)。 可以使用搜索查询，对使用情况数据执行其他分析。
 * 执行[创建警报规则](log-analytics-alerts-creating.md#create-an-alert-rule)中介绍的步骤，当满足搜索条件时，系统就会通知你
+* 使用[解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)，只从必需的计算机组收集数据
+* 选择[通用或最低安全性事件](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/)
+* 更改[性能计数器配置](log-analytics-data-sources-performance-counters.md)
+* 更改[事件日志配置](log-analytics-data-sources-windows-events.md)
+* 更改 [syslog 配置](log-analytics-data-sources-syslog.md)
 
