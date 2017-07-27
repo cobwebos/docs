@@ -41,7 +41,7 @@ ms.lasthandoff: 06/16/2017
 az postgres server-logs list --resource-group myresourcegroup --server mypgserver-20170401 > log_files_list.txt
 ```
 ## <a name="download-logs-locally-from-the-server"></a>从服务器将日志下载到本地
-使用 az postgres server-logs download 命令可下载服务器的单独日志文件。[](/cli/azure/postgres/server-logs#download) 
+使用 [az postgres server-logs download](/cli/azure/postgres/server-logs#download) 命令可下载服务器的单独日志文件。 
 
 此示例演示将资源组“myresourcegroup”下的服务器 mypgserver-20170401.postgres.database.azure.com 的特定日志文件下载到本地环境。
 ```azurecli-interactive

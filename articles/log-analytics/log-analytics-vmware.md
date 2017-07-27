@@ -154,7 +154,7 @@ VMware 磁贴显示在 OMS 门户中。 它提供任何失败的高级视图。 
 ![查询](./media/log-analytics-vmware/queries.png)
 
 #### <a name="save-queries"></a>保存查询
-保存搜索查询是 OMS 中的标准功能，可帮助你记录发现的任何有用查询。 创建有用的查询后，单击“收藏夹”将其保存下来。 已保存的查询可在以后从“我的仪表板”[](log-analytics-dashboards.md)页（可在其中创建你自己的自定义仪表板）轻松地对其进行重复使用。
+保存搜索查询是 OMS 中的标准功能，可帮助你记录发现的任何有用查询。 创建有用的查询后，单击“收藏夹”将其保存下来。 已保存的查询可在以后从[我的仪表板](log-analytics-dashboards.md)页（可在其中创建你自己的自定义仪表板）轻松地对其进行重复使用。
 
 ![DockerDashboardView](./media/log-analytics-vmware/dockerdashboardview.png)
 

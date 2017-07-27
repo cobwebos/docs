@@ -18,10 +18,10 @@ ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: ba82a5e25750fc6d9bd047ace3abb087e5dedfb3
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 4eb32dd18c57af8d46e7afb63047c0985458705d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="introduction-to-private-docker-container-registries"></a>专用 Docker 容器注册表简介
@@ -72,6 +72,6 @@ Azure 容器注册表是基于开源 Docker 注册表 2.0 的托管 [Docker 注�
 * [使用 Azure 门户创建容器注册表](container-registry-get-started-portal.md)
 * [使用 Azure CLI 创建容器注册表](container-registry-get-started-azure-cli.md)
 * [使用 Docker CLI 推送第一个映像](container-registry-get-started-docker-cli.md)
-* 若要使用 Visual Studio Team Services、Azure 容器服务和 Azure 容器注册表生成连续集成和部署工作流，请参阅[此教程](../container-service/container-service-docker-swarm-setup-ci-cd.md)。
+* 若要使用 Visual Studio Team Services、Azure 容器服务和 Azure 容器注册表生成连续集成和部署工作流，请参阅[此教程](../container-service/dcos-swarm/container-service-docker-swarm-setup-ci-cd.md)。
 * 如果想要在 Azure 中设置自己的 Docker 专用注册表（不带公共终结点），请参阅 [Deploying Your Own Private Docker Registry on Azure](../virtual-machines/virtual-machines-linux-docker-registry-in-blob-storage.md)（在 Azure 上部署自己的专用 Docker 注册表）。
 
