@@ -22,12 +22,10 @@ ms.lasthandoff: 05/12/2017
 
 
 ---
-# 在 Azure 中的 Windows VM 上安装和配置 MongoDB
-<a id="install-and-configure-mongodb-on-a-windows-vm-in-azure" class="xliff"></a>
+# <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>在 Azure 中的 Windows VM 上安装和配置 MongoDB
 [MongoDB](http://www.mongodb.org) 是一个流行的开源、高性能 NoSQL 数据库。 本文逐步讲解如何在 Azure 中的 Windows Server 2012 R2 虚拟机 (VM) 上安装和配置 MongoDB。 也可以[在 Azure 中的 Linux VM 上安装 MongoDB](../linux/install-mongodb.md)。
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 在安装和配置 MongoDB 之前，需要创建一个 VM，并且最好将一个磁盘添加到该 VM。 请参阅以下文章创建 VM 并向其添加数据磁盘：
 
 * 使用 [Azure 门户](quick-create-portal.md)或 [Azure PowerShell](quick-create-powershell.md) 创建 Windows Server VM。
@@ -35,8 +33,7 @@ ms.lasthandoff: 05/12/2017
 
 使用远程桌面[登录到 Windows Server VM](connect-logon.md)，开始安装和配置 MongoDB。
 
-## 安装 MongoDB
-<a id="install-mongodb" class="xliff"></a>
+## <a name="install-mongodb"></a>安装 MongoDB
 > [!IMPORTANT]
 > 默认情况下，不启用 MongoDB 安全功能，例如身份验证和 IP 地址绑定。 在将 MongoDB 部署到生产环境之前，应启用安全功能。 有关详细信息，请参阅 [MongoDB Security and Authentication](http://www.mongodb.org/display/DOCS/Security+and+Authentication)（MongoDB 安全性和身份验证）
 
@@ -50,7 +47,7 @@ ms.lasthandoff: 05/12/2017
    * 单击“站点”按钮。 将 *https://\*.mongodb.org* 添加到受信任的站点列表，然后关闭对话框。
      
      ![配置 Internet Explorer 安全性设置](./media/install-mongodb/configure-internet-explorer-security.png)
-4. 浏览到“MongoDB - 下载”页 (http://www.mongodb.org/downloads)。[](http://www.mongodb.org/downloads)
+4. 浏览到[MongoDB - 下载](http://www.mongodb.org/downloads)页 ( http://www.mongodb.org/downloads )。
 5. 如有需要，选择“社区服务器”版本，然后选择 Windows Server 2008 R2 64 位及更高版本的最新稳定版本。 若要下载安装程序，请单击“DOWNLOAD (msi)”。
    
     ![下载 MongoDB 安装程序](./media/install-mongodb/download-mongodb.png)
@@ -59,8 +56,7 @@ ms.lasthandoff: 05/12/2017
 6. 阅读并接受许可协议。 出现提示时，请选择“完整”安装。
 7. 在最后一个屏幕上，单击“安装”。
 
-## 配置 VM 和 MongoDB
-<a id="configure-the-vm-and-mongodb" class="xliff"></a>
+## <a name="configure-the-vm-and-mongodb"></a>配置 VM 和 MongoDB
 1. MongoDB 安装程序不会更新路径变量。 如果路径变量中不包含 MongoDB `bin` 位置，则每次使用 MongoDB 可执行文件时都需要指定完整路径。 若要将位置添加到路径变量，请执行以下操作：
    
    * 右键单击“开始”菜单，然后选择“系统”。
@@ -116,8 +112,7 @@ ms.lasthandoff: 05/12/2017
    
     有关创建 MongoDB 服务的详细信息，请参阅 [Configure a Windows Service for MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#mongodb-as-a-windows-service)（为 MongoDB 配置 Windows 服务）。
 
-## 测试 MongoDB 实例
-<a id="test-the-mongodb-instance" class="xliff"></a>
+## <a name="test-the-mongodb-instance"></a>测试 MongoDB 实例
 以单一实例的形式运行 MongoDB 或将它安装为服务后，可以开始创建并使用数据库。 若要启动 MongoDB 管理 shell，请从“开始”菜单打开另一个命令提示符窗口并输入以下命令：
 
 ```
@@ -148,8 +143,7 @@ db.foo.find()
 exit
 ```
 
-## 配置防火墙和网络安全组规则
-<a id="configure-firewall-and-network-security-group-rules" class="xliff"></a>
+## <a name="configure-firewall-and-network-security-group-rules"></a>配置防火墙和网络安全组规则
 安装并运行 MongoDB 后，请在 Windows 防火墙中打开一个端口，以便能够远程连接到 MongoDB。 若要创建一个新的入站规则以允许 TCP 端口 27017，请打开管理 PowerShell 提示符并输入以下命令：
 
 ```powerahell
@@ -169,8 +163,7 @@ New-NetFirewallRule `
 > TCP 端口 27017 是 MongoDB 使用的默认端口。 可以在启动时 `mongod.exe` 使用 `--port` 参数手动更改此端口，或者通过某个服务更改此端口。 如果更改了端口，请确保在前面的步骤中更新 Windows 防火墙和网络安全组规则。
 
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 本教程已介绍如何在 Windows VM 上安装和配置 MongoDB。 现在，可以遵循 [MongoDB 文档](https://docs.mongodb.com/manual/)中的高级主题访问 Windows VM 上的 MongoDB。
 
 

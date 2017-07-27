@@ -66,6 +66,7 @@
 ## 故障排除
 ### [VM 部署](troubleshoot-deployment-new-vm.md)
 ### [重启 VM 或调整其大小](restart-resize-error-troubleshooting.md)
+### [将虚拟硬盘附加到故障排除 VM](troubleshoot-recovery-disks-portal.md)
 
 # 引用
 ## [PowerShell](/powershell/azure/overview)
@@ -79,7 +80,7 @@
 
 
 # 资源
-## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=compute)
 ## [定价](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)
 ## [区域可用性](https://azure.microsoft.com/regions/services)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
