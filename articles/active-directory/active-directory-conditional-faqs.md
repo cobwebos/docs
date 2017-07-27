@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory 条件性访问 FAQ | Microsoft Docs"
-description: "有关条件性访问的常见问题 "
+title: "Azure Active Directory 条件访问常见问题解答 | Microsoft Docs"
+description: "获取有关 Azure Active Directory 中条件访问的常见问题的解答。"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -11,44 +11,54 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2017
+ms.date: 07/05/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: dee29df176389f39907d302cedc6143c0d3e3322
-ms.lasthandoff: 04/12/2017
-
+ms.reviewer: calebb
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e81c5e943d8e9e9cc322d19900c48377f22a8968
+ms.openlocfilehash: 62e8cecf3177d08f2614bd76956b45da75af0947
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/17/2017
 
 ---
-# <a name="azure-active-directory-conditional-access-faq"></a>Azure Active Directory 条件性访问 FAQ
+# <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory 条件访问常见问题解答
 
 ## <a name="which-applications-work-with-conditional-access-policies"></a>哪些应用程序使用条件性访问策略？
 
-**A：**请参阅[使用 Azure Active Directory 中条件访问规则的应用程序和浏览器](active-directory-conditional-access-supported-apps.md)。
-
----
+有关与条件访问策略配合使用的应用程序的信息，请参阅[使用 Azure Active Directory 中条件访问规则的应用程序和浏览器](active-directory-conditional-access-supported-apps.md)。
 
 ## <a name="are-conditional-access-policies-enforced-for-b2b-collaboration-and-guest-users"></a>是否对 B2B 协作用户和来宾用户执行条件性访问策略？
-**答：**对 B2B 协作用户执行这些策略。 但是，在某些情况下，用户可能无法满足策略要求，例如，如果组织不支持多重身份验证。 当前不对 SharePoint 来宾用户执行此策略。 来宾关系在 SharePoint 中维护。 来宾用户帐户不受身份验证服务器上访问策略的限制。 来宾访问可以在 SharePoint 上进行管理
 
----
+对企业到企业 (B2B) 协作用户执行策略。 但在某些情况下，用户可能无法满足策略要求。 例如，来宾用户的组织可能不支持多重身份验证。 
+
+
 
 ## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>SharePoint Online 策略是否也适用于 OneDrive for Business？
-**答：**是。
 
----
+是的。 SharePoint Online 策略也适用于 OneDrive for Business。
+
 
 ## <a name="why-cant-i-set-a-policy-on-client-apps-like-word-or-outlook"></a>为何无法对诸如 Word 或 Outlook 等客户端应用设置策略？
-**答：**条件性访问策略为访问服务设置要求，当服务发生身份验证时执行该策略。 不对客户端应用直接设置策略，而是在客户端应用调用服务时应用策略。 例如，对 SharePoint 设置的策略可应用于调用 SharePoint 的客户端，对 Exchange 设置的策略可应用于 Outlook。
 
---- 
+条件访问策略设置访问服务的要求。 它在对该服务执行身份验证时执行。 不在客户端应用程序上直接设置策略。 相反，在客户端调用服务时应用策略。 例如，在 SharePoint 上设置的策略适用于调用 SharePoint 的客户端。 在 Exchange 上设置的策略适用于 Outlook。
 
 ## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>条件性访问策略是否应用于服务帐户？
-**答：**条件性访问策略应用于所有服务帐户。 其中包括用作服务帐户的用户帐户。 在许多情况下，以无人参与方式运行的服务帐户无法满足策略。 例如，在需要进行 MFA 的情况下。 在这些情况下，可以使用条件性访问策略管理设置从策略中排除服务帐户。 在此处了解更多有关将策略应用于用户的信息。
 
----
+条件访问策略适用于所有服务帐户， 其中包括用作服务帐户的用户帐户。 通常情况下，运行时无人参与的服务帐户无法满足条件访问策略的要求。 例如，可能需要多重身份验证。 可使用条件访问策略管理设置从策略中排除服务帐户。 
 
-## <a name="are-graph-apis-available-to-configure-configure-conditional-access-policies"></a>图形 API 是否可用于配置条件性访问策略？
-**A：**不可以。 
+## <a name="are-graph-apis-available-for-configuring-conditional-access-policies"></a>图形 API 是否可用于配置条件访问策略？
 
----
+目前不可以。 
+
+## <a name="what-is-the-default-exclusion-policy-for-unsupported-device-platforms"></a>针对不受支持的设备平台的默认排除策略是什么？
+
+目前，对于 iOS 和 Android 设备用户，会有选择地执行条件访问策略。 默认情况下，其他设备平台上的应用程序不受针对 iOS 和 Android 设备的条件访问策略的影响。 租户管理员可选择替代全局策略，禁止不受支持平台上的用户进行访问。
+
+
+## <a name="how-do-conditional-access-policies-work-for-microsoft-teams"></a>条件访问策略如何用于 Microsoft Teams？  
+
+Microsoft Teams 的核心工作效率方案严重依赖 Exchange Online 和 SharePoint Online，例如会议、日历和文件共享。 用户登录时，为这些云应用设置的条件访问策略会应用于 Microsoft Teams。
+
+Microsoft Teams 还在 Azure Active Directory 条件访问策略中作为云应用单独受到支持。 用户登录时，为云应用设置的证书颁发机构策略会应用于 Microsoft Teams。
+
+适用于 Windows 和 Mac 的 Microsoft Teams 桌面客户端支持新式身份验证。 新式身份验证将基于 Azure Active Directory 身份验证库 (ADAL) 的登录引入 Microsoft Office 客户端应用程序。 

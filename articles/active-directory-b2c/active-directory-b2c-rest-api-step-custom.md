@@ -1,6 +1,6 @@
 ---
-title: "演练：在 B2C 自定义策略中以步骤的形式集成 REST API 声明交换 | Microsoft Docs"
-description: "有关 Azure Active Directory B2C 自定义策略与 API 集成的主题"
+title: "Azure Active Directory B2C：业务流程步骤形式的 REST API 声明交换 | Microsoft Docs"
+description: "有关与 API 集成的 Azure Active Directory B2C 自定义策略的主题"
 services: active-directory-b2c
 documentationcenter: 
 author: rojasja
@@ -15,43 +15,49 @@ ms.devlang: na
 ms.date: 04/24/2017
 ms.author: joroja
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 27d066cc6f985565a765989837e4a2744387a628
+ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
+ms.openlocfilehash: dc319c97e64e55861b84cc3943667418077a05d8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/24/2017
 
 ---
 
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journeys-as-an-orchestration-step"></a>演练：在 Azure AD B2C 用户旅程中以业务流程步骤的形式集成 REST API 声明交换
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>演练：在 Azure AD B2C 用户旅程中以业务流程步骤的形式集成 REST API 声明交换
 
-**标识体验框架** (IEF) 基础 Azure AD B2C 可让标识开发人员将某种交互与用户旅程中的 RESTful API 集成。  
+构成 Azure Active Directory B2C (Azure AD B2C) 基础的标识体验框架 (IEF) 可让标识开发人员在用户旅程中将某种交互与 RESTful API 集成。  
 
-完成本演练后，你将可以创建与 RESTful 服务交互的 Azure AD B2C 用户旅程。
+完成本演练后，就可以创建与 RESTful 服务交互的 Azure AD B2C 用户旅程了。
 
-IEF 在声明中发送数据，同时也在声明中接收数据。  可将 REST API 声明交换设计为业务流程步骤。
+IEF 在声明中发送数据，同时也在声明中接收数据。 REST API 声明交换：
 
-- 这可能会触发外部操作 - 例如，可能会在外部数据库中记录一个事件。
-- 此功能还可用于提取值，随后将值存储在用户数据库中。
-- 然后，可以使用收到的声明来更改执行流。
+- 可以设计为业务流程步骤。
+- 可以触发外部操作。 例如，它可能会在外部数据库中记录事件。
+- 可用于提取值并将其存储在用户数据库中。
+
+然后，可以使用收到的声明来更改执行流。
 
 还可以将交互设计为验证配置文件。 有关详细信息，请参阅[演练：在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换](active-directory-b2c-rest-api-validation-custom.md)。
 
-具体的方案是，当某个用户执行配置文件编辑时，我们希望在外部系统中查找该用户，获取该用户注册到的城市，然后将该属性以声明的形式返回给应用程序。
+应用场景为，当用户执行配置文件编辑时，我们需要：
+
+1. 在外部系统中查找用户。
+2. 获取用户完成注册所在的城市。
+3. 将属性作为声明返回给应用程序。
 
 ## <a name="prerequisites"></a>先决条件
 
 - 根据[入门](active-directory-b2c-get-started-custom.md)中所述配置一个 Azure AD B2C 租户，以完成本地帐户注册/登录。
-- 交互的 REST API 终结点 - 本演练使用一个非常简单的 Azure Function Apps WebHook 作为示例
-- **建议**：完成[验证步骤形式的 REST API 声明交换演练](active-directory-b2c-rest-api-validation-custom.md)。
+- 要交互的 REST API 终结点。 该演练采用简单的 Azure 函数应用 webhook 作为示例。
+- *建议*：完成[验证步骤形式的 REST API 声明交换演练](active-directory-b2c-rest-api-validation-custom.md)。
 
-## <a name="step-1---prepare-the-rest-api-function"></a>步骤 1 - 准备 REST API 函数
+## <a name="step-1-prepare-the-rest-api-function"></a>步骤 1：准备 REST API 函数
 
 > [!NOTE]
-> REST API 函数的设置不在本文的讨论范围内。 [Azure Function Apps](https://docs.microsoft.com/azure/azure-functions/functions-reference) 提供一个绝佳的工具包用于在云中创建 RESTful 服务。
+> REST API 函数的设置不在本文的讨论范围内。 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) 提供一个绝佳的工具包，用于在云中创建 RESTful 服务。
 
-我们已设置一个用于接收声明 `email` 的 Azure 函数，因此只需返回具有分配值 `Redmond` 的声明 `city`。 [Github](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples) 中提供了示例 Azure 函数
+我们已设置一个用于接收声明 `email` 的 Azure 函数，然后返回具有分配值 `Redmond` 的声明 `city`。 [Github](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples) 中提供了示例 Azure 函数。
 
-Azure 函数返回的 `userMessage` 声明是在此上下文中是可选的，将被 IEF 忽略。  该声明可能会用作传递给应用程序，然后提供给用户的消息。
+Azure 函数返回的 `userMessage` 声明在此上下文中是可选的，将被 IEF 忽略。 该声明可能会用作传递给应用程序，然后提供给用户的消息。
 
 ```csharp
 if (requestContentAsJObject.email == null)
@@ -74,14 +80,14 @@ return request.CreateResponse<ResponseContent>(
     "application/json");
 ```
 
-使用 **Azure Function Apps** 可以轻松获取函数 URL，其中包含特定函数的标识符。  在本例中，该 URL 为：https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==，可将它用于测试目的。
+使用 Azure 函数应用可以轻松获取函数 URL，其中包含特定函数的标识符。 在本例中，该 URL 为：https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==。 可将它用于测试目的。
 
-## <a name="step-2---configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>步骤 2 - 在 TrustFrameworExtensions.xml 文件中将 RESTful API 声明交换配置为技术配置文件
+## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>步骤 2：在 TrustFrameworExtensions.xml 文件中将 RESTful API 声明交换配置为技术配置文件
 
-技术配置文件是 RESTful 服务所需的交换的完整配置。 打开 `TrustFrameworkExtensions.xml` 文件，然后在 `<ClaimsProvider>` 元素中添加以下 XML 代码片段。
+技术配置文件是 RESTful 服务所需的交换的完整配置。 打开 TrustFrameworkExtensions.xml 文件并在元素 `<ClaimsProvider>` 内添加以下 XML 代码片段。
 
 > [!NOTE]
-> 请将下面所述的“Restful 提供程序，版本 1.0.0.0”视为要与外部服务交互的函数的协议。  可在 <!-- TODO: Link to RESTful Provider schema definition>--> 中找到架构的完整定义
+> 在以下 XML 中，RESTful 提供程序 `Version=1.0.0.0` 被描述为协议。 将其视为与外部服务进行交互的函数。 <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
 
 ```XML
 <ClaimsProvider>
@@ -107,13 +113,13 @@ return request.CreateResponse<ResponseContent>(
 </ClaimsProvider>
 ```
 
-`<InputClaims>` 元素定义要从 IEF 发送到 REST 服务的声明。 在上面的示例中，声明 `givenName` 的内容将以声明 `email` 的形式发送到 REST 服务。  
+`<InputClaims>` 元素定义要从 IEF 发送到 REST 服务的声明。 在本示例中，声明 `givenName` 的内容将以声明 `email` 的形式发送到 REST 服务。  
 
 `<OutputClaims>` 元素定义 IEF 预期从 REST 服务收到的声明。 不管收到了多少个声明，IEF 都只使用此处指定的声明。 在本示例中，以 `city` 形式收到的声明将映射到 IEF 声明 `city`。
 
-## <a name="step-3---add-a-new-claim-city-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>步骤 3 - 将新的声明 `city` 添加到 TrustFrameworkExtensions.xml 文件的架构
+## <a name="step-3-add-the-new-claim-city-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>步骤 3：将新的声明 `city` 添加到 TrustFrameworkExtensions.xml 文件的架构
 
-声明 `city` 未在我们架构中的其他任何位置定义。 因此，我们需要在位于 `TrustFrameworkExtensions.xml` 文件开头的元素 `<BuildingBlocks>` 中添加一个定义。
+声明 `city` 未在我们架构中的任何位置定义。 因此，请在元素 `<BuildingBlocks>` 中添加一个定义。 你可以在 TrustFrameworkExtensions.xml 文件的开头处找到此元素。
 
 ```XML
 <BuildingBlocks>
@@ -130,14 +136,14 @@ return request.CreateResponse<ResponseContent>(
 </BuildingBlocks>
 ```
 
-## <a name="step-4---include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-your-trustframeworkextensionsxml"></a>步骤 4 - 在 TrustFrameworkExtensions.xml 中的配置文件编辑用户旅程内以业务流程步骤的形式包含 REST 服务声明交换
+## <a name="step-4-include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-trustframeworkextensionsxml"></a>步骤 4：在 TrustFrameworkExtensions.xml 中的配置文件编辑用户旅程内以业务流程步骤的形式加入 REST 服务声明交换
 
-我们已决定在用户完成身份验证（业务流程步骤 1-4 – 请参阅下文）并提供更新的配置文件信息（步骤 5）后，在配置文件编辑用户旅程中添加步骤。
+在用户完成身份验证（以下 XML 中的业务流程步骤 1-4）并提供更新的配置文件信息（步骤 5）后，在配置文件编辑用户旅程中添加步骤。
 
 > [!NOTE]
-> 在许多用例中，可将 REST API 调用用作业务流程步骤。  用户成功完成某个任务（例如首次注册）后，可以使用业务流程步骤对外部系统进行更新；或者使用它来对配置文件进行更新，以保持信息同步。  在本例中，业务流程步骤用于在完成配置文件编辑后，对提供给应用程序的信息做出补充。
+> 在许多用例中，可将 REST API 调用用作业务流程步骤。 用户成功完成某个任务（例如首次注册）后，可以使用业务流程步骤对外部系统进行更新；或者使用它来对配置文件进行更新，以保持信息同步。 在本例中，业务流程步骤用于在完成配置文件编辑后，对提供给应用程序的信息做出补充。
 
-将 `TrustFrameworkBase.xml` 文件中的配置文件编辑用户旅程 XML 代码复制到 `TrustFrameworkExtensions.xml` 文件中的 `<UserJourneys>` 元素，然后根据步骤 6 进行修改。
+将配置文件编辑用户旅程 XML 代码从 TrustFrameworkBase.xml 文件复制到元素 `<UserJourneys>` 中的 TrustFrameworkExtensions.xml 文件。 然后在步骤 6 中进行修改。
 
 ```XML
 <OrchestrationStep Order="6" Type="ClaimsExchange">
@@ -148,9 +154,9 @@ return request.CreateResponse<ResponseContent>(
 ```
 
 > [!IMPORTANT]
-> 如果步骤顺序与你的版本不符，只需确保在 ClaimsExchange 类型 `SendClaims` 的前面以步骤形式插入该代码
+> 如果步骤顺序与你的版本不符，请务必在 `ClaimsExchange` 类型 `SendClaims` 前面以步骤形式插入该代码。
 
-最终的 UserJourney XML 应如下所示：
+用户旅程最终的 XML 应如下所示：
 
 ```XML
 <UserJourney Id="ProfileEdit">
@@ -196,7 +202,7 @@ return request.CreateResponse<ResponseContent>(
                 <ClaimsExchange Id="B2CUserProfileUpdateExchange" TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate" />
             </ClaimsExchanges>
         </OrchestrationStep>
-        <!-- Add a step 6 to the user journey before the jwt token is created-->
+        <!-- Add a step 6 to the user journey before the JWT token is created-->
         <OrchestrationStep Order="6" Type="ClaimsExchange">
             <ClaimsExchanges>
                 <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
@@ -208,11 +214,11 @@ return request.CreateResponse<ResponseContent>(
 </UserJourney>
 ```
 
-## <a name="step-5---add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>步骤 5 - 将声明“city”添加到信赖方策略文件，以便将该声明发送到应用程序
+## <a name="step-5-add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>步骤 5：将声明 `city` 添加到信赖方策略文件，以便将该声明发送到应用程序
 
-为此，请编辑 `ProfileEdit.xml` RP 文件并修改 `<TechnicalProfile Id="PolicyProfile">` 元素，以添加以下声明：`<OutputClaim ClaimTypeReferenceId="city" />`。
+编辑 ProfileEdit.xml 信赖方 (RP) 文件并修改 `<TechnicalProfile Id="PolicyProfile">` 元素以添加如下内容：`<OutputClaim ClaimTypeReferenceId="city" />`。
 
-添加新声明后，TechnicalProfile 如下所示：
+添加新声明后，技术配置文件应如下所示：
 
 ```XML
 <DisplayName>PolicyProfile</DisplayName>
@@ -225,15 +231,15 @@ return request.CreateResponse<ResponseContent>(
 </TechnicalProfile>
 ```
 
-## <a name="step-6---upload-your-changes-and-test"></a>步骤 6 - 上传更改并测试
+## <a name="step-6-upload-your-changes-and-test"></a>步骤 6：上传更改并进行测试
 
-将会覆盖现有的策略版本。
+覆盖现有的策略版本。
 
-1.    （可选）在继续下一步之前，请保存现有的扩展文件版本（通过下载）。  我们建议不要上传多个扩展文件版本，以保持较低的初始复杂性。
-2.    （可选）可以通过更改 PolicyId="B2C_1A_TrustFrameworkProfileEdit"，重命名策略编辑文件 PolicyId 的新版本
-3.    上传扩展文件
-4.    上传策略编辑信赖方文件
-5.    使用“立即运行”测试策略。  查看 IEF 返回给应用程序的令牌。
+1.  （可选：）在继续下一步之前，请（通过下载的方式）保存现有的扩展文件版本。 为保证初始复杂度较低，建议不要上传多个扩展文件版本。
+2.  （可选：）通过更改 `PolicyId="B2C_1A_TrustFrameworkProfileEdit"` 为策略编辑文件重新命名新版策略 ID。
+3.  上传扩展文件。
+4.  上传策略编辑 RP 文件。
+5.  使用“立即运行”测试策略。 查看 IEF 返回给应用程序的令牌。
 
 如果所有设置正确，令牌将包含值为 `Redmond` 的新声明 `city`。
 
@@ -257,5 +263,5 @@ return request.CreateResponse<ResponseContent>(
 
 [使用 REST API 作为验证步骤](active-directory-b2c-rest-api-validation-custom.md)
 
-[如何修改配置文件编辑以便从用户收集其他信息](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+[修改配置文件编辑以收集用户的其他信息](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 

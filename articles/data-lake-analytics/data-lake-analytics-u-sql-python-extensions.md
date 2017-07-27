@@ -4,7 +4,7 @@ description: "了解如何在 U-SQL 脚本中运行 Python 代码"
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
-manager: sukvg
+manager: jhubbard
 editor: cgronlun
 ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.service: data-lake-analytics
@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/05/2016
+ms.date: 06/20/2017
 ms.author: saveenr
-translationtype: Human Translation
-ms.sourcegitcommit: 624b0370a85827cb9feaa48924bfa76d9ae19d0f
-ms.openlocfilehash: b3a9434df566d391e50e7755f9ab7fa880fe1d53
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 6f3477b67b27a30e6b69f6015e9063bfa27834f7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -25,10 +26,10 @@ ms.openlocfilehash: b3a9434df566d391e50e7755f9ab7fa880fe1d53
 
 通过 U-SQL 的 Python 扩展，开发人员可以执行大规模并发执行的 Python 代码。 以下示例演示了基本步骤：
 
-* 使用 REFERENCE ASSEMBLY 语句为 U-SQL 脚本启用 Python 扩展
-* 使用 REDUCE 操作对某个键的输入数据进行分区
-* U-SQL 的 Python 扩展包括内置简化器 (Extension.Python.Reducer)，可在分配给每个简化器的顶点上运行 Python 代码
-* U-SQL 脚本包含嵌入式 Python 代码，该代码具有称为 usqlml_main 的函数，可接受 pandas DataFrame 作为输入并返回 pandas DataFrame 作为输出。
+* 使用 `REFERENCE ASSEMBLY` 语句为 U-SQL 脚本启用 Python 扩展
+* 使用 `REDUCE` 操作对某个键的输入数据进行分区
+* U-SQL 的 Python 扩展包括内置化简器 (`Extension.Python.Reducer`)，可在分配给每个化简器的顶点上运行 Python 代码
+* U-SQL 脚本包含嵌入式 Python 代码，该代码具有称为 `usqlml_main` 的函数，可接受 pandas DataFrame 作为输入并返回 pandas DataFrame 作为输出。
 
 --
 
@@ -68,7 +69,7 @@ ms.openlocfilehash: b3a9434df566d391e50e7755f9ab7fa880fe1d53
 ### <a name="datatypes"></a>数据类型
 
 * U-SQL 中的字符串和数字列在 Pandas 和 U-SQL 之间按原样转换
-* U-SQL Null 转换为 Pandas“NA”值，并从该值进行转换
+* U-SQL Null 与 Pandas `NA` 值相互转换
 
 ### <a name="schemas"></a>架构
 
@@ -99,10 +100,5 @@ ms.openlocfilehash: b3a9434df566d391e50e7755f9ab7fa880fe1d53
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
 * [通过 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
 * [对 Azure Data Lake Analytics 作业使用 U-SQL 开窗函数](data-lake-analytics-use-window-functions.md)
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

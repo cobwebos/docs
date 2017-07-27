@@ -13,3 +13,5 @@
 ### [应用入门](microsoft-authenticator-app-how-to.md)
 ### [使用手机登录](microsoft-authenticator-app-phone-signin-faq.md)
 ### [常见问题](microsoft-authenticator-app-faq.md)
+# 资源
+## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=security-identity)

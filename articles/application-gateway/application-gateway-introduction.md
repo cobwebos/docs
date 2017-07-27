@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/10/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 17fc7e6a19b835e08360d1bf638d69aabb14e121
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: c9aafa13ebdeeb84a35e55e25650f334ddc71af5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="overview-of-application-gateway"></a>应用程序网关概述
@@ -103,4 +103,6 @@ Azure 应用程序网关会通过基本或自定义运行状况探测，自动�
 了解应用程序网关后，可以[创建应用程序网关](application-gateway-create-gateway-portal.md)，也可以[创建应用程序网关 SSL 卸载](application-gateway-ssl-arm.md)，以便对 HTTPS 连接进行负载均衡。
 
 若要详细了解如何使用基于 URL 的内容路由创建应用程序网关，请转到[使用基于 URL 的路由创建应用程序网关](application-gateway-create-url-route-arm-ps.md)。
+
+若要了解 Azure 的部分其他关键网络功能，请参阅 [Azure 网络]((../networking/networking-overview.md)。
 

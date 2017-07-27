@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 66834674e37d3b46a4a754b2b743cb223a6961d7
-ms.lasthandoff: 03/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: d04d33fede00fbc083d71bc486b726bd7f86c6d0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/10/2017
 
 
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-command-line-interface-cli"></a>使用 Azure 命令行接口 (CLI) 管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-了解如何使用 Azure 管理 Azure Data Lake Analytics 帐户、数据源、用户和作业。 若要查看使用其他工具的管理主题，请单击上述选项卡选择。
+了解如何使用 Azure CLI 管理 Azure Data Lake Analytics 帐户、数据源、用户和作业。 若要查看使用其他工具的管理主题，请单击上述选项卡选项。
+
 
 **先决条件**
 
@@ -37,7 +39,7 @@ ms.lasthandoff: 03/21/2017
   
         azure login
     有关使用公司或学校帐户进行身份验证的详细信息，请参阅 [从 Azure CLI 连接到 Azure 订阅](../xplat-cli-connect.md)。
-* 使用以下命令**切换到 Azure 资源管理器模式**：
+* 使用以下命令**切换到 Azure Resource Manager 模式**：
   
         azure config mode arm
 
@@ -165,15 +167,6 @@ Data Lake Analytics 当前支持以下数据源：
     azure datalake analytics catalog list -n "<Data Lake Analytics Account Name>" -t table
 
 类型包括数据库、架构、程序集、外部数据源、表、表值函数或表统计信息。
-
-### <a name="create-catalog-secret"></a>创建目录机密
-    azure datalake analytics catalog secret create -n "<Data Lake Analytics Account Name>" <databaseName> <hostUri> <secretName>
-
-### <a name="modify-catalog-secret"></a>修改目录机密
-      azure datalake analytics catalog secret set -n "<Data Lake Analytics Account Name>" <databaseName> <hostUri> <secretName>
-
-### <a name="delete-catalog-secret"></a>删除目录机密
-    azure datalake analytics catalog secrete delete -n "<Data Lake Analytics Account Name>" <databaseName> <hostUri> <secretName>
 
 <!-- ################################ -->
 <!-- ################################ -->

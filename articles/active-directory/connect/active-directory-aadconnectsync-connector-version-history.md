@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/11/2017
+ms.date: 07/12/2017
 ms.author: billmath
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 3c91cb00d6535a4bc01a3b95547ef940cbff7fcb
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: e9699abe0c1bdb6ea449c99e087ae56adb717b8d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 06/30/2017
 
 ---
 # <a name="connector-version-release-history"></a>连接器版本发行历史记录
@@ -39,7 +38,25 @@ Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接�
 * [PowerShell 连接器](active-directory-aadconnectsync-connector-powershell.md)参考文档
 * [Lotus Domino 连接器](active-directory-aadconnectsync-connector-domino.md)参考文档
 
-## <a name="115220"></a>1.1.522.0
+## <a name="115510-aadconnect-115530"></a>1.1.551.0 (AADConnect 1.1.553.0)
+
+### <a name="fixed-issues"></a>已解决的问题：
+
+* 泛型 Web 服务：
+  * Wsconfig 工具未从 REST 服务方法的“示例请求”中正确转换 Json 数组。 因此序列化此 REST 请求的 Json 数组时出现问题。
+  * Web 服务连接器配置工具不支持在 JSON 属性名称中使用空格符号。可将替代模式手动添加到 WSConfigTool.exe.config 文件，例如 ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```
+
+* Lotus Notes：
+  * 如果禁用“允许组织/组织单位的自定义认证者”选项，则连接器将在导出（更新）过程中失败。导出流程完成后，所有属性都会导出到 Domino 中，但在导出时，将返回一个 KeyNotFoundException 到同步。 这是因为重命名操作在尝试通过更改以下属性之一来更改 DN（用户名属性）时失败：  
+    - LastName
+    - FirstName
+    - MiddleInitial
+    - AltFullName
+    - AltFullNameLanguage
+    - ou
+    - altcommonname
+
+  * 如果启用“允许组织/组织单位的自定义认证者”选项，但所需认证者仍为空，则会出现 KeyNotFoundException 错误。
 
 ### <a name="enhancements"></a>增强功能：
 

@@ -15,10 +15,10 @@ ms.tgt_pltfrm: na
 ms.date: 04/15/2017
 ms.author: eugenesh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: faa6d403aa130738ae0b58ba1ffc828a1e37e9f4
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 509682297a3db090caa73bd9438f6434257d558f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
@@ -34,7 +34,8 @@ Blob 索引器可从以下文档格式提取文本：
 * XML
 * ZIP
 * EML
-* 纯文本文件  
+* RTF
+* 纯文本文件
 * JSON（有关详细信息，请参阅[为 JSON Blob 编制索引](search-howto-index-json-blobs.md)）
 * CSV（有关详细信息，请参阅[为 CSV Blob 编制索引](search-howto-index-csv-blobs.md)预览版功能）
 
@@ -141,7 +142,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 > [!NOTE]
 > 默认情况下，包含结构化内容（例如 JSON 或 CSV）的 lob 将以单一文本区块的形式编制索引。 如果想要以结构化方法为 JSON 和 CSV Blob 编制索引，请参阅[为 JSON Blob 编制索引](search-howto-index-json-blobs.md)和[为 CSV Blob 编制索引](search-howto-index-csv-blobs.md)预览版功能。
-> 
+>
 > 复合或嵌入式文档（例如 ZIP 存档，或者嵌入了带附件 Outlook 电子邮件的 Word 文档）也以单一文档的形式编制索引。
 
 * 文档的文本内容将提取到名为 `content` 的字符串字段中。
@@ -154,7 +155,7 @@ Blob 索引器可从以下文档格式提取文本：
 
   * **metadata\_storage\_name** (Edm.String) - Blob 的文件名。 例如，对于 Blob /my-container/my-folder/subfolder/resume.pdf 而言，此字段的值是 `resume.pdf`。
   * **metadata\_storage\_path** (Edm.String) - Blob 的完整 URI（包括存储帐户）。 例如： `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
-  * **metadata\_storage\_content\_type** (Edm.String) - 用于上载 Blob 的代码指定的内容类型。 例如，`application/octet-stream`。
+  * **metadata\_storage\_content\_type** (Edm.String) - 用于上传 Blob 的代码指定的内容类型。 例如，`application/octet-stream`。
   * **metadata\_storage\_last\_modified** (Edm.DateTimeOffset) - 上次修改 Blob 的时间戳。 Azure 搜索服务使用此时间戳来识别已更改的 Blob，避免在初次编制索引之后再次为所有内容编制索引。
   * **metadata\_storage\_size** (Edm.Int64) - Blob 大小，以字节为单位。
   * **metadata\_storage\_content\_md5** (Edm.String) - Blob 内容的 MD5 哈希（如果有）。
@@ -175,7 +176,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 * **metadata\_storage\_name** - 这可能是一个便利的候选项，但是请注意，1) 名称可能不唯一，因为不同的文件夹中可能有同名的 Blob；2) 名称中包含的字符可能在文档键中无效，例如短划线。 可以使用 `base64Encode` [字段映射函数](search-indexer-field-mappings.md#base64EncodeFunction)处理无效的字符 - 如果这样做，请记得在将这些字符传入 Lookup 等 API 调用时为文档键编码。 （例如，在 .NET 中，可以使用 [UrlTokenEncode 方法](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx)实现此目的）。
 * **metadata\_storage\_path** - 使用完整路径可确保唯一性，但是路径必定会包含 `/` 字符，而该字符[在文档键中无效](https://docs.microsoft.com/rest/api/searchservice/naming-rules)。  如上所述，可以选择使用 `base64Encode` [函数](search-indexer-field-mappings.md#base64EncodeFunction)为键编码。
-* 如果上述所有做法都不起作用，可将一个自定义元数据属性添加到 Blob。 但是，这种做法需要通过 Blob 上载过程将该元数据属性添加到所有 Blob。 由于键是必需的属性，因此没有该属性的所有 Blob 都无法编制索引。
+* 如果上述所有做法都不起作用，可将一个自定义元数据属性添加到 Blob。 但是，这种做法需要通过 Blob 上传过程将该元数据属性添加到所有 Blob。 由于键是必需的属性，因此没有该属性的所有 Blob 都无法编制索引。
 
 > [!IMPORTANT]
 > 如果索引中没有键字段的显式映射，Azure 搜索服务将自动使用 `metadata_storage_path`（上述第二个选项）作为键并对该键进行 base-64 编码。
@@ -366,7 +367,9 @@ Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob �
 | XML (application/xml) |`metadata_content_type`</br>`metadata_content_encoding`</br> |剥离 XML 标记并提取文本 |
 | JSON (application/json) |`metadata_content_type`</br>`metadata_content_encoding` |提取文本<br/>注意：如果需要从 JSON Blob 提取多个文档字段，请参阅[为 JSON Blob 编制索引](search-howto-index-json-blobs.md)了解详细信息 |
 | EML (message/rfc822) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` |提取文本，包括附件 |
-| 纯文本 (text/plain) |`metadata_content_type`</br>`metadata_content_encoding`</br> | |
+| RTF（应用程序/rtf） |`metadata_content_type`</br>`metadata_author`</br>`metadata_character_count`</br>`metadata_creation_date`</br>`metadata_page_count`</br>`metadata_word_count`</br> | 提取文本|
+| 纯文本 (text/plain) |`metadata_content_type`</br>`metadata_content_encoding`</br> | 提取文本|
+
 
 ## <a name="help-us-make-azure-search-better"></a>帮助我们改进 Azure 搜索
 如果想要请求新功能或者在改进方面有什么看法，敬请通过 [UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search/)告诉我们。

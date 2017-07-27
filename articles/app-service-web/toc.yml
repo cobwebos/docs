@@ -48,16 +48,13 @@
 - name: 概念
   items:
     - name: 应用服务的工作方式
-      href: >-
-        ../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+      href: ../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
     - name: 应用服务计划
-      href: >-
-        ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+      href: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
     - name: 应用服务环境
       href: ../app-service/app-service-environment/intro.md
     - name: 身份验证和授权
-      href: >-
-        ../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+      href: ../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
     - name: 使用本地 AD 进行身份验证
       href: web-sites-authentication-authorization.md
 - name: 操作指南
@@ -161,8 +158,6 @@
               href: custom-dns-web-site-buydomains-web-app.md
             - name: 使用流量管理器映射域
               href: web-sites-traffic-manager-custom-domain-name.md
-            - name: 映射 GoDaddy 域
-              href: web-sites-godaddy-custom-domain-name.md
             - name: 迁移活动域
               href: app-service-custom-domain-name-migrate.md
         - name: 从 IIS 迁移
@@ -186,20 +181,15 @@
         - name: 对用户进行身份验证
           items:
             - name: 使用 Azure AD 进行身份验证
-              href: >-
-                ../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+              href: ../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
             - name: 使用 Facebook 进行身份验证
-              href: >-
-                ../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+              href: ../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
             - name: 使用 Google 进行身份验证
-              href: >-
-                ../app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+              href: ../app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
             - name: 使用 Microsoft 帐户进行身份验证
-              href: >-
-                ../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+              href: ../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
             - name: 使用 Twitter 进行身份验证
-              href: >-
-                ../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+              href: ../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
             - name: 使用本地 AD 进行身份验证
               href: web-sites-authentication-authorization.md
             - name: 将应用与多租户数据库配合使用
@@ -213,20 +203,17 @@
         - name: 纵向扩展
           href: web-sites-scale.md
         - name: 向外扩展
-          href: >-
-            ../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+          href: ../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json
         - name: 使用流量管理器进行负载均衡
           href: web-sites-traffic-manager.md
         - name: 使用应用服务环境提供高可伸缩性
-          href: >-
-            ../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+          href: ../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
         - name: 使用 Azure CDN 扩大全球覆盖范围
           href: cdn-websites-with-cdn.md
         - name: 通过 Memcache 连接到 Redis 缓存
           href: web-sites-connect-to-redis-using-memcache-protocol.md
         - name: 创建 Redis 缓存
-          href: >-
-            ../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+          href: ../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fazure%2fapp-service-web%2ftoc.json
         - name: 使用 Azure Redis 缓存管理会话状态
           href: web-sites-dotnet-session-state-caching.md
     - name: 监视
@@ -260,8 +247,7 @@
     - name: 集成
       items:
         - name: 导出到 PowerApps 和 Microsoft Flow
-          href: >-
-            ../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+          href: ../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-web%2ftoc.json
     - name: 应用服务环境
       items:
         - name: 使用应用服务环境
@@ -309,8 +295,7 @@
         - name: 常见问题
           items:
             - name: 可用性、性能和应用程序常见问题解答
-              href: >-
-                app-service-web-availability-performance-application-issues-faq.md
+              href: app-service-web-availability-performance-application-issues-faq.md
             - name: 部署常见问题解答
               href: app-service-web-deployment-faq.md
             - name: 开放源代码技术常见问题解答
@@ -338,11 +323,9 @@
         - name: 如何控制入站流量
           href: app-service-app-service-environment-control-inbound-traffic.md
         - name: 安全连接到后端资源
-          href: >-
-            app-service-app-service-environment-securely-connecting-to-backend-resources.md
+          href: app-service-app-service-environment-securely-connecting-to-backend-resources.md
         - name: 使用 ExpressRoute 的网络配置详细信息
-          href: >-
-            app-service-app-service-environment-network-configuration-expressroute.md
+          href: app-service-app-service-environment-network-configuration-expressroute.md
         - name: 在应用服务环境中自动缩放
           href: ../app-service/app-service-environment-auto-scale.md
     - name: 定价

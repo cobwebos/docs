@@ -1,5 +1,5 @@
 ---
-title: "在已加入域的 HDInsight 中配置 Hive 策略 | Microsoft 文档"
+title: "在已加入域的 HDInsight 中配置 Hive 策略 - Azure |Microsoft Docs"
 description: "学习内容"
 services: hdinsight
 documentationcenter: 
@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 213b6b5274ebde8cc460829ff1edc96a66eef994
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: de537d5e39dd0d3f75ff802948c7372e4d65d127
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/13/2017
 
 
 ---

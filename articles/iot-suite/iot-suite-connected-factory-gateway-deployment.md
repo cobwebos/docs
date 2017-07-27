@@ -15,15 +15,28 @@ ms.workload: na
 ms.date: 04/22/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: e8774cc290847d48ecdc5dcdac1f2533fdc7d072
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 09585a8e2ffbe0c825ee63f459218c7945cdd243
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 06/08/2017
 
 ---
 
 # <a name="deploy-a-gateway-on-windows-or-linux-for-the-connected-factory-preconfigured-solution"></a>在 Windows 或 Linux 上为已连接的工厂预配置解决方案部署网关
+
+需要为已连接的工厂预配置解决方案部署网关的软件具有两个组件：
+
+* OPC 代理与 IoT 中心建立连接并等待集成 OPC 浏览器发出命令和控制消息，该浏览器在连接的工厂解决方案门户中运行。
+* OPC 发布服务器连接到现有的本地 OPC UA 服务器，并将遥测消息从服务器转发到 IoT 中心。
+
+这两个组件为开源组件，在 GitHub 可用作源，也可用作 Docker 容器：
+
+| GitHub | DockerHub |
+| ------ | --------- |
+| [OPC 发布服务器][lnk-publisher-github] | [OPC 发布服务器][lnk-publisher-docker] |
+| [OPC 代理][lnk-proxy-github] | [OPC 代理][lnk-proxy-docker] |
+
+这两个组件中的任意一个都不需要网关防火墙中面向公众的 IP 地址或缺口。 OPC 代理和 OPC 发布服务器仅使用出站端口 443、5671 和 8883。
 
 本文中的步骤演示如何在 Windows 或 Linux 上使用 Docker 部署网关。 使用网关可以连接已连接的工厂预配置解决方案。
 
@@ -58,7 +71,7 @@ ms.lasthandoff: 05/16/2017
 
     `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db`
 
-    * &lt;ApplicationName&gt; 是 OPC UA 应用程序的名称，该应用程序是网关以 publisher.&lt;完全限定的域名&gt;的格式创建的。 例如，publisher.microsoft.com。
+    * &lt;ApplicationName&gt; 是提供给 OPC UA 发布服务器的名称，采用 publisher.&lt;完全限定的域名&gt;格式。 例如，如果工厂网络名称是“myfactorynetwork.com”，则 ApplicationName 的值是“publisher.myfactorynetwork.com”。
     * &lt;IoTHubOwnerConnectionString&gt; 是在上一步中复制的 iothubowner 连接字符串。 此连接字符串仅用于此步骤中，此后不会再次使用该字符串。
 
     映射的 D:\\docker 文件夹（`-v` 参数）稍后用于保存网关模块所用的两个 X.509 证书。
@@ -67,7 +80,7 @@ ms.lasthandoff: 05/16/2017
 
 1. 使用以下命令，重启网关：
 
-    `docker run -it --rm -h <ApplicationName> --expose 62222 -p 62222:62222 -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/Logs -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v //D/docker:/shared -v //D/docker:/root/.dotnet/corefx/cryptography/x509stores -e \_GW\_PNFP="/shared/publishednodes.JSON" microsoft/iot-gateway-opc-ua:1.0.0 <ApplicationName>`
+    `docker run -it --rm -h <ApplicationName> --expose 62222 -p 62222:62222 -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/Logs -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v //D/docker:/shared -v //D/docker:/root/.dotnet/corefx/cryptography/x509stores -e _GW_PNFP="/shared/publishednodes.JSON" microsoft/iot-gateway-opc-ua:1.0.0 <ApplicationName>`
 
     `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -D /mapped/cs.db`
 
@@ -152,5 +165,10 @@ ms.lasthandoff: 05/16/2017
 [Azure 门户]: http://portal.azure.com/
 [开源 OPC UA 客户端]: https://github.com/OPCFoundation/UA-.NETStandardLibrary/tree/master/SampleApplications/Samples/Client.Net4
 [安装 Docker]: https://www.docker.com/community-edition#/download
-[lnk-walkthrough]: iot-suite-overview.md
+[lnk-walkthrough]: iot-suite-connected-factory-sample-walkthrough.md
 [Azure IoT Edge]: https://github.com/Azure/iot-edge
+
+[lnk-publisher-github]: https://github.com/Azure/iot-edge-opc-publisher
+[lnk-publisher-docker]: https://hub.docker.com/r/microsoft/iot-gateway-opc-ua
+[lnk-proxy-github]: https://github.com/Azure/iot-edge-opc-proxy
+[lnk-proxy-docker]: https://hub.docker.com/r/microsoft/iot-gateway-opc-ua-proxy

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: bc1b22b6269dc42add45a63d12c6c733e9d8c6ab
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 9a588a28312388a524d91df7363234e0f609660e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -28,8 +28,7 @@ ms.lasthandoff: 05/18/2017
 HDInsight Spark 群集包括可用于运行 Spark 作业的 Zeppelin 笔记本。 本文中你将了解如何在 HDInsight 群集中使用 Zeppelin 笔记本。
 
 > [!NOTE]
-> 默认情况下，Zeppelin 笔记本仅适用于 HDInsight 群集版本 3.5 上的 Spark 1.6.2。 如果要在其他版本的 HDInsight Spark 群集上使用 Zeppelin，可以使用脚本操作安装 Zeppelin。 有关说明，请参阅[为 HDInsight Linux 上的 Apache Spark 群集安装 Zeppelin 笔记本](hdinsight-apache-spark-use-zeppelin-notebook.md)。
-> 
+> Zeppelin 笔记本仅适用于 HDInsight 3.5 上的 Spark 1.6.3 和 HDInsight 3.6 上的 Spark 2.1.0。
 >
 
 **先决条件：**

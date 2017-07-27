@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 858769130eed5c996bca151855bfc09d4832a314
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 33390532cc4fc1129a4f960d589f41bc95e5a1ff
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/15/2017
 
 ---
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 05/26/2017
 - **本地文件路径** - 虚拟机上保存数据包捕获的本地路径。 （仅当选择了“文件”时才启用此选项）。 必须提供有效的路径
 - **每个数据包的最大字节数** - 从每个数据包捕获的字节数，如果留空，将捕获所有字节。
 - **每个会话的最大字节数** - 捕获的字节总数，一旦达到此值，就会停止数据包捕获。
-- **时间限制(秒)** - 设置停止数据包捕获的时间限制。 默认值为 1800 秒。
+- **时间限制(秒)** - 设置停止数据包捕获的时间限制。 默认值为 18000 秒。
 
 > [!NOTE]
 > 目前不支持使用高级存储帐户存储数据包捕获。

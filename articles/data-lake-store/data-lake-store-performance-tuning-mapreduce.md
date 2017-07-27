@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-translationtype: Human Translation
-ms.sourcegitcommit: c145642c06e477dd47e4d8d651262046519b656b
-ms.openlocfilehash: 564141d09bc54fbf4beb36d28bec160a7097f897
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 9528148792f083cb0e48d356e61cf61762ee954f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -29,7 +31,7 @@ ms.openlocfilehash: 564141d09bc54fbf4beb36d28bec160a7097f897
 * **Azure Data Lake Store 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)
 * 具有 Data Lake Store 帐户访问权限的**Azure HDInsight 群集**。 请参阅[创建包含 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
 * **在 HDInsight 上使用 MapReduce**。  有关详细信息，请参阅[在 HDInsight 上的 Hadoop 中使用 MapReduce](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-use-mapreduce)  
-* **ADLS 性能优化指南**。  有关常规性能概念，请参阅 [Data Lake Store 性能优化指南](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-performance-tuning-guidance)  
+* **ADLS 性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Store 性能优化指南](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-performance-tuning-guidance)  
 
 ## <a name="parameters"></a>parameters
 
@@ -40,7 +42,7 @@ ms.openlocfilehash: 564141d09bc54fbf4beb36d28bec160a7097f897
 * **Mapreduce.reduce.memory.mb** - 要分配给每个化简器的内存量
 * **Mapreduce.job.reduces** - 每个作业的化简任务数
 
-**Mapreduce.map.memory/Mapreduce.reduce.memory** 应根据映射和/或化简任务所需的内存量调整此数字。  可以在 Ambari 中通过 Yarn 配置查看 mapreduce.map.memory 和 mapreduce.reduce.memory 的默认值。  在 Ambari 中，导航到 YARN 并查看“配置”选项卡。  可以看到内存     
+**Mapreduce.map.memory/Mapreduce.reduce.memory** 应根据映射和/或化简任务所需的内存量调整此数字。  可以在 Ambari 中通过 Yarn 配置查看 mapreduce.map.memory 和 mapreduce.reduce.memory 的默认值。  在 Ambari 中，导航到 YARN 并查看“配置”选项卡。  随即显示 YARN 内存。  
 
 **Mapreduce.job.maps/Mapreduce.job.reduces** 此项确定要创建的映射器或化简器的最大数量。  拆分数将确定要为 MapReduce 作业创建多少个映射器。  因此，如果拆分数少于所请求的映射器数，则得到的映射器数可能会少于所请求的数量。       
 
@@ -58,10 +60,10 @@ ms.openlocfilehash: 564141d09bc54fbf4beb36d28bec160a7097f897
 **步骤 4：计算 YARN 容器数** - YARN 容器数决定可并发运行的作业数量。  获取总 YARN 内存量并将其除以 mapreduce.map.memory。  
 
     # of YARN containers = total YARN memory / mapreduce.map.memory
-    
-应至少使用与 YARN 容器数相同多个映射器和化简器，以获得最大的并发性。  可以通过增加映射器和化简器的数量来进一步试验，看是否可获得更佳性能。  请记住，映射器越多开销越大，因此使用太多映射器可能会降低性能。  
 
-注意：CPU 计划和 CPU 隔离在默认情况下关闭，因此 YARN 容器数受内存量约束。
+步骤 5： 设置 mapreduce.job.maps/mapreduce.job.reduces 将 mapreduce.job.maps/mapreduce.job.reduces 设置为最少可用容器数。  可以通过增加映射器和化简器的数量来进一步试验，看是否可获得更佳性能。  请记住，映射器越多开销越大，因此使用太多映射器可能会降低性能。  
+
+CPU 计划和 CPU 隔离在默认情况下关闭，因此 YARN 容器数受内存量约束。
 
 ## <a name="example-calculation"></a>示例计算
 
@@ -72,16 +74,20 @@ ms.openlocfilehash: 564141d09bc54fbf4beb36d28bec160a7097f897
 **步骤 2：设置 mapreduce.map.memory/mapreduce.reduce.memory** - 在本示例中，正在运行一个 I/O 密集型作业，并确定将 3GB 的内存用于映射任务已足够。
 
     mapreduce.map.memory = 3GB
-**步骤 3：确定总 YARN 内存量** 
+**步骤 3：确定总 YARN 内存量**
 
     total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB
 **步骤 4：计算 YARN 容器数**
 
     # of YARN containers = 768GB of available memory / 3 GB of memory =   256
 
+**步骤 5：设置 mapreduce.job.maps/mapreduce.job.reduces**
+
+    mapreduce.map.jobs = 256
+
 ## <a name="limitations"></a>限制
 
-**ADLS 限制** 
+**ADLS 限制**
 
 作为一种多租户服务，ADLS 设置帐户级带宽限制。  如果达到这些限制，你将开始看到任务失败。 这可以通过观察任务日志中的限制错误来确定。  如果你的作业需要更多带宽，请与我们联系。   
 
@@ -98,24 +104,19 @@ ms.openlocfilehash: 564141d09bc54fbf4beb36d28bec160a7097f897
 为了演示 MapReduce 在 Azure Data Lake Store 上的运行方式，下面提供一些示例代码，这些代码已在具有下列设置的群集上运行：
 
 * 16 个节点 D14v2
-* 运行 HDI 3.5 的 Hadoop 群集
+* 运行 HDI 3.6 的 Hadoop 群集
 
 作为第一步，下面是一些示例命令，用于运行 MapReduce Teragen、Terasort 和 Teravalidate。  可以根据资源调整这些命令。
 
 **Teragen**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapred.map.tasks=2048 -Dmapred.map.memory.mb=3072 10000000000 adl://example/data/1TB-sort-input
+    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 adl://example/data/1TB-sort-input
 
 **Terasort**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapred.map.tasks=2048 -Dmapred.map.memory.mb=3072 -Dmapred.reduce.tasks=512 -Dmapred.reduce.memory.mb=3072 adl://example/data/1TB-sort-input adl://example/data/1TB-sort-output
+    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 adl://example/data/1TB-sort-input adl://example/data/1TB-sort-output
 
 **Teravalidate**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapred.map.tasks=512 -Dmapred.map.memory.mb=3072 adl://example/data/1TB-sort-output adl://example/data/1TB-sort-validate
-
-
-
-<!--HONumber=Jan17_HO2-->
-
+    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 adl://example/data/1TB-sort-output adl://example/data/1TB-sort-validate
 

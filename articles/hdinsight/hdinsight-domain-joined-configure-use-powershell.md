@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure PowerShell 配置已加入域的 HDInsight 群集 | Microsoft Docs"
+title: "使用 PowerShell 配置已加入域的 HDInsight 群集 - Azure | Microsoft Docs"
 description: "了解如何使用 Azure PowerShell 安装并配置已加入域的 HDInsight 群集"
 services: hdinsight
 documentationcenter: 
@@ -16,15 +16,19 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 6f4189cb30d528a106dd8889c06acd621aebb699
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: d31ad53525ef75bdb61c42409dc07bba4138fc25
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/28/2017
 
 
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-preview-using-azure-powershell"></a>使用 Azure PowerShell 配置已加入域的 HDInsight 群集（预览版）
 了解如何使用 Azure PowerShell 通过 Azure Active Directory (Azure AD) 和 [Apache Ranger](http://hortonworks.com/apache/ranger/) 设置 Azure HDInsight 群集。 提供 Azure PowerShell 脚本以加快配置速度并降低出错可能性。 仅可在基于 Linux 的群集上配置已加入域的 HDInsight。 有关详细信息，请参阅[引入已加入域的 HDInsight 群集](hdinsight-domain-joined-introduction.md)。
+
+> [!IMPORTANT]
+> 在加入域的 HDInsight 上未启用 Oozie。
 
 典型的已加入域的 HDInsight 群集配置涉及以下步骤：
 
@@ -59,7 +63,7 @@ ms.lasthandoff: 04/27/2017
 * Azure PowerShell。  请参阅[安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="create-an-azure-classic-vnet-for-your-azure-ad"></a>为 Azure AD 创建 Azure 经典 VNet。
-有关说明，请参阅[此处](hdinsight-domain-joined-configure.md#create-an-azure-classic-vnet)。
+有关说明，请参阅[此处](hdinsight-domain-joined-configure.md#create-an-azure-virtual-network-classic)。
 
 ## <a name="create-and-configure-azure-ad-and-azure-ad-ds"></a>创建并配置 Azure AD 和 Azure AD DS。
 有关说明，请参阅[此处](hdinsight-domain-joined-configure.md#create-and-configure-azure-ad-ds-for-your-azure-ad)。
@@ -73,13 +77,13 @@ ms.lasthandoff: 04/27/2017
 2. 填充以下变量的值：
    
    * **$SubscriptionName** - 要在其中创建 HDInsight 群集的 Azure 订阅的名称。 你已在此订阅中创建经典虚拟网络，并将在订阅下创建 HDInsight 群集的 Azure Resource Manager 虚拟网络。
-   * **$ClassicVNetName** - 包含 Azure AD DS 的经典虚拟网络。 此虚拟网络必须位于上面提供的同一订阅中。 必须使用 Azure 门户而非经典门户创建此虚拟网络。 如果按照[配置已加入域的 HDInsight 群集（预览版）](hdinsight-domain-joined-configure.md#create-an-azure-classic-vnet)中的说明，则默认名称为 contosoaadvnet。
-   * **$ClassicResourceGroupName** - 上述经典虚拟网络的资源管理器组名称。 例如 contosoaadrg。 
+   * **$ClassicVNetName** - 包含 Azure AD DS 的经典虚拟网络。 此虚拟网络必须位于上面提供的同一订阅中。 必须使用 Azure 门户而非经典门户创建此虚拟网络。 如果按照[配置已加入域的 HDInsight 群集（预览版）](hdinsight-domain-joined-configure.md#create-an-azure-virtual-network-classic)中的说明，则默认名称为 contosoaadvnet。
+   * **$ClassicResourceGroupName** - 上述经典虚拟网络的 Resource Manager 组名称。 例如 contosoaadrg。 
    * **$ArmResourceGroupName** - 要在其中创建 HDInsight 群集的资源组名称。 可使用与 $ArmResourceGroupName 相同的资源组。  如果资源组不存在，则该脚本将创建资源组。
-   * **$ArmVNetName** - 要在其中创建 HDInsight 群集的资源管理器虚拟网络名称。 此虚拟网络将被放入 $ArmResourceGroupName。  如果 VNet 不存在，则 PowerShell 脚本将创建该 VNet。 如果 VNet 存在，则它应该是上面提供的资源组的一部分。
-   * **$AddressVnetAddressSpace** - 资源管理器虚拟网络的网络地址空间。 请确保此地址空间可用。 此地址空间不能与经典虚拟网络的地址空间重叠。 例如：“10.1.0.0/16”
-   * **$ArmVnetSubnetName** - 要在其中放置 HDInsight 群集 VM 的资源管理器虚拟网络子网名称。 如果子网不存在，则 PowerShell 脚本将创建一个。 如果子网存在，则它应该是上面提供的虚拟网络的一部分。
-   * **$AddressSubnetAddressSpace** - 资源管理器虚拟网络子网的网络地址范围。 HDInsight 群集 VM IP 地址将来自此子网地址范围。 例如：“10.1.0.0/24”。
+   * **$ArmVNetName** - 要在其中创建 HDInsight 群集的 Resource Manager 虚拟网络名称。 此虚拟网络将被放入 $ArmResourceGroupName。  如果 VNet 不存在，则 PowerShell 脚本将创建该 VNet。 如果 VNet 存在，则它应该是上面提供的资源组的一部分。
+   * **$AddressVnetAddressSpace** - Resource Manager 虚拟网络的网络地址空间。 请确保此地址空间可用。 此地址空间不能与经典虚拟网络的地址空间重叠。 例如：“10.1.0.0/16”
+   * **$ArmVnetSubnetName** - 要在其中放置 HDInsight 群集 VM 的 Resource Manager 虚拟网络子网名称。 如果子网不存在，则 PowerShell 脚本将创建一个。 如果子网存在，则它应该是上面提供的虚拟网络的一部分。
+   * **$AddressSubnetAddressSpace** - Resource Manager 虚拟网络子网的网络地址范围。 HDInsight 群集 VM IP 地址将来自此子网地址范围。 例如：“10.1.0.0/24”。
    * **$ActiveDirectoryDomainName** - 要在其中加入 HDInsight 群集 VM 的 Azure AD 域名。 例如：“contoso.onmicrosoft.com”
    * **$ClusterUsersGroups** - AD 中要同步到 HDInsight 群集的安全组的公用名。 此安全组中的用户将能够使用其 Active Directory 域凭据登录到群集仪表板。 这些安全组必须存在于 Active Directory 中。 例如：“hiveusers”或“clusteroperatorusers”。
    * **$OrganizationalUnitName** - 域中的组织单位，该域中将放置 HDInsight 群集 VM 和群集所用的服务主体。 如果此 OU 不存在，则 PowerShell 脚本将创建一个。 例如：“HDInsightOU”。
@@ -104,7 +108,7 @@ ms.lasthandoff: 04/27/2017
       
       此用户必须具有 3 项特权：将计算机加入到提供的 Active Directory 域；在提供的组织单位内创建服务主体和计算机对象；添加反向 DNS 代理规则。
 
-在创建反向 DNS 区域时，脚本将提示你输入网络 ID。 此网络 ID 必须为资源管理器虚拟网络的地址前缀。 例如，如果资源管理器虚拟网络子网地址空间为 10.2.0.0/24，则在工具提示提供网络 ID 时输入 10.2.0.0/24。 
+在创建反向 DNS 区域时，脚本将提示你输入网络 ID。 此网络 ID 必须为 Resource Manager 虚拟网络的地址前缀。 例如，如果 Resource Manager 虚拟网络子网地址空间为 10.2.0.0/24，则在工具提示提供网络 ID 时输入 10.2.0.0/24。 
 
 ## <a name="create-hdinsight-cluster"></a>创建 HDInsight 群集
 在本部分中，将在 HDInsight 中使用 Azure 门户或 [Azure Resource Manager 模板](../azure-resource-manager/resource-group-template-deploy.md)创建基于 Linux 的 Hadoop 群集。 对于其他群集创建方法以及了解设置，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。 若要深入了解如何在 HDInsight 中使用 Resource Manager 模板创建 Hadoop 群集，请参阅[在 HDInsight 中使用 Resource Manager 模板创建 Hadoop 群集](hdinsight-hadoop-create-windows-clusters-arm-templates.md)
@@ -182,7 +186,7 @@ ms.lasthandoff: 04/27/2017
    * **固定到仪表板**：（检查）
 3. 单击“购买”。 此时会出现标题为“正在部署模板”的新磁贴。 创建群集大约需要 20 分钟时间。 创建群集之后，便可以在门户中单击群集边栏选项卡以打开它。
 
-完成教程之后，你可能要删除群集。 有了 HDInsight，你就可以将数据存储在 Azure 存储空间中，因此可以在群集不用时安全地删除群集。 此外，你还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 有关删除群集的说明，请参阅[使用 Azure 门户在 HDInsight 中管理 Hadoop 群集](hdinsight-administer-use-management-portal.md#delete-clusters)。
+完成教程之后，你可能要删除群集。 有了 HDInsight，你就可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，你还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 有关删除群集的说明，请参阅[使用 Azure 门户在 HDInsight 中管理 Hadoop 群集](hdinsight-administer-use-management-portal.md#delete-clusters)。
 
 ## <a name="next-steps"></a>后续步骤
 

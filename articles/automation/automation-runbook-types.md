@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/11/2016
+ms.date: 06/01/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: dd6b2fa2a1ca003578eaee82ef42741b9b1bf2a4
-ms.openlocfilehash: b509629ba0d6bbaea3de979a4e67f5c444e5e9e0
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: e859aef473b433fbf4efb639962f3a3ce0a23d7b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -51,7 +53,7 @@ Azure 自动化支持四种类型的 Runbook，这些 Runbook 在下表中进行
 
 ### <a name="advantages"></a>优点
 * 通过 PowerShell 代码来实现所有复杂的逻辑，没有 PowerShell 工作流的各种额外的复杂操作。 
-* 与图形 Runbook 或 PowerShell 工作流 Runbook 相比，Runbook 的启动速度更快，因为它在运行前不需要经过编译。
+* 与 PowerShell 工作流 Runbook 相比，Runbook 的启动速度更快，因为它在运行前不需要经过编译。
 
 ### <a name="limitations"></a>限制
 * 必须熟悉 PowerShell 脚本。
@@ -92,10 +94,5 @@ PowerShell 工作流 Runbook 是基于 [Windows PowerShell 工作流](automation
 * 若要详细了解图形 Runbook 创作，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)
 * 若要了解 Runbook 的 PowerShell 和 PowerShell 工作流之间的差异，请参阅[了解 Windows PowerShell 工作流](automation-powershell-workflow.md)
 * 有关如何创建或导入 Runbook 的详细信息，请参阅[创建或导入 Runbook](automation-creating-importing-runbook.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

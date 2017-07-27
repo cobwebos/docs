@@ -6,22 +6,21 @@ keywords: "Active Directory 密码管理, 密码管理, Azure AD 自助密码重
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-editor: gahug
+ms.reviewer: gahug
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/12/2017
+ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: fde08bfc3a73c54ee53b5d8efffd3001894416b3
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 7783d0fc30b4b7d098a89595771993b33fb0aa97
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/13/2017
-
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="password-writeback-overview"></a>密码写回概述
@@ -82,7 +81,7 @@ ms.lasthandoff: 05/13/2017
 
 DirSync 和 Azure AD Sync 不再支持启用密码写回，详见文章[从 DirSync 和 Azure AD Sync 升级](connect/active-directory-aadconnect-dirsync-deprecated.md)以帮助你转换。
 
-以下步骤假定已在环境中使用[快速](./connect/active-directory-aadconnect-get-started-express.md)或[自定义](./connect/active-directory-aadconnect-get-started-custom.md)设置配置 Azure AD Connect。
+以下步骤假定已在环境中使用[快速](./connect/active-directory-aadconnect-get-started-express.md)或[自定义](./connect/active-directory-aadconnect-get-started-custom.md)设置配置了 Azure AD Connect。
 
 1. 若要配置和启用密码写回，请登录到 Azure AD Connect 服务器并启动“Azure AD Connect”配置向导。
 2. 在“欢迎”屏幕中，单击“配置”。
@@ -198,3 +197,4 @@ DirSync 和 Azure AD Sync 不再支持启用密码写回，详见文章[从 DirS
 * [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何解决使用 SSPR 时遇到的常见问题
 
 [Writeback]: ./media/active-directory-passwords-writeback/enablepasswordwriteback.png "在 Azure AD Connect 中启用密码写回"
+

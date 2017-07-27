@@ -1,9 +1,9 @@
 ---
-title: "Action 和 NotAction - Azure RBAC 中的角色 | Microsoft Docs"
-description: "本主题介绍适用于基于角色的访问控制 (RBAC) 的内置角色。"
+title: "操作和不操作 - Azure 基于角色的访问控制 (RBAC) | Microsoft Docs"
+description: "本主题介绍适用于基于角色的访问控制 (RBAC) 的内置角色。 将不断添加角色，所以请查看文档是否有最新版本。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: curtand
 manager: femila
 editor: 
 ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/21/2017
-ms.author: kgremban
+ms.date: 06/28/2017
+ms.author: curtand
+ms.reviewer: 
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: a0a3b7ad7757439b5f73c38e759761f671ca2e17
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 7f1aa292e6c15e2702f939b9751fe13a27bc5b7f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/30/2017
 
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>用于 Azure 基于角色的访问控制的内置角色
@@ -30,12 +31,12 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 
 操作定义可以对给定资源类型执行哪种类型的操作。 例如：
 - **Write** 使你可以执行 PUT、POST、PATCH 和 DELETE 操作。
-- **Read** 使你可以执行 GET 操作。 
+- **Read** 使你可以执行 GET 操作。
 
-本文仅针对目前存在的各种角色。 不过，向用户分配角色时，你可以通过定义作用域进一步限制允许的操作。 如果想要将某人设为网站参与者，但只针对一个资源组，则此功能很有用。 
+本文仅针对目前存在的各种角色。 不过，向用户分配角色时，你可以通过定义作用域进一步限制允许的操作。 如果想要将某人设为网站参与者，但只针对一个资源组，则此功能很有用。
 
 > [!NOTE]
-> Azure 角色定义不断演化。 本文尽可能地保持处于最新状态，但你总是可在 Azure PowerShell 中找到最新的角色定义。 使用 [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) cmdlet 列出所有当前角色。 可以使用 `(get-azurermroledefinition "<role name>").actions` 或 `(get-azurermroledefinition "<role name>").notactions` 深入了解特定角色（如果适用）。 使用 [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) 列出特定 Azure 资源提供程序的操作。 
+> Azure 角色定义不断演化。 本文尽可能地保持处于最新状态，但你总是可在 Azure PowerShell 中找到最新的角色定义。 使用 [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) cmdlet 列出所有当前角色。 可以使用 `(get-azurermroledefinition "<role name>").actions` 或 `(get-azurermroledefinition "<role name>").notactions` 深入了解特定角色（如果适用）。 使用 [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) 列出特定 Azure 资源提供程序的操作。
 
 
 | 角色名称 | 说明 |
@@ -57,6 +58,8 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | [DNS 区域参与者](#dns-zone-contributor) |可以管理 DNS 区域和记录 |
 | [Azure Cosmos DB 帐户参与者](#documentdb-account-contributor) |可管理 Azure Cosmos DB 帐户 |
 | [智能系统帐户参与者](#intelligent-systems-account-contributor) |可管理 Intelligent Systems 帐户 |
+| 逻辑应用参与者 | 可以管理逻辑应用的所有方面，但不能创建新应用。 |
+| 逻辑应用运算符 |可以启动和停止在逻辑应用内定义的工作流。 |
 | [监视查阅者](#monitoring-reader) |可以读取所有监视数据 |
 | [监视参与者](#monitoring-contributor) |可以读取监视数据和编辑监视设置 |
 | [网络参与者](#network-contributor) |可管理所有网络资源 |
@@ -67,11 +70,15 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | [计划程序作业集合参与者](#scheduler-job-collections-contributor) |可管理计划程序作业集合 |
 | [搜索服务参与者](#search-service-contributor) |可管理搜索服务 |
 | [安全经理](#security-manager) |可管理安全组件、安全策略和虚拟机 |
+| [Site Recovery 参与者](#site-recovery-contributor) | 可以在恢复服务保管库中管理 Site Recovery |
+| [Site Recovery 运算符](#site-recovery-operator) | 可以在恢复服务保管库中管理故障转移和故障回复 Site Recovery |
+| [Site Recovery 读取器](#site-recovery-reader) | 可以查看所有 Site Recovery 管理操作  |
 | [SQL DB 参与者](#sql-db-contributor) |可管理 SQL 数据库，但不包括其安全性相关的策略 |
 | [SQL 安全管理器](#sql-security-manager) |可管理 SQL 服务器和数据库与安全性相关的策略 |
 | [SQL Server 参与者](#sql-server-contributor) |可管理 SQL 服务器和数据库，但不包括其安全性相关的策略 |
 | [经典存储帐户参与者](#classic-storage-account-contributor) |可管理经典存储帐户 |
 | [存储帐户参与者](#storage-account-contributor) |可管理存储帐户 |
+| [支持请求参与者](#support-request-contributor) | 可以创建和管理支持请求 |
 | [用户访问管理员](#user-access-administrator) |可管理用户对 Azure 资源的访问权限 |
 | [经典虚拟机参与者](#classic-virtual-machine-contributor) |可管理经典虚拟机，但不包括与其连接的虚拟网络或存储帐户 |
 | [虚拟机参与者](#virtual-machine-contributor) |可管理虚拟机，但不包括与其连接的虚拟网络或存储帐户 |
@@ -184,7 +191,7 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | Microsoft.RecoveryServices/Vaults/backupProtectedItems/* | 创建和管理已备份的项 |
 | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/* | 创建和管理包含备份项的容器 |
 | Microsoft.RecoveryServices/Vaults/certificates/* | 创建和管理与恢复服务保管库中的备份相关的证书 |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/* | 创建和管理与保管库相关的扩展信息 | 
+| Microsoft.RecoveryServices/Vaults/extendedInformation/* | 创建和管理与保管库相关的扩展信息 |
 | Microsoft.RecoveryServices/Vaults/read | 读取恢复服务保管库 |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/* | 管理用于获取新创建的容器的发现操作 |
 | Microsoft.RecoveryServices/Vaults/registeredIdentities/* | 创建和管理已注册的标识 |
@@ -219,8 +226,8 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | 创建和管理可备份的项 |
 | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | 读取已备份项 |
 | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | 读取包含备份项的备份容器 |
-| Microsoft.RecoveryServices/Vaults/extendedInformation/read | 读取与保管库相关的扩展信息 | 
-| Microsoft.RecoveryServices/Vaults/extendedInformation/write | 写入与保管库相关的扩展信息 | 
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read | 读取与保管库相关的扩展信息 |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/write | 写入与保管库相关的扩展信息 |
 | Microsoft.RecoveryServices/Vaults/read | 读取恢复服务保管库 |
 | Microsoft.RecoveryServices/Vaults/refreshContainers/* | 管理用于获取新创建的容器的发现操作 |
 | Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | 读取对保管库的已注册项执行的操作结果 |
@@ -259,7 +266,7 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | Microsoft.RecoveryServices/Vaults/registeredIdentities/read  | 读取保管库的已注册项 |
 | Microsoft.RecoveryServices/Vaults/usages/read  |  读取恢复服务保管库的使用情况 |
 
-## <a name="billing-reader"></a>计费读者
+### <a name="billing-reader"></a>计费读者
 可以查看所有计费信息
 
 | **操作** |  |
@@ -516,6 +523,131 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | Microsoft.Security/* |创建和管理安全组件和策略 |
 | Microsoft.Support/* |创建和管理支持票证 |
 
+### <a name="site-recovery-contributor"></a>Site Recovery 参与者
+可以管理所有 Site Recovery 管理操作，但无法创建恢复服务保管库和向其他用户分配访问权限
+
+| **操作** | |
+| --- | --- |
+| Microsoft.Authorization/*/read | 读取角色和角色分配 |
+| Microsoft.Insights/alertRules/* | 创建和管理警报规则 |
+| Microsoft.Network/virtualNetworks/read | 读取虚拟网络 |
+| Microsoft.RecoveryServices/Vaults/certificates/write | 更新保管库凭据证书 |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/* | 创建和管理与保管库相关的扩展信息 |
+| Microsoft.RecoveryServices/Vaults/monitoringAlerts/*  | 读取恢复服务保管库的警报 |
+| Microsoft.RecoveryServices/Vaults/monitoringConfigurations/ notificationConfiguration/read  | 读取恢复服务保管库通知配置 |
+| Microsoft.RecoveryServices/Vaults/read | 读取恢复服务保管库 |
+| Microsoft.RecoveryServices/Vaults/refreshContainers/read | 管理用于获取新创建的容器的发现操作 |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/* | 创建和管理已注册的标识 |
+| Microsoft.RecoveryServices/vaults/replicationAlertSettings/* | 创建或更新复制警报设置 |
+| Microsoft.RecoveryServices/vaults/replicationEvents/read | 读取复制事件 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/* | 创建和管理复制结构 |
+| Microsoft.RecoveryServices/vaults/replicationJobs/* | 创建和管理复制作业 |
+| Microsoft.RecoveryServices/vaults/replicationPolicies/* | 创建和管理复制策略 |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/* | 创建和管理恢复计划 |
+| Microsoft.RecoveryServices/Vaults/storageConfig/* | 创建和管理恢复服务保管库的存储配置 |
+| Microsoft.RecoveryServices/Vaults/tokenInfo/read | 读取恢复服务保管库的令牌信息 |
+| Microsoft.RecoveryServices/Vaults/usages/read | 读取恢复服务保管库的使用情况详细信息 |
+| Microsoft.ResourceHealth/availabilityStatuses/read | 读取资源的运行状况 |
+| Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | 读取资源组 |
+| Microsoft.Storage/storageAccounts/read | 读取存储帐户 |
+| Microsoft.Support/* |创建和管理支持票证 |
+
+### <a name="site-recovery-operator"></a>Site Recovery 运算符
+可以故障转移和故障回复，但不能执行其他 Site Recovery 管理操作或向其他用户分配访问权限
+
+| **操作** | |
+| --- | --- |
+| Microsoft.Authorization/*/read | 读取角色和角色分配 |
+| Microsoft.Insights/alertRules/* | 创建和管理警报规则 |
+| Microsoft.Network/virtualNetworks/read | 读取虚拟网络 |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read | 读取与保管库相关的扩展信息 |
+| Microsoft.RecoveryServices/Vaults/monitoringAlerts/*  | 读取恢复服务保管库的警报 |
+| Microsoft.RecoveryServices/Vaults/monitoringConfigurations/ notificationConfiguration/read  | 读取恢复服务保管库通知配置 |
+| Microsoft.RecoveryServices/Vaults/read | 读取恢复服务保管库 |
+| Microsoft.RecoveryServices/Vaults/refreshContainers/read | 管理用于获取新创建的容器的发现操作 |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | 读取提交操作的操作状态和结果 |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/read | 读取为资源注册的容器 |
+| Microsoft.RecoveryServices/vaults/replicationAlertSettings/read | 读取复制警报设置 |
+| Microsoft.RecoveryServices/vaults/replicationEvents/read | 读取复制事件 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/checkConsistency/action | 检查结构的一致性 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/read | 读取复制结构 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ reassociateGateway/action | 重新关联复制网关 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/renewcertificate/action | 续订复制结构证书 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/read | 读取复制结构网络 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationNetworks/replicationNetworkMappings/read | 读取复制结构网络映射 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/read | 读取保护容器 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectableItems/read | 获取所有可保护项的列表 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/ applyRecoveryPoint/action | 应用特定的恢复点 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/ failoverCommit/action | 提交故障转移项的故障转移 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/ plannedFailover/action | 为受保护项启动计划内故障转移 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/read | 获取所有受保护项的列表 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | 获取可用恢复点的列表 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/ repairReplication/action | 为受保护项修复复制 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/reProtect/action | 为受保护项启动重新保护|
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/testFailover/action | 开始测试受保护项的故障转移 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/ testFailoverCleanup/action | 启动测试故障转移的清理 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/ unplannedFailover/action | 启动受保护项的计划外故障转移 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/ updateMobilityService/action | 更新移动服务 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectionContainerMappings/read | 读取保护容器映射 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/read | 读取恢复服务提供程序 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/refreshProvider/action | 刷新恢复服务提供程序 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/read | 读取复制结构的存储分类 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/replicationStorageClassificationMappings/read | 读取存储分类映射 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | 读取已注册的 vCenter 信息 |
+| Microsoft.RecoveryServices/vaults/replicationJobs/* | 创建和管理复制作业 |
+| Microsoft.RecoveryServices/vaults/replicationPolicies/read | 读取复制策略 |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/ failoverCommit/action | 提交恢复计划故障转移的故障转移 |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/ plannedFailover/action | 启动恢复计划的故障转移 |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/read | 读取恢复计划 |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/reProtect/action | 启动重新保护恢复计划 |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailover/action | 启动恢复计划的测试故障转移 |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/ testFailoverCleanup/action | 启动恢复计划测试故障转移的清理 |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/ unplannedFailover/action | 启动恢复计划的计划外故障转移 |
+| Microsoft.RecoveryServices/Vaults/storageConfig/read | 读取恢复服务保管库的存储配置 |
+| Microsoft.RecoveryServices/Vaults/tokenInfo/read | 读取恢复服务保管库的令牌信息 |
+| Microsoft.RecoveryServices/Vaults/usages/read | 读取恢复服务保管库的使用情况详细信息 |
+| Microsoft.ResourceHealth/availabilityStatuses/read | 读取资源的运行状况 |
+| Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | 读取资源组 |
+| Microsoft.Storage/storageAccounts/read | 读取存储帐户 |
+| Microsoft.Support/* | 创建和管理支持票证 |
+
+### <a name="site-recovery-reader"></a>Site Recovery 读取器
+可以监视恢复服务保管库中的 Site Recovery 状态并发出支持票证
+
+| **操作** | |
+| --- | --- |
+| Microsoft.Authorization/*/read | 读取角色和角色分配 |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read  | 读取与保管库相关的扩展信息 |
+| Microsoft.RecoveryServices/Vaults/monitoringAlerts/read  | 读取恢复服务保管库的警报 |
+| Microsoft.RecoveryServices/Vaults/monitoringConfigurations/ notificationConfiguration/read  | 读取恢复服务保管库通知配置 |
+| Microsoft.RecoveryServices/Vaults/read  | 读取恢复服务保管库 |
+| Microsoft.RecoveryServices/Vaults/refreshContainers/read  | 管理用于获取新创建的容器的发现操作 |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read  | 读取提交操作的操作状态和结果 |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/read  | 读取为资源注册的容器 |
+| Microsoft.RecoveryServices/vaults/replicationAlertSettings/read | 读取复制警报设置 |
+| Microsoft.RecoveryServices/vaults/replicationEvents/read  | 读取复制事件 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/read  | 读取复制结构 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/read  | 读取复制结构网络 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationNetworks/replicationNetworkMappings/read  | 读取复制结构网络映射 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/read  |  读取保护容器 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectableItems/read  | 获取所有可保护项的列表 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/read  | 获取所有受保护项的列表 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read  | 获取可用恢复点的列表 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectionContainerMappings/read  | 读取保护容器映射 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/read  | 读取恢复服务提供程序 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/read  | 读取复制结构的存储分类 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/replicationStorageClassificationMappings/read  |  读取存储分类映射 |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read  |  读取已注册的 vCenter 信息 |
+| Microsoft.RecoveryServices/vaults/replicationJobs/read  |  读取复制作业的状态 |
+| Microsoft.RecoveryServices/vaults/replicationPolicies/read  |  读取复制策略 |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/read  |  读取恢复计划 |
+| Microsoft.RecoveryServices/Vaults/storageConfig/read  |  读取恢复服务保管库的存储配置 |
+| Microsoft.RecoveryServices/Vaults/tokenInfo/read  |  读取恢复服务保管库的令牌信息 |
+| Microsoft.RecoveryServices/Vaults/usages/read  |  读取恢复服务保管库的使用情况详细信息 |
+| Microsoft.Support/*  |  创建和管理支持票证 |
+
 ### <a name="sql-db-contributor"></a>SQL DB 参与者
 可管理 SQL 数据库，但不包括其安全性相关的策略
 
@@ -619,6 +751,15 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | Microsoft.Resources/subscriptions/resourceGroups/read |读取资源组 |
 | Microsoft.Storage/storageAccounts/* |创建和管理存储帐户 |
 | Microsoft.Support/* |创建和管理支持票证 |
+
+### <a name="support-request-contributor"></a>支持请求参与者
+可以在订阅范围内创建和管理支持票证
+
+| **操作** |  |
+| --- | --- |
+| Microsoft.Authorization/*/read | 读取授权 |
+| Microsoft.Support/* | 创建和管理支持票证 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | 读取角色和角色分配 |
 
 ### <a name="user-access-administrator"></a>用户访问管理员
 可管理用户对 Azure 资源的访问权限

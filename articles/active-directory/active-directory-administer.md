@@ -4,7 +4,6 @@ description: "介绍什么是 Azure AD 租户，以及如何通过 Azure Active 
 services: active-directory
 documentationcenter: 
 author: curtand
-writer: markvi
 manager: femila
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
@@ -12,13 +11,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/06/2017
+ms.date: 07/20/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 001ffc0f9c7465552392a9848ef1487a4c0eafce
-ms.lasthandoff: 12/08/2016
-
+ms.reviewer: jeffsta
+ms.custom: it-pro;oldportal
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 07b9f4626e9129c7eeb94d43883417f324da5292
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="administer-your-azure-ad-directory"></a>管理 Azure AD 目录
@@ -55,7 +56,7 @@ Azure AD 在大多数 Microsoft 云服务的后面提供核心目录和身份管
 有关将本地目录与 Azure AD 集成的详细信息，请参阅 [目录集成](active-directory-aadconnect.md)。
 
 ### <a name="associate-an-azure-ad-directory-with-a-new-azure-subscription"></a>将 Azure AD 目录与新的 Azure 订阅相关联
-可以将新的 Azure 订阅，与用于对现有 Office 365 或 Microsoft Intune 订阅的登录进行身份验证的相同目录进行关联。 请使用你的工作或学校帐户登录到 Azure 管理门户。 管理门户将返回一条消息，指出找不到该帐户的任何订阅。 选择“注册 Azure”，你的目录将可用于在门户中进行管理。 有关详细信息，请参阅[在 Azure 中管理 Office 365 订阅的目录](active-directory-how-subscriptions-associated-directory.md#manage-the-directory-for-your-office-365-subscription-in-azure)。
+可以将新的 Azure 订阅，与用于对现有 Office 365 或 Microsoft Intune 订阅的登录进行身份验证的相同目录进行关联。 请使用工作或学校帐户登录到 Azure 门户。 门户会返回一条消息，指出找不到该帐户的任何订阅。 选择“注册 Azure”，你的目录将可用于在门户中进行管理。 有关详细信息，请参阅[在 Azure 中管理 Office 365 订阅的目录](active-directory-how-subscriptions-associated-directory.md#manage-the-directory-for-your-office-365-subscription-in-azure)。
 
 有关 Azure AD 的常见使用问题的视频，请参阅 [Azure Active Directory 的常见注册、登录和使用问题](http://channel9.msdn.com/Series/Windows-Azure-Active-Directory/WAADCommonSignupsigninquestions)。
 
@@ -76,7 +77,7 @@ Azure AD 在大多数 Microsoft 云服务的后面提供核心目录和身份管
 若要更改目录的显示名称，请在门户中单击该目录并单击“配置”。 如本主题后面所述，用户可以添加新目录或删除不再需要的目录。 若要将订阅与其他目录相关联，请在左侧导航窗格中单击“设置”扩展，然后在“订阅”页的底部单击“编辑目录”。 你还可以使用已注册的 DNS 名称而非默认的 *.onmicrosoft.com 域来创建自定义域，对于 SharePoint Online 之类的服务这样做可能更好。
 
 ## <a name="how-can-i-manage-directory-data"></a>如何管理目录数据
-作为一个或多个 Microsoft 云服务订阅的管理员，你可以使用 Azure 管理门户、Microsoft Intune 帐户门户或 Office 365 管理中心来管理你的组织目录数据。 你还可以下载并运行 [用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块](https://msdn.microsoft.com/library/azure/jj151815.aspx) cmdlet 来帮助管理 Azure AD 中存储的数据。
+作为一个或多个 Microsoft 云服务订阅的管理员，你可以使用 [Azure AD 管理中心](https://aad.portal.azure.com)、Microsoft Intune 帐户门户或 Office 365 管理中心来管理组织目录数据。 你还可以下载并运行 [用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块](https://msdn.microsoft.com/library/azure/jj151815.aspx) cmdlet 来帮助管理 Azure AD 中存储的数据。
 
 通过上述任一门户（或 cmdlet），你可以执行以下操作：
 
@@ -84,7 +85,7 @@ Azure AD 在大多数 Microsoft 云服务的后面提供核心目录和身份管
 * 管理你组织订阅的相关云服务
 * 设置与目录服务的本地集成
 
-Azure 管理门户、Office 365 管理中心、Microsoft Intune 帐户门户和 Azure AD cmdlet 均从与组织的目录关联的 Azure AD 的单个共享实例读取数据并将数据写入到该实例中，如下图所示。 门户（或 cmdlet）通过这种方式充当用于输入和/或修改目录数据的前端接口。
+[Azure AD 管理中心](https://aad.portal.azure.com)、Office 365 管理中心、Microsoft Intune 帐户门户和 Azure AD cmdlet 均从与组织的目录关联的 Azure AD 的单个共享实例读取数据并将数据写入到该实例中，如下图所示。 门户（或 cmdlet）通过这种方式充当用于输入或修改目录数据的前端接口。
 
 ![][2]
 
@@ -94,7 +95,7 @@ Azure 管理门户、Office 365 管理中心、Microsoft Intune 帐户门户和 
 例如，如果使用 Office 365 管理中心阻止某个用户登录，则该操作会阻止该用户登录到你的组织当前订阅的任何其他服务。 如果在 Microsoft Intune 帐户门户的上下文中请求相同的用户帐户，则会看到该用户被阻止。
 
 ## <a name="how-can-i-add-and-manage-multiple-directories"></a>如何添加和管理多个目录？
-可以在 Azure 管理门户中添加 Azure AD 目录。 在左侧选择“Active Directory”扩展，然后单击“添加”。
+可以在 [Azure AD 经典门户](https://manage.windowsazure.com)中添加 Azure AD 目录。 在“概览”窗格中，选择左侧的“Active Directory”扩展，再单击“新建”。
 
 可将每个目录作为完全独立的资源进行管理：每个目录都是一个具有完整功能的对等方，在逻辑上独立于你所管理的其他目录；目录之间不存在父子关系。 目录之间的这种独立性包括资源独立性、管理独立性和同步独立性。
 
@@ -116,7 +117,7 @@ Azure 管理门户、Office 365 管理中心、Microsoft Intune 帐户门户和 
 全局管理员可以从门户删除 Azure AD 目录。 删除某个目录时，该目录中包含的所有资源也将被删除；因此，在删除之前，应确认你不需要该目录。
 
 > [!NOTE]
-> 如果用户是使用工作或学校帐户登录的，则该用户不得尝试删除其主目录。 例如，如果用户是作为 joe@contoso.onmicrosoft.com, 登录的，则该用户不能删除默认域为 contoso.onmicrosoft.com 的目录。
+> 如果用户是使用工作或学校帐户登录的，则该用户不得尝试删除其主目录。 例如，如果用户是作为 joe@contoso.onmicrosoft.com 登录的，则该用户不能删除默认域为 contoso.onmicrosoft.com 的目录。
 > 
 > 
 
@@ -130,7 +131,7 @@ Azure AD 要求删除目录之前必须符合特定的条件。 这可以降低�
 * 与该目录相关联的任何 Microsoft Online Services（例如 Microsoft Azure、Office 365 或 Azure AD Premium）不存在任何订阅。 例如，如果在 Azure 中为你创建了一个默认目录，并且你的 Azure 订阅仍然依赖于此目录进行身份验证，则你不能删除此目录。 类似地，如果其他用户已将订阅与某个目录相关联，则你无法删除该目录。 若要将你的订阅与其他目录相关联，请登录到 Azure 管理门户，并在左侧导航中单击“设置”  。 然后，在“订阅”页的底部单击“编辑目录”。 有关 Azure 订阅的详细信息，请参阅 [Azure 订阅与 Azure AD 的关联方式](active-directory-how-subscriptions-associated-directory.md)。
 
 > [!NOTE]
-> 如果用户是使用工作或学校帐户登录的，则该用户不得尝试删除其主目录。 例如，如果用户是作为 joe@contoso.onmicrosoft.com, 登录的，则该用户不能删除默认域为 contoso.onmicrosoft.com 的目录。
+> 如果用户是使用工作或学校帐户登录的，则该用户不得尝试删除其主目录。 例如，如果用户是作为 joe@contoso.onmicrosoft.com 登录的，则该用户不能删除默认域为 contoso.onmicrosoft.com 的目录。
 > 
 > 
 

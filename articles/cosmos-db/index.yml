@@ -12,12 +12,10 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/28/2017
+  ms.date: 07/24/2017
   ms.author: carolz
 abstract:
-  description: >-
-    Azure Cosmos DB 是一个全局分布式数据库服务，可让你跨数目不限的地理区域，根据全面的 SLA 弹性、独立缩放吞吐量与存储。  使用
-    Cosmos DB 可通过一系列流行 API 和编程模型开发文档、键/值或图形数据库。 参考我们的快速入门、教程和示例了解如何使用 Cosmos DB。
+  description: Azure Cosmos DB 是一个全局分布式数据库服务，可让你跨数目不限的地理区域，根据全面的 SLA 弹性、独立缩放吞吐量与存储。  使用 Cosmos DB 可通过一系列流行 API 和编程模型开发文档、键/值或图形数据库。 参考我们的快速入门、教程和示例了解如何使用 Cosmos DB。
 sections:
   - title: 5 分钟快速入门
     items:
@@ -72,31 +70,10 @@ sections:
       - type: list
         style: ordered
         items:
-          - html: >-
-              使用 Azure Cosmos DB 开发应用：<a
-              href="/azure/cosmos-db/tutorial-develop-documentdb-dotnet">DocumentDB</a>
-              | <a href="/azure/cosmos-db/tutorial-develop-mongodb">MongoDB</a>
-              | <a
-              href="/azure/cosmos-db/tutorial-develop-table-dotnet">Table</a> |
-              <a href="/azure/cosmos-db/tutorial-develop-graph-dotnet">Graph</a>
-          - html: >-
-              将数据导入 Cosmos DB：<a href="documentdb-import-data">DocumentDB</a> |
-              <a href="documentdb-mongodb-migrate">MongoDB</a>
-          - html: >-
-              使用 Azure Cosmos DB 查询数据：<a
-              href="/azure/cosmos-db/tutorial-query-documentdb">DocumentDB</a> |
-              <a href="/azure/cosmos-db/tutorial-query-mongodb">MongoDB</a> | <a
-              href="/azure/cosmos-db/tutorial-query-table">Table</a> | <a
-              href="/azure/cosmos-db/tutorial-query-graph">Graph</a>
-          - html: >-
-              使用 Azure Cosmos DB 进行全球数据库复制：<a
-              href="/azure/cosmos-db/tutorial-global-distribution-documentdb">DocumentDB</a>
-              | <a
-              href="/azure/cosmos-db/tutorial-global-distribution-mongodb">MongoDB</a>
-              | <a
-              href="/azure/cosmos-db/tutorial-global-distribution-table">Table</a>
-              | <a
-              href="/azure/cosmos-db/tutorial-global-distribution-graph">Graph</a>
+          - html: 使用 Azure Cosmos DB 开发应用：<a href="/azure/cosmos-db/tutorial-develop-documentdb-dotnet">DocumentDB</a> | <a href="/azure/cosmos-db/tutorial-develop-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-develop-table-dotnet">Table</a> | <a href="/azure/cosmos-db/tutorial-develop-graph-dotnet">Graph</a>
+          - html: 将数据导入 Cosmos DB：<a href="import-data">DocumentDB</a> | <a href="mongodb-migrate">MongoDB</a>
+          - html: 使用 Azure Cosmos DB 查询数据：<a href="/azure/cosmos-db/tutorial-query-documentdb">DocumentDB</a> | <a href="/azure/cosmos-db/tutorial-query-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-query-table">Table</a> | <a href="/azure/cosmos-db/tutorial-query-graph">Graph</a>
+          - html: 使用 Azure Cosmos DB 进行全球数据库复制：<a href="/azure/cosmos-db/tutorial-global-distribution-documentdb">DocumentDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-table">Table</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-graph">Graph</a>
           - html: <a href="local-emulator">使用仿真程序本地开发应用程序</a>
   - title: 示例
     items:
@@ -113,37 +90,10 @@ sections:
         className: cardsD
         items:
           - title: DocumentDB API
-            html: >-
-              <p><a href="/rest/api/documentdb/">REST</a></p><p><a
-              href="https://aka.ms/acdbnetref">.NET</a></p><p><a
-              href="documentdb-sdk-dotnet-changefeed">.NET 更改源</a></p><p><a
-              href="https://aka.ms/acdbnetcoreref">.NET Core</a></p><p><a
-              href="https://aka.ms/acdbnoderef">Node.js</a></p><p><a
-              href="https://aka.ms/acdbjavaref">Java</a></p><p><a
-              href="https://aka.ms/acdbpythonref">Python</a></p><p><a
-              href="/rest/api/documentdbresourceprovider/">REST
-              资源提供程序</a></p><p><a
-              href="documentdb-sql-query-reference">SQL</a></p>
+            html: '<p><a href="/rest/api/documentdb/">REST</a></p><p><a href="https://aka.ms/acdbnetref">.NET</a></p><p><a href="documentdb-sdk-dotnet-changefeed">.NET 更改源</a></p><p><a href="https://aka.ms/acdbnetcoreref">.NET Core</a></p><p><a href="https://aka.ms/acdbnoderef">Node.js</a></p><p><a href="https://aka.ms/acdbjavaref">Java</a></p><p><a href="https://aka.ms/acdbpythonref">Python</a></p><p><a href="/rest/api/documentdbresourceprovider/">REST 资源提供程序</a></p><p><a href="documentdb-sql-query-reference">SQL</a></p>'
           - title: MongoDB API
-            html: >-
-              <p><a
-              href="https://docs.mongodb.com/manual/reference/mongodb-wire-protocol/">线路协议</a></p><p><a
-              href="https://mongodb.github.io/node-mongodb-native/
-              ">Node.js</a></p><p><a
-              href="https://docs.mongodb.com/ecosystem/drivers/csharp/">C#</a></p><p><a
-              href="https://docs.mongodb.com/ecosystem/drivers/java/">Java</a></p><p><a
-              href="https://docs.mongodb.com/ecosystem/drivers/python/">Python</a></p><p><a
-              href="https://docs.mongodb.com/ruby-driver/master/">Ruby</a></p>
+            html: '<p><a href="https://docs.mongodb.com/manual/reference/mongodb-wire-protocol/">线路协议</a></p><p><a href="https://mongodb.github.io/node-mongodb-native/ ">Node.js</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/csharp/">C#</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/java/">Java</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/python/">Python</a></p><p><a href="https://docs.mongodb.com/ruby-driver/master/">Ruby</a></p>'
           - title: 表 API
-            html: >-
-              <p><a
-              href="/rest/api/storageservices/fileservices/Table-Service-Concepts">REST</a></p><p><a
-              href="/azure/cosmos-db/table-sdk-dotnet">.NET</a></p>
+            html: <p><a href="/rest/api/storageservices/fileservices/Table-Service-Concepts">REST</a></p><p><a href="/azure/cosmos-db/table-sdk-dotnet">.NET</a></p>
           - title: Gremlin API
-            html: >-
-              <p><a
-              href="http://tinkerpop.apache.org/docs/current/reference/">Gremlin</a></p><p><a
-              href="/azure/cosmos-db/graph-sdk-dotnet">.NET</a></p><p><a
-              href="https://github.com/ZEROFAIL/goblin">Python</a></p><p><a
-              href="http://tinkerpop.apache.org/docs/current/reference/#connecting-via-java">Java</a></p><p><a
-              href="https://github.com/jbmusso/gremlin-javascript">JavaScript</a></p>
+            html: '<p><a href="http://tinkerpop.apache.org/docs/current/reference/">Gremlin</a></p><p><a href="/azure/cosmos-db/graph-sdk-dotnet">.NET</a></p><p><a href="https://github.com/ZEROFAIL/goblin">Python</a></p><p><a href="http://tinkerpop.apache.org/docs/current/reference/#connecting-via-java">Java</a></p><p><a href="https://github.com/jbmusso/gremlin-javascript">JavaScript</a></p>'

@@ -12,22 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 02/14/2017
+ms.date: 07/05/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0355c8a943947f5d53d7cd6892db3567c3bf0cce
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: 3352fec59d7dfbfab9b0416992a60f11d0ec2402
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
 # <a name="how-to-administer-azure-redis-cache"></a>如何管理 Azure Redis 缓存
 本主题介绍如何为 Azure Redis 缓存实例执行管理任务，如[重启](#reboot)和[计划更新](#schedule-updates)。
-
-> [!IMPORTANT]
-> 本文中所述的设置和功能仅适用于高级层缓存。
-> 
-> 
 
 ## <a name="reboot"></a>重新启动
 可通过“重新启动”边栏选项卡重新启动缓存的一个或多个节点。 如果有缓存节点发生故障，此重新启动功能可用于测试应用程序的复原能力。
@@ -52,7 +48,7 @@ ms.lasthandoff: 04/27/2017
 * **已启用群集的高级缓存的节点** - 重新启动已启用群集的高级缓存的一个或多个节点时，所选节点的行为与重新启动非群集缓存的对应节点时相同。
 
 > [!IMPORTANT]
-> 重新启动仅适用于高级层缓存。
+> 现在所有定价层都可以重新启动。
 > 
 > 
 
@@ -83,10 +79,10 @@ ms.lasthandoff: 04/27/2017
 能，有关 PowerShell 说明，请参阅[重新启动 Redis 缓存](cache-howto-manage-redis-cache-powershell.md#to-reboot-a-redis-cache)。
 
 ### <a name="what-pricing-tiers-can-use-the-reboot-functionality"></a>哪些定价层可以使用重新启动功能？
-重新启动仅在高级定价层中可用。
+所有定价层都可以重新启动。
 
 ## <a name="schedule-updates"></a>计划更新
-使用“计划更新”边栏选项卡可为缓存指定维护时段。 指定维护时段后，将在此时段内进行任何 Redis 服务器更新。 
+使用“计划更新”边栏选项卡可为高级层缓存指定维护时段。 指定维护时段后，将在此时段内进行任何 Redis 服务器更新。 
 
 > [!NOTE] 
 > 维护时段仅适用于 Redis 服务器更新，不适用于任何 Azure 更新或托管缓存的 VM 的操作系统更新。

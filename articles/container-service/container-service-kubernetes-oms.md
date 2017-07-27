@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
-translationtype: Human Translation
-ms.sourcegitcommit: 4e4a4f4e299dc2747eb48bbd2e064cd80783211c
-ms.openlocfilehash: 46240f3dc99a8c8a103a1e7919ad4f5e7a8ea62a
-ms.lasthandoff: 04/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 0ada599549d1c94a6be5199111f20f9d3708793f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/04/2017
 
 
 ---
@@ -37,7 +38,8 @@ ms.lasthandoff: 04/04/2017
 $ az --version
 ```
 
-如果尚未安装 `az` 工具，请参阅[此处](https://github.com/azure/azure-cli#installation)的说明。
+如果尚未安装 `az` 工具，请参阅[此处](https://github.com/azure/azure-cli#installation)的说明。  
+或者，可以使用已安装 `az` Azure CLI 和 `kubectl` 工具的 [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview)。  
 
 可以通过运行以下语句测试是否已安装 `kubectl` 工具：
 
@@ -46,9 +48,20 @@ $ kubectl version
 ```
 
 如果尚未安装 `kubectl`，则可运行：
-
 ```console
 $ az acs kubernetes install-cli
+```
+
+若要测试 kubectl 工具中是否已安装 kubernetes 密钥，可运行：
+```console
+$ kubectl get nodes
+```
+
+如果上述命令错误，需要将 kubernetes 群集密钥安装到 kubectl 工具中。 可使用以下命令执行该操作：
+```console
+RESOURCE_GROUP=my-resource-group
+CLUSTER_NAME=my-acs-name
+az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
 ```
 
 ## <a name="monitoring-containers-with-operations-management-suite-oms"></a>使用 Microsoft Operations Management Suite (OMS) 监视容器
@@ -78,6 +91,43 @@ DaemonSet 还特别适合用于运行监视代理。
 ```console
 $ kubectl create -f oms-daemonset.yaml
 ```
+
+### <a name="installing-the-oms-agent-using-a-kubernetes-secret"></a>使用 Kubernetes 机密安装 OMS 代理
+若要保护 OMS 工作区 ID 和密钥，可以使用 Kubernetes 机密作为 DaemonSet YAML 文件的一部分。
+
+ - （从[存储库](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)）复制脚本、机密模板文件和 DaemonSet YAML 文件，并确保它们位于同一目录中。 
+      - 机密生成脚本 - secret-gen.sh
+      - 机密模板 - secret-template.yaml
+   - DaemonSet YAML 文件 - omsagent-ds-secrets.yaml
+ - 运行该脚本。 该脚本需要 OMS 工作区 ID 和主键。 请插入，然后该脚本将创建一个机密 yaml 文件，以便可以运行。   
+   ```
+   #> sudo bash ./secret-gen.sh 
+   ```
+
+   - 通过运行以下命令创建机密 Pod：``` kubectl create -f omsagentsecret.yaml ```
+ 
+   - 若要检查，请运行以下命令： 
+
+   ``` 
+   root@ubuntu16-13db:~# kubectl get secrets
+   NAME                  TYPE                                  DATA      AGE
+   default-token-gvl91   kubernetes.io/service-account-token   3         50d
+   omsagent-secret       Opaque                                2         1d
+   root@ubuntu16-13db:~# kubectl describe secrets omsagent-secret
+   Name:           omsagent-secret
+   Namespace:      default
+   Labels:         <none>
+   Annotations:    <none>
+
+   Type:   Opaque
+
+   Data
+   ====
+   WSID:   36 bytes
+   KEY:    88 bytes 
+   ```
+ 
+  - 通过运行 ``` kubectl create -f omsagent-ds-secrets.yaml ``` 创建 omsagent daemon-set
 
 ### <a name="conclusion"></a>结束语
 就这么简单！ 几分钟后，应该可以看到数据流向 OMS 仪表板。

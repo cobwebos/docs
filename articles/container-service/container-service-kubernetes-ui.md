@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/21/2017
 ms.author: bburns
-translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: 5987b1034fc9c52b13606c469683adff06729984
-ms.lasthandoff: 02/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 5cc5860025e8f6fb3eaf7ab213e4655e9519ae0c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -61,7 +62,7 @@ $ az acs kubernetes install-cli
 $ az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
 ```
 
-此时会打开一个 Web 浏览器，该浏览器已配置为与安全代理通信，将本地机连接到 Kubernetes Web UI。
+此时会打开一个 Web 浏览器，该浏览器已配置为与安全代理通信，将本地计算机连接到 Kubernetes Web UI。
 
 ### <a name="create-and-expose-a-service"></a>创建和公开服务
 1. 在 Kubernetes Web UI 中，单击右上方窗口中的“创建”按钮。
@@ -130,7 +131,7 @@ $ az acs kubernetes browse -g [Resource Group] -n [Container service instance na
 
 将 `spec.replicas` 字段设为 `2`，然后单击“更新”。
 
-这样会删除一个 Pod，导致副本数降到&2;。
+这样会删除一个 Pod，导致副本数降到 2。
 
  
 

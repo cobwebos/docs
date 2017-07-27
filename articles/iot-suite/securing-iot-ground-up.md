@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2017
+ms.date: 07/03/2017
 ms.author: yurid
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ad88c17e0c6bad7cb58c8517a47bbe5fe0fae763
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 4e02b55272fee8460886bb807a45cad99612dd86
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 05/10/2017
 
 本文探讨 Microsoft Azure IoT 套件如何提供安全且私密的物联网云解决方案。 Azure IoT 套件提供完整的端对端解决方案，彻底为每个阶段内置安全性。 在 Microsoft，开发安全的软件是软件工程实务的一部分，这立足于我们数十年来长时间开发安全软件的经验。 为了确保这一点，安全开发周期 (SDL) 是基础的开发方法，再加上基础结构级别安全服务的主机，例如运行安全保证 (OSA)，以及 Microsoft 反数字犯罪部门、Microsoft 安全响应中心和 Microsoft 恶意软件防护中心。 
 
-Azure IoT 套件提供独特的功能，从 IoT 设备预配、连接到及存储数据是简单且明确的，而最棒的是安全。 在本文中，我们将了解 Azure IoT 套件的安全功能和部署策略，以确保能够迎接安全、隐私权与合规性挑战。 
+Azure IoT 套件具有独特的功能，使得从 IoT 设备预配、连接和存储数据变得轻松、透明，还有最重要的是安全。 在本文中，我们将仔细了解 Azure IoT 套件的安全功能和部署策略，以确保能够迎接安全性、私密性与合规性挑战。 
 
 ## <a name="introduction"></a>介绍
 物联网 (IoT) 是将来的主流，可为企业提供实时且真实世界的商机，以降低成本、提高营收，并使其业务转型。 但是，许多企业因为顾虑到安全、隐私与合规性，对组织中部署 IoT 而有所迟疑。 主要的忧虑来自 IoT 基础结构的独特性，它将网络与物理世界合并在一起，将这两个世界中固有的各个风险混合。 IoT 的安全是关于确保在设备上运行的代码完整性、为设备和用户提供身份验证、定义设备（以及此类设备所生成的数据）的明确所有权，以及针对网络与物理攻击进行复原。 
@@ -57,7 +57,7 @@ Microsoft Azure IoT 套件使用内置于 Azure 平台中的安全和隐私功�
 ![Azure IoT 套件](media/securing-iot-ground-up/securing-iot-ground-up-fig3.png)
 
 ### <a name="secure-device-provisioning-and-authentication"></a>安全的设备预配和身份验证
-当设备不在现场时，Azure IoT 套件将保护它们，方法是为每个设备提供唯一的标识密钥，在设备运行时，IoT 基础结构可用于与其进行通信。 该过程非常快速且可轻松设置。 使用用户选择的设备 ID 生成的密钥将形成令牌的基础，可以在设备和 Azure IoT 中心之间的所有通信中使用。
+当设备不在现场时，Azure IoT 套件将保护它们，方法是为每个设备提供唯一的标识密钥，在设备运行时，IoT 基础结构可用于与其进行通信。 设置过程快速且轻松。 使用用户选择的设备 ID 生成的密钥将形成令牌的基础，可以在设备和 Azure IoT 中心之间的所有通信中使用。
 
 设备 ID 可以在制造期间与设备关联（即闪存在硬件信任模块中），也可以使用现有的固定标识作为代理（例如 CPU 序列号）。 由于更改设备中的此识别信息并不简单，因此请务必引入逻辑设备 ID，以防万一基础设备硬件更改，逻辑设备可保持不变。 在某些情况下，设备标识的关联将发生在设备部署期间（也就是已经过验证的现场工程师实际上将在与解决方案后端通信的同时配置新设备）。 [Azure IoT 中心标识注册表](../iot-hub/iot-hub-devguide.md)针对解决方案为设备标识和安全密钥提供安全存储。 可将单个或一组设备标识添加到允许列表或方块列表，以便完全控制设备访问。
 
@@ -74,7 +74,7 @@ Microsoft Azure IoT 套件使用内置于 Azure 平台中的安全和隐私功�
 
 为确保可在资源受限的环境中节省资源和操作，效率非常重要。 IoT 中心支持 HTTPS（安全 HTTP，流行 http 协议的行业标准安全版本），能够进行有效的通信。 Azure IoT 中心支持的高级消息队列协议 (AMQP) 和消息队列遥测传输 (MQTT)，不只是根据资源使用的效率而设计，同时也可进行可靠的消息传递。 
 
-可缩放性需要能够与各式各样设备安全互操作的能力。 Azure IoT 中心能够安全连接到已启用 IP 和未启用 IP 的设备。 已启用 IP 的设备能够直接连接，并通过安全连接与 IoT 中心通信。 未启用 IP 的设备是资源受限的，只能通过短距离协议（例如 Zwave、ZigBee 和蓝牙）来连接。 现场网关可用于聚合这些设备并执行协议转换，以便与云进行安全的双向通信。
+伸缩性需要能够与各式各样设备安全互操作的能力。 Azure IoT 中心能够安全连接到已启用 IP 和未启用 IP 的设备。 已启用 IP 的设备能够直接连接，并通过安全连接与 IoT 中心通信。 未启用 IP 的设备是资源受限的，只能通过短距离协议（例如 Zwave、ZigBee 和蓝牙）来连接。 现场网关可用于聚合这些设备并执行协议转换，以便与云进行安全的双向通信。
 
 其他连接安全功能包括：
 
@@ -101,7 +101,7 @@ Microsoft Azure IoT 套件根据设计将构建安全措施，启用安全的资
 * [**Azure Cosmos DB**](https://azure.microsoft.com/services/documentdb/)：适用于半结构化数据的可缩放且已完全编制索引的数据库服务，可管理预配的设备的元数据，例如属性、配置和安全属性。 Cosmos DB 提供高性能和高吞吐量处理、不区分架构的数据索引，以及丰富的 SQL 查询接口。
 * [**Azure 流分析**](https://azure.microsoft.com/services/stream-analytics/)：云中处理的实时流，可让用户快速开发和部署低成本分析解决方案，以便从设备、传感器、基础结构和应用程序实时获取深入了解。 来自这种完全托管服务的数据可缩放为任何数量，同时保持高吞吐量、低延迟和复原能力。
 * [**Azure 应用程序服务**](https://azure.microsoft.com/services/app-service/)：一个云平台，用以构建能够连接到任何地方（在云中或本地）的数据的强大 Web 和移动应用。 构建具有吸引力的 iOS、Android 和 Windows 移动应用。 与软件即服务 (SaaS) 和企业应用程序相集成，这些应用程序一经使用便可直接连接到数十种基于云的服务和企业应用程序。 使用偏好的语言和 IDE（.NET、Node.js、PHP、Python 或 Java）进行编码，比以往更快速地构建 Web 应用和 API。
-* [**逻辑应用**](https://azure.microsoft.com/services/app-service/logic/)：Azure 应用服务的逻辑应用功能可帮助用户将 IoT 解决方案集成到现有业务线系统并自动执行工作流程。 逻辑应用可让开发人员设计从触发过程开始，然后执行一系列步骤的工作流 - 使用功能强大的连接器来与业务过程集成的规则和操作。 Logic Apps 提供与 SaaS、基于云和本地应用程序的广泛生态系统的实时连接。
+* [Logic Apps](https://azure.microsoft.com/services/app-service/logic/)：Azure 应用服务的逻辑应用功能可帮助用户将 IoT 解决方案集成到现有业务线系统并自动执行工作流程。 Logic Apps 可让开发人员设计从触发过程开始，然后运行一系列步骤的工作流 — 使用功能强大的连接器来与业务过程集成的规则和操作。 Logic Apps 提供与 SaaS、基于云和本地应用程序的广泛生态系统的实时连接。
 * [**Azure Blob 存储**](https://azure.microsoft.com/services/storage/)：可靠且符合经济效益的云存储，适用于设备要发送到云的数据。
 
 ## <a name="next-steps"></a>后续步骤

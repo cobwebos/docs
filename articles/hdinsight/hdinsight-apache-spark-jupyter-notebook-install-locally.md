@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: c2949fbda0503c779b117aebb14d4d7b76bae426
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: fe9dcdb643aa6a8ee5d55738b7a446e4b0153986
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -44,7 +44,7 @@ ms.lasthandoff: 05/17/2017
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>在计算机上安装 Jupyter 笔记本
 
-必须先安装 Python 才能安装 Jupyter 笔记本。 Python 和 Jupyter 都作为 [Ananconda分发版](https://www.continuum.io/downloads)的一部分提供。 安装 Anaconda 时，安装的是某个 Python 发行版。 安装 Anaconda 之后，可通过运行相应命令来添加 Jupyter 安装。
+必须先安装 Python 才能安装 Jupyter 笔记本。 Python 和 Jupyter 都作为 [Anaconda 分发版](https://www.continuum.io/downloads)的一部分提供。 安装 Anaconda 时，安装的是某个 Python 发行版。 安装 Anaconda 之后，可通过运行相应命令来添加 Jupyter 安装。
 
 1. 下载适用于平台的 [Anaconda 安装程序](https://www.continuum.io/downloads)，然后运行安装程序。 运行安装向导时，请确保选择将 Anaconda 添加到 PATH 变量的选项。
 2. 运行以下命令来安装 Jupyter。
@@ -109,7 +109,7 @@ ms.lasthandoff: 05/17/2017
             "heartbeat_retry_seconds": 1
 
     >[!TIP]
-    >将发送检测信号，以确保会话不会泄漏。 请注意，当计算机转到睡眠或关闭状态时，将不会发送检测信号，从而导致会话被清除。 对于群集 v3.4，如果要禁用此行为，可以从 Ambari UI 将 Livy 配置 `livy.server.interactive.heartbeat.timeout` 设置为 `0`。 对于群集 v3.5，如果未设置上述 3.5 配置，会话将不会删除。
+    >将发送检测信号，以确保会话不会泄漏。 计算机进入睡眠状态或关闭时不会发送检测信号，从而导致会话被清除。 对于群集 v3.4，如果要禁用此行为，可以从 Ambari UI 将 Livy 配置 `livy.server.interactive.heartbeat.timeout` 设置为 `0`。 对于群集 v3.5，如果未设置上述 3.5 配置，会话将不会删除。
 
 6. 启动 Jupyter。 从命令提示符使用以下命令。
 
@@ -134,7 +134,7 @@ ms.lasthandoff: 05/17/2017
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>为何要在计算机上安装 Jupyter？
 你可能会出于多种原因而要在计算机上安装 Jupyter，然后将其连接到 HDInsight 上的 Spark 群集。
 
-* 尽管 Azure HDInsight 中的 Spark 群集上已提供 Jupyter 笔记本，但在计算机上安装 Jupyter 可以选择在本地创建笔记本，根据正在运行的群集测试你的应用程序，然后将笔记本上载到群集。 若要将笔记本上载到群集，可以使用群集上运行的 Jupyter 笔记本来上载，或者将它们保存到与群集关联的存储帐户中的 /HdiNotebooks 文件夹。 有关如何在群集上存储笔记本的详细信息，请参阅 [Where are Jupyter notebooks stored？](hdinsight-apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)（Jupyter 笔记本存储在何处？）
+* 尽管 Azure HDInsight 中的 Spark 群集上已提供 Jupyter 笔记本，但在计算机上安装 Jupyter 可以选择在本地创建笔记本，根据正在运行的群集测试你的应用程序，然后将笔记本上传到群集。 若要将笔记本上传到群集，可以使用群集上运行的 Jupyter 笔记本来上传，或者将它们保存到与群集关联的存储帐户中的 /HdiNotebooks 文件夹。 有关如何在群集上存储笔记本的详细信息，请参阅 [Where are Jupyter notebooks stored？](hdinsight-apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)（Jupyter 笔记本存储在何处？）
 * 使用本地提供的笔记本可以根据应用程序要求连接到不同的 Spark 群集。
 * 你可以使用 GitHub 实施源代码管理系统，并对笔记本进行版本控制。 此外，还可以建立一个协作环境，其中的多个用户可以使用同一个笔记本。
 * 你甚至不需要启动群集就能在本地使用笔记本。 只需创建一个群集以根据它来测试你的笔记本，而不需要手动管理笔记本或开发环境。
@@ -162,7 +162,7 @@ ms.lasthandoff: 05/17/2017
 ### <a name="tools-and-extensions"></a>工具和扩展
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely（使用 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Spark 应用程序）](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](hdinsight-apache-spark-zeppelin-notebook.md)
 * [在 HDInsight 的 Spark 群集中可用于 Jupyter 笔记本的内核](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 

@@ -128,7 +128,7 @@
 ## [REST](/rest/api/resources/)
 
 # 资源
-## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [服务更新](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [限制请求](resource-manager-request-limits.md)

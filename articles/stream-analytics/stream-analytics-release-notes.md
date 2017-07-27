@@ -15,19 +15,39 @@ ms.workload: data-services
 ms.date: 05/03/2017
 ms.author: jeffstok
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 6a5ec66172e7920a89ff8c0592224f01f19c9e41
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: e1ab8dd89c0590c8ee309a032efc17edeacf4d0e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
 # <a name="stream-analytics-release-notes"></a>流分析发行说明
 
+## <a name="notes-for-06142017-update-of-stream-analytics-tools-for-visual-studio"></a>适用于 Visual Studio 的流分析工具 2017/06/14 更新说明
+此更新适用于 Visual Studio Tools。 此版本包含以下新功能。
+
+| 标题 | 说明 |
+| --- | --- |
+| Java 脚本编辑器支持 |创建 Java 脚本函数后，即可享受本机 Java 脚本编辑器体验。|
+| 查看作业运行时错误消息 | 如果在作业执行期间出现运行时错误，可通过调整显示时间窗口在“错误”选项卡中查看它们。 默认情况下，此选项卡会显示最近 30 分钟的错误消息。 |
+| 对本地测试输入的 CSV 和 Avro 支持 | 除 JSON 以外，现可对本地测试输入使用 CSV 和 Avro 文件格式。|
+
 ## <a name="notes-for-05032017-update-of-stream-analytics"></a>流分析 05/03/2017 更新说明
 此更新适用于我们的故障排除文档版本。
 
 已发布[故障排除指南](stream-analytics-troubleshooting-guide.md)和其他文档。 请查看这些文档；同时，我们欢迎你提出任何反馈。
+
+## <a name="notes-for-04242017-update-of-stream-analytics-tools-for-visual-studio"></a>适用于 Visual Studio 的流分析工具 2017/04/24 更新说明
+此更新适用于 Visual Studio Tools。 此版本包含以下新功能。
+
+| 标题 | 说明 |
+| --- | --- |
+| 在 Visual Studio 中查看本地测试结果 | 若要查看本地测试的输出结果，只需在输出控制台窗口按 Enter 或将其关闭。 结果将以表格式显示在 Visual Studio 的某一窗口中。 |
+| 以 JSON 格式输出本地结果 | 运行本地测试时，系统会以 JSON 和 CSV 文件格式生成输出结果。 |
+| 预览 Blob/表存储的输入/输出数据 | 通过双击工作视图中的 Blob 或表存储输入/输出，可以非常轻松地在 Visual Studio 中预览数据。 |
+| 查看输入/输出的错误消息 | 如果存在一些与作业的输入或输出相关的运行时错误，这些错误会显示在作业关系图上，可将鼠标悬停在该关系图上以查看详细的错误消息。|
+
 
 ## <a name="notes-for-02012017-release-of-stream-analytics"></a>流分析 02/01/2017 版说明
 此版本包含以下更新。
@@ -147,7 +167,7 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [Azure 流分析入门](stream-analytics-get-started.md)
+* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

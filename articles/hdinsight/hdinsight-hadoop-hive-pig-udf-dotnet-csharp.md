@@ -1,5 +1,5 @@
 ---
-title: "在 Hadoop in HDInsight 上将 C# 与 Hive 和 Pig 配合使用 | Microsoft Docs"
+title: "在 HDInsight 中的 Hadoop 上将 C# 与 Hive 和 Pig 配合使用 - Azure | Microsoft Docs"
 description: "了解在 Azure HDInsight 中如何将 C# 用户定义的函数 (UDF) 与 Hive 和 Pig 流式处理配合使用。"
 services: hdinsight
 documentationcenter: 
@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 07/12/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: d5854a623f656f08c428cd2f6792f25582362990
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: d92fa4efd69736565e8dc1abc44ec3b1bd8bc508
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 06/13/2017
 
 ---
 # <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>在 HDInsight 中的 Hadoop 上将 C# 用户定义函数与 Hive 和 Pig 流式处理配合使用
@@ -162,7 +161,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 3. 保存 **Program.cs**，然后生成项目。
 
-## <a name="upload-to-storage"></a>上载到存储
+## <a name="upload-to-storage"></a>上传到存储
 
 1. 在 Visual Studio 中，打开“服务器资源管理器”。
 
@@ -182,7 +181,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
     * 如果使用的是 __Azure 存储帐户__，请单击“上传”图标，然后浏览到“HiveCSharp”项目的“bin\debug”文件夹。 最后，选择 **HiveCSharp.exe** 文件并单击“确定”。
 
-        ![上载图标](./media/hdinsight-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
+        ![上传图标](./media/hdinsight-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
     
     * 如果使用的是 __Azure Data Lake Store__，请右键单击文件列表中的空白区域，然后选择“上传”。 最后，选择“HiveCSharp.exe”文件并单击“打开”。
 

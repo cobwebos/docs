@@ -1,5 +1,5 @@
 ---
-title: "在 HDInsight 中运行 Hadoop 示例 | Microsoft Docs"
+title: "在 HDInsight 中运行 Hadoop 示例 — Azure | Microsoft Docs"
 description: "使用所提供的示例开始使用 Azure HDInsight 服务。 在数据群集中使用运行 MapReduce 程序的 PowerShell 脚本。"
 services: hdinsight
 documentationcenter: 
@@ -13,13 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: e4042dfbf28e78d2fca5c3f6a93df751a12153f2
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: c3e9ee66974f8b7077a0436b3686fb0515ea5e22
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/10/2017
 
 
 ---

@@ -4,7 +4,7 @@ description: "本文档有助于使用 OMS 安全和审核中的威胁智能选�
 services: operations-management-suite
 documentationcenter: na
 author: YuriDio
-manager: swadhwa
+manager: mbaldwin
 editor: 
 ms.assetid: 7d45a32b-1341-4bb5-a436-1f42a8a2590a
 ms.service: operations-management-suite
@@ -13,12 +13,13 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 06/13/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7161cacfd371aa73974e635a343793bbec76d858
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 0cf9b83d7023641ec445a59a5e61d3da038695fa
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -83,7 +84,19 @@ Microsoft Operations Management Suite (OMS) 是 Microsoft 的基于云的 IT 管
 > [!NOTE]
 > 你可以观看演示，通过观看 Microsoft ignite 中提供的演示 [Mitigate datacenter security threats with guided investigation using Operations Management Suite](https://myignite.microsoft.com/videos/5000)（使用 Operations Management Suite，借助引导式调查缓解数据中心安全威胁），了解如何在事件响应过程中使用此功能。
 > 
-> 
+
+### <a name="responding-to-distinct-malicious-ip-accessed"></a>响应访问的非重复恶意 IP
+在某些情况下，可能会注意到从一台受监视计算机访问的潜在恶意 IP：
+
+![威胁情报地图](./media/oms-security-responding-alerts/oms-security-responding-alerts-fig6.png)
+
+OMS 安全利用 [Microsoft 威胁智能](https://youtu.be/O4WtxgUrDc8)生成此警报以及同一类别中的其他警报。 威胁智能数据由 Microsoft 收集，也可从领先的威胁智能提供商处购买。 此数据经常更新，适用于快速变化的威胁。 由于其自身的性质，[调查](https://blogs.technet.microsoft.com/msoms/2016/12/08/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/)安全警报时，应将它与其他来源的安全信息结合。 
+
+## <a name="customize-alerts-received-via-e-mail"></a>自定义通过电子邮件接收的警报
+
+可以自定义 OMS 安全触发安全警报时通知组织中哪些用户。 OMS 仪表板的“概述/设置”下提供了此选项：
+
+![Email](./media/oms-security-responding-alerts/oms-security-responding-alerts-fig7.png)
 
 ## <a name="see-also"></a>另请参阅
 在本文档中，你学习了如何使用 OMS 安全和审核解决方案中的“威胁智能”选项响应安全警报。 若要了解有关 OMS 安全的详细信息，请参阅以下文章：

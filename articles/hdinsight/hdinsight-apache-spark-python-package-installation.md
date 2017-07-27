@@ -1,6 +1,6 @@
 ---
-title: "脚本操作：在 Azure HDInsight 上安装附有 Jupyter 笔记本的 Python 包 | Microsoft Docs"
-description: "逐步说明如何配置可在 HDInsight Spark 群集中使用的 Jupyter 笔记本，以使用外部 python 包。"
+title: "脚本操作：在 Azure HDInsight 上使用 Jupyter 安装 Python 包 | Microsoft Docs"
+description: "逐步说明如何使用脚本操作配置可在 HDInsight Spark 群集中使用的 Jupyter 笔记本，以使用外部 python 包。"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -14,12 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 06/29/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 9019a4115e81a7d8f1960098b1138cd437a0460b
-ms.openlocfilehash: b0d6e509c5bacd828e9a9938edb860bbf0c0a8f3
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 20cf384c96d4ff4eaf064c8880ad128d521fb9bf
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -65,11 +66,11 @@ ms.lasthandoff: 01/24/2017
 
 3. 打开 PySpark Jupyter 笔记本
 
-    ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-python-package-installation/hdispark.note.jupyter.createpysparknotebook.png "创建新的 Jupyter 笔记本")
+    ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-python-package-installation/hdinsight-spark-create-notebook.png "创建新的 Jupyter 笔记本")
 
 4. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。 在顶部单击笔记本名称，然后输入一个友好名称。
 
-    ![提供笔记本的名称](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/hdispark.note.jupyter.notebook.name.png "提供笔记本的名称")
+    ![提供笔记本的名称](./media/hdinsight-apache-spark-python-package-installation/hdinsight-spark-name-notebook.png "提供笔记本的名称")
 
 5. 现在将`import tensorflow` 并运行 hello world 示例。 
 
@@ -104,7 +105,7 @@ ms.lasthandoff: 01/24/2017
 * [在 HDInsight 上的 Apache Spark 群集中将外部包与 Jupyter 笔记本配合使用](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely（使用 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Spark 应用程序）](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](hdinsight-apache-spark-zeppelin-notebook.md)
 * [在 HDInsight 的 Spark 群集中可用于 Jupyter 笔记本的内核](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 

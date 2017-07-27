@@ -14,29 +14,31 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b178359d2f55e9137b39f42f5562e7bb8a642c57
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: e7d98ca3fa281a136595c37ed9b7e71de0cf7bff
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/02/2017
 
 
 ---
 # <a name="continuous-integration-in-visual-studio-team-services-using-azure-resource-group-deployment-projects"></a>使用 Azure 资源组部署项目在 Visual Studio Team Services 中连续集成
-若要部署 Azure 模板，需要在各个阶段执行任务：生成、测试、复制到 Azure（也称为“暂存”）和部署模板。  在 Visual Studio Team Services (VS Team Services) 中可通过两种不同的方法部署模板。 两种方法产生的结果相同，因此请选择最符合工作流的方法。
+若要部署 Azure 模板，需要在各个阶段执行任务：生成、测试、复制到 Azure（也称为“暂存”）和部署模板。 在 Visual Studio Team Services (VS Team Services) 中可通过两种不同的方法部署模板。 两种方法产生的结果相同，因此请选择最符合工作流的方法。
 
 1. 在运行 PowerShell 脚本的生成定义（包含在 Azure 资源组部署项目中，即 Deploy-AzureResourceGroup.ps1）中添加一个步骤。 该脚本将复制项目，然后部署模板。
 2. 添加多个 VS Team Services 生成步骤，每个步骤执行一个阶段任务。
 
-本文演示了这两个选项。  第一个选项的优点是，在 Visual Studio 中使用开发人员所用的同一脚本，以便在整个生命周期中提供一致性。  第二个选项为内置脚本提供一个便捷替代方式。  两个过程都假设你已经在 VS Team Services 中签入 Visual Studio 部署项目。
+本文演示了这两个选项。 第一个选项的优点是，在 Visual Studio 中使用开发人员所用的同一脚本，并且在整个生命周期中提供一致性。 第二个选项为内置脚本提供一个便捷替代方式。 两个过程都假设你已经在 VS Team Services 中签入 Visual Studio 部署项目。
 
 ## <a name="copy-artifacts-to-azure"></a>将项目复制到 Azure
-无论方案如何，如果具有模板部署所需的任何项目，都需要向 Azure Resource Manager 授予这些项目的访问权限。 这些项目可以包括如下所述的文件：
+无论方案如何，如果具有模板部署所需的任何项目，必须向 Azure Resource Manager 授予这些项目的访问权限。 这些项目可以包括如下所述的文件：
 
 * 嵌套模板
 * 配置脚本和 DSC 脚本
 * 应用程序二进制文件
 
 ### <a name="nested-templates-and-configuration-scripts"></a>嵌套模板和配置脚本
-当你使用 Visual Studio 提供的模板（或以 Visual Studio 代码段生成的模板）时，PowerShell 脚本不但会暂存项目，而且会参数化用于不同部署的资源的 URI。 脚本会将项目复制到 Azure 中的安全容器，为该容器创建 SaS 令牌，然后将该信息传递到模板部署。 若要了解有关嵌套模板的详细信息，请参阅[创建模板部署](https://msdn.microsoft.com/library/azure/dn790564.aspx)。  在 VS Team Services 中使用任务时，需要为模板部署选择相应任务，并在必要时将暂存步骤中的参数值传递到模板部署。
+当你使用 Visual Studio 提供的模板（或以 Visual Studio 代码段生成的模板）时，PowerShell 脚本不但会暂存项目，而且会参数化用于不同部署的资源的 URI。 脚本会将项目复制到 Azure 中的安全容器，为该容器创建 SaS 令牌，然后将该信息传递到模板部署。 若要了解有关嵌套模板的详细信息，请参阅[创建模板部署](https://msdn.microsoft.com/library/azure/dn790564.aspx)。  在 VS Team Services 中使用任务时，必须为模板部署选择相应任务，并在必要时将暂存步骤中的参数值传递到模板部署。
 
 ## <a name="set-up-continuous-deployment-in-vs-team-services"></a>在 VS Team Services 中设置连续部署
 若要在 VS Team Services 中调用 PowerShell 脚本，请更新生成定义。 简而言之，请执行以下步骤： 
@@ -47,7 +49,7 @@ ms.openlocfilehash: b178359d2f55e9137b39f42f5562e7bb8a642c57
 4. 设置 *-ArtifactsStagingDirectory* 参数值，以使用 VS Team Services 中生成的项目。
 
 ### <a name="detailed-walkthrough-for-option-1"></a>选项 1 详细演练
-以下步骤将指导你完成以下情况下所需的步骤：使用在项目中运行 PowerShell 脚本的单个任务，在 VS Team Services 中配置连续部署。 
+以下过程指导完成后列情况下所需的步骤：使用在项目中运行 PowerShell 脚本的单个任务，在 VS Team Services 中配置持续部署。 
 
 1. 编辑 VS Team Services 生成定义并添加 Azure PowerShell 生成步骤。 在“生成定义”类别下选择生成定义，然后选择“编辑”链接。
    
@@ -62,7 +64,7 @@ ms.openlocfilehash: b178359d2f55e9137b39f42f5562e7bb8a642c57
    
    1. 如果已将 Azure 服务终结点添加到 VS Team Services，请在“Azure 订阅”下拉列表框中选择订阅，然后跳到下一部分。 
       
-      如果 VS Team Services 中没有 Azure 服务终结点，则需要添加一个。 本小节将引导你完成整个过程。 如果 Azure 帐户使用 Microsoft 帐户（例如 Hotmail），需要执行以下步骤以获取服务主体身份验证。
+      如果 VS Team Services 中没有 Azure 服务终结点，则需要添加一个。 本小节将引导你完成整个过程。 如果 Azure 帐户使用 Microsoft 帐户（例如 Hotmail），则必须执行以下步骤以获取服务主体身份验证。
    2. 选择“Azure 订阅”下拉列表框旁边的“管理”链接。
       
       ![管理 Azure 订阅][3]
@@ -79,7 +81,7 @@ ms.openlocfilehash: b178359d2f55e9137b39f42f5562e7bb8a642c57
       * 服务主体 ID
       * 服务主体密钥
       * 租户 ID
-   6. 向“订阅”名称框添加所选的名称。 此值稍后会在 VS Team Services 中的“Azure 订阅”下拉列表内显示。 
+   6. 向“订阅”名称框添加所选的名称。 此值稍后会在 VS Team Services 中“Azure 订阅”的下拉列表内显示。 
    7. 如果不知道自己的 Azure 订阅 ID，可以使用以下命令之一来检索它。
       
       对于 Azure PowerShell 脚本，请使用：
@@ -108,8 +110,8 @@ ms.openlocfilehash: b178359d2f55e9137b39f42f5562e7bb8a642c57
    | --- | --- |
    | -ResourceGroupLocation |资源组所在的地理位置值，例如 **eastus** 或 **'East US'**。 （如果名称中有空格，请添加单引号。）有关详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/en-us/regions/)。 |
    | -ResourceGroupName |此部署使用的资源组名称。 |
-   | -UploadArtifacts |如果提供此参数，将指定需要从本地系统将项目上载到 Azure。 仅当模板部署需要使用 PowerShell 脚本暂存其他项目（例如配置脚本或嵌套模板）时，才需要设置此开关。 |
-   | -StorageAccountName |用于暂存此部署的项目的存储帐户名称。  仅当暂存用于部署的项目时，才使用此参数。 当此参数已提供时，如果在执行以前的部署期间脚本尚未创建一个存储帐户，将创建新的存储帐户。  如果已指定该参数，则存储帐户必须已经存在。 |
+   | -UploadArtifacts |如果提供此参数，将指定需要从本地系统上传到 Azure 的项目。 仅当模板部署需要使用 PowerShell 脚本暂存其他项目（例如配置脚本或嵌套模板）时，才需要设置此开关。 |
+   | -StorageAccountName |用于暂存此部署的项目的存储帐户名称。 仅当暂存用于部署的项目时，才使用此参数。 当此参数已提供时，如果在执行以前的部署期间脚本尚未创建一个存储帐户，将创建新的存储帐户。 如果已指定该参数，则存储帐户必须已经存在。 |
    | -StorageAccountResourceGroupName |与存储帐户关联的资源组名称。 仅在为 StorageAccountName 参数提供值时，才需要此参数。 |
    | -TemplateFile |Azure 资源组部署项目中的模板文件路径。 为了提高灵活性，请为此参数使用相对于 PowerShell 脚本位置的路径，而不要使用绝对路径。 |
    | -TemplateParametersFile |Azure 资源组部署项目中的参数文件路径。 为了提高灵活性，请为此参数使用相对于 PowerShell 脚本位置的路径，而不要使用绝对路径。 |
@@ -129,7 +131,7 @@ ms.openlocfilehash: b178359d2f55e9137b39f42f5562e7bb8a642c57
 9. 将所有必需的项添加 Azure PowerShell 生成步骤之后，请选择“队列”生成按钮来生成项目。 “生成”屏幕将显示 PowerShell 脚本的输出。
 
 ### <a name="detailed-walkthrough-for-option-2"></a>选项 2 详细演练
-以下步骤指导你完成使用内置任务在 VS Team Services 中配置连续部署所需的步骤。
+以下过程演练使用内置任务在 VS Team Services 中配置持续部署的必要步骤。
 
 1. 编辑 VS Team Services 生成定义以添加两个新的生成步骤。 在“生成定义”类别下选择生成定义，然后选择“编辑”链接。
    
@@ -145,7 +147,7 @@ ms.openlocfilehash: b178359d2f55e9137b39f42f5562e7bb8a642c57
    ![添加 Azure 资源组部署任务][15]
 5. 选择“Azure 文件复制”任务，并填充其值。
    
-   如果已将 Azure 服务终结点添加到 VS Team Services，请在“Azure 订阅”下拉列表框中选择订阅。  如果没有订阅，请参阅[选项 1](#detailed-walkthrough-for-option-1)，了解有关在 VS Team Services 中设置订阅的说明。
+   如果已将 Azure 服务终结点添加到 VS Team Services，请在“Azure 订阅”下拉列表框中选择订阅。 如果没有订阅，请参阅[选项 1](#detailed-walkthrough-for-option-1)，了解有关在 VS Team Services 中设置订阅的说明。
    
    * 源 - 输入 **$(Build.StagingDirectory)**
    * Azure 连接类型 - 选择“Azure Resource Manager”
@@ -163,7 +165,7 @@ ms.openlocfilehash: b178359d2f55e9137b39f42f5562e7bb8a642c57
 6. 选择“Azure 资源组部署”生成步骤，然后填充其值。
    
    * Azure 连接类型 - 选择“Azure Resource Manager”
-   * Azure RM 订阅 - 在“Azure 订阅”下拉列表框中选择用于部署的订阅。 这通常是上一步中使用的同一订阅。
+   * Azure RM 订阅 - 在“Azure 订阅”下拉列表框中选择用于部署的订阅。 这通常是上一步中使用的同一订阅
    * 操作 - 选择“创建或更新资源组”
    * 资源组 - 选择资源组或为部署选择新资源组的名称
    * 位置 - 选择资源组的位置
@@ -196,9 +198,4 @@ ms.openlocfilehash: b178359d2f55e9137b39f42f5562e7bb8a642c57
 [15]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough16.png
 [16]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough17.png
 [17]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough18.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

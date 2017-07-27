@@ -15,15 +15,16 @@ ms.topic: article
 ms.date: 05/03/2017
 ms.author: sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aa7244849f6286e8ef9f9785c133b4c326193c12
-ms.openlocfilehash: 852a0fab2fa7a50eb315e7107749e391031b463e
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 024a9dd00d086d5c1cc14d6731b34ee0eab3b2c5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/02/2017
+ms.lasthandoff: 06/29/2017
 
 
 ---
 
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>使用 Java 从 Azure 事件中心接收事件
+
 
 ## <a name="introduction"></a>介绍
 事件中心是一个具备高度可伸缩性的引入系统，每秒可收入大量事件，从而使应用程序能够处理和分析你连接的设备和应用程序所产生的海量数据。 将数据采集到事件中心后，你可以使用任何实时分析提供程序或存储群集来转换和存储数据。
@@ -68,6 +69,11 @@ EventProcessorHost 是一个 Java 类，通过从事件中心管理持久检查�
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs-eph</artifactId>
     <version>{VERSION}</version>
+</dependency>
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>azure-eventhubs-eph</artifactId>
+  <version>0.14.0</version>
 </dependency>
 ```
 
@@ -220,7 +226,7 @@ EventProcessorHost 是一个 Java 类，通过从事件中心管理持久检查�
     ```
 
 > [!NOTE]
-> 本教程使用了一个 EventProcessorHost 实例。 若要增加吞吐量，建议运行多个 EventProcessorHost 实例。 在那些情况下，为了对接收到的事件进行负载平衡，各个不同实例会自动相互协调。 如果希望多个接收方都各自处理 *全部* 事件，则必须使用 **ConsumerGroup** 概念。 在从不同计算机中接收事件时，根据部署 EventProcessorHost 实例的计算机（或角色）来指定该实例的名称可能会很有用。
+> 本教程使用了一个 EventProcessorHost 实例。 若要增加吞吐量，建议运行多个 EventProcessorHost 实例，最好是在单独的计算机上运行。  这也会变得冗余。   在那些情况下，为了对接收到的事件进行负载均衡，各个不同实例会自动相互协调。 如果希望多个接收方都各自处理 *全部* 事件，则必须使用 **ConsumerGroup** 概念。 在从不同计算机中接收事件时，根据部署 EventProcessorHost 实例的计算机（或角色）来指定该实例的名称可能会很有用。
 > 
 > 
 

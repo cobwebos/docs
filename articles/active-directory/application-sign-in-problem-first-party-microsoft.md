@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: c3594b292a5b548bcb1e0df5959775d139576597
-ms.lasthandoff: 04/18/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 77f8f10c764013e539480138fb1479d0326b5eef
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/30/2017
 
 ---
 
@@ -95,7 +95,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 -   [检查在 Azure Active Directory 中是否存在用户帐户](#check-if-a-user-account-exists-in-azure-active-directory)
 
--   [检查用户的帐户状态](#check-a-users-account-status)
+-   [检查用户帐户的状态](#check-a-users-account-status)
 
 -   [重置用户的密码](#reset-a-users-password)
 
@@ -119,7 +119,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在导航菜单中，单击“用户和组”。
 
@@ -129,7 +129,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 7.  检查用户对象的属性，确保它们看上去与预期一致并且未丢失任何数据。
 
-### <a name="check-a-users-account-status"></a>检查用户的帐户状态
+### <a name="check-a-users-account-status"></a>检查用户帐户的状态
 
 若要检查用户的帐户状态，请按照以下步骤操作：
 
@@ -137,7 +137,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在导航菜单中，单击“用户和组”。
 
@@ -157,7 +157,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在导航菜单中，单击“用户和组”。
 
@@ -175,7 +175,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ### <a name="enable-self-service-password-reset"></a>启用自助服务密码重置
 
-若要启用自助服务密码重置，请按照下面的部署步骤操作：
+若要启用自助服务密码重置，请执行以下部署步骤：
 
 -   [使用户能够重置其 Azure Active Directory 密码](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started#enable-users-to-reset-their-azure-ad-passwords)
 
@@ -183,13 +183,13 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ### <a name="check-a-users-multi-factor-authentication-status"></a>检查用户的多重身份验证状态
 
-若要检查用户的多重身份验证状态，请按照以下步骤操作：
+若要检查用户的多重身份验证状态，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在导航菜单中，单击“用户和组”。
 
@@ -213,7 +213,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在导航菜单中，单击“用户和组”。
 
@@ -235,7 +235,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在导航菜单中，单击“用户和组”。
 
@@ -253,7 +253,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在导航菜单中，单击“用户和组”。
 
@@ -271,7 +271,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在导航菜单中，单击“用户和组”。
 
@@ -311,7 +311,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在导航菜单中，单击“用户和组”。
 
@@ -329,7 +329,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在导航菜单中，单击“用户和组”。
 
@@ -349,7 +349,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在导航菜单中，单击“用户和组”。
 
@@ -367,7 +367,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在导航菜单中，单击“用户和组”。
 
@@ -392,7 +392,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在导航菜单中，单击“用户和组”。
 
@@ -504,7 +504,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ### <a name="perform-a-user-level-consent-operation"></a>执行用户级许可操作
 
--   对于任何应用程序，导航到应用程序的登录屏幕都会面向已登录用户为应用程序执行用户级许可。
+-   对于需要权限的任何已启用 Open ID Connect 的应用程序，导航到应用程序的登录屏幕都会面向已登录用户为应用程序执行用户级许可。
 
 -   如果要以编程方式执行此操作，请参阅[请求单个用户的同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent)。
 

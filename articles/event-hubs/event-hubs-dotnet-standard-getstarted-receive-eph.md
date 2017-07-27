@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2017
+ms.date: 06/27/2017
 ms.author: sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: e286693b585a5991dbecd537fe5cd6621dd27e01
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: cc62792dad0284f9514664795fdfb32e94a85943
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/26/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -61,9 +61,11 @@ ms.lasthandoff: 04/26/2017
 
 ## <a name="add-the-event-hubs-nuget-package"></a>添加事件中心 NuGet 包
 
-将以下 NuGet 包添加到项目：
-* [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)
-* [`Microsoft.Azure.EventHubs.Processor`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/)
+通过执行以下步骤，将 [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) 和 [`Microsoft.Azure.EventHubs.Processor`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) .NET 标准库 NuGet 包添加到项目中： 
+
+1. 右键单击新创建的项目，然后选择“管理 NuGet 包” 。
+2. 单击“浏览”选项卡，然后搜索“Microsoft.Azure.EventHubs”，并选择“Microsoft.Azure.EventHubs”包。 单击“安装”以完成安装，然后关闭此对话框。
+3. 重复步骤 1 和步骤 2，安装“Microsoft.Azure.EventHubs.Processor”包。
 
 ## <a name="implement-the-ieventprocessor-interface"></a>实现 IEventProcessor 接口
 

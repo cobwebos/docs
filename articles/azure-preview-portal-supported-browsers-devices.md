@@ -1,5 +1,5 @@
 ---
-title: "支持的浏览器和设备"
+title: "Azure 门户支持的浏览器和设备 | Microsoft Docs"
 description: "介绍用于操作 Azure 门户的浏览器和设备。"
 services: 
 documentationcenter: 
@@ -13,32 +13,29 @@ ms.workload: multiple
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2015
+ms.date: 06/28/2017
 ms.author: micflan
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2f243accae710bdeb3adb51d37a5c6803b761687
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 2d3046381892978e3aea12752f526d7cdf8184f5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/30/2017
 
 
 ---
-# <a name="supported-browsers-and-devices"></a>支持的浏览器和设备
-Microsoft Azure 门户可在所有最新的台式机和平板电脑与浏览器上运行。
+# <a name="supported-browsers-and-devices-for-the-azure-portal"></a>Azure 门户支持的浏览器和设备
+可在所有最新的台式机、平板设备和浏览器上运行 [Azure 门户](https://portal.azure.com)。
 
 ### <a name="supported-devices"></a>支持的设备
-预览版门户可在最新 PC、Mac 和平板电脑上平稳运行。 目前不支持手机。
+Azure 门户可在最新 PC、Mac 和平板电脑上平稳运行。 如果需要从移动设备管理 Azure 资源，请尝试可在 iPhone 和 Android 上预览的 Azure 应用。 有关详细信息，请参阅博客文章 [Introducing the Azure app public preview（Azure 应用公共预览版简介）](https://azure.microsoft.com/blog/azure-app-preview/)。
 
 ### <a name="supported-browsers"></a>支持的浏览器
-支持以下最新版本的浏览器：
+建议使用与操作系统兼容的最新浏览器。 支持以下浏览器：
 
-* Edge（最新版本）
+* Microsoft Edge（最新版本）
 * Internet Explorer 11
-* Safari（最新版，仅限 Mac）
+* Safari（最新版本，仅限 Mac）
 * Chrome（最新版本）
 * Firefox（最新版本）
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

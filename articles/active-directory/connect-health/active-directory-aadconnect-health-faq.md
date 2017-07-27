@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/18/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: e22a1ccb958942cfa3c67194430af6bc74fdba64
-ms.openlocfilehash: 233691d19aa2553744f92af17f7ecf9fda2290e0
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 1f1c453267ea17d749a251539f4232131dae53d3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/13/2017
 
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
@@ -126,7 +127,7 @@ ms.lasthandoff: 04/05/2017
 如果过去两小时内未从服务器收到所有数据点，Azure AD Connect Health 将生成此警报。 生成此警报的原因有多种。
 
 * 该代理无法与所需的终结点通信，因为防火墙阻止流量。 这在 Web 应用程序代理服务器上尤其常见。 请确保你已允许出站通信到所需终结点和端口。 有关详细信息，请参阅[要求部分](active-directory-aadconnect-health-agent-install.md#requirements)。
-* 网络层会对出站通信进行 SSL 检查。 这会导致代理使用的证书被检查服务器/实体替换，并且将数据上载到 Azure AD Connect Health 服务的过程将失败。
+* 网络层会对出站通信进行 SSL 检查。 这会导致代理使用的证书被检查服务器/实体替换，并且将数据上传到 Azure AD Connect Health 服务的过程将失败。
 * 可以使用代理中内置的连接命令。 [了解详细信息](active-directory-aadconnect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service)。
 * 代理还支持通过未经身份验证的 HTTP 代理进行出站连接。 [了解详细信息](active-directory-aadconnect-health-agent-install.md##configure-azure-ad-connect-health-agents-to-use-http-proxy)。
 
@@ -138,6 +139,44 @@ ms.lasthandoff: 04/05/2017
 **问：如何解除 Azure AD Connect Health 警报？**
 
 在成功的情况下，将解除 Azure AD Connect Health 警报。 Azure AD Connect Health 代理将定期检测并向服务报告成功的情况。 某些警报的解除取决于时间。 换句话说，如果在警报生成后的 72 小时内未观察到相同的错误条件，则警报会自动解除。
+
+问：我收到警报显示：“测试身份验证请求(合成事务)无法获取令牌。”**如何解决此问题？**
+
+当 AD FS 服务器上安装的 Health 代理无法获取由 Health 代理启动的作为综合事务一部分的令牌时，AD FS 的 Azure AD Connect Health 就会生成此警报。 Health 代理使用本地系统上下文，并尝试为自信赖方获取令牌。 这是一个全面测试，可确保 AD FS 处于发出令牌的状态。
+
+此测试通常会失败，因为 Health 代理无法解析 AD FS 场名称。 如果 AD FS 服务器位于网络负载均衡器之后，并且请求从位于负载均平衡器后面的节点（而不是位于负载均衡器前面的常规客户端）启动，则可能会发生这种情况。 这可以通过更新位于“C:\Windows\System32\drivers\etc”下的“hosts”文件来修复，以包括 AD FS 服务器的 IP 地址或 AD FS 场名称（如 sts.contoso.com）的环回 IP 地址 (127.0.0.1)。 添加主机文件会使网络调用短路，从而使 Health 代理获得令牌。
+
+问：我收到一封电子邮件，指示我的计算机没有应用最新的勒索攻击修补程序。我为什么会收到这个电子邮件？
+
+Azure AD Connect Health 服务会扫描其所监视的所有计算机，以确保已安装所需的修补程序。 如果至少有一台计算机未安装关键修补程序，则会向租户管理员发送此电子邮件。 以下逻辑用于做出此判断。
+1. 查找计算机上安装的所有修补程序。
+2. 检查定义的列表中是否至少存在一个修补程序。
+3. 如果是，则计算机受保护。 如果不是，则计算机有受到攻击的风险。
+
+以下 PowerShell 脚本可用于手动执行此检查。 它可实现上述逻辑。
+
+```
+Function CheckForMS17-010 ()
+{
+    $hotfixes = "KB3205409", "KB3210720", "KB3210721", "KB3212646", "KB3213986", "KB4012212", "KB4012213", "KB4012214", "KB4012215", "KB4012216", "KB4012217", "KB4012218", "KB4012220", "KB4012598", "KB4012606", "KB4013198", "KB4013389", "KB4013429", "KB4015217", "KB4015438", "KB4015546", "KB4015547", "KB4015548", "KB4015549", "KB4015550", "KB4015551", "KB4015552", "KB4015553", "KB4015554", "KB4016635", "KB4019213", "KB4019214", "KB4019215", "KB4019216", "KB4019263", "KB4019264", "KB4019472", "KB4015221", "KB4019474", "KB4015219", "KB4019473"
+
+    #checks the computer it's run on if any of the listed hotfixes are present
+    $hotfix = Get-HotFix -ComputerName $env:computername | Where-Object {$hotfixes -contains $_.HotfixID} | Select-Object -property "HotFixID"
+
+    #confirms whether hotfix is found or not
+    if (Get-HotFix | Where-Object {$hotfixes -contains $_.HotfixID})
+    {
+        "Found HotFix: " + $hotfix.HotFixID
+    } else {
+        "Didn't Find HotFix"
+    }
+}
+
+CheckForMS17-010
+
+```
+
+
 
 ## <a name="related-links"></a>相关链接
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)

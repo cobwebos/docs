@@ -1,5 +1,5 @@
 ---
-title: "使用 PowerShell 管理 HDInsight 中的 Hadoop 群集 | Microsoft Docs"
+title: "使用 PowerShell 管理 HDInsight 中的 Hadoop 群集 - Azure | Microsoft Docs"
 description: "了解如何使用 Azure PowerShell 执行针对 HDInsight 中 Hadoop 的管理任务。"
 services: hdinsight
 editor: cgronlun
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: af9e0b7c0f7077b8d4e20ccafdc1fb4e1eb58505
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: c47dabd7c4aa4ba0be08c419989e536711f03677
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/16/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -197,15 +197,15 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 
 请参阅[在 HDInsight 中将 Oozie 与 Hadoop 配合使用以定义和运行工作流](hdinsight-use-oozie.md)。
 
-## <a name="upload-data-to-azure-blob-storage"></a>将数据上载到 Azure Blob 存储
-请参阅[将数据上载到 HDInsight][hdinsight-upload-data]。
+## <a name="upload-data-to-azure-blob-storage"></a>将数据上传到 Azure Blob 存储
+请参阅[将数据上传到 HDInsight][hdinsight-upload-data]。
 
 ## <a name="see-also"></a>另请参阅
 * [HDInsight cmdlet 参考文档][hdinsight-powershell-reference]
 * [使用 Azure 门户管理 HDInsight][hdinsight-admin-portal]
 * [使用命令行接口管理 HDInsight][hdinsight-admin-cli]
 * [创建 HDInsight 群集][hdinsight-provision]
-* [将数据上载到 HDInsight][hdinsight-upload-data]
+* [将数据上传到 HDInsight][hdinsight-upload-data]
 * [以编程方式提交 Hadoop 作业][hdinsight-submit-jobs]
 * [Azure HDInsight 入门][hdinsight-get-started]
 

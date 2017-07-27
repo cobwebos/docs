@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: ce4d51c4ed38645ee81325404ff7214f845d5bf0
-ms.openlocfilehash: 317f3be6cb39da7c7c57f7f368c750672609726e
-ms.lasthandoff: 01/31/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 37df8d66d0a3ce738db2960d4283bdc672fb0fc4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/04/2017
 
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect：有关实例的特殊注意事项
@@ -39,7 +39,7 @@ Azure AD Connect 最常用于全球范围内的 Azure AD 和 Office 365 实例�
 
 * **Azure AD Connect Health** 不可用。
 * **自动更新**不可用。
-* **密码写回**不可用。
+* 密码写回可用于使用 Azure AD Connect 1.1.570.0 及更高版本预览。
 * 其他 Azure AD Premium 服务不可用。
 
 ## <a name="microsoft-azure-government-cloud"></a>Microsoft Azure 政府版云
@@ -50,6 +50,7 @@ DirSync 的早期版本支持该云。 从 Azure AD Connect 的 1.1.180 版本�
 | 在代理服务器中打开的 URL |
 | --- |
 | \*.microsoftonline.com |
+| \*.microsoftonline.us |
 | \*.gov.us.microsoftonline.com |
 | + 证书吊销列表 |
 
@@ -64,7 +65,7 @@ Microsoft Azure 政府版云中当前不存在的功能：
 
 * **Azure AD Connect Health** 不可用。
 * **自动更新**不可用。
-* **密码写回**不可用。
+* 密码写回可用于使用 Azure AD Connect 1.1.570.0 及更高版本预览。
 * 其他 Azure AD Premium 服务不可用。
 
 ## <a name="next-steps"></a>后续步骤

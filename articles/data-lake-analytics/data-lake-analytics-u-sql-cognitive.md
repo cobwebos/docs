@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-translationtype: Human Translation
-ms.sourcegitcommit: 21b4d574705d589406f50cac106a47ada71d24cd
-ms.openlocfilehash: 596459e25f8ad072a55ad45a2f444c71b27fd60c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: f77329f9838d6e824afa7234de90f62257a004de
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -26,11 +28,11 @@ ms.openlocfilehash: 596459e25f8ad072a55ad45a2f444c71b27fd60c
 U-SQL 的认知功能使开发人员可以在其大数据程序中使用智能。 简而言之的整体过程：
 
 * 使用 REFERENCE ASSEMBLY 语句为 U-SQL 脚本启用认知功能
-* 使用 PROCESS 操作使用认知功能 
+* 调用 PROCESS 操作来使用认知功能 
 
 ## <a name="imaging-scenarios"></a>成像方案
 
-### <a name="a-simple-example-image-tagging"></a>简单示例：成像标记
+### <a name="example-image-tagging"></a>示例：成像标记
 
 下面示例演示成像功能的端到端使用以便在图像中检测对象。
 
@@ -104,7 +106,7 @@ U-SQL 的认知功能使开发人员可以在其大数据程序中使用智能�
         FROM @"/usqlext/samples/cognition/war_and_peace.csv"
         USING Extractors.Csv();
 
-### <a name="extract-key-phrases-for-each-paragraph"></a>提取每个段落的关键短语。
+### <a name="extract-key-phrases-for-each-paragraph"></a>提取每个段落的关键短语
 
     @keyphrase =
         PROCESS @WarAndPeace
@@ -150,10 +152,5 @@ U-SQL 的认知功能使开发人员可以在其大数据程序中使用智能�
                 Chapter,
                 Text
         USING new Cognition.Text.SentimentAnalyzer(true);
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

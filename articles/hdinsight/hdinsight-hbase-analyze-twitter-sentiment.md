@@ -1,5 +1,5 @@
 ---
-title: "使用 HBase 分析实时 Twitter 观点 | Microsoft Docs"
+title: "使用 HBase 分析实时 Twitter 情绪 - Azure | Microsoft Docs"
 description: "了解如何通过在 HDInsight  (Hadoop) 群集中使用 HBase 对 Twitter 中的大数据执行实时观点分析。"
 services: hdinsight
 documentationcenter: 
@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 5fa91c0fb1858a46745ff50991b843530f0a5d23
-ms.lasthandoff: 03/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 7a16a1c2a10279b5e7fb523addfdfcd433c8937e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/10/2017
 
 
 ---

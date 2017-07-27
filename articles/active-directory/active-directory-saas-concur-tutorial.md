@@ -1,148 +1,238 @@
 ---
 title: "教程：Azure Active Directory 与 Concur 的集成 | Microsoft 文档"
-description: "了解如何将 Concur 与 Azure Active Directory 配合使用来启用单一登录、自动化预配及更多功能！"
+description: "了解如何在 Azure Active Directory 和 Concur 之间配置单一登录。"
 services: active-directory
+documentationCenter: na
 author: jeevansd
-documentationcenter: na
 manager: femila
 ms.assetid: 1eee0a5d-24fa-4986-9aef-3c543cfe3296
 ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 02/10/2017
+ms.date: 06/16/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 325d92e493f6e011367d2c85b52c92838327101e
-ms.openlocfilehash: 87f8547486d9c77aeaa49e574b3c05e1a1fd877a
-ms.lasthandoff: 02/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 0b44437b3dcf69dae3587529da7d12e7809b9f55
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/04/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-concur"></a>教程：Azure Active Directory 与 Concur 的集成
-本教程的目标是展示 Azure 与 Concur 的集成。  
-在本教程中概述的方案假定已具有以下各项：
 
-* 有效的 Azure 订阅
-* Concur 中的租户
+在本教程中，了解如何将 Concur 与 Azure Active Directory (Azure AD) 集成。
 
-在本教程中概述的方案由以下构建基块组成：
+将 Concur 与 Azure AD 集成具有以下优势：
 
-* 为 Concur 启用应用程序集成
-* 配置单一登录 (SSO)
-* 配置用户设置
-* 分配用户
+- 可在 Azure AD 中控制谁有权访问 Concur
+- 可让用户使用其 Azure AD 帐户自动登录到 Concur
+- 可以在一个中心位置（即 Azure 门户）中管理帐户
 
-![方案](./media/active-directory-saas-concur-tutorial/IC769766.png "方案")
+若要深入了解 SaaS 应用与 Azure AD 集成，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
->[!NOTE]
->为 Concur 订阅配置基于 SAML 的联合 SSO 是一个单独的任务，必须联系 Concur 来执行。 
-> 
+## <a name="prerequisites"></a>先决条件
 
-## <a name="enable-the-application-integration-for-concur"></a>为 Concur 启用应用程序集成
-本部分的目的是概述如何为 Concur 启用应用程序集成。
+若要配置 Azure AD 与 Concur 的集成，需要具有以下项：
 
-**若要为 Concur 启用应用程序集成，请执行以下步骤：**
-1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
-   
-  ![Active Directory](./media/active-directory-saas-concur-tutorial/IC700993.png "Active Directory")
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
-3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
-   
-  ![应用程序](./media/active-directory-saas-concur-tutorial/IC700994.png "应用程序")
-4. 若要打开**应用程序库**，请单击“添加应用”，然后单击“为组织添加要使用的应用程序”。
-   
-  ![想要做什么？](./media/active-directory-saas-concur-tutorial/IC700995.png "想要做什么？")
-5. 在**搜索框**中，键入“Concur”。
-   
-  ![应用程序库](./media/active-directory-saas-concur-tutorial/IC721727.png "应用程序库")
-6. 在结果窗格中，选择“Concur”，然后单击“完成”以添加该应用程序。
-   
-  ![Concur](./media/active-directory-saas-concur-tutorial/IC721728.png "Concur")
-   
-## <a name="configure-single-sign-on"></a>配置单一登录
+- 一个 Azure AD 订阅
+- 已启用 Concur 单一登录的订阅
 
-本部分的目的是概述如何让用户能够使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 Concur 证明自己的身份。
+> [!NOTE]
+> 不建议使用生产环境测试本教程中的步骤。
+
+测试本教程中的步骤应遵循以下建议：
+
+- 除非必要，请勿使用生产环境。
+- 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+
+## <a name="scenario-description"></a>方案描述
+在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+
+1. 从库中添加 Concur
+2. 配置和测试 Azure AD 单一登录
 
 >[!NOTE]
->为 Concur 订阅配置基于 SAML 的联合 SSO 是一个单独的任务，必须联系 Concur 来执行。
-> 
+>为 Concur 订阅配置基于 SAML 的联合 SSO 是一个单独的任务，必须联系 [Concur 客户端支持团队](https://www.concur.co.in/contact)来执行。 
 
-**若要配置单一登录，请执行以下步骤：**
+## <a name="adding-concur-from-the-gallery"></a>从库中添加 Concur
+若要配置 Concur 与 Azure AD 的集成，需从库中将 Concur 添加到托管 SaaS 应用列表。
 
-1. 在 Azure 经典门户中，在 **Concur** 应用程序集成页上，单击“配置单一登录”，以打开“配置单一登录”对话框。
-   
-   ![配置单一登录](./media/active-directory-saas-concur-tutorial/IC769767.png "配置单一登录")
-2. 在“你希望用户如何登录到 Concur”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
-   
-   ![配置单一登录](./media/active-directory-saas-concur-tutorial/IC769768.png "配置单一登录")
-3. 在“配置应用 URL”页上，在“Concur 登录 URL”文本框中，键入你的 Concur 租户登录 URL，然后单击“下一步”： 
-   
-   ![配置登录 URL](./media/active-directory-saas-concur-tutorial/IC769769.png "Configure sign in URL")
-4. 在“在 Concur 处配置单一登录”页上，执行以下步骤。
-   
-   ![配置登录 URL](./media/active-directory-saas-concur-tutorial/IC769770.png "Configure sign in URL")
-   1. 单击“下载元数据”，然后将数据文件保存在计算机上。
-   2. 联系 Concur 支持团队来为你的租户配置 SSO。
-   3. 选择单一登录配置确认，然后单击“完成”，关闭“配置单一登录”对话框。  
-   
-   >[!NOTE]
-   >为 Concur 订阅配置基于 SAML 的联合 SSO 是一个单独的任务，必须联系 Concur 来执行。 
-   > 
+**若要从库中添加 Concur，请执行以下步骤：**
 
-## <a name="configure-user-provisioning"></a>配置用户设置
-本部分的目的是概述如何对 Concur 启用 Active Directory 用户帐户的预配。
+1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
 
-若要在费用服务中启用应用，必须正确设置和使用 Web 服务管理配置文件。 不要简单地将 WS 管理角色添加到用于 T&E 管理功能的现有管理员配置文件。
+    ![Active Directory][1]
 
-Concur 顾问或客户管理员必须创建一个单独的 Web 服务管理员配置文件，并且客户管理员必须使用此配置文件执行 Web 服务管理员功能（例如，启用应用）。 这些配置文件必须独立于客户管理员的日常 T&E 管理配置文件（T&E 管理配置文件不应当分配 WSAdmin 角色）。
+2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
-在创建用于启用应用的配置文件时，需要在用户配置文件字段中输入客户管理员的名称。 这将分配对配置文件的所有权。在创建配置文件后，客户必须使用此配置文件登录以在“Web 服务”菜单内针对合作伙伴应用单击“启用”按钮。
+    ![应用程序][2]
+    
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-出于以下原因，不应当使用用于普通 T&E 管理的配置文件执行此操作。
+    ![应用程序][3]
 
-1. 必须由客户在启用应用后显示的对话窗口上单击“是”。 此单击将确认客户同意合作伙伴应用程序访问其数据，因此你或合作伙伴无法单击该“是”按钮。
-2. 如果使用 T&E 管理配置文件启用了应用的客户管理员离开了公司（导致该配置文件被停用），则使用该配置文件启用的任何应用都不再工作，直到使用另一个活动的 WS 管理配置文件启用该应用。 这就是建议你创建单独的 WS 管理配置文件的原因。
-3. 如果管理员离开了公司，需要时可以将与 WS 管理配置文件关联的名称更改为替代管理员，这不会影响已启用的应用，因为不需要停用该配置文件。
+4. 在“搜索框”中，键入“Concur”。
 
-**若要配置用户预配，请执行以下步骤：**
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-concur-tutorial/tutorial_concur_search.png)
 
-1. 登录到你的 **Concur** 租户。
-2. 从“管理”菜单中，选择“Web 服务”。
-   
-   ![Concur 租户](./media/active-directory-saas-concur-tutorial/IC721729.png "Concur tenant")
-3. 在左侧，从“Web 服务”窗格中，选择“启用合作伙伴应用程序”。
-   
-   ![启用合作伙伴应用程序](./media/active-directory-saas-concur-tutorial/IC721730.png "Enable Partner Application")
-4. 从“启用应用程序”列表中，选择“Azure Active Directory”，然后单击“启用”。
-   
-   ![Microsoft Azure Active Directory](./media/active-directory-saas-concur-tutorial/IC721731.png "Microsoft Azure Active Directory")
-5. 单击“是”以关闭“确认操作”对话框。
-   
-   ![确认操作](./media/active-directory-saas-concur-tutorial/IC721732.png "Confirm Action")
-6. 在 Azure 经典门户中，从应用程序列表中选择“Concur”以打开“Concur”对话框页。
-7. 若要打开“配置用户预配”对话框页，请单击“配置用户预配”。
-8. 输入 Concur 管理员的用户名和密码，然后单击“下一步”。
-9. 若要完成配置，请在“确认”页上单击“完成”按钮。
+5. 在结果面板中，选择“Concur”，然后单击“添加”按钮添加该应用程序。
 
-现在可以创建一个测试帐户，等待 10 分钟，然后验证该帐户是否已同步到 Concur。
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-concur-tutorial/tutorial_concur_addfromgallery.png)
 
-## <a name="assign-users"></a>分配用户
-若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+在本部分中，基于名为“Britta Simon”的测试用户配置和测试 Concur 的 Azure AD 单一登录。
 
-**若要将用户分配到 Concur，请执行以下步骤：**
+若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Concur 用户。 换句话说，需要建立 Azure AD 用户与 Concur 中相关用户之间的链接关系。
 
-1. 在 Azure 经典门户中，创建测试帐户。
-2. 在 **Concur** 应用程序集成页上，单击“分配用户”。
-   
-   ![分配用户](./media/active-directory-saas-concur-tutorial/IC769771.png "分配用户")
-3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
-   
-   ![是](./media/active-directory-saas-concur-tutorial/IC767830.png "是")
+可通过将 Azure AD 中“用户名”的值分配为 Concur 中“用户名”的值来建立此链接关系。
 
-现在应等待 10 分钟，然后验证该帐户是否已同步到 Concur。
+若要配置并测试 Concur 的 Azure AD 单一登录，需完成以下构建基块：
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
+2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+3. **[创建 Concur 测试用户](#creating-a-concur-test-user)** - 在 Concur 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+
+### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+
+在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 Concur 应用程序中配置单一登录。
+
+**若要配置 Concur 的 Azure AD 单一登录，请执行以下步骤：**
+
+1. 在 Azure 门户中的“Concur”应用程序集成页上，单击“单一登录”。
+
+    ![配置单一登录][4]
+
+2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+ 
+    ![配置单一登录](./media/active-directory-saas-concur-tutorial/tutorial_concur_samlbase.png)
+
+3. 在“Concur 域和 URL”部分中，执行以下步骤：
+
+    ![配置单一登录](./media/active-directory-saas-concur-tutorial/tutorial_concur_url.png)
+
+    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“登录 URL”文本框中，使用以下模式键入值：`https://www.concursolutions.com/UI/SSO/<OrganizationId>`
+
+    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<customer-domain>.concursolutions.com`
+
+    > [!NOTE] 
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Concur 客户端支持团队](https://www.concur.co.in/contact)获取这些值。 
+
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存 XML 文件。
+
+    ![配置单一登录](./media/active-directory-saas-concur-tutorial/tutorial_concur_certificate.png) 
+
+5. 单击“保存”按钮。
+
+    ![配置单一登录](./media/active-directory-saas-concur-tutorial/tutorial_general_400.png)
+<CS>
+
+6. 若要在 Concur 端配置单一登录，需将下载的元数据 XML 发送给 Concur 支持团队。 他们会对此进行设置，使 SAML SSO 连接在两端均正确设置。
+
+  >[!NOTE]
+  >为 Concur 订阅配置基于 SAML 的联合 SSO 是一个单独的任务，必须联系 [Concur 客户端支持团队](https://www.concur.co.in/contact)来执行。 
+  
+<CE>
+
+> [!TIP]
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+
+### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
+
+![创建 Azure AD 用户][100]
+
+**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+
+1. 在 **Azure 门户**的左侧导航窗格中，单击“Azure Active Directory”图标。
+
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-concur-tutorial/create_aaduser_01.png) 
+
+2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+    
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-concur-tutorial/create_aaduser_02.png) 
+
+3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+ 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-concur-tutorial/create_aaduser_03.png) 
+
+4. 在“用户”对话框页上，执行以下步骤：
+ 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-concur-tutorial/create_aaduser_04.png) 
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+
+    c. 选择“显示密码”并记下“密码”的值。
+
+    d.单击“下一步”。 单击“创建” 。
+ 
+### <a name="creating-a-concur-test-user"></a>创建 Concur 测试用户
+
+应用程序支持实时用户预配，且进行身份验证后，将在应用程序中自动创建用户。
+
+### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
+在本部分中，通过授予 Britta Simon 对 Concur 的访问权限，使其能够使用 Azure 单一登录。
+
+![分配用户][200] 
+
+**若要将 Britta Simon 分配到 Concur，请执行以下步骤：**
+
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+
+    ![分配用户][201] 
+
+2. 在应用程序列表中，选择“Concur”。
+
+    ![配置单一登录](./media/active-directory-saas-concur-tutorial/tutorial_concur_app.png) 
+
+3. 在左侧菜单中，单击“用户和组”。
+
+    ![分配用户][202] 
+
+4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+
+    ![分配用户][203]
+
+5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+
+6. 在“用户和组”对话框中单击“选择”按钮。
+
+7. 在“添加分配”对话框中单击“分配”按钮。
+    
+### <a name="testing-single-sign-on"></a>测试单一登录
+
+在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+
+单击访问面板中的 Concur 磁贴时，应显示 Concur 应用程序的登录页。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+
+## <a name="additional-resources"></a>其他资源
+
+* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [配置用户预配](active-directory-saas-concur-provisioning-tutorial.md)
+
+
+
+<!--Image references-->
+
+[1]: ./media/active-directory-saas-concur-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-concur-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-concur-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-concur-tutorial/tutorial_general_04.png
+
+[100]: ./media/active-directory-saas-concur-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-concur-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-concur-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-concur-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-concur-tutorial/tutorial_general_203.png
 
 

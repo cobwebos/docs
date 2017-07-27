@@ -13,10 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: e42c541ce15b2e025c7019e91ae3c6c74483b6c2
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 5119772dd7c3d55ed4e0ad44e71bd67b2e923409
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.lasthandoff: 04/21/2017
 - 可以让用户使用其 Azure AD 帐户自动登录到 Absorb LMS（单一登录）
 - 可以在一个中心位置（即 Azure 门户）中管理帐户
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅。 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅。 [什么是使用 Azure Active Directory 的应用程序访问和单一登录](active-directory-appssoaccess-whatis.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -240,7 +241,7 @@ ms.lasthandoff: 04/21/2017
 
     d.单击“下一步”。 在“密码”文本框中，键入 Britta Simon 的密码。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在“确认密码”下拉列表中，选择 Britta Simon 的确认密码。
+    e. 在“确认密码”文本框中，键入相同的密码。
     
     f. 将该设置保持“活动”状态。    
 

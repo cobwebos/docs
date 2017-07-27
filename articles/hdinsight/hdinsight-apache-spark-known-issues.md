@@ -1,6 +1,6 @@
 ---
-title: "Azure HDInsight 中 Apache Spark 群集的已知问题 | Microsoft Docs"
-description: "Azure HDInsight 中 Apache Spark 群集的已知问题。"
+title: "排查 Azure HDInsight 中 Apache Spark 群集的相关问题 | Microsoft Docs"
+description: "了解与 Azure HDInsight 中的 Apache Spark 群集相关的问题以及如何解决这些问题。"
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 2ba5f280b38622b6a0c966d76617cd5698420b92
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 3a493a2c35a6cdd31bb1e4ff66113a8f8d97d4f4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/25/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -128,7 +128,7 @@ ms.lasthandoff: 03/25/2017
 ### <a name="tools-and-extensions"></a>工具和扩展
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely（使用 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Spark 应用程序）](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](hdinsight-apache-spark-zeppelin-notebook.md)
 * [在 HDInsight 的 Spark 群集中可用于 Jupyter 笔记本的内核](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](hdinsight-apache-spark-jupyter-notebook-install-locally.md)

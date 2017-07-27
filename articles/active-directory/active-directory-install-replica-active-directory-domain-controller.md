@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/08/2017
 ms.author: curtand
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 7b267f11a2989b1e621906a46ea4e3bf7f58ca2b
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 2adf6d6758c260f539277dafe8b9fadc3d9acb8b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -81,7 +81,7 @@ DC 将使用 Active Directory 复制功能在彼此之间以及与本地 DC 相�
 登录 VM，并确认你已通过站点到站点 VPN 建立连接，或者与本地网络上的资源建立了 ExpressRoute 连接。 然后在 Azure VM 上安装 AD DS。 可以使用在本地网络上安装其他域控制器的相同过程（UI、Windows PowerShell 或应答文件）。 安装 AD DS 时，请务必指定新卷的 AD 数据库、日志和 SYSVOL 的位置。 如需在 AD DS 安装中使用刷新程序，请参阅[安装 Active Directory 域服务（级别 100）](https://technet.microsoft.com/library/hh472162.aspx)或[在现有域中安装副本 Windows Server 2012 域控制器（级别 200）](https://technet.microsoft.com/library/jj574134.aspx)。
 
 ## <a name="reconfigure-dns-server-for-the-virtual-network"></a>重新配置虚拟网络的 DNS 服务器
-1. 在 [Azure 经典门户](https://manage.windowsazure.com)中，单击虚拟网络的名称，然后单击“配置”选项卡[重新配置虚拟网络的 DNS 服务器 IP 地址](../virtual-network/virtual-networks-manage-dns-in-vnet.md)，以便使用分配到副本 DC 的静态 IP 地址，而不是本地 DNS 服务器的 IP 地址。
+1. 在 [Azure 门户](https://portal.azure.com)中的“搜索资源”框中，输入虚拟网络，然后在搜索结果中单击“虚拟网络（经典）”。 单击虚拟网络的名称，然后[重新配置虚拟网络的 DNS 服务器 IP 地址](../virtual-network/virtual-network-manage-network.md#dns-servers)，以便使用分配到副本 DC 的静态 IP 地址，而不是本地 DNS 服务器的 IP 地址。
 2. 为了确保虚拟网络上的所有副本 DC VM 都已配置为使用虚拟网络上的 DNS 服务器，请依次单击“虚拟机”、每个 VM 的状态列、“重新启动”。 等到 VM 显示“正在运行”状态，然后尝试登录其中。
 
 ## <a name="create-vms-for-application-servers"></a>为应用程序服务器创建 VM
@@ -101,7 +101,7 @@ DC 将使用 Active Directory 复制功能在彼此之间以及与本地 DC 相�
 
 ## <a name="additional-resources"></a>其他资源
 * [在 Azure 虚拟机上部署 Windows Server Active Directory 的指南](https://msdn.microsoft.com/library/azure/jj156090.aspx)
-* [如何通过使用 Azure PowerShell 上载到 Azure 的现有内部部署 Hyper-V 域控制器](http://support.microsoft.com/kb/2904015)
+* [如何通过使用 Azure PowerShell 上传到 Azure 的现有内部部署 Hyper-V 域控制器](http://support.microsoft.com/kb/2904015)
 * [在 Azure 虚拟网络中安装新的 Active Directory 林](active-directory-new-forest-virtual-machine.md)
 * [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)
 * [Microsoft Azure IT Pro IaaS: (01) Virtual Machine Fundamentals](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01)（Microsoft Azure IT Pro IaaS：(01) 虚拟机基础知识）

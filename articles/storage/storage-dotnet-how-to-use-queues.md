@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: robinsh
-translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 5876a22651a5ebee2d60992cf08aeae54256fb7d
-ms.lasthandoff: 03/28/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 7f88aa9c50e669d1be7248346c7b1176bce61249
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -36,8 +37,8 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
 
 **先决条件：**
 
-* [Microsoft Visual Studio](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx)
-* [适用于 .NET 的 Azure 存储空间客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
+* [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
+* [适用于 .NET 的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
 * [适用于 .NET 的 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 * 一个 [Azure 存储帐户](storage-create-storage-account.md#create-a-storage-account)
 
@@ -132,7 +133,7 @@ Console.WriteLine(peekedMessage.AsString);
 ```
 
 ## <a name="change-the-contents-of-a-queued-message"></a>更改已排队消息的内容
-你可以更改队列中现有消息的内容。 如果消息表示工作任务，则你可以使用此功能来更新该工作任务的状态。 以下代码使用新内容更新队列消息，并将可见性超时设置为再延长 60 秒。 这将保存与消息关联的工作的状态，并额外为客户端提供一分钟的时间来继续处理消息。 可使用此方法跟踪队列消息上的多步骤工作流，即使处理步骤因硬件或软件故障而失败，也无需从头开始操作。 通常，你还可以保留重试计数，如果某条消息的重试次数超过 *n* ，你将删除此消息。 这可避免每次处理某条消息时都触发应用程序错误。
+你可以更改队列中现有消息的内容。 如果消息表示工作任务，则你可以使用此功能来更新该工作任务的状态。 以下代码使用新内容更新队列消息，并将可见性超时设置为再延长 60 秒。 这将保存与消息关联的工作的状态，并额外为客户端提供一分钟的时间来继续处理消息。 可使用此方法跟踪队列消息上的多步骤工作流，即使处理步骤因硬件或软件故障而失败，也无需从头开始操作。 通常还可以保留重试计数，如果某条消息的重试次数超过 *n*，则应删除该消息。 这可避免每次处理某条消息时都触发应用程序错误。
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -275,7 +276,7 @@ queue.Delete();
 * 查看队列服务参考文档，了解有关可用 API 的完整详细信息：
   * [.NET 存储客户端库参考](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
   * [REST API 参考](http://msdn.microsoft.com/library/azure/dd179355)
-* 了解如何通过使用 [Azure WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md)简化为使用 Azure 存储空间而写的代码。
+* 了解如何通过使用 [Azure WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md)简化为使用 Azure 存储而写的代码。
 * 查看更多功能指南，以了解在 Azure 中存储数据的其他方式。
   * [通过 .NET 开始使用 Azure 表存储](storage-dotnet-how-to-use-tables.md) 来存储结构化数据。
   * [通过 .NET 开始使用 Azure Blob 存储](storage-dotnet-how-to-use-blobs.md) 来存储非结构化数据。

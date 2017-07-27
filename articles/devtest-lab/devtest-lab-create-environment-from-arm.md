@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: tarcher
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 0b402602ed80d9eef5313fb29ba2bd05644f11f8
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 4e1aae6c041e4572e7e2281203f969e7649e1480
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -29,24 +29,30 @@ ms.lasthandoff: 05/15/2017
 
 - Azure Resource Manager 模板是从源代码管理存储库（GitHub 或 Team Services Git）直接加载的。
 - 配置后，用户可以在 Azure 门户中通过选择 Azure Resource Manager 模板来创建环境，就像创建其他类型的 [VM 库](./devtest-lab-comparing-vm-base-image-types.md)一样。
-- 除了 IaasS VM 以外，还可以通过 Azure Resource Manager 模板在环境中预配 Azure PaaS 资源。
+- 除了 IaaS VM 以外，还可以通过 Azure Resource Manager 模板在环境中预配 Azure PaaS 资源。
 - 除了其他类型的库创建的单个 VM 以外，还可以在实验室中跟踪环境的成本。
-- 对于环境，用户可以实施他们针对单实验室 VM 所实施的相同 VM 策略控制。
+- PaaS 资源会被创建，并在成本跟踪中显示；但 VM 自动关闭不适用于 PaaS 资源。
+- 对于环境，用户可以实施他们针对单实验室 VM 所实施的相同的 VM 策略控制。
+
+详细了解[使用 Resource Manager 模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#the-benefits-of-using-resource-manager)通过单个操作部署、更新或删除所有实验室资源的众多优点。
 
 > [!NOTE]
-> 此体验尚不支持通过 ARM 模板部署资源类型 Microsoft.DevTestLab/labs（或其嵌套的资源类型，例如 Microsoft.DevTestLab/labs/virtualmachines）。 若要部署 VM，请确保使用 Microsoft.Compute/virtualmachines。 更多 ARM 模板示例可以在 [Azure 快速入门模板库](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-customdata/azuredeploy.json)中找到。
+> 基于 Resource Manager 模板创建更多实验室 VM 时，无论正创建多 VM 还是单 VM，都需注意某些差异。 《使用虚拟机的 Azure Resource Manager 模板》更加详细地阐述这些差异。
 >
 >
 
 ## <a name="configure-azure-resource-manager-template-repositories"></a>配置 Azure Resource Manager 模板存储库
 
-在基础结构即代码和配置即代码方面，最佳做法之一是在源代码管理中管理环境模板。 Azure 开发测试实验室遵循这种做法，它直接从 GitHub 或 VSTS Git 存储库加载所有 Azure Resource Manager 模板。 在存储库中组织 Azure Resource Manager 模板时需遵循几条规则：
+在基础结构即代码和配置即代码方面，最佳做法之一是在源代码管理中管理环境模板。 Azure 开发测试实验室遵循这种做法，它直接从 GitHub 或 VSTS Git 存储库加载所有 Azure Resource Manager 模板。 因此，从测试环境到生产环境，Resource Manager 模板可用于整个发布周期。
+
+在存储库中整理 Azure Resource Manager 模板时需遵循几条规则：
 
 - 必须将主模板文件命名为 `azuredeploy.json`。 
 
     ![关键的 Azure Resource Manager 模板文件](./media/devtest-lab-create-environment-from-arm/master-template.png)
 
 - 如果想要使用参数文件中定义的参数值，必须将参数文件命名为 `azuredeploy.parameters.json`。
+- 可以使用参数 `_artifactsLocation` 和 `_artifactsLocationSasToken` 来构造 parametersLink URI 的值，以允许开发测试实验室自动管理嵌套的模板。 请参阅 [How Azure DevTest Labs makes nested Resource Manager template deployments easier for testing environments](https://blogs.msdn.microsoft.com/devtestlab/2017/05/23/how-azure-devtest-labs-makes-nested-arm-template-deployments-easier-for-testing-environments/)（Azure 开发测试实验室如何使在测试环境中部署嵌套的 Resource Manager 模板部署更轻松），了解详细信息。
 - 可以定义元数据来指定模板显示名称和说明。 此元数据必须在名为 `metadata.json` 的文件中。 以下示例元数据文件演示如何指定显示名称和说明： 
 
 ```json
@@ -111,7 +117,11 @@ ms.lasthandoff: 05/15/2017
     > - GEN-PASSWORD 
  
 1. 选择“添加”创建环境。 环境随即会开始预配，其状态显示在“我的虚拟机”列表中。 实验室会自动创建一个新资源组，用于预配 Azure Resource Manager 模板中定义的所有资源。
-1. 创建环境后，请在“我的虚拟机”列表中选择该环境，打开资源组边栏选项卡并浏览该环境中预配的资源。
+1. 创建环境后，请在“我的虚拟机”列表中选择该环境，打开资源组边栏选项卡并浏览该环境中预配的所有资源。
+    
+    ![“我的虚拟机”列表](./media/devtest-lab-create-environment-from-arm/all-environment-resources.png)
+   
+   还可以展开环境仅查看该环境中预配的 VM 列表。
     
     ![“我的虚拟机”列表](./media/devtest-lab-create-environment-from-arm/my-vm-list.png)
 
@@ -121,5 +131,6 @@ ms.lasthandoff: 05/15/2017
 
 ## <a name="next-steps"></a>后续步骤
 * 创建 VM 后，可通过选择 VM 边栏选项卡中的“连接”来连接该 VM。
+* 在实验室的“我的虚拟机”列表中选择环境，查看和管理该环境中的资源。 
 * 浏览 [Azure 快速入门模板库中的 Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates)
 

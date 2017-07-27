@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/14/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: d1e513933ea647a1afe9a4eb214bb9216d3bb20a
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: a998ec92ad58932c5f71e84fbffcd7783cbb459b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="expressroute-overview"></a>ExpressRoute 概述
@@ -113,4 +113,5 @@ Microsoft 为特殊的地缘政治地区和客户群提供隔离的云环境。 
   * [创建 ExpressRoute 线路](expressroute-howto-circuit-portal-resource-manager.md)
   * [配置 ExpressRoute 线路的对等互连](expressroute-howto-routing-portal-resource-manager.md)
   * [将虚拟网络连接到 ExpressRoute 线路](expressroute-howto-linkvnet-portal-resource-manager.md)
+* 了解 Azure 的部分其他关键[网络功能](../networking/networking-overview.md)。
 

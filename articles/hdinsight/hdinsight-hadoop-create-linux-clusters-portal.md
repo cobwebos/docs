@@ -1,5 +1,5 @@
 ---
-title: "使用 Web 浏览器创建 Azure HDInsight (Hadoop) | Microsoft Docs"
+title: "使用 Web 浏览器创建 Hadoop 群集 — Azure HDInsight | Microsoft Docs"
 description: "了解如何使用 Web 浏览器和 Azure 预览门户在 Linux 上创建适用于 HDInsight 的 Hadoop、HBase、Storm 或 Spark 群集。"
 services: hdinsight
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 030935ec304cc9b26bd2369fdadf2d99bd094c5d
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 678b2847f9bf39995fa214f181a05c96df9e49f2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -41,11 +41,11 @@ Azure 门户会公开大部分的群集属性。 使用 Azure Resource Manager �
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 依次单击“+”、“智能 + 分析”、“HDInsight”。
    
-    ![在 Azure 门户中创建新群集](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.CreateCluster.1.png "在 Azure 门户中创建新群集")
+    ![在 Azure 门户中创建新群集](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster.png "在 Azure 门户中创建新群集")
 
 3. 在“HDInsight”边栏选项卡中，单击“自定义(大小、设置、应用)”，单击“基本信息”，然后输入以下信息。
 
-    ![在 Azure 门户中创建新群集](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.CreateCluster.basics.png "在 Azure 门户中创建新群集")
+    ![在 Azure 门户中创建新群集](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-basics.png "在 Azure 门户中创建新群集")
 
     * 输入“群集名称” ：此名称必须全局唯一。
 
@@ -55,10 +55,10 @@ Azure 门户会公开大部分的群集属性。 使用 Azure Resource Manager �
    
         * **群集类型**：如果不知道要选择哪种群集，请选择“Hadoop”。 它是最受欢迎的群集类型。
      
-             > [!IMPORTANT]
-             > HDInsight 群集具有各种不同的类型，与该群集进行优化的工作负荷或技术相对应。 不支持在一个群集上创建合并了多个类型（如 Storm 和 HBase）的群集。 
-             > 
-             > 
+            > [!IMPORTANT]
+            > HDInsight 群集具有各种不同的类型，与该群集进行优化的工作负荷或技术相对应。 不支持在一个群集上创建合并了多个类型（如 Storm 和 HBase）的群集。 
+            > 
+            > 
         
         * **操作系统**：选择“Linux”。
         
@@ -79,7 +79,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure Resource Manager �
 
 4. 在“存储”边栏选项卡上，指定是要将 Azure 存储 (WASB) 还是 Data Lake Store 作为默认存储。 有关详细信息，请查看下表。
 
-    ![在 Azure 门户中创建新群集](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.CreateCluster.storage.png "在 Azure 门户中创建新群集")
+    ![在 Azure 门户中创建新群集](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-storage.png "在 Azure 门户中创建新群集")
 
     | 存储                                      | 说明 |
     |----------------------------------------------|-------------|
@@ -97,7 +97,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure Resource Manager �
 
 6. 单击“群集大小”以显示针对此群集创建的节点的相关信息。 设置群集所需的工作节点数。 该群集的预估成本将显示在边栏选项卡内。
    
-    ![节点定价层边栏选项卡](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.CreateCluster.nodes.png "指定群集节点数")
+    ![节点定价层边栏选项卡](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-nodes.png "指定群集节点数")
    
    > [!IMPORTANT]
    > 如果你计划使用 32 个以上的工作节点（在创建群集时或是在创建之后通过扩展群集进行），则必须选择至少具有 8 个核心和 14GB ram 的头节点大小。
@@ -110,7 +110,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure Resource Manager �
 
 7. 单击“高级设置”以配置其他可选设置，如使用“脚本操作”自定义群集以安装自定义组件或加入“虚拟网络”。 有关详细信息，请查看下表。
 
-    ![节点定价层边栏选项卡](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.CreateCluster.advanced.png "指定群集节点数")
+    ![节点定价层边栏选项卡](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-advanced.png "指定群集节点数")
 
     | 选项 | 说明 |
     |--------|-------------|
@@ -121,7 +121,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure Resource Manager �
 
 8. 在“摘要”边栏选项卡上，验证之前输入的信息，然后单击“创建”。
 
-    ![节点定价层边栏选项卡](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.CreateCluster.summary.png "指定群集节点数")
+    ![节点定价层边栏选项卡](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-summary.png "指定群集节点数")
     
     > [!NOTE]
     > 创建群集需要一些时间，通常约 15 分钟左右。 使用启动板上的磁贴或页面左侧的“通知”条目检查预配进程。
@@ -129,7 +129,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure Resource Manager �
     > 
 12. 创建过程完成后，在启动板中单击群集磁贴，启动群集边栏选项卡。 群集边栏选项卡提供以下信息。
     
-    ![群集边栏选项卡](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.CreateCluster.completed.png "群集属性")
+    ![群集边栏选项卡](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-completed.png "群集属性")
     
     参考以下内容了解此边栏选项卡顶部的图标。
     
