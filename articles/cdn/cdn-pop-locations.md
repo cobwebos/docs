@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
-ms.openlocfilehash: 6d4c9dda6ccf6011d2b2ff5951b9fe42c158e216
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 7c13931aa6d17036e59674cdd917e3ca221ac57f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -24,7 +26,7 @@ ms.openlocfilehash: 6d4c9dda6ccf6011d2b2ff5951b9fe42c158e216
 本主题列出了**来自 Verizon 的 Azure CDN** 和**来自 Akamai 的 Azure CDN** 的当前 POP 位置。
 
 > [!IMPORTANT]
-> \***来自 Akamai 的Azure CDN** 的 POP 位置不单独公开。  
+> \***来自 Akamai 的 Azure CDN** 的 POP 位置不单独公开。  
 > 
 > 这两个提供商采用了不同的方法来构建其 CDN 基础结构。  建议不要使用 POP 位置来确定要使用哪种 Azure CDN 产品，而是考虑功能和最终用户所需的性能。  通过测试两个提供商的性能来为用户选择正确的 Azure CDN 产品。 
 > 
@@ -39,16 +41,11 @@ ms.openlocfilehash: 6d4c9dda6ccf6011d2b2ff5951b9fe42c158e216
 | 欧洲北部 |西班牙马德里<br />意大利米兰 |**&#x2713;**\* |
 | 东亚 |日本东京<br />日本大阪<br />印度尼西亚巴淡岛<br />印度尼西亚雅加达<br />香港<br />中国台湾高雄<br />韩国首尔<br />新加坡 |**&#x2713;**\* |
 | 南部和中亚 |印度班加罗尔<br />印度钦奈<br />印度新德里<br />印度孟买 |**&#x2713;**\* |
-| 中东/西亚 |阿曼马斯喀特 |**&#x2713;**\* |
+| 中东/西亚 |阿曼马斯喀特 <br /> 阿拉伯联合酋长国富查伊拉 |**&#x2713;**\* |
 | 非洲 | |**&#x2713;**\* |
 | 澳大利亚和新西兰 |澳大利亚墨尔本<br />澳大利亚悉尼 |**&#x2713;**\* |
 
 ## <a name="see-also"></a>另请参阅
 * [用于获取允许列表最新 IP 地址的 Azure CDN 边缘节点 API ](https://docs.microsoft.com/en-us/rest/api/cdn/edgenodes)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

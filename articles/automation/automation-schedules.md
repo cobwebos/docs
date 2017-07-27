@@ -1,5 +1,5 @@
 ---
-title: "Azure 自动化中的计划 | Microsoft Docs"
+title: "Azure 自动化中的计划 | Microsoft 文档"
 description: "自动化计划用于安排自动启动 Azure 自动化中的 Runbook。 介绍如何创建和管理计划，以便在特定的时间或按重复计划自动启动 Runbook。"
 services: automation
 documentationcenter: 
@@ -12,20 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 06/13/2016
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 823d1155bc011466d0f3bd0ccd8650be161fd28b
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 140bea93c4563666e8cfdf356eaf87500c1aca8e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/14/2017
 
 
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>在 Azure 自动化中计划 Runbook
-若要将 Azure 自动化中的 Runbook 计划为在指定的时间启动，可以将它链接到一个或多个计划。 可以在 Azure 经典门户和 Azure 门户中将 Runbook 的计划配置为运行一次或按每小时或每天计划重复运行，此外，还可以将它们计划为每周、每月、每周或每月的特定几天，或者每月的某一天运行。  可将一个 Runbook 链接到多个计划，一个计划可以链接多个 Runbook。
+若要将 Azure 自动化中的 Runbook 计划为在指定的时间启动，可以将它链接到一个或多个计划。 可以在 Azure 经典门户和 Azure 门户中将 Runbook 的计划配置为运行一次或按每小时或每天计划重复运行，也可以将它们计划为每周、每月、每周或每月的特定几天，或者每月的某一天运行。  可将一个 Runbook 链接到多个计划，一个计划可以链接多个 Runbook。
 
 > [!NOTE]
-> 目前计划不支持 Azure 自动化 DSC 配置。
+> 目前计划不支持 Azure Automation DSC 配置。
 > 
 > 
 
@@ -55,9 +56,9 @@ ms.lasthandoff: 04/27/2017
 可以使用 Azure 门户、经典门户或 Windows PowerShell 为 Runbook 创建新计划。 也可以在使用 Azure 经典门户或 Azure 门户将 Runbook 链接到计划时，选择创建新计划。
 
 > [!NOTE]
-> 将计划与 Runbook 相关联时，自动化会将模块的当前版本存储在你的帐户中，并将模块链接到该计划。  这意味着，如果在创建计划时你的帐户中有 1.0 版的模块，然后将模块更新到版本 2.0，该计划将继续使用 1.0 版。  若要使用更新后的模块版本，必须创建新计划。 
-> 
-> 
+> 当运行新的计划作业时，Azure 自动化将使用自动化帐户中的最新模块。  为了避免影响 runbook 及其自动化进程，你应该首先测试已将计划与专用于测试的自动化帐户进行链接的 runbook。  这将验证计划的 runbook 是否继续正常运行，如果没有，则可以进一步排除故障并在将更新的 runbook 版本迁移到生产之前应用所需的任何更改。  
+>  自动化帐户不会自动获取任何新版本的模块，除非你通过从“模块”边栏选项卡中选择“更新 Azure 模块”[](automation-update-azure-modules.md)选项来手动更新它们。 
+>  
 
 ### <a name="to-create-a-new-schedule-in-the-azure-portal"></a>在 Azure 门户中创建新计划
 1. 在 Azure 门户中，从自动化帐户单击“资产”磁贴，打开“资产”边栏选项卡。

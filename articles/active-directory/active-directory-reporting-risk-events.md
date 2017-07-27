@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2017
+ms.date: 07/15/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 4a70001f22b47546674c365705554ab30e05f53d
-ms.lasthandoff: 03/24/2017
-
+ms.reviewer: dhanyahk
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: cb36fdd0032d6d3c47e68a782d3bba427fe9fcd5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/14/2017
 
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory 风险事件
@@ -64,7 +65,7 @@ Microsoft 安全研究人员发现了在暗网中公开发布的已泄漏凭据�
 
 ### <a name="sign-in-from-unfamiliar-locations"></a>从不熟悉的位置登录
 
-这一风险事件类型可根据过去的登录位置（IP、纬度/经度和 ASN）来确定新的/不熟悉的登录位置。 系统会存储用户以前的登录位置信息，并将其视为“熟悉”位置。 当从尚未在熟悉位置列表中列出的位置登录时，将触发此风险事件。 系统具有 14 天的初始学习期限，在此期间不会将任何新位置标记为不熟悉的位置。 系统还会忽略从常用设备和接近熟悉位置的地理位置进行登录。 
+这一风险事件类型可根据过去的登录位置（IP、纬度/经度和 ASN）来确定新的/不熟悉的登录位置。 系统会存储用户以前的登录位置信息，并将其视为“熟悉”位置。 当从尚未在熟悉位置列表中列出的位置登录时，将触发此风险事件。 系统具有 30 天的初始学习期间，在此期间它不会将任何新位置标记为不熟悉的位置。 系统还会忽略从常用设备和接近熟悉位置的地理位置进行登录。 
 
 ### <a name="sign-ins-from-infected-devices"></a>从受感染的设备登录
 
@@ -131,7 +132,7 @@ Microsoft 安全研究人员发现了在暗网中公开发布的已泄漏凭据�
 不可能前往通常是一个出色的指示器，可指示黑客已能够成功登录。 但是，当用户使用新设备或使用组织中其他用户通常不使用的 VPN 前往时，可能会发生误报。 容易产生误报的另一个源头是误将服务器 IP 作为客户端 IP 传递的应用程序，这可能会让登录看起来像是从托管应用程序后端的数据中心发起的（这些数据中心通常是 Microsoft 数据中心，所以登录看起来像是从 Microsoft 拥有的 IP 地址发起的）。 由于这些误报，此风险事件的风险级别为“中等”。
 
 > [!TIP]
-> 可以通过配置[命名网络](active-directory-known-networks-azure-portal.md)减少此风险事件类型的误报数量。 
+> 可以通过配置[命名位置](active-directory-named-locations.md)减少此风险事件类型的误报数量。 
 
 ### <a name="sign-in-from-unfamiliar-locations"></a>从不熟悉的位置登录
 
@@ -176,3 +177,4 @@ Microsoft 安全研究人员发现了在暗网中公开发布的已泄漏凭据�
 
 已检测的风险事件表示保护身份的一个重要方面，还可以选择手动解决它们，或者甚至通过配置条件性访问策略实施自动的响应。 有关详细信息，请参阅 [Azure Active Directory Identity Protection](active-directory-identityprotection.md)。
  
+

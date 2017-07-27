@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2017
+ms.date: 06/01/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: db9f2174e9928083957f160be8c268fe21cd4169
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: e44f04b3492ac07822b0842864f84a5f16dc3f5b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 
@@ -57,23 +57,23 @@ StopByResourceGroup-MS-Mgmt-VM | 此 Runbook 旨在停止位于指定 Azure 资�
 **SendMailO365-MS-Mgmt** Runbook ||
 SendMailO365-IsSendEmail-MS-Mgmt | 指定 StartByResourceGroup-MS-Mgmt-VM 和 StopByResourceGroup-MS-Mgmt-VM Runbook 是否可以在完成时发送电子邮件通知。  选择 **True** 可启用电子邮件警报，选择 **False** 则为禁用。 默认值为 **False**。| 
 **StartByResourceGroup-MS-Mgmt-VM** Runbook ||
-StartByResourceGroup-ExcludeList-MS-Mgmt-VM | 输入要从管理操作中排除的 VM 名称；使用分号 (;) 分隔名称。 值区分大小写并支持通配符（星号）。|
+StartByResourceGroup-ExcludeList-MS-Mgmt-VM | 输入要从管理操作中排除的虚拟机名称；使用分号 (;) 分隔名称，不含空格。 值区分大小写并支持通配符（星号）。|
 StartByResourceGroup-SendMailO365-EmailBodyPreFix-MS-Mgmt | 可以追加到电子邮件正文开头的文本。|
 StartByResourceGroup-SendMailO365-EmailRunBookAccount-MS-Mgmt | 指定包含电子邮件 Runbook 的自动化帐户的名称。  **请勿修改此变量。**|
 StartByResourceGroup-SendMailO365-EmailRunbookName-MS-Mgmt | 指定电子邮件 Runbook 的名称。  StartByResourceGroup-MS-Mgmt-VM 和 StopByResourceGroup-MS-Mgmt-VM Runbook 使用此变量发送电子邮件。  **请勿修改此变量。**|
 StartByResourceGroup-SendMailO365-EmailRunbookResourceGroup-MS-Mgmt | 指定包含电子邮件 Runbook 的资源组的名称。  **请勿修改此变量。**|
 StartByResourceGroup-SendMailO365-EmailSubject-MS-Mgmt | 指定电子邮件的主题行。|  
-StartByResourceGroup-SendMailO365-EmailToAddress-MS-Mgmt | 指定电子邮件的收件人。  使用分号 (;) 输入不同的名称。|
-StartByResourceGroup-TargetResourceGroups-MS-Mgmt-VM | 输入要从管理操作中排除的 VM 名称；使用分号 (;) 分隔名称。 值区分大小写并支持通配符（星号）。  默认值（星号）包含订阅中的所有资源组。|
+StartByResourceGroup-SendMailO365-EmailToAddress-MS-Mgmt | 指定电子邮件的收件人。  使用分号 (;) 输入不同的名称，不含空格。|
+StartByResourceGroup-TargetResourceGroups-MS-Mgmt-VM | 输入要从管理操作中排除的虚拟机名称；使用分号 (;) 分隔名称，不含空格。 值区分大小写并支持通配符（星号）。  默认值（星号）包含订阅中的所有资源组。|
 StartByResourceGroup-TargetSubscriptionID-MS-Mgmt-VM | 指定包含此解决方案所要管理的 VM 的订阅。  这必须是此解决方案的自动化帐户所在的同一个订阅。|
 **StopByResourceGroup-MS-Mgmt-VM** Runbook ||
-StopByResourceGroup-ExcludeList-MS-Mgmt-VM | 输入要从管理操作中排除的 VM 名称；使用分号 (;) 分隔名称。 值区分大小写并支持通配符（星号）。|
+StopByResourceGroup-ExcludeList-MS-Mgmt-VM | 输入要从管理操作中排除的虚拟机名称；使用分号 (;) 分隔名称，不含空格。 值区分大小写并支持通配符（星号）。|
 StopByResourceGroup-SendMailO365-EmailBodyPreFix-MS-Mgmt | 可以追加到电子邮件正文开头的文本。|
 StopByResourceGroup-SendMailO365-EmailRunBookAccount-MS-Mgmt | 指定包含电子邮件 Runbook 的自动化帐户的名称。  **请勿修改此变量。**|
 StopByResourceGroup-SendMailO365-EmailRunbookResourceGroup-MS-Mgmt | 指定包含电子邮件 Runbook 的资源组的名称。  **请勿修改此变量。**|
 StopByResourceGroup-SendMailO365-EmailSubject-MS-Mgmt | 指定电子邮件的主题行。|  
-StopByResourceGroup-SendMailO365-EmailToAddress-MS-Mgmt | 指定电子邮件的收件人。  使用分号 (;) 输入不同的名称。|
-StopByResourceGroup-TargetResourceGroups-MS-Mgmt-VM | 输入要从管理操作中排除的 VM 名称；使用分号 (;) 分隔名称。 值区分大小写并支持通配符（星号）。  默认值（星号）包含订阅中的所有资源组。|
+StopByResourceGroup-SendMailO365-EmailToAddress-MS-Mgmt | 指定电子邮件的收件人。  使用分号 (;) 输入不同的名称，不含空格。|
+StopByResourceGroup-TargetResourceGroups-MS-Mgmt-VM | 输入要从管理操作中排除的虚拟机名称；使用分号 (;) 分隔名称，不含空格。 值区分大小写并支持通配符（星号）。  默认值（星号）包含订阅中的所有资源组。|
 StopByResourceGroup-TargetSubscriptionID-MS-Mgmt-VM | 指定包含此解决方案所要管理的 VM 的订阅。  这必须是此解决方案的自动化帐户所在的同一个订阅。|  
 <br>
 
@@ -102,8 +102,8 @@ O365Credential | 指定用于发送电子邮件的有效 Office 365 用户帐户
    - 指定新 **OMS 工作区**的名称。
    - 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
    - 对于**资源组**，可以创建新资源组，或选择现有资源组。  
-   - 选择“位置” 。  目前可供选择的位置只有“澳大利亚东南部”、“美国东部”、“东南亚”和“西欧”。
-   - 选择“定价层” 。  该解决方案提供两种定价层：免费和 OMS 付费层。  免费层的每日可收集数据量、保留期和 Runbook 作业运行时分钟数有限制。  OMS 付费级别对每日可收集的数据量没有限制。  
+   - 选择“位置”。  目前可供选择的位置只有“澳大利亚东南部”、“美国东部”、“东南亚”和“西欧”。
+   - 选择“定价层”。  该解决方案提供两种定价层：免费和 OMS 付费层。  免费层的每日可收集数据量、保留期和 Runbook 作业运行时分钟数有限制。  OMS 付费级别对每日可收集的数据量没有限制。  
 
         > [!NOTE]
         > 虽然独立付费层显示为一个选项，但它不适用。  如果选择它并继续在订阅中创建此解决方案，它将失败。  正式发布此解决方案时，此问题将得到解决。<br>如果使用此解决方案，它将仅使用自动化作业分钟数和日志引入。  此解决方案不会将其他 OMS 节点添加到你的环境中。  

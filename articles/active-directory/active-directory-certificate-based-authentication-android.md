@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/12/2017
+ms.date: 06/07/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0e2bbb2a94986ca93035aa553db0f9b54af635d5
-ms.lasthandoff: 04/27/2017
-
+ms.reviewer: nigu
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 58733a36e1753c219df51e1fbe845a2f2a0fdbdc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/08/2017
 
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android 上 Azure Active Directory 基于证书的身份验证
@@ -30,7 +31,9 @@ ms.lasthandoff: 04/27/2017
 
 如果配置了此功能，就无需在移动设备上的某些邮件和 Microsoft Office 应用程序中输入用户名和密码组合。 
 
-本主题面向 Office 365 企业版、商业版、教育版和 US Government 版计划中的租户用户，提供在 Android 设备上配置 CBA 时的要求和受支持方案。 
+本主题面向 Office 365 企业版、商业版、教育版、US Government 和 Chine 计划中的租户用户，提供在 Android 设备上配置 CBA 时的要求和受支持方案。
+
+
 
 此功能在 Office 365 US Government Defense 和 Federal 计划中以预览形式提供。
 
@@ -45,6 +48,8 @@ ms.lasthandoff: 04/27/2017
 | Yammer |![勾选标记][1] |
 | Skype for Business |![勾选标记][1] |
 | Azure 信息保护应用 |![勾选标记][1] |
+| Microsoft Teams |![勾选标记][1] |
+
 
 
 ### <a name="implementation-requirements"></a>实现要求

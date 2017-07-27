@@ -14,17 +14,16 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 31582a87354bf915f058090add02d837f835a77c
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 35cddba38c364dfb2f6a8646b0014d48ca4cb795
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/08/2017
 
 
 ---
 # <a name="installing-the-azure-toolkit-for-eclipse"></a>安装用于 Eclipse 的 Azure 工具包
-使用用于 Eclipse 的 Azure 工具包提供的模板和功能，可轻松地利用 Eclipse 开发环境创建、开发、测试和部署 Azure 应用程序。 用于 Eclipse 的 Azure 工具包是一个开放源代码项目，其源代码可从 GitHub 上项目站点的 MIT 许可证下获取，URL 为：
-
-<https://github.com/microsoft/azure-tools-for-java>
+使用 Azure Toolkit for Eclipse 提供的模板和功能，可轻松地利用 Eclipse 开发环境创建、开发、测试和部署 Azure 应用程序。 适用于 Eclipse 的 Azure 工具包是一个开源项目。 源代码在 MIT 许可下可用，可从 <https://github.com/microsoft/azure-tools-for-java> 中获得。
 
 以下步骤说明如何安装用于 Eclipse 的 Azure 工具包。
 
@@ -32,10 +31,10 @@ ms.lasthandoff: 04/22/2017
 
 ## <a name="to-install-the-azure-toolkit-for-eclipse"></a>安装用于 Eclipse 的 Azure 工具包
 1. 启动 Eclipse。
-2. Eclipse 打开后，单击“帮助”菜单，然后单击“安装新软件”，如下图所示。
+2. 单击“帮助”菜单，然后单击“安装新软件”，如下图所示。
    
     ![安装用于 Eclipse 的 Azure 工具包][01]
-3. 在“可用软件”对话框的“使用”文本框中，键入 **http://dl.microsoft.com/eclipse**，然后按 **Enter** 键。
+3. 在“可用软件”对话框的“使用”文本框中，键入 `http://dl.microsoft.com/eclipse`，然后按 Enter 键。
 4. 在“名称”窗格中，选中“用于 Eclipse 的 Azure 工具包”，并取消选中“在安装过程中访问所有更新站点以查找所需的软件”。 你的屏幕应与下图中所示类似：
    
     ![安装用于 Eclipse 的 Azure 工具包][02]
@@ -66,7 +65,7 @@ ms.lasthandoff: 04/22/2017
     ![重新启动提示][06]
 
 ## <a name="see-also"></a>另请参阅
-有关用于 Java IDE 的 Azure 工具包的详细信息，请参阅以下链接：
+有关 Azure Toolkits for Java IDE 的详细信息，请参阅以下链接：
 
 * [用于 Eclipse 的 Azure 工具包]
   * [用于 Eclipse 的 Azure 工具包的新增功能]
