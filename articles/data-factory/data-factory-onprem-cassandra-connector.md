@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 07/27/2017
 ms.author: jingwang
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
 ms.openlocfilehash: 6a48c11508bdc7f6f6fbfe4a504172f9944c93c0
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/30/2017
-
 
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>使用 Azure 数据工厂从本地 Cassandra 数据库移动数据

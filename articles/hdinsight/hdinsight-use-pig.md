@@ -22,7 +22,6 @@ ms.openlocfilehash: 9c19dc502acd1af4c3193e033d3caefe895624be
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="use-pig-with-hadoop-on-hdinsight"></a>将 Pig 与 Hadoop on HDInsight 配合使用
 
@@ -84,7 +83,7 @@ HDInsight 提供各种示例数据集，它们存储在 `/example/data` 和 `/Hd
 
 下面的 Pig Latin 作业从 HDInsight 群集的默认存储加载 `sample.log` 文件。 然后，它会执行一系列转换，以便对输入数据中出现的每个日志级别进行计数。 结果会写入 STDOUT。
 
-    LOGS = LOAD 'wasbs:///example/data/sample.log';
+    LOGS = LOAD 'wasb:///example/data/sample.log';
     LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
     FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
     GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;

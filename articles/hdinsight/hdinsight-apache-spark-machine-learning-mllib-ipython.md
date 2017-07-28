@@ -23,7 +23,6 @@ ms.openlocfilehash: 47cbb4ba34bb075f51306cc9481afd308ff672b4
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/09/2017
 
-
 ---
 # <a name="use-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>使用 Spark MLlib 生成机器学习应用程序并分析数据集
 
@@ -93,7 +92,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
             sio.close()
             return value
 
-        inspections = sc.textFile('wasbs:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv')\
+        inspections = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv')\
                         .map(csvParse)
 1. 现在将 CSV 文件作为 RDD。  从 RDD 中检索一行以了解数据的构架。
 
@@ -253,7 +252,7 @@ MLlib 提供一种简单方法来执行此操作。 首先，“标记”每个�
 
 1. 以下代码片段将创建新的数据帧 **predictionsDf**，其中包含由模型生成的预测。 该代码片段还根据数据帧创建一个名为 **Predictions** 的临时表。
 
-        testData = sc.textFile('wasbs:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
+        testData = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
                  .map(csvParse) \
                  .map(lambda l: (int(l[0]), l[1], l[12], l[13]))
         testDf = sqlContext.createDataFrame(testData, schema).where("results = 'Fail' OR results = 'Pass' OR results = 'Pass w/ Conditions'")

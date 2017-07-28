@@ -199,7 +199,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
     ```hiveql
     -- Uncomment the following if you are using Azure Storage
-    -- add file wasbs:///HiveCSharp.exe;
+    -- add file wasb:///HiveCSharp.exe;
     -- Uncomment the following if you are using Azure Data Lake Store
     -- add file adl:///HiveCSharp.exe;
 

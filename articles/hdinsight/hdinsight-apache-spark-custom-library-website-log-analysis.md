@@ -22,7 +22,6 @@ ms.openlocfilehash: 41275f8264353e7158ca42e5cfc089b2fbaa556d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/07/2017
 
-
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-spark-cluster-on-hdinsight"></a>将自定义 Python 库与 HDInsight 上的 Spark 群集配合使用来分析网站日志
 
@@ -69,7 +68,7 @@ ms.lasthandoff: 06/07/2017
 
 1. 使用群集上已可用的示例日志数据创建 RDD。 可以从 **\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log** 中访问与群集关联的默认存储帐户中的数据。
 
-        logs = sc.textFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log')
+        logs = sc.textFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log')
 
 
 1. 检索示例日志集以验证上一步是否成功完成。
@@ -93,7 +92,7 @@ ms.lasthandoff: 06/07/2017
 
     但是，此库不在 `PYTHONPATH` 中，因此不能通过 `import iislogparser` 等导入语句来使用它。 若要使用此库，必须将其分发给所有从节点。 运行以下代码段。
 
-        sc.addPyFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
+        sc.addPyFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
 
 
 1. 如果日志行是标题行，并且在遇到日志行时返回 `LogLine` 类的实例，则 `iislogparser` 提供返回 `None` 的函数 `parse_log_line`。 使用 `LogLine` 类从 RDD 中仅提取日志行：
@@ -120,7 +119,7 @@ ms.lasthandoff: 06/07/2017
        numLines = logLines.count()
        numErrors = errors.count()
        print 'There are', numErrors, 'errors and', numLines, 'log entries'
-       errors.map(lambda p: str(p)).saveAsTextFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b-2.log')
+       errors.map(lambda p: str(p)).saveAsTextFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b-2.log')
 
    你应该看到如下输出：
 

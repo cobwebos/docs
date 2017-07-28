@@ -22,7 +22,6 @@ ms.openlocfilehash: 678b2847f9bf39995fa214f181a05c96df9e49f2
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/13/2017
 
-
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -37,6 +36,9 @@ Azure 门户是一种基于 Web 的管理工具，用于管理 Microsoft Azure �
 
 ## <a name="create-clusters"></a>创建群集
 Azure 门户会公开大部分的群集属性。 使用 Azure Resource Manager 模板可以隐藏许多详细信息。 有关详细信息，请参阅[在 HDInsight 中使用 Azure Resource Manager 模板创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。
+
+[!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
+
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 依次单击“+”、“智能 + 分析”、“HDInsight”。

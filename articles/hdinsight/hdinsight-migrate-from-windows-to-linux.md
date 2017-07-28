@@ -85,7 +85,7 @@ ms.lasthandoff: 06/10/2017
 6. 从 SSH 会话中，使用以下命令来将文件从链接的存储帐户复制到新的默认存储帐户。 将 CONTAINER 替换为 PowerShell 返回的容器信息。 将 __ACCOUNT__ 替换为帐户名称。 将数据的路径替换为数据文件的路径。
 
     ```bash
-    hdfs dfs -cp wasbs://CONTAINER@ACCOUNT.blob.core.windows.net/path/to/old/data /path/to/new/location
+    hdfs dfs -cp wasb://CONTAINER@ACCOUNT.blob.core.windows.net/path/to/old/data /path/to/new/location
     ```
 
     > [!NOTE]
@@ -280,9 +280,9 @@ Azure 数据工厂自定义 .NET 活动目前不受基于 Linux 的 HDInsight �
 * **在上传到群集后**：使用基于 Linux 的群集中 SSH 会话的以下命令修改脚本。
 
     ```bash
-    hdfs dfs -get wasbs:///path/to/script.py oldscript.py
+    hdfs dfs -get wasb:///path/to/script.py oldscript.py
     tr -d '\r' < oldscript.py > script.py
-    hdfs dfs -put -f script.py wasbs:///path/to/script.py
+    hdfs dfs -put -f script.py wasb:///path/to/script.py
     ```
 
 ## <a name="next-steps"></a>后续步骤
