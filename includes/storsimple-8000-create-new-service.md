@@ -1,8 +1,7 @@
 <!--author=alkohli last changed:02/10/2017-->
 
 
-#### 创建新服务
-<a id="to-create-a-new-service" class="xliff"></a>
+#### <a name="to-create-a-new-service"></a>创建新服务
 
 1. 使用 Microsoft 帐户凭据登录到 [Azure 门户](https://portal.azure.com/)。
 

@@ -5,8 +5,7 @@
 > 
 > 
 
-## 介绍
-<a id="introduction" class="xliff"></a>
+## <a name="introduction"></a>介绍
 
 在 [IoT 中心设备孪生入门][lnk-twin-tutorial]中，你已学习了如何使用*标记*通过解决方案后端设置设备元数据、使用*报告属性*通过设备应用报告设备条件以及使用类似 SQL 的语言查询此信息。
 

@@ -22,8 +22,7 @@ ms.lasthandoff: 07/13/2017
 
 ---
 
-# 在 HDInsight 上为 Apache Kafka 配置存储和可伸缩性
-<a id="configure-storage-and-scalability-for-apache-kafka-on-hdinsight" class="xliff"></a>
+# <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>在 HDInsight 上为 Apache Kafka 配置存储和可伸缩性
 
 了解如何在 HDInsight 上配置 Apache Kafka 使用的托管磁盘数。
 
@@ -33,8 +32,7 @@ Kafka on HDInsight 在 HDInsight 群集中使用虚拟机的本地磁盘。 由�
 
 ![显示每 VM 使用单个 VHD 与每 VM 使用多个托管磁盘的 Kafka on HDInsight 的图表](./media/hdinsight-apache-kafka-scalability/kafka-with-managed-disks-architecture.png)
 
-## 配置托管磁盘：Azure 门户
-<a id="configure-managed-disks-azure-portal" class="xliff"></a>
+## <a name="configure-managed-disks-azure-portal"></a>配置托管磁盘：Azure 门户
 
 1. 按照[创建 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-portal.md)中的步骤操作，了解使用门户创建群集的常用步骤。 请勿完成门户创建过程。
 
@@ -45,8 +43,7 @@ Kafka on HDInsight 在 HDInsight 群集中使用虚拟机的本地磁盘。 由�
 
     ![“群集大小”边栏选项卡的图像，其中突出显示每个辅助节点的磁盘数](./media/hdinsight-apache-kafka-scalability/set-managed-disks-portal.png)
 
-## 配置托管磁盘：Resource Manager 模板
-<a id="configure-managed-disks-resource-manager-template" class="xliff"></a>
+## <a name="configure-managed-disks-resource-manager-template"></a>配置托管磁盘：Resource Manager 模板
 
 若要控制 Kafka 群集中辅助节点使用的磁盘数，请使用模板的以下部分：
 
@@ -60,8 +57,7 @@ Kafka on HDInsight 在 HDInsight 群集中使用虚拟机的本地磁盘。 由�
 
 [https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json) 处提供演示如何配置托管磁盘的完整模板。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 有关使用 Kafka on HDInsight 的详细信息，请参阅以下文档：
 

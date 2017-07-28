@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/16/2017
+ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
+ms.reviewer: dhanyahk
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 8f8510b38d795a90850ef58084a04718cb5ac324
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: a84f3825d3f019c60f8d875d250fe4cf79f4b04c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 06/20/2017
 
 ---
 # <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>访问 Azure AD 报告 API 的先决条件
 
-[Azure AD 报告 API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) 通过一组基于 REST 的 API，可向你提供对该数据的编程访问权限。 可从各种编程语言和工具中调用这些 API。
+[Azure AD 报告 API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) 通过一组基于 REST 的 API，让你以编程方式访问数据。 可从各种编程语言和工具中调用这些 API。
 
 报告 API 使用 [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) 授权访问 Web API。 
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 05/17/2017
 2. 授予权限 
 3. 收集配置设置 
 
-有关疑问、问题或反馈，请联系 [AAD 报告帮助](mailto:aadreportinghelp@microsoft.com)。
+有关疑问、问题或反馈，请[提交支持票证](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-troubleshooting-support-howto)。
 
 ## <a name="register-an-azure-active-directory-application"></a>注册 Azure Active Directory 应用程序
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 05/17/2017
 
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 `Reporting API application`。
+    a. 在“名称”文本框中，键入 `Reporting API application`。
 
     b. 选择`Web app / API`作为“应用程序类型”。
 
@@ -177,7 +177,7 @@ ms.lasthandoff: 05/17/2017
 
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/14.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“说明”文本框中，键入 `Reporting API`。
+    a. 在“说明”文本框中，键入 `Reporting API`。
 
     b. 选择“2 年内”作为“过期时间”。
 

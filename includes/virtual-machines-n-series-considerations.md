@@ -1,5 +1,4 @@
-## 部署注意事项
-<a id="deployment-considerations" class="xliff"></a>
+## <a name="deployment-considerations"></a>部署注意事项
 
 * 有关 N 系列 VM 的可用性，请查看[可用产品(按区域)](https://azure.microsoft.com/en-us/regions/services/)。
 

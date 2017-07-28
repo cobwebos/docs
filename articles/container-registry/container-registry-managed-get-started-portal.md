@@ -25,20 +25,17 @@ ms.lasthandoff: 07/12/2017
 
 ---
 
-# 使用 Azure 门户创建托管的容器注册表
-<a id="create-a-managed-container-registry-using-the-azure-portal" class="xliff"></a>
+# <a name="create-a-managed-container-registry-using-the-azure-portal"></a>使用 Azure 门户创建托管的容器注册表
 
 Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专用的 Docker 容器映像。 本指南详述了如何使用 Azure 门户创建托管的 Azure 容器注册表实例。
 
 托管的 Azure 容器注册表为预览版，尚未在所有区域推出。
 
-## 登录 Azure
-<a id="log-in-to-azure" class="xliff"></a>
+## <a name="log-in-to-azure"></a>登录 Azure
 
 通过 http://portal.azure.com 登录到 Azure 门户。
 
-## 创建容器注册表
-<a id="create-a-container-registry" class="xliff"></a>
+## <a name="create-a-container-registry"></a>创建容器注册表
 
 1. 单击 Azure 门户左上角的“新建”按钮。
 
@@ -62,8 +59,7 @@ Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专
 
     f. 定价层：选择定价层，然后参阅此处的 ACR 定价以了解详细信息。
 
-## 登录到 ACR 实例
-<a id="log-in-to-acr-instance" class="xliff"></a>
+## <a name="log-in-to-acr-instance"></a>登录到 ACR 实例
 
 在推送和拉取容器映像之前，必须登录到 ACR 实例。 
 
@@ -79,19 +75,16 @@ az login
 az acr login --name myAzureContainerRegistry1
 ```
 
-## 使用 Azure 容器注册表
-<a id="use-azure-container-registry" class="xliff"></a>
+## <a name="use-azure-container-registry"></a>使用 Azure 容器注册表
 
-### 列出容器映像
-<a id="list-container-images" class="xliff"></a>
+### <a name="list-container-images"></a>列出容器映像
 
 使用 `az acr` CLI 命令查询存储库中的映像和标记。
 
 > [!NOTE]
 > 目前，容器注册表不支持使用 `docker search` 命令查询映像和标记。
 
-### 列出存储库
-<a id="list-repositories" class="xliff"></a>
+### <a name="list-repositories"></a>列出存储库
 
 以下示例使用 JSON（JavaScript 对象表示法）格式列出注册表中的存储库：
 
@@ -99,8 +92,7 @@ az acr login --name myAzureContainerRegistry1
 az acr repository list -n myContainerRegistry1 -o json
 ```
 
-### 列出标记
-<a id="list-tags" class="xliff"></a>
+### <a name="list-tags"></a>列出标记
 
 以下示例使用 JSON 格式列出 **samples/nginx** 存储库中的标记：
 
@@ -108,8 +100,7 @@ az acr repository list -n myContainerRegistry1 -o json
 az acr repository show-tags -n myContainerRegistry1 --repository samples/nginx -o json
 ```
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 在本快速入门中，你已使用 Azure 门户创建托管的 Azure 容器注册表实例。
 

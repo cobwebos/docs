@@ -22,8 +22,7 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 07/12/2017
 
 ---
-# 使用 REST API 创建 Azure 搜索索引
-<a id="create-an-azure-search-index-using-the-rest-api" class="xliff"></a>
+# <a name="create-an-azure-search-index-using-the-rest-api"></a>使用 REST API 创建 Azure 搜索索引
 > [!div class="op_single_selector"]
 >
 > * [概述](search-what-is-an-index.md)
@@ -39,8 +38,7 @@ ms.lasthandoff: 07/12/2017
 
 若要使用 REST API 创建 Azure 搜索索引，需向 Azure 搜索服务的 URL 终结点发出一个 HTTP POST 请求。 索引定义作为格式标准的 JSON 内容包含在请求正文中。
 
-## 确定 Azure 搜索服务的管理 API 密钥
-<a id="identify-your-azure-search-services-admin-api-key" class="xliff"></a>
+## <a name="identify-your-azure-search-services-admin-api-key"></a>确定 Azure 搜索服务的管理 API 密钥
 现在，已预配 Azure 搜索服务，可以使用 REST API 向服务的 URL 终结点发出 HTTP 请求。 所有 API 请求必须包含针对预配的搜索服务生成的 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
 1. 若要查找服务的 API 密钥，必须登录 [Azure 门户](https://portal.azure.com/)
@@ -54,8 +52,7 @@ ms.lasthandoff: 07/12/2017
 
 可以使用主管理密钥或辅助管理密钥来创建索引。
 
-## 使用格式标准的 JSON 定义 Azure 搜索索引
-<a id="define-your-azure-search-index-using-well-formed-json" class="xliff"></a>
+## <a name="define-your-azure-search-index-using-well-formed-json"></a>使用格式标准的 JSON 定义 Azure 搜索索引
 对服务的单个 HTTP POST 请求将创建索引。 HTTP POST 请求的正文包含一个定义 Azure 搜索索引的 JSON 对象。
 
 1. 此 JSON 对象的第一个属性是索引的名称。
@@ -91,8 +88,7 @@ ms.lasthandoff: 07/12/2017
 
 上述索引定义对 `description_fr` 字段使用了语言分析器，因为它用于存储法语文本。 请参阅[语言支持主题](https://docs.microsoft.com/rest/api/searchservice/Language-support)以及相应的[博客文章](https://azure.microsoft.com/blog/language-support-in-azure-search/)，了解有关语言分析器的详细信息。
 
-## 发出 HTTP 请求
-<a id="issue-the-http-request" class="xliff"></a>
+## <a name="issue-the-http-request"></a>发出 HTTP 请求
 1. 将索引定义用作请求正文，向 Azure 搜索服务终结点 URL 发出 HTTP POST 请求。 在 URL 中，请务必使用服务名称作为主机名，并将适当的 `api-version` 作为查询字符串参数（发布此文档时，API 版本为 `2016-09-01`）。
 2. 在请求头中，指定 `Content-Type` 作为 `application/json`。 还需提供步骤 I 中在 `api-key` 标头中标识的服务管理密钥。
 
@@ -111,7 +107,6 @@ ms.lasthandoff: 07/12/2017
     api-key: [api-key]
 
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 创建 Azure 搜索索引后，就可以 [将内容上传到索引中](search-what-is-data-import.md) ，以便可以开始搜索数据。
 
