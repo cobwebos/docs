@@ -23,7 +23,6 @@ ms.openlocfilehash: 10c8b1806a13d07e804b15cf8357de48a16fbc64
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/07/2017
 
-
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>使用 Apache Spark REST API 将远程作业提交到 HDInsight Spark 群集
 
@@ -46,7 +45,7 @@ ms.lasthandoff: 06/07/2017
 
 * 如果 jar 文件位于群集存储 (WASB) 中
   
-        curl -k --user "admin:mypassword1!" -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches"
+        curl -k --user "admin:mypassword1!" -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches"
 * 如果想要传递 jar 文件名和类名作为输入文件（在本示例中为 input.txt）的一部分
   
         curl -k  --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches"
@@ -108,7 +107,7 @@ Livy 可为群集上运行的 Spark 作业提供高可用性。 下面是一些�
    
     文件 **input.txt** 中的参数定义如下：
    
-        { "file":"wasbs:///example/jars/SparkSimpleApp.jar", "className":"com.microsoft.spark.example.WasbIOTest" }
+        { "file":"wasb:///example/jars/SparkSimpleApp.jar", "className":"com.microsoft.spark.example.WasbIOTest" }
    
     你应该会看到与下面类似的输出：
    

@@ -22,7 +22,6 @@ ms.openlocfilehash: 5d566e7b84723bacf575ade8ea6947cfdaf8b606
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/07/2017
 
-
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>在 HDInsight 上的 Apache Spark 群集中将外部包与 Jupyter 笔记本配合使用
 > [!div class="op_single_selector"]
@@ -91,7 +90,7 @@ ms.lasthandoff: 06/07/2017
         val df = sqlContext.read.format("com.databricks.spark.csv").
         option("header", "true").
         option("inferSchema", "true").
-        load("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+        load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
 8. 然后，可以运行代码片段（如下所示）以查看上一步骤创建的数据帧中的数据。
    

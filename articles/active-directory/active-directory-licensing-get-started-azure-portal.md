@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory 中的许可入门 | Microsoft Docs"
 description: "Azure Active Directory 许可的工作原理，如何按照最佳做法开始使用该许可。"
 services: active-directory
@@ -14,7 +13,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/30/2017
+ms.date: 07/26/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
@@ -23,7 +22,6 @@ ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
 ms.openlocfilehash: b62571e446aa0680c653d0a9d109207af26ad786
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/01/2017
-
 
 ---
 
