@@ -22,13 +22,11 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 07/13/2017
 
 ---
-# 使用 Node.js 查询 Azure SQL 数据库
-<a id="use-nodejs-to-query-an-azure-sql-database" class="xliff"></a>
+# <a name="use-nodejs-to-query-an-azure-sql-database"></a>使用 Node.js 查询 Azure SQL 数据库
 
 本快速入门教程演示了如何使用 [Node.js](https://nodejs.org/en/) 来创建连接到 Azure SQL 数据库的程序，并使用 Transact-SQL 语句来查询数据。
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门教程，请确保符合以下条件：
 
@@ -44,8 +42,7 @@ ms.lasthandoff: 07/13/2017
     - **Ubuntu**：安装 Node.js，然后安装 ODBC 驱动程序和 SQLCMD。 请参阅[步骤 1.2 和 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/)。
     - **Windows**：安装 Chocolatey 和 Node.js，然后安装 ODBC 驱动程序和 SQL CMD。 请参阅[步骤 1.2 和 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/windows/)。
 
-## SQL Server 连接信息
-<a id="sql-server-connection-information" class="xliff"></a>
+## <a name="sql-server-connection-information"></a>SQL Server 连接信息
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称、数据库名称和登录信息。
 
@@ -60,8 +57,7 @@ ms.lasthandoff: 07/13/2017
 > [!IMPORTANT]
 > 对于在其上执行本教程操作的计算机，必须为其公共 IP 地址制定防火墙规则。 如果使用其他计算机或其他公共 IP 地址，则[使用 Azure 门户创建服务器级防火墙规则](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。 
 
-## 创建 Node.js 项目
-<a id="create-a-nodejs-project" class="xliff"></a>
+## <a name="create-a-nodejs-project"></a>创建 Node.js 项目
 
 打开命令提示符，然后创建一个名为 sqltest 的文件夹。 导航到已创建的文件夹，并运行以下命令：
 
@@ -71,8 +67,7 @@ ms.lasthandoff: 07/13/2017
     npm install async
     
 
-## 插入用于查询 SQL 数据库的代码
-<a id="insert-code-to-query-sql-database" class="xliff"></a>
+## <a name="insert-code-to-query-sql-database"></a>插入用于查询 SQL 数据库的代码
 
 1. 在开发环境或喜欢的文本编辑器中，创建新文件 sqltest.js。
 
@@ -132,8 +127,7 @@ ms.lasthandoff: 07/13/2017
       }
 ```
 
-## 运行代码
-<a id="run-the-code" class="xliff"></a>
+## <a name="run-the-code"></a>运行代码
 
 1. 请在命令提示符处运行以下命令：
 
@@ -143,8 +137,7 @@ ms.lasthandoff: 07/13/2017
 
 2. 验证是否已返回前 20 行，然后关闭应用程序窗口。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 - 了解[用于 SQL Server 的 Microsoft Node.js 驱动程序](https://docs.microsoft.com/sql/connect/node-js/node-js-driver-for-sql-server/)
 - 了解如何在 Windows/Linux/macOS 中[使用 .NET Core 连接和查询 Azure SQL 数据库](sql-database-connect-query-dotnet-core.md)。  

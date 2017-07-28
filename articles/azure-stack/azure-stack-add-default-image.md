@@ -21,8 +21,7 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 07/13/2017
 
 ---
-# Add the Windows Server 2016 VM image to the Azure Stack marketplace
-<a id="add-the-windows-server-2016-vm-image-to-the-azure-stack-marketplace" class="xliff"></a>
+# <a name="add-the-windows-server-2016-vm-image-to-the-azure-stack-marketplace"></a>Add the Windows Server 2016 VM image to the Azure Stack marketplace
 
 By default, there aren’t any virtual machine images available in the Azure Stack marketplace. The Azure Stack cloud administrator must add an image to the marketplace before users can use them. You can add the Windows Server 2016 image to the Azure Stack marketplace by using one of the following two methods:
 
@@ -30,8 +29,7 @@ By default, there aren’t any virtual machine images available in the Azure Sta
 
 * [Add the image by using PowerShell](#add-the-image-by-using-powershell) - Use this option if you have deployed Azure Stack in a disconnected scenario or in scenarios with limited connectivity.
 
-## Add the image by downloading it from the Azure Marketplace
-<a id="add-the-image-by-downloading-it-from-the-azure-marketplace" class="xliff"></a>
+## <a name="add-the-image-by-downloading-it-from-the-azure-marketplace"></a>Add the image by downloading it from the Azure Marketplace
 
 1. After deploying Azure Stack, sign in to your Azure Stack Development Kit.
 
@@ -43,8 +41,7 @@ By default, there aren’t any virtual machine images available in the Azure Sta
 
 After the download completes, the image is added to the **Marketplace Management** blade and it is also made available from the **Virtual Machines** blade.
 
-## Add the image by using PowerShell
-<a id="add-the-image-by-using-powershell" class="xliff"></a>
+## <a name="add-the-image-by-using-powershell"></a>Add the image by using PowerShell
 
 1. After deploying Azure Stack, sign in to your Azure Stack Development Kit.
 
@@ -106,8 +103,7 @@ After the download completes, the image is added to the **Marketplace Management
    ```
    To ensure that the Windows Server 2016 VM image has the latest cumulative update, include the `IncludeLatestCU` parameter when running the previous cmdlet. It takes about an hour to publish the image to the Azure Stack marketplace.
 
-## Parameters
-<a id="parameters" class="xliff"></a>
+## <a name="parameters"></a>Parameters
 
 |New-AzsServer2016VMImage parameters|Required?|Description|
 |-----|-----|------|
@@ -121,8 +117,7 @@ After the download completes, the image is added to the **Marketplace Management
 |CUUri |No |Set this value to choose the Windows Server 2016 cumulative update from a specific URI. |
 |CUPath |No |Set this value to choose the Windows Server 2016 cumulative update from a local path. This option is helpful if you have deployed the Azure Stack instance in a disconnected environment.|
 
-## Next Steps
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Next Steps
 
 [Provision a virtual machine](azure-stack-provision-vm.md)
 

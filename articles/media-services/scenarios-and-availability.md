@@ -20,8 +20,7 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 07/12/2017
 
 ---
-# 媒体服务功能的跨数据中心方案和可用性
-<a id="scenarios-and-availability-of-media-services-features-across-datacenters" class="xliff"></a>
+# <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
 
 可以使用 Microsoft Azure 媒体服务 (AMS) 安全地上传、存储、编码和打包视频或音频内容，以便通过点播和实时流形式传送到各种客户端（例如，电视、电脑和移动设备）。
 
@@ -29,11 +28,9 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 本主题演示了[实时](#live_scenarios)交付内容或[点播](#vod_scenarios)交付内容的常见方案。 本主题还详细说明了媒体功能和服务的跨数据中心可用性。
 
-## 概述
-<a id="overview" class="xliff"></a>
+## <a name="overview"></a>概述
 
-### 先决条件
-<a id="prerequisites" class="xliff"></a>
+### <a name="prerequisites"></a>先决条件
 
 若要开始使用 Azure 媒体服务，你应该具备以下条件：
 
@@ -43,8 +40,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
     创建 AMS 帐户后，系统会将一个处于“已停止”状态的默认流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，流式处理终结点必须处于“正在运行”状态。
 
-### 针对 AMS OData 模型进行开发时的常用对象
-<a id="commonly-used-objects-when-developing-against-the-ams-odata-model" class="xliff"></a>
+### <a name="commonly-used-objects-when-developing-against-the-ams-odata-model"></a>针对 AMS OData 模型进行开发时的常用对象
 
 下图显示了在针对媒体服务 OData 模型开发时，某些最常用的对象。
 
@@ -54,8 +50,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 可以在[此处](https://media.windows.net/API/$metadata?api-version=2.15)查看整个模型。  
 
-## 保护存储中的内容并以明文（非加密）形式交付流式处理媒体
-<a id="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted" class="xliff"></a>
+## <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted"></a>保护存储中的内容并以明文（非加密）形式交付流式处理媒体
 
 ![VoD 工作流](./media/scenarios-and-availability/scenarios-and-availability01.png)
 
@@ -73,8 +68,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 若要了解此功能在数据中心的可用性，请参阅[可用性](#availability)部分。
 
-## 在存储中保护内容，并以动态方式传送加密的流媒体
-<a id="protect-content-in-storage-deliver-dynamically-encrypted-streaming-media" class="xliff"></a>
+## <a name="protect-content-in-storage-deliver-dynamically-encrypted-streaming-media"></a>在存储中保护内容，并以动态方式传送加密的流媒体
 
 ![使用 PlayReady 进行保护](./media/media-services-content-protection-overview/media-services-content-protection-with-multi-drm.png)
 
@@ -88,8 +82,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 若要了解此功能在数据中心的可用性，请参阅[可用性](#availability)部分。
 
-## 使用媒体分析从视频中汲取可以实施的见解
-<a id="use-media-analytics-to-derive-actionable-insights-from-your-videos" class="xliff"></a>
+## <a name="use-media-analytics-to-derive-actionable-insights-from-your-videos"></a>使用媒体分析从视频中汲取可以实施的见解
 
 媒体分析是语音和视觉组件的集合，便于组织和企业从视频文件中汲取可以实施的见解。 有关详细信息，请参阅 [Azure 媒体服务分析概述](media-services-analytics-overview.md)。
 
@@ -99,8 +92,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 若要了解此功能在数据中心的可用性，请参阅[可用性](#availability)部分。
 
-## 提供渐进式下载
-<a id="deliver-progressive-download" class="xliff"></a>
+## <a name="deliver-progressive-download"></a>提供渐进式下载
 
 1. 将优质媒体文件上传到资产中。
 2. 编码为单个 MP4 文件。
@@ -122,8 +114,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 进行实时流式处理时，可以选择以下路由之一：
 
-### 使用从本地编码器（直通）接收多比特率实时流的频道
-<a id="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through" class="xliff"></a>
+### <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>使用从本地编码器（直通）接收多比特率实时流的频道
 
 下图显示的是**直通**工作流中涉及的 AMS 平台的主要组成部分。
 
@@ -131,8 +122,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 有关详细信息，请参阅 [使用从本地编码器接收多比特率实时流的频道](media-services-live-streaming-with-onprem-encoders.md)。
 
-### 使用能够通过 Azure 媒体服务执行实时编码的频道
-<a id="working-with-channels-that-are-enabled-to-perform-live-encoding-with-azure-media-services" class="xliff"></a>
+### <a name="working-with-channels-that-are-enabled-to-perform-live-encoding-with-azure-media-services"></a>使用能够通过 Azure 媒体服务执行实时编码的频道
 
 下图显示的是实时流式处理工作流中所涉及的 AMS 平台的主要组成部分，该工作流中的频道能够通过媒体服务执行实时编码。
 
@@ -142,13 +132,11 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 若要了解此功能在数据中心的可用性，请参阅[可用性](#availability)部分。
 
-## 使用内容
-<a id="consuming-content" class="xliff"></a>
+## <a name="consuming-content"></a>使用内容
 
 Azure 媒体服务提供你所需的工具，以便你创建适用于大多数平台的丰富、动态的客户端播放器应用程序，这些平台包括：iOS 设备、Android 设备、Windows、Windows Phone、Xbox 和机顶盒。 以下主题提供了可用来开发自己的客户端应用程序（这些应用程序使用媒体服务中的流媒体）的 SDK 和播放器框架的链接。 有关详细信息，请参阅[开发视频播放器应用程序](media-services-develop-video-players.md)
 
-## 启用 Azure CDN
-<a id="enabling-azure-cdn" class="xliff"></a>
+## <a name="enabling-azure-cdn"></a>启用 Azure CDN
 
 媒体服务支持与 Azure CDN 集成。 有关如何启用 Azure CDN 的信息，请参阅 [如何在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)。
 
@@ -174,55 +162,45 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
 本部分详细说明了媒体服务功能的跨数据中心可用性。
 
-### AMS 帐户
-<a id="ams-accounts" class="xliff"></a>
+### <a name="ams-accounts"></a>AMS 帐户
 
-#### 可用性
-<a id="availability" class="xliff"></a>
+#### <a name="availability"></a>可用性
 
 可在以下区域创建媒体服务帐户：北欧、西欧、美国西部、美国东部、东南亚、东亚、日本西部、日本东部、巴西南部、印度西部、印度南部和印度中部。 
 
-### 流式处理终结点
-<a id="streaming-endpoints" class="xliff"></a> 
+### <a name="streaming-endpoints"></a>流式处理终结点 
 
 媒体服务客户可以选择“标准”或“高级”流式处理终结点。 有关详细信息，请参阅[缩放](#scaling)部分。
 
-#### 可用性
-<a id="availability" class="xliff"></a>
+#### <a name="availability"></a>可用性
 
 |Name|状态|数据中心
 |---|---|---|
 |标准|GA|全部|
 |高级|GA|全部|
 
-### 实时编码
-<a id="live-encoding" class="xliff"></a>
+### <a name="live-encoding"></a>实时编码
 
-#### 可用性
-<a id="availability" class="xliff"></a>
+#### <a name="availability"></a>可用性
 
 在以下区域之外的所有数据中心可用：德国、巴西南部、印度西部、印度南部和印度中部。 
 
-### 编码媒体处理器
-<a id="encoding-media-processors" class="xliff"></a>
+### <a name="encoding-media-processors"></a>编码媒体处理器
 
 AMS 提供两个按需编码器：Media Encoder Standard 和 Media Encoder Premium Workflow。 有关详细信息，请参阅 [Azure 按需媒体编码器的概述和比较](media-services-encode-asset.md)。 
 
-#### 可用性
-<a id="availability" class="xliff"></a>
+#### <a name="availability"></a>可用性
 
 |媒体处理器名称|状态|数据中心
 |---|---|---|
 |媒体编码器标准版|GA|全部|
 |媒体编码器高级工作流|GA|除中国以外|
 
-### 分析媒体处理器
-<a id="analytics-media-processors" class="xliff"></a>
+### <a name="analytics-media-processors"></a>分析媒体处理器
 
 媒体分析是语音和视觉组件的集合，便于组织和企业从视频文件中汲取可以实施的见解。 有关详细信息，请参阅 [Azure 媒体服务分析概述](media-services-analytics-overview.md)。
 
-#### 可用性
-<a id="availability" class="xliff"></a>
+#### <a name="availability"></a>可用性
 
 |媒体处理器名称|状态|数据中心
 |---|---|---|
@@ -236,13 +214,11 @@ AMS 提供两个按需编码器：Media Encoder Standard 和 Media Encoder Premi
 |Azure 媒体视频缩略图|预览|全部|
 |Azure Media Indexer 2|预览|除中国和联邦政府区域以外|
 
-### 保护
-<a id="protection" class="xliff"></a>
+### <a name="protection"></a>保护
 
 使用 Microsoft Azure 媒体服务，可以在媒体从离开计算机到存储、处理和传送的整个过程中确保其安全。 有关详细信息，请参阅[保护 AMS 内容](media-services-content-protection-overview.md)。
 
-#### 可用性
-<a id="availability" class="xliff"></a>
+#### <a name="availability"></a>可用性
 
 |加密|状态|数据中心|
 |---|---|---| 
@@ -252,27 +228,23 @@ AMS 提供两个按需编码器：Media Encoder Standard 和 Media Encoder Premi
 |PlayReady|GA|全部|
 |Widevine|GA|德国、美国联邦政府和中国除外。
 
-### 保留单位 (RU)
-<a id="reserved-units-rus" class="xliff"></a>
+### <a name="reserved-units-rus"></a>保留单位 (RU)
 
 设置的保留单位数决定了给定帐户中可并发处理的媒体任务数。 
 
 有关详细信息，请参阅[缩放](#scaling)部分。
 
-#### 可用性
-<a id="availability" class="xliff"></a>
+#### <a name="availability"></a>可用性
 
 在所有数据中心可用。
 
-### 保留单位 (RU) 类型
-<a id="reserved-unit-ru-type" class="xliff"></a>
+### <a name="reserved-unit-ru-type"></a>保留单位 (RU) 类型
 
 媒体服务帐户与保留单位类型关联，后者决定了处理媒体处理任务的速度。 可以在以下保留单位类型中进行选择：S1、S2 或 S3。
 
 有关详细信息，请参阅[缩放](#scaling)部分。
 
-#### 可用性
-<a id="availability" class="xliff"></a>
+#### <a name="availability"></a>可用性
 
 |RU 类型名称|状态|数据中心
 |---|---|---|
@@ -280,15 +252,13 @@ AMS 提供两个按需编码器：Media Encoder Standard 和 Media Encoder Premi
 |S2|GA|巴西南部和印度西部除外|
 |S3|GA|印度西部除外|
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 查看媒体服务学习路径。
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## 提供反馈
-<a id="provide-feedback" class="xliff"></a>
+## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 
