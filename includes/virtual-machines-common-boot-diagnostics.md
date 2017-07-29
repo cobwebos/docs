@@ -14,7 +14,7 @@ Azure 现在提供对两种调试功能的支持：控制台输出和屏幕截�
 所有区域的 Azure 虚拟机都支持这两项功能。 请注意，屏幕截图和输出可能需要长达 10 分钟的时间才能显示在存储帐户中。
 
 ## <a name="enable-diagnostics-on-a-new-virtual-machine"></a>对新虚拟机启用诊断
-1. 从预览门户创建新的虚拟机时，请从部署模型下拉列表中选择“Azure Resource Manager”：****
+1. 从预览门户创建新的虚拟机时，请从部署模型下拉列表中选择 **Azure Resource Manager** ：
  
     ![Resource Manager](./media/virtual-machines-common-boot-diagnostics/screenshot3.jpg)
 
