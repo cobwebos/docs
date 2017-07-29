@@ -4,7 +4,7 @@ description: "了解如何使用图形 API 设置 Azure Cosmos DB 全局分发�
 services: cosmos-db
 keywords: "全局分发, 图形, gremlin"
 documentationcenter: 
-author: mimig1
+author: dennyglee
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 8b815047-2868-4b10-af1d-40a1af419a70
@@ -14,13 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
-ms.author: mimig
+ms.author: denlee
 ms.translationtype: Human Translation
 ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: c38b5345bd67008de0e15f9288b4016935837978
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/31/2017
-
 
 ---
 # <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-graph-api"></a>如何使用图形 API 设置 Azure Cosmos DB 全局分发

@@ -12,7 +12,7 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 6/28/2017
+ms.date: 7/27/2017
 ms.author: subramar
 ms.translationtype: HT
 ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
@@ -91,8 +91,8 @@ ms.lasthandoff: 07/13/2017
     >   [!TIP]
     >   以下命令自动接受 Service Fabric 包的许可证：
     >   ```bash
-    >   echo "servicefabric servicefabric/accepted-eula-v1 select true" | debconf-set-selections
-    >   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-v1 select true" | debconf-set-selections
+    >   echo "servicefabric servicefabric/accepted-eula-v1 select true" | sudo debconf-set-selections
+    >   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-v1 select true" | sudo debconf-set-selections
     >   ```
     
 2. 运行 SDK 安装程序脚本。

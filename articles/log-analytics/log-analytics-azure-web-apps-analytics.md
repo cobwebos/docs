@@ -20,7 +20,6 @@ ms.openlocfilehash: 90d0b7e3f49daa33ab8c617d07ba9098cdda751f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/12/2017
 
-
 ---
 
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>查看所有 Azure Web 应用资源的指标的分析数据
@@ -92,6 +91,8 @@ Azure Web 应用分析解决方案从 Azure 中收集两组指标：
 ### <a name="view-azure-web-apps-analytics-information"></a>查看 Azure Web 应用分析信息
 
 单击“Azure Web 应用分析”磁贴以打开“Azure Web 应用分析”仪表板。 该仪表板包含下表中的边栏选项卡。 每个边栏选项卡按照指定范围和时间范围列出匹配该边栏选项卡条件的最多 10 个项。 可通过单击边栏选项卡底部的“查看全部”或单击边栏选项卡标题，运行返回所有记录的日志搜索。
+
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 | 列 | 说明 |
 | --- | --- |

@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 07/18/2017
 ms.author: banders
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
@@ -151,7 +151,10 @@ VMware 磁贴显示在 OMS 门户中。 它提供任何失败的高级视图。 
 #### <a name="common-search-queries"></a>常用的搜索查询
 该解决方案包括可帮助你管理 ESXi 主机的其他有用查询，如高存储空间、存储延迟和路径故障。
 
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+
 ![查询](./media/log-analytics-vmware/queries.png)
+
 
 #### <a name="save-queries"></a>保存查询
 保存搜索查询是 OMS 中的标准功能，可帮助你记录发现的任何有用查询。 创建有用的查询后，单击“收藏夹”将其保存下来。 已保存的查询可在以后从[我的仪表板](log-analytics-dashboards.md)页（可在其中创建你自己的自定义仪表板）轻松地对其进行重复使用。
