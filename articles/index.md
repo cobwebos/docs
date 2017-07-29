@@ -4,10 +4,10 @@ hide_bc: true
 title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 7c1971abc2b71f6f23d8be2950aae8b56b4ceba1
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 7a642506b97fcf4d3426b9205f4b5e420b0bec59
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 <div id="main" class="v2">
@@ -140,7 +140,8 @@ ms.lasthandoff: 07/20/2017
                                                     <ul class="noBullet">
                                                         <li><a class="barLink" href="/azure/app-service-web/">Web 应用</a></li>
                                                         <li><a class="barLink" href="/azure/azure-functions/">无服务器函数</a></li>
-                                                        <li><a class="barLink" href="/azure/container-service/">将容器与 Kubernetes 配合使用</a></li>
+                                                        <li><a class="barLink" href="/azure/container-instances/">容器实例</a></li>
+                                                        <li><a class="barLink" href="/azure/container-service/kubernetes/">使用 Kubernetes 协调容器</a></li>
                                                         <li><a class="barLink" href="/azure/service-fabric/">将微服务与 Service Fabric 配合使用</a></li>
                                                     </ul>
                                                 </div>
@@ -155,7 +156,7 @@ ms.lasthandoff: 07/20/2017
                                         <div class="card">
                                             <div class="cardText">
                                                 <h3>管理数据和 AI</h3>
-                                                <h4>关系型数据库服务</h4>
+                                                <h4>关系数据库</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/sql-database/">SQL 数据库即服务</a></li>
                                                     <li><a class="barLink" href="/azure/postgresql/">PostgreSQL 数据库即服务</a></li>
@@ -352,6 +353,12 @@ ms.lasthandoff: 07/20/2017
                                     </ul>
                                     <h3>容器</h3>
                                     <ul>
+                                        <li>
+                                            <a href="/azure/container-instances/">
+                                                <img src="media/index/ContainerInstances.svg" alt="" />
+                                                <p>Azure 容器实例</p>
+                                            </a>
+                                        </li>
                                         <li>
                                             <a href="/azure/container-service/">
                                                 <img src="media/index/ContainerService.svg" alt="" />
@@ -1740,18 +1747,18 @@ ms.lasthandoff: 07/20/2017
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/service-fabric/">
+                                <a href="/azure/container-instances/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/Fabric.svg" alt="" />
+                                                        <img src="media/index/ContainerInstances.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Service Fabric</h3>
-                                                    <p>在 Windows 或 Linux 上开发微服务和协调容器</p>
+                                                    <h3>Azure 容器实例</h3>
+                                                    <p>使用单个命令轻松运行容器</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1790,6 +1797,25 @@ ms.lasthandoff: 07/20/2017
                                                 <div class="cardText">
                                                     <h3>批处理</h3>
                                                     <p>使用容器运行计算作业</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/service-fabric/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/Fabric.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Service Fabric</h3>
+                                                    <p>在 Windows 或 Linux 上开发微服务和协调容器</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1865,7 +1891,7 @@ ms.lasthandoff: 07/20/2017
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/cosmosdb.svg" alt="" />
+                                                        <img src="media/index/CosmosDB_rgb_ui_lighttheme.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">

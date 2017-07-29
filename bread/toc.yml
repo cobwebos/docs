@@ -131,9 +131,19 @@
     - name: 连接器
       tocHref: /azure/connectors/
       topicHref: /azure/connectors/
+    - name: 容器实例
+      tocHref: /azure/container-instances/
+      topicHref: /azure/container-instances/
     - name: 容器服务
       tocHref: /azure/container-service/
       topicHref: /azure/container-service/
+      items:
+        - name: DC/OS 和 Swarm
+          tocHref: /azure/container-service/dcos-swarm/
+          topicHref: /azure/container-service/dcos-swarm/
+        - name: Kubernetes
+          tocHref: /azure/container-service/kubernetes/
+          topicHref: /azure/container-service/kubernetes/
     - name: CosmosDB
       tocHref: /azure/cosmos-db/
       topicHref: /azure/cosmos-db/

@@ -1,0 +1,85 @@
+- name: 将 ACS 与 DC/OS 和 Swarm 配合使用
+  href: ./index.yml
+- name: 概述
+  items:
+    - name: 关于容器服务
+      href: container-service-intro.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: DC/OS Linux
+      href: container-service-dcos-quickstart.md
+- name: 教程
+  items:
+    - name: 1 - 创建/管理群集
+      href: container-service-dcos-manage-tutorial.md
+    - name: 2 - 对应用程序进行负载均衡
+      href: container-service-load-balancing.md
+    - name: 3 - 管理数据卷
+      href: container-service-dcos-fileshare.md
+    - name: 4 - 与 ACR 集成
+      href: container-service-dcos-acr.md
+- name: 概念
+  items:
+    - name: 保护容器
+      href: container-service-security.md
+- name: 操作指南
+  items:
+    - name: 与 ACS 群集连接
+      href: container-service-connect.md
+    - name: 缩放 ACS 群集
+      href: container-service-scale.md
+    - name: 使用 DC/OS 进行管理
+      items:
+        - name: 容器管理 - DC/OS UI
+          href: container-service-mesos-marathon-ui.md
+        - name: 容器管理 - DC/OS REST API
+          href: container-service-mesos-marathon-rest.md
+        - name: DC/OS 代理池
+          href: container-service-dcos-agents.md
+        - name: 启用 DC/OS 公共访问
+          href: container-service-enable-public-access.md
+        - name: DC/OS 中应用/用户特定的 Orchestrator
+          href: container-service-application-specific-marathon.md
+        - name: 将 Canary 发布与 Vamp 配合使用
+          href: container-service-dcos-vamp-canary-release.md
+        - name: 监视 DC/OS
+          items:
+            - name: 使用 ELK 进行监视
+              href: container-service-monitoring-elk.md
+            - name: 使用 OMS 进行监视
+              href: container-service-monitoring-oms.md
+            - name: 使用 Datadog 进行监视
+              href: container-service-monitoring.md
+            - name: 使用 Sysdig 进行监视
+              href: container-service-monitoring-sysdig.md
+            - name: 使用 Dynatrace 进行监视
+              href: container-service-monitoring-dynatrace.md
+    - name: 使用 Docker Swarm 进行管理
+      items:
+        - name: Docker 和 Docker Compose
+          href: container-service-docker-swarm.md
+        - name: 将 CI/CD 与 Docker Swarm 和 VSTS 配合使用
+          href: container-service-docker-swarm-setup-ci-cd.md
+- name: 引用
+  items:
+    - name: Azure CLI 2.0
+      href: /cli/azure/acs
+    - name: REST
+      href: /rest/api/compute/containerservices
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 常见问题
+      href: container-service-faq.md
+    - name: 模板 - ACS 引擎
+      href: 'https://github.com/Azure/acs-engine'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/container-service/'
+    - name: 上市区域
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 堆栈溢出
+      href: 'http://stackoverflow.com/questions/tagged/azure-container-service'
+    - name: 视频
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'
