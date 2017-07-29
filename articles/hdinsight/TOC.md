@@ -13,7 +13,12 @@
 
 # 入门
 ## [Hadoop 入门](hdinsight-hadoop-linux-tutorial-get-started.md)
-## [Spark 入门](hdinsight-apache-spark-jupyter-spark-sql.md)
+## Spark 入门
+### [创建 Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)
+### [在 Spark 群集上运行查询](hdinsight-apache-spark-load-data-run-query.md)
+### [使用 BI 工具分析数据](hdinsight-apache-spark-use-bi-tools.md)
+### [管理群集资源](hdinsight-apache-spark-resource-manager.md)
+### [调试 Spark 作业](hdinsight-apache-spark-job-debugging.md)
 ## [从 R Server 开始](hdinsight-hadoop-r-server-get-started.md)
 ## [HBase 和 NoSQL 入门](hdinsight-hbase-tutorial-get-started-linux.md)
 ## [Storm 入门](hdinsight-apache-storm-tutorial-get-started-linux.md)
@@ -59,7 +64,6 @@
 ### [ScaleR 和 SparkR](hdinsight-hadoop-r-scaler-sparkr.md)
 ## 使用 Spark 进行内存中处理
 ### [使用 Data Lake Store](hdinsight-apache-spark-use-with-data-lake-store.md)
-### [使用 BI 工具](hdinsight-apache-spark-use-bi-tools.md)
 ### [创建独立应用](hdinsight-apache-spark-create-standalone-application.md)
 ### [使用 Eclipse 创建应用](hdinsight-apache-spark-eclipse-tool-plugin.md)
 ### [使用 IntelliJ 创建应用](hdinsight-apache-spark-intellij-tool-plugin.md)
@@ -76,8 +80,6 @@
 ### [使用本地 Jupyter 笔记本](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 ### [远程作业与 Livy](hdinsight-apache-spark-livy-rest-interface.md)
 ### [使用 IntelliJ 通过 VPN 远程调试作业](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-### [管理资源](hdinsight-apache-spark-resource-manager.md)
-### [跟踪和调试作业](hdinsight-apache-spark-job-debugging.md)
 ### [已知问题](hdinsight-apache-spark-known-issues.md)
 ## 使用 HBase
 ### [使用 Phoenix 和 SQLLine](hdinsight-hbase-phoenix-squirrel-linux.md)
@@ -234,7 +236,7 @@
 ### [使用 Ambari API 监视群集](hdinsight-monitor-use-ambari-api.md)
 
 # 资源
-## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
 ## [在论坛上获取帮助](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 ## [Microsoft 大数据专业程序](https://academy.microsoft.com/en-us/professional-program/big-data/)

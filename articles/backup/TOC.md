@@ -17,7 +17,7 @@
 ### 备份 VM
 #### [将 Azure 虚拟机备份到恢复服务保管库](backup-azure-arm-vms.md)
 #### [备份加密的虚拟机](backup-azure-vms-encryption.md)
-#### [将 Azure 虚拟机备份到备份保管库](backup-azure-vms.md)
+#### [备份 Azure 虚拟机](backup-azure-vms.md)
 ### 管理和监视 VM
 #### [管理 Azure 门户中的 Azure VM 备份](backup-azure-manage-vms.md)
 #### [监视 Azure 门户中 Azure VM 备份警报](backup-azure-monitor-vms.md)
@@ -57,7 +57,7 @@
 ### [在 Azure 门户中准备 DPM 工作负荷](backup-azure-dpm-introduction.md)
 ### [在经典 Azure 门户中准备 DPM 工作负荷](backup-azure-dpm-introduction-classic.md)
 ### [使用 System Center DPM 备份 Exchange 服务器](backup-azure-backup-exchange-server.md)
-### [将备份保管库中的数据恢复到备用 DPM 服务器](backup-azure-alternate-dpm-server.md)
+### [将数据恢复到备用 DPM 服务器](backup-azure-alternate-dpm-server.md)
 ### [使用 DPM 备份 SQL Server 工作负荷](backup-azure-backup-sql.md)
 ### [使用 DPM 备份 SharePoint 场](backup-azure-backup-sharepoint.md)
 
@@ -90,11 +90,12 @@
 # 概念
 ## [恢复服务保管库概述](backup-azure-recovery-services-vault-overview.md)
 ## [将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)
-## [删除 Azure 备份保管库](backup-azure-delete-vault.md)
+## [删除恢复服务保管库](backup-azure-delete-vault.md)
 ## [基于角色的访问控制](backup-rbac-rs-vault.md)
 ## [混合备份的安全性](backup-azure-security-feature.md)
 ## [配置 Azure 备份报表](backup-azure-configure-reports.md)
 ## [Azure 备份报表的数据模型](backup-azure-reports-data-model.md)
+## [Azure 备份的 Log Analytics 数据模型](backup-azure-log-analytics-data-model.md)
 ## [配置脱机备份](backup-azure-backup-import-export.md)
 ## [替换磁带库](backup-azure-backup-cloud-as-tape.md)
 ## [Linux VM 的应用程序一致性备份](backup-azure-linux-app-consistent.md)

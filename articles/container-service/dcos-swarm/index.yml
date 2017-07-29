@@ -1,0 +1,58 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: “将 Azure 容器服务与 DC/OS 和 Swarm 配合使用”文档
+metadata:
+  document_id: null
+  title: “将 Azure 容器服务与 DC/OS 和 Swarm 配合使用”文档 - 教程和 API 参考 | Microsoft Docs
+  meta.description: 'Azure Container Service allows you to quickly deploy a production ready DC/OS or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.'
+  services: container-service
+  author: carolz
+  manager: carolz
+  ms.service: container-service
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 07-21-2017
+  ms.author: carolz
+abstract:
+  description: 使用 Azure 容器服务可以快速部署已准备好用于生产的 DC/OS 或 Docker Swarm 群集。 使用这些快速入门、教程和示例，了解如何使用 Azure 容器服务。
+sections:
+  - title: 5 分钟快速入门
+    items:
+      - type: paragraph
+        text: 了解如何使用 Azure 容器服务部署 DC/OS 群集：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
+            text: Linux
+            href: /azure/container-service/container-service-dcos-quickstart
+  - title: 分步教程
+    items:
+      - type: paragraph
+        text: 了解如何在 Azure 容器服务 DC/OS 群集中部署、管理和更新应用程序。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/container-service/container-service-dcos-manage-tutorial">创建和管理 Azure 容器服务 DC/OS 群集</a>
+          - html: <a href="/azure/container-service/container-service-load-balancing">在 Azure 容器服务 DC/OS 群集中对容器进行负载均衡</a>
+          - html: <a href="/azure/container-service/container-service-dcos-fileshare">创建文件共享并将其装载到 DC/OS 群集</a>
+          - html: <a href="/azure/container-service/container-service-dcos-acr">将 Azure 容器注册表 与 DC/OS 群集配合使用以部署应用程序</a>
+  - title: 示例
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/container-service/cli-samples">Azure CLI</a>
+  - title: 引用
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 命令行
+            html: <p><a href="/cli/azure/acs">Azure CLI</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/compute/containerservices">REST API</a></p>

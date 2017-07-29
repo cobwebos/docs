@@ -135,9 +135,7 @@
 #### [启用和查看指标](storage-enable-and-view-metrics.md)
 #### [监视、诊断和故障排除](storage-monitoring-diagnosing-troubleshooting.md)
 #### [故障排除教程](storage-e2e-troubleshooting.md)
-### 对磁盘删除错误进行故障排除
-#### [在 Resource Manager 部署中](storage-resource-manager-cannot-delete-storage-account-container-vhd.md)
-#### [在经典部署中](storage-cannot-delete-storage-account-container-vhd.md)
+### [排查磁盘删除错误](storage-resource-manager-cannot-delete-storage-account-container-vhd.md)
 ### [排查文件存储问题](storage-troubleshoot-file-connection-problems.md)
 ## 传输数据
 ### [向/从存储移动数据](storage-moving-data.md)
@@ -208,7 +206,7 @@
 ### [故障排除教程](storage-e2e-troubleshooting-classic-portal.md)
 
 # 资源
-## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=storage)
 ## [Azure 存储客户端工具](storage-explorers.md)
 ## [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
 ## [定价](https://azure.microsoft.com/pricing/details/storage/blobs/)
