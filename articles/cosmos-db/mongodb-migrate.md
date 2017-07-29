@@ -130,7 +130,7 @@ ms.lasthandoff: 06/29/2017
     
     * 如果计算出的 batchSize > 24，请将 batchSize 值设置为 24。
     
-    * 若要计算 numInsertionWorkers，请使用以下公式：numInsertionWorkers =  (预配的吞吐量 * 延迟秒数) / (批大小 * 单文档写入所使用的 RU)  **。
+    * 若要计算 *numInsertionWorkers* ，请使用以下公式：  *numInsertionWorkers =  (预配的吞吐量 * 延迟秒数) / (批大小 * 单文档写入所使用的 RU)*。
         
     |属性|值|
     |--------|-----|

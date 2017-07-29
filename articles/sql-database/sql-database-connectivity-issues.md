@@ -336,7 +336,7 @@ Enterprise Library 6 (EntLib60) 是 .NET 类的框架，可帮助你实施云服
 ### <a name="entlib60-classes-for-transient-errors-and-retry"></a>用于暂时性错误和重试的 EntLib60 类
 以下 EntLib60 类对重试逻辑特别有用。 所有这些类都包含在 **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** 命名空间或其子级中：
 
-*在命名空间 **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** 中：*
+*在命名空间 **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling**中：*
 
 * **RetryPolicy** 类
   
