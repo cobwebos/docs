@@ -1,8 +1,7 @@
 
 <!--author=alkohli last changed: 01/02/17-->
 
-#### 删除 StorSimple 备份策略
-<a id="to-delete-a-storsimple-backup-policy" class="xliff"></a>
+#### <a name="to-delete-a-storsimple-backup-policy"></a>删除 StorSimple 备份策略
 
 1. 转到 StorSimple 设备并单击“备份策略”。
 

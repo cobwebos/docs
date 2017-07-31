@@ -22,22 +22,18 @@ ms.lasthandoff: 06/30/2017
 
 
 ---
-# 使用 Jenkins 生成和部署 Linux Java 应用程序
-<a id="use-jenkins-to-build-and-deploy-your-linux-java-application" class="xliff"></a>
+# <a name="use-jenkins-to-build-and-deploy-your-linux-java-application"></a>使用 Jenkins 生成和部署 Linux Java 应用程序
 Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使用 Jenkins 生成和部署 Azure Service Fabric 应用程序。
 
-## 常规先决条件
-<a id="general-prerequisites" class="xliff"></a>
+## <a name="general-prerequisites"></a>常规先决条件
 - 已在本地安装 Git。 可以根据操作系统[从 Git 下载页](https://git-scm.com/downloads)安装相应的 Git 版本。 如果你是 Git 的新手，请通过 [Git 文档](https://git-scm.com/docs)了解其详细信息。
 - 已准备好 Service Fabric Jenkins 插件。 可从 [Service Fabric 下载页](https://servicefabricdownloads.blob.core.windows.net/jenkins/serviceFabric.hpi)下载该插件。
 
-## 在 Service Fabric 群集中设置 Jenkins
-<a id="set-up-jenkins-inside-a-service-fabric-cluster" class="xliff"></a>
+## <a name="set-up-jenkins-inside-a-service-fabric-cluster"></a>在 Service Fabric 群集中设置 Jenkins
 
 可在 Service Fabric 群集内部或外部设置 Jenkins。 以下各部分展示了如何在群集内部对其进行设置，同时使用 Azure 存储帐户保存容器实例的状态。
 
-### 先决条件
-<a id="prerequisites" class="xliff"></a>
+### <a name="prerequisites"></a>先决条件
 1. 准备好 Service Fabric Linux 群集。 通过 Azure 门户创建的 Service Fabric 群集已安装 Docker。 如果在本地运行群集，可使用 ``docker info`` 命令检查是否已安装 Docker。 如果未安装，请相应地使用以下命令安装它：
 
   ```sh
@@ -70,8 +66,7 @@ bash Scripts/install.sh
 ```
 这会在群集上安装 Jenkins 容器，可以使用 Service Fabric Explorer 监视该容器。
 
-### 步骤
-<a id="steps" class="xliff"></a>
+### <a name="steps"></a>步骤
 1. 在浏览器中转到 ``http://PublicIPorFQDN:8081``。 该 URL 提供了登录时所需的初始管理员密码的路径。 可继续以管理员用户的身份使用 Jenkins。 或者，可在使用初始管理员帐户登录后创建和更改用户。
 
    > [!NOTE]
@@ -95,13 +90,11 @@ bash Scripts/install.sh
   docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
   ```
 
-## 在 Service Fabric 群集外部设置 Jenkins
-<a id="set-up-jenkins-outside-a-service-fabric-cluster" class="xliff"></a>
+## <a name="set-up-jenkins-outside-a-service-fabric-cluster"></a>在 Service Fabric 群集外部设置 Jenkins
 
 可在 Service Fabric 群集内部或外部设置 Jenkins。 以下部分说明如何在群集外部设置 Jenkins。
 
-### 先决条件
-<a id="prerequisites" class="xliff"></a>
+### <a name="prerequisites"></a>先决条件
 需安装 Docker。 可在终端中使用以下命令安装 Docker：
 
   ```sh
@@ -111,8 +104,7 @@ bash Scripts/install.sh
 
 现在，在终端中运行 ``docker info`` 时，输出中应会显示 Docker 服务正在运行。
 
-### 步骤
-<a id="steps" class="xliff"></a>
+### <a name="steps"></a>步骤
   1. 拉取 Service Fabric Jenkins 容器映像：``docker pull raunakpandya/jenkins:v1``
   2. 运行容器映像：``docker run -itd -p 8080:8080 raunakpandya/jenkins:v1``
   3. 获取容器映像实例的 ID。 可以使用命令 ``docker ps –a`` 列出所有 Docker 容器
@@ -135,15 +127,13 @@ bash Scripts/install.sh
 
 确保托管 Jenkins 容器映像的群集或计算机使用公共 IP。 这样，Jenkins 实例便可以从 GitHub 接收通知。
 
-## 通过门户安装 Service Fabric Jenkins 插件
-<a id="install-the-service-fabric-jenkins-plug-in-from-the-portal" class="xliff"></a>
+## <a name="install-the-service-fabric-jenkins-plug-in-from-the-portal"></a>通过门户安装 Service Fabric Jenkins 插件
 
 1. 转到 ``http://PublicIPorFQDN:8081``
 2. 在 Jenkins 仪表板中，选择“管理 Jenkins” > “管理插件” > “高级”。
 可在此处上传插件。 选择“选择文件”，然后选择已根据先决条件所述下载的“serviceFabric.hpi”文件。 选择 **上传** 时，Jenkins 会自动安装该插件。 如果系统请求重新启动，请允许。
 
-## 创建和配置 Jenkins 作业
-<a id="create-and-configure-a-jenkins-job" class="xliff"></a>
+## <a name="create-and-configure-a-jenkins-job"></a>创建和配置 Jenkins 作业
 
 1. 通过仪表板创建**新项**。
 2. 输入项名称（例如 **MyJob**）。 选择“自由格式的项目”，然后单击“确定”。
@@ -176,8 +166,7 @@ bash Scripts/install.sh
    > 如果使用 Service Fabric 部署 Jenkins 容器映像，此处的群集可与托管 Jenkins 容器应用程序的群集相同。
    >
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 现已配置 GitHub 和 Jenkins。 请考虑对存储库示例 https://github.com/sayantancs/SFJenkins 中的 ``MyActor`` 项目进行一些示例更改。 将更改推送到远程 ``master`` 分支（或配置使用的任何分支）。 这会触发配置的 Jenkins 作业 ``MyJob``。 它会从 GitHub 提取更改、生成这些更改并将应用程序部署到在生成后操作中指定的群集终结点。  
 
   <!-- Images -->

@@ -22,8 +22,7 @@ ms.lasthandoff: 06/29/2017
 
 
 ---
-# 监视和管理适用于 Windows 计算机的 Azure 恢复服务保管库和服务器
-<a id="monitor-and-manage-azure-recovery-services-vaults-and-servers-for-windows-machines" class="xliff"></a>
+# <a name="monitor-and-manage-azure-recovery-services-vaults-and-servers-for-windows-machines"></a>监视和管理适用于 Windows 计算机的 Azure 恢复服务保管库和服务器
 > [!div class="op_single_selector"]
 > * [Resource Manager](backup-azure-manage-windows-server.md)
 > * [经典](backup-azure-manage-windows-server-classic.md)
@@ -35,8 +34,7 @@ ms.lasthandoff: 06/29/2017
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
 
-## 打开恢复服务保管库
-<a id="open-a-recovery-services-vault" class="xliff"></a>
+## <a name="open-a-recovery-services-vault"></a>打开恢复服务保管库
 
 恢复服务保管库仪表板显示恢复服务保管库的详细信息或属性。
 
@@ -59,8 +57,7 @@ ms.lasthandoff: 06/29/2017
 
     打开恢复服务保管库后，请尝试执行任意监视或管理任务。
 
-## 监视备份作业和警报
-<a id="monitor-backup-jobs-and-alerts" class="xliff"></a>
+## <a name="monitor-backup-jobs-and-alerts"></a>监视备份作业和警报
 
 可通过恢复服务保管库仪表板监视作业和警报，可以查看的内容包括：
 
@@ -81,16 +78,14 @@ ms.lasthandoff: 06/29/2017
 
 ![备份仪表板任务](./media/backup-azure-manage-windows-server/dashboard-tasks.png)
 
-## 使用 Azure 备份代理进行备份的警报：
-<a id="alerts-for-backups-using-azure-backup-agent" class="xliff"></a>
+## <a name="alerts-for-backups-using-azure-backup-agent"></a>使用 Azure 备份代理进行备份的警报：
 | 警报级别 | 已发送的警报 |
 | --- | --- |
 | 严重 |备份失败、恢复失败 |
 | 警告 |备份已完成，但出现警告（由于损坏问题，有不到一百个文件尚未备份，成功备份了一百多万个文件） |
 | 信息性 |无 |
 
-## 管理备份警报
-<a id="manage-backup-alerts" class="xliff"></a>
+## <a name="manage-backup-alerts"></a>管理备份警报
 单击“**备份警报**”磁贴即可打开“**备份警报**”边栏选项卡对警报进行管理。
 
 ![备份警报](./media/backup-azure-manage-windows-server/manage-backup-alerts.png)
@@ -133,8 +128,7 @@ ms.lasthandoff: 06/29/2017
 >
 >
 
-## 管理备份项
-<a id="manage-backup-items" class="xliff"></a>
+## <a name="manage-backup-items"></a>管理备份项
 现在可以在管理门户中管理本地备份。 在仪表板的“备份”部分，“**备份项**”磁贴显示在保管库中受保护的备份项数目。
 
 单击“备份项”磁贴中的“**文件-文件夹**”。
@@ -154,8 +148,7 @@ ms.lasthandoff: 06/29/2017
 
 ![设置中的备份项](./media/backup-azure-manage-windows-server/backup-files-and-folders.png)
 
-## 管理备份作业
-<a id="manage-backup-jobs" class="xliff"></a>
+## <a name="manage-backup-jobs"></a>管理备份作业
 本地备份（将本地服务器备份到 Azure 时）和 Azure 备份的备份作业均显示在仪表板中。
 
 在仪表板的“备份”部分，“备份作业”磁贴显示符合以下条件的作业数：
@@ -178,15 +171,13 @@ ms.lasthandoff: 06/29/2017
 >
 >
 
-## 监视备份使用情况
-<a id="monitor-backup-usage" class="xliff"></a>
+## <a name="monitor-backup-usage"></a>监视备份使用情况
 在仪表板的“备份”部分，“备份使用情况”磁贴显示在 Azure 中耗用的存储空间。 具体提供以下存储使用情况：
 
 * 与保管库关联的 Cloud LRS 存储使用情况
 * 与保管库关联的 Cloud GRS 存储使用情况
 
-## 管理生产服务器
-<a id="manage-your-production-servers" class="xliff"></a>
+## <a name="manage-your-production-servers"></a>管理生产服务器
 若要管理生产服务器，请单击“**设置**”。
 
 在“管理”下单击“**备份基础结构 > 生产服务器**”。
@@ -196,8 +187,7 @@ ms.lasthandoff: 06/29/2017
 ![受保护的项](./media/backup-azure-manage-windows-server/production-server-list.png)
 
 
-## 打开 Azure 备份代理
-<a id="open-the-azure-backup-agent" class="xliff"></a>
+## <a name="open-the-azure-backup-agent"></a>打开 Azure 备份代理
 打开“**Microsoft Azure 备份代理**”（可以通过在计算机中搜索 *Microsoft Azure 备份*来找到它）。
 
 ![计划 Windows Server 备份](./media/backup-azure-manage-windows-server/snap-in-search.png)
@@ -216,8 +206,7 @@ ms.lasthandoff: 06/29/2017
 >
 >
 
-## 修改备份计划
-<a id="modify-the-backup-schedule" class="xliff"></a>
+## <a name="modify-the-backup-schedule"></a>修改备份计划
 1. 在 Microsoft Azure 备份代理中，单击“**计划备份**”。
 
     ![计划 Windows Server 备份](./media/backup-azure-manage-windows-server/schedule-backup.png)
@@ -248,8 +237,7 @@ ms.lasthandoff: 06/29/2017
 
     修改保护设置后，可以通过转到“**作业**”选项卡并确认更改已反映在备份作业中，来确认可正确触发备份。
 
-## 启用网络限制
-<a id="enable-network-throttling" class="xliff"></a>
+## <a name="enable-network-throttling"></a>启用网络限制
 
 Azure 备份代理提供的“限制”选项卡可让你控制在数据传输期间使用网络带宽的方式。 如果需要在上班时间内备份数据，但不希望备份程序干扰其他 Internet 流量，此控制机制很有帮助。 数据传输的限制适用于备份和还原活动。  
 
@@ -265,8 +253,7 @@ Azure 备份代理提供的“限制”选项卡可让你控制在数据传输�
     带宽值从每秒 512 千字节 (Kbps) 开始，最高可为每秒 1023 兆字节 (Mbps)。 你还可以指定“**工作时间**”的开始和结束时间，以及一周中有哪几天被视为工作日。 在指定的工作时间之外的时间被视为非工作时间。
 3. 单击 **“确定”**。
 
-## 管理排除设置
-<a id="manage-exclusion-settings" class="xliff"></a>
+## <a name="manage-exclusion-settings"></a>管理排除设置
 1. 打开 **Microsoft Azure 备份代理**（可以通过在计算机中搜索 *Microsoft Azure 备份*来找到它）。
 
     ![计划 Windows Server 备份](./media/backup-azure-manage-windows-server/snap-in-search.png)
@@ -301,8 +288,7 @@ Azure 备份代理提供的“限制”选项卡可让你控制在数据传输�
 
     ![计划 Windows Server 备份](./media/backup-azure-manage-windows-server/finish-exclusions.png)
 
-## 常见问题
-<a id="frequently-asked-questions" class="xliff"></a>
+## <a name="frequently-asked-questions"></a>常见问题
 **问 1.备份作业状态在 Azure 备份代理中显示为“已完成”，但没有立即反映在门户中，为什么？**
 
 A1. 备份作业状态反映在 Azure 备份代理中与反映在 Azure 门户中存在延迟，最大延迟为 15 分钟。
@@ -319,8 +305,7 @@ A3. 以下是为了降低警报噪音而不发送通知的情况：
 * 取消了作业。
 * 第二个备份作业失败，因为原始备份作业正在进行中。
 
-## 监视问题疑难解答
-<a id="troubleshooting-monitoring-issues" class="xliff"></a>
+## <a name="troubleshooting-monitoring-issues"></a>监视问题疑难解答
 **问题：**Azure 备份代理的作业和/或警报未在门户中出现。
 
 **故障排除步骤：**```OBRecoveryServicesManagementAgent``` 进程将作业和警报数据发送到 Azure 备份服务。 此进程偶尔会被阻塞或关闭。
@@ -333,8 +318,7 @@ A3. 以下是为了降低警报噪音而不发送通知的情况：
     例如：<br/>
    `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 * [从 Azure 还原 Windows Server 或 Windows 客户端](backup-azure-restore-windows-server.md)
 * 若要了解有关 Azure 备份的详细信息，请参阅 [Azure 备份概述](backup-introduction-to-azure-backup.md)
 * 访问 [Azure 备份论坛](http://go.microsoft.com/fwlink/p/?LinkId=290933)

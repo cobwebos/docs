@@ -22,8 +22,7 @@ ms.lasthandoff: 07/04/2017
 
 
 ---
-# 批量管理 IoT 中心设备标识
-<a id="manage-your-iot-hub-device-identities-in-bulk" class="xliff"></a>
+# <a name="manage-your-iot-hub-device-identities-in-bulk"></a>批量管理 IoT 中心设备标识
 
 每个 IoT 中心都有一个标识注册表，可以使用该注册表在服务中创建每设备资源。 设备标识注册表还可控制对面向设备的终结点的访问。 本文介绍如何在标识注册表中批量导入和导出设备标识。
 
@@ -31,8 +30,7 @@ ms.lasthandoff: 07/04/2017
 
 **RegistryManager** 类包括使用**作业**框架的 **ExportDevicesAsync** 和 **ImportDevicesAsync** 方法。 这些方法可让你导出、导入和同步整个 IoT 中心标识注册表。
 
-## 什么是作业？
-<a id="what-are-jobs" class="xliff"></a>
+## <a name="what-are-jobs"></a>什么是作业？
 
 当操作出现以下情况时，标识注册表操作使用“作业”系统：
 
@@ -72,8 +70,7 @@ while(true)
 }
 ```
 
-## 导出设备
-<a id="export-devices" class="xliff"></a>
+## <a name="export-devices"></a>导出设备
 
 使用 **ExportDevicesAsync** 方法，将整个 IoT 中心标识注册表导出到使用[共享访问签名](../storage/storage-security-guide.md#data-plane-security)的 [Azure 存储](../storage/index.md) Blob 容器。
 
@@ -189,8 +186,7 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 > [!NOTE]
 > 你还可以使用 **RegistryManager** 类的 **GetDevicesAsync** 方法获取设备的列表。 但是，此方法有一个硬性限制，那就是返回的设备对象数最多只能有 1000 个。 **GetDevicesAsync** 方法的预期用例用于帮助调试的开发方案，不建议用于生产工作负荷。
 
-## 导入设备
-<a id="import-devices" class="xliff"></a>
+## <a name="import-devices"></a>导入设备
 
 通过 **RegistryManager** 类中的 **ImportDevicesAsync** 方法，可以在 IoT 中心标识注册表中执行批量导入和同步操作。 如同 **ExportDevicesAsync** 方法，**ImportDevicesAsync** 方法也使用**作业**框架。
 
@@ -223,8 +219,7 @@ JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasU
 
 还可以使用此方法导入设备孪生的数据。 用于数据输入的格式与 **ExportDevicesAsync** 部分中显示的格式相同。 采用此方式，可以重新导入已导出的数据。 **$metadata** 是可选的。
 
-## 导入行为
-<a id="import-behavior" class="xliff"></a>
+## <a name="import-behavior"></a>导入行为
 
 可以使用 **ImportDevicesAsync** 方法在标识注册表中执行以下批量操作：
 
@@ -254,8 +249,7 @@ JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasU
 > [!NOTE]
 > 如果序列化数据未显式定义设备的 **importMode** 标志，则该标志在导入操作过程中默认为 **createOrUpdate**。
 
-## 导入设备示例 – 批量预配设备
-<a id="import-devices-example--bulk-device-provisioning" class="xliff"></a>
+## <a name="import-devices-example--bulk-device-provisioning"></a>导入设备示例 – 批量预配设备
 
 下面的 C# 代码示例说明了如何生成多个执行以下操作的设备标识：
 
@@ -326,8 +320,7 @@ while(true)
 }
 ```
 
-## 导入设备示例 – 批量删除
-<a id="import-devices-example--bulk-deletion" class="xliff"></a>
+## <a name="import-devices-example--bulk-deletion"></a>导入设备示例 – 批量删除
 
 以下代码示例演示如何删除使用前面代码示例添加的设备：
 
@@ -377,8 +370,7 @@ while(true)
 }
 ```
 
-## 获取容器 SAS URI
-<a id="get-the-container-sas-uri" class="xliff"></a>
+## <a name="get-the-container-sas-uri"></a>获取容器 SAS URI
 
 下面的代码示例演示如何使用 Blob 容器的读取、写入和删除权限生成 [SAS URI](../storage/storage-dotnet-shared-access-signature-part-2.md)：
 
@@ -405,8 +397,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 }
 ```
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 在本文中，你已学习如何针对 IoT 中心内的标识注册表执行批量操作。 若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
 
