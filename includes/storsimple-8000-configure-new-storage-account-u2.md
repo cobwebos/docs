@@ -1,8 +1,7 @@
 <!--author=alkohli last changed: 01/20/17-->
 
 
-#### 在 StorSimple Device Manager 服务所在的同一 Azure 订阅中添加存储帐户凭据
-<a id="to-add-a-storage-account-credential-in-the-same-azure-subscription-as-the-storsimple-device-manager-service" class="xliff"></a>
+#### <a name="to-add-a-storage-account-credential-in-the-same-azure-subscription-as-the-storsimple-device-manager-service"></a>在 StorSimple Device Manager 服务所在的同一 Azure 订阅中添加存储帐户凭据
 
 1. 转到 StorSimple Device Manager 服务。 在“配置”部分中，单击“存储帐户凭据”。
 
