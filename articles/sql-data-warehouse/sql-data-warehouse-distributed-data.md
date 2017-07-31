@@ -13,14 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 06/29/2017
+ms.date: 07/12/2017
 ms.author: jrj;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: ec9b3cc391a75b4f3a75f95a2ff9613c0317bfa2
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 3c166acb17193caae32d7bad133ec510ff679353
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="distributed-data-and-distributed-tables-for-massively-parallel-processing-mpp"></a>适用于大规模并行处理 (MPP) 的分布式数据和分布式表
@@ -68,7 +67,7 @@ ms.lasthandoff: 06/30/2017
 ## <a name="Replicated"></a> 复制的表
 复制的表在每个计算节点上存储表的完整副本。 复制表以后，无需在执行联接或聚合前在计算节点中间传输数据。 复制表仅适用于小型表，因为将整个表存储在每个计算节点上需要额外的存储。  
 
-下图显示了一个存储在每个计算节点上的复制表。 对于 SQL 数据仓库，复制的表由轮循机制表进行维护，并完全复制到每个计算节点上的首个分发数据库。 对于 Parallel 数据仓库，复制的表跨分配给计算节点的所有磁盘进行存储。  此磁盘策略通过 SQL Server 文件组实现。  
+下图显示了一个存储在每个计算节点上的复制表。 在 SQL 数据仓库中，复制表将完整复制到每个计算节点上的分发数据库。 对于 Parallel 数据仓库，复制的表跨分配给计算节点的所有磁盘进行存储。  此磁盘策略通过 SQL Server 文件组实现。  
 
 ![复制表](media/sql-data-warehouse-distributed-data/replicated-table.png "复制表") 
 

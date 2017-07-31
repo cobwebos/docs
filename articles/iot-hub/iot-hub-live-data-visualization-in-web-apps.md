@@ -1,6 +1,6 @@
 ---
 title: "Azure IoT 中心的实时传感器数据可视化 – Web 应用 | Microsoft Docs"
-description: "使用 Microsoft Azure App Service 的 Web 应用功能可视化从传感器收集并发送到 IoT 中心的温度和湿度数据。"
+description: "使用 Microsoft Azure 应用服务的 Web 应用功能可视化从传感器收集并发送到 IoT 中心的温度和湿度数据。"
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/29/2017
 ms.author: xshi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 74f95d571da2e3066958cf3c5ab1938a5c631f7d
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 4f30643926def3259e603a94c741b8f65427b8da
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/13/2017
 
 ---
-# <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>使用 Azure App Service 的 Web 应用功能可视化 Azure IoT 中心的实时传感器数据
+# <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>使用 Azure 应用服务的 Web 应用功能可视化 Azure IoT 中心的实时传感器数据
 
 ![端到端关系图](media/iot-hub-get-started-e2e-diagram/5.png)
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 07/06/2017
 
    ![将 Web 应用部署配置为使用本地 Git 存储库](media/iot-hub-live-data-visualization-in-web-apps/5_configure-web-app-deployment-local-git-repository-azure.png)
 
-2. 单击“部署凭据”，创建用于连接到 Azure 中 Git 存储库的用户名和密码，然后单击“确定”。
+2. 单击“部署凭据”，创建用于连接到 Azure 中 Git 存储库的用户名和密码，然后单击“保存”。
 
 3. 单击“概述”并记下“Git clone URL”的值。
 

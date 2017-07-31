@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 24d6a25e872eabb7d64d57d5ee66969401e4f1cd
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: fdb3c5cbd3acee90386352c6f180a71aa81f54fe
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/11/2017
 
 
 ---
@@ -84,7 +86,7 @@ VNETLocal 始终是该特定网络的 VNet 的已定义地址前缀（也就是�
 3. “Default”= 上述路由表中所示的系统路由、本地 VNet 和静态条目。
 
 > [!NOTE]
-> 现在可以将用户定义的路由 (UDR) 与 ExpressRoute 网关和 VPN 网关配合使用，以强制将出站和入站跨界流量路由到网络虚拟设备 (NVA)。
+> 现在可以将用户定义的路由 (UDR) 与 ExpressRoute 网关和 VPN 网关配合使用，强制将出站和入站跨界流量路由到网络虚拟设备 (NVA)。
 > 
 > 
 
@@ -274,11 +276,11 @@ UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟�
 ### <a name="firewall-rules-creation"></a>创建防火墙规则
 本示例使用三种类型的防火墙规则，它们各有不同的图标：
 
-应用程序重定向规则： ![应用程序重定向图标][7]
+应用程序重定向规则：![“应用程序重定向”图标][7]
 
-目标 NAT 规则： ![目标 NAT 图标][8]
+目标 NAT 规则：![“目标 NAT”图标][8]
 
-传递规则： ![传递图标][9]
+传递规则：![“传递”图标][9]
 
 可以在 Barracuda 网站中找到有关这些规则的详细信息。
 
@@ -378,7 +380,7 @@ UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟�
 > 
 
 ## <a name="rule-activation"></a>规则激活
-根据逻辑图中的规范修改规则集后，必须将规则集上载到防火墙并激活。
+根据逻辑图中的规范修改规则集后，必须将规则集上传到防火墙并激活。
 
 ![防火墙规则激活][18]
 
@@ -983,9 +985,4 @@ UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟�
 <!--Link References-->
 [HOME]: ../best-practices-network-security.md
 [SampleApp]: ./virtual-networks-sample-app.md
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

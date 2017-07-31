@@ -7,18 +7,18 @@ author: jluk
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: 
-ms.service: 
+ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 07/10/2017
 ms.author: juluk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 347984aae91a9fa99f88001effe2cba49f92deb9
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: a174ecd452047d11f6ad374ede76becabcfff899
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 07/18/2017
 
 ---
 
@@ -29,8 +29,7 @@ ms.lasthandoff: 05/17/2017
 ## <a name="start-cloud-shell"></a>启动 Cloud Shell
 1. 从 Azure 门户的顶部导航栏启动 **Cloud Shell** <br>
 ![](media/shell-icon.png)
-2. 选择用于创建存储帐户和 Azure 文件共享的订阅 <br>
-![](media/storage-prompt.png)
+2. 选择用于创建存储帐户和 Azure 文件共享的订阅
 3. 选择“创建存储”
 
 > [!TIP]
@@ -43,7 +42,7 @@ ms.lasthandoff: 05/17/2017
 `az account set --subscription my-subscription-name`
 
 > [!TIP]
-> 将使用 $Home 目录中保存的 `azureProfile.json` 为将来的会话记住订阅。
+> 将使用 `/home/<user>/.azure/azureProfile.json` 为将来的会话记住订阅。
 
 ### <a name="create-a-resource-group"></a>创建资源组
 在 WestUS 中创建名为“MyRG”的新资源组： <br>
@@ -72,5 +71,6 @@ ms.lasthandoff: 05/17/2017
 运行 `az group delete -n MyRG`
 
 ## <a name="next-steps"></a>后续步骤
-[了解如何将存储保存到 Cloud Shell 中](persisting-shell-storage.md) [了解 Azure CLI 2.0] (https://docs.microsoft.com/cli/azure/) [了解 Azure 文件存储] (https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) 
-
+[了解如何持久保存 Cloud Shell 上的存储](persisting-shell-storage.md) <br>
+[了解 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/) <br>
+[了解 Azure 文件存储](../storage/storage-files-introduction.md) <br>

@@ -1,8 +1,8 @@
 ---
-title: "Azure 监视器 CLI 快速入门示例。 | Microsoft 文档"
-description: "Azure 监视器功能的示例 CLI 命令。 Azure 监视器是一项 Microsoft Azure 服务，允许用户发送警报通知、基于所配置的遥测数据调用 Web URL 和自动缩放云服务、虚拟机和 Web 应用。"
+title: "Azure Monitor CLI 1.0 快速入门示例。 | Microsoft 文档"
+description: "Azure Monitor 功能的示例 CLI 1.0 命令。 Azure 监视器是一项 Microsoft Azure 服务，允许用户发送警报通知、基于所配置的遥测数据调用 Web URL 和自动缩放云服务、虚拟机和 Web 应用。"
 author: kamathashwin
-manager: carolz
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2016
 ms.author: ashwink
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 0e629dac553f576f2dd3059453b00d6b10e48fd7
-ms.lasthandoff: 03/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: 5a8362b52c06b1b41f8108926ba07bbe5901125a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/18/2017
 
 ---
-# <a name="azure-monitor--cross-platform-cli-quick-start-samples"></a>Azure 监视器跨平台 CLI 快速启动示例
+# <a name="azure-monitor--cross-platform-cli-10-quick-start-samples"></a>Azure Monitor 跨平台 CLI 1.0 快速入门示例
 本文演示有助于访问 Azure 监视器功能的示例命令行接口 (CLI) 命令。 使用 Azure 监视器，可以基于配置的遥测数据值自动缩放云服务、虚拟机和 Web 应用以及发送警报通知或调用 Web URL。
 
 > [!NOTE]

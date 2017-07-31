@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/23/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 22c0ee5090d67430fc63ad3f3c09076de0be067c
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: b820491107372551896bf37d04cf995e6a8bd0e7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="azure-virtual-network"></a>Azure 虚拟网络
@@ -92,4 +91,5 @@ VNet 之间可相互连接，因此，连接到任意一个 VNet 的资源都可
 
 - 完成[创建首个虚拟网络](virtual-network-get-started-vnet-subnet.md)一文中的步骤，创建自己的首个虚拟网络，并将几个 VM 连接到此网络。
 - 完成[配置点到站点连接](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文中的步骤，为 VNet 创建一个点到站点连接。
+- 了解 Azure 的一些其他关键[网络功能](../networking/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 

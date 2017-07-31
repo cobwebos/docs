@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;anilmur
-translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 138598ce20459b7d4975c6640b28e9a999de30cd
-ms.lasthandoff: 03/06/2017
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 2f052ea5ff50cf584f9116f2802eca1fd077dcbb
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/11/2017
 
 
 ---
@@ -53,7 +54,7 @@ ms.lasthandoff: 03/06/2017
 若要阻止频道进一步计费，则必须通过 API 或 Azure 门户停止频道。
 在使用完实时编码通道时，你需要亲自停止通道。  不停止编码通道会导致持续计费。
 
-### <a name="a-idstatesachannel-states-and-how-they-map-to-the-billing-mode"></a><a id="states"></a>通道状态及其如何映射到计费模式
+### <a id="states"></a>通道状态及其如何映射到计费模式
 频道的当前状态。 可能的值包括：
 
 * **已停止**。 这是通道在创建后的初始状态（除非在门户中选择了自动启动）。此状态下不会发生计费。 在此状态下，可以更新频道属性，但不允许进行流式传输。
@@ -81,7 +82,7 @@ ms.lasthandoff: 03/06/2017
 
 ![实时工作流][live-overview]
 
-## <a name="a-idscenarioacommon-live-streaming-scenario"></a><a id="scenario"></a>常见的实时流方案
+## <a id="scenario"></a>常见的实时流方案
 以下是在创建常见的实时流应用程序时涉及的常规步骤。
 
 > [!NOTE]
@@ -119,8 +120,8 @@ ms.lasthandoff: 03/06/2017
 > 
 > 
 
-## <a name="a-idchannelachannels-input-ingest-configurations"></a><a id="channel"></a>频道输入（引入）配置
-### <a name="a-idingestprotocolsaingest-streaming-protocol"></a><a id="Ingest_Protocols"></a>引入流式传输协议
+## <a id="channel"></a>频道输入（引入）配置
+### <a id="Ingest_Protocols"></a>引入流式传输协议
 如果“编码器类型”设为“标准”，则有效选项为：
 
 * **RTP** (MPEG-TS)：RTP 上的 MPEG-2 传输流。  
@@ -166,7 +167,7 @@ ms.lasthandoff: 03/06/2017
   * Imagine Communications Selenio ENC 2
   * Elemental Live
 
-#### <a name="a-idsinglebitratertmpasingle-bitrate-rtmp"></a><a id="single_bitrate_RTMP"></a>单比特率 RTMP
+#### <a id="single_bitrate_RTMP"></a>单比特率 RTMP
 注意事项：
 
 * 传入流不能包含多码率视频
@@ -248,7 +249,7 @@ ms.lasthandoff: 03/06/2017
 #### <a name="index"></a>索引
 一个从零开始的索引，它指定哪个输入视频流应由频道内的实时编码器处理。 仅当引入流协议是 RTP (MPEG-TS) 时，此设置才适用。
 
-默认值为&0;。 建议在单节目传输流 (SPTS) 中发送。 如果输入流包含多个节目，实时编码器将分析输入中的节目映射表 (PMT)，标识流类型名称为 MPEG-2 Video 或 H.264 的输入并以 PMT 中指定的顺序安排这些输入。 然后，将使用从零开始的索引选取该安排中的第 n 个条目。
+默认值为 0。 建议在单节目传输流 (SPTS) 中发送。 如果输入流包含多个节目，实时编码器将分析输入中的节目映射表 (PMT)，标识流类型名称为 MPEG-2 Video 或 H.264 的输入并以 PMT 中指定的顺序安排这些输入。 然后，将使用从零开始的索引选取该安排中的第 n 个条目。
 
 ### <a name="audio-stream"></a>音频流
 可选。 描述输入音频流。 如果未指定此字段，则将应用指定的默认值。 仅当输入流协议设为 RTP (MPEG-TS) 时，才允许使用此设置。
@@ -261,7 +262,7 @@ ms.lasthandoff: 03/06/2017
 
 如果频道的输入为 MPEG-2 TS over RTP，则最多可以指定 8 个音频流集。 但是，不能有两个具有相同索引值的条目。
 
-### <a name="a-idpresetasystem-preset"></a><a id="preset"></a>系统预设
+### <a id="preset"></a>系统预设
 指定此频道内的实时编码器要使用的预设。 目前，唯一允许的值是 **Default720p**（默认值）。
 
 请注意，如果需要自定义预设，应通过 Microsoft.com 联系 amslived。
@@ -293,7 +294,7 @@ ms.lasthandoff: 03/06/2017
 以下是指示广告时可以设置的属性。 
 
 ### <a name="duration"></a>持续时间
-商业广告的持续时间（以秒为单位）。 这必须是非零正值，才能启动商业广告。 当商业广告正在播放时，将持续时间设为&0;，并且 CueId 与正在播放的商业广告匹配，则广告将被取消。
+商业广告的持续时间（以秒为单位）。 这必须是非零正值，才能启动商业广告。 当商业广告正在播放时，将持续时间设为 0，并且 CueId 与正在播放的商业广告匹配，则广告将被取消。
 
 ### <a name="cueid"></a>CueId
 商业广告的唯一 ID，下游应用程序将使用它来执行相应操作。 必须是一个正整数。 可以将此值设为任意随机正整数，或使用上游系统跟踪提示 ID。 在通过 API 提交之前，请确保将任何 ID 规范化为正整数。
@@ -314,7 +315,7 @@ ms.lasthandoff: 03/06/2017
 ### <a name="insert-slate-on-ad-marker"></a>在 Ad 标记上插入清单
 当设为 true 时，此设置会将实时编码器配置为在广告期间插入清单图像。 默认值为 true。 
 
-### <a name="a-iddefaultslateadefault-slate-asset-id"></a><a id="default_slate"></a>默认静态图像资产 ID
+### <a id="default_slate"></a>默认静态图像资产 ID
 
 可选。 指定媒体服务资源（包含清单图像）的资源 ID。 默认值为 null。 
 
@@ -326,7 +327,7 @@ ms.lasthandoff: 03/06/2017
 * 分辨率最大为 1920x1080。
 * 大小最大为 3 MB。
 * 文件名必须具有 *.jpg 扩展名。
-* 必须将该图像作为资产中的唯一 AssetFile 上载到资产，此 AssetFile 应标记为主文件。 资产不能加密存储。
+* 必须将该图像作为资产中的唯一 AssetFile 上传到资产，此 AssetFile 应标记为主文件。 资产不能加密存储。
 
 如果未指定“默认盖板资产 Id”，并且“在 ad 标记上插入盖板”设为 **true**，则将使用默认 Azure 媒体服务图像隐藏输入视频流。 在清单期间音频也会静音。 
 
@@ -352,7 +353,7 @@ ms.lasthandoff: 03/06/2017
 ## <a name="getting-a-thumbnail-preview-of-a-live-feed"></a>获取实时源的缩略图预览
 启用实时编码后，你现在可以在实时源到达频道时获得实时源的预览。 这可以是一个很有用的工具，用于检查实时源是否实际到达频道。 
 
-## <a name="a-idstatesachannel-states-and-how-states-map-to-the-billing-mode"></a><a id="states"></a>频道状态，以及状态如何映射到计费模式
+## <a id="states"></a>频道状态，以及状态如何映射到计费模式
 频道的当前状态。 可能的值包括：
 
 * **已停止**。 这是频道在创建后的初始状态。 在此状态下，可以更新频道属性，但不允许进行流式传输。
@@ -375,7 +376,7 @@ ms.lasthandoff: 03/06/2017
 > 
 > 
 
-## <a name="a-idconsiderationsaconsiderations"></a><a id="Considerations"></a>注意事项
+## <a id="Considerations"></a>注意事项
 * 当某个编码类型为“标准”的频道出现输入源/贡献源丢失的情况时，该频道会采取相应的补偿措施，将源视频/音频替换为错误的盖板和静音。 该频道会持续发出静态图像，直到输入/贡献源恢复。 我们建议你不要让实时频道处于此类状态的时间超过 2 小时。 如果超出该限制，该频道将无法保证输入重新连接时的行为，也无法保证其响应重置命令时的行为。 这种情况下必须停止通道并将其删除，然后创建一个新的。
 * 当频道或其关联的节目正在运行时，无法更改输入协议。 如果你需要不同的协议，应当针对每个输入协议创建单独的频道。
 * 每次重新配置实时编码器时，可调用频道上的**重置**方法。 在重置频道之前，必须停止节目。 在重置频道后，重新启动节目。

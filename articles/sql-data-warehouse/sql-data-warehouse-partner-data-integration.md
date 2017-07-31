@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: partners
 ms.date: 01/30/2017
 ms.author: kevin;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9436796373af55a18c0b6fbfc036bd6616bbe4f
-ms.openlocfilehash: ea9c6be4dce0b0812ac780257732321444a57beb
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 892a7f2727ab899ef539ac4ae06a8669512e6fef
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/31/2017
+ms.lasthandoff: 07/11/2017
 
 
 ---

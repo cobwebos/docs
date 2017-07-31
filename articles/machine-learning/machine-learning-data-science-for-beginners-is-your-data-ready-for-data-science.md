@@ -1,5 +1,5 @@
 ---
-title: "数据是否可用于数据科研？ 数据评估 - Azure | Microsoft Docs"
+title: "数据是否可用于数据科研？ 数据评估 - Azure 机器学习 | Microsoft Docs"
 description: "了解数据可用于数据科学的 4 个条件。 “适合初学者的数据科学”的视频 2 中提供具体示例，帮助了解基本数据评估。"
 keywords: "相关数据, 评估数据, 准备数据, 数据条件, 数据就绪情况"
 services: machine-learning
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2017
+ms.date: 07/13/2017
 ms.author: cgronlun;garye
-translationtype: Human Translation
-ms.sourcegitcommit: b167b88d227bf239fd5d3676e48e04436f140c34
-ms.openlocfilehash: 3d2b259c29a52394ac42afba0c5572364cfeea39
-ms.lasthandoff: 02/10/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 8c27159e75482e5d3b2048298b118c55574c6b57
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="is-your-data-ready-for-data-science"></a>数据是否可用于数据科研？
@@ -27,6 +27,7 @@ ms.lasthandoff: 02/10/2017
 了解如何评估数据，确保其满足进行数据科学研究所需的基本条件。
 
 若要充分利用此系列内容，请观看所有视频。 [转到视频列表](#other-videos-in-this-series)
+<br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/SupervisionNotRequired/9/player]
 >
@@ -44,7 +45,7 @@ ms.lasthandoff: 02/10/2017
 ## <a name="transcript-is-your-data-ready-for-data-science"></a>脚本：数据是否可用于数据科学？
 欢迎观看“数据是否可用于数据科学？” “适合初学者的数据科学”系列中的第二个视频。  
 
-必须先提供一些优质原材料供数据科学分析，它才能提供你所需的答案。 就像做披萨一样，开始制作前准备的原料越好，最终的产品越好。
+必须先提供一些优质原材料供数据科学分析，它才能提供你所需的答案。 就像做披萨一样，开始制作前准备的原料越好，最终的产品越好。 
 
 ## <a name="criteria-for-data"></a>数据条件
 因此，对于数据科学，需要集中使用某些成分。
@@ -59,7 +60,7 @@ ms.lasthandoff: 02/10/2017
 ## <a name="is-your-data-relevant"></a>数据是否相关？
 因此，第一要素是需要相关的数据。
 
-![相关数据与不相关数据 - 评估数据](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-relevant-and-irrelevant-data.png)
+![相关数据与不相关数据 - 评估数据](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/relevant-and-irrelevant-data.png)
 
 观察左侧的表。 我们在波士顿酒吧外遇到了七个人，测量了他们的血液酒精含量，红袜队在最后一场比赛中的击球率，以及最邻近的便利店中的牛奶价格。
 
@@ -70,7 +71,7 @@ ms.lasthandoff: 02/10/2017
 ## <a name="do-you-have-connected-data"></a>数据是否互连？
 下一个要素是数据互连。
 
-![互连数据互不相连的数据 - 数据条件、数据就绪情况](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-connected-vs-disconnected-data.png)
+![互连数据互不相连的数据 - 数据条件、数据就绪情况](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/connected-vs-disconnected-data.png)
 
 以下是一些关于汉堡包质量的相关数据：烤制温度、肉饼重量和以及在当地食物杂志中的等级。 但请注意左侧表中的空白处。
 
@@ -83,7 +84,7 @@ ms.lasthandoff: 02/10/2017
 ## <a name="is-your-data-accurate"></a>数据是否准确？
 我们需要的下一要素是准确性。 以下是我们希望射箭击中的四个靶子。
 
-![准确数据与错误数据 - 数据条件](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-inaccurate-vs-accurate-data.png)
+![准确数据与错误数据 - 数据条件](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/inaccurate-vs-accurate-data.png)
 
 观察右上方的靶子。 我们在靶心附近位置获得了一组紧密集聚的数据。 当然，这是准确数据。 但奇怪的是，在数据科学语言中，右下方靶子所呈现的数据也被视为准确数据。
 
@@ -94,7 +95,7 @@ ms.lasthandoff: 02/10/2017
 ## <a name="do-you-have-enough-data-to-work-with"></a>数据是否足够使用？
 最后，我们需要的第 4 项要素是充足的数据。
 
-![是否具有充足的用于分析的数据？ 数据评估](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-barely-enough-data.png)
+![是否具有充足的用于分析的数据？ 数据评估](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/barely-enough-data.png)
 
 将表中的每个数据点视为画作中的每一笔触。 如果只有少许几笔，则这幅画会很模糊，很难分辨它是什么。
 

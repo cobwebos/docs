@@ -4,7 +4,7 @@ description: "比较单一数据库的 SQL 数据库服务层和性能级别，�
 keywords: "数据库选项,数据库性能"
 services: sql-database
 documentationcenter: 
-author: janeng
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: f5c5c596-cd1e-451f-92a7-b70d4916e974
@@ -15,18 +15,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 06/30/2017
-ms.author: janeng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 68d55d2dd088ce6350bd65b79206f161f9d3d788
+ms.author: carlrab
+ms.translationtype: HT
+ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
+ms.openlocfilehash: a3c287c5317bd7db2b560e37ddacc9e43d7292d1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
-<a id="what-performance-options-are-available-for-an-azure-sql-database" class="xliff"></a>
-
-# 针对 Azure SQL 数据库提供了哪些性能选项
+# <a name="what-performance-options-are-available-for-an-azure-sql-database"></a>针对 Azure SQL 数据库提供了哪些性能选项
 
 [Azure SQL 数据库](sql-database-technical-overview.md)针对单一数据库和[池化](sql-database-elastic-pool.md)数据库都提供了四个服务层。 这些服务层为：**基本**、**标准**、**高级**和**高级 RS**。 在每个服务层内有多个性能级别 ([DTU](sql-database-what-is-a-dtu.md)) 和存储选项用来处理不同的工作负荷和数据大小。 更高的性能级别提供更多的计算和存储资源，旨在逐级提高吞吐量和容量。 可在不停机的情况下动态更改服务层、性能级别和存储。 
 - **基本**、**标准**和**高级**服务层都提供 99.99% 的运行时间 SLA、灵活的业务连续性选项、安全功能和按小时计费功能。 
@@ -35,9 +32,7 @@ ms.lasthandoff: 07/06/2017
 > [!IMPORTANT]
 > Azure SQL 数据库可确保获得一组资源，并且数据库的预期性能特征不受 Azure 中的任何其他数据库影响。 
 
-<a id="choosing-a-service-tier" class="xliff"></a>
-
-## 选择服务层
+## <a name="choosing-a-service-tier"></a>选择服务层
 下表提供了最适用于不同应用程序工作负荷的层的示例。
 
 | 服务层 | 目标工作负荷 |
@@ -80,16 +75,12 @@ ms.lasthandoff: 07/06/2017
 > 有关将数据库分组到 SQL 弹性池中以共享计算和存储资源的详细信息，请查看 [SQL 弹性池](sql-database-elastic-pool.md)主题。 本主题的其余部分侧重介绍了单一数据库的服务层和性能级别。
 >
 
-<a id="single-database-service-tiers-and-performance-levels" class="xliff"></a>
-
-## 单一数据库服务层和性能级别
+## <a name="single-database-service-tiers-and-performance-levels"></a>单一数据库服务层和性能级别
 对于单一数据库，每个服务层内都有多个性能级别和存储量。 
 
 [!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
 
-<a id="scaling-up-or-scaling-down-a-single-database" class="xliff"></a>
-
-## 上下缩放单一数据库
+## <a name="scaling-up-or-scaling-down-a-single-database"></a>上下缩放单一数据库
 
 在最初选择服务层和性能级别之后，可根据实际经验动态地上下缩放单一数据库。  
 
@@ -100,6 +91,10 @@ ms.lasthandoff: 07/06/2017
 
 整个扩展过程的持续时间同时取决于更改前后数据库的大小和服务层。 例如，一个正在更改到标准服务层、从标准服务层更改或在标准服务层内更改的 250 GB 的数据库应在 6 小时内完成。 对于与正在高级服务层内更改性能级别的大小相同的数据库，它应在 3 小时内完成。
 
+> [!TIP]
+> 若要检查正在进行的 SQL 数据库缩放操作的状态，可以使用以下查询：```select * from sys.dm_operation_status```。
+>
+
 * 如果要升级到较高的服务层或性能级别，除非显式指定了较大的最大大小，否则，最大数据库大小不会增大。
 * 若要对数据库进行降级，数据库必须小于目标服务层允许的最大大小。 
 * 在启用了[异地复制](sql-database-geo-replication-portal.md)的情况下升级数据库时，请先将辅助数据库升级到所需的性能层，然后再升级主数据库（一般原则）。
@@ -108,9 +103,7 @@ ms.lasthandoff: 07/06/2017
 * 所做的更改完成之前不会应用数据库的新属性。
 
 
-<a id="current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize" class="xliff"></a>
-
-## 最大大小为 4 TB 的 P11 和 P15 数据库的当前限制
+## <a name="current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize"></a>最大大小为 4 TB 的 P11 和 P15 数据库的当前限制
 
 在某些区域中，对于 P11 和 P15 A 数据库，支持的最大大小为 4 TB（如前面所讨论）。 对于最大大小为 4 TB 的 P11 和 P15 数据库，存在以下注意事项和限制：
 
@@ -125,9 +118,7 @@ ms.lasthandoff: 07/06/2017
    - 升级异地复制关系中的主数据库：在主数据库上将最大大小更改到 4 TB 将触发辅助数据库上的相同更改。 这两个升级都必须成功才能使主数据库上的更改生效。 4TB 选项的区域限制适用（请参阅上文）。 如果辅助数据库位于不支持 4 TB 的区域，则不会升级主数据库。
 - 将导入/导出服务用于加载 P11-4TB/P15-4TB 数据库不受支持。 使用 SqlPackage.exe 可[导入](sql-database-import.md)和[导出](sql-database-export.md)数据。
 
-<a id="manage-single-database-service-tiers-and-performance-levels-using-the-azure-portal" class="xliff"></a>
-
-## 使用 Azure 门户管理单一数据库服务层和性能级别
+## <a name="manage-single-database-service-tiers-and-performance-levels-using-the-azure-portal"></a>使用 Azure 门户管理单一数据库服务层和性能级别
 
 若要使用 Azure 门户为新的或现有 Azure SQL 数据库设置或更改服务层、性能级别或存储量，请单击“定价层(缩放 DTU)”打开数据库的“配置性能”窗口 - 如以下屏幕截图中所示。 
 
@@ -141,9 +132,7 @@ ms.lasthandoff: 07/06/2017
 > 当选择 P11 或 P15 服务层时，请查看[最大大小为 4 TB 的 P11 和 P15 数据库的当前限制](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize)。
 >
 
-<a id="manage-single-database-service-tiers-and-performance-levels-using-powershell" class="xliff"></a>
-
-## 使用 PowerShell 管理单一数据库服务层和性能级别
+## <a name="manage-single-database-service-tiers-and-performance-levels-using-powershell"></a>使用 PowerShell 管理单一数据库服务层和性能级别
 
 若要使用 PowerShell 设置或更改 Azure SQL 数据库服务层、性能级别和存储量，请使用以下 PowerShell cmdlet。 如果需要安装或升级 PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 
 
@@ -157,17 +146,15 @@ ms.lasthandoff: 07/06/2017
 > [!TIP]
 > 可以使用 PowerShell 脚本监视数据库的性能指标，将其缩放到更高的性能级别，并基于性能指标之一创建警报规则，有关这样的示例脚本，请参阅[使用 PowerShell 监视和缩放单一 SQL 数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
 
-<a id="manage-single-database-service-tiers-and-performance-levels-using-the-azure-cli" class="xliff"></a>
+## <a name="manage-single-database-service-tiers-and-performance-levels-using-the-azure-cli"></a>使用 Azure CLI 管理单一数据库服务层和性能级别
 
-## 使用 Azure CLI 管理单一数据库服务层和性能级别
-
-若要使用 Azure CLI 设置或更改 Azure SQL 数据库服务层、性能级别和存储量，请使用以下 [Azure CLI SQL 数据库](/cli/azure/sql/db)命令。 使用 [Cloud Shell](/azure/cloud-shell/overview) 在浏览器中运行 CLI，或者在 macOS、Linux 或 Windows 上[安装](/cli/azure/install-azure-cli)它。 对于创建和管理 SQL 弹性池，请参阅[弹性池](sql-database-elastic-pool.md)。
+若要使用 Azure CLI 设置或更改 Azure SQL 数据库服务层、性能级别和存储量，请使用以下 [Azure CLI SQL 数据库](/cli/azure/sql/db)命令。 使用 [Cloud Shell](/azure/cloud-shell/overview) 在浏览器中运行 CLI，或者在 macOS、Linux 或 Windows 上[安装](/cli/azure/install-azure-cli)它。 若要创建并管理 SQL 弹性池，请参阅[弹性池](sql-database-elastic-pool.md)。
 
 | Cmdlet | 说明 |
 | --- | --- |
 |[az sql db create](/cli/azure/sql/db#create) |创建数据库|
 |[az sql db list](/cli/azure/sql/db#list)|列出某台服务器中的所有数据库和数据仓库，或者列出弹性池中的所有数据库|
-|[az sql db list-editions](/cli/azure/sql/db#list-editions)|列出可用的服务目标和存储限制|
+|[az sql db list-editions](/cli/azure/sql/db#list-editions)|列出可用的服务目标和存储空间上限|
 |[az sql db list-usages](/cli/azure/sql/db#list-usages)|返回数据库使用情况|
 |[az sql db show](/cli/azure/sql/db#show)|获取数据库或数据仓库|
 |[az sql db update](/cli/azure/sql/db#update)|更新数据库|
@@ -176,18 +163,16 @@ ms.lasthandoff: 07/06/2017
 > 可以使用 Azure CLI 脚本在查询数据库的大小信息后将单一 Azure SQL 数据库缩放到不同的性能级别，有关这样的示例脚本，请参阅[使用 CLI 监视和缩放单一 SQL 数据库](scripts/sql-database-monitor-and-scale-database-cli.md)。
 >
 
-<a id="manage-single-database-service-tiers-and-performance-levels-using-transact-sql" class="xliff"></a>
-
-## 使用 Transact-SQL 管理单一数据库服务层和性能级别
+## <a name="manage-single-database-service-tiers-and-performance-levels-using-transact-sql"></a>使用 Transact-SQL 管理单一数据库服务层和性能级别
 
 若要使用 Transact-SQL 设置或更改 Azure SQL 数据库服务层、性能级别和存储量，请使用以下 T-SQL 命令。 可以使用 Azure 门户、[SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、[Visual Studio Code](https://code.visualstudio.com/docs) 或可以连接到 Azure SQL 数据库服务器并传递 Transact-SQL 命令的任何其他程序来发出这些命令。 
 
 | 命令 | 说明 |
 | --- | --- |
-|[CREATE DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/create-database-azure-sql-database)|创建新数据库。 必须连接到 master 数据库才能创建新数据库。|
+|[CREATE DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/create-database-azure-sql-database)|新建数据库。 必须连接到 master 数据库，才能新建数据库。|
 | [ALTER DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/alter-database-azure-sql-database) |修改 Azure SQL 数据库。 |
-|[sys.database_service_objectives（Azure SQL 数据库）](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|为 Azure SQL 数据库或 Azure SQL 数据仓库返回版本（服务层）、服务目标（定价层）和弹性池名称。 如果已登录到 Azure SQL 数据库服务器中的 master 数据库，则返回有关所有数据库的信息。 对于 Azure SQL 数据仓库，必须连接到 master 数据库。|
-|[sys.database_usage（Azure SQL 数据库）](/sql/relational-databases/system-catalog-views/sys-database-usage-azure-sql-database)|列出 Azure SQL 数据库服务器上的数据库的数目、类型和持续时间。|
+|[sys.database_service_objectives（Azure SQL 数据库）](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|返回 Azure SQL 数据库或 Azure SQL 数据仓库的版本（服务层）、服务目标（定价层）和弹性池名称（若有）。 如果已登录 Azure SQL 数据库服务器中的 master 数据库，返回所有数据库的相关信息。 对于 Azure SQL 数据仓库，必须连接到 master 数据库。|
+|[sys.database_usage (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-usage-azure-sql-database)|列出 Azure SQL 数据库服务器上的数据库的数目、类型和持续时间。|
 
 以下示例演示如何使用 ALTER DATABASE 命令更改最大大小：
 
@@ -196,15 +181,11 @@ ALTER DATABASE <myDatabaseName>
    MODIFY (MAXSIZE = 4096 GB);
 ```
 
-<a id="manage-single-databases-using-the-rest-api" class="xliff"></a>
-
-## 使用 REST API 管理单一数据库
+## <a name="manage-single-databases-using-the-rest-api"></a>使用 REST API 管理单一数据库
 
 若要使用 REST API 设置或更改 Azure SQL 数据库服务层、性能级别和存储量，请参阅 [Azure SQL 数据库 REST API](/rest/api/sql/)。
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 
 * 了解有关 [DTU](sql-database-what-is-a-dtu.md) 的详细信息。
 * 若要了解有关监视 DTU 使用情况的信息，请参阅[监视和性能优化](sql-database-troubleshoot-performance.md)。

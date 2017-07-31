@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 07/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 99fab8eafe4e17f50db8e7e33637001be03abe7b
-ms.openlocfilehash: 0cb356910b858bf231dfadffa1d4561df1977af0
-ms.lasthandoff: 02/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: ba3637a3a8b15b45c16bf5a00c1f4225bcfc5af8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="deploy-the-storsimple-manager-service-in-the-azure-classic-portal"></a>在 Azure 经典门户中部署 StorSimple Manager 服务
@@ -29,7 +29,7 @@ StorSimple Manager 服务在 Microsoft Azure 中运行并连接到多台 StorSim
 
 StorSimple Manager 登陆页会列出可以用来管理 StorSimple 存储设备的所有 StorSimple Manager 服务。 对于每项 StorSimple Manager 服务，StorSimple Manager 页上提供了以下信息：
 
-* **名称** – 在创建 StorSimple Manager 服务时为其分配的名称。 在创建服务后无法更改服务名称。
+* **名称** – 在创建 StorSimple Manager 服务时为其分配的名称。 **在创建服务后无法更改服务名称。这也适用于其他实体，例如，无法在 Azure 经典门户中重命名的设备、卷、卷容器和备份策略。**
 * **状态** – 服务的状态，可以是**活动**、**正在创建**或**联机**。
 * **位置** – 将在其中部署 StorSimple 设备的地理位置。
 * **订阅** – 与服务关联的计费订阅。

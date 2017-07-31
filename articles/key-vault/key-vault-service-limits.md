@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 07/05/2017
 ms.author: ambapat
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 74ad61e9fea56a17d2563a0e1b2364777c44856e
-ms.openlocfilehash: 3552caf7e419459095321b3b248ba441097766f4
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b34c67ecc1bd50157ded790948ac7b88a5807ddb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 12/07/2016
+ms.lasthandoff: 07/08/2017
 
 
 ---
-# <a name="azure-key-vault-service-limits"></a>Azure 密钥保管库服务限制
+# <a name="azure-key-vault-service-limits"></a>Azure Key Vault 服务限制
 以下是 Azure 密钥保管库的服务限制。
 
 [!INCLUDE [key-vault-limits](../../includes/key-vault-limits.md)]

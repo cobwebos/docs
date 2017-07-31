@@ -1,6 +1,6 @@
 ---
 title: "可与 Azure 存储配合使用的安全功能 | Microsoft Docs"
-description: " 本文概述可与 Azure 存储配合使用的核心 Azure 安全功能. "
+description: " 本文概述可与 Azure 存储配合使用的核心 Azure 安全功能。 "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,14 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: b5edb42f7fac6943a72e02a85a4cbc32300b9f38
-ms.openlocfilehash: 2db6effdaf2e23d00eefdde82d074dd5d47857d7
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 1386d16cf0e7f6fd324d0779e9ad54ecd88b3166
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="azure-storage-security-overview"></a>Azure 存储安全概述
-Azure 存储空间是依赖于持续性、可用性和可缩放性来满足客户需求的现代应用程序的云存储解决方案。 Azure 存储提供配套的安全功能：
+Azure 存储是依赖于持续性、可用性和伸缩性来满足客户需求的现代应用程序的云存储解决方案。 Azure 存储提供配套的安全功能：
 
 * 存储帐户可以通过基于角色的访问控制和 Azure Active Directory 实现安全保护。
 * 在应用程序和 Azure 之间传输数据时，可以使用客户端加密、HTTPS 或 SMB 3.0 来保护数据。
@@ -80,7 +81,7 @@ Azure 存储空间是依赖于持续性、可用性和可缩放性来满足客�
 了解有关存储服务加密的详细信息：
 
 * [Azure 存储服务加密](https://azure.microsoft.com/services/storage/)适用于 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)。 有关其他 Azure 存储类型的详细信息，请参阅[文件](https://azure.microsoft.com/services/storage/files/)、[磁盘（高级存储）](https://azure.microsoft.com/services/storage/premium-storage/)、[表](https://azure.microsoft.com/services/storage/tables/)和[队列](https://azure.microsoft.com/services/storage/queues/)。
-* [静态数据的 Azure 存储空间服务加密](../storage/storage-service-encryption.md)
+* [静态数据的 Azure 存储服务加密](../storage/storage-service-encryption.md)
 
 ## <a name="azure-disk-encryption"></a>Azure 磁盘加密
 适用于虚拟机 (VM) 的 Azure 磁盘加密通过使用 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)中控制的密钥和策略加密你的 VM 磁盘（包括引导磁盘和数据磁盘），帮助解决企业的安全和合规性要求。
@@ -92,15 +93,10 @@ Azure 存储空间是依赖于持续性、可用性和可缩放性来满足客�
 * [适用于 Windows 和 Linux IaaS 虚拟机的 Azure 磁盘加密](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
 
 ## <a name="azure-key-vault"></a>Azure 密钥保管库
-Azure 磁盘加密使用 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)，可帮助你控制和管理密钥保管库订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据可在 Azure 存储空间中静态加密。 应使用密钥保管库来审核密钥和策略的使用。
+Azure 磁盘加密使用 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)，可帮助你控制和管理密钥保管库订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据可在 Azure 存储中静态加密。 应使用密钥保管库来审核密钥和策略的使用。
 
 了解更多：
 
 * [什么是 Azure 密钥保管库？](../key-vault/key-vault-whatis.md)
 * [Azure 密钥保管库入门](../key-vault/key-vault-get-started.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

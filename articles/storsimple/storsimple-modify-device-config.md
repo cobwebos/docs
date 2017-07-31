@@ -12,14 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/29/2016
+ms.date: 07/19/2017
 ms.author: v-sharos
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0894908fc4d050e7890dd21e698bf3981a7413f7
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 5bfbeb038dbedae2bf77016abbc19458c3dc22c9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="use-the-storsimple-manager-service-to-modify-your-storsimple-device-configuration"></a>使用 StorSimple Manager 服务修改 StorSimple 设备配置
@@ -35,6 +34,9 @@ Azure 经典门户“配置”页包含你可以在由 StorSimple Manager 服务
 ## <a name="modify-device-settings"></a>修改设备设置
 设备设置包括设备的友好名称和设备说明。
 
+> [!NOTE] 
+> 无法在 Azure 经典门户中修改设备名称。 不支持重命名设备。
+
 连接到 StorSimple Manager 服务的 StorSimple 设备将分配有一个默认名称。 该默认名称通常反映设备的序列号。 例如，长度为 15 个字符的默认设备名称（如 8600-SHX0991003G44HT）表示以下含义：
 
 * **8600**  – 表示设备型号。
@@ -42,9 +44,7 @@ Azure 经典门户“配置”页包含你可以在由 StorSimple Manager 服务
 * **0991003** - 表示特定产品。
 * **G44HT**- 最后 5 位是递增的，以便创建唯一的序列号。 这可能不是一个连续集合。
 
-可以使用 Azure 经典门户更改设备名称并为其分配你选择的一个唯一的友好名称。 友好名称可以包含任何字符并且最大长度为 64 个字符。
-
-还可以指定设备说明。 设备说明通常用来帮助识别设备的所有者和物理位置。 说明字段包含的字符数必须少于 256 个。
+可以指定设备说明。 设备说明通常用来帮助识别设备的所有者和物理位置。 说明字段包含的字符数必须少于 256 个。
 
 ## <a name="modify-time-settings"></a>修改时间设置
 你的设备必须对时间进行同步，才能使用云存储服务提供程序进行身份验证。 从下拉列表中选择时区，并指定最多两台网络时间协议 (NTP) 服务器。 主 NTP 服务器是必需的，并且是在使用 Windows PowerShell for StorSimple 配置设备时指定的。 可以将默认 Windows Server **time.windows.com** 指定为 NTP 服务器。 可以通过 Azure 经典门户查看主 NTP 服务器配置，但是若要更改该配置，必须使用 Windows PowerShell 接口。

@@ -5,27 +5,28 @@ services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: 
 ms.assetid: 2bc68595-145e-4de3-8b71-3a21890d13d9
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 07/17/2017
 ms.author: kgremban
+ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 015cc28903bfd366c653a51b0f73512bf8b578ea
-ms.openlocfilehash: 433dc731c342924d962e2f08e392556558a0168d
-ms.lasthandoff: 02/28/2017
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 43ddeebfea4c914b8377d3363ba3d0c12db0adca
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="create-an-access-report-for-role-based-access-control"></a>为基于角色的访问控制创建访问报告
 无论何时授予或撤销订阅中的访问权限，更改都将记录在 Azure 事件中。 可创建访问权限更改历史记录报告来查看过去 90 天的所有更改。
 
 ## <a name="create-a-report-with-azure-powershell"></a>使用 Azure PowerShell 创建报告
-若要在 PowerShell 中创建访问权限更改历史记录报告，请使用 `Get-AzureRMAuthorizationChangeLog` 命令。 有关此 cmdlet 的更多详细信息可在 [PowerShell 库](https://www.powershellgallery.com/packages/AzureRM.Storage/1.0.6/Content/ResourceManagerStartup.ps1)中找到。
+若要在 PowerShell 中创建访问权限更改历史记录报告，请使用 [Get-AzureRMAuthorizationChangeLog](/powershell/module/azurerm.resources/get-azurermauthorizationchangelog) 命令。
 
 调用此命令时，可指定你要列出的分配的属性，包括以下方面：
 
@@ -33,18 +34,17 @@ ms.lasthandoff: 02/28/2017
 | --- | --- |
 | **Action** |是授予还是撤销访问权限 |
 | **Caller** |负责访问权限更改的所有者 |
-| **日期** |访问权限更改的日期和时间 |
-| **DirectoryName** |Azure Active Directory 目录 |
+| **PrincipalId** | 已分配了角色的用户、组或应用程序的唯一标识符 |
 | **PrincipalName** |用户、组或应用程序的名称 |
 | **PrincipalType** |分配是针对用户、组还是应用程序 |
-| **RoleId** |已授予或已撤销角色的 GUID |
+| **RoleDefinitionId** |已授予或已撤销角色的 GUID |
 | **RoleName** |已授予或已撤销的角色 |
+| **范围** | 分配应用到的订阅、资源组或资源的唯一标识符 | 
 | **ScopeName** |订阅、资源组或资源的名称 |
 | **ScopeType** |分配是在订阅、资源组中还是在资源范围内 |
-| **SubscriptionId** |Azure 订阅的 GUID |
-| **SubscriptionName** |Azure 订阅的名称 |
+| **Timestamp** |访问权限更改的日期和时间 |
 
-此示例命令列出过去&7; 天内订阅中所有访问权限的更改：
+此示例命令列出过去 7 天内订阅中所有访问权限的更改：
 
 ```
 Get-AzureRMAuthorizationChangeLog -StartTime ([DateTime]::Now - [TimeSpan]::FromDays(7)) | FT Caller,Action,RoleName,PrincipalType,PrincipalName,ScopeType,ScopeName

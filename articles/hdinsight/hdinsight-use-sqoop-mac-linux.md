@@ -15,24 +15,23 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 07/19/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 8d71c1d870083365a1c106507ceb5f2661ee4ac6
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 79b0405f57fd2221f897ded042a111236006c6e0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
-# <a name="use-apache-sqoop-to-import-and-export-data-between-hadoop-in-hdinsight-and-sql-database"></a>使用 Apache Sqoop 在 Hadoop on HDInsight 与 SQL 数据库之间进行导入和导出
+# <a name="use-apache-sqoop-to-import-and-export-data-between-hadoop-on-hdinsight-and-sql-database"></a>使用 Apache Sqoop 在 Hadoop on HDInsight 与 SQL 数据库之间导入和导出数据
 
 [!INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]
 
 了解如何使用 Apache Sqoop 在 Azure HDInsight 中的 Hadoop 群集与 Azure SQL 数据库或 Microsoft SQL Server 数据库之间进行导入和导出。 本文档中的步骤直接从 Hadoop 群集的头节点使用 `sqoop` 命令。 可以使用 SSH 连接到头节点并运行本文档中的命令。
 
 > [!IMPORTANT]
-> 本文档中的步骤仅适用于使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
+> 本文档中的步骤仅适用于使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 ## <a name="install-freetds"></a>安装 FreeTDS
 
@@ -110,28 +109,33 @@ ms.lasthandoff: 05/18/2017
 1. 通过 SSH 连接到群集后，使用以下命令验证 Sqoop 是否可以看到你的 SQL 数据库：
 
     ```bash
-    sqoop list-databases --connect jdbc:sqlserver://<serverName>.database.windows.net:1433 --username <adminLogin> --password <adminPassword>
+    sqoop list-databases --connect jdbc:sqlserver://<serverName>.database.windows.net:1433 --username <adminLogin> -P
     ```
+    出现提示时，输入 SQL 数据库登录名的密码。
 
     此命令将返回数据库列表，其中包括之前创建的 **sqooptest** 数据库。
 
 2. 使用以下命令将数据从 **hivesampletable** 导出到 **mobiledata** 表：
 
     ```bash
-    sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --export-dir 'wasbs:///hive/warehouse/hivesampletable' --fields-terminated-by '\t' -m 1
+    sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> -P --table 'mobiledata' --export-dir 'wasbs:///hive/warehouse/hivesampletable' --fields-terminated-by '\t' -m 1
     ```
 
     此命令指示 Sqoop 连接到 **sqooptest** 数据库。 然后，Sqoop 将数据从 **wasbs:///hive/warehouse/hivesampletable** 导出到 **mobiledata** 表。
 
+    > [!IMPORTANT]
+    > 如果群集的默认存储是 Azure 存储帐户，请使用 `wasb:///`。 如果是 Azure Data Lake Store，请使用 `adl:///`。
+
 3. 该命令完成后，使用以下命令通过 TSQL 连接到数据库：
 
     ```bash
-    TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D sqooptest
+    TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P -p 1433 -D sqooptest
     ```
 
     连接成功以后，使用以下语句验证数据是否已导出到 **mobiledata** 表：
 
     ```sql
+    SET ROWCOUNT 50;
     SELECT * FROM mobiledata
     GO
     ```
@@ -160,10 +164,7 @@ ms.lasthandoff: 05/18/2017
 
 * HDInsight 和 SQL Server 必须位于同一 Azure 虚拟网络上。
 
-    在数据中心使用 SQL Server 时，必须将虚拟网络配置为“站点到站点”或“点到站点”。
-
-  > [!NOTE]
-  > 使用**点到站点**虚拟网络时，SQL Server 必须运行 VPN 客户端配置应用程序。 VPN 客户端可在 Azure 虚拟网络配置的**仪表板**中使用。
+    有关示例，请参阅[将 HDInsight 连接到本地网络](./connect-on-premises-network.md)文档。
 
     有关通过 Azure 虚拟网络使用 HDInsight 的详细信息，请参阅[使用 Azure 虚拟网络扩展 HDInsight](hdinsight-extend-hadoop-virtual-network.md) 文档。 有关 Azure 虚拟网络的详细信息，请参阅[虚拟网络概述](../virtual-network/virtual-networks-overview.md)文档。
 

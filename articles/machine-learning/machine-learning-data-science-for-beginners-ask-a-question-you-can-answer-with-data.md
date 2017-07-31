@@ -1,5 +1,5 @@
 ---
-title: "提出数据可解答的问题 - 数据科学问题 - Azure | Microsoft Docs"
+title: "提出数据可解答的问题 - 数据科学问题 - Azure 机器学习 | Microsoft Docs"
 description: "通过学习“适合初学者的数据科学”视频 3，了解如何将棘手的数据科学问题公式化。 包括分类和回归问题的比较。"
 keywords: "数据科学问题，数据科学问题，公式化问题，回归问题，分类问题，针对性问题"
 services: machine-learning
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2017
+ms.date: 07/13/2017
 ms.author: cgronlun;garye
-translationtype: Human Translation
-ms.sourcegitcommit: b167b88d227bf239fd5d3676e48e04436f140c34
-ms.openlocfilehash: 3c476cf99ebfe78f5681019fc055d1a07b61ef02
-
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 403c496d4f032d1f373dacc16868abb40f968b6f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>提出数据方面的可解答问题
@@ -26,6 +27,7 @@ ms.openlocfilehash: 3c476cf99ebfe78f5681019fc055d1a07b61ef02
 通过学习“适合初学者的数据科学”视频 3，了解如何将数据科学难题公式化为一个问题。 此视频包括对分类和回归算法问题的比较。
 
 若要充分利用此系列内容，请观看所有视频。 [转到视频列表](#other-videos-in-this-series)
+<br>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Data-science-for-beginners-Ask-a-question-you-can-answer-with-data/player]
 >
@@ -65,7 +67,7 @@ ms.openlocfilehash: 3c476cf99ebfe78f5681019fc055d1a07b61ef02
 
 如果问题是“车队中的那辆车会首先出现故障？” 则必须确保数据包括以前故障的相关信息。
 
-![目标数据 - 示例答案 制定数据科学问题。](./media/machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data/machine-learning-data-science-target-data.png)
+![目标数据 - 示例答案 制定数据科学问题。](./media/machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data/target-data.png)
 
 这些示例答案称为目标。 目标是我们试图预测的未来数据点的相关信息，可以是类别或数字。
 
@@ -82,7 +84,7 @@ ms.openlocfilehash: 3c476cf99ebfe78f5681019fc055d1a07b61ef02
 
 但是，如果将问题改写为“读者对该列表中每个故事的感兴趣度为多少？”，则这个问题可能更容易回答。 现在，可以给每篇文章一个数值分数，然后可轻松确定最高分的文章。 这是将分类问题改写为回归问题或“多少”问题？
 
-![重新制定问题。 分类问题与回归问题。](./media/machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data/machine-learning-data-science-classification-question-vs-regression-question.png)
+![重新制定问题。 分类问题与回归问题。](./media/machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data/classification-question-vs-regression-question.png)
 
 提问方式是确定使用哪种算法提供答案的线索。
 
@@ -97,9 +99,4 @@ ms.openlocfilehash: 3c476cf99ebfe78f5681019fc055d1a07b61ef02
 ## <a name="next-steps"></a>后续步骤
 * [使用机器学习工作室尝试第一个数据科学实验](machine-learning-create-experiment.md)
 * [在 Microsoft Azure 上获取机器学习简介](machine-learning-what-is-machine-learning.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -1,10 +1,10 @@
 ---
 title: "ESP8266 到云 - 将 Sparkfun ESP8266 Thing Dev 连接到 Azure IoT 中心 | Microsoft Docs"
-description: "有关将 Arduino 设备 Sparkfun ESP8266 Thing Dev 连接到 Azure IoT 中心（可帮助管理 IoT 资产的 Microsoft 云服务）的指南。"
+description: "在本教程中了解如何设置 Sparkfun ESP8266 Thing Dev 并将其连接到 Azure IoT 中心，使其能够将数据发送到 Azure 云平台。"
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: 
 ms.assetid: 587fe292-9602-45b4-95ee-f39bba10e716
@@ -15,39 +15,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: xshi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 0b7ce531c73d991897f1c35932e795a97dd33162
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 9b3d968379d38ac4e4080de7eae6ffea89f73a49
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
-# 将 Sparkfun ESP8266 Thing Dev 连接到云中的 Azure IoT 中心
-<a id="connect-sparkfun-esp8266-thing-dev-to-azure-iot-hub-in-the-cloud" class="xliff"></a>
+# <a name="connect-sparkfun-esp8266-thing-dev-to-azure-iot-hub-in-the-cloud"></a>将 Sparkfun ESP8266 Thing Dev 连接到云中的 Azure IoT 中心
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
 ![DHT22、Thing Dev 与 IoT 中心之间的连接](media/iot-hub-sparkfun-thing-dev-get-started/1_connection-hdt22-thing-dev-iot-hub.png)
 
-## 执行的操作
-<a id="what-you-will-do" class="xliff"></a>
+## <a name="what-you-will-do"></a>执行的操作
 
 将 Sparkfun ESP8266 Thing Dev 连接到创建的 Azure IoT 中心。 然后，在 ESP8266 上运行一个示例应用程序，用于从 DHT22 传感器收集温度和湿度数据。 最后，将传感器数据发送到 IoT 中心。
 
 > [!NOTE]
 > 如果使用其他 ESP8266 开发板，仍可遵循这些步骤将它连接到 IoT 中心。 根据所用的 ESP8266 开发板，可能需要重新配置 `LED_PIN`。 例如，如果使用 AI-Thinker 提供的 ESP8266，可将此参数从 `0` 更改为 `2`。 没有工具包？请单击[此处](http://azure.com/iotstarterkits)
 
-## 你要学习的知识
-<a id="what-you-will-learn" class="xliff"></a>
+## <a name="what-you-will-learn"></a>你要学习的知识
 
 * 如何创建 IoT 中心以及注册 Thing Dev 的设备。
 * 如何将 Thing Dev 与传感器和计算机相连接。
 * 如何在 Thing Dev 上运行示例应用程序来收集传感器数据。
 * 如何将传感器数据发送到 IoT 中心。
 
-## 所需的项目
-<a id="what-you-will-need" class="xliff"></a>
+## <a name="what-you-will-need"></a>所需的项目
 
 ![本教程所需的部件](media/iot-hub-sparkfun-thing-dev-get-started/2_parts-needed-for-the-tutorial.png)
 
@@ -72,11 +67,9 @@ ms.lasthandoff: 06/28/2017
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
-## 将 ESP8266 Thing Dev 与传感器和计算机相连接
-<a id="connect-esp8266-thing-dev-with-the-sensor-and-your-computer" class="xliff"></a>
+## <a name="connect-esp8266-thing-dev-with-the-sensor-and-your-computer"></a>将 ESP8266 Thing Dev 与传感器和计算机相连接
 
-### 将 DHT22 温度和湿度传感器连接到 ESP8266 Thing Dev
-<a id="connect-a-dht22-temperature-and-humidity-sensor-to-esp8266-thing-dev" class="xliff"></a>
+### <a name="connect-a-dht22-temperature-and-humidity-sensor-to-esp8266-thing-dev"></a>将 DHT22 温度和湿度传感器连接到 ESP8266 Thing Dev
 
 按如下所示，使用试验板和跳线建立连接。 如果没有传感器，请跳过本部分，因为可以改用模拟的传感器数据。
 
@@ -97,15 +90,13 @@ ms.lasthandoff: 06/28/2017
 
 ![将 dht22 与 ESP8266 Thing Dev 相连接](media/iot-hub-sparkfun-thing-dev-get-started/8_connect-dht22-thing-dev.png)
 
-### 将 Sparkfun ESP8266 Thing Dev 连接到计算机
-<a id="connect-sparkfun-esp8266-thing-dev-to-your-computer" class="xliff"></a>
+### <a name="connect-sparkfun-esp8266-thing-dev-to-your-computer"></a>将 Sparkfun ESP8266 Thing Dev 连接到计算机
 
 按如下所示，使用 Micro USB 转 Type A USB 线缆将 Sparkfun ESP8266 Thing Dev 连接到计算机。
 
 ![将 feather huzzah 连接到计算机](media/iot-hub-sparkfun-thing-dev-get-started/9_connect-thing-dev-computer.png)
 
-### 添加串行端口权限 - 仅适用于 Ubuntu
-<a id="add-serial-port-permissions--ubuntu-only" class="xliff"></a>
+### <a name="add-serial-port-permissions--ubuntu-only"></a>添加串行端口权限 - 仅适用于 Ubuntu
 
 如果使用 Ubuntu，请确保普通用户有权在 Sparkfun ESP8266 Thing Dev 的 USB 端口上操作。 若要为普通用户添加串行端口权限，请执行以下步骤：
 
@@ -133,13 +124,11 @@ ms.lasthandoff: 06/28/2017
 
 1. 从 Ubuntu 中注销，然后再次登录，使更改生效。
 
-## 收集传感器数据并将其发送到 IoT 中心
-<a id="collect-sensor-data-and-send-it-to-your-iot-hub" class="xliff"></a>
+## <a name="collect-sensor-data-and-send-it-to-your-iot-hub"></a>收集传感器数据并将其发送到 IoT 中心
 
 在本部分，你将在 Sparkfun ESP8266 Thing Dev 上部署并运行一个示例应用程序。 该示例应用程序会使 Sparkfun ESP8266 Thing Dev 上的 LED 闪烁，并将从 DHT22 传感器收集的温度和湿度数据发送到 IoT 中心。
 
-### 从 GitHub 获取示例应用程序
-<a id="get-the-sample-application-from-github" class="xliff"></a>
+### <a name="get-the-sample-application-from-github"></a>从 GitHub 获取示例应用程序
 
 该示例应用程序托管在 GitHub 中。 从 GitHub 中克隆包含该示例应用程序的示例存储库。 若要克隆示例存储库，请执行以下步骤：
 
@@ -174,8 +163,7 @@ ms.lasthandoff: 06/28/2017
 
 1. 单击“Tools”（工具） > “Board”（开发板） > “Sparkfun ESP8266 Thing Dev”。
 
-### 安装所需的库
-<a id="install-necessary-libraries" class="xliff"></a>
+### <a name="install-necessary-libraries"></a>安装所需的库
 
 1. 在 Arduino IDE 中，单击“Sketch” > “Include Library”（包含库） > “Manage Libraries”（管理库）。
 1. 逐个搜索以下库名称。 对于找到的每个库，单击“Install”（安装）。
@@ -186,8 +174,7 @@ ms.lasthandoff: 06/28/2017
    * `DHT sensor library`
    * `Adafruit Unified Sensor`
 
-### 没有真正的 DHT22 传感器？
-<a id="dont-have-a-real-dht22-sensor" class="xliff"></a>
+### <a name="dont-have-a-real-dht22-sensor"></a>没有真正的 DHT22 传感器？
 
 如果你没有真正的 DHT22 传感器，示例应用程序可以模拟温度和湿度数据。 若要让示例应用程序使用模拟的数据，请执行以下步骤：
 
@@ -200,14 +187,12 @@ ms.lasthandoff: 06/28/2017
    
 1. 使用 `Control-s` 保存该文件。
 
-### 将示例应用程序部署到 Sparkfun ESP8266 Thing Dev
-<a id="deploy-the-sample-application-to-sparkfun-esp8266-thing-dev" class="xliff"></a>
+### <a name="deploy-the-sample-application-to-sparkfun-esp8266-thing-dev"></a>将示例应用程序部署到 Sparkfun ESP8266 Thing Dev
 
 1. 在 Arduino IDE 中，单击“Tool”（工具） > “Port”（端口），然后单击 Sparkfun ESP8266 Thing Dev 的串行端口。
 1. 单击 **Sketch** > **Upload** （上传），生成示例应用程序并将其部署到 Sparkfun ESP8266 Thing Dev。
 
-### 输入凭据
-<a id="enter-your-credentials" class="xliff"></a>
+### <a name="enter-your-credentials"></a>输入凭据
 
 上传成功完成后，请执行以下步骤输入凭据：
 
@@ -223,15 +208,13 @@ ms.lasthandoff: 06/28/2017
 > [!Note]
 > 凭据信息将存储在 Sparkfun ESP8266 Thing Dev 的 EEPROM 中。 如果在 Sparkfun ESP8266 Thing Dev 开发板上单击重置按钮，示例应用程序将询问是否要擦除这些信息。 输入 `Y` 可擦除信息，系统会再次要求提供这些信息。
 
-### 验证示例应用程序是否成功运行
-<a id="verify-the-sample-application-is-running-successfully" class="xliff"></a>
+### <a name="verify-the-sample-application-is-running-successfully"></a>验证示例应用程序是否成功运行
 
 如果串行监视器窗口中显示以下输出并且 Sparkfun ESP8266 Thing Dev 上的 LED 闪烁，则表示示例应用程序已成功运行。
 
 ![arduino ide 中的最终输出](media/iot-hub-sparkfun-thing-dev-get-started/14_arduino-ide-final-output.png)
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 现已成功将 Sparkfun ESP8266 Thing Dev 连接到 IoT 中心，并将捕获的传感器数据发送到了 IoT 中心。 
 

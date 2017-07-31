@@ -2,7 +2,7 @@
 title: "Azure 诊断日志概述 | Microsoft Docs"
 description: "了解什么是 Azure 诊断日志，以及如何使用该诊断日志了解发生在 Azure 资源内的事件。"
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: johnkem; magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: d144dd60192a4b62db393db08b82efeaa8d45447
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: 2517972b63bbd1a552fe591e937c9e34db580865
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="collect-and-consume-diagnostic-data-from-your-azure-resources"></a>从 Azure 资源收集和使用诊断数据
@@ -45,7 +44,7 @@ ms.lasthandoff: 07/06/2017
 * [将诊断日志流式传输到**事件中心**](monitoring-stream-diagnostic-logs-to-event-hubs.md)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
 * 使用 [OMS Log Analytics](../log-analytics/log-analytics-azure-storage.md) 对诊断日志进行分析
 
-使用的存储帐户或事件中心命名空间可与发出日志的资源位于不同的订阅中。 配置该项设置的用户必须同时拥有两个订阅的相应 RBAC 访问权限。
+可以使用与发出日志的订阅不同的订阅中的存储帐户或事件中心命名空间。 配置该项设置的用户必须同时拥有两个订阅的相应 RBAC 访问权限。
 
 ## <a name="diagnostic-settings"></a>诊断设置
 可以使用“诊断设置”配置非计算资源的诊断日志。 资源控制的“诊断设置”：
@@ -86,7 +85,7 @@ ms.lasthandoff: 07/06/2017
 对于非计算资源，可以通过执行以下操作在资源创建后在 Azure 门户中启用诊断日志：
 
 1. 转到资源的边栏选项卡，打开“诊断”边栏选项卡。
-2. 单击“启用”，然后选取存储帐户和/或事件中心。
+2. 单击“启用”，并选取存储帐户和/或事件中心。
 
    ![在创建资源以后启用诊断日志](./media/monitoring-overview-of-diagnostic-logs/enable-portal-existing.png)
 3. 在“日志”下，选择要进行收集或流式传输操作的“日志类别”。
@@ -98,7 +97,7 @@ ms.lasthandoff: 07/06/2017
 若要允许在存储帐户中存储诊断日志，请使用以下命令：
 
 ```powershell
-    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
+Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
 ```
 
 存储帐户 ID 是需要向其发送日志的存储帐户的资源 ID。
@@ -106,15 +105,15 @@ ms.lasthandoff: 07/06/2017
 若要允许将诊断日志流式传输到事件中心，请使用以下命令：
 
 ```powershell
-    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
+Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your Service Bus rule id] -Enabled $true
 ```
 
-服务总线规则 ID 是以下格式的字符串：`{service bus resource ID}/authorizationrules/{key name}`。
+服务总线规则 ID 是以下格式的字符串：`{Service Bus resource ID}/authorizationrules/{key name}`。
 
 若要启用将诊断日志发送到 Log Analytics 工作区，请使用以下命令：
 
 ```powershell
-    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
+Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
 ```
 
 你可以使用以下命令获取 Log Analytics 工作区的资源 ID：
@@ -131,7 +130,7 @@ ms.lasthandoff: 07/06/2017
 若要允许在存储帐户中存储诊断日志，请使用以下命令：
 
 ```azurecli
-    azure insights diagnostic set --resourceId <resourceId> --storageId <storageAccountId> --enabled true
+azure insights diagnostic set --resourceId <resourceId> --storageId <storageAccountId> --enabled true
 ```
 
 存储帐户 ID 是需要向其发送日志的存储帐户的资源 ID。
@@ -139,15 +138,15 @@ ms.lasthandoff: 07/06/2017
 若要允许将诊断日志流式传输到事件中心，请使用以下命令：
 
 ```azurecli
-    azure insights diagnostic set --resourceId <resourceId> --serviceBusRuleId <serviceBusRuleId> --enabled true
+azure insights diagnostic set --resourceId <resourceId> --serviceBusRuleId <serviceBusRuleId> --enabled true
 ```
 
-服务总线规则 ID 是以下格式的字符串：`{service bus resource ID}/authorizationrules/{key name}`。
+服务总线规则 ID 是以下格式的字符串：`{Service Bus resource ID}/authorizationrules/{key name}`。
 
 若要启用将诊断日志发送到 Log Analytics 工作区，请使用以下命令：
 
 ```azurecli
-    azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
+azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
 ```
 
 你可以组合这些参数以启用多个输出选项。

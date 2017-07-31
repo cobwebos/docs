@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure 媒体服务创建多比特率流时配置本地编码器 | Microsoft 文档"
+title: "使用 Azure 媒体服务创建多比特率流时配置本地编码器 | Microsoft Docs"
 description: "本主题列出的本地实时编码器可用于捕获实时事件，并将单比特率实时流发送到 AMS 通道（已启用实时编码）以供进一步处理。 本主题列出了演示如何配置所列编码器的教程链接。"
 services: media-services
 documentationcenter: 
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
-ms.openlocfilehash: 0ebed14fe5a24f2b161c0bab0a0e1d36dadb6b5b
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 7c883c53fd3d151401173e4569818ee769505113
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/27/2017
+ms.lasthandoff: 07/11/2017
 
 
 ---
-# <a name="how-to-configure-on-premise-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>如何在使用 Azure 媒体服务时配置本地编码器以创建多比特率流
+# <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>如何在使用 Azure 媒体服务时配置本地编码器以创建多比特率流
 本主题列出的本地实时编码器可用于捕获实时事件，并将单比特率实时流发送到 AMS 通道（已启用实时编码）以供进一步处理。 本主题还列出了演示如何配置所列编码器的教程链接。
 
 ## <a name="elemental-live"></a>Elemental Live

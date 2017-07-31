@@ -12,14 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 07/17/2017
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 58baae6fb3d338ef94caca79b9248afc0fb7f841
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 01fdbb43c21ac6932e8462f4a6507fc63e50542d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="how-to-integrate-engagement-on-ios"></a>如何在 iOS 上集成 Engagement
@@ -28,17 +27,17 @@ ms.lasthandoff: 07/06/2017
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
 > * [iOS](mobile-engagement-ios-integrate-engagement.md)
 > * [Android](mobile-engagement-android-integrate-engagement.md)
-> 
-> 
+>
+>
 
 本过程介绍了在 iOS 应用程序中激活 Engagement 的分析和监视功能的最简单方法。
 
-Engagement SDK 要求为 iOS6+ 和 Xcode 8：应用程序的部署目标必须至少为 iOS 6。
+Engagement SDK 需要 iOS7+ 和 Xcode 8+：应用程序的部署目标必须至少为 iOS 7。
 
 > [!NOTE]
 > 如果确实需要使用 XCode 7，则可以使用 [iOS Engagement SDK v3.2.4](https://aka.ms/r6oouh)。 此旧版本的市场宣传模块在 iOS 10 设备上运行时存在一个已知问题。请参阅[市场宣传模块集成](mobile-engagement-ios-integrate-engagement-reach.md)了解更多详细信息。 如果选择使用 SDK v3.2.4，则直接跳过下一步中的 `UserNotifications.framework` 导入。
-> 
-> 
+>
+>
 
 遵循以下步骤，即可激活用于计算所有用户、会话、活动、崩溃和技术相关统计数据所需的日志报告。 计算事件、错误和作业等其他统计信息所需的日志报告必须使用 Engagement API 手动完成（请参阅[如何在 iOS 应用中使用高级 Mobile Engagement 标记 API](mobile-engagement-ios-use-engagement-api.md)），因为这些统计信息均独立于应用程序。
 
@@ -46,7 +45,7 @@ Engagement SDK 要求为 iOS6+ 和 Xcode 8：应用程序的部署目标必须�
 * 在[此处](http://aka.ms/qk2rnj)下载 iOS SDK。
 * 将 Engagement SDK 添加到 iOS 项目：在 Xcode 中，右键单击项目，选择“**将文件添加至...**”，然后选择 `EngagementSDK` 文件夹。
 * Engagement 需要其他框架才能工作：在项目资源管理器中，打开项目窗格，并选择正确的目标。 然后，打开“**构建阶段**”选项卡，然后在“**将二进制文件链接到库**”菜单中添加框架：
-  
+
   * `UserNotifications.framework` - 将链接设置为`Optional`
   * `AdSupport.framework` - 将链接设置为`Optional`
   * `SystemConfiguration.framework`
@@ -57,18 +56,18 @@ Engagement SDK 要求为 iOS6+ 和 Xcode 8：应用程序的部署目标必须�
 
 > [!NOTE]
 > 可以删除 AdSupport 框架。 Engagement 需要此框架来收集 IDFA。 但是，可以禁用 IDFA 收集 \<ios-sdk-engagement-idfa\> 以符合有关此 ID 的新 Apple 策略。
-> 
-> 
+>
+>
 
 ## <a name="initialize-the-engagement-sdk"></a>初始化 Engagement SDK
 需要修改应用程序代理：
 
 * 在实现文件的顶部，导入 Engagement 代理：
-  
+
       [...]
       #import "EngagementAgent.h"
 * 在方法“**applicationDidFinishLaunching:**”或“**application:didFinishLaunchingWithOptions:**”中初始化 Engagement：
-  
+
       - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
       {
         [...]
@@ -110,13 +109,13 @@ Engagement SDK 要求为 iOS6+ 和 Xcode 8：应用程序的部署目标必须�
 
 > [!IMPORTANT]
 > iOS SDK 将在应用程序关闭时自动调用 `endActivity()` 方法。 因此，每当用户的活动更改时，*强烈*建议调用 `startActivity` 方法，*从不*调用 `endActivity` 方法，因为调用此方法会强制结束当前的会话。
-> 
-> 
+>
+>
 
 ## <a name="location-reporting"></a>位置报告
 Apple 服务条款不允许应用程序仅出于统计信息目的而使用位置跟踪。 因此，建议只在应用程序还出于其他原因需要使用位置跟踪时启用位置报告。
 
-使用 iOS 8 启动时，必须通过在应用信息的 Info.plist 文件中设置键值 [NSLocationWhenInUseUsageDescription] 或 [NSLocationAlwaysUsageDescription] 的字符串来提供应用如何使用位置服务的说明。 如果要使用 Engagement 在后台中报告位置时，添加键值 NSLocationAlwaysUsageDescription。 在其他所有情况下，添加键值 NSLocationWhenInUseUsageDescription。
+使用 iOS 8 启动时，必须通过在应用信息的 Info.plist 文件中设置键值 [NSLocationWhenInUseUsageDescription] 或 [NSLocationAlwaysUsageDescription] 的字符串来提供应用如何使用位置服务的说明。 如果要使用 Engagement 在后台中报告位置时，添加键值 NSLocationAlwaysUsageDescription。 在其他所有情况下，添加键值 NSLocationWhenInUseUsageDescription。 请注意，需要 NSLocationAlwaysAndWhenInUseUsageDescription 和 NSLocationWhenInUseUsageDescription 来报告 iOS 11 上的后台位置。
 
 ### <a name="lazy-area-location-reporting"></a>延迟区域位置报告
 简易区域位置报告允许报告国家、地区和关联到设备的位置。 这种类型的位置报告仅使用网络位置（基于 Cell ID 或 WIFI）。 每个会话最多报告一次设备区域。 从不使用 GPS，因此，此类型的位置报告对电池的影响非常小（但不是没有）。
@@ -153,8 +152,8 @@ Apple 服务条款不允许应用程序仅出于统计信息目的而使用位�
 
 > [!NOTE]
 > 应用程序在后台中运行时，即使已启用 GPS，也仅报告基于网络的位置。
-> 
-> 
+>
+>
 
 应用程序进入后台后，此功能的实现将调用 [startMonitoringSignificantLocationChanges]。 注意如果有新的位置事件到达，则此功能将自动在后台中重新启动应用程序。
 

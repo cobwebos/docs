@@ -10,16 +10,16 @@ ms.assetid: cf9a9631-56aa-4985-a565-1cacc297871d
 ms.service: sql-database
 ms.custom: load & move data
 ms.devlang: NA
-ms.date: 04/07/2017
+ms.date: 06/26/2017
 ms.author: carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 4ddbeb78208d8e32fe5e505f396fbfec4e5d6c0a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d42df0cbfa20741d4848dbefabb9028128b42ae1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -48,8 +48,7 @@ ms.lasthandoff: 06/28/2017
 
 若要监视导入操作的进度，请打开将数据库导入到其中的逻辑服务器的相应页面。 向下滚动到“操作”，然后单击“导入/导出”历史记录。
    
-   ![导入](./media/sql-database-import/import-history.png)
-   ![导入状态](./media/sql-database-import/import-status.png)
+   ![导入](./media/sql-database-import/import-history.png)![导入状态](./media/sql-database-import/import-status.png)
 
 若要验证数据库在服务器上是否处于活动状态，请单击“SQL 数据库”并验证新数据库是否为“联机”。
 
