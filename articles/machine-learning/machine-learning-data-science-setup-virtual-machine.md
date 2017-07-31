@@ -22,9 +22,7 @@ ms.lasthandoff: 03/29/2017
 
 
 ---
-<a id="set-up-an-azure-virtual-machine-as-an-ipython-notebook-server-for-advanced-analytics" class="xliff"></a>
-
-# 将 Azure 虚拟机设置为用于高级分析的 IPython Notebook 服务器
+# <a name="set-up-an-azure-virtual-machine-as-an-ipython-notebook-server-for-advanced-analytics"></a>将 Azure 虚拟机设置为用于高级分析的 IPython Notebook 服务器
 本主题介绍如何针对高级分析预配和配置 Azure 虚拟机以便可用作数据科学环境的一部分。 Windows 虚拟机使用支持工具（例如 IPython Notebook、Azure 存储资源管理器、AzCopy 以及其他可用于高级分析项目的实用程序）进行配置。 例如，Azure 存储资源管理器和 AzCopy 提供了从本地计算机将数据上载到 Azure blob 存储或从 blob 存储下载到本地计算机的便捷方法。
 
 ## <a name="create-vm"></a>步骤 1：创建通用 Azure 虚拟机
@@ -119,9 +117,7 @@ Azure 虚拟机定价为**只为自己使用的东西付费**。 若要确保未
 
 虚拟机将解除分配，但不会删除。 可以随时从 Azure 经典门户重新启动虚拟机。
 
-<a id="your-azure-vm-is-ready-to-use-whats-next" class="xliff"></a>
-
-## Azure VM 可随时使用：后续步骤是什么？
+## <a name="your-azure-vm-is-ready-to-use-whats-next"></a>Azure VM 可随时使用：后续步骤是什么？
 现在，虚拟机可随时在数据科学练习中使用。 虚拟机还可以用作 IPython Notebook 服务器来浏览和处理数据，以及其他可与 Azure 机器学习和团队数据科学过程一起执行的任务。
 
 团队数据科学过程中的后续步骤映射到[学习路径](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)中，可能包括将数据移动到 HDInsight、处理并在其中进行采样的步骤，以便为使用 Azure 机器学习来了解数据做好准备。

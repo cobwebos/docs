@@ -21,10 +21,8 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 02/16/2017
 
 ---
-# 使用 PowerShell 将应用程序连接到虚拟网络
-<a id="connect-your-app-to-your-virtual-network-by-using-powershell" class="xliff"></a>
-## 概述
-<a id="overview" class="xliff"></a>
+# <a name="connect-your-app-to-your-virtual-network-by-using-powershell"></a>使用 PowerShell 将应用程序连接到虚拟网络
+## <a name="overview"></a>概述
 在 Azure 应用服务中，可以将应用（Web、移动或 API）连接到订阅中的 Azure 虚拟网络 (VNet)。 此功能称为 VNet 集成。 不应将 VNet 集成功能与应用服务环境功能相混淆，后者可让用户在虚拟网络中运行 Azure 应用服务的实例。
 
 VNet 集成功能在新门户中有用户界面 (UI)，可让你与使用经典部署模型或 Azure Resource Manager 部署模型部署的虚拟网络集成。 如果想要详细了解该功能，请参阅 [Integrate your app with an Azure virtual network](web-sites-integrate-with-vnet.md)（将应用与 Azure 虚拟网络集成）。
@@ -36,16 +34,14 @@ VNet 集成功能在新门户中有用户界面 (UI)，可让你与使用经典�
 * 安装最新的 Azure PowerShell SDK。 可以使用 Web 平台安装程序来安装。
 * 在标准或高级 SKU 中运行的 Azure 应用服务中的应用。
 
-## 经典虚拟网络
-<a id="classic-virtual-networks" class="xliff"></a>
+## <a name="classic-virtual-networks"></a>经典虚拟网络
 本部分针对使用经典部署模型的虚拟网络说明三项任务：
 
 1. 将应用连接到包含网关且已针对点到站点连接进行配置的现有虚拟网络。
 2. 更新应用的虚拟网络集成信息。
 3. 从虚拟网络断开连接应用。
 
-### 将应用连接到经典 VNet
-<a id="connect-an-app-to-a-classic-vnet" class="xliff"></a>
+### <a name="connect-an-app-to-a-classic-vnet"></a>将应用连接到经典 VNet
 若要将应用连接到虚拟网络，请遵循以下三个步骤：
 
 1. 向 Web 应用声明它将加入特定的虚拟网络。 应用将生成证书，该证书将提供给虚拟网络以建立点到站点连接。
@@ -56,8 +52,7 @@ VNet 集成功能在新门户中有用户界面 (UI)，可让你与使用经典�
 
 经典虚拟网络需要与保存了要集成的应用的应用服务计划位于相同的订阅中。
 
-##### 设置 Azure PowerShell SDK
-<a id="set-up-azure-powershell-sdk" class="xliff"></a>
+##### <a name="set-up-azure-powershell-sdk"></a>设置 Azure PowerShell SDK
 打开 PowerShell 窗口，使用以下命令设置 Azure 帐户和订阅：
 
     Login-AzureRmAccount
@@ -70,8 +65,7 @@ VNet 集成功能在新门户中有用户界面 (UI)，可让你与使用经典�
 
     Select-AzureRmSubscription –SubscriptionId [WebAppSubscriptionId]
 
-##### 本文中使用的变量
-<a id="variables-used-in-this-article" class="xliff"></a>
+##### <a name="variables-used-in-this-article"></a>本文中使用的变量
 为了简化命令，将以特定配置设置 **$Configuration** PowerShell 变量。
 
 在 PowerShell 中使用以下参数设置变量，如下所示：
@@ -107,16 +101,14 @@ VNet 集成功能在新门户中有用户界面 (UI)，可让你与使用经典�
 
 本部分的余下内容假设你已按前面所述创建了变量。
 
-##### 向应用声明虚拟网络
-<a id="declare-the-virtual-network-to-the-app" class="xliff"></a>
+##### <a name="declare-the-virtual-network-to-the-app"></a>向应用声明虚拟网络
 使用以下命令来告诉应用它要使用此特定虚拟网络。 这会导致应用生成所需的证书：
 
     $vnet = New-AzureRmResource -Name "$($Configuration.WebAppName)/$($Configuration.VnetName)" -ResourceGroupName $Configuration.WebAppResourceGroup -ResourceType "Microsoft.Web/sites/virtualNetworkConnections" -PropertyObject @{"VnetResourceId" = "/subscriptions/$($Configuration.VnetSubscriptionId)/resourceGroups/$($Configuration.VnetResourceGroup)/providers/Microsoft.ClassicNetwork/virtualNetworks/$($Configuration.VnetName)"} -Location $Configuration.WebAppLocation -ApiVersion 2015-07-01
 
 如果此命令成功，**$vnet** 中应该包含 **Properties** 变量。 **Properties** 变量应该包含证书指纹和证书数据。
 
-##### 将 Web 应用证书上载到虚拟网络
-<a id="upload-the-web-app-certificate-to-the-virtual-network" class="xliff"></a>
+##### <a name="upload-the-web-app-certificate-to-the-virtual-network"></a>将 Web 应用证书上载到虚拟网络
 需要针对订阅与虚拟网络的每个组合执行一次性的手动步骤。 也就是说，如果将订阅 A 中的应用连接到虚拟网络 A，只需执行此步骤一次，而不管配置了多少个应用。 如果将新的应用添加到另一个虚拟网络，则需要再次执行此步骤。 这是因为证书集是在 Azure 应用服务的订阅级别生成的，并且针对应用将要连接到的每个虚拟网络生成该集一次。
 
 如果你遵循了这些步骤，或者已使用门户来与相同的虚拟网络集成，则证书已设置。
@@ -130,8 +122,7 @@ VNet 集成功能在新门户中有用户界面 (UI)，可让你与使用经典�
 
 若要手动上传证书，请在 [Azure 门户][azureportal]中，选择“浏览虚拟网络（经典）” > “VPN 连接” > “点到站点” > “管理证书”。 从此处上载证书。
 
-##### 获取点到站点包
-<a id="get-the-point-to-site-package" class="xliff"></a>
+##### <a name="get-the-point-to-site-package"></a>获取点到站点包
 在 Web 应用上设置虚拟网络连接的下一个步骤是获取点到站点包，并将其提供给 Web 应用。
 
 将以下模板保存到计算机上某个位置中的名为 GetNetworkPackageUri.json 的文件，例如：C:\Azure\Templates\GetNetworkPackageUri.json。
@@ -177,8 +168,7 @@ VNet 集成功能在新门户中有用户界面 (UI)，可让你与使用经典�
 
 变量 **$output.Outputs.packageUri** 现在包含要提供给 Web 应用的包 URI。
 
-##### 将点到站点包上载到应用
-<a id="upload-the-point-to-site-package-to-your-app" class="xliff"></a>
+##### <a name="upload-the-point-to-site-package-to-your-app"></a>将点到站点包上载到应用
 最后一个步骤是将此包提供给应用。 只需运行下一条命令：
 
     $vnet = New-AzureRmResource -Name "$($Configuration.WebAppName)/$($Configuration.VnetName)/primary" -ResourceGroupName $Configuration.WebAppResourceGroup -ResourceType "Microsoft.Web/sites/virtualNetworkConnections/gateways" -ApiVersion 2015-07-01 -PropertyObject @{"VnetName" = $Configuration.VnetName ; "VpnPackageUri" = $($output.Outputs.packageUri).Value } -Location $Configuration.WebAppLocation
@@ -191,8 +181,7 @@ VNet 集成功能在新门户中有用户界面 (UI)，可让你与使用经典�
 
 如果存在名为 WEBSITE_VNETNAME 的环境变量，并且其值与目标虚拟网络名称匹配，则表示所有配置都已成功。
 
-### 更新经典 VNet 集成信息
-<a id="update-classic-vnet-integration-information" class="xliff"></a>
+### <a name="update-classic-vnet-integration-information"></a>更新经典 VNet 集成信息
 若要更新或重新同步信息，只需重复最初创建集成时所遵循的步骤。 这些步骤如下：
 
 1. 定义配置信息。
@@ -200,14 +189,12 @@ VNet 集成功能在新门户中有用户界面 (UI)，可让你与使用经典�
 3. 获取点到站点包。
 4. 将点到站点包上载到应用。
 
-### 从经典 VNet 断开连接应用
-<a id="disconnect-your-app-from-a-classic-vnet" class="xliff"></a>
+### <a name="disconnect-your-app-from-a-classic-vnet"></a>从经典 VNet 断开连接应用
 若要断开连接应用，需要使用在虚拟网络集成期间设置的配置信息。 如果使用该信息，则只需使用一条命令就可以从虚拟网络断开连接应用。
 
     $vnet = Remove-AzureRmResource -Name "$($Configuration.WebAppName)/$($Configuration.VnetName)" -ResourceGroupName $Configuration.WebAppResourceGroup -ResourceType "Microsoft.Web/sites/virtualNetworkConnections" -ApiVersion 2015-07-01
 
-## Resource Manager 虚拟网络
-<a id="resource-manager-virtual-networks" class="xliff"></a>
+## <a name="resource-manager-virtual-networks"></a>Resource Manager 虚拟网络
 Resource Manager 虚拟网络具有 Azure Resource Manager API，与经典虚拟网络相比，这些 API 可以简化某些过程。 我们提供了脚本来帮助你完成以下任务：
 
 * 创建 Resource Manager 虚拟网络并将你的应用与该虚拟网络集成。
@@ -215,8 +202,7 @@ Resource Manager 虚拟网络具有 Azure Resource Manager API，与经典虚拟
 * 将应用与已启用网关和点到站点连接的现有 Resource Manager 虚拟网络集成。
 * 从虚拟网络断开连接应用。
 
-### Resource Manager VNet 应用服务集成脚本
-<a id="resource-manager-vnet-app-service-integration-script" class="xliff"></a>
+### <a name="resource-manager-vnet-app-service-integration-script"></a>Resource Manager VNet 应用服务集成脚本
 复制以下脚本并将它保存到文件。 如果不想要使用该脚本，可以自由学习该脚本，以了解如何对 Resource Manager 虚拟网络进行设置。
 
     function ReadHostWithDefault($message, $default)
@@ -654,8 +640,7 @@ Resource Manager 虚拟网络具有 Azure Resource Manager API，与经典虚拟
 
 本部分的余下内容将说明三个选项中的每一个。
 
-### 创建 Resource Manager VNet 并与它集成
-<a id="create-a-resource-manager-vnet-and-integrate-with-it" class="xliff"></a>
+### <a name="create-a-resource-manager-vnet-and-integrate-with-it"></a>创建 Resource Manager VNet 并与它集成
 若要创建使用 Resource Manager 部署模型的新虚拟网络并将它与应用集成，请选择“1) 将新的虚拟网络添加到应用”。 随后系统将提示你输入虚拟网络的名称。 在本例中，你可以看到，我在以下设置中使用了名称 v2pshell。
 
 脚本将提供有关所创建的虚拟网络的详细信息。 如果需要，我可以更改任何值。 在此示例执行中，我创建了具有以下设置的虚拟网络：
@@ -676,8 +661,7 @@ Resource Manager 虚拟网络具有 Azure Resource Manager API，与经典虚拟
 
 脚本完成时，会显示“Finished”。 此时，你已创建了一个具有所选名称和设置的 Resource Manager 虚拟网络。 此新虚拟网络也将与你的应用集成。
 
-### 将应用与现有的 Resource Manager VNet 集成
-<a id="integrate-your-app-with-a-preexisting-resource-manager-vnet" class="xliff"></a>
+### <a name="integrate-your-app-with-a-preexisting-resource-manager-vnet"></a>将应用与现有的 Resource Manager VNet 集成
 与现有的虚拟网络集成时，如果提供的 Resource Manager 虚拟网络没有网关或点到站点连接，则脚本将进行设置。 如果 VNET 上已设置这些项，脚本将直接进入应用集成环节。 若要启动此过程，只需选择“2) 将现有的虚拟网络添加到应用”。
 
 仅当现有 Resource Manager 虚拟网络与应用位于同一个订阅中时，此选项才可用。 选择该选项后，你将看到 Resource Manager 虚拟网络的列表。   
@@ -716,8 +700,7 @@ Resource Manager 虚拟网络具有 Azure Resource Manager API，与经典虚拟
 
 如果你想要更改上述任何设置，可以这样做。 否则请按 Enter 键，然后脚本将创建网关，并将应用附加到虚拟网络。 网关创建时间仍为一小时，因此请确保有心理准备。 一切完成后，脚本将显示“Finished”。
 
-### 从 Resource Manager VNet 断开连接应用
-<a id="disconnect-your-app-from-a-resource-manager-vnet" class="xliff"></a>
+### <a name="disconnect-your-app-from-a-resource-manager-vnet"></a>从 Resource Manager VNet 断开连接应用
 从虚拟网络断开连接应用不会关闭网关或禁用点到站点连接。 你仍可以将网关或该连接用于其他目的。 此外，除了与你提供的应用断开连接以外，不会与任何其他应用断开连接。 若要执行此操作，请选择“3) 从应用中删除虚拟网络”。 执行此操作时，将显示如下所示的屏幕：
 
     Currently connected to VNET v2pshell
