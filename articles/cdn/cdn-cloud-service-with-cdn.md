@@ -31,8 +31,7 @@ ms.lasthandoff: 07/06/2017
 * 为 Web 应用程序和 CDN 提供的内容应用统一的部署工作流
 * 将 ASP.NET 绑定和缩减与 Azure CDN 集成
 
-## 你要学习的知识
-<a id="what-you-will-learn" class="xliff"></a>
+## <a name="what-you-will-learn"></a>你要学习的知识
 在本教程中，你将了解如何：
 
 * [将 Azure CDN 终结点与云服务集成，通过 Azure CDN 在网页中提供静态内容](#deploy)
@@ -41,12 +40,10 @@ ms.lasthandoff: 07/06/2017
 * [通过 Azure CDN 提供捆绑的和缩减的内容，同时保留 Visual Studio 中的脚本调试体验](#bundling)
 * [配置 Azure CDN 处于脱机状态时的回退脚本和 CSS](#fallback)
 
-## 要生成的项目
-<a id="what-you-will-build" class="xliff"></a>
+## <a name="what-you-will-build"></a>要生成的项目
 你需要使用默认的 ASP.NET MVC 模板部署云服务 Web 角色，需要添加代码来处理集成 Azure CDN 所提供的内容（例如图像、控制器操作结果、默认的 JavaScript 和 CSS 文件），还需要编写代码来配置回退机制以处理 CDN 脱机时提供的捆绑包。
 
-## 所需的项目
-<a id="what-you-will-need" class="xliff"></a>
+## <a name="what-you-will-need"></a>所需的项目
 本教程设置了以下前提条件：
 
 * 有效的 [Microsoft Azure 帐户](/account/)
@@ -62,8 +59,7 @@ ms.lasthandoff: 07/06/2017
 
 <a name="deploy"></a>
 
-## 部署云服务
-<a id="deploy-a-cloud-service" class="xliff"></a>
+## <a name="deploy-a-cloud-service"></a>部署云服务
 在本部分，你需要将 Visual Studio 2015 中的默认 ASP.NET MVC 应用程序模板部署到云服务 Web 角色，然后将其与新的 CDN 终结点相集成。 请根据以下说明进行操作：
 
 1. 在 Visual Studio 2015 中转到“文件”>“新建”>“项目”>“云”>“Azure 云服务”，以便从菜单栏创建新的 Azure 云服务。 为该应用程序提供一个名称，然后单击“确定”。
@@ -104,8 +100,7 @@ ms.lasthandoff: 07/06/2017
    > 
    > 
 
-## 创建新的 CDN 配置文件
-<a id="create-a-new-cdn-profile" class="xliff"></a>
+## <a name="create-a-new-cdn-profile"></a>创建新的 CDN 配置文件
 CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或多个 CDN 终结点。  你可能希望通过 Internet 域、Web 应用程序或其他条件来使用多个配置文件以组织 CDN 终结点。
 
 > [!TIP]
@@ -115,8 +110,7 @@ CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或
 
 [!INCLUDE [cdn-create-profile](../../includes/cdn-create-profile.md)]
 
-## 创建新的 CDN 终结点
-<a id="create-a-new-cdn-endpoint" class="xliff"></a>
+## <a name="create-a-new-cdn-endpoint"></a>创建新的 CDN 终结点
 **为存储帐户创建新的 CDN 终结点**
 
 1. 在 [Azure 管理门户](https://portal.azure.com)中，导航到 CDN 配置文件。  可能在先前步骤中将其固定到了仪表板。  如果不是，则可单击“浏览”、“CDN 配置文件”，然后单击计划向其添加终结点的配置文件。
@@ -145,8 +139,7 @@ CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或
    > 
    > 
 
-## 测试 CDN 终结点
-<a id="test-the-cdn-endpoint" class="xliff"></a>
+## <a name="test-the-cdn-endpoint"></a>测试 CDN 终结点
 当发布状态为“已完成”时，打开一个浏览器窗口，然后导航到 **http://<cdnName>*.azureedge.net/Content/bootstrap.css**。 在我的设置中，此 URL 为：
 
     http://camservice.azureedge.net/Content/bootstrap.css
@@ -180,8 +173,7 @@ CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或
 
 <a name="caching"></a>
 
-## 在云服务中配置静态文件的缓存选项
-<a id="configure-caching-options-for-static-files-in-your-cloud-service" class="xliff"></a>
+## <a name="configure-caching-options-for-static-files-in-your-cloud-service"></a>在云服务中配置静态文件的缓存选项
 通过在云服务中进行 Azure CDN 集成，你可以指定你所希望的在 CDN 终结点中缓存静态内容的方式。 为此，请通过某个 Web 角色项目（例如 WebRole1）打开 *Web.config*，然后将 `<staticContent>` 元素添加到 `<system.webServer>`。 以下 XML 将缓存配置为 3 天后过期。  
 
     <system.webServer>
@@ -210,8 +202,7 @@ CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或
 
 <a name="controller"></a>
 
-## 通过 Azure CDN 的控制器操作提供内容
-<a id="serve-content-from-controller-actions-through-azure-cdn" class="xliff"></a>
+## <a name="serve-content-from-controller-actions-through-azure-cdn"></a>通过 Azure CDN 的控制器操作提供内容
 将云服务 Web 角色与 Azure CDN 集成以后，可以相对轻松地通过 Azure CDN 的控制器操作提供内容。 除了可直接通过 Azure CDN（如上所示）提供云服务外，[Maarten Balliauw](https://twitter.com/maartenballiauw)在[通过 Azure CDN 减少 Web 延迟](http://channel9.msdn.com/events/TechDays/Techdays-2014-the-Netherlands/Reducing-latency-on-the-web-with-the-Windows-Azure-CDN)中介绍了如何使用有趣的 MemeGenerator 控制器执行该操作。 在这里，我将简单地再现该过程。
 
 假设在云服务中，用户希望根据年轻的 Chuck Norris 的照片（由 [Alan Light](http://www.flickr.com/photos/alan-light/218493788/) 拍摄）制作一个搞笑的迷因，如下所示：
@@ -378,8 +369,7 @@ CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或
 
 <a name="bundling"></a>
 
-## 将 ASP.NET 绑定和缩减与 Azure CDN 集成
-<a id="integrate-aspnet-bundling-and-minification-with-azure-cdn" class="xliff"></a>
+## <a name="integrate-aspnet-bundling-and-minification-with-azure-cdn"></a>将 ASP.NET 绑定和缩减与 Azure CDN 集成
 脚本和 CSS 样式表很少变化，尤其适合 Azure CDN 缓存。 若要将绑定和缩减集成到 Azure CDN，最便捷的方式是通过 Azure CDN 提供整个 Web 角色。 当然，你可能不希望这样做，不过我还是会向你演示如何在这样做的同时，保留所需的有关 ASP.NET 绑定和缩减的开发人员体验，例如：
 
 * 理想的调试模式体验
@@ -498,8 +488,7 @@ CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或
 
 <a name="fallback"></a>
 
-## CDN URL 的回退机制
-<a id="fallback-mechanism-for-cdn-urls" class="xliff"></a>
+## <a name="fallback-mechanism-for-cdn-urls"></a>CDN URL 的回退机制
 你希望你的网页在 Azure CDN 终结点因某种原因而出现故障时，能够表现出相当的智能，即能够访问作为回退选项的源 Web 服务器，以便加载 JavaScript 或 Bootstrap。 因 CDN 不可用而丢失网站上的图像是很严重的问题，但更为严重的是失去脚本和样式表提供的重要页面功能。
 
 [捆绑包](http://msdn.microsoft.com/library/system.web.optimization.bundle.aspx)类包含一个名为 [CdnFallbackExpression](http://msdn.microsoft.com/library/system.web.optimization.bundle.cdnfallbackexpression.aspx) 的属性，该属性可以配置回退机制以应对 CDN 故障情况。 若要使用此属性，请执行以下步骤：
@@ -603,8 +592,7 @@ CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或
 
     不过，由于 || 表达式的第一部分始终会返回 true（在紧邻其上的行中），因此始终不会运行 document.write() 函数。
 
-## 更多信息
-<a id="more-information" class="xliff"></a>
+## <a name="more-information"></a>更多信息
 * [Azure 内容交付网络 (CDN) 概述](http://msdn.microsoft.com/library/azure/ff919703.aspx)
 * [使用 Azure CDN](cdn-create-new-endpoint.md)
 * [ASP.NET 绑定和缩减](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
