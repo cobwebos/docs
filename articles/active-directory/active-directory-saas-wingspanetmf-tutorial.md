@@ -21,9 +21,7 @@ ms.lasthandoff: 05/04/2017
 
 
 ---
-<a id="tutorial-azure-active-directory-integration-with-wingspan-etmf" class="xliff"></a>
-
-# 教程：Azure Active Directory 与 Wingspan eTMF 的集成
+# <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>教程：Azure Active Directory 与 Wingspan eTMF 的集成
 
 本教程介绍了如何将 Wingspan eTMF 与 Azure Active Directory (Azure AD) 进行集成。
 
@@ -35,9 +33,7 @@ ms.lasthandoff: 05/04/2017
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录](active-directory-appssoaccess-whatis.md)。
 
-<a id="prerequisites" class="xliff"></a>
-
-## 先决条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Wingspan eTMF 的集成，需要具有以下项：
 
@@ -52,17 +48,13 @@ ms.lasthandoff: 05/04/2017
 - 除非必要，请勿使用生产环境。
 - 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
-<a id="scenario-description" class="xliff"></a>
-
-## 方案描述
+## <a name="scenario-description"></a>方案描述
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Wingspan eTMF
 2. 配置和测试 Azure AD 单一登录
 
-<a id="adding-wingspan-etmf-from-the-gallery" class="xliff"></a>
-
-## 从库中添加 Wingspan eTMF
+## <a name="adding-wingspan-etmf-from-the-gallery"></a>从库中添加 Wingspan eTMF
 若要配置 Wingspan eTMF 与 Azure AD 的集成，需要从库中将 Wingspan eTMF 添加到托管的 SaaS 应用列表。
 
 **若要从库中添加 Wingspan eTMF，请执行以下步骤：**
@@ -87,9 +79,7 @@ ms.lasthandoff: 05/04/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-wingspanetmf-tutorial/tutorial_wingspanetmf_addfromgallery.png)
 
-<a id="configuring-and-testing-azure-ad-single-sign-on" class="xliff"></a>
-
-##  配置和测试 Azure AD 单一登录
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Wingspan eTMF 的 Azure AD 单一登录。
 
 若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Wingspan eTMF 用户。 换句话说，需要在 Azure AD 用户与 Wingspan eTMF 中相关用户之间建立链接关系。
@@ -104,9 +94,7 @@ ms.lasthandoff: 05/04/2017
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
-<a id="configuring-azure-ad-single-sign-on" class="xliff"></a>
-
-### 配置 Azure AD 单一登录
+### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 Wingspan eTMF 应用程序中配置单一登录。
 
@@ -147,9 +135,7 @@ ms.lasthandoff: 05/04/2017
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
  
 
-<a id="creating-an-azure-ad-test-user" class="xliff"></a>
-
-### 创建 Azure AD 测试用户
+### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
 ![创建 Azure AD 用户][100]
@@ -180,15 +166,11 @@ ms.lasthandoff: 05/04/2017
 
     d. 单击“创建” 。
  
-<a id="creating-a-wingspan-etmf-test-user" class="xliff"></a>
-
-### 创建 Wingspan eTMF 测试用户
+### <a name="creating-a-wingspan-etmf-test-user"></a>创建 Wingspan eTMF 测试用户
 
 在本部分中，将在 Wingspan eTMF 中创建一个名为 Britta Simon 的用户。 与 [Wingspan eTMF 支持团队](http://www.wingspan.com/contact-us/)协作来将用户添加到 Wingspan eTMF 应用程序中。 使用单一登录前，必须先创建并激活用户。
 
-<a id="assigning-the-azure-ad-test-user" class="xliff"></a>
-
-### 分配 Azure AD 测试用户
+### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，将通过向 Britta Simon 授予对 Wingspan eTMF 的访问权限使其能够使用 Azure 单一登录。
 
@@ -218,17 +200,13 @@ ms.lasthandoff: 05/04/2017
 
 7. 在“添加分配”对话框中单击“分配”按钮。
     
-<a id="testing-single-sign-on" class="xliff"></a>
-
-### 测试单一登录
+### <a name="testing-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。 
 
 单击访问面板中的 Wingspan eTMF 磁贴，你将被重定向到组织登录页面。 成功登录后，你将登录到 Wingspan eTMF 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://msdn.microsoft.com/library/dn308586)（访问面板简介）。
 
-<a id="additional-resources" class="xliff"></a>
-
-## 其他资源
+## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)

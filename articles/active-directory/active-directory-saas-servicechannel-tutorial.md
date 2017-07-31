@@ -21,9 +21,7 @@ ms.lasthandoff: 05/09/2017
 
 
 ---
-<a id="tutorial-azure-active-directory-integration-with-servicechannel" class="xliff"></a>
-
-# 教程：Azure Active Directory 与 ServiceChannel 的集成
+# <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>教程：Azure Active Directory 与 ServiceChannel 的集成
 
 本教程介绍了如何将 ServiceChannel 与 Azure Active Directory (Azure AD) 进行集成。
 
@@ -35,9 +33,7 @@ ms.lasthandoff: 05/09/2017
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录](active-directory-appssoaccess-whatis.md)。
 
-<a id="prerequisites" class="xliff"></a>
-
-## 先决条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 ServiceChannel 的集成，需要具有以下项：
 
@@ -52,17 +48,13 @@ ms.lasthandoff: 05/09/2017
 - 不应使用生产环境，除非有此必要。
 - 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
-<a id="scenario-description" class="xliff"></a>
-
-## 方案描述
+## <a name="scenario-description"></a>方案描述
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 ServiceChannel
 2. 配置和测试 Azure AD 单一登录
 
-<a id="adding-servicechannel-from-the-gallery" class="xliff"></a>
-
-## 从库中添加 ServiceChannel
+## <a name="adding-servicechannel-from-the-gallery"></a>从库中添加 ServiceChannel
 若要配置 ServiceChannel 与 Azure AD 的集成，需要从库中将 ServiceChannel 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 ServiceChannel，请执行以下步骤：**
@@ -87,9 +79,7 @@ ms.lasthandoff: 05/09/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-servicechannel-tutorial/tutorial-servicechannel_2.png)
 
-<a id="configuring-and-testing-azure-ad-single-sign-on" class="xliff"></a>
-
-##  配置和测试 Azure AD 单一登录
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 ServiceChannel 的 Azure AD 单一登录。
 
 若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 ServiceChannel 用户。 换句话说，需要在 Azure AD 用户与 ServiceChannel 中相关用户之间建立链接关系。
@@ -104,9 +94,7 @@ ms.lasthandoff: 05/09/2017
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
-<a id="configuring-azure-ad-single-sign-on" class="xliff"></a>
-
-### 配置 Azure AD 单一登录
+### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 ServiceChannel 应用程序中配置单一登录。
 
@@ -170,9 +158,7 @@ ms.lasthandoff: 05/09/2017
 
 9. 若要在 **ServiceChannel** 端配置单一登录，需要将下载的**证书 (Base64)** 和 **SAML 实体 ID** 发送给 [ServiceChannel 支持团队](https://servicechannel.zendesk.com/hc/en-us)。 他们会进行此设置，以便同时在两端正确设置 SAML SSO 连接。
 
-<a id="creating-an-azure-ad-test-user" class="xliff"></a>
-
-### 创建 Azure AD 测试用户
+### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 管理门户中创建名为 Britta Simon 的测试用户。
 
 ![创建 Azure AD 用户][100]
@@ -203,15 +189,11 @@ ms.lasthandoff: 05/09/2017
 
     d. 单击“创建” 。 
 
-<a id="creating-a-servicechannel-test-user" class="xliff"></a>
-
-### 创建 ServiceChannel 测试用户
+### <a name="creating-a-servicechannel-test-user"></a>创建 ServiceChannel 测试用户
 
 应用程序支持实时用户预配，且进行身份验证后，将在应用程序中自动创建用户。 若要进行完全用户预配，请联系 [ServiceChannel 支持团队](https://servicechannel.zendesk.com/hc/en-us)
 
-<a id="assigning-the-azure-ad-test-user" class="xliff"></a>
-
-### 分配 Azure AD 测试用户
+### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，将通过向 Britta Simon 授予对 ServiceChannel 的访问权限使其能够使用 Azure 单一登录。
 
@@ -241,17 +223,13 @@ ms.lasthandoff: 05/09/2017
 
 7. 在“添加分配”对话框中单击“分配”按钮。
     
-<a id="testing-single-sign-on" class="xliff"></a>
-
-### 测试单一登录
+### <a name="testing-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 ServiceChannel 磁贴时，应当会自动登录到 ServiceChannel 应用程序。
 
-<a id="additional-resources" class="xliff"></a>
-
-## 其他资源
+## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)

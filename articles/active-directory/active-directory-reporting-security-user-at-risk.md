@@ -20,8 +20,7 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 05/09/2017
 
 ---
-# Azure Active Directory 门户中的“有风险的用户”安全报告
-<a id="users-at-risk-security-report-in-the-azure-active-directory-portal" class="xliff"></a>
+# <a name="users-at-risk-security-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“有风险的用户”安全报告
 
 可以通过 Azure Active Directory (Azure AD) 中的安全报告，了解你的环境中用户帐户泄露的可能性。 
 
@@ -37,8 +36,7 @@ Azure Active Directory 可以检测到与用户帐户相关的可疑操作。 �
 
 ![有风险的登录](./media/active-directory-reporting-security-user-at-risk/10.png)
 
-## Azure Active Directory 免费版和基本版
-<a id="azure-active-directory-free-and-basic-edition" class="xliff"></a>
+## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory 免费版和基本版
 
 Azure Active Directory 免费版和基本版中“有风险的用户”报表提供可能已泄露的用户帐户列表。 
 
@@ -50,8 +48,7 @@ Azure Active Directory 免费版和基本版中“有风险的用户”报表提
 
 ![有风险的登录](./media/active-directory-reporting-security-user-at-risk/46.png)
 
-## Azure Active Directory Premium 版
-<a id="azure-active-directory-premium-editions" class="xliff"></a>
+## <a name="azure-active-directory-premium-editions"></a>Azure Active Directory Premium 版
 
 Azure Active Directory Premium 版中“有风险的用户”报表提供：
 
@@ -88,8 +85,7 @@ Azure Active Directory Premium 版中“有风险的用户”报表提供：
 
 
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 - 有关 Azure Active Directory Identity Protection 的详细信息，请参阅 [Azure Active Directory Identity Protection](active-directory-identityprotection.md)。
 
