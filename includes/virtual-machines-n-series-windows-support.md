@@ -1,16 +1,13 @@
-## 支持的操作系统和驱动程序
-<a id="supported-operating-systems-and-drivers" class="xliff"></a>
+## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 
-### NV 实例 - NVIDIA GRID 驱动程序
-<a id="nv-instances---nvidia-grid-drivers" class="xliff"></a>
+### <a name="nv-instances---nvidia-grid-drivers"></a>NV 实例 - NVIDIA GRID 驱动程序
 
 | 操作系统 | 驱动程序 |
 | -------- |------------- |
-| Windows Server 2016 | [369.95](https://go.microsoft.com/fwlink/?linkid=836843) (.zip) |
-| Windows Server 2012 R2 | [369.95](https://go.microsoft.com/fwlink/?linkid=836844) (.zip)  |
+| Windows Server 2016 | [370.12](https://go.microsoft.com/fwlink/?linkid=836843) (.exe) |
+| Windows Server 2012 R2 | [370.12](https://go.microsoft.com/fwlink/?linkid=836844) (.exe)  |
 
-### NC 实例 - NVIDIA Tesla 驱动程序
-<a id="nc-instances---nvidia-tesla-drivers" class="xliff"></a>
+### <a name="nc-instances---nvidia-tesla-drivers"></a>NC 实例 - NVIDIA Tesla 驱动程序
 
 | 操作系统 | 驱动程序 |
 | -------- |------------- |

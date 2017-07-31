@@ -1,7 +1,7 @@
 
 ---
 title: "Azure 备份常见问题解答 | Microsoft Docs"
-description: "针对以下常见问题的解答：恢复服务保管库、能够备份的内容、原理、加密和限制。"
+description: "针对以下常见问题的解答：包括恢复服务保管库在内的 Azure 备份功能、能够备份的内容、原理、加密和限制。 "
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -14,13 +14,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 3/10/2017
-ms.author: markgal;giridham;arunak;trinadhk;
+ms.date: 7/21/2017
+ms.author: markgal;arunak;trinadhk;
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: 865d8faef47e333e30c5d4084a93a52efc5eb2ad
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 6f204f2f0dca33e68b9853af3c94934af65ca1f9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="questions-about-the-azure-backup-service"></a>有关 Azure 备份服务的问题
@@ -61,6 +61,13 @@ ms.lasthandoff: 07/20/2017
 
 ## <a name="azure-vm-backup"></a>Azure VM 备份
 [Azure VM 备份常见问题解答](backup-azure-vm-backup-faq.md)中提供了问题的详细列表
+
+## <a name="back-up-vmware-servers"></a>备份 VMware 服务器
+
+### <a name="can-i-back-up-vmware-vcenter-servers-to-azure"></a>是否可以将 VMware vCenter 服务器备份到 Azure？
+
+是的。 可以使用 Azure 备份服务器将 VMware vCenter 和 ESXi 备份到 Azure。 若要了解支持的 VMware 版本，请参阅 [Azure 备份服务器保护矩阵](backup-mabs-protection-matrix.md)一文。 有关分步说明，请参阅[使用 Azure 备份服务器备份 VMware 服务器](backup-azure-backup-server-vmware.md)。
+
 
 ## <a name="azure-backup-server-and-system-center-data-protection-manager"></a>Azure 备份服务器和 System Center Data Protection Manager
 ### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>是否可以使用 Azure 备份服务器为物理服务器创建裸机恢复 (BMR) 备份？ <br/>

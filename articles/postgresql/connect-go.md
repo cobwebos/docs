@@ -11,38 +11,75 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: hero-article
 ms.date: 06/29/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: f3e7e57993b5253a895640854672da431c00854b
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: a80adae0359aac6aa8c9e7922e3f4c3883dd8056
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 
-# Azure Database for PostgreSQL：使用 Go 语言进行连接并查询数据
-<a id="azure-database-for-postgresql-use-go-language-to-connect-and-query-data" class="xliff"></a>
-本快速入门演示了如何使用以 [Go](https://golang.org/) 语言编写的代码连接到 Azure Database for PostgreSQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文假设你熟悉如何使用 Go 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
+# <a name="azure-database-for-postgresql-use-go-language-to-connect-and-query-data"></a>Azure Database for PostgreSQL：使用 Go 语言进行连接并查询数据
+本快速入门演示如何使用以 [Go](https://golang.org/) 语言 (golang) 编写的代码连接到 Azure Database for PostgreSQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文假设你熟悉如何使用 Go 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 此快速入门使用以下任意指南中创建的资源作为起点：
 - [创建 DB - 门户](quickstart-create-server-database-portal.md)
 - [创建 DB - Azure CLI](quickstart-create-server-database-azure-cli.md)
 
-## 安装 Go 和 pq
-<a id="install-go-and-pq" class="xliff"></a>
-- 下载 Go，然后根据与平台相对应的[安装说明](https://golang.org/doc/install)进行安装。
-- 为项目创建一个文件夹，例如 C:\Postgresql\。 使用命令行将目录更改成项目文件夹，例如 `cd C:\Postgres\`。
-- 将[纯 Go 语言 postgres 驱动程序 (pq)](https://github.com/lib/pq) 下载到项目文件夹中，方法是在同一目录中键入命令 `go get github.com/lib/pq`。
+## <a name="install-go-and-pq-connector"></a>安装 Go 和 pq 连接器
+在自己的计算机上安装 [Go](https://golang.org/doc/install) 和[纯 Go 语言 Postgres 驱动程序 (pq)](https://github.com/lib/pq)。 根据自己的平台执行以下步骤：
 
-## 生成和运行 Go 代码
-<a id="build-and-run-go-code" class="xliff"></a> 
-- 将代码保存到扩展名为 *.go 的文本文件中，然后将该文件保存到项目文件夹（例如 `C:\postgres\read.go`）中。
-- 若要运行代码，请将目录更改为项目文件夹 `cd postgres`，然后键入命令 `go run read.go` 来编译并运行应用程序。
-- 若要将代码构建成本机应用程序中，请 `go build read.go`，然后启动 read.exe 来运行该应用程序。
+### <a name="windows"></a>Windows
+1. 根据[安装说明](https://golang.org/doc/install)[下载](https://golang.org/dl/)和安装用于 Microsoft Windows 的 Go。
+2. 从开始菜单启动命令提示符。
+3. 为项目创建一个文件夹，例如 `mkdir  %USERPROFILE%\go\src\postgresqlgo`。
+4. 将目录转到项目文件夹，例如 `cd %USERPROFILE%\go\src\postgresqlgo`。
+5. 设置 GOPATH 的环境变量，使之指向源代码目录。 `set GOPATH=%USERPROFILE%\go`。
+6. 通过运行 `go get github.com/lib/pq` 命令安装[纯 Go 语言 Postgres 驱动程序 (pq)](https://github.com/lib/pq)。
 
-## 获取连接信息
-<a id="get-connection-information" class="xliff"></a>
+   总起来说就是，安装 Go，然后在命令提示符处运行以下命令：
+   ```cmd
+   mkdir  %USERPROFILE%\go\src\postgresqlgo
+   cd %USERPROFILE%\go\src\postgresqlgo
+   set GOPATH=%USERPROFILE%\go
+   go get github.com/lib/pq
+   ```
+
+### <a name="linux-ubuntu"></a>Linux (Ubuntu)
+1. 启动 Bash Shell。 
+2. 通过运行 `sudo apt-get install golang-go` 来安装 Go。
+3. 在主目录中为项目创建一个文件夹，例如 `mkdir -p ~/go/src/postgresqlgo/`。
+4. 将目录转到该文件夹，例如 `cd ~/go/src/postgresqlgo/`。
+5. 设置 GOPATH 环境变量，使之指向有效的源目录，例如当前主目录的 Go 文件夹。 在 Bash Shell 中运行 `export GOPATH=~/go`，将 Go 目录添加为当前 Shell 会话的 GOPATH。
+6. 通过运行 `go get github.com/lib/pq` 命令安装[纯 Go 语言 Postgres 驱动程序 (pq)](https://github.com/lib/pq)。
+
+   总起来说就是，运行以下 bash 命令：
+   ```bash
+   sudo apt-get install golang-go
+   mkdir -p ~/go/src/postgresqlgo/
+   cd ~/go/src/postgresqlgo/
+   export GOPATH=~/go/
+   go get github.com/lib/pq
+   ```
+
+### <a name="apple-macos"></a>Apple macOS
+1. 下载 Go，然后根据与平台相对应的[安装说明](https://golang.org/doc/install)进行安装。 
+2. 启动 Bash Shell。 
+3. 在主目录中为项目创建一个文件夹，例如 `mkdir -p ~/go/src/postgresqlgo/`。
+4. 将目录转到该文件夹，例如 `cd ~/go/src/postgresqlgo/`。
+5. 设置 GOPATH 环境变量，使之指向有效的源目录，例如当前主目录的 Go 文件夹。 在 Bash Shell 中运行 `export GOPATH=~/go`，将 Go 目录添加为当前 Shell 会话的 GOPATH。
+6. 通过运行 `go get github.com/lib/pq` 命令安装[纯 Go 语言 Postgres 驱动程序 (pq)](https://github.com/lib/pq)。
+
+   总起来说就是，安装 Go，然后运行以下 bash 命令：
+   ```bash
+   mkdir -p ~/go/src/postgresqlgo/
+   cd ~/go/src/postgresqlgo/
+   export GOPATH=~/go/
+   go get github.com/lib/pq
+   ```
+
+## <a name="get-connection-information"></a>获取连接信息
 获取连接到 Azure Database for PostgreSQL 所需的连接信息。 需要完全限定的服务器名称和登录凭据。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
@@ -52,14 +89,20 @@ ms.lasthandoff: 07/04/2017
  ![Azure Database for PostgreSQL - 服务器管理员登录名](./media/connect-go/1-connection-string.png)
 5. 如果忘记了服务器登录信息，请导航到“概览”页，然后查看服务器管理员登录名。 如有必要，请重置密码。
 
-## 进行连接并创建表
-<a id="connect-and-create-a-table" class="xliff"></a>
+## <a name="build-and-run-go-code"></a>生成和运行 Go 代码 
+1. 若要编写 Golang 代码，可以使用简单的文本编辑器，例如 Microsoft Windows 中的记事本、Ubuntu 中的 [vi](http://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) 或 [Nano](https://www.nano-editor.org/)，或者 macOS 中的 TextEdit。 如果偏好功能更丰富的交互式开发环境 (IDE)，可尝试 Jetbrains 推出的 [Gogland](https://www.jetbrains.com/go/)、Microsoft 推出的 [Visual Studio Code](https://code.visualstudio.com/)，或者 [Atom](https://atom.io/)。
+2. 将以下部分中的 Golang 代码粘贴到文本文件中，再使用文件扩展名 \*.go 将这些文件保存到项目文件夹中，例如 Windows 路径 `%USERPROFILE%\go\src\postgresqlgo\createtable.go` 或 Linux 路径 `~/go/src/postgresqlgo/createtable.go`。
+3. 在代码中找到 `HOST`、`DATABASE`、`USER`、`PASSWORD` 常量，将示例值替换为自己的值。  
+4. 启动命令提示符或 Bash Shell。 将目录转到项目文件夹。 例如，在 Windows 上使用 `cd %USERPROFILE%\go\src\postgresqlgo\`。 在 Linux 上使用 `cd ~/go/src/postgresqlgo/`。 提到的某些 IDE 环境提供不需 shell 命令的调试和运行时功能。
+5. 通过键入命令 `go run createtable.go` 来运行代码，编译并运行应用程序。 
+6. 另外，若要将代码内建到本机应用程序中，请键入命令 `go build createtable.go`，再启动 `createtable.exe` 来运行该应用程序。
+
+## <a name="connect-and-create-a-table"></a>进行连接并创建表
 使用以下代码进行连接，使用 **CREATE TABLE** SQL 语句创建表，然后使用 **INSERT INTO** SQL 语句将行添加到表中。
 
 代码导入三个包：[sql 包](https://golang.org/pkg/database/sql/)、[pq 包](http://godoc.org/github.com/lib/pq)（充当与 Postgres 服务器通信所需的驱动程序）以及 [fmt 包](https://golang.org/pkg/fmt/)（适用于在命令行中列显的输入和输出）。
 
 代码通过调用 [sql.Open()](http://godoc.org/github.com/lib/pq#Open) 方法来连接到 Azure Database for PostgreSQL，并使用 [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) 方法来检查连接。 将始终使用[数据库句柄](https://golang.org/pkg/database/sql/#DB)来存储数据库服务器的连接池。 代码多次调用 [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) 方法来运行多个 SQL 命令。 每次都会使用自定义 checkError() 方法来检查是否发生错误，以及是否在发生错误时死机退出。
-
 
 将 `HOST`、`DATABASE`、`USER` 和 `PASSWORD` 参数替换为你自己的值。 
 
@@ -120,8 +163,7 @@ func main() {
 }
 ```
 
-## 读取数据
-<a id="read-data" class="xliff"></a>
+## <a name="read-data"></a>读取数据
 使用以下代码进行连接，并使用 **SELECT** SQL 语句来读取数据。 
 
 代码导入三个包：[sql 包](https://golang.org/pkg/database/sql/)、[pq 包](http://godoc.org/github.com/lib/pq)（充当与 Postgres 服务器通信所需的驱动程序）以及 [fmt 包](https://golang.org/pkg/fmt/)（适用于在命令行中列显的输入和输出）。
@@ -188,8 +230,7 @@ func main() {
 }
 ```
 
-## 更新数据
-<a id="update-data" class="xliff"></a>
+## <a name="update-data"></a>更新数据
 使用以下代码进行连接，并使用 **UPDATE** SQL 语句更新数据。
 
 代码导入三个包：[sql 包](https://golang.org/pkg/database/sql/)、[pq 包](http://godoc.org/github.com/lib/pq)（充当与 Postgres 服务器通信所需的驱动程序）以及 [fmt 包](https://golang.org/pkg/fmt/)（适用于在命令行中列显的输入和输出）。
@@ -242,8 +283,7 @@ func main() {
 }
 ```
 
-## 删除数据
-<a id="delete-data" class="xliff"></a>
+## <a name="delete-data"></a>删除数据
 使用以下代码进行连接，并使用 **DELETE** SQL 语句读取数据。 
 
 代码导入三个包：[sql 包](https://golang.org/pkg/database/sql/)、[pq 包](http://godoc.org/github.com/lib/pq)（充当与 Postgres 服务器通信所需的驱动程序）以及 [fmt 包](https://golang.org/pkg/fmt/)（适用于在命令行中列显的输入和输出）。
@@ -296,8 +336,7 @@ func main() {
 }
 ```
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
 > [使用导出和导入功能迁移数据库](./howto-migrate-using-export-and-import.md)
 

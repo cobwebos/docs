@@ -15,12 +15,11 @@ ms.topic: get-started-article
 ms.date: 06/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 053e2ae7f382bc55a6638ccd612289ab2ba64e52
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 331d08da8a70eee893fb1b01b1fef4475cc8bca0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 门户创建 Batch 帐户
@@ -53,9 +52,9 @@ ms.lasthandoff: 06/20/2017
 
     ![创建批处理帐户][account_portal]
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **帐户名称**：所选批处理帐户名称必须在创建帐户的 Azure 区域中唯一（参见下面的“位置”）。 帐户名只能包含小写字符或数字，且长度必须为 3-24 个字符。
+    a. **帐户名称**：所选批处理帐户名称必须在创建帐户的 Azure 区域中唯一（参见下面的“位置”）。 帐户名只能包含小写字符或数字，且长度必须为 3-24 个字符。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 **订阅**：要在其中创建批处理帐户的订阅。 如果只有一个订阅，则默认选择此项。
+    b. **订阅**：要在其中创建批处理帐户的订阅。 如果只有一个订阅，则默认选择此项。
 
     c. **池分配模式**：选择“批处理服务”。
 
@@ -107,9 +106,9 @@ ms.lasthandoff: 06/20/2017
 
     ![创建批处理帐户][account_portal_byos]
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **帐户名称**：所选批处理帐户名称必须在创建帐户的 Azure 区域中唯一（参见下面的“位置”）。 帐户名只能包含小写字符或数字，且长度必须为 3-24 个字符。
+    a. **帐户名称**：所选批处理帐户名称必须在创建帐户的 Azure 区域中唯一（参见下面的“位置”）。 帐户名只能包含小写字符或数字，且长度必须为 3-24 个字符。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 **订阅**：如果有多个订阅，请选择要注册到批处理服务的订阅。
+    b. **订阅**：如果有多个订阅，请选择要注册到批处理服务的订阅。
 
     c. **池分配模式**：选择“用户订阅”。
 
@@ -152,7 +151,7 @@ ms.lasthandoff: 06/20/2017
 
 我们建议创建批处理帐户专用的新存储帐户。
 
-![创建“常规用途”存储帐户][storage_account]
+![创建通用存储帐户][storage_account]
 
 > [!NOTE]
 > Azure Batch 目前仅支持通用存储帐户类型。 此帐户类型在[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)的步骤 5：[创建存储帐户] (../storage/storage-create-storage-account.md#create-a-storage-account) 中进行了说明。
