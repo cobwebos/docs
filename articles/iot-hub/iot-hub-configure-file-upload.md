@@ -22,13 +22,11 @@ ms.lasthandoff: 07/04/2017
 
 
 ---
-# 使用 Azure 门户配置 IoT 中心文件上传
-<a id="configure-iot-hub-file-uploads-using-the-azure-portal" class="xliff"></a>
+# <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>使用 Azure 门户配置 IoT 中心文件上传
 
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
-## 文件上传
-<a id="file-upload" class="xliff"></a>
+## <a name="file-upload"></a>文件上传
 
 若要使用 [IoT 中心的文件上传功能][lnk-upload]，必须先将 Azure 存储帐户与中心关联。 选择“文件上传”，以显示正在修改的 IoT 中心的文件上传属性列表。
 
@@ -48,8 +46,7 @@ ms.lasthandoff: 07/04/2017
 
 ![在门户中配置 IoT 中心文件上传][15]
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 有关 IoT 中心文件上传功能的详细信息，请参阅 IoT 中心开发人员指南中的[从设备上传文件][lnk-upload]。
 
