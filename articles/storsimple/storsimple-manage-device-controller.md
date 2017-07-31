@@ -22,10 +22,8 @@ ms.lasthandoff: 07/06/2017
 
 
 ---
-# 管理 StorSimple 设备控制器
-<a id="manage-your-storsimple-device-controllers" class="xliff"></a>
-## 概述
-<a id="overview" class="xliff"></a>
+# <a name="manage-your-storsimple-device-controllers"></a>管理 StorSimple 设备控制器
+## <a name="overview"></a>概述
 本教程介绍可在 StorSimple 设备控制器上执行的不同操作。 StorSimple 设备中的控制器是采用主动-被动配置的冗余（对等）控制器。 在任意给定时间，只能有一台控制器处于主动状态并处理所有磁盘和网络操作。 另一台控制器处于被动模式。 如果主动控制器发生故障，被动控制器将自动变成主动控制器。
 
 本教程提供有关使用以下方式管理设备控制器的分步说明：
@@ -41,8 +39,7 @@ ms.lasthandoff: 07/06/2017
 * 关闭 StorSimple 设备
 * 将 StorSimple 设备重置为出厂默认设置
 
-## 重新启动或关闭单个控制器
-<a id="restart-or-shut-down-a-single-controller" class="xliff"></a>
+## <a name="restart-or-shut-down-a-single-controller"></a>重新启动或关闭单个控制器
 在执行正常的系统操作期间，无需重新启动控制器或关闭控制器。 通常，只有需要更换有故障的设备硬件组件时，才会针对单个设备控制器执行关闭操作。 如果性能由于内存用量过大或者控制器异常而受到影响，也可能需要重新启动控制器。 在成功更换控制器后，如果想要启用和测试更换的控制器，那么，也可能需要重新启动控制器。
 
 如果被动控制器可用，重新启动设备不会中断连接的发起程序。 如果被动控制器不可用或者已关闭，则重新启动主动控制器可能会导致服务中断和停机。
@@ -57,8 +54,7 @@ ms.lasthandoff: 07/06/2017
 
 若要从 Azure 经典门户管理设备控制器，请执行以下步骤。
 
-#### 在经典门户中重新启动或关闭控制器
-<a id="to-restart-or-shut-down-a-controller-in-classic-portal" class="xliff"></a>
+#### <a name="to-restart-or-shut-down-a-controller-in-classic-portal"></a>在经典门户中重新启动或关闭控制器
 1. 导航到“设备”>“维护”。
 2. 转到“硬件状态”，检查设备上的两个控制器的状态是否为“正常”。
    
@@ -93,8 +89,7 @@ ms.lasthandoff: 07/06/2017
 | 3. |关闭被动控制器。 |将看到以下消息：“完成关闭后，需要按控制器上的电源按钮将它打开。 确实要关闭此控制器吗?” </br>如果选择继续此操作，后续步骤将与用于重新启动被动控制器的步骤相同（参阅选项 1）。 |
 | 4. |关闭主动控制器。 |将看到以下消息：“完成关闭后，需要按控制器上的电源按钮将它打开。 确实要关闭此控制器吗?” </br>如果选择继续此操作，后续步骤将与用于重新启动被动控制器的步骤相同（参阅选项 1）。 |
 
-#### 在 Windows PowerShell for StorSimple 中重新启动或关闭控制器
-<a id="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple" class="xliff"></a>
+#### <a name="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>在 Windows PowerShell for StorSimple 中重新启动或关闭控制器
 执行以下步骤可以通过 Azure 经典门户关闭或重新启动 StorSimple 设备上的单个控制器。
 
 1. 使用串行控制台或来自远程计算机的 Telnet 会话访问设备。 按照[使用 PuTTY 连接到设备串行控制台](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console)中的步骤连接到控制器 0 或控制器 1。
@@ -112,8 +107,7 @@ ms.lasthandoff: 07/06/2017
      
        这样就会重新启动所连接到的控制器。 如果重新启动主动控制器，它会在重新启动之前故障转移到被动控制器。
 
-## 关闭 StorSimple 设备
-<a id="shut-down-a-storsimple-device" class="xliff"></a>
+## <a name="shut-down-a-storsimple-device"></a>关闭 StorSimple 设备
 本部分说明如何从远程计算机关闭正在运行的或有故障的 StorSimple 设备。 在关闭两个设备控制器后，设备将会关闭。 以物理方式移动设备或者不再使用设备时，才需要执行关闭操作。
 
 > [!IMPORTANT]
@@ -121,8 +115,7 @@ ms.lasthandoff: 07/06/2017
 > 
 > 
 
-#### 关闭 StorSimple 设备
-<a id="to-shut-down-a-storsimple-device" class="xliff"></a>
+#### <a name="to-shut-down-a-storsimple-device"></a>关闭 StorSimple 设备
 1. 通过[重新启动或关闭控制器](#restart-or-shut-down-a-single-controller)过程来识别和关闭设备上的被动控制器。 可以在 Azure 经典门户或 Windows PowerShell for StorSimple 中执行此操作。
 2. 重复上述步骤关闭主动控制器。
 3. 现在需要检查设备的背板。 完全关闭两个控制器之后，两个控制器上的状态 LED 应闪烁红色。 如果此时需要将设备完全关闭，请将电源和散热模块 (PCM) 上的电源开关切换到 OFF 位置。 这样即可关闭设备。
@@ -145,8 +138,7 @@ ms.lasthandoff: 07/06/2017
 
 1. After both the controllers are completely shut down, the status LEDs on both should be blinking red. If you need to turn off the device completely at this time, flip the power switches on both Power and Cooling Modules (PCMs) to the OFF position.-->
 
-## 将设备重置为出厂默认设置
-<a id="reset-the-device-to-factory-default-settings" class="xliff"></a>
+## <a name="reset-the-device-to-factory-default-settings"></a>将设备重置为出厂默认设置
 > [!IMPORTANT]
 > 如果需要将设备重置为出厂默认设置，请联系 Microsoft 支持。 下面所述的过程只能在 Microsoft 支持人员的协助下使用。
 > 
@@ -157,8 +149,7 @@ ms.lasthandoff: 07/06/2017
 
 执行以下步骤，将 Microsoft Azure StorSimple 设备重置为出厂默认设置：
 
-### 在 Windows PowerShell for StorSimple 中将设备重置为默认设置
-<a id="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple" class="xliff"></a>
+### <a name="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple"></a>在 Windows PowerShell for StorSimple 中将设备重置为默认设置
 1. 通过设备的串行控制台访问设备。 检查标题消息，确保已连接到主动控制器。
 2. 在串行控制台菜单中，选择选项 1“使用完全访问权限登录”。
 3. 在提示符下，键入以下命令重置整个群集，并删除所有数据、元数据和控制器设置：
@@ -175,8 +166,7 @@ ms.lasthandoff: 07/06/2017
    > 
    > 
 
-## 有关管理控制器的问题和解答
-<a id="questions-and-answers-about-managing-device-controllers" class="xliff"></a>
+## <a name="questions-and-answers-about-managing-device-controllers"></a>有关管理控制器的问题和解答
 本部分汇总了有关管理 StorSimple 设备控制器的一些常见问题。
 
 **问：** 如果设备上的两个控制器都运行正常并已打开，重新启动或关闭主动控制器会发生什么情况？
@@ -213,8 +203,7 @@ ms.lasthandoff: 07/06/2017
 
 **答：** 若要使控制器恢复工作，必须根据[更换 StorSimple 设备上的控制器模块](storsimple-controller-replacement.md)中所述将它插入机箱。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 * 如果使用本教程中所列的过程无法解决你遇到的 StorSimple 设备控制器相关问题，请[联系 Microsoft 支持](storsimple-contact-microsoft-support.md)。
 * 有关如何使用 StorSimple Manager 服务的详细信息，请转到[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
 

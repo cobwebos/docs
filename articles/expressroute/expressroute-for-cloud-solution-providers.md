@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: richcar
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 26c9420c9b8ba1aff6b016c01b8ed51853c91506
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -137,10 +139,5 @@ ExpressRoute 通过 Azure 虚拟网络网关连接到 Azure 网络。 网络网�
 [Microsoft 云解决方案提供商计划](https://partner.microsoft.com/en-US/Solutions/cloud-reseller-overview)。  
 [做好以云解决方案提供商身份进行事务处理的准备](https://partner.microsoft.com/en-us/solutions/cloud-reseller-pre-launch)。  
 [Microsoft 云解决方案提供商资源](https://partner.microsoft.com/en-us/solutions/cloud-reseller-resources)。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

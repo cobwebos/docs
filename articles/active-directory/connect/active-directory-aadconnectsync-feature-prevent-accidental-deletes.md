@@ -21,16 +21,12 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 03/24/2017
 
 ---
-<a id="azure-ad-connect-sync-prevent-accidental-deletes" class="xliff"></a>
-
-# Azure AD Connect 同步：防止意外删除
+# <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect 同步：防止意外删除
 本主题说明 Azure AD Connect 中的防止意外删除功能。
 
 安装 Azure AD Connect 时，将默认启用防止意外删除功能，并将其配置为不允许超过 500 个删除项目的导出。 此功能旨在防止发生意外的配置更改，以及防止发生影响许多用户和其他对象的本地目录更改。
 
-<a id="what-is-prevent-accidental-deletes" class="xliff"></a>
-
-## 什么是防止意外删除？
+## <a name="what-is-prevent-accidental-deletes"></a>什么是防止意外删除？
 经常出现删除操作的情景包括：
 
 * 在取消选择整个 [OU](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) 或[域](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering)的情况下更改[筛选](active-directory-aadconnectsync-configure-filtering.md)设置。
@@ -68,9 +64,7 @@ ms.lasthandoff: 03/24/2017
 3. 如果 Azure Active Directory 连接器仍被选中，请选择“运行”操作，再选择“导出”。
 4. 若要重新启用保护，请运行 PowerShell cmdlet：`Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500`。 检索当前的删除阈值时，请将 500 替换为你看到的值。 提供 Azure AD 全局管理员帐户和密码。
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 **概述主题**
 
 * [Azure AD Connect 同步：理解和自定义同步](active-directory-aadconnectsync-whatis.md)

@@ -21,9 +21,7 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 03/30/2017
 
 ---
-<a id="move-data-from-a-web-table-source-using-azure-data-factory" class="xliff"></a>
-
-# 使用 Azure 数据工厂从 Web 表源移动数据
+# <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表源移动数据
 本文概述了如何使用 Azure 数据工厂中的复制活动，从网页中的表将数据移至受支持的接收器数据存储。 本文建立在 [数据移动活动](data-factory-data-movement-activities.md)一文的基础上，该文提供通过复制活动和一系列支持作为源/接收器的数据存储进行数据移动的一般概述。
 
 数据工厂当前仅支持将数据从 Web 表移至其他数据存储，但不支持将数据从其他数据存储移至 Web 表目标。
@@ -31,9 +29,7 @@ ms.lasthandoff: 03/30/2017
 > [!IMPORTANT]
 > 此 Web 连接器目前仅支持从 HTML 页提取表内容。 若要从 HTTP/s 终结点中检索数据，请改用 [HTTP 连接器](data-factory-http-connector.md)。
 
-<a id="getting-started" class="xliff"></a>
-
-## 入门
+## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
 
 - 创建管道的最简单方法是使用**复制向导**。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
@@ -49,9 +45,7 @@ ms.lasthandoff: 03/30/2017
 
 对于特定于 Web 表的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息：
 
-<a id="linked-service-properties" class="xliff"></a>
-
-## 链接服务属性
+## <a name="linked-service-properties"></a>链接服务属性
 下表提供 Web 链接服务专属 JSON 元素的描述。
 
 | 属性 | 说明 | 必选 |
@@ -60,9 +54,7 @@ ms.lasthandoff: 03/30/2017
 | URL |Web 源的 URL |是 |
 | authenticationType |匿名。 |是 |
 
-<a id="using-anonymous-authentication" class="xliff"></a>
-
-### 使用匿名身份验证
+### <a name="using-anonymous-authentication"></a>使用匿名身份验证
 
 ```json
 {
@@ -79,9 +71,7 @@ ms.lasthandoff: 03/30/2017
 }
 ```
 
-<a id="dataset-properties" class="xliff"></a>
-
-## 数据集属性
+## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅 [Creating datasets](data-factory-create-datasets.md)（创建数据集）一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
 
 每种数据集的 **TypeProperties** 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **WebTable** 类型的数据集的 typeProperties 部分具有以下属性
@@ -113,9 +103,7 @@ ms.lasthandoff: 03/30/2017
 }
 ```
 
-<a id="copy-activity-properties" class="xliff"></a>
-
-## 复制活动属性
+## <a name="copy-activity-properties"></a>复制活动属性
 有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
 
 而可用于此活动的 typeProperties 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
@@ -123,9 +111,7 @@ ms.lasthandoff: 03/30/2017
 目前，复制活动中的源为 **WebSource** 类型时，不支持其他属性。
 
 
-<a id="json-example-copy-data-from-web-table-to-azure-blob" class="xliff"></a>
-
-## JSON 示例：将数据从 Web 表复制到 Azure Blob
+## <a name="json-example-copy-data-from-web-table-to-azure-blob"></a>JSON 示例：将数据从 Web 表复制到 Azure Blob
 以下示例显示：
 
 1. [Web](#linked-service-properties) 类型的链接服务。
@@ -274,9 +260,7 @@ ms.lasthandoff: 03/30/2017
 }
 ```
 
-<a id="get-index-of-a-table-in-an-html-page" class="xliff"></a>
-
-## 获取 HTML 页中表的索引
+## <a name="get-index-of-a-table-in-an-html-page"></a>获取 HTML 页中表的索引
 1. 启动 **Excel 2016**，然后切换到“数据”选项卡。  
 2. 单击工具栏中的“新建查询”，指向“从其他源”，然后单击“从 Web”。
 
@@ -304,8 +288,6 @@ ms.lasthandoff: 03/30/2017
 > [!NOTE]
 > 若要将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
-<a id="performance-and-tuning" class="xliff"></a>
-
-## 性能和优化
+## <a name="performance-and-tuning"></a>性能和优化
 请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
 

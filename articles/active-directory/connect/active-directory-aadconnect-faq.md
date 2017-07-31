@@ -20,11 +20,9 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 03/30/2017
 
 ---
-# Azure Active Directory Connect 常见问题
-<a id="frequently-asked-questions-for-azure-active-directory-connect" class="xliff"></a>
+# <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Azure Active Directory Connect 常见问题
 
-## 常规安装
-<a id="general-installation" class="xliff"></a>
+## <a name="general-installation"></a>常规安装
 **问：如果 Azure AD 全局管理员已启用 2FA，安装是否能够正常进行？**  
 2016 年 2 月版本开始支持此功能。
 
@@ -39,8 +37,7 @@ ms.lasthandoff: 03/30/2017
 
 `Register-AzureADConnectHealthADDSAgent -Credentials $cred`
 
-## 网络
-<a id="network" class="xliff"></a>
+## <a name="network"></a>网络
 **问：我的防火墙、网络设备或其他软硬件会限制在网络上打开连接的最长时间。使用 Azure AD Connect 时，客户端超时阈值应设为多少？**  
 所有网络软件、物理设备或其他软硬件限制最长连接时间的阈值应该至少为 5 分钟 (300 秒)，使装有 Azure AD Connect 客户端的服务器能够与 Azure Active Directory 连接。 这同样适用于以前发布的 Microsoft 标识同步工具。
 
@@ -50,21 +47,18 @@ Azure AD Connect 不支持使用 SLD 的本地林/域。
 **问：是否支持包含句点的 NetBios 名称？**  
 Azure AD Connect 不支持 NetBios 名称包含句点“.”的本地林/域。
 
-## 联合
-<a id="federation" class="xliff"></a>
+## <a name="federation"></a>联合
 **问：如果我收到一封电子邮件，要求我续订 Office 365 证书，我该怎么办？**  
 请参考[续订证书](active-directory-aadconnect-o365-certs.md)主题中所述的关于如何续订证书的指南。
 
 **问：我为 O365 信赖方设置了“自动更新信赖方”。当我的令牌签名证书自动滚动更新时，我是否需要采取任何措施？**  
 请参考[续订证书](active-directory-aadconnect-o365-certs.md)一文中所述的指导。
 
-## 环境
-<a id="environment" class="xliff"></a>
+## <a name="environment"></a>环境
 **问：安装 Azure AD Connect 之后，是否支持重命名服务器？**  
 否。 更改服务器名称将导致同步引擎无法连接到 SQL 数据库，并且服务将无法启动。
 
-## 标识数据
-<a id="identity-data" class="xliff"></a>
+## <a name="identity-data"></a>标识数据
 **问：Azure AD 中的 UPN (userPrincipalName) 属性与本地 UPN 不匹配，这是为什么？**  
 请参阅以下文章：
 
@@ -81,8 +75,7 @@ Azure AD Connect 不支持 NetBios 名称包含句点“.”的本地林/域。
 
 
 
-## 自定义配置
-<a id="custom-configuration" class="xliff"></a>
+## <a name="custom-configuration"></a>自定义配置
 **问：在哪里可以找到 Azure AD Connect 的 PowerShell cmdlet 介绍？**  
 仅支持客户使用本站点上介绍的 cmdlet，而不支持使用 Azure AD Connect 中的其他 PowerShell cmdlet。
 
@@ -100,8 +93,7 @@ Azure AD Connect 不支持 NetBios 名称包含句点“.”的本地林/域。
 
 
 
-## 故障排除
-<a id="troubleshooting" class="xliff"></a>
+## <a name="troubleshooting"></a>故障排除
 **问：如何获取有关 Azure AD Connect 的帮助？**
 
 [搜索 Microsoft 知识库 (KB)](https://www.microsoft.com/en-us/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)

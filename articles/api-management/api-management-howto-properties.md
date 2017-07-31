@@ -22,8 +22,7 @@ ms.lasthandoff: 07/06/2017
 
 
 ---
-# 如何在 Azure API 管理策略中使用属性
-<a id="how-to-use-properties-in-azure-api-management-policies" class="xliff"></a>
+# <a name="how-to-use-properties-in-azure-api-management-policies"></a>如何在 Azure API 管理策略中使用属性
 API 管理策略是一项强大的系统功能，允许发布者通过配置更改 API 的行为。 策略是一组语句，在请求或 API 的响应时按顺序执行。 可以使用文字文本值、策略表达式和属性构造策略语句。 
 
 每个 API 管理服务实例都有一个属性集合，其中包含对服务实例来说属于全局性的键值对。 这些属性可以用来管理所有 API 配置和策略的常量字符串值。 每个属性都有以下特性。
@@ -47,8 +46,7 @@ API 管理策略是一项强大的系统功能，允许发布者通过配置更�
 | ContosoHeaderValue |•••••••••••••••••••••• |True |Contoso |
 | ExpressionProperty |@(DateTime.Now.ToString()) |False | |
 
-## 使用属性
-<a id="to-use-a-property" class="xliff"></a>
+## <a name="to-use-a-property"></a>使用属性
 若要使用策略中的属性，可将属性名称置于一对双的大括号中（例如 `{{ContosoHeader}}`），如以下示例所示。
 
 ```xml
@@ -81,8 +79,7 @@ API 管理策略是一项强大的系统功能，允许发布者通过配置更�
 
 请注意，属性值可以包含策略表达式，但不能包含其他属性。 如果使用包含属性引用的文本作为属性值（例如 `Property value text {{MyProperty}}`），则不会替换该属性引用，而会将其作为属性值的一部分包括进去。
 
-## 创建属性
-<a id="to-create-a-property" class="xliff"></a>
+## <a name="to-create-a-property"></a>创建属性
 若要创建属性，请在“属性”选项卡上单击“添加属性”。
 
 ![添加属性][api-management-properties-add-property-menu]
@@ -97,8 +94,7 @@ API 管理策略是一项强大的系统功能，允许发布者通过配置更�
 
 若要了解如何使用 REST API 创建属性，请参阅 [Create a property using the REST API](https://msdn.microsoft.com/library/azure/mt651775.aspx#Put)（使用 REST API 创建属性）。
 
-## 编辑属性
-<a id="to-edit-a-property" class="xliff"></a>
+## <a name="to-edit-a-property"></a>编辑属性
 若要编辑属性，请单击要编辑的属性旁边的“编辑”。
 
 ![编辑属性][api-management-properties-edit]
@@ -109,8 +105,7 @@ API 管理策略是一项强大的系统功能，允许发布者通过配置更�
 
 若要了解如何使用 REST API 编辑属性，请参阅 [Edit a property using the REST API](https://msdn.microsoft.com/library/azure/mt651775.aspx#Patch)（使用 REST API 编辑属性）。
 
-## 删除属性
-<a id="to-delete-a-property" class="xliff"></a>
+## <a name="to-delete-a-property"></a>删除属性
 若要删除属性，请单击要删除的属性旁边的“删除”。
 
 ![删除属性][api-management-properties-delete]
@@ -126,8 +121,7 @@ API 管理策略是一项强大的系统功能，允许发布者通过配置更�
 
 若要了解如何使用 REST API 删除属性，请参阅 [Delete a property using the REST API](https://msdn.microsoft.com/library/azure/mt651775.aspx#Delete)（使用 REST API 删除属性）。
 
-## 搜索和筛选属性
-<a id="to-search-and-filter-properties" class="xliff"></a>
+## <a name="to-search-and-filter-properties"></a>搜索和筛选属性
 “属性”选项卡包含搜索和筛选功能，用于管理属性。 若要按属性名称筛选属性列表，请在“搜索属性”文本框中输入搜索词。 若要显示所有属性，请清除“搜索属性”文本框，然后按 Enter。
 
 ![搜索][api-management-properties-search]
@@ -136,15 +130,13 @@ API 管理策略是一项强大的系统功能，允许发布者通过配置更�
 
 ![筛选器][api-management-properties-filter]
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 * 详细了解如何使用策略
   * [API 管理中的策略](api-management-howto-policies.md)
   * [策略参考](https://msdn.microsoft.com/library/azure/dn894081.aspx)
   * [Policy expressions](https://msdn.microsoft.com/library/azure/dn910913.aspx)（策略表达式）
 
-## 观看视频概述
-<a id="watch-a-video-overview" class="xliff"></a>
+## <a name="watch-a-video-overview"></a>观看视频概述
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Use-Properties-in-Policies/player]
 > 
 > 
