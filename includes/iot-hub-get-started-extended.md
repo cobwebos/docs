@@ -1,6 +1,6 @@
-## <a name="extended-iot-scenarios-use-other-azure-services-and-tools"></a>扩展 IoT 方案：使用其他 Azure 服务和工具
+## <a name="extended-iot-scenarios"></a>扩展的 IoT 方案
 
-将设备连接到 IoT 中心后，可以浏览使用其他 Azure 工具和服务的其他方案：
+使用其他 Azure 服务和工具。 将设备连接到 IoT 中心后，可以浏览使用其他 Azure 工具和服务的其他方案：
 
 | 方案                                                   | Azure 服务或工具              |
 |----------------------------------------------------------- |------------------------------------|

@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/25/2017
+ms.date: 07/25/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 9b2947d9ce00083c168635811395bc86b3e60b78
-ms.lasthandoff: 04/26/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: a68a8fdc3976ade0d1036d5ed58c8b2eb6d32a5d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="predictive-maintenance-preconfigured-solution-walkthrough"></a>预见性维护预配置解决方案演练
 
-## <a name="introduction"></a>介绍
-
-IoT 套件预见性维护预配置解决方案是一个用于商业应用场景的端到端解决方案，可预测可能发生故障的时间点。 可以主动对优化维护等活动运用此预配置解决方案。 解决方案结合了关键的 Azure IoT 套件服务，包括 IoT 中心、流分析和 [Azure 机器学习][lnk-machine-learning]工作区。 此工作区包含基于公用示例数据集的模型，用于预测飞机引擎的剩余使用寿命 (RUL)。 此解决方案全面实施了完整的 loT 商业应用场景作为规划和实施解决方案的起点，以满足你自己特定的业务需求。
+预测性维护预配置解决方案是一个用于商业应用场景的端到端解决方案，可预测可能发生故障的时间点。 可以主动对优化维护等活动运用此预配置解决方案。 解决方案结合了关键的 Azure IoT 套件服务，包括 IoT 中心、流分析和 [Azure 机器学习][lnk-machine-learning]工作区。 此工作区包含基于公用示例数据集的模型，用于预测飞机引擎的剩余使用寿命 (RUL)。 此解决方案全面实施了完整的 loT 商业应用场景作为规划和实施解决方案的起点，以满足自己特定的业务需求。
 
 ## <a name="logical-architecture"></a>逻辑体系结构
 
@@ -34,7 +32,7 @@ IoT 套件预见性维护预配置解决方案是一个用于商业应用场景�
 
 ![][img-architecture]
 
-蓝色项是在预配该预配置解决方案时选择的区域中预配的 Azure 服务。 [预配页][lnk-azureiotsuite]显示了可部署预配置解决方案的区域列表。
+蓝色项是在部署预配置解决方案时，在同一区域中预配的 Azure 服务。 [预配页][lnk-azureiotsuite]显示了可部署预配置解决方案的区域列表。
 
 绿色项是表示飞机引擎的模拟设备。 可以在以下部分中了解有关这些模拟设备的详细信息。
 
@@ -58,19 +56,23 @@ IoT 套件预见性维护预配置解决方案是一个用于商业应用场景�
 IoT 中心会提供设备命令确认。
 
 ## <a name="azure-stream-analytics-job"></a>Azure 流分析作业
-**作业：遥测** 会使用两个语句来操作传入设备遥测流。 第一个语句会从设备选择所有遥测，然后将这些数据从在 Web 应用中可视化的位置发送到 blob 存储。 第二个语句会通过两分钟的滑动窗口计算平均传感器值，然后通过事件中心将这些数据发送到 **事件处理器**。
+
+作业：遥测会使用两个语句来操作传入设备遥测流：
+
+* 第一个语句会从设备选择所有遥测，然后将这些数据 从在 Web 应用中可视化的位置发送到 Blob 存储。
+* 第二个语句会通过两分钟的滑动窗口计算平均传感器值，然后通过事件中心将这些数据发送到事件处理器。
 
 ## <a name="event-processor"></a>事件处理器
 **事件处理器主机**在 Azure Web 作业中运行。 **事件处理器** 为已完成的周期获取平均传感器值。 然后，将这些值传递给某个 API，后者可公开用于计算引擎 RUL 的训练模型。 该 API 由预配为解决方案一部分的机器学习工作区公开。
 
 ## <a name="machine-learning"></a>机器学习
-机器学习组件使用派生自数据的模型，这些数据是从实际飞机引擎收集的。 可导航到 [azureiotsuite.com][lnk-azureiotsuite] 页上磁贴中的机器学习工作区，了解处于“就绪”状态的预配解决方案。
+机器学习组件使用派生自数据的模型，这些数据是从实际飞机引擎收集的。 可以导航到预配解决方案 [azureiotsuite.com][lnk-azureiotsuite] 页面的磁贴中的机器学习工作区。 当解决方案处于“就绪”状态时，会提供一个磁贴。
 
 
 ## <a name="next-steps"></a>后续步骤
 了解预见性维护预配置解决方案的关键组件后，可对其进行自定义。 请参阅[预配置解决方案自定义指南][lnk-customize]。
 
-你还可以浏览 IoT 套件预配置的解决方案的一些其他特性和功能：
+还可以浏览 IoT 套件预配置的解决方案的一些其他特性和功能：
 
 * [有关 IoT 套件的常见问题][lnk-faq]
 * [从源头保障 IoT 的安全][lnk-security-groundup]

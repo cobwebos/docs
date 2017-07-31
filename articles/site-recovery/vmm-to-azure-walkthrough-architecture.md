@@ -1,6 +1,6 @@
 ---
-title: "查看使用 Azure Site Recovery 执行 Hyper-V 到 Azure 复制（无 System Center VMM）的体系结构 | Microsoft Docs"
-description: "本文概述通过 Azure Site Recovery 服务将本地 Hyper-V VM 复制到 Azure（不使用 VMM）所用的组件和体系结构。"
+title: "查看使用 Azure Site Recovery 执行 Hyper-V 到 Azure 复制（通过 System Center VMM）的体系结构 | Microsoft Docs"
+description: "本文概述在 VMM 云中通过 Azure Site Recovery 服务将本地 Hyper-V VM 复制到 Azure 所用的组件和体系结构。"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,21 +12,21 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/22/2017
+ms.date: 07/24/2017
 ms.author: raynew
 ms.translationtype: HT
 ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: d57cbc5b205cfb020070d567097f3bb648ce5300
+ms.openlocfilehash: df4e227d02901153d3cfcfd4dfd4f11de180763a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/26/2017
 
 ---
 
 
-# <a name="step-1-review-the-architecture-for-hyper-v-replication-to-azure"></a>步骤 1：查看从 Hyper-V 复制到 Azure 的体系结构
+# <a name="step-1-review-the-architecture"></a>步骤 1：查看体系结构
 
 
-本文介绍使用 [Azure Site Recovery](site-recovery-overview.md) 服务将本地 Hyper-V 虚拟机（不由 System Center VMM 托管）复制到 Azure 时涉及的组件和进程。
+本文介绍在 System Center Virtual Machine Manager (VMM) 云中使用 [Azure Site Recovery](site-recovery-overview.md) 服务将本地 Hyper-V 虚拟机复制到 Azure 时使用的组件和进程。
 
 请将任何评论发布到本文底部，或者发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)。
 
@@ -34,26 +34,29 @@ ms.lasthandoff: 07/26/2017
 
 ## <a name="architectural-components"></a>体系结构组件
 
-在没有 VMM 的情况下，将 Hyper-V VM 复制到 Azure 涉及多个组件。
+在 VMM 云中将 Hyper-V VM 复制到 Azure 涉及多个组件。
 
-**组件** | **位置** | **详细信息**
+**组件** | **要求** | **详细信息**
 --- | --- | ---
 **Azure** | 在 Azure 中，需要创建 Microsoft Azure 帐户、Azure 存储帐户和 Azure 网络。 | 复制的数据存储在存储帐户中；从本地站点故障转移时，将使用复制的数据创建 Azure VM。<br/><br/> 创建 Azure VM 后，它们将连接到 Azure 虚拟网络。
-**Hyper-V** | Hyper-V 主机和群集收集到 Hyper-V 站点中。 Azure Site Recovery 提供程序和恢复服务代理安装在每个 Hyper-V 主机上。 | 提供程序通过 Internet 使用 Site Recovery 来安排复制。 恢复服务代理处理数据复制。<br/><br/> 来自提供程序和代理的通信都是安全且经过加密的。 Azure 存储中的复制数据也已加密。
-**Hyper-V VM** | 需要一个或多个在 Hyper-V 主机服务器上运行的 VM。 | 不需在 VM 上显式安装任何内容。
+**VMM 服务器** | VMM 服务器上有一个或多个包含 Hyper-V 主机的云。 | 在 VMM 服务器上安装 Site Recovery 提供程序，以便协调通过 Site Recovery 进行的复制，并在恢复服务保管库中注册服务器。
+**Hyper-V 主机** | 一个或多个由 VMM 管理的 Hyper-V 主机/群集。 |  在每个主机或群集成员上安装恢复服务代理。
+**Hyper-V VM** | 一个或多个在 Hyper-V 主机服务器上运行的 VM。 | 不需在 VM 上显式安装任何内容。
+**网络** |在 VMM 服务器上设置的逻辑网络和 VM 网络。 VM 网络应链接到与云关联的逻辑网络。 | VM 网络映射到 Azure 虚拟网络，因此在故障转移后创建 Azure VM 时，这些 VM 位于网络中。
 
 在[支持矩阵](site-recovery-support-matrix-to-azure.md)中了解每个组件的部署先决条件和要求。
 
-图 1：Hyper-V 站点到 Azure 的复制
 
-![组件](./media/hyper-v-site-walkthrough-architecture/arch-onprem-azure-hypervsite.png)
+图 1：在 VMM 云中将 Hyper-V 主机上的 VM 复制到 Azure
+
+![组件](./media/vmm-to-azure-walkthrough-architecture/arch-onprem-onprem-azure-vmm.png)
 
 
 ## <a name="replication-process"></a>复制过程
 
 图 2：从 Hyper-V 到 Azure 的复制和恢复过程
 
-![工作流](./media/hyper-v-site-walkthrough-architecture/arch-hyperv-azure-workflow.png)
+![工作流](./media/vmm-to-azure-walkthrough-architecture/arch-hyperv-azure-workflow.png)
 
 ### <a name="enable-protection"></a>启用保护
 
@@ -61,7 +64,8 @@ ms.lasthandoff: 07/26/2017
 2. 该作业将检查计算机是否符合先决条件，然后调用 [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx)，以使用配置的设置来设置复制。
 3. 该作业通过调用 [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) 方法启动初始复制，以便初始化完整的 VM 复制，然后将 VM 的虚拟磁盘发送到 Azure。
 4. 可以在“作业”选项卡中监视作业。
- 
+        ![作业列表](media/vmm-to-azure-walkthrough-architecture/image1.png) ![启用保护性向下钻取](media/vmm-to-azure-walkthrough-architecture/image2.png)
+
 ### <a name="replicate-the-initial-data"></a>复制初始数据
 
 1. 当触发初始复制时，系统会拍摄一个 [Hyper-V VM 快照](https://technet.microsoft.com/library/dd560637.aspx)。
@@ -74,6 +78,7 @@ ms.lasthandoff: 07/26/2017
 ### <a name="finalize-protection"></a>完成保护
 
 1. 初始复制完成后，“在虚拟机上完成保护”作业将配置网络和其他复制后设置，使虚拟机受到保护。
+    ![完成保护作业](media/vmm-to-azure-walkthrough-architecture/image3.png)
 2. 如果要复制到 Azure，可能需要调整虚拟机的设置，使其随时可进行故障转移。 此时，你可以运行测试故障转移以检查一切是否按预期工作。
 
 ### <a name="replicate-the-delta"></a>复制增量
@@ -88,7 +93,7 @@ ms.lasthandoff: 07/26/2017
 2.  重新同步通过计算源虚拟机磁盘和目标虚拟机的校验和并只发送增量数据来最大程度地减小发送的数据量。 重新同步使用固定块区块算法，其中源文件和目标文件被分到固定区块。 系统会针对每个区块生成校验和，然后进行比较，以确定源中的哪些区块需要应用到目标。
 3. 重新同步完成后，应会恢复正常增量复制。 默认情况下，重新同步安排为在非工作时间自动运行，但你可以手动重新同步虚拟机。 例如，如果发生网络中断或其他中断，可以继续重新同步。 为此，请在“门户”>“重新同步”中选择 VM。
 
-    ![手动重新同步](./media/hyper-v-site-walkthrough-architecture/image4.png)
+    ![手动重新同步](media/vmm-to-azure-walkthrough-architecture/image4.png)
 
 
 ### <a name="retry-logic"></a>重试逻辑
@@ -115,5 +120,5 @@ ms.lasthandoff: 07/26/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-转到[步骤 2：查看部署先决条件](hyper-v-site-walkthrough-prerequisites.md)
+转到[步骤 2：查看部署先决条件](vmm-to-azure-walkthrough-prerequisites.md)
 

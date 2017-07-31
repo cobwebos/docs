@@ -15,18 +15,18 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/20/2017
+ms.date: 07/21/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: 0625984bf10588fe50a2632285f565eb79b66ab7
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: ad4330a1fc7f8de154d9aaa8df3acc2ab59b9dc1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="create-an-apache-spark-cluster-in-azure-hdinsight"></a>在 Azure HDInsight 中创建 Apache Spark 群集
 
-本文介绍如何在 Azure HDInsight 中创建 Apache Spark 群集。
+本文介绍如何在 Azure HDInsight 中创建 Apache Spark 群集。 有关 Spark on HDInsight 的信息，请参阅[概述：Azure HDInsight 上的 Apache Spark](hdinsight-apache-spark-overview.md)。
 
    ![快速入门示意图，其中描述了在 Azure HDInsight 上创建 Apache Spark 群集的步骤](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-quickstart-interactive-spark-query-flow.png "有关在 HDInsight 中使用 Apache Spark 的 Spark 快速入门。示意图中的步骤：创建群集；运行 Spark 交互式查询")
 
@@ -115,10 +115,17 @@ ms.lasthandoff: 07/22/2017
 
 7. 运行完应用程序后，可以关闭 Notebook 以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。
 
-## <a name="next-step"></a>后续步骤
+8. 如果计划稍后再完成后续步骤，请确保删除在本文中创建的 HDInsight 群集。 
 
-本文介绍了如何创建 HDInsight Spark 群集并运行基本的 Spark SQL 查询。 现在请学习如何[将数据加载到 HDInsight Spark 中并运行交互式查询](hdinsight-apache-spark-load-data-run-query.md)。
+    [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-如果计划稍后再完成后续步骤，请确保删除 HDInsight 群集。 
+## <a name="next-step"></a>后续步骤 
 
-[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+本文介绍了如何创建 HDInsight Spark 群集并运行基本的 Spark SQL 查询。 转到下一文章，了解如何使用 HDInsight Spark 群集针对示例数据运行交互式查询。
+
+> [!div class="nextstepaction"]
+>[在 HDInsight Spark 群集上运行交互式查询](hdinsight-apache-spark-load-data-run-query.md)
+
+
+
+

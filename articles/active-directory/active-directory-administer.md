@@ -11,15 +11,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/20/2017
+ms.date: 07/25/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro;oldportal
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 07b9f4626e9129c7eeb94d43883417f324da5292
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: d68b641ac934c3930366be3dbf89a86e9611c7b7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="administer-your-azure-ad-directory"></a>管理 Azure AD 目录
@@ -40,7 +40,7 @@ Azure AD 在大多数 Microsoft 云服务的后面提供核心目录和身份管
 * Microsoft Dynamics CRM Online
 * Microsoft Intune
 
-当你注册其中任何一个 Microsoft 云服务时，便会获得一个 Azure AD 目录。 你可根据需要创建更多的目录。 例如，可以将第一个目录保留为生产目录，然后创建另一个目录进行测试或过渡。
+注册其中任何一个 Microsoft 云服务便会获得一个 Azure AD 目录。 你可根据需要创建更多的目录。 例如，可以将第一个目录保留为生产目录，然后创建另一个目录进行测试或过渡。
 
 > [!NOTE]
 > 在你注册第一个服务后，我们建议你在注册其他 Microsoft 云服务时使用与你的组织关联的同一个管理员帐户。
@@ -65,7 +65,7 @@ Azure AD 在大多数 Microsoft 云服务的后面提供核心目录和身份管
 
 * [Microsoft Azure](https://account.windowsazure.com/organization)
 * [Office 365](http://products.office.com/business/compare-office-365-for-business-plans/)
-* [Microsoft Intune](https://account.manage.microsoft.com/Signup/MainSignUp.aspx?OfferId=40BE278A-DFD1-470a-9EF7-9F2596EA7FF9&ali=1)
+* [Microsoft Intune](https://portal.office.com/Signup/Signup.aspx?OfferId=40BE278A-DFD1-470a-9EF7-9F2596EA7FF9&dl=INTUNE_A&ali=1#0%20)
 
 ### <a name="manage-an-azure-provisioned-default-directory"></a>管理 Azure 设置的默认目录
 现今，注册 Azure 时会自动创建一个目录，并且你的订阅与该目录相关联。 但是，如果你最初是在 2013 年 10 月之前注册 Azure 的，则不会自动创建一个目录。 在那种情况下，Azure 可能已为你的帐户进行了“回填”，即为其设置了默认目录。 然后你的订阅与该默认目录相关联。

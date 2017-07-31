@@ -14,14 +14,13 @@ ms.tgt_pltfrm: na
 ms.date: 05/19/2017
 ms.author: brjohnst
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 0185d898f5443cc03135cb1692a54194a82b1e50
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 52bd0fd4cf70401dcf881c7f28d5cd91397bb059
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 07/26/2017
 
 ---
-# 使用 .NET SDK 查询 Azure 搜索索引
-<a id="query-your-azure-search-index-using-the-net-sdk" class="xliff"></a>
+# <a name="query-your-azure-search-index-using-the-net-sdk"></a>使用 .NET SDK 查询 Azure 搜索索引
 > [!div class="op_single_selector"]
 > * [概述](search-query-overview.md)
 > * [门户](search-explorer.md)
@@ -34,10 +33,10 @@ ms.lasthandoff: 07/12/2017
 
 开始本演练前，应已[创建 Azure 搜索索引](search-what-is-an-index.md)并[填充数据](search-what-is-data-import.md)。
 
-注意，本文中的所有示例代码均用 C# 编写。 可以在 [GitHub](http://aka.ms/search-dotnet-howto)上找到完整的源代码。
+> [!NOTE]
+> 本文中的所有示例代码均用 C# 编写。 可以 [在 GitHub 上](http://aka.ms/search-dotnet-howto)找到完整的源代码。 也可参阅 [Azure 搜索 .NET SDK](search-howto-dotnet-sdk.md)，以便更详细地了解示例代码。
 
-## 标识 Azure 搜索服务的查询 API 密钥
-<a id="identify-your-azure-search-services-query-api-key" class="xliff"></a>
+## <a name="identify-your-azure-search-services-query-api-key"></a>标识 Azure 搜索服务的查询 API 密钥
 创建好 Azure 搜索索引后，即可使用 .NET SDK 发出查询。 首先，需要获取为已预配的搜索服务生成的其中一个查询 API 密钥。 每次向服务发出请求时，NET SDK 都会发送这个 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
 1. 若要查找服务的 API 密钥，可登录到 [Azure 门户](https://portal.azure.com/)
@@ -51,8 +50,7 @@ ms.lasthandoff: 07/12/2017
 
 可以使用其中一个查询密钥来查询索引。 查询也可使用管理密钥，但最好在应用程序代码中使用查询密钥，因为这更符合 [最低特权原则](https://en.wikipedia.org/wiki/Principle_of_least_privilege)。
 
-## 创建 SearchIndexClient 类的实例
-<a id="create-an-instance-of-the-searchindexclient-class" class="xliff"></a>
+## <a name="create-an-instance-of-the-searchindexclient-class"></a>创建 SearchIndexClient 类的实例
 若要使用 Azure 搜索 .NET SDK 发出查询，需要创建 `SearchIndexClient` 类的实例。 此类具有几个构造函数。 需要将搜索服务名称、索引名称和 `SearchCredentials` 对象用作参数。 `SearchCredentials` 包装 API 密钥。
 
 下面的代码使用搜索服务名称值以及应用程序配置文件（在使用[示例应用程序](http://aka.ms/search-dotnet-howto)时为 `appsettings.json`）中存储的 API 密钥值为“hotels”索引创建新的 `SearchIndexClient`（该索引在[使用 .NET SDK 创建 Azure 搜索索引](search-create-index-dotnet.md)中创建）：
@@ -70,18 +68,15 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 
 `SearchIndexClient` 具有 `Documents` 属性。 此属性提供查询 Azure 搜索索引所需的全部方法。
 
-## 查询索引
-<a id="query-your-index" class="xliff"></a>
+## <a name="query-your-index"></a>查询索引
 使用 .NET SDK 进行搜索与对 `SearchIndexClient` 调用 `Documents.Search` 方法一样简单。 此方法采用几个参数，包括搜索文本以及可用于进一步优化查询的 `SearchParameters` 对象。
 
-#### 查询类型
-<a id="types-of-queries" class="xliff"></a>
+#### <a name="types-of-queries"></a>查询类型
 可以使用的两个主要[查询类型](search-query-overview.md#types-of-queries)分别为 `search` 和 `filter`。 `search` 查询可搜索索引中全部可搜索 字段中的一个或多个词。 `filter` 查询可对索引中的全部可筛选字段计算布尔表达式。
 
 使用 `Documents.Search` 方法可同时执行搜索和查询。 搜索查询可在`searchText` 参数中传递，而筛选表达式则可在 `SearchParameters` 类的 `Filter` 属性中传递。 若要筛选但不搜索，只需传递 `"*"` 作为 `searchText` 参数。 若要搜索但不筛选，只需不设置 `Filter` 属性，或不在 `SearchParameters` 实例中传递。
 
-#### 查询示例
-<a id="example-queries" class="xliff"></a>
+#### <a name="example-queries"></a>查询示例
 下面的示例代码演示查询“hotels”索引的几种不同方法（该索引在 [使用 .NET SDK 创建 Azure 搜索索引](search-create-index-dotnet.md#DefineIndex)中定义）。 注意，随搜索结果返回的文档是 `Hotel` 类的实例（该类在 [使用 .NET SDK 将数据导入 Azure 搜索](search-import-data-dotnet.md#HotelClass)中定义）。 示例代码使用 `WriteDocuments` 方法将搜索结果输出到控制台。 此方法在下一节介绍。
 
 ```csharp
@@ -138,8 +133,7 @@ results = indexClient.Documents.Search<Hotel>("motel", parameters);
 WriteDocuments(results);
 ```
 
-## 处理搜索结果
-<a id="handle-search-results" class="xliff"></a>
+## <a name="handle-search-results"></a>处理搜索结果
 `Documents.Search` 方法返回包含查询结果的 `DocumentSearchResult` 对象。 上一节中的示例使用名为 `WriteDocuments` 的方法将搜索结果输出到控制台：
 
 ```csharp
@@ -154,7 +148,7 @@ private static void WriteDocuments(DocumentSearchResult<Hotel> searchResults)
 }
 ```
 
-以下是上一节中的查询的结果（假定“hotels”索引填充的是 [使用 .NET SDK 将数据导入 Azure 搜索](search-import-data-dotnet.md)中的示例数据）：
+以下是上一节中的查询的结果（假定“hotels”索引填充的是[使用 .NET SDK 将数据导入 Azure 搜索](search-import-data-dotnet.md)中的示例数据）：
 
 ```
 Search the entire index for the term 'budget' and return only the hotelName field:
