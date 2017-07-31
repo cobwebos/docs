@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: raymondl;garye;v-donglo
-translationtype: Human Translation
-ms.sourcegitcommit: 0dc0f84ed65e76a95dcac523e42268039212773c
-ms.openlocfilehash: 5032e66556622e44e5f5bba84c4ddf5318b1e194
-ms.lasthandoff: 03/02/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: cf7a39e14a935d0d0e0df07e66a8f37480ec9687
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="retrain-machine-learning-models-programmatically"></a>以编程方式重新训练机器学习模型
@@ -91,7 +91,7 @@ ms.lasthandoff: 03/02/2017
 
 若要调用重新训练 API：
 
-1. 在 Visual Studio 中创建 C# 控制台应用程序（“新建”->“项目”->“Windows 桌面”->“控制台应用程序”）。
+1. 在 Visual Studio 中创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用(.NET Framework)”。
 2. 登录到“机器学习 Web 服务”门户。
 3. 如果正在使用经典 Web 服务，单击“经典 Web 服务”。
    1. 单击正在使用的 Web 服务。

@@ -12,12 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 12/13/2016
+ms.date: 07/17/2017
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: c8bb1161e874a3adda4a71ee889ca833db881e20
-ms.openlocfilehash: cd70b0b5656bef08a8be1c1a67754b203cceb905
-
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 6acd343782a3ee07750e27ec3022ff81cedfadee
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="ios-sdk-for-azure-mobile-engagement"></a>iOS SDK for Azure Mobile Engagement
@@ -31,8 +32,11 @@ ms.openlocfilehash: cd70b0b5656bef08a8be1c1a67754b203cceb905
 3. 标记计划实施：[如何在 iOS 应用中使用高级 Mobile Engagement 标记 API](mobile-engagement-ios-use-engagement-api.md)
 
 ## <a name="release-notes"></a>发行说明
-### <a name="401-12132016"></a>4.0.1 (12/13/2016)
-* 改进了后台的日志传送。
+### <a name="410-07172017"></a>4.1.0 (07/17/2017)
+* 修复了后台清除的锁屏提醒。
+* 修复了 XCode 9 上有关主队列中未调用的 API 的警告。
+* 修复了 Reach 投票模块中的内存泄漏。
+* 放弃了对 iOS 6.X 的支持。 从此版本开始，应用程序的部署目标必须至少为 iOS 7。
 
 对于较早版本，请参阅[完整的发行说明](mobile-engagement-ios-release-notes.md)
 
@@ -49,8 +53,8 @@ ms.openlocfilehash: cd70b0b5656bef08a8be1c1a67754b203cceb905
 
 > [!NOTE]
 > 如果确实需要使用 XCode 7，则可以使用 [iOS Engagement SDK v3.2.4](https://aka.ms/r6oouh)。 在 iOS 10 设备上运行时，此早期版本的市场宣传模块上存在一个已知 bug：无法操作系统通知。 要修复此问题，必须在应用委派中实现否决的 API `application:didReceiveRemoteNotification:`，如下所示：
-> 
-> 
+>
+>
 
     - (void)application:(UIApplication*)application
     didReceiveRemoteNotification:(NSDictionary*)userInfo
@@ -59,9 +63,9 @@ ms.openlocfilehash: cd70b0b5656bef08a8be1c1a67754b203cceb905
     }
 
 > [!IMPORTANT]
-> **我们不建议此解决方法**，因为此 iOS API 已被否决，此行为在任何即将发布的（即使再小）iOS 版本升级过程中会有所更改。 你应尽快改用 XCode 8。
-> 
-> 
+> **我们不建议此解决方法**，因为此 iOS API 已被弃用，此行为在任何即将发布的（即便是微小）iOS 版本升级中都可能发生改变。 你应尽快改用 XCode 8。
+>
+>
 
 #### <a name="usernotifications-framework"></a>UserNotifications 框架
 你需要在构建阶段添加 `UserNotifications` 框架。
@@ -72,7 +76,7 @@ ms.openlocfilehash: cd70b0b5656bef08a8be1c1a67754b203cceb905
 XCode 8 可能会重置你的应用推送功能，请在你选定目标的 `capability` 选项卡中再核实一下。
 
 #### <a name="add-the-new-ios-10-notification-registration-code"></a>添加新的 iOS 10 通知注册代码
-将应用注册到通知的较旧代码片段仍可使用，但在 iOS 10 上运行时会使用已弃用的 API。 
+将应用注册到通知的较旧代码片段仍可使用，但在 iOS 10 上运行时会使用已弃用的 API。
 
 导入 `User Notification` 框架：
 
@@ -176,14 +180,8 @@ SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版�
 
       - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         // Any other code
-  
+
         [UNUserNotificationCenter currentNotificationCenter].delegate = self;
         return YES;
       }
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

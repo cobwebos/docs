@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 99c8067cf08b8ae7650c240c9d69d2fe1c18f9c8
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 50c463588356cc4725b038cbf89a49b6ce2bdc3b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/08/2017
 
 
 ---
 # <a name="using-remote-desktop-with-azure-roles"></a>将远程桌面与 Azure 角色一起使用
-使用 Azure SDK 和远程桌面服务，可以访问 Azure 托管的 Azure 角色和虚拟机。 在 Visual Studio 中，可以从 Azure 项目配置远程桌面服务。 若要启用远程桌面服务，必须创建一个包含一个或多个角色的有效的项目，然后将其发布到 Azure 中。
+使用 Azure SDK 和远程桌面服务，可以访问 Azure 托管的 Azure 角色和虚拟机。 在 Visual Studio 中，可以从 Azure 云服务项目配置远程桌面服务。 若要启用远程桌面服务，必须创建一个包含一个或多个角色的有效的项目，然后将其发布到 Azure 中。
 
 > [!IMPORTANT]
 > 仅在进行故障排除或开发时才应访问 Azure 角色。 每个虚拟机都是用于运行 Azure 应用程序中的特定角色，而不是运行其他客户端应用程序。 若要使用 Azure 来托管通用的虚拟机，请参阅“Accessing Azure Virtual Machines from Server Explorer”（从服务器资源管理器访问 Azure 虚拟机）。
@@ -29,7 +31,7 @@ ms.openlocfilehash: 99c8067cf08b8ae7650c240c9d69d2fe1c18f9c8
 > 
 
 ## <a name="to-enable-and-use-remote-desktop-for-an-azure-role"></a>为 Azure 角色启用和使用远程桌面
-1. 在解决方案资源管理器中，打开项目的快捷菜单，然后选择“发布”。
+1. 在“解决方案资源管理器”中，打开云服务项目的快捷菜单，然后选择“发布”。
    
     此时将显示“发布 Azure 应用程序”向导。
    
@@ -76,10 +78,5 @@ ms.openlocfilehash: 99c8067cf08b8ae7650c240c9d69d2fe1c18f9c8
    
     ![通过远程桌面连接](./media/vs-azure-tools-remote-desktop-roles/IC799162.png)
 3. 输入前面创建的用户名和密码。 现在你已登录到远程会话。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

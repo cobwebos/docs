@@ -14,12 +14,11 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 75653b84d6ccbefe7d5230449bea81f498e10a98
-ms.openlocfilehash: a898cb9c66a22bb8d19170fdd03d0fc3b4d93000
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: 82d5eb7fd13b1e9700a3e9bc2d30775e9c129749
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/30/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="fail-back-vmware-virtual-machines-and-physical-servers-to-the-on-premises-site-classic-portal"></a>将 VMware 虚拟机和物理服务器故障回复到本地站点（经典门户）
@@ -75,7 +74,7 @@ ms.lasthandoff: 01/30/2017
 ## <a name="prerequisites"></a>先决条件
 * 需要 VMware 环境才能对 VMware VM 和物理服务器进行故障回复。 不支持故障回复到物理服务器。
 * 为了进行故障回复，你应该在最初设置保护时，就已经创建 Azure 网络。 故障回复需要进行 VPN 或 ExpressRoute 连接，从 Azure VM 所在的 Azure 网络连接到本地站点。
-* 如果你要故障回复到的 VM 受 vCenter 服务器管理，则需确保你拥有在 vCenter 服务器上发现 VM 所必需的权限。 [了解详细信息](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)。
+* 如果你要故障回复到的 VM 受 vCenter 服务器管理，则需确保你拥有在 vCenter 服务器上发现 VM 所必需的权限。 [了解详细信息](site-recovery-vmware-to-azure-classic.md)。
 * 如果 VM 上存在快照，重新保护会失败。 你可以删除这些快照或磁盘。
 * 故障回复之前，你需要创建多个组件：
   * **在 Azure 中创建进程服务器**。 这是你需要在故障回复过程中创建并保持运行的 Azure VM。 完成故障回复后，可以删除该虚拟机。
@@ -114,13 +113,13 @@ ms.lasthandoff: 01/30/2017
 
 1. 如果你要在 Windows 上安装主目标服务器，请通过需在其中安装主目标服务器的 VM 打开“快速启动”页，然后下载 Azure Site Recovery 统一安装程序向导的安装文件。
 2. 运行安装程序，然后在“开始之前”中选择“添加额外的进程服务器以扩大部署”。
-3. 完成向导，完成方式与[安装管理服务器](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server)时采用的方式相同。 在“配置服务器详细信息”页上，指定此主目标服务器的 IP 地址，以及访问 VM 所需的密码。
+3. 完成向导，完成方式与[安装管理服务器](site-recovery-vmware-to-azure-classic.md)时采用的方式相同。 在“配置服务器详细信息”页上，指定此主目标服务器的 IP 地址，以及访问 VM 所需的密码。
 
 ### <a name="set-up-a-linux-vm-as-the-master-target-server"></a>将 Linux VM 安装为主目标服务器
 若要将运行主目标服务器的管理服务器安装为 Linux VM，至少需安装 Cent)S 6.6 操作系统，检索每个 SCSI 硬盘的 SCSI ID，安装一些其他的程序包，然后应用某些自定义更改。
 
 #### <a name="install-centos-66"></a>安装 CentOS 6.6
-1. 在管理服务器 VM 上至少安装 CentOS 6.6 操作系统。 将 ISO 留在 DVD 驱动器中，然后启动系统。 跳过介质测试，选择“US English”作为语言，选择“基本存储设备”，确保硬盘驱动器上没有任何重要数据，然后单击“是”，放弃所有数据。 输入管理服务器的主机名，然后选择服务器网络适配器。  在“编辑系统”对话框中选择“自动连接”，然后添加静态 IP 地址、网络和 DNS 设置。 指定一个时区，以及一个用于访问管理服务器的根密码。
+1. 在管理服务器 VM 上至少安装 CentOS 6.6 操作系统。 将 ISO 留在 DVD 驱动器中，然后启动系统。 跳过介质测试，选择“US English”作为语言，选择“基本存储设备”，确保硬盘驱动器上没有任何重要数据，然后单击“是”，放弃所有数据。 输入管理服务器的主机名，然后选择服务器网络适配器。  在“编辑系统”对话框中选择“自动连接”，并添加静态 IP 地址、网络和 DNS 设置。 指定一个时区，以及一个用于访问管理服务器的根密码。
 2. 当系统询问你的安装类型时，应选择“创建自定义布局”作为分区。 单击“下一步”后，选择“免费”，然后单击“创建”。 使用 **FS Type:** **ext4** 创建 **/**、**/var/crash** 和 **/home 分区**。 创建交换分区，格式为 **FS Type: swap**。
 3. 如果发现有预先存在的设备，则会显示警告消息。 单击“格式化”，使用分区设置格式化驱动器。 单击“将更改写入磁盘”以应用分区更改。
 4. 选择“安装引导加载程序” > “下一步”，在根分区上安装引导加载程序。
@@ -180,7 +179,7 @@ ms.lasthandoff: 01/30/2017
 2. 确保可以按预期复制到 Azure 以后，即可在 Azure 中删除已进行故障回复的 Azure VM（当前尚未运行）。
 
 ### <a name="common-issues-in-failback"></a>故障回复的常见问题
-1. 如果执行只读的用户 vCenter 发现并保护虚拟机，操作将成功且故障转移可正常工作。 在重新保护时，操作将失败，因为无法发现数据存储。 征兆是重新保护时不会列出数据存储。 若要解决此问题，可以使用具有适当权限的帐户更新 vCenter 凭据并重试该作业。 [了解详细信息](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)
+1. 如果执行只读的用户 vCenter 发现并保护虚拟机，操作将成功且故障转移可正常工作。 在重新保护时，操作将失败，因为无法发现数据存储。 征兆是重新保护时不会列出数据存储。 若要解决此问题，可以使用具有适当权限的帐户更新 vCenter 凭据并重试该作业。 [了解详细信息](site-recovery-vmware-to-azure-classic.md)
 2. 在故障回复 Linux VM 并在本地运行时，会看到网络管理器程序包已从该计算机卸载。 这是因为 VM 在 Azure 中恢复时，网络管理器程序包遭到删除。
 3. 当 VM 以静态 IP 地址配置且故障转移到 Azure 时，将通过 DHCP 获取 IP 地址。 当故障转移回复到本地时，该 VM 会继续使用 DHCP 获取 IP 地址。 如有需要，你需要手动登录到该计算机并将 IP 地址设置回静态地址。
 4. 如果使用 ESXi 5.5 免费版或 vSphere 6 虚拟机监控程序免费版，则故障转移会成功，但故障回复不会成功。 需要升级为评估许可证才能启用故障回复。

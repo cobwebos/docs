@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 5086fa86149e4d8133df339b1261d3792fa66b4c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2c0b211bced99d272a73a7b018a22f99d8d58aa9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -92,9 +94,9 @@ ms.openlocfilehash: 5086fa86149e4d8133df339b1261d3792fa66b4c
    
    | 结果列 | 说明 |
    |:--- |:--- |
-   |  Name |“**名称**”列包含分配给每个发现的卷的驱动器号。 |
+   |  名称 |“**名称**”列包含分配给每个发现的卷的驱动器号。 |
    |  设备 |“**设备**”列包含连接到主计算机的设备 IP 地址。 |
-   |  设备卷名称 |“**设备卷名称**”列包含选定的卷所属的设备卷的名称。 这是在 Azure 经典门户中针对特定卷定义的卷名称。 |
+   |  设备卷名称 |“**设备卷名称**”列包含选定的卷所属的设备卷的名称。 这是在 Azure 门户中针对特定卷定义的卷名称。 |
    |  访问路径 |“**访问路径**”列显示该卷的访问路径。 这是在主计算机上可以访问该卷的驱动器号或装入点。 |
 
 ## <a name="delete-a-volume"></a>删除卷
@@ -102,8 +104,6 @@ ms.openlocfilehash: 5086fa86149e4d8133df339b1261d3792fa66b4c
 
 > [!NOTE]
 > 如果该卷是任何卷组的一部分，则无法将其删除。 （该删除选项不适用于作为某个卷组成员的卷。）必须删除整个卷组才能删除该卷。
-> 
-> 
 
 #### <a name="to-delete-a-volume"></a>删除卷
 1. 单击桌面图标启动 StorSimple Snapshot Manager。
@@ -162,7 +162,7 @@ ms.openlocfilehash: 5086fa86149e4d8133df339b1261d3792fa66b4c
 ### <a name="prerequisites"></a>先决条件
 开始之前：
 
-* 请确保正确配置 StorSimple 设备和主计算机。 有关详细信息，请转到[部署本地 StorSimple 设备](storsimple-deployment-walkthrough-u2.md)。
+* 请确保正确配置 StorSimple 设备和主计算机。 有关详细信息，请转到[部署本地 StorSimple 设备](storsimple-8000-deployment-walkthrough-u2.md)。
 * 安装和配置 StorSimple Snapshot Manager。 有关详细信息，请转到[部署 StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)。
 * 在 StorSimple 设备上配置两个卷。 （在示例中，可用卷为**磁盘 1** 和**磁盘 2**。） 
 
@@ -212,9 +212,4 @@ ms.openlocfilehash: 5086fa86149e4d8133df339b1261d3792fa66b4c
 
 <!--Reference links-->
 [1]: https://msdn.microsoft.com/library/ee338480(v=ws.10).aspx
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

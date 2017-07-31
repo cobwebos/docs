@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 06/20/2017
 ms.author: janeng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 8af9ea0a76b9a0606284505195ee3f52b1964604
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: d5e63e7079b652e69a089aef495952d29cae67a2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
 
@@ -42,7 +41,9 @@ Azure SQL 数据库与 Microsoft 云（“Azure”）中的数据库即服务 (D
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程，请确保已安装最新版的 [ SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS)。 
+若要完成本教程，请确保已安装：
+- 最新版本的 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS)。
+- 最新版本的 [BCP 和 SQLCMD][https://www.microsoft.com/download/details.aspx?id=36433]。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -110,7 +111,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
    > 在后续的快速入门中，需提供此完全限定的服务器名称才能连接到服务器及其数据库。
    > 
 
-   ![服务器名称](./media/sql-database-get-started-portal/server-name.png) 
+   ![服务器名称](./media/sql-database-connect-query-dotnet/server-name.png) 
 
 2. 如上图所示，在工具栏上单击“设置服务器防火墙”。 此时会打开 SQL 数据库服务器的“防火墙设置”页。 
 
@@ -130,7 +131,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 > [!IMPORTANT]
 > 默认情况下，所有 Azure 服务都允许通过 SQL 数据库防火墙进行访问。 在此页上单击“关”即可对所有 Azure 服务执行禁用操作。
 
-## <a name="get-connection-information-in-the-azure-portal"></a>在 Azure 门户中获取连接信息
+## <a name="sql-server-connection-information-in-the-azure-portal"></a>Azure 门户中的 SQL Server 连接信息
 
 请在 Azure 门户中获取 Azure SQL 数据库服务器的完全限定服务器名称。 请使用 SQL Server Management Studio 通过完全限定的服务器名称连接到服务器。
 
@@ -138,7 +139,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 2. 从左侧菜单中选择“SQL 数据库”，然后单击“SQL 数据库”页上的数据库。 
 3. 在数据库的“Azure 门户”页的“概要”窗格中，找到并复制“服务器名称”。
 
-   ![连接信息](./media/sql-database-get-started-portal/server-name.png)
+   ![连接信息](./media/sql-database-connect-query-dotnet/server-name.png)
 
 ## <a name="connect-to-the-database-with-ssms"></a>使用 SSMS 连接到数据库
 

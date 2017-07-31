@@ -2,7 +2,7 @@
 title: "Microsoft Azure 中的度量值概述 | Microsoft Docs"
 description: "了解如何在 Azure 中自定义监视图表。"
 author: rboucher
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: robb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 5ccb5c0b3c2ffaf8aba855a9dbe3da9691ab149b
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: 3f9ebb0f5737714dd685f0dcc1ff4b1c0c89528f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Microsoft Azure 中的度量值概述
@@ -31,7 +30,7 @@ ms.lasthandoff: 06/08/2017
 可以在所选的任何时间段内绘制任何指标的图表。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，单击“浏览”，然后单击要监视的资源。
-2. “监视”部分包含每个 Azure 资源的最重要度量值。 例如，Web 应用具有“请求和错误”，而虚拟机具有“CPU 百分比”和“磁盘读写”： ![监视可重用功能区](./media/insights-how-to-customize-monitoring/Insights_MonitoringChart.png)
+2. “监视”部分包含每个 Azure 资源的最重要度量值。 例如，Web 应用具有“请求和错误”，而虚拟机具有“CPU 百分比”和“磁盘读写”：![监视可重用功能区](./media/insights-how-to-customize-monitoring/Insights_MonitoringChart.png)
 3. 单击任何图表都会显示“度量值”边栏选项卡。 在该边栏选项卡中，除了该图之外还有一个表，其中显示指标（例如在所选时间范围内的平均值、最小值和最大值）的聚合。 下面是资源的警报规则。
     ![度量值边栏选项卡](./media/insights-how-to-customize-monitoring/Insights_MetricBlade.png)
 4. 若要自定义显示的折线图，请单击图表上的“编辑”按钮，或单机度量值边栏选项卡上的“编辑图表”命令。
@@ -50,7 +49,7 @@ ms.lasthandoff: 06/08/2017
 
 1. 在边栏选项卡顶部的“...”菜单中，单击“添加磁贴”：  
     ![添加菜单](./media/insights-how-to-customize-monitoring/Insights_AddMenu.png)
-2. 然后可从屏幕右侧的“库”中选择图表： ![库](./media/insights-how-to-customize-monitoring/Insights_Gallery.png)
+2. 然后可从屏幕右侧的“库”中选择图表：![库](./media/insights-how-to-customize-monitoring/Insights_Gallery.png)
 3. 如果看不到所需度量值，则始终可以添加一个预设度量值，然后“编辑”图表以显示所需度量值。
 
 ## <a name="monitoring-usage-quotas"></a>监视使用配额

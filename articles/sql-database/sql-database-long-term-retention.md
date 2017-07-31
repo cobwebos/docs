@@ -16,16 +16,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/22/2016
 ms.author: sashan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 84e95127ae2951ec5d1e0727801fc598d7e78227
+ms.translationtype: HT
+ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
+ms.openlocfilehash: 25e651203f804fbf32d632b5f83145a3f3f72a7f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>将 Azure SQL 数据库备份存储 10 年之久
-出于法规要求、符合性或其他商业目的，许多应用程序要求保留 Azure SQL 数据库的[自动备份](sql-database-automated-backups.md)功能提供的过去 7-35 天的自动完整数据库备份。 使用长期备份保留功能，可将 SQL 数据库备份存储在 Azure 恢复服务保管库中长达 10 年。 每个保管库最多可存储 1000 个数据库。 可选择保管库中的任何备份，并将其还原为新数据库。
+出于法规要求、符合性或其他商业目的，许多应用程序要求保留 Azure SQL 数据库的[自动备份](sql-database-automated-backups.md)功能提供的过去 7-35 天的数据库备份。 使用长期备份保留功能，可将 SQL 数据库备份存储在 Azure 恢复服务保管库中长达 10 年。 每个保管库最多可存储 1000 个数据库。 然后可选择保管库中的任何备份，并将其还原为新数据库。
 
 > [!IMPORTANT]
 > 长期备份保留期当前处于预览状态，在以下区域中提供：澳大利亚东部、澳大利亚东南部、巴西南部、美国中部、东亚、美国东部、美国东部 2、印度中部、印度南部、日本东部、日本西部、美国中北部、北欧、美国中南部、东南亚、西欧和美国西部。

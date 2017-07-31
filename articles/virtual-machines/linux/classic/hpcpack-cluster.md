@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: c65a932d0bf9bfb00f138997babc1bd642bcf879
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 048854b440f939077a7a95fa1db9ba42daf55ede
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Azure 的 HPC Pack 群集中的 Linux 计算节点入门
@@ -52,7 +52,7 @@ ms.lasthandoff: 04/27/2017
   * **Ubuntu Server**：14.04 LTS、16.04 LTS
     
     > [!TIP]
-    > 若要使用具有某个支持 RDMA 的 VM 大小的 Azure RDMA 网络，请从应用商店中指定 SUSE Linux Enterprise Server 12 HPC 或基于 CentOS 的 HPC 映像。 有关详细信息，请参阅 [About H-series and compute-intensive A-series VMs](../a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（关于 H 系列和计算密集型 A 系列 VM）。
+    > 若要使用具有某个支持 RDMA 的 VM 大小的 Azure RDMA 网络，请从应用商店中指定 SUSE Linux Enterprise Server 12 HPC 或基于 CentOS 的 HPC 映像。 有关详细信息，请参阅[高性能计算 VM 大小](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
     > 
     > 
 
@@ -146,7 +146,7 @@ HPC Pack IaaS 部署脚本使用 XML 配置文件作为输入来描述 HPC 群�
     .\New-HpcIaaSCluster.ps1 –ConfigFile E:\HPCDemoConfig.xml –AdminUserName MyAdminName
     ```
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 由于在上述命令中未指定 **AdminPassword**，系统将提示输入用户 *MyAdminName* 的密码。
+    a. 由于在上述命令中未指定 **AdminPassword**，系统将提示输入用户 *MyAdminName* 的密码。
    
     b. 然后，此脚本将开始验证配置文件。 这可能最多需要几分钟时间，具体取决于网络连接。
    
@@ -186,7 +186,7 @@ HPC Pack IaaS 部署脚本使用 XML 配置文件作为输入来描述 HPC 群�
 ### <a name="azure-file-storage"></a>Azure 文件存储
 [Azure 文件](https://azure.microsoft.com/services/storage/files/)服务使用标准 SMB 2.1 协议公开文件共享。 Azure VM 和云服务可通过装载的共享在应用程序组件之间共享文件数据，本地应用程序可通过文件存储 API 来访问共享中的文件数据。 
 
-有关创建 Azure 文件共享以及将其装入头节点的详细步骤，请参阅 [Get started with Azure File storage on Windows](../../../storage/storage-dotnet-how-to-use-files.md)（在 Windows 上开始使用 Azure 文件存储）。 若要在 Linux 节点上载入 Azure 文件共享，请参阅 [How to use Azure File Storage with Linux](../../../storage/storage-how-to-use-files-linux.md)（如何通过 Linux 使用 Azure 文件存储）。 若要设置持久性连接，请参阅 [Persisting connections to Microsoft Azure Files](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)（将连接保存到 Microsoft Azure 文件中）。
+有关创建 Azure 文件共享以及将其装入头节点的详细步骤，请参阅 [Get started with Azure File storage on Windows](../../../storage/storage-file-how-to-use-files-windows.md)（在 Windows 上开始使用 Azure 文件存储）。 若要在 Linux 节点上装载 Azure 文件共享，请参阅 [How to use Azure File storage with Linux](../../../storage/storage-how-to-use-files-linux.md)（如何通过 Linux 使用 Azure 文件存储）。 若要设置持久性连接，请参阅 [Persisting connections to Microsoft Azure Files](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)（将连接保存到 Microsoft Azure 文件中）。
 
 在下面的示例中，将在存储帐户上创建 Azure 文件共享。 若要在头节点上装入该共享，请打开命令提示符并输入以下命令：
 
@@ -299,7 +299,7 @@ HPC Pack [clusrun](https://technet.microsoft.com/library/cc947685.aspx) 工具�
 
 ## <a name="next-steps"></a>后续步骤
 * 尝试扩展群集，使之拥有更多的节点，或者尝试在群集上运行 Linux 工作负荷。 有关示例，请参阅 [Run NAMD with Microsoft HPC Pack on Linux compute nodes in Azure](hpcpack-cluster-namd.md)（在 Azure 中的 Linux 计算节点上使用 Microsoft HPC Pack 运行 NAMD）。
-* 尝试使用包含[支持 RDMA 的计算密集型 VM](../../windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 的群集来运行 MPI 工作负荷。 如需示例，请参阅 [Run OpenFOAM with Microsoft HPC Pack on a Linux RDMA cluster in Azure](hpcpack-cluster-openfoam.md)（在 Azure 中的 Linux RDMA 群集上运行 OpenFOAM 和 Microsoft HPC Pack）。
+* 尝试使用包含[支持 RDMA 的计算密集型 VM](../../windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 的群集来运行 MPI 工作负荷。 如需示例，请参阅 [Run OpenFOAM with Microsoft HPC Pack on a Linux RDMA cluster in Azure](hpcpack-cluster-openfoam.md)（在 Azure 中的 Linux RDMA 群集上运行 OpenFOAM 和 Microsoft HPC Pack）。
 * 如果想要在本地 HPC Pack 群集中使用 Linux 节点，请参阅 [TechNet guidance](https://technet.microsoft.com/library/mt595803.aspx)（TechNet 指南）。
 
 <!--Image references-->

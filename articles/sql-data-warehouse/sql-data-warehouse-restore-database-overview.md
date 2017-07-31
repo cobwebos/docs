@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: backup-restore
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
-ms.openlocfilehash: 104986e88ededf2137725fe258b6ce51f608b37d
-ms.lasthandoff: 01/24/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: ea42b7135d0695b66d569095e70bb3d9f8b9594b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="sql-data-warehouse-restore"></a>SQL 数据仓库还原
@@ -58,7 +58,12 @@ Yes, you can restore the last available restore point.
 Yes, for the next seven calendar days. When you delete a data warehouse, SQL Data Warehouse actually keeps the data warehouse and its snapshots for seven days just in case you need the data. After seven days, you won't be able to restore to any of the restore points. -->
 
 ## <a name="geo-redundant-restore"></a>异地冗余还原
-如果使用的是异地冗余存储，则可将数据仓库还原到另一地理区域的[配对数据中心](../best-practices-availability-paired-regions.md)。 从上次的每日备份还原数据仓库。 
+可以将数据仓库还原到支持所选性能级别的 Azure SQL 数据仓库的任何区域。 请注意，在预览期间，所有区域都不支持 9000 和 18000 DWU。
+
+> [!NOTE]
+> 若要执行异地冗余还原，不能选择退出此功能。
+> 
+> 
 
 ## <a name="restore-timeline"></a>还原时间线
 可以将数据库还原到过去 7 天的任何可用还原点。 快照 4 到 8 小时启动一次，可供使用 7 天。 快照超过 7 天将过期，其还原点不再可用。

@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 07/13/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: 255cc9f08862ff7babf8d8847c88a72a4c88582c
-ms.lasthandoff: 01/11/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: 4bae6dabe5700c487cb3f98498729c9a27de8a44
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="configuring-asset-delivery-policies"></a>配置资产传送策略
@@ -72,7 +72,7 @@ MPEG DASH
 > 
 
 ## <a name="clear-asset-delivery-policy"></a>清除资产传送策略
-### <a name="a-idcreateassetdeliverypolicyacreate-asset-delivery-policy"></a><a id="create_asset_delivery_policy"></a>创建资产传送策略
+### <a id="create_asset_delivery_policy"></a>创建资产传送策略
 以下 HTTP 请求将创建一个资产传送策略，该策略指定不要应用动态加密，而使用以下任何协议传送流：MPEG DASH、HLS 和平滑流式处理协议。 
 
 有关创建 AssetDeliveryPolicy 时可以指定哪些值的信息，请参阅[定义 AssetDeliveryPolicy 时使用的类型](#types)部分。   
@@ -121,7 +121,7 @@ MPEG DASH
     "Created":"2015-02-08T06:21:27.6908329Z",
     "LastModified":"2015-02-08T06:21:27.6908329Z"}
 
-### <a name="a-idlinkassetwithassetdeliverypolicyalink-asset-with-asset-delivery-policy"></a><a id="link_asset_with_asset_delivery_policy"></a>将资产与资产传送策略相链接
+### <a id="link_asset_with_asset_delivery_policy"></a>将资产与资产传送策略相链接
 以下 HTTP 请求将指定的资产链接到资产传送策略。
 
 请求：
@@ -148,7 +148,7 @@ MPEG DASH
 ### <a name="create-content-key-of-the-envelopeencryption-type-and-link-it-to-the-asset"></a>创建 EnvelopeEncryption 类型的内容密钥，并将其链接到资产
 在指定 DynamicEnvelopeEncryption 传送策略时，需要确保将你的资产链接到 EnvelopeEncryption 类型的内容密钥。 有关详细信息，请参阅：[创建内容密钥](media-services-rest-create-contentkey.md)）。
 
-### <a name="a-idgetdeliveryurlaget-delivery-url"></a><a id="get_delivery_url"></a>获取传送 URL
+### <a id="get_delivery_url"></a>获取传送 URL
 获取上一步创建的内容密钥的指定传送方法的传送 URL。 客户端使用返回的 URL 来请求 AES 密钥或 PlayReady 许可证，以播放受保护内容。
 
 指定要在 HTTP 请求正文中获取的 URL 类型。 如果要使用 PlayReady 保护内容，请通过用 1 表示 keyDeliveryType 来请求媒体服务 PlayReady 许可证：{"keyDeliveryType":1}。 如果要使用信封加密来保护内容，请为 keyDeliveryType 指定 2，以请求密钥获取 URL：{"keyDeliveryType":2}。
@@ -273,11 +273,12 @@ MPEG DASH
 ### <a name="link-asset-with-asset-delivery-policy"></a>将资产与资产传送策略相链接
 请参阅[将资产与资产传送策略相链接](#link_asset_with_asset_delivery_policy)
 
-## <a name="a-idtypesatypes-used-when-defining-assetdeliverypolicy"></a><a id="types"></a>定义 AssetDeliveryPolicy 时使用的类型
+## <a id="types"></a>定义 AssetDeliveryPolicy 时使用的类型
+
 ### <a name="assetdeliveryprotocol"></a>AssetDeliveryProtocol
-    /// <summary>
-    /// Delivery protocol for an asset delivery policy.
-    /// </summary>
+
+以下枚举说明可以为资产传递协议设置的值。
+
     [Flags]
     public enum AssetDeliveryProtocol
     {
@@ -301,6 +302,8 @@ MPEG DASH
         /// </summary>
         HLS = 0x4,
 
+        ProgressiveDownload = 0x10, 
+ 
         /// <summary>
         /// Include all protocols.
         /// </summary>
@@ -308,9 +311,9 @@ MPEG DASH
     }
 
 ### <a name="assetdeliverypolicytype"></a>AssetDeliveryPolicyType
-    /// <summary>
-    /// Policy type for dynamic encryption of assets.
-    /// </summary>
+
+以下枚举说明可以为资产传递策略类型设置的值。  
+
     public enum AssetDeliveryPolicyType
     {
         /// <summary>
@@ -341,10 +344,9 @@ MPEG DASH
         }
 
 ### <a name="contentkeydeliverytype"></a>ContentKeyDeliveryType
-    /// <summary>
-    /// Delivery method of the content key to the client.
-    ///
-    </summary>
+
+以下枚举说明可用于配置到客户端的内容密钥传递方法的值。
+    
     public enum ContentKeyDeliveryType
     {
         /// <summary>
@@ -375,9 +377,8 @@ MPEG DASH
 
 
 ### <a name="assetdeliverypolicyconfigurationkey"></a>AssetDeliveryPolicyConfigurationKey
-    /// <summary>
-    /// Keys used to get specific configuration for an asset delivery policy.
-    /// </summary>
+
+以下枚举说明为配置用于获取资产传递策略的特定配置的密钥可以设置的值。
 
     public enum AssetDeliveryPolicyConfigurationKey
     {
@@ -421,7 +422,6 @@ MPEG DASH
         /// </summary>
         WidevineLicenseAcquisitionUrl
     }
-
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

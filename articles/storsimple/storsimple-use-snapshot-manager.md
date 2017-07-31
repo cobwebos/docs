@@ -12,13 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/27/2017
+ms.date: 06/05/2017
 ms.author: v-sharos
-ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 7651a2ba6c206bb39d7cf8839f6f0f828fb3bc16
-ms.openlocfilehash: 25265349cb8cb47e93b7bea7103f1d06878a6158
-ms.lasthandoff: 02/28/2017
+ms.custom: 
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b48c507e38eb7cadff56259f617e336e4efe5708
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -126,7 +127,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 | 重新扫描卷 |右键单击“**卷**”节点。 |单击“**重新扫描卷**”可更新“**结果**”窗格中显示的卷列表。 |
 | 还原 |展开“**备份目录**”，展开卷组，再展开“**本地快照**”或“**云快照**”，然后右键单击备份。 |单击“**还原**”可将当前卷组数据替换为所选备份中的数据。 |
 | 执行备份 |执行下列操作之一：<ul><li>展开“**卷组**”，然后右键单击卷组。</li><li>展开“**备份目录**”，然后右键单击卷组。</li></ul> |单击“**执行备份**”可立即开始备份作业。 |
-| 切换导入显示 |右键单击“**作用域**”窗格中的顶级节点（示例中的 **StorSimple Snapshot Manager** 节点）。 |单击“**切换导入显示**”可显示或隐藏从 StorSimple Manager 服务仪表板导入的卷组和关联的备份。 |
+| 切换导入显示 |右键单击“**作用域**”窗格中的顶级节点（示例中的 **StorSimple Snapshot Manager** 节点）。 |单击“切换导入显示”可显示或隐藏从 StorSimple Device Manager 服务仪表板导入的卷组和关联的备份。 |
 
 ### <a name="view-menu"></a>“视图”菜单
 使用“**视图**”菜单可创建“**结果**”窗格内容的自定义视图。 “**视图**”菜单包含“**添加/删除列**”和“**自定义**”选项。
@@ -273,8 +274,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 
 > [!NOTE]
 > 最多可以保留 64 个备份。
-> 
-> 
+
 
 ### <a name="backup-catalog-node"></a>备份目录节点
 “**备份目录**”节点包含 Azure StorSimple 卷的现场和非现场备份列表。 此节点按卷组排列，每个卷组容器包含单独的本地快照结构（“**本地快照**”节点）和云快照结构（“**云快照**”节点）。 展开时，每个卷组容器列出以交互方式或通过配置的策略成功执行的所有备份。
@@ -429,7 +429,7 @@ StorSimple Snapshot Manager 支持 Windows 操作系统和 Microsoft 管理控�
 | V |可打开“**视图**”菜单。 |
 | W |可打开以“**卷组**”节点为重点的新的 StorSimple Snapshot Manager 控制台。 |
 | F |可更新 StorSimple Snapshot Manager 控制台。 |
-| L |可打开“**导出列表**”页。 |
+| L |打开“导出列表”页。 |
 | H |可打开联机帮助。 |
 
 #### <a name="backup-catalog-node-shortcut-keys"></a>备份目录节点的快捷键

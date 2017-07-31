@@ -12,15 +12,23 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 12/13/2016
+ms.date: 07/17/2017
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: da3ef06433d2336159d0ae96f12019fd80dc5d07
-ms.openlocfilehash: 6b32e81bb6a714bd0c479c48d6982af4bcc0683d
-
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 9bdaa57f9902373ccf796ff109332b64c66bf9e7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="azure-mobile-engagement-ios-sdk-release-notes"></a>Azure Mobile Engagement iOS SDK 发行说明
+
+## <a name="410-07172017"></a>4.1.0 (07/17/2017)
+* 修复了后台清除的锁屏提醒。
+* 修复了 XCode 9 上有关主队列中未调用的 API 的警告。
+* 修复了 Reach 投票模块中的内存泄漏。
+* 放弃了对 iOS 6.X 的支持。 从此版本开始，应用程序的部署目标必须至少为 iOS 7。
+
 ## <a name="401-12132016"></a>4.0.1 (12/13/2016)
 * 改进了后台的日志传送。
 
@@ -70,10 +78,4 @@ ms.openlocfilehash: 6b32e81bb6a714bd0c479c48d6982af4bcc0683d
 * 删除了在设备之间发送和接收消息的 API。
 * 安全性改进。
 * 删除了 SmartAd 跟踪。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

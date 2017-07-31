@@ -1,8 +1,8 @@
 ---
 title: "Azure 中的自动缩放入门 | Microsoft Docs"
 description: "了解如何在 Azure 中缩放资源。"
-author: rajram
-manager: rboucher
+author: anirudhcavale
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,22 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2017
-ms.author: rajram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 4faccae708b5407d1eb64e746824a23688bc5834
+ms.date: 07/07/2017
+ms.author: ancav
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: ed6647979d33564afe68e46d52833f88ffa2fbda
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="get-started-with-auto-scale-in-azure"></a>Azure 中的自动缩放入门
 本文介绍如何在 Azure 门户中为资源指定自动缩放设置。
 
 Azure Monitor 自动缩放仅适用于虚拟机规模集 (VMSS)、云服务、应用服务计划和应用服务环境。 
-
-# <a name="lets-get-started"></a>入门
 
 ## <a name="discover-the-auto-scale-settings-in-your-subscriptions"></a>了解订阅中的自动缩放设置
 可以在 Azure Monitor 中发现适用自动缩放的所有资源。 请遵循下面列出的步骤完成分步演练。
@@ -62,8 +59,8 @@ Azure Monitor 自动缩放仅适用于虚拟机规模集 (VMSS)、云服务、�
 
 > 注意：若要开始使用 VMSS 或云服务角色，也可以运用相同的步骤。
 
-# <a name="other-considerations"></a>其他注意事项
-## <a name="scale-based-on-a-schedule"></a>基于计划的缩放
+## <a name="other-considerations"></a>其他注意事项
+### <a name="scale-based-on-a-schedule"></a>基于计划的缩放
 除了始终根据 CPU 进行缩放以外，还可以设置为在特定的星期日期以不同的方式缩放。
 
 - 单击“添加缩放条件”
@@ -72,7 +69,7 @@ Azure Monitor 自动缩放仅适用于虚拟机规模集 (VMSS)、云服务、�
 - 选择星期日期，以及在选定的星期日期应该应用缩放条件的开始/结束时间
 
 ![基于计划的缩放条件][9]
-## <a name="scale-differently-on-specific-dates"></a>在特定的日期以不同的方式缩放
+### <a name="scale-differently-on-specific-dates"></a>在特定的日期以不同的方式缩放
 除了始终根据 CPU 进行缩放以外，还可以设置为在特定的日期以不同的方式缩放。
 
 - 单击“添加缩放条件”
@@ -82,21 +79,21 @@ Azure Monitor 自动缩放仅适用于虚拟机规模集 (VMSS)、云服务、�
 
 ![基于日期的缩放条件][10]
 
-## <a name="view-the-scale-history-of-your-resource"></a>查看资源的缩放历史记录
+### <a name="view-the-scale-history-of-your-resource"></a>查看资源的缩放历史记录
 每当扩展/缩减资源后，都会在活动日志中记录一个事件。 切换到“运行历史记录”选项卡即可查看资源在过去 24 小时的缩放历史记录。
 
 ![运行历史记录][11]
 
 若要查看完整的缩放历史记录（最长 90 天），可以单击“单击此处查看更多详细信息”。 随后将启动活动日志，其中包含已预先选择“自动缩放”的资源和类别。
 
-## <a name="view-the-scale-definition-of-the-resource"></a>查看资源的缩放定义
+### <a name="view-the-scale-definition-of-the-resource"></a>查看资源的缩放定义
 自动缩放设置是一种 ARM 资源。 切换到“JSON”选项卡即可在 JSON 中查看缩放定义。
 
 ![缩放定义][12]
 
 如果需要，可以直接在 JSON 中进行更改。 保存后将反映这些更改。
 
-## <a name="disable-autoscale-and-manually-scale-your-instances"></a>禁用自动缩放和手动缩放实例
+### <a name="disable-autoscale-and-manually-scale-your-instances"></a>禁用自动缩放和手动缩放实例
 有时，你可能想要禁用当前的缩放设置并手动缩放资源。
 
 单击顶部的“禁用自动缩放”按钮。
@@ -107,6 +104,10 @@ Azure Monitor 自动缩放仅适用于虚拟机规模集 (VMSS)、云服务、�
 ![设置手动缩放][14]
 
 始终可以通过单击“启用自动缩放”，然后单击“保存”来恢复自动缩放。
+
+## <a name="next-steps"></a>后续步骤
+- [创建活动日志警报以监视订阅上的所有自动缩放引擎操作。](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
+- [创建活动日志警报以监视订阅上所有失败的自动缩放缩小/扩大操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 
 <!--Reference-->
 [1]:https://portal.azure.com

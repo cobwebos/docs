@@ -2,7 +2,7 @@
 title: "在 Azure 门户中创建和管理操作组 | Microsoft Docs"
 description: 
 author: anirudhcavale
-manager: carmonm
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,19 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: ancav
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 240f7f3788f6a432bcb1ec3b244bc76e3157445a
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: 2b2fa2126b9c3f8598ec8fe686846920a4b7c422
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="create-and-manage-action-groups-in-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 ## <a name="overview"></a>概述 ##
 本文演示如何在 Azure 门户中创建和管理操作组。
 
-通过操作组可以配置接收方的列表。 定义活动日志警报时可以利用这些组；确保触发活动日志警报时向特定操作组发送通知。
+通过操作组可以配置操作列表。 定义活动日志警报时可以利用这些组；确保触发活动日志警报时调用特定操作组。
 
 操作组可以具有最多 10 种不同的操作类型。 操作定义为以下各项的组合：
 
@@ -34,41 +33,39 @@ ms.lasthandoff: 05/16/2017
 **操作类型：**这定义将执行的操作。 选项包括发送短信、发送电子邮件或调用 Webhook。  
 **详细信息：**根据操作类型，需要提供对应的电话号码、电子邮件地址或 Webhook URI。
 
-可以使用以下方式配置和获取有关服务运行状况通知警报的信息：
-* [Azure 门户](monitoring-action-groups.md)
-- [Resource Manager 模板](monitoring-create-action-group-with-resource-manager-template.md)
+有关使用 Azure Resource Manager 模板配置操作组的信息：[操作组 Resource Manager 模板](monitoring-create-action-group-with-resource-manager-template.md)
 
-## <a name="creating-an-action-group-for-the-azure-portal"></a>为 Azure 门户创建操作组 ##
-1.    在[门户](https://portal.azure.com)中，导航到“监视”服务
+## <a name="creating-an-action-group-using-the-azure-portal"></a>使用 Azure 门户创建操作组 ##
+1.  在[门户](https://portal.azure.com)中，导航到“监视”服务
 
     ![监视](./media/monitoring-action-groups/home-monitor.png)
-2.    单击“监视”选项打开“监视”边栏选项卡。 此边栏选项卡将所有监视设置和数据汇聚到一个合并视图中。 首次打开的是“活动日志”部分。
+2.  单击“监视”选项打开“监视”边栏选项卡。 此边栏选项卡将所有监视设置和数据汇聚到一个合并视图中。 首次打开的是“活动日志”部分。
 
-3.    现在单击“操作组”部分
+3.  现在单击“操作组”部分
 
     ![Action-Group](./media/monitoring-action-groups/action-groups-blade.png)
-4.    单击“添加”操作组命令并填写字段
+4.  单击“添加”操作组命令并填写字段
 
     ![Add-Action-Group](./media/monitoring-action-groups/add-action-group.png)
-5.    为操作组提供“名称”和“短名称”；会在发送到此组的通知中引用“短名称”
+5.  为操作组提供“名称”和“短名称”；会在发送到此组的通知中引用“短名称”
 
       ![Action-Group-Define](./media/monitoring-action-groups/action-group-define.png)
 
-6.    “订阅”是在其中保存操作组的订阅。 它会自动填充为当前用于操作的订阅。
+6.  “订阅”是在其中保存操作组的订阅。 它会自动填充为当前用于操作的订阅。
 
-7.    为此操作组选择“资源组”。
+7.  在“订阅”中选择此警报将与之关联的“资源组”。
 
-8.    然后，通过以下各项的租户定义操作的列表：
+8.  然后，通过以下各项的租户定义操作的列表：
   1. **名称：**操作组中的唯一标识符。
   2. **操作类型：**这定义将执行的操作。 选项包括发送短信、发送电子邮件或调用 Webhook。
   3. **详细信息：**根据操作类型，需要提供对应的电话号码、电子邮件地址或 Webhook URI。
 
-9.    操作组创建完成后，选择“确定”。
+9.  操作组创建完成后，选择“确定”。
 
 ## <a name="managing-your-action-groups"></a>管理操作组 ##
 创建了操作组之后，它会在“监视器”服务的“操作组”部分中可见。 选择要管理的操作组，你将能够：
-* 添加、编辑或删除接收方。
--    删除操作组。
+* 添加、编辑或删除操作。
+-   删除操作组。
 
 ## <a name="next-steps"></a>后续步骤： ##
 详细了解[短信警报行为](monitoring-sms-alert-behavior.md)  

@@ -1,6 +1,6 @@
 ---
-title: "5 个数据科学问题 - 适合初学者的数据科学 - Azure | Microsoft Docs"
-description: "通过“适合初学者的数据科学”的五个简短视频（以“数据科学可回答的 5 个问题”开始），快速了解数据科学。"
+title: "5 个数据科学问题 - 适合初学者的数据科学 - Azure 机器学习 | Microsoft Docs"
+description: "适合初学者的数据科学以 5 个较短的视频讲授基本概念，从 5 个数据科学可解答的问题开始。 来自 Azure 机器学习。"
 keywords: "研究数据科学，数据科学初学者，适合初学者的数据科学，数据科学基础知识，数据科学问题，数据科学视频，数据科学简介"
 services: machine-learning
 documentationcenter: na
@@ -13,27 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2017
+ms.date: 07/13/2017
 ms.author: cgronlun;garye
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 50d1f8dfc7ce2d8bf4b04cff68698eafd56ce9c2
-ms.openlocfilehash: 518a7d2b5e43d8133d54ab583e4545a3ee9b3cba
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: e77e7e99747995a4a6ad800e391f0c063bded82f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>适用于初学者的数据科学视频 1：5 个数据科学问题的解答
 通过顶级数据科学家制作的“适合初学者的数据科学”的五个简短视频，快速了解数据科学。 这些视频介绍基础知识，但无论是对研究数据科学感兴趣还是与数据科学家合作，这些内容都非常有用。
 
 第一个视频是有关数据科学可回答的这类问题。 若要充分利用此系列内容，请观看所有视频。 [转到视频列表](#other-videos-in-this-series)
+<br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/SupervisionNotRequired/8/player]
 >
 >
 
 ## <a name="other-videos-in-this-series"></a>本系列中的其他视频
-“适合初学者的数据科学”是对数据科学的简要介绍，学习时间共约 25 分钟。 请观看其他四个视频：
+“适合初学者的数据科学”是对数据科学的简要介绍，学习时间共约 25 分钟。 观看所有五个视频：
 
 * 视频 1：5 个数据科学可解答的问题
 * 视频 2：[数据是否可用于数据科学？](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) （4 分 56 秒）
@@ -58,14 +58,14 @@ ms.lasthandoff: 05/05/2017
 * 组织方式为何？
 * 接下来该怎样做？
 
-  以上每个问题都由单独系列的机器学习方法（称为算法）回答。
+以上每个问题都由单独系列的机器学习方法（称为算法）回答。
 
 将算法视为配方，数据视为成分可帮助理解。 算法告知如何组合以及混合数据以获取答案。 计算机如同搅拌机。 它们可快速完成算法的大部分繁琐工作。
 
 ## <a name="question-1-is-this-a-or-b-uses-classification-algorithms"></a>“问题 1：这是 A 还是 B？”使用分类算法
 让我们从这个问题开始：这是 A 还是 B？
 
-![分类算法：这是 A 还是 B？](./media/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers/machine-learning-data-science-classification-algorithms.png)
+![分类算法：这是 A 还是 B？](./media/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers/classification-algorithms.png)
 
 此系列算法称为双类分类。
 
@@ -81,9 +81,9 @@ ms.lasthandoff: 05/05/2017
 ## <a name="question-2-is-this-weird-uses-anomaly-detection-algorithms"></a>“问题 2：这是否很奇怪？”使用异常检测算法
 下一个数据科学可以回答的问题是：这是否很奇怪？ 此问题通过称为异常检测的算法系列进行回答。
 
-![异常检测算法：这是否很奇怪？](./media/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers/machine-learning-data-science-anomaly-detection-algorithms.png)
+![异常检测算法：这是否很奇怪？](./media/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers/anomaly-detection-algorithms.png)
 
-如果你有信用卡，那么你已从异常检测获益。 信用卡公司分析购买模式，使他们可提醒用户可能的欺诈行为。 “异常”费用可能是在一家通常不会去购物的商店购物时，或购买非常昂贵的物品时所产生的费用。
+如果有信用卡，那么已从异常检测获益。 信用卡公司分析购买模式，使他们可提醒用户可能的欺诈行为。 “异常”费用可能是在一家通常不会去购物的商店购物时，或购买非常昂贵的物品时所产生的费用。
 
 此问题在很多方面都很有用。 例如：
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 05/05/2017
 ## <a name="question-3-how-much-or-how-many-uses-regression-algorithms"></a>“问题 3：多少？”使用回归算法
 机器学习还可以预测“多少？”这一问题的答案。 回答此问题的算法系列称为回归算法。
 
-![回归算法：多少？](./media/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers/machine-learning-data-science-regression-algorithms.png)
+![回归算法：多少？](./media/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers/regression-algorithms.png)
 
 回归算法进行数字预测，例如：
 
@@ -111,7 +111,7 @@ ms.lasthandoff: 05/05/2017
 
 可通过多种方法梳理出数据结构。 其中一种方法就是聚类分析。 为方便解释，该方法将数据分成多个自然“群”。 使用聚类分析，不会存在正确答案。
 
-![聚类分析算法：组织方式为何？](./media/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers/machine-learning-data-science-clustering-algorithms.png)
+![聚类分析算法：组织方式为何？](./media/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers/clustering-algorithms.png)
 
 聚类分析问题的常见示例有：
 
@@ -127,7 +127,7 @@ ms.lasthandoff: 05/05/2017
 
 通常，强化学习适用于自动系统，这些自动系统需要在没有人工指导的情况下做出大量小决策。
 
-![强化学习算法：接下来该怎样做？](./media/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers/machine-learning-data-science-reinforcement-learning-algorithms.png)
+![强化学习算法：接下来该怎样做？](./media/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers/reinforcement-learning-algorithms.png)
 
 此算法总是用于回答此类问题：（通常指计算机或机器人）应采取何种操作。 示例如下：
 

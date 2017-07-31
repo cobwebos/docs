@@ -10,15 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 05/17/2017
 ms.author: gauravbh; tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 041254b07584a52ae92e603f60a439050b747af1
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 8745db3abe6ddec6da1f92da6b7cf8bf82b96d79
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
-# <a name="consume-an-azure-managed-application"></a>使用 Azure 托管应用程序
+# <a name="consume-a-service-catalog-managed-application"></a>使用服务目录托管应用程序
 
 如[托管应用程序概述](managed-application-overview.md)一文中所述，在端到端体验中有两种应用场景。 一种是发布者或 ISV 希望创建供客户使用的托管应用程序。 第二种是最终客户或使用者使用托管应用程序。 本文涵盖了第二种应用场景并且介绍了最终客户如何使用 ISV 提供的托管应用程序。
 
@@ -69,10 +68,10 @@ az group deployment create --name managedAppDeployment --resourceGroup mainResou
 ```azurecli
 az managedapp create --name ravtestappliance401 --location "westcentralus" 
     --kind "Servicecatalog" --resource-group "ravApplianceCustRG401" 
-       --managedapp-definition-id "/subscriptions/{guid}/resourceGroups/ravApplianceDefRG401/providers/Microsoft.Solutions/applianceDefinitions/ravtestAppDef401" 
-       --managed-rg-id "/subscriptions/{guid}/resourceGroups/ravApplianceCustManagedRG401" 
-       --parameters "{\"storageAccountName\": {\"value\": \"ravappliancedemostore1\"}}" 
-       --debug
+    --managedapp-definition-id "/subscriptions/{guid}/resourceGroups/ravApplianceDefRG401/providers/Microsoft.Solutions/applianceDefinitions/ravtestAppDef401" 
+    --managed-rg-id "/subscriptions/{guid}/resourceGroups/ravApplianceCustManagedRG401" 
+    --parameters "{\"storageAccountName\": {\"value\": \"ravappliancedemostore1\"}}" 
+    --debug
 ```
 
 **appliance-definition-Id** - 在前面的步骤中创建的设备定义的资源 ID。 若要获取此 ID，请运行以下命令：
@@ -118,4 +117,6 @@ az appliance definition show -n ravtestAppDef1 -g ravApplianceRG2
 ## <a name="next-steps"></a>后续步骤
 
 * 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](managed-application-overview.md)。
-* 若要了解供应商体验，请参阅[创建和发布 Azure 托管应用程序](managed-application-publishing.md)。
+* 有关发布服务目录托管应用程序的信息，请参阅[创建和发布服务目录托管应用程序](managed-application-publishing.md)。
+* 有关将托管应用程序发布到商城的信息，请参阅[商城中的 Azure 托管应用程序](managed-application-author-marketplace.md)。
+* 有关从商城使用托管应用程序的信息，请参阅[在商城中使用 Azure 托管应用程序](managed-application-consume-marketplace.md)。

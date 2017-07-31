@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
 ms.author: v-donglo
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 20e2c9edc4729015f65fbe72649e32effe7f8a3a
-ms.lasthandoff: 03/29/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: 123c8c2b1c5bae268b2a61c185743f2c3920175e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="deploying-azure-ml-web-services-that-use-data-import-and-data-export-modules"></a>部署使用数据导入和数据导出模块的 Azure 机器学习 Web 服务
@@ -102,14 +102,14 @@ ms.lasthandoff: 03/29/2017
 2. 当运行已完成时，单击“部署 Web 服务”，然后选择“部署 Web 服务 [经典]”。
 3. 在 Web 服务仪表板上，找到 API 密钥。 复制并保存它以供以后使用。
 4. 在“默认终结点”表中，单击“批处理执行”链接打开 API 帮助页。
-5. 在 Visual Studio 中，创建 C# 控制台应用程序。
+5. 在 Visual Studio 中创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用(.NET Framework)”。
 6. 在 API 帮助页上，找到页面底部的“示例代码”部分。
 7. 将 C# 示例代码复制并粘贴到 Program.cs 文件中，然后删除对 blob 存储的所有引用。
 8. 使用之前保存的 API 密钥更新 *apiKey* 变量的值。
 9. 找到请求声明并更新传递到*导入数据*和*导出数据*模块的值。 在此示例中，将使用原始查询，但定义新的表名。
    
         var request = new BatchExecutionRequest() 
-        {            
+        {           
             GlobalParameters = new Dictionary<string, string>() {
                 { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
                 { "Table", "dbo.ScoredTable2" },
@@ -131,13 +131,13 @@ ms.lasthandoff: 03/29/2017
 3. 在“部署实验”页上，输入 Web 服务的名称并选择定价计划，然后单击“部署”。
 4. 在“快速启动”页上，单击“使用”。
 5. 在“示例代码”部分中，单击“批处理”。
-6. 在 Visual Studio 中，创建 C# 控制台应用程序。
+6. 在 Visual Studio 中创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用(.NET Framework)”。
 7. 将 C# 示例代码复制并粘贴到 Program.cs 文件中。
 8. 使用位于“基本使用信息”部分中的**主键**替换 *apiKey* 变量的值。
 9. 找到 *scoreRequest* 声明并更新传递到*导入数据*和*导出数据*模块的值。 在此示例中，将使用原始查询，但定义新的表名。
    
         var scoreRequest = new
-        {        
+        {       
             Inputs = new Dictionary<string, StringTable>()
             {
             },

@@ -15,16 +15,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/03/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
-ms.openlocfilehash: 24c345e173ffe3cd215552b604e8b6cc525d8aa7
+ms.translationtype: HT
+ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
+ms.openlocfilehash: 3db5be35b3087bbbe87e623a623e7a10156b932f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/21/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
-# Azure SQL 数据库客户实现技术研究
-<a id="azure-sql-database-customer-implementation-technical-studies" class="xliff"></a>
+# <a name="azure-sql-database-customer-implementation-technical-studies"></a>Azure SQL 数据库客户实现技术研究
 
 - [Daxko](sql-database-implementation-daxko.md)：Daxko/CSI Software 面临挑战：归功于其全方位企业软件解决方案的成功，健身与休闲中心的客户群体快速发展，但跟上该不断发展的客户群体的 IT 基础结构需求给该公司的 IT 人员带来了考验。 该公司逐渐受到运营开销不断提高的约束，特别是在管理日渐庞大的数据库方面。 更糟的是，这些运营开销已占用新举措（例如公司软件的新移动功能）的部分开发资源。
 
@@ -38,5 +36,5 @@ ms.lasthandoff: 06/21/2017
 
 - [Quest](https://customers.microsoft.com/en-US/story/quest)：Quest 通过 SQL Server Enterprise 服务提供其 Spotlight，并且心中有一个目标：向数据库专业人员提供可用来保护数据、四处移动该数据以及监视数据库操作的最佳工具。 有了 Spotlight，SQL Server 数据库管理员无论是坐在办公桌前还是在家中工作，他们都可以使用 Microsoft Azure 和 Azure SQL 数据库监视、检测和诊断 SQL Server 中的性能问题并提供方法来解决这些问题。
 
-- [Microsoft Synamics](https://customers.microsoft.com/story/dynamics365operationsproductteam)：此简短的案例研究重点介绍了在 Dynamics 365 for Operations产品团队迁移到 Azure SQL 数据库以向客户提供完全托管的软件即服务 (SaaS) 产品/服务的经历中学到的最佳做法和吸取的教训。 使用 Azure SQL 数据库，Dynamics 365 for Operations 团队能够以显著减少的人员来管理和操作该服务，并能够使用现成的可管理性功能（例如自动数据库备份、数据库备份保留、高可用性和灾难恢复功能）轻松进行缩放。 上述功能连同使用细微自动化预配数据库的能力使得 Azure SQL 数据库成为一个可用于打造大型服务的伟大平台。
+- [Microsoft Dynamics](https://customers.microsoft.com/story/dynamics365operationsproductteam)：此简短的案例研究重点介绍了在 Dynamics 365 for Operations 产品团队迁移到 Azure SQL 数据库以向客户提供完全托管的软件即服务 (SaaS) 产品/服务的经历中学到的最佳做法和吸取的教训。 使用 Azure SQL 数据库，Dynamics 365 for Operations 团队能够以显著减少的人员来管理和操作该服务，并能够使用现成的可管理性功能（例如自动数据库备份、数据库备份保留、高可用性和灾难恢复功能）轻松进行缩放。 上述功能连同使用细微自动化预配数据库的能力使得 Azure SQL 数据库成为一个可用于打造大型服务的伟大平台。
 

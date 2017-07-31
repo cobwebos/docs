@@ -1,5 +1,5 @@
 ---
-title: "使用 SMB 在 Linux VM 上装载 Azure 文件存储 | Microsoft 文档"
+title: "使用 SMB 在 Linux VM 上装载 Azure 文件存储 | Microsoft Docs"
 description: "如何通过 Azure CLI 2.0 使用 SMB 在 Linux VM 上装载 Azure 文件存储"
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/13/2017
 ms.author: v-livech
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 279b165cbdb924dcae0cb95ad9f9d187aed1a1b3
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 9eae17b304f8a987b44ebed8906dabd8ff3a36a8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "以组织身份注册 Azure"
-description: "了解如何通过工作或学校帐户，来利用现有的用户帐户、策略、设置或已有的本地服务器部署，以及提高组织的本地标识基础结构与 Azure AD 之间的效率。"
+description: "了解如何通过工作或学校帐户来利用现有的用户帐户、策略、设置或已有的本地服务器部署，以及提高组织的本地标识基础结构与 Azure AD 之间的效率。"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bdbe25307b8b5e811dad374583d9ba3b96e212a5
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 07ad266ad87028996c4a7b3e4365c11b019f8529
 ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 07/11/2017
 
 
 ---

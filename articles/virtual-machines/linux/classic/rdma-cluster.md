@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: b002d21b198fa4887e30d30c20ec67d21ae30579
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 4b2ceb64b1737918458f6d5c692fc2bfbc0f12ed
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>设置 Linux RDMA 群集以运行 MPI 应用程序
-了解如何在 Azure 中设置包含 [H 系列或计算密集型 A 系列 VM](../a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 的 Linux RDMA 群集，以便运行并行消息传递接口 (MPI) 应用程序。 本文提供准备 Linux HPC 映像以便在群集上运行 Intel MPI 的步骤。 准备映像后，使用此映像和支持 RDMA 的 Azure VM 大小（当前为 H16r、H16mr、A8 或 A9）之一来部署 VM 群集。 可以使用该群集来运行通过基于远程直接内存访问 (RDMA) 技术的低延迟、高吞吐量网络有效进行通信的 MPI 应用程序。
+了解如何在 Azure 中使用[高性能计算 VM 大小](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)设置 Linux RDMA 群集，以运行并行消息传递接口 (MPI) 应用程序。 本文提供准备 Linux HPC 映像以便在群集上运行 Intel MPI 的步骤。 准备映像后，使用此映像和支持 RDMA 的 Azure VM 大小（当前为 H16r、H16mr、A8 或 A9）之一来部署 VM 群集。 可以使用该群集来运行通过基于远程直接内存访问 (RDMA) 技术的低延迟、高吞吐量网络有效进行通信的 MPI 应用程序。
 
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure Resource Manager](../../../resource-manager-deployment-model.md) 和经典。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure Resource Manager](../../../resource-manager-deployment-model.md) 和经典。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
 
 ## <a name="cluster-deployment-options"></a>群集部署选项
 以下是可用于创建 Linux RDMA 群集的方法（使用或不使用作业计划程序）。

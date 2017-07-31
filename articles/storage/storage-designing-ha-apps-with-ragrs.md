@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 1/19/2017
 ms.author: robinsh
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 3b7eca721181155cd2bcc619d517c9b5a6a89a0d
-ms.lasthandoff: 04/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: adc7e23d8c9f869f2951490020e3d0f1a2b2e81c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>使用 RA-GRS 设计高度可用的应用程序
@@ -37,7 +37,7 @@ ms.lasthandoff: 04/06/2017
 
 * 只读副本与主要区域中的数据[最终一致](https://en.wikipedia.org/wiki/Eventual_consistency)。
 
-* 对于 blob、表和队列，可以从次要区域查询上次同步时间的值，了解上次从主要区域复制到次要区域的时间。 （Azure 文件不支持此操作，因为其目前不具有 RA-GRS 冗余。）
+* 对于 blob、表和队列，可以从次要区域查询上次同步时间的值，了解上次从主要区域复制到次要区域的时间。 （Azure 文件存储不支持此操作，因为其目前不具有 RA-GRS 冗余。）
 
 * 可以使用存储客户端库与主要或次要区域中的数据进行交互。 如果到主要区域的读取请求超时，还可将读取请求自动重定向到次要区域。
 

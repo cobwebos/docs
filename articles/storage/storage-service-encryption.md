@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: robinsh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 7b91be16b5820f379f7408b477311ea86b213ccd
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: dcd843ae1ba768ce02256dcc91c61693730c60e4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>静态数据的 Azure 存储空间服务加密
@@ -40,7 +39,7 @@ SSE 的工作方式是在数据写入到 Azure 存储时对其加密，可用于
 
 若要了解详细信息，请参阅“常见问题解答”。
 
-若要启用或禁用存储帐户的存储服务加密，请登录 [Azure 门户](https://azure.portal.com)，然后选择存储帐户。 在“设置”边栏选项卡中，寻找如屏幕截图所示的“Blob 服务”部分，然后单击“加密”。
+若要启用或禁用存储帐户的存储服务加密，请登录 [Azure 门户](https://portal.azure.com)，然后选择存储帐户。 在“设置”边栏选项卡中，寻找如屏幕截图所示的“Blob 服务”部分，然后单击“加密”。
 
 ![显示加密选项的门户截图](./media/storage-service-encryption/image1.png)
 <br/>*图 1：为 Blob 服务启用 SSE（步骤 1）*
@@ -85,7 +84,7 @@ AzCopy 是一个 Windows 命令行实用程序，专用于使用具有优化性�
 有关详细信息，请参阅[使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)。
 
 #### <a name="using-smb"></a>使用 SMB
-Azure 文件存储使用标准 SMB 协议在云中提供文件共享。 可以从本地客户端或在 Azure 中装载文件共享。 装载后，可以使用 Robocopy 等工具将文件复制到 Azure 文件共享。 有关详细信息，请参阅[如何在 Windows 上装载 Azure 文件共享](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-how-to-use-files#mount-the-file-share)和[如何在 Linux 上装载 Azure 文件共享](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share)。
+Azure 文件存储使用标准 SMB 协议在云中提供文件共享。 可以从本地客户端或在 Azure 中装载文件共享。 装载后，可以使用 Robocopy 等工具将文件复制到 Azure 文件共享。 有关详细信息，请参阅[如何在 Windows 上装载 Azure 文件共享](storage-file-how-to-use-files-windows.md)和[如何在 Linux 上装载 Azure 文件共享](storage-how-to-use-files-linux.md)。
 
 
 #### <a name="using-the-storage-client-libraries"></a>使用存储客户端库
@@ -94,7 +93,7 @@ Azure 文件存储使用标准 SMB 协议在云中提供文件共享。 可以�
 有关详细信息，请访问[使用 .NET 的 Azure Blob 存储入门](storage-dotnet-how-to-use-blobs.md)。
 
 #### <a name="using-a-storage-explorer"></a>使用存储空间资源管理器
-可以使用存储资源管理器创建存储帐户、上传和下载数据、查看 Blob 内容，以及浏览目录。 可以使用其中一个存储空间资源管理器将 Blob 上载到已启用加密的存储帐户。 使用某些存储资源管理器，还可以将现有 Blob 存储中的数据复制到存储账户中的不同容器或已启用 SSE 的新存储帐户。
+可以使用存储资源管理器创建存储帐户、上传和下载数据、查看 Blob 内容，以及浏览目录。 可以使用其中一个存储空间资源管理器将 Blob 上传到已启用加密的存储帐户。 使用某些存储资源管理器，还可以将现有 Blob 存储中的数据复制到存储账户中的不同容器或已启用 SSE 的新存储帐户。
 
 有关详细信息，请访问 [Azure 存储资源管理器](storage-explorers.md)。
 

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: 179cac8856cd42cfad4a4d4aaa6301afb2c58329
-ms.openlocfilehash: 6d802148cec5b12004d1d374485f56af8eae64f8
-ms.lasthandoff: 12/17/2016
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 303d7b06d259bc42c8093fb20a0e4a55410e28f5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/11/2017
 
 
 ---
@@ -82,7 +83,7 @@ ms.lasthandoff: 12/17/2016
 > 
 
 ## <a name="download-data-from-azure-blob-storage"></a>从 Azure Blob 存储下载数据
-若要使用 SSIS 将数据从 Azure Blob 存储下载到本地存储，请使用 [Azure Blob 上传任务](https://msdn.microsoft.com/library/mt146779.aspx)的实例。
+要使用 SSIS 将数据从 Azure Blob 存储下载到本地存储，请使用 [Azure Blob 上传任务](https://msdn.microsoft.com/library/mt146779.aspx)的实例。
 
 ## <a name="more-advanced-ssis-azure-scenarios"></a>更高级的 SSIS-Azure 方案
 SSIS 功能包能够通过将任务一起打包来处理更复杂的流。 例如，blob 数据可以直接传输到 HDInsight 群集，可将此群集的输出下载回 blob，然后再下载到本地存储。 SSIS 可使用附加的 SSIS 连接器在 HDInsight 群集上运行 Hive 和 Pig 作业：
