@@ -22,16 +22,12 @@ ms.lasthandoff: 05/04/2017
 
 ---
 
-<a id="tutorial-configuring-linkedin-elevate-for-automatic-user-provisioning" class="xliff"></a>
-
-# 教程：为 LinkedIn Elevate 配置自动用户预配
+# <a name="tutorial-configuring-linkedin-elevate-for-automatic-user-provisioning"></a>教程：为 LinkedIn Elevate 配置自动用户预配
 
 
 本教程的目的是展示为了从 Azure AD 自动将用户帐户预配到 LinkedIn Elevate 以及取消其预配而需要在 LinkedIn Elevate 和 Azure AD 中执行的步骤。 
 
-<a id="prerequisites" class="xliff"></a>
-
-## 先决条件
+## <a name="prerequisites"></a>先决条件
 
 在本教程中概述的方案假定您已具有以下各项：
 
@@ -42,9 +38,7 @@ ms.lasthandoff: 05/04/2017
 > [!NOTE]
 > Azure Active Directory 使用 [SCIM](http://www.simplecloud.info/) 协议与 LinkedIn Elevate 进行了集成。
 
-<a id="assigning-users-to-linkedin-elevate" class="xliff"></a>
-
-## 将用户分配到 LinkedIn Elevate
+## <a name="assigning-users-to-linkedin-elevate"></a>将用户分配到 LinkedIn Elevate
 
 Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只有已“分配”到 Azure AD 中的应用程序的用户和组才进行同步。 
 
@@ -52,27 +46,21 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 [向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md)
 
-<a id="important-tips-for-assigning-users-to-linkedin-elevate" class="xliff"></a>
-
-### 将用户分配到 LinkedIn Elevate 的重要提示
+### <a name="important-tips-for-assigning-users-to-linkedin-elevate"></a>将用户分配到 LinkedIn Elevate 的重要提示
 
 *    建议将单个 Azure AD 用户分配到 LinkedIn Elevate 来测试预配配置。 其他用户和/或组可以稍后分配。
 
 *    将用户分配到 LinkedIn Elevate 时，必须在分配对话框中选择**用户**角色。 “默认访问权限”角色不可用于预配。
 
 
-<a id="configuring-user-provisioning-to-linkedin-elevate" class="xliff"></a>
-
-## 配置 LinkedIn Elevate 的用户预配
+## <a name="configuring-user-provisioning-to-linkedin-elevate"></a>配置 LinkedIn Elevate 的用户预配
 
 本部分将指导你完成以下操作：将 Azure AD 连接到 LinkedIn Elevate 的 SCIM 用户帐户预配 API，配置预配服务以便基于 Azure AD 中的用户和组分配在 LinkedIn Elevate 中创建、更新和禁用所分配的用户帐户。
 
 **提示：**还可以选择按照 [Azure 门户](https://portal.azure.com)中提供的说明为 LinkedIn Elevate 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。
 
 
-<a id="to-configure-automatic-user-account-provisioning-to-linkedin-elevate-in-azure-ad" class="xliff"></a>
-
-### 若要在 Azure AD 中配置 LinkedIn Elevate 的自动用户帐户预配，请执行以下操作：
+### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-elevate-in-azure-ad"></a>若要在 Azure AD 中配置 LinkedIn Elevate 的自动用户帐户预配，请执行以下操作：
 
 
 第一步是检索你的 LinkedIn 访问令牌。 如果你是企业管理员，则可以自己预配一个访问令牌。 在帐户中心内，转到“设置”&gt;“全局设置”并打开“SCIM 设置”面板。
@@ -133,9 +121,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 这将开始对在“用户和组”部分中分配给 LinkedIn Elevate 的任何用户和/或组进行初始同步。 请注意，初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 20 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接，这些报告描述了预配服务对 LinkedIn Elevate 应用执行的所有操作。
 
 
-<a id="additional-resources" class="xliff"></a>
-
-## 其他资源
+## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)

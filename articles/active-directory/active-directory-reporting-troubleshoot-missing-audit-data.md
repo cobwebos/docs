@@ -23,31 +23,26 @@ ms.lasthandoff: 05/08/2017
 
 ---
 
-# 在 Azure Active Directory 活动日志中找不到已执行的某些操作
-<a id="i-cant-find-some-actions-that-i-performed-in-the-azure-active-directory-activity-log" class="xliff"></a>
+# <a name="i-cant-find-some-actions-that-i-performed-in-the-azure-active-directory-activity-log"></a>在 Azure Active Directory 活动日志中找不到已执行的某些操作
 
 
-## 症状
-<a id="symptoms" class="xliff"></a>
+## <a name="symptoms"></a>症状
 
 我在 Azure 门户中执行了一些操作，本应在`Activity logs > Audit Logs`边栏选项卡中看到这些操作的审核日志，但却找不到。
 
  ![报告](./media/active-directory-reporting-troubleshoot-missing-audit-data/01.png)
  
 
-## 原因
-<a id="cause" class="xliff"></a>
+## <a name="cause"></a>原因
 
 操作不会立即显示在“活动审核”日志中。 从执行操作开始算起，可能需要 15 分钟到 1 小时才能在门户中看到审核日志。
 
-## 解决方法
-<a id="resolution" class="xliff"></a>
+## <a name="resolution"></a>解决方法
 
 等待 15 分钟到 1 小时，然后再看操作是否显示在日志中。 如果仍未看到操作，请向我们提交一个支持票证，我们会进行调查。
 
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 请参阅 [Azure Active Directory 报告常见问题解答](active-directory-reporting-faq.md)。
 
 

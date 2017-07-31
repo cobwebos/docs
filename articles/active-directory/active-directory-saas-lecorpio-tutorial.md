@@ -21,9 +21,7 @@ ms.lasthandoff: 05/04/2017
 
 
 ---
-<a id="tutorial-azure-active-directory-integration-with-lecorpio" class="xliff"></a>
-
-# 教程：Azure Active Directory 与 Lecorpio 的集成
+# <a name="tutorial-azure-active-directory-integration-with-lecorpio"></a>教程：Azure Active Directory 与 Lecorpio 的集成
 
 本教程介绍了如何将 Lecorpio 与 Azure Active Directory (Azure AD) 进行集成。
 
@@ -35,9 +33,7 @@ ms.lasthandoff: 05/04/2017
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录](active-directory-appssoaccess-whatis.md)。
 
-<a id="prerequisites" class="xliff"></a>
-
-## 先决条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Lecorpio 的集成，需要具有以下项：
 
@@ -52,17 +48,13 @@ ms.lasthandoff: 05/04/2017
 - 除非必要，请勿使用生产环境。
 - 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
-<a id="scenario-description" class="xliff"></a>
-
-## 方案描述
+## <a name="scenario-description"></a>方案描述
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Lecorpio
 2. 配置和测试 Azure AD 单一登录
 
-<a id="adding-lecorpio-from-the-gallery" class="xliff"></a>
-
-## 从库中添加 Lecorpio
+## <a name="adding-lecorpio-from-the-gallery"></a>从库中添加 Lecorpio
 若要配置 Lecorpio 与 Azure AD 的集成，需要从库中将 Lecorpio 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Lecorpio，请执行以下步骤：**
@@ -87,9 +79,7 @@ ms.lasthandoff: 05/04/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-lecorpio-tutorial/tutorial_lecorpio_addfromgallery.png)
 
-<a id="configuring-and-testing-azure-ad-single-sign-on" class="xliff"></a>
-
-##  配置和测试 Azure AD 单一登录
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Lecorpio 的 Azure AD 单一登录。
 
 若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Lecorpio 用户。 换句话说，需要在 Azure AD 用户与 Lecorpio 中相关用户之间建立链接关系。
@@ -104,9 +94,7 @@ ms.lasthandoff: 05/04/2017
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
-<a id="configuring-azure-ad-single-sign-on" class="xliff"></a>
-
-### 配置 Azure AD 单一登录
+### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 Lecorpio 应用程序中配置单一登录。
 
@@ -144,9 +132,7 @@ ms.lasthandoff: 05/04/2017
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-<a id="creating-an-azure-ad-test-user" class="xliff"></a>
-
-### 创建 Azure AD 测试用户
+### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
 ![创建 Azure AD 用户][100]
@@ -177,17 +163,13 @@ ms.lasthandoff: 05/04/2017
 
     d. 单击“创建” 。
  
-<a id="creating-a-lecorpio-test-user" class="xliff"></a>
-
-### 创建 Lecorpio 测试用户
+### <a name="creating-a-lecorpio-test-user"></a>创建 Lecorpio 测试用户
 
 在本部分中，将在 Lecorpio 中创建一个名为 Britta Simon 的用户。 
 
 请联系 [Lecorpio 客户端支持团队](mailto:info@lecorpio.com)，以便将用户添加到 Lecorpio 应用程序中。
 
-<a id="assigning-the-azure-ad-test-user" class="xliff"></a>
-
-### 分配 Azure AD 测试用户
+### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，将通过向 Britta Simon 授予对 Lecorpio 的访问权限使其能够使用 Azure 单一登录。
 
@@ -217,17 +199,13 @@ ms.lasthandoff: 05/04/2017
 
 7. 在“添加分配”对话框中单击“分配”按钮。
     
-<a id="testing-single-sign-on" class="xliff"></a>
-
-### 测试单一登录
+### <a name="testing-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Lecorpio 磁贴时，应当会自动登录到 Lecorpio 应用程序。
 
-<a id="additional-resources" class="xliff"></a>
-
-## 其他资源
+## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
