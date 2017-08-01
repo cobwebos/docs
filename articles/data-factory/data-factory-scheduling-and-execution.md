@@ -22,16 +22,14 @@ ms.lasthandoff: 04/27/2017
 
 
 ---
-<a id="data-factory-scheduling-and-execution" class="xliff"></a>
-# 数据工厂计划和执行
+# <a name="data-factory-scheduling-and-execution"></a>数据工厂计划和执行
 此文介绍 Azure 数据工厂应用程序模型的计划和执行方面。 本文假定用户了解数据工厂应用程序模型概念的基础知识（包括活动、管道、链接服务和数据集）。 有关的 Azure 数据工厂的基本概念，请参阅以下文章：
 
 * [数据工厂简介](data-factory-introduction.md)
 * [管道](data-factory-create-pipelines.md)
 * [数据集](data-factory-create-datasets.md) 
 
-<a id="start-and-end-times-of-pipeline" class="xliff"></a>
-## 管道的开始和结束时间
+## <a name="start-and-end-times-of-pipeline"></a>管道的开始和结束时间
 仅在**开始**时间和**结束**时间之间，管道才处于活动状态。 开始时间之前或结束时间之后，不会执行管道。 如果暂停管道，则无论开始和结束时间，都不会执行管道。 不暂停才可运行管道。 可以在管道定义中找到这些设置（开始、结束、暂停）： 
 
 ```json
@@ -43,8 +41,7 @@ ms.lasthandoff: 04/27/2017
 有关这些属性的详细信息，请参阅[创建管道](data-factory-create-pipelines.md)一文。 
 
 
-<a id="specify-schedule-for-an-activity" class="xliff"></a>
-## 为活动指定计划
+## <a name="specify-schedule-for-an-activity"></a>为活动指定计划
 执行的不是管道。 它是在管道的总体上下文中执行的管道中的活动。 可以使用活动 JSON 的**计划程序**部分指定活动的定期计划。 例如，可将活动计划为每小时运行一次，如下所示：  
 
 ```json
@@ -60,8 +57,7 @@ ms.lasthandoff: 04/27/2017
 
 活动的**计划程序**属性是可选的。 如果要指定一个属性，它必须与在输出数据集定义中指定的频率匹配。 目前，输出数据集驱动计划。 因此，必须创建一个输出数据集，即使活动不会生成任何输出。 
 
-<a id="specify-schedule-for-a-dataset" class="xliff"></a>
-## 为数据集指定计划
+## <a name="specify-schedule-for-a-dataset"></a>为数据集指定计划
 数据工厂管道中的每个活动可获取零个或多个输入**数据集**，并生成一个或多个输出数据集。 对于活动，可以指定从该处有可用的输入的数据或使用生成的输出数据的频率**可用性**的数据集定义中的部分。 
 
 **可用性**部分中的**频率**指定时间单位。 频率的允许值为：分钟、小时、天、周和月。 可用性部分中的**间隔**属性指定频率的乘数。 例如：如果频率设置为“天”且间隔设置为 1 的输出数据集，每天生成输出数据。 如果将频率指定为分钟，建议将间隔设置为小于 15 的值。 
@@ -181,12 +177,10 @@ ms.lasthandoff: 04/27/2017
 
 在前面的示例中，计划指定为输入和输出数据集是相同的（每小时）。 如果活动的输入数据集位于不同的频率，假设每隔 15 分钟，则生成此输出数据集的活动都将仍运行每小时一次，如下所输出数据集是什么驱动器活动计划。 有关详细信息，请参阅[具有不同频率的模型数据集](#model-datasets-with-different-frequencies)。
 
-<a id="dataset-availability-and-policies" class="xliff"></a>
-## 数据集可用性和策略
+## <a name="dataset-availability-and-policies"></a>数据集可用性和策略
 在数据集定义的可用性部分中，你已了解频率和间隔属性。 有几个其他属性会影响活动的计划和执行。 
 
-<a id="dataset-availability" class="xliff"></a>
-### 数据集可用性 
+### <a name="dataset-availability"></a>数据集可用性 
 下表描述了可在 **availability** 节中使用的属性：
 
 | 属性 | 说明 | 必选 | 默认 |
@@ -197,8 +191,7 @@ ms.lasthandoff: 04/27/2017
 | anchorDateTime |定义计划程序用于计算数据集切片边界的时间中的绝对位置。 <br/><br/><b>注意</b>：如果 AnchorDateTime 的日期部分比频率部分更精细，则忽略更精细部分。 <br/><br/>例如，如果“interval”<b></b>是“每小时”<b></b>（frequency: hour 且 interval: 1），而 <b> AnchorDateTime</b> 包含<b>分钟和秒</b>，则将忽略 AnchorDateTime 的<b>分钟和秒</b>部分。 |否 |01/01/0001 |
 | offset |所有数据集切片的开始和结束之间偏移的时间跨度。 <br/><br/><b>注意</b>：如果同时指定了 anchorDateTime 和 offset，则结果是组合偏移。 |否 |不可用 |
 
-<a id="offset-example" class="xliff"></a>
-### 偏移示例
+### <a name="offset-example"></a>偏移示例
 默认情况下，每天 (`"frequency": "Day", "interval": 1`) 在 UTC 时间晚上 12 点（午夜）开始切片。 若要将开始时间改为 UTC 时间早上 6 点，请按以下片段中所示设置偏移量： 
 
 ```json
@@ -209,8 +202,7 @@ ms.lasthandoff: 04/27/2017
     "offset": "06:00:00"
 }
 ```
-<a id="anchordatetime-example" class="xliff"></a>
-### anchorDateTime 示例
+### <a name="anchordatetime-example"></a>anchorDateTime 示例
 下例中，每 23 小时生成一次数据集。 第一个切片在 anchorDateTime 指定的时间启动，该时间设置为 `2017-04-19T08:00:00`（UTC 时间）。
 
 ```json
@@ -222,8 +214,7 @@ ms.lasthandoff: 04/27/2017
 }
 ```
 
-<a id="offsetstyle-example" class="xliff"></a>
-### 偏移/样式示例
+### <a name="offsetstyle-example"></a>偏移/样式示例
 以下数据集是每月数据集，在每月第三天上午 8:00 (`3.08:00:00`) 生成：
 
 ```json
@@ -235,8 +226,7 @@ ms.lasthandoff: 04/27/2017
 }
 ```
 
-<a id="dataset-policy" class="xliff"></a>
-### 数据集策略
+### <a name="dataset-policy"></a>数据集策略
 数据集可以具有定义的验证策略，该策略指定切片执行生成的数据在准备好进行使用之前应如何验证。 在这种情况下，切片执行完成后，输出切片状态将变为“等待”且子状态为“验证”。 切片验证后，切片状态将更改为“就绪”。 如果数据切片已生成但没有通过验证，因此将不会处理依赖于此切片的下游切片的活动运行。 [监视和管理管道](data-factory-monitor-manage-pipelines.md)介绍数据工厂中的数据切片的各种状态。
 
 数据集定义中的**策略**部分定义了数据集切片必须满足的标准或条件。 下表描述了可在 **policy** 节中使用的属性：
@@ -246,8 +236,7 @@ ms.lasthandoff: 04/27/2017
 | minimumSizeMB | 验证 **Azure Blob** 中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob |否 |不可用 |
 | minimumRows | 验证 **Azure SQL 数据库**中的数据或 **Azure 表**是否包含最小行数。 |<ul><li>Azure SQL 数据库</li><li>Azure 表</li></ul> |否 |不可用 |
 
-<a id="examples" class="xliff"></a>
-#### 示例
+#### <a name="examples"></a>示例
 **minimumSizeMB：**
 
 ```json
@@ -275,8 +264,7 @@ ms.lasthandoff: 04/27/2017
 
 有关这些属性的详细信息和示例，请参阅[创建数据集](data-factory-create-datasets.md)一文。 
 
-<a id="activity-policies" class="xliff"></a>
-## 活动策略
+## <a name="activity-policies"></a>活动策略
 策略会影响活动的运行时行为，尤其在处理表的切片时。 下表提供详细信息。
 
 | 属性 | 允许的值 | 默认值 | 说明 |
@@ -291,14 +279,12 @@ ms.lasthandoff: 04/27/2017
 
 有关详细信息，请参阅[管道](data-factory-create-pipelines.md)一文。 
 
-<a id="parallel-processing-of-data-slices" class="xliff"></a>
-## 并行处理数据切片
+## <a name="parallel-processing-of-data-slices"></a>并行处理数据切片
 可设置过去管道的开始日期。 执行此操作时，数据工厂将自动计算（回填）过去的所有数据切片，并开始处理。 例如：如果创建开始日期为 2017-04-01 的管道，而当前日期是 2017-04-10。 如果输出数据集的频率为每日，则数据工厂将立即开始处理所有从 2017-04-01 到 2017-04-09 的切片，因为开始日期已过去。 从自 2017-04-10 未处理切片尚未因为可用性部分中的样式属性的值是 EndOfInterval 默认情况下。 处理最旧的切片 executionPriorityOrder 值是 OldestFirst 首先为默认值。 有关样式属性的说明，请参阅[数据集可用性](#dataset-availability)部分。 有关 executionPriorityOrder 部分的说明，请参阅[活动策略](#activity-policies)部分。 
 
 通过在活动 JSON 的**策略**部分中设置**并发**属性，用户可将回填数据切片配置为并行处理。 此属性决定可在不同切片上发生的并行活动执行次数。 并发性属性的默认值为 1。 因此，一个切片默认被处理一次。 最大值为 10。 当管道需要完成大量可用数据，更大的并发值能加快数据处理速度。 
 
-<a id="rerun-a-failed-data-slice" class="xliff"></a>
-## 重新运行失败的数据切片
+## <a name="rerun-a-failed-data-slice"></a>重新运行失败的数据切片
 如果处理数据切片时出错，可以通过 Azure 门户边栏选项卡或监视器和管理应用程序的切片了解处理失败的原因。 有关详细信息，请参阅[使用 Azure 门户边栏选项卡监视和管理管道](data-factory-monitor-manage-pipelines.md)或[监视和管理应用](data-factory-monitor-manage-app.md)。
 
 请参考以下示例，其中演示了两个活动。 Activity1 和 Activity2。 Activity1 使用 Dataset1 的切片，并生成 Dataset2，作为输入由 Activity2 以生成最终的数据集的切片的切片。
@@ -313,8 +299,7 @@ ms.lasthandoff: 04/27/2017
 
 ![重新运行失败的切片](./media/data-factory-scheduling-and-execution/rerun-failed-slice.png)
 
-<a id="multiple-activities-in-a-pipeline" class="xliff"></a>
-## 管道中的多个活动
+## <a name="multiple-activities-in-a-pipeline"></a>管道中的多个活动
 可在管道中添加多个活动。 如果管道中有多个活动，且一个活动的输出不是其他活动的输入，则若活动的输入数据切片准备就绪，活动可能会并行运行。
 
 通过将一个活动的输出数据集设置为另一个活动的输入数据集，可链接两个活动（两个活动先后运行）。 这两个活动可在相同管道中，也可在不同管道中。 仅当第一个活动成功完成后第二个活动才能执行。
@@ -336,12 +321,10 @@ ms.lasthandoff: 04/27/2017
 
 有关示例，请参阅[按顺序复制](#copy-sequentially)部分中的附录。
 
-<a id="model-datasets-with-different-frequencies" class="xliff"></a>
-## 具有不同频率的模型数据集
+## <a name="model-datasets-with-different-frequencies"></a>具有不同频率的模型数据集
 在这些示例中，输入和输出数据集的频率与活动计划时段相同。 某些方案需要以某一频率生成输出的功能，其中此频率不同于一个或多个输入的频率。 数据工厂支持对这些方案进行建模。
 
-<a id="sample-1-produce-a-daily-output-report-for-input-data-that-is-available-every-hour" class="xliff"></a>
-### 示例 1：为每小时可用的输入数据生成每日输出报告
+### <a name="sample-1-produce-a-daily-output-report-for-input-data-that-is-available-every-hour"></a>示例 1：为每小时可用的输入数据生成每日输出报告
 请考虑这样一种方案，方案中具有来自 Azure Blob 存储中每小时可用的传感器的输入测量数据。 希望使用[数据工厂 hive 活动](data-factory-hive-activity.md)生成包含当天平均值、最大值和最小值等统计数据的每日汇总报告。
 
 下面介绍如何使用数据工厂对这种方案建模：
@@ -461,8 +444,7 @@ Hive 脚本接收相应的 *DateTime* 信息作为参数，这些参数使用 **
 
 每天的输出切片依赖于输入数据集的 24 小时切片。 数据工厂将自动计算这些依赖项，方法是计算在同一时间段内作为待生成输出切片的输入数据切片。 如果 24 个输入切片均不可用，数据工厂将等待输入切片准备就绪，然后启动每日活动运行。
 
-<a id="sample-2-specify-dependency-with-expressions-and-data-factory-functions" class="xliff"></a>
-### 示例 2：使用表达式和数据工厂函数指定依赖项
+### <a name="sample-2-specify-dependency-with-expressions-and-data-factory-functions"></a>示例 2：使用表达式和数据工厂函数指定依赖项
 现在考虑下另一种方案。 假设某个 hive 活动处理两个输入数据集。 其中一个每日获取新数据，但另一个每周获取新数据。 假设希望联接两个输入并每天生成输出。
 
 数据工厂通过对齐到输出数据切片时间段来自动计算相应的输入切片，这种简单方法不起作用。
@@ -616,11 +598,9 @@ hive 活动每天采用两个输入并且生成输出切片。 可将每天的�
 
 有关数据工厂支持的函数和系统变量列表，请参阅[数据工厂的函数和系统变量](data-factory-functions-variables.md)。
 
-<a id="appendix" class="xliff"></a>
-## 附录
+## <a name="appendix"></a>附录
 
-<a id="example-copy-sequentially" class="xliff"></a>
-### 示例：按顺序复制
+### <a name="example-copy-sequentially"></a>示例：按顺序复制
 可以按顺序或以有序的方式依次运行多个复制操作。 例如，管道中的两个复制活动（CopyActivity1 和 CopyActivity2）可能具有以下输入数据输出数据集：   
 
 CopyActivity1
