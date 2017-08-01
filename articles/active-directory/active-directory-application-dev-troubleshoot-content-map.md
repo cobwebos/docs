@@ -20,9 +20,7 @@ ms.lasthandoff: 04/18/2017
 
 ---
 
-<a id="troubleshoot-azure-active-directory-application-development" class="xliff"></a>
-
-# Azure Active Directory 应用程序开发疑难解答
+# <a name="troubleshoot-azure-active-directory-application-development"></a>Azure Active Directory 应用程序开发疑难解答
 单击以下链接可转到相应的内容导航图，可以借助这些内容解决在 Azure Active Directory 中开发包含**应用程序注册表**的应用程序时遇到的某些最常见问题。
 
 * [应用程序配置和注册的相关问题](active-directory-application-dev-config-content-map.md)

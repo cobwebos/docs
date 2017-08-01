@@ -21,23 +21,17 @@ ms.lasthandoff: 04/18/2017
 
 ---
 
-<a id="problem-creating-an-application-proxy-application" class="xliff"></a>
-
-# 创建应用程序代理应用程序时出现问题 
+# <a name="problem-creating-an-application-proxy-application"></a>创建应用程序代理应用程序时出现问题 
 
 以下是用户在创建新应用程序代理应用程序时遇到的一些常见问题。
 
-<a id="recommended-documents" class="xliff"></a>
-
-## 建议的文档 
+## <a name="recommended-documents"></a>建议的文档 
 
 若要了解通过管理门户创建应用程序代理应用程序的详细信息，请参阅[使用 Azure AD 应用程序代理发布应用程序](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal)。
 
 如果按照该文档中的步骤操作，但在创建应用程序时出错，请参阅错误详细信息以获取有关如何修复应用程序的信息和建议。 大多数的错误消息都包含建议的修复方法。 
 
-<a id="specific-things-to-check" class="xliff"></a>
-
-## 检查的具体内容
+## <a name="specific-things-to-check"></a>检查的具体内容
 
 为避免常见的错误，请验证：
 
@@ -55,8 +49,6 @@ ms.lasthandoff: 04/18/2017
 
    ![通知提示](./media/application-proxy-config-problem/error-message.png)
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 [在 Azure 门户中启用应用程序代理](active-directory-application-proxy-enable.md)
 

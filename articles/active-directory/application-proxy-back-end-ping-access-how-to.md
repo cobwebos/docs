@@ -21,15 +21,11 @@ ms.lasthandoff: 04/18/2017
 
 ---
 
-<a id="how-to-configure-an-application-proxy-application-to-use-pingaccess" class="xliff"></a>
-
-# 如何配置应用程序代理应用程序以使用 PingAccess
+# <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>如何配置应用程序代理应用程序以使用 PingAccess
 
 我们与 PingAccess 合作，现在使你能够将应用程序代理的优势扩展到使用基于标头的身份验证的应用程序。 如果应用程序没有使用标头，请参阅[单一登录文档](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd)，以了解其他选项的详细信息。
 
-<a id="overview-of-steps-and-recommended-documents" class="xliff"></a>
-
-## 步骤和建议的文档概述
+## <a name="overview-of-steps-and-recommended-documents"></a>步骤和建议的文档概述
 
 若要使用 PingAccess 配置应用程序，需要执行四个步骤：
 

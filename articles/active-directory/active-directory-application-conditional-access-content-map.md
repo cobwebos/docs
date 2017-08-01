@@ -20,22 +20,16 @@ ms.lasthandoff: 04/18/2017
 
 ---
 
-<a id="problems-configuring-conditional-access-to-one-of-my-applications" class="xliff"></a>
-
-# 配置对某个应用程序的条件访问时出现问题
+# <a name="problems-configuring-conditional-access-to-one-of-my-applications"></a>配置对某个应用程序的条件访问时出现问题
 
 
-<a id="ive-set-up-conditional-access-but-something-isnt-working" class="xliff"></a>
-
-## 我已设置条件访问，但某些功能无法正常工作
+## <a name="ive-set-up-conditional-access-but-something-isnt-working"></a>我已设置条件访问，但某些功能无法正常工作
   以下文档可帮助你解决一些此类最常见问题。
   * [由于客户不符合设备注册先决条件，条件访问无法正常工作](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [由于条件访问策略设置不当，租户被阻止](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-remediation/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 
 
-<a id="im-having-problems-setting-up-conditional-access" class="xliff"></a>
-
-## 设置条件访问时遇到问题
+## <a name="im-having-problems-setting-up-conditional-access"></a>设置条件访问时遇到问题
   以下文档可帮助你解决一些此类最常见问题。
   * [企业网络外部规则如何以及何时生效？](http://aka.ms/calocation/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [如何增加允许用户在 Azure AD 中注册的设备数？](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-setup/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
