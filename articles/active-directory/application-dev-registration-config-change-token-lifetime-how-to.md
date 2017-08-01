@@ -22,9 +22,7 @@ ms.lasthandoff: 04/14/2017
 ---
 
 
-<a id="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application" class="xliff"></a>
-
-# 如何更改自定义开发应用程序的令牌生存期默认值
+# <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>如何更改自定义开发应用程序的令牌生存期默认值
 
 Azure AD Premium 允许应用开发人员和租户管理员配置为非机密客户端所颁发的令牌生存期。 根据租户范围或要访问的资源设置令牌生存期策略。
 
@@ -36,9 +34,7 @@ Azure AD Premium 允许应用开发人员和租户管理员配置为非机密客
 
  * 若要了解如何创建其他自定义，请查看[配置令牌生存期](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-configurable-token-lifetimes)文档。
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 [配置令牌生存期](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-configurable-token-lifetimes)<br>
 
 [Azure AD 令牌参考](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims)

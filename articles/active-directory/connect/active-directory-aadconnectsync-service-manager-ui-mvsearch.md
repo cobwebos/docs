@@ -21,8 +21,7 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 03/04/2017
 
 ---
-# Sync Service Manager Metaverse 搜索
-<a id="sync-service-manager-metaverse-search" class="xliff"></a>
+# <a name="sync-service-manager-metaverse-search"></a>Sync Service Manager Metaverse 搜索
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/mvsearch.png)
 
@@ -30,8 +29,7 @@ ms.lasthandoff: 03/04/2017
 
 在搜索结果中，选择对象，然后选择“属性”查看 [Metaverse 对象属性](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md#metaverse-object-properties)。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)配置的详细信息。
 
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。

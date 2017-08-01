@@ -21,9 +21,7 @@ ms.lasthandoff: 04/18/2017
 
 ---
 
-<a id="how-to-configure-a-new-multi-tenant-application" class="xliff"></a>
-
-# 如何配置新的多租户应用程序
+# <a name="how-to-configure-a-new-multi-tenant-application"></a>如何配置新的多租户应用程序
 
 通过适用于 OpenID Connect 的 Azure AD、SAML 2.0 或 WS-Fed 联合时，将自动启用应用中的联合单一登录 (SSO)。 如果与 Azure AD 已有一个现有会话，但是最终用户仍然需要登录，这有可能是应用配置错误。
 
@@ -35,9 +33,7 @@ ms.lasthandoff: 04/18/2017
 
 对于 iOS 系统，请参阅[在 iOS 中启用跨应用 SSO](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)。
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 
 [Azure AD SSO](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)<br>
 

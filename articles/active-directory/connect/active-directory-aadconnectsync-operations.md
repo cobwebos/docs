@@ -21,12 +21,10 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 04/19/2017
 
 ---
-# Azure AD Connect 同步：操作任务和注意事项
-<a id="azure-ad-connect-sync-operational-tasks-and-consideration" class="xliff"></a>
+# <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Azure AD Connect 同步：操作任务和注意事项
 本主题旨在介绍 Azure AD Connect 同步的操作任务。
 
-## 过渡模式
-<a id="staging-mode" class="xliff"></a>
+## <a name="staging-mode"></a>过渡模式
 暂存模式可以用于许多方案，包括：
 
 * 高可用性。
@@ -43,8 +41,7 @@ ms.lasthandoff: 04/19/2017
 
 对于熟悉旧式同步技术的人员而言，暂存模式是不同的，因为服务器有自身的 SQL 数据库。 此体系结构允许将暂存模式服务器放置在不同的数据中心。
 
-### 验证服务器的配置
-<a id="verify-the-configuration-of-a-server" class="xliff"></a>
+### <a name="verify-the-configuration-of-a-server"></a>验证服务器的配置
 若要应用此方法，请遵循以下步骤：
 
 1. [准备](#prepare)
@@ -53,18 +50,15 @@ ms.lasthandoff: 04/19/2017
 4. [验证](#verify)
 5. [切换活动服务器](#switch-active-server)
 
-#### 准备
-<a id="prepare" class="xliff"></a>
+#### <a name="prepare"></a>准备
 1. 安装 Azure AD Connect，选择“暂存模式”，然后取消选择安装向导中最后一页上的“启动同步”。 此模式允许手动运行同步引擎。
    ![ReadyToConfigure](./media/active-directory-aadconnectsync-operations/readytoconfigure.png)
 2. 注销/登录并从“开始”菜单选择“同步服务”。
 
-#### 配置
-<a id="configuration" class="xliff"></a>
+#### <a name="configuration"></a>配置
 如果对主服务器进行了自定义更改并希望比较配置和临时服务器，则使用 [Azure AD Connect 配置文档管理器](https://github.com/Microsoft/AADConnectConfigDocumenter)。
 
-#### 导入和同步
-<a id="import-and-synchronize" class="xliff"></a>
+#### <a name="import-and-synchronize"></a>导入和同步
 1. 选择“连接器”，并选择第一个 **Active Directory 域服务**类型的连接器。 单击“运行”，然后依次选择“完全导入”和“确定”。 针对此类型的所有连接器执行这些步骤。
 2. 选择 **Azure Active Directory (Microsoft)** 类型的连接器。 单击“运行”，然后依次选择“完全导入”和“确定”。
 3. 确保“连接器”选项卡仍处于选中状态。 针对每个 **Active Directory 域服务**类型的连接器单击“运行”，然后选择“差异同步”和“确定”。
@@ -72,8 +66,7 @@ ms.lasthandoff: 04/19/2017
 
 现在，已将导出更改暂存到 Azure AD 和本地 AD（如果你正在使用 Exchange 混合部署）。 接下来的步骤可让你在实际开始导出到目录之前，检查将要更改的内容。
 
-#### 验证
-<a id="verify" class="xliff"></a>
+#### <a name="verify"></a>验证
 1. 启动 cmd 提示符并转到 `%ProgramFiles%\Microsoft Azure AD Sync\bin`
 2. 运行：`csexport "Name of Connector" %temp%\export.xml /f:x` 连接器名称可以在同步服务中找到。 它的名称类似于“contoso.com – AAD”（表示 Azure AD）。
 3. 将 PowerShell 脚本从 [CSAnalyzer](#appendix-csanalyzer) 部分复制到名为 `csanalyzer.ps1` 的文件。
@@ -82,14 +75,12 @@ ms.lasthandoff: 04/19/2017
 6. 现在已经有名为 **processedusers1.csv** 的文件，可在 Microsoft Excel 中检查。 可在此文件中找到要导出到 Azure AD 的处于暂存状态的所有更改。
 7. 对数据或配置进行必要的更改并再次运行这些步骤（导入和同步和身份验证），直到要导出的更改都按预期进行。
 
-#### 切换活动服务器
-<a id="switch-active-server" class="xliff"></a>
+#### <a name="switch-active-server"></a>切换活动服务器
 1. 在当前处于活动状态的服务器上，关闭服务器 (DirSync/FIM/Azure AD Sync)，使它不会导出到 Azure AD，或将它设为暂存模式 (Azure AD Connect)。
 2. 在处于“暂存模式”的服务器上运行安装向导，然后禁用“暂存模式”。
    ![ReadyToConfigure](./media/active-directory-aadconnectsync-operations/additionaltasks.png)
 
-## 灾难恢复
-<a id="disaster-recovery" class="xliff"></a>
+## <a name="disaster-recovery"></a>灾难恢复
 实现设计中规划了在灾难中失去同步服务器时的应对方法。 有不同的模型可用，要使用哪一种模型取决于许多因素，包括：
 
 * 停机期间无法对 Azure AD 中的对象进行更改的容限度如何？
@@ -104,28 +95,23 @@ ms.lasthandoff: 04/19/2017
 
 如果不使用内置的 SQL Express 数据库，应查看 [SQL 高可用性](#sql-high-availability)部分。
 
-### 根据需要重建
-<a id="rebuild-when-needed" class="xliff"></a>
+### <a name="rebuild-when-needed"></a>根据需要重建
 必要时规划服务器重建为可行的策略。 通常，在几个小时内即可完成安装同步引擎以及执行初始导入和同步。 如果没有可用的备用服务器，则可以暂时使用域控制器托管同步引擎。
 
 同步引擎服务器不存储有关对象的任何状态，因此可以从 Active Directory 与 Azure AD 中的数据重建数据库。 **sourceAnchor** 属性可用于联接来自本地和云的对象。 如果重新生成包含本地与云中现有对象的服务器，同步引擎的重新安装符合这些项目。 需要记录和保存的内容是对服务器进行的配置更改，例如筛选和同步规则。 在开始同步之前，必须重新应用这些自定义配置。
 
-### 具有备用的待机服务器 - 暂存模式
-<a id="have-a-spare-standby-server---staging-mode" class="xliff"></a>
+### <a name="have-a-spare-standby-server---staging-mode"></a>具有备用的待机服务器 - 暂存模式
 如果你的环境更复杂，我们建议你使用一个或多个待机服务器。 可以在安装过程中启用服务器的**暂存模式**。
 
 有关详细信息，请参阅[暂存模式](#staging-mode)。
 
-### 使用虚拟机
-<a id="use-virtual-machines" class="xliff"></a>
+### <a name="use-virtual-machines"></a>使用虚拟机
 常用的受支持方法是在虚拟机中运行同步引擎。 如果主机有问题，可将包含同步引擎服务器的映像迁移到另一个服务器。
 
-### SQL 高可用性
-<a id="sql-high-availability" class="xliff"></a>
+### <a name="sql-high-availability"></a>SQL 高可用性
 如果未使用 Azure AD Connect 随附的 SQL Server Express，还应考虑 SQL Server 的高可用性。 唯一受支持的高可用性解决方案是 SQL 群集。 不支持的解决方案包括镜像和 Always On。
 
-## 附录 CSAnalyzer
-<a id="appendix-csanalyzer" class="xliff"></a>
+## <a name="appendix-csanalyzer"></a>附录 CSAnalyzer
 有关如何使用此脚本的信息，请参阅[验证](#verify)部分。
 
 ```
@@ -267,8 +253,7 @@ Write-Host Writing processedusers${outputfilecount}.csv -ForegroundColor Yellow
 $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeInformation
 ```
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 **概述主题**  
 
 * [Azure AD Connect 同步：理解和自定义同步](active-directory-aadconnectsync-whatis.md)  

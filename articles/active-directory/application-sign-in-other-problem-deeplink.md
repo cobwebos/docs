@@ -21,9 +21,7 @@ ms.lasthandoff: 04/18/2017
 
 ---
 
-<a id="problems-signing-in-to-an-application-using-a-deeplink" class="xliff"></a>
-
-# 使用深层链接登录应用程序时出现的问题
+# <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>使用深层链接登录应用程序时出现的问题
 
 访问面板是一个基于 Web 的门户，在 Azure Active Directory (Azure AD) 中拥有工作或学校帐户的用户可以使用它来查看和启动 Azure AD 管理员已授予他们访问权限的基于云的应用程序。 
 
@@ -31,9 +29,7 @@ ms.lasthandoff: 04/18/2017
 
 深层链接或用户访问 URL 是用户可用来直接从其浏览器 URL 栏访问其密码 - SSO 应用程序的链接。 通过导航到此链接，用户将自动登录到应用程序，而不必先转到访问面板。 此链接与用户从 Office 365 应用程序启动器访问这些应用程序时使用的链接相同。
 
-<a id="general-issues-to-check-first" class="xliff"></a>
-
-## 首先要检查的常规问题
+## <a name="general-issues-to-check-first"></a>首先要检查的常规问题
 
 -   确保使用的**浏览器**能满足访问面板的最低要求。
 
@@ -55,9 +51,7 @@ ms.lasthandoff: 04/18/2017
 
 -   确保同时尝试清除浏览器 Cookie，并尝试重新登录。
 
-<a id="checking-the-deeplink" class="xliff"></a>
-
-## 检查深层链接
+## <a name="checking-the-deeplink"></a>检查深层链接
 
 若要检查是否具有正确的深层链接，请按照以下步骤操作：
 
@@ -89,9 +83,7 @@ ms.lasthandoff: 04/18/2017
 
 12. 找到“用户访问 URL”标签。 深层链接应与此 URL 匹配。
 
-<a id="how-to-install-the-access-panel-browser-extension" class="xliff"></a>
-
-## 如何安装访问面板浏览器扩展
+## <a name="how-to-install-the-access-panel-browser-extension"></a>如何安装访问面板浏览器扩展
 
 若要安装访问面板浏览器扩展，请按照以下步骤操作：
 
@@ -115,9 +107,7 @@ ms.lasthandoff: 04/18/2017
 
 -   [Firefox 访问面板扩展](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-<a id="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application" class="xliff"></a>
-
-## 如何配置 Azure AD 库应用程序的密码单一登录
+## <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>如何配置 Azure AD 库应用程序的密码单一登录
 
 若要从 Azure AD 库配置应用程序，需要：
 
@@ -125,9 +115,7 @@ ms.lasthandoff: 04/18/2017
 
 -   [将应用程序配置为密码单一登录](#configure-the-application-for-password-single-sign-on)
 
-<a id="add-an-application-from-the-azure-ad-gallery" class="xliff"></a>
-
-### 从 Azure AD 库添加应用程序
+### <a name="add-an-application-from-the-azure-ad-gallery"></a>从 Azure AD 库添加应用程序
 
 若要从 Azure AD 库添加应用程序，请按照以下步骤操作：
 
@@ -151,9 +139,7 @@ ms.lasthandoff: 04/18/2017
 
 稍等片刻，便能看到应用程序的配置边栏选项卡。
 
-<a id="configure-the-application-for-password-single-sign-on" class="xliff"></a>
-
-### 将应用程序配置为密码单一登录
+### <a name="configure-the-application-for-password-single-sign-on"></a>将应用程序配置为密码单一登录
 
 若要为应用程序配置单一登录，请按照以下步骤操作：
 
@@ -179,9 +165,7 @@ ms.lasthandoff: 04/18/2017
 
 10. 此外，还可以通过以下方式代表用户提供凭据：选择用户对应的行，单击“更新凭据”，然后代表用户输入用户名和密码。 否则，会在启动时提示用户输入凭据。
 
-<a id="how-to-configure-password-single-sign-on-for-a-non-gallery-application" class="xliff"></a>
-
-## 如何配置非库应用程序的密码单一登录
+## <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>如何配置非库应用程序的密码单一登录
 
 若要从 Azure AD 库配置应用程序，需要：
 
@@ -189,9 +173,7 @@ ms.lasthandoff: 04/18/2017
 
 -   [将应用程序配置为密码单一登录](#configure-the-application-for-password-single-sign-on)
 
-<a id="add-a-non-gallery-application" class="xliff"></a>
-
-### 添加非库应用程序
+### <a name="add-a-non-gallery-application"></a>添加非库应用程序
 
 若要从 Azure AD 库添加应用程序，请按照以下步骤操作：
 
@@ -211,9 +193,7 @@ ms.lasthandoff: 04/18/2017
 
 稍等片刻，便能看到应用程序的配置边栏选项卡。
 
-<a id="configure-the-application-for-password-single-sign-on" class="xliff"></a>
-
-### 将应用程序配置为密码单一登录
+### <a name="configure-the-application-for-password-single-sign-on"></a>将应用程序配置为密码单一登录
 
 若要为应用程序配置单一登录，请按照以下步骤操作：
 
@@ -241,9 +221,7 @@ ms.lasthandoff: 04/18/2017
 
 11. 此外，还可以通过以下方式代表用户提供凭据：选择用户对应的行，单击“更新凭据”，然后代表用户输入用户名和密码。 否则，会在启动时提示用户输入凭据。
 
-<a id="how-to-assign-a-user-to-an-application-directly" class="xliff"></a>
-
-## 如何直接将用户分配到应用程序
+## <a name="how-to-assign-a-user-to-an-application-directly"></a>如何直接将用户分配到应用程序
 
 若要直接将一个或多个用户分配到应用程序，请按照以下步骤操作：
 
@@ -281,9 +259,7 @@ ms.lasthandoff: 04/18/2017
 
 稍等片刻，所选用户就能使用解决方案描述部分所述的方法来启动这些应用程序了。
 
-<a id="if-these-troubleshooting-steps-do-not-the-resolve-the-issue" class="xliff"></a>
-
-## 如果这些故障排除步骤未解决此问题。 
+## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>如果这些故障排除步骤未解决此问题。 
 
 打开支持票证并提供以下信息（如果有）：
 
@@ -299,8 +275,6 @@ ms.lasthandoff: 04/18/2017
 
 -   Fiddler 跟踪
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 [使用应用程序代理为应用提供单一登录](active-directory-application-proxy-sso-using-kcd.md)
 

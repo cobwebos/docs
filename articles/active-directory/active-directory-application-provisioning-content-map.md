@@ -20,22 +20,16 @@ ms.lasthandoff: 04/18/2017
 
 ---
 
-<a id="problems-configuring-and-provisioning-users-to-an-application" class="xliff"></a>
-
-# 在应用程序中配置和预配用户时出现问题
+# <a name="problems-configuring-and-provisioning-users-to-an-application"></a>在应用程序中配置和预配用户时出现问题
 
 
 
-<a id="i-want-to-know-when-provisioning-will-finish" class="xliff"></a>
-
-## 我想知道预配何时完成
+## <a name="i-want-to-know-when-provisioning-will-finish"></a>我想知道预配何时完成
   以下文档可帮助你解决一些此类最常见问题。
   * [我不确定特定的用户何时可以访问某个应用程序](https://docs.microsoft.com/azure/active-directory/application-provisioning-when-will-provisioning-finish-specific-user/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [可以对 Azure AD 库应用程序进行预配，但预配过程花费了几个小时甚至更长](https://docs.microsoft.com/azure/active-directory/application-provisioning-when-will-provisioning-finish/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 
-<a id="im-having-problems-configuring-user-provisioning-to-an-application" class="xliff"></a>
-
-## 在应用程序中配置用户预配时遇到问题
+## <a name="im-having-problems-configuring-user-provisioning-to-an-application"></a>在应用程序中配置用户预配时遇到问题
   以下文档可帮助你解决一些此类最常见问题。
   * [我不知道如何在 Azure AD 库应用程序中配置用户预配](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-how-to/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [在 Azure AD 库应用程序中配置用户预配时遇到问题](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
