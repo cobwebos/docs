@@ -22,10 +22,8 @@ ms.lasthandoff: 06/08/2017
 
 
 ---
-# StorSimple 软件、高可用性和网络要求
-<a id="storsimple-software-high-availability-and-networking-requirements" class="xliff"></a>
-## 概述
-<a id="overview" class="xliff"></a>
+# <a name="storsimple-software-high-availability-and-networking-requirements"></a>StorSimple 软件、高可用性和网络要求
+## <a name="overview"></a>概述
 欢迎使用 Microsoft Azure StorSimple。 本文介绍了 StorSimple 设备以及访问此设备的存储客户端的重要系统要求和最佳实践。 建议在部署 StorSimple 系统之前仔细查看信息，并且在进行部署和后续操作过程中按需重新参阅。
 
 系统需求包括：
@@ -34,8 +32,7 @@ ms.lasthandoff: 06/08/2017
 * **StorSimple 设备的网络要求** 提供有关需要在防火墙中打开的端口的信息，以便允许传输 iSCSI、云或管理流量。
 * **StorSimple 的高可用性要求** - 介绍 StorSimple 设备和主机计算机的高可用性要求和最佳实践。 
 
-## 存储客户端的软件要求
-<a id="software-requirements-for-storage-clients" class="xliff"></a>
+## <a name="software-requirements-for-storage-clients"></a>存储客户端的软件要求
 以下软件要求适用于访问 StorSimple 设备的存储客户端。
 
 | 支持的操作系统 | 所需版本 | 其他要求/说明 |
@@ -50,8 +47,7 @@ ms.lasthandoff: 06/08/2017
 > 
 > 
 
-## 可选组件的软件要求
-<a id="software-requirements-for-optional-components" class="xliff"></a>
+## <a name="software-requirements-for-optional-components"></a>可选组件的软件要求
 以下软件要求适用于可选的 StorSimple 组件（StorSimple Snapshot Manager 和 StorSimple Adapter for SharePoint）。
 
 | 组件 | 主机平台 | 其他要求/说明 |
@@ -59,8 +55,7 @@ ms.lasthandoff: 06/08/2017
 | StorSimple 快照管理器 |Windows Server 2008R2 SP1、2012、2012R2 |执行镜像动态磁盘的备份/还原以及任何应用程序的一致性备份要求在 Windows Server 上使用 StorSimple Snapshot Manager。<br> 仅 Windows Server 2008 R2 SP1（64 位）、Windows 2012 R2 和 Windows Server 2012 支持 StorSimple Snapshot Manager。<ul><li>如果使用的是 Window Server 2012，则必须在安装 StorSimple Snapshot Manager 之前安装 .NET 3.5–4.5。</li><li>如果使用的是 Windows Server 2008 R2 SP1，则必须在安装 StorSimple Snapshot Manager 之前安装 Windows Management Framework 3.0。</li></ul> |
 | StorSimple Adapter for SharePoint |Windows Server 2008R2 SP1、2012、2012R2 |<ul><li>仅 SharePoint 2010 和 SharePoint 2013 支持 StorSimple Adapter for SharePoint。</li><li>RBS 要求使用 SQL Server Enterprise Edition、版本 2008 R2 或 2012。</li></ul> |
 
-## StorSimple 设备的网络要求
-<a id="networking-requirements-for-your-storsimple-device" class="xliff"></a>
+## <a name="networking-requirements-for-your-storsimple-device"></a>StorSimple 设备的网络要求
 你的 StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口以允许传输 iSCSI、云和管理流量。 下表列出了需要在防火墙中打开的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 *出*或*出站*表示 StorSimple 设备从外部（超出部署范围）发送数据的方向：例如，到 Internet 的出站。
 
 | 端口号 <sup>1、2</sup> | 入或出 | 端口范围 | 必选 | 说明 |
@@ -85,8 +80,7 @@ ms.lasthandoff: 06/08/2017
 > 
 > 
 
-### 防火墙规则的 URL 模式
-<a id="url-patterns-for-firewall-rules" class="xliff"></a>
+### <a name="url-patterns-for-firewall-rules"></a>防火墙规则的 URL 模式
 通常，网络管理员可以基于 URL 模式配置高级防火墙规则，以筛选入站和出站流量。 StorSimple 设备和 StorSimple Manager 服务取决于其他 Microsoft 应用程序，如 Azure 服务总线、Azure Active Directory 访问控制、存储帐户和 Microsoft 更新服务器。 与这些应用程序相关联的 URL 模式可用于配置防火墙规则。 请务必了解可以更改与这些应用程序相关联的 URL 模式。 反之，这将要求网络管理员在需要时为 StorSimple 监视和更新防火墙规则。
 
 绝大多数情况下，建议基于 StorSimple 固定 IP 地址为出站流量设置防火墙规则。 但是，下面的信息可用于设置创建安全环境所需的高级防火墙规则。
@@ -96,8 +90,7 @@ ms.lasthandoff: 06/08/2017
 > 
 > 
 
-#### Azure 门户的 URL 模式
-<a id="url-patterns-for-azure-portal" class="xliff"></a>
+#### <a name="url-patterns-for-azure-portal"></a>Azure 门户的 URL 模式
 | URL 模式 | 组件/功能 | 设备 IP |
 | --- | --- | --- |
 | `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` |StorSimple 管理器服务<br>访问控制服务<br>Azure 服务总线 |启用云的网络接口 |
@@ -108,8 +101,7 @@ ms.lasthandoff: 06/08/2017
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |仅限控制器的固定 IP |
 | `https://*.partners.extranet.microsoft.com/*` |支持包 |启用云的网络接口 |
 
-#### Azure Government 门户的 URL 模式
-<a id="url-patterns-for-azure-government-portal" class="xliff"></a>
+#### <a name="url-patterns-for-azure-government-portal"></a>Azure Government 门户的 URL 模式
 | URL 模式 | 组件/功能 | 设备 IP |
 | --- | --- | --- |
 | `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*` |StorSimple 管理器服务<br>访问控制服务<br>Azure 服务总线 |启用云的网络接口 |
@@ -120,8 +112,7 @@ ms.lasthandoff: 06/08/2017
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |仅限控制器的固定 IP |
 | `https://*.partners.extranet.microsoft.com/*` |支持包 |启用云的网络接口 |
 
-### 路由跃点数
-<a id="routing-metric" class="xliff"></a>
+### <a name="routing-metric"></a>路由跃点数
 路由跃点数与将数据路由到指定网络的接口和网关相关联。 如果路由协议了解到存在到达同一目标的多个路径，它会使用路由跃点数来计算给定目标的最佳路径。 路由跃点数越低，优先级越高。
 
 在 StorSimple 的上下文中，如果配置多个网络接口和网关以传送流量，路由跃点数将发挥作用，帮助确定这些接口的相对使用顺序。 用户不能更改路由跃点数。 但是，可以使用 `Get-HcsRoutingTable` cmdlet 在 StorSimple 设备上打印出路由表（和跃点数）。 有关 Get-HcsRoutingTable cmdlet 的详细信息，请参阅[排查 StorSimple 设备部署问题](storsimple-troubleshoot-deployment.md)。
@@ -181,8 +172,7 @@ Update 2 包含几项与网络有关的改进，路由跃点数也有变化。 �
   
     如果 Data 1 失败，因为它是最后一个 iSCSI 网络接口，会导致将控制器故障转移到另一个控制器上的 Data 1。
 
-### 网络最佳做法
-<a id="networking-best-practices" class="xliff"></a>
+### <a name="networking-best-practices"></a>网络最佳做法
 除上述网络要求外，为了获得 StorSimple 解决方案的最佳性能，请遵循以下最佳实践：
 
 * 确保 StorSimple 设备具有始终可用的、专用的 40 Mbps 带宽（或更高带宽）。 此带宽不应与任何其他应用程序共享（或应确保通过使用 QoS 策略进行分配）。
@@ -190,18 +180,15 @@ Update 2 包含几项与网络有关的改进，路由跃点数也有变化。 �
 * 在设备上使用专用的网络接口来访问 iSCSI 和云，从而隔离 iSCSI 和云流量。 有关详细信息，请参阅如何在 StorSimple 设备上[修改网络接口](storsimple-modify-device-config.md#modify-network-interfaces)。
 * 请勿对网络接口使用链接聚合控制协议 (LACP) 配置。 这是不受支持的配置。
 
-## StorSimple 的高可用性要求
-<a id="high-availability-requirements-for-storsimple" class="xliff"></a>
+## <a name="high-availability-requirements-for-storsimple"></a>StorSimple 的高可用性要求
 StorSimple 解决方案包含的硬件平台提供了可用性和可靠性功能，可为数据中心内高度可用的容错存储器基础结构提供基础。 但是，用户应遵守相应的要求和最佳实践，以帮助确保 StorSimple 解决方案的可用性。 部署 StorSimple 之前，请仔细查看 StorSimple 设备和连接的主机计算机的以下要求和最佳实践。
 
 有关监控和维护 StorSimple 设备的硬件组件的详细信息，请转到[使用 StorSimple Manager 服务监控硬件组件和状态](storsimple-monitor-hardware-status.md)以及 [StorSimple 硬件组件更换](storsimple-hardware-component-replacement.md)。
 
-### StorSimple 设备的高可用性要求和过程
-<a id="high-availability-requirements-and-procedures-for-your-storsimple-device" class="xliff"></a>
+### <a name="high-availability-requirements-and-procedures-for-your-storsimple-device"></a>StorSimple 设备的高可用性要求和过程
 请仔细查看以下信息，确保 StorSimple 设备具有高可用性。
 
-#### PCM
-<a id="pcms" class="xliff"></a>
+#### <a name="pcms"></a>PCM
 StorSimple 设备包括冗余的热插拔电源和散热模块 (PCM)。 每个 PCM 都有足够的容量，能够为整个机箱提供服务。 若要确保高可用性，必须安装两个 PCM。
 
 * 请将 PCM 连接到不同电源，以便在电源出现故障时提供可用性。
@@ -209,8 +196,7 @@ StorSimple 设备包括冗余的热插拔电源和散热模块 (PCM)。 每个 P
 * 仅在有更换品并准备好安装时，才能移除发生故障的 PCM。
 * 不要同时移除两个 PCM。 PCM 模块包括备用电池模块。 同时移除两个 PCM 将导致在没有电池保护的情况下关机，设备状态将无法保存。 有关电池的详细信息，请转到[维护备用电池模块](storsimple-battery-replacement.md#maintain-the-backup-battery-module)。
 
-#### 控制器模块
-<a id="controller-modules" class="xliff"></a>
+#### <a name="controller-modules"></a>控制器模块
 StorSimple 设备包括冗余的热插拔控制器模块。 控制器模块以主动/被动方式运行。 在任何给定的时间，一个控制器模块处于主动状态并且正在提供服务，而另一个控制器模块处于被动状态。 如果主动控制器模块发生故障或被移除，被动控制器模块会通电并开始运行。 每个控制器模块都有足够的容量，能够为整个机箱提供服务。 必须安装两个控制器模块以确保高可用性。
 
 * 请确保始终都安装有两个控制器模块。
@@ -221,8 +207,7 @@ StorSimple 设备包括冗余的热插拔控制器模块。 控制器模块以�
 * 不要同时移除两个控制器模块。 如果正在进行控制器故障转移，请不要关闭备用控制器模块或从机箱中移除它。
 * 控制器故障转移完成后，请等待至少五分钟，然后再移除其中任意一个控制器模块。
 
-#### 网络接口
-<a id="network-interfaces" class="xliff"></a>
+#### <a name="network-interfaces"></a>网络接口
 每个 StorSimple 设备控制器模块都有四个 1 千兆位和两个 10 千兆位以太网网络接口。
 
 * 请确保到两个控制器模块的网络连接相同，并且控制器模块接口连接的网络接口具有相同的网络配置。
@@ -234,8 +219,7 @@ StorSimple 设备包括冗余的热插拔控制器模块。 控制器模块以�
 
 有关将设备联网以实现高可用性和性能的详细信息，请转到[安装 StorSimple 8100 设备](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device)或[安装 StorSimple 8600 设备](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device)。
 
-#### SSD 和 HDD
-<a id="ssds-and-hdds" class="xliff"></a>
+#### <a name="ssds-and-hdds"></a>SSD 和 HDD
 StorSimple 设备包括使用镜像空间进行保护的固态硬盘 (SSD) 和硬盘驱动器 (HDD)。 使用镜像空间可确保设备容许一个或多个 SSD 或 HDD 发生故障。
 
 * 请确保所有的 SSD 和 HDD 模块均已安装。
@@ -246,8 +230,7 @@ StorSimple 设备包括使用镜像空间进行保护的固态硬盘 (SSD) 和�
 * 更换过程中，请在 SSD 和 HDD 驱动器的“**维护**”页面中监视“**硬件状态**”。 绿色复选标记状态表示磁盘运行正常，而红色感叹号表示 SSD 或 HDD 发生故障。
 * 建议用户为需要系统故障保护的所有卷配置云快照。
 
-#### EBOD 机箱
-<a id="ebod-enclosure" class="xliff"></a>
+#### <a name="ebod-enclosure"></a>EBOD 机箱
 除了主机箱，8600 型号的 StorSimple 设备还包括扩展磁盘组 (EBOD) 机箱。 EBOD 包括使用镜像空间进行保护的 EBOD 控制器和硬盘驱动器 (HDD)。 使用镜像空间可确保设备能够容许一个或多个 HDD 发生故障。 EBOD 机箱通过冗余 SAS 电缆连接到主机箱。
 
 * 请确保始终都安装有两个 EBOD 机箱控制器模块、两个 SAS 电缆以及所有的硬盘驱动器。
@@ -257,15 +240,13 @@ StorSimple 设备包括使用镜像空间进行保护的固态硬盘 (SSD) 和�
 * 如果 SAS 电缆发生故障或需要更换（应让 Microsoft 支持部门参与，一起做出决定），请确保仅移除需要更换的 SAS 电缆。
 * 不要同时从系统中移除两个 SAS 电缆。
 
-### 针对主机计算机的高可用性建议
-<a id="high-availability-recommendations-for-your-host-computers" class="xliff"></a>
+### <a name="high-availability-recommendations-for-your-host-computers"></a>针对主机计算机的高可用性建议
 请仔细查看这些最佳实践，确保连接到 StorSimple 设备的主机具有高可用性。
 
 * 通过[双节点文件服务器群集配置][1]来配置 StorSimple。 通过消除单点故障并在主机端内置冗余，整个解决方案变得高度可用。
 * 在存储控制器故障转移期间，使用可用于 Windows Server 2012 (SMB 3.0) 的连续可用 (CA) 共享来实现高可用性。 有关通过 Windows Server 2012 配置文件服务器群集和持续可用共享的其他信息，请参阅该[视频演示](http://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares)。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 * [了解 StorSimple 系统限制](storsimple-limits.md)。
 * [了解如何部署 StorSimple 解决方案](storsimple-deployment-walkthrough-u2.md)。
 

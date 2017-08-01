@@ -17,8 +17,7 @@ ms.lasthandoff: 06/16/2017
 
 ---
 
-# Azure Database for PostgreSQL 视频
-<a id="azure-database-for-postgresql-videos" class="xliff"></a>
+# <a name="azure-database-for-postgresql-videos"></a>Azure Database for PostgreSQL 视频
 [如何开始使用新的 Azure Database for PostgreSQL 服务](https://channel9.msdn.com/events/Build/2017/B8046)
 
 <iframe src="https://channel9.msdn.com/Events/Build/2017/B8046/player" width="800" height="450" allowFullScreen frameBorder="0"></iframe>

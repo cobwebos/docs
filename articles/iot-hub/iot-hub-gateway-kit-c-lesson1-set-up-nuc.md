@@ -22,12 +22,10 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 06/26/2017
 
 ---
-# 将 Intel NUC 设置为 IoT 网关
-<a id="set-up-intel-nuc-as-an-iot-gateway" class="xliff"></a>
+# <a name="set-up-intel-nuc-as-an-iot-gateway"></a>将 Intel NUC 设置为 IoT 网关
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-## 执行的操作
-<a id="what-you-will-do" class="xliff"></a>
+## <a name="what-you-will-do"></a>执行的操作
 
 - 将 Intel NUC 设置为 IoT 网关。
 - 在 Intel NUC 上安装 Azure IoT Edge 包。
@@ -35,8 +33,7 @@ ms.lasthandoff: 06/26/2017
 
   > 如果有任何问题，请在[故障排除页面](iot-hub-gateway-kit-c-troubleshooting.md)上查找解决方案。
 
-## 你要学习的知识
-<a id="what-you-will-learn" class="xliff"></a>
+## <a name="what-you-will-learn"></a>你要学习的知识
 
 本课介绍以下内容：
 
@@ -44,8 +41,7 @@ ms.lasthandoff: 06/26/2017
 - 如何使用智能包管理器在 Intel NUC 上安装和更新所需的包。
 - 如何运行“hello_world”示例应用程序来验证网关功能。
 
-## 所需条件
-<a id="what-you-need" class="xliff"></a>
+## <a name="what-you-need"></a>所需条件
 
 - 预安装 Intel IoT 网关软件套件 (Wind River Linux *7.0.0.13) 的 Intel NUC 工具包 DE3815TYKE。 [单击此处购买 Grove IoT 商业网关工具包](https://www.seeedstudio.com/Grove-IoT-Commercial-Gateway-Kit-p-2724.html)。
 - 以太网电缆。
@@ -56,8 +52,7 @@ ms.lasthandoff: 06/26/2017
 
 ![网关工具包](media/iot-hub-gateway-kit-lessons/lesson1/kit.png)
 
-## 将 Intel NUC 与外围设备连接
-<a id="connect-intel-nuc-with-the-peripherals" class="xliff"></a>
+## <a name="connect-intel-nuc-with-the-peripherals"></a>将 Intel NUC 与外围设备连接
 
 下图是已连接到各种外围设备的 Intel NUC 示例：
 
@@ -68,8 +63,7 @@ ms.lasthandoff: 06/26/2017
 
 ![连接到外围设备的 Intel NUC](media/iot-hub-gateway-kit-lessons/lesson1/nuc.png)
 
-## 通过安全外壳 (SSH) 从主计算机连接到 Intel NUC 系统
-<a id="connect-to-the-intel-nuc-system-from-host-computer-via-secure-shell-ssh" class="xliff"></a>
+## <a name="connect-to-the-intel-nuc-system-from-host-computer-via-secure-shell-ssh"></a>通过安全外壳 (SSH) 从主计算机连接到 Intel NUC 系统
 
 此时需要键盘和监视器才能获取 Intel NUC 设备的 IP 地址。 如果已知道 IP 地址，可跳到本部分的步骤 3。
 
@@ -95,8 +89,7 @@ ms.lasthandoff: 06/26/2017
    通过主计算机在 Intel NUC 上执行操作更高效。 需要 Intel NUC 的 IP 地址、用户名和密码才能通过 SSH 客户端与它建立连接。 下面是在 macOS 使用 SSH 客户端的示例。
    ![在 macOS 上运行的 SSH 客户端](media/iot-hub-gateway-kit-lessons/lesson1/ssh.png)
 
-## 安装 Azure IoT Edge 包
-<a id="install-the-azure-iot-edge-package" class="xliff"></a>
+## <a name="install-the-azure-iot-edge-package"></a>安装 Azure IoT Edge 包
 
 Azure IoT Edge 包中包含 IoT Edge 及其依赖项的预编译二进制文件。 这些二进制文件包括 Azure IoT Edge、Azure IoT SDK 和相应的工具。 该包还包含用于验证网关功能的“hello_world”示例应用程序。 IoT Edge 是网关的核心部分。 
 
@@ -146,8 +139,7 @@ Azure IoT Edge 包中包含 IoT Edge 及其依赖项的预编译二进制文件�
 
    安装此包后，Intel NUC 可用作网关。
 
-## 运行 Azure IoT Edge“hello_world”示例应用程序
-<a id="run-the-azure-iot-edge-helloworld-sample-application" class="xliff"></a>
+## <a name="run-the-azure-iot-edge-helloworld-sample-application"></a>运行 Azure IoT Edge“hello_world”示例应用程序
 
 此示例应用程序通过 `hello_world.json` 文件创建网关，并使用 Azure IoT Edge 体系结构的基本组件每隔 5 秒将“hello world”消息记录到文件 (log.txt)。
 
@@ -176,13 +168,11 @@ vim log.txt
 
 如果有任何问题，请在[故障排除页面](iot-hub-gateway-kit-c-troubleshooting.md)上查找解决方案。
 
-## 摘要
-<a id="summary" class="xliff"></a>
+## <a name="summary"></a>摘要
 
 祝贺你！ 现已将 Intel NUC 设置为网关。 接下来可进入下一课，了解如何设置主机、创建 Azure IoT 中心以及注册 Azure IoT 中心逻辑设备。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 [使用 IoT 网关将设备连接到 Azure IoT 中心](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 
 

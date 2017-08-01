@@ -24,8 +24,7 @@ ms.lasthandoff: 06/20/2017
 
 ---
 
-# 创建、更改或删除公共 IP 地址
-<a id="create-change-or-delete-public-ip-addresses" class="xliff"></a>
+# <a name="create-change-or-delete-public-ip-addresses"></a>创建、更改或删除公共 IP 地址
 
 了解公共 IP 地址，以及如何创建、更改和删除公共 IP 地址。 公共 IP 地址是具有自身可配置设置的资源。 将公共 IP 地址分配到其他 Azure 资源可实现以下目的：
 - 与 Azure 虚拟机 (VM)、Azure 虚拟机规模集、Azure VPN 网关和面向 Internet 的 Azure 负载均衡器等资源建立入站 Internet 连接。

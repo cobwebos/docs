@@ -24,8 +24,7 @@ ms.lasthandoff: 06/20/2017
 
 ---
 
-# 在 Docker 容器中通过 Azure 容器注册表创建 ASP.NET Core Web 应用
-<a id="create-an-aspnet-core-web-app-in-a-docker-container-from-azure-container-registry" class="xliff"></a>
+# <a name="create-an-aspnet-core-web-app-in-a-docker-container-from-azure-container-registry"></a>在 Docker 容器中通过 Azure 容器注册表创建 ASP.NET Core Web 应用
 
 在此方案中，你将学习如何创建资源组、Linux 应用服务计划和 Web 应用，并使用 Docker 容器通过 Azure 容器注册表部署 ASP.NET Core 应用程序。
 
@@ -36,15 +35,13 @@ ms.lasthandoff: 06/20/2017
 
 如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
-## 示例脚本
-<a id="sample-script" class="xliff"></a>
+## <a name="sample-script"></a>示例脚本
 
 [!code-azurecli-interactive[主要](../../../cli_scripts/app-service/deploy-linux-acr/deploy-linux-acr.sh?highlight=6-9 "Linux Azure 容器注册表")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
-## 脚本说明
-<a id="script-explanation" class="xliff"></a>
+## <a name="script-explanation"></a>脚本说明
 
 此脚本使用以下命令创建资源组、Web 应用和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
@@ -55,8 +52,7 @@ ms.lasthandoff: 06/20/2017
 | [az webapp create](https://docs.microsoft.com/cli/azure/webapp#create) | 创建 Azure Web 应用。 |
 | [az webapp config container set](https://docs.microsoft.com/cli/azure/webapp/config/container#set) | 为 Azure Web 应用设置 Docker 容器。 |
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
 

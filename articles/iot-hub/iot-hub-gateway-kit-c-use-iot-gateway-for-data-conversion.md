@@ -22,8 +22,7 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 06/26/2017
 
 ---
-# 通过 Azure IoT Edge，使用 IoT 网关进行传感器数据转换
-<a id="use-iot-gateway-for-sensor-data-transformation-with-azure-iot-edge" class="xliff"></a>
+# <a name="use-iot-gateway-for-sensor-data-transformation-with-azure-iot-edge"></a>通过 Azure IoT Edge，使用 IoT 网关进行传感器数据转换
 
 > [!NOTE]
 > 在开始本教程之前，请确保已按顺序完成以下课程：
@@ -32,21 +31,18 @@ ms.lasthandoff: 06/26/2017
 
 IoT 网关的一个目的是在将收集的数据发送到云之前，先处理这些数据。 Azure IoT Edge 引入了可创建并组合形成数据处理工作流的模块。 模块接收消息，对其执行某些操作，然后将其转手供其他模块处理。
 
-## 学习内容
-<a id="what-you-learn" class="xliff"></a>
+## <a name="what-you-learn"></a>学习内容
 
 了解如何创建一个模块，将消息从 SensorTag 转换为其他格式。
 
-## 准备工作
-<a id="what-you-do" class="xliff"></a>
+## <a name="what-you-do"></a>准备工作
 
 * 创建一个模块，将收到的消息转换为 .json 格式。
 * 编译该模块。
 * 通过 Azure IoT Edge，将模块添加到 BLE 示例应用程序。
 * 运行示例应用程序。
 
-## 所需条件
-<a id="what-you-need" class="xliff"></a>
+## <a name="what-you-need"></a>所需条件
 
 * 按顺序完成以下教程：
   * [将 Intel NUC 设置为 IoT 网关](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
@@ -55,8 +51,7 @@ IoT 网关的一个目的是在将收集的数据发送到云之前，先处理�
 * IP 地址以及访问 SSH 客户端网关的用户名和密码。
 * Internet 连接。
 
-## 创建模块
-<a id="create-a-module" class="xliff"></a>
+## <a name="create-a-module"></a>创建模块
 
 1. 在主计算机上，运行 SSH 客户端并连接到 IoT 网关。
 1. 运行以下命令，将转换模块的源文件从 GitHub 克隆到 IoT 网关的主目录：
@@ -72,8 +67,7 @@ IoT 网关的一个目的是在将收集的数据发送到云之前，先处理�
    {"deviceId": "Intel NUC Gateway", "messageId": 0, "temperature": 0.0}
    ```
 
-## 编译模块
-<a id="compile-the-module" class="xliff"></a>
+## <a name="compile-the-module"></a>编译模块
 
 若要编译模块，请运行以下命令：
 
@@ -89,8 +83,7 @@ sed -i -e "s/\r$//" build.sh
 
 编译完成后将获取 `libmy_module.so` 文件。 记下此文件的绝对路径。
 
-## 将模块添加到 BLE 示例应用程序
-<a id="add-the-module-to-the-ble-sample-application" class="xliff"></a>
+## <a name="add-the-module-to-the-ble-sample-application"></a>将模块添加到 BLE 示例应用程序
 
 1. 运行以下命令转到示例文件夹：
 
@@ -135,8 +128,7 @@ sed -i -e "s/\r$//" build.sh
 
 1. 按 `ESC`，然后键入 `:wq` 保存文件。
 
-## 运行示例应用程序
-<a id="run-the-sample-application" class="xliff"></a>
+## <a name="run-the-sample-application"></a>运行示例应用程序
 
 1. 打开 SensorTag。
 1. 通过运行以下命令，设置 SSL_CERT_FILE 环境变量：
@@ -151,8 +143,7 @@ sed -i -e "s/\r$//" build.sh
    ./ble_gateway ble_gateway.json
    ```
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 已成功使用 IoT 网关将消息从 SensorTag 转换为 .json 格式。
 

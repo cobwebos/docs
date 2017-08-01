@@ -23,8 +23,7 @@ ms.lasthandoff: 06/20/2017
 
 
 ---
-# 使用 Azure 门户修改本地网络网关设置
-<a id="modify-local-network-gateway-settings-using-the-azure-portal" class="xliff"></a>
+# <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>使用 Azure 门户修改本地网络网关设置
 
 有时本地网络网关 AddressPrefix 或 GatewayIPAddress 的设置会变更。 本文演示如何修改本地网络网关设置。 你还可以使用另一种方法来修改这些设置，该方法是通过从以下列表中选择一个不同的选项：
 
@@ -36,21 +35,18 @@ ms.lasthandoff: 06/20/2017
 >
 
 
-## 修改 IP 地址前缀
-<a id="modify-ip-address-prefixes" class="xliff"></a>
+## <a name="modify-ip-address-prefixes"></a>修改 IP 地址前缀
 
 修改 IP 地址前缀时，执行的步骤取决于你的本地网络网关是否具有连接。
 
 [!INCLUDE [modify prefix](../../includes/vpn-gateway-modify-ip-prefix-portal-include.md)]
 
-## 修改网关 IP 地址
-<a id="modify-the-gateway-ip-address" class="xliff"></a>
+## <a name="modify-the-gateway-ip-address"></a>修改网关 IP 地址
 
 如果要连接的 VPN 设备已更改其公共 IP 地址，则需根据该更改修改本地网关。 更改公共 IP 地址时，执行的步骤取决于你的本地网络网关是否具有连接。
 
 [!INCLUDE [modify gateway IP](../../includes/vpn-gateway-modify-lng-gateway-ip-portal-include.md)]
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 可验证网关连接。 请参阅[验证网关连接](vpn-gateway-verify-connection-resource-manager.md)。

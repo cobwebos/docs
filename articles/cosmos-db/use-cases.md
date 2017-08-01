@@ -23,8 +23,7 @@ ms.lasthandoff: 06/16/2017
 
 ---
 
-# Azure Cosmos DB 常见用例
-<a id="common-azure-cosmos-db-use-cases" class="xliff"></a>
+# <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB 常见用例
 本文概述了 Cosmos DB 的几个常见用例。  本文中的建议可以作为使用 Cosmos DB 开发应用程序的一个起点。   
 
 阅读本文之后，你将能够回答以下问题： 
@@ -34,8 +33,7 @@ ms.lasthandoff: 06/16/2017
 * 将 Cosmos DB 用作物联网 (IoT) 系统的数据存储空间有什么好处？
 * 对 Web 和移动应用程序使用 Cosmos DB 的好处是什么？
 
-## 介绍
-<a id="introduction" class="xliff"></a>
+## <a name="introduction"></a>介绍
 [Azure Cosmos DB](../cosmos-db/introduction.md) 由 Microsoft 提供，是全球分布的数据库服务。 使用该服务，客户可在任意数量的地理区域间灵活而独立地缩放吞吐量和存储空间。 Cosmos DB 是一项全球分布的数据库服务，它在当前市场中率先提供了综合[服务级别协议](https://azure.microsoft.com/support/legal/sla/cosmos-db/)，包含吞吐量、延迟、可用性和一致性。 
 
 Cosmos DB 项目在 2011 年以“Project Florence”的名义开始解决 Microsoft 内部大型 Internet 规模应用程序开发人员所面临的难题。 在发现 Microsoft 以外的应用程序开发人员也会遇到这些难题后，我们决定在 2015 年以 [Azure DocumentDB](https://azure.microsoft.com/blog/documentdb-moving-to-general-availability/) 的形式对外部开发人员公开发布 Cosmos DB。 Microsoft 内部处处都在使用该服务，它是 Azure 外部开发人员使用数量增长最快的服务之一。 
@@ -53,8 +51,7 @@ Azure Cosmos DB 是一种全球分步的多模型数据库，广泛用于应用�
 
 这些特性对于需要低响应时间和需要处理大量读取和写入操作的 Web、移动、游戏和 IoT 应用程序尤为有益。
 
-## IoT 和 Telematic
-<a id="iot-and-telematics" class="xliff"></a>
+## <a name="iot-and-telematics"></a>IoT 和 Telematic
 IoT 用例在引入、处理和存储数据方法方面通常具有相同的模式。  首先，这些系统需要引入各处设备传感器中的激增数据。 其次，这些系统可以处理和分析流式传输数据，以获得实时见解。 然后将数据存档到闲置存储以进行批量分析。 Microsoft Azure 提供可应用于 IoT 用例的多种服务，包括 Azure Cosmos DB、Azure 事件中心、Azure 流分析、Azure 通知中心、Azure 机器学习、Azure HDInsight 和 PowerBI。 
 
 ![Azure Cosmos DB IoT 参考体系结构](./media/use-cases/iot.png)
@@ -65,8 +62,7 @@ IoT 用例在引入、处理和存储数据方法方面通常具有相同的模�
 
 有关 Azure IoT 产品/服务的详细信息，请参阅[创建物联网](http://www.microsoft.com/server-cloud/internet-of-things.aspx)。 
 
-## 零售和营销
-<a id="retail-and-marketing" class="xliff"></a>
+## <a name="retail-and-marketing"></a>零售和营销
 Cosmos DB 广泛用于 Microsoft 旗下运行 Windows 应用商店和 XBox Live 的电子商务平台。 它还在零售行业中用于存储目录数据。 目录数据使用方案涉及对人员、地点和产品等实体的一些属性进行存储和查询。  目录数据的部分示例包括用户帐户、产品目录、设备的 IoT 注册表和物料系统清单。  此数据的属性可能会随时间的推移而发生变化和更改以满足应用程序要求。  
 
 以汽车部件供应商的产品目录为例。 除所有部件共有的常见属性外，每个部件可能都具有其自己的属性。  而且，某个特定部件的属性还可能会在发布新型号之后的第二年发生变化。  Cosmos DB 支持灵活的架构和分层数据，因此非常适用于存储产品目录数据。
@@ -75,8 +71,7 @@ Cosmos DB 广泛用于 Microsoft 旗下运行 Windows 应用商店和 XBox Live 
 
  此外，存储在 Cosmos DB 中的数据可以与 HDInsight 集成，通过 Pig、Hive 或 Map/Reduce 作业进行大数据分析。 有关 Cosmos DB 的 Hadoop 连接器的详细信息，请参阅[使用 Cosmos DB 和 HDInsight 运行 Hadoop 作业](run-hadoop-with-hdinsight.md)。
 
-## 游戏
-<a id="gaming" class="xliff"></a>
+## <a name="gaming"></a>游戏
 数据库层是游戏应用程序的关键组件。 新式游戏可在移动/控制台客户端执行图形处理，但需依赖云传输自定义的个性化内容，例如游戏中的统计数据、社交媒体集成以及高分排行榜。 游戏通常需要单毫秒的读取和写入延迟，从而带来具有吸引力的游戏体验。 新游戏启动和功能更新期间，游戏数据库需要具备很快的速度，并且要能够处理请求速率中的大量峰值。
 
 Cosmos DB 用于 [Next Games](http://www.nextgames.com/) 推出的 [The Walking Dead: No Man's Land（行尸走肉：无人地带）](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/)和 [Halo 5: Guardians（光环 5：守护者）](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/)等游戏。 对于游戏开发人员，Cosmos DB 具备以下优势：
@@ -89,12 +84,10 @@ Cosmos DB 用于 [Next Games](http://www.nextgames.com/) 推出的 [The Walking 
 
 ![Azure Cosmos DB 游戏参考体系结构](./media/use-cases/gaming.png)
 
-## Web 和移动应用程序
-<a id="web-and-mobile-applications" class="xliff"></a>
+## <a name="web-and-mobile-applications"></a>Web 和移动应用程序
 Cosmos DB 通常用于 Web 和移动应用程序内部，尤其适用于社交互动建模、与第三方服务集成和积累丰富的个性化体验。 可以使用 Cosmos DB SDK 构建使用常用 [Xamarin 框架](mobile-apps-with-xamarin.md)的丰富 iOS 和 Android 应用程序。  
 
-### 社交应用程序
-<a id="social-applications" class="xliff"></a>
+### <a name="social-applications"></a>社交应用程序
 Cosmos DB 的一个常见用例就是存储和查询 Web 和移动应用程序，尤其是社交媒体应用程序的用户生成内容 (UGC)。 UGC 的部分示例包括聊天会话、推文、博客文章、评级和评论。 通常情况下，社交媒体应用程序中的 UGC 混合了不受刚性结构约束的自由形式文本、属性、标记和关系。 可将聊天、评论和帖子等内容存储在 Cosmos DB 中，无需转换或复杂对象关系映射层。  可以轻易添加或修改数据属性以满足开发人员遍历应用程序代码的要求，从而促进快速开发。  
 
 与第三方社交网络集成的应用程序必须响应这些网络中不断更改的架构。 由于 Cosmos DB 中的数据默认自动编制索引，因此可以随时查询数据。 因此，这些应用程序可以根据其各自的需求灵活地检索投影。
@@ -103,16 +96,14 @@ Cosmos DB 的一个常见用例就是存储和查询 Web 和移动应用程序�
 
 ![Azure Cosmos DB Web 应用参考体系结构](./media/use-cases/apps-with-global-reach.png)
 
-### 个性化
-<a id="personalization" class="xliff"></a>
+### <a name="personalization"></a>个性化
 如今，现代应用程序都具有复杂的视图和体验。 它们通常采用动态设计，以迎合对用户首选项或情绪应对和品牌塑造的需求。 因此，应用程序需要能够有效地检索个性化设置，以快速呈现 UI 元素和体验。 
 
 JSON 是一种用于呈现 UI 布局数据的有效格式，它受 Cosmos DB 支持，不仅轻量而且可被 JavaScript 轻松理解。 Cosmos DB 提供可调的一致性级别，可以实现快速读取和低延迟写入。 因此，在 Cosmos DB 中将包括个性化设置的 UI 布局数据存储为 JSON 文档是获取网络数据的一种有效方法。
 
 ![Azure Cosmos DB Web 应用参考体系结构](./media/use-cases/personalization.png)
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 可以根据我们的[快速入门](create-documentdb-dotnet.md)开始使用 Azure Cosmos DB，这些快速入门将引导创建帐户并开始使用 Cosmos DB。 
 
 或者，如果想要了解有关使用 Cosmos DB 的客户的详细信息，可以参阅下面的客户案例：
