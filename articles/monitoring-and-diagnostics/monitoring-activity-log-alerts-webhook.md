@@ -113,7 +113,7 @@ ms.lasthandoff: 07/18/2017
                     "stage": "Active",
                     "communicationId": "...",
                     "version": "0.1"
-                },
+                }
             }
         },
         "properties": {}

@@ -24,16 +24,14 @@ ms.lasthandoff: 06/26/2017
 
 ---
 
-# 适用于 Azure VPN 网关的社区建议第三方 VPN 或防火墙设备设置
-<a id="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway" class="xliff"></a>
+# <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>适用于 Azure VPN 网关的社区建议第三方 VPN 或防火墙设备设置
 
 本文针对与 Azure VPN 网关一起使用的第三方 VPN 或防火墙设备提供了几种建议的解决方案。
 
 > [!Note]
 > 对第三方 VPN 或防火墙设备的技术支持是由设备供应商提供的。 
 
-## 详细信息
-<a id="more-information" class="xliff"></a>
+## <a name="more-information"></a>详细信息
 
 下表列出了几种常见设备和相关帮助：
 
@@ -50,8 +48,7 @@ ms.lasthandoff: 06/26/2017
 |Palo       |[适用于 Azure VPN 上的 Palo 的社区建议解决方案](https://live.paloaltonetworks.com/t5/forums/searchpage/tab/message?q=Azure+VPN)        |
 |Watchguard |[适用于 Azure VPN 上的 Watchguard 的社区建议解决方案](http://watchguardsupport.force.com/SupportSearch#q=Azure%20VPN&t=All&sort=relevancy)  |
 
-## 后续步骤
-<a id="next-step" class="xliff"></a>
+## <a name="next-step"></a>后续步骤
 
 [Azure 网关设置](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpn-devices#a-nameipsecaipsecike-parameters)
 

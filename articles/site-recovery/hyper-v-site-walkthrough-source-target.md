@@ -22,16 +22,14 @@ ms.lasthandoff: 06/23/2017
 
 ---
 
-# 步骤 8：为到 Azure 的 Hyper-V 复制设置源和目标
-<a id="step-8-set-up-the-source-and-target-for-hyper-v-replication-to-azure" class="xliff"></a>
+# <a name="step-8-set-up-the-source-and-target-for-hyper-v-replication-to-azure"></a>步骤 8：为到 Azure 的 Hyper-V 复制设置源和目标
 
 本文介绍了使用 Azure 门户中的 [Azure Site Recovery](site-recovery-overview.md) 服务将本地 Hyper-V 虚拟机（无 System Center VMM）复制到 Azure 时，如何配置源和目标设置。
 
 请将评论和问题发布到这篇文章的底部，或者发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)。
 
 
-## 设置源环境
-<a id="set-up-the-source-environment" class="xliff"></a>
+## <a name="set-up-the-source-environment"></a>设置源环境
 
 设置 Hyper-V 站点，在 Hyper-V 主机上安装 Azure Site Recovery 提供程序和 Azure 恢复服务代理，并在保管库中注册站点。
 
@@ -50,8 +48,7 @@ ms.lasthandoff: 06/23/2017
     ![设置源](./media/hyper-v-site-walkthrough-source-target/set-source3.png)
 
 
-## 安装提供程序和代理
-<a id="install-the-provider-and-agent" class="xliff"></a>
+## <a name="install-the-provider-and-agent"></a>安装提供程序和代理
 
 1. 在添加到 Hyper-V 站点的每个主机上运行提供程序安装文件。 如果要在 Hyper-V 群集上进行安装，则在每个群集节点上运行安装程序。 通过安装并注册每个 Hyper-V 群集节点，可确保 VM 即使在节点之间迁移也会受到保护。
 2. 在“Microsoft 更新” 中，可以选择进行更新，以便根据 Microsoft 更新策略安装提供程序更新。
@@ -77,8 +74,7 @@ ms.lasthandoff: 06/23/2017
 7. 完成注册后，Azure Site Recovery 将检索 Hyper-V 服务器中的元数据，该服务器显示在“Site Recovery 基础结构” > “Hyper-V 主机”中。
 
 
-## 设置目标环境
-<a id="set-up-the-target-environment" class="xliff"></a>
+## <a name="set-up-the-target-environment"></a>设置目标环境
 
 指定要用于复制的 Azure 存储帐户，以及 Azure VM 在故障转移后连接到的 Azure 网络。
 
@@ -95,8 +91,7 @@ ms.lasthandoff: 06/23/2017
 
 
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 转到[步骤 9：设置复制策略](hyper-v-site-walkthrough-replication.md)
 

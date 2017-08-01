@@ -23,8 +23,7 @@ ms.lasthandoff: 06/13/2017
 
 
 ---
-# 如何在 Azure 中的 Linux 经典虚拟机上设置终结点
-<a id="how-to-set-up-endpoints-on-a-linux-classic-virtual-machine-in-azure" class="xliff"></a>
+# <a name="how-to-set-up-endpoints-on-a-linux-classic-virtual-machine-in-azure"></a>如何在 Azure 中的 Linux 经典虚拟机上设置终结点
 在 Azure 中使用经典部署模型创建的所有 Linux 虚拟机都可以通过专用网络通道与同一云服务或虚拟网络中的其他虚拟机自动通信。 但是，Internet 上的计算机或其他虚拟网络需要终结点才能定向虚拟机的入站网络流量。 本文也适用于 [Windows 虚拟机](../../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 > [!IMPORTANT]
@@ -36,8 +35,7 @@ ms.lasthandoff: 06/13/2017
 
 [!INCLUDE [virtual-machines-common-classic-setup-endpoints](../../../../includes/virtual-machines-common-classic-setup-endpoints.md)]
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 * 也可以使用 [Azure 命令行接口](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)创建 VM 终结点。 运行 **azure vm endpoint create** 命令。
 * 如果在 Resource Manager 部署模型中创建虚拟机，可以在 Resource Manager 模式下使用 Azure CLI [创建网络安全组](../../../virtual-network/virtual-networks-create-nsg-arm-cli.md)，控制发往 VM 的流量。
 

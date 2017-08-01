@@ -23,9 +23,7 @@ ms.lasthandoff: 06/16/2017
 
 
 ---
-<a id="restore-virtual-machines-in-azure" class="xliff"></a>
-
-# 还原 Azure 中的虚拟机
+# <a name="restore-virtual-machines-in-azure"></a>还原 Azure 中的虚拟机
 > [!div class="op_single_selector"]
 > * [在 Azure 门户中还原 VM](backup-azure-arm-restore-vms.md)
 > * [在经典门户中还原 VM](backup-azure-restore-vms.md)
@@ -40,12 +38,8 @@ ms.lasthandoff: 06/16/2017
 >- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
 >
 
-<a id="restore-workflow" class="xliff"></a>
-
-## 还原工作流
-<a id="step-1-choose-an-item-to-restore" class="xliff"></a>
-
-### 步骤 1：选择要还原的项
+## <a name="restore-workflow"></a>还原工作流
+### <a name="step-1-choose-an-item-to-restore"></a>步骤 1：选择要还原的项
 1. 导航到“受保护的项”选项卡，然后选择要还原到新 VM 中的虚拟机。
 
     ![受保护的项](./media/backup-azure-restore-vms/protected-items.png)
@@ -55,9 +49,7 @@ ms.lasthandoff: 06/16/2017
 
     ![还原项](./media/backup-azure-restore-vms/restore-item.png)
 
-<a id="step-2-pick-a-recovery-point" class="xliff"></a>
-
-### 步骤 2：选择恢复点
+### <a name="step-2-pick-a-recovery-point"></a>步骤 2：选择恢复点
 1. 在“选择恢复点”屏幕中，可从最新的恢复点进行恢复，或者从以前的某个时间点进行恢复。 向导打开时默认选择的选项是“最新恢复点”。
 
     ![选择恢复点](./media/backup-azure-restore-vms/select-recovery-point.png)
@@ -70,9 +62,7 @@ ms.lasthandoff: 06/16/2017
     ![恢复点](./media/backup-azure-restore-vms/recovery-points.png)
 3. 从“恢复点”表中选择恢复点，然后单击“下一步”箭头转到下一个屏幕。
 
-<a id="step-3-specify-a-destination-location" class="xliff"></a>
-
-### 步骤 3：指定目标位置
+### <a name="step-3-specify-a-destination-location"></a>步骤 3：指定目标位置
 1. 在“选择还原实例”屏幕中，指定有关要将虚拟机还原到何处的详细信息。
 
    * 指定虚拟机名称：在指定的云服务中，虚拟机名称应该是唯一的。 不支持覆盖现有 VM。
@@ -96,9 +86,7 @@ ms.lasthandoff: 06/16/2017
     ![选择子网](./media/backup-azure-restore-vms/select-subnet.png)
 5. 在向导中单击“提交”图标以提交详细信息并创建还原作业。
 
-<a id="track-the-restore-operation" class="xliff"></a>
-
-## 跟踪还原操作
+## <a name="track-the-restore-operation"></a>跟踪还原操作
 在还原向导中输入所有信息并提交后，Azure 备份将尝试创建一个作业来跟踪还原操作。
 
 ![创建还原作业](./media/backup-azure-restore-vms/create-restore-job.png)
@@ -113,41 +101,27 @@ ms.lasthandoff: 06/16/2017
 
 还原虚拟机后，可能需要重新安装原始 VM 上的扩展，并在 Azure 门户中为虚拟机[修改终结点](../virtual-machines/windows/classic/setup-endpoints.md)。
 
-<a id="post-restore-steps" class="xliff"></a>
-
-## 还原后的步骤
+## <a name="post-restore-steps"></a>还原后的步骤
 如果使用基于 cloud-init 的 Linux 分发（如 Ubuntu），出于安全原因，还原后将阻止密码。 请在还原的 VM 上使用 VMAccess 扩展 [重置密码](../virtual-machines/linux/classic/reset-access.md)。 建议在这些分发上使用 SSH 密钥以避免还原后重置密码。
 
-<a id="backup-for-restored-vms" class="xliff"></a>
-
-## 备份已还原的 VM
+## <a name="backup-for-restored-vms"></a>备份已还原的 VM
 如果将 VM 还原到的云服务与最初备份 VM 时所在的云服务同名，则还原之后，会继续备份该 VM。 如果将 VM 还原到了不同的云服务或者为还原的 VM 指定了不同的名称，则系统会将此 VM 视为新 VM，因此需为还原的 VM 设置备份。
 
-<a id="restoring-a-vm-during-azure-datacenter-disaster" class="xliff"></a>
-
-## 在发生 Azure 数据中心灾难期间还原 VM
+## <a name="restoring-a-vm-during-azure-datacenter-disaster"></a>在发生 Azure 数据中心灾难期间还原 VM
 如果运行已备份 VM 的主数据中心遇到灾难性故障，并且你已将备份保管库配置为异地冗余，则 Azure 备份允许将该 VM 还原到配对的数据中心。 在这种情况下，需要选择一个在配对数据中心内存在的存储帐户，而余下的还原过程将保持不变。 Azure 备份使用配对地区中的计算服务来创建还原的虚拟机。 详细了解 [Azure 数据中心复原](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md)
 
-<a id="restoring-domain-controller-vms" class="xliff"></a>
-
-## 还原域控制器 VM
+## <a name="restoring-domain-controller-vms"></a>还原域控制器 VM
 Azure 备份支持对域控制器 (DC) 虚拟机进行备份的方案。 但是，在还原过程中，必须谨慎操作。 还原过程是否正确取决于域的结构。 最简单的情况是单个域中有单个 DC。 对于生产负载，更常见的情况是一个域中包含多个 DC，其中某些 DC 可能位于本地。 最终，你可能拥有一个包含多个域的林。
 
 从 Active Directory 的角度来看，Azure VM 与受支持的新式虚拟机监控程序上任何其他 VM 类似。 本地虚拟机监控程序的主要差异是 Azure 中不提供 VM 控制台。 某些方案（如使用裸机恢复 (BMR) 类型备份进行恢复）需要控制台。 但是，通过备份保管库进行 VM 还原完全取代了 BMR。 还可使用 Active Directory 还原模式 (DSRM)，因此所有 Active Directory 恢复方案都是可行的。 有关更多背景信息，请查看[虚拟化域控制器的备份和还原注意事项](https://technet.microsoft.com/en-us/library/virtual_active_directory_domain_controller_virtualization_hyperv(v=ws.10).aspx#backup_and_restore_considerations_for_virtualized_domain_controllers)和 [Planning for Active Directory Forest Recovery（Active Directory 林恢复计划）](https://technet.microsoft.com/en-us/library/planning-active-directory-forest-recovery(v=ws.10).aspx)。
 
-<a id="single-dc-in-a-single-domain" class="xliff"></a>
-
-### 单个域中有单个 DC
+### <a name="single-dc-in-a-single-domain"></a>单个域中有单个 DC
 可以通过 Azure 门户或 PowerShell 还原该 VM（与任何其他 VM 一样）。
 
-<a id="multiple-dcs-in-a-single-domain" class="xliff"></a>
-
-### 单个域中有多个 DC
+### <a name="multiple-dcs-in-a-single-domain"></a>单个域中有多个 DC
 可通过网络访问同一域中的其他 DC 时，可像还原任何 VM 一样还原 DC。 对于域中剩余的最后一个 DC，或者在隔离网络中执行的恢复，必须遵循林恢复过程。
 
-<a id="multiple-domains-in-one-forest" class="xliff"></a>
-
-### 一个林中有多个域
+### <a name="multiple-domains-in-one-forest"></a>一个林中有多个域
 可通过网络访问同一域中的其他 DC 时，可像还原任何 VM 一样还原 DC。 但是，建议在所有其他情况下恢复林。
 
 <!--- WK: this following original supportability statement is incorrect, taking it out.
@@ -161,9 +135,7 @@ The challenge arises because DSRM mode is not present in Azure. So to restore su
 Read more about the [USN rollback problem](https://technet.microsoft.com/library/dd363553) and the strategies suggested to fix it.
 --->
 
-<a id="restoring-vms-with-special-network-configurations" class="xliff"></a>
-
-## 还原采用特殊网络配置的 VM
+## <a name="restoring-vms-with-special-network-configurations"></a>还原采用特殊网络配置的 VM
 Azure 备份支持备份虚拟机的以下特殊网络配置。
 
 * 采用负载均衡器的 VM（内部和外部）
@@ -177,14 +149,10 @@ Azure 备份支持备份虚拟机的以下特殊网络配置。
 >
 >
 
-<a id="restoring-from-the-ui" class="xliff"></a>
-
-### 从 UI 还原：
+### <a name="restoring-from-the-ui"></a>从 UI 还原：
 从 UI 还原时，请**始终选择新的云服务**。 请注意，由于门户在执行还原流程时只接受强制参数，因此使用 UI 还原的 VM 将会丢失它们拥有的特殊网络配置。 也就是说，还原后的 VM 将会是普通的 VM，而没有负载均衡器配置、多个 NIC 或多个保留 IP。
 
-<a id="restoring-from-powershell" class="xliff"></a>
-
-### 从 PowerShell 还原：
+### <a name="restoring-from-powershell"></a>从 PowerShell 还原：
 PowerShell 能够只从备份还原 VM 磁盘，而不建立虚拟机。 当还原需要上述特殊网络配置的虚拟机时，此方法很有用。
 
 若要在还原磁盘后完全重新创建虚拟机，请执行以下步骤：
@@ -197,9 +165,7 @@ PowerShell 能够只从备份还原 VM 磁盘，而不建立虚拟机。 当还�
    * 创建具有[多个 NIC](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/) 的 VM
    * 创建具有[多个保留 IP](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/) 的 VM
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 * [排查错误](backup-azure-vms-troubleshoot.md#restore)
 * [管理虚拟机](backup-azure-manage-vms.md)
 

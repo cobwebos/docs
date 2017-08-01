@@ -12,14 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/15/2017
+ms.date: 07/30/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
 ms.openlocfilehash: 9c9eff8c828329b9d8358f88b90c174c64f5c29f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/16/2017
-
 
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>使用 Resource Manager 模板和 Azure CLI 部署资源
@@ -52,7 +51,7 @@ az group deployment create \
     --name ExampleDeployment \
     --resource-group ExampleGroup \
     --template-file storage.json \
-    --parameters "{\"storageAccountType\":{\"value\":\"Standard_GRS\"}}"
+    --parameters storageAccountType=Standard_GRS
 ```
 
 部署可能需要几分钟才能完成。 完成后，会看到一条包含结果的消息：
@@ -72,7 +71,7 @@ az group deployment create \
     --name ExampleDeployment \
     --resource-group ExampleGroup \
     --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
-    --parameters "{\"storageAccountType\":{\"value\":\"Standard_GRS\"}}"
+    --parameters storageAccountType=Standard_GRS
 ```
 
 前面的示例要求模板的 URI 可公开访问，它适用于大多数情况，因为你的模板应该不会包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。 但是，如果不希望模板可公开访问，可以通过将其存储在专用存储容器中来保护它。 有关部署需要共享访问签名 (SAS) 令牌的模板的信息，请参阅[部署具有 SAS 令牌的专用模板](resource-manager-cli-sas-token.md)。
@@ -168,7 +167,7 @@ az group deployment create \
     --mode Complete \
     --resource-group ExampleGroup \
     --template-file storage.json \
-    --parameters "{\"storageAccountType\":{\"value\":\"Standard_GRS\"}}"
+    --parameters storageAccountType=Standard_GRS
 ```
 
 ## <a name="sample-template"></a>示例模板

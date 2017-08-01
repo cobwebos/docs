@@ -21,9 +21,7 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 03/14/2017
 
 ---
-<a id="creating-and-deploying-azure-resource-groups-through-visual-studio" class="xliff"></a>
-
-# 通过 Visual Studio 创建和部署 Azure 资源组
+# <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>通过 Visual Studio 创建和部署 Azure 资源组
 使用 Visual Studio 和 [Azure SDK](https://azure.microsoft.com/downloads/)可以创建一个项目，用于将基础结构和代码部署到 Azure。 例如，你可以为应用定义 Web 主机、网站和数据库，然后将该基础结构与代码一起部署。 或者，你可以定义虚拟机、虚拟网络和存储帐户，然后连同虚拟机上执行的脚本一起部署该基础结构。 **Azure 资源组** 部署项目可让你通过单个可重复的的操作部署全部所需的资源。 有关部署和管理资源的详细信息，请参阅 [Azure Resource Manager 概述](resource-group-overview.md)。
 
 Azure 资源组项目包含 Azure Resource Manager JSON 模板，用于定义部署到 Azure 的资源。 若要了解 Resource Manager 模板的元素，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。 Visual Studio 允许你编辑这些模板，并提供工具来简化模板的使用。
@@ -32,9 +30,7 @@ Azure 资源组项目包含 Azure Resource Manager JSON 模板，用于定义部
 
 本文介绍 Visual Studio 2017。 如果你使用 Visual Studio 2015 Update 2 以及用于 .NET 2.9 的 Microsoft Azure SDK，或者将 Visual Studio 2013 与 Azure SDK 2.9 配合使用，则你的体验大致相同。 可以使用 2.6 或更高版本的 Azure SDK；但是，用户界面体验可能会不同于本文所示的用户界面。 强烈建议先安装最新版本的 [Azure SDK](https://azure.microsoft.com/downloads/) ，再开始执行以下步骤。 
 
-<a id="create-azure-resource-group-project" class="xliff"></a>
-
-## 创建 Azure 资源组项目
+## <a name="create-azure-resource-group-project"></a>创建 Azure 资源组项目
 在此过程中，使用“Web 应用 + SQL”模板创建 Azure 资源组项目  。
 
 1. 在 Visual Studio 中，选择“文件”、“新建项目”，再选择“C#”或“Visual Basic”。 然后选择“云”和“Azure 资源组”项目。
@@ -66,9 +62,7 @@ Azure 资源组项目包含 Azure Resource Manager JSON 模板，用于定义部
    
     所有资源组部署项目都包含这些基本文件。 其他项目可能包含其他文件以支持其他功能。
 
-<a id="customize-the-resource-manager-template" class="xliff"></a>
-
-## 自定义 Resource Manager 模板
+## <a name="customize-the-resource-manager-template"></a>自定义 Resource Manager 模板
 可以通过修改 JSON 模板（描述要部署的资源）来自定义部署项目。 JSON 是“JavaScript 对象表示法”的缩写，是一种易于使用的序列化数据格式。 JSON 文件使用在每个文件顶部引用的架构。 如果想要了解该架构，可以下载并分析它。 架构定义所允许的元素、字段的类型和格式、可能的枚举值，等等。 若要了解 Resource Manager 模板的元素，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
 
 若要使用模板，请打开 **WebSiteSQLDatabase.json**。
@@ -121,9 +115,7 @@ Visual Studio 还提供了 Intellisense 来帮助你了解编辑模板时可以�
 }
 ```
 
-<a id="deploy-the-resource-group-project-to-azure" class="xliff"></a>
-
-## 将资源组部署到 Azure
+## <a name="deploy-the-resource-group-project-to-azure"></a>将资源组部署到 Azure
 现在你已准备好部署项目。 部署 Azure 资源组项目时，请将其部署到 Azure 资源组。 资源组是共享同一生命周期的资源的逻辑分组。
 
 1. 在部署项目节点的快捷菜单中，选择“部署” > “新建”。
@@ -174,9 +166,7 @@ Visual Studio 还提供了 Intellisense 来帮助你了解编辑模板时可以�
    
     ![Azure 资源组已部署](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/redeploy.png)
 
-<a id="deploy-code-with-your-infrastructure" class="xliff"></a>
-
-## 将代码与基础结构一起部署
+## <a name="deploy-code-with-your-infrastructure"></a>将代码与基础结构一起部署
 此时，你已为应用部署基础结构，但尚未在项目中部署实际代码。 本文说明如何在部署期间部署 Web 应用和 SQL 数据库表。 如果是部署虚拟机而不是 Web 应用，你需要在部署过程中，在计算机上运行一些代码。 为 Web 应用部署代码的过程与设置虚拟机的过程几乎相同。
 
 1. 将项目添加到 Visual Studio 解决方案。 右键单击解决方案，选择“添加” > “新建项目”。
@@ -227,9 +217,7 @@ Visual Studio 还提供了 Intellisense 来帮助你了解编辑模板时可以�
     
      ![显示已部署的应用](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-app.png)
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 * 若要了解如何通过门户管理资源，请参阅[使用 Azure 门户管理 Azure 资源](resource-group-portal.md)。
 * 若要详细了解模板，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
 

@@ -22,14 +22,12 @@ ms.lasthandoff: 06/21/2017
 
 
 ---
-# 在 Azure 应用服务中配置 Web 应用
-<a id="configure-web-apps-in-azure-app-service" class="xliff"></a>
+# <a name="configure-web-apps-in-azure-app-service"></a>在 Azure 应用服务中配置 Web 应用
 本主题介绍如何使用 [Azure 门户]配置 Web 应用。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## 应用程序设置
-<a id="application-settings" class="xliff"></a>
+## <a name="application-settings"></a>应用程序设置
 1. 在 [Azure 门户]中，打开 Web 应用的边栏选项卡。
 2. 单击“所有设置”。
 3. 单击“应用程序设置”。
@@ -38,8 +36,7 @@ ms.lasthandoff: 06/21/2017
 
 “应用程序设置”边栏选项卡包含多个类别的设置。
 
-### 常规设置
-<a id="general-settings" class="xliff"></a>
+### <a name="general-settings"></a>常规设置
 **框架版本**。 如果你的应用程序使用下列任一框架，请设置这些选项： 
 
 * **.NET Framework**：设置 .NET Framework 版本。 
@@ -61,19 +58,16 @@ ms.lasthandoff: 06/21/2017
 
 **自动交换**。 如果启用部署槽的自动交换，则在向该槽推送更新时，应用服务会自动将 Web 应用交换到生产。 有关详细信息，请参阅[为 Azure 应用服务中的 Web 应用部署到过渡槽](web-sites-staged-publishing.md)。
 
-### 调试
-<a id="debugging" class="xliff"></a>
+### <a name="debugging"></a>调试
 **远程调试**。 启用远程调试。 启用后，可使用 Visual Studio 中的远程调试器直接连接到 Web 应用。 远程调试将保持启用状态 48 小时。 
 
-### 应用设置
-<a id="app-settings" class="xliff"></a>
+### <a name="app-settings"></a>应用设置
 本部分包含你的 Web 应用启动时将要加载的名称/值对。 
 
 * 对于 .NET 应用，这些设置=会在运行时注入到 .NET 配置 `AppSettings` 中，重写现有设置。 
 * PHP、Python、Java 和 Node 应用程序可以在运行时以环境变量的形式访问这些设置。 系统将为每个应用程序设置创建两个环境变量，一个变量具有由应用程序设置条目指定的名称，另一个具有 APPSETTING_ 前缀。 这两个变量都包含相同的值。
 
-### 连接字符串
-<a id="connection-strings" class="xliff"></a>
+### <a name="connection-strings"></a>连接字符串
 链接资源的连接字符串。 
 
 对于 .NET 应用，这些连接字符串会在运行时注入到 .NET 配置 `connectionStrings` 设置中，重写其中的键等于链接的数据库名称的所有现有条目。 
@@ -87,26 +81,22 @@ ms.lasthandoff: 06/21/2017
 
 例如，如果 MySql 连接字符串命名为 `connectionstring1`，则会通过环境变量 `MYSQLCONNSTR_connectionString1` 访问该字符串。
 
-### 默认文档
-<a id="default-documents" class="xliff"></a>
+### <a name="default-documents"></a>默认文档
 默认文档是网站的根 URL 下显示的网页。  使用的是列表中的第一个匹配文件。 
 
 Web 应用可能会使用根据 URL 路由的模块，而不是提供静态内容，在此情况下，将没有此类默认文档。    
 
-### 处理程序映射
-<a id="handler-mappings" class="xliff"></a>
+### <a name="handler-mappings"></a>处理程序映射
 使用此区域可添加自定义脚本处理器，以处理特定文件扩展名的请求。 
 
 * **扩展名**。 要处理的扩展名，例如 *.php 或 handler.fcgi。 
 * **脚本处理器路径**。 脚本处理器的绝对路径。 匹配该扩展名的文件请求将由脚本处理器处理。 使用路径 `D:\home\site\wwwroot` 表示应用的根目录。
 * **其他参数**。 脚本处理器的可选命令行参数 
 
-### 虚拟应用程序和目录
-<a id="virtual-applications-and-directories" class="xliff"></a>
+### <a name="virtual-applications-and-directories"></a>虚拟应用程序和目录
 若要配置虚拟应用程序和目录，请指定每个虚拟目录及其对应于网站根目录的物理路径。 还可选中“应用程序”复选框，将虚拟目录标记为应用程序。
 
-## 启用诊断日志
-<a id="enabling-diagnostic-logs" class="xliff"></a>
+## <a name="enabling-diagnostic-logs"></a>启用诊断日志
 启用诊断日志：
 
 1. 在 Web 应用的边栏选项卡上单击“所有设置”。
@@ -137,29 +127,24 @@ Web 应用可能会使用根据 URL 路由的模块，而不是提供静态内�
 
 ![FTP 部署凭据][configure02]
 
-## 其他配置任务
-<a id="other-configuration-tasks" class="xliff"></a>
-### SSL
-<a id="ssl" class="xliff"></a>
+## <a name="other-configuration-tasks"></a>其他配置任务
+### <a name="ssl"></a>SSL
 在“基本”或“标准”模式下，你可为自定义域上传 SSL 证书。 有关详细信息，请参阅[为 Web 应用启用 HTTPS]。 
 
 若要查看上传的证书，请单击“所有设置” > “自定义域和 SSL”。
 
-### 域名
-<a id="domain-names" class="xliff"></a>
+### <a name="domain-names"></a>域名
 添加 Web 应用的自定义域名。 有关详细信息，请参阅[为 Azure 应用服务中的 Web 应用配置自定义域名]。
 
 若要查看域名，请单击“所有设置” > “自定义域和 SSL”。
 
-### 部署
-<a id="deployments" class="xliff"></a>
+### <a name="deployments"></a>部署
 * 设置连续部署。 请参阅[使用 Git 在 Azure 应用服务中部署 Web 应用](web-sites-deploy.md)。
 * 部署槽。 请参阅[为 Azure 应用服务中的 Web 应用部署到过渡环境]。
 
 若要查看部署槽，请单击“所有设置” > “部署槽”。
 
-### 监视
-<a id="monitoring" class="xliff"></a>
+### <a name="monitoring"></a>监视
 在“基本”或“标准”模式下，可以测试 HTTP 或 HTTPS 终结点的可用性，最多可测试三个地理分散的位置。 如果 HTTP 响应码为错误（4xx 或 5xx），或者响应时间超过 30 秒，则表示监视测试失败。 如果从所有指定的位置监视测试均成功，则终结点被视为可用。 
 
 有关详细信息，请参阅[如何监视 Web 终结点状态]。
@@ -169,8 +154,7 @@ Web 应用可能会使用根据 URL 路由的模块，而不是提供静态内�
 > 
 > 
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 * [在 Azure 应用服务中配置自定义域名]
 * [为 Azure 应用服务中的应用启用 HTTPS]
 * [在 Azure 应用服务中缩放 Web 应用]

@@ -17,8 +17,7 @@ ms.lasthandoff: 06/17/2017
 
 ---
 
-# Azure Database for MySQL 视频
-<a id="azure-database-for-mysql-videos" class="xliff"></a>
+# <a name="azure-database-for-mysql-videos"></a>Azure Database for MySQL 视频
 
 [如何开始使用新的 Azure Database for MySQL 服务](https://channel9.msdn.com/events/Build/2017/B8045)
 

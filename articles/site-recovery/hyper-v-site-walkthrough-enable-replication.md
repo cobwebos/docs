@@ -22,8 +22,7 @@ ms.lasthandoff: 06/23/2017
 
 ---
 
-# 步骤 10：为复制到 Azure 的 Hyper-V VM 启用复制
-<a id="step-10-enable-replication-for-hyper-v-vms-replicating-to-azure" class="xliff"></a>
+# <a name="step-10-enable-replication-for-hyper-v-vms-replicating-to-azure"></a>步骤 10：为复制到 Azure 的 Hyper-V VM 启用复制
 
 
 本文介绍了如何使用 Azure 门户中的 [Azure Site Recovery](site-recovery-overview.md) 服务为本地 Hyper-V 虚拟机（未由 System Center VMM 管理的）启用到 Azure 的复制。
@@ -33,19 +32,16 @@ ms.lasthandoff: 06/23/2017
 
 
 
-## 开始之前
-<a id="before-you-start" class="xliff"></a>
+## <a name="before-you-start"></a>开始之前
 
 在开始之前，请确保 Azure 用户帐户具有启用新的虚拟机到 Azure 的复制所需的[权限](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)。
 
-## 从复制中排除磁盘
-<a id="exclude-disks-from-replication" class="xliff"></a>
+## <a name="exclude-disks-from-replication"></a>从复制中排除磁盘
 
 默认情况下将复制计算机上的所有磁盘。 你可以从复制中排除磁盘。 例如，你可能不想要复制包含临时数据，或者每当重新启动计算机或应用程序时刷新的数据（例如 pagefile.sys 或 SQL Server tempdb）的磁盘。 [了解详细信息](site-recovery-exclude-disk.md)
 
 
-## 复制 VM
-<a id="replicate-vms" class="xliff"></a>
+## <a name="replicate-vms"></a>复制 VM
 
 为 VM 启用复制，如下所示：          
 
@@ -82,8 +78,7 @@ ms.lasthandoff: 06/23/2017
 可以在“作业” > “Site Recovery 作业”中，跟踪“启用保护”作业的进度。 在“完成保护”作业运行之后，计算机就可以进行故障转移了。
 
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 
 转到[步骤 11：运行测试故障转移](hyper-v-site-walkthrough-test-failover.md)
