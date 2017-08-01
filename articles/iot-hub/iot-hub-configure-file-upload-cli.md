@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 48d1fb8bba10df0960a8fba0b8c283aa3142d881
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 8b16f163b20a4dd31857838ddafcc7ba36ac9817
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 
@@ -64,7 +63,7 @@ ms.lasthandoff: 05/16/2017
 
 以下步骤假设已使用 **Resource Manager** 部署模型而不**经典**部署模型创建了存储帐户。
 
-如 IoT 中心配置文件将上载从设备，需要 Azure 存储帐户相同的订阅中的连接字符串。 还需要存储帐户中 Blob 容器的名称。 使用以下命令检索存储帐户密钥：
+如 IoT 中心配置文件将上传从设备，需要 Azure 存储帐户相同的订阅中的连接字符串。 还需要存储帐户中 Blob 容器的名称。 使用以下命令检索存储帐户密钥：
 
 ```azurecli
 az storage account show-connection-string --name {your storage account name} --resource-group {your storage account resource group}
@@ -72,7 +71,7 @@ az storage account show-connection-string --name {your storage account name} --r
 
 记下 **connectionString** 值。 在后续步骤中需要用到它。
 
-可将现有的 Blob 容器用于文件上载，或新建一个容器：
+可将现有的 Blob 容器用于文件上传，或新建一个容器：
 
 * 若要列出存储帐户中的现有 Blob 容器，请使用以下命令：
 
@@ -86,7 +85,7 @@ az storage account show-connection-string --name {your storage account name} --r
     az storage container create --name {container name} --connection-string "{your storage account connection string}"
     ```
 
-## <a name="file-upload"></a>文件上载
+## <a name="file-upload"></a>文件上传
 
 现在可以配置 IoT 中心启用[文件上载功能][lnk-upload]使用存储帐户详细信息。
 
@@ -94,13 +93,13 @@ az storage account show-connection-string --name {your storage account name} --r
 
 **存储容器**：当前 Azure 订阅中要与 IoT 中心关联的 Azure 存储帐户中的 Blob 容器。 检索在上一部分中必要的存储帐户信息。 IoT 中心会自动生成对此 Blob 容器具有写入权限的 SAS URI，以供设备上传文件时使用。
 
-**接收已上载文件的通知**：启用或禁用文件上载通知。
+接收已上传文件的通知：启用或禁用文件上传通知。
 
 **SAS TTL**：此设置是 IoT 中心返回给设备的 SAS URI 生存时间。 默认设置为一小时。
 
-**文件通知设置默认 TTL**：文件上载通知到期前的生存时间。 默认设置为一天。
+**文件通知设置默认 TTL**：文件上传通知到期前的生存时间。 默认设置为一天。
 
-**文件通知最大传送数**：IoT 中心将尝试传送文件上载通知的次数。 默认设置为 10。
+**文件通知最大传送数**：IoT 中心将尝试传送文件上传通知的次数。 默认设置为 10。
 
 使用以下 Azure CLI 命令在 IoT 中心内配置文件上传设置：
 

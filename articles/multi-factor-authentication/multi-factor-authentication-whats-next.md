@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 2e7c1ddedaa11fb614f2e8cf6d1644ae2a2beae3
-ms.lasthandoff: 04/28/2017
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 92e4c7d5a873cd75cdc32e1feeede71bd5e37f40
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/11/2017
 
 
 ---
@@ -27,8 +28,8 @@ ms.lasthandoff: 04/28/2017
 | 功能 | 说明 | 
 |:--- |:--- |
 | [欺诈警报](#fraud-alert) |管理员可以配置和设置欺诈警报，以便用户针对访问其资源的欺诈性企图进行举报。 |
-| [免验证一次](#one-time-bypass) |“一次性跳过”可让用户通过“跳过”Multi-Factor Authentication 来进行身份验证，不过只能跳过一次。 |
-| [自定义语音消息](#custom-voice-messages) |自定义语音消息可让你将自己的录音或问候语用于 Multi-Factor Authentication。 |
+| [免验证一次](#one-time-bypass) |“一次性跳过”可让用户通过“跳过”多重身份验证来进行身份验证，不过只能跳过一次。 |
+| [自定义语音消息](#custom-voice-messages) |自定义语音消息可让你将自己的录音或问候语用于多重身份验证。 |
 | [缓存](#caching-in-azure-multi-factor-authentication) |使用缓存可以设置一段特定的时间，使后续的身份验证尝试自动成功。 |
 | [受信任的 IP](#trusted-ips) |托管或联合租户的管理员可以使用“受信任的 IP”对从公司本地 Intranet 登录的用户免除双重验证。 |
 | [应用密码](#app-passwords) |应用密码允许非 MFA 感知应用程序免于进行多重身份验证并继续工作。 |
@@ -67,7 +68,7 @@ ms.lasthandoff: 04/28/2017
 - **初始问候期间报告欺诈的代码** - 用户通常按 # 来确认双重验证。 如果他们想要报告欺诈，则可在按 # 之前输入代码。 此代码默认为 **0**，但你可以自定义此代码。
 
 > [!NOTE]
-> Microsoft 的默认问候语音将指示用户按 0# 以提交欺诈警报。 如果要使用 0 以外的代码，应根据相应说明记录并上载自己的自定义问候语音。
+> Microsoft 的默认问候语音将指示用户按 0# 以提交欺诈警报。 如果要使用 0 以外的代码，应根据相应说明记录并上传自己的自定义问候语音。
 
 ![欺诈警报选项 - 屏幕截图](./media/multi-factor-authentication-whats-next/fraud.png)
 
@@ -129,9 +130,9 @@ ms.lasthandoff: 04/28/2017
 
 ### <a name="set-up-a-custom-message"></a>设置自定义消息
 
-创建自定义消息分两个部分。 首先，你需要上载消息，然后你需要为用户启用该消息。
+创建自定义消息分两个部分。 首先，你需要上传消息，然后你需要为用户启用该消息。
 
-若要上载自定义消息，请执行以下操作：
+若要上传自定义消息，请执行以下操作：
 
 1. 使用支持的文件格式之一创建自定义语音消息。
 2. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
@@ -141,11 +142,11 @@ ms.lasthandoff: 04/28/2017
    ![云](./media/multi-factor-authentication-whats-next/custom1.png)
 6. 在“配置: 新建语音消息”页上，单击“管理声音文件”。
    ![云](./media/multi-factor-authentication-whats-next/custom2.png)
-7. 在“配置: 声音文件”页上，单击“上载声音文件”。
+7. 在“配置: 声音文件”页上，单击“上传声音文件”。
    ![云](./media/multi-factor-authentication-whats-next/custom3.png)
-8. 在“配置: 上载声音文件”页上，单击“浏览”，然后导航到你的语音消息，单击“打开”。
-9. 添加描述，然后单击“上载”。
-10. 完成此操作后，系统将显示一条消息，指示文件已成功上载。
+8. 在“配置: 上传声音文件”页上，单击“浏览”，然后导航到语音消息，单击“打开”。
+9. 添加描述，并单击“上载”。
+10. 完成此操作后，系统将显示一条消息，指示文件已成功上传。
 
 若要为用户启用消息，请执行以下操作：
 
@@ -154,11 +155,11 @@ ms.lasthandoff: 04/28/2017
 3. 从“语言”下拉列表中选择语言。
 4. 如果此消息用于特定应用程序，请在“应用程序”框中指定该应用程序。
 5. 从“消息类型”下拉列表中，选择将使用新建自定义消息替代的消息类型。
-6. 从“声音文件”下拉列表中，选择你在第一部分中上载的声音文件。
+6. 从“声音文件”下拉列表中，选择你在第一部分中上传的声音文件。
 7. 单击“创建”。 系统将显示一条消息，指示语音消息已成功创建。
     ![云](./media/multi-factor-authentication-whats-next/custom5.png)</center>
 
-## <a name="caching-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication 中的缓存
+## <a name="caching-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的缓存
 使用缓存可以设置一个特定的时间段，使该时间段内的后续身份验证尝试自动成功。 缓存主要应用场合是当第一个请求仍在进行时，本地系统（例如 VPN）发送多个验证请求。 这样，在用户成功进行第一次验证后，后续请求将自动成功完成。 
 
 到 Azure AD 的登录并未打算使用缓存。
@@ -238,16 +239,16 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 的�
 * 没有为应用密码提供本地身份验证日志记录/审核功能。
 * 在对客户端使用双重验证时，某些先进的体系结构设计可能要求将组织用户名和密码与应用密码结合使用，具体取决于进行身份验证的位置。 对于针对本地基础结构进行身份验证的客户端，你会使用组织用户名和密码。 对于针对 Azure AD 进行身份验证的客户端，你会使用应用密码。
 
-  例如，假设你有一个由下列内容组成的体系结构：
+  例如，假设有一个由下列内容组成的体系结构：
 
-  * 你要将 Active Directory 的本地实例与 Azure AD 联合
-  * 你要使用 Exchange Online
-  * 你要使用本地专用的 Lync
-  * 你要使用 Azure Multi-Factor Authentication
+  * 要将 Active Directory 的本地实例与 Azure AD 联合
+  * 要使用 Exchange Online
+  * 要使用本地专用的 Lync
+  * 要使用 Azure 多重身份验证
 
   ![验证](./media/multi-factor-authentication-whats-next/federated.png)
 
-  在这些情况下，你必须执行以下操作：
+  在这些情况下，必须执行以下操作：
 
   * 登录到 Lync 时，使用你组织的用户名和密码。
   * 当尝试通过连接到 Exchange Online 的 Outlook 客户端访问通讯簿时，请使用应用密码。
@@ -267,7 +268,7 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 的�
 在注册后，用户还可以通过在 Azure 门户或 Office 365 门户中更改设置来创建应用密码。 有关适用于你的用户的详细信息和详细步骤，请参阅[什么是 Azure 多重身份验证中的应用密码](./end-user/multi-factor-authentication-end-user-app-passwords.md)。
 
 ## <a name="remember-multi-factor-authentication-for-devices-that-users-trust"></a>记住用户信任的设备的多重身份验证
-记住用户信任的设备和浏览器的 Multi-Factor Authentication 是针对所有 MFA 用户的一项免费功能。 此功能允许你在用户使用 MFA 执行成功登录后的指定天数内为用户提供绕过 MFA 的选项。 这可以尽量减少用户可能在同一设备上执行双重验证的次数，从而可以提高可用性。
+记住用户信任的设备和浏览器的多重身份验证是针对所有 MFA 用户的一项免费功能。 此功能允许你在用户使用 MFA 执行成功登录后的指定天数内为用户提供绕过 MFA 的选项。 这可以尽量减少用户可能在同一设备上执行双重验证的次数，从而可以提高可用性。
 
 但是，如果帐户或设备遭到入侵，则记住信任的设备的 MFA 可能会影响安全性。 如果公司帐户受到安全威胁，或者受信任的设备已丢失或被盗，则应[在所有设备上还原多重身份验证](multi-factor-authentication-manage-users-and-devices.md#restore-mfa-on-all-remembered-devices-for-a-user)。 此操作会撤销所有设备的受信任状态，需要用户重新执行双重验证。 你还可以指示用户按照[管理双重验证设置](./end-user/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted)中的说明在其自己的设备上还原 MFA
 
