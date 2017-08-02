@@ -83,8 +83,8 @@ ms.lasthandoff: 05/26/2017
    
    | 任务 | 学习内容 |
    | --- | --- |
-   | 为开发测试实验室 VM 创建自定义项目[](devtest-lab-artifact-author.md) |在实验室中为虚拟机创建自己的自定义项目。|
-   | 添加 Git 存储库来存储自定义项目和 Azure Resource Manager 模板以供在 Azure 开发测试实验室中使用[](devtest-lab-add-artifact-repo.md) |了解如何在自己专用的 Git 存储库中存储自定义项目。|
+   | [为开发测试实验室 VM 创建自定义项目](devtest-lab-artifact-author.md) |在实验室中为虚拟机创建自己的自定义项目。|
+   | [添加 Git 存储库来存储自定义项目和 Azure Resource Manager 模板以供在 Azure 开发测试实验室中使用](devtest-lab-add-artifact-repo.md) |了解如何在自己专用的 Git 存储库中存储自定义项目。|
 
 5. **控制成本**
    
@@ -121,7 +121,7 @@ ms.lasthandoff: 05/26/2017
    
    | 任务 | 学习内容 |
    | --- | --- |
-   | 向 Azure 开发测试实验室中的实验室添加开发人员[](devtest-lab-add-devtest-user.md) |使用 Azure 门户将开发人员添加到实验室。|
+   | [向 Azure 开发测试实验室中的实验室添加开发人员](devtest-lab-add-devtest-user.md) |使用 Azure 门户将开发人员添加到实验室。|
    | [使用 PowerShell 脚本将开发人员添加到实验室](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |使用 PowerShell 自动将开发人员添加到实验室。 |
    | [获取实验室的链接](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) |了解开发人员如何通过超链接直接访问实验室。|
 
