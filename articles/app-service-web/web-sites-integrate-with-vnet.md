@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2016
 ms.author: ccompy
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 5c8268a90c5e14839ed97daa6a186d170f5a4cc3
-ms.lasthandoff: 03/29/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: 31b4f69a2870e619255feac6bed3679efb03f568
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络进行集成
-本文档将介绍 Azure 应用服务虚拟网络集成功能，并说明如何在 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714) 中使用应用对其进行设置。  如果你不熟悉 Azure 虚拟网络 (VNET)，则这里需要指出的是，该功能允许你将多个 Azure 资源置于你可以控制其访问权限但无法通过 Internet 路由的网络中。  然后，你可以使用多种 VPN 技术将这些网络连接到本地网络。  若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述][VNETOverview]。  
+本文档将介绍 Azure 应用服务虚拟网络集成功能，并说明如何在 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714) 中使用应用对其进行设置。  如果你不熟悉 Azure 虚拟网络 (VNET)，则这里需要指出的是，该功能允许你将多个 Azure 资源置于你可以控制其访问权限但无法通过 Internet 路由的网络中。  然后，可以使用多种 VPN 技术将这些网络连接到本地网络。  若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述][VNETOverview]。  
 
 Azure 应用服务有两种形式。  
 
@@ -40,7 +40,7 @@ VNET 集成功能：
 * 需要标准或高级定价计划 
 * 适用于经典 (V1) 或 Resource Manager(V2) VNET 
 * 支持 TCP 和 UDP
-* 适用于 Web、移动和 API 应用
+* 适用于 Web 应用、移动应用和 API 应用
 * 允许应用一次只连接到 1 个 VNET
 * 允许在应用服务计划中一次最多集成 5 个 VNET 
 * 允许在应用服务计划中由多个应用使用同一个 VNET
@@ -95,7 +95,7 @@ VNET 集成不支持某些功能，其中包括：
 ![][8]
 
 ##### <a name="enabling-point-to-site-in-a-resource-manager-vnet"></a>在 Resource Manager VNET 中启用点到站点连接
-若要使用网关和点到站点配置 Resource Manager VNET，可以使用此处（[使用 PowerShell 配置与虚拟网络的点到站点连接][V2VNETP2S]）所述的 PowerShell，或使用此处（[使用 Azure 门户配置与 VNet 的点到站点连接][V2VNETPortal]）所述的 Azure 门户。  尚未提供执行此功能的 UI。 
+若要使用网关和点到站点配置 Resource Manager VNET，可以使用此处（[使用 PowerShell 配置与虚拟网络的点到站点连接][V2VNETP2S]）所述的 PowerShell，或使用此处（[使用 Azure 门户配置与 VNet 的点到站点连接][V2VNETPortal]）所述的 Azure 门户。  尚未提供执行此功能的 UI。 请注意，不需要为点到站点配置创建证书。 将 Web 应用连接到 VNET 时会自动配置证书。 
 
 ### <a name="creating-a-pre-configured-vnet"></a>创建预先配置的 VNET
 若要创建配置了网关和点到站点连接的新 VNET，则可使用应用服务网络 UI 来执行该操作，但仅限于 Resource Manager VNET。  若要创建配置了网关和点到站点连接的经典 VNET，则需通过“网络”用户界面手动执行该操作。 
@@ -152,7 +152,7 @@ VNET 地址空间需使用 CIDR 表示法来指定。  如果你不熟悉 CIDR �
 * 网关状态 - 如果网关因某种原因而关闭，则应用无法访问 VNET 中的资源。  
 * VNET 地址空间 - 此项为 VNET 的 IP 地址空间。  
 * 点到站点地址空间 - 此项为 VNET 的点到站点 IP 地址空间。  你的应用会在此地址空间中将通信显示成来自其中一个 IP。  
-* 站点到站点地址空间 - 你可以使用站点到站点 VPN 将 VNET 连接到本地资源或其他 VNET。  配置完成以后，针对该 VPN 连接定义的 IP 范围会显示在此处。
+* 站点到站点地址空间 - 可以使用站点到站点 VPN 将 VNET 连接到本地资源或其他 VNET。  配置完成以后，针对该 VPN 连接定义的 IP 范围会显示在此处。
 * DNS 服务器 - 如果已为 DNS 服务器配置了 VNET，则这些服务器会列在此处。
 * 路由到 VNET 的 IP - 此项为通过 VNET 定义了路由的 IP 地址的列表。  这些地址会显示在此处。  
 
@@ -177,11 +177,11 @@ VNET 地址空间需使用 CIDR 表示法来指定。  如果你不熟悉 CIDR �
 **证书** 证书状态反映了应用服务所执行的检查的结果，该检查是为了验证用于 VPN 连接的证书是否仍然有效。  启用 VNET 集成后，如果这是第一次从该 ASP 中的应用集成到该 VNET，则必须进行证书交换以确保连接的安全性。  除了证书，我们还可以获得 DNS 配置、路由以及其他类似的用于描述网络的内容。
 如果更改了这些证书或网络信息，则需单击“同步网络”。  **注意**：单击“同步网络”会导致应用与 VNET 之间的连接出现短暂的中断。  虽然应用不会重新启动，但失去连接会导致站点功能失常。  
 
-## <a name="accessing-on-premise-resources"></a>访问本地资源
-VNET 集成功能的一大好处是，如果 VNET 通过站点到站点 VPN 连接到本地网络，则可通过应用访问本地资源。  不过，你可能需要使用点到站点 IP 范围的路由来更新本地 VPN 网关才能这样做。  先设置站点到站点 VPN 以后，接着应通过用于配置该 VPN 的脚本来设置包括点到站点 VPN 在内的路由。  如果在创建站点到站点 VPN 后才添加点到站点 VPN，则需手动更新路由。  具体操作信息取决于每个网关，在此不做说明。  
+## <a name="accessing-on-premises-resources"></a>访问本地资源
+VNET 集成功能的一大好处是，如果 VNET 通过站点到站点 VPN 连接到本地网络，则可通过应用访问本地资源。  不过，可能需要使用点到站点 IP 范围的路由来更新本地 VPN 网关才能这样做。  先设置站点到站点 VPN 以后，接着应通过用于配置该 VPN 的脚本来设置包括点到站点 VPN 在内的路由。  如果在创建站点到站点 VPN 后才添加点到站点 VPN，则需手动更新路由。  具体操作信息取决于每个网关，在此不做说明。  
 
 > [!NOTE]
-> 虽然可以在站点到站点 VPN 中使用 VNET 集成功能来访问本地资源，但目前仍无法在 ExpressRoute VPN 中使用该功能来执行同一操作。  与经典或 Resource Manager VNET 集成时也是如此。  若需通过 ExpressRoute VPN 来访问资源，可以使用能够在 VNET 中运行的 ASE。 
+> VNET 集成功能不会将应用与包含 ExpressRoute 网关的 VNet 集成。 即使以[共存模式][VPNERCoex]配置 ExpressRoute 网关，该网关也无法工作。 若要通过 ExpressRoute 连接访问资源，可以使用 VNet 中运行的[应用服务环境][ASE]。
 > 
 > 
 
@@ -249,8 +249,8 @@ VNET 集成功能的一大好处是，如果 VNET 通过站点到站点 VPN 连�
 
 * 登录到 VNET 中的其他 VM，尝试在该处访问资源主机:端口。  你可以使用某些 TCP ping 实用程序来进行此类操作，甚至还可以视需要使用 telnet。  此处的目的就是确定是否可以从这个其他的 VM 进行连接。 
 * 在其他 VM 中启动应用程序，测试能否在应用的控制台中访问该主机和端口  
-  ####<a name="on-premise-resources"></a>本地资源####
-  如果你无法访问本地资源，则首先应检查你是否能够访问 VNET 中的资源。  如果能够访问，则后续步骤很容易。  你需要尝试从 VNET 中的 VM 访问本地应用程序。  你可以使用 telnet 或 TCP ping 实用程序。  如果 VM 无法访问本地资源，首先请确保站点到站点 VPN 连接正常。  如果正常，则请检查前述项目以及本地网关配置和状态。  
+  ####<a name="on-premises-resources"></a>本地资源####
+  如果无法访问本地资源，则首先应检查是否能够访问 VNET 中的资源。  如果能够访问，则后续步骤很容易。  需要尝试从 VNET 中的 VM 访问本地应用程序。  你可以使用 telnet 或 TCP ping 实用程序。  如果 VM 无法访问本地资源，首先请确保站点到站点 VPN 连接正常。  如果正常，则请检查前述项目以及本地网关配置和状态。  
 
 现在，如果 VNET 托管的 VM 能够访问本地系统但应用无法访问，则可能是由于以下某个原因：
 
@@ -266,7 +266,7 @@ VNET 集成功能的一大好处是，如果 VNET 通过站点到站点 VPN 连�
 * 混合连接
 * 应用服务环境
 
-混合连接要求你在网络中安装名为混合连接管理器 (HCM) 的中继代理。  HCM 需要能够连接到 Azure 以及你的应用程序。  此解决方案尤其适合远程网络（例如你的本地网络），甚至适用于其他云托管的网络，因为它不需要可通过 Internet 进行访问的终结点。  HCM 只能在 Windows 上运行，你最多可以运行 5 个实例以确保为用户提供高可用性。  不过，混合连接只支持 TCP，而且每个 HC 终结点必须与特定的主机:端口组合匹配。  
+混合连接要求你在网络中安装名为混合连接管理器 (HCM) 的中继代理。  HCM 需要能够连接到 Azure 以及你的应用程序。  此解决方案尤其适合远程网络（例如本地网络），甚至适用于其他云托管的网络，因为它不需要可通过 Internet 进行访问的终结点。  HCM 只能在 Windows 上运行，你最多可以运行 5 个实例以确保为用户提供高可用性。  不过，混合连接只支持 TCP，而且每个 HC 终结点必须与特定的主机:端口组合匹配。  
 
 应用服务环境功能允许你在 VNET 中运行 Azure 应用服务的实例。  这样可以让应用访问 VNET 中的资源而不需执行额外的步骤。  应用服务环境的其他好处包括：你可以在 RAM 为 14 GB 的情况下使用 8 个核心专用辅助角色。  另一好处是，你可以根据需要进行系统伸缩。  在 ASE 中，你可以控制需要提供给系统的资源的数目，这一点不同于 ASP 大小受限的多租户环境。  不过，就本文档重点讨论的网络主题而言，ASE 能够提供而 VNET 集成无法提供的其中一项功能就是，ASE 适用于 ExpressRoute VPN。  
 
@@ -274,7 +274,7 @@ VNET 集成功能的一大好处是，如果 VNET 通过站点到站点 VPN 连�
 
 * 如果你是一名开发人员，只想在 Azure 中运行一个站点并让其访问你办公桌下工作站上的数据库，则可使用混合连接，那样最轻松。  
 * 如果你是一家大型组织，需要在公有云中存储大量 Web 属性并在自己的网络中对其进行管理，则最好是使用应用服务环境。  
-* 如果你有大量应用程序托管的应用，但只想访问 VNET 中的资源，则不妨采用 VNET 集成。  
+* 如果你有大量应用服务托管的应用，但只想访问 VNET 中的资源，则不妨采用 VNET 集成。  
 
 除了这些用例，还需考虑到简便性及其方方面面。  如果 VNET 已连接到本地网络，则可通过 VNET 集成或应用服务环境轻松使用本地资源。  另一方面，如果 VNET 尚未连接到本地网络，则与安装 HCM 相比，通过 VNET 设置站点到站点 VPN 需要多得多的开销。  
 
@@ -301,4 +301,6 @@ VNET 集成功能的一大好处是，如果 VNET 通过站点到站点 VPN 连�
 [ASEintro]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-intro/
 [ILBASE]: http://azure.microsoft.com/documentation/articles/app-service-environment-with-internal-load-balancer/
 [V2VNETPortal]: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal
+[VPNERCoex]: http://docs.microsoft.com/en-us/azure/expressroute/expressroute-howto-coexist-resource-manager
+[ASE]: http://docs.microsoft.com/azure/app-service/app-service-environment/intro
 

@@ -4,25 +4,24 @@ description:
 keywords: 
 author: jeffgilb
 manager: femila
-ms.date: 5/23/2017
+ms.reviewr: jsnow
+ms.author: jeffgilb
+ms.date: 7/5/2017
 ms.topic: article
 ms.prod: 
 ms.service: azure
 ms.technology: 
 ms.assetid: 
-ms.reviewer: jsnow
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: bc67058d026219d676430a55fe8cfdd3f09cf295
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 4b2e8d17811df58fdc628de7140cdb0a4800476d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
-
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="fundamentals-of-azure-identity-management"></a>Azure 标识管理基础知识
-随着公司的数字资源逐渐转向公司网络外部、云中和设备上，为了对用户访问公司应用程序和数据的方式和时间进行控制和监视，最好的方式是使用卓越的基于云的标识和访问管理解决方案。
+随着越来越多的公司数字资源驻留在企业网络外部的云中和设备上，采用优越的基于云的标识和访问管理解决方案变得很有必要。 基于云的标识现已成为控制和洞察用户如何以及何时访问企业应用程序与数据的最佳方式。
 
 十多年来，Microsoft 一直在保护基于云的标识的安全，而现在则通过 [Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/active-directory-editions) 为你提供相同的保护系统。 有了 Azure AD，企业管理员就可以轻松地确认用户和管理员的责任，提供比以前更好的安全性和监管。
 
@@ -33,16 +32,15 @@ Azure AD Premium 是基于云的标识和访问管理解决方案，提供的高
 
 Microsoft 不仅提供各处通用的标识，而且提供一套可以在组织中实现 IT 自动化、确保 IT 安全性以及进行 IT 管理的工具。 即使在出现云计算以后，也仍然需要管理和控制各种 IT 任务，例如通过呼叫支持人员来重置用户密码、进行用户组管理，以及提出应用程序请求。 让情况更为复杂的是，员工现在会将其个人设备带到工作中，并且会使用随时可用的 SaaS 应用程序。 这就使得跨公司数据中心和公有云平台维持对应用程序的控制极具挑战性。
 
-> [!Note]
-> 本文所述功能需要的 Azure Active Directory P1 或 P2 订阅可以单独购买，也可以作为[企业移动性 + 安全性 E3 或 E5](https://docs.microsoft.com/enterprise-mobility-security/solutions/learn-about-ems) 订阅的一部分来购买。
+[!INCLUDE [identity](../../includes/azure-ad-licenses.md)]
 
 ## <a name="connect-on-premises-active-directory-with-azure-ad-and-office-365"></a>通过 Azure AD 和 Office 365 连接本地 Active Directory
 对本地 Active Directory 进行了大量投资的组织可以将这些投资扩展到云，只需将其本地目录和 Azure AD 集成到[混合标识管理](https://docs.microsoft.com/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview)中即可。 这样做可以为用户提供一个通用标识，用于访问各个位置的资源，从而提高工作效率。 因此，用户和组织可以使用单一登录 (SSO) 来访问本地资源和云服务（例如 Office 365）。
 
-若要完成集成，只需使用 [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) 这种工具。 Azure AD Connect 提供满足标识同步需求的最新功能，并替换旧版标识集成工具（例如 DirSync 和 Azure AD Sync）。 有了 Azure AD Connect，即可通过以下方式进行标识管理并在本地和 Azure AD 之间实现同步：
+若要完成集成，只需使用 [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) 工具。 Azure AD Connect 提供满足标识同步需求的功能，并替换旧版标识集成工具（例如 DirSync 和 Azure AD Sync）。 有了 Azure AD Connect，即可通过以下方式进行标识管理并在本地和 Azure AD 之间实现同步：
 
 - 同步 - 此组件负责创建用户、组和其他对象。 它还负责确保本地用户和组的标识信息与云匹配。 也可启用密码写回，这样当用户在 Azure AD 中更新其密码时，就能保持本地目录同步。
-- AD FS - 联合身份验证是 Azure AD Connect 的可选部件，可用于使用本地 AD FS 基础结构配置混合环境。 组织可以使用此部件来解决复杂的部署，例如域加入 SSO、实施 AD 登录策略和智能卡或第三方 MFA。
+- AD FS - 联合身份验证是 Azure AD Connect 提供的可选功能，可用于通过本地 AD FS 基础结构配置混合环境。 组织可以使用联合身份验证来解决复杂的部署，例如单一登录、实施 AD 登录策略和智能卡或第三方 MFA。
 - 运行状况监视 - [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health) 提供可靠监视，并在 Azure 门户中提供一个中心位置，用于查看此活动。
 
 ## <a name="increase-productivity-and-reduce-helpdesk-costs-with-self-service-and-single-sign-on-experiences"></a>通过自助服务和单一登录体验提高工作效率，降低支持人员成本
@@ -54,7 +52,7 @@ Azure AD [将本地 Active Directory 扩展](https://docs.microsoft.com/azure/ac
 ## <a name="manage-and-control-access-to-corporate-resources"></a>管理和控制对公司资源的访问
 Microsoft 标识和访问管理解决方案可帮助 IT 部门保护对企业数据中心和云中的应用程序和资源的访问，从而支持附加的验证级别，比如[多重身份验证](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-whats-next)和[条件性访问策略](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)。 通过高级安全报告、审核和警报来监视可疑活动，有助于减少潜在的安全问题。
 
-Azure AD Premium 中的条件性访问系统允许你（企业管理员）为任何通过 Azure AD 连接的应用程序（SaaS 应用、运行在云中的自定义应用，或者本地 Web 应用程序）创建基于策略的访问规则。 Azure AD 实时评估这些策略，并在用户尝试访问应用程序时强制实施它们。 Azure 标识保护策略允许你在发现可疑活动的情况下自动采取行动（例如阻止高风险用户的访问权限），可强制实施多重身份验证，并可在凭据看起来已泄露的情况下重置密码。
+Azure AD Premium 中的条件性访问策略允许（企业管理员）为任何通过 Azure AD 连接的应用程序（SaaS 应用、运行在云中的自定义应用，或者本地 Web 应用程序）创建基于策略的访问规则。 Azure AD 实时评估这些策略，并在用户尝试访问应用程序时强制实施它们。 发现可疑活动时，可以通过 Azure 标识保护策略自动采取措施。 这些措施可能包括阻止高风险用户访问、实施多重身份验证，以及在凭据可能泄露的情况下重置用户密码。
 
 
 ## <a name="azure-active-directory-privileged-identity-management"></a>Azure Active Directory Privileged Identity Management
@@ -67,7 +65,7 @@ Privileged Identity Management 可以强制实施按需性的管理员权限，�
 
 使用 Azure 标识管理可以执行以下操作：
 
--   为混合企业中的每个用户创建和管理单一标识，从而通过 [Azure Active Directory Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) 保持用户、组和设备的同步。
+-   为整个企业中的每个用户创建和管理单一标识，从而通过 [Azure Active Directory Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) 保持用户、组和设备的同步。
 
 -   提供对各种应用程序（包括数千预集成的 SaaS 应用）的单一登录访问权限，或者提供使用 [Azure AD 应用程序代理](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)对本地 SaaS 应用程序进行的安全远程访问的权限。
 
@@ -77,3 +75,5 @@ Privileged Identity Management 可以强制实施按需性的管理员权限，�
 
 -   充分利用基于云的世界性企业级标识和访问管理解决方案的[高可用性和可靠性](https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications)。
 
+## <a name="next-steps"></a>后续步骤
+[详细了解 Azure 标识解决方案](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions)

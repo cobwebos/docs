@@ -12,20 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 07/06/2017
 ms.author: banders
 ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: f5f9aa186480926df1110928983566e05f79efb8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 165568731debf2cd81a88170833f95ca2e7080e5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
 
 
-# 在 Log Analytics 中使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
-<a id="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics" class="xliff"></a>
+# <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>在 Log Analytics 中使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
 ![Azure SQL Analytics 符号](./media/log-analytics-azure-sql/azure-sql-symbol.png)
 
@@ -35,8 +34,7 @@ Azure Log Analytics 中的 Azure SQL Analytics 解决方案收集和可视化重
 
 与其他适用于 Log Analytics 的解决方案一样，Azure SQL Analytics 解决方案可以帮助用户监视和接收有关 Azure 资源（在此示例中为 Azure SQL 数据库）运行状况的通知。 Microsoft Azure SQL 数据库是可缩放的关系数据库服务，为运行在 Azure 云中的应用程序提供熟悉的类似于 SQL Server 的功能。 Log Analytics 可帮助用户收集、关联和可视化结构化和非结构化数据。
 
-## 连接的源
-<a id="connected-sources" class="xliff"></a>
+## <a name="connected-sources"></a>连接的源
 
 Azure SQL Analytics 解决方案不使用代理连接 Log Analytics 服务。
 
@@ -50,19 +48,17 @@ Azure SQL Analytics 解决方案不使用代理连接 Log Analytics 服务。
 | [Azure 存储帐户](log-analytics-azure-storage.md) | 否 | Log Analytics 不会从存储帐户中读取数据。 |
 | [Azure 诊断](log-analytics-azure-storage.md) | 是 | Azure 指标数据由 Azure 直接发送到 Log Analytics。 |
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 
 - 一个 Azure 订阅。 如果没有该订阅，可以[免费](https://azure.microsoft.com/free/)创建一个。
 - Log Analytics 工作区。 在开始使用此解决方案之前，用户可以使用现有的工作区，也可以[创建一个新的](log-analytics-get-started.md)。
 - 为 Azure SQL 数据库和弹性池启用 Azure 诊断，并[将其配置为发送数据到 Log Analytics](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/)。
 
-## 配置
-<a id="configuration" class="xliff"></a>
+## <a name="configuration"></a>配置
 
 执行以下步骤，将 Azure SQL Analytics 解决方案添加到你的工作区。
 
-1. 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview)或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将 Azure SQL Analytics 解决方案添加到工作区。
+1. 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview) 或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将 Azure SQL Analytics 解决方案添加到工作区。
 2. 在 Azure 门户中，单击“新建”（+ 符号），然后在资源列表中，选择“监视 + 管理”。  
     ![监视 + 管理](./media/log-analytics-azure-sql/monitoring-management.png)
 3. 在“监视 + 管理”列表中，单击“全部查看”。
@@ -74,8 +70,7 @@ Azure SQL Analytics 解决方案不使用代理连接 Log Analytics 服务。
     ![添加到工作区](./media/log-analytics-azure-sql/add-to-workspace.png)
 
 
-### 配置多个 Azure 订阅
-<a id="to-configure-multiple-azure-subscriptions" class="xliff"></a>
+### <a name="to-configure-multiple-azure-subscriptions"></a>配置多个 Azure 订阅
 
 若要支持多个订阅，请使用 [Enable Azure resource metrics logging using PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/)（通过 PowerShell 启用 Azure 资源指标日志记录）中的 PowerShell 脚本。 在执行脚本时提供工作区资源 ID 作为参数，以便将诊断数据从一个 Azure 订阅中的资源发送到另一 Azure 订阅中的工作区。
 
@@ -89,15 +84,13 @@ PS C:\> $WSID = "/subscriptions/<subID>/resourcegroups/oms/providers/microsoft.o
 PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 ```
 
-## 使用解决方案
-<a id="using-the-solution" class="xliff"></a>
+## <a name="using-the-solution"></a>使用解决方案
 
 将解决方案添加到工作区时，“Azure SQL Analytics”磁贴也会添加到工作区并显示在“概览”中。 该磁贴显示解决方案连接到的 Azure SQL 数据库和 Azure SQL 弹性池的数目。
 
 ![“Azure SQL Analytics”磁贴](./media/log-analytics-azure-sql/azure-sql-sol-tile.png)
 
-### 查看 Azure SQL Analytics 数据
-<a id="viewing-azure-sql-analytics-data" class="xliff"></a>
+### <a name="viewing-azure-sql-analytics-data"></a>查看 Azure SQL Analytics 数据
 
 单击“Azure SQL Analytics”磁贴打开“Azure SQL Analytics”仪表板。 该仪表板包含下面定义的边栏选项卡。 每个边栏选项卡列出最多 15 个资源（订阅、服务器、弹性池和数据库）。 单击任何资源可打开该特定资源的仪表板。 弹性池或数据库包含图表，其中显示了所选资源的指标。 单击某个图表可打开“日志搜索”对话框。
 
@@ -109,30 +102,36 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 |数据库 | 已连接的数据库的列表，以及观察期间内的最大 GB 和 DTU。|
 
 
-### 分析数据和创建警报
-<a id="analyze-data-and-create-alerts" class="xliff"></a>
+### <a name="analyze-data-and-create-alerts"></a>分析数据和创建警报
 
-该解决方案包含的查询可用于帮助用户分析其数据。 向右滚动时，仪表板会列出几个常见查询，单击这些查询即可执行[日志搜索](log-analytics-log-searches.md)以获取 Azure SQL 数据。
+可以使用来自 Azure SQL 数据库资源的数据轻松创建警报。 以下是几个有用的可用于警报的[日志搜索](log-analytics-log-searches.md)查询：
 
-![查询](./media/log-analytics-azure-sql/azure-sql-queries.png)
+*Azure SQL 数据库上的高 DTU*
 
-该解决方案包含一些*基于警报的查询*（如上所示），适用于针对 Azure SQL 数据库和弹性池的特定阈值设置警报。
+```
+Type=AzureMetrics ResourceProvider="MICROSOFT.SQL" ResourceId=*"/DATABASES/"* MetricName=dtu_consumption_percent | measure Avg(Average) by Resource interval 5minutes
+```
 
-#### 配置工作区警报
-<a id="to-configure-an-alert-for-your-workspace" class="xliff"></a>
+*Azure SQL 数据库弹性池上的高 DTU*
+
+```
+Type=AzureMetrics ResourceProvider="MICROSOFT.SQL" ResourceId=*"/ELASTICPOOLS/"* MetricName=dtu_consumption_percent | measure avg(Average) by Resource interval 5minutes
+```
+
+可以使用这些基于警报的查询，针对 Azure SQL 数据库和弹性池的特定阈值设置警报。 若要配置 OMS 工作区的警报，请执行以下操作：
+
+#### <a name="to-configure-an-alert-for-your-workspace"></a>配置工作区警报
 
 1. 转到 [OMS 门户](http://mms.microsoft.com/)并登录。
 2. 打开为解决方案配置的工作区。
 3. 在“概览”页上，单击“Azure SQL Analytics (预览版)”磁贴。
-4. 向右滚动，然后单击查询开始创建警报。  
-![警报查询](./media/log-analytics-azure-sql/alert-query.png)
+4. 运行示例查询之一。
 5. 在“日志搜索”中，单击“警报”。  
 ![在搜索中创建警报](./media/log-analytics-azure-sql/create-alert01.png)
 6. 在“添加警报规则”页上，根据需要配置适当的属性和特定的阈值，然后单击“保存”。  
 ![添加警报规则](./media/log-analytics-azure-sql/create-alert02.png)
 
-### 操作 Azure SQL Analytics 数据
-<a id="act-on-azure-sql-analytics-data" class="xliff"></a>
+### <a name="act-on-azure-sql-analytics-data"></a>操作 Azure SQL Analytics 数据
 
 举例来说，用户可以执行的最有用查询之一是跨所有 Azure 订阅比较所有 Azure SQL 弹性池的 DTU 使用率。 数据库吞吐量单位 (DTU) 用于描述性能级别为“基础”、“标准”和“高级”的数据库和池的相对容量。 DTU 取决于对 CPU、内存、读取和写入的混合度量。 DTU 增加时，性能级别的性能也增加。 例如，就性能来说，DTU 为 5 时的性能级别是 DTU 为 1 时的性能级别的 5 倍。 最大 DTU 配额适用于每个服务器和弹性池。
 
@@ -146,8 +145,7 @@ Type=AzureMetrics ResourceId=*"/ELASTICPOOLS/"* MetricName=dtu_consumption_perce
 
 ![日志搜索结果 - 高使用率](./media/log-analytics-azure-sql/log-search-high-util.png)
 
-## 另请参阅
-<a id="see-also" class="xliff"></a>
+## <a name="see-also"></a>另请参阅
 
 - 使用 Log Analytics 中的[日志搜索](log-analytics-log-searches.md)查看 Azure SQL 的详细数据。
 - [创建你自己的仪表板](log-analytics-dashboards.md)，显示 Azure SQL 数据。

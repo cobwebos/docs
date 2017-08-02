@@ -12,52 +12,59 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 02/15/2017
+ms.date: 07/13/2017
 ms.author: eugenesh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 54b8e16504e1170058dd021f7f7e2fba7b99bba7
+ms.translationtype: HT
+ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
+ms.openlocfilehash: 49f614fdf3ba84de238139387ea97ee62077b072
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/17/2017
 
 ---
 
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>使用索引器将 Azure SQL 数据库连接到 Azure 搜索
-Azure 搜索服务是一项托管的云搜索服务，可以轻松地提供强大的搜索体验。 需要先使用你的数据填充 Azure 搜索索引，然后才能进行搜索。 如果数据驻留在 Azure SQL 数据库中，新 **Azure SQL 数据库的 Azure 搜索索引器**（或简称 **Azure SQL 索引器**）可自动执行索引过程。 这意味着你要编写的代码和关注的基础结构都较少。
 
-本文介绍了使用索引器的机制，但还介绍了仅适用于 Azure SQL 数据库的功能（如集成的更改跟踪）。 Azure 搜索还支持其他数据源，如 Azure Cosmos DB、Blob 存储和表存储。 如果想要查看对其他数据源的支持，请在 [Azure 搜索反馈论坛](https://feedback.azure.com/forums/263029-azure-search/)上提供你的反馈。
+必须先使用数据填充 [Azure 搜索索引](search-what-is-an-index.md)，然后才能对其进行查询。 如果数据驻留在 Azure SQL 数据库中，则 **Azure SQL 数据库的 Azure 搜索索引器**（或简称 **Azure SQL 索引器**）可自动执行索引编制过程，这意味着需要编写的代码更少且需要考虑的基础结构更少。
+
+本文不但介绍了使用[索引器](search-indexer-overview.md)的机制，而且还介绍了仅适用于 Azure SQL 数据库的功能（如集成的更改跟踪）。 
+
+除了 Azure SQL 数据库之外，Azure 搜索还针对 [Azure Cosmos DB](search-howto-index-documentdb.md)、[Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)和 [Azure 表存储](search-howto-indexing-azure-tables.md)提供了索引器。 若要请求对其他数据源的支持，请在 [Azure 搜索反馈论坛](https://feedback.azure.com/forums/263029-azure-search/)上提供反馈。
 
 ## <a name="indexers-and-data-sources"></a>索引器和数据源
-可使用以下内容设置和配置 Azure SQL 索引器：
 
-* [Azure 门户](https://portal.azure.com)中的导入数据向导
-* Azure 搜索 [.NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx)
-* Azure 搜索 [REST API](http://go.microsoft.com/fwlink/p/?LinkID=528173)
+**数据源**指定要编制索引的数据、用于访问数据的凭据和有效标识数据更改（新行、修改的行或删除的行）的策略。 它定义为独立的资源，以便可供多个索引器使用。
 
-在本文中，我们将使用 REST API 介绍如何创建和管理**索引器**和**数据源**。
-
-**数据源**指定要编制索引的数据、访问数据所需的凭据和有效标识数据更改（新行、修改的行或删除的行）的策略。 它定义为独立的资源，以便可供多个索引器使用。
-
-**索引器**是将数据源连接到目标搜索索引的资源。 可通过以下方式使用索引器：
+**索引器**是将单个数据源连接到目标搜索索引的资源。 可通过以下方式使用索引器：
 
 * 执行数据的一次性复制以填充索引。
 * 按计划使用数据源中的更改更新索引。
 * 按需运行以根据需要更新索引。
 
+单个索引器只能使用一个表或视图，但是，如果希望填充多个搜索索引，可以创建多个索引器。 有关概念的详细信息，请参阅[索引器操作：典型工作流](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations#typical-workflow)。
+
+可使用以下内容设置和配置 Azure SQL 索引器：
+
+* [Azure 门户](https://portal.azure.com)中的导入数据向导
+* Azure 搜索 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
+* Azure 搜索 [REST API](https://docs.microsoft.com/en-us/rest/api/searchservice/indexer-operations)
+
+在本文中，我们将使用 REST API 创建**索引器**和**数据源**。
+
 ## <a name="when-to-use-azure-sql-indexer"></a>何时使用 Azure SQL 索引器
-根据与你的数据相关的多个因素，可能适合也可能不适合使用 Azure SQL 索引器。 如果你的数据符合以下要求，可以使用 Azure SQL 索引器：
+根据与你的数据相关的多个因素，可能适合也可能不适合使用 Azure SQL 索引器。 如果数据符合以下要求，可以使用 Azure SQL 索引器。
 
-* 所有数据均来自单个表或视图
-  * 如果数据分散在多个表中，可以创建一个视图，并将该视图与索引器配合使用。 但是，如果使用视图，则无法使用 SQL Server 集成的更改检测。 有关详细信息，请参阅[此部分](#CaptureChangedRows)。
-* 索引器支持数据源中使用的数据类型。 支持大多数但并非全部 SQL 类型。 有关详细信息，请参阅[在 Azure 搜索中映射数据类型](http://go.microsoft.com/fwlink/p/?LinkID=528105)。
-* 无需在行发生更改时立即实时更新索引。
-  * 索引器最多每 5 分钟重新编制你的表的索引。 如果你的数据频繁更改并且所做更改需要在数秒或数分钟内反映在索引中，建议直接使用 [Azure 搜索索引 API](https://msdn.microsoft.com/library/azure/dn798930.aspx)。
-* 如果你具有较大的数据集并打算按计划运行索引器，你的架构允许我们有效标识更改（和删除（如果适用））的行。 有关更多详细信息，请参阅下面的“捕获更改和删除的行”。
-* 行中已编制索引的字段的大小不能超过 Azure 搜索索引编制请求的最大大小（即 16 MB）。
+| 条件 | 详细信息 |
+|----------|---------|
+| 数据来自单个表或视图 | 如果数据分散在多个表中，可以创建数据的单一视图。 但是，如果使用视图，则无法使用 SQL Server 集成的更改检测来使用增量更改刷新索引。 有关详细信息，请参阅下文中的[捕获更改和删除的行](#CaptureChangedRows)。 |
+| 数据类型是兼容的 | Azure 搜索索引中支持大多数但并非全部 SQL 类型。 有关列表，请参阅[映射数据类型](#TypeMapping)。 |
+| 不需要进行实时数据同步 | 索引器最多每五分钟可以为表重新编制索引。 如果数据频繁更改并且所做更改需要在数秒或数分钟内反映在索引中，建议使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) 或 [.NET SDK](search-import-data-dotnet.md) 来直接推送更新的行。 |
+| 可以进行增量索引编制 | 如果具有大型数据集并打算按计划运行索引器，则 Azure 搜索必须能够有效地标识新的、更改的或删除的行。 只有按需（而非按计划）编制索引时或者为少于 100,000 行的数据编制索引时，才允许非增量索引编制。 有关详细信息，请参阅下文中的[捕获更改和删除的行](#CaptureChangedRows)。 |
 
-## <a name="create-and-use-an-azure-sql-indexer"></a>创建和使用 Azure SQL 索引器
-首先，创建数据源：
+## <a name="create-an-azure-sql-indexer"></a>创建 Azure SQL 索引器
 
+1. 创建数据源：
+
+   ```
     POST https://myservice.search.windows.net/datasources?api-version=2016-09-01
     Content-Type: application/json
     api-key: admin-key
@@ -68,14 +75,15 @@ Azure 搜索服务是一项托管的云搜索服务，可以轻松地提供强�
         "credentials" : { "connectionString" : "Server=tcp:<your server>.database.windows.net,1433;Database=<your database>;User ID=<your user name>;Password=<your password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;" },
         "container" : { "name" : "name of the table or view that you want to index" }
     }
+   ```
 
+   可从 [Azure 门户](https://portal.azure.com)获取连接字符串；请使用 `ADO.NET connection string` 选项。
 
-可从 [Azure 经典门户](https://portal.azure.com)获取连接字符串；使用 `ADO.NET connection string` 选项。
+2. 创建目标 Azure 搜索索引（如果还没有）。 可以使用[门户](https://portal.azure.com)或[创建索引 API](https://docs.microsoft.com/rest/api/searchservice/Create-Index) 创建索引。 确保你的目标索引的架构与源表的架构兼容 - 请参阅 [SQL 和 Azure 搜索数据类型之间的映射](#TypeMapping)。
 
-然后，创建目标 Azure 搜索索引（如果还没有）。 可使用[门户 UI](https://portal.azure.com) 或[创建索引 API](https://msdn.microsoft.com/library/azure/dn798941.aspx) 创建索引。 确保你的目标索引的架构与源表的架构兼容 - 请参阅 [SQL 和 Azure 搜索数据类型之间的映射](#TypeMapping)。
+3. 通过为索引器命名并引用数据源和目标索引创建索引器：
 
-最后，通过命名并引用数据源和目标索引创建索引器：
-
+    ```
     POST https://myservice.search.windows.net/indexers?api-version=2016-09-01
     Content-Type: application/json
     api-key: admin-key
@@ -85,15 +93,16 @@ Azure 搜索服务是一项托管的云搜索服务，可以轻松地提供强�
         "dataSourceName" : "myazuresqldatasource",
         "targetIndexName" : "target index name"
     }
+    ```
 
 通过此方式创建的索引器不包含计划。 它将在创建后自动运行一次。 可使用**运行索引器**请求随时再次运行：
 
     POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2016-09-01
     api-key: admin-key
 
-可自定义索引器行为的几个方面，例如批大小和可在索引器执行失败前跳过的文档数。 有关详细信息，请参阅[创建索引器 API](https://msdn.microsoft.com/library/azure/dn946899.aspx)。
+可自定义索引器行为的几个方面，例如批大小和可在索引器执行失败前跳过的文档数。 有关详细信息，请参阅[创建索引器 API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)。
 
-你可能需要允许 Azure 服务连接到你的数据库。 有关如何执行该操作的说明，请参阅[从 Azure 连接](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)。
+你可能需要允许 Azure 服务连接到你的数据库。 有关如何执行该操作的说明，请参阅[从 Azure 连接](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)。
 
 若要监视索引器状态和执行历史记录（已编制索引的项目数、失败数等），请使用**索引器状态**请求：
 
@@ -171,20 +180,23 @@ Azure 搜索服务是一项托管的云搜索服务，可以轻松地提供强�
 
 <a name="CaptureChangedRows"></a>
 
-## <a name="capturing-new-changed-and-deleted-rows"></a>捕获新行、更改的行和删除的行
-如果表中具有多个行，应使用数据更改检测策略。 通过更改检测，将仅有效检索新行或更改的行，无需重编编制整个表的索引。
+## <a name="capture-new-changed-and-deleted-rows"></a>捕获新的、更改的和删除的行
+
+Azure 搜索使用**增量索引编制**来避免索引器每次运行时都必须为整个表或视图重新编制索引。 Azure 搜索提供了两个更改检测策略来支持增量索引编制。 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>SQL 集成的更改跟踪策略
-如果你的 SQL 数据库支持[更改跟踪](https://msdn.microsoft.com/library/bb933875.aspx)，我们建议使用 **SQL 集成的更改跟踪策略**。 这是最有效的策略。 此外，它允许 Azure 搜索标识删除的行，无需向你的表中添加显式“软删除”列。
+如果你的 SQL 数据库支持[更改跟踪](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)，我们建议使用 **SQL 集成的更改跟踪策略**。 这是最有效的策略。 此外，它允许 Azure 搜索标识删除的行，无需向你的表中添加显式“软删除”列。
 
-从以下 SQL Server 数据库版本开始，支持集成的更改跟踪：
+#### <a name="requirements"></a>要求 
 
-* SQL Server 2008 R2 及更高版本，如果你使用的是 Azure VM 上的 SQL Server。
-* Azure SQL 数据库 V12，如果你使用的是 Azure SQL 数据库。
++ 数据库版本要求：
+  * SQL Server 2012 SP3 及更高版本，如果使用的是 Azure VM 上的 SQL Server。
+  * Azure SQL 数据库 V12，如果你使用的是 Azure SQL 数据库。
++ 只有表（无视图）。 
++ 在数据库上，为表[启用更改跟踪](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server)。 
++ 表上没有组合主键（包含多个列的主键）。  
 
-当使用 SQL 集成的更改跟踪策略时，不指定单独的数据删除检测策略 - 此策略具有对标识删除的行的内置支持。
-
-此策略仅适用于表，不适用于视图。 需要先为要使用的表启用更改跟踪，然后才可以使用此策略。 有关说明，请参阅[启用和禁用更改跟踪](https://msdn.microsoft.com/library/bb964713.aspx)。
+#### <a name="usage"></a>使用情况
 
 若要使用此策略，按如下所示创建或更新数据源：
 
@@ -198,18 +210,25 @@ Azure 搜索服务是一项托管的云搜索服务，可以轻松地提供强�
       }
     }
 
+当使用 SQL 集成的更改跟踪策略时，不指定单独的数据删除检测策略 - 此策略具有对标识删除的行的内置支持。 但是，对于要“自动”检测的删除项，搜索索引中的文档键必须与 SQL 表中的主键相同。 
+
 <a name="HighWaterMarkPolicy"></a>
 
 ### <a name="high-water-mark-change-detection-policy"></a>高使用标记更改检测策略
-尽管推荐使用 SQL 集成的更改跟踪策略，但它仅适用于表，不适用于视图。 如果你要使用视图，请考虑使用高使用标记策略。 如果你的表或视图包含满足以下条件的列，则可以使用此策略：
+
+此更改检测策略依赖于对版本或行的上次更新时间进行捕获的一个“高使用标记”列。 如果在使用视图，则必须使用高使用标记策略。 高使用标记列必须满足以下要求。
+
+#### <a name="requirements"></a>要求 
 
 * 所有插入都为列指定一个值。
 * 对某个项目的所有更新也会更改该列的值。
 * 此列的值随每次插入或更新而增加。
-* 可有效执行使用以下 WHERE 和 ORDER BY 子句进行的查询：`WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`。
+* 具有以下 WHERE 和 ORDER BY 子句的查询可以高效执行：`WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`
 
 > [!IMPORTANT] 
-> 强烈建议为更改跟踪设一 **rowversion** 列。 如果使用其他任何数据类型，则当存在与索引器查询并发执行的事务时，不能保证更改跟踪捕获所有更改。
+> 强烈建议为高使用标记列使用 [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) 数据类型。 如果使用其他任何数据类型，则当存在与索引器查询并发执行的事务时，不能保证更改跟踪捕获所有更改。 在具有只读副本的配置中使用 **rowversion** 时，必须将索引器指向主副本。 只有主副本可以用于数据同步方案。
+
+#### <a name="usage"></a>使用情况
 
 若要使用高使用标记策略，请按如下所示创建或更新数据源：
 
@@ -265,7 +284,7 @@ Azure 搜索服务是一项托管的云搜索服务，可以轻松地提供强�
 
 <a name="TypeMapping"></a>
 
-## <a name="mapping-between-sql-data-types-and-azure-search-data-types"></a>SQL 数据类型与 Azure 搜索数据类型之间的映射
+## <a name="mapping-between-sql-and-azure-search-data-types"></a>SQL 数据类型与 Azure 搜索数据类型之间的映射
 | SQL 数据类型 | 允许的目标索引字段类型 | 说明 |
 | --- | --- | --- |
 | bit |Edm.Boolean、Edm.String | |
@@ -296,24 +315,47 @@ SQL 索引器公开多个配置设置：
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
 
-## <a name="frequently-asked-questions"></a>常见问题
-**问：**是否可以在 Azure 中将 Azure SQL 索引器与在 IaaS VM 上运行的 SQL 数据库配合使用？
+## <a name="faq"></a>常见问题
 
-答：是的。 但是，你需要允许搜索服务连接到你的数据库。 有关详细信息，请参阅[配置从 Azure 搜索索引器到 Azure VM 上 SQL Server 的连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)。
+**问：是否可以将 Azure SQL 索引器与在 Azure 中的 IaaS VM 上运行的 SQL 数据库配合使用？**
 
-**问：**是否可以将 Azure SQL 索引器与本地运行的 SQL 数据库配合使用？
+可以。 但是，你需要允许搜索服务连接到你的数据库。 有关详细信息，请参阅[配置从 Azure 搜索索引器到 Azure VM 上 SQL Server 的连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)。
 
-答：我们不建议也不支持此操作，因为这样做需要你通过 Internet 流量打开你的数据库。
+**问：是否可以将 Azure SQL 索引器与在本地运行的 SQL 数据库配合使用？**
 
-**问：**是否可以在 Azure 上将 Azure SQL 索引器与在 IaaS 中运行的 SQL Server 除外的其他数据库配合使用？
+无法直接配合使用。 我们不建议使用也不支持直接连接，因为这样做需要使用 Internet 流量打开数据库。 对于此方案，客户已使用诸如 Azure 数据工厂之类的桥技术取得了成功。 有关详细信息，请参阅[使用 Azure 数据工厂将数据推送到 Azure 搜索索引](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector)。
 
-答：我们不支持此方案，因为我们尚未使用 SQL Server 除外的任何数据库测试该索引器。  
+**问：是否可以将 Azure SQL 索引器与在 Azure 上的 IaaS 中运行的除 SQL Server 之外的其他数据库配合使用？**
 
-**问：**是否可以创建按计划运行的多个索引器？
+否。 我们不支持此方案，因为我们尚未使用除 SQL Server 以外的任何数据库测试该索引器。  
 
-答：是的。 但是，一次只能在一个节点上运行一个索引器。 如果你需要同时运行多个索引器，请考虑将你的搜索服务扩展到多个搜索单位。
+**问：是否可以创建多个按计划运行的索引器？**
 
-**问：**运行索引器是否会影响我的查询工作负荷？
+是的。 但是，一次只能在一个节点上运行一个索引器。 如果你需要同时运行多个索引器，请考虑将你的搜索服务扩展到多个搜索单位。
 
-答：是的。 索引器在你的搜索服务中的一个节点上运行，该节点的资源在编制查询流量索引并进行处理和其他 API 请求之间共享。 如果运行密集型编制索引和查询工作负荷，并频繁遇到 503 错误或响应时间增加，请考虑扩展你的搜索服务。
+**问：运行索引器是否会影响我的查询工作负荷？**
+
+是的。 索引器在你的搜索服务中的一个节点上运行，该节点的资源在编制查询流量索引并进行处理和其他 API 请求之间共享。 如果运行密集型编制索引和查询工作负荷，并频繁遇到 503 错误或响应时间增加，请考虑[纵向扩展搜索服务](search-capacity-planning.md)。
+
+**问：是否可以将[故障转移群集](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)中的辅助副本用作数据源？**
+
+视情况而定。 对于表或视图的完整索引编制，可以使用辅助副本。 
+
+对于增量索引编制，Azure 搜索支持两个更改检测策略：SQL 集成的更改跟踪和高使用标记。
+
+在只读副本上，SQL 数据库不支持集成的更改跟踪。 因此，必须使用高使用标记策略。 
+
+我们的标准建议是为高使用标记列使用 rowversion 数据类型。 但是，使用 rowversion 依赖于 SQL 数据库的 `MIN_ACTIVE_ROWVERSION` 函数，该函数在只读副本上不受支持。 因此，如果使用 rowversion，必须将索引器指向主副本。
+
+如果尝试在只读副本上使用 rowversion，则会看到以下错误： 
+
+    "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
+
+**问：是否可以使用替代的非 rowversion 列进行高使用标记更改跟踪？**
+
+不建议这样做。 只有 **rowversion** 能够实现可靠的数据同步。 不过，取决于你的应用程序逻辑，如果满足以下条件，则可能也很可靠：
+
++ 你可以确保当索引器运行时在编制索引的表上没有未完成的事务（例如，所有表更新都按计划作为批处理进行，并且 Azure 搜索索引器计划设置为避免与表更新计划重叠）。  
+
++ 你定期执行完整重新索引来补充任何缺少的行。 
 

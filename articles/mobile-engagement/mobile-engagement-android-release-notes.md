@@ -12,16 +12,26 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: Java
 ms.topic: article
-ms.date: 03/30/2017
+ms.date: 07/17/2017
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: e50c1c70a4378560f8ce3182069cba4832fa4d22
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
+ms.openlocfilehash: c179c39a43da0aa35e945acceacbf27fe8e328f3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="release-notes"></a>发行说明
+
+## <a name="431-07172017"></a>4.3.1 (07/17/2017)
+* 修复在调用 `EngagementAgentUtils.isInDedicatedEngagementProcess`（`EngagementApplication` 类也使用）时可能很少发生的故障。
+
+## <a name="430-06272017"></a>4.3.0 (06/27/2017)
+* Android 8 支持（以前版本的 SDK 在 Android 8 上无法使用）。
+* 不再存在对支持库的依赖性。
+* 删除 `EngagementFragmentActivity` 类。
+* 由于 Android 8 的[后台执行限制](https://developer.android.com/preview/features/background.html)，后台日志可能延迟到用户与设备交互时生成，这将在设备进入睡眠状态的情况下对延迟的“已发送”推送营销活动和“显示的系统通知”统计信息产生影响（仍将显示通知，并且将实时响铃和振动，在这些方面没有问题）。
+* 由于[后台位置限制](https://developer.android.com/preview/features/background-location-limits.html)，Android 8 上的实时后台位置不会经常更新。
 
 ## <a name="424-03302017"></a>4.2.4 (03/30/2017)
 * 将 Android 7 中的应用内通知文本颜色修复为与之前 Android 版本中相同。

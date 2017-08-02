@@ -4,7 +4,7 @@ description: "本文概述了 Azure SQL 数据同步（预览版）。"
 services: sql-database
 documentationcenter: 
 author: douglaslms
-manager: jhubbard
+manager: craigg
 editor: 
 ms.assetid: 
 ms.service: sql-database
@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: douglasl
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 075b5563688158289d51f2f0b5da4a3441ddd13a
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 94c8160464cd7355ac0e0733801d0b06fcdfab7c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 数据同步跨多个云和本地数据库同步数据
@@ -29,7 +28,7 @@ ms.lasthandoff: 06/29/2017
 
 SQL 数据同步以同步组的概念为依据。 同步组是一组要同步的数据库。
 
-同步组具有以下多个属性：
+同步组具有以下属性：
 
 -   “同步架构”描述了在同步的数据。
 
@@ -39,7 +38,7 @@ SQL 数据同步以同步组的概念为依据。 同步组是一组要同步的
 
 -   “冲突解决策略”是组级别策略，可以是“中心胜出”，也可以是“成员胜出”。
 
-SQL 数据同步使用中心辐射型拓扑来同步数据。 必须将组中的一个数据库定义为中心数据库。 其余数据库均为成员数据库。 仅在中心和各成员之间同步数据。
+SQL 数据同步使用中心辐射型拓扑来同步数据。 将组中的一个数据库定义为中心数据库。 其余数据库均为成员数据库。 仅在中心和各成员之间同步数据。
 -   中心数据库必须是 Azure SQL 数据库。
 -   成员数据库可以是 SQL 数据库、本地 SQL Server 数据库或 Azure 虚拟机上的 SQL Server 实例。
 -   同步数据库包含数据同步的元数据和日志。 同步数据库必须是与中心数据库位于同一区域的 Azure SQL 数据库。 同步数据库的创建者和所有者均为客户。
@@ -82,7 +81,7 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 必须将组中的
 ## <a name="limitations-and-considerations"></a>限制和注意事项
 
 ### <a name="performance-impact"></a>性能影响
-SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在用户数据库中创建端表。 这些活动会影响数据库工作负载。因此，请评估服务层，并根据需要进行升级。
+SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在用户数据库中创建用于跟踪的端表。 这些更改跟踪活动会对数据库工作负荷产生影响。 评估服务层并根据需要升级。
 
 ### <a name="eventual-consistency"></a>最终一致性
 由于 SQL 数据同步是基于触发器的服务，因此无法保证事务一致性。 Microsoft 保证最终执行所有更改，且 SQL 数据同步不会导致数据丢失。
@@ -101,9 +100,9 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 
 -   每个表都必须有主键。
 
--   如果表包含标识列，则必须是主键。
+-   表不能包含非主键标识列。
 
--   数据库名称不能包含特殊字符。
+-   对象（数据库、表和列）的名称不能包含可打印字符句点 (.)、左方括号 ([) 或右方括号 (])。
 
 ### <a name="limitations-on-service-and-database-dimensions"></a>服务和数据库维度方面的限制
 
@@ -119,6 +118,28 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 | 表中的数据行大小                                        | 24MB                  |                             |
 | 最小同步间隔                                           | 5 分钟              |                             |
 
+## <a name="common-questions"></a>常见问题
+
+### <a name="how-frequently-can-data-sync-synchronize-my-data"></a>数据同步以什么频率同步数据？ 
+最小频率是每隔五分钟。
+
+### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>数据同步是否可以用于只在 SQL Server 本地数据库之间同步？ 
+无法直接关闭。 但是，可以间接地在 SQL Server 本地数据库之间同步，方法是在 Azure 中创建一个中心数据库，然后将本地数据库添加到同步组。
+   
+### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-keep-them-synchronized"></a>是否可以将生产数据库中的数据种子植入到空数据库，然后使它们保持同步？ 
+是的。 通过从原始数据库编写脚本，在新数据库中手动创建架构。 创建架构后，将表添加到同步组以复制数据并使其同步。
+
+### <a name="why-do-i-see-tables-that-i-did-not-create"></a>为什么出现了未创建的表？  
+数据同步在数据库中创建用于跟踪的端表。 请不要删除这些表，否则数据同步会停止工作。
+   
+### <a name="i-got-an-error-message-that-said-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-the-error"></a>有一条错误消息指出“无法在列 \<column\> 中插入值 NULL。 此列不允许 null 值。” 这是什么意思，如何解决该错误？ 
+此错误消息表示存在两个以下问题之一：
+1.  可能存在一个不包含主键的表。 若要解决此问题，请将主键添加到要同步的所有表。
+2.  CREATE INDEX 语句中可能存在 WHERE 子句。 同步不会处理这种情况。 若要解决此问题，请删除 WHERE 子句，或手动对所有数据库进行更改。 
+ 
+### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a>数据同步如何处理循环引用？ 也就是说，如果在多个同步组中同步相同的数据，这些数据是否不断更改？
+数据同步不会处理循环引用。 请务必避免循环引用。 
+
 ## <a name="next-steps"></a>后续步骤
 
 有关 SQL 数据库和 SQL 数据同步的详细信息，请参阅：
@@ -132,6 +153,4 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 -   [SQL 数据库概述](sql-database-technical-overview.md)
 
 -   [数据库生命周期管理](https://msdn.microsoft.com/library/jj907294.aspx)
-
-
 

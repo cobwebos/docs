@@ -82,7 +82,7 @@ ms.lasthandoff: 07/14/2017
 
 SQL 数据库的长期备份保留按 [Azure 备份服务定价费率](https://azure.microsoft.com/pricing/details/backup/)收费。
 
-将 SQL 数据库服务器注册到保管库后，将对保管库中存储的每周备份所使用的存储空间总量进行收费。
+将 SQL 数据库服务器注册到保管库后，将对保管库中存储的每周备份所使用的存储总量进行收费。
 
 ## <a name="view-available-backups-that-are-stored-in-long-term-backup-retention"></a>查看长期备份保留中存储的可用备份
 
