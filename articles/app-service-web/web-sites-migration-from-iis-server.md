@@ -1,6 +1,6 @@
 ---
-title: "将企业 Web 应用迁移至 Azure App Service"
-description: "演示如何使用 Web Apps 迁移助手快速将现有 IIS 网站迁移至 Azure App Service Web Apps"
+title: "将企业 Web 应用迁移至 Azure 应用服务"
+description: "演示如何使用 Web 应用迁移助手快速将现有 IIS 网站迁移至 Azure 应用服务 Web 应用"
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -15,18 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: 6fdee57d33b19569ef892d0d32ea7007fd69faaf
-ms.lasthandoff: 03/23/2017
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 18d6a8da38b42dcf5c1500f7fc26638aea26a809
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/11/2017
 
 
 ---
-# <a name="migrate-an-enterprise-web-app-to-azure-app-service"></a>将企业 Web 应用迁移至 Azure App Service
+# <a name="migrate-an-enterprise-web-app-to-azure-app-service"></a>将企业 Web 应用迁移至 Azure 应用服务
 可以轻松将运行于 Internet 信息服务 (IIS) 6 或更高版本的现有网站迁移至[应用服务 Web 应用](http://go.microsoft.com/fwlink/?LinkId=529714)。 
 
 > [!IMPORTANT]
-> Windows Server 2003 已在 2015 年 7 月 14 终止支持。 如果您的网站目前正运行于 IIS 服务器（即 Windows Server 2003），Web Apps 将能够以较低的风险、成本和摩擦保持网站联机，此外，Web Apps 迁移助手还可帮助您实现迁移过程自动化。 
+> Windows Server 2003 已在 2015 年 7 月 14 终止支持。 如果您的网站目前正运行于 IIS 服务器（即 Windows Server 2003），Web 应用将能够以较低的风险、成本和摩擦保持网站联机，此外，Web 应用迁移助手还可帮助您实现迁移过程自动化。 
 > 
 > 
 
@@ -35,17 +36,17 @@ ms.lasthandoff: 03/23/2017
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="elements-verified-during-compatibility-analysis"></a>兼容性分析期间所验证的元素
-迁移助手能够创建准备情况报告，以确定任何可能导致从本地 IIS 迁移至 Azure App Service Web Apps 失败的潜在隐患或妨碍性问题。 需注意以下几个要点：
+迁移助手能够创建准备情况报告，以确定任何可能导致从本地 IIS 迁移至 Azure 应用服务 Web 应用失败的潜在隐患或妨碍性问题。 需注意以下几个要点：
 
-* 端口绑定 - Web Apps 仅支持用于 HTTP 的端口 80 和用于 HTTPS 通信的端口 443。 不同的端口配置将会被忽略，且流量将路由到 80 或 443。 
-* 身份验证 – Web Apps 默认支持匿名身份验证，并在应用程序指定的情况下支持表单身份验证。 Windows 身份验证仅可通过集成 Azure Active Directory 和 ADFS 加以使用。 其他形式的身份验证 - 目前暂不予以支持，例如基本身份验证。 
-* 全局程序集缓存 (GAC) – GAC 不受 Web Apps 的支持。 如果您的应用程序引用您通常部署到 GAC 的程序集，您需要部署到 Web Apps 的应用程序 bin 文件夹。 
-* IIS5 兼容性模式 – Web Apps 不支持该模式。 
-* 应用程序池 - 在 Web Apps 中，各站点及其子应用程序在同一个应用程序池中运行。 如果您的站点有多个子应用程序利用多个应用程序池，请将它们整合到带有常用设置的单个应用程序池，或者将各应用程序迁移到另一个 Web 应用。
-* COM 组件 – Web Apps 不允许 COM 组件在平台上注册。 如果您的网站或应用程序使用任何 COM 组件，您必须在托管代码中对它们进行重写，并将其与网站或应用程序一同部署。
+* 端口绑定 - Web 应用仅支持用于 HTTP 的端口 80 和用于 HTTPS 通信的端口 443。 不同的端口配置将会被忽略，且流量将路由到 80 或 443。 
+* 身份验证 – Web 应用默认支持匿名身份验证，并在应用程序指定的情况下支持表单身份验证。 Windows 身份验证仅可通过集成 Azure Active Directory 和 ADFS 加以使用。 其他形式的身份验证 - 目前暂不予以支持，例如基本身份验证。 
+* 全局程序集缓存 (GAC) – GAC 不受 Web 应用的支持。 如果您的应用程序引用您通常部署到 GAC 的程序集，您需要部署到 Web 应用的应用程序 bin 文件夹。 
+* IIS5 兼容性模式 – Web 应用不支持该模式。 
+* 应用程序池 - 在 Web 应用中，各站点及其子应用程序在同一个应用程序池中运行。 如果您的站点有多个子应用程序利用多个应用程序池，请将它们整合到带有常用设置的单个应用程序池，或者将各应用程序迁移到另一个 Web 应用。
+* COM 组件 – Web 应用不允许 COM 组件在平台上注册。 如果您的网站或应用程序使用任何 COM 组件，您必须在托管代码中对它们进行重写，并将其与网站或应用程序一同部署。
 * ISAPI 扩展 - Web 应用支持使用 ISAPI 扩展。 您需要执行以下操作：
   
-  * 将 DLL与您的 Web Apps 一同部署 
+  * 将 DLL与您的 Web 应用一同部署 
   * 使用 [Web.config](http://www.iis.net/configreference/system.webserver/isapifilters) 注册 DLL
   * 使用[本文](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)的“允许加载 arbitrart ISAPI 扩展”部分中概述的内容将 applicationHost.xdt 文件放置于站点根目录下 
     
@@ -54,8 +55,8 @@ ms.lasthandoff: 03/23/2017
     有关如何使用 XML 文档转换网站的更多示例，请参阅[转换你的 Microsoft Azure 网站](http://blogs.msdn.com/b/waws/archive/2014/06/17/transform-your-microsoft-azure-web-site.aspx)。
 * 其他组件，比如 SharePoint、首页、server extensions (FPSE)、FTP，SSL 证书等，将不予迁移。
 
-## <a name="how-to-use-the-web-apps-migration-assistant"></a>如何使用 Web Apps 迁移助手
-本部分将举例逐步说明如何迁移使用 SQL Server 数据库并运行于本地 Windows Server 2003 R2 (IIS 6.0) 计算机的网站：
+## <a name="how-to-use-the-web-apps-migration-assistant"></a>如何使用 Web 应用迁移助手
+本部分将举例逐步说明如何迁移几个使用 SQL Server 数据库并运行于本地 Windows Server 2003 R2 (IIS 6.0) 计算机上的网站：
 
 1. 在 IIS 服务器或客户端计算机上，导航到 [https://www.movemetothecloud.net/](https://www.movemetothecloud.net/) 
    
@@ -66,14 +67,14 @@ ms.lasthandoff: 03/23/2017
    ![](./media/web-sites-migration-from-iis-server/install-page.png)
    
    > [!NOTE]
-   > 也可以单击“脱机安装下载”下载 ZIP 文件，用于在未接入 Internet 的服务器上安装。 还可以单击“上载现有迁移准备情况报告”，该高级选项适用于你之前生成的现有迁移准备情况报表（稍后进行说明）。
+   > 也可以单击“脱机安装下载”下载 ZIP 文件，用于在未接入 Internet 的服务器上安装。 还可以单击“上传现有迁移准备情况报告”，该高级选项适用于之前生成的现有迁移准备情况报表（稍后进行说明）。
    > 
    > 
 4. 在“应用程序安装”屏幕中，单击“安装”以在你的计算机上进行安装。 如果需要，它还会安装比如 Web 部署、DacFX，和 IIS 等相应的依赖项。 
    
    ![](./media/web-sites-migration-from-iis-server/install-progress.png)
    
-   安装后，Web Apps 迁移助手将自动启动。
+   安装后，Web 应用迁移助手将自动启动。
 5. 选择“将站点和数据库从远程服务器迁移到 Azure”。 输入远程服务器的管理凭据，然后单击“继续”。 
    
    ![](./media/web-sites-migration-from-iis-server/migrate-from-remote.png)
@@ -84,11 +85,11 @@ ms.lasthandoff: 03/23/2017
 6. 下列屏幕截图显示了三个网站 – **默认网站**、**TimeTracker** 和 **CommerceNet4**。 他们均有我们希望迁移的关联数据库。 选择想要评估的所有站点，然后单击“下一步”。
    
    ![](./media/web-sites-migration-from-iis-server/select-migration-candidates.png)
-7. 单击“上载”以上载准备情况报表。 单击“本地保存文件”，可以在以后重新运行迁移工具并上载已保存的准备情况报告，如前文所述。
+7. 单击“上传”以上传准备情况报表。 单击“本地保存文件”，可以在以后重新运行迁移工具并上传已保存的准备情况报告，如前文所述。
    
    ![](./media/web-sites-migration-from-iis-server/upload-readiness-report.png)
    
-   准备情况报告上载完成后，Azure 将执行准备情况分析，并显示结果。 读取各网站的评估详情，并确保您了解或在继续操作之前已解决所有问题。 
+   准备情况报告上传完成后，Azure 将执行准备情况分析，并显示结果。 读取各网站的评估详情，并确保您了解或在继续操作之前已解决所有问题。 
    
    ![](./media/web-sites-migration-from-iis-server/readiness-assessment.png)
 8. 单击“开始迁移”以启动迁移。现在会重定向到 Azure 以登录帐户。 必须使用具有有效的 Azure 订阅的帐户登录。 如果没有 Azure 帐户，可以在[此处](https://azure.microsoft.com/pricing/free-trial/?WT.srch=1&WT.mc_ID=SEM_)注册免费试用版。 
@@ -118,17 +119,17 @@ ms.lasthandoff: 03/23/2017
     
     如果迁移成功，没有出错，还可以单击“提供反馈”按钮直接提供任何反馈信息。 
 12. 单击 Azure Web 应用链接，并验证迁移是否成功。
-13. 您现在可以 Azure App Service 中已迁移的 Web 应用。 为此，请登录到 [Azure 门户](https://portal.azure.com)。
-14. 在 Azure 门户中，打开 Web Apps 边栏选项卡以查看已迁移的网站（显示为 Web 应用），然后单击其中任何一个以开始管理 Web 应用，例如配置连续发布、创建备份、自动缩放、监视使用情况或性能。
+13. 您现在可以 Azure 应用服务中已迁移的 Web 应用。 为此，请登录到 [Azure 门户](https://portal.azure.com)。
+14. 在 Azure 门户中，打开 Web 应用边栏选项卡以查看已迁移的网站（显示为 Web 应用），然后单击其中任何一个以开始管理 Web 应用，例如配置连续发布、创建备份、自动缩放、监视使用情况或性能。
     
     ![](./media/web-sites-migration-from-iis-server/TimeTrackerMigrated.png)
 
 > [!NOTE]
-> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
+> 如果您想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到 [试用应用服务](https://azure.microsoft.com/try/app-service/)，您可以在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
 ## <a name="whats-changed"></a>发生的更改
-* 有关从网站更改为 App Service 的指南，请参阅 [Azure App Service 及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 有关从网站更改为 应用服务的指南，请参阅 [Azure 应用服务及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 

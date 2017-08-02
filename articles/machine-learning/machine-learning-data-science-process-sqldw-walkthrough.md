@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;hangzh;weig
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 55e3f99cd3202abc012d310b43358d3795c8531e
-ms.lasthandoff: 03/29/2017
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 244684bc875e3917b8fd0d1a6bc1464a7c36a938
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/11/2017
 
 
 ---
@@ -55,7 +56,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 ## <a name="mltasks"></a>解决三种类型的预测任务
 我们根据 *tip\_amount* 编写了三个预测问题的公式，来阐明三种类型的建模任务︰
 
-1. 二元分类：预测是否已支付某个车程的小费，即大于 $0 的 **tip**amount*是正例，等于 $0 的 \_tip*amount* 是反例\_*。
+1. 二元分类：预测是否已支付某个车程的小费，即大于 $0 的 **tip**amount *是正例，等于 $0 的 \_tip*amount *是反例\_*。
 2. **多元分类**：预测为行程支付的小费的范围。 我们将 *tip\_amount* 划分五个分类收纳组或类别：
    
         Class 0 : tip_amount = $0
@@ -85,7 +86,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 * **用户名**
 * **密码**
 
-**安装 Visual Studio 和 SQL Server Data Tools。** 有关说明，请参阅[为 SQL 数据仓库安装 Visual Studio 2015 和/或 SSDT (SQL Server Data Tools) ](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)。
+**安装 Visual Studio 和 SQL Server Data Tools。**  有关说明，请参阅[为 SQL 数据仓库安装 Visual Studio 2015 和/或 SSDT (SQL Server Data Tools) ](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)。
 
 **使用 Visual Studio 连接到你的 Azure SQL DW。** 有关说明，请参阅[使用 Visual Studio 连接到 Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-connect-overview.md)中的步骤 1 和 2。
 
@@ -320,16 +321,16 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 你将必须决定有重复的源和目标文件时该怎么办。
 
 > [!NOTE]
-> 如果你的专用 blob 存储帐户中已经有要从公共 blob 存储复制到你的专用 blob 存储帐户的 .csv 文件，那么 AzCopy 将询问你是否要将其覆盖。 如果你不希望覆盖它们，请在提示时输入 **n**。 如果你希望覆盖它们**全部**，请在提示时输入 **a**。 也可以输入 **y** 单独覆盖.csv 文件。
+> 如果你的专用 blob 存储帐户中已经有要从公共 blob 存储复制到你的专用 blob 存储帐户的 .csv 文件，那么 AzCopy 将询问你是否要将其覆盖。 如果不希望覆盖它们，请在提示时输入 **n**。 如果你希望覆盖它们**全部**，请在提示时输入 **a**。 也可以输入 **y** 单独覆盖.csv 文件。
 > 
 > 
 
 ![Plot #21][21]
 
-你可以使用自己的数据。 如果你的数据是现实生活应用程序中的，位于本地计算机上，你仍然可以使用 AzCopy 将本地数据上载到你的专用 Azure blob 存储。 你仅需要将 PowerShell 脚本文件的 AzCopy 命令中的**源**位置 `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"` 更改为包含你的数据的本地目录。
+你可以使用自己的数据。 如果数据位于本地计算机上的实际应用程序中，仍然可以使用 AzCopy 将本地数据上传到专用 Azure blob 存储。 你仅需要将 PowerShell 脚本文件的 AzCopy 命令中的**源**位置 `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"` 更改为包含你的数据的本地目录。
 
 > [!TIP]
-> 如果你的数据是现实生活应用程序中的，已经处于你的专用 Azure blob 存储中，那么你可以在 PowerShell 脚本中跳过 AzCopy 步骤，并直接将数据上载到 Azure SQL DW。 这将需要对脚本进行额外的编辑，使其适合你的数据的格式。
+> 如果你的数据是现实生活应用程序中的，已经处于你的专用 Azure blob 存储中，那么你可以在 PowerShell 脚本中跳过 AzCopy 步骤，并直接将数据上传到 Azure SQL DW。 这将需要对脚本进行额外的编辑，使其适合你的数据的格式。
 > 
 > 
 
@@ -570,7 +571,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 已下载到本地计算机的示例 IPython Notebook 和 Python 脚本文件中所需的 Azure SQL DW 信息此前已通过 PowerShell 脚本接入。 它们是可执行文件，无需任何修改。
 
-如果已设置好 AzureML 工作区，可以直接将示例 IPython Notebook 上载到 AzureML IPython Notebook 服务，并开始运行。 下面是上载到 AzureML IPython Notebook 服务的步骤：
+如果已设置好 AzureML 工作区，可以直接将示例 IPython Notebook 上传到 AzureML IPython Notebook 服务，并开始运行。 下面是上传到 AzureML IPython Notebook 服务的步骤：
 
 1. 登录 AzureML 工作区、单击顶部的“工作室”，然后单击网页左侧的“NOTEBOOKS”。
    
@@ -581,7 +582,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 3. 单击新 IPython Notebook 左上角的“Jupyter”符号。
    
     ![图 24][24]
-4. 将示例 IPython Notebook 拖放到 AzureML IPython Notebook 服务的“树”页面，然后单击“上载”。 然后，示例 IPython Notebook 将上载到 AzureML IPython Notebook 服务。
+4. 将示例 IPython Notebook 拖放到 AzureML IPython Notebook 服务的“树”页面，然后单击“上传”。 然后，示例 IPython Notebook 将上传到 AzureML IPython Notebook 服务。
    
     ![图 25][25]
 

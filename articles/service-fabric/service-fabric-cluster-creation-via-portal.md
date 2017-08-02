@@ -13,13 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/21/2017
+ms.date: 06/21/2017
 ms.author: chackdan
-translationtype: Human Translation
-ms.sourcegitcommit: bb27d279396aa7b670187560cebe2ed074576bad
-ms.openlocfilehash: c413f415cb056f079ed30cf444af4edbe20364ea
-ms.lasthandoff: 01/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 37e8d04f1786187a947a435b3cfd299546617c8b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>使用 Azure 门户在 Azure 中创建 Service Fabric 群集
@@ -144,7 +144,7 @@ Service Fabric 使用 X.509 证书保护群集。 Azure 密钥保管库用于管
 ### <a name="client-authentication-certificates"></a>客户端身份验证证书
 其他客户端证书可对执行群集管理任务的管理员进行身份验证。 Service Fabric 有两个访问级别：**管理员**和**只读用户**。 至少应使用一个证书进行管理访问。 若要进行其他用户级别的访问，必须提供单独的证书。 有关访问角色的详细信息，请参阅[适用于 Service Fabric 客户端的基于角色的访问控制][service-fabric-cluster-security-roles]。
 
-无需将客户端身份验证证书上载到密钥保管库即可使用 Service Fabric。 只需将这些证书提供给有权管理群集的用户。 
+无需将客户端身份验证证书上传到密钥保管库即可使用 Service Fabric。 只需将这些证书提供给有权管理群集的用户。 
 
 > [!NOTE]
 > 建议使用 Azure Active Directory 对执行群集管理操作的客户端进行身份验证。 若要使用 Azure Active Directory，必须[使用 Azure Resource Manager 创建群集][create-cluster-arm]。
@@ -171,7 +171,7 @@ Service Fabric 使用 X.509 证书保护群集。 Azure 密钥保管库用于管
   PS C:\Users\vturecek> Import-Module "C:\users\vturecek\Documents\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
 ```
 
-此 PowerShell 模块中的 `Invoke-AddCertToKeyVault` 命令自动将证书私钥的格式设置为 JSON 字符串，并将它上载到密钥保管库。 使用该字符串可将群集证书与任何其他应用程序证书添加到密钥保管库。 针对要在群集中安装的其他任何证书重复此步骤。
+此 PowerShell 模块中的 `Invoke-AddCertToKeyVault` 命令自动将证书私钥的格式设置为 JSON 字符串，并将它上传到密钥保管库。 使用该字符串可将群集证书与任何其他应用程序证书添加到密钥保管库。 针对要在群集中安装的其他任何证书重复此步骤。
 
 ```powershell
 PS C:\Users\vturecek> Invoke-AddCertToKeyVault -SubscriptionId <guid> -ResourceGroupName mycluster-keyvault -Location "West US" -VaultName myvault -CertificateName mycert -Password "<password>" -UseExistingCertificate -ExistingPfxFilePath "C:\path\to\mycertkey.pfx"
@@ -208,7 +208,7 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 ![在 Azure 门户中搜索 Service Fabric 群集模板。][SearchforServiceFabricClusterTemplate]
 
 1. 登录到 [Azure 门户][azure-portal]。
-2. 单击“**新建**”添加新的资源模板。 在“**全部**”下面的“**应用商店**”中搜索 Service Fabric 群集模板。
+2. 单击“**新建**”添加新的资源模板。 在“全部”下面的“Marketplace”中搜索 Service Fabric 群集模板。
 3. 从列表中选择“**Service Fabric 群集**”。
 4. 导航到“**Service Fabric 群集**”边栏选项卡，然后单击“**创建**”。
 5. “**创建 Service Fabric 群集**”边栏选项卡包含以下四个步骤。
@@ -232,7 +232,7 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 #### <a name="2-cluster-configuration"></a>2.群集配置
 ![创建节点类型][CreateNodeType]
 
-配置群集节点。 节点类型定义 VM 大小、VM 数目及其属性。 群集可以有不只一个节点类型，但主节点类型（在门户定义的第一个节点类型）必须至少有&5; 个 VM，因为这是 Service Fabric 系统服务放置到的节点类型。 不需要配置“**放置属性**”，因为系统会自动添加了“NodeTypeName”的默认放置属性。
+配置群集节点。 节点类型定义 VM 大小、VM 数目及其属性。 群集可以有不只一个节点类型，但主节点类型（在门户定义的第一个节点类型）必须至少有 5 个 VM，因为这是 Service Fabric 系统服务放置到的节点类型。 不需要配置“**放置属性**”，因为系统会自动添加了“NodeTypeName”的默认放置属性。
 
 > [!NOTE]
 > 具有多个节点类型的常见情景是包含前端服务和后端服务的应用程序。 要将前端服务放在端口向 Internet 开放的较小型 VM（D2 等 VM 大小）上，同时要将后端服务放在没有向 Internet 开放端口的较大型 VM（D4、D6、D15 等 VM 大小）上。
@@ -244,7 +244,7 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 3. 选择 VM 大小和定价层。 D 系列 VM 具有 SSD 驱动器，强烈建议用于有状态应用程序。 不要使用任何具有部分核心或可用磁盘容量小于 7GB 的 VM SKU。 
 4. 主节点类型的 VM **数目**下限取决于你选择的**可靠性**层。 可靠性层的默认值为 Silver。 有关可靠性的详细信息，请参阅[如何选择 Service Fabric 群集可靠性和持久性][service-fabric-cluster-capacity]。
 5. 选择节点类型的 VM 数目。 可在以后扩展或缩减节点类型中的 VM 数目，但数目下限取决于选择的可靠性层。 其他节点类型的下限可以是 1 个 VM。
-6. 配置自定义终结点。 可在此字段中输入以逗号分隔的端口列表，可以通过 Azure Load Balancer 针对应用程序向公共 Internet 公开这些端口。 例如，如果计划在群集中部署 Web 应用程序，请在此处输入“80”，允许端口 80 的流量进入群集。 有关终结点的详细信息，请参阅[与应用程序通信][service-fabric-connect-and-communicate-with-services]
+6. 配置自定义终结点。 可在此字段中输入以逗号分隔的端口列表，可以通过 Azure 负载均衡器针对应用程序向公共 Internet 公开这些端口。 例如，如果计划在群集中部署 Web 应用程序，请在此处输入“80”，允许端口 80 的流量进入群集。 有关终结点的详细信息，请参阅[与应用程序通信][service-fabric-connect-and-communicate-with-services]
 7. 配置群集**诊断**。 默认情况下，已在群集上启用诊断，以帮助排查问题。 若要禁用诊断，请将其“**状态**”切换为“**关闭**”。 **不**建议关闭诊断。
 8. 选择要将群集设置到的 Fabric 升级模式。 如果希望系统自动选取最新可用版本并尝试将你的群集升级到最新版本，则选择“**自动**”。 如果想要选择受支持的版本，则将模式设置为“**手动**”。
 
@@ -258,7 +258,7 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 
 最后一个步骤是使用前面创建的密钥保管库和证书信息，提供证书信息来保护群集。
 
-* 在主证书字段中，填充使用 `Invoke-AddCertToKeyVault`PowerShell 命令将**群集证书**上载到密钥保管库后获得的输出。
+* 在主证书字段中，填充使用 `Invoke-AddCertToKeyVault`PowerShell 命令将**群集证书**上传到密钥保管库后获取的输出。
 
 ```powershell
 Name  : CertificateThumbprint
@@ -297,7 +297,7 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 > 
 
 ## <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>远程连接到虚拟机规模集实例或群集节点
-每次在群集中指定 NodeTypes，都会设置 VM 缩放集。 有关详细信息，请参阅[远程连接到 VM 规模集实例][remote-connect-to-a-vm-scale-set]。
+每次在群集中指定 NodeTypes，都会设置虚拟机规模集。 有关详细信息，请参阅[远程连接到虚拟机规模集实例][remote-connect-to-a-vm-scale-set]。
 
 ## <a name="next-steps"></a>后续步骤
 此时，已创建一个使用证书进行管理身份验证的安全群集。 接下来，请[连接到该群集](service-fabric-connect-to-secure-cluster.md)，了解如何[管理应用程序机密](service-fabric-application-secret-management.md)。  此外，了解 [Service Fabric 支持选项](service-fabric-support.md)。
