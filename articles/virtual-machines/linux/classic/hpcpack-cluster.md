@@ -34,17 +34,17 @@ ms.lasthandoff: 07/12/2017
 有关在 Azure 中运行 Linux HPC 工作负荷的其他选项，请参阅 [Technical resources for batch and high-performance computing](../../../batch/big-compute-resources.md)（适用于批处理和高性能计算的技术资源）。
 
 ## <a name="deploy-an-hpc-pack-cluster-with-linux-compute-nodes"></a>使用 Linux 计算节点部署 HPC Pack 群集
-本文介绍用于在 Azure 中部署包含 Linux 计算节点的 HPC Pack 群集的两个选项。 这两种方法使用包含 HPC Pack 的 Windows Server 应用商店映像创建头节点。 
+本文介绍用于在 Azure 中部署包含 Linux 计算节点的 HPC Pack 群集的两个选项。 这两种方法使用包含 HPC Pack 的 Windows Server 的 Marketplace 映像创建头节点。 
 
-* **Azure Resource Manager 模板** - 使用 Azure 应用商店中的模板或社区中的快速入门模板，自动在 Resource Manager 部署模型中创建群集。 例如，Azure 应用商店中的 [HPC Pack cluster for Linux workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)（适用于 Linux 工作负荷的 HPC Pack 群集）模板可为 Linux HPC 工作负荷创建完整的 HPC Pack 群集基础结构。
-* **PowerShell 脚本** - 使用 [Microsoft HPC Pack IaaS 部署脚本](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) (**New-HpcIaaSCluster.ps1**) 在经典部署模型中自动执行完整的群集部署。 此 Azure PowerShell 脚本使用 Azure 应用商店中的 HPC Pack VM 映像进行快速部署，并提供一组全面的配置参数用于部署 Linux 计算节点。
+* **Azure Resource Manager 模板** - 使用 Azure Marketplace 中的模板或社区中的快速入门模板，自动在 Resource Manager 部署模型中创建群集。 例如，Azure Marketplace 中的 [HPC Pack cluster for Linux workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)（适用于 Linux 工作负荷的 HPC Pack 群集）模板可为 Linux HPC 工作负荷创建完整的 HPC Pack 群集基础结构。
+* **PowerShell 脚本** - 使用 [Microsoft HPC Pack IaaS 部署脚本](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) (**New-HpcIaaSCluster.ps1**) 在经典部署模型中自动执行完整的群集部署。 此 Azure PowerShell 脚本使用 Azure Marketplace 中的 HPC Pack VM 映像进行快速部署，并提供一组全面的配置参数用于部署 Linux 计算节点。
 
 有关 Azure 中 HPC Pack 群集部署选项的详细信息，请参阅 [Options to create and manage a high-peformance computing (HPC) cluster in Azure with Microsoft HPC Pack](../hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（使用 Microsoft HPC Pack 在 Azure 中创建和管理高性能计算 (HPC) 群集时可用的选项）。
 
 ### <a name="prerequisites"></a>先决条件
 * **Azure 订阅** - 可以使用 Azure 全球或 Azure 中国服务中的订阅。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 * **核心配额** - 可能需要增加内核配额，尤其是在选择部署具有多核 VM 大小的多个群集节点时。 若要增加配额，可免费建立联机客户支持请求。
-* **Linux 分发版** - 当前 HPC Pack 对计算节点支持以下 Linux 分发版。 你可以使用这些分发版的应用商店版本，或提供自己的版本。
+* **Linux 分发版** - 当前 HPC Pack 对计算节点支持以下 Linux 分发版。 你可以使用这些分发版的 Marketplace 版本，或提供自己的版本。
   
   * **基于 CentOS 的分发版**：6.5、6.6、6.7、7.0、7.1、7.2、6.5 HPC、7.1 HPC
   * **Red Hat Enterprise Linux**：6.7、6.8、7.2
@@ -52,7 +52,7 @@ ms.lasthandoff: 07/12/2017
   * **Ubuntu Server**：14.04 LTS、16.04 LTS
     
     > [!TIP]
-    > 若要使用具有某个支持 RDMA 的 VM 大小的 Azure RDMA 网络，请从应用商店中指定 SUSE Linux Enterprise Server 12 HPC 或基于 CentOS 的 HPC 映像。 有关详细信息，请参阅[高性能计算 VM 大小](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+    > 若要使用具有某个支持 RDMA 的 VM 大小的 Azure RDMA 网络，请从 Azure Marketplace 中指定 SUSE Linux Enterprise Server 12 HPC 或基于 CentOS 的 HPC 映像。 有关详细信息，请参阅[高性能计算 VM 大小](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
     > 
     > 
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 07/12/2017
 * **HPC Pack IaaS 部署脚本** - 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=44949)下载并解压缩最新版本的脚本。 可以通过运行 `.\New-HPCIaaSCluster.ps1 –Version` 检查脚本的版本。 本文基于版本 4.4.1 或更高版本的脚本。
 
 ### <a name="deployment-option-1-use-a-resource-manager-template"></a>部署选项 1。 使用 Resource Manager 模板
-1. 转到 Azure 应用商店中的[适用于 Linux 工作负荷的 HPC Pack 群集](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)模板，然后单击“部署”。
+1. 转到 Azure Marketplace 中的[适用于 Linux 工作负荷的 HPC Pack 群集](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)模板，然后单击“部署”。
 2. 在 Azure 门户中复查信息，然后单击“创建”。
    
     ![在门户中创建][portal]
