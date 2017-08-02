@@ -14,24 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 09/01/2016
 ms.author: cephalin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 2576b658eaf1df95aa9700e06559edf6066cc534
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 6eadf0a521a32c5bc580908e4e4b7f4305e2bf7e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
+ms.lasthandoff: 07/11/2017
 
 
 ---
-# 使用 Azure Active Directory 身份验证创建业务线 Azure 应用
-<a id="create-a-line-of-business-azure-app-with-azure-active-directory-authentication" class="xliff"></a>
+# <a name="create-a-line-of-business-azure-app-with-azure-active-directory-authentication"></a>使用 Azure Active Directory 身份验证创建业务线 Azure 应用
 本文说明如何在 [Azure 应用服务 Web 应用](http://go.microsoft.com/fwlink/?LinkId=529714)中使用[身份验证/授权](../app-service/app-service-authentication-overview.md)功能创建 .NET 业务线应用。 另外，还说明如何在应用程序中使用 [Azure Active Directory 图形 API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) 查询目录数据。
 
 使用的 Azure Active Directory 租户可以是仅限 Azure 的目录。 或者，可以将它[与本地 Active Directory 同步](../active-directory/active-directory-aadconnect.md)，为本地和远程工作者创建单一登录体验。 本文使用 Azure 帐户的默认目录。
 
 <a name="bkmk_build"></a>
 
-## 要生成的项目
-<a id="what-you-will-build" class="xliff"></a>
+## <a name="what-you-will-build"></a>要生成的项目
 将在应用服务 Web 应用中构建用于跟踪工作项并具有以下功能的简单的业务线创建-读取-更新-删除 (CRUD) 应用程序：
 
 * 根据 Azure Active Directory 对用户进行身份验证
@@ -42,8 +40,7 @@ ms.lasthandoff: 06/02/2017
 
 <a name="bkmk_need"></a>
 
-## 所需条件
-<a id="what-you-need" class="xliff"></a>
+## <a name="what-you-need"></a>所需条件
 [!INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
 
 若要完成本教程，你需要以下项目：
@@ -55,8 +52,7 @@ ms.lasthandoff: 06/02/2017
 
 <a name="bkmk_deploy"></a>
 
-## 创建 Web 应用并将其部署到 Azure
-<a id="create-and-deploy-a-web-app-to-azure" class="xliff"></a>
+## <a name="create-and-deploy-a-web-app-to-azure"></a>创建 Web 应用并将其部署到 Azure
 1. 在 Visual Studio 中，依次单击“文件” > “新建” > “项目”。
 2. 选择“ASP.NET Web 应用程序”、为项目命名，然后单击“确定”。
 3. 选择“MVC”模板，然后将身份验证更改为“无身份验证”。 确保已选中“在云中托管”，然后单击“确定”。
@@ -79,8 +75,7 @@ ms.lasthandoff: 06/02/2017
 
 <a name="bkmk_auth"></a>
 
-## 配置身份验证和目录访问
-<a id="configure-authentication-and-directory-access" class="xliff"></a>
+## <a name="configure-authentication-and-directory-access"></a>配置身份验证和目录访问
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 从左侧菜单中，单击“应用服务” > **&lt;*应用名称*>** >“身份验证 / 授权”。
    
@@ -146,8 +141,7 @@ ms.lasthandoff: 06/02/2017
 
 <a name="bkmk_crud"></a>
 
-## 将业务线功能添加到应用
-<a id="add-line-of-business-functionality-to-your-app" class="xliff"></a>
+## <a name="add-line-of-business-functionality-to-your-app"></a>将业务线功能添加到应用
 现在，可以创建一个简单的 CRUD 工作项跟踪器。  
 
 1. 在 ~\Models 文件夹中，创建名为 WorkItem.cs 的类文件，将 `public class WorkItem {...}` 替换为以下代码：
@@ -340,16 +334,14 @@ ms.lasthandoff: 06/02/2017
 
 <a name="next"></a>
 
-## 后续步骤
-<a id="next-step" class="xliff"></a>
+## <a name="next-step"></a>后续步骤
 如果 Azure 中的业务线应用需要基于角色的访问控制 (RBAC)，请参阅 [WebApp-RoleClaims-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) 获取 Azure Active Directory 团队提供的示例。 该示例演示了如何为 Azure Active Directory 应用程序启用角色，然后使用 `[Authorize]` 装饰为用户授权。
 
 如果业务线应用需要访问本地数据，请参阅[在 Azure 应用服务中使用混合连接访问本地资源](web-sites-hybrid-connection-get-started.md)。
 
 <a name="bkmk_resources"></a>
 
-## 其他资源
-<a id="further-resources" class="xliff"></a>
+## <a name="further-resources"></a>其他资源
 * [Azure 应用服务中的身份验证和授权](../app-service/app-service-authentication-overview.md)
 * [在 Azure 应用中使用本地 Active Directory 进行身份验证](web-sites-authentication-authorization.md)
 * [在 Azure 中使用 AD FS 身份验证创建业务线应用](web-sites-dotnet-lob-application-adfs.md)

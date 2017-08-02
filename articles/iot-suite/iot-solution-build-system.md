@@ -12,22 +12,24 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/25/2016
+ms.date: 06/30/2017
 ms.author: harikm
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 012bfc7d8431e2edb2b1056fb465421fad58193a
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c4b19cc76ca11f606ca8af6b0f3277b5aa46ac5a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/08/2017
 
 
 ---
 # <a name="build-and-deploy-the-mydriving-solution-to-your-environment"></a>生成 MyDriving 解决方案并将其部署到你的环境
 MyDriving 是一个物联网 (IoT) 解决方案，它可收集你汽车的数据并通过使用机器学习对其进行处理，然后将数据显示你的移动电话上。 后端包含 Microsoft Azure 提供的多种服务。 客户端可以是 Android、iOS 或 Windows 10 手机。
 
-我们创建了 MyDriving 解决方案以帮助你快速开始创建自己的 IoT 系统。 可以从 [GitHub 上的 MyDriving 存储库](https://github.com/Azure-Samples/MyDriving)获取 Azure Resource Manager 脚本，以将后端体系结构部署到自己的 Azure 帐户。 然后，你可以重新配置不同的服务，并修改查询，以遍实现适应你自己数据等用途。 你可以在MyDriving 存储库中找到这些脚本，以及移动应用和 Azure App Service API 项目等的代码。
+我们创建了 MyDriving 解决方案以帮助你快速开始创建自己的 IoT 系统。 可以从 [GitHub 上的 MyDriving 存储库](https://github.com/Azure-Samples/MyDriving)获取 Azure Resource Manager 脚本，以将后端体系结构部署到自己的 Azure 帐户。 然后，你可以重新配置不同的服务，并修改查询，以遍实现适应你自己数据等用途。 你可以在MyDriving 存储库中找到这些脚本，以及移动应用和 Azure 应用服务 API 项目等的代码。
 
 如果尚未尝试使用该应用，请查看[入门指南](iot-solution-get-started.md)。
 
-[MyDriving 参考指南](http://aka.ms/mydrivingdocs)中提供了有关体系结构的详细帐户。 总之，我们设置了几个部分，你可通过设置这些部分来创建类似的项目：
+[MyDriving 参考指南](http://aka.ms/mydrivingdocs)中提供了有关体系结构的详细帐户。 总之，我们设置了几个部分，可通过设置这些部分来创建类似的项目：
 
 * **客户端应用**在 Android、iOS 和 Windows 10 手机上运行。 我们使用 Xamarin 平台共享大量代码，这些代码存储在 GitHub 上的 `src/MobileApp` 下。 该应用实际上将执行两个不同的功能：
   * 它从车载诊断系统 (OBD) 设备和其自己的位置服务向系统的云后端中继遥测。
@@ -41,7 +43,12 @@ MyDriving 是一个物联网 (IoT) 解决方案，它可收集你汽车的数据
 * **HockeyApp** 用于分发设备代码的版本。 它还将收集故障和使用情况报告及用户反馈。
 * **Visual Studio Application Insights** 监视移动 Web 服务。
 
-让我们看如何设置以上所有内容。 请注意，很多步骤都是可选的。
+让我们看如何设置以上所有内容。 
+
+> [!NOTE] 
+> 以下很多步骤都是可选的。
+>
+>
 
 ## <a name="sign-up-for-accounts"></a>注册帐户
 * [Visual Studio Dev Essentials](https://www.visualstudio.com/products/visual-studio-dev-essentials-vs.aspx)。 此免费计划提供了对许多开发人员工具和服务（包括 Visual Studio、Visual Studio 团队服务和 Azure）的轻松访问。 它为你提供在 $25/月的 Azure 信用额度，共计 12 个月。 它还包括对 Pluralsight 培训和 Xamarin University 的订阅。 还可以分别注册 [Azure](https://azure.com) 和 [Visual Studio Team Services](https://www.visualstudio.com/products/visual-studio-team-services-vs.aspx) 的免费层，但这些不提供 Azure 信用额度。
@@ -63,18 +70,18 @@ MyDriving 是一个物联网 (IoT) 解决方案，它可收集你汽车的数据
 此处提供了[此设置的详细描述](https://msdn.microsoft.com/library/mt613162.aspx)。
 
 ### <a name="windows-development-machine"></a>Windows 开发计算机
-Windows 上的中心工具是 Visual Studio，可与适用于 Android 和 Windows 的 MyDriving 应用、App Service API 项目和微服务扩展配合使用。
+Windows 上的中心工具是 Visual Studio，可与适用于 Android 和 Windows 的 MyDriving 应用、应用服务 API 项目和微服务扩展配合使用。
 
 Xamarin、Git、仿真程序和其他有用的组件都与 Visual Studio 集成。
 
 安装：
 
-* [Visual Studio 2015 with Xamarin](https://www.visualstudio.com/products/visual-studio-community-vs)（任何版本--社区版免费）。
+* [Visual Studio with Xamarin](https://www.visualstudio.com/products/visual-studio-community-vs)（任何版本--社区版免费）。
 * [面向通用 Windows 平台的 SQLite](https://visualstudiogallery.msdn.microsoft.com/4913e7d5-96c9-4dde-a1a1-69820d615936)。 需要构建 Windows 10 移动版代码。
-* [用于 Visual Studio 2015 的 Azure SDK](https://go.microsoft.com/fwlink/?linkid=518003&clcid=0x409)。 为你提供用于在 Azure 中运行应用的 SDK 以及用于管理 Azure 的命令行工具。
+* [用于 Visual Studio 的 Azure SDK](https://www.visualstudio.com/vs/azure-tools/)。 为你提供用于在 Azure 中运行应用的 SDK 以及用于管理 Azure 的命令行工具。
 * [Azure Service Fabric SDK](http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric)。 对生成[微服务](../service-fabric/service-fabric-get-started.md)扩展来说是必需的。
 
-此外，请确保具有正确的 Visual Studio 扩展。 在“工具”下查看，你将看到“Android、iOS、Xamarin...”。 如果没有，请打开控制面板，然后依次选择“程序和功能” > “Microsoft” > “Visual Studio 2015” > “修改”。 在“跨平台开发”下，选择“C\#/.Net (Xamarin)”。 此时，请检查是否已安装 **Git for Window**。
+请确保具有正确的 Visual Studio 扩展。 在“工具”下查看，你将看到“Android、iOS、Xamarin...”。 如果未看到，请打开 Visual Studio，搜索 Xamarin，并按照提示安装它。 另外，请检查是否已安装 **Git for Window**。 如果未安装，请在 Visual Studio 中搜索它，并按照提示安装它。 
 
 ### <a name="mac-development-machine"></a>Mac 开发计算机
 如果你想要针对 iOS 进行开发，Mac（Yosemite 或更高版本）是必需的。 尽管我们在 Windows 上使用 Visual Studio with Xamarin 来开发和管理的所有代码，Xamarin 仍会使用 Mac 上安装的代理，以便生成 iOS 代码并对其签名。
@@ -101,7 +108,7 @@ Xamarin、Git、仿真程序和其他有用的组件都与 Visual Studio 集成�
 
 或者，如果你想要了解我们的最新代码或为其做出贡献，请克隆存储库，如下所示：
 
-**git 克隆 https://github.com/Azure-Samples/MyDriving.git**
+**git clone https://github.com/Azure-Samples/MyDriving.git**
 
 ## <a name="get-a-bing-maps-api-key"></a>获取必应地图 API 密钥
 [注册必应地图 API 密钥](https://msdn.microsoft.com/library/ff428642.aspx)。
@@ -126,7 +133,7 @@ Xamarin、Git、仿真程序和其他有用的组件都与 Visual Studio 集成�
 
 如果在生成时遇到问题，请尝试我们发现的异常解决方案：
 
-* *未加载 VINLookupApplication 项目*：请确保你已安装[用于 Visual Studio 2015 的 Azure SDK](https://go.microsoft.com/fwlink/?linkid=518003&clcid=0x409)。
+* *未加载 VINLookupApplication 项目*：请确保已安装[用于 Visual Studio 的 Azure SDK](https://www.visualstudio.com/vs/azure-tools/)。
 * *未生成 Service Fabric 项目*：首先生成接口项目，并确保已安装 Service Fabric SDK。
 * *未生成 Android 应用*：
   
@@ -139,7 +146,7 @@ Xamarin、Git、仿真程序和其他有用的组件都与 Visual Studio 集成�
 
 * Azure 扩展：Service Fabric。
 * Azure HDInsight：用于在 Azure 中处理行程数据的脚本。
-* Mobile Apps：设备应用。
+* 移动应用：设备应用。
 * MobileAppsService/MyDrivingService：Web 后端。
 * Power BI：报表定义。
 * 脚本：
@@ -165,11 +172,11 @@ HockeyApp 管理 Android、iOS 或 Windows 应用的分发，以测试用户并�
 
 [首先，上载](http://support.hockeyapp.net/kb/app-management-2/how-to-create-a-new-app)生成应用。 然后，从开发计算机登录 [HockeyApp](https://rink.hockeyapp.net)。 在开发人员仪表板上，单击“新建应用”，然后将生成的文件拖动到窗口中。 （以后，你可以使用你的生成服务自动完成此操作。）
 
-现在，你已在应用仪表板中。
+现在，已在应用仪表板中。
 
 ![应用仪表板上的概述选项卡](./media/iot-solution-build-system/image2.png)
 
-对运行你的应用的每个平台重复此过程。 然后可以执行以下操作：
+对运行你的应用的每个平台重复此过程。 然后，可以执行以下操作：
 
 * 在仪表板中使用[应用 ID](http://support.hockeyapp.net/kb/app-management-2/how-to-find-the-app-id) 来从应用发送故障数据和反馈。 在 MyDriving 中，在 src/MobileApps/MyDriving/MyDriving.Utils/Logger.cs 中更新 ID。
 * [邀请测试用户](http://support.hockeyapp.net/kb/app-management-2/how-to-invite-beta-testers)。 获取用于招聘测试人员用户的 URL。 他们将能够注册你的团队、下载应用以及向你发送反馈。
@@ -194,7 +201,7 @@ HockeyApp 管理 Android、iOS 或 Windows 应用的分发，以测试用户并�
 ## <a name="deploy-azure-services"></a>部署 Azure 服务
 若要执行 Azure 服务和 Team Services 生成服务的自动部署，请参阅 **scripts/README.md** 中的详细说明。
 
-Microsoft Azure 提供了大量可用于生成云应用程序的不同服务。 尽管许多服务可以独立使用（如 App Service/Web Apps），但当它们互连形成集成系统（如我们在 MyDriving 中使用的系统）时才具有最佳性能。
+Microsoft Azure 提供了大量可用于生成云应用程序的不同服务。 尽管许多服务可以独立使用（如应用服务/Web 应用），但当它们互连形成集成系统（如我们在 MyDriving 中使用的系统）时才具有最佳性能。
 
 可以手动创建和互连 Azure 服务，但使用 Azure Resource Manager 模板更加快速可靠。 [Resource Manager](../azure-resource-manager/resource-group-overview.md) 将自动部署解决方案的资源，并使它们互连。
 
@@ -215,7 +222,7 @@ Microsoft Azure 提供了大量可用于生成云应用程序的不同服务。 
 | IoT 中心 SKU |Azure IoT 中心服务层 |F1 |
 | 存储帐户类型 |存储复制类型 |标准 LRS |
 | SQL 服务目标 |并发槽使用量 |DW100 |
-| 托管计划 SKU |App Service 的服务计划 |F1 |
+| 托管计划 SKU |应用服务的服务计划 |F1 |
 
 在 scenario\_complete.json 中：
 
@@ -229,19 +236,19 @@ Microsoft Azure 提供了大量可用于生成云应用程序的不同服务。 
 | **服务** | **说明和详细信息** |
 | --- | --- |
 | 存储帐户 |该模板将创建三个帐户： |
-| - 从流分析接收聚合的遥测的 SQL 数据库，充当通过 API 终结点公开此数据的 Azure App Service 表的后备存储。 | |
+| - 从流分析接收聚合的遥测的 SQL 数据库，充当通过 API 终结点公开此数据的 Azure 应用服务表的后备存储。 | |
 | - 从另一个流分析作业累积历史数据的 Blob 存储，将由 HDInsight 处理。 | |
 | - SQL 数据库，接收由 HDInsight 处理以供 Power BI 使用的结果。 | |
 | Azure IoT 中心 |建立与每个连接的设备的双向连接。 在 MyDriving 解决方案中，移动应用充当现场网关，将数据发送到 Azure IoT 中心。 然后 Azure IoT 中心将作为流分析的输入。 |
 | Azure 事件中心 |流分析作业的输出，将输出加入使用 Azure Service Fabric 创建的扩展队列。 |
 | Azure SQL 数据仓库 | |
-| 流分析作业 |将输入和输出与查询连接起来，可用于为 App Service API、Azure 机器学习、扩展和 Power BI 聚合实时和历史数据。 |
+| 流分析作业 |将输入和输出与查询连接起来，可用于为应用服务 API、Azure 机器学习、扩展和 Power BI 聚合实时和历史数据。 |
 | 机器学习工作区 |包括试验、R 代码和 API 服务。 |
 | Azure 数据工厂 |计划的机器学习重新培训。 |
 | Service Fabric 托管计划 |用于扩展。 |
-| App Service（“移动应用”） |托管为移动应用提供终结点的 Mobile Apps API 项目。 必须从 Visual Studio 向 App Service 部署 API 代码。 |
+| 应用服务（“移动应用”） |托管为移动应用提供终结点的 Mobile Apps API 项目。 必须从 Visual Studio 向应用服务部署 API 代码。 |
 | 警报规则 |如果应用响应指示失败，则将向你发送电子邮件。 |
-| Application Insights |用于在 App Service 中监视 API 的性能。 必须在 Visual Studio 中配置连接。 |
+| Application Insights |用于在应用服务中监视 API 的性能。 必须在 Visual Studio 中配置连接。 |
 | Azure 密钥保管库 |用于保存 Web 服务群集证书。 |
 
 ### <a name="run-the-template"></a>运行模板
@@ -269,9 +276,9 @@ Microsoft Azure 提供了大量可用于生成云应用程序的不同服务。 
 脚本将向你提供在 Visual Studio Team Services 中配置持续集成的选项。 如果已设置了 Team Services 项目，将会有 URL：https://yourAccountName.visualstudio.com。 在系统提示时输入完整的 URL。 你可以为 Team Services 项目提供一个新名称或已有的名称。
 
 ## <a name="set-up-build-and-test-definitions-in-visual-studio-team-services"></a>在 Visual Studio Team Services 中设置生成和测试定义
-我们在此项目中使用 Team Services 主要是为了使用其生成和测试功能。 但它还提供卓越的协作支持，如使用看板的任务管理、与任务和源控件集成的代码审阅，以及封闭生成。 它可与 GitHub、Xamarin、HockeyApp（当然还有 Visual Studio）等其他工具良好集成。 你可以通过 Web 界面或通过 Visual Studio 访问它，具体取决于哪种方式更方便。
+我们在此项目中使用 Team Services 主要是为了使用其生成和测试功能。 但它还提供卓越的协作支持，如使用看板的任务管理、与任务和源控件集成的代码评审，以及封闭生成。 它可与 GitHub、Xamarin、HockeyApp（当然还有 Visual Studio）等其他工具良好集成。 你可以通过 Web 界面或通过 Visual Studio 访问它，具体取决于哪种方式更方便。
 
-生成和发布定义中的步骤使用 Team Services [应用商店](https://marketplace.visualstudio.com/VSTS)中提供的各种插件服务。 除了用于运行命令行或复制文件的基本实用程序外，还有一些通过 Xamarin、Android 和其他供应商调用生成并连接到 HockeyApp 的服务。
+生成和发布定义中的步骤使用 Team Services [Marketplace](https://marketplace.visualstudio.com/VSTS) 中提供的各种插件服务。 除了用于运行命令行或复制文件的基本实用程序外，还有一些通过 Xamarin、Android 和其他供应商调用生成并连接到 HockeyApp 的服务。
 
 ![Team Services 中的生成选项](./media/iot-solution-build-system/image5.png)
 
@@ -295,7 +302,7 @@ Microsoft Azure 提供了大量可用于生成云应用程序的不同服务。 
 如果想要查看我们的配置的完整详细信息，请参阅 [MyDriving 参考指南](http://aka.ms/mydrivingdocs)的第 4.7 部分“生成和发布配置”。 他们遵循相同的常规模式。 脚本：
 
 1. 还原 NuGet 包。 我们不在存储库中保留已编译的代码，因此每个生成的第一步便是还原所需的 NuGet 包。
-2. 激活许可证。 生成在云中执行，因此，在需要许可证时（尤其是使用 Xamarin 生成服务时），我们需要在当前生成计算机上激活许可证。 然后，我们会立即停用该许可证，以遍可以在另一台计算机上使用它。
+2. 激活许可证。 生成在云中执行，因此，在需要许可证时（尤其是使用 Xamarin 生成服务时），我们需要在当前生成计算机上激活许可证。 然后，我们会立即停用该许可证，以便可以在另一台计算机上使用它。
 3. 使用适当的服务进行生成。 我们对移动应用使用 Xamarin 生成，对后端 Web 服务使用 Visual Studio 生成。
 4. 生成测试。
 5. 运行测试。 我们在 Xamarin 测试云中运行移动应用测试。
@@ -362,13 +369,13 @@ Microsoft Azure 提供了大量可用于生成云应用程序的不同服务。 
 | [Visual Studio 2015 Community](https://www.visualstudio.com/products/visual-studio-community-vs) with [Xamarin](https://visualstudiogallery.msdn.microsoft.com/dcd5b7bd-48f0-4245-80b6-002d22ea6eee) <br/>跨平台开发环境 |Visual Studio Community。 （需要 [Visual Studio Professional](https://www.visualstudio.com/vs-2015-product-editions) for [Xamarin.Forms](https://xamarin.com/forms) 从单个代码库跨平台设计。） |$0 |
 | [Azure IoT 中心](https://azure.microsoft.com/pricing/details/iot-hub/) <br/>与设备的双向数据连接 |8,000 条消息 + 0.5 KB/消息免费。 |$0 |
 | [流分析](https://azure.microsoft.com/pricing/details/stream-analytics/)  <br/>   高容量流数据处理 |启用时，每小时对每个流式处理单位收费 $0.031。 选择所需的流式处理单位数；更多情况下会增加。 |$23 |
-| [机器学习](https://azure.microsoft.com/documentation/services/machine-learning/)<br/> 自适应响应 |$10/席位/月。 <br/>                                                                                                                                                                                  + 3 小时实验 \* $1/实验小时。 <br/>                                                                                                                                                            + 3.5 小时 API CPU \* $2/生产 CPU 小时。 <br/>                                                                                                                                                          API CPU 时间假定 5 分钟/天重新导流，尽管这会导致输入数据增多。                   <br/>                                                                                                                                                                     + 每天 2 分钟评分可每天处理 400 次行程。 |$20 |
+| [机器学习](https://azure.microsoft.com/documentation/services/machine-learning/)<br/> 自适应响应 |$10/席位/月。 <br/>                                                                                                                                                                                 + 3 小时实验 \* $1/实验小时。 <br/>                                                                                                                                                           + 3.5 小时 API CPU \* $2/生产 CPU 小时。 <br/>                                                                                                                                                          API CPU 时间假定 5 分钟/天重新导流，尽管这会导致输入数据增多。                   <br/>                                                                                                                                                                     + 每天 2 分钟评分可每天处理 400 次行程。 |$20 |
 | [应用服务](https://azure.microsoft.com/pricing/details/app-service/)  <br/> 托管移动后端 |B1 层--生产 Web 应用。 |$56 |
 | [Visual Studio Team Services](https://azure.microsoft.com/pricing/details/visual-studio-team-services/)  <br/> 生成、单元测试和发布管理；任务管理 |私有 Agent，五个用户。 |$0 |
 | [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) <br/>监视 Web 服务和站点的性能及使用情况 |免费层。 |$0 |
 | [HockeyApp](http://hockeyapp.net/pricing/) <br/> 分发 beta 应用以及反馈、使用情况和故障数据的集合 |为新用户提供两个免费应用。<br/> 之后每月 $30。 |$0 |
 | [Xamarin](https://store.xamarin.com/)<br/> 多个设备的统一平台上的代码 |免费试用。 <br/>之后每月 $25。 |$0 |
-| 面向 Azure App Service 的 [SQL 数据库](https://azure.microsoft.com/pricing/details/sql-database/) |基本层；单一数据库模型。 |$5 |
+| 面向 Azure 应用服务的 [SQL 数据库](https://azure.microsoft.com/pricing/details/sql-database/) |基本层；单一数据库模型。 |$5 |
 | [Service Fabric](https://azure.microsoft.com/pricing/details/service-fabric/)（可选） |运行本地群集。 |$0 |
 | [Power BI](https://powerbi.microsoft.com/pricing/)<br/> 流式传输数据和静态数据的通用显示和调查 |免费层：1 GB、10000 行/小时，每天刷新。 <br/> 对于[更高限制](https://powerbi.microsoft.com/documentation/powerbi-power-bi-pro-content-what-is-it/)、更多连接选项和协作，$10/用户/月。 |$0 |
 | [存储](https://azure.microsoft.com/pricing/details/storage/) |L（本地冗余）&lt; 100 G，$0.024/GB。 |$3 |
@@ -397,10 +404,5 @@ Microsoft Azure 提供了大量可用于生成云应用程序的不同服务。 
 
 ## <a name="next-steps"></a>后续步骤
 我们建议使用 [MyDriving 参考指南](http://aka.ms/mydrivingdocs)，该指南对系统及其组件的设计进行了全面说明。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
