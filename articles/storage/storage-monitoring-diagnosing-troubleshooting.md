@@ -163,7 +163,7 @@ ms.lasthandoff: 07/12/2017
 
 本指南的“[故障排除指南]”一节将介绍与性能相关的一些常见存储服务问题。
 
-## <a name="diagnosing-storage-issues"></a>诊断存储空间问题
+## <a name="diagnosing-storage-issues"></a>诊断存储问题
 有多种方式可能让你意识到你的应用程序有问题，这包括：
 
 * 导致应用程序崩溃或停止工作的严重故障。

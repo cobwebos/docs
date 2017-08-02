@@ -117,7 +117,7 @@ Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持
 `HKEY_Local_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters\Policies {96c345ef-3cac-477b-8fcd-bea1a564241c} REG_DWORD 0x1`
 
 > [!Note]
-> 自 2015 年 12 月起，Azure 应用商店中的 Windows Server 2012 R2 映像将默认安装修补程序 KB3114025。
+> 自 2015 年 12 月起，Azure Marketplace 中的 Windows Server 2012 R2 映像将默认安装修补程序 KB3114025。
 
 <a id="shareismissing"></a>
 ## <a name="no-folder-with-a-drive-letter-in-my-computer"></a>“我的电脑”中没有带驱动器号的文件夹

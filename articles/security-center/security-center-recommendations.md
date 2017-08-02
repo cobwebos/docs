@@ -89,7 +89,7 @@ ms.lasthandoff: 07/20/2017
 | [在 SQL 服务器上启用审核与威胁检测](security-center-enable-auditing-on-sql-servers.md) |建议开启 Azure SQL Server 的审核与威胁检测。 （仅 Azure SQL 服务。 不包括在虚拟机上运行的 SQL。） |
 | [在 SQL 数据库上启用审核与威胁检测](security-center-enable-auditing-on-sql-databases.md) |建议开启 Azure SQL 数据库的审核与威胁检测。 （仅 Azure SQL 服务。 不包括在虚拟机上运行的 SQL。） |
 | [启用 SQL 数据库的透明数据加密](security-center-enable-transparent-data-encryption.md) |建议启用 SQL 数据库加密。 （仅 Azure SQL 服务。） |
-| [启用 VM 代理](security-center-enable-vm-agent.md) |使你能够查看需要 VM 代理的 VM。 若要设置修补程序扫描、基线扫描以及反恶意软件程序，则必须在 VM 上安装 VM 代理。 对于从 Azure 应用商店部署的 VM，默认安装 VM 代理。 文章 [VM 代理和扩展 - 第 2 部分](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)提供有关如何安装 VM 代理的信息。 |
+| [启用 VM 代理](security-center-enable-vm-agent.md) |使你能够查看需要 VM 代理的 VM。 若要设置修补程序扫描、基线扫描以及反恶意软件程序，则必须在 VM 上安装 VM 代理。 对于从 Azure Marketplace 部署的 VM，默认安装 VM 代理。 文章 [VM 代理和扩展 - 第 2 部分](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)提供有关如何安装 VM 代理的信息。 |
 | [应用磁盘加密](security-center-apply-disk-encryption.md) |建议使用 Azure 磁盘加密（Windows 和 Linux VM）对 VM 磁盘进行加密。 对于 VM 上的 OS 和数据卷，建议使用加密。 |
 | [提供安全联系人详细信息](security-center-provide-security-contact-details.md) |建议为每个订阅提供安全联系人详细信息。 联系人详细信息为电子邮件地址和电话号码。 如果安全团队发现你的资源遭到盗用，将采用此信息与你联系。 |
 | [更新 OS 版本](security-center-update-os-version.md) |建议将云服务的操作系统 (OS) 版本更新为 OS 系列可用的最新版本。  若要了解有关云服务的详细信息，请参阅[云服务概述](../cloud-services/cloud-services-choose-me.md)。 |
