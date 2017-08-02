@@ -1,6 +1,6 @@
 ---
-title: "如何通过 Python 使用 Azure 文件存储 | Microsoft Docs"
-description: "了解如何通过 Python 使用 Azure 文件存储上传、列出、下载和删除文件。"
+title: "使用 Python 针对 Azure 文件存储进行开发 | Microsoft Docs"
+description: "了解如何开发使用 Azure 文件存储来存储文件数据的 Python 应用程序和服务。"
 services: storage
 documentationcenter: python
 author: robinsh
@@ -14,59 +14,73 @@ ms.devlang: python
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fefebeae665ccd14f15b0197241b30d33830fd09
-ms.openlocfilehash: 9973da827ea5a9311904d7d6d4c22d59b5e2d0ce
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: a1a37266908277b54e7b42d85b9b4873af77e622
 ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.lasthandoff: 07/12/2017
 
 ---
-<a id="how-to-use-azure-file-storage-from-python" class="xliff"></a>
 
-# 如何通过 Python 使用 Azure 文件存储
+# <a name="develop-for-azure-file-storage-with-python"></a>使用 Python 针对 Azure 文件存储进行开发
 [!INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-files](../../includes/storage-try-azure-tools-files.md)]
 
-<a id="overview" class="xliff"></a>
+## <a name="about-this-tutorial"></a>关于本教程
+本教程将演示使用 Python 开发应用程序或服务的基本操作，这些程序或服务可以使用 Azure 文件存储来存储文件数据。 在本教程中，我们将创建一个简单的控制台应用程序，并演示如何通过 Python 和 Azure 文件存储执行基本的操作：
 
-## 概述
-本文将演示如何使用文件存储执行常见方案。 这些示例用 Python 编写并使用[用于 Python 的 Microsoft Azure 存储 SDK]。 涉及的方案包括上传、列出、下载以及删除文件。
+* 创建 Azure 文件共享
+* 创建目录
+* 枚举 Azure 文件共享中的文件和目录
+* 上传、下载和删除文件
 
-[!INCLUDE [storage-file-concepts-include](../../includes/storage-file-concepts-include.md)]
+> [!Note]  
+> 由于 Azure 文件存储可以通过 SMB 进行访问，因此可以编写简单的应用程序，通过标准的 Python I/O 类和函数来访问 Azure 文件共享。 本文介绍如何编写使用 Azure 存储 Python SDK 的应用程序，该 SDK 使用 [Azure 文件存储 REST API](https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/file-service-rest-api) 与 Azure 文件存储通信。
 
-[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
-
-<a id="create-a-share" class="xliff"></a>
-
-## 创建共享
-通过 **FileService** 对象，可使用共享、目录和文件。 以下代码创建 **FileService** 对象。 在您希望在其中以编程方式访问 Azure 存储空间的任何 Python 文件中，将以下代码添加到文件的顶部附近。
+### <a name="set-up-your-application-to-use-azure-file-storage"></a>设置应用程序以使用 Azure 文件存储
+在希望在其中以编程方式访问 Azure 存储的任何 Python 源文件中，将以下代码添加到文件的顶部附近：
 
 ```python
 from azure.storage.file import FileService
 ```
 
-以下代码使用存储帐户名称和帐户密钥创建 **FileService** 对象。  使用帐户名称和密钥替换“myaccount”和“mykey”。
+### <a name="set-up-a-connection-to-azure-file-storage"></a>设置与 Azure 文件存储的连接 
+通过 `FileService` 对象，可使用共享、目录和文件。 以下代码使用存储帐户名称和帐户密钥创建一个 `FileService` 对象。 将 `<myaccount>` 和 `<mykey>` 替换为自己的帐户名和密钥。
 
 ```python
 file_service = FileService(account_name='myaccount', account_key='mykey')
 ```
 
-在以下代码示例中，如果共享不存在，可以使用 **FileService** 对象来创建它。
+### <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
+在以下代码示例中，如果共享不存在，可以使用 `FileService` 对象来创建它。
 
 ```python
 file_service.create_share('myshare')
 ```
 
-<a id="upload-a-file-into-a-share" class="xliff"></a>
+### <a name="create-a-directory"></a>创建目录
+你也可以将文件置于子目录中，不必将其全部置于根目录中，以便对存储进行有效的组织。 Azure 文件存储允许创建帐户允许的任意数目的目录。 以下代码将在根目录下创建名为 **sampledir** 的子目录。
 
-## 将文件上传到共享
-Azure 文件存储共享至少包含文件所在的根目录。 在本部分，你将学习如何将文件从本地存储上载到共享所在的根目录。
+```python
+file_service.create_directory('myshare', 'sampledir')
+```
 
-若要创建文件和上传数据，请使用 **create\_file\_from\_path**、**create\_file\_from\_stream**、**create\_file\_from\_bytes** 或 **create\_file\_from\_text** 方法。 这些方法属于高级方法，用于在数据大小超过 64 MB 时执行必要的分块。
+### <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>枚举 Azure 文件共享中的文件和目录
+若要列出共享中的文件和目录，请使用 **list\_directories\_and\_files** 方法。 此方法会返回一个生成器。 以下代码将共享中每个文件和目录的**名称**输出到控制台。
 
-**create\_file\_from\_path** 用于从指定路径上传文件中的内容，**create\_file\_from\_stream** 用于从打开的文件/流上传内容。 **create\_file\_from\_bytes** 用于上传一组字节，**create\_file\_from\_text** 可使用指定的编码（默认为 UTF-8）上传指定的文本值。
+```python
+generator = file_service.list_directories_and_files('myshare')
+for file_or_dir in generator:
+    print(file_or_dir.name)
+```
+
+### <a name="upload-a-file"></a>上传文件 
+Azure 文件共享至少包含文件所在的根目录。 在本部分，你将学习如何将文件从本地存储上传到共享所在的根目录。
+
+若要创建文件并上传数据，请使用 `create_file_from_path`、`create_file_from_stream`、`create_file_from_bytes` 或 `create_file_from_text` 方法。 这些方法属于高级方法，用于在数据大小超过 64 MB 时执行必要的分块。
+
+`create_file_from_path` 从指定位置上传文件内容，`create_file_from_stream` 从已经打开的文件/流上传内容。 `create_file_from_bytes` 上传字节数组，`create_file_from_text` 使用指定的编码（默认为 UTF-8）上传指定的文本值。
 
 下面的示例将 **sunset.png** 文件的内容上传到 **myfile** 文件中。
 
@@ -80,56 +94,25 @@ file_service.create_file_from_path(
     content_settings=ContentSettings(content_type='image/png'))
 ```
 
-<a id="how-to-create-a-directory" class="xliff"></a>
+### <a name="download-a-file"></a>下载文件
+若要从文件中下载数据，请使用 `get_file_to_path`、`get_file_to_stream`、`get_file_to_bytes` 或 `get_file_to_text`。 这些方法属于高级方法，用于在数据大小超过 64 MB 时执行必要的分块。
 
-## 如何：创建目录
-你也可以将文件置于子目录中，不必将其全部置于根目录中，以便对存储进行有效的组织。 Azure 文件存储服务允许你创建帐户允许的任意数目的目录。 以下代码将在根目录下创建名为 **sampledir** 的子目录。
-
-```python
-file_service.create_directory('myshare', 'sampledir')
-```
-
-<a id="how-to-list-files-and-directories-in-a-share" class="xliff"></a>
-
-## 如何：列出共享中的文件和目录
-若要列出共享中的文件和目录，请使用 **list\_directories\_and\_files** 方法。 此方法会返回一个生成器。 以下代码将共享中每个文件和目录的**名称**输出到控制台。
-
-```python
-generator = file_service.list_directories_and_files('myshare')
-for file_or_dir in generator:
-    print(file_or_dir.name)
-```
-
-<a id="download-files" class="xliff"></a>
-
-## 下载文件
-若要从文件下载数据，请使用 **get\_file\_to\_path**、**get\_file\_to\_stream**、**get\_file\_to\_bytes**或 **get\_file\_to\_text**。 这些方法属于高级方法，用于在数据大小超过 64 MB 时执行必要的分块。
-
-以下示例演示了如何使用 **get\_file\_to\_path** 下载 **myfile** 文件的内容，并将其存储到 **out-sunset.png** 文件。
+以下示例演示如何使用 `get_file_to_path` 下载 **myfile** 文件的内容，并将其存储到 **out-sunset.png** 文件。
 
 ```python
 file_service.get_file_to_path('myshare', None, 'myfile', 'out-sunset.png')
 ```
 
-<a id="delete-a-file" class="xliff"></a>
-
-## 删除文件
-最后，若要删除文件，请调用 **delete_file**。
+### <a name="delete-a-file"></a>删除文件
+最后，若要删除文件，请调用 `delete_file`。
 
 ```python
 file_service.delete_file('myshare', None, 'myfile')
 ```
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
-现在，你已了解文件存储的基础知识，可单击下面的链接了解详细信息。
+## <a name="next-steps"></a>后续步骤
+了解如何使用 Python 操作 Azure 文件存储后，请单击以下链接了解更多信息。
 
 * [Python 开发人员中心](/develop/python/)
-* [Azure 存储空间服务 REST API](http://msdn.microsoft.com/library/azure/dd179355)
-* [Azure 存储团队博客]
-* [用于 Python 的 Microsoft Azure 存储 SDK]
-
-[Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
-[用于 Python 的 Microsoft Azure 存储 SDK]: https://github.com/Azure/azure-storage-python
-
+* [Azure 存储服务 REST API](http://msdn.microsoft.com/library/azure/dd179355)
+* [用于 Python 的 Microsoft Azure 存储 SDK](https://github.com/Azure/azure-storage-python)

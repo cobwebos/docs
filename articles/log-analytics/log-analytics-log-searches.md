@@ -12,15 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 07/07/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: b005d0fb25483f3dce14133038d7759dff07fc7c
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 6dbe7713c48a60974f1026dddc8ee9d2aeb01708
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="find-data-using-log-searches"></a>使用日志搜索查找数据
@@ -137,6 +136,24 @@ EventLog=Application OR EventLog=System AND Computer=SERVER1.contoso.com
 CounterName="% Processor Time"  AND InstanceName="_Total" AND (Computer=SERVER1.contoso.com OR Computer=SERVER2.contoso.com)
 ```
 
+### <a name="field-types"></a>字段类型
+创建筛选器时，应了解使用日志搜索返回的不同类型字段时的差别。
+
+**可搜索字段**以蓝色显示在搜索结果中。  可以在特定于字段的搜索条件中使用可搜索字段，如下所示：
+
+```
+Type: Event EventLevelName: "Error"
+Type: SecurityEvent Computer:Contains("contoso.com")
+Type: Event EventLevelName IN {"Error","Warning"}
+```
+
+**自定义文本搜索字段**以灰色显示在搜索结果中。  它们不能用于特定于可搜索字段等字段的搜索条件中。  仅当对所有字段执行查询时才搜索它们，如下所示。
+
+```
+"Error"
+Type: Event "Exception"
+```
+
 
 ### <a name="boolean-operators"></a>布尔运算符
 有了日期时间和数字字段，你可以使用*大于*、*小于*和*小于或等于*搜索值。 可在查询搜索栏中使用简单的运算符，例如 >、<、>=、<=、!=。
@@ -249,7 +266,7 @@ SELECT 命令的行为与 PowerShell 中的 Select-Object 类似。 它返回筛
 3. 显式选择其中的一些属性，且查询更改为 `Type=Event | Select Computer,EventID,RenderedDescription`。  
     ![搜索 SELECT](./media/log-analytics-log-searches/oms-search-select.png)
 
-想要控制搜索输出并仅选择对你的浏览有用的数据部分（通常不是完整记录）时，该命令尤为有用。 当不同类型的记录具有*一些*公用属性，但并非*所有*属性都为公用属性时，该命令也很有用。 然后，可生成外观与表更接近（或在导出到 CSV 文件时能够正常运行）的输出，然后在 Excel 中进行修改。
+想要控制搜索输出并仅选择对浏览有用的数据部分（通常不是完整记录）时，该命令尤为有用。 当不同类型的记录具有*一些*公用属性，但并非*所有*属性都为公用属性时，该命令也很有用。 然后，可生成外观与表更接近（或在导出到 CSV 文件时能够正常运行）的输出，然后在 Excel 中进行修改。
 
 ## <a name="use-the-measure-command"></a>使用 Measure 命令
 Measure 是 Log Analytics 搜索中功能最全的命令之一。 它允许向数据应用统计*函数*，并聚合按给定字段进行分组的结果。 存在多个 Measure 支持的统计函数。

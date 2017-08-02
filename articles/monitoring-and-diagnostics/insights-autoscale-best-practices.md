@@ -1,8 +1,8 @@
 ---
 title: "自动缩放的最佳做法 | Microsoft Docs"
-description: "了解有效自动缩放虚拟机、虚拟机规模集和云服务的原理。"
-author: kamathashwin
-manager: carmonm
+description: "Azure 中适用于 Web 应用、虚拟机规模集和云服务的自动缩放模式"
+author: anirudhcavale
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2017
-ms.author: ashwink
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: f1e4a60cd98d40794c63dc334f242415445e0d6d
+ms.date: 07/07/2017
+ms.author: ancav
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: 54dad831287376db7fb2dc46e4591be1499dc072
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="best-practices-for-autoscale"></a>自动缩放最佳实践
@@ -151,4 +150,10 @@ ms.lasthandoff: 05/10/2017
 * 自动缩放服务无法使用指标进行缩放决策。
 * 指标再次可用（恢复）于进行缩放决策。
   除了以上条件，还可以配置电子邮件或 webhook 通知，以获得有关成功缩放操作的通知。
+  
+还可以使用活动日志警报监视自动缩放引擎的运行状况。 下面举例说明如何[创建活动日志警报以监视订阅上的所有自动缩放引擎操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)或[创建活动日志警报以监视订阅上所有失败的自动缩放缩小/扩大操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)。
+
+## <a name="next-steps"></a>后续步骤
+- [创建活动日志警报以监视订阅上的所有自动缩放引擎操作。](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
+- [创建活动日志警报以监视订阅上所有失败的自动缩放缩小/扩大操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 

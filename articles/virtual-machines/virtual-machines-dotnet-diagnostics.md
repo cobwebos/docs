@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/16/2016
 ms.author: davidmu
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 529c723a9e071b7cc388cf92423c1f74707cb831
-ms.lasthandoff: 03/22/2017
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: 8ff6b9825212359617b748aba1c78ed789b130dd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -28,20 +29,21 @@ ms.lasthandoff: 03/22/2017
 本演练介绍如何从开发计算机将 Diagnostics 远程安装到 Azure 虚拟机。 你还将了解如何实施在该 Azure 虚拟机上运行的应用程序，并使用 .NET [EventSource Class][EventSource Class] 发出遥测数据。 Azure Diagnostics 用于收集遥测数据，并将其存储在一个 Azure 存储帐户中。
 
 ### <a name="pre-requisites"></a>先决条件
-本演练假定你具有 Azure 订阅，并将 Visual Studio 2013 与 Azure SDK 结合使用。 如果没有 Azure 订阅，可以注册[免费试用版][Free Trial]。 请确保[安装并配置 Azure PowerShell 0.8.7 版或更高版本][Install and configure Azure PowerShell version 0.8.7 or later]。
+本演练假定你具有 Azure 订阅，并将 Visual Studio 2017 与 Azure SDK 结合使用。 如果没有 Azure 订阅，可以注册[免费试用版][Free Trial]。 请确保[安装并配置 Azure PowerShell 0.8.7 版或更高版本][Install and configure Azure PowerShell version 0.8.7 or later]。
 
 ### <a name="step-1-create-a-virtual-machine"></a>步骤 1：创建虚拟机
-1. 在开发计算机上启动 Visual Studio 2013。
+1. 在开发计算机上启动 Visual Studio 2017。
 2. 在 Visual Studio 服务器资源管理器中，展开“Azure”，右键单击“虚拟机”然后选择“创建虚拟机”。
 3. 在“选择订阅”对话框中选择 Azure 订阅，然后单击“下一步”。
-4. 在“选择虚拟机映像”对话框中选择“Windows Server 2012 R2 Datacenter 2014 年 11 月版”，然后单击“下一步”。
+4. 在“选择虚拟机映像”对话框中选择“Windows Server 2012 R2 Datacenter 2017 年 6 月版”，然后单击“下一步”。
 5. 在“虚拟机基本设置”中，将虚拟机名称设置为“wadexample”。 设置管理员用户名和密码，然后单击“下一步”。
 6. 在“云服务设置”对话框中，创建名为“wadexampleVM”的新云服务。 创建一个名为“wadexample”的新存储帐户，然后单击“下一步”。
 7. 单击“创建” 。
 
 ### <a name="step-2-create-your-application"></a>步骤 2：创建应用程序
-1. 在开发计算机上启动 Visual Studio 2013。
+1. 在开发计算机上启动 Visual Studio 2017。
 2. 创建面向 .NET Framework 4.5 的新 Visual C# 控制台应用程序。 将该项目命名为“WadExampleVM”。
+
    ![CloudServices_diag_new_project](./media/virtual-machines-dotnet-diagnostics/NewProject.png)
 3. 将 Program.cs 的内容替换为以下代码。 类 **SampleEventSourceWriter** 实现四个日志记录方法：**SendEnums**、**MessageMethod**、**SetOther** 和 **HighFreq**。 WriteEvent 方法的第一个参数定义相关事件的 ID。 Run 方法实现一个无限循环，该循环每隔 10 秒调用 **SampleEventSourceWriter** 类中实现的每个日志记录方法。
 
@@ -147,10 +149,18 @@ ms.lasthandoff: 03/22/2017
 用于在 VM 上管理 Diagnostics 的 PowerShell cmdlet 为：Set-AzureVMDiagnosticsExtension、Get-AzureVMDiagnosticsExtension 和 Remove-AzureVMDiagnosticsExtension。
 
 1. 在开发人员计算机上，打开 Microsoft Azure PowerShell。
-2. 执行脚本以在 VM 上远程安装 Diagnostics（将 *StorageAccountKey* 替换为 wadexamplevm 存储帐户的存储帐户密钥）：
-
-     $storage_name = "wadexamplevm"   $key = "<StorageAccountKey>"   $config_path="c:\users\<user>\documents\visual studio 2013\Projects\WadExampleVM\WadExampleVM\WadExample.xml"   $service_name="wadexamplevm"   $vm_name="WadExample"   $storageContext = New-AzureStorageContext -StorageAccountName $storage_name -StorageAccountKey $key   $VM1 = Get-AzureVM -ServiceName $service_name -Name $vm_name   $VM2 = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $config_path -Version "1.*" -VM $VM1 -StorageContext $storageContext   $VM3 = Update-AzureVM -ServiceName $service_name -Name $vm_name -VM $VM2.VM
-
+2. 执行脚本在 VM 上远程安装 Diagnostics（将 `<user>` 替换为用户目录名称。 将 `<StorageAccountKey>` 替换为 wadexamplevm 存储帐户的存储帐户密钥）：
+```
+     $storage_name = "wadexamplevm"
+     $key = "<StorageAccountKey>"
+     $config_path="c:\users\<user>\documents\visual studio 2017\Projects\WadExampleVM\WadExampleVM\WadExample.xml"
+     $service_name="wadexamplevm"
+     $vm_name="WadExample"
+     $storageContext = New-AzureStorageContext -StorageAccountName $storage_name -StorageAccountKey $key
+     $VM1 = Get-AzureVM -ServiceName $service_name -Name $vm_name
+     $VM2 = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $config_path -Version "1.*" -VM $VM1 -StorageContext $storageContext
+     $VM3 = Update-AzureVM -ServiceName $service_name -Name $vm_name -VM $VM2.VM
+```
 ### <a name="step-6-look-at-your-telemetry-data"></a>步骤 6：查看遥测数据
 在 Visual Studio 的“服务器资源管理器”中，导航到 wadexample 存储帐户。 在 VM 大约运行 5 分钟后，你应该会看到表 **WADEnumsTable**、**WADHighFreqTable**、**WADMessageTable**、**WADPerformanceCountersTable** 和 **WADSetOtherTable**。 双击其中一个表即可查看已收集的遥测数据。
 

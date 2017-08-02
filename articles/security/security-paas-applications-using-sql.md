@@ -1,5 +1,5 @@
 ---
-title: "使用 SQL 数据库和 SQL 数据仓库保护 PaaS Web 和移动应用程序 | Microsoft 文档"
+title: "在 Azure 中保护 PaaS 数据库 | Microsoft Docs"
 description: " 了解有关保护 PaaS Web 和移动应用程序的 Azure SQL 数据库和 SQL 数据仓库安全最佳实践。 "
 services: security
 documentationcenter: na
@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/21/2017
+ms.date: 07/11/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: be00c1427d57b96506ec8b0ac881b7c1bd09e4de
-ms.lasthandoff: 03/22/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: 18509b3fc3a73118f67583a0b087c58f0e51993c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/18/2017
 
 ---
-# <a name="securing-paas-web-and-mobile-applications-using-sql-database-and-sql-data-warehouse"></a>使用 SQL 数据库和 SQL 数据仓库保护 PaaS Web 和移动应用程序
+# <a name="securing-paas-databases-in-azure"></a>在 Azure 中保护 PaaS 数据库
 
 本文介绍有关保护 PaaS Web 和移动应用程序的 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)和 [SQL 数据仓库](https://azure.microsoft.com/services/sql-data-warehouse/)安全最佳实践。 这些最佳实践衍生自我们的 Azure 经验和客户经验。
 
 ## <a name="azure-sql-database-and-sql-data-warehouse"></a>Azure SQL 数据库和 SQL 数据仓库
-[Azure SQL 数据库](../sql-database/sql-database-technical-overview.md)和 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)为基于 Internet 的应用程序提供关系数据库服务。 让我们了解一下在 PaaS 部署中使用 Azure SQL 数据库和 SQL 数据仓库时可帮助保护应用程序与数据的服务：
+[Azure SQL 数据库](../sql-database/sql-database-technical-overview.md)和 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)为基于 Internet 的应用程序提供关系型数据库服务。 让我们了解一下在 PaaS 部署中使用 Azure SQL 数据库和 SQL 数据仓库时可帮助保护应用程序与数据的服务：
 
 - Azure Active Directory 身份验证（而不是 SQL Server 身份验证）
 - Azure SQL 防火墙
@@ -77,15 +77,15 @@ SQL 数据库的默认源 IP 地址限制允许从任何 Azure 地址（包括�
 - [使用 Azure 门户配置 Azure SQL 数据库服务器级防火墙规则](../sql-database/sql-database-configure-firewall-settings.md)
 
 ### <a name="encryption-of-data-at-rest"></a>静态数据加密
-[透明数据加密 (TDE)](https://msdn.microsoft.com/library/azure/bb934049) 可以加密 SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库数据文件，称为静态数据加密。 可以采取多种预防措施来帮助保护数据库，例如，设计安全系统、加密机密资产，以及围绕数据库服务器构建防火墙。 但是，如果物理媒体（如驱动器或备份磁带）失窃，恶意方可能会还原或附加数据库并浏览数据。 一种解决方法是加密数据库中的敏感数据，并使用证书保护用于加密数据的密钥。 这可以防止没有密钥的任何人都能使用数据，但这种保护必须提前规划好。
+[透明数据加密 (TDE)](https://msdn.microsoft.com/library/azure/bb934049) 默认已启用。 TDE 以透明方式加密 SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库的数据和日志文件。 TDE 可以防范直接访问文件或其备份所造成的安全威胁。 这样就可以实现静态数据加密，且无需更改现有应用程序。 应始终保持启用 TDE；不过，这无法阻止攻击者使用普通的访问路径。 使用 TDE 能够符合各个行业制定的许多法律、法规和准则。
 
-TDE 保护静态数据，包括数据和日志文件。 使用 TDE 能够符合各个行业制定的许多法律、法规和准则。 这样，软件开发人员就可以使用行业标准的加密算法来加密数据，而无需更改现有应用程序。
+Azure SQL 可以管理 TDE 存在的密钥相关问题。 与使用 TDE 时一样，在本地操作以及移动数据库时也必须格外小心，确保能够恢复。 在更复杂的方案中，可以通过可扩展的密钥管理在 Azure Key Vault 中显式管理密钥（请参阅[使用 EKM 在 SQL Server 上启用 TDE](/security/encryption/enable-tde-on-sql-server-using-ekm)）。 此外，也允许通过 Azure Key Vault BYOK 功能自带密钥 (BYOK)。
 
-如果法规明确指定了 TDE，则应使用此类加密。 不过请注意，这无法阻止攻击者使用普通的访问路径。 TDE 用于防范可能性极低的情景，其中，可能需要通过 Azure SQL 针对行与列提供的加密或者通过应用程序级加密来使用其他应用程序级加密。
+Azure SQL 通过 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 为列提供加密。 这样，只有获得授权的应用程序才能访问敏感列。 使用这种加密可将针对已加密列的 SQL 查询限制为基于相等性的值。
 
-对于某些特定的数据，也应该使用应用程序级加密。 可通过使用保存在适当国家/地区的密钥加密数据，来消除数据主权忧虑。 这可以防止意外的数据传输导致问题，因为在使用强算法（例如 AES 256）的情况下，如果没有该密钥，将无法解密数据。
+对于某些特定的数据，也应该使用应用程序级加密。 有时，可通过使用保存在适当国家/地区的密钥加密数据，来消除数据主权忧虑。 这可以防止意外的数据传输导致问题，因为在使用强算法（例如 AES 256）的情况下，如果没有该密钥，将无法解密数据。
 
-可以执行 Azure SQL 针对行与列提供的加密，以便仅允许经过授权 ([RBAC](../active-directory/role-based-access-built-in-roles.md)) 的用户访问，阻止较低权限的用户查看列或行。
+可以使用其他预防措施来帮助保护数据库，例如，设计安全系统、加密机密资产，以及围绕数据库服务器构建防火墙。
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了有关保护 PaaS Web 和移动应用程序的 SQL 数据库和 SQL 数据仓库安全最佳实践。 若要了解有关保护 PaaS 部署的详细信息，请参阅：

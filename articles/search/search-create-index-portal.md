@@ -1,23 +1,23 @@
 ---
-title: "使用 Azure 门户创建 Azure 搜索索引 | Microsoft Docs"
+title: "创建索引（门户 - Azure 搜索）| Microsoft Docs"
 description: "使用 Azure 门户创建索引。"
 services: search
 manager: jhubbard
-author: ashmaka
+author: heidisteen
 documentationcenter: 
-ms.assetid: c54d8787-6dae-4943-85ed-c8928d2a5caf
+ms.assetid: 
 ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 01/13/2017
-ms.author: ashmaka
-translationtype: Human Translation
-ms.sourcegitcommit: 1f06a7197cc1a6dcf7a39c91183a4317bef126bb
-ms.openlocfilehash: cc439b5da8753b41f8d65781c567b4808f385078
-ms.lasthandoff: 01/14/2017
-
+ms.date: 06/20/2017
+ms.author: heidist
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: a7d98ab0937a7d3f932d5df34c19ae091129804e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="create-an-azure-search-index-using-the-azure-portal"></a>使用 Azure 门户创建 Azure 搜索索引
@@ -29,41 +29,87 @@ ms.lasthandoff: 01/14/2017
 > 
 > 
 
-本文介绍了使用 Azure 门户创建 Azure 搜索[索引](search-what-is-an-index.md)的过程。
+使用 Azure 门户中内置的索引设计器创建要在 Azure 搜索服务上运行的[搜索索引](search-what-is-an-index.md)或构建其原型。 
 
-按照本指南创建索引之前，应已经 [创建 Azure 搜索服务](search-create-service-portal.md)。
+## <a name="prerequisites"></a>先决条件
 
-## <a name="go-to-your-azure-search-blade"></a>转到“Azure 搜索”边栏选项卡
-1. 在 [Azure 门户](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)左侧的菜单中，单击“所有资源”
-2. 选择你的 Azure 搜索服务
+本文假设读者拥有 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)和 [Azure 搜索服务](search-create-service-portal.md)。  
 
-## <a name="add-and-name-your-index"></a>添加并命名索引
-1. 单击“添加索引”按钮
-2. 命名 Azure 搜索索引。 由于我们要在本指南中创建一个用于搜索酒店的索引，因此我们将索引命名为“酒店”。
-   * 索引名称必须以字母开头，并且只能包含小写字母、数字或短划线（“-”）。
-   * 与服务名称类似，你选取的索引名称也将是终结点 URL 的一部分，你将在其中发送 Azure 搜索 API 的 HTTP 请求
-3. 单击“字段”条目打开新边栏选项卡
+## <a name="find-your-search-service"></a>查找搜索服务
+1. 登录到 Azure 门户页并查看[你的订阅的搜索服务](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)
+2. 选择 Azure 搜索服务。
 
-![](./media/search-create-index-portal/add-index.png)
+## <a name="name-the-index"></a>为索引命名
 
-## <a name="create-and-define-the-fields-of-your-index"></a>创建并定义你的索引的字段
-1. 通过选择“字段”条目，将打开一个新边栏选项卡，带有可输入你的索引定义的窗体。
-2. 使用窗体将字段添加到你的索引。
-   
-   * 为每个 Azure 搜索索引强制使用类型 Edm.String 的*密钥*字段。 默认情况下，使用字段名称“id”创建此密钥字段。 在我们的索引中，已将此名称更改为“hotelId”。
-   * 索引架构的某些属性只能设置一次，以后不能更新。 因此，完成初始配置后，当前不支持任何需要重新编制索引的架构更新（如更改字段类型）。
-   * 已根据所认为的每个字段在应用程序中使用的方式，谨慎地为这些字段选择属性值。 设计索引时，必须牢记搜索用户体验和业务需求，因为必须为每个字段分配[适当的属性](https://msdn.microsoft.com/library/azure/dn798941.aspx)。 这些属性控制哪些搜索功能（筛选、分面、排序、全文搜索等）应用于哪些字段。 例如，搜索酒店的人员很可能对匹配“描述”字段的关键字感兴趣，因此我们通过设置“Searchable”属性为该字段启用全文搜索。
-     * 还可以通过单击边栏选项卡顶部的 [分析器](https://msdn.microsoft.com/en-us/library/azure/dn879793.aspx) 选项卡，为每个字段设置“语言分析器”。 如下所示，我们在适用于法语文本的索引中为字段选择了法语分析器。
-3. 单击“字段”边栏选项卡上的“确定”，确认你的字段定义
-4. 单击“添加索引”边栏选项卡上的“确定”，保存和创建你刚定义的索引。
+1. 单击页面顶部的命令栏中的“添加索引”按钮。
+2. 命名 Azure 搜索索引。 
+   * 以字母开头。
+   * 仅使用小写字母、数字或短划线（“-”）。
+   * 名称的长度上限为 60 个字符。
 
-在下面的屏幕截图中，你可以看到我们为“酒店”索引命名和定义字段的方式。
+  索引名称将成为在到索引的连接上使用的且用于在 Azure 搜索 REST API 中发送 HTTP 请求的终结点 URL 的一部分。
+
+## <a name="define-the-fields-of-your-index"></a>定义索引的字段
+
+索引构成包括一个“字段集合”，它定义了索引中的可搜索数据。 更具体地说，它指定你单独上传的文档的结构。 字段集合包括必需字段和可选字段（已命名的和键入的），并具有决定了字段使用方式的索引属性。
+
+1. 在“添加索引”边栏选项卡中，单击“字段 >”以滑动打开字段定义边栏选项卡。 
+
+2. 接受生成的类型为 Edm.String 的“键”字段。 默认情况下，该字段名为 *id*，但可以将其重命名，只要该字符串符合[命名规则](https://docs.microsoft.com/rest/api/searchservice/Naming-rules)即可。 对于每个 Azure 搜索索引来说，键字段都是必需的，并且它必须是一个字符串。
+
+3. 添加字段来完整指定将要上传的文档。 如果文档包含 *id*、*hotel name*、*address*、*city* 和 *region*，请在索引中为每个字段创建对应的字段。 有关设置属性方面的帮助信息，请查看[下一部分中的设计指南](#design)。
+
+4. （可选）添加在筛选表达式中内部使用的任何字段。 可以设置字段的属性来将字段从搜索操作中排除。
+
+5. 完成时，单击“确定”以保存并创建索引。
+
+## <a name="tips-for-adding-fields"></a>有关添加字段的提示
+
+在门户中创建索引是键盘密集型操作。 可以通过遵循以下工作流尽量减少步骤：
+
+1. 首先，通过输入名称并设置数据类型来构建字段列表。
+
+2. 接下来，使用每个属性顶部的复选框来批量为所有字段启用设置，然后，有选择性地为不需要选中复选框的少数字段清除复选框。 例如，字符串字段通常是可搜索的。 在这种情况下，可以单击“可检索”和“可搜索”以便在搜索结果中返回字段的值，同时允许对字段进行全文搜索。 
+
+<a name="design"></a>
+## <a name="design-guidance-for-setting-attributes"></a>用于设置属性的设计指南
+
+尽管可以随时添加新字段，但在索引的生存期内现有字段定义将被锁定。 因此，开发人员通常使用门户创建简单索引、测试创意，或者使用门户页面来查找设置。 如果采用基于代码的方式以便可以轻松重新生成索引，那么对索引进行频繁迭代的设计就更为高效。
+
+在保存索引之前，将分析器和建议器与字段进行关联。 请确保单击通过每个选项卡式页面来向索引定义添加语言分析器和建议器。
+
+字符串字段通常标记为“可搜索”和“可检索”。
+
+用来缩小搜索结果范围的字段包括“可排序”、“可筛选”和“可查找”。
+
+字段属性决定了字段的使用方式，例如，是否用于全文搜索、分面导航和排序等操作中。 下表介绍了每个属性。
+
+|属性|说明|  
+|---------------|-----------------|  
+|**可搜索**|可全文搜索，在编制索引期间遵从语法分析，例如分词。 如果将某个可搜索字段设置为“sunny day”之类的值，在内部它将拆分为单独的标记“sunny”和“day”。 有关详细信息，请参阅[全文搜索工作原理](search-lucene-query-architecture.md)。|  
+|**可筛选**|在 **$filter** 查询中引用。 `Edm.String` 或 `Collection(Edm.String)` 类型的可筛选字段不进行分词，因此，比较仅用于查找完全匹配项。 例如，如果将此类字段 f 设置为“sunny day”，则 `$filter=f eq 'sunny'` 将找不到任何匹配项，但 `$filter=f eq 'sunny day'` 可找到。 |  
+|**可排序**|默认情况下，系统按分数对结果进行排序，但可以配置基于文档中字段的排序。 `Collection(Edm.String)` 类型的字段不能为“可排序”。 |  
+|**可查找**|通常用于包括了按类别（例如特定城市中的宾馆）的命中次数的搜索结果呈现中。 此选项无法与 `Edm.GeographyPoint` 类型的字段一起使用。 `Edm.String` 类型的**可筛选**、**可排序**或**可查找**字段的长度最多可以是 32 千字节。 有关详细信息，请参阅[创建索引 (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index)。|  
+|**键**|文档在索引内的唯一标识符。 必须仅选择单个字段作为键字段，并且它必须是 `Edm.String` 类型的。|  
+|**可检索**|决定了是否可以在搜索结果中返回此字段。 当希望将某个字段（例如“利润”）用作筛选器、排序或评分机制，但不希望该字段显示给最终用户时，这很有用。 对于 `key` 字段，此属性必须为 `true`。|  
+
+## <a name="create-the-hotels-index-used-in-example-api-sections"></a>创建示例 API 部分中使用的 hotels 索引
+
+Azure 搜索 API 文档包括了代码示例，其中采用了简单的 *hotels* 索引。 在下面的屏幕截图中，可以看到索引定义，包括在定义索引期间指定的法语语言分析器，可以在门户中练习重新创建该索引定义。
 
 ![](./media/search-create-index-portal/field-definitions.png)
 
 ![](./media/search-create-index-portal/set-analyzer.png)
 
 ## <a name="next-steps"></a>后续步骤
-创建 Azure 搜索索引后，就可以 [将内容上载到索引中](search-what-is-data-import.md) ，以便可以开始搜索数据。
+
+在创建 Azure 搜索索引后，可以前进到下一步骤：[将可搜索数据上传到索引中](search-what-is-data-import.md)。
+
+另外，也可以更深入地了解索引。 除了字段集合之外，索引还指定分析器、建议器、评分配置文件和 CORS 设置。 门户中提供了用于定义最常用元素（字段、分析器和建议器）的选项卡式页面。 若要创建或修改其他元素，可以使用 REST API 或 .NET SDK。
+
+## <a name="see-also"></a>另请参阅
+
+ [全文搜索工作原理](search-lucene-query-architecture.md)  
+ [搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice/) [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)
 
 

@@ -2,20 +2,18 @@
 title: "Azure Key Vault 开发人员指南 | Microsoft Docs"
 description: "开发人员可以使用 Azure 密钥保管库来管理 Microsoft Azure 环境中的加密密钥。"
 services: key-vault
-documentationcenter: 
 author: BrucePerlerMS
 manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
-ms.date: 05/10/2017
+ms.date: 06/6/2017
 ms.author: bruceper
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: b046e95e2167009727f6ea8f3dd237619c61434f
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: a15b403166dad17790c75f6db874e4ed2640ca78
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
@@ -29,14 +27,18 @@ ms.lasthandoff: 05/10/2017
 
 有关 Azure 密钥保管库的更多常规信息，请参阅[什么是密钥保管库](key-vault-whatis.md)。
 
-## <a name="public-preview---may-10-2017"></a>公共预览版 - 2017 年 5 月 10 日
+## <a name="public-previews"></a>公共预览版
+
+我们会定期发布新 Key Vault 功能的公共预览版。 欢迎试用这些版本，并通过反馈电子邮件地址 azurekeyvault@microsoft.com 告知提供看法。
+
+### <a name="storage-account-keys---july-10-2017"></a>存储帐户密钥 - 2017 年 7 月 10 日
 
 >[!NOTE]
->在此预览版 Azure Key Vault 中，只有“软删除”功能处于预览状态。**** Azure Key Vault 作为一个整体，是完整的生产服务。
+>在 Azure Key Vault 的此更新版中，只有**存储帐户密钥**功能以预览版提供。
 
-此预览版包括全新软删除功能、Key Vault 和 Key Vault 对象的可恢复删除，以及更新的开发人员界面；[.NET/C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault/)、[REST](https://docs.microsoft.com/rest/api/keyvault/) 和 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/)。 
+此预览版包含通过 [.NET/C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault/)、[REST](https://docs.microsoft.com/rest/api/keyvault/) 和 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) 接口提供的新存储帐户密钥功能。 
 
-有关全新软删除功能的详细信息，请参阅 [Azure Key Vault 软删除概述](key-vault-ovw-soft-delete.md)。
+有关新存储帐户密钥功能的详细信息，请参阅 [Azure Key Vault 存储帐户密钥概述](key-vault-ovw-storage-keys.md)。
 
 ## <a name="videos"></a>视频
 
@@ -79,6 +81,8 @@ ms.lasthandoff: 05/10/2017
 
 #### <a name="nodejs"></a>Node.js
 
+在 Node.js 中，保管库管理 API 和保管库对象 API 是独立的。 使用 Key Vault 管理可以创建和更新 Key Vault。 Key Vault 操作 API 用于处理保管库对象，例如密钥、机密和证书。 
+
 - [适用于 Key Vault 管理的 Node.js API 参考](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest/)
 - [适用于 Key Vault 操作的 Node.js API 参考](http://azure.github.io/azure-sdk-for-node/azure-keyvault/latest/) 
 
@@ -120,20 +124,20 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault 概述和概念
 
-- [Key Vault 安全体系](key-vault-ovw-security-worlds.md)
-- [Key Vault 软删除](key-vault-ovw-soft-delete.md)
+- [Key Vault 软删除行为](key-vault-ovw-soft-delete.md)介绍了一种可以恢复已删除的对象的功能（不管是有意还是无意删除）。
+- [Key Vault 客户端限制](key-vault-ovw-throttling.md)介绍了有关限制的基本概念，并针对应用提供了限制方法。
+- [Key Vault 存储帐户密钥概述](key-vault-ovw-storage-keys.md)介绍了 Key Vault 与 Azure 存储帐户密钥的集成。
+- [Key Vault 安全体系](key-vault-ovw-security-worlds.md)介绍了区域与安全领域之间的关系。
 
 ## <a name="social"></a>社交
 
 - [密钥保管库博客](http://aka.ms/kvblog)
 - [密钥保管库论坛](http://aka.ms/kvforum)
 
-
 ## <a name="supporting-libraries"></a>支持库
 
 - [Microsoft Azure Key Vault 核心库](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core)提供 IKey 和 IKeyResolver 接口，用于通过标识符查找密钥，以及使用密钥执行操作。
 - [Microsoft Azure 密钥保管库扩展](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions)为 Azure 密钥保管库提供扩展功能。
 
-## <a name="other-key-vault-resources"></a>其他密钥保管库资源
 
 
