@@ -13,14 +13,13 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 12/12/2016
+ms.date: 07/31/2017
 ms.author: gwallace
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
 ms.openlocfilehash: 79e373a69f3b899dea1f10ac447a0284931648f4
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/02/2017
-
 
 ---
 # <a name="create-start-or-delete-an-application-gateway-with-powershell"></a>使用 PowerShell 创建、启动或删除应用程序网关 
