@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 05/22/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: 0beae16534b8efa7a23be6d2b61f1f1257317bd7
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 2d840f1c70e9668ae0a8b76cd9623258c2563d98
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Azure Cosmos DB 如何编制数据索引？
@@ -228,7 +228,7 @@ Azure Cosmos DB 还针对每个路径支持空间索引类型，可为 Point、P
 
 关闭自动索引后，你仍然可以选择性地只将特定的文档添加到索引中。 相反，可以保留自动索引，并选择只排除特定的文档。 当只需要查询一个文档子集时，索引开/关配置非常有用。
 
-例如，下面的示例演示了如何使用 [DocumentDB API .NET SDK](https://github.com/Azure/azure-documentdb-java) 和 [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) 属性来显式包括文档。
+例如，下面的示例演示了如何使用 [DocumentDB API .NET SDK](https://docs.microsoft.com/en-us/azure/cosmos-db/documentdb-sdk-dotnet) 和 [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) 属性来显式包括文档。
 
     // If you want to override the default collection behavior to either
     // exclude (or include) a Document from indexing,

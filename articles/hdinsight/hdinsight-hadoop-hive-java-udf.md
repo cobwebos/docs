@@ -1,6 +1,6 @@
 ---
-title: "在 HDInsight 中通过 Hive 使用 Java 用户定义函数 (UDF) | Microsoft Docs"
-description: "了解如何在 HDInsight 的 Hive 中创建并使用 Java 用户定义函数 (UDF)。"
+title: "将 Java 用户定义函数 (UDF) 与 HDInsight 中的 Hive 配合使用 — Azure | Microsoft Docs"
+description: "了解如何创建可用于 Hive 的基于 Java 的用户定义的函数 (UDF)。 此 UDF 示例将表中的文本字符串转换为小写。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -8,33 +8,32 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 8d4f8efe-2f01-4a61-8619-651e873c7982
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/04/2017
+ms.date: 06/26/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 229bebe16b619f61f2dd4acb73602b97e64cb294
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 481d234eaf88bdb210821084ee4154159470eda0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="use-a-java-udf-with-hive-in-hdinsight"></a>在 HDInsight 中通过 Hive 使用 Java UDF
 
-了解如何创建可用于 Hive 的基于 Java 的用户定义的函数 (UDF)。
+了解如何创建可用于 Hive 的基于 Java 的用户定义的函数 (UDF)。 此示例中的 Java UDF 将表中的文本字符串转换为全小写字符。
 
 ## <a name="requirements"></a>要求
 
-* HDInsight 群集（基于 Window 或 Linux）
+* HDInsight 群集 
 
     > [!IMPORTANT]
-    > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
+    > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
-    本文档中的大多数步骤同时适用于这两种群集类型。 但是，用于将已编译的 UDF 上传到群集并运行的步骤特定于基于 Linux 的群集。 提供可用于基于 Windows 的群集的信息的链接。
+    本文档中的大多数步骤适用于基于 Windows 和 Linux 的群集。 但是，用于将已编译的 UDF 上传到群集并运行的步骤特定于基于 Linux 的群集。 提供可用于基于 Windows 的群集的信息的链接。
 
 * [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 或更高版本（或类似程序，如 OpenJDK）
 
@@ -43,9 +42,9 @@ ms.lasthandoff: 05/18/2017
 * 文本编辑器或 Java IDE
 
     > [!IMPORTANT]
-    > 如果使用基于 Linux 的 HDInsight 服务器，但是在 Windows 客户端上创建了 Python 文件，则必须使用将 LF 用作行尾的编辑器。 如果无法确定编辑器使用的是 LF 还是 CRLF，请参阅[疑难解答](#troubleshooting)部分，获取使用 HDInsight 群集上的实用程序删除 CR 字符的步骤。
+    > 如果在 Windows 客户端上创建 Python 文件，则必须使用将 LF 用作行尾的编辑器。 如果无法确定编辑器使用的是 LF 还是 CRLF，请参阅[故障排除](#troubleshooting)部分，了解删除 CR 字符的步骤。
 
-## <a name="create-an-example-udf"></a>创建示例 UDF
+## <a name="create-an-example-java-udf"></a>创建 Java UDF 示例 
 
 1. 从命令行中，使用以下命令创建新 Maven 项目：
 
@@ -60,7 +59,7 @@ ms.lasthandoff: 05/18/2017
 
 2. 创建该项目后，删除作为项目的一部分创建的 **exampleudf/src/test** 目录。
 
-3. 打开 **exampleudf/pom.xml**，将现有 `<dependencies>` 条目替换为以下内容：
+3. 打开 **exampleudf/pom.xml**，将现有 `<dependencies>` 条目替换为以下 XML：
 
     ```xml
     <dependencies>
@@ -81,7 +80,7 @@ ms.lasthandoff: 05/18/2017
 
     这些条目指定了 HDInsight 3.5 中包含的 Hadoop 和 Hive 版本。 可以在 [HDInsight 组件版本控制](hdinsight-component-versioning.md)文档中找到 HDInsight 提供的 Hadoop 和 Hive 的版本信息。
 
-    在文件末尾的 `</project>` 行之前添加 `<build>` 部分。 本部分应包含以下内容：
+    在文件末尾的 `</project>` 行之前添加 `<build>` 部分。 本部分应包含以下 XML：
 
     ```xml
     <build>
@@ -178,7 +177,7 @@ ms.lasthandoff: 05/18/2017
     mvn compile package
     ```
 
-    这将生成 UDF 并将其打包到 **exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar**。
+    此命令生成 UDF 并将其打包到 `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` 文件。
 
 2. 使用 `scp` 命令将文件复制到 HDInsight 群集。
 
@@ -186,7 +185,7 @@ ms.lasthandoff: 05/18/2017
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar myuser@mycluster-ssh.azurehdinsight
     ```
 
-    将 **myuser** 替换为群集的 SSH 用户帐户。 将 **mycluster** 替换为群集名称。 如果使用密码保护 SSH 帐户，系统将提示输入该密码。 如果使用了证书，则可能需要使用 `-i` 参数指定私钥文件。
+    将 `myuser` 替换为群集的 SSH 用户帐户。 将 `mycluster` 替换为群集名称。 如果使用密码保护 SSH 帐户，系统将提示输入该密码。 如果使用了证书，则可能需要使用 `-i` 参数指定私钥文件。
 
 3. 使用 SSH 连接到群集。
 
@@ -215,12 +214,12 @@ ms.lasthandoff: 05/18/2017
 2. 当到达 `jdbc:hive2://localhost:10001/>` 提示符时，输入以下代码将 UDF 添加到 Hive，并将其作为函数公开。
 
     ```hiveql
-    ADD JAR wasbs:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;
+    ADD JAR wasb:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;
     CREATE TEMPORARY FUNCTION tolower as 'com.microsoft.examples.ExampleUDF';
     ```
 
     > [!NOTE]
-    > 此示例假定 Azure 存储为群集的默认存储。 如果群集使用 Data Lake Store，请将 `wasbs:///` 值更改为 `adl:///`。
+    > 此示例假定 Azure 存储为群集的默认存储。 如果群集使用 Data Lake Store，请将 `wasb:///` 值更改为 `adl:///`。
 
 3. 使用该 UDF 将从表中检索的值转换为小写字符串。
 
@@ -228,7 +227,7 @@ ms.lasthandoff: 05/18/2017
     SELECT tolower(deviceplatform) FROM hivesampletable LIMIT 10;
     ```
 
-    此查询将从表中选择设备平台（Android、Windows、iOS 等），然后将字符串转换为小写字符串，并显示它们。 显示的输出应类似如下内容。
+    此查询将从表中选择设备平台（Android、Windows、iOS 等），然后将字符串转换为小写字符串，并显示它们。 显示的输出类似于以下文本：
 
         +----------+--+
         |   _c0    |

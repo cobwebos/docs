@@ -16,12 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: e9a2c3230ec5081a0cfb57ef1dbf311a87bb26b5
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: ddc391127d43a954f555943d27258593eba02df2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 
@@ -97,7 +96,7 @@ ms.lasthandoff: 05/05/2017
 
 1. 在群集上创建 IP 地址资源。
 
-   可在故障转移群集管理器中创建 IP 地址资源。 右键单击可用性组角色，单击“添加资源”，“更多资源”，然后单击“IP 地址”。
+   可在故障转移群集管理器中创建 IP 地址资源。 右键单击可用性组角色，单击“添加资源”，“更多资源”，并单击“IP 地址”。
 
    ![创建 IP 地址](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
 
@@ -108,7 +107,7 @@ ms.lasthandoff: 05/05/2017
 
 1. 在 SQL Server 配置管理器中的新 SQL Server 上，[启用 Always On 可用性组](http://msdn.microsoft.com/library/ff878259.aspx)。
 
-1. [在新的 SQL Server 上打开防火墙端口](virtual-machines-windows-portal-sql-availability-group-prereq.md#a-nameendpoint-firewall-configure-the-firewall-on-each-sql-server-vm)。
+1. [在新的 SQL Server 上打开防火墙端口](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall)。
 
    打开端口所需的端口号具体取决于环境。 打开镜像终结点和 Azure 负载均衡器运行状况探测的端口。
 
@@ -116,7 +115,7 @@ ms.lasthandoff: 05/05/2017
 
    对位于远程 Azure 区域中的副本，将其设置为与手动故障转移进行异步复制。  
 
-1. 将 IP 地址资源设成侦听器客户端访问点（网络名称） 群集的依赖项。
+1. 将 IP 地址资源设成侦听器客户端访问点（网络名称）群集的依赖项。
 
    以下屏幕截图显示了正确配置的 IP 地址群集资源：
 
@@ -150,19 +149,19 @@ ms.lasthandoff: 05/05/2017
 
 ## <a name="fail-over-to-remote-region"></a>故障转移到远程区域
 
-若要测到远程区域的试侦听器连接性，可将副本故障转移到远程区域。 副本异步时，故障转移容易出现潜在的数据丢失。 若要故障转移且不丢失数据，请将可用性模式改为同步，并将故障转移模式设置为自动。 请执行以下步骤：
+要测到远程区域的试侦听器连接性，可将副本故障转移到远程区域。 副本异步时，故障转移容易出现潜在的数据丢失。 要故障转移且不丢失数据，请将可用性模式改为同步，并将故障转移模式设置为自动。 请执行以下步骤：
 
 1. 在“对象资源管理器”中连接到承载主副本的 SQL Server 实例。
-1. 在“AlwaysOn 可用性组”的“可用性组”下，右键单击可用性组，然后单击“属性”。
+1. 在“AlwaysOn 可用性组”的“可用性组”下，右键单击可用性组，并单击“属性”。
 1. 在“常规”页上的“可用性副本”下，将灾难恢复站点中的辅助副本设置为使用“同步提交”可用性模式和“自动”故障转移模式。
 1. 如果辅助副本和主副本位于同一站点，且辅助副本具有高可用性，则将辅助副本设置为“异步提交”和“手动”。
 1. 单击“确定”。
-1. 在“对象资源管理器”中，右键单击可用性组中，然后单击“显示仪表板”。
+1. 在“对象资源管理器”中，右键单击可用性组中，并单击“显示仪表板”。
 1. 在仪表板上确认灾难恢复恢复上的副本为同步。
-1. 在“对象资源管理器”中，右键单击可用性组中，然后单击“付账转移...”。 SQL Server Management Studio 将打开向导对 SQL Server 进行故障转移。  
-1. 单击“下一步”，然后选择灾难恢复站点中的 SQL Server 实例。 再次单击“下一步”。
-1. 连接到灾难恢复站点中的 SQL Server 实例，然后单击“下一步”。
-1. 在“摘要”页上查看设置，然后单击“完成”。
+1. 在“对象资源管理器”中，右键单击可用性组中，并单击“付账转移...”。 SQL Server Management Studio 将打开向导对 SQL Server 进行故障转移。  
+1. 单击“下一步”，并选择灾难恢复站点中的 SQL Server 实例。 再次单击“下一步”。
+1. 连接到灾难恢复站点中的 SQL Server 实例，并单击“下一步”。
+1. 在“摘要”页上查看设置，并单击“完成”。
 
 测试连接性之后，将主副本移回主数据中心，并将可用性模式设置回其正常运行设置。 下表显示了本文档所述体系结构的正常运行设置：
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/25/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 3ed2ee8c996628caabefd60b5ecff7528402eb52
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 40d07ce6e480924c7c1af601cc25e4a74280141f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 
@@ -33,6 +33,7 @@ ms.lasthandoff: 07/06/2017
 
 - 用户登录到所有基于 Web 浏览器的应用程序。
 - 用户登录到支持[新式身份验证](https://aka.ms/modernauthga)的 Office 365 客户端应用程序。
+- 适用于 Windows 10 设备的 Azure AD Join。
 
 ## <a name="unsupported-scenarios"></a>不支持的方案
 
@@ -41,13 +42,12 @@ ms.lasthandoff: 07/06/2017
 - 用户登录到旧版 Office 客户端应用程序和 Exchange ActiveSync（即，移动设备上的本机电子邮件应用程序）。 我们建议组织在可能的情况下改用新式身份验证。 新式身份验证允许直通身份验证支持，而且还有助于使用[条件访问](../active-directory-conditional-access.md)功能（例如多重身份验证 (MFA)）来保护标识。
 - 用户登录到 Skype for Business 客户端应用程序。
 - 用户登录到 PowerShell v1.0。 建议改用 PowerShell v2.0。
-- 适用于 Windows 10 设备的 Azure AD Join。
 
 >[!IMPORTANT]
 >作为不支持方案的变通方法，可在 Azure AD Connect 向导中的[可选功能](active-directory-aadconnect-get-started-custom.md#optional-features)页面上启用“密码哈希同步”。 密码哈希同步只能作为前述方案的后备方法（而不能作为直通身份验证的通用后备方法）。 如果不需要这些方案，请关闭密码哈希同步。
 
 ## <a name="next-steps"></a>后续步骤
-- [**快速入门**](active-directory-aadconnect-pass-through-authentication-quick-start.md) - 启用并运行 Azure AD 直通身份验证。
+- [**快速入门**](active-directory-aadconnect-pass-through-authentication-quick-start.md) - 启用并运行 Azure AD 传递身份验证。
 - [**深入技术探究**](active-directory-aadconnect-pass-through-authentication-how-it-works.md) - 了解此功能的工作原理。
 - [**常见问题**](active-directory-aadconnect-pass-through-authentication-faq.md) - 常见问题解答。
 - [**故障排除**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) - 了解如何解决使用此功能时遇到的常见问题。

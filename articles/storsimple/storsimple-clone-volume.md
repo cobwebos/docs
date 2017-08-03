@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 09b67ca9258a490338d29763710c40ea2da23ce7
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 8f1936fac543f559a44ad0f9c35b30d1a92dce68
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="use-the-storsimple-manager-service-to-clone-a-volume"></a>使用 StorSimple Manager 服务克隆卷
@@ -36,7 +35,7 @@ StorSimple Manager 服务的“备份目录”页面显示手动或自动备份�
 可以使用本地快照或云快照在相同的设备、不同的设备甚至虚拟机中创建克隆。
 
 #### <a name="to-clone-a-volume"></a>克隆卷
-1. 在“StorSimple Manager 服务”页上单击“备份目录”选项卡，然后选择备份集。
+1. 在“StorSimple Manager 服务”页上单击“备份目录”选项卡，并选择备份集。
 2. 展开备份集以查看相关联的卷。 单击并选择备份集中的卷。
    
      ![克隆卷](./media/storsimple-clone-volume/HCS_Clone.png) 
@@ -66,7 +65,7 @@ StorSimple Manager 服务的“备份目录”页面显示手动或自动备份�
 > 
 > 
 
-通过此方式创建的克隆为暂时性克隆。 有关克隆类型的详细信息，请参阅[暂时性克隆与永久性克隆](#transient-vs.-permanent-clones)。
+通过此方式创建的克隆为暂时性克隆。 有关克隆类型的详细信息，请参阅[暂时性克隆与永久性克隆](#transient-vs-permanent-clones)。
 
 此克隆现在为常规卷，可对其执行适用于卷的任何操作。 若要进行备份，需对此卷进行相应配置。
 
@@ -79,14 +78,14 @@ StorSimple Manager 服务的“备份目录”页面显示手动或自动备份�
 以下部分描述了可以使用暂时性克隆和永久性克隆的示例方案。
 
 ### <a name="item-level-recovery-with-a-transient-clone"></a>使用暂时性克隆进行项目级恢复
-你需要恢复一个一年前创建的 Microsoft PowerPoint 演示文稿文件。 IT 管理员确定了该时间范围内的特定备份，并筛选出相应的卷。 然后，该管理员对卷进行克隆，找到你要的文件，将其提供给你。 此方案使用暂时性克隆。 
+需要恢复一个一年前创建的 Microsoft PowerPoint 演示文稿文件。 IT 管理员确定了该时间范围内的特定备份，并筛选出相应的卷。 然后，该管理员对卷进行克隆，找到你要的文件，将其提供给你。 此方案使用暂时性克隆。 
 
 ![可用视频](./media/storsimple-clone-volume/Video_icon.png) **可用视频**
 
 若要观看演示如何在 StorSimple 中使用克隆和还原功能来恢复已删除文件的视频，请单击[此处](https://azure.microsoft.com/documentation/videos/storsimple-recover-deleted-files-with-storsimple/)。
 
 ### <a name="testing-in-the-production-environment-with-a-permanent-clone"></a>使用永久性克隆在生产环境中进行测试
-你需要在生产环境中对测试 Bug 进行验证。 你在生产环境中创建卷的克隆，对该克隆执行云快照操作。 克隆的卷现在是独立的。 此方案使用永久性克隆。
+需要在生产环境中对测试 Bug 进行验证。 在生产环境中创建卷的克隆，对该克隆执行云快照操作。 克隆的卷现在是独立的。 此方案使用永久性克隆。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[从备份集还原 StorSimple 卷](storsimple-restore-from-backup-set.md)。

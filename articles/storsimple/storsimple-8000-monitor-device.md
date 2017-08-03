@@ -12,19 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 06/15/2017
+ms.date: 08/02/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 337da13d4448090f320fa53a789d97f9843804d3
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: ac11c6c8532007ee40db128dd9933c99a32a9420
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>使用 StorSimple 设备管理器服务监视 StorSimple 设备
 ## <a name="overview"></a>概述
-可以使用 StorSimple 设备管理器服务监视 StorSimple 解决方案中的特定设备。 可以基于 I/O 性能、容量使用情况、网络吞吐量和设备性能指标创建自定义图表并将它们固定到仪表板。 有关详细信息，请转到[自定义门户仪表板](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards.md)。
+可以使用 StorSimple 设备管理器服务监视 StorSimple 解决方案中的特定设备。 可以基于 I/O 性能、容量使用情况、网络吞吐量和设备性能指标创建自定义图表并将它们固定到仪表板。 有关详细信息，请转到[自定义门户仪表板](/articles/azure-portal/azure-portal-dashboards.md)。
 
 若要查看特定设备的监视信息，请在 Azure 门户中选择 StorSimple 设备管理器服务。 从设备列表中，选择设备并转到“监视”。 然后，可以看到所选设备的“容量”、“使用情况”和“性能”图表。
 

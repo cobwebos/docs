@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2016
 ms.author: juanpere
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 223738aecd1bb0a53542bd8bcab5d24582aee02a
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 42e594dc6a8a8be619b5652bf8e44cf883650489
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="schedule-and-broadcast-jobs-node"></a>计划和广播作业 (Node)
 
-## <a name="introduction"></a>介绍
+[!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
+
 Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟踪用于计划和更新数百万台设备的作业。  作业可以用于以下操作：
 
 * 更新所需属性
@@ -43,7 +43,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 * 创建一个模拟设备应用，该应用具有一种直接方法，使 **lockDoor** 可以由解决方案后端调用。
 * 创建一个 Node.js 控制台应用，该应用使用作业调用模拟设备应用中的 **lockDoor** 直接方法，并使用设备作业更新所需属性。
 
-在本教程结束时，将会创建两个 Node.js 控制台应用：
+在本教程结束时，会创建两个 Node.js 控制台应用：
 
 **simDevice.js**，它使用设备标识连接到 IoT 中心，并接收 **lockDoor** 直接方法。
 
@@ -238,7 +238,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 9. 保存并关闭 **scheduleJobService.js** 文件。
 
 ## <a name="run-the-applications"></a>运行应用程序
-现在，你已准备就绪，可以运行应用程序了。
+现在，已准备就绪，可以运行应用程序了。
 
 1. 在 **simDevice** 文件夹的命令提示符处，运行以下命令以开始侦听重新启动直接方法。
    

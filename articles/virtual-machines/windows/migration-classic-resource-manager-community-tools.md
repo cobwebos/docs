@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 22bf0402c16745dac1c8287b0ceb3598ea41305b
-ms.lasthandoff: 04/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: d3fc0246088eddeb345bea0ffbd2c5247b218006
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="community-tools-to-migrate-iaas-resources-from-classic-to-azure-resource-manager"></a>使用社区工具将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager
@@ -44,7 +44,7 @@ ms.lasthandoff: 04/06/2017
 ## <a name="migaz"></a>migAz
 migAz 是另一选项，用于将整套经典部署模型 IaaS 资源迁移到 Azure Resource Manager IaaS 资源。 可以在同一订阅中迁移，也可以在不同订阅和不同订阅类型（例如 CSP 订阅）中迁移。
 
-[工具文档链接](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/migaz)
+[工具文档链接](https://github.com/Azure/migAz)
 
 ## <a name="next-steps"></a>后续步骤
 
