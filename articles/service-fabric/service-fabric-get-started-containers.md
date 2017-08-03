@@ -127,7 +127,7 @@ name 用于为运行的容器（而不是容器 ID）命名。
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
 ```
 
-连接到正在运行的容器。  打开 Web 浏览器并指向返回的 IP 地址，例如 “http://172.31.194.61”。 此时会看到标题“Hello World!” 显示在浏览器中。
+连接到正在运行的容器。  打开 Web 浏览器并指向返回的 IP 地址，例如 “ http://172.31.194.61 ”。 此时会看到标题“Hello World!” 显示在浏览器中。
 
 若要停止容器，请运行：
 
@@ -318,7 +318,7 @@ Windows 支持容器的两种隔离模式：进程和 Hyper-V。 使用进程隔
 
 如果应用程序处于 ```Ready``` 状态，则表示它已准备就绪：![就绪][2]
 
-打开浏览器并导航到 http://containercluster.westus2.cloudapp.azure.com:8081。 此时会看到标题“Hello World!” 显示在浏览器中。
+打开浏览器并导航到 http://containercluster.westus2.cloudapp.azure.com:8081 。 此时会看到标题“Hello World!” 显示在浏览器中。
 
 ## <a name="clean-up"></a>清理
 只要群集处于运行状态，就会产生费用。若要避免不必要的费用，可考虑[删除群集](service-fabric-get-started-azure-cluster.md#remove-the-cluster)。  [Party 群集](http://tryazureservicefabric.westus.cloudapp.azure.com/)会在数小时后自动删除。
