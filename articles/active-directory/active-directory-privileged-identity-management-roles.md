@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 07/31/2017
 ms.author: billmath
-ms.custom: pim ; H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
-ms.openlocfilehash: be32a7125807905f12699dba92b260d80ac2c4de
+ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 693785d5c9ae64275ae75721fe1f8f143dcd8c36
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/28/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="different-administrative-role-in-azure-active-directory-pim"></a>Azure Active Directory PIM 中的不同管理角色
@@ -27,9 +27,12 @@ ms.lasthandoff: 02/28/2017
 
 可以将组织中的用户分配到 Azure AD 中的不同管理角色。 这些角色分配控制用户可以针对 Azure AD、Office 365 和其他 Microsoft Online Services 与连接的应用程序执行哪些任务，例如添加或删除用户或更改服务设置。  
 
+> [!IMPORTANT]
+> Microsoft 建议使用 Azure 门户而不是本文中引用的 Azure 经典门户通过 [Azure AD 管理中心](https://aad.portal.azure.com)管理 Azure AD。
+
 全局管理员可以使用 PowerShell cmdlet（例如 `Add-MsolRoleMember` 和 `Remove-MsolRoleMember`）或者根据[在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles.md)中所述，通过经典门户更新要将哪些用户**永久**分配到 Azure AD 中的角色。
 
-Azure AD Privileged Identity Management (PIM) 可以管理针对 Azure AD 中具有特权的用户的策略。 PIM 将用户分配到 Azure AD 中的一个或多个角色，你可以分配某位用户永久充当该角色，或者使其符合该角色的资格。 将用户永久分配到某个角色或者激活合格角色分配时，他们可以使用分配到角色的权限来管理 Azure Active Directory、Office 365 和其他应用程序。
+Azure AD Privileged Identity Management (PIM) 可以管理针对 Azure AD 中具有特权的用户的策略。 PIM 将用户分配到 Azure AD 中的一个或多个角色，可以分配某位用户永久充当该角色，或者使其符合该角色的资格。 将用户永久分配到某个角色或者激活合格角色分配时，他们可以使用分配到角色的权限来管理 Azure Active Directory、Office 365 和其他应用程序。
 
 用户无论具有永久角色分配还是合格角色分配，获得的访问权限并无差异。 唯一的差异在于，有些用户并不是一直需要该访问权限。 他们符合该角色的资格，随时可以根据需要启用或禁用该角色。
 
@@ -73,7 +76,7 @@ Azure 订阅和资源组也不会出现在 Azure AD 中。 若要管理 Azure �
 ## <a name="user-roles-and-signing-in"></a>用户角色和登录
 对于某些 Microsoft 服务和应用程序而言，将用户分配到角色可能还不足以让该用户成为管理员。
 
-用户若要访问 Azure 经典门户，必须是 Azure 订阅的服务管理员或共同管理员，即使该用户无需管理 Azure 订阅，也是如此。  例如，若要在经典门户中管理 Azure AD 的配置设置，用户必须身兼 Azure AD 中的全局管理员和 Azure 订阅中的订阅共同管理员。  若要了解如何将用户添加到 Azure 订阅，请参阅[如何添加或更改 Azure 管理员角色](../billing/billing-add-change-azure-subscription-administrator.md)。
+用户若要访问 Azure 经典门户，必须是 Azure 订阅的服务管理员或共同管理员，即使该用户无需管理 Azure 订阅，也是如此。  例如，若要在经典门户中管理 Azure AD 的配置设置，用户必须身兼 Azure AD 中的全局管理员和 Azure 订阅中的订阅共同管理员。  要了解如何将用户添加到 Azure 订阅，请参阅[如何添加或更改 Azure 管理员角色](../billing/billing-add-change-azure-subscription-administrator.md)。
 
 此外，在访问 Microsoft Online Services 时，用户可能需要获得许可证才能打开服务的门户或执行管理任务。
 
@@ -81,7 +84,7 @@ Azure 订阅和资源组也不会出现在 Azure AD 中。 若要管理 Azure �
 1. 使用全局管理员帐户或共同管理员帐户登录到 [Azure 经典门户](http://manage.windowsazure.com)。
 2. 从主菜单中选择“所有项”。
 3. 选择要使用的、包含关联许可证的目录。
-4. 选择“许可证”。 此时将显示可用的许可证列表。
+4. 选择“许可证”。 此时会显示可用的许可证列表。
 5. 选择包含要分发的许可证的许可证计划。
 6. 选择“分配用户”。
 7. 选择要将许可证分配到的用户。
