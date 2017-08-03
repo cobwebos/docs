@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/09/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: f637b8617c4a9ed3be1eb0932a94b0ffcc7c8f7e
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 70f94a07b0102e3135eaf85e5877e3502762d7e3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="get-started-with-azure-data-lake-store-using-net-sdk"></a>通过 .NET SDK 实现 Azure Data Lake Store 入门
@@ -35,7 +34,7 @@ ms.lasthandoff: 06/08/2017
 >
 >
 
-了解如何使用 [Azure Data Lake Store .NET SDK](https://msdn.microsoft.com/library/mt581387.aspx) 执行基本操作，如创建文件夹、上传和下载数据文件等。有关 Data Lake 的详细信息，请参阅 [Azure Data Lake Store](data-lake-store-overview.md)。
+了解如何使用 [Azure Data Lake Store .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet) 执行基本操作，如创建文件夹、上传和下载数据文件等。有关 Data Lake 的详细信息，请参阅 [Azure Data Lake Store](data-lake-store-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
 * **Visual Studio 2013、2015 或 2017**。 以下说明使用 Visual Studio 2015 Update 2。
@@ -48,7 +47,7 @@ ms.lasthandoff: 06/08/2017
 
 ## <a name="create-a-net-application"></a>创建 .NET 应用程序
 1. 打开 Visual Studio，创建一个控制台应用程序。
-2. 在“文件”菜单中，单击“新建”，然后单击“项目”。
+2. 在“文件”菜单中，单击“新建”，并单击“项目”。
 3. 在“新建项目”中，键入或选择以下值 ：
 
    | 属性 | 值 |
@@ -68,7 +67,7 @@ ms.lasthandoff: 06/08/2017
 
         ![添加 Nuget 源](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "创建新的 Azure Data Lake 帐户")
    4. 关闭“NuGet 包管理器” 。
-6. 打开“Program.cs” ，删除现有代码，然后包含以下语句，添加对命名空间的引用。
+6. 打开“Program.cs” ，删除现有代码，并包含以下语句，添加对命名空间的引用。
 
         using System;
         using System.IO;
@@ -130,7 +129,7 @@ ms.lasthandoff: 06/08/2017
 对于上述代码片段，需要注意几个问题：
 
 * 为了帮助读者更快完成本教程，此代码片段使用了为所有 Azure 订阅默认提供的 Azure AD 域和客户端 ID。 因此，可以**在应用程序中按原样使用此代码片段**。
-* 但是，如果想要使用自己的 Azure AD 域和应用程序客户端 ID，则必须创建一个 Azure AD 本机应用程序，然后使用所创建的应用程序的 Azure AD 租户 ID、客户端 ID 和重定向 URI。 有关说明，请参阅[创建 Active Directory 应用程序，以便使用 Data Lake Store 进行最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)。
+* 但是，如果想要使用自己的 Azure AD 域和应用程序客户端 ID，则必须创建一个 Azure AD 本机应用程序，并使用所创建的应用程序的 Azure AD 租户 ID、客户端 ID 和重定向 URI。 有关说明，请参阅[创建 Active Directory 应用程序，以便使用 Data Lake Store 进行最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)。
 
 ### <a name="if-you-are-using-service-to-service-authentication-with-client-secret"></a>如果结合客户端机密使用服务到服务身份验证
 可以使用以下代码片段通过客户端密码/应用程序密钥/服务主体对应用程序进行**非交互式**身份验证。 请对现有的 Azure AD“Web 应用”应用程序使用这种身份验证。 有关如何创建 Azure AD Web 应用程序以及如何检索以下代码片段中需要的客户端 ID 和客户端机密的说明，请参阅[创建 Active Directory 应用程序，以便使用 Data Lake Store 进行服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
