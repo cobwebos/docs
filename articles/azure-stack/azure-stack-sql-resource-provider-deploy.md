@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/10/2017
 ms.author: JeffGo
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 67020960ae528c53346f14af567bae7adadf808e
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 018d556d52aa1a1f436460d9811c43f9b45bd440
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -222,15 +222,13 @@ In order to remove the resource provider, it is essential to first remove any de
 
 2. All tenant databases must be deleted from the resource provider (this will not delete the data). This should be performed by the tenants themselves.
 
-3. Tenants must unregister from the namespace.
+3. Administrator must delete the hosting servers from the SQL Adapter
 
-4. Administrator must delete the hosting servers from the SQL Adapter
+4. Administrator must delete any plans that reference the SQL Adapter.
 
-5. Administrator must delete any plans that reference the SQL Adapter.
+5. Administrator must delete any SKUs and quotas associated to the SQL Adapter.
 
-6. Administrator must delete any SKUs and quotas associated to the SQL Adapter.
-
-7. Rerun the deployment script with the -Uninstall parameter, Azure Resource Manager endpoints, DirectoryTenantID, and credentials for the service administrator account.
+6. Rerun the deployment script with the -Uninstall parameter, Azure Resource Manager endpoints, DirectoryTenantID, and credentials for the service administrator account.
 
 
 
