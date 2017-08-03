@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/13/2017
+ms.date: 08/01/2017
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: a6c33f11dfcbb02689956269ce5a37408534b6cd
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 3e5c9ca546629f782a3d722b49f5fbaf5147e823
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>用于 Azure Resource Manager 模板的字符串函数
@@ -28,7 +28,6 @@ Resource Manager 提供以下用于处理字符串的函数：
 * [base64](#base64)
 * [base64ToJson](#base64tojson)
 * [base64ToString](#base64tostring)
-* [bool](#bool)
 * [concat](#concat)
 * [contains](#contains)
 * [dataUri](#datauri)
@@ -254,60 +253,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 | toStringOutput | String | one, two, three |
 | toJsonOutput | 对象 | {"one": "a", "two": "b"} |
 
-<a id="bool" />
 
-## <a name="bool"></a>bool
-`bool(arg1)`
-
-将参数转换为布尔值。
-
-### <a name="parameters"></a>parameters
-
-| 参数 | 必选 | 类型 | 说明 |
-|:--- |:--- |:--- |:--- |
-| arg1 |是 |字符串或整数 |要转换为布尔值的值。 |
-
-### <a name="return-value"></a>返回值
-转换后的值的布尔值。
-
-### <a name="examples"></a>示例
-
-以下示例演示如何对字符串或整数使用 bool。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "trueString": {
-            "value": "[bool('true')]",
-            "type" : "bool"
-        },
-        "falseString": {
-            "value": "[bool('false')]",
-            "type" : "bool"
-        },
-        "trueInt": {
-            "value": "[bool(1)]",
-            "type" : "bool"
-        },
-        "falseInt": {
-            "value": "[bool(0)]",
-            "type" : "bool"
-        }
-    }
-}
-```
-
-上面具有默认值的示例的输出为：
-
-| 名称 | 类型 | 值 |
-| ---- | ---- | ----- |
-| trueString | Bool | True |
-| falseString | Bool | False |
-| trueInt | Bool | True |
-| falseInt | Bool | False |
 
 <a id="concat" />
 
@@ -498,7 +444,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 ### <a name="examples"></a>示例
 
-以下示例将值转换为数据 URI，然后将数据 URI 转换为字符串：
+以下示例将值转换为数据 URI，并将数据 URI 转换为字符串：
 
 ```json
 {
@@ -554,7 +500,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 ### <a name="examples"></a>示例
 
-以下示例将值转换为数据 URI，然后将数据 URI 转换为字符串：
+以下示例将值转换为数据 URI，并将数据 URI 转换为字符串：
 
 ```json
 {
@@ -1682,11 +1628,11 @@ Resource Manager 提供以下用于处理字符串的函数：
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | baseString |是 |字符串 |哈希函数中用于创建唯一字符串的值。 |
-| 根据需要使用其他参数 |否 |字符串 |你可以添加任意数目的字符串，以创建指定唯一性级别的值。 |
+| 根据需要使用其他参数 |否 |字符串 |可以添加任意数目的字符串，以创建指定唯一性级别的值。 |
 
 ### <a name="remarks"></a>备注
 
-当你需要创建资源的唯一名称时，此函数很有帮助。 提供参数值，这些值用于限制结果的唯一性范围。 可以指定该名称对于订阅、资源组或部署是否唯一。 
+当需要创建资源的唯一名称时，此函数很有帮助。 提供参数值，这些值用于限制结果的唯一性范围。 可以指定该名称对于订阅、资源组或部署是否唯一。 
 
 返回的值不是随机字符串，而是哈希函数的结果。 返回的值长度为 13 个字符。 并非全局唯一。 可能需要根据命名约定使用前缀来组合值，以创建有意义的名称。 以下示例显示了返回值的格式。 实际值随提供的参数而变化。
 
@@ -1928,7 +1874,7 @@ URI 编码值的解码字符串。
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure Resource Manager 模板中各部分的说明，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
-* 若要合并多个模板，请参阅 [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md)（将链接的模板与 Azure Resource Manager 配合使用）。
+* 要合并多个模板，请参阅 [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md)（将链接的模板与 Azure Resource Manager 配合使用）。
 * 若要在创建资源类型时迭代指定的次数，请参阅 [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)（在 Azure Resource Manager 中创建多个资源实例）。
 * 若要查看如何部署已创建的模板，请参阅 [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md)（使用 Azure Resource Manager 模板部署应用程序）。
 

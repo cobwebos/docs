@@ -1,5 +1,5 @@
 ---
-title: "使用 Hadoop in HDInsight 分析 Twitter 数据 | Microsoft Docs"
+title: "使用 HDInsight 中的 Hadoop 分析 Twitter 数据 — Azure | Microsoft Docs"
 description: "了解如何在 HDInsight 中的 Hadoop 上使用 Hive 分析 Twitter 数据以找到特定单词的使用频率。"
 services: hdinsight
 documentationcenter: 
@@ -12,14 +12,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 159e41f3d1b43abc830b79e1ea0bed05e05505a2
-ms.lasthandoff: 04/11/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 711d364c36c3aba699326f4a76d42891ba3219fb
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/11/2017
 在本教程中，你将通过使用 Twitter 流式传输 API 获取推文，然后使用 Apache Hive 在 Azure HDInsight 上获取发送最多包含某个特定词的推文的 Twitter 用户列表。
 
 > [!IMPORTANT]
-> 本文档中的步骤要求使用基于 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。 有关特定于基于 Linux 的群集的步骤，请参阅[在 HDInsight (Linux) 中使用 Hive 分析 Twitter 数据](hdinsight-analyze-twitter-data-linux.md)。
+> 本文档中的步骤要求使用基于 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。 有关特定于基于 Linux 的群集的步骤，请参阅[在 HDInsight (Linux) 中使用 Hive 分析 Twitter 数据](hdinsight-analyze-twitter-data-linux.md)。
 
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本教程前，你必须具有：
@@ -50,7 +50,7 @@ ms.lasthandoff: 04/11/2017
     ```
 
     > [!IMPORTANT]
-    > Azure PowerShell 支持使用 Azure Service Manager 管理 HDInsight 资源，但**不建议使用**，而且将于 2017 年 1 月 1 日前删除。 本文档中的步骤使用的是与 Azure Resource Manager 兼容的新 HDInsight cmdlet。
+    > 使用 Azure Service Manager 管理 HDInsight 资源的 Azure PowerShell 支持**已弃用**，已在 2017 年 1 月 1 日删除。 本文档中的步骤使用的是与 Azure Resource Manager 兼容的新 HDInsight cmdlet。
     >
     > 请按照 [安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中的步骤安装最新版本的 Azure PowerShell。 如果你的脚本需要修改后才能使用与 Azure Resource Manager 兼容的新 cmdlet，请参阅 [迁移到适用于 HDInsight 群集的基于 Azure Resource Manager 的开发工具](hdinsight-hadoop-development-using-azure-resource-manager.md) ，了解详细信息。
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 04/11/2017
 在本教程中，你将使用 [Twitter 流式传输 API][twitter-streaming-api]。 你将使用的特定 Twitter 流式传输 API 是 [statuses/filter][twitter-statuses-filter]。
 
 > [!NOTE]
-> 已将包含 10,000 个推文的文件和 Hive 脚本文件（在下一节中介绍）上载到公共 Blob 容器中。 如果要使用已上载的文件，可以跳过本节。
+> 已将包含 10,000 个推文的文件和 Hive 脚本文件（在下一节中介绍）上传到公共 Blob 容器中。 如果要使用已上传的文件，可以跳过本节。
 
 [推文数据](https://dev.twitter.com/docs/platform-objects/tweets)以包含复杂的嵌套结构的 JavaScript 对象表示法 (JSON) 格式存储。 你可以将此嵌套结构转换为 Hive 表（而不是使用传统的编程语言编写多行代码），使其能够通过类似结构化查询语言 (SQL) 的语言（称作 HiveQL）进行查询。
 
@@ -250,10 +250,10 @@ Twitter 使用 OAuth 提供对其 API 的授权访问。 OAuth 是一种身份�
 在验证过程中，可使用 Azure 存储资源管理器或 Azure PowerShell 查看 Azure Blob 存储中的输出文件 **/tutorials/twitter/data/tweets.txt**。 有关用于列出文件的示例 Windows PowerShell 脚本，请参阅[将 Blob 存储与 HDInsight 配合使用][hdinsight-storage-powershell]。
 
 ## <a name="create-hiveql-script"></a>创建 HiveQL 脚本
-使用 Azure PowerShell，你可以一次运行多个 HiveQL 语句，或者将 HiveQL 语句打包到一个脚本文件中。 在本教程中，你将创建 HiveQL 脚本。 脚本文件必须上载到 Azure Blob 存储中。 在下一节中，你将使用 Azure PowerShell 运行脚本文件。
+使用 Azure PowerShell，你可以一次运行多个 HiveQL 语句，或者将 HiveQL 语句打包到一个脚本文件中。 在本教程中，你将创建 HiveQL 脚本。 脚本文件必须上传到 Azure Blob 存储中。 在下一节中，你将使用 Azure PowerShell 运行脚本文件。
 
 > [!NOTE]
-> 已将 Hive 脚本文件和包含 10,000 个推文的文件上载到公共 Blob 容器中。 如果要使用已上载的文件，可以跳过本节。
+> 已将 Hive 脚本文件和包含 10,000 个推文的文件上传到公共 Blob 容器中。 如果要使用已上传的文件，可以跳过本节。
 
 HiveQL 脚本将执行以下操作：
 
@@ -461,7 +461,7 @@ HiveQL 脚本将执行以下操作：
 使用以下 Windows PowerShell 脚本运行 Hive 脚本。 你将需要设置第一个变量。
 
 > [!NOTE]
-> 要使用最后两部分中上载的推文和 HiveQL 脚本，请将 $hqlScriptFile 设置为“/tutorials/twitter/twitter.hql”。 若要使用已为你上传到公共 Blob 的推文和 HiveQL 脚本，请将 $hqlScriptFile 设置为“wasbs://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql”。
+> 要使用最后两部分中上传的推文和 HiveQL 脚本，请将 $hqlScriptFile 设置为“/tutorials/twitter/twitter.hql”。 若要使用已为你上传到公共 Blob 的推文和 HiveQL 脚本，请将 $hqlScriptFile 设置为“wasb://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql”。
 
 ```powershell
 #region variables and constants
@@ -470,7 +470,7 @@ $httpUserName = "admin"
 $httpUserPassword = "<HDInsight Cluster HTTP User Password>"
 
 #use one of the following
-$hqlScriptFile = "wasbs://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql"
+$hqlScriptFile = "wasb://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql"
 $hqlScriptFile = "/tutorials/twitter/twitter.hql"
 
 $statusFolder = "/tutorials/twitter/jobstatus"

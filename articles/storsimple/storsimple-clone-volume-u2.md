@@ -12,12 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/27/2016
+ms.date: 07/26/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
-ms.openlocfilehash: 0db0af490f03525f4c23c4e9a23e62a1ef9f1c7f
-
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 2b627250df62bbe3299869ef3812947afbb8f29f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="use-the-storsimple-manager-service-to-clone-a-volume-update-2"></a>使用 StorSimple Manager 服务克隆卷 (Update 2)
@@ -37,7 +38,7 @@ StorSimple Manager 服务的“备份目录”页面显示手动或自动备份�
 > 
 > `Unable to modify the usage type for volume {0}. This can happen if the volume being modified is a transient clone and hasn’t been made permanent. Take a cloud snapshot of this volume and then retry the modify operation.` 
 > 
-> 此错误仅在克隆到不同设备时出现。 如果先将暂时性克隆转换为永久性克隆，则可成功地将卷转换为本地固定卷。 若要将暂时性克隆转换为永久性克隆，请对其执行云快照操作。
+> 此错误仅在克隆到不同设备时出现。 如果先将暂时性克隆转换为永久性克隆，则可成功地将卷转换为本地固定卷。 要将暂时性克隆转换为永久性克隆，请对其执行云快照操作。
 > 
 > 
 
@@ -45,7 +46,7 @@ StorSimple Manager 服务的“备份目录”页面显示手动或自动备份�
 可以使用本地快照或云快照在相同的设备、不同的设备甚至虚拟机中创建克隆。
 
 #### <a name="to-clone-a-volume"></a>克隆卷
-1. 在“StorSimple Manager 服务”页上单击“备份目录”选项卡，然后选择备份集。
+1. 在“StorSimple Manager 服务”页上单击“备份目录”选项卡，并选择备份集。
 2. 展开备份集以查看相关联的卷。 单击并选择备份集中的卷。
    
      ![克隆卷](./media/storsimple-clone-volume-u2/CloneVol.png) 
@@ -86,7 +87,7 @@ StorSimple Manager 服务的“备份目录”页面显示手动或自动备份�
 > 
 > 
 
-通过此方式创建的克隆为暂时性克隆。 有关克隆类型的详细信息，请参阅[暂时性克隆与永久性克隆](#transient-vs.-permanent-clones)。
+通过此方式创建的克隆为暂时性克隆。 有关克隆类型的详细信息，请参阅[暂时性克隆与永久性克隆](#transient-vs-permanent-clones)。
 
 此克隆现在为常规卷，可对其执行适用于卷的任何操作。 若要进行备份，需对此卷进行相应配置。
 
@@ -99,7 +100,7 @@ StorSimple Manager 服务的“备份目录”页面显示手动或自动备份�
 以下部分描述了可以使用暂时性克隆和永久性克隆的示例方案。
 
 ### <a name="item-level-recovery-with-a-transient-clone"></a>使用暂时性克隆进行项目级恢复
-你需要恢复一个一年前创建的 Microsoft PowerPoint 演示文稿文件。 IT 管理员确定了该时间范围内的特定备份，并筛选出相应的卷。 然后，该管理员对卷进行克隆，找到你要的文件，将其提供给你。 此方案使用暂时性克隆。 
+需要恢复一个一年前创建的 Microsoft PowerPoint 演示文稿文件。 IT 管理员确定了该时间范围内的特定备份，并筛选出相应的卷。 然后，该管理员对卷进行克隆，找到你要的文件，将其提供给你。 此方案使用暂时性克隆。 
 
 ![可用视频](./media/storsimple-clone-volume-u2/Video_icon.png) **可用视频**
 
@@ -111,10 +112,5 @@ StorSimple Manager 服务的“备份目录”页面显示手动或自动备份�
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[从备份集还原 StorSimple 卷](storsimple-restore-from-backup-set-u2.md)。
 * 了解如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

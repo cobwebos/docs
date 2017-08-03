@@ -14,12 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 05/20/2017
 ms.author: asirveda;robmcm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: ec6982f41d1e04d737c0f47571c30d813a390ea7
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: a071cd1933caafce1f176cd5c5c4f41a60c54357
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -116,7 +115,7 @@ ms.lasthandoff: 05/26/2017
 
 1. 显示 Web 应用时，请执行以下步骤以指定 Java 版本：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“应用程序设置”菜单项。
+   a. 单击“应用程序设置”菜单项。
 
    b. Java 版本选择 "Java 8"。
 
@@ -130,7 +129,7 @@ ms.lasthandoff: 05/26/2017
 
 1. 通过执行以下步骤指定 FTP 部署凭据：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“部署凭据”菜单项。
+   a. 单击“部署凭据”菜单项。
 
    b. 指定用户名和密码。
 
@@ -140,7 +139,7 @@ ms.lasthandoff: 05/26/2017
 
 1. 通过使用以下步骤检索 FTP 连接信息：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“部署凭据”菜单项。
+   a. 单击“部署凭据”菜单项。
 
    b. 复制完整的 FTP 用户名和 URL并保存，以供本教程下一节使用。
 
@@ -197,9 +196,9 @@ ms.lasthandoff: 05/26/2017
 
 有关使用 Azure 上的 Spring Boot 应用程序的详细信息，请参阅以下文章：
 
-* [在 Azure 容器服务中运行 Linux 上的 Spring Boot](../container-service/container-service-deploy-spring-boot-app-on-linux.md)
+* [在 Azure 容器服务中运行 Linux 上的 Spring Boot](../container-service/kubernetes/container-service-deploy-spring-boot-app-on-linux.md)
 
-* [在 Azure 容器服务中运行 Kubernetes 群集上的 Spring Boot 应用程序](../container-service/container-service-deploy-spring-boot-app-on-kubernetes.md)
+* [在 Azure 容器服务中运行 Kubernetes 群集上的 Spring Boot 应用程序](../container-service/kubernetes/container-service-deploy-spring-boot-app-on-kubernetes.md)
 
 ## <a name="additional-resources"></a>其他资源
 

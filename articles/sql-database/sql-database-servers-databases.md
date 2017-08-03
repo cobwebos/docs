@@ -16,10 +16,10 @@ ms.workload: data-management
 ms.date: 07/05/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
-ms.openlocfilehash: cbecac946e0e140503d8c14c6072fa38673d4495
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: ef61aa610957024d85f4231d957869858fd545c5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -65,7 +65,7 @@ Azure 数据库逻辑服务器：
 - 是数据库、弹性池和数据仓库的父资源
 - 为数据库、弹性池和数据仓库提供命名空间
 - 是具有强生存期语义的逻辑容器。也就是说，删除服务器也会随之删除包含的数据库、弹性池和数据仓库
-- 参与 [Azure 基于角色的访问控制 (RBAC)](/active-directory/role-based-access-control-what-is.md)。也就是说，服务器中的数据库、弹性池和数据库从服务器继承访问权限
+- 参与 [Azure 基于角色的访问控制 (RBAC)](/active-directory/role-based-access-control-what-is)。也就是说，服务器中的数据库、弹性池和数据库从服务器继承访问权限
 - 是位置靠前的数据库、弹性池和数据仓库标识元素，用于管理 Azure 资源（请参阅“数据库和池的 URL 方案”）
 - 并置区域中的资源
 - 为数据库访问提供连接终结点 (<serverName>.database.windows.net)

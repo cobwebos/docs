@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 4870d2a0bbe35f3980864d8b4f3d011a189b650e
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 3cc1bd293868b0bb093f617ac12e16c26780fc89
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/10/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="move-data-from-an-http-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 HTTP 源移动数据
@@ -281,7 +280,7 @@ ms.lasthandoff: 04/10/2017
 
 ### <a name="azure-blob-output-dataset"></a>Azure Blob 输出数据集
 
-数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。
+数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。
 
 ```JSON
 {
@@ -307,7 +306,7 @@ ms.lasthandoff: 04/10/2017
 
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，**源**类型设置为 **HttpSource**，**接收器**类型设置为 **BlobSink**。
 
-有关 HttpSource 支持的属性列表，请参阅 [HttpSource](#httpsource-in-copy-activity)。
+有关 HttpSource 支持的属性列表，请参阅 [HttpSource](#copy-activity-properties)。
 
 ```JSON
 {  
@@ -356,7 +355,7 @@ ms.lasthandoff: 04/10/2017
 ```
 
 > [!NOTE]
-> 若要将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
+> 要将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
 ## <a name="performance-and-tuning"></a>性能和优化
 请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
