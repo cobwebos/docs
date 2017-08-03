@@ -23,12 +23,9 @@ ms.openlocfilehash: a5cec02045e7db70dffbe8089c44e8c3a2b37cd4
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
-
 ---
 
-<a id="high-availability-for-sap-netweaver-on-azure-vms" class="xliff"></a>
-
-# Azure VM 上的 SAP NetWeaver 高可用性
+# <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM 上的 SAP NetWeaver 高可用性
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -368,7 +365,7 @@ ms.lasthandoff: 04/03/2017
 
 [sap-ha-guide-figure-6003]:media/virtual-machines-shared-sap-high-availability-guide/6003-sap-multi-sid-full-landscape.png
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azureps-cmdlets-docs
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
@@ -418,13 +415,8 @@ ms.lasthandoff: 04/03/2017
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 [virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]:../../virtual-machines-windows-ps-create.md
 [virtual-machines-sizes]:../../virtual-machines-windows-sizes.md
-[./windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
-[./windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener]:../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[./windows/sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]:../../windows/sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md
-[./windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener]:../../windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md
-[./windows/sql/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[./windows/sql/virtual-machines-sql-server-infrastructure-services]:../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[./windows/sql/virtual-machines-sql-server-performance-best-practices]:../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]:../../windows/sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md
+[virtual-machines-windows-portal-sql-alwayson-int-listener]:../../windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
@@ -509,9 +501,7 @@ Azure Resource Manager 和 Azure 经典部署模型在以下方面有所不同�
 
 在 Azure Resource Manager 模型中，无需 Azure 资源组即可使用 Azure 负载均衡器。 环境更加简单灵活。
 
-<a id="support-for-sap-multi-sid-scenarios" class="xliff"></a>
-
-### 对 SAP 多 SID 方案的支持
+### <a name="support-for-sap-multi-sid-scenarios"></a>对 SAP 多 SID 方案的支持
 
 在 Azure Resource Manager 中，可在一个群集中安装多个 SAP 系统标识符 (SID) ASCS/SCS 实例。 之所以能够使用多 SID 实例，是因为支持对每个 Azure 负载均衡器使用多个 IP 地址。
 
@@ -648,9 +638,7 @@ _**图 7：**使用 SQL Server Always On 的高可用性 SAP DBMS 示例_
 
 ## <a name="045252ed-0277-4fc8-8f46-c5a29694a816"></a> 端到端高可用性部署方案
 
-<a id="deployment-scenario-using-architectural-template-1" class="xliff"></a>
-
-### 使用体系结构模板 1 的部署方案
+### <a name="deployment-scenario-using-architectural-template-1"></a>使用体系结构模板 1 的部署方案
 
 图 8 显示了 Azure 中适用于**一个** SAP 系统的 SAP NetWeaver 高可用性体系结构的示例。 此方案的设置方式如下：
 
@@ -662,9 +650,7 @@ _**图 7：**使用 SQL Server Always On 的高可用性 SAP DBMS 示例_
 
 _**图 8：**SAP 高可用性体系结构模板 1：包含 ASCS/SCS 和 DBMS 实例的专用群集_
 
-<a id="deployment-scenario-using-architectural-template-2" class="xliff"></a>
-
-### 使用体系结构模板 2 的部署方案
+### <a name="deployment-scenario-using-architectural-template-2"></a>使用体系结构模板 2 的部署方案
 
 图 9 显示了 Azure 中适用于**一个** SAP 系统的 SAP NetWeaver 高可用性体系结构的示例。 此方案的设置方式如下：
 
@@ -675,9 +661,7 @@ _**图 8：**SAP 高可用性体系结构模板 1：包含 ASCS/SCS 和 DBMS 实
 
 _**图 9：**SAP 高可用性体系结构模板 2：包含 ASCS/SCS 的专用群集和 DBMS 的专用群集_
 
-<a id="deployment-scenario-using-architectural-template-3" class="xliff"></a>
-
-### 使用体系结构模板 3 的部署方案
+### <a name="deployment-scenario-using-architectural-template-3"></a>使用体系结构模板 3 的部署方案
 
 图 10 显示了 Azure 中**两个** SAP 系统（分别带有标记 &lt;SID1&gt; 和 &lt;SID2&gt;）的 SAP NetWeaver 高可用性体系结构示例。 此方案的设置方式如下：
 
@@ -692,9 +676,7 @@ _**图 10：**SAP 高可用性体系结构模板 3：为不同的 ASCS/SCS 实�
 
 ## <a name="78092dbe-165b-454c-92f5-4972bdbef9bf"></a> 准备基础结构
 
-<a id="prepare-the-infrastructure-for-architectural-template-1" class="xliff"></a>
-
-### 准备体系结构模板 1 的基础结构
+### <a name="prepare-the-infrastructure-for-architectural-template-1"></a>准备体系结构模板 1 的基础结构
 适用于 SAP 的 Azure Resource Manager 模板有助于简化所需资源的部署。
 
 Azure Resource Manager 中的三层模板还支持高可用性方案，例如体系结构模板 1 包含两个群集。 每个群集都是 SAP ASCS/SCS 和 DBMS 的 SAP 单一故障点。
@@ -786,9 +768,7 @@ _**图 11：**设置 SAP 高可用性 Azure Resource Manager 参数_
 >
 
 
-<a id="prepare-the-infrastructure-for-architectural-template-2" class="xliff"></a>
-
-### 准备体系结构模板 2 的基础结构
+### <a name="prepare-the-infrastructure-for-architectural-template-2"></a>准备体系结构模板 2 的基础结构
 
 可以借助这个适用于 SAP 的 Azure Resource Manager 模板来简化 SAP 体系结构模板 2 所需基础结构资源的部署。
 
@@ -798,9 +778,7 @@ _**图 11：**设置 SAP 高可用性 Azure Resource Manager 参数_
 * [自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
 
 
-<a id="prepare-the-infrastructure-for-architectural-template-3" class="xliff"></a>
-
-### 准备体系结构模板 3 的基础结构
+### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>准备体系结构模板 3 的基础结构
 
 可以准备基础结构并在 SAP 中配置**多 SID**。 例如，将附加的 SAP ASCS/SCS 实例添加到*现有*群集配置。 有关详细信息，请参阅[使用 Azure Resource Manager 在现有群集配置中配置附加的 SAP ASCS/SCS 实例以创建 SAP 多 SID 配置][sap-ha-multi-sid-guide]。
 
