@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/08/2017
 ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 1241b6d97447fe6ee2a8abfb425b8b5f7d0f8a9c
+ms.translationtype: HT
+ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
+ms.openlocfilehash: 71878a5a8807b025f418b978990cb0c502e4eca7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 07/17/2017
 
 ---
 # <a name="sql-queries-for-azure-cosmos-db-documentdb-api"></a>Azure Cosmos DB DocumentDB API 的 SQL 查询
@@ -921,9 +920,7 @@ TOP 关键字可用于限制来自查询中的值的数量。 当 TOP 与 ORDER 
 
 **结果**
 
-    [{
-        "$1": 1
-    }]
+    [ 1 ]
 
 下表显示了 DocumentDB API 中受支持的聚合函数的列表。 `SUM` 和 `AVG` 基于数字值执行，而 `COUNT`、`MIN`、`MAX` 则可基于数字、字符串、布尔值和 null 值执行。 
 
@@ -1206,7 +1203,7 @@ JOIN 真正实用的地方通过以其他方式难以投影的形式基于叉积
         }
     }
 
-`AndersenFamily` 有一个拥有一只宠物的孩子。 因此，叉积从此家庭中生成一行 (1*1*1)。 尽管 WakefieldFamily 有两个孩子，但只有一个孩子“Jesse”拥有宠物。 Jesse 拥有 2 只宠物。 因此叉积从此家庭中生成 1*1*2 = 2 行。
+`AndersenFamily` 有一个拥有一只宠物的孩子。 因此，叉积从此家庭中生成一行 (1\*1\*1)。 尽管 WakefieldFamily 有两个孩子，但只有一个孩子“Jesse”拥有宠物。 Jesse 拥有 2 只宠物。 因此叉积从此家庭中生成 1\*1\*2 = 2 行。
 
 在接下来的示例中，可以根据 `pet` 进行额外的筛选。 这排除了宠物名称不是“Shadow”的所有元组。 请注意，我们能够从数组中生成元组，根据元组的任意元素进行筛选以及投影元素的任何组合。 
 
@@ -1242,7 +1239,7 @@ Azure Cosmos DB 使用存储过程和触发器提供编程模型，用于对集�
 ### <a id="UserDefinedFunctions"></a>用户定义的函数 (UDF)
 除了本文中已定义的类型外，DocumentDB API SQL 也对用户定义的函数 (UDF) 提供支持。 具体而言，支持标量 UDF，开发人员可在其中传入零个或许多参数并返回单个参数结果。 检查每个参数是否是合法的 JSON 值。  
 
-扩展 DocumentDB API SQL 语法，支持使用这些用户定义的函数的自定义应用程序逻辑。 可使用 DocumentDB API 注册 UDF，然后作为 SQL 查询的一部分引用这些函数。 事实上，UDF 经过精心设计，可由查询调用。 作为此选择的必然结果，UDF 不能访问其他 JavaScript 类型（存储过程和触发器）所拥有的上下文对象。 由于查询以只读方式执行，因此它们可以在主要或次要副本上运行。 因此，UDF 设计为在次要副本上运行，这与其他 JavaScript 类型不同。
+扩展 DocumentDB API SQL 语法，以支持使用这些用户定义的函数的自定义应用程序逻辑。 可使用 DocumentDB API 注册 UDF，然后作为 SQL 查询的一部分引用这些函数。 事实上，UDF 经过精心设计，可由查询调用。 作为此选择的必然结果，UDF 不能访问其他 JavaScript 类型（存储过程和触发器）所拥有的上下文对象。 由于查询以只读方式执行，因此它们可以在主要或次要副本上运行。 因此，UDF 设计为在次要副本上运行，这与其他 JavaScript 类型不同。
 
 以下是如何在 Cosmos DB 数据库中（特别是在文档集合下）注册 UDF 的示例。
 
@@ -1515,7 +1512,7 @@ Cosmos DB 还支持使用许多内置函数进行常见操作，这些函数可�
 | [LOWER (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_lower) |返回在将大写字符数据转换为小写后的字符串表达式。 |
 | [UPPER (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_upper) |返回在将小写字符数据转换为大写后的字符串表达式。 |
 | [REPLACE (str_expr, str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replace) |将出现的所有指定字符串值替换为另一个字符串值。 |
-| [REPLICATE (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replicate) |将一个字符串值重复指定的次数。 |
+| [REPLICATE (str_expr, num_expr)](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-reference#bk_replicate) |将一个字符串值重复指定的次数。 |
 | [REVERSE (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_reverse) |返回字符串值的逆序排序形式。 |
 
 使用这些函数，你现在可以运行以下查询。 例如，你可以返回大写形式的家庭名称，如下所示：
