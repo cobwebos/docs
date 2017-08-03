@@ -11,7 +11,7 @@
 
 <br>
 
-| SKU 系列 | ACU/核心 |
+| SKU 系列 | ACU |
 | --- | --- |
 | [A0](../articles/virtual-machines/windows/sizes-general.md) |50 |
 | [A1-A4](../articles/virtual-machines/windows/sizes-general.md) |100 |

@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 07/05/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: c7d54f8355803933e0d581470804ee98a0172937
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 105dab17823a7e7f6957a604833f4ecad35c14bd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="use-net-c-with-visual-studio-to-connect-and-query-an-azure-sql-database"></a>使用 .NET (C#) 和 Visual Studio 来连接和查询 Azure SQL 数据库
@@ -44,7 +44,7 @@ ms.lasthandoff: 07/12/2017
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称、数据库名称和登录信息。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 从左侧菜单中选择“SQL 数据库”，然后单击“SQL 数据库”页上的数据库。 
+2. 从左侧菜单中选择“SQL 数据库”，并单击“SQL 数据库”页上的数据库。 
 3. 在数据库的“概览”页上，查看如下图所示的完全限定的服务器名称。 可以将鼠标悬停在服务器名称上以打开“单击以复制”选项。 
 
    ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
@@ -74,7 +74,6 @@ ms.lasthandoff: 07/12/2017
 8. 如果显示“接受许可证”窗口，则单击“我接受”。
 
 ## <a name="insert-code-to-query-sql-database"></a>插入用于查询 SQL 数据库的代码
-
 1. 切换到 Program.cs（或者根据需要将其打开）
 
 2. 将 Program.cs 的内容替换为以下代码，为服务器、数据库、用户和密码添加相应的值。
@@ -141,7 +140,7 @@ namespace sqltest
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何在 Windows/Linux/macOS 中[使用 .NET Core 连接和查询 Azure SQL 数据库](sql-database-connect-query-dotnet-core.md)。  
-- 了解[在 Windows/Linux/macOS 中通过命令行使用 .NET Core 入门](/dotnet/core/tutorials/using-with-xplat-cli.md)。
+- 了解[在 Windows/Linux/macOS 中通过命令行使用 .NET Core 入门](/dotnet/core/tutorials/using-with-xplat-cli)。
 - 了解如何[使用 SSMS 设计你的第一个 Azure SQL 数据库](sql-database-design-first-database.md)，或者如何[使用 .NET 设计你的第一个 Azure SQL 数据库](sql-database-design-first-database-csharp.md)。
 - 有关 .NET 的详细信息，请参阅 [.NET 文档](https://docs.microsoft.com/dotnet/)。
 

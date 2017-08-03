@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 07/05/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 708c2d2f40138572c7e65938da6e863cab089cdf
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 046322624d3b89bb983acee863534256fee94b60
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="use-net-core-c-to-query-an-azure-sql-database"></a>使用 .NET Core (C#) 查询 Azure SQL 数据库
@@ -151,7 +151,7 @@ namespace sqltest
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 Windows/Linux/macOS 中通过命令行使用 .NET Core 入门](/dotnet/core/tutorials/using-with-xplat-cli.md)。
+- [在 Windows/Linux/macOS 中通过命令行使用 .NET Core 入门](/dotnet/core/tutorials/using-with-xplat-cli)。
 - 了解如何[使用 .NET Framework 和 Visual Studio 连接和查询 Azure SQL 数据库](sql-database-connect-query-dotnet-visual-studio.md)。  
 - 了解如何[使用 SSMS 设计你的第一个 Azure SQL 数据库](sql-database-design-first-database.md)，或者如何[使用 .NET 设计你的第一个 Azure SQL 数据库](sql-database-design-first-database-csharp.md)。
 - 有关 .NET 的详细信息，请参阅 [.NET 文档](https://docs.microsoft.com/dotnet/)。
