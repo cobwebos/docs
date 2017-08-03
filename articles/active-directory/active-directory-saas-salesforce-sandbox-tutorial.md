@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/24/2017
+ms.date: 07/21/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 5d37dbcce06ac979f3cabef1220e5f1fe8e67931
-ms.openlocfilehash: 6c0cd8aeaaa094a6bf046d47a96eddffc6430d44
-ms.lasthandoff: 03/01/2017
-
+ms.reviewer: jeedes
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: f8296aa92f58829da698cae8bf6e2e9191c4b257
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>教程：Azure Active Directory 与 Salesforce 沙盒集成
@@ -109,11 +110,11 @@ ms.lasthandoff: 03/01/2017
  1. 在“名称”文本框中，键入配置的名称（例如：*SPSSOWAAD\_Test*）。 
  2. 在 Azure 经典门户的“配置 Salesforce 沙盒的单一登录”对话框页上，复制“颁发者 URL”值，然后将其粘贴到“颁发者”文本框中。
  3. 在“实体 ID”文本框中，键入 **https://test.salesforce.com**（如果这是要添加到你的目录的第一个 Salesforce 沙盒实例）。 如果已添加 Salesforce 沙盒实例，则对于**实体 ID** 键入**登录 URL**，其格式应为：`http://company.my.salesforce.com`   
- 4. 单击“浏览”以上载已下载的证书。  
+ 4. 单击“浏览”以上传已下载的证书。  
  5. 对于“SAML 标识类型”，选择“断言包含用户对象的联合 ID”。 
  6. 对于“SAML 标识位置”，请选择“标识位于 Subject 语句的 NameIdentifier 元素中”。
  7. 在 Azure 经典门户的“配置 Salesforce 沙盒的单一登录”对话框页上，复制“远程登录 URL”值，然后将其粘贴到“标识提供者登录 URL”文本框中。 
- 8. SFDC 不支持 SAML 注销。  一种解决方法是，将“https://login.windows.net/common/wsfederation?wa=wsignout1.0”粘贴到“标识提供者注销 URL”文本框中。
+ 8. SFDC 不支持 SAML 注销。  一种解决方法是，将“https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0”粘贴到“标识提供者注销 URL”文本框中。
  9. 对于“服务提供程序发起的请求绑定”，请选择“HTTP POST”。 
  10. 单击“保存” 。
 11. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
