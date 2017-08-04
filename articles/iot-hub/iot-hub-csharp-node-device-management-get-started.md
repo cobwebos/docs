@@ -20,7 +20,6 @@ ms.openlocfilehash: def3feb2760c0ec2bb9ff39c6ef8a85bb142a0a7
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/19/2017
 
-
 ---
 # <a name="get-started-with-device-management-netnode"></a>设备管理入门 (.NET/Node)
 
@@ -62,6 +61,7 @@ ms.lasthandoff: 05/19/2017
 4. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
    
         using Microsoft.Azure.Devices;
+        using Microsoft.Azure.Devices.Shared;
         
 5. 将以下字段添加到 **Program** 类。 将占位符值替换为在上一部分和目标设备中为中心创建的 IoT 中心连接字符串。
    

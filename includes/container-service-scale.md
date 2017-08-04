@@ -32,7 +32,7 @@ az acs show -g myResourceGroup -n containerservice-myACSName
 例如，要将前面的群集中的代理数更改为 10，请键入以下命令：
 
 ```azurecli
-azure acs scale -g myResourceGroup -n containerservice-myACSName --new-agent-count 10
+az acs scale -g myResourceGroup -n containerservice-myACSName --new-agent-count 10
 ```
 
 Azure CLI 2.0 将返回一个表示容器服务新配置的 JSON 字符串，其中包括新的代理计数。
