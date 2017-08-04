@@ -44,3 +44,4 @@
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [联系支持人员](../azure-supportability/how-to-create-azure-support-request.md)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)

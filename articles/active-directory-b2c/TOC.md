@@ -74,6 +74,7 @@
 ### [发行说明](active-directory-b2c-developer-notes-custom.md)
 
 # 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory-b2c)
 ## 术语表
 ### [应用程序的类型](active-directory-b2c-apps.md)
 ### [身份验证协议](active-directory-b2c-reference-protocols.md)
@@ -92,6 +93,7 @@
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [常见问题](active-directory-b2c-faqs.md)
 ## [定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=active-directory-b2c)
 ## [堆栈溢出](https://stackoverflow.com/questions/tagged/azure-ad-b2c)
 ## [支持](active-directory-b2c-support.md)

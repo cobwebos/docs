@@ -64,6 +64,7 @@
 ## [社区模板](https://azure.microsoft.com/resources/templates/)
 ## [网络博客](http://azure.microsoft.com/blog/topics/networking)
 ## [定价](https://azure.microsoft.com/pricing)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [区域可用性](https://azure.microsoft.com/regions/services/)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-virtual-network)
 ## [视频](https://azure.microsoft.com/resources/videos/index/?services=virtual-network)

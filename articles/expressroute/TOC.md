@@ -32,6 +32,7 @@
 ### [Azure 门户](expressroute-howto-add-gateway-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 ## [配置 ExpressRoute 和站点到站点并存连接](expressroute-howto-coexist-resource-manager.md)
+## [配置用于 Microsoft 对等互连的路由筛选器](how-to-routefilter-powershell.md)
 ## [将线路从经典部署转移到 Resource Manager 部署](expressroute-howto-move-arm.md)
 ## [将关联的虚拟网络从经典部署迁移到 Resource Manager 部署](expressroute-migration-classic-resource-manager.md)
 ## 为 ExpressRoute 配置路由器
@@ -67,6 +68,7 @@
 ## [案例研究](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
 ## [网络博客](https://azure.microsoft.com/blog/topics/networking/)
 ## [定价](https://azure.microsoft.com/pricing/details/expressroute/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=expressroute)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 ## [订阅和服务限制](../azure-subscription-service-limits.md?toc=%2fazure%2fexpressroute%2ftoc.json)

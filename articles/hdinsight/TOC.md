@@ -99,7 +99,6 @@
 #### [使用 Java 拓扑处理事件](hdinsight-storm-develop-java-event-hub-topology.md)
 #### [在拓扑中使用 Power BI](hdinsight-storm-power-bi-topology.md)
 #### [分析实时传感器数据](hdinsight-storm-sensor-data-analysis.md)
-#### [处理车辆传感器数据](hdinsight-storm-iot-eventhub-documentdb.md)
 #### [关联各个时间的事件](hdinsight-storm-correlation-topology.md)
 #### [使用 Python 开发拓扑](hdinsight-storm-develop-python-topology.md)
 ## 使用已加入域的 HDInsight（预览版）
@@ -137,6 +136,7 @@
 ### [使用 Hive 分析网站日志](hdinsight-hive-analyze-website-log.md)
 ### [分析 Application Insights 遥测日志](hdinsight-spark-analyze-application-insight-logs.md)
 ## 扩展群集
+### [使用启用安全传输的存储帐户](hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)
 ### [使用 Bootstrap 自定义群集](hdinsight-hadoop-customize-cluster-bootstrap.md)
 ### [使用脚本操作自定义群集](hdinsight-hadoop-customize-cluster-linux.md)
 ### [将 HDInsight 连接到本地网络](connect-on-premises-network.md)
@@ -207,6 +207,7 @@
 #### [优化 Hive 查询](hdinsight-hadoop-optimize-hive-query.md)
 
 # 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight)
 ## [PowerShell](/powershell/module/azurerm.hdinsight)
 ## [.NET (Hadoop)](https://docs.microsoft.com/dotnet/api/overview/azure/hd-insight?view=azure-dotnet)
 ## [.NET (HBase)](https://www.nuget.org/packages/Microsoft.HBase.Client/)
@@ -240,4 +241,5 @@
 ## [在论坛上获取帮助](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 ## [Microsoft 大数据专业程序](https://academy.microsoft.com/en-us/professional-program/big-data/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [用于 HDInsight 的 Windows 工具](hdinsight-hadoop-windows-tools.md)

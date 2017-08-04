@@ -3,6 +3,7 @@
 ## [数据库安全](azure-database-security-overview.md)
 ## [存储安全](security-storage-overview.md)
 ## [计算安全](security-virtual-machines-overview.md)
+## [运营安全性](azure-operational-security-overview.md)
 ## [安全管理和监视](security-management-and-monitoring-overview.md)
 ## [标识管理](security-identity-management-overview.md)
 ## [IoT 安全性](../iot-suite/iot-security-architecture.md#security-in-iot)
@@ -35,6 +36,8 @@
 ### [IaaS 工作负荷最佳实践](azure-security-iaas.md)
 ### [Microsoft 反恶意软件](azure-security-antimalware.md)
 ### [IaaS VM 的磁盘加密](azure-security-disk-encryption.md)
+#### [磁盘加密常见问题解答](azure-security-disk-encryption-faq.md)
+#### [磁盘加密故障排除](azure-security-disk-encryption-tsg.md)
 ### [加密 Azure VM](../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
 ## 安全管理和监视
@@ -53,8 +56,10 @@
 ## PaaS 服务
 ### [保护 PaaS 部署](security-paas-deployments.md)
 #### [使用 SQL 保护 PaaS Web 和移动应用程序](security-paas-applications-using-sql.md)
-#### [SQL 数据库最佳做法](azure-database-security-best-practices.md)
+#### [SQL 数据库安全最佳实践](azure-database-security-best-practices.md)
+#### [SQL 数据库安全清单](azure-database-security-checklist.md)
 #### [使用应用服务保护 PaaS Web 和移动应用程序](security-paas-applications-using-app-services.md)
+####[运营安全清单](azure-operational-security-checklist.md)
 
 ## 物联网
 ### [保护 IoT 部署](../iot-suite/iot-suite-security-deployment.md)
@@ -79,6 +84,7 @@
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [Azure 安全 MVP 计划](azure-security-mvp.md)
 ## [网络安全咨询](azure-security-cyber-services.md)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [安全与合规性博客](http://blogs.msdn.com/b/azuresecurity/)
 ## [Virtual Academy 中的安全课程](security-microsoft-virtual-academy.md)
 ## [第 9 频道上的安全视频](security-channel-nine.md)

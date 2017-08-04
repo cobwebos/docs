@@ -28,7 +28,6 @@
 ## 自动化
 ### [启动 Runbook](automation-starting-a-runbook.md)
 ### [从 Webhook 启动 Runbook](automation-webhooks.md)
-### [在混合 Runbook 辅助角色中运行 Runbook](automation-hybrid-runbook-worker.md)
 ### [配置 Runbook 输入参数](automation-runbook-input-parameters.md)
 ### [图形 Runbook 中的错误处理](automation-runbook-graphical-error-handling.md)
 ### [跟踪 Runbook 作业](automation-runbook-execution.md)
@@ -36,6 +35,9 @@
 ### [管理 Azure 自动化数据](automation-managing-data.md)
 ### [从 Log Analytics 警报调用 Azure 自动化 Runbook](automation-invoke-runbook-from-omsla-alert.md)
 ### [将 JSON 对象传递到 Azure 自动化 runbook](automation-pass-json-string.md)
+## 混合 Runbook 辅助角色
+### [部署混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)
+### [在辅助角色上运行 runbook](automation-hrw-run-runbooks.md)
 ## 部署配置管理 (DSC)
 ### [所需状态配置 (DSC) 概述](automation-dsc-overview.md)
 ### [入门](automation-dsc-getting-started.md)
@@ -87,6 +89,7 @@
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/automation/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)  
 ## [定价](https://azure.microsoft.com/pricing/details/automation/)  
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [发行说明](https://azure.microsoft.com/updates/?product=automation)
 ## [服务更新](https://azure.microsoft.com/updates/?product=automation)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-automation)

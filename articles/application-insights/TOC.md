@@ -42,6 +42,7 @@
 ## 配置
 ### Azure
 #### [探查器](app-insights-profiler.md)
+#### [启用探查器](enable-profiler-cloud-services.md)
 #### [诊断](app-insights-azure-diagnostics.md)
 #### [预览](app-insights-previews.md)
 
@@ -140,7 +141,7 @@
 ### [Java](app-insights-java-troubleshoot.md)
 
 # 引用
-## [分析](app-insights-analytics-reference.md)
+## [分析](https://docs.loganalytics.io/)
 ## [.NET](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights)
 ## [Java](/java/api/com.microsoft.applicationinsights)
 ## [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
@@ -154,6 +155,7 @@
 ### [指标](application-insights-data-model-metric-telemetry.md)
 ### [上下文](application-insights-data-model-context.md)
 ## [遥测关联](application-insights-correlation.md)
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=application-insights)
 
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
@@ -161,6 +163,7 @@
 ## [语言和平台](app-insights-platforms.md)
 
 ## [定价](https://azure.microsoft.com/pricing/details/application-insights/)  
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 
 ## 新闻
 

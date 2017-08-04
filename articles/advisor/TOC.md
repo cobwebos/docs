@@ -22,3 +22,5 @@
 # 资源
 ## [Azure 顾问视频](https://azure.microsoft.com/en-us/resources/videos/index/?services=advisor)
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=monitoring-management)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
+

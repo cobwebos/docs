@@ -12,6 +12,7 @@
 ## [同步过程中出错](../active-directory-aadconnect-troubleshoot-sync-errors.md)
 
 # 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [Azure AD Connect Health 版本历史记录](active-directory-aadconnect-health-version-history.md)
 
 # 相关内容
@@ -22,4 +23,4 @@
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=security-identity)
 ##[Azure AD Connect Health 常见问题](active-directory-aadconnect-health-faq.md)
-
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)

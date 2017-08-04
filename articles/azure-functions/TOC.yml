@@ -39,6 +39,8 @@
       href: functions-create-serverless-api.md
 - name: 示例
   items:
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=functions'
     - name: Azure CLI
       href: functions-cli-samples.md
 - name: 概念
@@ -133,6 +135,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/functions/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/regions/services/'
     - name: MSDN 论坛

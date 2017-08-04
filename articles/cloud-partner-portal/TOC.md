@@ -35,3 +35,4 @@
 ## [获取支持](./cloud-partner-portal-support-for-cloud-partner-portal.md)
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)

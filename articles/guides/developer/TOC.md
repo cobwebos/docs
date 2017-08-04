@@ -112,5 +112,6 @@
 # 资源
 ## [Azure 区域](https://azure.microsoft.com/regions/)
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [示例](https://azure.microsoft.com/resources/samples/)
 ## [视频](https://azure.microsoft.com/resources/videos/home/)

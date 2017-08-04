@@ -40,11 +40,12 @@
 ## [保护 DNS 区域和记录](dns-protect-zones-recordsets.md)
 ## [使用 .NET SDK 自动化 DNS 操作](dns-sdk.md)
 
-## [将 Azure DNS 与 Azure 资源集成](dns-custom-domain.md)
+## [Azure 资源的自定义域](dns-custom-domain.md)
 ## 故障排除
 ### [故障排除指南](dns-troubleshoot.md)
 
 # 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=dns)
 ## [PowerShell](/powershell/module/azurerm.dns)
 ## [Azure CLI](/cli/azure/network/dns)
 ## [.NET](/dotnet/api/microsoft.azure.management.dns.models)
@@ -68,4 +69,5 @@
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [网络博客](http://azure.microsoft.com/blog/topics/networking)
 ## [定价](https://azure.microsoft.com/pricing/details/dns/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=dns)

@@ -40,6 +40,7 @@
 ### [U-SQL 可编程性指南](data-lake-analytics-u-sql-programmability-guide.md)
 
 # 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=data-lake-analytics)
 ## [PowerShell](/powershell/module/azurerm.datalakeanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.datalake.analytics)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-analytics)
@@ -53,5 +54,6 @@
 ## [在 UserVoice 上提供反馈](https://feedback.azure.com/forums/327234-data-lake)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
 ## [定价](https://azure.microsoft.com/pricing/details/data-lake-analytics/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=data-lake-analytics)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-data-lake)

@@ -31,12 +31,22 @@
 #### [IIS 日志](log-analytics-data-sources-iis-logs.md)
 #### [自定义日志](log-analytics-data-sources-custom-logs.md)
 #### [自定义字段](log-analytics-custom-fields.md)
+
 ## 查询数据
 ### [日志搜索概述](log-analytics-log-searches.md)
 ### [搜索参考](log-analytics-search-reference.md)
 #### [正则表达式](log-analytics-log-searches-regex.md)
 ### [从搜索结果执行操作](log-analytics-log-search-takeaction.md)
 ### [计算机组](log-analytics-computer-groups.md)
+
+## 新建日志搜索
+### [升级工作区](log-analytics-log-search-upgrade.md)
+### [常见问题](log-analytics-log-search-faq.md)
+### [日志搜索概述](log-analytics-log-search-new.md)
+### [日志搜索门户](log-analytics-log-search-portals.md)
+#### [使用日志搜索门户](log-analytics-log-search-log-search-portal.md)
+### [从旧式语言转换](log-analytics-log-search-transition.md)
+
 ## 分析数据
 ### [仪表板](log-analytics-dashboards.md)
 ### [视图设计器](log-analytics-view-designer.md)
@@ -101,5 +111,6 @@
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [定价](https://azure.microsoft.com/pricing/details/log-analytics/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=log-analytics)
 ## [Windows 分析](https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics)

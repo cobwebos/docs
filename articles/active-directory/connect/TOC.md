@@ -38,6 +38,7 @@
 ##### [快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md)
 ##### [当前限制](active-directory-aadconnect-pass-through-authentication-current-limitations.md)
 ##### [工作原理](active-directory-aadconnect-pass-through-authentication-how-it-works.md)
+##### [升级预览代理](active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md)
 ##### [智能锁定](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)
 ##### [常见问题](active-directory-aadconnect-pass-through-authentication-faq.md)
 ##### [故障排除](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)
@@ -82,6 +83,7 @@
 ### [如何从 LocalDB 10 GB 的限制恢复](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)
 
 # 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [标识同步和重复属性复原](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)
 ## [混合标识所需的端口和协议](active-directory-aadconnect-ports.md)
 ## [预览版功能](active-directory-aadconnect-feature-preview.md)
@@ -109,3 +111,5 @@
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=security-identity)
 ##[Azure AD Connect 常见问题](active-directory-aadconnect-faq.md)
 ##[DirSync 弃用](active-directory-aadconnect-dirsync-deprecated.md)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
+

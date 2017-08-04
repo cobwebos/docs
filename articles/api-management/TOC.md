@@ -85,6 +85,7 @@
 ## [通过 HTTP 使用 SOAP WCF 服务](http://mostlydotnetdev.blogspot.nl/2015/03/azure-api-management-apim-consuming.html)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt)
 ## [定价](https://azure.microsoft.com/pricing/details/api-management/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [使用 REST API 提供类似于 RBAC 的访问权限](http://blogs.msdn.com/b/katriend/archive/2015/12/21/using-the-azure-api-management-rest-api-as-workaround-to-rbac-functionality.aspx)
 ## [服务更新](https://azure.microsoft.com/updates/?product=api-management)
 ## [设置 PostMan 以调用 API 管理 API](http://www.bizbert.com/bizbert/2015/07/08/Setting+Up+PostMan+To+Call+The+Azure+Management+APIs.aspx)

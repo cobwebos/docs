@@ -71,5 +71,6 @@
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureRemoteApp)
 ## [定价](https://azure.microsoft.com/pricing/details/remoteapp/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=remoteapp)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=remoteapp)

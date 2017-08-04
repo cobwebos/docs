@@ -59,6 +59,7 @@
 ### [故障排除](azure-diagnostics-troubleshooting.md)
 
 # 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=monitor)
 ## [监视数据源](monitoring-data-sources.md)
 ## [支持的指标列表](monitoring-supported-metrics.md)
 ## [活动日志事件架构](monitoring-activity-log-schema.md)
@@ -74,5 +75,6 @@
 ## [Azure CLI 1.0 示例](insights-cli-samples.md)
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [PowerShell 示例](insights-powershell-samples.md)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [视频](https://azure.microsoft.com/resources/videos/index/?services=monitor)
 ## [快速入门模板](https://azure.microsoft.com/en-us/resources/templates/?resourceType=Microsoft.Insights)
