@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: adhurwit
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 2a7f2cb27cb4ed2d23fee09d53f85283a8592b3a
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: d095bcfe37baefa90cf79bb48bff3f703ce1dad7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -43,7 +44,7 @@ ms.lasthandoff: 03/09/2017
 
 要访问密钥保管库的 Web 应用程序已在 Azure Active Directory 中注册，因此有权访问你的密钥保管库。 如果这不是这样，请返回入门教程中的“注册应用程序”，并重复列出的步骤。
 
-本教程面向 Web 开发人员，他们已经了解有关在 Azure 上创建 Web 应用程序的基本知识。 有关 Azure Web Apps 的详细信息，请参阅 [Web Apps 概述](../app-service-web/app-service-web-overview.md)。
+本教程面向 Web 开发人员，他们已经了解有关在 Azure 上创建 Web 应用程序的基本知识。 有关 Azure Web 应用的详细信息，请参阅 [Web 应用概述](../app-service-web/app-service-web-overview.md)。
 
 ## <a id="packages"></a>添加 NuGet 包
 需要在 Web 应用程序上安装两个包。
@@ -135,7 +136,9 @@ ms.lasthandoff: 03/09/2017
 4. 将证书添加到 Web 应用
 
 **获取或创建证书**出于我们的目的，我们将生成测试证书。 下面是几个可在开发人员命令提示符下使用以创建证书的命令。 将目录更改为要在其中创建证书文件的位置。  此外，对于证书的开始和结束日期，使用当前日期加上 1 年。
-makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 03/07/2017 -e 03/07/2018 -r pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
+
+    makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 03/07/2017 -e 03/07/2018 -r
+    pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
 
 记下 .pfx 的结束日期和密码（在此示例中为：07/31/2016 和 test123）。 稍后你将需要它们。
 
@@ -220,15 +223,15 @@ makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 03/07/2017 -e 03/07/2018
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetAccessToken));
 
 
-**通过 Azure 门户将证书添加到 Web 应用** 将证书添加到 Web 应用是一个简单的分为两步的过程。 首先，转到 Azure 门户并导航到你的 Web 应用。 在你的 Web 应用的“设置”边栏选项卡中，单击“自定义域和 SSL”所对应的条目。 在打开的边栏选项卡中，你将能够上载上面创建的证书 KVWebApp.pfx，请确保记住 pfx 的密码。
+**通过 Azure 门户将证书添加到 Web 应用** 将证书添加到 Web 应用是一个简单的分为两步的过程。 首先，转到 Azure 门户并导航到你的 Web 应用。 在你的 Web 应用的“设置”边栏选项卡中，单击“自定义域和 SSL”所对应的条目。 在打开的边栏选项卡中，你将能够上传上面创建的证书 KVWebApp.pfx，请确保记住 pfx 的密码。
 
 ![将证书添加到 Azure 门户中的 Web 应用][2]
 
-你需要执行的最后一项操作是将应用程序设置添加到 Web 应用中，该设置名为 WEBSITE\_LOAD\_CERTIFICATES，值为 *。 这将确保加载所有证书。 如果你只想加载已上载的证书，则可以输入这些证书的指纹的逗号分隔列表。
+你需要执行的最后一项操作是将应用程序设置添加到 Web 应用中，该设置名为 WEBSITE\_LOAD\_CERTIFICATES，值为 *。 这将确保加载所有证书。 如果你只想加载已上传的证书，则可以输入这些证书的指纹的逗号分隔列表。
 
 若要了解有关将证书添加到 Web 应用的详细信息，请参阅[在 Azure 网站应用程序中使用证书](https://azure.microsoft.com/blog/2014/10/27/using-certificates-in-azure-websites-applications/)
 
-**将证书作为机密添加到密钥保管库** 如果不直接将证书上载到 Web App Service，可以在密钥保管库中将它存储为机密，然后从密钥保管库部署该证书。 此过程包括两个步骤，以下博客文章对此做了概述：[Deploying Azure Web App Certificate through Key Vault](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)（通过密钥保管库部署 Azure Web 应用证书）
+**将证书作为机密添加到密钥保管库** 如果不直接将证书上载到 Web 应用服务，可以在密钥保管库中将它存储为机密，并从密钥保管库部署该证书。 此过程包括两个步骤，以下博客文章对此做了概述：[Deploying Azure Web App Certificate through Key Vault](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)（通过密钥保管库部署 Azure Web 应用证书）
 
 ## <a id="next"></a>后续步骤
 有关编程参考，请参阅 [Azure 密钥保管库 C# 客户端 API 参考](https://msdn.microsoft.com/library/azure/dn903628.aspx)。

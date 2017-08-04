@@ -25,8 +25,7 @@ ms.lasthandoff: 07/12/2017
 
 ---
 
-# 使用 Azure CLI 创建托管的容器注册表
-<a id="create-a-managed-container-registry-using-the-azure-cli" class="xliff"></a>
+# <a name="create-a-managed-container-registry-using-the-azure-cli"></a>使用 Azure CLI 创建托管的容器注册表
 
 Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专用的 Docker 容器映像。 本指南详述了如何使用 Azure CLI 创建托管的 Azure 容器注册表实例。
 
@@ -36,8 +35,7 @@ Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专
 
 如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
-## 创建资源组
-<a id="create-a-resource-group" class="xliff"></a>
+## <a name="create-a-resource-group"></a>创建资源组
 
 使用 [az group create](/cli/azure/group#create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
@@ -47,8 +45,7 @@ Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专
 az group create --name myResourceGroup --location westcentralus
 ```
 
-## 创建容器注册表
-<a id="create-a-container-registry" class="xliff"></a>
+## <a name="create-a-container-registry"></a>创建容器注册表
 
 使用 [az acr create](/cli/azure/acr#create) 命令创建 ACR 实例。
 
@@ -83,8 +80,7 @@ az acr create --name myContainerRegistry1 --resource-group myResourceGroup --sku
 }
 ```
 
-## 登录到 ACR 实例
-<a id="log-in-to-acr-instance" class="xliff"></a>
+## <a name="log-in-to-acr-instance"></a>登录到 ACR 实例
 
 在推送和拉取容器映像之前，必须登录到 ACR 实例。 为此，请使用 [az acr login](/cli/azure/acr#login) 命令。
 
@@ -94,19 +90,16 @@ az acr login --name myAzureContainerRegistry1
 
 完成后，该命令会返回“登录成功”消息。
 
-## 使用 Azure 容器注册表
-<a id="use-azure-container-registry" class="xliff"></a>
+## <a name="use-azure-container-registry"></a>使用 Azure 容器注册表
 
-### 列出容器映像
-<a id="list-container-images" class="xliff"></a>
+### <a name="list-container-images"></a>列出容器映像
 
 使用 `az acr` CLI 命令查询存储库中的映像和标记。
 
 > [!NOTE]
 > 目前，容器注册表不支持使用 `docker search` 命令查询映像和标记。
 
-### 列出存储库
-<a id="list-repositories" class="xliff"></a>
+### <a name="list-repositories"></a>列出存储库
 
 以下示例使用 JSON（JavaScript 对象表示法）格式列出注册表中的存储库：
 
@@ -114,8 +107,7 @@ az acr login --name myAzureContainerRegistry1
 az acr repository list -n myContainerRegistry1 -o json
 ```
 
-### 列出标记
-<a id="list-tags" class="xliff"></a>
+### <a name="list-tags"></a>列出标记
 
 以下示例使用 JSON 格式列出 **samples/nginx** 存储库中的标记：
 
@@ -123,8 +115,7 @@ az acr repository list -n myContainerRegistry1 -o json
 az acr repository show-tags -n myContainerRegistry1 --repository samples/nginx -o json
 ```
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 在本快速入门中，你已使用 Azure CLI 创建托管的 Azure 容器注册表实例。
 

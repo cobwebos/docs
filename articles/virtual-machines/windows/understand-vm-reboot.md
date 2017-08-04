@@ -23,8 +23,7 @@ ms.lasthandoff: 06/14/2017
 
 ---
 
-# 了解 Azure VM 的系统重启
-<a id="understand-a-system-reboot-for-azure-vm" class="xliff"></a>
+# <a name="understand-a-system-reboot-for-azure-vm"></a>了解 Azure VM 的系统重启
 
 [!INCLUDE [virtual-machines-understand-vm-reboot](../../../includes/virtual-machines-understand-vm-reboot.md)]
 

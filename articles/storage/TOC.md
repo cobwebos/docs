@@ -135,9 +135,7 @@
 #### [启用和查看指标](storage-enable-and-view-metrics.md)
 #### [监视、诊断和故障排除](storage-monitoring-diagnosing-troubleshooting.md)
 #### [故障排除教程](storage-e2e-troubleshooting.md)
-### 对磁盘删除错误进行故障排除
-#### [在 Resource Manager 部署中](storage-resource-manager-cannot-delete-storage-account-container-vhd.md)
-#### [在经典部署中](storage-cannot-delete-storage-account-container-vhd.md)
+### [排查磁盘删除错误](storage-resource-manager-cannot-delete-storage-account-container-vhd.md)
 ### [排查文件存储问题](storage-troubleshoot-file-connection-problems.md)
 ## 传输数据
 ### [向/从存储移动数据](storage-moving-data.md)
@@ -181,6 +179,7 @@
 #### [备份驱动器清单](storage-import-export-backing-up-drive-manifests.md)
 #### [导入/导出作业的诊断和错误恢复](storage-import-export-diagnostics-and-error-recovery.md)
 # 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=storage)
 ## [PowerShell](/powershell/module/azure.storage)
 ## [Azure CLI](/cli/azure/storage)
 ## .NET
@@ -208,10 +207,11 @@
 ### [故障排除教程](storage-e2e-troubleshooting-classic-portal.md)
 
 # 资源
-## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=storage)
 ## [Azure 存储客户端工具](storage-explorers.md)
 ## [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
 ## [定价](https://azure.microsoft.com/pricing/details/storage/blobs/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=storage)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/windows-azure-storage)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=storage)
@@ -220,6 +220,7 @@
 ### [存储资源管理器（预览版）](../vs-azure-tools-storage-manage-with-storage-explorer.md)
 ### [使用存储资源管理器（预览版）管理 Blob](../vs-azure-tools-storage-explorer-blobs.md)
 ### [将存储资源管理器（预览版）与 Azure 文件存储配合使用](../vs-azure-tools-storage-explorer-files.md)
+### [存储资源管理器（预览版）发行说明](../vs-azure-tools-storage-explorer-relnotes.md)
 
 ## NuGet 包
 ### [适用于 .NET 的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)

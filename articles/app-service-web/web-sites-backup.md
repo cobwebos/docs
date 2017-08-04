@@ -71,7 +71,7 @@ ms.lasthandoff: 06/09/2017
    > 
 
 2. 在“备份”边栏选项卡中，单击“配置”
-![单击“配置”](./media/web-sites-backup/ClickConfigure1.png)********
+![单击“配置”](./media/web-sites-backup/ClickConfigure1.png)
 3. 在“备份配置”边栏选项卡中，单击“存储: 未配置”来配置存储帐户。
    
     ![选择存储帐户][ChooseStorageAccount]

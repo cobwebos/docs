@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 9e0dbb028c668aad182e2c1c54fb397ffe99a0a0
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: 1b7b67ec28986b7c20b3e990e3565265f74c28e6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>通过门户从不同部署模型中连接虚拟网络
@@ -84,7 +84,16 @@ VPN 类型 = 基于路由 <br>
 
 ## <a name="classicvnet"></a>1.配置经典 VNet 设置
 
-在本部分中，你将为经典 VNet 创建本地网络（本地站点）和虚拟网络网关。 如果你还没有经典 VNet 并且运行这些步骤进行练习，则可以使用[此文章](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)以及上文中的[示例](#values)设置值创建 VNet。 如果你已有具有 VPN 网关的 VNet，请验证该网关是否为动态的。 如果为静态的，则必须先删除该 VPN 网关，然后再继续操作。
+在本部分中，你将为经典 VNet 创建本地网络（本地站点）和虚拟网络网关。 如果你还没有经典 VNet 并且运行这些步骤进行练习，则可以使用[此文章](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)以及上文中的[示例](#values)设置值创建 VNet。
+
+使用门户创建经典虚拟网络时，必须通过执行以下步骤导航到“虚拟网络”边栏选项卡，否则不会显示用于创建经典虚拟网络的选项：
+
+1. 单击“+”打开“新建”边栏选项卡。
+2. 在“搜索 Marketplace”字段中，键入“虚拟网络”。 如果改为选择“网络”->“虚拟网络”，则不会显示用于创建经典 VNet 的选项。
+3. 从返回的列表中找到“虚拟网络”，单击它打开“虚拟网络”边栏选项卡。 
+4. 在“虚拟网络”边栏选项卡上，选择“经典”创建经典 VNet。 
+
+如果你已有具有 VPN 网关的 VNet，请验证该网关是否为动态的。 如果为静态的，则必须先删除该 VPN 网关，然后再继续操作。
 
 这些屏幕截图仅供参考。 请务必将值替换为你自己的值，或者使用[示例](#values)值。
 

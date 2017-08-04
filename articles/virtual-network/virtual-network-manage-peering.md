@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/06/2017
+ms.date: 07/17/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 1e524f13a70b1d08b064d9ff70db66b2b509abe3
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: 57ab8c0504ed8f7071a949e941f749025f9042e4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>创建、更改或删除虚拟网络对等互连
@@ -37,24 +36,23 @@ ms.lasthandoff: 06/09/2017
 - 如果使用 PowerShell 命令来完成本文中的任务，请[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保安装最新版本的 Azure PowerShell cmdlet。 若要获取 PowerShell 命令的帮助和示例，请键入 `get-help <command> -full`。
 - 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请[安装和配置 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保安装最新版本的 Azure CLI。 若要获取 CLI 命令的帮助，请键入 `az <command> --help`。
 
-## <a name="about-peering"></a>关于对等互连 
+## <a name="about-peering"></a>要求和限制 
 
-在对虚拟网络进行对等互连之前，请考虑以下约束：
-- 进行对等互连的虚拟网络的 IP 地址空间不得重叠。 
+- 进行对等互连的虚拟网络的 IP 地址空间不得重叠。
 - 虚拟网络和另一个虚拟网络对等互连后，将不能向虚拟网络添加地址空间或从中删除地址空间。 若要添加或删除地址空间，请删除对等互连，添加或删除地址空间，然后重新创建对等互连。 要向虚拟网络添加地址空间或从中删除地址空间，请参阅[创建、更改或删除虚拟网络](virtual-network-manage-network.md#add-address-spaces)一文。 
-- 可以对等互连两个通过 Resource Manager 部署的虚拟网络，或对等互连一个通过 Resource Manager 部署的虚拟网络与一个通过经典部署模型部署的虚拟网络。 不能对等互连两个通过经典部署模型创建的虚拟网络。 如果不熟悉 Azure 部署模型，请阅读[了解 Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。
+- 可以对等互连两个通过 Resource Manager 部署的虚拟网络，或对等互连一个通过 Resource Manager 部署的虚拟网络与一个通过经典部署模型部署的虚拟网络。 不能对等互连两个通过经典部署模型创建的虚拟网络。 如果不熟悉 Azure 部署模型，请阅读[了解 Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。 可以使用 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V)来连接两个通过经典部署模型创建的虚拟网络。
 - 对等互连两个通过 Resource Manager 创建的虚拟网络时，必须为对等互连中的每个虚拟网络都配置对等互连。 当从第一个虚拟网络将对等互连创建至第二个虚拟网络时，对等互连状态为“已启动”。  当从第二个虚拟网络将对等互连创建至第一个虚拟网络时，对等互连状态为“已连接”。 如果查看第一个虚拟网络的对等互连状态，将看到其状态从“已启动”更改为“已连接”。 直到两个虚拟网络对等互连的对等互连状态均为“已连接”时，对等互连才成功建立。 
 - 当对等互连一个通过 Resource Manager 创建的虚拟网络与一个通过经典部署模型创建的虚拟网络时，只需为通过 Resource Manager 部署的虚拟网络配置对等互连。 不能为虚拟网络（经典）配置对等互连，或在两个通过经典部署模型部署的虚拟网络之间配置对等互连。 在从虚拟网络 (Resource Manager) 将对等互连创建至虚拟网络（经典）时，对等互连状态为“正在更新”，随后将更改为“已连接”。   
 - 对等互连在两个虚拟网络之间创建。 对等互连是不可传递的。 如果在以下虚拟网络之间创建对等互连：
-    - 虚拟网络 1 和虚拟网络 2
-    - 虚拟网络 2 和虚拟网络 3
+    - VirtualNetwork1 和 VirtualNetwork2
+    - VirtualNetwork2 和 VirtualNetwork3
 
-  不会通过虚拟网络 2 在虚拟网络 1 和虚拟网络 3 之间形成对等互连。 如果想要建立虚拟网络 1 和虚拟网络 3 之间的对等互连，必须在虚拟网络 1 和虚拟网络 3 之间创建对等互连。
+  不会通过 VirtualNetwork2 在 VirtualNetwork1 和 VirtualNetwork3 之间形成对等互连。 如果要在 VirtualNetwork1 和 VirtualNetwork3 之间创建虚拟网络对等互连，必须在 VirtualNetwork1 和 VirtualNetwork3 之间创建对等互连。
 - 无法使用默认 Azure 名称解析来解析已对等互连的虚拟网络中的名称。 若要解析其他虚拟网络中的名称，必须使用自定义 DNS 服务器。 若要了解如何设置自己的 DNS 服务器，请阅读[使用自己的 DNS 服务器进行名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)一文。
 - 处于对等互连中的两个虚拟网络中的资源可以互相之间以相同的带宽和延迟进行通信，就如同资源是位于同一个虚拟网络中一样。 但是，每种虚拟机大小都有其自己的最大网络带宽。 若要深入了解不同虚拟机大小的最大网络带宽，请参阅有关 [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机大小的文章。
 - 可以对等互连在同一个或者不同订阅中通过 Resource Manager 部署的虚拟网络。
-- 可以对等互连同一订阅中通过不同部署模型部署的虚拟网络。 在预览版中，可以对等互连不同订阅中通过不同部署模型部署的虚拟网络。
-- 两个虚拟网络都存在于的订阅必须关联到同一 Azure Active Directory 租户。 如果还没有 AD 租户，可以快速[创建一个](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#start-from-scratch)。 
+- 可以对等互连在同一或不同订阅（预览）中通过不同部署模型部署的虚拟网络。 
+- 两个虚拟网络都存在于的订阅必须关联到同一 Azure Active Directory 租户。 如果还没有 AD 租户，可以快速[创建一个](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#start-from-scratch)。 可以使用 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V)连接关联到不同 Active Directory 租户的不同订阅中的两个虚拟网络。
 - <a name="roles-permissions"></a>帐户必须有必要的角色或权限才能创建对等互连。 例如，如果对等互连两个名为 *Vnet1* 和 *VNet2* 的虚拟网络，则对于每个虚拟网络，帐户必须分配有以下最低角色或权限：
     
     |虚拟网络|部署模型|角色|权限|
@@ -83,7 +81,7 @@ ms.lasthandoff: 06/09/2017
     - 名称：对等互连的名称在虚拟网络中必须唯一。
     - 虚拟网络部署模型：选择要对等互连的虚拟网络是通过哪种部署模型来进行部署的。
     - 我知道我的资源 ID：如果对要进行对等互连的虚拟网络拥有读取访问权限，请保留取消选中此复选框。 如果对要进行对等互连的虚拟网络或订阅没有读取访问权限，则选中此框。 在选中此框时显示的“资源 ID”复选框中输入要进行对等互连的虚拟网络的完整资源 ID。 输入的虚拟网络资源 ID 必须与此虚拟网络位于同一 Azure [位置](https://azure.microsoft.com/regions)。 完整资源 ID 类似于 /subscriptions/<Id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>。 可以通过查看虚拟网络的属性，获取虚拟网络的资源 ID。 若要了解如何查看虚拟网络的属性，请阅读[创建、更改或删除虚拟网络](virtual-network-manage-network.md#view-vnet)一文。
-    - 订阅：选择要进行对等互连的虚拟网络的[订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)。 将列出一个或多个订阅，具体取决于帐户对多少个订阅具有读取访问权限。 如果选中“资源 ID”复选框，则此设置不可用。 只要两个虚拟网络都是通过 Resource Manager 创建的，就可以对等互连不同订阅中的虚拟网络。 在预览版中，可以跨通过不同部署模型创建的订阅进行对等互连。 在不同订阅中通过不同部署模型部署的虚拟网络之间创建对等互连之前，请先注册预览版。 详细了解如何注册预览版，以及如何[对等互连不同订阅中通过不同部署模型创建的虚拟网络](virtual-network-create-peering.md#different-subscriptions-different-deployment-models)。
+    - 订阅：选择要进行对等互连的虚拟网络的[订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)。 将列出一个或多个订阅，具体取决于帐户对多少个订阅具有读取访问权限。 如果选中“资源 ID”复选框，则此设置不可用。 只要两个虚拟网络都是通过 Resource Manager 创建的，就可以对等互连不同订阅中的虚拟网络。 在预览版中，可以跨通过不同部署模型创建的订阅进行对等互连。 在不同订阅中通过不同部署模型部署的虚拟网络之间创建对等互连之前，请先注册预览版。 详细了解如何注册预览版，以及如何[对等互连不同订阅中通过不同部署模型创建的虚拟网络](create-peering-different-deployment-models-subscriptions.md)。
     - 虚拟网络：选择要进行对等互连的虚拟网络。 可以选择通过 Azure 部署模型创建的虚拟网络，但该虚拟网络必须与从中启动对等互连的虚拟网络位于同一位置。 必须具有对虚拟网络的读取访问权限，才能使其出现在列表中。 如果列出了某个虚拟网络，但显示为灰色，则可能是因为虚拟网络的地址空间与此虚拟网络的地址空间重叠。 如果虚拟网络地址空间重叠，则它们无法进行对等互连。 如果选中“资源 ID”复选框，则此设置不可用。
     - 允许虚拟网络访问：如果要启用两个虚拟网络之间的通信，请选择“启用”（默认）。 启用虚拟网络之间的通信可允许资源连接到任意虚拟网络，并以相同的带宽和延迟互相之间进行通信，就如同它们是连接到同一个虚拟网络一样。 这两个虚拟网络中的资源之间的所有通信都在 Azure 专用网络上进行。 网络安全组的默认标记 **VirtualNetwork** 会包围虚拟网络和已对等互连的虚拟网络。 若要了解网络安全组默认标记的详细信息，请阅读[网络安全组概述](virtual-networks-nsg.md#default-tags)一文。  如果不希望流量流到已对等互连的虚拟网络，请选择“禁用”。 如果已将一个虚拟网络与另一个虚拟网络对等互连，但有时想要禁用这两个虚拟网络之间的流量流动，则可以选择“禁用”。 可发现启用/禁用比删除并重新创建对等互连更加方便。 当禁用此设置时，流量不会在已对等互连的虚拟网络间流动。
     - 允许转发的流量：选中此框以允许转发到已对等互连的虚拟网络的流量（流量不是源自已对等互连的虚拟网络）流动到此虚拟网络。 如果已在进行对等互连的虚拟网络中部署网络虚拟设备，并创建了用户定义的路由以在整个网络虚拟设备中转发流量，则流量转发会变得非常常见。 如果保留此框的未选中状态（默认），从已对等互连的虚拟网络转发的流量将无法流动到此虚拟网络。 虽然启动此功能可允许通过对等互连转发流量，但它并不会创建任何用户定义的路由或网络虚拟设备。 用户自定义的路由和网络虚拟设备是单独创建的。 了解[用户定义的路由](virtual-networks-udr-overview.md)。
@@ -112,7 +110,7 @@ ms.lasthandoff: 06/09/2017
 6. 更改相应的设置。 针对每个设置的相关选项，请阅读本文“创建对等互连”部分的[步骤 6](#add-peering)。 
 
     >[!NOTE]
-    >成功创建对等互连有几项要求、约束和注意事项。 创建对等互连之前，请确保已熟悉本文中[关于对等互连](#about-peering)部分的注意事项列表。
+    >成功创建对等互连有几项要求、约束和注意事项。 创建对等互连之前，请确保已熟悉本文的[要求和限制](#about-peering)部分中的注意事项列表。
     >
 
 7. 单击“保存” 。
@@ -145,9 +143,14 @@ ms.lasthandoff: 06/09/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-- 完成[虚拟网络对等互连教程](virtual-network-create-peering.md)
-- 创建中心辐射型网络拓扑 |[多个](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering)|
+* 完成虚拟网络对等互连教程。 可在通过相同或不同订阅中的相同或不同部署模型创建的虚拟网络之间创建虚拟网络对等互连。 完成适用于以下方案之一的教程：
+ 
+    |Azure 部署模型  | 订阅  |
+    |---------|---------|
+    |都是 Resource Manager 模型 |[相同](virtual-network-create-peering.md)|
+    | |[不同](create-peering-different-subscriptions.md)|
+    |一个是 Resource Manager 模型，一个是经典模型     |[相同](create-peering-different-deployment-models.md)|
+    | |[不同](create-peering-different-deployment-models-subscriptions.md)|
 
-
-
-
+* 了解如何创建[中心和分支网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) 
+* 了解所有[虚拟网络对等互连设置以及如何对其进行更改](virtual-network-manage-peering.md)

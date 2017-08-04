@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 02/07/2017
+ms.date: 07/13/2017
 ms.author: billmath
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: f824f80aaba2cd2de7590ecf4560bb5559a66e82
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: bfb41f254d74bef843461a058ee5b2ced7fc45ec
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 06/17/2017
 
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect：设计概念
@@ -84,22 +83,31 @@ Azure AD Connect（1.1.524.0 及更高版本）现在可以方便地将 msDS-Con
 >[!NOTE]
 > 一旦将本地 AD 对象导入 Azure AD Connect（即，导入 AD 连接器空间并投影到 Metaverse），就再也不能更改其 sourceAnchor 值。 若要为给定的本地 AD 对象指定 sourceAnchor 值，请先配置其 msDS-ConsistencyGuid 属性，然后再将其导入 Azure AD Connect。
 
+### <a name="permission-required"></a>所需的权限
+若要使用此功能，必须向用来通过本地 Active Directory 进行同步的 AD DS 帐户授予对本地 Active Directory 中的 msDS-ConsistencyGuid 属性的写入权限。
+
+### <a name="how-to-enable-the-consistencyguid-feature---new-installation"></a>如何启用 ConsistencyGuid 功能 - 新安装
+你可以在进行新安装期间将 ConsistencyGuid 用作 sourceAnchor。 本节将详细介绍 Express 和自定义安装。
+
+  >[!NOTE]
+  > 仅较新版本的 Azure AD Connect（1.1.524.0 及更高版本）支持在新安装期间将 ConsistencyGuid 用作 sourceAnchor。
+
 ### <a name="how-to-enable-the-consistencyguid-feature"></a>如何启用 ConsistencyGuid 功能
 目前，该功能只能在新 Azure AD Connect 安装期间启用。
 
 #### <a name="express-installation"></a>快速安装
 使用“快速”模式安装 Azure AD Connect 时，Azure AD Connect 向导会根据以下逻辑，自动确定最适合用作 sourceAnchor 属性的 AD 属性：
 
-* 首先，Azure AD Connect 向导会查询 Azure AD 租户，以便检索在上一 Azure AD Connect 安装（如果进行过）中用作 sourceAnchor 属性的 AD 属性。 如果该信息可用，Azure AD Connect 会使用同一 AD 属性。 如果该信息不可用...
+* 首先，Azure AD Connect 向导会查询 Azure AD 租户，以便检索在上一 Azure AD Connect 安装（如果进行过）中用作 sourceAnchor 属性的 AD 属性。 如果该信息可用，Azure AD Connect 会使用同一 AD 属性。
 
-* 向导会检查本地 Active Directory 中 msDS-ConsistencyGuid 属性的状态。 如果该属性未在目录中的任何对象上配置，向导会将 msDS-ConsistencyGuid 用作 sourceAnchor 属性。 如果该属性已在目录中的一个或多个对象上配置，向导就会认为该属性正由其他应用程序使用，不适合用作 sourceAnchor 属性...
+  >[!NOTE]
+  > 仅较新版的 Azure AD Connect（1.1.524.0 及更高版本）会将新安装期间所使用的 sourceAnchor 属性的相关信息存储在 Azure AD 租户中。 较旧版的 Azure AD Connect 不这样做。
+
+* 如果所用的 sourceAnchor 属性的相关信息不可用，向导会检查你本地 Active Directory 中的 msDS-ConsistencyGuid 属性的状态。 如果该属性未在目录中的任何对象上配置，向导会将 msDS-ConsistencyGuid 用作 sourceAnchor 属性。 如果该属性已在目录中的一个或多个对象上配置，向导就会认为该属性正由其他应用程序使用，不适合用作 sourceAnchor 属性...
 
 * 在这种情况下，向导会退回来，使用 objectGUID 作为 sourceAnchor 属性。
 
 * 确定 sourceAnchor 属性以后，向导会将信息存储在 Azure AD 租户中。 该信息会供将来的 Azure AD Connect 安装使用。
-
-  >[!NOTE]
-  > 仅较新版的 Azure AD Connect（1.1.524.0 及更高版本）会将所使用的 sourceAnchor 属性的相关信息存储在 Azure AD 租户中。 较旧版的 Azure AD Connect 不这样做。
 
 快速安装完成后，向导会通知你已选取哪个属性作为“源定位点”属性。
 
@@ -115,8 +123,37 @@ Azure AD Connect（1.1.524.0 及更高版本）现在可以方便地将 msDS-Con
 | 让 Azure 为我管理源定位点 | 如果想要 Azure AD 为你选取属性，请选择此选项。 如果选择此选项，Azure AD Connect 向导会应用[在快速安装时使用的 sourceAnchor 属性选择逻辑](#express-installation)。 与快速安装类似，自定义安装完成后，向导会通知你已选取哪个属性作为“源定位点”属性。 |
 | 特定的属性 | 如果希望指定现有的 AD 属性作为 sourceAnchor 属性，请选择此选项。 |
 
-### <a name="permission-required"></a>所需的权限
-若要使用此功能，必须向用来通过本地 Active Directory 进行同步的 AD DS 帐户授予对本地 Active Directory 中的 msDS-ConsistencyGuid 属性的写入权限。
+### <a name="how-to-enable-the-consistencyguid-feature---existing-deployment"></a>如何启用 ConsistencyGuid 功能 - 现有部署
+如果你有现有的 Azure AD Connect 部署，它使用 objectGUID 作为 Source Anchor 属性，可将它切换至改为使用 ConsistencyGuid。
+
+>[!NOTE]
+> 仅较新版本的 Azure AD Connect（1.1.552.0 及更高版本）支持从使用 ObjectGuid 切换为使用 ConsistencyGuid 作为 Source Anchor 属性。
+
+从使用 ObjectGuid 切换为使用 ConsistencyGuid 作为 Source Anchor 属性：
+
+1. 启动 Azure AD Connect 向导，然后单击“配置”转到“任务”屏幕。
+
+2. 选择“配置 Source Anchor”任务选项并单击“下一步”。
+
+   ![为现有部署启用 ConsistencyGuid - 步骤 2](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment01.png)
+
+3. 输入 Azure AD 管理员凭据，然后单击“下一步”。
+
+4. Azure AD Connect 向导会分析本地 Active Directory 中 msDS-ConsistencyGuid 属性的状态。 如果未在目录中的任何对象上配置该属性，Azure AD Connect 可以确定任何其他应用程序当前均未使用该属性，可以安全地将其用作 Source Anchor 属性。 单击“下一步”以继续。
+
+   ![为现有部署启用 ConsistencyGuid - 步骤 4](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment02.png)
+
+5. 在“准备好配置”屏幕上，单击“配置”进行配置更改。
+
+   ![为现有部署启用 ConsistencyGuid - 步骤 5](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment03.png)
+
+6. 完成配置后，该向导将指示 msDS-ConsistencyGuid 现正用作 Source Anchor 属性。
+
+   ![为现有部署启用 ConsistencyGuid - 步骤 6](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment04.png)
+
+分析期间（步骤 4），如果该属性已在目录中的一个或多个对象上配置，向导就会认为该属性正由其他应用程序使用，于是返回一个错误，如下图所示。 如果确定该属性未由现有应用程序使用，则需联系支持部门，了解如何取消显示该错误。
+
+![为现有部署启用 ConsistencyGuid - 错误](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeploymenterror.png)
 
 ### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>对 AD FS 或第三方联合身份验证配置的影响
 如果使用 Azure AD Connect 管理本地 AD FS 部署，Azure AD Connect 会自动更新声明规则，使用同一 AD 属性作为 sourceAnchor。 这样可确保由 ADFS 生成的 ImmutableID 声明与导出到 Azure AD 的 sourceAnchor 值一致。
@@ -155,5 +192,4 @@ Azure AD Connect 将检测你是否在不可路由的域环境中运行，并在
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
-
 

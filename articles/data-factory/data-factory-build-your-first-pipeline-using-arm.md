@@ -15,15 +15,13 @@ ms.topic: hero-article
 ms.date: 07/10/2017
 ms.author: spelluru
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 7303b51a4a107e63e4c6514f7bf8f33a3ba00e39
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: c67169f296f2f13b9ee87180f126fb1dcf10fbea
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
-# 教程：使用 Azure Resource Manager 模板构建第一个 Azure 数据工厂
-<a id="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template" class="xliff"></a>
+# <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure Resource Manager 模板构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-build-your-first-pipeline.md)
 > * [Azure 门户](data-factory-build-your-first-pipeline-using-editor.md)
@@ -43,14 +41,12 @@ ms.lasthandoff: 07/11/2017
 > 
 > 本教程中的管道只有一类活动：HDInsightHive。 一个管道可以有多个活动。 而且，你可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。 
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 * 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。
 * 遵循 [How to install and configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。
 * 若要了解 Azure Resource Manager 模板，请参阅 [Authoring Azure Resource Manager Templates](../azure-resource-manager/resource-group-authoring-templates.md) （创作 Azure Resource Manager 模板）。 
 
-## 本教程的内容
-<a id="in-this-tutorial" class="xliff"></a>
+## <a name="in-this-tutorial"></a>本教程的内容
 | 实体 | 说明 |
 | --- | --- |
 | Azure 存储链接服务 |将 Azure 存储帐户链接到数据工厂。 Azure 存储帐户保留本示例中管道的输入和输出数据。 |
@@ -63,8 +59,7 @@ ms.lasthandoff: 07/11/2017
 
 以下部分提供了用于定义数据工厂实体的完整 Resource Manager 模板，以便你可以快速完成整个教程并测试模板。 若要了解每个数据工厂实体的定义方式，请参阅[模板中的数据工厂实体](#data-factory-entities-in-the-template)部分。
 
-## 数据工厂 JSON 模板
-<a id="data-factory-json-template" class="xliff"></a>
+## <a name="data-factory-json-template"></a>数据工厂 JSON 模板
 用于定义数据工厂的顶级 Resource Manager 模板是： 
 
 ```json
@@ -148,9 +143,10 @@ ms.lasthandoff: 07/11/2017
             "properties": {
                   "type": "HDInsightOnDemand",
                   "typeProperties": {
+                    "version": "3.5",
                     "clusterSize": 1,
                     "timeToLive": "00:05:00",
-                    "osType": "windows",
+                    "osType": "Linux",
                     "linkedServiceName": "[variables('azureStorageLinkedServiceName')]"
                   }
             }
@@ -251,8 +247,8 @@ ms.lasthandoff: 07/11/2017
                       "linkedServiceName": "[variables('hdInsightOnDemandLinkedServiceName')]"
                 }
                   ],
-                  "start": "2016-10-01T00:00:00Z",
-                  "end": "2016-10-02T00:00:00Z",
+                  "start": "2017-07-01T00:00:00Z",
+                  "end": "2017-07-02T00:00:00Z",
                   "isPaused": false
               }
           }
@@ -267,8 +263,7 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-## 参数 JSON
-<a id="parameters-json" class="xliff"></a>
+## <a name="parameters-json"></a>参数 JSON
 创建名为 **ADFTutorialARM-Parameters.json**、包含 Azure Resource Manager 模板参数的 JSON 文件。  
 
 > [!IMPORTANT]
@@ -314,8 +309,7 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-## 创建数据工厂
-<a id="create-data-factory" class="xliff"></a>
+## <a name="create-data-factory"></a>创建数据工厂
 1. 启动 **Azure PowerShell** 并运行以下命令： 
    * 运行以下命令并输入用于登录 Azure 门户的用户名和密码。
     ```PowerShell
@@ -335,8 +329,7 @@ ms.lasthandoff: 07/11/2017
     New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFGetStarted\ADFTutorialARM.json -TemplateParameterFile C:\ADFGetStarted\ADFTutorialARM-Parameters.json
     ```
 
-## 监视管道
-<a id="monitor-pipeline" class="xliff"></a>
+## <a name="monitor-pipeline"></a>监视管道
 1. 登录到 [Azure 门户](https://portal.azure.com/)后，单击“浏览”，然后选择“数据工厂”。
      ![“浏览”->“数据工厂”](./media/data-factory-build-your-first-pipeline-using-arm/BrowseDataFactories.png)
 2. 在“数据工厂”边栏选项卡中，单击创建的数据工厂 (**TutorialFactoryARM**)。    
@@ -363,10 +356,8 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-## 模板中的数据工厂实体
-<a id="data-factory-entities-in-the-template" class="xliff"></a>
-### 定义数据工厂
-<a id="define-data-factory" class="xliff"></a>
+## <a name="data-factory-entities-in-the-template"></a>模板中的数据工厂实体
+### <a name="define-data-factory"></a>定义数据工厂
 如以下示例中所示，在 Resource Manager 模板中定义数据工厂：  
 
 ```json
@@ -385,8 +376,7 @@ dataFactoryName 定义为：
 ```
 它是基于资源组 ID 的唯一字符串。  
 
-### 定义数据工厂实体
-<a id="defining-data-factory-entities" class="xliff"></a>
+### <a name="defining-data-factory-entities"></a>定义数据工厂实体
 JSON 模板中定义了以下数据工厂实体： 
 
 * [Azure 存储链接服务](#azure-storage-linked-service)
@@ -395,8 +385,7 @@ JSON 模板中定义了以下数据工厂实体：
 * [Azure Blob 输出数据集](#azure-blob-output-dataset)
 * [包含复制活动的数据管道](#data-pipeline)
 
-#### Azure 存储链接服务
-<a id="azure-storage-linked-service" class="xliff"></a>
+#### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
 在本部分中指定 Azure 存储帐户的名称和密钥。 有关用于定义 Azure 存储链接服务的 JSON 属性的详细信息。请参阅 [Azure Storage linked service](data-factory-azure-blob-connector.md#azure-storage-linked-service)（Azure 存储链接服务）。 
 
 ```json
@@ -418,8 +407,7 @@ JSON 模板中定义了以下数据工厂实体：
 ```
 **connectionString** 使用 storageAccountName 和 storageAccountKey 参数。 可以使用配置文件传递这些参数的值。 该定义还使用了模板中定义的变量 azureStroageLinkedService 和 dataFactoryName。 
 
-#### HDInsight 按需链接服务
-<a id="hdinsight-on-demand-linked-service" class="xliff"></a>
+#### <a name="hdinsight-on-demand-linked-service"></a>HDInsight 按需链接服务
 有关用于定义 HDInsight 按需链接服务的 JSON 属性的详细信息。请参阅 [Compute linked services](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)（计算链接服务）。  
 
 ```json
@@ -433,17 +421,18 @@ JSON 模板中定义了以下数据工厂实体：
     "properties": {
         "type": "HDInsightOnDemand",
         "typeProperties": {
+            "version": "3.5",
             "clusterSize": 1,
             "timeToLive": "00:05:00",
-            "osType": "windows",
+            "osType": "Linux",
             "linkedServiceName": "[variables('azureStorageLinkedServiceName')]"
         }
     }
 }
 ```
-注意以下几点： 
+请注意以下几点： 
 
-* 数据工厂使用上述 JSON 创建 **基于 Windows 的** HDInsight 群集。 也可以让它创建 **基于 Linux 的** HDInsight 群集。 有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。 
+* 数据工厂使用上面的 JSON 创建**基于 Linux** 的 HDInsight 群集。 有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。 
 * 可以使用 **自己的 HDInsight 群集** ，而不使用按需 HDInsight 群集。 有关详细信息，请参阅 [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) （HDInsight 链接服务）。
 * HDInsight 群集在 JSON 中指定的 Blob 存储 (**linkedServiceName**).内创建**默认容器**。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非有现有的实时群集 (**timeToLive**)，否则每当需要处理切片时会创建 HDInsight 群集；并在处理完成后删除该群集。
   
@@ -451,8 +440,7 @@ JSON 模板中定义了以下数据工厂实体：
 
 有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
 
-#### Azure Blob 输入数据集
-<a id="azure-blob-input-dataset" class="xliff"></a>
+#### <a name="azure-blob-input-dataset"></a>Azure Blob 输入数据集
 指定包含输入数据的 Blob 容器、文件夹和文件的名称。 有关用于定义 Azure Blob 数据集的 JSON 属性的详细信息，请参阅 [Azure Blob dataset properties](data-factory-azure-blob-connector.md#dataset-properties)（Azure Blob 数据集属性）。 
 
 ```json
@@ -485,8 +473,7 @@ JSON 模板中定义了以下数据工厂实体：
 ```
 此定义使用参数模板中定义的以下参数：blobContainer、inputBlobFolder 和 inputBlobName。 
 
-#### Azure Blob 输出数据集
-<a id="azure-blob-output-dataset" class="xliff"></a>
+#### <a name="azure-blob-output-dataset"></a>Azure Blob 输出数据集
 指定用于保存输出数据的 Blob 容器和文件夹的名称。 有关用于定义 Azure Blob 数据集的 JSON 属性的详细信息，请参阅 [Azure Blob dataset properties](data-factory-azure-blob-connector.md#dataset-properties)（Azure Blob 数据集属性）。  
 
 ```json
@@ -518,8 +505,7 @@ JSON 模板中定义了以下数据工厂实体：
 
 此定义使用参数模板中定义的以下参数：blobContainer 和 outputBlobFolder。 
 
-#### 数据管道
-<a id="data-pipeline" class="xliff"></a>
+#### <a name="data-pipeline"></a>数据管道
 定义一个管道，用于在按需 Azure HDInsight 群集上通过运行 Hive 脚本来转换数据。 有关用于定义本示例中所述管道的 JSON 元素的说明，请参阅 [Pipeline JSON](data-factory-create-pipelines.md#pipeline-json)（管道 JSON）。 
 
 ```json
@@ -569,15 +555,14 @@ JSON 模板中定义了以下数据工厂实体：
             "linkedServiceName": "[variables('hdInsightOnDemandLinkedServiceName')]"
         }
         ],
-        "start": "2016-10-01T00:00:00Z",
-        "end": "2016-10-02T00:00:00Z",
+        "start": "2017-07-01T00:00:00Z",
+        "end": "2017-07-02T00:00:00Z",
         "isPaused": false
     }
 }
 ```
 
-## 重复使用模板
-<a id="reuse-the-template" class="xliff"></a>
+## <a name="reuse-the-template"></a>重复使用模板
 本教程创建了一个用于定义数据工厂实体的模板，以及一个用于传递参数值的模板。 若要使用同一个模板将数据工厂实体部署到不同的环境，可为每个环境创建一个参数文件，然后在部署到该环境时使用该文件。     
 
 示例：  
@@ -593,8 +578,7 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
 
 可以重复使用该模板来执行重复的任务。 例如，你需要创建许多数据工厂，其中包含用于实现相同逻辑的一个或多个管道，但每个数据工厂使用不同的 Azure 存储和 Azure SQL 数据库帐户。 在这种情况下，可以在同一个环境（开发、测试或生产）中使用包含不同参数文件的同一个模板来创建数据工厂。 
 
-## 用于创建网关的 Resource Manager 模板
-<a id="resource-manager-template-for-creating-a-gateway" class="xliff"></a>
+## <a name="resource-manager-template-for-creating-a-gateway"></a>用于创建网关的 Resource Manager 模板
 下面是用于在后端创建逻辑网关的示例 Resource Manager 模板。 在本地计算机或 Azure IaaS VM 上安装网关，然后使用密钥向数据工厂服务注册该网关。 有关详细信息，请参阅 [Move data between on-premises and cloud](data-factory-move-data-between-onprem-and-cloud.md) （在本地与云之间移动数据）。
 
 ```json
@@ -631,8 +615,7 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
 ```
 此模板使用名为 GatewayUsingARM 的网关创建名为 GatewayUsingArmDF 的数据工厂。 
 
-## 另请参阅
-<a id="see-also" class="xliff"></a>
+## <a name="see-also"></a>另请参阅
 | 主题 | 说明 |
 |:--- |:--- |
 | [管道](data-factory-create-pipelines.md) |帮助你了解 Azure 数据工厂中的管道和活动，以及如何利用它们为方案或业务构造端对端数据驱动工作流。 |

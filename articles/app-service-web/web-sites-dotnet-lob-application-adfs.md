@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 08/31/2016
 ms.author: cephalin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 1895094b28d9596eec644078b6f9a877b526b89e
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: f9a8984400378d154a504af8a41609900128d052
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="create-a-line-of-business-azure-app-with-ad-fs-authentication"></a>使用 AD FS 身份验证创建业务线 Azure 应用
@@ -105,7 +104,7 @@ ms.lasthandoff: 06/02/2017
    &lt;add key="ClientValidationEnabled" value="true" /&gt;
    &lt;add key="UnobtrusiveJavaScriptEnabled" value="true" /&gt;
    <mark><del>&lt;add key="ida:Wtrealm" value="[Enter the App ID URI of WebApp-WSFederation-DotNet https://contoso.onmicrosoft.com/WebApp-WSFederation-DotNet]" /&gt;</del></mark>
-   <mark><del>&lt;add key="ida:AADInstance" value="https://login.windows.net" /&gt;</del></mark>
+   <mark><del>&lt;add key="ida:AADInstance" value="https://login.microsoftonline.com" /&gt;</del></mark>
    <mark><del>&lt;add key="ida:Tenant" value="[Enter tenant name, e.g. contoso.onmicrosoft.com]" /&gt;</del></mark>
    <mark>&lt;add key="ida:RPIdentifier" value="[Enter the relying party identifier as configured in AD FS, e.g. https://localhost:44320/]" /&gt;</mark>
    <mark>&lt;add key="ida:ADFS" value="[Enter the FQDN of AD FS service, e.g. adfs.contoso.com]" /&gt;</mark>
@@ -129,7 +128,7 @@ ms.lasthandoff: 06/02/2017
 2. 选择“Microsoft Azure 应用服务”。
 3. 如果尚未登录 Azure，请单击“登录”，然后使用 Azure 订阅的 Microsoft 帐户进行登录。
 4. 登录后，单击“新建”，创建一个 Web 应用。
-5. 填写所有必填字段。 稍后，您将要连接到本地数据，因此不需要为此 Web 应用创建数据库。
+5. 填写所有必填字段。 稍后，将要连接到本地数据，因此不需要为此 Web 应用创建数据库。
    
     ![](./media/web-sites-dotnet-lob-application-adfs/02-create-website.png)
 6. 单击“创建” 。 在您创建 Web 应用后，系统会打开“发布 Web”对话框。
@@ -347,9 +346,9 @@ ms.lasthandoff: 06/02/2017
 <a name="bkmk_data"></a>
 
 ## <a name="connect-to-on-premises-data"></a>连接到本地数据
-使用 AD FS 而不是 Azure Active Directory 实施业务线应用程序的一个原因是，既能符合法规要求，同时可将组织数据保留在外部。 这可能还意味着，您在 Azure 中的 Web 应用必须访问本地数据库，因为您不得使用 [SQL 数据库](/services/sql-database/)作为 Web 应用的数据层。
+使用 AD FS 而不是 Azure Active Directory 实施业务线应用程序的一个原因是，既能符合法规要求，同时可将组织数据保留在外部。 这可能还意味着，Azure 中的 Web 应用必须访问本地数据库，因为你不得使用 [SQL 数据库](/services/sql-database/)作为 Web 应用的数据层。
 
-Azure 应用服务 Web 应用支持通过以下这两种方法访问本地数据库：[混合连接](../biztalk-services/integration-hybrid-connection-overview.md)和[虚拟网络](web-sites-integrate-with-vnet.md)。 有关详细信息，请参阅[对 Azure 应用服务 Web 应用使用 VNET 集成和混合连接](https://azure.microsoft.com/blog/2014/10/30/using-vnet-or-hybrid-conn-with-websites/)。
+Azure 应用服务 Web 应用支持通过以下两种方法访问本地数据库：[混合连接](../biztalk-services/integration-hybrid-connection-overview.md)和[虚拟网络](web-sites-integrate-with-vnet.md)。 有关详细信息，请参阅[对 Azure 应用服务 Web 应用使用 VNET 集成和混合连接](https://azure.microsoft.com/blog/2014/10/30/using-vnet-or-hybrid-conn-with-websites/)。
 
 <a name="bkmk_resources"></a>
 

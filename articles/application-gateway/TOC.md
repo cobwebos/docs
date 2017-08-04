@@ -8,6 +8,7 @@
 ## [多站点](application-gateway-multi-site-overview.md)
 ## [端到端 SSL](application-gateway-backend-ssl.md)
 ## [重定向](application-gateway-redirect-overview.md)
+## [多租户支持](application-gateway-web-app-overview.md)
 ## [Websocket](application-gateway-websocket.md)
 ## [服务限制](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)
 # 入门
@@ -16,7 +17,8 @@
 #### [门户](application-gateway-create-gateway-portal.md)
 #### [PowerShell](application-gateway-create-gateway-arm.md)
 #### [Resource Manager 模板](application-gateway-create-gateway-arm-template.md)
-#### [Azure CLI](application-gateway-create-gateway-cli.md)
+#### [Azure CLI 1.0](application-gateway-create-gateway-cli-nodejs.md)
+#### [Azure CLI 2.0](application-gateway-create-gateway-cli.md)
 #### [PowerShell（经典）](application-gateway-create-gateway.md)
 ### 面向内部
 #### [PowerShell](application-gateway-ilb-arm.md)
@@ -40,6 +42,8 @@
 ### [PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
 ## 配置重定向
 ### [PowerShell](application-gateway-configure-redirect-powershell.md)
+## 将 Web 应用配置为后端池成员
+### [PowerShell](application-gateway-web-app-powershell.md)
 ## 配置运行状况探测
 ### [门户](application-gateway-create-probe-portal.md)
 ### [PowerShell](application-gateway-create-probe-ps.md)
@@ -67,9 +71,10 @@
 ## [负载均衡器](/azure/load-balancer/)
 ## [流量管理器](/azure/traffic-manager/)
 # 资源
-## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=networking)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [定价](https://azure.microsoft.com/pricing/details/application-gateway/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=application-gateway)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-application-gateway)

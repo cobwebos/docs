@@ -12,18 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 06/19/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 9c7ce71674a851d598ef48eb430127c9a6bddb84
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: 3ae4701914fb759efe7a890d5906f231c1def2e2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/20/2017
 
 ---
 
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>在 Azure 网络观察程序中进行资源故障排除简介
 
-虚拟网关在 Azure 中的本地资源和其他虚拟网络之间提供连接。 监视这些网关及其连接对于确保通信不中断至关重要。 网络观察程序提供对虚拟网关和连接进行故障排除的功能。 可以通过 PowerShell、CLI 或 REST API 调用网络观察程序。 调用后，网络观察程序将对虚拟网关或连接的运行状况进行诊断，并返回相应的结果。 该请求是一个长时间运行的事务。一旦诊断完毕，就会返回结果。
+虚拟网关在 Azure 中的本地资源和其他虚拟网络之间提供连接。 监视这些网关及其连接对于确保通信不中断至关重要。 网络观察程序提供对虚拟网关和连接进行故障排除的功能。 可通过门户、PowerShell、CLI 或 REST API 进行调用。 调用后，网络观察程序将对虚拟网关或连接的运行状况进行诊断，并返回相应的结果。 该请求是一个长时间运行的事务。一旦诊断完毕，就会返回结果。
+
+![portal][2]
 
 ## <a name="results"></a>结果
 
@@ -78,6 +81,24 @@ ms.lasthandoff: 04/25/2017
 | IkePolicyMismatch | 对等网关中的 IKE 策略不受 Azure 支持。 | 是|
 | WfpParse 错误 | 分析 WFP 日志时出错。 |是|
 
+## <a name="supported-gateway-types"></a>支持的网关类型
+
+下方列表显示网络观察程序故障排除支持的网关和连接。
+|  |  |
+|---------|---------|
+|网关类型   |         |
+|VPN      | 支持        |
+|ExpressRoute | 不支持 |
+|Hypernet | 不支持|
+|VPN 类型 | |
+|基于路由 | 支持|
+|基于策略 | 不支持|
+|连接类型||
+|IPSec| 支持|
+|VNet2Vnet| 支持|
+|ExpressRoute| 不支持|
+|Hypernet| 不支持|
+|VPNClient| 不支持|
 
 ## <a name="log-files"></a>日志文件
 
@@ -193,8 +214,9 @@ Elapsed Time            330 sec
 
 ## <a name="next-steps"></a>后续步骤
 
-访问[网关故障诊断 - PowerShell](network-watcher-troubleshoot-manage-powershell.md)，了解如何使用 PowerShell 对 VPN 网关和连接进行诊断。
+访问[网关故障诊断 - Azure 门户](network-watcher-troubleshoot-manage-portal.md)，了解如何通过门户诊断 VPN 网关和连接。
 <!--Image references-->
 
 [1]: ./media/network-watcher-troubleshoot-overview/GatewayTenantWorkerLogs.png
+[2]: ./media/network-watcher-troubleshoot-overview/portal.png
 

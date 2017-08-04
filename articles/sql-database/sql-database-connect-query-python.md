@@ -22,13 +22,11 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 07/13/2017
 
 ---
-# 使用 Python 查询 Azure SQL 数据库
-<a id="use-python-to-query-an-azure-sql-database" class="xliff"></a>
+# <a name="use-python-to-query-an-azure-sql-database"></a>使用 Python 查询 Azure SQL 数据库
 
  本快速入门演示了如何使用 [Python](https://python.org) 连接到 Azure SQL 数据库，然后使用 Transact-SQL 语句查询数据。
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门教程，请确保符合以下条件：
 
@@ -46,8 +44,7 @@ ms.lasthandoff: 07/13/2017
     - **Ubuntu**：安装 Python 和其他所需包，然后安装 Python Driver for SQL Server。 请参阅[步骤 1.2 和 2.1](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/)。
     - **Windows**：安装最新版的 Python（现已为你配置环境变量），安装 ODBC 驱动程序和 SQLCMD，然后安装 Python Driver for SQL Server。 请参阅[步骤 1.2、1.3 和 2.1](https://www.microsoft.com/sql-server/developer-get-started/node/windows/)。 
 
-## SQL Server 连接信息
-<a id="sql-server-connection-information" class="xliff"></a>
+## <a name="sql-server-connection-information"></a>SQL Server 连接信息
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称、数据库名称和登录信息。
 
@@ -59,8 +56,7 @@ ms.lasthandoff: 07/13/2017
 
 4. 如果忘了服务器的登录信息，请导航到 SQL 数据库服务器页，以查看服务器管理员名称并重置密码（如果需要）。     
     
-## 插入用于查询 SQL 数据库的代码
-<a id="insert-code-to-query-sql-database" class="xliff"></a> 
+## <a name="insert-code-to-query-sql-database"></a>插入用于查询 SQL 数据库的代码 
 
 1. 在喜欢的文本编辑器中，创建新文件 sqltest.py。  
 
@@ -82,8 +78,7 @@ while row:
     row = cursor.fetchone()
 ```
 
-## 运行代码
-<a id="run-the-code" class="xliff"></a>
+## <a name="run-the-code"></a>运行代码
 
 1. 请在命令提示符处运行以下命令：
 
@@ -93,8 +88,7 @@ while row:
 
 2. 验证是否已返回前 20 行，然后关闭应用程序窗口。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 - [设计第一个 Azure SQL 数据库](sql-database-design-first-database.md)
 - [用于 SQL Server 的 Microsoft Python 驱动程序](https://docs.microsoft.com/sql/connect/python/python-driver-for-sql-server/)

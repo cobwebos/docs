@@ -23,30 +23,25 @@ ms.lasthandoff: 05/08/2017
 
 ---
 
-# 我在下载的 Azure Active Directory 活动日志中找不到任何数据
-<a id="i-cant-find-any-data-in-the-azure-active-directory-activity-logs-i-have-downloaded" class="xliff"></a>
+# <a name="i-cant-find-any-data-in-the-azure-active-directory-activity-logs-i-have-downloaded"></a>我在下载的 Azure Active Directory 活动日志中找不到任何数据
 
 
-## 症状
-<a id="symptoms" class="xliff"></a>
+## <a name="symptoms"></a>症状
 
 我下载了活动日志（审核日志或登录日志），但发现所选时间范围内的记录不全。 为什么？ 
 
  ![报告](./media/active-directory-reporting-troubleshoot-missing-data-download/01.png)
  
 
-## 原因
-<a id="cause" class="xliff"></a>
+## <a name="cause"></a>原因
 
 当你在 Azure 门户中下载活动日志时，我们将规模限制为 120K 条记录，最新的记录排在最前面。 
 
-## 解决方法
-<a id="resolution" class="xliff"></a>
+## <a name="resolution"></a>解决方法
 
 你可以随时通过 [Azure AD 报告 API](active-directory-reporting-api-getting-started.md) 获取多达一百万条记录。 我们建议的方法是，按计划运行脚本，通过调用报告 API 以增量方式获取某个时段（例如每日或每周）的记录。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 请参阅 [Azure Active Directory 报告常见问题解答](active-directory-reporting-faq.md)。
 
 

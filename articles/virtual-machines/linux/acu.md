@@ -3,7 +3,7 @@ title: "Azure 计算单元概述 | Microsoft Docs"
 description: "适用于 Linux 的 Azure 计算单元的概念的概述。 ACU 提供了一种在 Azure SKU 中比较 CPU 性能的方法。"
 services: virtual-machines-linux
 documentationcenter: 
-author: cynthn
+author: jonbeck7
 manager: timlt
 editor: 
 tags: azure-resource-manager,azure-service-management
@@ -13,8 +13,8 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/17/2017
-ms.author: cynthn
+ms.date: 07/28/2017
+ms.author: jonbeck
 ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 250417aa1bbacb038dbff66daab7f31be202e40a

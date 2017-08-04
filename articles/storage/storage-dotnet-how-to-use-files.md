@@ -22,8 +22,7 @@ ms.lasthandoff: 07/12/2017
 
 ---
 
-# 使用 .NET 针对 Azure 文件存储进行开发
-<a id="develop-for-azure-file-storage-with-net" class="xliff"></a> 
+# <a name="develop-for-azure-file-storage-with-net"></a>使用 .NET 针对 Azure 文件存储进行开发 
 > [!NOTE]
 > 本文介绍如何使用 .NET 代码管理 Azure 文件存储。 若要详细了解 Azure 文件存储，请参阅 [Azure 文件存储简介](storage-files-introduction.md)。
 >
@@ -32,8 +31,7 @@ ms.lasthandoff: 07/12/2017
 
 [!INCLUDE [storage-check-out-samples-dotnet](../../includes/storage-check-out-samples-dotnet.md)]
 
-## 关于本教程
-<a id="about-this-tutorial" class="xliff"></a>
+## <a name="about-this-tutorial"></a>关于本教程
 本教程将演示使用 .NET 开发应用程序或服务的基本操作，这些程序或服务可以使用 Azure 文件存储来存储文件数据。 在本教程中，我们将创建一个简单的控制台应用程序，并演示如何通过 .NET 和 Azure 文件存储执行基本的操作：
 
 * 获取文件内容
@@ -47,8 +45,7 @@ ms.lasthandoff: 07/12/2017
 > 由于 Azure 文件存储可以通过 SMB 进行访问，因此可以编写简单的应用程序，通过标准的适用于文件 I/O 的 System.IO 类来访问 Azure 文件共享。 本文将介绍如何编写使用 Azure 存储 .NET SDK 的应用程序，该 SDK 使用 [Azure 文件存储 REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) 与 Azure 文件存储通信。 
 
 
-## 创建控制台应用程序，并获取程序集
-<a id="create-the-console-application-and-obtain-the-assembly" class="xliff"></a>
+## <a name="create-the-console-application-and-obtain-the-assembly"></a>创建控制台应用程序，并获取程序集
 在 Visual Studio 中创建新的 Windows 控制台应用程序。 以下步骤演示如何在 Visual Studio 2017 中创建控制台应用程序，但是，其他 Visual Studio 版本中的步骤是类似的。
 
 1. 选择“文件” > “新建” > “项目”
@@ -61,8 +58,7 @@ ms.lasthandoff: 07/12/2017
 
 可以在任意类型的 .NET 应用程序（包括 Azure 云服务或 Web 应用，以及桌面和移动应用程序）中使用 Azure 存储客户端库。 为简单起见，我们在本指南中使用控制台应用程序。
 
-## 使用 NuGet 安装所需包
-<a id="use-nuget-to-install-the-required-packages" class="xliff"></a>
+## <a name="use-nuget-to-install-the-required-packages"></a>使用 NuGet 安装所需包
 为完成此教程，需要在项目中引用两个包：
 
 * [适用于 .NET 的 Microsoft Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)：此包提供以编程方式访问存储帐户中数据资源的权限。
@@ -74,8 +70,7 @@ ms.lasthandoff: 07/12/2017
 2. 在线搜索“WindowsAzure.Storage”，然后单击“安装”  以安装存储客户端库和依赖项。
 3. 在线搜索“WindowsAzure.ConfigurationManager”，然后单击“安装”以安装 Azure Configuration Manager。
 
-## 将存储帐户凭据保存到 app.config 文件
-<a id="save-your-storage-account-credentials-to-the-appconfig-file" class="xliff"></a>
+## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>将存储帐户凭据保存到 app.config 文件
 接下来，将你的凭据保存到项目的 app.config 文件中。 编辑 app.config 文件，使其看起来类似于下面的示例，将 `myaccount` 替换为你的存储帐户名称，并将 `mykey` 替换为你的存储帐户密钥。
 
 ```xml
@@ -93,8 +88,7 @@ ms.lasthandoff: 07/12/2017
 > [!NOTE]
 > 最新版本的 Azure 存储模拟器不支持 Azure 文件存储。 连接字符串必须针对云中要使用 Azure 文件存储的 Azure 存储帐户。
 
-## 添加 using 指令
-<a id="add-using-directives" class="xliff"></a>
+## <a name="add-using-directives"></a>添加 using 指令
 从解决方案资源管理器打开 `Program.cs` 文件，并在该文件顶部添加以下 using 指令。
 
 ```csharp
@@ -106,8 +100,7 @@ using Microsoft.WindowsAzure.Storage.File; // Namespace for Azure File storage
 
 [!INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
-## 以编程方式访问文件共享
-<a id="access-the-file-share-programmatically" class="xliff"></a>
+## <a name="access-the-file-share-programmatically"></a>以编程方式访问文件共享
 接下来，将以下代码添加到 `Main()` 方法（在上面显示的代码后面）以检索连接字符串。 此代码将获取我们先前创建的文件的引用，并将其内容输出到控制台窗口中。
 
 ```csharp
@@ -144,8 +137,7 @@ if (share.Exists())
 
 运行控制台应用程序以查看输出。
 
-## 设置文件共享的最大大小
-<a id="set-the-maximum-size-for-a-file-share" class="xliff"></a>
+## <a name="set-the-maximum-size-for-a-file-share"></a>设置文件共享的最大大小
 从 Azure 存储客户端库的 5.x 版开始，可以设置文件共享的配额（或最大大小），单位为千兆字节。 你还可以查看共享当前存储了多少数据。
 
 通过设置一个共享的配额，可以限制在该共享上存储的文件的总大小。 如果共享上文件的总大小超过在共享上设定的配额，则客户端将不能增加现有文件的大小或创建新文件，除非这些文件是空的。
@@ -182,8 +174,7 @@ if (share.Exists())
 }
 ```
 
-### 为文件或文件共享生成共享访问签名
-<a id="generate-a-shared-access-signature-for-a-file-or-file-share" class="xliff"></a>
+### <a name="generate-a-shared-access-signature-for-a-file-or-file-share"></a>为文件或文件共享生成共享访问签名
 从 Azure 存储客户端库的 5.x 版开始，可以为文件共享或单个文件生成共享访问签名 (SAS)。 还可以在文件共享上创建一个共享访问策略以管理共享访问签名。 建议创建共享访问策略，因为它提供了一种在受到威胁时撤消 SAS 的方式。
 
 以下示例在一个共享上创建共享访问策略，然后使用该策略为共享中的一个文件提供 SAS 约束。
@@ -234,8 +225,7 @@ if (share.Exists())
 
 有关创建和使用共享访问签名的更多信息，请参阅[使用共享访问签名 (SAS)](storage-dotnet-shared-access-signature-part-1.md) 和[创建 SAS 并将其与 Azure Blob 结合使用](storage-dotnet-shared-access-signature-part-2.md)。
 
-## 复制文件
-<a id="copy-files" class="xliff"></a>
+## <a name="copy-files"></a>复制文件
 从 Azure 存储客户端库的 5.x 版开始，可以将一个文件复制到另一个文件，将一个文件复制到一个 Blob，或将一个 Blob 复制到一个文件。 在后续部分中，我们将演示如何以编程方式执行这些复制操作。
 
 还可以使用 AzCopy 将一个文件复制到另一个文件或将一个 Blob 复制到一个文件，反之亦然。 请参阅 [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)。
@@ -337,8 +327,7 @@ Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 
 可以用相同的方式将一个 Blob 复制到一个文件。 如果源对象是一个 Blob，则创建一个 SAS 以复制操作期间验证对该 Blob 的访问。
 
-## 使用指标对 Azure 文件存储进行故障排除
-<a id="troubleshooting-azure-file-storage-using-metrics" class="xliff"></a>
+## <a name="troubleshooting-azure-file-storage-using-metrics"></a>使用指标对 Azure 文件存储进行故障排除
 Azure 存储分析现在支持用于 Azure 文件存储的指标。 使用指标数据，可以跟踪请求和诊断问题。
 
 
@@ -399,29 +388,24 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 还可以参考 [Azure 文件存储故障排除文章](storage-troubleshoot-file-connection-problems.md)，了解端到端故障排除指南。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 请参阅以下链接以获取有关 Azure 文件存储的更多信息。
 
-### 概念性文章和视频
-<a id="conceptual-articles-and-videos" class="xliff"></a>
+### <a name="conceptual-articles-and-videos"></a>概念性文章和视频
 * [Azure File storage: a frictionless cloud SMB file system for Windows and Linux](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)（Azure 文件存储：适用于 Windows 和 Linux 的顺畅的云 SMB 文件系统）
 * [如何将 Azure 文件存储与 Linux 配合使用](storage-how-to-use-files-linux.md)
 
-### 文件存储的工具支持
-<a id="tooling-support-for-file-storage" class="xliff"></a>
+### <a name="tooling-support-for-file-storage"></a>文件存储的工具支持
 * [对 Azure 存储空间使用 Azure PowerShell](storage-powershell-guide-full.md)
 * [如何对 Microsoft Azure 存储使用 AzCopy](storage-use-azcopy.md)
 * [将 Azure CLI 用于 Azure 存储](storage-azure-cli.md#create-and-manage-file-shares)
 * [排查 Azure 文件存储问题](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
-### 引用
-<a id="reference" class="xliff"></a>
+### <a name="reference"></a>引用
 * [.NET 存储客户端库参考](https://msdn.microsoft.com/library/azure/dn261237.aspx)
 * [文件服务 REST API 参考](http://msdn.microsoft.com/library/azure/dn167006.aspx)
 
-### 博客文章
-<a id="blog-posts" class="xliff"></a>
+### <a name="blog-posts"></a>博客文章
 * [Azure 文件存储现已正式发布](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
 * [Inside Azure File storage](https://azure.microsoft.com/blog/inside-azure-file-storage/)（Azure 文件存储内部）
 * [Microsoft Azure 文件服务简介](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)

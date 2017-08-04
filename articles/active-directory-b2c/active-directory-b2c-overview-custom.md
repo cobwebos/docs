@@ -15,14 +15,15 @@ ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: ed82300211f54f39423c24039ca418fca9da94c3
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 0a0d91d622ed72ed22cfaaa0350b31ca653de483
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/01/2017
-
+ms.lasthandoff: 06/02/2017
 
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C：自定义策略
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 ## <a name="what-are-custom-policies"></a>什么是自定义策略？
 
@@ -62,14 +63,14 @@ Azure AD B2C 中的内置策略遵循上面描述的 3 文件模式，但开发�
 Azure 的客户标识和访问管理 (CIAM) 服务。 该服务包括：
 
 1. 一个用户目录：采用可通过 Microsoft Graph访问的专用 Azure Active Directory 形式，保存本地帐户和联合帐户的用户数据 
-2. 访问**标识体验引擎**。该引擎协调用户与实体之间的信任，并在两者之间传递声明，以完成标识/访问管理任务 
+2. 访问“标识体验框架”。此框架协调用户与实体之间的信任，并在两者之间传递声明，以完成标识/访问管理任务 
 3. 安全令牌服务 (STS)：颁发 ID 令牌、刷新令牌和访问令牌（以及等效的 SAML 断言），并对其进行验证以保护资源。
 
-Azure AD B2C 按顺序与标识提供者、用户、其他系统和本地用户目录交互，以实现标识任务（例如将用户登录、注册新用户、重置密码）。 建立多方信任并执行这些步骤的基础平台称为标识体验引擎；某个策略（也称为用户旅程或信任框架）显式定义执行组件、操作、协议和要完成的步骤序列。
+Azure AD B2C 按顺序与标识提供者、用户、其他系统和本地用户目录交互，以实现标识任务（例如将用户登录、注册新用户、重置密码）。 将建立多方信任并执行这些步骤的基础平台称为“标识体验框架”。此框架采用策略（亦称为“用户旅程”或“信任框架策略”）显式定义执行组件、操作、协议和要完成的步骤顺序。
 
-### <a name="identity-experience-engine"></a>标识体验引擎
+### <a name="identity-experience-framework"></a>标识体验框架
 
-一个完全可配置的、策略驱动的、基于云的 Azure 平台，用于协调采用标准协议格式（例如 OpenIDConnect、OAuth、SAML、WSFed）的实体（主要是声明提供程序）与非标准实体（例如基于 REST API 的系统间声明交换）之间的信任关系。 I2E 创建支持 HTML、CSS 和 jscript 的用户友好的白标体验。  目前，标识体验引擎只能在 Azure AD B2C 服务的上下文中使用，并已针对 CIAM 相关的任务进行优化。
+一个完全可配置的、策略驱动的、基于云的 Azure 平台，用于协调采用标准协议格式（例如 OpenIDConnect、OAuth、SAML、WSFed）的实体（主要是声明提供程序）与非标准实体（例如基于 REST API 的系统间声明交换）之间的信任关系。 I2E 创建支持 HTML、CSS 和 jscript 的用户友好的白标体验。  目前，标识体验框架只能在 Azure AD B2C 服务的上下文中使用，更适用于 CIAM 相关任务。
 
 ### <a name="built-in-policies"></a>内置策略
 
@@ -78,17 +79,9 @@ Azure AD B2C 按顺序与标识提供者、用户、其他系统和本地用户�
 
 ### <a name="custom-policies"></a>自定义策略
 
-在 Azure AD B2C 租户中定义标识体验引擎行为的配置文件。 可以一个或多个 XML 文件（请参阅“策略文件定义”）的形式访问自定义策略，这些文件由信赖方（例如应用程序）调用的标识体验引擎执行。 标识开发人员可以直接编辑自定义策略来完成数量几乎不受限制的任务。 配置自定义策略的开发人员必须严谨地定义信任关系，以包含元数据终结点和确切的声明交换定义，并配置每个标识提供者所需的机密、密钥和证书。
+在 Azure AD B2C 租户中定义标识体验框架行为的配置文件。 自定义策略可作为一个或多个 XML 文件（请参阅“策略文件定义”）进行访问，这些文件在信赖方（例如，应用程序）调用时由标识体验框架执行。 标识开发人员可以直接编辑自定义策略来完成数量几乎不受限制的任务。 配置自定义策略的开发人员必须严谨地定义信任关系，以包含元数据终结点和确切的声明交换定义，并配置每个标识提供者所需的机密、密钥和证书。
 
-### <a name="policy-files"></a>策略文件
-
-自定义策略以一个或多个采用 XML 格式的文件表示，这些文件在分层链中相互引用。 XML 元素定义：声明架构、声明转换、内容定义、声明提供程序/技术配置文件、Userjourney 业务流程步骤，以及其他元素。 我们建议使用三种类型的策略文件：
-
-- **BASE 文件**：包含大多数定义，Azure 为此提供了完整的示例。  我们建议对此文件进行极少量的更改，以帮助进行故障排除和长期维护策略
-- **EXTensions 文件**：保存租户的唯一配置更改
-- **信赖方 (RP) 文件**：注重单个任务的文件，由应用程序或服务（又称信赖方）直接调用。  有关详细信息，请阅读有关策略文件定义的文章。  每个唯一任务需要自身的 RP，根据品牌要求，该数字可能是“应用程序总数 x 用例总数”。
-
-## <a name="policy-file-definitions-for-identity-experience-engine-trustframeworks"></a>标识体验引擎信任框架的策略文件定义
+## <a name="policy-file-definitions-for-identity-experience-framework-trustframeworks"></a>标识体验框架信任框架的策略文件定义
 
 ### <a name="policy-files"></a>策略文件
 
@@ -108,7 +101,7 @@ Azure AD B2C 按顺序与标识提供者、用户、其他系统和本地用户�
 
 ### <a name="inheritance-model"></a>继承模型
 
-当应用程序调用 RP 策略文件时，B2C 中的标识体验引擎将依次从 BASE 文件、EXTENSIONS 文件和 RP 策略文件中添加所有元素，以组合当前生效的策略。  RP 文件中具有相同类型和名称的元素将替代 EXTENSIONS 中的这些元素，EXTENSIONS 将替代 BASE。
+当应用程序调用 RP 策略文件时，B2C 中的标识体验框架将依次从 BASE 文件、EXTENSIONS 文件和 RP 策略文件中添加所有元素，以组合当前生效的策略。  RP 文件中具有相同类型和名称的元素将替代 EXTENSIONS 中的这些元素，EXTENSIONS 将替代 BASE。
 
 Azure AD B2C 中的**内置策略**遵循上面描述的 3 文件模式，但开发人员只能看到信赖方 (RP) 文件，同时，门户将在后台对 EXTenstions 文件进行更改。  整个 Azure AD B2C 共享受 Azure B2C 团队控制的、经常更新的 BASE 策略文件。
 

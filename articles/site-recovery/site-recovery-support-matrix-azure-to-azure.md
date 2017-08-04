@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/10/2017
 ms.author: sujayt
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 7c30f5164b9fe7ff6044bbf23767a5db9a0f7c30
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 89b12ce7af1e810f72e14f67ec5b11390ac3e72f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
+ms.lasthandoff: 07/11/2017
 
 
 ---
@@ -63,16 +63,35 @@ ms.lasthandoff: 06/15/2017
 
 #### <a name="windows"></a>Windows
 
-- 64 位 Windows Server 2012 R2
+- Windows Server 2016（服务器核心和带桌面体验的服务器）*
+- Windows Server 2012 R2
 - Windows Server 2012
 - 带 SP1（或更高版本）的 Windows Server 2008 R2
 
+>[!NOTE]
+>
+> \* 不支持 Windows Server 2016 Nano Server。
+
 #### <a name="linux"></a>Linux
 
-- Red Hat Enterprise Linux 6.7、6.8、7.1、7.2、7.3
+- Red Hat Enterprise Linux 6.7、6.8、7.0、7.1、7.2、7.3
 - CentOS 6.5、6.6、6.7、6.8、7.0、7.1、7.2、7.3
+- Ubuntu 14.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
+- Ubuntu 16.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Oracle Enterprise Linux 6.4、6.5（运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3 (UEK3)）
 - SUSE Linux Enterprise Server 11 SP3
+
+>[!NOTE]
+>
+> 使用基于密码的身份验证和登录的 Ubuntu 服务器如果使用 cloud-init 包配置云虚拟机，可能会在故障转移后禁用基于密码的登录（具体取决于 cloudinit 配置）。可以通过在 Azure 门户上已故障转移的虚拟机的“设置”菜单（在“支持 + 故障排除”部分下）上重置密码来在虚拟机上重新启用基于密码的登录。
+
+### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Azure 虚拟机支持的 Ubuntu 内核版本
+
+**版本** | **移动服务版本** | **内核版本** |
+--- | --- | --- |
+14.04 LTS | 9.9 | 3.13.0-24-generic 到 3.13.0-117-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-75-generic |
+14.04 LTS | 9.10 | 3.13.0-24-generic 到 3.13.0-121-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-81-generic |
+16.04 LTS | 9.10 | 4.4.0-21-generic 到 4.4.0-81-generic、<br/>4.8.0-34-generic 到 4.8.0-56-generic、<br/>4.10.0-14-generic 到 4.10.0-24-generic |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-azure-virtual-machines-running-linux-os"></a>运行 Linux OS 的 Azure 虚拟机上支持的文件系统和来宾存储配置
 
@@ -113,16 +132,16 @@ Azure 库映像 — 由第三方发布 | 支持 | 只要 VM 在 Site Recovery �
 
 **配置** | **支持/不支持** | **备注**
 --- | --- | ---
-最大 OS 磁盘大小 | Azure 支持的最大 OS 磁盘大小| 请参阅 [VM 使用的磁盘](../storage/storage-about-disks-and-vhds-windows.md#disks-used-by-vms)。
-最大数据磁盘大小 | Azure 支持的最大数据磁盘大小| 请参阅 [VM 使用的磁盘](../storage/storage-about-disks-and-vhds-windows.md#disks-used-by-vms)。
+最大 OS 磁盘大小 | 1023 GB | 请参阅 [VM 使用的磁盘](../storage/storage-about-disks-and-vhds-windows.md#disks-used-by-vms)。
+最大数据磁盘大小 | 1023 GB | 请参阅 [VM 使用的磁盘](../storage/storage-about-disks-and-vhds-windows.md#disks-used-by-vms)。
 数据磁盘数 | 特定 Azure VM 大小最多支持 64 个 | 请参阅 [Azure 虚拟机大小](../virtual-machines/windows/sizes.md)
 临时磁盘 | 始终从复制中排除 | 临时磁盘始终从复制中排除。 按照 Azure 指南，不能将任何永久数据放在临时磁盘上。 有关更多详细信息，请参阅 [Azure VM 上的临时磁盘](../storage/storage-about-disks-and-vhds-windows.md#temporary-disk)。
-磁盘上的数据更改率 | 每个磁盘最大 6 Mbps | 如果磁盘上的平均数据更改率一直超过 6 Mbps，复制将不同步。 但是，如果只是偶尔出现数据迸发，数据更改率间或高于 6 Mbps，但随后又降下来，则复制可同步。 在此情况下，可能会看到恢复点稍有延迟。
+磁盘上的数据更改率 | 每个磁盘最大 6 MBps | 如果磁盘上的平均数据更改率连续超过 6 MBps，复制将不同步。 但是，如果只是偶尔出现数据迸发，数据更改率间或高于 6 MBps，但随后又降下来，则复制可同步。 在此情况下，可能会看到恢复点稍有延迟。
 标准存储帐户上的磁盘 | 支持 |
 高级存储帐户上的磁盘 | 支持 | 如果 VM 将磁盘分散在高级和标准存储帐户上，则可以为每个磁盘选择不同的目标存储帐户，以确保在目标区域中具有相同的存储配置
 标准托管磁盘 | 不支持 |  
 高级托管磁盘 | 不支持 |
-存储空间 | 不支持 |         
+存储空间 | 支持 |         
 静态加密 (SSE) | 支持 | 对于缓存和目标存储帐户，可以选择启用了 SSE 的存储帐户。     
 Azure 磁盘加密 (ADE) | 不支持 |
 热添加/移除磁盘 | 不支持 | 如果在 VM 上添加或删除数据磁盘，则需为 VM 禁用复制后重新启用复制。

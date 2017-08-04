@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: c65a932d0bf9bfb00f138997babc1bd642bcf879
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 048854b440f939077a7a95fa1db9ba42daf55ede
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Azure 的 HPC Pack 群集中的 Linux 计算节点入门
@@ -34,17 +34,17 @@ ms.lasthandoff: 04/27/2017
 有关在 Azure 中运行 Linux HPC 工作负荷的其他选项，请参阅 [Technical resources for batch and high-performance computing](../../../batch/big-compute-resources.md)（适用于批处理和高性能计算的技术资源）。
 
 ## <a name="deploy-an-hpc-pack-cluster-with-linux-compute-nodes"></a>使用 Linux 计算节点部署 HPC Pack 群集
-本文介绍用于在 Azure 中部署包含 Linux 计算节点的 HPC Pack 群集的两个选项。 这两种方法使用包含 HPC Pack 的 Windows Server 应用商店映像创建头节点。 
+本文介绍用于在 Azure 中部署包含 Linux 计算节点的 HPC Pack 群集的两个选项。 这两种方法使用包含 HPC Pack 的 Windows Server 的 Marketplace 映像创建头节点。 
 
-* **Azure Resource Manager 模板** - 使用 Azure 应用商店中的模板或社区中的快速入门模板，自动在 Resource Manager 部署模型中创建群集。 例如，Azure 应用商店中的 [HPC Pack cluster for Linux workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)（适用于 Linux 工作负荷的 HPC Pack 群集）模板可为 Linux HPC 工作负荷创建完整的 HPC Pack 群集基础结构。
-* **PowerShell 脚本** - 使用 [Microsoft HPC Pack IaaS 部署脚本](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) (**New-HpcIaaSCluster.ps1**) 在经典部署模型中自动执行完整的群集部署。 此 Azure PowerShell 脚本使用 Azure 应用商店中的 HPC Pack VM 映像进行快速部署，并提供一组全面的配置参数用于部署 Linux 计算节点。
+* **Azure Resource Manager 模板** - 使用 Azure Marketplace 中的模板或社区中的快速入门模板，自动在 Resource Manager 部署模型中创建群集。 例如，Azure Marketplace 中的 [HPC Pack cluster for Linux workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)（适用于 Linux 工作负荷的 HPC Pack 群集）模板可为 Linux HPC 工作负荷创建完整的 HPC Pack 群集基础结构。
+* **PowerShell 脚本** - 使用 [Microsoft HPC Pack IaaS 部署脚本](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) (**New-HpcIaaSCluster.ps1**) 在经典部署模型中自动执行完整的群集部署。 此 Azure PowerShell 脚本使用 Azure Marketplace 中的 HPC Pack VM 映像进行快速部署，并提供一组全面的配置参数用于部署 Linux 计算节点。
 
 有关 Azure 中 HPC Pack 群集部署选项的详细信息，请参阅 [Options to create and manage a high-peformance computing (HPC) cluster in Azure with Microsoft HPC Pack](../hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（使用 Microsoft HPC Pack 在 Azure 中创建和管理高性能计算 (HPC) 群集时可用的选项）。
 
 ### <a name="prerequisites"></a>先决条件
 * **Azure 订阅** - 可以使用 Azure 全球或 Azure 中国服务中的订阅。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 * **核心配额** - 可能需要增加内核配额，尤其是在选择部署具有多核 VM 大小的多个群集节点时。 若要增加配额，可免费建立联机客户支持请求。
-* **Linux 分发版** - 当前 HPC Pack 对计算节点支持以下 Linux 分发版。 你可以使用这些分发版的应用商店版本，或提供自己的版本。
+* **Linux 分发版** - 当前 HPC Pack 对计算节点支持以下 Linux 分发版。 你可以使用这些分发版的 Marketplace 版本，或提供自己的版本。
   
   * **基于 CentOS 的分发版**：6.5、6.6、6.7、7.0、7.1、7.2、6.5 HPC、7.1 HPC
   * **Red Hat Enterprise Linux**：6.7、6.8、7.2
@@ -52,7 +52,7 @@ ms.lasthandoff: 04/27/2017
   * **Ubuntu Server**：14.04 LTS、16.04 LTS
     
     > [!TIP]
-    > 若要使用具有某个支持 RDMA 的 VM 大小的 Azure RDMA 网络，请从应用商店中指定 SUSE Linux Enterprise Server 12 HPC 或基于 CentOS 的 HPC 映像。 有关详细信息，请参阅 [About H-series and compute-intensive A-series VMs](../a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（关于 H 系列和计算密集型 A 系列 VM）。
+    > 若要使用具有某个支持 RDMA 的 VM 大小的 Azure RDMA 网络，请从 Azure Marketplace 中指定 SUSE Linux Enterprise Server 12 HPC 或基于 CentOS 的 HPC 映像。 有关详细信息，请参阅[高性能计算 VM 大小](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
     > 
     > 
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 04/27/2017
 * **HPC Pack IaaS 部署脚本** - 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=44949)下载并解压缩最新版本的脚本。 可以通过运行 `.\New-HPCIaaSCluster.ps1 –Version` 检查脚本的版本。 本文基于版本 4.4.1 或更高版本的脚本。
 
 ### <a name="deployment-option-1-use-a-resource-manager-template"></a>部署选项 1。 使用 Resource Manager 模板
-1. 转到 Azure 应用商店中的[适用于 Linux 工作负荷的 HPC Pack 群集](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)模板，然后单击“部署”。
+1. 转到 Azure Marketplace 中的[适用于 Linux 工作负荷的 HPC Pack 群集](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)模板，然后单击“部署”。
 2. 在 Azure 门户中复查信息，然后单击“创建”。
    
     ![在门户中创建][portal]
@@ -146,7 +146,7 @@ HPC Pack IaaS 部署脚本使用 XML 配置文件作为输入来描述 HPC 群�
     .\New-HpcIaaSCluster.ps1 –ConfigFile E:\HPCDemoConfig.xml –AdminUserName MyAdminName
     ```
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 由于在上述命令中未指定 **AdminPassword**，系统将提示输入用户 *MyAdminName* 的密码。
+    a. 由于在上述命令中未指定 **AdminPassword**，系统将提示输入用户 *MyAdminName* 的密码。
    
     b. 然后，此脚本将开始验证配置文件。 这可能最多需要几分钟时间，具体取决于网络连接。
    
@@ -186,7 +186,7 @@ HPC Pack IaaS 部署脚本使用 XML 配置文件作为输入来描述 HPC 群�
 ### <a name="azure-file-storage"></a>Azure 文件存储
 [Azure 文件](https://azure.microsoft.com/services/storage/files/)服务使用标准 SMB 2.1 协议公开文件共享。 Azure VM 和云服务可通过装载的共享在应用程序组件之间共享文件数据，本地应用程序可通过文件存储 API 来访问共享中的文件数据。 
 
-有关创建 Azure 文件共享以及将其装入头节点的详细步骤，请参阅 [Get started with Azure File storage on Windows](../../../storage/storage-dotnet-how-to-use-files.md)（在 Windows 上开始使用 Azure 文件存储）。 若要在 Linux 节点上载入 Azure 文件共享，请参阅 [How to use Azure File Storage with Linux](../../../storage/storage-how-to-use-files-linux.md)（如何通过 Linux 使用 Azure 文件存储）。 若要设置持久性连接，请参阅 [Persisting connections to Microsoft Azure Files](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)（将连接保存到 Microsoft Azure 文件中）。
+有关创建 Azure 文件共享以及将其装入头节点的详细步骤，请参阅 [Get started with Azure File storage on Windows](../../../storage/storage-file-how-to-use-files-windows.md)（在 Windows 上开始使用 Azure 文件存储）。 若要在 Linux 节点上装载 Azure 文件共享，请参阅 [How to use Azure File storage with Linux](../../../storage/storage-how-to-use-files-linux.md)（如何通过 Linux 使用 Azure 文件存储）。 若要设置持久性连接，请参阅 [Persisting connections to Microsoft Azure Files](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)（将连接保存到 Microsoft Azure 文件中）。
 
 在下面的示例中，将在存储帐户上创建 Azure 文件共享。 若要在头节点上装入该共享，请打开命令提示符并输入以下命令：
 
@@ -299,7 +299,7 @@ HPC Pack [clusrun](https://technet.microsoft.com/library/cc947685.aspx) 工具�
 
 ## <a name="next-steps"></a>后续步骤
 * 尝试扩展群集，使之拥有更多的节点，或者尝试在群集上运行 Linux 工作负荷。 有关示例，请参阅 [Run NAMD with Microsoft HPC Pack on Linux compute nodes in Azure](hpcpack-cluster-namd.md)（在 Azure 中的 Linux 计算节点上使用 Microsoft HPC Pack 运行 NAMD）。
-* 尝试使用包含[支持 RDMA 的计算密集型 VM](../../windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 的群集来运行 MPI 工作负荷。 如需示例，请参阅 [Run OpenFOAM with Microsoft HPC Pack on a Linux RDMA cluster in Azure](hpcpack-cluster-openfoam.md)（在 Azure 中的 Linux RDMA 群集上运行 OpenFOAM 和 Microsoft HPC Pack）。
+* 尝试使用包含[支持 RDMA 的计算密集型 VM](../../windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 的群集来运行 MPI 工作负荷。 如需示例，请参阅 [Run OpenFOAM with Microsoft HPC Pack on a Linux RDMA cluster in Azure](hpcpack-cluster-openfoam.md)（在 Azure 中的 Linux RDMA 群集上运行 OpenFOAM 和 Microsoft HPC Pack）。
 * 如果想要在本地 HPC Pack 群集中使用 Linux 节点，请参阅 [TechNet guidance](https://technet.microsoft.com/library/mt595803.aspx)（TechNet 指南）。
 
 <!--Image references-->

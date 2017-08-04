@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 06/14/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: 475b0cea9be58c9b6fa13645e3c19cc3b689aab2
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 8a03e28045019a4beb423d95a4fa00637cd66294
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-site-recovery-in-the-azure-portal"></a>在 Azure 门户中使用 Site Recovery 将 VMM 云中的 Hyper-V 虚拟机复制到 Azure
@@ -122,7 +122,7 @@ ms.lasthandoff: 07/20/2017
 2. 在“快速启动”中，单击“Site Recovery” > “准备基础结构” > “保护目标”。
 
     ![选择目标](./media/site-recovery-vmm-to-azure/choose-goals.png)
-3. 在“保护目标”中选择“到 Azure”，然后选择“是，使用 Hyper-V”。  选择“是”，以确认使用 VMM 来管理 Hyper-V 主机和恢复站点。 。
+3. 在“保护目标”中选择“到 Azure”，并选择“是，使用 Hyper-V”。  选择“是”，以确认使用 VMM 来管理 Hyper-V 主机和恢复站点。 。
 
 ## <a name="set-up-the-source-environment"></a>设置源环境
 
@@ -147,7 +147,7 @@ ms.lasthandoff: 07/20/2017
 
 1. 在 VMM 服务器上运行提供程序安装文件。
 2. 在“Microsoft 更新” 中，可以选择进行更新，以便根据 Microsoft 更新策略安装提供程序更新。
-3. 在“安装”中接受或修改默认提供程序安装位置，然后单击“安装”。
+3. 在“安装”中接受或修改默认提供程序安装位置，并单击“安装”。
 
     ![安装位置](./media/site-recovery-vmm-to-azure/provider2.png)
 4. 安装完成后，单击“注册”在保管库中注册 VMM 服务器。
@@ -159,11 +159,16 @@ ms.lasthandoff: 07/20/2017
    * 如果希望提供程序直接进行连接，请选择“不使用代理直接连接 Azure Site Recovery”。
    * 如果现有代理要求身份验证，或者想要使用自定义代理，请选择“使用代理服务器连接 Azure Site Recovery”。
    * 如果使用自定义代理，请指定地址、端口和凭据。
-   * 如果你使用代理，应事先允许[先决条件](#on-premises-prerequisites)中所述的 URL。
-   * 如果你使用自定义代理，则将使用指定的代理凭据自动创建一个 VMM 运行身份帐户 (DRAProxyAccount)。 对代理服务器进行配置以便该帐户可以成功通过身份验证。 可以在 VMM 控制台中修改 VMM 运行身份帐户设置。 在“设置”中，展开“安全性” > “运行方式帐户”，然后修改 DRAProxyAccount 的密码。 你将需要重新启动 VMM 服务以使此设置生效。
+   * 如果使用代理，应事先允许[先决条件](#on-premises-prerequisites)中所述的 URL。
+   * 如果你使用自定义代理，则将使用指定的代理凭据自动创建一个 VMM 运行身份帐户 (DRAProxyAccount)。 对代理服务器进行配置以便该帐户可以成功通过身份验证。 可以在 VMM 控制台中修改 VMM 运行身份帐户设置。 在“设置”中，展开“安全性” > “运行方式帐户”，并修改 DRAProxyAccount 的密码。 你将需要重新启动 VMM 服务以使此设置生效。
 
      ![Internet](./media/site-recovery-vmm-to-azure/provider13.PNG)
 7. 接受或修改用于保存为数据加密自动生成的 SSL 证书的位置。 如果在 Azure Site Recovery 门户中为受 Azure 保护的云启用数据加密，则会使用此证书。 请确保该证书安全。 运行故障转移到 Azure 时，如果已启用数据加密，需要使用该证书来解密。
+
+    > [!NOTE]
+    > 建议使用 Azure 提供的加密功能来加密静态数据，而不要使用 Azure Site Recovery 提供的数据加密选项。 Azure 提供的加密功能可以针对存储帐户启用，并可提高性能，因为加密/解密由 Azure 存储处理。
+    > [详细了解 Azure 提供的存储服务加密](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption)。
+    
 8. 在“服务器名称”中，指定一个友好名称以在保管库中标识该 VMM 服务器。 在群集配置中，指定 VMM 群集角色名称。
 9. 如果要将 VMM 服务器上所有云的元数据与保管库同步，请启用“同步云元数据”。 此操作在每个服务器上只需执行一次。 如果你不希望同步所有云，可以将此设置保留为未选中状态并在 VMM 控制台中的云属性中分别同步各个云。 单击“注册”完成此过程。
 
@@ -203,7 +208,7 @@ Hyper-V 主机上运行的恢复服务代理需有权通过 Internet 访问 Azur
 ## <a name="set-up-the-target-environment"></a>设置目标环境
 指定要用于复制的 Azure 存储帐户，以及 Azure VM 在故障转移后连接到的 Azure 网络。
 
-1. 单击“准备基础结构” > “目标”，选择你希望在其中创建故障转移虚拟机的订阅和资源组。 选择希望在 Azure 中为故障转移虚拟机使用的部署模型（经典或资源管理）。
+1. 单击“准备基础结构” > “目标”，选择希望在其中创建故障转移虚拟机的订阅和资源组。 选择希望在 Azure 中为故障转移虚拟机使用的部署模型（经典或资源管理）。
 
     ![存储](./media/site-recovery-vmm-to-azure/enablerep3.png)
 
@@ -277,7 +282,7 @@ Hyper-V 主机上运行的恢复服务代理需有权通过 Internet 访问 Azur
 * 收集有关复制环境的信息，包括 VM 数、每个 VM 的磁盘数和每个磁盘的存储空间。
 * 估计复制数据的每日更改（变动）率。 可以使用 [Hyper-V 副本 Capacity Planner](https://www.microsoft.com/download/details.aspx?id=39057) 来帮助执行此操作。
 
-1. 单击“下载”以下载该工具，然后开始运行。 [阅读](site-recovery-capacity-planner.md)该工具随附的文章。
+1. 单击“下载”以下载该工具，并开始运行。 [阅读](site-recovery-capacity-planner.md)该工具随附的文章。
 2. 完成后，请在“是否已运行 Capacity Planner?”中选择“是”。
 
    ![容量计划](./media/site-recovery-vmm-to-azure/gs-capacity-planning.png)
@@ -425,6 +430,12 @@ Hyper-V 主机上运行的恢复服务代理需有权通过 Internet 访问 Azur
 * **/Credentials**：用于指定注册密钥文件所在位置的必需参数。  
 * **/FriendlyName**：在 Azure Site Recovery 门户中显示的 Hyper-V 主机服务器名称的必需参数。
 * * **/EncryptionEnabled**：将 VMM 云中的 Hyper-V VM 复制到 Azure 时使用的可选参数。 指定是否要在 Azure 中加密虚拟机（静态加密）。 请确保该文件的名称具有 **.pfx** 扩展名。 默认情况下，加密已关闭。
+
+    > [!NOTE]
+    > 建议使用 Azure 提供的加密功能来加密静态数据，而不要使用 Azure Site Recovery 提供的加密选项（EncryptionEnabled 选项）。 Azure 提供的加密功能可以针对存储帐户启用，并可提高性能，因为加密/解密由 Azure  
+    > 存储处理。
+    > [详细了解 Azure 中的存储服务加密](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption)。
+    
 * **/proxyAddress**：可选参数，用于指定代理服务器的地址。
 * **/proxyport**：可选参数，用于指定代理服务器的端口。
 * **/proxyUsername**：可选参数，用于指定代理用户名（如果代理要求身份验证）。
@@ -440,7 +451,7 @@ Hyper-V 主机上运行的恢复服务代理需有权通过 Internet 访问 Azur
 #### <a name="throttle-bandwidth"></a>限制带宽
 1. 在 Hyper-V 主机服务器上打开 Microsoft Azure 备份 MMC 管理单元。 默认情况下，Microsoft Azure 备份的快捷方式位于桌面上或 C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin 中。
 2. 在管理单元中，单击“更改属性”。
-3. 在“限制”选项卡上，选择“为备份操作启用 Internet 带宽使用限制”，然后设置工作时间和非工作时间的限制。 有效范围为 512 Kbps 到 102 Mbps。
+3. 在“限制”选项卡上，选择“为备份操作启用 Internet 带宽使用限制”，并设置工作时间和非工作时间的限制。 有效范围为 512 Kbps 到 102 Mbps。
 
     ![限制带宽](./media/site-recovery-vmm-to-azure/throttle2.png)
 

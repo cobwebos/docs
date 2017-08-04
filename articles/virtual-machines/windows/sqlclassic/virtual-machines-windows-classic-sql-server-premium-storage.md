@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: jroth
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: aba69b95db8313dd9ce711ddc6c26e5df55d79a4
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: e8f191e7bc0ce49abc3f1b4b2329a0ee3b38cd4e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/04/2017
+ms.lasthandoff: 07/11/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/04/2017
 [Azure 高级存储](../../../storage/storage-premium-storage.md)是下一代提供低延迟和高吞吐量 IO 的存储。 它最适用于关键 IO 密集型工作负荷，例如 IaaS [虚拟机](https://azure.microsoft.com/services/virtual-machines/)上的 SQL Server。
 
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
 
 本文提供迁移运行 SQL Server 的虚拟机以使用高级存储的规划和指南。 这包括 Azure 基础结构（网络、存储）以及来宾 Windows VM 步骤。 [附录](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)中的示例显示如何移动较大的 VM 以通过 PowerShell 利用改进的本地 SSD 存储的完整全面的端到端迁移。
 
@@ -253,7 +253,7 @@ ms.lasthandoff: 04/04/2017
 
 
 ### <a name="create-a-new-vm-to-use-premium-storage-with-a-custom-image"></a>使用自定义映像创建新的 VM 以使用高级存储
-此方案演示拥有驻留在标准存储帐户中的现有自定义映像的位置。 如前所述，如果要将操作系统 VHD 放置在高级存储上，则需要复制标准存储帐户中存在的映像，并将它们传输到高级存储中，然后才能使用它。 如果你在本地有一个映像，也可以使用此方法将该映像直接复制到高级存储帐户。
+此方案演示拥有驻留在标准存储帐户中的现有自定义映像的位置。 如前所述，如果要将操作系统 VHD 放置在高级存储上，则需要复制标准存储帐户中存在的映像，并将它们传输到高级存储中，然后才能使用它。 如果在本地有一个映像，也可以使用此方法将该映像直接复制到高级存储帐户。
 
 #### <a name="step-1-create-storage-account"></a>步骤 1：创建存储帐户
     $mysubscription = "DansSubscription"
@@ -407,7 +407,7 @@ ms.lasthandoff: 04/04/2017
 1. 在使用附加高级存储的新云服务中创建两个新的 SQL Server。
 2. 使用 **NORECOVERY** 复制完整备份并进行还原。
 3. 复制“用户数据库外”依赖对象，例如登录名等。
-4. 新建内部负载均衡器 (ILB) 或使用外部负载均衡器 (ELB)，然后在这两个新节点上设置负载平衡终结点。
+4. 新建内部负载均衡器 (ILB) 或使用外部负载均衡器 (ELB)，然后在这两个新节点上设置负载均衡终结点。
 
    > [!NOTE]
    > 继续下一步之前，检查所有节点的终结点配置是否正确
@@ -625,7 +625,7 @@ ms.lasthandoff: 04/04/2017
 
 与侦听器名称关联的并发 DNS 记录数不仅取决于关联的 IP 地址数，而且还取决于 Always ON VNN 资源的故障转移群集的“RegisterAllIpProviders”设置。
 
-在 Azure 中部署 Always On 时有不同的步骤可用于创建侦听器和 IP 地址，必须手动将“RegisterAllIpProviders”配置为 1，这与本地 Always On 部署不同，后者已设置为 1。
+在 Azure 中部署 Always On 时，可使用不同的步骤创建侦听器和 IP 地址，必须手动将“RegisterAllIpProviders”配置为 1，这与本地 Always On 部署不同，后者已设置为 1。
 
 如果“RegisterAllIpProviders”为 0，则你将在与侦听器关联的 DNS 中只看到一条 DNS 记录：
 
@@ -681,7 +681,7 @@ ms.lasthandoff: 04/04/2017
 将这些内容保存到文本文件中。
 
 #### <a name="step-7-change-failover-partners-and-replication-modes"></a>步骤 7：更改故障转移伙伴和复制模式
-如果你使用 2 个以上的 SQL Server，则应将另一个 DC 或本地中的另一个辅助副本的故障转移更改为“同步”，并将其设为“自动故障转移伙伴”(AFP)，这样你便可以在进行更改的同时维护高可用性。 你可以通过修改 TSQL 来执行此操作（虽然 SSMS 也可以）：
+如果使用 2 个以上的 SQL Server，则应将另一个 DC 或本地中的另一个辅助副本的故障转移更改为“同步”，并将其设为“自动故障转移伙伴”(AFP)，这样便可以在进行更改的同时维护高可用性。 你可以通过修改 TSQL 来执行此操作（虽然 SSMS 也可以）：
 
 ![Appendix6][16]
 
@@ -1075,7 +1075,7 @@ ms.lasthandoff: 04/04/2017
     #http://msdn.microsoft.com/library/azure/dn495192.aspx
 
 #### <a name="step-23-test-failover"></a>步骤 23：测试故障转移
-现在，应让已迁移的节点与本地 Always On 节点同步，将其置于同步复制模式，并等待它完成同步。 然后从本地故障转移到第一个已迁移的节点（即 AFP）。 故障转移完成后，将最后一个已迁移的节点更改为 AFP。
+现在，应让已迁移的节点与本地 Always On 节点同步，将其置于同步复制模式，并等到它完成同步。 然后从本地故障转移到第一个已迁移的节点（即 AFP）。 故障转移完成后，将最后一个已迁移的节点更改为 AFP。
 
 你应测试所有节点之间的故障转移，并运行所有混沌测试，以确保故障转移及时地正常工作。
 

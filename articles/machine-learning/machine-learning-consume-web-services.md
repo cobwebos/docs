@@ -22,8 +22,7 @@ ms.lasthandoff: 06/08/2017
 
 
 ---
-# 如何使用 Azure 机器学习 Web 服务
-<a id="how-to-consume-an-azure-machine-learning-web-service" class="xliff"></a>
+# <a name="how-to-consume-an-azure-machine-learning-web-service"></a>如何使用 Azure 机器学习 Web 服务
 
 将 Azure 机器学习预测模型部署为 Web 服务后，可以使用 REST API 向其发送数据并获取预测。 可以实时或者以批处理模式发送数据。
 
@@ -35,8 +34,7 @@ ms.lasthandoff: 06/08/2017
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## 概述
-<a id="overview" class="xliff"></a>
+## <a name="overview"></a>概述
 外部应用程序可使用 Azure 机器学习 Web 服务实时与机器学习服务工作流评分模型通信。 机器学习 Web 服务调用将预测结果返回到外部应用程序。 若要执行机器学习 Web 服务调用，可以传递部署 Web 服务时创建的 API 密钥。 机器学习 Web 服务基于 REST（流行的 Web 编程项目体系结构）。
 
 Azure 机器学习有两种类型的服务：
@@ -46,12 +44,10 @@ Azure 机器学习有两种类型的服务：
 
 有关机器学习 Web 服务的详细信息，请参阅 [Deploy a Machine Learning Web service](machine-learning-publish-a-machine-learning-web-service.md)（部署机器学习 Web 服务）。
 
-## 获取 Azure 机器学习授权密钥
-<a id="get-an-azure-machine-learning-authorization-key" class="xliff"></a>
+## <a name="get-an-azure-machine-learning-authorization-key"></a>获取 Azure 机器学习授权密钥
 部署实验时，会为 Web 服务生成 API 密钥。 可从多个位置检索密钥。
 
-### 从 Microsoft Azure 机器学习 Web 服务门户检索
-<a id="from-the-microsoft-azure-machine-learning-web-services-portal" class="xliff"></a>
+### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>从 Microsoft Azure 机器学习 Web 服务门户检索
 登录到 [Microsoft Azure 机器学习 Web 服务](https://services.azureml.net)门户。
 
 为新的机器学习 Web 服务检索 API 密钥：
@@ -69,17 +65,14 @@ Azure 机器学习有两种类型的服务：
 4. 单击顶部菜单上的“使用”。
 5. 复制并保存“主密钥”。
 
-### 经典 Web 服务
-<a id="classic-web-service" class="xliff"></a>
+### <a name="classic-web-service"></a>经典 Web 服务
  还可以从机器学习工作室或 Azure 经典门户来检索经典 Web 服务的密钥。
 
-#### 机器学习工作室
-<a id="machine-learning-studio" class="xliff"></a>
+#### <a name="machine-learning-studio"></a>机器学习工作室
 1. 在机器学习工作室左侧，单击“Web 服务”。
 2. 单击一个 Web 服务。 “API 密钥”位于“仪表板”选项卡。
 
-#### Azure 经典门户
-<a id="azure-classic-portal" class="xliff"></a>
+#### <a name="azure-classic-portal"></a>Azure 经典门户
 1. 在左侧单击“机器学习”。
 2. 单击 Web 服务所在的工作区。
 3. 单击“Web 服务”。
@@ -108,8 +101,7 @@ Azure 机器学习有两种类型的服务：
 
 单击“Swagger API”从提供的 URI 为调用的 API 获取基于 Swagger 的文档。
 
-### C# 示例
-<a id="c-sample" class="xliff"></a>
+### <a name="c-sample"></a>C# 示例
 若要连接到机器学习 Web 服务，请使用 **HttpClient** 传递 ScoreData。 ScoreData 包含 FeatureVector以及表示 ScoreData 的具有数字特征的 N 维向量。 使用 API 密钥对机器学习服务进行身份验证。
 
 若要连接到机器学习 Web 服务，必须安装 **Microsoft.AspNet.WebApi.Client** NuGet 包。
@@ -126,8 +118,7 @@ Azure 机器学习有两种类型的服务：
 2. 使用 Web 服务密钥分配 API 密钥。 请参阅上方的**获取 Azure 机器学习授权密钥**。
 3. 使用请求 URI 分配服务 URI。
 
-### Python 示例
-<a id="python-sample" class="xliff"></a>
+### <a name="python-sample"></a>Python 示例
 若要连接到机器学习 Web 服务，请使用 **urllib2** 库传递 ScoreData。 ScoreData 包含 FeatureVector以及表示 ScoreData 的具有数字特征的 N 维向量。 使用 API 密钥对机器学习服务进行身份验证。
 
 **运行代码示例**

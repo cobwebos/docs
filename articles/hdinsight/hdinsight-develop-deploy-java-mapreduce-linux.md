@@ -1,6 +1,6 @@
 ---
 title: "为 Hadoop 创建 Java MapReduce - Azure HDInsight | Microsoft Docs"
-description: "了解如何开发 Java MapReduce 程序，以及如何将这些程序部署到 HDInsight 上的 Hadoop。"
+description: "了解如何使用 Apache Maven 创建基于 Java 的 MapReduce 应用程序，然后使用 Azure HDInsight 中的 Hadoop 运行它。"
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -9,7 +9,7 @@ documentationcenter:
 tags: azure-portal
 ms.assetid: 9ee6384c-cb61-4087-8273-fb53fa27c1c3
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: Java
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/17/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: ce5661febe502e9da9682166af1b601b1fc0b965
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 33705cff8d65b40aeca2cdaf0b102bf7fbbfa9d6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -245,9 +245,9 @@ ms.lasthandoff: 05/18/2017
    > [!NOTE]
    > `wordcountjava-1.0-SNAPSHOT.jar` 文件是一种 uberjar，其中不仅包含 WordCount 作业，还包含该作业在运行时需要的依赖项。
 
-## <a id="upload"></a>上载该 jar
+## <a id="upload"></a>上传该 jar
 
-使用以下命令将该 jar 文件上载到 HDInsight 头节点：
+使用以下命令将该 jar 文件上传到 HDInsight 头节点：
 
    ```bash
    scp wordcountjava-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:
@@ -257,7 +257,7 @@ ms.lasthandoff: 05/18/2017
 
 此命令会将两个文件从本地系统复制到头节点。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
-## <a name="run"></a>运行 MapReduce 作业
+## <a name="run"></a>在 Hadoop 上运行 MapReduce 作业
 
 1. 使用 SSH 连接到 HDInsight。 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 

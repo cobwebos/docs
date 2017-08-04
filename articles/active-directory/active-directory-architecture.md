@@ -12,14 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/16/2017
+ms.date: 08/02/2017
 ms.author: markvi
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
 ms.openlocfilehash: 5c60fa737c0133482af8b653f795bf9086c39969
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/28/2017
-
 
 ---
 # <a name="understand-azure-active-directory-architecture"></a>了解 Azure Active Directory 体系结构
@@ -31,10 +30,10 @@ ms.lasthandoff: 03/28/2017
 Azure AD 的地理分布式体系结构整合了全面监视、自动重新路由、故障转移和恢复功能，使我们能够为客户提供企业级的可用性与性能。
 
 本文介绍以下体系结构要素：
- *    服务体系结构设计
- *    可伸缩性 
- *    连续可用性
- *    数据中心
+ *  服务体系结构设计
+ *  可伸缩性 
+ *  连续可用性
+ *  数据中心
 
 ### <a name="service-architecture-design"></a>服务体系结构设计
 构建可缩放、高度可用且数据丰富的系统的最常见方法是使用 Azure AD 数据层的独立构建基块或缩放单位。缩放单位称为*分区*。 
@@ -87,7 +86,7 @@ Azure AD 可跨数据中心运行，其特征如下：
 
  * 身份验证、Graph 其他 AD 服务驻留在网关服务的后面。 网关管理这些服务的负载均衡。 如果使用事务运行状况探测检测到任何不正常的服务器，网关将自动故障转移。 网关根据这些运行状况探测，将流量动态路由到正常的数据中心。
  * 对于*读取*操作，目录提供辅助副本以及在多个数据中心运行的、采用主动-主动配置的相应前端服务。 当整个数据中心发生故障时，流量将自动路由到其他数据中心。
- *    对于*写入*操作，目录将通过计划的（将新的主副本同步到旧的主副本）或紧急故障转移过程，跨数据中心故障转移主（主控）副本。 通过将所有提交项复制到至少两个数据中心来实现数据持久性。
+ *  对于*写入*操作，目录将通过计划的（将新的主副本同步到旧的主副本）或紧急故障转移过程，跨数据中心故障转移主（主控）副本。 通过将所有提交项复制到至少两个数据中心来实现数据持久性。
 
 **数据一致性**
 

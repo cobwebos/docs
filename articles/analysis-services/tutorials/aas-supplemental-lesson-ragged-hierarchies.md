@@ -22,8 +22,7 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 05/05/2017
 
 ---
-# 补充课程 - 不规则层次结构
-<a id="supplemental-lesson---ragged-hierarchies" class="xliff"></a>
+# <a name="supplemental-lesson---ragged-hierarchies"></a>补充课程 - 不规则层次结构
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
@@ -35,17 +34,14 @@ ms.lasthandoff: 05/05/2017
   
 本课预计完成时间：**20 分钟**  
   
-## 先决条件
-<a id="prerequisites" class="xliff"></a>  
+## <a name="prerequisites"></a>先决条件  
 本补充课程主题是表格建模教程的一部分。 在执行本补充课程中的任务之前，应当已完成了前面的所有课程，或者具有已完成的“Adventure Works Internet 销售”示例模型项目。 
 
 如果已经将“AW Internet 销售”项目创建为教程的一部分，则模型中尚未包含任何不规则的数据或层次结构。 若要完成本补充课程，必须首先通过添加一些其他表并创建关系、计算列、度量值和新的 Organization 层次结构来制造问题。 该部分需要花费大约 15 分钟。 然后，你需要花费几分钟时间来解决此问题。  
 
-## 添加表和对象
-<a id="add-tables-and-objects" class="xliff"></a>
+## <a name="add-tables-and-objects"></a>添加表和对象
   
-### 向模型中添加新表
-<a id="to-add-new-tables-to-your-model" class="xliff"></a>
+### <a name="to-add-new-tables-to-your-model"></a>向模型中添加新表
   
 1.  在表格模型资源管理器中，展开“数据源”，然后右键单击你的连接，再单击“导入新表”。
   
@@ -116,8 +112,7 @@ ms.lasthandoff: 05/05/2017
 
     如数据透视表中所示，该层次结构显示了不规则的行。 许多行中显示了空白成员。
 
-## 通过设置“隐藏成员”属性修复不规则层次结构
-<a id="to-fix-the-ragged-hierarchy-by-setting-the-hide-members-property" class="xliff"></a>
+## <a name="to-fix-the-ragged-hierarchy-by-setting-the-hide-members-property"></a>通过设置“隐藏成员”属性修复不规则层次结构
 
 1.  在“表格模型资源管理器”中，展开“表” > “DimEmployee” > “层次结构” > “Organization”。
 
@@ -131,8 +126,7 @@ ms.lasthandoff: 05/05/2017
 
     现在看起来好多了！
 
-## 另请参阅
-<a id="see-also" class="xliff"></a>   
+## <a name="see-also"></a>另请参阅   
 [第 9 课：创建层次结构](../tutorials/aas-lesson-9-create-hierarchies.md)  
 [补充课程 - 动态安全性](../tutorials/aas-supplemental-lesson-dynamic-security.md)  
 [补充课程 - 详细信息行](../tutorials/aas-supplemental-lesson-detail-rows.md)  

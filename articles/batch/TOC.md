@@ -1,149 +1,80 @@
 # 概述
-
 ## [什么是 Azure Batch](batch-technical-overview.md)
-
 ## [功能概述](batch-api-basics.md)
-
 ## [API 和工具](batch-apis-tools.md)
-
 ## [配额和限制](batch-quota-limit.md)
-
 # 入门
-
 ## [创建批处理帐户](batch-account-create-portal.md)
-
-## [批处理 .NET 教程](batch-dotnet-get-started.md)
-
-## [批处理 Python 教程](batch-python-tutorial.md)
-
-## [批处理 Node.js 教程](batch-nodejs-get-started.md)
-
+## [Batch .NET 教程](batch-dotnet-get-started.md)
+## [Batch Python 教程](batch-python-tutorial.md)
+## [Batch Node.js 教程](batch-nodejs-get-started.md)
+## [Batch Rendering 服务](batch-rendering-service.md)
 # 如何
-
 ## 开发
-
 ### [应用程序包](batch-application-packages.md)
-
 ### [自动缩放计算节点](batch-automatic-scaling.md)
-
 ### Azure AD 身份验证
-
 #### [将 Azure AD 与批处理服务配合使用](batch-aad-auth.md)
-
 #### [将 Azure AD 与 Batch 管理配合使用](batch-aad-auth-management.md)
-
+### [计算密集型 VM](batch-pool-compute-intensive-sizes.md)
 ### [并发节点任务](batch-parallel-node-tasks.md)
-
 ### [高效列表查询](batch-efficient-list-queries.md)
-
 ### [作业准备与作业完成任务](batch-job-prep-release.md)
-
 ### [Linux 计算节点](batch-linux-nodes.md)
-
 ### [低优先级 VM](batch-low-pri-vms.md)
-
 ### [使用批处理管理 .NET 来管理 Azure Batch 帐户](batch-management-dotnet.md)
-
 ### [持久性作业和任务输出](batch-task-output.md)
-
 #### [使用批处理 API 保存输出](batch-task-output-files.md)
-
 #### [使用文件约定库保留输出](batch-task-output-file-conventions.md)
-
 ### [在批处理中运行 MPI 作业](batch-mpi.md)
-
 ### [任务依赖项](batch-task-dependencies.md)
-
 ### [用于运行任务的用户帐户](batch-user-accounts.md)
-
 ### [用于批处理的 Visual Studio 项目模板](batch-visual-studio-templates.md)
-
 ## 管理
-
 ### [批处理 PowerShell cmdlet](batch-powershell-cmdlets-get-started.md)
-
 ### [Azure CLI](batch-cli-get-started.md)
-
-#### [创建批处理帐户](./scripts/batch-cli-sample-create-account.md)
-
 #### [在不使用代码的情况下运行 Batch 作业](batch-cli-templates.md)
-
+#### [创建批处理帐户](./scripts/batch-cli-sample-create-account.md)
 #### [添加应用程序](./scripts/batch-cli-sample-add-application.md)
-
 #### [管理池](./scripts/batch-cli-sample-manage-pool.md)
-
 #### [运行作业和任务](./scripts/batch-cli-sample-run-job.md)
-
-
 # 引用
-
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=batch)
 ## [PowerShell](/powershell/module/azurerm.batch)
-
 ## [Azure CLI](/cli/azure/batch)
-
 ## [.NET](/dotnet/api/microsoft.azure.batch)
-
 ## [Java](/java/api/com.microsoft.azure.batch)
-
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-batch/latest)
-
 ## [Python SDK](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.html)
-
 ## [REST](/rest/api/batchservice)
-
 ## [批处理诊断日志](batch-diagnostics.md)
-
 ## [批处理分析](batch-analytics.md)
-
 ### [池创建事件](batch-pool-create-event.md)
-
 ### [池删除启动事件](batch-pool-delete-start-event.md)
-
 ### [池删除完成事件](batch-pool-delete-complete-event.md)
-
 ### [池调整大小启动事件](batch-pool-resize-start-event.md)
-
 ### [池调整大小完成事件](batch-pool-resize-complete-event.md)
-
 ### [任务启动事件](batch-task-start-event.md)
-
 ### [任务完成事件](batch-task-complete-event.md)
-
 ### [任务失败事件](batch-task-fail-event.md)
-
 ## [Azure Batch 计算节点环境变量](batch-compute-node-environment-variables.md)
 
-
 # 相关内容
-
 ## [批处理 Shipyard](https://github.com/Azure/batch-shipyard)
-
 ## [使用批处理和数据工厂进行数据处理](../data-factory/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json)
-
 ## [Azure 云中的批处理和 HPC 解决方案](batch-hpc-solutions.md)
 
-
 # 资源
-
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
-
 ## [大型计算资源](big-compute-resources.md)
-
 ## [博客](https://blogs.technet.microsoft.com/windowshpc/)
-
 ## [C# 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
-
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-us/home?forum=azurebatch)
-
 ## [定价](https://azure.microsoft.com/pricing/details/batch/)
-
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [Python 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
-
 ## [服务更新](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
-
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-batch)
-
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=batch)
-
 
 

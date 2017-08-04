@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
 ms.author: robinsh
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: da581b2e22f85152ae7bc5f0d403b2fc0aaf0e54
-ms.lasthandoff: 04/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: a477c1eaf2388f31d4fd36b90f9a830c782873d3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="storage-analytics"></a>存储分析
@@ -38,7 +38,7 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 
 仅当存在存储服务活动时，才会创建日志项。 例如，如果存储帐户的 BLOB 服务中存在活动，而表或队列服务中没有活动，则仅创建与 BLOB 服务有关的日志。
 
-存储分析日志记录不可用于 Azure 文件服务。
+存储分析日志记录不可用于 Azure 文件存储。
 
 ### <a name="logging-authenticated-requests"></a>记录经过身份验证的请求
 将记录以下类型的已经过身份验证的请求：
@@ -65,7 +65,7 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 
 > [!NOTE]
 > 执行容器列出操作（例如 [ListContainers](https://msdn.microsoft.com/library/azure/dd179352.aspx) 方法）时，不会显示 $logs 容器。 必须直接访问该容器。 例如，可以使用 [ListBlobs](https://msdn.microsoft.com/library/azure/dd135734.aspx) 方法访问 `$logs` 容器中的 Blob。
-> 在记录请求时，存储分析将中间结果作为块进行上载。 存储分析定期提交这些块，并将其作为 Blob 提供。
+> 在记录请求时，存储分析将中间结果作为块进行上传。 存储分析定期提交这些块，并将其作为 Blob 提供。
 > 
 > 
 
@@ -154,8 +154,8 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 | 每小时度量值，主位置 |$MetricsTransactionsBlob <br/>$MetricsTransactionsTable <br/> $MetricsTransactionsQueue |仅限 2013-08-15 之前的版本。 虽然仍然支持这些名称，但还是建议改用下面列出的表。 |
 | 每小时度量值，主位置 |$MetricsHourPrimaryTransactionsBlob <br/>$MetricsHourPrimaryTransactionsTable <br/>$MetricsHourPrimaryTransactionsQueue |所有版本，包括 2013-08-15。 |
 | 分钟度量值，主位置 |$MetricsMinutePrimaryTransactionsBlob <br/>$MetricsMinutePrimaryTransactionsTable <br/>$MetricsMinutePrimaryTransactionsQueue |所有版本，包括 2013-08-15。 |
-| 每小时度量值，辅助位置 |$MetricsHourSecondaryTransactionsBlob <br/>$MetricsHourSecondaryTransactionsTable <br/>$MetricsHourSecondaryTransactionsQueue |所有版本，包括 2013-08-15。 必须启用读访问的地域冗余复制。 |
-| 分钟度量值，辅助位置 |$MetricsMinuteSecondaryTransactionsBlob <br/>$MetricsMinuteSecondaryTransactionsTable <br/>$MetricsMinuteSecondaryTransactionsQueue |所有版本，包括 2013-08-15。 必须启用读访问的地域冗余复制。 |
+| 每小时度量值，辅助位置 |$MetricsHourSecondaryTransactionsBlob <br/>$MetricsHourSecondaryTransactionsTable <br/>$MetricsHourSecondaryTransactionsQueue |所有版本，包括 2013-08-15。 必须启用读访问的异地冗余复制。 |
+| 分钟度量值，辅助位置 |$MetricsMinuteSecondaryTransactionsBlob <br/>$MetricsMinuteSecondaryTransactionsTable <br/>$MetricsMinuteSecondaryTransactionsQueue |所有版本，包括 2013-08-15。 必须启用读访问的异地冗余复制。 |
 | 容量（仅限 Blob 服务） |$MetricsCapacityBlob |所有版本，包括 2013-08-15。 |
 
 为存储帐户启用存储分析时，将自动创建这些表。 这些表通过存储帐户的命名空间进行访问，例如：`https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`

@@ -22,13 +22,11 @@ ms.lasthandoff: 06/06/2017
 
 
 ---
-# Azure 存储示例
-<a id="azure-storage-samples" class="xliff"></a>
+# <a name="azure-storage-samples"></a>Azure 存储示例
 
 可以使用以下链接查看和下载 Azure 存储示例代码和应用程序。
 
-## Azure 代码示例库
-<a id="azure-code-samples-library" class="xliff"></a>
+## <a name="azure-code-samples-library"></a>Azure 代码示例库
 [Azure 代码示例](https://azure.microsoft.com/documentation/samples/?service=storage)库中提供了可下载和可在本地运行的 Azure 存储示例。 代码示例库提供的示例代码格式为 .zip。 或者，可浏览和克隆其 GitHub 存储库来了解每个示例。
 
 <!--## Getting started samples-->
@@ -38,20 +36,17 @@ Had to remove this article, it refers to the VS quickstarts, and they've stopped
 * [Visual Studio Quick Starts for Azure Storage](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/VisualStudioQuickStarts)
 -->
 
-## .NET 示例
-<a id="net-samples" class="xliff"></a>
+## <a name="net-samples"></a>.NET 示例
 若要浏览 .NET 示例，请从 NuGet 下载 [.NET 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)。 [Azure SDK for .NET](https://azure.microsoft.com/downloads/) 中同时提供 .NET 存储客户端库。
 
 * [使用 .NET 的 Azure 存储示例](storage-samples-dotnet.md)
 
-## Java 示例
-<a id="java-samples" class="xliff"></a>
+## <a name="java-samples"></a>Java 示例
 要浏览 Java 示例，请下载 [Java 存储客户端库](https://github.com/azure/azure-storage-java)。
 
 * [使用 Java 的 Azure 存储示例](storage-samples-java.md)
 
-## Node.js 示例
-<a id="nodejs-samples" class="xliff"></a>
+## <a name="nodejs-samples"></a>Node.js 示例
 要浏览 Node.js 示例，请下载 [Node.js 存储客户端库](https://github.com/Azure/azure-storage-node)。
 
 * [Blob 上传程序](https://github.com/Azure/azure-storage-node/tree/master/examples/blobuploader)
@@ -62,16 +57,14 @@ Had to remove this article, it refers to the VS quickstarts, and they've stopped
 * [快照](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/snapshotsample.js)
 * [表查询](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/tablequerysample.js)
 
-## C ++ 示例
-<a id="c-samples" class="xliff"></a>
+## <a name="c-samples"></a>C ++ 示例
 若要浏览 C++ 示例，请从 NuGet 下载 [C++ 存储客户端库](https://www.nuget.org/packages/wastorage/)。
 
 * [Blob 入门](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted)
 * [表使用入门](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/TablesGettingStarted)
 * [队列使用入门](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/QueuesGettingStarted)
 
-## API 参考和源代码
-<a id="api-reference-and-source-code" class="xliff"></a>
+## <a name="api-reference-and-source-code"></a>API 参考和源代码
 
 | 语言 | API 参考 | 源代码 |
 |----------|---------------|-------------|
@@ -80,8 +73,7 @@ Had to remove this article, it refers to the VS quickstarts, and they've stopped
 | Node.js | [Node.js 客户端库参考](http://azure.github.io/azure-storage-node) | [Node.js 存储客户端库的源代码](https://github.com/Azure/azure-storage-node) |
 | C++ | [C++ 客户端库参考](http://azure.github.io/azure-storage-cpp/) | [C++ 存储客户端库的源代码](https://github.com/Azure/azure-storage-cpp)|
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 以下文章按服务（blob、文件、队列、表）为每个示例编制了索引。
 

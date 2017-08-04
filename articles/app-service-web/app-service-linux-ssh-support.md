@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 6da663ea282e09b01ce380827fa7e31505712516
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: bfa902aae0b1ab4ca6a93387106b40a16c7288cd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="ssh-support-for-azure-web-app-on-linux"></a>对 Linux 上的 Azure Web 应用的 SSH 支持
@@ -35,7 +34,7 @@ Linux 上的 Web 应用程序对应用程序容器提供了 SSH 支持，每个�
 
 ![运行时堆栈](./media/app-service-linux-ssh-support/app-service-linux-runtime-stack.png)
 
-你还可以通过以下方式将 SSH 与自定义 Docker 映像配合使用：将 SSH 服务器包括为映像的一部分并按本主题中所述对其进行配置。
+还可以通过以下方式将 SSH 与自定义 Docker 映像配合使用：将 SSH 服务器包括为映像的一部分并按本主题中所述对其进行配置。
 
 
 
@@ -43,11 +42,11 @@ Linux 上的 Web 应用程序对应用程序容器提供了 SSH 支持，每个�
 
 若要建立 SSH 客户端连接，必须启动主站点。 
 
-使用以下形式将你的 Web 应用的源代码控制管理 (SCM) 终结点粘贴到浏览器中：
+使用以下形式将 Web 应用的源代码控制管理 (SCM) 终结点粘贴到浏览器中：
 
         https://<your sitename>.scm.azurewebsites.net/webssh/host
 
-如果你尚未进行身份验证，则会要求你向要连接的 Azure 订阅进行身份验证。
+如果尚未进行身份验证，则会要求向要连接的 Azure 订阅进行身份验证。
 
 ![SSH 连接](./media/app-service-linux-ssh-support/app-service-linux-ssh-connection.png)
 
@@ -72,10 +71,10 @@ Linux 上的 Web 应用程序对应用程序容器提供了 SSH 支持，每个�
       && echo "root:Docker!" | chpasswd
     ``` 
 
-2. 向 Dockerfile 中添加一条 [`COPY` 指令](https://docs.docker.com/engine/reference/builder/#copy)以将 [sshd_config](http://man.openbsd.org/sshd_config) 文件复制到 */etc/ssh/* 目录中。 你的配置文件应当以[此处](https://github.com/Azure-App-Service/node/blob/master/6.11/sshd_config)的 Azure-App-Service GitHub 存储库中的 sshd_config 文件为基础。
+2. 向 Dockerfile 中添加一条 [`COPY` 指令](https://docs.docker.com/engine/reference/builder/#copy)以将 [sshd_config](http://man.openbsd.org/sshd_config) 文件复制到 */etc/ssh/* 目录中。 配置文件应当以[此处](https://github.com/Azure-App-Service/node/blob/master/6.11/sshd_config)的 Azure-App-Service GitHub 存储库中的 sshd_config 文件为基础。
 
     > [!NOTE] 
-    > *sshd_config* 文件必须包括以下项，否则连接将失败： 
+    > *sshd_config* 文件必须包括以下项，否则连接会失败： 
     > * `Ciphers` 必须包括下列项中的至少一项：`aes128-cbc,3des-cbc,aes256-cbc`。
     > * `MACs` 必须包括下列项中的至少一项：`hmac-sha1,hmac-sha1-96`。
 
@@ -90,7 +89,7 @@ Linux 上的 Web 应用程序对应用程序容器提供了 SSH 支持，每个�
     EXPOSE 2222 80
     ```
 
-4. 确保启动 ssh 服务。 [此处](https://github.com/Azure-App-Service/node/blob/master/6.9.3-1/init_container.sh)的示例使用了 */bin* 目录中的一个 shell 脚本。
+4. 确保启动 ssh 服务。 [此处](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh)的示例使用了 */bin* 目录中的一个 shell 脚本。
 
     ```bash
     #!/bin/bash
@@ -113,7 +112,7 @@ Linux 上的 Web 应用程序对应用程序容器提供了 SSH 支持，每个�
 有关 Linux 上的 Web 应用的详细信息，请参阅以下链接。 如有问题和疑问，请在[我们的论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)上发帖。
 
 * [在 Linux 上的 Azure Web 应用中创建应用](app-service-linux-how-to-create-web-app.md)
-* [如何将自定义 Docker 映像用于 Linux 上的 Azure Web 应用](app-service-linux-using-custom-docker-image.md)
+* [如何使用 Linux 上 Azure Web 应用的自定义 Docker 映像](app-service-linux-using-custom-docker-image.md)
 * [在 Linux 上的 Azure Web 应用中使用针对 Node.js 的 PM2 配置](app-service-linux-using-nodejs-pm2.md)
 * [在 Linux 上的 Azure Web 应用中使用 .NET Core](app-service-linux-using-dotnetcore.md)
 * [在 Linux 上的 Azure Web 应用中使用 Ruby](app-service-linux-ruby-get-started.md)

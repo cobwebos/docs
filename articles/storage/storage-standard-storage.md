@@ -14,23 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: yuemlu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 01597767a03a5959c4c0cde994b6a7b8a34bfb7e
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: cdcc06844dce5df09b50a9a5f6a97a7a96a9ef48
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
-# 高性价比标准存储以及非托管和托管 Azure VM 磁盘
-<a id="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks" class="xliff"></a>
+# <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>高性价比标准存储以及非托管和托管 Azure VM 磁盘
 
 Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成本的磁盘支持。 它还支持 blob、表、队列和文件。 使用标准存储，将数据存储在硬盘驱动器 (HDD)。 使用 VM 时，可将标准存储磁盘用于开发/测试方案和不太重要的工作负荷，将高级存储磁盘用于任务关键型生产应用程序。 所有 Azure 区域均提供标准存储。 
 
 本文将重点介绍将标准存储用于 VM 磁盘。 有关将存储用于 blob、表、队列和文件的详细信息，请参阅[存储简介](storage-introduction.md)。
 
-## 磁盘类型
-<a id="disk-types" class="xliff"></a>
+## <a name="disk-types"></a>磁盘类型
 
 有两种方法可为 Azure VM 创建标准磁盘：
 
@@ -47,12 +44,11 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 * [使用 Resource Manager 和 PowerShell 创建 VM](../virtual-machines/virtual-machines-windows-ps-create.md)
 * [使用 Azure CLI 2.0 创建 Linux VM](../virtual-machines/linux/quick-create-cli.md)
 
-## 标准存储功能
-<a id="standard-storage-features" class="xliff"></a> 
+## <a name="standard-storage-features"></a>标准存储功能 
 
 让我们看一下标准存储的一些功能。 有关详细信息，请参阅 [Azure 存储简介](storage-introduction.md)。
 
-**标准存储**：Azure 标准存储支持 Azure 磁盘、Azure Blob、Azure 文件、Azure 表和 Azure 队列。 要使用标准存储服务，请从[创建 Azure 存储帐户](storage-create-storage-account.md#create-a-storage-account)开始。
+**标准存储**：Azure 标准存储支持 Azure 磁盘、Azure Blob、Azure 文件存储、Azure 表和 Azure 队列。 要使用标准存储服务，请从[创建 Azure 存储帐户](storage-create-storage-account.md#create-a-storage-account)开始。
 
 **标准存储磁盘：**可将标准存储磁盘附加到所有 Azure VM，包括与高级存储配合使用的 VM 系列，如 DSv2 和 GS 系列。 标准存储磁盘只能附加到一个 VM。 但可以将一个或多个此类磁盘附加到 VM，最多为该 VM 大小定义的最大磁盘计数。 在下一部分标准存储的可伸缩性和性能目标中将详细介绍规范。 
 
@@ -60,13 +56,11 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 
 **存储复制：**在大多数区域中，标准存储帐户中的数据可以在本地复制，或跨多个数据中心实现异地复制。 可用的四种复制类型包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。 标准存储中的托管磁盘目前仅支持本地冗余存储 (LRS)。 有关详细信息，请参阅[存储复制](storage-redundancy.md)。
 
-## 伸缩性和性能目标
-<a id="scalability-and-performance-targets" class="xliff"></a>
+## <a name="scalability-and-performance-targets"></a>伸缩性和性能目标
 
 本部分将介绍使用标准存储时需要考虑的可伸缩性和性能目标。
 
-### 帐户限制 - 不适用于托管磁盘
-<a id="account-limits--does-not-apply-to-managed-disks" class="xliff"></a>
+### <a name="account-limits--does-not-apply-to-managed-disks"></a>帐户限制 - 不适用于托管磁盘
 
 | **资源** | **默认限制** |
 |--------------|-------------------|
@@ -83,8 +77,7 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 
 如果应用程序的需求超过了单个存储帐户的可伸缩性目标，则在生成应用程序时请让它使用多个存储帐户，并将数据分布在这些存储帐户中。 或者，可使用 Azure 托管磁盘，Azure 将管理数据分区和放置。
 
-### 标准磁盘限制
-<a id="standard-disks-limits" class="xliff"></a>
+### <a name="standard-disks-limits"></a>标准磁盘限制
 
 与高级磁盘不同，标准磁盘不预配每秒输入/输出操作数 (IOPS) 和吞吐量（带宽）。 标准磁盘的性能因其附加到的 VM 大小（而非磁盘大小）而异。 其性能预期可达到下表所列的性能限制。
 
@@ -98,13 +91,11 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 
 如果工作负荷要求高性能、低延迟磁盘支持，则应考虑使用高级存储。 若要深入了解高级存储的优点，请访问[高性能高级存储和 Azure VM 磁盘](storage-premium-storage.md)。 
 
-## 快照和复制 Blob
-<a id="snapshots-and-copy-blob" class="xliff"></a>
+## <a name="snapshots-and-copy-blob"></a>快照和复制 Blob
 
 对于存储服务而言，VHD 文件是页 blob。 可以拍摄页 blob 的快照，然后将其复制到其他位置，例如其他存储帐户。
 
-### 非托管磁盘
-<a id="unmanaged-disks" class="xliff"></a>
+### <a name="unmanaged-disks"></a>非托管磁盘
 
 可以为非托管标准磁盘创建[增量快照](storage-incremental-snapshots.md)，这与对标准存储使用快照的方式相同。 如果源磁盘是本地冗余存储帐户，则建议创建快照，并将那些快照复制到地域冗余的标准存储帐户。 有关详细信息，请参阅 [Azure 存储冗余选项](storage-redundancy.md)。
 
@@ -114,15 +105,13 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 
 有关在标准存储帐户中针对页 blob 执行 REST 操作的详细信息，请参阅 [Azure 存储服务 REST API](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference)。
 
-### 托管磁盘
-<a id="managed-disks" class="xliff"></a>
+### <a name="managed-disks"></a>托管磁盘
 
 托管磁盘的快照是托管磁盘的只读副本，其作为标准托管磁盘存储。 托管磁盘当前不支持增量快照，但以后将支持增量快照。
 
 如果托管磁盘已附加到 VM，则磁盘上将不允许某些 API 操作。 例如，磁盘附加到 VM 时，无法通过生成共享访问签名 (SAS) 来执行复制操作。 请先创建磁盘快照，然后对该快照执行复制操作。 或者，可以分离磁盘，然后通过生成共享访问签名 (SAS) 执行复制操作。
 
-## 定价和计费
-<a id="pricing-and-billing" class="xliff"></a>
+## <a name="pricing-and-billing"></a>定价和计费
 
 使用标准存储时，请注意以下计费方式：
 
@@ -148,15 +137,13 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 * [虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * [托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks)
 
-## Azure 备份服务支持
-<a id="azure-backup-service-support" class="xliff"></a> 
+## <a name="azure-backup-service-support"></a>Azure 备份服务支持 
 
 可以使用 Azure 备份来备份具有非托管磁盘的虚拟机。 [更多详细信息](../backup/backup-azure-vms-first-look-arm.md)。
 
 还可将 Azure 备份服务与托管磁盘配合使用，以创建具有基于时间的备份、轻松 VM 还原和备份保留策略的备份作业。 有关详细信息，请参阅[将 Azure 备份服务用于具有托管磁盘的 VM](../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 * [Azure 存储简介](storage-introduction.md)
 

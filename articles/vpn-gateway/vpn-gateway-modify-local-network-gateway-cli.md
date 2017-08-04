@@ -23,8 +23,7 @@ ms.lasthandoff: 06/20/2017
 
 
 ---
-# 使用 Azure CLI 修改本地网络网关设置
-<a id="modify-local-network-gateway-settings-using-the-azure-cli" class="xliff"></a>
+# <a name="modify-local-network-gateway-settings-using-the-azure-cli"></a>使用 Azure CLI 修改本地网络网关设置
 
 有时，本地网络网关的地址前缀或网关 IP 地址的设置会变更。 本文演示如何修改本地网络网关设置。 你还可以使用另一种方法来修改这些设置，该方法是通过从以下列表中选择一个不同的选项：
 
@@ -35,25 +34,21 @@ ms.lasthandoff: 06/20/2017
 >
 >
 
-## 开始之前
-<a id="before-you-begin" class="xliff"></a>
+## <a name="before-you-begin"></a>开始之前
 
 安装最新版本的 CLI 命令（2.0 或更高版本）。 有关安装 CLI 命令的信息，请参阅 [Install Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)（安装 Azure CLI 2.0）。
 
 [!INCLUDE [CLI-login](../../includes/vpn-gateway-cli-login-include.md)]
 
-## 修改 IP 地址前缀
-<a id="modify-ip-address-prefixes" class="xliff"></a>
+## <a name="modify-ip-address-prefixes"></a>修改 IP 地址前缀
 
 [!INCLUDE [modify-prefix](../../includes/vpn-gateway-modify-ip-prefix-cli-include.md)]
 
-## 修改网关 IP 地址
-<a id="modify-the-gateway-ip-address" class="xliff"></a>
+## <a name="modify-the-gateway-ip-address"></a>修改网关 IP 地址
 
 [!INCLUDE [modify-gateway-IP](../../includes/vpn-gateway-modify-lng-gateway-ip-cli-include.md)]
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 可验证网关连接。 请参阅[验证网关连接](vpn-gateway-verify-connection-resource-manager.md)。
 

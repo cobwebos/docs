@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 8a0eb841b1a41a14e443b6ce93e6b8fb8985a803
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 6d38dd6802a25b147fd014b4d26ca432ca87a07d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="create-start-or-delete-an-application-gateway-by-using-azure-resource-manager"></a>使用 Azure Resource Manager 创建、启动或删除应用程序网关
@@ -36,10 +35,10 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
 
 若要查找支持功能的完整列表，请参阅[应用程序网关概述](application-gateway-introduction.md)
 
-本文将指导你完成创建、配置、启动和删除应用程序网关的步骤。
+本文指导完成创建、配置、启动和删除应用程序网关的步骤。
 
 > [!IMPORTANT]
-> 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：Resource Manager 部署模型和经典部署模型。 在使用任何 Azure 资源之前，请确保你了解 [部署模型和工具](../azure-classic-rm.md) 。 可以通过单击本文顶部的选项卡来查看不同工具的文档。 本文档介绍如何使用 Azure Resource Manager 创建应用程序网关。 若要使用经典版本，请转到 [使用 PowerShell 创建应用程序网关经典部署](application-gateway-create-gateway.md)。
+> 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：Resource Manager 部署模型和经典部署模型。 在使用任何 Azure 资源之前，请确保你了解 [部署模型和工具](../azure-classic-rm.md)。 可以通过单击本文顶部的选项卡来查看不同工具的文档。 本文档介绍如何使用 Azure Resource Manager 创建应用程序网关。 若要使用经典版本，请转到 [使用 PowerShell 创建应用程序网关经典部署](application-gateway-create-gateway.md)。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -53,7 +52,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
 * **后端服务器池设置：** 每个池都有一些设置，例如端口、协议和基于 Cookie 的关联性。 这些设置绑定到池，并会应用到池中的所有服务器。
 * **前端端口：** 此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，然后重定向到后端服务器之一。
 * **侦听器：** 侦听器具有前端端口、协议（Http 或 Https，这些值区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。
-* **规则：** 规则将会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。
+* **规则：**规则会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
@@ -63,7 +62,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
 
 以下是创建应用程序网关所需执行的步骤。
 
-## <a name="create-a-resource-group-for-resource-manager"></a>创建资源管理器的资源组
+## <a name="create-a-resource-group-for-resource-manager"></a>创建 Resource Manager 的资源组
 
 确保使用最新版本的 Azure PowerShell。 [将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)中提供了详细信息。
 
@@ -75,7 +74,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
 Login-AzureRmAccount
 ```
 
-系统将提示用户使用凭据进行身份验证。
+系统会提示用户使用凭据进行身份验证。
 
 ### <a name="step-2"></a>步骤 2
 
@@ -101,7 +100,7 @@ Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 New-AzureRmResourceGroup -Name appgw-rg -Location "West US"
 ```
 
-Azure 资源管理器要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
+Azure Resource Manager 要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
 
 在上面的示例中，我们在位置 **West US** 中创建了名为 **appgw-RG** 的资源组。
 
@@ -130,7 +129,7 @@ $vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -L
 
 ### <a name="step-3"></a>步骤 3
 
-为后续步骤分配子网变量，该变量将在以后的步骤中传递给 `New-AzureRMApplicationGateway` cmdlet。
+为后续步骤分配子网变量，该变量会在以后的步骤中传递给 `New-AzureRMApplicationGateway` cmdlet。
 
 ```powershell
 $subnet=$vnet.Subnets[0]
@@ -171,10 +170,10 @@ $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPA
 
 ### <a name="step-3"></a>步骤 3
 
-配置应用程序网关设置 **poolsetting01** 以在后端池中实现负载均衡的网络流量。 每个后端池可有自身的后端池设置。  可以通过规则使用后端 HTTP 设置，以便将流量路由到正确的后端池成员。 将流量发送到后端池成员时，所用的协议和端口由后端 HTTP 设置决定。 基于 Cookie 的会话也由后端 HTTP 设置决定。  在启用的情况下，基于 Cookie 的会话相关性会将流量发送到与每个数据包的前述请求相同的后端。
+配置应用程序网关设置 poolsetting 以在后端池中实现负载均衡的网络流量。 每个后端池可有自身的后端池设置。  可以通过规则使用后端 HTTP 设置，以便将流量路由到正确的后端池成员。 将流量发送到后端池成员时，所用的协议和端口由后端 HTTP 设置决定。 基于 Cookie 的会话也由后端 HTTP 设置决定。  在启用的情况下，基于 Cookie 的会话相关性会将流量发送到与每个数据包的前述请求相同的后端。
 
 ```powershell
-$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled -RequestTimeout 120
+$poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled -RequestTimeout 120
 ```
 
 ### <a name="step-4"></a>步骤 4
@@ -206,7 +205,7 @@ $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol
 创建名为 **rule01** 的负载均衡器路由规则，并配置负载均衡器的行为。 在前述步骤中创建的后端池设置、侦听器和后端池构成了该规则。 根据定义的条件，流量会路由到相应的后端。
 
 ```powershell
-$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting01 -HttpListener $listener -BackendAddressPool $pool
+$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 ```
 
 ### <a name="step-8"></a>步骤 8

@@ -1,9 +1,9 @@
 ---
-title: "Office 365 服务的条件性访问设备策略 | Microsoft Docs"
-description: "详细说明基于设备的条件如何控制对 Office 365 服务访问。 尽管信息工作者 (IW) 希望在工作中或在学校时从其个人设备访问 Office 365 服务（如 Exchange 和 SharePoint Online），但是其 IT 管理员希望访问是安全的。IT 管理员可以设置条件性访问设备策略来保护公司资源，同时允许 IW 在符合条件的设备上访问服务。"
+title: "Office 365 服务的 Azure Active Directory 条件访问设备策略 | Microsoft Docs"
+description: "了解如何设置条件访问设备策略，从而增强企业资源的安全性，同时保持用户符合性和对服务的访问权限。"
 services: active-directory
 documentationcenter: 
-author: femila
+author: MarkusVi
 manager: femila
 editor: 
 ms.assetid: 8664c0bb-bba1-4012-b321-e9c8363080a0
@@ -12,41 +12,39 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 08/02/2017
 ms.author: markvi
+ms.reviewer: calebb
 ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 613e2447c1e47fcd80f2e9ded9ad2669f8283c3d
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 2d0794781946195fc6fbab413299012e6949a4bc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 12/29/2016
-
+ms.lasthandoff: 06/03/2017
 
 ---
-# <a name="conditional-access-device-policies-for-office-365-services"></a>Office 365 服务的条件性访问设备策略
-“条件性访问”一词具有与之关联的多个条件，例如，通过多重身份验证的用户、通过身份验证的设备、符合标准的设备，等等。本主题主要介绍用于控制对 Office 365 服务访问的基于设备的条件性访问策略。 尽管信息工作者 (IW) 希望在工作中或在学校时从其个人设备访问 Office 365 服务（如 Exchange 和 SharePoint Online），但是其 IT 管理员希望访问是安全的。 IT 管理员可以设置条件性访问设备策略来保护公司资源，同时允许 IW 在符合条件的设备上访问服务。 可以从 Intune 条件性访问门户配置 Office 365 的条件性访问策略。
+# <a name="active-directory-conditional-access-device-policies-for-office-365-services"></a>Office 365 服务的 Active Directory 条件访问设备策略
 
-Azure Active Directory 会强制实施条件性访问策略来确保对 Office 365 服务的安全访问。 租户管理员可以创建一个条件性访问策略来阻止用户从不符合条件的设备访问 O365 服务。 用户必须符合公司的设备策略，才能向其授予对该服务的访问权限。 另外，管理员还可以创建策略来要求用户注册其设备来获取对 O365 服务的访问权限。 可以将策略应用于组织的所有用户，也可以先将其限定于少数目标组并随时间逐步增强以包括更多目标组。
+需要完成多个步骤才能使条件访问正常工作。 它涉及经过多重身份验证的用户、经身份验证的设备和兼容设备等因素。 本文主要关注基于设备的条件，你的组织可以使用这些条件来帮助你控制对 Office 365 服务的访问权限。 
 
-对于用户而言，强制实施设备策略的一个先决条件是向 Azure Active Directory 设备注册服务注册其设备。 向 Azure Active Directory 设备注册服务注册设备时你可以选择启用多重身份验证 (MFA)。 建议为 Azure Active Directory 设备注册服务使用 MFA。 当启用了 MFA 时，向 Azure Active Directory 设备注册服务注册其设备的用户将面临第二因素身份验证的挑战。
+企业用户想要在工作中或在学校时从其个人设备访问 Office 365 服务（如 Exchange 和 SharePoint Online）。 你会希望确保访问的安全性。 可以设置条件访问设备策略以增强企业资源的安全性，同时授予使用兼容设备的用户对服务的访问权限。 可以在 Microsoft Intune 条件访问门户中设置 Office 365 的条件访问策略。
 
-## <a name="how-does-conditional-access-policy-work"></a>条件性访问策略的工作原理
-当用户从受支持的设备平台请求访问 O365 服务时，Azure Active Directory 会对用户以及用户从中发起请求的设备进行身份验证；仅当用户符合为该服务设置的策略时，才会向其授予对该服务的访问权限。 对于没有注册其设备的用户，会向其提供补救说明来指示如何进行注册并满足访问公司 O365 服务的条件。 对于 iOS 和 Android 设备上的用户，将要求其使用公司门户应用程序注册其设备。 当用户注册其设备时，将向 Azure Active Directory 注册设备，并且针对设备管理和合规性进行注册。 客户必须将 Azure Active Directory 设备注册服务与 Microsoft Intune 一起使用才能为 Office 365 服务启用移动设备管理。 当强制实施了设备策略时，对于要访问 Office 365 服务的用户，进行设备注册是一个先决条件。
+Azure Active Directory (Azure AD) 强制实施条件访问策略，以帮助确保对 Office 365 服务的安全访问。 你可以创建一个条件访问策略来阻止使用非兼容设备的用户对 Office 365 服务的访问。 用户必须符合公司的设备策略，才能向其授予对该服务的访问权限。 另外，你还可以创建策略来要求用户注册其设备，以获取对 Office 365 服务的访问权限。 可将策略应用于组织中的所有用户，或限定于少数目标组。 随着时间的推移，可以将多个目标组添加到策略。
 
-当用户成功注册了其设备时，设备将成为受信任设备。 Azure Active Directory 提供了单点登录来访问公司应用程序并强制实施条件性访问策略来授予对服务的访问权限，不仅在用户首次请求访问权限时如此，用户每次请求续订访问权限时都是如此。 如果登录凭据被更改、设备丢失/被盗或者在请求续订时不满足策略要求，则会拒绝用户访问服务。
+强制实施设备策略的一个先决条件是，用户必须向 Azure AD 设备注册服务注册其设备。 你可以选择启用注册了 Azure AD 设备注册服务的设备的多重身份验证。 建议针对 Azure Active Directory 设备注册服务使用多重身份验证。 启用多重身份验证后，向 Azure AD 设备注册服务注册其设备的用户将面临第二重身份验证。
 
-## <a name="deployment-considerations"></a>部署注意事项：
-必须使用 Azure Active Directory 设备注册服务进行设备注册。
+## <a name="how-does-a-conditional-access-policy-work"></a>条件访问策略是如何工作的？
 
-当用户要在本地进行身份验证时，需要 Active Directory 联合身份验证服务 (AD FS)（1.0 及更高版本）。 当标识提供者不支持多重身份验证时，针对工作区加入的多重身份验证将失败。 例如，AD FS 2.0 不支持多重身份验证。 在 Azure Active Directory 设备注册服务上启用 MFA 之前，租户管理员必须确保本地 AD FS 支持 MFA 并确保启用了有效的 MFA 方法。 例如，Windows Server 2012 R2 上的 AD FS 具有 MFA 功能。 在 Azure Active Directory 设备注册服务上启用 MFA 之前，还必须在 AD FS 服务器上启用一种额外的有效身份验证 (MFA) 方法。 有关 AD FS 中受支持的 MFA 方法的更多详细信息，请参阅“为 AD FS 配置额外的身份验证方法”。
+当用户请求从受支持的设备平台访问 Office 365 服务时，Azure AD 会对用户和设备进行身份验证。 仅当用户符合为该服务设置的策略时，Azure AD 才会授予其对服务的访问权限。 对于未经注册的设备上的用户，会向其提供说明，指示如何进行注册并满足访问企业 Office 365 服务的条件。 对于 iOS 和 Android 设备上的用户，会要求其使用 Intune 公司门户应用程序注册其设备。 当用户注册一台设备时，将向 Azure AD 注册设备，并针对设备管理和符合性进行注册。 必须将 Azure AD 设备注册服务与 Microsoft Intune 一起使用才能为 Office 365 服务启用移动设备管理。 强制实施设备策略时，用户需要设备注册才能访问 Office 365 服务。
 
-## <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
-问：针对不受支持的设备平台的默认排除策略是什么？
+当用户成功注册设备时，该设备将成为受信任设备。 Azure AD 为经过身份验证的用户提供对公司应用程序的单一登录访问权限。 Azure AD 通过强制实施条件访问策略授予用户对服务的访问权限，这不限于首次请求访问，而且每次用户续订访问请求时都可以进行访问。 如果登录凭据变更、设备丢失或被盗或者在请求续订时不满足策略条件要求，则会拒绝用户对服务的访问。
 
-答：目前，对于 iOS 和 Android 设备上的用户，会有选择地强制实施条件性访问策略。 默认情况下，其他设备平台上的应用程序不受针对 iOS 和 Android 设备的条件性访问策略的影响。 但是，租户管理员可以选择覆盖全局策略来禁止不受支持的平台上的用户进行访问。
-目前正在计划将条件性访问策略扩展到其他平台（包括 Windows）上的用户。
+## <a name="deployment-considerations"></a>部署注意事项
 
-问：何时会将对 Office 365 服务的条件性访问策略扩展到基于浏览器的应用程序（例如，OWA、基于浏览器的 SharePoint）？
+必须使用 Azure AD 设备注册服务来注册设备。
 
-答：目前，对 Office365 服务的条件性访问仅限于设备上的丰富应用程序。 目前正在计划将条件性访问策略扩展到从浏览器访问服务的用户。
+当本地用户要进行身份验证时，需要 Active Directory 联合身份验证服务 (AD FS)（1.0 版以及更高版本）。 当标识提供者不支持多重身份验证时，针对工作区加入的多重身份验证将失败。 例如，不能将多重身份验证与 AD FS 2.0 一起使用。 在启用 Azure AD 设备注册服务的多重身份验证之前，确保本地 AD FS 与多重身份验证配合使用，并且有效的多重身份验证方法已准备就绪。 例如，Windows Server 2012 R2 上的 AD FS 具有多重身份验证功能。 在启用 Azure AD 设备注册服务的多重身份验证之前，还必须在 AD FS 服务器上设置其他有效的身份验证（多重身份验证）方法。 有关 AD FS 中受支持的多重身份验证方法的详细信息，请参阅[为 AD FS 配置额外的身份验证方法](/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)。
 
+## <a name="next-steps"></a>后续步骤
+
+*   对于常见问题解答，请参阅 [Azure Active Directory 条件访问常见问题解答](active-directory-conditional-faqs.md)。
 

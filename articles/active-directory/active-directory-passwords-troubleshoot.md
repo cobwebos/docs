@@ -6,22 +6,21 @@ keywords:
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-editor: gahug
+ms.reviewer: gahug
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 6d1cfd588ad60cbdf69a432b4f4baa0b13fed0d3
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 963749bce0a84a97a0938f5531ebf7d694a3ca58
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 07/06/2017
 
 ---
 
@@ -144,7 +143,7 @@ ms.lasthandoff: 05/11/2017
 
 如果遇到 Azure AD Sync 密码写回组件的服务中断，可以使用以下快速步骤来解决此问题：
 
-* [重新启动 Azure AD Sync 服务](#restart-the-azure-AD-Connect-sync-service)
+* [重新启动 Azure AD Sync 服务](#restart-the-azure-ad-connect-sync-service)
 * [禁用再重新启用密码写回功能](#disable-and-re-enable-the-password-writeback-feature)
 * [安装最新版本的 Azure AD Connect](#install-the-latest-azure-ad-connect-release)
 * [排查密码写回问题](#troubleshoot-password-writeback)
@@ -199,6 +198,27 @@ ms.lasthandoff: 05/11/2017
 这些步骤重新建立与云服务的连接，并解决可能出现的任何中断。
 
 如果安装最新版本的 Azure AD Connect 服务器无法解决你遇到的问题，我们建议在安装最新的版本之后，最后再尝试禁用密码写回，然后重新启用该功能。
+
+## <a name="verify-whether-azure-ad-connect-has-the-required-permission-for-password-writeback"></a>验证 Azure AD Connect 是否具有密码写回所需的权限 
+Azure AD Connect 需要 AD“重置密码”权限才能执行密码写回。 若要了解 Azure AD Connect 是否具有给定本地 AD 用户帐户的权限，可使用 Windows 有效权限功能：
+
+1. 登录到 Azure AD Connect 服务器，并启动 Synchronization Service Manager（“开始”→“同步服务”）。
+2. 在“连接器”选项卡下，选择本地“AD 连接器”，并单击“属性”。  
+![有效权限 - 步骤 2](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
+3. 在弹出式对话框中，选择“连接到 Active Directory 林”选项卡，并记下“用户名”属性。 这是 Azure AD Connect 用于执行目录同步的 AD DS 帐户。 Azure AD Connect 若要执行密码写回，AD DS 帐户必须具有重置密码权限。  
+![有效权限 - 步骤 3](./media/active-directory-passwords-troubleshoot/checkpermission02.png)  
+4. 登录到本地域控制器并启动“Active Directory 用户和计算机”应用程序。
+5. 单击“视图”并确保已启用“高级功能”选项。  
+![有效权限 - 步骤 5](./media/active-directory-passwords-troubleshoot/checkpermission03.png)  
+6. 查找要验证的 AD 用户帐户。 右键单击帐户并选择“属性”。  
+![有效权限 - 步骤 6](./media/active-directory-passwords-troubleshoot/checkpermission04.png)  
+7. 在弹出式对话框中，转到“安全”选项卡，然后单击“高级”。  
+![有效权限 - 步骤 7](./media/active-directory-passwords-troubleshoot/checkpermission05.png)  
+8. 在“高级安全设置”弹出式对话框中，转到“有效访问”选项卡。
+9. 单击“选择用户”并选择 Azure AD Connect 所使用的 AD DS 帐户（请参阅步骤 3）。 然后单击“查看有效访问”。  
+![有效权限 - 步骤 9](./media/active-directory-passwords-troubleshoot/checkpermission06.png)  
+10. 向下滚动并查找“重置密码”。 如果选中该项，则表示 AD DS 帐户有权重置所选 AD 用户帐户的密码。  
+![有效权限 - 步骤 10](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
 
 ## <a name="azure-ad-forums"></a>Azure AD 论坛
 

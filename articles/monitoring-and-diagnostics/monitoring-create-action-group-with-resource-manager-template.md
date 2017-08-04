@@ -2,7 +2,7 @@
 title: "使用 Resource Manager 模板创建操作组 | Microsoft Docs"
 description: "通过操作组可以在发生特定事件时通知电子邮件、短信或调用 webhook。"
 author: anirudhcavale
-manager: carmonm
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 2dd7b14f1466fa7244a2af2c030d8b794658aaad
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: 88e7b2e7781b80ea360531f4c3a45256de83b594
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
 
@@ -28,10 +27,10 @@ ms.lasthandoff: 04/12/2017
 
 基本步骤如下所示：
 
-1.    以 JSON 文件的形式创建一个描述如何创建操作组的模板。
-2.    [使用任意部署方法部署模板。](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
+1.  以 JSON 文件的形式创建一个描述如何创建操作组的模板。
+2.  [使用任意部署方法部署模板。](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
 
-下面我们先单独针对操作组，然后针对创建其他资源期间的操作组，描述如何创建 Resource Manager 模板。
+下面我们先介绍如何为操作组创建 Resource Manager 模板，操作组中的操作定义已在模板中进行硬编码，然后在部署模板时再为使用 webhook 配置信息作为输入参数的模板创建 Resource Manager 模板。
 
 ## <a name="resource-manager-template-for-an-action-group"></a>操作组的 Resource Manager 模板
 

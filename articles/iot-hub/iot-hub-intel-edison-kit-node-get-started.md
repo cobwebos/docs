@@ -1,10 +1,10 @@
 ---
 title: "Intel Edison 到云 (Node.js) - 将 Intel Edison 连接到 Azure IoT 中心 | Microsoft Docs"
-description: "将 Intel Edison 连接到 Azure IoT 中心，便于 Intel Edison 向 Azure 云发送数据。"
+description: "在本教程中了解如何设置 Intel Edison 并将其连接到 Azure IoT 中心，使其能够将数据发送到 Azure 云平台。"
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "azure iot intel edison, intel edison iot 中心, intel edison 发送数据到云, intel edison 到云"
 ms.assetid: a7c9cf2d-c102-41b0-aa45-41285c6877eb
@@ -16,12 +16,11 @@ ms.workload: na
 ms.date: 6/15/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 9e9198f827d0906f65f59322126ef27ba6428d3e
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 5a31efba704045196b5563f7bc467c773bea7805
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 

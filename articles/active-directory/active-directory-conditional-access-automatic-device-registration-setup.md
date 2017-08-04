@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 06/16/2017
 ms.author: markvi
+ms.reviewer: jairoc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0fb7e8fe778c8d6f7e12b1c8a75c95941da3d4d9
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: b8cac63967bf837183095cbb235c4a84f2dabcb9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="how-to-configure-automatic-registration-of-windows-domain-joined-devices-with-azure-active-directory"></a>如何配置已加入域的 Windows 设备的 Azure Active Directory 自动注册
@@ -33,6 +33,7 @@ ms.lasthandoff: 04/27/2017
 
 - 有关条件访问的详细信息，请参阅 [Azure Active Directory 基于设备的条件性访问](active-directory-conditional-access-azure-portal.md)。 
 - 有关工作区中的 Windows 10 设备以及向 Azure AD 注册时的增强型体验的详细信息，请参阅[适用于企业的 Windows 10：使用设备进行工作](active-directory-azureadjoin-windows10-devices-overview.md)。
+- 有关CSP 中的 Windows 10 企业版 E3 的信息，请参阅 [CSP 中的 Windows 10 企业版 E3 概述](https://docs.microsoft.com/en-us/windows/deployment/windows-10-enterprise-e3-overview)。
 
 
 ## <a name="before-you-begin"></a>开始之前
@@ -59,9 +60,8 @@ ms.lasthandoff: 04/27/2017
     - Windows Server 2012 R2
     - Windows Server 2012
     - Windows Server 2008 R2
-- 以下各项**不支持** Windows 下层设备的注册：
-    - 非联合环境（密码哈希同步配置）。  
-    - 使用漫游配置文件的设备。 如果你依赖于配置文件或设置漫游，请使用 Windows 10。
+- 在非联合环境中，通过无缝单一登录支持 Windows 下层设备的注册 [Azure Active Directory 无缝单一登录](https://aka.ms/hybrid/sso)。
+- 使用漫游配置文件的设备不支持 Windows 下层设备的注册。 如果你依赖于配置文件或设置漫游，请使用 Windows 10。
 
 
 
@@ -137,7 +137,10 @@ cmdlet：
 
     Initialize-ADSyncDomainJoinedComputerSync –AdConnectorAccount [connector account name] -AzureADCredentials $aadAdminCred;
 
-`Initialize-ADSyncDomainJoinedComputerSync` cmdlet 使用 Active Directory PowerShell 模块，依赖于域控制器中运行的 Active Directory Web 服务。 运行 Windows Server 2008 R2 和更高版本的域控制器支持 Active Directory Web 服务。 
+`Initialize-ADSyncDomainJoinedComputerSync` cmdlet：
+
+- 使用 Active Directory PowerShell 模块，依赖于域控制器中运行的 Active Directory Web 服务。 运行 Windows Server 2008 R2 和更高版本的域控制器支持 Active Directory Web 服务。
+- 仅受 MSOnline PowerShell 模块 1.1.166.0 版支持。 要下载此模块，请使用此[链接](http://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)。   
 
 对于运行 Windows Server 2008 或更低版本的域控制器，可使用以下脚本创建服务连接点。
 
@@ -524,7 +527,9 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 
 ## <a name="step-4-control-deployment-and-rollout"></a>步骤 4：控制部署和实施
 
-完成所需的步骤后，已加入域的设备便可自动注册到 Azure AD。 设备重新启动或用户登录时，运行 Windows 10 周年更新和 Windows Server 2016 的所有已加入域的设备将自动注册到 Azure AD。 完成域加入操作后重新启动设备时，新设备将注册到 Azure AD。
+完成所需的步骤后，已加入域的设备便可自动注册到 Azure AD。 设备重新启动或用户登录时，运行 Windows 10 周年更新和 Windows Server 2016 的所有已加入域的设备将自动注册到 Azure AD。 完成域加入操作后重启设备，新设备会注册到 Azure AD。
+
+将先前已加入 Azure AD 工作区（如 Intune）的设备转换为“已加入域，已向 AAD 注册”；然而，由于域和用户活动的正常流，需要一段时间才可在所有设备上完成此过程。
 
 ### <a name="remarks"></a>备注
 

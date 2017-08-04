@@ -24,8 +24,7 @@ ms.lasthandoff: 06/20/2017
 
 ---
 
-# 使用 Web 服务器日志监视 Web 应用
-<a id="monitor-a-web-app-with-web-server-logs" class="xliff"></a>
+# <a name="monitor-a-web-app-with-web-server-logs"></a>使用 Web 服务器日志监视 Web 应用
 
 在此方案中，将创建资源组、应用服务计划、Web 应用，并配置 Web 应用以启用 Web 服务器日志。 然后，将下载日志文件以供查看。
 
@@ -35,15 +34,13 @@ ms.lasthandoff: 06/20/2017
 
 如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
-## 示例脚本
-<a id="sample-script" class="xliff"></a>
+## <a name="sample-script"></a>示例脚本
 
 [!code-azurecli-interactive[主要](../../../cli_scripts/app-service/monitor-with-logs/monitor-with-logs.sh "监视日志")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
-## 脚本说明
-<a id="script-explanation" class="xliff"></a>
+## <a name="script-explanation"></a>脚本说明
 
 此脚本使用以下命令创建资源组、Web 应用和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
@@ -55,8 +52,7 @@ ms.lasthandoff: 06/20/2017
 | [az webapp log config](https://docs.microsoft.com/cli/azure/webapp/log#config) | 配置 Azure Web 应用将持久保留的日志。 |
 | [az webapp log download](https://docs.microsoft.com/cli/azure/webapp/log#download) | 将 Azure Web 应用的日志下载到本地计算机。 |
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
 

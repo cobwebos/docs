@@ -1,7 +1,6 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### 装载、初始化和格式化卷
-<a id="to-mount-initialize-and-format-a-volume" class="xliff"></a>
+#### <a name="to-mount-initialize-and-format-a-volume"></a>装载、初始化和格式化卷
 1. 启动 Microsoft iSCSI 发起程序。
 2. 在“iSCSI 发起程序属性”窗口中的“发现”选项卡上，单击“发现门户”。
 3. 在“发现目标门户”对话框中，提供支持 iSCSI 网络接口的 IP 地址，然后单击“确定”。 

@@ -22,15 +22,13 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 03/08/2017
 
 ---
-# 使用“Sync Service Manager 操作”选项卡
-<a id="using-the-sync-service-manager-operations-tab" class="xliff"></a>
+# <a name="using-the-sync-service-manager-operations-tab"></a>使用“Sync Service Manager 操作”选项卡
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/operations.png)
 
 “操作”选项卡显示最新操作的结果。 此选项卡是了解和排查问题的关键所在。
 
-## 了解“操作”选项卡中显示的信息
-<a id="understand-the-information-visible-in-the-operations-tab" class="xliff"></a>
+## <a name="understand-the-information-visible-in-the-operations-tab"></a>了解“操作”选项卡中显示的信息
 上半部分按时间顺序显示所有运行。 默认情况下，操作日志保留最后七天的相关信息，但可以使用[计划程序](active-directory-aadconnectsync-feature-scheduler.md)来更改此设置。 想要查找所有未显示成功状态的运行。 可以单击标题来更改排序。
 
 “状态”列是最重要的信息，并显示最严重的运行问题。 下面是按调查优先级顺序显示的最常见状态的快速摘要（其中 * 表示多个可能的错误字符串）。
@@ -47,8 +45,7 @@ ms.lasthandoff: 03/08/2017
 
 有关详细信息，请参阅[排查对象不同步的问题](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)配置的详细信息。
 
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。

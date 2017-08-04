@@ -1,0 +1,89 @@
+- name: 将 ACS 与 Kubernetes 配合使用
+  href: ./index.yml
+- name: 概述
+  items:
+    - name: 关于容器服务
+      href: container-service-intro-kubernetes.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: Kubernetes Linux
+      href: container-service-kubernetes-walkthrough.md
+- name: 教程
+  items:
+    - name: 1 - 创建容器映像
+      href: container-service-tutorial-kubernetes-prepare-app.md
+    - name: 2 - 创建容器注册表
+      href: container-service-tutorial-kubernetes-prepare-acr.md
+    - name: 3 - 创建 Kubernetes 群集
+      href: container-service-tutorial-kubernetes-deploy-cluster.md
+    - name: 4 - 运行应用程序
+      href: container-service-tutorial-kubernetes-deploy-application.md
+    - name: 5 - 缩放应用程序
+      href: container-service-tutorial-kubernetes-scale.md
+    - name: 6 - 更新应用程序
+      href: container-service-tutorial-kubernetes-app-update.md
+    - name: 7 - 使用 OMS 进行监视
+      href: container-service-tutorial-kubernetes-monitor.md
+- name: 示例
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+- name: 概念
+  items:
+    - name: 保护容器
+      href: container-service-security.md
+    - name: 服务主体 - Kubernetes
+      href: container-service-kubernetes-service-principal.md
+- name: 操作指南
+  items:
+    - name: “将 Kubernetes 与 Windows 配合使用”快速入门
+      href: container-service-kubernetes-windows-walkthrough.md
+    - name: 容器管理 - Kubernetes UI
+      href: container-service-kubernetes-ui.md
+    - name: 部署 Helm 图表
+      href: container-service-kubernetes-helm.md
+    - name: 将 CI/CD 与 Kubernetes 和 Jenkins 配合使用
+      href: container-service-kubernetes-jenkins.md
+    - name: 将“草稿”与 ACR 和 ACS 配合使用
+      href: container-service-draft-up.md
+    - name: 与 ACS 群集连接
+      href: container-service-connect.md
+    - name: 缩放 ACS 群集
+      href: container-service-scale.md
+    - name: 监视
+      items:
+        - name: 使用 Datadog 进行监视
+          href: container-service-kubernetes-datadog.md
+        - name: 使用 Sysdig 进行监视
+          href: container-service-kubernetes-sysdig.md
+        - name: 使用 CoScale 进行监视
+          href: container-service-kubernetes-coscale.md
+    - name: 部署 Spring Boot 应用
+      items:
+        - name: 在 Azure 容器服务中将 Spring Boot 应用程序部署于 Linux 上
+          href: container-service-deploy-spring-boot-app-on-linux.md
+        - name: 在 Azure 容器服务中将 Spring Boot 应用程序部署于 Kubernetes 群集上
+          href: container-service-deploy-spring-boot-app-on-kubernetes.md
+- name: 引用
+  items:
+    - name: Azure CLI 2.0
+      href: /cli/azure/acs
+    - name: REST
+      href: /rest/api/compute/containerservices
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 常见问题
+      href: container-service-faq.md
+    - name: 模板 - ACS 引擎
+      href: 'https://github.com/Azure/acs-engine'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/container-service/'
+    - name: 上市区域
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 堆栈溢出
+      href: 'http://stackoverflow.com/questions/tagged/azure-container-service'
+    - name: 视频
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'

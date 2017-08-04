@@ -3,7 +3,7 @@ title: "将 ScaleR 和 SparkR 与 Azure HDInsight 配合使用 | Microsoft Docs"
 description: "将 ScaleR 和 SparkR 与 R Server 和 HDInsight 配合使用"
 services: hdinsight
 documentationcenter: 
-author: jeffstokes72
+author: bradsev
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -14,33 +14,36 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
-ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: bab5268c4aab2210e8ace2c3a1db23b34887c2ed
-ms.lasthandoff: 04/04/2017
+ms.date: 06/19/2017
+ms.author: bradsev
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 29733f6f6b725dd4735219ed221431805558a5e2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/11/2017
 
 
 ---
 
-# <a name="combining-scaler-and-sparkr-in-hdinsight"></a>在 HDInsight 中将 ScaleR 和 SparkR 合并
+# <a name="combine-scaler-and-sparkr-in-hdinsight"></a>在 HDInsight 中将 ScaleR 和 SparkR 合并
 
-了解如何结合使用用于在 Spark 中处理数据的 ScaleR 功能与用于分析的 Microsoft R Server 功能。 尽管这两个包在 Hadoop 的 Spark 执行引擎的顶层运行以利用分布式处理中的最新功能，但它们需要自身的 Spark 会话，因此无法共享内存中的数据。 在将来的 R Server 版本中解决此项限制之前，解决方法是保留非重叠的 Spark 会话，并通过中间文件交换数据。 可以看到，这两项要求的实现都相当直截了当。
+本文演示如何使用 **ScaleR** 逻辑回归模型，根据通过 **SparkR** 相联接的航班延误数据和天气数据，来预测航班抵达延误时间。 此方案演示如何结合使用用于在 Spark 中处理数据的 ScaleR 功能与用于分析的 Microsoft R Server 功能。 通过将这些技术相结合，可以在进行分布式处理时应用最新的功能。
 
-为了演示，我们将使用最初由 Mario Inchiosa 和 Roni Burd 在 Strata 2016 研讨会中分享的一个示例，网络研讨会 [Building a Scalable Data Science Platform with R](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio)（使用 R 构建可缩放的数据科研平台）中也提供了此示例。该示例使用 SparkR 来联接已知的航班抵达延误数据集以及出发地与目的地机场的天气数据，并使用这些数据作为 ScaleR 逻辑回归模型的输入来预测航班抵达延误时间。
+尽管这两个包在 Hadoop 的 Spark 执行引擎上运行，但它们需要自身的 Spark 会话，因此无法共享内存中的数据。 在将来的 R Server 版本中解决此问题之前，解决方法是保留非重叠的 Spark 会话，并通过中间文件交换数据。 从此处的说明可以看到，这些要求的实现都相当直截了当。
 
-演练的代码原本是针对 Azure 中 HDInsight 群集上的 Spark 中运行的 R Server 编写的，但在一个脚本中混合使用 SparkR 和 ScaleR 的思路同样适用于本地环境。 下面假设读者对 R 和 R Server 的 [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) 库有一个中等的了解。本文将会讲解 [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) 的整个用法。
+我们将使用最初由 Mario Inchiosa 和 Roni Burd 在 Strata 2016 研讨会中分享的一个示例，网络研讨会 [Building a Scalable Data Science Platform with R](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio)（使用 R 构建可缩放的数据科学平台）中也提供了此示例。此示例使用 SparkR 将已知的航班抵达延误数据集与出发地和目的地机场的天气数据相联接。 然后使用这些联接数据作为 ScaleR 逻辑回归模型的输入来预测航班抵达延误时间。
+
+演练的代码原本是针对 Azure 上 HDInsight 群集中的 Spark 上运行的 R Server 编写的。 但在一个脚本中混合使用 SparkR 和 ScaleR 的思路同样适用于本地环境。 下面假设读者对 R 和 R Server 的 [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) 库有中等水平的了解。 本文在演练此方案时还会介绍 [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) 的用法。
 
 ## <a name="the-airline-and-weather-datasets"></a>航班和天气数据集
 
-AirOnTime08to12CSV airlines 公用数据集包含美国境内从 1987 年 10 月到 2012 年 12 月所有商务航班的抵达和出发详细信息。 这是一个大型数据集：总共有大约 1.5 亿条记录， 解压缩后略小于 4 GB。 该数据集是从[美国政府存档](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)获取的，为了方便使用，它以 zip 文件 (AirOnTimeCSV.zip) 的形式提供，其中包含 [Revolution Analytics 数据集存储库](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/)中的 303 个单独的每月 CSV 文件
+**AirOnTime08to12CSV** 航空公司公用数据集包含美国境内从 1987 年 10 月到 2012 年 12 月所有商务航班的抵达和出发详细信息。 这是一个大型数据集：总共有大约 1.5 亿条记录， 解压缩后略小于 4 GB。 该数据集是从[美国政府存档](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)获取的。 为了方便使用，它以 zip 文件 (AirOnTimeCSV.zip) 的形式提供，其中包含 [Revolution Analytics 数据集存储库](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/)中的 303 个单独的每月 CSV 文件
 
-为了查看天气对航班延误的影响，我们还需要获取每个机场的天气数据。 可以从[美国海洋与大气管理存储库](http://www.ncdc.noaa.gov/orders/qclcd/)下载原始格式的每月天气数据 zip 文件。 为了演示此示例，我们已提取 2007 年 5 月到 2012 年 12 月的天气数据，并使用了 68 个月的 zip 天气数据文件中，每个文件内的每小时数据文件。 每月 zip 文件还包含气象台 ID (WBAN)、关联的机场 (CallSign) 与机场时区与 UTC 的偏差 (TimeZone) 之间的映射 (YYYYMMstation.txt) - 联接航班延误数据时需要用到所有这些信息。
+为了查看天气对航班延误的影响，还需要获取每个机场的天气数据。 可以从[美国海洋与大气管理存储库](http://www.ncdc.noaa.gov/orders/qclcd/)下载原始格式的每月天气数据 zip 文件。 为了演示此示例，已拉取 2007 年 5 月到 2012 年 12 月的天气数据，并使用 68 个月的 zip 天气数据文件中每个文件内的每小时数据文件。 每月 zip 文件还包含气象站 ID (WBAN)、关联的机场 (CallSign) 与机场时区与 UTC 的偏差 (TimeZone) 之间的映射 (YYYYMMstation.txt)。 联接航班延误数据和天气数据时需要用到所有这些信息。
 
 ## <a name="setting-up-the-spark-environment"></a>设置 Spark 环境
 
-我们首先设置 Spark 环境，再准备天气数据，然后将这些数据与航班数据合并，最后建模。 首先，我们指向包含输入数据目录的目录，创建 Spark 计算上下文，然后创建一个日志记录函数用于在控制台上记录参考信息：
+第一步是设置 Spark 环境。 首先，指向包含输入数据目录的目录，创建 Spark 计算上下文，然后创建一个日志记录函数用于在控制台上记录参考信息：
 
 ```
 workDir        <- '~'  
@@ -85,7 +88,7 @@ logmsg('Start')
 logmsg(paste('Number of task nodes=',length(trackers)))
 ```
 
-接下来，将“Spark_Home”添加到 R 包的搜索路径，以便可以使用 SparkR 并初始化 SparkR 会话。
+接下来，将“Spark_Home”添加到 R 包的搜索路径，以便可以使用 SparkR 并初始化 SparkR 会话：
 
 ```
 #..setup for use of SparkR  
@@ -108,9 +111,18 @@ sqlContext <- sparkRSQL.init(sc)
 
 ## <a name="preparing-the-weather-data"></a>准备天气数据
 
-为了准备天气数据，我们将这些数据放入建模时所需的列：“Visibility”、“DryBulbCelsius”、“DewPointCelsius”、“RelativeHumidity”、“WindSpeed”和“Altimeter”，添加与气象站关联的机场代码，然后将测量值从从当地时间转换为 UTC。
+为了准备天气数据，将这些数据放入建模时所需的列： 
 
-先创建一个文件，用于将气象站 (WBAN) 信息映射到机场代码。 在天气数据随附的映射文件中，通过将天气数据文件中的 CallSign（例如 LAX）字段映射到航班数据中的 Origin 即可实现此目的，但是，我们手头正好有另一个映射文件可将 WBAN 映射到 AirportID（例如，与 LAX 对应的 12892），其中包含已保存到我们要使用的、名为“wban-to-airport-id-tz.CSV”的 CSV 文件的 TimeZone
+- “Visibility”
+- “DryBulbCelsius”
+- “DewPointCelsius”
+- “RelativeHumidity”
+- “WindSpeed”
+- “Altimeter”
+
+然后添加与气象站关联的机场代码，将测量值从当地时间转换为 UTC。
+
+先创建一个文件，用于将气象站 (WBAN) 信息映射到机场代码。 在天气数据随附的映射文件中， 通过将天气数据文件中的 *CallSign*（例如 LAX）字段映射到航班数据中的 *Origin* 即可实现此关联。 但是，我们手头正好有另一个映射文件可将 *WBAN* 映射到 *AirportID*（例如，与 LAX 对应的 12892），其中包含已保存到要使用的、名为“wban-to-airport-id-tz.CSV”的 CSV 文件的 *TimeZone*。 例如：
 
 | AirportID | WBAN | TimeZone
 |-----------|------|---------
@@ -118,7 +130,7 @@ sqlContext <- sparkRSQL.init(sc)
 | 14871 | 24232 | -8
 | .. | .. | ..
 
-以下代码将读取每小时原始天气数据文件、将文件放入所需的列、合并气象站映射文件、将测量值的日期时间调整为 UTC，然后写出文件的新版本。
+以下代码读取每小时原始天气数据文件、将文件放入所需的列、合并气象站映射文件、将测量值的日期时间调整为 UTC，然后写出文件的新版本：
 
 ```
 # Look up AirportID and Timezone for WBAN (weather station ID) and adjust time
@@ -198,7 +210,7 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
 
 ## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>将航班和天气数据导入 Spark DataFrames
 
-现在，我们使用 SparkR [read.df()](https://docs.databricks.com/spark/latest/sparkr/functions/read.df.html) 函数将天气和航班数据导入 Spark DataFrames。 请注意，与其他许多 Spark 方法一样，此函数是惰式执行的，也就是说，它会排入执行队列，但只在需要时才会实际执行。
+现在，使用 SparkR [read.df()](https://docs.databricks.com/spark/latest/sparkr/functions/read.df.html) 函数将天气和航班数据导入 Spark DataFrame。 与其他许多 Spark 方法一样，此函数是延迟执行的，也就是说，它会排入执行队列，但只在需要时才会执行。
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -222,7 +234,7 @@ weatherDF <- read.df(sqlContext, weatherPath, source = "com.databricks.spark.csv
 
 ## <a name="data-cleansing-and-transformation"></a>数据清理和和转换
 
-接下来，我们针对导入的航班数据执行一些清理工作，以便重命名列，仅保留所需的变量，将计划的出发时间向下舍入为最接近的小时，以便与出发前的最新天气数据合并。
+接下来，针对导入的航班数据执行一些清理工作，以便重命名列。 仅保留所需的变量，将计划的出发时间向下舍入为最接近的小时，以便与出发前的最新天气数据合并：
 
 ```
 logmsg('clean the airline data') 
@@ -250,7 +262,7 @@ coltypes(airDF) <- c("character", "integer", "integer", "integer", "integer", "c
 airDF$CRSDepTime <- floor(airDF$CRSDepTime / 100)
 ```
 
-现在，我们针对天气数据执行类似的操作：
+现在，针对天气数据执行类似的操作：
 
 ```
 # Average weather readings by hour
@@ -271,7 +283,7 @@ weatherDF <- rename(weatherDF,
 
 ## <a name="joining-the-weather-and-airline-data"></a>联接天气和航班数据
 
-现在，我们使用 SparkR [join()](https://docs.databricks.com/spark/latest/sparkr/functions/join.html) 函数根据出发地 AirportID 和日期时间，针对航班和天气数据执行左外部联接。 使用外部联接可以保留所有航班数据记录，即使没有匹配的天气数据。 联接后，删除一些多余的列，并重命名保留的列，以删除联接时传入的 DataFrame 前缀。
+现在，使用 SparkR [join()](https://docs.databricks.com/spark/latest/sparkr/functions/join.html) 函数根据出发地 AirportID 和日期时间，针对航班数据和天气数据执行左外部联接。 使用外部联接可以保留所有航班数据记录，即使没有匹配的天气数据。 联接后，删除一些多余的列，并重命名保留的列，以删除联接时传入的 DataFrame 前缀。
 
 ```
 logmsg('Join airline data with weather at Origin Airport')
@@ -302,7 +314,7 @@ joinedDF2 <- rename(joinedDF1,
 )
 ```
 
-以类似的方式根据目的地 AirportID 和日期时间联接天气和航班数据。
+以类似的方式根据目的地 AirportID 和日期时间联接天气数据和航班数据：
 
 ```
 logmsg('Join airline data with weather at Destination Airport')
@@ -335,7 +347,7 @@ joinedDF5 <- rename(joinedDF4,
 
 ## <a name="save-results-to-csv-for-exchange-with-scaler"></a>将结果保存到 CSV 以便与 ScaleR 交换
 
-联接操作到此完成，因此 SparkR 中的操作也到此完成。 将数据从最终的 Spark DataFrame“joinedDF5”保存到 CSV 以便输入到 ScaleR，然后关闭 SparkR 会话。 需要明确告知 SparkR 要在 80 个不同的分区中保存生成的 CSV，以便在 ScaleR 处理过程中实现足够的并行度。
+需要使用 SparkR 执行的联接操作到此完成。 将最终的 Spark DataFrame“joinedDF5”中的数据保存到 CSV 以便输入到 ScaleR，然后关闭 SparkR 会话。 需要明确告知 SparkR 要在 80 个不同的分区中保存生成的 CSV，以便在 ScaleR 处理过程中实现足够的并行度：
 
 ```
 logmsg('output the joined data from Spark to CSV') 
@@ -353,7 +365,7 @@ rxHadoopRemove(file.path(dataDir, "joined5Csv/_SUCCESS"))
 
 ## <a name="import-to-xdf-for-use-by-scaler"></a>导入到 XDF 供 ScaleR 使用
 
-可以通过 ScaleR 文本数据源按原样使用已联接航班和天气数据的 CSV 文件来建模，但此处我们要将该文件导入 XDF，因为在针对数据集运行多个操作时，XDF 的效率更高。
+可以通过 ScaleR 文本数据源按原样使用已联接航班数据和天气数据的 CSV 文件来建模。 但首先将该文件导入 XDF，因为在针对数据集运行多个操作时，XDF 的效率更高：
 
 ```
 logmsg('Import the CSV to compressed, binary XDF format') 
@@ -438,7 +450,7 @@ finalData <- RxXdfData(file.path(dataDir, "joined5XDF"), fileSystem = hdfsFS)
 
 ## <a name="splitting-data-for-training-and-test"></a>拆分数据以供训练和测试
 
-使用 rxDataStep 拆分 2012 年的数据以供测试，保留剩余的数据以供训练。
+使用 rxDataStep 拆分出 2012 年的数据以供测试，保留剩余的数据以供训练：
 
 ```
 # split out the training data
@@ -463,7 +475,7 @@ rxGetInfo(testDS)
 
 ## <a name="train-and-test-a-logistic-regression-model"></a>训练并测试逻辑回归模型
 
-好了，现在可以开始构建模型！ 为了查看天气数据对延误抵达时间的影响，我们将使用 ScaleR 的逻辑回归例程来建模，确定超过 15 分钟的抵达延误是否受到了相对日期、出发地和目的地机场以及这些机场的天气等因素的影响。
+现在可以开始构建模型。 为了查看天气数据对延误抵达时间的影响，将使用 ScaleR 的逻辑回归例程。 我们用它来建模，确定超过 15 分钟的抵达延误是否受到了出发地和目的地机场天气的影响：
 
 ```
 logmsg('train a logistic regression model for Arrival Delay > 15 minutes') 
@@ -510,7 +522,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>在其他位置评分
 
-我们还可以使用该模型在另一个平台上为数据评分：将数据保存到 RDS 文件，然后将该 RDS 传输并导入到 SQL Server R Services 等目标评分环境。 执行此操作时，必须确保要评分的数据的系数级别与构建的模型上的级别匹配。 为此，可以通过 ScaleR 的 rxCreateColInfo() 函数来提取并保存与建模数据关联的列信息，然后将该列信息应用到输入数据源用于预测。 下面我们保存了测试数据集的几个行，接下来将从此示例中提取列信息并在预测脚本中使用。
+还可以使用该模型在另一个平台上为数据评分： 将数据保存到 RDS 文件，然后将该 RDS 传输并导入到 SQL Server R Services 等目标评分环境。 必须确保要评分的数据的系数级别与构建的模型上的级别匹配。 为此，可以通过 ScaleR 的 `rxCreateColInfo()` 函数来提取并保存与建模数据关联的列信息，然后将该列信息应用到输入数据源用于预测。 下面保存了测试数据集的几行数据，接下来将从此示例中提取列信息并在预测脚本中使用：
 
 ```
 # save the model and a sample of the test dataset 
@@ -535,17 +547,17 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 
 ## <a name="summary"></a>摘要
 
-就这么简单！ 本文说明了如何在 Hadoop Spark 中将用于数据处理的 SparkR 与用于模型开发的 ScaleR 结合使用，但首先必须记得要保留单独的 Spark 会话，一次只运行一个会话，并通过 CSV 文件交换数据。 尽管此过程现已相当简单直接，但在将来的 R Server 版本中还会得到大幅简化，因为到时 SparkR 和 ScaleR 可以共享 Spark 会话，因而也能共享 Spark DataFrames。
+本文说明了如何在 Hadoop Spark 中将用于数据处理的 SparkR 与用于模型开发的 ScaleR 结合使用。 此方案要求保留单独的 Spark 会话，一次只运行一个会话，并通过 CSV 文件交换数据。 尽管此过程现已相当简单直接，但在将来的 R Server 版本中还会得到大幅简化，因为到时 SparkR 和 ScaleR 可以共享 Spark 会话，因而也能共享 Spark DataFrame。
 
 ## <a name="next-steps-and-more-information"></a>后续步骤和详细信息
 
 - 有关使用 Spark 上的 R Server 的详细信息，请参阅 [MSDN 上的入门指南](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)
 
-- 有关 R Server 的一般信息，请参阅 [Get started with R](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node)（R 入门）一文。
+- 有关 R Server 的一般信息，请参阅 [R 入门](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node)一文。
 
-- 其他有用的文章包括 [R Server on Azure HDInsight](hdinsight-hadoop-r-server-get-started.md)（Azure HDInsight 上的 R Server）和 [R Server on Azure HDInsight overview](hdinsight-hadoop-r-server-overview.md)（Azure HDInsight 上的 R Server 概述）。
+- 有关 R Server on Azure HDInsight 的信息，请参阅 [R Server on Azure HDInsight 概述](hdinsight-hadoop-r-server-overview.md)和 [R Server on Azure HDInsight](hdinsight-hadoop-r-server-get-started.md)。
 
-有关 SparkR 用法的详细信息，请参阅以下资源：
+有关 SparkR 用法的详细信息，请参阅：
 
 - [Apache SparkR 文档](https://spark.apache.org/docs/2.1.0/sparkr.html)
 

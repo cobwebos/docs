@@ -13,145 +13,272 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
+ms.date: 07/06/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: d1ffb9aba0eb1e17d1efd913f536f6f3997fccbb
-ms.openlocfilehash: 7b635b1810536f5b3eb1371d687e9c355e604e41
-ms.lasthandoff: 02/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6d374a622a43396a0b26d7e3f21050fe35244442
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/08/2017
 
 ---
 
-# <a name="sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>使用 Azure 流分析和 Azure 机器学习进行情绪分析
-本文旨在帮助你快速设置简单的 Azure 流分析作业，该作业还集成了 Azure 机器学习。 我们将使用 Cortana Intelligence 库中的情绪分析机器学习模型来分析流文本数据，并且实时确定情绪分数。 除了其他许多实时、可预测的得分方案外，本文中的信息还可帮助你了解 Twitter 流数据的实时情绪分析、分析客户与支持人员的聊天记录以及评估论坛、博客和视频评论等方案。
+# <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>使用 Azure 流分析和 Azure 机器学习执行情绪分析
+本文介绍了如何快速设置集成了 Azure 机器学习的简单 Azure 流分析作业。 你将使用 Cortana Intelligence 库中的机器学习情绪分析模型来实时分析流文本数据并确定情绪分数。 可以使用 Cortana Intelligence Suite 完成此任务，不必担心构建情绪分析模型的复杂性。
 
-本文提供作为 Azure Blob 存储中输入的示例 CSV 文件（包含文本），如下图所示。 该作业在 blob 存储的示例文本数据上将情绪分析模型用作用户定义的函数 (UDF)。 最终结果位于其他 CSV 文件中的相同 blob 存储中。 
+可以将从本文学习的知识应用于诸如下列方案：
 
-![流分析机器学习](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
+* 在流式处理 Twitter 数据时分析实时情绪。
+* 分析客户与支持人员之间的聊天记录。
+* 评估论坛、博客和视频上的评论。 
+* 许多其他实时的预测性评分方案。
 
-下图显示了此配置。 对于更现实可行的方案，可将 Blob 存储替换为 Azure 事件中心输入中的 Twitter 流数据。 此外，还可以构建 [Microsoft Power BI](https://powerbi.microsoft.com/)，以实时查看聚合情绪。    
+在实际方案中，将直接从 Twitter 数据流获取数据。 为简化教程，我们已将教程编写为让流分析作业从 Azure Blob 存储中的 CSV 文件获取推文。 可以创建自己的 CSV 文件，也可以使用示例 CSV 文件，如下图中所示：
 
-![流分析机器学习](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-1.png)  
+![CSV 文件中的示例推文](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
+
+你创建的流分析作业将情绪分析模型用作用户定义的函数 (UDF)，用于处理来自 blob 存储的示例文本数据。 输出（情绪分析的结果）写入到同一 blob 存储中的另一个 CSV 文件中。 
+
+下图显示了此配置。 如上所述，对于更现实可行的方案，可将 Blob 存储替换为 Azure 事件中心输入中的 Twitter 流数据。 此外，还可以构建 [Microsoft Power BI](https://powerbi.microsoft.com/)，以实时查看聚合情绪。    
+
+![流分析机器学习集成概述](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-1.png)  
 
 ## <a name="prerequisites"></a>先决条件
-完成本文所展示任务的先决条件如下所示：
+在开始之前，请确保具有以下各项：
 
 * 一个有效的 Azure 订阅。
-* 包含某些数据的 CSV 文件。 可从 [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample Data/sampleinput.csv) 中下载图 1 中所示文件，或创建自己的文件。 对于本文，我们假设使用 GitHub 上供下载的文件。
+* 包含某些数据的 CSV 文件。 可以从 [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/sampleinput.csv) 下载前面所示的文件，也可以创建自己的文件。 对于本文，我们假定使用的是来自 GitHub 的文件。
 
-从较高层面上说，若要完成本文展示的任务，需要执行以下操作：
+概括来说，若要完成本文展示的任务，需要执行以下操作：
 
-1. 将 CSV 输入文件上传到 Azure Blob 存储。
-2. 将 Cortana Intelligence 库中的情绪分析模型添加到 Azure 机器学习工作区。
-3. 在机器学习工作区中，将此模型部署为 Web 服务。
-4. 创建将此 Web 服务调用为函数的流分析作业，确定所输入文本的情绪。
-5. 启动流分析作业，并观察输出。
+1. 创建一个 Azure 存储帐户和一个 blob 存储容器，并将一个 CSV 格式的输入文件上传到该容器。
+3. 将 Cortana Intelligence 库中的一个情绪分析模型添加到 Azure 机器学习工作区，并将该模型部署为机器学习工作区中的 Web 服务。
+5. 创建将此 Web 服务作为函数进行调用的流分析作业，以确定所输入文本的情绪。
+6. 启动流分析作业，并检查输出。
 
-## <a name="create-a-storage-blob-and-upload-the-csv-input-file"></a>创建存储 blob 并上传 CSV 输入文件
-对于此步骤，可以使用任何 CSV 文件，例如已经指定为可在 GitHub 上下载的文件。 上传 csv 文件很简单，因为在创建存储 blob 过程中便包含了这一选项。
+## <a name="create-a-storage-container-and-upload-the-csv-input-file"></a>创建一个存储容器并上传 CSV 输入文件
+对于此步骤，可以使用任何 CSV 文件，例如从 GitHub 获取的文件。
 
-在本教程中，我们要创建一个新的存储帐户，方法是通过单击“新建”，然后搜索“存储帐户”，选择存储帐户的结果图标，并为帐户的创建提供详细信息。 提供“名称”（本例中使用 zuresamldemosa），创建或使用现有“资源组”，然后指定“位置”（对此，至关重要的一点是，尽量让此演示中创建的所有资源使用同一位置）。
+1. 在 Azure 门户中，单击“新建”&gt;“存储”&gt;“存储帐户”。
 
-![创建存储帐户](./media/stream-analytics-machine-learning-integration-tutorial/create-sa.png)
+   ![创建新存储帐户](./media/stream-analytics-machine-learning-integration-tutorial/azure-portal-create-storage-account.png)
 
-完成之后，便可以单击“Blob 服务”，并创建 blob 容器。
+2. 提供一个名称（在本例中为 `samldemo`）。 该名称只能使用小写字母和数字，并且在 Azure 中必须唯一。 
 
-![创建 blob 容器](./media/stream-analytics-machine-learning-integration-tutorial/create-sa2.png)
+3. 指定一个现有资源组，并指定位置。 对于位置，建议为本教程中创建的所有资源使用同一位置。
 
-然后为容器提供“名称”（本例中使用 azuresamldemoblob），并验证“访问类型”是否设置为“blob”。
+    ![提供存储帐户详细信息](./media/stream-analytics-machine-learning-integration-tutorial/create-sa1.png)
 
-![创建 blob 访问类型](./media/stream-analytics-machine-learning-integration-tutorial/create-sa3.png)
+4. 在 Azure 门户中，选择存储帐户。 在存储帐户边栏选项卡中，单击“容器”，然后单击**+“容器”以创建 blob 存储。&nbsp;**
 
-现在可以开始使用数据来填充 blob。 选择“文件”，然后选择从 GitHub 下载的位于本地驱动器上的文件。 我选择了块 blob，并将大小设置为 4 MB，这应该足够用于演示。 然后选择“上传”，门户将为你创建一个具有文本示例的 blob。
+    ![创建 blob 容器](./media/stream-analytics-machine-learning-integration-tutorial/create-sa2.png)
 
-![创建 blob 上传文件](./media/stream-analytics-machine-learning-integration-tutorial/create-sa4.png)
+5. 为容器提供名称（在本例中为 `azuresamldemoblob`），并验证“访问类型”是否已设置为“blob”。 完成后，单击“确定”。
 
-现在示例数据已在 blob 中，是时候启用 Cortana Intelligence 库中的情绪分析模型了。
+    ![指定 blob 容器详细信息](./media/stream-analytics-machine-learning-integration-tutorial/create-sa3.png)
+
+6. 在“容器”边栏选项卡中，选择新容器，这将打开该容器的边栏选项卡。
+
+7. 单击“上传” 。
+
+    ![容器的“上传”按钮](./media/stream-analytics-machine-learning-integration-tutorial/create-sa-upload-button.png)
+
+8. 在“上传 blob”边栏选项卡中，指定要用于本教程的 CSV 文件。 对于“Blob 类型”，选择“块 blob”并将块大小设置为 4 MB，这对于本教程已足够。
+
+    ![上传 blob 文件](./media/stream-analytics-machine-learning-integration-tutorial/create-sa4.png)
+
+9. 单击边栏选项卡底部的“上传”按钮。
 
 ## <a name="add-the-sentiment-analytics-model-from-the-cortana-intelligence-gallery"></a>从 Cortana Intelligence 库中添加情绪分析模型
-1. 从 Cortana Intelligence 库中下载[预测情绪分析模型](https://gallery.cortanaintelligence.com/Experiment/Predictive-Mini-Twitter-sentiment-analysis-Experiment-1)。  
-2. 在机器学习工作室中，单击“在 Studio 中打开”。  
+
+现在，示例数据已在 blob 中，可以启用 Cortana Intelligence 库中的情绪分析模型了。
+
+1. 转到 Cortana Intelligence 库中的[预测情绪分析模型](https://gallery.cortanaintelligence.com/Experiment/Predictive-Mini-Twitter-sentiment-analysis-Experiment-1)页面。  
+
+2. 单击“在工作室中打开”。  
    
    ![流分析机器学习，打开机器学习工作室](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
 
-3. 登录并转到工作区。 选择最适合自己的位置。
-4. 在页面底部单击“运行”。  
-5. 在进程成功运行后，选择“部署 Web 服务”。
-6. 情绪分析模型即可使用。 若要验证，请选择“测试”按钮，并输入文本，例如“我爱 Microsoft。” 该测试应该会返回类似以下内容的结果：
+3. 登录并转到工作区。 选择一个位置。
 
-`'Predictive Mini Twitter sentiment analysis Experiment' test returned ["4","0.715057671070099"]...`  
+4. 在页面底部单击“运行”。 进程将运行，这将花费大约一分钟。
 
-![流分析机器学习，分析数据](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-analysis-data.png)  
+   ![在机器学习工作室中运行试验](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
 
-在“应用”列中，选择链接“Excel 2010 或较早的工作簿”，获取以后设置流分析作业所需的 API 密钥和 URL。 （仅在从其他 Azure 帐户工作区使用机器学习模型时需要用到此步骤。 本文假定情况就是如此，方便解决该方案。）  
+5. 在进程成功运行后，在页面底部选择“部署 Web 服务”。
 
-请记下已下载的 Excel 文件的 Web 服务 URL 和访问密钥，如下所示：  
+   ![在机器学习工作室中将试验部署为 Web 服务](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
 
-![流分析机器学习，速览](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
+6. 若要验证情绪分析模型是否已就绪可供使用，请单击“测试”按钮。 提供文本输入，例如“I love Microsoft”。 
+
+   ![在机器学习工作室中测试试验](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
+
+    如果测试正常运行，将显示类似于以下示例的结果：
+
+   ![机器学习工作室中的测试结果](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
+
+7. 在“应用”列中，单击“Excel 2010 或更早版本的工作簿”链接以下载 Excel 工作簿。 该工作簿包含稍后设置流分析作业时所需的 API 密钥和 URL。
+
+    ![流分析机器学习，速览](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
+
 
 ## <a name="create-a-stream-analytics-job-that-uses-the-machine-learning-model"></a>创建使用机器学习模型的流分析作业
+
+现在可以创建一个从 blob 存储中的 CSV 文件读取示例推文的流分析作业。 
+
+### <a name="create-the-job"></a>创建作业
+
 1. 转到 [Azure 门户](https://portal.azure.com)。  
-2. 单击“新建” > “智能 + 分析” > “流分析”。 在“作业名称”中为作业输入名称，根据需要指定现有资源组或创建新资源组，然后在“位置”字段中为作业输入适当的位置。    
-   
-   ![创建作业](./media/stream-analytics-machine-learning-integration-tutorial/create-job-1.png)
-   
-3. 创建作业后，在“输入”选项卡上，选择“添加输入”。  
-   
-   ![流分析机器学习，添加机器学习输入](./media/stream-analytics-machine-learning-integration-tutorial/create-job-add-input.png)  
 
-4. 选择“添加”，然后指定“输入别名”，选择“数据流”、“Blob 存储”作为输入，然后选择“下一步”。  
-5. 在向导的“Blob 存储设置”页上，提供之前在上传数据时定义的存储帐户 blob 容器名称。 单击“资源组名称” 的 Azure 数据工厂。 对于“事件序列化格式”，选择“CSV”。 接受“序列化设置”页剩余部分的默认值。 单击 **“确定”**。  
-   
-   ![添加输入 blob 容器](./media/stream-analytics-machine-learning-integration-tutorial/create-job-add-input-blob.png)
+2. 单击“新建” > “物联网” > “流分析作业”。 
 
-6. 在“输出”选项卡上，选择“添加输出”。  
+   ![到达新的流分析作业的 Azure 门户路径](./media/stream-analytics-machine-learning-integration-tutorial/azure-portal-new-iot-sa-job.png)
    
-   ![流分析机器学习，添加输出](./media/stream-analytics-machine-learning-integration-tutorial/create-output.png)  
+3. 将作业命名为 `azure-sa-ml-demo`，指定一个订阅，指定一个现有资源组或新建一个资源组，然后为作业选择位置。
 
-7. 单击“Blob 存储”，然后输入相同的参数，容器参数除外。 “输入”值已配置为从上传 **CSV** 文件、名为“test”的容器中读取。 对于“输出”，请输入“testoutput”。
-8. 验证该输出的“序列化设置”是否设置为“CSV”，然后选择“确定”按钮。
+   ![指定新的流分析作业的设置](./media/stream-analytics-machine-learning-integration-tutorial/create-job-1.png)
    
-   ![流分析机器学习，添加输出](./media/stream-analytics-machine-learning-integration-tutorial/create-output2.png) 
 
-9. 在“函数”选项卡上，选择“添加机器学习函数”。  
+### <a name="configure-the-job-input"></a>配置作业输入
+该作业从之前上传到 blob 存储的 CSV 文件获取其输入。
+
+1. 在创建作业后，在作业边栏选项卡中的“作业拓扑”下，单击“输入”框。  
    
-   ![流分析机器学习，添加机器学习函数](./media/stream-analytics-machine-learning-integration-tutorial/add-function.png)  
+   ![流分析作业边栏选项卡中的“输入”框](./media/stream-analytics-machine-learning-integration-tutorial/create-job-add-input.png)  
 
-10. 在“机器学习 Web 服务设置”页上，找到机器学习工作区、Web 服务和默认终结点。 对于本文，如果知道 URL 并且具有 API 密钥，请手动应用设置，熟悉为任何工作区配置 Web 服务的操作。 输入终结点 **URL** 和 **API 密钥**。 单击 **“确定”**。 请注意，“函数别名”为“情绪”。  
+2. 在“输入”边栏选项卡中，单击“+ 添加”。
+
+   ![用于向流分析作业添加输入的“添加”按钮](./media/stream-analytics-machine-learning-integration-tutorial/create-job-add-input-button.png)  
+
+3. 使用以下值填写“新输入”边栏选项卡：
+
+    * **输入别名**：使用名称 `datainput`。
+    * **源类型**：选择“数据流”。
+    * **源**：选择“Blob 存储”。
+    * **导入选项**：选择“从当前订阅使用 blob 存储”。 
+    * **存储帐户**： 选择前面创建的存储帐户。
+    * **容器**： 选择前面创建的容器 (`azuresamldemoblob`)。
+    * **事件序列化格式**： 选择“CSV”。
+
+    ![新作业输入的设置](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
+
+4. 单击“创建” 。
+
+### <a name="configure-the-job-output"></a>配置作业输出
+作业将结果发送到它从中获取输入的同一 blob 存储。 
+
+1. 在作业边栏选项卡中的“作业拓扑”下，单击“输出”框。  
+  
+   ![为流分析作业创建新输出](./media/stream-analytics-machine-learning-integration-tutorial/create-output.png)  
+
+2. 在“输出”边栏选项卡中，单击“+ 添加”，然后添加别名为 `datamloutput` 的输出。 
+
+3. 对于“接收器”，选择“Blob 存储”。 然后，使用为 blob 存储的输入使用的相同值填写输出设置的其余部分：
+
+    * **存储帐户**： 选择前面创建的存储帐户。
+    * **容器**： 选择前面创建的容器 (`azuresamldemoblob`)。
+    * **事件序列化格式**： 选择“CSV”。
+
+   ![新作业输出的设置](./media/stream-analytics-machine-learning-integration-tutorial/create-output2.png) 
+
+4. 单击“创建” 。   
+
+
+### <a name="add-the-machine-learning-function"></a>添加机器学习函数 
+在前面，你向 Web 服务发布了一个机器学习模型。 在我们的方案中，当流分析作业运行时，它将来自输入的每个示例推文发送到用于情绪分析的 Web 服务。 机器学习 Web 服务返回一种情绪（`positive`、`neutral` 或 `negative`）和推文为正面内容的概率。 
+
+在教程的本部分中，将在流分析作业中定义一个函数。 可以调用该函数来将推文发送到 Web 服务并返回响应。 
+
+1. 请确保具有之前在 Excel 工作簿中下载的 Web 服务 URL 和 API 密钥。
+
+2. 返回到作业概述边栏选项卡。
+
+3. 在“设置”下，选择“函数”，然后单击“+ 添加”。
+
+   ![向流分析作业添加函数](./media/stream-analytics-machine-learning-integration-tutorial/create-function1.png) 
+
+4. 输入 `sentiment` 作为函数别名并使用以下值填写边栏选项卡的其余部分：
+
+    * **函数类型**：选择“Azure ML”。
+    * **导入选项**：选择“从其他订阅导入”。 这提供了一个机会来输入 URL 和密钥。
+    * **URL**：粘贴 Web 服务 URL。
+    * **密钥**：粘贴 API 密钥。
+  
+    ![用于向流分析作业添加机器学习函数的设置](./media/stream-analytics-machine-learning-integration-tutorial/add-function.png)  
     
-    ![流分析机器学习，机器学习 Web 服务](./media/stream-analytics-machine-learning-integration-tutorial/add-function-endpoints.png)    
+5. 单击“创建” 。
 
-11. 在“查询”选项卡上，修改查询，如下所示：    
-    
+### <a name="create-a-query-to-transform-the-data"></a>创建查询来转换数据
+
+流分析使用声明性的、基于 SQL 的查询来检查输入，并对其进行处理。 在本部分中，将创建一个查询，该查询读取输入中的每条推文，之后调用机器学习函数来执行情绪分析。 然后，该查询将结果发送到你定义的输出（blob 存储）。
+
+1. 返回到作业概述边栏选项卡。
+
+2.  在“作业拓扑”下，单击“查询”框。
+
+    ![为流分析作业创建查询](./media/stream-analytics-machine-learning-integration-tutorial/create-query.png)  
+
+3. 输入以下查询：
+
     ```
     WITH sentiment AS (  
-      SELECT text, sentiment(text) as result from datainput  
+    SELECT text, sentiment(text) as result from datainput  
     )  
-    
+
     Select text, result.[Scored Labels]  
-    Into testoutput  
+    Into datamloutput
     From sentiment  
     ```    
 
-12. 单击“保存”，保存查询。
+    该查询调用前面创建的函数 (`sentiment`) 来对输入中的每条推文执行情绪分析。 
 
-## <a name="start-the-stream-analytics-job-and-observe-the-output"></a>启动流分析作业，并观察输出
-1. 在作业页的顶部单击“启动”。
-2. 在“启动查询”对话框上，选择“自定义时间”，然后选择将 CSV 上传到 Blob 存储之前的某一天。 单击 **“确定”**。  
-3. 使用用于上传 CSV 文件的工具（例如 Visual Studio）转到 Blob 存储。
-4. 启动作业几分钟后，输出容器即已创建，并且 CSV 文件将上传到其中。  
-5. 在默认 CSV 编辑器中打开该文件。 所示内容应类似于以下内容：  
+4. 单击“保存”，保存查询。
+
+
+## <a name="start-the-stream-analytics-job-and-check-the-output"></a>启动流分析作业并检查输出
+
+现在可以启动流分析作业。
+
+### <a name="start-the-job"></a>启动作业
+1. 返回到作业概述边栏选项卡。
+
+2. 单击边栏选项卡顶部的“启动”。
+
+    ![为流分析作业创建查询](./media/stream-analytics-machine-learning-integration-tutorial/start-job.png)  
+
+3. 在“启动作业”中，选择“自定义”，然后选择将 CSV 文件上传到 Blob 存储之前的某一天。 完成后，单击“启动”。  
+
+
+### <a name="check-the-output"></a>检查输出
+1. 让作业运行几分钟，直到在“监视”框中看到活动。 
+
+2. 如果你有通常用来观察 blob 存储内容的工具，可使用该工具来观察 `azuresamldemoblob` 容器。 另外，也可以在 Azure 门户中执行以下步骤：
+
+    1. 在门户中，找到 `samldemo` 存储帐户，然后在该帐户中找到 `azuresamldemoblob` 容器。 可以在该容器中看到两个文件：包含示例推文的文件和由流分析作业生成的 CSV 文件。
+    2. 右键单击生成的文件并选择“下载”。 
+
+   ![从 Blob 存储下载 CSV 作业输出](./media/stream-analytics-machine-learning-integration-tutorial/download-output-csv-file.png)  
+
+3. 打开生成的 CSV 文件。 可以看到类似以下示例的内容：  
    
    ![流分析机器学习，CSV 视图](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
 
-## <a name="conclusion"></a>结束语
-本文演示如何创建实时读取流文本数据和将情绪分析应用到该数据的流分析作业。 完成所有这些操作无需担心构建情绪分析模型会很复杂。 这是 Cortana Intelligence 套件的优势之一。
 
-还可以查看与 Azure 机器学习函数相关的指标。 为此，请选择“监视”选项卡。 显示三个与函数相关的指标。  
+### <a name="view-metrics"></a>查看指标
+还可以查看与 Azure 机器学习函数相关的指标。 作业边栏选项卡中的“监视”框中会显示以下与函数相关的指标：
 
 * **函数请求数**指示发送到机器学习 Web 服务的请求数。  
 * **函数事件**指示请求中的事件数。 默认情况下，发送到机器学习 Web 服务的每个请求包含最多 1000 个事件。  
   
     ![流分析机器学习，机器学习监视视图](./media/stream-analytics-machine-learning-integration-tutorial/job-monitor.png)  
+
+## <a name="next-steps"></a>后续步骤
+
+* [Azure 流分析简介](stream-analytics-introduction.md)
+* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [集成 REST API 和机器学习](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
+* [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+
+
 
 

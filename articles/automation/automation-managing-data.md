@@ -3,7 +3,7 @@ title: "管理 Azure 自动化数据 | Microsoft Docs"
 description: "本文包含管理 Azure 自动化环境的多个主题。  Azure 自动化目前包括数据保留和备份 Azure 自动化灾难恢复。"
 services: automation
 documentationcenter: 
-author: SnehaGunda
+author: mgoedtel
 manager: stevenka
 editor: tysonn
 ms.assetid: 2896f129-82e3-43ce-b9ee-a3860be0423a
@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/31/2016
-ms.author: bwren;sngun
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d8ac93de19685c11dd25fd746e69ba1066fb35af
+ms.date: 06/02/201
+ms.author: magoedte;bwren;sngun
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 92893edc4e02de148f6585e83c6861fd751401bb
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -42,6 +44,8 @@ Azure 自动化会自动删除并永久移除 90 天之前的作业。
 | 节点报告 |在生成该节点的新报告 90 天后永久删除 |
 
 保留策略应用于所有用户并且当前无法自定义。
+
+但是，如果你需要将数据保留更长一段时间，可以将 runbook 作业日志转发到 Log Analytics。  有关详细信息，请参阅[将 Azure 自动化作业数据转发到 OMS Log Analytics](automation-manage-send-joblogs-log-analytics.md)。   
 
 ## <a name="backing-up-azure-automation"></a>备份 Azure 自动化
 当你删除 Microsoft Azure 中的某个自动化帐户时，该帐户中的所有对象都将被删除，包括 Runbook、模块、配置、设置、作业和资产。 在删除帐户后，这些对象不可恢复。  在删除自动化帐户之前，你可以参考以下信息来备份该帐户的内容。 
@@ -78,10 +82,5 @@ Azure 自动化帐户中标配的异地复制可将帐户数据备份到其他�
 | 日本东部 |日本西部 |
 
 如果主要区域发生数据丢失（这种情况很少见），Microsoft 将尝试恢复数据。 如果主数据无法恢复，系统将执行异地故障转移，并通过订阅通知受影响的客户。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

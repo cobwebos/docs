@@ -1,5 +1,5 @@
 ---
-title: "复制他人的数据科学示例 - 机器学习 - Azure | Microsoft Docs"
+title: "复制他人的数据科学示例 - Azure 机器学习 | Microsoft Docs"
 description: "数据科学的商业机密：让他人为你完成工作。 从 Cortana Analytics 库获取机器学习示例。"
 keywords: "数据科学示例, 机器学习示例, 聚类分析算法, 聚类分析算法示例"
 services: machine-learning
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2017
+ms.date: 07/13/2017
 ms.author: cgronlun;garye
-translationtype: Human Translation
-ms.sourcegitcommit: 1e941778c194462b311e6347c56670d3e0193e90
-ms.openlocfilehash: ebc44a4190bac697697e0b651039a0e8ee8e4a95
-ms.lasthandoff: 02/10/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 440a1ded1f1dc1b8fbe73e3bbcbbd68ec9422bf8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>复制其他人的工作以执行数据科研
@@ -27,6 +27,7 @@ ms.lasthandoff: 02/10/2017
 数据科学的商业机密之一是让其他人为你完成工作。 在 Cortana Analytics 库中查找适合用于自己的机器学习试验的聚类分析算法示例。
 
 若要充分利用此系列内容，请观看所有视频。 [转到视频列表](#other-videos-in-this-series)
+<br>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science/player]
 >
@@ -51,7 +52,7 @@ ms.lasthandoff: 02/10/2017
 ## <a name="find-examples-in-the-cortana-intelligence-gallery"></a>在 Cortana Intelligence 库中查找示例
 Microsoft 拥有一项基于云的服务，名为 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)，欢迎免费进行试用。 它提供了一个工作区，可在其中使用不同的机器学习算法进行试验，并且在已制定出解决方案时，可以 Web 服务启动它。
 
-此服务的一部分被称为 **[Cortana Intelligence 库](http://aka.ms/CortanaIntelligenceGallery)**。 它包含各种资源，其中一个是 Azure 机器学习试验或模型（由用户生成或贡献供他人使用）的集合。 这些试验是利用他人的想法和工作成果，开始自己的解决方案的绝佳方式。
+此服务的一部分被称为 **[Cortana Intelligence 库](http://aka.ms/CortanaIntelligenceGallery)**。 它包含资源，包括 Azure 机器学习试验或模型（由用户生成并贡献给他人使用）的集合。 这些试验是利用他人的想法和工作成果，开始自己的解决方案的绝佳方式。
 
 可在 [aka.ms/CortanaIntelligenceGallery](http://aka.ms/CortanaIntelligenceGallery) 找到此库。 欢迎每个人前往浏览。
 
@@ -60,7 +61,7 @@ Microsoft 拥有一项基于云的服务，名为 [Azure 机器学习](https://a
 如果在顶部单击“试验”，可看到库中最新和最常用的试验。 通过在屏幕顶部单击“浏览全部”，可在其余的试验中进行搜索，还可输入搜索词并选择搜索筛选器。
 
 ## <a name="find-and-use-a-clustering-algorithm-example"></a>查找并使用聚类分析算法示例
-假设你想要查看聚类分析的工作原理示例，可搜索**“聚类分析”**试验。
+例如，假设想要查看聚类分析的工作原理的示例，可搜索“聚类分析扫描”试验。
 
 ![搜索聚类分析试验](./media/machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science/search-for-clustering-experiments.png)
 

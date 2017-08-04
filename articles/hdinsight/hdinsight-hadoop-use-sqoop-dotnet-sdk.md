@@ -1,6 +1,7 @@
 ---
-title: "使用 .NET 和 Azure HDInsight 运行 Sqoop 作业 | Microsoft Docs"
+title: "使用 .NET 和 HDInsight 运行 Sqoop 作业 —Azure | Microsoft Docs"
 description: "学习如何使用 HDInsight .NET SDK 在 Hadoop 群集和 Azure SQL 数据库之间运行 Sqoop 导入和导出。"
+keywords: "sqoop 作业"
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
@@ -9,17 +10,18 @@ tags: azure-portal
 author: mumian
 ms.assetid: 87bacd13-7775-4b71-91da-161cb6224a96
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 05/25/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
-ms.openlocfilehash: 9cadb72e065f82de8e007b38e909d2bc07d18126
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: c95641fc6d20e2911e007d1974b9e2c2398b3133
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -29,19 +31,19 @@ ms.lasthandoff: 01/24/2017
 了解如何使用 HDInsight .NET SDK 运行 HDInsight 中的 Sqoop 作业，以在 HDInsight 群集和 Azure SQL 数据库或 SQL Server 数据库之间进行导入和导出。
 
 > [!NOTE]
-> 可以对基于 Linux 或 Windows 的 HDInsight 群集使用本文中的步骤，但是，只能从 Windows 客户端执行这些步骤。 使用本文顶部的选项卡选择器来选择其他方法。
+> 可以对基于 Windows 或 Linux 的 HDInsight 群集使用本文中的步骤，但是，只能从 Windows 客户端执行这些步骤。 使用本文顶部的选项卡选择器来选择其他方法。
 > 
 > 
 
 ### <a name="prerequisites"></a>先决条件
-在开始阅读本教程前，你必须具有：
+开始学习本教程之前，必须做好以下准备：
 
 * **HDInsight 中的 Hadoop 群集**。 请参阅[创建群集和 SQL 数据库](hdinsight-use-sqoop.md#create-cluster-and-sql-database)。
 
-## <a name="run-sqoop-using-net-sdk"></a>使用 .NET SDK 运行 Sqoop
-HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsight 群集的操作。 在本部分中，你将创建一个 C# 控制台应用程序，以便将 hivesampletable 导出到在本教程前面创建的 SQL 数据库表。
+## <a name="use-sqoop-on-hdinsight-clusters-using-net-sdk"></a>通过 .NET SDK 使用 HDInsight 群集上的 Sqoop
+HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsight 群集的操作。 本部分创建一个 C# 控制台应用程序，以便将 hivesampletable 导出到本教程前面创建的 SQL 数据库表。
 
-**提交 Sqoop 作业**
+## <a name="submit-a-sqoop-job"></a>提交 Sqoop 作业
 
 1. 在 Visual Studio 中创建 C# 控制台应用程序。
 2. 在 Visual Studio 包管理器控制台中，运行以下 Nuget 命令将包导入。
@@ -114,7 +116,7 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 
 ## <a name="limitations"></a>限制
 * 批量导出 - 在基于 Linux 的 HDInsight 上，用于将数据导出到 Microsoft SQL Server 或 Azure SQL 数据库的 Sqoop 连接器目前不支持批量插入。
-* 批处理 - 在基于 Linux 的 HDInsight 上，如果执行插入时使用 `-batch` 开关，Sqoop 将执行多次插入而不是批处理插入操作。
+* 批处理 - 在基于 Linux 的 HDInsight 上，如果在执行插入时使用 `-batch` 开关，Sqoop 将执行多次插入而不是批处理插入操作。
 
 ## <a name="next-steps"></a>后续步骤
 现在你已经学习了如何使用 Sqoop。 若要了解更多信息，请参阅以下文章：

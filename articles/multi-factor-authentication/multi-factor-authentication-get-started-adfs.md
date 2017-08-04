@@ -21,8 +21,7 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 07/12/2017
 
 ---
-# Azure Multi-Factor Authentication 服务器和 Active Directory 联合身份验证服务入门
-<a id="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services" class="xliff"></a>
+# <a name="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services"></a>Azure Multi-Factor Authentication 服务器和 Active Directory 联合身份验证服务入门
 <center>![云](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
 如果你的组织已使用 AD FS 将本地 Active Directory 与 Azure Active Directory 联合，则使用 Azure Multi-Factor Authentication 有两个选项。
@@ -44,8 +43,7 @@ ms.lasthandoff: 07/12/2017
 * 使用应用密码时，无法使用本地身份验证日志记录功能。
 * 帐户禁用/删除可能需要长达 3 小时才能实现目录同步，从而延迟了云标识中应用密码的禁用/删除。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 有关设置 Azure 多重身份验证或具有 AD FS 的 Azure 多重身份验证服务器的信息，请参阅以下文章：
 
 * [使用 Azure Multi-Factor Authentication 和 Azure AD 保护云资源](multi-factor-authentication-get-started-adfs-cloud.md)

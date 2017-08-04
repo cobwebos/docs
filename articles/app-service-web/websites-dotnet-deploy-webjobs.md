@@ -22,10 +22,8 @@ ms.lasthandoff: 06/02/2017
 
 
 ---
-# 使用 Visual Studio 部署 Web 作业
-<a id="deploy-webjobs-using-visual-studio" class="xliff"></a>
-## 概述
-<a id="overview" class="xliff"></a>
+# <a name="deploy-webjobs-using-visual-studio"></a>使用 Visual Studio 部署 Web 作业
+## <a name="overview"></a>概述
 本主题介绍如何使用 Visual Studio 将控制台应用程序项目作为 [Azure Web 作业](http://go.microsoft.com/fwlink/?LinkId=390226)部署到[应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)中的 Web 应用。 有关如何使用 [Azure 门户](https://portal.azure.com)部署 Web 作业的信息，请参阅[使用 Web 作业运行后台任务](web-sites-create-web-jobs.md)。
 
 当 Visual Studio 部署启用 Web 作业的控制台应用程序项目时，它会执行两个任务：
@@ -46,8 +44,7 @@ ms.lasthandoff: 06/02/2017
 
 ![显示链接到 Web 项目的 Web 作业项目的插图](./media/websites-dotnet-deploy-webjobs/link.png)
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 安装用于 .NET 的 Azure SDK 后，即可在 Visual Studio 中使用 Web 作业部署功能：
 
 * [用于 .NET 的 Azure SDK (Visual Studio)](https://azure.microsoft.com/downloads/)。

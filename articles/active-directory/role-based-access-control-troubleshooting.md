@@ -5,20 +5,20 @@ services: azure-portal
 documentationcenter: na
 author: kgremban
 manager: femila
-editor: 
 ms.assetid: df42cca2-02d6-4f3c-9d56-260e1eb7dc44
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 07/12/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 32b335d8a1f84348ab28bcc081cc42fd79fb08fc
-ms.lasthandoff: 03/04/2017
-
+ms.reviewer: rqureshi
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 9ad194308d30ca652b32ec3b76750b0e838472f4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="role-based-access-control-troubleshooting"></a>基于角色的访问控制故障排除
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/04/2017
 
 所有者和参与者对管理体验具有完全访问权限，但是参与者无法向其他用户或组授予访问权限。 具有读者角色事情会变得更加有趣，因此，我们将着重介绍读者角色。 有关如何授予访问权限的详细信息，请参阅[基于角色的访问控制入门文章](role-based-access-control-configure.md)。
 
-## <a name="app-service-workloads"></a>App Service 工作负荷
+## <a name="app-service-workloads"></a>应用服务工作负荷
 ### <a name="write-access-capabilities"></a>写访问功能
 如果你为用户授予单个 Web 应用的只读访问权限，某些功能可能会被禁用，这可能不是你所期望的。 以下管理功能需要对 Web 应用具有**写**访问权限（参与者或所有者），并且在任何只读方案中不可用。
 
@@ -46,24 +46,24 @@ ms.lasthandoff: 03/04/2017
 * Web 测试
 * 虚拟网络（如果虚拟网络是以前具有写访问权限的用户所配置的，则仅对读者可见）。
 
-如果你无法访问以上任何磁贴，则需要让管理员为你提供对 Web 应用的“参与者”访问权限。
+如果无法访问以上任何磁贴，则需要让管理员提供对 Web 应用的“参与者”访问权限。
 
 ### <a name="dealing-with-related-resources"></a>处理相关资源
 由于存在几个相互作用的不同资源，Web 应用程序是复杂的。 下面是包含几个网站的典型资源组：
 
 ![Web 应用程序资源组](./media/role-based-access-control-troubleshooting/website-resource-model.png)
 
-因此，如果你只授予某人对 Web 应用的访问权限，则 Azure 门户中的网站边栏选项卡上的很多功能将被禁用。
+因此，如果只授予某人对 Web 应用的访问权限，则 Azure 门户中的网站边栏选项卡上的很多功能将被禁用。
 
 这些项需要对与网站对应的**应用服务计划**具有**写**访问权限：  
 
 * 查看 Web 应用的定价层（“免费”或“标准”）  
 * 规模配置（实例数、虚拟机大小、自动缩放设置）  
-* 配额（存储空间、带宽、CPU）  
+* 配额（存储、带宽、CPU）  
 
 这些项需要对包含网站的整个**资源组**具有**写**访问权限：  
 
-* SSL 证书和绑定（这是因为 SSL 证书可以在同一资源组和地理位置中的站点之间共享）  
+* SSL 证书和绑定（SSL 证书可以在同一资源组和地理位置中的站点之间共享）  
 * 警报规则  
 * 自动缩放设置  
 * Application Insights 组件  
@@ -84,10 +84,10 @@ ms.lasthandoff: 03/04/2017
 这些项需要对**虚拟机**和其所在的**资源组**（以及域名）具有**写**访问权限：  
 
 * 可用性集  
-* 负载平衡集  
+* 负载均衡集  
 * 警报规则  
 
-如果你不能访问以上任何磁贴，则需要让管理员提供对资源组的“参与者”访问权限。
+如果无法访问以上任何磁贴，则需要让管理员提供对资源组的“参与者”访问权限。
 
 ## <a name="see-more"></a>另请参阅
 * [基于角色的访问控制](role-based-access-control-configure.md)：Azure 门户中的 RBAC 入门。

@@ -13,14 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 10/31/2016
+ms.date: 06/29/2016
 ms.author: shigu;jrj
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 914d85267e82ce6a2e60f3841889935046f17c87
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: c16fef2f302dbc56f257eaf2f0d2b68b6a3c1852
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="overview-of-tables-in-sql-data-warehouse"></a>概述 SQL 数据仓库中的表
@@ -50,7 +49,7 @@ RENAME OBJECT Customer TO CustomerOrig;
  ```
 
 ## <a name="distributed-tables"></a>分布式表
-由 SQL 数据仓库之类的分布式系统引入的新的基本属性是**分布列**。  分布列的含义正如其名。  分布列是指决定后台数据如何分布或划分的列。  如果创建表时未指定分布列，该表的数据会自动根据**轮循机制**进行分布。  虽然在某些情况下轮循机制表可能已经足够，但是定义分布列可以大大减少查询期间的数据移动，从而优化性能。  若要了解如何选择分布列的详细信息，请参阅[分布表][Distribute]。
+由 SQL 数据仓库之类的分布式系统引入的新的基本属性是**分布列**。  分布列的含义正如其名。  分布列是指决定后台数据如何分布或划分的列。  如果创建表时未指定分布列，该表的数据会自动根据**轮循机制**进行分布。  虽然在某些情况下轮循机制表可能已经足够，但是定义分布列可以大大减少查询期间的数据移动，从而优化性能。  在表中有少量数据的情况下，选择创建具有“复制”分布类型的表会将数据复制到每个计算节点，并减少查询执行时的数据移动。 若要了解如何选择分布列的详细信息，请参阅[分布表][Distribute]。
 
 ## <a name="indexing-and-partitioning-tables"></a>对表进行索引和分区
 当你在使用 SQL 数据仓库的过程中变得更老练以后，如果你想要优化性能，则需了解有关表设计的详细信息。  若要了解详细信息，请参阅有关[表数据类型][Data Types]、[分布表][Distribute]、为[表索引][Index]、[表分区][Partition]的文章。
@@ -69,7 +68,6 @@ RENAME OBJECT Customer TO CustomerOrig;
 
 | 不支持的功能 |
 | --- |
-| [标识属性][Identity Property]（请参阅[分配代理键解决方法][Assigning Surrogate Key Workaround]） |
 | 主键、外键、唯一键和查看[表约束][Table Constraints] |
 | [唯一索引][Unique Indexes] |
 | [计算列][Computed Columns] |
@@ -202,7 +200,7 @@ FROM size
 ```
 
 ### <a name="table-space-summary"></a>表空间摘要
-此查询返回行以及按表划分的空间。  此查询适用于查看哪些表是你最大的表，以及这些表是按轮循机制分布的还是按哈希分布的。  对于哈希分布表，此查询还显示分布列。  大多数情况下，最大的表应该是哈希分布，并使用聚集列存储索引。
+此查询返回行以及按表划分的空间。  此查询适用于查看哪些表是你最大的表，以及这些表是按轮循机制分布的、按复制分布的还是按哈希分布的。  对于哈希分布表，此查询还显示分布列。  大多数情况下，最大的表应该是哈希分布，并使用聚集列存储索引。
 
 ```sql
 SELECT 
@@ -295,8 +293,6 @@ ORDER BY    distribution_id
 [CREATE TABLE]: https://msdn.microsoft.com/library/mt203953.aspx
 [RENAME]: https://msdn.microsoft.com/library/mt631611.aspx
 [DBCC PDW_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
-[Identity Property]: https://msdn.microsoft.com/library/ms186775.aspx
-[Assigning Surrogate Key Workaround]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/18/assigning-surrogate-key-to-dimension-tables-in-sql-dw-and-aps/
 [Table Constraints]: https://msdn.microsoft.com/library/ms188066.aspx
 [Computed Columns]: https://msdn.microsoft.com/library/ms186241.aspx
 [Sparse Columns]: https://msdn.microsoft.com/library/cc280604.aspx

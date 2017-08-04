@@ -15,115 +15,124 @@ ms.devlang: na
 ms.date: 04/04/2017
 ms.author: joroja;parahk;gsacavdm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 42824fe10e635257681f62ab1fec9b47abd4294a
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 1cc36d1fd40121fed23ab6a84429a303690c2726
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 06/08/2017
 
 ---
-# <a name="azure-active-directory-b2c-getting-started-with-custom-policies"></a>Azure Active Directory B2C：自定义策略入门
+# <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Azure Active Directory B2C：自定义策略入门
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-完成本文中的步骤后，你的自定义策略将支持使用电子邮件和密码进行“本地帐户”注册或登录。 你还要准备好环境，以便能够添加其他标识提供者（如 Facebook 或 Azure AD）。  建议在进一步使用 Azure AD B2C 标识体验框架和介绍许多重要概念之前，先完成这些步骤。
+完成本文中的步骤后，你的自定义策略将支持通过电子邮件地址和密码进行“本地帐户”注册或登录。 此外，还要准备好环境，以便能够添加标识提供者（如 Facebook 或 Azure Active Directory）。 建议先完成这些步骤，然后再阅读 Azure Active Directory (Azure AD) B2C 标识体验框架的其他用法。
 
 ## <a name="prerequisites"></a>先决条件
 
-在继续之前，请确保有一个 Azure AD B2C 租户。 Azure AD B2C 租户是保存所有用户、应用、策略等资源的容器。 如果你没有租户，则需要[创建一个](active-directory-b2c-get-started.md)。 我们强烈建议所有开发人员在继续下一步之前，先完成 Azure AD B2C 内置策略演练，并使用内置策略配置他们的应用程序。  应用程序将使用两种类型的策略，并对策略名称进行轻微的更改，以调用自定义策略。
+确保你拥有 Azure AD B2C 租户（用于保存所有用户、应用、策略等资源的容器），然后再继续操作。 如果没有，则需要[创建 Azure AD B2C 租户](active-directory-b2c-get-started.md)。 我们强烈建议所有开发人员在继续下一步之前，先完成 Azure AD B2C 内置策略演练，并使用内置策略配置他们的应用程序。 对策略名称进行略微更改后，应用程序会使用两种类型的策略，以调用自定义策略。
 
 访问自定义策略编辑功能需要将一个有效的 Azure 订阅链接到租户。
 
 ## <a name="add-signing-and-encryption-keys-to-your-b2c-tenant-for-use-by-custom-policies"></a>将签名和加密密钥添加到 B2C 租户，供自定义策略使用
 
-1. 导航到 Azure AD B2C 租户设置中的“标识体验框架”边栏选项卡。
+1. 打开 Azure AD B2C 租户设置中的“标识体验框架”边栏选项卡。
 2. 选择“策略密钥”，查看租户中的可用密钥。
-3. 创建 `B2C_1A_TokenSigningKeyContainer`（如果不存在）：
- * 单击“添加”
- * “选项”> `Generate`
- * “名称”> `TokenSigningKeyContainer` 前缀 B2C_1A_ 可以自动添加。
- * “密钥类型”> `RSA`
- * 日期 - 使用默认值
- * “密钥用法”> `Signature`
- * 单击“创建” 
-4. 创建 `B2C_1A_TokenEncryptionKeyContainer`（如果不存在）：
- * 单击“添加”
- * “选项”> `Generate`
- * “名称”> `TokenEncryptionKeyContainer` 前缀 B2C_1A_ 可以自动添加。
- * “密钥类型”> `RSA`
- * 日期 - 使用默认值
- * “密钥用法”> `Encryption`
- * 单击“创建” 
-5. 创建 `B2C_1A_FacebookSecret`。 如果已有 Facebook 应用程序机密，请将它作为策略密钥添加到租户。  否则，必须创建包含占位符值的密钥，使策略能够通过验证。
- * 单击“添加”
- * “选项”> `Manual`
- * “名称”> `FacebookSecret` 前缀 B2C_1A_ 可以自动添加。
- * “机密”> 输入 developers.facebook.com 提供的 FacebookSecret，或输入“0”作为占位符。 *这不是 Facebook 应用 ID*
- * “密钥用法”>“签名”
- * 单击“创建”并确认创建
+3. 如果不存在 B2C_1A_TokenSigningKeyContainer，请创建一个：<br>
+    a. 选择“添加”。 <br>
+    b. 然后选择“生成”。<br>
+    c. 使用 `TokenSigningKeyContainer` 作为“名称”。 <br> 
+    可能会自动添加前缀 `B2C_1A_`。<br>
+    d. 使用 RSA 作为“密钥类型”。<br>
+    e. 对“日期”使用默认值。 <br>
+    f. 使用“签名”作为“密钥用法”。<br>
+    g. 选择“创建” 。<br>
+4. 如果不存在 B2C_1A_TokenEncryptionKeyContainer，请创建一个：<br>
+ a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“添加”。<br>
+ b.在“磁贴徽标”下面，选择“删除上传的徽标”。 然后选择“生成”。<br>
+ c. 使用 `TokenEncryptionKeyContainer` 作为“名称”。 <br>
+   可能会自动添加前缀 `B2C_1A`_。<br>
+ d. 使用 RSA 作为“密钥类型”。<br>
+ e. 对“日期”使用默认值。<br>
+ f. 使用“加密”作为“密钥用法”。<br>
+ g. 选择“创建” 。<br>
+5. 创建 B2C_1A_FacebookSecret。 <br>
+如果已有 Facebook 应用程序机密，请将它作为策略密钥添加到租户。 否则，必须创建包含占位符值的密钥，使策略能够通过验证。<br>
+ a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“添加”。<br>
+ b.在“磁贴徽标”下面，选择“删除上传的徽标”。 对于“选项”，使用“手动”。<br>
+ c. 使用 `FacebookSecret` 作为“名称”。 <br>
+ 可能会自动添加前缀 `B2C_1A_`。<br>
+ d. 在“机密”框中，输入 developers.facebook.com 提供的 FacebookSecret，或输入 `0` 作为占位符。 *这不是 Facebook 应用 ID。* <br>
+ e. 使用“签名”作为“密钥用法”。 <br>
+ f. 选择“创建”并确认创建。
 
 ## <a name="register-identity-experience-framework-applications"></a>注册标识体验框架应用程序
 
 Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用程序来为用户注册和登录。
 
 >[!NOTE]
->必须创建两个使用本地帐户实现登录的应用程序：IdentityExperienceFramework（Web 应用），以及具有 IdentityExperienceFramework 应用委派的权限的 ProxyIdentityExperienceFramework（本机应用）。 本地帐户只在租户中存在。 最终用户使用唯一的“电子邮件:密码”组合登录，以访问租户注册的应用程序。
+>必须创建两个使用本地帐户实现登录的应用程序：IdentityExperienceFramework（Web 应用），以及具有 IdentityExperienceFramework 应用委派的权限的 ProxyIdentityExperienceFramework（本机应用）。 本地帐户只在租户中存在。 你的用户使用唯一的“电子邮件地址/密码”组合登录，以访问租户注册的应用程序。
 
 ### <a name="create-the-identityexperienceframework-application"></a>创建 IdentityExperienceFramework 应用程序
 
-1. 在 [Azure 门户](https://portal.azure.com)中，[切换到 Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)。
-1. 打开 `Azure Active Directory` 边栏选项卡（不是 Azure AD B2C 边栏选项卡）。 可能需要单击“> 更多服务”才能找到它。
-1. 选择“应用注册”。
-1. 单击“+ 新建应用程序注册”。
-   * 名称：`IdentityExperienceFramework`
-   * 应用程序类型：`Web app/API`
-   * 登录 URL：`https://login.microsoftonline.com/yourtenant.onmicrosoft.com`，其中，`yourtenant` 是你的 Azure AD B2C 租户域名。
-1. 单击“创建” 。
-1. 创建后，请选择新建的应用程序 `IdentityExperienceFramework`，单击“属性”，然后复制应用程序 ID 并保存它供以后使用。
+1. 在“Azure 门户”[](https://portal.azure.com)中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)。
+2. 打开“Azure Active Directory”边栏选项卡（不是“Azure AD B2C”边栏选项卡）。 可能需要选择“更多服务”才能找到它。
+3. 选择“应用注册”。
+4. 选择“新建应用程序注册”。
+   * 使用 `IdentityExperienceFramework` 作为“名称”。
+   * 对于“应用程序类型”，使用“Web 应用/API”。
+   * 对于“登录 URL”，使用 `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`，其中 `yourtenant` 是你的 Azure AD B2C 租户域名。
+5. 选择“创建” 。
+6. 创建后，选择新创建的应用程序 IdentityExperienceFramework。<br>
+   a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“属性”。<br>
+   b.在“磁贴徽标”下面，选择“删除上传的徽标”。 复制应用程序 ID 并保存以备后用。
 
-### <a name="create-the-proxy-identity-experience-framework-application"></a>创建标识体验框架代理应用程序
+### <a name="create-the-proxyidentityexperienceframework-application"></a>创建 ProxyIdentityExperienceFramework 应用程序
 
 1. 选择“应用注册”。
-1. 单击“+ 新建应用程序注册”。
-   * 名称：`ProxyIdentityExperienceFramework`
-   * 应用程序类型：`Native`
-   * 登录 URL：`https://login.microsoftonline.com/yourtenant.onmicrosoft.com`，其中，`yourtenant` 是你的 Azure AD B2C 租户。
-1. 单击“创建” 。
-1. 创建后，请选择应用程序 `ProxyIdentityExperienceFramework`，单击“属性”，然后复制并保存应用程序 ID 供稍后使用。
-1. 选择“所需权限”，然后依次选择“+ 添加”、“选择 API”。
-1. 搜索名称 `IdentityExperienceFramework`，在结果中选择“IdentityExperienceFramework”，然后单击“选择”。
-1. 选中 `Access IdentityExperienceFramework` 旁边的复选框，然后单击“选择”。
-1. 单击“Done”（完成） 。
-1. 单击“授予权限”，然后单击“是”确认
+1. 选择“新建应用程序注册”。
+   * 使用 `ProxyIdentityExperienceFramework` 作为“名称”。
+   * 对于“应用程序类型”，使用“本机”。
+   * 对于“重定向 URI”，使用 `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`，其中 `yourtenant` 是你的 Azure AD B2C 租户。
+1. 选择“创建” 。
+1. 创建后，选择应用程序 ProxyIdentityExperienceFramework。<br>
+   a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“属性”。 <br>
+   b.在“磁贴徽标”下面，选择“删除上传的徽标”。 复制应用程序 ID 并保存以备后用。
+1. 选择“所需权限”。
+1. 选择“添加”。
+1. 选择“选择 API”。
+1. 搜索名称 IdentityExperienceFramework。 在结果中选择 IdentityExperienceFramework，然后单击“选择”。
+1. 选择“访问 IdentityExperienceFramework”旁边的复选框，然后单击“选择”。
+1. 选择“完成”。
+1. 选择“授予权限”，然后选择“是”进行确认。
 
 ## <a name="download-starter-pack-and-modify-policies"></a>下载初学者包并修改策略
 
-自定义策略是需要上传到 Azure AD B2C 租户的一组 XML 文件。 我们提供了初学者包来帮助你快速入门。 以下每个初学者包提供了实现所述方案而最起码需要用到的技术配置文件和用户旅程：
- * LocalAccounts - 仅启用本地帐户
- * SocialAccounts - 仅启用社交（或联合）帐户
- * **SocialAndLocalAccounts** - 用于本演练
- * SocialAndLocalAccountsWithMFA - 此处包含社交、本地和 MFA 选项
+自定义策略是需要上传到 Azure AD B2C 租户的一组 XML 文件。 我们提供了初学者包来帮助你快速入门。 以下列表中的每个初学者包中包含实现所述方案所需的最少技术配置文件和用户旅程：
+ * LocalAccounts。 仅启用本地帐户。
+ * SocialAccounts。 仅启用社交（或联合）帐户。
+ * SocialAndLocalAccounts。 我们使用此文件进行演练。
+ * SocialAndLocalAccountsWithMFA。 包含社交、本地和多重身份验证选项。
 
-每个初学者包包含：
+每个初学者包中包含：
 
 * 策略的[基本文件](active-directory-b2c-overview-custom.md#policy-files)。 需要对基本文件进行少量的修改。
 * 策略的[扩展文件](active-directory-b2c-overview-custom.md#policy-files)。  大多数配置更改将在此文件中进行。
-* [信赖方文件](active-directory-b2c-overview-custom.md#policy-files)：这些是应用程序调用的任务特定文件。
+* [信赖方文件](active-directory-b2c-overview-custom.md#policy-files)。 应用程序调用的任务特定文件。
 
 >[!NOTE]
->如果 XML 编辑器支持验证，你可能需要根据初学者包根文件夹中的 `TrustFrameworkPolicy_0.3.0.0.xsd` XML 架构文件验证文件。 XML 架构验证在上传之前会识别错误。
+>如果 XML 编辑器支持验证，你可能需要根据初学者包根目录中的 TrustFrameworkPolicy_0.3.0.0.xsd XML 架构文件来验证文件。 XML 架构验证在上传之前会识别错误。
 
-让我们开始吧：
+ 让我们开始吧：
 
-1. 从 GitHub 下载“active-directory-b2c-custom-policy-starterpack”。  [下载 zip](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) 或运行
+1. 从 GitHub 下载“active-directory-b2c-custom-policy-starterpack”。 [下载 .zip 文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip)或运行
 
     ```console
     git clone https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack
     ```
-2. 打开 `SocialAndLocalAccounts` 文件夹。  此文件夹中的基本文件 (`TrustFrameworkBase.xml`) 包含本地帐户和社交/企业帐户所需的内容。 社交内容不会妨碍启动和运行本地帐户的步骤。
-3. 打开 `TrustFrameworkBase.xml`。  如果需要 XML 编辑器，请[尝试使用 Visual Studio Code](https://code.visualstudio.com/download)（一个轻型的跨平台编辑器）。
-4. 在 `TrustFrameworkPolicy` 根元素中更新 `TenantId` 和 `PublicPolicyUri` 属性，并将 `yourtenant.onmicrosoft.com` 替换为 Azure AD B2C 租户的域名：
-
-    ```xml
+2. 打开 SocialAndLocalAccounts 文件夹。  此文件夹中的基本文件 (TrustFrameworkBase.xml) 包含本地帐户和社交/企业帐户所需的内容。 社交内容不会妨碍启动和运行本地帐户的步骤。
+3. 打开 TrustFrameworkBase.xml。 如果需要 XML 编辑器，请[尝试使用 Visual Studio Code](https://code.visualstudio.com/download)（一个轻型跨平台编辑器）。
+4. 在根 `TrustFrameworkPolicy` 元素中更新 `TenantId` 和 `PublicPolicyUri` 属性，并将 `yourtenant.onmicrosoft.com` 替换为你的 Azure AD B2C 租户的域名：
+   ```xml
     <TrustFrameworkPolicy
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -133,57 +142,55 @@ Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用�
     PolicyId="B2C_1A_TrustFrameworkBase"
     PublicPolicyUri="http://yourtenant.onmicrosoft.com">
     ```
->[!NOTE]
->`PolicyId` 是门户中显示的策略名称，以及其他策略文件引用此策略文件时所依据的名称。
+   >[!NOTE]
+   >`PolicyId` 是在门户中显示的策略名称，以及其他策略文件引用此策略文件时所依据的名称。
 
 5. 保存文件。
-6. 打开 `TrustFrameworkExtensions.xml` 并将 `yourtenant.onmicrosoft.com` 替换为你的 Azure AD B2C 租户，以便完成两处相同的更改。 在 `<TenantId>` 元素中进行相同的替换，因此总共有 3 处更改。  保存文件。
-7. 打开 `SignUpOrSignIn.xml` 并将三处出现的 `yourtenant.onmicrosoft.com` 替换为你的 Azure AD B2C 租户，以便进行相同的更改。 保存文件。
-8. 打开密码重置文件和配置文件编辑文件，将每个文件中三处出现的 `yourtenant.onmicrosoft.com` 替换为 Azure AD B2C 租户，从而进行相同的更改。 保存文件。
+6. 打开 TrustFrameworkExtensions.xml。 将 `yourtenant.onmicrosoft.com` 替换为你的 Azure AD B2C 租户，以便完成两处相同的更改。 在 `<TenantId>` 元素中进行相同的替换，因此总共有 3 处更改。 保存文件。
+7. 打开 SignUpOrSignIn.xml。 将三处出现的 `yourtenant.onmicrosoft.com` 替换为你的 Azure AD B2C 租户，以便进行相同的更改。 保存文件。
+8. 打开密码重置和配置文件编辑文件。 将每个文件中三处出现的 `yourtenant.onmicrosoft.com` 替换为你的 Azure AD B2C 租户，以便进行相同的更改。 保存文件。
 
 ### <a name="add-the-application-ids-to-your-custom-policy"></a>将应用程序 ID 添加到自定义策略
-将应用程序 ID 添加到扩展文件 (`TrustFrameworkExtensions.xml`)。
+将应用程序 ID 添加到扩展文件 (`TrustFrameworkExtensions.xml`)：
 
-1. 在扩展文件 (`TrustFrameworkExtensions.xml`) 中，找到元素 `<TechnicalProfile Id="login-NonInteractive">`。
+1. 在扩展文件 (TrustFrameworkExtensions.xml) 中找到 `<TechnicalProfile Id="login-NonInteractive">` 元素。
 2. 将 `IdentityExperienceFrameworkAppId` 的两个实例替换为前面创建的标识体验框架应用程序的应用程序 ID。 下面是一个示例：
 
-```xml
-<Item Key="client_id">8322dedc-cbf4-43bc-8bb6-141d16f0f489</Item>
-```
-
+   ```xml
+   <Item Key="client_id">8322dedc-cbf4-43bc-8bb6-141d16f0f489</Item>
+   ```
 3. 将 `ProxyIdentityExperienceFrameworkAppId` 的两个实例替换为前面创建的代理标识体验框架应用程序的应用程序 ID。
 4. 保存扩展文件。
 
 ## <a name="upload-the-policies-to-your-tenant"></a>将策略上传到租户
 
-1. 在 [Azure 门户](https://portal.azure.com)中，[切换到 Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，然后打开 Azure AD B2C 边栏选项卡。
-2. 单击“标识体验框架”
-3. 选择“上传策略”以上传策略文件
+1. 在 [Azure 门户](https://portal.azure.com)中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，然后打开“Azure AD B2C”边栏选项卡。
+2. 选择“标识体验框架”。
+3. 选择“上传策略”以上传策略文件。
 
     >[!WARNING]
     >必须按以下顺序上传自定义策略文件：
 
-1. 上传 `TrustFrameworkBase.xml`。
-2. 上传 `TrustFrameworkExtensions.xml`。
-3. 上传 `SignUpOrSignin.xml`。
+1. 上传 TrustFrameworkBase.xml。
+2. 上传 TrustFrameworkExtensions.xml。
+3. 上传 SignUpOrSignIn.xml。
 4. 上传其他策略文件。
 
 上传某个文件时，将在策略文件的名称前面加上 `B2C_1A_`。
 
-## <a name="test-the-custom-policy-using-run-now"></a>使用“立即运行”测试自定义策略
+## <a name="test-the-custom-policy-by-using-run-now"></a>使用“立即运行”测试自定义策略
 
-1. 打开“Azure AD B2C 设置”并导航到“标识体验框架”。
+1. 打开“Azure AD B2C 设置”并转到“标识体验框架”。
 
->[!NOTE]
->**立即运行**：需要在租户中至少预先注册一个应用程序。 必须使用 B2C 或标识体验框架中的“应用程序”菜单选项调用内置策略和自定义策略，在 B2C 租户中注册应用程序。 每个应用程序只需注册一次。 
+   >[!NOTE]
+   >“立即运行”需要在租户中至少预先注册一个应用程序。 必须使用 Azure AD B2C 中的“应用程序”菜单选项或者使用标识体验框架调用内置策略和自定义策略，在 B2C 租户中注册应用程序。 每个应用程序只需注册一次。<br><br>
+   在 Azure AD B2C [入门](active-directory-b2c-get-started.md)或[应用程序注册](active-directory-b2c-app-registration.md)文章中了解如何注册应用程序。  
 
-在 Azure AD B2C [入门](active-directory-b2c-get-started.md)或[应用程序注册](active-directory-b2c-app-registration.md)文章中了解如何注册应用程序。  
+2. 打开上传的信赖方 (RP) 自定义策略 B2C_1A_signup_signin。 选择“立即运行”。
 
-2. 打开上传的信赖方 (RP) 自定义策略 `B2C_1A_signup_signin`，然后单击“立即运行”按钮。
+3. 现在，应该可以使用电子邮件地址注册。
 
-
-3. 现在，你应能使用电子邮件地址注册。
-4. 使用相同的帐户登录，以确认配置正确
+4. 使用相同的帐户登录，以确认配置正确。
 
 >[!NOTE]
 >登录失败的常见原因是 IdentityExperienceFramework 应用的配置不当。
@@ -193,24 +200,21 @@ Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用�
 
 ### <a name="add-facebook-as-an-identity-provider"></a>将 Facebook 添加为标识提供者
 若要设置 Facebook，请执行以下操作：
-1. [在 developers.facebook.com 中配置 Facebook 应用程序](active-directory-b2c-setup-fb-app.md)
-2. [将 Facebook 应用程序机密添加到 Azure AD B2C 租户](#add-signing-and-encryption-keys-to-your-b2c-tenant-for-use-by-custom-policies)
-3. 在 `Item Key="client_id"` 中添加 TrustFrameworkExtensions 策略文件中的 Facebook 应用程序 ID：
+1. [在 developers.facebook.com 中配置 Facebook 应用程序](active-directory-b2c-setup-fb-app.md)。
+2. [将 Facebook 应用程序机密添加到 Azure AD B2C 租户](#add-signing-and-encryption-keys-to-your-b2c-tenant-for-use-by-custom-policies)。
+3. 在 TrustFrameworkExtensions 策略文件中将 `client_id` 的值替换为 Facebook 应用程序 ID：
 
-```xml
-<TechnicalProfile Id="Facebook-OAUTH">
-  <Metadata>
-  <!--Replace the value of client_id in this technical profile with your the Facebook App ID"-->
-    <Item Key="client_id">00000000000000</Item>
-```
+   ```xml
+   <TechnicalProfile Id="Facebook-OAUTH">
+     <Metadata>
+     <!--Replace the value of client_id in this technical profile with the Facebook app ID"-->
+       <Item Key="client_id">00000000000000</Item>
+   ```
 4. 将 TrustFrameworkExtensions.xml 策略文件上传到租户。
 5. 使用“立即运行”进行测试，或直接从已注册的应用程序调用该策略。
 
 ### <a name="add-azure-active-directory-as-an-identity-provider"></a>将 Azure Active Directory 添加为标识提供者
-本入门指南中使用的基本文件已包含添加其他标识提供者所需的一些内容。 若要使用 Azure AD 帐户设置登录名，请继续阅读[此文](active-directory-b2c-setup-aad-custom.md)。
+本入门指南中使用的基本文件已包含添加其他标识提供者所需的一些内容。 有关设置登录名的信息，请参阅 [Azure Active Directory B2C：使用 Azure AD 帐户登录](active-directory-b2c-setup-aad-custom.md)一文。
 
-
-## <a name="reference"></a>引用
-
-使用标识体验框架的 Azure AD B2C 中的自定义策略[概述](active-directory-b2c-overview-custom.md)
+有关使用标识体验框架的 Azure AD B2C 中的自定义策略概述，请参阅 [Azure Active Directory B2C：自定义策略](active-directory-b2c-overview-custom.md)一文。 
 

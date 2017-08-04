@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 07/18/2017
 ms.author: yurid
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f0a512fb0684b1db25353bf4bbd35bdf2a07e1b2
 ms.openlocfilehash: 5cb5c6b6cc047974013df59d615d4f094d8d60a4
+ms.contentlocale: zh-cn
 ms.lasthandoff: 12/06/2016
-
 
 ---
 # <a name="connecting-your-security-products-to-the-operations-management-suite-oms-security-and-audit-solution"></a>将安全产品连接到 Operations Management Suite (OMS) 安全性和审核解决方案 
@@ -90,11 +90,13 @@ OMS 安全性支持通过 Syslogs 和 [Cisco ASA](https://blogs.technet.microsof
     ```
 6. 键入以下命令并查看结果，确认 OMS 代理日志中是否不包含错误：
 
-    ```    
+    ``` 
     tail /var/opt/microsoft/omsagent/log/omsagent.log
     ```
 
 ## <a name="reviewing-collected-security-events"></a>查看收集的安全事件
+
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 配置完成后，OMS 安全性将开始引入安全事件。 若要可视化这些事件，请打开“日志搜索”，在搜索字段中键入命令 *Type=CommonSecurityLog*，然后按 ENTER。 以下示例显示了此命令的结果。请注意，在本例中，OMS 安全性已从多个供应商引入安全日志：
    

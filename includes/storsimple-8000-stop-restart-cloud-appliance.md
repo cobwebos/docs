@@ -1,5 +1,4 @@
-#### 停止和启动云设备
-<a id="to-stop-and-start-a-cloud-appliance" class="xliff"></a>
+#### <a name="to-stop-and-start-a-cloud-appliance"></a>停止和启动云设备
 
 1. 若要停止云设备，请转到云设备的 VM。
     ![StorSimple 云设备虚拟机](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart1.png)
@@ -26,8 +25,7 @@
 
 `Start-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
 
-#### 重新启动云设备
-<a id="to-restart-a-cloud-appliance" class="xliff"></a>
+#### <a name="to-restart-a-cloud-appliance"></a>重新启动云设备
 
 若要重新启动云设备，请转到云设备的 VM。 在命令栏中，单击“重新启动”。 出现提示时，确认重新启动。 当云设备准备就绪可供使用时，其状态为“正在运行”。
 

@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/05/2017
+ms.date: 07/15/2017
 ms.author: markvi;dhanyahk
+ms.reviewer: dhanyahk
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 1c6b79c5f67cee5d62c9879bdeec926091253af6
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: a1e385c235c3530744a83527574880c5f37caadd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
-
+ms.lasthandoff: 07/06/2017
 
 ---
-# <a name="azure-active-directory-reporting-latencies---preview"></a>Azure Active Directory 报告延迟 - 预览
+# <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory 报告延迟
 
-通过 Azure Active Directory [预览](active-directory-preview-explainer.md)中的报表，可以获取确定环境运行状况所需的所有信息。 在 Azure 门户中显示报告数据所花费的时间也被称为延迟。 
+通过使用 Azure Active Directory 中的[报表](active-directory-preview-explainer.md)，可以获取确定环境运行状况所需的所有信息。 在 Azure 门户中显示报告数据所花费的时间也被称为延迟。 
 
 本主题列出了 Azure 门户中所有报告类别的相关延迟信息。 
 
@@ -91,3 +91,4 @@ Azure Active Directory 使用自适应机器学习算法和试探法来检测与
 - [Azure Active Directory 门户中的“有风险的登录”报表](active-directory-reporting-security-risky-sign-ins.md)
 
 如果想要深入了解风险事件，请参阅 [Azure Active Directory 风险事件](active-directory-reporting-risk-events.md)。
+

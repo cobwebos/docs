@@ -269,7 +269,7 @@ PowerShell 脚本在结束时输出了几个命名值。 你必须编辑 Transac
 
 ### <a name="transact-sql-code"></a>Transact-SQL 代码
 
-```tsql
+```sql
 ---- TODO: First, run the PowerShell portion of this two-part code sample.
 ---- TODO: Second, find every 'TODO' in this Transact-SQL file, and edit each.
 
@@ -465,7 +465,7 @@ GO
 
 如果当你运行脚本时无法附加目标，则你必须停止再重新启动事件会话：
 
-```tsql
+```sql
 ALTER EVENT SESSION ... STATE = STOP;
 GO
 ALTER EVENT SESSION ... STATE = START;

@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/21/2017
+ms.date: 08/02/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: f5db73d93276f8da223f03fa672af02a3bc9b54d
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: a95283a5c52a2860a4c4ac9e47938fe7c6b1be84
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>配置 VNet 到 VNet 连接（经典）
@@ -86,7 +85,16 @@ ms.lasthandoff: 06/17/2017
 
 ## <a name="vnetvalues"></a>第 2 步 - 创建虚拟网络
 
-在 [Azure 门户](https://portal.azure.com)中创建两个虚拟网络。 有关创建经典虚拟网络的步骤，请参阅[创建经典虚拟网络](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)。 如果使用本文进行练习，可以使用以下示例值：
+在 [Azure 门户](https://portal.azure.com)中创建两个虚拟网络。 有关创建经典虚拟网络的步骤，请参阅[创建经典虚拟网络](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)。 
+
+使用门户创建经典虚拟网络时，必须通过执行以下步骤导航到“虚拟网络”边栏选项卡，否则不会显示用于创建经典虚拟网络的选项：
+
+1. 单击“+”打开“新建”边栏选项卡。
+2. 在“搜索应用商店”字段中，键入“虚拟网络”。 如果改为选择“网络”->“虚拟网络”，则不会显示用于创建经典 VNet 的选项。
+3. 从返回的列表中找到“虚拟网络”，单击它打开“虚拟网络”边栏选项卡。 
+4. 在“虚拟网络”边栏选项卡上，选择“经典”创建经典 VNet。 
+
+如果使用本文进行练习，可以使用以下示例值：
 
 **用于 TestVNet1 的值**
 

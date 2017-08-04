@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 06/9/2017
+ms.date: 07/13/2017
 ms.author: LADocs; dimazaid; estfan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 4b6f21c7949493ac1f95e7c0f255e5c96613adf1
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: 24793b83ca284fe9510fe21bc2d13b0589209d36
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/13/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="access-data-sources-on-premises-from-logic-apps-with-the-on-premises-data-gateway"></a>通过本地数据网关，从逻辑应用访问本地数据源
@@ -29,7 +28,7 @@ ms.lasthandoff: 06/13/2017
 
 网关支持连接到以下本地数据源：
 
-*   BizTalk Server
+*   BizTalk Server 2016
 *   DB2  
 *   文件系统
 *   Informix
@@ -39,18 +38,18 @@ ms.lasthandoff: 06/13/2017
 *   PostgreSQL
 *   SAP Application Server 
 *   SAP Message Server
-*   仅限适用于 HTTP（而非 HTTPS）的 SharePoint
+*   SharePoint
 *   SQL Server
 *   Teradata
 
-以下步骤演示了如何设置适用于逻辑应用的本地数据网关。 若要详细了解支持的连接器，请参阅[适用于 Azure 逻辑应用的连接器](../connectors/apis-list.md)。 
+以下步骤演示了如何设置适用于逻辑应用的本地数据网关。 有关受支持连接器的详细信息，请参阅[适用于 Azure 逻辑应用的连接器](../connectors/apis-list.md)。 
 
-若要详细了解适用于其他 Microsoft 服务的数据网关，请参阅以下文章：
+有关如何将网关用于其他服务的信息，请参阅以下文章：
 
-*   [Azure 应用程序网关](https://azure.microsoft.com/services/application-gateway/)：[应用程序网关概述](../application-gateway/application-gateway-introduction.md)
 *   [Microsoft Power BI 本地数据网关](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
 *   [Azure Analysis Services 本地数据网关](../analysis-services/analysis-services-gateway.md)
 *   [Microsoft Flow 本地数据网关](https://flow.microsoft.com/documentation/gateway-manage/)
+*   [Microsoft PowerApps 本地数据网关](https://powerapps.microsoft.com/tutorials/gateway-management/)
 
 ## <a name="requirements"></a>要求
 
@@ -105,7 +104,7 @@ ms.lasthandoff: 06/13/2017
 
     ![提供创建本地数据网关所需的详细信息](./media/logic-apps-gateway-connection/createblade.png)
 
-    若要随时查找或查看数据网关，请从 Azure 左主菜单中，转到“更多服务” **** > “企业集成” > “本地数据网关”。
+    若要随时查找或查看数据网关，请从 Azure 左主菜单中，转到“更多服务”>“企业集成”>“本地数据网关”。
 
     ![转到“更多服务”、“企业集成”、“本地数据网关”](./media/logic-apps-gateway-connection/find-on-premises-data-gateway-enterprise-integration.png)
 
@@ -142,7 +141,7 @@ ms.lasthandoff: 06/13/2017
 
      ![转到逻辑应用，选择“API 连接”。](./media/logic-apps-gateway-connection/logic-app-find-api-connections.png)
 
-   * 或者，从 Azure 左主菜单转到“更多服务” > “Web 和移动服务” > “API 连接”（适用于所有 API 连接，包括与 Azure 订阅关联的网关连接）。 
+   * 或者，从 Azure 左主菜单转到“更多服务”>“Web 和移动服务”>“API 连接”（适用于所有 API 连接，包括与 Azure 订阅关联的网关连接）。 
 
    * 或者，在 Azure 左主菜单上转到“所有资源”（适用于所有 API 连接，包括与 Azure 订阅关联的网关连接）。
 

@@ -107,14 +107,16 @@
 #### [部署常见问题解答](cloud-services-deployment-faq.md)
 
 # 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=cloud-services)
 ## [.csdef XMLSchema](https://msdn.microsoft.com/library/azure/ee758711)
 ## [.cscfg XMLSchema](https://msdn.microsoft.com/library/azure/ee758710)
 ## [REST](https://msdn.microsoft.com/library/azure/ee460812)
 
 # 资源
-## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=compute)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment)
 ## [定价](https://azure.microsoft.com/pricing/details/cloud-services/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform=)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=cloud-services)

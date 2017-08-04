@@ -1,5 +1,5 @@
 ---
-title: "Azure 自动化常见问题解答 | Microsoft Docs"
+title: "Azure 自动化常见问题解答 | Microsoft 文档"
 description: "本文介绍如何排查并解决常见的 Azure 自动化错误。"
 services: automation
 documentationcenter: 
@@ -14,11 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/24/2017
+ms.date: 06/26/2017
 ms.author: sngun; v-reagie
-translationtype: Human Translation
-ms.sourcegitcommit: a8ecffbc5f9c7e2408708d59459a0d39e59d6e1e
-ms.openlocfilehash: 3e4a4b431e26e58a0af1eee182fded51b6618fac
+ms.translationtype: Human Translation
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: 64548d91e98754210cc5185d9d759141cc0621d3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/26/2017
 
 
 ---
@@ -64,6 +66,22 @@ ms.openlocfilehash: 3e4a4b431e26e58a0af1eee182fded51b6618fac
 **疑难解答提示：**若要将证书用于 Azure 服务管理 cmdlet，请参阅[创建并添加管理 Azure 服务所需的证书](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)。 若要将服务主体用于 Azure Resource Manager cmdlet，请参阅[使用 Azure 门户创建服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)和[通过 Azure Resource Manager 对服务主体进行身份验证](../azure-resource-manager/resource-group-authenticate-service-principal.md)。
 
 ## <a name="common-errors-when-working-with-runbooks"></a>使用 Runbook 时的常见错误
+### <a name="scenario-the-runbook-job-start-was-attempted-three-times-but-it-failed-to-start-each-time"></a>方案：runbook 作业已尝试启动三次，但每次均启动失败
+错误：runbook 启动失败，错误为“此作业已尝试启动三次，但无法启动它”。
+
+错误原因：此错误可能是由以下原因引起：  
+
+1. 内存限制。  我们已经记录了分配给沙盒[自动化服务限制](../azure-subscription-service-limits.md#automation-limits)的内存限制，因此，如果使用超过 400 MB 的内存，作业可能会失败。 
+
+2. 模块不兼容。  如果模块依赖关系不正确，则可能会发生这种情况，并且如果模块依赖关系正确，runbook 通常会返回“找不到命令”或“	无法绑定参数”消息。 
+
+**疑难解答提示：**下述解决方案中的任何一种都可以解决此问题：  
+
+* 在内存限制内工作的建议方法是拆分多个 runbook 之间的工作负载，不作为内存中的诸多数据进行处理，不从 runbook 写入不必要的输出，或考虑在 PowerShell 工作流 runbook 中写入多少个检查点。  
+
+* 你需要按照[如何更新 Azure 自动化中的 Azure PowerShell 模块](automation-update-azure-modules.md)中的步骤来更新 Azure 模块。  
+
+
 ### <a name="scenario-runbook-fails-because-of-deserialized-object"></a>场景：Runbook 因反序列化的对象而失败
 **错误：**Runbook 失败，出现错误“无法绑定参数 ``<ParameterName>``。 无法将反序列化 ``<ParameterType>`` 类型的 ``<ParameterType>`` 值转换成 ``<ParameterType>`` 类型”。
 
@@ -114,14 +132,14 @@ ms.openlocfilehash: 3e4a4b431e26e58a0af1eee182fded51b6618fac
 * 结构与自动化所需的模块结构不符。  
 * 该模块依赖于其他模块，而后者尚未部署到你的自动化帐户。  
 * 该模块的文件夹中缺少依赖项。  
-* 使用了 **New-AzureRmAutomationModule** cmdlet 来上载该模块，但你尚未提供完整的存储路径，或者尚未使用可公开访问的 URL 来加载该模块。  
+* 使用了 **New-AzureRmAutomationModule** cmdlet 来上传该模块，但你尚未提供完整的存储路径，或者尚未使用可公开访问的 URL 来加载该模块。  
 
 **疑难解答提示：**  
 下述解决方案中的任何一种都可以解决此问题：  
 
 * 请确保该模块遵循以下格式：  
   ModuleName.Zip **->** 模块名称或版本号 **->** (ModuleName.psm1, ModuleName.psd1)
-* 打开 .psd1 文件，看模块是否有任何依赖项。  如果有，则将这些模块上载到自动化帐户。  
+* 打开 .psd1 文件，看模块是否有任何依赖项。  如果有，则将这些模块上传到自动化帐户。  
 * 确保任何引用的 .dll 都存在于模块文件夹中。  
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>使用所需状态配置 (DSC) 时的常见错误
@@ -172,9 +190,4 @@ ms.openlocfilehash: 3e4a4b431e26e58a0af1eee182fded51b6618fac
 * 提出 Azure 支持事件。 转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)，单击“技术和帐单支持”下的“获得支持”。
 * 如果正在寻找 Azure 自动化 Runbook 解决方案或集成模块，请在[脚本中心](https://azure.microsoft.com/documentation/scripts/)发布脚本请求。
 * 将关于 Azure 自动化的反馈或功能请求发布到[用户之声](https://feedback.azure.com/forums/34192--general-feedback)。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

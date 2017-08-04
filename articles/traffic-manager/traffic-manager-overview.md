@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/16/2017
+ms.date: 06/15/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 3f1f19f8d8a4f2e6e892ba3ede67f3749cedb11b
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: a99fd7931d6172046f2b2e91994381ac6ebc66c9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/16/2017
 
 ---
 
@@ -25,7 +26,7 @@ ms.lasthandoff: 04/22/2017
 
 使用 Microsoft Azure 流量管理器，可以控制用户流量在不同数据中心内的服务终结点上的分布。 流量管理器支持的服务终结点包括 Azure VM、Web 应用和云服务。 也可将流量管理器用于外部的非 Azure 终结点。
 
-流量管理器根据[流量路由方法](traffic-manager-routing-methods.md)和终结点的运行状况，使用域名系统 (DNS) 将客户端请求定向到最合适的终结点。 流量管理器提供多种流量路由方法来满足不同的应用程序需求、终结点运行状况[监视](traffic-manager-monitoring.md)和自动故障转移。 流量管理器能够灵活应对故障，包括整个 Azure 区域的故障。
+流量管理器根据流量路由方法和终结点的运行状况，使用域名系统 (DNS) 将客户端请求定向到最合适的终结点。 流量管理器提供多种[流量路由方法](traffic-manager-routing-methods.md)和[终结点监视选项](traffic-manager-monitoring.md)来满足不同的应用程序需求和自动故障转移模型。 流量管理器能够灵活应对故障，包括整个 Azure 区域的故障。
 
 ## <a name="traffic-manager-benefits"></a>流量管理器优点
 
@@ -68,11 +69,11 @@ ms.lasthandoff: 04/22/2017
 
 Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 是 https://partners.contoso.com/login.aspx。 该应用程序托管在三个 Azure 区域中。 为了改善可用性并在全球最大程度地提高性能，他们使用流量管理器将客户端流量分布到最靠近的可用终结点。
 
-为了实现该配置：
+为了实现此配置，他们完成以下步骤：
 
-* 他们部署了服务的三个实例。 这些部署的 DNS 名称为“contoso-us.cloudapp.net”、“contoso-eu.cloudapp.net”和“contoso-asia.cloudapp.net”。
-* 然后，他们创建了一个名为“contoso.trafficmanager.net”的流量管理器配置文件，并将该文件配置为对三个终结点使用“性能”流量路由方法。
-* 最后，他们使用 DNS CNAME 记录将其虚构域名“partners.contoso.com”配置为指向“contoso.trafficmanager.net”。
+1. 部署服务的三个实例。 这些部署的 DNS 名称为“contoso-us.cloudapp.net”、“contoso-eu.cloudapp.net”和“contoso-asia.cloudapp.net”。
+2. 创建一个名为“contoso.trafficmanager.net”的流量管理器配置文件，并将它配置为对三个终结点使用“性能”流量路由方法。
+* 使用 DNS CNAME 记录将虚构域名“partners.contoso.com”配置为指向“contoso.trafficmanager.net”。
 
 ![流量管理器 DNS 配置][1]
 
@@ -99,7 +100,7 @@ Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 是 htt
 7. 递归 DNS 服务将结果合并，向客户端返回单个 DNS 响应。
 8. 客户端接收 DNS 结果，然后连接到给定的 IP 地址。 客户端直接连接到应用程序服务终结点，而不是通过流量管理器连接。 由于这是一个 HTTPS 终结点，客户端将执行必要的 SSL/TLS 握手，然后针对“/login.aspx”页面发出 HTTP GET 请求。
 
-递归 DNS 服务缓存它所收到的 DNS 响应。 客户端设备上的 DNS 解析程序也会缓存结果。 通过缓存可以加快后续 DNS 查询的响应速度，因为使用的是缓存中的数据，不需要查询其他名称服务器。 缓存的持续时间取决于每个 DNS 记录的“生存时间”(TTL) 属性。 该属性值越小，缓存过期时间就越短，因此访问流量管理器名称服务器所需的往返次数就越多。 如果指定较大的值，则意味着从故障终结点定向流量需要更长的时间。 使用流量管理器，你可以配置在流量管理器 DNS 响应中使用的 TTL，从而通过选择值对应用程序的需求进行最佳平衡。
+递归 DNS 服务缓存它所收到的 DNS 响应。 客户端设备上的 DNS 解析程序也会缓存结果。 通过缓存可以加快后续 DNS 查询的响应速度，因为使用的是缓存中的数据，不需要查询其他名称服务器。 缓存的持续时间取决于每个 DNS 记录的“生存时间”(TTL) 属性。 该属性值越小，缓存过期时间就越短，因此访问流量管理器名称服务器所需的往返次数就越多。 如果指定较大的值，则意味着从故障终结点定向流量需要更长的时间。 使用流量管理器，可以将流量管理器 DNS 响应中使用的 TTL 配置为最短 0 秒，最长 2,147,483,647 秒（符合[ RFC-1035 ](https://www.ietf.org/rfc/rfc1035.txt)的最大范围），从而可选择使应用程序的需求实现最佳平衡的值。
 
 ## <a name="pricing"></a>定价
 

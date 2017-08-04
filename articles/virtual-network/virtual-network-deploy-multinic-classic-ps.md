@@ -23,9 +23,7 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 03/22/2017
 
 ---
-<a id="create-a-vm-classic-with-multiple-nics-using-powershell" class="xliff"></a>
-
-# 使用 PowerShell 创建具有多个 NIC 的 VM（经典）
+# <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>使用 PowerShell 创建具有多个 NIC 的 VM（经典）
 
 [!INCLUDE [virtual-network-deploy-multinic-classic-selectors-include.md](../../includes/virtual-network-deploy-multinic-classic-selectors-include.md)]
 
@@ -38,26 +36,20 @@ ms.lasthandoff: 03/22/2017
 
 以下步骤使用名为 *IaaSStory* 的资源组用于 WEB 服务器，将名为 *IaaSStory-BackEnd* 的资源组用于 DB 服务器。
 
-<a id="prerequisites" class="xliff"></a>
-
-## 先决条件
+## <a name="prerequisites"></a>先决条件
 
 创建数据库服务器之前，需要先使用此方案的所有必需资源创建 *IaaSStory* 资源组。 若要创建这些资源，请完成如下步骤。 若要创建虚拟网络，请完成[创建虚拟网络](virtual-networks-create-vnet-classic-netcfg-ps.md)一文中的步骤。
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-<a id="create-the-back-end-vms" class="xliff"></a>
-
-## 创建后端 VM
+## <a name="create-the-back-end-vms"></a>创建后端 VM
 后端 VM 取决于以下资源的创建：
 
 * **后端子网**。 各数据库服务器将分别属于各个子网，以便隔离流量。 以下脚本期望此子网存在于名为 *WTestVnet* 的虚拟网络中。
 * **数据磁盘的存储帐户**。 为了提高性能，数据库服务器上的数据磁盘将使用固态驱动器 (SSD) 技术，这需要高级存储帐户。 请确保部署到的 Azure 位置支持高级存储。
 * **可用性集**。 所有数据库服务器都将添加到单个可用性集，以确保在维护期间至少有一个 VM 已启动且正在运行。
 
-<a id="step-1---start-your-script" class="xliff"></a>
-
-### 步骤 1 - 启动脚本
+### <a name="step-1---start-your-script"></a>步骤 1 - 启动脚本
 可以在[此处](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-ps.ps1)下载所用的完整 PowerShell 脚本。 请按以下步骤更改要在环境中使用的脚本。
 
 1. 基于在上面[先决条件](#Prerequisites)中部署的现有资源组更改以下变量的值。
@@ -82,9 +74,7 @@ ms.lasthandoff: 03/22/2017
     $numberOfVMs           = 2
     ```
 
-<a id="step-2---create-necessary-resources-for-your-vms" class="xliff"></a>
-
-### 步骤 2 - 为 VM 创建必要资源
+### <a name="step-2---create-necessary-resources-for-your-vms"></a>步骤 2 - 为 VM 创建必要资源
 需要为所有 VM 的数据磁盘创建新的云服务和存储帐户。 还需要为 VM 指定映像和本地管理员帐户。 若要创建这些资源，请完成以下步骤：
 
 1. 创建新的云服务。
@@ -122,9 +112,7 @@ ms.lasthandoff: 03/22/2017
     $cred = Get-Credential -Message "Enter username and password for local admin account"
     ```
 
-<a id="step-3---create-vms" class="xliff"></a>
-
-### 步骤 3 - 创建 VM
+### <a name="step-3---create-vms"></a>步骤 3 - 创建 VM
 需要使用循环创建所需数量的 VM，并在循环中创建所需的 NIC 和 VM。 若要创建 NIC 和 VM，请执行以下步骤。
 
 1. 启动 `for` 循环以基于 `$numberOfVMs` 变量的值重复执行命令以根据需要创建任意多次一个 VM 和两个 NIC。
@@ -193,9 +181,7 @@ ms.lasthandoff: 03/22/2017
     }
     ```
 
-<a id="step-4---run-the-script" class="xliff"></a>
-
-### 步骤 4 - 运行脚本
+### <a name="step-4---run-the-script"></a>步骤 4 - 运行脚本
 既已根据需要下载并更改脚本，请运行该脚本以创建具有多个 NIC 的后端数据库 VM。
 
 1. 保存脚本并从 **PowerShell** 命令提示符或 **PowerShell ISE** 运行它。 将看到最初的输出，如下所示。

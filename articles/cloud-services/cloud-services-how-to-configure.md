@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 07/18/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: 838be613a35ac4af988e089efb57e45365cc7636
-
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 39bb294c96ce0c12d91cf8b3488ac3e1a7b2f7b2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="how-to-configure-cloud-services"></a>如何配置云服务
@@ -27,7 +28,7 @@ ms.openlocfilehash: 838be613a35ac4af988e089efb57e45365cc7636
 > 
 > 
 
-你可以在 Azure 经典门户中配置最常使用的云服务设置。 或者，如果你希望直接更新配置文件，则可以下载要更新的服务配置文件，然后上载更新文件并使用配置更改更新云服务。 无论使用哪种方法，配置更新都将应用于所有角色实例。
+你可以在 Azure 经典门户中配置最常使用的云服务设置。 或者，如果你希望直接更新配置文件，则可以下载要更新的服务配置文件，然后上传更新文件并使用配置更改更新云服务。 无论使用哪种方法，配置更新都将应用于所有角色实例。
 
 Azure 经典门户还允许用户[为 Azure 云服务中的角色启用远程桌面连接](cloud-services-role-enable-remote-desktop.md)
 
@@ -42,11 +43,10 @@ Azure 经典门户还允许用户[为 Azure 云服务中的角色启用远程桌
 2. 在“**监视**”中，将监视级别设置为“详细”或“最少”，并配置详细监视所需的诊断连接字符串。
 3. 对于服务角色（按角色分组），你可以更新下列设置：
    
-    * **设置** 
-       修改服务配置 (.cscfg) 文件的 *ConfigurationSettings* 元素中指定的其他配置设置的值。
+    * **设置**：修改服务配置 (.cscfg) 文件的 ConfigurationSettings 元素中指定的其他配置设置的值。
 
     * **证书**  
-        更改 SSL 加密中用于角色的证书指纹。 若要更改证书，你必须首先上载新证书（在“**证书**”页上）。 然后更新角色设置中显示的证书字符串中的指纹。
+        更改 SSL 加密中用于角色的证书指纹。 若要更改证书，你必须首先上传新证书（在“证书”页上）。 然后更新角色设置中显示的证书字符串中的指纹。
 4. 在“**操作系统**”中，你可以更改角色实例的操作系统系列或版本，或选择“**自动**”以启用当前操作系统版本的自动更新。 操作系统设置将应用到 Web 角色和辅助角色，但不影响虚拟机。
    
     部署期间，所有角色实例都将安装最新版本的操作系统，并且默认情况下这些操作系统会自动更新。 
@@ -60,11 +60,11 @@ Azure 经典门户还允许用户[为 Azure 云服务中的角色启用远程桌
 
 ## <a name="update-a-cloud-service-configuration-file"></a>更新云服务配置文件
 1. 下载包含当前配置的云服务配置文件 (.cscfg)。 在云服务的“**配置**”页上，单击“**下载**”。 然后单击“**保存**”或单击“**另存为**”以保存文件。
-2. 更新服务配置文件后，上载并应用配置更新：
+2. 更新服务配置文件后，上传并应用配置更新：
    
-   1. 在“**配置**”页上，单击“**上载**”。
+   1. 在“配置”页上，单击“上传”。
       
-       ![上载配置](./media/cloud-services-how-to-configure/CloudServices_UploadConfigFile.png)
+       ![上传配置](./media/cloud-services-how-to-configure/CloudServices_UploadConfigFile.png)
    2. 在“**配置文件**”中，使用“**浏览**”选择已更新的 .cscfg 文件。
    3. 如果云服务包含任何只有一个实例的角色，请选中“**即使一个或多个角色包含单个实例也应用配置**”复选框以使这些角色的配置更新继续进行。
       
@@ -77,10 +77,5 @@ Azure 经典门户还允许用户[为 Azure 云服务中的角色启用远程桌
 * [管理云服务](cloud-services-how-to-manage.md)。
 * [为 Azure 云服务中的角色启用远程桌面连接](cloud-services-role-enable-remote-desktop.md)
 * 配置 [SSL 证书](cloud-services-configure-ssl-certificate.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

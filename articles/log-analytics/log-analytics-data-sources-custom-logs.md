@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 07/07/2017
 ms.author: bwren
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
-ms.openlocfilehash: a9c70810c4f731b2d8b395873fa6b94db78306aa
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d79e7ec6abfc0104008139bb4f86cc7bb1a02a13
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/24/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -29,12 +29,12 @@ Log Analytics 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 
 要收集的日志文件必须符合以下条件。
 
-* 每行日志必须有单个条目，或在每个条目的开头使用时间戳，时间戳可匹配以下任一种格式。
+- 每行日志必须有单个条目，或在每个条目的开头使用时间戳，时间戳可匹配以下任一种格式。
   
-    YYYY-MM-DD HH:MM:SS <br>
-    M/D/YYYY HH:MM:SS AM/PM <br>
-    Mon DD,YYYY HH:MM:SS
-* 日志文件不允许循环更新。如需添加新条目，请添加至该日志文件末尾或添加至新文件，不允许覆盖该日志文件的旧条目。 
+    YYYY-MM-DD HH:MM:SS<br>M/D/YYYY HH:MM:SS AM/PM <br>Mon DD,YYYY HH:MM:SS
+
+- 日志文件不允许循环更新。如需添加新条目，请添加至该日志文件末尾或添加至新文件，不允许覆盖该日志文件的旧条目。 
+- 日志文件必须使用 ASCII 或 UTF-8 编码。  不支持其他格式，如 UTF-16。
 
 ## <a name="defining-a-custom-log"></a>定义自定义日志
 使用以下步骤定义自定义日志文件。  请在本文末尾查看添加自定义日志的演示示例。
@@ -136,7 +136,7 @@ Log Analytics 大概每隔 5 分钟就会从每个自定义日志中收集新条
 | 查询 | 说明 |
 |:--- |:--- |
 | Type=MyApp_CL |名为 MyApp_CL 的自定义日志的所有事件。 |
-| Type=MyApp_CL Severity_CF=error |名为 MyApp_CL 的自定义日志中，自定义字段“Severity_CF” 中值为“error”的所有事件。 |
+| Type=MyApp_CL Severity_CF=error |来自名为 MyApp_CL 的自定义日志，且 *Severity_CF* 自定义字段值为 *error* 的所有事件。 |
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>添加自定义日志的演示示例
 以下部分是创建自定义日志的演示示例。  收集的示例日志在每行有单个条目，以日期和时间开头，然后是逗号分隔的代码、状态和消息字段。  几个示例条目如下所示。

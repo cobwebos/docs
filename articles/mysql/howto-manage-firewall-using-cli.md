@@ -18,19 +18,16 @@ ms.lasthandoff: 06/17/2017
 
 ---
 
-# 使用 Azure CLI 创建和管理 Azure Database for MySQL 防火墙规则
-<a id="create-and-manage-azure-database-for-mysql-firewall-rules-using-azure-cli" class="xliff"></a>
+# <a name="create-and-manage-azure-database-for-mysql-firewall-rules-using-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for MySQL 防火墙规则
 使用服务器级防火墙规则，管理员可以管理从指定的 IP 地址或某个范围的 IP 地址对 Azure Database for MySQL 服务器的访问权限。 使用便捷的 Azure CLI 命令，可创建、更新、删除、列出和显示防火墙规则，用于管理服务器。 有关 Azure Database for MySQL 的概述，请参阅 [Azure Database for MySQL server firewall rules](./concepts-firewall-rules.md)（Azure Database for MySQL 服务器防火墙规则）
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 * [安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * 安装适用于 PostgreSQL 和 MySQL 服务的 Azure Python SDK
 * 安装适用于 PostgreSQL 和 MySQL 服务的 Azure CLI 组件
 * 创建 Azure Database for MySQL 服务器
 
-## 防火墙规则命令：
-<a id="firewall-rule-commands" class="xliff"></a>
+## <a name="firewall-rule-commands"></a>防火墙规则命令：
 从 Azure CLI 中使用 az mysql server firewall-rule 命令，以创建、删除、列出、显示和更新防火墙规则。
 
 命令：
@@ -40,8 +37,7 @@ ms.lasthandoff: 06/17/2017
 - show：显示 Azure MySQL 服务器防火墙规则的详细信息。
 - update：更新 Azure MySQL 服务器防火墙规则。
 
-## 登录到 Azure，并列出 Azure Database for MySQL 服务器
-<a id="login-to-azure-and-list-your-azure-database-for-mysql-servers" class="xliff"></a>
+## <a name="login-to-azure-and-list-your-azure-database-for-mysql-servers"></a>登录到 Azure，并列出 Azure Database for MySQL 服务器
 使用 Azure 帐户安全连接到 Azure CLI。 使用 az login 命令来执行此操作。
 
 1. 从命令行运行以下命令。
@@ -71,8 +67,7 @@ az login
    az mysql server show --resource-group myResourceGroup --name mysqlserver4demo
    ```
 
-## 列出 Azure Database for MySQL 服务器上的防火墙规则
-<a id="list-firewall-rules-on-azure-database-for-mysql-server" class="xliff"></a> 
+## <a name="list-firewall-rules-on-azure-database-for-mysql-server"></a>列出 Azure Database for MySQL 服务器上的防火墙规则 
 使用服务器名称和资源组名称，列出服务器上现有的服务器防火墙规则。 请注意，应在“--server”开关（而不是在“--name”开关）中指定服务器名称属性。
 ```azurecli-interactive
 az mysql server firewall-rule list --resource-group myResourceGroup --server mysqlserver4demo
@@ -81,8 +76,7 @@ az mysql server firewall-rule list --resource-group myResourceGroup --server mys
 ```azurecli-interactive
 az mysql server firewall-rule list --resource-group myResourceGroup --server mysqlserver4demo --output table
 ```
-## 创建 Azure Database for MySQL 服务器上的防火墙规则
-<a id="create-firewall-rule-on-azure-database-for-mysql-server" class="xliff"></a>
+## <a name="create-firewall-rule-on-azure-database-for-mysql-server"></a>创建 Azure Database for MySQL 服务器上的防火墙规则
 使用 Azure MySQL 服务器名称和资源组名称，在服务器上创建新的防火墙规则。 输入规则名称，以及规则的起始 IP 和结束 IP，涵盖允许访问的一系列 IP 地址。
 ```azurecli-interactive
 az mysql server firewall-rule create --resource-group myResourceGroup  --server mysqlserver4demo --name "Firewall Rule 1" --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.15
@@ -94,8 +88,7 @@ az mysql server firewall-rule create --resource-group myResourceGroup
 ```
 成功后，命令输出会列出已创建防火墙规则的详细信息，默认情况下采用 JSON 格式。 如果失败，输出将改为显示错误消息文本。
 
-## 更新 Azure Database for MySQL 服务器上的防火墙规则
-<a id="update-firewall-rule-on-azure-database-for-mysql-server" class="xliff"></a> 
+## <a name="update-firewall-rule-on-azure-database-for-mysql-server"></a>更新 Azure Database for MySQL 服务器上的防火墙规则 
 使用 Azure MySQL 服务器名称和资源组名称，更新服务器上已有的防火墙规则。 输入现有防火墙规则的名称，提供要更新的起始 IP 和结束 IP 属性。
 ```azurecli-interactive
 az mysql server firewall-rule update --resource-group myResourceGroup --server mysqlserver4demo --name "Firewall Rule 1" --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.1
@@ -105,24 +98,21 @@ az mysql server firewall-rule update --resource-group myResourceGroup --server m
 > [!NOTE]
 > 如果不存在防火墙规则，更新命令将创建一个。
 
-## 显示 Azure Database for MySQL 服务器上的防火墙规则的详细信息
-<a id="show-firewall-rule-details-on-azure-database-for-mysql-server" class="xliff"></a>
+## <a name="show-firewall-rule-details-on-azure-database-for-mysql-server"></a>显示 Azure Database for MySQL 服务器上的防火墙规则的详细信息
 使用 Azure MySQL 服务器名称和资源组名称，显示服务器上已有的防火墙规则的详细信息。 输入现有防火墙规则的名称。
 ```azurecli-interactive
 az mysql server firewall-rule show --resource-group myResourceGroup --server mysqlserver4demo --name "Firewall Rule 1"
 ```
 成功后，命令输出会列出指定的防火墙规则的详细信息，默认情况下采用 JSON 格式。 如果失败，输出将改为显示错误消息文本。
 
-## 删除 Azure Database for MySQL 服务器上的防火墙规则
-<a id="delete-firewall-rule-on-azure-database-for-mysql-server" class="xliff"></a>
+## <a name="delete-firewall-rule-on-azure-database-for-mysql-server"></a>删除 Azure Database for MySQL 服务器上的防火墙规则
 使用 Azure MySQL 服务器名称和资源组名称，从服务器中删除已有的防火墙规则。 输入现有防火墙规则的名称。
 ```azurecli-interactive
 az mysql server firewall-rule delete --resource-group myResourceGroup --server mysqlserver4demo --name "Firewall Rule 1"
 ```
 成功后没有任何输出。 如果失败，将返回错误消息文本。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 - 了解有关 [Azure Database for MySQL 服务器防火墙规则](./concepts-firewall-rules.md)的详细信息
 - [使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则](./howto-manage-firewall-using-portal.md)
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: asaxton
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 1d35dc01aba57dcf8a37db757138abbd7b22c8c5
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 65bada117e7d005362b0ac0ce7cc5336a92e0889
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
+ms.lasthandoff: 07/11/2017
 
 
 ---
@@ -227,7 +227,7 @@ SQL Server 的虚拟机库映像包括安装的 Reporting Services 本机模式�
 2. 在虚拟机的防火墙中打开端口 80。
 3. 使用 Azure 虚拟机“DNS 名称”作为 URL 中的服务器名称，浏览到 Web 门户或报表管理器。 例如：
    
-    **报表服务器**：http://uebi.cloudapp.net/reportserver  **Web 门户**：http://uebi.cloudapp.net/reports
+    **报表服务器**：http://uebi.cloudapp.net/reportserver **Web 门户**：http://uebi.cloudapp.net/reports
    
     [为报表服务器访问配置防火墙](https://msdn.microsoft.com/library/bb934283.aspx)
 

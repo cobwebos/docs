@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/08/2017
+ms.date: 06/08/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: a6a87bb3d13f5d9acea7cd84fe7eea901ab263e5
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 7a7069adab5742a9dae2833c13a1db57337a41a0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -32,16 +32,17 @@ ms.lasthandoff: 05/09/2017
 
 了解如何使用 Azure PowerShell 配置具有 Azure Data Lake Store 的 HDInsight 群集**作为其他存储**。 有关如何使用 Azure Data Lake Store 作为默认存储创建 HDInsight 群集的说明，请参阅[使用 Data Lake Store 作为默认存储创建 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)。
 
+> [!NOTE]
+> 若要将 Azure Data Lake Store 用作 HDInsight 群集的额外存储，强烈建议在创建群集时按本文说明进行操作。 向现有的 HDInsight 群集添加 Azure Data Lake Store 作为额外的存储是很复杂的过程，容易出现错误。
+>
+
 对于支持的群集类型，Data Lake Store 可用作默认存储或其他存储帐户。 在 Data Lake Store 用作其他存储时，该群集的默认存储帐户仍将是 Azure 存储 Blob (WASB)，与群集相关的文件（例如日志等）仍会写入到默认存储，而要处理的数据可以存储在 Data Lake Store 帐户中。 使用 Data Lake Store 作为其他存储帐户不会影响读/写到此群集的存储的性能或能力。
 
 ## <a name="using-data-lake-store-for-hdinsight-cluster-storage"></a>将 Data Lake Store 用于 HDInsight 群集存储
 
 下面是结合使用 HDInsight 和 Data Lake Store 的一些重要注意事项：
 
-* HDInsight 版本 3.2、3.4 和 3.5 提供创建 HDInsight 群集（可访问作为其他存储的 Data Lake Store）的选项。
-
-* 对于 HBase 群集（Windows 和 Linux），Data Lake Store **不支持**用作存储选项（包括默认存储和其他存储）。
-
+* HDInsight 版本 3.2、3.4、3.5 和 3.6 提供创建 HDInsight 群集（可访问作为额外存储的 Data Lake Store）的选项。
 
 使用 PowerShell 配置 HDInsight 来与 Data Lake Store 一起使用涉及以下步骤：
 
@@ -116,7 +117,7 @@ ms.lasthandoff: 05/09/2017
         Location                    : East US 2
         Tags                        : {}
 
-5. 上传示例数据到 Azure Data Lake。 本文后面将使用这些数据来验证是否可从 HDInsight 群集访问数据。 如果正在查找一些示例数据进行上载，可以从 **Azure Data Lake Git 存储库** 获取 [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)文件夹。
+5. 上传示例数据到 Azure Data Lake。 本文后面将使用这些数据来验证是否可从 HDInsight 群集访问数据。 如果正在查找一些示例数据进行上传，可以从 **Azure Data Lake Git 存储库** 获取 [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)文件夹。
 
         $myrootdir = "/"
         Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path "C:\<path to data>\vehicle1_09142014.csv" -Destination $myrootdir\vehicle1_09142014.csv

@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/29/2017
 ms.author: joroja
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 83748140c7b92b95a648ae3ecf78f22e2393780b
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: c2bbb8058ce335c7568d5260ddd0274ca36c9c52
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 06/02/2017
 
 ---
 # <a name="azure-active-directory-b2c-creating-and-using-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C：在自定义配置文件编辑策略中创建和使用自定义属性。
@@ -39,38 +39,38 @@ Azure Active Directory (Azure AD) B2C 目录附带了一组内置属性：名字
 
 在 Azure AD B2C 中，可以扩展存储在每个用户帐户中的属性集。 你还可以使用 [Azure AD 图形 API](active-directory-b2c-devquickstarts-graph-dotnet.md) 读取和写入这些属性。
 
-[!NOTE]
-我们将自定义属性或扩展属性称作 Azure AD B2C 目录的特征。  扩展属性扩展目录中用户对象的架构。  若要将自定义属性用作策略中的自定义声明，请在策略中的 `ClaimsSchema` 内定义该属性。
+>[!NOTE]
+>我们将自定义属性或扩展属性称作 Azure AD B2C 目录的特征。  扩展属性扩展目录中用户对象的架构。  若要将自定义属性用作策略中的自定义声明，请在策略中的 `ClaimsSchema` 内定义该属性。
 
-[!NOTE]
-尽管扩展属性可以包含用户的数据，但它们只能在应用程序对象中注册。 属性将附加到应用程序。 必须向应用程序对象授予写入访问权限，使其能够注册扩展属性。 可将 100 个扩展属性（针对所有类型和所有应用程序）写入任何一个对象。 扩展属性将添加到目标目录类型，然后在 Azure AD B2C 目录租户中立即可供访问。
+>[!NOTE]
+>尽管扩展属性可以包含用户的数据，但它们只能在应用程序对象中注册。 属性将附加到应用程序。 必须向应用程序对象授予写入访问权限，使其能够注册扩展属性。 可将 100 个扩展属性（针对所有类型和所有应用程序）写入任何一个对象。 扩展属性将添加到目标目录类型，然后在 Azure AD B2C 目录租户中立即可供访问。
 如果删除了该应用程序，则也会删除这些扩展属性及其为所有用户包含的所有数据。 如果应用程序删除了某个扩展属性，该属性将从目标目录对象中删除，其包含的所有数据也会一并删除。
 
-[!NOTE]
-扩展属性只在租户中已注册的应用程序的上下文中存在。 必须在使用该应用程序的 TechnicalProfile 中包含该应用程序的对象 ID
+>[!NOTE]
+>扩展属性只在租户中已注册的应用程序的上下文中存在。 必须在使用该应用程序的 TechnicalProfile 中包含该应用程序的对象 ID
 
-[!NOTE]
-Azure AD B2C 目录通常包含名为 `b2c-extensions-app` 的 Web API 应用。  此应用程序主要由通过 Azure 门户创建的自定义声明的 b2c 内置策略使用。  仅建议高级用户使用此应用程序来注册 b2c 自定义策略的扩展。
+>[!NOTE]
+>Azure AD B2C 目录通常包含名为 `b2c-extensions-app` 的 Web API 应用。  此应用程序主要由通过 Azure 门户创建的自定义声明的 b2c 内置策略使用。  仅建议高级用户使用此应用程序来注册 b2c 自定义策略的扩展。
 
 
 ## <a name="creating-a-new-application-to-store-the-extension-properties"></a>创建用于存储扩展属性的新应用程序
 
 1. 打开浏览会话并导航到 [Azure 门户](https://portal.azure.com)，然后使用想要配置的 B2C 目录的管理凭据登录。
-1. 在左侧导航菜单中单击 `Azure Active Directory`。 可能需要选择“更多服务>”才能找到该选项。
-1. 选择 `App registrations`，然后单击 `New application registration`。
+1. 在左侧导航菜单中，单击“Azure Active Directory”。 可能需要选择“更多服务>”才能找到该选项。
+1. 选择“应用注册”并单击“新建应用程序注册”
 1. 提供以下建议条目：
-  * 指定 Web 应用程序的名称：`WebApp-GraphAPI-DirectoryExtensions`
+  * 指定 Web 应用程序的名称：WebApp-GraphAPI-DirectoryExtensions
   * 应用程序类型：Web 应用/API
   * 登录 URL：https://{tenantName}.onmicrosoft.com/WebApp-GraphAPI-DirectoryExtensions
-1. 选择 `Create`。 `notifications` 中会出现成功完成消息。
-1. 选择新建的 Web 应用程序：`WebApp-GraphAPI-DirectoryExtensions`
-1. 选择“设置”：`Required permissions`
-1. 选择 API `Windows Active Directory`
-1. 勾选应用程序权限：`Read and write directory data` 和 `Save`
-1. 选择 `Grant permissions` 并确认 `Yes`。
+1. 选择“创建”。 通知中会出现成功完成消息
+1. 选择新创建的 Web 应用程序：WebApp-GraphAPI-DirectoryExtensions
+1. 选择“设置”：所需的权限
+1. 选择 API：Windows Active Directory
+1. 在应用程序权限中放置一个选中标记：读取和写入目录数据，并“保存”
+1. 选择“授予权限”，然后单击“是”确认。
 1. 复制到剪贴板，并保存“Web 应用”>“图形 API”>“目录扩展”>“设置”>“属性”中的以下标识符
-*  `Application ID`。 示例：`103ee0e6-f92d-4183-b576-8c3739027780`
-* `Object ID`。 示例：`80d8296a-da0a-49ee-b6ab-fd232aa45201`
+*  **应用程序 ID**。 示例：`103ee0e6-f92d-4183-b576-8c3739027780`
+* **对象 ID**。 示例：`80d8296a-da0a-49ee-b6ab-fd232aa45201`
 
 ## <a name="modifying-your-custom-policy-to-add-the-applicationobjectid"></a>修改自定义策略以添加 `ApplicationObjectId`
 
@@ -98,13 +98,16 @@ Azure AD B2C 目录通常包含名为 `b2c-extensions-app` 的 Web API 应用。
         </ClaimsProvider>
     </ClaimsProviders>
 ```
-[!NOTE]
-<TechnicalProfile Id="AAD-Common"> 是“通用”的，因为其元素将在使用以下元素的所有 Azure Active Directory 技术配置文件中重复使用：
+
+>[!NOTE]
+><TechnicalProfile Id="AAD-Common"> 是“通用”的，因为其元素将在使用以下元素的所有 Azure Active Directory 技术配置文件中重复使用：
+
 ```
       <IncludeTechnicalProfile ReferenceId="AAD-Common" />
 ```
-[!NOTE]
-当技术配置文件在新建的扩展属性中首次写入时，你可能会遇到一次性错误，因为找不到该属性时会创建它。  .*  
+
+>[!NOTE]
+>当技术配置文件在新建的扩展属性中首次写入时，你可能会遇到一次性错误，因为找不到该属性时会创建它。  .*  
 
 ## <a name="using-the-new-extension-property--custom-attribute-in-a-user-journey"></a>在用户旅程中使用新的扩展属性/自定义属性
 
@@ -140,9 +143,12 @@ Azure AD B2C 目录通常包含名为 `b2c-extensions-app` 的 Web API 应用。
 </ClaimsSchema>
 ```
 4. 将相同的声明定义添加到基本策略文件 `TrustFrameworkBase.xml`。  
-注意：通常不必要同时在基本文件和扩展文件中添加 `ClaimType` 定义，但由于后续步骤要将 extension_loyaltyId 添加到基本文件中的技术配置文件，如果未提供该定义，策略验证程序将拒绝上传基本文件。
 
-注意：跟踪 TrustFrameworkBase.xml 文件中名为“ProfileEdit”的用户旅程的执行可能会有所帮助。  在编辑器中搜索同名的用户旅程，然后观察业务流程步骤 5 是否调用 TechnicalProfileReferenceID ="SelfAsserted ProfileUpdate"。  请搜索并检查此技术配置文件，以熟悉相关的流。
+>[!NOTE]
+>通常同时在基本文件和扩展文件中添加 `ClaimType` 定义并不是必要的，但由于后续步骤要将 extension_loyaltyId 添加到基本文件中的技术配置文件，如果未提供该定义，策略验证程序将拒绝上传基本文件。
+
+>[!NOTE]
+>跟踪 TrustFrameworkBase.xml 文件中名为“ProfileEdit”的用户旅程的执行可能会有所帮助。  在编辑器中搜索同名的用户旅程，然后观察业务流程步骤 5 是否调用 TechnicalProfileReferenceID ="SelfAsserted ProfileUpdate"。  请搜索并检查此技术配置文件，以熟悉相关的流。
 
 5. 在技术配置文件“SelfAsserted-ProfileUpdate”中添加 loyaltyId 作为输入和输出声明
 
@@ -233,8 +239,9 @@ Azure AD B2C 目录通常包含名为 `b2c-extensions-app` 的 Web API 应用。
      </TechnicalProfile>
 ```
 
-[!IMPORTANT]
-上述 IncludeTechnicalProfile 元素将 AAD-Common 的所有元素添加到此技术配置文件。
+
+>[!IMPORTANT]
+>上述 IncludeTechnicalProfile 元素将 AAD-Common 的所有元素添加到此技术配置文件。
 
 ## <a name="test-the-custom-policy-using-run-now"></a>使用“立即运行”测试自定义策略
 
@@ -276,7 +283,8 @@ Azure AD B2C 目录通常包含名为 `b2c-extensions-app` 的 Web API 应用。
 * **技术配置文件 (TP)** 是一个可被视为*函数*的元素类型，定义终结点的名称及其元数据和协议，以及标识体验框架应执行的声明交换的详细信息。  在业务流程步骤中或者通过另一技术配置文件调用此*函数*时，调用方将以参数形式提供 InputClaims 和 OutputClaims。
 
 
-* 有关扩展属性的完整处理方法，请参阅[目录架构扩展 | 图形 API 的概念](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)
-[!NOTE]一文
-图形 API 中的扩展属性是使用约定 `extension_ApplicationObjectID_attributename` 命名的。自定义策略将扩展属性称为 extension_attributename，因此将在 XML 中省略 ApplicationObjectId
+* 有关扩展属性的完整处理方法，请参阅[目录架构扩展 | 图形 API 的概念](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)一文
+
+>[!NOTE]
+>图形 API 中的扩展属性是使用约定 `extension_ApplicationObjectID_attributename` 命名的。自定义策略将扩展属性称为 extension_attributename，因此将在 XML 中省略 ApplicationObjectId
 

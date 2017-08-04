@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 06/16/2017
 ms.author: terrylan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9c20ace9112c62e733b7b679e3f0be717144f3c2
-ms.openlocfilehash: 933a485e36b3cf0f514f28fc069d49161605af3a
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 367b8f38cb9fcf3dc36db83641cb1696710608ef
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/23/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -33,11 +33,6 @@ Azure 安全中心有助于预防、检测和响应威胁，同时增加 Azure �
 
 有关详细信息，请参阅安全中心[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 
-> [!NOTE]
-> 安全中心使用 Azure 存储器保存从受保护节点中生成的安全数据。 与存储器关联的成本不包括在服务的价格中，并将单独按常规 [Azure 存储器费率](https://azure.microsoft.com/pricing/details/storage/blobs/)进行计费。 即使在 60 天免费试用期间也会收取存储费用。
->
->
-
 ## <a name="try-standard-free-for-60-days"></a>免费试用标准层 60 天
 标准层在前 60 天免费提供。 60 天后，如果选择继续使用服务，将自动开始收取使用费用。
 
@@ -49,7 +44,6 @@ Azure 安全中心有助于预防、检测和响应威胁，同时增加 Azure �
 4. 在“选择定价层”边栏选项卡上，选择“标准”。
 5. 单击“选择”。
 
-![标准层][1]
 
 ## <a name="why-upgrade-to-standard"></a>为什么要升级到标准？
 安全中心标准层提供免费层所有功能以及高级威胁检测。 高级威胁检测有助于识别攻击 Azure 资源的活动威胁，并提供快速响应所需的见解。
@@ -79,11 +73,17 @@ Azure 安全中心有助于预防、检测和响应威胁，同时增加 Azure �
 2. 选择一个订阅。
 3. 如果“数据收集”处于关闭状态，将其更改为开启并保存更改。
 
+> [!NOTE]
+> 如果使用 Azure 安全中心免费版，可以在“安全策略”中从虚拟机禁用数据收集。 标准层上的订阅需启用数据收集。
+>
+>
+
 有关详细信息，请参阅[在 Azure 安全中心内启用数据收集](security-center-enable-data-collection.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 本文档介绍安全中心定价。 有关其他定价信息，请参阅安全中心[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 * 若要了解安全中心高级检测功能的详细信息，请参阅 [Azure 安全中心检测功能](security-center-detection-capabilities.md)。
+* 若要了解如何在安全中心管理数据和确保数据安全性的详细信息，请参阅 [Azure 安全中心的数据安全](security-center-data-security.md)。
 * 如果存在使用安全中心方面的问题，请参阅 [Azure 安全中心常见问题解答](security-center-faq.md)。
 * 如果使用安全中心方面仍存在问题，请访问 [Azure 论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureSecurityCenter&filter=alltypes&sort=lastpostdesc)。
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: asteen
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 0b63c7d15ca7570033a889dc1b57ebd202f4627b
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 30db71c0706de1dcc0d48fb72fa5d62475a14ba7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 05/08/2017
 
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>没有为任何用户预配 Azure AD 库应用程序
 
-为应用程序配置自动化预配后（包括验证提供给 Azure AD 以连接至该应用的应用凭据为有效凭据）。 为应用预配的用户和/或组由下列因素确定：
+为应用程序配置自动化预配后（包括验证提供给 Azure AD 以连接至该应用的应用凭据为有效凭据）。 用户和/或组为应用预配，并由下列因素确定：
 
 -   哪些用户和组已**分配**到应用程序。 有关分配的详细信息，请参阅[在 Azure Active Directory 中向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)。
 

@@ -21,8 +21,7 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 07/12/2017
 
 ---
-# Service Fabric 群集容量规划注意事项
-<a id="service-fabric-cluster-capacity-planning-considerations" class="xliff"></a>
+# <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 群集容量规划注意事项
 对于任何生产部署，容量规划都是一个重要的步骤。 下面是在规划过程中必须注意的一些事项。
 
 * 群集一开始需要的节点类型数目
@@ -31,8 +30,7 @@ ms.lasthandoff: 07/12/2017
 
 让我们简单地了解其中的每项。
 
-## 群集一开始需要的节点类型数目
-<a id="the-number-of-node-types-your-cluster-needs-to-start-out-with" class="xliff"></a>
+## <a name="the-number-of-node-types-your-cluster-needs-to-start-out-with"></a>群集一开始需要的节点类型数目
 首先，你需要确定要创建的群集将用于什么目的，以及你打算要将哪些类型的应用程序部署到此群集中。 如果你不清楚群集的用途，则很可能还未准备好进入容量规划流程。
 
 确定群集一开始需要的节点类型数目。  每个节点类型将映射到虚拟机规模集。 然后，每个节点类型可以独立扩展或缩减、打开不同的端口集，并可以有不同的容量指标。 因此，节点类型数目的确定基本上可归结为以下考虑因素：
@@ -43,16 +41,14 @@ ms.lasthandoff: 07/12/2017
   在本示例中，你可以决定将所有服务都放在一个节点类型上，但我们建议将它们分别放在群集中的两个节点类型上。  这样，每个节点类型都有不同的属性，例如，Internet 连接或 VM 大小。 也可以单独缩放 VM 的数目。  
 * 由于无法预见未来，因此，请利用所知道的事实，确定应用程序一开始需要的节点类型数目。 以后，随时可以添加或删除节点类型。 Service Fabric 群集必须至少有一个节点类型。
 
-## 每个节点类型的属性
-<a id="the-properties-of-each-node-type" class="xliff"></a>
+## <a name="the-properties-of-each-node-type"></a>每个节点类型的属性
 **节点类型**相当于云服务中的角色。 节点类型定义 VM 大小、VM 数目及其属性。 在 Service Fabric 群集中定义的每个节点类型将设置为不同的虚拟机规模集。 虚拟机规模集是一种 Azure 计算资源，可用于将一组 VM 作为一个集进行部署和管理。 如果定义为不同的虚拟机规模集，则每个节点类型可以独立扩展或缩减、打开不同的端口集，并可以有不同的容量指标。
 
 有关节点类型与虚拟机规模集之间的关系、如何 RDP 到某个实例、打开新端口等方面的更多详细信息，请阅读[此文档](service-fabric-cluster-nodetypes.md)。
 
 群集可以有多个节点类型，但主节点类型（在门户定义的第一个节点类型）必须至少有 5 个 VM 供群集用于生产工作负荷（或至少有 3 个 VM 用于测试群集）。 如果要使用 Resource Manager 模板创建群集，请在节点类型定义下查找“为主”属性。 主节点类型是 Service Fabric 系统服务所在的节点类型。  
 
-### 主节点类型
-<a id="primary-node-type" class="xliff"></a>
+### <a name="primary-node-type"></a>主节点类型
 对于包含多个节点类型的群集，需要选择其中一个作为主节点类型。 下面是主节点类型的特征：
 
 * 主节点类型的 **VM 大小下限**取决于你选择的**耐久性层**。 耐久性层的默认值为“青铜”。 有关耐久性层的定义以及可采用的值的详细信息，请向下滚动。  
@@ -64,15 +60,13 @@ ms.lasthandoff: 07/12/2017
 
 ![显示具有两个节点类型的群集的屏幕截图 ][SystemServices]
 
-### 非主节点类型
-<a id="non-primary-node-type" class="xliff"></a>
+### <a name="non-primary-node-type"></a>非主节点类型
 包含多个节点类型的群集有一个主节点类型，剩余的是非主节点类型。 下面是非主节点类型的特征：
 
 * 此节点类型的 VM 大小下限取决于选择的耐久性层。 耐久性层的默认值为“青铜”。 有关耐久性层的定义以及可采用的值的详细信息，请向下滚动。  
 * 此节点类型的 VM 数目下限可以是 1。 但是，你应该根据想要在此节点类型中运行的应用程序/服务的副本数目选择此数目。 部署群集之后，节点类型中的 VM 数目可能会增加。
 
-## 群集的耐久性特征
-<a id="the-durability-characteristics-of-the-cluster" class="xliff"></a>
+## <a name="the-durability-characteristics-of-the-cluster"></a>群集的耐久性特征
 耐久性层用于向系统指示 VM 对于基本 Azure 基础结构拥有的权限。 在主节点类型中，此权限可让 Service Fabric 暂停影响系统服务及有状态服务的仲裁要求的任何 VM 级别基础结构请求（例如，VM 重新启动、VM 重置映像或 VM 迁移）。 在非主节点类型中，此权限可让 Service Fabric 暂停影响其中运行的有状态服务的仲裁要求的任何 VM 级别基础结构请求，例如，VM 重新启动、VM 重置映像、VM 迁移，等等。
 
 此权限表示为以下值：
@@ -95,13 +89,11 @@ ms.lasthandoff: 07/12/2017
 
 
 
-### 有关何时使用“白银”或“黄金”耐久性级别的建议
-<a id="recommendations-on-when-to-use-silver-or-gold-durability-levels" class="xliff"></a>
+### <a name="recommendations-on-when-to-use-silver-or-gold-durability-levels"></a>有关何时使用“白银”或“黄金”耐久性级别的建议
 
 对于托管要频繁缩小规模（减小 VM 实例计数）的有状态服务并且你愿意延迟部署操作以利于简化这些“缩小规模”操作的所有节点类型，请使用“白银”或“黄金”耐久性。 “扩大规模”的情况（添加 VM 实例）不会受所选耐久性层的影响，只有“缩小规模”的情况才受其影响。
 
-### 适用于已设置为“白银”或“黄金”耐久性级别的节点类型的操作建议。
-<a id="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level" class="xliff"></a>
+### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>适用于已设置为“白银”或“黄金”耐久性级别的节点类型的操作建议。
 
 1. 使群集和应用程序在任何时间都正常工作，并确保应用程序及时响应所有[服务副本生命周期事件](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle)（例如，生成副本时出现停滞）。
 2. 采用更安全的方式进行 VM SKU 更改（增大/减小）：
@@ -114,8 +106,7 @@ ms.lasthandoff: 07/12/2017
 6. 如果使用自动缩放，请设置规则，以便一次只有一个节点执行“缩小规模”操作（删除 VM 实例）。 
 
 
-## 群集的可靠性特征
-<a id="the-reliability-characteristics-of-the-cluster" class="xliff"></a>
+## <a name="the-reliability-characteristics-of-the-cluster"></a>群集的可靠性特征
 可靠性层用于设置你想要在此群集中的主节点类型上运行的系统服务副本数。 副本数越大，群集中的系统服务越可靠。  
 
 可靠性层可以采用以下值：
@@ -133,8 +124,7 @@ ms.lasthandoff: 07/12/2017
  随时可以选择将群集的可靠性从一个层更新为另一个层。 这样做会触发更改系统服务副本集计数所需的群集升级。 等待升级完成，然后对群集做出其他任何更改，例如添加节点。  可以在 Service Fabric Explorer 中运行 [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) 来监视升级进度
 
 
-## 主节点类型 - 容量指导
-<a id="primary-node-type---capacity-guidance" class="xliff"></a>
+## <a name="primary-node-type---capacity-guidance"></a>主节点类型 - 容量指导
 
 下面是用于规划主节点类型容量的指导
 
@@ -153,8 +143,7 @@ ms.lasthandoff: 07/12/2017
 - 由于性能原因，不支持将标准 A1 SKU 用于生产工作负荷。
 
 
-## 非主节点类型 - 针对有状态工作负荷的容量指导
-<a id="non-primary-node-type---capacity-guidance-for-stateful-workloads" class="xliff"></a>
+## <a name="non-primary-node-type---capacity-guidance-for-stateful-workloads"></a>非主节点类型 - 针对有状态工作负荷的容量指导
 
 对于使用 Service Fabric 可靠集合或 Reliable Actors 的工作负荷，请阅读以下内容。 阅读有关[编程模型](service-fabric-choose-framework.md)的更多内容。
 
@@ -172,8 +161,7 @@ ms.lasthandoff: 07/12/2017
 - 标准 A1 SKU 由于性能原因尤其不支持用于生产工作负荷。
 
 
-## 非主节点类型 - 针对无状态工作负荷的容量指导
-<a id="non-primary-node-type---capacity-guidance-for-stateless-workloads" class="xliff"></a>
+## <a name="non-primary-node-type---capacity-guidance-for-stateless-workloads"></a>非主节点类型 - 针对无状态工作负荷的容量指导
 
 对于无状态工作负荷，请阅读以下内容。
 
@@ -196,8 +184,7 @@ ms.lasthandoff: 07/12/2017
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 完成容量规划并设置群集后，请阅读以下文章：
 
 * [Service Fabric 群集安全性](service-fabric-cluster-security.md)

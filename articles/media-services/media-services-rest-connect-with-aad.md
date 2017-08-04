@@ -91,7 +91,7 @@ Azure 媒体服务团队发布了 Azure Active Directory (Azure AD) 身份验证
 |客户端 |客户应用程序或解决方案 |appid: "02ed1e8e-af8b-477e-af3d-7e7219a99ac6"。 将在下一部分中注册到 Azure AD 的应用程序客户端 ID。 |
 |标识提供者 (IDP) | 作为 IDP 的 Azure AD |idp: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/"。  GUID 是 Microsoft 租户 (microsoft.onmicrosoft.com) 的 ID。 每个租户都有自己的唯一 ID。 |
 |安全令牌服务 (STS)/OAuth 服务器 |作为 STS 的 Azure AD | iss: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/"。 GUID 是 Microsoft 租户 (microsoft.onmicrosoft.com) 的 ID。 |
-|资源 | 媒体服务 REST API |aud: "https://rest.media.azure.net"。 访问令牌的接收人或受众。 |
+|资源 | 媒体服务 REST API |aud: " https://rest.media.azure.net "。 访问令牌的接收人或受众。 |
 
 ## <a name="steps-for-setup"></a>设置步骤
 

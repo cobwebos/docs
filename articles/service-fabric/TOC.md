@@ -16,7 +16,9 @@
 ### [2 - 使用 Docker Compose 部署 .NET 应用](service-fabric-host-app-in-a-container.md)
 
 # 示例
-## [PowerShell](service-fabric-powershell-samples.md) 
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=service-fabric)
+## [PowerShell](service-fabric-powershell-samples.md)
+## [Azure CLI](samples-cli.md)
 # 概念
 ## [了解微服务](service-fabric-overview-microservices.md)
 ## [大图](service-fabric-content-roadmap.md)
@@ -130,7 +132,6 @@
 ### 生成容器服务
 #### [创建 Windows 容器应用程序](service-fabric-get-started-containers.md)
 #### [创建 Linux 容器应用程序](service-fabric-get-started-containers-linux.md)
-#### [部署 Windows 容器](service-fabric-deploy-container.md)
 #### [部署 Linux 容器](service-fabric-deploy-container-linux.md)
 #### [Docker Compose（预览）](service-fabric-docker-compose.md)
 #### [容器和服务的资源调控](service-fabric-resource-governance.md)
@@ -327,6 +328,7 @@
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric)
 ## [定价](https://azure.microsoft.com/pricing/details/service-fabric/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [代码示例](http://aka.ms/servicefabricsamples)
 ## [支持选项](service-fabric-support.md)
 ## [服务更新](https://azure.microsoft.com/updates/?product=service-fabric)

@@ -4,10 +4,10 @@ hide_bc: true
 title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 7c1971abc2b71f6f23d8be2950aae8b56b4ceba1
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 745c7bdc2898d20ac361f4d0fb92b4c1313a89f1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 <div id="main" class="v2">
@@ -105,42 +105,35 @@ ms.lasthandoff: 07/20/2017
                                         <div class="card">
                                             <div class="cardText">
                                                 <h3>开发应用</h3>
-                                                <div class="ico48Link">
-                                                    <a href="/dotnet/azure/?view=azure-dotnet">
-                                                        <img src="media/index/logo_NET.svg" alt="">
-                                                        <span>.NET</span>
-                                                    </a>
-                                                </div>
-                                                <div class="ico48Link">
-                                                    <a href="/nodejs/azure/?view=azure-node-2.0.0">
-                                                        <img src="media/index/logo_nodejs.svg" alt="">
-                                                        <span>Node.js</span>
-                                                    </a>
-                                                </div>
-                                                <div class="ico48Link">
-                                                    <a href="/azure/app-service-web/app-service-web-get-started-php">
-                                                        <img src="media/index/logo_PHP.svg" alt="">
-                                                        <span>PHP</span>
-                                                    </a>
-                                                </div>
-                                                <div class="ico48Link">
-                                                    <a href="/java/azure/">
-                                                        <img src="media/index/logo_java.svg" alt="">
-                                                        <span>Java</span>
-                                                    </a>
-                                                </div>
-                                                <div class="ico48Link">
-                                                    <a href="/python/azure/">
-                                                        <img src="media/index/logo_python.svg" alt="">
-                                                        <span>Python</span>
-                                                    </a>
+                                                <div class="cols cols2">
+                                                    <div>
+                                                        <a class="barLink" href="/dotnet/azure/?view=azure-dotnet">
+                                                            <img src="media/index/logo_NET.svg" alt=""> .NET</a>
+                                                    </div>
+                                                    <div>
+                                                        <a class="barLink" href="/python/azure/">
+                                                            <img src="media/index/logo_python.svg" alt=""> Python</a>
+                                                    </div>
+                                                    <div>
+                                                        <a class="barLink" href="/java/azure/">
+                                                            <img src="media/index/logo_java.svg" alt=""> Java</a>
+                                                    </div>
+                                                    <div>
+                                                        <a class="barLink" href="/azure/app-service-web/app-service-web-get-started-php">
+                                                            <img src="media/index/logo_PHP.svg" alt=""> PHP</a>
+                                                    </div>
+                                                    <div>
+                                                        <a class="barLink" href="/nodejs/azure/?view=azure-node-2.0.0">
+                                                            <img src="media/index/logo_nodejs.svg" alt=""> Node.js</a>
+                                                    </div>
                                                 </div>
                                                 <div>
                                                     <h4>应用模型</h4>
                                                     <ul class="noBullet">
                                                         <li><a class="barLink" href="/azure/app-service-web/">Web 应用</a></li>
                                                         <li><a class="barLink" href="/azure/azure-functions/">无服务器函数</a></li>
-                                                        <li><a class="barLink" href="/azure/container-service/">将容器与 Kubernetes 配合使用</a></li>
+                                                        <li><a class="barLink" href="/azure/container-instances/">容器实例</a></li>
+                                                        <li><a class="barLink" href="/azure/container-service/kubernetes/">将容器与 Kubernetes 配合使用</a></li>
                                                         <li><a class="barLink" href="/azure/service-fabric/">将微服务与 Service Fabric 配合使用</a></li>
                                                     </ul>
                                                 </div>
@@ -155,7 +148,7 @@ ms.lasthandoff: 07/20/2017
                                         <div class="card">
                                             <div class="cardText">
                                                 <h3>管理数据和 AI</h3>
-                                                <h4>关系型数据库服务</h4>
+                                                <h4>关系数据库</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/sql-database/">SQL 数据库即服务</a></li>
                                                     <li><a class="barLink" href="/azure/postgresql/">PostgreSQL 数据库即服务</a></li>
@@ -181,17 +174,15 @@ ms.lasthandoff: 07/20/2017
                                         <div class="card">
                                             <div class="cardText">
                                                 <h3>命令行工具</h3>
-                                                <div class="ico48Link">
-                                                    <a href="/cli/azure/overview">
-                                                        <img src="media/index/azure_dev-7.svg" alt="">
-                                                        <span>Azure<br />CLI</span>
-                                                    </a>
-                                                </div>
-                                                <div class="ico48Link">
-                                                    <a href="/powershell/azure/overview">
-                                                        <img src="media/index/azure_dev-8.svg" alt="">
-                                                        <span>Azure<br />PowerShell</span>
-                                                    </a>
+                                                <div class="cols">
+                                                    <div>
+                                                        <a class="barLink" href="/cli/azure/overview">
+                                                            <img src="media/index/azure_dev-7.svg" alt=""> Azure CLI</a>
+                                                    </div>
+                                                    <div>
+                                                        <a class="barLink" href="/powershell/azure/overview">
+                                                            <img src="media/index/azure_dev-8.svg" alt=""> Azure PowerShell</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -204,17 +195,15 @@ ms.lasthandoff: 07/20/2017
                                         <div class="card">
                                             <div class="cardText">
                                                 <h3>DevOps</h3>
-                                                <div class="ico48Link">
-                                                    <a href="https://www.visualstudio.com/en-us/docs/build/apps/jenkins/build-deploy-jenkins">
-                                                        <img src="/media/logos/logo_visual-studio.svg" alt="">
-                                                        <span>Visual Studio<br />Team Services</span>
-                                                    </a>
-                                                </div>
-                                                <div class="ico48Link">
-                                                    <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">
-                                                        <img src="/media/logos/logo_jenkins.svg" alt="">
-                                                        <span>Azure VM<br />上的 Jenkins</span>
-                                                    </a>
+                                                <div class="cols">
+                                                    <div>
+                                                        <a class="barLink" href="https://www.visualstudio.com/en-us/docs/build/apps/jenkins/build-deploy-jenkins">
+                                                            <img src="https://docs.microsoft.com/en-us/media/logos/logo_visual-studio.svg" alt=""> Visual Studio Team Services</a>
+                                                    </div>
+                                                    <div>
+                                                        <a class="barLink" href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">
+                                                            <img src="https://docs.microsoft.com/en-us/media/logos/logo_jenkins.svg" alt="">Azure VM 上的 Jenkins</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -352,6 +341,12 @@ ms.lasthandoff: 07/20/2017
                                     </ul>
                                     <h3>容器</h3>
                                     <ul>
+                                        <li>
+                                            <a href="/azure/container-instances/">
+                                                <img src="media/index/ContainerInstances.svg" alt="" />
+                                                <p>Azure 容器实例</p>
+                                            </a>
+                                        </li>
                                         <li>
                                             <a href="/azure/container-service/">
                                                 <img src="media/index/ContainerService.svg" alt="" />
@@ -1740,18 +1735,18 @@ ms.lasthandoff: 07/20/2017
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/service-fabric/">
+                                <a href="/azure/container-instances/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/Fabric.svg" alt="" />
+                                                        <img src="media/index/ContainerInstances.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Service Fabric</h3>
-                                                    <p>在 Windows 或 Linux 上开发微服务和协调容器</p>
+                                                    <h3>Azure 容器实例</h3>
+                                                    <p>使用单个命令轻松运行容器</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1790,6 +1785,25 @@ ms.lasthandoff: 07/20/2017
                                                 <div class="cardText">
                                                     <h3>批处理</h3>
                                                     <p>使用容器运行计算作业</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/service-fabric/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/Fabric.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Service Fabric</h3>
+                                                    <p>在 Windows 或 Linux 上开发微服务和协调容器</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1865,7 +1879,7 @@ ms.lasthandoff: 07/20/2017
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/cosmosdb.svg" alt="" />
+                                                        <img src="media/index/CosmosDB_rgb_ui_lighttheme.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">

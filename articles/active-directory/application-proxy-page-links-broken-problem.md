@@ -1,5 +1,5 @@
 ---
-title: Links on the page don't work for an Application Proxy application | Microsoft Docs
+title: "页面上的链接对应用程序代理应用程序不适用 | Microsoft Docs"
 description: "如何对与 Azure AD 集成的应用程序代理应用程序上断开的链接问题进行故障排除"
 services: active-directory
 documentationcenter: 
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 165536dcaa7a5db1c913121895634659d70d5c9c
 ms.openlocfilehash: e4b2556533fcb22556ca526d5815908fdefb0788
-ms.lasthandoff: 04/18/2017
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/30/2017
 
 ---
 

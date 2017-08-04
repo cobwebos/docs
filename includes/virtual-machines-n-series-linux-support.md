@@ -1,17 +1,14 @@
-## 支持的分发和驱动程序
-<a id="supported-distributions-and-drivers" class="xliff"></a>
+## <a name="supported-distributions-and-drivers"></a>支持的分发和驱动程序
 
 
-### NV 实例 - NVIDIA GRID 驱动程序
-<a id="nv-instances---nvidia-grid-drivers" class="xliff"></a>
+### <a name="nv-instances---nvidia-grid-drivers"></a>NV 实例 - NVIDIA GRID 驱动程序
 
 
 | 分发 | 驱动程序 |
 | --- | --- | 
-| Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.3<br/><br/>基于 CentOS 的 7.3 | NVIDIA GRID 4.2，驱动程序分支为 R367|
+| Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.3<br/><br/>基于 CentOS 的 7.3 | NVIDIA GRID 4.3，驱动程序分支为 R367|
 
-### NC 实例 - NVIDIA Tesla 驱动程序
-<a id="nc-instances---nvidia-tesla-drivers" class="xliff"></a>
+### <a name="nc-instances---nvidia-tesla-drivers"></a>NC 实例 - NVIDIA Tesla 驱动程序
 | 分发 | 驱动程序 |
 | --- | --- | 
 | Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3<br/><br/> 基于 CentOS 的 7.3 | NVIDIA CUDA 8.0，驱动程序分支为 R375 |

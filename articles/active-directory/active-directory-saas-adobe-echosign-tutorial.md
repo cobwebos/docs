@@ -1,157 +1,280 @@
 ---
-title: "教程：Azure Active Directory 与 Adobe EchoSign 集成 | Microsoft Docs"
-description: "了解如何将 Adobe EchoSign 与 Azure Active Directory 结合使用以启用单一登录、自动化预配和其他功能！"
+title: "教程：Azure Active Directory 与 Adobe Sign 集成 | Microsoft Docs"
+description: "了解如何在 Azure Active Directory 和 Adobe Sign 之间配置单一登录。"
 services: active-directory
+documentationCenter: na
 author: jeevansd
-documentationcenter: na
 manager: femila
 ms.assetid: f9385723-8fe7-4340-8afb-1508dac3e92b
 ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 02/13/2017
+ms.date: 06/24/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 7cc133d6289bffbc3b7fc591104bc51ebfc67ddd
-ms.openlocfilehash: b4b215b17ff54bc04bae681fae8a7ea916bc9e3c
-ms.lasthandoff: 02/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
+ms.openlocfilehash: b413772de1af1fbb128d29b81e5831cfd6a39ab4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/23/2017
 
 
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adobe-echosign"></a>教程：Azure Active Directory 与 Adobe EchoSign 集成
-本教程旨在展示 Azure 与 Adobe EchoSign 集成。  
+# <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>教程：Azure Active Directory 与 Adobe Sign 集成
 
-在本教程中概述的方案假定您已具有以下各项：
+在本教程中，了解如何将 Adobe Sign 与 Azure Active Directory (Azure AD) 集成。
 
-* 一个有效的 Azure 订阅
-* 已启用 Adobe EchoSign 单一登录 (SSO) 的订阅
+将 Adobe Sign 与 Azure AD 集成可提供以下优势：
 
-完成本教程后，分配到 Adobe EchoSign 的 Azure AD 用户将能够在 Adobe EchoSign 公司站点（服务提供商启动的登录）或通过阅读[访问面板简介](active-directory-saas-access-panel-introduction.md)单一登录应用程序。
+- 可在 Azure AD 中控制谁有权访问 Adobe Sign
+- 可以让用户使用其 Azure AD 帐户自动登录到 Adobe Sign（单一登录）
+- 可以在一个中心位置（即 Azure 门户）中管理帐户
 
-在本教程中概述的方案由以下构建基块组成：
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-1. 支持 Adobe EchoSign 的应用程序集成
-2. 配置单一登录 (SSO)
-3. 配置用户设置
-4. 分配用户
+## <a name="prerequisites"></a>先决条件
 
-![方案](./media/active-directory-saas-adobe-echosign-tutorial/IC789511.png "方案")
+若要配置 Azure AD 与 Adobe Sign 的集成，需要以下项：
 
-## <a name="enable-the-application-integration-for-adobe-echosign"></a>为 Adobe EchoSign 启用应用程序集成
-本部分旨在概述如何为 Adobe EchoSign 启用应用程序集成。
+- 一个 Azure AD 订阅
+- 已启用 Adobe Sign 单一登录的订阅
 
-**若要为 Adobe EchoSign 启用应用程序集成，请执行以下步骤：**
+> [!NOTE]
+> 不建议使用生产环境测试本教程中的步骤。
 
-1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
-   
-   ![Active Directory](./media/active-directory-saas-adobe-echosign-tutorial/IC700993.png "Active Directory")
-2. 在“目录”列表中，选择要启用目录集成的目录。
-3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
-   
-   ![应用程序](./media/active-directory-saas-adobe-echosign-tutorial/IC700994.png "应用程序")
-4. 在页面底部单击“添加”。
-   
-   ![添加应用程序](./media/active-directory-saas-adobe-echosign-tutorial/IC749321.png "添加应用程序")
-5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
-   
-   ![从库添加应用程序](./media/active-directory-saas-adobe-echosign-tutorial/IC749322.png "从库添加应用程序")
-6. 在“搜索框”中，键入“Adobe EchoSign”。
-   
-   ![应用程序库](./media/active-directory-saas-adobe-echosign-tutorial/IC789514.png "应用程序库")
-7. 在“结果”窗格中，选择“Adobe EchoSign”，然后单击“完成”，添加该应用程序。
-   
-   ![Adobe EchoSign](./media/active-directory-saas-adobe-echosign-tutorial/IC789515.png "Adobe EchoSign")
-   
-## <a name="configure-single-sign-on"></a>配置单一登录
+测试本教程中的步骤应遵循以下建议：
 
-本部分旨在概述如何使用户使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户对 Adobe EchoSign 进行身份验证。
+- 除非必要，请勿使用生产环境。
+- 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
-作为此过程的一部分，要求创建 base-64 编码的证书文件。 如果不熟悉此过程，请参阅[如何将二进制证书转换为文本文件](http://youtu.be/PlgrzUZ-Y1o)。
+## <a name="scenario-description"></a>方案描述
+在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
-1. 在 Azure 经典门户的“Adobe EchoSign”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
-   
-   ![配置单一登录](./media/active-directory-saas-adobe-echosign-tutorial/IC789516.png "配置单一登录")
-2. 在“你希望用户如何登录 Adobe EchoSign”页面上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
-   
-   ![配置单一登录](./media/active-directory-saas-adobe-echosign-tutorial/IC789517.png "配置单一登录")
-3. 在“配置应用 URL”页上的“Adobe EchoSign 登录 URL”文本框中，使用以下模式“*https://company.echosign.com/*”键入 URL，然后单击“下一步”。
-   
-   ![配置应用 URL](./media/active-directory-saas-adobe-echosign-tutorial/IC789518.png "配置应用 URL")
-4. 在“配置 Adobe EchoSign 的单一登录”页上，请单击“下载证书”，然后在计算机上保存该证书文件。
-   
-   ![配置单一登录](./media/active-directory-saas-adobe-echosign-tutorial/IC789519.png "配置单一登录")
-5. 在其他 Web 浏览器窗口中，以管理员身份登录 Adobe EchoSign 公司站点。
-6. 在顶部菜单中，单击“帐户”，然后在左侧骰子的导航窗格中，单击“帐户设置”下的“SAML 设置”。
-   
-   ![帐户](./media/active-directory-saas-adobe-echosign-tutorial/IC789520.png "Account")
-7. 在“SAML 设置”部分中执行以下步骤：
-   
-   ![SAML 设置](./media/active-directory-saas-adobe-echosign-tutorial/IC789521.png "SAML 设置")
-   
-   1. 对于“SAML 模式”，选择“SAML 强制”。
-   2. 选择“允许 EchoSign 帐户管理员使用 EchoSign 凭据登录”。
-   3. 对于“用户创建”，选择“自动添加通过 SAML 验证了身份的用户”。
-8. 继续执行以下步骤：
-   
-   ![SAML 设置](./media/active-directory-saas-adobe-echosign-tutorial/IC789522.png "SAML 设置")
-   
-   1. 在 Azure 经典门户的“配置 Adobe EchoSign 的单一登录”对话框页面上，复制“实体 ID”值，然后将其粘贴到“IdP 实体 ID”文本框。
-   2. 在 Azure 经典门户的“配置 Adobe EchoSign 的单一登录”对话框页面上，复制“远程登录 URL”值，然后将其粘贴到“IdP 登录 URL”文本框。
-   3. 在 Azure 经典门户的“配置 Adobe EchoSign 的单一登录”对话框页面上，复制“远程注销 URL”值，然后将其粘贴到“IdP 注销 URL”文本框。
-   4. 基于下载的证书创建一个 **base-64 编码**的文件。  
-      
-      >[!TIP]
-      >有关详细信息，请参阅 [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)（如何将二进制证书转换为文本文件）。
-      >  
-   5. 在记事本中打开 base-64 编码证书，将内容复制到剪贴板，然后将其粘贴到“IdP 证书”文本框
-   6. 单击“保存更改”。
-9. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
-   
-   ![配置单一登录](./media/active-directory-saas-adobe-echosign-tutorial/IC789523.png "配置单一登录")
-   
-   ## <a name="configure-user-provisioning"></a>配置用户设置
+1. 从库中添加 Adobe Sign
+2. 配置和测试 Azure AD 单一登录
 
-为了使 Azure AD 用户能够登录 Adobe EchoSign，必须对其进行预配才能使其登录 Adobe EchoSign。  
+## <a name="adding-adobe-sign-from-the-gallery"></a>从库中添加 Adobe Sign
+若要配置 Adobe Sign 与 Azure AD 的集成，需要从库中将 Adobe Sign 添加到托管 SaaS 应用列表。
 
-* 就 Adobe EchoSign 来说，预配任务需要手动完成。
+**若要从库中添加 Adobe Sign，请执行以下步骤：**
+
+1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+
+    ![Active Directory][1]
+
+2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+
+    ![应用程序][2]
+    
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+
+    ![应用程序][3]
+
+4. 在“搜索框”中，键入“Adobe Sign”。
+
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_search.png)
+
+5. 在结果窗格中，选择“Adobe Sign”，然后单击“添加”按钮添加该应用程序。
+
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_addfromgallery.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+在本部分中，基于名为“Britta Simon”的测试用户配置和测试 Adobe Sign 的 Azure AD 单一登录。
+
+若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Adobe Sign 用户。 换句话说，需要建立 Azure AD 用户与 Adobe Sign 中相关用户之间的关联关系。
+
+可通过将 Azure AD 中“用户名”的值指定为 Adobe Sign 中“用户名”的值来建立此关联关系。
+
+若要配置和测试 Adobe Sign 的 Azure AD 单一登录，需要完成以下构建基块：
+
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
+2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+3. **[创建 Adobe Sign 测试用户](#creating-an-adobe-sign-test-user)** - 目的是在 Adobe Sign 中拥有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+
+### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+
+在本部分中，在 Azure 门户中启用 Azure AD 单一登录并在 Adobe Sign 应用程序中配置单一登录。
+
+**若要配置 Adobe Sign 的 Azure AD 单一登录，请执行以下步骤：**
+
+1. 在 Azure 门户中的 Adobe Sign 应用程序集成页上，单击“单一登录”。
+
+    ![配置单一登录][4]
+
+2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+ 
+    ![配置单一登录](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_samlbase.png)
+
+3. 在“Adobe Sign 域和 URL”部分中，执行以下步骤：
+
+    ![配置单一登录](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_url.png)
+
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.echosign.com/`
+
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.echosign.com`
+
+    > [!NOTE] 
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)获取这些值。 
+ 
+4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+
+    ![配置单一登录](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_certificate.png) 
+
+5. 单击“保存”按钮。
+
+    ![配置单一登录](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_400.png)
+
+6. 在“Adobe Sign 配置”部分，单击“配置 Adobe Sign”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+
+    ![配置单一登录](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_configure.png) 
+
+
+7. 在其他 Web 浏览器窗口中，以管理员身份登录 Adobe Sign 公司站点。
+
+8. 在顶部菜单中，单击“帐户”，然后在左侧的导航窗格中，单击“帐户设置”下的“SAML 设置”。
+   
+   ![帐户](./media/active-directory-saas-adobe-echosign-tutorial/ic789520.png "Account")
+
+9. 在“SAML 设置”部分中执行以下步骤：
+   
+   ![SAML 设置](./media/active-directory-saas-adobe-echosign-tutorial/ic789521.png "SAML 设置")
+   
+   a.在“横幅徽标”下面，选择“删除上传的徽标”。 对于“SAML 模式”，选择“SAML 强制”。
+   
+   b.在“磁贴徽标”下面，选择“删除上传的徽标”。 选择“允许 EchoSign 帐户管理员使用 EchoSign 凭据登录”。
+   
+   c. 对于“用户创建”，选择“自动添加通过 SAML 验证了身份的用户”。
+
+10. 继续执行以下步骤：
+
+       ![SAML 设置](./media/active-directory-saas-adobe-echosign-tutorial/ic789522.png "SAML 设置")
+
+    a.在“横幅徽标”下面，选择“删除上传的徽标”。 将从 Azure 门户复制的“SAML 实体 ID”粘贴到“IdP 实体 ID”文本框中。
+    
+    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 将从 Azure 门户复制的“SAML 单一登录服务 URL”粘贴到“IDP 登录 URL”文本框中。
+   
+    c. 将从 Azure 门户复制的“注销 URL”粘贴到“IdP 注销 URL”文本框中。
+
+    d. 在记事本中打开下载的“证书(Base64)”**)**文件，将其内容复制到剪贴板，然后将其粘贴到“IdP 证书”文本框中
+
+    e. 单击“保存更改”。
+
+> [!TIP]
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 
+
+### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
+
+![创建 Azure AD 用户][100]
+
+**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+
+1. 在 **Azure 门户**的左侧导航窗格中，单击“Azure Active Directory”图标。
+
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-adobe-echosign-tutorial/create_aaduser_01.png) 
+
+2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+    
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-adobe-echosign-tutorial/create_aaduser_02.png) 
+
+3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+ 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-adobe-echosign-tutorial/create_aaduser_03.png) 
+
+4. 在“用户”对话框页上，执行以下步骤：
+ 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-adobe-echosign-tutorial/create_aaduser_04.png) 
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+
+    c. 选择“显示密码”并记下“密码”的值。
+
+    d.单击“下一步”。 单击“创建” 。
+ 
+### <a name="creating-an-adobe-sign-test-user"></a>创建 Adobe Sign 测试用户
+
+为了使 Azure AD 用户能够登录 Adobe Sign，必须对其进行预配。 就 Adobe Sign 来说，预配任务需要手动完成。
+
+>[!NOTE]
+>可以使用任何其他 Adobe Sign 用户帐户创建工具或 Adobe Sign 提供的 API 预配 AAD 用户帐户。 
 
 **若要预配用户帐户，请执行以下步骤：**
 
-1. 以管理员身份登录 **Adobe EchoSign** 公司站点。
-2. 在顶部菜单中，单击“帐户”，然后在左侧骰子的导航窗格中，单击“用户和组”，再单击“创建新用户”。
+1. 以管理员身份登录 Adobe Sign 公司站点。
+
+2. 在顶部菜单中，单击“帐户”，然后在左侧的导航窗格中，单击“用户和组”，再单击“创建新用户”。
    
-   ![帐户](./media/active-directory-saas-adobe-echosign-tutorial/IC789524.png "Account")
+   ![帐户](./media/active-directory-saas-adobe-echosign-tutorial/ic789524.png "Account")
+   
 3. 在“创建新用户”部分中，执行以下步骤：
    
-   ![创建用户](./media/active-directory-saas-adobe-echosign-tutorial/IC789525.png "创建用户")
+   ![创建用户](./media/active-directory-saas-adobe-echosign-tutorial/ic789525.png "创建用户")
    
-   1. 键入希望在相关文本框中预配的有效 AAD 帐户的“电子邮件地址”、“名字”和“姓氏”。
-   2. 单击“创建用户”。
-      
-      >[!NOTE]
-      >Azure Active Directory 帐户持有者将收到一封电子邮件，该邮件包含在激活帐户前要确认帐户的链接。 
-      > 
+   a.在“横幅徽标”下面，选择“删除上传的徽标”。 键入希望在相关文本框中预配的有效 AAD 帐户的“电子邮件地址”、“名字”和“姓氏”。
+   
+   b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“创建用户”。
 
 >[!NOTE]
->可以使用任何其他 Adobe EchoSign 用户帐户创建工具或 Adobe EchoSign 提供的 API 预配 AAD 用户帐户。 
-> 
+>Azure Active Directory 帐户持有者收到一封电子邮件，该邮件包含在激活帐户前确认帐户的链接。 
 
-## <a name="assign-users"></a>分配用户
-若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
+### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-**若要将用户分配到 Adobe EchoSign，请执行以下步骤：**
+在本部分中，通过向 Britta Simon 授予 Adobe Sign 的访问权限支持她使用 Azure 单一登录。
 
-1. 在 Azure 经典门户中，创建测试帐户。
-2. 在“Adobe EchoSign”应用程序集成页上，单击“分配用户”。
-   
-   ![分配用户](./media/active-directory-saas-adobe-echosign-tutorial/IC789526.png "分配用户")
-3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
-   
-   ![是](./media/active-directory-saas-adobe-echosign-tutorial/IC767830.png "是")
+![分配用户][200] 
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+**若要将 Britta Simon 分配到 Adobe Sign，请执行以下步骤：**
+
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+
+    ![分配用户][201] 
+
+2. 在应用程序列表中，选择“Adobe Sign”。
+
+    ![配置单一登录](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_app.png) 
+
+3. 在左侧菜单中，单击“用户和组”。
+
+    ![分配用户][202] 
+
+4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+
+    ![分配用户][203]
+
+5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+
+6. 在“用户和组”对话框中单击“选择”按钮。
+
+7. 在“添加分配”对话框中单击“分配”按钮。
+    
+### <a name="testing-single-sign-on"></a>测试单一登录
+
+在访问面板中单击 Adobe Sign 磁贴时，应该会自动登录 Adobe Sign 应用程序。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+
+## <a name="additional-resources"></a>其他资源
+
+* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+
+<!--Image references-->
+
+[1]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_04.png
+
+[100]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_203.png
 
 

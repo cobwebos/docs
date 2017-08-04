@@ -13,13 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/15/2017
+ms.date: 06/15/2017
 ms.author: chackdan
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: bee47924092a0b327ef3aa5b936116bf311ce8d7
-ms.lasthandoff: 03/29/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 676a46449b1ff5ceb749df876bad614c3804d220
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>自定义 Service Fabric 群集设置和结构升级策略
@@ -414,7 +414,7 @@ ms.lasthandoff: 03/29/2017
 | DeleteName |string，默认值为“Admin” |用于命名 URI 删除的安全性配置。 |
 | PropertyWriteBatch |string，默认值为“Admin” |用于命名属性写入操作的安全性配置。 |
 | CreateService |string，默认值为“Admin” | 用于服务创建的安全性配置。 |
-| CreateServiceFromTemplate |string，默认值为“Admin” |用于通过模板进行的服务创建的安全性配置。 |
+| CreateServiceFromTemplate |string，默认值为“Admin” |用于通过模板创建服务的安全性配置。 |
 | UpdateService |string，默认值为“Admin” |用于服务更新的安全性配置。 |
 | DeleteService  |string，默认值为“Admin” |用于服务删除的安全性配置。 |
 | ProvisionApplicationType |string，默认值为“Admin” | 用于应用程序类型预配的安全性配置。 |
@@ -450,7 +450,7 @@ ms.lasthandoff: 03/29/2017
 | FileDownload |string，默认值为“Admin” | 用于启动映像存储客户端文件下载（群集外部）的安全性配置。 |
 | InternalList |string，默认值为“Admin” | 用于映像存储客户端文件列表操作（内部）的安全性配置。 |
 | 删除 |string，默认值为“Admin” | 用于映像存储客户端删除操作的安全性配置。 |
-| 上载 |string，默认值为“Admin” | 用于映像存储客户端上传操作的安全性配置。 |
+| 上传 |string，默认值为“Admin” | 用于映像存储客户端上传操作的安全性配置。 |
 | GetStagingLocation |string，默认值为“Admin” | 用于检索映像存储客户端暂存位置的安全性配置。 |
 | GetStoreLocation |string，默认值为“Admin” | 用于检索映像存储客户端存储位置的安全性配置。 |
 | NodeControl |string，默认值为“Admin” | 用于启动、停止和重启节点的安全性配置。 |

@@ -14,16 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 7055e207cfbcc9de02669be9f0e97045769ef217
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: a5528e01ca7ad9bc807b621e08de991ce1ab9fd8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
-# 处理 IoT 中心设备到云的消息 (Java)
-<a id="process-iot-hub-device-to-cloud-messages-java" class="xliff"></a>
+# <a name="process-iot-hub-device-to-cloud-messages-java"></a>处理 IoT 中心设备到云的消息 (Java)
 
 [!INCLUDE [iot-hub-selector-process-d2c](../../includes/iot-hub-selector-process-d2c.md)]
 
@@ -34,11 +32,16 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
 在本教程最后，会运行 3 个 Java 控制台应用：
 
 * **simulated-device**（在 [IoT 中心入门]教程中创建的应用的修改版本）会每秒发送一次数据点设备到云的消息，每 10 秒发送一次互动设备到云的消息。 此应用使用 AMQP 协议来与 IoT 中心通信。
-* **read-d2c-messages** 显示模拟设备应用发送的遥测数据。
+* **read-d2c-messages** 显示设备应用发送的遥测数据。
 * **read-critical-queue** 从附加到 IoT 中心的服务总线队列中取消关键消息的排队。
 
 > [!NOTE]
+<<<<<<< HEAD IoT 中心对许多设备平台和语言（包括 C、Java 和 JavaScript）提供 SDK 支持。 若要了解如何将本教程中的设备替换为物理设备，以及如何将设备连接到 IoT 中心，请参阅 [Azure IoT 开发人员中心]。
+> 
+> 
+=======
 > IoT 中心对许多设备平台和语言（包括 C、Java 和 JavaScript）提供 SDK 支持。 若要了解如何将本教程中的模拟设备替换为物理设备，以及如何将设备连接到 IoT 中心，请参阅 [Azure IoT 开发人员中心]。
+>>>>>>> master
 
 若要完成本教程，您需要以下各项：
 
@@ -49,10 +52,14 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
 
 应具备 [Azure 存储]和 [Azure 服务总线]的一些基础知识。
 
-## 从模拟设备应用发送交互式消息
-<a id="send-interactive-messages-from-a-simulated-device-app" class="xliff"></a>
+<<<<<<< HEAD
+## <a name="send-interactive-messages-from-a-device-app"></a>从设备应用发送交互式消息
+<a name="in-this-section-you-modify-the-device-app-you-created-in-the-get-started-with-iot-hub-tutorial-to-occasionally-send-messages-that-require-immediate-processing"></a>在本部分中，会修改在 [IoT 中心入门]教程中创建的设备应用，不定期发送需要立即处理的消息。
+=======
+## <a name="send-interactive-messages-from-a-simulated-device-app"></a>从模拟设备应用发送交互式消息
 
 在本部分中，会修改 [IoT 中心入门]教程中创建的模拟设备应用，不定期发送需要立即处理的消息。
+>>>>>>> master
 
 1. 使用文本编辑器打开 simulated-device\src\main\java\com\mycompany\app\App.java 文件。 本文件包含你在 [IoT 中心入门]教程中创建的 **simulated-device** 应用的代码。
 
@@ -103,11 +110,21 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
         }
     }
     ```
+<<<<<<< HEAD
+   
+    This method randomly adds the property `"level": "critical"` to messages sent by the device, which simulates a message that requires immediate action by the application back-end. The application passes this information in the message properties, instead of in the message body, so that IoT Hub can route the message to the proper message destination.
+   
+   > [!NOTE]
+   > 可使用消息属性根据各种方案路由消息，包括冷路径处理和此处所示的热路径示例。
+   > 
+   > 
+=======
 
-    此方法会将 `"level": "critical"` 属性随机添加到模拟设备发送的消息，该设备可模拟需要应用程序后端立即执行操作的消息。 应用程序将在消息属性中传递此信息（而非在消息正文中），因此 IoT 中心可将消息路由到适当的消息目标。
+    This method randomly adds the property `"level": "critical"` to messages sent by the simulated device, which simulates a message that requires immediate action by the application back-end. The application passes this information in the message properties, instead of in the message body, so that IoT Hub can route the message to the proper message destination.
 
     > [!NOTE]
-    > 可使用消息属性根据各种方案路由消息，包括冷路径处理和此处所示的热路径示例。
+    > You can use message properties to route messages for various scenarios including cold-path processing, in addition to the hot path example shown here.
+>>>>>>> master
 
 2. 保存并关闭 simulated-device\src\main\java\com\mycompany\app\App.java 文件。
 
@@ -120,8 +137,7 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
     mvn clean package -DskipTests
     ```
 
-## 向 IoT 中心添加一个队列并向其路由消息
-<a id="add-a-queue-to-your-iot-hub-and-route-messages-to-it" class="xliff"></a>
+## <a name="add-a-queue-to-your-iot-hub-and-route-messages-to-it"></a>向 IoT 中心添加一个队列并向其路由消息
 
 在本部分中，将创建一个服务总线队列并将其连接到 IoT 中心，还会配置 IoT 中心，根据消息上的现有属性发送消息到队列。 若要深入了解如何处理来自服务总线队列的消息，请参阅[队列入门][lnk-sb-queues-java]教程。
 
@@ -143,13 +159,11 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
 
     ![回退路由][33]
 
-## （可选）从队列终结点读取
-<a id="optional-read-from-the-queue-endpoint" class="xliff"></a>
+## <a name="optional-read-from-the-queue-endpoint"></a>（可选）从队列终结点读取
 
 可按照[队列入门][lnk-sb-queues-java]中的说明，选择性地从队列终结点读取消息。 将应用命名为 **read-critical-queue**。
 
-## 运行应用程序
-<a id="run-the-applications" class="xliff"></a>
+## <a name="run-the-applications"></a>运行应用程序
 
 现在即可运行 3 个应用程序。
 
@@ -177,8 +191,7 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
    
    ![运行 simulated-device][simulateddevice]
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 在本教程中，介绍了如何使用 IoT 中心的消息路由功能可靠地分派设备到云的消息。
 

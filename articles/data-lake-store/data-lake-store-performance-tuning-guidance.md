@@ -12,85 +12,137 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/06/2017
+ms.date: 06/30/2017
 ms.author: stewu
-translationtype: Human Translation
-ms.sourcegitcommit: af11866fc812cd8a375557b7bf9df5cdc9bba610
-ms.openlocfilehash: f0d0c05c08ce198e2702c76ad35b348107c664c7
-ms.lasthandoff: 01/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: e7ea83465328bd4c7479dec4093cd94700463854
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="performance-tuning-guidance-for-azure-data-lake-store"></a>Azure Data Lake Store 性能优化指南
+# <a name="tuning-azure-data-lake-store-for-performance"></a>优化 Azure Data Lake Store 性能
 
-本文提供有关在将数据写入高性能 Azure Data Lake Store 或从中读取数据时，如何获得最佳优化的指导。 本文旨在帮助用户了解可为常用数据上载/下载工具和数据分析工作负荷配置的参数。 本指南中的优化措施专门针对要将大量数据写入 Data Lake Store 或从中读取大量数据的资源密集型工作负荷。
+Data Lake Store 支持使用高吞吐量进行 I/O 密集型分析和数据移动。  在 Azure Data Lake Store 中，使用所有可用的吞吐量（每秒可读取或写入的数据量）对于获取最佳性能非常重要。  可通过尽可能多地执行并行读取和写入来实现这一点。
 
-## <a name="prerequisites"></a>先决条件
+![Data Lake Store 性能](./media/data-lake-store-performance-tuning-guidance/throughput.png)
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure Data Lake Store 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)
-* 具有 Data Lake Store 帐户访问权限的**Azure HDInsight 群集**。 请参阅[创建包含 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
+Azure Data Lake Store 可进行缩放，以便为所有分析方案提供必要的吞吐量。 默认情况下，Azure Data Lake Store 帐户自动提供足够的吞吐量来满足广泛用例的需求。 对于客户达到默认限制的情况，可联系 Microsoft 支持部门配置 ADLS 帐户，以提供更多吞吐量。
 
+## <a name="data-ingestion"></a>数据引入
 
-## <a name="guidelines-for-data-ingestion-tools"></a>数据引入工具指导原则
+将数据从源系统引入 ADLS 时，源硬件、源网络硬件以及与 ADLS 的网络连接可能成为瓶颈，请务必考虑到这一点。  
 
-本部分提供有关在将数据复制到或移到 Data Lake Store 时如何提高性能的指导。 本部分讲解限制性能的因素，以及如何克服这些限制。 下面是要注意的几个事项。
+![Data Lake Store 性能](./media/data-lake-store-performance-tuning-guidance/bottleneck.png)
 
-* **源数据** - 源数据的来源位置可能存在多种约束。 如果源数据位于慢速机械硬盘中或者吞吐功能较低的远程存储中，则吞吐量可能成为瓶颈。 SSD（最好是本地磁盘）的磁盘吞吐量较高，可提供最佳性能。
+确保数据移动不受这些因素的影响至关重要。
 
-* **网络** - 如果源数据在 VM 上，则 VM 与 Data Lake Store 之间的网络连接就很重要。 在 VM 中配备容量最大的 NIC 可以获得更大的网络带宽。
+### <a name="source-hardware"></a>源硬件
 
-* **跨区域复制** - 跨区域数据 I/O 固有地产生较高的网络费用，例如，在美国东部 2 区的 VM 上运行数据引入工具，将数据写入美国中部的 Data Lake Store 帐户。 如果跨区域复制数据，性能可能会下降。 建议在与目标 Data Lake Store 帐户所在的同一区域中的 VM 上使用数据引入作业，以最大程度地提高网络吞吐量。                                                                                                                                        
+无论使用本地计算机还是 Azure 中的 VM，都应仔细选择合适的硬件。 对于源磁盘硬件，最好使用 SSD（而不是 HDD）并选取主轴转速更快的磁盘硬件。 对于源网络硬件，请尽可能使用最快的 NIC。  在 Azure 上，建议使用 Azure D14 VM，该虚拟机具有相当强大的磁盘和网络硬件。
 
-* **群集** - 如果要通过 HDInsight 群集运行数据引入作业（例如，针对 DistCp），我们建议在群集中使用 D 系列 VM，因为它们包含更多的内存。 增加核心也有助于提高吞吐量。                                                                                                                                                                                                                                                                                                            
+### <a name="network-connectivity-to-azure-data-lake-store"></a>与 Azure Data Lake Store 的网络连接
 
-* **线程并发性** - 如果使用 HDInsight 群集从存储容器中复制数据，请注意，可使用的并发线程数会根据群集大小、容器大小和线程设置而受到限制。 提高 Data Lake Store 性能的最重要方法之一增大并发性。 应该优化设置来最大程度地提高并发度，从而获得更高的吞吐量。 下表列出了为实现更大并发性而可以配置的每种引入方法的设置。 单击表中的链接可转到相应的文章，其中介绍了如何使用工具将数据引入 Data Lake Store，以及如何优化工具的性能来获得最大吞吐量。
+源数据和 Azure Data Lake Store 之间的网络连接有时可能成为瓶颈。 如果源数据位于本地，请考虑使用 [Azure ExpressRoute](https://azure.microsoft.com/en-us/services/expressroute/) 的专用链接。 如果源数据位于 Azure 中，当数据与 Data Lake Store 位于同一 Azure 区域时可获得最佳性能。
 
-    | 工具               | 并发性设置                                                                |
-    |--------------------|------------------------------------------------------------------------------------|
-    | [Powershell](data-lake-store-get-started-powershell.md)       | PerFileThreadCount、ConcurrentFileCount |
-    | [AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)    | Azure Data Lake Analytics 单元         |
-    | [DistCp](data-lake-store-copy-data-wasb-distcp.md)            | -m (mapper)                             |
-    | [Azure 数据工厂](../data-factory/data-factory-azure-datalake-connector.md)| parallelCopies                          |
-    | [Sqoop](data-lake-store-data-transfer-sql-sqoop.md)           | fs.azure.block.size, -m (mapper)        |
+### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>配置数据引入工具，实现最大并行化
 
+解决上述源硬件和网络连接瓶颈后，即可配置引入工具。 下表概述了几种常用引入工具的关键设置，并提供了关于这些工具的详尽性能优化文章。  若要深入了解方案应使用何种工具，请参阅这篇[文章](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-data-scenarios)。
 
-## <a name="guidelines-while-working-with-hdinsight-workloads"></a>有关处理 HDInsight 工作负荷的指导原则
+| 工具               | 设置     | 更多详细信息                                                                 |
+|--------------------|------------------------------------------------------|------------------------------|
+| Powershell       | PerFileThreadCount、ConcurrentFileCount |  [链接](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-powershell#performance-guidance-while-using-powershell)   |
+| AdlCopy    | Azure Data Lake Analytics 单元  |   [链接](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
+| DistCp            | -m (mapper)   | [链接](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
+| Azure 数据工厂| parallelCopies    | [链接](../data-factory/data-factory-copy-activity-performance.md)                          |
+| Sqoop           | fs.azure.block.size, -m (mapper)    |   [链接](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
 
-运行分析工作负荷处理 Data Lake Store 中的数据时，我们建议使用 HDInsight 3.5 群集版本来获得 Data Lake Store 的最佳性能。 如果作业消耗较多的 I/O 资源，可出于性能原因配置某些参数。 例如，如果作业主要包括读取或写入，则增大传入和传出 Azure Data Lake Store 的 I/O 的并发性可以提高性能。
+## <a name="structure-your-data-set"></a>调整数据集结构
 
-如果并发性较高，Azure Data Lake Store 的性能会得到最大的优化。 可通过几种常规方法来提高 I/O 密集型作业的并发性。
+数据存储在 Data Lake Store 中时，文件大小、文件数和文件夹结构会对性能产生影响。  以下部分介绍了这些方面的最佳做法。  
 
-1. **运行大量的计算 YARN 容器，而不要运行少量的大型 YARN 容器** – 增加容器可提高输入和输出操作的并发性，因而可以利用 Data Lake Store 的能力。
+### <a name="file-size"></a>文件大小
 
-    例如，假设 HDInsight 群集中有 2 个 D3v2 节点。 每个 D3v2 节点包含 12GB 的 YARN 内存，因此，2 台 D3v2 计算机包含 24GB YARN 内存。 另外，假设已将 YARN 容器大小设置为 6GB。 这意味着，可以创建 4 个 6GB 大小的容器。 因此，可以并行运行 4 个并发任务。 若要提高并发性，可将容器大小减少到 3GB，这样，便可以创建 8 个 3GB 大小的容器。 因此，可以并行运行 8 个并发任务。 下面是示意图。
+通常，HDInsight 和 Azure Data Lake Analytics 等分析引擎的每个文件都存在开销。  如果将数据存储为多个小文件，这可能会对性能产生负面影响。  
 
-    ![Data Lake Store 性能](./media/data-lake-store-performance-tuning-guidance/image-1.png)
+通常可将数据组织到较大文件中，以获得更佳性能。  一般来说，可将数据集组织到 256 MB 或更大的文件中。 对于图像和二进制数据等情况，不能并行处理它们。  在这些情况下，建议以低于 2GB 的容量保存单个文件。
 
-    一个常见问题是为何不将容器大小减至 1GB 内存，这样就可以创建 24 个容器，进一步提高并发性。 这取决于任务是否需要 3GB 内存，1GB 是否足够。  在容器中执行的简单操作可能只需要 1GB 内存，而复杂的操作却需要 3GB 内存。  如果过度减小容器的大小，可能会发生内存不足异常。  如果发生这种情况，应增大容器的大小。  除了内存以外，虚拟核心数也会影响并行度。
+有时，数据管道对原始数据（含有多个小文件）的控制有限。  建议执行“烹调”过程来生成更大的文件，以供下游应用程序使用。  
 
-    ![Data Lake Store 性能](./media/data-lake-store-performance-tuning-guidance/image-2.png)
+### <a name="organizing-time-series-data-in-folders"></a>将时序数据组织到文件夹中
 
-2. **提高群集中的内存，获得更大的并发性** – 可以通过增大群集大小或选择内存更大的 VM 类型，来提高群集中的内存。 这样可以增大 YARN 的可用内存量，从而可以创建多个容器，提高并发性。  
+对于 Hive 和 ADLA 工作负荷，分区修剪时序数据可帮助某些查询只读取小部分数据，从而提高性能。    
 
-    例如，假设 HDInsight 群集包含单个 D3v2 节点，该节点具有 12GB 的 YARN 内存和 3GB 的容器。  可将群集扩展为 2 个 D3v2 节点，这样就会将 YARN 内存提高到 24GB，  将并发性从 4 提高到 8。
+引入时序数据的这些管道通常以非常结构化的方式对其文件和文件夹命名。 下面是一个极常见的示例，其中数据按日期进行了结构化：
 
-    ![Data Lake Store 性能](./media/data-lake-store-performance-tuning-guidance/image-3.png)
+    \DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
 
-3. **首先将任务数设置为现有的并发性数** – 现已适当地设置了容器大小来获得最大并发量。 接下来，应设置任务数，以使用所有这些容器。 每个工作负荷中的任务具有不同的名称。
+请注意，日期/时间信息同时显示为文件夹和文件名。
 
-    可能还需要考虑作业的大小。 如果作业较大，则每个任务可能要处理大量的数据。 可能需要使用更多的任务，以便每个任务不用处理过多的数据。
+下方是日期和时间的一种常见模式
 
-    例如，假设有 6 个容器。 我们一开始将任务数设置为 6。 可以尝试使用更多的任务，看看性能是否得到提升。 设置更多的任务不会增大并发性。 如果将任务数设置为大于 6，则在下一阶段之前，任务不会执行。 如果将任务数设置为小于 6，并发性不会充分利用。
+    \DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
 
-    每个工作负荷提供不同的参数用于设置任务数。 下表列出了其中一些参数。
+同样，选择的文件夹和文件组织方式应针对更大的文件大小和每个文件夹中合理的文件数进行优化。
 
-    | 工作负载               | 用于设置任务数的参数                                                         |
-    |--------------------|------------------------------------------------------------------------------------|
-    | [Spark on HDInisight](data-lake-store-performance-tuning-spark.md)       | <ul><li>Num-executors</li><li>Executor-memory</li><li>Executor-cores</li></ul> |
-    | [Hive on HDInsight](data-lake-store-performance-tuning-hive.md)    | hive.tez.container.size         |
-    | [MapReduce on HDInsight](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
-    | [Storm on HDInsight](data-lake-store-performance-tuning-storm.md)| <ul><li>工作进程数</li><li>Spout 执行器实例数</li><li>Bolt 执行器实例数 </li><li>Spout 任务数</li><li>Bolt 任务数</li></ul>|
+## <a name="optimizing-io-intensive-jobs-on-hadoop-and-spark-workloads-on-hdinsight"></a>在 HDInsight 上优化 Hadoop 和 Spark 工作负荷的 I/O 密集型作业
+
+作业属于以下三个类别之一：
+
+* CPU 密集型。  这些作业的计算时间长，I/O 时间最短。  例如，机器学习作业和自然语言处理作业。  
+* 内存密集型。  这些作业占用大量内存。  例如，PageRank 作业和实时分析作业。  
+* I/O 密集型。  这些作业大部分时间都在执行 I/O。  常见示例为，仅执行读取和写入操作的复制作业。  其他示例包括：读取大量数据、执行某些数据转换，然后将数据写回存储区的数据准备作业。  
+
+以下指南仅适用于 I/O 密集型作业。
+
+### <a name="general-considerations-for-an-hdinsight-cluster"></a>HDInsight 群集的一般注意事项
+
+* HDInsight 版本。 为获得最佳性能，请使用最新版 HDInsight。
+* 区域。 将 Data Lake Store 和 HDInsight 群集放置在同一区域。  
+
+HDInsight 群集由两个头节点和一些辅助角色节点组成。 每个辅助角色节点提供特定数量的核心和内存，具体取决于 VM 类型。  运行作业时，YARN 充当资源协商者，负责分配可用的内存和核心以创建容器。  每个容器运行完成作业所需的任务。  容器可并行运行以快速处理任务。 因此，通过并行运行尽可能多的容器可以提高性能。
+
+可优化 HDInsight 群集中的以下 3 层，以增加容器数和使用所有可用的吞吐量。  
+
+* 物理层
+* YARN 层
+* 工作负荷层
+
+### <a name="physical-layer"></a>物理层
+
+运行具有更多节点和/或更大 VM 的群集。  更大的群集可运行更多 YARN 容器，如下图所示。
+
+![Data Lake Store 性能](./media/data-lake-store-performance-tuning-guidance/VM.png)
+
+使用具有更多网络带宽的 VM。  如果网络带宽少于 Data Lake Store 吞吐量，则网络带宽量可能成为瓶颈。  网络带宽大小因不同 VM 而异。  请选择具有可能的最大网络带宽的 VM 类型。
+
+### <a name="yarn-layer"></a>YARN 层
+
+使用较小的 YARN 容器。  缩减每个 YARN 容器的大小，创建更多包含相同数量资源的容器。
+
+![Data Lake Store 性能](./media/data-lake-store-performance-tuning-guidance/small-containers.png)
+
+始终需要最小的 YARN 容器，具体取决于工作负荷。 如果选取的容器太小，作业会出现内存不足的问题。 YARN 容器通常不应小于 1 GB。 YARN 容器一般为 3 GB。 对于某些工作负荷，可能需要更大的 YARN 容器。  
+
+增加每个 YARN 容器的核心数。  增加分配给每个容器的核心数，以提高每个容器中运行的并行任务数。  这适用于每个容器运行多个任务的应用程序，例如 Spark。  对于在每个容器中运行单个线程的应用程序（如 Hive），最好分配多个容器，而不是为每个容器分配多个核心。   
+
+### <a name="workload-layer"></a>工作负荷层
+
+使用所有可用的容器。  将任务数设置为等于或大于可用容器数，以便利用所有资源。
+
+![Data Lake Store 性能](./media/data-lake-store-performance-tuning-guidance/use-containers.png)
+
+失败的任务成本高昂。 如果每项任务都有大量数据需要处理，那么任务失败就会导致以高成本重试任务。  因此，最好创建多个任务，每个任务处理少量数据。
+
+除上述常规准则外，每个应用程序都有不同的参数，可用于优化该特定应用程序。 下表列出了一些参数和链接，有助于开始对每个应用程序执行性能优化。
+
+| 工作负载               | 用于设置任务数的参数                                                         |
+|--------------------|-------------------------------------------------------------------------------------|
+| [Spark on HDInisight](data-lake-store-performance-tuning-spark.md)       | <ul><li>Num-executors</li><li>Executor-memory</li><li>Executor-cores</li></ul> |
+| [Hive on HDInsight](data-lake-store-performance-tuning-hive.md)    | <ul><li>hive.tez.container.size</li></ul>         |
+| [MapReduce on HDInsight](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
+| [Storm on HDInsight](data-lake-store-performance-tuning-storm.md)| <ul><li>工作进程数</li><li>Spout 执行器实例数</li><li>Bolt 执行器实例数 </li><li>Spout 任务数</li><li>Bolt 任务数</li></ul>|
 
 ## <a name="see-also"></a>另请参阅
 * [Overview of Azure Data Lake Store](data-lake-store-overview.md)

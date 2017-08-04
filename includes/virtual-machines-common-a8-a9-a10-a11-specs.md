@@ -1,7 +1,6 @@
 
 
-## 部署注意事项
-<a id="deployment-considerations" class="xliff"></a>
+## <a name="deployment-considerations"></a>部署注意事项
 * **Azure 订阅** - 若要部署不止一些计算密集型实例，请考虑使用即用即付订阅或其他购买选项。 如果使用的是 [Azure 免费帐户](https://azure.microsoft.com/free/)，则仅可以使用有限数量的 Azure 计算核心。
 
 * **定价和可用性** - 只在标准定价层提供 VM 大小。 请查看[按区域提供的产品] (https://azure.microsoft.com/regions/services/)，了解产品在各个 Azure 区域的可用性。 

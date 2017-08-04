@@ -22,9 +22,7 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 03/18/2017
 
 ---
-<a id="java-web-app-sign-in-and-sign-out-with-azure-ad" class="xliff"></a>
-
-# 使用 Azure AD 进行 Java Web 应用登录和注销
+# <a name="java-web-app-sign-in-and-sign-out-with-azure-ad"></a>使用 Azure AD 进行 Java Web 应用登录和注销
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
 使用 Azure Active Directory (Azure AD)，只需编写几行代码、提供单一登录和注销，就能轻松外包 Web 应用的标识管理。 可以使用社区驱动的用于 Java 的 Azure Active Directory 身份验证库 (ADAL4J) 将用户登录到 Java Web 应用或者从中注销。
@@ -35,18 +33,14 @@ ms.lasthandoff: 03/18/2017
 * 显示某些用户信息。
 * 将用户从应用中注销。
 
-<a id="before-you-get-started" class="xliff"></a>
-
-## 准备工作
+## <a name="before-you-get-started"></a>准备工作
 
 * 下载[应用框架](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/skeleton.zip)或下载[已完成的示例](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect\\/archive/complete.zip)。
 * 还需要一个用于注册应用的 Azure AD 租户。 如果没有 Azure AD 租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
 
 做好准备后，请遵照以下 9 个部分中的步骤操作。
 
-<a id="step-1-register-the-new-app-with-azure-ad" class="xliff"></a>
-
-## 步骤 1：向 Azure AD 注册新的应用
+## <a name="step-1-register-the-new-app-with-azure-ad"></a>步骤 1：向 Azure AD 注册新的应用
 若要设置应用对用户进行身份验证，请先执行以下操作，在租户中注册用户：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
@@ -61,9 +55,7 @@ ms.lasthandoff: 03/18/2017
 
 进入应用的门户后，请在“设置”页上创建并复制应用的密钥。 稍后需要用到该密钥。
 
-<a id="step-2-set-up-the-app-to-use-the-adal4j-and-prerequisites-by-using-maven" class="xliff"></a>
-
-## 步骤 2：使用 Maven 将应用设置为使用 ADAL4J 和必备组件
+## <a name="step-2-set-up-the-app-to-use-the-adal4j-and-prerequisites-by-using-maven"></a>步骤 2：使用 Maven 将应用设置为使用 ADAL4J 和必备组件
 在此步骤中，请将 ADAL4J 配置为使用 OpenID Connect 身份验证协议。 需要使用 ADAL4J 发出登录和注销请求、管理用户会话、获取用户信息，等等。
 
 在项目的根目录中，打开/创建 `pom.xml`，找到 `// TODO: provide dependencies for Maven` 并将其替换为以下代码：
@@ -178,9 +170,7 @@ ms.lasthandoff: 03/18/2017
     </project>
 ```
 
-<a id="step-3-create-the-java-web-app-files-web-inf" class="xliff"></a>
-
-## 步骤 3：创建 Java Web 应用文件 (WEB-INF)
+## <a name="step-3-create-the-java-web-app-files-web-inf"></a>步骤 3：创建 Java Web 应用文件 (WEB-INF)
 在此步骤中，请将 Java Web 应用配置为使用 OpenID Connect 身份验证协议。 需要使用 ADAL4J 发出登录和注销请求、管理用户的会话、获取有关用户的信息，等等。
 
 1. 打开位于 \webapp\WEB-INF\, 中的 web.xml 文件，然后在 XML 中输入应用配置值。 该 XML 文件应包含以下代码：
@@ -269,9 +259,7 @@ ms.lasthandoff: 03/18/2017
 
  此代码告知 Web 应用要使用 Spring，以及在哪里查找我们将在下一部分编写的 JSP 文件。
 
-<a id="step-4-create-the-jsp-view-files-for-basicfilter-mvc" class="xliff"></a>
-
-## 步骤 4：创建 JSP 视图文件（适用于 BasicFilter MVC）
+## <a name="step-4-create-the-jsp-view-files-for-basicfilter-mvc"></a>步骤 4：创建 JSP 视图文件（适用于 BasicFilter MVC）
 在 WEB-INF 中设置 Web 应用的过程目前只完成了一半。 接下来，需要为 Web 应用将要执行的 BasicFilter 模型视图控制器 (MVC) 创建 JSP 文件。 我们已经提示过需要在配置过程中创建一些文件。
 
 前面我们已在 XML 配置文件中告知 Java，有某个 `/` 资源将要加载 JSP 文件，并且某个 `/secure` 资源会通过名为 BasicFilter 的筛选器。
@@ -341,9 +329,7 @@ ms.lasthandoff: 03/18/2017
 
 现在需要设置 Java 文件，使 Servlet 能够执行其工作。
 
-<a id="step-5-create-some-java-helper-files-for-basicfilter-mvc" class="xliff"></a>
-
-## 步骤 5：创建一些 Java 帮助器文件（适用于 BasicFilter MVC）
+## <a name="step-5-create-some-java-helper-files-for-basicfilter-mvc"></a>步骤 5：创建一些 Java 帮助器文件（适用于 BasicFilter MVC）
 此步骤的目标是创建 Java 文件，以便：
 
 * 允许用户登录和注销。
@@ -738,9 +724,7 @@ ms.lasthandoff: 03/18/2017
 
     ```
 
-<a id="step-6-create-the-java-graph-api-model-files-for-basicfilter-mvc" class="xliff"></a>
-
-## 步骤 6：创建 Java 图形 API 模型文件（适用于 BasicFilter MVC）
+## <a name="step-6-create-the-java-graph-api-model-files-for-basicfilter-mvc"></a>步骤 6：创建 Java 图形 API 模型文件（适用于 BasicFilter MVC）
 如上所述，可以使用图形 API 获取有关已登录的用户的数据。 为了简化此过程，请创建一个表示目录对象的文件，以及一个表示用户的文件，以便能够使用 Java 的 OO 模式。
 
 1. 创建一个名为 DirectoryObject.java 的文件，我们将用它来存储有关任何目录对象的基本数据。 稍后可以使用此文件执行其他任何 Graph 查询。 若要创建该文件，请粘贴以下代码：
@@ -1311,9 +1295,7 @@ ms.lasthandoff: 03/18/2017
 
     ```
 
-<a id="step-7-create-the-authentication-model-and-controller-files-for-basicfilter" class="xliff"></a>
-
-## 步骤 7：创建身份验证模型和控制器文件（适用于 BasicFilter）
+## <a name="step-7-create-the-authentication-model-and-controller-files-for-basicfilter"></a>步骤 7：创建身份验证模型和控制器文件（适用于 BasicFilter）
 我承认 Java 代码可能相当冗长，但我们很快就要完成了。 在编写 BasicFilter Servlet 来处理请求之前，需要编写 ADAL4J 所需的其他一些帮助器文件。
 
 1. 创建名为 AuthHelper.java 的文件，它将会提供用于确定已登录用户状态的方法。 方法包括：
@@ -1465,9 +1447,7 @@ ms.lasthandoff: 03/18/2017
 
     ```
 
-<a id="step-8-create-the-basicfilter-file-for-basicfilter-mvc" class="xliff"></a>
-
-## 步骤 8：创建 BasicFilter 文件（适用于 BasicFilter MVC）
+## <a name="step-8-create-the-basicfilter-file-for-basicfilter-mvc"></a>步骤 8：创建 BasicFilter 文件（适用于 BasicFilter MVC）
 现在，可以创建 BasicFilter 文件，用于通过 JSP 视图文件处理请求。 若要创建该文件，请粘贴以下代码：
 
 ```Java
@@ -1719,9 +1699,7 @@ public class BasicFilter implements Filter {
 * **createSessionPrincipal()**：创建用于访问图形 API 的会话主体。
 * **getRedirectUrl()**：获取 redirectURL，以便将它与门户中输入的值进行比较。
 
-<a id="step-9-compile-and-run-the-sample-in-tomcat" class="xliff"></a>
-
-## 步骤 9：在 Tomcat 中编译并运行示例
+## <a name="step-9-compile-and-run-the-sample-in-tomcat"></a>步骤 9：在 Tomcat 中编译并运行示例
 
 1. 切换到根目录。
 2. 若要生成刚刚使用 `maven` 构建的示例，请运行以下命令：
@@ -1736,9 +1714,7 @@ public class BasicFilter implements Filter {
 > 使用最新的 Tomcat 服务器可以轻松部署 .war 文件。 转到 http://localhost:8080/manager/ 并遵循有关上载 adal4jsample.war 文件的说明即可。 它会为你自动部署正确的终结点。
 
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 现已创建一个正常运行的 Java 应用，它可以对用户进行身份验证，使用 OAuth 2.0 安全调用 Web API，以及获取有关用户的基本信息。 如果尚未在租户中填充用户，现在便可执行此操作。
 
 如需其他参考，可通过以下两种方法之一获取已完成的示例（不包括你的配置值）：

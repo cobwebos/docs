@@ -21,15 +21,11 @@ ms.lasthandoff: 04/18/2017
 
 ---
 
-<a id="problem-configuring-password-single-sign-on-for-a-non-gallery-application" class="xliff"></a>
-
-# 配置非库应用程序密码单一登录时遇到的问题
+# <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>配置非库应用程序密码单一登录时遇到的问题
 
 阅读本文有助于了解在通过非库应用程序配置**密码单一登录**时人们面对的常见问题。
 
-<a id="how-to-capture-sign-in-fields-for-an-application" class="xliff"></a>
-
-## 如何捕获应用程序的登录字段
+## <a name="how-to-capture-sign-in-fields-for-an-application"></a>如何捕获应用程序的登录字段
 
 登录字段捕获只支持 HTML 启用的登录页面，**不支持非标准登录页面**，例如使用 Flash 或其他非 HTML 启用技术的页面。
 
@@ -45,9 +41,7 @@ ms.lasthandoff: 04/18/2017
 
 一般情况下，**如果自动登录字段捕获无效，我们总是会建议尝试手动选项。**
 
-<a id="how-to-automatically-capture-sign-in-fields-for-an-application" class="xliff"></a>
-
-### 如何自动捕获应用程序的登录字段
+### <a name="how-to-automatically-capture-sign-in-fields-for-an-application"></a>如何自动捕获应用程序的登录字段
 
 若要使用**自动登录字段捕获**配置应用程序的**基于密码的单一登录**，请遵循以下步骤：
 
@@ -75,9 +69,7 @@ ms.lasthandoff: 04/18/2017
 
 11. 执行该操作后，系统将自动擦除该 URL 并显示用户名和密码输入框，允许使用 Azure AD 通过访问面板浏览器扩展安全地将密码传输到该应用程序。
 
-<a id="how-to-manually-capture-sign-in-fields-for-an-application" class="xliff"></a>
-
-## 如何手动捕获应用程序的登录字段
+## <a name="how-to-manually-capture-sign-in-fields-for-an-application"></a>如何手动捕获应用程序的登录字段
 
 若要手动捕获登录字段，首先必须已安装访问面板浏览器扩展，并且此扩展**不在 inPrivate、incognito 和私有模式下运行**。 若要安装浏览器扩展，请遵循[如何安装访问面板浏览器扩展](#i-cannot-manually-detect-sign-in-fields-for-my-application)部分中的步骤。
 
@@ -117,23 +109,17 @@ ms.lasthandoff: 04/18/2017
 
 16. 按照屏幕上的说明使用访问面板。
 
-<a id="i-see-a-we-couldnt-find-any-sign-in-fields-at-that-url-error" class="xliff"></a>
-
-## 看到“无法找到 URL 的任一登录字段”错误
+## <a name="i-see-a-we-couldnt-find-any-sign-in-fields-at-that-url-error"></a>看到“无法找到 URL 的任一登录字段”错误
 
 自动检测登录字段失败时会看到此错误。 要解决这一问题，请遵循[如何手动捕获应用程序的登录字段](#how-to-manually-capture-sign-in-fields-for-an-application)部分中的步骤，尝试手动检测登录字段。
 
-<a id="i-see-an-unable-to-save-single-sign-on-configuration-error" class="xliff"></a>
-
-## 看到“无法保存单一登录配置”错误
+## <a name="i-see-an-unable-to-save-single-sign-on-configuration-error"></a>看到“无法保存单一登录配置”错误
 
 在少数情况下，更新单一登录配置会失败。 要解决这一问题，请尝试再次保存单一登录配置。
 
 如果这种情况持续失败，打开支持案例，并提供[如何看到门户通知的详细信息](#i-cannot-manually-detect-sign-in-fields-for-my-application)和[如何通过向支持工程师发送通知详细信息来获取帮助](#how-to-get-help-by-sending-notification-details-to-a-support-engineer)部分中搜集的信息。
 
-<a id="i-cannot-manually-detect-sign-in-fields-for-my-application" class="xliff"></a>
-
-## 无法手动检测应用程序的登录字段
+## <a name="i-cannot-manually-detect-sign-in-fields-for-my-application"></a>无法手动检测应用程序的登录字段
 
 手动检测无效时可能看到的一些行为包括：
 
@@ -159,9 +145,7 @@ ms.lasthandoff: 04/18/2017
 
 如果这些方法都无效，我们可以提供帮助。 打开支持案例，说明你尝试过的操作的详细信息和在[如何看到门户通知的详细信息](#i-cannot-manually-detect-sign-in-fields-for-my-application)和[如何通过向支持工程师发送通知详细信息来获取帮助](#how-to-get-help-by-sending-notification-details-to-a-support-engineer)部分搜集的信息（如适用）。
 
-<a id="how-to-install-the-access-panel-browser-extension" class="xliff"></a>
-
-## 如何安装访问面板浏览器扩展
+## <a name="how-to-install-the-access-panel-browser-extension"></a>如何安装访问面板浏览器扩展
 
 若要安装访问面板浏览器扩展，请按照以下步骤操作：
 
@@ -185,9 +169,7 @@ ms.lasthandoff: 04/18/2017
 
 -   [Firefox 访问面板扩展](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-<a id="how-to-see-the-details-of-a-portal-notification" class="xliff"></a>
-
-## 如何查看门户通知的详细信息
+## <a name="how-to-see-the-details-of-a-portal-notification"></a>如何查看门户通知的详细信息
 
 可以通过遵循以下步骤来查看任何门户通知的详细信息：
 
@@ -207,21 +189,15 @@ ms.lasthandoff: 04/18/2017
 
 6.  单击“复制错误”文本框右侧的“复制”图标，复制所有通知的详细信息以与支持工程师或产品组工程师共享。
 
-<a id="how-to-get-help-by-sending-notification-details-to-a-support-engineer" class="xliff"></a>
-
-## 如何通过向支持工程师发送通知的详细信息来获取帮助
+## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>如何通过向支持工程师发送通知的详细信息来获取帮助
 
 如果需要帮助，与支持工程师共享**下面列出的所有详细信息**非常重要，这有助于他们迅速提供帮助。 可以通过**拍摄屏幕截图**或单击“复制错误”图标（“复制错误”文本框右侧），轻松实现此目的。
 
-<a id="notification-details-explained" class="xliff"></a>
-
-## 介绍通知的详细信息
+## <a name="notification-details-explained"></a>介绍通知的详细信息
 
 下面介绍了每个通知项的含义，并提供了每项的示例。
 
-<a id="essential-notification-items" class="xliff"></a>
-
-### 基本通知项
+### <a name="essential-notification-items"></a>基本通知项
 
 -   **标题** - 通知的描述性标题
 
@@ -259,9 +235,7 @@ ms.lasthandoff: 04/18/2017
 
     -   示例 - **17f84be4-51f8-483a-b533-383791227a99**
 
-<a id="detailed-notification-items" class="xliff"></a>
-
-### 详细的通知项
+### <a name="detailed-notification-items"></a>详细的通知项
 
 -   **显示名称** - **（可以为空）**错误的更详细的显示名称
 
@@ -283,9 +257,7 @@ ms.lasthandoff: 04/18/2017
 
     -   示例 - ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'http://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'http://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 [使用应用程序代理为应用提供单一登录](active-directory-application-proxy-sso-using-kcd.md)
 
 

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a712baabf2674bda0a53de63e7c204b08ba9d105
-ms.lasthandoff: 04/27/2017
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 9297b241c047bf9feb68ced8da467c62e7f5acca
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/11/2017
 
 
 ---
@@ -47,7 +48,7 @@ ms.lasthandoff: 04/27/2017
    
    * [将数据载入存储环境以进行分析](machine-learning-data-science-ingest-data.md)
    * [将训练数据从各种数据源导入 Azure 机器学习工作室](machine-learning-data-science-import-data.md)。
-4. **是否需要按定期计划移动数据或在迁移期间修改数据？** 请在以下情况考虑使用 Azure 数据工厂 (ADF)：需要连续迁移数据，尤其是对于可访问本地和云资源的混合方案；需要处理或修改数据；或者已在迁移期间添加业务逻辑。 有关详细信息，请参阅[使用 Azure 数据工厂将数据从本地 SQL server 移到 SQL Azure](machine-learning-data-science-move-sql-azure-adf.md)
+4. **是否需要按定期计划移动数据或在迁移期间修改数据？** 请在以下情况下考虑使用 Azure 数据工厂 (ADF)：需要连续迁移数据，尤其是对于可访问本地和云资源的混合方案；需要处理或修改数据；或者已在迁移期间添加业务逻辑。 有关详细信息，请参阅[使用 Azure 数据工厂将数据从本地 SQL Server 移到 SQL Azure](machine-learning-data-science-move-sql-azure-adf.md)
 5. **要将多少数据移动到 Azure？** 大规模数据集可能会超过某些环境的存储容量。 有关示例，请参阅下一部分中针对机器学习工作室大小限制的讨论。 在这种情况下，可在分析过程中使用数据的示例。 有关如何在不同 Azure 环境中向下采样数据集的详细信息，请参阅[ Team Data Science Process 中的示例数据](machine-learning-data-science-sample-data.md)。
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>数据特征问题：类型、格式和大小

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: markvi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 31574a82d190b9b157f8df3308fac298924eada5
+ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.openlocfilehash: d3a3d3efe1c43caff3b8d2956c14e8c90d05d22b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 12/29/2016
+ms.lasthandoff: 06/06/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/29/2016
 ## <a name="what-is-azure-active-directory-join"></a>什么是 Azure Active Directory Join
 Azure Active Directory Join (Azure AD Join) 是在 Azure Active Directory 中注册公司拥有的设备，以实现集中式设备管理的功能。 它使用户（例如员工和学生）可以通过 Azure Active Directory 连接到企业云。 这样就简化了 Windows 部署，可从任何 Windows 设备（公司拥有的和个人拥有的设备 (BYOD)）访问组织应用与资源。
 
-Azure AD Join 面向云优先/仅限云的企业 -- 通常是不具备本地 Windows Server Active Directory 基础结构的中小型企业。 但是，Azure AD Join 能够供大型组织在无法加入传统域的设备上（例如移动设备）使用，或由主要访问 Office 365 或其他 Azure AD SaaS 应用的用户使用。
+Azure AD Join 面向云优先/仅限云的企业 -- 通常是不具备本地 Windows Server Active Directory 基础结构的中小型企业。 也就是说，Azure AD Join 也能够并将供大型组织在无法加入传统域的设备上（例如移动设备）使用，或由主要需要访问 Office 365 或其他与 Azure AD 相集成的 SaaS 应用的用户使用。
 
 尽管传统域在能够加入域的设备上仍能提供最佳的本地体验，但 Azure AD Join 适用于无法加入域的设备。 Azure AD Join 也适用于在云中管理用户。 它使用移动设备管理功能而不是传统域管理工具（如组策略和 System Center Configuration Manager (SCCM)）进行这种管理。
 
@@ -53,7 +53,7 @@ Azure AD Join 面向云优先/仅限云的企业 -- 通常是不具备本地 Win
 ## <a name="how-do-different-devices-work-with-azure-ad-join"></a>不同的设备如何与 Azure AD Join 配合工作？
 | 企业设备（已加入本地域） | 企业设备（已加入云） | 个人设备 |
 | --- | --- | --- |
-| 用户使用工作凭据登录 Windows（就像平时一样）。 |用户可以使用 Azure AD 中管理的工作凭据登录 Windows。 这与以下三个方案中的公司设备相关：1) 组织没有本地 Active Directory（例如，小型企业）。 2) 组织不是在 Active Directory 中创建所有用户帐户（例如，学生、顾问、季节性工作者的帐户）。 3) 组织中有无法加入（本地）域的企业设备，例如，运行移动 SKU 的手机或平板电脑（例如，带到工厂/零售现场的辅助设备）。 Azure AD Join 在托管和联合组织中支持加入企业设备。 |用户使用其个人 Microsoft 帐户凭据登录 Windows（无变化）。 |
+| 用户使用工作凭据登录 Windows（就像平时一样）。 |用户可以使用 Azure AD 中管理的工作凭据登录 Windows。 这与以下三种情况中的企业设备相关： <ol><li>组织没有本地 Active Directory（例如，小型企业）。</li><li>组织不是在 Active Directory 中创建所有用户帐户（例如，学生、顾问、季节工的帐户）。</li><li>组织中有无法加入（本地）域的企业设备，例如，运行移动 SKU 的手机或平板电脑（例如，带到工厂/零售现场的辅助设备）。</li></ol> Azure AD Join 在托管和联合组织中支持加入企业设备。 |用户使用其个人 Microsoft 帐户凭据登录 Windows（无变化）。 |
 | 用户可以访问设置漫游和 Windows 应用商店。 这些服务可以使用工作帐户来运行，而无需个人 Microsoft 帐户。 这要求组织将其本地 Active Directory 连接到 Azure AD。 |用户可以执行自助设置。 他们可以通过其工作帐户完整获得初次运行体验 (FRX)，这可为预配设备的 IT 提供另一种方法，不过，这两种方法均受支持。 |用户可轻松添加要在 Active Directory 或 Azure AD 中管理的工作帐户。 |
 | 用户可以从桌面通过 SSO 访问工作应用、网站和资源 -- 包括使用 Azure AD 进行身份验证的本地资源和云应用。 |设备自动在企业目录 (Azure AD) 中注册，并自动在移动设备管理中注册。 （Azure AD 高级版功能。） |用户可以使用此工作帐户通过 SSO 访问各种应用和网站/资源。 |
 | 用户可以添加个人 Microsoft 帐户来访问个人图片和文件，而不影响企业数据。 （漫游设置继续与其工作帐户配合工作。）Microsoft 帐户可启用 SSO，不再驱动设置漫游。 |用户可以在 winlogon 上执行自助密码重置 (SSPR)，意味着他们可以重置忘记的密码。 （Azure AD 高级版功能。） |用户有权访问企业 Windows 应用商店，因此可在他们的个人设备上获取和使用业务线应用。 |

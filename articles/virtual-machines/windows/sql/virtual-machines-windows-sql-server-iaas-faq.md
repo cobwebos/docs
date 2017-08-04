@@ -23,14 +23,12 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 06/26/2017
 
 ---
-# Azure 虚拟机上的 SQL Server 常见问题
-<a id="frequently-asked-questions-for-sql-server-on-azure-virtual-machines" class="xliff"></a>
+# <a name="frequently-asked-questions-for-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机上的 SQL Server 常见问题
 本主题提供有关运行 [Azure 虚拟机中的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 时出现的一些最常见问题的解答。
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
-## 常见问题
-<a id="frequently-asked-questions" class="xliff"></a>
+## <a name="frequently-asked-questions"></a>常见问题
 
 1. **如何创建装有 SQL Server 的 Azure 虚拟机？**
 
@@ -88,8 +86,7 @@ ms.lasthandoff: 06/26/2017
 
      从 [Microsoft SQL Server 数据工具 - Visual Studio 2013 商业智能](https://www.microsoft.com/en-us/download/details.aspx?id=42313)下载并安装 SQL 数据工具。
 
-## 资源
-<a id="resources" class="xliff"></a>
+## <a name="resources"></a>资源
 
 有关 Azure 虚拟机上的 SQL Server 概述，请观看视频 [Azure VM is the best platform for SQL Server 2016](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016)（Azure VM 是 SQL Server 2016 的最佳平台）。 也可以在 [SQL Server on Azure Virtual Machines overview](virtual-machines-windows-sql-server-iaas-overview.md)（Azure 虚拟机中的 SQL Server 概述）主题中获取详细介绍。
 

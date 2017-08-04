@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 10/14/2016
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: d27376e81f5be3d4f473ef044a84a18ac451921f
-ms.lasthandoff: 03/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 9336743b92130e37b1df2992aab806696f8276aa
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="add-on-demand-burst-nodes-to-an-hpc-pack-cluster-in-azure"></a>在 Azure 中将按需“突发”节点添加到 HPC Pack 群集
 如果在 Azure 中设置了 [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) 群集，则可能希望有一种方法能够快速增加/减少群集容量，而无需维护一组预配置的计算节点 VM。 本文介绍了如何按需将“突发”节点（云服务中运行的辅助角色实例）作为计算资源添加到 Azure 中的头节点。 
 
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
 
 ![突发节点][burst]
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 03/27/2017
 ## <a name="step-2-configure-an-azure-management-certificate"></a>步骤 2：配置 Azure 管理证书
 若要将 Azure 节点添加为计算资源，头节点上必须有管理证书，并必须将相应证书上传到用于部署的 Azure 订阅。
 
-对于此案例，可以选择 HPC Pack 在头节点上自动安装和配置的**默认 HPC Azure 管理证书**。 此证书对进行测试和概念证明部署很有用。 若要使用此证书，请将文件 C:\Program Files\Microsoft HPC Pack 2012\Bin\hpccert.cer 从头节点 VM 上载到订阅。 若要在 [Azure 经典门户](https://manage.windowsazure.com)中上载证书，请单击“设置” > >“管理证书”。
+对于此案例，可以选择 HPC Pack 在头节点上自动安装和配置的**默认 HPC Azure 管理证书**。 此证书对进行测试和概念证明部署很有用。 若要使用此证书，请将文件 C:\Program Files\Microsoft HPC Pack 2012\Bin\hpccert.cer 从头节点 VM 上传到订阅。 若要在 [Azure 经典门户](https://manage.windowsazure.com)中上传证书， > 请单击“设置”>“管理证书”。
 
 有关配置管理证书的其他选项，请参阅[为 Azure 突发部署配置 Azure 管理证书的方案](http://technet.microsoft.com/library/gg481759.aspx)。
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 03/27/2017
 如果部署 Azure 节点时遇到问题，请参阅[排除使用 Microsoft HPC Pack 部署 Azure 节点时发生的故障](http://technet.microsoft.com/library/jj159097.aspx)。
 
 ## <a name="next-steps"></a>后续步骤
-* 若要对突发节点使用计算密集型实例大小，请参阅[关于 H 系列和计算密集型 A 系列 VM](../../virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 中的注意事项。
+* 若要对突发节点使用计算密集型实例大小，请参阅[高性能计算 VM 大小](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中的注意事项。
 * 如果想根据群集工作负荷自动扩展或收缩 Azure 计算资源，请参阅 [Automatically grow and shrink Azure compute resources in an HPC Pack cluster](hpcpack-cluster-node-autogrowshrink.md)（自动扩展和收缩 HPC Pack 群集中的 Azure 计算资源）。
 
 <!--Image references-->

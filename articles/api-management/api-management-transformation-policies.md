@@ -1,5 +1,5 @@
 ---
-title: "Azure API 管理转换策略 | Microsoft 文档"
+title: "Azure API 管理转换策略 | Microsoft Docs"
 description: "了解可在 Azure API 管理中使用的转换策略。"
 services: api-management
 documentationcenter: 
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: c46a85aaf5237a2a7643cc9069255bdad9ab1d69
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: c2bed904b82c569b28a6e00d0cc9b49107c148dd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
@@ -227,15 +228,28 @@ ms.lasthandoff: 04/07/2017
     </outbound>  
 </policies>  
 ```  
+在此示例中，所设置的后端服务策略根据查询字符串中传递的版本值将请求路由到一个后端服务，该服务不同于在 API 中指定的服务。
   
- 在此示例中，所设置的后端服务策略根据查询字符串中传递的版本值将请求路由到一个后端服务，该服务不同于在 API 中指定的服务。  
+后端服务基 URL 最初派生自 API 设置。 因此，请求 URL `https://contoso.azure-api.net/api/partners/15?version=2013-05&subscription-key=abcdef` 变为 `http://contoso.com/api/10.4/partners/15?version=2013-05&subscription-key=abcdef`，其中 `http://contoso.com/api/10.4/` 是在 API 设置中指定的后端服务 URL。  
   
- 后端服务基 URL 最初派生自 API 设置。 因此，请求 URL `https://contoso.azure-api.net/api/partners/15?version=2013-05&subscription-key=abcdef` 变为 `http://contoso.com/api/10.4/partners/15?version=2013-05&subscription-key=abcdef`，其中 `http://contoso.com/api/10.4/` 是在 API 设置中指定的后端服务 URL。  
+应用 [<choose\>](api-management-advanced-policies.md#choose) 策略语句时，后端服务基 URL 可能会再次更改为 `http://contoso.com/api/8.2` 或 `http://contoso.com/api/9.1`，具体取决于版本请求查询参数的值。 例如，如果值为 `"2013-15"`，最终请求 URL 将变为 `http://contoso.com/api/8.2/partners/15?version=2013-05&subscription-key=abcdef`。  
   
- 应用 [<choose\>](api-management-advanced-policies.md#choose) 策略语句时，后端服务基 URL 可能会再次更改为 `http://contoso.com/api/8.2` 或 `http://contoso.com/api/9.1`，具体取决于版本请求查询参数的值。 例如，如果值为 `"2013-15"`，最终请求 URL 将变为 `http://contoso.com/api/8.2/partners/15?version=2013-05&subscription-key=abcdef`。  
+如果需要进一步转换请求，可使用其他[转换策略](api-management-transformation-policies.md#TransformationPolicies)。 例如，在将请求路由到特定于版本的后端以后，若要删除版本查询参数，可以使用[设置查询字符串参数](api-management-transformation-policies.md#SetQueryStringParameter)策略删除现在的冗余版本属性。  
   
- 如果需要进一步转换请求，可使用其他[转换策略](api-management-transformation-policies.md#TransformationPolicies)。 例如，在将请求路由到特定于版本的后端以后，若要删除版本查询参数，可以使用[设置查询字符串参数](api-management-transformation-policies.md#SetQueryStringParameter)策略删除现在的冗余版本属性。  
+### <a name="example"></a>示例  
   
+```xml  
+<policies>  
+    <inbound>  
+        <set-backend-service backend-id="my-sf-service" sf-partition-key="@(context.Request.Url.Query.GetValueOrDefault("userId","")" sf-replica-type="primary" /> 
+    </inbound>  
+    <outbound>  
+        <base />  
+    </outbound>  
+</policies>  
+```  
+在此示例中，策略使用 userId 查询字符串作为分区键并使用该分区的主要副本，将请求路由到 Service Fabric 后端。  
+
 ### <a name="elements"></a>元素  
   
 |Name|说明|必选|  
@@ -246,8 +260,13 @@ ms.lasthandoff: 04/07/2017
   
 |Name|说明|必选|默认|  
 |----------|-----------------|--------------|-------------|  
-|base-url|新的后端服务基 URL。|是|不适用|  
-  
+|base-url|新的后端服务基 URL。|否|不适用|  
+|backend-id|要路由到的后端标识符。|否|不适用|  
+|sf-partition-key|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 用于从名称解析服务中解析特定分区。|否|不适用|  
+|sf-replica-type|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 控制请求是否应转到分区的主要副本或次要副本。 |否|不适用|    
+|sf-resolve-condition|只有在后端为 Service Fabric 服务时才适用。 确定对 Service Fabric 后端的调用是否针对新解析重复进行的条件。|否|不适用|    
+|sf-service-instance-name|只有在后端为 Service Fabric 服务时才适用。 允许在运行时更改服务实例。 |否|不适用|    
+
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
@@ -655,7 +674,7 @@ OriginalUrl.
   <outbound>  
       <base />  
       <xsl-transform>  
-          <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">  
+        <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">  
             <xsl:output omit-xml-declaration="yes" method="xml" indent="yes" />  
             <!-- Copy all nodes directly-->  
             <xsl:template match="node()| @*|*">  
@@ -663,7 +682,7 @@ OriginalUrl.
                     <xsl:apply-templates select="@* | node()|*" />  
                 </xsl:copy>  
             </xsl:template>  
-          </xsl:stylesheet>  
+        </xsl:stylesheet>  
     </xsl-transform>  
   </outbound>  
 </policies>  

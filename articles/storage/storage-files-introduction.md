@@ -15,15 +15,15 @@ ms.topic: get-started-article
 ms.date: 05/27/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 4393a9a71dcbdc709845eb4cd3078b4497b8b9a3
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: bae2e9825bf158bb015ec0affa56f15ce5baa201
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 
 # <a name="introduction-to-azure-file-storage"></a>Azure 文件存储简介
-Azure 文件存储根据行业标准[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)和 [Samba/通用 Internet 文件系统 (CIFS)](https://technet.microsoft.com/library/cc939973.aspx) 在云中提供网络文件共享。 Azure 文件共享可以由客户端（例如本地部署的 Windows、macOS、Linux）或 Azure 虚拟机同时装载。 
+Azure 文件存储根据行业标准[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)和[通用 Internet 文件系统 (CIFS)](https://technet.microsoft.com/library/cc939973.aspx) 在云中提供网络文件共享。 Azure 文件共享可以由客户端（例如本地部署的 Windows、macOS、Linux）或 Azure 虚拟机同时装载。 通用存储帐户允许使用单个帐户访问 Azure 文件存储以及 Blob、Azure 虚拟机磁盘、队列之类的其他服务。
 
 
 

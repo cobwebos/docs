@@ -22,9 +22,7 @@ ms.lasthandoff: 06/13/2017
 
 
 ---
-<a id="assigning-administrator-roles-in-azure-active-directory" class="xliff"></a>
-
-# 在 Azure Active Directory 中分配管理员角色
+# <a name="assigning-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中分配管理员角色
 > [!div class="op_single_selector"]
 > * [Azure 门户](active-directory-assign-admin-roles-azure-portal.md)
 > * [Azure 经典门户](active-directory-assign-admin-roles.md)
@@ -96,73 +94,53 @@ ms.lasthandoff: 06/13/2017
 
 * **用户帐户管理员**：具有此角色的用户可以创建和管理用户和组的所有方面。 此外，此角色包括管理支持票证的功能，并监视服务运行状况。 适用某些限制。 例如，此角色不允许删除全局管理员，并且尽管它确实允许更改为非管理员的密码，它不允许更改的全局管理员的密码或其他特权的管理员。
 
-<a id="administrator-permissions" class="xliff"></a>
+## <a name="administrator-permissions"></a>管理员权限
 
-## 管理员权限
-
-<a id="billing-administrator" class="xliff"></a>
-
-### 计费管理员
+### <a name="billing-administrator"></a>计费管理员
 
 | 有权执行的操作 | 无权执行的操作 |
 | --- | --- |
 |<p>查看公司信息和用户信息</p><p>管理 Office 支持票证</p><p>为 Office 产品执行计费和采购操作</p> |<p>重置用户密码</p><p>创建和管理用户视图</p><p>创建、编辑和删除用户与组，以及管理用户许可证</p><p>管理域</p><p>管理公司信息</p><p>向其他人委派管理角色</p><p>使用目录同步</p><p>查看审核日志</p>|
 
-<a id="global-administrator" class="xliff"></a>
-
-### 全局管理员
+### <a name="global-administrator"></a>全局管理员
 | 有权执行的操作 | 无权执行的操作 |
 | --- | --- |
 | <p>查看公司信息和用户信息</p><p>管理 Office 支持票证</p><p>为 Office 产品执行计费和采购操作</p><p>重置用户密码</p>
 <p>重置其他管理员的密码</p> <p>创建和管理用户视图</p><p>创建、编辑和删除用户与组，以及管理用户许可证</p><p>管理域</p><p>管理公司信息</p><p>向其他人委派管理角色</p><p>使用目录同步</p><p>启用或禁用多重身份验证</p><p>查看审核日志</p> |不适用 |
 
-<a id="password-administrator" class="xliff"></a>
-
-### 密码管理员
+### <a name="password-administrator"></a>密码管理员
 | 有权执行的操作 | 无权执行的操作 |
 | --- | --- |
 | <p>查看公司信息和用户信息</p><p>管理 Office 支持票证</p><p>重置用户密码</p> <p>重置其他管理员的密码</p>|<p>为 Office 产品执行计费和采购操作</p><p>创建和管理用户视图</p><p>创建、编辑和删除用户与组，以及管理用户许可证</p><p>管理域</p><p>管理公司信息</p><p>向其他人委派管理角色</p><p>使用目录同步</p><p>查看报告</p>|
 
-<a id="service-administrator" class="xliff"></a>
-
-### 服务管理员
+### <a name="service-administrator"></a>服务管理员
 | 有权执行的操作 | 无权执行的操作 |
 | --- | --- |
 | <p>查看公司信息和用户信息</p><p>管理 Office 支持票证</p> |<p>重置用户密码</p><p>为 Office 产品执行计费和采购操作</p><p>创建和管理用户视图</p><p>创建、编辑和删除用户与组，以及管理用户许可证</p><p>管理域</p><p>管理公司信息</p><p>向其他人委派管理角色</p><p>使用目录同步</p><p>查看审核日志</p> |
 
-<a id="user-administrator" class="xliff"></a>
-
-### 用户管理员
+### <a name="user-administrator"></a>用户管理员
 | 有权执行的操作 | 无权执行的操作 |
 | --- | --- |
 | <p>查看公司信息和用户信息</p><p>管理 Office 支持票证</p><p>重置用户密码，但有限制。</p><p>重置其他管理员的密码</p><p>重置其他用户的密码</p><p>创建和管理用户视图</p><p>创建、编辑和删除用户与组，以及管理用户许可证，但有限制。 他/她不能删除全局管理员或创建其他管理员。</p> |<p>为 Office 产品执行计费和采购操作</p><p>管理域</p><p>管理公司信息</p><p>向其他人委派管理角色</p><p>使用目录同步</p><p>启用或禁用多重身份验证</p><p>查看审核日志</p> |
 
-<a id="security-reader" class="xliff"></a>
-
-### 安全读取者
+### <a name="security-reader"></a>安全读取者
 | In | 有权执行的操作 |
 | --- | --- |
 | Identity Protection Center |读取安全功能的所有安全报告和设置信息<ul><li>反垃圾邮件<li>加密<li>数据丢失预防<li>反恶意软件<li>高级威胁防护<li>防网络钓鱼<li>邮件流规则 |
 | Privileged Identity Management |<p>以只读方式访问 Azure AD PIM 中所显示的一切信息：Azure AD 角色分配的策略和报告、安全审阅，以及在未来还可通过读取来访问 Azure AD 角色分配以外的方案的策略数据和报告。<p>**不能**注册 Azure AD PIM 或对其进行任何更改。 担任此角色的人员可以在 PIM 的门户中或通过 PowerShell，为其他角色（例如，全局管理员或特权角色管理员）的候选用户激活角色。 |
 | <p>监视 Office 365 服务运行状况</p><p>Office 365 安全与合规中心</p> |<ul><li>读取和管理警报<li>读取安全策略<li>读取威胁情报、云应用发现以及搜索和调查中的隔离区<li>读取所有报告 |
 
-<a id="security-administrator" class="xliff"></a>
-
-### 安全管理员
+### <a name="security-administrator"></a>安全管理员
 | In | 有权执行的操作 |
 | --- | --- |
 | Identity Protection Center |<ul><li>安全读取者角色的所有权限。<li>此外，还能够执行除了重置密码以外的所有 IPC 操作。 |
 | Privileged Identity Management |<ul><li>安全读取者角色的所有权限。<li>**不能**管理 Azure AD 角色成员身份或设置。 |
 | <p>监视 Office 365 服务运行状况</p><p>Office 365 安全与合规中心 |<ul><li>安全读取者角色的所有权限。<li>可以配置高级威胁防护功能中的所有设置（恶意软件和病毒保护、恶意 URL 配置、URL 跟踪等）。 |
 
-<a id="details-about-the-global-administrator-role" class="xliff"></a>
-
-## 有关全局管理员角色的详细信息
+## <a name="details-about-the-global-administrator-role"></a>有关全局管理员角色的详细信息
 全局管理员有权访问所有管理功能。 默认情况下，系统会将注册 Azure 订阅的人员指派为目录的全局管理员角色。 只有全局管理员才能分配其他管理员角色。
 
-<a id="to-add-a-colleague-as-a-global-administrator" class="xliff"></a>
-
-### 将某个同事添加为全局管理员
+### <a name="to-add-a-colleague-as-a-global-administrator"></a>将某个同事添加为全局管理员
 
 1. 使用租户目录的全局管理员的帐户登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
 
@@ -176,14 +154,10 @@ ms.lasthandoff: 06/13/2017
  
 5. 在“目录角色”边栏选项卡中，选择“全局管理员”角色，并保存。
 
-<a id="assign-or-remove-administrator-roles" class="xliff"></a>
-
-## 分配或删除管理员角色
+## <a name="assign-or-remove-administrator-roles"></a>分配或删除管理员角色
 若要了解如何在 Azure Active Directory 中向用户分配管理角色，请参阅[在 Azure Active Directory 预览版中向用户分配管理角色](active-directory-users-assign-role-azure-portal.md)。
 
-<a id="deprecated-roles" class="xliff"></a>
-
-## 已弃用的角色
+## <a name="deprecated-roles"></a>已弃用的角色
 
 不应使用以下角色。 这些角色已弃用，并将从 Azure AD 中删除。
 
@@ -194,9 +168,7 @@ ms.lasthandoff: 06/13/2017
 * 设备用户
 * 工作区设备联接
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 
 * 若要了解有关如何更改 Azure 订阅管理员的详细信息，请参阅 [如何添加或更改 Azure 管理员角色](../billing-add-change-azure-subscription-administrator.md)
 * 若要了解有关如何在 Microsoft Azure 中控制资源访问的详细信息，请参阅 [Understanding resource access in Azure](active-directory-understanding-resource-access.md)（了解 Azure 中的资源访问）

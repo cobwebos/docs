@@ -22,9 +22,7 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 05/08/2017
 
 ---
-<a id="use-iothub-explorer-to-send-and-receive-messages-between-your-device-and-iot-hub" class="xliff"></a>
-
-# 使用 iothub-explorer 在设备与 IoT 中心之间发送和接收消息
+# <a name="use-iothub-explorer-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>使用 iothub-explorer 在设备与 IoT 中心之间发送和接收消息
 
 ![端到端关系图](media/iot-hub-get-started-e2e-diagram/2.png)
 
@@ -32,22 +30,16 @@ ms.lasthandoff: 05/08/2017
 
 [iothub-explorer](https://github.com/azure/iothub-explorer) 提供一些命令用于简化 IoT 中心的管理。 本教程重点介绍如何使用 iothub-explorer 在设备与 IoT 中心之间发送和接收消息。
 
-<a id="what-you-will-learn" class="xliff"></a>
-
-## 你要学习的知识
+## <a name="what-you-will-learn"></a>你要学习的知识
 
 了解如何使用 iothub-explorer 监视设备到云的消息以及发送云到设备的消息。 设备到云的消息可能是设备收集的，随后要发送到 IoT 中心的传感器数据。 云到设备的消息可能是 IoT 中心发送到设备的，用于闪烁连接到设备的 LED 的命令。
 
-<a id="what-you-will-do" class="xliff"></a>
-
-## 执行的操作
+## <a name="what-you-will-do"></a>执行的操作
 
 - 使用 iothub-explorer 监视设备到云的消息。
 - 使用 iothub-explorer 发送云到设备的消息。
 
-<a id="what-you-need" class="xliff"></a>
-
-## 所需条件
+## <a name="what-you-need"></a>所需条件
 
 - 已完成教程[设置设备](iot-hub-raspberry-pi-kit-node-get-started.md)，其中涵盖以下要求：
   - 一个有效的 Azure 订阅。
@@ -55,9 +47,7 @@ ms.lasthandoff: 05/08/2017
   - 一个可向 Azure IoT 中心发送消息的客户端应用程序。
 - iothub-explorer。 （[安装 iothub-explorer](https://github.com/azure/iothub-explorer)）
 
-<a id="monitor-device-to-cloud-messages" class="xliff"></a>
-
-## 监视设备到云的消息
+## <a name="monitor-device-to-cloud-messages"></a>监视设备到云的消息
 
 若要监视设备发送到 IoT 中心的消息，请执行以下步骤：
 
@@ -71,9 +61,7 @@ ms.lasthandoff: 05/08/2017
    > [!Note]
    > 从 IoT 中心获取 `<device-id>` 和 `<IoTHubConnectionString>`。 确保已完成以前的教程。 或者可以尝试使用 `iothub-explorer monitor-events <device-id> --login "HostName=<my-hub>.azure-devices.net;SharedAccessKeyName=<my-policy>;SharedAccessKey=<my-policy-key>"`（如果有 `HostName`、`SharedAccessKeyName` 和 `SharedAccessKey`）。
 
-<a id="send-cloud-to-device-messages" class="xliff"></a>
-
-## 发送“云到设备”消息
+## <a name="send-cloud-to-device-messages"></a>发送“云到设备”消息
 
 若要将消息从 IoT 中心发送到设备，请执行以下步骤：
 
@@ -95,9 +83,7 @@ ms.lasthandoff: 05/08/2017
 > [!Note]
 > 设备收到消息后，不需要向 IoT 中心发送单独的确认命令。
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 
 现在，你已了解如何监视设备到云的消息，以及在 IoT 设备与 Azure IoT 中心之间发送云到设备的消息。
 

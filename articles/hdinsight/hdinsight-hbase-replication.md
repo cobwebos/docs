@@ -1,5 +1,5 @@
 ---
-title: "配置 HBase 复制 | Microsoft Docs"
+title: "在虚拟网络中配置 HBase 群集复制 - Azure | Microsoft Docs"
 description: "了解如何配置 HBase 复制，以实现负载均衡、高可用性、在不造成任何停机的情况下从一个 HDInsight 版本迁移/更新到另一个版本，以及灾难恢复。"
 services: hdinsight,virtual-network
 documentationcenter: 
@@ -15,14 +15,14 @@ ms.workload: big-data
 ms.date: 05/25/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a62cd616f0abd59c83c834bf13b4ba8549a9c73e
-ms.openlocfilehash: 83aabe0e5161cd3f94caa996dec29bc020e5308b
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 7a6a473b6db745563b3667da1013a8e78db8593c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/23/2017
+ms.lasthandoff: 06/10/2017
 
 
 ---
-# <a name="configure-hbase-replication"></a>配置 HBase 复制
+# <a name="configure-hbase-cluster-replication-within-virtual-networks"></a>在虚拟网络中配置 HBase 群集复制
 
 了解如何在一个虚拟网络 (VNet) 内部或者在两个虚拟网络之间配置 HBase 复制。
 

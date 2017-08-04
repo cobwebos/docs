@@ -22,7 +22,7 @@
 ## 网络
 ### [如何设置终结点](setup-endpoints.md)
 ### [将 VM 与 VNet 或云服务连接](connect-vms.md)
-### [将经典 VNet 连接到Resource Manager VNet](../../../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
+### [将经典 VNet 连接到 Resource Manager VNet](../../../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 ### [创建负载均衡器](../../../load-balancer/load-balancer-get-started-internet-classic-portal.md)
 ### [使用 Azure PowerShell 管理 NSG](../../../virtual-network/virtual-networks-create-nsg-classic-ps.md)
 
@@ -81,7 +81,8 @@
 ### [对应用程序的访问权限](../../virtual-machines-windows-troubleshoot-app-connection.md)
 ### [新建 VM 时遇到的经典部署问题](troubleshoot-deployment-new-vm.md)
 ### [重新启动现有 VM 或调整其大小时遇到的经典部署问题](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
-## [重置 RDP 密码](reset-rdp.md)
+### [重置 RDP 密码](reset-rdp.md)
+### [将虚拟硬盘附加到故障排除 VM](troubleshoot-recovery-disks-portal.md)
 
 # 引用
 ## [PowerShell](/powershell/azure/overview)
@@ -95,8 +96,9 @@
 ## [存储 REST](/rest/api/storageservices)
 
 # 资源
-## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=compute)
 ## [定价](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [区域可用性](https://azure.microsoft.com/regions/services/)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)

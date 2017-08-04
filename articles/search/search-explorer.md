@@ -20,8 +20,7 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 07/12/2017
 
 ---
-# 使用搜索资源管理器在 Azure 门户中查询 Azure 搜索索引
-<a id="query-an-azure-search-index-using-search-explorer-in-the-azure-portal" class="xliff"></a>
+# <a name="query-an-azure-search-index-using-search-explorer-in-the-azure-portal"></a>使用搜索资源管理器在 Azure 门户中查询 Azure 搜索索引
 > [!div class="op_single_selector"]
 > * [概述](search-query-overview.md)
 > * [门户](search-explorer.md)
@@ -32,27 +31,23 @@ ms.lasthandoff: 07/12/2017
 
 本文介绍如何使用搜索资源管理器在 Azure 门户中查询 Azure 搜索索引。 可以使用搜索资源管理器，向服务中的任何现有索引提交简单或完整的 Lucene 查询字符串。
 
-## 打开服务仪表板
-<a id="open-the-service-dashboard" class="xliff"></a>
+## <a name="open-the-service-dashboard"></a>打开服务仪表板
 1. 在 [Azure 门户](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)左侧的跳转栏中，单击“所有资源”。
 2. 选择 Azure 搜索服务。
 
-## 选择索引
-<a id="select-an-index" class="xliff"></a>
+## <a name="select-an-index"></a>选择索引
 
 选择要从“索引”磁贴中搜索的索引。
 
    ![](./media/search-explorer/pick-index.png)
 
-## 打开搜索资源管理器
-<a id="open-search-explorer" class="xliff"></a>
+## <a name="open-search-explorer"></a>打开搜索资源管理器
 
 单击“搜索资源管理器”磁贴，以滑动方式打开搜索栏和结果窗格。
 
    ![](./media/search-explorer/search-explorer-tile.png)
 
-## 开始搜索
-<a id="start-searching" class="xliff"></a>
+## <a name="start-searching"></a>开始搜索
 
 使用“搜索资源管理器”时，可以指定用于表述查询的[查询参数](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。
 
@@ -66,8 +61,7 @@ ms.lasthandoff: 07/12/2017
 
    ![](./media/search-explorer/search-bar.png)
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 以下资源提供更多的查询语法信息和示例。
 

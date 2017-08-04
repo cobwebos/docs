@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 05/04/2017
 ms.author: curtand
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 5bf0e7f631a86a9d413415ab73e03fa00a0e9325
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 355ae7a13ab3d32b69a2b90e5410d5fc90fb6916
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 05/11/2017
 这在具有独立部门的组织中非常有用，例如：由互相独立的许多自治学校（商学院和工程学校等）组成的大型大学。 此类部门具有其自己的 IT 管理员，这些管理员会控制访问、管理用户并专门针对其部门设置策略。 中心管理员希望能够通过其特定部门中的用户授予这些部门管理员权限。 更具体地说，通过使用此示例，例如，中心管理员可以创建特定学校（商学院）的管理单元并仅使用商学院用户填充该单元。 然后，中心管理员可以将商学院的 IT 员工添加到限定范围的角色中，换而言之，只通过商学院管理单元为 IT 员工授予商学院管理权限。
 
 > [!IMPORTANT]
-> 你只能在启用 Azure Active Directory Premium 的情况下创建和使用管理单元。 有关详细信息，请参阅 [Azure AD Premium 入门](active-directory-get-started-premium.md)。
+> 只能在启用 Azure Active Directory Premium 的情况下分配管理单元范围的管理员角色。 有关详细信息，请参阅 [Azure AD Premium 入门](active-directory-get-started-premium.md)。
 >
 
 

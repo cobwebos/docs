@@ -51,7 +51,8 @@
 ### [404 状态](cdn-troubleshoot-endpoint.md)
 ### [文件压缩](cdn-troubleshoot-compression.md)
 
-# 参考
+# 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=cdn)
 ## [PowerShell](/powershell/module/azurerm.cdn)
 ## [.NET](/dotnet/api/microsoft.azure.management.cdn)
 ## [Java](/java/api/com.microsoft.azure.management.cdn)
@@ -66,6 +67,7 @@
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)
 ## [定价](https://azure.microsoft.com/pricing/details/cdn/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=cdn)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-cdn)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=cdn)

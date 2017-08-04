@@ -1,8 +1,7 @@
 
 <!--author=alkohli last changed: 01/02/17-->
 
-#### 添加或修改 StorSimple 备份计划
-<a id="to-add-or-modify-a-storsimple-backup-schedule" class="xliff"></a>
+#### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a>添加或修改 StorSimple 备份计划
 
 1. 转到 StorSimple 设备并单击“备份策略”。
 

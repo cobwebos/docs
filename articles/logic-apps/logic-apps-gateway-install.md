@@ -13,14 +13,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 06/9/2017
+ms.date: 07/13/2017
 ms.author: LADocs; dimazaid; estfan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 7122b970c2e4703df9771e8ace4e710399ca3e6c
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: 34e68ae7d35019848b35c785a2715ec458dc6e73
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/13/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
@@ -29,7 +28,7 @@ ms.lasthandoff: 06/13/2017
 
 网关支持连接到以下本地数据源：
 
-*   BizTalk Server
+*   BizTalk Server 2016
 *   DB2  
 *   文件系统
 *   Informix
@@ -39,18 +38,18 @@ ms.lasthandoff: 06/13/2017
 *   PostgreSQL
 *   SAP Application Server 
 *   SAP Message Server
-*   仅限适用于 HTTP（而非 HTTPS）的 SharePoint
+*   SharePoint
 *   SQL Server
 *   Teradata
 
 这些步骤说明了[在网关与逻辑应用之间设置连接](./logic-apps-gateway-connection.md)之前，如何首次安装本地数据网关。 有关受支持连接器的详细信息，请参阅[适用于 Azure 逻辑应用的连接器](https://docs.microsoft.com/azure/connectors/apis-list)。 
 
-若要详细了解适用于其他 Microsoft 服务的数据网关，请参阅以下文章：
+有关如何将网关用于其他服务的信息，请参阅以下文章：
 
-*   [Azure 应用程序网关](https://azure.microsoft.com/services/application-gateway/)：[应用程序网关概述](../application-gateway/application-gateway-introduction.md)
 *   [Microsoft Power BI 本地数据网关](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
 *   [Azure Analysis Services 本地数据网关](../analysis-services/analysis-services-gateway.md)
 *   [Microsoft Flow 本地数据网关](https://flow.microsoft.com/documentation/gateway-manage/)
+*   [Microsoft PowerApps 本地数据网关](https://powerapps.microsoft.com/tutorials/gateway-management/)
 
 <a name="requirements"></a>
 ## <a name="requirements"></a>要求

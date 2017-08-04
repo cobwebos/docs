@@ -110,7 +110,7 @@ cd spring-boot-mysql-todo
 mvnw package spring-boot:run
 ```
 
-打开浏览器并转到 http://localhost:8080，查看正在操作的示例。 向列表添加任务时，请在 MySQL 提示符处使用以下 SQL 命令，查看 MySQL 中存储的数据。
+打开浏览器并转到 http://localhost:8080 ，查看正在操作的示例。 向列表添加任务时，请在 MySQL 提示符处使用以下 SQL 命令，查看 MySQL 中存储的数据。
 
 ```SQL
 use testdb;

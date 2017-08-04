@@ -15,22 +15,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 2ec31c5444f72c7255d8925bdb3ea85854cfaf1a
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 19be1d693fe13af0f6c1ab0cb6f7bc829b9fad5a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
-# 使用 HPC Pack 设置一个运行 MPI 应用程序的 Windows RDMA 群集
-<a id="set-up-a-windows-rdma-cluster-with-hpc-pack-to-run-mpi-applications" class="xliff"></a>
-在 Azure 中使用 [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) 和 [H 系列或计算密集型 A 系列实例](../../virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)设置 Windows RDMA 群集，用于运行并行消息传递接口 (MPI) 应用程序。 在 HPC Pack 群集中设置支持 RDMA 且基于 Windows Server 的节点时，MPI 应用程序将在 Azure 中利用基于远程直接内存访问 (RDMA) 技术的低延迟、高吞吐量网络实现高效通信。
+# <a name="set-up-a-windows-rdma-cluster-with-hpc-pack-to-run-mpi-applications"></a>使用 HPC Pack 设置一个运行 MPI 应用程序的 Windows RDMA 群集
+在 Azure 中使用 [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) 和[高性能计算 VM 大小](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)设置 Windows RDMA 群集，以运行并行消息传递接口 (MPI) 应用程序。 在 HPC Pack 群集中设置支持 RDMA 且基于 Windows Server 的节点时，MPI 应用程序将在 Azure 中利用基于远程直接内存访问 (RDMA) 技术的低延迟、高吞吐量网络实现高效通信。
 
 如果要在访问 Azure RDMA 网络的 Linux VM 上运行 MPI 工作负荷，请参阅[设置 Linux RDMA 群集以运行 MPI 应用程序](../../linux/classic/rdma-cluster.md)。
 
-## HPC Pack 群集部署选项
-<a id="hpc-pack-cluster-deployment-options" class="xliff"></a>
+## <a name="hpc-pack-cluster-deployment-options"></a>HPC Pack 群集部署选项
 Microsoft HPC Pack 是一款无需额外费用的工具，可用于创建本地 HPC 群集或在 Azure 中运行 Windows/Linux HPC 应用程序。 HPC Pack 中包括适用于 Windows 消息传递接口的 Microsoft 实现 (MS-MPI) 的运行时环境。 配合使用支持 RDMA 的实例（此类实例运行受支持的 Windows Server 操作系统）时，HPC Pack 可高效地运行访问 Azure RDMA 网络的 Windows MPI 应用程序。 
 
 本文介绍使用 Microsoft HPC Pack 设置 Windows RDMA 群集的以下两种方案，并提供详细指南链接。 
@@ -38,10 +35,9 @@ Microsoft HPC Pack 是一款无需额外费用的工具，可用于创建本地 
 * 方案 1. 部署计算密集型辅助角色实例 (PaaS)
 * 方案 2. 在计算密集型 VM (IaaS) 中部署计算节点
 
-有关通过 Windows 使用计算密集型实例的常规先决条件，请参阅[关于 H 系列和计算密集型 A 系列 VM](../../virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+有关通过 Windows 使用计算密集型实例的常规先决条件，请参阅[高性能计算 VM 大小](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-## 方案 1：部署计算密集型辅助角色实例 (PaaS)
-<a id="scenario-1-deploy-compute-intensive-worker-role-instances-paas" class="xliff"></a>
+## <a name="scenario-1-deploy-compute-intensive-worker-role-instances-paas"></a>方案 1：部署计算密集型辅助角色实例 (PaaS)
 从现有的 HPC Pack 群集，添加运行在云服务 (PaaS) 中的 Azure 辅助角色实例（Azure 节点）形式的额外计算资源。 此功能（也称为从 HPC Pack“迸发到 Azure”）支持一定范围的辅助角色实例大小。 添加 Azure 节点时，请指定一个支持 RDMA 的大小。
 
 从现有群集（通常在本地）迸发到支持 RDMA 的 Azure 实例时需注意以下事项和步骤。 可以使用类似的过程，将辅助角色实例添加到部署在 Azure VM 中的 HPC Pack 头节点。
@@ -53,8 +49,7 @@ Microsoft HPC Pack 是一款无需额外费用的工具，可用于创建本地 
 
 ![迸发到 Azure][burst]
 
-### 步骤
-<a id="steps" class="xliff"></a>
+### <a name="steps"></a>步骤
 1. **部署和配置 HPC Pack 2012 R2 头节点**
    
     从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=49922)下载最新的 HPC Pack 安装包。 有关 Azure 迸发部署准备工作的要求和说明，请参阅[使用 Microsoft HPC Pack 迸发到 Azure 辅助角色实例](https://technet.microsoft.com/library/gg481749.aspx)。
@@ -89,14 +84,12 @@ Microsoft HPC Pack 是一款无需额外费用的工具，可用于创建本地 
    
    完成运行作业后，使节点脱机，并在 HPC 群集管理器中使用“停止”操作。
 
-## 方案 2：在计算密集型 VM (IaaS) 中部署计算节点
-<a id="scenario-2-deploy-compute-nodes-in-compute-intensive-vms-iaas" class="xliff"></a>
+## <a name="scenario-2-deploy-compute-nodes-in-compute-intensive-vms-iaas"></a>方案 2：在计算密集型 VM (IaaS) 中部署计算节点
 在此方案中，可以将 HPC Pack 头节点和群集计算节点部署到 Azure 虚拟网络中的 VM 上。 HPC Pack 在 Azure VM 中提供了多个[部署选项](../../linux/hpcpack-cluster-options.md)，包括自动部署脚本和 Azure 快速入门模板。 例如，以下注意事项和步骤将指导你使用 [HPC Pack IaaS 部署脚本](hpcpack-cluster-powershell-script.md)在 Azure 中自动部署 HPC Pack 2012 R2 群集。
 
 ![Azure VM 中的群集][iaas]
 
-### 步骤
-<a id="steps" class="xliff"></a>
+### <a name="steps"></a>步骤
 1. **在客户端计算机上运行 HPC Pack IaaS 部署脚本，创建群集头节点和计算节点 VM**
    
     从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=49922)下载 HPC Pack IaaS 部署脚本包。
@@ -109,7 +102,7 @@ Microsoft HPC Pack 是一款无需额外费用的工具，可用于创建本地 
    * **Windows Server 操作系统**：若要支持 RDMA 连接，请为计算节点 VM 指定 Windows Server 2012 R2 或 Windows Server 2012 操作系统。
    * **云服务**：建议在两个不同的云服务中分别部署头节点和计算节点。
    * **头节点大小**：在此方案中，请考虑至少将头节点设为 A4（特大）大小。
-   * **HpcVmDrivers 扩展**：部署大小为 A8 或 A9、运行 Windows Server 操作系统的计算节点时，部署脚本会自动安装 Azure VM 代理和 HpcVmDrivers 扩展。 HpcVmDrivers 扩展将驱动程序安装在计算节点 VM 上，以便它们可以连接到 RDMA 网络。 在支持 RDMA 的 H 系列 VM 上，必须手动安装 HpcVmDrivers 扩展。 请参阅 [About H-series and compute-intensive A-series VMs](../a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#access-to-the-rdma-network)（关于 H 系列和计算密集型 A 系列 VM）。
+   * **HpcVmDrivers 扩展**：部署大小为 A8 或 A9、运行 Windows Server 操作系统的计算节点时，部署脚本会自动安装 Azure VM 代理和 HpcVmDrivers 扩展。 HpcVmDrivers 扩展将驱动程序安装在计算节点 VM 上，以便它们可以连接到 RDMA 网络。 在支持 RDMA 的 H 系列 VM 上，必须手动安装 HpcVmDrivers 扩展。 请参阅[高性能计算 VM 大小](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
    * **群集网络配置**：部署脚本将自动设置拓扑 5 中的 HPC Pack 群集（企业网络上的所有节点）。 此拓扑是 VM 中所有 HPC Pack 群集部署所必需的。 以后请不要更改群集网络拓扑。
 2. **使计算节点联机以运行作业**
    
@@ -121,10 +114,8 @@ Microsoft HPC Pack 是一款无需额外费用的工具，可用于创建本地 
    
     完成运行作业后，请在 HPC 群集管理器中使节点脱机。 然后，使用 Azure 管理工具来关闭这些节点。
 
-## 在群集上运行 MPI 应用程序
-<a id="run-mpi-applications-on-the-cluster" class="xliff"></a>
-### 示例：在 HPC Pack 群集上运行 mpipingpong
-<a id="example-run-mpipingpong-on-an-hpc-pack-cluster" class="xliff"></a>
+## <a name="run-mpi-applications-on-the-cluster"></a>在群集上运行 MPI 应用程序
+### <a name="example-run-mpipingpong-on-an-hpc-pack-cluster"></a>示例：在 HPC Pack 群集上运行 mpipingpong
 若要验证支持 RDMA 的实例的 HPC Pack 部署，请在群集上运行 HPC Pack **mpipingpong** 命令。 **mpipingpong** 在配对的节点之间反复发送数据包，以计算启用了 RDMA 的应用程序网络的延迟和吞吐量度量值以及统计信息。 本示例演示了使用群集 **mpiexec** 命令运行 MPI 作业（在本例中为 **mpipingpong**）的典型模式。
 
 本示例假定已在“迸发到 Azure”配置（[方案 1](#scenario-1.-deploy-compute-intensive-worker-role-instances-\(PaaS\) in this article)）中添加了 Azure 节点。 如果你在 Azure VM 群集中部署了 HPC Pack，则需要修改命令语法以指定不同的节点组，并设置其他环境变量以将网络流量定向到 RDMA 网络。
@@ -175,8 +166,7 @@ Microsoft HPC Pack 是一款无需额外费用的工具，可用于创建本地 
    
    ![弹性吞吐量][pingpong2]
 
-### MPI 应用程序注意事项
-<a id="mpi-application-considerations" class="xliff"></a>
+### <a name="mpi-application-considerations"></a>MPI 应用程序注意事项
 在 Azure 中使用 HPC Pack 运行 MPI 应用程序时请注意以下事项。 某些注意事项只适用于 Azure 节点（在“迸发到 Azure”配置中添加的辅助角色实例）的部署。
 
 * Azure 会定期对云服务中的辅助角色实例进行重新预配，且不会事先通知（例如，出于系统维护目的，或者在实例失败时）。 如果在实例运行 MPI 作业的同时重新预配，该实例将丢失数据并回到首次部署它时的状态，进而可能导致 MPI 作业失败。 用于单个 MPI 作业的节点越多，该作业的运行时间就会越长，在某一作业正在运行时重新预配其中一个实例的可能性就越大。 如果在部署中将单个节点指定为文件服务器，则也应考虑此情况。
@@ -193,8 +183,7 @@ Microsoft HPC Pack 是一款无需额外费用的工具，可用于创建本地 
 * MPI 作业不能跨部署在不同云服务中的 Azure 实例运行（例如，不能在使用不同节点模板的“迸发到 Azure”部署中或部署在多个云服务中的 Azure VM 计算节点上运行）。 如果你有使用不同节点模板启动的多个 Azure 节点部署，则 MPI 作业必须仅在一组 Azure 节点上运行。
 * 在你向群集添加 Azure 节点并且使它们处于联机状态时，HPC 作业计划程序服务将会立即尝试启动这些节点上的作业。 如果你只有一部分的工作负荷可以在 Azure 上运行，请确保更新或创建作业模板以定义可在 Azure 上运行的作业类型。 例如，若要确保使用某一作业模板提交的作业仅在 Azure 节点上运行，你可以向该作业模板中添加“节点组”属性并且选择 AzureNodes 作为所需值。 若要为你的 Azure 节点创建自定义组，可以使用 Add-HpcGroup HPC PowerShell cmdlet。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 * 使用 HPC Pack 的替代方法是使用 Azure Batch 服务进行开发，以便在 Azure 中的计算节点池上运行 MPI 应用程序。 请参阅[在 Azure Batch 中使用多实例任务运行消息传递接口 (MPI) 应用程序](../../../batch/batch-mpi.md)。
 * 如果要运行访问 Azure RDMA 网络的 Linux MPI 应用程序，请参阅[设置 Linux RDMA 群集以运行 MPI 应用程序](../../linux/classic/rdma-cluster.md)。
 

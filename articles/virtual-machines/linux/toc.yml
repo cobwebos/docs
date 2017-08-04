@@ -39,6 +39,8 @@
       href: tutorial-azure-security.md
     - name: 12 - 部署 Jenkins
       href: tutorial-jenkins-github-docker-cicd.md
+    - name: 13 - 使用 Team Services 设置 CI/CD
+      href: tutorial-build-deploy-jenkins.md
 - name: 示例
   items:
     - name: Azure CLI
@@ -62,23 +64,18 @@
     - name: 容器
       href: containers.md
     - name: Resource Manager
-      href: >-
-        ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
       items:
         - name: 部署模型
-          href: >-
-            ../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: 用于 VM 的模板
-          href: >-
-            ../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Azure Linux 代理
       href: agent-user-guide.md
     - name: Azure 安全中心
-      href: >-
-        ../../security-center/security-center-linux-virtual-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      href: ../../security-center/security-center-linux-virtual-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: 灾难恢复
-      href: >-
-        ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      href: ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: 计划内维护
       href: planned-maintenance.md
       items:
@@ -177,8 +174,7 @@
         - name: 调整 VM 的大小
           href: change-vm-size.md
         - name: 使用标记
-          href: >-
-            ../../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
           items:
             - name: 标记 VM
               href: tag.md
@@ -187,8 +183,7 @@
         - name: 更新 Azure Linux 代理
           href: update-agent.md
         - name: 使用恢复服务进行备份
-          href: >-
-            ../../backup/backup-azure-vms-first-look-arm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../backup/backup-azure-vms-first-look-arm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: 将 RedHat VM 加入 Azure Active Directory 域服务
           href: join-redhat-linux-vm-to-azure-active-directory-domain-service.md
     - name: 使用 SSH 进行连接
@@ -233,12 +228,10 @@
     - name: 管理 VM 存储
       items:
         - name: Azure 托管磁盘
-          href: >-
-            ../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
           items:
             - name: 常见问题
-              href: >-
-                ../../storage/storage-faq-for-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../storage/storage-faq-for-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: 将文件复制到 Linux VM
           href: copy-files-to-linux-vm-using-scp.md
         - name: 将 VM 转换为托管磁盘
@@ -264,8 +257,7 @@
     - name: VM 网络
       items:
         - name: 创建虚拟网络
-          href: >-
-            ../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: 将 VM 部署到现有虚拟网络
           items:
             - name: Azure CLI
@@ -275,8 +267,7 @@
         - name: 创建具有多个 NIC 的 VM
           href: multiple-nics.md
         - name: 创建静态公共 IP
-          href: >-
-            ../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: 配置端口、终结点和安全性
           href: endpoints-in-resource-manager.md
         - name: 允许访问 VM
@@ -290,18 +281,15 @@
         - name: 创建 FQDN
           href: portal-create-fqdn.md
         - name: 创建用户定义的路由
-          href: >-
-            ../../virtual-network/virtual-network-create-udr-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../virtual-network/virtual-network-create-udr-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: 规模和可用性
       items:
         - name: VM 可用性
           href: manage-availability.md
         - name: 创建负载均衡器
-          href: >-
-            ../../load-balancer/load-balancer-get-started-internet-arm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../load-balancer/load-balancer-get-started-internet-arm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: 使用规模集创建多个 VM
-          href: >-
-            ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: 使用 Azure 自动化纵向缩放 VM
           href: vertical-scaling-automation.md
         - name: VM 监视
@@ -339,8 +327,7 @@
             - name: 部署第一个应用
               href: cloudfoundry-deploy-your-first-app.md
         - name: 数据科研 VM 概述
-          href: >-
-            ../../machine-learning/machine-learning-data-science-virtual-machine-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../machine-learning/machine-learning-data-science-virtual-machine-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: MongoDB
           href: install-mongodb.md
         - name: MySQL
@@ -354,8 +341,7 @@
         - name: 部署三节点 Deis 群集
           href: deis-cluster.md
         - name: 部署 Node.js 应用程序
-          href: >-
-            ../../virtual-machines-linux-nodejs-deploy.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../virtual-machines-linux-nodejs-deploy.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Django Web 应用
           href: python-django-web-app.md
         - name: Jupyter 笔记本
@@ -392,8 +378,7 @@
         - name: 常见的迁移错误
           href: migration-classic-resource-manager-errors.md
         - name: 用于迁移的社区工具
-          href: >-
-            ../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: 常见问题
           href: migration-classic-resource-manager-faq.md
     - name: 故障排除
@@ -450,8 +435,7 @@
 - name: 资源
   items:
     - name: 创作模板
-      href: >-
-        ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 社区模板
@@ -463,7 +447,6 @@
     - name: 堆栈溢出
       href: 'http://stackoverflow.com/questions/tagged/azure-virtual-machine'
     - name: 视频
-      href: >-
-        https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
     - name: 常见问题
       href: faq.md

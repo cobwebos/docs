@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/07/2017
 ms.author: alexwun
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be4275d55410a763d38dcb954df5349db287c015
-ms.openlocfilehash: 5eb8f9489dcc29122892165111f62d63be1766f2
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: f497006a8ba48da0032b82113702d8014952ca20
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/14/2017
+ms.lasthandoff: 07/11/2017
 
 
 ---

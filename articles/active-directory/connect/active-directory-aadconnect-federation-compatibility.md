@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2017
+ms.date: 07/13/2017
 ms.author: billmath
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 6f91f732b7579c9f14458dab9be49c027debfac1
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 6b0fd60e79308b75c3a2797ff25065b8a500a3b4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 06/10/2017
 
 ---
 # <a name="azure-ad-federation-compatibility-list"></a>Azure AD 联合身份验证兼容性列表
@@ -47,6 +46,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 * [CA SiteMinder 12.52](#ca-siteminder-1252-sp1-cumulative-release-4) 
 * [Centrify](#centrify) 
 * [Dell One Identity Cloud Access Manager v7.1](#dell-one-identity-cloud-access-manager-v71) 
+* [DigitalPersona 复合身份验证](#digitalpersona-composite-authentication)
 * [IBM Tivoli Federated Identity Manager 6.2.2](#ibm-tivoli-federated-identity-manager-622) 
 * [IceWall Federation Version 3.0](#icewall-federation-version-30) 
 * [Memority](#memority)
@@ -61,7 +61,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 * [Sign&go 5.3](#signgo-53) 
 * [SoftBank Technology Online Service Gate](#softbank)
 * [VMware Workspace One](#vmware-workspace-one)
-* [VMware  Workspace Portal version 2.1](#vmware--workspace-portal-version-21) 
+
 
 
 > [!IMPORTANT]
@@ -82,7 +82,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |无 |
 | 使用 ADAL 的现代应用程序，例如 Office 2016 |支持 |无 |
 
-有关将 Azure Active Directory 与 AD FS 配合使用的详细信息，请参阅 [Active Directory 联合身份验证服务 (ADFS)](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs)
+有关将 Azure Active Directory 与 AD FS 配合使用的详细信息，请参阅 [Active Directory 联合身份验证服务 (ADFS)](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs)。
 
 有关将 Azure Active Directory 与密码同步配合使用的详细信息，请参阅 [Azure AD Connect](active-directory-aadconnect.md)。
 
@@ -111,7 +111,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 
 有关 BIG-IP Access Policy Manager 的详细信息，请参阅 [BIG-IP Access Policy Manager](https://f5.com/products/modules/access-policy-manager)。 
 
-有关如何将 STS 配置为向 Active Directory 用户提供单一登录体验的 BIG-IP Access Policy Manager 说明，请从[此处](http://www.f5.com/pdf/deployment-guides/microsoft-office-365-idp-dg.pdf)下载 PDF 文件。
+有关如何将 STS 配置为向 Active Directory 用户提供单一登录体验的 BIG-IP Access Policy Manager 说明，请从 [BIG-IP](http://www.f5.com/pdf/deployment-guides/microsoft-office-365-idp-dg.pdf) 下载 PDF 文件。
 
 ## <a name="bitglass"></a>BitGlass
 
@@ -123,7 +123,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 | 富客户端应用程序（如 Lync、Office Subscription、CRM） |支持 |不支持集成 Windows 身份验证 |
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |无 |
 
-有关 BitGlass 的详细信息，请查看[此处](http://www.bitglass.com )。
+有关 BitGlass 的详细信息，请参阅 [BitGlass](http://www.bitglass.com)。
 
 ## <a name="ca-secure-cloud"></a>CA Secure Cloud
 
@@ -135,7 +135,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 | 富客户端应用程序（如 Lync、Office Subscription、CRM） |支持 |不支持集成 Windows 身份验证 |
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |无 |
 
-有关 CA Secure Cloud 详细信息，请参阅 [CA Secure Cloud](http://www.ca.com/us/products/security-as-a-service.aspx)。
+有关 CA Secure Cloud 的详细信息，请参阅 [CA Secure Cloud](http://www.ca.com/us/products/security-as-a-service.aspx)。
 
 ## <a name="ca-siteminder-1252-sp1-cumulative-release-4"></a>CA SiteMinder 12.52 SP1 Cumulative Release 4
 
@@ -147,7 +147,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 | 富客户端应用程序（如 Lync、Office Subscription、CRM） |支持 |无 |
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |无 |
 
-有关 CA SiteMinder 详细信息，请参阅 [CA SiteMinder Federation。](http://www.ca.com/us/products/ca-single-sign-on.html) 
+有关 CA SiteMinder 的详细信息，请参阅 [CA SiteMinder Federation](http://www.ca.com/us/products/ca-single-sign-on.html)。 
 
 ## <a name="centrify"></a>Centrify
 
@@ -159,7 +159,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 | 富客户端应用程序（如 Lync、Office Subscription、CRM） |支持 |无 |
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |不支持客户端访问控制 |
 
-有关 Centrify 的详细信息，请查看[此处。](http://www.centrify.com/cloud/apps/single-sign-on-for-office-365.asp)|
+有关 Centrify 的详细信息，请参阅 [Centrify](http://www.centrify.com/cloud/apps/single-sign-on-for-office-365.asp)。
 
 ## <a name="dell-one-identity-cloud-access-manager-v71"></a>Dell One Identity Cloud Access Manager v7.1
 
@@ -171,9 +171,22 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 | 富客户端应用程序（如 Lync、Office Subscription、CRM） |支持 |无 |
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |无 |
 
-有关 Dell One Identity Cloud Access Manager 的详细信息，请参阅 [Dell One Identity Cloud Access Manager。](http://software.dell.com/products/cloud-access-manager)
+有关 Dell One Identity Cloud Access Manager 的详细信息，请参阅 [Dell One Identity Cloud Access Manager](http://software.dell.com/products/cloud-access-manager)。
 
  有关如何将此 STS 配置为向 Office 365 用户提供单一登录体验的说明，请参阅[配置 Office 365 用户](http://documents.software.dell.com/dell-one-identity-cloud-access-manager/7.1/how-to-configure-microsoft-office-365)。 
+
+## <a name="digitalpersona-composite-authentication"></a>DigitalPersona 复合身份验证  
+
+下面是此单一登录体验的方案支持对照表：
+
+| 客户端 | 支持 | 异常 |
+| --- | --- | --- |
+| 基于 Web 的客户端（如 Exchange Web Access 和 SharePoint Online） |支持 |不支持集成 Windows 身份验证|
+| 富客户端应用程序（如 Lync、Office Subscription、CRM） |支持 |不支持集成 Windows 身份验证|
+| 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |无 |
+
+有关详细信息，请参阅 [DigitalPersona 复合身份验证](http://www.crossmatch.com/uploadedFiles/Support/Reference_Material/DigitalPersona-Office-365-Deployment-Guide.pdf)。
+
 
 ## <a name="ibm-tivoli-federated-identity-manager-622"></a>IBM Tivoli Federated Identity Manager 6.2.2
 
@@ -197,7 +210,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 | 富客户端应用程序（如 Lync、Office Subscription、CRM） |支持 |不支持集成 Windows 身份验证 |
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |无 |
 
-有关 IceWall Federation 的详细信息，请参阅[此处](http://h50146.www5.hp.com/products/software/security/icewall/eng/federation/)和[此处。](http://h50146.www5.hp.com/products/software/security/icewall/federation/office365.html)
+有关 IceWall Federation 的详细信息，请参阅 [IceWall Federation Version 3.0](http://h50146.www5.hp.com/products/software/security/icewall/eng/federation/) 和 [Office 365 IceWall Federation](http://h50146.www5.hp.com/products/software/security/icewall/federation/office365.html)。
 
 ## <a name="memority"></a>Memority
 
@@ -209,7 +222,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 | 富客户端应用程序（如 Lync、Office Subscription、CRM） |支持 |无 |
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |无 |
 
-有关使用 Memority 的详细信息，请参阅 [Memority](http://www.memority.com)
+有关使用 Memority 的详细信息，请参阅 [Memority](http://www.memority.com)。
 
 
 ## <a name="netiq-access-manager-4x"></a>NetIQ Access Manager 4.x
@@ -222,7 +235,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 | 富客户端应用程序（如 Lync、Office Subscription、CRM） |支持 |无|
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |无 |
 
-有关详细信息，请参阅 [NetIQ Access Manager](https://www.netiq.com/documentation/access-manager-43/admin/data/b65ogn0.html#b12iqp0m)
+有关详细信息，请参阅 [NetIQ Access Manager](https://www.netiq.com/documentation/access-manager-43/admin/data/b65ogn0.html#b12iqp0m)。
 
 ## <a name="okta"></a>Okta
 
@@ -246,7 +259,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 | 富客户端应用程序（如 Lync、Office Subscription、CRM） |支持 |Windows 集成身份验证 |
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |无 |
 
-有关 OneLogin 的详细信息，请参阅 [OneLogin。](https://www.onelogin.com/)
+有关 OneLogin 的详细信息，请参阅 [OneLogin](https://www.onelogin.com/)。
 
 ## <a name="optimal-idm-virtual-identity-server-federation-services"></a>Optimal IDM Virtual Identity Server Federation Services
 
@@ -258,7 +271,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 | 富客户端应用程序（如 Lync、Office Subscription、CRM） |支持 |Windows 集成身份验证 |
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |
 
-有关客户端访问策略的详细信息，请参阅[基于客户端位置限制对 Office 365 服务的访问权限](https://technet.microsoft.com/library/hh526961.aspx) |。
+有关客户端访问策略的详细信息，请参阅[基于客户端位置限制对 Office 365 服务的访问权限](https://technet.microsoft.com/library/hh526961.aspx)。
 
 
 
@@ -290,7 +303,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 | 富客户端应用程序（如 Lync、Office Subscription、CRM） |支持 |Windows 集成身份验证 |
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |无 |
 
-有关 RadiantOne CFS 的详细信息，请参阅 [RadiantOne CFS。](http://www.radiantlogic.com/products/radiantone-cfs/)
+有关 RadiantOne CFS 的详细信息，请参阅 [RadiantOne CFS](http://www.radiantlogic.com/products/radiantone-cfs/)。
 
 ## <a name="sailpoint-identitynow"></a>Sailpoint IdentityNow
 
@@ -302,7 +315,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 | 富客户端应用程序（如 Lync、Office Subscription、CRM） |支持 |不支持集成 Windows 身份验证 |
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |无 |
 
-有关详细信息，请参阅 [Sailpoint IdentityNow](https://www.sailpoint.com/idaas-identity-as-a-service-identitynow/)
+有关详细信息，请参阅 [Sailpoint IdentityNow](https://www.sailpoint.com/idaas-identity-as-a-service-identitynow/)。
 
 ## <a name="secureauth-idp-720"></a>SecureAuth IdP 7.2.0
 
@@ -339,7 +352,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 | 富客户端应用程序（如 Lync、Office Subscription、CRM） |支持 |无 |
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |无 |
 
-Sign&go 5.3 支持通过配置 Kerberos 约定实现 Kerberos 身份验证。  如需此配置的帮助，请联系 Ilex 或查看[此处](http://www.ilex-international.com/docs/sign&go_wsfederation_en.pdf)的设置指南。
+Sign&go 5.3 支持通过配置 Kerberos 约定实现 Kerberos 身份验证。  如需此配置的帮助，请联系 Ilex 或查看 [Sign&go](http://www.ilex-international.com/docs/sign&go_wsfederation_en.pdf) 的设置指南
 
 ## <a name="softbank-technology-online-service-gate"></a>SoftBank Technology Online Service Gate
 
@@ -351,7 +364,7 @@ Sign&go 5.3 支持通过配置 Kerberos 约定实现 Kerberos 身份验证。  �
 | 富客户端应用程序（如 Lync、Office Subscription、CRM） |支持 |不支持集成 Windows 身份验证 |
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |无 |
 
-有关 SoftBank Technology Online Service Gate 的详细信息，请参阅[此处](https://www.softbanktech.jp/service/list/osg-pro-ent/)。
+有关 SoftBank Technology Online Service Gate 的详细信息，请参阅 [Softbank](https://www.softbanktech.jp/service/list/osg-pro-ent/)
 
 ## <a name="vmware-workspace-one"></a>VMware Workspace One
 
@@ -363,16 +376,6 @@ Sign&go 5.3 支持通过配置 Kerberos 约定实现 Kerberos 身份验证。  �
 | 富客户端应用程序（如 Lync、Office Subscription、CRM） |支持 |不支持集成 Windows 身份验证 |
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |无 |
 
-有关详细信息，请查看[此处](http://www.vmware.com/pdf/vidm-office365-saml.pdf)。
+有关详细信息，请参阅 [VMware Workspace One](http://www.vmware.com/pdf/vidm-office365-saml.pdf)
 
-## <a name="vmware--workspace-portal-version-21"></a>VMware  Workspace Portal version 2.1
 
-下面是此单一登录体验的方案支持对照表：
-
-| 客户端 | 支持 | 异常 |
-| --- | --- | --- |
-| 基于 Web 的客户端（如 Exchange Web Access 和 SharePoint Online） |支持 |不支持集成 Windows 身份验证 |
-| 富客户端应用程序（如 Lync、Office Subscription、CRM） |支持 |不支持集成 Windows 身份验证 |
-| 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |无 |
-
-有关 VMware  Workspace Portal version 2.1 的详细信息，请从[此处](http://pubs.vmware.com/workspace-portal-21/topic/com.vmware.ICbase/PDF/workspace-portal-21-resource.pdf)下载 PDF 文件。

@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2017
+ms.date: 07/07/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 59ccb7a043e1db750e596f173af0791099ea1827
-ms.lasthandoff: 03/14/2017
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: ed3417f69bb13043db0affc9249f3ff5e49d7c79
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -26,11 +27,11 @@ ms.lasthandoff: 03/14/2017
 
 ## <a id="assets"></a>资产和存储
 ### <a name="assets"></a>资产
-[资产](https://docs.microsoft.com/rest/api/media/operations/asset)包含数字文件（包括视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件）以及这些文件的相关元数据。 数字文件在上载到资产中后，即可用于媒体服务编码和流式处理工作流。
+[资产](https://docs.microsoft.com/rest/api/media/operations/asset)包含数字文件（包括视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件）以及这些文件的相关元数据。 数字文件在上传到资产中后，即可用于媒体服务编码和流式处理工作流。
 
 资产将映射到 Azure 存储帐户中的 blob 容器，资产中的文件将作为块 blob 存储在该容器中。 Azure 媒体服务不支持页 blob。
 
-确定要将哪些媒体内容上载和存储到资产中时，需注意以下事项：
+确定要将哪些媒体内容上传和存储到资产中时，需注意以下事项：
 
 * 资产应仅包含一个唯一的媒体内容实例。 例如，一段电视剧、电影或广告剪辑。
 * 资产不应包含多版视听文件或多段视听剪辑。 其中一种不当使用资产的示例包括：尝试在资产中存储多段电视剧、广告或某一作品的不同拍摄角度。 在资产中存储多版或多段视听文件会对提交编码作业、流式处理和保障资产后续在工作流中的传送造成困难。  
@@ -43,19 +44,20 @@ ms.lasthandoff: 03/14/2017
 在不使用媒体服务 API 的情况下，你不应该尝试更改媒体服务生成的 BLOB 容器内容。
 
 ### <a name="asset-encryption-options"></a>资产加密选项
-根据你要上载、存储和传递的内容的不同类型，媒体服务提供了多个加密选项供你选择。
+根据你要上传、存储和传递的内容的不同类型，媒体服务提供了多个加密选项供你选择。
 
-**无** - 不使用加密。 这是默认值。 请注意，使用此选项时，你的内容在传送过程中或静态存储过程中都不会受到保护。
+>[!NOTE]
+>不使用加密。 这是默认值。 使用此选项时，内容在传送过程中或静态存储过程中都不会受到保护。
 
-如果计划使用渐进式下载交付 MP4，则使用此选项上载内容。
+如果计划使用渐进式下载交付 MP4，则使用此选项上传内容。
 
-**StorageEncrypted** - 使用此选项可以通过 AES 256 位加密在本地加密明文内容，然后将其上传到 Azure 存储以加密形式静态存储相关内容。 受存储加密保护的资产将在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上载为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。 
+**StorageEncrypted** - 使用此选项可以通过 AES 256 位加密在本地加密明文内容，然后将其上传到 Azure 存储以加密形式静态存储相关内容。 受存储加密保护的资产将在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上传为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。 
 
 若要传送存储加密资产，必须配置资产的传送策略，以使媒体服务了解要如何传送你的内容。 在流式传输资产之前，流式处理服务器会删除存储加密，然后再使用指定的传传送策略（例如 AES、PlayReady 或无加密）流式传输你的内容。 
 
 **CommonEncryptionProtected** - 如果要采用通用加密或 PlayReady DRM 加密（或上传已加密的）内容（例如，受 PlayReady DRM 保护的平滑流式处理），请使用此选项。
 
-**EnvelopeEncryptionProtected** - 如果要保护（或上传已加密的）采用高级加密标准 (AES) 加密的 HTTP Live Streaming (HLS)，请使用此选项。 请注意，如果上载已采用 AES 加密的 HLS，则该 HLS 必须已经由 Transform Manager 加密。
+**EnvelopeEncryptionProtected** - 如果要保护（或上传已加密的）采用高级加密标准 (AES) 加密的 HTTP Live Streaming (HLS)，请使用此选项。 如果上传已采用 AES 加密的 HLS，则该 HLS 必须已经由 Transform Manager 加密。
 
 ### <a name="access-policy"></a>访问策略
 [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy) 定义对资产的访问权限（如读取、写入和列出）和持续时间。 通常将 AccessPolicy 对象传递给某个定位符，然后使用该定位符来访问资产中包含的文件。
@@ -66,7 +68,7 @@ ms.lasthandoff: 03/14/2017
 ### <a name="blob-container"></a>Blob 容器
 一个 Blob 容器包含一组 Blob 集。 Blob 容器用作媒体服务中的访问控制分界点和资产上的共享访问签名 (SAS) 定位符。 一个 Azure 存储帐户可以包含无数个 Blob 容器。 一个容器可以存储无限个 Blob。
 
-> [!NOTE]
+>[!NOTE]
 > 在不使用媒体服务 API 的情况下，你不应该尝试更改媒体服务生成的 BLOB 容器内容。
 > 
 > 
@@ -74,12 +76,13 @@ ms.lasthandoff: 03/14/2017
 ### <a id="locators"></a>定位符
 [定位符](https://docs.microsoft.com/rest/api/media/operations/locator)提供访问资产中所含文件的入口点。 访问策略用于定义客户端对给定资产具有的访问权限和持续时间。 定位符与访问策略的关系可以为多对一的关系，因此，不同定位符可以向不同客户端提供不同的开始时间和连接类型，而全部使用相同的权限和持续时间设置；但是，由于 Azure 存储服务设置的共享访问策略限制，一项给定的资产一次最多只能与五个唯一的定位符相关联。 
 
-媒体服务支持两种类型的定位符：OnDemandOrigin 定位符，用于对媒体进行流式处理（例如，MPEG DASH、HLS 或平滑流式处理）；渐进式下载媒体和 SAS URL 定位符，用于与 Azure 存储空间相互上载或下载媒体文件。 
+媒体服务支持两种类型的定位符：OnDemandOrigin 定位符，用于对媒体进行流式处理（例如，MPEG DASH、HLS 或平滑流式处理）；渐进式下载媒体和 SAS URL 定位符，用于与 Azure 存储相互上传或下载媒体文件。 
 
-请注意，创建 OnDemandOrigin 定位符时，不应使用列表权限 (AccessPermissions.List)。 
+>[!NOTE]
+>创建 OnDemandOrigin 定位符时，不应使用列表权限 (AccessPermissions.List)。 
 
 ### <a name="storage-account"></a>存储帐户
-对 Azure 存储空间进行的所有访问都要通过存储帐户完成。 一个 Media Service 帐户可与一个或多个存储帐户相关联。 一个帐户可以包含无限个容器，只要每个帐户的容器总大小不超过 500TB 即可。  媒体服务提供 SDK 级工具，可用于管理多个存储帐户，并在上载到这些帐户时基于指标或随机分发使资产分发达到负载平衡。 有关详细信息，请参阅[使用 Azure 存储](https://msdn.microsoft.com/library/azure/dn767951.aspx)。 
+对 Azure 存储进行的所有访问都要通过存储帐户完成。 一个 Media Service 帐户可与一个或多个存储帐户相关联。 一个帐户可以包含无限个容器，只要每个帐户的容器总大小不超过 500TB 即可。  媒体服务提供 SDK 级工具，可用于管理多个存储帐户，并在上传到这些帐户时基于指标或随机分发使资产分发达到负载均衡。 有关详细信息，请参阅[使用 Azure 存储](https://msdn.microsoft.com/library/azure/dn767951.aspx)。 
 
 ## <a name="jobs-and-tasks"></a>作业和任务
 [作业](https://https://docs.microsoft.com/rest/api/media/operations/job)通常用于处理（例如，索引或编码）音频/视频演示。 如果要处理多个视频，应为要编码的每个视频创建一个作业。
@@ -96,7 +99,7 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 
 若要利用[动态打包](media-services-dynamic-packaging-overview.md)，需要将夹层（源）文件编码成一组自适应比特率 MP4 文件或自适应比特率平滑流文件，并且至少有一个标准或高级流式处理终结点处于已启动状态。
 
-媒体服务支持将在本文中介绍的以下按需编码器：
+媒体服务支持本文中介绍的以下按需编码器：
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
 * [媒体编码器高级工作流](media-services-encode-asset.md#media-encoder-premium-workflow)
@@ -117,7 +120,7 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 每个媒体服务帐户均可包含多个通道、多个节目以及多个 StreamingEndpoint。 根据带宽和安全性需求，StreamingEndpoint 服务可专用于一个或多个通道。 任何 StreamingEndpoint 都可以从任何通道拉取。
 
 ### <a name="program-event"></a>节目（事件）
-[节目（事件）](https://docs.microsoft.com/rest/api/media/operations/program)用于控制实时流中片段的发布和存储。 频道管理节目（事件）。 频道和节目的关系非常类似于传统媒体，频道具有恒定的内容流，而节目的范围限定为该频道上的一些定时事件。
+[节目（事件）](https://docs.microsoft.com/rest/api/media/operations/program)用于控制实时流中片段的发布和存储。 频道管理节目（事件）。 频道和节目的关系类似于传统媒体，其中频道具有恒定的内容流，而节目的范围限定为该频道上的一些定时事件。
 可以通过设置 **ArchiveWindowLength** 属性，指定希望保留多少小时的节目录制内容。 此值的设置范围是最短 5 分钟，最长 25 小时。
 
 ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向后搜索的最长时间。 超出指定时间长度后，节目也能够运行，但落在时间窗口长度后面的内容将全部被丢弃。 此属性的这个值还决定了客户端清单能够增加多长时间。
@@ -183,7 +186,8 @@ StreamingEndpoint 表示一个流服务，该服务可以直接将内容传递�
 ### <a name="progressive-download"></a>渐进式下载
 渐进式下载可让你在下载完整个文件之前开始播放媒体。 你只能渐进式下载 MP4 文件。
 
-请注意，如果希望已加密的资产可用于渐进式下载，则必须将这些资产解密。
+>[!NOTE]
+>如果希望已加密的资产可用于渐进式下载，则必须将这些资产解密。
 
 若要为用户提供渐进式下载 URL，必须先创建一个 OnDemandOrigin 定位符。 创建定位符可以生成资产的基本路径。 然后，你需要追加 MP4 文件的名称。 例如：
 
@@ -192,9 +196,10 @@ http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba01
 ### <a name="streaming-urls"></a>流 URL
 将内容流式传输到客户端。 若要为用户提供流 URL，必须先创建一个 OnDemandOrigin 定位符。 通过创建定位符，将为你提供包含要流式传输的内容的资产的基本路径。 但是，为了能够流式传输该内容，你需要进一步修改此路径。 若要构造流清单文件的完整 URL，你必须将定位符的 Path 值与清单 (filename.ism) 文件名连接起来。 然后，向定位符路径追加 /Manifest 和相应的格式（如果需要）。
 
-你也可以通过 SSL 连接流式传输内容。 为此，请确保流 URL 以 HTTPS 开头。 请注意，目前，AMS 对自定义域不支持 SSL。  
+你也可以通过 SSL 连接流式传输内容。 为此，请确保流 URL 以 HTTPS 开头。 目前，AMS 对自定义域不支持 SSL。  
 
-请注意，仅当你要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日以后创建的时，才可以通过 SSL 流式传输内容。 如果流式处理 URL 基于 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”（新格式）。 包含“origin.mediaservices.windows.net”（旧格式）的流式处理 URL 不支持 SSL。 如果你的 URL 采用旧格式，并且你希望能够通过 SSL 流式传输内容，请创建新的流式处理终结点。 使用基于新流式处理终结点创建的 URL 通过 SSL 流式传输你的内容。
+>[!NOTE]
+>仅当要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的情况下，才可以通过 SSL 流式传输内容。 如果流式处理 URL 基于 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”（新格式）。 包含“origin.mediaservices.windows.net”（旧格式）的流式处理 URL 不支持 SSL。 如果你的 URL 采用旧格式，并且你希望能够通过 SSL 流式传输内容，请创建新的流式处理终结点。 使用基于新流式处理终结点创建的 URL 通过 SSL 流式传输你的内容。
 
 以下列表描述了流格式并提供了示例：
 

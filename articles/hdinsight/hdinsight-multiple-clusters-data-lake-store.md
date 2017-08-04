@@ -1,5 +1,5 @@
 ---
-title: "通过一个 Azure Data Lake Store 帐户使用多个 HDInsight 群集 | Microsoft Docs"
+title: "通过一个 Azure Data Lake Store 帐户使用多个 HDInsight 群集 - Azure | Microsoft Docs"
 description: "了解如何通过单个 Data Lake Store 帐户使用多个 HDInsight 群集"
 keywords: "hdinsight 存储, hdfs, 结构化数据, 非结构化数据, data lake store"
 services: hdinsight,storage
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/02/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: ea4a9b16e0990845c28baa1da4d4420aabb25fc9
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 043141e8496a947f54564d29a1d7fb724fac5cda
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 06/10/2017
 
 
 ---

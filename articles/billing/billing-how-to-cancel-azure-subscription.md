@@ -23,8 +23,7 @@ ms.lasthandoff: 07/06/2017
 
 
 ---
-# 取消针对 Azure 的订阅
-<a id="cancel-your-subscription-for-azure" class="xliff"></a>
+# <a name="cancel-your-subscription-for-azure"></a>取消针对 Azure 的订阅
 
 可以以[帐户管理员身份](billing-subscription-transfer.md#whoisaa)取消 Azure 订阅。 取消订阅后，你将无法访问 Azure 服务和资源。
 
@@ -36,10 +35,9 @@ ms.lasthandoff: 07/06/2017
 
 取消付费的 [Azure 支持计划](https://azure.microsoft.com/support/plans/)后，仍会按月向用户收取余下 6 个月的费用。
 
-## 使用 Azure 门户取消订阅
-<a id="cancel-subscription-using-the-azure-portal" class="xliff"></a>
+## <a name="cancel-subscription-using-the-azure-portal"></a>使用 Azure 门户取消订阅
 
-1. 从“订阅”页面中选择你的订阅。[](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)
+1. 从[订阅页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中选择你的订阅。
 
 1. 选择要取消的订阅，然后单击“取消订阅”。
 
@@ -47,8 +45,7 @@ ms.lasthandoff: 07/06/2017
 
 1. 按照提示进行操作并完成取消。
 
-## 使用 Azure 帐户中心取消订阅
-<a id="cancel-subscription-using-the-azure-account-center" class="xliff"></a>
+## <a name="cancel-subscription-using-the-azure-account-center"></a>使用 Azure 帐户中心取消订阅
 
 1. 以帐户管理员身份登录到 [Azure 帐户中心](https://account.windowsazure.com/subscriptions)。
 
@@ -66,8 +63,7 @@ ms.lasthandoff: 07/06/2017
 
 1. 单击 ![选中符号按钮](./media/billing-how-to-cancel-azure-subscription/checkbutton.png) 关闭对话框窗口并返回订阅页。
 
-## 取消订阅之后会发生什么情况？
-<a id="what-happens-after-i-cancel-my-subscription" class="xliff"></a>
+## <a name="what-happens-after-i-cancel-my-subscription"></a>取消订阅之后会发生什么情况？
 
 在取消后，计费将立即停止。 但是，可能需要花费多达 10 分钟，取消才会显示在门户中。
 
@@ -77,15 +73,13 @@ ms.lasthandoff: 07/06/2017
 
 用户取消订阅以后，我们会先等待 90 天，然后才会永久删除用户的数据，这样做是考虑到用户可能需要访问这些数据，或者改变了主意。 我们不会因为保留这些数据而向你收费。 若要了解详细信息，请参阅 [Microsoft Trust Center - How we manage your data](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409)（Microsoft 信任中心 - 我们如何管理用户的数据）。
 
-## 重新激活订阅
-<a id="reactivate-subscription" class="xliff"></a>
+## <a name="reactivate-subscription"></a>重新激活订阅
 
 如果意外取消了即用即付订阅，可[在帐户中心重新激活订阅](billing-subscription-become-disable.md)。
 
 如果你的订阅不是即用即付订阅，可在取消后的 90 天内联系支持人员来重新激活你的订阅。
 
-## 需要帮助？ 联系支持人员。
-<a id="need-help-contact-support" class="xliff"></a>
+## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 
 如果仍有疑问，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
 

@@ -13,7 +13,12 @@
 
 # 入门
 ## [Hadoop 入门](hdinsight-hadoop-linux-tutorial-get-started.md)
-## [Spark 入门](hdinsight-apache-spark-jupyter-spark-sql.md)
+## Spark 入门
+### [创建 Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)
+### [在 Spark 群集上运行查询](hdinsight-apache-spark-load-data-run-query.md)
+### [使用 BI 工具分析数据](hdinsight-apache-spark-use-bi-tools.md)
+### [管理群集资源](hdinsight-apache-spark-resource-manager.md)
+### [调试 Spark 作业](hdinsight-apache-spark-job-debugging.md)
 ## [从 R Server 开始](hdinsight-hadoop-r-server-get-started.md)
 ## [HBase 和 NoSQL 入门](hdinsight-hbase-tutorial-get-started-linux.md)
 ## [Storm 入门](hdinsight-apache-storm-tutorial-get-started-linux.md)
@@ -59,7 +64,6 @@
 ### [ScaleR 和 SparkR](hdinsight-hadoop-r-scaler-sparkr.md)
 ## 使用 Spark 进行内存中处理
 ### [使用 Data Lake Store](hdinsight-apache-spark-use-with-data-lake-store.md)
-### [使用 BI 工具](hdinsight-apache-spark-use-bi-tools.md)
 ### [创建独立应用](hdinsight-apache-spark-create-standalone-application.md)
 ### [使用 Eclipse 创建应用](hdinsight-apache-spark-eclipse-tool-plugin.md)
 ### [使用 IntelliJ 创建应用](hdinsight-apache-spark-intellij-tool-plugin.md)
@@ -76,8 +80,6 @@
 ### [使用本地 Jupyter 笔记本](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 ### [远程作业与 Livy](hdinsight-apache-spark-livy-rest-interface.md)
 ### [使用 IntelliJ 通过 VPN 远程调试作业](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-### [管理资源](hdinsight-apache-spark-resource-manager.md)
-### [跟踪和调试作业](hdinsight-apache-spark-job-debugging.md)
 ### [已知问题](hdinsight-apache-spark-known-issues.md)
 ## 使用 HBase
 ### [使用 Phoenix 和 SQLLine](hdinsight-hbase-phoenix-squirrel-linux.md)
@@ -97,7 +99,6 @@
 #### [使用 Java 拓扑处理事件](hdinsight-storm-develop-java-event-hub-topology.md)
 #### [在拓扑中使用 Power BI](hdinsight-storm-power-bi-topology.md)
 #### [分析实时传感器数据](hdinsight-storm-sensor-data-analysis.md)
-#### [处理车辆传感器数据](hdinsight-storm-iot-eventhub-documentdb.md)
 #### [关联各个时间的事件](hdinsight-storm-correlation-topology.md)
 #### [使用 Python 开发拓扑](hdinsight-storm-develop-python-topology.md)
 ## 使用已加入域的 HDInsight（预览版）
@@ -135,6 +136,7 @@
 ### [使用 Hive 分析网站日志](hdinsight-hive-analyze-website-log.md)
 ### [分析 Application Insights 遥测日志](hdinsight-spark-analyze-application-insight-logs.md)
 ## 扩展群集
+### [使用启用安全传输的存储帐户](hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)
 ### [使用 Bootstrap 自定义群集](hdinsight-hadoop-customize-cluster-bootstrap.md)
 ### [使用脚本操作自定义群集](hdinsight-hadoop-customize-cluster-linux.md)
 ### [将 HDInsight 连接到本地网络](connect-on-premises-network.md)
@@ -205,6 +207,7 @@
 #### [优化 Hive 查询](hdinsight-hadoop-optimize-hive-query.md)
 
 # 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight)
 ## [PowerShell](/powershell/module/azurerm.hdinsight)
 ## [.NET (Hadoop)](https://docs.microsoft.com/dotnet/api/overview/azure/hd-insight?view=azure-dotnet)
 ## [.NET (HBase)](https://www.nuget.org/packages/Microsoft.HBase.Client/)
@@ -234,8 +237,9 @@
 ### [使用 Ambari API 监视群集](hdinsight-monitor-use-ambari-api.md)
 
 # 资源
-## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
 ## [在论坛上获取帮助](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 ## [Microsoft 大数据专业程序](https://academy.microsoft.com/en-us/professional-program/big-data/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [用于 HDInsight 的 Windows 工具](hdinsight-hadoop-windows-tools.md)

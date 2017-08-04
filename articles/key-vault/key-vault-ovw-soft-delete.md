@@ -5,20 +5,17 @@ ms.service: key-vault
 author: BrucePerlerMS
 ms.author: bruceper
 manager: mbaldwin
-ms.date: 05/10/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: 2b73fb55384cdcc8db2736557e0efef97b34fc45
+ms.date: 07/10/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: c873b153ef9c7d5f55672a5918c9dc4fb7256701
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/12/2017
 
 ---
-# <a name="azure-key-vault-soft-delete-feature-overview"></a>Azure Key Vault 软删除功能概述
+# <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault 软删除概述
 
->[!NOTE]
->在此预览版 Azure Key Vault 中，只有“软删除”功能处于预览状态。 Azure Key Vault 作为一个整体，是完整的生产服务。
-
-此预览版 Azure Key Vault 描述了 Key Vault 和 Key Vault 对象的可恢复删除（称为“软删除”）。 本文将具体探讨以下方案：
+Key Vault 的软删除功能可以恢复已删除的保管库和保管库对象，称为软删除。 本文将具体探讨以下方案：
 
 - 支持 Key Vault 的可恢复删除
 - 支持 Key Vault 对象的可恢复删除（例如 密钥、机密和证书）
@@ -33,17 +30,17 @@ Azure Key Vault 是 Azure Resource Manager 管理的跟踪资源。 Azure Resour
 
 1. 在典型方案中，用户可能无意中删除了 Key Vault 或 Key Vault 对象；如果 Key Vault 或 Key Vault 对象在预定时间段内可恢复，则用户可以撤消删除并恢复其数据。
 
-2. 在不同的方案中，恶意用户可能会尝试删除 Key Vault 或 Key Vault 对象（例如保管库内的密钥），导致业务中断。 作为安全措施，可将 Key Vault 或 Key Vault 对象的删除与基础数据的实际删除区分开，例如，将数据删除的权限限制为不同的受信任角色。 这实际上需要对可能导致数据立即丢失的操作进行仲裁。
+2. 在不同的方案中，恶意用户可能会尝试删除 Key Vault 或 Key Vault 对象（例如保管库内的密钥），导致业务中断。 作为安全措施，可将 Key Vault 或 Key Vault 对象的删除与基础数据的实际删除区分开，例如，将数据删除的权限限制为不同的受信任角色。 此方法实际上需要对可能导致数据立即丢失的操作进行仲裁。
 
 ### <a name="soft-delete-behavior"></a>软删除行为
 
-在此预览版中，Key Vault 或 Key Vault 对象上的 DELETE 操作是软删除，因此可以有效地在给定保留期内保留资源，同时通过外观提示已删除对象。 该服务还提供用于恢复已删除对象的机制，从实质上撤销删除。 
+有此功能时，对 Key Vault 或 Key Vault 对象的 DELETE 操作是软删除，因此可以有效地在给定保留期内保留资源，同时通过外观提示已删除对象。 该服务还提供用于恢复已删除对象的机制，从实质上撤销删除。 
 
 软删除是可选 Key Vault 行为，在此版本中默认未启用。 有关为 Key Vault 启用软删除的详细信息，请参阅所选接口 [Key Vault 参考](https://docs.microsoft.com/azure/key-vault/)文献中的具体指南。
 
 ### <a name="key-vault-recovery"></a>Key Vault 恢复
 
-删除 Key Vault 后，服务将在订阅下创建代理资源，为恢复添加足够的元数据。 代理资源是一个存储对象，位于与已删除 Key Vault 相同的位置。 
+删除 Key Vault 后，服务会在订阅下创建代理资源，为恢复添加足够的元数据。 代理资源是一个存储对象，位于与已删除 Key Vault 相同的位置。 
 
 ### <a name="key-vault-object-recovery"></a>Key Vault 对象恢复
 
@@ -53,12 +50,7 @@ Azure Key Vault 是 Azure Resource Manager 管理的跟踪资源。 Azure Resour
 
 ### <a name="soft-delete-retention-period"></a>软删除保留期
 
-软删除的资源将保留一段时间（90 天）。 
-
->[!NOTE]
-> 2017 年 5 月 10 日的预览版无法配置此软删除保留期。 
-
-以下项在软删除保留间隔期间适用：
+软删除的资源将保留一段时间（90 天）。 以下项在软删除保留间隔期间适用：
 
 - 可列出订阅中处于软删除状态的所有 Key Vault 和 Key Vault 对象，并可访问与这些对象有关的删除和恢复信息。
     - 只有具有特殊权限的用户才能列出已删除的保管库。 建议用户使用这些特殊权限创建自定义角色来处理已删除的保管库。
@@ -69,7 +61,7 @@ Azure Key Vault 是 Azure Resource Manager 管理的跟踪资源。 Azure Resour
 
 除非恢复 Key Vault 或 Key Vault 对象，否则在保留间隔结束时，服务将清除已软删除的 Key Vault 或 Key Vault 对象及其内容。 可能无法重新计划资源删除操作。
 
-### <a name="permissioned-purge"></a>授权清除
+### <a name="permitted-purge"></a>允许的清除
 
 可通过代理资源上的 POST 操作永久删除、清除 Key Vault，但此操作需要特殊权限。 通常，只有订阅所有者才能清除 Key Vault。 POST 操作可触发立即删除该保管库，且此删除不可恢复。 
 

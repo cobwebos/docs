@@ -1,7 +1,6 @@
 <!--author=alkohli last changed: 01/12/17-->
 
-### 执行备份
-<a id="to-take-a-backup" class="xliff"></a>
+### <a name="to-take-a-backup"></a>执行备份
 
 1. 转到 StorSimple Device Manager 服务。 从设备的表格式列表中，选择并单击你的设备，然后单击“所有设置”。 在“设置”边栏选项卡中，转到“设置”>“管理”>“备份策略”。
 

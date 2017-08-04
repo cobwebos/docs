@@ -3,8 +3,8 @@ title: "使用 Azure 门户对 Azure Data Lake Analytics 作业进行故障排�
 description: "了解如何使用 Azure 门户对 Data Lake Analytics 作业进行疑难解答。 "
 services: data-lake-analytics
 documentationcenter: 
-author: edmacauley
-manager: jhubbard
+author: saveenr
+manager: saveenr
 editor: cgronlun
 ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
 ms.service: data-lake-analytics
@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: b2b19a6f2ea20c414119e9dfbf84fda92dd93402
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: b9c7453cc0a94f70d0098ed83e5f127832065a62
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -27,50 +27,31 @@ ms.lasthandoff: 05/26/2017
 
 在本教程中，将遇到缺少源文件问题，并使用 Azure 门户解决该问题。
 
-**先决条件**
-
-在开始阅读本教程前，你必须具有：
-
-* **Data Lake Analytics 作业处理的基本知识**。 请参阅 [通过 Azure 门户实现 Azure Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)。
-* **Data Lake Analytics 帐户**。 请参阅 [通过 Azure 门户实现 Azure Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account)。
-* **将示例数据复制到默认的 Data Lake Store 帐户**。  请参阅 [Prepare source data](data-lake-analytics-get-started-portal.md)（准备源数据）
-
 ## <a name="submit-a-data-lake-analytics-job"></a>提交 Data Lake Analytics 作业
-现在将创建具有错误源文件名的 U-SQL 作业。  
 
-**提交作业**
+提交以下 U-SQL 作业：
 
-1. 在 **Azure 门户** 中，单击左上角的“Microsoft Azure”。
-2. 单击显示 Data Lake Analytics 帐户名的磁贴。  该帐户在创建后即已固定在此处。
-   如果该帐户未固定在此处，请参阅 [Open an Analytics account from portall](data-lake-analytics-manage-use-portal.md#manage-data-sources)（从门户打开 Analytics 帐户）。
-3. 在顶部菜单中单击“新建作业”。
-4. 输入“作业名称”，以下 U-SQL 脚本：
+```
+@searchlog =
+   EXTRACT UserId          int,
+           Start           DateTime,
+           Region          string,
+           Query           string,
+           Duration        int?,
+           Urls            string,
+           ClickedUrls     string
+   FROM "/Samples/Data/SearchLog.tsv1"
+   USING Extractors.Tsv();
 
-        @searchlog =
-            EXTRACT UserId          int,
-                    Start           DateTime,
-                    Region          string,
-                    Query           string,
-                    Duration        int?,
-                    Urls            string,
-                    ClickedUrls     string
-            FROM "/Samples/Data/SearchLog.tsv1"
-            USING Extractors.Tsv();
+OUTPUT @searchlog   
+   TO "/output/SearchLog-from-adls.csv"
+   USING Outputters.Csv();
+```
+    
+此脚本中定义的源文件是 **/Samples/Data/SearchLog.tsv1**，它应在 **/Samples/Data/SearchLog.tsv** 中。
 
-        OUTPUT @searchlog   
-            TO "/output/SearchLog-from-adls.csv"
-        USING Outputters.Csv();
-
-    此脚本中定义的源文件是 **/Samples/Data/SearchLog.tsv1**，它应在 **/Samples/Data/SearchLog.tsv** 中。
-5. 单击顶部的“提交作业”。 将打开新的“作业详细信息”窗格。 标题栏显示了作业状态。 需要几分钟才能完成。 可以单击“刷新”以查看最新的状态。
-6. 请等待，直到作业状态变为“失败”。  如果作业显示“成功”，那是因为未删除 /Samples 文件夹。 请参见本教程开始处的**先决条件**部分。
-
-你可能想知道 - 为什么小型作业需要花这么长的时间。  请记住 Data Lake Analytics 旨在处理大数据。  使用其分布式系统处理大数据时，它非常出色。
-
-假定你已提交了作业并关闭了门户。  在下一部分，将学习如何解决作业问题。
 
 ## <a name="troubleshoot-the-job"></a>解决作业问题
-在上一部分，你已提交了作业，而作业失败了。  
 
 **查看所有作业**
 

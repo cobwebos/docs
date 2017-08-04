@@ -23,8 +23,7 @@ ms.lasthandoff: 06/14/2017
 
 
 ---
-# 排查在 Azure 中重新启动或调整现有 Windows 虚拟机时遇到的经典部署问题
-<a id="troubleshoot-classic-deployment-issues-with-restarting-or-resizing-an-existing-windows-virtual-machine-in-azure" class="xliff"></a>
+# <a name="troubleshoot-classic-deployment-issues-with-restarting-or-resizing-an-existing-windows-virtual-machine-in-azure"></a>排查在 Azure 中重新启动或调整现有 Windows 虚拟机时遇到的经典部署问题
 > [!div class="op_single_selector"]
 > * [经典](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
 > * [Resource Manager](../restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -40,22 +39,18 @@ ms.lasthandoff: 06/14/2017
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
-## 收集审核日志
-<a id="collect-audit-logs" class="xliff"></a>
+## <a name="collect-audit-logs"></a>收集审核日志
 若要开始故障排除，请收集审核日志，以识别与问题相关的错误。
 
 在 Azure 门户中，单击“浏览” > “虚拟机” >  *Windows 虚拟机*  > “设置” > “审核日志”。
 
-## 问题：启动已停止的 VM 时发生错误
-<a id="issue-error-when-starting-a-stopped-vm" class="xliff"></a>
+## <a name="issue-error-when-starting-a-stopped-vm"></a>问题：启动已停止的 VM 时发生错误
 你尝试启动已停止的 VM，但出现分配失败。
 
-### 原因
-<a id="cause" class="xliff"></a>
+### <a name="cause"></a>原因
 必须在托管云服务的原始群集上尝试发出启动已停止 VM 的请求。 但是，群集没有足够的空间可完成该请求。
 
-### 解决方法
-<a id="resolution" class="xliff"></a>
+### <a name="resolution"></a>解决方法
 * 创建新的云服务，并将它与区域或基于区域的虚拟网络（而不是地缘组）关联。
 * 删除已停止的 VM。
 * 使用磁盘在新的云服务中重新创建 VM。
@@ -68,16 +63,13 @@ ms.lasthandoff: 06/14/2017
 > 
 > 
 
-## 问题：调整现有 VM 的大小时发生错误
-<a id="issue-error-when-resizing-an-existing-vm" class="xliff"></a>
+## <a name="issue-error-when-resizing-an-existing-vm"></a>问题：调整现有 VM 的大小时发生错误
 你尝试调整现有 VM 的大小，但出现分配失败。
 
-### 原因
-<a id="cause" class="xliff"></a>
+### <a name="cause"></a>原因
 必须在托管云服务的原始群集上尝试发出调整 VM 大小的请求。 但是，群集不支持请求的 VM 大小。
 
-### 解决方法
-<a id="resolution" class="xliff"></a>
+### <a name="resolution"></a>解决方法
 减少请求的 VM 大小，然后重试调整大小请求。
 
 * 单击“浏览全部” > “虚拟机(经典)” >  *你的虚拟机*  > “设置” > “大小”。 有关详细步骤，请参阅[调整虚拟机的大小](https://msdn.microsoft.com/library/dn168976.aspx)。
@@ -91,8 +83,7 @@ ms.lasthandoff: 06/14/2017
 
 如果现有的云服务未与基于区域的虚拟网络相关联，则必须删除现有云服务中的 VM，并在新云服务中从其磁盘重新创建 VM。 然而，请务必记得新的云服务将有新的名称和 VIP，因此需要为所有目前将此信息用于现有云服务的依赖性更新该信息。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 如果在 Azure 中创建 Windows VM 时遇到问题，请参阅[排查在 Azure 中创建 Windows 虚拟机时遇到的部署问题](../troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 

@@ -1,10 +1,10 @@
 ---
 title: "Intel Edison 到云 (C) - 将 Intel Edison 连接到 Azure IoT 中心 | Microsoft Docs"
-description: "将 Intel Edison 连接到 Azure IoT 中心，便于 Intel Edison 向 Azure 云发送数据。"
+description: "在本教程中了解如何设置 Intel Edison 并将其连接到 Azure IoT 中心，使其能够将数据发送到 Azure 云平台。"
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "azure iot intel edison, intel edison iot 中心, intel edison 发送数据到云, intel edison 到云"
 ms.assetid: 4885fa2c-c2ee-4253-b37f-ccd55f92b006
@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 4/17/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: fd6d04159c46439b5f1a91be7d2fa1b500bc92b3
-ms.lasthandoff: 04/20/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: edbdbe0230f742cd7228f04a4a83c9bd567527e8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-c"></a>将 Intel Edison 连接到 Azure IoT 中心 (C)
@@ -181,7 +181,7 @@ ms.lasthandoff: 04/20/2017
 
 1. 使用主计算机的以下任一 SSH 客户端连接到 Intel Edison。 IP 地址来自配置工具，密码与该工具中设置的相同。
     - [PuTTY](http://www.putty.org/) for Windows。
-    - Ubuntu 或 macOS 上的内置 SSH 客户端。
+    - Ubuntu 或 macOS 上的内置 SSH 客户端（运行 `ssh root@"the IP address"`）。
 
 2. 将示例客户端应用克隆到设备中。 
    
@@ -208,9 +208,9 @@ ms.lasthandoff: 04/20/2017
 
    ![配置文件](media/iot-hub-intel-edison-kit-c-get-started/13_configure_file.png)
 
-   此文件中有两个可以配置的宏。 第一个宏是 `INTERVAL`，定义发送到云的两条消息之间的时间间隔。 第二个宏是 `SIMULATED_DATA`，是一个布尔值，指示是否使用模拟的传感器数据。
+   此文件中有两个可配置的宏。 第一个是 `INTERVAL`，它确定发送到云的两条消息之间的时间间隔。 第二个是 `SIMULATED_DATA`，它是一个布尔值，指示是否使用模拟的传感器数据。
 
-   如果没有传感器，请将 `SIMULATED_DATA` 值设置为 `1`，使示例应用程序创建并使用模拟的传感器数据。
+   如果没有传感器，请将 `SIMULATED_DATA` 值设置为 `1`，使示例应用程序创建和使用模拟的传感器数据。
 
 2. 通过按“Ctrl-O”>“Enter”>“Ctrl-X”保存并退出。
 
@@ -230,7 +230,7 @@ ms.lasthandoff: 04/20/2017
    ```
 
    > [!NOTE] 
-   请确保将设备连接字符串复制并粘贴到单引号中。
+   确保将设备连接字符串复制并粘贴到单引号中。
 
 应看到以下输出，其中显示传感器数据以及发至 IoT 中心的消息。
 
@@ -241,3 +241,4 @@ ms.lasthandoff: 04/20/2017
 此时已运行示例应用程序，以收集传感器数据并将其发送到 IoT 中心。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
+

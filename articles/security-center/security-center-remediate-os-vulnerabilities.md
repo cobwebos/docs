@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/21/2017
+ms.date: 06/16/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: c88dc19cdacc94b9b81adcdbf69f22aac8f6eabe
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: e6b251d5b97c57b3b6f79d14e53fbed5ca37ecb0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -25,14 +26,14 @@ ms.lasthandoff: 03/22/2017
 Azure 安全中心每日分析虚拟机 (VM) 操作系统 (OS) 的配置（该配置使 VM 更易受到攻击），并建议配置更改以解决这些漏洞。 当 VM 的 OS 配置与建议的配置规则不匹配时，安全中心建议你解决漏洞。
 
 > [!NOTE]
-> 有关受监视的具体配置的详细信息，请参阅[建议的配置规则列表](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)。 目前不对 Windows Server 2016 提供完全支持。
+> 有关受监视的具体配置的详细信息，请参阅[建议的配置规则列表](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)。
 >
 >
 
 ## <a name="implement-the-recommendation"></a>实现该建议
 
 > [!NOTE]
-> 本文档将使用示例部署介绍该服务。  这并非一份循序渐进的指南。
+> 本文档将使用示例部署介绍该服务。  本文档不是一份分步指南。
 >
 >
 
@@ -72,14 +73,15 @@ Azure 安全中心每日分析虚拟机 (VM) 操作系统 (OS) 的配置（该�
 ## <a name="see-also"></a>另请参阅
 本文档演示如何实现安全中心建议“修正 OS 漏洞”。 可以在[此处](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)查看配置规则的集。 安全中心使用 CCE（通用配置枚举）来分配配置规则的唯一标识符。 请访问 [CCE](https://nvd.nist.gov/cce/index.cfm) 站点以了解详细信息。
 
-若要了解有关安全中心的详细信息，请参阅以下文章：
+若要了解有关安全中心的详细信息，请参阅以下资源：
 
-* [在 Azure 安全中心中设置安全策略](security-center-policies.md)了解如何配置 Azure 订阅和资源组的安全策略。
-* [在 Azure 安全中心中管理安全建议](security-center-recommendations.md) -- 了解建议如何帮助保护 Azure 资源。
-* [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) -- 了解如何监视 Azure 资源的运行状况。
-* [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。
-* [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md) -- 了解如何监视合作伙伴解决方案的运行状态。
-* [Azure 安全中心常见问题解答](security-center-faq.md) - 查找有关使用服务的常见问题。
+* [Azure 安全中心支持的平台](security-center-os-coverage.md) - 提供支持的 Windows 和 Linux VM 列表。
+* [在 Azure 安全中心设置安全策略](security-center-policies.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
+* [在 Azure 安全中心管理安全建议](security-center-recommendations.md) - 了解建议如何帮助保护 Azure 资源。
+* [Azure 安全中心的安全运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况。
+* [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) - 了解如何管理和响应安全警报。
+* [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md) - 了解如何监视合作伙伴解决方案的运行状态。
+* [Azure 安全中心常见问题](security-center-faq.md) - 查找有关如何使用服务的常见问题。
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
 
 <!--Image references-->

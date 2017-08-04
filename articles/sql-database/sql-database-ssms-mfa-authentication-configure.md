@@ -24,23 +24,20 @@ ms.lasthandoff: 06/09/2017
 
 
 ---
-# 配置 SQL Server Management Studio 的 Azure SQL 数据库多重身份验证
-<a id="configure-azure-sql-database-multi-factor-authentication-for-sql-server-management-studio" class="xliff"></a>
+# <a name="configure-azure-sql-database-multi-factor-authentication-for-sql-server-management-studio"></a>配置 SQL Server Management Studio 的 Azure SQL 数据库多重身份验证
 
 本主题介绍如何配置 SQL Server Management Studio 的 Azure SQL 数据库多重身份验证。 
 
 有关 Azure SQL 数据库多重身份验证的概述，请参阅 [SQL 数据库和 SQL 数据仓库的通用身份验证（对 MFA 的 SSMS 支持）](sql-database-ssms-mfa-authentication.md)。
 
-## 配置步骤
-<a id="configuration-steps" class="xliff"></a>
+## <a name="configuration-steps"></a>配置步骤
 
 1. **配置 Azure Active Directory** - 有关详细信息，请参阅[将本地标识与 Azure Active Directory 集成](../active-directory/active-directory-aadconnect.md)、[将自己的域名添加到 Azure AD](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)、[Microsoft Azure 现在支持与 Windows Server Active Directory 联合](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)、[管理 Azure AD 目录](https://msdn.microsoft.com/library/azure/hh967611.aspx)和[使用 Windows PowerShell 管理 Azure AD](https://msdn.microsoft.com/library/azure/jj151815.aspx)。
 2. **配置 MFA** - 有关分步说明，请参阅 [Azure SQL 数据库和数据仓库的条件性访问 (MFA)](sql-database-conditional-access.md)。 
 3. **配置 SQL 数据库或 SQL 数据仓库以进行 Azure AD 身份验证** - 有关分步说明，请参阅[使用 Azure Active Directory 身份验证连接到 SQL 数据库或 SQL 数据仓库](sql-database-aad-authentication.md)。
 4. **下载 SSMS** - 在客户端计算机上，从[下载 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) 下载最新的 SSMS（至少是 2016 年 8 月版）。
 
-## 使用 SSMS 通用身份验证进行连接
-<a id="connecting-by-using-universal-authentication-with-ssms" class="xliff"></a>
+## <a name="connecting-by-using-universal-authentication-with-ssms"></a>使用 SSMS 通用身份验证进行连接
 
 以下步骤演示如何使用最新的 SSMS 连接到 SQL 数据库或 SQL 数据仓库。
 
@@ -68,8 +65,7 @@ ms.lasthandoff: 06/09/2017
 
 验证完成后，SSMS 便会正常连接（假设凭据和防火墙访问有效）。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 * 有关 Azure SQL 数据库多重身份验证的概述，请参阅 [SQL 数据库和 SQL 数据仓库的通用身份验证（对 MFA 的 SSMS 支持）](sql-database-ssms-mfa-authentication.md)。
 * 向其他人员授予数据库访问权限：[SQL 数据库身份验证和授权：授予访问权限](sql-database-manage-logins.md)  

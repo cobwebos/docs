@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 06/27/2017
 ms.author: babanisa;sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 775900fcae1b2832a5d0951e2a4053562c21455e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 72e18444c83b84c5191a0aab3dc6983517167dd1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -33,11 +33,11 @@ ms.lasthandoff: 06/28/2017
 
 诊断日志默认已禁用。 若要启用诊断日志，请按照以下步骤操作：
 
-1.  在 [Azure 门户](https://portal.azure.com)中，转到“流式处理作业”边栏选项卡。
+1.  在 [Azure 门户](https://portal.azure.com)中的“监视 + 管理”下，单击“诊断日志”。
 
-2.  在“监视”下面，转到“诊断日志”边栏选项卡。
+    ![在边栏选项卡中导航到诊断日志](./media/service-bus-diagnostic-logs/image1.png)
 
-    ![在边栏选项卡中导航到诊断日志](./media/service-bus-diagnostic-logs/image1.png)  
+2. 单击想要监视的资源。  
 
 3.  单击“启用诊断”。
 
@@ -47,11 +47,9 @@ ms.lasthandoff: 06/28/2017
 
     ![更改诊断日志的状态](./media/service-bus-diagnostic-logs/image3.png)
 
-5.  设置所需的存档目标，例如存储帐户、事件中心或 Azure Log Analytics。
+5.  设置所需的存档目标；例如存储帐户、事件中心或 Azure Log Analytics。
 
-6.  选择要收集的日志类别；例如“执行”或“创作”。
-
-7.  保存新的诊断设置。
+6.  保存新的诊断设置。
 
 新设置在大约 10 分钟后生效。 在此之后，日志将出现在“诊断日志”边栏选项卡上配置的存档目标中。
 
@@ -61,13 +59,13 @@ ms.lasthandoff: 06/28/2017
 
 所有日志均以 JavaScript 对象表示法 (JSON) 格式存储。 每个条目均包含字符串字段，这些字段采用以下部分所述的格式。
 
-## <a name="operation-logs-example"></a>操作日志示例
+## <a name="operational-logs-schema"></a>运行日志架构
 
 **OperationalLogs** 类别中的日志捕获在服务总线操作期间发生的情况。 具体而言，这些日志捕获操作类型，包括队列创建、所用的资源和操作状态。
 
-操作日志 JSON 字符串包括下表列出的元素：
+运行日志 JSON 字符串包括下表中列出的元素：
 
-Name | 说明
+名称 | 说明
 ------- | -------
 ActivityId | 用于跟踪的内部 ID
 EventName | 操作名称           
@@ -79,7 +77,7 @@ EventProperties | 操作属性
 调用方 | 操作的调用方（Azure 门户或管理客户端）
 category | OperationalLogs
 
-下面是操作日志 JSON 字符串的示例：
+下面是运行日志 JSON 字符串的示例：
 
 ```json
 {

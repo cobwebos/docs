@@ -21,9 +21,7 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 12/08/2016
 
 ---
-<a id="service-fabric-cluster-security-scenarios" class="xliff"></a>
-
-# Service Fabric 群集安全方案
+# <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 群集安全方案
 Service Fabric 群集是你拥有的资源。 必须保护群集以防止未经授权的用户连接到群集，特别是群集上正在运行生产工作负荷时。 尽管可以创建不安全的群集，但是，当这种群集向公共 Internet 公开管理终结点时，匿名用户可与它建立连接。 
 
 本文概述 Azure 或单机上运行的群集的安全方案，以及用于实现这些方案的各种技术。 群集安全方案包括：
@@ -32,18 +30,14 @@ Service Fabric 群集是你拥有的资源。 必须保护群集以防止未经�
 * 客户端到节点安全性
 * 基于角色的访问控制 (RBAC)
 
-<a id="node-to-node-security" class="xliff"></a>
-
-## 节点到节点安全性
+## <a name="node-to-node-security"></a>节点到节点安全性
 保护群集中 VM 或计算机之间的通信。 这可确保只有已获授权加入群集的计算机可以参与托管应用程序和群集中的服务。
 
 ![节点到节点通信示意图][Node-to-Node]
 
 在 Azure 上运行的群集或在 Windows 上运行的独立群集可以使用[证书安全性](https://msdn.microsoft.com/library/ff649801.aspx)或适用于 Windows Server 计算机的 [Windows 安全性](https://msdn.microsoft.com/library/ff649396.aspx)。
 
-<a id="node-to-node-certificate-security" class="xliff"></a>
-
-### 节点到节点的证书安全性
+### <a name="node-to-node-certificate-security"></a>节点到节点的证书安全性
 当你创建群集时，Service Fabric 将使用指定为节点类型配置一部分的 X.509 服务器证书。 本文末尾概述了这些证书是什么，以及如何获取或创建这些证书。
 
 证书安全性是在通过 Azure 门户、Azure Resource Manager 模板或独立的 JSON 模板创建群集时配置的。 可以指定一个主要证书和一个可选的辅助证书（用于证书滚动更新）。 你指定的主证书和辅助证书应该不同于你为[客户端到节点安全性](#client-to-node-security)指定的管理员客户端证书和只读客户端证书。
@@ -52,23 +46,17 @@ Service Fabric 群集是你拥有的资源。 必须保护群集以防止未经�
 
 对于独立的 Windows Server，请参阅[使用 X.509 证书保护 Windows 上的独立群集](service-fabric-windows-cluster-x509-security.md)
 
-<a id="node-to-node-windows-security" class="xliff"></a>
-
-### 节点到节点的 Windows 安全性
+### <a name="node-to-node-windows-security"></a>节点到节点的 Windows 安全性
 对于独立的 Windows Server，请参阅[使用 Windows 安全性保护 Windows 上的独立群集](service-fabric-windows-cluster-windows-security.md)
 
-<a id="client-to-node-security" class="xliff"></a>
-
-## 客户端到节点安全性
+## <a name="client-to-node-security"></a>客户端到节点安全性
 对客户端进行身份验证，并保护客户端与群集中单个节点之间的通信。 这种类型的安全性将验证并保护客户端通信，确保只有已获授权的用户可以访问群集与群集上部署的应用程序。 客户端通过其 Windows 安全性凭据或其证书安全性凭据进行唯一标识。
 
 ![客户端到节点通信示意图][Client-to-Node]
 
 在 Azure 上运行的群集或在 Windows 上运行的独立群集可以使用[证书安全性](https://msdn.microsoft.com/library/ff649801.aspx)或 [Windows 安全性](https://msdn.microsoft.com/library/ff649396.aspx)。
 
-<a id="client-to-node-certificate-security" class="xliff"></a>
-
-### 客户端到节点的证书安全性
+### <a name="client-to-node-certificate-security"></a>客户端到节点的证书安全性
  客户端到节点证书安全性是在使用 Azure 门户、Resource Manager 模板或独立的 JSON 模板创建群集时，通过指定管理员客户端证书和/或用户客户端证书来配置的。  你指定的管理员客户端证书和用户客户端证书应该不同于你为[节点到节点安全性](#node-to-node-security)指定的主证书和辅助证书。
 
 客户端如果使用管理员证书连接到群集，则拥有管理功能的完全访问权限。  客户端如果使用只读的用户客户端证书连接到群集，则只拥有管理功能的只读访问权限。 换而言之，这些证书用于本文稍后所述的基于角色的访问控制 (RBAC)。
@@ -77,30 +65,22 @@ Service Fabric 群集是你拥有的资源。 必须保护群集以防止未经�
 
 对于独立的 Windows Server，请参阅[使用 X.509 证书保护 Windows 上的独立群集](service-fabric-windows-cluster-x509-security.md)
 
-<a id="client-to-node-azure-active-directory-aad-security-on-azure" class="xliff"></a>
-
-### Azure 上客户端到节点的 Azure Active Directory (AAD) 安全性
+### <a name="client-to-node-azure-active-directory-aad-security-on-azure"></a>Azure 上客户端到节点的 Azure Active Directory (AAD) 安全性
 在 Azure 上运行的群集也可以使用 Azure Active Directory (AAD) 来保护对管理终结点的访问。 若要了解如何创建必要的 AAD 项目、如何在创建群集期间填充这些项目，以及之后如何连接这些群集，请参阅[使用 Azure Resource Manager 模板设置群集](service-fabric-cluster-creation-via-arm.md)。
 
-<a id="security-recommendations" class="xliff"></a>
-
-## 安全建议
+## <a name="security-recommendations"></a>安全建议
 对于 Azure 群集，建议针对节点到节点安全性使用 AAD 安全性来验证客户端和证书。
 
 对于独立 Windows Server 群集，如果有 Windows Server 2012 R2 和 Active Directory，建议结合使用 Windows 安全性和组管理帐户 (GMA)。 否则，仍可以结合使用 Windows 安全性和 Windows 帐户。
 
-<a id="role-based-access-control-rbac" class="xliff"></a>
-
-## 基于角色的访问控制 (RBAC)
+## <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
 访问控制可让群集管理员针对不同的用户组限制特定群集操作的访问权限，使群集更加安全。 连接到群集的客户端支持两种不同的访问控制类型：管理员角色和用户角色。
 
 管理员对管理功能（包括读取/写入功能）拥有完全访问权限。 默认情况下，用户只有管理功能的读取访问权限（例如查询功能），以及解析应用程序和服务的能力。
 
 可在创建群集时为每个角色提供不同的标识（证书、AAD 等），从而指定管理员和用户客户端角色。 若要详细了解默认访问控制设置以及如何更改默认设置，请参阅 [Service Fabric 客户端的基于角色的访问控制](service-fabric-cluster-security-roles.md)。
 
-<a id="x509-certificates-and-service-fabric" class="xliff"></a>
-
-## X.509 证书和 Service Fabric
+## <a name="x509-certificates-and-service-fabric"></a>X.509 证书和 Service Fabric
 X.509 数字证书通常用于验证客户端与服务器，以及对消息进行加密和数字签名。 如需了解这些证书的更多详情，请参阅[使用证书](http://msdn.microsoft.com/library/ms731899.aspx)。
 
 要考虑的几个要点：
@@ -109,9 +89,7 @@ X.509 数字证书通常用于验证客户端与服务器，以及对消息进�
 * 切勿在生产环境中使用通过 MakeCert.exe 等工具创建的临时或测试证书。
 * 可以使用自签名证书，但只应使用它来测试群集，而不应在生产环境中使用。
 
-<a id="server-x509-certificates" class="xliff"></a>
-
-### 服务器 X.509 证书
+### <a name="server-x509-certificates"></a>服务器 X.509 证书
 服务器证书的主要任务是在客户端上对服务器（节点）进行身份验证，或者在一个服务器（节点）上对另一个服务器（节点）进行身份验证。 客户端或节点对节点进行身份验证时，一项初始检查是检查“使用者”字段中的公用名值。 此公用名或某个证书的使用者可选名称必须存在于允许的公用名列表中。
 
 以下文章介绍了如何生成包含使用者可选名称 (SAN) 的证书：[如何向安全的 LDAP 证书添加使用者可选名称](http://support.microsoft.com/kb/931351)。
@@ -120,9 +98,7 @@ X.509 数字证书通常用于验证客户端与服务器，以及对消息进�
 
 证书的“预期目的”字段值应包含适当的值，例如“服务器身份验证”或“客户端身份验证”。
 
-<a id="client-x509-certificates" class="xliff"></a>
-
-### 客户端 X.509 证书
+### <a name="client-x509-certificates"></a>客户端 X.509 证书
 客户端证书通常不由第三方证书颁发机构颁发。 当前用户位置的“个人”存储通常包含由根证书颁发机构放置的客户端证书，其预期目的是“客户端身份验证”。 客户端可以在需要相互身份验证时使用此类证书。
 
 > [!NOTE]
@@ -133,9 +109,7 @@ X.509 数字证书通常用于验证客户端与服务器，以及对消息进�
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 本文提供有关群集安全性的概念信息。 下一步，
 
 

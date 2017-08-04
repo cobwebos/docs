@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2016
 ms.author: ilanr9;yijichen;garye
-translationtype: Human Translation
-ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
-ms.openlocfilehash: 0c07495a932c8bfdabb97e8eebe8d99de19fbd15
-ms.lasthandoff: 01/30/2017
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 275e387878900154660d044b26ff5ac03a17a65a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/11/2017
 
 
 ---
@@ -161,7 +162,7 @@ Cortana Intelligence 的真正威力在于有强大的能力部署及调整以�
 根据上述准则检定用例，可大幅提高用例的成功率，为实现将来的用例打下良好基础。
 
 ### <a name="cloud-based-solutions"></a>基于云的解决方案
-Cortana Intelligence Suite 是云中的集成环境。 在云环境中部署高级的分析解决方案，可为企业带来明显的效益，同时，为使用本地 IT 解决方案的公司带来巨大的革新。 在能源行业，明显看出运营逐渐转向云的趋势。 这种趋势与上述**行业趋势**中的智能电网发展同步并进。 由于本演练手册着重于能源领域中基于云的解决方案，因此必须说明部署基于云的解决方案带来的优点和其他注意事项。
+Cortana Intelligence Suite 是云中的集成环境。 在云环境中部署高级的分析解决方案，可为企业带来明显的效益，同时，为仍使用本地 IT 解决方案的公司带来巨大的革新。 在能源行业，明显看出运营逐渐转向云的趋势。 这种趋势与上述**行业趋势**中的智能电网发展同步并进。 由于本演练手册着重于能源领域中基于云的解决方案，因此必须说明部署基于云的解决方案带来的优点和其他注意事项。
 
 基于云的解决方案带来的最大优势可能就是成本。 由于解决方案使用云部署的组件，因此不需要前期成本或相关的 COGS（销货成本）组件成本。 这意味着不需要投资硬件、软件和 IT 维护，因而大幅降低业务风险。
 
@@ -383,7 +384,7 @@ MAPE (Mean Absolute Percentage Error) 是“平均绝对百分比误差”的缩
 下面是能源需求预测周期的步骤：
 
 1. 数百万个已部署的数据仪表不断地实时生成用电量数据。
-2. 此数据收集后上载到云存储库（*例如* Azure Blob）。
+2. 此数据收集后上传到云存储库（例如 Azure Blob）。
 3. 在处理之前，原始数据先聚合到企业定义的变电站或区域级别。
 4. 然后进行特征处理（请参阅**数据准备和特征处理**），生成模型训练和评分所需的数据 – 特征集数据存储在数据库（*例如* SQL Azure）中。
 5. 调用重新训练服务来重新训练预测模型 – 更新后的模型持续保存，可供评分 Web 服务使用。

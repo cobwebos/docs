@@ -18,28 +18,23 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 07/12/2017
 
 ---
-# Azure Database for MySQL：使用 Python 进行连接并查询数据
-<a id="azure-database-for-mysql-use-python-to-connect-and-query-data" class="xliff"></a>
+# <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Python 进行连接并查询数据
 本快速入门演示了如何使用 [Python](https://python.org) 连接到 Azure Database for MySQL。 该语言可以通过 Mac OS、Ubuntu Linux 和 Windows 平台，使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文中的步骤假定你熟悉如何使用 Python 进行开发，但不熟悉如何使用 Azure Database for MySQL。
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 此快速入门使用以下任意指南中创建的资源作为起点：
 - [使用 Azure 门户创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [使用 Azure CLI 创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
-## 安装 Python 和 MySQL 连接器
-<a id="install-python-and-the-mysql-connector" class="xliff"></a>
+## <a name="install-python-and-the-mysql-connector"></a>安装 Python 和 MySQL 连接器
 在自己的计算机上安装 [Python](https://www.python.org/downloads/) 和[用于 Python 的 MySQL 连接器](https://dev.mysql.com/downloads/connector/python/)。 根据自己的平台执行以下步骤：
 
-### Windows
-<a id="windows" class="xliff"></a>
+### <a name="windows"></a>Windows
 1. 下载并安装 [python.org](https://www.python.org/downloads/windows/) 提供的 Python 2.7。 
 2. 通过启动命令提示符来检查 Python 安装。 使用大写 V 开关运行 `C:\python27\python.exe -V` 命令，查看版本号。
 3. 根据 Python 版本安装 [mysql.com](https://dev.mysql.com/downloads/connector/python/) 提供的用于 MySQL 的 Python 连接器。
 
-### Linux (Ubuntu)
-<a id="linux-ubuntu" class="xliff"></a>
+### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 1. 在 Linux (Ubuntu) 中，通常会在默认安装过程中安装 Python。
 2. 通过启动 Bash Shell 来检查 Python 安装。 使用大写 V 开关运行 `python -V` 命令，查看版本号。
 3. 通过运行 `pip show pip -V` 命令来查看版本号，检查 PIP 安装。 
@@ -51,8 +46,7 @@ ms.lasthandoff: 07/12/2017
    sudo pip install mysql-connector-python-rf
    ```
  
-### MacOS
-<a id="macos" class="xliff"></a>
+### <a name="macos"></a>MacOS
 1. 在 Mac OS 中，通常会在默认 OS 安装过程中安装 Python。
 2. 通过启动 Bash Shell 来检查 Python 安装。 使用大写 V 开关运行 `python -V` 命令，查看版本号。
 3. 通过运行 `pip show pip -V` 命令来查看版本号，检查 PIP 安装。
@@ -64,8 +58,7 @@ ms.lasthandoff: 07/12/2017
    pip install mysql-connector-python-rf
    ```
 
-## 获取连接信息
-<a id="get-connection-information" class="xliff"></a>
+## <a name="get-connection-information"></a>获取连接信息
 获取连接到 Azure Database for MySQL 所需的连接信息。 需要完全限定的服务器名称和登录凭据。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
@@ -76,13 +69,11 @@ ms.lasthandoff: 07/12/2017
 5. 如果忘了服务器的登录信息，请导航到“概览”页，以查看服务器管理员登录名并重置密码（如果需要）。
    
 
-## 运行 Python 代码
-<a id="run-python-code" class="xliff"></a>
+## <a name="run-python-code"></a>运行 Python 代码
 - 将代码粘贴到文本文件中，然后将该文件使用 .py 文件扩展名（例如 C:\pythonmysql\createtable.py or /home/username/pythonmysql/createtable.py）保存到项目文件夹中
 - 若要运行此代码，请启动命令提示符或 bash shell。 将目录更改为项目文件夹 `cd pythonmysql`。 然后键入后跟文件名的 python 命令 `python createtable.py`，以便运行应用程序。 在 Windows OS 中，如果找不到 python.exe，可以提供可执行文件的完整路径，也可以将 Python 路径添加到 path 环境变量中。 `C:\python27\python.exe createtable.py`
 
-## 进行连接，创建表，然后插入数据
-<a id="connect-create-table-and-insert-data" class="xliff"></a>
+## <a name="connect-create-table-and-insert-data"></a>进行连接，创建表，然后插入数据
 通过以下代码连接到服务器，创建一个表，然后使用 INSERT SQL 语句加载数据。 
 
 在代码中，mysql.connector 库已导入。 [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 函数用于通过配置集合中的[连接参数](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)连接到 Azure Database for MySQL。 该代码对连接使用游标，并通过 [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) 方法对 MySQL 数据库执行 SQL 查询。 
@@ -138,8 +129,7 @@ else:
   print("Done.")
 ```
 
-## 读取数据
-<a id="read-data" class="xliff"></a>
+## <a name="read-data"></a>读取数据
 使用以下代码进行连接，并使用 **SELECT** SQL 语句来读取数据。 
 
 在代码中，mysql.connector 库已导入。 [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 函数用于通过配置集合中的[连接参数](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)连接到 Azure Database for MySQL。 该代码对连接使用游标，并通过 [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) 方法对 MySQL 数据库执行 SQL 语句。 数据行使用 [fetchall()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html) 方法读取。 结果集保留在集合行中，for 迭代器用于针对行进行循环。
@@ -188,8 +178,7 @@ else:
   print("Done.")
 ```
 
-## 更新数据
-<a id="update-data" class="xliff"></a>
+## <a name="update-data"></a>更新数据
 使用以下代码进行连接，并使用 **UPDATE** SQL 语句更新数据。 
 
 在代码中，mysql.connector 库已导入。  [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 函数用于通过配置集合中的[连接参数](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)连接到 Azure Database for MySQL。 该代码对连接使用游标，并通过 [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) 方法对 MySQL 数据库执行 SQL 语句。 
@@ -233,8 +222,7 @@ else:
   print("Done.")
 ```
 
-## 删除数据
-<a id="delete-data" class="xliff"></a>
+## <a name="delete-data"></a>删除数据
 使用以下代码进行连接，并使用 **DELETE** SQL 语句删除数据。 
 
 在代码中，mysql.connector 库已导入。  [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 函数用于通过配置集合中的[连接参数](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)连接到 Azure Database for MySQL。 该代码对连接使用游标，并通过 [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) 方法对 MySQL 数据库执行 SQL 查询。 
@@ -278,8 +266,7 @@ else:
   print("Done.")
 ```
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
 > [使用导出和导入功能迁移数据库](./concepts-migrate-import-export.md)
 

@@ -8,17 +8,16 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 05/08/2017
+ms.date: 07/09/2017
 ms.author: gauravbh; tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 56dd68e328abd6c1dacdf7a8e051ca6b3cd07083
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 623d728cf70a5aa0b91b6acd9e314ca5c009c0aa
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
-# <a name="create-and-publish-an-azure-managed-application"></a>创建和发布 Azure 托管应用程序 
+# <a name="create-and-publish-service-catalog-managed-application"></a>创建和发布服务目录托管应用程序
 
 如[托管应用程序概述](managed-application-overview.md)一文中所述，在端到端体验中有两种应用场景。 一种是发布者或 ISV 希望创建供客户使用的托管应用程序。 第二种是客户或使用者使用托管应用程序。 本文重点介绍了第一种应用场景并说明了 ISV 如何创建和发布托管应用程序。 
 
@@ -32,7 +31,7 @@ ms.lasthandoff: 05/11/2017
 
 ## <a name="create-managed-application-package"></a>创建托管应用程序包
 
-第一个步骤是创建包含主要模板文件的应用程序包。 发布者或 ISV 需要创建三个文件。 
+第一个步骤是创建包含主要模板文件的应用程序包。 发布者或 ISV 需要创建三个文件。 必须将所有三个文件打包到一个 .zip 文件，并将其上传到可访问位置。
 
 * 第一个文件名为 **applianceMainTemplate.json**。 此模板文件定义作为托管应用程序的一部分预配的实际资源。 例如，若要创建使用托管应用程序的存储帐户，则 applianceMainTemplate.json 包含： 
 
@@ -208,6 +207,8 @@ az managedapp definition create -n ravtestAppDef4 -l "westcentralus"
 
 * 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](managed-application-overview.md)。
 * 有关文件示例，请参阅[托管应用程序示例](https://github.com/Azure/azure-managedapp-samples/tree/master/samples)。
-* 若要了解使用者体验，请参阅[使用 Azure 托管应用程序](managed-application-consumption.md)。
+* 有关使用服务目录托管应用程序的信息，请参阅[使用服务目录托管应用程序](managed-application-consumption.md)。
+* 有关将托管应用程序发布到商城的信息，请参阅[商城中的 Azure 托管应用程序](managed-application-author-marketplace.md)。
+* 有关从商城使用托管应用程序的信息，请参阅[在商城中使用 Azure 托管应用程序](managed-application-consume-marketplace.md)。
 * 若要了解如何为托管应用程序创建 UI 定义文件，请参阅 [CreateUiDefinition 入门](managed-application-createuidefinition-overview.md)。
 

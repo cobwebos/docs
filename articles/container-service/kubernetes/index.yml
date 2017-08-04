@@ -1,0 +1,61 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: “将 Azure 容器服务与 Kubernetes 配合使用”文档
+metadata:
+  document_id: null
+  title: “将 Azure 容器服务与 Kubernetes 配合使用”文档 - 教程和 API 参考 | Microsoft Docs
+  meta.description: 'Azure Container Service allows you to quickly deploy a production ready Kubernetes cluster. Learn how to use Azure Container Service in concert with Kubernetes with these quickstarts, tutorials, and samples.'
+  services: container-service
+  author: carolz
+  manager: carolz
+  ms.service: container-service
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 07-21-2017
+  ms.author: carolz
+abstract:
+  description: 使用 Azure 容器服务可以快速部署已准备好用于生产的 Kubernetes 群集。 使用这些快速入门、教程和示例，了解如何将 Azure 容器服务与 Kubernetes 配合使用。
+sections:
+  - title: 5 分钟快速入门
+    items:
+      - type: paragraph
+        text: 了解如何使用 Azure 容器服务部署 Kubernetes 群集：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
+            text: 创建 Kubernetes 群集
+            href: /azure/container-service/kubernetes/container-service-kubernetes-walkthrough
+  - title: 分步教程
+    items:
+      - type: paragraph
+        text: 了解如何在 Azure 容器服务 Kubernetes 群集中部署、管理和更新应用程序。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-prepare-app">从应用程序创建容器映像</a>
+          - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-prepare-acr">将容器映像上传到 Azure 容器注册表</a>
+          - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster">在 Azure 容器服务中部署 Kubernetes 群集</a>
+          - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-application">在 Kubernetes 中运行容器映像</a>
+          - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-scale">缩放应用程序和 Kubernetes 基础结构</a>
+          - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-app-update">更新 Kubernetes 中运行的应用程序</a>
+          - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-monitor">使用 OMS 监视 Kubernetes</a>
+  - title: 示例
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/container-service/cli-samples">Azure CLI</a>
+  - title: 引用
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 命令行
+            html: <p><a href="/cli/azure/acs">Azure CLI</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/compute/containerservices">REST API</a></p>

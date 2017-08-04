@@ -22,20 +22,17 @@ ms.lasthandoff: 06/23/2017
 
 ---
 
-# 步骤 11：为到 Azure 的 Hyper-V 复制运行测试故障转移
-<a id="step-11-run-a-test-failover-for-hyper-v-replication-to-azure" class="xliff"></a>
+# <a name="step-11-run-a-test-failover-for-hyper-v-replication-to-azure"></a>步骤 11：为到 Azure 的 Hyper-V 复制运行测试故障转移
 
 本文介绍了如何使用 Azure 门户中的 [Azure Site Recovery](site-recovery-overview.md) 服务为从本地 Hyper-V 虚拟机（未由 System Center VMM 管理的）到 Azure 的复制运行测试故障转移。
 
 请将评论和问题发布到这篇文章的底部，或者发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)。
 
-## 开始之前
-<a id="before-you-start" class="xliff"></a>
+## <a name="before-you-start"></a>开始之前
 
 在运行测试故障转移之前，我们建议你验证 VM 属性，并进行任何所需的更改。 你可以在“复制的项”中访问 VM 属性。 “概要”边栏选项卡显示有关计算机设置和状态的信息。
 
-## 托管磁盘注意事项
-<a id="managed-disk-considerations" class="xliff"></a>
+## <a name="managed-disk-considerations"></a>托管磁盘注意事项
 
 [托管磁盘](../storage/storage-managed-disks-overview.md)通过管理与 VM 磁盘关联的存储帐户简化了 Azure VM 的磁盘管理。 
 
@@ -46,8 +43,7 @@ ms.lasthandoff: 06/23/2017
 - - 如果已使用存储服务加密加密用于复制的存储帐户，则无法在故障转移期间创建托管磁盘。 在这种情况下，请勿启用托管磁盘，或禁用 VM 保护，并重新启用它以使用未启用加密的存储帐户。 [了解详细信息](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview#managed-disks-and-encryption)。
 
  
-## 网络注意事项
-<a id="network-considerations" class="xliff"></a>
+## <a name="network-considerations"></a>网络注意事项
     
 - 你可以设置要为故障转移后的 Azure VM 使用的目标 IP 地址。 如果未提供地址，故障转移的计算机将使用 DHCP。 如果设置了无法用于故障转移的地址，故障转移将会失败。 如果地址可用于测试故障转移网络，则同一个目标 IP 地址可用于测试故障转移。
 - 网络适配器数目根据你为目标虚拟机指定的大小来确定，如下所述：
@@ -58,8 +54,7 @@ ms.lasthandoff: 06/23/2017
 - 如果虚拟机有多个网络适配器，列表中显示的第一个适配器将成为 Azure 虚拟机中的*默认*网络适配器。
 
 
-## 查看和管理 VM 设置
-<a id="view-and-manage-vm-settings" class="xliff"></a>
+## <a name="view-and-manage-vm-settings"></a>查看和管理 VM 设置
 
 在运行故障转移之前，建议你验证源计算机的属性。
 
@@ -81,8 +76,7 @@ ms.lasthandoff: 06/23/2017
 4. 在“磁盘”中，可以看到关于 VM 上的操作系统和数据磁盘的信息。
 
 
-## 运行测试故障转移
-<a id="run-a-test-failover" class="xliff"></a>
+## <a name="run-a-test-failover"></a>运行测试故障转移
 
 现在，运行测试故障转移，确保一切如预期正常运行。
 
@@ -102,8 +96,7 @@ ms.lasthandoff: 06/23/2017
 
 
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 - [详细了解](site-recovery-failover.md)不同类型的故障转移，以及如何运行它们。
 - [详细了解故障回复](site-recovery-failback-from-azure-to-hyper-v.md)，以便将 Azure VM 故障回复和复制回本地 Hyper-V 站点。

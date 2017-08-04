@@ -214,7 +214,8 @@
 ### [错误代码](media-services-error-codes.md)
 ### [重试逻辑](media-services-retry-logic-in-dotnet-sdk.md)
 
-# 参考
+# 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=media-services)
 ## [PowerShell (Resource Manager)](/powershell/module/azurerm.media)
 ## [PowerShell（服务管理）](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)
@@ -222,7 +223,8 @@
 
 # 资源
 ## [Azure 媒体服务社区](media-services-community.md)
-## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=web-mobile)
 ## [定价](https://azure.microsoft.com/pricing/details/media-services/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [发行说明](media-services-release-notes.md)
 ## [视频](https://azure.microsoft.com/resources/videos/index/?services=media-services)

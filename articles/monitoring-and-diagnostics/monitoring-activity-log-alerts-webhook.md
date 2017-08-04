@@ -1,9 +1,32 @@
+---
+title: "接收有关 Azure 服务通知的活动日志警报 | Microsoft Docs"
+description: "在 Azure 服务发生问题时，通过短信、电子邮件或 webhook 接收通知。"
+author: johnkemnetz
+manager: orenr
+editor: 
+services: monitoring-and-diagnostics
+documentationcenter: monitoring-and-diagnostics
+ms.assetid: 
+ms.service: monitoring-and-diagnostics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 03/31/2017
+ms.author: johnkem
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: c8339c08333aaa471b42f6468ca2a59ee4efacf9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/18/2017
+
+---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活动日志警报的 webhook
-作为操作组定义的一部分，可以将 webhook 终结点配置为接收活动日志警报通知。 通过 webhook 可以将这些通知路由到其他系统，以便进行后续处理或自定义操作。 本文介绍针对 webhook 发出的 HTTP POST 的有效负载的大致形式。
+作为操作组定义的一部分，可以将 Webhook 终结点配置为接收活动日志警报通知。 通过 webhook 可以将这些通知路由到其他系统，以便进行后续处理或自定义操作。 本文介绍针对 webhook 发出的 HTTP POST 的有效负载的大致形式。
 
-有关 Azure 活动日志警报的设置和架构的信息，[请查看本页](monitoring-activity-log-alerts.md)。
+有关创建 Azure 活动日志警报的信息，请[改为查看此页](monitoring-activity-log-alerts.md)。
 
-有关操作组的设置和架构的信息，[请查看本页](monitoring-action-groups.md)
+有关创建操作组的信息，请[改为查看此页](monitoring-action-groups.md)
 
 ## <a name="authenticating-the-webhook"></a>对 webhook 进行身份验证
 使用基于令牌的授权可对 webhook 进行身份验证 - 保存的 webhook URI 包含令牌 ID，例如 `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
@@ -90,7 +113,7 @@
                     "stage": "Active",
                     "communicationId": "...",
                     "version": "0.1"
-                },
+                }
             }
         },
         "properties": {}
@@ -136,3 +159,4 @@
 * [Use Logic App to send an SMS via Twilio from an Azure alert](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)（使用逻辑应用通过 Twilio 从 Azure 警报发送短信）。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。
 * [Use Logic App to send a Slack message from an Azure alert](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)（使用逻辑应用从 Azure 警报发送 Slack 消息）。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。
 * [Use Logic App to send a message to an Azure Queue from an Azure alert](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)（使用逻辑应用从 Azure 警报将消息发送到 Azure 队列）。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。
+

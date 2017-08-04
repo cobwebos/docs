@@ -1,0 +1,39 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure 容器实例文档
+metadata:
+  title: Azure 容器实例文档 - 教程 | Microsoft Docs
+  description: Azure 容器实例提供了在 Azure 中运行容器的最简捷方式，既无需预配任何虚拟机，也不必采用更高级的服务。
+  services: container-instances
+  author: carolz
+  manager: carolz
+  ms.service: container-instances
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 07/26/2017
+  ms.author: carolz
+abstract:
+  description: Azure 容器实例提供了在 Azure 中运行容器的最简捷方式，既无需预配任何虚拟机，也不必采用更高级的服务。 如果需要完整的容器协调解决方案，请参阅<a href="/azure/container-service/kubernetes/">“Azure 容器服务上的 Kubernetes”文档</a>。 使用快速入门、教程和示例，了解如何创建和管理容器实例。
+sections:
+  - title: 5 分钟快速入门
+    items:
+      - type: paragraph
+        text: 了解如何使用 Azure 容器实例部署容器映像。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/container-instances/media/container-instances.png
+            text: 创建容器实例
+            href: /azure/container-instances/container-instances-quickstart
+  - title: 分步教程
+    items:
+      - type: paragraph
+        text: 了解如何将代码打包到容器映像中并在 Azure 容器实例中运行它。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">将应用程序打包到容器映像中</a>
+          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-acr">创建 Azure 容器注册表并上传容器映像</a>
+          - html: <a href="/azure/container-instances/container-instances-tutorial-deploy-app">将容器映像部署到 Azure 容器实例</a>

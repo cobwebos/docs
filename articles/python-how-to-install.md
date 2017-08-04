@@ -14,10 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: lmazuel
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: be8fed81757d3a7467707e4e0fdf1fd5734e0f07
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 90c8c6d91de667f2d234b1d4e89ce7336813fb62
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -100,7 +101,7 @@ Azure SDK for Python 包括允许您针对 Azure 开发、部署和管理 Python
 
 PTVS 还可以轻松实现部署到 Microsoft Azure，同时支持部署到[云服务](cloud-services/cloud-services-python-ptvs.md)和[网站](app-service-web/web-sites-python-ptvs-django-mysql.md)。
 
-PTVS 适用于你现有的 Visual Studio 2013 或 2015 版本的安装。  有关文档、下载和讨论的信息，请参阅 [Python Tools for Visual Studio]（用于 Visual Studio 的 Python 工具）。  
+PTVS 适用于现有的 Visual Studio 2013、2015 或 2017 版本的安装。  有关文档、下载和讨论的信息，请参阅 [Python Tools for Visual Studio]（用于 Visual Studio 的 Python 工具）。  
 
 ## <a name="python-azure-scenarios-for-linux-and-macos"></a>Python Azure 方案适用于 Linux 和 MacOS
 对于 Linux 或 MacOS，支持的主要 Azure 方案为：

@@ -1,14 +1,14 @@
 ## <a name="prerequisites"></a>先决条件
 使用适用于 Eclipse 的 Azure 工具包需要以下软件组件：
 
-* Eclipse IDE for Java EE Developers、Mars 或更高版本。 可以从 <http://www.eclipse.org/downloads/> 下载。
+* Eclipse IDE for Java EE Developers、Mars 或更高版本。 可以从 [Eclipse 网站](http://www.eclipse.org/downloads/)下载它。
 
 * Java 开发人员工具包 (JDK) 1.8 或更高版本。
 
 * 操作系统。 适用于 Eclipse 的 Azure 工具包已在以下操作系统上通过测试：
   
-  * Windows 10、Windows 8 和 8.1、Windows 7
-  * Windows Server 2012 和 2012 R2、Windows Server 2008 和 2008 R2
+  * Windows 10、Windows 8.1、Windows 8 和 Windows 7
+  * Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 和 Windows Server 2008
   * [Mac OS X](http://www.apple.com/osx) 版本“Yosemite”及更高版本
   * [Ubuntu Linux](http://www.ubuntu.com) 版本 14、15 和 16
 

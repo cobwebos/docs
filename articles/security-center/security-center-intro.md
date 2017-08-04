@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 06/16/2017
 ms.author: terrylan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: fd52bd8e14ca9bdcd06fc820e5e03fb5feccc72f
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 8951167213da6ab5341c1ca420353ec625ef5424
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 05/09/2017
 了解 Azure 安全中心及其主要功能和工作原理。
 
 > [!NOTE]
-> 本文档通过使用示例部署介绍该服务。
+> 自 2017 年 6 月初开始，安全中心将使用 Microsoft Monitoring Agent 来收集和存储数据。 请参阅 [Azure 安全中心平台迁移](security-center-platform-migration.md)，了解详细信息。 本文中的信息表示转换到 Microsoft Monitoring Agent 后的安全中心功能。
 >
 >
 
@@ -39,17 +39,23 @@ ms.lasthandoff: 05/09/2017
 | 阶段 | 功能 |
 | --- | --- |
 | 预防 |监视 Azure 资源的安全状态 |
-| 预防 | 可基于公司的安全要求、使用的应用程序的类型和数据的敏感性，定义 Azure 订阅和资源组的策略 |
+| 预防 | 可基于公司的安全要求、使用的应用程序的类型和数据的敏感性，定义 Azure 订阅的策略 |
 | 预防 | 使用策略驱动的安全建议指导服务所有者实施所需控件 |
 | 预防 | 快速部署 Microsoft 以及合作伙伴的安全服务和应用 |
 | 检测 |自动从 Azure 资源、网络和合作伙伴解决方案（例如恶意软件程序和防火墙）收集和分析安全数据 |
-| 检测 | 充分利用 Microsoft 产品和服务、Microsoft 数字犯罪部门 (DCU)、Microsoft 安全响应中心 (MSRC) 以及外部源提供的全球威胁情报 |
+| 检测 | 使用 Microsoft 产品和服务、Microsoft 数字犯罪部门 (DCU)、Microsoft 安全响应中心 (MSRC) 以及外部源提供的全球威胁情报 |
 | 检测 | 应用高级分析，包括机器学习和行为分析 |
 | 响应 |按优先顺序排列安全事件/警报 |
 | 响应 | 对攻击源和受影响资源进行分析 |
 | 响应 | 建议组织当前攻击和预防未来攻击的方式 |
 
 ## <a name="introductory-walkthrough"></a>介绍性演练
+
+> [!NOTE]
+> 本文档将使用示例部署介绍该服务。 本文档不是一份分步指南。
+>
+>
+
  从 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)访问安全中心。 [登录到门户](https://portal.azure.com)。 在主门户菜单下，滚动到“安全中心”选项，或选择之前固定到门户仪表板的“安全中心”磁贴。
 
 ![Azure 门户中的安全磁贴][1]
@@ -57,10 +63,10 @@ ms.lasthandoff: 05/09/2017
 从安全中心可设置安全策略、监视安全配置和查看安全警报。
 
 ### <a name="security-policies"></a>安全策略
-可根据公司安全要求定义 Azure 订阅和资源组的策略。 也可根据正在使用的应用程序的类型或每个订阅中的数据的敏感性进行自定义设置。 例如，用于开发或测试的资源的安全要求可能不同于用于产品应用程序的资源的要求。 同样，使用 PII等管控数据的应用程序可能需要更高级别的安全性。
+可根据公司安全要求定义 Azure 订阅的策略。 也可根据正在使用的应用程序的类型或每个订阅中的数据的敏感性进行自定义设置。 例如，用于开发或测试的资源的安全要求可能不同于用于产品应用程序的资源的要求。 同样，使用 PII等管控数据的应用程序可能需要更高级别的安全性。
 
 > [!NOTE]
-> 仅订阅的所有者或参与者才可修改订阅级别或资源组级别的安全策略。
+> 若要修改安全策略，用户必须是安全管理员或是该订阅的所有者或参与者。 若要深入了解安全中心中的角色和允许的操作，请参阅 [Azure 安全中心中的权限](security-center-permissions.md)。
 >
 >
 
@@ -70,35 +76,17 @@ ms.lasthandoff: 05/09/2017
 
 在“**安全策略**”边栏选项卡中，选择某个订阅以查看其策略详细信息。
 
-![安全策略边栏选项卡订阅][3]
-
-“数据收集”（参阅上文）对安全策略启用数据收集。 启用后提供的服务：
+“数据收集”对安全策略启用数据收集。 启用后提供的服务：
 
 * 每日扫描所有支持的虚拟机 (VM) 以进行安全监视和提供建议。
 * 分析安全事件以进行分析和威胁检测。
 
-通过“**选择每个区域的存储帐户**”（参见上文），可为每个有 VM 运行的区域选择要将从这些 VM 中收集的数据存储到的存储帐户。 如果不为每个区域选择一个存储帐户，则会创建一个帐户。 出于安全性考虑，收集的数据在逻辑上独立于其他客户的数据。
-
 > [!NOTE]
-> 会在订阅级别配置数据收集和对每个区域选择存储帐户。
+> 数据收集在订阅级别进行配置。
 >
 >
 
-选择“预防策略”（参阅上文）打开“预防策略”边栏选项卡。 通过“显示建议”，可基于订阅内资源的安全要求来选择要监视的安全控件和想要看到的建议。
-
-接下来，选择一个资源组查看其策略详细信息。
-
-![安全策略边栏选项卡资源组][4]
-
-通过“继承”（参阅上文）可将资源组定义为：
-
-* 继承（默认值），表示会从订阅级别继承此资源组的所有安全策略。
-* 唯一，表示此资源组具有自定义安全策略。 需要在“**显示哪些安全控件的推荐**”下进行更改。
-
-> [!NOTE]
-> 在订阅级别策略与资源组级别策略冲突时，以资源组级别策略为准。
->
->
+选择“预防策略”打开“预防策略”边栏选项卡。 通过“显示建议”，可基于订阅内资源的安全要求来选择要监视的安全控件和想要看到的建议。
 
 ### <a name="security-recommendations"></a>安全建议
  安全中心将分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 会有一列建议对所需控件的整个配置过程提供指导。 示例包括：
@@ -137,7 +125,7 @@ ms.lasthandoff: 05/09/2017
 ![安全警报详细信息][8]
 
 ### <a name="partner-solutions"></a>合作伙伴解决方案
-可通过“合作伙伴解决方案”磁贴轻松监视与 Azure 订阅相集成的合作伙伴解决方案的运行状态。 安全中心显示来自解决方案的警报。
+可通过“合作伙伴解决方案”磁贴轻松监视与 Azure 订阅相集成的合作伙伴解决方案的安全状态。 安全中心显示来自解决方案的警报。
 
 选择“合作伙伴解决方案”磁贴。 会打开一个边栏选项卡，其中显示已连接的合作伙伴解决方案的列表。
 
@@ -150,14 +138,15 @@ ms.lasthandoff: 05/09/2017
 
 [Azure 安全中心入门](security-center-get-started.md)提供有安全中心的安全监视和策略管理组件的快速指南。
 
-## <a name="see-also"></a>另请参阅
-本文档介绍了安全中心以及其主要功能和如何入门。 若要了解更多信息，请参阅下列文章：
+## <a name="next-steps"></a>后续步骤
+本文档介绍了安全中心以及其主要功能和如何入门。 若要了解更多信息，请参阅下列资源：
 
 * [在 Azure 安全中心中设置安全策略](security-center-policies.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
 * [在 Azure 安全中心中管理安全建议](security-center-recommendations.md) - 了解建议如何帮助保护 Azure 资源。
 * [Security health monitoring in Azure Security Center](security-center-monitoring.md) （Azure 安全中心的安全运行状况监视）- 了解如何监视 Azure 资源的运行状况。
 * [在 Azure 安全中心管理和响应安全警报](security-center-managing-and-responding-alerts.md) — 了解如何管理和响应安全警报。
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md) - 了解如何监视合作伙伴解决方案的运行状态。
+- [Azure 安全中心的数据安全](security-center-data-security.md) - 了解如何在安全中心管理数据和确保数据安全性。
 * [Azure Security Center FAQ](security-center-faq.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题。
 * [Azure 安全博客](http://blogs.msdn.com/b/azuresecurity/) — 获取最新的 Azure 安全新闻和信息。
 

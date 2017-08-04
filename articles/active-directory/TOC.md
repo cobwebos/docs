@@ -24,10 +24,6 @@
 # 如何
 ## 规划和设计
 ### [了解 Azure AD 体系结构](active-directory-architecture.md)
-### [推荐的安全策略和配置](secure-email-introduction.md)
-#### [安全电子邮件推荐的策略](secure-email-recommended-policies.md)
-##### [部署推荐的安全电子邮件策略](secure-email-deploy-recommended-policies.md)
-#### [EMS 和 Office 365 服务概述](secure-email-ems-office365-service-descriptions.md)
 ### [部署混合标识解决方案](active-directory-hybrid-identity-design-considerations-overview.md)
 ### [Azure Active Directory 中的声明映射](active-directory-claims-mapping.md)
 #### 确定要求
@@ -167,7 +163,6 @@
 ## 管理应用
 ### [概述](active-directory-enable-sso-scenario.md)
 ### [入门](active-directory-integrating-applications-getting-started.md)
-
 ### [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)
 #### [更新注册表设置](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 #### [了解安全性和隐私性](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
@@ -178,7 +173,7 @@
 ##### [启用应用代理](active-directory-application-proxy-enable.md)
 ##### [发布应用](application-proxy-publish-azure-portal.md)
 ##### [自定义域](active-directory-application-proxy-custom-domains.md)
-#### [SSO 访问](active-directory-appssoaccess-whatis.md)
+#### [单一登录](application-proxy-sso-overview.md)
 ##### [使用 KCD 执行 SSO](active-directory-application-proxy-sso-using-kcd.md)
 ##### [使用标头执行 SSO](application-proxy-ping-access.md)
 ##### [将 SSO 与密码保管配合使用](application-proxy-sso-azure-portal.md)
@@ -219,6 +214,7 @@
 
 ### [管理对应用的访问权限](active-directory-managing-access-to-apps.md)
 #### [自助服务访问权限](active-directory-self-service-application-access.md)
+#### [SSO 访问](active-directory-appssoaccess-whatis.md)
 #### [SSO 证书](active-directory-sso-certs.md)
 #### [租户限制](active-directory-tenant-restrictions.md)
 #### [使用 SCIM 预配用户](active-directory-scim-provisioning.md)
@@ -370,6 +366,7 @@
 
 
 # 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [PowerShell cmdlets](/powershell/azure/overview)
 ## [Java API 参考](/java/api)
 ## [.NET API](/active-directory/adal/microsoft.identitymodel.clients.activedirectory)
@@ -384,9 +381,10 @@
 
 # 资源
 ## [Azure 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory)
-## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
 ## [定价](https://azure.microsoft.com/pricing/details/active-directory/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=active-directory)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-active-directory)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)

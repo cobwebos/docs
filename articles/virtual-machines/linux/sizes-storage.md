@@ -3,7 +3,7 @@ title: "Azure Linux VM 大小 - 存储 | Microsoft Docs"
 description: "列出 Azure 中适用于 Linux 虚拟机的各种存储优化大小。"
 services: virtual-machines-linux
 documentationcenter: 
-author: cynthn
+author: jonbeck7
 manager: timlt
 editor: 
 tags: azure-resource-manager,azure-service-management
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/22/2017
-ms.author: cynthn
-translationtype: Human Translation
+ms.date: 07/28/2017
+ms.author: jonbeck
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 6036b3e6e51d456fd8c5bcc770b944b0fe27227d
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
-
 
 ---
 

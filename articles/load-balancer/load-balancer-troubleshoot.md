@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/17/2017
+ms.date: 07/10/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 53425eaf388e5164d2664c163f56a33d48cf8a36
-ms.lasthandoff: 04/20/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: df5c836abbf09889f4859170359c0ee6c1b03378
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 
@@ -119,9 +120,9 @@ ms.lasthandoff: 04/20/2017
 * 为每个应用程序配置单独的后端池 VM。 
 * 在双 NIC VM 中配置应用程序，以便每个应用程序均使用自己的网络接口和 IP 地址。 
 
-### <a name="cause-4-accessing-the-internet-load-balancer-vip-from-the-participating-load-balancer-backend-pool-vm"></a>原因 4：从参与的负载均衡器后端池 VM 访问 Internet 负载均衡器 VIP
+### <a name="cause-4-accessing-the-internal-load-balancer-vip-from-the-participating-load-balancer-backend-pool-vm"></a>原因 4：从参与的负载均衡器后端池 VM 访问内部负载均衡器 VIP
 
-如果 VNet 中配置了 ILB VIP，且某个参与的后端 VM 正尝试访问 Internet 负载均衡器 VIP，该操作将失败。 此方案不受支持。
+如果 VNet 中配置了 ILB VIP，且某个参与的后端 VM 正尝试访问内部负载均衡器 VIP，该操作会失败。 此方案不受支持。
 解决方法 - 评估应用程序网关或其他代理（例如 nginx 或 haproxy），以支持此类方案。 有关应用程序网关的详细信息，请参阅[应用程序网关概述](../application-gateway/application-gateway-introduction.md)
 
 ## <a name="additional-network-captures"></a>附加网络捕获

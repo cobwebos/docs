@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2017
 ms.author: sasolank
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 46210c7bc3158c27cda40fb85ffef16820dcbdef
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: f9160be8c0fb3cff9efdd22ff623a4827ce3946f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -66,7 +67,7 @@ ms.lasthandoff: 03/29/2017
 6. 创建应用程序网关资源。
 7. 创建从应用程序网关公共 DNS 名称到 API 管理代理主机名的 CNAME 映射
 
-## <a name="create-a-resource-group-for-resource-manager"></a>创建资源管理器的资源组
+## <a name="create-a-resource-group-for-resource-manager"></a>创建 Resource Manager 的资源组
 
 确保使用最新版本的 Azure PowerShell。 [将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)中提供了详细信息。
 
@@ -95,7 +96,7 @@ Get-AzureRmSubscription -Subscriptionid "GUID of subscription" | Select-AzureRmS
 ```powershell
 New-AzureRmResourceGroup -Name "apim-appGw-RG" -Location "West US"
 ```
-Azure 资源管理器要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
+Azure Resource Manager 要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>为应用程序网关创建虚拟网络和子网
 
@@ -154,7 +155,7 @@ $apimService = New-AzureRmApiManagement -ResourceGroupName "apim-appGw-RG" -Loca
 ## <a name="set-up-a-custom-domain-name-in-api-management"></a>在 API 管理中设置自定义域名
 
 ### <a name="step-1"></a>步骤 1
-上载包含域私钥的证书。 在本示例中，该域为 `*.contoso.net`。 
+上传包含域私钥的证书。 在本示例中，该域为 `*.contoso.net`。 
 
 ```powershell
 $certUploadResult = Import-AzureRmApiManagementHostnameCertificate -ResourceGroupName "apim-appGw-RG" -Name "ContosoApi" -HostnameType "Proxy" -PfxPath <full path to .pfx file> -PfxPassword <password for certificate file> -PassThru
@@ -235,7 +236,7 @@ $apimprobe = New-AzureRmApplicationGatewayProbeConfig -Name "apimproxyprobe" -Pr
 
 ### <a name="step-7"></a>步骤 7
 
-上载要在已启用 SSL 的后端池资源上使用的证书。
+上传要在已启用 SSL 的后端池资源上使用的证书。 该证书与你在上述步骤 4 中所提供的证书相同。
 
 ```powershell
 $authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile <full path to .cer file>
@@ -258,19 +259,46 @@ $apimProxyBackendPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "a
 ```
 
 ### <a name="step-10"></a>步骤 10
-配置后端池的 URL 规则路径。 这样，便可以选择只向公众公开 API 管理中的一部分 API。 （例如，如果存在 `Echo API` (/echo/)、`Calculator API` (/calc/) 等，可以指定只允许从 Internet 访问 `Echo API`）。 
+
+创建虚拟（不存在）后端的设置。 对我们不想通过应用程序网关从 API 管理公开的 API 路径请求，将会转向此后端，并返回 404。
+
+配置虚拟后端的 HTTP 设置。
+
+```powershell
+$dummyBackendSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "dummySetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled
+```
+
+配置虚拟后端“dummyBackendPool”，它指向 FQDN 地址“dummybackend.com”。 虚拟网络中不存在此 FQDN 地址。
+
+```powershell
+$dummyBackendPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "dummyBackendPool" -BackendFqdns "dummybackend.com"
+```
+
+创建应用程序网关将默认使用的规则设置，用以指向虚拟网络中不存在的后端“dummybackend.com”。
+
+```powershell
+$dummyPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "nonexistentapis" -Paths "/*" -BackendAddressPool $dummyBackendPool -BackendHttpSettings $dummyBackendSetting
+```
+
+### <a name="step-11"></a>步骤 11
+
+配置后端池的 URL 规则路径。 这样，便可以选择只向公众公开 API 管理中的一部分 API。 例如，如果存在 `Echo API` (/echo/)、`Calculator API` (/calc/) 等，可以指定只允许从 Internet 访问 `Echo API`。 
 
 以下示例针对“/echo/”路径创建一个将流量路由到后端“apimProxyBackendPool”的简单规则。
 
 ```powershell
 $echoapiRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "externalapis" -Paths "/echo/*" -BackendAddressPool $apimProxyBackendPool -BackendHttpSettings $apimPoolSetting
+```
 
-$urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -PathRules $echoapiRule -DefaultBackendAddressPool $apimProxyBackendPool -DefaultBackendHttpSettings $apimPoolSetting
+如果路径不符合我们希望从 API 管理中启用的路径规则，那么规则路径映射配置也会配置一个名 dummyBackendPool 的默认后端地址池。 例如，http://api.contoso.net/calc/ 将转到 dummyBackendPool，因为它被定义为非匹配流量的默认池。
+
+```powershell
+$urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -PathRules $echoapiRule, $dummyPathRule -DefaultBackendAddressPool $dummyBackendPool -DefaultBackendHttpSettings $dummyBackendSetting
 ```
 
 上述步骤可确保只允许针对路径“/echo/”发出的请求通过应用程序网关。 从 Internet 访问时，针对在 API 管理中配置的其他 API 发出的请求将在应用程序网关中引发 404 错误。 
 
-### <a name="step-11"></a>步骤 11
+### <a name="step-12"></a>步骤 12
 
 为应用程序网关创建规则设置，以使用基于 URL 路径的路由。
 
@@ -278,7 +306,7 @@ $urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -
 $rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule1" -RuleType PathBasedRouting -HttpListener $listener -UrlPathMap $urlPathMap
 ```
 
-### <a name="step-12"></a>步骤 12
+### <a name="step-13"></a>步骤 13
 
 配置实例数目和应用程序网关的大小。 此处我们使用 [WAF SKU](../application-gateway/application-gateway-webapplicationfirewall-overview.md) 来提高 API 管理资源的安全性。
 
@@ -286,7 +314,7 @@ $rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule1" -RuleTyp
 $sku = New-AzureRmApplicationGatewaySku -Name "WAF_Medium" -Tier "WAF" -Capacity 2
 ```
 
-### <a name="step-13"></a>步骤 13
+### <a name="step-14"></a>步骤 14
 
 将 WAF 配置为“防护”模式。
 ```powershell
@@ -298,7 +326,7 @@ $config = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enab
 创建包含前述步骤中所有配置对象的应用程序网关。
 
 ```powershell
-$appgw = New-AzureRmApplicationGateway -Name "appgwtest" -ResourceGroupName "apim-appGw-RG" -Location "West US" -BackendAddressPools $apimProxyBackendPool -BackendHttpSettingsCollection $apimPoolSetting -FrontendIpConfigurations $fipconfig01 -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener -UrlPathMaps $urlPathMap -RequestRoutingRules $rule01 -Sku $sku -WebApplicationFirewallConfig $config -SslCertificates $cert -AuthenticationCertificates $authcert -Probes $apimprobe
+$appgw = New-AzureRmApplicationGateway -Name $applicationGatewayName -ResourceGroupName $resourceGroupName  -Location $location -BackendAddressPools $apimProxyBackendPool, $dummyBackendPool -BackendHttpSettingsCollection $apimPoolSetting, $dummyBackendSetting  -FrontendIpConfigurations $fipconfig01 -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener -UrlPathMaps $urlPathMap -RequestRoutingRules $rule01 -Sku $sku -WebApplicationFirewallConfig $config -SslCertificates $cert -AuthenticationCertificates $authcert -Probes $apimprobe
 ```
 
 ## <a name="cname-the-api-management-proxy-hostname-to-the-public-dns-name-of-the-application-gateway-resource"></a>创建从 API 管理代理主机名到应用程序网关资源公共 DNS 名称的 CNAME 映射
@@ -318,8 +346,8 @@ VNET 中配置的 Azure API 管理为配置的所有 API 提供单个网关接�
 * 详细了解 Azure 应用程序网关
   * [应用程序网关概述](../application-gateway/application-gateway-introduction.md)
   * [应用程序网关 Web 应用程序防火墙](../application-gateway/application-gateway-webapplicationfirewall-overview.md)
+  * [使用基于路径路由的应用程序网关](../application-gateway/application-gateway-create-url-route-arm-ps.md)
 * 详细了解 API 管理和 VNET
+  * [只能在 VNET 内使用 API 管理](api-management-using-with-internal-vnet.md)
   * [在 VNET 中使用 API 管理](api-management-using-with-vnet.md)
-
-
 

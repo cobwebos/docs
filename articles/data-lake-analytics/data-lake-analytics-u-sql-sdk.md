@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: yanacai
-translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: c40d7107e407a089ea1515357cf9f47d5833edc9
-ms.lasthandoff: 03/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: 55242bcf644ca0e7f30cfe7eada2130451c36e64
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -39,7 +40,7 @@ Data Lake U-SQL SDK 需要以下依赖项：
 - [Microsoft .NET Framework 4.6 或更高版本](https://www.microsoft.com/download/details.aspx?id=17851)。
 - Microsoft Visual C++ 14 和 Windows SDK 10.0.10240.0 或更高版本（在本文中称为 CppSDK）。 可通过两种方式来获取 CppSDK：
 
-    - 安装 [Visual Studio Community Edition](https://developer.microsoft.com/downloads/vs-thankyou)。 Program Files 文件夹下面有一个 \Windows Kits\10 文件夹 -- 例如 C:\Program Files (x86)\Windows Kits\10\.；在 \Windows Kits\10\Lib 下面也可以找到 Windows 10 SDK 版本。 如果看不到这些文件夹，请重新安装 Visual Studio，并确保在安装期间选择 Windows 10 SDK。 如果已与 Visual Studio 一起安装了它，U-SQL 本地编译器则会自动发现它。
+    - 安装 [Visual Studio Community Edition](https://developer.microsoft.com/downloads/vs-thankyou)。 Program Files 文件夹下面有一个 \Windows Kits\10 文件夹，例如 C:\Program Files (x86)\Windows Kits\10\。 也可在 \Windows Kits\10\Lib 下找到 Windows 10 SDK 版本。 如果看不到这些文件夹，请重新安装 Visual Studio，并确保在安装期间选择 Windows 10 SDK。 如果已与 Visual Studio 一起安装了它，U-SQL 本地编译器则会自动发现它。
 
     ![用于 Visual Studio 的 Data Lake 工具本地运行 Windows 10 SDK](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
@@ -144,21 +145,21 @@ U-SQL 本地运行需要指定的数据根作为本地存储帐户，还需要�
 以下是 **run** 的可选参数：
 
 
-|参数|说明|
-|--------|-----------|
-|-CodeBehind [default value 'False']|该脚本具有 .cs 代码隐藏|
-|-CppSDK [default value '']|CppSDK 目录|
-|-DataRoot [default value 'DataRoot environment variable']|用于本地运行的 DataRoot，默认为“LOCALRUN_DATAROOT”环境变量|
-|-MessageOut [default value '']|将控制台上的消息转储到文件中|
-|-Parallel [default value '1']|使用指定的并行度运行计划|
-|-References [default value '']|代码隐藏的额外引用数据集或数据文件的路径列表，列表由“;”分隔|
-|-UdoRedirect [default value 'False']|生成 Udo 程序集重定向配置|
-|-UseDatabase [default value 'master']|用于代码隐藏临时程序集注册的数据库|
-|-Verbose [default value 'False']|显示运行时的详细输出|
-|-WorkDir [default value 'Current Directory']|编译器用法和输出的目录|
-|-RunScopeCEP [default value '0']|要使用的 ScopeCEP 模式|
-|-ScopeCEPTempPath [default value 'temp']|用于流式处理数据的临时路径|
-|-OptFlags [default value '']|用逗号分隔的优化器标志列表|
+|参数|默认值|说明|
+|--------|-------------|-----------|
+|-CodeBehind|False|该脚本具有 .cs 代码隐藏|
+|-CppSDK| |CppSDK 目录|
+|-DataRoot| DataRoot 环境变量|用于本地运行的 DataRoot，默认为“LOCALRUN_DATAROOT”环境变量|
+|-MessageOut| |将控制台上的消息转储到文件中|
+|-Parallel|1|使用指定的并行度运行计划|
+|-References| |代码隐藏的额外引用数据集或数据文件的路径列表，列表由“;”分隔|
+|-UdoRedirect|False|生成 Udo 程序集重定向配置|
+|-UseDatabase|master|用于代码隐藏临时程序集注册的数据库|
+|-Verbose|False|显示运行时的详细输出|
+|-WorkDir|当前目录|编译器用法和输出的目录|
+|-RunScopeCEP|0|要使用的 ScopeCEP 模式|
+|-ScopeCEPTempPath|temp|用于流式处理数据的临时路径|
+|-OptFlags| |用逗号分隔的优化器标志列表|
 
 
 下面是一个示例：
@@ -392,10 +393,7 @@ E_CSC_SYSTEM_INTERNAL：内部错误！ 无法加载文件或程序集“ScopeEn
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Data Lake Analytics 的概述，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
-* 若要着手开发 U-SQL 应用程序，请参阅 [使用 Data Lake Tools for Visual Studio 开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)。
 * 若要了解 U-SQL，请参阅 [Azure Data Lake Analytics U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)。
-* 有关管理任务，请参阅 [Manage Azure Data Lake Analytics using Azure Portal](data-lake-analytics-manage-use-portal.md)（使用 Azure 门户管理 Azure Data Lake Analytics）。
 * 若要记录诊断信息，请参阅 [Accessing diagnostics logs for Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md)（访问 Azure Data Lake Analytics 的诊断日志）。
 * 若要查看更复杂的查询，请参阅 [Analyze website logs using Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md)（使用 Azure Data Lake Analytics 分析网站日志）。
 * 若要查看作业详细信息，请参阅 [Use Job Browser and Job View for Azure Data Lake Analytics jobs](data-lake-analytics-data-lake-tools-view-jobs.md)（对 Azure Data Lake Analytics 作业使用作业浏览器和作业视图）。

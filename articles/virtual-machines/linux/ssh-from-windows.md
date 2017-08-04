@@ -22,9 +22,7 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
 
 ---
-<a id="how-to-use-ssh-keys-with-windows-on-azure" class="xliff"></a>
-
-# 如何在 Azure 上将 SSH 密钥与 Windows 配合使用
+# <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>如何在 Azure 上将 SSH 密钥与 Windows 配合使用
 > [!div class="op_single_selector"]
 > * [Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 > * [Linux/Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -33,9 +31,7 @@ ms.lasthandoff: 04/27/2017
 
 连接到 Azure 中的 Linux 虚拟机 (VM) 时，应使用[公钥加密](https://wikipedia.org/wiki/Public-key_cryptography)提供更安全的方式登录到 Linux VM。 此过程涉及使用安全外壳 (SSH) 命令进行公钥和私钥交换，对自己（而不是用户名和密码）进行身份验证。 密码易受到强力破解攻击，特别是在面向 Internet 的 VM（如 Web 服务器）上。 本文概述 SSH 密钥以及如何在 Windows 计算机上生成相应的密钥。
 
-<a id="overview-of-ssh-and-keys" class="xliff"></a>
-
-## SSH 和密钥概述
+## <a name="overview-of-ssh-and-keys"></a>SSH 和密钥概述
 可以使用公钥和私钥安全地登录到 Linux VM：
 
 * **公钥**放置在 Linux VM 上或者要对其使用公钥加密的任何其他服务中。
@@ -47,9 +43,7 @@ SSH 是一种加密的连接协议，利用该协议可以通过未受保护的�
 
 如果不希望使用 SSH 密钥，可以仍使用密码登录到 Linux VM。 如果 VM 不向 Internet 公开，使用密码可能已足够。 但是，仍需要管理每个 Linux VM 的密码和维护正常密码策略和做法（如最小密码长度）并定期进行更新。 使用 SSH 密钥可降低跨多个 VM 管理单个凭据的复杂性。
 
-<a id="windows-packages-and-ssh-clients" class="xliff"></a>
-
-## Windows 程序包和 SSH 客户端
+## <a name="windows-packages-and-ssh-clients"></a>Windows 程序包和 SSH 客户端
 可使用 **SSH 客户端**连接到 Azure 中的 Linux VM，并对其进行管理。 Windows 计算机通常未安装 SSH 客户端。 Windows 10 周年更新已添加 Bash for Windows，而最新版 Windows 10 创意者更新提供其他更新。 通过此适用于 Linux 的 Windows 子系统，可在 Bash shell 中以本机方式运行并访问 SSH 客户端等实用工具。 然后可以按照任何 Linux 文档（例如[如何为 Linux 生成 SSH 密钥对](mac-create-ssh-keys.md)）进行操作。 Bash for Windows 仍在开发，当前版本视为 beta 版本。 有关 Bash for Windows 的详细信息，请参阅 [Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about)（Windows 上的 Bash on Ubuntu）。
 
 如果不希望使用 Bash for Windows，以下包中包含可安装的常见 Windows SSH 客户端：
@@ -60,9 +54,7 @@ SSH 是一种加密的连接协议，利用该协议可以通过未受保护的�
 * [Cygwin](https://cygwin.com/)
 
 
-<a id="which-key-files-do-you-need-to-create" class="xliff"></a>
-
-## 你需要创建哪些密钥文件？
+## <a name="which-key-files-do-you-need-to-create"></a>你需要创建哪些密钥文件？
 Azure 需要至少 2048 位采用 **ssh-rsa** 格式的公钥和私钥。 如果要使用经典部署模型管理 Azure 资源，还需要生成 PEM（`.pem` 文件）。
 
 以下是部署方案，以及你在每个方案中使用的文件类型：
@@ -72,9 +64,7 @@ Azure 需要至少 2048 位采用 **ssh-rsa** 格式的公钥和私钥。 如果
 2. 使用经典部署创建 VM 时需要 `.pem` 文件。 使用 [Azure 门户](https://portal.azure.com)或 [Azure CLI](../../cli-install-nodejs.md) 时，经典部署支持这些密钥。
    * 如果要管理使用经典部署模型创建的资源，只需创建这些附加密钥和证书。
 
-<a id="install-git-for-windows" class="xliff"></a>
-
-## 安装 Git for Windows
+## <a name="install-git-for-windows"></a>安装 Git for Windows
 前面列出的多个程序包包含适用于 Windows 的 `openssl` 工具。 若要创建公钥和私钥，需要此工具。 以下示例详细说明了如何安装和使用 **Git for Windows**，但你可以选择所喜欢的任何程序包。 使用 **Git for Windows**，可以访问某些其他开放源代码软件 ([OSS](https://en.wikipedia.org/wiki/Open-source_software))，使用 Linux VM 时这些工具和实用程序可能会很有用。
 
 1. 从以下位置下载并安装 **Git for Windows**：[https://git-for-windows.github.io/](https://git-for-windows.github.io/)。
@@ -83,9 +73,7 @@ Azure 需要至少 2048 位采用 **ssh-rsa** 格式的公钥和私钥。 如果
 
     ![Git for Windows Bash shell](./media/ssh-from-windows/git-bash-window.png)
 
-<a id="create-a-private-key" class="xliff"></a>
-
-## 创建私钥
+## <a name="create-a-private-key"></a>创建私钥
 1. 在“Git Bash”窗口中，使用 `openssl.exe` 创建私钥。 以下示例创建名为 `myPrivateKey` 的密钥和名为 `myCert.pem` 的证书：
 
     ```bash
@@ -134,9 +122,7 @@ Azure 需要至少 2048 位采用 **ssh-rsa** 格式的公钥和私钥。 如果
     openssl.exe  x509 -outform der -in myCert.pem -out myCert.cer
     ```
 
-<a id="create-a-private-key-for-putty" class="xliff"></a>
-
-## 为 PuTTY 创建私钥
+## <a name="create-a-private-key-for-putty"></a>为 PuTTY 创建私钥
 PuTTY 是适用于 Windows 的常见 SSH 客户端。 你可随意使用任何所需的 SSH 客户端。 若要使用 PuTTY，需要创建其他类型的密钥 - PuTTY 私钥 (PPK)。 如果不希望使用 PuTTY，请跳过此部分。
 
 以下示例专为要使用的 PuTTY 创建此附加私钥：
@@ -180,9 +166,7 @@ PuTTY 是适用于 Windows 的常见 SSH 客户端。 你可随意使用任何�
     如果要输入通行短语，请单击“否”，在主要的 PuTTYgen 窗口中输入通行短语，然后再次单击“保存私钥”。 否则，请单击“是”以继续，而不提供可选的通行短语。
 9. 输入名称和位置以保存 PPK 文件。
 
-<a id="use-putty-to-ssh-to-a-linux-machine" class="xliff"></a>
-
-## 使用 Putty 通过 SSH 登录到 Linux 计算机
+## <a name="use-putty-to-ssh-to-a-linux-machine"></a>使用 Putty 通过 SSH 登录到 Linux 计算机
 再说一遍，PuTTY 是适用于 Windows 的常见 SSH 客户端。 你可随意使用任何所需的 SSH 客户端。 以下步骤详细说明了如何使用私钥通过 SSH 向 Azure VM 进行身份验证。 这些步骤与其他 SSH 密钥客户端类似，都需要加载私钥以对 SSH 连接进行身份验证。
 
 1. 从以下位置下载并运行 putty：[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
@@ -194,9 +178,7 @@ PuTTY 是适用于 Windows 的常见 SSH 客户端。 你可随意使用任何�
     ![选择用于身份验证的 PuTTY 私钥文件](./media/ssh-from-windows/putty-auth-dialog.png)
 4. 单击“打开”以连接到虚拟机
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 还可以[使用 OS X 和 Linux](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 生成公钥和私钥。
 
 有关 Bash for Windows 以及使 OSS 工具在 Windows 计算机上随时可用的好处的详细信息，请参阅 [Windows 上的 Bash on Ubuntu](https://msdn.microsoft.com/commandline/wsl/about)。

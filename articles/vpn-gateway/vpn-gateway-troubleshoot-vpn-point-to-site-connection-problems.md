@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: c9d9b099bf71c5b1e51a11e3b62779bbc8767fd6
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: de37c8ffd47a2b8e201d18e3a20b5325d528ad59
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/12/2017
 
 ---
-# <a name="troubleshooting-azure-point-to-site-connection-problems"></a>疑难解答：Azure 点到站点连接问题
+# <a name="troubleshooting-azure-point-to-site-connection-problems"></a>故障排除：Azure 点到站点连接问题
 
-本文列举了可能会遇到的常见点到站点连接问题。 此外，还介绍了这些问题的可能原因和解决方案。
+本文列举了可能会出现的常见点到站点连接问题。 此外，还介绍了这些问题的可能原因和解决方案。
 
 ## <a name="vpn-client-error-a-certificate-could-not-be-found"></a>VPN 客户端错误：找不到证书
 
 ### <a name="symptom"></a>症状
 
-尝试使用 VPN 客户端连接到 Microsoft Azure 虚拟网络时，看到以下错误消息：
+尝试使用 VPN 客户端连接到 Azure 虚拟网络时，看到以下错误消息：
 
 **找不到可用于此可扩展身份验证协议的证书。(错误 798)**
 
 ### <a name="cause"></a>原因
 
-如果 Certificates - Current User\Personal\Certificates 中缺少客户端证书，便会发生此问题。
+如果 **Certificates - Current User\Personal\Certificates** 中缺少客户端证书，便会发生此问题。
 
 ### <a name="solution"></a>解决方案
 
@@ -52,17 +52,17 @@ ms.lasthandoff: 06/28/2017
 
 ### <a name="symptom"></a>症状
 
-尝试使用 VPN 客户端连接到虚拟网络时，看到以下错误消息：
+尝试使用 VPN 客户端连接到 Azure 虚拟网络时，看到以下错误消息：
 
-**VPN 客户端错误:接收到的消息异常，或格式不正确。(错误 0x80090326)**
+**收到意外或格式不当的消息。(错误 0x80090326)**
 
 ### <a name="cause"></a>原因
 
-如果根证书公钥未上传到 Microsoft Azure VPN 网关或密钥已损坏/已过期，便会发生此问题。
+如果根证书公钥未上传到 Azure VPN 网关，则会发生此问题。 如果密钥已损坏或过期，也会发生此问题。
 
 ### <a name="solution"></a>解决方案
 
-若要解决此问题，请在 Azure 门户中检查根证书的状态，以确定是否已吊销。 如果未吊销，请尝试删除并重新上传根证书。 有关详细信息，请参阅[创建证书](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts)。
+若要解决此问题，请在 Azure 门户中检查根证书的状态，确定是否已吊销。 如果未吊销，请尝试删除并重新上传根证书。 有关详细信息，请参阅[创建证书](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts)。
 
 ## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>VPN 客户端错误：已处理证书链，但被终止 
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 06/28/2017
 
 尝试使用 VPN 客户端连接到 Azure 虚拟网络时，看到以下错误消息：
 
-**已处理证书链，但是在不受信任提供程序信任的根证书中终止**
+**已处理证书链，但是在不受信任提供程序信任的根证书中终止。**
 
 ### <a name="solution"></a>解决方案
 
@@ -82,15 +82,15 @@ ms.lasthandoff: 06/28/2017
     | Azuregateway-GUID.cloudapp.net  | Current User\Trusted Root Certification Authorities|
     | AzureGateway-GUID.cloudapp.net、AzureRoot.cer    | Local Computer\Trusted Root Certification Authorities|
 
-2. 如果相应位置上已有证书，请尝试删除并重新安装证书。 azuregateway-GUID**.cloudapp.net**** 证书位于从 Azure 门户下载的 VPN 客户端配置包中。 可以使用文件存档程序从配置包中提取文件。
+2. 如果相应位置上已有证书，请尝试删除并重新安装证书。 **azuregateway-*GUID*.cloudapp.net** 证书位于从 Azure 门户下载的 VPN 客户端配置包中。 可以使用文件存档程序从配置包中提取文件。
 
-##  <a name="error-file-download-error-target-uri-is-not-specified"></a>错误：“文件下载错误，未指定目标 URI”
+## <a name="file-download-error-target-uri-is-not-specified"></a>文件下载错误：未指定目标 URI
 
 ### <a name="symptom"></a>症状
 
 看到以下错误消息：
 
-**文件下载错误，未指定目标 URI**
+**文件下载错误。未指定目标 URI。**
 
 ### <a name="cause"></a>原因 
 
@@ -98,15 +98,15 @@ ms.lasthandoff: 06/28/2017
 
 ### <a name="solution"></a>解决方案
 
-VPN 网关类型必须是 VPN，VPN 类型必须是 RouteBased。
+VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
-## <a name="vpn-client-error-azure-vpn-custom-script-failed-8007026f"></a>VPN 客户端错误：Azure VPN 自定义脚本失败 (8007026f)
+## <a name="vpn-client-error-azure-vpn-custom-script-failed"></a>VPN 客户端错误：Azure VPN 自定义脚本失败 
 
 ### <a name="symptom"></a>症状
 
 尝试使用 VPN 客户端连接到 Azure 虚拟网络时，看到以下错误消息：
 
-**用于更新路由表的自定义脚本失败(8007026f)。**
+**用于更新路由表的自定义脚本失败。(错误 8007026f)**
 
 ### <a name="cause"></a>原因
 
@@ -124,22 +124,22 @@ VPN 网关类型必须是 VPN，VPN 类型必须是 RouteBased。
 
 ### <a name="solution"></a>解决方案
 
-提取 VPN 客户端配置包。 找到 .cer 文件。 在“计算机帐户”的“受信任的根证书颁发机构”中安装此证书：
+提取 VPN 客户端配置包，并找到 .cer 文件。 若要安装证书，请执行以下步骤：
 
-1. 打开 mmc.exe
+1. 打开 mmc.exe。
 2. 添加“证书”管理单元。
 3. 选择本地计算机的“计算机”帐户。
-4. 右键单击“受信任的根证书颁发机构”节点，依次单击“所有任务” > “导入”，再转到从 VPN 客户端配置包中提取的 .cer 文件。
+4. 右键单击“受信任的根证书颁发机构”节点。 单击“所有任务” > “导入”，浏览到从 VPN 客户端配置包中提取的 .cer 文件。
 5. 重新启动计算机。 
 6. 尝试安装 VPN 客户端。
 
-## <a name="azure-portal-error-failed-to-save-vpn-gateway-data-is-invalid"></a>Azure 门户错误：无法保存 VPN 网关，数据无效
+## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-data-is-invalid"></a>Azure 门户错误：无法保存 VPN 网关，数据无效
 
 ### <a name="symptom"></a>症状
 
 尝试在 Azure 门户中保存 VPN 网关的更改时，看到以下错误消息：
 
-**无法保存虚拟网络网关 &lt;网关名称&gt;。错误:证书 &lt;证书 ID&gt; 的数据无效。**
+**无法保存虚拟网络网关 &lt;*网关名称*&gt;。 证书 &lt;*证书 ID*&gt; 的数据无效。**
 
 ### <a name="cause"></a>原因 
 
@@ -168,13 +168,13 @@ VPN 网关类型必须是 VPN，VPN 类型必须是 RouteBased。
     e8Jcej7mzunzyjz4chN0/WVF94MtxbUkLkqP
     -----END CERTIFICATE-----
 
-## <a name="azure-portal-error-failed-to-save-vpn-gateway-resource-name-is-invalid"></a>Azure 门户错误：无法保存 VPN 网关，资源名称无效
+## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-resource-name-is-invalid"></a>Azure 门户错误：无法保存 VPN 网关，资源名称无效
 
 ### <a name="symptom"></a>症状
 
 尝试在 Azure 门户中保存 VPN 网关的更改时，看到以下错误消息： 
 
-**无法保存虚拟网络网关 &lt;网关名称&gt;。错误:资源名称 &lt;尝试上传的证书名称&gt; 无效**。
+**无法保存虚拟网络网关 &lt;*网关名称*&gt;。 资源名称 &lt;*尝试上传的证书名称*&gt; 无效。**
 
 ### <a name="cause"></a>原因
 
@@ -204,41 +204,41 @@ VPN 网关类型必须是 VPN，VPN 类型必须是 RouteBased。
 
 ## <a name="too-many-vpn-clients-connected-at-once"></a>一次性连接的 VPN 客户端过多
 
-对于每个 VPN 网关，最多可以连接 128 个客户端。  可以在 Azure 门户中查看连接的客户端总数。
+对于每个 VPN 网关，最多可以连接 128 个客户端。 可以在 Azure 门户中查看连接的客户端总数。
 
-## <a name="point-to-site-vpn-incorrectly-adds-a-route-for-100008-to-route-table"></a>点到站点 VPN 将 10.0.0.0/8 路由错误添加到路由表
+## <a name="point-to-site-vpn-incorrectly-adds-a-route-for-100008-to-the-route-table"></a>点到站点 VPN 将 10.0.0.0/8 路由错误添加到路由表
 
 ### <a name="symptom"></a>症状
 
-在点到站点客户端上进行 VPN 拨号连接时，VPN 客户端应添加 Azure 虚拟网络路由，Iphelper 服务应添加 VPN 客户端子网路由。 
+在点到站点客户端上进行 VPN 拨号连接时，VPN 客户端应该将一个路由添加到 Azure 虚拟网络。 IP 帮助程序服务应添加 VPN 客户端子网的路由。 
 
-不过，如果 VPN 客户端属于 10.0.0.0/8 范围内较小子网（如 10.0.12.0/24），而不是 10.0.12.0/24 路由，将会错误添加具有较高优先级的 10.0.0.0/8 路由。 
+VPN 客户端范围属于 10.0.0.0/8 的较小子网（如 10.0.12.0/24）。 添加了具有更高优先级的 10.0.0.0/8 的路由，而不是 10.0.12.0/24 的路由。 
 
-这会断开与可能属于 10.0.0.0/8 范围内另一子网（如未定义特定路由的 10.50.0.0/24）的其他本地网络的连接。 
+这种错误的路由会断开与可能属于 10.0.0.0/8 范围内另一子网（如未定义特定路由的 10.50.0.0/24）的其他本地网络的连接。 
 
 ### <a name="cause"></a>原因
 
-此行为专为 Windows 客户端设计。 使用 PPP IPCP 协议时，客户端从服务器（在此示例中，为 VPN 网关）中获取隧道接口的 IP 地址。 不过，由于协议有限制，因此客户端没有子网掩码。 因为无法通过其他方式获取子网掩码，所以客户端会尝试根据隧道接口 IP 地址的种类来猜测子网掩码。 
+此行为专为 Windows 客户端设计。 客户端使用 PPP IPCP 协议时，会从服务器（在本例中为 VPN 网关）中获取隧道接口的 IP 地址。 不过，由于协议有限制，因此客户端没有子网掩码。 因为无法通过其他方式获取子网掩码，所以客户端会尝试根据隧道接口 IP 地址的种类来猜测子网掩码。 
 
 因此，路由的添加依据为以下静态映射： 
 
 如果地址属于 A 类 --> 应用 /8
 
-如果地址属于 B 类 --> 应用
+如果地址属于 B 类 --> 应用 /16
 
 如果地址属于 C 类 --> 应用 /24
 
-##  <a name="vpn-client-cannot-access-network-file-shares"></a>VPN 客户端无法访问网络文件共享
+## <a name="vpn-client-cannot-access-network-file-shares"></a>VPN 客户端无法访问网络文件共享
 
 ### <a name="symptom"></a>症状
 
-VPN 客户端已连接到 Azure 网络。 不过，客户端无法访问网络共享。
+VPN 客户端已连接到 Azure 虚拟网络。 不过，客户端无法访问网络共享。
 
 ### <a name="cause"></a>原因
 
-SMB 协议用于文件共享访问。 如果在连接启动时 VPN 客户端添加会话凭据，便会出现此故障。 建立连接后，将强制客户端使用缓存凭据进行 Kerberos 身份验证。 这会启动查询密钥发行中心（域控制器），以获取令牌。 由于客户端通过 Internet 进行连接，因此可能无法访问域控制器。 所以，客户端无法从 Kerberos 故障转移到 NTLM。 
+SMB 协议用于文件共享访问。 连接启动时，VPN 客户端添加了会话凭据并发生失败。 建立连接后，将强制客户端使用缓存凭据进行 Kerberos 身份验证。 此过程会启动查询密钥发行中心（域控制器），以获取令牌。 由于客户端通过 Internet 进行连接，因此可能无法访问域控制器。 所以，客户端无法从 Kerberos 故障转移到 NTLM。 
 
-只有当客户端具有已加入域颁发的有效证书（其中 SAN=UPN），且客户端以物理方式连接到域网络时，才会提示客户端提供凭据。 在这种情况下，客户端尝试使用证书并访问域控制器。 然后，KDC 返回“KDC_ERR_C_PRINCIPAL_UNKNOWN”错误。  这会强制客户端故障转移到 NTLM。 
+仅当客户端具有已加入的域颁发的有效证书（其中 SAN=UPN），才会提示客户端提供凭据。 客户端还必须以物理方式连接到域网络。 在这种情况下，客户端尝试使用证书并访问域控制器。 然后，密钥分发中心返回“KDC_ERR_C_PRINCIPAL_UNKNOWN”错误。 客户端被强制故障转移到 NTLM。 
 
 ### <a name="solution"></a>解决方案
 
@@ -247,7 +247,7 @@ SMB 协议用于文件共享访问。 如果在连接启动时 VPN 客户端添�
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\DisableDomainCreds - Set the value to 1 
 
 
-## <a name="cannot-find-the-point-to-site-vpn-connection-in-windows-after-reinstalling-vpn-client"></a>重新安装 VPN 客户端后，在 Windows 中找不到点到站点 VPN 连接
+## <a name="cannot-find-the-point-to-site-vpn-connection-in-windows-after-reinstalling-the-vpn-client"></a>重新安装 VPN 客户端后，在 Windows 中找不到点到站点 VPN 连接
 
 ### <a name="symptom"></a>症状
 
@@ -256,3 +256,4 @@ SMB 协议用于文件共享访问。 如果在连接启动时 VPN 客户端添�
 ### <a name="solution"></a>解决方案
 
 若要解决此问题，请从 C:\Users\TheUserName\AppData\Roaming\Microsoft\Network\Connections 删除旧的 VPN 客户端配置文件，再重新运行 VPN 客户端安装程序。
+

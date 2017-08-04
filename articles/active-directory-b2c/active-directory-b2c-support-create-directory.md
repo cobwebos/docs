@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory：创建租户支持主题 | Microsoft Docs"
-description: "创建 Azure Active Directory 租户或 Azure Active Directory B2C 租户：问题和解决方法"
+title: "Azure Active Directory B2C：创建租户故障排除 | Microsoft Docs"
+description: "创建 Azure Active Directory 租户或 Azure Active Directory B2C 租户时出现的问题和解决方法。"
 services: active-directory-b2c
 documentationcenter: 
 author: swkrish
@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-translationtype: Human Translation
-ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
-ms.openlocfilehash: 42c00632fee16b61f502b5a8ac15825788403ab8
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 81af4536fc223319369aff262d42149cfbf1a1e9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 06/28/2017
 
 
 ---
-# <a name="creating-an-azure-active-directory-azure-ad-tenant-or-azure-ad-b2c-tenant-issues-and-resolutions"></a>创建 Azure Active Directory (Azure AD) 租户或 Azure AD B2C 租户：问题和解决方法
-## <a name="creating-an-azure-ad-tenant"></a>创建 Azure AD 租户
-如果第一次无法创建 Azure AD 租户，请重试。 如果问题持续出现，请联系支持部门。
+# <a name="troubleshoot-creating-an-azure-active-directory-or-azure-active-directory-b2c-tenant"></a>创建 Azure Active Directory 租户或 Azure Active Directory B2C 租户故障排除 
 
-## <a name="creating-an-azure-ad-b2c-tenant"></a>创建 Azure AD B2C 租户
-如果在[创建 Azure AD B2C 租户](active-directory-b2c-get-started.md)过程中遇到问题，请尝试以下方法：
+## <a name="create-an-azure-ad-tenant"></a>创建 Azure AD 租户
+如果第一次尝试时无法创建 Azure Active Directory (Azure AD) 租户，请重试。 如果问题持续出现，请联系 Azure 支持部门。
 
-* 如果 Azure AD B2C 租户未显示在你的租户列表中，请重试。
-* 如果 Azure AD B2C 租户显示在你的租户列表中，但是收到一条错误消息（“无法完成 B2C 租户‘contosob2c’的创建。 请访问此[链接](http://go.microsoft.com/fwlink/?LinkID=624192&clcid=0x409)以获取更多指南。”），则删除刚创建的租户，然后重试。
-* 请注意，当删除现有 B2C 租户并重新创建具有相同域名的 B2C 租户时，存在已知问题。 你必须创建具有不同域名的 B2C 租户。
-* 如果这些解决方法不起作用，请联系支持部门。 了解[如何提出针对 Azure AD B2C 的支持请求](active-directory-b2c-support.md)的详细信息。
+## <a name="create-an-azure-ad-b2c-tenant"></a>创建 Azure AD B2C 租户
+如果在[创建 Azure Active Directory B2C (Azure AD B2C) 租户](active-directory-b2c-get-started.md)时遇到问题，请尝试以下选项：
 
+* 如果 Azure AD B2C 租户未在租户列表中显示，请重新尝试创建租户。
+* 如果 Azure AD B2C 租户未在租户列表中显示并看到以下错误消息，请删除租户，然后重新创建：
 
-
-
-<!--HONumber=Dec16_HO5-->
+    “Could not complete the creation of the B2C tenant 'contosob2c'. Please visit this [link](http://go.microsoft.com/fwlink/?LinkID=624192&clcid=0x409) for more guidance.”（无法创建 B2C 租户“contosob2c”。请访问此链接获取更多指导。）
+* 删除现有 Azure AD B2C 租户并使用相同域名重新创建时，存在已知问题。 创建新的 Azure AD B2C 租户时，必须使用不同的域名。
+* 如果这些解决方法不起作用，请联系 Azure 支持部门。 有关详细信息，请参阅 [Azure AD B2C 的文件支持请求](active-directory-b2c-support.md)。
 
 

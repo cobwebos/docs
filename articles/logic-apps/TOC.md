@@ -140,5 +140,6 @@
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurelogicapps)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=logic-apps)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-logic-apps)
