@@ -75,6 +75,7 @@
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Azure 安全性、隐私性与合规性博客](http://blogs.msdn.com/b/azuresecurity/)
 ## [定价](security-center-pricing.md)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务概述](https://azure.microsoft.com/services/security-center/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=security-center)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=security-center)
