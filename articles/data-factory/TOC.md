@@ -92,7 +92,8 @@
 ### [排查数据工厂问题](data-factory-troubleshoot.md)
 ### [解决数据管理网关的使用问题](data-factory-troubleshoot-gateway-issues.md)
 
-# 参考
+# 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=data-factory)
 ## [PowerShell](/powershell/module/azurerm.datafactories)
 ## [.NET](/dotnet/api/microsoft.azure.management.datafactories.models)
 ## [REST](/rest/api/datafactory/)
@@ -104,6 +105,7 @@
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/data-factory)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory)
 ## [定价](https://azure.microsoft.com/pricing/details/data-factory/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [数据管理网关的发行说明](data-factory-gateway-release-notes.md)
 ## [请求功能](https://feedback.azure.com/forums/270578-azure-data-factory)
 ## [服务更新](https://azure.microsoft.com/updates/?product=data-factory)

@@ -33,6 +33,7 @@
 ### [使用 CLI 2.0 进行创建和管理](key-vault-manage-with-cli2.md)
 
 # 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=key-vault)
 ## [PowerShell](/powershell/module/azurerm.keyvault)
 ## [Azure CLI 2](/cli/azure/keyvault)
 ## [.NET](/dotnet/api/microsoft.azure.keyvault)
@@ -55,3 +56,4 @@
 ## [代码示例](https://www.microsoft.com/download/details.aspx?id=45343)
 ## [论坛](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureKeyVault)
 ## [定价](https://azure.microsoft.com/pricing/details/key-vault/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)

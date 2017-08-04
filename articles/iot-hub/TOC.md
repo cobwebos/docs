@@ -17,6 +17,7 @@
 ### [使用物理设备](iot-hub-get-started-physical.md)
 #### [将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)
 #### [将 Raspberry Pi 与 C 配合使用](iot-hub-raspberry-pi-kit-c-get-started.md)
+#### [将 Raspberry Pi 与 Python 配合使用](iot-hub-raspberry-pi-kit-python-get-started.md)
 
 #### [将 Intel Edison 与 Node.js 配合使用](iot-hub-intel-edison-kit-node-get-started.md)
 #### [将 Intel Edison 与 C 配合使用](iot-hub-intel-edison-kit-c-get-started.md)
@@ -84,6 +85,7 @@
 #### [Node.js 后端/Node.js 设备](iot-hub-node-node-twin-getstarted.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-twin-getstarted.md)
 #### [.NET 后端/.NET 设备](iot-hub-csharp-csharp-twin-getstarted.md)
+#### [Java 后端/Java 设备](iot-hub-java-java-twin-getstarted.md)
 ### 使用直接方法
 #### [Node.js 后端/Node.js 设备](iot-hub-node-node-direct-methods.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-direct-methods.md)
@@ -103,6 +105,7 @@
 ### 计划和广播作业
 #### [Node.js 后端/Node.js 设备](iot-hub-node-node-schedule-jobs.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-schedule-jobs.md)
+#### [Java](iot-hub-java-java-schedule-jobs.md)
 ## 管理
 ### 创建 IoT 中心 
 #### [使用门户](iot-hub-create-through-portal.md)
@@ -150,6 +153,7 @@
 #### [本机模块主机](https://github.com/Azure/iot-edge/tree/master/samples/native_module_host_sample)
 
 # 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=iot-hub)
 ## [Azure CLI](/cli/azure/iot)
 ## [.NET（服务）](/dotnet/api/microsoft.azure.devices)
 ## [.NET（设备）](/dotnet/api/microsoft.azure.devices.client)
@@ -180,6 +184,7 @@
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/iot-hub/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub)
 ## [定价](https://azure.microsoft.com/pricing/details/iot-hub/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=iot-hub)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-iot-hub)
 ## [技术案例研究](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured)

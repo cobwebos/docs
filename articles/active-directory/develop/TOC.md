@@ -61,8 +61,9 @@
 ### [我的 Web API 项目发生了什么情况](vs-active-directory-webapi-what-happened.md)
 ## [Windows Server ADFS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers)
 # 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [身份验证库 (ADAL)](active-directory-authentication-libraries.md)
-## [代码示例](active-directory-code-samples.md)
+## [代码示例文章](active-directory-code-samples.md)
 ## [术语表](active-directory-dev-glossary.md)
 ## [身份验证协议](active-directory-authentication-protocols.md)
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
@@ -107,3 +108,4 @@
 ### [范围](active-directory-v2-scopes.md)
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=security-identity)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)

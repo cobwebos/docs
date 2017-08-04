@@ -29,6 +29,7 @@
 ### [恶意软件评估](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [系统更新评估](../log-analytics/log-analytics-system-update.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [连接安全产品](oms-security-connect-products.md)
+### [Web 基线评估](oms-security-web-baseline-assessment.md)
 
 ## 使用解决方案
 ### [管理解决方案](operations-management-suite-solutions.md)
@@ -77,3 +78,4 @@
 
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)

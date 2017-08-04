@@ -57,7 +57,8 @@
 ### [访问诊断日志](data-lake-store-diagnostic-logs.md)
 ### [高可用性规划](data-lake-store-troubleshooting-guidance.md)
 
-# 参考
+# 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=data-lake-store)
 ## [PowerShell](/powershell/module/azurerm.datalakestore)
 ## [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 ## [Java](/java/api/com.microsoft.azure.datalake.store)
@@ -73,6 +74,7 @@
 ## [在 UserVoice 上提供反馈](https://feedback.azure.com/forums/327234-data-lake)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
 ## [定价](https://azure.microsoft.com/pricing/details/data-lake-store/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=data-lake-store)
 ## [Stack Overflow 论坛](http://stackoverflow.com/questions/tagged/azure-data-lake)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store)

@@ -179,6 +179,7 @@
 #### [备份驱动器清单](storage-import-export-backing-up-drive-manifests.md)
 #### [导入/导出作业的诊断和错误恢复](storage-import-export-diagnostics-and-error-recovery.md)
 # 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=storage)
 ## [PowerShell](/powershell/module/azure.storage)
 ## [Azure CLI](/cli/azure/storage)
 ## .NET
@@ -210,6 +211,7 @@
 ## [Azure 存储客户端工具](storage-explorers.md)
 ## [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
 ## [定价](https://azure.microsoft.com/pricing/details/storage/blobs/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=storage)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/windows-azure-storage)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=storage)
@@ -218,6 +220,7 @@
 ### [存储资源管理器（预览版）](../vs-azure-tools-storage-manage-with-storage-explorer.md)
 ### [使用存储资源管理器（预览版）管理 Blob](../vs-azure-tools-storage-explorer-blobs.md)
 ### [将存储资源管理器（预览版）与 Azure 文件存储配合使用](../vs-azure-tools-storage-explorer-files.md)
+### [存储资源管理器（预览版）发行说明](../vs-azure-tools-storage-explorer-relnotes.md)
 
 ## NuGet 包
 ### [适用于 .NET 的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)

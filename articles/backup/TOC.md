@@ -4,7 +4,7 @@
 
 # 入门
 ## [备份 Azure VM](backup-azure-vms-first-look-arm.md)
-## [备份文件和文件夹](backup-try-azure-backup-in-10-mins.md)
+## [备份 Windows Server 或 Windows 计算机](backup-try-azure-backup-in-10-mins.md)
 ## [备份 VMware 服务器](backup-azure-backup-server-vmware.md)
 
 # 如何
@@ -27,16 +27,19 @@
 #### [在 Azure 门户中还原 Resource Manager 部署的 VM](backup-azure-arm-restore-vms.md)
 #### [还原加密的虚拟机](backup-azure-vms-encryption.md)
 #### [还原 Azure 中的虚拟机](backup-azure-restore-vms.md)
-#### [使用 Azure 备份还原加密 VM 的密钥保管库密钥和机密](backup-azure-restore-key-secret.md)
+#### [还原加密 VM 的 Key Vault 密钥和机密](backup-azure-restore-key-secret.md)
 
 
-## Windows 文件和文件夹
-### [使用 Resource Manager 部署模型备份 Windows Server](backup-configure-vault.md)
-### [使用经典部署模型备份 Windows Server](backup-configure-vault-classic.md)
+## Windows Server
+### [备份 Windows Server 文件和文件夹](backup-configure-vault.md)
+### [备份 Windows Server 系统状态](backup-azure-system-state.md)
+### [将文件从 Azure 恢复到 Windows Server](backup-azure-restore-windows-server.md)
+### [还原 Windows Server 系统状态](backup-azure-restore-system-state.md)
 ### [监视和管理恢复服务保管库](backup-azure-manage-windows-server.md)
-### [使用经典部署模型管理备份保管库](backup-azure-manage-windows-server-classic.md)
-### [使用 Resource Manager 部署模型将文件还原到 Windows Server](backup-azure-restore-windows-server.md)
-### [使用经典部署模型将文件还原到 Windows Server](backup-azure-restore-windows-server-classic.md)
+### 使用经典门户备份和还原
+#### [使用经典部署模型备份 Windows Server](backup-configure-vault-classic.md)
+#### [使用经典部署模型管理备份保管库](backup-azure-manage-windows-server-classic.md)
+#### [使用经典部署模型将文件还原到 Windows Server](backup-azure-restore-windows-server-classic.md)
 
 ## Azure 备份服务器
 ### [Azure 备份服务器保护矩阵](backup-mabs-protection-matrix.md)
@@ -108,5 +111,6 @@
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup)
 ## [定价](https://azure.microsoft.com/pricing/details/backup/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=backup)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=backup)

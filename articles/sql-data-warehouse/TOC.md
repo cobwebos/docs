@@ -82,18 +82,22 @@
 
 ## 加载
 
-### [概述](sql-data-warehouse-overview-load.md)
-### [示例数据](sql-data-warehouse-load-sample-databases.md)
-### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
-### [AZCopy](sql-data-warehouse-load-from-sql-server-with-azcopy.md)
-### [BCP](sql-data-warehouse-load-with-bcp.md)
-### [Data Factory](sql-data-warehouse-load-with-data-factory.md)
-### [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)
-### [PolyBase 指南](sql-data-warehouse-load-polybase-guide.md)
-### [从 Blob 存储使用 PolyBase ](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
-### [从 SQL Server 使用 PolyBase](sql-data-warehouse-load-from-sql-server-with-polybase.md)
-### [RedGate](sql-data-warehouse-load-with-redgate.md)
-### [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
+### 概念
+#### [概述](sql-data-warehouse-overview-load.md)
+#### [PolyBase 指南](sql-data-warehouse-load-polybase-guide.md)
+
+### 教程
+#### [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)
+
+### 操作指南
+#### [示例数据](sql-data-warehouse-load-sample-databases.md)
+#### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
+#### [BCP](sql-data-warehouse-load-with-bcp.md)
+#### [Data Factory](sql-data-warehouse-load-with-data-factory.md)
+#### [从 Blob 存储使用 PolyBase ](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
+#### [从 SQL Server 使用 PolyBase](sql-data-warehouse-load-from-sql-server-with-polybase.md)
+#### [RedGate](sql-data-warehouse-load-with-redgate.md)
+#### [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
 
 ## 迁移
 
@@ -144,6 +148,7 @@
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=databases)
 ## [论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
 ## [定价](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=sql-data-warehouse)
 ## [堆栈溢出](https://stackoverflow.com/questions/tagged/azure-sqldw/)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)

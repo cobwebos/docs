@@ -45,8 +45,11 @@
 ## 缩放
 ###[更新为不同的大小和层](cache-how-to-scale.md)
 ###[使用 Redis 群集进行缩减/扩展](cache-how-to-premium-clustering.md)
+## 与 Spring Boot 集成
+###[将 Spring Boot Initializer 应用与 Redis 缓存配合使用](cache-java-spring-boot-initializer-with-redis-cache.md)
 
-# 参考
+# 引用
+## [代码示例](https://azure.microsoft.com/resources/samples/?service=redis-cache)
 ## [PowerShell](/powershell/module/azurerm.rediscache)
 ## [Azure CLI 2.0 预览版](/cli/azure/redis)
 ## [.NET](/dotnet/api/microsoft.azure.management.redis)

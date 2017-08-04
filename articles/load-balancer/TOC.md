@@ -48,6 +48,7 @@
 ### [对 Azure 负载均衡器进行故障排除](load-balancer-troubleshoot.md)
 
 # 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=load-balancer)
 ## [PowerShell](/powershell/module/azurerm.network)
 ## [Azure CLI 2.0](/cli/azure/network/lb)
 ## [.NET](/dotnet/api/microsoft.azure.management.network.models)
@@ -69,4 +70,5 @@
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=networking)
 ## [定价](https://azure.microsoft.com/pricing/details/load-balancer/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=load-balancer)

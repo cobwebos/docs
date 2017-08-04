@@ -17,7 +17,6 @@
 ### [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 ### [Azure CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 ### [Azure 门户（经典）](vpn-gateway-howto-site-to-site-classic-portal.md)
-### [经典门户（经典）](vpn-gateway-site-to-site-create.md)
 ## 配置点到站点连接
 ### [Azure 门户](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
@@ -59,7 +58,6 @@
 ### [Azure 门户](vpn-gateway-delete-vnet-gateway-portal.md)
 ### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 ### [PowerShell（经典）](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-## [配置 VPN 网关（经典）](vpn-gateway-configure-vpn-gateway-mp.md)
 ## [网关 SKU（旧版）](vpn-gateway-about-skus-legacy.md)
 ## 配置第三方 VPN 设备
 ### [概述和 Azure 配置](vpn-gateway-3rdparty-device-config-overview.md)
@@ -91,5 +89,6 @@
 ## [博客](https://azure.microsoft.com/blog/topics/networking)
 ## [论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [定价](https://azure.microsoft.com/pricing/details/vpn-gateway)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [SLA](https://azure.microsoft.com/support/legal/sla)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway)

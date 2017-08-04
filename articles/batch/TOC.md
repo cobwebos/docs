@@ -5,9 +5,10 @@
 ## [配额和限制](batch-quota-limit.md)
 # 入门
 ## [创建批处理帐户](batch-account-create-portal.md)
-## [批处理 .NET 教程](batch-dotnet-get-started.md)
-## [批处理 Python 教程](batch-python-tutorial.md)
-## [批处理 Node.js 教程](batch-nodejs-get-started.md)
+## [Batch .NET 教程](batch-dotnet-get-started.md)
+## [Batch Python 教程](batch-python-tutorial.md)
+## [Batch Node.js 教程](batch-nodejs-get-started.md)
+## [Batch Rendering 服务](batch-rendering-service.md)
 # 如何
 ## 开发
 ### [应用程序包](batch-application-packages.md)
@@ -15,6 +16,7 @@
 ### Azure AD 身份验证
 #### [将 Azure AD 与批处理服务配合使用](batch-aad-auth.md)
 #### [将 Azure AD 与 Batch 管理配合使用](batch-aad-auth-management.md)
+### [计算密集型 VM](batch-pool-compute-intensive-sizes.md)
 ### [并发节点任务](batch-parallel-node-tasks.md)
 ### [高效列表查询](batch-efficient-list-queries.md)
 ### [作业准备与作业完成任务](batch-job-prep-release.md)
@@ -36,8 +38,8 @@
 #### [添加应用程序](./scripts/batch-cli-sample-add-application.md)
 #### [管理池](./scripts/batch-cli-sample-manage-pool.md)
 #### [运行作业和任务](./scripts/batch-cli-sample-run-job.md)
-
 # 引用
+## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=batch)
 ## [PowerShell](/powershell/module/azurerm.batch)
 ## [Azure CLI](/cli/azure/batch)
 ## [.NET](/dotnet/api/microsoft.azure.batch)
@@ -69,6 +71,7 @@
 ## [C# 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-us/home?forum=azurebatch)
 ## [定价](https://azure.microsoft.com/pricing/details/batch/)
+## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [Python 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
 ## [服务更新](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-batch)

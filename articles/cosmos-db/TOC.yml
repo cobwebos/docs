@@ -5,8 +5,7 @@
     - name: 关于 Azure Cosmos DB
       href: introduction.md
     - name: 欢迎 DocumentDB 客户
-      href: >-
-        https://azure.microsoft.com/blog/dear-documentdb-customers-welcome-to-azure-cosmos-db/
+      href: 'https://azure.microsoft.com/blog/dear-documentdb-customers-welcome-to-azure-cosmos-db/'
 - name: 快速入门
   expanded: true
   items:
@@ -138,6 +137,8 @@
               href: documentdb-resources.md
             - name: SQL 查询
               href: documentdb-sql-query.md
+            - name: SQL 查询性能
+              href: documentdb-sql-query-metrics.md
             - name: SQL 演练
               href: 'https://www.documentdb.com/sql/demo'
             - name: 分区
@@ -195,8 +196,7 @@
                 - name: 堆栈溢出
                   href: 'http://stackoverflow.com/questions/tagged/azure-cosmosdb'
                 - name: 视频
-                  href: >-
-                    https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db
+                  href: 'https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db'
                 - name: 服务更新
                   href: 'https://azure.microsoft.com/updates/?product=cosmos-db'
                 - name: 社区门户
@@ -224,8 +224,7 @@
         - name: 表 API
           items:
             - name: 表存储
-              href: >-
-                https://docs.microsoft.com/rest/api/storageservices/fileservices/Table-Service-Concepts
+              href: 'https://docs.microsoft.com/rest/api/storageservices/fileservices/Table-Service-Concepts'
         - name: 更改源
           href: change-feed.md
         - name: 地理空间
@@ -284,8 +283,12 @@
           href: powerbi-visualize.md
         - name: 将 ODBC 驱动程序用于数据可视化
           href: odbc-driver.md
+        - name: 将 Spring Boot Starter 与 DocumentDB API 配合使用
+          href: documentdb-java-spring-boot-starter-with-cosmos-db.md
 - name: 引用
   items:
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=cosmos-db'
     - name: DocumentDB API
       items:
         - name: Java
