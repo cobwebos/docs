@@ -14,7 +14,7 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/05/2017
+ms.date: 08/04/2017
 ms.author: nepeters
 ms.translationtype: HT
 ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
@@ -32,13 +32,11 @@ DC/OS 提供了一个用于运行现代和容器化应用程序的分布式平�
 
 本教程需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
 ## <a name="log-in-to-azure"></a>登录 Azure 
 
 使用 [az login](/cli/azure/#login) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
 
-```azurecli-interactive
+```azurecli
 az login
 ```
 
@@ -48,7 +46,7 @@ az login
 
 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
-```azurecli-interactive
+```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
@@ -58,7 +56,7 @@ az group create --name myResourceGroup --location eastus
 
 下面的示例创建一个名为 myDCOSCluster 的 DC/OS 群集，并且在不存在 SSH 密钥时创建这些密钥。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。  
 
-```azurecli-interactive
+```azurecli
 az acs create \
   --orchestrator-type dcos \
   --resource-group myResourceGroup \
@@ -72,13 +70,13 @@ az acs create \
 
 创建 DC/OS 群集后，可以通过 SSH 隧道进行访问。 运行以下命令，以返回主 DC/OS 的公共 IP 地址。 该 IP 地址存储在一个变量中，并将在下一步使用。
 
-```azurecli-interactive
+```azurecli
 ip=$(az network public-ip list --resource-group myResourceGroup --query "[?contains(name,'dcos-master')].[ipAddress]" -o tsv)
 ```
 
 要创建 SSH 隧道，请运行以下命令并按照屏幕上的说明进行操作。 如果正在使用端口 80，则该命令将失败。 将隧道端口更新为未在用的端口，例如 `85:localhost:80`。 
 
-```azurecli-interactive
+```azurecli
 sudo ssh -i ~/.ssh/id_rsa -fNL 80:localhost:80 -p 2200 azureuser@$ip
 ```
 
@@ -94,13 +92,13 @@ DC/OS 命令行接口用于从命令行管理 DC/OS 群集。 使用 [az acs dco
 
 如果在 macOS 或 Linux 上运行 Azure CLI，则可能需要将该命令与 sudo 一起运行。
 
-```azurecli-interactive
+```azurecli
 az acs dcos install-cli
 ```
 
 在 CLI 可用于群集之前，必须将它配置为使用 SSH 隧道。 为此，请运行以下命令，并根据需要调整端口。
 
-```azurecli-interactive
+```azurecli
 dcos config set core.dcos_url http://localhost
 ```
 
@@ -140,26 +138,26 @@ ACS DC/OS 群集的默认计划机制为 Marathon。 Marathon 用于启动应用
 
 运行以下命令以计划要在 DC/OS 群集上运行的应用程序。
 
-```azurecli-interactive
+```azurecli
 dcos marathon app add marathon-app.json
 ```
 
 若要查看应用的部署状态，请运行以下命令。
 
-```azurecli-interactive
+```azurecli
 dcos marathon app list
 ```
 
 当“WAITING”列值从“True”切换到“False”时，应用程序部署已完成。
 
-```azurecli-interactive
+```azurecli
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     1/1    ---       ---      False      DOCKER   None
 ```
 
 获取 DC/OS 群集代理的公共 IP 地址。
 
-```azurecli-interactive
+```azurecli
 az network public-ip list --resource-group myResourceGroup --query "[?contains(name,'dcos-agent')].[ipAddress]" -o tsv
 ```
 
@@ -171,7 +169,7 @@ az network public-ip list --resource-group myResourceGroup --query "[?contains(n
 
 如果不再需要资源组、DC/OS 群集和所有相关的资源，则可以使用 [az group delete](/cli/azure/group#delete) 命令将其删除。
 
-```azurecli-interactive
+```azurecli
 az group delete --name myResourceGroup --no-wait
 ```
 

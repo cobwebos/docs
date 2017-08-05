@@ -74,7 +74,7 @@ Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用�
 
 ### <a name="create-the-identityexperienceframework-application"></a>创建 IdentityExperienceFramework 应用程序
 
-1. 在“Azure 门户”[](https://portal.azure.com)中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)。
+1. 在 [Azure 门户](https://portal.azure.com) 中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)。
 2. 打开“Azure Active Directory”边栏选项卡（不是“Azure AD B2C”边栏选项卡）。 可能需要选择“更多服务”才能找到它。
 3. 选择“应用注册”。
 4. 选择“新建应用程序注册”。
@@ -164,7 +164,7 @@ Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用�
 
 ## <a name="upload-the-policies-to-your-tenant"></a>将策略上传到租户
 
-1. 在 [Azure 门户](https://portal.azure.com)中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，然后打开“Azure AD B2C”边栏选项卡。
+1. 在 [Azure 门户](https://portal.azure.com) 中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md) ，然后打开“Azure AD B2C”边栏选项卡。
 2. 选择“标识体验框架”。
 3. 选择“上传策略”以上传策略文件。
 

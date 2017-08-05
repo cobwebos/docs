@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 08/03/2017
 ms.author: helaw
 ms.translationtype: HT
 ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
 ms.openlocfilehash: ece8cb785ffcceaed476fa729e7471dc7831c155
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/10/2017
-
 
 ---
 # <a name="microsoft-azure-stack-development-kit-architecture"></a>Microsoft Azure Stack Development Kit architecture
