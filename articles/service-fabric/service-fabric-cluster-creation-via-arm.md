@@ -461,6 +461,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 ```
 
 ### <a "configure-arm" ></a>配置 Resource Manager 模板参数
+<!--- Loc Comment: It seems that <a "configure-arm" > must be replaced with <a name="configure-arm"></a> since the link seems not to be redirecting correctly --->
 最后，使用密钥保管库和 Azure AD PowerShell 命令的输出值填充参数文件：
 
 ```json
@@ -555,7 +556,8 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -Templat
 >
 >
 
- <a name="secure-linux-cluster"></a>
+ <a name="secure-linux-clusters"></a>
+ <!--- Loc Comment: It seems that letter S in cluster was missing, which caused the wrong redirection of the link --->
 
 ## <a name="create-secure-clusters-on-linux"></a>在 Linux 上创建安全群集
 为了简化该过程，我们提供了[帮助程序脚本](http://github.com/ChackDan/Service-Fabric/tree/master/Scripts/CertUpload4Linux)。 使用此帮助程序脚本之前，请确保已安装 Azure 命令行接口 (CLI) 并且安装在你的路径中。 下载该脚本后，请运行 `chmod +x cert_helper.py`，确定脚本具有执行权限。 第一个步骤是在 CLI 中使用 `azure login` 命令登录到 Azure 帐户。 登录到 Azure 帐户后，结合使用帮助程序脚本和 CA 签名的证书，如以下命令所示：
