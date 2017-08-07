@@ -14,17 +14,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 6/7/2017
 ms.author: mlearned
-ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: 748f1994d0ee5b6c6a988bca8e5b694b29c0b8c5
+ms.custom: Jenkins
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: f892ec7bd61124f7958a50ebdfb49c7310d4ee18
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 
-# 在 Azure 上的 Linux (Ubuntu) VM 中创建第一个 Jenkins 主机
-<a id="create-your-first-jenkins-master-on-a-linux-ubuntu-vm-on-azure" class="xliff"></a>
+# <a name="create-your-first-jenkins-master-on-a-linux-ubuntu-vm-on-azure"></a>在 Azure 上的 Linux (Ubuntu) VM 中创建第一个 Jenkins 主机
 
 本快速入门演示如何在 Linux (Ubuntu 14.04 LTS) VM 上同时安装最新稳定版 Jenkins 以及已配置为适用于 Azure 的工具和插件。 这些工具包括：
 <ul>
@@ -43,10 +42,9 @@ ms.lasthandoff: 06/30/2017
 > * 执行 Jenkins 的初始配置。
 > * 安装建议的插件。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## 通过部署用于 Jenkins 的解决方案模板在 Azure 中创建 VM
-<a id="create-the-vm-in-azure-by-deploying-the-solution-template-for-jenkins" class="xliff"></a>
+## <a name="create-the-vm-in-azure-by-deploying-the-solution-template-for-jenkins"></a>通过部署用于 Jenkins 的解决方案模板在 Azure 中创建 VM
 
 Azure 快速入门模板使用户能够快速、可靠地在 Azure 上部署复杂的技术。  Azure Resource Manager 允许用户使用[声明性模板](https://azure.microsoft.com/en-us/resources/templates/?term=jenkins)预配应用程序。 在单个模板中，可以部署多个服务及其依赖项。 在应用程序生命周期的每个阶段，可使用相同模板重复部署应用程序。
 
@@ -68,7 +66,7 @@ Azure 快速入门模板使用户能够快速、可靠地在 Azure 上部署复�
 * 身份验证类型：创建用密码或 [SSH 公钥](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows)保护的实例。 如果使用密码，则它必须同时满足以下要求中的 3 个：1 个小写字符、1 个大写字符、1 个数字和 1 个特殊字符。
 * Jenkins 发行类型始终为 **LTS**
 * 选择一个订阅。
-* 创建资源组或使用现有资源组。
+* 创建一个资源组或使用现有的空资源组。 
 * 选择一个位置。
 
 在“配置更多选项”选项卡中：
@@ -83,15 +81,13 @@ Azure 快速入门模板使用户能够快速、可靠地在 Azure 上部署复�
 
 接下来，选择“购买”以预配所有资源。
 
-## 设置 SSH 端口转发
-<a id="setup-ssh-port-forwarding" class="xliff"></a>
+## <a name="setup-ssh-port-forwarding"></a>设置 SSH 端口转发
 
 默认情况下，Jenkins 实例使用 http 协议，并且在端口 8080 上侦听。 用户不应通过不安全的协议进行身份验证。
     
 设置端口转发以查看本地计算机上的 Jenkins UI。
 
-### 如果使用 Windows：
-<a id="if-you-are-using-windows" class="xliff"></a>
+### <a name="if-you-are-using-windows"></a>如果使用 Windows：
 
 如果使用密码保护 Jenkins，请安装 PuTTY 并运行此命令：
 ```
@@ -106,8 +102,7 @@ putty.exe -ssh -L 8080:localhost:8080 <username>@<Domain name label>.<location>.
 putty -i <private key file including path> -L 8080:localhost:8080 <username>@<Domain name label>.<location>.cloudapp.azure.com
 ```
 
-### 如果使用 Linux 或 Mac：
-<a id="if-you-are-using-linux-or-mac" class="xliff"></a>
+### <a name="if-you-are-using-linux-or-mac"></a>如果使用 Linux 或 Mac：
 
 如果使用密码保护 Jenkins 主机，请运行此命令：
 ```
@@ -120,8 +115,7 @@ ssh -L 8080:localhost:8080 <username>@<Domain name label>.<location>.cloudapp.az
 ssh -i <private key file including path> -L 8080:localhost:8080 <username>@<Domain name label>.<location>.cloudapp.azure.com
 ```
 
-## 连接到 Jenkins
-<a id="connect-to-jenkins" class="xliff"></a>
+## <a name="connect-to-jenkins"></a>连接到 Jenkins
 启动隧道后，导航到本地计算机上的 http://localhost:8080/。
 
 首次解锁 Jenkins 仪表板时，请使用初始管理员密码。
@@ -140,8 +134,7 @@ ssh -i <private key file including path> -L 8080:localhost:8080 <username>@<Doma
 
 ![Jenkins 已准备就绪！](./media/install-jenkins-solution-template/jenkins-welcome.png)
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 在本教程中：
 

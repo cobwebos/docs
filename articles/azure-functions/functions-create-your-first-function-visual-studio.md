@@ -15,12 +15,12 @@ ms.topic: hero-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 07/05/2017
-ms.author: rachelap, glenga
+ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: be7a9979ba7e6aa26c60b24bcc892ca35af3c1fc
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 4a6b706b63c4e1b0df3c46bce4ff6877efca4ead
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>使用 Visual Studio 创建你的第一个函数
@@ -58,27 +58,29 @@ Azure Functions 可让你在无服务器环境中执行代码，而无需先创�
 
 ## <a name="create-the-function"></a>创建函数
 
-在“解决方案资源管理器”中，右键单击项目节点，然后选择“添加” > “新建项”。 选择 **Azure Function**，然后单击“添加”。
+1. 在“解决方案资源管理器”中，右键单击项目节点，然后选择“添加” > “新建项”。 选择 **Azure Function**，然后单击“添加”。
 
-选择 **HttpTrigger**，键入“函数名称”，针对“访问权限”选择“匿名”，然后单击“创建”。 创建的函数可以通过 HTTP 请求从任何客户端访问。 
+2. 选择 **HttpTrigger**，键入“函数名称”，针对“访问权限”选择“匿名”，然后单击“创建”。 创建的函数可以通过 HTTP 请求从任何客户端访问。 
 
-![创建新的 Azure Function](./media/functions-create-your-first-function-visual-studio/functions-vstools-add-new-function-2.png)
+    ![创建新的 Azure Function](./media/functions-create-your-first-function-visual-studio/functions-vstools-add-new-function-2.png)
 
 创建 HTTP 触发的函数以后，即可在本地计算机上对其进行测试。
 
 ## <a name="test-the-function-locally"></a>在本地测试函数
 
-[!INCLUDE [Test the function locally](../../includes/functions-vstools-test.md)]
+Azure Functions Core Tools 允许在本地开发计算机上运行 Azure Functions 项目。 首次从 Visual Studio 启动某个函数时，系统会提示你安装这些工具。  
 
-从 Azure Functions 运行时输出复制函数的 URL。  
+1. 若要测试函数，请按 F5。 如果系统提示，请按 Visual Studio 的请求下载和安装 Azure Functions Core (CLI) 工具。  可能还需启用一个防火墙例外，以便这些工具能够处理 HTTP 请求。
 
-![Azure 本地运行时](./media/functions-create-your-first-function-visual-studio/functions-vstools-f5.png)
+2. 从 Azure Functions 运行时输出复制函数的 URL。  
 
- 将 HTTP 请求的 URL 粘贴到浏览器的地址栏中。 将查询字符串 `&name=<yourname>` 追加到此 URL 并执行请求。 下面演示浏览器中函数返回的对本地 GET 请求的响应： 
+    ![Azure 本地运行时](./media/functions-create-your-first-function-visual-studio/functions-vstools-f5.png)
 
-![浏览器中的函数 localhost 响应](./media/functions-create-your-first-function-visual-studio/functions-test-local-browser.png)
+3. 将 HTTP 请求的 URL 粘贴到浏览器的地址栏中。 将查询字符串 `&name=<yourname>` 追加到此 URL 并执行请求。 下面演示浏览器中函数返回的对本地 GET 请求的响应： 
 
-若要停止调试，请单击 Visual Studio 工具栏中的“停止”按钮。
+    ![浏览器中的函数 localhost 响应](./media/functions-create-your-first-function-visual-studio/functions-test-local-browser.png)
+
+4. 若要停止调试，请单击 Visual Studio 工具栏中的“停止”按钮。
 
 验证该函数可以在本地计算机上正确运行以后，即可将项目发布到 Azure。
 
@@ -90,22 +92,22 @@ Azure Functions 可让你在无服务器环境中执行代码，而无需先创�
 
 ## <a name="test-your-function-in-azure"></a>在 Azure 中测试函数
 
-从“发布”配置文件页复制函数应用的基 URL。 将 URL 的 `localhost:port` 部分（在本地测试函数时使用）替换为新的基 URL。 与前面一样，请确保将查询字符串 `&name=<yourname>` 追加到此 URL 并执行请求。
+1. 从“发布”配置文件页复制函数应用的基 URL。 将 URL 的 `localhost:port` 部分（在本地测试函数时使用）替换为新的基 URL。 与前面一样，请确保将查询字符串 `&name=<yourname>` 追加到此 URL 并执行请求。
 
-调用 HTTP 触发的函数的 URL 如下所示：
+    调用 HTTP 触发的函数的 URL 如下所示：
 
-    http://<functionappname>.azurewebsites.net/api/<functionname>?name=<yourname> 
+        http://<functionappname>.azurewebsites.net/api/<functionname>?name=<yourname> 
 
-将 HTTP 请求的这个新 URL 粘贴到浏览器的地址栏中。 下面演示浏览器中函数返回的对远程 GET 请求的响应： 
+2. 将 HTTP 请求的这个新 URL 粘贴到浏览器的地址栏中。 下面演示浏览器中函数返回的对远程 GET 请求的响应： 
 
-![浏览器中的函数响应](./media/functions-create-your-first-function-visual-studio/functions-test-remote-browser.png)
+    ![浏览器中的函数响应](./media/functions-create-your-first-function-visual-studio/functions-test-remote-browser.png)
  
 ## <a name="next-steps"></a>后续步骤
 
 你已使用简单的 HTTP 触发函数通过 Visual Studio 创建 C# 函数应用。 
 
-[!INCLUDE [functions-quickstart-next-steps](../../includes/functions-quickstart-next-steps.md)]
-
-若要详细了解如何使用 Azure Functions Core Tools 进行本地测试和调试，请参阅[在本地进行 Azure Functions 的编码和测试](functions-run-local.md)。 若要详细了解如何将函数作为 .NET 类库进行开发，请参阅[搭配使用 Azure Functions 和 .Net 类库](functions-dotnet-class-library.md)。 
++ 若要了解如何配置项目，使之支持其他类型的触发器和绑定，请参阅 [Azure Functions Tools for Visual Studio](functions-develop-vs.md) 中的[配置进行本地开发的项目](functions-develop-vs.md#configure-the-project-for-local-development)部分。
++ 若要详细了解如何使用 Azure Functions Core Tools 进行本地测试和调试，请参阅[在本地进行 Azure Functions 的编码和测试](functions-run-local.md)。 
++ 若要详细了解如何将函数作为 .NET 类库进行开发，请参阅[搭配使用 Azure Functions 和 .Net 类库](functions-dotnet-class-library.md)。 
 
 

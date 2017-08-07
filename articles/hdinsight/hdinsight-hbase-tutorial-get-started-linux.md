@@ -1,6 +1,6 @@
 ---
 title: "HDInsight 上的 HBase 入门示例 - Azure | Microsoft Docs"
-description: "按照此 Apache HBase 示例，开始在 HDInsight 上使用 Hadoop。 从 HBase shell 创建表，然后使用 Hive 查询这些表。"
+description: "按照此 Apache HBase 示例，开始在 HDInsight 上使用 Hadoop。 从 HBase shell 创建表，并使用 Hive 查询这些表。"
 keywords: "hbasecommand，hbase 示例"
 services: hdinsight
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: 1c2437c6eed641a929a7e25265bfc72dc76a9782
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: bbd8a838062795ee03ae02dc5e3fd45d841a6e17
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>HDInsight 中的 Apache HBase 入门示例
@@ -54,15 +54,15 @@ ms.lasthandoff: 07/18/2017
      其他参数是可选的。  
      
      每个群集都有一个 Azure 存储帐户依赖项。 删除群集后，数据将保留在存储帐户中。 群集的默认存储帐户名为群集名称后接“store”。 该名称已在模板 variables 节中硬编码。
-3. 选择“我同意上述条款和条件”，然后单击“购买”。 创建群集大约需要 20 分钟时间。
+3. 选择“我同意上述条款和条件”，并单击“购买”。 创建群集大约需要 20 分钟时间。
 
 > [!NOTE]
-> 在删除 HBase 群集后，你可以通过使用相同的默认 Blob 容器创建另一个 HBase 群集。 新群集将选取你在原始群集中创建的 HBase 表。 为了避免不一致，建议你在删除群集之前先禁用 HBase 表。
+> 在删除 HBase 群集后，可以通过使用相同的默认 Blob 容器创建另一个 HBase 群集。 新群集将选取已在原始群集中创建的 HBase 表。 为了避免不一致，建议在删除群集之前先禁用 HBase 表。
 > 
 > 
 
 ## <a name="create-tables-and-insert-data"></a>创建表和插入数据
-可以使用 SSH 连接到 HBase 群集，然后使用 HBase Shell 来创建 HBase 表以及插入和查询数据。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
+可以使用 SSH 连接到 HBase 群集，并使用 HBase Shell 来创建 HBase 表以及插入和查询数据。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
 对于大多数人而言，数据以表格形式显示：
 
@@ -104,7 +104,7 @@ ms.lasthandoff: 07/18/2017
     get 'Contacts', '1000'
     ```
    
-    将会看到与使用扫描命令相同的结果，因为只有一个行。
+    会看到与使用扫描命令相同的结果，因为只有一个行。
    
     有关 HBase 表架构的详细信息，请参阅 [HBase 架构设计简介][hbase-schema]。 有关 HBase 命令的详细信息，请参阅 [Apache HBase 参考指南][hbase-quick-start]。
 5. 退出 shell
@@ -117,7 +117,7 @@ ms.lasthandoff: 07/18/2017
 
 HBase 提供了多种方法用于将数据载入表中。  有关详细信息，请参阅 [批量加载](http://hbase.apache.org/book.html#arch.bulk.load)。
 
-可在公共 Azure Blob 容器 *wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt* 中找到示例数据文件。  该数据文件的内容为：
+可在公共 Azure Blob 容器 *wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt* 中找到示例数据文件。  该数据文件的内容为：
 
     8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.
     16600   Karen Wu         646-555-0113    230-555-0192    9265 La Paz
@@ -133,13 +133,13 @@ HBase 提供了多种方法用于将数据载入表中。  有关详细信息，
 可以选择创建一个文本文件并将该文件上传到自己的存储帐户。 有关说明，请参阅[在 HDInsight 中为 Hadoop 作业上载数据][hdinsight-upload-data]。
 
 > [!NOTE]
-> 此过程使用你在上一个过程中创建的“联系人”HBase 表。
+> 此过程使用在上一个过程中创建的“联系人”HBase 表。
 > 
 
-1. 从 SSH 运行以下命令，将数据文件转换成 StoreFiles 并将其存储在 Dimporttsv.bulk.output 指定的相对路径。  如果你在 HBase Shell 中操作，请使用退出命令退出。
+1. 从 SSH 运行以下命令，将数据文件转换成 StoreFiles 并将其存储在 Dimporttsv.bulk.output 指定的相对路径。  如果在 HBase Shell 中操作，请使用退出命令退出。
 
     ```bash   
-    hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name,Personal:Phone,Office:Phone,Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
+    hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name,Personal:Phone,Office:Phone,Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
     ```
 
 2. 运行以下命令，将数据从 /example/data/storeDataFileOutput 上传到 HBase 表：
@@ -148,11 +148,11 @@ HBase 提供了多种方法用于将数据载入表中。  有关详细信息，
     hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /example/data/storeDataFileOutput Contacts
     ```
 
-3. 你可以打开 HBase Shell，并使用扫描命令来列出表内容。
+3. 可以打开 HBase Shell，并使用扫描命令来列出表内容。
 
 ## <a name="use-hive-to-query-hbase"></a>使用 Hive 查询 HBase
 
-你可以使用 Hive 查询 HBase 表中的数据。 本部分将创建要映射到 HBase 表的 Hive 表，并使用该表来查询 HBase 表中的数据。
+可以使用 Hive 查询 HBase 表中的数据。 本部分将创建要映射到 HBase 表的 Hive 表，并使用该表来查询 HBase 表中的数据。
 
 1. 打开 **PuTTY**并连接到群集。  参阅前一过程中的说明。
 2. 在 SSH 会话中，使用以下命令启动 Beeline：
@@ -163,7 +163,7 @@ HBase 提供了多种方法用于将数据载入表中。  有关详细信息，
 
     有关 Beeline 的详细信息，请参阅[通过 Beeline 将 Hive 与 HDInsight 中的 Hadoop 配合使用](hdinsight-hadoop-use-hive-beeline.md)。
        
-3. 运行以下 HiveQL 脚本，创建映射到 HBase 表的 Hive 表。 确保你已创建本教程中前面引用的示例表，方法是在运行此语句前使用 HBase shell。
+3. 运行以下 HiveQL 脚本，创建映射到 HBase 表的 Hive 表。 确保已创建本教程中前面引用的示例表，方法是在运行此语句前使用 HBase shell。
 
     ```hiveql   
     CREATE EXTERNAL TABLE hbasecontacts(rowkey STRING, name STRING, homephone STRING, officephone STRING, officeaddress STRING)
@@ -200,7 +200,7 @@ REST API 通过 [基本身份验证](http://en.wikipedia.org/wiki/Basic_access_a
     -v
     ```
 
-    架构将以 JSON 格式提供。
+    架构以 JSON 格式提供。
 4. 使用以下命令插入一些数据：
 
     ```bash   
@@ -252,7 +252,7 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
 
 1. 通过 https://&lt;群集名称>.azurehdinsight.net 登录到 Ambari Web UI。
 2. 在左侧菜单中，单击“HBase”。
-3. 在页面顶部单击“快速链接”，指向活动 Zookeeper 节点链接，然后单击“HBase Master UI”。  该 UI 将在另一个浏览器标签页中打开：
+3. 在页面顶部单击“快速链接”，指向活动 Zookeeper 节点链接，并单击“HBase Master UI”。  该 UI 会在另一个浏览器标签页中打开：
 
   ![HDInsight HBase HMaster UI](./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
@@ -265,7 +265,7 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
   - 软件属性
 
 ## <a name="delete-the-cluster"></a>删除群集
-为了避免不一致，建议你在删除群集之前先禁用 HBase 表。
+为了避免不一致，建议在删除群集之前先禁用 HBase 表。
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 

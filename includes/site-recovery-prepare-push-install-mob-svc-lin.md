@@ -12,6 +12,7 @@
   4.  找到以 **Subsystem** 开头的行，并取消注释该行。
 
      ![Linux](./media/site-recovery-prepare-push-install-mob-svc-lin/mobility2.png)
+  5. 重启 sshd 服务。
 
 7. 添加在 CSPSConfigtool 中创建的帐户。
     1.  登录到配置服务器。

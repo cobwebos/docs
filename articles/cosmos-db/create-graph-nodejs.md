@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 07/14/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: 153b4cc668fdebd28cec5f3d95093a595064202a
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 6d14719938af0ce825955389824441e111024869
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/17/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB：使用图形 API 生成 Node.js 应用程序
@@ -50,7 +50,7 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-现在从 GitHub 克隆图形 API 应用，设置连接字符串，并运行应用。 你将看到以编程方式处理数据是多么容易。 
+现在从 GitHub 克隆图形 API 应用，设置连接字符串，并运行应用。 会看到以编程方式处理数据是多么容易。 
 
 1. 打开 Git 终端窗口（例如 Git Bash）并更改（通过 `cd` 命令）为工作目录。  
 
@@ -141,9 +141,11 @@ module.exports = config;
 
 现在可以返回到 Azure 门户中的数据资源管理器，查看、查询、修改以及使用新的图形数据。
 
-在数据资源管理器中，新数据库将显示在“集合”窗格中。 依次展开 **graphdb**、**graphcoll**，然后单击“图形”。
+在数据资源管理器中，新数据库会显示在“图形”窗格中。 展开数据库（后跟集合），然后单击“图形”。
 
-示例应用生成的数据将显示在“图形”窗格中。
+单击“应用筛选器”时，由示例应用生成的数据会显示在“图形”选项卡的下一窗格中。
+
+尝试使用 `.has('firstName', 'Thomas')` 来完成 `g.V()`，对筛选器进行测试。 请注意，值区分大小写。
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 

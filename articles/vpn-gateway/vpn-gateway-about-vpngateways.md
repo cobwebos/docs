@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/05/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 6ab2b4c905d2095e8eec09ccebcb8ebdfa91bb3a
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 0f26a9b62a376daf2b1314ff5972293a2bc7f379
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="about-vpn-gateway"></a>关于 VPN 网关
@@ -44,11 +44,11 @@ VPN 网关连接依赖于使用特定设置配置的多个资源。 大多数资
 
 ### <a name="settings"></a>设置
 
-为每个资源选择的设置对于成功创建连接至关重要。 有关 VPN 网关的各个资源和设置的信息，请参阅 [关于 VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md)。 可在借助该文章中的信息来了解网关类型、VPN 类型、连接类型、网关子网、本地网络网关，以及可能需要考虑的其他各项资源设置。
+为每个资源选择的设置对于成功创建连接至关重要。 有关 VPN 网关的各个资源和设置的信息，请参阅 [关于 VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md)。 本文包含的信息有助于了解网关类型、VPN 类型、连接类型、网关子网、本地网络网关，以及可能需要考虑的其他各项资源设置。
 
 ### <a name="deployment-tools"></a>部署工具
 
-开始时可以使用一个配置工具（如 Azure 门户）创建和配置资源。 然后，可以切换到另一个工具（如 PowerShell）来配置其他资源或修改现有资源（如果适用）。 目前，无法在 Azure 门户中配置每个资源和资源设置。 每个连接拓扑的文章中的说明指定了何时需要特定配置工具。 
+开始时可以使用一个配置工具（如 Azure 门户）创建和配置资源。 可在以后切换到另一个工具（如 PowerShell）来配置其他资源或修改现有资源（如果适用）。 目前，无法在 Azure 门户中配置每个资源和资源设置。 每个连接拓扑的文章中的说明指定了何时需要特定配置工具。 
 
 ### <a name="deployment-model"></a>部署模型
 
@@ -68,7 +68,7 @@ VPN 网关连接依赖于使用特定设置配置的多个资源。 大多数资
 
 ### <a name="S2S"></a>站点到站点
 
-站点到站点 (S2S) VPN 网关连接是通过 IPsec/IKE（IKEv1 或 IKEv2）VPN 隧道建立的连接。 此类型的连接要求位于本地的 VPN 设备分配有一个公共 IP 地址，并且不位于 NAT 后面。 S2S 连接可以用于跨界和混合配置。   
+站点到站点 (S2S) VPN 网关连接是通过 IPsec/IKE（IKEv1 或 IKEv2）VPN 隧道建立的连接。 S2S 连接要求位于本地的 VPN 设备分配有一个公共 IP 地址，并且不位于 NAT 后面。 S2S 连接可以用于跨界和混合配置。   
 
 ![Azure VPN 网关站点到站点连接示例](./media/vpn-gateway-about-vpngateways/vpngateway-site-to-site-connection-diagram.png)
 

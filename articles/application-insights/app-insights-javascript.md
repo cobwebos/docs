@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: a06ba41193f00f4aa2c7af4e5430ed15f9bb877c
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 1ae47899443d5552178078a417b7d1ebe91966d2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/13/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
@@ -26,7 +25,7 @@ ms.lasthandoff: 04/13/2017
 
 可以在任何网页中使用 Application Insights - 刚刚添加了 JavaScript 的简短片段。 如果 Web 服务是 [Java](app-insights-java-get-started.md) 或 [ASP.NET](app-insights-asp-net.md)，可以集成来自服务器和客户端的遥测。
 
-![在 portal.azure.com 中，打开应用的资源，然后单击“浏览器”](./media/app-insights-javascript/03.png)
+![在 portal.azure.com 中，打开应用的资源，并单击“浏览器”](./media/app-insights-javascript/03.png)
 
 首先需要订阅 [Microsoft Azure](https://azure.com)。 如果团队拥有组织订阅，请咨询所有者将 Microsoft 帐户添加到其中。 开发和小规模的使用不会产生任何费用。
 
@@ -100,14 +99,14 @@ Application Insights 资源是显示有关页面性能和使用情况的数据�
 
 
 ## <a name="run"></a>运行应用
-运行 Web 应用，使用它生成遥测数据，然后等待几秒钟。 可以在开发计算机上使用 **F5** 键运行应用，或者发布应用供用户操作。
+运行 Web 应用，使用它生成遥测数据，并等待几秒钟。 可以在开发计算机上使用 **F5** 键运行应用，或者发布应用供用户操作。
 
 如果想要检查 Web 应用发送到 Application Insights 的遥测数据，请使用浏览器的调试工具（许多浏览器支持的**F12** 键）。 数据将发送到 dc.services.visualStudio.com。
 
 ## <a name="explore-your-browser-performance-data"></a>查看浏览器性能数据
 打开“浏览器”边栏选项卡，显示来自用户浏览器的聚合性能数据。
 
-![在 portal.azure.com 中，打开应用的资源，然后单击“设置”、“浏览器”](./media/app-insights-javascript/03.png)
+![在 portal.azure.com 中，打开应用的资源，并单击“设置”、“浏览器”](./media/app-insights-javascript/03.png)
 
 *还没有数据？单击页面顶部的“刷新”。仍然没有数据？请参阅[故障排除](app-insights-troubleshoot-faq.md)。*
 
@@ -131,7 +130,7 @@ Application Insights 资源是显示有关页面性能和使用情况的数据�
 
 请注意页面视图计数和标准偏差。 如果页面计数很小，则问题对用户的影响不大。 如果标准偏差（相对于平均值本身）较大，则表示单个测量之间存在很大的差异。
 
-**放大一个 URL 和一个页面视图。** 单击任一页面名称可以查看针对该 URL 筛选的浏览器图表的边栏选项卡，然后是网页视图的实例。
+**放大一个 URL 和一个页面视图。** 单击任意页面名称即可查看包含浏览器图表（已根据该 URL 筛选）的边栏选项卡；然后会看到页面视图的实例。
 
 ![](./media/app-insights-javascript/35.png)
 
@@ -139,7 +138,7 @@ Application Insights 资源是显示有关页面性能和使用情况的数据�
 
 **一段时间内的页面性能。** 返回“浏览器”边栏选项卡，将“页面视图加载时间”网格更改为折线图，查看在特定时间是否出现高峰：
 
-![单击网格标题，然后选择新图表类型](./media/app-insights-javascript/10-page-perf-area.png)
+![单击网格标题，并选择新图表类型](./media/app-insights-javascript/10-page-perf-area.png)
 
 **按其他维度分段。** 也许页面在特定浏览器、客户端 OS 或用户位置的加载速度较缓慢？ 添加具有 **分组依据** 维度的图表和试验。
 
@@ -165,7 +164,7 @@ Application Insights 资源是显示有关页面性能和使用情况的数据�
 > 
 > 
 
-**若要深入到失败的 Ajax 调用** ，请向下滚动到“依赖项失败”网格，然后单击某行查看特定的实例。
+**要深入到失败的 Ajax 调用** ，请向下滚动到“依赖项失败”网格，并单击某行查看特定的实例。
 
 ![](./media/app-insights-javascript/37.png)
 
@@ -197,7 +196,7 @@ Ajax 调用包含从网页脚本发出的任何 HTTP/HTTPS 调用。 如果没�
 > 
 > 
 
-也可以使用功能强大的 [分析查询语言](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour#browser-timings-table) 来搜索页面视图。
+也可以使用功能强大的 [Log Analytics 查询语言](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour#browser-timings-table)来搜索页面视图。
 
 ### <a name="page-view-properties"></a>页面视图属性
 * **页面视图持续时间** 
@@ -207,13 +206,13 @@ Ajax 调用包含从网页脚本发出的任何 HTTP/HTTPS 调用。 如果没�
   * 如果设置了 `overridePageViewDuration` 并且在 `trackPageView()` 调用中提供了持续时间参数，则改用该参数值。 
 
 ## <a name="custom-page-counts"></a>自定义页面计数
-默认情况下，每当在客户端浏览器中加载新页面时，将会发生页面计数。  但是，可能想要统计其他页面视图。 例如，由于页面可能将内容显示在选项卡中，因此需要在用户切换选项卡时统计页面。 或者，页面中的 JavaScript 代码可能在未更改浏览器 URL 的情况下加载新内容。
+默认情况下，每当在客户端浏览器中加载新页面时，会发生页面计数。  但是，可能想要统计其他页面视图。 例如，由于页面可能将内容显示在选项卡中，因此需要在用户切换选项卡时统计页面。 或者，页面中的 JavaScript 代码可能在未更改浏览器 URL 的情况下加载新内容。
 
 请将类似于下面的 JavaScript 调用插入客户端代码中的适当位置：
 
     appInsights.trackPageView(myPageName);
 
-页面名称可以包含与 URL 相同的字符，不过“#”或“?”后面的任何内容都将被忽略。
+页面名称可以包含与 URL 相同的字符，不过“#”或“?”后面的任何内容都会被忽略。
 
 ## <a name="usage-tracking"></a>使用情况跟踪
 想要了解用户如何使用应用？

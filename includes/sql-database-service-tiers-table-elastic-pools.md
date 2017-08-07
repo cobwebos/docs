@@ -101,5 +101,5 @@ sql-database-service-tiers.md
 >
 >\*\* 每个数据库的最小/最大 eDTU 数至少为 200 eDTU 的为公共预览版。
 >
->\*\*\* 对于 eDTU 至少为 500 的高级池来说，每个池的默认最大数据存储为 750 GB。 若要提高每个高级池的最大数据存储大小（对应于至少 1000 的 eDTU），必须使用 Azure 门户、[PowerShell](../articles/sql-database/sql-database-elastic-pool.md#manage-sql-database-elastic-pools-using-powershell)、[Azure CLI](../articles/sql-database/sql-database-elastic-pool.md#manage-sql-database-elastic-pools-using-the-azure-cli) 或 [REST API](../articles/sql-database/sql-database-elastic-pool.md#manage-sql-database-elastic-pools-using-the-rest-api) 显式选择该大小。 存储超过 1000 TB 的高级池目前在以下区域中处于公共预览状态：美国东部 2、美国西部、美国弗吉尼亚州政府、西欧、德国中部、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。 对于所有其他区域，每个池的最大存储上限目前为 750 GB。
+>\*\*\* 对于 eDTU 至少为 500 的高级池来说，每个池的默认最大数据存储为 750 GB。 若要提高每个高级池的最大数据存储大小（对应于至少 1000 的 eDTU），必须使用 Azure 门户、[PowerShell](../articles/sql-database/sql-database-elastic-pool.md#manage-sql-database-elastic-pools-using-powershell)、[Azure CLI](../articles/sql-database/sql-database-elastic-pool.md#manage-sql-database-elastic-pools-using-the-azure-cli) 或 [REST API](../articles/sql-database/sql-database-elastic-pool.md#manage-sql-database-elastic-pools-using-the-rest-api) 显式选择该大小。 存储超过 1 TB 的高级池目前在以下区域中处于公共预览状态：美国东部 2、美国西部、美国弗吉尼亚州政府、西欧、德国中部、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。 对于所有其他区域，每个池的最大存储上限目前为 750 GB。
 >

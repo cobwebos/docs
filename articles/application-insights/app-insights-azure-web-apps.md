@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/05/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: da09e09bb0605da583716e125f5d961bfb7af0c7
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: b25f3dd41c8dc381258bb42d8802ba4b56e05903
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="monitor-azure-web-app-performance"></a>监视 Azure Web 应用性能
@@ -31,7 +30,7 @@ ms.lasthandoff: 05/10/2017
 * **生成时** - 在开发期间，可以在应用中安装一个包。 此选项更灵活。 除了安装相同的标准包以外，还可以编写代码来自定义遥测，或发送自己的遥测数据。 可以根据应用域的语义记录特定的活动或记录事件。 
 
 ## <a name="run-time-instrumentation-with-application-insights"></a>Application Insights 的运行时检测
-如果已在 Azure 中运行了 Web 应用，则已获得了一些监视信息：请求和错误率。 添加 Application Insights 可获得更多功能，例如响应时间监视、监视对依赖项的调用，智能检测和功能强大的分析查询语言。 
+如果已在 Azure 中运行了 Web 应用，则已获得了一些监视信息：请求和错误率。 添加 Application Insights 可获得更多功能，例如响应时间监视、监视对依赖项的调用，智能检测和功能强大的 Log Analytics 查询语言。 
 
 1. 在 Web 应用的 Azure 控制面板中，**选择“Application Insights”**。
    
@@ -57,16 +56,16 @@ ms.lasthandoff: 05/10/2017
 
 *如何删除 Application Insights 或改为发送到另一个资源？*
 
-* 在 Azure 中，打开 Web 应用程序控制边栏选项卡，然后在“开发工具”下面打开“扩展”。 删除 Application Insights 扩展。 在“监视”下面选择“Application Insights”，然后创建或选择所需的资源。
+* 在 Azure 中，打开 Web 应用程序控制边栏选项卡，并在“开发工具”下面打开“扩展”。 删除 Application Insights 扩展。 在“监视”下面选择“Application Insights”，并创建或选择所需的资源。
 
 ## <a name="build-the-app-with-application-insights"></a>使用 Application Insights 生成应用
 Application Insights 可以通过将 SDK 安装到应用中来提供更详细的遥测。 具体而言，可以收集跟踪日志，[编写自定义遥测](app-insights-api-custom-events-metrics.md)，以及获取更详细的异常报告。
 
 1. **在 Visual Studio 中**（2013 Update 2 或更高版本），为项目配置 Application Insights。
 
-    右键单击 Web 项目，然后选择“添加”>“Application Insights”或“配置 Application Insights”。
+    右键单击 Web 项目，并选择“添加”>“Application Insights”或“配置 Application Insights”。
    
-    ![右键单击 Web 项目，然后选择“添加或配置 Application Insights”](./media/app-insights-azure-web-apps/03-add.png)
+    ![右键单击 Web 项目，并选择“添加或配置 Application Insights”](./media/app-insights-azure-web-apps/03-add.png)
    
     如果系统提示登录，请使用 Azure 帐户的凭据。
    
@@ -79,7 +78,7 @@ Application Insights 可以通过将 SDK 安装到应用中来提供更详细的
 
 *如何改为向不同的 Application Insights 资源发送数据？*
 
-* 在 Visual Studio 中右键单击项目，选择“配置 Application Insights”，然后选择所需的资源。 可以使用相应的选项来创建新资源。 重新生成并重新部署。
+* 在 Visual Studio 中右键单击项目，选择“配置 Application Insights”，并选择所需的资源。 可以使用相应的选项来创建新资源。 重新生成并重新部署。
 
 ## <a name="explore-the-data"></a>浏览数据
 1. 在 Web 应用控制面板上的“Application Insights”边栏选项卡中，可以看到“实时指标”，其中显示一两秒内发生的请求和失败。 重新发布应用时，该边栏选项卡非常有用 - 可以立即发现所有问题。
@@ -102,7 +101,7 @@ Application Insights 可以通过将 SDK 安装到应用中来提供更详细的
    
     可以[自定义搜索](app-insights-diagnostic-search.md)。
 
-若要针对遥测数据执行更强大的搜索，请使用[分析查询语言](app-insights-analytics-tour.md)。
+若要针对遥测数据执行更强大的搜索，请使用 [Log Analytics 查询语言](app-insights-analytics-tour.md)。
 
 ## <a name="more-telemetry"></a>其他遥测数据
 

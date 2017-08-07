@@ -1,8 +1,9 @@
 > [!NOTE]
-> 从旧的 SKU 迁移到新的 SKU 时，VPN 网关公共 IP 地址会更改。
+> * 从旧的 SKU 迁移到新的 SKU 时，VPN 网关公共 IP 地址会更改。
+> * 不能将经典 VPN 网关迁移到新的 SKU。 经典 VPN 网关只能使用旧版（老版）SKU。
 > 
 
-不能直接在旧的 SKU 和新的 SKU 系列之间调整 Azure VPN 网关大小。 如果你在 Resource Manager 部署模型中的 VPN 网关使用旧版 SKU，则可迁移到新的 SKU。 若要进行迁移，请删除虚拟网络的现有 VPN 网关，然后创建一个新的。
+不能在旧的 SKU 和新的 SKU 系列之间重设 Azure VPN 网关大小。 如果你在 Resource Manager 部署模型中的 VPN 网关使用旧版 SKU，则可迁移到新的 SKU。 若要进行迁移，请删除虚拟网络的现有 VPN 网关，然后创建一个新的。
 
 迁移工作流：
 

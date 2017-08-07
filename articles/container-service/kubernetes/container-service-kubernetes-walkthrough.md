@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 08/01/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 51c70dcacfba82255532f3222ecb391a43eccbb4
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: a278f76fc0ac2aa42633ed0ce2ad4fbc4e7290da
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 
 # <a name="deploy-kubernetes-cluster-for-linux-containers"></a>为 Linux 容器部署 Kubernetes 群集
 
-在本快速入门中，将使用 Azure CLI 部署 Kubernetes 群集。 然后，在群集上运行包含 Web 前端和 Redis 实例的多容器应用程序。 完成后，即可通过 Internet 访问应用程序。
+在本快速入门中，将使用 Azure CLI 部署 Kubernetes 群集。 然后，在群集上部署和运行包含 Web 前端和 Redis 实例的多容器应用程序。 完成后，即可通过 Internet 访问应用程序。
 
 ![浏览到 Azure Vote 的图像](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
@@ -80,7 +80,7 @@ az acs create --orchestrator-type=kubernetes --resource-group myResourceGroup --
 
 如果使用的是 Azure CloudShell，则 kubectl 已安装。 如果想在本地安装，可以使用 [az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli) 命令。
 
-若要配置 kubectl 以连接到 Kubernetes 群集，请运行 [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) 命令。
+若要配置 kubectl 以连接到 Kubernetes 群集，请运行 [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) 命令。 此步骤下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。
 
 ```azurecli-interactive 
 az acs kubernetes get-credentials --resource-group=myResourceGroup --name=myK8sCluster
@@ -216,7 +216,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 本快速入门使用了预先创建的容器映像来创建 Kubernetes 部署。 GitHub 上提供了相关的应用程序代码、Dockerfile 和 Kubernetes 清单文件。
 
-[Azure Vote 应用程序与 Redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
+[https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
 ## <a name="next-steps"></a>后续步骤
 

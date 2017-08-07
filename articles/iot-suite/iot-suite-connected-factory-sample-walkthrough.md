@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 07/27/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 3011fd608ba83561c319e57c8a7b5a4f3c4c2284
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 81ecd5771be544e250ea0df31aa274f0850527ad
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>已连接好的工厂预配置解决方案演练
@@ -30,8 +29,8 @@ IoT 套件已连接好的工厂[预配置解决方案][lnk-preconfigured-solutio
 * 同时连接到在模拟工厂生产线中运行 OPC UA 服务器的模拟工业设备以及真实的 OPC UA 服务器设备。 有关 OPC UA 的详细信息，请参阅[常见问题解答][lnk-faq]。
 * 显示那些设备和生产线的运行 KPI 和 OEE。
 * 演示如何使用基于云的应用程序来与 OPC UA 服务器系统进行交互。
-* 允许你连接自己的 OPC UA 服务器设备。
-* 允许你浏览和修改 OPC UA 服务器数据。
+* 允许连接自己的 OPC UA 服务器设备。
+* 允许浏览和修改 OPC UA 服务器数据。
 * 与 Azure Time Series Insights (TSI) 服务集成来提供 OPC UA 服务器中数据的自定义视图。
 
 可以将其用作自己实现的起点，并可以根据特定的业务要求[自定义][lnk-customize]该解决方案。
@@ -40,13 +39,20 @@ IoT 套件已连接好的工厂[预配置解决方案][lnk-preconfigured-solutio
 
 * 排查解决方案中的问题。
 * 规划如何根据具体要求自定义该解决方案。
-* 设计你自己的 IoT 解决方案，以使用 Azure 服务。
+* 设计自己的 IoT 解决方案，以使用 Azure 服务。
 
 ## <a name="logical-architecture"></a>逻辑体系结构
 
 下图概述该预配置解决方案的逻辑组件：
 
 ![已连接好的工厂逻辑体系结构][connected-factory-logical]
+
+## <a name="communication-patterns"></a>通信模式
+
+此解决方案按照 [OPC UA Pub/Sub 规范](https://opcfoundation.org/news/opc-foundation-news/opc-foundation-announces-support-of-publish-subscribe-for-opc-ua/)将 OPC UA 遥测数据以 JSON 格式发送到 IoT 中心。 此解决方案将 [OPC 发布服务器](https://github.com/Azure/iot-edge-opc-publisher) IoT Edge 模块用于此目的。
+
+此解决方案还将 OPC UA 客户端集成到 Web 应用程序中，后者可以与本地 OPC UA 服务器建立连接。 该客户端使用[反向代理](https://wikipedia.org/wiki/Reverse_proxy)并从 IoT 中心获取帮助，不需本地防火墙上的开放端口即可进行连接。 此通信模式称为[服务辅助通信](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/)。 此解决方案将 [OPC 代理](https://github.com/Azure/iot-edge-opc-proxy/) IoT Edge 模块用于此目的。
+
 
 ## <a name="simulation"></a>模拟
 
@@ -68,7 +74,7 @@ MES 通过 OPC UA 监视生产线中的每个工作站来检测工作站状态�
 
 ## <a name="gateway-opc-publisher-module"></a>网关 OPC 发布服务器模块
 
-OPC 发布服务器模块连接到工作站 OPC UA 服务器并订阅要发布的 OPC 节点。 该模块将节点数据转换为 JSON 格式，对其进行加密，然后将其作为 OPC UA 发布/订阅消息发送到 IoT 中心。
+OPC 发布服务器模块连接到工作站 OPC UA 服务器并订阅要发布的 OPC 节点。 该模块将节点数据转换为 JSON 格式，对其进行加密，并将其作为 OPC UA 发布/订阅消息发送到 IoT 中心。
 
 OPC 发布服务器模块仅需要出站 https 端口 (443) 并且可以与现有企业基础结构一起工作。
 
@@ -96,7 +102,7 @@ IoT 中心为 Azure TSI 提供了事件来源。 TSI 根据附加到消息的时
 
 TSI 使用一个搜索跨度（Time.From、Time.To）对节点数据进行查询并按 OPC UA ApplicationUri、OPC UA NodeId 或 OPC UA DisplayName 进行聚合。
 
-若要为 OEE 和 KPI 仪表以及时序图表检索数据，数据将按事件数、总和、平均值、最小值和最大值进行聚合。
+要为 OEE 和 KPI 仪表以及时序图表检索数据，数据将按事件数、总和、平均值、最小值和最大值进行聚合。
 
 时序是使用不同的流程构建的。 OEE 和 KPI 是基于工作站基础数据计算得到的，并且针对应用程序中的拓扑（生产线、工厂和企业）向上传输。
 
@@ -119,7 +125,7 @@ TSI 使用一个搜索跨度（Time.From、Time.To）对节点数据进行查询
 
 ## <a name="next-steps"></a>后续步骤
 
-你可以通过阅读以下文章继续开始使用 IoT 套件：
+可以通过阅读以下文章继续开始使用 IoT 套件：
 
 * [azureiotsuite.com 站点权限][lnk-permissions]
 

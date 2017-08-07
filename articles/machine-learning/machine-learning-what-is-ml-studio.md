@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/20/2017
 ms.author: garye
-translationtype: Human Translation
-ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
-ms.openlocfilehash: b8115f1fb72b0ba89fd0c8afa3358878a0fab92b
-ms.lasthandoff: 12/14/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 70a1d0acb8ec9bbb591f696281ea5e975b443a15
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什么是 Azure 机器学习工作室？
@@ -30,9 +30,9 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## <a name="the-machine-learning-studio-interactive-workspace"></a>机器学习工作室交互式工作区
-若要开发预测分析模型，通常需要使用一个或多个源中的数据，通过各种数据操作和统计函数来转换及分析数据，然后生成一组结果。 开发此类模型是一个迭代过程。 在修改各种函数及其参数时，结果会不断收敛，直到已训练的有效模型令人满意。
+要开发预测分析模型，通常需要使用一个或多个源中的数据，通过各种数据操作和统计函数来转换及分析数据，并生成一组结果。 开发此类模型是一个迭代过程。 在修改各种函数及其参数时，结果会不断收敛，直到已训练的有效模型令人满意。
 
-**Azure 机器学习工作室** 提供交互式的可视工作区，可在其中轻松构建、测试和迭代预测分析模型。 可以将***数据集***和分析***模块***拖放到交互式画布，将它们连接在一起构成***试验***，然后在机器学习工作室中运行。 若要迭代模型设计，可以编辑试验，根据需要保存副本，然后重新运行试验。 准备就绪后，可以将***训练实验***转换为***预测试验***，然后将其发布为 ***Web 服务***，使其他人可以访问模型。
+**Azure 机器学习工作室** 提供交互式的可视工作区，可在其中轻松构建、测试和迭代预测分析模型。 可以将***数据集***和分析***模块***拖放到交互式画布，将它们连接在一起构成***试验***，并在机器学习工作室中运行。 要迭代模型设计，可以编辑试验，根据需要保存副本，并重新运行试验。 准备就绪后，可以将***训练实验***转换为***预测试验***，并将其发布为 ***Web 服务***，使其他人可以访问模型。
 
 不需要编程，只需以可视方式连接数据集和模块，即可构造预测分析模型。
 
@@ -49,12 +49,12 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 单击左上方的菜单 ![菜单](media/machine-learning-what-is-ml-studio/menu.png) 将看到多个选项。
 
 ### <a name="cortana-intelligence"></a>Cortana Intelligence
-单击“Cortana Intelligence”，将转到 [Cortana Intelligence Suite](https://www.microsoft.com/cloud-platform/cortana-intelligence-suite) 的主页。 Cortana Intelligence Suite 是一个完全托管的大数据和高级分析套件，用于将数据转换为智能操作。 有关完整文档（包括客户案例分享），请参阅套件主页。
+单击“Cortana Intelligence”，会转到 [Cortana Intelligence Suite](https://www.microsoft.com/cloud-platform/cortana-intelligence-suite) 的主页。 Cortana Intelligence Suite 是一个完全托管的大数据和高级分析套件，用于将数据转换为智能操作。 有关完整文档（包括客户案例分享），请参阅套件主页。
 
 ### <a name="azure-machine-learning"></a>Azure 机器学习
 此处有两个选项：**主页**（开始的页面）和**工作室**。
 
-单击“工作室”，将转到 **Azure 机器学习工作室**。 首先系统会要求使用 Microsoft 帐户或者工作或学校帐户登录。 登录后，左侧会显示以下选项卡：
+单击“工作室”，会转到 **Azure 机器学习工作室**。 首先系统会要求使用 Microsoft 帐户或者工作或学校帐户登录。 登录后，左侧会显示以下选项卡：
 
 * **项目** - 表示单个项目的试验、数据集、笔记本和其他资源的集合
 * **试验** - 已创建、运行和保存为草稿的试验
@@ -65,7 +65,7 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 * **设置** - 用于配置帐户和资源的设置集合。
 
 ### <a name="gallery"></a>库
-单击“库”，将转到 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com/)。 社区数据科研人员和开发人员可以在该库中共享使用 Cortana Intelligence Suite 组件创建的解决方案。
+单击“库”，会转到 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com/)。 社区数据科研人员和开发人员可以在该库中共享使用 Cortana Intelligence Suite 组件创建的解决方案。
 
 有关该库的详细信息，请参阅 [Share and discover solutions in the Cortana Intelligence Gallery](machine-learning-gallery-how-to-use-contribute-publish.md)（共享和发现 Cortana Intelligence 库中的解决方案）。
 
@@ -78,14 +78,14 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 * 模块的所有输入端口必须与数据流建立某种连接
 * 必须设置每个模块的所有必需参数
 
-可以从头开始创建试验，或者使用现有的示例试验作为模板。 有关详细信息，请参阅 [Use sample experiments to create new experiments](machine-learning-sample-experiments.md)（使用示例试验创建新试验）。
+可以从头开始创建试验，或者使用现有的示例试验作为模板。 有关详细信息，请参阅[复制示例试验以创建新的机器学习试验](machine-learning-sample-experiments.md)。
 
 有关创建简单试验的示例，请参阅 [Create a simple experiment in Azure Machine Learning Studio](machine-learning-create-experiment.md)（在 Azure 机器学习工作室中创建简单试验）。
 
 有关创建预测分析解决方案的更完整演练，请参阅 [Develop a predictive solution with Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md)（使用 Azure 机器学习开发预测解决方案）。
 
 ### <a name="datasets"></a>数据集
-数据集是指已上载到机器学习工作室，可在建模过程中使用的数据。 机器学习工作室随附了许多示例数据集供试验，可以根据需要上载更多的数据集。 下面是随附数据集的一些例子：
+数据集是指已上传到机器学习工作室，可在建模过程中使用的数据。 机器学习工作室随附了许多示例数据集供试验，可以根据需要上传更多的数据集。 下面是随附数据集的一些例子：
 
 * **各种汽车的 MPG 数据** - 汽车的每加仑燃油英里数 (MPG) 值，按缸数、马力等参数列出。
 * **乳腺症数据** - 乳腺癌诊断数据。
@@ -105,7 +105,7 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 
 构建试验时，可以从画布左侧的模块列表中选择。  
 
-模块可能提供一组参数用于配置模块的内部算法。 在画布上选择模块时，模块的参数将显示在画布右侧的“属性”窗格中。 可以在该窗格中修改参数来调整模型。
+模块可能提供一组参数用于配置模块的内部算法。 在画布上选择模块时，模块的参数会显示在画布右侧的“属性”窗格中。 可以在该窗格中修改参数来调整模型。
 
 在浏览可用的机器学习算法大型库时如需帮助，请参阅 [How to choose algorithms for Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md)（如何选择 Microsoft Azure 机器学习的算法）。
 

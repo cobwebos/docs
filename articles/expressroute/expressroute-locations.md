@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/19/2017
+ms.date: 07/26/2017
 ms.author: kaanan
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: af9285946fc25840c5419ee095e08bf155579ae1
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 742621fc71cc45a30628b1a4cb01d5c644766b77
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
@@ -35,7 +35,7 @@ ms.lasthandoff: 07/20/2017
 
 ![位置地图][0]
 
-如果你至少与地缘政治区域内的一个 ExpressRoute 位置连接，你将有权访问地缘政治区域内所有区域中的 Azure 服务。
+如果至少与地缘政治区域内的一个 ExpressRoute 位置连接，将有权访问地缘政治区域内所有区域中的 Azure 服务。
 
 ### <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a>地缘政治区域中 ExpressRoute 位置与 Azure 区域的映射。
 下表提供了地缘政治区域内 ExpressRoute 位置与 Azure 区域的映射。
@@ -60,7 +60,7 @@ ms.lasthandoff: 07/20/2017
 | **中国** |中国北部、中国东部 |北京、上海 |
 | **德国** |德国中部、德国东部 |柏林、法兰克福 |
 
-标准 ExpressRoute SKU 不支持跨地缘政治区域的连接。 你需要启用 ExpressRoute 高级版附加组件才能支持全球连接。 不支持连接到国家/地区云环境。 如有需要，请联系连接服务提供商。
+标准 ExpressRoute SKU 不支持跨地缘政治区域的连接。 需要启用 ExpressRoute 高级版附加组件才能支持全球连接。 不支持连接到国家/地区云环境。 如有需要，请联系连接服务提供商。
 
 ## <a name="locations"></a>连接服务提供商位置
 
@@ -116,7 +116,7 @@ ms.lasthandoff: 07/20/2017
 | **Telenor** |支持 |支持 |阿姆斯特丹、伦敦 |
 | **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |支持 |支持 |墨尔本、悉尼 |
 | **[Telus](http://www.telus.com)** |支持 |支持 |多伦多 |
-| **[UOLDIVEO](http://www.uoldiveo.com.br/solucoes/cloud.html#rmcl)** |即将支持 |即将支持 |圣保罗+ |
+| **[UOLDIVEO](http://www.uoldiveo.com.br/solucoes/cloud.html#rmcl)** |支持 |支持 |圣保罗 |
 | **[Verizon](http://www.verizonenterprise.com/products/networking/secure-cloud-interconnect/)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、香港特别行政区、伦敦、硅谷、新加坡、悉尼、东京、华盛顿特区 |
 | **[Vodafone](http://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |支持 |不支持 |伦敦 |
 | **[Zayo Group](http://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯+、伦敦+、洛杉矶、纽约、硅谷、多伦多、华盛顿特区 |
@@ -152,9 +152,9 @@ ms.lasthandoff: 07/20/2017
 
 ## <a name="connectivity-through-exchange-providers"></a>通过 Exchange 提供商建立的连接
 
-如果前面部分中未列出你的连接服务提供商，你仍可以建立连接。
+如果前面部分中未列出连接服务提供商，仍可以建立连接。
 
-* 请咨询你的连接服务提供商，以确定他们是否已连接到上表中列出的任何 Exchange 提供商。 你可以访问以下链接，以收集 Exchange 提供商所提供的服务的详细信息。 已有多个连接提供商连接到以太网 Exchange。
+* 请咨询连接服务提供商，以确定他们是否已连接到上表中列出的任何 Exchange 提供商。 可以访问以下链接，以收集 Exchange 提供商所提供的服务的详细信息。 已有多个连接提供商连接到以太网 Exchange。
   * [Cologix](http://www.cologix.com/)
   * [Console](https://www.consoleconnect.com/partners/cloudsaas/)
   * [CoreSite](http://www.coresite.com/)
@@ -163,8 +163,8 @@ ms.lasthandoff: 07/20/2017
   * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
   * [NextDC](http://www.nextdc.com/)
   * [TeleCity CloudIX](http://www.telecitygroup.com/colocation-services/cloud-ix.htm)
-* 让你的连接提供商将你的网络扩展到选择的对等互连位置。
-  * 确保连接提供商以高可用性方式扩展你的连接，以防出现单点故障。
+* 让连接提供商将网络扩展到选择的对等互连位置。
+  * 确保连接提供商以高可用性方式扩展连接，以防出现单点故障。
 * 从 Exchange 连接服务提供商处订购一条 ExpressRoute 线路以连接到 Microsoft。
   * 根据 [创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md) 中的步骤来设置连接。
 
@@ -234,7 +234,7 @@ ms.lasthandoff: 07/20/2017
 * 如果连接提供商未在此处列出，请查看其是否连接到上面列出的任何 ExpressRoute Exchange 合作伙伴。
 
 ## <a name="expressroute-system-integrators"></a>ExpressRoute 系统集成商
-根据网络的规模，有时，很难启用专用连接来满足需要。 你可以与下表中列出的任一系统集成商合作，以帮助将你加入 ExpressRoute。
+根据网络的规模，有时，很难启用专用连接来满足需要。 可以与下表中列出的任一系统集成商合作，以帮助你将加入 ExpressRoute。
 
 | **系统集成商** | **所在洲** |
 | --- | --- |

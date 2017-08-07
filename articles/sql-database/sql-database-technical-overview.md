@@ -17,10 +17,10 @@ ms.workload: data-management
 ms.date: 06/30/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
-ms.openlocfilehash: 17b51afc0c67377dccdef63deacdcc67af8df576
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 54aa8c2f738ef92c211462498103d368e4cb4c5c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务？ 
@@ -54,7 +54,7 @@ SQL 数据库提供 4 个服务层，支持轻型到重型数据库工作负荷�
 
    ![弹性池](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
-使用弹性池时，不需要在资源需求波动时担心如何上下调节数据库性能。 入池的数据库可根据需要使用弹性池的性能资源。 入池的数据库会使用该池，但不会超出其限制，因此即使单个数据库的使用情况仍不可预测，成本也仍是可预测的。 此外，你可以 [向池添加和删除数据库](sql-database-elastic-pool-manage-portal.md)，将应用从少量数据库扩展到数千个，而一切费用不会超出由你控制的预算范围。 还可以控制池中数据库可用的资源量上限与下限，确保池中不会有任何数据库使用所有的池资源，每个入池数据库的可用资源量都有最低保障。 若要深入了解如何通过弹性池设计 SaaS 应用程序的模式，请参阅[具有 SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。
+使用弹性池时，不需要在资源需求波动时担心如何上下调节数据库性能。 入池的数据库可根据需要使用弹性池的性能资源。 入池的数据库会使用该池，但不会超出其限制，因此即使单个数据库的使用情况仍不可预测，成本也仍是可预测的。 此外，可以 [向池添加和删除数据库](sql-database-elastic-pool-manage-portal.md)，将应用从少量数据库扩展到数千个，而一切费用不会超出由你控制的预算范围。 还可以控制池中数据库可用的资源量上限与下限，确保池中不会有任何数据库使用所有的池资源，每个入池数据库的可用资源量都有最低保障。 若要深入了解如何通过弹性池设计 SaaS 应用程序的模式，请参阅[具有 SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。
 
 ### <a name="blend-single-databases-with-pooled-databases"></a>混合使用单一数据库与入池数据库
 
@@ -98,7 +98,7 @@ SQL 数据库中有两个自动优化方面：
 
 ### <a name="adaptive-query-processing"></a>自适应查询处理
 
-我们还将向 SQL 数据库添加[自适应查询处理](/sql/relational-databases/performance/adaptive-query-processing.md)系列功能，包括交错执行多语句表值函数，批处理模式内存授予反馈和批处理模式自适应联接。 每个自适应查询处理功能均应用类似的“学习和适应”技巧，帮助进一步解决与历史上棘手的查询优化问题相关的性能问题。
+我们还将向 SQL 数据库添加[自适应查询处理](/sql/relational-databases/performance/adaptive-query-processing)系列功能，包括交错执行多语句表值函数，批处理模式内存授予反馈和批处理模式自适应联接。 每个自适应查询处理功能均应用类似的“学习和适应”技巧，帮助进一步解决与历史上棘手的查询优化问题相关的性能问题。
 
 ### <a name="intelligent-threat-detection"></a>智能威胁检测
 
@@ -110,7 +110,7 @@ SQL 数据库提供一系列[内置安全性和符合性功能](sql-database-sec
 
 ### <a name="auditing-for-compliance-and-security"></a>符合性和安全性审核
 
-[SQL 数据库审核](sql-database-auditing.md)跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 审核可帮助你一直保持遵从法规、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
+[SQL 数据库审核](sql-database-auditing.md)跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 审核可帮助你一直保持符合法规、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
 
 ### <a name="data-encryption-at-rest"></a>静态数据加密
 
@@ -134,7 +134,7 @@ SQL 数据库是使用 [Always Encrypted](https://docs.microsoft.com/sql/relatio
 
 ### <a name="compliance-certification"></a>符合性认证
 
-SQL 数据库参与定期审核，并已针对多个符合性标准进行验证。 有关详细信息，请参阅 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/)，你可以从中找到 [SQL 数据库法规认证](https://azure.microsoft.com/support/trust-center/services/)的最新列表。
+SQL 数据库参与定期审核，并已针对多个符合性标准进行验证。 有关详细信息，请参阅 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/)，可以从中找到 [SQL 数据库法规认证](https://azure.microsoft.com/support/trust-center/services/)的最新列表。
 
 ## <a name="easy-to-use-tools"></a>易于使用的工具
 
@@ -160,3 +160,4 @@ SQL 数据库支持在 MacOS、Linux 和 Windows 上使用 Python、Java、Node.
 - 如需一组 Azure CLI 和 PowerShell 的示例，请参阅：
   - [适用于 SQL 数据库的 Azure CLI 示例](sql-database-cli-samples.md)
   - [适用于 SQL 数据库的 Azure PowerShell 示例](sql-database-powershell-samples.md)
+

@@ -14,7 +14,7 @@
 | 开发-测试或概念证明   | 基本                  |
 |                                    |                        |
 
-如果使用旧版 SKU，则推荐使用的生产 SKU 为标准和高性能 SKU。 有关旧版 SKU 的信息，请参阅[网关 SKU（旧版）](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md)。
+如果使用旧版 SKU，则推荐使用的生产 SKU 为标准和高性能 SKU。 有关老版 SKU 的信息，请参阅[网关 SKU（旧版 SKU）](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md)。
 
 ###  <a name="feature"></a>网关 SKU 功能集
 
@@ -28,12 +28,12 @@
 
 (*) 可以对“PolicyBasedTrafficSelectors”进行配置，以便将基于路由的 VPN 网关（VpnGw1、VpnGw2、VpnGw3）连接到多个本地的基于策略的防火墙设备。 有关详细信息，请参阅[使用 PowerShell 将 VPN 网关连接到多个本地的基于策略的 VPN 设备](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)。
 
-###  <a name="resize"></a>调整网关 SKU 大小
+###  <a name="resize"></a>重设网关 SKU 大小
 
 1. 可以在 VpnGw1 SKU、VpnGw2 SKU 和 VpnGw3 SKU 之间调整大小。
 2. 使用旧版网关 SKU 时，仍可在基本、标准和高性能 SKU 之间调整大小。
 2. 不能从基本/标准/高性能 SKU 调整为新版 VpnGw1/VpnGw2/VpnGw3 SKU， 而只能[迁移](#migrate)到新版 SKU。
 
-###  <a name="migrate"></a>从旧版 SKU 迁移到新版 SKU
+###  <a name="migrate"></a>从旧 SKU 迁移到新 SKU
 
 [!INCLUDE [Migrate SKU](./vpn-gateway-migrate-legacy-sku-include.md)]
