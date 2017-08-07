@@ -1,12 +1,11 @@
 
-Ls 系列针对需要低延迟本地存储的工作负荷，如 NoSQL 数据库（例如 Cassandra、MongoDB、Cloudera 和 Redis）进行了优化。 Ls-系列提供多达 32 个 CPU 核心数，使用的是 [Intel® Xeon® 处理器 E5 v3 系列](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html)。 这与 G/GS-系列拥有相同的 CPU 性能，并且每个 CPU 核心附带 8 GiB 内存。  
+Ls-系列针对需要低延迟临时存储的工作负荷，如 NoSQL 数据库（包括 Cassandra、MongoDB、Cloudera 和 Redis）进行了优化。 Ls-系列提供多达 32 个 vCPU，使用的是 [Intel® Xeon® 处理器 E5 v3 系列](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html)。 Ls 系列与 G/GS-系列拥有相同的 CPU 性能，并且每个 vCPU 附带 8 GiB 内存。  
 
-## Ls 系列
-<a id="ls-series" class="xliff"></a>
+## <a name="ls-series"></a>Ls 系列
 
 ACU：180-240
  
-| 大小          | CPU 核心数 | 内存：GiB | 本地 SSD：GiB | 最大数据磁盘数 | 缓存和本地磁盘的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数/预期网络性能 (Mbps) | 
+| 大小          | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数/预期网络性能 (Mbps) | 
 |---------------|-----------|-------------|--------------------------|----------------|-------------------------------------------------------------|-------------------------------------------|------------------------------| 
 | Standard_L4s  | 4    | 32   | 678   | 8              | NA/NA (0)          | 5,000 / 125                               | 2 / 4000       | 
 | Standard_L8s  | 8    | 64   | 1,388 | 16             | NA/NA (0)          | 10,000 / 250                              | 4 / 8000  | 
@@ -14,7 +13,7 @@ ACU：180-240
 | Standard_L32s* | 32 | 256  | 5,630 | 64             | NA/NA (0)          | 40,000 / 1,000                            | 8 / 20000 | 
  
 
-Ls 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。 有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../articles/storage/storage-premium-storage.md)。 
+Ls 系列 VM 可能的最大磁盘吞吐量可能受限于任何附加磁盘的数量、大小和条带化。 有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../articles/storage/storage-premium-storage.md)。 
 
 *实例对于专用于单个客户的硬件独立。
 

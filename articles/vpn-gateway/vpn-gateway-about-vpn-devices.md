@@ -15,36 +15,36 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: yushwang;cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 8a7419c7a759060dc91f11ec94085ff0afd4a457
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: c8e1db0a5488b1296206a4d557e47599edc59a88
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数
 
-通过 VPN 网关配置站点到站点 (S2S) 跨界 VPN 连接需要用到 VPN 设备。 在创建混合解决方案时，或者每当你想要在本地网络与虚拟网络之间建立安全连接时，可以使用站点到站点连接。 本文提供了适用于 Azure VPN 网关的 IPsec/IKE 参数的列表，以及连接到 Azure VPN 网关的有效 VPN 设备的列表。
-
+通过 VPN 网关配置站点到站点 (S2S) 跨界 VPN 连接需要用到 VPN 设备。 在创建混合解决方案时，或者每想要在本地网络与虚拟网络之间建立安全连接时，可以使用站点到站点连接。 本文提供了一个已验证 VPN 设备的列表，以及一个适用于 VPN 网关的 IPsec/IKE 参数的列表。
 
 > [!IMPORTANT]
-> 如果遇到本地 VPN 设备与 Azure VPN 网关之间的连接问题，请参阅[已知的设备兼容性问题](#known)。 
+> 如果遇到本地 VPN 设备与 VPN 网关之间的连接问题，请参阅[已知的设备兼容性问题](#known)。
+>
+>
 
+### <a name="items-to-note-when-viewing-the-tables"></a>查看表时的注意事项：
 
-###<a name="items-to-note-when-viewing-the-tables"></a>查看表时的注意事项：
-
-* Azure VPN 网关的术语已更改。 没有功能更改。 只有名称更改。
+* Azure VPN 网关的术语已更改。 只有名称已更改。 没有功能更改。
   * 静态路由 = PolicyBased
   * 动态路由 = RouteBased
-* 除非另有说明，否则高性能 VPN 网关和 RouteBased VPN 网关的规范相同。 例如，经验证与 RouteBased VPN 网关兼容的 VPN 设备也与 Azure 高性能 VPN 网关兼容。
-
-> [!NOTE]
-> 配置站点到站点连接时，需要为你的 VPN 设备提供面向公众的 IPv4 IP 地址。
->                
+* 除非另有说明，否则高性能 VPN 网关和 RouteBased VPN 网关的规范相同。 例如，经验证与 RouteBased VPN 网关兼容的 VPN 设备也与高性能 VPN 网关兼容。
 
 ## <a name="devicetable"></a>验证的 VPN 设备和设备配置指南
-我们在与设备供应商合作的过程中验证了一系列的标准 VPN 设备。 以下列表中包含的设备系列中的所有设备都应适用于 Azure VPN 网关。 请参阅 [关于 VPN 网关](vpn-gateway-about-vpngateways.md) 以确定需要为要配置的解决方案创建的网关类型。
+
+> [!NOTE]
+> 配置站点到站点连接时，需要为 VPN 设备提供面向公众的 IPv4 IP 地址。
+>
+
+我们在与设备供应商合作的过程中验证了一系列的标准 VPN 设备。 以下列表的设备系列中的所有设备都应适用于 VPN 网关。 请参阅[关于 VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md#vpntype)，了解如何将 VPN 类型（PolicyBased 或 RouteBased）用于要配置的 VPN 网关解决方案。
 
 若要获取配置 VPN 设备的帮助，请参考各设备系列相对应的链接。 我们会尽力提供各种配置说明链接。 如需 VPN 设备支持，请联系设备制造商。
 
@@ -77,33 +77,36 @@ ms.lasthandoff: 06/15/2017
 (*) ISR 7200 系列路由器仅支持 PolicyBased VPN。
 
 ## <a name="additionaldevices"></a>非验证的 VPN 设备
+
 即使没有看到设备在“已验证的 VPN 设备”表列出中，该设备也有可能适用于站点到站点连接。 请联系设备制造商，了解更多支持和配置说明。
 
 ## <a name="editing"></a>编辑设备配置示例
-在下载提供的 VPN 设备配置示例后，你需要替换一些值来反映你环境的设置。
+
+在下载提供的 VPN 设备配置示例后，需要替换一些值来反映你环境的设置。
 
 ### <a name="to-edit-a-sample"></a>编辑示例的步骤：
 
 1. 使用记事本打开示例。
-2. 搜索所有 <*text*> 字符串并将其替换为与你的环境相关的值。 请确保包含 < 和 >。 指定名称时，你选择的名称应是唯一的。 如果命令无效，请查看设备制造商文档。
+2. 搜索所有 <*text*> 字符串并将其替换为与环境相关的值。 请确保包含 < 和 >。 指定名称时，选择的名称应是唯一的。 如果命令无效，请查看设备制造商文档。
 
 | **示例文本** | **更改为** |
 | --- | --- |
-| &lt;RP_OnPremisesNetwork&gt; |你为此对象选择的名称。 示例：myOnPremisesNetwork |
-| &lt;RP_AzureNetwork&gt; |你为此对象选择的名称。 示例：myAzureNetwork |
-| &lt;RP_AccessList&gt; |你为此对象选择的名称。 示例：myAzureAccessList |
-| &lt;RP_IPSecTransformSet&gt; |你为此对象选择的名称。 示例：myIPSecTransformSet |
-| &lt;RP_IPSecCryptoMap&gt; |你为此对象选择的名称。 示例：myIPSecCryptoMap |
+| &lt;RP_OnPremisesNetwork&gt; |为此对象选择的名称。 示例：myOnPremisesNetwork |
+| &lt;RP_AzureNetwork&gt; |为此对象选择的名称。 示例：myAzureNetwork |
+| &lt;RP_AccessList&gt; |为此对象选择的名称。 示例：myAzureAccessList |
+| &lt;RP_IPSecTransformSet&gt; |为此对象选择的名称。 示例：myIPSecTransformSet |
+| &lt;RP_IPSecCryptoMap&gt; |为此对象选择的名称。 示例：myIPSecCryptoMap |
 | &lt;SP_AzureNetworkIpRange&gt; |指定范围。 示例：192.168.0.0 |
 | &lt;SP_AzureNetworkSubnetMask&gt; |指定子网掩码。 示例：255.255.0.0 |
 | &lt;SP_OnPremisesNetworkIpRange&gt; |指定本地范围。 示例：10.2.1.0 |
 | &lt;SP_OnPremisesNetworkSubnetMask&gt; |指定本地子网掩码。 示例：255.255.255.0 |
-| &lt;SP_AzureGatewayIpAddress&gt; |此信息特定于你的虚拟网络，位于管理门户的“网关 IP 地址”中。 |
-| &lt;SP_PresharedKey&gt; |此信息特定于你的虚拟网络，位于管理门户的“管理密钥”中。 |
+| &lt;SP_AzureGatewayIpAddress&gt; |此信息特定于虚拟网络，位于管理门户的“网关 IP 地址”中。 |
+| &lt;SP_PresharedKey&gt; |此信息特定于虚拟网络，位于管理门户的“管理密钥”中。 |
 
 ## <a name="ipsec"></a>IPsec/IKE 参数
+
 > [!NOTE]
-> 尽管 Azure VPN 网关支持下表中列出的值，但你目前无法从 Azure VPN 网关中选择或指定算法或参数的特定组合。 你必须从本地 VPN 设备指定任何约束。 此外，还必须将 **MSS** 固定在 **1350**。
+> 尽管 VPN 网关支持下表中列出的值，但目前无法从 VPN 网关中选择或指定算法或参数的特定组合。 必须从本地 VPN 设备指定任何约束。 此外，还必须将 **MSS** 固定在 **1350**。
 > 
 >
 
@@ -114,6 +117,7 @@ ms.lasthandoff: 06/15/2017
 * IKE 阶段 2 也称“快速模式”
 
 ### <a name="ike-phase-1-main-mode-parameters"></a>IKE 阶段 1（主模式）参数
+
 | **属性**          |**PolicyBased**    | **RouteBased**    |
 | ---                   | ---               | ---               |
 | SDK 版本           |IKEv1              |IKEv2              |
@@ -123,6 +127,7 @@ ms.lasthandoff: 06/15/2017
 | SA 生存期           |28,800 秒     |28,800 秒     |
 
 ### <a name="ike-phase-2-quick-mode-parameters"></a>IKE 阶段 2（快速模式）参数
+
 | **属性**                  |**PolicyBased**| **RouteBased**                              |
 | ---                           | ---           | ---                                         |
 | SDK 版本                   |IKEv1          |IKEv2                                        |
@@ -134,9 +139,11 @@ ms.lasthandoff: 06/15/2017
 
 
 ### <a name ="RouteBasedOffers"></a>RouteBased VPN IPsec 安全关联（IKE 快速模式 SA）产品/服务
+
 下表列出了 IPsec SA（IKE 快速模式）产品/服务。 这些产品按提供或接受产品的偏好顺序列出。
 
 #### <a name="azure-gateway-as-initiator"></a>Azure 网关作为发起方
+
 |-  |**加密**|**身份验证**|**PFS 组**|
 |---| ---          |---               |---          |
 | 1 |GCM AES256    |GCM (AES256)      |无         |
@@ -147,6 +154,7 @@ ms.lasthandoff: 06/15/2017
 | 6 |3DES          |SHA256            |无         |
 
 #### <a name="azure-gateway-as-responder"></a>Azure 网关作为响应方
+
 |-  |**加密**|**身份验证**|**PFS 组**|
 |---| ---          | ---              |---          |
 | 1 |GCM AES256    |GCM (AES256)      |无         |
@@ -176,7 +184,7 @@ ms.lasthandoff: 06/15/2017
 | 25|AES128        |SHA256            |14           |
 | 26|3DES          |SHA1              |14           |
 
-* 可以使用 RouteBased 和高性能 VPN 网关指定 IPsec ESP NULL 加密。 基于 Null 的加密不对传输中的数据提供保护，仅应在需要最大吞吐量和最小延迟时才使用。  客户端可以在 VNet 到 VNet 通信方案中选择使用此方法，或者在解决方案中的其他位置应用加密时使用此方法。
+* 可以使用 RouteBased 和 HighPerformance VPN 网关指定 IPsec ESP NULL 加密。 基于 Null 的加密不对传输中的数据提供保护，仅应在需要最大吞吐量和最小延迟时才使用。 客户端可以在 VNet 到 VNet 通信方案中选择使用此方法，或者在解决方案中的其他位置应用加密时使用此方法。
 * 若要通过 Internet 建立跨界连接，请使用默认的 Azure VPN 网关设置以及上表中列出的加密和哈希算法，确保关键通信的安全性。
 
 ## <a name="known"></a>已知的设备兼容性问题
@@ -193,4 +201,3 @@ ms.lasthandoff: 06/15/2017
 1. 检查 Palo Alto Networks 设备的固件版本。 如果 PAN-OS 版本低于 7.1.4，请升级到 7.1.4。
 2. 连接到 Azure VPN 网关时，请在 Palo Alto Networks 设备上将阶段 2 SA（或快速模式 SA）生存期更改为 28,800 秒（8 小时）。
 3. 如果仍然遇到连接问题，请从 Azure 门户开具支持请求票证。
-

@@ -16,15 +16,15 @@ ms.workload: data-services
 ms.date: 07/13/2017
 ms.author: bradsev
 ms.translationtype: HT
-ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
-ms.openlocfilehash: ee4298b91f4e2b215b5faabaad96323f4ef234b8
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: f0ee0d23f28df2824ea41f7c9f7490e1ec62d041
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="get-started-using-r-server-on-hdinsight"></a>开始使用 R Server on HDInsight
 
-HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项允许 R 脚本使用 Spark 和 MapReduce 运行分布式计算。 在本文档中，你会了解如何在 HDInsight 群集上创建 R Server，然后运行 R 脚本，以演示如何使用 Spark 进行分布式 R 计算。
+HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项允许 R 脚本使用 Spark 和 MapReduce 运行分布式计算。 在本文档中，可以了解如何在 HDInsight 群集上创建 R Server，并运行 R 脚本，以演示如何使用 Spark 进行分布式 R 计算。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -64,7 +64,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
     * **群集类型**：R Server
     * **版本**：选择要在群集上安装的 R Server 版本。 当前可用的版本是 R Server 9.1 (HDI 3.6)。 可在[此处](https://msdn.microsoft.com/microsoft-r/notes/r-server-notes)获取 R Server 可用版本的发行说明。
     * **R Server 的 R Studio 社区版**：此基于浏览器的 IDE 默认安装在边缘节点上。 如果不想安装它，则取消勾选复选框。 如果选择安装它，则可在创建群集后，在群集的门户应用程序边栏选项卡上找到用于访问 RStudio Server 登录界面的 URL。
-    * 将其他选项保留为默认值，然后使用“选择”按钮保存群集类型。
+    * 将其他选项保留为默认值，并使用“选择”按钮保存群集类型。
 
         ![群集类型边栏选项卡截图](./media/hdinsight-hadoop-r-server-get-started/clustertypeconfig.png)
 
@@ -80,7 +80,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
 
         ssh-keygen -t rsa -b 2048
 
-    * 按照提示对密钥文件进行命名，然后输入密码以提高安全性。 屏幕应如下图所示：
+    * 按照提示对密钥文件进行命名，并输入密码以提高安全性。 屏幕应如下图所示：
 
         ![Windows 中的 SSH 命令行](./media/hdinsight-hadoop-r-server-get-started/sshcmdline.png)
 
@@ -184,7 +184,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
 >
 >
 
-如果使用了密码来保护 SSH 帐户，系统会提示你输入密码。 如果你使用了公钥，则可能需要使用 `-i` 参数来指定匹配的私钥。 例如：
+如果使用了密码来保护 SSH 帐户，系统会提示输入密码。 如果使用了公钥，则可能需要使用 `-i` 参数来指定匹配的私钥。 例如：
 
     ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
@@ -340,7 +340,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
 
         R
 
-2. 您应该会看到与下面类似的输出：
+2. 应该会看到与下面类似的输出：
     
     R 版本 3.2.2 (2015-08-14) - "Fire Safety" 版权所有 (C) 2015 用于统计计算的 R Foundation 平台: x86_64-pc-linux-gnu（64 位）
 
@@ -361,13 +361,13 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
     键入 "readme()" 了解发行说明。
     >
 
-3. 可以通过 `>` 提示符输入 R 代码。 R Server 包含可让你轻松与 Hadoop 交互并运行分布式计算的包。 例如，若要查看 HDInsight 群集的默认文件系统根目录，可使用以下命令：
+3. 可以通过 `>` 提示符输入 R 代码。 R Server 包含可以轻松地与 Hadoop 交互并运行分布式计算的包。 例如，若要查看 HDInsight 群集的默认文件系统根目录，可使用以下命令：
 
     rxHadoopListFiles("/")
 
 4. 还可以使用 WASB 样式寻址。
 
-    rxHadoopListFiles("wasbs:///")
+    rxHadoopListFiles("wasb:///")
 
 
 ## <a name="using-r-server-on-hdi-from-a-remote-instance-of-microsoft-r-server-or-microsoft-r-client"></a>从 Microsoft R Server 或 Microsoft R Client 的远程实例使用 HDI 上的 R Server

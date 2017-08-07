@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/12/2017
+ms.date: 08/02/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 82e8d7e0ea975f140eaf73a625d181a4ec68eaa7
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 1580e2841790b7c1b6c9540da4940eef2c487256
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect 的自定义安装
@@ -317,6 +317,15 @@ AD FS 服务需要域服务帐户来验证用户，以及在 Active Directory �
 
 ### <a name="verify-your-federation-configuration"></a>验证联合配置
 当你单击“验证”按钮时，Azure AD Connect 将为你验证 DNS 设置。
+
+Intranet 连接检查
+
+* 解析联合 FQDN：Azure AD Connect 会查看是否可以通过 DNS 解析联合 FQDN，以确保连接性。 如果 Azure AD Connect 无法解析 FQDN，验证会失败。 确保出示适用于联合身份验证服务 FQDN 的 DNS 记录，以便成功完成验证。
+* DNS A 记录：Azure AD Connect 会检查是否存在适用于联合身份验证服务的 A 记录。 在没有 A 记录的情况下，验证会失败。 请为联合 FQDN 创建 A 记录而不是 CNAME 记录，以便成功完成验证。
+
+Extranet 连接检查
+
+* 解析联合 FQDN：Azure AD Connect 会查看是否可以通过 DNS 解析联合 FQDN，以确保连接性。
 
 ![完成](./media/active-directory-aadconnect-get-started-custom/completed.png)
 

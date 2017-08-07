@@ -6,43 +6,38 @@ documentationcenter:
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 04/18/2017
+ms.date: 07/27/2017
 ms.topic: get-started-article
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 80fd9d79652e4f0d9c4c524e3a762bcc3462bb53
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 49086b51e2db1aebed45746306ae14b6f1feb631
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
+ms.lasthandoff: 07/31/2017
 
 ---
 
-# <a name="create-your-first-azure-resource-manager-template"></a>创建第一个 Azure Resource Manager 模板
+# <a name="create-and-deploy-your-first-azure-resource-manager-template"></a>创建和部署第一个 Azure 资源管理器模板
 本主题介绍如何通过相关步骤创建第一个 Azure Resource Manager 模板。 Resource Manager 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案相关联的概念，请参阅 [Azure Resource Manager 概述](resource-group-overview.md)。 如果有现成的资源，需要为这些资源获取模板，请参阅[从现有资源导出 Azure Resource Manager 模板](resource-manager-export-template.md)。
 
-若要创建和修改模板，需要 JSON 编辑器。 [Visual Studio Code](https://code.visualstudio.com/) 是轻量型开源跨平台代码编辑器。 它通过扩展为创建和编辑 Resource Manager 模板提供支持。 本主题假定你使用 VS Code；但是，如果有其他 JSON 编辑器（例如 Visual Studio），你可以使用该编辑器。
+若要创建和修改模板，需要 JSON 编辑器。 [Visual Studio Code](https://code.visualstudio.com/) 是轻量型开源跨平台代码编辑器。 强烈建议使用 Visual Studio Code 来创建资源管理器模板。 本主题假定你使用 VS Code；但是，如果有其他 JSON 编辑器（例如 Visual Studio），可以使用该编辑器。
 
-## <a name="get-vs-code-and-extension"></a>获取 VS Code 和扩展
-1. 根据需要从 [https://code.visualstudio.com/](https://code.visualstudio.com/) 安装 VS Code。
+## <a name="prerequisites"></a>先决条件
 
-2. 访问 Quick Open (Ctrl+P) 并运行以下命令，以便安装 [Azure Resource Manager 工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)扩展： 
+* Visual Studio Code。 根据需要从 [https://code.visualstudio.com/](https://code.visualstudio.com/) 安装。
+* Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-   ```
-   ext install msazurermtools.azurerm-vscode-tools
-   ```
+## <a name="create-template"></a>创建模板
 
-3. 在系统提示时重新启动 VS Code 以启用该扩展。
+一开始请使用简单的模板将存储帐户部署到订阅。
 
-## <a name="create-blank-template"></a>创建空白模板
+1. 选择“文件” > “新建文件”。 
 
-让我们从空白模板开始，该模板仅包含模板的基本部分。
-
-1. 创建一个文件。 
+   ![新建文件](./media/resource-manager-create-first-template/new-file.png)
 
 2. 将以下 JSON 语法复制并粘贴到文件中：
 
@@ -50,248 +45,176 @@ ms.lasthandoff: 06/02/2017
    {
      "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
      "contentVersion": "1.0.0.0",
-     "parameters": {  },
-     "variables": {  },
-     "resources": [  ],
-     "outputs": {  }
-   }
-   ```
-
-3. 将该文件另存为 **azuredeploy.json**。 
-
-## <a name="add-storage-account"></a>添加存储帐户
-1. 若要定义用于部署的存储帐户，请将该存储帐户添加到模板的 **resources** 节。 若要查找适用于存储帐户的值，请参阅[存储帐户模板参考](/azure/templates/microsoft.storage/storageaccounts)。 复制针对存储帐户显示的 JSON。 
-
-3. 将该 JSON 粘贴到模板的 **resources** 节中，如以下示例所示： 
-
-   ```json
-   {
-     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-     "contentVersion": "1.0.0.0",
-     "parameters": {  },
-     "variables": {  },
+     "parameters": {
+     },
+     "variables": {
+     },
      "resources": [
        {
-         "name": "string",
+         "name": "[concat('storage', uniqueString(resourceGroup().id))]",
          "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2016-12-01",
+         "apiVersion": "2016-01-01",
          "sku": {
-           "name": "string"
+           "name": "Standard_LRS"
          },
-         "kind": "string",
-         "location": "string",
+         "kind": "Storage",
+         "location": "South Central US",
          "tags": {},
-         "properties": {
-           "customDomain": {
-             "name": "string",
-             "useSubDomain": boolean
-           },
-           "encryption": {
-             "services": {
-               "blob": {
-                 "enabled": boolean
-               }
-             },
-             "keySource": "Microsoft.Storage"
-           },
-           "accessTier": "string"
-         }
+         "properties": {}
        }
      ],
      "outputs": {  }
    }
    ```
 
-  VS Code 可能表示 2016-12-01 不是有效的 API 版本。 如果使用模板参考文档中的版本号，则可以忽略此警告。 若未使用资源提供程序中的最新版本号更新架构，会看到此警告。 
-  
-  上面的示例包括许多占位符值，以及某些在存储帐户中可能不需要的属性。
+   存储帐户名称有多种限制，因此难以设置。 该名称必须为 3 到 24 个字符，只能使用数字和小写字母，而且必需唯一。 前述模板使用 [uniqueString](resource-group-template-functions-string.md#uniquestring) 函数生成哈希值。 此模板通过添加前缀 storage 扩展了该哈希值增的含义。 
 
-## <a name="set-values-for-storage-account"></a>设置存储帐户的值
+3. 在本地文件夹中将该文件另存为 azuredeploy.json。
 
-现在可以设置存储帐户的值。 
+   ![保存模板](./media/resource-manager-create-first-template/save-template.png)
 
-1. 再次查看在其中复制了 JSON 的[存储帐户模板参考](/azure/templates/microsoft.storage/storageaccounts)。 有几个表描述了相关属性并提供了可用值。 
+## <a name="deploy-template"></a>部署模板
 
-2. 请注意，在 **properties** 元素中，**customDomain**、**encryption** 和 **accessTier** 均被列为“非必需”。 这些值对于你的方案可能很重要，但为了简单起见，本示例需删除它们。
+已做好部署此模板的准备。 请使用 PowerShell 或 Azure CLI 创建一个资源组。 然后，将存储帐户部署到该资源组。
 
-   ```json
-   "resources": [
-     {
-       "name": "string",
-       "type": "Microsoft.Storage/storageAccounts",
-       "apiVersion": "2016-12-01",
-       "sku": {
-         "name": "string"
-       },
-       "kind": "string",
-       "location": "string",
-       "tags": {},
-       "properties": {
-       }
-     }
-   ],
+* 对于 PowerShell，请在包含模板的文件夹中使用以下命令：
+
+   ```powershell
+   Login-AzureRmAccount
+   
+   New-AzureRmResourceGroup -Name examplegroup -Location "South Central US"
+   New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile azuredeploy.json
    ```
 
-3. 目前，**kind** 元素设置为占位符值 ("string")。 VS Code 提供的许多功能有助于你了解那些在模板中使用的值。 请注意，VS Code 指示该值无效。 若将鼠标悬停在 "string" 上，则会看到 VS Code 为 **kind** 建议的有效值为 `Storage` 或 `BlobStorage`。 
+* 若要在本地安装 Azure CLI，请在包含模板的文件夹中使用以下命令：
 
-   ![显示 VS Code 建议的值](./media/resource-manager-create-first-template/vs-code-show-values.png)
+   ```azurecli
+   az login
 
-   若要查看可用值，请删除双引号之间的字符，然后选择 **Ctrl+Space**。 从可用选项中选择“Storage”。
-  
-   ![显示 Intellisense](./media/resource-manager-create-first-template/intellisense.png)
-
-   如果使用的不是 VS Code，请参阅存储帐户模板参考页。 请注意，说明列出了相同的有效值。 将元素设置为 **Storage**。
-
-   ```json
-   "kind": "Storage",
+   az group create --name examplegroup --location "South Central US"
+   az group deployment create --resource-group examplegroup --template-file azuredeploy.json
    ```
 
-模板现在如下所示：
+部署完成后，存储帐户就会存在于资源组中。
+
+## <a name="deploy-template-from-cloud-shell"></a>从 Cloud Shell 部署模板
+
+可以使用 [Cloud Shell](../cloud-shell/overview.md) 来运行 Azure CLI 命令，以便部署模板。 但是，必须先将模板加载到 Cloud Shell 的文件共享。 如果尚未使用过 Cloud Shell，请参阅 [Azure Cloud Shell 概述](../cloud-shell/overview.md)，了解如何设置它。
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。   
+
+2. 选择 Cloud Shell 资源组。 名称模式为 `cloud-shell-storage-<region>`。
+
+   ![选择资源组](./media/resource-manager-create-first-template/select-cs-resource-group.png)
+
+3. 选择适用于 Cloud Shell 的存储帐户。
+
+   ![选择存储帐户](./media/resource-manager-create-first-template/select-storage.png)
+
+4. 选择“文件”。
+
+   ![选择文件](./media/resource-manager-create-first-template/select-files.png)
+
+5. 选择 Cloud Shell 的文件共享。 名称模式为 `cs-<user>-<domain>-com-<uniqueGuid>`。
+
+   ![选择文件共享](./media/resource-manager-create-first-template/select-file-share.png)
+
+6. 选择“添加目录”。
+
+   ![添加目录](./media/resource-manager-create-first-template/select-add-directory.png)
+
+7. 将其命名为“模板”，然后选择“确定”。
+
+   ![为目录命名](./media/resource-manager-create-first-template/name-templates.png)
+
+8. 选择新目录。
+
+   ![选择目录](./media/resource-manager-create-first-template/select-templates.png)
+
+9. 选择**上传**。
+
+   ![选择“上传”](./media/resource-manager-create-first-template/select-upload.png)
+
+10. 找到并上传模板。
+
+   ![上传文件](./media/resource-manager-create-first-template/upload-files.png)
+
+11. 打开提示符。
+
+   ![打开 Cloud Shell](./media/resource-manager-create-first-template/start-cloud-shell.png)
+
+12. 在 Cloud Shell 中输入以下命令：
+
+   ```azurecli
+   az group create --name examplegroup --location "South Central US"
+   az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json
+   ```
+
+部署完成后，存储帐户就会存在于资源组中。
+
+## <a name="customize-the-template"></a>自定义模板
+
+该模板可以正常使用，但不灵活。 它始终将本地冗余存储部署到美国中南部。 名称始终为存储后跟哈希值。 若要允许将模板用于不同的方案，请向模板添加参数。
+
+以下示例显示带两个参数的 parameters 节。 第一个参数 `storageSKU` 用于指定冗余类型。 它将可以传入的值限制为适用于存储帐户的值。 它还指定默认值。 第二个参数 `storageNamePrefix` 设置为最多允许 11 个字符。 它指定默认值。
 
 ```json
-{
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {  },
-  "variables": {  },
-  "resources": [
-    {
-      "name": "string",
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-12-01",
-      "sku": {
-        "name": "string"
-      },
-      "kind": "Storage",
-      "location": "string",
-      "tags": {},
-      "properties": {
-      }
+"parameters": {
+  "storageSKU": {
+    "type": "string",
+    "allowedValues": [
+      "Standard_LRS",
+      "Standard_ZRS",
+      "Standard_GRS",
+      "Standard_RAGRS",
+      "Premium_LRS"
+    ],
+    "defaultValue": "Standard_LRS",
+    "metadata": {
+      "description": "The type of replication to use for the storage account."
     }
-  ],
-  "outputs": {  }
-}
-```
-
-## <a name="add-template-function"></a>添加模板函数
-
-可以在模板中使用函数，以便简化模板的语法，以及检索那些仅在部署模板时才可用的值。 如需完整的模板函数集，请参阅 [Azure Resource Manager 模板函数](resource-group-template-functions.md)。
-
-若要指定将存储帐户部署到与资源组相同的位置，请将 **location** 属性设置如下：
-
-```json
-"location": "[resourceGroup().location]",
-```
-
-VS Code 会再次帮助你，为你建议可用的函数。 
-
-![显示函数](./media/resource-manager-create-first-template/show-functions.png)
-
-请注意，函数括在方括号中。 [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) 函数返回一个对象，其中包含的属性名为 `location`。 资源组包含解决方案的所有相关资源。 可以将 location 属性硬编码为某个值（例如 "Central US"），但这样就必须手动更改模板才能重新部署到其他位置。 使用 `resourceGroup` 函数，则可以方便地将该模板重新部署到其他位置的其他资源组。
-
-模板现在如下所示：
-
-```json
-{
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {  },
-  "variables": {  },
-  "resources": [
-    {
-      "name": "string",
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-12-01",
-      "sku": {
-        "name": "string"
-      },
-      "kind": "Storage",
-      "location": "[resourceGroup().location]",
-      "tags": {},
-      "properties": {
-      }
+  },
+  "storageNamePrefix": {
+    "type": "string",
+    "maxLength": 11,
+    "defaultValue": "storage",
+    "metadata": {
+      "description": "The value to use for starting the storage account name. Use only lowercase letters and numbers."
     }
-  ],
-  "outputs": {  }
-}
+  }
+},
 ```
 
-## <a name="add-parameters-and-variables"></a>添加参数和变量
-模板中只剩下两个可以设置的值 - **name** 和 **sku.name**。 对于这些属性，可以添加参数，以便在部署过程中自定义这些值。 
+在 variables 节，请添加名为 `storageName` 的变量。 它组合了来自变量的前缀值和来自 [uniqueString](resource-group-template-functions-string.md#uniquestring) 函数的哈希值。 它使用 [toLower](resource-group-template-functions-string.md#tolower) 函数将所有字符转换为小写。
 
-存储帐户名称有多种限制，因此难以设置。 该名称必须为 3 到 24 个字符，只能使用数字和小写字母，而且必需唯一。 可以使用 [uniqueString](resource-group-template-functions-string.md#uniquestring) 函数生成一个哈希值，不必试着去猜测一个符合限制条件的唯一值。 为了让该哈希值看起来更有意义，可以添加一个前缀，以便在部署后能够将其标识为存储帐户。 
+```json
+"variables": {
+  "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
+},
+```
 
-1. 若要为名称传入一个符合命名约定的前缀，请转到模板的 **parameters** 节。 向模板添加一个接受存储帐户名称前缀的参数：
+若要将这些新值用于存储帐户，请更改资源定义：
 
-   ```json
-   "parameters": {
-     "storageNamePrefix": {
-       "type": "string",
-       "maxLength": 11,
-       "defaultValue": "storage",
-       "metadata": {
-         "description": "The value to use for starting the storage account name."
-       }
-     }
-   },
-   ```
+```json
+"resources": [
+  {
+    "name": "[variables('storageName')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "apiVersion": "2016-01-01",
+    "sku": {
+      "name": "[parameters('storageSKU')]"
+    },
+    "kind": "Storage",
+    "location": "[resourceGroup().location]",
+    "tags": {},
+    "properties": {}
+  }
+],
+```
 
-  该前缀的长度仅限 11 个字符，因为 `uniqueString` 返回 13 个字符，而名称不能超过 24 个字符。 如果没有在部署期间为该参数传入值，则使用默认值。
+请注意，存储帐户的名称现在设置为已添加的变量。 SKU 名称设置为参数的值。 位置设置为资源组所在的位置。
 
-2. 转到模板的 **variables** 节。 若要通过前缀和唯一字符串来构造名称，请添加以下变量：
-
-   ```json
-   "variables": {
-     "storageName": "[concat(parameters('storageNamePrefix'), uniqueString(resourceGroup().id))]"
-   },
-   ```
-
-3. 在 **resources** 节，将存储帐户名称设置为该变量。
-
-   ```json
-   "name": "[variables('storageName')]",
-   ```
-
-3. 若要允许为存储帐户传入不同的 SKU，请转到 **parameters** 节。 在存储帐户名称前缀的参数之后添加一个参数，用于指定允许的 SKU 值和默认值。 可以在模板参考页或 VS Code 中找到允许的值。 以下示例为 SKU 提供了所有有效值。 不过，可以只对特定类型的 SKU 使用允许的值，此类 SKU 需通过该模板进行部署。
-
-   ```json
-   "parameters": {
-     "storageNamePrefix": {
-       "type": "string",
-       "maxLength": 11,
-       "defaultValue": "storage",
-       "metadata": {
-         "description": "The value to use for starting the storage account name."
-       }
-     },
-     "storageSKU": {
-       "type": "string",
-       "allowedValues": [
-         "Standard_LRS",
-         "Standard_ZRS",
-         "Standard_GRS",
-         "Standard_RAGRS",
-         "Premium_LRS"
-       ],
-       "defaultValue": "Standard_LRS",
-       "metadata": {
-         "description": "The type of replication to use for the storage account."
-       }
-     }
-   },
-   ```
-
-3. 更改 SKU 属性，以便使用参数中的值：
-
-   ```json
-   "sku": {
-     "name": "[parameters('storageSKU')]"
-   },
-   ```    
-
-4. 保存文件。
-
-## <a name="final-template"></a>最终模板
+保存文件。 
 
 完成本文中的步骤以后，模板将如下所示：
 
@@ -300,14 +223,6 @@ VS Code 会再次帮助你，为你建议可用的函数。
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "storageNamePrefix": {
-      "type": "string",
-      "maxLength": 11,
-      "defaultValue": "storage",
-      "metadata": {
-        "description": "The value to use for starting the storage account name."
-      }
-    },
     "storageSKU": {
       "type": "string",
       "allowedValues": [
@@ -321,32 +236,77 @@ VS Code 会再次帮助你，为你建议可用的函数。
       "metadata": {
         "description": "The type of replication to use for the storage account."
       }
+    },   
+    "storageNamePrefix": {
+      "type": "string",
+      "maxLength": 11,
+      "defaultValue": "storage",
+      "metadata": {
+        "description": "The value to use for starting the storage account name. Use only lowercase letters and numbers."
+      }
     }
   },
   "variables": {
-    "storageName": "[concat(parameters('storageNamePrefix'), uniqueString(resourceGroup().id))]"
+    "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
   },
   "resources": [
     {
       "name": "[variables('storageName')]",
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-12-01",
+      "apiVersion": "2016-01-01",
       "sku": {
         "name": "[parameters('storageSKU')]"
       },
       "kind": "Storage",
       "location": "[resourceGroup().location]",
       "tags": {},
-      "properties": {
-      }
+      "properties": {}
     }
   ],
   "outputs": {  }
 }
 ```
 
+## <a name="redeploy-template"></a>重新部署模板
+
+请使用不同的值重新部署模板。
+
+对于 PowerShell，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile azuredeploy.json -storageNamePrefix newstore -storageSKU Standard_RAGRS
+```
+
+对于 Azure CLI，请使用：
+
+```azurecli
+az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
+```
+
+对于 Cloud Shell，请将更改的模板上传到文件共享。 覆盖现有文件。 然后，使用以下命令：
+
+```azurecli
+az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
+```
+
+## <a name="clean-up-resources"></a>清理资源
+
+不再需要时，请通过删除资源组来清理部署的资源。
+
+对于 PowerShell，请使用：
+
+```powershell
+Remove-AzureRmResourceGroup -Name examplegroup
+```
+
+对于 Azure CLI，请使用：
+
+```azurecli
+az group delete --name examplegroup
+```
+
 ## <a name="next-steps"></a>后续步骤
-* 模板已完成，可以将其部署到订阅了。 若要进行部署，请参阅[将资源部署到 Azure](resource-manager-quickstart-deploy.md)。
 * 若要详细了解模板的结构，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
+* 若要了解存储帐户的属性，请查看[存储帐户模板参考](/azure/templates/microsoft.storage/storageaccounts)。
 * 若要查看许多不同类型的解决方案的完整模型，请参阅 [Azure Quickstart Templates](https://azure.microsoft.com/documentation/templates/)（Azure 快速入门模板）。
 

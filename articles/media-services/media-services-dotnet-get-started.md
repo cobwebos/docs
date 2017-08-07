@@ -1,6 +1,6 @@
 ---
 title: "使用 .NET 按需传送内容入门 | Microsoft Docs"
-description: "本教程将引导你完成使用 Azure 媒体服务和 .NET 实施点播内容传送应用程序的步骤。"
+description: "本教程会引导完成使用 Azure 媒体服务和 .NET 实施点播内容传送应用程序的步骤。"
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 07/16/2017
+ms.date: 07/31/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: a8e69933b977f60d09837f0f0360a274ef1b5dcd
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: e80fe0970ec130754c2c058789e1d1e2a9492216
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 07/18/2017
 5. 播放内容。
 
 ## <a name="overview"></a>概述
-本教程将引导你完成使用用于 .NET 的 Azure 媒体服务 (AMS) SDK 实施视频点播 (VoD) 内容传送应用程序的步骤。
+本教程会引导完成使用用于 .NET 的 Azure 媒体服务 (AMS) SDK 实施视频点播 (VoD) 内容传送应用程序的步骤。
 
 本教程介绍了基本的媒体服务工作流，以及进行媒体服务开发需要用到的最常见编程对象和任务。 完成本教程后，你就能够流式传输或渐进下载你已上传、编码和下载的示例媒体文件。
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 07/18/2017
 2. 在“设置”窗口中，单击“流式处理终结点”。
 3. 单击默认的流式处理终结点。
 
-    此时将显示“默认流式处理终结点详细信息”窗口。
+    此时会显示“默认流式处理终结点详细信息”窗口。
 
 4. 单击“启动”图标。
 5. 单击“保存”按钮保存更改。
@@ -82,20 +82,20 @@ ms.lasthandoff: 07/18/2017
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
 1. 设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
-2. 创建新的文件夹（文件夹可以位于本地驱动器上的任何位置），然后复制需要编码和流处理或渐进式下载的 .mp4 文件。 在此示例中，我们使用了“C:\VideoFiles”路径。
+2. 创建新的文件夹（文件夹可以位于本地驱动器上的任何位置），并复制需要编码和流处理或渐进式下载的 .mp4 文件。 在此示例中，我们使用了“C:\VideoFiles”路径。
 
 ## <a name="connect-to-the-media-services-account"></a>连接到媒体服务帐户
 
-使用采用 .NET 的媒体服务时，你必须将 **CloudMediaContext** 类用于大多数媒体服务编程任务：连接到媒体服务帐户；创建、更新、访问和删除以下对象：资产、资产文件、作业、访问策略、定位符等等。
+使用采用 .NET 的媒体服务时，必须将 **CloudMediaContext** 类用于大多数媒体服务编程任务：连接到媒体服务帐户；创建、更新、访问和删除以下对象：资产、资产文件、作业、访问策略、定位符等等。
 
-使用以下代码覆盖默认程序类。 该代码演示如何从 App.config 文件中读取连接值，以及如何创建 **CloudMediaContext** 对象以连接到媒体服务。 有关连接到媒体服务的详细信息，请参阅 [使用适用于 .NET 的媒体服务 SDK 连接到媒体服务](media-services-dotnet-connect-programmatically.md)。
+使用以下代码覆盖默认程序类。 该代码演示如何从 App.config 文件中读取连接值，以及如何创建 **CloudMediaContext** 对象以连接到媒体服务。 有关详细信息，请参阅[连接到媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。
 
 确保更新保存媒体文件所需的文件名和路径。
 
-**Main** 函数调用将在本部分中进一步定义的方法。
+**Main** 函数调用会在本部分中进一步定义的方法。
 
 > [!NOTE]
-> 你将收到编译错误，直到为所有函数添加定义为止。
+> 将收到编译错误，直到为所有函数添加定义为止。
 
     class Program
     {
@@ -149,13 +149,14 @@ ms.lasthandoff: 07/18/2017
 
 **CreateFromFile** 方法采用 **AssetCreationOptions**，可用于指定以下任一资产创建选项：
 
-* **无** - 不使用加密。 这是默认值。 请注意，使用此选项时，你的内容在传送过程中或静态存储过程中都不会受到保护。
+* **无** - 不使用加密。 这是默认值。 请注意，使用此选项时，内容在传送过程中或静态存储过程中都不会受到保护。
   如果计划使用渐进式下载交付 MP4，则使用此选项。
-* **StorageEncrypted** - 使用此选项可以通过高级加密标准 (AES) 256 位加密在本地加密明文内容，然后将其上传到 Azure 存储中以加密形式静态存储相关内容。 受存储加密保护的资产将在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上传为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
+* **StorageEncrypted** - 使用此选项可以通过高级加密标准 (AES) 256 位加密在本地加密明文内容，然后将其上传到 Azure 存储中以加密形式静态存储相关内容。 受存储加密保护的资产会在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上传为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
 * **CommonEncryptionProtected** - 上传经过通用加密或 PlayReady DRM 加密并受其保护的内容（例如，受 PlayReady DRM 保护的平滑流）时使用此选项。
 * **EnvelopeEncryptionProtected** - 如果要上传使用 AES 加密的 HLS，请使用此选项。 请注意，Transform Manager 必须已对文件进行编码和加密。
 
-**CreateFromFile** 方法还允许你指定回调，以报告文件的上传进度。
+
+            **CreateFromFile** 方法还允许指定回调，以报告文件的上传进度。
 
 在以下示例中，指定了 **None** 作为资产选项。
 
@@ -180,13 +181,13 @@ ms.lasthandoff: 07/18/2017
 ## <a name="encode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a>将源文件编码为一组自适应比特率 MP4 文件
 将资产引入媒体服务后，即可对媒体进行编码、传输复用、打水印等处理，然后将其传送至客户端。 将根据多个后台角色实例调度把那个运行这些活动，以确保较高的性能和可用性。 这些活动称为作业，每个作业由原子任务构成，这些原子任务在资产文件上完成具体的工作。
 
-如前所述，使用 Azure 媒体服务时最常见的方案之一是将自适应比特率流传送至你的客户端。 媒体服务可以将一组自适应比特率 MP4 文件动态打包为以下其中一种格式：HTTP Live Streaming (HLS)、平滑流式处理和 MPEG DASH。
+如前所述，使用 Azure 媒体服务时最常见的方案之一是将自适应比特率流传送至客户端。 媒体服务可以将一组自适应比特率 MP4 文件动态打包为以下其中一种格式：HTTP Live Streaming (HLS)、平滑流式处理和 MPEG DASH。
 
-若要利用动态打包，需将夹层（源）文件编码或转换成一组自适应比特率 MP4 文件或自适应比特率平滑流文件。  
+要利用动态打包，需将夹层（源）文件编码或转换成一组自适应比特率 MP4 文件或自适应比特率平滑流文件。  
 
 以下代码演示如何提交编码作业。 该作业所包含的一项任务会指定要使用 **Media Encoder Standard**将夹层文件转码成一组自适应比特率 MP4。 代码会提交作业，并等待作业完成。
 
-作业完成后，你即可流式处理资产，或渐进式下载转码后所创建的 MP4 文件。
+作业完成后，即可流式处理资产，或渐进式下载转码后所创建的 MP4 文件。
 
 将以下方法添加到 Program 类。
 
@@ -226,7 +227,7 @@ ms.lasthandoff: 07/18/2017
 
 ## <a name="publish-the-asset-and-get-urls-for-streaming-and-progressive-download"></a>发布资产并获取用于流式处理和渐进式下载的 URL
 
-若要流处理或下载资产，你必须先创建定位符来“发布”资产。 定位符提供对资产中所含文件的访问权限。 媒体服务支持两种类型的定位符：用于流媒体（例如 MPEG DASH、HLS 或平滑流式处理）的 OnDemandOrigin 定位符，以及用于下载媒体文件的访问签名 (SAS) 定位符（有关 SAS 定位符的详细信息，请参阅[此](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/)博客）。
+要流处理或下载资产，必须先创建定位符来“发布”资产。 定位符提供对资产中所含文件的访问权限。 媒体服务支持两种类型的定位符：用于流媒体（例如 MPEG DASH、HLS 或平滑流式处理）的 OnDemandOrigin 定位符，以及用于下载媒体文件的访问签名 (SAS) 定位符（有关 SAS 定位符的详细信息，请参阅[此](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/)博客）。
 
 ### <a name="some-details-about-url-formats"></a>有关 URL 格式的一些详细信息
 
@@ -357,9 +358,9 @@ MPEG DASH
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_AAC_und_ch2_56kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
 
-若要流式传输视频，请将 URL 粘贴到 [Azure 媒体服务播放器](http://amsplayer.azurewebsites.net/azuremediaplayer.html)的 URL 文本框中。
+要流式传输视频，请将 URL 粘贴到 [Azure 媒体服务播放器](http://amsplayer.azurewebsites.net/azuremediaplayer.html)的 URL 文本框中。
 
-若要测试渐进式下载，请将 URL 粘贴到浏览器（例如 Internet Explorer、Chrome 或 Safari）中。
+要测试渐进式下载，请将 URL 粘贴到浏览器（例如 Internet Explorer、Chrome 或 Safari）中。
 
 相关详细信息，请参阅以下主题：
 

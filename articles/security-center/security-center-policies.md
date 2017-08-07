@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/18/2017
+ms.date: 07/27/2017
 ms.author: yurid
 ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: aefec15c72c6cf8389a29b03be70abb4c7f020b9
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: f4e3f74ce3f342eecf633cd748e2b7b21b2ccdd2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>在 Azure 安全中心设置安全策略
 本文档介绍如何在安全中心配置安全策略，指导用户完成执行此任务所必需的步骤。
 
 >[!NOTE] 
->自 2017 年 6 月初开始，安全中心将使用 Microsoft Monitoring Agent 来收集和存储数据。 请参阅 [Azure 安全中心平台迁移](security-center-platform-migration.md)，了解详细信息。 本文中的信息表示转换到 Microsoft Monitoring Agent 后的安全中心功能。
+>自 2017 年 6 月初开始，安全中心使用 Microsoft Monitoring Agent 来收集和存储数据。 请参阅 [Azure 安全中心平台迁移](security-center-platform-migration.md)，了解详细信息。 本文中的信息表示转换到 Microsoft Monitoring Agent 后的安全中心功能。
 >
 
 ## <a name="what-are-security-policies"></a>什么是安全策略？
@@ -49,7 +49,7 @@ ms.lasthandoff: 07/19/2017
 
 5. 在“安全策略”边栏选项卡中，单击“保护策略”查看可用选项。 单击“启用”，启用此订阅相关的安全建议。
 
-    ![选择安全策略](./media/security-center-policies/security-center-policies-fig4-newUI.png)
+    ![选择安全策略](./media/security-center-policies/security-center-policies-fig7.png)
 
 若要了解每个选项，可使用下表作为参考：
 
@@ -65,9 +65,10 @@ ms.lasthandoff: 07/19/2017
 | SQL 审核和威胁检测 |建议允许审核对 Azure 数据库的访问权限，确保合规性；并启用高级威胁检测以便进行调查。 |
 | SQL 加密 |建议为 Azure SQL 数据库、关联的备份和事务日志文件启用静态加密。 即使数据被侵犯，入侵者也无法读取这些数据。 |
 | 漏洞评估 |建议在 VM 上安装漏洞评估解决方案。 |
-| 存储加密 |目前，此功能仅适用于 Azure Blob 和文件。 请注意，在启用存储服务加密以后，只会加密新数据，该存储帐户中的任何现有文件仍会保持不加密状态。 |
+| 存储加密 |目前，此功能仅适用于 Azure Blob 和文件。 在启用存储服务加密以后，只会加密新数据，该存储帐户中的任何现有文件仍会保持不加密状态。 |
+| JIT 网络访问 |当启用了恰时访问时，安全中心会通过创建 NSG 规则来锁定发往 Azure VM 的入站流量。 需要选择应锁定 VM 上的哪些端口的入站流量。 有关详细信息，请参阅[使用恰时功能管理虚拟机访问](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)。 |
 
-配置所有选项以后，在包含建议的“安全策略”边栏选项卡中单击“确定”，然后在包含初始设置的“安全策略”边栏选项卡中单击“保存”。
+配置所有选项以后，在包含建议的“安全策略”边栏选项卡中单击“确定”，并在包含初始设置的“安全策略”边栏选项卡中单击“保存”。
 
 > [!NOTE]
 > 定价层仍适用于资源组级别。 有关详细信息，请访问[定价](https://azure.microsoft.com/pricing/details/security-center/)页。

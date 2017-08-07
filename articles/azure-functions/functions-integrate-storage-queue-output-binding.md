@@ -16,28 +16,24 @@ ms.workload: na
 ms.date: 05/02/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: d1ddfbe9a0a0c7c7e0a060776938bd68a87e1ba5
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 3eae02f7cf756e8e24d4f1952d12c37f2ad4b400
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/26/2017
+ms.lasthandoff: 08/02/2017
 
 ---
-# 使用 Functions 将消息添加到 Azure 存储队列
-<a id="add-messages-to-an-azure-storage-queue-using-functions" class="xliff"></a>
+# <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>使用 Functions 将消息添加到 Azure 存储队列
 
 在 Azure Functions 中，输入和输出绑定提供从函数连接到外部服务数据的声明性方式。 在本主题中，了解如何通过添加用于将消息发送到 Azure 队列存储的输出绑定来更新现有函数。  
 
 ![在日志中查看消息。](./media/functions-integrate-storage-queue-output-binding/functions-integrate-storage-binding-in-portal.png)
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a> 
+## <a name="prerequisites"></a>先决条件 
 
 [!INCLUDE [Previous topics](../../includes/functions-quickstart-previous-topics.md)]
 
 * 安装 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)。
-
-[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)] 
 
 ## <a name="add-binding"></a>添加输出绑定
  
@@ -47,7 +43,7 @@ ms.lasthandoff: 06/26/2017
     
     ![将队列存储输出绑定添加到 Azure 门户中的函数。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
-3. 使用表中指定的设置，然后选择“保存”： 
+3. 使用表中指定的设置： 
 
     ![将队列存储输出绑定添加到 Azure 门户中的函数。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
@@ -57,10 +53,11 @@ ms.lasthandoff: 06/26/2017
     | **存储帐户连接** | AzureWebJobStorage | 可以使用 Function App 已在使用的存储帐户连接，也可以创建一个新的存储帐户连接。  |
     | **消息参数名称** | outQueueItem | 输出绑定参数的名称。 | 
 
+4. 单击“保存”添加绑定。
+ 
 现在，已定义输出绑定，需要更新代码以使用绑定将消息添加到队列。  
 
-## 更新函数代码
-<a id="update-the-function-code" class="xliff"></a>
+## <a name="update-the-function-code"></a>更新函数代码
 
 1. 选择函数以在编辑器中显示函数代码。 
 
@@ -89,19 +86,17 @@ ms.lasthandoff: 06/26/2017
 
 传递给 HTTP 触发器的值将包含在添加到队列的消息中。
  
-## 测试函数
-<a id="test-the-function" class="xliff"></a> 
+## <a name="test-the-function"></a>测试函数 
 
 1. 保存代码更改后，选择“运行”。 
 
     ![将队列存储输出绑定添加到 Azure 门户中的函数。](./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png)
 
-2. 检查日志以确保该函数成功。 首次使用输出绑定时，Functions 运行时将在存储帐户中创建名为 **outqueue** 的新队列。
+2. 检查日志以确保该函数成功。 首次使用输出绑定时，Functions 运行时会在存储帐户中创建名为 **outqueue** 的新队列。
 
 接下来，可以连接到存储帐户以验证新队列和添加到它的消息。 
 
-## 连接到队列
-<a id="connect-to-the-queue" class="xliff"></a>
+## <a name="connect-to-the-queue"></a>连接到队列
 
 如果已安装存储资源管理器并已将其连接到存储帐户，请跳过前三个步骤。    
 
@@ -122,13 +117,11 @@ ms.lasthandoff: 06/26/2017
     ![创建存储队列。](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
  
 
-## 清理资源
-<a id="clean-up-resources" class="xliff"></a>
+## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 已将输出绑定添加到现有函数。 
 

@@ -3,7 +3,7 @@ title: "使用 Azure API 管理保护 API | Microsoft Docs"
 description: "了解如何使用配额和限制（速率限制）策略保护 API。"
 services: api-management
 documentationcenter: 
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 450dc368-d005-401d-ae64-3e1a2229b12f
@@ -14,21 +14,22 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 9dba928b78c11213d4b0098986561b09678444eb
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="protect-your-api-with-rate-limits-using-azure-api-management"></a>使用 Azure API 管理借助速率限制保护 API
 本指南演示如何通过使用 Azure API 管理配置速率限制和配额策略轻松地为后端 API 添加保护。
 
-在本教程中，将使用[限制每个订阅的调用速率](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate)和[设置每个订阅的使用配额](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota)策略创建一个“免费试用版”API 产品，该产品允许开发人员对 API 每分钟最多进行 10 次调用且每周最多进行 200 次调用。 然后，将发布 API，并测试速率限制策略。
+在本教程中，将使用[限制每个订阅的调用速率](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate)和[设置每个订阅的使用配额](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota)策略创建一个“免费试用版”API 产品，该产品允许开发人员对 API 每分钟最多进行 10 次调用且每周最多进行 200 次调用。 然后会发布 API，并测试速率限制策略。
 
 有关使用 [rate-limit-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) 和 [quota-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey) 策略的更高级限制方案，请参阅[使用 Azure API 管理设置高级请求限制](api-management-sample-flexible-throttling.md)。
 
 ## <a name="create-product"> </a>创建产品
-在此步骤中，您将创建一种免费试用版产品，不需要订阅审批。
+在此步骤中，将创建一种免费试用版产品，不需要订阅审批。
 
 > [!NOTE]
 > 如果已配置产品并想要在本教程中使用它，可以跳转到[配置调用速率限制和配额策略][Configure call rate limit and quota policies]，并按照那里的教程使用产品来代替免费试用版产品。
@@ -53,11 +54,11 @@ ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
 
 在“标题”框中，键入“免费试用版”。
 
-在“说明”框中，键入以下文本：“订阅者将能够每分钟运行 10 次调用，最多每周运行 200 次调用，此后，访问将被拒绝。” ****
+在“说明”框中，键入以下文本：“订阅者能够每分钟运行 10 次调用，最多每周运行 200 次调用，此后，访问会被拒绝。”
 
-可以保护或打开 API 管理中的产品。 受保护的产品必须先订阅，然后才能使用。 打开的产品无需订阅即可使用。 请确保选中“需要订阅”  ，才能创建需要订阅的受保护产品。 此设置为默认设置。
+可以保护或打开 API 管理中的产品。 受保护的产品必须先订阅，才能使用。 打开的产品无需订阅即可使用。 请确保选中“需要订阅”  ，才能创建需要订阅的受保护产品。 此设置为默认设置。
 
-如果希望管理员审查并接受或拒绝此产品的订阅尝试，请选中“需要订阅审批” 。 如果未选中该复选框，则订阅尝试将自动批准。 在此示例中，将自动批准订阅，因此未选中该框。
+如果希望管理员审查并接受或拒绝此产品的订阅尝试，请选中“需要订阅审批” 。 如果未选中该复选框，则订阅尝试会自动批准。 在此示例中，会自动批准订阅，因此未选中该框。
 
 若要允许开发人员帐户多次订阅新产品，请选中“允许多个同时订阅”  复选框。 本教程不使用多个同时订阅，因此将它保留为未选中状态。
 
@@ -65,7 +66,7 @@ ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
 
 ![添加的产品][api-management-product-added]
 
-默认情况下，新产品对“管理员”组中的用户可见  。 我们要添加“开发人员”组  。 单击“免费试用版”，然后单击“可见性”选项卡。
+默认情况下，新产品对“管理员”组中的用户可见  。 我们要添加“开发人员”组  。 单击“免费试用版”，并单击“可见性”选项卡。
 
 > 在 API 管理中，使用组来管理产品对开发人员的可见性。 产品向组授予可见性，并且开发人员可以查看和订阅对他们所属的组可见的产品。 有关详细信息，请参阅[如何创建和使用 Azure API 管理中的组][How to create and use groups in Azure API Management]。
 > 
@@ -73,7 +74,7 @@ ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
 
 ![添加开发人员组][api-management-add-developers-group]
 
-选中“开发人员”复选框，然后单击“保存”。
+选中“开发人员”复选框，并单击“保存”。
 
 ## <a name="add-api"> </a>将 API 添加到产品
 在教程的此步骤中，我们将 Echo API 添加到新的免费试用版产品。
@@ -82,20 +83,22 @@ ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
 > 
 > 
 
-单击左侧“API 管理”菜单中的“产品”，然后单击“免费试用版”以配置该产品。
+单击左侧“API 管理”菜单中的“产品”，并单击“免费试用版”以配置该产品。
 
 ![配置产品][api-management-configure-product]
 
-单击“将 API 添加到产品” 。
+单击“将 API 添加到产品”。
 
 ![将 API 添加到产品][api-management-add-api]
 
-选择“Echo API”，然后单击“保存”。
+选择“Echo API”，并单击“保存”。
 
 ![添加 Echo API][api-management-add-echo-api]
 
 ## <a name="policies"> </a>配置调用速率限制和配额策略
-在策略编辑器中配置速率限制和配额。 单击左侧“API 管理”菜单下的“策略”。 在“产品”列表中，单击“免费试用版”。
+在策略编辑器中配置速率限制和配额。 我们会在本教程中添加的两个策略是[限制每个订阅的调用速率](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate)和[设置每个订阅的使用配额](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota)策略。 必须在产品范围应用这些策略。
+
+单击左侧“API 管理”菜单下的“策略”。 在“产品”列表中，单击“免费试用版”。
 
 ![产品策略][api-management-product-policy]
 
@@ -103,11 +106,11 @@ ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
 
 ![添加策略][api-management-add-policy]
 
-若要插入策略，请将光标放置到策略模板的 inbound 或 outbound 节中。 速率限制和配额策略是入站的策略，因此将光标定位在入站元素中。
+速率限制和配额策略是入站的策略，因此将光标定位在入站元素中。
 
 ![策略编辑器][api-management-policy-editor-inbound]
 
-我们将在本教程中添加的两个策略是[限制每个订阅的调用速率](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate)和[设置每个订阅的使用配额](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota)策略。
+策略 滚动访问策略列表，找到“限制每个订阅的调用速率”策略条目。
 
 ![策略语句][api-management-limit-policies]
 
@@ -121,7 +124,7 @@ ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
 </rate-limit>
 ```
 
-**限制每个订阅的调用速率** 可在产品级别使用，也可在 API 和单个操作名称级别使用。 在本教程中，仅使用产品级别策略，因此请从 **rate-limit** 元素中删除 **api** 和 **operation** 元素，因此，只有外部的 **rate-limit** 元素仍然保留，如以下示例所示。
+从代码片段中可以看到，策略允许对产品的 API 和操作进行设置限制。 在本教程中，我们将使用该功能，因此请从 **rate-limit** 元素中删除 **api** 和 **operation** 元素，使得只有外部的 **rate-limit** 元素仍然保留，如以下示例所示。
 
 ```xml
 <rate-limit calls="number" renewal-period="seconds">
@@ -135,7 +138,7 @@ ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
 </rate-limit>
 ```
 
-若要配置“设置每个订阅的使用配额”策略，请直接在 **inbound** 元素中新添加的 **rate-limit** 元素下面定位光标，然后单击“设置每个订阅的使用配额”左侧的箭头。
+若要配置“设置每个订阅的使用配额”策略，请直接在 **inbound** 元素中新添加的 **rate-limit** 元素下面定位光标，然后找到并单击“设置每个订阅的使用配额”左侧的箭头。
 
 ```xml
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
@@ -145,7 +148,7 @@ ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
 </quota>
 ```
 
-由于此策略还设计用在产品级别，因此请删除 **api** 和 **operation** 名称元素，如下例中所示。
+“设置每个订阅的使用配额”策略类似于“限制每个订阅的调用速率”策略，允许对产品的 API 和操作进行设置限制。 在本教程中，我们将使用该功能，因此请从 **quota** 元素中删除 **api** 和 **operation** 元素，如以下示例所示。
 
 ```xml
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
@@ -159,7 +162,7 @@ ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
 </quota>
 ```
 
-在免费试用版产品中，该配额是每周调用 200 次。 指定 **200** 作为 **calls** 属性的值，然后指定 **604800** 作为 **renewal-period** 属性的值。
+在免费试用版产品中，该配额是每周调用 200 次。 指定 **200** 作为 **calls** 属性的值，并指定 **604800** 作为 **renewal-period** 属性的值。
 
 ```xml
 <quota calls="200" renewal-period="604800">
@@ -195,11 +198,11 @@ ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
 ![保存策略][api-management-policy-save]
 
 ## <a name="publish-product"> </a> 发布产品
-现在，已添加 API 且已配置策略，必须发布该产品才可供开发人员使用。 单击左侧“API 管理”菜单中的“产品”，然后单击“免费试用版”以配置该产品。
+现在，已添加 API 且已配置策略，必须发布该产品才可供开发人员使用。 单击左侧“API 管理”菜单中的“产品”，并单击“免费试用版”以配置该产品。
 
 ![配置产品][api-management-configure-product]
 
-单击“发布”，然后单击“是，发布”确认。
+单击“发布”，并单击“是，发布”确认。
 
 ![发布产品][api-management-publish-product]
 
@@ -210,7 +213,7 @@ ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
 > 
 > 
 
-单击左侧“API 管理”菜单上的“用户”，然后单击开发人员帐户的名称。 在此示例中，将使用 **Clayton Gragg** 开发人员帐户。
+单击左侧“API 管理”菜单上的“用户”，并单击开发人员帐户的名称。 在此示例中，将使用 **Clayton Gragg** 开发人员帐户。
 
 ![配置开发人员][api-management-configure-developer]
 
@@ -218,7 +221,7 @@ ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
 
 ![添加订阅][api-management-add-subscription-menu]
 
-选择“免费试用版”，然后单击“订阅”。
+选择“免费试用版”，并单击“订阅”。
 
 ![添加订阅][api-management-add-subscription]
 
@@ -239,15 +242,15 @@ ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
 
 ![开发人员门户][api-management-developer-portal-menu]
 
-单击顶部菜单中的“API”，然后单击“Echo API”。
+单击顶部菜单中的“API”，并单击“Echo API”。
 
 ![开发人员门户][api-management-developer-portal-api-menu]
 
-单击“GET 资源”，然后单击“试用”。
+单击“GET 资源”，并单击“试用”。
 
 ![打开控制台][api-management-open-console]
 
-保留默认参数值，然后选择“免费试用版”产品的订阅密钥。
+保留默认参数值，并选择“免费试用版”产品的订阅密钥。
 
 ![订阅密钥][api-management-select-key]
 
@@ -256,17 +259,17 @@ ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
 > 
 > 
 
-单击“发送” ，然后查看响应。 请注意响应状态为“200 正常”。
+单击“发送” ，并查看响应。 请注意响应状态为“200 正常”。
 
 ![操作结果][api-management-http-get-results]
 
-以大于速率限制策略的每分钟 10 次调用的速率单击“发送”  。 超出速率限制策略后，将返回响应状态“429 太多请求”  。
+以大于速率限制策略的每分钟 10 次调用的速率单击“发送”  。 超出速率限制策略后，将返回响应状态“429 太多请求”。
 
 ![操作结果][api-management-http-get-429]
 
 “响应内容”指示重试次数成功前的剩余时间间隔  。
 
-每分钟 10 次调用的速率限制策略生效时，在超出速率限制前对产品进行前 10 次成功调用经过 60 秒之前，后续调用将失败。 此示例中的剩余时间间隔为 54 秒。
+每分钟 10 次调用的速率限制策略生效时，在超出速率限制前对产品进行前 10 次成功调用经过 60 秒之前，后续调用会失败。 此示例中的剩余时间间隔为 54 秒。
 
 ## <a name="next-steps"> </a>后续步骤
 * 观看以下视频中设置速率限制和配额的演示。
@@ -323,9 +326,4 @@ ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
 
 [Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
 [Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 
