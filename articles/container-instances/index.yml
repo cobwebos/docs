@@ -37,3 +37,11 @@ sections:
           - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">将应用程序打包到容器映像中</a>
           - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-acr">创建 Azure 容器注册表并上传容器映像</a>
           - html: <a href="/azure/container-instances/container-instances-tutorial-deploy-app">将容器映像部署到 Azure 容器实例</a>
+  - title: 引用
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Azure CLI
+            html: <p><a href="/cli/azure/container">Azure CLI 2.0</a></p>
