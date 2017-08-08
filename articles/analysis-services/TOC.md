@@ -1,10 +1,10 @@
 # 概述
 ## [什么是 Azure Analysis Services？](analysis-services-overview.md)
-## [支持的数据源](analysis-services-datasource.md)
 
 # 快速入门
 ## [创建服务器 - 门户](analysis-services-create-server.md)
-## [部署模型 - SSDT](analysis-services-deploy.md)
+## [创建服务器 - PowerShell](analysis-services-create-powershell.md)
+## [部署模型 - Visual Studio](analysis-services-deploy.md)
 
 # 教程
 ## 创建和部署模型
@@ -27,6 +27,7 @@
 ### [补充课程 - 不规则层次结构](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)
 
 # 概念
+## [支持的数据源](analysis-services-datasource.md)
 ## [身份验证和用户权限](analysis-services-manage-users.md)
 ## [高可用性](analysis-services-bcdr.md)
 

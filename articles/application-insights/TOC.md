@@ -92,6 +92,7 @@
 
 ### 使用情况
 #### [概述](app-insights-usage-overview.md)
+#### [发送用户上下文](app-insights-usage-send-user-context.md)
 #### [用户、会话、事件](app-insights-usage-segmentation.md)
 #### [漏斗图](usage-funnels.md)
 #### [保留](app-insights-usage-retention.md)

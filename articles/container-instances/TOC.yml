@@ -25,10 +25,14 @@
       href: container-instances-orchestrator-relationship.md
 - name: 操作指南
   items:
-    - name: 多容器组
+    - name: 部署多容器组
       href: container-instances-multi-container-group.md
     - name: 使用 Azure 文件共享来管理状态
       href: container-instances-mounting-azure-files-volume.md
+    - name: 从 Azure 容器注册表部署
+      href: container-instances-using-azure-container-registry.md
+    - name: 排查部署到 Azure 容器实例的相关问题
+      href: container-instances-troubleshooting.md
 - name: 引用
   items:
     - name: Azure CLI 2.0

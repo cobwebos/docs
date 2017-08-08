@@ -15,22 +15,24 @@
 ### [HSM 保护的密钥](key-vault-hsm-protected-keys.md)
 ### [迁移到.NET 2.0](key-vault-dotnet2api-release-notes.md)
 ### 概述
-#### [安全体系概述](key-vault-ovw-security-worlds.md)
-#### [软删除概述](key-vault-ovw-soft-delete.md)
-#### [存储帐户密钥概述](key-vault-ovw-storage-keys.md)
-#### [限制概述](key-vault-ovw-throttling.md)
+#### [安全体系](key-vault-ovw-security-worlds.md)
+#### [软删除](key-vault-ovw-soft-delete.md)
+#### [存储帐户密钥](key-vault-ovw-storage-keys.md)
+#### [限制](key-vault-ovw-throttling.md)
 
 ## 管理
 ### [Azure 密钥保管库日志记录](key-vault-logging.md)
 ### [在防火墙后面访问](key-vault-access-behind-firewall.md)
-### [更改租户 ID](key-vault-subscription-move-fix.md)
-### [使用组授予访问权限](key-vault-group-permissions-for-apps.md)
 ### [可用性和冗余](key-vault-disaster-recovery-guidance.md)
+### [更改租户 ID](key-vault-subscription-move-fix.md)
+### [使用 CLI 2.0 进行创建和管理](key-vault-manage-with-cli2.md)
+### [如何将 Key Vault 软删除与 CLI 配合使用](key-vault-soft-delete-cli.md)
+### [如何将 Key Vault 软删除与 PowerShell 配合使用](key-vault-soft-delete-powershell.md)
+### [使用组授予访问权限](key-vault-group-permissions-for-apps.md)
 ### [保护密钥保管库](key-vault-secure-your-key-vault.md)
 
 ## 自动化
 ### [Azure 自动化](automation-manage-key-vault.md)
-### [使用 CLI 2.0 进行创建和管理](key-vault-manage-with-cli2.md)
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=key-vault)
