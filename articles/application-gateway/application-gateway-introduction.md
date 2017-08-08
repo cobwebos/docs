@@ -16,15 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 07/10/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: c9aafa13ebdeeb84a35e55e25650f334ddc71af5
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 396d8b9532eb55341670ad61bd4c2a16882b35e4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="overview-of-application-gateway"></a>应用程序网关概述
 
-Microsoft Azure 应用程序网关是一个专用的虚拟设备，以服务形式提供应用程序传送控制器 (ADC)，为应用程序提供各种第 7 层负载均衡功能。 它使客户能够通过将 CPU 密集型 SSL 终端的负载卸载到应用程序网关上来优化 Web 场生产率。 它还提供其他第 7 层路由功能，包括传入流量的轮循机制分配、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后面托管多个网站的能力。 应用程序网关 Web 应用程序防火墙 (WAF) SKU 中还随附 WAF，用于保护 Web 应用程序，使其免受常见 Web 漏洞和攻击的影响。 可以将应用程序网关配置为面向 Internet 的网关、仅内部网关或这两者的组合。 
+Microsoft Azure 应用程序网关是以服务形式提供应用程序传递控制器 (ADC) 的专用虚拟设备。 它为应用程序提供第 7 层的各种负载均衡功能。 它使客户能够通过将 CPU 密集型 SSL 终端的负载卸载到应用程序网关上来优化 Web 场生产率。 它还提供其他第 7 层路由功能，包括传入流量的轮循机制分配、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后面托管多个网站的能力。 Web 应用程序防火墙 (WAF) 也作为应用程序网关 WAF SKU 的一部分提供。 它为 Web 应用程序提供保护，帮助抵御常见 Web 漏洞和攻击。 可以将应用程序网关配置为面向 Internet 的网关、仅内部网关或这两者的组合。 
 
 ![方案](./media/application-gateway-introduction/scenario.png)
 
@@ -33,17 +33,18 @@ Microsoft Azure 应用程序网关是一个专用的虚拟设备，以服务形�
 应用程序网关目前提供以下功能：
 
 
-* **[Web 应用程序防火墙](application-gateway-webapplicationfirewall-overview.md)** - Azure 应用程序网关中的 Web 应用程序防火墙 (WAF) 保护 Web 应用程序免受基于 Web 的常见攻击，例如 SQL 注入、跨站点脚本攻击、会话劫持。
+* [Web 应用程序防火墙](application-gateway-webapplicationfirewall-overview.md) - Azure 应用程序网关中的 Web 应用程序防火墙 (WAF) 保护 Web 应用程序免受基于 Web 的常见攻击，例如 SQL 注入、跨站点脚本攻击、会话劫持。
 * **HTTP 负载均衡** - 应用程序网关提供轮循机制负载均衡。 负载均衡在第 7 层完成，仅用于 HTTP(S) 流量。
-* **基于 Cookie 的会话相关性** - 想要在同一后端保留用户会话时，此功能十分有用。 借助受网关管理的 cookie，应用程序网关能够将来自用户会话的后续流量转到同一后端进行处理。 在会话状态是为用户会话而本地保存在后端服务器的情况下，此功能十分重要。
-* **[安全套接字层 (SSL) 卸载](application-gateway-ssl-arm.md)** - 此功能让 Web 服务器免于执行解密 HTTPS 流量的高成本任务。 通过在应用程序网关终止 SSL 连接，并将请求转发到未加密的服务器，Web 服务器不用承担解密的负担。  应用程序网关会重新加密响应，然后再将它发回客户端。 在后端与 Azure 中的应用程序网关位于同一安全虚拟网络中的情况下，此功能十分有用。
-* **[端到端 SSL](application-gateway-backend-ssl.md)** - 应用程序网关支持对流量进行端到端加密。 应用程序网关通过在应用程序网关上终止 SSL 连接来完成此任务。 网关随后将路由规则应用于流量、重新加密数据包，并根据定义的路由规则将数据包转发到适当的后端。 来自 Web 服务器的任何响应都会经历相同的过程返回最终用户。
-* **[基于 URL 的内容路由](application-gateway-url-route-overview.md)** - 此功能能够使用不同的后端服务器来处理不同的流量。 可将 Web 服务器上的文件夹流量或 CDN 流量路由到不同的后端，让不提供特定内容的后端减少不必要的负载。
-* **[多站点路由](application-gateway-multi-site-overview.md)** - 应用程序网关允许在单个应用程序网关上合并最多 20 个网站。
-* **[WebSocket 支持](application-gateway-websocket.md)** - 应用程序网关的另一个重要功能是对 WebSocket 的本机支持。
-* **[运行状况监视](application-gateway-probe-overview.md)** - 应用程序网关提供默认的后端资源运行状况监视，以及用于监视更多特定方案的自定义探测。
-* **[请求重定向](application-gateway-redirect-overview.md)** - 使用此功能可将 HTTP 请求重定向到 HTTPS 侦听器。
-* **[高级诊断](application-gateway-diagnostics.md)** - 应用程序网关提供完整的诊断和访问日志。 防火墙日志可用于已启用 WAF 的应用程序网关资源。
+* 基于 Cookie 的会话相关性 - 想要在同一后端保留用户会话时，此基于 Cookie 的会话相关性功能十分有用。 借助受网关管理的 Cookie，应用程序网关能够将来自用户会话的后续流量转到同一后端进行处理。 在会话状态是为用户会话而本地保存在后端服务器的情况下，此功能十分重要。
+* [安全套接字层 (SSL) 卸载](application-gateway-ssl-arm.md) - 此功能让 Web 服务器免于执行解密 HTTPS 流量的高成本任务。 通过在应用程序网关终止 SSL 连接，并将请求转发到未加密的服务器，Web 服务器不用承担解密的负担。  应用程序网关会重新加密响应，再将它发回客户端。 在后端与 Azure 中的应用程序网关位于同一安全虚拟网络中的情况下，此功能十分有用。
+* [端到端 SSL](application-gateway-backend-ssl.md) - 应用程序网关支持对流量进行端到端加密。 应用程序网关通过在应用程序网关上终止 SSL 连接来完成此任务。 网关随后将路由规则应用于流量、重新加密数据包，并根据定义的路由规则将数据包转发到适当的后端。 来自 Web 服务器的任何响应都会经历相同的过程返回最终用户。
+* [基于 URL 的内容路由](application-gateway-url-route-overview.md) - 此功能能够使用不同的后端服务器来处理不同的流量。 可以将 Web 服务器上某个文件夹的流量或 CDN 的流量路由到其他后端。 对于不处理特定内容的后端，此功能可以减少其上的不必要负载。
+* [多站点路由](application-gateway-multi-site-overview.md) - 应用程序网关允许在单个应用程序网关上合并最多 20 个网站。
+* [WebSocket 支持](application-gateway-websocket.md) - 应用程序网关的另一个重要功能是对 WebSocket 的本机支持。
+* [运行状况监视](application-gateway-probe-overview.md) - 应用程序网关提供默认的后端资源运行状况监视，以及用于监视更多特定方案的自定义探测。
+* [请求重定向](application-gateway-redirect-overview.md) - 使用此功能可将 HTTP 请求重定向到 HTTPS 侦听器。
+* [多租户后端支持](application-gateway-web-app-overview.md) - 应用程序网关支持将多租户后端服务（例如 Azure Web 应用和 API 网关）配置为后端池成员。 
+* [高级诊断](application-gateway-diagnostics.md) - 应用程序网关提供完整的诊断和访问日志。 防火墙日志可用于已启用 WAF 的应用程序网关资源。
 
 ## <a name="benefits"></a>优点
 
@@ -86,13 +87,13 @@ Azure 应用程序网关会通过基本或自定义运行状况探测，自动�
 
 ## <a name="configuring-and-managing"></a>配置和管理
 
-对于其终结点，应用程序网关在配置时可以拥有公共 IP、专用 IP 或同时拥有两者。 应用程序网关在其自己的子网中的虚拟网络内进行配置。 为应用程序网关创建或使用的子网不能包含任何其他类型的资源，子网中唯一允许使用的资源是其他应用程序网关。 若要保护后端资源，可以将后端服务器放在与应用程序网关位于同一虚拟网络中的其他子网内。 后端应用程序不需要这个附加的子网，只要应用程序网关可以连接到 IP 地址，应用程序网关就能够为后端服务器提供 ADC 功能。 
+对于其终结点，应用程序网关在配置时可以拥有公共 IP、专用 IP 或同时拥有两者。 应用程序网关在其自己的子网中的虚拟网络内进行配置。 为应用程序网关创建或使用的子网不能包含任何其他类型的资源，子网中唯一允许使用的资源是其他应用程序网关。 要保护后端资源，可以将后端服务器放在与应用程序网关位于同一虚拟网络中的其他子网内。 对于后端应用程序来说，此子网不是必需的。 只要可以访问 IP 地址，应用程序网关就能够为后端服务器提供 ADC 功能。 
 
 可以使用 REST API、PowerShell cmdlet、Azure CLI 或 [Azure 门户](https://portal.azure.com/)来创建和管理应用程序网关。 有关应用程序网关的其他问题，请查看[应用程序网关常见问题](application-gateway-faq.md)中所列的常见问题列表。
 
 ## <a name="pricing"></a>定价
 
-定价基于每小时网关实例费和数据处理费。 WAF SKU 的每小时网关定价不同于标准 SKU 费用，具体请参阅[应用程序网关定价详细信息](https://azure.microsoft.com/pricing/details/application-gateway/)。 数据处理费保持不变。
+定价基于每小时网关实例费和数据处理费。 WAF SKU 的每小时网关定价不同于标准 SKU 收费。 [应用程序网关定价详细信息](https://azure.microsoft.com/pricing/details/application-gateway/)中提供了此定价信息。 数据处理费保持不变。
 
 ## <a name="faq"></a>常见问题
 

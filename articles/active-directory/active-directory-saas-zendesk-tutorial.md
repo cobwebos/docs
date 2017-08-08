@@ -142,7 +142,7 @@ ms.lasthandoff: 07/04/2017
     e. 单击“确定”
  
     > [!NOTE] 
-    > 可以使用扩展属性添加默认情况下不在 Azure AD 中的属性。 单击“可在 SAML 中设置的用户属性”[](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise-)，获取 Zendesk 接受的 SAML 属性的完整列表。 
+    > 可以使用扩展属性添加默认情况下不在 Azure AD 中的属性。 单击 [可在 SAML 中设置的用户属性](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise-)，获取 Zendesk 接受的 SAML 属性的完整列表。 
 
 5. 在“SAML 签名证书”部分中，复制证书的指纹值。
 

@@ -99,7 +99,7 @@ BES 示例代码将本地驱动器（例如，“C:\temp\CensusIpnput.csv”）�
 6. 在该页顶部，单击“**容器**”。
 7. 选择现有容器或创建新的容器并保存名称。
 
-定位“StorageAccountName”**、“StorageAccountKey”和“StorageContainerName”声明，然后更新从经典门户保存的值。
+定位“StorageAccountName”、“StorageAccountKey”和“StorageContainerName”声明，然后更新从经典门户保存的值。
 
     const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
     const string StorageAccountKey = "a_storage_account_key"; // Replace this with your Azure Storage key

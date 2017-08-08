@@ -94,7 +94,6 @@
 #### [写入 Data Lake Store](hdinsight-storm-write-data-lake-store.md)
 #### [使用 Maven 开发基于 Java 的拓扑](hdinsight-storm-develop-java-topology.md)
 #### [使用 Hadoop 工具开发 C# 拓扑](hdinsight-storm-develop-csharp-visual-studio-topology.md)
-#### [确定 Twitter 趋势主题](hdinsight-storm-twitter-trending.md)
 #### [使用 C# 拓扑处理事件](hdinsight-storm-develop-csharp-event-hub-topology.md)
 #### [使用 Java 拓扑处理事件](hdinsight-storm-develop-java-event-hub-topology.md)
 #### [在拓扑中使用 Power BI](hdinsight-storm-power-bi-topology.md)

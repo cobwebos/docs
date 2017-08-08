@@ -113,7 +113,7 @@ ms.lasthandoff: 07/12/2017
 ## <a name="create-a-bash-script-to-run-a-namd-job"></a>创建 Bash 脚本以运行 NAMD 作业
 NAMD 作业需要一个适用于 *charmrun* 的 **nodelist** 文件，确定启动 NAMD 流程时要使用的节点数量。 使用 Bash 脚本生成 nodelist 文件并使用此 nodelist 文件运行 **charmrun**。 然后，你可以在 HPC 群集管理器中提交 NAMD 作业并调用此脚本。
 
-使用你选择的文本编辑器，在包含 NAMD 程序文件的 /namd2 文件夹中创建 Bash 脚本并将其命名为 hpccharmrun.sh。 为了快速完成概念认证，将复制本文末尾提供的示例 hpccharmrun.sh 脚本并转到“提交 NAMD 作业”。[](#submit-a-namd-job)
+使用你选择的文本编辑器，在包含 NAMD 程序文件的 /namd2 文件夹中创建 Bash 脚本并将其命名为 hpccharmrun.sh。 为了快速完成概念认证，将复制本文末尾提供的示例 hpccharmrun.sh 脚本并转到 [提交 NAMD 作业](#submit-a-namd-job)。
 
 > [!TIP]
 > 将你的脚本保存为带有 Linux 换行（仅 LF，而不是 CR LF）的文本文件。 这可确保其在 Linux 节点上正常运行。

@@ -10,92 +10,74 @@ tags:
 keywords: "Azure Functions, Functions, 事件处理, Cosmos DB, 动态计算, 无服务器体系结构"
 ms.assetid: 
 ms.service: functions
-ms.devlang: multiple
+ms.devlang: csharp
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 07/08/2017
-ms.author: rachelap
+ms.date: 08/03/2017
+ms.author: rachelap, glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 492c916a493bb8d5c5415fc517506e5c1ccffc56
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 00e9a76fed5743d7d74bafd333b87edf59a4f8bb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/10/2017
+ms.lasthandoff: 08/02/2017
 
 ---
-# 使用 Azure Functions 和 Cosmos DB 存储非结构化数据
-<a id="store-unstructured-data-using-azure-functions-and-cosmos-db" class="xliff"></a>
+# <a name="store-unstructured-data-using-azure-functions-and-cosmos-db"></a>使用 Azure Functions 和 Cosmos DB 存储非结构化数据
 
-Azure Cosmos DB 是存储非结构化数据和 JSON 数据的良好方式。 将 Cosmos DB 与 Azure Functions 结合使用，可以快速、轻松地存储数据，并且所需的代码也比在关系数据库中存储数据时所需的代码少得多。
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 是存储非结构化数据和 JSON 数据的良好方式。 将 Cosmos DB 与 Azure Functions 结合使用，可以快速、轻松地存储数据，并且所需的代码也比在关系数据库中存储数据时所需的代码少得多。
 
-本教程将逐步讲解如何使用 Azure 门户创建在 Cosmos DB 文档中存储非结构化数据的 Azure 函数。 
+在 Azure Functions 中，输入和输出绑定提供从函数连接到外部服务数据的声明性方式。 本主题介绍如何更新现有的 C# 函数，以便添加输出绑定，在 Cosmos DB 文档中存储非结构化数据。 
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+![Cosmos DB](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-cosmosdb.png)
+
+## <a name="prerequisites"></a>先决条件
+
+完成本教程：
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
-[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
+## <a name="add-an-output-binding"></a>添加输出绑定
 
-## 创建函数
-<a id="create-a-function" class="xliff"></a>
+1. 展开 Function App 和函数。
 
-新建名为 `MyTaskList` 的 C# 泛型 WebHook。
+1. 在页面右上角选择“集成”和“+ 新建输出”。 选择“Azure Cosmos DB”，然后单击“选择”。
 
-1. 展开现有函数列表，然后单击 + 号以新建函数
-1. 选择 GenericWebHook-CSharp 并将其命名为 `MyTaskList`
+    ![添加 Cosmos DB 输出绑定](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-add-new-output-binding.png)
 
-![添加新的 C# 泛型 WebHook Function App](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-create-new-functionapp.png)
+3. 根据表中的指定使用“Azure Cosmos DB 输出”设置： 
 
-## 添加输出绑定
-<a id="add-an-output-binding" class="xliff"></a>
+    ![配置 Cosmos DB 输出绑定](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-configure-cosmosdb-binding.png)
 
-一个 Azure 函数可以有一个触发器和任意数量的输入或输出绑定。 在此示例中，我们将使用 HTTP 请求触发器和 Cosmos DB 文档作为输出绑定。
+    | 设置      | 建议的值  | 说明                                |
+    | ------------ | ---------------- | ------------------------------------------ |
+    | 文档参数名称 | taskDocument | 引用代码中的 Cosmos DB 对象的名称。 |
+    | **数据库名称** | taskDatabase | 用于保存文档的数据库的名称。 |
+    | 集合名称 | TaskCollection | Cosmos DB 数据库集合的名称。 |
+    | 如果为 true，则创建 Cosmos DB 数据库和集合 | 已选中 | 集合不存在，因此创建集合。 |
 
-1. 单击函数的“集成”选项卡以查看或修改函数的触发器和绑定。
-1. 选择位于页面右上角的“新建输出”链接。
+4. 选择“Cosmos DB 文档连接”标签旁边的“新建”，然后选择“+ 新建”。 
 
-注意：HTTP 请求触发器已配置，但你必须添加 Cosmos DB 文档绑定。
+5. 按照表中的指定使用“新建帐户”设置： 
 
-![添加新的 Cosmos DB 输出绑定](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-add-new-output-binding.png)
+    ![配置 Cosmos DB 连接](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-create-CosmosDB.png)
 
-1. 输入创建绑定所需的信息。 使用下表来确定值。
+    | 设置      | 建议的值  | 说明                                |
+    | ------------ | ---------------- | ------------------------------------------ |
+    | **ID** | 数据库的名称 | Cosmos DB 数据库的唯一 ID  |
+    | **API** | SQL (DocumentDB) | 选择文档数据库 API。  |
+    | **订阅** | Azure 订阅 | Azure 订阅  |
+    | **资源组** | myResourceGroup |  使用包含函数应用的现有资源组。 |
+    | **位置**  | 西欧 | 选择一个靠近函数应用的位置，或者一个靠近的其他应用使用已存储文档的位置。  |
 
-![配置 Cosmos DB 输出绑定](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-configure-cosmosdb-binding.png)
+6. 单击“确定”创建该数据库。 创建数据库可能需要几分钟的时间。 创建数据库后，数据库连接字符串存储为函数应用设置。 此应用设置的名称插入Cosmos DB 帐户连接中。 
+ 
+8. 设置连接字符串后，选择“保存”以创建绑定。
 
-|  字段 | 值  |
-|---|---|
-| 文档参数名称 | 引用代码中的 Cosmos DB 对象的名称 |
-| 数据库名称 | 用于保存文档的数据库的名称 |
-| 集合名称 | Cosmos DB 数据库分组的名称 |
-| 是否希望为你创建 Cosmos DB 和集合 | 是或否 |
-| Cosmos DB 帐户连接 | 指向 Cosmos DB 数据库的连接字符串 |
+## <a name="update-the-function-code"></a>更新函数代码
 
-还必须配置与 Cosmos DB 数据库的连接。
-
-1. 单击“Cosmos DB 文档连接”标签旁边的“新建”链接。
-1. 填写字段，然后选择创建 Cosmos DB 文档所需的相应选项。
-
-![配置 Cosmos DB 连接](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-create-CosmosDB.png)
-
-|  字段 | 值  |
-|---|---|
-| ID | Cosmos DB 数据库的唯一 ID  |
-| NoSQL API | Cosmos DB 或 MongoDB  |
-| 订阅 | MSDN 订阅  |
-| 资源组  | 新建组或选择现有组。  |
-| 位置  | 西欧  |
-
-1. 单击“确定”按钮。 当 Azure 创建资源时，你可能需要等待几分钟。
-1. 单击“保存”按钮  。
-
-## 更新函数代码
-<a id="update-the-function-code" class="xliff"></a>
-
-将函数的模板代码替换为以下代码：
-
-请注意，此示例的代码仅采用 C# 语言。
+将现有 C# 函数代码替换为以下代码：
 
 ```csharp
 using System.Net;
@@ -129,43 +111,33 @@ public static HttpResponseMessage Run(HttpRequestMessage req, out object taskDoc
 }
 
 ```
+此代码示例读取 HTTP 请求查询字符串，并将其分配到 `taskDocument` 对象中的字段。 `taskDocument` 绑定从此绑定参数发送对象数据，该参数将存储在已绑定文档数据库中。 该数据库在首次运行函数时创建。
 
-此代码示例读取 HTTP 请求查询字符串，并将其分配为 `taskDocument` 对象的成员。 `taskDocument` 对象自动将数据保存在 Cosmos DB 数据库中，并且甚至在首次使用时会创建该数据库。
+## <a name="test-the-function-and-database"></a>测试函数和数据库
 
-## 测试函数和数据库
-<a id="test-the-function-and-database" class="xliff"></a>
+1. 展开右侧窗口，然后选择“测试”。 在“查询”下单击“+ 添加参数”，然后将以下参数添加到查询字符串：
 
-1. 在函数选项卡中，单击门户右侧的“测试”链接并输入以下 HTTP 查询字符串：
+    + `name`
+    + `task`
+    + `duedate`
 
-| 查询字符串 | 值 |
-|---|---|
-| name | Chris P.Bacon |
-| task | Make a BLT sandwich |
-| duedate | 05/12/2017 |
+2. 单击“运行”并验证是否返回 200 状态。
 
-1. 单击“运行”链接。
-1. 验证该函数是否返回了“HTTP 200 正常”响应代码。
+    ![配置 Cosmos DB 输出绑定](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png)
 
-![配置 Cosmos DB 输出绑定](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png)
+1. 在 Azure 门户左侧展开图标栏，在搜索字段中键入 `cosmos`，然后选择“Azure Cosmos DB”。
 
-确认 Cosmos DB 数据库中已生成一个项。
+    ![搜索 Cosmos DB 服务](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png)
 
-1. 在 Azure 门户中找到你的数据库，然后选择它。
-1. 选择“数据资源管理器”选项。
-1. 展开节点，直到到达文档的条目。
-1. 确认数据库项。 在数据库中，你的数据还将随附元数据。
+2. 选择已创建的数据库，然后选择“数据资源管理器”。 展开“集合”节点，选择新的文档，并确认该文档包含查询字符串值，以及一些其他的元数据。 
 
-![验证 Cosmos DB 项](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-verify-cosmosdb-output.png)
+    ![验证 Cosmos DB 项](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-verify-cosmosdb-output.png)
 
-如果数据在文档中，则表示已成功创建一个在 Cosmos DB 数据库中存储非结构化数据的 Azure 函数。
+你已成功地将绑定添加到 HTTP 触发器，后者在 Cosmos DB 数据库中存储非结构化数据。
 
-## 清理资源
-<a id="clean-up-resources" class="xliff"></a>
+[!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 
-[!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
-
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 [!INCLUDE [functions-quickstart-next-steps](../../includes/functions-quickstart-next-steps.md)]
 

@@ -132,7 +132,7 @@ ms.lasthandoff: 07/04/2017
     >[!NOTE]
     >若要为 M-File 桌面应用程序配置 SSO，请执行后续步骤。 如果只希望为 M-Files Web 版本配置 SSO，则不需执行额外的步骤。  
 
-7. 按后续步骤配置 M-File 桌面应用程序，以便通过 Azure AD 启用 SSO。 若要下载 M-Files，请转到“M-Files 下载”页。[](https://www.m-files.com/en/download-latest-version)
+7. 按后续步骤配置 M-File 桌面应用程序，以便通过 Azure AD 启用 SSO。 若要下载 M-Files，请转到 [M-Files 下载](https://www.m-files.com/en/download-latest-version) 页。
 
 8. 打开“M-Files 桌面设置”窗口。 然后，单击“添加”。
    

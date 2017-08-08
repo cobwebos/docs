@@ -1,3 +1,4 @@
+
 NC 和 NV 大小也称为支持 GPU 的实例。 这些是针对不同方案和用例优化的专用虚拟机，其中包含 NVIDIA 的 GPU 卡。 NV 大小已针对远程可视化效果、流式处理、游戏、编码和 VDI 方案进行了优化和设计，使用 OpenGL 和 DirectX 之类的框架。 NC 大小更适用于计算密集型和网络密集型应用程序和算法，包括基于 CUDA 和 OpenCL 的应用程序和模拟。 
 
 
@@ -7,7 +8,7 @@ NC 实例采用 NVIDIA 的 Tesla K80 卡。 通过将 CUDA 用于能源勘探应
 
 ## <a name="nv-instances"></a>NV 实例
 
-| 大小 | CPU 核心数 | 内存：GiB | 本地 SSD：GiB | GPU | 最大数据磁盘数 |
+| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | 最大数据磁盘数 |
 | --- | --- | --- | --- | --- | --- |
 | Standard_NV6 |6 |56 |380 | 1 | 8 |
 | Standard_NV12 |12 |112 |680 | 2 | 16 |
@@ -17,7 +18,7 @@ NC 实例采用 NVIDIA 的 Tesla K80 卡。 通过将 CUDA 用于能源勘探应
 
 ## <a name="nc-instances"></a>NC 实例
 
-| 大小 | CPU 核心数 | 内存：GiB | 本地 SSD：GiB | GPU | 最大数据磁盘数 |
+| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | 最大数据磁盘数 |
 | --- | --- | --- | --- | --- | --- |
 | Standard_NC6 |6 |56 | 380 | 1 | 8 |
 | Standard_NC12 |12 |112 | 680 | 2 | 16 |

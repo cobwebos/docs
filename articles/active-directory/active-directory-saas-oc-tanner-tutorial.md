@@ -71,7 +71,7 @@ ms.lasthandoff: 07/04/2017
 
     ![应用程序][3]
 
-4. 在搜索框中，键入“O.C. **Tanner - AppreciateHub”。
+4. 在搜索框中，键入“O.C. Tanner - AppreciateHub”。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-oc-tanner-tutorial/tutorial_octannerappreciatehub_search.png)
 
@@ -192,7 +192,7 @@ ms.lasthandoff: 07/04/2017
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“O.C. **Tanner - AppreciateHub”。
+2. 在应用程序列表中，选择“**O.C.Tanner - AppreciateHub**”。
 
     ![配置单一登录](./media/active-directory-saas-oc-tanner-tutorial/tutorial_octannerappreciatehub_app.png) 
 

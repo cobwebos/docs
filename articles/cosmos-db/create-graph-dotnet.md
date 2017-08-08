@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 07/14/2017
+ms.date: 07/28/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: 1794341ed0d4519eef7f065d04ccf86a7e48a4a4
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: a973b81ea5b06c5826cc31c399aae9dec43f5b72
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/17/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="azure-cosmos-db-build-a-net-application-using-the-graph-api"></a>Azure Cosmos DB：使用图形 API 生成 .NET 应用程序
@@ -44,7 +44,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-现在让我们从 github 克隆图形 API 应用、设置连接字符串，并运行。 你将看到以编程方式处理数据是多么容易。 
+现在让我们从 github 克隆图形 API 应用、设置连接字符串，并运行。 会看到以编程方式处理数据是多么容易。 
 
 1. 打开 git 终端窗口（例如 git bash）并使用 `cd` 切换到工作目录。  
 
@@ -54,7 +54,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-dotnet-getting-started.git
     ```
 
-3. 然后在 Visual Studio 中打开解决方案文件。 
+3. 然后打开 Visual Studio，再打开解决方案文件。 
 
 ## <a name="review-the-code"></a>查看代码
 
@@ -103,45 +103,47 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
-1. 在 Azure 门户上的 Azure Cosmos DB 帐户中，单击左侧导航栏中的“概述”。 将“Gremlin URI”值复制到 App.config 文件，以便在下一步骤中使用。 
+1. 在 Visual Studio 2017 中打开 App.config 文件。 
 
-    ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-graph-dotnet/gremlin-uri.png)
-
-    如果“Gremlin URI”值为空，可以通过门户中的“密钥”页生成该值：使用“URI”值，删除 https:// 并将 documents 更改为 graphs 即可。 
-
-2. 在 Visual Studio 2017 中打开 App.config 文件。 
-
-3. 从门户中复制“Gremlin URI”值，并在 App.config 中将其设置为终结点密钥的值。 
-
-    `<add key="Endpoint" value="FILLME.graphs.azure.com:443" />`
-
-4. 返回 Azure 门户，单击左侧导航菜单中的“密钥”，从门户中复制“主密钥”值，在 App.config 中将其设置为 AuthKey 密钥的值，然后保存所做的更改。 
-
-    `<add key="AuthKey" value="FILLME" />`
+2. 在 Azure 门户上的 Azure Cosmos DB 帐户中，单击左侧导航栏中的“密钥”。 
 
     ![在 Azure 门户中的“密钥”页上查看和复制主密钥](./media/create-graph-dotnet/keys.png)
+
+3. 从门户中复制“URI”值，并在 App.config 中将其设置为终结点密钥的值。 可以使用前一屏幕截图中显示的复制按钮来复制值。
+
+    `<add key="Endpoint" value="https://FILLME.documents.azure.com:443" />`
+
+4. 从门户复制“主密钥”的值，并在 App.config 中将其设为 AuthKey 密钥的值，然后保存所做的更改。 
+
+    `<add key="AuthKey" value="FILLME" />`
 
 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
 
 ## <a name="run-the-console-app"></a>运行控制台应用
 
-1. 在 Visual Studio 中，右键单击**解决方案资源管理器**中的 **GraphGetStarted** 项目，然后单击“管理 NuGet 包”。 
+1. 在 Visual Studio 中，右键单击**解决方案资源管理器**中的 **GraphGetStarted** 项目，并单击“管理 NuGet 包”。 
 
 2. 在 NuGet“浏览”框中，键入 *Microsoft.Azure.Graphs*，并选中“包括预发行版”框。 
 
-3. 从结果中安装“Microsoft.Azure.Graphs”库。 这将安装 Azure Cosmos DB 图形扩展库包和所有依赖项。
+3. 从结果中安装“Microsoft.Azure.Graphs”库。 这会安装 Azure Cosmos DB 图形扩展库包和所有依赖项。
+
+    如果获得有关查看解决方案更改的消息，请单击“确定”。 如果获得有关接受许可证的消息，请单击“我接受”。
 
 4. 单击 Ctrl+F5 运行应用程序。
 
-   控制台窗口将显示所添加到图形的顶点及边缘。 完成脚本后，按两次 ENTER 以关闭控制台窗口。 
+   控制台窗口会显示所添加到图形的顶点及边缘。 完成脚本后，按两次 ENTER 以关闭控制台窗口。 
 
 ## <a name="browse-using-the-data-explorer"></a>使用数据资源管理器浏览
 
 现在可以返回到 Azure 门户中的数据资源管理器，浏览和查询新的图形数据。
 
-* 在数据资源管理器中，新数据库将显示在“集合”窗格中。 依次展开 **graphdb**、**graphcoll**，然后单击“图形”。
+1. 在数据资源管理器中，新数据库会显示在“图形”窗格中。 依次展开 **graphdb**、**graphcoll**，然后单击“图形”。
 
-    示例应用生成的数据将显示在“图形”窗格中。
+2. 单击“应用筛选器”按钮，使用默认查询来查看图形中的所有顶点。 示例应用生成的数据会显示在“图形”窗格中。
+
+    可以放大和缩小图形，可以扩展图形显示空间，可以添加其他顶点，还可以在显示图面移动顶点。
+
+    ![在 Azure 门户的数据资源管理器中查看图形](./media/create-graph-dotnet/graph-explorer.png)
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 
@@ -151,12 +153,12 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 如果不打算继续使用此应用，请删除本快速入门教程在 Azure 门户中创建的所有资源，步骤如下： 
 
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击已创建资源的名称。 
+1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。 
 2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，然后单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门教程中，你已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建图形和运行应用。 现可使用 Gremlin 构建更复杂的查询，实现功能强大的图形遍历逻辑。 
+在本快速入门教程中，已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建图形和运行应用。 现可使用 Gremlin 构建更复杂的查询，实现功能强大的图形遍历逻辑。 
 
 > [!div class="nextstepaction"]
 > [使用 Gremlin 查询](tutorial-query-graph.md)

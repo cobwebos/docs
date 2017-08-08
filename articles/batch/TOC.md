@@ -18,6 +18,7 @@
 #### [将 Azure AD 与 Batch 管理配合使用](batch-aad-auth-management.md)
 ### [计算密集型 VM](batch-pool-compute-intensive-sizes.md)
 ### [并发节点任务](batch-parallel-node-tasks.md)
+### [按状态对任务计数](batch-get-task-counts.md)
 ### [高效列表查询](batch-efficient-list-queries.md)
 ### [作业准备与作业完成任务](batch-job-prep-release.md)
 ### [Linux 计算节点](batch-linux-nodes.md)

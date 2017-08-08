@@ -1,4 +1,4 @@
-旧版 VPN 网关 SKU 为：
+旧版（老版）VPN 网关 SKU 为：
 
 * 基本
 * 标准
@@ -12,4 +12,3 @@ VPN 网关不使用 UltraPerformance 网关 SKU。 有关 UltraPerformance SKU �
 * 基本 SKU 不支持 BGP。
 * 基本 SKU 不支持 ExpressRoute-VPN 网关共存配置。
 * 只能在高性能 SKU 上配置主动-主动 S2S VPN 网关连接。
-

@@ -1,6 +1,6 @@
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
-| 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的 VM 数 |每个区域 20 个<sup>1</sup> |每个区域 10,000 个 |
+| 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的 VM 数 |每个区域 10,000 个<sup>1</sup> |每个区域 10,000 个 |
 | 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的 VM 核心总数 |每个区域 20 个<sup>1</sup> | 联系支持人员 |
 | 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的 VM 按系列（Dv2、F 等）核心数 |每个区域 20 个<sup>1</sup> | 联系支持人员 |
 | 每个订阅的[共同管理员数](../articles/billing-add-change-azure-subscription-administrator.md) |不受限制 |不受限制 |
@@ -17,7 +17,7 @@
 
 <sup>1</sup>默认限制根据产品类别类型（例如免费试用、即用即付，以及系列（例如 Dv2、F、G 等））而有所不同。
 
-<sup>2</sup>这包括标准和高级存储帐户。 如果需要的存储帐户超过 100 个，请通过 [Azure 支持](https://azure.microsoft.com/support/faq/)提出请求。 Azure 存储团队将评审你的业务案例，最多可以批准 250 个存储帐户。
+<sup>2</sup>这包括标准和高级存储帐户。 如果需要的存储帐户超过 100 个，请通过 [Azure 支持](https://azure.microsoft.com/support/faq/)提出请求。 Azure 存储团队将评审业务案例，最多可以批准 250 个存储帐户。
 
 <sup>3</sup>每个订阅可以应用无限数量的标记。 每个资源或资源组的标记数仅限 15。 当标记数少于或等于 10,000 时，Resource Manager 仅返回订阅中[唯一标记名和值的列表](/rest/api/resources/tags#Tags_List)。 不过，即使数目超过 10,000，也仍可通过标记查找资源。  
 

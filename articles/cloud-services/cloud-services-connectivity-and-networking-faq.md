@@ -50,7 +50,7 @@ Azure 实现多层网络安全性，以保护其平台服务免受分布式拒�
 
 ## <a name="when-i-try-to-rdp-to-my-cloud-service-instance-i-get-the-message-the-user-account-has-expired"></a>当尝试 RDP 到我的云服务实例时，我收到消息：“此用户帐户已过期。”
 当绕过 RDP 设置中配置的到期日期时，你可能会收到“此用户帐户已过期”的错误消息。 你可以按照以下步骤从门户更改到期日期：
-1. 登录到 Azure 管理控制台 (https://manage.windowsazure.com)，导航到云服务，然后选择“配置”选项卡。
+1. 登录到 Azure 管理控制台 ( https://manage.windowsazure.com )，导航到云服务，然后选择“配置”选项卡。
 2. 选择“远程”。
 3. 更改“到期日期”字段中的日期，然后保存配置。
 
