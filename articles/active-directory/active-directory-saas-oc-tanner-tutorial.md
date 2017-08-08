@@ -192,7 +192,7 @@ ms.lasthandoff: 07/04/2017
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“O.C. **Tanner - AppreciateHub”。
+2. 在应用程序列表中，选择“**O.C.Tanner - AppreciateHub**”。
 
     ![配置单一登录](./media/active-directory-saas-oc-tanner-tutorial/tutorial_octannerappreciatehub_app.png) 
 
