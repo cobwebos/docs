@@ -51,6 +51,8 @@
       href: sql-database-implement-geo-distributed-database.md
 - name: 示例
   items:
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
     - name: Azure CLI
       href: sql-database-cli-samples.md
     - name: PowerShell
@@ -97,11 +99,6 @@
           href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
         - name: 威胁检测
           href: sql-database-threat-detection.md
-        - name: 使用 SQL DB 实现 TDE
-          href: 'https://msdn.microsoft.com/library/dn948096'
-        - name: Always Encrypted
-          href: >-
-            https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine
         - name: 数据屏蔽
           href: sql-database-dynamic-data-masking-get-started.md
     - name: 业务连续性
@@ -121,8 +118,7 @@
         - name: 应用设计和恢复
           href: sql-database-designing-cloud-solutions-for-disaster-recovery.md
         - name: 应用设计和池
-          href: >-
-            sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
+          href: sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
         - name: 应用设计和应用升级
           href: sql-database-manage-application-rolling-upgrade.md
         - name: 从中断中恢复
@@ -260,8 +256,7 @@
         - name: 使用 BCP 加载数据
           href: sql-database-load-from-csv-with-bcp.md
         - name: 使用 ADF 加载数据
-          href: >-
-            ../data-factory/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
+          href: ../data-factory/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
         - name: 同步数据
           href: sql-database-get-started-sql-data-sync.md
     - name: 监视和优化
@@ -307,8 +302,7 @@
         - name: 创建计数器
           href: sql-database-elastic-database-perf-counters.md
         - name: 使用实体框架
-          href: >-
-            sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
+          href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
         - name: 升级客户端
           href: sql-database-elastic-scale-upgrade-client-library.md
         - name: 安装弹性作业
@@ -336,10 +330,9 @@
 - name: 引用
   items:
     - name: PowerShell
-      href: 'https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/#sql'
+      href: '/powershell/module/azurerm.sql/#sql'
     - name: PowerShell（弹性数据库）
-      href: >-
-        https://docs.microsoft.com/en-us/powershell/module/elasticdatabasejobs/#elasticdatabasejobs
+      href: '/powershell/module/elasticdatabasejobs/#elasticdatabasejobs'
     - name: Azure CLI 2.0
       href: /cli/azure/sql
     - name: .NET
@@ -347,40 +340,40 @@
     - name: Java
       href: /java/api/com.microsoft.azure.management.sql
     - name: Node.js
-      href: 'https://msdn.microsoft.com/library/mt652093.aspx'
+      href: /sql/connect/node-js/node-js-driver-for-sql-server
     - name: Python
-      href: 'https://msdn.microsoft.com/library/mt652092.aspx'
+      href: /sql/connect/python/python-driver-for-sql-server
     - name: Ruby
-      href: 'https://msdn.microsoft.com/library/mt691981.aspx'
+      href: /sql/connect/ruby/ruby-driver-for-sql-server
     - name: PHP
-      href: 'https://msdn.microsoft.com/library/dn865013.aspx'
+      href: /sql/connect/php/microsoft-php-driver-for-sql-server
     - name: T-SQL
-      href: 'https://msdn.microsoft.com/library/bb510741.aspx'
+      href: /sql/t-sql/language-reference
     - name: REST
-      href: 'https://msdn.microsoft.com/library/mt163571.aspx'
+      href: /rest/api/sql/
     - name: SQL Server 工具
-      href: 'https://msdn.microsoft.com/library/mt238365.aspx'
+      href: /sql/tools/overview-sql-tools
     - name: SQL Server Management Studio (SSMS)
-      href: 'https://msdn.microsoft.com/library/mt238290.aspx'
+      href: /sql/ssms/download-sql-server-management-studio-ssms
     - name: SQL Server Data Tools (SSDT)
-      href: 'https://msdn.microsoft.com/library/mt204009.aspx'
+      href: /sql/ssdt/download-sql-server-data-tools-ssdt
     - name: BCP
-      href: 'https://msdn.microsoft.com/library/ms162802.aspx'
+      href: /sql/tools/bcp-utility
     - name: SQLCMD
-      href: 'https://msdn.microsoft.com/library/ms162773.aspx'
+      href: /sql/tools/sqlcmd-utility
     - name: SqlPackage
       href: 'https://msdn.microsoft.com/hh550080.aspx'
     - name: SQL 数据库管理库包
       href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Sql'
     - name: SQL Server 驱动程序
-      href: 'https://msdn.microsoft.com/library/mt654049.aspx'
+      href: /sql/connect/sql-server-drivers
       items:
         - name: ADO.NET
-          href: 'https://msdn.microsoft.com/library/mt657768.aspx'
+          href: /sql/connect/ado-net/microsoft-ado-net-for-sql-server
         - name: JDBC
-          href: 'https://msdn.microsoft.com/library/mt484311.aspx'
+          href: /sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server
         - name: ODBC
-          href: 'https://msdn.microsoft.com/library/mt654048.aspx'
+          href: /sql/connect/odbc/microsoft-odbc-driver-for-sql-server
 - name: 资源
   items:
     - name: Azure 路线图
@@ -390,8 +383,7 @@
     - name: 公共数据集
       href: sql-database-public-data-sets.md
     - name: 排查连接问题
-      href: >-
-        https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database
+      href: 'https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/sql-database/'
     - name: MSDN 论坛
@@ -399,24 +391,10 @@
     - name: 堆栈溢出
       href: 'http://stackoverflow.com/questions/tagged/sql-azure'
     - name: 视频
-      href: >-
-        https://azure.microsoft.com/documentation/videos/index/?services=sql-database
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=sql-database'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?service=sql-database'
     - name: 体系结构指南
-      href: 'https://docs.microsoft.com/sql/#pivot=architecture'
-    - name: 客户实现
-      href: sql-database-customer-implementations.md
-    - name: 示例应用程序
-      items:
-        - name: Tailspin Surveys
-          href: >-
-            https://github.com/Azure-Samples/guidance-identity-management-for-multitenant-apps/blob/master/docs/running-the-app.md
-        - name: Contoso Clinic
-          href: 'https://github.com/Microsoft/azure-sql-security-sample'
-        - name: 弹性池遥测
-          href: >-
-            https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools
-        - name: 弹性池自定义仪表板
-          href: >-
-            https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools-custom-dashboard
+      href: /azure/architecture/guide/
+    - name: 客户案例
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc'
