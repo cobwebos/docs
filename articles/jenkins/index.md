@@ -11,11 +11,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/20/2017
 ms.author: mlearned
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
-ms.openlocfilehash: c7f000cad1062eb9b139d7c0f2731a6ee35f8b91
+ms.custom: Jenkins
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: aad1e4839154b552b39258f65e6ed97bf1de90fb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/21/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 <div class="content">
@@ -33,8 +34,9 @@ ms.lasthandoff: 06/21/2017
 <ol>
     <li><a href="https://www.visualstudio.com/docs/build/apps/jenkins/build-deploy-jenkins">将 CI/CD 与 Jenkins 和 Visual Studio Team Services 配合使用</a></li>
     <li><a href="/azure/container-service/container-service-kubernetes-jenkins">将 Jenkins 与 GitHub、Docker 和 Kubernetes 集成</a></li>
-    <li><a href="/azure/jenkins/execute-cli-jenkins-pipeline">部署到 Azure 应用服务</a></li>
+    <li><a href="/azure/jenkins/execute-cli-jenkins-pipeline">使用 Jenkins 执行 Azure CLI</a></li>
     <li><a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">集成 Docker、GitHub 和 Jenkins</a></li>
+    <li><a href="/azure/jenkins/deploy-Jenkins-app-service-plugin">使用 Jenkins 插件部署到应用服务</a></li>
 </ol>
 <h2 style="margin-top: 36px">资源和工具</h2>
 <p>请参阅以下链接，了解其他有关在 Azure 上使用 Jenkins 的参考资料和工具。</p>
@@ -42,3 +44,4 @@ ms.lasthandoff: 06/21/2017
 <a href="https://plugins.jenkins.io/windows-azure-storage">Azure 存储插件</a><br/>
 <a href="https://jenkins.io">了解 Jenkins</a><br/>
 </div>
+

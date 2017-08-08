@@ -4,8 +4,9 @@
 # 教程
 ## [将 CI/CD 与 VSTS 配合使用](https://www.visualstudio.com/docs/build/apps/jenkins/build-deploy-jenkins)
 ## [集成 Jenkins 和 Kubernetes](/azure/container-service/container-service-kubernetes-jenkins)
-## [部署到应用服务](/azure/jenkins/execute-cli-jenkins-pipeline)
+## [Jenkins 和 Azure CLI](/azure/jenkins/execute-cli-jenkins-pipeline)
 ## [Docker、GitHub 和 Jenkins](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd)
+## [部署到应用服务](/azure/jenkins/deploy-Jenkins-app-service-plugin)
 # 操作指南
 ## [保护 Azure 上的 Jenkins](https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/)
 # 资源
