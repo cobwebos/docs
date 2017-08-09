@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 2f3203382c11004bad879709a03b44b6d12eb962
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: a9dfb0af80ef018e5e655e6e5c78fb0b7e426794
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 
@@ -66,7 +66,7 @@ Microsoft Office 365 就是一款典型的 SaaS 服务。 订阅者支付月度�
 
 使用 PaaS，可以将应用程序部署到云服务供应商提供的环境中。 由供应商进行所有基础结构管理，因此用户可以专注于应用程序开发。
 
-Azure 提供了多个 PaaS 计算服务，包括 Azure App Service 和 Azure 云服务的 Web 应用功能（Web 角色和辅助角色）。 在任一情况下，开发者都可通过多种方式来部署应用程序，而无需了解支持该应用程序的任何具体细节。 开发者不必创建虚拟机 (VM)，无需使用远程桌面协议 (RDP) 登录每个虚拟机，也不必安装应用程序。 他们只需点击按钮（或者靠近它），Microsoft 提供的工具就会预配 VM，然后在其中部署并安装应用程序。
+Azure 提供了多个 PaaS 计算服务，包括 Azure 应用服务和 Azure 云服务的 Web 应用功能（Web 角色和辅助角色）。 在任一情况下，开发者都可通过多种方式来部署应用程序，而无需了解支持该应用程序的任何具体细节。 开发者不必创建虚拟机 (VM)，无需使用远程桌面协议 (RDP) 登录每个虚拟机，也不必安装应用程序。 他们只需点击按钮（或者靠近它），Microsoft 提供的工具就会预配 VM，然后在其中部署并安装应用程序。
 
 #### <a name="iaas-infrastructure-as-a-service"></a>IaaS：服务架构
 
@@ -162,9 +162,9 @@ Azure 资源是单独的计算、网络、数据或应用托管服务，并且�
 
 Azure 资源组是用于保存 Azure 解决方案相关资源的容器。 资源组可以包含解决方案的所有资源，也可以只包含以组的形式进行管理的资源。 本指南稍后将更详细地介绍 Azure 资源组。
 
-### <a name="resource-manager-templates"></a>Resource Manager 模板
+### <a name="resource-manager-templates"></a>资源管理器模板
 
-Azure Resource Manager 模板是一个 JavaScript 对象表示法 (JSON) 文件，用于定义一个或多个要部署到资源组的资源。 它也会定义所部署资源之间的依赖关系。 本指南稍后将更详细地介绍 Resource Manager 模板。
+Azure 资源管理器模板是一个 JavaScript 对象表示法 (JSON) 文件，用于定义一个或多个要部署到资源组的资源。 它也会定义所部署资源之间的依赖关系。 本指南稍后将更详细地介绍资源管理器模板。
 
 ### <a name="automation"></a>自动化
 
@@ -191,7 +191,7 @@ Azure 命令行接口是一种可用于从命令行创建、管理和删除 Azur
 
 需要订阅之后才能使用 Azure 服务。 可以使用多种订阅类型。
 
-**免费帐户**：注册免费帐户的链接位于 [Azure网站](https://azure.microsoft.com/)。 这可以提供 30 天试用期和 200 美元的信用额度，用于尝试 Azure 中的任何资源组合。 超出信用额度后，帐户将被暂停。 试用期结束时，服务将被停用，不再工作。 可随时升级到即用即付订阅。
+**免费帐户**：注册免费帐户的链接位于 [Azure网站](https://azure.microsoft.com/)。 这可以提供 30 天试用期和相应信用额度，用于尝试 Azure 中的任何资源组合。 超出信用额度后，帐户将被暂停。 试用期结束时，服务将被停用，不再工作。 可随时升级到即用即付订阅。
 
 **MSDN 订阅**：如果有 MSDN 订阅，每月可以获得特定金额的 Azure 信用额度。 例如，如果有 Microsoft Visual Studio Enterprise with MSDN 订阅，则每月可获得 \$150 美元的 Azure 信用额度。
 
@@ -242,13 +242,13 @@ Azure 命令行接口是一种可用于从命令行创建、管理和删除 Azur
 
 在 Azure 上部署应用程序或解决方案后，可以创建警报，以便在接近警报中定义的支出限制时收到电子邮件。 有关详细信息，请参阅[为 Microsoft Azure 订阅设置计费警报](../../billing/billing-set-up-alerts.md)。
 
-## <a name="azure-resource-manager"></a>Azure Resource Manager
+## <a name="azure-resource-manager"></a>Azure 资源管理器
 
-Azure Resource Manager 是用于 Azure 资源的部署、管理和组织机制。 通过使用 Resource Manager，可以将多个单独的资源置于一个资源组中。
+Azure 资源管理器是用于 Azure 资源的部署、管理和组织机制。 通过使用资源管理器，可以将多个单独的资源置于一个资源组中。
 
-Resource Manager 还提供部署功能，可用于对相关资源进行自定义部署和配置。 例如，通过使用 Resource Manager，可将包含多个虚拟机、负载均衡器和 SQL 数据库的应用程序作为单一单元进行部署。 可以使用 Resource Manager 模板来开发这些部署。
+资源管理器还提供部署功能，可用于对相关资源进行自定义部署和配置。 例如，通过使用资源管理器，可将包含多个虚拟机、负载均衡器和 SQL 数据库的应用程序作为单一单元进行部署。 可以使用资源管理器模板来开发这些部署。
 
-Resource Manager 提供多种优势：
+资源管理器提供多种优势：
 
 -   可以以组的形式部署、管理和监视解决方案的所有资源，而不是单独处理这些资源。
 
@@ -281,11 +281,11 @@ Resource Manager 提供多种优势：
 
 -   可以使用资源组来控制其中包含的资源的访问。
 
-### <a name="building-resource-manager-templates"></a>生成 Resource Manager 模板
+### <a name="building-resource-manager-templates"></a>生成资源管理器模板
 
-Resource Manager 模板以声明方式定义将要部署到单个资源组中的资源和资源配置。 可使用 Resource Manager 模板来协调复杂的部署，而无需额外编写脚本或手动配置。 开发模板后，可以多次进行部署 - 每次都是相同的结果。
+资源管理器模板以声明方式定义将要部署到单个资源组中的资源和资源配置。 可使用资源管理器模板来协调复杂的部署，而无需额外编写脚本或手动配置。 开发模板后，可以多次进行部署 - 每次都是相同的结果。
 
-Resource Manager 模板包含四个部分：
+资源管理器模板包含四个部分：
 
 -   **参数**：参数是部署的输入。 参数值可以由用户提供，也可以由自动化过程提供。 示例参数可能是 Windows VM 的管理员用户名和密码。 指定参数值后，整个部署过程都会使用这些参数值。
 
@@ -293,17 +293,17 @@ Resource Manager 模板包含四个部分：
 
 -   **资源**：模板的这一部分定义了要部署的资源，如虚拟机、存储帐户和虚拟网络。
 
--   **输出**：部署完成后，Resource Manager 可能会返回数据，如动态生成的连接字符串。
+-   **输出**：部署完成后，资源管理器可能会返回数据，如动态生成的连接字符串。
 
 以下机制可用于部署自动化：
 
--   **函数**：可以在 Resource Manager 模板中使用多个函数。 包括将字符串转换为小写、部署已定义资源的多个实例，以及动态返回目标资源组等操作。 Resource Manager 函数有助于生成动态部署。
+-   **函数**：可以在资源管理器模板中使用多个函数。 包括将字符串转换为小写、部署已定义资源的多个实例，以及动态返回目标资源组等操作。 资源管理器函数有助于生成动态部署。
 
 -   **资源依赖关系**：部署多个资源时，某些资源对其他资源具有依赖关系。 为了方便部署，可以使用资源依赖关系声明，先部署依赖资源，然后再部署其他资源。
 
--   **模版链接**：可从一个 Resource Manager 模板中链接到另一个模板。 这允许将部署分解成一组具有特定用途的定向模板。
+-   **模版链接**：可从一个资源管理器模板中链接到另一个模板。 这允许将部署分解成一组具有特定用途的定向模板。
 
-可在任何文本编辑器中生成 Resource Manager 模板。 但是，用于 Visual Studio 的 Azure SDK 包括的工具可提供帮助。 通过使用 Visual Studio，可以通过向导向模板添加资源，然后直接从 Visual Studio 中部署和调试模板。 有关详细信息，请参阅[创作 Azure Resource Manager 模板](../../resource-group-authoring-templates.md)。
+可在任何文本编辑器中生成资源管理器模板。 但是，用于 Visual Studio 的 Azure SDK 包括的工具可提供帮助。 通过使用 Visual Studio，可以通过向导向模板添加资源，然后直接从 Visual Studio 中部署和调试模板。 有关详细信息，请参阅[创作 Azure 资源管理器模板](../../resource-group-authoring-templates.md)。
 
 最后，可将现有资源组从 Azure 门户转换为可重用模板。 如果要创建现有资源组的可部署模板，或者只想检查基础 JSON，这非常有用。 若要导出资源组，请从资源组的设置中选择“自动化脚本”按钮。
 
@@ -333,7 +333,7 @@ Resource Manager 模板包含四个部分：
 
 Azure 虚拟机是 Azure 中的一个中心 IaaS 服务。 Azure 虚拟机支持将 Windows 或 Linux 虚拟机部署到 Microsoft Azure 数据中心。 通过 Azure 虚拟机，用户可以完全控制 VM 配置，并负责所有软件安装、配置和维护。
 
-在部署 Azure VM 时，可从 Microsoft Azure Marketplace 中选择一个映像，也可提供自己的通用映像。 此映像用于应用操作系统和初始配置。 在部署期间，Resource Manager 将处理一些配置设置，例如分配计算机名称、管理凭据和网络配置。 可以使用 Azure 虚拟机扩展来进一步自动化配置，如软件安装、防病毒配置和监视解决方案。
+在部署 Azure VM 时，可从 Microsoft Azure Marketplace 中选择一个映像，也可提供自己的通用映像。 此映像用于应用操作系统和初始配置。 在部署期间，资源管理器将处理一些配置设置，例如分配计算机名称、管理凭据和网络配置。 可以使用 Azure 虚拟机扩展来进一步自动化配置，如软件安装、防病毒配置和监视解决方案。
 
 可以创建多个不同大小的虚拟机。 虚拟机的大小决定了如何分配资源，如处理、内存和存储容量。 在某些情况下，只有特定大小的 VM 上才可使用特定功能，如启用了 RDMA 的网络适配器和 SSD 磁盘。 有关 VM 大小和功能的完整列表，请参阅 [Azure 中 Windows 虚拟机的大小](../../virtual-machines/windows/sizes.md)和 [Azure 中 Linux 虚拟机的大小](../../virtual-machines/linux/sizes.md)。
 
@@ -349,20 +349,20 @@ Azure 虚拟机是 Azure 中的一个中心 IaaS 服务。 Azure 虚拟机支持
 
 要使用 Azure 门户部署虚拟机，只需要具有一个有效的 Azure 订阅，以及对 Web 浏览器的访问权限。 可选择使用不同配置的多个不同的操作系统映像。 所有存储和网络要求都在部署期间配置。 有关详细信息，请参阅[使用 Azure 门户创建 Windows 虚拟机](../../virtual-machines/windows/quick-create-portal.md) 和[使用 Azure 门户创建 Linux 虚拟机](../../virtual-machines/linux/quick-create-portal.md)。
 
-使用 Azure 门户，除了部署虚拟机之外，还可以部署 Azure Resource Manager 模板。 这将部署并配置模板中定义的所有资源。 有关详细信息，请参阅[使用 Resource Manager 模板和 Azure 门户部署资源](../../azure-resource-manager/resource-group-template-deploy-portal.md)。
+使用 Azure 门户，除了部署虚拟机之外，还可以部署 Azure 资源管理器模板。 这将部署并配置模板中定义的所有资源。 有关详细信息，请参阅[使用资源管理器模板和 Azure 门户部署资源](../../azure-resource-manager/resource-group-template-deploy-portal.md)。
 
 
 **PowerShell**
 
 使用 PowerShell 部署 Azure 虚拟机，可以完全自动化地部署所有相关虚拟机资源，包括存储和网络。 有关详细信息，请参阅[使用资源管理器和 PowerShell 创建 Windows VM](../../virtual-machines/windows/quick-create-powershell.md)。
 
-除了单独部署 Azure 计算资源之外，还可以使用 Azure PowerShell 模块来部署 Azure Resource Manager 模板。 有关详细信息，请参阅[使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/resource-group-template-deploy.md)。
+除了单独部署 Azure 计算资源之外，还可以使用 Azure PowerShell 模块来部署 Azure 资源管理器模板。 有关详细信息，请参阅[使用资源管理器模板和 Azure PowerShell 部署资源](../../azure-resource-manager/resource-group-template-deploy.md)。
 
 **命令行接口 (CLI)**
 
 与 PowerShell 模块一样，Azure 命令行接口也可实现部署自动化，并且可用于 Windows、OS X 或 Linux 系统。 使用 Azure CLI“vm quick-create”命令时，将部署所有相关虚拟机资源（包括存储和网络）以及虚拟机本身。 有关详细信息，请参阅[使用 Azure CLI 创建 Linux 虚拟机](../../virtual-machines/linux/quick-create-cli.md)。
 
-同样，可以使用 Azure CLI 部署 Azure Resource Manager 模板。 有关详细信息，请参阅[使用 Resource Manager 模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)。
+同样，可以使用 Azure CLI 部署 Azure 资源管理器模板。 有关详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)。
 
 ### <a name="access-and-security-for-virtual-machines"></a>虚拟机的访问和安全性
 
@@ -432,19 +432,19 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 要使用 Azure 门户部署存储帐户，只需要具有一个有效的 Azure 订阅，以及对 Web 浏览器的访问权限。 可将新的存储帐户部署到新的或现有资源组中。 创建存储帐户后，可以使用门户创建一个 blob 容器或文件共享。 可通过编程方式创建表和队列存储实体。 有关详细信息，请参阅[创建存储帐户](../../storage/storage-create-storage-account.md#create-a-storage-account)。
 
-使用 Azure 门户，除了部署存储帐户之外，还可以部署 Azure Resource Manager 模板。 这将部署并配置模板中定义的所有资源，包括任何存储帐户。 有关详细信息，请参阅[使用 Resource Manager 模板和 Azure 门户部署资源](../../azure-resource-manager/resource-group-template-deploy-portal.md)。
+使用 Azure 门户，除了部署存储帐户之外，还可以部署 Azure 资源管理器模板。 这将部署并配置模板中定义的所有资源，包括任何存储帐户。 有关详细信息，请参阅[使用资源管理器模板和 Azure 门户部署资源](../../azure-resource-manager/resource-group-template-deploy-portal.md)。
 
 **PowerShell**
 
 使用 PowerShell 部署 Azure 存储帐户，可以完全自动化地部署存储帐户。 有关详细信息，请参阅[对 Azure 存储使用 Azure PowerShell](../../storage/storage-powershell-guide-full.md)。
 
-除了单独部署 Azure 资源之外，还可以使用 Azure PowerShell 模块来部署 Azure Resource Manager 模板。 有关详细信息，请参阅[使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/resource-group-template-deploy.md)。
+除了单独部署 Azure 资源之外，还可以使用 Azure PowerShell 模块来部署 Azure 资源管理器模板。 有关详细信息，请参阅[使用资源管理器模板和 Azure PowerShell 部署资源](../../azure-resource-manager/resource-group-template-deploy.md)。
 
 **命令行接口 (CLI)**
 
 与 PowerShell 模块一样，Azure 命令行接口也可实现部署自动化，并且可用于 Windows、OS X 或 Linux 系统。 可使用 Azure CLI“storage account create”命令创建存储帐户。 有关详细信息，请参阅[将 Azure CLI 用于 Azure 存储。](../../storage/storage-azure-cli.md)
 
-同样，可以使用 Azure CLI 部署 Azure Resource Manager 模板。 有关详细信息，请参阅[使用 Resource Manager 模板和 Azure CLI 部署资源](../../resource-group-template-deploy-cli.md)。
+同样，可以使用 Azure CLI 部署 Azure 资源管理器模板。 有关详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../../resource-group-template-deploy-cli.md)。
 
 ### <a name="access-and-security-for-azure-storage"></a>Azure 存储的访问和安全性
 
@@ -497,19 +497,19 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 要使用 Azure 门户部署 Azure 虚拟网络，只需要具有一个有效的 Azure 订阅，以及对 Web 浏览器的访问权限。 可将新的虚拟网络部署到新的或现有资源组中。 从门户创建新的虚拟机时，可选择现有虚拟网络或创建一个新的虚拟网络。 有关详细信息，请参阅[使用 Azure 门户创建虚拟网络](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md)。
 
-使用 Azure 门户，除了部署 Azure 虚拟网络之外，还可以部署 Azure Resource Manager 模板。 这将部署并配置模板中定义的所有资源，包括任何虚拟网络资源。 有关详细信息，请参阅[使用 Resource Manager 模板和 Azure 门户部署资源](../../azure-resource-manager/resource-group-template-deploy-portal.md)。
+使用 Azure 门户，除了部署 Azure 虚拟网络之外，还可以部署 Azure 资源管理器模板。 这将部署并配置模板中定义的所有资源，包括任何虚拟网络资源。 有关详细信息，请参阅[使用资源管理器模板和 Azure 门户部署资源](../../azure-resource-manager/resource-group-template-deploy-portal.md)。
 
 **PowerShell**
 
 使用 PowerShell 部署 Azure 虚拟网络，可以完全自动化地部署存储帐户。 有关详细信息，请参阅[使用 PowerShell 创建虚拟网络](../../virtual-network/virtual-networks-create-vnet-arm-ps.md)。
 
-除了单独部署 Azure 资源之外，还可以使用 Azure PowerShell 模块来部署 Azure Resource Manager 模板。 有关详细信息，请参阅[使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/resource-group-template-deploy.md)。
+除了单独部署 Azure 资源之外，还可以使用 Azure PowerShell 模块来部署 Azure 资源管理器模板。 有关详细信息，请参阅[使用资源管理器模板和 Azure PowerShell 部署资源](../../azure-resource-manager/resource-group-template-deploy.md)。
 
 **命令行接口 (CLI)**
 
 与 PowerShell 模块一样，Azure 命令行接口也可实现部署自动化，并且可用于 Windows、OS X 或 Linux 系统。 可使用 Azure CLI“network vnet create”命令创建虚拟网络。 有关详细信息，请参阅[使用 Azure CLI 创建虚拟网络](../../virtual-network/virtual-networks-create-vnet-arm-cli.md)。
 
-同样，可以使用 Azure CLI 部署 Azure Resource Manager 模板。 有关详细信息，请参阅[使用 Resource Manager 模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)。
+同样，可以使用 Azure CLI 部署 Azure 资源管理器模板。 有关详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)。
 
 ### <a name="access-and-security-for-virtual-networks"></a>虚拟网络的访问和安全性
 

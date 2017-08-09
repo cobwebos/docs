@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure 备份服务器保护 VMware 服务器工作负荷 | Microsoft Doc"
-description: "使用 Azure 备份服务器将 VMware 服务器备份到 Azure 或磁盘。 参考本文保护 VMware 工作负荷。"
+title: "使用 Azure 备份服务器备份 VMware 服务器 | Microsoft Docs"
+description: "可以使用 Azure 备份服务器将 VMware vCenter/ESXi 服务器备份到 Azure 或磁盘。 本文提供了用于备份（或保护）VMware 工作负荷的分步说明。"
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -11,21 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 04/20/2017
+ms.date: 07/24/2017
 ms.author: markgal;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 47728711930703121626c3ed0b654a0f74603ca4
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: ad331dffb7c31d12290f4223967c568e4535fe3c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="back-up-a-vmware-server-to-azure"></a>将 VMware 服务器备份到 Azure
 
 本文介绍如何配置 Azure 备份服务器来保护 VMware 服务器工作负荷。 本文假设已安装 Azure 备份服务器。 如果尚未安装 Azure 备份服务器，请参阅[准备使用 Azure 备份服务器备份工作负荷](backup-azure-microsoft-azure-backup.md)。
 
-Azure 备份服务器可以备份或保护 VMware vCenter 服务器版本 6.0 和 5.5。
+Azure 备份服务器可以备份或帮助保护 VMware vCenter 服务器版本 6.5、6.0 和 5.5。
 
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>与 vCenter 服务器建立安全连接
@@ -38,7 +37,7 @@ Azure 备份服务器可以备份或保护 VMware vCenter 服务器版本 6.0 �
 
 若要解决此问题并创建安全连接，请下载受信任的根 CA 证书。
 
-1. 在 Azure 备份服务器的浏览器中，输入 vSphere Web 客户端的 URL。 此时将显示 vSphere Web 客户端登录页。
+1. 在 Azure 备份服务器的浏览器中，输入 vSphere Web 客户端的 URL。 此时会显示 vSphere Web 客户端登录页。
 
     ![vSphere Web 客户端](./media/backup-azure-backup-server-vmware/vsphere-web-client.png)
 
@@ -72,7 +71,7 @@ Azure 备份服务器可以备份或保护 VMware vCenter 服务器版本 6.0 �
 
     将根证书的扩展名更改为 .crt。 当被询问是否确定要更改扩展名时，请单击“是”或“确定”。 否则，将更改文件的预期函数。 文件图标更改为表示根证书的图标。
 
-6. 在弹出菜单中右键单击根证书，然后选择“安装证书”。
+6. 在弹出菜单中右键单击根证书，并选择“安装证书”。
 
     此时将打开“证书导入向导”对话框。
 
@@ -98,7 +97,7 @@ Azure 备份服务器可以备份或保护 VMware vCenter 服务器版本 6.0 �
 
     ![证书存储文件夹](./media/backup-azure-backup-server-vmware/certificate-import-wizard2.png)
 
-10. 在“正在完成证书导入向导”页面上，验证证书是否位于所需的文件夹中，然后单击“完成”以完成向导。
+10. 在“完成证书导入向导”页上，验证证书是否位于所需的文件夹中，然后单击“完成”。
 
     ![验证证书是否位于正确的文件夹中](./media/backup-azure-backup-server-vmware/cert-wizard-final-screen.png)
 
@@ -250,11 +249,12 @@ Azure 备份服务器使用用户名和密码对 vCenter 服务器进行身份�
 
 3. 在“管理凭据”对话框中，单击“添加”来打开“添加凭据”对话框。
 
-4. 在“添加凭据”对话框中，输入新凭据的名称和说明。 然后指定用户名和密码。 凭据名称 *Contoso Vcenter credential* 用于标识下一过程中的凭据。 用户名和密码必须与 vCenter 服务器使用的相同。 如果 vCenter 服务器和 Azure 备份服务器不在同一域中，请在“用户名”中指定域。
+4. 在“添加凭据”对话框中，输入新凭据的名称和说明。 然后指定用户名和密码。 名称 *Contoso Vcenter credential* 用于标识下一过程中的凭据。 用户名和密码必须与 vCenter 服务器使用的相同。 如果 vCenter 服务器和 Azure 备份服务器不在同一域中，请在“用户名”中指定域。
 
     ![Azure 备份服务器的“添加凭据”对话框](./media/backup-azure-backup-server-vmware/mabs-add-credential-dialog2.png)
 
     单击“添加”，将新凭据添加到 Azure 备份服务器。 新凭据随即在“管理凭据”对话框的列表中显示。
+    
     ![Azure 备份服务器的“管理凭据”对话框](./media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
 
 5. 若要关闭“管理凭据”对话框，请单击右上角的“X”。
@@ -280,7 +280,7 @@ Azure 备份服务器使用用户名和密码对 vCenter 服务器进行身份�
 
     ![指定 VMware 服务器 FQDN 或 IP 地址](./media/backup-azure-backup-server-vmware/add-vmware-server-provide-server-name.png)
 
-4. 在“SSL 端口”中，输入用于与 VMware 服务器通信的端口。 除非你确定需要使用其他端口，否则请使用默认端口 443。
+4. 在“SSL 端口”中，输入用于与 VMware 服务器通信的端口。 除非确定需要使用其他端口，否则请使用默认端口 443。
 
 5. 在“指定凭据”中，选择先前创建的凭据。
 
@@ -307,7 +307,7 @@ Azure 备份服务器使用用户名和密码对 vCenter 服务器进行身份�
 
 如果从未用过 System Center Data Protection Manager 或 Azure 备份服务器，请参阅[规划磁盘备份](https://technet.microsoft.com/library/hh758026.aspx)来准备硬件环境。 确认拥有适当的存储后，使用“新建保护组”向导添加 VMware 虚拟机。
 
-1. 在 Azure 备份服务器控制台中单击“保护”，然后在工具功能区中，单击“新建”打开“创建新保护组”向导。
+1. 在 Azure 备份服务器控制台中单击“保护”，并在工具功能区中，单击“新建”打开“创建新保护组”向导。
 
     ![打开“新建保护组”向导](./media/backup-azure-backup-server-vmware/open-protection-wizard.png)
 
@@ -325,9 +325,9 @@ Azure 备份服务器使用用户名和密码对 vCenter 服务器进行身份�
 
     选择成员时，如果选择包含其他文件夹或 VM 的文件夹，则这些子文件夹和 VM 一并选中。 在父文件夹中包含文件夹和 VM 称为文件夹级保护。 若要删除文件夹或 VM，请清除复选框。
 
-    如果某个 VM 或者包含某个 VM 的文件夹已在 Azure 中受保护，则你无法再次选择该 VM。 也就是说，在 Azure 中保护某个 VM 后，无法再次对它进行保护，由此防止从一个 VM 创建重复的恢复点。 若要查看哪个 Azure 备份服务器实例已保护成员，请指向该成员，查看保护服务器的名称。
+    如果某个 VM 或者包含某个 VM 的文件夹已在 Azure 中受保护，则无法再次选择该 VM。 也就是说，在 Azure 中保护某个 VM 后，无法再次对它进行保护，由此防止从一个 VM 创建重复的恢复点。 若要查看哪个 Azure 备份服务器实例已保护成员，请指向该成员，查看保护服务器的名称。
 
-4. 在“选择数据保护方法”页面上，输入保护组的名称。 将选择短期保护（在磁盘中）和联机保护。 如果你想要使用联机保护（在 Azure 中），必须使用在磁盘中进行短期保护。 单击“下一步”，继续提供短期保护时间范围信息。
+4. 在“选择数据保护方法”页面上，输入保护组的名称。 将选择短期保护（在磁盘中）和联机保护。 如果想要使用联机保护（在 Azure 中），必须使用在磁盘中进行短期保护。 单击“下一步”，继续提供短期保护时间范围信息。
 
     ![选择数据保护方法](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 

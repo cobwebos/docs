@@ -1,6 +1,6 @@
 ---
 title: "Azure 数据工厂支持的计算环境 | Microsoft Docs"
-description: "了解可在 Azure 数据工厂管道中用于转换/处理数据的计算环境。"
+description: "了解可在 Azure 数据工厂管道（例如 Azure HDInsight）中用于转换或处理数据的计算环境。"
 services: data-factory
 documentationcenter: 
 author: sharonlo101
@@ -10,15 +10,14 @@ ms.assetid: 6877a7e8-1a58-4cfb-bbd3-252ac72e4145
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/05/2017
+ms.date: 07/25/2017
 ms.author: shlo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 97e40e0081e1dcce0ed42748a053c46cecf569ba
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 66d3b5532e602ef3ef160740c0f6752ebbdff7a2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
@@ -28,7 +27,8 @@ ms.lasthandoff: 06/20/2017
 
 | 计算环境 | 活动 |
 | --- | --- |
-| [按需 HDInsight 群集](#azure-hdinsight-on-demand-linked-service)或[自己的 HDInsight 群集](#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md)、[Hive](data-factory-hive-activity.md)、[Pig](data-factory-pig-activity.md)、[MapReduce](data-factory-map-reduce.md)、[Hadoop 流式处理](data-factory-hadoop-streaming-activity.md) |
+| 
+            [按需 HDInsight 群集](#azure-hdinsight-on-demand-linked-service)或[自己的 HDInsight 群集](#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md)、[Hive](data-factory-hive-activity.md)、[Pig](data-factory-pig-activity.md)、[MapReduce](data-factory-map-reduce.md)、[Hadoop 流式处理](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
 | [Azure 机器学习](#azure-machine-learning-linked-service) |[机器学习活动：批处理执行和更新资源](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
@@ -84,7 +84,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 
   **建议：** 
   * 在 2017 年 7 月 15 日之前，使用[不同 HDInsight 版本中提供的 Hadoop 组件](../hdinsight/hdinsight-component-versioning.md#hadoop-components-available-with-different-hdinsight-versions)和[与 HDInsight 版本相关联的 Hortonworks 发行说明](../hdinsight/hdinsight-component-versioning.md#hortonworks-release-notes-associated-with-hdinsight-versions)中提供的信息，执行测试以确保引用此链接服务的活动与[支持的最新 HDInsight 版本](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)兼容。  
-  * 在 2017 年 7 月 15 日之后，如果要覆盖默认设置，请确保显示指定 osType 和版本值。 
+  * 在 **2017 年 7 月 15 日**之后，如果要覆盖默认设置，请确保显示指定 osType 和 version 值。 
 
 >[!Note]
 >当前，Azure 数据工厂不支持使用 Azure Data Lake Store 作为主存储的 HDInsight 群集。 使用 Azure 存储作为 HDInsight 群集的主存储。 
@@ -92,7 +92,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 >  
 
 ## <a name="on-demand-compute-environment"></a>按需计算环境
-在此类型的配置中，计算环境由 Azure 数据工厂服务完全管理。 作业提交到进程数据前，数据工厂服务将自动创建计算环境，作业完成后则自动将其删除。 可以为按需计算环境创建并配置链接服务，以及控制作业执行、群集管理和引导操作的粒度设置。
+在此类型的配置中，计算环境由 Azure 数据工厂服务完全管理。 作业提交到进程数据前，数据工厂服务会自动创建计算环境，作业完成后则自动将其删除。 可以为按需计算环境创建并配置链接服务，以及控制作业执行、群集管理和引导操作的粒度设置。
 
 > [!NOTE]
 > 按需配置目前仅支持 Azure HDInsight 群集。
@@ -132,7 +132,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 }
 ```
 
-若要使用基于 Windows 的 HDInsight 群集，请将 **osType** 设置为 **windows**或者不使用属性，因为默认值为 windows。  
+要使用基于 Windows 的 HDInsight 群集，请将 **osType** 设置为 **windows**或者不使用属性，因为默认值为 windows。  
 
 > [!IMPORTANT]
 > HDInsight 群集在 JSON 中指定的 Blob 存储 (**linkedServiceName**).内创建**默认容器**。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非有现有的实时群集 (**timeToLive**)，否则每当需要处理切片时会创建 HDInsight 群集；并在处理完成后删除该群集。 
@@ -348,10 +348,60 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 | apiKey |已发布的工作区模型的 API。 |是 |
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics 链接服务
-在使用管道中使用 [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)之前，可以创建 **Azure Data Lake Analytics** 链接服务，将 Azure Data Lake Analytics 计算服务链接到 Azure 数据工厂。
+创建 **Azure Data Lake Analytics** 链接服务将 Azure Data Lake Analytics 计算服务链接到 Azure 数据工厂。 管道中的 Data Lake Analytics U-SQL 活动是指此链接服务。 
 
-以下示例为 Azure Data Lake Analytics 链接服务提供 JSON 定义。
+下表介绍了 JSON 定义中使用的一般属性。 可以进一步选择服务主体身份验证，还是用户凭据身份验证。
 
+| 属性 | 说明 | 必选 |
+| --- | --- | --- |
+| **类型** |类型属性应设置为 **AzureDataLakeAnalytics**。 |是 |
+| **accountName** |Azure Data Lake Analytics 帐户名。 |是 |
+| **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI。 |否 |
+| **subscriptionId** |Azure 订阅 ID |否（如果未指定，则使用数据工厂的订阅）。 |
+| **resourceGroupName** |Azure 资源组名称 |否（如果未指定，则使用数据工厂的资源组）。 |
+
+### <a name="service-principal-authentication-recommended"></a>服务主体身份验证（推荐）
+若要使用服务主体身份验证，请在 Azure Active Directory (Azure AD) 中注册一个应用程序实体并授予其访问 Data Lake Store 的权限。 有关详细步骤，请参阅[服务到服务身份验证](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。 记下下面的值，这些值用于定义链接服务：
+* 应用程序 ID
+* 应用程序密钥 
+* 租户 ID
+
+通过指定以下属性使用服务主体身份验证：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| **servicePrincipalId** | 指定应用程序的客户端 ID。 | 是 |
+| **servicePrincipalKey** | 指定应用程序的密钥。 | 是 |
+| **tenant** | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 是 |
+
+**示例：服务主体身份验证**
+```json
+{
+    "name": "AzureDataLakeAnalyticsLinkedService",
+    "properties": {
+        "type": "AzureDataLakeAnalytics",
+        "typeProperties": {
+            "accountName": "adftestaccount",
+            "dataLakeAnalyticsUri": "datalakeanalyticscompute.net",
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": "<service principal key>",
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
+            "subscriptionId": "<optional, subscription id of ADLA>",
+            "resourceGroupName": "<optional, resource group name of ADLA>"
+        }
+    }
+}
+```
+
+### <a name="user-credential-authentication"></a>用户凭据身份验证
+也可以指定下列属性，对 Data Lake Analytics 使用用户凭据身份验证：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| **authorization** | 单击数据工厂编辑器中的“授权”按钮，并输入凭据以会自动生成的授权 URL 分配给此属性。 | 是 |
+| **sessionId** | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时会自动生成此设置。 | 是 |
+
+**示例：用户凭据身份验证**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -361,40 +411,25 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
             "accountName": "adftestaccount",
             "dataLakeAnalyticsUri": "datalakeanalyticscompute.net",
             "authorization": "<authcode>",
-            "sessionId": "<session ID>",
-            "subscriptionId": "<subscription id>",
-            "resourceGroupName": "<resource group name>"
+            "sessionId": "<session ID>", 
+            "subscriptionId": "<optional, subscription id of ADLA>",
+            "resourceGroupName": "<optional, resource group name of ADLA>"
         }
     }
 }
 ```
 
-下表为 JSON 定义中使用的属性提供了描述。
-
-| 属性 | 说明 | 必选 |
-| --- | --- | --- |
-| 类型 |类型属性应设置为 **AzureDataLakeAnalytics**。 |是 |
-| accountName |Azure Data Lake Analytics 帐户名。 |是 |
-| dataLakeAnalyticsUri |Azure Data Lake Analytics URI。 |否 |
-| authorization |在数据工厂编辑器中单击“授权”按钮并完成 OAuth 登录后，将自动检索授权代码。 |是 |
-| subscriptionId |Azure 订阅 ID |否（如果未指定，则使用数据工厂的订阅）。 |
-| resourceGroupName |Azure 资源组名称 |否（如果未指定，则使用数据工厂的资源组）。 |
-| sessionId |OAuth 授权会话中的会话 ID。 每个会话 ID 都是唯一的，并且可能仅可使用一次。 此 ID 是在数据工厂编辑器中自动生成的。 |是 |
-
+#### <a name="token-expiration"></a>令牌过期
 使用“授权”按钮生成的授权代码在一段时间后便会过期。 请参阅下表，了解不同类型用户帐户的过期时间。 身份验证**令牌过期**时可能会看到以下错误消息：凭据操作错误: invalid_grant-AADSTS70002: 验证凭据时出错。 AADSTS70008：提供的访问权限已过期或已被吊销。 跟踪 ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 相关 ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 时间戳: 2015-12-15 21:09:31Z
 
 | 用户类型 | 过期时间 |
 |:--- |:--- |
-| 不由 Azure Active Directory 管理的用户帐户（例如 @hotmail.com、@live.com、@outlook.com） |12 小时 |
+| 不由 Azure Active Directory 管理的用户帐户（@hotmail.com、@live.com，等等） |12 小时 |
 | 由 Azure Active Directory (AAD) 管理的用户帐户 |最后一次运行切片后的 14 天。 <br/><br/>如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
 
-若要避免/解决此错误，**令牌过期**时，使用“授权”按钮重新授权，并重新部署链接服务。 还可使用以下部分中的代码以编程方式生成 sessionId 和 authorization 属性的值： 
+若要避免/解决此错误，**令牌过期**时，使用“授权”按钮重新授权，并重新部署链接服务。 还可以使用下列代码，以编程方式生成 sessionId 和 authorization 属性值：
 
-### <a name="to-programmatically-generate-sessionid-and-authorization-values"></a>以编程方式生成 sessionId 和 authorization 值
-以下代码生成 **sessionId** 和 **authorization** 值。  
-
-```CSharp
-
+```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
     linkedService.Properties.TypeProperties is AzureDataLakeAnalyticsLinkedService)
 {
@@ -418,9 +453,8 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
     }
 }
 ```
-为 WindowsFormsWebAuthenticationDialog 类添加对 Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll 的引用。 
 
-请参阅 [AzureDataLakeStoreLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)、[AzureDataLakeAnalyticsLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)和 [AuthorizationSessionGetResponse 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)主题，了解关于代码中使用的数据工厂类的详细信息。 
+请参阅 [AzureDataLakeStoreLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)、[AzureDataLakeAnalyticsLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)和 [AuthorizationSessionGetResponse 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)主题，了解关于代码中使用的数据工厂类的详细信息。 针对 WindowsFormsWebAuthenticationDialog 类向 Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll 添加引用。 
 
 ## <a name="azure-sql-linked-service"></a>Azure SQL 链接服务
 创建 Azure SQL 链接服务，并将其与[存储过程活动](data-factory-stored-proc-activity.md)配合使用，以从数据工厂管道调用存储过程。 请参阅 [Azure SQL 连接器](data-factory-azure-sql-connector.md#linked-service-properties)一文，以了解此链接服务的详细信息。

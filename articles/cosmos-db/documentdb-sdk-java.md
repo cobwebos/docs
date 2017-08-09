@@ -1,6 +1,6 @@
 ---
-title: "Azure DocumentDB Java API、SDK 和资源 | Microsoft 文档"
-description: "了解有关 Java API 和 SDK 的全部信息，包括发布日期、停用日期和 DocumentDB Java SDK 各版本之间所做的更改。"
+title: "Azure Cosmos DB：DocumentDB Java API、SDK 和资源 | Microsoft Docs"
+description: "了解有关 Java API 和 SDK 的所有信息，包括发布日期、停用日期和 Azure Cosmos DB DocumentDB Java SDK 各版本之间所做的更改。"
 services: cosmos-db
 documentationcenter: java
 author: rnagpal
@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 07/11/2017
 ms.author: khdang
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 423f841b82ced16b3bd338f1f38db9ec0250fa66
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 089bb12b66e772b1fe62eeca9a306b5723fc8c06
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
-# <a name="documentdb-java-sdk-release-notes-and-resources"></a>DocumentDB Java SDK：发行说明和资源
+# <a name="azure-cosmos-db-documentdb-java-sdk-release-notes-and-resources"></a>Azure Cosmos DB：DocumentDB Java SDK 发行说明和资源
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
+> * [.NET 更改源](documentdb-sdk-dotnet-changefeed.md)
 > * [.NET Core](documentdb-sdk-dotnet-core.md)
 > * [Node.js](documentdb-sdk-node.md)
 > * [Java](documentdb-sdk-java.md)
@@ -46,12 +46,16 @@ ms.lasthandoff: 06/20/2017
 
 <tr><td>**入门**</td><td>[Java SDK 入门](documentdb-java-get-started.md)</td></tr>
 
-<tr><td>**Web 应用教程**</td><td>[使用 DocumentDB 开发 Web 应用程序](documentdb-java-application.md)</td></tr>
+<tr><td>**Web 应用教程**</td><td>[使用 Azure Cosmos DB 进行 Web 应用程序开发](documentdb-java-application.md)</td></tr>
 
 <tr><td>**当前受支持的运行时**</td><td>[JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)</td></tr>
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name11201120"></a><a name="1.12.0"/>1.12.0
+* 关键 bug 修复，用于在分区拆分期间请求处理。
+* 解决了 Strong 和 BoundedStaleness 一致性级别存在的问题。
 
 ### <a name="a-name11101110"></a><a name="1.11.0"/>1.11.0
 * 添加了对每分钟请求单位 (RU/m) 功能的支持。
@@ -159,7 +163,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 使用已停用的 SDK 对 Cosmos DB 发出的任何请求都将被服务拒绝。
 
 > [!WARNING]
-> Azure DocumentDB SDK for Java 在 **1.0.0** 版之前的所有版本都将在 **2016 年 2 月 29 日**停用。
+> DocumentDB SDK for Java 在 **1.0.0** 版之前的所有版本都会在 **2016 年 2 月 29 日**停用。
 > 
 > 
 
@@ -167,6 +171,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.12.0](#1.12.0) |2017 年 7 月 11 日 |--- |
 | [1.11.0](#1.11.0) |2017 年 5 月 10 日 |--- |
 | [1.10.0](#1.10.0) |2017 年 3 月 11 日 |--- |
 | [1.9.6](#1.9.6) |2017 年 2 月 21 日 |--- |

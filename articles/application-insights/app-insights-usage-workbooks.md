@@ -1,6 +1,6 @@
 ---
 title: "在 Azure Application Insights 中使用交互式工作簿调查和共享使用情况数据 | Microsoft docs"
-description: "对你的 Web 应用的用户进行人口统计学分析。"
+description: "对 Web 应用的用户进行人口统计学分析。"
 services: application-insights
 documentationcenter: 
 author: numberbycolors
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/12/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 44ea03d30c1f2eabc92af63b549823c03a6901e2
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: ecd3d86db1d6b3b65015d1d560027cedb4f2df58
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 
@@ -88,9 +88,9 @@ ms.lasthandoff: 06/20/2017
 
 * 使用率下降的同一时段内，网站引发了多少异常？
 * 用户查看某个页面的页面加载时间分布是什么样的？
-* 有多少用户在网站上查看了某组页面，而没有查看其它组页面？ 这有助于了解你是否有使用不同网站功能子集的用户群集（在 Analytics 查询语言中使用具有 `kind=leftanti` 修饰符的 `join` 运算符）。
+* 有多少用户在网站上查看了某组页面，而没有查看其它组页面？ 这有助于了解是否有使用不同站点功能子集的用户群集（在 Log Analytics 查询语言中使用具有 `kind=leftanti` 修饰符的 `join` 运算符）。
 
-使用 [Analytics 查询语言参考](app-insights-analytics-reference.md)详细了解如何编写查询。
+使用 [Log Analytics 查询语言参考](https://docs.loganalytics.io/)详细了解如何编写查询。
 
 ## <a name="adding-text-and-markdown-sections"></a>添加文本和 Markdown 部分
 

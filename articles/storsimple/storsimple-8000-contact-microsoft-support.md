@@ -1,5 +1,5 @@
 ---
-title: "记录 StorSimple 8000 系列的支持票证 | Microsoft 文档"
+title: "为 StorSimple 8000 系列创建支持票证或案例 | Microsoft Docs"
 description: "了解如何记录支持请求，以及如何在 StorSimple 8000 系列设备上启动支持会话。"
 services: storsimple
 documentationcenter: 
@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2017
+ms.date: 07/25/2017
 ms.author: alkohli;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 21aeecb33707c03b5994b3e394b597797e81746f
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 4b5a14237ce79100f980b2186b2c3c887abaa296
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="contact-microsoft-support"></a>联系 Microsoft 支持部门
@@ -118,3 +117,4 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 ## <a name="next-steps"></a>后续步骤
 
 了解如何[诊断并解决与 StorSimple 8000 系列设备相关的问题](storsimple-troubleshoot-deployment.md)
+

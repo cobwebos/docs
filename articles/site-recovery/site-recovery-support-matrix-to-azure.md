@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/05/2017
+ms.date: 07/04/2017
 ms.author: rajanaki
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 6664cb20393ec5f588c8eeb119d6f606a0072861
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: a2ccc3d43a56a569897e1efe24f576eb92610ec3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>用于从本地复制到 Azure 的 Azure Site Recovery 支持矩阵
@@ -32,7 +31,7 @@ ms.lasthandoff: 06/15/2017
 
 **部署** | **VMware/物理服务器** | **Hyper-V（具有/不具有 Virtual Machine Manager）** |
 --- | --- | ---
-**Azure 门户** | 本地 VMware VM 到 Azure 存储，使用 Azure Resource Manager 或经典存储和网络。<br/><br/> 故障转移到基于 Resource Manager 的 VM 或经典 VM。 | 本地 Hyper-V VM 到 Azure 存储，使用 Resource Manager 或经典存储和网络。<br/><br/> 故障转移到基于 Resource Manager 的 VM 或经典 VM。
+**Azure 门户** | 本地 VMware VM 到 Azure 存储，使用 Azure 资源管理器或经典存储和网络。<br/><br/> 故障转移到基于资源管理器的 VM 或经典 VM。 | 本地 Hyper-V VM 到 Azure 存储，使用资源管理器或经典存储和网络。<br/><br/> 故障转移到基于资源管理器的 VM 或经典 VM。
 **经典门户** | 只能使用维护模式。 无法创建新的保管库。 | 仅限维护模式。
 **PowerShell** | 目前不支持。 | 支持
 
@@ -43,7 +42,7 @@ ms.lasthandoff: 06/15/2017
 
 **部署** | **支持**
 --- | ---
-**VMware VM/物理服务器** | vSphere 6.0、5.5 或 5.1（具有最新更新）
+**VMware VM/物理服务器** | vCenter 6.5、6.0 或 5.5
 **Hyper-V（具有 Virtual Machine Manager）** | System Center Virtual Machine Manager 2016 和 System Center Virtual Machine Manager 2012 R2
 
   >[!Note]
@@ -53,7 +52,7 @@ ms.lasthandoff: 06/15/2017
 
 **部署** | **支持**
 --- | ---
-**VMware VM/物理服务器** | vCenter 5.5 或 6.0（仅支持 5.5 功能）
+**VMware VM/物理服务器** | vSphere 6.5、6.0、5.5
 **Hyper-V（具有/不具有 Virtual Machine Manager）** | Windows Server 2016、带有最新更新的 Windows Server 2012 R2。<br></br>如果使用了 SCVMM，Windows Server 2016 主机应由 SCVMM 2016 托管。
 
 
@@ -67,7 +66,7 @@ ms.lasthandoff: 06/15/2017
 
  **VMware/物理服务器** | **Hyper-V（使用/不使用 VMM）** |
 --- | --- |
-64 位 Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 及其更高版本<br/><br/> Red Hat Enterprise Linux 6.7、6.8、7.1、7.2 <br/><br/>CentOS 6.5、6.6、6.7、6.8、7.0、7.1、7.2 <br/><br/>Ubuntu 14.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Oracle Enterprise Linux 6.4、6.5（运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3 (UEK3)） <br/><br/> SUSE Linux Enterprise Server 11 SP3 <br/><br/> SUSE Linux Enterprise Server 11 SP4 <br/>（不支持复制计算机从 SLES 11 SP3 升级到 SLES 11 SP4。 如果已将复制计算机从 SLES 11SP3 升级到 SLES 11 SP4，则需要禁用复制，并在升级后再次对计算机启用保护。） | [Azure 支持的](https://technet.microsoft.com/library/cc794868.aspx)任何来宾 OS
+64 位 Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 及其更高版本<br/>*Windows Server 2016* - 当前在 VMware 虚拟机和物理服务器上不受支持。 <br/><br/> Red Hat Enterprise Linux：5.2 到 5.11、6.1 到 6.8、7.0 到 7.3 <br/><br/>Cent OS：5.2 到 5.11、6.1 到 6.8、7.0 到 7.3 <br/><br/>Ubuntu 14.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Oracle Enterprise Linux 6.4、6.5（运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3 (UEK3)） <br/><br/> SUSE Linux Enterprise Server 11 SP3 <br/><br/> SUSE Linux Enterprise Server 11 SP4 <br/>（不支持复制计算机从 SLES 11 SP3 升级到 SLES 11 SP4。 如果已将复制计算机从 SLES 11SP3 升级到 SLES 11 SP4，则需要禁用复制，并在升级后再次对计算机启用保护。） | [Azure 支持的](https://technet.microsoft.com/library/cc794868.aspx)任何来宾 OS
 
 
 >[!IMPORTANT]
@@ -82,19 +81,24 @@ ms.lasthandoff: 06/15/2017
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
 14.04 LTS | 9.9 | 3.13.0-24-generic 到 3.13.0-117-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-75-generic |
+14.04 LTS | 9.10 | 3.13.0-24-generic 到 3.13.0-121-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-81-generic |
+16.04 LTS | 9.10 | 4.4.0-21-generic 到 4.4.0-81-generic、<br/>4.8.0-34-generic 到 4.8.0-56-generic、<br/>4.10.0-14-generic 到 4.10.0-24-generic |
+
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-linux-vmwarephysical-servers"></a>Linux 上支持的文件系统和来宾存储配置（VMware/物理服务器）
 
 运行 VMware 或物理服务器的 Linux 服务器支持以下文件系统和存储配置软件：
-* 文件系统：ext3、ext4、ReiserFS（仅限 Suse Linux Enterprise Server）和 XFS（仅限 upto v4）
+* 文件系统：ext3、ext4、ReiserFS（仅限 Suse Linux Enterprise Server）和 XFS
 * 卷管理器：LVM2
 * 多路径软件：设备映射程序
 
-不支持使用 HP CCISS 存储控制器的物理服务器。
+不支持半虚拟化存储设备（由半虚拟化驱动程序导出的设备）。<br/>
+不支持多队列块 IO 设备。<br/>
+不支持使用 HP CCISS 存储控制器的物理服务器。<br/>
 
 >[!Note]
 > 在 Linux 服务器中，下列目录（如果设置为单独的分区/文件系统）必须位于源服务器的同一磁盘（OS 磁盘）：   / (root)、/boot、/usr、/usr/local、/var 和 /etc<br/><br/>
-> 当前 XFS 文件系统上的 ASR 尚不支持 XFS v5 功能（如元数据校验和）。 请确保你的 XFS 文件系统未使用任何 v5 功能。 可使用 xfs_info 实用工具来检查分区的 XFS 超级块。 如果将 ftyp 设置为 1，则使用 XFSv5 功能。
+> 移动服务从版本 9.10 开始支持 XFS 文件系统上的 XFSv5 功能，如元数据校验和等。 如果使用 XFSv5 功能，请确保运行的是移动服务版本 9.10 或更高版本。 可使用 xfs_info 实用工具来检查分区的 XFS 超级块。 如果将 ftyp 设置为 1，则使用 XFSv5 功能。
 >
 
 
@@ -105,7 +109,7 @@ ms.lasthandoff: 06/15/2017
 
 **配置** | **VMware/物理服务器** | **Hyper-V（具有/不具有 Virtual Machine Manager）**
 --- | --- | ---
-NIC 组合 | 是<br/><br/>在物理计算机中不受支持| 是
+NIC 组合 | 是<br/><br/>复制物理计算机时不支持| 是
 VLAN | 是 | 是
 IPv4 | 是 | 是
 IPv6 | 否 | 否
@@ -118,7 +122,7 @@ NIC 组合 | 否 | 否
 IPv4 | 是 | 是
 IPv6 | 否 | 否
 静态 IP (Windows) | 是 | 是
-静态 IP (Linux) | 否 | 否
+静态 IP (Linux) | 是 <br/><br/>虚拟机配置为在故障回复时使用 DHCP  | 否
 多 NIC | 是 | 是
 
 ### <a name="failed-over-azure-vm-network-configuration"></a>故障转移 Azure VM 网络配置
@@ -155,12 +159,13 @@ VMDK | 是 | 不适用
 VHD/VHDX | 不适用 | 是
 第 2 代 VM | 不适用 | 是
 EFI/UEFI| 否 | 是
-共享群集磁盘 | VMware 支持<br/><br/> 不适用于物理服务器 | 否
+共享群集磁盘 | 否 | 否
 加密磁盘 | 否 | 否
 NFS | 否 | 不适用
 SMB 3.0 | 否 | 否
 RDM | 是<br/><br/> 不适用于物理服务器 | 不适用
-磁盘 > 1 TB | 否 | 否
+磁盘 > 1 TB | 是<br/><br/>最大 4095 GB | 是<br/><br/>最大 4095 GB
+具有 4K 扇区大小的磁盘 | 是 | 是，第 1 代 VM 支持<br/><br/>第 2 代 VM 不支持。
 包含条带化磁盘的卷 > 1 TB<br/><br/> LVM 逻辑卷管理 | 是 | 是
 存储空间 | 否 | 是
 热添加/移除磁盘 | 否 | 否
@@ -182,9 +187,10 @@ RA-GRS | 是 | 是
 ## <a name="support-for-azure-compute-configuration"></a>Azure 计算配置支持
 
 **计算功能** | **VMware/物理服务器** | **Hyper-V（具有/不具有 Virtual Machine Manager）**
---- | --- | --- | ---
+--- | --- | --- 
 可用性集 | 是 | 是
 HUB | 是 | 是  
+托管磁盘 | 是 | 是<br/><br/>当前不支持从使用托管磁盘的 Azure VM 故障回复到本地。
 
 ## <a name="failed-over-azure-vm-requirements"></a>故障转移 Azure VM 要求
 
@@ -192,16 +198,16 @@ HUB | 是 | 是
 
 **实体** | **要求** | **详细信息**
 --- | --- | ---
-**来宾操作系统** | 对于从 Hyper-V 到 Azure 的复制，Site Recovery 支持 [Azure 支持](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)的所有操作系统。 <br/><br/> 对于 VMware 和物理服务器复制，请检查 Windows 和 Linux [先决条件](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment) | 如果不支持，先决条件检查将会失败。
-**来宾操作系统体系结构** | 64 位 | 如果不支持，先决条件检查将会失败
-**操作系统磁盘大小** | 最大 1023 GB | 如果不支持，先决条件检查将会失败
-**操作系统磁盘计数** | 1 | 如果不支持，先决条件检查将会失败。
-**数据磁盘计数** | 如果将 **VMware VM 复制到 Azure**，则为 64 个或更少；如果将 **Hyper-V VM 复制到 Azure**，则为 16 个或更少 | 如果不支持，先决条件检查将会失败
-**数据磁盘 VHD 大小** | 最大 1023 GB | 如果不支持，先决条件检查将会失败
+**来宾操作系统** | 对于从 Hyper-V 到 Azure 的复制，Site Recovery 支持 [Azure 支持](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)的所有操作系统。 <br/><br/> 对于 VMware 和物理服务器复制，请检查 Windows 和 Linux [先决条件](site-recovery-vmware-to-azure-classic.md) | 如果不支持，先决条件检查会失败。
+**来宾操作系统体系结构** | 64 位 | 如果不支持，先决条件检查会失败
+**操作系统磁盘大小** | 如果要**将 VMware VM 或物理服务器复制到 Azure**，则最大为 2048 GB。<br/><br/>对于 **Hyper-V 第 1 代** VM，最大为 2048 GB。<br/><br/>对于 **Hyper-V 第 2 代** VM，最大为 300 GB。  | 如果不支持，先决条件检查会失败
+**操作系统磁盘计数** | 1 | 如果不支持，先决条件检查会失败。
+**数据磁盘计数** | 如果将 **VMware VM 复制到 Azure**，则为 64 个或更少；如果将 **Hyper-V VM 复制到 Azure**，则为 16 个或更少 | 如果不支持，先决条件检查会失败
+**数据磁盘 VHD 大小** | 最大 4095 GB | 如果不支持，先决条件检查会失败
 **网络适配器** | 支持多个适配器 |
-**共享 VHD** | 不支持 | 如果不支持，先决条件检查将会失败
-**FC 磁盘** | 不支持 | 如果不支持，先决条件检查将会失败
-**硬盘格式** | VHD <br/><br/> VHDX | 尽管 Azure 当前不支持 VHDX，但当你故障转移到 Azure 时，站点恢复会自动将 VHDX 转换为 VHD。 当你故障回复到本地时，虚拟机将继续使用 VHDX 格式。
+**共享 VHD** | 不支持 | 如果不支持，先决条件检查会失败
+**FC 磁盘** | 不支持 | 如果不支持，先决条件检查会失败
+**硬盘格式** | VHD <br/><br/> VHDX | 尽管 Azure 当前不支持 VHDX，但故障转移到 Azure 时，站点恢复会自动将 VHDX 转换为 VHD。 故障回复到本地时，虚拟机将继续使用 VHDX 格式。
 **Bitlocker** | 不支持 | 保护虚拟机之前，必须先禁用 Bitlocker。
 **VM 名称** | 介于 1 和 63 个字符之间。 限制为字母、数字和连字符。 VM 名称必须以字母或数字开始或结尾。 | 在 Site Recovery 中更新虚拟机属性中的值。
 **VM 类型** | 第 1 代<br/><br/> 第 2 代 - Windows | OS 磁盘类型为“基本”的第 2 代 VM（其中包括一个或两个格式化为 VHDX 的数据卷），并且支持的磁盘空间大小小于 300 GB。<br></br>不支持 Linux 第 2 代 VM。 [了解详细信息](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)|

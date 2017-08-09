@@ -12,18 +12,18 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 04/15/2017
+ms.date: 07/22/2017
 ms.author: eugenesh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 509682297a3db090caa73bd9438f6434257d558f
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: b60662cbe655eea11cba2aaaaa4671209bf018f4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>使用 Azure 搜索为 Azure Blob 存储中的文档编制索引
-本文说明如何使用 Azure 搜索服务为存储在 Azure Blob 存储中的文档（例如 PDF、Microsoft Office 文档和其他多种常用格式的文档）编制索引。 首先，本文说明了设置和配置 Blob 索引器的基础知识。 其次，本文更加深入地探讨了你可能会遇到的行为和方案。
+本文说明如何使用 Azure 搜索服务为存储在 Azure Blob 存储中的文档（例如 PDF、Microsoft Office 文档和其他多种常用格式的文档）编制索引。 首先，本文说明了设置和配置 Blob 索引器的基础知识。 其次，本文更加深入地探讨了你可能会遇到的行为和场景。
 
 ## <a name="supported-document-formats"></a>支持的文档格式
 Blob 索引器可从以下文档格式提取文本：
@@ -35,12 +35,12 @@ Blob 索引器可从以下文档格式提取文本：
 * ZIP
 * EML
 * RTF
-* 纯文本文件
-* JSON（有关详细信息，请参阅[为 JSON Blob 编制索引](search-howto-index-json-blobs.md)）
-* CSV（有关详细信息，请参阅[为 CSV Blob 编制索引](search-howto-index-csv-blobs.md)预览版功能）
+* 纯文本文件（另请参阅[为纯文本编制索引](#IndexingPlainText)）
+* JSON（请参阅[为 JSON blob 编制索引](search-howto-index-json-blobs.md)）
+* CSV（请参阅[为 CSV Blob 编制索引](search-howto-index-csv-blobs.md)预览版功能）
 
 > [!IMPORTANT]
-> 对 CSV 和 JSON 数组的支持目前以预览版提供。 仅当使用 REST API **2015-02-28-Preview** 版本或 .NET SDK 2.x-preview 版本时，才支持这些格式。 请记住，预览版 API 仅供测试和评估，不应在生产环境中使用。
+> 对 CSV 和 JSON 数组的支持目前以预览版提供。 仅当使用 REST API **2016-09-01-Preview** 版本或 .NET SDK 2.x-preview 版本时，才支持这些格式。 请记住，预览版 API 仅供测试和评估，不应在生产环境中使用。
 >
 >
 
@@ -88,14 +88,14 @@ Blob 索引器可从以下文档格式提取文本：
 
 可通过以下一种方式提供 blob 容器的凭据：
 
-- **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`。 可通过导航到“存储帐户”边栏选项卡 >“设置”>“密钥”（对于经典存储帐户）或“设置”>“访问密钥”（对于 Azure Resource Manager 存储帐户），从 Azure 门户获取连接字符串。
-- **存储帐户共享访问签名** (SAS) 连接字符串：`BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`。 SAS 应具有容器和对象（本例中为 blob）的列表和读取权限。
--  **容器共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`。 SAS 应具有容器的列表和读取权限。
+- **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`。 可通过导航到“存储帐户”边栏选项卡 >“设置”>“密钥”（对于经典存储帐户）或“设置”>“访问密钥”（对于 Azure 资源管理器存储帐户），从 Azure 门户获取连接字符串。
+- **存储帐户共享访问签名** (SAS) 连接字符串：`BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`SAS 应当对容器和对象（在本例中为 blob）具有列出和读取权限。
+-  **容器共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`SAS 应当对容器具有列出和读取权限。
 
 有关存储共享访问签名的详细信息，请参阅[使用共享访问签名](../storage/storage-dotnet-shared-access-signature-part-1.md)。
 
 > [!NOTE]
-> 如果使用 SAS 凭据，则需使用续订的签名定期更新数据源凭据，以防止其过期。 如果 SAS 凭据过期，索引器将失败，出现类似于 `Credentials provided in the connection string are invalid or have expired.` 的错误消息。  
+> 如果使用 SAS 凭据，则需使用续订的签名定期更新数据源凭据，以防止其过期。 如果 SAS 凭据过期，索引器会失败，出现类似于 `Credentials provided in the connection string are invalid or have expired.` 的错误消息。  
 
 ### <a name="step-2-create-an-index"></a>步骤 2：创建索引
 索引指定文档、属性和其他构造中可以塑造搜索体验的字段。
@@ -132,16 +132,16 @@ Blob 索引器可从以下文档格式提取文本：
       "schedule" : { "interval" : "PT2H" }
     }
 
-此索引器每隔两小时运行一次（已将计划间隔设置为“PT2H”）。 若要每隔 30 分钟运行索引器一次，可将间隔设置为“PT30M”。 支持的最短间隔为 5 分钟。 计划是可选的 - 如果省略，则索引器在创建后只运行一次。 但是，可以随时根据需要运行索引器。   
+此索引器每隔两小时运行一次（已将计划间隔设置为“PT2H”）。 若要每隔 30 分钟运行一次索引器，可将间隔设置为“PT30M”。 支持的最短间隔为 5 分钟。 计划是可选的 - 如果省略，则索引器在创建后只运行一次。 但是，可以随时根据需要运行索引器。   
 
 有关创建索引器 API 的更多详细信息，请参阅[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 
 ## <a name="how-azure-search-indexes-blobs"></a>Azure 搜索如何为 Blob 编制索引
 
-根据具体的[索引器配置](#PartsOfBlobToIndex)，Blob 索引器可以仅为存储元数据编制索引（如果你只关注元数据，而无需为 Blob 的内容编制索引，则此功能非常有用）、为存储元数据和内容元数据编制索引，或者同时为元数据和文本内容编制索引。 默认情况下，索引器提取元数据和内容。
+根据具体的[索引器配置](#PartsOfBlobToIndex)，Blob 索引器可以仅为存储元数据编制索引（如果只关注元数据，而无需为 Blob 的内容编制索引，则此功能非常有用）、为存储元数据和内容元数据编制索引，或者同时为元数据和文本内容编制索引。 默认情况下，索引器提取元数据和内容。
 
 > [!NOTE]
-> 默认情况下，包含结构化内容（例如 JSON 或 CSV）的 lob 将以单一文本区块的形式编制索引。 如果想要以结构化方法为 JSON 和 CSV Blob 编制索引，请参阅[为 JSON Blob 编制索引](search-howto-index-json-blobs.md)和[为 CSV Blob 编制索引](search-howto-index-csv-blobs.md)预览版功能。
+> 默认情况下，包含结构化内容（例如 JSON 或 CSV）的 lob 以单一文本区块的形式编制索引。 如果想要以结构化方法为 JSON 和 CSV Blob 编制索引，请参阅[为 JSON Blob 编制索引](search-howto-index-json-blobs.md)和[为 CSV Blob 编制索引](search-howto-index-csv-blobs.md)预览版功能。
 >
 > 复合或嵌入式文档（例如 ZIP 存档，或者嵌入了带附件 Outlook 电子邮件的 Word 文档）也以单一文档的形式编制索引。
 
@@ -164,7 +164,7 @@ Blob 索引器可从以下文档格式提取文本：
 无需在搜索索引中针对上述所有属性定义字段 - 系统只捕获应用程序所需的属性。
 
 > [!NOTE]
-> 通常，现有索引中的字段名称与文档提取期间所生成的字段名称不同。 可以使用**字段映射**将 Azure 搜索服务提供的属性名称映射到搜索索引中的字段名称。 后面将会提供字段映射的用法示例。
+> 通常，现有索引中的字段名称与文档提取期间所生成的字段名称不同。 可以使用**字段映射**将 Azure 搜索服务提供的属性名称映射到搜索索引中的字段名称。 后面会提供字段映射的用法示例。
 >
 >
 
@@ -179,7 +179,7 @@ Blob 索引器可从以下文档格式提取文本：
 * 如果上述所有做法都不起作用，可将一个自定义元数据属性添加到 Blob。 但是，这种做法需要通过 Blob 上传过程将该元数据属性添加到所有 Blob。 由于键是必需的属性，因此没有该属性的所有 Blob 都无法编制索引。
 
 > [!IMPORTANT]
-> 如果索引中没有键字段的显式映射，Azure 搜索服务将自动使用 `metadata_storage_path`（上述第二个选项）作为键并对该键进行 base-64 编码。
+> 如果索引中没有键字段的显式映射，Azure 搜索服务会自动使用 `metadata_storage_path`（上述第二个选项）作为键并对该键进行 base-64 编码。
 >
 >
 
@@ -190,7 +190,7 @@ Blob 索引器可从以下文档格式提取文本：
       { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
     ]
 
-若要将所有元素合并在一起，可按如下所示添加字段映射，并为现有索引器的键启用 base-64 编码：
+要将所有元素合并在一起，可按如下所示添加字段映射，并为现有索引器的键启用 base-64 编码：
 
     PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2016-09-01
     Content-Type: application/json
@@ -243,7 +243,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 ### <a name="dealing-with-unsupported-content-types"></a>处理不受支持的内容类型
 
-默认情况下，Blob 索引器一旦遇到包含不受支持内容类型（例如图像）的 Blob 时，就会立即停止。 当然，你可以使用 `excludedFileNameExtensions` 参数跳过某些内容类型。 但是，你可能需要在未事先了解所有可能的内容类型的情况下，为 Blob 编制索引。 若要在遇到了不受支持的内容类型时继续编制索引，可将 `failOnUnsupportedContentType` 配置参数设置为 `false`：
+默认情况下，Blob 索引器一旦遇到包含不受支持内容类型（例如图像）的 Blob 时，就会立即停止。 当然，可以使用 `excludedFileNameExtensions` 参数跳过某些内容类型。 但是，可能需要在未事先了解所有可能的内容类型的情况下，为 Blob 编制索引。 要在遇到了不受支持的内容类型时继续编制索引，可将 `failOnUnsupportedContentType` 配置参数设置为 `false`：
 
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
     Content-Type: application/json
@@ -285,7 +285,7 @@ Azure 搜索的文档提取逻辑并不完美，有时无法分析包含受支�
 
 ### <a name="using-blob-metadata-to-control-how-blobs-are-indexed"></a>使用 Blob 元数据来控制如何为 Blob 编制索引
 
-上述配置参数适用于所有 Blob。 有时，你可能想要控制如何为*单个 Blob* 编制索引。 为此，可以添加以下 Blob 元数据属性和值：
+上述配置参数适用于所有 Blob。 有时，你可能想要控制为*个体 Blob* 编制索引的方式。 为此，可以添加以下 Blob 元数据属性和值：
 
 | 属性名称 | 属性值 | 说明 |
 | --- | --- | --- |
@@ -296,7 +296,7 @@ Azure 搜索的文档提取逻辑并不完美，有时无法分析包含受支�
 将 Blob 索引器设置为按计划运行时，它只根据 Blob 的 `LastModified` 时间戳，为更改的 Blob 重新编制索引。
 
 > [!NOTE]
-> 无需指定更改检测策略 - 系统将自动启用增量索引。
+> 无需指定更改检测策略 - 系统会自动启用增量索引。
 
 若要支持删除文档，请使用“软删除”方法。 如果彻底删除 Blob，相应的文档不会从搜索索引中删除。 应该改用以下步骤：  
 
@@ -340,13 +340,35 @@ Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob �
 
 - 为每个数据源创建相应的索引器。 所有索引器可以指向同一目标搜索索引。  
 
+- 服务中的每个搜索单位在任何给定的时间都只能运行一个索引器。 只有当索引器实际上并行运行时，如上所述创建多个索引器才很有用。 若要并行运行多个索引器，请通过创建合适数量的分区和副本来横向扩展搜索服务。 例如，如果搜索服务有 6 个搜索单位（例如，2 个分区 x 3 个副本），则 6 个索引器可以同时运行，导致索引吞吐量增加六倍。 若要详细了解缩放和容量规划，请参阅[在 Azure 搜索中缩放用于查询和索引工作负荷的资源级别](search-capacity-planning.md)。
+
 ## <a name="indexing-documents-along-with-related-data"></a>对文档以及相关数据进行索引
 
-文档可能具有关联的元数据（例如创建文档的部门），作为结构化数据存储在以下位置之一。
--   SQL 数据库或 Azure Cosmos DB 等独立数据存储空间。
--   作为自定义元数据直接附加到 Azure Blob 存储中的每个文档。 （有关详细信息，请参阅 [Setting and Retrieving Properties and Metadata for Blob Resources](https://docs.microsoft.com/rest/api/storageservices/setting-and-retrieving-properties-and-metadata-for-blob-resources) [设置和检索 Blob 资源的属性和元数据]。）
+你可能希望从索引中的多个源“组装”文档。 例如，你可能希望将 blob 中的文本与 Cosmos DB 中存储的其他元数据进行合并。 甚至可以将推送索引 API 与各种索引器一起使用来基于多个部件搭建搜索文档。 
 
-可以通过为每个文档及其元数据分配相同的唯一键值，以及通过为每个索引器指定 `mergeOrUpload` 操作，来对文档及其元数据进行索引。 有关此解决方案的详细说明，请参阅外部文章：[Combine documents with other data in Azure Search](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)（在 Azure 搜索中组合使用文档与其他数据）。
+若要使此方式可行，所有索引器和其他组件需要针对文档键达成一致。 有关详细演练，请参阅外部文章：[Combine documents with other data in Azure Search](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)（在 Azure 搜索中组合使用文档与其他数据）。
+
+<a name="IndexingPlainText"></a>
+## <a name="indexing-plain-text"></a>为纯文本编制索引 
+
+如果所有 blob 都包含采用同一编码的纯文本，则可以通过使用**文本分析模式**显著提高索引编制性能。 若要使用文本分析模式，请将 `parsingMode` 配置属性设置为 `text`：
+
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      ... other parts of indexer definition
+      "parameters" : { "configuration" : { "parsingMode" : "text" } }
+    }
+
+默认情况下将采用 `UTF-8` 编码。 若要指定不同的编码，请使用 `encoding` 配置属性： 
+
+    {
+      ... other parts of indexer definition
+      "parameters" : { "configuration" : { "parsingMode" : "text", "encoding" : "windows-1252" } }
+    }
+
 
 <a name="ContentSpecificMetadata"></a>
 ## <a name="content-type-specific-metadata-properties"></a>特定于内容类型的元数据属性

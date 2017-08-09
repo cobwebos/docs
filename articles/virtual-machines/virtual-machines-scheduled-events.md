@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/10/2016
 ms.author: zivr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 062ab97d00622419e2bca1fcd0a17f6b6b4f6f81
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 793803bfc12059a68ec881da9de37116f7a0eb8c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/23/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="azure-metadata-service---scheduled-events-preview"></a>Azure 元数据服务 - 计划事件（预览）
@@ -42,8 +41,8 @@ ms.lasthandoff: 05/23/2017
 有时会通知管理员即将发生的事件，或记录此类事件也会帮助改进托管在云中的应用程序的可维护性。
 
 Azure 元数据服务在以下用例中显示计划事件：
--    平台启动的维护（例如，主机 OS 部署）
--    用户启动的调用（例如，用户重启或重新部署 VM）
+-   平台启动的维护（例如，主机 OS 部署）
+-   用户启动的调用（例如，用户重启或重新部署 VM）
 
 
 ## <a name="scheduled-events---the-basics"></a>计划事件 - 基础知识  
@@ -51,7 +50,7 @@ Azure 元数据服务在以下用例中显示计划事件：
 Azure 元数据服务使用可从 VM 内访问的 REST 终结点公开有关正在运行的虚拟机的信息。 该信息通过不可路由的 IP 提供，因此不会在 VM 外部公开。
 
 ### <a name="scope"></a>范围
-计划事件将显示到云服务中的所有虚拟机或可用性集中的所有虚拟机上。 因此，应查看事件中的 `Resources` 字段，确定哪些 VM 将会受到影响。 
+计划事件会显示到云服务中的所有虚拟机或可用性集中的所有虚拟机上。 因此，应查看事件中的 `Resources` 字段，确定哪些 VM 将会受到影响。 
 
 ### <a name="discovering-the-endpoint"></a>发现终结点
 在虚拟网络 (VNet) 中创建虚拟机的情况下，元数据服务可从不可路由的静态 IP：`169.254.169.254` 获得。
@@ -61,7 +60,7 @@ Azure 元数据服务使用可从 VM 内访问的 REST 终结点公开有关正�
 已对实例元数据服务进行了版本控制。 版本是必需的，当前版本为 `2017-03-01`。
 
 > [!NOTE] 
-> 支持的计划事件的早期预览版发布 {最新} 为 api-version。 此格式不再受支持，并且将在未来被弃用。
+> 支持的计划事件的早期预览版发布 {最新} 为 api-version。 此格式不再受支持，并且会在未来被弃用。
 
 ### <a name="using-headers"></a>使用标头
 查询元数据服务时，必须提供标头 `Metadata: true`，以确保不会意外将请求重定向。
@@ -69,9 +68,16 @@ Azure 元数据服务使用可从 VM 内访问的 REST 终结点公开有关正�
 ### <a name="enabling-scheduled-events"></a>启用计划事件
 第一次请求计划事件时，Azure 会在虚拟机上隐式启用该功能。 因此，第一次调用时应该会延迟响应最多两分钟。
 
-### <a name="testing-your-logic-with-user-initiated-operations"></a>通过用户启动的操作对逻辑进行测试
-若要测试逻辑，可使用 Azure 门户、API、CLI 或 PowerShell，启动生成计划事件的操作。 重启虚拟机会生成事件类型为 `Reboot` 的计划事件。 重新部署虚拟机会生成事件类型为 `Redeploy` 的计划事件。
-在这两种情况下，完成用户启动的操作需更长的时间，因为计划事件为应用程序的正常关闭留出了更多时间。 
+### <a name="user-initiated-maintenance"></a>用户启动的维护
+用户通过 Azure 门户、API、CLI 或 PowerShell 启动的虚拟机维护将生成计划事件。 这样便可以在应用程序中测试维护准备逻辑，并可以通过应用程序准备用户启动的维护。
+
+重新启动虚拟机将计划 `Reboot` 类型的事件。 重新部署虚拟机将计划 `Redeploy` 类型的事件。
+
+> [!NOTE] 
+> 目前，可以同时计划最多 10 个用户启动的维护操作。 在计划事件公开发布之前将放宽此限制。
+
+> [!NOTE] 
+> 目前，生成计划事件的用户启动的维护不可配置。 可配置性已计划在将来的版本中推出。
 
 ## <a name="using-the-api"></a>使用 API
 
@@ -373,3 +379,4 @@ if __name__ == '__main__':
 - 详细了解[实例元数据服务](virtual-machines-instancemetadataservice-overview.md)中的 API。
 - 了解 [Azure 中 Windows 虚拟机的计划内维护](windows/planned-maintenance.md)。
 - 了解 [Azure 中 Linux 虚拟机的计划内维护](linux/planned-maintenance.md)。
+

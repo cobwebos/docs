@@ -12,15 +12,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2016
+ms.date: 08/02/2017
 ms.author: trinadhk;markgal;
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 4abc72962f5a67851aee9d64d7c8125e72d0ec09
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: eb94f7222476af3d15089589a5e69556f7d6888b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="manage-common-azure-backup-jobs-and-trigger-alerts-in-the-classic-portal"></a>在经典门户中管理常见的 Azure 备份作业和触发器警报
@@ -33,13 +32,13 @@ ms.lasthandoff: 06/16/2017
 本文针对在 Azure 中受保护的经典模型虚拟机介绍了几种常见的管理和监视任务。  
 
 > [!NOTE]
-> Azure 有两种用于创建和使用资源的部署模型： [Resource Manager 部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。 有关使用经典部署模型 VM 的详细信息，请参阅[准备好环境以备份 Azure 虚拟机](backup-azure-vms-prepare.md)。
+> Azure 有两种用于创建和使用资源的部署模型： [资源管理器部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。 有关使用经典部署模型 VM 的详细信息，请参阅[准备好环境以备份 Azure 虚拟机](backup-azure-vms-prepare.md)。
 >
 > [!IMPORTANT]
 >从 2017 年 3 月份开始，无法再使用经典门户来创建备份保管库。
 >
-> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 从 2017 年 11 月 1 日起：
->- 其余的所有备份保管库都将自动升级到恢复服务保管库。
+> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 10 月 15 日之后，不能使用 PowerShell 创建备份保管库。 **直到 2017 年 11 月 1 日**：
+>- 剩余的所有备份保管库都将自动升级到恢复服务保管库。
 >- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
 
 ## <a name="manage-protected-virtual-machines"></a>管理受保护的虚拟机
@@ -70,10 +69,10 @@ ms.lasthandoff: 06/16/2017
 
 若要执行虚拟机的按需备份，请执行以下操作：
 
-1. 导航到“**受保护的项**”页，选择“**Azure 虚拟机**”作为“**类型**”（如果尚未选择），然后单击“**选择**”按钮。
+1. 导航到“**受保护的项**”页，选择“**Azure 虚拟机**”作为“**类型**”（如果尚未选择），并单击“**选择**”按钮。
 
     ![VM 类型](./media/backup-azure-manage-vms/vm-type.png)
-2. 选择你要进行按需备份的虚拟机，然后单击页底部的“**立即备份**”按钮。
+2. 选择要进行按需备份的虚拟机，然后单击页底部的“**立即备份**”按钮。
 
     ![立即备份](./media/backup-azure-manage-vms/backup-now.png)
 
@@ -82,7 +81,7 @@ ms.lasthandoff: 06/16/2017
     ![创建备份作业](./media/backup-azure-manage-vms/creating-job.png)
 
    > [!NOTE]
-   > 若要查看与虚拟机关联的策略，请向下钻取到“**受保护的项**”页中的虚拟机，然后转到“备份策略”选项卡。
+   > 要查看与虚拟机关联的策略，请向下钻取到“**受保护的项**”页中的虚拟机，并转到“备份策略”选项卡。
    >
    >
 3. 创建作业后，可以单击 Toast 栏中的“**查看作业**”按钮，以在“作业”页中查看相应的作业。
@@ -100,10 +99,10 @@ ms.lasthandoff: 06/16/2017
 
 若要停止保护虚拟机，请执行以下操作：
 
-1. 导航到“**受保护的项**”页，选择“**Azure 虚拟机**”作为筛选类型（如果尚未选择），然后单击“**选择**”按钮。
+1. 导航到“**受保护的项**”页，选择“**Azure 虚拟机**”作为筛选类型（如果尚未选择），并单击“**选择**”按钮。
 
     ![VM 类型](./media/backup-azure-manage-vms/vm-type.png)
-2. 选择虚拟机，然后单击页底部的“**停止保护**”。
+2. 选择虚拟机，并单击页底部的“**停止保护**”。
 
     ![停止保护](./media/backup-azure-manage-vms/stop-protection.png)
 3. 默认情况下，Azure 备份不会删除与虚拟机关联的备份数据。
@@ -119,14 +118,14 @@ ms.lasthandoff: 06/16/2017
 
     ![停止保护](./media/backup-azure-manage-vms/stop-protect-success.png)
 
-    如果你未在“**停止保护**”向导中选择“**删除关联的备份数据**”选项，则在作业完成后，保护状态将更改为“**已停止保护**”。 数据将会使用 Azure 备份保留，直到被显式删除。 你随时都可通过在“**受保护的项**”页中选择虚拟机，然后单击“**删除**”来删除数据。
+    如果你未在“**停止保护**”向导中选择“**删除关联的备份数据**”选项，则在作业完成后，保护状态将更改为“**已停止保护**”。 数据将会使用 Azure 备份保留，直到被显式删除。 随时都可通过在“**受保护的项**”页中选择虚拟机，然后单击“**删除**”来删除数据。
 
     ![已停止保护](./media/backup-azure-manage-vms/protection-stopped-status.png)
 
     如果已选择“**删除关联的备份数据**”选项，则虚拟机不会出现在“**受保护的项**”页中。
 
 ## <a name="re-protect-virtual-machine"></a>重新保护虚拟机
-如果你未在“**停止保护**”中选择“**删除关联的备份数据**”选项，可以遵循类似于备份已注册虚拟机的步骤来重新保护虚拟机。 受保护后，此虚拟机将在停止保护之前保留备份数据，并在重新保护后创建恢复点。
+如果未在“**停止保护**”中选择“**删除关联的备份数据**”选项，可以遵循类似于备份已注册虚拟机的步骤来重新保护虚拟机。 受保护后，此虚拟机将在停止保护之前保留备份数据，并在重新保护后创建恢复点。
 
 重新保护后，如果有“**停止保护**”之前的恢复点，则虚拟机的保护状态将更改为“**受保护**”。
 
@@ -156,7 +155,7 @@ ms.lasthandoff: 06/16/2017
 
 对于在成功完成“**停止备份**”作业后处于“*已停止保护*”状态的虚拟机，若要删除其上的备份数据，请执行以下操作：
 
-1. 导航到“**受保护的项**”页，选择“**Azure 虚拟机**”作为*类型*，然后单击“**选择**”按钮。
+1. 导航到“**受保护的项**”页，选择“**Azure 虚拟机**”作为*类型*，并单击“**选择**”按钮。
 
     ![VM 类型](./media/backup-azure-manage-vms/vm-type.png)
 2. 选择虚拟机。 虚拟机将显示为“**已停止保护**”状态。
@@ -165,7 +164,7 @@ ms.lasthandoff: 06/16/2017
 3. 单击页底部的“**删除**”按钮。
 
     ![删除备份](./media/backup-azure-manage-vms/delete-backup.png)
-4. 在“**删除备份数据**”向导中，选择删除备份数据的原因（强烈建议），然后单击“**提交**”。
+4. 在“**删除备份数据**”向导中，选择删除备份数据的原因（强烈建议），并单击“**提交**”。
 
     ![删除备份数据](./media/backup-azure-manage-vms/delete-backup-data.png)
 5. 这将创建一个作业来删除选定虚拟机的备份数据。 单击“**查看作业**”，在“作业”页中查看相应的作业。
@@ -203,13 +202,13 @@ ms.lasthandoff: 06/16/2017
 
 若要查看某个备份保管库的相应操作日志，请执行以下操作：
 
-1. 导航到 Azure 门户中的“**管理服务**”，然后单击“**操作日志**”选项卡。
+1. 导航到 Azure 门户中的“**管理服务**”，并单击“**操作日志**”选项卡。
 
     ![操作日志](./media/backup-azure-manage-vms/ops-logs.png)
-2. 在筛选器中选择“**备份**”作为“*类型*”，在“*服务名称*”中指定备份保管库名称，然后单击“**提交**”。
+2. 在筛选器中选择“**备份**”作为“*类型*”，在“*服务名称*”中指定备份保管库名称，并单击“**提交**”。
 
     ![操作日志筛选器](./media/backup-azure-manage-vms/ops-logs-filter.png)
-3. 在操作日志中，选择任意操作，然后单击“**详细信息**”查看与操作相对应的详细信息。
+3. 在操作日志中，选择任意操作，并单击“**详细信息**”查看与操作相对应的详细信息。
 
     ![操作日志提取详细信息](./media/backup-azure-manage-vms/ops-logs-details.png)
 
@@ -227,7 +226,8 @@ PS C:\> $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail contoso@microsoft.
 PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -ResourceGroup RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US -OperationName Microsoft.Backup/backupVault/Backup -Status Failed -TargetResourceId /subscriptions/86eeac34-eth9a-4de3-84db-7a27d121967e/resourceGroups/RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US/providers/microsoft.backupbvtd2/BackupVault/trinadhVault -Actions $actionEmail
 ```
 
-**ResourceId**：你可以从“操作日志”弹出窗口中获取此项，如以上部分所述。 操作的详细信息弹出窗口中的 ResourceUri 是要针对此 cmdlet 提交的 ResourceId。
+
+            **ResourceId**：可以从“操作日志”弹出窗口中获取此项，如以上部分所述。 操作的详细信息弹出窗口中的 ResourceUri 是要针对此 cmdlet 提交的 ResourceId。
 
 **OperationName**：采用“Microsoft.Backup/backupvault/<EventName>”格式，其中，EventName 的值为 Register、Unregister、ConfigureProtection、Backup、Restore、StopProtection、DeleteBackupData、CreateProtectionPolicy、DeleteProtectionPolicy、UpdateProtectionPolicy 中的一个
 

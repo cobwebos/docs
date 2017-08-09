@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 43acd0e8e6b106013fc4491e3785f6efefc51493
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 1031cd63dede9ed202fdc11b153a550766d9cb19
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 
@@ -124,14 +123,14 @@ ms.lasthandoff: 07/04/2017
 ## <a name="set-up-the-environment-for-azure-stream-analytics"></a>设置 Azure 流分析的环境
 若要完成本教程，需要一个 Microsoft Azure 订阅。 Microsoft 提供免费试用版的 Microsoft Azure 服务。
 
-如果你没有 Azure 帐户，可以[请求免费试用版](http://azure.microsoft.com/pricing/free-trial/)。
+如果没有 Azure 帐户，可以[请求免费试用版](http://azure.microsoft.com/pricing/free-trial/)。
 
 > [!NOTE]
 > 若要注册免费试用版，必须有可接收短信的移动设备和有效的信用卡。
 > 
 > 
 
-请务必按照本文末尾的“清理 Azure 帐户”部分中的步骤操作，以便充分利用 200 美元的免费 Azure 信用额度。
+请务必按照本文末尾的“清理 Azure 帐户”部分中的步骤操作，以便充分利用 Azure 信用额度。
 
 ## <a name="provision-azure-resources-required-for-the-tutorial"></a>预配本教程所需的 Azure 资源
 本教程需要两个事件中心来接收“入口”和“出口”数据流。 Azure SQL 数据库输出流分析作业的结果。 Azure 存储存储有关汽车注册的引用数据。
@@ -216,7 +215,7 @@ ms.lasthandoff: 07/04/2017
 3. 在“服务器名称”字段中，粘贴从 Azure 门户的之前部分中复制的名称（即*服务器名称*.database.windows.net）。
 4. 单击“使用 SQL Server 身份验证”。
 5. 在“用户名”字段中输入“tolladmin”，并在“密码”字段中输入“123toll!” 。
-6. 单击“选择或输入数据库名称”，然后选择“TollDataDB”作为数据库。
+6. 单击“选择或输入数据库名称”，并选择“TollDataDB”作为数据库。
    
     ![“添加连接”对话框](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image17.jpg)
 7. 单击 **“确定”**。
@@ -397,7 +396,7 @@ WHERE Registration.Expired = '1'
 ![作业状态的屏幕截图](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image50.png)
 
 ## <a name="check-results-in-visual-studio"></a>在 Visual Studio 中检查结果
-1. 打开 Visual Studio 服务器资源管理器，然后右键单击“TollDataRefJoin”表。
+1. 打开 Visual Studio 服务器资源管理器，并右键单击“TollDataRefJoin”表。
 2. 单击“显示表数据”，查看作业的输出。
    
     ![选择服务器资源管理器中的“显示表数据”](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image51.jpg)

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/24/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 4466a5aa1d55b178a584832d03f68d307767d167
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 39dd859d60e7f1dcf697e3c59b8f084e400bbae0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 06/16/2017
 
 ## <a name="manual-reset-of-azure-ad-seamless-sso"></a>手动重置 Azure AD 无缝 SSO
 
-如果故障排除不起作用，请使用以下步骤在你的租户中手动重置该功能：
+如果故障排除不起作用，请在租户中手动重置该功能。 在运行 Azure AD Connect 的本地服务器上执行以下步骤：
 
 ### <a name="step-1-import-the-seamless-sso-powershell-module"></a>步骤 1：导入无缝 SSO PowerShell 模块
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 06/16/2017
 
 ### <a name="step-2-get-the-list-of-ad-forests-on-which-seamless-sso-has-been-enabled"></a>步骤 2：获取已在其中启用了无缝 SSO 的 AD 林列表
 
-1. 在 PowerShell 中，调用 `New-AzureADSSOAuthenticationContext`。 出现提示时，输入 Azure AD 租户管理员凭据。
+1. 以管理员身份运行 PowerShell。 在 PowerShell 中，调用 `New-AzureADSSOAuthenticationContext`。 出现提示时，输入租户的全局管理员凭据。
 2. 调用 `Get-AzureADSSOStatus`。 此命令可提供已在其中启用了此功能的 AD 林列表（请查看“域”列表）。
 
 ### <a name="step-3-disable-seamless-sso-for-each-ad-forest-that-it-was-set-it-up-on"></a>步骤 3：为已设置了无缝 SSO 的每个 AD 林禁用该功能

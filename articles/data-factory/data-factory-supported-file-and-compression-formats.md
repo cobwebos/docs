@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 15dc58a1a607ef40c52dcd62ee9ed0df273fc011
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: f4746e0dd249e417b8077a9bc733d2886daafdf2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 
@@ -71,21 +70,21 @@ Azure 数据工厂支持以下文件格式类型：
 },
 ```
 
-若要使用 `escapeChar` 而非 `quoteChar`，请将 `quoteChar` 所在的行替换为以下 escapeChar：
+要使用 `escapeChar` 而非 `quoteChar`，请将 `quoteChar` 所在的行替换为以下 escapeChar：
 
 ```json
 "escapeChar": "$",
 ```
 
 ### <a name="scenarios-for-using-firstrowasheader-and-skiplinecount"></a>firstRowAsHeader 和 skipLineCount 的使用方案
-* 你要从非文件源复制到文本文件，并想要添加包含架构元数据（例如 SQL 架构）的标头行。 对于此方案，请在输出数据集中将 `firstRowAsHeader` 指定为 true。
-* 你要从包含标头行的文本文件复制到非文件接收器，并想要删除该行。 请在输入数据集中将 `firstRowAsHeader` 指定为 true。
-* 你要从文本文件复制，并想跳过不包含数据或标头信息的开头几行。 通过指定 `skipLineCount` 指明要跳过的行数。 如果文件的剩余部分包含标头行，则也可指定 `firstRowAsHeader`。 如果同时指定了 `skipLineCount` 和 `firstRowAsHeader`，则先跳过代码行，然后从输入文件读取标头信息
+* 要从非文件源复制到文本文件，并想要添加包含架构元数据（例如 SQL 架构）的标头行。 对于此方案，请在输出数据集中将 `firstRowAsHeader` 指定为 true。
+* 要从包含标头行的文本文件复制到非文件接收器，并想要删除该行。 请在输入数据集中将 `firstRowAsHeader` 指定为 true。
+* 要从文本文件复制，并想跳过不包含数据或标头信息的开头几行。 通过指定 `skipLineCount` 指明要跳过的行数。 如果文件的剩余部分包含标头行，则也可指定 `firstRowAsHeader`。 如果同时指定了 `skipLineCount` 和 `firstRowAsHeader`，则先跳过代码行，然后从输入文件读取标头信息
 
 ## <a name="json-format"></a>JSON 格式
-若要在 Azure Cosmos DB 中按原样导入/导出 JSON 文件，请参阅[将数据移入/移出 Cosmos DB](data-factory-azure-documentdb-connector.md) 一文中的[导入/导出 JSON 文档](data-factory-azure-documentdb-connector.md#importexport-json-documents)部分。
+要在 Azure Cosmos DB 中按原样导入/导出 JSON 文件，请参阅[将数据移入/移出 Cosmos DB](data-factory-azure-documentdb-connector.md) 一文中的[导入/导出 JSON 文档](data-factory-azure-documentdb-connector.md#importexport-json-documents)部分。
 
-若要分析 JSON 文件或以 JSON 格式写入数据，请将 `format` 节中的 `type` 属性设置为 **JsonFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。
+要分析 JSON 文件或以 JSON 格式写入数据，请将 `format` 节中的 `type` 属性设置为 **JsonFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
@@ -219,7 +218,7 @@ Azure 数据工厂支持以下文件格式类型：
     }
 }
 ```
-并且你想要通过从对象和数组中提取数据，使用以下格式将该文件复制到 Azure SQL 表：
+并且想要通过从对象和数组中提取数据，使用以下格式将该文件复制到 Azure SQL 表：
 
 | id | deviceType | targetResourceType | resourceManagmentProcessRunId | occurrenceTime |
 | --- | --- | --- | --- | --- |
@@ -227,7 +226,7 @@ Azure 数据工厂支持以下文件格式类型：
 
 **JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体说来：
 
-- `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非你需要进行列映射。 请参阅[指定矩形数据集的结构定义](#specifying-structure-definition-for-rectangular-datasets)部分，了解更多详细信息。
+- `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非需要进行列映射。 有关详细信息，请参阅[将源数据集列映射到目标数据集列](data-factory-map-columns.md)。
 - `jsonPathDefinition` 为每个列指定 JSON 路径，表明从何处提取数据。 若要从数组中复制数据，可以使用 **array[x].property** 从 xth 对象中提取给定属性的值，或者使用 **array[*].property** 从包含此类属性的任何对象中查找该值。
 
 ```json
@@ -300,7 +299,7 @@ Azure 数据工厂支持以下文件格式类型：
 
 **JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体说来：
 
-- `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非你需要进行列映射。 请参阅[指定矩形数据集的结构定义](#specifying-structure-definition-for-rectangular-datasets)部分，了解更多详细信息。
+- `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非需要进行列映射。 有关详细信息，请参阅[将源数据集列映射到目标数据集列](data-factory-map-columns.md)。
 - `jsonNodeReference` 指示进行迭代操作，在**数组**订单行下以同一模式从对象提取数据。
 - `jsonPathDefinition` 为每个列指定 JSON 路径，表明从何处提取数据。 在以下示例中，"ordernumber"、"orderdate" 和 "city" 位于 JSON 路径以“$.”开头的根对象下，而 "order_pd" 和 "order_price" 在定义时使用的路径派生自没有“$.”的数组元素。
 
@@ -369,7 +368,7 @@ Azure 数据工厂支持以下文件格式类型：
 }
 ```
 
-**JsonFormat** 类型的输出数据集定义如下（部分定义，仅包含相关部件）。 更具体说来，`structure` 节用于定义目标文件中的自定义属性名称，`nestingSeparator`（默认为“.”）则用于标识名称中的嵌套层。 本节为**可选**，除非你需要根据源列名更改属性名称，或者需要嵌套部分属性。
+**JsonFormat** 类型的输出数据集定义如下（部分定义，仅包含相关部件）。 更具体说来，`structure` 节用于定义目标文件中的自定义属性名称，`nestingSeparator`（默认为“.”）则用于标识名称中的嵌套层。 本节为**可选**，除非需要根据源列名更改属性名称，或者需要嵌套部分属性。
 
 ```json
 "properties": {
@@ -482,7 +481,7 @@ Azure 数据工厂支持以下文件格式类型：
 }  
 ```
 
-假设示例数据集作为复制活动的输出，复制活动通过使用最佳比率的 GZIP 编解码器压缩输出数据，然后将压缩的数据写入 Azure Blob 存储中名为 pagecounts.csv.gz 的文件。
+假设示例数据集作为复制活动的输出，复制活动通过使用最佳比率的 GZIP 编解码器压缩输出数据，并将压缩的数据写入 Azure Blob 存储中名为 pagecounts.csv.gz 的文件。
 
 > [!NOTE]
 > 目前采用 **AvroFormat**、**OrcFormat** 或 **ParquetFormat** 的数据不支持压缩设置。 读取采用这些格式的文件时，数据工厂将检测并使用元数据中的压缩编解码器。 在采用这些格式的文件中写入数据时，数据工厂将选择适用于该格式的默认压缩编解码器。 例如，为 OrcFormat 使用 ZLIB，为 ParquetFormat 使用 SNAPPY。   
@@ -499,10 +498,10 @@ Azure 数据工厂支持以下文件格式类型：
 
 在输入数据集 JSON 中指定 `compression` 属性时，管道可以从源读取压缩的数据；在输出数据集 JSON 中指定属性时，复制活动可以将压缩的数据写入到目标。 下面是一些示例方案：
 
-* 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩，然后将结果数据写入 Azure SQL 数据库。 在此情况下，可以使用值为 GZIP 的 `compression` `type` JSON 属性来定义输入 Azure Blob 数据集。
+* 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩，并将结果数据写入 Azure SQL 数据库。 在此情况下，可以使用值为 GZIP 的 `compression` `type` JSON 属性来定义输入 Azure Blob 数据集。
 * 从来自本地文件系统的纯文本文件读取数据、使用 GZip 格式进行压缩并将压缩的数据写入到 Azure Blob。 在此情况下，可以使用值为 GZip 的 `compression` `type` JSON 属性来定义输出 Azure Blob 数据集。
-* 从 FTP 服务器读取 .zip 文件，将它解压缩以获取文件内容，然后将这些文件加入 Azure Data Lake Store。 可以使用值为 ZipDeflate 的 `compression` `type` JSON 属性来定义输入 FTP 数据集。
-* 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩、使用 BZIP2 将其压缩，然后将结果数据写入 Azure Blob。 在此情况下，可以使用设置为 GZIP 的 `compression` `type` 来定义输入 Azure Blob 数据集，使用设置为 BZIP2 的 `compression` `type` 来定义输出数据集。   
+* 从 FTP 服务器读取 .zip 文件，将它解压缩以获取文件内容，并将这些文件加入 Azure Data Lake Store。 可以使用值为 ZipDeflate 的 `compression` `type` JSON 属性来定义输入 FTP 数据集。
+* 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩、使用 BZIP2 将其压缩，并将结果数据写入 Azure Blob。 在此情况下，可以使用设置为 GZIP 的 `compression` `type` 来定义输入 Azure Blob 数据集，使用设置为 BZIP2 的 `compression` `type` 来定义输出数据集。   
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -11,19 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 07/24/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: d9143c1ec2075f71659e8deaadc93d1972ea9a85
+ms.custom: oldportal;it-pro;
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: f1fda3c4192d0dae4fa60788f4d88fb72ddba4ad
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="understanding-resource-access-in-azure"></a>了解 Azure 中的资源访问权限
-> [!NOTE]
-> 本主题介绍有关使用订阅管理员在整个 Azure 门户中控制资源访问权限的概念。 作为替代方法，Azure 预览门户提供了[基于角色的访问控制](role-based-access-control-configure.md)，以便可以更准确地管理 Azure 资源。
+> [!IMPORTANT]
+> Microsoft 建议使用 Azure 门户而不是本文中引用的 Azure 经典门户通过 [Azure AD 管理中心](https://aad.portal.azure.com)管理 Azure AD。 Azure 门户提供了[基于角色的访问控制](role-based-access-control-configure.md)，以便可以更准确地管理 Azure 资源。
 > 
 > 
 
@@ -48,14 +48,14 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 
 在这种简单的情况下，组织（如 Contoso）将对同一组订阅实行计费和访问控制。 也就是说，目录与由单个 Azure 帐户所拥有的订阅关联。 一旦成功登录到 Azure 经典门户，用户就可以看到两组资源（在前面的插图中以橘色表示）：
 
-* 其用户帐户所在的目录（源用户或添加为外部主体）。 请注意，用于登录的目录与此计算无关，因此，你的目录将始终显示，而不考虑你登录的位置。
+* 其用户帐户所在的目录（源用户或添加为外部主体）。 请注意，用于登录的目录与此计算无关，因此，目录将始终显示，而不考虑你登录的位置。
 * 作为订阅一部分的资源，这些订阅与用于登录的目录关联且用户可以访问（对于此订阅，用户是 SA 或 CA）。
 
 <br><br>![具有多个订阅和目录的用户][4]
 
 跨多个目录具有订阅的用户可以通过使用订阅筛选器来切换 Azure 经典门户的当前上下文。 最终，这会导致单独登录到不同的目录，但这可以使用单一登录 (SSO) 无缝地实现。
 
-由于这种单一的订阅目录视图所导致的结果，诸如在订阅之间移动资源的操作可能会更难以实现。 若要执行资源传输，务必首先使用“设置”中“订阅”页上的“编辑目录”命令将订阅与相同目录关联。
+由于这种单一的订阅目录视图所导致的结果，诸如在订阅之间移动资源的操作可能会更难以实现。 要执行资源传输，务必首先使用“设置”中“订阅”页上的“编辑目录”命令将订阅与相同目录关联。
 
 ## <a name="next-steps"></a>后续步骤
 * 若要了解有关如何更改 Azure 订阅管理员的详细信息，请参阅 [如何添加或更改 Azure 管理员角色](../billing/billing-add-change-azure-subscription-administrator.md)
