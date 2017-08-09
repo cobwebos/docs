@@ -14,14 +14,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2017
+ms.date: 07/26/2017
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 83d357bd046814c690b8b11841e5c8ebebd0df0e
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: b09bfa8a5bc22a092e963f351e99c16d0e9a57ba
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="deploy-and-explore-a-multi-tenant-application-that-uses-azure-sql-database---wingtip-saas"></a>部署和浏览使用 Azure SQL 数据库的多租户 Wingtip 应用程序 - Wingtip SaaS
@@ -54,7 +53,9 @@ ms.lasthandoff: 06/28/2017
 
 部署 Wingtip SaaS 应用：
 
-1. 单击“部署到 Azure”按钮，在 Azure 门户中打开 Wingtip SaaS 部署模板。 该模板要求两个参数值；新资源组的名称和用于区分该部署和 Wingtip SaaS 应用中其他部署的用户名。 下一个步骤提供了设置这些值的详细信息。 请务必注意你使用的确切值，因为接下来需要将把它们输入到配置文件。
+1. 单击“部署到 Azure”按钮，在 Azure 门户中打开 Wingtip SaaS 部署模板。 该模板要求两个参数值；新资源组的名称和用于区分该部署和 Wingtip SaaS 应用中其他部署的用户名。 下一个步骤提供了设置这些值的详细信息。
+
+   请务必注意你使用的确切值，因为接下来需要将把它们输入到配置文件。
 
    <a href="http://aka.ms/deploywtpapp" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
@@ -63,8 +64,8 @@ ms.lasthandoff: 06/28/2017
     > [!IMPORTANT]
     > 出于演示目的，某些身份验证和服务器防火墙已有意取消保护。 请创建新的资源组，不要使用现有资源组、服务器或池。 不要使用该应用程序及其创建的任何资源进行生产。 使用完该应用程序时请删除此资源组，以停止相关计费。
 
-    * **资源组** - 选择“新建”，然后提供**名称**和**位置**。
-    * 用户 - 某些资源需要全局唯一的名称。 为了确保唯一性，请在每次部署应用程序时提供一个可将你创建的资源与 Wingtip 应用程序其他任何部署创建的资源区别开来的值。 建议使用简短的**用户**名，如姓名的首字母加上一个数字（例如 *bg1*），然后将该名称用在资源组名称中（例如 *wingtip-bg1*）。 “用户”参数只能包含字母、数字和连字符（不能有空格）。 第一个字符和最后一个字符必须是字母或数字（建议全部小写）。
+    * **资源组** - 选择“新建”，并为资源组提供一个**名称**。 从下拉列表中选择一个**位置**。
+    * 用户 - 某些资源需要全局唯一的名称。 为了确保唯一性，请在每次部署应用程序时提供一个可将你创建的资源与 Wingtip 应用程序其他任何部署创建的资源区别开来的值。 建议使用简短的**用户**名，如姓名的首字母加上一个数字（例如 *bg1*），并将该名称用在资源组名称中（例如 *wingtip-bg1*）。 **User** 参数只能包含字母、数字和连字符（不能有空格）。 第一个字符和最后一个字符必须是字母或数字（建议全部小写）。
 
 
 1. **部署应用程序**。
@@ -107,9 +108,9 @@ ms.lasthandoff: 06/28/2017
 
 该应用将展示举办活动的地点，如音乐厅、爵士乐俱乐部、运动俱乐部。 地点将作为 Wingtip 平台的客户（或租户）注册，以便于列出活动和销售票证。 每个地点均获得一个用于管理和列出其活动并销售票证的个性化 Web 应用，每个地点都是独立的，并且与其他租户隔离。 事实上，每个租户均获得一个部署到 SQL 弹性池的 SQL 数据库。
 
-中部的**活动中心**提供特定于你的部署的租户 URL 列表。
+中部的**活动中心**提供特定于部署的租户 URL 列表。
 
-1. 打开“事件中心”：http://events.wtp.&lt;USER&gt;.trafficmanager.net（替换为部署用户名）：
+1. 在 web 浏览器中打开“事件中心”：http://events.wtp.&lt;USER&gt;.trafficmanager.net（替换为部署用户名）：
 
     ![事件中心](media/sql-database-saas-tutorial/events-hub.png)
 
@@ -118,7 +119,7 @@ ms.lasthandoff: 06/28/2017
    ![事件](./media/sql-database-saas-tutorial/fabrikam.png)
 
 
-该应用使用 [Azure 流量管理器](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview)来控制传入请求的分配。 租户特定的活动页需要租户名称包含在 URL 中。 所有租户 URL 均包括你的特定 *User* 值并遵循以下格式：http://events.wtp.&lt;USER&gt;.trafficmanager.net/*fabrikamjazzclub*。 “活动”应用将分析 URL 中的租户名称，并使用它来创建密钥以使用[分片映射管理](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-scale-shard-map-management)访问目录。 该目录将密钥映射到租户的数据库位置。 事件中心使用目录中的扩展元数据检索与每个数据库相关联的租户名称，提供 URL 列表。
+该应用使用 [Azure 流量管理器](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview)来控制传入请求的分配。 租户特定的活动页需要租户名称包含在 URL 中。 所有租户 URL 均包括特定 *User* 值并遵循以下格式：http://events.wtp.&lt;USER&gt;.trafficmanager.net/*fabrikamjazzclub*。 “活动”应用将分析 URL 中的租户名称，并使用它来创建密钥以使用[分片映射管理](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-scale-shard-map-management)访问目录。 该目录将密钥映射到租户的数据库位置。 事件中心使用目录中的扩展元数据检索与每个数据库相关联的租户名称，提供 URL 列表。
 
 在生产环境中，通常要创建一条 CNAME DNS 记录以[将公司 Internet 域指向](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-point-internet-domain)流量管理器配置文件。
 
@@ -130,7 +131,7 @@ ms.lasthandoff: 06/28/2017
 1. 按 **F5** 运行该脚本并启动负载生成器（目前保留默认参数值）。
 
 > [!IMPORTANT]
-> 负载生成器在本地 PowerShell 会话中作为一系列作业运行。 Demo-LoadGenerator.ps1 脚本启动实际负载生成器脚本，并作为前台任务加上一系列后台负载生成器作业运行。 为目录中注册的每个数据库调用负载生成器作业。 该作业在本地 PowerShell 会话中运行，因此关闭 PowerShell 会话将停止所有作业。 如果暂停计算机，负载生成器也会暂停并且在启动计算机时恢复。
+> 若要运行其他脚本，请打开新的 PowerShell ISE 窗口。 负载生成器在本地 PowerShell 会话中作为一系列作业运行。 Demo-LoadGenerator.ps1 脚本启动实际负载生成器脚本，并作为前台任务加上一系列后台负载生成器作业运行。 为目录中注册的每个数据库调用负载生成器作业。 该作业在本地 PowerShell 会话中运行，因此关闭 PowerShell 会话将停止所有作业。 如果暂停计算机，负载生成器也会暂停并且在启动计算机时恢复。
 
 负载生成器为每个租户调用负载生成器作业后，前台任务将保持在作业调用状态，为随后配置的任何新租户启动其他后台作业。 可以使用“Ctrl-C”或按“停止”按钮来停止前台任务，但现有后台作业将在每个数据库继续生成加载。 如果需要监视和控制后台作业，请使用“Get-Job”、“Receive-Job”和“Stop-Job”。 在前台任务正在运行时，无法使用相同的 PowerShell 会话执行其他脚本。 若要运行其他脚本，请打开新的 PowerShell ISE 窗口。
 
@@ -160,11 +161,11 @@ ms.lasthandoff: 06/28/2017
 
 既然已开始针对该组租户运行加载，让我们看看一些已部署的资源：
 
-1. 在 [Azure 门户](http://portal.azure.com)中，打开 **catalog-&lt;USER&gt;** 服务器。 该目录服务器包含两个数据库。 tenantcatalog 和 basetenantdb（为了创建新租户而复制的空的黄金或模板数据库）。
+1. 在 [Azure 门户](http://portal.azure.com)中，浏览到 SQL 服务器列表并打开 **catalog-&lt;USER&gt;** 服务器。 该目录服务器包含两个数据库。 tenantcatalog 和 basetenantdb（为了创建新租户而复制的空的黄金或模板数据库）。
 
    ![数据库](./media/sql-database-saas-tutorial/databases.png)
 
-1. 打开保存租户数据库的 **tenants1-&lt;USER&gt;** 服务器。 每个租户数据库都是 50 eDTU 标准池中的弹性标准数据库。 另外还要注意有一个 Red Maple Racing 数据库（以前预配的租户数据库）。
+1. 返回到 SQL 服务器列表并打开保存租户数据库的 **tenants1-&lt;USER&gt;** 服务器。 每个租户数据库都是 50 eDTU 标准池中的弹性标准数据库。 另外还要注意有一个 Red Maple Racing 数据库（以前预配的租户数据库）。
 
    ![server](./media/sql-database-saas-tutorial/server.png)
 

@@ -1,6 +1,6 @@
 ---
 title: "配置 SSL 卸载 - Azure 应用程序网关 - PowerShell | Microsoft Docs"
-description: "本页提供有关使用 Azure Resource Manager 创建支持 SSL 卸载的应用程序网关的说明"
+description: "本页提供有关使用 Azure 资源管理器创建支持 SSL 卸载的应用程序网关的说明"
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: 2982cf9154780166f1363ae6380702299c717236
-
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 4f09cace6af004973df1f6157f8fabdca3832e91
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/28/2017
 
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-azure-resource-manager"></a>使用 Azure Resource Manager 配置应用程序网关以进行 SSL 卸载
+# <a name="configure-an-application-gateway-for-ssl-offload-by-using-azure-resource-manager"></a>使用 Azure 资源管理器配置应用程序网关以进行 SSL 卸载
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-ssl-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
+> * [Azure 资源管理器 PowerShell](application-gateway-ssl-arm.md)
 > * [Azure 经典 PowerShell](application-gateway-ssl.md)
 
 可将 Azure 应用程序网关配置为在网关上终止安全套接字层 (SSL) 会话，以避免 Web 场中出现开销较高的 SSL 解密任务。 SSL 卸载还简化了 Web 应用程序的前端服务器设置与管理。
@@ -47,13 +48,13 @@ ms.openlocfilehash: 2982cf9154780166f1363ae6380702299c717236
 
 对于 SSL 证书配置， **HttpListener** 中的协议应更改为 *Https* （区分大小写）。 需要将 **SslCertificate** 元素添加到 **HttpListener**，其中包含针对 SSL 证书配置的变量值。 前端端口应更新为 443。
 
-**启用基于 Cookie 的相关性**：可以配置应用程序网关，以确保来自客户端会话的请求始终定向到 Web 场中的同一 VM。 这种情况通过注入允许网关适当定向流量的会话 Cookie 实现。 若要启用基于 Cookie 的相关性，请在 **BackendHttpSettings** 元素中将 **CookieBasedAffinity** 设置为 *Enabled*。
+**启用基于 Cookie 的相关性**：可以配置应用程序网关，以确保来自客户端会话的请求始终定向到 Web 场中的同一 VM。 这种情况通过注入允许网关适当定向流量的会话 Cookie 实现。 要启用基于 Cookie 的相关性，请在 **BackendHttpSettings** 元素中将 **CookieBasedAffinity** 设置为 *Enabled*。
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
-使用 Azure 经典部署模型和 Azure Resource Manager 的差别在于创建应用程序网关的顺序和需要配置的项。
+使用 Azure 经典部署模型和 Azure 资源管理器的差别在于创建应用程序网关的顺序和需要配置的项。
 
-通过 Resource Manager，应用程序网关的所有组件都将单独配置，然后放在一起创建应用程序网关资源。
+通过资源管理器，应用程序网关的所有组件都将单独配置，然后放在一起创建应用程序网关资源。
 
 以下是创建应用程序网关所要执行的步骤：
 
@@ -64,7 +65,7 @@ ms.openlocfilehash: 2982cf9154780166f1363ae6380702299c717236
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>创建资源管理器的资源组
 
-确保切换 PowerShell 模式，以便使用 Azure Resource Manager cmdlet。 [将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)中提供了详细信息。
+确保切换 PowerShell 模式，以便使用 Azure 资源管理器 cmdlet。 [将 Windows PowerShell 与资源管理器配合使用](../powershell-azure-resource-manager.md)中提供了详细信息。
 
 ### <a name="step-1"></a>步骤 1
 
@@ -104,7 +105,7 @@ Azure 资源管理器要求所有资源组指定一个位置。 此设置用作�
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>为应用程序网关创建虚拟网络和子网
 
-以下示例演示如何使用 Resource Manager 创建虚拟网络：
+以下示例演示如何使用资源管理器创建虚拟网络：
 
 ### <a name="step-1"></a>步骤 1
 
@@ -154,7 +155,7 @@ $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Sub
 $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
 ```
 
-此示例配置名为“pool01”的后端 IP 地址池，IP 地址为“134.170.185.46”、“134.170.188.221”、“134.170.185.50”。 这些值为接收来自前端 IP 终结点的网络流量的 IP 地址。 将上述示例中的 IP 地址替换为你的 Web 应用程序终结点的 IP 地址。
+此示例配置名为“pool01”的后端 IP 地址池，IP 地址为“134.170.185.46”、“134.170.188.221”、“134.170.185.50”。 这些值为接收来自前端 IP 终结点的网络流量的 IP 地址。 将上述示例中的 IP 地址替换为 Web 应用程序终结点的 IP 地址。
 
 ### <a name="step-3"></a>步骤 3
 
@@ -162,7 +163,7 @@ $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPA
 $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Enabled
 ```
 
-此示例为后端池中负载平衡的网络流量配置应用程序网关设置“poolsetting01”。
+此示例为后端池中负载均衡的网络流量配置应用程序网关设置“poolsetting01”。
 
 ### <a name="step-4"></a>步骤 4
 
@@ -225,7 +226,7 @@ $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-
 
 ## <a name="get-application-gateway-dns-name"></a>获取应用程序网关 DNS 名称
 
-创建网关后，下一步是配置前端以进行通信。 使用公共 IP 时，应用程序网关需要动态分配 DNS 名称，该名称不友好。 若要确保最终用户可以访问应用程序网关，可以使用 CNAME 记录以指向应用程序网关的公共终结点。 [在 Azure 中配置自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。 为此，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 应使用应用程序网关的 DNS 名称来创建 CNAME 记录，使两个 Web 应用程序都指向此 DNS 名称。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
+创建网关后，下一步是配置前端以进行通信。 使用公共 IP 时，应用程序网关需要动态分配 DNS 名称，该名称不友好。 若要确保最终用户可以访问应用程序网关，可以使用 CNAME 记录以指向应用程序网关的公共终结点。 为此，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 这可通过 Azure DNS 或其他 DNS 提供程序完成，方法是创建指向[公共 IP 地址](../dns/dns-custom-domain.md#public-ip-address)的 CNAME 记录。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
 
 
 ```powershell
@@ -258,14 +259,9 @@ DnsSettings              : {
 
 如果要将应用程序网关配置为与内部负载均衡器 (ILB) 配合使用，请参阅 [Create an application gateway with an internal load balancer (ILB)](application-gateway-ilb.md)（创建具有内部负载均衡器 (ILB) 的应用程序网关）。
 
-如需负载平衡选项的其他常规信息，请参阅：
+如需负载均衡选项的其他常规信息，请参阅：
 
-* [Azure 负载平衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
+* [Azure 负载均衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure 流量管理器](https://azure.microsoft.com/documentation/services/traffic-manager/)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

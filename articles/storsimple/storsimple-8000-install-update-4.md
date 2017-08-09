@@ -12,14 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/07/2017
+ms.date: 08/02/2017
 ms.author: alkohli
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 96f97cd36f45ebe8001bbcbf500305cb6380b644
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 57d6d63c55f8ad4da5d1905a1e209da454b0491c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>在 StorSimple 设备上安装 Update 4
@@ -79,8 +78,8 @@ Update 4 包括设备软件、USM 固件、LSI 驱动程序和固件、Storport 
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4011839 |软件更新 |常规 <br></br>非中断性 |~ 25 分钟 |FirstOrderUpdate|
 | 2A. |KB4011841 <br> KB4011842 |LSI 驱动程序和固件更新 <br> USM 固件更新（版本 3.38） |常规 <br></br>非中断性 |~ 3 小时 <br> （包括 2A. + 2B. + 2C.）|SecondOrderUpdate|
-| 2B. |KB3139398、KB3108381 <br> KB3205400、KB3142030 <br> KB3197873、KB3197873 <br> KB3192392、KB3153704 <br> KB3174644、KB3139914  |OS 安全更新包 |常规 <br></br>非中断性 |- |SecondOrderUpdate|
-| 2C. |KB3210083、KB3103616 <br> KB3146621、KB3121261 <br> KB3123538 |OS 更新包 |常规 <br></br>非中断性 |- |SecondOrderUpdate|
+| 2B. |KB3139398、KB3108381 <br> KB3205400、KB3142030 <br> KB3197873、KB3197873 <br> KB3192392、KB3153704 <br> KB3174644、KB3139914  |OS 安全更新包 <br> 下载 Windows Server 2012 R2 |常规 <br></br>非中断性 |- |SecondOrderUpdate|
+| 2C. |KB3210083、KB3103616 <br> KB3146621、KB3121261 <br> KB3123538 |OS 更新包 <br> 下载 Windows Server 2012 R2 |常规 <br></br>非中断性 |- |SecondOrderUpdate|
 
 除了前面表中显示的所有更新，可能还需安装磁盘固件更新。 运行 `Get-HcsFirmwareVersion` cmdlet 即可验证是否需要磁盘固件更新。 如果运行的是固件版本 `XMGJ`、`XGEG`、`KZ50`、`F6C2`、`VR08`、`N002``0106`，则不需安装这些更新。
 

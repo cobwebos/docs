@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 07/27/2017
 ms.author: abnarain
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 01f3ef6d0e8e43e702b8292a7c215d3df58817f2
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: e05563c8ef705b823199703795baa86dcb665b00
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="data-management-gateway"></a>数据管理网关
@@ -52,12 +51,12 @@ ms.lasthandoff: 05/09/2017
 2. 通过指定网关，数据开发人员可以为本地数据存储创建链接服务。 作为链接服务设置的一部分，数据开发人员使用设置凭据应用程序来指定身份验证的类型和凭据。  设置凭据应用程序对话框与数据存储进行通信，以测试连接和网关，从而保存凭据。
 3. 将凭据保存在云中之前，网关通过与网关关联的证书（由数据开发人员提供）来加密凭据。
 4. 数据工厂服务经过使用共享 Azure 服务总线队列的控制通道，与网关进行通信，以计划和管理作业。 需要启动复制活动作业时，数据工厂对请求和凭据信息进行排序。 轮询队列后，网关启动作业。
-5. 网关使用相同的证书来解密凭据，然后连接到具有正确身份验证类型和凭据的本地数据存储。
+5. 网关使用相同的证书来解密凭据，并连接到具有正确身份验证类型和凭据的本地数据存储。
 6. 根据复制活动在数据管道中的配置方式，网关将数据从本地存储复制到云存储（反之亦然）。 对于此步骤，网关直接通过安全 (HTTPS) 通道与基于云的存储服务（如 Azure Blob 存储）通信。
 
 ### <a name="considerations-for-using-gateway"></a>使用网关的注意事项
 * 数据管理网关的单个实例可用于多个本地数据源。 但是，**单个网关实例只与一个 Azure 数据工厂关联**，不能与另一个数据工厂共享。
-* 在一台计算机上可以仅安装 **数据管理网关的一个实例**。 假设你有两个需要访问本地数据源的数据工厂，那么需要在两台本地计算机上安装网关。 换而言之，一个网关关联到一个特定的数据工厂
+* 在一台计算机上可以仅安装 **数据管理网关的一个实例**。 假设有两个需要访问本地数据源的数据工厂，那么需要在两台本地计算机上安装网关。 换而言之，一个网关关联到一个特定的数据工厂
 * **网关不需要位于数据源所在的计算机上**。 但是，如果网关离数据源较近，可以减少网关连接到数据源的时间。 建议在不同于托管本地数据源的计算机上安装网关。 网关和数据源位于不同计算机上时，网关不会与数据源争用资源。
 * 可以**将不同计算机上的多个网关连接到同一本地数据源**。 例如，可以让两个网关服务两个数据工厂，但这两个数据工厂注册了同一个本地数据源。
 * 如果已在计算机中安装了为 **Power BI** 方案提供服务的网关，那么在其他计算机上安装**用于 Azure 数据工厂的单独网关**。
@@ -73,13 +72,13 @@ ms.lasthandoff: 05/09/2017
 * 如果主机计算机进入休眠状态，则网关不响应数据请求。 因此，安装网关之前，请在计算机上配置相应的**电源计划**。 如果计算机配置为休眠，则网关安装程序会提示消息。
 * 只有计算机管理员才能成功安装和配置数据管理网关。 可以将其他用户添加到“数据管理网关用户”本地 Windows 组。 此组成员能够通过数据管理网关配置管理器工具来配置网关。
 
-由于复制活动按特定频率发生，因此计算机上的资源使用率（CPU、内存）也遵循相同的高峰期和空闲期模式。 资源利用率还很大程度上取决于正在移动的数据量。 进行多个复制作业时，将会看到资源使用率在高峰期上升。
+由于复制活动按特定频率发生，因此计算机上的资源使用率（CPU、内存）也遵循相同的高峰期和空闲期模式。 资源利用率还很大程度上取决于正在移动的数据量。 进行多个复制作业时，会看到资源使用率在高峰期上升。
 
 ### <a name="installation-options"></a>安装选项
 可以通过以下方式安装数据管理网关：
 
 * 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载 MSI 安装程序包。  还可以使用 MSI 将现有数据管理网关升级到最新版本，并保留所有设置。
-* 在“手动安装”下单击“下载并安装数据网关”链接，或在“快速安装”下单击“直接安装在此计算机上”。 有关使用快速安装的分步说明，请参阅[在本地和云之间的移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。 手动步骤会引导你进入下载中心。  下一部分会提供有关从下载中心下载和安装网关的说明。
+* 在“手动安装”下单击“下载并安装数据网关”链接，或在“快速安装”下单击“直接安装在此计算机上”。 有关使用快速安装的分步说明，请参阅[在本地和云之间的移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。 手动步骤会引导进入下载中心。  下一部分会提供有关从下载中心下载和安装网关的说明。
 
 ### <a name="installation-best-practices"></a>安装最佳方案：
 1. 在主机上为网关配置电源计划，从而让计算机无法休眠。 如果主机计算机进入休眠状态，则网关不响应数据请求。
@@ -87,11 +86,11 @@ ms.lasthandoff: 05/09/2017
 
 ### <a name="install-gateway-from-download-center"></a>从下载中心安装网关
 1. 导航到 [Microsoft 数据管理网关下载页](https://www.microsoft.com/download/details.aspx?id=39717)。
-2. 单击“下载”，选择适当的版本（“32 位”或“64 位”），然后单击“下一步”。
+2. 单击“下载”，选择适当的版本（“32 位”或“64 位”），并单击“下一步”。
 3. 直接运行 **MSI** 或将其保存到硬盘再运行。
 4. 在“欢迎”页上，选择“语言”，单击“下一步”。
-5. 选择“接受”以接受最终用户许可协议，然后单击“下一步”。
-6. 选择“文件夹”以安装网关，然后单击“下一步”。
+5. 选择“接受”以接受最终用户许可协议，并单击“下一步”。
+6. 选择“文件夹”以安装网关，并单击“下一步”。
 7. 在“准备安装”页上，单击“安装”。
 8. 单击“完成”，完成安装。
 9. 从 Azure 门户中获取密钥。 请参阅下一部分的分步说明。
@@ -105,7 +104,7 @@ ms.lasthandoff: 05/09/2017
 若要在门户中创建网关并从“配置”边栏选项卡上获取密钥，请遵循[在本地和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文中的演练步骤。    
 
 #### <a name="if-you-have-already-created-the-logical-gateway-in-the-portal"></a>如果已在门户中创建逻辑网关
-1. 在 Azure 门户中，导航到“数据工厂”边栏选项卡，然后单击“链接服务”磁贴。
+1. 在 Azure 门户中，导航到“数据工厂”边栏选项卡，并单击“链接服务”磁贴。
 
     ![“数据工厂”边栏选项卡](media/data-factory-data-management-gateway/data-factory-blade.png)
 2. 在“链接服务”边栏选项卡中，选择在门户中创建的逻辑“网关”。
@@ -145,7 +144,7 @@ ms.lasthandoff: 05/09/2017
 在 windows 防火墙级别，通常启用了这些出站端口。 如果没有，可以在网关计算机上相应地配置域和端口。
 
 > [!NOTE]
-> 1. 根据你的源/接收器，可能需要在企业/windows 防火墙中将其他域和出站端口加入允许列表。
+> 1. 根据源/接收器，可能需要在企业/windows 防火墙中将其他域和出站端口加入允许列表。
 > 2. 对于某些云数据库（例如， [SQL Azure 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings)、[Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access) 等），可能需要在其防火墙配置中将网关计算机的 IP 地址加入允许列表。
 >
 >
@@ -180,7 +179,7 @@ ms.lasthandoff: 05/09/2017
 * **使用系统代理**：网关使用在 diahost.exe.config 和 diawp.exe.config 中配置的代理设置。  如果 diahost.exe.config 和 diawp.exe.config 中未配置代理，则网关无需通过代理，直接连接到云服务。
 * **使用自定义代理**：配置用于网关的 HTTP 代理设置，而不使用 diahost.exe.config 和 diawp.exe.config 中的配置。  需要地址和端口。  用户名和密码可选，具体取决于代理的身份验证设置。  使用网关凭据证书对所有设置进行加密，并存储在网关主机计算机本地。
 
-保存更新的代理设置之后，数据管理网关主机服务将自动重启。
+保存更新的代理设置之后，数据管理网关主机服务会自动重启。
 
 成功注册网关后，如果想要查看或更新代理设置，请使用数据管理网关配置管理器。
 
@@ -194,7 +193,7 @@ ms.lasthandoff: 05/09/2017
 ![使用配置管理器设置代理](media/data-factory-data-management-gateway/SetProxyConfigManager.png)
 
 > [!NOTE]
-> 如果使用 NTLM 身份验证设置代理服务器，网关主机服务将在域帐户下运行。 如果之后更改域帐户密码，请记得更新服务的配置设置，并相应地将其重启。 鉴于此要求，建议使用专用域帐户来访问代理服务器，可以无需经常更新密码。
+> 如果使用 NTLM 身份验证设置代理服务器，网关主机服务会在域帐户下运行。 如果之后更改域帐户密码，请记得更新服务的配置设置，并相应地将其重启。 鉴于此要求，建议使用专用域帐户来访问代理服务器，可以无需经常更新密码。
 >
 >
 
@@ -219,7 +218,7 @@ ms.lasthandoff: 05/09/2017
    允许在代理标记中使用其他属性，以指定所需设置（如 scriptLocation）。 关于语法，请参阅[代理元素（网络设置）](https://msdn.microsoft.com/library/sa91de1e.aspx)。
 
          <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
-3. 将配置文件保存到原始位置，然后重启数据管理网关主机服务，获得更改。 若要重启服务，请执行以下步骤：从控制面板使用服务小程序，或从“数据管理网关配置管理器” > 依次单击“停止服务”按钮和“启动服务”使用服务小程序。 如果服务未启动，很可能是将错误的 XML 标记语法添加到了编辑过的应用程序配置文件中。
+3. 将配置文件保存到原始位置，并重启数据管理网关主机服务，获得更改。 若要重启服务，请执行以下步骤：从控制面板使用服务小程序，或从“数据管理网关配置管理器” > 依次单击“停止服务”按钮和“启动服务”使用服务小程序。 如果服务未启动，很可能是将错误的 XML 标记语法添加到了编辑过的应用程序配置文件中。
 
 > [!IMPORTANT]
 > 不要忘记**同时**更新 diahost.exe.config 和 diawp.exe.config。  
@@ -235,7 +234,7 @@ ms.lasthandoff: 05/09/2017
    `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
 
 ### <a name="open-port-8050-for-credential-encryption"></a>打开端口 8050 以实现凭据加密
-在 Azure 门户中设置本地链接服务时，“设置凭据”应用程序使用入站端口 **8050** 将凭据中继到网关。 默认情况下，网关安装期间，数据管理网关安装会在网关计算机上将其打开。
+在 Azure 门户中设置本地链接服务时，“设置凭据”应用程序使用入站端口“8050”将凭据中继到网关。 默认情况下，网关安装期间，数据管理网关安装会在网关计算机上将其打开。
 
 如果正在使用第三方防火墙，则可以手动打开端口 8050。 如果在网关安装过程中遇到防火墙问题，可以尝试使用以下命令在不配置防火墙的情况下安装网关。
 
@@ -307,7 +306,7 @@ ms.lasthandoff: 05/09/2017
 ### <a name="diagnostics-page"></a>“诊断”页
 在“诊断”页中可执行以下操作：
 
-* 启用详细“日志记录”、在事件查看器中查看日志，并在出现故障时将日志发送给 Microsoft。
+* 启用详细“日志记录”、在事件查看器中查看日志，并在出现故障时会日志发送给 Microsoft。
 * **测试连接**到数据源。  
 
 ### <a name="help-page"></a>帮助页
@@ -323,7 +322,7 @@ ms.lasthandoff: 05/09/2017
 ## <a name="move-gateway-from-a-machine-to-another"></a>将网关从一台计算机移动到另一台计算机
 本部分提供将网关客户端从一台计算机移动到另一台计算机的步骤。
 
-1. 在门户中，导航到“数据工厂主页”，然后单击“链接服务”磁贴。
+1. 在门户中，导航到“数据工厂主页”，并单击“链接服务”磁贴。
 
     ![数据网关链接](./media/data-factory-data-management-gateway/DataGatewaysLink.png)
 2. 在“链接服务”边栏选项卡的“数据网关”部分选择网关。
@@ -338,24 +337,24 @@ ms.lasthandoff: 05/09/2017
 5. 将“Microsoft 数据管理网关配置管理器”保持为打开状态。
 
     ![配置管理器](./media/data-factory-data-management-gateway/ConfigurationManager.png)    
-6. 在门户中的“配置”边栏选项卡上，单击命令栏上的“重新创建密钥”，然后对警告消息单击“是”。 单击密钥文本旁边的“复制”按钮，将密钥复制到剪贴板。 重新创建密钥后，旧计算机上的网关立即停止工作。  
+6. 在门户中的“配置”边栏选项卡上，单击命令栏上的“重新创建密钥”，并对警告消息单击“是”。 单击密钥文本旁边的“复制”按钮，将密钥复制到剪贴板。 重新创建密钥后，旧计算机上的网关立即停止工作。  
 
     ![重新创建密钥](./media/data-factory-data-management-gateway/RecreateKey.png)
 7. 在计算机上，将“密钥”粘贴到“数据管理网关配置管理器”的“注册网关”页的文本框中。 （可选）单击“显示网关密钥”复选框，以查看密钥文本。
 
     ![复制密钥和注册](./media/data-factory-data-management-gateway/CopyKeyAndRegister.png)
 8. 单击“注册”，以通过云服务注册网关。
-9. 在“设置”选项卡上，单击“更改”选择与旧网关一起使用的相同证书，输入**密码**，然后单击“完成”。
+9. 在“设置”选项卡上，单击“更改”选择与旧网关一起使用的相同证书，输入**密码**，并单击“完成”。
 
    ![指定证书](./media/data-factory-data-management-gateway/SpecifyCertificate.png)
 
-   可以通过以下步骤从旧网关导出证书：在旧计算机上启动数据管理网关配置管理器，切换到“证书”选项卡，单击“导出”按钮，然后按照说明进行操作。
-10. 成功注册网关后，网关配置管理器的主页上将显示“注册”已设置为“已注册”且“状态”已设置为“已启动”。
+   可以通过以下步骤从旧网关导出证书：在旧计算机上启动数据管理网关配置管理器，切换到“证书”选项卡，单击“导出”按钮，并按照说明进行操作。
+10. 成功注册网关后，在网关配置管理器的主页上可看到“注册”设置为“已注册”且“状态”设置为“已启动”。
 
 ## <a name="encrypting-credentials"></a>加密凭据
 若要在数据工厂编辑器中加密凭据，请执行以下步骤：
 
-1. 在“网关计算机”上启动 Web 浏览器，导航到 [Azure 门户](http://portal.azure.com)。 根据需要搜索数据工厂，打开“数据工厂”边栏选项卡中的数据工厂，然后单击“作者和部署”，以启动数据工厂编辑器。   
+1. 在“网关计算机”上启动 Web 浏览器，导航到 [Azure 门户](http://portal.azure.com)。 根据需要搜索数据工厂，打开“数据工厂”边栏选项卡中的数据工厂，并单击“作者和部署”，以启动数据工厂编辑器。   
 2. 单击树视图中的某个现有“链接服务”以查看其 JSON 定义或创建需要数据管理网关的链接服务（例如：SQL Server 或 Oracle）。
 3. 在 JSON 编辑器中，对 **gatewayName** 属性输入网关名称。
 4. 在 **connectionString** 中，对“数据源”属性输入服务器名称。
@@ -379,14 +378,14 @@ ms.lasthandoff: 05/09/2017
                 "connectionString": "data source=myserver;initial catalog=mydatabase;Integrated Security=False;EncryptedCredential=eyJDb25uZWN0aW9uU3R",
                 "gatewayName": "adftutorialgateway"
             }
-         }
-     }
+        }
+    }
     ```
 如果从不同于网关计算机的计算机访问门户，必须确保凭据管理器应用程序可以连接网关计算机。 如果应用程序无法连接网关计算机，则不允许为数据源设置凭据和测试数据源连接。  
 
 使用“设置凭据”应用程序时，门户使用网关计算机上“网关配置管理器”的“证书”选项卡上指定的证书来加密凭据。
 
-如果你正在寻找基于 API 的方法来加密凭据，可以使用 [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell cmdlet 来加密凭据。 此 cmdlet 使用的证书是配置网关加密凭据所用的证书。 将加密凭据添加到 JSON 中 **connectionString** 的 **EncryptedCredential** 元素中。 将 JSON 用于 [New-AzureRmDataFactoryLinkedService](https://msdn.microsoft.com/library/mt603647.aspx) cmdlet 或在数据工厂编辑器。
+如果正在寻找基于 API 的方法来加密凭据，可以使用 [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell cmdlet 来加密凭据。 此 cmdlet 使用的证书是配置网关加密凭据所用的证书。 将加密凭据添加到 JSON 中 **connectionString** 的 **EncryptedCredential** 元素中。 将 JSON 用于 [New-AzureRmDataFactoryLinkedService](https://msdn.microsoft.com/library/mt603647.aspx) cmdlet 或在数据工厂编辑器。
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",

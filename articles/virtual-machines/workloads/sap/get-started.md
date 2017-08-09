@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: 6a482561613f56e33741e6d4e573d7734c217adf
-ms.lasthandoff: 04/07/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 36b21b7655af2505f92c81a136d494200f84d7e1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/03/2017
 
 ---
 
@@ -162,6 +162,7 @@ ms.lasthandoff: 04/07/2017
 
 
 [ha-guide-classic]:http://go.microsoft.com/fwlink/?LinkId=613056
+[ha-guide]:sap-high-availability-guide.md
 
 [install-extension-cli]:virtual-machines-linux-enable-aem.md
 
@@ -223,7 +224,7 @@ ms.lasthandoff: 04/07/2017
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:/powershell/azureps-cmdlets-docs
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
@@ -294,47 +295,40 @@ ms.lasthandoff: 04/07/2017
 [xplat-cli]:../../../cli-install-nodejs.md
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
-选择 Microsoft Azure 作为 SAP 就绪云合作伙伴，能够在可缩放、合规且经企业认证的平台上可靠运行任务关键型 SAP 工作负荷。  可利用 Azure 的可伸缩性、灵活性和低成本特性。 由于 Microsoft 和 SAP 之间扩大了合作伙伴关系，因此，可以在 Azure 的各个开发/测试和生产方案中运行 SAP 应用程序 - 并且获得完全的支持。 从 SAP NetWeaver 到 SAP S4/HANA，Linux 到 Windows，SAP HANA 到 SQL，我们都能满足客户的需求。 
+选择 Microsoft Azure 作为 SAP 就绪云合作伙伴，能够在可缩放、符合要求且经企业认证的平台上可靠运行任务关键型 SAP 工作负荷。  可利用 Azure 的可伸缩性、灵活性和低成本特性。 由于 Microsoft 和 SAP 之间扩大了合作伙伴关系，因此，可以在 Azure 的各个开发/测试和生产方案中运行 SAP 应用程序 - 并且获得完全支持。 从 SAP NetWeaver 到 SAP S4/HANA，Linux 到 Windows，SAP HANA 到 SQL，我们都能满足客户的需求。 
 
-借助 Microsoft Azure 虚拟机服务和 Azure 大型实例上的 SAP HANA，Microsoft 提供全面的基础结构即服务 (IaaS) 平台。 由于 Azure 支持范围广泛的 SAP 解决方案，因此此“入门文档”将充当当前 SAP 文档集的目录。 随着越来越多的文章添加到文档库，此处也会添加这些文章的标题。 
+借助 Microsoft Azure 虚拟机服务和 Azure 大型实例上的 SAP HANA，Microsoft 提供全面的服务架构 (IaaS) 平台。 由于 Azure 支持广泛的 SAP 解决方案，本“入门文档”可充当最新一套 SAP 文档的目录。 随着越来越多的文章添加到文档库，此处也会添加这些文章的标题。 
 
-## <a name="getting-started-with-sap-hana-on-azure"></a>Azure 上的 SAP HANA 入门
-标题：在 Azure VM 上手动安装 SAP HANA 的快速入门指南
+## <a name="sap-hana-on-sap-hana-on-azure-large-instances"></a>Azure 上 SAP HANA 上的 SAP HANA（大型实例）
 
-摘要：本快速入门指南帮助通过手动安装 SAP NetWeaver 7.5 和 SAP HANA SP12，在 Azure VM 上设置单实例 SAP HANA 原型/演示系统。 本指南假设读者熟悉 Azure IaaS 的基本概念，例如如何通过 Azure 门户或 Powershell/CLI 部署虚拟机或虚拟网络，包括使用 json 模板的选项。 此外还预期读者熟悉 SAP HANA、SAP NetWeaver 以及本地安装方式。
-
-更新时间：2016 年 12 月
-
-[可在此处找到此指南](hana-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-## <a name="overview-and-architecture-of-sap-hana-on-azure-large-instances"></a>Azure 上的 SAP HANA（大型实例）概述和体系结构
+### <a name="overview-and-architecture-of-sap-hana-on-azure-large-instances"></a>Azure 上的 SAP HANA（大型实例）概述和体系结构
 标题：Azure 上的 SAP HANA（大型实例）概述和体系结构
 
-摘要：此体系结构和技术部署指南提供的信息可帮助用户在 Azure 中的新型“Azure 上的 SAP HANA（大型实例）”上部署 SAP。 它并不打算成为涵盖 SAP 解决方案的具体设置的综合指南，而是旨在为你的初始部署和正在进行的操作提供有用信息。 它不应取代有关安装 SAP HANA 的 SAP 文档（或者包括该主题的多种 SAP 支持说明）。 它提供概述以及安装 Azure 上的 SAP HANA（大型实例）的其他详细信息。
+摘要：此体系结构和技术部署指南提供的信息可帮助用户在 Azure 中的新型“Azure 上的 SAP HANA（大型实例）”上部署 SAP。 它并不打算成为涵盖 SAP 解决方案的具体设置的综合指南，而是旨在为初始部署和正在进行的操作提供有用信息。 它不应取代有关安装 SAP HANA 的 SAP 文档（或者包括该主题的多种 SAP 支持说明）。 它提供概述以及安装 Azure 上的 SAP HANA（大型实例）的其他详细信息。
 
-更新时间：2016 年 12 月
+更新时间：2017 年 7 月
 
 [可在此处找到此指南](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="infrastructure-and-connectivity-to-sap-hana-on-azure-large-instances"></a>Azure 上的 SAP HANA（大型实例）的基础结构与连接
+### <a name="infrastructure-and-connectivity-to-sap-hana-on-azure-large-instances"></a>Azure 上的 SAP HANA（大型实例）的基础结构与连接
 标题：Azure 上的 SAP HANA（大型实例）的基础结构与连接
 
-摘要：你与 Microsoft 企业帐户团队之间完成购买 Azure 上的 SAP HANA（大型实例）后，需要进行各种网络配置以确保正确地连接。  本文档概述必须共享的信息，其中以下信息是必需的。 本文档概述需要收集哪些信息以及需要运行哪些配置脚本。 
+摘要：用户与 Microsoft 企业帐户团队之间完成购买 Azure 上的 SAP HANA（大型实例）后，需要进行各种网络配置以确保连接正确。  本文档概述必须共享的信息，其中以下信息是必需的。 本文档概述需要收集哪些信息以及需要运行哪些配置脚本。 
 
-更新时间：2016 年 12 月
+更新时间：2017 年 7 月
 
 [可在此处找到此指南](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="install-sap-hana-on-sap-hana-on-azure-large-instances"></a>在 Azure 上的 SAP HANA（大型实例）上安装 SAP HANA
+### <a name="install-sap-hana-in-sap-hana-on-azure-large-instances"></a>在 Azure 上的 SAP HANA中安装 SAP HANA（大型实例）
 标题：在 Azure 上的 SAP HANA（大型实例）上安装 SAP HANA
 
-摘要：本文档概述在 Azure 大型实例上安装 SAP HANA 的安装过程。
+摘要：本文档概述在 Azure 大型实例上安装 SAP HANA 的安装过程。 
 
-更新时间：2016 年 12 月
+更新时间：2017 年 7 月
 
 [可在此处找到此指南](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="high-availability-and-disaster-recovery-of-sap-hana-on-azure-large-instances"></a>Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复
+### <a name="high-availability-and-disaster-recovery-of-sap-hana-on-azure-large-instances"></a>Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复
 标题：Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复
 
 摘要：高可用性 (HA) 和灾难恢复 (DR) 是运行任务关键型 Azure 上的 SAP HANA（大型实例）服务器的非常重要方面。 必须咨询 SAP、系统集成商和/或 Microsoft，以便正确构建和实施适当的 HA/DR 策略。 必须考虑到与环境相关的一些重要因素，例如，恢复点目标 (RPO) 和恢复时间目标 (RTO)。  本文档介绍用于启用首选级别的 HA 和 DR 的选项。
@@ -343,7 +337,7 @@ ms.lasthandoff: 04/07/2017
 
 [本文档可在此处找到](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="troubleshooting-and-monitoring-of-sap-hana-on-azure-large-instances"></a>Azure 上的 SAP HANA（大型实例）的故障排除与监视
+### <a name="troubleshooting-and-monitoring-of-sap-hana-on-azure-large-instances"></a>Azure 上的 SAP HANA（大型实例）的故障排除与监视
 标题：Azure 上的 SAP HANA（大型实例）的故障排除与监视
 
 摘要：本指南介绍对于在 Azure 上的 SAP HANA 环境中建立监视很有用的信息，以及其他故障排除信息。 
@@ -352,40 +346,137 @@ ms.lasthandoff: 04/07/2017
 
 [本文档可在此处找到](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="quickstart-guide-for-netweaver-on-suse-linux-on-azure"></a>Azure 上 SUSE Linux 中 NetWeaver 的快速入门指南
+## <a name="sap-hana-on-azure-virtual-machines"></a>Azure 虚拟机上的 SAP HANA
+
+### <a name="getting-started-with-sap-hana-on-azure"></a>Azure 上的 SAP HANA 入门
+标题：在 Azure VM 上手动安装 SAP HANA 的快速入门指南
+
+摘要：本快速入门指南帮助通过手动安装 SAP NetWeaver 7.5 和 SAP HANA SP12，在 Azure VM 上设置单实例 SAP HANA 系统。 本指南假设读者熟悉 Azure IaaS 的基本概念，例如如何通过 Azure 门户或 Powershell/CLI 部署虚拟机或虚拟网络，包括使用 json 模板的选项。 此外还预期读者熟悉 SAP HANA、SAP NetWeaver 以及本地安装方式。
+
+更新时间：2017 年 6 月
+
+[可在此处找到此指南](hana-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+### <a name="s4hana-sap-cal-deployment-on-azure"></a>Azure 上的 S/4HANA SAP CAL 部署
+标题：在 Azure 上部署 SAP S/4HANA 或 BW/4HANA
+
+摘要：本指南帮助演示如何使用 SAP Cloud Appliance Library 在 Azure 上部署 SAP S/4HANA。 SAP Cloud Appliance Library 是 SAP 提供的一项服务，可用于在 Azure 上部署 SAP 应用程序。 本指南提供分步部署说明。
+
+更新时间：2017 年 6 月
+
+[可在此处找到此指南](cal-s4h.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+### <a name="high-availability-of-sap-hana-in-azure-virtual-machines"></a>Azure 虚拟机中 SAP HANA 的高可用性
+标题：Azure 虚拟机上 SAP HANA 的高可用性
+
+摘要：本指南引导完成 SUSE 12 OS 和 SAP HANA 的高可用性配置，以便 HANA 系统复制实现自动故障转移。 本指南专用于 SUSE 和 Azure 虚拟机。 本指南尚不适用于 Red Hat、裸机、私有云或其他非 Azure 公有云部署。
+
+更新时间：2017 年 6 月
+
+[可在此处找到此指南](sap-hana-high-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+### <a name="sap-hana-backup-overview-on-azure-vms"></a>Azure VM 上的 SAP HANA 备份概述
+标题：Azure 虚拟机上的 SAP HANA 备份指南
+
+摘要：本指南介绍有关在 Azure 虚拟机上运行 SAP HANA 时的备份可能性的基本信息。
+
+更新时间：2017 年 3 月
+
+[可在此处找到此指南](sap-hana-backup-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+### <a name="sap-hana-file-level-backup-on-azure-vms"></a>Azure VM 上的 SAP HANA 文件级备份
+标题：基于存储快照的 SAP HANA 备份
+
+摘要：本指南介绍在 Azure 虚拟机上运行 SAP HANA 时如何在 Azure VM 上使用基于快照的备份。
+
+更新时间：2017 年 3 月
+
+[可在此处找到此指南](sap-hana-backup-file-level.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+
+### <a name="sap-hana-snapshot-based-backups-on-azure-vms"></a>Azure VM 上基于快照的 SAP HANA 备份
+标题：文件级别的 SAP HANA Azure 备份
+
+摘要：本指南介绍在 Azure 虚拟机上运行 SAP HANA 时如何使用 SAP HANA 文件级备份
+
+更新时间：2017 年 3 月
+
+[可在此处找到此指南](sap-hana-backup-storage-snapshots.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+
+## <a name="sap-netweaver-deployed-on-azure-virtual-machines"></a>Azure 虚拟机上部署的 SAP NetWeaver
+
+### <a name="deploy-sap-ides-system-on-windows-and-sql-server-through-sap-cal-on-azure"></a>通过 Azure 上的 SAP CAL 在 Windows 和 SQL Server 上部署 SAP IDES 系统
 标题：测试 Microsoft Azure SUSE Linux VM 上的 SAP NetWeaver 
 
-摘要：此文介绍在 Microsoft Azure SUSE Linux 虚拟机 (VM) 上运行 SAP NetWeaver 时应注意的各个事项。 自 2016 年 5 月 19 日起，Azure 上的 SUSE Linux VM 已正式支持 SAP NetWeaver。 有关 Linux 版本、SAP 内核版本等等的所有详细信息，请参阅 SAP 说明 1928533“Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型”。
+摘要：本文档介绍如何使用 SAP Cloud Appliance Library 在 Azure 上部署基于 Windows 和 SQL Server 的 SAP IDES 系统。 SAP Cloud Appliance Library 是一项 SAP 服务，可用于在 Azure 上部署 SAP 产品。 本文档分步介绍如何部署 SAP IDES 系统。 IDE 系统只是众多应用程序（数十个）中的一个例子，这些应用程序均可通过 Microsoft Azure 上的 SAP Cloud 设备进行部署。
+
+更新时间：2017 年 6 月
+
+[可在此处找到此指南](cal-ides-erp6-erp7-sp3-sql.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+
+### <a name="quickstart-guide-for-netweaver-on-suse-linux-on-azure"></a>Azure 上 SUSE Linux 中 NetWeaver 的快速入门指南
+标题：测试 Microsoft Azure SUSE Linux VM 上的 SAP NetWeaver 
+
+摘要：此文介绍在 Microsoft Azure SUSE Linux 虚拟机 (VM) 上运行 SAP NetWeaver 时应注意的各个事项。 Azure 上的 SUSE Linux VM 已正式支持 SAP NetWeaver。 有关 Linux 版本、SAP 内核版本和其他版本的所有详细信息，请参阅 SAP 说明 1928533“Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型”。
 
 更新时间：2016 年 9 月
 
 [可在此处找到此指南](suse-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="3da0389e-708b-4e82-b2a2-e92f132df89c"></a>规划和实现
-标题：Linux 虚拟机 (VM) 上的 SAP NetWeaver – 规划和实施指南
+标题：SAP NetWeaver 的 Azure 虚拟机规划和实现
 
-摘要：如果你正在考虑在 Azure 虚拟机中运行 SAP NetWeaver，可从本文开始着手。 此规划和实现指南可帮助你评估现有或计划的基于 SAP NetWeaver 的系统是否可以部署到 Azure 虚拟机环境。 它介绍了多个 SAP NetWeaver 部署方案，并包括特定于 Azure 的 SAP 配置。 该文列出并说明了在 SAP/Azure 端运行混合 SAP 布局产品时所需的所有必要配置信息。 此外，还介绍了为确保 IaaS 上基于 SAP NetWeaver 的系统实现高可用性可以采取的措施。
+摘要：如果正考虑在 Azure 虚拟机中运行 SAP NetWeaver，可从本文档着手。 此规划和实现指南有助于评估现有或计划的基于 SAP NetWeaver 的系统是否可以部署到 Azure 虚拟机环境。 它介绍了多个 SAP NetWeaver 部署方案，并包括特定于 Azure 的 SAP 配置。 该文列出并说明了在 SAP/Azure 端运行混合 SAP 布局产品时所需的所有必要配置信息。 此外，还介绍了为确保 IaaS 上基于 SAP NetWeaver 的系统实现高可用性可以采取的措施。
 
-更新时间：2016 年 3 月
+更新时间：2017 年 6 月
 
 [可在此处找到此指南][planning-guide]
 
-## <a name="6aadadd2-76b5-46d8-8713-e8d63630e955"></a>部署
-标题：Linux 虚拟机 (VM) 上的 SAP NetWeaver – 部署指南
+### <a name="high-availability-configurations-of-sap-netweaver-in-azure-vms"></a>Azure VM 中 SAP NetWeaver 的高可用性配置
+标题：SAP NetWeaver 的 Azure 虚拟机高可用性
 
-摘要：本文档提供将 SAP NetWeaver 软件部署到 Azure 中虚拟机的过程指导。 此文重点介绍三种特定部署方案，主要侧重于启用 SAP 的 Azure 监视扩展，包括针对 SAP 的 Azure 监视扩展的故障排除建议。 此文假定你已阅读规划和实现指南。
+摘要：本文档介绍使用 Azure 资源管理器部署模型在 Azure 中部署高可用性 SAP 系统可采用的步骤。 我们演练以下主要任务。 本文档介绍单一故障点组件（如高级业务应用程序编程 (ABAP) SAP 中心服务 (ASCS)/SAP 中心服务 (SCS) 和数据库管理系统 (DBMS)）和冗余组件（如 SAP 应用程序服务器）在 Azure VM 中运行时，如何保护这些组件。 本文档介绍并显示在 Azure 的 Windows Server 故障转移群集中安装和配置高可用性 SAP 系统的分步示例。
 
-更新时间：2016 年 3 月
+更新时间：2017 年 6 月
+
+[可在此处找到此指南](high-availability-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+### <a name="realizing-multi-sid-deployments-of-sap-netweaver-in-azure-vms"></a>在 Azure VM 中实现 SAP NetWeaver 的多 SID 部署
+标题：创建 SAP NetWeaver 多 SID 配置 
+
+摘要：本文档是“Azure VM 上 SAP NetWeaver 的高可用性”文档的补充。 借助 2016 年 9 月 Azure 中引入的新功能，现可在两台 Azure VM 中部署多个 SAP NetWeaver ASCS/SCS 实例。 借助此类配置，可以减少需部署的 VM 数量以实现高度可用的 SAP NetWeaver 配置。 本指南介绍如何设置此类多 SID 配置。
+
+更新时间：2016 年 12 月
+
+[可在此处找到此指南](high-availability-multi-sid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+### <a name="6aadadd2-76b5-46d8-8713-e8d63630e955"></a>在 Azure VM 中部署 SAP NetWeaver
+标题：SAP NetWeaver 的 Azure 虚拟机部署
+
+摘要：本文档提供将 SAP NetWeaver 软件部署到 Azure 中虚拟机的过程指导。 此文重点介绍三种特定部署方案，主要侧重于启用 SAP 的 Azure 监视扩展，包括针对 SAP 的 Azure 监视扩展的故障排除建议。 此文假定已阅读规划和实现指南。
+
+更新时间：2017 年 6 月
 
 [可在此处找到此指南][deployment-guide]
 
 ## <a name="1343ffe1-8021-4ce6-a08d-3a1553a4db82"></a>DBMS 部署指南
-标题：Linux 虚拟机 (VM) 上的 SAP NetWeaver – DBMS 部署指南
+标题：SAP NetWeaver 的 Azure 虚拟机 DBMS 部署
 
-摘要：此文介绍了应与 SAP 一起运行的 DBMS 系统的规划和实现注意事项。 在第一部分中，列出并提供了一般注意事项。 此文的以下部分与在 Azure 中部署 SAP 所支持的不同 DBMS 相关。 提供的不同 DBMS 为 SQL Server、SAP ASE 和 Oracle。 在这些特定部分中，讨论了在 Azure 上将 SAP 系统与这些 DBMS 一起运行时必须考虑的注意事项。 提供了 Azure 上的不同 DBMS 支持的备份和高可用性方法等主题，以便用于 SAP 应用程序。
+摘要：此文介绍了应与 SAP 一起运行的 DBMS 系统的规划和实现注意事项。 在第一部分中，列出并提供了一般注意事项。 此文的以下部分与在 Azure 中部署 SAP 所支持的不同 DBMS 相关。 提供的不同 DBMS 为 SQL Server、SAP ASE 和 Oracle。 这些特定部分讨论了在 Azure 上将 SAP 系统与这些 DBMS 一起运行时必须考虑的注意事项。 提供了 Azure 上的不同 DBMS 支持的备份和高可用性方法等主题，以便用于 SAP 应用程序。
 
-更新时间：2016 年 3 月
+更新时间：2017 年 6 月
 
 [可在此处找到此指南][dbms-guide]
+
+### <a name="using-azure-as-dr-site-for-an-sap-on-premise-landscape"></a>使用 Azure 作为 SAP 本地环境的 DR 站点
+标题：SAP NetWeaver：构建基于 Hyper-V 和 Microsoft Azure 的灾难恢复解决方案 
+
+摘要：本文档介绍如何使用 Azure Site Recovery 服务将 Azure 用作本地 SAP 环境的灾难恢复位置。 第一个步骤介绍了 Azure Site Recovery 服务。 第二个步骤记录了使用 Azure Site Recovery 服务将 SAP NetWeaver 系统复制到 Azure 以进行灾难恢复的设计。 
+
+更新时间：2016 年 2 月
+
+[可在此处找到此指南](http://aka.ms/asr-sap)
 
 

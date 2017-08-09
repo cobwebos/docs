@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/24/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 6db2fa2f568c3cf8296bd91214b380a01b85c134
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 1f12a8e3e11bc7eee1fc536e231f71c1d17c3fe4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory 无缝单一登录：深入技术探究
 
-本文从技术层面详细介绍了 Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）功能的工作原理。
+本文从技术层面详细介绍了 Azure Active Directory 无缝单一登录（无缝 SSO）功能的工作原理。
 
-## <a name="how-does-azure-ad-seamless-sso-work"></a>Azure AD 无缝 SSO 的工作原理
+## <a name="how-does-seamless-sso-work"></a>无缝 SSO 的工作原理
 
 本节包含两个部分：
 1. 无缝 SSO 功能的设置。
@@ -41,6 +41,9 @@ ms.lasthandoff: 06/16/2017
 
 >[!NOTE]
 > 在与 Azure AD 同步（使用 Azure AD Connect）且要为其用户启用无缝 SSO 的每个 AD 林中创建计算机帐户和 Kerberos SPN。 将 `AZUREADSSOACCT` 计算机帐户移动到在其中存储其他计算机帐户的组织单位 (OU)，确保以相同的方式对该帐户进行管理，并确保它不会被删除。
+
+>[!IMPORTANT]
+>我们强烈建议至少每隔 30 天滚动更新一次 `AZUREADSSOACCT` 计算机帐户的 [Kerberos 解密密钥](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacct-computer-account)。
 
 ### <a name="how-does-sign-in-with-seamless-sso-work"></a>如何使用无缝 SSO 进行登录？
 
@@ -69,8 +72,8 @@ ms.lasthandoff: 06/16/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-- [**快速入门**](active-directory-aadconnect-sso-quick-start.md) - 启动并运行 Azure AD 无缝 SSO。
+- [快速入门](active-directory-aadconnect-sso-quick-start.md) - 启动并运行 Azure AD 无缝 SSO。
 - [**常见问题**](active-directory-aadconnect-sso-faq.md) - 常见问题解答。
-- [**故障排除**](active-directory-aadconnect-troubleshoot-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
-- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
+- [故障排除](active-directory-aadconnect-troubleshoot-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
 

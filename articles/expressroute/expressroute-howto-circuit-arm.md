@@ -1,5 +1,5 @@
 ---
-title: "创建和修改 ExpressRoute 线路：PowerShell：Azure Resource Manager | Microsoft 文档"
+title: "创建和修改 ExpressRoute 线路：PowerShell：Azure 资源管理器 | Microsoft 文档"
 description: "本文介绍如何创建、预配、验证、更新、删除和取消预配 ExpressRoute 线路。"
 documentationcenter: na
 services: expressroute
@@ -15,31 +15,32 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: ganesr;cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 7254217bc6a7b782eb19c8f062c46923dc5e7506
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 8bfae39d84aaac3b9527084df9dcfbd51f591dfe
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>使用 PowerShell 创建和修改 ExpressRoute 线路
 > [!div class="op_single_selector"]
-> * [Resource Manager - Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
-> * [Resource Manager - PowerShell](expressroute-howto-circuit-arm.md)
+> * [Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
+> * [PowerShell](expressroute-howto-circuit-arm.md)
+> * [Azure CLI](howto-circuit-cli.md)
 > * [视频 - Azure 门户](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
-> 
+> * [PowerShell（经典）](expressroute-howto-circuit-classic.md)
 >
 
-本文介绍如何使用 PowerShell cmdlet 和 Azure Resource Manager 部署模型创建 Azure ExpressRoute 线路。 本文还介绍如何查看线路状态，以及如何更新、删除和取消预配线路。
+本文介绍如何使用 PowerShell cmdlet 和 Azure 资源管理器部署模型创建 Azure ExpressRoute 线路。 本文还介绍如何查看线路状态，以及如何更新、删除和取消预配线路。
 
 ## <a name="before-you-begin"></a>开始之前
-* 安装最新版本的 Azure Resource Manager PowerShell cmdlet。 有关详细信息，请参阅 [Azure PowerShell 概述](/powershell/azure/overview)。
+* 安装最新版本的 Azure 资源管理器 PowerShell cmdlet。 有关详细信息，请参阅 [Azure PowerShell 概述](/powershell/azure/overview)。
 * 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>创建和预配 ExpressRoute 线路
-### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1.登录到你的 Azure 帐户，然后选择你的订阅
-若要开始你的配置，请登录到你的 Azure 帐户。 使用下面的示例来帮助你连接：
+### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1.登录到 Azure 帐户，然后选择订阅
+要开始配置，请登录到 Azure 帐户。 使用下面的示例来帮助连接：
 
 ```powershell
 Login-AzureRmAccount
@@ -58,7 +59,7 @@ Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
 ```
 
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2.获取支持的提供商、位置和带宽的列表
-在创建 ExpressRoute 线路之前，你需要支持的连接服务提供商、位置和带宽选项的列表。
+在创建 ExpressRoute 线路之前，需要支持的连接服务提供商、位置和带宽选项的列表。
 
 PowerShell cmdlet **Get-AzureRmExpressRouteServiceProvider** 将返回此信息，在后面的步骤中会用到该信息：
 
@@ -72,17 +73,17 @@ Get-AzureRmExpressRouteServiceProvider
 * PeeringLocations
 * BandwidthsOffered
 
-现在，你已准备好创建 ExpressRoute 线路。   
+现在，已准备好创建 ExpressRoute 线路。   
 
 ### <a name="3-create-an-expressroute-circuit"></a>3.创建 ExpressRoute 线路
-如果你尚未有资源组，则在创建 ExpressRoute 线路之前，必须先创建一个资源组。 为此，可以运行以下命令：
+如果尚未有资源组，则在创建 ExpressRoute 线路之前，必须先创建一个资源组。 为此，可以运行以下命令：
 
 ```powershell
 New-AzureRmResourceGroup -Name "ExpressRouteResourceGroup" -Location "West US"
 ```
 
 
-以下示例演示如何通过硅谷中的 Equinix 创建 200-Mbps 的 ExpressRoute 线路。 如果你使用的是其他提供商和其他设置，请在发出请求时替换该信息。 下面是请求新的服务密钥的示例：
+以下示例演示如何通过硅谷中的 Equinix 创建 200-Mbps 的 ExpressRoute 线路。 如果使用的是其他提供商和其他设置，请在发出请求时替换该信息。 下面是请求新的服务密钥的示例：
 
 ```powershell
 New-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup" -Location "West US" -SkuTier Standard -SkuFamily MeteredData -ServiceProviderName "Equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 200
@@ -136,7 +137,7 @@ Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName
     ServiceKey                        : **************************************
     Peerings                          : []
 
-你可以随时使用 `Get-AzureRmExpressRouteCircuit` cmdlet 检索此信息。 进行不带任何参数的调用将列出所有线路。 服务密钥将在 ServiceKey 字段中列出：
+可以随时使用 `Get-AzureRmExpressRouteCircuit` cmdlet 检索此信息。 进行不带任何参数的调用将列出所有线路。 服务密钥会在 ServiceKey 字段中列出：
 
 ```powershell
 Get-AzureRmExpressRouteCircuit
@@ -177,25 +178,25 @@ get-help Get-AzureRmExpressRouteCircuit -detailed
 ### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5.将服务密钥发送给连接服务提供商进行预配
 *ServiceProviderProvisioningState* 提供有关服务提供商端当前预配状态的信息。 “状态”提供 Microsoft 端的状态。 有关线路预配状态的详细信息，请参阅[工作流](expressroute-workflows.md#expressroute-circuit-provisioning-states)一文。
 
-当你创建新的 ExpressRoute 线路时，线路将是以下状态：
+创建新的 ExpressRoute 线路时，线路将是以下状态：
 
     ServiceProviderProvisioningState : NotProvisioned
     CircuitProvisioningState         : Enabled
 
 
 
-当连接提供商正在为你启用线路时，线路将转为以下状态。
+当连接提供商正在启用线路时，线路将转为以下状态。
 
     ServiceProviderProvisioningState : Provisioning
     Status                           : Enabled
 
-只有 ExpressRoute 线路处于以下状态时，你才能使用它。
+只有 ExpressRoute 线路处于以下状态时，才能使用它。
 
     ServiceProviderProvisioningState : Provisioned
     CircuitProvisioningState         : Enabled
 
 ### <a name="6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>6.定期检查线路密钥的状态
-检查线路密钥的状态，你可以通过此状态了解提供商何时启用了你的线路。 配置线路后，*ServiceProviderProvisioningState* 将显示为“已预配”，如以下例所示：
+检查线路密钥的状态，可以通过此状态了解提供商何时启用了线路。 配置线路后，*ServiceProviderProvisioningState* 会显示为已预配，如以下例所示：
 
 ```powershell
 Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -230,12 +231,12 @@ Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName
 有关分步说明，请参阅 [ExpressRoute 线路路由配置](expressroute-howto-routing-arm.md)一文，了解如何创建和修改线路对等互连。
 
 > [!IMPORTANT]
-> 这些说明只适用于由提供第 2 层连接服务的服务提供商创建的线路。 如果你的服务提供商提供第 3 层托管服务（通常是 IP VPN，如 MPLS），则连接服务提供商将为你配置和管理路由。
+> 这些说明只适用于由提供第 2 层连接服务的服务提供商创建的线路。 如果服务提供商提供第 3 层托管服务（通常是 IP VPN，如 MPLS），则连接服务提供商将配置和管理路由。
 > 
 > 
 
 ### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8.将虚拟网络链接到 ExpressRoute 线路
-接下来，将虚拟网络链接到 ExpressRoute 线路。 使用 Resource Manager 部署模型时，请参阅[将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)一文。
+接下来，将虚拟网络链接到 ExpressRoute 线路。 使用资源管理器部署模式时，请参阅[将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)一文。
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>获取 ExpressRoute 线路的状态
 可以随时使用 **Get-AzureRmExpressRouteCircuit** cmdlet 检索此信息。 进行不带任何参数的调用将列出所有线路。
@@ -309,9 +310,9 @@ get-help get-azurededicatedcircuit -detailed
 ```
 
 ## <a name="modify"></a>修改 ExpressRoute 线路
-你可以在不影响连接的情况下修改 ExpressRoute 线路的某些属性。
+可以在不影响连接的情况下修改 ExpressRoute 线路的某些属性。
 
-你可以在不停机的情况下执行以下操作：
+可以在不停机的情况下执行以下操作：
 
 * 为 ExpressRoute 线路启用或禁用 ExpressRoute 高级版外接程序。
 * 增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。 不支持对线路的带宽进行降级。 
@@ -332,19 +333,19 @@ $ckt.sku.Name = "Premium_MeteredData"
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-你的线路现已启用 ExpressRoute 高级版外接程序功能。 该命令成功运行后，我们就会立即对高级加载项功能收费。
+线路现已启用 ExpressRoute 高级版外接程序功能。 该命令成功运行后，我们就会立即对高级加载项功能收费。
 
 ### <a name="to-disable-the-expressroute-premium-add-on"></a>禁用 ExpressRoute 高级版外接程序
 > [!IMPORTANT]
-> 如果你使用的资源超出了标准线路允许的范围，此操作可能会失败。
+> 如果使用的资源超出了标准线路允许的范围，此操作可能会失败。
 > 
 > 
 
 注意以下事项：
 
-* 从高级版降级到标准版之前，必须确保链接到线路的虚拟网络数少于 10 个。 否则，你的更新请求将会失败，并且我们将按高级版费率向你收费。
-* 你必须取消其他地理政治区域的所有虚拟网络的链接。 否则，你的更新请求将会失败，并且我们将按高级版费率向你收费。
-* 路由表中专用对等互连的路由必须少于 4,000。 如果你的路由表大小超出 4,000 个路由，则会删除 BGP 会话且不会重新启用它，除非已播发前缀的数目低于 4,000。
+* 从高级版降级到标准版之前，必须确保链接到线路的虚拟网络数少于 10 个。 否则，更新请求会失败，并且我们将按高级版费率向你收费。
+* 必须取消其他地理政治区域的所有虚拟网络的链接。 否则，更新请求会失败，并且我们将按高级版费率向你收费。
+* 路由表中专用对等互连的路由必须少于 4,000。 如果路由表大小超出 4,000 个路由，则会删除 BGP 会话且不会重新启用它，除非已播发前缀的数目低于 4,000。
 
 可以使用以下 PowerShell cmdlet 为现有线路禁用 ExpressRoute 高级版外接程序：
 
@@ -358,12 +359,12 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ### <a name="to-update-the-expressroute-circuit-bandwidth"></a>更新 ExpressRoute 线路带宽
-有关提供商支持的带宽选项，请查看 [ExpressRoute 常见问题解答](expressroute-faqs.md)。 你可以选取大于现有线路大小的任何大小。
+有关提供商支持的带宽选项，请查看 [ExpressRoute 常见问题解答](expressroute-faqs.md)。 可以选取大于现有线路大小的任何大小。
 
 > [!IMPORTANT]
 > 如果现有端口上的容量不足，可能需要重新创建 ExpressRoute 线路。 如果该位置没有额外的可用容量，则不能升级线路。
 >
-> 但是，你无法在不中断的情况下降低 ExpressRoute 线路的带宽。 带宽降级需要取消对 ExpressRoute 线路的预配，然后重新预配新的 ExpressRoute 线路。
+> 但是，无法在不中断的情况下降低 ExpressRoute 线路的带宽。 带宽降级需要取消对 ExpressRoute 线路的预配，并重新预配新的 ExpressRoute 线路。
 > 
 
 确定所需的大小后，可以使用以下命令调整线路的大小。
@@ -377,10 +378,10 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 
-将在 Microsoft 端调整线路的大小。 然后，你必须联系连接提供商，让他们在那一边根据此更改更新配置。 在你发出此通知后，我们将开始向你计收更新后的带宽选项费用。
+将在 Microsoft 端调整线路的大小。 然后，必须联系连接提供商，让他们在那一边根据此更改更新配置。 在发出此通知后，我们将开始向你计收更新后的带宽选项费用。
 
 ### <a name="to-move-the-sku-from-metered-to-unlimited"></a>将 SKU 从按流量计费转为不受限制
-通过使用下面的 PowerShell 代码片段，你可以更改 ExpressRoute 线路的 SKU：
+通过使用下面的 PowerShell 代码片段，可以更改 ExpressRoute 线路的 SKU：
 
 ```powershell
 $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -391,8 +392,8 @@ $ckt.sku.Name = "Premium_UnlimitedData"
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="to-control-access-to-the-classic-and-resource-manager-environments"></a>控制对经典环境和 Resource Manager 环境的访问
-查看[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](expressroute-howto-move-arm.md)中的说明。  
+### <a name="to-control-access-to-the-classic-and-resource-manager-environments"></a>控制对经典环境和资源管理器环境的访问
+查看[将 ExpressRoute 线路从经典部署模型转移到资源管理器部署模型](expressroute-howto-move-arm.md)中的说明。  
 
 ## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a>取消预配和删除 ExpressRoute 线路
 注意以下事项：
@@ -409,7 +410,7 @@ Remove-AzureRmExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup"
 
 ## <a name="next-steps"></a>后续步骤
 
-创建你的线路后，请确保执行以下操作：
+创建线路后，请确保执行以下操作：
 
 * [创建和修改 ExpressRoute 线路的路由](expressroute-howto-routing-arm.md)
 * [将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)

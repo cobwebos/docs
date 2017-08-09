@@ -13,16 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 6c8df6b9804d082c8044cdb2420cc5ea42b9774f
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 28d32d1e2d82519fc7b2ad4edca8435c3759594f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="using-analytics-in-application-insights"></a>使用 Application Insights 中的 Analytics
-[Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍 Analytics 查询语言。
+[Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍 Log Analytics 查询语言。
 
 * **[观看介绍视频](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**。
 * **[针对模拟数据测试驱动 Analytics](https://analytics.applicationinsights.io/demo)**（如果应用尚未将数据发送到 Application Insights）。
@@ -30,7 +29,7 @@ ms.lasthandoff: 05/10/2017
 ## <a name="open-analytics"></a>打开 Analytics
 在 Application Insights 上的应用主页资源中单击“Analytics”。
 
-![依次打开 portal.azure.com 和你的 Application Insights 资源，然后单击“Analytics”。](./media/app-insights-analytics-using/001.png)
+![依次打开 portal.azure.com 和 Application Insights 资源，并单击“Analytics”。](./media/app-insights-analytics-using/001.png)
 
 内联教程提供了有关可执行的操作的一些思路。
 
@@ -40,7 +39,7 @@ ms.lasthandoff: 05/10/2017
 ### <a name="write-a-query"></a>编写查询
 ![架构显示](./media/app-insights-analytics-using/150.png)
 
-首先，请查看左侧列出的所有表的名称（或者 [range](app-insights-analytics-reference.md#range-operator) 或 [union](app-insights-analytics-reference.md#union-operator) 运算符）。 使用 `|` 创建[运算符](app-insights-analytics-reference.md#queries-and-operators)的分隔竖线。 
+首先，请查看左侧列出的所有表的名称（或者 [range](https://docs.loganalytics.io/queryLanguage/query_language_rangeoperator.html) 或 [union](https://docs.loganalytics.io/queryLanguage/query_language_unionoperator.html) 运算符）。 使用 `|` 创建[运算符](https://docs.loganalytics.io/learn/cheatsheets/useful_operators.html)的分隔竖线。 
 
 IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信息图标（或按 CTRL+空格键）可以获取更长的说明，以及演示如何使用每个元素的示例。
 
@@ -51,7 +50,7 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 
 1. 可以在查询中使用单个换行符。
 2. 将光标放在要运行的查询的内部或末尾。
-3. 检查查询的时间范围。 （可以更改该时间范围，或者通过在查询中包含自己的 [`where...timestamp...`](app-insights-analytics-tour.md#time-range) 来重写该值。）
+3. 检查查询的时间范围。 （可以更改该时间范围，或者通过在查询中包含自己的 [`where...timestamp...`](https://docs.loganalytics.io/concepts/concepts_datatypes_timespan.html) 来重写该值。）
 3. 单击“运行”运行查询。
 4. 不要在查询中插入空行。 可以通过使用空行分隔多个查询，将这些分隔的查询保留在一个查询中。 只会运行光标所在处的查询。
 
@@ -73,16 +72,16 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 > [!NOTE]
 > 在浏览器中排序、分组和筛选不会重新运行查询。 这些操作只会重新排列最后一个查询返回的结果。 
 > 
-> 若要在返回结果之前在服务器中执行这些任务，请使用 [sort](app-insights-analytics-reference.md#sort-operator)、[summarize](app-insights-analytics-reference.md#summarize-operator) 和 [where](app-insights-analytics-reference.md#where-operator) 运算符编写查询。
+> 若要在返回结果之前在服务器中执行这些任务，请使用 [sort](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html)、[summarize](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html) 和 [where](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html) 运算符编写查询。
 > 
 > 
 
-选择要查看的列，拖动列标题重新排列列，然后拖动其边框来调整列的大小。
+选择要查看的列，拖动列标题重新排列列，并拖动其边框来调整列的大小。
 
 ![排列列](./media/app-insights-analytics-using/030.png)
 
 ### <a name="sort-and-filter-items"></a>排序和筛选项
-可以通过单击列标题将结果排序。 再次单击将以另一种方式排序，又一次单击可还原为查询返回数据时采用的原始顺序。
+可以通过单击列标题将结果排序。 再次单击以另一种方式排序，又一次单击可还原为查询返回数据时采用的原始顺序。
 
 使用筛选图标缩小搜索范围。
 
@@ -101,18 +100,18 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 
     但是，可以使用下拉菜单更改时间范围筛选器。
 
-    或者，通过在查询中包含自己的 [`where  ... timestamp ...` 子句](app-insights-analytics-reference.md#where-operator)来重写自动范围。 例如：
+    或者，通过在查询中包含自己的 [`where  ... timestamp ...` 子句](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html)来重写自动范围。 例如：
 
     `requests | where timestamp > ago('2d')`
 
-* **结果限制**。 从门户返回的结果限制为大约 1 万行。 如果超过此限制，将显示警告。 如果发生这种情况，为表中的结果排序不一定总会显示所有实际的第一批或最后一批结果。 
+* **结果限制**。 从门户返回的结果限制为大约 1 万行。 如果超过此限制，会显示警告。 如果发生这种情况，为表中的结果排序不一定总会显示所有实际的第一批或最后一批结果。 
 
     请尽量避免达到限制。 使用时间范围筛选器，或使用如下所示的运算符：
 
-  * [top 100 by timestamp](app-insights-analytics-reference.md#top-operator) 
-  * [take 100](app-insights-analytics-reference.md#take-operator)
-  * [summarize ](app-insights-analytics-reference.md#summarize-operator) 
-  * [where timestamp > ago(3d)](app-insights-analytics-reference.md#where-operator)
+  * [top 100 by timestamp](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) 
+  * [take 100](https://docs.loganalytics.io/queryLanguage/query_language_takeoperator.html)
+  * [summarize ](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html) 
+  * [where timestamp > ago(3d)](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html)
 
 （希望结果中包含 1 万行以上？ 请考虑改用[连续导出](app-insights-export-telemetry.md)。 Analytics 旨在用于分析，而不是检索原始数据。）
 
@@ -123,7 +122,7 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 
 如果有多个正确类型的列，可以选择 x 和 y 轴以及一个维度列作为拆分结果的依据。
 
-默认情况下，结果最初以表的形式显示，你可以手动选择图表。 但也可以在查询末尾使用 [render 指令](app-insights-analytics-reference.md#render-directive)选择图表。
+默认情况下，结果最初以表的形式显示，可以手动选择图表。 但也可以在查询末尾使用 [render 指令](https://docs.loganalytics.io/queryLanguage/query_language_renderoperator.html)选择图表。
 
 ### <a name="analytics-diagnostics"></a>Analytics Diagnostics
 
@@ -153,7 +152,7 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 
 **时间限制：**查询自动限定为过去 14 天。 这种效果就相当于在查询中包含 `where timestamp > ago(14d)`。
 
-**Bin 计数限制：**如果显示的图表包含许多离散的 Bin（通常在条形图中），所占比例较少的 Bin 将自动分组到单个“其他”Bin。 例如，以下查询：
+**Bin 计数限制：**如果显示的图表包含许多离散的 Bin（通常为条形图），所占比例较少的 Bin 将自动分组到单个“其他”Bin。 例如，以下查询：
 
     requests | summarize count_search = count() by client_CountryOrRegion
 
@@ -169,7 +168,7 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 运行查询后，可以下载 .csv 文件。 单击“导出”->“Excel”。
 
 ## <a name="export-to-power-bi"></a>导出到 Power BI
-将光标放在查询中，选择“导出”->“Power BI”。
+将光标放在查询中，选择“导出”-&gt;“Power BI”。
 
 ![从 Analytics 导出到 Power BI](./media/app-insights-analytics-using/240.png)
 
@@ -183,7 +182,7 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 
 在“导出”->“共享链接”中获取可发送给另一用户的链接。 如果用户有[资源组的访问权限](app-insights-resources-roles-access-control.md)，则会在 Analytics UI 中打开查询。
 
-（在此链接中，查询文本出现在“?q=”后面，并使用 gzip 进行压缩和使用 base-64 编码。 你可以编写代码以生成向用户提供的深层链接。 但是，建议使用 [REST API](https://dev.applicationinsights.io/) 在代码中运行Analytics。）
+（在此链接中，查询文本出现在“?q=”后面，并使用 gzip 进行压缩和使用 base-64 编码。 可以编写代码以生成向用户提供的深层链接。 但是，建议使用 [REST API](https://dev.applicationinsights.io/) 在代码中运行Analytics。）
 
 
 ## <a name="automation"></a>自动化
@@ -206,7 +205,7 @@ curl "https://api.applicationinsights.io/beta/apps/DEMO_APP/query?query=requests
 
 ### <a name="define-your-data-schema"></a>定义数据架构
 
-1. 单击“设置”（左上角），然后单击“数据源”。 
+1. 单击“设置”（左上角），并单击“数据源”。 
 2. 遵照说明添加数据源。 系统会要求提供数据样本，其中应至少包含 10 行。 然后请更正架构。
 
 这样就会定义数据源，稍后可以用它来导入单个表。
@@ -214,9 +213,9 @@ curl "https://api.applicationinsights.io/beta/apps/DEMO_APP/query?query=requests
 ### <a name="import-a-table"></a>导入表
 
 1. 从列表中打开数据源定义。
-2. 单击“上载”并遵照说明上载该表。 这包括对 REST API 的调用，以便能够轻松自动化。 
+2. 单击“上传”并遵照说明上传该表。 这包括对 REST API 的调用，以便能够轻松自动化。 
 
-现在，可在 Analytics 中使用该表。 它将显示在 Analytics 中 
+现在，可在 Analytics 中使用该表。 它会显示在 Analytics 中 
 
 ### <a name="use-the-table"></a>使用表
 

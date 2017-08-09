@@ -15,28 +15,29 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/07/2017
 ms.author: cherylmc;ganesr
-translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 2e6c204a1b520f5994c30c518f7ced11d77bde24
-ms.lasthandoff: 05/02/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: e3721cd3c031622788f553e71a6555b844f3f7dc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路
 > [!div class="op_single_selector"]
-> * [Resource Manager - Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
-> * [Resource Manager - PowerShell](expressroute-howto-circuit-arm.md)
+> * [Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
+> * [PowerShell](expressroute-howto-circuit-arm.md)
+> * [Azure CLI](howto-circuit-cli.md)
 > * [视频 - Azure 门户](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
-> 
+> * [PowerShell（经典）](expressroute-howto-circuit-classic.md)
 >
 
-本文介绍如何使用 Azure 门户和 Azure Resource Manager 部署模型创建 Azure ExpressRoute 线路。 以下步骤还说明如何查看线路状态，以及如何更新、删除和取消预配线路。
+本文介绍如何使用 Azure 门户和 Azure 资源管理器部署模型创建 Azure ExpressRoute 线路。 以下步骤还说明如何查看线路状态，以及如何更新、删除和取消预配线路。
 
 
 ## <a name="before-you-begin"></a>开始之前
 * 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 * 确保有权访问 [Azure 门户](https://portal.azure.com)。
-* 确保你有权创建新的网络资源。 如果你没有适当的权限，请与帐户管理员联系。
+* 确保有权创建新的网络资源。 如果没有适当的权限，请与帐户管理员联系。
 * 可以在开始前[观看一段视频](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)，以更好地了解步骤。
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>创建和预配 ExpressRoute 线路
@@ -49,7 +50,7 @@ ms.lasthandoff: 05/02/2017
 > 
 > 
 
-1. 你可以通过选择创建新资源的选项来创建 ExpressRoute 线路。 单击“新建” > “网络” > “ExpressRoute”，如下图所示：
+1. 可以通过选择创建新资源的选项来创建 ExpressRoute 线路。 单击“新建” > “网络” > “ExpressRoute”，如下图所示：
    
     ![创建 ExpressRoute 线路](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit1.png)
 2. 单击“ExpressRoute”即可显示“创建 ExpressRoute 线路”边栏选项卡。 在此边栏选项卡中填充值时，请务必指定正确的 SKU 层和数据计量方式。
@@ -80,25 +81,25 @@ ms.lasthandoff: 05/02/2017
 ### <a name="4-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4.将服务密钥发送给连接服务提供商进行预配
 在此边栏选项卡中，“提供商状态”提供有关服务提供商端当前预配状态的信息。 “线路状态”提供 Microsoft 端的状态。 有关线路预配状态的详细信息，请参阅[工作流](expressroute-workflows.md#expressroute-circuit-provisioning-states)一文。
 
-当你创建新的 ExpressRoute 线路时，线路将是以下状态：
+创建新的 ExpressRoute 线路时，线路将是以下状态：
 
 提供商状态：未预配<BR>
 线路状态：已启用
 
 ![启动预配过程](./media/expressroute-howto-circuit-portal-resource-manager/viewstatus.png)
 
-当连接提供商正在为你启用线路时，线路将转为以下状态。
+当连接提供商正在启用线路时，线路将转为以下状态。
 
 提供商状态：正在预配<BR>
 线路状态：已启用
 
-只有 ExpressRoute 线路处于以下状态时，你才能使用它。
+只有 ExpressRoute 线路处于以下状态时，才能使用它。
 
 提供商状态：已预配<BR>
 线路状态：已启用
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5.定期检查线路密钥的状态
-选中你感兴趣的线路即可查看其属性。 选中“提供商状态”，确保在继续之前其已转为“已预配”。
+选择感兴趣的线路即可查看其属性。 选中“提供商状态”，确保在继续之前其已转为“已预配”。
 
 ![线路和提供商状态](./media/expressroute-howto-circuit-portal-resource-manager/viewstatusprovisioned.png)
 
@@ -106,12 +107,12 @@ ms.lasthandoff: 05/02/2017
 有关分步说明，请参阅 [ExpressRoute 线路路由配置](expressroute-howto-routing-portal-resource-manager.md)一文，了解如何创建和修改线路对等互连。
 
 > [!IMPORTANT]
-> 这些说明只适用于由提供第 2 层连接服务的服务提供商创建的线路。 如果你的服务提供商提供第 3 层托管服务（通常是 IP VPN，如 MPLS），则连接服务提供商将为你配置和管理路由。
+> 这些说明只适用于由提供第 2 层连接服务的服务提供商创建的线路。 如果服务提供商提供第 3 层托管服务（通常是 IP VPN，如 MPLS），则连接服务提供商将配置和管理路由。
 > 
 > 
 
 ### <a name="7-link-a-virtual-network-to-an-expressroute-circuit"></a>7.将虚拟网络链接到 ExpressRoute 线路
-接下来，将虚拟网络链接到 ExpressRoute 线路。 使用 Resource Manager 部署模型时，请参阅[将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)一文。
+接下来，将虚拟网络链接到 ExpressRoute 线路。 使用资源管理器部署模式时，请参阅[将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)一文。
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>获取 ExpressRoute 线路的状态
 选择线路即可查看其状态。 
@@ -119,9 +120,9 @@ ms.lasthandoff: 05/02/2017
 ![ExpressRoute 线路的状态](./media/expressroute-howto-circuit-portal-resource-manager/listproperties1.png)
 
 ## <a name="modifying-an-expressroute-circuit"></a>修改 ExpressRoute 线路
-你可以在不影响连接的情况下修改 ExpressRoute 线路的某些属性。
+可以在不影响连接的情况下修改 ExpressRoute 线路的某些属性。
 
-你可以在不停机的情况下执行以下操作：
+可以在不停机的情况下执行以下操作：
 
 * 为 ExpressRoute 线路启用或禁用 ExpressRoute 高级版外接程序。
 * 增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。 请注意，不支持对线路的带宽进行降级。 
@@ -139,7 +140,7 @@ ms.lasthandoff: 05/02/2017
 > [!IMPORTANT]
 > 如果现有端口上的容量不足，可能需要重新创建 ExpressRoute 线路。 如果该位置没有额外的可用容量，则不能升级线路。
 >
-> 但是，你无法在不中断的情况下降低 ExpressRoute 线路的带宽。 带宽降级需要取消对 ExpressRoute 线路的预配，然后重新预配新的 ExpressRoute 线路。
+> 但是，无法在不中断的情况下降低 ExpressRoute 线路的带宽。 带宽降级需要取消对 ExpressRoute 线路的预配，并重新预配新的 ExpressRoute 线路。
 > 
 > 如果使用的资源超出了标准线路所允许的范围，禁用高级版外接程序的操作可能会失败。
 > 
@@ -153,7 +154,7 @@ ms.lasthandoff: 05/02/2017
 * 如果服务提供商已取消预配线路（服务提供商预配状态设置为“未预配”），则可以删除线路。 这样就会停止线路计费
 
 ## <a name="next-steps"></a>后续步骤
-创建你的线路后，请确保执行以下操作：
+创建线路后，请确保执行以下操作：
 
 * [创建和修改 ExpressRoute 线路的路由](expressroute-howto-routing-portal-resource-manager.md)
 * [将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)

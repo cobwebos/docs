@@ -15,17 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/27/2017
 ms.author: yushwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 1a2e9af88c63d00cf6d08f5b1df24e2edcce9232
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 17211379ec61891982a02efca6730ca0da87c1ef
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>使用 PowerShell 将 Azure VPN 网关连接到多个基于策略的本地 VPN 设备
 
-本文将逐步介绍如何利用 S2S VPN 连接的 IPsec/IKE 策略将基于路由的 Azure VPN 网关配置为连接到多个基于策略的本地 VPN 设备。
+本文帮助了解如何利用 S2S VPN 连接的 IPsec/IKE 策略将基于路由的 Azure VPN 网关配置为连接到多个基于策略的本地 VPN 设备。
 
 ## <a name="about-policy-based-and-route-based-vpn-gateways"></a>关于基于策略的 VPN 网关和基于路由的 VPN 网关
 
@@ -37,10 +36,10 @@ ms.lasthandoff: 06/14/2017
 下图突出显示了以下两种模型：
 
 ### <a name="policy-based-vpn-example"></a>基于策略的 VPN 示例
-![PolicyBased](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedmultisite.png)
+![基于策略](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedmultisite.png)
 
 ### <a name="route-based-vpn-example"></a>基于路由的 VPN 示例
-![routebased](./media/vpn-gateway-connect-multiple-policybased-rm-ps/routebasedmultisite.png)
+![基于路由](./media/vpn-gateway-connect-multiple-policybased-rm-ps/routebasedmultisite.png)
 
 ### <a name="azure-support-for-policy-based-vpn"></a>Azure 对基于策略的 VPN 的支持情况
 目前，Azure 支持两种 VPN 网关模式：基于路由的 VPN 网关和基于策略的 VPN 网关。 两者基于不同的内部平台，因而规格也不同：
@@ -55,23 +54,23 @@ ms.lasthandoff: 06/14/2017
 使用自定义 IPsec/IKE 策略，现在可以将基于路由的 Azure VPN 网关配置为使用带“PolicyBasedTrafficSelectors”选项的基于前缀的流量选择器，从而连接到基于策略的本地 VPN 设备。 此功能允许从 Azure 虚拟网络和 VPN 网关连接到多个基于策略的本地 VPN/防火墙设备，从当前基于策略的 Azure VPN 网关中删除单个连接限制。
 
 > [!IMPORTANT]
-> 1. 若要启用此连接，基于策略的本地 VPN 设备必须支持 **IKEv2**，才能连接到基于路由的 Azure VPN 网关。 请查看 VPN 设备规范。
-> 2. 基于策略的 VPN 设备采用此机制基进行连接的本地网络只能连接到 Azure 虚拟网络；不能经由相同的 Azure VPN 网关传输到其他本地网络或虚拟网络。
-> 3. 配置选项是自定义 IPsec/IKE 连接策略的一部分。 如果启用基于策略的流量选择器选项，则必须指定完整的策略（IPsec/IKE 加密和完整性算法，密钥强度和 SA 生存期）。
+> 1. 若要启用此连接，基于策略的本地 VPN 设备必须支持 **IKEv2**，才能连接到基于路由的 Azure VPN 网关。 请查看 VPN 设备规格。
+> 2. 通过基于策略的 VPN 设备采用此机制进行连接的本地网络只能连接到 Azure 虚拟网络；不能经由相同的 Azure VPN 网关传输到其他本地网络或虚拟网络。
+> 3. 配置选项是自定义 IPsec/IKE 连接策略的一部分。 如果启用基于策略的流量选择器选项，则必须指定完整的策略（IPsec/IKE 加密和完整性算法、密钥强度和 SA 生存期）。
 
-下图显示了在选择基于策略的 VPN 时，经由 Azure VPN 网关的传输路由为何无法工作。
+下图显示了在选择基于策略的 VPN 时，经由 Azure VPN 网关的传输路由为何无法工作：
 
-![policybasedtransit](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedtransit.png)
+![基于策略的传输](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedtransit.png)
 
 如图所示，针对每个本地网络前缀，Azure VPN 网关都有来自虚拟网络的流量选择器，而交叉连接前缀却没有。 例如，本地站点 2、站点 3 和站点 4 可以分别与 VNet1 通信，但不能经由 Azure VPN 网关相互连接。 该图显示若采用此配置，交叉连接流量选择器在 Azure VPN 网关中不可用。
 
 ## <a name="configure-policy-based-traffic-selectors-on-a-connection"></a>对连接配置基于策略的流量选择器
 
-本文中的说明采用[为 S2S 或 VNet 到 Vnet 的连接配置 IPsec/IKE 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md)中所述的示例，建立如下图所示的 S2S VPN 连接：
+本文中的说明采用[为 S2S 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md)中所述的示例，建立 S2S VPN 连接。 下图显示了此特点：
 
 ![s2s-policy](./media/vpn-gateway-connect-multiple-policybased-rm-ps/s2spolicypb.png)
 
-启用此连接的工作流程：
+启用此连接的工作流：
 1. 为跨站点连接创建虚拟网络、VPN 网关和本地网关
 2. 创建 IPsec/IKE 策略
 3. 创建 S2S 或 VNet 到 VNet 的连接时，应用该策略，并对连接启用基于策略的流量选择器
@@ -79,7 +78,7 @@ ms.lasthandoff: 06/14/2017
 
 ## <a name="enable-policy-based-traffic-selectors-on-a-connection"></a>对连接启用基于策略的流量选择器
 
-请确保已通读了本节的[第 3 部分 - 配置 IPsec/IKE 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md)。 以下示例采用相同的参数和步骤。
+确保已通读了本节的[第 3 部分 - 配置 IPsec/IKE 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md)一文。 以下示例采用相同的参数和步骤：
 
 ### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>步骤 1 - 创建虚拟网络、VPN 网关和本地网关
 
@@ -110,7 +109,7 @@ $LNGPrefix61   = "10.61.0.0/16"
 $LNGPrefix62   = "10.62.0.0/16"
 $LNGIP6        = "131.107.72.22"
 ```
-确保切换到 PowerShell 模式，以便使用Resource Manager cmdlet。 有关详细信息，请参阅 [将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
+若要使用资源管理器 cmdlet，请确保切换到 PowerShell 模式。 有关详细信息，请参阅 [将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
 
 打开 PowerShell 控制台并连接到你的帐户。 使用下面的示例来帮助你连接：
 
@@ -121,7 +120,7 @@ New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 ```
 
 #### <a name="2-create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>2.创建虚拟网络、VPN 网关和本地网关
-下方示例创建了具有三个子网和 VPN 网关的虚拟网络 TestVNet1。 替换值时，请务必始终将网关子网特意命名为 GatewaySubnet。 如果命名为其他名称，网关创建将会失败。
+以下示例创建具有三个子网的虚拟网络 TestVNet1 和 VPN 网关。 替换值时，请务必始终将网关子网特意命名为“GatewaySubnet”。 如果命名为其他名称，网关创建会失败。
 
 ```powershell
 $fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
@@ -140,14 +139,14 @@ New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Locatio
 New-AzureRmLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP6 -AddressPrefix $LNGPrefix61,$LNGPrefix62
 ```
 
-### <a name="step-2---creat-a-s2s-vpn-connection-with-an-ipsecike-policy"></a>步骤 2 - 创建含 IPsec/IKE 策略的 S2S VPN 连接
+### <a name="step-2---create-a-s2s-vpn-connection-with-an-ipsecike-policy"></a>步骤 2 - 创建含 IPsec/IKE 策略的 S2S VPN 连接
 
 #### <a name="1-create-an-ipsecike-policy"></a>1.创建 IPsec/IKE 策略
 
 > [!IMPORTANT]
 > 需创建 IPsec/IKE 策略，才能对连接启用“UsePolicyBasedTrafficSelectors”选项。
 
-下方示例脚本使用以下算法和参数创建 IPsec/IKE 策略：
+下面的示例使用以下算法和参数创建 IPsec/IKE 策略：
 * IKEv2：AES256、SHA384、DHGroup24
 * IPsec：AES256、SHA256、PFS24、SA 生存期 3600 秒和 2048KB
 
@@ -156,7 +155,7 @@ $ipsecpolicy6 = New-AzureRmIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA38
 ```
 
 #### <a name="2-create-the-s2s-vpn-connection-with-policy-based-traffic-selectors-and-ipsecike-policy"></a>2.创建采用基于策略的流量选择器和 IPsec/IKE 策略的 S2S VPN 连接
-创建 S2S VPN 连接并应用之前创建的 IPsec/IKE 策略。 注意其他参数“-UsePolicyBasedTrafficSelectors $True”可对连接启用基于策略的流量选择器。
+创建 S2S VPN 连接并应用上一步创建的 IPsec/IKE 策略。 请注意其他参数“-UsePolicyBasedTrafficSelectors $True”可对连接启用基于策略的流量选择器。
 
 ```powershell
 $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
@@ -165,7 +164,7 @@ $lng6 = Get-AzureRmLocalNetworkGateway  -Name $LNGName6 -ResourceGroupName $RG1
 New-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng6 -Location $Location1 -ConnectionType IPsec -UsePolicyBasedTrafficSelectors $True -IpsecPolicies $ipsecpolicy6 -SharedKey 'AzureA1b2C3'
 ```
 
-完成这些步骤后，S2S VPN 连接将使用上面定义的 IPsec/IKE 策略，并对连接启用基于策略的流量选择器。 可重复这些步骤，从同一 Azure VPN 网关添加更多连接到其他基于策略的本地 VPN 设备。
+完成这些步骤后，S2S VPN 连接将使用定义的 IPsec/IKE 策略，并对连接启用基于策略的流量选择器。 可重复这些步骤，从同一 Azure VPN 网关添加更多连接到其他基于策略的本地 VPN 设备。
 
 ## <a name="update-policy-based-traffic-selectors-for-a-connection"></a>对连接更新基于策略的流量选择器
 最后一节将介绍如何对现有 S2S VPN 连接更新基于策略的流量选择器选项。
@@ -180,19 +179,19 @@ $connection6  = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -
 ```
 
 ### <a name="2-check-the-policy-based-traffic-selectors-option"></a>2.检查基于策略的流量选择器选项
-以下行将显示连接是否使用了基于策略的流量选择器：
+以下行显示连接是否使用了基于策略的流量选择器：
 
 ```powershell
 $connection6.UsePolicyBasedTrafficSelectors
 ```
 
-如果行返回“True”，则表示对连接配置了基于策略的流量选择器；反之则会返回“False”。
+如果行返回“True”，则表示对连接配置了基于策略的流量选择器；否则返回“False”。
 
 ### <a name="3-update-the-policy-based-traffic-selectors-on-a-connection"></a>3.更新连接的基于策略的流量选择器
 获取连接资源后，可启用或禁用该选项。
 
 #### <a name="disable-usepolicybasedtrafficselectors"></a>Disable UsePolicyBasedTrafficSelectors
-下方示例禁用了基于策略的流量选择器选项，但未改变 IPsec/IKE 策略：
+下面的示例禁用了基于策略的流量选择器选项，但未改变 IPsec/IKE 策略：
 
 ```powershell
 $RG1          = "TestPolicyRG1"
@@ -203,7 +202,7 @@ Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $con
 ```
 
 #### <a name="enable-usepolicybasedtrafficselectors"></a>Enable UsePolicyBasedTrafficSelectors
-下方示例启用了基于策略的流量选择器选项，但未改变 IPsec/IKE 策略：
+下面的示例启用了基于策略的流量选择器选项，但未改变 IPsec/IKE 策略：
 
 ```powershell
 $RG1          = "TestPolicyRG1"

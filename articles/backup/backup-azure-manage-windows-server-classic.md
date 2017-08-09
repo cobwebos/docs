@@ -14,17 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: markgal;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 7218366ec8455bc2d8747446319bac79e7b8abea
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: f41132d69dbbc9e5871851220e5f7de933c50efe
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="manage-azure-backup-vaults-and-servers-using-the-classic-deployment-model"></a>使用经典部署模型管理 Azure 备份保管库和服务器
 > [!div class="op_single_selector"]
-> * [Resource Manager](backup-azure-manage-windows-server.md)
+> * [资源管理器](backup-azure-manage-windows-server.md)
 > * [经典](backup-azure-manage-windows-server-classic.md)
 >
 >
@@ -32,17 +31,17 @@ ms.lasthandoff: 06/16/2017
 本文概述了可通过 Azure 经典门户和 Microsoft Azure 备份代理完成的备份管理任务。
 
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[资源管理器和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 > [!IMPORTANT]
-> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 从 2017 年 11 月 1 日起：
->- 其余的所有备份保管库都将自动升级到恢复服务保管库。
+> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 10 月 15 日之后，不能使用 PowerShell 创建备份保管库。 **直到 2017 年 11 月 1 日**：
+>- 剩余的所有备份保管库都将自动升级到恢复服务保管库。
 >- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
 >
 
 ## <a name="management-portal-tasks"></a>管理门户任务
 1. 登录到[管理门户](https://manage.windowsazure.com)。
-2. 单击“**恢复服务**”，然后单击备份保管库的名称以查看“快速启动”页。
+2. 单击“**恢复服务**”，并单击备份保管库的名称以查看“快速启动”页。
 
     ![恢复服务](./media/backup-azure-manage-windows-server-classic/rs-left-nav.png)
 
@@ -55,7 +54,7 @@ ms.lasthandoff: 06/16/2017
 
 * 已在云中注册的 Windows Server 数目
 * 云中受保护的 Azure 虚拟机数目
-* 在 Azure 中消耗的存储空间总量
+* 在 Azure 中消耗的存储总量
 * 最近执行的作业的状态
 
 在“仪表板”的底部，可以执行以下任务：
@@ -123,10 +122,10 @@ ms.lasthandoff: 06/16/2017
 2. 在**计划备份向导**中，将“**更改备份项或时间**”选项保留选中状态，然后单击“**下一步**”。
 
     ![修改计划的备份](./media/backup-azure-manage-windows-server-classic/modify-or-stop-a-scheduled-backup.png)
-3. 如果你要添加或更改项，请在“**选择要备份的项**”屏幕中单击“**添加项**”。
+3. 如果要添加或更改项，请在“**选择要备份的项**”屏幕中单击“**添加项**”。
 
-    还可以在此向导页中设置“**排除设置**”。 如果你要排除文件或文件类型，请阅读有关添加[排除设置](#exclusion-settings) 的过程。
-4. 选择要备份的文件和文件夹，然后单击“**确定**”。
+    还可以在此向导页中设置“**排除设置**”。 如果要排除文件或文件类型，请阅读有关添加[排除设置](#exclusion-settings) 的过程。
+4. 选择要备份的文件和文件夹，并单击“**确定**”。
 
     ![添加项](./media/backup-azure-manage-windows-server-classic/add-items-modify.png)
 5. 指定“**备份计划**”并单击“**下一步**”。
@@ -139,10 +138,10 @@ ms.lasthandoff: 06/16/2017
    > [此文](backup-azure-backup-cloud-as-tape.md)中详细介绍了如何指定备份计划。
    >
    >
-6. 选择备份副本的“**保留策略**”，然后单击“**下一步**”。
+6. 选择备份副本的“**保留策略**”，并单击“**下一步**”。
 
     ![选择保留策略](./media/backup-azure-manage-windows-server-classic/select-retention-policy-modify.png)
-7. 在“**确认**”屏幕上复查信息，然后单击“**完成**”。
+7. 在“**确认**”屏幕上复查信息，并单击“**完成**”。
 8. 向导完成创建**备份计划**后，请单击“**关闭**”。
 
     修改保护设置后，可以通过转到“**作业**”选项卡并确认更改已反映在备份作业中，来确认可正确触发备份。
@@ -158,7 +157,7 @@ Azure 备份代理提供的“限制”选项卡可让你控制在数据传输�
     ![网络限制](./media/backup-azure-manage-windows-server-classic/throttling-dialog.png)
 3. 启用限制后，指定在“**工作时间**”和“**非工作时间**”允许使用多少带宽进行备份数据传输。
 
-    带宽值从每秒 512 千字节 (Kbps) 开始，最高可为每秒 1023 兆字节 (Mbps)。 你还可以指定“**工作时间**”的开始和结束时间，以及一周中有哪几天被视为工作日。 在指定的工作时间之外的时间被视为非工作时间。
+    带宽值从每秒 512 千字节 (Kbps) 开始，最高可为每秒 1023 兆字节 (Mbps)。 还可以指定“**工作时间**”的开始和结束时间，以及一周中有哪几天被视为工作日。 在指定的工作时间之外的时间被视为非工作时间。
 4. 单击 **“确定”**。
 
 ## <a name="exclusion-settings"></a>排除设置
@@ -177,7 +176,7 @@ Azure 备份代理提供的“限制”选项卡可让你控制在数据传输�
 5. 单击“**添加排除项**”。
 
     ![添加排除项](./media/backup-azure-manage-windows-server-classic/add-exclusion.png)
-6. 选择位置，然后单击“**确定**”。
+6. 选择位置，并单击“**确定**”。
 
     ![选择要排除的位置](./media/backup-azure-manage-windows-server-classic/exclusion-location.png)
 7. 在“**文件类型**”字段中添加文件扩展名。
@@ -188,7 +187,7 @@ Azure 备份代理提供的“限制”选项卡可让你控制在数据传输�
 
     ![文件类型示例](./media/backup-azure-manage-windows-server-classic/exclude-mp3.png)
 
-    若要添加其他扩展名，请单击“**添加排除项**”，然后输入另一个文件类型扩展名（添加 .jpeg 扩展名）。
+    要添加其他扩展名，请单击“**添加排除项**”，并输入另一个文件类型扩展名（添加 .jpeg 扩展名）。
 
     ![另一个文件类型示例](./media/backup-azure-manage-windows-server-classic/exclude-jpg.png)
 8. 添加所有扩展名之后，请单击“**确定**”。

@@ -1,5 +1,4 @@
 ---
-
 title: "在 Azure Active Directory 中管理组属性 | Microsoft Docs"
 description: "如何在 Azure Active Directory 中编辑组的属性和其他配置设置"
 services: active-directory
@@ -13,15 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 07/25/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: ad714d4543f2c1990a2262de456f607c876f738d
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 24f5da884a7d9f1d07c32419316d2c046d54d739
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="manage-the-settings-for-a-group-in-azure-active-directory"></a>在 Azure Active Directory 中管理组的设置
@@ -29,12 +27,12 @@ ms.lasthandoff: 05/09/2017
 
 ## <a name="how-do-i-find-and-change-the-settings"></a>如何查找和更改设置？
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“更多服务”，在文本框中输入“用户和组”，然后选择 **Enter**。
+2. 选择“更多服务”，在文本框中输入“用户和组”，并选择 **Enter**。
 
-   ![打开“用户管理”](./media/active-directory-groups-settings-azure-portal/search-user-management.png)
+   ![打开“用户和组”边栏选项卡](./media/active-directory-groups-settings-azure-portal/search-user-management.png)
 3. 在“用户和组”边栏选项卡中，选择“所有组”。
 
-   ![打开“组”边栏选项卡](./media/active-directory-groups-settings-azure-portal/view-groups-blade.png)
+   ![打开“所有组”边栏选项卡](./media/active-directory-groups-settings-azure-portal/view-groups-blade.png)
 4. 在“用户和组 - 所有组”边栏选项卡中，选择一个组。
 5. 在“组 - 组名”边栏选项卡中，选择“属性”。
 

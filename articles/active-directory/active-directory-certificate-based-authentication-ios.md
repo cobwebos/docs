@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/07/2017
+ms.date: 07/31/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 162be9faa51047f4d0be0e73e3dbe6a3dc87ba4c
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: 4c2e2030d49ab09ee8c72cfd638986b075d53921
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS 上 Azure Active Directory 基于证书的身份验证
@@ -30,7 +30,7 @@ ms.lasthandoff: 06/08/2017
 
 如果配置了此功能，就无需在移动设备上的某些邮件和 Microsoft Office 应用程序中输入用户名和密码组合。 
 
-本主题面向 Office 365 企业版、商业版、教育版、US Government 和 Chine 计划中的租户用户，提供在 iOS 设备上配置 CBA 时的要求和受支持方案。
+本主题面向 Office 365 企业版、商业版、教育版、美国政府计划、中国计划和德国计划中的租户用户，提供在 iOS(Android) 设备上配置 CBA 时的要求和受支持方案。
 
 此功能在 Office 365 US Government Defense 和 Federal 计划中以预览形式提供。
 
@@ -47,6 +47,7 @@ ms.lasthandoff: 06/08/2017
 | Outlook |![勾选标记][1] |
 | Yammer |![勾选标记][1] |
 | Skype for Business |![勾选标记][1] |
+| Microsoft 信息保护应用 |![勾选标记][1] |
 | Microsoft Teams |![勾选标记][1] |
 
 ## <a name="requirements"></a>要求 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 72b5217bd8de29fdad753d89f34934f64c551ff2
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: c4cd80c50dca5b97c36f1c9785d8ea347b35285c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -35,14 +35,14 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 >[!NOTE]
 >此功能不适用于 Active Directory 联合身份验证服务 (ADFS)，因为其中已包含此功能。
 
-## <a name="key-benefits-of-using-azure-ad-seamless-sso"></a>使用 Azure AD 无缝 SSO 的主要优点
+## <a name="key-benefits"></a>主要优点
 
 - 出色的用户体验
   - 用户将自动登录到本地和基于云的应用程序。
   - 用户无需重复输入其密码。
 - 易于部署和管理
   - 不需要本地任何其他组件来完成此操作。
-  - 与托管身份验证的任何方法 - [密码哈希同步](active-directory-aadconnectsync-implement-password-synchronization.md)或[传递身份验证](active-directory-aadconnect-pass-through-authentication.md)结合使用。
+  - 与云身份验证的任何方法 - [密码哈希同步](active-directory-aadconnectsync-implement-password-synchronization.md)或[直通身份验证](active-directory-aadconnect-pass-through-authentication.md)结合使用。
   - 可以分发给某些或所有使用组策略的用户。
   - 使用 Azure AD 注册非 Windows 10 设备。 这需要版本 2.1 或更高版本的[工作区加入客户端](https://www.microsoft.com/download/details.aspx?id=53554)。
 
@@ -57,11 +57,11 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 
 | 操作系统\浏览器 |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|是|不支持|是|是\*|不适用
-|Windows 8.1|是|不支持|是|是\*|不适用
-|Windows 8|是|不支持|是|是\*|不适用
-|Windows 7|是|不支持|是|是\*|不适用
-|Mac OS X|不适用|不适用|是\*|是\*|不支持
+|Windows 10|是|是|是|是\*|不适用
+|Windows 8.1|是|不适用|是|是\*|不适用
+|Windows 8|是|不适用|是|是\*|不适用
+|Windows 7|是|不适用|是|是\*|不适用
+|Mac OS X|不适用|不适用|是\*|是\*|是\*
 
 \*需要[额外的配置](active-directory-aadconnect-sso-quick-start.md#browser-considerations)
 
@@ -72,7 +72,7 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 
 - [快速入门](active-directory-aadconnect-sso-quick-start.md) - 启动并运行 Azure AD 无缝 SSO。
 - [深入技术探究](active-directory-aadconnect-sso-how-it-works.md) - 了解此功能如何运作。
-- [常见问题](active-directory-aadconnect-sso-faq.md) - 常见问题解答。
+- [**常见问题**](active-directory-aadconnect-sso-faq.md) - 常见问题解答。
 - [故障排除](active-directory-aadconnect-troubleshoot-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
 
