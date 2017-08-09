@@ -248,7 +248,7 @@ Azure 磁盘加密管理解决方案可以解决以下业务需求：
 ##### <a name="create-an-azure-ad-application-by-using-azure-powershell"></a>使用 Azure PowerShell 创建 Azure AD 应用程序
 输入以下 PowerShell cmdlet 创建 Azure AD 应用程序：
 
-    $aadClientSecret = “yourSecret”
+    $aadClientSecret = "yourSecret"
     $azureAdApplication = New-AzureRmADApplication -DisplayName "<Your Application Display Name>" -HomePage "<https://YourApplicationHomePage>" -IdentifierUris "<https://YouApplicationUri>" -Password $aadClientSecret
     $servicePrincipal = New-AzureRmADServicePrincipal –ApplicationId $azureAdApplication.ApplicationId
 
