@@ -57,7 +57,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 | [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) | 创建虚拟网络接口，并对它启用 IP 转发。 |
 | [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) | 创建网络安全组 (NSG)。 |
 | [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) | 创建允许 HTTP 和 HTTPS 端口入站到 VM 的 NSG 规则。 |
-| [](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig)Set-AzureRmVirtualNetworkSubnetConfig| 将 NSG 和路由表关联到子网。 |
+| [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig)| 将 NSG 和路由表关联到子网。 |
 | [New-AzureRmRouteTable](/powershell/module/azurerm.network/new-azurermroutetable)| 为所有路由创建路由表。 |
 | [New-AzureRmRouteConfig](/powershell/module/azurerm.network/new-azurermrouteconfig)| 创建路由，通过 VM 在子网和 Internet 之间路由流量。 |
 | [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) | 创建虚拟机并向其附加 NIC。 此命令还指定要使用的虚拟机映像和管理凭据。 |
