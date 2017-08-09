@@ -1,6 +1,6 @@
 ---
-title: "Azure DocumentDB .NET SDK 和资源 | Microsoft 文档"
-description: "了解有关 .NET API 和 SDK 的全部信息，包括发布日期、停用日期和 DocumentDB.NET SDK 各版本之间的更改。"
+title: "Azure Cosmos DB .NET SDK 和资源 | Microsoft Docs"
+description: "了解有关 .NET API 和 SDK 的所有信息，包括发布日期、停用日期和 Azure Cosmos DB .NET SDK 各版本之间所做的更改。"
 services: cosmos-db
 documentationcenter: .net
 author: rnagpal
@@ -16,13 +16,13 @@ ms.date: 07/05/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: a41df84034dbc2f1ec6c61d027ced77694354d51
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 8d6b953ae95713dc8b5a4037fa59bec49ea52b85
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 07/25/2017
 
 ---
-# <a name="documentdb-net-sdk-download-and-release-notes"></a>DocumentDB .NET SDK：下载和发行说明
+# <a name="azure-cosmos-db-net-sdk-download-and-release-notes"></a>Azure Cosmos DB .NET SDK：下载和发行说明
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
 > * [.NET 更改源](documentdb-sdk-dotnet-changefeed.md)
@@ -44,7 +44,7 @@ ms.lasthandoff: 07/13/2017
 
 <tr><td>**示例**</td><td>[.NET代码示例](documentdb-dotnet-samples.md)</td></tr>
 
-<tr><td>**入门**</td><td>[开始使用 DocumentDB .NET SDK](documentdb-get-started.md)</td></tr>
+<tr><td>**入门**</td><td>[Azure Cosmos DB .NET SDK 入门](documentdb-get-started.md)</td></tr>
 
 <tr><td>**Web 应用教程**</td><td>[使用 Azure Cosmos DB 进行 Web 应用程序开发](documentdb-dotnet-application.md)</td></tr>
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 07/13/2017
 *   现已开始支持在实例化 [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet) 时指定自定义 JsonSerializerSettings。
 
 ### <a name="a-name11411141"></a><a name="1.14.1"/>1.14.1
-*   修复了以下问题：受影响的 x64 计算机不支持 SSE4 指令，并在运行 DocumentDB API 查询时引发 SEHException。
+*   修复了影响 x64 计算机的一个问题，该计算机不支持 SSE4 指令，并在运行 Azure Cosmos DB DocumentDB API 查询时引发 SEHException。
 
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
 *   现已开始支持每分钟请求单位 (RU/m) 功能。
@@ -143,7 +143,7 @@ ms.lasthandoff: 07/13/2017
 ### <a name="a-name192192"></a><a name="1.9.2"/>1.9.2
 * 已对分区集合添加并行查询支持。
 * 已对分区集合添加跨分区 ORDER BY 和 TOP 查询支持。
-* 已修复当使用对 DocumentDB Nuget 包的引用来引用 DocumentDB 项目时缺少所需的 DocumentDB.Spatial.Sql.dll 和 Microsoft.Azure.Documents.ServiceInterop.dll 引用的错误。
+* 修复了当使用对 Azure Cosmos DB Nuget 包的引用来引用 Azure Cosmos DB 项目时缺少所需的 DocumentDB.Spatial.Sql.dll 和 Microsoft.Azure.Documents.ServiceInterop.dll 引用的错误。
 * 已修复在 LINQ 中使用用户定义的函数时无法使用不同类型的参数的错误。 
 * 已修复全局复制帐户中的 Bug，此 Bug 会使 Upsert 调用定向至读取位置而非写入位置。
 * 已将缺少的方法添加到了 IDocumentClient 接口： 
@@ -156,7 +156,7 @@ ms.lasthandoff: 07/13/2017
 * 添加了对多区域数据库帐户的支持。
 * 添加了对重试限制请求的支持。  用户可以通过配置 ConnectionPolicy.RetryOptions 属性来自定义重试次数和最长等待时间。
 * 添加新的 IDocumentClient 接口，用于定义所有 DocumenClient 属性和方法的签名。  在做出此项更改的同时，已将用于创建 IQueryable 和 IOrderedQueryable 的扩展方法更改为 DocumentClient 类本身的方法。
-* 添加了配置选项用于设置给定 DocumentDB 终结点 URI 的 ServicePoint.ConnectionLimit。  使用 ConnectionPolicy.MaxConnectionLimit 可以更改默认值（设置为 50）。
+* 添加了配置选项，以便设置给定 Azure Cosmos DB 终结点 URI 的 ServicePoint.ConnectionLimit。  使用 ConnectionPolicy.MaxConnectionLimit 可以更改默认值（设置为 50）。
 * 已弃用 IPartitionResolver 及其实现。  对 IPartitionResolver 的支持现已过时。 建议使用分区集合来提高存储和吞吐量。
 
 ### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
@@ -172,7 +172,7 @@ ms.lasthandoff: 07/13/2017
 * 实现了[分区集合](partition-data.md)和[用户定义的性能级别](performance-levels.md)。 
 
 ### <a name="a-name153153"></a><a name="1.5.3"/>1.5.3
-* **[已修复]** 查询 DocumentDB 终结点引发：“System.Net.Http.HttpRequestException：将内容复制到流时出错”。
+* **[已修复]** 查询 Azure Cosmos DB 终结点时引发：“System.Net.Http.HttpRequestException: 将内容复制到流时出错”。
 
 ### <a name="a-name152152"></a><a name="1.5.2"/>1.5.2
 * 扩展了 LINQ 支持，包括用于分页、条件表达式和范围比较的新运算符。

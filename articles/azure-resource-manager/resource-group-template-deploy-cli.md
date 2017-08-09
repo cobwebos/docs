@@ -12,34 +12,34 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2017
+ms.date: 07/31/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 9c9eff8c828329b9d8358f88b90c174c64f5c29f
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: 4f1d5f4cc48470f8906edb28628006dd1996bd3a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>使用 Resource Manager 模板和 Azure CLI 部署资源
 
 本主题介绍了如何将 Azure CLI 2.0 与 Resource Manager 模板配合使用来将资源部署到 Azure。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅 [Azure Resource Manager 概述](resource-group-overview.md)。  
 
-你部署的 Resource Manager 模板可以是计算机上的本地文件，也可以是位于 GitHub 等存储库中的外部文件。 本文中部署的模板可在[示例模板](#sample-template)部分中找到，也可在 [GitHub 中的存储帐户模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json)中找到。
+部署的 Resource Manager 模板可以是计算机上的本地文件，也可以是位于 GitHub 等存储库中的外部文件。 本文中部署的模板可在[示例模板](#sample-template)部分中找到，也可在 [GitHub 中的存储帐户模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json)中找到。
 
 [!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
 
-<a id="deploy-local-template" />
+如果没有安装 Azure CLI，则可使用 [Cloud Shell](#deploy-template-from-cloud-shell)。
 
-## <a name="deploy-a-template-from-your-local-machine"></a>从本地计算机部署模板
+## <a name="deploy-local-template"></a>部署本地模板
 
-将资源部署到 Azure 时，你执行以下操作：
+将资源部署到 Azure 时，执行以下操作：
 
 1. 登录到 Azure 帐户
 2. 创建用作已部署资源的容器的资源组。 资源组名称只能包含字母数字字符、句点、下划线、连字符和括号。 它最多可以包含 90 个字符。 它不能以句点结尾。
 3. 将定义了要创建的资源的模板部署到资源组
 
-模板可以包括可用于自定义部署的参数。 例如，你可以提供为特定环境（如开发环境、测试环境和生产环境）定制的值。 示例模板定义了存储帐户 SKU 的参数。 
+模板可以包括可用于自定义部署的参数。 例如，可以提供为特定环境（如开发环境、测试环境和生产环境）定制的值。 示例模板定义了存储帐户 SKU 的参数。 
 
 以下示例将创建一个资源组，并从本地计算机部署模板：
 
@@ -60,13 +60,16 @@ az group deployment create \
 "provisioningState": "Succeeded",
 ```
 
-## <a name="deploy-a-template-from-an-external-source"></a>从外部源部署模板
+## <a name="deploy-external-template"></a>部署外部模板
 
-你可能更愿意将 Resource Manager 模板存储在外部位置，而不是将它们存储在本地计算机上。 可以将模板存储在源控件存储库（例如 GitHub）中。 另外，还可以将其存储在 Azure 存储帐户中，以便在组织中共享访问。
+可能更愿意将 Resource Manager 模板存储在外部位置，而不是将它们存储在本地计算机上。 可以将模板存储在源控件存储库（例如 GitHub）中。 另外，还可以将其存储在 Azure 存储帐户中，以便在组织中共享访问。
 
 若要部署外部模板，请使用 **template-uri** 参数。 使用示例中的 URI 从 GitHub 部署示例模板。
    
 ```azurecli
+az login
+
+az group create --name ExampleGroup --location "Central US"
 az group deployment create \
     --name ExampleDeployment \
     --resource-group ExampleGroup \
@@ -74,11 +77,64 @@ az group deployment create \
     --parameters storageAccountType=Standard_GRS
 ```
 
-前面的示例要求模板的 URI 可公开访问，它适用于大多数情况，因为你的模板应该不会包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。 但是，如果不希望模板可公开访问，可以通过将其存储在专用存储容器中来保护它。 有关部署需要共享访问签名 (SAS) 令牌的模板的信息，请参阅[部署具有 SAS 令牌的专用模板](resource-manager-cli-sas-token.md)。
+前面的示例要求模板的 URI 可公开访问，它适用于大多数情况，因为模板应该不会包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。 但是，如果不希望模板可公开访问，可以通过将其存储在专用存储容器中来保护它。 有关部署需要共享访问签名 (SAS) 令牌的模板的信息，请参阅[部署具有 SAS 令牌的专用模板](resource-manager-cli-sas-token.md)。
+
+## <a name="deploy-template-from-cloud-shell"></a>从 Cloud Shell 部署模板
+
+可以使用 [Cloud Shell](../cloud-shell/overview.md) 来运行 Azure CLI 命令，以便部署模板。 但是，必须先将模板加载到 Cloud Shell 的文件共享。 如果尚未使用过 Cloud Shell，请参阅 [Azure Cloud Shell 概述](../cloud-shell/overview.md)，了解如何设置它。
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。   
+
+2. 选择 Cloud Shell 资源组。 名称模式为 `cloud-shell-storage-<region>`。
+
+   ![选择资源组](./media/resource-group-template-deploy-cli/select-cs-resource-group.png)
+
+3. 选择适用于 Cloud Shell 的存储帐户。
+
+   ![选择存储帐户](./media/resource-group-template-deploy-cli/select-storage.png)
+
+4. 选择“文件”。
+
+   ![选择文件](./media/resource-group-template-deploy-cli/select-files.png)
+
+5. 选择 Cloud Shell 的文件共享。 名称模式为 `cs-<user>-<domain>-com-<uniqueGuid>`。
+
+   ![选择文件共享](./media/resource-group-template-deploy-cli/select-file-share.png)
+
+6. 选择“添加目录”。
+
+   ![添加目录](./media/resource-group-template-deploy-cli/select-add-directory.png)
+
+7. 将其命名为“模板”，然后选择“确定”。
+
+   ![为目录命名](./media/resource-group-template-deploy-cli/name-templates.png)
+
+8. 选择新目录。
+
+   ![选择目录](./media/resource-group-template-deploy-cli/select-templates.png)
+
+9. 选择“上传”。
+
+   ![选择“上传”](./media/resource-group-template-deploy-cli/select-upload.png)
+
+10. 找到并上传模板。
+
+   ![上传文件](./media/resource-group-template-deploy-cli/upload-files.png)
+
+11. 打开提示符。
+
+   ![打开 Cloud Shell](./media/resource-group-template-deploy-cli/start-cloud-shell.png)
+
+12. 在 Cloud Shell 中输入以下命令：
+
+   ```azurecli
+   az group create --name examplegroup --location "South Central US"
+   az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageAccountType=Standard_GRS
+   ```
 
 ## <a name="parameter-files"></a>参数文件
 
-与在脚本中以内联值的形式传递参数相比，你可能会发现使用包含参数值的 JSON 文件更为容易。 参数文件必须采用以下格式：
+与在脚本中以内联值的形式传递参数相比，可能会发现使用包含参数值的 JSON 文件更为容易。 参数文件必须采用以下格式：
 
 ```json
 {
@@ -92,7 +148,7 @@ az group deployment create \
 }
 ```
 
-请注意，parameters 部分包含与你的模板中定义的参数匹配的参数名称 (storageAccountType)。 参数文件针对该参数包含了一个值。 此值在部署期间自动传递给模板。 可以针对不同部署方案创建多个参数文件，然后传入相应的参数文件。 
+请注意，parameters 部分包含与模板中定义的参数匹配的参数名称 (storageAccountType)。 参数文件针对该参数包含了一个值。 此值在部署期间自动传递给模板。 可以针对不同部署方案创建多个参数文件，并传入相应的参数文件。 
 
 复制上面的示例，并将其保存为名为 `storage.parameters.json` 的文件。
 
@@ -172,7 +228,7 @@ az group deployment create \
 
 ## <a name="sample-template"></a>示例模板
 
-本主题中的示例使用以下模板。 复制并将其另存为名为 storage.json 的文件。 若要了解如何创建此模板，请参阅[创建你的第一个 Azure Resource Manager 模板](resource-manager-create-first-template.md)。  
+本主题中的示例使用以下模板。 复制并将其另存为名为 storage.json 的文件。 要了解如何创建此模板，请参阅[创建第一个 Azure Resource Manager 模板](resource-manager-create-first-template.md)。  
 
 ```json
 {
@@ -220,7 +276,7 @@ az group deployment create \
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 本文中的示例将资源部署到你的默认订阅中的资源组。 若要使用其他订阅，请参阅[管理多个 Azure 订阅](/cli/azure/manage-azure-subscriptions-azure-cli)。
+* 本文中的示例将资源部署到默认订阅中的资源组。 若要使用其他订阅，请参阅[管理多个 Azure 订阅](/cli/azure/manage-azure-subscriptions-azure-cli)。
 * 有关用于部署模板的完整示例脚本，请参阅 [Resource Manager 模板部署脚本](resource-manager-samples-cli-deploy.md)。
 * 若要了解如何在模板中定义参数，请参阅[了解 Azure Resource Manager 模板的结构和语法](resource-group-authoring-templates.md)。
 * 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](resource-manager-common-deployment-errors.md)。
