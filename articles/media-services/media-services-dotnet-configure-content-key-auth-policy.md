@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 08/09/2017
 ms.author: juliako;mingfeiy
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
 ms.openlocfilehash: 3dcd45307716b7343fbac00e083e8f26c9eb967f
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/11/2017
-
 
 ---
 # <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>动态加密：配置内容密钥授权策略
@@ -102,7 +102,7 @@ Microsoft Azure 媒体服务允许传送受高级加密标准 (AES)（使用 128
 
 若要配置令牌限制选项，你需要使用 XML 来描述令牌的授权要求。 令牌限制配置 XML 必须符合以下 XML 架构。
 
-#### <a name="a-idschemaatoken-restriction-schema"></a><a id="schema"></a>令牌限制架构
+#### <a id="schema"></a>令牌限制架构
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:complexType name="TokenClaim">
@@ -209,7 +209,7 @@ Microsoft Azure 媒体服务允许传送受高级加密标准 (AES)（使用 128
         return TokenRestrictionTemplateSerializer.Serialize(template);
     }
 
-#### <a name="a-idtestatest-token"></a><a id="test"></a>测试令牌
+#### <a id="test"></a>测试令牌
 若要获取用于密钥授权策略的基于令牌限制的测试令牌，请执行以下操作。
 
     // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
@@ -390,8 +390,8 @@ Microsoft Azure 媒体服务允许传送受高级加密标准 (AES)（使用 128
 
 若要获取基于令牌限制（用于密钥授权策略）的测试令牌，请参阅[此](#test)部分。 
 
-## <a name="a-idtypesatypes-used-when-defining-contentkeyauthorizationpolicy"></a><a id="types"></a>定义 ContentKeyAuthorizationPolicy 时使用的类型
-### <a name="a-idcontentkeyrestrictiontypeacontentkeyrestrictiontype"></a><a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
+## <a id="types"></a>定义 ContentKeyAuthorizationPolicy 时使用的类型
+### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
     public enum ContentKeyRestrictionType
     {
         Open = 0,
@@ -399,7 +399,7 @@ Microsoft Azure 媒体服务允许传送受高级加密标准 (AES)（使用 128
         IPRestricted = 2,
     }
 
-### <a name="a-idcontentkeydeliverytypeacontentkeydeliverytype"></a><a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
     public enum ContentKeyDeliveryType
     {
       None = 0,
@@ -408,7 +408,7 @@ Microsoft Azure 媒体服务允许传送受高级加密标准 (AES)（使用 128
       Widevine = 3
     }
 
-### <a name="a-idtokentypeatokentype"></a><a id="TokenType"></a>TokenType
+### <a id="TokenType"></a>TokenType
     public enum TokenType
     {
         Undefined = 0,

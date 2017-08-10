@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 08/09/2017
 ms.author: juliako;anilmur
 ms.translationtype: HT
 ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: 2f052ea5ff50cf584f9116f2802eca1fd077dcbb
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
-
 
 ---
 
