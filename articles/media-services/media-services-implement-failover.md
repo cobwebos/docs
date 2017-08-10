@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
 ms.openlocfilehash: eaa87671a90ab6b090fb04f346ef551edba4d173
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/15/2017
-
 
 ---
 # <a name="implement-failover-streaming-with-azure-media-services"></a>使用 Azure 媒体服务实现故障转移流式处理
@@ -458,7 +458,6 @@ ms.lasthandoff: 03/15/2017
             var targetContainer = targetBlobClient.GetContainerReference(targetContainerName);
             targetContainer.CreateIfNotExists();
 
-
             string blobToken = sourceContainer.GetSharedAccessSignature(new SharedAccessBlobPolicy()
             {
                 // Specify the expiration time for the signature.
@@ -466,7 +465,6 @@ ms.lasthandoff: 03/15/2017
                 // Specify the permissions granted by the signature.
                 Permissions = SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read
             });
-
 
             foreach (var sourceBlob in sourceContainer.ListBlobs())
             {
@@ -941,7 +939,6 @@ ms.lasthandoff: 03/15/2017
             }
             return request;
         }
-
 
 ## <a name="next-steps"></a>后续步骤
 现在，可以使用流量管理器在两个数据中心之间路由请求，因此可在发生任何中断时故障转移。
