@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: v-livech
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: a95157f57c0cbd1f2a9ed68a0fe83140d7c9ec40
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: ddc5446fa6a43bfff05ec251b30175ddd24052c9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="add-a-user-to-an-azure-vm"></a>将用户添加到 Azure VM
@@ -75,10 +75,10 @@ sudo top
 ### <a name="introduction"></a>介绍
 新服务器的最常见首要任务之一是添加用户帐户。  Root 登录应该禁用，root 帐户本身不应该用于 Linux 服务器，只有 sudo 可以。  使用 sudo 提升用户的 root 权限，才是管理和使用 Linux 的正确方式。
 
-使用命令 `useradd` 将用户帐户添加到 Linux VM。  运行 `useradd` 修改 `/etc/passwd`、`/etc/shadow`、`/etc/group` 和 `/etc/gshadow`。  我们将在 `useradd` 命令中添加一个命令行标志，以便同时将新用户添加到 Linux 上的正确 sudo 组。  尽管 `useradd` 在 `/etc/passwd` 中创建条目，但不会为新用户帐户提供密码。  我们将使用简单的 `passwd` 命令为新用户创建初始密码。  最后一个步骤是修改 sudo 规则，以允许用户以 sudo 权限执行命令，而无需在执行每个命令时都输入密码。  由于该用户已使用私钥登录，我们可以推断该用户帐户并非想要图谋不轨，因此允许该用户在不使用密码的情况下进行 sudo 访问。  
+使用命令 `useradd` 将用户帐户添加到 Linux VM。  运行 `useradd` 修改 `/etc/passwd`、`/etc/shadow`、`/etc/group` 和 `/etc/gshadow`。  我们会在 `useradd` 命令中添加一个命令行标志，以便同时将新用户添加到 Linux 上的正确 sudo 组。  尽管 `useradd` 在 `/etc/passwd` 中创建条目，但不会为新用户帐户提供密码。  我们将使用简单的 `passwd` 命令为新用户创建初始密码。  最后一个步骤是修改 sudo 规则，以允许用户以 sudo 权限执行命令，而无需在执行每个命令时都输入密码。  由于该用户已使用私钥登录，我们可以推断该用户帐户并非想要图谋不轨，因此允许该用户在不使用密码的情况下进行 sudo 访问。  
 
 ### <a name="adding-a-single-sudo-user-to-an-azure-vm"></a>将单个 sudo 用户添加到 Azure VM
-使用 SSH 密钥登录到 Azure VM。  如果未设置 SSH 公钥访问权限，请先阅读 [Using Public Key Authentication with Azure](http://link.to/article)（对 Azure 使用公钥身份验证）一文。  
+使用 SSH 密钥登录到 Azure VM。  如果未设置 SSH 公钥访问权限，请先阅读 [Using Public Key Authentication with Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（对 Azure 使用公钥身份验证）一文。  
 
 `useradd` 命令将完成以下任务：
 
@@ -118,7 +118,7 @@ ssh-copy-id -i ~/.ssh/id_rsa exampleuser@exampleserver
 ```
 
 ### <a name="using-visudo-to-allow-sudo-usage-without-a-password"></a>通过 visudo 允许使用不带密码的 sudo
-使用 `visudo` 编辑 `/etc/sudoers` 文件可添加多层保护，避免不当地修改这个重要文件。  执行 `visudo` 时将锁定 `/etc/sudoers` 文件，以确保没有任何其他用户能够在编辑文件时对文件进行更改。  尝试保存或退出时，`visudo` 还会检查 `/etc/sudoers` 文件中是否有错误，因此无法保存已损坏的 sudoers 文件。
+使用 `visudo` 编辑 `/etc/sudoers` 文件可添加多层保护，避免不当地修改这个重要文件。  执行 `visudo` 时会锁定 `/etc/sudoers` 文件，以确保没有任何其他用户能够在编辑文件时对文件进行更改。  尝试保存或退出时，`visudo` 还会检查 `/etc/sudoers` 文件中是否有错误，因此无法保存已损坏的 sudoers 文件。
 
 我们已将用户添加到正确的默认组中以进行 sudo 访问。  现在我们要让这些组可以在没有密码的情况下使用 sudo。
 

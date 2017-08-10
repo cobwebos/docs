@@ -263,7 +263,7 @@ ms.lasthandoff: 07/12/2017
 
 * 你的应用程序已成功访问 AD FS，并且在 AD FS 数据库中找到了匹配的 RP 标识符
 * AD FS 已成功对 AD 用户进行身份验证，并将你重定向回到应用程序的主页
-* AD FS 已成功向应用程序发送名称声明 (http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name)，这可以通过网页一角显示的用户名来判断。 
+* AD FS 已成功向应用程序发送名称声明( http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name )，这可以通过网页一角显示的用户名来判断。 
 
 如果缺少名称声明，你看到的是“你好，！”。 如果查看 Views\Shared\_LoginPartial.cshtml，会发现它使用 `User.Identity.Name` 显示用户名。 如前所述，如果可以在 SAML 令牌中获取经过身份验证用户的名称声明，ASP.NET 将使用它来生成此属性。 若要查看 AD FS 发送的所有声明，请在索引操作方法的 Controllers\HomeController.cs 中放置一个断点。 对用户进行身份验证后，检查 `System.Security.Claims.Current.Claims` 集合。
 

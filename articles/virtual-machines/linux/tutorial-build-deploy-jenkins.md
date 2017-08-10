@@ -15,10 +15,10 @@ ms.date: 06/15/2017
 ms.author: ahomer
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: da885141a18e9a862c6db1005805fca247b75f25
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 967cd38f0961cd11871c538d753cab9951c2f1f5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -194,7 +194,7 @@ Azure 资源组部署任务将在它运行时使用 Azure 资源管理器模板�
 
 * **启用先决条件**：`Configure with Deployment Group agent`
 
-* **TFS/VSTS 终结点**：选择“添加”，然后在“添加新的 Team Foundation Server/Team Services 连接”对话框中，选择“基于令牌的身份验证”。 输入连接名称和你的团队项目的 URL。 然后，生成并输入[个人访问令牌 (PAT)]( https://www.visualstudio.com/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate.md) 来对你的项目团队的连接进行身份验证。
+* **TFS/VSTS 终结点**：选择“添加”，然后在“添加新的 Team Foundation Server/Team Services 连接”对话框中，选择“基于令牌的身份验证”。 输入连接名称和你的团队项目的 URL。 然后，生成并输入[个人访问令牌 (PAT)]( https://www.visualstudio.com/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate) 来对你的项目团队的连接进行身份验证。
 
   ![创建个人访问令牌](media/tutorial-build-deploy-jenkins/create-a-pat.png)
 
@@ -258,4 +258,4 @@ Azure 资源组部署任务的默认设置是用于创建或更新资源，并�
 请访问以下链接查看预先生成的虚拟机脚本示例。
 
 > [!div class="nextstepaction"]
-> [Linux 虚拟机脚本示例](https://github.com/MicrosoftDocs/azure-docs-pr/pull/cli-samples.md)
+> [Linux 虚拟机脚本示例](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/virtual-machine)

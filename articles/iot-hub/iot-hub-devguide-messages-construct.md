@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: be467cf7d3ada41f110f4f6aea686b3d40e01ffa
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: e6eafb1a0030b022da2b5d0b787e092f3067c99f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="create-and-read-iot-hub-messages"></a>创建和读取 IoT 中心消息
@@ -50,8 +49,8 @@ ms.lasthandoff: 06/01/2017
 | UserId |用于指定消息的源的 ID。 如果消息是由 IoT 中心生成的，则设置为 `{iot hub name}`。 |
 | Ack |反馈消息生成器。 此属性在云到设备的消息中用于请求 IoT 中心因为设备使用消息而生成反馈消息。 可能的值：**none**（默认值）：不生成任何反馈消息；**positive**：如果消息已完成，则接收反馈消息；**negative**：如果消息未由设备完成就过期（或已达到最大传送计数），则收到反馈消息；**full**：positive 和 negative。 有关详细信息，请参阅[消息反馈][lnk-feedback]。 |
 | ConnectionDeviceId |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **deviceId**。 |
-| ConnectionDeviceGenerationId |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 "generationId"（根据[设备标识属性][lnk-device-properties]）。 |
-| ConnectionAuthMethod |由 IoT 中心对设备到云的消息设置的身份验证方法。 此属性包含用于验证发送消息的设备的身份验证方法的相关信息。 有关详细信息，请参阅[从设备到云的反欺骗技术][lnk-antispoofing]. |
+| ConnectionDeviceGenerationId |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **generationId**（根据[设备标识属性][lnk-device-properties]）。 |
+| ConnectionAuthMethod |由 IoT 中心对设备到云的消息设置的身份验证方法。 此属性包含用于验证发送消息的设备的身份验证方法的相关信息。 有关详细信息，请参阅[从设备到云的反欺骗技术][lnk-antispoofing]。 |
 
 ## <a name="message-size"></a>消息大小
 
@@ -75,4 +74,7 @@ IoT 中心用于衡量消息大小的方法与协议无关，仅考虑实际有�
 [lnk-sdks]: iot-hub-devguide-sdks.md
 [lnk-c2d]: iot-hub-devguide-messages-c2d.md
 [lnk-d2c]: iot-hub-devguide-messages-d2c.md
-[[lnk-feedback]: iot-hub-devguide-messages-c2d.md#message-feedback [lnk-device-properties]: iot-hub-devguide-identity-registry.md#device-identity-properties [lnk-antispoofing]: iot-hub-devguide-messages-d2c.md#anti-spoofing-propertiess
+[lnk-feedback]: iot-hub-devguide-messages-c2d.md#message-feedback
+[lnk-device-properties]: iot-hub-devguide-identity-registry.md#device-identity-properties
+[lnk-antispoofing]: iot-hub-devguide-messages-d2c.md#anti-spoofing-properties
+

@@ -1,4 +1,3 @@
-* 如果非托管磁盘位于此前使用 Azure Storage Service Encryption 加密的存储帐户中，则不能将其转换成托管磁盘。 如需在托管磁盘中复制和使用这些虚拟硬盘 (VHD) 的步骤，请参阅本文后面的[托管磁盘和 Azure Storage Service Encryption](#managed-disks-and-azure-storage-service-encryption) 部分。
 
 * 该转换需要重启 VM，因此请在预先存在的维护时段内计划 VM 迁移。 
 

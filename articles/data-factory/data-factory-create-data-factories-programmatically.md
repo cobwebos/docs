@@ -14,35 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 2f33c266c14b62f51745ff67069358c007bc00a2
+ms.translationtype: HT
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 9d9dac75321c5d4e079f49320d9b7c6f56e48754
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/13/2017
+ms.lasthandoff: 08/04/2017
 
 ---
-<a id="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk" class="xliff"></a>
-
-# 使用 Azure 数据工厂 .NET SDK 创建、监视和管理 Azure 数据工厂
-<a id="overview" class="xliff"></a>
-
-## 概述
+# <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure 数据工厂 .NET SDK 创建、监视和管理 Azure 数据工厂
+## <a name="overview"></a>概述
 可使用数据工厂 .NET SDK 以编程方式创建、监视和管理 Azure 数据工厂。 可根据本文所含演练创建示例 .NET 控制台应用程序，从而创建和监视数据工厂。 
 
 > [!NOTE]
 > 本文不会介绍所有数据工厂 .NET API。 有关数据工厂 .NET API 的综合文档，请参阅 [Data Factory .NET API Reference](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1)（数据工厂 .NET API 参考）。 
 
-<a id="prerequisites" class="xliff"></a>
-
-## 先决条件
+## <a name="prerequisites"></a>先决条件
 * Visual Studio 2012、2013 或 2015
 * 下载并安装 [Azure .NET SDK](http://azure.microsoft.com/downloads/)。
 * Azure PowerShell。 遵循 [How to install and configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装 Azure PowerShell。 使用 Azure PowerShell 创建 Azure Active Directory 应用程序。
 
-<a id="create-an-application-in-azure-active-directory" class="xliff"></a>
-
-### 在 Azure Active Directory 中创建应用程序
-创建一个 Azure Active Directory 应用程序，为该应用程序创建服务主体，然后将其分配到 **数据工厂参与者** 角色。
+### <a name="create-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中创建应用程序
+创建一个 Azure Active Directory 应用程序，为该应用程序创建服务主体，并将其分配到 **数据工厂参与者** 角色。
 
 1. 启动 **PowerShell**。
 2. 运行以下命令并输入用于登录 Azure 门户的用户名和密码。
@@ -79,7 +71,7 @@ ms.lasthandoff: 05/13/2017
     $azureAdApplication = New-AzureRmADApplication -DisplayName "ADFDotNetWalkthroughApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfdotnetwalkthroughapp.org/example" -Password "Pass@word1"
     ```
 
-    如果看到以下错误，请指定不同的 URL，然后再次运行该命令。
+    如果看到以下错误，请指定不同的 URL，并再次运行该命令。
     
     ```PowerShell
     Another object with the same value for property identifierUris already exists.
@@ -108,9 +100,7 @@ ms.lasthandoff: 05/13/2017
 * 应用程序 ID
 * 密码（在第一条命令中指定）
 
-<a id="walkthrough" class="xliff"></a>
-
-## 演练
+## <a name="walkthrough"></a>演练
 在本演练中，将使用包含复制活动的管道创建数据工厂。 复制活动将数据从 Azure blob 存储中的一个文件夹复制到同一 blob 存储中的另一个文件夹。 
 
 复制活动在 Azure 数据工厂中执行数据移动。 该活动由全球可用的服务提供支持，能以安全、可靠、可缩放的方式在各种数据存储区间复制数据。 有关复制活动的详细信息，请参阅 [Data Movement Activities](data-factory-data-movement-activities.md) （数据移动活动）。
@@ -118,12 +108,12 @@ ms.lasthandoff: 05/13/2017
 1. 使用 Visual Studio 2012/2013/2015 创建 C# .NET 控制台应用程序。
    1. 启动 **Visual Studio** 2012/2013/2015。
    2. 单击“文件”，指向“新建”并单击“项目”。
-   3. 展开“模板”，然后选择“Visual C#”。 本演练中使用的是 C#，但可以使用任何 .NET 语言。
+   3. 展开“模板”，并选择“Visual C#”。 本演练中使用的是 C#，但可以使用任何 .NET 语言。
    4. 从右侧项目类型列表中选择“控制台应用程序”。
    5. 在“名称”中输入 **DataFactoryAPITestApp** 。
    6. 在“位置”中选择“C:\ADFGetStarted”。
    7. 单击“确定”以创建该项目  。
-2. 单击“工具”，指向“NuGet 包管理器”，然后单击“包管理器控制台”。
+2. 单击“工具”，指向“NuGet 包管理器”，并单击“包管理器控制台”。
 3. 在“包管理器控制台”中执行以下步骤：
    1. 运行以下命令安装数据工厂包：`Install-Package Microsoft.Azure.Management.DataFactories`
    2. 运行以下命令安装 Azure Active Directory 包（因为要在代码中使用 Active Directory API）：`Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
@@ -161,7 +151,7 @@ ms.lasthandoff: 05/13/2017
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
     ```
-6. 将以下用于创建 **DataPipelineManagementClient** 类实例的代码添加到 **Main** 方法。 将使用此对象创建数据工厂、链接服务、输入和输出数据集以及管道。 此外，在运行时将使用此对象监视数据集切片。
+6. 将以下用于创建 **DataPipelineManagementClient** 类实例的代码添加到 **Main** 方法。 将使用此对象创建数据工厂、链接服务、输入和输出数据集以及管道。 此外，在运行时会使用此对象监视数据集切片。
 
     ```csharp
     // create data factory management client
@@ -183,7 +173,7 @@ ms.lasthandoff: 05/13/2017
     ```
 
    > [!IMPORTANT]
-   > 将 **resourceGroupName** 的值替换为 Azure 资源组的名称。 可使用 [New-AzureResourceGroup](/powershell/module/azure/new-azureresourcegroup?view=azuresmps-3.7.0) cmdlet 创建资源组。
+   > 将 **resourceGroupName** 的值替换为 Azure 资源组的名称。 可使用 [New-AzureResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) cmdlet 创建资源组。
    >
    > 将数据工厂的名称 (dataFactoryName) 更新为唯一名称。 数据工厂的名称必须全局唯一。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
 7. 将以下用于创建**数据工厂**的代码添加到 **Main** 方法。
@@ -227,7 +217,7 @@ ms.lasthandoff: 05/13/2017
     ```
 9. 将以下用于创建**输入和输出数据集**的代码添加到 **Main** 方法。
 
-    输入 blob 的 **FolderPath** 设置为 **adftutorial/**，其中 **adftutorial** 是 Blob 存储中的容器名称。 如果 Azure Blob 存储中不包含此容器，请创建名为 **adftutorial** 的容器，然后将文本文件上传到该容器。
+    输入 blob 的 **FolderPath** 设置为 **adftutorial/**，其中 **adftutorial** 是 Blob 存储中的容器名称。 如果 Azure Blob 存储中不包含此容器，请创建名为 **adftutorial** 的容器，并将文本文件上传到该容器。
 
     输出 blob 的 FolderPath 设置为 **adftutorial/apifactoryoutput/{Slice}**，在此位置基于 **SliceStart** 的值（每个切片的开始日期时间）动态评估**切片**。
 
@@ -452,24 +442,22 @@ ms.lasthandoff: 05/13/2017
     }
     ```
 
-15. 在“解决方案资源管理器”中展开项目 **DataFactoryAPITestApp**，右键单击“引用”，然后单击“添加引用”。 选择 `System.Configuration` 程序集的复选框，然后单击“确定”。
-15. 生成控制台应用程序。 在菜单中单击“生成”，然后单击“生成解决方案”。
-16. 确认 Azure Blob 存储中的 adftutorial 容器内至少有一个文件。 如果没有，请在记事本中创建包含以下内容的 Emp.txt 文件，然后将其上传到 adftutorial 容器。
+15. 在“解决方案资源管理器”中展开项目 **DataFactoryAPITestApp**，右键单击“引用”，并单击“添加引用”。 选择 `System.Configuration` 程序集的复选框，并单击“确定”。
+15. 生成控制台应用程序。 在菜单中单击“生成”，并单击“生成解决方案”。
+16. 确认 Azure Blob 存储中的 adftutorial 容器内至少有一个文件。 如果没有，请在记事本中创建包含以下内容的 Emp.txt 文件，并将其上传到 adftutorial 容器。
 
     ```
     John, Doe
     Jane, Doe
     ```
-17. 在菜单中单击“调试” -> “开始调试”运行示例。 看到“正在获取数据切片的运行详细信息”时，请等待几分钟，然后按 **ENTER**。
+17. 在菜单中单击“调试” -> “开始调试”运行示例。 看到“正在获取数据切片的运行详细信息”时，请等待几分钟，并按 **ENTER**。
 18. 使用 Azure 门户验证是否创建了包含以下项目的数据工厂 **APITutorialFactory** ：
     * 链接服务：**AzureStorageLinkedService**
     * 数据集：**DatasetBlobSource** 和 **DatasetBlobDestination**。
     * 管道： **PipelineBlobSample**
 19. 验证 **adftutorial** 容器中的 **apifactoryoutput** 文件夹内是否创建了一个输出文件。
 
-<a id="get-a-list-of-failed-data-slices" class="xliff"></a>
-
-## 获取失败的数据切片的列表 
+## <a name="get-a-list-of-failed-data-slices"></a>获取失败的数据切片的列表 
 
 ```csharp
 // Parse the resource path
@@ -508,9 +496,7 @@ do
 while (response != null);
 ```
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 请参阅以下示例，该示例使用 .NET SDK 创建将数据从 Azure blob 存储复制到 Azure SQL 数据库的管道： 
 
 - [创建用于将数据从 Blob 存储复制到 SQL 数据库的管道](data-factory-copy-activity-tutorial-using-dotnet-api.md)
