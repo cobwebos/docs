@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: efd01bb001f4ac05f933793184b5027157f143f6
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: b53b044242f339d00dcc947c213dacb5dffdcce6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -31,7 +30,7 @@ Azure 是一个完整的云平台，可以托管你现有的应用程序，简�
 
 通过在 Azure 中托管应用程序，你可以随着客户需求的增长，从小规模开始轻松扩展应用程序。 另外，Azure 还可以针对高可用性应用程序提供所需的可靠性，甚至包括在两个不同区域之间的故障转移。 通过 [Azure 门户](https://portal.azure.com)，可让你轻松管理所有的 Azure 服务。 同时，你还可以通过使用特定于服务的 API 和模板以编程方式管理你的服务。
 
-目标读者：本指南将面向应用程序开发人员介绍 Azure 平台。 针对在 Azure 中开始生成新的应用程序或将现有应用程序迁移到 Azure 所需的操作，提供相关指导和说明。
+**目标读者**：本指南将面向应用程序开发人员介绍 Azure 平台。 针对在 Azure 中开始生成新的应用程序或将现有应用程序迁移到 Azure 所需的操作，提供相关指导和说明。
 
 ## <a name="where-do-i-start"></a>从哪里开始？
 
@@ -52,9 +51,9 @@ Azure 提供了支持应用程序开发和托管需求的服务。 Azure 还提�
 ![Azure 应用程序托管选项](./media/azure-developer-guide/azure-developer-hosting-options.png)
 
 
-#### <a name="azure-app-service"></a>Azure App Service 
+#### <a name="azure-app-service"></a>Azure 应用服务 
 
-如果你希望以最快路径发布基于 Web 的项目，则可以考虑使用 Azure App Service。 通过应用服务，可以轻松扩展 Web 应用以支持移动客户端，并发布易于使用的 REST API。 此平台通过使用社交提供程序、基于流量的自动缩放、在生产中测试和基于容器的持续部署来提供身份验证。
+如果你希望以最快路径发布基于 Web 的项目，则可以考虑使用 Azure 应用服务。 通过应用服务，可以轻松扩展 Web 应用以支持移动客户端，并发布易于使用的 REST API。 此平台通过使用社交提供程序、基于流量的自动缩放、在生产中测试和基于容器的持续部署来提供身份验证。
 
 在应用服务中创建应用时，请选择以下类型之一：
 
@@ -74,7 +73,7 @@ Azure 提供了支持应用程序开发和托管需求的服务。 Azure 还提�
 
 >开始使用：通过应用服务，可以轻松创建和部署你的第一个 [Web 应用](../../app-service-web/web-sites-dotnet-get-started.md)、[移动应用](../../app-service-mobile/app-service-mobile-ios-get-started.md)，或 [API 应用](../../app-service-api/app-service-api-dotnet-get-started.md)。
 
->立即试用：通过应用服务，可以设置一个临时应用来试用该平台，而无需注册 Azure 帐户。 试用平台并[创建 Azure App Service 应用](https://tryappservice.azure.com/)。
+>立即试用：通过应用服务，可以设置一个临时应用来试用该平台，而无需注册 Azure 帐户。 试用平台并[创建 Azure 应用服务应用](https://tryappservice.azure.com/)。
 
 #### <a name="azure-virtual-machines"></a>Azure 虚拟机
 
@@ -149,7 +148,7 @@ Azure 提供了多种方式以便在应用程序中使用容器。
 
     >何时使用：当需要构建提供其他计划和管理工具的生产就绪、可缩放环境，或者当部署 Docker Swarm 群集时使用。
 
-    >开始使用：[部署容器服务群集](../../container-service/container-service-deployment.md)。
+    >开始使用：[部署容器服务群集](../../container-service/dcos-swarm/container-service-deployment.md)。
 
 -   Docker 计算机：允许使用 docker 计算机命令安装和管理虚拟主机上的 Docker 引擎。
 
@@ -175,7 +174,7 @@ Azure 提供了多种方式以便在应用程序中使用容器。
 
     >何时使用：当想要通过使用 Azure AD、社交标识提供程序或两者来启用应用服务应用中的身份验证时使用。
 
-    >开始使用：若要了解有关应用服务中身份验证的详细信息，请参阅 [Azure App Service 中的身份验证和授权](../../app-service/app-service-authentication-overview.md)。
+    >开始使用：若要了解有关应用服务中身份验证的详细信息，请参阅 [Azure 应用服务中的身份验证和授权](../../app-service/app-service-authentication-overview.md)。
 
 若要了解有关 Azure 中安全最佳实践的详细信息，请参阅 [Azure 安全最佳实践和模式](../../security/security-best-practices-and-patterns.md)。
 
@@ -197,7 +196,7 @@ Azure 提供了多种方式以便在应用程序中使用容器。
 
 >立即试用：[尝试几个 DevOps 集成](https://azure.microsoft.com/try/devops/)。
 
->开始使用：如需查看应用服务应用的 DevOps 选项，请参阅[对 Azure App Service 的持续部署](../../app-service-web/app-service-continuous-deployment.md)。
+>开始使用：如需查看应用服务应用的 DevOps 选项，请参阅[对 Azure 应用服务的持续部署](../../app-service-web/app-service-continuous-deployment.md)。
 
 
 ## <a name="azure-regions"></a>Azure 区域
@@ -249,17 +248,17 @@ Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大�
 
 [移动应用](../../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md)和 [Azure 媒体服务](../../media-services/media-services-dotnet-how-to-use.md)等服务均提供客户端 SDK，可让你从 Web 和移动客户端应用访问服务。
 
-### <a name="azure-resource-manager"></a>Azure Resource Manager 
+### <a name="azure-resource-manager"></a>Azure 资源管理器 
     
-在 Azure 上运行应用可能需要使用多个 Azure 服务，所有这些服务都遵循相同的生命周期，并且可以被视为一个逻辑单元。 例如，Web 应用可以使用 Web 应用、SQL 数据库、存储、Azure Redis 缓存，以及 Azure 内容交付网络服务。 [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) 能够使你以组的方式处理应用程序中的资源。 你可以通过单个协调的操作来部署、更新或删除所有资源。
+在 Azure 上运行应用可能需要使用多个 Azure 服务，所有这些服务都遵循相同的生命周期，并且可以被视为一个逻辑单元。 例如，Web 应用可以使用 Web 应用、SQL 数据库、存储、Azure Redis 缓存，以及 Azure 内容交付网络服务。 [Azure 资源管理器](../../azure-resource-manager/resource-group-overview.md)能够使你以组的方式处理应用程序中的资源。 你可以通过单个协调的操作来部署、更新或删除所有资源。
 
-除了逻辑分组和管理相关的资源外，Azure Resource Manager 还包括可让你自定义相关资源部署和配置的部署功能。 例如，通过使用 Resource Manager，你可以将包含多个虚拟机、负载均衡器和 Azure SQL 数据库的应用程序作为单一单元进行部署和配置。
+除了逻辑分组和管理相关的资源外，Azure 资源管理器还包括可让你自定义相关资源部署和配置的部署功能。 例如，通过使用资源管理器，你可以将包含多个虚拟机、负载均衡器和 Azure SQL 数据库的应用程序作为单一单元进行部署和配置。
 
-你可以通过使用 Azure Resource Manager 模板（以 JSON 格式化的文档）来开发这些部署。 使用这些模板，可让你通过使用声明性模板（而不是脚本）来定义应用程序的部署和管理。 模板可用于测试、过渡和生产等不同的环境。 例如，通过使用模板，可将一个按钮添加到 GitHub 存储库，然后只需单击一下即可将存储库中的代码部署到一组 Azure 服务中。
+你可以通过使用 Azure 资源管理器模板（以 JSON 格式化的文档）来开发这些部署。 使用这些模板，可让你通过使用声明性模板（而不是脚本）来定义应用程序的部署和管理。 模板可用于测试、过渡和生产等不同的环境。 例如，通过使用模板，可将一个按钮添加到 GitHub 存储库，然后只需单击一下即可将存储库中的代码部署到一组 Azure 服务中。
 
->何时使用：在希望对通过使用 REST API、Azure CLI 和 Azure PowerShell 以编程方式进行管理的应用执行基于模板的部署时，可以使用 Resource Manager 模板。
+>何时使用：在希望对通过使用 REST API、Azure CLI 和 Azure PowerShell 以编程方式进行管理的应用执行基于模板的部署时，可以使用资源管理器模板。
 
->开始使用：若要开始使用模板，请参阅[创作 Azure Resource Manager 模板](../../resource-group-authoring-templates.md)。
+>开始使用：若要开始使用模板，请参阅[创作 Azure 资源管理器模板](../../resource-group-authoring-templates.md)。
 
 ## <a name="understanding-accounts-subscriptions-and-billing"></a>了解帐户、订阅和计费
 
@@ -281,11 +280,11 @@ Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大�
 
 Azure 订阅有多个帐户管理员角色，你可以随时进行分配。
 
--   帐户管理员：此角色可以完全控制订阅并且是负责计费的帐户。
+-   **帐户管理员**：此角色可以完全控制订阅并且是负责计费的帐户。
 
--   服务管理员：此角色可以完全控制订阅中的所有服务。 默认情况下，这个帐户与帐户管理员所使用的帐户相同。
+-   **服务管理员**：此角色可以完全控制订阅中的所有服务。 默认情况下，这个帐户与帐户管理员所使用的帐户相同。
 
--   协同管理员：此角色具有与服务管理员一样的访问权限，但它不能更改订阅与 Azure 目录之间的关联关系。
+-   **协同管理员**：此角色具有与服务管理员一样的访问权限，但它不能更改订阅与 Azure 目录之间的关联关系。
 
 若要了解管理员角色的详细信息，请参阅[如何添加或更改 Azure 管理员角色](../../billing/billing-add-change-azure-subscription-administrator.md#add-an-admin-for-a-subscription)。
 
@@ -299,19 +298,19 @@ Azure 资源浏览器是一款非常出色的工具，可用于可视化已在�
 
 当你允许对 Azure 资源进行访问时，最佳做法是，始终为用户提供执行某个给定任务所需的最小特权。
 
--   基于角色的访问控制 (RBAC)：在 Azure 中，你可以在如下指定范围内授予对用户帐户（主体）的访问权限：订阅、资源组或单个资源。 通过 RBAC，你可以将一组资源部署到资源组，并为特定用户或组授予权限。 此外，它还可让你限制访问权限，以仅访问属于目标资源组的资源。 此外，你还可以授予对单个资源的访问权限，例如，虚拟机或虚拟网络。 若要授予访问权限，请将角色分配给用户、组或服务主体。 有很多预定义的角色，不过你也可以定义自己的自定义角色。
+-   **基于角色的访问控制 (RBAC)**：在 Azure 中，可以在如下指定范围内授予对用户帐户（主体）的访问权限：订阅、资源组或单个资源。 通过 RBAC，你可以将一组资源部署到资源组，并为特定用户或组授予权限。 此外，它还可让你限制访问权限，以仅访问属于目标资源组的资源。 此外，你还可以授予对单个资源的访问权限，例如，虚拟机或虚拟网络。 若要授予访问权限，请将角色分配给用户、组或服务主体。 有很多预定义的角色，不过你也可以定义自己的自定义角色。
 
     >何时使用：当你需要对用户和组进行精确的访问管理时。
 
     >开始使用：若要了解详细信息，请参阅 [Azure 门户中的访问管理入门](../../active-directory/role-based-access-control-what-is.md)。
 
--   服务主体对象：除了为用户主体和组提供访问权限，你还可以向服务主体授予相同的访问权限。
+-   **服务主体对象**：除了为用户主体和组提供访问权限外，还可以向服务主体授予相同的访问权限。
 
     > 何时使用：当你以编程方式管理 Azure 资源或授予应用程序访问权限时。 有关详细信息，请参阅[创建 Active Directory 请求和服务主体](../../resource-group-create-service-principal-portal.md)。
 
 #### <a name="tags"></a>标记
 
-通过 Azure Resource Manager，你可以将自定义标记分配给单个资源。 标记为键值对，在出于计费或监视目的而需要组织资源时，标记可能会十分有用。 标记提供了一种跨多个资源组跟踪的资源方法。 你可以将在门户、Azure Resource Manager 模板中，或以编程方式，通过使用 REST API、Azure CLI 或 PowerShell 来分配标记。 你可以对每个资源分配多个标记。 若要了解详细信息，请参阅[使用标记来组织 Azure 资源](../../resource-group-using-tags.md)。
+通过 Azure 资源管理器，你可以将自定义标记分配给单个资源。 标记为键值对，在出于计费或监视目的而需要组织资源时，标记可能会十分有用。 标记提供了一种跨多个资源组跟踪的资源方法。 你可以将在门户、Azure 资源管理器模板中，或以编程方式，通过使用 REST API、Azure CLI 或 PowerShell 来分配标记。 你可以对每个资源分配多个标记。 若要了解详细信息，请参阅[使用标记来组织 Azure 资源](../../resource-group-using-tags.md)。
 
 ### <a name="billing"></a>计费
 

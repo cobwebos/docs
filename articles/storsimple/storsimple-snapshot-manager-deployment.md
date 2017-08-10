@@ -119,7 +119,7 @@ StorSimple Snapshot Manager 可以安装在运行 Windows Server 2008 R2 SP1、W
    
     ![配置设备](./media/storsimple-snapshot-manager-deployment/HCS_SSM_config_device.png) 
 3. 在“设备”列表框中，选择 Microsoft Azure StorSimple 设备或虚拟设备的 IP 地址。 在“密码”文本框中，键入为 Azure 门户中的设备创建的 StorSimple Snapshot Manager 密码。 单击 **“确定”**。
-4. StorSimple Snapshot Manager 搜索你所标识的设备。 如果设备可用，则 StorSimple Snapshot Manager 会添加一个连接。 可以验证到设备的连接[](#to-verify-the-connection)以确认已成功添加连接。
+4. StorSimple Snapshot Manager 搜索你所标识的设备。 如果设备可用，则 StorSimple Snapshot Manager 会添加一个连接。 可以 [验证到设备的连接](#to-verify-the-connection) 以确认已成功添加连接。
    
     如果设备由于任何原因而不可用，则 StorSimple Snapshot Manager 会返回一条错误消息。 单击“确定”关闭错误消息，然后单击“取消”关闭“配置设备”对话框。
 5. 当它连接到某个设备后，如果卷组有关联的备份，则 StorSimple Snapshot Manager 会导入为该设备配置的各个卷组。 没有关联备份的卷组将不被导入。 此外，不会导入针对卷组创建的备份策略。 若要查看已导入的组，右键单击“**作用域**”窗格最上方的“**卷组**”节点，然后单击“**切换已导入的组**”。

@@ -89,7 +89,7 @@ ms.lasthandoff: 07/11/2017
    
     成功保存身份验证设置后，请尝试在浏览器中再次导航到应用。 默认设置将对整个应用实施身份验证。 如果尚未登录，将重定向到登录屏幕。 登录后，可以看到应用已受 HTTPS 的保护。 接下来，需要启用对目录数据的访问。 
 5. 导航到[经典门户](https://manage.windowsazure.com)。
-6. 从左侧菜单中，依次单击“Active Directory” > “默认目录” > “应用程序” > “&lt;*应用名称*>”****。
+6. 从左侧菜单中，依次单击 **Active Directory** > **默认目录** > **应用程序** > **&lt;*应用名称*>**。
    
     ![](./media/web-sites-dotnet-lob-application-azure-ad/8-find-aad-application.png)
    
@@ -128,7 +128,7 @@ ms.lasthandoff: 07/11/2017
 16. 单击顶部的“放入”即可提交你的更改。
     
     ![](./media/web-sites-dotnet-lob-application-azure-ad/14-edit-parameters.png)
-17. 现在，若要测试是否获得了用于访问 Azure Active Directory 图形 API 的授权令牌，只需在浏览器中导航到“https://&lt;*应用名称*>.azurewebsites.net/.auth/me”****。 如果一切都配置正确，应会在 JSON 响应中看到 `access_token` 属性。
+17. 现在，若要测试是否获得了用于访问 Azure Active Directory 图形 API 的授权令牌，只需在浏览器中导航到 **https://&lt;*应用名称*>.azurewebsites.net/.auth/me** 。 如果一切都配置正确，应会在 JSON 响应中看到 `access_token` 属性。
     
     `~/.auth/me` URL 路径由应用服务身份验证/授权进行管理，提供与经过身份验证的会话相关的所有信息。 有关详细信息，请参阅 [Azure 应用服务中的身份验证和授权](../app-service/app-service-authentication-overview.md)。
     

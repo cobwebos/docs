@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 0a0d91d622ed72ed22cfaaa0350b31ca653de483
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 33f62a33ea7a3fadb6e7b045de10df25f5edbe83
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C：自定义策略
@@ -27,7 +27,7 @@ ms.lasthandoff: 06/02/2017
 
 ## <a name="what-are-custom-policies"></a>什么是自定义策略？
 
-自定义策略是定义 Azure AD B2C 租户行为的配置文件。 **内置策略**是在 Azure AD B2C 门户中为最常见标识任务预定义的，而标识开发人员可以全面编辑自定义策略，以完成数量几乎不受限制的任务。 请继续阅读，确定自定义策略是否适合你以及你的标识方案。
+自定义策略是定义 Azure AD B2C 租户行为的配置文件。 **内置策略**是在 Azure AD B2C 门户中为最常见标识任务预定义的，而标识开发人员可以全面编辑自定义策略，以完成数量几乎不受限制的任务。 请继续阅读，确定自定义策略是否适合你以及标识方案。
 
 **并非所有人都可以编辑自定义策略。** 其学习曲线要求很高，入门时间较长，并且维护将来对自定义策略所做的更改也需要同等的专业知识。 在使用自定义策略之前，应该先根据方案仔细考虑内置策略。
 
@@ -36,12 +36,12 @@ ms.lasthandoff: 06/02/2017
 | | 内置策略 | 自定义策略 |
 |-|-------------------|-----------------|
 |目标用户 | 具有或不具有标识专业知识的所有应用开发人员 | 标识专业人员：系统集成人员、顾问和内部标识团队。 他们能够熟悉运作 OpenIDConnect 流，并了解标识提供者和基于声明的身份验证 |
-|配置方法 | 具有用户友好 UI 的 Azure 门户 | 直接编辑 XML 文件，然后上传到 Azure 门户 |
+|配置方法 | 具有用户友好 UI 的 Azure 门户 | 直接编辑 XML 文件，并上传到 Azure 门户 |
 |UI 自定义 | 完全 UI 自定义，包括 HTML、CSS 和 jscript 支持（需要自定义域）<br><br>使用自定义字符串实现多语言支持 | 相同 |
 | 属性自定义 | 标准和自定义属性 | 相同 |
 |令牌和会话管理 | 自定义令牌和多个会话选项 | 相同 |
 |标识提供者| **目前**：预定义的本地社交提供程序<br><br>**将来**：基于标准的 OIDC、SAML、OAuth | **目前**：基于标准的 OIDC、OAUTH、SAML<br><br>**将来**：WsFed |
-|标识任务（示例） | 使用本地帐户和许多社交帐户注册或登录<br><br>密码重置<br><br>配置文件编辑<br><br>多重身份验证方案<br><br>自定义令牌和会话<br><br>访问令牌流 | 使用自定义标识提供者或自定义范围完成与内置策略相同的任务<br><br>注册时在另一系统中预配用户<br><br>使用你自己的电子邮件服务提供程序发送欢迎电子邮件<br><br>使用 B2C 外部的用户存储<br><br>通过 API 使用受信任的系统验证用户提供的信息 |
+|标识任务（示例） | 使用本地帐户和许多社交帐户注册或登录<br><br>自助密码重置<br><br>配置文件编辑<br><br>多重身份验证方案<br><br>自定义令牌和会话<br><br>访问令牌流 | 使用自定义标识提供者或自定义范围完成与内置策略相同的任务<br><br>注册时在另一系统中预配用户<br><br>使用自己的电子邮件服务提供程序发送欢迎电子邮件<br><br>使用 B2C 外部的用户存储<br><br>通过 API 使用受信任的系统验证用户提供的信息 |
 
 ## <a name="policy-files"></a>策略文件
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 06/02/2017
 - **信赖方 (RP) 文件**：注重单个任务的文件，由应用程序或服务（又称信赖方）直接调用。  有关详细信息，请阅读有关策略文件定义的文章。  每个唯一任务需要自身的 RP，根据品牌要求，该数字可能是“应用程序总数 x 用例总数”。
 
 
-Azure AD B2C 中的内置策略遵循上面描述的 3 文件模式，但开发人员只能看到信赖方 (RP) 文件，同时，门户将在后台对 EXTenstions 文件进行更改。
+Azure AD B2C 中的内置策略遵循上面描述的 3 文件模式，但开发人员只能看到信赖方 (RP) 文件，同时，门户会在后台对 EXTenstions 文件进行更改。
 
 ## <a name="core-concepts-you-should-know-when-using-custom-policies"></a>使用自定义策略时应了解的核心概念
 
@@ -96,12 +96,12 @@ Azure AD B2C 按顺序与标识提供者、用户、其他系统和本地用户�
 | 策略文件的类型 | 示例文件名 | 建议用途 | 继承自 |
 |---------------------|--------------------|-----------------|---------------|
 | BASE |TrustFrameworkBase.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_BASE1.xml | 包括 Microsoft 配置的核心声明架构、声明转换、声明提供程序和用户旅程<br><br>对此文件进行少量的更改 | 无 |
-| 扩展 (EXT) | TrustFrameworkExtensions.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_EXT.xml | 在此处将更改合并到 BASE 文件<br><br>修改的声明提供程序<br><br>修改的用户旅程<br><br>你自己的自定义架构定义 | BASE 文件 |
-| 信赖方 (RP) | | | 扩展文件 |
+| 扩展 (EXT) | TrustFrameworkExtensions.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_EXT.xml | 在此处将更改合并到 BASE 文件<br><br>修改的声明提供程序<br><br>修改的用户旅程<br><br>自己的自定义架构定义 | BASE 文件 |
+| 信赖方 (RP) | B2C_1A_sign_up_sign_in.xml| 在此处更改令牌形状和会话设置| Extensions(EXT) 文件 |
 
 ### <a name="inheritance-model"></a>继承模型
 
 当应用程序调用 RP 策略文件时，B2C 中的标识体验框架将依次从 BASE 文件、EXTENSIONS 文件和 RP 策略文件中添加所有元素，以组合当前生效的策略。  RP 文件中具有相同类型和名称的元素将替代 EXTENSIONS 中的这些元素，EXTENSIONS 将替代 BASE。
 
-Azure AD B2C 中的**内置策略**遵循上面描述的 3 文件模式，但开发人员只能看到信赖方 (RP) 文件，同时，门户将在后台对 EXTenstions 文件进行更改。  整个 Azure AD B2C 共享受 Azure B2C 团队控制的、经常更新的 BASE 策略文件。
+Azure AD B2C 中的**内置策略**遵循上面描述的 3 文件模式，但开发人员只能看到信赖方 (RP) 文件，同时，门户会在后台对 EXTenstions 文件进行更改。  整个 Azure AD B2C 共享受 Azure B2C 团队控制的、经常更新的 BASE 策略文件。
 

@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure Active Directory cmdlet 配置组设置 | Microsoft Docs"
-description: "如何使用 Azure Active Directory cmdlet 管理组的设置。"
+description: "如何使用 Azure Active Directory cmdlet 管理组的设置"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 07/26/2017
 ms.author: rodejo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 81fdae033afd90b77d3725f8c39b8a6c6bbc3812
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 7dd4833000e8550b172e0451c48788b1e627a1fb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
 
 > [!IMPORTANT]
-> 此内容仅适用于统一组，也称为 Office 365 组。 
+> 此内容仅适用于 Office 365 组。 
 
 Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 一开始不会在目录中看到任何 Settings 对象。 这意味着目录配置了默认设置。 若要更改默认设置，必须使用设置模板创建新的设置对象。 设置模板由 Microsoft 定义。 有几个不同的设置模板。 若要配置目录的组设置，将使用名为“Group.Unified”的模板。 若要针对单个组配置组设置，可使用名为“Group.Unified.Guest”的模板。 此模板用于管理对组的来宾访问权限。 
 

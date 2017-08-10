@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: ramankum
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: c905bfe672d1027916d7f273ab5ac79ceec9a4d9
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: 94ae2fa4600c007725ae2615554144d12306e833
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>VM 的高性能高级存储和托管磁盘
-Azure 高级存储为运行输入/输出 (I/O) 密集型工作负荷的虚拟机 (VM) 提供高性能、低延迟的磁盘支持。 使用高级存储的 VM 磁盘在固态硬盘 (SSD) 上存储数据。 若要利用高级存储磁盘的速度和性能优势，可将现有的 VM 磁盘迁移到高级存储。
+Azure 高级存储为运行输入/输出 (I/O) 密集型工作负荷的虚拟机 (VM) 提供高性能、低延迟的磁盘支持。 使用高级存储的 VM 磁盘在固态硬盘 (SSD) 上存储数据。 要利用高级存储磁盘的速度和性能优势，可将现有的 VM 磁盘迁移到高级存储。
 
-在 Azure 中，可将多个高级存储磁盘附加到 VM。 使用多个磁盘可以让应用程序的存储空间上限为每个 VM 256 TB。 如果使用高级存储，每个 VM 上的应用程序可实现 80,000 次 I/O 操作/秒 (IOPS)，每个 VM 可实现高达 2,000 MB/秒的磁盘吞吐量。 执行读取操时延迟极低。
+在 Azure 中，可将多个高级存储磁盘附加到 VM。 使用多个磁盘可以让应用程序的存储上限为每个 VM 256 TB。 如果使用高级存储，每个 VM 上的应用程序可实现 80,000 次 I/O 操作/秒 (IOPS)，每个 VM 可实现高达 2,000 MB/秒的磁盘吞吐量。 执行读取操时延迟极低。
 
 使用高级存储时，Azure 提供的功能可真正将要求苛刻的企业应用程序（例如 Dynamics AX、Dynamics CRM、Exchange Server、SAP Business Suite 和 SharePoint 场）直接转移到云中。 可以在要求保持一贯高性能和低延迟的应用程序（例如 SQL Server、Oracle、MongoDB、MySQL 和 Redis）中运行性能密集型数据库工作负荷。
 
@@ -41,7 +40,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 * **托管磁盘**
 
-    选择 [Azure 托管磁盘](storage-managed-disks-overview.md)时，Azure 将管理 VM 磁盘使用的存储帐户。 你需要指定所需的磁盘类型（高级或标准）和磁盘大小。 Azure 将为你创建和管理该磁盘。 无需煞费苦心地将磁盘放置在多个存储帐户中，即可确保保持在存储帐户的可伸缩性限制内。 Azure 会为你处理这一切。
+    选择 [Azure 托管磁盘](storage-managed-disks-overview.md)时，Azure 将管理 VM 磁盘使用的存储帐户。 你需要指定所需的磁盘类型（高级或标准）和磁盘大小。 Azure 将为你创建和管理该磁盘。 为了确保符合存储帐户的伸缩性限制，无需煞费苦心，将磁盘放置在多个存储帐户中。 Azure 会处理这一切。
 
 我们建议选择托管磁盘以利用其许多功能。
 
@@ -59,7 +58,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 * **高级存储磁盘**
 
-    高级存储支持可附加到特定大小系列 VM 的 VM 磁盘。 高级存储支持 DS 系列、DSv2 系列、GS 系列和 Fs 系列 VM。 有七种磁盘大小可供选择：P4 (32GB)、P6 (64GB)、P10 (128GB)、P20 (512GB)、P30 (1024GB)、P40 (2048GB)、P50 (4095GB)。 不过，仅托管磁盘支持 P4 和 P6 磁盘大小。 每种磁盘大小都有自身的性能规范。 根据应用程序的要求，可将一个或多个磁盘附加到 VM。 [高级存储的可伸缩性和性能目标](#premium-storage-scalability-and-performance-targets)中更详细介绍了规范。
+    高级存储支持可附加到特定大小系列 VM 的 VM 磁盘。 高级存储支持 DS 系列、DSv2 系列、GS 系列和 LS 系列和 Fs 系列 VM。 有七种磁盘大小可供选择：P4 (32GB)、P6 (64GB)、P10 (128GB)、P20 (512GB)、P30 (1024GB)、P40 (2048GB)、P50 (4095GB)。 不过，仅托管磁盘支持 P4 和 P6 磁盘大小。 每种磁盘大小都有自身的性能规范。 根据应用程序的要求，可将一个或多个磁盘附加到 VM。 [高级存储的可伸缩性和性能目标](#scalability-and-performance-targets)中更详细介绍了规范。
 
 * **高级页 Blob**
 
@@ -72,7 +71,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
     若要开始使用高级存储，请为非托管磁盘创建一个高级存储帐户。 若要在 [Azure 门户](https://portal.azure.com)中创建高级存储帐户，请选择“高级”性能层。 选择“本地冗余存储(LRS)”复制选项。 也可以通过在以下位置之一将类型设置为“Premium_LRS”来创建高级存储帐户：
     * [存储 REST API](https://docs.microsoft.com/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference)（版本 2014-02-14 或更高）
     * [服务管理 REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx)（版本 2014-10-01 或更高；适用于 Azure 经典部署）
-    * [Azure 存储资源提供程序 REST API](https://docs.microsoft.com/rest/api/storagerp)（适用于 Azure Resource Manager 部署）
+    * [Azure 存储资源提供程序 REST API](https://docs.microsoft.com/rest/api/storagerp)（适用于 Azure 资源管理器部署）
     * [Azure PowerShell](../powershell-install-configure.md)（版本 0.8.10 或更高）
 
     若要了解高级存储帐户的限制，请参阅[高级存储的可伸缩性和性能目标](#premium-storage-scalability-and-performance-targets)。
@@ -146,7 +145,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 有关详细信息，请参阅 [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)。
 
-如果要对非托管磁盘使用高级存储帐户并且应用程序超过了单个存储帐户的可伸缩性目标，可以考虑迁移到托管磁盘。 如果你不想要迁移到托管磁盘，请将应用程序构建为使用多个存储帐户。 然后，在这些存储帐户中将数据分区。 例如，如果要将 51-TB 的磁盘附加到多个 VM，请将这些磁盘分散在两个存储帐户中。 35 TB 是单个高级存储帐户的限制。 请确保单个高级存储帐户永远不会具有超过 35 TB 的预配磁盘。
+如果要对非托管磁盘使用高级存储帐户并且应用程序超过了单个存储帐户的可伸缩性目标，可以考虑迁移到托管磁盘。 如果不想要迁移到托管磁盘，请将应用程序构建为使用多个存储帐户。 然后，将数据分布到这些存储帐户中。 例如，如果要将 51-TB 的磁盘附加到多个 VM，请将这些磁盘分散在两个存储帐户中。 35 TB 是单个高级存储帐户的限制。 请确保单个高级存储帐户永远不会具有超过 35 TB 的预配磁盘。
 
 ### <a name="premium-storage-disk-limits"></a>高级存储磁盘限制
 预配高级存储磁盘时，磁盘的大小将确定最大 IOPS 和吞吐量（带宽）。 Azure 提供了七种类型的高级存储磁盘：P4（仅适用于托管磁盘）、P6（仅适用于托管磁盘）、P10、P20、P30、P40 和 P50。 每种高级存储磁盘类型在 IOPS 和吞吐量方面存在具体的限制。 下表描述了磁盘类型的限制：
@@ -173,12 +172,12 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
     Azure 会将磁盘大小映射（向上舍入）到上一部分的表格中指定的最接近高级存储磁盘选项。 例如，大小为 100 GB 的磁盘将分类为 P10 选项。 该选项可执行的 IOPS 最高为 500，吞吐量最高为 100 MB/秒。 同样，大小为 400 GB 的磁盘将分类为 P20 选项。 该选项可执行的 IOPS 最高为 2,300，吞吐量最高为 150 MB/秒。
     
     > [!NOTE]
-    > 可以轻松增加现有磁盘的大小。 例如，你可能想要将 30-GB 大小的磁盘增加到 128 GB 甚至 1 TB。 或者，你可能想要将 P20 磁盘转换为 P30 磁盘，因为需要更高的容量或更高的 IOPS 和吞吐量。 
+    > 可以轻松增加现有磁盘的大小。 例如，可能想要将 30-GB 大小的磁盘增加到 128 GB 甚至 1 TB。 或者，可能想要将 P20 磁盘转换为 P30 磁盘，因为需要更高的容量或更高的 IOPS 和吞吐量。 
     > 
  
 * **I/O 大小**
 
-    一个 I/O 的大小为 256 KB。 如果要传输的数据小于 256 KB，该数据将被视为 1 个 I/O 单位。 更大的 I/O 大小被视为多个 256 KB 大小的 I/O。 例如，1,100 KB 的 I/O 被视为 5 个 I/O 单位。
+    一个 I/O 的大小为 256 KB。 如果要传输的数据小于 256 KB，该数据会被视为 1 个 I/O 单位。 更大的 I/O 大小被视为多个 256 KB 大小的 I/O。 例如，1,100 KB 的 I/O 被视为 5 个 I/O 单位。
 
 * **吞吐量**
 
@@ -192,7 +191,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 * **缓存命中数**
 
-    缓存命中数不受磁盘已分配 IOPS 或吞吐量的限制。 例如，在高级存储支持的 VM 上使用具有 **ReadOnly** 缓存设置的数据磁盘时，缓存提供的读取数不受磁盘的 IOPS 和吞吐量上限的约束。 如果磁盘的工作负荷以读取为主，你可以获得极高的吞吐量。 缓存根据 VM 大小在 VM 级别受到不同 IOPS 和吞吐量的限制。 DS 系列 VM 大约有 4,000 IOPS，缓存与本地 SSD I/O 的吞吐量为每个核心 33 MB/秒。 GS 系列 VM 限制为 5,000 IOPS，缓存与本地 SSD I/O 的吞吐量为每个核心 50 MB/秒。 
+    缓存命中数不受磁盘已分配 IOPS 或吞吐量的限制。 例如，在高级存储支持的 VM 上使用具有 **ReadOnly** 缓存设置的数据磁盘时，缓存提供的读取数不受磁盘的 IOPS 和吞吐量上限的约束。 如果磁盘的工作负荷以读取为主，可以获得极高的吞吐量。 缓存根据 VM 大小在 VM 级别受到不同 IOPS 和吞吐量的限制。 DS 系列 VM 大约有 4,000 IOPS，缓存与本地 SSD I/O 的吞吐量为每个核心 33 MB/秒。 GS 系列 VM 限制为 5,000 IOPS，缓存与本地 SSD I/O 的吞吐量为每个核心 50 MB/秒。 
 
 ## <a name="throttling"></a>限制
 如果应用程序的 IOPS 或吞吐量超过高级存储磁盘的分配限制，可能会发生限制。 此外，如果 VM 上所有磁盘的总磁盘流量超过 VM 可用的磁盘带宽限制，也可能会发生限制。 为了避免限制，我们建议限制磁盘的挂起 I/O 请求数。 请根据预配磁盘的可伸缩性和性能目标，以及 VM 可用的磁盘带宽使用限制。  
@@ -218,13 +217,13 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 ## <a name="snapshots-and-copy-blob"></a>快照和复制 Blob
 
-对于存储服务而言，VHD 文件是页 blob。 可以创建页 Blob 的快照，然后将其复制到其他位置，例如其他存储帐户。
+对于存储服务而言，VHD 文件是页 blob。 可以创建页 Blob 的快照，并将其复制到其他位置，例如其他存储帐户。
 
 ### <a name="unmanaged-disks"></a>非托管磁盘
 
-像使用标准存储的快照一样，为非托管高级磁盘创建[增量快照](storage-incremental-snapshots.md)。 高级存储仅支持使用本地冗余存储作为复制选项。 我们建议创建快照，然后将这些快照复制到异地冗余的标准存储帐户。 有关详细信息，请参阅 [Azure 存储冗余选项](storage-redundancy.md)。
+像使用标准存储的快照一样，为非托管高级磁盘创建[增量快照](storage-incremental-snapshots.md)。 高级存储仅支持使用本地冗余存储作为复制选项。 我们建议创建快照，并将这些快照复制到异地冗余的标准存储帐户。 有关详细信息，请参阅 [Azure 存储冗余选项](storage-redundancy.md)。
 
-如果将磁盘附加到 VM，该磁盘上将不允许某些 API 操作。 例如，将磁盘附加到 VM 后，无法在该 Blob 上执行[复制 Blob](/rest/api/storageservices/Copy-Blob) 操作。 应该先使用[快照 Blob](/rest/api/storageservices/Snapshot-Blob) REST API 创建该 Blob 的快照。 然后对该快照执行[复制 Blob](/rest/api/storageservices/Copy-Blob) 以复制附加的磁盘。 或者，可以分离磁盘，然后执行任何所需的操作。
+如果将磁盘附加到 VM，该磁盘上将不允许某些 API 操作。 例如，将磁盘附加到 VM 后，无法在该 Blob 上执行[复制 Blob](/rest/api/storageservices/Copy-Blob) 操作。 应该先使用[快照 Blob](/rest/api/storageservices/Snapshot-Blob) REST API 创建该 Blob 的快照。 然后，对该快照执行[复制 Blob](/rest/api/storageservices/Copy-Blob) 以复制附加的磁盘。 或者，可以分离磁盘，并执行任何所需的操作。
 
 以下限制适用于高级存储 Blob 快照：
 
@@ -234,7 +233,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 | 快照的存储帐户容量<br>（仅包括快照中的数据。 不包括基 Blob 中的数据。） | 10 TB |
 | 连续快照的最小间隔时间 | 10 分钟 |
 
-若要维护快照的异地冗余副本，可以使用 AzCopy 或“复制 Blob”将高级存储帐户中的快照复制到异地冗余的标准存储帐户。 有关详细信息，请参阅[使用 AzCopy 命令行实用工具传输数据](storage-use-azcopy.md)和[复制 Blob](/rest/api/storageservices/Copy-Blob)。
+要维护快照的异地冗余副本，可以使用 AzCopy 或“复制 Blob”将高级存储帐户中的快照复制到异地冗余的标准存储帐户。 有关详细信息，请参阅[使用 AzCopy 命令行实用工具传输数据](storage-use-azcopy.md)和[复制 Blob](/rest/api/storageservices/Copy-Blob)。
 
 有关对高级存储帐户中的页 Blob 执行 REST 操作的详细信息，请参阅[对 Azure 高级存储执行 Blob 服务操作](http://go.microsoft.com/fwlink/?LinkId=521969)。
 
@@ -242,7 +241,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 托管磁盘的快照是托管磁盘的只读副本。 该快照存储为标准托管磁盘。 目前，托管磁盘不支持[增量快照](storage-incremental-snapshots.md)。 若要了解如何创建托管磁盘的快照，请参阅[在 Windows 中使用托管快照创建存储为 Azure 托管磁盘的 VHD 的副本](../virtual-machines/virtual-machines-windows-snapshot-copy-managed-disk.md)或[在 Linux 中使用托管快照创建存储为 Azure 托管磁盘的 VHD 的副本](../virtual-machines/linux/snapshot-copy-managed-disk.md)。
 
-如果将托管磁盘附加到 VM，该磁盘上将不允许某些 API 操作。 例如，磁盘附加到 VM 时，无法通过生成共享访问签名 (SAS) 来执行复制操作。 请先创建磁盘快照，然后对该快照执行复制操作。 或者，可以分离磁盘，然后生成 SAS 来执行复制操作。
+如果将托管磁盘附加到 VM，该磁盘上将不允许某些 API 操作。 例如，磁盘附加到 VM 时，无法通过生成共享访问签名 (SAS) 来执行复制操作。 请先创建磁盘快照，然后对该快照执行复制操作。 或者，可以分离磁盘，并生成 SAS 来执行复制操作。
 
 
 ## <a name="premium-storage-for-linux-vms"></a>Linux VM 的高级存储

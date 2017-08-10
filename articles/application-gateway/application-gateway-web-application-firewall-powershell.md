@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: c23e7404f9eee6f1246cafc72c6733546cc82934
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 8a2281cea551092be4b5c628c1e541b04021523d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="configure-web-application-firewall-on-a-new-or-existing-application-gateway"></a>在新的或现有的应用程序网关上配置 Web 应用程序防火墙
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-web-application-firewall-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-web-application-firewall-powershell.md)
+> * [Azure 资源管理器 PowerShell](application-gateway-web-application-firewall-powershell.md)
 
 了解如何创建启用了 Web 应用程序防火墙的应用程序网关或如何将 Web 应用程序防火墙添加到现有的应用程序网关。
 
@@ -50,7 +49,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
 
 ## <a name="add-web-application-firewall-to-an-existing-application-gateway"></a>将 Web 应用程序防火墙添加到现有的应用程序网关
 
-确保使用最新版本的 Azure PowerShell。 [将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)中提供了详细信息。
+确保使用最新版本的 Azure PowerShell。 [将 Windows PowerShell 与资源管理器配合使用](../powershell-azure-resource-manager.md)中提供了详细信息。
 
 1. 登录 Azure 帐户。
 
@@ -94,11 +93,11 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
 
 ## <a name="create-an-application-gateway-with-web-application-firewall"></a>创建具有 Web 应用程序防火墙的应用程序网关
 
-以下步骤引导你从头到尾完成创建具有 Web 应用程序防火墙的应用程序网关的整个过程。
+以下步骤引导从头到尾完成创建具有 Web 应用程序防火墙的应用程序网关的整个过程。
 
-确保使用最新版本的 Azure PowerShell。 [将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)中提供了详细信息。
+确保使用最新版本的 Azure PowerShell。 [将 Windows PowerShell 与资源管理器配合使用](../powershell-azure-resource-manager.md)中提供了详细信息。
 
-1. 通过运行 `Login-AzureRmAccount` 登录到 Azure，系统将提示用户使用凭据进行身份验证。
+1. 通过运行 `Login-AzureRmAccount` 登录到 Azure，系统会提示用户使用凭据进行身份验证。
 
 1. 通过运行 `Get-AzureRmSubscription` 检查该帐户的订阅
 
@@ -121,7 +120,7 @@ Azure 资源管理器要求所有资源组指定一个位置。 此位置将用�
 在上述示例中，我们创建了名为“appgw-RG”的资源组，位置为“美国西部”。
 
 > [!NOTE]
-> 如果你需要为应用程序网关配置自定义探测，请参阅 [Create an application gateway with custom probes by using PowerShell](application-gateway-create-probe-ps.md)（使用 PowerShell 创建带自定义探测的应用程序网关）。 有关详细信息，请查看 [custom probes and health monitoring](application-gateway-probe-overview.md) （自定义探测和运行状况监视）。
+> 如果需要为应用程序网关配置自定义探测，请参阅 [Create an application gateway with custom probes by using PowerShell](application-gateway-create-probe-ps.md)（使用 PowerShell 创建带自定义探测的应用程序网关）。 有关详细信息，请查看 [custom probes and health monitoring](application-gateway-probe-overview.md) （自定义探测和运行状况监视）。
 
 ### <a name="configure-virtual-network"></a>配置虚拟网络
 
@@ -192,7 +191,7 @@ $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-
 
 ## <a name="get-application-gateway-dns-name"></a>获取应用程序网关 DNS 名称
 
-创建网关后，下一步是配置前端以进行通信。 使用公共 IP 时，应用程序网关需要动态分配的 DNS 名称，这会造成不方便。 若要确保最终用户能够访问应用程序网关，可以使用 CNAME 记录指向应用程序网关的公共终结点。 [在 Azure 中配置自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。 为此，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 应使用应用程序网关的 DNS 名称来创建 CNAME 记录，使两个 Web 应用程序都指向此 DNS 名称。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
+创建网关后，下一步是配置前端以进行通信。 使用公共 IP 时，应用程序网关需要动态分配的 DNS 名称，这会造成不方便。 若要确保最终用户能够访问应用程序网关，可以使用 CNAME 记录指向应用程序网关的公共终结点。 为此，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 这可通过 Azure DNS 或其他 DNS 提供程序完成，方法是创建指向[公共 IP 地址](../dns/dns-custom-domain.md#public-ip-address)的 CNAME 记录。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01

@@ -1,6 +1,6 @@
 ---
 title: "在 Azure Active Directory 中分配管理员角色 | Microsoft Docs"
-description: "介绍 Azure Active Directory 提供的管理员角色，以及如何分配这些角色。"
+description: "管理员角色可用于创建或编辑用户、分配管理角色、重置用户密码、管理用户许可证，或者管理域。 分配为管理员角色的用户在组织已订阅的所有云服务中具有相同的权限。"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,24 +12,30 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2017
+ms.date: 07/25/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 1d3c9023ff4d3a722363d38d3c927fb7f4304448
+ms.reviewer: Vince.Smith
+ms.custom: oldportal;it-pro;
+robots: NOINDEX
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 042e2f4117a35e80694a1643dd95fa54d508f1f7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/13/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中分配管理员角色
 > [!div class="op_single_selector"]
-> * [Azure 门户](active-directory-assign-admin-roles-azure-portal.md)
+> * [Azure 门户]()
 > * [Azure 经典门户](active-directory-assign-admin-roles.md)
 >
 >
 
-使用 Azure Active Directory (Azure AD) 时，可以指定不同的管理员来执行不同的功能。 这些管理员可以按角色访问 Azure 门户或 Azure 经典门户中的各种功能：创建或编辑用户、将管理角色分配给他人、重置用户密码、管理用户许可证以及管理域等。 分配为管理员角色的用户在你的组织所订阅的所有云服务中拥有相同的权限，不管该角色是通过 Office 365 门户、Azure 经典门户还是用于 Windows PowerShell 的 Azure AD 模块分配的。
+使用 Azure Active Directory (Azure AD) 指定不同的管理员来执行不同的功能。 这些管理员可以按角色访问 Azure 门户或 Azure 经典门户中的所选功能：创建或编辑用户、将管理角色分配给他人、重置用户密码、管理用户许可证以及管理域等。 分配为管理员角色的用户在组织已订阅的所有云服务中具有相同的权限，不管该角色是通过 Office 365 门户、Azure 经典门户还是用于 Microsoft PowerShell 的 Azure AD 模块分配的。
+
+> [!IMPORTANT]
+> Microsoft 建议使用 Azure 门户而不是本文中引用的 Azure 经典门户通过 [Azure AD 管理中心](https://aad.portal.azure.com)管理 Azure AD。 有关如何在 Azure AD 管理中心分配管理员角色的信息，请参阅[在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md)。
+
 
 提供以下管理员角色：
 
@@ -79,7 +85,7 @@ ms.lasthandoff: 06/13/2017
 
 * **特权角色管理员**：具有此角色的用户可以管理角色分配以及 Azure AD Privileged Identity Management 内的 Azure Active Directory。 此外，此角色允许 Privileged Identity Management 的所有方面。
 
-* **安全管理员**：与此角色的用户具有的所有安全读取器角色，以及能够管理与安全相关的服务配置的只读权限：Azure Active Directory Identity Protection、Privileged Identity Management 和 Office 365 安全与合规中心。 [Office 365 安全与合规中心](https://support.office.com/en-us/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)提供了有关 Office 365 权限的详细信息。
+* **安全管理员**：具有此角色的用户具有“安全读取者”角色的所有只读权限，以及能够管理与安全相关的服务配置的能力：Azure Active Directory Identity Protection、Azure 信息保护、Privileged Identity Management 和 Office 365 安全与合规中心。 [Office 365 安全与合规中心](https://support.office.com/en-us/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)提供了有关 Office 365 权限的详细信息。
 
 * **安全读取者**：具有此角色的用户具有全局只读访问权限，包括 Azure Active Directory、Identity Protection、Privileged Identity Management，以及能够读取 Azure Active Directory 登录报告和审核日志中的所有信息。 角色还授予 Office 365 安全与合规中心的只读权限。 [Office 365 安全与合规中心](https://support.office.com/en-us/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)提供了有关 Office 365 权限的详细信息。
 

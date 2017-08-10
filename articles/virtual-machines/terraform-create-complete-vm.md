@@ -16,25 +16,25 @@ ms.workload: infrastructure
 ms.date: 06/14/2017
 ms.author: echuvyrov
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 3787151651767e594dae21f3cfbf79023fc6db40
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 9660a95b440c2e4311829979e270d9f10099f624
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 
 # <a name="create-basic-infrastructure-in-azure-by-using-terraform"></a>使用 Terraform 在 Azure 中创建基本基础结构
 本文介绍在 Azure 中预配虚拟机以及底层基础结构所要执行的步骤。 其中介绍了如何编写 Terraform 脚本，以及在云基础结构中实施更改之前如何可视化更改。 此外，还介绍了如何使用 Terraform 在 Azure 中创建基础结构。
 
-若要开始，请在所选的文本编辑器（Visual Studio Code、Sublime、Vim 等）中创建名为 \_terraform_azure101.tf_ 的文件。 文件的确切名称并不重要，因为 terraform 接受使用文件夹名称作为参数：将执行文件夹中的所有脚本。 将以下代码粘贴到新文件中：
+若要开始，请在所选的文本编辑器（Visual Studio Code/Sublime/Vim/ 等）中创建名为 \terraform_azure101.tf 的文件。 文件的确切名称并不重要，因为 terraform 接受使用文件夹名称作为参数：将执行文件夹中的所有脚本。 将以下代码粘贴到新文件中：
 
 ~~~~
 # Configure the Microsoft Azure Provider
 # NOTE: if you defined these values as environment variables, you do not have to include this block
 provider "azurerm" {
   subscription_id = "your_subscription_id_from_script_execution"
-  client_id       = "your_client_id_from_script_execution"
-  client_secret   = "your_client_secret_from_script_execution"
+  client_id       = "your_appId_from_script_execution"
+  client_secret   = "your_password_from_script_execution"
   tenant_id       = "your_tenant_id_from_script_execution"
 }
 
@@ -44,12 +44,16 @@ resource "azurerm_resource_group" "helloterraform" {
     location = "West US"
 }
 ~~~~
-在脚本的 `provider` 节中，告知 Terraform 要使用某个 Azure 提供程序来预配脚本中的资源。 若要获取 subscription_id、client_id、client_secret 和 tenant_id 的值，请参阅[安装和配置 Terraform](terraform-install-configure.md) 指南。 如果为此块中的值创建了环境变量，则不需要包含这些值。 
+在脚本的 `provider` 节中，告知 Terraform 要使用某个 Azure 提供程序来预配脚本中的资源。 若要获取 subscription_id、appId、password 和 tenant_id 的值，请参阅[安装和配置 Terraform](terraform-install-configure.md) 指南。 如果为此块中的值创建了环境变量，则不需要包含这些值。 
 
 `azurerm_resource_group` 资源指示 Terraform 创建新资源组。 本文稍后会列出 Terraform 中可用的其他资源。
 
 ## <a name="execute-the-script"></a>执行脚本
 保存脚本后，请退出并转到控制台/命令行，键入以下命令：
+```
+terraform init
+```
+初始化用于 Azure 的 Terraform 提供程序。 然后键入以下命令：
 ```
 terraform plan terraformscripts
 ```
@@ -205,7 +209,9 @@ terraform apply terraformscripts
 ```
 一段时间后，Azure 门户上的 `terraformtest` 资源组中应会显示资源，其中包括一个虚拟机。
 
-## <a name="complete-the-terraform-script"></a>完成 Terraform 脚本
+## <a name="complete-terraform-script"></a>完成 Terraform 脚本
+
+为方便起见，下面提供了预配本文中讨论的所有基础结构的完整 Terraform 脚本。
 
 ```
 variable "resourcesname" {
@@ -270,9 +276,14 @@ resource "azurerm_network_interface" "helloterraformnic" {
     }
 }
 
+# create a random id
+resource "random_id" "randomId" {
+  byte_length = 4
+}
+
 # create storage account
 resource "azurerm_storage_account" "helloterraformstorage" {
-    name = "helloterraformstorage"
+    name                = "tfstorage${random_id.randomId.hex}"
     resource_group_name = "${azurerm_resource_group.helloterraform.name}"
     location = "westus"
     account_type = "Standard_LRS"

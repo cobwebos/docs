@@ -23,6 +23,8 @@
   items:
     - name: 与协调器的关系
       href: container-instances-orchestrator-relationship.md
+    - name: 容器组
+      href: container-instances-container-groups.md
 - name: 操作指南
   items:
     - name: 部署多容器组

@@ -15,15 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: rnagpal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 196be1e8185a08394944b0f334fcf21f237464dd
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: e7b910ae94b178b5370d4938698e8bcce10775ea
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
-# <a name="documentdb-net-examples"></a>DocumentDB .NET 示例
+# <a name="azure-cosmos-db-net-examples-for-the-documentdb-api"></a>Azure Cosmos DB：DocumentDB API 的 .NET 示例
 > [!div class="op_single_selector"]
 > * [.NET 示例](documentdb-dotnet-samples.md)
 > * [Node.js 示例](documentdb-nodejs-samples.md)
@@ -40,12 +39,12 @@ ms.lasthandoff: 05/31/2017
 **先决条件**
 
 1. 必须要有 Azure 帐户才能使用这些示例：
-   * 可以 [免费建立一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)：获取可用来试用付费版 Azure 服务的信用额度，甚至在用完信用额度后，你仍可以保留帐户和使用免费的 Azure 服务（如网站）。 你的信用卡将永远不会付费，除非你显式更改设置并要求付费。
+   * 可以 [免费建立一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)：获取可用来试用付费版 Azure 服务的信用额度，甚至在用完信用额度后，仍可以保留帐户和使用免费的 Azure 服务（如网站）。 信用卡将永远不会付费，除非显式更改设置并要求付费。
      * 可以[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)：Visual Studio 订阅每月为用户提供可用来试用付费版 Azure 服务的信用额度。
-2. 你也需要 [Microsoft.Azure.DocumentDB NuGet 程序包](http://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)。 
+2. 也需要 [Microsoft.Azure.DocumentDB NuGet 程序包](http://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)。 
 
 > [!NOTE]
-> 每个示例都是独立的，自行对自身进行设置并在完成后自行进行清理。 同样地，这些示例对 CreateDocumentCollectionAsync() 发出多个调用。 每当执行此操作时，即会根据所创建的集合的性能层，对你的订阅收取使用 1 小时的费用。 
+> 每个示例都是独立的，自行对自身进行设置并在完成后自行进行清理。 同样地，这些示例对 CreateDocumentCollectionAsync() 发出多个调用。 每当执行此操作时，即会根据所创建的集合的性能层，对订阅收取使用 1 小时的费用。 
 > 
 > 
 
@@ -101,7 +100,7 @@ IndexManagement 项目示例的 [RunIndexDemo](https://github.com/Azure/azure-do
 | [对字符串使用范围索引](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L342-L405) |[IndexingPolicy.IncludedPaths](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.includedpaths.aspx)<br>[RangeIndex](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.rangeindex.aspx) |
 | [执行索引转换](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L407-L464) |[ReplaceDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replacedocumentcollectionasync.aspx) |
 
-有关索引的详细信息，请参阅 [DocumentDB 索引策略](indexing-policies.md)。
+有关索引的详细信息，请参阅 [Azure Cosmos DB 索引策略](indexing-policies.md)。
 
 ## <a name="geospatial-examples"></a>地理空间示例
 地理空间示例文件 [azure-documentdb-dotnet/samples/code-samples/Geospatial/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs) 演示如何执行以下任务。  
@@ -137,7 +136,7 @@ IndexManagement 项目示例的 [RunIndexDemo](https://github.com/Azure/azure-do
 | [并行查询已分区集合](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs#L664-L734) |[DocumentQueryable.CreateDocumentQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createdocumentquery.aspx) |
 | [使用 Order by 针对已分区集合进行查询](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs#L737-L810) |[DocumentQueryable.CreateDocumentQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createdocumentquery.aspx) |
 
-有关编写查询的详细信息，请参阅 [DocumentDB 内的 SQL 查询](documentdb-sql-query.md)。
+有关编写查询的详细信息，请参阅 [Azure Cosmos DB 中的 SQL 查询](documentdb-sql-query.md)。
 
 ## <a name="server-side-programming-examples"></a>服务器端编程示例
 服务器端编程文件 [azure-documentdb-dotnet/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) 演示如何执行以下任务。

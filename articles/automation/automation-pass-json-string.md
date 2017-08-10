@@ -1,6 +1,6 @@
 ---
 title: "将 JSON 对象传递到 Azure 自动化 Runbook | Microsoft Docs"
-description: "对 Azure 自动化所需状态配置 (DSC) 及其术语和已知问题的概述"
+description: "如何将参数作为 JSON 对象传递给 runbook"
 services: automation
 documentationcenter: dev-center-name
 author: eslesar
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 06/15/2017
 ms.author: eslesar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: c8f1423e3764e476068681ed725db831543690f5
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: eac0e95a46731b9d396ea0590e629d61ca6a7d70
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -33,7 +33,7 @@ PowerShell Runbook 会启动一个 Azure VM，从传入的 JSON 获取 VM 的参
 ## <a name="prerequisites"></a>先决条件
 若要完成本教程，需要以下各项：
 
-* Azure 订阅。 如果你还没有帐户，则可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或<a href="/pricing/free-account/" target="_blank">[注册免费帐户](https://azure.microsoft.com/free/)。
+* Azure 订阅。 如果还没有帐户，则可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或<a href="/pricing/free-account/" target="_blank">[注册免费帐户](https://azure.microsoft.com/free/)。
 * [自动化帐户](automation-sec-configure-azure-runas-account.md) ，用来保存 Runbook 以及向 Azure 资源进行身份验证。  此帐户必须有权启动和停止虚拟机。
 * Azure 虚拟机。 我们需停止和启动该虚拟机，因此其不应为生产用 VM。
 * 在本地计算机上安装的 Azure Powershell。 若要详细了解如何获得 Azure PowerShell，请参阅 [Install and configure Azure Powershell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.1.0)（安装和配置 Azure PowerShell）。
@@ -84,9 +84,9 @@ Start-AzureRmVM -Name $json.VMName -ResourceGroupName $json.ResourceGroup
 运行以下 PowerShell 命令：
 
 1. 登录到 Azure：
-    ```powershell
-    Login-AzureRmAccount
-    ```
+   ```powershell
+   Login-AzureRmAccount
+   ```
     系统会提示输入 Azure 凭据。
 1. 获取 JSON 文件的内容并将其转换为字符串：
     ```powershell
@@ -94,23 +94,23 @@ Start-AzureRmVM -Name $json.VMName -ResourceGroupName $json.ResourceGroup
     ```
     `JsonPath` 是保存 JSON 文件的位置路径。
 1. 将 `$json` 的字符串内容转换为 PowerShell 对象：
-    ```powershell
-    $JsonParams = @{"json"=$json}
-    ```
+   ```powershell
+   $JsonParams = @{"json"=$json}
+   ```
 1. 为 `Start-AzureRmAutomstionRunbook` 的参数创建哈希表：
-    ```powershell
-    $RBParams = @{
+   ```powershell
+   $RBParams = @{
         AutomationAccountName = 'AATest'
         ResourceGroupName = 'RGTest'
         Name = 'Test-Json'
         Parameters = $JsonParams
-    }
-    ```
-    请注意，你正在将 `Parameters` 的值设置为包含 JSON 文件中的值的 PowerShell 对象。 
+   }
+   ```
+   请注意，你正在将 `Parameters` 的值设置为包含 JSON 文件中的值的 PowerShell 对象。 
 1. 启动 Runbook
-    ```powershell
-    $job = Start-AzureRmAutomationRunbook @RBParams
-    ```
+   ```powershell
+   $job = Start-AzureRmAutomationRunbook @RBParams
+   ```
 
 Runbook 将使用 JSON 文件中的值来启动 VM。
 

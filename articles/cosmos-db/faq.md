@@ -13,14 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2017
+ms.date: 07/31/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: f2c0559057e677c824a2ecd971488b35bc2cc8f8
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 9d14022f46c15db531bb3430f302eb49e1335083
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB 常见问题解答
@@ -46,6 +45,12 @@ DocumentDB API 是 Azure Cosmos DB 所支持的其中一个 API 和数据模型�
 
 可以为每个 Azure Cosmos DB 容器保留以每秒 RU 表示的预配吞吐量。 对于任何规模的应用程序，都可以将单个请求设为基准以测量其 RU 值，并预配容器以处理所有请求的请求单位总和。 也可以根据应用程序的发展需求，相应地增加或减少容器的吞吐量。 如需请求单位的详细信息以及帮助确定容器需求，请参阅[估计吞吐量需求](request-units.md#estimating-throughput-needs)并尝试使用[吞吐量计算器](https://www.documentdb.com/capacityplanner)。 此处的*容器*一词是指 DocumentDB API 的集合、图形 API 的图、MongoDB API 的集合以及表 API 的表。 
 
+### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Azure Cosmos DB 如何支持各种数据模型（例如键/值、纵栏表、文档和图形）？
+
+键/值（表）、纵栏表、文档和图形数据模型都是原本就支持的，因为 Azure Cosmos DB 是基于 ARS（原子、记录和序列）设计构建的。 原子、记录和序列可以轻松映射和投影到各种数据模型。 现在提供了适用于一部分模型（DocumentDB、MongoDB、表和 Graph API）的 API，将来会提供特定于其他数据模型的其他 API。
+
+Azure Cosmos DB 有一个不受架构影响的索引编制引擎，能够自动为它引入的所有数据编制索引，不会要求开发者提供任何架构或辅助索引。 该引擎依赖于一组逻辑索引布局（倒置、纵栏表、树形），这些布局将存储布局从索引和查询处理子系统中分离出来。 Cosmos DB 还能够以可扩展方式支持一组连网协议和 API 并将它们高效地转换为核心数据模型 (1) 和逻辑索引布局 (2)，这使得它具有原本就支持多个数据模型的独特功能。
+
 ### <a name="is-azure-cosmos-db-hipaa-compliant"></a>Azure Cosmos DB 是否符合 HIPAA？
 是，Azure Cosmos DB 符合 HIPAA。 HIPAA 针对可识别个人身份的健康信息的使用、泄露与保护制定了要求。 有关详细信息，请参阅 [Microsoft Trust Center](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA)（Microsoft 信任中心）。
 
@@ -59,7 +64,7 @@ DocumentDB API 是 Azure Cosmos DB 所支持的其中一个 API 和数据模型�
 有关详细信息，请参阅 [Azure Cosmos DB 定价详细信息](https://azure.microsoft.com/pricing/details/cosmos-db/)页面。 Azure Cosmos DB 使用费取决于预配的容器数目、容器的联机小时数，以及每个容器的预配吞吐量。 此处的*容器*一词是指 DocumentDB API 的集合、图形 API 的图、MongoDB API 的集合以及表 API 的表。 
 
 ### <a name="is-a-free-account-available"></a>有免费的帐户吗？
-如果不熟悉 Azure，可以注册 [Azure 免费帐户](https://azure.microsoft.com/free/)，这样可以得到 30 天试用期和 200 美元，让你试用所有 Azure 服务。 或者，如果有 Visual Studio 订阅，则有资格[免费获取每月 150 美元的 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)，可用于任何 Azure 服务。 
+如果不熟悉 Azure，可以注册 [Azure 免费帐户](https://azure.microsoft.com/free/)，这样可以得到 30 天试用期和信用额度，让你试用所有 Azure 服务。 如果你有 Visual Studio 订阅，则还有资格[免费获取 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)，可用于任何 Azure 服务。 
 
 也可以使用 [Azure Cosmos DB 模拟器](local-emulator.md)在本地免费开发和测试应用程序，而无需创建 Azure 订阅。 如果对应用程序在 Azure Cosmos DB 模拟器中的工作情况感到满意，则可以切换到在云中使用 Azure Cosmos DB 帐户。
 
@@ -101,13 +106,13 @@ GitHub 上提供了 DocumentDB API [.NET](documentdb-dotnet-samples.md)、[Java]
 ### <a name="what-is-a-collection"></a>什么是集合？
 集合是文档和其关联的 JavaScript 应用程序逻辑的组。 集合是一个计费实体，其[成本](performance-levels.md)由吞吐量和已用存储确定。 集合可以跨一个或多个分区或服务器，并且能缩放以处理几乎无限制增长的存储或吞吐量。
 
-集合也是 Azure Cosmos DB 的计费实体。 每个集合根据预配的吞吐量和已用的存储空间按小时计费。 有关详细信息，请参阅 [DocumentDB API 定价](https://azure.microsoft.com/pricing/details/cosmos-db/)。 
+集合也是 Azure Cosmos DB 的计费实体。 每个集合根据预配的吞吐量和已用的存储空间按小时计费。 有关详细信息，请参阅 [Azure Cosmos DB 定价](https://azure.microsoft.com/pricing/details/cosmos-db/)。 
 
 ### <a name="how-do-i-create-a-database"></a>我如何创建数据库？
 可以按照[添加集合](create-documentdb-dotnet.md#create-collection)中所述使用 [Azure 门户](https://portal.azure.com)，使用某个 [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) 或使用 [REST API](/rest/api/documentdb/) 来创建数据库。 
 
 ### <a name="how-do-i-set-up-users-and-permissions"></a>我如何设置用户和权限？
-可以使用某个 [DocumentDB API SDK](documentdb-sdk-dotnet.md) 或使用 [REST API](/rest/api/documentdb/) 来创建用户和权限。  
+可以使用某个 [Cosmos DB API SDK](documentdb-sdk-dotnet.md) 或 [REST API](/rest/api/documentdb/) 来创建用户和权限。  
 
 ### <a name="does-the-documentdb-api-support-sql"></a>DocumentDB API 是否支持 SQL？
 SQL 查询语言是 SQL 所支持的查询功能的增强子集。 Azure Cosmos DB SQL 查询语言通过基于 JavaScript 的用户定义函数 (UDF)，提供丰富的分层和关系运算符以及扩展性。 JSON 语法允许将 JSON 文档模型化为具有标签化节点的树状，由 Azure Cosmos DB 自动索引技术及 Azure Cosmos DB 的 SQL 查询方言使用。 有关使用 SQL 语法的信息，请参阅[查询 DocumentDB][query] 一文。
@@ -121,19 +126,19 @@ DocumentDB API 通过 HTTP 实体标记或 ETag 支持乐观并发控制 (OCC)�
 若要在 .NET 中使用乐观并发，可使用 [AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) 类。 相关 .NET 示例请参阅 GitHub 上 DocumentManagement 示例中的 [Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs)。
 
 ### <a name="how-do-i-perform-transactions-in-the-documentdb-api"></a>如何在 DocumentDB API 中执行事务？
-DocumentDB API 通过 JavaScript 存储过程和触发器支持语言集成式事务。 脚本内的所有数据库操作均在快照隔离下执行。 如果是单分区集合，则在集合范围内执行。 如果集合已分区，则在集合内具有相同分区键值的文档下执行。 文档版本 (ETag) 的快照是在事务开始时获取的，且只有当脚本成功运行时才会提交。 如果 JavaScript 引发错误，则会回滚事务。 有关详细信息，请参阅 [DocumentDB API 服务器端编程](programming.md)。
+DocumentDB API 通过 JavaScript 存储过程和触发器支持语言集成式事务。 脚本内的所有数据库操作均在快照隔离下执行。 如果是单分区集合，则在集合范围内执行。 如果集合已分区，则在集合内具有相同分区键值的文档下执行。 文档版本 (ETag) 的快照是在事务开始时获取的，且只有当脚本成功运行时才会提交。 如果 JavaScript 引发错误，则会回滚事务。 有关详细信息，请参阅 [Azure Cosmos DB 的服务器端 JavaScript 编程](programming.md)。
 
-### <a name="how-can-i-bulk-insert-documents-into-the-documentdb-api"></a>如何将文档批量插入到 DocumentDB API 中？
+### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>如何将文档批量插入到 Document DB 中？
 可以通过以下两种方法之一，将文档批量插入到 Azure Cosmos DB 中：
 
-* 数据迁移工具，如[将数据导入 DocumentDB API](import-data.md) 中所述。
-* 存储过程，如 [DocumentDB API 服务器端编程](programming.md)中所述。
+* 数据集成工具，如 [Azure Cosmos DB 的数据迁移工具](import-data.md)中所述。
+* 存储过程，如 [Azure Cosmos DB 的服务器端 JavaScript 编程](programming.md)中所述。
 
 ### <a name="does-the-documentdb-api-support-resource-link-caching"></a>DocumentDB API 是否支持资源链接缓存？
 是，因为 Azure Cosmos DB 是 RESTful 服务，而资源链接固定不变，所以可以缓存。 DocumentDB API 客户端可以指定“If-None-Match”标头来读取任何资源，例如文档或集合，然后在服务器版本更改后更新其本地副本。
 
 ### <a name="is-a-local-instance-of-documentdb-api-available"></a>DocumentDB API 的本地实例是否可用？
-是的。 [Azure Cosmos DB 模拟器](local-emulator.md)提供对 DocumentDB API 服务的高保真模拟。 它支持与 Azure Cosmos DB 相同的功能，包括对创建和查询 JSON 文档、预配和缩放集合，以及执行存储过程和触发器的支持。 可以使用 Azure Cosmos DB 模拟器开发和测试应用程序，并且只需对 Azure Cosmos DB 的连接终结点进行单一配置更改，就可以将应用程序部署到全局范围的 Azure。
+是的。 [Azure Cosmos DB 模拟器](local-emulator.md)提供对 Cosmos DB 服务的高保真模拟。 它支持与 Azure Cosmos DB 相同的功能，包括对创建和查询 JSON 文档、预配和缩放集合，以及执行存储过程和触发器的支持。 可以使用 Azure Cosmos DB 模拟器开发和测试应用程序，并且只需对 Azure Cosmos DB 的连接终结点进行单一配置更改，就可以将应用程序部署到全局范围的 Azure。
 
 ## <a name="develop-against-the-api-for-mongodb"></a>针对 API for MongoDB 进行开发
 ### <a name="what-is-the-azure-cosmos-db-api-for-mongodb"></a>什么是 Azure Cosmos DB API for MongoDB？
@@ -168,17 +173,21 @@ Azure Cosmos DB：表 API（预览版）是指 Azure Cosmos DB 为支持表所�
 在预览期间，当 [SDK](../cosmos-db/table-sdk-dotnet.md) 可用于 .NET 时，可以阅读[表 API](../cosmos-db/create-table-dotnet.md) 快速入门文章，以便快速入门。
 
 ### <a name="do-i-need-a-new-sdk-to-use-the-table-api-preview"></a>是否需要新的 SDK 才能使用表 API（预览版）？ 
-是， NuGet 上提供了 [Microsoft Azure 存储高级表（预览版）SDK](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable)。 可在 [Azure Cosmos DB 表 .NET API：下载和发行说明](https://github.com/Microsoft/azure-docs-pr/cosmos-db/table-sdk-dotnet.md)页面上找到其他信息。 
+需要，NuGet 上提供了 [Microsoft Azure 存储高级表（预览版）SDK](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable)。 可在 [Azure Cosmos DB 表 .NET API：下载和发行说明](https://github.com/Microsoft/azure-docs-pr/cosmos-db/table-sdk-dotnet.md)页面上找到其他信息。 
 
 ### <a name="how-do-i-provide-feedback-about-the-sdk-or-bugs"></a>如何提供有关 SDK 的反馈或 Bug？
 可以通过以下任一方式分享反馈：
 
-* [Uservoice](https://feedback.azure.com/forums/263030-documentdb)
+* [Uservoice](https://feedback.azure.com/forums/599062-azure-cosmos-db-table-api)
 * [MSDN 论坛](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDocumentDB)
 * [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-cosmosdb)
 
 ### <a name="what-is-the-connection-string-that-i-need-to-use-to-connect-to-the-table-api-preview"></a>连接到表 API（预览版）需要使用哪个连接字符串？
-连接字符串为 `DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmos DB;AccountKey=<FromKeysPaneofCosmosDB>;TableEndpoint=https://<AccountNameFromDocumentDB>.documents.azure.com`。 可以从 Azure 门户的“密钥”页面获取连接字符串。 
+连接字符串为：
+```
+DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmos DB;AccountKey=<FromKeysPaneofCosmosDB>;TableEndpoint=https://<AccountNameFromDocumentDB>.documents.azure.com
+```
+可以从 Azure 门户的“密钥”页面获取连接字符串。 
 
 ### <a name="how-do-i-override-the-config-settings-for-the-request-options-in-the-new-table-api-preview"></a>如何在新的表 API（预览版）中替代请求选项的配置设置？
 有关配置设置的信息，请参阅 [Azure Cosmos DB 功能](../cosmos-db/tutorial-develop-table-dotnet.md#azure-cosmos-db-capabilities)。 可以在客户端应用程序中将设置添加到 app.config 的 appSettings 节以进行更改。
@@ -219,7 +228,7 @@ Azure Cosmos DB：表 API（预览版）是指 Azure Cosmos DB 为支持表所�
 若要在现有表存储数据的基础上使用新的表 API 服务，请联系 [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com)。 
 
 ### <a name="what-is-the-roadmap-for-this-service-and-when-will-you-offer-other-standard-table-api-functionality"></a>此服务的路线图是什么？何时提供标准表 API 的其他功能？
-我们计划在推出正式版的过程中，不断添加对 SAS 令牌、ServiceContext、统计信息、客户端加密、分析和其他功能的支持。 你可以在 [UserVoice](https://feedback.azure.com/forums/263030-documentdb) 上向我们提供反馈。 
+我们计划在推出正式版的过程中，不断添加对 SAS 令牌、ServiceContext、统计信息、客户端加密、分析和其他功能的支持。 你可以在 [UserVoice](https://feedback.azure.com/forums/599062-azure-cosmos-db-table-api) 上向我们提供反馈。 
 
 ### <a name="how-is-expansion-of-the-storage-size-done-for-this-service-if-for-example-i-start-with-n-gb-of-data-and-my-data-will-grow-to-1-tb-over-time"></a>如何为此服务扩展存储大小，比如，最初我有 *n* GB 的数据，但一段时间后我的数据会增长到 1 TB？ 
 Azure Cosmos DB 旨在通过横向缩放提供无限的存储。 该服务可以监视并有效地增加存储。 
@@ -231,7 +240,11 @@ Azure Cosmos DB 旨在通过横向缩放提供无限的存储。 该服务可以
 可以使用容量估算器计算操作所需的 TableThroughput。 有关详细信息，请参阅[估算请求单位和数据存储](https://www.documentdb.com/capacityplanner)。 通常，可以将实体表示为 JSON 并且为操作提供所需数量。 
 
 ### <a name="can-i-use-the-new-table-api-preview-sdk-locally-with-the-emulator"></a>是否可以在本地将新的表 API（预览版）SDK 用于模拟器？
-是，如果使用的是新的 SDK，则可以在本地模拟器上使用表 API（预览版）。 若要下载新的模拟器，请转到[将 Azure Cosmos DB 模拟器用于本地开发和测试](local-emulator.md)。 app.config 中的 StorageConnectionString 值必须为 `DefaultEndpointsProtocol=https;AccountName=localhost;AccountKey=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==;TableEndpoint=https://localhost:8081`。 
+是，如果使用的是新的 SDK，则可以在本地模拟器上使用表 API（预览版）。 若要下载新的模拟器，请转到[将 Azure Cosmos DB 模拟器用于本地开发和测试](local-emulator.md)。 app.config 中的 StorageConnectionString 值必须为：
+
+```
+DefaultEndpointsProtocol=https;AccountName=localhost;AccountKey=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==;TableEndpoint=https://localhost:8081`. 
+```
 
 ### <a name="can-my-existing-application-work-with-the-table-api-preview"></a>现有的应用程序是否适用于表 API（预览版）？ 
 在 .NET API 中的创建、删除、更新和查询操作中，新的表 API（预览版）的外围应用与现有 Azure 标准表 SDK 相兼容。 请确保提供行键，因为表 API（预览版）需要分区键和行键。 我们还计划在推出此服务产品的正式版的过程中，不断添加更多 SDK 支持。
@@ -314,12 +327,12 @@ app.config 文件中 JSON 格式的字符串：
 ```
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-sorting-aggregates-hierarchy-and-other-functionality-will-you-be-adding-these-capabilities-to-the-table-api"></a>平台形式的 Azure Cosmos DB 似乎拥有许多功能，例如排序、聚合、分层和其他功能。 是否会将这些功能添加到表 API 中？ 
-在预览版中，表 API 提供与 Azure 表存储相同的查询功能。 Azure Cosmos DB 还支持排序、聚合、地理空间查询、层次结构和各种内置函数。 在将来的服务更新中，我们会在表 API 中提供更多的功能。 有关详细信息，请参阅 [Azure Cosmos DB 查询](../documentdb/documentdb-sql-query.md)。
+在预览版中，表 API 提供与 Azure 表存储相同的查询功能。 Azure Cosmos DB 还支持排序、聚合、地理空间查询、层次结构和各种内置函数。 在将来的服务更新中，我们会在表 API 中提供更多的功能。 有关详细信息，请参阅 [Azure Cosmos DB DocumentDB API 的 SQL 查询](../documentdb/documentdb-sql-query.md)。
  
 ### <a name="when-should-i-change-tablethroughput-for-the-table-api-preview"></a>何时应更改表 API（预览版）的 TableThroughput？
 符合以下任一情况时，都应更改 TableThroughput：
 * 要执行数据提取、转换和加载 (ETL) 操作，或者想在短时间内上传大量数据。 
-* 需要后端容器提供更大吞吐量。 例如，发现已用吞吐量超过预配吞吐量，且吞吐量已达到限制。 有关详细信息，请参阅[设置吞吐量](set-throughput.md)。
+* 需要后端容器提供更大吞吐量。 例如，发现已用吞吐量超过预配吞吐量，且吞吐量已达到限制。 有关详细信息，请参阅[为 Azure Cosmos DB 容器设置吞吐量](set-throughput.md)。
 
 ### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-preview-table"></a>是否可以增加或减少表 API（预览版）表的吞吐量？ 
 是，可以使用 Azure Cosmos DB 门户的缩放窗格来缩放吞吐量。 有关详细信息，请参阅[设置吞吐量](set-throughput.md)。

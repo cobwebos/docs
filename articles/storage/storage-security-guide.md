@@ -265,14 +265,14 @@ http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
 
 若要获得安全的信道，在调用 REST API 或访问存储中的对象时，应该始终使用 HTTPS。 此外，除了可用于委派对 Azure 存储对象的访问权限，**共享访问签名**还可用于指定在使用共享访问签名时只能使用 HTTPS 协议，确保任何使用 SAS 令牌发出链接的人都使用正确的协议。
 
-在调用 REST API 来访问存储帐户中的对象时，可以通过为存储帐户启用“需要安全传输”来强制使用 HTTPS。[](storage-require-secure-transfer.md) 启用此设置后，使用 HTTP 的连接将被拒绝。
+在调用 REST API 来访问存储帐户中的对象时，可以通过为存储帐户启用 [需要安全传输](storage-require-secure-transfer.md) 来强制使用 HTTPS。 启用此设置后，使用 HTTP 的连接将被拒绝。
 
 ### <a name="using-encryption-during-transit-with-azure-file-shares"></a>传输期间对 Azure 文件共享使用加密
 使用 REST API 时，Azure 文件存储支持 HTTPS，但更通常用作附加到 VM 的 SMB 文件共享。 SMB 2.1 不支持加密，因此只允许在 Azure 中的相同区域内连接。 但是，SMB 3.0 支持加密，并且可以在 Windows Server 2012 R2、Windows 8、Windows 8.1 和 Windows 10 中使用，允许跨区域访问，甚至桌面上的访问。
 
 请注意，尽管 Azure 文件共享可以与 Unix 配合使用，但 Linux SMB 客户端尚不支持加密，因此只允许在 Azure 区域内访问。 Linux 的加密支持已经在负责 SMB 功能的 Linux 开发人员的路线图上。 当他们添加加密时，必须具有访问 Linux 上 Azure 文件共享的相同能力，就像对于 Windows 所做的一样。
 
-可以通过为存储帐户启用“需要安全传输”来强制对 Azure 文件服务使用加密。[](storage-require-secure-transfer.md) 如果使用 REST API，则必须使用 HTTPs。 对于 SMB，只有支持加密的 SMB 连接才会成功连接。
+可以通过为存储帐户启用 [需要安全传输](storage-require-secure-transfer.md) 来强制对 Azure 文件服务使用加密。 如果使用 REST API，则必须使用 HTTPs。 对于 SMB，只有支持加密的 SMB 连接才会成功连接。
 
 #### <a name="resources"></a>资源
 * [如何将 Azure 文件存储与 Linux 配合使用](storage-how-to-use-files-linux.md)

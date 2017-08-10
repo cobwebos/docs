@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/12/2017
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 3a85fa624dc55f31822f00910b6d124c1d37323f
-ms.lasthandoff: 03/22/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: e5d9519998346619093f443b740c8904283f76e8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="create-user-defined-routes-udr-using-the-azure-cli-20"></a>使用 Azure CLI 2.0 创建用户定义的路由 (UDR)
@@ -46,7 +46,7 @@ ms.lasthandoff: 03/22/2017
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-下面的示例 Azure CLI 命令需要一个已经基于上述方案创建的简单环境。 若要运行本文档中所显示的命令，请首先通过部署[此模板](http://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR-Before)构建测试环境，单击“**部署至 Azure**”，根据需要替换默认参数值，然后按照门户中的说明进行操作。
+下面的示例 Azure CLI 命令需要一个已经基于上述方案创建的简单环境。 要运行本文档中所显示的命令，请首先通过部署[此模板](http://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR-Before)构建测试环境，单击“**部署至 Azure**”，根据需要替换默认参数值，然后按照门户中的说明进行操作。
 
 
 ## <a name="create-the-udr-for-the-front-end-subnet"></a>为前端子网创建 UDR
@@ -192,7 +192,7 @@ ms.lasthandoff: 03/22/2017
 
 若要在 **FW1** 使用的 NIC 中启用 IP 转发，请完成以下步骤：
 
-1. 运行 [az network nic show](/cli/az/network/nic#show) 命令并使用 JMESPATH 筛选器来显示 **Enable IP forwarding** 的当前 **enable-ip-forwarding** 值。 它应设置为 *false*。
+1. 运行 [az network nic show](/cli/azure/network/nic#show) 命令并使用 JMESPATH 筛选器来显示 **Enable IP forwarding** 的当前 **enable-ip-forwarding** 值。 它应设置为 *false*。
 
     ```azurecli
     az network nic show \
@@ -214,7 +214,7 @@ ms.lasthandoff: 03/22/2017
     --ip-forwarding true
     ```
 
-    你可以查看流式传输到控制台的输出，或者仅针对特定的 **enableIpForwarding** 值进行重新测试：
+    可以查看流式传输到控制台的输出，或者仅针对特定的 **enableIpForwarding** 值进行重新测试：
 
     ```azurecli
     az network nic show -g testrg -n nicfw1 --query 'enableIpForwarding' -o tsv

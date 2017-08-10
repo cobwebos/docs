@@ -12,24 +12,25 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 08/07/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d66b9e4c237ca195e2e0094aead7ce029f4fdf36
-
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 0bf2e57fb0f51f22ccd99b5b27775d007b8a7ccc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>使用 Azure 门户分析媒体
 > [!NOTE]
-> 若要完成本教程，你需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。 
+> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。 
 > 
 > 
 
 ## <a name="overview"></a>概述
 Azure 媒体服务分析是一系列语音和影像组件（具企业规模、合规性、安全性和全球性覆盖），让组织和企业可以从其视频文件中更轻松地获得可操作的见解。 有关 Azure 媒体服务分析的详细概述，请参阅[此](media-services-analytics-overview.md)主题。 
 
-本主题讨论如何通过 Azure 门户使用媒体分析媒体处理器 (MP) 处理媒体。 媒体分析 MP 会生成 MP4 文件或 JSON 文件。 如果媒体处理器生成了 MP4 文件，你可以采用渐进方式下载该文件。 如果媒体处理器生成了 JSON 文件，你可以从 Azure Blob 存储下载该文件。 
+本主题讨论如何通过 Azure 门户使用媒体分析媒体处理器 (MP) 处理媒体。 媒体分析 MP 会生成 MP4 文件或 JSON 文件。 如果媒体处理器生成了 MP4 文件，可以采用渐进方式下载该文件。 如果媒体处理器生成了 JSON 文件，可以从 Azure Blob 存储下载该文件。 
 
 ## <a name="choose-an-asset-that-you-want-to-analyze"></a>选择要分析的资产
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 媒体服务帐户。
@@ -92,10 +93,10 @@ Azure Media Hyperlapse 是可以使用第一人称视角或运动相机内容创
 
 * **人脸检测**
   
-    面部检测能够找出并跟踪视频中的人脸。 可以同时跟踪多个面部，随着对象移动持续进行跟踪，并将时间和位置的元数据以 JSON 文件的格式返回。 跟踪期间，该服务将在人员于屏幕上四处移动时，尝试为他们的面部赋予相同的 ID，即使他们被挡住或暂时离帧。
+    人脸检测能够找出并跟踪视频中的人脸。 可以同时跟踪多个面部，随着对象移动持续进行跟踪，并将时间和位置的元数据以 JSON 文件的格式返回。 跟踪期间，该服务会在人员于屏幕上四处移动时，尝试为他们的面部赋予相同的 ID，即使他们被挡住或暂时离帧。
   
   > [!NOTE]
-  > 此服务并不执行面部识别。 面部离帧或被挡住太久的人员，将在回来时赋予新的 ID。
+  > 此服务并不执行面部识别。 面部离帧或被挡住太久的人员，会在回来时赋予新的 ID。
   > 
   > 
 * **情绪检测**
@@ -120,12 +121,12 @@ Azure Media Hyperlapse 是可以使用第一人称视角或运动相机内容创
 ## <a name="azure-media-motion-detector"></a>Azure Media Motion Detector
 借助 **Azure Media Motion Detector** 媒体处理器 (MP)，用户可在冗长且平淡的视频中有效识别出感兴趣的部分。 可以对静态相机数据片段使用动作检测，以识别视频中有动作的部分。 它会生成 JSON 文件，其中包含带时间戳的元数据，以及发生事件的边界区域。
 
-此技术面向安全视频提要，它可以将动作分类为相关事件和误报（例如阴影或光源变化）。 这样，你就可以在无需查看无止境的不相关事件的情况下，从相机输出生成安全警报，并从长时间的监控视频中提取感兴趣的片段。
+此技术面向安全视频提要，它可以将动作分类为相关事件和误报（例如阴影或光源变化）。 这样，便可以在无需查看无止境的不相关事件的情况下，从相机输出生成安全警报，并从长时间的监控视频中提取感兴趣的片段。
 
 ![分析视频](./media/media-services-portal-analyze/media-services-portal-analyze006.png)
 
 ## <a name="azure-media-video-thumbnails"></a>Azure 媒体视频缩略图
-此处理器可通过自动选择来自源视频的有趣片段帮助用户创建长视频的摘要。 当你要提供有关长视频内容的快速概述时，这很有用。 有关详细信息和示例，请参阅[使用 Azure Media Video Thumbnails 创建视频摘要](media-services-video-summarization.md)
+此处理器可通过自动选择来自源视频的有趣片段帮助用户创建长视频的摘要。 要提供有关长视频内容的快速概述时，这很有用。 有关详细信息和示例，请参阅[使用 Azure Media Video Thumbnails 创建视频摘要](media-services-video-summarization.md)
 
 ![分析视频](./media/media-services-portal-analyze/media-services-portal-analyze008.png)
 
@@ -142,10 +143,5 @@ Azure Media Hyperlapse 是可以使用第一人称视角或运动相机内容创
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

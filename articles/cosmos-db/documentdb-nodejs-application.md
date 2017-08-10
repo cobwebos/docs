@@ -1,10 +1,10 @@
 ---
-title: "了解 Node.js - Azure Cosmos DB Node.js 教程 | Microsoft Docs"
-description: "了解 Node.js! 本教程探讨了如何使用 Microsoft Azure Cosmos DB 从 Azure 网站上托管的 Node.js Express Web 应用程序来存储和访问数据。"
-keywords: "应用程序开发, 数据库教程, 了解 node.js, node.js 教程, documentdb, azure, Microsoft azure"
+title: "生成适用于 Azure Cosmos DB 的 Node.js Web 应用 | Microsoft Docs"
+description: "此 Node.js 教程探讨了如何使用 Microsoft Azure Cosmos DB 从 Azure 网站上托管的 Node.js Express Web 应用程序来存储和访问数据。"
+keywords: "应用程序开发, 数据库教程, 了解 node.js, node.js 教程"
 services: cosmos-db
 documentationcenter: nodejs
-author: syamkmsft
+author: mimig1
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 9da9e63b-e76a-434e-96dd-195ce2699ef3
@@ -13,14 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 05/23/2017
-ms.author: syamk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 511c9e4d6f68b3e063559acb5996111acd3c653f
+ms.date: 07/06/2017
+ms.author: mimig
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: e5f7697b1069186b9ab6b6594fa5efb069252475
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="_Toc395783175"></a>构建使用 Azure Cosmos DB 的 Node.js Web 应用程序
@@ -50,7 +49,7 @@ ms.lasthandoff: 05/31/2017
 
    或
 
-   本地安装的 [Azure Cosmos DB 模拟器](local-emulator.md)。
+   本地安装的 [Azure Cosmos DB 模拟器](local-emulator.md)（仅限 Windows）。
 * [Node.js][Node.js] v0.10.29 或更高版本。
 * [Express 生成器](http://www.expressjs.com/starter/generator.html)（可以通过 `npm install express-generator -g` 安装）
 * [Git][Git]。
@@ -62,7 +61,7 @@ ms.lasthandoff: 05/31/2017
 
 [!INCLUDE [cosmos-db-keys](../../includes/cosmos-db-keys.md)]
 
-## <a name="_Toc395783178"></a>步骤 2：了解如何创建新的 Node.js 应用程序
+## <a name="_Toc395783178"></a>步骤 2：创建新的 Node.js 应用程序
 现在让我们来了解如何使用 [Express](http://expressjs.com/) 框架创建基本的 Hello World Node.js 项目。
 
 1. 打开最喜欢的终端，如 Node.js 命令提示符。
@@ -89,7 +88,7 @@ ms.lasthandoff: 05/31/2017
 1. 返回终端，通过 npm 安装 **async** 模块。
    
         npm install async --save
-2. 通过 npm 安装 **documentdb** 模块。 这是 DocumentDB 所有奇迹发生的模块。
+2. 通过 npm 安装 **documentdb** 模块。 这是所有 Azure Cosmos DB magic 发生的模块。
    
         npm install documentdb --save
 3. 快速检查应用程序的 **package.json** 文件应显示其他模块。 此文件将通知 Azure 当运行应用程序时要下载并安装的包。 它应类似于下面的示例。
@@ -391,8 +390,8 @@ ms.lasthandoff: 05/31/2017
    
         var config = {}
    
-        config.host = process.env.HOST || "[the URI value from the DocumentDB Keys blade on http://portal.azure.com]";
-        config.authKey = process.env.AUTH_KEY || "[the PRIMARY KEY value from the DocumentDB Keys blade on http://portal.azure.com]";
+        config.host = process.env.HOST || "[the URI value from the Azure Cosmos DB Keys blade on http://portal.azure.com]";
+        config.authKey = process.env.AUTH_KEY || "[the PRIMARY KEY value from the Azure Cosmos DB Keys blade on http://portal.azure.com]";
         config.databaseId = "ToDoList";
         config.collectionId = "Items";
    
@@ -435,22 +434,25 @@ ms.lasthandoff: 05/31/2017
 
 1. **views** 目录中的 **layout.jade** 文件用作其他 **.jade** 文件的全局模板。 在此步骤中，你将对其进行修改以使用 [Twitter Bootstrap](https://github.com/twbs/bootstrap)（一个可以轻松设计美观网站的工具包）。 
 2. 打开 **views** 文件夹中的 **layout.jade** 文件，将内容替换为以下代码：
-   
-        doctype html
-        html
-           head
-             title= title
-             link(rel='stylesheet', href='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/css/bootstrap.min.css')
-             link(rel='stylesheet', href='/stylesheets/style.css')
-           body
-             nav.navbar.navbar-inverse.navbar-fixed-top
-               div.navbar-header
-                 a.navbar-brand(href='#') My Tasks
-             block content
-             script(src='//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js')
-             script(src='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js')
+
+    ```
+    doctype html
+    html
+      head
+        title= title
+        link(rel='stylesheet', href='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+      body
+        nav.navbar.navbar-inverse.navbar-fixed-top
+          div.navbar-header
+            a.navbar-brand(href='#') My Tasks
+        block content
+        script(src='//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js')
+        script(src='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js')
+    ```
 
     这将有效告知 **Jade** 引擎来为应用程序呈现某些 HTML，并创建名为 **content** 的**块**，我们可在其中提供内容页面的布局。
+
     保存并关闭此 **layout.jade** 文件。
 
 3. 现在打开 **index.jade** 文件（应用程序将要使用的视图），并将文件内容替换为以下代码：
@@ -482,44 +484,28 @@ ms.lasthandoff: 05/31/2017
                      td #{month + "/" + day + "/" + year}
                      td
                        input(type="checkbox", name="#{task.id}", value="#{!task.completed}", checked=task.completed)
-             button.btn(type="submit") Update tasks
+             button.btn.btn-primary(type="submit") Update tasks
            hr
            form.well(action="/addtask", method="post")
-             label Item Name:
-             input(name="name", type="textbox")
-             label Item Category:
-             input(name="category", type="textbox")
+             .form-group
+               label(for="name") Item Name:
+               input.form-control(name="name", type="textbox")
+             .form-group
+               label(for="category") Item Category:
+               input.form-control(name="category", type="textbox")
              br
              button.btn(type="submit") Add item
    
+
     这将扩展布局，并为我们先前在 **layout.jade** 文件中看到的 **content** 占位符提供内容。
    
-    在此布局中，我们创建了两个 HTML 窗体。 
+    在此布局中，我们创建了两个 HTML 窗体。
+
     第一个窗体中的表包含我们的数据和按钮，该按钮允许我们通过发布控制器的 **/completetask** 方法更新项。
+    
     第二个窗体包含两个输入字段和一个按钮，该按钮允许我们通过发布控制器的 **/addtask** 方法来新建项。
-   
+
     这应该是应用程序工作所需的所有内容了。
-4. 打开 **public\stylesheets** 目录中的 **style.css** 文件并替换为以下代码：
-   
-        body {
-          padding: 50px;
-          font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-        }
-        a {
-          color: #00B7FF;
-        }
-        .well label {
-          display: block;
-        }
-        .well input {
-          margin-bottom: 5px;
-        }
-        .btn {
-          margin-top: 5px;
-          border: outset 1px #C8C8C8;
-        }
-   
-    保存并关闭此 **style.css** 文件。
 
 ## <a name="_Toc395783181"></a>步骤 6：在本地运行应用程序
 1. 若要在本地计算机上测试应用程序，请在终端中运行 `npm start` 以启动应用程序，然后刷新 [http://localhost:3000](http://localhost:3000) 浏览器页。 该页此时看起来应如下图所示：

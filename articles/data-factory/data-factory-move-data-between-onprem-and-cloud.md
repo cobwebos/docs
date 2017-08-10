@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e1d44f85b36d08944351a79d7a4b39cc8de61201
-ms.openlocfilehash: 13044cc92a1577185b2aebc3a0ff8be0ec5eca60
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: ca8c94cfe6a76ba169b2ec1f7ab3f49caf562289
 ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>使用数据管理网关在本地源与云之间移动数据
@@ -36,11 +36,19 @@ ms.lasthandoff: 11/17/2016
 以下演练介绍如何创建一个包含管道的数据工厂，该管道可将数据从本地 **SQL Server** 数据库移动到 Azure blob 存储。 在演练过程中，需要在计算机上安装并配置数据管理网关。
 
 ## <a name="walkthrough-copy-on-premises-data-to-cloud"></a>演练：将本地数据复制到云
+
+## <a name="prerequisites-for-the-tutorial"></a>教程先决条件
+开始本演练之前，必须具备以下先决条件：
+
+* **Azure 订阅**。  如果没有订阅，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[免费使用](http://azure.microsoft.com/pricing/free-trial/)一文。
+* **Azure 存储帐户**。 在本教程中，将 Blob 存储用作**目标/接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)一文获取创建步骤。
+* **SQL Server**。 在本教程中，将本地 SQL Server 数据库用作**源**数据存储。 
+
 ## <a name="create-data-factory"></a>创建数据工厂
 本步骤使用 Azure 门户创建名为 **ADFTutorialOnPremDF** 的 Azure 数据工厂实例。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 单击“+新建”，然后依次单击“智能 + 分析”、“数据工厂”。
+2. 单击“+新建”，并依次单击“智能 + 分析”、“数据工厂”。
 
    ![新建 -> DataFactory](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  
 3. 在“新建数据工厂”边栏选项卡中，输入 **ADFTutorialOnPremDF** 作为名称。
@@ -69,10 +77,10 @@ ms.lasthandoff: 11/17/2016
 1. 在“数据工厂”边栏选项卡中，单击“编写和部署”磁贴启动数据工厂的“编辑器”。
 
     ![“编写和部署”磁贴](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png)
-2. 在“数据工厂编辑器”中，单击工具栏上的“...更多”，然后单击“新建数据网关”。 此外，也可以在树视图中，右键单击“数据网关”，然后单击“新建数据网关”。
+2. 在“数据工厂编辑器”中，单击工具栏上的“...更多”，并单击“新建数据网关”。 此外，也可以在树视图中，右键单击“数据网关”，并单击“新建数据网关”。
 
    ![工具栏上的“新建数据网关”](./media/data-factory-move-data-between-onprem-and-cloud/NewDataGateway.png)
-3. 在“创建”边栏选项卡中，输入 **adftutorialgateway** 作为**名称**，然后单击“确定”。     
+3. 在“创建”边栏选项卡中，输入 **adftutorialgateway** 作为**名称**，并单击“确定”。     
 
     ![创建网关边栏选项卡](./media/data-factory-move-data-between-onprem-and-cloud/OnPremCreateGatewayBlade.png)
 4. 在“配置”边栏选项卡中，单击“直接在此计算机上安装”。 此操作将为网关下载安装包，并在计算机上安装、配置和注册该网关。  
@@ -80,9 +88,9 @@ ms.lasthandoff: 11/17/2016
    > [!NOTE]
    > 请使用 Internet Explorer 或与 Microsoft ClickOnce 兼容的 Web 浏览器。
    >
-   > 如果使用 Chrome，请转到 [Chrome 网上应用店](https://chrome.google.com/webstore/)，使用“ClickOnce”关键字进行搜索，然后选择 ClickOnce 扩展之一并安装它。
+   > 如果使用 Chrome，请转到 [Chrome 网上应用店](https://chrome.google.com/webstore/)，使用“ClickOnce”关键字进行搜索，选择 ClickOnce 扩展之一并安装它。
    >
-   > 对于 Firefox，请执行相同的操作（安装外接程序）。 在工具栏上单击“打开菜单”按钮（右上角的**三条横线**），单击“外接程序”，使用“ClickOnce”关键字进行搜索，然后选择一个 ClickOnce 扩展并安装它。    
+   > 对于 Firefox，请执行相同的操作（安装外接程序）。 在工具栏上单击“打开菜单”按钮（右上角的**三条横线**），单击“外接程序”，使用“ClickOnce”关键字进行搜索，选择一个 ClickOnce 扩展并安装它。    
    >
    >
 
@@ -113,7 +121,7 @@ ms.lasthandoff: 11/17/2016
    * 在一天中的特定时间安装**计划更新**。
    * 查看网关的**上次更新时间**。
    * 指定可以安装网关更新的时间点。
-8. 切换到“设置”选项卡。 使用在**证书**部分中指定的证书，加密/解密在门户上指定的本地数据存储的凭据。 （可选）单击“更改”以改为使用你自己的证书。 默认情况下，网关使用由数据工厂服务自动生成的证书。
+8. 切换到“设置”选项卡。 使用在**证书**部分中指定的证书，加密/解密在门户上指定的本地数据存储的凭据。 （可选）单击“更改”以改为使用自己的证书。 默认情况下，网关使用由数据工厂服务自动生成的证书。
 
     ![网关证书配置](./media/data-factory-move-data-between-onprem-and-cloud/gateway-certificate.png)
 
@@ -131,15 +139,15 @@ ms.lasthandoff: 11/17/2016
    * 对使用网关的本地数据源使用**测试连接**部分。
    * 单击“查看日志”，以在“事件查看器”窗口中查看数据管理网关日志。
    * 单击“发送日志”将包含最后七天的日志的 zip 文件上传到 Microsoft，以便排查问题。
-10. 在“诊断”选项卡上的“测试连接”部分中，选择 **SqlServer** 作为数据存储类型，输入数据库服务器和数据库的名称，指定身份验证类型，输入用户名和密码，然后单击“测试”以测试网关是否可以连接到数据库。
-11. 切换到 Web 浏览器，在“Azure 门户”中，单击“配置”边栏选项卡上的“确定”，然后单击“新建数据网关”边栏选项卡上的“确定”。
+10. 在“诊断”选项卡上的“测试连接”部分中，选择 **SqlServer** 作为数据存储类型，输入数据库服务器和数据库的名称，指定身份验证类型，输入用户名和密码，并单击“测试”以测试网关是否可以连接到数据库。
+11. 切换到 Web 浏览器，在“Azure 门户”中，单击“配置”边栏选项卡上的“确定”，并单击“新建数据网关”边栏选项卡上的“确定”。
 12. 左侧树视图中的“数据网关”下应会显示 **adftutorialgateway**。  单击此项可看到相关联的 JSON。
 
 ## <a name="create-linked-services"></a>创建链接服务
-本步骤创建两个链接服务：**AzureStorageLinkedService** 和 **SqlServerLinkedService**。 **SqlServerLinkedService** 用于链接本地 SQL Server 数据库，而 **AzureStorageLinkedService** 链接服务用于将 Azure blob 存储链接到数据工厂。 本演练稍后将介绍如何创建管道，将数据从本地 SQL Server 数据库复制到 Azure blob 存储。
+本步骤创建两个链接服务：**AzureStorageLinkedService** 和 **SqlServerLinkedService**。 **SqlServerLinkedService** 用于链接本地 SQL Server 数据库，而 **AzureStorageLinkedService** 链接服务用于将 Azure blob 存储链接到数据工厂。 本演练稍后介绍如何创建管道，将数据从本地 SQL Server 数据库复制到 Azure blob 存储。
 
 #### <a name="add-a-linked-service-to-an-on-premises-sql-server-database"></a>将链接服务添加到本地 SQL Server 数据库
-1. 在“数据工厂编辑器”中，单击工具栏上的“新建数据存储”，然后选择“SQL Server”。
+1. 在“数据工厂编辑器”中，单击工具栏上的“新建数据存储”，并选择“SQL Server”。
 
    ![新建 SQL Server 链接服务](./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png)
 2. 在右侧的“JSON 编辑器”中，执行以下步骤：
@@ -152,7 +160,7 @@ ms.lasthandoff: 11/17/2016
       3. 单击工具栏上的“加密”按钮。 此操作将下载并启动凭据管理器应用程序。
 
          ![凭据管理器应用程序](./media/data-factory-move-data-between-onprem-and-cloud/credentials-manager-application.png)
-      4. 在“设置凭据”对话框中，指定身份验证类型、用户名和密码，然后单击“确定”。 如果连接成功，则加密的凭据将存储在 JSON 中，并且对话框将关闭。
+      4. 在“设置凭据”对话框中，指定身份验证类型、用户名和密码，并单击“确定”。 如果连接成功，则加密的凭据将存储在 JSON 中，并且对话框将关闭。
       5. 如果启动对话框的空浏览器选项卡未自动关闭，则关闭该选项卡，并通过 Azure 门户返回到该选项卡。
 
          在网关计算机上，这些凭据使用数据工厂服务拥有的证书进行“加密”。 如果想要改用与数据管理网关相关联的证书，请参阅[安全地设置凭据](#set-credentials-and-security)。    
@@ -161,7 +169,7 @@ ms.lasthandoff: 11/17/2016
       ![树视图中的 SQL Server 链接服务](./media/data-factory-move-data-between-onprem-and-cloud/sql-linked-service-in-tree-view.png)    
 
 #### <a name="add-a-linked-service-for-an-azure-storage-account"></a>为 Azure 存储帐户添加链接服务
-1. 在“数据工厂编辑器”中，单击命令栏上的“新建数据存储”，然后单击“Azure 存储”。
+1. 在“数据工厂编辑器”中，单击命令栏上的“新建数据存储”，并单击“Azure 存储”。
 2. 对于“帐户名称”，输入 Azure 存储帐户的名称。
 3. 对于“帐户密钥”，输入 Azure 存储帐户的密钥。
 4. 单击“部署”以部署 **AzureStorageLinkedService**。
@@ -194,7 +202,7 @@ ms.lasthandoff: 11/17/2016
 
 ### <a name="create-input-dataset"></a>创建输入数据集
 
-1. 在“数据工厂编辑器”中，单击“...更多”，单击命令栏中的“新建数据集”，然后单击“SQL Server 表”。
+1. 在“数据工厂编辑器”中，单击“...更多”，单击命令栏中的“新建数据集”，并单击“SQL Server 表”。
 2. 将右窗格中的 JSON 替换为以下文本：
 
     ```JSON   
@@ -233,7 +241,7 @@ ms.lasthandoff: 11/17/2016
 
 ### <a name="create-output-dataset"></a>创建输出数据集
 
-1. 在“数据工厂编辑器”中，单击命令栏上的“新建数据集”，然后单击“Azure Blob 存储”。
+1. 在“数据工厂编辑器”中，单击命令栏上的“新建数据集”，并单击“Azure Blob 存储”。
 2. 将右窗格中的 JSON 替换为以下文本：
 
     ```JSON   
@@ -263,7 +271,7 @@ ms.lasthandoff: 11/17/2016
    * **folderPath** 设置为 **adftutorial/outfromonpremdf**，其中 outfromonpremdf 为 adftutorial 容器中的文件夹。 如果不存在 **adftutorial** 容器，则创建该容器。
    * **availability** 设置为 **hourly**（**frequency** 设置为 **hour**，**interval** 设置为 **1**）。  数据工厂服务每小时在 Azure SQL 数据库的 **emp** 表中生成输出数据切片。
 
-   如果未指定**输出表**的 **fileName**，**folderPath** 中生成的文件根据以下格式命名：Data.<Guid>.txt（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt）。
+   如果未指定**输出表**的 **fileName**，**folderPath** 中生成的文件根据以下格式命名：Data<Guid>.txt（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt）。
 
    若要根据 **SliceStart** 时间动态设置 **folderPath** 和 **fileName**，请使用 partitionedBy 属性。 在以下示例中，folderPath 使用 SliceStart（所处理的切片的开始时间）中的年、月和日，fileName 使用 SliceStart 中的小时。 例如，如果切片生成于 2014-10-20T08:00:00，folderName 将设置为 wikidatagateway/wikisampledataout/2014/10/20，fileName 设置为 08.csv。
 
@@ -286,7 +294,7 @@ ms.lasthandoff: 11/17/2016
 ## <a name="create-pipeline"></a>创建管道
 本步骤创建**管道**，其中包含使用 **EmpOnPremSQLTable** 作为输入、使用 **OutputBlobTable** 作为输出的**复制活动**。
 
-1. 在“数据工厂编辑器”中，单击“...更多”，然后单击“新建管道”。
+1. 在“数据工厂编辑器”中，单击“...更多”，并单击“新建管道”。
 2. 将右窗格中的 JSON 替换为以下文本：    
 
     ```JSON   
@@ -342,7 +350,7 @@ ms.lasthandoff: 11/17/2016
 
    * 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。
    * 活动的 **Input** 设置为 **EmpOnPremSQLTable**，**output** 设置为 **OutputBlobTable**。
-   * 在 **typeProperties** 节中，**SqlSource** 指定为**源类型**，**BlobSink** 指定为**接收器类型**。
+   * 在 **typeProperties** 节中，将 **SqlSource** 指定为**源类型**，将“BlobSink”指定为**接收器类型**。
    * 为 **SqlSource** 的 **sqlReaderQuery** 属性指定 SQL 查询 `select * from emp`。
 
    开始和结束日期时间必须采用 [ISO 格式](http://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **结束** 时间是可选的，但本教程使用该时间。
@@ -392,9 +400,9 @@ ms.lasthandoff: 11/17/2016
 8. （可选）单击“管道”，再单击“ADFTutorialOnPremDF”，钻取输入表 (**Consumed**) 或输出数据集 (**Produced**)。
 9. 使用工具（例如 [Microsoft 存储资源管理器](http://storageexplorer.com/)）验证是否每小时创建一个 blob/文件。
 
-   ![Azure 存储空间资源管理器](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
+   ![Azure 存储资源管理器](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 
 ## <a name="next-steps"></a>后续步骤
 * 有关数据管理网关的所有详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。
-* 若要深入了解如何使用“复制活动”将数据从源数据存储移动到接收器数据存储，请参阅[将数据从 Azure Blob 复制到 Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+* 要深入了解如何使用“复制活动”将数据从源数据存储移动到接收器数据存储，请参阅[将数据从 Azure Blob 复制到 Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 

@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: e62b9742875512e70e5369978c1c90bdc9c6c1cb
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 3fbb2f0629e510dfa9dac8e363eafb8e668e81d4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="partitioning-in-azure-cosmos-db-using-the-documentdb-api"></a>使用 DocumentDB API 在 Azure Cosmos DB 中进行分区
@@ -31,7 +30,7 @@ ms.lasthandoff: 06/20/2017
 
 若要开始处理代码，请从 [Github](https://github.com/Azure/azure-documentdb-dotnet/tree/a2d61ddb53f8ab2a23d3ce323c77afcf5a608f52/samples/documentdb-benchmark) 下载项目。 
 
-阅读本文后，你将能够回答以下问题：   
+阅读本文后，能够回答以下问题：   
 
 * Azure Cosmos DB 中的分区原理是什么？
 * 如何配置 Azure Cosmos DB 中的分区
@@ -43,7 +42,7 @@ ms.lasthandoff: 06/20/2017
 <a name="partition-keys"></a>
 <a name="single-partition-and-partitioned-collections"></a>
 <a name="migrating-from-single-partition"></a>
-## 分区键 在 DocumentDB API 中，以 JSON 路径的形式指定分区键定义。 下表演示分区键定义和对应于每个定义的值。 分区键指定为路径，例如 `/department` 表示属性 department。 
+## 分区键在 DocumentDB API 中，以 JSON 路径的形式指定分区键定义。 下表演示分区键定义和对应于每个定义的值。 分区键指定为路径，例如 `/department` 表示属性 department。 
 
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>
@@ -71,13 +70,13 @@ ms.lasthandoff: 06/20/2017
 </table>
 
 > [!NOTE]
-> 分区键的语法类似于索引策略路径的路径规范，关键差别在于路径对应属性而不是值，即末尾没有通配符。 例如，你会指定 /department /?  以在部门下为值编制索引，但指定 /department 作为分区键定义。 分区键以隐式的方式进行索引编制，而且不能使用索引策略覆盖从索引中排除它。
+> 分区键的语法类似于索引策略路径的路径规范，关键差别在于路径对应属性而不是值，即末尾没有通配符。 例如，会指定 /department /?  以在部门下为值编制索引，但指定 /department 作为分区键定义。 分区键以隐式的方式进行索引编制，而且不能使用索引策略覆盖从索引中排除它。
 > 
 > 
 
 让我们看看所选的分区键如何影响应用程序的性能。
 
-## <a name="working-with-the-documentdb-sdks"></a>使用 DocumentDB SDK
+## <a name="working-with-the-azure-cosmos-db-sdks"></a>使用 Azure Cosmos DB SDK
 Azure Cosmos DB 通过 [REST API 版本 2015-12-16](/rest/api/documentdb/) 增加了对自动分区的支持。 为了创建已分区容器，必须在支持的 SDK 平台之一（.NET、Node.js、Java、Python、MongoDB）下载 SDK 版本 1.6.0 或更高版本。 
 
 ### <a name="creating-containers"></a>创建容器
@@ -102,7 +101,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 20000 });
 ```
 
-此方法可对 Cosmos DB 调用 REST API，且该服务将基于所请求的吞吐量设置分区数。 根据你的性能需求的发展，可以更改容器的吞吐量。 
+此方法可对 Cosmos DB 调用 REST API，且该服务将基于所请求的吞吐量设置分区数。 根据性能需求的发展，可以更改容器的吞吐量。 
 
 ### <a name="reading-and-writing-items"></a>读取和写入项目
 现在，让我们将数据插入 Cosmos DB。 以下的示例类包含设备读取和对 CreateDocumentAsync 的调用，将新设备读数插入到容器。 这是一个利用 DocumentDB API 的示例：
@@ -207,10 +206,10 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
 * 通过设置 `MaxDegreeOfParallelism`，可以控制并行度，即，与容器的分区同时进行的网络连接的最大数量。 如果将此参数设置为 -1，则由 SDK 管理并行度。 如果 `MaxDegreeOfParallelism` 未指定或设置为 0（默认值），则与容器的分区的网络连接将有一个。
 * 通过设置 `MaxBufferedItemCount`，可以权衡查询延迟和客户端内存使用率。 如果省略此参数或将此参数设置为 -1，则由 SDK 管理并行查询执行过程中缓冲的项目数。
 
-如果给定相同状态的集合，并行查询将以串行执行相同的顺序返回结果。 执行包含排序（ORDER BY 和/或 TOP）的跨分区查询时，DocumentDB SDK 跨分区发出并行查询，并合并客户端中的部分排序结果，以生成全局范围内有序的结果。
+如果给定相同状态的集合，并行查询将以串行执行相同的顺序返回结果。 执行包含排序（ORDER BY 和/或 TOP）的跨分区查询时，Azure Cosmos DB SDK 跨分区发出并行查询，并合并客户端中的部分排序结果，以生成全局范围内有序的结果。
 
 ### <a name="executing-stored-procedures"></a>执行存储过程
-还可以对具有相同设备 ID 的文档执行原子事务，例如，如果你要在单个项目中维护聚合或设备的最新状态。 
+还可以对具有相同设备 ID 的文档执行原子事务，例如，如果要在单个项目中维护聚合或设备的最新状态。 
 
 ```csharp
 await client.ExecuteStoredProcedureAsync<DeviceReading>(
@@ -219,12 +218,12 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
     "XMS-001-FE24C");
 ```
    
-在下一节，我们将介绍如何从单分区容器移动到已分区容器。
+在下一节，我们介绍如何从单分区容器移动到已分区容器。
 
 ## <a name="next-steps"></a>后续步骤
-本文概述了如何使用 DocumentDB API 对 Cosmos DB 容器进行分区。 有关使用任何 Azure Cosmos DB API 进行分区的概念和最佳做法概述，另请参阅[分区和水平缩放](../cosmos-db/partition-data.md)。 
+本文概述了如何使用 DocumentDB API 对 Azure Cosmos DB 容器进行分区。 有关使用任何 Azure Cosmos DB API 进行分区的概念和最佳做法概述，另请参阅[分区和水平缩放](../cosmos-db/partition-data.md)。 
 
-* 执行 Cosmos DB 缩放和性能测试。 有关示例，请参阅[执行 Azure Cosmos DB 缩放和性能测试](performance-testing.md)。
+* 使用 Azure Cosmos DB 执行规模和性能测试。 有关示例，请参阅[执行 Azure Cosmos DB 缩放和性能测试](performance-testing.md)。
 * 使用 [SDK](documentdb-sdk-dotnet.md) 或 [REST API](/rest/api/documentdb/) 的编码入门
 * 了解 [Azure Cosmos DB 中的预配吞吐量](request-units.md)
 

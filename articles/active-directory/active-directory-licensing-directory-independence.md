@@ -5,22 +5,22 @@ services: active-tenant
 documentationcenter: 
 author: curtand
 manager: femila
-editor: piotrci
+editor: 
 ms.assetid: 2b862b75-14df-45f2-a8ab-2a3ff1e2eb08
 ms.service: active-tenant
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/01/2017
+ms.date: 07/27/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 142bd7fea8d1a409662282b9b23a2e1598c9e86e
+ms.reviewer: piotrci
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: d25d2c731034d0785bbd404ec693c4c41d913d01
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 06/08/2017
 * 适用于 Forefront Identity Manager 的 Azure Active 租户连接器，用于将数据与一个或多个本地林和/或非 Azure AD 数据源同步。
 
 ## <a name="add-an-azure-ad-tenant"></a>添加 Azure AD 租户
-若要在 Azure 经典门户中添加 Azure AD 租户，请选择左侧的 Azure Active Directory 扩展，再点击“添加”。
+若要在 Azure 门户中添加 Azure AD 租户，请使用作为 Azure AD 全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)，然后选择左侧的“新建”。
 
 > [!NOTE]
 > 与其他 Azure 资源不同，租户不是 Azure 订阅的子资源。 如果 Azure 订阅被取消或过期，仍可以使用 Azure PowerShell、Azure 图形 API 或 Office 365 管理中心来访问租户数据。 此外，还可以将其他订阅与租户相关联。

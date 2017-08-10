@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/06/2017
 ms.author: cynthn
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: bba753c4a4657a611503bb99aa8d714286ebcea5
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 9a91aedf452a391f23b1e5773ec12e2de5d4a288
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>使用 Azure CLI 2.0 从自定义磁盘创建 Linux VM
@@ -65,7 +65,7 @@ az vm create --resource-group myResourceGroup --location eastus --name myVM \
 
 ## <a name="prepare-the-vm"></a>准备 VM
 
-Azure 支持各种 Linux 分发（请参阅 [Endorsed Distributions](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（认可的分发））。 以下文章将指导你如何准备 Azure 上支持的各种 Linux 分发：
+Azure 支持各种 Linux 分发（请参阅 [Endorsed Distributions](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（认可的分发））。 以下文章指导如何准备 Azure 上支持的各种 Linux 分发：
 
 * [基于 CentOS 的分发版](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -165,7 +165,7 @@ az storage blob upload --account-name mystorageaccount \
 ### <a name="create-a-managed-disk"></a>创建托管磁盘
 
 
-使用 [az disk create](/cli/azure/disk/create) 从 VHD 创建托管磁盘。 以下示例从已上传到命名存储帐户和容器的 VHD 创建名为 *myManagedDisk* 的托管磁盘：
+使用 [az disk create](/cli/azure/disk#create) 从 VHD 创建托管磁盘。 以下示例从已上传到命名存储帐户和容器的 VHD 创建名为 *myManagedDisk* 的托管磁盘：
 
 ```azurecli
 az disk create \

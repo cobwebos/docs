@@ -12,40 +12,39 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 07/21/2017
 ms.author: gokuma;weig;bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 467626354cff5643f5f6e602b9d7b72c6c1281ec
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: b154bd42c0f8bc6e185fa871b21249cad2869e72
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>数据科研虚拟机的十大功能
-Microsoft 数据科研虚拟机 (DSVM) 是一个功能强大的数据科研开发环境，使你可以执行各种数据探索和建模任务。 该环境中附带了内置和捆绑的多款主流分析工具，便于你针对本地、云或混合部署快速开始分析。 DSVM 与许多 Azure 服务密切合作，能够读取并处理已存储在 Azure、Azure SQL 数据仓库、Azure Data Lake、Azure 存储或 Azure Cosmos DB 中的数据。 它还可以利用 Azure 机器学习和 Azure 数据工厂等其他分析工具。
+Microsoft 数据科研虚拟机 (DSVM) 是一个功能强大的数据科研开发环境，可以用来执行各种数据探索和建模任务。 该环境中附带了内置和捆绑的多款主流分析工具，便于针对本地、云或混合部署快速开始分析。 DSVM 与许多 Azure 服务密切合作，能够读取并处理已存储在 Azure、Azure SQL 数据仓库、Azure Data Lake、Azure 存储或 Azure Cosmos DB 中的数据。 它还可以利用 Azure 机器学习和 Azure 数据工厂等其他分析工具。
 
-在本文中，我们将介绍如何使用 DSVM 执行各种数据科研任务，并与其他 Azure 服务交互。 可以在 DSVM 上执行的操作如下所示：
+在本文中，我们介绍如何使用 DSVM 执行各种数据科研任务，并与其他 Azure 服务交互。 可以在 DSVM 上执行的操作如下所示：
 
 1. 在 DSVM 上使用 Microsoft R Server、Python 本地探索数据和开发模型
-2. 使用 Jupyter Notebook 在浏览器上使用 Python 2、Python 3、Microsoft R（即专用于实现可扩展性和性能的 R 的企业就绪版）实验你的数据
-3. 在 Azure 机器学习上运转使用 R 和 Python 生成的模型，以便客户端应用程序使用简单的 Web 服务接口即可访问你的模型
+2. 使用 Jupyter Notebook 在浏览器上使用 Python 2、Python 3、Microsoft R（即专用于实现可扩展性和性能的 R 的企业就绪版）实验数据
+3. 在 Azure 机器学习上运转使用 R 和 Python 生成的模型，以便客户端应用程序使用简单的 Web 服务接口即可访问模型
 4. 使用 Azure 门户或 PowerShell 管理 Azure 资源
-5. 通过将 Azure 文件存储创建为可在 DSVM 上装载的驱动器，即可扩展你的存储空间并跨整个团队共享大型数据集/代码
-6. 使用 GitHub 与你的团队共享代码，使用预安装的 Git 客户端访问你的存储库 - Git Bash、Git GUI。
+5. 通过将 Azure 文件存储创建为可在 DSVM 上装载的驱动器，即可扩展存储空间并跨整个团队共享大型数据集/代码
+6. 使用 GitHub 与团队共享代码，使用预安装的 Git 客户端访问存储库 - Git Bash、Git GUI。
 7. 访问各种 Azure 数据和分析服务，如 Azure Blob 存储、Azure Data Lake、Azure HDInsight (Hadoop)、Azure Cosmos DB、Azure SQL 数据仓库和数据库
-8. 使用 DSVM 上预安装的 Power BI Desktop 生成报表和仪表板，然后将它们部署到云中
+8. 使用 DSVM 上预安装的 Power BI Desktop 生成报表和仪表板，并将它们部署到云中
 9. 动态缩放 DSVM 即可满足项目需求
 10. 在虚拟机上安装其他工具   
 
 > [!NOTE]
-> 需要为本文中列出的许多其他数据存储和分析服务支付额外的使用费用。 有关详细信息，请参阅 [Azure 定价](https://azure.microsoft.com/pricing/)页。
+> 本文中列出的许多额外的数据存储和分析服务将收取额外的使用费用。 有关详细信息，请参阅 [Azure 定价](https://azure.microsoft.com/pricing/)页。
 > 
 > 
 
 **先决条件**
 
-* 需要 Azure 订阅。 可以在[此处](https://azure.microsoft.com/free/)注册免费试用版。
+* 需要一个 Azure 订阅。 可以在[此处](https://azure.microsoft.com/free/)注册免费试用版。
 * 有关在 Azure 门户上配置数据科研虚拟机的说明，请参阅[创建虚拟机](https://portal.azure.com/#create/microsoft-ads.standard-data-science-vmstandard-data-science-vm)。
 
 ## <a name="1-explore-data-and-develop-models-using-microsoft-r-server-or-python"></a>1.使用 Microsoft R Server 或 Python 探索数据和开发模型
@@ -55,9 +54,9 @@ Microsoft 数据科研虚拟机 (DSVM) 是一个功能强大的数据科研开�
 
 对于 Python，可以使用已预安装 Python Tools for Visual Studio (PTVS) 扩展的 Visual Studio Community Edition 之类的 IDE。 默认情况下，仅在 PTVS 上对 Python 2.7 进行最基本的配置（不带 SciKit、Pandas 之类的任何分析库）。 为了支持 Anaconda Python 2.7 和 3.5，需要执行以下操作：
 
-* 按以下方法操作为每个版本创建自定义环境：在 Visual Studio 2015 Community Edition 中，导航到“工具” -> “Python 工具” -> “Python 环境”，然后单击“+ 自定义”
+* 按以下方法操作为每个版本创建自定义环境：在 Visual Studio 2015 Community Edition 中，导航到“工具” -> “Python 工具” -> “Python 环境”，并单击“+ 自定义”
 * 提供描述并将环境前缀路径设置为 *c:\anaconda*（适用于 Anaconda Python 2.7）或 *c:\anaconda\envs\py35*（适用于 Anaconda Python 3.5）
-* 单击“自动检测”，然后单击“应用”以保存环境。
+* 单击“自动检测”，并单击“应用”以保存环境。
 
 以下是自定义环境设置在 Visual Studio 中的外观。
 
@@ -65,19 +64,19 @@ Microsoft 数据科研虚拟机 (DSVM) 是一个功能强大的数据科研开�
 
 有关如何创建 Python 环境的更多详细信息，请参阅 [PTVS 文档](https://github.com/Microsoft/PTVS/wiki/Selecting-and-Installing-Python-Interpreters#hey-i-already-have-an-interpreter-on-my-machine-but-ptvs-doesnt-seem-to-know-about-it)。
 
-现在即可开始创建新的 Python 项目。 导航到“文件” -> “新建” -> “项目” -> “Python”，然后选择要生成的 Python 应用程序的类型。 可以将当前项目的 Python 环境设置为所需版本（Anaconda 2.7 或 3.5）：右键单击“Python 环境”、选择“添加/删除 Python 环境”，然后选择要与该项目关联的所需环境。 有关使用 PTVS 的更多详细信息，请参阅产品[文档](https://github.com/Microsoft/PTVS/wiki)页。
+现在即可开始创建新的 Python 项目。 导航到“文件” -> “新建” -> “项目” -> “Python”，并选择要生成的 Python 应用程序的类型。 可以将当前项目的 Python 环境设置为所需版本（Anaconda 2.7 或 3.5）：右键单击“Python 环境”、选择“添加/删除 Python 环境”，并选择要与该项目关联的所需环境。 有关使用 PTVS 的更多详细信息，请参阅产品[文档](https://github.com/Microsoft/PTVS/wiki)页。
 
 ## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2.借助 Jupyter Notebook，可使用 Python 或 R 探索数据并建模
 Jupyter Notebook 是一个功能强大的环境，为数据探索和建模提供基于浏览器的“IDE”。 可以在 Jupyter Notebook 中使用 Python 2、Python 3 或 R（开源和 Microsoft R Server）。
 
-若要启动 Jupyter Notebook，请单击标题为“Jupyter Notebook”的“开始”菜单图标/桌面图标。 在 DSVM 上，还可以浏览到“https://localhost:9999/”来访问 Jupiter Notebook。 如果它提示你输入密码，请按照[配置 Microsoft 数据科研虚拟机](machine-learning-data-science-provision-vm.md)主题的***如何在 Jupyter Notebook 服务器上创建强密码***部分中提供的说明操作，即可创建用于访问 Jupyter Notebook 的强密码。 
+若要启动 Jupyter Notebook，请单击标题为“Jupyter Notebook”的“开始”菜单图标/桌面图标。 在 DSVM 上，还可以浏览到“https://localhost:9999/”来访问 Jupiter Notebook。 如果它提示输入密码，请按照[配置 Microsoft 数据科研虚拟机](machine-learning-data-science-provision-vm.md)主题的***如何在 Jupyter Notebook 服务器上创建强密码***部分中提供的说明操作，即可创建用于访问 Jupyter Notebook 的强密码。 
 
-打开 Notebook 后，将看到一个目录，其中包含了预打包到 DSVM 中的几个 Notebook 示例。 现在你可以：
+打开 Notebook 后，应当会看到一个目录，其中包含了预打包到 DSVM 中的几个 Notebook 示例。 现在可以：
 
 * 单击要查看代码的 Notebook。
 * 按 **SHIFT-ENTER** 执行每个单元。
 * 依次单击“单元” -> “运行”运行整个 Notebook
-* 按以下方法操作创建新的 Notebook：单击 Jupyter 图标（左上角）、单击右侧的“新建”按钮，然后选择 Notebook 语言（也称为内核）。   
+* 按以下方法操作创建新的 Notebook：单击 Jupyter 图标（左上角）、单击右侧的“新建”按钮，并选择 Notebook 语言（也称为内核）。   
 
 > [!NOTE]
 > 我们目前支持 Python 2.7、Python 3.5 和 R。R 内核支持在开源 R 以及企业可扩展 Microsoft R Server 中进行编程。   
@@ -87,7 +86,7 @@ Jupyter Notebook 是一个功能强大的环境，为数据探索和建模提供
 打开 Notebook 后，即可浏览数据、生成模型、使用所选的库测试模型。
 
 ## <a name="3-build-models-using-r-or-python-and-operationalize-them-using-azure-machine-learning"></a>3.使用 R 或 Python 生成模型，使用 Azure 机器学习对模型进行操作
-模型生成并经验证后，下一步通常是将它部署到生产环境。 这使你的客户端应用程序可以实时或基于批处理模式调用模型预测。 Azure 机器学习提供一种机制，可用于操作使用 R 或 Python 生成的模型。
+模型生成并经验证后，下一步通常是将它部署到生产环境。 这使客户端应用程序可以实时或基于批处理模式调用模型预测。 Azure 机器学习提供一种机制，可用于操作使用 R 或 Python 生成的模型。
 
 当在 Azure 机器学习中操作模型时，会公开 Web 服务，允许客户端在输入参数中传递 REST 调用，以及以输出形式接收模型中的预测。   
 
@@ -107,7 +106,7 @@ Jupyter Notebook 是一个功能强大的环境，为数据探索和建模提供
     X, y = iris.data, iris.target
     clf.fit(X, y)
 
-用于将你的 Python 模型部署到 Azure 机器学习的方法将模型的预测封装到函数中，然后使用预安装的 Azure 机器学习 Python 库提供的属性对它进行修饰，这些属性表示你的 Azure 机器学习工作区 ID、API 密钥以及输入和返回参数。  
+用于将 Python 模型部署到 Azure 机器学习的方法将模型的预测封装到函数中，然后使用预安装的 Azure 机器学习 Python 库提供的属性对它进行修饰，这些属性表示 Azure 机器学习工作区 ID、API 密钥以及输入和返回参数。  
 
     from azureml import services
     @services.publish(workspaceid, auth_token)
@@ -138,7 +137,7 @@ Jupyter Notebook 是一个功能强大的环境，为数据探索和建模提供
 ### <a name="build-and-operationalize-r-models"></a>生成和操作 R 模型
 可以将数据科研虚拟机或其他平台上生成的 R 模型部署到 Azure 机器学习，所用方式与 Python 的部署方式类似。 步骤如下所示：
 
-* 创建如下所示的 settings.json 文件，提供你的工作区 ID 和身份验证令牌。
+* 创建一个 settings.json 文件来提供工作区 ID 和身份验证令牌，如以下代码示例中所示。
 * 编写适用于模型的预测函数的封装器。
 * 调用 Azure 机器学习库中的 ```publishWebService```，传入函数封装器。  
 
@@ -147,7 +146,7 @@ Jupyter Notebook 是一个功能强大的环境，为数据探索和建模提供
 #### <a name="setup"></a>设置
 1. 通过在 Revolution R Enterprise 8.0 IDE 或 R IDE 中键入 ```install.packages("AzureML")```，即可安装机器学习 R 程序包。
 2. 从[此处](https://cran.r-project.org/bin/windows/Rtools/)下载 RTools。 若要使 R 程序包在机器学习中运行，路径中需要 zip 实用程序（命名为 zip.exe）。
-3. 在主目录下名为 ```.azureml``` 的目录下创建 settings.json 文件，然后输入 Azure 机器学习工作区的参数：
+3. 在主目录下名为 ```.azureml``` 的目录下创建 settings.json 文件，并输入 Azure 机器学习工作区的参数：
 
 settings.json 文件结构：
 
@@ -193,13 +192,13 @@ settings.json 文件结构：
 可以在[此处](https://cran.r-project.org/web/packages/AzureML/AzureML.pdf)找到有关 Azure 机器学习 R 库的详细信息。
 
 ## <a name="4-administer-your-azure-resources-using-azure-portal-or-powershell"></a>4.使用 Azure 门户或 PowerShell 管理 Azure 资源
-DSVM 不仅允许你在虚拟机上本地生成分析解决方案，而且还允许你访问 Microsoft Azure 云上的服务。 Azure 提供多个计算、存储、数据分析服务和其他服务，可以从你的 DSVM 管理并访问这些服务。
+DSVM 不仅允许在虚拟机上本地生成分析解决方案，而且还允许访问 Microsoft Azure 云上的服务。 Azure 提供多个计算、存储、数据分析服务和其他服务，可以从 DSVM 管理并访问这些服务。
 
 若要管理 Azure 订阅和云资源，可以使用浏览器并指向 [Azure 门户](https://portal.azure.com)。 还可以使用 Azure Powershell 通过脚本管理 Azure 订阅和资源。
 可以从标题为“Microsoft Azure Powershell”的桌面快捷方式或从“开始”菜单，运行 Azure PowerShell。 有关如何使用 Windows Powershell 脚本管理 Azure 订阅和资源的详细信息，请参阅 [Microsoft Azure Powershell 文档](../powershell-azure-resource-manager.md)。
 
 ## <a name="5-extend-your-storage-space-with-a-shared-file-system"></a>5.使用共享文件系统扩展存储空间
-数据科学家可以在团队内共享大型数据集、代码或其他资源。 DSVM 自身具有大约 70GB 可用空间。 若要扩展存储，可以使用 Azure 文件服务，然后将它装载到 DSVM 或通过 REST API 访问它。   
+数据科学家可以在团队内共享大型数据集、代码或其他资源。 DSVM 自身具有大约 70GB 可用空间。 要扩展存储，可以使用 Azure 文件服务，然后将它装载到 DSVM 或通过 REST API 访问它。   
 
 > [!NOTE]
 > Azure 文件服务共享的最大空间为 5TB，单个文件大小限制为 1TB。   
@@ -239,11 +238,11 @@ DSVM 不仅允许你在虚拟机上本地生成分析解决方案，而且还允
 现在可以像访问 VM 上的任何正常驱动器一样访问此驱动器。
 
 ## <a name="6-share-code-with-your-team-using-github"></a>6.使用 GitHub 与团队共享代码
-GitHub 是一个代码存储库，可以在其中找到其他工具的许多示例代码和资源，这些工具使用了开发人员社区共享的各种技术。 它使用 Git 作为跟踪和存储代码文件版本的技术。 GitHub 也是一个平台，可以在其中创建你自己的存储库来存储团队的共享代码和文档、实现版本控制，还可以控制谁有权查看和贡献代码。 有关使用 Git 的详细信息，请访问 [GitHub 帮助页](https://help.github.com/)。 可以将 GitHub 用作与团队协作、使用社区开发的代码以及重新贡献代码给社区的方法之一。
+GitHub 是一个代码存储库，可以在其中找到其他工具的许多示例代码和资源，这些工具使用了开发人员社区共享的各种技术。 它使用 Git 作为跟踪和存储代码文件版本的技术。 GitHub 也是一个平台，可以在其中创建自己的存储库来存储团队的共享代码和文档、实现版本控制，还可以控制谁有权查看和贡献代码。 有关使用 Git 的详细信息，请访问 [GitHub 帮助页](https://help.github.com/)。 可以将 GitHub 用作与团队协作、使用社区开发的代码以及重新贡献代码给社区的方法之一。
 
-DSVM 已在命令行以及 GUI 上加载了用于访问 GitHub 存储库的客户端工具。 使用 Git 和 GitHub 的命令行工具称为 Git Bash。 DSVM 上已安装的 Visual Studio 具有 Git 扩展。 可以在“开始”菜单和桌面上找到这些工具的启动图标。
+DSVM 已在命令行以及 GUI 上加载了用于访问 GitHub 存储库的客户端工具。 用于使用 Git 和 GitHub 的命令行工具称为 Git Bash。 DSVM 上已安装的 Visual Studio 具有 Git 扩展。 可以在“开始”菜单和桌面上找到这些工具的启动图标。
 
-若要从 GitHub 存储库下载代码，请使用 ```git clone``` 命令。 例如，若要将 Microsoft 发布的数据科研存储库下载到当前目录，请在使用的 ```git-bash``` 中运行以下命令。
+若要从 GitHub 存储库下载代码，请使用 ```git clone``` 命令。 例如，要将 Microsoft 发布的数据科研存储库下载到当前目录，请在使用的 ```git-bash``` 中运行以下命令。
 
     git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
 
@@ -274,7 +273,7 @@ Azure Blob 是适合大小数据的经济可靠云存储。 了解如何移动�
 
     AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
 
-将 **C:\myfolder** 替换为存储有你的文件的路径、将 **mystorageaccount** 替换为 Blob 存储帐户名称、将 **mycontainer** 替换为容器名称、将 **storage account key** 替换为 Blob 存储访问密钥。 可以在 [Azure 门户](https://portal.azure.com)中找到你的存储帐户凭据。
+将 **C:\myfolder** 替换为存储有文件的路径、将 **mystorageaccount** 替换为 Blob 存储帐户名称、将 **mycontainer** 替换为容器名称、将 **storage account key** 替换为 Blob 存储访问密钥。 可以在 [Azure 门户](https://portal.azure.com)中找到存储帐户凭据。
 
 ![StorageAccountCredential_v2](./media/machine-learning-data-science-vm-do-ten-things/StorageAccountCredential_v2.png)
 
@@ -289,7 +288,7 @@ Azure Blob 是适合大小数据的经济可靠云存储。 了解如何移动�
 
 
 
-在运行 AzCopy 命令向 Azure 存储进行复制后，你会看到文件立即出现在 Azure 存储资源管理器中。
+在运行 AzCopy 命令向 Azure 存储进行复制后，会看到文件立即出现在 Azure 存储资源管理器中。
 
 ![AzCopy_run_finshed_Storage_Explorer_v3](./media/machine-learning-data-science-vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
@@ -297,8 +296,8 @@ Azure Blob 是适合大小数据的经济可靠云存储。 了解如何移动�
 
 还可以在 VM 中使用 Azure 存储资源管理器上传本地文件中的数据：
 
-* 若要将数据上传到容器，请选择目标容器，然后单击“上传”按钮。![在存储资源管理器中上传](./media/machine-learning-data-science-vm-do-ten-things/storage-accounts.png)
-* 单击“文件”框右侧的“...”，选择要从文件系统上传的一个或多个文件，然后单击“上传”开始上传文件。![将文件上传到 Blob](./media/machine-learning-data-science-vm-do-ten-things/upload-files-to-blob.png)
+* 要将数据上传到容器，请选择目标容器，然后单击“上传”按钮。![在存储资源管理器中上传](./media/machine-learning-data-science-vm-do-ten-things/storage-accounts.png)
+* 单击“文件”框右侧的“...”，选择要从文件系统上传的一个或多个文件，并单击“上传”开始上传文件。![将文件上传到 Blob](./media/machine-learning-data-science-vm-do-ten-things/upload-files-to-blob.png)
 
 **从 Azure Blob 读取数据：机器学习读取器模块**
 
@@ -325,7 +324,7 @@ Azure Blob 是适合大小数据的经济可靠云存储。 了解如何移动�
     import zipfile
     import random
 
-然后插入你的 Azure Blob 帐户凭据，读取 Blob 中的数据：
+然后插入 Azure Blob 帐户凭据，读取 Blob 中的数据：
 
     CONTAINERNAME = 'xxx'
     STORAGEACCOUNTNAME = 'xxxx'
@@ -363,7 +362,7 @@ Azure Data Lake 存储是一个超大规模存储库，适用于大数据分析�
 
 ![Azure_Data_Lake_Create_v2](./media/machine-learning-data-science-vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
 
-* 在位于虚拟机中的 Visual Studio Community Edition 上，已安装在此[链接](https://www.microsoft.com/download/details.aspx?id=49504)处找到的 **Visual Studio** 中的 **Azure Data Lake 工具**。 在启动 Visual Studio 并登录你的 Azure 订阅后，会在 Visual Studio 的左侧看到你的 Azure Data Analytics 帐户和存储。
+* 在位于虚拟机中的 Visual Studio Community Edition 上，已安装在此[链接](https://www.microsoft.com/download/details.aspx?id=49504)处找到的 **Visual Studio** 中的 **Azure Data Lake 工具**。 在启动 Visual Studio 并登录 Azure 订阅后，应当会在 Visual Studio 的左侧看到 Azure Data Analytics 帐户和存储。
 
 ![Azure_Data_Lake_PlugIn_v2](./media/machine-learning-data-science-vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
@@ -377,7 +376,7 @@ Azure Data Lake 存储是一个超大规模存储库，适用于大数据分析�
 
 **将数据从 Azure Blob 读取到 Data Lake：U-SQL**
 
-如果数据驻留在 Azure Blob 存储中，可以使用 U-SQL 查询直接读取 Azure 存储 Blob 中的数据。 编写 U-SQL 查询之前，确保你的 Blob 存储帐户已链接到 Azure Data Lake。 转到 **Azure 门户**、找到 Azure Data Lake Analytics 仪表板、单击“添加数据源”、选择 **Azure 存储**的存储类型，然后插入你的 Azure 存储帐户名称和密钥。 然后，将可以引用存储帐户中存储的数据。
+如果数据驻留在 Azure Blob 存储中，可以使用 U-SQL 查询直接读取 Azure 存储 Blob 中的数据。 编写 U-SQL 查询之前，确保 Blob 存储帐户已链接到 Azure Data Lake。 转到 **Azure 门户**、找到 Azure Data Lake Analytics 仪表板、单击“添加数据源”、选择 **Azure 存储**的存储类型，并插入你的 Azure 存储帐户名称和密钥。 然后，你将能够引用存储帐户中存储的数据。
 
 ![输入存储帐户和密钥](./media/machine-learning-data-science-vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
@@ -427,7 +426,7 @@ Azure Data Lake 存储是一个超大规模存储库，适用于大数据分析�
 
 
 
-在将查询提交到服务器后，将显示表明作业状态的图表。
+将查询提交到服务器后，会显示一个图表，其中显示了作业状态。
 
 ![作业状态关系图](./media/machine-learning-data-science-vm-do-ten-things/USQL_Job_Status.PNG)
 
@@ -458,11 +457,11 @@ Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服�
 
 ![指向使用 HDInsight 群集创建的存储帐户的链接](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_v4.PNG)
 
-* 在创建群集后，必须启用对其头节点的**远程访问**。 记住在此处指定的远程访问凭据（与创建时为群集指定的远程访问凭据不同）：稍后你将需要它们。
+* 在创建群集后，必须启用对其头节点的**远程访问**。 请记住在此处指定的远程访问凭据（与创建群集时为其指定的远程访问凭据不同）：后续步骤中需要使用这些凭据。
 
 ![启用远程访问](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
-* 创建 Azure 机器学习工作区。 机器学习实验将存储在此机器学习工作区中。 选择门户中突出显示的选项，如以下屏幕截图中所示。
+* 创建 Azure 机器学习工作区。 机器学习实验存储在此机器学习工作区中。 选择门户中突出显示的选项，如以下屏幕截图中所示：
 
 ![创建 Azure 机器学习工作区](./media/machine-learning-data-science-vm-do-ten-things/Create_ML_Space.PNG)
 
@@ -470,7 +469,7 @@ Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服�
 
 ![输入机器学习工作区参数](./media/machine-learning-data-science-vm-do-ten-things/Create_ML_Space_step2_v2.PNG)
 
-* 使用 IPython Notebook 上传数据 首先导入所需程序包、插入凭据、在你的存储帐户中创建数据库，然后将数据上传到 HDI 群集。
+* 使用 IPython Notebook 上传数据 首先导入所需程序包、插入凭据、在存储帐户中创建数据库，然后将数据上传到 HDI 群集。
 
         #Import required Packages
         import pyodbc
@@ -617,7 +616,7 @@ Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服�
 
 ![行程频率图](./media/machine-learning-data-science-vm-do-ten-things/Exploration_Frequency_tip_or_not_v3.PNG)
 
-我们还可以计算上车位置和下车位置之间的距离，然后将该距离与行程距离比较。
+我们还可以计算上车位置和下车位置之间的距离，并将该距离与行程距离比较。
 
     queryString = """
                     select pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_distance, trip_time_in_secs,
@@ -687,7 +686,7 @@ Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服�
         """
         cursor.execute(queryString)
 
-        --- now insert contents of the join into the above internal table
+        --- now insert contents of the join into the preceding internal table
 
         queryString = """
         insert overwrite table nyctaxi_downsampled_dataset_testNEW
@@ -786,7 +785,7 @@ Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服�
 
 **使用机器学习从 HDI 读取数据：读取器模块**
 
-还可以在机器学习工作室中使用**读取器**模块访问 Hadoop 群集中的数据库。 插入你的 HDI 群集和 Azure 存储帐户的凭据，将能够使用 HDI 群集中的数据库生成机器学习模型。
+还可以在机器学习工作室中使用**读取器**模块访问 Hadoop 群集中的数据库。 插入 HDI 群集和 Azure 存储帐户的凭据，以便能够使用 HDI 群集中的数据库构建机器学习模型。
 
 ![读取器模块属性](./media/machine-learning-data-science-vm-do-ten-things/AML_Reader_Hive.PNG)
 
@@ -800,21 +799,21 @@ Azure SQL 数据仓库是一项弹性数据仓库即服务，具有企业级 SQL
 可以按照本[文章](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)中提供的说明设置 Azure SQL 数据仓库。 完成设置 Azure SQL 数据仓库后，即可使用此[演练](machine-learning-data-science-process-sqldw-walkthrough.md)，来使用 SQL 数据仓库中的数据执行数据上传、探索和建模。
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
-Azure Cosmos DB 是云中的 NoSQL 数据库。 它允许你使用 JSON 等文档，还允许你存储和查询文档。
+Azure Cosmos DB 是云中的 NoSQL 数据库。 它允许使用 JSON 等文档，还允许存储和查询文档。
 
 若要从 DSVM 访问 Azure Cosmos DB，需要执行以下每个必要步骤。
 
 1. 安装 DocumentDB Python SDK（在命令提示符下运行 ```pip install pydocumentdb```）
 2. 从 [Azure 门户](https://portal.azure.com)创建 Azure Cosmos DB 帐户和数据库
-3. 从[此处](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)下载“Azure Cosmos DB 迁移工具”，然后解压缩到所选目录
-4. 使用迁移工具（安装 Cosmos DB 迁移工具所在目录中的 dtui.exe）的以下命令参数将[公共 blob](https://cahandson.blob.core.windows.net/samples/volcano.json) 上存储的 JSON 数据（火山数据）导入 Cosmos DB。 输入以下源和目标位置参数。
+3. 从[此处](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)下载“Azure Cosmos DB 迁移工具”，并解压缩到所选目录
+4. 使用迁移工具（安装 Cosmos DB 迁移工具所在目录中的 dtui.exe）的以下命令参数将[公共 blob](https://cahandson.blob.core.windows.net/samples/volcano.json) 上存储的 JSON 数据（火山数据）导入 Cosmos DB。 通过以下参数输入源和目标位置：
    
     /s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1
 
 导入数据后，可以转到 Jupyter 并打开标题为 *DocumentDBSample* 的 Notebook，其中包含用于访问 DocumentDB 和执行一些基本查询的 python 代码。 访问服务的[文档页](https://docs.microsoft.com/azure/cosmos-db/)可了解有关 Cosmos DB 的详细信息。
 
 ## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8.使用 Power BI Desktop 生成报表和仪表板
-让我们在 Power BI 中可视化我们在上述 Cosmos DB 示例中看到的火山 JSON 文件，以获取对数据的视觉洞察。 [Power BI 文章](../cosmos-db/powerbi-visualize.md)中提供了详细步骤。 大致步骤如下所示：
+让我们在 Power BI 中可视化我们在上述 Cosmos DB 示例中看到的火山 JSON 文件，以便以可视化方式查看数据。 [Power BI 文章](../cosmos-db/powerbi-visualize.md)中提供了详细步骤。 下面是概要步骤：
 
 1. 打开 Power BI Desktop 并执行“获取数据”。 指定如下 URL：https://cahandson.blob.core.windows.net/samples/volcano.json
 2. 应该将导入的 JSON 记录看作列表
@@ -822,9 +821,9 @@ Azure Cosmos DB 是云中的 NoSQL 数据库。 它允许你使用 JSON 等文�
 4. 通过单击展开图标（在列右侧有“左箭头和右箭头”图标的展开图标）展开列
 5. 请注意，位置是一个“记录”字段。 展开记录并仅选择坐标。 坐标是一个列表列
 6. 添加新的列，以使用公式 ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})``` 将列表坐标列转换为逗号分隔的经纬度列（连接坐标列表字段中的两个元素）。
-7. 最后，将 ```Elevation``` 列转换为小数，然后选择“关闭”和“应用”。
+7. 最后，将 ```Elevation``` 列转换为小数，并选择“关闭”和“应用”。
 
-不执行上述步骤，而是将上述步骤脚本化的以下代码粘贴到 Power BI 中的高级编辑器（允许使用查询语言编写数据转换）。
+你可以不执行上述步骤，而是将以下代码（该代码以脚本方式输出所使用的步骤）粘贴到 Power BI 中的高级编辑器，可以使用该编辑器以查询语言编写数据转换。
 
     let
         Source = Json.Document(Web.Contents("https://cahandson.blob.core.windows.net/samples/volcano.json")),
@@ -838,11 +837,11 @@ Azure Cosmos DB 是云中的 NoSQL 数据库。 它允许你使用 JSON 等文�
 
 
 
-现在，Power BI 数据模型中有数据。 Power BI Desktop 的外观应如下所示。
+现在，Power BI 数据模型中有数据。 你的 Power BI Desktop 应当如下所示：
 
 ![Power BI Desktop](./media/machine-learning-data-science-vm-do-ten-things/PowerBIVolcanoData.png)
 
-可以使用数据模型开始生成报表和可视化效果。 可以遵循此 [Power BI 文章](../cosmos-db/powerbi-visualize.md#build-the-reports)中的步骤生成报表。 最终结果将是如下所示的报表。
+可以使用数据模型开始生成报表和可视化效果。 可以遵循此 [Power BI 文章](../cosmos-db/powerbi-visualize.md#build-the-reports)中的步骤生成报表。 最终结果是如下所示的报表。
 
 ![Power BI Desktop 报表视图 - Power BI 连接器](./media/machine-learning-data-science-vm-do-ten-things/power_bi_connector_pbireportview2.png)
 
@@ -850,20 +849,20 @@ Azure Cosmos DB 是云中的 NoSQL 数据库。 它允许你使用 JSON 等文�
 可以增加和减少 DSVM 以满足项目需求。 如果不需要在晚上或周末使用 VM，只需从 [Azure 门户](https://portal.azure.com)关闭 VM。
 
 > [!NOTE]
-> 如果仅使用 VM 上的操作系统关闭按钮，会产生计算费用。  
+> 如果仅使用 VM 上的操作系统关闭按钮，则会产生计算费用。  
 > 
 > 
 
-如果需要处理一些大型分析以及需要更多 CPU 和/或内存和/或磁盘容量，可以基于 CPU 内核、内存容量和磁盘类型（包括固态驱动器）找到满足你的计算和预算需求的许多可选 VM 大小。 可在 [Azure 虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/)页上找到 VM 及其每小时计算定价的完整列表。
+如果需要处理一些大型分析以及需要更多 CPU 和/或内存和/或磁盘容量，可以基于 CPU 内核、内存容量和磁盘类型（包括固态驱动器）找到满足计算和预算需求的许多可选 VM 大小。 可在 [Azure 虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/)页上找到 VM 及其每小时计算定价的完整列表。
 
-同样地，如果你对 VM 处理能力的需求减少（例如：已将主要工作负荷移动到 Hadoop 或 Spark 群集），可以通过在 [Azure 门户](https://portal.azure.com)中转到 VM 实例设置，来减少群集。 屏幕截图如下所示。
+同样地，如果对 VM 处理能力的需求减少（例如：已将主要工作负荷移动到 Hadoop 或 Spark 群集），可以通过在 [Azure 门户](https://portal.azure.com)中转到 VM 实例设置，来减少群集。 屏幕截图如下所示。
 
 ![VM 实例设置](./media/machine-learning-data-science-vm-do-ten-things/VMScaling.PNG)
 
 ## <a name="10-install-additional-tools-on-your-virtual-machine"></a>10.在虚拟机上安装其他工具
-我们打包了多个工具，我们认为这些工具将能够解决许多常规数据分析需求，并且应该能节省你的时间（避免不得不依次安装并配置环境）以及费用（只支付所用资源的费用）。
+我们打包了多个工具，我们认为这些工具能够解决许多常规数据分析需求，并且应该能节省时间（避免不得不依次安装并配置环境）以及费用（只支付所用资源的费用）。
 
-可以利用本文中介绍的其他 Azure 数据和分析服务来增强分析环境。 我们了解，在某些情况下你的需求可能需要其他工具（包括一些专用第三方工具）。 你在虚拟机上具有完全的管理访问权限，可安装所需的新工具。 还可以安装未预安装的 Python 和 R 中的其他程序包。 对于 Python，可以使用 ```conda``` 或 ```pip```。 对于 R，可以在 R 控制台中使用 ```install.packages()```，或者使用 IDE 并依次选择“程序包” -> “安装程序包...”。
+可以利用本文中介绍的其他 Azure 数据和分析服务来增强分析环境。 我们了解，在某些情况下需求可能需要其他工具（包括一些专用第三方工具）。 在虚拟机上具有完全的管理访问权限，可安装所需的新工具。 还可以安装未预安装的 Python 和 R 中的其他程序包。 对于 Python，可以使用 ```conda``` 或 ```pip```。 对于 R，可以在 R 控制台中使用 ```install.packages()```，或者使用 IDE 并依次选择“程序包” -> “安装程序包...”。
 
 ## <a name="summary"></a>摘要
 这些只是 Microsoft 数据科研虚拟机上的一部分功能。 有更多使它成为有效分析环境的功能。

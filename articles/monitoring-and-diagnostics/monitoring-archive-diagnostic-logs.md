@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2016
 ms.author: johnkem
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3e82377c36da1563931bc0301daa4534e6f82377
-ms.openlocfilehash: e3413236445f3f6034a228dc93624d3fdc9b87ad
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 6ceb95dac5a4037c8f2ff93f8245b36f0842a427
 ms.contentlocale: zh-cn
-ms.lasthandoff: 12/10/2016
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="archive-azure-diagnostic-logs"></a>存档 Azure 诊断日志
@@ -28,14 +28,14 @@ ms.lasthandoff: 12/10/2016
 在开始之前，需要[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)，将诊断日志存档到其中。 强烈建议用户不要使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制监视数据所需的访问权限。 但是，如果还要将活动日志和诊断指标存档到存储帐户，则也可将该存储帐户用于诊断日志，使得所有监视数据都位于一个中心位置。 所使用的存储帐户必须是一个通用存储帐户，而不是一个 blob 存储帐户。
 
 ## <a name="diagnostic-settings"></a>诊断设置
-若要使用下述任意方法存档诊断日志，可针对特定资源设置“诊断设置”。 资源的诊断设置定义已存储或流式传输的日志的类别，以及输出 - 存储帐户和/或事件中心。 它还定义存储在存储帐户中的每个日志类别的事件的保留策略（需保留的天数）。 如果将保留策略设置为零，则会无限期（即永久）存储该日志类别的事件。 如果不需要无限期存储，可将保留策略设置为 1 到 2147483647 之间的任意天数。 [单击此处详细了解诊断设置](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)。 保留策略按天应用，因此在一天结束时 (UTC)，将会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，将会删除前天的日志
+若要使用下述任意方法存档诊断日志，可针对特定资源设置“诊断设置”。 资源的诊断设置定义已存储或流式传输的日志的类别，以及输出 - 存储帐户和/或事件中心。 它还定义存储在存储帐户中的每个日志类别的事件的保留策略（需保留的天数）。 如果将保留策略设置为零，则会无限期（即永久）存储该日志类别的事件。 如果不需要无限期存储，可将保留策略设置为 1 到 2147483647 之间的任意天数。 [单击此处详细了解诊断设置](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)。 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志
 
 ## <a name="archive-diagnostic-logs-using-the-portal"></a>使用门户存档诊断日志
 1. 在门户中，单击需要启用诊断日志存档功能的资源的资源边栏选项卡。
 2. 在资源设置菜单的“监视”部分，选择“诊断”。
    
     ![资源菜单的“监视”部分](media/monitoring-archive-diagnostic-logs/diag-log-monitoring-sec.png)
-3. 选中与“导出到存储帐户”对应的框，然后选择存储帐户。 （可选）使用“保留期(天)”滑块设置这些日志的保留天数。 如果保留期为 0 天，则会无限期存储日志。
+3. 选中与“导出到存储帐户”对应的框，并选择存储帐户。 （可选）使用“保留期(天)”滑块设置这些日志的保留天数。 如果保留期为 0 天，则会无限期存储日志。
    
     ![“诊断日志”边栏选项卡](media/monitoring-archive-diagnostic-logs/diag-log-monitoring-blade.png)
 4. 单击“保存” 。

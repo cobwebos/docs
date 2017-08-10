@@ -12,20 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 08/02/2017
 ms.author: anandy
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 9bb29624324305f5295e0a50ef79d8f4c6d063c0
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 87807a203d71b3abfe3e93132eb7d0b82b14b4ee
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/21/2017
+ms.lasthandoff: 08/03/2017
 
 ---    
 
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>更新 Active Directory 联合身份验证服务 (AD FS) 场的 SSL 证书
 
 ## <a name="overview"></a>概述
-本文介绍如何使用 Azure AD Connect 更新 Active Directory 联合身份验证服务 (AD FS) 场的 SSL 证书。 如果将 Azure AD Connect 中的登录方法设置为 AD FS，则可使用 Azure AD Connect 工具轻松更新 AD FS 场的 SSL 证书。 可以跨所有联合身份验证和 Web 应用程序代理 (WAP) 服务器，通过简单的 3 个步骤来执行此操作：
+本文介绍如何使用 Azure AD Connect 更新 Active Directory 联合身份验证服务 (AD FS) 场的 SSL 证书。 即使所选的用户登录方法不是 AD FS，也可以使用 Azure AD Connect 工具轻松更新 AD FS 场的 SSL 证书。
+
+可以通过三个简单步骤在所有联合服务器和 Web 应用程序代理 (WAP) 服务器上执行整个更新 AD FS 场的 SSL 证书的操作：
 
 ![三个步骤](./media/active-directory-aadconnectfed-ssl-update/threesteps.png)
 
@@ -90,13 +92,13 @@ Azure AD Connect 会尝试通过以下方式自动获取有关 AD FS 场的信�
 
     如果连接到 AD FS 服务器时提供的凭据也没有管理 WAP 服务器的特权，则 Azure AD Connect 会要求用户提供在 WAP 服务器上具有管理特权的凭据。
 
-* **该服务器将显示为脱机。我该怎样做？**
+* **该服务器会显示为脱机。我该怎样做？**
 
-    如果该服务器处于脱机状态，Azure AD Connect 将无法执行任何操作。 如果该服务器属于 AD FS 场，则检查与该服务器的连接。 解决该问题之后，请按“刷新”图标以更新向导中的状态。 如果该服务器此前属于场，但现在不再存在，请单击“删除”，将其从 Azure AD Connect 保留的服务器列表中删除。 从 Azure AD Connect 的列表中删除服务器不会变更 AD FS 本身的配置。 如果使用的是 Windows Server 2016 或更高版本中的 AD FS，该服务器将保留在配置设置中，并将在下次运行此任务时再次显示该服务器。
+    如果该服务器处于脱机状态，Azure AD Connect 将无法执行任何操作。 如果该服务器属于 AD FS 场，则检查与该服务器的连接。 解决该问题之后，请按“刷新”图标以更新向导中的状态。 如果该服务器此前属于场，但现在不再存在，请单击“删除”，将其从 Azure AD Connect 保留的服务器列表中删除。 从 Azure AD Connect 的列表中删除服务器不会变更 AD FS 本身的配置。 如果使用的是 Windows Server 2016 或更高版本中的 AD FS，该服务器将保留在配置设置中，并会在下次运行此任务时再次显示该服务器。
 
 * **能否使用新的 SSL 证书更新一部分场服务器？**
 
-    是的。 你始终可以再次运行“更新 SSL 证书”任务，以更新剩余的服务器。 在“选择要更新 SSL 证书的服务器”页上，可以根据“SSL 到期日期”对服务器列表进行排序，以轻松访问尚未更新的服务器。
+    是的。 始终可以再次运行“更新 SSL 证书”任务，以更新剩余的服务器。 在“选择要更新 SSL 证书的服务器”页上，可以根据“SSL 到期日期”对服务器列表进行排序，以轻松访问尚未更新的服务器。
 
 * **我在上次运行时删除了服务器，但该服务器仍显示为脱机并且在“AD FS 服务器”页中列出。为什么该脱机服务器在删除后仍显示在那儿？**
 

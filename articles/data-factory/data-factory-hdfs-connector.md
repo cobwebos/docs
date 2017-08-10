@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: dc501a1c7c0d6a1d70ce368f86a967f889394dc7
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 9a8f3156a62a1a7aa49377349e8a85454efeda50
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>使用 Azure 数据工厂从本地 HDFS 移动数据
@@ -43,7 +42,7 @@ ms.lasthandoff: 04/12/2017
 
 创建管道的最简单方法是使用**复制向导**。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager 模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure 资源管理器模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -184,7 +183,7 @@ ms.lasthandoff: 04/12/2017
 
 第一步，设置数据管理网关。 [在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文中的说明。
 
-**HDFS 链接服务：**此示例使用 Windows 身份验证。 请参阅 [HDFS 链接服务](#linked-service)部分，了解各种可用的身份验证。
+**HDFS 链接服务：**此示例使用 Windows 身份验证。 请参阅 [HDFS 链接服务](#linked-service-properties)部分，了解各种可用的身份验证。
 
 ```JSON
 {
@@ -343,7 +342,7 @@ ms.lasthandoff: 04/12/2017
 ```
 
 ## <a name="use-kerberos-authentication-for-hdfs-connector"></a>对 HDFS 连接器使用 Kerberos 身份验证
-设置本地环境有两个选项，以便在 HDFS 连接器中使用 Kerberos 身份验证。 可以选择更适合你的情况的选项。
+设置本地环境有两个选项，以便在 HDFS 连接器中使用 Kerberos 身份验证。 可以选择更适合情况的选项。
 * 选项 1：[将网关计算机加入 Kerberos 领域](#kerberos-join-realm)
 * 选项 2：[启用 Windows 域和 Kerberos 领域之间的相互信任](#kerberos-mutual-trust)
 
@@ -465,7 +464,7 @@ ms.lasthandoff: 04/12/2017
 
     2. 通过单击“查看” > “高级功能”配置高级功能。
 
-    3. 找到要创建映射的帐户，然后右键单击以查看“名称映射”> 单击“Kerberos 名称”选项卡。
+    3. 找到要创建映射的帐户，并右键单击以查看“名称映射”> 单击“Kerberos 名称”选项卡。
 
     4. 从领域中添加主体。
 
@@ -480,10 +479,10 @@ ms.lasthandoff: 04/12/2017
 
 **在 Azure 数据工厂中：**
 
-* 使用 **Windows 身份验证**配置 HDFS 连接器，以及用于连接到 HDFS 数据源的域帐户或 Kerberos 主体。 查看配置详细信息中的 [HDFS 链接服务属性](#linked-service)部分。
+* 使用 **Windows 身份验证**配置 HDFS 连接器，以及用于连接到 HDFS 数据源的域帐户或 Kerberos 主体。 查看配置详细信息中的 [HDFS 链接服务属性](#linked-service-properties)部分。
 
 > [!NOTE]
-> 若要将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
+> 要将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
 
 ## <a name="performance-and-tuning"></a>性能和优化

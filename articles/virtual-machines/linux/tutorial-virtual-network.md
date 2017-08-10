@@ -16,17 +16,17 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: de7e77b7d4c26b08e73036b8da67489823100f4c
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 2366905b8160675f77cbc41ba97540af70be8c01
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
 # <a name="manage-azure-virtual-networks-and-linux-virtual-machines-with-the-azure-cli"></a>使用 Azure CLI 管理 Azure 虚拟网络和 Linux 虚拟机
 
-Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程将指导读者部署两个虚拟机，并为这些 VM 配置 Azure 网络。 本教程中的示例假设 VM 将要托管包含数据库后端的 Web 应用程序，但本教程并未介绍如何部署应用程序。 本教程将介绍如何执行下列操作：
+Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程会指导读者部署两个虚拟机，并为这些 VM 配置 Azure 网络。 本教程中的示例假设 VM 将要托管包含数据库后端的 Web 应用程序，但本教程并未介绍如何部署应用程序。 本教程介绍如何：
 
 > [!div class="checklist"]
 > * 部署虚拟网络
@@ -47,7 +47,7 @@ Azure 虚拟网络在虚拟机、Internet 与其他 Azure 服务（例如 Azure 
 
 ## <a name="deploy-virtual-network"></a>部署虚拟网络
 
-本教程将创建包含两个子网的单个虚拟网络。 一个前端子网用于托管 Web 应用程序，一个后端子网用于托管数据库服务器。
+本教程会创建包含两个子网的单个虚拟网络。 一个前端子网用于托管 Web 应用程序，一个后端子网用于托管数据库服务器。
 
 在创建虚拟网络之前，请先使用 [az group create](/cli/azure/group#create) 创建一个资源组。 以下示例在 eastus 位置创建名为 *myRGNetwork* 的资源组。
 
@@ -122,7 +122,7 @@ az vm create \
 az vm deallocate --resource-group myRGNetwork --name myFrontEndVM
 ```
 
-使用 [az network public-ip update](/azure/network/public-ip#update) 命令更新分配方法。 在本例中，`--allocaion-metod` 将设置为 *static*。
+使用 [az network public-ip update](/cli/azure/network/public-ip#update) 命令更新分配方法。 在本例中，`--allocation-method` 将设置为 *static*。
 
 ```azurecli-interactive 
 az network public-ip update --resource-group myRGNetwork --name myFrontEndIP --allocation-method static
@@ -144,7 +144,7 @@ az vm start --resource-group myRGNetwork --name myFrontEndVM --no-wait
 
 ### <a name="network-security-group-rules"></a>网络安全组规则
 
-NSG 规则定义要允许或拒绝哪些网络端口上的流量。 这些规则可以包括源和目标 IP 地址范围，以便控制特定系统或子网之间的流量。 NSG 规则还包括优先级（介于 1 和 4096 之间）。 将按优先级顺序来评估规则。 优先级为 100 的规则将在优先级为 200 的规则之前评估。
+NSG 规则定义要允许或拒绝哪些网络端口上的流量。 这些规则可以包括源和目标 IP 地址范围，以便控制特定系统或子网之间的流量。 NSG 规则还包括优先级（介于 1 和 4096 之间）。 将按优先级顺序来评估规则。 优先级为 100 的规则会在优先级为 200 的规则之前评估。
 
 所有 NSG 都包含一组默认规则。 默认规则无法删除，但由于给它们分配的优先级最低，可以用创建的规则来重写它们。
 
@@ -211,7 +211,7 @@ az network nsg rule create \
   --destination-port-range 80
 ```
 
-现在，只能在端口 *22* 和端口 *80* 上访问前端 VM。 其他所有传入流量将在网络安全组中被阻止。 可视化 NSG 规则配置可能很有帮助。 使用 [az network rule list](/cli/azure/network/nsg/rule#list) 命令返回 NSG 规则配置。 
+现在，只能在端口 *22* 和端口 *80* 上访问前端 VM。 其他所有传入流量会在网络安全组中被阻止。 可视化 NSG 规则配置可能很有帮助。 使用 [az network rule list](/cli/azure/network/nsg/rule#list) 命令返回 NSG 规则配置。 
 
 ```azurecli-interactive 
 az network nsg rule list --resource-group myRGNetwork --nsg-name myNSGFrontEnd --output table
@@ -281,7 +281,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-现在，只能通过前端子网在端口 *22* 和端口 *3306* 上访问后端 VM。 其他所有传入流量将在网络安全组中被阻止。 可视化 NSG 规则配置可能很有帮助。 使用 [az network rule list](/cli/azure/network/nsg/rule#list) 命令返回 NSG 规则配置。 
+现在，只能通过前端子网在端口 *22* 和端口 *3306* 上访问后端 VM。 其他所有传入流量会在网络安全组中被阻止。 可视化 NSG 规则配置可能很有帮助。 使用 [az network rule list](/cli/azure/network/nsg/rule#list) 命令返回 NSG 规则配置。 
 
 ```azurecli-interactive 
 az network nsg rule list --resource-group myRGNetwork --nsg-name myNSGBackEnd --output table

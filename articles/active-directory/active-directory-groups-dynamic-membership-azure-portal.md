@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory 中基于属性的动态组成员身份 | Microsoft Docs"
 description: "如何为动态组成员身份创建高级规则，包括支持的表达式规则运算符和参数。"
 services: active-directory
@@ -16,20 +15,30 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: da03dc8afa58ddfe97301dabed186ed325410937
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 0b861bea8948c7022d2ce95a2a7975a5ad7ad8a7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>在 Azure Active Directory 中为动态组成员身份创建基于属性的规则
-在 Azure Active Directory (Azure AD) 中，可以创建高级规则以启用基于属性的复杂动态组成员身份。 本文详细介绍了用于创建动态成员身份规则的属性和语法。
+在 Azure Active Directory (Azure AD) 中，可以创建高级规则以启用基于属性的复杂动态组成员身份。 本文详细介绍了用于为用户或设备创建动态成员身份规则的属性和语法。
 
-## <a name="to-create-the-advanced-rule"></a>创建高级规则
-1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“更多服务”，在文本框中输入“用户和组”，然后选择 **Enter**。
+当用户或设备的任何属性发生更改时，系统将评估目录中的所有动态组规则，以查看该更改是否会触发任何组添加或删除。 如果用户或设备满足组的规则，它们将添加为该组的成员。 如果用户或设备不再满足该规则，则会将其删除。
+
+> [!NOTE]
+> - 你可以为安全组或 Office 365 组中的动态成员身份设置规则。
+>
+> - 此功能需要将每个用户成员的 Azure AD Premium P1 许可证至少添加到一个动态组。
+>
+> - 可以创建设备或用户的动态组，但不能创建同时包含用户和设备对象的规则。
+
+> - 目前不能基于所有者用户的属性创建设备组。 设备成员身份规则只能引用目录中设备对象的直接属性。
+
+## <a name="to-create-an-advanced-rule"></a>创建高级规则
+1. 使用作为全局管理员或用户帐户管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
+2. 选择“更多服务”，在文本框中输入“用户和组”，并选择 **Enter**。
 
    ![打开“用户管理”](./media/active-directory-groups-dynamic-membership-azure-portal/search-user-management.png)
 3. 在“用户和组”边栏选项卡中，选择“所有组”。
@@ -38,10 +47,10 @@ ms.lasthandoff: 05/08/2017
 4. 在“用户和组 - 所有组”边栏选项卡中，选择“添加”命令。
 
    ![添加新组](./media/active-directory-groups-dynamic-membership-azure-portal/add-group-type.png)
-5. 在“组”边栏选项卡上，输入新组的名称和说明。 根据是要为用户还是设备创建规则，在“成员身份类型”中选择“动态用户”或“动态设备”，然后选择“添加动态查询”。 有关用于设备规则的属性，请参阅[使用属性创建设备对象的规则](#using-attributes-to-create-rules-for-device-objects)。
+5. 在“组”边栏选项卡上，输入新组的名称和说明。 根据是要为用户还是设备创建规则，在“成员身份类型”中选择“动态用户”或“动态设备”，并选择“添加动态查询”。 有关用于设备规则的属性，请参阅[使用属性创建设备对象的规则](#using-attributes-to-create-rules-for-device-objects)。
 
    ![添加动态成员身份规则](./media/active-directory-groups-dynamic-membership-azure-portal/add-dynamic-group-rule.png)
-6. 在“动态成员身份规则”边栏选项卡上的“添加动态成员身份高级规则”框中输入规则，然后在边栏选项卡底部选择“创建”。
+6. 在“动态成员身份规则”边栏选项卡上的“添加动态成员身份高级规则”框中输入规则，并在边栏选项卡底部选择“创建”。
 7. 在“组”边栏选项卡中，选择“创建”以创建该组。
 
 ## <a name="constructing-the-body-of-an-advanced-rule"></a>构造高级规则的正文
@@ -51,19 +60,19 @@ ms.lasthandoff: 05/08/2017
 * 二进制运算符
 * 右侧常量
 
-完整的高级规则如下所示：(leftParameter binaryOperator "RightConstant")，其中，左括号和右括号是整个二进制表达式所必需的，双引号是右侧常量所必需的，左侧参数的语法为 user.property。 一个高级规则可能包含由 -and、-or 和 -not 逻辑运算符分隔的多个二进制表达式。
+完整的高级规则如下所示：(leftParameter binaryOperator "RightConstant")，其中，左括号和右括号是整个二进制表达式的可选项；双引号也是可选项，只对于右侧常量是必需的；当它是字符串时，左侧参数的语法为 user.property。 一个高级规则可能包含由 -and、-or 和 -not 逻辑运算符分隔的多个二进制表达式。
 
 下面是正确构造的高级规则的示例：
-
-* (user.department -eq "Sales") -or (user.department -eq "Marketing")
-* (user.department -eq "Sales") -and -not (user.jobTitle -contains "SDE")
-
+```
+(user.department -eq "Sales") -or (user.department -eq "Marketing")
+(user.department -eq "Sales") -and -not (user.jobTitle -contains "SDE")
+```
 有关支持的参数和表达式规则运算符的完整列表，请参阅以下部分。 有关用于设备规则的属性，请参阅[使用属性创建设备对象的规则](#using-attributes-to-create-rules-for-device-objects)。
 
 高级规则正文的总长度不能超过 2048 个字符。
 
 > [!NOTE]
-> 字符串和正则表达式运算不区分大小写。 你还可以执行 Null 检查，使用 $null 作为常量，例如 user.department -eq $null。
+> 字符串和正则表达式运算不区分大小写。 还可以执行 Null 检查，使用 $null 作为常量，例如 user.department -eq $null。
 > 应该使用 ` 字符来转义包含引号 " 的字符串，例如，user.department -eq \`"Sales"。
 >
 >
@@ -81,6 +90,32 @@ ms.lasthandoff: 05/08/2017
 | Contains |-contains |
 | 不匹配 |-notMatch |
 | 匹配 |-match |
+| In | -in |
+| 不位于 | -notIn |
+
+## <a name="operator-precedence"></a>运算符优先顺序
+
+下面按从低到高的优先顺序列出了所有运算符，同一行中的运算符具有相同的优先顺序 -any -all -or -and -not -eq -ne -startsWith -notStartsWith -contains -notContains -match -notMatch -in -notIn
+
+所有运算符可以带或不带连字符。
+
+请注意，并非始终需要添加括号；仅当优先顺序不符合要求时，才需要添加括号。
+例如：
+```
+   user.department –eq "Marketing" –and user.country –eq "US"
+```
+等效于：
+```
+   (user.department –eq "Marketing") –and (user.country –eq "US")
+```
+## <a name="using-the--in-and--notin-operators"></a>使用 -In 和 -notIn 运算符
+
+若要将用户属性的值与大量其他值进行比较，可使用 -In 或 -notIn 运算符。 下面是使用 -In 运算符的示例：
+```
+    user.department -In [ "50001", "50002", "50003", “50005”, “50006”, “50007”, “50008”, “50016”, “50020”, “50024”, “50038”, “50039”, “51100” ]
+```
+请注意值列表开头和末尾使用的“[”和“]”。 此条件的计算结果为 True，user.department 的值与此列表中的某个值相同。
+
 
 ## <a name="query-error-remediation"></a>查询错误更正
 下表列出了可能的错误以及当发生这些错误时更正的方法
@@ -104,8 +139,8 @@ ms.lasthandoff: 05/08/2017
 
 | 属性 | 允许的值 | 使用情况 |
 | --- | --- | --- |
-| accountEnabled |true false |user.accountEnabled -eq true) |
-| dirSyncEnabled |true false null |(user.dirSyncEnabled -eq true) |
+| accountEnabled |true false |user.accountEnabled -eq true |
+| dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
 ### <a name="properties-of-type-string"></a>字符串类型的属性
 允许的操作
@@ -118,12 +153,14 @@ ms.lasthandoff: 05/08/2017
 * -notContains
 * -match
 * -notMatch
+* -in
+* -notIn
 
 | 属性 | 允许的值 | 使用情况 |
 | --- | --- | --- |
 | city |任意字符串值或 $null |(user.city -eq "value") |
 | country |任意字符串值或 $null |(user.country -eq "value") |
-| CompanyName | 任意字符串值或 $null | (user.CompanyName-eq"value") |
+| companyName | 任意字符串值或 $null | (user.companyName -eq "value") |
 | department |任意字符串值或 $null |(user.department -eq "value") |
 | displayName |任意字符串值 |(user.displayName -eq "value") |
 | facsimileTelephoneNumber |任意字符串值或 $null |(user.facsimileTelephoneNumber -eq "value") |
@@ -133,6 +170,7 @@ ms.lasthandoff: 05/08/2017
 | mailNickName |任意字符串值（用户的邮件别名） |(user.mailNickName -eq "value") |
 | mobile |任意字符串值或 $null |(user.mobile -eq "value") |
 | objectId |用户对象的 GUID。 |(user.objectId -eq "1111111-1111-1111-1111-111111111111") |
+| onPremisesSecurityIdentifier | 从本地同步至云端的用户的本地安全标识符 (SID)。 |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |None DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies -eq "DisableStrongPassword") |
 | physicalDeliveryOfficeName |任意字符串值或 $null |(user.physicalDeliveryOfficeName -eq "value") |
 | postalCode |任意字符串值或 $null |(user.postalCode -eq "value") |
@@ -157,57 +195,101 @@ ms.lasthandoff: 05/08/2017
 | otherMails |任意字符串值 |(user.otherMails -contains "alias@domain") |
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
 
+## <a name="multi-value-properties"></a>多值属性
+允许的操作
+
+* -any（当集合中至少有一项符合条件时满足条件）
+* -all（当集合中的所有项都符合条件时满足条件）
+
+| 属性 | 值 | 使用情况 |
+| --- | --- | --- |
+| assignedPlans |集合中的每个对象均公开以下字符串属性：capabilityStatus、service、servicePlanId |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
+
+多值属性是同一类型的对象的集合。 可以使用 -any 和 -all 运算符将条件分别应用到集合中的一项或所有项。 例如：
+
+assignedPlans 是多值属性，该项列出了分配给用户的所有服务计划。 以下表达式将选择加入处于启用状态的 Exchange Online (Plan 2) 服务计划的用户：
+
+```
+user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled")
+```
+
+（Guid 标识符标识 Exchange Online (Plan 2) 服务计划。）
+
+> [!NOTE]
+> 如果想要找到已启用 Office 365（或其他 Microsoft 联机服务）功能的所有用户（例如，通过一组特定策略定位他们），则此表达式很有用。
+
+以下表达式将选择加入任何与 Intune 服务（由服务名称“SCO”标识）关联的服务计划的所有用户：
+```
+user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
+```
+
+## <a name="use-of-null-values"></a>Null 值的用法
+
+若要在规则中指定 null 值，可以使用“null”或 $null。 示例：
+```
+   user.mail –ne null
+```
+等效于
+```
+   user.mail –ne $null
+   ```
+
 ## <a name="extension-attributes-and-custom-attributes"></a>扩展属性和自定义属性
 动态成员身份规则支持扩展属性和自定义属性。
 
 扩展属性从本地 Window Server AD 同步，并采用“ExtensionAttributeX”格式，其中 X 等于 1 - 15。
 下面是使用扩展属性的规则示例：
-
+```
 (user.extensionAttribute15 -eq "Marketing")
-
+```
 自定义属性从本地 Windows Server AD 或从连接的 SaaS 应用程序同步，采用“user.extension_[GUID]\__[Attribute]”格式，其中，[GUID] 是在 AAD 中创建该属性的应用程序在 AAD 中的唯一标识符，[Attribute] 是创建的属性的名称。
 下面是使用自定义属性的规则示例：
-
+```
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber  
-
+```
 可以通过使用图形资源管理器查询用户的属性，以及通过搜索属性名称来查找自定义属性名称。
 
-## <a name="direct-reports-rule"></a>直接下属规则
-现在，你可以根据用户的 manager 属性在组中填充成员。
+## <a name="direct-reports-rule"></a>“直接下属”规则
+可以创建包含经理的所有直接下属的组。 当经理的直接下属将来发生更改时，组的成员身份将自动进行调整。
 
-**将某个组配置为“经理”组**
+> [!NOTE]
+> 1. 要使规则起作用，请确保租户中用户的 **Manager ID** 属性已正确设置。 可以在用户的“配置文件”选项卡上查看该用户的当前值。
+> 2. 此规则仅支持**直接**下属。 目前不能为嵌套层次结构创建组，例如包括直接下属及其下属的组。
 
-1. 根据[创建高级规则](#to-create-the-advanced-rule)中的步骤 1-5 操作，然后在“成员身份类型”中选择“动态用户”。
+**配置组**
+
+1. 根据[创建高级规则](#to-create-the-advanced-rule)部分中的步骤 1-5 操作，并在“成员身份类型”中选择“动态用户”。
 2. 在“动态成员身份规则”边栏选项卡上，使用以下语法输入规则：
 
-    Direct Reports for *Direct Reports for {obectID_of_manager}*。 下面是有效的直接下属规则示例：
+    *Direct Reports for "{obectID_of_manager}"*
 
-                    Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863”
-
-    其中，"62e19b97-8b3d-4d4a-a106-4ce66896a863" 是管理员的 objectID。 可以在 Azure AD 的管理员用户的用户页上的“个人资料”选项卡中找到该对象 ID。
-3. 保存此规则时，满足该规则的所有用户将会加入为该组的成员。 最初填充该组可能需要几分钟时间。
+    有效规则的示例：
+```
+                    Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
+```
+    where “62e19b97-8b3d-4d4a-a106-4ce66896a863” is the objectID of the manager. The object ID can be found on manager's **Profile tab**.
+3. 保存此规则后，具有指定 Manager ID 值的所有用户都将添加到该组。
 
 ## <a name="using-attributes-to-create-rules-for-device-objects"></a>使用属性创建设备对象的规则
 还可以创建一个规则来为组中的成员身份选择设备对象。 可以使用以下设备属性：
 
 | 属性              | 允许的值                  | 使用情况                                                       |
 |-------------------------|---------------------------------|-------------------------------------------------------------|
+| accountEnabled          | true false                      | (device.accountEnabled -eq true)                            |
 | displayName             | 任意字符串值                | (device.displayName -eq "Rob Iphone”)                       |
 | deviceOSType            | 任意字符串值                | (device.deviceOSType -eq "IOS")                             |
 | deviceOSVersion         | 任意字符串值                | (device.OSVersion -eq "9.1")                                |
-| isDirSynced             | true false null                 | (device.isDirSynced -eq "true")                             |
-| isManaged               | true false null                 | (device.isManaged -eq "false")                              |
-| isCompliant             | true false null                 | (device.isCompliant -eq "true")                             |
 | deviceCategory          | 任意字符串值                | (device.deviceCategory -eq "")                              |
 | deviceManufacturer      | 任意字符串值                | (device.deviceManufacturer -eq "Microsoft")                 |
 | deviceModel             | 任意字符串值                | (device.deviceModel -eq "IPhone 7+")                        |
 | deviceOwnership         | 任意字符串值                | (device.deviceOwnership -eq "")                             |
 | domainName              | 任意字符串值                | (device.domainName -eq "contoso.com")                       |
 | enrollmentProfileName   | 任意字符串值                | (device.enrollmentProfileName -eq "")                       |
-| isRooted                | true false null                 | (device.deviceOSType -eq "true")                            |
+| isRooted                | true false                      | (device.deviceOSType -eq true)                              |
 | managementType          | 任意字符串值                | (device.managementType -eq "")                              |
 | organizationalUnit      | 任意字符串值                | (device.organizationalUnit -eq "")                          |
-| deviceId                | 有效 deviceId                | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d" |
+| deviceId                | 有效 deviceId                | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d") |
+| objectId                | 有效的 AAD objectId            | (device.objectId -eq "76ad43c9-32c5-45e8-a272-7b58b58f596d") |
 
 
 

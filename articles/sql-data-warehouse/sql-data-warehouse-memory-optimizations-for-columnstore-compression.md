@@ -13,19 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 11/18/2016
+ms.date: 6/2/2017
 ms.author: shigu;barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 8d189256ed4c876859203406cda95ce0be36c96c
-ms.lasthandoff: 03/30/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: a0452c4dedc218dff17404c4ecee70d788e49644
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/25/2017
 
 ---
 
-# <a name="memory-optimizations-for-columnstore-compression"></a>列存储压缩的内存优化
+# <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
 
-减少内存需求或增加可用内存，使列存储索引压缩到每个行组中的行数最大化。  使用这些方法来提高列存储索引的压缩率和请求性能。
+行组质量由行组中的行数决定。 减少内存需求或增加可用内存，使列存储索引压缩到每个行组中的行数最大化。  使用这些方法来提高列存储索引的压缩率和请求性能。
 
 ## <a name="why-the-rowgroup-size-matters"></a>行组大小之所以重要的原因
 由于列存储索引会通过扫描单个行组的列段来扫描表，所以，使每个行组的行数最大化可增强查询性能。 如果行组具有的行数较多，则会增强数据压缩，这意味着需要从磁盘读取的数据变少。
@@ -37,11 +37,45 @@ ms.lasthandoff: 03/30/2017
 
 ## <a name="rowgroups-can-get-trimmed-during-compression"></a>在压缩过程中，可对行组进行修剪
 
-批量加载或重建列存储索引期间，有时可能因内存不足而无法压缩为每个行组指定的所有行。 如果出现内存压力，列存储索引将修剪行组大小，以便能成功将行组压缩到列存储中。
+批量加载或重建列存储索引期间，有时可能因内存不足而无法压缩为每个行组指定的所有行。 如果出现内存压力，列存储索引将修剪行组大小，以便能成功将行组压缩到列存储中。 
 
 如果内存不足，无法将至少 10,000 个行压缩到每个行组中，SQL 数据仓库将生成错误。
 
 有关批量加载的详细信息，请参阅 [Bulk load into a clustered columnstore index](https://msdn.microsoft.com/en-us/library/dn935008.aspx#Bulk load into a clustered columnstore index)（批量加载到聚集列存储索引中）。
+
+## <a name="how-to-monitor-rowgroup-quality"></a>如何监视行组质量
+
+DMV (sys.dm_pdw_nodes_db_column_store_row_group_physical_stats) 会公开一些有用信息，例如行组中的行数，以及修整原因（如果有修整）。 可创建下列视图来轻松查询此 DMV，以便获得关于行组修整的信息。
+
+```sql
+create view dbo.vCS_rg_physical_stats
+as 
+with cte
+as
+(
+select   tb.[name]                    AS [logical_table_name]
+,        rg.[row_group_id]            AS [row_group_id]
+,        rg.[state]                   AS [state]
+,        rg.[state_desc]              AS [state_desc]
+,        rg.[total_rows]              AS [total_rows]
+,        rg.[trim_reason_desc]        AS trim_reason_desc
+,        mp.[physical_name]           AS physical_name
+FROM    sys.[schemas] sm
+JOIN    sys.[tables] tb               ON  sm.[schema_id]          = tb.[schema_id]                             
+JOIN    sys.[pdw_table_mappings] mp   ON  tb.[object_id]          = mp.[object_id]
+JOIN    sys.[pdw_nodes_tables] nt     ON  nt.[name]               = mp.[physical_name]
+JOIN    sys.[dm_pdw_nodes_db_column_store_row_group_physical_stats] rg      ON  rg.[object_id]     = nt.[object_id]
+                                                                            AND rg.[pdw_node_id]   = nt.[pdw_node_id]
+                                        AND rg.[distribution_id]    = nt.[distribution_id]                                          
+)
+select *
+from cte;
+```
+
+trim_reason_desc 指示行组是否已修整（trim_reason_desc = NO_TRIM 表示没有修整，且行组的质量为最佳）。 下列修整原因指示行组的过早修整：
+- BULKLOAD：当加载的行的传入批小于 100 万行时，使用此修整原因。 如果插入的行数（而不是插入增量存储）大于 100,000，引擎将创建压缩的行组，但会将修整原因设置为 BULKLOAD。 在此方案中，请考虑增加批加载窗口以累计更多的行。 此外，请重新评估分区方案，避免其过度具体，因为行组无法跨越分区边界。
+- MEMORY_LIMITATION：要创建具有 100 万行的行组，引擎需要一定量的工作内存。 当加载会话的可用内存小于所需的工作内存时，将提前修整行组。 以下各部分说明如何估计所需内存和分配更多内存。
+- DICTIONARY_SIZE：此修整原因指示，由于至少有一个字符串列具有宽和/或高基数字符串，因此发生行组修整。 字典大小的内存限制为 16 MB，一旦达到此限制，将压缩行组。 如果遇到这种情况，请考虑将有问题的列隔离到单独的表中。
 
 ## <a name="how-to-estimate-memory-requirements"></a>如何估算内存需求
 
@@ -71,7 +105,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 
 ### <a name="use-fewer-string-columns"></a>减少字符串列数
-字符串数据类型的列比数字和日期数据类型需要更多内存。 若要减少内存需求，请考虑从事实表中删除字符串列，并将其置于维度较小的表中。
+字符串数据类型的列比数字和日期数据类型需要更多内存。 要减少内存需求，请考虑从事实表中删除字符串列，并将其置于维度较小的表中。
 
 字符串压缩的额外内存需求：
 
@@ -88,11 +122,11 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 数据库会在查询的所有运算符之间共享查询的内存授予。 如果加载查询的排序和联接复杂，可用于压缩的内存将减少。
 
-请仅针对加载查询而设计加载查询。 如果要对数据运行转换，请与加载查询分开来运行转换。 例如，将数据暂存在一个堆表中，运行转换，然后将临时表加载到列存储索引中。 也可先加载数据，然后使用 MPP 系统来转换数据。
+请仅针对加载查询而设计加载查询。 如果要对数据运行转换，请与加载查询分开来运行转换。 例如，将数据暂存在一个堆表中，运行转换，并将临时表加载到列存储索引中。 也可先加载数据，然后使用 MPP 系统来转换数据。
 
 ### <a name="adjust-maxdop"></a>调整 MAXDOP
 
-当每次分发有多个 CPU 内核可用时，每次分发会将将行组并行压缩到列存储中。 并行度需要额外的内存资源，这可能会造成内存压力和行组修剪。
+当每次分发有多个 CPU 内核可用时，每次分发会将行组并行压缩到列存储中。 并行度需要额外的内存资源，这可能会造成内存压力和行组修剪。
 
 若要减少内存压力，可使用 MAXDOP 查询提示，在每次分发中强制加载操作以串行模式运行。
 

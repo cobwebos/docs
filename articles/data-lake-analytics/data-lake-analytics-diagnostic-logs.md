@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/03/2017
+ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 2bfd7d8a4c06b1b40a9852d21908e7c1c785b91d
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: f5fe6db423f1f2faeaf51e25be9b8f5b551e2a16
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Accessing diagnostic logs for Azure Data Lake Analytics（访问 Azure Data Lake Analytics 的诊断日志）
@@ -50,10 +49,10 @@ ms.lasthandoff: 06/20/2017
 
      * 选择“流式传输到事件中心”将日志数据流式传输到 Azure 事件中心。 具有下游处理管道来实时分析传入日志时使用此选项。 若选择此选项，必须提供要使用的 Azure 事件中心的详细信息。
 
-     * 选择“发送到 Log Analytics”，将数据发送到 Log Analytics 服务。 如需使用 Log Analytics 收集和分析日志，请使用此选项。
-   * 指定是要获取审核日志还是请求日志，或者两者都获取。  请求日志会捕获每个 API 请求，审核日志则记录由该 API 请求触发的所有操作。
+     * 选择“发送到 Log Analytics”，将数据发送到 Log Analytics 服务。 若要使用 Log Analytics 收集和分析日志，请使用此选项。
+   * 指定是要获取审核日志还是请求日志，或者两者都获取。  请求日志捕获每个 API 请求。 审核日志记录由该 API 请求触发的所有操作。
 
-   * 在“存档到存储帐户”中指定数据将保留的天数。
+   * 对于“存档到存储帐户”，指定数据将保留的天数。
 
    * 单击“保存” 。
 
@@ -75,7 +74,7 @@ ms.lasthandoff: 06/20/2017
     ![日志条目](./media/data-lake-analytics-diagnostic-logs/diagnostic-log-entries.png)
 
    * 请求日志捕获 Data Lake Analytics 帐户上作出的每个 API 请求。
-   * 审核日志类似于请求日志，但提供 Data Lake Analytics 帐户上正在执行的操作的更详细的分解结构。 例如，请求日志中的单个上传 API 调用可能会导致其审核日志中有多个“追加​​”操作。
+   * 审核日志类似于请求日志，但提供操作的更详细分解。 例如，请求日志中的单个上传 API 调用可能会导致其审核日志中有多个“追加​​”操作。
 
 3. 单击日志条目的“下载”链接下载该日志。
 
@@ -87,7 +86,7 @@ ms.lasthandoff: 06/20/2017
 
    * 容器 **insights-logs-audit** 包含审核日志。
    * 容器 **insights-logs-requests** 包含请求日志。
-2. 在这些容器中，日志存储在以下结构下。
+2. 在这些容器中，日志存储在以下结构下：
 
         resourceId=/
           SUBSCRIPTIONS/
@@ -235,7 +234,7 @@ ms.lasthandoff: 06/20/2017
 | 并行度 |String |在提交期间为此作业请求的 Data Lake Analytics 单元数 |
 
 > [!NOTE]
-> SubmitTime、StartTime、EndTime 和 Parallelism 提供操作信息，并且如果某一操作已开始或已完成，则只包含一个值。 例如，operationName 含有值 JobSubmitted 后，SubmitTime 将仅包含一个值。
+> **SubmitTime**、**StartTime**、**EndTime** 和 **Parallelism** 提供有关操作的信息。 仅当该操作已启动或已完成时，这些项才包含值。 例如，operationName 含有值 JobSubmitted 后，SubmitTime 将仅包含一个值。
 
 ## <a name="process-the-log-data"></a>处理日志数据
 

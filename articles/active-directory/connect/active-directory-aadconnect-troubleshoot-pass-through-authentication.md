@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/28/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 05d7c50aaa1209220b6cff3305fdb05dd2c421f8
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: 4a687e1edbb2c9b3db3079a70162886092ede521
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 
@@ -30,6 +30,14 @@ ms.lasthandoff: 06/17/2017
 >如果使用直通身份验证时遇到用户登录问题，请在回退仅限云的全局管理员帐户后，再禁用此功能或卸载直通身份验证代理。 了解如何[添加仅限云的全局管理员帐户](../active-directory-users-create-azure-portal.md)。 此步骤至关重要，可确保你不被锁定在租户外部。
 
 ## <a name="general-issues"></a>常规问题
+
+### <a name="check-status-of-the-feature-and-authentication-agents"></a>检查功能和身份验证代理的状态
+
+确保租户中的直通身份验证功能仍为“已启用”，身份验证代理的状态显示“活动”，而不是“非活动”。 可以通过转到 [Azure 门户](https://portal.azure.com/)的 **Azure AD Connect** 边栏选项卡来查看此信息。
+
+![Azure 门户 - Azure AD Connect 边栏选项卡](./media/active-directory-aadconnect-pass-through-authentication/pta7.png)
+
+![Azure 门户 -“直通身份验证”边栏选项卡](./media/active-directory-aadconnect-pass-through-authentication/pta11.png)
 
 ### <a name="user-facing-sign-in-error-messages"></a>面向用户的登录错误消息
 
@@ -43,13 +51,13 @@ ms.lasthandoff: 06/17/2017
 |AADSTS80005|验证遇到了不可预知的 WebException|暂时性的错误。 重试请求。 如果持续失败，请与 Microsoft 支持人员联系。
 |AADSTS80007|与 Active Directory 通信时出错|检查代理日志以了解更多信息，并验证 Active Directory 是否按预期方式运行。
 
-### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center"></a>Azure Active Directory 管理中心登录失败原因
+### <a name="sign-in-failure-reasons-on-the-azure-portal"></a>Azure 门户上的登录失败原因
 
-若要启动使用直通身份验证的用户登录问题故障排除，可以在 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)查看[登录活动报告](../active-directory-reporting-activity-sign-ins.md)。
+通过在 [Azure 门户](https://portal.azure.com/)上查看[登录活动报告](../active-directory-reporting-activity-sign-ins.md)，开始排查用户登录问题。
 
 ![登录报告](./media/active-directory-aadconnect-pass-through-authentication/pta4.png)
 
-导航到 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)的“Azure Active Directory” -> “登录”，然后单击特定用户的登录活动。 查找“登录错误代码”字段。 使用下表将该字段的值映射到某个失败原因和解决方法：
+导航到 [Azure 门户](https://portal.azure.com/)的“Azure Active Directory” -> “登录”，然后单击特定用户的登录活动。 查找“登录错误代码”字段。 使用下表将该字段的值映射到某个失败原因和解决方法：
 
 |登录错误代码|登录失败原因|解决方法
 | --- | --- | ---
@@ -64,10 +72,6 @@ ms.lasthandoff: 06/17/2017
 | 80011 | 身份验证代理无法检索到解密密钥。 | 如果可始终重现该问题，请安装并注册新的身份验证代理。 并卸载当前的代理。
 
 ## <a name="authentication-agent-installation-issues"></a>身份验证代理安装问题
-
-### <a name="an-azure-ad-application-proxy-connector-already-exists"></a>Azure AD 应用程序代理连接器已存在
-
-不能在 [Azure AD 应用程序代理](../../active-directory/active-directory-application-proxy-get-started.md)连接器所在的同一台服务器上安装直通身份验证代理。 在单独的服务器上安装直通身份验证代理。
 
 ### <a name="an-unexpected-error-occurred"></a>发生了意外的错误
 
@@ -115,16 +119,16 @@ ms.lasthandoff: 06/17/2017
 
 ### <a name="authentication-agent-event-logs"></a>身份验证代理事件日志
 
-对于与身份验证代理相关的错误，请在服务器上打开事件查看器应用程序，然后检查 Application and Service Logs\Microsoft\AadApplicationProxy\Connector\Admin 中的日志。
+对于与身份验证代理相关的错误，请在服务器上打开“事件查看器”应用程序，然后在 Application and Service Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin 下查看。
 
 若要查看详细的分析，请启用“会话”日志。 在正常操作期间，请不要在启用此日志的情况下运行身份验证代理；仅用于故障排除。 日志内容只会在再次禁用日志后才可见。
 
 ### <a name="detailed-trace-logs"></a>详细跟踪日志
 
-若要排查用户登录失败原因，请查看 C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace 中的跟踪日志。 这些日志包含特定用户使用直通身份验证功能登录失败的原因。 这些错误也会映射到前面的[表格](#sign-in-failure-reasons-on-the-Azure-portal)中所示的登录失败原因。 下面是一个日志项目示例：
+若要排查用户登录失败原因，请查看 **%programdata%\Microsoft\Azure AD Connect Authentication Agent\Trace\\** 中的跟踪日志。 这些日志包含特定用户使用直通身份验证功能登录失败的原因。 这些错误也会映射到前面的[表格](#sign-in-failure-reasons-on-the-Azure-portal)中所示的登录失败原因。 下面是一个日志项目示例：
 
 ```
-    ApplicationProxyConnectorService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.
+    AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.
         ThreadId=5
         DateTime=xxxx-xx-xxTxx:xx:xx.xxxxxxZ
 ```
@@ -142,7 +146,7 @@ ms.lasthandoff: 06/17/2017
 ```
     <QueryList>
     <Query Id="0" Path="Security">
-    <Select Path="Security">*[EventData[Data[@Name='ProcessName'] and (Data='C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe')]]</Select>
+    <Select Path="Security">*[EventData[Data[@Name='ProcessName'] and (Data='C:\Program Files\Microsoft Azure AD Connect Authentication Agent\AzureADConnectAuthenticationAgentService.exe')]]</Select>
     </Query>
     </QueryList>
 ```

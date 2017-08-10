@@ -136,7 +136,7 @@
 ### [Dynamics AX](site-recovery-dynamicsax.md)
 ### [RDS](site-recovery-workload.md#protect-rds)
 ### [Exchange](site-recovery-workload.md#protect-exchange)
-### [SAP](site-recovery-workload.md#protect-sap)
+### [SAP](site-recovery-sap.md)
 ### [基于 IIS 的 Web 应用程序](site-recovery-iis.md)
 ### [Citrix XenApp 和 XenDesktop](site-recovery-citrix-xenapp-and-xendesktop.md)
 ### [其他工作负荷](site-recovery-workload.md#workload-summary)

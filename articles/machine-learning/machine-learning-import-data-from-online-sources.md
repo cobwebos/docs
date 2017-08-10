@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;garye
-translationtype: Human Translation
-ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
-ms.openlocfilehash: afecdde0cbc0bcbe0932b23dc1a8e067d02ded12
-ms.lasthandoff: 12/20/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: a102b5f5ea04169d1992cad6d53c0a45de69b645
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-various-online-data-sources-with-the-import-data-module"></a>使用“导入数据”模块将数据从各种联机数据源导入 Azure 机器学习工作室
@@ -44,8 +44,9 @@ ms.lasthandoff: 12/20/2016
 * Azure SQL 数据库，或 Azure VM 上的 SQL Server
 * 本地 SQL Server 数据库
 * 数据馈送提供程序（目前为 OData）
+* Azure CosmosDB（以前称为 DocumentDB）
 
-若要在工作室试验中访问联机数据源，请将[导入数据][import-data]模块添加到试验，选择“数据源”，然后提供访问数据时所需的参数。 下表列举了支持的联机数据源。 此表还汇总了支持的文件格式，以及用于访问数据的参数。
+要在工作室试验中访问联机数据源，请将[导入数据][import-data]模块添加到试验，选择“数据源”，然后提供访问数据时所需的参数。 下表列举了支持的联机数据源。 此表还汇总了支持的文件格式，以及用于访问数据的参数。
 
 请注意，此训练数据是在运行试验时访问的，因此只能在该试验中使用。 相比之下，存储在数据集模块中的数据可供工作区中的任何试验使用。
 
@@ -53,7 +54,7 @@ ms.lasthandoff: 12/20/2016
 > [导入数据][import-data]和[导出数据][export-data]模块目前只能在使用经典部署模型创建的 Azure 存储中读取和写入数据。 换言之，目前尚不支持可提供热存储访问层或冷存储访问层的新式 Azure Blob 存储帐户类型。 
 > 
 > 一般情况下，在此服务选项推出之前创建的任何 Azure 存储帐户应该不受影响。 
-> 如果需要创建新帐户，请为“部署模型”选择“经典”或使用“Resource Manager”；对于“帐户类型”，请选择“常规用途”而不是“Blob 存储”。 
+> 如果需要创建新帐户，请为“部署模型”选择“经典”或使用“资源管理器”；对于“帐户类型”，请选择“常规用途”而不是“Blob 存储”。 
 > 
 > 有关详细信息，请参阅 [Azure Blob 存储：热存储层和冷存储层](../storage/storage-blob-storage-tiers.md)。
 > 
@@ -64,7 +65,7 @@ Azure 机器学习**导入数据**模块支持以下数据源：
 
 | 数据源 | 说明 | parameters |
 | --- | --- | --- |
-| 通过 HTTP 的 Web URL |从使用 HTTP 的任何 Web URL 中读取逗号分隔值 (CSV)、制表符分隔值 (TSV)、属性关系文件格式 (ARFF) 和支持向量机 (SVM-light) 格式的数据 |<b>URL</b>：指定文件的完整名称，包括站点 URL 和文件名与任何扩展名。 <br/><br/><b>数据格式</b>：指定支持的数据格式之一：CSV、TSV、ARFF 或 SVM-light。 如果数据包含标头行，该数据将用于分配列名。 |
+| 通过 HTTP 的 Web URL |从使用 HTTP 的任何 Web URL 中读取逗号分隔值 (CSV)、制表符分隔值 (TSV)、属性关系文件格式 (ARFF) 和支持向量机 (SVM-light) 格式的数据 |<b>URL</b>：指定文件的完整名称，包括站点 URL 和文件名与任何扩展名。 <br/><br/><b>数据格式</b>：指定支持的数据格式之一：CSV、TSV、ARFF 或 SVM-light。 如果数据包含标头行，该数据用于分配列名。 |
 | Hadoop/HDFS |从 Hadoop 中的分布式存储读取数据。 可以使用 HiveQL（类似于 SQL 的查询语言）指定所需的数据。 使用 HiveQL 还可以在将数据添加到机器学习工作室之前聚合数据和执行数据筛选。 |<b>Hive 数据库查询</b>：指定用于生成数据的 Hive 查询。<br/><br/><b>HCatalog 服务器 URI</b>：使用 *&lt;群集名称&gt;.azurehdinsight.net 格式指定群集的名称。*<br/><br/><b>Hadoop 用户帐户名</b>：指定用于预配群集的 Hadoop 用户帐户名。<br/><br/><b>Hadoop 用户帐户密码</b>：指定预配群集时使用的凭据。 有关详细信息，请参阅 [Create Hadoop clusters in HDInsight](../hdinsight/hdinsight-provision-clusters.md)（在 HDInsight 中创建 Hadoop 群集）。<br/><br/><b>输出数据的位置</b>：指定数据是要存储在 Hadoop 分布式文件系统 (HDFS) 还是 Azure 中。 <br/><ul>如果将输出数据存储在 HDFS 中，请指定 HDFS 服务器的 URI。 （请务必使用不带 HTTPS:// 前缀的 HDInsight 群集名称）。 <br/><br/>如果将输出数据存储在 Azure 中，则必须指定 Azure 存储帐户名、存储访问密钥和存储容器名称。</ul> |
 | SQL 数据库 |读取存储在 Azure SQL 数据库中或 Azure 虚拟机上运行的 SQL Server 数据库中的数据。 |<b>数据库服务器名称</b>：指定运行数据库的服务器的名称。<br/><ul>对于 Azure SQL 数据库，请输入生成的服务器名称。 其格式通常为 *&lt;生成的标识符&gt;.database.windows.net。* <br/><br/>对于托管在 Azure 虚拟机上的 SQL Server，请输入 *tcp:&lt;虚拟机 DNS 名称&gt;, 1433*</ul><br/><b>数据库名称</b>：指定服务器上的数据库名称。 <br/><br/><b>服务器用户帐户名</b>：指定具有数据库访问权限的帐户的用户名。 <br/><br/><b>服务器用户帐户密码</b>：指定用户帐户的密码。<br/><br/><b>接受任何服务器证书</b>：如果要在读取数据之前跳过审查站点证书，请使用此选项（较不安全）。<br/><br/><b>数据库查询</b>：输入 SQL 语句用于说明要读取的数据。 |
 | 本地 SQL 数据库 |读取本地 SQL 数据库中存储的数据。 |<b>数据网关</b>：指定可访问 SQL Server 数据库的计算机上安装的数据管理网关的名称。 有关设置网关的信息，请参阅 [Perform advanced analytics with Azure Machine Learning using data from an on-premises SQL server](machine-learning-use-data-from-an-on-premises-sql-server.md)（使用本地 SQL Server 中的数据通过 Azure 机器学习执行高级分析）。<br/><br/><b>数据库服务器名称</b>：指定运行数据库的服务器的名称。<br/><br/><b>数据库名称</b>：指定服务器上的数据库名称。 <br/><br/><b>服务器用户帐户名</b>：指定具有数据库访问权限的帐户的用户名。 <br/><br/><b>用户名和密码</b>：单击“输入值”输入数据库凭据。<b></b> 可以使用 Windows 集成身份验证或 SQL Server 身份验证，具体取决于配置本地 SQL Server 的方式。<br/><br/><b>数据库查询</b>：输入 SQL 语句用于说明要读取的数据。 |

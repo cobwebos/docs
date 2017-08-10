@@ -16,12 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/09/2017
 ms.author: donnam
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: dbcec586fe5ee06da38c37cf1ead2469386cc5c3
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 0613bb96d3afb85ff7e684246b128e4eef518d23
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/10/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="using-net-class-libraries-with-azure-functions"></a>搭配使用 Azure Functions 和 .Net 类库
@@ -267,6 +266,30 @@ Azure Functions 支持 SendGrid输出绑定以按编程方式发送电子邮件�
 
 `[SendGrid]` 属性在 NuGet 包 [Microsoft.Azure.WebJobs.Extensions.SendGrid] 中进行定义。
 
+下面是使用服务总线队列触发器和使用 `SendGridMessage` 的 SendGrid 输出绑定的示例：
+
+```csharp
+[FunctionName("SendEmail")]
+public static void Run(
+    [ServiceBusTrigger("myqueue", AccessRights.Manage, Connection = "ServiceBusConnection")] OutgoingEmail email,
+    [SendGrid] out SendGridMessage message)
+{
+    message = new SendGridMessage();
+    message.AddTo(email.To);
+    message.AddContent("text/html", email.Body);
+    message.SetFrom(new EmailAddress(email.From));
+    message.SetSubject(email.Subject);
+}
+
+public class OutgoingEmail
+{
+    public string To { get; set; }
+    public string From { get; set; }
+    public string Subject { get; set; }
+    public string Body { get; set; }
+}
+```
+
 <a name="service-bus"></a>
 
 ### <a name="service-bus-trigger-and-output"></a>服务总线触发器和输出
@@ -418,3 +441,4 @@ public static SMSMessage Run([QueueTrigger("myqueue-items", Connection = "AzureW
 [HttpTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs
 [ApiHubFileAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.ApiHub/ApiHubFileAttribute.cs
 [TimerTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs
+

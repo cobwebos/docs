@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/24/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 451d4fd24dc506fb4a659edb710ab67a66cbbde7
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 05fb966e3e18b8d5242a2795248b9b72352d894d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -33,6 +33,7 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使登录�
 2. 启用功能：使用 Azure AD Connect 在租户上打开无缝 SSO。
 3. 扩展功能：使用组策略将功能扩展到部分或全部用户。
 4. 测试功能：使用无缝 SSO 测试用户登录。
+5. *滚动更新密钥*：频繁滚动更新计算机帐户的 Kerberos 解密密钥。
 
 ## <a name="step-1-check-prerequisites"></a>步骤 1：检查先决条件
 
@@ -104,14 +105,19 @@ Mozilla Firefox 不会自动执行 Kerberos 身份验证。 每个用户必须�
 4. 在该字段内输入“https://autologon.microsoftazuread-sso.com、https://aadg.windows.net.nsatc.net”。
 5. 单击“确定”并重新打开浏览器。
 
->[!NOTE]
->无缝 SSO 在 Firefox 的隐私浏览模式下不起作用。
+#### <a name="safari-on-mac-os"></a>Mac OS 上的 Safari
 
-#### <a name="google-chrome-on-mac"></a>Mac 上的 Google Chrome
+确保运行 Mac OS 的计算机已加入 AD。 有关如何执行该操作的说明，请参阅[此处](http://training.apple.com/pdf/Best_Practices_for_Integrating_OS_X_with_Active_Directory.pdf)。
 
-对于 Mac 和其他非 Windows 平台上的 Google Chrome，请参阅[本文](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist)，了解有关如何将 Azure AD URL 列入集成身份验证的白名单的信息。
+#### <a name="google-chrome-on-mac-os"></a>Mac OS 上的 Google Chrome
+
+对于 Mac OS 和其他非 Windows 平台上的 Google Chrome，请参阅[此文](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist)，了解有关如何针对集成身份验证将 Azure AD URL 列入允许列表的信息。
 
 使用第三方 Active Directory 组策略扩展将 Azure AD URL 扩展到 Mac 上的 Firefox、Google Chrome，不在本文讨论范围之内。
+
+#### <a name="known-limitations"></a>已知限制
+
+无缝 SSO 在 Firefox 和 Edge 浏览器的隐私浏览模式下不起作用。 它在以增强保护模式运行的 Internet Explorer 中也不起作用。
 
 ## <a name="step-4-test-the-feature"></a>步骤 4：测试功能
 
@@ -128,10 +134,17 @@ Mozilla Firefox 不会自动执行 Kerberos 身份验证。 每个用户必须�
 - 在新的私密浏览会话中登录到 https://myapps.microsoft.com/contoso.onmicrosoft.com。 将“contoso”替换为租户的名称。
 - 或在新的私密浏览会话中登录到 https://myapps.microsoft.com/contoso.com。 将“contoso.com”替换为租户中的已验证域（而不是联盟域）。
 
+## <a name="step-5-roll-over-keys"></a>步骤 5：滚动更新密钥
+
+在步骤 2 中，Azure AD Connect 在已启用无缝 SSO 的所有 AD 林中创建计算机帐户（表示 Azure AD）。 在[此处](active-directory-aadconnect-sso-how-it-works.md)了解更多详细信息。 为了提高安全性，建议经常滚动更新这些计算机帐户的 Kerberos 解密密钥。
+
+>[!IMPORTANT]
+>启用该功能后无需_立即_执行此步骤。 至少每隔 30 天滚动更新一次 Kerberos 解密密钥。
+
 ## <a name="next-steps"></a>后续步骤
 
 - [深入技术探究](active-directory-aadconnect-sso-how-it-works.md) - 了解此功能如何运作。
-- [常见问题](active-directory-aadconnect-sso-faq.md) - 常见问题解答。
+- [**常见问题**](active-directory-aadconnect-sso-faq.md) - 常见问题解答。
 - [故障排除](active-directory-aadconnect-troubleshoot-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
 

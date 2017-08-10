@@ -12,13 +12,13 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 04/18/2017
+ms.date: 08/07/2017
 ms.author: sethm;shvija
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
 ms.openlocfilehash: e62ff884e5e48f8cc542cd85a750fc857302c6b4
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/19/2017
-
 
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板为命名空间和队列创建服务总线授权规则
@@ -155,7 +155,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -T
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-```cli
+```azurecli
 azure config mode arm
 
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/301-servicebus-create-authrule-namespace-and-queue/azuredeploy.json>
