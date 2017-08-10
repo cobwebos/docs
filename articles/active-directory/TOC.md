@@ -9,6 +9,7 @@
 ## [获取 Azure AD 租户](active-directory-howto-tenant.md)
 ## [注册 Azure AD Premium](active-directory-get-started-premium.md)
 ## [关联 Azure 订阅](active-directory-how-subscriptions-associated-directory.md)
+## [快速入门：自助服务密码重置](active-directory-passwords-getting-started.md)
 ## 管理 Azure AD 许可
 ### [Azure 门户](active-directory-licensing-get-started-azure-portal.md)
 ### [经典门户](active-directory-licensing-what-is.md)
@@ -18,7 +19,7 @@
 #### [将单个许可用户迁移到基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
 #### [基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
 #### [基于组的许可的 PowerShell 示例](active-directory-licensing-ps-examples.md)
-## [如何获取对 Azure Active Directory 的支持](active-directory-troubleshooting-support-howto.md)
+## [获取对 Azure Active Directory 的支持](active-directory-troubleshooting-support-howto.md)
 ## [SaaS 应用集成教程](active-directory-saas-tutorial-list.md)
 
 # 如何
@@ -78,6 +79,7 @@
 #### [将单个许可用户迁移到基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
 #### [基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
 #### [基于组的许可的 PowerShell 示例](active-directory-licensing-ps-examples.md)
+### [设置 Office 365 组过期时间](active-directory-groups-lifecycle-azure-portal.md)
 ### [查看所有组](active-directory-groups-view-azure-portal.md)
 ### [启用专用组](active-directory-accessmanagement-dedicated-groups.md)
 ### [添加对 SaaS 应用的组访问权限](active-directory-accessmanagement-group-saasapps.md)
@@ -124,7 +126,6 @@
 #### [重置或更改密码](active-directory-passwords-update-your-own-password.md)
 #### [密码最佳做法](active-directory-secure-passwords.md)
 #### [注册自助密码重置](active-directory-passwords-reset-register.md)
-### [快速入门：自助密码重置](active-directory-passwords-getting-started.md)
 ### [许可 SSPR](active-directory-passwords-licensing.md)
 ### [部署 SSPR](active-directory-passwords-best-practices.md)
 ### IT 管理员：重置密码
