@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: 9c56914091ecac3eb97977dd5afc2dc4588a052c
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 2eba6fb24c11add12ac16d04d3445e19a3486216
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>使用经典部署模型配置应用程序网关以进行 SSL 卸载
@@ -26,19 +27,20 @@ ms.openlocfilehash: 9c56914091ecac3eb97977dd5afc2dc4588a052c
 > * [Azure 门户](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
 > * [Azure 经典 PowerShell](application-gateway-ssl.md)
+> * [Azure CLI 2.0](application-gateway-ssl-cli.md)
 
 可将 Azure 应用程序网关配置为在网关上终止安全套接字层 (SSL) 会话，以避免 Web 场中出现开销较高的 SSL 解密任务。 SSL 卸载还简化了 Web 应用程序的前端服务器设置与管理。
 
 ## <a name="before-you-begin"></a>开始之前
 
 1. 使用 Web 平台安装程序安装最新版本的 Azure PowerShell cmdlet。 可以从[下载页](https://azure.microsoft.com/downloads/)的“Windows PowerShell”部分下载并安装最新版本。
-2. 请确认你已创建包含有效子网、可正常运行的虚拟网络。 请确保没有虚拟机或云部署正在使用子网。 应用程序网关必须单独位于虚拟网络子网中。
+2. 请确认已创建包含有效子网、可正常运行的虚拟网络。 请确保没有虚拟机或云部署正在使用子网。 应用程序网关必须单独位于虚拟网络子网中。
 3. 必须存在配置为使用应用程序网关的服务器，或者必须在虚拟网络中为其创建终结点，或者必须为其分配公共 IP/VIP。
 
 若要在应用程序网关上配置 SSL 卸载，请按所列顺序执行以下步骤：
 
 1. [创建应用程序网关](#create-an-application-gateway)
-2. [上载 SSL 证书](#upload-ssl-certificates)
+2. [上传 SSL 证书](#upload-ssl-certificates)
 3. [配置网关](#configure-the-gateway)
 4. [设置网关配置](#set-the-gateway-configuration)
 5. [启动网关](#start-the-gateway)
@@ -46,7 +48,7 @@ ms.openlocfilehash: 9c56914091ecac3eb97977dd5afc2dc4588a052c
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
-若要创建网关，请使用 `New-AzureApplicationGateway` cmdlet，并将值替换为你自己的值。 此时不会开始计收网关的费用。 计费将在后面已成功启动网关时开始。
+要创建网关，请使用 `New-AzureApplicationGateway` cmdlet，并将值替换成自己的值。 此时不会开始计收网关的费用。 计费会在后面已成功启动网关时开始。
 
 ```powershell
 New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
@@ -60,17 +62,17 @@ New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subn
 Get-AzureApplicationGateway AppGwTest
 ```
 
-## <a name="upload-ssl-certificates"></a>上载 SSL 证书
+## <a name="upload-ssl-certificates"></a>上传 SSL 证书
 
-使用 `Add-AzureApplicationGatewaySslCertificate` 将 *pfx* 格式的服务器证书上传到应用程序网关。 证书名称是用户选择的名称，在应用程序网关中必须唯一。 在应用程序网关上执行所有证书管理操作时，将按此名称引用此证书。
+使用 `Add-AzureApplicationGatewaySslCertificate` 将 pfx 格式的服务器证书上传到应用程序网关。 证书名称是用户选择的名称，在应用程序网关中必须唯一。 在应用程序网关上执行所有证书管理操作时，将按此名称引用此证书。
 
-以下示例显示了 cmdlet，将示例中的值替换为你自己的值。
+以下示例显示了 cmdlet，将示例中的值替换成自己的值。
 
 ```powershell
 Add-AzureApplicationGatewaySslCertificate  -Name AppGwTest -CertificateName GWCert -Password <password> -CertificateFile <full path to pfx file>
 ```
 
-接下来，验证证书上载。 使用 `Get-AzureApplicationGatewayCertificate` cmdlet。
+接下来，验证证书上传。 使用 `Get-AzureApplicationGatewayCertificate` cmdlet。
 
 此示例在第一行显示 cmdlet，接着显示输出。
 
@@ -105,9 +107,9 @@ State..........: Provisioned
 
 **其他配置说明**
 
-对于 SSL 证书配置， **HttpListener** 中的协议应更改为 *Https* （区分大小写）。 需要将 **SslCert** 元素添加到 **HttpListener**，其值设置为之前上载 SSL 证书部分中使用的名称。 前端端口应更新为 443。
+对于 SSL 证书配置， **HttpListener** 中的协议应更改为 *Https* （区分大小写）。 需要将 **SslCert** 元素添加到 **HttpListener**，其值设置为之前上传 SSL 证书部分中使用的名称。 前端端口应更新为 443。
 
-**启用基于 Cookie 的相关性**：可以配置应用程序网关，以确保来自客户端会话的请求始终定向到 Web 场中的同一 VM。 这种情况通过注入允许网关适当定向流量的会话 Cookie 实现。 若要启用基于 Cookie 的相关性，请在 **BackendHttpSettings** 元素中将 **CookieBasedAffinity** 设置为 *Enabled*。
+**启用基于 Cookie 的相关性**：可以配置应用程序网关，以确保来自客户端会话的请求始终定向到 Web 场中的同一 VM。 这种情况通过注入允许网关适当定向流量的会话 Cookie 实现。 要启用基于 Cookie 的相关性，请在 **BackendHttpSettings** 元素中将 **CookieBasedAffinity** 设置为 *Enabled*。
 
 可以通过创建配置对象或使用配置 XML 文件来构造配置。
 若要使用配置 XML 文件构造配置，请使用以下示例：
@@ -206,14 +208,9 @@ DnsName       : appgw-4c960426-d1e6-4aae-8670-81fd7a519a43.cloudapp.net
 
 ## <a name="next-steps"></a>后续步骤
 
-如需负载平衡选项的其他常规信息，请参阅：
+如需负载均衡选项的其他常规信息，请参阅：
 
-* [Azure 负载平衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
+* [Azure 负载均衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure 流量管理器](https://azure.microsoft.com/documentation/services/traffic-manager/)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
