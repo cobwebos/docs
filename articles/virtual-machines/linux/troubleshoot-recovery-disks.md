@@ -1,5 +1,4 @@
 ---
-
 title: "将 Linux 故障排除 VM 与 Azure CLI 2.0 配合使用 | Microsoft 文档"
 description: "了解如何通过使用 Azure CLI 2.0 将 OS 磁盘连接到恢复 VM 来排查 Linux VM 问题"
 services: virtual-machines-linux
@@ -14,16 +13,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 518a21896ddfc34156615907b710b421bcea42c1
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 7a28accce1bd328b2b486b588c44d91b03e42122
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/09/2017
 
 ---
 
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli-20"></a>通过使用 Azure CLI 2.0 将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除
-如果 Linux 虚拟机 (VM) 遇到启动或磁盘错误，则可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是 `/etc/fstab` 中存在无效条目，使 VM 无法成功启动。 本文详细介绍如何使用 Azure CLI 2.0 将虚拟硬盘连接到另一个 Linux VM，以修复任何错误，然后重新创建原始 VM。 还可以使用 [Azure CLI 1.0](troubleshoot-recovery-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 执行这些步骤。
+如果 Linux 虚拟机 (VM) 遇到启动或磁盘错误，则可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是 `/etc/fstab` 中存在无效条目，使 VM 无法成功启动。 本文详细介绍如何使用 Azure CLI 2.0 将虚拟硬盘连接到另一个 Linux VM，以修复任何错误，并重新创建原始 VM。 还可以使用 [Azure CLI 1.0](troubleshoot-recovery-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 执行这些步骤。
 
 
 ## <a name="recovery-process-overview"></a>恢复过程概述
@@ -37,7 +36,7 @@ ms.lasthandoff: 04/03/2017
 
 若要执行这些故障排除步骤，需要安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
 
-在以下示例中，请将参数名称替换为你自己的值。 示例参数名称包括 `myResourceGroup`、`mystorageaccount` 和 `myVM`。
+在以下示例中，请将参数名称替换成自己的值。 示例参数名称包括 `myResourceGroup`、`mystorageaccount` 和 `myVM`。
 
 
 ## <a name="determine-boot-issues"></a>确定启动问题
@@ -75,7 +74,7 @@ az vm show --resource-group myResourceGroup --name myVM \
 az vm delete --resource-group myResourceGroup --name myVM 
 ```
 
-等到 VM 已完成删除，然后再将虚拟硬盘附加到另一个 VM。 虚拟硬盘上将其与 VM 关联的租约需要释放，然后才能将虚拟硬盘附加到另一个 VM。
+等到 VM 已完成删除，再将虚拟硬盘附加到另一个 VM。 虚拟硬盘上将其与 VM 关联的租约需要释放，才能将虚拟硬盘附加到另一个 VM。
 
 
 ## <a name="attach-existing-virtual-hard-disk-to-another-vm"></a>将现有虚拟硬盘附加到另一个 VM
@@ -169,7 +168,7 @@ az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecov
 
 - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd/azuredeploy.json
 
-该模板使用从前面的命令获得的 VHD URI 部署 VM。 使用 [az group deployment create](/cli/azure/vm/deployment#create) 部署模板。 提供原始 VHD 的 URI，然后指定 OS 类型、VM 大小和 VM 名称，如下所示：
+该模板使用从前面的命令获得的 VHD URI 部署 VM。 使用 [az group deployment create](/cli/azure/group/deployment#create) 部署模板。 提供原始 VHD 的 URI，并指定 OS 类型、VM 大小和 VM 名称，如下所示：
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeployment \

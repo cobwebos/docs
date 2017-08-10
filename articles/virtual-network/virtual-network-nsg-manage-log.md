@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2017
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: f907f388ecb897c05e822f2abd5431b3976b7987
-ms.openlocfilehash: 10581234a4475d0d3b32c7891fcf97eed55f7a1d
-ms.lasthandoff: 03/02/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 552f37dd704de25159bc0f0ad34fdae9ed8b73f5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="log-analytics-for-network-security-groups-nsgs"></a>网络安全组 (NSG) 的日志分析
@@ -47,20 +47,20 @@ ms.lasthandoff: 03/02/2017
 
 ### <a name="azure-portal"></a>Azure 门户
 
-若要使用门户启用日志记录，请登录到[门户](https://portal.azure.com)。 单击“更多服务”，然后键入“网络安全组”。 选择要为其启用日志记录的 NSG。 按照[在门户中启用诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#enable-diagnostic-logs-in-the-portal)一文中非计算资源的说明进行操作。 选择 **NetworkSecurityGroupEvent**、**NetworkSecurityGroupRuleCounter** 或这两个日志类别。
+若要使用门户启用日志记录，请登录到[门户](https://portal.azure.com)。 单击“更多服务”，并键入“网络安全组”。 选择要为其启用日志记录的 NSG。 按照[在门户中启用诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)一文中非计算资源的说明进行操作。 选择 **NetworkSecurityGroupEvent**、**NetworkSecurityGroupRuleCounter** 或这两个日志类别。
 
 ### <a name="powershell"></a>PowerShell
 
-若要使用 PowerShell 启用日志记录，请按照[通过 PowerShell 启用诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#enable-diagnostic-logs-via-powershell)一文中的说明进行操作。 在输入该文中的命令之前，评估以下信息：
+若要使用 PowerShell 启用日志记录，请按照[通过 PowerShell 启用诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)一文中的说明进行操作。 在输入该文中的命令之前，评估以下信息：
 
-- 可以根据需要替换以下 [text]，然后输入命令 `Get-AzureRmNetworkSecurityGroup -Name [nsg-name] -ResourceGroupName [resource-group-name]` 来确定要用于 `-ResourceId` 的值。 命令的 ID 输出看起来类似于 */subscriptions/[Subscription Id]/resourceGroups/[resource-group]/providers/Microsoft.Network/networkSecurityGroups/[NSG name]*。
+- 可以根据需要替换以下 [text]，并输入命令 `Get-AzureRmNetworkSecurityGroup -Name [nsg-name] -ResourceGroupName [resource-group-name]` 来确定要用于 `-ResourceId` 的值。 命令的 ID 输出看起来类似于 */subscriptions/[Subscription Id]/resourceGroups/[resource-group]/providers/Microsoft.Network/networkSecurityGroups/[NSG name]*。
 - 如果只想收集日志类别的数据，请在本文中命令的末尾添加 `-Categories [category]`，其中 category 是 *NetworkSecurityGroupEvent* 或 *NetworkSecurityGroupRuleCounter*。 如果未使用 `-Categories` 参数，则将对这两个日志类别启用数据收集。
 
 ### <a name="azure-command-line-interface-cli"></a>Azure 命令行接口 (CLI)
 
-若要使用 CLI 启用日志记录，请按照[通过 CLI 启用诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#enable-diagnostic-logs-via-cli)一文中的说明进行操作。 在输入该文中的命令之前，评估以下信息：
+若要使用 CLI 启用日志记录，请按照[通过 CLI 启用诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)一文中的说明进行操作。 在输入该文中的命令之前，评估以下信息：
 
-- 可以根据需要替换以下 [text]，然后输入命令 `azure network nsg show [resource-group-name] [nsg-name]` 来确定要用于 `-ResourceId` 的值。 命令的 ID 输出看起来类似于 */subscriptions/[Subscription Id]/resourceGroups/[resource-group]/providers/Microsoft.Network/networkSecurityGroups/[NSG name]*。
+- 可以根据需要替换以下 [text]，并输入命令 `azure network nsg show [resource-group-name] [nsg-name]` 来确定要用于 `-ResourceId` 的值。 命令的 ID 输出看起来类似于 */subscriptions/[Subscription Id]/resourceGroups/[resource-group]/providers/Microsoft.Network/networkSecurityGroups/[NSG name]*。
 - 如果只想收集日志类别的数据，请在本文中命令的末尾添加 `-Categories [category]`，其中 category 是 *NetworkSecurityGroupEvent* 或 *NetworkSecurityGroupRuleCounter*。 如果未使用 `-Categories` 参数，则将对这两个日志类别启用数据收集。
 
 ## <a name="logged-data"></a>已记录的数据
@@ -99,7 +99,7 @@ ms.lasthandoff: 03/02/2017
 
 ### <a name="rule-counter-log"></a>规则计数器日志
 
-此日志包含有关应用于资源的每个规则的信息。 每次应用规则时将记录以下示例数据：
+此日志包含有关应用于资源的每个规则的信息。 每次应用规则时会记录以下示例数据：
 
 ```json
 {

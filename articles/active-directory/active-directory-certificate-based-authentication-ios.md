@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/31/2017
+ms.date: 08/03/2017
 ms.author: markvi
 ms.reviewer: nigu
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 4c2e2030d49ab09ee8c72cfd638986b075d53921
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 350576cd7290fdfbfacd526de50c14e5f20b81dc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS 上 Azure Active Directory 基于证书的身份验证
@@ -47,7 +47,7 @@ ms.lasthandoff: 08/01/2017
 | Outlook |![勾选标记][1] |
 | Yammer |![勾选标记][1] |
 | Skype for Business |![勾选标记][1] |
-| Microsoft 信息保护应用 |![勾选标记][1] |
+| Azure 信息保护应用 |![勾选标记][1] |
 | Microsoft Teams |![勾选标记][1] |
 
 ## <a name="requirements"></a>要求 

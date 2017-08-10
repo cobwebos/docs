@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2017
+ms.date: 08/08/2017
 ms.author: terrylan
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: ad47c198b98f235b5a75fed6c403493a33594429
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 3bc1023d084205171b6b405932cf80f3da59fe8b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>使用恰时功能管理虚拟机访问
@@ -157,7 +157,7 @@ ms.lasthandoff: 07/20/2017
 ## <a name="using-just-in-time-vm-access-via-powershell"></a>通过 PowerShell 使用恰时 VM 访问
 
 若要通过 PowerShell 使用恰时解决方案，请确保具有[最新](/powershell/azure/install-azurerm-ps) Azure PowerShell 版本。
-在具有最新版本后，需要从 PowerShell 库安装[最新](https://www.powershellgallery.com/packages/Azure-Security-Center/0.0.10) Azure 安全中心。
+在具有最新版本后，需要从 PowerShell 库安装[最新](https://www.powershellgallery.com/packages/Azure-Security-Center/0.0.12) Azure 安全中心。
 
 ### <a name="configuring-a-just-in-time-policy-for-a-vm"></a>为 VM 配置恰时策略
 

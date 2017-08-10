@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: bfa902aae0b1ab4ca6a93387106b40a16c7288cd
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 964b39053cf91285202f3af165f4313a15e9f9ee
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="ssh-support-for-azure-web-app-on-linux"></a>对 Linux 上的 Azure Web 应用的 SSH 支持
@@ -55,7 +55,7 @@ Linux 上的 Web 应用程序对应用程序容器提供了 SSH 支持，每个�
 
 若要使自定义 Docker 映像支持在容器与 Azure 门户中的客户端之间进行 SSH 通信，必须针对 Docker 映像执行以下步骤。 
 
-[此处](https://github.com/Azure-App-Service/node/tree/master/4.4.7-1)作为示例提供的 Azure 应用服务存储库中显示了这些步骤。
+[此处](https://github.com/Azure-App-Service/node/blob/master/6.9.3/)作为示例提供的 Azure 应用服务存储库中显示了这些步骤。
 
 1. 在映像的 Dockerfile 中的 [`RUN` 指令](https://docs.docker.com/engine/reference/builder/#run)中包括 `openssh-server` 安装，并将根帐户的密码设置为 `"Docker!"`。 
 
