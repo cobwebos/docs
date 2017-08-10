@@ -141,7 +141,7 @@ Log Analytics 通信流量使用的是公共对等 ExpressRoute 线路。
 ### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>问： 可以通过代理向 Log Analytics 发送多少数据？ 每个客户的数据量是否有最大限制？
 答： 免费套餐设置的上限是每个工作区每天 500 MB。 标准和高级套餐对上传的数据量没有限制。 作为云服务，Log Analytics 设计为自动纵向扩展以处理来自客户的数据 – 即使每天数据量达到数万亿字节 (TB)。
 
-Log Analytics 代理设计为确保占用较小的数据空间。 我们的一位客户针对他们对我们的代理执行的测试写了一篇博客，测试结果令人印象深刻。 数据量因启用的解决方案而异。 在“使用情况”页面中[](log-analytics-usage.md)可以找到有关数据量的详细信息以及按解决方案列出的细目。
+Log Analytics 代理设计为确保占用较小的数据空间。 我们的一位客户针对他们对我们的代理执行的测试写了一篇博客，测试结果令人印象深刻。 数据量因启用的解决方案而异。 在[“使用情况”](log-analytics-usage.md)页面中可以找到有关数据量的详细信息以及按解决方案列出的细目。
 
 有关更多信息，你可以阅读[客户博客](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html)以了解 OMS 代理的低数据占用空间。
 
@@ -157,7 +157,7 @@ Log Analytics 代理设计为确保占用较小的数据空间。 我们的一�
 * 所收集的日志和性能计数器的数量
 * 日志中的数据量
 
-一个好的方法就是利用免费定价层来搭载数台服务器并测量典型数据量。 总体使用情况显示在“[使用情况](log-analytics-usage.md)”页。
+一个好的方法就是利用免费定价层来搭载数台服务器并测量典型数据量。 总体使用情况显示在 [使用情况](log-analytics-usage.md) 页。
 
 对于能够运行 WireData 代理的计算机，可以使用以下查询了解正在发送的数据量：
 
