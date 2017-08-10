@@ -1,13 +1,27 @@
 # 概述
 ## [什么是 Azure Analysis Services？](analysis-services-overview.md)
+## [支持的数据源](analysis-services-datasource.md)
+## [身份验证和用户权限](analysis-services-manage-users.md)
+## [兼容性级别](analysis-services-compat-level.md)
+## [高可用性](analysis-services-bcdr.md)
 
-# 快速入门
-## [创建服务器 - 门户](analysis-services-create-server.md)
-## [创建服务器 - PowerShell](analysis-services-create-powershell.md)
-## [部署模型 - Visual Studio](analysis-services-deploy.md)
+# 入门
+## [在 Azure 门户中创建服务器](analysis-services-create-server.md)
+## [使用 PowerShell 创建服务器](analysis-services-create-powershell.md)
+## [从 Visual Studio 部署模型](analysis-services-deploy.md)
+## [在 Azure 门户（预览）中创建模型](analysis-services-create-model-portal.md)
 
-# 教程
-## 创建和部署模型
+# 操作说明 
+## [管理服务器](analysis-services-manage.md)
+## [管理数据库用户](analysis-services-database-users.md)
+## [管理服务器管理员](analysis-services-server-admins.md)
+## [安装本地数据网关](analysis-services-gateway.md)
+## [获取客户端库](analysis-services-data-providers.md)
+## [备份和还原](analysis-services-backup.md)
+## [使用 Excel 进行连接](analysis-services-connect-excel.md)
+## [使用 Power BI 进行连接](analysis-services-connect-pbi.md)
+## [创建 .odc 文件](analysis-services-odc.md)
+## 教程
 ### [Adventure Works 教程](tutorials/aas-adventure-works-tutorial.md)
 ### [第 1 课：创建新的表格模型项目](tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)
 ### [第 2 课：获取数据](tutorials/aas-lesson-2-get-data.md)
@@ -24,24 +38,7 @@
 ### [第 13 课：部署](tutorials/aas-lesson-13-deploy.md)
 ### [补充课程 - 详细信息行](tutorials/aas-supplemental-lesson-detail-rows.md)
 ### [补充课程 - 动态安全性](tutorials/aas-supplemental-lesson-dynamic-security.md)
-### [补充课程 - 不规则层次结构](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)
-
-# 概念
-## [支持的数据源](analysis-services-datasource.md)
-## [身份验证和用户权限](analysis-services-manage-users.md)
-## [高可用性](analysis-services-bcdr.md)
-
-# 操作说明 
-## [在 Azure 门户（预览）中创建模型](analysis-services-create-model-portal.md)
-## [管理服务器](analysis-services-manage.md)
-## [管理数据库用户](analysis-services-database-users.md)
-## [管理服务器管理员](analysis-services-server-admins.md)
-## [安装本地数据网关](analysis-services-gateway.md)
-## [使用 Excel 进行连接](analysis-services-connect-excel.md)
-## [使用 Power BI 进行连接](analysis-services-connect-pbi.md)
-## [获取客户端库](analysis-services-data-providers.md)
-## [备份和还原](analysis-services-backup.md)
-## [创建 .odc 文件](analysis-services-odc.md)
+### [补充课程 - 不规则层次结构](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
 
 # 引用
 ## [PowerShell](analysis-services-powershell.md)

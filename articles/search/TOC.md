@@ -28,10 +28,12 @@
 ### [多租户的设计模式](search-modeling-multitenant-saas-applications.md)
 
 ## 开发
+### [API 版本](search-api-versions.md)
 ### [升级 SDK](search-dotnet-sdk-migration.md)
 ### [升级 REST API](search-api-migration.md)
 ### [为复杂数据类型建模](search-howto-complex-data-types.md)
 ### [处理并发更新](search-howto-concurrency.md)
+### [代码示例](https://azure.microsoft.com/resources/samples/?service=search)
 
 ## 管理
 ### 管理 Azure 搜索
@@ -68,31 +70,33 @@
 
 # 引用
 
-## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=search)
 ## [.NET](/dotnet/api/?term=microsoft.azure.search)
 ## [.NET（管理）](/dotnet/api/?term=microsoft.azure.management.search)
 ## [Python（管理）](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html)
 ## [REST](/rest/api/searchservice)
 ## [.NET（管理）](/rest/api/searchmanagement)
+## [服务 REST（预览版）](search-api-2015-02-28-preview.md)
 
 # 资源
-## [API 版本](search-api-versions.md)
+
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=web-mobile)
+## [FAQ - 常见问题解答](search-faq-frequently-asked-questions.md)
 ## [定价](https://azure.microsoft.com/pricing/details/search/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
-## [服务 REST（预览版）](search-api-2015-02-28-preview.md)
 ## [服务更新](https://azure.microsoft.com/updates/?product=search)
 ## 课件和教程
-## 演示站点
-## 合作伙伴和社区
-### [Azure 搜索 Github](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
-### [Azure 搜索 Github](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
-### [论坛](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureSearch)
-### [作业列表应用](http://aka.ms/azjobsdemo)
-### [实时演示应用](https://searchsamples.azurewebsites.net/)
-### [为关系数据建模](http://blogs.technet.com/b/onsearch/archive/2015/09/08/modeling-the-adventureworks-inventory-database-for-azure-search.aspx)
-### [多层分面](http://blogs.technet.com/b/onsearch/archive/2015/09/09/multi-level-taxonomy-facets-in-azure-search.aspx)
-### [搜索分析器演示](http://alice.unearth.ai/)
-### [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-search)
 ### [视频和教程](search-video-demo-tutorial-list.md)
 ### [虚拟大学](https://mva.microsoft.com/training-courses/using-windows-azure-search-10540?l=ADkxnd97_9304984382)
+## 演示站点
+### [搜索分析器演示](http://alice.unearth.ai/)
+### [实时演示应用](https://searchsamples.azurewebsites.net/)
+### [作业列表应用](http://aka.ms/azjobsdemo)
+## 合作伙伴和社区
+### [Azure 搜索 Github](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
+### [MSDN 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureSearch)
+### [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-search)
+### [博客：为关系数据建模](http://blogs.technet.com/b/onsearch/archive/2015/09/08/modeling-the-adventureworks-inventory-database-for-azure-search.aspx)
+### [博客：多层分面](http://blogs.technet.com/b/onsearch/archive/2015/09/09/multi-level-taxonomy-facets-in-azure-search.aspx)
+
+
+
