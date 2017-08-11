@@ -3,7 +3,7 @@ title: "将用户添加到 Azure Active Directory 中的自定义域 | Microsoft
 description: "如何使用用户帐户填充 Azure Active Directory 中的自定义域。"
 services: active-directory
 documentationcenter: 
-author: curtand
+author: jeffgilb
 manager: femila
 editor: 
 ms.assetid: 717b5a7c-7bc3-4ab1-98b5-4740b53338fe
