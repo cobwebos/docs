@@ -3,7 +3,7 @@ title: "将自定义域名添加到 Azure Active Directory 并设置联合登录
 description: "如何将公司域名添加到 Azure Active Directory，以便在 Azure Active Directory 与本地联合身份验证解决方案之间设置联合登录"
 services: active-directory
 documentationcenter: 
-author: curtand
+author: jeffgilb
 manager: femila
 editor: 
 ms.assetid: 27126c7e-e6d6-4ef3-a4fb-f5f0706e749d

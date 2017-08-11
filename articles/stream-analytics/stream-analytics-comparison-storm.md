@@ -4,7 +4,7 @@ description: "使用 Apache Storm 与流分析之间的比较获取有关选择�
 keywords: "分析平台, 分析平台, 云分析平台, storm 比较"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: b9aac017-9866-4d0a-b98f-6f03881e9339
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/27/2017
-ms.author: jeffstok
+ms.author: samacha
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
 ms.openlocfilehash: 4c0c7c185943eb292d816e2047de930245a3e1e1
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
-
 
 ---
 # <a name="choosing-a-streaming-analytics-platform-comparing-apache-storm-and-azure-stream-analytics"></a>选择流分析平台：Apache Storm 与 Azure 流分析的比较
