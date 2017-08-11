@@ -260,9 +260,9 @@ Hadoop MapReduce 属于批处理。 运行 Hive 作业时，最具成本效益�
     <tr><th>Name</th><th>值</th></tr>
     <tr><td>筛选年份</td><td>2013 </td></tr>
     <tr><td>筛选期间</td><td>1 月</td></tr>
-    <tr><td>字段</td><td>*Year*、*FlightDate*、*UniqueCarrier*、*Carrier*、*FlightNum*、*OriginAirportID*、*Origin*、*OriginCityName*、*OriginState*、*DestAirportID*、*Dest*、*DestCityName*、*DestState*、*DepDelayMinutes*、*ArrDelay*、*ArrDelayMinutes*、*CarrierDelay*、*WeatherDelay*、*NASDelay*、*SecurityDelay* 、*LateAircraftDelay*（清除其他所有字段）</td></tr>
+    <tr><td>字段</td><td>*Year*、 *FlightDate*、 *UniqueCarrier*、 *Carrier*、 *FlightNum*、 *OriginAirportID*、 *Origin*、 *OriginCityName*、 *OriginState*、 *DestAirportID*、 *Dest*、 *DestCityName*、 *DestState*、 *DepDelayMinutes*、 *ArrDelay*、 *ArrDelayMinutes*、 *CarrierDelay*、 *WeatherDelay*、 *NASDelay*、 *SecurityDelay* 、 *LateAircraftDelay* （清除其他所有字段）</td></tr>
     </table>
-3. 单击“下载”****。
+3. 单击 **下载** 。
 4. 将文件解压缩到 **C:\Tutorials\FlightDelay\2013Data** 文件夹。 每个文件均为 CSV 文件且大小约为 60GB。
 5. 将文件重命名为其包含的数据所对应的月份的名称。 例如，将包含 1 月份数据的文件命名为 *January.csv*。
 6. 重复步骤 2 和步骤 5 为 2013 年中的 12 个月分别下载一个对应的文件。 完成本教程到少要有一个文件。
