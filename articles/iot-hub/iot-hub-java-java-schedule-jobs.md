@@ -88,7 +88,7 @@ schedule-jobs：使用作业来调用 lockDoor 直接方法，并在多个设备
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-service-client</artifactId>
-      <version>1.6.23</version>
+      <version>1.7.23</version>
       <type>jar</type>
     </dependency>
     ```
@@ -300,7 +300,7 @@ schedule-jobs：使用作业来调用 lockDoor 直接方法，并在多个设备
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-device-client</artifactId>
-      <version>1.3.30</version>
+      <version>1.3.32</version>
     </dependency>
     ```
 

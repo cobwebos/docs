@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 05/13/2017
+ms.date: 08/11/2017
 ms.author: ruturajd
 ms.translationtype: Human Translation
 ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: 92a3250a4b07a8a473bd3343181176a2623cd476
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/16/2017
-
 
 ---
 # <a name="reprotect-from-failed-over-azure-region-back-to-primary-region"></a>重新保护从故障转移 Azure 区域回复到主要区域的虚拟机

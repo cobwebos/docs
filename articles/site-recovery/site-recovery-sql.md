@@ -12,7 +12,7 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 08/11/2017
 ms.author: pratshar
 ms.translationtype: HT
 ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7

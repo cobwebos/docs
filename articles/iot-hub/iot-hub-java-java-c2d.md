@@ -20,7 +20,6 @@ ms.openlocfilehash: a6cfd7d3f1dd41968004ae93b1d6aa9977e6f55a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>使用 IoT 中心发送云到设备的消息 (Java)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -105,7 +104,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-service-client</artifactId>
-      <version>1.5.22</version>
+      <version>1.7.23</version>
     </dependency>
     ```
 

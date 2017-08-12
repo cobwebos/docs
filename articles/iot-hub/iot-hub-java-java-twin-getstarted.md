@@ -62,7 +62,7 @@ ms.lasthandoff: 07/14/2017
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-service-client</artifactId>
-      <version>1.5.22</version>
+      <version>1.7.23</version>
       <type>jar</type>
     </dependency>
     ```
@@ -219,7 +219,7 @@ ms.lasthandoff: 07/14/2017
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-device-client</artifactId>
-      <version>1.3.30</version>
+      <version>1.3.32</version>
     </dependency>
     ```
 

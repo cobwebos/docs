@@ -12,7 +12,7 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 08/11/2017
 ms.author: nisoneji
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
@@ -20,12 +20,11 @@ ms.openlocfilehash: c49f283971b33a4e88573e1d67ba159021fbccb8
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/04/2017
 
-
 ---
 # <a name="replicate-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site-in-the-classic-azure-portal"></a>在经典 Azure 门户中将本地 VMware 虚拟机或物理服务器复制到辅助站点
 
 ## <a name="overview"></a>概述
-Azure Site Recovery 中的 InMage Scout 在本地 VMware 站点之间提供实时复制。 InMage Scout 随附在 Azure Site Recovery 服务订阅中。
+Azure Site Recovery 中的 InMage Scout 在本地 VMware 站点之间提供实时复制。 InMage Scout 随附在 Azure Site Recovery 服务订阅中。 
 
 ## <a name="prerequisites"></a>先决条件
 **Azure 帐户**：需要 [Microsoft Azure](https://azure.microsoft.com/) 帐户。 你可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。 [详细了解](https://azure.microsoft.com/pricing/details/site-recovery/) Site Recovery 定价。

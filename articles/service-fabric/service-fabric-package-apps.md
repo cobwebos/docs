@@ -56,7 +56,8 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 有关如何配置 **SetupEntryPoint** 的详细信息，请参阅[配置服务设置入口点的策略](service-fabric-application-runas-security.md)
 
-## <a name="configure"></a>配置 
+<a id="Package-App"></a>
+## <a name="configure"></a>配置
 ### <a name="build-a-package-by-using-visual-studio"></a>使用 Visual Studio 生成包
 如果使用 Visual Studio 2015 创建应用程序，你可以使用“包”命令自动创建符合上述布局的包。
 
@@ -115,18 +116,19 @@ PS D:\temp>
 
 如果知道要在其中部署应用程序的群集，则建议传入 `ImageStoreConnectionString` 参数。 在这种情况下，还需要针对已在群集中运行的前一应用程序版本对包进行验证。 例如，验证可检测是否部署了版本相同但内容不同的包。  
 
-应用程序经过正确打包并通过验证后，如果需要压缩，则需要基于文件的大小和数量进行评估。 
+应用程序经过正确打包并通过验证后，如果需要压缩，则需要基于文件的大小和数量进行评估。
 
 ## <a name="compress-a-package"></a>压缩包
 包较大或包含大量文件时，可压缩该包以提高部署速度。 压缩可以减少文件的数量和包大小。
 对于压缩应用程序包，[上传应用程序包](service-fabric-deploy-remove-applications.md#upload-the-application-package)比上传未压缩的程序包（特别是如果考虑压缩时间）需要更长时间，但[注册](service-fabric-deploy-remove-applications.md#register-the-application-package)和[取消注册应用程序类型](service-fabric-deploy-remove-applications.md#unregister-an-application-type)对于压缩应用程序包而言更快。
 
 压缩包和未压缩包的部署机制相同。 如果为压缩包，则存储在群集映像存储等位置，并且在应用程序运行前在节点上解压缩。
-压缩会将有效的 Service Fabric 包替换为已压缩版本。 文件夹必须允许写入操作。 对已压缩的包运行压缩将不会产生任何更改。 
+压缩会将有效的 Service Fabric 包替换为已压缩版本。 文件夹必须允许写入操作。 对已压缩的包运行压缩将不会产生任何更改。
 
 可以通过使用 `CompressPackage` 开关运行 Powershell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 来压缩包。 可以通过使用 `UncompressPackage` 开关运行同一命令来解压缩包。
 
-以下命令可压缩包，但不会将包复制到映像存储区。 通过使用不带 `SkipCopy` 标志的 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 将压缩的包复制到一个或多个 Service Fabric 群集中。 包中现在包括 `code`、`config` 和 `data` 包的压缩文件。 不会压缩应用程序清单和服务清单，因为许多内部操作（例如，包共享、应用程序类型名称和某些验证的版本提取）均需要使用它们。
+以下命令可压缩包，但不会将包复制到映像存储区。 通过使用不带 `SkipCopy` 标志的 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 将压缩的包复制到一个或多个 Service Fabric 群集中。
+包中现在包括 `code`、`config` 和 `data` 包的压缩文件。 不会压缩应用程序清单和服务清单，因为许多内部操作（例如，包共享、应用程序类型名称和某些验证的版本提取）均需要使用它们。
 压缩清单会使这些操作无效。
 
 ```
