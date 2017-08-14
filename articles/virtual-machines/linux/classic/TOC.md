@@ -4,13 +4,13 @@
 ## [可用性](configure-availability.md)
 ## [常见问题](faq.md)
 
-# [入门](../opensource-links.md)
+# 入门
 ## [使用门户创建 Linux VM](createportal.md)
 ## [安装 Azure CLI](../../../cli-install-nodejs.md)
 ## [创建 SSH 密钥](../mac-create-ssh-keys.md)
 
 # 如何
-## [计算](../intro-on-azure.md)
+## 计算
 ### [创建自定义 VM](create-custom.md)
 ### [捕获 VM](capture-image.md)
 ### [将远程桌面与 Linux VM 一起使用](remote-desktop.md)
