@@ -35,14 +35,14 @@ ms.lasthandoff: 07/22/2017
 * [Service Fabric SDK 和工具](service-fabric-get-started.md)。
 *  适用于 Windows 的 Docker。  [Get Docker CE for Windows (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)（获取适用于 Windows 的 Docker CE（稳定版））。 安装并启动 Docker 以后，右键单击任务栏图标，然后选择“切换到 Windows 容器”。 这是运行基于 Windows 的 Docker 映像所必需的。
 
-一个 Windows 群集，其中至少有三个节点运行在包含容器的 Windows Server 2016 上 - [创建群集](service-fabric-cluster-creation-via-portal.md)或[免费试用 Service Fabric](https://aka.ms/tryservicefabric)。 
+一个 Windows 群集，其中至少有三个节点运行在包含容器的 Windows Server 2016 上 - [创建群集](service-fabric-cluster-creation-via-portal.md)或[免费试用 Service Fabric](https://aka.ms/tryservicefabric)。
 
-一个位于 Azure 容器注册表中的注册表 - 在 Azure 订阅中[创建容器注册表](../container-registry/container-registry-get-started-portal.md)。 
+一个位于 Azure 容器注册表中的注册表 - 在 Azure 订阅中[创建容器注册表](../container-registry/container-registry-get-started-portal.md)。
 
 ## <a name="define-the-docker-container"></a>定义 Docker 容器
-基于 Docker 中心内的 [Python 映像](https://hub.docker.com/_/python/)生成一个映像。 
+基于 Docker 中心内的 [Python 映像](https://hub.docker.com/_/python/)生成一个映像。
 
-在 Dockerfile 中定义 Docker 容器。 Dockerfile 包含有关在容器中设置环境、加载要运行的应用程序以及映射端口的说明。 Dockerfile 是 `docker build` 命令的输入，该命令用于创建映像。 
+在 Dockerfile 中定义 Docker 容器。 Dockerfile 包含有关在容器中设置环境、加载要运行的应用程序以及映射端口的说明。 Dockerfile 是 `docker build` 命令的输入，该命令用于创建映像。
 
 创建一个空目录并创建文件 *Dockerfile*（不带文件扩展名）。 将以下内容添加到 *Dockerfile* 并保存所做的更改：
 
@@ -86,13 +86,14 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    
+
     return 'Hello World!'
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
 ```
 
+<a id="Build-Containers"></a>
 ## <a name="build-the-image"></a>生成映像
 运行 `docker build` 命令，创建运行上述 Web 应用程序的映像。 打开 PowerShell 窗口并导航到包含 Dockerfile 的目录。 运行以下命令：
 
@@ -106,7 +107,7 @@ docker build -t helloworldapp .
 
 ```
 $ docker images
-    
+
 REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
 helloworldapp                 latest              8ce25f5d6a79        2 minutes ago       10.4 GB
 ```
@@ -141,6 +142,7 @@ docker stop my-web-site
 docker rm my-web-site
 ```
 
+<a id="Push-Containers"></a>
 ## <a name="push-the-image-to-the-container-registry"></a>将映像推送到容器注册表
 验证容器是否在开发计算机上运行以后，即可将映像推送到 Azure 容器注册表的注册表中。
 
@@ -170,7 +172,7 @@ Service Fabric SDK 和工具提供服务模板，用于创建容器化应用程�
 1. 启动 Visual Studio。  选择“文件” > “新建” > “项目”。
 2. 选择“Service Fabric 应用程序”，将其命名为“MyFirstContainer”，然后单击“确定”。
 3. 从“服务模板”列表中选择“来宾容器”。
-4. 在“映像名称”中输入“myregistry.azurecr.io/samples/helloworldapp”，这是已推送到容器存储库中的映像。 
+4. 在“映像名称”中输入“myregistry.azurecr.io/samples/helloworldapp”，这是已推送到容器存储库中的映像。
 5. 为服务命名，然后单击“**确定**”。
 
 ## <a name="configure-communication"></a>配置通信
@@ -183,8 +185,8 @@ Service Fabric SDK 和工具提供服务模板，用于创建容器化应用程�
   </Endpoints>
 </Resources>
 ```
-    
-定义终结点后，Service Fabric 即可将该终结点发布到命名服务。  在群集中运行的其他服务可以解析此容器。  还可以使用[反向代理](service-fabric-reverseproxy.md)进行容器到容器通信。  将 HTTP 侦听端口和想要与其通信的服务名称作为环境变量提供给反向代理，以此方式进行通信。 
+
+定义终结点后，Service Fabric 即可将该终结点发布到命名服务。  在群集中运行的其他服务可以解析此容器。  还可以使用[反向代理](service-fabric-reverseproxy.md)进行容器到容器通信。  将 HTTP 侦听端口和想要与其通信的服务名称作为环境变量提供给反向代理，以此方式进行通信。
 
 ## <a name="configure-and-set-environment-variables"></a>配置和设置环境变量
 可以针对服务清单中的每个代码包指定环境变量。 此功能适用于所有服务，不管它们是作为容器、进程还是来宾可执行文件部署的。 可以替代应用程序清单中的环境变量值，或者在部署期间将其指定为应用程序参数。
@@ -211,7 +213,7 @@ Service Fabric SDK 和工具提供服务模板，用于创建容器化应用程�
 ```
 
 ## <a name="configure-container-port-to-host-port-mapping-and-container-to-container-discovery"></a>配置容器端口到主机端口的映射，以及容器到容器的发现
-配置用来与容器通信的主机端口。 端口绑定可将服务在容器中侦听的端口映射到主机上的端口。 在 ApplicationManifest.xml 文件的 `ContainerHostPolicies` 元素中添加 `PortBinding` 元素。  在本文中，`ContainerPort` 为 80（容器根据 Dockerfile 中的指定值公开端口 80），`EndpointRef` 为“Guest1TypeEndpoint”（以前在服务清单中定义的终结点）。  传入到端口 8081 上的服务的请求映射到容器上的端口 80。 
+配置用来与容器通信的主机端口。 端口绑定可将服务在容器中侦听的端口映射到主机上的端口。 在 ApplicationManifest.xml 文件的 `ContainerHostPolicies` 元素中添加 `PortBinding` 元素。  在本文中，`ContainerPort` 为 80（容器根据 Dockerfile 中的指定值公开端口 80），`EndpointRef` 为“Guest1TypeEndpoint”（以前在服务清单中定义的终结点）。  传入到端口 8081 上的服务的请求映射到容器上的端口 80。
 
 ```xml
 <Policies>
@@ -312,7 +314,7 @@ Windows 支持容器的两种隔离模式：进程和 Hyper-V。 使用进程隔
 
 在“连接终结点”中输入群集的管理终结点。  例如，“containercluster.westus2.cloudapp.azure.com:19000”。 在 [Azure 门户](https://portal.azure.com)中，可以在群集的“概览”边栏选项卡中查找客户端连接终结点。
 
-单击“发布” 。 
+单击“发布” 。
 
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 是一项基于 Web 的工具，用于检验和管理 Service Fabric 群集中的应用程序和节点。 打开浏览器，导航到 http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/ 然后遵循应用程序部署过程操作。  将映像下载到群集节点（这可能需要一段时间，具体时间取决于映像大小）之前，应用程序可部署但处于错误状态：![错误][1]
 
@@ -360,17 +362,17 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
       <EnvironmentVariable Name="HttpGatewayPort" Value=""/>
       <EnvironmentVariable Name="BackendServiceName" Value=""/>
     </EnvironmentVariables>
-    
+
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an 
+  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 
   <Resources>
     <Endpoints>
-      <!-- This endpoint is used by the communication listener to obtain the port on which to 
-           listen. Please note that if your service is partitioned, this port is shared with 
+      <!-- This endpoint is used by the communication listener to obtain the port on which to
+           listen. Please note that if your service is partitioned, this port is shared with
            replicas of different partitions that are placed in your code. -->
       <Endpoint Name="Guest1TypeEndpoint" UriScheme="http" Port="8081" Protocol="http"/>
     </Endpoints>
@@ -388,8 +390,8 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
   <Parameters>
     <Parameter Name="Guest1_InstanceCount" DefaultValue="-1" />
   </Parameters>
-  <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
-       should match the Name and Version attributes of the ServiceManifest element defined in the 
+  <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion
+       should match the Name and Version attributes of the ServiceManifest element defined in the
        ServiceManifest.xml file. -->
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="Guest1Pkg" ServiceManifestVersion="1.0.0" />
@@ -411,10 +413,10 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
     </Policies>
   </ServiceManifestImport>
   <DefaultServices>
-    <!-- The section below creates instances of service types, when an instance of this 
-         application type is created. You can also create one or more instances of service type using the 
+    <!-- The section below creates instances of service types, when an instance of this
+         application type is created. You can also create one or more instances of service type using the
          ServiceFabric PowerShell module.
-         
+
          The attribute ServiceTypeName below must match the name defined in the imported ServiceManifest.xml file. -->
     <Service Name="Guest1">
       <StatelessService ServiceTypeName="Guest1Type" InstanceCount="[Guest1_InstanceCount]">

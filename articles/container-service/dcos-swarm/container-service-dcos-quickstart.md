@@ -11,11 +11,12 @@ keywords: "Docker, 容器, 微服务, Kubernetes, DC/OS, Azure"
 ms.assetid: 
 ms.service: container-service
 ms.devlang: azurecli
-ms.topic: sample
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: nepeters
+ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: fdc85e69403cec392328aad255352b2bee5afc20

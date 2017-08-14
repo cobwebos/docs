@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 08/12/2016
-ms.author: cfreeman
+ms.author: sewhee
 ms.translationtype: Human Translation
 ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
 ms.openlocfilehash: 68ec072b972e38d8cd020adda4dcc85cdaccfb76
 ms.contentlocale: zh-cn
 ms.lasthandoff: 11/17/2016
-
 
 ---
 # <a name="application-performance-monitoring-using-application-insights-for-scom"></a>为 SCOM 使用 Application Insights 的应用程序性能监视

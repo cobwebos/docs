@@ -81,8 +81,6 @@
 ### [创建存储帐户](../../storage/storage-create-storage-account.md#create-a-storage-account)
 ### [对 Azure 存储空间使用 Azure PowerShell](../../storage/storage-powershell-guide-full.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [将 Azure CLI 用于 Azure 存储](../../storage/storage-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [适用于 Windows 的存储基础结构准则](../../virtual-machines/windows/infrastructure-storage-solutions-guidelines.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [适用于 Linux 的存储基础结构准则](../../virtual-machines/linux/infrastructure-storage-solutions-guidelines.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure 存储客户端工具](../../storage/storage-explorers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure 存储器服务 REST API 参考](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference)
 ### [使用共享访问签名](../../storage/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)

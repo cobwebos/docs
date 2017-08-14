@@ -10,6 +10,8 @@
 ### [云服务](cdn-cloud-service-with-cdn.md)
 ### [存储](cdn-create-a-storage-account-with-cdn.md)
 ### [跨域资源共享](cdn-cors.md)
+### [将自定义域映射到 CDN](cdn-map-content-to-custom-domain.md)
+### [在自定义域上启用 HTTPS](cdn-custom-ssl.md)
 ## 优化内容
 ### [优化概述](cdn-optimization-overview.md)
 ####[大型文件优化](cdn-large-file-optimization.md)
@@ -17,12 +19,10 @@
 ####[动态站点加速](cdn-dynamic-site-acceleration.md)
  
 ## 管理
-### [在自定义域上启用 HTTPS](cdn-custom-ssl.md)
 ### [使用 PowerShell 进行管理](cdn-manage-powershell.md)
 ### 配置生存时间
 #### [Web 应用/云服务、ASP.NET 或 IIS 内容](cdn-manage-expiration-of-cloud-service-content.md)
 #### [存储 Blob 服务内容](cdn-manage-expiration-of-blob-content.md)
-### [将自定义域映射到 CDN](cdn-map-content-to-custom-domain.md)
 ### [按国家/地区限制访问](cdn-restrict-access-by-country.md)
 ### [通过压缩文件来提高性能](cdn-improve-performance.md)
 ### 使用查询字符串缓存内容
