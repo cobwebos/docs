@@ -105,9 +105,6 @@
       href: consistency-levels.md
     - name: 吞吐量
       href: request-units.md
-      items:
-        - name: 每分钟请求单位数
-          href: request-units-per-minute.md
     - name: 多模型 API
       items:
         - name: DocumentDB
