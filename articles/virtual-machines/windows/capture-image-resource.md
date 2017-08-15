@@ -21,7 +21,6 @@ ms.openlocfilehash: e428b755f6696bd6d4047ad77579a8e9665dfbd8
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/09/2017
 
-
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中创建通用 VM 的托管映像
 
@@ -83,7 +82,8 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 有关详细信息，请参阅 [Azure PowerShell 版本控制](/powershell/azure/overview)。
 
 
-1. 创建若干变量。 
+1. 创建若干变量。
+
     ```powershell
     $vmName = "myVM"
     $rgName = "myResourceGroup"

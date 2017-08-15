@@ -1,7 +1,7 @@
 ---
 title: "如何使用 SendGrid 电子邮件服务 (.NET) | Microsoft Docs"
 description: "了解如何在 Azure 上使用 SendGrid 电子邮件服务发送电子邮件。 代码示例用 C# 编写且使用 .NET API。"
-services: app-service\web
+services: app-service-web
 documentationcenter: .net
 author: thinkingserious
 manager: erikre
@@ -19,7 +19,6 @@ ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
 ms.openlocfilehash: 126bc0658af3a27643bc0da2848545546f158f0c
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/03/2017
-
 
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>如何在 Azure 中使用 SendGrid 发送电子邮件
