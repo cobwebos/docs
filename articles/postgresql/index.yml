@@ -4,7 +4,7 @@ title: 用于 PostgreSQL 的 Azure 数据库文档
 metadata:
   document_id: c0fe8cd3-35da-e3e5-718e-8f3cf2f87f34
   title: Azure PostgreSQL 文档 - 教程和 API 参考
-  description: 用于 PostgreSQL 的 Azure 数据库是 Microsoft 云中基于开源 PostgreSQL 数据库引擎的、为开发人员构建的关系数据库服务。
+  description: 用于 PostgreSQL 的 Azure 数据库是 Microsoft 云中基于开源 PostgreSQL 数据库引擎的、为开发人员构建的关系型数据库服务。
   services: app-service
   author: jasonwhowell
   manager: jhubbard
@@ -15,46 +15,48 @@ metadata:
   ms.date: 01/23/2017
   ms.author: jasonh
 abstract:
-  description: 用于 PostgreSQL 的 Azure 数据库是基于开源 Postgres 数据库引擎的关系数据库服务。  它是一个完全托管的数据库即服务产品，能够处理任务关键型工作负荷，并提供可预测的性能、安全性、高可用性和动态可伸缩性。  利用所选的开源工具和平台开发包含用于 PostgreSQL 的 Azure 数据库的应用程序。  参考我们的快速入门、教程和示例了解如何使用用于 PostgreSQL 的 Azure 数据库。
+  description: 用于 PostgreSQL 的 Azure 数据库是基于开源 Postgres 数据库引擎的关系型数据库服务。  它是一个完全托管的数据库即服务产品，能够处理任务关键型工作负荷，并提供可预测的性能、安全性、高可用性和动态可伸缩性。  利用所选的开源工具和平台开发包含用于 PostgreSQL 的 Azure 数据库的应用程序。  参考我们的快速入门、教程和示例了解如何使用用于 PostgreSQL 的 Azure 数据库。
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何通过以下方式创建 PostgreSQL 数据库：
-  - type: list
-    style: icon48
-    items: 
-    - image: 
-        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg
-      text: Azure 门户
-      href: /azure/postgresql/quickstart-create-server-database-portal
-    - image: 
-        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/cli.svg
-      text: Azure CLI
-      href: /azure/postgresql/quickstart-create-server-database-azure-cli
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何：
-  - type: list
-    style: ordered
+  - title: 5 分钟快速入门
     items:
-    - html: '设计数据库&#58; <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Azure 门户</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>'
-    - html: <a href="/azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">使用 Python 和 CLI 生成 Web 应用</a>
-- title: 示例
-  items:
-  - type: paragraph
-    text: 查找脚本来管理常见任务。
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 了解如何通过以下方式创建 PostgreSQL 数据库：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg'
+            text: Azure 门户
+            href: /azure/postgresql/quickstart-create-server-database-portal
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/cli.svg'
+            text: Azure CLI
+            href: /azure/postgresql/quickstart-create-server-database-azure-cli
+  - title: 分步教程
     items:
-    - html: <a href="/azure/postgresql/sample-scripts-azure-cli">Azure CLI</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 了解如何：
+      - type: list
+        style: ordered
+        items:
+          - html: '设计数据库&#58; <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Azure 门户</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>'
+          - html: <a href="/azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">使用 Python 和 CLI 生成 Web 应用</a>
+  - title: 示例
     items:
-    - title: 命令行
-      html: <p><a href="/cli/azure">Azure CLI</a></p>
+      - type: paragraph
+        text: 查找脚本来管理常见任务。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/postgresql/sample-scripts-azure-cli">Azure CLI</a>
+  - title: 引用
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 命令行
+            html: <p><a href="/cli/azure">Azure CLI</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/postgresql">REST API</a></p>
