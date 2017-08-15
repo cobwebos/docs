@@ -202,5 +202,5 @@ Date: Mon, 17 Jul 2017 18:27:36 GMT
 本文档介绍了部署多容器 Azure 容器实例所需的步骤。 若想了解端到端 Azure 容器实例，请参阅 Azure 容器实例教程。
 
 > [!div class="nextstepaction"]
-> [Azure 容器实例教程]：./container-instances-tutorial-prepare-app.md
+> [Azure 容器实例教程]: ./container-instances-tutorial-prepare-app.md
 
