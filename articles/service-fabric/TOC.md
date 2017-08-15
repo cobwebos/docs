@@ -69,6 +69,7 @@
 ##### [DNS 服务](service-fabric-dnsservice.md)
 ##### [反向代理](service-fabric-reverseproxy.md)
 ##### [配置反向代理以进行安全通信](service-fabric-reverseproxy-configure-secure-communication.md)
+##### [反向代理诊断](service-fabric-reverse-proxy-diagnostics.md)
 ### [应用程序的可伸缩性](service-fabric-concepts-scalability.md)
 ### [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
 
@@ -136,6 +137,7 @@
 #### [Docker Compose（预览）](service-fabric-docker-compose.md)
 #### [容器和服务的资源调控](service-fabric-resource-governance.md)
 #### [卷和日志记录驱动程序](service-fabric-containers-volume-logging-drivers.md)
+#### [容器内的服务](service-fabric-services-inside-containers.md)
 
 ### 生成 Reliable Services 服务
 #### [概述](service-fabric-reliable-services-introduction.md)
@@ -173,10 +175,10 @@
 #### 入门
 ##### [Windows 上的 C#](service-fabric-reliable-actors-get-started.md)
 ##### [Linux 上的 Java](service-fabric-reliable-actors-get-started-java.md)
-#### [发送通知](service-fabric-reliable-actors-events.md) 
+#### [发送通知](service-fabric-reliable-actors-events.md)
 #### [设置计时器和提醒](service-fabric-reliable-actors-timers-reminders.md)
 #### [配置 KvsActorStateProvider](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
-#### [配置通信设置](service-fabric-reliable-actors-fabrictransportsettings.md) 
+#### [配置通信设置](service-fabric-reliable-actors-fabrictransportsettings.md)
 #### [配置 ReliableDictionaryActorStateProvider](service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md)
 
 ### [配置反向代理以进行安全通信](service-fabric-reverseproxy-configure-secure-communication.md)
@@ -240,17 +242,17 @@
 
 ## 创建和管理群集
 ### Azure 上的群集
-#### 创建 
+#### 创建
 ##### [在 Azure 上创建第一个群集](service-fabric-get-started-azure-cluster.md)
 ##### [Azure 门户](service-fabric-cluster-creation-via-portal.md)
 ##### [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-#### 缩放 
+#### 缩放
 ##### [手动](service-fabric-cluster-scale-up-down.md)
 ##### [以编程方式](service-fabric-cluster-programmatic-scaling.md)
 #### [升级](service-fabric-cluster-upgrade.md)
 #### [设置访问控制](service-fabric-cluster-security-roles.md)
 #### [配置](service-fabric-cluster-fabric-settings.md)
-#### [管理群集证书](service-fabric-cluster-security-update-certs-azure.md) 
+#### [管理群集证书](service-fabric-cluster-security-update-certs-azure.md)
 #### [删除](service-fabric-cluster-delete.md)
 
 ### 独立群集
@@ -264,7 +266,7 @@
 #### [缩放](service-fabric-cluster-windows-server-add-remove-nodes.md)
 #### [设置访问控制](service-fabric-cluster-security-roles.md)
 #### [配置](service-fabric-cluster-manifest.md)
-#### [升级](service-fabric-cluster-upgrade-windows-server.md) 
+#### [升级](service-fabric-cluster-upgrade-windows-server.md)
 
 ### [可视化群集](service-fabric-visualizing-your-cluster.md)
 ### [连接到安全群集](service-fabric-connect-to-secure-cluster.md)
@@ -333,4 +335,3 @@
 ## [支持选项](service-fabric-support.md)
 ## [服务更新](https://azure.microsoft.com/updates/?product=service-fabric)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=service-fabric)
-

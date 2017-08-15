@@ -3,13 +3,13 @@
 ## [关于 Azure 标识管理](identity-fundamentals.md)
 ## [了解 Azure 标识解决方案](understand-azure-identity-solutions.md)
 ## [部署混合标识解决方案](choose-hybrid-identity-solution.md)
+## [关联 Azure 订阅](active-directory-how-subscriptions-associated-directory.md)
 ## [常见问题](active-directory-faq.md)
 
 # 入门
-## [获取 Azure AD 租户](active-directory-howto-tenant.md)
 ## [注册 Azure AD Premium](active-directory-get-started-premium.md)
-## [关联 Azure 订阅](active-directory-how-subscriptions-associated-directory.md)
-## [快速入门：自助服务密码重置](active-directory-passwords-getting-started.md)
+## [添加自定义域名](add-custom-domain.md)
+## [配置自助服务密码重置](active-directory-passwords-getting-started.md)
 ## 管理 Azure AD 许可
 ### [Azure 门户](active-directory-licensing-get-started-azure-portal.md)
 ### [经典门户](active-directory-licensing-what-is.md)
@@ -19,8 +19,7 @@
 #### [将单个许可用户迁移到基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
 #### [基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
 #### [基于组的许可的 PowerShell 示例](active-directory-licensing-ps-examples.md)
-## [获取对 Azure Active Directory 的支持](active-directory-troubleshooting-support-howto.md)
-## [SaaS 应用集成教程](active-directory-saas-tutorial-list.md)
+
 
 # 如何
 ## 规划和设计
@@ -55,7 +54,6 @@
 #### [将单个许可用户迁移到基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
 #### [基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
 #### [基于组的许可的 PowerShell 示例](active-directory-licensing-ps-examples.md)
-
 ### [从其他目录添加用户（经典门户）](active-directory-create-users-external.md)
 ### [删除用户](active-directory-users-delete-user-azure-portal.md)
 ### [管理用户个人资料](active-directory-users-profile-azure-portal.md)
@@ -164,6 +162,7 @@
 ## 管理应用
 ### [概述](active-directory-enable-sso-scenario.md)
 ### [入门](active-directory-integrating-applications-getting-started.md)
+### [SaaS 应用集成教程](active-directory-saas-tutorial-list.md)
 ### [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)
 #### [更新注册表设置](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 #### [了解安全性和隐私性](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
@@ -239,11 +238,6 @@
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### 自定义域名
 #### [概述](active-directory-add-domain-concepts.md)
-#### 添加域名
-##### [Azure 门户](active-directory-domains-add-azure-portal.md)
-##### [经典门户](active-directory-add-domain.md)
-##### [使用 AD FS](active-directory-add-domain-federated.md)
-#### [分配用户](active-directory-add-domain-add-users.md)
 #### 管理域名
 ##### [Azure 门户](active-directory-domains-manage-azure-portal.md)
 ##### [经典门户](active-directory-add-manage-domain-names.md)
@@ -270,6 +264,7 @@
 #### [自助注册门户示例](active-directory-b2b-self-service-portal.md)
 #### [邀请电子邮件](active-directory-b2b-invitation-email.md)
 #### [邀请兑换](active-directory-b2b-redemption-experience.md)
+#### [在没有邀请的情况下添加 B2B 用户](active-directory-b2b-add-user-without-invite.md)
 #### [用于 B2B 的条件性访问](active-directory-b2b-mfa-instructions.md)
 #### [B2B 共享策略](active-directory-b2b-delegate-invitations.md)
 #### [将 B2B 用户添加到角色](active-directory-b2b-add-guest-to-role.md)
@@ -357,7 +352,8 @@
 ### [高可用性](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
 ### [更改签名哈希算法](active-directory-federation-sha256-guidance.md)
 
-## [故障排除](active-directory-troubleshooting.md)
+## [故障排除](active-directory-troubleshooting-support-howto.md)
+### [排查 Active Directory 项缺失或不可用的问题](active-directory-troubleshooting.md)
 
 ## 部署 Azure AD 概念证明 (PoC)
 ### [PoC 演练手册：简介](active-directory-playbook-intro.md)

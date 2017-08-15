@@ -5,10 +5,11 @@
 ## [计算安全](security-virtual-machines-overview.md)
 ## [运营安全性](azure-operational-security-overview.md)
 ## [安全管理和监视](security-management-and-monitoring-overview.md)
+## [Service Fabric 安全](azure-service-fabric-security-overview.md)
 ## [标识管理](security-identity-management-overview.md)
 ## [IoT 安全性](../iot-suite/iot-security-architecture.md#security-in-iot)
 ## [安全体系结构](azure-security-architecture-overview.md)
-### [运营安全性](azure-operational-security.md)
+### [实现运营安全](azure-operational-security.md)
 ### [高级威胁检测](azure-threat-detection.md)
 ### [日志记录和审核](azure-log-audit.md)
 ### [公有云中的隔离](azure-isolation.md)
@@ -40,6 +41,9 @@
 #### [磁盘加密故障排除](azure-security-disk-encryption-tsg.md)
 ### [加密 Azure VM](../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
+## 运营安全
+### [实现运营安全的最佳实践](azure-operational-security-best-practices.md)
+
 ## 安全管理和监视
 ### [安全管理](azure-security-management.md)
 ### [Azure 安全中心](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json)
@@ -49,6 +53,10 @@
 #### [集成安全中心警报](security-azure-log-integration-security-center.md)
 #### [使用事件中心集成 Key Vault 中的日志](security-azure-log-integration-keyvault-eventhub.md)
 #### [常见问题](security-azure-log-integration-faq.md)
+
+## Service Fabric
+### [Service Fabric 最佳实践](azure-service-fabric-security-best-practices.md)
+### [Service Fabric 清单](azure-service-fabric-security-checklist.md)
 
 ## 身份管理
 ### [标识管理安全最佳实践](azure-security-identity-management-best-practices.md)
