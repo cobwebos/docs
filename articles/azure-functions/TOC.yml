@@ -109,6 +109,8 @@
           href: functions-bindings-event-hubs.md
         - name: 外部文件
           href: functions-bindings-external-file.md
+        - name: 外部表
+          href: functions-bindings-external-table.md
         - name: HTTP 和 webhook
           href: functions-bindings-http-webhook.md
         - name: 移动应用
