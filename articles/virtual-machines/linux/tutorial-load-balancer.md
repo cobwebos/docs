@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: c0026cc516834c57ad5707b5e8684f963dca7c71
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 9dd85d38a64f0557fb4ef250b0e177e21bb84e53
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -61,7 +61,7 @@ az group create --name myResourceGroupLoadBalancer --location eastus
 ```
 
 ### <a name="create-a-public-ip-address"></a>创建公共 IP 地址
-若要通过 Internet 访问应用，需要负载均衡器的一个公共 IP 地址。 使用 [az network public-ip create](/cli/azure/public-ip#create) 创建公共 IP 地址。 以下示例在“myResourceGroupLoadBalancer”资源组中创建名为“myPublicIP”的公共 IP 地址：
+若要通过 Internet 访问应用，需要负载均衡器的一个公共 IP 地址。 使用 [az network public-ip create](/cli/azure/network/public-ip#create) 创建公共 IP 地址。 以下示例在“myResourceGroupLoadBalancer”资源组中创建名为“myPublicIP”的公共 IP 地址：
 
 ```azurecli-interactive 
 az network public-ip create \
@@ -117,10 +117,10 @@ az network lb rule create \
 
 
 ## <a name="configure-virtual-network"></a>配置虚拟网络
-需要先创建支持的虚拟网络资源，然后才能部署某些 VM 和测试均衡器。 有关虚拟网络的详细信息，请参阅[管理 Azure 虚拟网络](tutorial-virtual-network.md)教程。
+需要先创建支持的虚拟网络资源，才能部署某些 VM 和测试均衡器。 有关虚拟网络的详细信息，请参阅[管理 Azure 虚拟网络](tutorial-virtual-network.md)教程。
 
 ### <a name="create-network-resources"></a>创建网络资源
-使用 [az network vnet create](/cli/azure/vnet#create) 创建虚拟网络。 以下示例创建名为“myVnet”的虚拟网络和一个名为“mySubnet”的子网：
+使用 [az network vnet create](/cli/azure/network/vnet#create) 创建虚拟网络。 以下示例创建名为“myVnet”的虚拟网络和一个名为“mySubnet”的子网：
 
 ```azurecli-interactive 
 az network vnet create \
@@ -167,7 +167,7 @@ done
 ## <a name="create-virtual-machines"></a>创建虚拟机
 
 ### <a name="create-cloud-init-config"></a>创建 cloud-init 配置
-在有关[如何在首次启动时自定义 Linux 虚拟机](tutorial-automate-vm-deployment.md)的上一个教程中，你已了解如何使用 cloud-init 自动执行 VM 自定义。 可使用同一个 cloud-init 配置文件安装 NGINX 并运行简单的“Hello World”Node.js 应用。 创建名为“cloud-init.txt”的文件并粘贴下面的配置：
+在有关[如何在首次启动时自定义 Linux 虚拟机](tutorial-automate-vm-deployment.md)的上一个教程中，已了解如何使用 cloud-init 自动执行 VM 自定义。 可使用同一个 cloud-init 配置文件安装 NGINX 并运行简单的“Hello World”Node.js 应用。 创建名为“cloud-init.txt”的文件并粘贴下面的配置：
 
 ```yaml
 #cloud-config
@@ -212,7 +212,7 @@ runcmd:
 ```
 
 ### <a name="create-virtual-machines"></a>创建虚拟机
-若要提高应用的高可用性，请将 VM 放置在可用性集中。 有关可用性集的详细信息，请参阅前面的[如何创建高可用性虚拟机](tutorial-availability-sets.md)教程。
+要提高应用的高可用性，请将 VM 放置在可用性集中。 有关可用性集的详细信息，请参阅前面的[如何创建高可用性虚拟机](tutorial-availability-sets.md)教程。
 
 使用 [az vm availability-set create](/cli/azure/vm/availability-set#create) 创建可用性集。 以下示例创建名为“myAvailabilitySet”的可用性集：
 
@@ -255,7 +255,7 @@ az network public-ip show \
     --output tsv
 ```
 
-然后，可将公共 IP 地址输入 web 浏览器中。 随即显示应用，包括负载均衡器将流量分发到的 VM 的主机名，如下例所示：
+然后，可将公共 IP 地址输入 Web 浏览器中。 随即显示应用，包括负载均衡器将流量分发到的 VM 的主机名，如下例所示：
 
 ![运行 Node.js 应用](./media/tutorial-load-balancer/running-nodejs-app.png)
 

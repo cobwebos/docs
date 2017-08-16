@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 08/04/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 5f500e1e0d3f9cafa67f255d1603e8db5716d469
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 67f7f5b8d411d11c97a8666d1bfc3c0c5f1174ce
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
@@ -66,15 +66,14 @@ Azure AD 应用程序代理的特性：
 
 网络外部的用户通过外部终结点访问应用程序。 他们可以直接转到指定的外部 URL，或者通过 MyApps 门户访问应用程序。 当用户转到其中一个终结点时，将在 Azure AD 中进行身份验证，并通过连接器路由到本地应用程序。
 
- ![AzureAD 应用程序代理关系图](./media/active-directory-appssoaccess-whatis/azureappproxxy.png)
+ ![AzureAD 应用程序代理关系图](./media/active-directory-application-proxy-get-started/azureappproxxy.png)
 
-1. 用户通过应用程序代理访问应用程序，然后定向到 Azure AD 登录页进行身份验证。
-2. 成功登录之后，系统将生成令牌并发送给用户。
-3. 用户将令牌发送到应用程序代理，应用程序代理检索令牌的用户主体名称 (UPN) 和安全主体名称 (SPN)，然后将请求定向到连接器。
-4. 连接器代表用户请求可用于内部 (Windows) 身份验证的 Kerberos 票证。 此步骤称为 Kerberos 约束委派。
-5. Active Directory 检索 Kerberos 票证。
-6. 票证将发送到应用程序服务器并进行验证。
-7. 响应通过应用程序代理发送到用户。
+1. 用户通过应用程序代理服务访问应用程序，然后定向到 Azure AD 登录页进行身份验证。
+2. 成功登录之后，系统将生成令牌并发送给客户端设备。
+3. 客户端将令牌发送到应用程序代理服务，该服务检索令牌中的用户主体名称 (UPN) 和安全主体名称 (SPN)，然后将请求定向到应用程序代理连接器。
+4. 如果已配置单一登录，则连接器代表用户执行所需的任何其他身份验证。
+5. 连接器将请求发送到本地应用程序。  
+6. 通过应用程序代理服务和连接器将响应发送给用户。
 
 ### <a name="single-sign-on"></a>单一登录
 Azure AD 应用程序代理针对使用集成 Windows 身份验证 (IWA) 的应用程序或声明感知应用程序提供单一登录 (SSO)。 如果你的应用程序使用 IWA，则应用程序代理将模拟使用 Kerberos 约束委派的用户来提供 SSO。 如果你有信任 Azure Active Directory 的声明感知应用程序，则 SSO 可用，因为用户已经由 Azure AD 进行身份验证。

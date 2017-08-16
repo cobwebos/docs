@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2017
+ms.date: 08/03/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: f86d37e32b77dc8411138542de573ee840bf9a64
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: c18d0a2bff654573e6e28a7cd7fad853b3a11346
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
@@ -41,7 +41,8 @@ ms.lasthandoff: 08/01/2017
 连接器和服务负责处理所有的高可用性任务。 可以动态添加或删除这些连接器和服务。 每当有新请求抵达时，该请求会路由到当前可用的连接器之一。 如果某个连接器暂时不可用，它不会对此流量做出响应。
 
 连接器是无状态的，在计算机上没有配置数据。 它们存储的唯一数据是有关连接服务的设置及其身份验证证书。 连接器在连接到服务时，将提取全部所需的配置数据，并每隔几分钟刷新这些数据。
-此外，它们还会轮询服务器，确定是否有更高版本的连接器。 如果找到了更高的版本，连接器将更新自身。
+
+连接器还会轮询服务器，确定是否有更高版本的连接器。 如果找到了更高的版本，连接器将更新自身。
 
 可以在运行连接器的计算机上，使用事件日志和性能计数器。 或者，可以通过 Azure 门户的“应用程序代理”页查看连接器的状态：
 
@@ -63,13 +64,11 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 ## <a name="creating-connector-groups"></a>创建连接器组
 
-创建连接器组的原因有很多，其中包括：
+通过连接器组，可以分配特定连接器，以便为特定的应用程序提供服务。 可以把大量连接器集合到一起，然后将每个应用程序分配给一个组。 
 
-* 更高的可用性
-* 改善在多个区域中部署应用程序的租户所遇到的延迟
-* 有序的资源更易于管理
+使用连接器组，可以更轻松地管理大型部署。 它们还为托管在不同区域中的租户改善延迟，因为可以创建基于位置的连接器组，从而仅为本地应用程序提供服务。 
 
-若要详细了解连接器组的好处，请参阅[使用连接器组在单独的网络和位置上发布应用程序](active-directory-application-proxy-connectors-azure-portal.md)。
+有关连接器组的详细信息，请参阅[使用连接器组在单独的网络和位置上发布应用程序](active-directory-application-proxy-connectors-azure-portal.md)。
 
 ## <a name="security-and-networking"></a>安全和网络
 
@@ -141,7 +140,7 @@ Register-AppProxyConnector
 
 若要查看日志，请转到事件查看器，打开“视图”菜单，然后启用“显示分析和调试日志”。 然后，启用这些日志以开始收集事件。 这些日志不会显示在 Windows Server 2012 R2 上的 Web 应用程序代理中，因为连接器基于更新的版本。
 
-可在“服务”窗口中检查服务的状态。 连接器包含两个 Windows 服务：实际的连接器和更新程序。 这两个服务需要一直运行。
+可在“服务”窗口中检查服务的状态。 连接器包含两个 Windows 服务：实际的连接器和更新程序。 二者都必须一直运行。
 
  ![AzureAD 本地服务](./media/application-proxy-understand-connectors/aad-connector-services.png)
 

@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2017
+ms.date: 08/03/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: f1ef6c3cc3ad2eda9fbcf79bf729918a847d27d7
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: c6ead651133eb17fd55f7567cdb14dc3bcd64245
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
@@ -61,13 +61,15 @@ Azure AD 应用程序代理是一个反向代理，因此，发往后端应用�
 
 无需向企业网络打开入站连接。
 
-Azure AD 连接器仅向 Azure AD 应用程序代理服务进行出站连接，这意味着，无需为传入连接打开防火墙端口。 传统代理要求部署外围网络（也称为 *DMZ*、*外围安全区域*或*屏蔽子网*），并在网络边缘允许未经身份验证的连接进行访问。 此方案需要为 Web 应用程序防火墙产品投入大笔额外资金，以便分析流量，为环境提供进一步的保护。 使用应用程序代理，不需要部署外围网络，因为所有连接都是出站的，并且是通过安全通道建立的。
+应用程序代理连接器仅与 Azure AD 应用程序代理服务建立出站连接，这意味着无需为传入连接打开防火墙端口。 传统代理要求部署外围网络（也称为 *DMZ*、*外围安全区域*或*屏蔽子网*），并在网络边缘允许未经身份验证的连接进行访问。 此方案需要为 Web 应用程序防火墙产品投入大笔额外资金，以便分析流量，为环境提供进一步的保护。 使用应用程序代理，不需要部署外围网络，因为所有连接都是出站的，并且是通过安全通道建立的。
+
+有关连接器的信息，请参阅[了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md)。
 
 ### <a name="cloud-scale-analytics-and-machine-learning"></a>云级分析和机器学习 
 
 获得一流的安全保护。
 
-[Azure AD Identity Protection](active-directory-identityprotection.md) 包含机器学习驱动的智能，其数据由我们的反数字犯罪部门和 Microsoft 安全响应中心馈送。 此外，我们会主动识别遭到入侵的帐户并提供实时保护，防范高风险的登录。 我们会考虑诸多因素，例如，通过受感染的设备和匿名网络的访问，以及通过异常位置和不太可能的位置的访问。
+应用程序代理是 Azure Active Directory 的一部分，因此它可以利用 [Azure AD Identity Protection](active-directory-identityprotection.md)（包含机器学习驱动的智能，数据由 Microsoft 安全响应中心和反数字犯罪部门提供）。 此外，我们会主动识别遭到入侵的帐户并提供实时保护，防范高风险的登录。 我们会考虑诸多因素，例如，通过受感染的设备和匿名网络的访问，以及通过异常位置和不太可能的位置的访问。
 
 其中的许多报告与事件已通过某个 API 提供，便于与安全信息与事件管理 (SIEM) 系统集成。
 
@@ -119,7 +121,7 @@ Azure AD 应用程序代理由两个部分组成：
 
 当用户访问发布的应用程序时，应用程序代理服务与应用程序代理连接器之间发生以下事件：
 
-1. [服务检查应用的配置设置](#the-service-checks-the-configuration-settings-for-the-app)
+1. [服务对应用用户进行身份验证](#the-service-checks-the-configuration-settings-for-the-app)
 2. [服务在连接器队列中放入请求](#The-service-places-a-request-in-the-connector-queue)
 3. [连接器处理来自队列的请求](#the-connector-receives-the-request-from-the-queue)
 4. [连接器等待响应](#the-connector-waits-for-a-response)
@@ -128,7 +130,7 @@ Azure AD 应用程序代理由两个部分组成：
 若要深入了解其中每个步骤的具体内容，请继续阅读下文。
 
 
-#### <a name="1-the-service-checks-the-configuration-settings-for-the-app"></a>1.服务检查应用的配置设置
+#### <a name="1-the-service-authenticates-the-user-for-the-app"></a>1.服务对应用用户进行身份验证
 
 如果已将应用配置为使用“直通”作为其预身份验证方法，则跳过此部分中的步骤。
 

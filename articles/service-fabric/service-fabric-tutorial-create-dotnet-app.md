@@ -12,34 +12,38 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2017
+ms.date: 08/09/2017
 ms.author: ryanwi, mikhegn
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: 8f824e451abd2ca87875c416184e4d7265e8c72b
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 71d910bc0e459528805521ba991e5291396a3b8d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
 # <a name="create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>使用 ASP.NET Core Web API 前端服务和有状态后端服务创建和部署应用程序
-本教程介绍如何使用 ASP.NET Core Web API 前端和有状态后端服务创建 Azure Service Fabric 应用程序，以便存储数据。
+本教程是一个系列的第一部分，介绍如何使用 ASP.NET Core Web API 前端和有状态后端服务创建 Azure Service Fabric 应用程序，以便存储数据。 
 
 ![应用程序关系图](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
 
-本教程将介绍如何执行下列操作：
+在该系列的第一部分中，你会学习如何：
 
 > [!div class="checklist"]
 > * 将 ASP.NET Core Web API 服务作为 Reliable Services 创建
 > * 创建有状态 Reliable Services
 > * 实现服务远程处理和使用服务代理
 
-本教程已拆分为三篇文章，本文是教程系列中的第一篇文章。
+在此系列教程中，你会学习如何：
+> [!div class="checklist"]
+> * 构建 .NET Service Fabric 应用程序
+> * [将应用程序部署到远程群集](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> * [使用 Visual Studio Team Services 配置 CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 
 ## <a name="prerequisites"></a>先决条件
 在开始学习本教程之前：
 - 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- [安装 Visual Studio 2017](https://www.visualstudio.com/)，并安装 Azure 开发以及 ASP.NET 和 Web 开发工作负荷。
+- [安装 Visual Studio 2017](https://www.visualstudio.com/)，并安装 **Azure 开发**以及 **ASP.NET 和 Web 开发**工作负荷。
 - [安装 Service Fabric SDK](service-fabric-get-started.md)
 
 ## <a name="create-an-aspnet-web-api-service-as-a-reliable-service"></a>将 ASP.NET Web API 服务作为 Reliable Services 创建
@@ -111,7 +115,7 @@ Service Fabric 允许使用 Reliable Collections 直接在服务内以一致、�
 
 在本教程中，你将创建一个服务，用于在 Reliable Collections 中存储计数器值。
 
-1. 在解决方案资源管理器中，右键单击应用程序项目中的“**服务**”，然后选择“**添加 > 新建 Service Fabric 服务**”。
+1. 在解决方案资源管理器中，右键单击应用程序项目中的“**服务**”，并选择“**添加”>“新建 Service Fabric 服务**”。
    
     ![将一个新服务添加到现有应用程序](./media/service-fabric-tutorial-create-dotnet-app/vs-add-new-service.png)
 
@@ -305,7 +309,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
    
     拥有代理后，即可调用 `GetCountAsync` 方法并返回其结果。
 
-4. 再次按 F5 运行修改后的应用程序。 像前面一样，Visual Studio 将自动启动浏览器并打开 Web 项目的根路径。 添加“api/values”路径，你应会看到返回的当前计数器值。
+4. 再次按 F5 运行修改后的应用程序。 像前面一样，Visual Studio 将自动启动浏览器并打开 Web 项目的根路径。 添加“api/values”路径，应会看到返回的当前计数器值。
    
     ![浏览器中显示的有状态计数器值](./media/service-fabric-tutorial-create-dotnet-app/browser-aspnet-counter-value.png)
    

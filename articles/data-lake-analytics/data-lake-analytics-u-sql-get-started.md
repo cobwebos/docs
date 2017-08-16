@@ -3,8 +3,8 @@ title: "U-SQL 语言入门 | Microsoft Docs"
 description: "学习 U-SQL 语言基础知识。"
 services: data-lake-analytics
 documentationcenter: 
-author: edmacauley
-manager: jhubbard
+author: saveenr
+manager: saveenr
 editor: cgronlun
 ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
@@ -12,24 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/05/2016
-ms.author: edmaca
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 4884d96e8126337f62af23316935978cfe219ec8
+ms.date: 06/23/2017
+ms.author: saveenr
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 38c4e1b9bd24ef0b8a81f6154620f3f98d3b5ac1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="get-started-with-u-sql"></a>U-SQL 入门
-U-SQL 是一种将声明性 SQL 与命令性 C# 相结合的语言，能够处理任何规模的数据。 通过 U-SQL 的可缩放分布式查询功能，可以跨关系存储（如 Azure SQL 数据库）高效分析其中的数据。 使用 U-SQL，可以通过在读取和插入自定义逻辑和 UDF 时应用架构来处理非结构化数据。 此外，U-SQL 还提供可扩展性，让你更精细地控制大规模执行的方式。 
+U-SQL 是一种将声明性 SQL 与命令性 C# 相结合的语言，能够处理任何规模的数据。 通过 U-SQL 的可缩放分布式查询功能，可以跨关系存储（如 Azure SQL 数据库）高效分析其中的数据。 使用 U-SQL，可以通过在读取和插入自定义逻辑和 UDF 时应用架构来处理非结构化数据。 此外，U-SQL 还提供可扩展性，可更精细地控制大规模执行的方式。 
 
 ## <a name="learning-resources"></a>学习资源
 
-有关 **U-SQL 语言语法**的详细信息，请参阅 [U-SQL 语言参考](http://go.microsoft.com/fwlink/p/?LinkId=691348)。
-
-若要了解 **U-SQL 设计理念**，请参阅 Visual Studio 博客文章 [U-SQL（使大数据处理更轻松的语言）简介](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)。
+* [U-SQL 教程](http://aka.ms/usqltutorial)提供大部分 U-SQL 语言的指导性演练。 对于要了解 U-SQL 的所有开发人员，建议阅读本文档。
+* 有关 **U-SQL 语言语法**的详细信息，请参阅 [U-SQL 语言参考](http://go.microsoft.com/fwlink/p/?LinkId=691348)。
+* 若要了解 **U-SQL 设计理念**，请参阅 Visual Studio 博客文章 [U-SQL（使大数据处理更轻松的语言）简介](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +36,7 @@ U-SQL 是一种将声明性 SQL 与命令性 C# 相结合的语言，能够处�
 
 ## <a name="your-first-u-sql-script"></a>第一个 U-SQL 脚本
 
-下面的 U-SQL 脚本非常简单，可供我们探讨 U-SQL 语言的许多方面。
+下面的 U-SQL 脚本十分简单，可供我们探讨 U-SQL 语言的许多方面。
 
 ```
 @searchlog =
@@ -69,20 +68,13 @@ OUTPUT @searchlog
 
 EXTRACT 和 OUTPUT 语句使用文件路径。 文件路径可以是绝对路径，也可以是相对路径：
 
-此绝对文件路径引用名为 `mystore` 的 Data Lake Store 中的文件：
+以下此绝对文件路径引用名为 `mystore` 的 Data Lake Store 中的文件：
 
     adl://mystore.azuredatalakestore.net/Samples/Data/SearchLog.tsv
 
-此绝对文件路径引用名为 `myblobaccount` 的 Azure Blog 存储帐户和名为 `mycontainer` 的容器中的文件：
+以下此文件路径以 `"/"` 开头。 它引用默认 Data Lake Store 帐户中的文件：
 
-    wasb://mycontainer@myblobaccount.blob.core.windows.net/Samples/Data/SearchLog.tsv
-
- >[!NOTE]
- >当前不支持对含公共 Blob 的 Azure Blob 存储容器或公共容器的访问权限。
-
-此相对文件路径以 `"/"` 开头。 它引用与 Data Lake Analytics 帐户相关联的默认 Data Lake Store 帐户中的文件：
-
-    TO "/output/SearchLog-first-u-sql.csv"
+    /output/SearchLog-first-u-sql.csv
 
 ## <a name="use-scalar-variables"></a>使用标量变量
 
@@ -160,12 +152,12 @@ WHERE 子句使用 [C# 布尔表达式](https://msdn.microsoft.com/library/6a71f
         USING Outputters.Csv();
 
  >[!NOTE]
- >第二个查询基于第一个行集结果执行操作，这将创建两个筛选器的组合。 还可以重复使用变量名，将从词法上审视这些名称。
+ >第二个查询基于第一个行集结果执行操作，这会创建两个筛选器的组合。 还可以重复使用变量名，将从词法上审视这些名称。
 
 ## <a name="aggregate-rowsets"></a>聚合行集
-U-SQL 为你提供了熟悉的 ORDER BY、GROUP BY 和聚合。
+U-SQL 提供了熟悉的 ORDER BY、GROUP BY 和聚合。
 
-以下查询查找每个区域的总持续时间，然后按顺序显示前五个持续时间。
+以下查询查找每个区域的总持续时间，并按顺序显示前五个持续时间。
 
 U-SQL 行集不为下一个查询保留其顺序。 因此，若要对输出进行排序，需要向 OUTPUT 语句添加 ORDER BY：
 
@@ -192,15 +184,16 @@ U-SQL 行集不为下一个查询保留其顺序。 因此，若要对输出进�
     GROUP BY Region;
 
     @res =
-    SELECT *
-    FROM @rs1
-    ORDER BY TotalDuration DESC
-    FETCH 5 ROWS;
+        SELECT *
+        FROM @rs1
+        ORDER BY TotalDuration DESC
+        FETCH 5 ROWS;
 
     OUTPUT @rs1
         TO @out1
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
+
     OUTPUT @res
         TO @out2
         ORDER BY TotalDuration DESC
@@ -226,21 +219,17 @@ U-SQL 行集不为下一个查询保留其顺序。 因此，若要对输出进�
             Region,
             SUM(Duration) AS TotalDuration
         FROM @searchlog
-    GROUP BY Region
-    HAVING SUM(Duration) > 200;
+        GROUP BY Region
+        HAVING SUM(Duration) > 200;
 
     OUTPUT @res
         TO "/output/Searchlog-having.csv"
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-## <a name="see-also"></a>另请参阅
+有关高级聚合方案，请参阅有关[聚合、分析和引用函数](https://msdn.microsoft.com/en-us/library/azure/mt621335.aspx)的 U-SQL 参考文档
+
+## <a name="next-steps"></a>后续步骤
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
 * [通过 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
-* [对 Azure Data Lake Analytics 作业使用 U-SQL 开窗函数](data-lake-analytics-use-window-functions.md)
-
-## <a name="let-us-know-what-you-think"></a>让我们知道你的想法
-* [提交功能请求](http://aka.ms/adlafeedback)
-* [在论坛中获得帮助](http://aka.ms/adlaforums)
-* [提供有关 U-SQL 的反馈](http://aka.ms/usqldiscuss)
 

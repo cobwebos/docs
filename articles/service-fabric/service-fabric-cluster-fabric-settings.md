@@ -16,10 +16,10 @@ ms.workload: NA
 ms.date: 06/15/2017
 ms.author: chackdan
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 676a46449b1ff5ceb749df876bad614c3804d220
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: d71fdcf2a054a9b9ac1d74ddd3a6b43d151fa87d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>自定义 Service Fabric 群集设置和结构升级策略
@@ -35,7 +35,7 @@ ms.lasthandoff: 07/12/2017
 1. 请转到 https://resources.azure.com
 2. 导航到订阅：展开订阅 -> 资源组 -> Microsoft.ServiceFabric -> 群集名称
 3. 选择右上角的“读/写”
-4. 选择“编辑”，然后更新 `fabricSettings` JSON 元素并添加新元素
+4. 选择“编辑”，更新 `fabricSettings` JSON 元素并添加新元素
 
 ```
       {
@@ -63,7 +63,7 @@ ms.lasthandoff: 07/12/2017
 | DiskFullSafetySpaceInMB |Int，默认值为 1024 |要避免被 DCA 使用的剩余磁盘空间（以 MB 为单位）。 |
 | ApplicationLogsFormatVersion |Int，默认值为 0 |用于应用程序日志格式的版本。 支持的值是 0 和 1. 版本 1 比版本 0 包含更多 ETW 事件记录的字段。 |
 | ClusterId |String |群集的唯一 ID。 于群集创建时生成。 |
-| EnableTelemetry |Bool，默认值为 true |这将启用或禁用遥测。 |
+| EnableTelemetry |Bool，默认值为 true |这会启用或禁用遥测。 |
 | EnableCircularTraceSession |Bool，默认值为 false |标志指示是否应使用循环跟踪会话。 |
 
 ### <a name="section-name-traceetw"></a>节名称：Trace/Etw
@@ -106,12 +106,12 @@ ms.lasthandoff: 07/12/2017
 | MaxMetadataSizeInKB |Int，默认值为 4 |日志流元数据的最大大小。 |
 | MaxRecordSizeInKB |Uint，默认值为 1024 | 日志流记录的最大大小。 |
 | CheckpointThresholdInMB |Int，默认值为 50 |日志使用量超过此值时，将启动检查点。 |
-| MaxAccumulatedBackupLogSizeInMB |Int，默认值为 800 |给定备份日志链中备份日志的最大累积大小（以 MB 为单位）。 如果增量备份生成的备份日志将导致从相关完整备份以来累积的备份日志大于此大小，则增量备份请求将失败。 在这种情况下，用户需要执行完整备份。 |
+| MaxAccumulatedBackupLogSizeInMB |Int，默认值为 800 |给定备份日志链中备份日志的最大累积大小（以 MB 为单位）。 如果增量备份生成的备份日志将导致从相关完整备份以来累积的备份日志大于此大小，则增量备份请求会失败。 在这种情况下，用户需要执行完整备份。 |
 | MaxWriteQueueDepthInKB |Int，默认值为 0 | 最大写入队列深度的 Int，该写入队列深度指核心记录器可用于与此副本关联的日志的写入队列深度（以千字节为单位）。 此值是核心记录器更新期间可以处于未完成状态的最大字节数。 该值可能为 0，以便核心记录器计算适当值，或是 4 的倍数。 |
 | SharedLogId |String |共享日志标识符。 这是一个 guid，且对于每个共享日志须是唯一的。 |
 | SharedLogPath |String |共享日志的路径。 如果此值为空，则使用默认共享日志。 |
 | SlowApiMonitoringDuration |以秒为单位的时间，默认值为 300 | 在触发运行状况事件警告前，指定 api 的持续时间。|
-| MinLogSizeInMB |Int，默认值为 0 |事务日志的最小大小。 不允许将日志截断到此设置以下的大小。 0 表示复制器将根据其他设置确定最小日志大小。 由于减少了截断相关日志记录的可能性，所以增加此值会增加执行部分副本和增量备份的可能性。 |
+| MinLogSizeInMB |Int，默认值为 0 |事务日志的最小大小。 不允许将日志截断到此设置以下的大小。 0 表示复制器会根据其他设置确定最小日志大小。 由于减少了截断相关日志记录的可能性，所以增加此值会增加执行部分副本和增量备份的可能性。 |
 
 ### <a name="section-name-fabricclient"></a>节名称：FabricClient
 | **Parameter** | **允许的值** | **指导或简短说明** |
@@ -193,9 +193,9 @@ ms.lasthandoff: 07/12/2017
 | ActivationRetryBackoffInterval |以秒为单位的时间，默认值为 5 |指定以秒为单位的时间范围。 每次激活失败的回退时间间隔；每次连续激活失败后，系统将重试激活最多 MaxActivationFailureCount 次。 每次尝试的重试间隔是连续激活失败与激活退让间隔的积。 |
 | ActivationMaxRetryInterval |以秒为单位的时间，默认值为 300 |指定以秒为单位的时间范围。 激活的最大重试时间间隔。 每次连续失败后，重试时间间隔的计算结果为 Min（ActivationMaxRetryInterval；连续失败计数 * ActivationRetryBackoffInterval）（即取括号中的最小值）。 |
 | ActivationMaxFailureCount |Int，默认值为 10 |这是系统在放弃前重试失败的激活的最大计数。 |
-| EnableServiceFabricAutomaticUpdates |Bool，默认值为 false |这将通过 Windows 更新启用 Fabric 自动更新。 |
-| EnableServiceFabricBaseUpgrade |Bool，默认值为 false |这将启用服务器的基本更新。 |
-| EnableRestartManagement |Bool，默认值为 false |这将启用服务器重启。 |
+| EnableServiceFabricAutomaticUpdates |Bool，默认值为 false |这会通过 Windows 更新启用 Fabric 自动更新。 |
+| EnableServiceFabricBaseUpgrade |Bool，默认值为 false |这会启用服务器的基本更新。 |
+| EnableRestartManagement |Bool，默认值为 false |这会启用服务器重启。 |
 
 
 ### <a name="section-name-failovermanager"></a>节名称：FailoverManager
@@ -262,6 +262,7 @@ ms.lasthandoff: 07/12/2017
 |IsEnabled|Bool，默认值为 false | 启用/禁用 httpgateway。 默认情况下，禁用 Httpgateway，需要设置此配置以启用 Httpgateway。 |
 |ActiveListeners |Uint，默认值为 50 | 要发布到 http 服务器队列的读取数。 此配置控制 HttpGateway 可以满足的并发请求数。 |
 |MaxEntityBodySize |Uint，默认值为 4194304 |  提供可预期的 http 请求正文的最大大小。 默认值为 4MB。 如果请求的正文大小大于此值，Httpgateway 将无法满足该请求。 最小读取块区大小为 4096 个字节。 因此，该值必须 > = 4096。 |
+|HttpGatewayHealthReportSendInterval |以秒为单位的时间，默认值为 30 | 指定以秒为单位的时间范围。 HTTP 网关将累积的运行状况报告发送至运行状况管理器的时间间隔。 |
 
 ### <a name="section-name-ktllogger"></a>节名称：KtlLogger
 | **Parameter** | **允许的值** | **指导或简短说明** |
@@ -278,10 +279,10 @@ ms.lasthandoff: 07/12/2017
 | **Parameter** | **允许的值** | **指导或简短说明** |
 | --- | --- | --- |
 |IsEnabled |Bool，默认值为 false | 启用/禁用 HttpApplicationGateway。 默认情况下，禁用 HttpApplicationGateway，需要设置此配置以启用 HttpApplicationGateway。 |
-|NumberOfParallelOperations | Uint，默认值为 1000 | 要发布到 http 服务器队列的读取数。 此配置控制 HttpGateway 可以满足的并发请求数。 |
-|DefaultHttpRequestTimeout |以秒为单位的时间。 默认值为 60 |指定以秒为单位的时间范围。  提供用于 http 应用网关中正在处理的 http 请求的默认请求超时时间。 |
+|NumberOfParallelOperations | Uint，默认值为 5000 | 要发布到 http 服务器队列的读取数。 此配置控制 HttpGateway 可以满足的并发请求数。 |
+|DefaultHttpRequestTimeout |以秒为单位的时间。 默认值为 120 |指定以秒为单位的时间范围。  提供用于 http 应用网关中正在处理的 http 请求的默认请求超时时间。 |
 |ResolveServiceBackoffInterval |以秒为单位的时间，默认值为 5 |指定以秒为单位的时间范围。  提供重试失败的解析服务操作之前的默认回退时间间隔。 |
-|BodyChunkSize |Uint，默认值为 4096 |  提供用于读取正文的区块大小（以字节为单位）。 |
+|BodyChunkSize |Uint，默认值为 16384 |  提供用于读取正文的区块大小（以字节为单位）。 |
 |GatewayAuthCredentialType |string，默认值为“None” | 指示在 http 应用网关终结点处使用的安全凭据的类型，有效值为 "None/X509。 |
 |GatewayX509CertificateStoreName |string，默认值为“My” | 包含 http 应用网关证书的 X.509 证书存储的名称。 |
 |GatewayX509CertificateFindType |string，默认值为“FindByThumbprint” | 指示如何在由 GatewayX509CertificateStoreName 支持的值（FindByThumbprint、FindBySubjectName）指定的存储中搜索证书。 |
@@ -530,12 +531,12 @@ ms.lasthandoff: 07/12/2017
 |GlobalMovementThrottleThreshold | Uint，默认值为 1000 | GlobalMovementThrottleCountingInterval 所指示的刚过去的时间间隔中的平衡阶段中所允许的最大移动数。 |
 |GlobalMovementThrottleThresholdForPlacement | Uint，默认值为 0 | GlobalMovementThrottleCountingInterval 所指示的刚过去的时间间隔中的放置阶段中所允许的最大移动数。0 表示没有限制。|
 |GlobalMovementThrottleThresholdForBalancing | Uint，默认值为 0 | GlobalMovementThrottleCountingInterval 所指示的刚过去的时间间隔中的平衡阶段中所允许的最大移动数。 0 表示没有限制。 |
-|GlobalMovementThrottleCountingInterval | 以秒为单位的时间，默认值为 600 | 指定以秒为单位的时间范围。 指示刚过去的用于跟踪每个域副本移动的时间间隔的长度（与 GlobalMovementThrottleThreshold 配合使用）。 若要完全忽略全局限制，可以将其设置为 0。 |
+|GlobalMovementThrottleCountingInterval | 以秒为单位的时间，默认值为 600 | 指定以秒为单位的时间范围。 指示刚过去的用于跟踪每个域副本移动的时间间隔的长度（与 GlobalMovementThrottleThreshold 配合使用）。 要完全忽略全局限制，可以将其设置为 0。 |
 |MovementPerPartitionThrottleThreshold | Uint，默认值为 50 | 如果分区副本的平衡相关移动数量在刚过去的、由 MovementPerPartitionThrottleCountingInterval 指示的间隔时间中已达到或超过 MovementPerFailoverUnitThrottleThreshold，则该分区不会发生平衡相关的移动。 |
 |MovementPerPartitionThrottleCountingInterval | 以秒为单位的时间，默认值为 600 | 指定以秒为单位的时间范围。 指示刚过去的用于跟踪每个分区的副本移动的时间间隔的长度（与 MovementPerPartitionThrottleThreshold 配合使用）。 |
 |PlacementSearchTimeout | 以秒为单位的时间，默认值为 0.5 | 指定以秒为单位的时间范围。 这是放置服务时，返回结果之前可搜索的最长时间。 |
 |UseMoveCostReports | Bool，默认值为 false | 指示 LB 忽略评分函数的成本元素，从而可能产生大量可优化平衡放置的移动。 |
-|PreventTransientOvercommit | Bool，默认值为 false | 确定 PLB 是否应该立即对将由启动的移动所释放的资源进行计数。 默认情况下，PLB 可以在同一节点上发起移出和移入操作，这会造成暂时性过载。 将此参数设置为 true 将防止这种过载，并将禁用按需碎片整理（也称为 placementWithMove）。 |
+|PreventTransientOvercommit | Bool，默认值为 false | 确定 PLB 是否应该立即对由启动的移动所释放的资源进行计数。 默认情况下，PLB 可以在同一节点上发起移出和移入操作，这会造成暂时性过载。 将此参数设置为 true 将防止这种过载，并将禁用按需碎片整理（也称为 placementWithMove）。 |
 |InBuildThrottlingEnabled | Bool，默认值为 false | 决定是否启用内置限制。 |
 |InBuildThrottlingAssociatedMetric | string，默认值为“” | 此限制的关联指标名称。 |
 |InBuildThrottlingGlobalMaxValue | Int，默认值为 0 |全局范围内所允许的最大内置副本数。 |
@@ -555,7 +556,7 @@ ms.lasthandoff: 07/12/2017
 |UseSeparateSecondaryLoad | Bool，默认值为 true | 该设置决定是否使用不同的辅助负载。 |
 |PlaceChildWithoutParent | Bool，默认值为 true | 该设置决定如果没启用父副本，是否可以放置子服务副本。 |
 |PartiallyPlaceServices | Bool，默认值为 true | 决定在给定有限的适当节点的情况下，是否“全部或完全不”放置群集中的所有服务副本。|
-|InterruptBalancingForAllFailoverUnitUpdates | Bool，默认值为 false | 决定是否有任何类型的故障转移单元更新应中断快速或慢速平衡运行。 如果指定为“false”，则将在 FailoverUnit 出现以下情况时中断平衡运行：被创建/删除、缺少副本、更改了主副本位置或更改了副本数量。 在其他情况下不会中断平衡运行，包括 FailoverUnit 具有额外副本、更改了任何副本标志、仅更改了分区版本等任何其他情况。 |
+|InterruptBalancingForAllFailoverUnitUpdates | Bool，默认值为 false | 决定是否有任何类型的故障转移单元更新应中断快速或慢速平衡运行。 如果指定为“false”，将在 FailoverUnit 出现以下情况时中断平衡运行：创建/删除、缺少副本、更改主要副本位置或更改副本数量。 在其他情况下不会中断平衡运行，包括 FailoverUnit 具有额外副本、更改了任何副本标志、仅更改了分区版本等任何其他情况。 |
 
 ### <a name="section-name-security"></a>节名称：Security
 | **Parameter** | **允许的值** | **指导或简短说明** |
@@ -596,8 +597,8 @@ ms.lasthandoff: 07/12/2017
 |QuorumLossWaitDuration |以秒为单位的时间，默认值为 MaxValue | 指定以秒为单位的时间范围。 ClusterManager 的 QuorumLossWaitDuration。 |
 |StandByReplicaKeepDuration | 以秒为单位的时间，默认值为 (3600.0 * 2)|指定以秒为单位的时间范围。 ClusterManager 的 StandByReplicaKeepDuration。 |
 |PlacementConstraints | string，默认值为“” |ClusterManager 的 PlacementConstraints。 |
-|SkipRollbackUpdateDefaultService | Bool，默认值为 false |CM 将在应用程序升级回滚过程中跳过恢复更新的默认服务。 |
-|EnableDefaultServicesUpgrade | Bool，默认值为 false |在应用程序升级期间启用升级默认服务。 升级后，将会覆盖默认服务说明。 |
+|SkipRollbackUpdateDefaultService | Bool，默认值为 false |CM 会在应用程序升级回滚过程中跳过恢复更新的默认服务。 |
+|EnableDefaultServicesUpgrade | Bool，默认值为 false |在应用程序升级期间启用升级默认服务。 升级后，会覆盖默认服务说明。 |
 |InfrastructureTaskHealthCheckWaitDuration |以秒为单位的时间，默认值为 0| 指定以秒为单位的时间范围。 对基础结构任务的后处理完成后，开始运行状况检查之前的等待时间量。 |
 |InfrastructureTaskHealthCheckStableDuration | 以秒为单位的时间，默认值为 0| 指定以秒为单位的时间范围。 在成功完成基础结构任务的后处理之前，用于观察连续通过的运行状况检查的时间量。 观察失败的运行状况检查将重置此计时器。 |
 |InfrastructureTaskHealthCheckRetryTimeout | 以秒为单位的时间，默认值为 60 |指定以秒为单位的时间范围。 在对基础结构任务进行后处理时，重试失败的运行状况检查所花费的时间。 观察通过的运行状况检查将重置此计时器。 |

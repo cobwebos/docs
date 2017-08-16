@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 08/04/2017
 ms.author: kgremban
-ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 39049c7a1e2a4d61ef62bd06cda9ef1bb2c50c0b
+ms.reviewer: harshja
+ms.custom: H1Hack27Feb2017; it-pro
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: a65216e79b7e89da1c9ccd6d002cb7ab6b18190f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -28,50 +29,50 @@ ms.lasthandoff: 05/05/2017
 > * [Azure 经典门户](active-directory-application-proxy-connectors.md)
 >
 
-## <a name="azure-ad-application-proxy-and-connector-groups"></a>Azure AD 应用程序代理和连接器组
+客户在越来越多的方案和应用程序中使用 Azure AD 的应用程序代理。 因此，我们通过启用更多拓扑使应用代理更加灵活。 可以创建应用程序代理连接器组，以便分配特定连接器以服务特定应用程序。 此功能提供更多控制以及优化应用程序代理部署的方法。 
 
-客户在越来越多的方案和应用程序中使用 Azure AD 的应用程序代理。 因此，我们通过启用更多拓扑使应用代理更加灵活。 可以创建应用程序代理连接器组，这是用于分配特定连接器以服务特定应用程序的新功能。 此功能为应用程序代理生成以前不可能实现的许多用例。 
+将每个应用程序代理连接器分配给连接器组。 属于同一连接器组的所有连接器作为一个单独的单位，以实现高可用性和负载均衡。 所有连接器都属于某个连接器组。 如果不创建组，那么所有连接器都在默认组中。 管理员可以在 Azure 门户中创建新组并向其分配连接器。 
 
-基本概念是将每个应用程序代理连接器分配给连接器组。 属于同一连接器组的所有连接器作为一个单独的组，以实现高可用性和负载均衡。 默认情况下，所有连接器都属于默认组。 管理员可以在 Azure 门户中创建新组并更改这些分配。 
+将所有应用程序分配给一个连接器组。 如果不创建组，那么所有应用程序都将分配到默认组中。 但是，如果将连接器整理到组中，则可以将每个应用程序设置为使用特定连接器组。 在这种情况下，只有该组中的连接器根据请求为应用程序提供服务。 如果应用程序托管在不同的位置，那么此功能非常有用。 可以基于位置创建连接器组，以便应用程序始终由物理位置靠近它们的连接器提供。
 
-默认情况下，所有应用程序都将分配到默认连接器组。 如果你的管理员没有更改任何内容，则系统会继续像之前一样运行。 如果不进行任何更改，则分配给默认连接器组的所有应用程序将包括所有连接器。 但是，如果将连接器整理到组中，则可以将每个应用程序设置为使用特定连接器组。 在这种情况下，只有该组中的连接器会根据请求来服务应用程序。
+>[!TIP] 
+>如果有大型应用程序代理部署，则不向默认连接器组分配任何应用程到。 这样一来，将新连接器分配给活动的连接器组之前，新连接器不接收任何实时流量。 此配置还可以通过将连接器移回默认组，让它们处于空闲模式，从而你可以在不会影响用户的状态下执行维护。
 
-
->[!NOTE] 
->由于新连接器会自动分配给默认连接器组，因此对于大型部署，建议不要将应用程序分配给默认组。 所以，一旦安装，新连接器将不会收到任何实时流量。 只有在将连接器分配给其中一个活动的组后，它才能开始接收实时流量。 这还可将连接器置于空闲模式，以便启用维护。
->
-
-## <a name="prerequisite-create-your-connector-groups"></a>先决条件：创建连接器组
+## <a name="prerequisites"></a>先决条件
 为了为连接器分组，必须先确保[已安装多个连接器](active-directory-application-proxy-enable.md)。 安装新的连接器时，该连接器会自动加入**默认**连接器组。
 
-## <a name="step-1-create-connector-groups"></a>步骤 1：创建连接器组
-可以创建任意数量的连接器组。 连接器组的创建在 [Azure 门户](https://portal.azure.com)中完成。
+## <a name="create-connector-groups"></a>创建连接器组
+使用以下步骤创建任意数量的连接器组。 
 
-1. 选择“Azure Active Directory”，转到目录的管理仪表板。 在该处选择“企业应用程序” > “应用程序代理”。
-2. 选择“连接器组”按钮。 此时会显示“新建连接器组”边栏选项卡。
-3. 为新的连接器组提供一个名称，然后使用下拉菜单选择哪些连接器属于此组。
-4. 当连接器组完成时，选择“保存”。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 选择“Azure Active Directory” > “企业应用程序” > “应用程序代理”。
+2. 选择“新建连接器组”。 此时会显示“新建连接器组”边栏选项卡。
 
-## <a name="step-2-assign-applications-to-your-connector-groups"></a>步骤 2：将应用程序分配到连接器组
-最后一步是将每个应用程序设置到将要服务它的连接器组。
+   ![选择“新建连接器组”](./media/active-directory-application-proxy-connectors-azure-portal/new-group.png)
+
+3. 为新的连接器组提供一个名称，并使用下拉菜单选择哪些连接器属于此组。
+4. 选择“保存”。
+
+## <a name="assign-applications-to-your-connector-groups"></a>将应用程序分配到连接器组
+对已使用应用程序代理发布的每个应用程序使用以下步骤。 首次发布应用程序时，可以将其分配到连接器组，也可以在任何时候使用以下步骤更改分配。   
 
 1. 在目录的管理仪表板中，选择“企业应用程序” > “所有应用程序”> 需要分配到连接器组的应用程序 >“应用程序代理”。
-2. 在“连接器组”下，使用下拉菜单选择要让应用程序使用的组。
+2. 使用“连接器组”下拉菜单选择要让应用程序使用的组。
 3. 单击“保存”应用所做的更改。
 
 ## <a name="use-cases-for-connector-groups"></a>连接器组用例 
 
 连接器组可用于各种方案，包括：
 
-###<a name="sites-with-multiple-interconnected-datacenters"></a>带有多个互联数据中心的站点
+### <a name="sites-with-multiple-interconnected-datacenters"></a>带有多个互联数据中心的站点
 
 许多组织具有数目众多的互连数据中心。 在此情况下，需要在数据中心内保留尽可能多的流量，因为跨数据中心链接昂贵而缓慢。 可在每个数据中心中部署连接器，仅服务驻留在数据中心内的应用程序。 此方法可最大程度减少跨数据中心链接，并向用户提供完全透明的体验。
 
 ### <a name="applications-installed-on-isolated-networks"></a>安装在隔离网络上的应用程序
 
-应用程序可托管在不属于主要公司网络的隔离网络中。 可使用连接器组在隔离网络上安装专用连接器，以便同样隔离到网络的应用程序。 这通常发生在第三方供应商为你的组织维护特定应用程序的时候。 
+应用程序可托管在不属于主要公司网络的隔离网络中。 可使用连接器组在隔离网络上安装专用连接器，以便将应用程序也隔离到该网络中。 这通常发生在第三方供应商为组织维护特定应用程序的时候。 
 
-连接器组允许你为仅发布特定应用程序的网络安装专用连接器，从而更轻松、更安全地将应用程序管理外包给第三方供应商。
+连接器组允许为仅发布特定应用程序的网络安装专用连接器，从而更轻松、更安全地将应用程序管理外包给第三方供应商。
 
 ### <a name="applications-installed-on-iaas"></a>安装在 IaaS 上的应用程序 
 
@@ -89,14 +90,14 @@ ms.lasthandoff: 05/05/2017
 
 已部署应用程序代理的大多数客户通过执行 Kerberos 约束委派 (KCD) 来使用其单一登录 (SSO) 功能。 为了实现此目的，需要将连接器的计算机加入到一个域中，该域可将用户委派给应用程序。 KCD 支持跨林功能。 但对于具有不同的多林环境并且林之间没有信任的公司，不能将单一连接器用于所有林。 
 
-在这种情况下，可为每个林部署特定连接器，并将其设置为服务已发布的应用程序，以仅为该特定林的用户提供服务。 每个连接器组表示不同的林。 虽然租户和大多数体验将对所有林统一，但可使用 Azure AD 组将用户分配给自己的林应用程序。
+在这种情况下，可为每个林部署特定连接器，并将其设置为服务已发布的应用程序，以仅为该特定林的用户提供服务。 每个连接器组表示不同的林。 虽然租户和大多数体验对所有林统一，但可使用 Azure AD 组将用户分配给他们自己的林应用程序。
  
 ### <a name="disaster-recovery-sites"></a>灾难恢复站点
 
 根据灾难恢复 (DR) 站点的实现方式，可采取两种不同的方法：
 
 * 如果灾难恢复站点采用主动 - 主动模式构建，其与主站点完全相同，并具有相同的网络和 AD 设置，则可在与主站点相同的连接器组中的灾难恢复站点上创建连接器。 这使 Azure AD 能检测故障转移。
-* 如果灾难恢复站点与主站点分离，则可在灾难恢复站点中创建不同的连接器组，并且 1) 服务其他应用程序，或者 2) 根据需要将现有应用程序手动转移到灾难恢复连接器组。
+* 如果灾难恢复站点与主站点分离，则可在灾难恢复站点中创建不同的连接器组，并且 1) 具有备份应用程序，或者 2) 根据需要将现有应用程序手动转移到灾难恢复连接器组。
  
 ### <a name="serve-multiple-companies-from-a-single-tenant"></a>服务单个租户中的多个公司
 
@@ -112,7 +113,7 @@ ms.lasthandoff: 05/05/2017
 
 ![AzureAD 无连接器组](./media/application-proxy-publish-apps-separate-networks/application-proxy-sample-config-1.png)
  
-此配置足以用于小型部署和测试。 如果你的组织具有平面网络拓扑，则此配置也非常适用。
+此配置足以用于小型部署和测试。 如果组织具有平面网络拓扑，则此配置也非常适用。
  
 ### <a name="default-configuration-and-an-isolated-network"></a>默认配置和隔离网络
 
@@ -129,9 +130,9 @@ ms.lasthandoff: 05/05/2017
 ![AzureAD 无连接器组](./media/application-proxy-publish-apps-separate-networks/application-proxy-sample-config-3.png)
  
 ## <a name="next-steps"></a>后续步骤
-* [启用应用程序代理](active-directory-application-proxy-enable.md)
-* [启用单一登录](active-directory-application-proxy-sso-using-kcd.md)
-* [启用条件性访问](active-directory-application-proxy-conditional-access.md)
-* [解决使用应用程序代理时遇到的问题](active-directory-application-proxy-troubleshoot.md)
+
+* [了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md)
+* [启用单一登录](application-proxy-sso-overview.md)
+
 
 

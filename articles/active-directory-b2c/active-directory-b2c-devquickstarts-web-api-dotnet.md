@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: parakhj
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 7610ae44d8c9b828fb46333b143d7b1f6dc915eb
-ms.lasthandoff: 05/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 48452eb68f826d1c7aa61d5e5531f941ac1422b0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="azure-ad-b2c-call-a-net-web-api-from-a-net-web-app"></a>Azure AD B2C：从 .NET Web 应用调用 .NET Web API
@@ -36,9 +36,9 @@ ms.lasthandoff: 05/03/2017
 
 1. [创建 Azure AD B2C 租户](active-directory-b2c-get-started.md)。
 2. [注册 Web API](active-directory-b2c-app-registration.md#register-a-web-api)。
-3. [注册 Web 应用](active-directory-b2c-app-registration.md#register-a-web-application)。
+3. [注册 Web 应用](active-directory-b2c-app-registration.md#register-a-web-app)。
 4. [设置策略](active-directory-b2c-reference-policies.md)。
-5. [授权 Web 应用使用 Web API](active-directory-b2c-access-tokens.md#granting-permissions-to-a-web-api)。
+5. [授权 Web 应用使用 Web API](active-directory-b2c-access-tokens.md#publishing-permissions)。
 
 > [!IMPORTANT]
 > 客户端应用程序和 Web API 必须使用相同的 Azure AD B2C 目录。
@@ -79,9 +79,9 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 ### <a name="specify-the-permissions"></a>指定权限
 
-若要向 Web API 发出调用，需要对用户进行身份验证（使用注册/登录策略），并从 Azure AD B2C [收到访问令牌](active-directory-b2c-access-tokens.md)。 若要接收访问令牌，首先必须指定想要授予访问令牌的权限。 向 `/authorize` 终结点发出请求时，将在 `scope` 参数中指定权限。 例如，若要获取对应用 ID URI 为 `https://contoso.onmicrosoft.com/tasks` 的资源应用程序具有“读取”权限的访问令牌，范围应是 `https://contoso.onmicrosoft.com/tasks/read`。
+若要向 Web API 发出调用，需要对用户进行身份验证（使用注册/登录策略），并从 Azure AD B2C [收到访问令牌](active-directory-b2c-access-tokens.md)。 若要接收访问令牌，首先必须指定想要授予访问令牌的权限。 向 `/authorize` 终结点发出请求时，会在 `scope` 参数中指定权限。 例如，若要获取对应用 ID URI 为 `https://contoso.onmicrosoft.com/tasks` 的资源应用程序具有“读取”权限的访问令牌，范围应是 `https://contoso.onmicrosoft.com/tasks/read`。
 
-若要在本示例中指定范围，请打开文件 `App_Start\Startup.Auth.cs`，然后在 OpenIdConnectAuthenticationOptions 中定义 `Scope` 变量。
+要在本示例中指定范围，请打开文件 `App_Start\Startup.Auth.cs`，并在 OpenIdConnectAuthenticationOptions 中定义 `Scope` 变量。
 
 ```CSharp
 // App_Start\Startup.Auth.cs
@@ -186,6 +186,6 @@ public async Task<ActionResult> Index()
 
 ## <a name="run-the-sample-app"></a>运行示例应用
 
-最后，生成并运行上述两个应用。 注册并登录，并为已登录用户创建任务。 注销并以其他用户身份登录。 为该用户创建任务。 请注意这些任务按用户存储在 API 中的方式，因为 API 从它接收的令牌中提取用户的标识。 另外，请练习使用范围。 删除“写入”权限，然后尝试添加任务。 只需确保每次更改范围时注销。
+最后，生成并运行上述两个应用。 注册并登录，并为已登录用户创建任务。 注销并以其他用户身份登录。 为该用户创建任务。 请注意这些任务按用户存储在 API 中的方式，因为 API 从它接收的令牌中提取用户的标识。 另外，请练习使用范围。 删除“写入”权限，并尝试添加任务。 只需确保每次更改范围时注销。
 
 

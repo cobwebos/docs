@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/30/2017
+ms.date: 07/17/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 3337e3ad36792c1dcd0eaf183a2b695503b8f02c
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: cea811918147a25947ec654bb06f2c994bae5ce6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -45,7 +44,7 @@ ms.lasthandoff: 07/06/2017
 
 ## <a name="log-and-event-sources"></a>日志和事件源
 
-### <a name="service-fabric-infrastructure-events"></a>Service Fabric 基础结构事件
+### <a name="service-fabric-platform-events"></a>Service Fabric 平台事件
 如[本文](service-fabric-diagnostics-event-generation-infra.md)所述，可使用一些现成的日志通道设置 Service Fabric，下列通道能轻松配置 WAD，发送监视和诊断数据到存储表或其他位置：
   * 操作事件：Service Fabric 平台执行的更高水平操作。 示例包括创建应用程序和服务、节点状态更改和升级信息。 这些会以 Windows 事件跟踪 (ETW) 日志的形式发出
   * [Reliable Actors 编程模型事件](service-fabric-reliable-actors-diagnostics.md)
@@ -177,7 +176,7 @@ ms.lasthandoff: 07/06/2017
 
 从 5.4 版本的 Service Fabric 开始，可收集运行状况和加载指标事件。 这些事件反映了由系统或你的代码使用 [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) 或 [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx) 等运行状况或加载报告 API 生成的事件。 这允许随时间聚合和查看系统运行状况，以及基于运行状况或加载事件进行警报。 若要查看 Visual Studio 的诊断事件查看器中的这些事件，请将“Microsoft-ServiceFabric:4:0x4000000000000008”添加到 ETW 提供程序列表中。
 
-若要收集这些事件，请修改 Resource Manager 模板，以包含
+若要收集这些事件，请修改资源管理器模板，以包含
 
 ```json
   "EtwManifestProviderConfiguration": [
@@ -191,6 +190,47 @@ ms.lasthandoff: 07/06/2017
       }
     }
 ```
+
+## <a name="collect-reverse-proxy-events"></a>收集反向代理事件
+
+从 5.7 版本的 Service Fabric 开始，可收集[反向代理](service-fabric-reverseproxy.md)事件。
+反向代理会将事件发到两个通道，其中一个包含反映请求处理故障的错误事件，而另一个包含关于在反向代理处理的所有请求的详细事件。 
+
+1. 收集错误事件：若要查看 Visual Studio 的诊断事件查看器中的这些事件，请将“Microsoft-ServiceFabric:4:0x4000000000000010”添加到 ETW 提供程序列表中。
+若要收集 Azure 群集中的这些事件，请修改资源管理器模板，以包含
+
+```json
+  "EtwManifestProviderConfiguration": [
+    {
+      "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
+      "scheduledTransferLogLevelFilter": "Information",
+      "scheduledTransferKeywordFilter": "4611686018427387920",
+      "scheduledTransferPeriod": "PT5M",
+      "DefaultEvents": {
+        "eventDestination": "ServiceFabricSystemEventTable"
+      }
+    }
+```
+
+2. 收集所有请求处理事件：在 Visual Studio 的诊断事件查看器中，将 ETW 提供程序列表中的 Microsoft ServiceFabric 条目更新为“Microsoft-ServiceFabric:4:0x4000000000000020”。
+对于 Azure Service Fabric 群集，请修改资源管理器模板，以包含
+
+```json
+  "EtwManifestProviderConfiguration": [
+    {
+      "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
+      "scheduledTransferLogLevelFilter": "Information",
+      "scheduledTransferKeywordFilter": "4611686018427387936",
+      "scheduledTransferPeriod": "PT5M",
+      "DefaultEvents": {
+        "eventDestination": "ServiceFabricSystemEventTable"
+      }
+    }
+```
+> 建议谨慎启用收集此通道中的事件，因为这将收集通过反向代理的所有流量，且可快速消耗存储容量。
+
+对于 Azure Service Fabric 群集，所有节点中的事件均在 SystemEventTable 中进行收集并聚合。
+有关详细的反向代理事件疑难解答，请参阅[反向代理诊断指南](service-fabric-reverse-proxy-diagnostics.md)。
 
 ## <a name="collect-from-new-eventsource-channels"></a>从新的 EventSource 通道收集
 
@@ -218,21 +258,22 @@ ms.lasthandoff: 07/06/2017
 
 例如，我们将在此处设置一个性能计数器，每隔 15 秒采样（可更改并遵循“PT \<时间>\<单位>”格式，例如，PT3M 每隔 3 分钟采样），每分钟传输到适当的存储表中。
 
-    ```json
-    "PerformanceCounters": {
-        "scheduledTransferPeriod": "PT1M",
-        "PerformanceCounterConfiguration": [
-            {
-                "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
-                "sampleRate": "PT15S",
-                "unit": "Percent",
-                "annotation": [
-                ],
-                "sinks": ""
-            }
-        ]
-    }
-    ```
+  ```json
+  "PerformanceCounters": {
+      "scheduledTransferPeriod": "PT1M",
+      "PerformanceCounterConfiguration": [
+          {
+              "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
+              "sampleRate": "PT15S",
+              "unit": "Percent",
+              "annotation": [
+              ],
+              "sinks": ""
+          }
+      ]
+  }
+  ```
+  
 如果使用 Application Insights 接收器（如下面部分所述）并想要这些指标显示在 Application Insights 中，请确保将接收器名称添加到“sinks”部分，如上所示。 此外，请考虑创建一个单独的表来接受性能计数器的数据，使其不会被已启用的来自他日志通道的数据挤出。
 
 

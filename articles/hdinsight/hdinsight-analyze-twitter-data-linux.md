@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 08/07/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: f1bdfb133b55f5cf18b85fa40908b8df534a15bd
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: b8656123fa9c5158f366872ab050f370080ec18a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>使用 HDInsight 中的 Hive 和 Hadoop 分析 Twitter 数据
@@ -28,7 +28,7 @@ ms.lasthandoff: 07/08/2017
 了解如何使用 Apache Hive 处理 Twitter 数据。 结果是发送最多包含某个特定词的推文的 Twitter 用户列表。
 
 > [!IMPORTANT]
-> 本文档中的步骤已在 HDInsight 3.5 上进行测试。
+> 本文档中的步骤已在 HDInsight 3.6 上进行测试。
 >
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
@@ -50,7 +50,7 @@ Twitter 允许通过 REST API 检索[每个推文的数据](https://dev.twitter.
    | 说明 |MyHDInsightApp |
    | 网站 |http://www.myhdinsightapp.com |
 
-4. 选中“是，我同意”，然后单击“创建 Twitter 应用程序”。
+4. 选中“是，我同意”，并单击“创建 Twitter 应用程序”。
 
 5. 单击“权限”选项卡。 默认权限为“只读”。
 
@@ -96,7 +96,7 @@ Twitter 允许通过 REST API 检索[每个推文的数据](https://dev.twitter.
    nano gettweets.py
    ```
 
-5. 使用以下文本作为 **gettweets.py** 文件的内容。 将“consumer\_secret”、“consumer\_key”、“access\_token”和“access\_token\_secret”的占位符信息替换为 Twitter 应用程序的信息。
+5. 使用以下文本作为 **gettweets.py** 文件的内容：
 
    ```python
    #!/usr/bin/python
@@ -152,7 +152,15 @@ Twitter 允许通过 REST API 检索[每个推文的数据](https://dev.twitter.
    twitterStream.filter(track=["azure","cloud","hdinsight"])
    ```
 
-6. 使用 **Ctrl+X**，然后使用 **Y** 以保存该文件。
+    > [!IMPORTANT]
+    > 将以下各项的占位符文本替换为来自 twitter 应用程序的信息：
+    >
+    > * `consumer_secret`
+    > * `consumer_key`
+    > * `access_token`
+    > * `access_token_secret`
+
+6. 使用 **Ctrl+X**，并使用 **Y** 以保存该文件。
 
 7. 使用以下命令运行该文件并下载推文：
 
@@ -160,14 +168,14 @@ Twitter 允许通过 REST API 检索[每个推文的数据](https://dev.twitter.
     python gettweets.py
     ```
 
-    进度指示器将出现，并在推文已下载并保存到文件时计数达到 100%。
+    一个进度指示器会出现。 它会随着推文下载计数到 100%。
 
    > [!NOTE]
    > 如果进度栏向前移动需要较长时间，则应更改筛选器以跟踪趋势主题。 当存在许多有关筛选器中的主题的推文时，可以快速获取所需的 10000 篇推文。
 
 ### <a name="upload-the-data"></a>上传数据
 
-若要将数据上传到 HDInsight 存储，请使用以下命令：
+要将数据上传到 HDInsight 存储，请使用以下命令：
 
    ```bash
    hdfs dfs -mkdir -p /tutorials/twitter/data
@@ -292,14 +300,14 @@ Twitter 允许通过 REST API 检索[每个推文的数据](https://dev.twitter.
    WHERE (length(json_response) > 500);
    ```
 
-2. 按 **Ctrl+X**，然后按 **Y** 以保存该文件。
+2. 按 **Ctrl+X**，并按 **Y** 以保存该文件。
 3. 使用以下命令运行该文件中包含的 HiveQL：
 
    ```bash
-   beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -n admin -i twitter.hql
+   beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i twitter.hql
    ```
 
-    此命令会运行 **twitter.hql** 文件。 查询完成之后，你会看到 `jdbc:hive2//localhost:10001/>` 提示符。
+    此命令会运行 **twitter.hql** 文件。 查询完成之后，会看到 `jdbc:hive2//localhost:10001/>` 提示符。
 
 4. 根据 beeline 提示，使用以下查询验证数据是否已导入：
 

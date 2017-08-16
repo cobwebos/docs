@@ -1,37 +1,37 @@
 ---
-title: "通过使用 C# 查询 Azure Time Series Insights 环境中的数据 | Microsoft Docs"
-description: "本教程介绍如何使用 C# 查询 Time Series Insights 环境中的数据"
+title: "使用 C# 查询 Azure 时序见解环境中的数据 | Microsoft Docs"
+description: "本教程介绍如何使用 C# 查询时序见解环境中的数据，且提供示例代码。"
 keywords: 
-services: time-series-insights
+services: tsi
 documentationcenter: 
 author: ankryach
-manager: almineev
-editor: cgronlun
+manager: jhubbard
+editor: 
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: how-to-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/25/2017
+ms.date: 07/20/2017
 ms.author: ankryach
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 81d16b4093a4eef77e5a9c88cb39f2dd36bcba4e
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 1444b517664355e8e240ea181d707c464d7ec5bb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
+ms.lasthandoff: 08/09/2017
 
 ---
-# <a name="query-data-from-the-azure-time-series-insights-environment-by-using-c"></a>使用 C# 查询 Azure Time Series Insights 环境中的数据
+# <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>使用 C# 查询 Azure 时序见解环境中的数据
 
-此 C# 示例演示了如何查询该 Azure Time Series Insights 环境中的数据。
+此 C# 示例演示了如何查询 Azure 时序见解环境中的数据。
 该示例演示了多个基本的查询 API 使用示例：
-1. 进行准备时，请通过 Azure Active Directory API 获取访问令牌。 该令牌应该在每个查询 API 请求的 `Authorization` 标头中传递。 有关设置非交互式应用程序的详细信息，请参阅[身份验证和授权](time-series-insights-authentication-and-authorization.md)一文。
+1. 准备时，通过 Azure Active Directory API 获取访问令牌。 在每个查询 API 请求的 `Authorization` 标头中传递此令牌。 有关如何设置非交互式应用程序，请参阅[身份验证和授权](time-series-insights-authentication-and-authorization.md)。 此外，请确保正确设置此示例开头定义的所有常量。
 2. 已获得该用户有权访问的环境的列表。 将选取一个环境作为感兴趣的环境，并会查询该环境的更多数据。
 3. 以 HTTPS 请求为例，可以为感兴趣的环境请求可用性数据。
-4. 以 Web 套接字请求为例，可以为感兴趣的环境请求事件聚合数据。 将会请求整个可用性时间范围的数据。
+4. 以 Web 套接字请求为例，可以为感兴趣的环境请求事件聚合数据。 会请求整个可用性时间范围的数据。
 
-## <a name="c-sample"></a>C# 示例
+## <a name="c-example"></a>C# 示例
 
 ```csharp
 using System;
@@ -60,6 +60,9 @@ namespace TimeSeriesInsightsQuerySample
 
         // SET the application key of the application registered in your Azure Active Directory
         private static string ApplicationClientSecret = "#DUMMY#";
+
+        // SET the Azure Active Directory tenant.
+        private static string Tenant = "#DUMMY#.onmicrosoft.com";
 
         public static async Task SampleAsync()
         {
@@ -261,14 +264,14 @@ namespace TimeSeriesInsightsQuerySample
 
         private static async Task<string> AcquireAccessTokenAsync()
         {
-            if (ApplicationClientId == "#DUMMY#" || ApplicationClientSecret == "#DUMMY#")
+            if (ApplicationClientId == "#DUMMY#" || ApplicationClientSecret == "#DUMMY#" || Tenant.StartsWith("#DUMMY#"))
             {
                 throw new Exception(
-                    $"Use the link {"https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization"} to update the values of 'ApplicationClientId' and 'ApplicationClientSecret'.");
+                    $"Use the link {"https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization"} to update the values of 'ApplicationClientId', 'ApplicationClientSecret' and 'Tenant'.");
             }
 
             var authenticationContext = new AuthenticationContext(
-                "https://login.microsoftonline.com/common",
+                $"https://login.windows.net/{Tenant}",
                 TokenCache.DefaultShared);
 
             AuthenticationResult token = await authenticationContext.AcquireTokenAsync(

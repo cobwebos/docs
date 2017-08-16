@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/08/2016
+ms.date: 08/03/2017
 ms.author: chrande; glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 31661e5840a6b65f54f9df027a7e3ecab8768055
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 256bc04684ba337fe8a403d977079c96b63ca61d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>在流、逻辑应用、函数和 WebJobs 之间进行选择
@@ -31,7 +31,7 @@ ms.lasthandoff: 07/06/2017
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
 * [Azure 应用服务 WebJobs](../app-service-web/web-sites-create-web-jobs.md)
 
-将分散的系统"粘附"在一起时，所有这些服务很有用。 它们都可以定义输入、操作、条件和输出。 你可以在日程安排或触发器中运行其中一个。 但是，每个服务中添加一组唯一的值，对它们进行比较不是“哪个服务最佳？”的问题， 而是“哪个服务最适合于这种情况？”问题。 通常，这些服务的组合是快速构建可扩展、全功能的集成解决方案的最佳方法。
+将分散的系统"粘附"在一起时，所有这些服务很有用。 它们都可以定义输入、操作、条件和输出。 可以在日程安排或触发器中运行其中一个。 但是，每个服务中添加一组唯一的值，对它们进行比较不是“哪个服务最佳？”的问题， 而是“哪个服务最适合于这种情况？”问题。 通常，这些服务的组合是快速构建可扩展、全功能的集成解决方案的最佳方法。
 
 <a name="flow"></a>
 
@@ -82,28 +82,28 @@ ms.lasthandoff: 07/06/2017
 | 定价 |按使用或作为应用服务计划的部分付费 |应用服务计划的部分 |
 | 运行类型 |触发、计划（通过计时器触发器） |触发的、连续的、计划的 |
 | 触发事件 |[计时器](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-documentdb.md)、[Azure 事件中心](functions-bindings-event-hubs.md)、[HTTP/WebHook（GitHub、Slack）](functions-bindings-http-webhook.md)、[Azure 应用服务移动应用](functions-bindings-mobile-apps.md)、[Azure 通知中心](functions-bindings-notification-hubs.md)、[Azure 服务总线](functions-bindings-service-bus.md)、[Azure 存储](functions-bindings-storage.md) |[Azure 存储](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)、[Azure 服务总线](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md) |
-| 浏览器开发 |x | |
-| Window 脚本 |实验 |x |
-| PowerShell |实验 |x |
-| C# |x |x |
-| F# |x | |
-| Bash |实验 |x |
-| PHP |实验 |x |
-| Python |实验 |x |
-| JavaScript |x |x |
+| 浏览器开发 |受支持 | 不支持 |
+| Window 脚本 |实验 |受支持 |
+| PowerShell |实验 |受支持 |
+| C# |受支持 |受支持 |
+| F# |受支持 |不支持 |
+| Bash |实验 |受支持 |
+| PHP |实验 |受支持 |
+| Python |实验 |受支持 |
+| JavaScript |受支持 |受支持 |
 
-要使用函数，还是要使用 WebJobs，这最终取决于你已对应用服务执行何操作。 如果已有想为其运行代码片段的应用服务应用，且想要在同一 DevOps 环境中同时管理它们，则应使用 WebJobs。 如果想要为其他 Azure 服务甚至是第三方应用运行代码片段，或者如果想要从应用服务应用单独管理集成代码片段，或者如果想要从逻辑应用中调用代码片段，则应充分利用函数中的所有改进。  
+要使用函数，还是要使用 WebJobs，这最终取决于已对应用服务执行何操作。 如果已有想为其运行代码片段的应用服务应用，且想要在同一 DevOps 环境中同时管理它们，则应使用 WebJobs。 如果想要为其他 Azure 服务甚至是第三方应用运行代码片段，或者如果想要从应用服务应用单独管理集成代码片段，或者如果想要从逻辑应用中调用代码片段，则应充分利用函数中的所有改进。  
 
 <a name="together"></a>
 
 ## <a name="flow-logic-apps-and-functions-together"></a>一起使用流、逻辑应用和函数
-如前文所述，哪个服务最适合取决于你的具体情况。 
+如前文所述，哪个服务最适合取决于具体情况。 
 
 * 对于简单的业务优化，使用流。
-* 如果你的集成方案相对流太过高级，或者需要 DevOps 功能和安全合规性，则使用逻辑应用。
-* 如果你的集成方案中某个步骤需要高度自定义的转换或专门的代码，则编写一个函数应用，然后在逻辑应用中作为一个操作触发函数。
+* 如果集成方案相对流太过高级，或者需要 DevOps 功能和安全合规性，则使用逻辑应用。
+* 如果集成方案中某个步骤需要高度自定义的转换或专门的代码，则编写一个函数应用，并在逻辑应用中作为一个操作触发函数。
 
-可以在流中调用逻辑应用。 也可以在逻辑应用中调用函数，在函数中调用逻辑应用。 随着时间的推移，流、逻辑应用和函数之间的集成将得到进一步改进。 你可以在某服务中构建一些项，并将其用于其他服务。 因此，在这三项技术中所做的任何投资都是值得的。
+可以在流中调用逻辑应用。 也可以在逻辑应用中调用函数，在函数中调用逻辑应用。 随着时间的推移，流、逻辑应用和函数之间的集成将得到进一步改进。 可以在某服务中构建一些项，并将其用于其他服务。 因此，在这三项技术中所做的任何投资都是值得的。
 
 ## <a name="next-steps"></a>后续步骤
 通过创建第一个流、逻辑应用、函数应用或 WebJob，开始使用每个服务。 单击以下任一链接：

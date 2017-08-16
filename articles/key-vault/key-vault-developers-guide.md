@@ -1,5 +1,5 @@
 ---
-title: "Azure Key Vault 开发人员指南 | Microsoft Docs"
+title: "Azure 密钥保管库开发人员指南"
 description: "开发人员可以使用 Azure 密钥保管库来管理 Microsoft Azure 环境中的加密密钥。"
 services: key-vault
 author: BrucePerlerMS
@@ -7,13 +7,13 @@ manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
-ms.date: 06/6/2017
+ms.date: 08/04/2017
 ms.author: bruceper
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: a15b403166dad17790c75f6db874e4ed2640ca78
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 115862aca98926e354e4703f86cb4a7e1d1f72a2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
@@ -21,7 +21,7 @@ ms.lasthandoff: 07/12/2017
 使用 Key Vault 可以从应用程序中安全地访问敏感信息：
 
 - 无需自己编写代码即可保护密钥和机密信息，并且能够轻松地在应用程序中使用它们。
-- 能够让客户拥有和管理其自己的密钥，因此可以专注于提供核心软件功能。 这样，你的应用程序便不会对客户的租户密钥和机密承担职责或潜在责任。
+- 能够让客户拥有和管理其自己的密钥，因此可以专注于提供核心软件功能。 这样，应用程序便不会对客户的租户密钥和机密承担职责或潜在责任。
 - 应用程序可以使用密钥进行签名和加密，不过使密钥管理与应用程序分开，可以使解决方案适用于地理分散的应用。
 - 自 2016 年 9 月版本的 Key Vault 发布起，应用程序现在可以使用 Key Vault [证书](https://docs.microsoft.com/rest/api/keyvault/certificate-operations)。 有关详细信息，请参阅[关于密钥、机密和证书](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)。
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 07/12/2017
 
 ## <a name="videos"></a>视频
 
-此视频介绍如何创建你自己的密钥保管库以及如何使用从“Hello Key Vault”示例应用程序使用它。
+此视频介绍如何创建自己的密钥保管库以及如何使用从“Hello Key Vault”示例应用程序使用它。
 
 - [Key Vault 开发人员 - 快速入门指南](https://channel9.msdn.com/Blogs/Azure/Azure-Key-Vault-Developer-Quick-Start/player)
 
@@ -100,27 +100,28 @@ ms.lasthandoff: 07/12/2017
 
 ## <a name="how-tos"></a>操作方法
 
-以下文章和方案提供了特定于任务的指导，方便你使用 Azure Key Vault：
+以下文章和方案提供了特定于任务的指导，以便使用 Azure Key Vault：
 
 - [订阅移动后更改密钥保管库租户 ID](key-vault-subscription-move-fix.md) - 将 Azure 订阅从租户 A 移到租户 B 时，租户 B.中的主体（用户和应用程序）无法访问现有的密钥保管库。使用本指南解决此问题。
 - [访问位于防火墙后面的密钥保管库](key-vault-access-behind-firewall.md) -若要访问密钥保管库，密钥保管库客户端应用程序必须能够访问各种功能的多个终结点。
-- [如何生成和传输 Azure 密钥保管库的受 HSM 保护的密钥](key-vault-hsm-protected-keys.md) -这将帮助你计划、生成和传输你自己的用于 Azure 密钥保管库的受 HSM 保护密钥。
-- [如何在部署期间传递安全值（如密码）](../azure-resource-manager/resource-manager-keyvault-parameter.md) - 当你需要在部署期间以参数形式传递安全值（例如密码）时，可以将该值存储为 Azure 密钥保管库中的机密，并在其他资源管理模板中引用该值。
+- [如何生成和传输 Azure 密钥保管库的受 HSM 保护的密钥](key-vault-hsm-protected-keys.md) -这会帮助你计划、生成和传输自己的用于 Azure 密钥保管库的受 HSM 保护密钥。
+- [如何在部署期间传递安全值（如密码）](../azure-resource-manager/resource-manager-keyvault-parameter.md) - 当需要在部署期间以参数形式传递安全值（例如密码）时，可以将该值存储为 Azure 密钥保管库中的机密，并在其他资源管理模板中引用该值。
 - [如何使用密钥保管库，以便通过 SQL Server 进行可扩展的密钥管理](https://msdn.microsoft.com/library/dn198405.aspx) - 适用于 Azure 密钥保管库的 SQL Server 连接器允许 SQL Server 和 VM 中的 SQL 将 Azure 密钥保管库服务用作可扩展密钥管理 (EKM) 提供程序，以便保护其针对应用程序链接的加密密钥；透明数据加密、备份加密和列级加密。
 - [如何将证书从密钥保管库部署到虚拟机](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) - 在 Azure 虚拟机上运行的云应用程序需要证书。 现在，要如何将此证书部署到此 VM 中呢？
 - [如何使用端到端密钥轮替和审核设置 Key Vault](key-vault-key-rotation-log-monitoring.md) - 逐步介绍如何设置 Azure Key Vault 的密钥轮替和审核。
 - [通过 Key Vault 部署 Azure Web 应用证书]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)提供有关部署作为[应用服务证书](https://azure.microsoft.com/blog/internals-of-app-service-certificate/)产品的一部分存储在 Key Vault 中的证书的分步说明。
-- [向多个应用程序授予 Key Vault 的访问权限](key-vault-group-permissions-for-apps.md) Key Vault 访问控制策略仅支持 16 个条目。 但是，可以创建一个 Azure Active Directory 安全组。 将所有关联的服务主体添加到此安全组，然后为此安全组授予密钥保管库的访问权限。
-
-如需更多将密钥保管库与 Azure 集成和结合使用的特定于任务的指导，请参阅 [Ryan Jones' Azure Resource Manager template examples for Key Vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)（针对密钥保管库的 Ryan Jones Azure Resource Manager 模板示例）。
+- [向多个应用程序授予 Key Vault 的访问权限](key-vault-group-permissions-for-apps.md) Key Vault 访问控制策略仅支持 16 个条目。 但是，可以创建一个 Azure Active Directory 安全组。 将所有关联的服务主体添加到此安全组，并为此安全组授予密钥保管库的访问权限。
+- 如需更多将密钥保管库与 Azure 集成和结合使用的特定于任务的指导，请参阅 [Ryan Jones' Azure Resource Manager template examples for Key Vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)（针对密钥保管库的 Ryan Jones Azure Resource Manager 模板示例）。
+- [如何将 Key Vault 软删除与 CLI 配合使用](key-vault-soft-delete-cli.md)介绍了 Key Vault 的使用和生命周期以及各种已启用软删除的 Key Vault 对象。
+- [如何将 Key Vault 软删除与 PowerShell 配合使用](key-vault-soft-delete-powershell.md)介绍了 Key Vault 的使用和生命周期以及各种已启用软删除的 Key Vault 对象。
 
 ## <a name="integrated-with-key-vault"></a>与密钥保管库集成
 
 这些文章介绍了使用 Key Vault 或与之集成的其他方案和服务。
 
-- [Azure 磁盘加密](../security/azure-security-disk-encryption.md)利用 Windows 的行业标准 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 功能和 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能，为 OS 和数据磁盘提供卷加密。 该解决方案与 Azure 密钥保管库集成，可帮助你控制和管理密钥保管库订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据可在 Azure 存储中静态加密。
+- [Azure 磁盘加密](../security/azure-security-disk-encryption.md)利用 Windows 的行业标准 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 功能和 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能，为 OS 和数据磁盘提供卷加密。 该解决方案与 Azure Key Vault 集成，有助于控制和管理 Key Vault 订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据可在 Azure 存储中静态加密。
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) 提供了对帐户中存储的数据进行加密的选项。 对于密钥管理，Data Lake Store 提供两种用于管理主加密密钥 (MEK) 的模式，这两种模式可用于解密在 Data Lake Store 中存储的任何数据。 可以让 Data Lake Store 代为管理 MEK，或选择使用 Azure 密钥保管库帐户保留 MEK 所有权。 创建 Data Lake Store 帐户时可以指定密钥管理模式。 
-- [Azure 信息保护](/information-protection/plan-design/plan-implement-tenant-key)允许你管理自己的租户密钥。 例如，不是由 Microsoft 管理你的租户密钥（默认设置），你可以管理自己的租户密钥，以遵守适用于你的组织的具体规定。 管理自己的租户密钥也称为自带密钥（简称 BYOK）。
+- [Azure 信息保护](/information-protection/plan-design/plan-implement-tenant-key)允许你管理自己的租户密钥。 例如，不是由 Microsoft 管理租户密钥（默认设置），可以管理自己的租户密钥，以遵守适用于组织的具体规定。 管理自己的租户密钥也称为自带密钥（简称 BYOK）。
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault 概述和概念
 

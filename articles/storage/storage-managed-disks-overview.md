@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/15/2017
 ms.author: robinsh
 ms.translationtype: HT
-ms.sourcegitcommit: a678700884b612cad6281eb8f3b74ce63a0ebb69
-ms.openlocfilehash: 88a356e61c32f529d511aa1c9c68bdfa47acadb5
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: b9bc70ec9e271a8e0b34ed415e27cd350390b21d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
@@ -41,6 +41,10 @@ Azure 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](storage-intro
 ### <a name="better-reliability-for-availability-sets"></a>可用性集更加可靠
 
 通过确保[可用性集中的 VM ](../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)的磁盘彼此之间完全隔离以避免单点故障，托管磁盘为可用性集提供了更佳的可靠性。 它通过自动将磁盘放置在不同的存储缩放单位（模块）中来实现这一点。 如果某个模块因硬件或软件故障而失败，则只有其磁盘在该模块上的 VM 实例会失败。 例如，假定某个应用程序在 5 台 VM 上运行并且这些 VM 位于一个可用性集中。 这些 VM 的磁盘不会存储在同一个模块中，因此，如果一个模块失败，该应用程序的其他实例可以继续运行。
+
+### <a name="highly-durable-and-available"></a>高度持久和可用
+
+Azure 磁盘具备 99.999% 的可用性。 数据具有三个副本，高持久性可让用户高枕无忧。 如果其中一个或两个副本出现问题，剩下的副本能够确保数据的持久性和对故障的高耐受性。 此架构有助于 Azure 为 IaaS 磁盘持续提供企业级的持久性，年化故障率为 0%，达到行业领先水平。 
 
 ### <a name="granular-access-control"></a>粒度访问控制
 

@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 08/08/2017
 ms.author: magoedte;bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 5101d0356460160aed8559a314e8287ff5845121
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 8cde51313f683fbf96a89c8335eb75348b05dee6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 
@@ -41,6 +41,7 @@ ms.lasthandoff: 08/01/2017
 - **智能分析。**  新语言具有高级算法，用于计算数据集中的模式并比较不同的数据集。
 - **高级分析门户。**  高级分析门户提供 Log Analytics 门户中不提供的分析功能，包括多行查询编辑、更多可视化效果和高级诊断。
 - **与其他应用程序一致。**  新语言和高级分析门户已用于 Application Insights 中的分析。  为 Log Analytics 实现新语言可提供 Azure 服务间的一致性。
+- **使用 Power BI 实现更好的集成。** 可以将新语言中的查询导出到 Power BI Desktop，以便使用其丰富的数据转换功能。
 - **更多其他原因。** 有关新语言的完整详细信息和教程，请参阅 [Azure Log Analytics 查询语言](https://docs.loganalytics.io/index.html)网站。
 
 
@@ -60,7 +61,7 @@ ms.lasthandoff: 08/01/2017
 ![还原旧的](media/log-analytics-log-search-upgrade/restore-legacy-b.png)
 
 ## <a name="how-do-i-perform-the-upgrade"></a>如何执行升级？
-在门户顶部看到紫色横幅时，可以升级工作区。  请注意：虽然升级完成后已转换的工作区也可在 Azure 门户中使用，但只能从 OMS 门户执行升级。
+在门户顶部看到紫色横幅时，可以升级工作区。  
 
 1.  可通过单击显示“了解详细信息并执行升级”的紫色横幅，开始升级过程。<br>![升级 2](media/log-analytics-log-search-upgrade/upgrade-01a.png)<br>
 2.  在升级信息页面上阅读有关升级的其他信息。<br>![升级 2](media/log-analytics-log-search-upgrade/upgrade-03.png)<br>

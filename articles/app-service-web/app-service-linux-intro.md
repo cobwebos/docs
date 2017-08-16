@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 5d1dc8caab804914ac7e94be7f080b713674bc0a
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 87b9da134bce20b037e2dce7e1c9f54454fafe9e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="introduction-to-azure-web-app-on-linux"></a>Linux 上的 Azure Web 应用简介
@@ -58,7 +57,7 @@ Linux Web 应用目前支持以下应用程序堆栈：
 
 针对应用程序规模进行调整：
 
-* 客户可以通过更改应用服务计划中的层，增加或减少 Web 应用
+* 客户可以通过更改应用服务计划的层，增加或减少 Web 应用
 * 客户可以扩大应用程序，在其 SKU 范围内运行多个应用实例
 
 就 Kudu 来说，有一些基本功能：
@@ -71,19 +70,23 @@ Linux Web 应用目前支持以下应用程序堆栈：
 对于 DevOps：
 
 * 过渡环境
-* DockerHub CI/CD
+* ACR 和 DockerHub CI/CD
 
 ## <a name="limitations"></a>限制
-Azure 门户仅显示当前可用于 Linux Web 应用的功能，隐藏其他功能。 当我们启用更多功能时，将会在门户中看到这些功能。
+Azure 门户仅显示当前可用于 Linux Web 应用的功能，隐藏其他功能。 当我们启用更多功能时，会在门户中看到这些功能。
 
 某些功能（例如虚拟网络集成、Azure Active Directory/第三方身份验证或 Kudu 站点扩展）尚不可用。 这些功能可用后，我们将更新文档和博客，以反映所做更改。
 
 此公共预览版目前仅在以下区域提供：
 
 * 美国西部
-* 欧洲西部 
-* 亚洲东南部
+* 美国东部
+* 欧洲西部
+* 欧洲北部
+* 东南亚
 * 澳大利亚东部
+* 日本东部
+* 巴西南部
 
 Linux Web 应用只能在专用应用服务计划中使用，没有免费层或共享层。 另外，常规 Web 应用和 Linux Web 应用的应用服务计划是互斥的，因此不能在非 Linux 应用服务计划中创建 Linux Web 应用。
 

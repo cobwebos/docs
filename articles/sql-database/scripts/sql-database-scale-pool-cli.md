@@ -17,14 +17,14 @@ ms.workload: database
 ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: HT
-ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
-ms.openlocfilehash: abceba7d250622d8cf27e41d3bb37f3d8a995b5f
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 888d2b7b7c118fede82d39881570a3b3d7b09961
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
-# <a name="use-azure-cli-to-scale-a-sql-elastic-pool-in-azure-sql-database"></a>使用 Azure CLI 在 Azure SQL 数据库中缩放 SQL 弹性池
+# <a name="use-cli-to-scale-a-sql-elastic-pool-in-azure-sql-database"></a>使用 CLI 在 Azure SQL 数据库中缩放 SQL 弹性池
 
 以下 Azure CLI 脚本示例创建 SQL 弹性池，移动共用数据库，并更改弹性池性能级别。 
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 07/14/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli-interactive[主要](../../../cli_scripts/sql-database/scale-pool/scale-pool.sh "在池之间移动数据库")]
+[!code-azurecli-interactive[main](../../../cli_scripts/sql-database/scale-pool/scale-pool.sh "在池之间移动数据库")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 

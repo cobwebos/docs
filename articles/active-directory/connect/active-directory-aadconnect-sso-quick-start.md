@@ -12,28 +12,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 08/04/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 05fb966e3e18b8d5242a2795248b9b72352d894d
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 977108687734a5eb7f7a30419de2a6bdef184d0e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速入门
 
+## <a name="how-to-deploy-seamless-sso"></a>如何部署无缝 SSO
+
 Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使登录连接到企业网络的企业台式机用户自动登录。 此功能可让用户轻松访问基于云的应用程序，而无需使用其他任何本地组件。
 
-## <a name="how-to-deploy-azure-ad-seamless-sso"></a>如何部署 Azure AD 无缝 SSO
+>[!IMPORTANT]
+>无缝 SSO 功能目前处于预览状态。
 
 要部署无缝 SSO，需要遵循以下步骤：
-1. 检查先决条件：正确设置租户和本地环境，然后再启用该功能。
-2. 启用功能：使用 Azure AD Connect 在租户上打开无缝 SSO。
-3. 扩展功能：使用组策略将功能扩展到部分或全部用户。
-4. 测试功能：使用无缝 SSO 测试用户登录。
-5. *滚动更新密钥*：频繁滚动更新计算机帐户的 Kerberos 解密密钥。
 
 ## <a name="step-1-check-prerequisites"></a>步骤 1：检查先决条件
 
@@ -63,6 +61,15 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使登录�
 
 >[!NOTE]
 > 域管理员凭据不存储在 Azure AD Connect 或 Azure AD 中，仅用于启用该功能。
+
+按照这些说明验证是否已正确启用无缝 SSO：
+
+1. 使用租户的全局管理员凭据登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
+2. 在左侧导航栏中，选择“Azure Active Directory”。
+3. 选择“Azure AD Connect”。
+4. 验证无缝单一登录功能是否显示为“已启用”。
+
+![Azure 门户 - Azure AD Connect 边栏选项卡](./media/active-directory-aadconnect-sso/sso10.png)
 
 ## <a name="step-3-roll-out-the-feature"></a>步骤 3：扩展此功能
 
@@ -118,6 +125,9 @@ Mozilla Firefox 不会自动执行 Kerberos 身份验证。 每个用户必须�
 #### <a name="known-limitations"></a>已知限制
 
 无缝 SSO 在 Firefox 和 Edge 浏览器的隐私浏览模式下不起作用。 它在以增强保护模式运行的 Internet Explorer 中也不起作用。
+
+>[!IMPORTANT]
+>我们最近中止了对 Microsoft Edge 的支持，以调查客户报告的问题。
 
 ## <a name="step-4-test-the-feature"></a>步骤 4：测试功能
 

@@ -15,27 +15,27 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: dfccb182ffdc43d5437efd7e4f736998c5fa9433
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 8f5534c83adf2ee4a696131afb45a658c89dd298
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>通过 VPN 网关诊断本地连接
 
-使用 Azure VPN 网关可以创建混合解决方案，解决在本地网络与 Azure 虚拟网络之间建立安全连接的需求。 每个人的要求都是独一无二的，选择的本地 VPN 设备也是如此。 Azure 目前支持[多种 VPN 设备](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable)，我们正在持续与设备供应商合作验证这些设备。 在配置本地 VPN 设备之前，请查看特定于设备的配置设置。 同样，Azure VPN 网关中配置了一组[受支持的 IPsec 参数](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)用于建立连接。 目前无法在 Azure VPN 网关中指定或选择 IPsec 参数的特定组合。 若要在本地与 Azure 之间成功建立连接，本地 VPN 设备设置必须符合 Azure VPN 网关规定的 IPsec 参数。 否则会导致连接断开，而到目前为止，排查这些问题并非小事一桩，通常需要花费几个小时来识别和修复问题。
+使用 Azure VPN 网关可以创建混合解决方案，解决在本地网络与 Azure 虚拟网络之间建立安全连接的需求。 每个人的要求都是独一无二的，选择的本地 VPN 设备也是如此。 Azure 目前支持[多种 VPN 设备](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable)，我们正在持续与设备供应商合作验证这些设备。 在配置本地 VPN 设备之前，请查看特定于设备的配置设置。 同样，Azure VPN 网关中配置了一组[受支持的 IPsec 参数](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)用于建立连接。 目前无法在 Azure VPN 网关中指定或选择 IPsec 参数的特定组合。 若要在本地与 Azure 之间成功建立连接，本地 VPN 设备设置必须符合 Azure VPN 网关规定的 IPsec 参数。 如果设置正确，则会导致连接断开，而到目前为止，排查这些问题并非小事一桩，通常需要花费几个小时来识别和修复问题。
 
 使用 Azure 网络观察程序故障排除功能，可以诊断任何网关和连接问题，在几分钟内获得足够的信息，就如何解决问题做出明智的决策。
 
 ## <a name="scenario"></a>方案
 
-你想要使用 Cisco ASA 作为本地 VPN 网关，在 Azure 与本地之间配置站点到站点连接。 若要实现此方案，需要进行以下设置：
+想要使用 FortiGate 作为本地 VPN 网关，在 Azure 与本地之间配置站点到站点连接。 若要实现此方案，需要进行以下设置：
 
 1. 虚拟网络网关 - Azure 上的 VPN 网关
-1. 本地网络网关 - Azure 云中的[本地 (CISCO ASA) VPN 网关](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)表示形式
-1. 站点到站点连接（基于策略）- [VPN 网关与本地 CISCO ASA 之间的连接](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#createconnection)
-1. [配置 CISCO ASA](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA)
+1. 本地网络网关 - Azure 云中的[本地 (FortiGate) VPN 网关](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)表示形式
+1. 站点到站点连接（基于策略）- [VPN 网关与本地路由器之间的连接](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#createconnection)
+1. [配置 FortiGate](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
 有关站点到站点配置的详细分步指南，请访问：[使用 Azure 门户创建具有站点到站点连接的 VNet](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 07/26/2017
 | 哈希算法 |SHA1(SHA128) |SHA1(SHA128)、SHA2(SHA256) |
 | 阶段 1 安全关联 (SA) 生命周期（时间） |28,800 秒 |10,800 秒 |
 
-用户需要配置 Cisco ASA，在 [GitHub](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Cisco/Current/ASA/ASA_9.1_and_above_Show_running-config.txt) 上可以找到示例配置。 在其他配置中，还需要指定哈希算法。 Cisco ASA 支持的[加密和哈希算法](http://www.cisco.com/c/en/us/about/security-center/next-generation-cryptography.html)比 Azure VPN 网关要多。 你无意中将 Cisco ASA 配置为使用 SHA-512 作为哈希算法。 由于基于策略的连接不支持此算法，因此 VPN 连接无法正常工作。
+用户需要配置 FortiGate，在 [GitHub](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt) 上可以找到示例配置。 无意中将 FortiGate 配置为使用 SHA-512 作为哈希算法。 由于基于策略的连接不支持此算法，因此 VPN 连接无法正常工作。
 
 这些问题很难排查，其根本原因通常并不明显。 在这种情况下，可以开具支持票证，请求帮助解决此问题。 但如果使用 Azure 网络观察程序故障排除 API，则可以自行识别这些问题。
 
@@ -73,7 +73,7 @@ Error: On-premises device rejected Quick Mode settings. Check values.
 
 可以通过 Scrubbed-wfpdiag.txt 获取有关错误的详细信息，在本例中，该文件指出 `ERROR_IPSEC_IKE_POLICY_MATCH` 导致连接无法正常工作。
 
-另一种常见的不当配置是指定了错误的共享密钥。 如果在前面的示例中指定不同的共享密钥，IKEErrors.txt 将显示以下错误：`Error: Authentication failed. Check shared key`。
+另一种常见的不当配置是指定了错误的共享密钥。 如果在前面的示例中指定不同的共享密钥，IKEErrors.txt 会显示以下错误：`Error: Authentication failed. Check shared key`。
 
 借助 Azure 网络观察程序故障排除功能，可以使用一个简单易用的 PowerShell cmdlet 来诊断和排查 VPN 网关与连接问题。 目前我们支持诊断以下状态，并且正在努力添加更多状态的诊断。
 

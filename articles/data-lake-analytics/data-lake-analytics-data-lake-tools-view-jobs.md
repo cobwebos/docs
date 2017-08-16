@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/17/2016
+ms.date: 08/02/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 2e5dbaf595e3d3cd7dee09431fbb1cb6f2403ef4
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 8f1729f84a4fde2a56427a41b356d6263818519e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics-jobs"></a>对 Azure Data Lake Analytics 作业使用作业浏览器和作业视图
@@ -31,7 +30,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在[查询存储](#query
 请参阅[用于 Visual Studio 的 Data Lake 工具先决条件](data-lake-analytics-data-lake-tools-get-started.md#prerequisites)。
 
 ## <a name="open-the-job-browser"></a>打开作业浏览器
-在 Visual Studio，通过“服务器资源管理器”>“Azure”>“Data Lake Analytics”>“作业”可访问作业浏览器。  使用此浏览器，可访问 Data Lake Analytics 帐户的查询存储。 作业浏览器左侧显示查询存储，其中显示作业基本信息；右侧的作业视图提供有关作业的详细信息。
+在 Visual Studio 中，通过“服务器资源管理器”>“Azure”>“Data Lake Analytics”>“作业”访问作业浏览器。  使用此浏览器，可访问 Data Lake Analytics 帐户的查询存储。 作业浏览器的左侧显示“查询存储”，其中显示基本的作业信息，而右侧的“作业视图”显示详细的作业信息。
 
 ## <a name="job-view"></a>作业视图
 作业视图显示作业详细信息。 若要打开作业，可在作业浏览器中双击作业，或单击作业视图从 Data Lake 菜单打开。 随即可看到填充有作业 URL 的对话框。
@@ -74,7 +73,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在[查询存储](#query
     * 剩余字节数：作业完成前需处理的字节数。
     * 读取/写入字节数：自作业开始运行起，已读取/写入的字节数。
     * 顶点总数：作业分成了多项工作，每项工作称为顶点。 此值说明作业包含的工作数。 可将一个顶点看作一个基本进程单元（也称 Azure Data Lake Analytics 单元 (ADLAU)），顶点可以并行运行。 
-    * 已完成/正在运行/失败：已完成/正在运行/失败顶点的计数。 顶点可能因用户代码和系统故障而失败，但系统会自动重试几次失败的顶点。 如果重试后，顶点仍失败，则整个作业将失败。
+    * 已完成/正在运行/失败：已完成/正在运行/失败顶点的计数。 顶点可能因用户代码和系统故障而失败，但系统会自动重试几次失败的顶点。 如果重试后，顶点仍失败，则整个作业会失败。
 * 作业图
   
     U-SQL 脚本表示将输入数据转换为输出数据的逻辑。 该脚本在“准备”阶段会编译和优化为物理执行计划。 作业图用于显示物理执行计划。  下图演示了此概过程：
@@ -99,7 +98,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在[查询存储](#query
     * 颜色：本阶段使用颜色来指示不同的顶点状态。
       
       * 绿色指示顶点成功。
-      * 橙色指示顶点重试。 重试顶点已失败，但系统自动重试并成功完成该顶点，进而成功完成整个阶段。 如果顶点重试后仍失败，颜色将变为红色，整个作业也将失败。
+      * 橙色指示顶点重试。 重试顶点已失败，但系统自动重试并成功完成该顶点，进而成功完成整个阶段。 如果顶点重试后仍失败，颜色将变为红色，整个作业也会失败。
       * 红色指示失败，这意味着系统已多次重试某特定顶点，但仍以失败告终。 此情况会导致整个作业失败。
       * 蓝色表示某特定顶点正在运行。
       * 白色指示顶点处于等待状态。 顶点可能正等待 ADLAU 可用后得以安排，或者因输入数据尚未就绪而等待输入。
@@ -135,7 +134,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在[查询存储](#query
     * 进度：作业执行进度，请参阅[阶段信息](#stage-information)中的相关信息。
     * 数据读取/写入：每个阶段读取/写入的总数据量热度地图。
     * 计算时间：SUM（每个顶点执行时间）热度地图，可将其视作仅在 1 个顶点内执行阶段内所有工作所用的时间。
-    * 平均执行时间/节点：SUM（每个顶点执行时间）/（顶点数）热度地图。 这意味着，如果可以并行执行所有顶点，整个阶段将在此时间范围内完成。
+    * 平均执行时间/节点：SUM（每个顶点执行时间）/（顶点数）热度地图。 这意味着，如果可以并行执行所有顶点，整个阶段会在此时间范围内完成。
     * 输入/输出吞吐量：每个阶段的输入/输出吞吐量热度地图，通过此热度地图，可确认作业是否为 I/O 边界作业。
 * 元数据操作
   
@@ -149,12 +148,12 @@ Azure Data Lake Analytics 服务将已提交作业存档在[查询存储](#query
     ![Azure Data Lake Analytics 作业视图元数据状态历史记录](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-state-history.png)
 * 诊断
   
-    此工具可自动诊断作业执行。 作业中出现一些错误或性能问题时，将会收到警报。 请注意，需下载配置文件才能获取此处的完整信息。 
+    此工具可自动诊断作业执行。 作业中出现一些错误或性能问题时，会收到警报。 请注意，需下载配置文件才能获取此处的完整信息。 
   
     ![Azure Data Lake Analytics 作业视图诊断](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-diagnostics.png)
   
   * 警告：出现编译器警告时，此处显示警报。 警报显示后，可单击“x 问题”链接了解详细信息。
-  * 顶点运行时间过长：如果任何顶点运行超时（如 5 小时），此处将显示问题。
+  * 顶点运行时间过长：如果任何顶点运行超时（如 5 小时），此处会显示问题。
   * 资源使用情况：如果所分配并行度多于或少于所需并行度，此处将出现问题。 此外，还可单击“资源使用情况”查看更多详细信息，并执行假设方案以找到更好的资源分配（有关详细信息，请参阅本指南）。
   * 内存检查：如果任何顶点占用超过 5 GB 内存，此处将出现问题。 如果作业执行占用内存超出系统限制，系统将终止作业执行。
 

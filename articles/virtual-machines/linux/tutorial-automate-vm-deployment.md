@@ -17,10 +17,10 @@ ms.date: 05/02/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: facead3c038ad9ba8c7b8a9c0e02e38f9f92fd96
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: c148ca2a2a098f5f0c4ff94846c318b59b4864f4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -55,7 +55,7 @@ Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装或 y
 
 
 ## <a name="create-cloud-init-config-file"></a>创建 cloud-init 配置文件
-若要运行 cloud-init，请创建一个 VM，该 VM 将安装 NGINX 并运行简单的“Hello World”Node.js 应用。 以下 cloud-init 配置会安装所需的程序包、创建 Node.js 应用，然后初始化并启动该应用。
+要运行 cloud-init，请创建一个 VM，该 VM 将安装 NGINX 并运行简单的“Hello World”Node.js 应用。 以下 cloud-init 配置会安装所需的程序包、创建 Node.js 应用，然后初始化并启动该应用。
 
 创建名为“cloud-init.txt”的文件并粘贴下面的配置：
 
@@ -104,7 +104,7 @@ runcmd:
 有关 cloud-init 配置选项的详细信息，请参阅 [cloud-init 配置示例](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)。
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
-使用 [az group create](/cli/azure/group#create) 创建资源组，然后才能创建 VM。 以下示例在“eastus”位置创建名为“myResourceGroupAutomate”的资源组：
+使用 [az group create](/cli/azure/group#create) 创建资源组，才能创建 VM。 以下示例在“eastus”位置创建名为“myResourceGroupAutomate”的资源组：
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAutomate --location eastus
@@ -137,9 +137,9 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myVM
 
 
 ## <a name="inject-certificates-from-key-vault"></a>插入 Key Vault 中的证书
-此可选部分展示了如何在 Azure Key Vault 中安全存储证书，并在 VM 部署期间将其插入。 此过程可确保首次启动时将最新的证书插入到 VM 中，而不是使用内置证书中随附的自定义映像。 在该过程中，证书永远不会离开 Azure 平台，也不会在脚本、命令行历史记录或模板中公开。
+此可选部分展示了如何在 Azure Key Vault 中安全存储证书，并在 VM 部署期间将其插入。 此过程可确保首次启动时会最新的证书插入到 VM 中，而不是使用内置证书中随附的自定义映像。 在该过程中，证书永远不会离开 Azure 平台，也不会在脚本、命令行历史记录或模板中公开。
 
-Azure Key Vault 保护加密密钥和机密，例如证书或密码。 Key Vault 有助于简化密钥管理过程，让你能够持续掌控用于数据访问和加密的密钥。 此方案介绍了一些用于证书创建和使用的 Key Vault 概念，但未详尽概述如何使用 Key Vault。
+Azure Key Vault 保护加密密钥和机密，例如证书或密码。 Key Vault 有助于简化密钥管理过程，从而可持续掌控用于访问和加密数据的密钥。 此方案介绍了一些用于证书创建和使用的 Key Vault 概念，但未详尽概述如何使用 Key Vault。
 
 以下步骤演示可如何：
 
@@ -160,7 +160,7 @@ az keyvault create \
 ```
 
 ### <a name="generate-certificate-and-store-in-key-vault"></a>生成证书并存储在 Key Vault 中
-为供生产使用，应通过 [az keyvault certificate import](/cli/azure/certificate#import) 导入由受信任的提供程序签名的有效证书。 在本教程中，以下示例显示了如何使用 [az keyvault certificate create](/cli/azure/certificate#create) 生成使用默认证书策略的自签名证书：
+为供生产使用，应通过 [az keyvault certificate import](/cli/azure/keyvault/certificate#import) 导入由受信任的提供程序签名的有效证书。 在本教程中，以下示例显示了如何使用 [az keyvault certificate create](/cli/azure/keyvault/certificate#create) 生成使用默认证书策略的自签名证书：
 
 ```azurecli-interactive 
 az keyvault certificate create \
@@ -183,7 +183,7 @@ vm_secret=$(az vm format-secret --secret "$secret")
 
 
 ### <a name="create-cloud-init-config-to-secure-nginx"></a>创建 cloud-init 配置以保护 NGINX
-创建 VM 时，证书和密钥都将存储在受保护的 /var/lib/waagent/ 目录中。 若要将证书自动添加到 VM 并配置 NGINX，可展开上一示例中的 cloud-init 配置。
+创建 VM 时，证书和密钥都将存储在受保护的 /var/lib/waagent/ 目录中。 要将证书自动添加到 VM 并配置 NGINX，可展开上一示例中的 cloud-init 配置。
 
 创建名为“cloud-init-secured.txt”的一个文件并粘贴下面的配置：
 

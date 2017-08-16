@@ -12,58 +12,60 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 08/02/2017
 ms.author: robb
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 76c8feb077cca27dc96f43e708cdef4fbb0f824c
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 3d30ce72a3be298eba1f4e8f8d33b769971c96cb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="what-are-alerts-in-microsoft-azure"></a>什么是 Microsoft Azure 中的警报？
-本文介绍什么是警报及其优点，以及如何开始使用警报。 本文具体适用于 Azure Monitor，但提供了其他服务的链接。  
+本文介绍了 Microsoft Azure 中的各种警报来源、这些警报的目的、警报优点以及警报的使用方法。 本文特别适用于 Azure Monitor，但也提供了其他带有警报服务的链接。 警报提供了一种在 Azure 中监视的方法，允许配置数据条件，并在条件与最新监视数据匹配时发出通知。
 
-警报是用来监视 Azure 资源指标、事件或日志并在符合指定条件时发出通知的一种方法。  
+## <a name="taxonomy-of-azure-alerts"></a>Azure 警报的分类
+Azure 使用以下术语来描述警报和及其功能：
+* **警报** - 符合标准（一个或多个规则或条件）时被激活的定义。
+* **活动** - 满足警报定义的标准时的状态。
+* **已解决** - 在先前满足警报定义的标准后不再满足该标准的状态。
+* **通知** - 警报变为活动状态时采取的操作。
+* **操作** - 发送给通知接收方的特定通话（例如，通过电子邮件发送地址或发布到 Webhook URL）。 通知通常可以触发多个操作。
 
 ## <a name="alerts-in-different-azure-services"></a>不同 Azure 服务中的警报
-警报可跨不同的服务使用，包括：
+警报可在多个 Azure 监视服务中使用。 有关如何以及何时使用这些服务的信息，请参阅[此文](./monitoring-overview.md)。 以下是 Azure 中可用的警报类型的明细：
 
-* **Application Insights**：启用 Web 测试和指标警报。 请参阅[在 Application Insights 中设置警报](../application-insights/app-insights-alerts.md)和[监视任何网站的可用性和响应能力](../application-insights/app-insights-monitor-web-app-availability.md)。
-* **Log Analytics (Operations Management Suite)**：用于将活动日志和诊断日志路由到 Log Analytics。 Operations Management Suite 允许指标、日志和其他警报类型。 有关详细信息，请参阅 [Log Analytics 中的警报](../log-analytics/log-analytics-alerts.md)。  
-* **Azure 监视器**：基于指标值和活动日志事件启用警报。 可以使用 [Azure Monitor REST API](https://msdn.microsoft.com/library/dn931943.aspx) 来管理警报。  有关详细信息，请参阅[使用 Azure 门户、PowerShell 或命令行接口创建警报](insights-alerts-portal.md)。
+| 服务 | 警报类型 | 支持的服务 | 说明 |
+|---|---|---|---|
+| Azure 监视器 | [指标警报](./insights-alerts-portal.md) | [Azure Monitor 中支持的指标](./monitoring-supported-metrics.md) | 任何平台级指标满足特定条件时（例如，VM 上的 CPU % 在过去 5 分钟内大于 90），就会收到通知。 |
+| Azure 监视器 | [活动日志警报](./monitoring-activity-log-alerts.md) | Azure 资源管理器中可用的所有资源类型 | 当 [Azure 活动日记](./monitoring-overview-activity-logs.md)中的任何新事件符合特定条件时（例如，myProductionResourceGroup 中出现“删除 VM”操作或出现状态为“Active”的新服务运行状况事件时）就会收到通知。 |
+| Application Insights | [指标警报](../application-insights/app-insights-alerts.md) | 任何用于将数据发送到 Application Insights 的检测应用程序 | 任何应用程序级指标符合特定条件（例如，服务器响应时间大于 2 秒）时，就会收到通知。 |
+| Application Insights | [Web 测试警报](../application-insights/app-insights-monitor-web-app-availability.md) | 任何用于将数据发送到 Application Insights 的检测网站 | 网站的可用性或响应度低于预期时，就会收到通知。 |
+| Log Analytics | [Log Analytics 警报](../log-analytics/log-analytics-alerts.md) | 配置为将数据发送到 Log Analytics 的任何服务 | 当 Log Analytics 搜索查询符合特定标准的指标和/或事件数据时，就会收到通知。 |
 
-## <a name="visual-summary"></a>可视化汇总
-以下关系图汇总了警报以及在 Azure Monitor 中具体可以对其执行的操作。 其他操作可能在前面列出的服务中提供。 例如，当前，有关诊断日志的警报只在 Log Analytics 中提供。
+## <a name="alerts-on-azure-monitor-data"></a>关于 Azure Monitor 数据的警报
+Azure Monitor 提供的数据有两种类型的警报 - 指标警报和活动日志警报。
+
+* **指标警报** - 当指定的指标值越过了分配的阈值时，就会触发此警报。 当警报“激活”（当阈值越过并满足警报条件时）以及“已解决”（当阈值再次超过并且不再满足条件）时，警报将生成通知。 有关 Azure Monitor 支持的可用指标（不断增加中）的列表，请参阅 [Azure Monitor 支持的指标的列表](monitoring-supported-metrics.md)。
+* **活动日志警报** - 当生成与分配的筛选器条件匹配的活动日志事件时，触发的流式处理日志警报。 这些警报只有“已激活”这一个状态，因为警报引擎只需将筛选器条件应用到任何新事件。 出现新的服务运行状况事件时，或用户或应用程序在订阅中执行操作（例如“删除虚拟机”）时，可以使用这些警报通知。
+
+对于通过 Azure Monitor 提供的诊断日志数据，建议将数据路由到 Log Analytics 并使用 Log Analytics 警报。 下图总结了 Azure Monitor 中的数据源，从概念上总结了从数据取消警报的方法。
 
 ![警报介绍](./media/monitoring-overview-alerts/Alerts_Overview_Resource_v4.png)
 
-## <a name="what-can-trigger-alerts-in-azure-monitor"></a>在 Azure Monitor 中什么可以触发警报
+## <a name="how-do-i-receive-a-notification-on-an-azure-monitor-alert"></a>如何实现在 Azure Monitor 警报中接收通知？
+从历史上来看，来自不同服务的 Azure 警报使用自己的内置通知方法。 今后，Azure Monitor 提供了一个名为“操作组”的可重复使用的通知组。 操作组指定一组通知接收方（任意数量的电子邮件地址、用于接收短信的电话号码或 Webhook URL），任何时间引用操作组时都会激活警报，所有接收方都会收到该通知。 可在多个警报对象中重复使用一组接收方（例如，在线工程师列表）。 目前，只有活动日志警报可以使用操作组，但还有几个其他 Azure 警报类型也在研究如何使用操作组。
 
-可能根据以下条件接收警报：
-
-* **指标值**：当指定指标的值在任一方向越过了指定的阈值时将触发警报。 也就是说，当条件先是满足以及之后不再满足该条件时，警报都会触发。 有关 Azure Monitor 支持的可用指标（不断增加中）的列表，请参阅 [Azure Monitor 支持的指标的列表](monitoring-supported-metrics.md)。
-* **活动日志事件**：在对资源发生特定事件时，或是在服务通知发布到订阅时，可以触发此警报。
-
-## <a name="what-can-metric-alerts-do"></a>指标警报可以做什么？
-你可以配置警报来执行以下操作：
-
-* 将电子邮件通知发送到服务管理员、共同管理员或指定的其他电子邮件。
-* 调用 Webhook，以便用户启动其他自动化操作 示例包括调用以下各项：
+操作组除通过电子邮件地址和短信号码通知外，还可发布到 Webhook URL 来支持通知。 这可实现自动化和修复，例如使用：
     - Azure 自动化 Runbook
     - Azure 函数
     - Azure 逻辑应用
     - 第三方服务
 
-## <a name="what-can-activity-log-alerts-do"></a>活动日志警报可以做什么？
-你可以配置警报来执行以下操作：
-* 每当对订阅下的资源之一发生特定事件时触发
-* 每当服务通知发布到订阅时触发
-* 通过以下方式向操作组的成员发出警报
-    * SMS
-    * 电子邮件
-    * Webhook
+指标警报尚不可使用操作组。 在单个指标警报中，可将通知配置为：
+* 将电子邮件通知发送到服务管理员、共同管理员或指定的其他电子邮件。
+* 调用 Webhook，以便用户启动其他自动化操作
 
 ## <a name="next-steps"></a>后续步骤
 了解警报规则以及如何使用以下工具来配置这些规则：

@@ -13,14 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2017
+ms.date: 08/02/2017
 ms.author: singhkay
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: c1ad80a56627695f3594f4d9b60cd623fa9bcce3
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 58eaab4fa03afc1e6a5e38bef691cce62a921ea9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>使用 Azure Resource Manager 向 Linux VM 应用策略
@@ -28,7 +27,7 @@ ms.lasthandoff: 06/30/2017
 
 有关策略简介，请参阅[使用策略管理资源并控制访问](../../azure-resource-manager/resource-manager-policy.md)。
 
-## <a name="define-policy-for-permitted-virtual-machines"></a>定义有关获准虚拟机的策略
+## <a name="permitted-virtual-machines"></a>允许的虚拟机
 若要确保组织的虚拟机与应用程序兼容，可以限制获准操作系统。 在以下策略示例中，只允许创建 Ubuntu 14.04.2-LTS 虚拟机。
 
 ```json
@@ -92,7 +91,7 @@ ms.lasthandoff: 06/30/2017
 
 若要了解策略字段，请参阅[策略别名](../../azure-resource-manager/resource-manager-policy.md#aliases)。
 
-## <a name="define-policy-for-using-managed-disks"></a>定义有关使用托管磁盘的策略
+## <a name="managed-disks"></a>托管磁盘
 
 如果需要使用托管磁盘，请使用以下策略：
 
@@ -139,6 +138,76 @@ ms.lasthandoff: 06/30/2017
   }
 }
 ```
+
+## <a name="images-for-virtual-machines"></a>虚拟机映像
+
+出于安全考虑，可要求在环境中部署仅已批准的自定义映像。 可以指定包含已批准映像的资源组，或特定已批准映像。
+
+下例需要来自已批准资源组的映像：
+
+```json
+{
+    "if": {
+        "allOf": [
+            {
+                "field": "type",
+                "in": [
+                    "Microsoft.Compute/virtualMachines",
+                    "Microsoft.Compute/VirtualMachineScaleSets"
+                ]
+            },
+            {
+                "not": {
+                    "field": "Microsoft.Compute/imageId",
+                    "contains": "resourceGroups/CustomImage"
+                }
+            }
+        ]
+    },
+    "then": {
+        "effect": "deny"
+    }
+} 
+```
+
+下例指定已批准的映像 ID：
+
+```json
+{
+    "field": "Microsoft.Compute/imageId",
+    "in": ["{imageId1}","{imageId2}"]
+}
+```
+
+## <a name="virtual-machine-extensions"></a>虚拟机扩展
+
+建议禁止某些扩展类型的使用情况。 例如，扩展名可能与某些自定义虚拟机映像不兼容。 下例演示如何阻止特定扩展。 该示例使用发布者和类型来确定要阻止的扩展。
+
+```json
+{
+    "if": {
+        "allOf": [
+            {
+                "field": "type",
+                "equals": "Microsoft.Compute/virtualMachines/extensions"
+            },
+            {
+                "field": "Microsoft.Compute/virtualMachines/extensions/publisher",
+                "equals": "Microsoft.Compute"
+            },
+            {
+                "field": "Microsoft.Compute/virtualMachines/extensions/type",
+                "equals": "{extension-type}"
+
+      }
+        ]
+    },
+    "then": {
+        "effect": "deny"
+    }
+}
+```
+
 
 ## <a name="next-steps"></a>后续步骤
 * 定义策略规则后（如上述示例所示），需要创建策略定义并将其分配给作用域。 作用域可以是订阅、资源组或资源。 若要通过门户分配策略，请参阅[使用 Azure 门户分配和管理资源策略](../../azure-resource-manager/resource-manager-policy-portal.md)。 若要通过 REST API、PowerShell 或 Azure CLI 分配策略，请参阅[通过脚本分配和管理策略](../../azure-resource-manager/resource-manager-policy-create-assign.md)。

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: ad9759f20135a87356819d5b819eab357b688cdc
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 541722cb02dd991228726e62a2304b49cdd806f2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>使用 Docker 和 Compose 在 Azure 中定义和运行多容器应用程序入门
@@ -30,7 +29,7 @@ ms.lasthandoff: 05/12/2017
 ## <a name="set-up-a-linux-vm-as-a-docker-host"></a>将 Linux VM 设置为 Docker 主机
 可以使用各种 Azure 过程和 Azure 应用商店中提供的映像或 Resource Manager 模板创建 Linux VM，并将其设置为 Docker 主机。 例如，请参阅[使用 Docker VM 扩展部署环境](dockerextension.md)，了解使用[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)通过 Azure Docker VM 扩展快速创建 Ubuntu VM。 
 
-使用 Docker VM 扩展时，VM 将自动设置为 Docker 主机，并且已安装 Compose。
+使用 Docker VM 扩展时，VM 会自动设置为 Docker 主机，并且已安装 Compose。
 
 
 ### <a name="create-docker-host-with-azure-cli-20"></a>使用 Azure CLI 2.0 创建 Docker 主机
@@ -55,7 +54,7 @@ az group deployment create --resource-group myResourceGroup \
 
 需要几分钟才能完成部署。 部署完成后，[移到下一步](#verify-that-compose-is-installed)，将 SSH 移到 VM。 
 
-（可选）若要改为将控制返回提示符，并允许部署在后台继续运行，请将 `--no-wait` 标志添加到前一个命令。 此过程允许在 CLI 中执行其他工作，同时部署将持续几分钟。 可以使用 [az vm show](/cli/azure/vm#show) 查看有关 Docker 主机状态的详细信息。 以下示例在名为 myResourceGroup 的资源组中检查名为 myDockerVM（模板中的默认名称 - 请不要更改该名称）的 VM 的状态：
+（可选）要改为将控制返回提示符，并允许部署在后台继续运行，请将 `--no-wait` 标志添加到前一个命令。 此过程允许在 CLI 中执行其他工作，同时部署将持续几分钟。 可以使用 [az vm show](/cli/azure/vm#show) 查看有关 Docker 主机状态的详细信息。 以下示例在名为 myResourceGroup 的资源组中检查名为 myDockerVM（模板中的默认名称 - 请不要更改该名称）的 VM 的状态：
 
 ```azurecli
 az vm show \
@@ -88,7 +87,7 @@ docker-compose --version
 
 
 ## <a name="create-a-docker-composeyml-configuration-file"></a>创建 docker-compose.yml 配置文件
-接下来，将创建 `docker-compose.yml` 文件，它只是一个文本配置文件，用于定义要在 VM 上运行的 Docker 容器。 该文件指定要在每个容器中运行的映像（或者它可能从 Dockerfile 生成）、必要的环境变量和依赖关系、端口以及容器之间的链接。 有关 yml 文件语法的详细信息，请参阅 [Compose 文件参考](http://docs.docker.com/compose/yml/)。
+接下来，将创建 `docker-compose.yml` 文件，它只是一个文本配置文件，用于定义要在 VM 上运行的 Docker 容器。 该文件指定要在每个容器中运行的映像（或者它可能从 Dockerfile 生成）、必要的环境变量和依赖关系、端口以及容器之间的链接。 有关 yml 文件语法的详细信息，请参阅 [Compose 文件参考](https://docs.docker.com/compose/compose-file/)。
 
 创建 docker-compose.yml 文件，如下所示：
 
@@ -137,7 +136,7 @@ Creating wordpress_wordpress_1...
 > 启动时请务必使用 **-d** 选项，使容器在后台继续运行。
 
 
-若要验证容器是否已启动，请键入 `docker-compose ps`。 你应看到类似如下的内容：
+若要验证容器是否已启动，请键入 `docker-compose ps`。 应看到类似如下的内容：
 
 ```bash
         Name                       Command               State         Ports
@@ -146,7 +145,7 @@ azureuser_db_1          docker-entrypoint.sh mysqld      Up      3306/tcp
 azureuser_wordpress_1   docker-entrypoint.sh apach ...   Up      0.0.0.0:80->80/tcp
 ```
 
-现在可以在 VM 的端口 80 上直接连接到 WordPress。 打开 Web 浏览器并输入 VM 的 DNS 名称（如 `http://mypublicdns.westus.cloudapp.azure.com`）。 现在，你应看到 WordPress 开始屏幕，你可以在其中完成安装并开始使用应用程序。
+现在可以在 VM 的端口 80 上直接连接到 WordPress。 打开 Web 浏览器并输入 VM 的 DNS 名称（如 `http://mypublicdns.westus.cloudapp.azure.com`）。 现在，应看到 WordPress 开始屏幕，可以在其中完成安装并开始使用应用程序。
 
 ![WordPress 开始屏幕][wordpress_start]
 

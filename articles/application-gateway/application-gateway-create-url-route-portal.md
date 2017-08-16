@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: df167435757b2d9d2d25b58b1b548a811b490eb5
-ms.lasthandoff: 04/04/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: c184e94a04cfbdedcae70ed154aeb7dd134d1baf
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="create-a-path-based-rule-for-an-application-gateway-by-using-the-portal"></a>使用门户为应用程序网关创建基于路径的规则
@@ -27,15 +27,16 @@ ms.lasthandoff: 04/04/2017
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-create-url-route-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-url-route-arm-ps.md)
+> * [Azure CLI 2.0](application-gateway-create-url-route-cli.md)
 
-借助基于 URL 路径的路由，可根据 Http 请求的 URL 路径来关联路由。 它将检查是否有路由连接到为应用程序网关中列出的 URL 配置的后端池，并将网络流量发送到定义的后端池。 基于 URL 的路由的常见用法是将不同内容类型的请求负载均衡到不同的后端服务器池。
+借助基于 URL 路径的路由，可根据 Http 请求的 URL 路径来关联路由。 它会检查是否有路由连接到为应用程序网关中列出的 URL 配置的后端池，并将网络流量发送到定义的后端池。 基于 URL 的路由的常见用法是将不同内容类型的请求负载均衡到不同的后端服务器池。
 
 基于 URL 的路由将新的规则类型引入应用程序网关。 应用程序网关有两种规则类型：基本规则和基于路径的规则。 基本规则类型针对后端池提供轮循机制服务，而基于路径的规则除了轮循机制分发以外，还在选择适当的后端池时考虑请求 URL 的路径模式。
 
 ## <a name="scenario"></a>方案
 
 以下方案演示如何在现有应用程序网关中创建基于路径的规则。
-该方案假定你已按相关步骤[创建应用程序网关](application-gateway-create-gateway-portal.md)。
+该方案假定已按相关步骤[创建应用程序网关](application-gateway-create-gateway-portal.md)。
 
 ![url 路由][scenario]
 
@@ -45,7 +46,7 @@ ms.lasthandoff: 04/04/2017
 
 ### <a name="step-1"></a>步骤 1
 
-导航到 [Azure 门户](http://portal.azure.com)，然后选择现有的应用程序网关。 单击“规则”
+导航到 [Azure 门户](http://portal.azure.com)，并选择现有的应用程序网关。 单击“规则”
 
 ![应用程序网关概述][1]
 
@@ -59,15 +60,15 @@ ms.lasthandoff: 04/04/2017
 
 **基本设置**
 
-* **名称** - 这是可在门户中访问的规则的友好名称。
-* **侦听器** - 这是用于规则的侦听器。
+* **名称** - 此值是可在门户中访问的规则的友好名称。
+* **侦听器** - 此值是用于规则的侦听器。
 * **默认后端池** - 此设置可定义要用于默认规则的后端
 * **默认 HTTP 设置** - 此设置可定义要用于默认规则的 HTTP 设置。
 
 **基于路径的规则**
 
-* **名称** - 这是基于路径的规则的友好名称。
-* **路径** - 此设置可定义规则在转发流量时将要寻找的路径
+* **名称** - 此值是基于路径的规则的友好名称。
+* **路径** - 此设置定义规则在转发流量时寻找的路径
 * **后端池** - 此设置可定义要用于规则的后端
 * **HTTP 设置** - 此设置可定义要用于规则的 HTTP 设置。
 
@@ -76,11 +77,11 @@ ms.lasthandoff: 04/04/2017
 
 ![添加填写了信息的“基于路径的规则”边栏选项卡][2]
 
-将基于路径的规则添加到现有应用程序网关是可以通过门户完成的简单过程。 创建基于路径的规则后，即可对其进行编辑，以便轻松地添加其他规则。 
+将基于路径的规则添加到现有应用程序网关是可以通过门户完成的简单过程。 创建基于路径的规则后，即可对其进行编辑，以便添加其他规则。 
 
 ![添加其他基于路径的规则][3]
 
-这会配置基于路径的路由。 务必要知道，不会重新编写请求，因为请求进入应用程序网关时，URL 模式上的基本规则会检查请求并将请求发送到相应的后端。
+此步骤配置基于路径的路由。 务必要知道，不会重新编写请求，因为请求进入应用程序网关时，URL 模式上的基本规则会检查请求并将请求发送到相应的后端。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: a9cb2d921d1be226661311d91367b2b6f44fa0dc
-ms.lasthandoff: 03/24/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: f61be0cc4c9274c9914f7c468ce48a2a3d0a4f4a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-portal"></a>使用门户配置可以进行 SSL 卸载的应用程序网关
@@ -27,12 +27,13 @@ ms.lasthandoff: 03/24/2017
 > * [Azure 门户](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
 > * [Azure 经典 PowerShell](application-gateway-ssl.md)
+> * [Azure CLI 2.0](application-gateway-ssl-cli.md)
 
 可将 Azure 应用程序网关配置为在网关上终止安全套接字层 (SSL) 会话，以避免 Web 场中出现开销较高的 SSL 解密任务。 SSL 卸载还简化了 Web 应用程序的前端服务器设置与管理。
 
 ## <a name="scenario"></a>方案
 
-以下方案演示了如何在现有应用程序网关中配置 SSL 卸载。 该方案假定你已按相关步骤[创建应用程序网关](application-gateway-create-gateway-portal.md)。
+以下方案演示了如何在现有应用程序网关中配置 SSL 卸载。 该方案假定已按相关步骤[创建应用程序网关](application-gateway-create-gateway-portal.md)。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -44,17 +45,17 @@ HTTPS 侦听器根据配置来查找流量，并可将流量路由到后端池�
 
 ### <a name="step-1"></a>步骤 1
 
-导航到 Azure 门户，然后选择现有的应用程序网关
+导航到 Azure 门户，并选择现有的应用程序网关
 
 ### <a name="step-2"></a>步骤 2
 
-单击“侦听器”，然后单击“添加”按钮即可添加侦听器。
+单击“侦听器”，然后单击“添加”按钮添加侦听器。
 
 ![应用网关概述边栏选项卡][1]
 
 ### <a name="step-3"></a>步骤 3
 
-填写侦听器的必需信息并上载 .pfx 证书，完成时单击“确定”。
+填写侦听器的必需信息并上传 .pfx 证书，完成时单击“确定”。
 
 **名称** - 该值为侦听器的友好名称。
 
@@ -74,13 +75,13 @@ HTTPS 侦听器根据配置来查找流量，并可将流量路由到后端池�
 
 ### <a name="step-1"></a>步骤 1
 
-单击应用程序网关的“规则”，然后单击“添加”。
+单击应用程序网关的“规则”，并单击“添加”。
 
 ![应用网关规则边栏选项卡][3]
 
 ### <a name="step-2"></a>步骤 2
 
-在“添加基本规则”边栏选项卡中，键入规则的友好名称并选择在上一步创建的侦听器。 选择适当的后端池和 http 设置，然后单击“确定”
+在“添加基本规则”边栏选项卡中，键入规则的友好名称并选择在上一步创建的侦听器。 选择适当的后端池和 http 设置，并单击“确定”
 
 ![https 设置窗口][4]
 

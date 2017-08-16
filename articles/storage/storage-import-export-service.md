@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: muralikk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: fc0fd0188261263aac550b0f0784076efc807215
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 9dc50a101384bb40ad3a878245b80dcb31a7c08e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-blob-storage"></a>使用 Microsoft Azure 导入/导出服务将数据传输到 Blob 存储中
@@ -232,7 +231,7 @@ Azure 门户中的此映像会显示示例作业的驱动器状态：
 | 不适用 | 不属于任何作业的驱动器将作为其他作业的一部分送至数据中心。 | 完成与原始包裹关联的作业后，驱动器将标记为额外驱动器并寄回给客户。 |
 
 ### <a name="time-to-process-job"></a>处理作业的时间
-处理导入/导出作业的时间各不相同，取决于不同的因素，例如寄送时间、作业类型、要复制的数据的类型和大小，以及所提供磁盘的大小。 导入/导出服务没有 SLA。 你可以通过 REST API 更密切地跟踪作业进度。 在“列出作业”操作中有一个完成百分比参数，该参数指示复制进度。 如果你需要估算何时才能完成时间要求紧的导入/导出作业，请联系我们。
+处理导入/导出作业的时间各不相同，取决于不同的因素，例如寄送时间、作业类型、要复制的数据的类型和大小，以及所提供磁盘的大小。 导入/导出服务没有 SLA，但在收到磁盘之后，服务力求在 7 到 10 天内完成复制。 你可以通过 REST API 更密切地跟踪作业进度。 在“列出作业”操作中有一个完成百分比参数，该参数指示复制进度。 如果你需要估算何时才能完成时间要求紧的导入/导出作业，请联系我们。
 
 ### <a name="pricing"></a>定价
 **驱动器处理费用**
@@ -250,13 +249,12 @@ Azure 门户中的此映像会显示示例作业的驱动器状态：
 ## <a name="quick-start"></a>快速启动
 此部分提供创建导入和导出作业的分步说明。 请确保在执行下一步操作之前符合所有[先决条件](#pre-requisites)。
 
+> [!IMPORTANT]
+> 服务支持每个导入或导出作业使用一个标准存储帐户，不支持高级存储帐户。 
+> 
+> 
 ## <a name="create-an-import-job"></a>创建导入作业
 创建导入作业时，需将数据从硬盘驱动器复制到 Azure 存储帐户，其方法是将一个或多个包含数据的驱动器寄送到指定的数据中心。 导入作业会将有关硬盘驱动器、要复制的数据、目标存储帐户和寄送信息的详细信息传至 Azure 导入/导出服务。 创建导入作业是一个三步过程。 首先，使用 WAImportExport 工具准备驱动器。 其次，使用 Azure 门户提交导入作业。 最后，将驱动器寄送到你在创建作业时获得的寄送地址，并在作业详细信息中更新寄送信息。   
-
-> [!IMPORTANT]
-> 一个存储帐户只能提交一个作业。 寄送驱动器时，一个驱动器只能导入一个存储帐户中。 例如，假设你希望将数据导入两个存储帐户中。 则必须对每个存储帐户使用不同的硬盘驱动器，并针对存储帐户创建不同的作业。
-> 
-> 
 
 ### <a name="prepare-your-drives"></a>准备驱动器
 使用 Azure 导入/导出服务导入数据时，第一步是通过 WAImportExport 工具准备驱动器。 按照以下步骤准备你的驱动器。
@@ -431,9 +429,9 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-**能否使用 Azure 导入/导出服务复制 Azure 文件？**
+**能否使用 Azure 导入/导出服务复制 Azure 文件存储？**
 
-否。Azure 导入/导出服务仅支持块 Blob 和页 Blob。 所有其他存储类型（包括 Azure 文件、表和队列）均不受支持。
+否。Azure 导入/导出服务仅支持块 Blob 和页 Blob。 其他所有存储类型（包括 Azure 文件存储、表存储和队列存储）均不受支持。
 
 **Azure 导入/导出服务是否适用于 CSP 订阅？**
 
@@ -462,6 +460,7 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 **如果我想要导入或导出超过 10 个驱动器，我应该做什么？**
 
 对于导入/导出服务，一个导入或导出作业在单个作业中只能引用 10 个驱动器。 如果你想要装运超过 10 个驱动器，可以创建多个作业。 与同一作业关联的驱动器必须放在同一个包裹中一起寄送。
+数据容量跨多个磁盘导入作业时，Microsoft 可提供指导和帮助。 有关详细信息，请联系 bulkimport@microsoft.com
 
 **该服务是否会在返还驱动器之前将其格式化？**
 
@@ -471,7 +470,9 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 
 不能。 对于导入和导出作业，用户将需要装运自己的驱动器。
 
-** 如何访问此服务导入的数据 ** Azure 存储帐户下的数据可以通过 Azure 门户访问，或者使用名为“存储浏览器”的独立工具来访问。 https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer 
+**如何才能访问此服务导入的数据？**
+
+以 Azure 存储帐户名义存储的数据可以通过 Azure 门户访问，也可以使用存储资源管理器这一独立工具进行访问。 https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer 
 
 **导入作业完成后，我的数据在存储帐户中看起来是什么样的？是否会保留我的目录层次结构？**
 
@@ -520,6 +521,20 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 
 最大块 Blob 大小大约为 4.768TB 或 5,000,000 MB。
 最大页 Blob 大小为 1TB。
+
+**磁盘导入/导出是否支持 AES 256 加密？**
+
+默认情况下，Azure 导入/导出服务使用 AES 128 BitLocker 加密进行加密，但在复制数据前，可以使用 BitLocker 进行手动加密，从而将加密提升为 AES 256。 
+
+如果使用的是 [WAImportExpot V1](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip)，下面展示了示例命令
+```
+WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>] 
+```
+如果使用的是 [WAImportExport 工具](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip)，请指定“AlreadyEncrypted”，并在驱动集 CSV 中提供密钥。
+```
+DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
+G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631 |
+```
 ## <a name="next-steps"></a>后续步骤
 
 * [设置 WAImportExport 工具](storage-import-export-tool-how-to.md)

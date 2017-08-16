@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2017
+ms.date: 08/08/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 8b16f163b20a4dd31857838ddafcc7ba36ac9817
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: e2cd7eae50006717dfc0da358436ae3553a81d00
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 07/13/2017
 
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
-若要使用 [IoT 中心的文件上传功能][lnk-upload]，必须先将 Azure 存储帐户与 IoT 中心关联。 可以使用现有存储帐户，也可以创建新的存储帐户。
+要使用 [IoT 中心的文件上传功能][lnk-upload]，必须先将 Azure 存储帐户与 IoT 中心关联。 可以使用现有存储帐户，也可以创建新的存储帐户。
 
 若要完成本教程，需要以下各项：
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 07/13/2017
 
 ## <a name="sign-in-and-set-your-azure-account"></a>登录并设置 Azure 帐户
 
-登录到 Azure 帐户，然后选择订阅。
+登录到 Azure 帐户，并选择订阅。
 
 1. 在命令提示符中，运行 [login 命令][lnk-login-command]：
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 07/13/2017
 
 以下步骤假设已使用 **Resource Manager** 部署模型而不**经典**部署模型创建了存储帐户。
 
-如 IoT 中心配置文件将上传从设备，需要 Azure 存储帐户相同的订阅中的连接字符串。 还需要存储帐户中 Blob 容器的名称。 使用以下命令检索存储帐户密钥：
+若要从设备配置文件上传，需要 Azure 存储帐户的连接字符串。 存储帐户必须与 IoT 中心位于同一订阅中。 还需要存储帐户中 Blob 容器的名称。 使用以下命令检索存储帐户密钥：
 
 ```azurecli
 az storage account show-connection-string --name {your storage account name} --resource-group {your storage account resource group}
@@ -135,7 +135,7 @@ az iot hub show --name {your iot hub name}
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 IoT 中心文件上传功能的详细信息，请参阅 IoT 中心开发人员指南中的[从设备上传文件][lnk-upload]。
+有关 IoT 中心文件上传功能的详细信息，请参阅[从设备上传文件][lnk-upload]。
 
 若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
 

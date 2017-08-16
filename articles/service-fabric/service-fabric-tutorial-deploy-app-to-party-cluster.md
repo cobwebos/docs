@@ -12,25 +12,29 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/03/2017
+ms.date: 08/09/2017
 ms.author: mikhegn
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: 1fde062d9673a48698b269d79e009c7b179e5934
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: c0546fd5b1398759ef98afa267146ced8a4084da
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
 # <a name="deploy-an-application-to-a-party-cluster-in-azure"></a>将应用程序部署到 Azure 中的合作群集
-本教程介绍如何将 Azure Service Fabric 应用程序部署到 Azure 中的合作群集。
+本教程是一个系列的第二部分，介绍如何将 Azure Service Fabric 应用程序部署到 Azure 中的合作群集。
 
-本教程部分介绍如何：
+在该系列教程的第二部分中，你会学习如何：
 > [!div class="checklist"]
 > * 使用 Visual Studio 将应用程序部署到远程群集
 > * 使用 Service Fabric Explorer 从群集中删除应用程序
 
-本教程已拆分为三篇文章，本文是教程系列中的第二篇文章。
+在此系列教程中，你会学习如何：
+> [!div class="checklist"]
+> * [构建 .NET Service Fabric 应用程序](service-fabric-tutorial-create-dotnet-app.md)
+> * 将应用程序部署到远程群集
+> * [使用 Visual Studio Team Services 配置 CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 
 ## <a name="prerequisites"></a>先决条件
 在开始学习本教程之前：
@@ -95,7 +99,7 @@ Service Fabric Explorer 是用于浏览和管理 Service Fabric 群集中的应�
 本教程到此结束。
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已学习了如何执行以下操作：
+本教程介绍了如何：
 
 > [!div class="checklist"]
 > * 使用 Visual Studio 将应用程序部署到远程群集

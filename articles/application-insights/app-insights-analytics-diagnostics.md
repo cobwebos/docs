@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: bb836357af6d006c18db578164f02fa7bd043b45
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 5e53bc714d89bf6204681349e7890e0b8fbc7046
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="diagnose-sudden-changes-in-your-app-telemetry"></a>诊断应用遥测的突然变化
@@ -61,7 +61,7 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="how-it-works"></a>工作原理
 
-智能诊断使用了先进的基于 [DiffPatterns](app-insights-analytics-reference.md#evaluate-diffpatterns) 操作的非监督式机器学习算法。 该算法会查找也许可以解释数据变化的候选模式。 它会分析每个候选模式对指标的影响，并显示与变化最相关的模式。
+智能诊断使用了先进的基于 [DiffPatterns](app-insights-analytics-reference.md) 操作的非监督式机器学习算法。 该算法会查找也许可以解释数据变化的候选模式。 它会分析每个候选模式对指标的影响，并显示与变化最相关的模式。
 
 ## <a name="no-diagnostic-points"></a>没有诊断点？
 
@@ -80,4 +80,4 @@ ms.lasthandoff: 05/10/2017
  ## <a name="related-articles"></a>相关文章
 
  * [Analytics 教程](app-insights-analytics-tour.md)
- * 遇到性能问题时，[智能检测](app-insights-proactive-diagnostics.md)会自动向你发出警报。
+ * 遇到性能问题时，[智能检测](app-insights-proactive-diagnostics.md)会自动发出警报。

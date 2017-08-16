@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/31/2017
 ms.author: elioda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 405dd2f8147c20ce7b96b228fdf417e86a86de92
+ms.translationtype: HT
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 12389b4be03b714d99edcf3fd621bd2d9c586540
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="comparison-of-azure-iot-hub-and-azure-event-hubs"></a>Azure IoT 中心与 Azure 事件中心的比较
@@ -34,7 +33,7 @@ IoT 中心的其中一个主要用例是从设备收集遥测数据。 因此，
 | 设备协议支持 |支持 MQTT、基于 WebSockets 的 MQTT、AMQP、基于 WebSockets 的 AMQP 和 HTTP。 此外，IoT 中心还可使用 [Azure IoT 协议网关][lnk-azure-protocol-gateway]（一种可自定义协议网关实现）以支持自定义协议。 |支持 AMQP、基于 WebSockets 的 AMQP 和 HTTP。 |
 | “安全” |提供每个设备的标识与可吊销的访问控制权限。 请参阅 [IoT 中心开发人员指南的“安全性”部分]。 |提供事件中心范围的[共享访问策略][Event Hubs - security]，通过[发布者策略][Event Hubs publisher policies]提供有限的权限吊销支持。 IoT 解决方案通常需要实现自定义解决方案来支持每个设备的凭据以及防欺骗措施。 |
 | 操作监视 |允许 IoT 解决方案订阅丰富的设备标识管理和连接事件集，例如单个设备的身份验证错误、限制和错误格式异常。 这些事件可让你快速识别单个设备级别的连接问题。 |仅公开聚合度量值。 |
-| 缩放 |已经过优化，可支持数百万个同时连接的设备。 |按 [Azure 服务总线配额][Azure Service Bus quotas]计量连接。 另一方面，事件中心可让你为每个发送的消息指定分区。 |
+| 缩放 |已经过优化，可支持数百万个同时连接的设备。 |按 [Azure 事件中心配额][Azure Event Hubs quotas]计量连接。 另一方面，事件中心可让你为每个发送的消息指定分区。 |
 | 设备 SDK |除直接 MQTT、AMQP 和 HTTP API 外，还为各种平台和语言提供[设备 SDK][Azure IoT SDKs]。 |在 .NET、Java、C 以及 AMQP 和 HTTP 发送接口上受支持。 |
 | 文件上传 |可让 IoT 解决方案将文件从设备上传到云。 包含一个用于集成工作流的文件通知终结点，以及一个用于支持调试的操作监视类别。 | 不支持。 |
 | 将消息路由到多个终结点 | 最多支持 10 个自定义终结点。 规则确定如何将消息路由到自定义终结点。 有关详细信息，请参阅[使用 IoT 中心发送和接收消息][lnk-devguide-messaging]。 | 要求为消息发送编写和托管附加代码。 |
@@ -59,7 +58,7 @@ IoT 中心的其中一个主要用例是从设备收集遥测数据。 因此，
 [IoT 中心开发人员指南的“安全性”部分]: iot-hub-devguide-security.md
 [Event Hubs - security]: ../event-hubs/event-hubs-authentication-and-security-model-overview.md
 [Event Hubs publisher policies]: ../event-hubs/event-hubs-features.md#event-publishers
-[Azure Service Bus quotas]: ../service-bus-messaging/service-bus-quotas.md
+[Azure Event Hubs quotas]: ../event-hubs/event-hubs-quotas.md
 [Azure IoT SDKs]: https://github.com/Azure/azure-iot-sdks
 [lnk-azure-protocol-gateway]: iot-hub-protocol-gateway.md
 

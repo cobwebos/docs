@@ -1,6 +1,6 @@
 ---
 title: "使用 Ambari REST API 监视和管理 Hadoop - Azure HDInsight | Microsoft Docs"
-description: "了解如何使用 Ambari 监视和管理 Azure HDInsight 中的 Hadoop 群集。 在本文档中，你将学习如何使用 HDInsight 群集随附的 Ambari REST API。"
+description: "了解如何使用 Ambari 监视和管理 Azure HDInsight 中的 Hadoop 群集。 在本文档中，学习如何使用 HDInsight 群集随附的 Ambari REST API。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2017
+ms.date: 08/07/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 7ac80a8521b48f43538ca06a054f8302eb32eea6
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: bc6eee6ff3e6c7006509cdd175b488e320ed912a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>使用 Ambari REST API 管理 HDInsight 群集
@@ -30,11 +29,11 @@ ms.lasthandoff: 05/17/2017
 
 了解如何使用 Ambari REST API 监视和管理 Azure HDInsight 中的 Hadoop 群集。
 
-Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Hadoop 群集的管理和监视。 使用 Linux 操作系统的 HDInsight 群集包含 Ambari，用于监视群集和进行配置更改。
+Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Hadoop 群集的管理和监视。 Ambari 包含在使用 Linux 操作系统的 HDInsight 群集中。 可以使用 Ambari 监视群集和进行配置更改。
 
 ## <a id="whatis"></a>什么是 Ambari
 
-[Apache Ambari](http://ambari.apache.org) 提供简单易用的 Web UI，让你可以预配、管理和监视 Hadoop 群集，以此简化 Hadoop 管理。 开发人员可以使用 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) 在其应用程序中集成这些功能。
+[Apache Ambari](http://ambari.apache.org) 提供可以用于设置、管理和监视 Hadoop 群集的 Web UI。 开发人员可以使用 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) 在其应用程序中集成这些功能。
 
 基于 Linux 的 HDInsight 群集已按默认提供 Ambari。
 
@@ -70,7 +69,7 @@ HDInsight 上 Ambari REST API 的基本 URI 是 https://CLUSTERNAME.azurehdinsig
 
 ### <a name="authentication"></a>身份验证
 
-连接到 HDInsight 上的 Ambari 需要 HTTPS。 对连接进行身份验证时，必须使用创建群集时提供的管理员帐户名（默认为 **admin**）和密码。
+连接到 HDInsight 上的 Ambari 需要 HTTPS。 使用在群集创建过程中提供的管理员帐户名称（默认值是 **admin**）和密码。
 
 ## <a name="examples-authentication-and-parsing-json"></a>示例：身份验证和解析 JSON
 
@@ -179,7 +178,7 @@ $respObj.Clusters.health_report
 * **辅助角色节点**
 
     ```bash
-    curl -u admin:PASSWORD -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/DATANODE" \
+    curl -u admin:PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/DATANODE" \
     | jq '.host_components[].HostRoles.host_name'
     ```
 
@@ -193,7 +192,7 @@ $respObj.Clusters.health_report
 * **Zookeeper 节点**
 
     ```bash
-    curl -u admin:PASSWORD -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" \
+    curl -u admin:PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" \
     | jq '.host_components[].HostRoles.host_name'
     ```
 
@@ -211,7 +210,7 @@ $respObj.Clusters.health_report
 >
 > 有关将 HDInsight 与虚拟网络配合使用的详细信息，请参阅[使用 Azure 虚拟网络扩展 HDInsight 功能](hdinsight-extend-hadoop-virtual-network.md)。
 
-必须知悉主机的 FQDN，然后才能获取 IP 地址。 在知悉 FQDN 后，可以获取主机的 IP 地址。 以下示例首先从 Ambari 查询所有主机节点的 FQDN，然后从 Ambari 查询每个主机的 IP 地址。
+要查找 IP 地址，必须知道群集节点的内部完全限定的域名 (FQDN)。 在知悉 FQDN 后，可以获取主机的 IP 地址。 以下示例首先从 Ambari 查询所有主机节点的 FQDN，然后从 Ambari 查询每个主机的 IP 地址。
 
 ```bash
 for HOSTNAME in $(curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/hosts" | jq -r '.items[].Hosts.host_name')
@@ -258,7 +257,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
 返回值类似于下列示例之一：
 
-* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net` - 此值表示群集使用 Azure 存储帐户作为默认存储。 `ACCOUNTNAME` 值是存储帐户的名称。 `CONTAINER` 部分是存储帐户中的 blob 容器的名称。 该容器是群集的 HDFS 兼容存储的根目录。
+* `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net` - 此值表示群集使用 Azure 存储帐户作为默认存储。 `ACCOUNTNAME` 值是存储帐户的名称。 `CONTAINER` 部分是存储帐户中的 blob 容器的名称。 该容器是群集的 HDFS 兼容存储的根目录。
 
 * `adl://home` - 此值表示群集使用 Azure Data Lake Store 作为默认存储。
 
@@ -307,8 +306,9 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     ```
 
     ```powershell
-    Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_configs" `
+    $respObj = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_configs" `
         -Credential $creds
+    $respObj.Content
     ```
 
     此示例将返回一个 JSON 文档，其中包含群集上安装的组件的当前配置（由 *tag* 值标识）。 以下示例是从 Spark 群集类型返回的数据摘录。
@@ -380,7 +380,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
    
     需要从此列表中复制组件的名称（例如，**spark\_thrift\_sparkconf** 和 **tag** 值）。
 
-2. 使用以下命令检索组件和标记的配置。 将 **spark-thrift-sparkconf** 和 **INITIAL** 替换为要检索其配置的组件和标记。
+2. 使用以下命令检索组件和标记的配置：
    
     ```bash
     curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations?type=spark-thrift-sparkconf&tag=INITIAL" \
@@ -395,6 +395,9 @@ $respObj.items.configurations.properties.'fs.defaultFS'
         -Credential $creds
     $resp.Content | jq --arg newtag "version$unixTimeStamp" '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
     ```
+
+    > [!NOTE]
+    > 将 **spark-thrift-sparkconf** 和 **INITIAL** 替换为要检索其配置的组件和标记。
    
     Jq 用来将从 HDInsight 检索到的数据转变为新的配置模板。 具体而言，这些示例执行以下操作：
    
@@ -449,11 +452,11 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     $resp.Content
     ```
    
-    这些命令将 **newconfig.json** 文件的内容作为新的所需配置提交到群集。 请求将返回一个 JSON 文档。 此文档中的 **versionTag** 元素应该与提交的版本相匹配，并且 **configs** 对象包含你请求的配置更改。
+    这些命令将 **newconfig.json** 文件的内容作为新的所需配置提交到群集。 请求将返回一个 JSON 文档。 此文档中的 versionTag 元素应该与提交的版本相匹配，并且 configs 对象包含你请求的配置更改。
 
 ### <a name="example-restart-a-service-component"></a>示例：重新启动服务组件
 
-此时，如果查看 Ambari Web UI，你会发现 Spark 服务指出需要将它重新启动才能使新配置生效。 使用以下步骤重新启动该服务。
+此时，如果查看 Ambari Web UI，会发现 Spark 服务指出需要将它重新启动才能使新配置生效。 使用以下步骤重新启动该服务。
 
 1. 使用以下命令启用 Spark 服务的维护模式：
 
@@ -519,7 +522,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     ```
     
     > [!IMPORTANT]
-    > 此 URI 返回的 `href` 值正在使用群集节点的内部 IP 地址。 若要从群集外部使用该地址，请将“10.0.0.18:8080”部分替换为群集的 FQDN。 
+    > 此 URI 返回的 `href` 值正在使用群集节点的内部 IP 地址。 要从群集外部使用该地址，请将“10.0.0.18:8080”部分替换为群集的 FQDN。 
     
     以下命令检索请求状态：
 

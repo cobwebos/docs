@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: swkrish
-translationtype: Human Translation
-ms.sourcegitcommit: 351149296a6d7dfa801b295ec21fc04215c7b051
-ms.openlocfilehash: 766ba894ba2643dec06757a133f8e716aa856161
-
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 4442174a857681adff33001e660809ec7d47ad7d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Azure Active Directory B2C：令牌、会话和单一登录配置
@@ -28,10 +29,10 @@ ms.openlocfilehash: 766ba894ba2643dec06757a133f8e716aa856161
 3. Azure AD B2C 发出的安全令牌中的重要声明格式。
 4. B2C 租户中跨多个应用和策略的单一登录 (SSO) 行为。
 
-你可以按如下方式在 B2C 租户中使用此功能：
+可以按如下方式在 B2C 租户中使用此功能：
 
-1. 请按照以下步骤在 Azure 门户上[导航到 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
-2. 单击“登录策略”。 *注意：可以对任何策略类型使用此功能，不只是**签入策略***。
+1. 请按照以下步骤在 Azure 门户上[导航到 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
+2. 单击“登录策略”。 注意：可以对任何策略类型使用此功能，不局限于登录策略**。
 3. 通过单击策略以打开它。 例如，单击“B2C_1_SiIn”。
 4. 单击边栏选项卡顶部的“编辑”。
 5. 单击“令牌、会话和单一登录配置”。
@@ -109,10 +110,5 @@ Azure AD B2C 支持 [OpenID Connect 身份验证协议](active-directory-b2c-ref
     > 这些设置不适用于密码重置策略。
     > 
     > 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

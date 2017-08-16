@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 08/04/2017
 ms.author: curtand
 ms.reviewer: rodejo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: d7be54b508a845d6746fd65887e3339ff371a287
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: c2a313c5ad011d03309a962bf2905750a478b890
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>用于组管理的 Azure Active Directory 版本 2 cmdlet
@@ -117,7 +117,7 @@ ms.lasthandoff: 05/05/2017
     PS C:\Windows\system32> New-AzureADGroup -Description "Marketing" -DisplayName "Marketing" -MailEnabled $false -SecurityEnabled $true -MailNickName "Marketing"
 
 ## <a name="updating-groups"></a>更新组
-若要更新现有组，请使用 Set-AzureADGroup cmdlet。 在此示例中，我们将更改“Intune 管理员”组的 DisplayName 属性。 首先，我们将使用 Get-AzureADGroup cmdlet 查找该组，然后使用 DisplayName 属性进行筛选：
+若要更新现有组，请使用 Set-AzureADGroup cmdlet。 在此示例中，我们将更改“Intune 管理员”组的 DisplayName 属性。 首先，我们发现使用 Get-AzureADGroup cmdlet 的组和使用 DisplayName 属性的筛选器：
 
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
 
@@ -171,7 +171,7 @@ ms.lasthandoff: 05/05/2017
 
     PS C:\Windows\system32> Add-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 
--ObjectId 参数是需向其添加成员的组的 ObjectID，-RefObjectId 是需将其作为成员添加到组的用户的 ObjectID。
+#NAME?
 
 若要获取组的现有成员，请使用 Get-AzureADGroupMember cmdlet，如以下示例所示：
 
@@ -210,7 +210,7 @@ ms.lasthandoff: 05/05/2017
 
     PS C:\Windows\system32> Add-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 
--ObjectId 参数是需向其添加所有者的组的 ObjectID，-RefObjectId 是需将其作为组所有者添加的用户的 ObjectID。
+#NAME?
 
 若要检索组的所有者，请使用 Get-AzureADGroupOwner：
 
@@ -225,6 +225,22 @@ ms.lasthandoff: 05/05/2017
 若需从组中删除所有者，请使用 Remove-AzureADGroupOwner：
 
     PS C:\Windows\system32> remove-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -OwnerId e831b3fd-77c9-49c7-9fca-de43e109ef67
+
+## <a name="reserved-aliases"></a>保留的别名 
+创建组后，某些终结点允许最终用户指定一个 mailNickname 或别名，用作组的电子邮件地址的一部分。   
+仅 Azure AD 全局管理员可以创建具有以下权限较高的电子邮件别名的组。 
+  
+* abuse 
+* admin 
+* administrator 
+* hostmaster 
+* majordomo 
+* postmaster 
+* root 
+* secure 
+* security 
+* ssl-admin 
+* webmaster 
 
 ## <a name="next-steps"></a>后续步骤
 如需更多 Azure Active Directory PowerShell 文档，可参阅 [Azure Active Directory Cmdlet](/powershell/azure/install-adv2?view=azureadps-2.0)。

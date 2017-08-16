@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/25/2017
-ms.author: bwren
+ms.date: 08/05/2017
+ms.author: magoedte;bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 9502e37df8b0bf72c02edacf8e0bb5b2d7fba237
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 783fb22b0154915f2e3d8574ab95538dbd646705
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
 # <a name="automate-resources-in-your-data-center-or-cloud-with-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心或云端的资源实现自动化
-Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源，因为它们在 Azure 云中运行。  利用 Azure 自动化的混合 Runbook 辅助角色功能，既可以直接对计算机运行 Runbook，也可以在其外部对环境中的资源运行 Runbook，从而管理这些本地资源。 Runbook 在 Azure 自动化中进行存储和管理，然后发送到一个或多个指定计算机。  
+Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源，因为它们在 Azure 云中运行。  利用 Azure 自动化的混合 Runbook 辅助角色功能，既可以直接在托管角色的计算机上运行 Runbook，也可以对环境中的资源运行 Runbook，从而管理这些本地资源。 Runbook 在 Azure 自动化中进行存储和管理，然后发送到一个或多个指定计算机。  
 
 下图说明了此功能：<br>  
 
@@ -48,9 +48,9 @@ Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源�
 * System Center 随附了 SMA；因此，需要 System Center 2012 R2 的许可证。 Azure 自动化基于分层订阅模型。
 * Azure 自动化包含 SMA 所不能提供的一些高级功能，例如图形 Runbook。
 
-## <a name="installing-hybrid-runbook-worker"></a>安装混合 Runbook 辅助角色
+## <a name="installing-the-windows-hybrid-runbook-worker"></a>安装 Windows 混合 Runbook 辅助角色 
 
-若要安装和配置混合 Runbook 辅助角色，可以使用两种方法。  建议的方法是使用自动化 Runbook 来彻底实现配置 Windows 计算机所需的过程的自动化。  第二种方法使用分步过程来手动安装和配置角色。  
+若要安装和配置 Windows 混合 Runbook 辅助角色，可以使用两种方法。  建议的方法是使用自动化 Runbook 来彻底实现配置 Windows 计算机所需的过程的自动化。  第二种方法使用分步过程来手动安装和配置角色。  
 
 > [!NOTE]
 > 为了使用所需状态配置 (DSC) 管理支持混合 Runbook 辅助角色的服务器配置，需将其添加为 DSC 节点。  若要进一步了解如何载入它们以供 DSC 管理，请参阅[载入由 Azure 自动化 DSC 管理的计算机](automation-dsc-onboarding.md)。           
@@ -61,7 +61,7 @@ Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源�
  
 ### <a name="automated-deployment"></a>自动化部署
 
-执行以下步骤，以便自动完成混合辅助角色的安装和配置。  
+执行以下步骤，以便自动完成 Windows 混合辅助角色的安装和配置。  
 
 1. 直接从运行混合 Runbook 辅助角色的计算机或环境中的其他计算机的 [PowerShell 库](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker/1.0/DisplayScript)下载 New-OnPremiseHybridWorker.ps1 脚本，然后将其复制到辅助角色。  
 
@@ -136,41 +136,55 @@ Runbook 可以使用在 Azure 自动化环境中安装的模块中定义的任�
 
 由于混合 Runbook 辅助角色功能的主要用途是管理本地资源，很可能需要安装支持这些资源的模块。  可以参考 [Installing Modules](http://msdn.microsoft.com/library/dd878350.aspx)（安装模块），获取有关安装 Windows PowerShell 模块的信息。  安装的模块必须位于 PSModulePath 环境变量所引用的位置，以便混合辅助角色自动将其导入。  有关详细信息，请参阅 [Modifying the PSModulePath Installation Path](https://msdn.microsoft.com/library/dd878326%28v=vs.85%29.aspx)（修改 PSModulePath 安装路径）。 
 
-## <a name="removing-hybrid-runbook-worker"></a>删除混合 Runbook 辅助角色 
-可以从组中删除一个或多个混合 Runbook 辅助角色，或者根据要求删除该组。  若要从本地计算机删除混合 Runbook 辅助角色，请执行以下步骤。
+## <a name="installing-linux-hybrid-runbook-worker"></a>安装 Linux 混合 Runbook 辅助角色
+在 Linux 上安装和配置混合 Runbook 辅助角色是手动安装和配置角色的一种非常简单的过程。  它需要启用 OMS 工作区中的“自动化混合辅助角色”解决方案，然后运行一组命令将计算机注册为辅助角色，并且将它添加至一个新组或现有的组中。 
 
-1. 在 Azure 门户中，导航到自动化帐户。  
-2. 在“设置”边栏选项卡中，选择“密钥”并记下“URL”和“主访问密钥”字段的值。  下一步需要用到此信息。
-3. 在管理员模式下打开 PowerShell 会话，并运行以下命令 - `Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>`。  可使用 **-Verbose** 开关获取删除过程的详细日志。
+1.  启用 OMS 中的“自动化混合辅助角色”解决方案。 可通过以下任一方式实现：
+
+   1. 从 [OMS 门户](https://mms.microsoft.com)中的解决方案库启用“自动化混合辅助角色”解决方案 
+   2. 运行以下 cmdlet：
+
+        ```$null = Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName  <ResourceGroupName> -WorkspaceName <WorkspaceName> -IntelligencePackName  "AzureAutomation" -Enabled $true
+        ```
+2.  Run the following command with the proper parameters (endpoint and key can be taken from the portal from the automation account linked to the workspace used in the steps above):
+sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <OMSworkspaceId> -k <automationsharedkey> --groupname <hybridgroupname> -e <automationendpoint>
+
+
+## Removing Hybrid Runbook Worker 
+You can remove one or more Hybrid Runbook Workers from a group or you can remove the group, depending on your requirements.  To remove a Hybrid Runbook Worker from an on-premises computer, perform the following steps.
+
+1. In the Azure portal, navigate to your Automation account.  
+2. From the **Settings** blade, select **Keys** and note the values for field **URL** and **Primary Access Key**.  You need this information for the next step.
+3. Open a PowerShell session in Administrator mode and run the following command - `Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>`.  Use the **-Verbose** switch for a detailed log of the removal process.
 
 > [!NOTE]
-> 这不会从计算机中删除 Microsoft 监视代理，而只会删除混合 Runbook 辅助角色的功能和配置。  
+> This does not remove the Microsoft Monitoring Agent from the computer, only the functionality and configuration of the Hybrid Runbook Worker role.  
 
-## <a name="remove-hybrid-worker-groups"></a>删除混合辅助角色组
-若要删除某个组，首先需要使用前面所示的过程，从每台计算机中删除属于该组的混合 Runbook 辅助角色，然后执行以下步骤删除该组。  
+## Remove Hybrid Worker groups
+To remove a group, you first need to remove the Hybrid Runbook Worker from every computer that is a member of the group using the procedure shown earlier, and then you perform the following steps to remove the group.  
 
-1. 在 Azure 门户中打开自动化帐户。
-2. 选择“混合辅助角色组”磁贴，然后在“混合辅助角色组”边栏选项卡中选择要删除的组。  在选择特定的组之后，将显示“混合辅助角色组”属性边栏选项卡。<br> ![混合 Runbook 辅助角色组边栏选项卡](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)   
-3. 在所选组的属性边栏选项卡中，单击“删除”。  此时将显示一条消息请求确认此操作，如果确定要继续，请选择“是”。<br> ![确认删除组对话框](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)<br> 此过程需要几秒钟才能完成，可以在菜单中的“通知”下面跟踪进度。  
+1. Open the Automation account in the Azure portal.
+2. Select the **Hybrid Worker Groups** tile and in the **Hybrid Worker Groups** blade, select the group you wish to delete.  After selecting the specific group, the **Hybrid worker group** properties blade is displayed.<br> ![Hybrid Runbook Worker Group Blade](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)   
+3. On the properties blade for the selected group, click **Delete**.  A message appears asking you to confirm this action, select **Yes** if you are sure you want to proceed.<br> ![Delete Group Confirmation Dialog](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)<br> This process can take several seconds to complete and you can track its progress under **Notifications** from the menu.  
 
-## <a name="troubleshooting"></a>故障排除 
-混合 Runbook 辅助角色依靠 Microsoft Monitoring Agent 与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 如果辅助角色注册失败，以下是一些可能导致此错误的原因：  
+## Troubleshooting 
+The Hybrid Runbook Worker depends on the Microsoft Monitoring Agent to communicate with your Automation account to register the worker, receive runbook jobs, and report status. If  registration of the worker fails, here are some possible causes for the error:  
 
-1. 混合辅助角色在代理或防火墙后面。  
-    确保计算机在端口 443 上对 *.azure-automation.net 有出站访问权限。  
+1. The hybrid worker is behind a proxy or firewall.  
+    Verify the computer has outbound access to *.azure-automation.net on port 443.  
 
-2. 运行混合辅助角色的计算机不满足最低硬件[要求](automation-offering-get-started.md#hybrid-runbook-worker)。  
-    运行混合 Runbook 辅助角色的计算机应满足最低硬件要求，才能指定它托管此功能。 否则，在执行过程中，根据其他后台进程的资源使用率和 runbook 所导致的争用，该计算机将变为过度使用，从而导致 runbook 作业延迟或超时。
-   确认指定为运行混合 Runbook 辅助角色功能的计算机满足最低硬件要求。  如果满足，请监视 CPU 和内存利用率，以确定混合 Runbook 辅助角色进程的性能和 Windows 之间的任何关联。  如果存在内存或 CPU 压力，这可能指示需要升级或添加额外的处理器或增加内存来解决资源瓶颈问题，从而解决此错误。 或者，选择其他可支持最低要求的计算资源，并在工作负荷需求指示需要增加时进行扩展。
+2. The computer the hybrid worker is running on has less than the minimum hardware [requirements](automation-offering-get-started.md#hybrid-runbook-worker).  
+    Computers running the Hybrid Runbook Worker should meet the minimum hardware requirements before designating it to host this feature. Otherwise, depending on the resource utilization of other background processes and contention caused by runbooks during execution, the computer will become over utilized and cause runbook job delays or timeouts.
+    Confirm the computer designated to run the Hybrid Runbook Worker feature meets the minimum hardware requirements.  If it does, monitor CPU and memory utilization to determine any correlation between the performance of Hybrid Runbook Worker processes and Windows.  If there is memory or CPU pressure, this may indicate the need to upgrade or add additional processors, or increase memory to address the resource bottleneck and resolve the error. Alternatively, select a different compute resource that can support the minimum requirements and scale when workload demands indicate an increase is necessary.
     
-3. Microsoft Monitoring Agent 服务未运行。  
-    如果 Microsoft Monitoring Agent Windows 服务未运行，会导致混合 Runbook 辅助角色无法与 Azure 自动化通信。  在 PowerShell 中输入以下命令，验证代理是否正在运行：`get-service healthservice`。  如果该服务已停止，请在 PowerShell 中输入以下命令启动该服务：`start-service healthservice`。  
+3. The Microsoft Monitoring Agent service is not running.  
+    If the Microsoft Monitoring Agent Windows service is not running, this prevents the Hybrid Runbook Worker from communicating with Azure Automation.  Verify the agent is running by entering the following command in PowerShell: `get-service healthservice`.  If the service is stopped, enter the following command in PowerShell to start the service: `start-service healthservice`.  
 
-4. 在 **Application and Services Logs\Operations Manager** 事件日志中，可看到事件 4502、包含 **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** 的事件消息以及下列描述：*服务 <wsid>.oms.opinsights.azure.com 提供的证书不是由 Microsoft 服务使用的证书颁发机构颁发的。请联系网络管理员以查看其是否正在运行截获 TLS/SSL 通信的代理。KB3126513 一文还介绍了关于连接问题的其他故障排除信息。*
-    原因可能是代理或网络防火墙阻止与 Microsoft Azure 通信。  确保计算机在端口 443 上对 *.azure-automation.net 有出站访问权限。
+4. In the **Application and Services Logs\Operations Manager** event log, you see event 4502  and EventMessage containing **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** with the following description:  *The certificate presented by the service <wsid>.oms.opinsights.azure.com was not issued by a certificate authority used for Microsoft services. Please contact your network administrator to see if they are running a proxy that intercepts TLS/SSL communication. The article KB3126513 has additional troubleshooting information for connectivity issues.*
+    This can be caused by your proxy or network firewall blockking communication to Microsoft Azure.  Verify the computer has outbound access to *.azure-automation.net on ports 443.
 
-日志存储在每个混合辅助角色本地的 C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes 中。  可以检查 **Application and Services Logs\Microsoft-SMA\Operations** 和 **Application and Services Logs\Operations Manager** 事件日志中是否写入了任何警告或错误事件，指示出现了影响角色载入 Azure 自动化的连接问题或其他问题，或者在执行正常操作时出现问题。  
+Logs are stored locally on each hybrid worker at C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes.  You can check if there are any warning or error events written to the **Application and Services Logs\Microsoft-SMA\Operations** and **Application and Services Logs\Operations Manager** event log that would indicate a connectivity or other issue affecting onboarding of the role to Azure Automation or issue while performing normal operations.  
 
-## <a name="next-steps"></a>后续步骤
-查看[在混合 Runbook 辅助角色上运行 Runbook](automation-hrw-run-runbooks.md)，了解如何配置 Runbook，使本地数据中心或其他云环境中的过程实现自动化。
+## Next steps
+Review [run runbooks on a Hybrid Runbook Worker](automation-hrw-run-runbooks.md) to learn how to configure your runbooks to automate processes in your on-premises datacenter or other cloud environment.
 

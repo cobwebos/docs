@@ -15,22 +15,21 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 06/14/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 458459e9bed5ebee6188b5f282e66df1e2a988a8
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 8ff39e31d790b9d7040ec0398a42fb104890915f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="create-an-azure-analysis-services-server-in-azure-portal"></a>在 Azure 门户中创建 Azure Analysis Services 服务器
 本文指导如何在 Azure 订阅中创建 Analysis Services 服务器资源。
 
 ## <a name="before-you-begin"></a>开始之前
-若要开始，您需要：
+若要完成本快速入门教程，需要：
 
 * **Azure 订阅**：访问 [Azure 免费试用版](https://azure.microsoft.com/offers/ms-azr-0044p/)以创建帐户。
-* **Azure Active Directory**：订阅必须与 Azure Active Directory 租户相关联。 并且，需要使用 Azure Active Directory 中的一个帐户登录 Azure。 不支持 Microsoft 帐户。 若要了解详细信息，请参阅[用户身份验证](analysis-services-overview.md#secure)。
+* **Azure Active Directory**：订阅必须与 Azure Active Directory 租户相关联。 并且，需要使用 Azure Active Directory 中的一个帐户登录 Azure。 不支持 Microsoft 帐户。 若要了解详细信息，请参阅[身份验证和用户权限](analysis-services-manage-users.md)。
 * **资源组**：使用已有资源组，或[创建新组](../azure-resource-manager/resource-group-overview.md)。
 
 > [!NOTE]
@@ -41,7 +40,7 @@ ms.lasthandoff: 06/17/2017
 ## <a name="to-create-a-server-in-azure-portal"></a>在 Azure 门户中创建服务器
 1. 登录到 [Azure 门户](https://portal.azure.com)。  
 2. 单击“+ 新建” > “数据 + 分析” > “Analysis Services”。
-3. 在“Analysis Services”边栏选项卡中，填写必填字段，然后按“创建”。
+3. 在“Analysis Services”边栏选项卡中，填写必填字段，并按“创建”。
    
     ![创建服务器](./media/analysis-services-create-server/aas-create-server-blade.png)
    

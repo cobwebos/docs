@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: robinsh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 06c126f7fde27d17ceab5897fc6439a2513ed362
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 9e5eed35334f1b95441b8181c8e90645be78b389
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
@@ -106,7 +105,7 @@ ms.lasthandoff: 06/30/2017
 
 **是否可以创建托管磁盘副本？**
 
-客户可以生成托管磁盘的快照，然后使用快照创建另一个托管磁盘。
+客户可以生成托管磁盘的快照，并使用快照创建另一个托管磁盘。
 
 **是否仍支持非托管磁盘？**
 
@@ -168,7 +167,7 @@ Microsoft 管理加密密钥。
 
 **是否可以将 VM 的位于存储帐户且现在或以前已加密的非托管磁盘转换为托管磁盘？**
 
-否。 尚不支持此功能。 预计将于 7 月底推出。 
+是
 
 **是否同时会加密从托管磁盘或快照导出的 VHD？**
 

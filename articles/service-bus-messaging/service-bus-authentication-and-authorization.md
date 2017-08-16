@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2017
+ms.date: 08/09/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 5ed7558cfff9991734e909e06e8bac9181131381
+ms.translationtype: HT
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 28fb41499c919e5006f1be7daa97610c2a0583af
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="service-bus-authentication-and-authorization"></a>服务总线身份验证和授权
 
-可通过两种方式向 Azure 服务总线验证应用程序，即使用共享访问签名 (SAS) 身份验证，或通过 Azure Active Directory 访问控制（也称为访问控制服务或 ACS）进行身份验证。 通过共享访问签名身份验证，应用程序能够使用在命名空间或在关联了特定权限的实体上配置的访问密钥向服务总线进行身份验证。 然后可以使用此密钥生成共享访问签名令牌，客户端可用它向服务总线进行身份验证。
+应用程序可以使用共享访问签名 (SAS) 身份验证对 Azure 服务总线进行身份验证。 通过共享访问签名身份验证，应用程序能够使用在命名空间或在关联了特定权限的实体上配置的访问密钥向服务总线进行身份验证。 然后可以使用此密钥生成共享访问签名令牌，客户端可用它向服务总线进行身份验证。
 
 > [!IMPORTANT]
-> 建议使用 SAS 而不是 ACS，因为它为服务总线提供了一种简单、灵活且易于使用的身份验证方案。 当应用程序不需要管理授权“用户”这一概念时，可以使用 SAS。 
+> 应使用 SAS 而非 Azure Active Directory 访问控制（又被称为访问控制服务或 ACS），因为 ACS 将被弃用。 SAS 为服务总线提供了一种简单、灵活且易于使用的身份验证方案。 当应用程序不需要管理授权“用户”这一概念时，可以使用 SAS。 有关详细信息，请参阅[此博客文章](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/)。
 
 ## <a name="shared-access-signature-authentication"></a>共享访问签名身份验证
+
 通过 [SAS 身份验证](service-bus-sas.md)可向具有特定权限的用户授予对服务总线资源的访问权限。 服务总线中的 SAS 身份验证涉及配置具有服务总线资源相关权限的加密密钥。 客户端随后即可通过提供 SAS 令牌获取该资源的访问权限，该令牌由要访问的资源 URI 和签有已配置密钥的过期时间组成。
 
 可以在服务总线命名空间上配置用于 SAS 的密钥。 该密钥将应用到该命名空间中的所有消息传送实体。 可在服务总线队列和主题上配置密钥。 [Azure 中继](../service-bus-relay/relay-authentication-and-authorization.md)也支持 SAS。
@@ -47,31 +47,10 @@ ms.lasthandoff: 06/28/2017
 
 Azure.NET SDK 2.0 版和更高版本支持服务总线的 SAS 身份验证。 SAS 支持 [SharedAccessAuthorizationRule](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)。 允许将连接字符串作为参数的所有 API 都支持 SAS 连接字符串。
 
-## <a name="acs-authentication"></a>ACS 身份验证
-使用 ACS 的服务总线身份验证通过随附的“-sb”ACS 命名空间进行管理。 如果要为服务总线命名空间创建随附 ACS 命名空间，则不能使用 Azure 经典门户创建服务总线命名空间，而必须使用 [New-AzureSBNamespace](/powershell/module/azure/new-azuresbnamespace?view=azuresmps-3.7.0) PowerShell cmdlet 来创建命名空间。 例如：
-
-```powershell
-New-AzureSBNamespace <namespaceName> "<Region>” -CreateACSNamespace $true
-```
-
-若要避免创建 ACS 命名空间，请发出以下命令：
-
-```powershell
-New-AzureSBNamespace <namespaceName> "<Region>” -CreateACSNamespace $false
-```
-
-例如，如果创建名为 **contoso.servicebus.windows.net** 的服务总线命名空间，则将自动预配名为 **contoso-sb.accesscontrol.windows.net** 的随附 ACS 命名空间。 对于在 2014 年 8 月之前创建的所有命名空间，还将创建一个随附的 ACS 命名空间。
-
-默认情况下，此随附 ACS 命名空间中设置了默认服务标识“owner”，具有全部权限。 使用 ACS，可以通过配置相应信任关系来获取对任何服务总线实体的精细化控制。 可以配置附加服务标识，用于管理对服务总线实体的访问权限。
-
-客户端通过提供其凭据，从具有相应声明的 ACS 请求 SWT 令牌，从而访问某个实体。 随后必须将 SWT 令牌作为请求的一部分发送到服务总线，以便启用客户端身份验证，从而访问该实体。
-
-Azure.NET SDK 2.0 版和更高版本支持服务总线的 ACS 身份验证。 此身份验证支持 [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider)。 允许将连接字符串作为参数的所有 API 都支持 ACS 连接字符串。
-
 ## <a name="next-steps"></a>后续步骤
 
-有关 SAS 的详细信息，请继续阅读[使用共享访问签名进行服务总线身份验证](service-bus-sas.md)。
-
-有关 Azure 中继身份验证和授权的相关信息，请参阅 [Azure 中继身份验证和授权](../service-bus-relay/relay-authentication-and-authorization.md)。 
+- 有关 SAS 的详细信息，请继续阅读[使用共享访问签名进行服务总线身份验证](service-bus-sas.md)。
+- [更改为启用 ACS 的命名空间。](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/)
+- 有关 Azure 中继身份验证和授权的相关信息，请参阅 [Azure 中继身份验证和授权](../service-bus-relay/relay-authentication-and-authorization.md)。 
 
 

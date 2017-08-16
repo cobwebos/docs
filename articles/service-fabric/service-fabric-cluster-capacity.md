@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/24/2017
 ms.author: chackdan
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 9d5a4bef0c22f637a35390c6a8a245967fb02118
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 270d79944465176d3df467f7145ff82594302c3d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 群集容量规划注意事项
@@ -96,7 +96,7 @@ ms.lasthandoff: 07/25/2017
 ### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>适用于已设置为“白银”或“黄金”耐久性级别的节点类型的操作建议。
 
 1. 使群集和应用程序在任何时间都正常工作，并确保应用程序及时响应所有[服务副本生命周期事件](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle)（例如，生成副本时出现停滞）。
-2. 采用更安全的方式更改 VM SKU（增加/减少）：更改虚拟机规模集的 VM SKU 本质上是一项不安全的操作，因此如有可能，应尽量采用更安全的方式。 可以遵循以下过程来避免常见问题。
+2. 采用更安全的方式更改 VM SKU（增加/减少）：更改虚拟机规模集的 VM SKU 本质上是一项不安全的操作，如有可能，应尽量避免此操作。 可以遵循以下过程来避免常见问题。
     - 对于非主节点类型：建议创建新的虚拟机规模集，修改服务放置约束以包括新的虚拟机规模集/节点类型，然后将旧的虚拟机规模集实例计数降低到 0，一次一个节点（这是为了确保删除节点不会影响群集的可靠性）。
     - 对于主节点类型：建议不要更改主节点类型的 VM SKU。 如果要使用新 SKU 的原因是提高容量，则建议添加更多实例，或在可能的情况下创建新群集。 如果别无选择，请对虚拟机规模集模型定义进行修改以反映新 SKU。 如果群集只有一个节点类型，请确保所有有状态应用程序及时响应所有[服务副本生命周期事件](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle)（例如，在生成副本时出现停滞），并且重新生成服务副本的持续时间小于 5 分钟（适用于“白银”持续性级别）。 
 3. 为已启用 MR 的任何虚拟机规模集至少保留五个节点

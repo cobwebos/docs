@@ -1,6 +1,6 @@
 ---
-title: "Java HBase 应用程序 - Azure HDInsight | Microsoft Docs"
-description: "了解如何使用 Apache Maven 构建基于 Java 的 Apache HBase 应用程序，然后将其部署到 Azure HDInsight 上的 HBase。"
+title: "Java HBase 客户端 - Azure HDInsight | Microsoft Docs"
+description: "了解如何使用 Apache Maven 构建基于 Java 的 Apache HBase 应用程序，并将其部署到 Azure HDInsight 上的 HBase。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,20 +13,23 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2017
+ms.date: 08/07/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 9cf2a997e3016995b0dbb0e0adf9f388f70c2599
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: d6ef6c988533f27338a61a587b3ce5174d8fa806
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>构建适用于 Apache HBase 的 Java 应用程序
 
-了解如何使用 Java 创建 [Apache HBase](http://hbase.apache.org/) 应用程序。 然后，将该应用程序用于 Azure HDInsight 上的 HBase。
+了解如何使用 Java 创建 [Apache HBase](http://hbase.apache.org/) 应用程序。 然后，将该应用程序与 HBase on Azure HDInsight 配合使用。
 
 本文档中的步骤使用 [Maven](http://maven.apache.org/) 创建和构建项目。 Maven 是一种软件项目管理和综合工具，可用于为 Java 项目构建软件、文档和报告。
+
+> [!NOTE]
+> 本文档中的步骤最近通过 HDInsight 3.6 进行了测试。
 
 > [!IMPORTANT]
 > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
@@ -36,7 +39,7 @@ ms.lasthandoff: 07/08/2017
 * [Java 平台 JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 8 或更高版本。
 
     > [!NOTE]
-    > HDInsight 3.5 需要 Java 8。 早期版本的 HDInsight 需要 Java 7。
+    > HDInsight 3.5 及更高版本要求 Java 8。 早期版本的 HDInsight 需要 Java 7。
 
 * [Maven](http://maven.apache.org/)
 
@@ -47,7 +50,7 @@ ms.lasthandoff: 07/08/2017
 
 ## <a name="create-the-project"></a>创建项目
 
-1. 在开发环境中，通过命令行将目录更改为要创建项目的位置，例如 `cd code/hdinsight`。
+1. 在开发环境中，通过命令行将目录更改为要创建项目的位置，例如 `cd code\hbase`。
 
 2. 使用随同 Maven 一起安装的 **mvn** 命令，为项目生成基架。
 
@@ -55,10 +58,15 @@ ms.lasthandoff: 07/08/2017
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
+    > [!NOTE]
+    > 如果使用 PowerShell，必须将 `-D` 参数用双引号引起来。
+    >
+    > `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=hbaseapp" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`
+
     此命令使用与 **artifactID** 参数相同的名称（此示例中为 **hbaseapp**）创建目录。此目录包含以下项：
 
    * **pom.xml**：项目对象模型 ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html))，其中包含用于生成项目的信息和配置详细信息。
-   * **src**：包含 **main/java/com/microsoft/examples** 目录的目录，用户将在其中创作应用程序。
+   * **src**：包含 **main/java/com/microsoft/examples** 目录的目录，用户会在其中创作应用程序。
 
 3. 删除 `src/test/java/com/microsoft/examples/apptest.java` 文件。 此示例不使用该文件。
 
@@ -87,7 +95,7 @@ ms.lasthandoff: 07/08/2017
    | HDInsight 群集版本 | 要使用的 HBase 版本 |
    | --- | --- |
    | 3.2 |0.98.4-hadoop2 |
-   | 3.3、3.4 和 3.5 |1.1.2 |
+   | 3.3、3.4、3.5 和 3.6 |1.1.2 |
 
     有关 HDInsight 版本和组件的详细信息，请参阅 [HDInsight 提供哪些不同的 Hadoop 组件](hdinsight-component-versioning.md)。
 
@@ -141,7 +149,7 @@ ms.lasthandoff: 07/08/2017
     此部分将配置包含与 HBase 有关的配置信息的资源 (`conf/hbase-site.xml`)。
 
    > [!NOTE]
-   > 你也可以通过代码设置配置值。 请参阅 `CreateTable` 示例中的注释。
+   > 也可以通过代码设置配置值。 请参阅 `CreateTable` 示例中的注释。
 
     此部分还将配置 [Maven 编译器插件](http://maven.apache.org/plugins/maven-compiler-plugin/)和 [Maven 阴影插件](http://maven.apache.org/plugins/maven-shade-plugin/)。 该编译器插件用于编译拓扑。 该阴影插件用于防止在由 Maven 构建的 JAR 程序包中复制许可证。 此插件用于防止 HDInsight 群集在运行时出现“重复的许可证文件”错误。 将 maven-shade-plugin 用于 `ApacheLicenseResourceTransformer` 实现可防止发生此错误。
 
@@ -151,9 +159,11 @@ ms.lasthandoff: 07/08/2017
 
 5. 在 `hbaseapp` 目录中创建一个名为 `conf` 的目录。 此目录用于保存连接到 HBase 所需的配置信息。
 
-6. 使用以下命令将 HBase 配置从 HDInsight 群集复制到 `conf` 目录。 将 `USERNAME` 替换为你的 SSH 登录名。 将 `CLUSTERNAME` 替换为你的 HDInsight 群集名：
+6. 使用以下命令将 HBase 配置从 HDInsight 群集复制到 `conf` 目录。 将 `USERNAME` 替换为 SSH 登录名。 将 `CLUSTERNAME` 替换为 HDInsight 群集名：
 
-        scp USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
+    ```bash
+    scp USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
+    ```
 
    有关使用 `ssh` 和 `scp` 的详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -312,7 +322,7 @@ ms.lasthandoff: 07/08/2017
     }
    ```
 
-    **SearchByEmail** 类可用于按电子邮件地址查询行。 由于它使用正则表达式筛选器，因此，你可以在使用类时提供字符串或正则表达式。
+    **SearchByEmail** 类可用于按电子邮件地址查询行。 由于它使用正则表达式筛选器，因此，可以在使用类时提供字符串或正则表达式。
 
 5. 保存 `SearchByEmail.java` 文件。
 
@@ -364,19 +374,21 @@ ms.lasthandoff: 07/08/2017
 
 以下步骤使用 `scp` 将 JAR 复制到 HBase on HDInsight 群集的主要头节点。 然后使用 `ssh` 命令连接到群集，并直接在头节点上运行示例。
 
-1. 若要将该 jar 上传到群集，请使用以下命令：
+1. 要将该 jar 上传到群集，请使用以下命令：
 
     ```bash
     scp ./target/hbaseapp-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:hbaseapp-1.0-SNAPSHOT.jar
     ```
 
-    将 `USERNAME` 替换为你的 SSH 登录名。 将 `CLUSTERNAME` 替换为你的 HDInsight 群集名。
+    将 `USERNAME` 替换为 SSH 登录名。 将 `CLUSTERNAME` 替换为 HDInsight 群集名。
 
 2. 若要连接到 HBase 群集，请使用以下命令：
 
-        ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```bash
+    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
-    将 `USERNAME` 替换为你的 SSH 登录名。 将 `CLUSTERNAME` 替换为你的 HDInsight 群集名。
+    将 `USERNAME` 替换为 SSH 登录名。 将 `CLUSTERNAME` 替换为 HDInsight 群集名。
 
 3. 若要使用 Java 应用程序创建 HBase 表，请使用以下命令：
 
@@ -400,6 +412,10 @@ ms.lasthandoff: 07/08/2017
         Rae Schroeder - rae@contoso.com - ID: 4
         Gabriela Ingram - ID: 6
         Gabriela Ingram - gabriela@contoso.com - ID: 6
+
+5. 若要删除表，请使用以下命令：
+
+    
 
 ## <a name="upload-the-jar-and-run-jobs-powershell"></a>上传 JAR 并运行作业 (PowerShell)
 
@@ -611,7 +627,7 @@ ms.lasthandoff: 07/08/2017
 
 2. 保存 `hbase-runner.psm1` 文件。
 
-3. 打开一个新的 Azure PowerShell 窗口，将目录切换到 `hbaseapp` 目录，然后运行以下命令：
+3. 打开一个新的 Azure PowerShell 窗口，将目录切换到 `hbaseapp` 目录，并运行以下命令：
 
     ```powershell
     PS C:\ Import-Module c:\path\to\hbase-runner.psm1
@@ -619,13 +635,13 @@ ms.lasthandoff: 07/08/2017
 
     将路径切换到前面创建的 `hbase-runner.psm1` 文件所在的位置。 此命令使用 Azure PowerShell 来注册模块。
 
-4. 使用以下命令将 `hbaseapp-1.0-SNAPSHOT.jar` 上传到你的群集。
+4. 使用以下命令将 `hbaseapp-1.0-SNAPSHOT.jar` 上传到群集。
 
     ```powershell
     Add-HDInsightFile -localPath target\hbaseapp-1.0-SNAPSHOT.jar -destinationPath example/jars/hbaseapp-1.0-SNAPSHOT.jar -clusterName hdinsightclustername
     ```
 
-    将 `hdinsightclustername` 替换为你的群集的名称。 此命令将 `hbaseapp-1.0-SNAPSHOT.jar` 上传到群集的主存储中的 `example/jars` 位置。
+    将 `hdinsightclustername` 替换为群集的名称。 此命令将 `hbaseapp-1.0-SNAPSHOT.jar` 上传到群集的主存储中的 `example/jars` 位置。
 
 5. 若要使用 `hbaseapp` 创建表，请使用以下命令：
 
@@ -633,9 +649,9 @@ ms.lasthandoff: 07/08/2017
     Start-HBaseExample -className com.microsoft.examples.CreateTable -clusterName hdinsightclustername
     ```
 
-    将 `hdinsightclustername` 替换为你的群集的名称。
+    将 `hdinsightclustername` 替换为群集的名称。
 
-    此命令将在 HDInsight 群集上的 HBase 中创建一个名为 **people** 的表。 此命令在控制台窗口中不显示任何输出。
+    此命令会在 HDInsight 群集上的 HBase 中创建一个名为 **people** 的表。 此命令在控制台窗口中不显示任何输出。
 
 6. 若要在表中搜索条目，请使用以下命令：
 
@@ -643,9 +659,9 @@ ms.lasthandoff: 07/08/2017
     Start-HBaseExample -className com.microsoft.examples.SearchByEmail -clusterName hdinsightclustername -emailRegex contoso.com
     ```
 
-    将 `hdinsightclustername` 替换为你的群集的名称。
+    将 `hdinsightclustername` 替换为群集的名称。
 
-    此命令使用 `SearchByEmail` 类搜索 `contactinformation` 列系列和 `email` 列包含字符串 `contoso.com` 的任何行。 你应该会收到以下结果：
+    此命令使用 `SearchByEmail` 类搜索 `contactinformation` 列系列和 `email` 列包含字符串 `contoso.com` 的任何行。 应该会收到以下结果：
 
           Franklin Holtz - ID: 2
           Franklin Holtz - franklin@contoso.com - ID: 2
@@ -666,7 +682,7 @@ ms.lasthandoff: 07/08/2017
 
 __从 `ssh` 会话__：
 
-`hadoop jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.DeleteTable`
+`yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.DeleteTable`
 
 __从 Azure PowerShell__：
 
