@@ -11,15 +11,15 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/29/2017
 ms.author: cephalin
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: 535a7dbe24a1badc8539b61d34c09bdeda41ad40
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/25/2017
-
 
 ---
 # <a name="add-custom-domain-and-ssl-to-an-azure-web-app"></a>向 Azure Web 应用中添加自定义域和 SSL

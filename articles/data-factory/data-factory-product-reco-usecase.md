@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/24/2017
+ms.date: 08/14/2017
 ms.author: shlo
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -20,23 +20,16 @@ ms.openlocfilehash: deda1cc7be197fc3d59b71038224dc6e8089267b
 ms.contentlocale: zh-cn
 ms.lasthandoff: 11/17/2016
 
-
 ---
-<a id="use-case---product-recommendations" class="xliff"></a>
-
-# 使用案例 - 产品建议
+# <a name="use-case---product-recommendations"></a>使用案例 - 产品建议
 Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence 套件的许多服务之一。  有关此套件的详细信息，请参阅 [Cortana Intelligence 套件](http://www.microsoft.com/cortanaanalytics) 页面。 在本文档中，我们介绍了 Azure 用户通过使用 Azure 数据工厂和其他 Cortana Intelligence 组件服务已解决和实现的常见用例。
 
-<a id="scenario" class="xliff"></a>
-
-## 方案
+## <a name="scenario"></a>方案
 为了吸引客户购买产品，在线零售商通常会向客户推介他们最有可能感兴趣的产品，从而大大提高购买几率。 为实现此目的，在线零售商需要针对特定用户使用个性化产品建议来自定义用户的在线体验。 这些个性化建议均基于其当前和以往购物行为数据、产品信息、新引入的品牌以及产品和客户分段数据。  另外，他们还可分析所有用户的整体使用行为，并以此为基础提供用户产品建议。
 
 这些零售商的目的是优化用户“单击-销售”转换并获得更高的销售收入。  他们通过根据客户兴趣和行动提供基于行为的全背景式产品建议来实现此转化。 在此使用案例中，我们以希望优化客户购买行为的在线零售商为例。 但这些原则适用于想要通过个性化产品建议吸引客户关注其产品和服务并增强客户购买体验的任何企业。
 
-<a id="challenges" class="xliff"></a>
-
-## 挑战
+## <a name="challenges"></a>挑战
 在线零售商在尝试实现这种类型的使用案例会遇到很多挑战。 
 
 首先，必须从本地和云中的多个数据源提取不同大小和形状数据。 此数据包括产品数据、客户历史行为数据以及用户浏览在线零售网站时的用户数据。 
@@ -47,9 +40,7 @@ Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence �
 
 最后，零售商需要通过跟踪整体追加销售和交叉销售点击转化销售成功率来衡量方法的有效性，并对未来的建议进行相应调整。
 
-<a id="solution-overview" class="xliff"></a>
-
-## 解决方案概述
+## <a name="solution-overview"></a>解决方案概述
 在此示例中，实际 Azure 用户通过使用 Azure 数据工厂和其他 Cortana Intelligence 组件服务解决和实现使用案例，包括 [HDInsight](https://azure.microsoft.com/services/hdinsight/) 和 [Power BI](https://powerbi.microsoft.com/)。
 
 在线零售商在整个工作流中将 Azure Blob 存储、本地 SQL server、Azure SQL DB 和关系数据市场用作其数据存储选项。  Blob 存储包含客户信息、客户行为数据和产品信息数据。 产品信息数据包括产品品牌信息以及以本地方式存储于 SQL 数据仓库中的产品目录。 
@@ -64,9 +55,7 @@ Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence �
 
 最后，个性化的产品建议结果集将转移到关系数据市场中供零售商网站使用。  结果集还可由其他程序直接从 blob 存储进行访问，或移动到其他客户或使用案例的相关存储中。
 
-<a id="benefits" class="xliff"></a>
-
-## 优点
+## <a name="benefits"></a>优点
 通过优化产品建议策略并将其与业务目标对齐，本解决方案可满足在线零售商的商品销售和市场营销目标。 此外，他们还能够以高效、可靠且经济高效的方式优化和管理产品建议工作流。 他们通过本方法可以很方便地根据销售单击转换成功率测量结果更新模型和优化效果。 通过使用 Azure 数据工厂，他们可以摆脱耗时且成本高昂的手动云资源管理，改用按需式云资源管理。 因此，他们可节省时间和资金，并减少解决方案的部署时间。 通过在 Azure 门户可用的直观式数据工厂监视和管理 UI，可以很方便地显示数据沿袭视图和操作服务运行状况并进行相关故障排除。 他们现在可以安排和管理解决方案，以便以可靠方式完成数据并呈现给用户，并且可以自动管理数据和处理依赖项，无需人工操作。
 
 通过提供这种个性化购物体验，在线零售商创造了更具竞争力、更有吸引力的客户体验，因此增加了销售和整体客户满意度。
