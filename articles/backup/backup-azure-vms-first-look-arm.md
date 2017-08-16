@@ -4,7 +4,7 @@ description: "使用恢复服务保管库保护 Azure VM。 使用 Resource Mana
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonm
 editor: 
 keyword: backups; vm backup
 ms.assetid: 45e773d6-c91f-4501-8876-ae57db517cd1
@@ -13,7 +13,7 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 02/15/2017
+ms.date: 08/15/2017
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
@@ -21,7 +21,6 @@ ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
 ms.openlocfilehash: fd923fa711aa0af72e8d81d84fd0adb2e003596a
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/02/2017
-
 
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>将 Azure 虚拟机备份到恢复服务保管库

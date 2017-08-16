@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2017
+ms.date: 08/04/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 4a687e1edbb2c9b3db3079a70162886092ede521
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 72bd39bcf720cf5704274fcdfa0f2b8fc44a77bc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -33,11 +33,11 @@ ms.lasthandoff: 08/01/2017
 
 ### <a name="check-status-of-the-feature-and-authentication-agents"></a>检查功能和身份验证代理的状态
 
-确保租户中的直通身份验证功能仍为“已启用”，身份验证代理的状态显示“活动”，而不是“非活动”。 可以通过转到 [Azure 门户](https://portal.azure.com/)的 **Azure AD Connect** 边栏选项卡来查看此信息。
+确保租户中的直通身份验证功能仍为“已启用”，身份验证代理的状态显示“活动”，而不是“非活动”。 转到 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)上的“Azure AD Connect”边栏选项卡，可以检查状态。
 
-![Azure 门户 - Azure AD Connect 边栏选项卡](./media/active-directory-aadconnect-pass-through-authentication/pta7.png)
+![Azure Active Directory 管理中心 - Azure AD Connect 边栏选项卡](./media/active-directory-aadconnect-pass-through-authentication/pta7.png)
 
-![Azure 门户 -“直通身份验证”边栏选项卡](./media/active-directory-aadconnect-pass-through-authentication/pta11.png)
+![Azure Active Directory 管理中心 - 传递身份验证边栏选项卡](./media/active-directory-aadconnect-pass-through-authentication/pta11.png)
 
 ### <a name="user-facing-sign-in-error-messages"></a>面向用户的登录错误消息
 
@@ -51,13 +51,13 @@ ms.lasthandoff: 08/01/2017
 |AADSTS80005|验证遇到了不可预知的 WebException|暂时性的错误。 重试请求。 如果持续失败，请与 Microsoft 支持人员联系。
 |AADSTS80007|与 Active Directory 通信时出错|检查代理日志以了解更多信息，并验证 Active Directory 是否按预期方式运行。
 
-### <a name="sign-in-failure-reasons-on-the-azure-portal"></a>Azure 门户上的登录失败原因
+### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center"></a>Azure Active Directory 管理中心登录失败原因
 
-通过在 [Azure 门户](https://portal.azure.com/)上查看[登录活动报告](../active-directory-reporting-activity-sign-ins.md)，开始排查用户登录问题。
+通过在 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)上查看[登录活动报表](../active-directory-reporting-activity-sign-ins.md)，开始排查用户登录问题。
 
-![登录报告](./media/active-directory-aadconnect-pass-through-authentication/pta4.png)
+![Azure Active Directory 管理中心 - 登录报表](./media/active-directory-aadconnect-pass-through-authentication/pta4.png)
 
-导航到 [Azure 门户](https://portal.azure.com/)的“Azure Active Directory” -> “登录”，然后单击特定用户的登录活动。 查找“登录错误代码”字段。 使用下表将该字段的值映射到某个失败原因和解决方法：
+导航到 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)的“Azure Active Directory” -> “登录”，然后单击特定用户的登录活动。 查找“登录错误代码”字段。 使用下表将该字段的值映射到某个失败原因和解决方法：
 
 |登录错误代码|登录失败原因|解决方法
 | --- | --- | ---
@@ -97,7 +97,7 @@ ms.lasthandoff: 08/01/2017
 
 如果在租户中启用了直通身份验证，则当尝试卸载 Azure AD Connect 时，会显示以下警告消息：“除非已在其他服务器上安装其他直通身份验证代理，否则用户无法登录到 Azure AD。”
 
-在卸载 Azure AD Connect 之前，确保设置具有[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)，以免影响用户登录。
+在卸载 Azure AD Connect 之前，确保设置具有[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)，以免影响用户登录。
 
 ## <a name="issues-with-enabling-the-feature"></a>启用该功能时的问题
 
@@ -112,6 +112,18 @@ ms.lasthandoff: 08/01/2017
 ### <a name="enabling-the-feature-failed-due-to-token-or-account-authorization-errors"></a>由于令牌或帐户授权错误，启用该功能失败
 
 启用该功能时，确保使用仅限云的全局管理员帐户。 已启用多重身份验证 (MFA) 的全局管理员帐户存在一个已知问题；作为解决方法，请暂时关闭 MFA（只是为了完成操作）。
+
+## <a name="exchange-activesync-configuration-issues"></a>Exchange ActiveSync 配置问题
+
+这些问题是为传递身份验证配置 Exchange ActiveSync 支持时的常见问题。
+
+### <a name="exchange-powershell-issue"></a>Exchange PowerShell 问题
+
+如果在运行 `Set-OrganizationConfig` Exchange PowerShell 命令时发现 错误`Set-OrganizationConfig`“找不到与参数名‘PerTenantSwitchToESTSEnabled’相匹配的参数”，请联系 Microsoft 支持部门。
+
+### <a name="exchange-activesync-not-working"></a>Exchange ActiveSync 不能正常工作
+
+配置需要一段时间才能生效 - 时长取决于环境。 如果此情况持续时间较长，请联系 Microsoft 支持部门。
 
 ## <a name="collecting-pass-through-authentication-agent-logs"></a>收集直通身份验证代理日志
 
@@ -150,4 +162,13 @@ ms.lasthandoff: 08/01/2017
     </Query>
     </QueryList>
 ```
+
+### <a name="performance-monitor-counters"></a>性能监视计数器
+
+监视身份验证代理的另一种方法是跟踪安装有身份验证代理的每个服务器上特定的性能监视计数器。 使用以下全局计数器（# PTA 身份验证#PTA 失败身份验证和 #PTA 成功身份验证）和错误计数器（# PTA 身份验证错误：
+
+![传递身份验证性能监视计数器](./media/active-directory-aadconnect-pass-through-authentication/pta12.png)
+
+>[!IMPORTANT]
+>传递身份验证使用多个身份验证代理提供高可用性，但不提供负载均衡。 并非所有身份验证代理都接收大致相等的请求数，这取决于你的配置。 特定的身份验证代理可能收不到任何流量。
 
