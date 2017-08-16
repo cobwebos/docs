@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 08/08/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 8d6b953ae95713dc8b5a4037fa59bec49ea52b85
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 2c796156df6ed2a891d423030bdd07b5c19f3235
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="azure-cosmos-db-net-sdk-download-and-release-notes"></a>Azure Cosmos DB .NET SDK：下载和发行说明
@@ -52,6 +52,13 @@ ms.lasthandoff: 07/25/2017
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name11611161"></a><a name="1.16.1"/>1.16.1
+* 修复了 JsonSerializable 类中可能引起堆栈溢出异常的问题。
+
+### <a name="a-name11601160"></a><a name="1.16.0"/>1.16.0
+*   修复了在因在 DocumentClient 构造函数中引入 JsonSerializerSettings 作为可选参数而需要重新编译的问题。
+* 将 DocumentClient 构造函数标记为已过时，需要 JsonSerializerSettings 作为最后一个参数，以在传入 JsonSerializerSettings 参数时允许 ConnectionPolicy 和 ConsistencyLevel 参数的默认值。
 
 ### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
 *   现已开始支持在实例化 [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet) 时指定自定义 JsonSerializerSettings。
@@ -247,6 +254,8 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.16.1](#1.16.1) |2017 年 8 月 7 日 |--- |
+| [1.16.0](#1.16.0) |2017 年 8 月 2 日 |--- |
 | [1.15.0](#1.15.0) |2017 年 6 月 30 日 |--- |
 | [1.14.1](#1.14.1) |2017 年 5 月 23 日 |--- |
 | [1.14.0](#1.14.0) |2017 年 5 月 10 日 |--- |
