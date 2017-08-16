@@ -12,24 +12,31 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 02/27/2017
+ms.date: 08/02/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: 791b7a22e5b7edd2e31f6ab01131530a8053ac2b
-ms.lasthandoff: 02/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: a80b207f591bd888d4749287527013c5e554fb6e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>创建可高效列出 Batch 资源的查询
 
-本文介绍如何通过减少使用[批处理 .NET][api_net] 库查询作业、任务和计算节点时该服务返回的数据量，提高 Azure 批处理应用程序的性能。
+本文介绍如何通过减少使用[批处理 .NET][api_net] 库查询作业、任务和计算节点时该服务返回的数据量，提高 Azure Batch 应用程序的性能。
 
 几乎所有批处理应用程序都需执行某类监视操作或其他查询批处理服务的操作（通常按固定的时间间隔）。 例如，若要确定作业中是否还有排队的任务，必须获取作业中每个任务的相关数据。 若要确定池中节点的状态，必须获取池中每个节点的相关数据。 本文介绍如何以最有效方式执行此类查询。
 
+> [!NOTE]
+> Batch 服务为作业中的计数任务这类常见方案提供特殊 API 支持。 可以调用[获取任务计数][ rest_get_task_counts]操作，而不是使用查询列表。 获取任务计数显示正在挂起、运行或已完成的任务数量以及成功或失败的任务数量。 获取任务计数比查询列表更有效。 有关详细信息，请参阅[按状态对作业中的任务进行计数（预览版）](batch-get-task-counts.md)。 
+>
+> 早于 2017-06-01.5.1 版的 Batch 服务不提供“获取任务计数”操作。 如果使用的是该服务的较旧版本，请改用列表查询对作业中的任务计数。
+>
+> 
+
 ## <a name="meet-the-detaillevel"></a>符合 DetailLevel 要求
-在生产型批处理应用程序中，作业、任务和计算节点等实体的数目成千上万。 请求这些资源的相关信息时，可能需要将大量的数据从批处理服务“跨网络”传输到执行每个查询的应用程序。 通过限制查询时返回的项数和信息类型，可以提高查询速度，因此也会提高应用程序的性能。
+在生产型批处理应用程序中，作业、任务和计算节点等实体的数目成千上万。 请求这些资源的相关信息时，可能需要将大量的数据从 Batch 服务“跨网络”传输到执行每个查询的应用程序。 通过限制查询时返回的项数和信息类型，可以提高查询速度，因此也会提高应用程序的性能。
 
 此 [Batch .NET][api_net] API 代码片段列出与作业关联的*每个*任务，以及每个任务的*所有*属性：
 
@@ -66,18 +73,18 @@ IPagedEnumerable<CloudTask> completedTasks =
 ### <a name="filter"></a>筛选器
 filter 字符串是一个表达式，用于减少返回的项数。 例如，只列出作业的运行中任务，或者只列出已做好运行任务准备的计算节点。
 
-* filter 字符串包含一个或多个表达式，其中一个表达式包含属性名称、运算符和值。 能够指定哪些属性取决于你所查询的每个实体类型，每个属性所支持的运算符也是这样。
+* filter 字符串包含一个或多个表达式，其中一个表达式包含属性名称、运算符和值。 能够指定哪些属性取决于所查询的每个实体类型，每个属性所支持的运算符也是这样。
 * 可以使用逻辑运算符 `and` 和 `or` 将多个表达式组合到一起。
 * 此示例性 filter 字符串仅列出正在运行的“呈现”任务：`(state eq 'running') and startswith(id, 'renderTask')`。
 
 ### <a name="select"></a>选择
-select 字符串用于限制为每个项返回的属性值。 你可以指定属性名称的列表，仅在查询结果中返回项目的这些属性值。
+select 字符串用于限制为每个项返回的属性值。 可以指定属性名称的列表，仅在查询结果中返回项目的这些属性值。
 
-* select 字符串包含逗号分隔的属性名称列表。 你可以指定所查询实体类型的任意属性。
+* select 字符串包含逗号分隔的属性名称列表。 可以指定所查询实体类型的任意属性。
 * 此示例性的 select 字符串指定每个任务只应返回三项属性值：`id, state, stateTransitionTime`。
 
 ### <a name="expand"></a>展开
-expand 字符串用于减少获取特定信息所需的 API 调用数。 使用 expand 字符串时，单次 API 调用可以获取每个项目的更多信息。 你不必首先获取实体的列表，然后请求列表中每个项目的信息。你可以使用 expand 字符串通过单次 API 调用获取相同的信息。 API 调用数较少意味着性能较高。
+expand 字符串用于减少获取特定信息所需的 API 调用数。 使用 expand 字符串时，单次 API 调用可以获取每个项目的更多信息。 不必首先获取实体的列表，然后请求列表中每个项目的信息。可以使用 expand 字符串通过单次 API 调用获取相同的信息。 API 调用数较少意味着性能较高。
 
 * 与 select 字符串类似，expand 字符串用于控制是否允许某些数据包括在列表查询结果中。
 * expand 字符串只有在列出作业、作业计划、任务和池中使用时才受支持。 目前仅支持统计信息。
@@ -173,7 +180,7 @@ filter、select 和 expand 字符串中的属性名称*必须*反映其 REST API
 | [CloudTask][net_task] |[获取有关任务的信息][rest_get_task] |
 
 ## <a name="example-construct-a-filter-string"></a>示例：构造 filter 字符串
-针对 [ODATADetailLevel.FilterClause][odata_filter] 构造 filter 字符串时，请查阅上表，在“filter 字符串的映射”下找到与所希望执行的列表操作相对应的 REST API 文档页。 你会在该页第一个多行表中找到可筛选属性及其支持的运算符。 例如，如果希望检索其退出代码不为零的所有任务，则可查看[列出与作业相关联的任务][rest_list_tasks]上的此行，此行指定了相应的属性字符串以及允许的运算符：
+针对 [ODATADetailLevel.FilterClause][odata_filter] 构造 filter 字符串时，请查阅上表，在“filter 字符串的映射”下找到与所希望执行的列表操作相对应的 REST API 文档页。 会在该页第一个多行表中找到可筛选属性及其支持的运算符。 例如，如果希望检索其退出代码不为零的所有任务，则可查看[列出与作业相关联的任务][rest_list_tasks]上的此行，此行指定了相应的属性字符串以及允许的运算符：
 
 | 属性 | 允许的操作 | 类型 |
 |:--- |:--- |:--- |
@@ -184,7 +191,7 @@ filter、select 和 expand 字符串中的属性名称*必须*反映其 REST API
 `(executionInfo/exitCode lt 0) or (executionInfo/exitCode gt 0)`
 
 ## <a name="example-construct-a-select-string"></a>示例：构造 select 字符串
-若要构造 [ODATADetailLevel.SelectClause][odata_select]，请查阅上表，在“select 字符串的映射”下导航到与所列实体类型相对应的 REST API 页。 你会在该页第一个多行表中找到可选择属性及其支持的运算符。 例如，如果希望仅检索列表中每个任务的 ID 和命令行，则可在[获取有关任务的信息][rest_get_task]的相应表中找到这些行：
+若要构造 [ODATADetailLevel.SelectClause][odata_select]，请查阅上表，在“select 字符串的映射”下导航到与所列实体类型相对应的 REST API 页。 会在该页第一个多行表中找到可选择属性及其支持的运算符。 例如，如果希望仅检索列表中每个任务的 ID 和命令行，则可在[获取有关任务的信息][rest_get_task]的相应表中找到这些行：
 
 | 属性 | 类型 | 说明 |
 |:--- |:--- |:--- |
@@ -197,7 +204,7 @@ filter、select 和 expand 字符串中的属性名称*必须*反映其 REST API
 
 ## <a name="code-samples"></a>代码示例
 ### <a name="efficient-list-queries-code-sample"></a>高效列表查询代码示例
-请查看 GitHub 上的 [EfficientListQueries][efficient_query_sample] 示例项目，了解列表查询如何有效地影响应用程序的性能。 此 C# 控制台应用程序创建大量的任务并将其添加到作业。 然后，它多次调用 [JobOperations.ListTasks][net_list_tasks] 方法，并传递配置了不同属性值的 [ODATADetailLevel][odata] 对象，以改变要返回的数据量。 生成的输出如下所示：
+请查看 GitHub 上的 [EfficientListQueries][efficient_query_sample] 示例项目，了解列表查询如何有效地影响应用程序的性能。 此 C# 控制台应用程序创建大量的任务并将其添加到作业。 然后，它对 [JobOperations.ListTasks][net_list_tasks] 方法进行多次调用，并传递配置了不同属性值的 [ODATADetailLevel][odata] 对象，以改变要返回的数据量。 生成的输出如下所示：
 
 ```
 Adding 5000 tasks to job jobEffQuery...
@@ -216,7 +223,7 @@ Sample complete, hit ENTER to continue...
 如所用时间中所示，限制返回的属性和项数可以大大缩短查询响应时间。 可以在 GitHub 的 [azure-batch-samples][github_samples] 存储库中查找此项目和其他示例项目。
 
 ### <a name="batchmetrics-library-and-code-sample"></a>BatchMetrics 库和代码示例
-除了上述 EfficientListQueries 代码示例，还可在 [azure-batch-samples][github_samples] GitHub 存储库中找到 [BatchMetrics][batch_metrics] 项目。 BatchMetrics 示例项目演示了如何使用批处理 API 有效地监视 Azure 批处理作业进度。
+除了上述 EfficientListQueries 代码示例，还可在 [azure-batch-samples][github_samples] GitHub 存储库中找到 [BatchMetrics][batch_metrics] 项目。 BatchMetrics 示例项目演示了如何使用批处理 API 有效地监视 Azure Batch 作业进度。
 
 [BatchMetrics][batch_metrics] 示例包括一个可以合并到用户自己的项目中的 .NET 类库项目，以及一个简单的命令行程序，可用于练习和演示库的使用。
 
@@ -239,10 +246,10 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 
 ## <a name="next-steps"></a>后续步骤
 ### <a name="parallel-node-tasks"></a>并行节点任务
-[通过并发节点任务最大限度提高 Azure 批处理计算资源的使用率](batch-parallel-node-tasks.md)是另一篇与批处理应用程序性能相关的文章。 在数量较少但规模更大的计算节点上执行并行任务适合某些类型的工作负荷。 若需详细了解此类方案，请查看文章中的[示例方案](batch-parallel-node-tasks.md#example-scenario)。
+[通过并发节点任务最大限度提高 Azure Batch 计算资源的使用率](batch-parallel-node-tasks.md)是另一篇与批处理应用程序性能相关的文章。 在数量较少但规模更大的计算节点上执行并行任务适合某些类型的工作负荷。 若需详细了解此类方案，请查看文章中的[示例方案](batch-parallel-node-tasks.md#example-scenario)。
 
 ### <a name="batch-forum"></a>Batch 论坛
-MSDN 上的 [Azure 批处理论坛][forum]是探讨 Batch 服务以及咨询相关问题的一个好去处。 欢迎前往浏览这些帮忙解决“棘手问题”的贴子，并发布你在构建 Batch 解决方案时遇到的问题。
+MSDN 上的 [Azure Batch 论坛][forum]是探讨 Batch 服务以及咨询相关问题的一个好去处。 欢迎前往浏览这些帮忙解决“棘手问题”的贴子，并发布在构建 Batch 解决方案时遇到的问题。
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
@@ -293,3 +300,4 @@ MSDN 上的 [Azure 批处理论坛][forum]是探讨 Batch 服务以及咨询相�
 [net_schedule]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjobschedule.aspx
 [net_task]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
 
+[rest_get_task_counts]: https://docs.microsoft.com/rest/api/batchservice/get-the-task-counts-for-a-job

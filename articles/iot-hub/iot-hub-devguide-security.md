@@ -12,23 +12,20 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2017
+ms.date: 08/08/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 6287fa716c708cf35a5d124756c488929a93b435
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: e4fe5400ffcf4446392015aada031dd4dfbf238a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="control-access-to-iot-hub"></a>控制对 IoT 中心的访问
 
-## <a name="overview"></a>概述
-
 本文介绍用于保护 IoT 中心的选项。 IoT 中心使用*权限*向每个 IoT 中心终结点授予访问权限。 权限可根据功能限制对 IoT 中心的访问。
 
-本文将介绍：
+本文介绍：
 
 * 可以向要访问 IoT 中心的设备或后端应用授予的不同权限。
 * 身份验证过程以及它用于验证权限的令牌。
@@ -117,15 +114,18 @@ HTTP 通过在 **Authorization** 请求标头中包含有效的令牌来实施�
 
 ## <a name="security-tokens"></a>安全令牌
 
-IoT 中心使用安全令牌对设备和服务进行身份验证，以避免在线发送密钥。 并且安全令牌的有效期和范围有限。 [Azure IoT SDK][lnk-sdks] 无需任何特殊配置即可自动生成令牌。 但在某些情况下，需要用户生成并直接使用安全令牌。 这些情况包括 MQTT、AMQP 或 HTTP 应用层协议的直接使用，以及令牌服务模式的实现（如[自定义设备身份验证][lnk-custom-auth]中所述）。
+IoT 中心使用安全令牌对设备和服务进行身份验证，以避免在线发送密钥。 并且安全令牌的有效期和范围有限。 [Azure IoT SDK][lnk-sdks] 无需任何特殊配置即可自动生成令牌。 在某些情况下，确实需要用户生成并直接使用安全令牌。 这些情况包括：
 
-IoT 中心还允许设备使用 [X.509 证书][lnk-x509]向 IoT 中心进行身份验证。 
+* MQTT、AMQP 或 HTTP 曲面的直接使用。
+* 令牌服务模式的实现，如[自定义设备身份验证][lnk-custom-auth]中所述。
+
+IoT 中心还允许设备使用 [X.509 证书][lnk-x509]向 IoT 中心进行身份验证。
 
 ### <a name="security-token-structure"></a>安全令牌结构
 
-可以使用安全令牌向设备和服务授予限时访问 IoT 中心特定功能的权限。 若要确保只有经过授权的设备和服务能够连接，安全令牌必须使用共享访问密钥或对称密钥进行签名。 这些密钥与设备标识一起存储在标识注册表中。
+可以使用安全令牌向设备和服务授予限时访问 IoT 中心特定功能的权限。 若要获取授权连接到 IoT 中心，设备和服务必须发送使用共享访问或对称密钥进行签名的安全令牌。 这些密钥与设备标识一起存储在标识注册表中。
 
-使用共享访问密钥进行签名的令牌可以授权访问与共享访问策略权限相关的所有功能。 另一方面，使用设备标识的对称密钥进行签名的令牌只能向相关设备标识授予 **DeviceConnect** 权限。
+使用共享访问密钥进行签名的令牌可以授权访问与共享访问策略权限相关的所有功能。 使用设备标识的对称密钥进行签名的令牌只能向相关设备标识授予 DeviceConnect 权限。
 
 安全令牌采用以下格式：
 
@@ -242,7 +242,7 @@ var token = generateSasToken(endpoint, deviceKey, null, 60);
 
 ### <a name="use-a-shared-access-policy"></a>使用共享访问策略
 
-使用共享访问策略创建令牌时，必须将策略名称字段 `skn` 设置为所使用的策略的名称。 并且要求策略授予 **DeviceConnect** 权限。
+使用共享访问策略创建令牌时，将 `skn` 字段设置为策略名称。 此策略必须授予 DeviceConnect 权限。
 
 使用共享访问策略访问设备功能的两个主要方案是：
 
@@ -312,7 +312,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 * **现有的 X.509 证书**。 设备可能已有与之关联的 X.509 证书。 设备可以使用此证书向 IoT 中心进行身份验证。
 * **自行生成和自签名的 X-509 证书**。 设备制造商或内部部署人员可以生成这些证书，并将相应的私钥（和证书）存储在设备上。 可以将工具（如 [OpenSSL][lnk-openssl] 和 [Windows SelfSignedCertificate][lnk-selfsigned] 实用程序）用于此目的。
-* **CA 签名的 X.509 证书**。 还可以使用证书颁发机构 (CA) 生成和签名的的 X.509 证书来识别设备并通过 IoT 中心对设备进行身份验证。 IoTHub 仅验证提供的指纹是否与配置的指纹匹配。 IotHub 不会验证证书链。
+* **CA 签名的 X.509 证书**。 若要识别设备并通过 IoT 中心对其进行身份验证，可使用由证书颁发机构 (CA) 生成和签名的 X.509 证书。 IoT 中心仅验证提供的指纹是否与配置的指纹匹配。 IotHub 不会验证证书链。
 
 设备可以使用 X.509 证书或安全令牌进行身份验证，但不能同时使用这两者。
 
@@ -350,7 +350,7 @@ await registryManager.AddDeviceAsync(device);
 
 ### <a name="c-support"></a>C\# 支持
 
-类 **DeviceAuthenticationWithX509Certificate** 支持使用 X.509 证书创建  **DeviceClient** 实例。 X.509 证书必须采用 PFX（也称为 PKCS #12）格式，其中包含私钥。
+类 **DeviceAuthenticationWithX509Certificate** 支持使用 X.509 证书创建 **DeviceClient** 实例。 X.509 证书必须采用 PFX（也称为 PKCS #12）格式，其中包含私钥。
 
 下面是示例代码片段：
 
@@ -362,7 +362,7 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 
 ## <a name="custom-device-authentication"></a>自定义设备身份验证
 
-可以使用 IoT 中心[标识注册表][lnk-identity-registry]，通过[令牌][lnk-sas-tokens]配置每个设备的安全凭据和访问控制。 如果 IoT 解决方案已经大幅投资自定义标识注册表和/或身份验证方案，可以通过创建*令牌服务*，将此现有基础结构与 IoT 中心集成。 这样，便可以在解决方案中使用其他 IoT 功能。
+可以使用 IoT 中心[标识注册表][lnk-identity-registry]，通过[令牌][lnk-sas-tokens]配置每个设备的安全凭据和访问控制。 如果 IoT 解决方案已经具有自定义标识注册表和/或身份验证方案，可考虑通过创建“令牌服务”，将此基础结构与 IoT 中心集成。 这样，便可以在解决方案中使用其他 IoT 功能。
 
 令牌服务是自定义云服务。 它使用包含 **DeviceConnect** 权限的 IoT 中心*共享访问策略* 创建*设备范围的* 令牌。 这些令牌可让设备连接到 IoT 中心。
 
@@ -380,11 +380,11 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 
 令牌服务可以根据需要设置令牌过期日期。 令牌过期时，IoT 中心将断开设备连接。 然后，设备必须向令牌服务请求新令牌。 到期时间过短会增加设备和令牌服务上的负载。
 
-为了让设备连接到中心，仍必须将它添加到 IoT 中心标识注册表，即使设备使用令牌而不是设备密钥来连接。 因此，可以在设备使用令牌身份验证时，通过在 [IoT 中心识别注册表][lnk-identity-registry]中启用或禁用设备标识，来继续使用基于设备的访问控制。 此方法可减轻使用较长到期时间令牌的风险。
+为了让设备连接到中心，仍必须将它添加到 IoT 中心标识注册表，即使设备使用令牌而不是设备密钥来连接。 因此，可通过在[识别注册表][lnk-identity-registry]中启用或禁用设备标识，来继续使用基于设备的访问控制。 此方法可减轻使用较长到期时间令牌的风险。
 
 ### <a name="comparison-with-a-custom-gateway"></a>与自定义网关的比较
 
-令牌服务模式是使用 IoT 中心实现自定义标识注册表/身份验证方案的建议方式。 提供这种建议是因为 IoT 中心继续处理大部分解决方案流量。 但在某些情况下，自定义身份验证方案和协议过度交织，因此需要可处理所有流量（*自定义网关*）的服务。 使用[传输层安全 (TLS) 和预共享密钥 (PSK)][lnk-tls-psk] 就是这种情况的例子。 有关详细信息，请参阅[协议网关][lnk-protocols]主题。
+令牌服务模式是使用 IoT 中心实现自定义标识注册表/身份验证方案的建议方式。 建议使用这种模式是因为 IoT 中心继续处理大部分解决方案流量。 但是，如果自定义身份验证方案与协议过度交织，可能需要自定义网关来处理所有流量。 使用[传输层安全 (TLS) 和预共享密钥 (PSK)][lnk-tls-psk] 就是这种情况的例子。 有关详细信息，请参阅[协议网关][lnk-protocols]主题。
 
 ## <a name="reference-topics"></a>参考主题：
 
@@ -406,20 +406,20 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 IoT 中心开发人员指南中的其他参考主题包括：
 
 * [IoT 中心终结点][lnk-endpoints]，介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
-* [限制和配额][lnk-quotas]介绍了适用于 IoT 中心服务的配额，以及使用服务时预期会碰到的限制行为。
+* [限制和配额][lnk-quotas]介绍了适用于 IoT 中心服务的配额和限制行为。
 * [Azure IoT 设备和服务 SDK][lnk-sdks] 列出了开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
-* [设备孪生、作业和消息路由的 IoT 中心查询语言][lnk-query]一文介绍了可用于从 IoT 中心检索设备孪生和作业相关信息的 IoT 中心查询语言。
+* [IoT 中心查询语言][lnk-query]介绍了可用来从 IoT 中心检索设备克隆和作业相关信息的查询语言。
 * [IoT 中心 MQTT 支持][lnk-devguide-mqtt]提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 
-现已了解如何控制对 IoT 中心的访问，你可能有兴趣了解以下 IoT 中心开发人员指南主题：
+现已了解如何控制对 IoT 中心的访问，可能有兴趣了解以下 IoT 中心开发人员指南主题：
 
 * [使用设备孪生来同步状态和配置][lnk-devguide-device-twins]
 * [在设备上调用直接方法][lnk-devguide-directmethods]
 * [在多台设备上安排作业][lnk-devguide-jobs]
 
-如果要尝试本文中介绍的一些概念，你可能对以下 IoT 中心教程感兴趣：
+如果要尝试本文中介绍的一些概念，可能对以下 IoT 中心教程感兴趣：
 
 * [Azure IoT 中心入门][lnk-getstarted-tutorial]
 * [如何使用 IoT 中心发送从云到设备的消息][lnk-c2d-tutorial]

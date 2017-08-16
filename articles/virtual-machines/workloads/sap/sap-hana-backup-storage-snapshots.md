@@ -13,11 +13,11 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 5d395da0779d84e414341d6d73151fd7e77e3e8e
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: f332b8ac091b75a23489ac27f15ad1fd10d24ec6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -43,13 +43,13 @@ SAP HANA 中提供了一项用于支持创建存储快照的功能。 但是，�
 
 此屏幕截图显示，可以通过 SQL 语句创建 SAP HANA 数据快照。
 
-![然后，该快照将显示在 SAP HANA Studio 的备份目录中](media/sap-hana-backup-storage-snapshots/image012.png)
+![然后，该快照会显示在 SAP HANA Studio 的备份目录中](media/sap-hana-backup-storage-snapshots/image012.png)
 
-然后，该快照将显示在 SAP HANA Studio 的备份目录中。
+然后，该快照会显示在 SAP HANA Studio 的备份目录中。
 
-![在磁盘上，该快照将显示在 SAP HANA 数据目录中](media/sap-hana-backup-storage-snapshots/image013.png)
+![在磁盘上，该快照会显示在 SAP HANA 数据目录中](media/sap-hana-backup-storage-snapshots/image013.png)
 
-在磁盘上，该快照将显示在 SAP HANA 数据目录中。
+在磁盘上，该快照会显示在 SAP HANA 数据目录中。
 
 当 SAP HANA 处于快照准备模式时，在运行存储快照之前，用户还必须保证文件系统一致性。 请参阅相关文章[Azure 虚拟机上的 SAP HANA 备份指南](sap-hana-backup-guide.md)中的_创建存储快照时保持 SAP HANA 数据一致性_。
 
@@ -60,13 +60,13 @@ SAP HANA 中提供了一项用于支持创建存储快照的功能。 但是，�
 
 ## <a name="hana-vm-backup-via-azure-backup-service"></a>通过 Azure 备份服务进行 HANA VM 备份
 
-截止 2016 年 12 月，Azure 备份服务的备份代理不适用于 Linux VM。 若要利用文件/目录级别的 Azure 备份，需将 SAP HANA 备份文件复制到 Windows VM，然后使用备份代理。 否则，只能通过 Azure 备份服务进行完整的 Linux VM 备份。 有关详细信息，请参阅 [Azure 备份中的功能概述](../../../backup/backup-introduction-to-azure-backup.md)。
+截止 2016 年 12 月，Azure 备份服务的备份代理不适用于 Linux VM。 要利用文件/目录级别的 Azure 备份，需将 SAP HANA 备份文件复制到 Windows VM，然后使用备份代理。 否则，只能通过 Azure 备份服务进行完整的 Linux VM 备份。 有关详细信息，请参阅 [Azure 备份中的功能概述](../../../backup/backup-introduction-to-azure-backup.md)。
 
 Azure 备份服务提供一个选项用于备份和还原 VM。 有关此服务及其工作原理的详细信息，请参阅[在 Azure 中规划 VM 备份基础结构](../../../backup/backup-azure-vms-introduction.md)一文。
 
 根据该文章中的描述，需要注意两个重要事项：
 
-_&quot;对于 Linux 虚拟机，只能执行文件一致性备份，因为 Linux 没有与 VSS 相当的平台。&quot;_
+_&quot;Linux 虚拟机只能使用文件一致性备份，因为 Linux 没有与 VSS 相当的平台。&quot;_
 
 _&quot;应用程序需要对还原的数据实施自身的&quot;修复&quot;机制。&quot;_
 
@@ -74,7 +74,7 @@ _&quot;应用程序需要对还原的数据实施自身的&quot;修复&quot;机�
 
 该文章指出：
 
-_&quot;我们强烈建议在创建存储快照后，尽快确认或丢弃该快照。准备或创建存储快照时，快照相关的数据将被冻结。当快照相关的数据保持冻结状态时，仍可在数据库中进行更改。此类更改不会导致冻结的快照相关数据发生更改。这些更改将写入到数据区域中独立于存储快照的位置。另外，这些更改还会写入到日志中。但是，快照相关数据保持冻结的时间越长，增长的数据量可能越大。&quot;_
+_&quot;强烈建议在创建存储快照后，尽快确认或丢弃该快照。准备或创建存储快照时，快照相关的数据会被冻结。当快照相关的数据保持冻结状态时，仍可在数据库中进行更改。此类更改不会导致冻结的快照相关数据发生更改。这些更改将写入到数据区域中独立于存储快照的位置。另外，这些更改还会写入到日志中。但是，快照相关数据保持冻结的时间越长，增长的数据量可能越大。&quot;_
 
 Azure 备份通过 Azure VM 扩展来处理文件系统一致性。 这些扩展不可单独使用，只能与 Azure 备份服务结合使用。 但无论如何，都必须管理 SAP HANA 快照，以保证应用一致性。
 
@@ -101,11 +101,11 @@ Azure 备份包括两个主要阶段：
 
 ![已创建名为 hana-backup-vault 的 Azure 备份服务](media/sap-hana-backup-storage-snapshots/image016.png)
 
-已创建名为 &quot;hana-backup-vault&quot; 的 Azure 备份服务。 PS 命令 **Get-AzureRmRecoveryServicesVault -Name hana-backup-vault** 检索相应的对象。 然后，使用此对象设置下图所示的备份上下文。
+已创建名为 &quot;hana-backup-vault&quot; 的 Azure 备份服务。PS 命令 **Get-AzureRmRecoveryServicesVault -Name hana-backup-vault** 检索相应的对象。 然后，使用此对象设置下图所示的备份上下文。
 
 ![用户可以检查当前正在进行的备份作业](media/sap-hana-backup-storage-snapshots/image017.png)
 
-设置正确的上下文后，可以检查当前正在进行的备份作业，然后查看其作业详细信息。 子任务列表显示 Azure 备份作业的快照阶段是否已完成：
+设置正确的上下文后，可以检查当前正在进行的备份作业，并查看其作业详细信息。 子任务列表显示 Azure 备份作业的快照阶段是否已完成：
 
 ```
 $ars = Get-AzureRmRecoveryServicesVault -Name hana-backup-vault
@@ -168,6 +168,6 @@ Azure 备份最终会允许备份单个 Azure 虚拟磁盘，以及 VM 内部的
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 虚拟机上的 SAP HANA 备份指南](sap-hana-backup-guide.md)提供了概述和入门信息。
-* [基于文件级别的 SAP HANA 备份](sap-hana-backup-file-level.md)介绍了基于存储快照的备份选项。
+* [文件级别的 SAP HANA 备份](sap-hana-backup-file-level.md)介绍了基于文件的备份选项。
 * 若要了解如何建立高可用性以及针对 Azure 上的 SAP HANA（大型实例）规划灾难恢复，请参阅 [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)。
 

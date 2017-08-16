@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 3/8/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: 03efe81383a6c2fdfe50551355c33dc7af3837e8
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: d93c82b9c2e66c7241ddd579c1be74396174fd65
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="use-azure-file-storage-with-linux"></a>在 Linux 中使用 Azure 文件存储
 [Azure 文件存储](storage-dotnet-how-to-use-files.md)是 Microsoft 推出的易用云文件系统。 可以使用 [Samba 项目](https://www.samba.org/)中的 [cifs-utils 包](https://wiki.samba.org/index.php/LinuxCIFS_utils)在 Linux 分发版中装载 Azure 文件共享。 本文介绍装载 Azure 文件共享的两种方法：使用 `mount` 命令按需装载，以及通过在 `/etc/fstab` 中创建一个条目在启动时装载。
 
 > [!NOTE]  
-> 若要将 Azure 文件共享装载到其被托管时所在的 Azure 区域之外（例如本地或其他 Azure 区域），OS 必须支持 SMB 3.0 的加密功能。 4.11 内核中引入了适用于 Linux 的 SMB 3.0 加密功能。 使用此功能可从本地或不同 Azure 区域装载 Azure 文件共享。 在发布时，此功能已向后移植到 Ubuntu 17.04 和 Ubuntu 16.10。
+> 若要将 Azure 文件共享装载到其被托管时所在的 Azure 区域之外（例如本地或其他 Azure 区域），OS 必须支持 SMB 3.0 的加密功能。 4.11 内核中引入了适用于 Linux 的 SMB 3.0 加密功能。 使用此功能可从本地或不同 Azure 区域装载 Azure 文件共享。 发布时，此功能已向后移植到 Ubuntu 16.04 和更高版本。
 
 
 ## <a name="prerequisities-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package"></a>使用 Linux 和 cifs-utils 包装载 Azure 文件共享的先决条件
@@ -41,7 +41,7 @@ ms.lasthandoff: 07/18/2017
     > [!Note]  
     > 可下载并安装或者编译最新版 cifs-utils 包的任何 Linux 分发版都可用于 Azure 文件存储。
 
-* <a id="install-cifs-utils"></a>**已安装 cifs-utils 包**：可在所选的 Linux 分发版上使用包管理器安装 cifs-utils。 
+* <a id="install-cifs-utils"></a>已安装 cifs-utils 包：可在所选的 Linux 分发版上使用程序包管理器安装 cifs-utils。 
 
     在 **Ubuntu** 和**基于 Debian** 的分发版上，请使用 `apt-get` 包管理器：
 
@@ -68,12 +68,12 @@ ms.lasthandoff: 07/18/2017
 
 * 存储帐户名称：需提供存储帐户的名称才能装载 Azure 文件共享。
 
-* 存储帐户密钥：需提供主要（或辅助）存储帐户密钥才能装载 Azure 文件共享。 目前不支持使用 SAS 密钥进行装载。
+* 存储帐户密钥：需提供主要（或辅助）存储密钥才能装载 Azure 文件共享。 目前不支持使用 SAS 密钥进行装载。
 
 * **确保已打开端口 445**：SMB 通过 TCP 端口 445 通信 - 请查看防火墙是否未阻止 TCP 端口 445 与客户端计算机通信。
 
 ## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>使用 `mount` 按需装载 Azure 文件共享
-1. **[安装适用于 Linux 分发版的 cifs-utils 包](#install-cifs-utils)**。
+1. [安装适用于 Linux 分发版的 cifs-utils 包](#install-cifs-utils)。
 
 2. **为装入点创建一个文件夹**：可在文件系统上的任何位置执行此操作。
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 07/18/2017
 > 使用完 Azure 文件共享后，可以使用 `sudo umount ./mymountpoint` 卸载共享。
 
 ## <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>使用 `/etc/fstab` 为 Azure 文件共享创建持久装入点
-1. **[安装适用于 Linux 分发版的 cifs-utils 包](#install-cifs-utils)**。
+1. [安装适用于 Linux 分发版的 cifs-utils 包](#install-cifs-utils)。
 
 2. **为装入点创建一个文件夹**：可在文件系统上的任何位置执行此操作，但需要记下该文件夹的绝对路径。 以下示例在根目录下创建一个文件夹。
 
@@ -109,9 +109,9 @@ ms.lasthandoff: 07/18/2017
 > 编辑 `/etc/fstab` 后，可以使用 `sudo mount -a` 装载 Azure 文件共享，而无需重启。
 
 ## <a name="feedback"></a>反馈
-Linux 用户，我们希望倾听你的意见！
+Linux 用户，我们希望倾听意见！
 
-针对 Linux 用户组的 Azure 文件存储提供了一个论坛，当你在 Linux 上评估和采用文件存储时，可以在该论坛上共享反馈。 向 [Azure 文件存储 Linux 用户](mailto:azurefileslinuxusers@microsoft.com)发送电子邮件可加入该用户组。
+针对 Linux 用户组的 Azure 文件存储提供了一个论坛，在 Linux 上评估和采用文件存储时，可以在该论坛上共享反馈。 向 [Azure 文件存储 Linux 用户](mailto:azurefileslinuxusers@microsoft.com)发送电子邮件可加入该用户组。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下链接以获取有关 Azure 文件存储的更多信息。

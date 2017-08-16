@@ -11,13 +11,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2017
+ms.date: 08/08/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: 23e2bacbb18385f2fe86f1eedbef366fd1518b1b
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 02227adeb8a9a7463506efa44ddc2977f8aae65a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="create-an-iot-hub-using-the-new-azurermiothub-cmdlet"></a>使用 New-AzureRmIotHub cmdlet 创建 IoT 中心
@@ -29,7 +29,7 @@ ms.lasthandoff: 07/19/2017
 可以使用 Azure PowerShell cmdlet 创建和管理 Azure IoT 中心。 本教程介绍如何使用 PowerShell 创建 IoT 中心。
 
 > [!NOTE]
-> Azure 提供了用于创建和使用资源的两个不同部署模型：[Azure Resource Manager 模型和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。  本文介绍了如何使用 Azure Resource Manager 部署模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍了如何使用 Azure Resource Manager 部署模型。
 
 若要完成本教程，需要以下各项：
 
@@ -37,13 +37,13 @@ ms.lasthandoff: 07/19/2017
 * [Azure PowerShell cmdlet][lnk-powershell-install]。
 
 ## <a name="connect-to-your-azure-subscription"></a>连接到 Azure 订阅
-在 PowerShell 命令提示符中，输入以下命令以登录你的 Azure 订阅：
+在 PowerShell 命令提示符中，输入以下命令以登录 Azure 订阅：
 
 ```powershell
 Login-AzureRmAccount
 ```
 
-如果你有多个 Azure 订阅，则访问 Azure 即有权访问与凭据关联的所有 Azure 订阅。 使用以下命令，列出可供使用的 Azure 订阅：
+如果有多个 Azure 订阅，则访问 Azure 即有权访问与凭据关联的所有 Azure 订阅。 使用以下命令，列出可供使用的 Azure 订阅：
 
 ```powershell
 Get-AzureRMSubscription
@@ -86,7 +86,7 @@ New-AzureRmIotHub `
     -Location "East US"
 ```
 
-请注意，IoT 中心的名称必须唯一。
+IoT 中心的名称必须是唯一的。
 
 [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 

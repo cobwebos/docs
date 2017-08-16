@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2017
+ms.date: 08/07/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: d58e9b9dc4771cc69265d02b62cf8fe3c9b7d72e
-ms.lasthandoff: 04/13/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 2656b3a276c542ca836b3949e4e493d7c7f48f16
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="chaining-service-bus-entities-with-auto-forwarding"></a>使用自动转发链接服务总线实体
@@ -48,7 +48,7 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 ## <a name="auto-forwarding-considerations"></a>自动转发注意事项
 
-如果目标实体累积了过多消息并超出配额，或禁用了目标实体，则源实体会将消息添加到其[死信队列](service-bus-dead-letter-queues.md)，直到目标中存在可用空间（或重新启用了该实体）。 这些消息将继续位于死信队列中，因此你必须从死信队列显式接收和处理它们。
+如果目标实体累积了过多消息并超出配额，或禁用了目标实体，则源实体会将消息添加到其[死信队列](service-bus-dead-letter-queues.md)，直到目标中存在可用空间（或重新启用了该实体）。 这些消息将继续位于死信队列中，因此，必须从死信队列显式接收和处理它们。
 
 将各个主题连接到一起以获取具有多个订阅的复合主题时，推荐第一级别主题上具有中等数量的订阅，第二级别主题上具有多个订阅。 例如，一个第一级别主题包含 20 个订阅，其中每个订阅连接到一个包含 200 个订阅的第二级别主题，则这个第一级别的主题允许的吞吐量高于另一个包含 200 个订阅（其中每个订阅连接到一个包含 20 个订阅的第二级别主题）的第一级别主题。
 
@@ -60,7 +60,7 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 有关自动转发的详细信息，请参阅以下参考主题：
 
-* [SubscriptionDescription.ForwardTo][SubscriptionDescription.ForwardTo]
+* [ForwardTo][QueueDescription.ForwardTo]
 * [QueueDescription][QueueDescription]
 * [SubscriptionDescription][SubscriptionDescription]
 
@@ -69,8 +69,8 @@ namespaceManager.CreateSubscription(srcSubscription));
 * [使用服务总线消息传送改进性能的最佳做法](service-bus-performance-improvements.md)
 * [分区消息传送实体][Partitioned messaging entities]。
 
-[QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
-[SubscriptionDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo
+[QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
+[SubscriptionDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.forwardto#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo
 [QueueDescription]: /dotnet/api/microsoft.servicebus.messaging.queuedescription
 [SubscriptionDescription]: /dotnet/api/microsoft.servicebus.messaging.queuedescription
 [0]: ./media/service-bus-auto-forwarding/IC628631.gif

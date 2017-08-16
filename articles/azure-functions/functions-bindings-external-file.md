@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: alkarche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 4400ebce2fbed709dcadf41cd2b834fd36416c15
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 2082e4e9b23271be93f3e3ab43997c3243238da8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="azure-functions-external-file-bindings-preview"></a>Azure Functions 外部文件绑定（预览版）
@@ -35,12 +34,10 @@ ms.lasthandoff: 05/02/2017
 |:-----|:---:|:---:|:---:|
 |[Box](https://www.box.com)|x|x|x
 |[Dropbox](https://www.dropbox.com)|x|x|x
-|[文件系统](https://docs.microsoft.com/azure/logic-apps/logic-apps-using-file-connector)|x|x|x
 |[FTP](https://docs.microsoft.com/azure/app-service-web/app-service-deploy-ftp)|x|x|x
 |[OneDrive](https://onedrive.live.com)|x|x|x
 |[OneDrive for Business](https://onedrive.live.com/about/business/)|x|x|x
 |[SFTP](https://docs.microsoft.com/azure/connectors/connectors-create-api-sftp)|x|x|x
-|[Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)||x|x|
 |[Google Drive](https://www.google.com/drive/)||x|x|
 
 > [!NOTE]
@@ -72,13 +69,14 @@ See one of the following subheadings for more information:
 <a name="pattern"></a>
 
 ### <a name="name-patterns"></a>名称模式
-可以在 `path` 属性中指定文件名模式。 例如：
+可以在 `path` 属性中指定文件名模式。 所引用的文件夹必须位于 SaaS 提供程序中。
+示例:
 
 ```json
 "path": "input/original-{name}",
 ```
 
-此路径将在“input”文件夹中查找名为“original-File1.txt”的文件，函数代码中的 `name` 变量值将为 `File1`。
+此路径会在“input”文件夹中查找名为“original-File1.txt”的文件，函数代码中的 `name` 变量值将为 `File1.txt`。
 
 另一个示例：
 
@@ -103,7 +101,7 @@ See one of the following subheadings for more information:
 "path": "images/{{20140101}}-{name}",
 ```
 
-此路径将在“images”文件夹中查找名为“{20140101}-soundfile.mp3”的文件，函数代码中的 `name` 变量值将为“soundfile.mp3”。
+此路径将在 images 文件夹中查找名为 {20140101}-soundfile.mp3 的文件，函数代码中的 `name` 变量值将为 soundfile.mp3。
 
 <a name="receipts"></a>
 
@@ -144,22 +142,16 @@ To force reprocessing of a file, delete the file receipt for that file from the 
 该文件可以反序列化为以下任何类型：
 
 * 任何[对象](https://msdn.microsoft.com/library/system.object.aspx) - 适用于 JSON 序列化的文件数据。
-  如果声明自定义输入类型（如 `FooType`），Azure Functions 会尝试将 JSON 数据反序列化为指定类型。
+  如果声明自定义输入类型（如 `FooType`），Azure Functions 会尝试将 JSON 数据反序列化到指定类型。
 * 字符串 - 适用于文本文件数据。
 
 在 C# 函数中，还可以绑定到以下任何类型，Functions 运行时会尝试使用该类型反序列化文件数据：
 
-* `TextReader`
+* `string`
+* `byte[]`
 * `Stream`
-* `ICloudBlob`
-* `CloudBlockBlob`
-* `CloudPageBlob`
-* `CloudBlobContainer`
-* `CloudBlobDirectory`
-* `IEnumerable<CloudBlockBlob>`
-* `IEnumerable<CloudPageBlob>`
-* 由 [ICloudBlobStreamBinder](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md#icbsb) 反序列化的其他类型
-
+* `StreamReader`
+* `TextReader`
 
 ## <a name="trigger-sample"></a>触发器示例
 假设具有以下 function.json，定义了一个外部文件触发器：
@@ -186,7 +178,7 @@ To force reprocessing of a file, delete the file receipt for that file from the 
 
 <a name="triggercsharp"></a>
 
-### <a name="trigger-usage-in-c"></a>C 中触发器的使用情况# #
+### <a name="trigger-usage-in-c"></a>C# 中的触发器用法 #
 
 ```cs
 public static void Run(string myFile, TraceWriter log)
@@ -217,7 +209,7 @@ module.exports = function(context) {
 <a name="input"></a>
 
 ## <a name="external-file-input-binding"></a>外部文件输入绑定
-Azure 外部文件输入绑定使你能够在函数中使用外部文件夹中的文件。
+Azure 外部文件输入绑定允许在函数中使用外部文件夹中的文件。
 
 函数的外部文件输入在 function.json 的 `bindings` 数组中使用以下 JSON 对象：
 
@@ -244,22 +236,22 @@ Azure 外部文件输入绑定使你能够在函数中使用外部文件夹中�
 该文件可以反序列化为以下任何类型：
 
 * 任何[对象](https://msdn.microsoft.com/library/system.object.aspx) - 适用于 JSON 序列化的文件数据。
-  如果声明自定义输入类型（如 `InputType`），Azure Functions 会尝试将 JSON 数据反序列化为指定类型。
+  如果声明自定义输入类型（如 `InputType`），Azure Functions 会尝试将 JSON 数据反序列化到指定类型。
 * 字符串 - 适用于文本文件数据。
 
 在 C# 函数中，还可以绑定到以下任何类型，Functions 运行时会尝试使用该类型反序列化文件数据：
 
-* `TextReader`
+* `string`
+* `byte[]`
 * `Stream`
-* `ICloudBlob`
-* `CloudBlockBlob`
-* `CloudPageBlob`
+* `StreamReader`
+* `TextReader`
 
 
 <a name="output"></a>
 
 ## <a name="external-file-output-binding"></a>外部文件输出绑定
-Azure 外部文件输出绑定使你能够在函数中将文件写入外部文件夹。
+Azure 外部文件输出绑定允许在函数中将文件写入外部文件夹。
 
 函数的外部文件输出在 function.json 的 `bindings` 数组中使用以下 JSON 对象：
 
@@ -340,7 +332,7 @@ Azure 外部文件输出绑定使你能够在函数中将文件写入外部文�
 
 <a name="incsharp"></a>
 
-### <a name="usage-in-c"></a>C 中的用法# #
+### <a name="usage-in-c"></a>C# 中的用法 #
 
 ```cs
 public static void Run(string myQueueItem, string myInputFile, out string myOutputFile, TraceWriter log)

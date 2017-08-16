@@ -3,7 +3,7 @@ title: "设计你的第一个 Azure SQL 数据库 | Microsoft Docs"
 description: "了解如何设计你的第一个 Azure SQL 数据库。"
 services: sql-database
 documentationcenter: 
-author: janeng
+author: CarlRabeler
 manager: jhubbard
 editor: 
 tags: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 06/20/2017
-ms.author: janeng
+ms.date: 08/03/2017
+ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: d5e63e7079b652e69a089aef495952d29cae67a2
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 69cfffdae5ce2db53acc6d668dbe468c3ef22dc2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 
@@ -43,13 +43,13 @@ Azure SQL 数据库与 Microsoft 云（“Azure”）中的数据库即服务 (D
 
 若要完成本教程，请确保已安装：
 - 最新版本的 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS)。
-- 最新版本的 [BCP 和 SQLCMD][https://www.microsoft.com/download/details.aspx?id=36433]。
+- 最新版本的 [BCP 和 SQLCMD](https://www.microsoft.com/download/details.aspx?id=36433)。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
 登录到 [Azure 门户](https://portal.azure.com/)。
 
-## <a name="create-a-blank-sql-database-in-the-azure-portal"></a>在 Azure 门户中创建空白 SQL 数据库
+## <a name="create-a-blank-sql-database"></a>创建空的 SQL 数据库
 
 创建 Azure SQL 数据库时，会使用定义好的一组[计算和存储资源](sql-database-service-tiers.md)。 数据库在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)和 [Azure SQL 数据库逻辑服务器](sql-database-features.md)中创建。 
 
@@ -97,7 +97,7 @@ Azure SQL 数据库与 Microsoft 云（“Azure”）中的数据库即服务 (D
 
    ![通知](./media/sql-database-get-started-portal/notification.png)
 
-## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>在 Azure 门户中创建服务器级防火墙规则
+## <a name="create-a-server-level-firewall-rule"></a>创建服务器级防火墙规则
 
 SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防火墙规则来为特定的 IP 地址打开防火墙，否则会阻止外部应用程序和工具连接到服务器或服务器上的任何数据库。 按照以下步骤为客户端 IP 地址创建 [SQL 数据库服务器级防火墙规则](sql-database-firewall-configure.md)，并只允许通过针对你的 IP 地址打开的 SQL 数据库防火墙建立外部连接。 
 
@@ -131,7 +131,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 > [!IMPORTANT]
 > 默认情况下，所有 Azure 服务都允许通过 SQL 数据库防火墙进行访问。 在此页上单击“关”即可对所有 Azure 服务执行禁用操作。
 
-## <a name="sql-server-connection-information-in-the-azure-portal"></a>Azure 门户中的 SQL Server 连接信息
+## <a name="sql-server-connection-information"></a>SQL Server 连接信息
 
 请在 Azure 门户中获取 Azure SQL 数据库服务器的完全限定服务器名称。 请使用 SQL Server Management Studio 通过完全限定的服务器名称连接到服务器。
 
@@ -169,7 +169,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 
    ![数据库对象](./media/sql-database-connect-query-ssms/connected.png)  
 
-## <a name="create-tables-in-the-database-with-ssms"></a>使用 SSMS 在数据库中创建表 
+## <a name="create-tables-in-the-database"></a>在数据库中创建表 
 
 使用 [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference) 创建具有 4 个表格的数据库架构，这些表格是大专院校的学生管理系统的模型：
 
@@ -240,7 +240,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 
    ![创建的 ssms 表](./media/sql-database-design-first-database/ssms-tables-created.png)
 
-## <a name="load-data-into-the-tables-with-ssms"></a>使用 SSMS 将数据加载到表
+## <a name="load-data-into-the-tables"></a>将数据加载到表
 
 1. 在“下载”文件夹中创建名为 **SampleTableData** 的文件夹，为数据库存储示例数据。 
 
@@ -264,7 +264,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 
 现已将示例数据加载到了之前创建的表中。
 
-## <a name="query-the-tables-with-ssms"></a>使用 SSMS 查询表
+## <a name="query-data"></a>查询数据
 
 执行以下查询，从数据库表中检索信息。 有关写入 SQL 查询的详细信息，请参阅[写入 SQL 查询](https://technet.microsoft.com/library/bb264565.aspx)。 第一个查询将联接所有 4 个表，以查找由“Dominick Pope”授课的班级中分数高于 75% 的所有学生。 第二个查询将联接所有 4 个表，以查找“Noe Coleman”注册过的所有课程。
 
@@ -301,7 +301,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
    AND person.LastName = 'Coleman'
    ```
 
-## <a name="restore-a-database-to-a-previous-point-in-time-using-the-azure-portal"></a>使用 Azure 门户将数据库还原到之前的时间点
+## <a name="restore-a-database-to-a-previous-point-in-time"></a>将数据库还原到以前的时间点
 
 假设你意外删除了某个表。 这是你不能轻易还原的内容。 借助 Azure SQL 数据库，可返回到最近 35 天内的任意时间点并将此时间点还原到新的数据库。 可以通过此数据库恢复已删除的数据。 以下步骤将示例数据库还原到添加这些表之前的时间点。
 
@@ -330,8 +330,10 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 > * 创建表
 > * 批量加载数据
 > * 查询该数据
-> * 使用 SQL 数据库的[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)功能将数据库还原到上一个时间点。请继续学习下一篇教程了解如何迁移数据。
+> * 使用 SQL 数据库的[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)功能将数据库还原到上一个时间点
+
+转向下一教程，了解如何使用 Visual Studio 和 C# 设计数据库。
 
 > [!div class="nextstepaction"]
->[将 SQL Server 数据库迁移至 Azure SQL 数据库](sql-database-migrate-your-sql-server-database.md)
+>[设计 Azure SQL 数据库，并使用 C# 和 ADO.NET 进行连接](sql-database-design-first-database-csharp.md)
 

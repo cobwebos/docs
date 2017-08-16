@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 06/12/2017
 ms.author: cfreeman
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: ecd3d86db1d6b3b65015d1d560027cedb4f2df58
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 05e3246de51e1c092a7d8a15dddea3c99b6e5b15
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -118,9 +118,11 @@ ms.lasthandoff: 08/02/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用情况概述](app-insights-usage-overview.md)
-* [用户、会话和事件](app-insights-usage-segmentation.md)
-* [保留](app-insights-usage-retention.md)
-* [向应用添加自定义事件](app-insights-api-custom-events-metrics.md)
-
+## <a name="next-steps"></a>后续步骤
+- 若要启用使用体验，请首先发送[自定义事件](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-api-custom-events-metrics#trackevent)或[页面视图](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)。
+- 如果已经发送自定义事件或页面视图，请浏览使用情况工具，了解用户如何使用服务。
+    - [用户、会话、事件](app-insights-usage-segmentation.md)
+    - [漏斗图](usage-funnels.md)
+    - [保留](app-insights-usage-retention.md)
+    - [添加用户上下文](app-insights-usage-send-user-context.md)
 

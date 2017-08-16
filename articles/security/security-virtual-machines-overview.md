@@ -14,30 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 9307b1688ed9e3dc412d044e72bdf88b7bb4d1ec
+ms.translationtype: HT
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: f1fb7f876c7dc010c03f01a4f6698ddc18da1100
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虚拟机安全概述
-借助 Azure 虚拟机，你可以采用灵活的方式部署各种计算解决方案。 通过对 Microsoft Windows、Linux、Microsoft SQL Server、Oracle、IBM、SAP 和 Azure BizTalk 服务的支持，你可以在几乎所有操作系统上部署任何工作负荷和任何语言。
+借助 Azure 虚拟机，可以采用灵活的方式部署各种计算解决方案。 通过对 Microsoft Windows、Linux、Microsoft SQL Server、Oracle、IBM、SAP 和 Azure BizTalk 服务的支持，可以在几乎所有操作系统上部署任何工作负荷和任何语言。
 
-Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护运行虚拟机的物理硬件。  你可以构建并部署你的应用程序，并且保证在我们的高度安全的数据中心你的数据受到保护而且是安全的。
+Azure 虚拟机可用于灵活地进行虚拟化，而无需购买和维护运行虚拟机的物理硬件。  可以构建并部署应用程序，并且保证在我们的高度安全的数据中心数据受到保护而且是安全的。
 
-借助 Azure，你可以构建更加安全的、合规的解决方案：
+借助 Azure，可以构建更加安全的、合规的解决方案：
 
 * 保护虚拟机不受病毒和恶意软件的侵害
-* 加密你的敏感数据
+* 加密敏感数据
 * 保护网络流量的安全
 * 识别和检测威胁
 * 满足合规性要求
 
-本文旨在概述能与虚拟机配合使用的核心 Azure 安全功能。 我们还提供了一些文章链接，其中每篇文章都包含每个功能的详细信息，以便你可以了解更多内容。  
+本文旨在概述能与虚拟机配合使用的核心 Azure 安全功能。 我们还提供了一些文章链接，其中每篇文章都包含每个功能的详细信息，以便可以了解更多内容。  
 
-本文中将介绍的核心 Azure 虚拟机的安全功能：
+本文中介绍的核心 Azure 虚拟机的安全功能：
 
 * 反恶意软件
 * 硬件安全模块
@@ -53,7 +52,7 @@ Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护�
 
 适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件是一种实时保护功能，可帮助识别并删除病毒、间谍软件和其他恶意软件。  Microsoft 反恶意软件提供了已知恶意或不需要的软件试图安装自身或在 Azure 系统上运行时的可配置警报。
 
-Microsoft 反恶意软件是一个针对应用程序和租户环境所提供的单一代理解决方案，可在后台运行而无需人工干预。 你可以根据应用程序工作负荷的需求，选择默认的基本安全性或高级的自定义配置（包括反恶意软件监视）来部署保护。
+Microsoft 反恶意软件是一个针对应用程序和租户环境所提供的单一代理解决方案，可在后台运行而无需人工干预。 可以根据应用程序工作负荷的需求，选择默认的基本安全性或高级的自定义配置（包括反恶意软件监视）来部署保护。
 
 部署并启用 Microsoft 反恶意软件后，便可以使用以下几项核心功能：
 
@@ -77,7 +76,7 @@ Microsoft 反恶意软件是一个针对应用程序和租户环境所提供的�
 * [Azure 应用商店中的安全解决方案](https://azure.microsoft.com/marketplace/?term=security)
 
 ## <a name="hardware-security-module"></a>硬件安全模块
-加密和身份验证不会提高安全性，除非密钥本身受到保护。 通过将关键密码和密钥存储在 Azure 密钥保管库中，你可以简化此类密码和密钥的管理和保护。 密钥保管库提供将你的密钥存储在已通过 FIPS 140-2 Level 2 标准认证的硬件安全模块 (HSM) 中的选项。 用于备份或[透明数据加密](https://msdn.microsoft.com/library/bb934049.aspx)的 SQL Server 加密密钥均可存储在密钥保管库中，此外还可存储应用程序中的任意密钥或密码。 对这些受保护项的权限和访问权限通过 [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) 进行管理。
+可通过提高密钥安全性来增强加密和身份验证保护。 通过将关键密码和密钥存储在 Azure 密钥保管库中，可以简化此类密码和密钥的管理和保护。 密钥保管库提供将密钥存储在已通过 FIPS 140-2 Level 2 标准认证的硬件安全模块 (HSM) 中的选项。 用于备份或[透明数据加密](https://msdn.microsoft.com/library/bb934049.aspx)的 SQL Server 加密密钥均可存储在密钥保管库中，此外还可存储应用程序中的任意密钥或密码。 对这些受保护项的权限和访问权限通过 [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) 进行管理。
 
 了解更多：
 
@@ -88,7 +87,7 @@ Microsoft 反恶意软件是一个针对应用程序和租户环境所提供的�
 ## <a name="virtual-machine-disk-encryption"></a>虚拟机磁盘加密
 Azure 磁盘加密是用于加密 Windows 和 Linux Azure 虚拟机磁盘的新功能。 Azure 磁盘加密利用 Windows 的行业标准 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 功能和 Linux 的 [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能，为操作系统和数据磁盘提供卷加密。
 
-该解决方案与 Azure 密钥保管库集成，可帮助你控制和管理密钥保管库订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据可在 Azure 存储空间中静态加密。
+该解决方案与 Azure Key Vault 集成，有助于控制和管理 Key Vault 订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据可在 Azure 存储中静态加密。
 
 了解更多：
 
@@ -97,7 +96,7 @@ Azure 磁盘加密是用于加密 Windows 和 Linux Azure 虚拟机磁盘的新�
 * [加密虚拟机](../security-center/security-center-disk-encryption.md)
 
 ## <a name="virtual-machine-backup"></a>虚拟机备份
-Azure 备份是一个可扩展的解决方案，无需资本投资便可保护你的应用程序数据，从而最大限度降低运营成本。 应用程序错误可能损坏你的数据，人为错误可能将 bug 引入你的应用程序。 借助 Azure 备份，可以保护运行 Windows 和 Linux 的虚拟机。
+Azure 备份是一个可扩展的解决方案，无需资本投资便可保护应用程序数据，从而最大限度降低运营成本。 应用程序错误可能损坏数据，人为错误可能将 bug 引入应用程序。 借助 Azure 备份，可以保护运行 Windows 和 Linux 的虚拟机。
 
 了解更多：
 
@@ -112,8 +111,9 @@ Site Recovery：
 
 * **简化 BCDR 策略** — Site Recovery 可让你从单个位置轻松处理多个企业工作负荷和应用的复制、故障转移及恢复。 Site Recovery 会协调复制和故障转移，但不会拦截应用程序数据或拥有任何相关信息。
 * **提供灵活的复制** — 借助 Site Recovery，可以复制 Hyper-V 虚拟机、VMware 虚拟机和 Windows/Linux 物理服务器上运行的工作负荷。
-* **支持故障转移和恢复** — Site Recovery 提供测试故障转移，既能支持灾难恢复练习，又不会影响生产环境。 你也可以运行计划的故障转移，因为是预期中的中断，所以不会丢失任何数据；或是运行非计划的故障转移，以在发生非预期的灾难时将数据损失减到最少（取决于复制频率）。 在故障转移之后，你可以故障回复到主站点。 Site Recovery 提供包含脚本和 Azure 自动化工作簿的恢复计划，以供你自定义多层应用程序的故障转移和恢复。
-* **消除辅助数据中心** — 你可以复制到辅助本地站点或 Azure。 将 Azure 用作灾难恢复的目标可以消除维护辅助站点的复杂性和成本。 复制的数据存储在 Azure 存储中。
+* **支持故障转移和恢复** — Site Recovery 提供测试故障转移，既能支持灾难恢复练习，又不会影响生产环境。 也可以运行计划的故障转移，因为是预期中的中断，所以不会丢失任何数据；或是运行非计划的故障转移，以在发生非预期的灾难时会数据损失减到最少（取决于复制频率）。 在故障转移之后，可以故障回复到主站点。 Site Recovery 提供的恢复计划可包含脚本和 Azure 自动化工作簿，可用于自定义多层应用程序的故障转移和恢复。
+* 
+            **消除辅助数据中心** — 可以复制到辅助本地站点或 Azure。 将 Azure 用作灾难恢复的目标可以消除维护辅助站点的复杂性和成本。 复制的数据存储在 Azure 存储中。
 * **与现有 BCDR 技术集成** — Site Recovery 与其他应用程序 BCDR 功能。 例如，可以使用 Site Recovery 来保护公司工作负荷的 SQL Server 后端。 这包括对 SQL Server AlwaysOn 的本机支持以管理可用性组的故障转移。
 
 了解更多：
@@ -123,7 +123,7 @@ Site Recovery：
 * [哪些工作负荷受 Azure Site Recovery 保护？](../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>虚拟网络
-虚拟机需要网络连接。 若要支持该要求，Azure 要求将虚拟机连接到 Azure 虚拟网络。 Azure 虚拟网络是一个构建于物理 Azure 网络结构之上的逻辑构造。 每个逻辑 Azure 虚拟网络都独立于所有其他 Azure 虚拟网络。 这种隔离可帮助确保部署中的网络流量对于其他 Microsoft Azure 客户不可访问。
+虚拟机需要网络连接。 要支持该要求，Azure 要求将虚拟机连接到 Azure 虚拟网络。 Azure 虚拟网络是一个构建于物理 Azure 网络结构之上的逻辑构造。 每个逻辑 Azure 虚拟网络都独立于所有其他 Azure 虚拟网络。 这种隔离可帮助确保部署中的网络流量对于其他 Microsoft Azure 客户不可访问。
 
 了解更多：
 
@@ -132,7 +132,7 @@ Site Recovery：
 * [Networking features and partnerships for Enterprise scenarios](https://azure.microsoft.com/blog/networking-enterprise/)（联网功能和企业方案的合作关系）
 
 ## <a name="security-policy-management-and-reporting"></a>安全策略管理和报告
-Azure 安全中心帮助你预防、检测和响应威胁，同时提高 Azure 资源的可见性并控制其安全性。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
+Azure 安全中心帮助预防、检测和响应威胁，同时提高 Azure 资源的可见性并控制其安全性。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
 
 Azure 安全中心通过以下方式来帮助优化和监视虚拟机安全：
 
@@ -146,7 +146,7 @@ Azure 安全中心通过以下方式来帮助优化和监视虚拟机安全：
 * [Azure 安全中心规划和操作](../security-center/security-center-planning-and-operations-guide.md)
 
 ## <a name="compliance"></a>合规性
-Azure 虚拟机已针对 FISMA、FedRAMP、HIPAA、PCI DSS Level 1 和其他关键合规性计划进行了认证。 此认证使你自己的 Azure 应用程序更容易满足合规性要求，并使你的企业更容易应对各种国内和国际法规要求。
+Azure 虚拟机已针对 FISMA、FedRAMP、HIPAA、PCI DSS Level 1 和其他关键合规性计划进行了认证。 此认证使自己的 Azure 应用程序更容易满足合规性要求，并使企业更容易应对各种国内和国际法规要求。
 
 了解更多：
 

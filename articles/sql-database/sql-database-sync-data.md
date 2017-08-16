@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: douglasl
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 94c8160464cd7355ac0e0733801d0b06fcdfab7c
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 95404f9dbffa08edf12ee6c07f671d5f207ce99a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 数据同步跨多个云和本地数据库同步数据
@@ -142,13 +142,19 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 SQL 数据库和 SQL 数据同步的详细信息，请参阅：
+有关 SQL 数据同步的详细信息，请参阅：
 
 -   [SQL 数据同步入门](sql-database-get-started-sql-data-sync.md)
+
+-   演示如何配置 SQL 数据同步的完整 PowerShell 示例：
+    -   [使用 PowerShell 在多个 Azure SQL 数据库之间进行同步](scripts/sql-database-sync-data-between-sql-databases.md)
+    -   [使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步](scripts/sql-database-sync-data-between-azure-onprem.md)
 
 -   [下载完整的 SQL 数据同步技术文档](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_full_documentation.pdf?raw=true)
 
 -   [下载 SQL 数据同步 REST API 文档](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
+
+有关 SQL 数据库的详细信息，请参阅：
 
 -   [SQL 数据库概述](sql-database-technical-overview.md)
 

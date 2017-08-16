@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 7776942602e21cd0efc86fd471dc072564bb64a6
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 052410db8c7619c7990dc319951a55663f2c2ba1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli-20"></a>使用 Azure CLI 2.0 创建应用程序网关
@@ -28,11 +28,11 @@ ms.lasthandoff: 08/01/2017
 > * [Azure 门户](application-gateway-create-gateway-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
 > * [Azure 经典 PowerShell](application-gateway-create-gateway.md)
-> * [Azure Resource Manager 模板](application-gateway-create-gateway-arm-template.md)
+> * [Azure 资源管理器模板](application-gateway-create-gateway-arm-template.md)
 > * [Azure CLI 1.0](application-gateway-create-gateway-cli.md)
 > * [Azure CLI 2.0](application-gateway-create-gateway-cli.md)
 
-Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关具有以下应用程序传递功能：HTTP 负载均衡、基于 Cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测，以及多站点支持。
+应用程序网关是一个专用的虚拟设备，以服务形式提供应用程序传送控制器 (ADC)，为应用程序提供各种第 7 层负载均衡功能。
 
 ## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本
 
@@ -69,7 +69,7 @@ Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请�
 
 打开 **Microsoft Azure 命令提示符**，并登录。 
 
-```azurecli
+```azurecli-interactive
 az login -u "username"
 ```
 
@@ -92,60 +92,107 @@ az login -u "username"
 
 在创建应用程序网关前，会创建资源组以包含应用程序网关。 以下显示该命令。
 
-```azurecli
-az resource group create --name myresourcegroup --location "West US"
-```
-
-## <a name="create-a-virtual-network-and-subnet"></a>创建虚拟网络和子网
-
-创建资源组后，会为应用程序网关创建虚拟网络。  在以下示例中，地址空间 10.0.0.0/16 定义用于虚拟网络，10.0.0.0/28 用于子网，如前面的方案说明中所示。
-
-```azurecli
-az network vnet create \
---name AdatumAppGatewayVNET \
---address-prefix 10.0.0.0/16 \
---subnet-name Appgatewaysubnet \
---subnet-prefix 10.0.0.0/28 \
---resource-group AdatumAppGateway \
---location eastus
+```azurecli-interactive
+az group create --name myresourcegroup --location "eastus"
 ```
 
 ## <a name="create-the-application-gateway"></a>创建应用程序网关
 
-创建虚拟网络和子网后，即已满足应用程序网关的先决条件。 此外，以下步骤还需要之前导出的 .pfx 证书和证书密码：用于后端的 IP 地址是后端服务器的 IP 地址。 这些值可以是虚拟网络中的专用 IP、公共 IP 或后端服务器的完全限定域名。
+用于后端的 IP 地址是后端服务器的 IP 地址。 这些值可以是虚拟网络中的专用 IP、公共 IP 或后端服务器的完全限定域名。 以下示例使用用于 http 设置、端口和规则的其他配置设置创建应用程序网关。
 
-```azurecli
+```azurecli-interactive
 az network application-gateway create \
---name AdatumAppGateway \
---location eastus \
---resource-group AdatumAppGatewayRG \
---vnet-name AdatumAppGatewayVNET \
----vnet-address-prefix 10.0.0.0/16 \
---subnet Appgatewaysubnet \
----subnet-address-prefix 10.0.0.0/28 \
+--name "AdatumAppGateway" \
+--location "eastus" \
+--resource-group "myresourcegroup" \
+--vnet-name "AdatumAppGatewayVNET" \
+--vnet-address-prefix "10.0.0.0/16" \
+--subnet "Appgatewaysubnet" \
+--subnet-address-prefix "10.0.0.0/28" \
 --servers 10.0.0.4 10.0.0.5 \
 --capacity 2 \
 --sku Standard_Small \
 --http-settings-cookie-based-affinity Enabled \
 --http-settings-protocol Http \
---public-ip-address AdatumAppGatewayPIP \
 --frontend-port 80 \
 --routing-rule-type Basic \
---http-settings-port 80
+--http-settings-port 80 \
+--public-ip-address "pip2" \
+--public-ip-address-allocation "dynamic" \
 
 ```
 
+前面的示例展示创建应用程序网关期间不需要的许多属性。 以下代码示例创建含所需信息的应用程序网关。
+
+```azurecli-interactive
+az network application-gateway create \
+--name "AdatumAppGateway" \
+--location "eastus" \
+--resource-group "myresourcegroup" \
+--vnet-name "AdatumAppGatewayVNET" \
+--vnet-address-prefix "10.0.0.0/16" \
+--subnet "Appgatewaysubnet \
+--subnet-address-prefix "10.0.0.0/28" \
+--servers "10.0.0.5"  \
+--public-ip-address pip
+```
+ 
 > [!NOTE]
-> 如需在创建过程中能够提供的参数的列表，请运行以下命令：**az network application-gateway create --help**。
+> 如需在创建过程中能够提供的参数的列表，请运行以下命令：`az network application-gateway create --help`。
 
 此示例会创建基本的应用程序网关，提供的默认设置适用于侦听器、后端池、后端 http 设置以及规则。 预配成功后，即可根据部署修改这些设置。
 如果在之前的步骤中已使用后端池定义 Web 应用程序，则在创建后，负载均衡即会开始。
+
+## <a name="get-application-gateway-dns-name"></a>获取应用程序网关 DNS 名称
+
+创建网关后，下一步是配置前端以进行通信。 使用公共 IP 时，应用程序网关需要动态分配的 DNS 名称，这会造成不方便。 若要确保最终用户能够访问应用程序网关，可以使用 CNAME 记录指向应用程序网关的公共终结点。 [在 Azure 中配置自定义域名](../dns/dns-custom-domain.md)。 若要配置别名，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 应使用应用程序网关的 DNS 名称来创建 CNAME 记录，使两个 Web 应用程序都指向此 DNS 名称。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
+
+
+```azurecli-interactive
+az network public-ip show --name "pip" --resource-group "AdatumAppGatewayRG"
+```
+
+```
+{
+  "dnsSettings": {
+    "domainNameLabel": null,
+    "fqdn": "8c786058-96d4-4f3e-bb41-660860ceae4c.cloudapp.net",
+    "reverseFqdn": null
+  },
+  "etag": "W/\"3b0ac031-01f0-4860-b572-e3c25e0c57ad\"",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AdatumAppGatewayRG/providers/Microsoft.Network/publicIPAddresses/pip2",
+  "idleTimeoutInMinutes": 4,
+  "ipAddress": "40.121.167.250",
+  "ipConfiguration": {
+    "etag": null,
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AdatumAppGatewayRG/providers/Microsoft.Network/applicationGateways/AdatumAppGateway2/frontendIPConfigurations/appGatewayFrontendIP",
+    "name": null,
+    "privateIpAddress": null,
+    "privateIpAllocationMethod": null,
+    "provisioningState": null,
+    "publicIpAddress": null,
+    "resourceGroup": "AdatumAppGatewayRG",
+    "subnet": null
+  },
+  "location": "eastus",
+  "name": "pip2",
+  "provisioningState": "Succeeded",
+  "publicIpAddressVersion": "IPv4",
+  "publicIpAllocationMethod": "Dynamic",
+  "resourceGroup": "AdatumAppGatewayRG",
+  "resourceGuid": "3c30d310-c543-4e9d-9c72-bbacd7fe9b05",
+  "tags": {
+    "cli[2] owner[administrator]": ""
+  },
+  "type": "Microsoft.Network/publicIPAddresses"
+}
+```
 
 ## <a name="delete-all-resources"></a>删除所有资源
 
 若要删除在本文中创建的所有资源，请完成以下步骤：
 
-```azurecli
+```azurecli-interactive
 az group delete --name AdatumAppGatewayRG
 ```
  

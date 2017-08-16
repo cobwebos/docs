@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: ca8c94cfe6a76ba169b2ec1f7ab3f49caf562289
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 475c878e34a83d06cffca5e114ccd920c7956256
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>使用数据管理网关在本地源与云之间移动数据
@@ -29,13 +29,18 @@ ms.lasthandoff: 07/28/2017
 必须在本地计算机上安装数据管理网关，以便将数据移入/移出本地数据存储。 可在与数据存储相同的计算机上安装网关，也可在不同的计算机上安装网关，只要网关能连接数据存储即可。
 
 > [!IMPORTANT]
-> 有关数据管理网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。   
->
->
+> 有关数据管理网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。 
 
 以下演练介绍如何创建一个包含管道的数据工厂，该管道可将数据从本地 **SQL Server** 数据库移动到 Azure blob 存储。 在演练过程中，需要在计算机上安装并配置数据管理网关。
 
 ## <a name="walkthrough-copy-on-premises-data-to-cloud"></a>演练：将本地数据复制到云
+本演练将执行以下步骤： 
+
+1. 创建数据工厂。
+2. 创建数据管理网关。 
+3. 创建用于源和接收器数据存储的链接服务。
+4. 创建表示输入和输出数据的数据集。
+5. 创建包含复制活动的管道，用于移动数据。
 
 ## <a name="prerequisites-for-the-tutorial"></a>教程先决条件
 开始本演练之前，必须具备以下先决条件：
@@ -51,7 +56,7 @@ ms.lasthandoff: 07/28/2017
 2. 单击“+新建”，并依次单击“智能 + 分析”、“数据工厂”。
 
    ![新建 -> DataFactory](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  
-3. 在“新建数据工厂”边栏选项卡中，输入 **ADFTutorialOnPremDF** 作为名称。
+3. 在“新建数据工厂”页中，输入 ADFTutorialOnPremDF 作为名称。
 
     ![添加到开始板](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
 
@@ -63,27 +68,30 @@ ms.lasthandoff: 07/28/2017
    >
 4. 选择要在其中创建数据工厂的 **Azure 订阅** 。
 5. 选择现有的 **资源组** ，或创建资源组。 本教程创建名为 **ADFTutorialResourceGroup** 的资源组。
-6. 在“新建数据工厂”边栏选项卡中单击“创建”。
+6. 在“新建数据工厂”页中单击“创建”。
 
    > [!IMPORTANT]
    > 只有订阅/资源组级别的 [数据工厂参与者](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) 角色成员才能创建数据工厂实例。
    >
    >
-7. 完成创建后，将看到如下图所示的“数据工厂”边栏选项卡：
+7. 完成创建后，将看到如下图所示的“数据工厂”页：
 
    ![数据工厂主页](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDataFactoryHomePage.png)
 
 ## <a name="create-gateway"></a>创建网关
-1. 在“数据工厂”边栏选项卡中，单击“编写和部署”磁贴启动数据工厂的“编辑器”。
+1. 在“数据工厂”页中，单击“编写和部署”磁贴启动数据工厂的“编辑器”。
 
     ![“编写和部署”磁贴](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png)
 2. 在“数据工厂编辑器”中，单击工具栏上的“...更多”，并单击“新建数据网关”。 此外，也可以在树视图中，右键单击“数据网关”，并单击“新建数据网关”。
 
    ![工具栏上的“新建数据网关”](./media/data-factory-move-data-between-onprem-and-cloud/NewDataGateway.png)
-3. 在“创建”边栏选项卡中，输入 **adftutorialgateway** 作为**名称**，并单击“确定”。     
+3. 在“创建”页中，输入 adftutorialgateway 作为名称，并单击“确定”。     
 
-    ![创建网关边栏选项卡](./media/data-factory-move-data-between-onprem-and-cloud/OnPremCreateGatewayBlade.png)
-4. 在“配置”边栏选项卡中，单击“直接在此计算机上安装”。 此操作将为网关下载安装包，并在计算机上安装、配置和注册该网关。  
+    ![“创建网关”页](./media/data-factory-move-data-between-onprem-and-cloud/OnPremCreateGatewayBlade.png)
+
+    > [!NOTE]
+    > 本演练将创建只有一个节点（本地 Windows 计算机）的逻辑网关。 可通过将多个本地计算机与网关相关联来向外扩展数据管理网关。 可通过增加可以同时在一个节点上运行的数据移动作业数来向上扩展数据管理网关。 此功能也适用于包含一个节点的逻辑网关。 有关详细信息，请参阅[在 Azure 数据工厂中缩放数据管理网关](data-factory-data-management-gateway-high-availability-scalability.md)一文。  
+4. 在“配置”页中，单击“直接在此计算机上安装”。 此操作将为网关下载安装包，并在计算机上安装、配置和注册该网关。  
 
    > [!NOTE]
    > 请使用 Internet Explorer 或与 Microsoft ClickOnce 兼容的 Web 浏览器。
@@ -94,11 +102,11 @@ ms.lasthandoff: 07/28/2017
    >
    >
 
-    ![网关 - 配置边栏选项卡](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
+    ![网关 -“配置”页](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
     此方法是执行以下操作最简单的方法（一键式操作）：下载、安装、配置和注册网关，只需一步操作即可完成。 可以看到计算机上已安装了 **Microsoft 数据管理网关配置管理器**应用程序。 还可以在文件夹 **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** 中查找可执行文件 **ConfigManager.exe**。
 
-    此外，还可以使用此边栏选项卡中的链接手动下载和安装网关，并使用**新密钥**文本框中所示的密钥对其进行注册。
+    此外，还可使用此页中的链接手动下载和安装网关，并使用“新建密钥文”本框中显示的密钥对其进行注册。
 
     有关网关的所有详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。
 
@@ -140,7 +148,7 @@ ms.lasthandoff: 07/28/2017
    * 单击“查看日志”，以在“事件查看器”窗口中查看数据管理网关日志。
    * 单击“发送日志”将包含最后七天的日志的 zip 文件上传到 Microsoft，以便排查问题。
 10. 在“诊断”选项卡上的“测试连接”部分中，选择 **SqlServer** 作为数据存储类型，输入数据库服务器和数据库的名称，指定身份验证类型，输入用户名和密码，并单击“测试”以测试网关是否可以连接到数据库。
-11. 切换到 Web 浏览器，在“Azure 门户”中，单击“配置”边栏选项卡上的“确定”，并单击“新建数据网关”边栏选项卡上的“确定”。
+11. 切换到 Web 浏览器，在 Azure 门户中，单击“配置”页中的“确定”，并单击“新建数据网关”页中的“确定”。
 12. 左侧树视图中的“数据网关”下应会显示 **adftutorialgateway**。  单击此项可看到相关联的 JSON。
 
 ## <a name="create-linked-services"></a>创建链接服务
@@ -157,7 +165,7 @@ ms.lasthandoff: 07/28/2017
 
       1. 对于 **servername**，输入托管 SQL Server 数据库的服务器名称。
       2. 对于 **databasename**，输入数据库名称。
-      3. 单击工具栏上的“加密”按钮。 此操作将下载并启动凭据管理器应用程序。
+      3. 单击工具栏上的“加密”按钮。 将出现凭据管理器应用程序。
 
          ![凭据管理器应用程序](./media/data-factory-move-data-between-onprem-and-cloud/credentials-manager-application.png)
       4. 在“设置凭据”对话框中，指定身份验证类型、用户名和密码，并单击“确定”。 如果连接成功，则加密的凭据将存储在 JSON 中，并且对话框将关闭。
@@ -361,7 +369,7 @@ ms.lasthandoff: 07/28/2017
 
    在示例中，由于每小时生成一个数据切片，因此共有 24 个数据切片。        
 3. 单击命令栏上的“部署”来部署数据集（表为矩形数据集）。 确认“管道”节点下的树视图中显示管道。  
-4. 现在，单击 **X** 两次，关闭边栏选项卡，以返回到 **ADFTutorialOnPremDF** 的“数据工厂”边栏选项卡。
+4. 现在，单击 X 两次，关闭页面，以返回到 ADFTutorialOnPremDF 的“数据工厂”页。
 
 **祝贺你！** 现已成功创建 Azure 数据工厂、链接服务、数据集和管道，并已计划好管道。
 
@@ -382,21 +390,21 @@ ms.lasthandoff: 07/28/2017
 
     ![EmpOnPremSQLTable 切片](./media/data-factory-move-data-between-onprem-and-cloud/OnPremSQLTableSlicesBlade.png)
 2. 请注意，所有数据切片都处于**就绪**状态，因为管道持续时间（开始时间到结束时间）发生在过去。 还因为已在 SQL Server 数据库中插入数据，并且数据一直处于该位置。 确认底部的“问题切片”部分中未显示任何切片。 若要查看所有切片，请单击切片列表底部的“查看更多”。
-3. 现在，请在“数据集”边栏选项卡中单击“OutputBlobTable”。
+3. 现在，请在“数据集”页中单击“OutputBlobTable”。
 
     ![OputputBlobTable 切片](./media/data-factory-move-data-between-onprem-and-cloud/OutputBlobTableSlicesBlade.png)
-4. 在列表中单击任一数据切片可以看到“数据切片”边栏选项卡。 可看到为切片运行的活动。 通常只能看到一个活动运行。  
+4. 在列表中单击任一数据切片即可看到“数据切片”页。 可看到为切片运行的活动。 通常只能看到一个活动运行。  
 
     ![“数据切片”边栏选项卡](./media/data-factory-move-data-between-onprem-and-cloud/DataSlice.png)
 
     如果切片状态不是“就绪”，可以在“未就绪的上游切片”列表中看到未就绪且阻碍当前切片运行的上游切片。
 5. 单击底部列表中的“活动运行”可看到“活动运行详细信息”。
 
-   ![“活动运行详细信息”边栏选项卡](./media/data-factory-move-data-between-onprem-and-cloud/ActivityRunDetailsBlade.png)
+   ![“活动运行详细信息”页](./media/data-factory-move-data-between-onprem-and-cloud/ActivityRunDetailsBlade.png)
 
    可看到吞吐量、持续时间和用于传输数据的网关等信息。
-6. 单击 **X** 关闭所有边栏选项卡，直到
-7. 返回到 **ADFTutorialOnPremDF** 的“主页”边栏选项卡。
+6. 单击 X 关闭所有页面，直到
+7. 返回到 ADFTutorialOnPremDF 的主页。
 8. （可选）单击“管道”，再单击“ADFTutorialOnPremDF”，钻取输入表 (**Consumed**) 或输出数据集 (**Produced**)。
 9. 使用工具（例如 [Microsoft 存储资源管理器](http://storageexplorer.com/)）验证是否每小时创建一个 blob/文件。
 

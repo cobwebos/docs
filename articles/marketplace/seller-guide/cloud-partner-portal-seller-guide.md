@@ -12,13 +12,11 @@ ms.workload: na
 ms.date: 03/30/2017
 ms.author: rupesk@microsoft.com
 ms.robots: NOINDEX, NOFOLLOW
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 59a0f0ec1b7b576339a45be26be8543ac0650a8a
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: c78708687fbb5716e3e8d62967013310d6ccc735
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
-
-
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="azure-marketplace-seller-guide"></a>Azure 应用商店卖家指南
@@ -27,9 +25,9 @@ ms.lasthandoff: 05/03/2017
 
 
 > [!NOTE]
-> 如果你有意向业务用户销售服务型软件 (SaaS) 成品，可以研究要使用哪种选项将你的产品列在 [AppSource](https://appsource.microsoft.com) 中。
+> 如果有意向业务用户销售服务型软件 (SaaS) 成品，可以研究要使用哪种选项将产品列在 [AppSource](https://appsource.microsoft.com) 中。
 
-完成本指南后，你就会知道可在何处找到有关这些主题的详细信息：
+完成本指南后，就会知道可在何处找到有关这些主题的详细信息：
 
 - 什么是 Azure 应用商店？
 - 如何确定我的产品是否适合在应用商店中销售？
@@ -66,27 +64,27 @@ Azure 应用商店是一个在线应用程序和服务市场，其中各种规�
 
 ## <a name="is-the-marketplace-right-for-my-business"></a>应用商店是否适合我的业务？
 
-此时此刻，你可能会疑惑，Azure 应用商店是否适合你的业务。 如果适合，它能够带来哪种优势？ 应用商店为你创造了新的销售机会：
+此时此刻，可能会疑惑，Azure 应用商店是否适合业务。 如果适合，它能够带来哪种优势？ 应用商店创造了新的销售机会：
 
-- 利用 Azure 上扩展的解决方案产品组合打入新的客户市场。 使用 Azure 服务向 Microsoft 在线订阅计划 (MOSP) 和 Microsoft 企业协议客户追加销售和交叉销售应用商店产品。 你可以轻松地将应用商店产品整合到客户解决方案和 Azure 方案推介产品中。
-- 提高业务价值并增加与现有和新客户帐户的交易规模。 应用商店可帮助你扩大交易规模、解决客户在将工作负荷移到云中时遇到的难题，并增加交易收益。 可以根据客户的要求销售配套的解决方案并解决 Azure 云平台差异，从而提高业务价值。
-- 通过销售应用商店应用程序和服务吸引大量潜在客户。 应用商店使得查找和留住新客户更加方便。 当今的许多企业需要将工作负荷转移到云中，适应不断变化的基础结构环境。 你可以提供适当的应用程序和服务来帮助这些企业弥补环境的差异。
-- 通过将应用商店产品与 Azure 服务进行绑定，补充并扩展 Azure 功能。 应用商店可帮助你设计与客户进行基于应用场景的对话。 你还可以探讨端到端解决方案，应对具体的平台差异和客户需求。 最后，通过销售解决方案捆绑包，可以使用 Azure 平台生态系统来解决各种客户问题，同时增大销售额。
+- 利用 Azure 上扩展的解决方案产品组合打入新的客户市场。 使用 Azure 服务向 Microsoft 在线订阅计划 (MOSP) 和 Microsoft 企业协议客户追加销售和交叉销售应用商店产品。 可以轻松地将应用商店产品整合到客户解决方案和 Azure 方案推介产品中。
+- 提高业务价值并增加与现有和新客户帐户的交易规模。 Marketplace 有助于扩大交易规模、解决客户在将工作负荷移到云中时遇到的难题，并增加交易收益。 可以根据客户的要求销售配套的解决方案并解决 Azure 云平台差异，从而提高业务价值。
+- 通过销售应用商店应用程序和服务吸引大量潜在客户。 应用商店使得查找和留住新客户更加方便。 当今的许多企业需要将工作负荷转移到云中，适应不断变化的基础结构环境。 可以提供适当的应用程序和服务来帮助这些企业弥补环境的差异。
+- 通过将应用商店产品与 Azure 服务进行绑定，补充并扩展 Azure 功能。 Marketplace 有助于设计与客户进行基于应用场景的对话。 还可以探讨端到端解决方案，应对具体的平台差异和客户需求。 最后，通过销售解决方案捆绑包，可以使用 Azure 平台生态系统来解决各种客户问题，同时增大销售额。
 
 ## <a name="what39s-the-customer-base-for-the-marketplace"></a>应用商店面向哪种客户群？
 
-应用商店面向多种客户群。 此外，Azure 具有所有云提供商中增长最快的客户群之一。 你可以接触 IT 专业人员和开发人员，这些人员涉及多个行业，就职于公共和私营部门，服务的公司从初创企业横跨到大型企业。
+应用商店面向多种客户群。 此外，Azure 具有所有云提供商中增长最快的客户群之一。 可以接触 IT 专业人员和开发人员，这些人员涉及多个行业，就职于公共和私营部门，服务的公司从初创企业横跨到大型企业。
 
 ## <a name="how-does-the-marketplace-work"></a>如何使用应用商店？
 
-操作非常容易。 获得批准后，即可创建 Azure 认证的虚拟机映像并将其发布到应用商店。 在这里，Azure 客户几分钟内即可查找、购买并部署你的产品。 更棒的是，客户可以放心部署你的解决方案。 他们知道配置的环境可在 Azure 上顺利运行，并且基础结构在几分钟内就能启动。
+操作非常容易。 获得批准后，即可创建 Azure 认证的虚拟机映像并将其发布到应用商店。 在这里，Azure 客户几分钟内即可查找、购买并部署产品。 更棒的是，客户可以放心部署解决方案。 他们知道配置的环境可在 Azure 上顺利运行，并且基础结构在几分钟内就能启动。
 
 云合作伙伴门户是在应用商店中创建产品的中心。 虚拟机映像中已预先配置完整安装的操作系统以及一个或多个应用程序。 若要认证映像使其随时可供发布，必须满足某些先决条件。 详情请参见下一节。
 
 
 ## <a name="whats-next"></a>后续步骤
 
-你可能认为 Azure 应用商店确实很适合你的产品。 那么，如何开始？ 本部分旨在介绍如何按以下方法在应用商店（图 1）中准备和运行： 
+可能认为 Azure 应用商店确实很适合产品。 那么，如何开始？ 本部分旨在介绍如何按以下方法在应用商店（图 1）中准备和运行： 
 * 通过 Azure 认证。
 * 获取销售产品的批准。
 * 在云合作伙伴门户中创建产品。 
@@ -129,9 +127,9 @@ Azure 应用商店是一个在线应用程序和服务市场，其中各种规�
 
 - 公司（或其子公司）必须位于应用商店支持的销售国家/地区。
 - 产品必须按与应用商店支持的计费模型兼容的方式获得许可。
-- 你需要负责以商业上合理的方式向客户提供技术支持，支持的形式包括免费、付费或社区支持。
-- 你需要购买自己的软件和任何第三方软件依赖项的许可证。
-- 你的内容必须满足 [azure.microsoft.com](../../C:/Users/Lisa.Rosenberger/Desktop/azure.microsoft.com) 和 Azure 门户中列出的特定产品准则。
+- 需要负责以商业上合理的方式向客户提供技术支持，支持的形式包括免费、付费或社区支持。
+- 需要购买自己的软件和任何第三方软件依赖项的许可证。
+- 内容必须满足 [azure.microsoft.com](../../C:/Users/Lisa.Rosenberger/Desktop/azure.microsoft.com) 和 Azure 门户中列出的特定产品准则。
 
 最后，需要同意[使用条款](https://azure.microsoft.com/support/legal/website-terms-of-use/)、[Microsoft 隐私声明](http://www.microsoft.com/privacystatement/default.aspx)和 [Microsoft Azure 认证计划协议](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)。 
 
@@ -150,7 +148,7 @@ Azure 应用商店是一个在线应用程序和服务市场，其中各种规�
 
 ## <a name="how-do-i-nominate-my-product-and-get-approved"></a>如何指定产品名称并获得批准？
 
-现在，可以请求批准在应用商店中销售你的产品（图 3）。 在 Microsoft 服务中可以轻松指定产品的名称、完成发布过程并注册为卖方。
+现在，可以请求批准在应用商店中销售产品（图 3）。 在 Microsoft 服务中可以轻松指定产品的名称、完成发布过程并注册为卖方。
 
 ![获得在 Azure 应用商店中销售产品的批准](./media/cloud-partner-portal-seller-guide/gettingapprovedsteps.png)
 
@@ -158,7 +156,7 @@ Azure 应用商店是一个在线应用程序和服务市场，其中各种规�
 
 获得批准的第一个步骤是在注册和发布之前为产品[命名](https://createopportunity.azurewebsites.net/)。 批准最长需要 3 个工作日。
 
-获得批准后，你将收到以下信息：
+获得批准后，将收到以下信息：
 
 - 一封电子邮件回执，其中包含一个可用于抵消 99 美元开发中心申请费的促销代码，以及要在云合作伙伴门户中填写的档案资料。
 - Azure 认证状态的技术预先审批资料，以及创建产品和认证 VHD 的选项。 （只有开发中心申请获得批准后，才能创建产品。）
@@ -167,15 +165,15 @@ Azure 应用商店是一个在线应用程序和服务市场，其中各种规�
 - 是否能够发布二次产品。 二次产品不需要审批。 可将它们直接加入云合作伙伴门户，但虚拟机仍必须通过发布过程认证。
 - 有关请求发布方面的帮助的指导。 （问题应会定向到应用商店发布者[支持链接](https://support.microsoft.com/en-us/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfName=productselection&prid=16230&ccsid=636282352448485256)。）
 
-最后，将[你的帐户注册](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-accounts-creation-registration)为 Microsoft 卖方。 审批和审核最长可能需要两周，请利用这段时间在云合作伙伴门户中创建 Azure 应用商店产品。
+最后，将[帐户注册](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-accounts-creation-registration)为 Microsoft 卖方。 审批和审核最长可能需要两周，请利用这段时间在云合作伙伴门户中创建 Azure 应用商店产品。
 
 ## <a name="how-do-i-publish-my-offer-on-the-azure-marketplace"></a>如何在 Azure 应用商店发布我的产品/服务？
 
-现在，可以认证虚拟机映像并发布产品/服务。 为此，可以使用云合作伙伴门户。 可将云合作伙伴门户视为发布和管理解决方案的中心。 基本上，你只需上传你的 VHD、添加营销内容和 SKU 详细信息，然后提交产品/服务进行认证和审阅。 你可以预览你的产品/服务，查看其在应用商店推出之前的外观。
+现在，可以认证虚拟机映像并发布产品/服务。 为此，可以使用云合作伙伴门户。 可将云合作伙伴门户视为发布和管理解决方案的中心。 基本上，只需上传你的 VHD、添加营销内容和 SKU 详细信息，并提交产品/服务进行认证和审阅。 可以预览产品/服务，查看其在应用商店推出之前的外观。
 
 ## <a name="what-about-best-practices"></a>最佳做法是什么？
 
-下面一些工具和最佳做法可帮助你实现作为应用商店卖方的最大价值。
+下面一些工具和最佳做法有助于实现作为 Marketplace 卖方的最大价值。
 
 ### <a name="azure-test-drives"></a>Azure 体验版
 
@@ -189,9 +187,9 @@ Azure 应用商店是一个在线应用程序和服务市场，其中各种规�
 
 ### <a name="go-to-market-checklist"></a>上市查检表
 
-详细了解我们的[上市计划](https://partner.microsoft.com/go-to-market/)，帮助你的组织拓展全球覆盖范围。 还可以利用[合作伙伴营销中心](http://smartpartnermarketing.microsoft.com/isv)的资源。
+详细了解我们的[上市计划](https://partner.microsoft.com/go-to-market/)，帮助组织拓展全球覆盖范围。 还可以利用[合作伙伴营销中心](http://smartpartnermarketing.microsoft.com/isv)的资源。
 
-在推出产品之前，建议执行几个步骤，让你的应用商店产品快速吸引注意力。 使用此清单确定是否准备就绪：
+在推出产品之前，建议执行几个步骤，让应用商店产品快速吸引注意力。 使用此清单确定是否准备就绪：
 
 - 我已通过发表博客文章、发送电子邮件或发行新闻稿，宣布我的产品已在应用商店中推出。
 - 在我自己的网站上促销我的产品/服务，引导客户在应用商店中选购我的产品/服务。
@@ -215,7 +213,7 @@ Azure 应用商店是一个在线应用程序和服务市场，其中各种规�
   - 潮流产品
   - 应用商店许可证类型
 
-详细报告将显示客户信息（例如公司名称、地理位置，甚至邮政编码），帮助你与其他卖方竞争。 以下列表包含我们提供的有关客户的特定属性：
+详细报告会显示客户信息（例如公司名称、地理位置，甚至邮政编码），因此可比较客户。 以下列表包含我们提供的有关客户的特定属性：
 
 - Reseller
 - FirstName
@@ -234,7 +232,7 @@ Azure 应用商店是一个在线应用程序和服务市场，其中各种规�
 
 我们还通过帮助文档、词汇表和录制的演示提供培训。 如果在报告方面需要帮助或支持，请打开[支持票证](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=15635&ccsid=636233723471685249)。
 
-欢迎加入我们的 ISV 卖方社区，期待看到你的产品/服务。
+欢迎加入我们的 ISV 卖方社区，期待看到产品/服务。
 
 ---
 

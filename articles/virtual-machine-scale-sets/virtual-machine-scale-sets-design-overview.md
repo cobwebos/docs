@@ -1,6 +1,6 @@
 ---
-title: "设计规模化的 Azure 虚拟机规模集 | Microsoft Docs"
-description: "了解如何设计规模化的 Azure 虚拟机规模集"
+title: "Azure 虚拟机规模集的设计注意事项 | Microsoft Docs"
+description: "了解 Azure 虚拟机规模集的设计注意事项"
 keywords: "linux 虚拟机, 虚拟机规模集"
 services: virtual-machine-scale-sets
 documentationcenter: 
@@ -17,13 +17,13 @@ ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: 88ab6322fed853c73af981a1de4cd2c2f480c959
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 615361975e2ee15ce80f6efb39f57cae381209e5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/09/2017
 
 ---
-# <a name="designing-scale-sets-for-scale"></a>根据缩放需求设计规模集
+# <a name="design-considerations-for-scale-sets"></a>规模集的设计注意事项
 本主题讨论虚拟机规模集的设计注意事项。 有关什么是虚拟机规模集的信息，请参阅[虚拟机规模集概述](virtual-machine-scale-sets-overview.md)。
 
 ## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>何时使用规模集而不使用虚拟机？

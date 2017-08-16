@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: juliako;
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 6095135e49a6da3ef37fb566c2fb56702cfd70c9
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 74f38ae61d4a360cabe8a9fbd33d30a6b0751654
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>使用 Azure 媒体分析进行面部修订
@@ -133,7 +133,37 @@ ms.lasthandoff: 08/01/2017
      1
      2
      3
+
+## <a name="blur-types"></a>模糊类型
+
+在“组合”或“修订”模式中，可通过 JSON 输入配置在 5 种不同的模糊类型中选择：“低”、“中”、“高”、“调试”和“黑色”。 默认情况下使用“中”。
+
+可以查找以下模糊类型的示例。
+
+### <a name="example-json"></a>示例 JSON：
+
+    {'version':'1.0', 'options': {'Mode': 'Combined', 'BlurType': 'High'}}
+
+#### <a name="low"></a>低
+
+![低](./media/media-services-face-redaction/blur1.png)
  
+#### <a name="med"></a>中
+
+![中](./media/media-services-face-redaction/blur2.png)
+
+#### <a name="high"></a>高
+
+![高](./media/media-services-face-redaction/blur3.png)
+
+#### <a name="debug"></a>调试
+
+![调试](./media/media-services-face-redaction/blur4.png)
+
+#### <a name="black"></a>黑色
+
+![黑色](./media/media-services-face-redaction/blur5.png)
+
 ## <a name="elements-of-the-output-json-file"></a>输出 JSON 文件中的元素
 
 修订 MP 提供高精确度的面部位置检测和跟踪功能，可在一个视频帧中检测到最多 64 张人脸。 正面的面部可提供最佳效果，而检测和跟踪侧面的面部和较小的面部（小于或等于 24x24 像素）可能具有一定难度。

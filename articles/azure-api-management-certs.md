@@ -1,6 +1,6 @@
 ---
 title: "上传 Azure Management API 证书 | Microsoft Docs"
-description: "了解如何为 Azure 经典门户上载 Management API 证书。"
+description: "了解如何为 Azure 经典门户上传 Management API 证书。"
 services: cloud-services
 documentationcenter: .net
 author: Thraka
@@ -12,51 +12,47 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2016
+ms.date: 08/01/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: 783390791f27a9bf8ea400403a8b0f866f8c5cee
-ms.openlocfilehash: 0f1ae486340270cac5cfdb5d44485d05cb996388
-
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 9dc438e927acd9aef38f06807fabf3dda9b021c9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/05/2017
 
 ---
-# <a name="upload-an-azure-management-api-management-certificate"></a>上载 Azure Management API 管理证书
-管理证书允许你使用 Azure 提供的服务管理 API 进行身份验证。 许多程序和工具（如 Visual Studio 或 Azure SDK）将使用这些证书来自动配置和部署各种 Azure 服务。 **这仅适用于 Azure 经典门户**。
+# <a name="upload-an-azure-management-api-management-certificate"></a>上传 Azure Management API 管理证书
+管理证书使你可以使用 Azure 提供的经典部署模型进行身份验证。 许多程序和工具（如 Visual Studio 或 Azure SDK）会使用这些证书来自动配置和部署各种 Azure 服务。 
 
 > [!WARNING]
 > 请小心！ 这些类型的证书允许任何使用它们进行身份验证的人管理与它们相关联的订阅。
 >
 >
 
-有关 Azure 证书（包括创建自签名证书）的详细信息可在你需要时向你[提供](cloud-services/cloud-services-certs-create.md#what-are-management-certificates)。
+若要深入了解 Azure 证书（包括创建自签名的证书）的详细信息，请参阅 [Azure 云服务的证书概述](cloud-services/cloud-services-certs-create.md#what-are-management-certificates)。
 
 还可以使用 [Azure Active Directory](https://azure.microsoft.com/en-us/services/active-directory/) 对客户端代码进行身份验证，以用于自动化目的。
 
-## <a name="upload-a-management-certificate"></a>上载管理证书
-一旦您创建了一个管理证书（仅使用公开密钥的 .cer 文件），您可以将其上载到门户。 当该证书在门户中可用时，任何拥有匹配证书（私钥）的人可以通过 Management API 连接并访问与订阅相关联的资源。
+## <a name="upload-a-management-certificate"></a>上传管理证书
+创建管理证书后（仅使用公钥的 .cer 文件），可将其上传到门户。 当该证书在门户中可用时，任何拥有匹配证书（私钥）的人都可通过 Management API 连接并访问与订阅相关联的资源。
 
-1. 登录到 [Azure 经典门户](http://manage.windowsazure.com)。
-2. 请确保选择想要关联证书的正确订阅。 在门户的右上方，点按“订阅”。
+1. 登录到 [Azure 门户](http://portal.azure.com)。
+2. 在底部 Azure 服务列表中，单击“更多服务”，然后在“常规”服务组中选择“订阅”。
 
-    ![设置](./media/azure-api-management-certs/subscription.png)
-3. 选择正确订阅后，在门户的左侧（可能需要向下滚动），点按“设置”。
+    ![订阅菜单](./media/azure-api-management-certs/subscriptions_menu.png)
 
-    ![设置](./media/azure-api-management-certs/settings.png)
-4. 点按“管理证书”选项卡。
+3. 请确保选择要与证书关联的正确订阅。     
+4. 选择了正确的订阅后，点按“设置”组中的“管理证书”。
 
-    ![设置](./media/azure-api-management-certs/certificates-tab.png)
+    ![设置](./media/azure-api-management-certs/mgmtcerts_menu.png)
+
 5. 点按“上传”按钮。
 
-    ![设置](./media/azure-api-management-certs/upload.png)
-6. 填写对话框信息并点按完成“复选标记”。
+    ![在“证书”页上传](./media/azure-api-management-certs/certificates_page.png)
+6. 填写对话框信息并点按“上传”。
 
-    ![设置](./media/azure-api-management-certs/upload-dialog.png)
+    ![设置](./media/azure-api-management-certs/certificate_details.png)
 
 ## <a name="next-steps"></a>后续步骤
-现在你已将管理证书与订阅关联，（在本地安装匹配的证书后）可以编程的方式连接到[服务管理 REST API](https://msdn.microsoft.com/library/azure/mt420159.aspx) 并自动执行各种与该订阅关联的 Azure 资源。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
+将管理证书与订阅关联之后，（在本地安装匹配的证书后）可以编程的方式连接到[经典部署模型 REST API](https://msdn.microsoft.com/library/azure/mt420159.aspx) 并自动执行各种与该订阅关联的 Azure 资源。
 

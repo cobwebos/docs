@@ -11,16 +11,17 @@ keywords: "Docker, 容器, 微服务, Kubernetes, DC/OS, Azure"
 ms.assetid: 
 ms.service: container-instances
 ms.devlang: azurecli
-ms.topic: sample
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/19/2017
 ms.author: seanmck
+ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: 5f3fc5f3624cf1ef881adf2af0cb69ad67d09ad3
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 7ec6c7fd2125293ba47a48feb83250eeb667d1a6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -61,7 +62,7 @@ az acr create --resource-group myResourceGroup --name mycontainerregistry082 --s
 
 ## <a name="get-azure-container-registry-information"></a>获取 Azure 容器注册表信息
 
-创建容器注册表后，可查询其登录服务器和密码。 以下代码将返回这些值。 记录所有值，整个教程都会引用这些值。
+创建容器注册表后，可查询其登录服务器和密码。 以下代码将返回这些值。 记录登录服务器和密码的每个值，因为在整个教程中都会引用这些值。
 
 容器注册表登录服务器（更新为注册表名）：
 
@@ -74,7 +75,7 @@ az acr show --name <acrName> --query loginServer
 容器注册表密码：
 
 ```azurecli
-az acr credential show --name <acrName> --query passwords[0].value
+az acr credential show --name <acrName> --query "passwords[0].value"
 ```
 
 在本教程的其余部分，使用 `<acrPassword>` 作为容器注册表密码值的占位符。
@@ -91,7 +92,7 @@ docker login --username=<acrName> --password=<acrPassword> <acrLoginServer>
 
 ## <a name="tag-container-image"></a>标记容器映像
 
-为从专用注册表部署容器映像，需使用注册表的 `loginServer` 名称标记该映像。
+若要从专用注册表部署容器映像，需使用注册表的 `loginServer` 名称标记该映像。
 
 若要查看当前映像的列表，请使用 `docker images` 命令。
 
@@ -179,3 +180,4 @@ v1
 
 > [!div class="nextstepaction"]
 > [将容器部署到 Azure 容器实例](./container-instances-tutorial-deploy-app.md)
+

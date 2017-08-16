@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
-ms.openlocfilehash: f7b21cc941f17d0815316dfe7013e9f97a95c223
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 356aaeff3a78fc7b682d621e8e0de9312582b2fe
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-to-collect-information-about-your-consumers"></a>Azure Active Directory B2C：使用自定义属性来收集有关使用者的信息
-Azure Active Directory (Azure AD) B2C 目录附带了一组内置信息（属性）：名、姓、市、邮编和其他属性。 但是，每个面向使用者的应用程序对于收集使用者的哪些属性具有独特的要求。 在 Azure AD B2C 中，可以扩展存储在每个使用者帐户上的属性集。 可以在 [Azure 门户](https://portal.azure.com/)中创建自定义属性，并将其用于注册策略，如下所示。 你还可以使用 [Azure AD 图形 API](active-directory-b2c-devquickstarts-graph-dotnet.md) 读取和写入这些属性。
+Azure Active Directory (Azure AD) B2C 目录附带了一组内置信息（属性）：名、姓、市、邮编和其他属性。 但是，每个面向使用者的应用程序对于收集使用者的哪些属性具有独特的要求。 在 Azure AD B2C 中，可以扩展存储在每个使用者帐户上的属性集。 可以在 [Azure 门户](https://portal.azure.com/)中创建自定义属性，并将其用于注册策略，如下所示。 还可以使用 [Azure AD 图形 API](active-directory-b2c-devquickstarts-graph-dotnet.md) 读取和写入这些属性。
 
 > [!NOTE]
 > 自定义属性使用 [Azure AD 图形 API 目录架构扩展](https://msdn.microsoft.com/library/azure/dn720459.aspx)。
@@ -31,7 +30,7 @@ Azure Active Directory (Azure AD) B2C 目录附带了一组内置信息（属性
 > 
 
 ## <a name="create-a-custom-attribute"></a>创建自定义属性
-1. [请按照以下步骤导航到 Azure 门户上的 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
+1. [请按照以下步骤导航到 Azure 门户上的 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 2. 单击“用户属性”。
 3. 单击边栏选项卡顶部的“ **+添加** ”。
 4. 提供自定义属性的“名称”（例如，“ShoeSize”）和“说明”（可选） 。 单击“创建” 。
@@ -44,9 +43,9 @@ Azure Active Directory (Azure AD) B2C 目录附带了一组内置信息（属性
 现在自定义属性在“用户属性”列表中显示，以便用于注册策略。
 
 ## <a name="use-a-custom-attribute-in-your-sign-up-policy"></a>在注册策略中使用自定义属性
-1. [请按照以下步骤导航到 Azure 门户上的 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
+1. [请按照以下步骤导航到 Azure 门户上的 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 2. 单击“注册策略”。
-3. 单击注册政策（例如，“B2C_1_SiUp”）以将其打开。 单击边栏选项卡顶部的“编辑”。
+3. 单击注册策略（例如，“B2C_1_SiUp”）将其打开。 单击边栏选项卡顶部的“编辑”。
 4. 单击“注册属性”，并选择自定义属性（例如，“ShoeSize”）。 单击 **“确定”**。
 5. 单击“应用程序声明”，并选择自定义属性。 单击 **“确定”**。
 6. 单击边栏选项卡顶部的“保存”。

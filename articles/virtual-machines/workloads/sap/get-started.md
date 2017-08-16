@@ -18,14 +18,14 @@ ms.date: 03/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 36b21b7655af2505f92c81a136d494200f84d7e1
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 8f34fd29fe6c93eb4cd1a05c79bf9b47072451f2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 
-# <a name="using-sap-on-azure-virtual-machines-vms"></a>使用 Azure 虚拟机 (VM) 上的 SAP
+# <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>使用 Azure 承载和运行 SAP 工作负荷方案
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
 [826037]:https://launchpad.support.sap.com/#/notes/826037
@@ -295,9 +295,16 @@ ms.lasthandoff: 08/03/2017
 [xplat-cli]:../../../cli-install-nodejs.md
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
-选择 Microsoft Azure 作为 SAP 就绪云合作伙伴，能够在可缩放、符合要求且经企业认证的平台上可靠运行任务关键型 SAP 工作负荷。  可利用 Azure 的可伸缩性、灵活性和低成本特性。 由于 Microsoft 和 SAP 之间扩大了合作伙伴关系，因此，可以在 Azure 的各个开发/测试和生产方案中运行 SAP 应用程序 - 并且获得完全支持。 从 SAP NetWeaver 到 SAP S4/HANA，Linux 到 Windows，SAP HANA 到 SQL，我们都能满足客户的需求。 
+选择 Microsoft Azure 作为 SAP 就绪云合作伙伴，能够在可缩放、符合要求且经企业认证的平台上可靠运行任务关键型 SAP 工作负荷和方案。  可利用 Azure 的可伸缩性、灵活性和低成本特性。 由于 Microsoft 和 SAP 之间扩大了合作伙伴关系，因此，可以在 Azure 的各个开发/测试和生产方案中运行 SAP 应用程序 - 并且获得完全支持。 从 SAP NetWeaver 到 SAP S4/HANA、SAP BI，Linux 到 Windows，SAP HANA 到 SQL，我们都能满足客户的需求。 
 
-借助 Microsoft Azure 虚拟机服务和 Azure 大型实例上的 SAP HANA，Microsoft 提供全面的服务架构 (IaaS) 平台。 由于 Azure 支持广泛的 SAP 解决方案，本“入门文档”可充当最新一套 SAP 文档的目录。 随着越来越多的文章添加到文档库，此处也会添加这些文章的标题。 
+除了在 Azure 上承载具有不同 DBMS 的 SAP NetWeaver 方案，可以在 Azure 上承载其他不同的 SAP 工作负荷方案，如 SAP BI。 可以在“Azure 虚拟机上的 SAP NetWeaver”部分中找到有关 Azure 本机虚拟机上的 SAP NetWeaver 部署的文档。 
+
+Azure 具有本机 Azure 虚拟机产品/服务，它们的 CPU 和内存资源规模不断增大，以涵盖利用 SAP HANA 的 SAP 工作负载。 有关本主题的详细信息，请查找“Azure 虚拟机上的 SAP HANA”部分下的文档。
+
+Azure for SAP HANA 的独特性是使 Azure 在竞争中脱颖而出的独特优势。 为了可以承载更多对内存和 CPU 资源要求苛刻的涉及 SAP HANA 的 SAP 方案，Azure 提供客户专用裸机硬件的使用，以便运行对于 S/4HANA 或其他 SAP HANA 工作负荷需要多达 20 TB（可扩大到 60 TB）内存的 SAP HANA 部署。 Azure 上的 SAP HANA（大型实例）这种独特 Azure 解决方案使你可以在专用裸机硬件上运行 SAP HANA，其 SAP 应用层或工作负荷中间软件层在本机 Azure 虚拟机中承载。 此解决方案在“Azure 上的 SAP HANA（大型实例）”部分中的几个文档中进行了记录。   
+
+在 Azure 中承载 SAP 工作负荷方案还可能会导致需要使用 Azure Activity Directory 到不同 SAP 组件以及 SAP SaaS 或 PaaS 产品/服务的标识集成和单一登录。 在“AAD SAP 标识集成和单一登录”部分中介绍和记录了具有 Azure Active Directory (AAD) 和 SAP 实体的这类集成和单一登录方案的列表。
+
 
 ## <a name="sap-hana-on-sap-hana-on-azure-large-instances"></a>Azure 上 SAP HANA 上的 SAP HANA（大型实例）
 
@@ -425,7 +432,7 @@ ms.lasthandoff: 08/03/2017
 
 [可在此处找到此指南](suse-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="3da0389e-708b-4e82-b2a2-e92f132df89c"></a>规划和实现
+### <a name="3da0389e-708b-4e82-b2a2-e92f132df89c"></a>规划和实现
 标题：SAP NetWeaver 的 Azure 虚拟机规划和实现
 
 摘要：如果正考虑在 Azure 虚拟机中运行 SAP NetWeaver，可从本文档着手。 此规划和实现指南有助于评估现有或计划的基于 SAP NetWeaver 的系统是否可以部署到 Azure 虚拟机环境。 它介绍了多个 SAP NetWeaver 部署方案，并包括特定于 Azure 的 SAP 配置。 该文列出并说明了在 SAP/Azure 端运行混合 SAP 布局产品时所需的所有必要配置信息。 此外，还介绍了为确保 IaaS 上基于 SAP NetWeaver 的系统实现高可用性可以采取的措施。
@@ -461,7 +468,7 @@ ms.lasthandoff: 08/03/2017
 
 [可在此处找到此指南][deployment-guide]
 
-## <a name="1343ffe1-8021-4ce6-a08d-3a1553a4db82"></a>DBMS 部署指南
+### <a name="1343ffe1-8021-4ce6-a08d-3a1553a4db82"></a>DBMS 部署指南
 标题：SAP NetWeaver 的 Azure 虚拟机 DBMS 部署
 
 摘要：此文介绍了应与 SAP 一起运行的 DBMS 系统的规划和实现注意事项。 在第一部分中，列出并提供了一般注意事项。 此文的以下部分与在 Azure 中部署 SAP 所支持的不同 DBMS 相关。 提供的不同 DBMS 为 SQL Server、SAP ASE 和 Oracle。 这些特定部分讨论了在 Azure 上将 SAP 系统与这些 DBMS 一起运行时必须考虑的注意事项。 提供了 Azure 上的不同 DBMS 支持的备份和高可用性方法等主题，以便用于 SAP 应用程序。

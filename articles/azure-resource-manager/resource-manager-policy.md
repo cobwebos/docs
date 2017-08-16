@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2017
+ms.date: 08/02/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: f27bc3689f228809e9db8f61485ea0c8b4b302d1
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 0ee2624f45a1de0c23cae4538a38ae3e302eedd3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="resource-policy-overview"></a>资源策略概述
-通过资源策略，可在组织中建立资源约定。 通过定义约定，可以控制成本并更轻松地管理资源。 例如，可以指定仅允许某些类型的虚拟机，或者可以要求所有资源都有特定标记。 策略由所有子资源继承。 因此，如果将策略应用到资源组，则会将其应用到该资源组中的所有资源。
+通过资源策略，可在组织中建立资源约定。 通过定义约定，可以控制成本并更轻松地管理资源。 例如，可指定仅允许特定类型的虚拟机。 或者，可要求所有资源都拥有特定标记。 策略由所有子资源继承。 因此，如果将策略应用到资源组，则会将其应用到该资源组中的所有资源。
 
 了解策略的两个概念：
 
@@ -40,9 +39,9 @@ ms.lasthandoff: 06/30/2017
 > 
 
 ## <a name="how-is-it-different-from-rbac"></a>策略与 RBAC 有什么不同？
-策略和基于角色的访问控制 (RBAC) 之间存在一些主要区别。 RBAC 关注不同范围内的**用户**操作。 例如，将你添加到所需范围的资源组的参与者角色后，你可对该资源组做出更改。 策略关注部署期间的“资源”属性。 例如，通过策略，你可以控制可预配的资源类型，或限制可以预配资源的位置。 不同于 RBAC，策略是默认的允许和明确拒绝系统。 
+策略和基于角色的访问控制 (RBAC) 之间存在一些主要区别。 RBAC 关注不同范围内的**用户**操作。 例如，你将添加到所需范围的资源组的参与者角色后，可对该资源组做出更改。 策略关注部署期间的“资源”属性。 例如，可通过策略控制能够预配的资源类型。 或者，可限制能够预配资源的位置。 不同于 RBAC，策略是默认的允许和明确拒绝系统。 
 
-若要使用策略，必须通过 RBAC 完成身份验证。 具体而言，你的帐户需要：
+若要使用策略，必须通过 RBAC 完成身份验证。 具体而言，帐户需要：
 
 * `Microsoft.Authorization/policydefinitions/write` 定义策略的权限
 * `Microsoft.Authorization/policyassignments/write` 分配策略的权限 
@@ -195,7 +194,7 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 
 在使用 **like** 条件时，可以在值中提供通配符 (*)。
 
-当使用 **match** 条件时，请提供 `#` 来表示数字，提供 `?` 来表示字母，提供任何其他字符来表示该实际字符。 有关示例，请参阅[设置命名约定](#set-naming-convention)。
+当使用 **match** 条件时，请提供 `#` 来表示数字，提供 `?` 来表示字母，提供任何其他字符来表示该实际字符。 有关示例，请参阅[应用针对名称和文本的资源策略](resource-manager-policy-naming-convention.md)。
 
 ### <a name="fields"></a>字段
 使用字段构成条件。 字段显示用于描述资源状态的资源请求负载属性。  
@@ -213,8 +212,8 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 ### <a name="effect"></a>效果
 策略支持三种类型的效果 - `deny`、`audit` 和 `append`。 
 
-* **Deny** 将在审核日志中生成一个事件，并使请求失败
-* **Audit** 将在审核日志中生成一个警告事件，但不会使请求失败
+* **Deny** 会在审核日志中生成一个事件，并使请求失败
+* **Audit** 会在审核日志中生成一个警告事件，但不会使请求失败
 * **Append** 会将定义的字段集添加到请求 
 
 对于 **append**，必须提供以下详细信息：
@@ -233,7 +232,7 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 
 ## <a name="aliases"></a>别名
 
-可以使用属性别名来访问资源类型的特定属性。 
+可以使用属性别名来访问资源类型的特定属性。 通过别名，可限制允许用于特定资源属性的值和条件。 每个别名会映射到给定资源类型不同 API 版本的路径。 在策略评估期间，策略引擎会获取该 API 版本的属性路径。
 
 **Microsoft.Cache/Redis**
 
@@ -265,6 +264,7 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 
 | 别名 | 说明 |
 | ----- | ----------- |
+| Microsoft.Compute/imageId | 设置用于创建虚拟机的映像的标识符。 |
 | Microsoft.Compute/imageOffer | 设置用于创建虚拟机的平台映像或应用商店映像的产品/服务。 |
 | Microsoft.Compute/imagePublisher | 设置用于创建虚拟机的平台映像或应用商店映像的发布者。 |
 | Microsoft.Compute/imageSku | 设置用于创建虚拟机的平台映像或应用商店映像的 SKU。 |
@@ -289,6 +289,7 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 
 | 别名 | 说明 |
 | ----- | ----------- |
+| Microsoft.Compute/imageId | 设置用于创建虚拟机的映像的标识符。 |
 | Microsoft.Compute/imageOffer | 设置用于创建虚拟机的平台映像或应用商店映像的产品/服务。 |
 | Microsoft.Compute/imagePublisher | 设置用于创建虚拟机的平台映像或应用商店映像的发布者。 |
 | Microsoft.Compute/imageSku | 设置用于创建虚拟机的平台映像或应用商店映像的 SKU。 |
