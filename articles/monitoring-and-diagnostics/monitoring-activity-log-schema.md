@@ -26,7 +26,7 @@ ms.lasthandoff: 07/25/2017
 此类别包含对通过资源管理器执行的所有创建、更新、删除和操作的记录。 此类别中的事件类型的示例包括“创建虚拟机”和“删除网络安全组”。用户或应用程序通过资源管理器所进行的每一个操作都会作为特定资源类型上的操作建模。 如果操作类型为“写入”、“删除”或“操作”，则该操作的开始、成功或失败记录都会记录在管理类别中。 管理类别还包括任何对订阅中基于角色的访问控制进行的更改。
 
 ### <a name="sample-event"></a>示例事件
-```
+```json
 {
   "authorization": {
     "action": "microsoft.support/supporttickets/write",
@@ -128,7 +128,7 @@ ms.lasthandoff: 07/25/2017
 此类别包含对任何发生在 Azure 中的服务运行状况事件的记录。 此类别的一个事件类型示例是“美国东部的 SQL Azure 正处于故障时间”。 服务运行状况事件分 5 种：必需操作、辅助恢复、事件、维护、信息或安全性，仅当订阅中存在受事件影响的资源时，它们才出现。
 
 ### <a name="sample-event"></a>示例事件
-```
+```json
 {
   "channels": "Admin",
   "correlationId": "c550176b-8f52-4380-bdc5-36c1b59d3a44",
@@ -217,7 +217,7 @@ Properties.communicationId | 与此事件关联的通信。
 
 ### <a name="sample-event"></a>示例事件
 
-```
+```json
 {
   "caller": "Microsoft.Insights/alertRules",
   "channels": "Admin, Operation",
@@ -329,7 +329,7 @@ Properties.communicationId | 与此事件关联的通信。
 此类别包含基于在订阅中定义的任何自动缩放设置的自动缩放引擎操作相关的事件记录。 可在此类别中看到的事件类型示例如“自动缩放扩大操作失败”。 使用自动缩放，可在支持的资源类型中，通过自动缩放设置基于日期和/或负载（指标）数据来自动增加或减少实例的数量。 满足增加或减少条件时，开始、成功或失败的事件将记录到此类别中。
 
 ### <a name="sample-event"></a>示例事件
-```
+```json
 {
   "caller": "Microsoft.Insights/autoscaleSettings",
   "channels": "Admin, Operation",
