@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: a99fd7931d6172046f2b2e91994381ac6ebc66c9
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 50d7f14d0d4234ee98d8a46e903b5f916cb02fab
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -115,6 +115,8 @@ Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 是 htt
 详细了解流量管理器[终结点监视和自动故障转移](traffic-manager-monitoring.md)。
 
 详细了解流量管理器[流量路由方法](traffic-manager-routing-methods.md)。
+
+了解 Azure 的一些其他关键[网络功能](../networking/networking-overview.md)。
 
 <!--Image references-->
 [1]: ./media/traffic-manager-how-traffic-manager-works/dns-configuration.png

@@ -3,9 +3,9 @@ title: "使用 Azure 移动应用向 Apache Cordova 应用添加推送通知 | M
 description: "了解如何使用 Azure 移动应用将推送通知发送到 Apache Cordova 应用。"
 services: app-service\mobile
 documentationcenter: javascript
-manager: adrianha
+manager: syntaxc4
 editor: 
-author: ysxu
+author: ggailey777
 ms.assetid: 92c596a9-875c-4840-b0e1-69198817576f
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
-ms.author: yuaxu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 47063276d7bb6bb3b3aac0cca4290dfbea5488f7
-ms.openlocfilehash: 99b23de962f7ba338fcf3f9b2e96d58c3dcbe7bc
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: dc3cab0a6a8b4a56ab0fba1a02e5bba9d0ed1b1f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 12/01/2016
-
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>将推送通知添加到 Apache Cordova 应用
@@ -75,7 +74,7 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
 
 **从 Visual Studio 内部：**
 
-1. 在解决方案资源管理器中，打开 `config.xml` 文件，依次单击“插件” > “自定义”，选择 **Git** 作为安装源，然后输入 `https://github.com/phonegap/phonegap-plugin-push` 作为源。
+1. 在解决方案资源管理器中，打开 `config.xml` 文件，依次单击“插件”>“自定义”，选择“Git”作为安装源，并输入 `https://github.com/phonegap/phonegap-plugin-push` 作为源。
 
    ![][img1]
 
@@ -157,7 +156,7 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
 
         pushRegistration.on('error', handleError);
         }
-3. (Android) 在上述代码中，将 `Your_Project_ID` 替换成  [Google Developer Console][18] 中应用的数值项目 ID。
+3. (Android) 在上述代码中，将 `Your_Project_ID` 替换成 [Google Developer Console][18] 中应用的数值项目 ID。
 
 ## <a name="optional-configure-and-run-the-app-on-android"></a>（可选）在 Android 上配置并运行应用
 完成此部分以启用 Android 的推送通知。
@@ -188,15 +187,15 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
 #### <a name="configure-device"></a>配置 Android 设备以进行 USB 调试
 需要启用 USB 调试才能将应用部署到 Android 设备。  在 Android 手机上执行以下步骤：
 
-1. 转到“设置” > “关于手机”，然后点击“内部版本号”，直到启用开发人员模式（大约 7 次）。
-2. 回到“设置” > “开发人员选项”启用“USB 调试”，然后使用 USB 线缆将 Android 手机连接到进行开发的电脑。
+1. 转到“设置”>“关于手机”，然后点击“内部版本号”，直到启用开发人员模式（大约七次）。
+2. 回到“设置”>“开发人员选项”，启用“USB 调试”，然后使用 USB 线缆将 Android 手机连接到进行开发的电脑。
 
 已使用运行 Android 6.0 (Marshmallow) 的 Google Nexus 5X 设备对此进行了测试。  但是，任何新式 Android 版本中都普遍具有此技术。
 
 #### <a name="install-google-play-services"></a>安装 Google Play Services
 推送插件依赖 Android Google Play 服务发送推送通知。
 
-1. 在 Visual Studio 中，依次单击“工具” > “Android” > “Android SDK 管理器”，展开 **Extras** 文件夹并勾选框，以确保已安装以下所有 SDK。
+1. 在 Visual Studio 中，依次单击“工具”>“Android”>“Android SDK 管理器”，展开“Extras”文件夹并勾选复选框，确保已安装以下所有 SDK。
 
    * Android 2.3 或更高版本
    * Google 存储库修订 27 或更高版本
@@ -267,10 +266,9 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
 5. 重新生成项目。
 
 ##### <a name="test-push-notifications-in-your-ios-app"></a>在 iOS 应用中测试推送通知
-1. 在 Visual Studio 中，确保已选择 **iOS** 作为部署目标，然后选择 **设备**
-   ， 以便在已连接的 iOS 设备上运行。
+1. 在 Visual Studio 中，确保已选择 **iOS** 作为部署目标，然后选择“设备”，以便在已连接的 iOS 设备上运行。
 
-    可以使用 iTunes 在已连接到电脑的 iOS 设备上运行。 iOS 模拟器不支持推送通知。
+    可以在使用 iTunes 连接到电脑的 iOS 设备上运行。 iOS 模拟器不支持推送通知。
 
 2. 在 Visual Studio 中按“运行”按钮或 **F5** 生成项目并在 iOS 设备中启动应用，然后单击“确定”接受推送通知。
 

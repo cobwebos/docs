@@ -3,8 +3,8 @@ title: "使用 Azure 移动应用在 iOS 中添加身份验证"
 description: "了解如何使用 Azure 移动应用通过各种标识提供者（包括 AAD、Google、Facebook、Twitter 和 Microsoft）对 iOS 应用的用户进行身份验证。"
 services: app-service\mobile
 documentationcenter: ios
-author: ysxu
-manager: yochayk
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: ef3d3cbe-e7ca-45f9-987f-80c44209dc06
 ms.service: app-service-mobile
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 604c1f84365954ddd3ba2de21fffa90ba5cc274b
-ms.openlocfilehash: 8ea09b30081c60bbf44f8d929750e9a74f9f97b0
-
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: 21a2cc6c1eaf4b34cbe8c2d7c4dbb69c8730cf32
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="add-authentication-to-your-ios-app"></a>Add authentication to your iOS app（将身份验证添加到 iOS 应用）
@@ -25,10 +26,10 @@ ms.openlocfilehash: 8ea09b30081c60bbf44f8d929750e9a74f9f97b0
 
 本教程介绍如何使用支持的标识提供者向 [iOS 快速入门]项目添加身份验证。 本教程基于 [iOS 快速入门]教程，这是必须首先完成的教程。
 
-## <a name="a-nameregisteraregister-your-app-for-authentication-and-configure-the-app-service"></a><a name="register"></a>注册应用以进行身份验证并配置应用服务
+## <a name="register"></a>注册应用以进行身份验证并配置应用服务
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="a-nameredirecturlaadd-your-app-to-the-allowed-external-redirect-urls"></a><a name="redirecturl"></a>将应用添加到允许的外部重定向 URL
+## <a name="redirecturl"></a>将应用添加到允许的外部重定向 URL
 
 安全身份验证要求为应用定义新的 URL 方案。  这允许身份验证系统在身份验证过程完成后，重定向回你的应用。  在本教程中，我们将通篇使用 URL 方案 _appname_。  但是，你可以使用所选择的任何 URL 方案。  对于你的移动应用程序而言，它应是唯一的。  在服务器端启用重定向：
 
@@ -46,12 +47,12 @@ ms.openlocfilehash: 8ea09b30081c60bbf44f8d929750e9a74f9f97b0
 
 7. 单击“保存” 。
 
-## <a name="a-namepermissionsarestrict-permissions-to-authenticated-users"></a><a name="permissions"></a>将权限限制给已经过身份验证的用户
+## <a name="permissions"></a>将权限限制给已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 在 Xcode 中，按“运行”启动应用。 这样将引发异常，因为应用尝试以未经身份验证的用户身份访问后端，但 *TodoItem* 表现在要求身份验证。
 
-## <a name="a-nameadd-authenticationaadd-authentication-to-app"></a><a name="add-authentication"></a>向应用程序添加身份验证
+## <a name="add-authentication"></a>向应用程序添加身份验证
 **Objective-C**：
 
 1. 在 Mac 的 Xcode 中打开 QSTodoListViewController.m 并添加以下方法：
@@ -76,8 +77,7 @@ ms.openlocfilehash: 8ea09b30081c60bbf44f8d929750e9a74f9f97b0
     }
     ```
 
-    若未使用 Google 作为标识提供者，请将 google 更改为 microsoftaccount、twitter、facebook 或 windowsazureactivedirectory。 如果使用 Facebook，需在应用中[将 Facebook 域添加到允许列表][1]
-   。
+    若未使用 Google 作为标识提供者，请将 google 更改为 microsoftaccount、twitter、facebook 或 windowsazureactivedirectory。 如果使用 Facebook，则必须在应用中[将 Facebook 域添加到允许列表][1]。
 
     将 **urlScheme** 替换为应用程序的唯一名称。  urlScheme 应与你在 Azure 门户的“允许的外部重定向 URL”字段中所指定的 URL 方案协议保持一致。 当身份验证请求完成后，身份验证回调使用 urlScheme 切回你的应用程序。
 
@@ -163,8 +163,7 @@ ms.openlocfilehash: 8ea09b30081c60bbf44f8d929750e9a74f9f97b0
     }
     ```
 
-    若未使用 Google 作为标识提供者，请将 google 更改为 microsoftaccount、twitter、facebook 或 windowsazureactivedirectory。 如果使用 Facebook，需在应用中[将 Facebook 域添加到允许列表][1]
-   。
+    若未使用 Google 作为标识提供者，请将 google 更改为 microsoftaccount、twitter、facebook 或 windowsazureactivedirectory。 如果使用 Facebook，则必须在应用中[将 Facebook 域添加到允许列表][1]。
 
     将 **urlScheme** 替换为应用程序的唯一名称。  urlScheme 应与你在 Azure 门户的“允许的外部重定向 URL”字段中所指定的 URL 方案协议保持一致。 当身份验证请求完成后，身份验证回调使用 urlScheme 切回你的应用程序。
 
@@ -221,10 +220,5 @@ ms.openlocfilehash: 8ea09b30081c60bbf44f8d929750e9a74f9f97b0
 [Azure 门户]: https://portal.azure.com
 
 [iOS 快速入门]: app-service-mobile-ios-get-started.md
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

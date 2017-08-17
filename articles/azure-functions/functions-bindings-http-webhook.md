@@ -16,12 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: mahender
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 56d6f7b5858a0e2122021e02718050a26e6defe4
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: f31c0eec6b570c4d9f798185f8f0f8c49a7e400d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure Functions HTTP 和 webhook 绑定
@@ -158,7 +157,7 @@ Slack webhook 为用户生成令牌，而非让用户指定它，所以必须使
 这使得函数代码可以支持地址中的两个参数：“category”和“id”。 可以将任何 [Web API 路由约束](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints)与参数配合使用。 以下 C# 函数代码使用了这两个参数。
 
 ```csharp
-    public static Task<HttpResponseMessage> Run(HttpRequestMessage request, string category, int? id, 
+    public static Task<HttpResponseMessage> Run(HttpRequestMessage req, string category, int? id, 
                                                     TraceWriter log)
     {
         if (id == null)
@@ -290,6 +289,22 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
     return name == null
         ? req.CreateResponse(HttpStatusCode.BadRequest, "Please pass a name on the query string or in the request body")
         : req.CreateResponse(HttpStatusCode.OK, "Hello " + name);
+}
+```
+
+还可以绑定到 POCO，而不是 `HttpRequestMessage`。 这将从分析为 JSON 的请求正文进行水化。 同样，可以将类型传递给 HTTP 响应输出绑定，这将作为包含 200 状态代码的响应正文返回。
+```csharp
+using System.Net;
+using System.Threading.Tasks;
+
+public static string Run(CustomObject req, TraceWriter log)
+{
+    return "Hello " + req?.name;
+}
+
+public class CustomObject {
+     public String name {get; set;}
+}
 }
 ```
 

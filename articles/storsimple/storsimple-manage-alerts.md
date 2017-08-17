@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/08/2017
 ms.author: anbacker
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 2a1e44920581771af77fb46984b1cea31a957d67
-ms.lasthandoff: 03/09/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 5772334aade138101730fa7345f4515664d6d22f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="use-the-storsimple-manager-service-to-view-and-manage-storsimple-alerts"></a>使用 StorSimple Manager 服务查看和管理 StorSimple 警报
@@ -114,7 +114,6 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 * [性能警报](#performance-alerts)
 * [安全警报](#security-alerts)
 * [支持包警报](#support-package-alerts)
-* [更新警报](#update-alerts)
 
 ### <a name="cloud-connectivity-alerts"></a>云连接警报
 | 警报文本 | 事件 | 详细信息/建议的操作 |
@@ -168,7 +167,7 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 ### <a name="locally-pinned-volume-alerts"></a>本地固定卷警报
 | 警报文本 | 事件 | 详细信息/建议的操作 |
 |:--- |:--- |:--- |
-| 创建本地卷 <*卷名称*> 失败。 |卷创建作业失败。 <*对应于失败错误代码的错误消息*>。 |连接问题可能会导致无法成功完成空间创建操作。 本地固定卷是丰富预配的，创建空间的过滤涉及到将分层卷分层到云中。 如果连接没有问题，则可能是已用完设备上的本地空间。 在重试此操作之前，请确定设备上是否还有空间。 |
+| 创建本地卷 <*卷名称*> 失败。 |卷创建作业失败。 <对应于失败错误代码的错误消息>。 |连接问题可能会导致无法成功完成空间创建操作。 本地固定卷是丰富预配的，创建空间的过滤涉及到将分层卷分层到云中。 如果连接没有问题，则可能是已用完设备上的本地空间。 在重试此操作之前，请确定设备上是否还有空间。 |
 | 扩展本地卷 <*卷名称*> 失败。 |由于 <*对应于失败错误代码的错误消息*>，卷修改作业失败。 |连接问题可能会导致无法成功完成卷扩展操作。 本地固定卷是丰富预配的，扩展现有空间的过滤涉及到将分层卷分层到云中。 如果连接没有问题，则可能是已用完设备上的本地空间。 在重试此操作之前，请确定设备上是否还有空间。 |
 | 转换卷 <*卷名称*> 失败。 |将卷类型从本地固定转换为分层的转换作业失败。 |无法完成将类型从本地固定转换为分层的卷转换过程。 确保没有任何连接问题导致操作无法成功完成。 若要排查连接问题，请转到[使用 Test-HcsmConnection cmdlet 进行故障排除](storsimple-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet)。<br>由于本地固定卷中的某些数据已在转换期间分层到云中，原始本地固定卷现已标记为分层卷。 最终的分层卷仍占用设备上无法回收供将来本地卷使用的本地空间。<br>解决所有连接问题、清除警报并将此卷转换回原始本地固定卷类型，确保所有数据可再次在本地使用。 |
 | 转换卷 <*卷名称*> 失败。 |将卷类型从分层转换为本地固定的转换作业失败。 |无法完成将类型从分层转换为本地固定的卷转换过程。 确保没有任何连接问题导致操作无法成功完成。 若要排查连接问题，请转到[使用 Test-HcsmConnection cmdlet 进行故障排除](storsimple-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet)。<br>在转换过程中，现已标记为本地固定卷的原始分层卷继续在云中保留数据，而设备上为此卷丰富预配的空间不再回收供将来的本地卷使用。<br>解决所有连接问题、清除警报并将此卷还原为原始分层卷类型，确保可回收设备上丰富预配的本地空间。 |
@@ -201,17 +200,6 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 | 警报文本 | 事件 | 详细信息/建议的操作 |
 |:--- |:--- |:--- |
 | 创建支持包失败。 |StorSimple 无法生成包。 |重试此操作。 如果问题持续出现，请联系 Microsoft 支持。 解决问题之后，请从警报页中清除此警报。 |
-
-### <a name="update-alerts"></a>更新警报
-| 警报文本 | 事件 | 详细信息/建议的操作 |
-|:--- |:--- |:--- |
-| 已安装修补程序。 |已完成软件/固件更新。 |已在设备上成功安装修补程序。 |
-| 有可用的手动更新。 |可用更新通知。 |请在设备上使用适用于 StorSimple 的 Windows PowerShell 界面安装这些更新。 <br>有关详细信息，请转到[更新 StorSimple 8000 系列设备](storsimple-update-device.md)。 |
-| 有可用的新更新。 |可用更新通知。 |可以从“维护”页或者在设备上使用适用于 StorSimple 的 Windows PowerShell 界面安装这些更新。 <br>有关详细信息，请转到[更新 StorSimple 8000 系列设备](storsimple-update-device.md)。 |
-| 无法安装更新。 |未成功安装更新。 |系统无法安装更新。 可以从“维护”页或者在设备上使用适用于 StorSimple 的 Windows PowerShell 界面安装这些更新。 如果问题持续出现，请联系 Microsoft 支持。 <br>有关详细信息，请转到[更新 StorSimple 8000 系列设备](storsimple-update-device.md)。 |
-| 无法自动检查新更新。 |自动检查失败。 |可以从“维护”页手动检查新更新。 |
-| 有可用的新 WUA 代理。 |可用更新通知。 |下载最新的 Windows Update 代理，然后从 Winodows PowerShell 界面安装该代理。 |
-| 固件组件 <*组件 ID*> 的版本与硬件不匹配。 |未成功安装固件更新。 |请联系 Microsoft 支持。 |
 
 ## <a name="next-steps"></a>后续步骤
 详细了解 [StorSimple 错误以及如何排查运行中设备的问题](storsimple-troubleshoot-operational-device.md)。

@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 0d74a13968338d5dc88eab3353316c77c7544615
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: c852a1297261504015a3a985fe14a38957d1a64a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-a-virtual-machine-with-accelerated-networking"></a>创建具有加速网络的虚拟机
@@ -36,7 +35,8 @@ ms.lasthandoff: 07/06/2017
 
 加速网络的优势仅适用于已启用该功能的 VM。 为获得最佳效果，最好是在连接到同一个 Azure 虚拟网络 (VNet) 的最少两个 VM 上启用此功能。 跨 VNet 通信或者在本地连接时，此功能对总体延迟的影响极小。
 
-[!INCLUDE [virtual-network-preview](../../includes/virtual-network-preview.md)]
+> [!WARNING]
+> 此 Linux 公共预览版功能的可用性和可靠性水平可能与正式发布版不同。 此功能不受支持，可能存在功能限制，并且可能不是在所有 Azure 区域都可用。 有关此功能可用性和状态方面的最新通知，请访问 Azure 虚拟网络更新页。
 
 ## <a name="benefits"></a>优点
 * **更低的延迟/更高的每秒数据包数 (pps)：**从数据路径中去除虚拟交换机可以消除数据包在主机中进行策略处理所花费的时间，同时增大了 VM 中可处理的数据包数。
@@ -51,6 +51,7 @@ ms.lasthandoff: 07/06/2017
 * **区域：**具有加速网络的 Windows VM 已在大多数 Azure 区域中提供。 已在大多区域中提供具有加速网络的 Linux VM。 支持此功能的区域正在不断增加。 请参阅下方的 Azure 虚拟网络更新博客获取最新信息。   
 * **支持的操作系统：**Windows：Microsoft Windows Server 2012 R2 Datacenter 和 Windows Server 2016。 Linux: 内核 4.4.0-77 或更高版本的 Ubuntu Server 16.04 LTS、SLES 12 SP2、RHEL 7.3 和 CentOS 7.3 （已由“Rogue Wave Software”发布）。
 * **VM 大小：**具有八个或多个核心的通用和计算优化实例大小。 有关详细信息，请参阅有关 [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 和 [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM 大小的文章。 支持的 VM 实例大小组合今后会不断增加。
+* **仅通过 Azure 资源管理器 (ARM) 进行部署：**无法使用加速网络通过 ASM/RDFE 进行部署。
 
 当这些限制有变化时，我们会通过 [Azure 虚拟网络更新](https://azure.microsoft.com/updates/accelerated-networking-in-preview)页发出通告。
 
@@ -324,11 +325,11 @@ ms.lasthandoff: 07/06/2017
 
 1.  在 Azure 上预配 non-SRIOV CentOS 7.3 VM
 
-2.  安装 LIS 4.2.1：
+2.  安装 LIS 4.2.2：
     
     ```bash
-    wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.1-1.tar.gz
-    tar -xvf lis-rpms-4.2.1-1.tar.gz
+    wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.2-2.tar.gz
+    tar -xvf lis-rpms-4.2.2-2.tar.gz
     cd LISISO && sudo ./install.sh
     ```
 
@@ -402,8 +403,8 @@ ms.lasthandoff: 07/06/2017
 
     # Specify a URI for the location from which the new image binary large object (BLOB) is copied to start the virtual machine. 
     # Must end with ".vhd" extension
-    $destOsDiskName = "MyOsDiskName.vhd" 
-    $destOsDiskUri = "https://myexamplesa.blob.core.windows.net/vhds/" + $destOsDiskName
+    $OsDiskName = "MyOsDiskName.vhd" 
+    $destOsDiskUri = "https://myexamplesa.blob.core.windows.net/vhds/" + $OsDiskName
     
     # Define a credential object for the VM. PowerShell prompts you for a username and password.
     $Cred = Get-Credential
@@ -417,7 +418,7 @@ ms.lasthandoff: 07/06/2017
      -Credential $Cred | `
     Add-AzureRmVMNetworkInterface -Id $Nic.Id | `
     Set-AzureRmVMOSDisk `
-     -Name $OSDiskName `
+     -Name $OsDiskName `
      -SourceImageUri $sourceUri `
      -VhdUri $destOsDiskUri `
      -CreateOption FromImage `

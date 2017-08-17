@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/26/2017
+ms.date: 07/17/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 1152893c4c686fa69f7e06ffa7e2d2b2272bc772
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: bcc3a229369a065cfcfbd32eadbf3f6ae6fe0036
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 
@@ -36,7 +35,7 @@ ms.lasthandoff: 06/01/2017
 
 ## <a name="log-and-event-sources"></a>日志和事件源
 
-### <a name="service-fabric-infrastructure-events"></a>Service Fabric 基础结构事件
+### <a name="service-fabric-platform-events"></a>Service Fabric 平台事件
 Service Fabric 通过 [LTTng](http://lttng.org) 发出几个现成可用的日志，包括操作事件或运行时事件。 这些日志存储在群集的 Resource Manager 模板指定的位置。 若要获取存储帐户的详细信息，请搜索 AzureTableWinFabETWQueryable 标记，然后查找 StoreConnectionString。
 
 ### <a name="application-events"></a>应用程序事件

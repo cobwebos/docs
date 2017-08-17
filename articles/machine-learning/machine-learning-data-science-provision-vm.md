@@ -1,6 +1,6 @@
 ---
 title: "预配 Microsoft 数据科研虚拟机 | Microsoft 文档"
-description: "在 Azure 上配置和创建数据科研虚拟机，用于进行分析和机器学习。"
+description: "在 Azure 上配置和创建数据科学虚拟机，用于进行分析和机器学习。"
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -11,18 +11,17 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 07/21/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1469e7a2f5f41ef52c0ff77e6e70378951594135
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: b1b29ba11bc489a6ad67c2d9043cdb8a2dca7ef8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="provision-the-microsoft-data-science-virtual-machine"></a>预配 Microsoft 数据科研虚拟机
-Microsoft 数据科研虚拟机是一种 Azure 虚拟机 (VM) 映像，其上已预装并配置了多个常用于数据分析和机器学习的流行工具。 这些工具包括：
+Microsoft 数据科学虚拟机是一种 Windows Azure 虚拟机 (VM) 映像，它已预装并配置了多个常用于数据分析和机器学习的热门工具。 这些工具包括：
 
 * Microsoft R Server Developer Edition
 * Enthought Python 分发版
@@ -42,7 +41,13 @@ Microsoft 数据科研虚拟机是一种 Azure 虚拟机 (VM) 映像，其上已
 * 包含 Git Bash 的 Git，可配合源代码存储库（包括 GitHub、Visual Studio Team Services）使用
 * 提供 Windows 端口，包含可通过命令提示符访问的多个流行 Linux 命令行实用工具（包括 awk、sed、perl、grep、find、wget 及 curl 等）。 
 
-数据科研涉及到反复执行一系列的任务：查找、加载和前处理数据、构建与测试模型，以及部署模型以便在智能应用程序中使用。 数据科研人员可使用各种工具来完成这些任务。 找到软件的适当版本然后下载并安装这些版本，是相当耗时的工作。 Microsoft 数据科研虚拟机提供可在 Azure 上预配的现成映像，其中已预装并配置了多个常用工具，有助于减轻工作负担。 
+执行数据科学涉及对一系列任务的迭代：
+
+1. 查找、加载和预处理数据
+2. 构建和测试模型
+3. 部署模型以在智能应用程序中使用
+
+数据科研人员可使用各种工具来完成这些任务。 找到软件的适当版本然后下载并安装这些版本，是相当耗时的工作。 Microsoft 数据科研虚拟机提供可在 Azure 上预配的现成映像，其中已预装并配置了多个常用工具，有助于减轻工作负担。 
 
 Microsoft 数据科研虚拟机可快速启动分析项目。 它支持处理各种语言版本的任务，包括 R、Python、SQL 和 C#。 Visual Studio 提供 IDE，可开发易于使用的代码并对其进行测试。 使用 VM 中包含的 Azure SDK，可在 Microsoft 云平台上使用各种服务来生成应用程序。 
 
@@ -92,18 +97,19 @@ Microsoft 数据科研虚拟机可快速启动分析项目。 它支持处理各
 创建并预配 VM 后，便可以开始使用其上安装并配置的工具。 许多工具带有开始菜单磁贴和桌面图标。 
 
 ## <a name="how-to-create-a-strong-password-for-jupyter-and-start-the-notebook-server"></a>如何在笔记本服务器上创建 Jupyter 的强密码
-默认情况下，VM 上已预先配置 Jupyter 笔记本服务器，但除非设置 Jupyter 密码，否则该服务器处于禁用状态。 若要为计算机上安装的 Jupyter 笔记本服务器创建强密码，请在数据科研虚拟机上的命令提示符下运行以下命令，或者在使用本地 VM 管理员帐户的情况下双击所提供的、名为 **Jupyter Set Password & Start** 的桌面快捷方式。
+默认情况下，VM 上已预先配置 Jupyter 笔记本服务器，但除非设置 Jupyter 密码，否则该服务器处于禁用状态。 若要为计算机上安装的 Jupyter 笔记本服务器创建强密码，请在数据科学虚拟机上的命令提示符下运行以下命令，或者在使用本地 VM 管理员帐户的情况下双击所提供的名为 Jupyter Set Password & Start 的桌面快捷方式。
 
     C:\dsvm\tools\setup\JupyterSetPasswordAndStart.cmd
 
 根据消息提示选择一个强密码。
 
-上述脚本将创建密码哈希，并将其存储在配置文件 **C:\ProgramData\jupyter\jupyter_notebook_config.py** 中名为 ***c.NotebookApp.password*** 的参数下面。
+上述脚本可创建密码哈希，并将其存储在 Jupyter 配置文件中，具体位于 C:\ProgramData\jupyter\jupyter_notebook_config.py 中名为 c.NotebookApp.password 的参数下。
 
-该脚本还将在后台启用并运行 Jupyter 服务器。 将在 Windows 任务计划程序中以 Windows 任务形式创建名为 **Start_IPython_Notebook** 的 Jupyter 服务器。  设置密码后，可能需要等待几秒才能在浏览器中打开笔记本。 有关如何访问 Jupyter 笔记本服务器，请参阅下面标题为 **Jupyter 笔记本**的部分。 
+该脚本还会在后台启用并运行 Jupyter 服务器。 将在 Windows 任务计划程序中以 Windows 任务形式创建名为 **Start_IPython_Notebook** 的 Jupyter 服务器。  设置密码后，可能需要等待几秒才能在浏览器中打开笔记本。 有关如何访问 Jupyter 笔记本服务器，请参阅下面标题为 **Jupyter 笔记本**的部分。 
 
 
 ## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>Microsoft 数据科研虚拟机上安装的工具
+
 ### <a name="microsoft-r-server-developer-edition"></a>Microsoft R Server Developer Edition
 VM 上已安装 Microsoft R Server Developer Edition，方便将 R 用于分析。 Microsoft R Server 是可广泛部署的企业级分析平台，它基于受支持、可缩放且安全的 R 框架。 R Server 支持各种大数据统计、预测建模和机器学习功能，因此可支持各种类型的分析 – 浏览、分析、可视化和建模。 通过利用和扩展开源 R，Microsoft R Server 与 R 脚本、函数和 CRAN 包完全兼容，可分析企业级数据。 此外，它具有数据并行处理和区块式处理能力，可解决开源 R 的内存限制。 因此，可分析的数据量可以远远超过主内存的容量。  VM 随附的 Visual Studio Community Edition 包含用于 Visual Studio 的 R 工具扩展，提供可配合 R 使用的完整 IDE。还可以下载并使用其他 IDE，例如 [RStudio](http://www.rstudio.com)。 
 
