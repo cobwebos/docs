@@ -3,7 +3,7 @@ title: "防止意外成本，管理计费 - Azure | Microsoft Docs"
 description: "了解如何在你的 Azure 帐单上避免意外费用。 将成本跟踪和管理功能用于 Microsoft Azure 订阅。"
 services: 
 documentationcenter: 
-author: jlian
+author: tonguyen10
 manager: tonguyen
 editor: 
 tags: billing
@@ -13,16 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/20/2017
-ms.author: jlian
+ms.date: 08/10/2017
+ms.author: tonguyen
+experimental_id: a2b2579c-cd2e-41
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
 ms.openlocfilehash: 539a3e628dfec1088f683652bc9b743b87875d36
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/26/2017
 
-
 ---
+
 # <a name="prevent-unexpected-costs-with-azure-billing-and-cost-management"></a>通过 Azure 计费和成本管理来防止意外成本
 
 注册 Azure 时，可以做几件事情，以便更好地了解费用。 在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中选择订阅时，可查看当前成本明细和消耗率。 还可以[下载过去的发票和详细的使用情况文件](billing-download-azure-invoice-daily-usage-date.md)。 如果要对不同项目或团队使用的资源的成本进行分组，请查看[资源标记](../azure-resource-manager/resource-group-using-tags.md)。 如果组织有你希望使用的报告系统，请查看[计费 API](billing-usage-rate-card-overview.md)。 
@@ -39,7 +40,7 @@ ms.lasthandoff: 04/26/2017
 
 查看[定价计算器](https://azure.microsoft.com/pricing/calculator/)和[总拥有成本计算器](https://aka.ms/azure-tco-calculator)，以估算感兴趣的服务的每月成本。 例如，如果 A1 Windows 虚拟机 (VM) 保持一直运行，则其计算小时数预计花费 66.96 美元/月：
 
-![定价计算器的屏幕截图，图中 A1 Windows VM 预计每月花费 66.96 美元](./media/billing-getting-started/pricing-calc.PNG)
+![定价计算器的屏幕截图，图中 A1 Windows VM 预计每月花费 66.96 美元](./media/billing-getting-started/pricing-calcVM.png)
 
 有关详细信息，请参阅[定价常见问题解答](https://azure.microsoft.com/pricing/faq/)。 如果想咨询具体人员，请拨打 1-800-867-1389。
 
@@ -136,7 +137,7 @@ ms.lasthandoff: 04/26/2017
 
 7. 单击某个资源，查看费用历史记录和其每天的费用。
 
-    ![Azure 门户中费用历史记录视图的屏幕截图](./media/billing-getting-started/spend-history.PNG)
+    ![Azure 门户中费用历史记录视图的屏幕截图](./media/billing-getting-started/costhistory.PNG)
 
 建议对比选择服务时看到的预计值查看现在的费用。 如果成本和预计值相差很大，请再次查看之前为资源选择的定价计划（例如 A1 或 A0 VM）。 
 
@@ -187,3 +188,4 @@ ms.lasthandoff: 04/26/2017
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 
 如果需要帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
+
