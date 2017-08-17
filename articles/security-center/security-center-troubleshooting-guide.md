@@ -12,25 +12,24 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 08/11/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: fa70dffc2a4bade44e1dec583bdfcf7b5dae6801
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 0e0a0ce5c0795cec0e47cd5f729099f4762381a2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 安全中心故障排除指南
 本指南适用于信息技术 (IT) 专业人员、信息安全分析人员，以及那些组织中正在使用 Azure 安全中心并需要进行排除安全中心相关问题的云管理员。
 
 >[!NOTE] 
->自 2017 年 6 月初开始，安全中心将使用 Microsoft Monitoring Agent 来收集和存储数据。 请参阅 [Azure 安全中心平台迁移](security-center-platform-migration.md)，了解详细信息。 本文中的信息表示转换到 Microsoft Monitoring Agent 后的安全中心功能。
+>自 2017 年 6 月初开始，安全中心使用 Microsoft Monitoring Agent 来收集和存储数据。 请参阅 [Azure 安全中心平台迁移](security-center-platform-migration.md)，了解详细信息。 本文中的信息表示转换到 Microsoft Monitoring Agent 后的安全中心功能。
 >
 
 ## <a name="troubleshooting-guide"></a>故障排除指南
-本指南介绍如何排除安全中心的相关问题。 安全中心完成的大部分故障排除首先通过查看失败组件的[审核日志](https://azure.microsoft.com/updates/audit-logs-in-azure-preview-portal/)记录展开。 通过审核日志，你可以确定：
+本指南介绍如何排除安全中心的相关问题。 安全中心完成的大部分故障排除首先通过查看失败组件的[审核日志](https://azure.microsoft.com/updates/audit-logs-in-azure-preview-portal/)记录展开。 通过审核日志，可以确定：
 
 * 哪些操作已发生
 * 谁启动了该操作
@@ -88,7 +87,7 @@ ms.lasthandoff: 06/17/2017
 来宾代理是 [Microsoft 反恶意软件](../security/azure-security-antimalware.md)扩展进行的所有操作的父进程。 当来宾代理进程故障时，作为来宾代理子进程运行的 Microsoft 反恶意软件也可能发生故障。  这类情况下，建议验证以下选项：
 
 - 目标 VM 是否是自定义映像，VM 的创建者是否从未安装过来宾代理。
-- 如果目标是 Linux VM 而非 Windows VM，则在 Linux VM 上安装 Windows 版反恶意软件扩展将失败。 Linux 来宾代理对操作系统版本和所需程序包有特定要求，如不满足这些要求，则 VM 代理也无法正常工作。 
+- 如果目标是 Linux VM 而非 Windows VM，则在 Linux VM 上安装 Windows 版反恶意软件扩展会失败。 Linux 来宾代理对操作系统版本和所需程序包有特定要求，如不满足这些要求，则 VM 代理也无法正常工作。 
 - 是否使用旧版来宾代理创建了 VM。 如果是，请注意某些旧版代理不会自动更新到较新版本，这可能导致出现此问题。 创建自己的映像时，请始终使用最新版本的来宾代理。
 - 某些第三方管理软件可能会禁用来宾代理，或阻止对某些文件位置的访问。 如果 VM 上安装有第三方管理软件，请确保代理在排除列表中。
 - 某些防火墙设置或网络安全组 (NSG) 可能会阻止发送至来宾代理的流量和来宾代理发送出的流量。
@@ -105,6 +104,7 @@ ms.lasthandoff: 06/17/2017
 可以使用本文中提供的指南来识别一些问题，还可以在安全中心公共 [论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter)中查找记录的其他问题。 但是，如果需要进一步故障排除，则可使用 Azure 门户打开新的支持请求，如下所示： 
 
 ![Microsoft 支持部门](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
+
 
 ## <a name="see-also"></a>另请参阅
 在本文档中，已经学习了如何在 Azure 安全中心中配置安全策略。 若要了解更多有关 Azure 安全中心的详细信息，请参阅以下内容：
