@@ -33,6 +33,7 @@
 # 指南
 ## [应用程序注册](active-directory-integrating-applications.md)
 ## [多租户应用](active-directory-devhowto-multi-tenant-overview.md)
+## [条件性访问](active-directory-conditional-access-developer.md)
 ## OAuth 与 OpenID Connect
 ### [OpenID Connect 协议](active-directory-protocols-openid-connect-code.md)
 ### [OAuth 2.0 授权代码授予](active-directory-protocols-oauth-code.md)

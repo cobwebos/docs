@@ -133,11 +133,12 @@
 ### 生成容器服务
 #### [创建 Windows 容器应用程序](service-fabric-get-started-containers.md)
 #### [创建 Linux 容器应用程序](service-fabric-get-started-containers-linux.md)
-#### [部署 Linux 容器](service-fabric-deploy-container-linux.md)
+#### [容器安全性](service-fabric-securing-containers.md)
 #### [Docker Compose（预览）](service-fabric-docker-compose.md)
 #### [容器和服务的资源调控](service-fabric-resource-governance.md)
 #### [卷和日志记录驱动程序](service-fabric-containers-volume-logging-drivers.md)
 #### [容器内的服务](service-fabric-services-inside-containers.md)
+#### [容器网络模式](service-fabric-networking-modes.md)
 
 ### 生成 Reliable Services 服务
 #### [概述](service-fabric-reliable-services-introduction.md)

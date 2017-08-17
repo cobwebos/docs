@@ -9,6 +9,7 @@
 # 入门
 ## [注册 Azure AD Premium](active-directory-get-started-premium.md)
 ## [添加自定义域名](add-custom-domain.md)
+## [配置公司品牌](customize-branding.md)
 ## [配置自助服务密码重置](active-directory-passwords-getting-started.md)
 ## 管理 Azure AD 许可
 ### [Azure 门户](active-directory-licensing-get-started-azure-portal.md)
@@ -142,6 +143,7 @@
 
 
 ## 管理设备
+### [介绍](device-management-introduction.md)
 ### [注册设备](active-directory-device-registration-overview.md)
 #### [设置](active-directory-conditional-access-automatic-device-registration-setup.md)
 #### [本地部署](active-directory-device-registration-on-premises-setup.md)
@@ -241,10 +243,6 @@
 #### 管理域名
 ##### [Azure 门户](active-directory-domains-manage-azure-portal.md)
 ##### [经典门户](active-directory-add-manage-domain-names.md)
-### 自定义登录页
-#### [Azure 门户](active-directory-branding-custom-signon-azure-portal.md)
-#### [特定于语言](active-directory-branding-localize-azure-portal.md)
-#### [经典门户](active-directory-add-company-branding.md)
 ### [管理目录](active-directory-administer.md)
 ### [多个目录](active-directory-licensing-directory-independence.md)
 ### [O365 目录](active-directory-manage-o365-subscription.md)
