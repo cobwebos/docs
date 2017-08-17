@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: saeeda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 6683b116e5e42c0ba6f1d0f381143bf846bd9810
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: f06e02cb15532a4e0f6660ca3a88a7031d498632
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="azure-active-directory-b2c-faqs"></a>Azure Active Directory B2C：常见问题
@@ -52,7 +51,7 @@ Azure AD B2C 不用于 Microsoft Office 365 用户的身份验证。  Azure AD �
 不，可以在任何位置（在云中或本地）托管应用程序。 只要能在公共可访问的端点上发送和接收 HTTP 请求，它就可以与 Azure AD B2C 进行交互。
 
 ### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>我有多个 Azure AD B2C 租户。 如何在 Azure 门户上管理它们？
-每个 Azure AD B2C 租户在 Azure 门户上都有其自己的 B2C 边栏选项卡。 请参阅 [Azure AD B2C：注册应用程序](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)，了解如何导航到 Azure 门户上特定租户的 B2C 功能边栏选项卡。 在大多数浏览器中，在 Azure 门户上的 Azure AD B2C 目录之间进行切换不能保持 B2C 功能边栏选项卡始终开启。
+每个 Azure AD B2C 租户在 Azure 门户上都有其自己的 B2C 边栏选项卡。 请参阅 [Azure AD B2C：注册应用程序](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)，了解如何导航到 Azure 门户上特定租户的 B2C 功能边栏选项卡。 在大多数浏览器中，在 Azure 门户上的 Azure AD B2C 目录之间进行切换不能保持 B2C 功能边栏选项卡始终开启。
 
 ### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>如何自定义 Azure AD B2C 发送的验证电子邮件（内容和“发件人:”字段）？
 可以使用[公司品牌功能](../active-directory/active-directory-add-company-branding.md)来自定义验证电子邮件的内容。 具体来说，可以自定义电子邮件的下列两个元素：
@@ -109,10 +108,10 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>如何删除 Azure AD B2C 租户？
 请按照以下步骤删除 Azure AD B2C 租户：
 
-1. 请按照以下步骤在 Azure 门户上[导航到 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
+1. 请按照以下步骤在 Azure 门户上[导航到 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 1. 导航到“应用程序”、“标识提供者”、“所有策略”边栏选项卡，然后删除其中的所有条目。
 1. 现在，以订阅管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.com/) 。 （使用在注册 Azure 时使用的同一工作或学校帐户，或同一 Microsoft 帐户。）
-1. 导航到左侧的 Active Directory 扩展，然后单击 B2C 租户。
+1. 导航到左侧的 Active Directory 扩展，并单击 B2C 租户。
 1. 单击“用户”选项卡。
 1. 依次选择每个用户（排除当前以订阅管理员身份登录的用户）。 单击页面底部的“删除”，并在出现提示时单击“是”。
 1. 单击“应用程序”选项卡。

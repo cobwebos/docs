@@ -1,6 +1,6 @@
 ---
-title: "在 Azure App Service 中监视应用 | Microsoft Docs"
-description: "了解如何使用 Azure 门户在 Azure App Service 中监视应用。"
+title: "在 Azure 应用服务中监视应用 | Microsoft Docs"
+description: "了解如何使用 Azure 门户在 Azure 应用服务中监视应用。"
 services: app-service
 documentationcenter: 
 author: btardif
@@ -14,15 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: byvinyal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: d779170030b61540de2c0459e574a72cdc77f342
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 25d3776920d683fffedcd8ac6ed0e84dfe875974
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/16/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
-# <a name="how-to-monitor-apps-in-azure-app-service"></a>如何：在 Azure App Service 中监视 Web 应用
+# <a name="how-to-monitor-apps-in-azure-app-service"></a>如何：在 Azure 应用服务中监视 Web 应用
 [应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)在 [Azure 门户](https://portal.azure.com)中提供了内置监视功能。
 还能查看应用的**配额**和**度量值**以及应用服务计划、设置**警报**，甚至基于这些度量值自动**缩放**。
 
@@ -39,7 +38,7 @@ ms.lasthandoff: 02/16/2017
 **免费**或**共享**应用的**配额**如下：
 
 * **CPU（短期）**
-  * 3 分钟内允许此应用程序使用的 CPU 量。 此配额每 3 分钟重置。
+  * 5 分钟内允许此应用程序使用的 CPU 量。 此配额每 5 分钟重置。
 * **CPU（天）**
   * 1 天内允许此应用程序使用的 CPU 总量。 此配额每隔 24 小时在 UTC 午夜时间重置。
 * **内存**
@@ -60,7 +59,7 @@ ms.lasthandoff: 02/16/2017
 
 如果超过应用程序**内存**配额，则将重启该应用程序。
 
-如果超过**文件系统**配额，则任何写入操作都将失败，包括写入日志。
+如果超过**文件系统**配额，则任何写入操作都会失败，包括写入日志。
 
 可通过升级应用服务计划从应用中增加或删除配额。
 
@@ -143,23 +142,23 @@ ms.lasthandoff: 02/16/2017
 **配额** 。 用户体验允许查看：(1) 配额名称、(2) 配额重置时间间隔、(3) 配额当前限制和 (4) 当前值。
 
 可以直接从资源边栏选项卡中访问![][metrics]
-**度量值**。 还可以通过以下操作自定义图表：(1) **单击**图表，然后选择 (2)“编辑图表”。
+**度量值**。 还可以通过以下操作自定义图表：(1) **单击**图表，并选择 (2)“编辑图表”。
 可在此处更改要显示的 (3) **时间范围**、(4) **图表类型**和 (5) **度量值**。  
 
 可以在此处了解有关度量值的详细信息：[监视服务度量值](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)。
 
 ## <a name="alerts-and-autoscale"></a>警报和自动缩放
-可将应用或应用服务计划的度量值连接到警报；若要了解相关详细信息，请参阅[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
+可将应用或应用服务计划的度量值连接到警报；要了解相关详细信息，请参阅[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
-托管在基本、标准或高级应用服务计划中的应用服务应用支持**自动缩放**。 这使你可以配置监视应用服务计划度量值的规则，还能增加或减少根据需要提供其他资源或在过度预配时节约资金的实例计数。 可以在此处了解有关自动缩放的详细信息：[如何缩放](../monitoring-and-diagnostics/insights-how-to-scale.md)以及 [Azure 监视器自动缩放的最佳做法](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
+托管在基本、标准或高级应用服务计划中的应用服务应用支持**自动缩放**。 这样便可以配置监视应用服务计划度量值的规则，还能增加或减少根据需要提供其他资源或在过度预配时节约资金的实例计数。 可以在此处了解有关自动缩放的详细信息：[如何缩放](../monitoring-and-diagnostics/insights-how-to-scale.md)以及 [Azure 监视器自动缩放的最佳做法](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
 
 > [!NOTE]
-> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
+> 如果要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
 ## <a name="whats-changed"></a>发生的更改
-* 有关从网站更改为 App Service 的指南，请参阅 [Azure App Service 及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 有关从网站更改为 应用服务的指南，请参阅 [Azure 应用服务及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 [fzilla]:http://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:http://go.microsoft.com/fwlink/?LinkID=309169

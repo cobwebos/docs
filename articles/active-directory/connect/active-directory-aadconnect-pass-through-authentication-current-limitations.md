@@ -2,7 +2,7 @@
 title: "Azure AD Connect：直通身份验证 - 当前限制 | Microsoft Docs"
 description: "本文介绍 Azure Active Directory (Azure AD) 直通身份验证的当前限制。"
 services: active-directory
-keywords: "Azure AD Connect 稀罕第身份验证, 安装 Active Directory, Azure AD 所需组件, SSO, 单一登录"
+keywords: "Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需组件, SSO, 单一登录"
 documentationcenter: 
 author: swkrish
 manager: femila
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 08/03/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 40d07ce6e480924c7c1af601cc25e4a74280141f
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 37c0ea094d02208f2516a4a040f75894e046c670
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 
@@ -34,13 +34,14 @@ ms.lasthandoff: 07/26/2017
 - 用户登录到所有基于 Web 浏览器的应用程序。
 - 用户登录到支持[新式身份验证](https://aka.ms/modernauthga)的 Office 365 客户端应用程序。
 - 适用于 Windows 10 设备的 Azure AD Join。
+- Exchange ActiveSync 支持。
 
 ## <a name="unsupported-scenarios"></a>不支持的方案
 
 预览版_不_支持以下方案：
 
-- 用户登录到旧版 Office 客户端应用程序和 Exchange ActiveSync（即，移动设备上的本机电子邮件应用程序）。 我们建议组织在可能的情况下改用新式身份验证。 新式身份验证允许直通身份验证支持，而且还有助于使用[条件访问](../active-directory-conditional-access.md)功能（例如多重身份验证 (MFA)）来保护标识。
-- 用户登录到 Skype for Business 客户端应用程序。
+- 用户登录到旧版 Office 客户端应用程序（Office 2013 或更早版本）。 我们建议组织在可能的情况下改用新式身份验证。 新式身份验证允许传递身份验证支持，而且还有助于使用[条件访问](../active-directory-conditional-access.md)功能（例如多重身份验证 (MFA)）保护用户帐户。
+- 用户登录到 Skype for Business 客户端应用程序，包括 Skype for Business 2016。
 - 用户登录到 PowerShell v1.0。 建议改用 PowerShell v2.0。
 
 >[!IMPORTANT]

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: ac019d5393e9e9b7edb7960aa50edd5af3b49ebc
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: 9d63148c182c705b6b49733c59ed8fdd13872d72
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/20/2017
 
 ---
 
@@ -32,12 +32,6 @@ ms.lasthandoff: 07/06/2017
 
 | 计数器类别 | 计数器名称 |
 | --- | --- |
-| PhysicalDisk(Total) | 平均 磁盘读取队列长度 |
-| PhysicalDisk(Total) | 平均 磁盘写入队列长度 |
-| PhysicalDisk(Total) | 磁盘读取数/秒 |
-| PhysicalDisk(Total) | 磁盘读取字节数/秒 |
-| PhysicalDisk(Total) | 磁盘写入数/秒 |
-| PhysicalDisk(Total) | 磁盘写入字节数/秒 |
 | PhysicalDisk(per Disk) | 平均 磁盘读取队列长度 |
 | PhysicalDisk(per Disk) | 平均 磁盘写入队列长度 |
 | PhysicalDisk(per Disk) | 平均 磁盘秒数/读取 |
@@ -85,6 +79,6 @@ Service Fabric 生成大量自定义性能计数器。 如果已安装 SDK，可
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解 Service Fabric 中的[基础结构级事件生成](service-fabric-diagnostics-event-generation-infra.md)
+* 详细了解 Service Fabric 中的[平台级事件生成情况](service-fabric-diagnostics-event-generation-infra.md)
 * 通过 [Azure 诊断](service-fabric-diagnostics-event-aggregation-wad.md)收集性能指标
 

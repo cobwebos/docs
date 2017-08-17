@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 08/04/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: c4cd80c50dca5b97c36f1c9785d8ea347b35285c
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 5a390208f4b7c22e96d7888bcbbd14d8b27667eb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -32,8 +32,8 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 
 ![无缝单一登录](./media/active-directory-aadconnect-sso/sso1.png)
 
->[!NOTE]
->此功能不适用于 Active Directory 联合身份验证服务 (ADFS)，因为其中已包含此功能。
+>[!IMPORTANT]
+>无缝 SSO 目前以预览版提供。 此功能不适用于 Active Directory 联合身份验证服务 (ADFS)。
 
 ## <a name="key-benefits"></a>主要优点
 
@@ -44,26 +44,29 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
   - 不需要本地任何其他组件来完成此操作。
   - 与云身份验证的任何方法 - [密码哈希同步](active-directory-aadconnectsync-implement-password-synchronization.md)或[直通身份验证](active-directory-aadconnect-pass-through-authentication.md)结合使用。
   - 可以分发给某些或所有使用组策略的用户。
-  - 使用 Azure AD 注册非 Windows 10 设备。 这需要版本 2.1 或更高版本的[工作区加入客户端](https://www.microsoft.com/download/details.aspx?id=53554)。
+  - 使用 Azure AD 注册非 Windows 10 设备，无需任何 AD FS 基础结构。 此功能需要使用 2.1 版或更高版本的 [Workplace Join 客户端](https://www.microsoft.com/download/details.aspx?id=53554)。
 
 ## <a name="feature-highlights"></a>功能特点
 
-- 登录用户名可以是本地默认用户名 (`userPrincipalName`)，也可以是 Azure AD Connect 中配置的另一个属性 (`Alternate ID`)。
+- 登录用户名可以是本地默认用户名 (`userPrincipalName`)，也可以是 Azure AD Connect 中配置的另一个属性 (`Alternate ID`)。 两种用例均可运行，因为无缝 SSO 使用 Kerberos 票证中的 `securityIdentifier` 声明，在 Azure AD 中查找相应的用户对象。
 - 无缝 SSO 是个机会型功能。 如果由于任何原因失败，用户登录体验将回退到其常规行为 - 即用户将需要在登录页面上输入其密码。
-- 如果应用程序在其 Azure AD 登录请求中转发 `domain_hint`（标识你的租户）或 `login_hint`（标识用户）参数，用户将会自动登录，而无需输入其用户名或密码。
+- 如果应用程序在其 Azure AD 登录请求中转发 `domain_hint` (OpenID Connect) 或 `whr` (SAML) 参数（标识租户），或 `login_hint` 参数（标识用户），用户将会自动登录，而无需输入用户名或密码。
 - 可通过 Azure AD Connect 启用它。
 - 这是一项免费功能，不需要拥有任何付费版本的 Azure AD 即可使用此功能。
 - 在能够进行 Kerberos 身份验证的平台和浏览器上，支持[新式身份验证](https://aka.ms/modernauthga)的基于 Web 浏览器的客户端和 Office 客户端支持此功能：
 
 | 操作系统\浏览器 |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|是|是|是|是\*|不适用
+|Windows 10|是|否|是|是\*|不适用
 |Windows 8.1|是|不适用|是|是\*|不适用
 |Windows 8|是|不适用|是|是\*|不适用
 |Windows 7|是|不适用|是|是\*|不适用
 |Mac OS X|不适用|不适用|是\*|是\*|是\*
 
 \*需要[额外的配置](active-directory-aadconnect-sso-quick-start.md#browser-considerations)
+
+>[!IMPORTANT]
+>我们最近中止了对 Microsoft Edge 的支持，以调查客户报告的问题。
 
 >[!NOTE]
 >对于 Windows 10，建议使用 [Azure AD join](../active-directory-azureadjoin-overview.md)，以获得最佳的 Azure AD 单一登录体验。

@@ -13,14 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 07/19/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: b60105297fb84ce1240a33d576653f5fa7c950e9
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: 0cefbe1303de1cfa46cc4b771c0cd3aa7819597c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="move-data-by-using-copy-activity"></a>使用复制活动移动数据
@@ -187,6 +186,12 @@ JSON 属性（例如名称、说明、输入和输出表，以及策略）可用
 
 ## <a name="performance-and-tuning"></a>性能和优化
 请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，其中介绍了影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素。 还列出了在内部测试期间观察到的性能，并讨论了优化复制活动性能的多种方法。
+
+## <a name="fault-tolerance"></a>容错
+默认情况下，如果遇到数据源与接收器的数据不兼容，复制活动会停止复制数据，并返回故障；而用户则可以显式配置跳过和记录不兼容行，只复制兼容数据，以便能够成功执行复制活动。 有关详细信息，请参阅[复制活动容错](data-factory-copy-activity-fault-tolerance.md)。
+
+## <a name="security-considerations"></a>安全注意事项
+请参阅[安全注意事项](data-factory-data-movement-security-considerations.md)，其中介绍了 Azure 数据工厂中的数据移动服务用来保护数据的安全基础结构。
 
 ## <a name="scheduling-and-sequential-copy"></a>计划和按顺序复制
 若要详细了解如何在数据工厂中计划和执行活动，请参阅[计划和执行](data-factory-scheduling-and-execution.md)。 可以按顺序或以有序的方式依次运行多个复制操作。 请参阅[按顺序复制](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)部分。

@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-translationtype: Human Translation
-ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
-ms.openlocfilehash: 24a1e13b7865d25d56cb5a6f44ba3c9c097174a7
-
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 578e0384750e8993865b1749baaed460d3ebc2bb
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C：提出支持请求
 可以使用以下步骤在 Azure 门户上提出对 Azure Active Directory (Azure AD) B2C 的支持请求：
 
-1. [请按照以下步骤导航到 Azure 门户上的 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
+1. [请按照以下步骤导航到 Azure 门户上的 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 2. 从 B2C 租户切换到另一个拥有与其关联的 Azure 订阅的租户。 通常，后者是员工租户或在注册 Azure 订阅时创建的默认租户。 若要了解详细信息，请参阅 [Azure 订阅如何与 Azure AD 关联](../active-directory/active-directory-how-subscriptions-associated-directory.md#how-an-azure-subscription-is-related-to-azure-ad)。
    
     ![支持 - 切换租户](./media/active-directory-b2c-support/support-switch-dir.png)
@@ -54,7 +55,7 @@ ms.openlocfilehash: 24a1e13b7865d25d56cb5a6f44ba3c9c097174a7
 7. 在“联系人信息”边栏选项卡中，添加联系人信息。 单击“创建” 。
    
     ![支持 - 联系人](./media/active-directory-b2c-support/support-contact.png)
-8. 提交支持请求后，可以单击启动板上的“帮助 + 支持”，然后点击“管理支持请求”进行监控。
+8. 提交支持请求后，可以单击启动板上的“帮助 + 支持”，并点击“管理支持请求”进行监控。
 
 ## <a name="known-issue-filing-a-support-request-in-the-context-of-a-b2c-tenant"></a>已知问题：在 B2C 租户的上下文中提出支持请求
 如果遗漏了上述步骤 2，而尝试在 B2C 租户的上下文中创建支持请求，则会看到以下错误。
@@ -65,10 +66,5 @@ ms.openlocfilehash: 24a1e13b7865d25d56cb5a6f44ba3c9c097174a7
 > 
 
 ![支持 - 无订阅](./media/active-directory-b2c-support/support-no-sub.png)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

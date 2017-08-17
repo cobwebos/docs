@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 1386d16cf0e7f6fd324d0779e9ad54ecd88b3166
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 1fdff8fcc031f585b0d4eec7f1afa224e6bca089
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="azure-storage-security-overview"></a>Azure 存储安全概述
@@ -52,7 +52,7 @@ Azure 存储是依赖于持续性、可用性和伸缩性来满足客户需求�
 * [Azure Active Directory 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)
 
 ## <a name="delegated-access-to-storage-objects"></a>存储对象的委托访问权限
-共享访问签名 (SAS) 用于对存储帐户中的资源进行委托访问。 使用 SAS，意味着可以授权客户端在指定时间段内，以一组指定权限有限访问你的存储帐户中的对象。 可以授予这些有限的权限，而不必共享帐户访问密钥。 SAS 是一个 URI，在其查询参数中包含对存储资源已验证访问所需的所有信息。 若要使用 SAS 访问存储资源，客户端只需将 SAS 传入到相应的构造函数或方法。
+共享访问签名 (SAS) 用于对存储帐户中的资源进行委托访问。 使用 SAS，意味着可以授权客户端在指定时间段内，以一组指定权限有限访问存储帐户中的对象。 可以授予这些有限的权限，而不必共享帐户访问密钥。 SAS 是一个 URI，在其查询参数中包含对存储资源已验证访问所需的所有信息。 要使用 SAS 访问存储资源，客户端只需将 SAS 提供给相应的构造函数或方法。
 
 了解更多：
 
@@ -84,16 +84,16 @@ Azure 存储是依赖于持续性、可用性和伸缩性来满足客户需求�
 * [静态数据的 Azure 存储服务加密](../storage/storage-service-encryption.md)
 
 ## <a name="azure-disk-encryption"></a>Azure 磁盘加密
-适用于虚拟机 (VM) 的 Azure 磁盘加密通过使用 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)中控制的密钥和策略加密你的 VM 磁盘（包括引导磁盘和数据磁盘），帮助解决企业的安全和合规性要求。
+适用于虚拟机 (VM) 的 Azure 磁盘加密通过使用 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)中控制的密钥和策略加密 VM 磁盘（包括引导磁盘和数据磁盘），帮助解决企业的安全和合规性要求。
 
-适用于 VM 的磁盘加密可用于 Linux 与 Windows 操作系统。 它也使用密钥保管库帮助你保护、管理和审核磁盘加密密钥的使用。 在虚拟机休息时使用 Azure 存储帐户的行业标准加密技术对 VM 磁盘中的所有数据进行加密。 适用于 Windows 的磁盘加密解决方案是基于 [Microsoft BitLocker 驱动器加密](https://technet.microsoft.com/library/cc732774.aspx)技术，Linux 解决方案基于 [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)。
+适用于 VM 的磁盘加密可用于 Linux 与 Windows 操作系统。 它也使用 Key Vault 帮助保护、管理和审核磁盘加密密钥的使用。 在虚拟机休息时使用 Azure 存储帐户的行业标准加密技术对 VM 磁盘中的所有数据进行加密。 适用于 Windows 的磁盘加密解决方案是基于 [Microsoft BitLocker 驱动器加密](https://technet.microsoft.com/library/cc732774.aspx)技术，Linux 解决方案基于 [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)。
 
 了解更多：
 
 * [适用于 Windows 和 Linux IaaS 虚拟机的 Azure 磁盘加密](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
 
 ## <a name="azure-key-vault"></a>Azure 密钥保管库
-Azure 磁盘加密使用 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)，可帮助你控制和管理密钥保管库订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据可在 Azure 存储中静态加密。 应使用密钥保管库来审核密钥和策略的使用。
+Azure 磁盘加密使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)，可帮助控制和管理密钥保管库订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据可在 Azure 存储中静态加密。 应使用密钥保管库来审核密钥和策略的使用。
 
 了解更多：
 

@@ -12,14 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 08/08/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: c3646fef95bc06f8febe45718f4f9aeb9aefb42a
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 0e08557b126620a6c7dbbdb5dece423e7a0c2535
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语词汇表
@@ -48,7 +47,7 @@ ms.lasthandoff: 06/01/2017
 [Microsoft Azure 门户](https://portal.azure.com)是一个中心位置，可在其中预配和管理 Azure 资源。 该门户使用_边栏选项卡_组织其内容。 在某些 IoT 中心教程中，可能要求使用 [Azure 经典门户](https://manage.windowsazure.com)。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell](/powershell/azure/overview) 是一个 cmdlet 集合，可用于通过 Windows PowerShell 管理 Azure。 你可以使用 cmdlet 来创建、测试、部署和管理通过 Azure 平台传送的解决方案和服务。
+[Azure PowerShell](/powershell/azure/overview) 是一个 cmdlet 集合，可用于通过 Windows PowerShell 管理 Azure。 可以使用 cmdlet 来创建、测试、部署和管理通过 Azure 平台传送的解决方案和服务。
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 可以使用 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 以组的方式处理解决方案中的资源。 可以通过一个协调操作为解决方案部署、更新或删除资源。
@@ -107,7 +106,7 @@ ms.lasthandoff: 06/01/2017
 设备数据是指存储在 IoT 中心[标识注册表](#identity-registry)中的每个设备数据。 可以导入和导出此数据。
 
 ## <a name="device-explorer"></a>设备资源管理器
-[设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)是在 Windows 上运行的工具，用户可使用该工具管理[标识注册表](#identity-registry)中的设备，以及发送和接收设备的消息。
+[设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)是在 Windows 上运行的工具，使你可以管理[标识注册表](#identity-registry)中的设备。该工具还可以发送和接收设备的消息。
 
 ## <a name="device-identities-rest-api"></a>管理标识 REST API
 通过[设备标识 REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) 可使用 REST API管理在[标识注册表](#identity-registry)中注册的设备。 通常，应使用 IoT 中心教程中演示的一种较高级别的[服务 SDK](#azure-iot-service-sdks)。
@@ -125,7 +124,7 @@ ms.lasthandoff: 06/01/2017
 可以在设备上使用[设备消息传送 REST API](https://docs.microsoft.com/rest/api/iothub/httpruntime)，将设备到云消息发送到 IoT 中心，以及从 IoT 中心接收[云到设备](#cloud-to-device)的消息。 通常情况下，应使用 IoT 中心教程中演示的一种较高级别的[设备 SDK](#azure-iot-device-sdks)。
 
 ## <a name="device-provisioning"></a>设备预配
-[设备预配](#device-data)是将初始设备数据添加到解决方案中存储中的过程。 若要使新设备能够连接到中心，必须将新设备 ID 和密钥添加到 IoT 中心的[标识注册表](#identity-registry)。 在预配过程中，你可能需要初始化其他解决方案存储中的设备特定数据。
+[设备预配](#device-data)是将初始设备数据添加到解决方案中存储中的过程。 要使新设备能够连接到中心，必须将新设备 ID 和密钥添加到 IoT 中心的[标识注册表](#identity-registry)。 在预配过程中，可能需要初始化其他解决方案存储中的设备特定数据。
 
 ## <a name="device-twin"></a>设备孪生
 [设备孪生](iot-hub-devguide-device-twins.md)是存储设备状态信息（如元数据、配置和条件）的 JSON 文档。 [IoT 中心](#iot-hub)为在 IoT 中心预配的每台设备保留一个设备孪生。 借助设备孪生可以在设备和解决方案后端之间同步[设备条件](#device-condition)和配置。 可以通过查询设备孪生来定位特定设备和查询长时间运行的操作状态。
@@ -170,7 +169,7 @@ IoT 中心公开了多个[终结点](iot-hub-devguide-endpoints.md)，以便使�
 IoT 中心是完全托管的 Azure 服务，用于支持数百万台设备和解决方案后端之间可靠、安全的双向通信。 有关详细信息，请参阅[什么是 Azure IoT 中心？](iot-hub-what-is-iot-hub.md) 使用 [Azure 订阅](#subscription)可以创建 IoT 中心来处理 IoT 消息传送工作负荷。
 
 ## <a name="iot-hub-metrics"></a>IoT 中心指标
-[IoT 中心指标](iot-hub-metrics.md)向用户提供有关 [Azure 订阅](#subscription)中的 IoT 中心的状态数据。 你可以使用 IoT 中心度量值评估服务以及连接到服务的设备的总体运行状况。 IoT 中心度量值可以帮助用户了解 IoT 中心发生的情况，并调查根本原因，而无需联系 Azure 支持部门。
+[IoT 中心指标](iot-hub-metrics.md)向用户提供有关 [Azure 订阅](#subscription)中的 IoT 中心的状态数据。 可以使用 IoT 中心度量值评估服务以及连接到服务的设备的总体运行状况。 IoT 中心度量值可以帮助用户了解 IoT 中心发生的情况，并调查根本原因，而无需联系 Azure 支持部门。
 
 ## <a name="iot-hub-query-language"></a>IoT 中心查询语言
 [IoT 中心查询语言](iot-hub-devguide-query-language.md)是一种类似于 SQL 的语言，用于查询[作业](#job)和设备孪生。
@@ -197,7 +196,7 @@ Azure IoT 套件将多个 Azure 服务与预配置解决方案打包在一起。
 [MQTT](http://mqtt.org/) 是 [IoT 中心](#iot-hub)支持与设备进行通信的消息传递协议之一。 有关 IoT 中心支持的消息传递协议的详细信息，请参阅[使用 IoT 中心发送和接收消息](iot-hub-devguide-messaging.md)。
 
 ## <a name="operations-monitoring"></a>操作监视
-使用 IoT 中心[操作监视](iot-hub-operations-monitoring.md)可实时监视其 IoT 中心上的操作状态。 [IoT 中心](#iot-hub)可以跨多个类别的操作跟踪事件。 可以选择将一个或多个类别的事件发送到 IoT 中心终结点进行处理。 你可以监视数据中是否有错误，或根据数据模式设置更复杂的处理行为。
+使用 IoT 中心[操作监视](iot-hub-operations-monitoring.md)可实时监视其 IoT 中心上的操作状态。 [IoT 中心](#iot-hub)可以跨多个类别的操作跟踪事件。 可以选择将一个或多个类别的事件发送到 IoT 中心终结点进行处理。 可以监视数据中是否有错误，或根据数据模式设置更复杂的处理行为。
 
 ## <a name="physical-device"></a>物理设备
 物理设备是真实的设备，如连接到 IoT 中心的 Raspberry Pi。 为方便起见，许多 IoT 中心教程使用[模拟设备](#simulated-device)在本地计算机上运行示例。

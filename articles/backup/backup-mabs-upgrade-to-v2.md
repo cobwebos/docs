@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: masaran;markgal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: bd7694374034faa5ef1df84397580d80e3f40e43
+ms.translationtype: HT
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 1bbb16afef7940933b4c3ae23873f212770137e0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 
@@ -241,6 +241,39 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 4. 对于未连接到网络的客户端计算机，在计算机连接到网络之前，“代理状态”列会显示“挂起更新”状态。
 
   在客户端计算机连接到网络之后，客户端计算机的“代理更新”列会显示“正在更新”状态。
+  
+### <a name="move-legacy-protection-groups-from-old-version-and-sync-the-new-version-with-azure"></a>通过 Azure 将旧保护组从旧版本中移出并同步新版本
+
+Azure 备份服务器和 OS 均更新后，便可以使用 Modern Backup Storage 保护新的数据源。 但已受保护的数据源会继续以之前存储在 Azure 备份服务器时的保护方式接受保护，但所有新保护均使用 Modern Backup Storage。
+
+以下步骤可以将数据源从旧保护模式迁移到 Modern Backup Storage。
+
+• 将新卷添加到 DPM 存储池，如有需要可分配友好名称和数据源标记。
+• 对于处于旧模式的每个数据源，请停止保护该数据源并“保留受保护的数据”。  这将在迁移后允许恢复旧恢复点。
+
+• 创建新 PG 并选择将使用新格式进行存储的数据源。
+• DPM 将从旧备份存储进行副本复制，复制到本地 Modern Backup Storage 卷。
+注意：这将被视为恢复后的操作作业 • 随后会将所有新同步和恢复点都存储到 Modern Backup Storage。
+• 旧恢复点过期后将被删除，最终释放磁盘空间。
+• 删除旧存储中的所有旧卷后，便可从 Azure 备份和系统中删除磁盘。
+• 对 Azure DPMDB 进行备份。
+
+第 2 部分：- 重要内容 > 新服务器的名称需要与原始 Azure 备份服务器的名称相同。 如果希望使用旧存储池和 DPMDB 来保留恢复点，则不能更改新 Azure 备份服务器的名称 - 必须对 DPMDB 进行备份（因为需要将其还原）
+
+1) 关闭原始 Azure 备份服务器或对其停止传输。
+2) 重置 Active Directory 中的计算机帐户。
+3) 在新计算机上安装 Server 2016 并将其命名为与原始 Azure 备份服务器相同的计算机名称。
+4) 加入域
+5) 安装 Azure 备份服务器 V2（将 DPM 存储池磁盘从旧服务器中移出并导入到该服务器）
+6) 还原在第 2 部分末尾备份的 DPMDB
+7) 将存储从原始备份服务器连接到新服务器。
+8) 从 SQL 还原 DPMDB
+9) 从新服务器 cd 的管理员命令行到 Microsoft Azure 备份安装位置和 bin 文件夹
+
+路径示例：C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\
+到 Azure 备份运行 DPMSYNC - SYNC
+
+10) 运行 DPMSYNC - SYNC 时请注意，如果已将新磁盘添加到 DPM 存储池（而不是移动旧磁盘），请运行 DPMSYNC -Reallocatereplica
 
 ## <a name="new-powershell-cmdlets-in-v2"></a>v2 中的新 PowerShell cmdlet
 

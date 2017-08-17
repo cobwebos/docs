@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 3a57646922236a10cf51ae3dd86c67c87c6d7f7f
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: bb3cf81c9b179e520e58a6fe5e455a136b9bb349
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 
@@ -136,7 +136,7 @@ Azure 应用程序网关是服务形式的应用程序传送控制器 (ADC)，�
 
 **问：如何处理规则？**
 
-按配置规则的顺序处理规则。 建议先配置多站点规则，再配置基本规则。 通过先配置多站点侦听器，此配置可以减少将流量路由到错误后端的机会。 由于在评估多站点规则之前，基本规则会基于端口匹配流量，因此可能出现此路由问题。
+规则按照其创建的顺序进行处理。 建议先配置多站点规则，再配置基本规则。 通过先配置多站点侦听器，此配置可以减少将流量路由到错误后端的机会。 由于在评估多站点规则之前，基本规则会基于端口匹配流量，因此可能出现此路由问题。
 
 **问：自定义探测的 Host 字段是什么意思？**
 

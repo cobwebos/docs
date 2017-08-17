@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: a84f3825d3f019c60f8d875d250fe4cf79f4b04c
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 5fafd83c337e3c73260d89cdad7409a01ce5855b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>访问 Azure AD 报告 API 的先决条件
@@ -35,7 +35,7 @@ ms.lasthandoff: 06/20/2017
 - 全局管理员
 
 
-若要准备访问报告 API，你必须执行以下操作：
+要准备访问报告 API，必须执行以下操作：
 
 1. 注册应用程序 
 2. 授予权限 
@@ -45,7 +45,7 @@ ms.lasthandoff: 06/20/2017
 
 ## <a name="register-an-azure-active-directory-application"></a>注册 Azure Active Directory 应用程序
 
-即使是在使用脚本来访问报告 API，也需要注册一个应用。 该操作会为你提供一个**应用程序 ID**，该 ID 是进行授权调用所必需的，代码也通过该 ID 来接收令牌。
+即使是在使用脚本来访问报告 API，也需要注册一个应用。 该操作会提供一个**应用程序 ID**，该 ID 是进行授权调用所必需的，代码也通过该 ID 来接收令牌。
 
 若要配置目录以访问 Azure AD 报告 API，必须使用同为 Azure AD 租户中“全局管理员”目录角色成员的 Azure 管理员帐户登录到 Azure 门户。
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 06/20/2017
 
     a. 在“名称”文本框中，键入 `Reporting API application`。
 
-    b. 选择`Web app / API`作为“应用程序类型”。
+    b. 选择“Web 应用/API”作为应用程序类型。
 
     c. 在“登录 URL”文本框中，键入 `https://localhost`。
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 06/20/2017
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/15.png)
 
 ## <a name="gather-configuration-settings"></a>收集配置设置 
-本部分介绍了如何从你的目录中获取以下设置：
+本部分介绍了如何从目录中获取以下设置：
 
 * 域名
 * 客户端 ID
@@ -146,7 +146,7 @@ ms.lasthandoff: 06/20/2017
 
 2. 在“应用注册”边栏选项卡的应用列表中，单击“Reporting API 应用程序”。
 
-3. 在“Reporting API 应用程序”边栏选项卡中，指向“应用程序 ID”，然后单击“单击复制”。
+3. 在“Reporting API 应用程序”边栏选项卡中，指向“应用程序 ID”，并单击“单击复制”。
 
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/11.png) 
 
@@ -188,6 +188,6 @@ ms.lasthandoff: 06/20/2017
 
 ## <a name="next-steps"></a>后续步骤
 * 是否要以编程方式从 Azure AD 报告 API 中访问数据？ 请查看 [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started.md)。
-* 如果你要查找有关 Azure Active Directory 报告的详细信息，请参阅 [Azure Active Directory 报告指南](active-directory-reporting-guide.md)。  
+* 如果要查找有关 Azure Active Directory 报告的详细信息，请参阅 [Azure Active Directory 报告指南](active-directory-reporting-guide.md)。  
 
 

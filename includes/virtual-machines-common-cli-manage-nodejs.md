@@ -1,4 +1,4 @@
-通过 Resource Manager 命令和模板使用 Azure CLI 以利用资源组部署 Azure 资源和工作负荷之前，你将需要一个 Azure 帐户。 如果没有帐户，可以[在此处获取免费 Azure 试用帐户](https://azure.microsoft.com/pricing/free-trial/)。
+通过 Resource Manager 命令和模板使用 Azure CLI 以利用资源组部署 Azure 资源和工作负荷之前，需要一个 Azure 帐户。 如果没有帐户，可以[在此处获取免费 Azure 试用帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 如果尚未安装 Azure CLI 并连接到订阅，请参阅[安装 Azure CLI](../articles/cli-install-nodejs.md) 以使用 `azure config mode arm` 将模式设置为 `arm`，并使用 `azure login` 命令连接到 Azure。
 
@@ -12,7 +12,7 @@
 本文介绍需要用于 Azure CLI 的基本命令，以便在 Azure 订阅中管理资源（主要 VM）并与之交互。  有关特定命令行开关和选项的详细帮助，可以通过键入 `azure <command> <subcommand> --help` 或 `azure help <command> <subcommand>` 来使用联机命令帮助和选项。
 
 > [!NOTE]
-> 这些示例不包括通常为 Resource Manager 中的 VM 部署建议的基于模板的操作。 有关信息，请参阅[将 Azure CLI 与 Azure Resource Manager 配合使用](../articles/xplat-cli-azure-resource-manager.md)和[使用 Azure Resource Manager 模板和 Azure CLI 部署和管理虚拟机](../articles/virtual-machines/linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+> 这些示例不包括通常为 Resource Manager 中的 VM 部署建议的基于模板的操作。 有关信息，请参阅[将 Azure CLI 与 Azure Resource Manager 配合使用](../articles/xplat-cli-azure-resource-manager.md)和[使用 Azure Resource Manager 模板和 Azure CLI 部署和管理虚拟机](../articles/virtual-machines/linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 > 
 > 
 

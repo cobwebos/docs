@@ -14,13 +14,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 08/04/2017
 ms.author: sstein
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 658c316d8d9d14ce11dbb92188afbf0e68c00493
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: c019ea9207379ea1b88ec5d990e1c2b8565092a2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="provision-new-tenants-and-register-them-in-the-catalog"></a>预配新租户并在目录中对其进行注册
@@ -82,7 +82,7 @@ Wingtip SaaS 脚本和应用程序源代码可在 [WingtipSaaS](https://github.c
 
 本练习预配一批其他租户。 建议在完成其他 Wingtip SaaS 教程之前预配一批租户，以便可以使用更多数据库。
 
-1. 在 *PowerShell ISE* 中打开 \\Learning Modules\\Utilities\\*Demo-ProvisionAndCatalog.ps1*，并将 *$DemoScenario* 参数更改为 3：
+1. 在 PowerShell ISE 中打开 ...\\Learning Modules\\ProvisionAndCatalog\\Demo-ProvisionAndCatalog.ps1，并将 $DemoScenario 参数更改为 3：
    * **$DemoScenario** = **3**，更改为 **3** 以*预配一批租户*。
 1. 按 **F5** 运行脚本。
 
@@ -95,24 +95,31 @@ Wingtip SaaS 脚本和应用程序源代码可在 [WingtipSaaS](https://github.c
    ![数据库列表](media/sql-database-saas-tutorial-provision-and-catalog/database-list.png)
 
 
-## <a name="provision-and-catalog-details"></a>预配和目录详细信息
+## <a name="stepping-through-the-provision-and-catalog-implementation-details"></a>逐步调试预配和目录实现详细信息
 
 为了更好地了解 Wingtip 应用程序如何实现新租户预配，请再次运行 *Demo-ProvisionAndCatalog* 脚本并预配另一个租户。 这一次，添加断点并单步执行工作流：
 
-1. 打开 ...\\Learning Modules\Utilities\_Demo-ProvisionAndCatalog.ps1_，并设置以下参数：
+1. 打开 ...\\Learning Modules\\ProvisionAndCatalog\\_Demo-ProvisionAndCatalog.ps1_，并设置以下参数：
    * **$TenantName** = 租户名称必须是唯一的，因此请设置为不同于任何现有租户的名称（例如，*Hackberry Hitters*）。
    * **$VenueType** = 使用预定义的地点类型之一（例如 *judo*）。
    * **$DemoScenario** = **1**，设置为 **1** 以*预配单个租户*。
 
-1. 通过将光标放在以下行的任意位置添加断点：*New-Tenant `*，并按 **F9**。
+1. 通过将光标放在 48 行（该行显示：New-Tenant `）的任意位置来添加断点，并按 **F9**。
 
    ![断点](media/sql-database-saas-tutorial-provision-and-catalog/breakpoint.png)
 
-1. 若要运行脚本，请按 **F5**。 当达到断点时，按 **F11** 逐语句执行。 使用“调试”菜单选项 **F10** 和 **F11** 逐过程或逐语句执行调用的函数，跟踪脚本的执行。 有关调试 PowerShell 脚本的详细信息，请参阅[有关使用和调试 PowerShell 脚本的提示](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)。
+1. 若要运行脚本，请按 **F5**。
 
-### <a name="examine-the-provision-and-catalog-implementation-in-detail-by-stepping-through-the-script"></a>通过逐步调试脚本详细检查预配和编录实现
+1. 脚本执行在断点处停止之后，按 **F11** 单步执行代码。
 
-脚本通过执行以下步骤预配并编录新租户：
+   ![断点](media/sql-database-saas-tutorial-provision-and-catalog/debug.png)
+
+
+
+使用“调试”菜单选项 **F10** 和 **F11** 逐过程或逐语句执行调用的函数，跟踪脚本的执行。 有关调试 PowerShell 脚本的详细信息，请参阅[有关使用和调试 PowerShell 脚本的提示](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)。
+
+
+以下不是要明确执行的步骤，而是在调试脚本期间逐步执行的工作流的说明：
 
 1. **导入 SubscriptionManagement.psm1** 模块，该模块包含用于登录 Azure 和选择所使用 Azure 订阅的函数。
 1. **导入 CatalogAndDatabaseManagement.psm1** 模块，该模块通过[分片管理](sql-database-elastic-scale-shard-map-management.md)函数提供目录和租户级抽象。 这是一个重要的模块，它封装了目录模式的大部分，值得浏览。

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/21/2017
+ms.date: 08/02/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d4b38f1f90301c971cb6000f46d831047acb220e
-ms.openlocfilehash: 5a1ce66e02943caedd52976c5dcb3cf75c23bd49
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 0f7e00d1fe6e47e4a04eb2853f09e195a03405ce
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/17/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件性访问
@@ -34,7 +34,7 @@ ms.lasthandoff: 07/17/2017
 - 使最终用户能够随时随地保持高效的工作
 - 随时保持企业资产
 
-为了提高工作效率，Azure Active Directory 提供多种选项来让用户访问你的企业资产。 Azure Active Directory 通过应用程序访问管理确保只有*适当的人员*才可以访问你的应用程序。 如何以更大的力度控制适当的人员在特定的条件下如何访问你的资源？ 对于*适当的人员*，在某些情况下如何阻止其访问特定的应用？ 例如，有时可以允许适当的人员通过受信任的网络访问特定的应用，但不允许他们通过不受信任的网络访问这些应用。 使用条件性访问可以解决这些问题。
+为了提高工作效率，Azure Active Directory 提供多种选项来让用户访问企业资产。 Azure Active Directory 通过应用程序访问管理确保只有*适当的人员*才可以访问应用程序。 如何以更大的力度控制适当的人员在特定的条件下如何访问资源？ 对于*适当的人员*，在某些情况下如何阻止其访问特定的应用？ 例如，有时可以允许适当的人员通过受信任的网络访问特定的应用，但不允许他们通过不受信任的网络访问这些应用。 使用条件性访问可以解决这些问题。
 
 条件性访问是 Azure Active Directory 的一项功能，可让你根据特定的条件针对环境中的应用实施访问控制。 通过这种控制，可以将其他要求关联到访问，或者阻止访问。 条件性访问的实现基于策略。 基于策略的方法可以简化配置体验，因为它遵循访问要求方面的考虑因素。  
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 07/17/2017
 
 ![控制](./media/active-directory-conditional-access-azure-portal/10.png)
 
-将两处出现的词语“*这种*”替换为实际信息后，便可以获得一个可能让你觉得熟悉的示例策略语句：
+将两处出现的词语“这种”替换为实际信息后，便可以获得一个可能让你觉得熟悉的示例策略语句：
 
 *如何分包商尝试从不受信任的网络访问我们的云应用，则阻止访问。*
 
@@ -71,9 +71,9 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 
 ![控制](./media/active-directory-conditional-access-azure-portal/05.png)
 
-- **多重身份验证** - 可以要求在多重身份验证过程中进行强身份验证。 对于提供程序，可以结合 Active Directory 联合服务 (AD FS) 使用 Azure 多重身份验证或本地多重身份验证提供程序。 对于可能已获有效用户的凭据的访问权限的未授权用户，使用多重身份验证可帮助防止其访问你的资源。
+- **多重身份验证** - 可以要求在多重身份验证过程中进行强身份验证。 对于提供程序，可以结合 Active Directory 联合服务 (AD FS) 使用 Azure 多重身份验证或本地多重身份验证提供程序。 对于可能已获有效用户的凭据的访问权限的未授权用户，使用多重身份验证可帮助防止其访问资源。
 
-- **合规设备** - 可以在设备级别设置条件性访问策略。 可以设置一个策略，以便只允许合规的计算机或在移动设备管理应用程序中注册的移动设备才可以访问组织的资源。 例如，可以使用 Intune 来检查设备的合规性，然后在用户尝试访问应用程序时将其报告给 Azure AD 以执行策略。 有关如何使用 Intune 保护应用和数据的详细指南，请参阅“Protect apps and data with Microsoft Intune”（使用 Microsoft Intune 保护应用和数据）。 此外还可以使用 Intune 保护丢失或被盗设备的数据。 有关详细信息，请参阅“Help protect your data with full or selective wipe using Microsoft Intune”（使用 Microsoft Intune 的完全擦除或选择性擦除保护数据）。
+- **合规设备** - 可以在设备级别设置条件性访问策略。 可以设置一个策略，以便只允许合规的计算机或在移动设备管理应用程序中注册的移动设备才可以访问组织的资源。 例如，可以使用 Intune 来检查设备的合规性，并在用户尝试访问应用程序时将其报告给 Azure AD 以执行策略。 有关如何使用 Intune 保护应用和数据的详细指南，请参阅“Protect apps and data with Microsoft Intune”（使用 Microsoft Intune 保护应用和数据）。 此外还可以使用 Intune 保护丢失或被盗设备的数据。 有关详细信息，请参阅“Help protect your data with full or selective wipe using Microsoft Intune”（使用 Microsoft Intune 的完全擦除或选择性擦除保护数据）。
 
 - **已加入域的设备** - 可以要求用于连接 Azure Active Directory 的设备是已加入域的设备。 此策略可应用于 Windows 台式机、笔记本电脑和企业平板电脑。 有关如何设置已加入域的设备在 Azure AD 中自动注册的详细信息，请参阅 [Automatic device registration with Azure Active Directory for Windows domain-joined devices](active-directory-conditional-access-automatic-device-registration.md)（将已加入 Windows 域的设备自动注册到 Azure Active Directory）。
 
@@ -121,26 +121,54 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 
 在 Azure Active Directory 的当前实现中，可针对以下方面定义条件：
 
-- **登录风险**：登录风险是 Azure Active Directory 所使用的一个对象，用于跟踪不是由用户帐户合法拥有者进行登录尝试的可能性。 在此对象中，可能性（高、中、低）以名为[登录风险级别](active-directory-reporting-risk-events.md#risk-level)的属性的形式存储。 在用户登录期间，如果 Azure Active Directory 检测到登录风险，则会生成此对象。 有关更多详细信息，请参阅[风险登录](active-directory-identityprotection.md#risky-sign-ins)。  
+- 登录风险
+- 设备平台
+- 位置
+- 客户端应用
+
+![条件](./media/active-directory-conditional-access-azure-portal/21.png)
+
+### <a name="sign-in-risk"></a>登录风险
+
+登录风险是 Azure Active Directory 所使用的一个对象，用于跟踪不是由用户帐户合法拥有者进行登录尝试的可能性。 在此对象中，可能性（高、中、低）以名为[登录风险级别](active-directory-reporting-risk-events.md#risk-level)的属性的形式存储。 在用户登录期间，如果 Azure Active Directory 检测到登录风险，则会生成此对象。 有关更多详细信息，请参阅[风险登录](active-directory-identityprotection.md#risky-sign-ins)。  
 可以将计算得到的登录风险级别用作条件性访问策略中的条件。 
 
-    ![条件](./media/active-directory-conditional-access-azure-portal/22.png)
+![条件](./media/active-directory-conditional-access-azure-portal/22.png)
 
-- **设备平台** – 设备平台根据设备上运行的操作系统（Android、iOS、Windows Phone、Windows）来划分特征。 可以定义要在策略中包含以及排除的设备平台。  
-若要在策略中使用设备平台，请先将“配置”开关更改为“是”，然后选择要将策略应用到的所有或单个设备平台。 如果选择单个设备平台，该策略只对这些平台产生影响。 在这种情况下，登录到其他受支持的平台不受该策略的影响。
+### <a name="device-platforms"></a>设备平台
 
-    ![条件](./media/active-directory-conditional-access-azure-portal/02.png)
+设备平台根据设备上运行的操作系统（Android、iOS、Windows Phone、Windows）来划分特征。 可以定义要在策略中包含以及排除的设备平台。  
+要在策略中使用设备平台，请先将“配置”开关更改为“是”，然后选择要将策略应用到的所有或单个设备平台。 如果选择单个设备平台，该策略只对这些平台产生影响。 在这种情况下，登录到其他受支持的平台不受该策略的影响。
 
-- **位置** - 位置由用于连接到 Azure Active Directory 的客户端的 IP 地址标识。 设置此条件需要熟悉受信任的 IP。 受信任的 IP 是多重身份验证的一项功能，可用于定义代表组织本地 Intranet 的受信任 IP 范围。 配置位置条件时，可以使用受信任的 IP 来区分从组织网络进行的连接以及从其他位置进行的连接。 有关详细信息，请参阅[受信任的 IP](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips)。  
+![条件](./media/active-directory-conditional-access-azure-portal/02.png)
+
+### <a name="locations"></a>位置
+
+位置由用于连接到 Azure Active Directory 的客户端的 IP 地址标识。 设置此条件需要熟悉命名位置和受 MFA 信任的 IP。  
+
+命名位置是 Azure Active Directory 的一项功能，用于标记组织中受信任的 IP 地址范围。 在你的环境中，可以在[风险事件](active-directory-reporting-risk-events.md)检测以及条件性访问的上下文中使用命名位置。 有关在 Azure Active Directory 中配置命名位置的更多详细信息，请参阅 [Azure Active Directory 中的命名位置](active-directory-named-locations.md)。
+
+可配置的位置数目取决于 Azure AD 中相关对象的大小。 可以配置：
+ 
+ - 一个命名位置最多可以有 500 个 IP 范围
+ - 最多可有 60 个命名位置（预览版），其中每个都分配有一个 IP 范围 
+
+
+受 MFA 信任的 IP 是多重身份验证的一项功能，可用于定义代表组织本地 Intranet 的受信任 IP 范围。 配置位置条件时，可以使用受信任的 IP 来区分从组织网络进行的连接以及从其他位置进行的连接。 有关详细信息，请参阅[受信任的 IP](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips)。  
+
+
+
 可以包含所有位置或所有受信任的 IP，也可以排除所有受信任的 IP。
 
-    ![条件](./media/active-directory-conditional-access-azure-portal/03.png)
+![条件](./media/active-directory-conditional-access-azure-portal/03.png)
 
 
-- **客户端应用** - 客户端应用可以是用于连接 Azure Active Directory 的广泛意义上的应用（Web 浏览器、移动应用或桌面客户端），也可以是专门选择的 Exchange Active Sync。  
+### <a name="client-app"></a>客户端应用
+
+客户端应用可以是用于连接 Azure Active Directory 的广泛意义上的应用（Web 浏览器、移动应用或桌面客户端），也可以是专门选择的 Exchange Active Sync。  
 旧式身份验证是指使用基本身份验证的客户端，例如，不使用新式身份验证的旧式 Office 客户端。 旧式身份验证目前不支持条件性访问。
 
-    ![条件](./media/active-directory-conditional-access-azure-portal/04.png)
+![条件](./media/active-directory-conditional-access-azure-portal/04.png)
 
 
 ## <a name="common-scenarios"></a>常见方案
@@ -157,7 +185,7 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 此方案与前一种方案类似，两者都提出了多重身份验证的要求。
 但是，主要区别在于此项要求的条件。  
 前一种方案的重心是有权访问敏感数据的应用，而本方案的重心则是受信任的位置。  
-换而言之，如果用户通过不受信任的网络访问应用，则你可能要求执行多重身份验证。
+换而言之，如果用户通过不受信任的网络访问应用，可以要求其进行多重身份验证。
 
 
 ### <a name="only-trusted-devices-can-access-office-365-services"></a>只允许受信任的设备访问 Office 365 服务

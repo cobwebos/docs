@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 3fb0f6b26f36ef4044c9733ace05c4f59909ddda
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: ff4f4ecd12bc26fcc44a20a193d73f952ed56f1a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -30,7 +29,7 @@ ms.lasthandoff: 06/16/2017
 
 
 随着 Linux 上 Web 应用的发布，我们正在努力添加功能和改进我们的平台。 以下是过去几个月中我们的客户提出的一些常见问题 (FAQ)。
-如果你有疑问，请对本文发表评论，我们会尽快为你解答。
+如果有疑问，请对本文发表评论，我们会尽快解答。
 
 ## <a name="built-in-images"></a>内置映像
 
@@ -56,7 +55,7 @@ ms.lasthandoff: 06/16/2017
 
 **问：**更新 Docker Hub 上的映像后，我的 Web 应用仍使用旧的 Docker 容器映像。 是否支持自定义容器的持续集成/部署？
 
-**答：**若要设置 DockerHub 映像的持续集成/部署，请查阅以下文章：[使用 Linux 上的 Web 应用进行 Docker 中心持续部署](./app-service-linux-ci-cd.md)。 对于专用注册表，可以通过先停止然后启动 Web 应用来刷新容器。 或者，可以更改或添加虚拟应用程序设置，从而强制刷新容器。
+**答：**若要设置 Azure 容器注册表或 DockerHub 映像的持续集成/部署，请查阅以下文章：[使用 Linux 上的 Azure Web 应用进行持续部署](./app-service-linux-ci-cd.md)。 对于专用注册表，可以通过先停止然后启动 Web 应用来刷新容器。 或者，可以更改或添加虚拟应用程序设置，从而强制刷新容器。
 
 **问：**是否支持过渡环境？
 
@@ -64,7 +63,7 @@ ms.lasthandoff: 06/16/2017
 
 **问：**是否可以使用 **Web 部署**来部署我的 Web 应用？
 
-**答：**可以，需要将名为 `UseWebDeployScm` 的应用设置设置为 `false`。
+**答：**可以，需要将名为 `WEBSITE_WEBDEPLOY_USE_SCM` 的应用设置设置为 `false`。
 
 ## <a name="language-support"></a>语言支持
 
@@ -80,7 +79,7 @@ ms.lasthandoff: 06/16/2017
 
 **问：**我使用的是我自己的自定义容器。 我的应用位于 `\home\` 目录中，但是当我使用 [SCM 站点](https://github.com/projectkudu/kudu)或 FTP 客户端浏览内容时找不到我的文件。 文件在哪里？
 
-**答：**我们将 SMB 共享装入 `\home\` 目录。 这将替代此处的所有内容。
+**答：**我们将 SMB 共享装入 `\home\` 目录。 这会替代此处的所有内容。
 
 **问：**专用注册服务器 URL 的格式是什么？
 
@@ -104,7 +103,7 @@ ms.lasthandoff: 06/16/2017
 
 **问：**我的自定义容器侦听除端口 80 以外的端口。 如何配置我的应用将请求路由到该端口？
 
-**答：**我们进行自动端口检测，还可以指定名为 **PORT** 的应用程序设置，并为其提供所需的端口号值。
+**答：**我们进行自动端口检测，而你还可以指定名为 WEBSITES_PORT 的应用程序设置，并为其提供所需的端口号值。 平台之前使用的是 `PORT` 应用设置，我们计划弃用此应用设置，改为以独占方式使用 `WEBSITES_PORT`。
 
 **问：**是否需要在自定义容器中实现 HTTPS。
 
@@ -114,7 +113,7 @@ ms.lasthandoff: 06/16/2017
 
 **问：**使用公共预览版时的定价是什么？
 
-**答：**根据 Azure 应用服务常规定价，按照应用运行小时数的一半计费。 这意味着你将获得 Azure 应用服务常规定价的 50% 的折扣。
+**答：**根据 Azure 应用服务常规定价，按照应用运行小时数的一半计费。 这意味着可以获得 Azure 应用服务常规定价的 50% 的折扣。
 
 ## <a name="other"></a>其他
 
@@ -124,12 +123,13 @@ ms.lasthandoff: 06/16/2017
 
 **问：**可在何处请求新功能？
 
-**答：**可以在 [Web 应用反馈论坛](https://aka.ms/webapps-uservoice)提交你的建议。 请将“[Linux]”添加到建议的标题中。
+
+            **答：**可以在 [Web 应用反馈论坛](https://aka.ms/webapps-uservoice)提交建议。 请将“[Linux]”添加到建议的标题中。
 
 ## <a name="next-steps"></a>后续步骤
 * [什么是 Linux 上的 Azure Web 应用？](app-service-linux-intro.md)
 * [在 Linux 上的 Azure Web 应用中创建 Web 应用](app-service-linux-how-to-create-web-app.md)
 * [SSH 对 Linux 上的 Azure Web 应用的支持](./app-service-linux-ssh-support.md)
 * [设置 Azure 应用服务中的过渡环境](./web-sites-staged-publishing.md)
-* [使用 Linux 上的 Azure Web 应用进行 Docker 中心持续部署](./app-service-linux-ci-cd.md)
+* [使用 Linux 上的 Azure Web 应用进行持续部署](./app-service-linux-ci-cd.md)
 

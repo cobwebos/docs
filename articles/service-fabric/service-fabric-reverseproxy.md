@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 04/07/2017
+ms.date: 08/08/2017
 ms.author: bharatn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 80669943f5b9f9d55cc6395c4dab76b32fc72c8f
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: cb37c7209a3449047bad97ce50344e1530f0e222
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric 中的反向代理
@@ -36,12 +35,12 @@ Service Fabric 中的微服务通常在群集的一部分虚拟机中运行，�
 有关详细信息，请参阅[与服务连接和通信](service-fabric-connect-and-communicate-with-services.md)。
 
 ### <a name="communicating-by-using-the-reverse-proxy"></a>使用反向代理通信
-Service Fabric 中的反向代理在群集的所有节点上运行。 它会代表客户端执行整个服务解析流程，然后再转发客户端请求。 因此，在群集上运行的客户端可以通过同一节点本地运行的反向代理，使用任何客户端 HTTP 通信库来与目标服务通信。
+Service Fabric 中的反向代理在群集的所有节点上运行。 它会代表客户端执行整个服务解析流程，再转发客户端请求。 因此，在群集上运行的客户端可以通过同一节点本地运行的反向代理，使用任何客户端 HTTP 通信库来与目标服务通信。
 
 ![内部通信][1]
 
 ## <a name="reaching-microservices-from-outside-the-cluster"></a>从群集外部访问微服务
-微服务的默认外部通信模型为“选择加入”模型，在该模型中，无法直接从外部客户端访问每个服务。 [Azure 负载均衡器](../load-balancer/load-balancer-overview.md)充当微服务和外部客户端之间的网络边界，可以进行网络地址转换并将外部请求转发到内部的 IP:端口终结点。 若要允许外部客户端直接访问微服务的终结点，必须先将负载均衡器配置为将流量转发到群集中服务使用的每个端口。 另外，大多数微服务（尤其是有状态微服务）并不驻留在群集的所有节点上。 这些微服务在故障转移时可在节点之间移动。 在这种情况下，负载均衡器无法有效确定要将流量转发到的副本的目标节点位置。
+微服务的默认外部通信模型为“选择加入”模型，在该模型中，无法直接从外部客户端访问每个服务。 [Azure 负载均衡器](../load-balancer/load-balancer-overview.md)充当微服务和外部客户端之间的网络边界，可以进行网络地址转换并将外部请求转发到内部的 IP:端口终结点。 要允许外部客户端直接访问微服务的终结点，必须先将负载均衡器配置为将流量转发到群集中服务使用的每个端口。 另外，大多数微服务（尤其是有状态微服务）并不驻留在群集的所有节点上。 这些微服务在故障转移时可在节点之间移动。 在这种情况下，负载均衡器无法有效确定要将流量转发到的副本的目标节点位置。
 
 ### <a name="reaching-microservices-via-the-reverse-proxy-from-outside-the-cluster"></a>从群集外部通过反向代理访问微服务
 可以在负载均衡器中直接配置反向代理的端口，而无需配置单个服务的端口。 这种配置可让群集外部的客户端使用反向代理访问群集内部的服务，无需经过额外的配置。
@@ -98,7 +97,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 * 外部访问方式：`http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
 * 内部访问方式：`http://localhost:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
 
-若要访问服务公开的资源，可直接在 URL 中将资源路径置于服务名称之后：
+要访问服务公开的资源，可直接在 URL 中将资源路径置于服务名称之后：
 
 * 外部访问方式：`http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
 * 内部访问方式：`http://localhost:19081/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
@@ -124,7 +123,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 - 情况 #1：服务地址正确，但用户请求的资源不存在。
 - 情况 #2：服务地址不正确，且用户请求的资源可能在其他节点上。
 
-第一种情况是正常的 HTTP 404，属于用户错误。 在第二种情况中，用户请求的资源确实存在。 但是，应用程序网关找不到该资源，因为服务本身已移动。 应用程序网关需要重新解析地址，然后重试请求。
+第一种情况是正常的 HTTP 404，属于用户错误。 在第二种情况中，用户请求的资源确实存在。 但是，应用程序网关找不到该资源，因为服务本身已移动。 应用程序网关需要重新解析地址，并重试请求。
 
 因此，应用程序网关需要通过某种方式来区分这两种情况。 为了进行这种区分，需要从服务器获得提示。
 
@@ -219,7 +218,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
         ]
     }
     ```
-4. 若要在反向代理的端口上配置 SSL 证书，请将证书添加到 **Cluster** [资源类型节](../resource-group-authoring-templates.md)中的 ***reverseProxyCertificate*** 属性。
+4. 若要在反向代理的端口上配置 SSL 证书，请将证书添加到 Cluster [资源类型节](../resource-group-authoring-templates.md)中的 reverseProxyCertificate 属性。
 
     ```json
     {
@@ -243,7 +242,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
     ```
 
 ### <a name="supporting-a-reverse-proxy-certificate-thats-different-from-the-cluster-certificate"></a>支持不同于群集证书的反向代理证书
- 如果反向代理证书不同于用于保护群集的证书，应将前面指定的证书安装在虚拟机上，并将其添加到访问控制列表 (ACL)，使 Service Fabric 能够访问它。 可在 **virtualMachineScaleSets** [资源类型节](../resource-group-authoring-templates.md)中执行此操作。 若要安装，请将该证书添加到 osProfile。 模板的扩展节可以更新 ACL 中的证书。
+ 如果反向代理证书不同于用于保护群集的证书，应将前面指定的证书安装在虚拟机上，并将其添加到访问控制列表 (ACL)，使 Service Fabric 能够访问它。 可在 **virtualMachineScaleSets** [资源类型节](../resource-group-authoring-templates.md)中执行此操作。 要安装，请将该证书添加到 osProfile。 模板的扩展节可以更新 ACL 中的证书。
 
   ```json
   {
@@ -303,6 +302,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 * [使用 Reliable Services 远程控制执行远程过程调用](service-fabric-reliable-services-communication-remoting.md)
 * [Reliable Services 中使用 OWIN 的 Web API](service-fabric-reliable-services-communication-webapi.md)
 * [使用 Reliable Services 的 WCF 通信](service-fabric-reliable-services-communication-wcf.md)
+* 有关反向代理配置选项的详细信息，请参阅[自定义 Service Fabric 群集设置](service-fabric-cluster-fabric-settings.md)中的 ApplicationGateway/Http 部分。
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png

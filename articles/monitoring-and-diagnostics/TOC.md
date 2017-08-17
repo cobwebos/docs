@@ -39,6 +39,7 @@
 ### [将活动日志流式传输到事件中心](monitoring-stream-activity-logs-event-hubs.md)
 ### [使用 Resource Manager 执行审核操作](../azure-resource-manager/resource-group-audit.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [使用 Resource Manager 创建活动日志警报](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
+### [迁移到活动日志警报](monitoring-migrate-management-alerts.md)
 ## 使用服务通知
 ### [查看服务通知](monitoring-service-notifications.md)
 ### [针对服务通知配置警报](monitoring-activity-log-alerts-on-service-notifications.md)

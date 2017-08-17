@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/26/2017
+ms.date: 07/17/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 571c31b9e6514b44d6a8a69fe8a6a0806e4b80e3
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: 88f4a23f89a1c8fd88db1df3a7ff03ae5df64c0f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 
@@ -37,7 +36,7 @@ ms.lasthandoff: 06/01/2017
 
 监视和诊断的整体工作流程分为三个步骤：
 
-1. 事件生成：同时包括基础结构（群集）级别和应用程序/服务级别的事件（日志、跟踪、自定义事件）
+1. **事件生成**：这包括基础结构（群集）级、平台级、应用程序/服务级事件（日志、跟踪、自定义事件）
 2. 事件聚合：需要先收集和聚合生成的事件才能显示这些事件
 3. 分析：需可视化事件并能够以某种格式访问事件，以便按需进行分析和显示
 
@@ -45,9 +44,9 @@ ms.lasthandoff: 06/01/2017
 
 ## <a name="event-generation"></a>事件生成
 
-监视和诊断工作流的第一步是创建和生成事件和日志。 可从以下两个级别生成事件、日志和跟踪：基础结构层（群集、计算机或 Service Fabric 操作中的任何内容）或应用层（添加到部署于群集的应用和服务的任何检测）。 Service Fabric 确实会默认提供一些检测，但两个级别中的事件都可以自定义。
+监视和诊断工作流的第一步是创建和生成事件和日志。 这些事件、日志和跟踪在以下两个级别生成：平台层（包括群集、计算机或 Service Fabric 操作）或应用程序层（向群集中部署的应用和服务添加的任何检测）。 Service Fabric 确实会默认提供一些检测，但两个级别中的事件都可以自定义。
 
-请参阅[基础结构级别事件](service-fabric-diagnostics-event-generation-infra.md)和[应用程序级别事件](service-fabric-diagnostics-event-generation-app.md)，了解所含内容及如何添加进一步检测。
+请参阅[平台级事件](service-fabric-diagnostics-event-generation-infra.md)和[应用程序级事件](service-fabric-diagnostics-event-generation-app.md)，了解所含内容以及如何添加其他检测。
 
 在决定要使用哪个日志记录提供程序后，需要确保日志能够正常聚合和存储。
 
@@ -69,7 +68,7 @@ ms.lasthandoff: 06/01/2017
 * 可访问内部应用程序数据和上下文
     * 应用程序/服务进程内运行的诊断子系统可以轻松地随着上下文信息而扩展跟踪
 
-需要注意的一点是，这两个选项不是相互排斥的。虽然完成类似工作可以只使用其中的一个选项，但也可以同时设置两个选项。 在大部分情况下，将代理与进程内收集结合使用可以实现更可靠的监视工作流。 可以为基础结构级别日志选择 Azure 诊断扩展（代理）方法，而为应用程序级别日志选择 EventFlow（进程内收集）方法。 确定最适合自己的方法之后，就需要思考希望如何显示和分析数据。
+需要注意的一点是，这两个选项不是相互排斥的。虽然完成类似工作可以只使用其中的一个选项，但也可以同时设置两个选项。 在大部分情况下，将代理与进程内收集结合使用可以实现更可靠的监视工作流。 可以选择 Azure 诊断扩展（代理）作为平台级日志的路径，而对应用程序级日志使用 EventFlow（进程内集合）。 确定最适合自己的方法之后，就需要思考希望如何显示和分析数据。
 
 ## <a name="event-analysis"></a>事件分析
 
@@ -85,7 +84,7 @@ ms.lasthandoff: 06/01/2017
 
 ![Azure 门户视图：收集的指标信息](media/service-fabric-diagnostics-overview/azure-monitoring-metrics.png)
 
-若要自定义图表，请遵照 [Metrics in Microsoft Azure](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)（Microsoft Azure 中的指标）中的说明。 还可以根据 [Create alerts in Azure Monitor for Azure services](../monitoring-and-diagnostics/insights-alerts-portal.md)（在 Azure Monitor 中为 Azure 服务创建警报）中所述，基于这些指标创建警报。 可以根据 [Configure a web hook on an Azure metric alert](../monitoring-and-diagnostics/insights-webhooks-alerts.md)（针对 Azure 指标警报配置 Webhook）中所述，使用 Webhook 将警报发送到通知服务。 Azure Monitor 仅支持一个订阅。 如果需要监视多个订阅或者需要其他功能，Microsoft Operations Management Suite 中的 [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) 为本地基础结构和基于云的基础结构提供了全方位的 IT 管理解决方案。 可将来自 Azure 监视的数据直接路由到 Log Analytics，以便在一个位置查看整个环境的指标和日志。
+若要自定义图表，请遵照 [Metrics in Microsoft Azure](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)（Microsoft Azure 中的指标）中的说明。 还可以根据 [Create alerts in Azure Monitor for Azure services](../monitoring-and-diagnostics/insights-alerts-portal.md)（在 Azure Monitor 中为 Azure 服务创建警报）中所述，基于这些指标创建警报。 可以根据 [Configure a web hook on an Azure metric alert](../monitoring-and-diagnostics/insights-webhooks-alerts.md)（针对 Azure 指标警报配置 Webhook）中所述，使用 Webhook 将警报发送到通知服务。 Azure Monitor 仅支持一个订阅。 如果需要监视多个订阅，或需要其他功能，Microsoft Operations Management Suite 中的 [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) 提供了全方位的 IT 管理解决方案，适用于本地基础结构和基于云的基础结构。 可将来自 Azure 监视的数据直接路由到 Log Analytics，以便在一个位置查看整个环境的指标和日志。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -93,4 +92,4 @@ ms.lasthandoff: 06/01/2017
 
 监视器是一个独立的服务，可以监视各个服务的运行状况和负载，并报告运行状况模型层次结构中任何组件的运行状况。 这有助于防止出现基于单个服务的视图所检测不到的错误。 监视器也是一个托管代码的好选择，在此无需用户交互即可执行补救措施（例如每隔特定时间就清理一次存储中的日志文件）。 可在[此处](https://github.com/Azure-Samples/service-fabric-watchdog-service)获取监视软件服务实现示例。
 
-开始了解如何在[基础结构级别](service-fabric-diagnostics-event-generation-infra.md)和[应用程序级别](service-fabric-diagnostics-event-generation-app.md)生成事件和日志。
+开始了解如何生成[平台级](service-fabric-diagnostics-event-generation-infra.md)和[应用程序级](service-fabric-diagnostics-event-generation-app.md)事件和日志。

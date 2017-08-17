@@ -3,7 +3,7 @@ title: "PowerShell 示例 - 在 SQL 数据库和本地 SQL Server 之间进行�
 description: "用于在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步的 Azure PowerShell 示例脚本"
 services: sql-database
 documentationcenter: sql-database
-author: douglaslms
+author: jognanay
 manager: jhubbard
 editor: 
 tags: 

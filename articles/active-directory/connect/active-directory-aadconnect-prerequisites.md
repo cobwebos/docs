@@ -154,8 +154,8 @@ Azure AD Connect 默认情况下使用 TLS 1.0 对同步引擎服务器和 Azure
   * 在目标计算机（WAP 计算机）上：
     * 确保 winrm（Windows 远程管理/WS-Management）服务正在通过“服务”管理单元运行
     * 在权限提升的 PSH 命令窗口中，使用命令 `Enable-PSRemoting –force`
-      * 在运行向导的计算机上（如果目标计算机未加入域或者是不受信任的域）：
-      * 在权限提升的 PSH 命令窗口中，使用命令 `Set-Item WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate`
+  * 在运行向导的计算机上（如果目标计算机未加入域或者是不受信任的域）：
+    * 在权限提升的 PSH 命令窗口中，使用命令 `Set-Item WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate`
     * 在服务器管理器中：
       * 将外围网络 WAP 主机添加到计算机池（“服务器管理器”->“管理”->“添加服务器”...使用 DNS 选项卡）
       * 服务器管理器中的“所有服务器”选项卡：右键单击 WAP 服务器并选择“以下列身份进行管理...”，然后输入 WAP 计算机的本地（非域）凭据

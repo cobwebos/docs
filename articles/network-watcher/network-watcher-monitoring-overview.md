@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 07/11/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: aabc0cf743487752312f5e1b078837545169e964
-ms.lasthandoff: 03/31/2017
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 31c1bbdd04423d98dba0f8da435930ad3fed52e2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -47,30 +48,14 @@ ms.lasthandoff: 03/31/2017
 * **[虚拟网络网关和连接故障排除](network-watcher-troubleshoot-manage-rest.md)** - 提供排查虚拟网络网关和连接问题的功能。
 * **[网络订阅限制](#network-subscription-limits)** - 用于查看网络资源用量与限制。
 * **[配置诊断日志](#diagnostic-logs)** – 提供单个窗格来为资源组中的网络资源启用或禁用诊断日志。
+* **[连接性（预览）](network-watcher-connectivity-overview.md)**- 验证是否可以建立从虚拟机到给定终结点的直接 TCP 连接。
 
 ### <a name="role-based-access-control-rbac-in-network-watcher"></a>网络观察程序中基于角色的访问控制 (RBAC)
 
 网络观察程序使用 [Azure 基于角色的访问控制 (RBAC) 模型](../active-directory/role-based-access-control-what-is.md)。 网络观察程序需要以下权限。 请务必确保用于启动网络观察程序 API 或者在门户中使用网络观察程序的角色具有所需的权限。
 
-|资源| 权限|
-|---|---|
-|Microsoft.Storage/ |读取|
-|Microsoft.Authorization/| 读取|
-|Microsoft.Resources/subscriptions/resourceGroups/| 读取|
-|Microsoft.Storage/storageAccounts/listServiceSas/ | 操作|
-|Microsoft.Storage/storageAccounts/listAccountSas/ |操作|
-|Microsoft.Storage/storageAccounts/listKeys/ | 操作|
-|Microsoft.Compute/virtualMachines/ |读取|
-|Microsoft.Compute/virtualMachines/ |写入|
-|Microsoft.Compute/virtualMachineScaleSets/ |读取|
-|Microsoft.Compute/virtualMachineScaleSets/ |写入|
-|Microsoft.Network/networkWatchers/packetCaptures/| 读取|
-|Microsoft.Network/networkWatchers/packetCaptures/| 写入|
-|Microsoft.Network/networkWatchers/packetCaptures/| 删除|
-|Microsoft.Network/networkWatchers/ |写入|
-|Microsoft.Network/networkWatchers/| 读取|
-|Microsoft.Insights/alertRules/ |*|
-|Microsoft.Support/| *|
+|资源| 权限| | |---|---| | |Microsoft.
+|Microsoft.Storage/ |读取| | |Microsoft.Authorization/|读取| | |Microsoft.Resources/subscriptions/resourceGroups/|读取| | |Microsoft.Storage/storageAccounts/listServiceSas/ |操作| | |Microsoft.Storage/storageAccounts/listAccountSas/ |操作| | |Microsoft.Storage/storageAccounts/listKeys/ |操作| | |Microsoft.Compute/virtualMachines/ |读取| | |Microsoft.Compute/virtualMachines/ |写入| | |Microsoft.Compute/virtualMachineScaleSets/ |读取| | |Microsoft.Compute/virtualMachineScaleSets/ |写入| | |Microsoft.Network/networkWatchers/packetCaptures/|读取| | |Microsoft.Network/networkWatchers/packetCaptures/|写入| | |Microsoft.Network/networkWatchers/packetCaptures/|删除| | |Microsoft.Network/networkWatchers/ |写入| | |Microsoft.Network/networkWatchers/|读取| | |Microsoft.Insights/alertRules/ |*| | |Microsoft.Support/| *| |
 
 ### <a name="network-subscription-limits"></a>网络订阅限制
 
@@ -123,6 +108,8 @@ ms.lasthandoff: 03/31/2017
 使用[警报触发的数据包捕获](network-watcher-alert-triggered-packet-capture.md)执行主动监视和诊断。
 
 在开源工具中[使用 Wireshark 分析数据包捕获](network-watcher-deep-packet-inspection.md)来检测安全漏洞。
+
+了解 Azure 的一些其他关键[网络功能](../networking/networking-overview.md)。
 
 <!--Image references-->
 [TS]: ./media/network-watcher-monitoring-overview/troubleshooting.png

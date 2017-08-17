@@ -14,10 +14,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 11/21/2016
 ms.author: richrund
-translationtype: Human Translation
-ms.sourcegitcommit: b39cd142925be91bd7a90183cada7ba040a344c0
-ms.openlocfilehash: b8ebf6a2b3c8d2e5b173e429f39c9836e7d214ac
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 6d9509935ad1924845e1e8d13778f4f52335ff89
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="manage-log-analytics-using-powershell"></a>使用 PowerShell 管理 Log Analytics
@@ -187,7 +188,7 @@ New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGr
 ```
 
 ## <a name="configuring-log-analytics-to-index-azure-diagnostics"></a>将 Log Analytics 配置为编制 Azure 诊断索引
-若要对 Azure 资源进行无代理监视，则需要为资源启用 Azure 诊断，并将其配置为写入到 Log Analytics 工作区。 此方法将数据直接发送到 Log Analytics 并且不要求将数据写入到存储帐户。 支持的资源包括：
+要对 Azure 资源进行无代理监视，则需要为资源启用 Azure 诊断，并将其配置为写入到 Log Analytics 工作区。 此方法将数据直接发送到 Log Analytics 并且不要求将数据写入到存储帐户。 支持的资源包括：
 
 | 资源类型 | 日志 | 指标 |
 | --- | --- | --- |
@@ -212,7 +213,7 @@ New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGr
 
 有关可用指标的详细信息，请参阅 [Azure 监视器支持的指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md)。
 
-有关可用日志的详细信息，请参阅[诊断日志支持的服务和架构](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-diagnostic-logs)。
+有关可用日志的详细信息，请参阅[诊断日志支持的服务和架构](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-resource-diagnostic-logs)。
 
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -222,11 +223,11 @@ $resourceId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUP
 Set-AzureRmDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
 ```
 
-还可以使用前面的 cmdlet 从不同订阅中的资源收集日志。 该 cmdlet 能够跨订阅工作，因为你同时提供创建日志的资源的 ID 和日志发送到的工作区的 ID。
+还可以使用前面的 cmdlet 从不同订阅中的资源收集日志。 该 cmdlet 能够跨订阅工作，你同时提供创建日志的资源的 ID 和日志发送到的工作区的 ID。
 
 
 ## <a name="configuring-log-analytics-to-index-azure-diagnostics-from-storage"></a>配置 Log Analytics 来为来自存储的 Azure 诊断信息编制索引
-若要从正在运行的经典云服务或 service fabric 群集实例内收集日志数据，需要首先将数据写入到 Azure 存储。 然后，将 Log Analytics 配置为从存储帐户收集日志。 支持的资源包括：
+要从正在运行的经典云服务或 service fabric 群集实例内收集日志数据，需要首先将数据写入到 Azure 存储。 然后，将 Log Analytics 配置为从存储帐户收集日志。 支持的资源包括：
 
 * 经典云服务（Web 和辅助角色）
 * Service Fabric 群集
@@ -260,15 +261,10 @@ Remove-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.Re
 
 ```
 
-还可以使用前面的脚本从不同订阅中的存储帐户收集日志。 该脚本能够跨订阅工作，因为你同时提供存储帐户 ID 和对应的访问密钥。 当更改了访问密钥时，你需要更新存储见解以采用新密钥。
+还可以使用前面的脚本从不同订阅中的存储帐户收集日志。 该脚本能够跨订阅工作，你同时提供存储帐户 ID 和对应的访问密钥。 当更改了访问密钥时，需要更新存储见解以采用新密钥。
 
 
 ## <a name="next-steps"></a>后续步骤
 * 有关使用 Log Analytics 的 PowerShell 配置的其他信息，请[查看 Log Analytics PowerShell cmdlet](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx)。
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

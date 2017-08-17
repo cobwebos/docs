@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/10/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 376b61037de8b1af657095b8b32ee16568af8894
-ms.openlocfilehash: 0df8932668a954cc60a1db9b745019decb98d1e9
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 337c6142c27314150a21f1c80a17aae17cd0d67f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/07/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>保护 Azure Data Lake Store 中存储的数据
@@ -41,6 +40,18 @@ ms.lasthandoff: 02/07/2017
 ## <a name="create-security-groups-in-azure-active-directory"></a>在 Azure Active Directory 中创建安全组
 有关如何创建 AAD 安全组和如何添加用户到组的说明，请参阅[管理 Azure Active Directory 中的安全组](../active-directory/active-directory-accessmanagement-manage-groups.md)。
 
+> [!NOTE] 
+> 可以使用 Azure 门户在 Azure AD 中向组添加用户和其他组。 不过，若要将服务主体添加到组，请使用 [Azure AD 的 PowerShell 模块](../active-directory/active-directory-accessmanagement-groups-settings-v2-cmdlets.md)。
+> 
+> ```powershell
+> # Get the desired group and service principal and identify the correct object IDs
+> Get-AzureADGroup -SearchString "<group name>"
+> Get-AzureADServicePrincipal -SearchString "<SPI name>"
+> 
+> # Add the service principal to the group
+> Add-AzureADGroupMember -ObjectId <Group object ID> -RefObjectId <SPI object ID>
+> ```
+ 
 ## <a name="assign-users-or-security-groups-to-azure-data-lake-store-accounts"></a>将用户或安全组分配给 Azure Data Lake Store 帐户
 将用户或安全组分配到 Azure Data Lake Store 后，可使用 Azure 门户和 Azure Resource Manager API 控制帐户上的管理操作访问权限。 
 
@@ -60,7 +71,7 @@ ms.lasthandoff: 02/07/2017
    
     ![为用户添加角色](./media/data-lake-store-secure-data/adl.add.user.1.png "为用户添加角色")
    
-    “所有者”和“参与者”角色向此 Data Lake 帐户上的多种管理功能提供访问权限。 对于要和此 Data Lake 中的数据进行交互的用户，可将其添加到“读者”角色。 这些角色的作用域限于与该 Azure Data Lake Store 帐户相关的管理操作。
+    “所有者”和“参与者”角色向此 Data Lake 帐户上的多种管理功能提供访问权限。 可以将要与 Data Lake 数据进行交互的用户添加到“读者”****角色。 这些角色的作用域限于与该 Azure Data Lake Store 帐户相关的管理操作。
    
     对于数据操作，个人文件系统权限定义用户可执行的操作。 因此，具有 Reader 角色的用户仅可查看与该帐户关联的管理设置，但视向其分配的文件系统权限而定，可能可以读取或写入数据。 Data Lake Store 文件系统权限说明参见[将安全组作为 ACL 分配到 Azure Data Lake Store 文件系统](#filepermissions)。
 5. 在“添加访问”边栏选项卡中，单击“添加用户”打开“添加用户”边栏选项卡。 在此边栏选项卡中，查找之前在 Azure Active Directory 中创建的安全组。 如果搜索范围中存在大量的组，请使用顶部的文本框筛选组名称。 单击“选择”。

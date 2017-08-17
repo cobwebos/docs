@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric 基础结构级别监视 | Microsoft Docs"
-description: "了解用于监视和诊断 Azure Service Fabric 群集的基础结构级别事件和日志。"
+title: "Azure Service Fabric 平台级别监视 | Microsoft Docs"
+description: "了解用于监视和诊断 Azure Service Fabric 群集的平台级别事件和日志。"
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -12,22 +12,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/30/2017
+ms.date: 07/17/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: bae1917e7c0f0b247be473f78fedd7753aef6d23
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: 2e320339f60b593c1cff68ca047c95f9cb7b33e2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 
-# <a name="infrastructure-level-event-and-log-generation"></a>基础结构级别事件和日志生成
+# <a name="platform-level-event-and-log-generation"></a>平台级别事件和日志生成
 
 ## <a name="monitoring-the-cluster"></a>监视群集
 
-在基础结构级别进行监视以确定硬件和群集的运行情况是否符合预期是非常重要的。 在硬件发生故障期间，Service Fabric 可保持应用程序运行，但用户仍需要诊断错误是在应用程序中还是底层基础结构中发生。 还应该监视群集以便更好地规划容量，帮助决定添加或删除基础结构。
+在平台级别进行监视以确定硬件和群集的运行情况是否符合预期是非常重要的。 在硬件发生故障期间，Service Fabric 可保持应用程序运行，但用户仍需要诊断错误是在应用程序中还是底层基础结构中发生。 还应该监视群集以便更好地规划容量，帮助决定添加或删除硬件。
 
 Service Fabric 提供了五个现成的不同日志通道，可以生成以下事件：
 
@@ -37,7 +36,7 @@ Service Fabric 提供了五个现成的不同日志通道，可以生成以下�
 * [Reliable Actors 事件](service-fabric-reliable-actors-diagnostics.md)：特定于编程模型事件和性能计数器
 * 支持日志：Service Fabric 生成的系统日志，仅当我们提供支持时使用
 
-这些不同的通道涵盖了大部分推荐的基础结构级别日志记录。 若要改进基础结构级别日志记录，建议更好地了解运行状况模型和添加自定义运行状况报表，并添加自定义性能计数器，以实时了解服务和应用程序对群集的影响。
+这些不同的通道涵盖了大部分推荐的平台级别日志记录。 若要改进平台级别日志记录，建议更好地了解运行状况模型和添加自定义运行状况报表，并添加自定义性能计数器，以实时了解服务和应用程序对群集的影响。
 
 ### <a name="azure-service-fabric-health-and-load-reporting"></a>Azure Service Fabric 运行状况和负载报告
 

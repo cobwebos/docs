@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 08/02/2017
-ms.author: markgal;arunak
+ms.date: 08/03/2017
+ms.author: sogup;markgal;arunak
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: cf5a7c1ac323a33c5f6985fb25b5b005ae06657c
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: dff0bb9b4040ea712519a94bf2bc04de634209c2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>将备份保管库升级到恢复服务保管库
@@ -108,11 +108,11 @@ PowerShell 脚本会提示输入凭据。 请输入凭据两次：一次是输�
 
 备份保管库升级到恢复服务保管库后，将自动启用该保管库的安全设置。 启用安全设置后，某些操作（如删除备份或更改密码）需要 [Azure 多重身份验证](../multi-factor-authentication/multi-factor-authentication.md) PIN。 关于增强的安全性的详细信息，请参阅[用于保护混合备份的安全性功能](backup-azure-security-feature.md)一文。 
 
-启用增强的安全性后，计费数据从保管库中删除后可至多保留 14 天。 此数据保留期适用于针对 Azure 备份代理、Azure 备份服务器和 System Center Data Protection Manager 备份的数据。
+启用增强的安全性后，数据将在恢复点信息从保管库中删除之后至多保留 14 天。 为此安全数据的存储对客户计费。 安全数据保留期适用于针对 Azure 备份代理、Azure 备份服务器和 System Center Data Protection Manager 的恢复点。 
 
 ## <a name="gather-data-on-your-vault"></a>收集保管库中的数据
 
-升级到恢复服务保管库后，请配置 Azure 备份报表（适用于 IaaS VM 和 Microsoft Azure 恢复服务 (MARS)）并使用 Power BI 访问报表。
+升级到恢复服务保管库后，请配置 Azure 备份报表（适用于 IaaS VM 和 Microsoft Azure 恢复服务 (MARS)）并使用 Power BI 访问报表。 有关收集数据的其他信息，请参阅文章[配置 Azure 备份报表](backup-azure-configure-reports.md)。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

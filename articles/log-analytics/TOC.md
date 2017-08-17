@@ -46,6 +46,7 @@
 ### [日志搜索门户](log-analytics-log-search-portals.md)
 #### [使用日志搜索门户](log-analytics-log-search-log-search-portal.md)
 ### [从旧式语言转换](log-analytics-log-search-transition.md)
+### [Flow 连接器](log-analytics-flow-tutorial.md)
 
 ## 分析数据
 ### [仪表板](log-analytics-dashboards.md)

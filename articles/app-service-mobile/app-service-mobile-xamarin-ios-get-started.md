@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: syntaxc4
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: ed289d0755bbad08de01b0f311d14f5514ce0631
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 8dc965df2cd45366970effb29f246b0045a94717
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/16/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="create-a-xamarinios-app"></a>创建 Xamarin iOS 应用
@@ -36,18 +36,13 @@ ms.lasthandoff: 02/16/2017
 * Visual Studio with Xamarin。 有关说明，请参阅 [设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) 。
 * 安装了 Xcode v7.0 版或更高版本以及 Xamarin Studio Community 的 Mac。 请参阅[设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) 以及 [Mac 用户的设置、安装和验证](https://msdn.microsoft.com/library/mt488770.aspx) (MSDN)。
 
-> [!NOTE]
-> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service](https://azure.microsoft.com/try/app-service/mobile/)（试用应用服务）。 可以立即在应用服务中创建短期的入门级移动应用 - 无需信用卡，也无需做出承诺。
->
->
-
 ## <a name="create-an-azure-mobile-app-backend"></a>创建 Azure 移动应用后端
 按照这些步骤创建移动应用后端。
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
 ## <a name="configure-the-server-project"></a>配置服务器项目
-现已预配可供移动客户端应用程序使用的 Azure 移动应用后端。 接下来，下载一个简单的“待办事项列表”后端的服务器项目并将其发布到 Azure。
+现已预配可供移动客户端应用程序使用的 Azure 移动应用后端。 接下来，为简单的“待办事项列表”后端下载服务器项目并将其发布到 Azure。
 
 按照下列步骤将服务器项目配置为使用 Node.js 或 .NET 后端。
 
@@ -58,13 +53,13 @@ ms.lasthandoff: 02/16/2017
 2. 在移动应用的“设置”边栏选项卡上，单击“开始使用” > “Xamarin.iOS”。 在步骤 3 下，单击“创建新应用”  （如果尚未选择它）。  接下来，单击“下载”  按钮。
 
       将下载连接到移动后端的客户端应用程序。 将压缩的项目文件保存到本地计算机，并记下保存位置。
-3. 解压缩下载的项目，然后在 Xamarin Studio（或 Visual Studio）中打开它。
+3. 解压缩下载的项目，并在 Xamarin Studio（或 Visual Studio）中打开它。
 
     ![][9]
 
     ![][8]
 4. 按 F5 键生成项目，并在 iPhone 模拟器中启动应用。
-5. 在应用中键入有意义的文本（例如 *Learn Xamarin*），然后单击“+”按钮。
+5. 在应用中键入有意义的文本（例如 *Learn Xamarin*），并单击“+”按钮。
 
     ![][10]
 

@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 8504be28baf202c0b04ee89b18122b29a93588ab
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 97db1c51a16fbf62abe8062938beefa16a4f7afd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="import-data-into-analytics"></a>将数据导入到 Analytics 中
@@ -43,7 +42,7 @@ ms.lasthandoff: 05/31/2017
 上传的频率由用户以及用户希望数据可用于查询的速度决定。 将数据以较大块（但不要超过 1GB）的形式上传更高效。
 
 > [!NOTE]
-> *有大量要分析的数据源？* [*请考虑使用* logstash *将数据传送到 Application Insights。*](https://github.com/Microsoft/logstash-output-application-insights)
+> *有大量要分析的数据源？* [请考虑使用 logstash 将数据传送到 Application Insights。](https://github.com/Microsoft/logstash-output-application-insights)
 > 
 
 ## <a name="before-you-start"></a>开始之前
@@ -60,19 +59,13 @@ ms.lasthandoff: 05/31/2017
 
  * 我们建议为 Blob 创建一个专用的存储帐户。 如果与其他进程共享 Blob，那么我们的进程读取 Blob 将花费更长时间。
 
-2. 此功能处于预览状态时，必须请求获得访问权限。
-
- * 从 [Azure 门户](https://portal.azure.com)的 Application Insights 资源中，打开 Analytics。 
- * 在架构窗格的底部，单击“其他数据源”下的“联系我们”链接。 
- * 如果看到“添加数据源”，则已具有访问权限。
-
 
 ## <a name="define-your-schema"></a>定义架构
 
 导入数据之前，必须定义*数据源*，它指定数据的架构。
 单个 Application Insights 资源中最多可具有 50 个数据源
 
-1. 启动数据源向导。
+1. 启动数据源向导。 使用“添加新数据源”按钮。 或者，单击右上角的“设置”按钮，选择下拉菜单中的“数据源”。
 
     ![添加新数据源](./media/app-insights-analytics-import/add-new-data-source.png)
 
@@ -97,7 +90,7 @@ ms.lasthandoff: 05/31/2017
 
  * （可选。）上传架构定义。 请参阅下面的格式。
 
- * 选择时间戳。 Analytics 中的所有数据都必须有时间戳字段。 它必须具有类型 `datetime`，但它无需命名为“timestamp”。 如果数据的一列包含 ISO 格式的日期和时间，请选择此列作为时间戳列。 否则，请选择“按到达的数据”，然后导入进程将添加时间戳字段。
+ * 选择时间戳。 Analytics 中的所有数据都必须有时间戳字段。 它必须具有类型 `datetime`，但它无需命名为“timestamp”。 如果数据的一列包含 ISO 格式的日期和时间，请选择此列作为时间戳列。 否则，请选择“按到达的数据”，并导入进程将添加时间戳字段。
 
 5. 创建数据源。
 
@@ -182,7 +175,7 @@ JSON 允许数据的部分映射，因此 JSON 格式的架构定义不必映射
 * `DateTime`：提交该请求的时间 (UTC)。 我们接受以下格式：ISO8601（如 "2016-01-01 13:45:01"）；RFC822 ("Wed, 14 Dec 16 14:57:01 +0000")；RFC850 ("Wednesday, 14-Dec-16 14:57:00 UTC")；RFC1123 ("Wed, 14 Dec 2016 14:57:00 +0000")。
 * Application Insights 资源的 `Instrumentation key`。
 
-几分钟后，数据将在 Analytics 中可用。
+几分钟后，数据会在 Analytics 中可用。
 
 ## <a name="error-responses"></a>错误响应
 
@@ -373,6 +366,6 @@ namespace IngestionClient
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Analytics 查询语言教程](app-insights-analytics-tour.md)
+* [Log Analytics 查询语言教程](app-insights-analytics-tour.md)
 * [使用 *Logstash* 将数据发送到 Application Insights](https://github.com/Microsoft/logstash-output-application-insights)
 

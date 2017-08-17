@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 350aa79cf1f41084c33e16b6fcf2ada971b22626
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 79122493a8639dba1c1d6c92072dd682dae040a7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>在 Log Analytics 中收集要使用的 Azure 服务日志和指标
@@ -30,7 +29,7 @@ ms.lasthandoff: 04/27/2017
 1. 将 Azure 诊断定向到 Log Analytics（下表中的*诊断*）
 2. 将 Azure 诊断定向到 Azure 存储定向到 Log Analytics（下表中的*存储*）
 3. Azure 服务的连接器（下表中的*连接器*）
-4. 使用脚本收集，然后将数据放入 Log Analytics 中（下表中的空白，用于未列出的服务）
+4. 使用脚本收集，并将数据放入 Log Analytics 中（下表中的空白，用于未列出的服务）
 
 
 | 服务                 | 资源类型                           | 日志        | 度量值     | 解决方案 |
@@ -72,7 +71,7 @@ ms.lasthandoff: 04/27/2017
 支持 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 的 Azure 资源可以直接向 Log Analytics 发送其日志和度量值。
 
 * 有关可用指标的详细信息，请参阅 [Azure 监视器支持的指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md)。
-* 有关可用日志的详细信息，请参阅[诊断日志支持的服务和架构](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-diagnostic-logs)。
+* 有关可用日志的详细信息，请参阅[诊断日志支持的服务和架构](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-resource-diagnostic-logs)。
 
 ### <a name="enable-diagnostics-with-powershell"></a>使用 PowerShell 启用诊断
 需要 [Azure PowerShell](/powershell/azure/overview) 的 2016 年 11 月版 (v2.3.0) 或更高版本。
@@ -89,7 +88,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId 
 
 ### <a name="enable-diagnostics-with-resource-manager-templates"></a>使用 Resource Manager 模板启用诊断
 
-若要在资源创建时为其启用诊断，并将诊断发送到 Log Analytics 工作区，可以使用如下模板。 此示例适用于自动化帐户，但适用于所有受支持的资源类型。
+要在资源创建时为其启用诊断，并将诊断发送到 Log Analytics 工作区，可以使用如下模板。 此示例适用于自动化帐户，但适用于所有受支持的资源类型。
 
 ```json
         {
@@ -118,9 +117,9 @@ Set-AzureRmDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId 
 
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
-## <a name="azure-diagnostics-to-storage-then-to-log-analytics"></a>将 Azure 诊断定向到存储，然后再定向到 Log Analytics
+## <a name="azure-diagnostics-to-storage-then-to-log-analytics"></a>将 Azure 诊断定向到存储，再定向到 Log Analytics
 
-若要从某些资源中收集日志，可以将日志发送到 Azure 存储，然后再将 Log Analytics 配置为从存储中读取日志。
+要从某些资源中收集日志，可以将日志发送到 Azure 存储，然后再将 Log Analytics 配置为从存储中读取日志。
 
 Log Analytics 可使用此方法从 Azure 存储收集以下资源和日志的诊断信息：
 

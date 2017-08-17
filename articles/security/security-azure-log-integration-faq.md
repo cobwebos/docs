@@ -11,20 +11,19 @@ ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 06/26/2017
+ms.workload8: na
+ms.date: 08/07/2017
 ms.author: TomSh
 ms.custom: azlog
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: e6aefe5f16e7148f7837a8741355c61851618495
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 9b9285ec659e7d3d3f6aa42a88bb6e822e2dfc91
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="azure-log-integration-frequently-asked-questions-faq"></a>Azure 日志集成常见问题 (FAQ)
-此常见问题回答有关 Azure 日志集成的问题，这项服务使你能够将来自 Azure 资源原始日志集成到本地安全信息和事件管理 (SIEM) 系统中。 此集成为本地或云中的所有资产提供统一的仪表板，以便聚合、相互关联、分析和警示与应用程序相关的安全事件。
+此常见问题回答有关 Azure 日志集成的问题，这项 Windows 操作系统服务可将 Azure 资源中的原始日志集成到本地安全信息和事件管理 (SIEM) 系统。 此集成为本地或云中的所有资产提供统一的仪表板，以便聚合、相互关联、分析和警示与应用程序相关的安全事件。
 
 ## <a name="is-the-azure-log-integration-software-free"></a>Azure 日志集成软件是否免费？
 是的。 Azure 日志集成软件不产生任何费用。
@@ -33,18 +32,18 @@ ms.lasthandoff: 06/28/2017
 
 目前 Azure 商业版和 Azure 政府版提供该功能，但在中国或德国不提供。
 
-## <a name="how-can-i-see-the-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs-from"></a>如何查看 Azure 日志集成从中提取 Azure VM 日志的存储帐户？
+## <a name="how-can-i-see-the-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs"></a>如何查看 Azure 日志集成从中提取 Azure VM 日志的存储帐户？
 运行 **azlog source list** 命令。
 
 ## <a name="how-can-i-tell-which-subscription-the-azure-log-integration-logs-are-from"></a>如何判断 Azure 日志集成日志来自哪个订阅？
 
-如果审核日志放置在 AzureResourcemanagerJson 目录中，则日志文件名称中具有订阅 ID。 AzureSecurityCenterJson 文件夹中的日志也是如此。 例如：
+如果审核日志位于“AzureResourcemanagerJson”目录中，则日志文件名称中具有订阅 ID。 “AzureSecurityCenterJson”文件夹中的日志也是如此。 例如：
 
 20170407T070805_2768037.0000000023.1111e5ee-1111-111b-a11e-1e111e1111dc.json
 
 Azure Active Directory 审核日志的名称包含租户 ID。
 
-从事件中心读取的诊断日志的名称不包括订阅 ID，但包括在创建事件中心源的过程中指定的友好名称。 
+从事件中心读取的诊断日志的名称不包括订阅 ID。 但包括在创建事件中心源的过程中指定的友好名称。 
 
 ## <a name="how-can-i-update-the-proxy-configuration"></a>如何更新代理配置？
 如果代理设置不允许直接访问 Azure 存储，请打开 **c:\Program Files\Microsoft Azure Log Integration** 中的 **AZLOG.EXE.CONFIG** 文件。 更新文件，以将组织的代理地址包括在 **defaultProxy** 部分中。 完成更新后，并使用命令 **net stop azlog** 和 **net start azlog** 停止和启动该服务。
@@ -66,7 +65,7 @@ Azure Active Directory 审核日志的名称包含租户 ID。
       </system.diagnostics>   
 
 ## <a name="how-can-i-see-the-subscription-information-in-windows-events"></a>如何查看 Windows 事件中的订阅信息？
-添加源时，将 **subscriptionid** 追加到友好名称后面。
+添加源时，将“订阅 ID”追加到友好名称之后。
 
     Azlog source add <sourcefriendlyname>.<subscription id> <StorageName> <StorageKey>  
 事件 XML 具有如下所示的元数据，包括订阅 ID。
@@ -74,12 +73,12 @@ Azure Active Directory 审核日志的名称包含租户 ID。
 ![事件 XML][1]
 
 ## <a name="error-messages"></a>错误消息
-### <a name="when-running-command-azlog-createazureid-why-do-i-get-the-following-error"></a>运行 **azlog createazureid** 命令时，为什么收到以下错误？
+### <a name="when-running-command-azlog-createazureid-why-do-i-get-the-following-error"></a>运行 ```azlog createazureid``` 命令时，为什么收到以下错误？
 错误：
 
   *无法创建 AAD 应用程序 - 租户 72f988bf-86f1-41af-91ab-2d7cd011db37 - 原因 = “禁止” - 消息 = “特权不足以完成此操作”。*
 
-**Azlog createazureid** 尝试在 Azure 登录有权访问的订阅在所有 Azure AD 租户中创建服务主体。 如果 Azure 登录在 Azure AD 租户中只是来宾用户，那么该命令会失败，并显示“特权不足以完成此操作”。 请求租户管理员将你的帐户添加为租户中的用户。
+**Azlog createazureid** 尝试在 Azure 登录有权访问的订阅在所有 Azure AD 租户中创建服务主体。 如果 Azure 登录在 Azure AD 租户中只是来宾用户，那么该命令会失败，并显示“特权不足以完成此操作”。 请求租户管理员将帐户添加为租户中的用户。
 
 ### <a name="when-running-command-azlog-authorize-why-do-i-get-the-following-error"></a>运行 **azlog authorize** 命令时，为什么收到以下错误？
 错误：
@@ -125,7 +124,7 @@ Azure Active Directory 审核日志的名称包含租户 ID。
 
 如果在安装和配置过程中遇到问题，请打开[支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)，选择“日志集成”作为需要请求支持的服务。
 
-### <a name="can-i-use-azure-log-integration-to-integrate-network-watcher-logs-into-my-siem"></a>可以使用 Azure 日志集成将网络观察程序日志集成到 SIEM 吗？
+### <a name="can-i-use-azure-log-integration-to-integrate-network-watcher-logs-in-to-my-siem"></a>可以使用 Azure 日志集成将网络观察程序日志集成到 SIEM 吗？
 
 网络观察程序生成大量的日志记录信息，这些日志不会发送到 SIEM。 网络观察程序日志唯一支持的目标是存储帐户。 Azlog 不支持读取这些日志，也不向 SIEM 提供这些日志
 

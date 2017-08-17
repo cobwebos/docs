@@ -94,7 +94,7 @@ aci-tutorial-app             latest              5c745774dfa9        39 seconds 
 docker run -d -p 8080:80 aci-tutorial-app
 ```
 
-打开浏览器并访问 http://localhost:8080，确认容器正在运行。
+打开浏览器并访问 http://localhost:8080 ，确认容器正在运行。
 
 ![在浏览器中以本地方式运行应用][aci-tutorial-app-local]
 

@@ -13,14 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 07/20/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 782489e7551fef3daed4de8212821e93f7777535
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: da5995535d42ed52772cb09e0f4da51bbf878748
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="add-or-change-azure-administrator-roles-that-manage-the-subscription-or-services"></a>添加或更改管理订阅或服务的 Azure 管理员角色
@@ -38,16 +37,22 @@ ms.lasthandoff: 06/28/2017
 
     ![显示所选订阅的屏幕截图](./media/billing-add-change-azure-subscription-administrator/newselectsub.png)
 
-3. 在“订阅”边栏选项卡中，选择“访问控制(IAM)”> “添加”。
+3. 在“订阅”边栏选项卡中，选择“访问控制 (IAM)”。
+4. 选择“添加” > “角色” > “所有者”。 键入要添加为所有者的用户的电子邮件地址，选择该用户，然后选择“保存”。
 
-    ![显示所选“添加”按钮的屏幕截图](./media/billing-add-change-azure-subscription-administrator/newsettings.png)
-4. 选择“选择角色” > “所有者”。
+    ![显示所选所有者角色的屏幕截图](./media/billing-add-change-azure-subscription-administrator/add-role.png)
 
-    ![显示所选所有者角色的屏幕截图](./media/billing-add-change-azure-subscription-administrator/newselectrole.png)
+5. 如果要添加所有者帐户作为协同管理员，请在“访问控制 (IAM)”页中，右键单击该用户，然后选择“添加为协同管理员”。 此功能现已在 [Azure 预览门户](https://preview.portal.azure.com/)上提供。 
 
-5. 键入要添加为所有者的用户的电子邮件地址，单击该用户，然后单击“选择”。
+     ![添加协同管理员的屏幕截图](./media/billing-add-change-azure-subscription-administrator/add-coadmin.png)
 
-    ![显示添加的和选择的用户电子邮件的屏幕截图](./media/billing-add-change-azure-subscription-administrator/newadduser.png)
+    >[!TIP]
+    >如果用户需要在 [Azure 经典门户](https://manage.windowsazure.com/)中管理 Azure 服务，则需要将“所有者”用户作为协同管理员添加。
+
+    若要删除协同管理员权限，请右键单击“协同管理员”用户，然后选择“删除协同管理员”。
+
+    ![删除协同管理员的屏幕截图](./media/billing-add-change-azure-subscription-administrator/remove-coadmin.png)
+
 
 **Azure 经典门户**
 
@@ -68,14 +73,12 @@ ms.lasthandoff: 06/28/2017
 
     user@&lt;your domain&gt;.onmicrosoft.com
 
-
-
 ## <a name="change-service-administrator-for-a-subscription"></a>更改订阅的服务管理员
 只有帐户管理员可以更改订阅的服务管理员。
 
 1. 使用帐户管理员身份登录到 [Azure 帐户中心](https://account.windowsazure.com/subscriptions)。
 2. 选择想要更改的订阅。
-3. 在右侧，单击“编辑订阅详细信息”。 </br>
+3. 在右侧，选择“编辑订阅详细信息”。 </br>
 
     ![editsub](./media/billing-add-change-azure-subscription-administrator/editsub.png)
 4. 在“服务管理员”框中，输入新服务管理员的电子邮件地址。 </br>

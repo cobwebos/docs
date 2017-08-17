@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/22/2016
 ms.author: vidarmsft
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 270f890b5ec58ffd009ff913a6df9d941889a6dc
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 44d243a034b20b99faf284c8615e470bc6f9d020
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 
@@ -26,17 +26,17 @@ ms.lasthandoff: 05/08/2017
 
 ## <a name="overview"></a>概述
 
-本文介绍如何使用 StorSimple Data Manager 服务中的数据转换功能来转换 StorSimple 设备数据。 然后，转换后的数据可供云中的其他 Azure 服务使用。 本文还包含一个演练，帮助创建示例 .NET 控制台应用程序以启动数据转换作业，然后跟踪它的完成情况。
+本文介绍如何使用 StorSimple Data Manager 服务中的数据转换功能来转换 StorSimple 设备数据。 已转换的数据之后可供云中其他 Azure 服务使用。 本文还包含一个演练，帮助创建示例 .NET 控制台应用程序以启动数据转换作业，并跟踪它的完成情况。
 
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保具备以下条件：
-*    系统已安装 Visual Studio 2012、2013 或 2015。
-*    已安装 Azure PowerShell。 [下载 Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
-*    用于初始化数据转换作业的配置设置（用于获取这些设置的说明在此处提供）。
-*    已在资源组中的混合数据资源中正确配置的作业定义。
-*    所有必需的 dll。 从 [GitHub 存储库](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)下载这些 dll。
-*    github 存储库中的 `Get-ConfigurationParams.ps1` [脚本](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)。
+*   系统已安装 Visual Studio 2012、2013、2015 或 2017。
+*   已安装 Azure PowerShell。 [下载 Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
+*   用于初始化数据转换作业的配置设置（用于获取这些设置的说明在此处提供）。
+*   已在资源组中的混合数据资源中正确配置的作业定义。
+*   所有必需的 dll。 从 [GitHub 存储库](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)下载这些 dll。
+*   github 存储库中的 `Get-ConfigurationParams.ps1` [脚本](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)。
 
 ## <a name="step-by-step"></a>分步指南
 
@@ -62,17 +62,17 @@ ms.lasthandoff: 05/08/2017
 
     1. 启动 **Visual Studio 2012/2013/2015**。
     1. 单击“文件”，指向“新建”并单击“项目”。
-    2. 展开“模板”，然后选择“Visual C#”。
+    2. 展开“模板”，并选择“Visual C#”。
     3. 从右侧项目类型列表中选择“控制台应用程序”。
     4. 对于**名称**，输入“DataTransformationApp”。
     5. 对于**位置**，选择 **C:\DataTransformation**。
-    6.  。
+    6. 单击“确定”以创建该项目  。
 
-4.    现在，将 [dll](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) 文件夹中存在的所有 DLL 添加为已创建的项目中的**引用**。 若要下载 dll 文件，请执行以下操作：
+4.  现在，将 [dll](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) 文件夹中存在的所有 DLL 添加为已创建的项目中的**引用**。 若要下载 dll 文件，请执行以下操作：
 
     1. 在 Visual Studio 中，转到“视图”>“解决方案资源管理器”。
-    1. 单击“数据转换应用”项目左侧的箭头。 单击“引用”，然后右键单击“添加引用”。
-    2. 浏览到程序包文件夹的位置，选择所有 DLL，单击“添加”，然后单击“确定”。
+    1. 单击“数据转换应用”项目左侧的箭头。 单击“引用”，并右键单击“添加引用”。
+    2. 浏览到程序包文件夹的位置，选择所有 DLL，单击“添加”，并单击“确定”。
 
 5. 将以下 **using** 语句添加到项目中的源文件 (Program.cs)。
 
@@ -154,7 +154,7 @@ ms.lasthandoff: 05/08/2017
 
     ```
 
-9. 此作业会将 StorSimple 卷上的根目录下存在的匹配文件上载到指定的容器。 上载文件时，会丢弃与作业定义同名的队列（与容器在同一存储帐户中）中的消息。 此消息可用作启动文件的任何进一步处理的触发器。
+9. 此作业会将 StorSimple 卷上的根目录下存在的匹配文件上传到指定的容器。 上传文件时，会丢弃与作业定义同名的队列（与容器在同一存储帐户中）中的消息。 此消息可用作启动文件的任何进一步处理的触发器。
 
 10. 触发作业后，添加以下代码可跟踪作业的完成情况。
 

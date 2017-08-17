@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 39dd726078c4dcc55063300bdca998ad822feadd
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: ba3cf4c6834279bbd7f94d666fd8abbb7ac05bf0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="how-to-migrate-data-into-and-out-of-azure-remoteapp"></a>如何将用户数据迁入和迁出 Azure RemoteApp
@@ -44,7 +44,7 @@ ms.lasthandoff: 03/31/2017
 1. [将文件资源管理器发布为 RemoteApp 集合中的应用](remoteapp-publish.md)。 （注意，这属于管理任务。）
 2. 引导用户启动你发布的文件资源管理器应用，并使用它将文件复制并粘贴到用户的 UPD 内部和外部。
 
-## <a name="upload-files-and-data-to-a-file-server-by-using-standard-network-file-copy"></a>使用标准的网络文件复制将文件和数据上载到文件服务器
+## <a name="upload-files-and-data-to-a-file-server-by-using-standard-network-file-copy"></a>使用标准的网络文件复制将文件和数据上传到文件服务器
 通常，组织使用文件服务器存储一般数据。 如果知道服务器名称或位置，用户可以浏览该服务器的本地网络，然后在那里复制他们的文件，这与上文所述的方法相似。 你将需要再次将文件资源管理器发布到 RemoteApp，然后将其与用户共享。
 
 > [!NOTE]
@@ -57,9 +57,15 @@ ms.lasthandoff: 03/31/2017
 
 1. 将文件资源管理器发布到 RemoteApp，然后告知用户通过此应用访问文件。 
 2. 将文件压缩后最易传输，因此用户应创建 .zip 文件，其中包含所有要迁移至 OneDrive for Business 的文件。
-3. 要求用户转到 Office 365 门户，然后转到 OneDrive 并上载 .zip 文件。
+3. 要求用户转到 Office 365 门户，然后转到 OneDrive 并上传 .zip 文件。
 
 ## <a name="copy-files-by-using-drive-redirection"></a>使用驱动器重定向复制文件
 如果已启用 [驱动器重定向](remoteapp-redirection.md)，则已创建用户的映射驱动器。 在此示例中，用户可以在重定向的驱动器上压缩他们的文件，然后将文件保存到用户的本地 PC。
+
+## <a name="how-administrators-can-export-data"></a>管理员如何导出数据
+
+Azure RemoteApp 的管理员可以使用 Azure PowerShell cmdlet、Export-AzureRemoteAppUserDisk 将订阅中所有集合的所有用户配置文件磁盘 (UPD) 导出到 Azure 存储。  无法选择单个 UPD。  执行 PowerShell 命令时，每个用户磁盘将具有 50gb 的固定磁盘大小，并导出到 Azure 存储。  此存储将立即产生 Azure 存储成本。  运行此命令时，确保不存在会话，否则导出会失败。
+
+只能在 RDS 部署中再次使用域加入 Azure RemoteApp 部署的 UPD，不能使用非域加入部署。  如果在 RDS 部署中使用这些磁盘，我们建议使用[自动化脚本](https://github.com/arcadiahlyy/aramigration)，它可以将 UPD 导出、转换和导入到 RDS 部署。
 
 

@@ -2,7 +2,7 @@
 1. [安装 Git][install-git]。 请注意，在 Windows 上，还需要向 PATH 环境变量添加 Git 可执行文件。 
 2. 在项目的根目录中创建名为 **composer.json** 的文件并向其添加以下代码：
    
-    ```
+    ```json
     {
       "require": {
         "microsoft/windowsazure": "^0.4"

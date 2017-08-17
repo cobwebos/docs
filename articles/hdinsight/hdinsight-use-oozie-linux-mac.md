@@ -14,21 +14,27 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 08/04/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: c1d70bfcf5d1235b34f6cda3ce4e1639e99ebc7f
+ms.translationtype: HT
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: b43dd20be9f481270b782de3c889abac762bd9cc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上将 Oozie 与 Hadoop 配合使用以定义和运行工作流
 
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
 
-了解如何将 Apache Oozie 与 HDInsight 上的 Hadoop 配合使用。 Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。 它与 Hadoop 堆栈集成，支持 Apache MapReduce、Apache Pig、Apache Hive 和 Apache Sqoop 的 Hadoop 作业。 它也能用于安排特定于某系统的作业，例如 Java 程序或 shell 脚本
+了解如何将 Apache Oozie 与 HDInsight 上的 Hadoop 配合使用。 Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。 Oozie 与 Hadoop 堆栈集成，并支持以下作业：
+
+* Apache MapReduce
+* Apache Pig
+* Apache Hive
+* Apache Sqoop
+
+Oozie 也能用于安排特定于某系统的作业，例如 Java 程序或 shell 脚本
 
 > [!NOTE]
 > 用于定义与 HDInsight 配合运行的工作流的另一个选项是 Azure 数据工厂。 若要了解有关 Azure 数据工厂的详细信息，请参阅[将 Pig 和 Hive 与数据工厂配合使用][azure-data-factory-pig-hive]。
@@ -66,7 +72,7 @@ ms.lasthandoff: 07/08/2017
 
 ## <a name="create-the-working-directory"></a>创建工作目录
 
-Oozie 希望将作业所需的资源存储在同一个目录中。 此示例使用 **wasbs:///tutorials/useoozie**。 请使用以下命令创建此目录，并创建一个包含此工作流所创建的新 Hive 表的数据目录：
+Oozie 希望将作业所需的资源存储在同一个目录中。 此示例使用 wasb:///tutorials/useoozie。 请使用以下命令创建此目录，并创建一个包含此工作流所创建的新 Hive 表的数据目录：
 
 ```
 hdfs dfs -mkdir -p /tutorials/useoozie/data
@@ -131,13 +137,13 @@ hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /tutorials/useoozie/
 
 4. 若要退出编辑器，请按 Ctrl-X。 出现提示时，请选择“Y”保存文件，然后按 **Enter** 以使用 **useooziewf.hql** 文件名。
 
-5. 使用以下命令将 **useooziewf.hql** 复制到 **wasbs:///tutorials/useoozie/useooziewf.hql**：
+5. 使用以下命令将 useooziewf.hql 复制到 wasb:///tutorials/useoozie/useooziewf.hql：
 
     ```
     hdfs dfs -put useooziewf.hql /tutorials/useoozie/useooziewf.hql
     ```
 
-    这些命令将 **useooziewf.hql** 文件存储在与此群集关联的 Azure 存储帐户上，即使删除群集，此帐户仍会保留该文件。
+    这些命令将 **useooziewf.hql** 文件存储在群集的 HDFS 兼容存储上。
 
 ## <a name="define-the-workflow"></a>定义工作流
 
@@ -295,11 +301,11 @@ Oozie 工作流定义以 hPDL（一种 XML 过程定义语言）编写。 使用
 
     ```xml
     <name>fs.defaultFS</name>
-    <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net</value>
+    <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net</value>
     ```
 
     > [!NOTE]
-    > 如果 HDInsight 群集使用 Azure 存储作为默认存储，则 `<value>` 元素内容将以 `wasbs://` 开头。 如果改用 Azure Data Lake Store 作为默认存储，则以 `adl://` 开头。
+    > 如果 HDInsight 群集使用 Azure 存储作为默认存储，则 `<value>` 元素内容将以 `wasb://` 开头。 如果改用 Azure Data Lake Store 作为默认存储，则以 `adl://` 开头。
 
     保存 `<value>` 元素的内容，因为后续步骤中将使用该内容。
 
@@ -329,7 +335,7 @@ Oozie 工作流定义以 hPDL（一种 XML 过程定义语言）编写。 使用
 
         <property>
         <name>nameNode</name>
-        <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net</value>
+        <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net</value>
         </property>
 
         <property>
@@ -349,7 +355,7 @@ Oozie 工作流定义以 hPDL（一种 XML 过程定义语言）编写。 使用
 
         <property>
         <name>hiveScript</name>
-        <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/useooziewf.hql</value>
+        <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/useooziewf.hql</value>
         </property>
 
         <property>
@@ -359,7 +365,7 @@ Oozie 工作流定义以 hPDL（一种 XML 过程定义语言）编写。 使用
 
         <property>
         <name>hiveDataFolder</name>
-        <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/data</value>
+        <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/data</value>
         </property>
 
         <property>
@@ -379,12 +385,12 @@ Oozie 工作流定义以 hPDL（一种 XML 过程定义语言）编写。 使用
 
         <property>
         <name>oozie.wf.application.path</name>
-        <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie</value>
+        <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie</value>
         </property>
     </configuration>
     ```
 
-   * 将 **wasbs://mycontainer@mystorageaccount.blob.core.windows.net** 的所有实例替换为前面收到的默认存储的值。
+   * 将 **wasb://mycontainer@mystorageaccount.blob.core.windows.net** 的所有实例替换为前面收到的默认存储的值。
 
      > [!WARNING]
      > 如果该路径是 `wasb` 路径，则必须使用完整路径。 不要将其缩短为 `wasb:///`。
@@ -455,7 +461,7 @@ Oozie 工作流定义以 hPDL（一种 XML 过程定义语言）编写。 使用
     Job ID : 0000005-150622124850154-oozie-oozi-W
     ------------------------------------------------------------------------------------------------------------------------------------
     Workflow Name : useooziewf
-    App Path      : wasbs:///tutorials/useoozie
+    App Path      : wasb:///tutorials/useoozie
     Status        : PREP
     Run           : 0
     User          : USERNAME
@@ -468,7 +474,7 @@ Oozie 工作流定义以 hPDL（一种 XML 过程定义语言）编写。 使用
     ------------------------------------------------------------------------------------------------------------------------------------
     ```
 
-    此作业的状态为 `PREP`。 这表示该作业已提交，但尚未启动。
+    此作业的状态为 `PREP`。 此状态指示作业已创建，但是未启动。
 
 5. 使用以下命令启动作业：
 
@@ -523,7 +529,7 @@ Oozie REST API 允许构建自己的工具来使用 Oozie。 下面是有关在 
 
 ## <a name="oozie-web-ui"></a>Oozie Web UI
 
-Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态。 使用 Web UI 可查看以下内容：
+Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态。 使用 Web UI 可查看以下信息：
 
 * 作业状态
 * 作业定义
@@ -569,9 +575,7 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
 ## <a name="scheduling-jobs"></a>计划作业
 
-使用协调器可以指定作业的开始时间、结束时间和发生频率，这样便可将这些作业安排在特定的时间。
-
-若要定义工作流的计划，请使用以下步骤：
+使用协调器可以指定作业的开始时间、结束时间和发生频率。 若要定义工作流的计划，请使用以下步骤：
 
 1. 使用以下命令创建名为 coordinator.xml 的文件：
 
@@ -616,20 +620,20 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
     进行以下更改：
 
-   * 将 `<name>oozie.wf.application.path</name>` 更改为 `<name>oozie.coord.application.path</name>`。 此值指示 Oozie 运行协调器文件，而不是工作流文件。
+   * 若要指示 Oozie 运行协调器文件而不是工作流，请将 `<name>oozie.wf.application.path</name>` 更改为 `<name>oozie.coord.application.path</name>`。
 
-   * 添加以下 XML。 这会将 coordinator.xml 中使用的变量设置为指向 workflow.xml 的位置：
+   * 若要设置协调器使用的 `workflowPath` 变量，请添加以下 XML：
 
         ```xml
         <property>
             <name>workflowPath</name>
-            <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie</value>
+            <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie</value>
         </property>
         ```
 
-       将 `wasbs://mycontainer@mystorageaccount.blob.core.windows` 文本替换为 job.xml 文件中的其他条目使用的值。
+       将 `wasb://mycontainer@mystorageaccount.blob.core.windows` 文本替换为 job.xml 文件中的其他条目使用的值。
 
-   * 添加以下 XML。 这可定义 coordinator.xml 文件使用的开始时间、结束时间和频率：
+   * 若要定义协调器的开始时间、结束时间和频率，请添加以下 XML：
 
         ```xml
         <property>
@@ -676,7 +680,7 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
     ![协调器作业信息](./media/hdinsight-use-oozie-linux-mac/coordinatorjobinfo.png)
 
     > [!NOTE]
-    > 这只显示作业成功运行，而不显示计划的工作流中的单个操作。 若要查看这些操作，请选择某个“操作”条目。
+    > 此图像只显示作业成功运行，而不显示计划的工作流中的单个操作。 若要查看这些操作，请选择某个“操作”条目。
 
     ![操作信息](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
 
@@ -698,7 +702,7 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
 
-**原因**：**job.xml** 文件中使用的 WASB 地址不包含存储容器或存储帐户名。 WASB 地址格式必须是 `wasbs://containername@storageaccountname.blob.core.windows.net`。
+**原因**：**job.xml** 文件中使用的 WASB 地址不包含存储容器或存储帐户名。 WASB 地址格式必须是 `wasb://containername@storageaccountname.blob.core.windows.net`。
 
 **解决方法**：更改作业使用的 WASB 地址。
 

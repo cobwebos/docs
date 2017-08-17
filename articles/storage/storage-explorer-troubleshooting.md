@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2017
+ms.date: 08/09/2017
 ms.author: delhan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 470b2d87ffdc4769bb2963df7dea646901469e00
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: e9b833b07556378f17d9aaff0912c7d73dff44eb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -32,7 +32,7 @@ Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可�
 
 ## <a name="sign-in-issues"></a>登录问题
 
-继续之前，请尝试重新启动应用程序，看问题是否能够解决。
+仅支持 Azure Active Directory (AAD) 帐户。 如果使用 ADFS 帐户，预计将无法正常登录存储资源管理器。 继续之前，请尝试重新启动应用程序，看问题是否能够解决。
 
 ### <a name="error-self-signed-certificate-in-certificate-chain"></a>错误：证书链中的自签名证书
 
@@ -69,7 +69,7 @@ Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可�
 
 若成功登录后无法检索订阅，请执行以下步骤解决此问题：
 
-- 通过登录到 Azure 门户验证帐户是否有权访问该订阅。
+- 通过登录 Azure 门户验证帐户是否有权访问该订阅。
 
 - 请确保使用正确的环境登录（Azure、Azure 中国、Azure 德国、Azure 美国政府或自定义环境/Azure Stack）。
 
@@ -152,7 +152,7 @@ Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可�
 
 - 检查网络工具使用的端口号。
 
-- 在存储资源管理器中，输入本地主机 URL和网络工具的端口号作为代理设置。 如果正确执行，网络工具将开始记录存储资源管理器向管理和服务终结点发出的网络请求。 例如，如果在浏览器中输入 https://cawablobgrs.blob.core.windows.net/ 作为 Blob 终结点，将收到类似以下的响应，表示资源存在，尽管无法访问。
+- 在存储资源管理器中，输入本地主机 URL和网络工具的端口号作为代理设置。 如果操作无误，网络工具将开始记录存储资源管理器向管理和服务终结点发出的网络请求。 例如，如果在浏览器中输入 https://cawablobgrs.blob.core.windows.net/ 作为 Blob 终结点，将收到类似以下的响应，表示资源存在，尽管无法访问。
 
 ![代码示例](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 

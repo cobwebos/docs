@@ -11,14 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2017
+ms.date: 08/04/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: ea928ba4d13970a32123a8ada8575658cecde5d8
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: bdca442755507c4ffe8d43692c5b7f2aa3a746f3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -39,7 +38,7 @@ ms.lasthandoff: 05/31/2017
 在 Microsoft Edge 中配置代理设置：
 
 1. 转到“设置” > “查看高级设置” > “打开代理设置” > “手动代理设置”。
-2. 将“使用代理服务器”设置为“打开”，选中“请勿将代理服务器用于本地(Intranet)地址”复选框，然后更改地址和端口以反映本地代理服务器。
+2. 将“使用代理服务器”设置为“打开”，选中“请勿将代理服务器用于本地(Intranet)地址”复选框，并更改地址和端口以反映本地代理服务器。
 3. 填写所需的代理设置。
 
    ![代理设置对话框](./media/application-proxy-working-with-proxy-servers/proxy-bypass-local-addresses.png)
@@ -76,7 +75,7 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 
 某些环境要求所有出站流量通过出站代理而不发生异常。 因此，绕过代理是不可行的。
 
-可按下图所示将连接器流量配置为通过出站代理。
+可按下图所示将连接器流量配置为通过出站代理：
 
  ![将连接器流量配置为通过出站代理发送到 Azure AD 应用程序代理。](./media/application-proxy-working-with-proxy-servers/configure-proxy-settings.png)
 
@@ -84,7 +83,7 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 
 ### <a name="step-1-configure-the-connector-and-related-services-to-go-through-the-outbound-proxy"></a>步骤 1：将连接器和相关服务配置为通过出站代理
 
-如前所述，如果在环境中启用并正确配置了 WPAD，连接器将自动发现出站代理服务器并尝试使用它。 但是，可以显式将连接器配置为通过出站代理。
+如前所述，如果在环境中启用并正确配置了 WPAD，连接器会自动发现出站代理服务器并尝试使用它。 但是，可以显式将连接器配置为通过出站代理。
 
 为此，请编辑 C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config 文件并添加 *system.net* 节，如以下代码示例中所示。 更改 *proxyserver:8080*，反映本地代理服务器的名称或 IP 地址及其侦听的端口。
 
@@ -126,14 +125,10 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 * login.windows.net
 * login.microsoftonline.com
 
-连接器服务使用的底层服务总线控制通道还要求与特定的 IP 地址建立连接。 在服务总线改用 FQDN 之前，可以使用两个选项：
+如果不能通过 FQDN 允许连接，请使用以下选项改为指定 IP 范围：
 
 * 允许连接器对所有目标进行出站访问。
-* 允许连接器对 [Azure 数据中心 IP 范围](https://www.microsoft.com/en-gb/download/details.aspx?id=41653)进行出站访问。
-
->[!NOTE]
->使用 Azure 数据中心 IP 范围列表的难点在于，该列表每周更新。 需要制定一个流程来确保相应地更新访问规则。
->
+* 允许连接器对 [Azure 数据中心 IP 范围](https://www.microsoft.com/en-gb/download/details.aspx?id=41653)进行出站访问。 使用 Azure 数据中心 IP 范围列表的难点在于，该列表每周更新。 需要制定一个流程来确保相应地更新访问规则。
 
 #### <a name="proxy-authentication"></a>代理身份验证
 
@@ -141,18 +136,15 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 
 #### <a name="proxy-ports"></a>代理端口
 
-连接器使用 CONNECT 方法建立基于 SSL 的出站连接。 此方法实质上是通过出站代理建立一个隧道。 某些代理服务器默认只允许与标准 SSL 端口（例如 443）建立出站隧道连接。 在这种情况下，必须将代理服务器配置为允许与其他端口建立隧道连接。
-
-将代理服务器配置为允许与非标准 SSL 端口 8080、9090、9091 和 10100-10120 建立隧道连接。
+连接器使用 CONNECT 方法建立基于 SSL 的出站连接。 此方法实质上是通过出站代理建立一个隧道。 将代理服务器配置为允许与端口 443 和 80 建立隧道连接。
 
 >[!NOTE]
 >服务总线在通过 HTTPS 运行时，将使用端口 443。 但是，在默认情况下，服务总线会尝试建立直接 TCP 连接，仅当直接连接失败时，才回退到 HTTPS。
->
 
 为了确保服务总线流量也通过出站代理服务器发送，请确保连接器无法直接连接到 Azure 服务的端口 9350、9352 和 5671。
 
 #### <a name="ssl-inspection"></a>SSL 检查
-不要对连接器流量使用 SSL 检查，因为这会导致连接器流量出现问题。
+请勿对连接器流量使用 SSL 检查，因为这会导致连接器流量出现问题。
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>排查连接器代理问题和服务连接问题
 现在，应会看到所有流量都会流过代理服务器。 如果遇到问题，以下故障排除信息应会有所帮助。
@@ -193,13 +185,13 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 
 **(http.Request or http.Response) and tcp.port==8080**
 
-如果在“显示筛选器”窗口中输入此筛选器并选择“应用”，将会根据此筛选器筛选捕获的流量。
+如果在“显示筛选器”窗口中输入此筛选器并选择“应用”，则会根据此筛选器筛选捕获的流量。
 
-上面的筛选器只显示传入/传出代理端口的 HTTP 请求和响应。 如果连接器最初配置为使用代理服务器，筛选器将显示类似于下面的信息：
+上面的筛选器只显示传入/传出代理端口的 HTTP 请求和响应。 如果连接器最初配置为使用代理服务器，筛选器会显示类似于下面的信息：
 
  ![筛选的 HTTP 请求和响应示例列表](./media/application-proxy-working-with-proxy-servers/http-requests.png)
 
-假设你想要专门查找显示与代理服务器之间的通信的 CONNECT 请求。 成功后，将获得 HTTP OK (200) 响应。
+假设想要专门查找显示与代理服务器之间的通信的 CONNECT 请求。 成功后，会获得 HTTP OK (200) 响应。
 
 如果看到其他响应代码（如 407 或 502），表示代理要求身份验证或者出于其他某种原因而不允许该流量。 在这种情况下，请咨询代理服务器支持团队。
 
@@ -217,10 +209,10 @@ SYN 数据包是为了建立 TCP 连接而发送的第一个数据包。 如果�
 
  ![失败的连接尝试的示例响应](./media/application-proxy-working-with-proxy-servers/failed-connection-attempt.png)
 
-如果看到类似于上面的响应，表示连接器正在尝试与 Azure 服务总线服务直接通信。 如果连接器预期应与 Azure 服务建立直接连接器，此响应明确表示你的网络或防火墙出现了问题。
+如果看到类似于上面的响应，表示连接器正在尝试与 Azure 服务总线服务直接通信。 如果连接器预期应与 Azure 服务建立直接连接器，此响应明确表示网络或防火墙出现了问题。
 
 >[!NOTE]
->如果配置为使用代理服务器，此响应可能表示服务总线正在尝试建立直接 TCP 连接，然后再改为尝试通过 HTTPS 建立连接。
+>如果配置为使用代理服务器，此响应可能表示服务总线正在尝试建立直接 TCP 连接，再改为尝试通过 HTTPS 建立连接。
 >
 
 并非所有用户都能执行网络跟踪分析。 但它可能是一个有用的工具，因为它能快速获取有关网络中发生的情况的信息。

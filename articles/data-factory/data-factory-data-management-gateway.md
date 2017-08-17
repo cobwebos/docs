@@ -15,28 +15,28 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: e05563c8ef705b823199703795baa86dcb665b00
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 221eadc2e93c2be0f985386277fcfab69e46416b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="data-management-gateway"></a>数据管理网关
 数据管理网关是必须安装到本地环境中的客户端代理，用于在云和本地数据存储之间复制数据。 [支持的数据源](data-factory-data-movement-activities.md#supported-data-stores-and-formats)部分列出了数据工厂支持的本地数据存储。
 
-> [!NOTE]
-> 目前，网关仅支持数据工厂中的复制活动和存储的过程活动。 不能使用自定义活动中的网关访问本地数据源。
->
->
+本文补充了[在本地和云数据存储之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文中的演练。 在本演练中，将创建一个管道，该管道使用网关将数据从本地 SQL Server 数据库移至 Azure Blob。 本文深入说明了数据管理网关。 
 
-本文补充了[在本地和云数据存储之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文中的演练。 在本演练中，将创建一个管道，该管道使用网关将数据从本地 SQL Server 数据库移至 Azure Blob。 本文深入说明了数据管理网关。   
+可通过将多个本地计算机与网关相关联来向外扩展数据管理网关。 可通过增加可以同时在一个节点上运行的数据移动作业数来向上扩展数据管理网关。 此功能也适用于包含一个节点的逻辑网关。 有关详细信息，请参阅[在 Azure 数据工厂中缩放数据管理网关](data-factory-data-management-gateway-high-availability-scalability.md)一文。
+
+> [!NOTE]
+> 目前，网关仅支持数据工厂中的复制活动和存储的过程活动。 不能使用自定义活动中的网关访问本地数据源。      
 
 ## <a name="overview"></a>概述
 ### <a name="capabilities-of-data-management-gateway"></a>数据管理网关的功能
 数据管理网关提供以下功能：
 
 * 在相同的数据工厂中创建本地数据源和云数据源模型，并移动数据。
-* 具有单一虚拟管理平台，可从“数据工厂”边栏选项卡看见网关状态，以便监视和管理。
+* 具有单一虚拟管理平台，可从“数据工厂”页看见网关状态，以便监视和管理。
 * 安全地管理对本地数据源的访问权限。
   * 无需对企业防火墙进行更改。 网关仅生成基于出站 HTTP 的连接，以打开 Internet。
   * 使用证书加密本地数据存储的凭据。
@@ -56,7 +56,7 @@ ms.lasthandoff: 07/28/2017
 
 ### <a name="considerations-for-using-gateway"></a>使用网关的注意事项
 * 数据管理网关的单个实例可用于多个本地数据源。 但是，**单个网关实例只与一个 Azure 数据工厂关联**，不能与另一个数据工厂共享。
-* 在一台计算机上可以仅安装 **数据管理网关的一个实例**。 假设有两个需要访问本地数据源的数据工厂，那么需要在两台本地计算机上安装网关。 换而言之，一个网关关联到一个特定的数据工厂
+* 在一台计算机上可以仅安装数据管理网关的一个实例。 假设有两个需要访问本地数据源的数据工厂，那么需要在两台本地计算机上安装网关。 换而言之，一个网关关联到一个特定的数据工厂
 * **网关不需要位于数据源所在的计算机上**。 但是，如果网关离数据源较近，可以减少网关连接到数据源的时间。 建议在不同于托管本地数据源的计算机上安装网关。 网关和数据源位于不同计算机上时，网关不会与数据源争用资源。
 * 可以**将不同计算机上的多个网关连接到同一本地数据源**。 例如，可以让两个网关服务两个数据工厂，但这两个数据工厂注册了同一个本地数据源。
 * 如果已在计算机中安装了为 **Power BI** 方案提供服务的网关，那么在其他计算机上安装**用于 Azure 数据工厂的单独网关**。
@@ -84,7 +84,7 @@ ms.lasthandoff: 07/28/2017
 1. 在主机上为网关配置电源计划，从而让计算机无法休眠。 如果主机计算机进入休眠状态，则网关不响应数据请求。
 2. 备份与网关关联的证书。
 
-### <a name="install-gateway-from-download-center"></a>从下载中心安装网关
+### <a name="install-the-gateway-from-download-center"></a>从下载中心安装网关
 1. 导航到 [Microsoft 数据管理网关下载页](https://www.microsoft.com/download/details.aspx?id=39717)。
 2. 单击“下载”，选择适当的版本（“32 位”或“64 位”），并单击“下一步”。
 3. 直接运行 **MSI** 或将其保存到硬盘再运行。
@@ -101,19 +101,19 @@ ms.lasthandoff: 07/28/2017
 
 ### <a name="register-gateway-using-key"></a>使用密钥注册网关
 #### <a name="if-you-havent-already-created-a-logical-gateway-in-the-portal"></a>如果尚未在门户中创建逻辑网关
-若要在门户中创建网关并从“配置”边栏选项卡上获取密钥，请遵循[在本地和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文中的演练步骤。    
+若要在门户中创建网关并从“配置”页获取密钥，请遵循[在本地和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文中的演练步骤。    
 
 #### <a name="if-you-have-already-created-the-logical-gateway-in-the-portal"></a>如果已在门户中创建逻辑网关
-1. 在 Azure 门户中，导航到“数据工厂”边栏选项卡，并单击“链接服务”磁贴。
+1. 在 Azure 门户中，导航到“数据工厂”页，并单击“链接服务”磁贴。
 
-    ![“数据工厂”边栏选项卡](media/data-factory-data-management-gateway/data-factory-blade.png)
-2. 在“链接服务”边栏选项卡中，选择在门户中创建的逻辑“网关”。
+    ![“数据工厂”页](media/data-factory-data-management-gateway/data-factory-blade.png)
+2. 在“链接服务”页中，选择在门户中创建的逻辑网关。
 
     ![逻辑网关](media/data-factory-data-management-gateway/data-factory-select-gateway.png)  
-3. 在“数据网关”边栏选项卡上，单击“下载并安装数据网关”。
+3. 在“数据网关”页中，单击“下载并安装数据网关”。
 
     ![在门户中下载链接](media/data-factory-data-management-gateway/download-and-install-link-on-portal.png)   
-4. 在“配置”边栏选项卡上，单击“重新创建密钥”。 仔细阅读后，在警告消息上单击“是”。
+4. 在“配置”页中，单击“重新创建密钥”。 仔细阅读后，在警告消息上单击“是”。
 
     ![重新创建密钥](media/data-factory-data-management-gateway/recreate-key-button.png)
 5. 单击密钥旁边的“复制”按钮。 密钥被复制到剪贴板。
@@ -141,11 +141,11 @@ ms.lasthandoff: 07/28/2017
 | *.frontend.clouddatahub.net |443 |用于与数据移动服务后端进行通信 |
 
 
-在 windows 防火墙级别，通常启用了这些出站端口。 如果没有，可以在网关计算机上相应地配置域和端口。
+在 Windows 防火墙级别下，通常已启用这些出站端口。 如果没有，可以在网关计算机上相应地配置域和端口。
 
 > [!NOTE]
-> 1. 根据源/接收器，可能需要在企业/windows 防火墙中将其他域和出站端口加入允许列表。
-> 2. 对于某些云数据库（例如， [SQL Azure 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings)、[Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access) 等），可能需要在其防火墙配置中将网关计算机的 IP 地址加入允许列表。
+> 1. 根据源/接收器，可能需要在企业/Windows 防火墙中将其他域和出站端口加入允许列表。
+> 2. 对于部分云数据库（例如，[Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings)、[Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access) 等），可能需要在其防火墙配置中将网关计算机的 IP 地址加入允许列表。
 >
 >
 
@@ -183,7 +183,7 @@ ms.lasthandoff: 07/28/2017
 
 成功注册网关后，如果想要查看或更新代理设置，请使用数据管理网关配置管理器。
 
-1. 启动数据管理网关配置管理器。
+1. 启动“数据管理网关配置管理器”。
 2. 切换到“设置”选项卡。
 3. 单击“HTTP 代理”部分的“更改”链接，以启动“设置 HTTP 代理”对话框。  
 4. 单击“下一步”按钮后，将出现警告对话框，询问是否允许保存代理设置和重启网关主机服务。
@@ -234,7 +234,7 @@ ms.lasthandoff: 07/28/2017
    `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
 
 ### <a name="open-port-8050-for-credential-encryption"></a>打开端口 8050 以实现凭据加密
-在 Azure 门户中设置本地链接服务时，“设置凭据”应用程序使用入站端口“8050”将凭据中继到网关。 默认情况下，网关安装期间，数据管理网关安装会在网关计算机上将其打开。
+在 Azure 门户中设置本地链接服务时，“设置凭据”应用程序使用入站端口“8050”将凭据中继到网关。 默认情况下，网关安装期间，网关安装会在网关计算机上将其打开。
 
 如果正在使用第三方防火墙，则可以手动打开端口 8050。 如果在网关安装过程中遇到防火墙问题，可以尝试使用以下命令在不配置防火墙的情况下安装网关。
 
@@ -243,11 +243,11 @@ ms.lasthandoff: 07/28/2017
 如果选择不打开网关计算机上的端口 8050，则使用机制（而不是使用“设置凭据”应用程序）来配置数据存储凭据。 例如，可以使用 [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell cmdlet。 请参阅[设置凭据和安全](#set-credentials-and-securityy)部分，了解如何设置数据存储凭据。
 
 ## <a name="update"></a>更新
-默认情况下，如果较新版本的网关可用，会自动更新数据管理网关。 完成所有计划的任务之后，网关才会更新。 更新操作完成之前，网关不处理任何其他任务。 如果更新失败，网关回退到旧版本。
+默认情况下，如果有较新版本的网关可用，会自动更新数据管理网关。 完成所有计划的任务之后，网关才会更新。 更新操作完成之前，网关不处理任何其他任务。 如果更新失败，网关回退到旧版本。
 
 在以下位置查看计划的更新时间：
 
-* Azure 门户中的网关属性边栏选项卡。
+* Azure 门户中的网关属性页。
 * 数据管理网关配置管理器的主页
 * 系统托盘通知消息。
 
@@ -280,11 +280,12 @@ ms.lasthandoff: 07/28/2017
     ```PowerShell
     .\GatewayAutoUpdateToggle.ps1  -on  
     ```
+
 ## <a name="configuration-manager"></a>配置管理器
 安装网关后，可以通过以下方式之一来启动数据管理网关配置管理器：
 
-* 在“搜索”窗口中，键入“数据管理网关”，以访问此实用程序。
-* 在文件夹 **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** 中查找可执行文件 **ConfigManager.exe**
+1. 在“搜索”窗口中，键入“数据管理网关”，以访问此实用程序。
+2. 在文件夹 **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** 中查找可执行文件 **ConfigManager.exe**
 
 ### <a name="home-page"></a>主页
 在主页中可执行以下操作：
@@ -316,28 +317,86 @@ ms.lasthandoff: 07/28/2017
 * 版本号
 * 联机帮助、隐私声明以及许可证协议的链接。  
 
+## <a name="monitor-gateway-in-the-portal"></a>在门户中监视网关
+在 Azure 门户中，可以查看网关计算机的资源使用率（CPU、内存、网络（进/出）等）近乎实时的快照。  
+
+1. 在 Azure 门户中，导航到“数据工厂”主页，并单击“链接服务”磁贴。 
+
+    ![数据工厂主页](./media/data-factory-data-management-gateway/monitor-data-factory-home-page.png) 
+2. 在“链接服务”页中选择“网关”。
+
+    ![“链接服务”页](./media/data-factory-data-management-gateway/monitor-linked-services-blade.png)
+3. 在“网关”页中，可查看网关的内存和 CPU 使用情况。
+
+    ![网关的 CPU 和内存使用情况](./media/data-factory-data-management-gateway/gateway-simple-monitoring.png) 
+4. 启用“高级设置”以查看网络使用情况等更多详细信息。
+    
+    ![网关的高级监视](./media/data-factory-data-management-gateway/gateway-advanced-monitoring.png)
+
+下表介绍“网关节点”列表中的列：  
+
+监视属性 | 说明
+:------------------ | :---------- 
+名称 | 逻辑网关和与网关关联的节点的名称。 节点是已在其上安装网关的本地 Windows 计算机。 有关在单个逻辑网关中采用多个节点（最多 4 个）的信息，请参阅[数据管理网关 - 高可用性和可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)。    
+状态 | 逻辑网关和网关节点的状态。 示例：联机/脱机/受限等。有关这些状态的信息，请参阅[网关状态](#gateway-status)部分。 
+版本 | 显示逻辑网关和每个网关节点的版本。 逻辑网关的版本根据组中多数节点的版本而决定。 如果逻辑网关安装程序中的节点版本不同，只有与逻辑网关的版本号相同的节点能正常运行。 其他节点将处于受限模式，需要手动进行更新（仅当自动更新失败时）。 
+可用内存 | 网关节点上的可用内存。 此值为近实时快照。 
+CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。 
+网络（进/出） | 网关节点的网络利用率。 此值为近实时快照。 
+并发作业数（运行中/上限） | 每个节点上运行的作业或任务数。 此值为近实时快照。 上限表示每个节点的最大并发作业数。 此值根据计算机大小定义而来。 在 CPU/内存/网络未充分利用，但活动即将超时的高级方案中，可提高上限来增强并发作业执行。 此功能也适用于单节点网关（即便未启用可伸缩性和可用性功能）。  
+角色 | 多节点网关中有两种角色 – 调度程序和辅助角色。 所有节点均为辅助角色，表示它们可用于执行作业。 只有一个调度程序节点，用于从云服务中请求任务/作业，并分派到其他辅助节点（包括其本身）。
+
+在此页面，你将发现当网关中存在两个或以上节点（扩展方案）时，某些设置更为好用。 有关如何设置多节点网关的详细信息，请参阅[数据管理网关 - 高可用性和可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)。
+
+### <a name="gateway-status"></a>网关状态
+下表提供网关节点可能的状态： 
+
+状态  | 注释/方案
+:------- | :------------------
+联机 | 节点连接到数据工厂服务。
+脱机 | 节点处于脱机状态。
+正在升级 | 节点正在进行自动更新。
+受限制 | 由于连接问题而受限。 可能由于 HTTP 端口 8050 问题、服务总线连接问题或凭据同步问题而受限。 
+非活动 | 节点的配置与其他多数节点的配置不同。<br/><br/> 节点在无法与其他节点连接时可能处于非活动状态。 
+
+
+下表提供逻辑网关可能的状态。 网关状态取决于网关节点的状态。 
+
+状态 | 注释
+:----- | :-------
+需注册 | 尚未向此逻辑网关注册任何节点
+联机 | 网关节点处于联机状态
+脱机 | 没有节点处于联机状态。
+受限制 | 此网关中并非所有节点都处于运行正常状态。 此状态是部分节点可能出现故障的警告！ <br/><br/>可能是由于调度程序/辅助角色节点上的凭据同步问题所导致。 
+
+## <a name="scale-up-gateway"></a>向上扩展网关
+可配置可在单个节点上运行的并发数据移动作业数，提升在本地与云数据存储之间移动数据的能力。 
+
+如果可用内存和 CPU 未充分利用，但空闲容量为 0，应通过增加节点上可运行的并发作业数进行纵向扩展。 此外，活动因网关重载而超时时，也建议向上扩展。 在网关节点的高级设置中，可以增加节点的最大容量。 
+  
+
 ## <a name="troubleshooting-gateway-issues"></a>网关问题疑难解答
 请参阅[网关问题疑难解答](data-factory-troubleshoot-gateway-issues.md)一文，了解在解决使用数据管理网关时遇到的问题的相关信息/提示。  
 
-## <a name="move-gateway-from-a-machine-to-another"></a>将网关从一台计算机移动到另一台计算机
+## <a name="move-gateway-from-one-machine-to-another"></a>将网关从一台计算机移动到另一台计算机
 本部分提供将网关客户端从一台计算机移动到另一台计算机的步骤。
 
 1. 在门户中，导航到“数据工厂主页”，并单击“链接服务”磁贴。
 
     ![数据网关链接](./media/data-factory-data-management-gateway/DataGatewaysLink.png)
-2. 在“链接服务”边栏选项卡的“数据网关”部分选择网关。
+2. 在“链接服务”页的“数据网关”部分选择网关。
 
-    ![已选网关的链接服务边栏选项卡](./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png)
-3. 在“数据网关”边栏选项卡上，单击“下载并安装数据网关”。
+    ![已选定网关的“链接服务”页](./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png)
+3. 在“数据网关”页中，单击“下载并安装数据网关”。
 
     ![下载网关链接](./media/data-factory-data-management-gateway/DownloadGatewayLink.png)
-4. 在“配置”边栏选项卡上，单击“下载并安装数据网关”，并按照说明在计算机上安装数据网关。
+4. 在“配置”页中，单击“下载并安装数据网关”，并按照说明在计算机上安装数据网关。
 
-    ![配置边栏选项卡](./media/data-factory-data-management-gateway/ConfigureBlade.png)
+    ![“配置”页](./media/data-factory-data-management-gateway/ConfigureBlade.png)
 5. 将“Microsoft 数据管理网关配置管理器”保持为打开状态。
 
     ![配置管理器](./media/data-factory-data-management-gateway/ConfigurationManager.png)    
-6. 在门户中的“配置”边栏选项卡上，单击命令栏上的“重新创建密钥”，并对警告消息单击“是”。 单击密钥文本旁边的“复制”按钮，将密钥复制到剪贴板。 重新创建密钥后，旧计算机上的网关立即停止工作。  
+6. 在门户中的“配置”页中，单击命令栏上的“重新创建密钥”，并对警告消息单击“是”。 单击密钥文本旁边的“复制”按钮，将密钥复制到剪贴板。 重新创建密钥后，旧计算机上的网关立即停止工作。  
 
     ![重新创建密钥](./media/data-factory-data-management-gateway/RecreateKey.png)
 7. 在计算机上，将“密钥”粘贴到“数据管理网关配置管理器”的“注册网关”页的文本框中。 （可选）单击“显示网关密钥”复选框，以查看密钥文本。
@@ -354,19 +413,20 @@ ms.lasthandoff: 07/28/2017
 ## <a name="encrypting-credentials"></a>加密凭据
 若要在数据工厂编辑器中加密凭据，请执行以下步骤：
 
-1. 在“网关计算机”上启动 Web 浏览器，导航到 [Azure 门户](http://portal.azure.com)。 根据需要搜索数据工厂，打开“数据工厂”边栏选项卡中的数据工厂，并单击“作者和部署”，以启动数据工厂编辑器。   
-2. 单击树视图中的某个现有“链接服务”以查看其 JSON 定义或创建需要数据管理网关的链接服务（例如：SQL Server 或 Oracle）。
+1. 在“网关计算机”上启动 Web 浏览器，导航到 [Azure 门户](http://portal.azure.com)。 根据需要搜索数据工厂，打开“数据工厂”页中的数据工厂，并单击“作者和部署”，以启动数据工厂编辑器。   
+2. 单击树状视图中的某个现有“链接服务”以查看其 JSON 定义或创建需要数据管理网关的链接服务（例如：SQL Server 或 Oracle）。
 3. 在 JSON 编辑器中，对 **gatewayName** 属性输入网关名称。
 4. 在 **connectionString** 中，对“数据源”属性输入服务器名称。
 5. 在 **connectionString** 中，对“初始目录”属性输入数据库名称。    
 6. 单击单击命令栏上的“加密”按钮，启动只需单击一次的“凭据管理器”应用程序。 将显示“设置凭据”对话框。
-    ![设置凭据对话框](./media/data-factory-data-management-gateway/setting-credentials-dialog.png)
-7. 在“设置凭据”对话框框中，执行以下步骤：  
+
+    ![“设置凭据”对话框](./media/data-factory-data-management-gateway/setting-credentials-dialog.png)
+7. 在“设置凭据”对话框框中，执行以下步骤：
    1. 选择数据工厂服务连接数据库时所需的“身份验证”。
    2. 对于“用户名”设置，输入有权访问数据库的用户的名称。
    3. 对于“密码”设置，输入用户密码。  
    4. 单击“确定”加密凭据并关闭对话框。
-8. 现在可以在 **connectionString** 中看到 **encryptedCredential** 属性。        
+8. 现在可以在 **connectionString** 中看到 **encryptedCredential** 属性。
 
     ```JSON
     {

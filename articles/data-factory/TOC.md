@@ -61,7 +61,10 @@
 #### [Sybase](data-factory-onprem-sybase-connector.md)
 #### [Teradata](data-factory-onprem-teradata-connector.md)
 #### [Web 表](data-factory-web-table-connector.md)
-### [数据管理网关](data-factory-data-management-gateway.md)
+### 数据管理网关
+#### [概述](data-factory-data-management-gateway.md)
+#### [高可用性和可伸缩性（预览版）](data-factory-data-management-gateway-high-availability-scalability.md)
+#### [演练：将数据从本地 SQL Server 移到 Azure Blob 存储](data-factory-move-data-between-onprem-and-cloud.md)
 
 
 ## [转换数据](data-factory-data-transformation-activities.md)

@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/14/2017
+ms.date: 07/24/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: H1Hack27Feb2017; it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: 1615f1ebbc4ade9dddbab3bd964bc27e6150a4c5
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 395b0209109a5c1eb3ee8ecdd9651ab82fb213eb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
@@ -107,7 +107,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 有两个因素会影响 NPS 扩展部署可以使用哪些身份验证方法：
 
 1. 在 RADIUS 客户端（VPN、Netscaler 服务器或其他客户端）与 NPS 服务器之间使用的密码加密算法。
-   - **PAP** 在云中支持 Azure MFA 的所有身份验证方法：电话呼叫、短信、移动应用通知和移动应用验证码。
+   - PAP 在云中支持 Azure MFA 的所有身份验证方法：电话呼叫、单向短信、移动应用通知和移动应用验证码。
    - **CHAPV2** 和 **EAP** 支持电话呼叫和移动应用通知。
 2. 客户端应用程序（VPN、Netscaler 服务器或其他客户端）可以处理的输入方法。 例如，VPN 客户端是否有一些手段允许用户键入通过文本或移动应用收到的验证码？
 
@@ -164,6 +164,9 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 在要针对负载均衡设置的任何其他 NPS 服务器上重复这些步骤。
 
+>[!NOTE]
+>如果使用自己的证书，而不是使用 PowerShell 脚本生成的证书，请确保它们符合 NPS 命名约定。 使用者名称必须为“CN=\<TenantID\>”，“OU=Microsoft NPS Extension”。 
+
 ## <a name="configure-your-nps-extension"></a>配置 NPS 扩展
 
 本部分包含一些设计注意事项和建议，帮助用户成功完成 NPS 扩展的部署。
@@ -173,7 +176,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 - Azure MFA 的 NPS 扩展不包含用于将用户和设置从 MFA 服务器迁移到云的工具。 出于此原因，我们建议将扩展用于新部署，而非现有部署。 如果在现有部署上使用扩展，用户必须重新进行证明才能在云中填充其 MFA 详细信息。  
 - NPS 扩展使用本地 Active Directory 中的 UPN 来标识 Azure MFA 中的用户，以便执行辅助身份验证。 无法将该扩展配置为使用其他标识符，例如备用登录 ID，或者除 UPN 以外的自定义 AD 字段。  
 - 并非所有加密协议都支持所有验证方法。
-   - **PAP** 支持电话呼叫、短信、移动应用通知和移动应用验证码
+   - PAP 支持电话呼叫、单向短信、移动应用通知和移动应用验证码
    - **CHAPV2** 和 **EAP** 支持电话呼叫和移动应用通知
 
 ### <a name="control-radius-clients-that-require-mfa"></a>控制需要 MFA 的 RADIUS 客户端

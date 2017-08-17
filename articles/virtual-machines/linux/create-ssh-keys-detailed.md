@@ -15,34 +15,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/28/2017
 ms.author: danlep
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 0cb70d36bd6e8d4cf5fcd5ed4a3e85c42f3cf81d
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: d4548c6f21d04effd57ea36e4fc0d15f77568903
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
 # <a name="detailed-walk-through-to-create-an-ssh-key-pair-and-additional-certificates-for-a-linux-vm-in-azure"></a>详细演练了如何为 Azure 中的 Linux VM 创建 SSH 密钥对和其他证书
-使用 SSH 密钥对，可以在 Azure 上创建默认为使用 SSH 密钥进行身份验证的虚拟机，从而无需密码即可登录。 密码有可能被猜到，并允许你的 VM 不间断地尝试密码破解来猜测你的密码。 使用 Azure CLI 或 Resource Manager 模板创建的 VM 可以在部署过程中提供 SSH 公钥，从而删除对 SSH 禁用密码中的发布部署配置步骤。 本文提供的详细步骤和其他示例介绍了如何生成具有特定用途（例如适用于 Linux 虚拟机）的证书。 如需快速创建和使用 SSH 密钥对，请参阅[如何创建适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](mac-create-ssh-keys.md)。
+使用 SSH 密钥对，可以在 Azure 上创建默认为使用 SSH 密钥进行身份验证的虚拟机，从而无需密码即可登录。 密码有可能被猜到，并允许 VM 不间断地尝试密码破解来猜测密码。 使用 Azure CLI 或 Resource Manager 模板创建的 VM 可以在部署过程中提供 SSH 公钥，从而删除对 SSH 禁用密码中的发布部署配置步骤。 本文提供的详细步骤和其他示例介绍了如何生成具有特定用途（例如适用于 Linux 虚拟机）的证书。 如需快速创建和使用 SSH 密钥对，请参阅[如何创建适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](mac-create-ssh-keys.md)。
 
 ## <a name="understanding-ssh-keys"></a>了解 SSH 密钥
 
 使用 SSH 公钥和私钥是登录到 Linux 服务器的最简单方法。 [公钥加密技术](https://en.wikipedia.org/wiki/Public-key_cryptography) 提供了一种比密码更为安全的登录到 Azure 中的 Linux 或 BSD VM 的方法，密码会更容易受到暴力攻击得多。
 
-公钥可与任何人共享；但只有你（或本地安全基础结构）才拥有你的私钥。  SSH 私钥应使用[非常安全的密码](https://www.xkcd.com/936/)（源：[xkcd.com](https://xkcd.com)）来保护它。  此密码只用于访问 SSH 私钥文件，**不是**用户帐户密码。  向 SSH 密钥添加密码时，会使用 128 位 AES 加密私钥，因此在不能通过密码解密的情况下，私钥是没有用的。  如果攻击者窃取了私钥，并且该私钥没有密码，那么他们就能使用私钥登录到有相应公钥的任何服务器。  如果私钥受密码保护，攻击者就无法使用，从而为 Azure 基础结构提供一个额外的安全层。
+公钥可与任何人共享；但只有你（或本地安全基础结构）才拥有私钥。  SSH 私钥应使用[非常安全的密码](https://www.xkcd.com/936/)（源：[xkcd.com](https://xkcd.com)）来保护它。  此密码只用于访问 SSH 私钥文件，**不是**用户帐户密码。  向 SSH 密钥添加密码时，会使用 128 位 AES 加密私钥，因此在不能通过密码解密的情况下，私钥是没有用的。  如果攻击者窃取了私钥，并且该私钥没有密码，那么他们就能使用私钥登录到有相应公钥的任何服务器。  如果私钥受密码保护，攻击者就无法使用，从而为 Azure 基础结构提供一个额外的安全层。
 
-本文创建 SSH 协议版本 2 RSA 公钥和私钥文件对（也称“ssh-rsa”密钥），建议将其用于通过 Azure Resource Manager 进行的部署。 不管是经典部署，还是 Resource Manager 部署，都需要在[门户](https://portal.azure.com)中使用 *ssh-rsa* 密钥。
+本文创建 SSH 协议版本 2 RSA 公钥和私钥文件对（也称“ssh-rsa”密钥），建议将它用于通过 Azure 资源管理器进行的部署。 不管是经典部署，还是 Resource Manager 部署，都需要在[门户](https://portal.azure.com)中使用 *ssh-rsa* 密钥。
 
 ## <a name="ssh-keys-use-and-benefits"></a>SSH 密钥的使用和优势
 
-Azure 要求至少 2048 位的 SSH 协议版本 2 RSA 格式的公钥和私钥；公钥文件使用 `.pub` 容器格式。 为了创建密钥，将使用 `ssh-keygen`（会询问一系列问题），然后编写私钥和匹配的公钥。 创建 Azure VM 以后，Azure 将公钥复制到 VM 中的 `~/.ssh/authorized_keys` 文件夹。 `~/.ssh/authorized_keys` 中的 SSH 密钥用于在 SSH 登录连接时质询客户端以匹配相应的私钥。  使用 SSH 密钥创建 Azure Linux VM 进行身份验证时，Azure 会将 SSHD 服务器配置为不允许密码登录，仅允许 SSH 密钥登录。  因此，使用 SSH 密钥创建 Azure Linux VM 可确保 VM 部署的安全，不必进行通常在部署完后需要进行的配置步骤（即在 **sshd_config** 文件中禁用密码）。
+Azure 要求至少 2048 位的 SSH 协议版本 2 RSA 格式的公钥和私钥；公钥文件使用 `.pub` 容器格式。 为了创建密钥，将使用 `ssh-keygen`（会询问一系列问题），并编写私钥和匹配的公钥。 创建 Azure VM 以后，Azure 将公钥复制到 VM 中的 `~/.ssh/authorized_keys` 文件夹。 `~/.ssh/authorized_keys` 中的 SSH 密钥用于在 SSH 登录连接时质询客户端以匹配相应的私钥。  使用 SSH 密钥创建 Azure Linux VM 进行身份验证时，Azure 会将 SSHD 服务器配置为不允许密码登录，仅允许 SSH 密钥登录。  因此，使用 SSH 密钥创建 Azure Linux VM 可确保 VM 部署的安全，不必进行通常在部署完后需要进行的配置步骤（即在 **sshd_config** 文件中禁用密码）。
 
 ## <a name="using-ssh-keygen"></a>使用 ssh-keygen
 
 此命令使用 2048 位 RSA 创建密码保护的（加密）SSH 密钥对，并为其加上注释以方便识别。  
 
-SSH 密钥默认保留在 `~/.ssh` 目录中。  如果你没有 `~/.ssh` 目录，`ssh-keygen` 命令会使用正确的权限为你创建一个。
+SSH 密钥默认保留在 `~/.ssh` 目录中。  如果没有 `~/.ssh` 目录，`ssh-keygen` 命令会使用正确的权限创建一个。
 
 ```bash
 ssh-keygen \
@@ -57,8 +57,7 @@ ssh-keygen \
 
 `ssh-keygen` = 用于创建密钥的程序
 
-`-t rsa` = 要创建的密钥的类型，采用 RSA 格式 [wikipedia](https://en.wikipedia.org/wiki/RSA_(cryptosystem)
-
+`-t rsa` = 要创建的 RSA 格式密钥类型 [wikipedia][parens 结尾](`https://en.wikipedia.org/wiki/RSA_(cryptosystem) `)
 `-b 2048` = 密钥的位数
 
 `-C "azureuser@myserver"` = 追加到公钥文件末尾以便于识别的注释。  通常以电子邮件作为注释，但也可以使用任何最适合基础结构的事物。
@@ -201,7 +200,7 @@ Host *
 
 ## <a name="ssh-into-linux-without-a-password"></a>在不提供密码的情况下使用 SSH 连接到 Linux
 
-获得 SSH 密钥对并配置 SSH 配置文件后，便可以快速安全地登录到 Linux VM 了。 首次使用 SSH 密钥登录到服务器时，命令将提示用户输入该密钥文件的通行短语。
+获得 SSH 密钥对并配置 SSH 配置文件后，便可以快速安全地登录到 Linux VM 了。 首次使用 SSH 密钥登录到服务器时，命令会提示用户输入该密钥文件的通行短语。
 
 ```bash
 ssh fedora22
@@ -209,7 +208,7 @@ ssh fedora22
 
 ### <a name="command-explained"></a>命令解释
 
-执行 `ssh fedora22` 后，SSH 先从 `Host fedora22` 块中找到并加载所有设置，然后从最后一个块 (`Host *`) 中加载所有剩余设置。
+执行 `ssh fedora22` 后，SSH 先从 `Host fedora22` 块中找到并加载所有设置，并从最后一个块 (`Host *`) 中加载所有剩余设置。
 
 ## <a name="next-steps"></a>后续步骤
 

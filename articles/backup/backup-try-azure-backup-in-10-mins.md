@@ -13,7 +13,7 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 2/23/2017
+ms.date: 8/15/2017
 ms.author: markgal;
 ms.translationtype: Human Translation
 ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
@@ -21,22 +21,18 @@ ms.openlocfilehash: c989ca38e2463f8365b55c509e8b2bcf4572b409
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
-# 初步了解：在 Resource Manager 部署中备份文件和文件夹
-<a id="first-look-back-up-files-and-folders-in-resource-manager-deployment" class="xliff"></a>
+# <a name="first-look-back-up-files-and-folders-in-resource-manager-deployment"></a>初步了解：在 Resource Manager 部署中备份文件和文件夹
 本文介绍如何通过 Resource Manager 部署将 Windows Server（或 Windows 计算机）文件和文件夹备份到 Azure。 本教程旨在引导你完成基本操作。 如果想要开始使用 Azure 备份，本文的内容非常合适。
 
 如果想要深入了解 Azure 备份，请阅读此 [概述](backup-introduction-to-azure-backup.md)。
 
 如果你还没有 Azure 订阅，可以先创建一个 [免费帐户](https://azure.microsoft.com/free/) ，这样就可以访问任何 Azure 服务。
 
-## 创建恢复服务保管库
-<a id="create-a-recovery-services-vault" class="xliff"></a>
+## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 若要备份文件和文件夹，你需要在要存储数据的区域内创建一个恢复服务保管库。 还需要确定复制存储的方式。
 
-### 创建恢复服务保管库
-<a id="to-create-a-recovery-services-vault" class="xliff"></a>
+### <a name="to-create-a-recovery-services-vault"></a>创建恢复服务保管库
 1. 如果你尚未登录 [Azure 门户](https://portal.azure.com/) ，请使用你的 Azure 订阅登录。
 2. 在“中心”菜单中，单击“更多服务”，然后在资源列表中，键入“恢复服务”并单击“恢复服务保管库”。
 
@@ -73,8 +69,7 @@ ms.lasthandoff: 07/06/2017
 
     一旦在恢复服务保管库列表中看到保管库，即可设置存储冗余。
 
-### 为保管库设置存储冗余
-<a id="set-storage-redundancy-for-the-vault" class="xliff"></a>
+### <a name="set-storage-redundancy-for-the-vault"></a>为保管库设置存储冗余
 在创建恢复服务保管库时，请确保存储冗余配置为所希望的方式。
 
 1. 在“恢复服务保管库”边栏选项卡中，单击新保管库。
@@ -97,8 +92,7 @@ ms.lasthandoff: 07/06/2017
 
 创建保管库以后，即可对其进行配置，以便备份文件和文件夹。
 
-## 配置保管库
-<a id="configure-the-vault" class="xliff"></a>
+## <a name="configure-the-vault"></a>配置保管库
 1. 在“恢复服务保管库”边栏选项卡（对应于刚创建的保管库）的“开始”部分单击“备份”，然后在“开始使用备份”边栏选项卡上选择“备份目标”。
 
     ![打开备份目标边栏选项卡](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
@@ -143,8 +137,7 @@ ms.lasthandoff: 07/06/2017
 
     ![保管库凭据下载完毕](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
 
-## 安装并注册代理
-<a id="install-and-register-the-agent" class="xliff"></a>
+## <a name="install-and-register-the-agent"></a>安装并注册代理
 
 > [!NOTE]
 > 尚未推出通过 Azure 门户启用备份这一功能。 请使用 Microsoft Azure 恢复服务代理备份文件和文件夹。
@@ -171,8 +164,7 @@ ms.lasthandoff: 07/06/2017
 
 现已安装代理，且已向保管库注册计算机。 接下来可以配置和计划备份。
 
-## 网络和连接要求
-<a id="network-and-connectivity-requirements" class="xliff"></a>
+## <a name="network-and-connectivity-requirements"></a>网络和连接要求
 
 如果计算机/代理具有有限的 Internet 访问，请确保计算机/代理上的防火墙设置配置为允许以下 URL： <br>
     1. www.msftncsi.com
@@ -181,8 +173,7 @@ ms.lasthandoff: 07/06/2017
     4. *.microsoftonline.com
     5. *.windows.ne
 
-## 备份文件和文件夹
-<a id="back-up-your-files-and-folders" class="xliff"></a>
+## <a name="back-up-your-files-and-folders"></a>备份文件和文件夹
 初始备份包括两个关键任务：
 
 * 计划备份
@@ -190,8 +181,7 @@ ms.lasthandoff: 07/06/2017
 
 若要完成初始备份，请使用 Microsoft Azure 恢复服务代理。
 
-### 计划备份作业
-<a id="to-schedule-the-backup-job" class="xliff"></a>
+### <a name="to-schedule-the-backup-job"></a>计划备份作业
 1. 打开 Microsoft Azure 恢复服务代理。 可以通过在计算机中搜索 **Microsoft Azure 备份**找到该代理。
 
     ![启动 Azure 恢复服务代理](./media/backup-try-azure-backup-in-10-mins/snap-in-search.png)
@@ -221,8 +211,7 @@ ms.lasthandoff: 07/06/2017
 10. 在“确认”页上复查信息，然后单击“**完成**”。
 11. 在向导完成创建备份计划后，请单击“**关闭**”。
 
-### 首次备份文件和文件夹
-<a id="to-back-up-files-and-folders-for-the-first-time" class="xliff"></a>
+### <a name="to-back-up-files-and-folders-for-the-first-time"></a>首次备份文件和文件夹
 1. 在恢复服务代理中单击“ **立即备份** ”，以通过网络完成初始种子设定。
 
     ![立即备份 Windows Server](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
@@ -233,12 +222,10 @@ ms.lasthandoff: 07/06/2017
 
 ![IR 完成](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
 
-## 有疑问？
-<a id="questions" class="xliff"></a>
+## <a name="questions"></a>有疑问？
 如果你有疑问，或者希望包含某种功能，请 [给我们反馈](http://aka.ms/azurebackup_feedback)。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 * 详细了解如何 [备份 Windows 计算机](backup-configure-vault.md)。
 * 备份文件和文件夹后，可以 [管理保管库和服务器](backup-azure-manage-windows-server.md)。
 * 如果需要还原备份，请参阅 [将文件还原到 Windows 计算机](backup-azure-restore-windows-server.md)一文。

@@ -13,36 +13,46 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/13/2017
+ms.date: 07/21/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
-ms.openlocfilehash: d241dbcdd9dc711769faa69488e3f32acbe5d40c
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: 823ff810ffc0b65ec1bb38e4dc314da1d0f9a64a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/21/2017
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="use-apache-kafka-preview-with-storm-on-hdinsight"></a>将 Apache Kafka（预览版）与 Storm on HDInsight 配合使用
 
-Apache Kafka 是发布订阅消息传送解决方案，可用于 HDInsight。 Apache Storm 是一个分布式系统，可用于实时分析数据。 本文档演示如何使用 Storm on HDInsight 读取和处理来自 Kafka on HDInsight 的数据。 本文档中的示例使用了基于 Java 的 Storm 拓扑，该拓扑依赖于 Apache Storm 附带的 Kafka spout 和 bolt 组件。
+了解如何使用 Apache Storm 执行对 Apache Kafka 的读写操作。 本示例还演示如何将数据从 Storm 拓扑保存到由 HDInsight 使用的 HDFS 兼容文件系统。
 
 > [!NOTE]
 > 本文档中的步骤创建了一个 Azure 资源组，其中同时包含了 Storm on HDInsight 群集以及 Kafka on HDInsight 群集。 这些群集都位于 Azure 虚拟网络中，允许 Storm 群集直接与 Kafka 群集进行通信。
 > 
 > 完成本文档中的步骤后，请记得删除这些群集，避免支付额外费用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="get-the-code"></a>获取代码
 
-* [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 1.8 或更高版本。 或类似程序，如 [OpenJDK](http://openjdk.java.net/)。
-  
-    > [!NOTE]
-    > 本文档中的步骤使用 HDInsight 3.5 群集，该群集使用 Java 8。
+本文档中使用的示例代码位于 [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka)。
 
-* [Maven 3.x](http://maven.apache.org/) - Java 应用程序的生成管理包。
+若要编译此项目，需要对开发环境进行以下配置：
 
-* 文本编辑器或 Java IDE
+* [Java JDK 1.8](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) 或更高版本。 HDInsight 3.5 或更高版本需要 Java 8。
+
+* [Maven 3.x](https://maven.apache.org/download.cgi)
 
 * SSH 客户端（需要 `ssh` 和 `scp` 命令）- 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
+
+* 文本编辑器或 IDE。
+
+可以在开发工作站上安装 Java 和 JDK 时设置以下环境变量。 不过，你应该检查它们是否存在并且包含系统的正确值。
+
+* `JAVA_HOME` - 应该指向 JDK 的安装目录。
+* `PATH` - 应该包含以下路径：
+  
+    * `JAVA_HOME`（或等效路径）。
+    * `JAVA_HOME\bin`（或等效路径）。
+    * Maven 的安装目录。
 
 ## <a name="create-the-clusters"></a>创建群集
 
@@ -51,19 +61,24 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 ![Azure 虚拟网络中的 Storm 和 Kafka 群集图示](./media/hdinsight-apache-storm-with-kafka/storm-kafka-vnet.png)
 
 > [!NOTE]
-> 虽然 Kafka 本身受限于虚拟网络中的通信，但可以通过 Internet 访问群集上的其他服务（例如 SSH 和 Ambari）。 有关可用于 HDInsight 的公共端口的详细信息，请参阅 [HDInsight 使用的端口和 URI](hdinsight-hadoop-port-settings-for-services.md)。
-
+> 通过 Internet 可访问群集上的其他服务，例如 SSH 和 Ambari。 有关可用于 HDInsight 的公共端口的详细信息，请参阅 [HDInsight 使用的端口和 URI](hdinsight-hadoop-port-settings-for-services.md)。
 
 虽然可手动创建 Azure 虚拟网络、Kafka 和 Storm 群集，但使用 Azure Resource Manager 模板会更简单。 使用以下步骤将 Azure 虚拟网络、Kafka 和 Storm 群集部署到你的 Azure 订阅。
 
 1. 使用以下按钮登录到 Azure，然后在 Azure 门户中打开模板。
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-storm-cluster-in-vnet.1.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-storm-cluster-in-vnet-v2.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
-    Azure Resource Manager 模板位于 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-storm-cluster-in-vnet.json**。
+    Azure 资源管理器模板位于https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-storm-cluster-in-vnet-v1.json。 它创建以下资源：
+    
+    * Azure 资源组
+    * Azure 虚拟网络
+    * Azure 存储帐户
+    * HDInsight 版本 3.6 上的 Kafka（三个辅助角色节点）
+    * HDInsight 版本 3.6 上的 Storm（三个辅助角色节点）
 
-    > [!WARNING]
-    > 若要确保 Kafka on HDInsight 的可用性，群集必须至少包含 3 个辅助节点。 此模板创建的 Kafka 群集包含三个辅助角色节点。
+  > [!WARNING]
+  > 若要确保 Kafka on HDInsight 的可用性，群集必须至少包含 3 个辅助节点。 此模板创建的 Kafka 群集包含三个辅助角色节点。
 
 2. 使用以下指南来填充“自定义部署”边栏选项卡上的条目：
    
@@ -71,7 +86,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     * **资源组**：创建一个资源组或选择现有的资源组。 此组包含 HDInsight 群集。
    
-    * **位置**：选择在地理上邻近的位置。 此位置必须匹配“设置”部分中的位置。
+    * **位置**：选择在地理上邻近的位置。
 
     * **基群集名称**：此值将用作 Storm 和 Kafka 群集的基名称。 例如，输入 **hdi** 创建名为 **storm-hdi** 的 Storm 群集和名为 **kafka-hdi** 的 Kafka 群集。
    
@@ -82,23 +97,17 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     * **SSH 用户名**：创建 Storm 和 Kafka 群集的 SSH 用户。
     
     * **SSH 密码**：Storm 和 Kafka 群集的 SSH 用户的密码。
-    
-    * **位置**：在其中创建群集的区域。
 
 3. 阅读“条款和条件”，然后选择“我同意上述条款和条件”。
 
 4. 最后，选中“固定到仪表板”，然后选择“购买”。 创建群集大约需要 20 分钟时间。
 
-创建资源后，会重定向到包含群集和 Web 仪表板的资源组边栏选项卡。
+创建资源后，会显示“资源组”边栏选项卡。
 
 ![虚拟网络和群集的“资源组”边栏选项卡](./media/hdinsight-apache-storm-with-kafka/groupblade.png)
 
 > [!IMPORTANT]
 > 请注意，HDInsight 群集的名称为 **storm-BASENAME** 和 **kafka-BASENAME**，其中 BASENAME 是为模板提供的名称。 在连接到群集的后续步骤中，会用到这些名称。
-
-## <a name="get-the-code"></a>获取代码
-
-本文档中描述的示例代码位于 [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka)。
 
 ## <a name="understanding-the-code"></a>了解数据
 
@@ -110,93 +119,20 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 * **KafkaReader**：由 **reader.yaml** 文件定义，此拓扑使用 Apache Storm 提供的 KafkaSpout 从 Kafka 读取数据，然后将数据记录到 stdout。
 
-    此拓扑使用自定义 **PrinterBolt** 组件记录从 Kafka 读取的数据。
-
+    此拓扑使用 Storm HdfsBolt 将数据写入 Storm 群集的默认存储。
 ### <a name="flux"></a>Flux
 
-此拓扑使用 [Flux](https://storm.apache.org/releases/1.0.1/flux.html) 定义。 Storm 0.10.x 中引入了 Flux，允许从代码分离拓扑配置。 对于使用 Flux 框架的拓扑，该拓扑在 YAML 文件中进行定义。 可包含 YAML 文件作为拓扑的一部分，或者可以在将拓扑提交到 Storm 服务器时指定 YAML 文件。 Flux 还支持在运行时进行变量替换，本示例中使用了该变量替换。
+此拓扑使用 [Flux](https://storm.apache.org/releases/1.1.0/flux.html) 定义。 Storm 0.10.x 中引入了 Flux，允许从代码分离拓扑配置。 对于使用 Flux 框架的拓扑，该拓扑在 YAML 文件中进行定义。 YAML 文件可以作为拓扑的一部分包括在内。 它也可以是提交拓扑时使用的独立文件。 Flux 还支持在运行时进行变量替换，本示例中使用了该变量替换。
 
-这两种拓扑都预期以下环境变量：
+在运行时为这些拓扑设置以下参数：
 
-* **KAFKATOPIC**：拓扑读取/写入的 Kafka 主题的名称。
+* `${kafka.topic}`：拓扑读取/写入的 Kafka 主题的名称。
 
-* **KAFKABROKERS**：Kafka 中转站运行时所在的主机。 写入 Kafka 时，KafkaBolt 将使用中转站信息。
+* `${kafka.broker.hosts}`：Kafka 中转站运行时所在的主机。 写入 Kafka 时，KafkaBolt 将使用中转站信息。
 
-* **KAFKAZKHOSTS**：Zookeeper 运行时所在的主机。
+* `${kafka.zookeeper.hosts}`：Kafka 群集中 Zookeeper 运行时所在的主机。
 
-本文档中的步骤演示如何设置这些环境变量。
-
-## <a name="create-a-kafka-topic"></a>创建 Kafka 主题
-
-1. 使用 SSH 连接到 Kafka 群集。 将 `USERNAME` 替换为创建群集时所用的 SSH 用户名。 将 `BASENAME` 替换为创建群集时所用的基名称。
-
-    ```bash
-    ssh USERNAME@kafka-BASENAME-ssh.azurehdinsight.net
-    ```
-
-    出现提示时，请输入在创建群集时使用的密码。
-
-    有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
-
-2. 与 Kafka 群集建立 SSH 连接后，使用以下命令设置 HTTP 登录名和群集名称的变量。 本部分中的其他步骤会使用这些值。
-
-  ```bash
-  ADMIN='admin' #replace with the name of the admin account for the cluster
-  PASSWORD='password' #replace with the password for the admin account
-  ```
-
-3. 通过以下命令安装 `jq` 实用工具、检索群集名称并设置 `KAFKAZKHOSTS` 变量：
-
-  ```bash
-  sudo apt -y install jq
-  CLUSTERNAME=`curl -u $ADMIN:$PASSWORD -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name'`
-  KAFKAZKHOSTS=`curl -u $ADMIN:$PASSWORD -G "http://headnodehost:8080/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")'`
-  ```
-
-    使用以下命令检索群集名称：
-
-  ```bash
-  echo $CLUSTERNAME
-  ```
-
-    此命令的输出类似于以下示例：
-
-  ```bash
-  kafka-myhdi
-  ```
-
-    使用以下命令验证 `KAFKAZKHOSTS` 是否设置正确：
-
-  ```bash
-  echo $KAFKAZKHOSTS
-  ```
-
-    此命令的输出类似于以下示例：
-
-  ```bash
-  zk0-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181,zk2-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181,zk3-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181
-  ```
-
-    保存 Kafka 群集名称和 Zookeeper 主机信息，因为在 Storm 群集上启动拓扑时会使用这些值。
-
-    > [!NOTE]
-    > 上述命令使用 __http://headnodehost:8080/__，它直接连接到 Ambari。 如果需要通过 Internet 从群集外部检索此信息，则必须改为使用 __https://kafka-BASENAME.azurehdinsight.net/__。
-
-4. 使用以下命令在 Kafka 中创建主题：
-
-  ```bash
-  /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic stormtest --zookeeper $KAFKAZKHOSTS
-  ```
-
-    此命令使用存储在 `$KAFKAZKHOSTS` 中的主机信息连接到 Zookeeper，然后创建名为 **stormtest** 的 Kafka 主题。 通过使用以下命令列出主题可验证是否已创建该主题：
-
-  ```bash
-  /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $KAFKAZKHOSTS
-  ```
-
-    此命令的输出列出了 Kafka 主题，其中应包含新的 **stormtest** 主题。
-
-将 Kafka 群集的 SSH 连接保持活动状态，这样你可以使用它来验证 Storm 拓扑是否要将消息写入到主题。
+有关 Flux 拓扑的详细信息，请参阅 [https://storm.apache.org/releases/1.1.0/flux.html](https://storm.apache.org/releases/1.1.0/flux.html)。
 
 ## <a name="download-and-compile-the-project"></a>下载并编译项目
 
@@ -218,13 +154,71 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     出现提示时，请输入在创建群集时使用的密码。
 
-4. 使用以下命令将项目的 `scripts` 目录中的 `set-env-variables.sh` 文件复制到 Storm 群集：
+## <a name="configure-the-topology"></a>配置拓扑
 
-  ```bash
-  scp ./scripts/set-env-variables.sh USERNAME@storm-BASENAME-ssh.azurehdinsight.net:set-env-variables.sh
-  ```
+1. 使用以下方法之一发现 Kafka 中转站主机：
 
-    此脚本用于设置 Storm 拓扑用于与 Kafka 群集进行通信的环境变量。
+    ```powershell
+    $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
+    $clusterName = Read-Host -Prompt "Enter the Kafka cluster name"
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER" `
+        -Credential $creds
+    $respObj = ConvertFrom-Json $resp.Content
+    $brokerHosts = $respObj.host_components.HostRoles.host_name
+    ($brokerHosts -join ":9092,") + ":9092"
+    ```
+
+    ```bash
+    curl -su admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")'
+    ```
+
+    > [!IMPORTANT]
+    > Bash 示例假定 `$CLUSTERNAME` 包含 HDInsight 群集的名称。 还假定 [jq](https://stedolan.github.io/jq/) 已安装。 出现提示时，输入群集登录帐户的密码。
+
+    返回的值类似于下文：
+
+        wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+
+    请保存该值，因为稍后会使用它。
+
+2. 使用以下方法之一发现 Kafka Zookeeper 主机：
+
+    ```powershell
+    $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
+    $clusterName = Read-Host -Prompt "Enter the Kafka cluster name"
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" `
+        -Credential $creds
+    $respObj = ConvertFrom-Json $resp.Content
+    $zookeeperHosts = $respObj.host_components.HostRoles.host_name
+    ($zookeeperHosts -join ":2181,") + ":2181"
+    ```
+
+    ```bash
+    curl -su admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")'
+    ```
+
+    > [!IMPORTANT]
+    > Bash 示例假定 `$CLUSTERNAME` 包含 HDInsight 群集的名称。 还假定 [jq](https://stedolan.github.io/jq/) 已安装。 出现提示时，输入群集登录帐户的密码。
+
+    返回的值类似于下文：
+
+        zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk3-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+
+    请保存该值，因为稍后会使用它。
+
+3. 编辑项目根目录中的 `dev.properties` 文件。 将中转站和 Zookeeper 主机信息添加到此文件中的匹配行。 下面的示例使用前面步骤中的示例值进行配置：
+
+        kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk3-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+        kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+        kafka.topic: stormtopic
+
+4. 保存 `dev.properties` 文件，然后使用以下命令将其上传到 Storm 群集：
+
+     ```bash
+    scp dev.properties USERNAME@storm-BASENAME-ssh.azurehdinsight.net:KafkaTopology-1.0-SNAPSHOT.jar
+    ```
+
+    使用群集的 SSH 用户名替换 **USERNAME**。 用创建群集时使用的基名称替换 **BASENAME**。
 
 ## <a name="start-the-writer"></a>启动编写器
 
@@ -238,28 +232,19 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
    
     有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-2. 与 Storm 群集建立 SSH 连接后，使用以下命令运行 `set-env-variables.sh` 脚本：
+2. 从 SSH 连接使用以下命令，创建拓扑所使用的 Kafka 主题：
 
-  ```bash
-  chmod +x set-env-variables.sh
-  . ./set-env-variables.sh KAFKACLUSTERNAME PASSWORD
-  ```
+    ```bash
+    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic stormtopic --zookeeper $KAFKAZKHOSTS
+    ```
 
-    使用 Kafka 群集的名称替换 __KAFKACLUSTERNAME__。 将 __PASSWORD__ 替换为 Kafka 群集的管理员登录密码。
+    将 `$KAFKAZKHOSTS` 替换为在上一部分中检索到的 Zookeeper 主机信息。
 
-    此脚本连接到 Kafka 群集，并检索 Kafka 中转站和 Zookeeper 主机的列表。 然后将信息存储在由 Storm 拓扑使用的环境变量中。
+2. 与 Storm 群集建立 SSH 连接后，使用以下命令启动编写器拓扑：
 
-    此脚本的输出类似于以下示例：
-
-        Checking for jq: install ok installed
-        Exporting variables:
-        $KAFKATOPIC=stormtest
-        $KAFKABROKERS=wn0-storm.4rf4ncirvydube02fuj0gpxp4e.ex.internal.cloudapp.net:9092,wn1-storm.4rf4ncirvydube02fuj0gpxp4e.ex.internal.cloudapp.net:9092
-        $KAFKAZKHOSTS=zk1-storm.4rf4ncirvydube02fuj0gpxp4e.ex.internal.cloudapp.net:2181,zk3-storm.4rf4ncirvydube02fuj0gpxp4e.ex.internal.cloudapp.net:2181,zk5-storm.4rf4ncirvydube02fuj0gpxp4e.ex.internal.cloudapp.net:2181
-
-3. 与 Storm 群集建立 SSH 连接后，使用以下命令启动编写器拓扑：
-
-        storm jar KafkaTopology-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /writer.yaml -e
+    ```bash
+    storm jar KafkaTopology-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /writer.yaml --filter dev.properties
+    ```
 
     此命令使用的参数如下：
 
@@ -269,13 +254,15 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     * `-R /writer.yaml`：使用 `writer.yaml` 文件配置拓扑。 `-R` 指示此资源包含在 jar 文件中。 它位于 jar 的根目录中，因此 `/writer.yaml` 是它的路径。
 
-    * `-e`：使用环境变量替换。 Flux 选取以前设置的 $KAFKABROKERS 和 $KAFKATOPIC 值，并将其用于 reader.yaml 文件中，用于替换 `${ENV-KAFKABROKER}` 和 `${ENV-KAFKATOPIC}` 条目。
+    * `--filter`：使用 `dev.properties` 文件中的值填充 `writer.yaml` 拓扑中的条目。 例如，文件中 `kafka.topic` 条目的值用于替换拓扑定义中的 `${kafka.topic}` 条目。
 
-5. 启动拓扑后，切换到 Kafka 群集的 SSH 连接，并使用以下命令来查看写入到 **stormtest** 主题的消息：
+5. 启动拓扑后，使用以下命令验证它是否正将数据写入到 Kafka 主题：
 
   ```bash
-  /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $KAFKAZKHOSTS --from-beginning --topic stormtest
+  /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $KAFKAZKHOSTS --from-beginning --topic stormtopic
   ```
+
+    将 `$KAFKAZKHOSTS` 替换为在上一部分中检索到的 Zookeeper 主机信息。
 
     此命令使用 Kafka 附带的脚本来监视主题。 片刻之后，它应开始返回已写入到主题的随机句子。 输出类似于以下示例：
 
@@ -314,7 +301,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     ![Storm Web UI 的拓扑摘要部分](./media/hdinsight-apache-storm-with-kafka/topology-summary.png)
 
-4. 选择“Bolt（全部时间）”部分中的 __logger-bolt__ 链接，以显示有关 logger-bolt 组件的实例的信息。
+4. 要显示有关 logger-bolt 组件的实例的信息，请选择“Bolt (全部时间)”部分中的 logger-bolt 链接。
 
     ![Bolt 部分中的 logger-bolt 链接](./media/hdinsight-apache-storm-with-kafka/bolts.png)
 
@@ -347,7 +334,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-由于本文档中的步骤在相同的 Azure 资源组中创建两个群集，因此可在 Azure 门户中删除资源组。 这将删除按照本文档、Azure 虚拟网络和群集使用的存储帐户创建的所有资源。
+由于本文档中的步骤在相同的 Azure 资源组中创建两个群集，因此可在 Azure 门户中删除资源组。 删除资源组会移除按照本文档创建的所有资源。
 
 ## <a name="next-steps"></a>后续步骤
 

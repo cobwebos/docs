@@ -8,25 +8,29 @@ editor: TomShinder
 ms.assetid: 
 ms.service: security
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 08/07/2017
 ms.author: Barclayn
 ms.custom: AzLog
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: a648852fadfeb5c9a4ff61c85bbe0af856e445d4
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 4503234080e0bf737dad2e18907b47c3bf39d9da
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
-
+ms.lasthandoff: 08/09/2017
 
 ---
 
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure 日志集成教程：使用事件中心处理 Azure Key Vault 事件
 
-可以使用 Azure 日志集成 (AzLog) 检索已记录的事件并使其可供安全信息和事件管理 (SIEM) 系统使用。 本教程将指导你完成将 Azure Key Vault 活动记录到事件中心内并使其作为 JSON 文件供 SIEM 系统使用的过程。 然后，可以配置 SIEM 系统来处理 JSON 文件。
+可以使用 Azure 日志集成 (AzLog) 检索已记录的事件并使其可供安全信息和事件管理 (SIEM) 系统使用。 本教程旨在提供一个示例，展示如何使用 Azure 日志集成处理通过事件中心获取的日志。 应使用本文，按照以下示例步骤操作，了解 Azure 日志集成和事件中心如何协同工作以及每个步骤如何支持该解决方案。 然后可使用此处学到的内容，创建自己的步骤来满足公司的独特需求。
+
+>[!WARNING]
+请勿复制粘贴本教程中使用的步骤和命令，它们仅作为示例。 请勿在实时环境中使用 PowerShell“as-is”命令。 应根据独特环境对它们进行自定义。
+
+
+本教程将指导你完成将 Azure Key Vault 活动记录到事件中心内并使其作为 JSON 文件供 SIEM 系统使用的过程。 然后，可以配置 SIEM 系统来处理 JSON 文件。
 
 >[!NOTE]
->本教程中的大多数步骤都涉及配置 key vault、 存储帐户和事件中心。 具体的 Azure 日志集成步骤位于本教程的末尾。
+>本教程中的大多数步骤都涉及配置 key vault、 存储帐户和事件中心。 具体的 Azure 日志集成步骤位于本教程的末尾。 请勿在生产环境中执行这些步骤 – 它们仅可用于实验室环境。 自定义这些步骤后，方可在生产中使用它们
 
 沿途提供的信息可帮助你了解每个步骤背后的原因。 其他文章的链接提供了有关特定主题的更多详细信息。
 
@@ -68,7 +72,7 @@ ms.lasthandoff: 07/08/2017
 
 1. 打开一个提升权限的 PowerShell 窗口并转至 **C:\Program Files\Microsoft Azure Log Integration**。
 2. 通过运行脚本 LoadAzLogModule.ps1 导入 AzLog cmdlet。 （请注意以下命令中的“.\”。）键入 `.\LoadAzLogModule.ps1`，然后按 Enter。
-您应看到与下面类似的内容：</br>
+应看到与下面类似的内容：</br>
 
    ![已加载的模块列表](./media/security-azure-log-integration-keyvault-eventhub/loaded-modules.png)
 

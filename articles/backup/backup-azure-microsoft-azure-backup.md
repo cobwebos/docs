@@ -1,5 +1,4 @@
 ---
-
 title: "使用 Azure 备份服务器将工作负荷备份到 Azure | Microsoft 文档"
 description: "使用 Azure 备份服务器保护工作负荷或将其备份到 Azure 门户。"
 services: backup
@@ -14,29 +13,26 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/10/2017
+ms.date: 7/20/2017
 ms.author: masaran;trinadhk;pullabhk;markgal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: e8838095d621957fe6b4ee50464154617e1c4740
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 366de49b1cb1d21aca4ef4de1c413a33ac4ae7b0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>准备使用 Azure 备份服务器来备份工作负荷
 > [!div class="op_single_selector"]
 > * [Azure 备份服务器](backup-azure-microsoft-azure-backup.md)
 > * [SCDPM](backup-azure-dpm-introduction.md)
-> * [Azure 备份服务器（经典）](backup-azure-microsoft-azure-backup-classic.md)
-> * [SCDPM（经典）](backup-azure-dpm-introduction-classic.md)
 >
 >
 
-本文介绍如何准备环境，以使用 Azure 备份服务器来备份工作负荷。 使用 Azure 备份服务器，可以从单个控制台保护应用程序工作负荷，例如 Hyper-V VM、Microsoft SQL Server、SharePoint Server、Microsoft Exchange 和 Windows 客户端。
+本文介绍如何准备环境，以使用 Azure 备份服务器来备份工作负荷。 使用 Azure 备份服务器，可以通过一个控制台保护应用程序工作负载，如 Hyper-V VM、Microsoft SQL Server、SharePoint Server、Microsoft Exchange 和 Windows 客户端。
 
 > [!NOTE]
-> Azure 备份服务器现在可以保护 VMware VM 并提供改进的安全功能。 你需要按照下面各节中所述来安装产品，并应用更新 1 和最新 Azure 备份代理。 若要详细了解使用 Azure 备份服务器的 VMware 备份，请访问[操作说明博客](https://azure.microsoft.com/blog/four-simple-steps-to-backup-vmware-vms-using-azure-backup-server/)。 若要了解安全功能，请参阅 [Azure 备份安全功能文档](backup-azure-security-feature.md)。
+> Azure 备份服务器现在可以保护 VMware VM 并提供改进的安全功能。 请按照下面各部分所述操作，安装此产品；应用更新 1 和最新 Azure 备份代理。 若要详细了解如何使用 Azure 备份服务器备份 VMware 服务器，请参阅[使用 Azure 备份服务器备份 VMware 服务器](backup-azure-backup-server-vmware.md)一文。 若要了解安全功能，请参阅 [Azure 备份安全功能文档](backup-azure-security-feature.md)。
 >
 >
 
@@ -53,12 +49,12 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 若要启动并运行 Azure 备份服务器，首先要设置 Windows Server。 服务器可在 Azure 中或者在本地。
 
 ### <a name="using-a-server-in-azure"></a>使用 Azure 中的服务器
-选择用于运行 Azure 备份服务器的服务器时，建议从 Windows Server 2012 R2 Datacenter 库映像开始。 [在 Azure 门户中创建第一个 Windows 虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)一文提供了如何在 Azure 中开始使用建议的虚拟机的教程，即使以前从未使用过 Azure 也没关系。 建议服务器虚拟机 (VM) 最低要求应为：包含 2 核、3.5 GB RAM 的 A2 标准。
+选择用于运行 Azure 备份服务器的服务器时，建议从 Windows Server 2012 R2 Datacenter 库映像开始。 [在 Azure 门户中创建第一个 Windows 虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)一文提供了如何在 Azure 中开始使用建议的虚拟机的教程，即使以前从未使用过 Azure 也没关系。 建议服务器虚拟机 (VM) 至少必须符合以下要求：3.5GB RAM 的双核 A2 标准。
 
-使用 Azure 备份服务器保护工作负荷有许多细微差异需要注意。 可通过[将 DPM 安装为 Azure 虚拟机](https://technet.microsoft.com/library/jj852163.aspx)一文了解这些细微差异。 部署计算机之前，请完整阅读此文章。
+使用 Azure 备份服务器保护工作负荷有许多细微差异需要注意。 可通过[将 DPM 安装为 Azure 虚拟机](https://technet.microsoft.com/library/jj852163.aspx)一文了解这些细微差异。 部署计算机前，请先阅读完本文。
 
 ### <a name="using-an-on-premises-server"></a>使用本地服务器
-如果不希望在 Azure 中运行基本服务器，则可以在 Hyper-V VM、VMware VM 或物理主机上运行服务器。 建议服务器硬件最低要求为 2 核和 4 GB RAM。 下表中列出了支持的操作系统。
+如果不希望在 Azure 中运行基本服务器，则可以在 Hyper-V VM、VMware VM 或物理主机上运行服务器。 建议服务器硬件至少必须符合以下要求：双核和 4GB RAM。 下表列出了支持的操作系统：
 
 | 操作系统 | 平台 | SKU |
 |:--- | --- |:--- |
@@ -77,7 +73,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 > - 运行 Exchange Server 的计算机
 > - 作为群集节点的计算机
 
-必须将 Azure 备份服务器加入域。 如果打算将服务器移到不同的域，建议在安装 Azure 备份服务器之前将服务器加入到新域。 部署之后，*不支持*将现有 Azure 备份服务器计算机移到新域中。
+始终将 Azure 备份服务器加入域。 如果打算将服务器移到不同的域，建议在安装 Azure 备份服务器之前将服务器加入到新域。 部署之后，*不支持*将现有 Azure 备份服务器计算机移到新域中。
 
 ## <a name="2-recovery-services-vault"></a>2.恢复服务保管库
 无论是要将备份数据发送到 Azure，还是将其保存在本地，软件都需要连接到 Azure。 具体而言，需要将 Azure 备份服务器计算机注册到恢复服务保管库。
@@ -105,7 +101,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
    创建保管库后，它将在门户中打开。
 
 ### <a name="set-storage-replication"></a>设置存储复制
-存储复制选项可让你在异地冗余存储与本地冗余存储之间进行选择。 默认情况下，保管库具有异地冗余存储。 如果这是你的主要备份，请将选项保持设置为异地冗余存储。 如果你想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。 请参阅 [Azure 存储复制概述](../storage/storage-redundancy.md)部分，深入了解[异地冗余](../storage/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/storage-redundancy.md#locally-redundant-storage)存储选项。
+存储复制选项可让你在异地冗余存储与本地冗余存储之间进行选择。 默认情况下，保管库具有异地冗余存储。 如果此保管库是主保管库，请保留异地冗余存储这一存储选项。 如果你想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。 请参阅 [Azure 存储复制概述](../storage/storage-redundancy.md)部分，深入了解[异地冗余](../storage/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/storage-redundancy.md#locally-redundant-storage)存储选项。
 
 若要编辑存储复制设置，请执行以下操作：
 
@@ -152,7 +148,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
     “开始备份”向导可切换“准备基础结构”选项以将工作负荷备份到 Azure。
 
    > [!NOTE]
-   > 如果只想要备份文件和文件夹，建议使用 Azure 备份代理并遵循[初步了解：备份文件和文件夹](backup-try-azure-backup-in-10-mins.md)一文中的指南进行操作。 如果要保护的不止是文件和文件夹，或者计划在将来扩大保护需求，请选择这些工作负荷。
+   > 如果只想备份文件和文件夹，建议使用 Azure 备份代理，并遵循[初步了解：备份文件和文件夹](backup-try-azure-backup-in-10-mins.md)一文中的指南。 如果要保护的不止是文件和文件夹，或者计划在将来扩大保护需求，请选择这些工作负荷。
    >
    >
 
@@ -184,7 +180,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 1. 单击“**Microsoft Azure 备份**”以启动安装向导。
 
     ![Microsoft Azure 备份安装向导](./media/backup-azure-microsoft-azure-backup/launch-screen2.png)
-2. 在“欢迎”屏幕上单击“**下一步**”按钮。 随后你将转到“*先决条件检查*”部分。 在此屏幕上单击“**检查**”按钮，以确定是否符合 Azure 备份服务器的硬件和软件先决条件。 如果完全符合所有先决条件，将有一条消息指出计算机符合要求。 单击“**下一步**”按钮。
+2. 在“欢迎”屏幕上单击“**下一步**”按钮。 随后你将转到“*先决条件检查*”部分。 在此屏幕上单击“检查”，以确定是否符合 Azure 备份服务器的硬件和软件先决条件。 如果完全符合所有先决条件，将看到一条指明计算机符合要求的消息。 单击“**下一步**”按钮。
 
     ![Azure 备份服务器 - 欢迎页和先决条件检查](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
 3. Microsoft Azure 备份服务器需要 SQL Server Standard，而 Azure 备份服务器安装包会根据需要随附相应的 SQL Server 二进制文件。 在开始全新安装 Azure 备份服务器时，应该选择“**在此安装程序中安装新的 SQL Server 实例**”，然后单击“**检查并安装**”按钮。 成功安装必备组件后，单击“**下一步**”。

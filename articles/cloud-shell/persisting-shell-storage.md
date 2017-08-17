@@ -7,99 +7,112 @@ author: jluk
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: 
-ms.service: 
+ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 07/17/2017
 ms.author: juluk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 540cd10066e055e2dc132445b9adba5a4112d63a
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 26428ad0d3acda959235ffa780294154ba61bca5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 
-# <a name="persisting-files-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中持久保存文件
-初始启动时，Azure Cloud Shell 会要求你提供订阅，以便为你创建 LRS 存储帐户和 Azure 文件共享。
+# <a name="persist-files-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中持久保存文件
+Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。
 
-![](media/storage-prompt.png)
+## <a name="set-up-a-clouddrive-file-share"></a>设置 `clouddrive` 文件共享
+初始启动时，Cloud Shell 会提示关联新的或现有的文件共享，以便在会话之间持久保存文件。
 
-### <a name="three-resources-will-be-created-on-your-behalf-in-a-supported-region-nearest-to-you"></a>它将替你在离你最近的受支持区域中创建三个资源：
-1. 资源组：`cloud-shell-storage-<region>`
-2. 存储帐户：`cs-uniqueGuid`
-3. 文件共享：`cs-<user>-<domain>-com-uniqueGuid`
+### <a name="create-new-storage"></a>创建新存储
 
-此文件共享将装载为 $Home 目录下的 `clouddrive`。 此文件共享还用来存储所创建的一个 5-GB 映像，该映像自动更新并持久保存 $Home 目录。 这是一个一次性操作，对于后续会话会自动装载。
+使用基本设置并仅选择一个订阅时，Cloud Shell 会在最靠近你的支持区域中代表你创建三个资源：
+* 资源组：`cloud-shell-storage-<region>`
+* 存储帐户：`cs-uniqueGuid`
+* 文件共享：`cs-<user>-<domain>-com-uniqueGuid`
 
-### <a name="cloud-shell-persists-files-with-both-methods-below"></a>Cloud Shell 通过以下两种方法来持久保存文件：
-1. 创建 $Home 目录的磁盘映像来持久保存 $Home 中的文件。 此磁盘映像将作为 `acc_<User>.img` 保存在你指定的文件共享中，位于以下位置：`fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img`
+![订阅设置](media/basic-storage.png)
 
-2. 将指定的文件共享装载为 $Home 目录中的 `clouddrive` 以便直接进行文件共享交互。 
-`/Home/<User>/clouddrive` 映射到 `fileshare.storage.windows.net/fileshare`。
+文件共享在 `$Home` 目录中装载为 `clouddrive`。 文件共享还用来存储所创建的一个 5-GB 映像，该映像自动更新并持久保存 `$Home` 目录。 这是一次性操作，文件共享会自动装载在后续会话中。
+
+### <a name="use-existing-resources"></a>使用现有资源
+
+通过使用高级选项，可以将现有资源相关联。 出现存储设置的提示时，选择“显示高级设置”查看其他选项。 现有的文件共享收到一个 5 GB 的用户映像，用于持久保存 `$Home` 目录。 从下拉菜单筛选分配的 Cloud Shell 区域、本地冗余存储以及异地冗余存储帐户。
+
+![资源组设置](media/advanced-storage.png)
+
+### <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>根据 Azure 资源策略限制资源创建
+在 Cloud Shell 中创建的存储帐户都标记有 `ms-resource-usage:azure-cloud-shell`。 如果想禁止用户在 Cloud Shell 中创建存储帐户，请创建此特定标记触发的[适用于标记的 Azure 资源策略](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-policy-tags)。
+
+## <a name="how-cloud-shell-works"></a>Cloud Shell 工作原理
+Cloud Shell 通过以下两种方法持久保存文件：
+* 创建 `$Home` 目录的磁盘映像来持久保持目录中所有内容。 磁盘映像将作为 `acc_<User>.img` 保存在指定的文件共享中，位于以下位置：`fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img`，并会自动同步更改。
+
+* 将指定的文件共享装载为 `$Home` 目录中的 `clouddrive` 以便直接进行文件共享交互。 `/Home/<User>/clouddrive` 映射到 `fileshare.storage.windows.net/fileshare`。
  
-> [!Note]
-> $Home 目录中的所有文件（如 SSH 密钥）将持久保存在已装载的文件共享中存储的用户磁盘映像中。 在 $Home 目录和已装载的文件共享中持久保存信息时，请应用最佳做法。
+> [!NOTE]
+> `$Home` 目录中的所有文件（如 SSH 密钥）将持久保存用户磁盘映像（存储于已装载的文件共享中）中。 在 `$Home` 目录和已装载的文件共享中持久保存信息时，请应用最佳做法。
 
-## <a name="using-clouddrive"></a>使用 clouddrive
-Cloud Shell 允许用户运行名为 `clouddrive` 的命令，该命令可用于手动更新装载到 Cloud Shell 的文件共享。
-![](media/clouddrive-h.png)
+## <a name="use-the-clouddrive-command"></a>使用 `clouddrive` 命令
+使用 Cloud Shell，可运行一个名为 `clouddrive` 的命令，手动更新装载到 Cloud Shell 的文件共享。
+![运行“clouddrive”命令](media/clouddrive-h.png)
 
-## <a name="mount-a-new-clouddrive"></a>装载新的 clouddrive
+## <a name="mount-a-new-clouddrive"></a>装载新的 `clouddrive`
 
-### <a name="pre-requisites-for-manual-mounting"></a>手动装载的先决条件
-首次启动时，Cloud Shell 会为你创建一个存储帐户和文件共享，不过你可以使用 `clouddrive mount` 命令更新该文件共享。
+### <a name="prerequisites-for-manual-mounting"></a>手动装载的先决条件
+可使用 `clouddrive mount` 命令更新与 Cloud Shell 相关联的文件共享。
 
 如果装载现有的文件共享，则存储帐户必须：
-1. 是 LRS 或 GRS 才能支持文件共享。
-2. 位于为你分配的区域中。 在装入时，你被分配到的区域将列在资源组名称 `cloud-shell-storage-<region>` 中。
+* 是支持文件共享的本地冗余存储或异地冗余存储。
+* 位于分配的区域中。 在装入时，被分配到的区域将列在资源组名称 `cloud-shell-storage-<region>` 中。
 
 ### <a name="supported-storage-regions"></a>支持的存储区域
-Azure 文件必须与所装载到的计算机位于同一区域中。 Cloud Shell 计算机位于以下区域中：
+Azure 文件必须与装载到 Cloud Shell 计算机位于同一区域。 Cloud Shell 计算机位于以下区域中：
 |区域|区域|
 |---|---|
 |美洲|美国东部、美国中南部、美国西部|
 |欧洲|欧洲北部、欧洲西部|
 |亚太区|印度中部、亚洲东南部|
 
-### <a name="mount-command"></a>装载命令
+### <a name="the-clouddrive-mount-command"></a>`clouddrive mount` 命令
 
 > [!NOTE]
-> 如果装载新的文件共享，将会为你的 $Home 目录创建一个新的用户映像，因为你以前的 $Home 映像保存在以前的文件共享中。
+> 如果装载新文件共享，会为 `$Home` 目录创建新用户映像，因为以前的 `$Home` 映像保存在以前的文件共享中。
 
-1. 使用以下参数运行 `clouddrive mount` <br>
+使用以下参数运行 `clouddrive mount` 命令：
 
 ```
 clouddrive mount -s mySubscription -g myRG -n storageAccountName -f fileShareName
 ```
 
-若要查看更多详细信息，请运行 `clouddrive mount -h`： <br>
-![](media/mount-h.png)
+若要查看更多详细信息，请运行 `clouddrive mount -h`，如下所示：
 
-## <a name="unmount-clouddrive"></a>卸载 clouddrive
-你随时可以卸载已装载到 Cloud Shell 的文件共享。 不过，Cloud Shell 需要一个已装载的文件共享，因此，如果删除了已装载的文件共享，则在下次会话时会提示你创建并装载一个新的文件共享。
+![运行 `clouddrive mount` 命令](media/mount-h.png)
 
-若要从 Cloud Shell 分离文件共享，请执行以下操作：
-1. 运行 `clouddrive unmount`
-2. 承认并确认提示
+## <a name="unmount-clouddrive"></a>卸载 `clouddrive`
+随时可以卸载已装载到 Cloud Shell 的文件共享。 不过，由于 Cloud Shell 需要一个已装载的文件共享，因此，如果删除了已装载的文件共享，则在下次会话时会提示创建并装载一个新的文件共享。
 
-除非手动删除，否则你的文件共享将一直存在。 Cloud Shell 在后续会话中不会再搜索此文件共享。
+从 Cloud Shell 中删除文件共享：
+1. 运行 `clouddrive unmount`。
+2. 同意并确认提示。
 
-若要查看更多详细信息，请运行 `clouddrive mount -h`： <br>
-![](media/unmount-h.png)
+除非手动删除，否则文件共享将一直存在。 Cloud Shell 在后续会话中不会再搜索此文件共享。
+
+若要查看更多详细信息，请运行 `clouddrive unmount -h`，如下所示：
+
+![运行 `clouddrive unmount` 命令](media/unmount-h.png)
 
 > [!WARNING]
-> 此命令不会删除任何资源。 不过，手动删除映射到 Cloud Shell 的资源组、存储帐户或文件共享将会清除你的 $Home 目录磁盘映像以及你的文件共享中的任何文件。 这不可撤消。
+> 虽然运行此命令不会删除任何资源，但手动删除映射到 Cloud Shell 的资源组、存储帐户或文件共享将会清除 `$Home` 目录磁盘映像和文件共享中的任何文件。 此操作不可撤消。
 
-## <a name="list-clouddrive"></a>列出 clouddrive
-若要查明哪些文件共享已装载为 `clouddrive`，请执行以下操作：
-1. 运行 `df` 
+## <a name="list-clouddrive-file-shares"></a>列出 `clouddrive` 文件共享
+若要查明哪些文件共享已装载为 `clouddrive`，请执行以下 `df` 命令。 
 
-clouddrive 的文件路径将在 url 中显示存储帐户名称和文件共享。
-
-`//storageaccountname.file.core.windows.net/filesharename`
+clouddrive 的文件路径会在 URL 中显示存储帐户名称和文件共享。 例如： `//storageaccountname.file.core.windows.net/filesharename`
 
 ```
 justin@Azure:~$ df
@@ -114,24 +127,27 @@ justin@Azure:~$
 ```
 
 ## <a name="transfer-local-files-to-cloud-shell"></a>将本地文件传输到 Cloud Shell
-`clouddrive` 目录将同步到 Azure 门户的存储边栏选项卡。 使用此目录将本地文件传输到文件共享或从文件共享传输本地文件。 从 Cloud Shell 中更新文件的结果将在刷新边栏选项卡时反映在文件存储 GUI 中。
+`clouddrive` 目录与 Azure 门户存储边栏选项卡同步。 使用此边栏选项卡将本地文件传输到文件共享或从文件共享传输到本地文件。 刷新边栏选项卡时，从 Cloud Shell 中更新文件将反映在文件存储 GUI 中。
 
 ### <a name="download-files"></a>下载文件
-![](media/download.gif)
-1. 导航到已装载的文件共享
-2. 在门户中选择目标文件
-3. 点击“下载”
 
-### <a name="upload-files"></a>上载文件
-![](media/upload.gif)
-1. 导航到已装载的文件共享
-2. 选择“上传”
-3. 选择要上传的文件
-4. 确认上传
+![本地文件列表](media/download.png)
+1. 在 Azure 门户中，转到已装载的文件共享。
+2. 选择目标文件。
+3. 选择“下载”按钮。
 
-现在应在 Cloud Shell 的 clouddrive 目录中看到可访问的文件。
+### <a name="upload-files"></a>上传文件
+
+![要上传的本地文件](media/upload.png)
+1. 请转到已装在的文件共享。
+2. 选择“上传”按钮。
+3. 选择要上传的文件。
+4. 确认上传。
+
+现在应可在 Cloud Shell 的 `clouddrive` 目录中查看可访问的文件。
 
 ## <a name="next-steps"></a>后续步骤
-[Cloud Shell 快速入门](quickstart.md) 
-[了解 Azure 文件存储](https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) 
-[了解存储标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) 
+[Cloud Shell 快速入门](quickstart.md) <br>
+[了解 Azure 文件存储](https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) <br>
+[了解存储标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>
+

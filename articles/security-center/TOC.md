@@ -57,9 +57,10 @@
 ## 检测和响应
 ### [检测功能](security-center-detection-capabilities.md)
 ### [管理安全警报](security-center-managing-and-responding-alerts.md)
+### [安全警报的类型](security-center-alerts-type.md)
+### [警报验证](security-center-alert-validation.md)
 ### [管理安全事件](security-center-incident.md)
 ### [Azure 日志集成](security-center-integrating-alerts-with-log-integration.md)
-### [安全警报的类型](security-center-alerts-type.md)
 ### [威胁智能报告](security-center-threat-report.md)
 
 ## 故障排除

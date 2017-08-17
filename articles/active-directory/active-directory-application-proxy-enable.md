@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 08/02/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 861921e6bcb7eafdf3e7279eaf09945fc8f38b85
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 77acb23f33fd656a12c27107cb159613a8b2aec4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
@@ -55,11 +55,17 @@ ms.lasthandoff: 07/24/2017
    >
    >有关将连接器升级到最新版本的信息，请参阅[了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md#automatic-updates)。
 
-2. 如果你的防火墙或代理允许执行 DNS 白名单，可以将与 msappproxy.net 和 servicebus.windows.net 的连接加入白名单。 如果不允许，则需要允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
+2. 如果你的防火墙或代理允许执行 DNS 白名单，可以将与 msappproxy.net 和 servicebus.windows.net 的连接加入白名单。 如果不允许，则需要允许访问每周进行更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
 
-3. 连接器在注册过程中需要访问 login.windows.net 和 login.microsoftonline.net，因此，还请为这些 URL 打开防火墙。
+3. Microsoft 使用四个地址来验证证书。 允许对以下 URL 的访问（如果还未对其他产品执行过此操作）：
+   * mscrl.microsoft.com:80
+   * crl.microsoft.com:80
+   * ocsp.msocsp.com:80
+   * www.microsoft.com:80
 
-4. 使用 [Azure AD 应用程序代理连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)验证连接器能够访问应用程序代理服务。 请至少确保美国中部区域和离你最近的区域有全部绿色复选标记。 绿色复选标记越多表示复原能力越强。
+4. 连接器在注册过程中需要访问 login.windows.net 和 login.microsoftonline.net。
+
+5. 使用 [Azure AD 应用程序代理连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)验证连接器是否能够访问应用程序代理服务。 请至少确保美国中部区域和离你最近的区域有全部绿色复选标记。 绿色复选标记越多表示复原能力越强。
 
 ## <a name="install-and-register-a-connector"></a>安装并注册连接器
 1. 在 [Azure 门户](https://portal.azure.com/)中，以管理员身份登录。

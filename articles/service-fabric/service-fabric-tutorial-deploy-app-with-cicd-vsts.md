@@ -12,20 +12,20 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2017
+ms.date: 08/09/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: c528974951d3b4a83111cb92b931810a91f660f4
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: dda5ea77b35fa8491128135ea7709016781f2aea
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
 # <a name="deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>将具有 CI/CD 的应用程序部署到 Service Fabric 群集
-本教程介绍了如何使用 Visual Studio Team Services 为 Azure Service Fabric 应用程序设置持续集成和部署。  需要一个现有的 Service Fabric 应用程序，将使用在[生成 .NET 应用程序](service-fabric-tutorial-create-dotnet-app.md)中创建的应用程序作为示例。
+本教程是一个系列的第三部分，介绍了如何使用 Visual Studio Team Services 为 Azure Service Fabric 应用程序设置持续集成和部署。  需要一个现有的 Service Fabric 应用程序，将使用在[生成 .NET 应用程序](service-fabric-tutorial-create-dotnet-app.md)中创建的应用程序作为示例。
 
-本教程将介绍如何执行下列操作：
+在该系列的第三部分中，你会学习如何：
 
 > [!div class="checklist"]
 > * 向项目中添加源代码管理
@@ -33,7 +33,11 @@ ms.lasthandoff: 07/15/2017
 > * 在 Team Services 中创建发布定义
 > * 自动部署和升级应用程序
 
-本教程已拆分为三篇文章，本文是教程系列中的第三篇文章。
+在此系列教程中，你会学习如何：
+> [!div class="checklist"]
+> * [构建 .NET Service Fabric 应用程序](service-fabric-tutorial-create-dotnet-app.md)
+> * [将应用程序部署到远程群集](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> * 使用 Visual Studio Team Services 配置 CI/CD
 
 ## <a name="prerequisites"></a>先决条件
 在开始学习本教程之前：
@@ -142,7 +146,7 @@ ms.lasthandoff: 07/15/2017
 ![Service Fabric Explorer][sfx3]
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已学习了如何执行以下操作：
+本教程介绍了如何：
 
 > [!div class="checklist"]
 > * 向项目中添加源代码管理

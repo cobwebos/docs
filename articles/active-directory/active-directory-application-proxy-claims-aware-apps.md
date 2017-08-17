@@ -12,42 +12,49 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2017
+ms.date: 08/04/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 081e45e0256134d692a2da7333ddbaafc7366eaa
-ms.openlocfilehash: ff07a52f6a503f07f5919b63f345878571742cac
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: cfe528021f2d069146fc7a34d9ea83b2681ffbf2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/06/2017
-
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>在应用程序代理中使用声明感知应用
-声明感知应用执行目标为安全令牌服务 (STS) 的重定向操作，该服务会反过来请求用户提供凭据来交换令牌，然后才会将用户重定向到应用程序。 若要允许应用程序代理处理这些重定向，需执行以下步骤。
+[声明感知应用](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx)对安全令牌服务 (STS) 执行重定向。 STS 请求用来自用户的凭据交换令牌，然后将用户重定向到应用程序。 使应用程序代理使用这些重定向有几种方式。 使用本文配置声明感知应用的部署。 
 
 ## <a name="prerequisites"></a>先决条件
-在执行此过程之前，请确保充当声明感知应用重定向目标的 STS 在用户本地网络之外可用。
+确保充当声明感知应用重定向目标的 STS 在本地网络之外可用。 将 STS 通过代理公开或允许外部连接，可以使其可用。 
 
-## <a name="azure-classic-portal-configuration"></a>Azure 经典门户配置
-1. 根据[使用应用程序代理发布应用程序](active-directory-application-proxy-publish.md)中的说明发布应用程序。
-2. 在应用程序列表中，选择声明感知应用，然后单击“配置”。
-3. 如果选择“传递”作为“预身份验证方法”，请确保选择“HTTPS”作为“外部 URL”方案。
-4. 如果选择“Azure Active Directory”作为“预身份验证方法”，请选择“无”作为“内部身份验证方法”。
+## <a name="publish-your-application"></a>发布应用程序
 
-## <a name="adfs-configuration"></a>ADFS 配置
+1. 根据[使用应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)中的说明发布应用程序。
+2. 导航到门户中的应用程序页，选择“单一登录”。
+3. 如果选择“Azure Active Directory”作为“预身份验证方法”，请选择“已禁用 Azure AD 单一登录”作为“身份验证方法”。 如果选择“传递”作为“预身份验证方法”，则无需更改任何内容。
+
+## <a name="configure-adfs"></a>配置 ADFS
+
+可以使用两种方式之一配置声明感知应用的 ADFS。 第一种方式是使用自定义域。 第二种方式是使用 WS 联合身份验证。 
+
+### <a name="option-1-custom-domains"></a>方法 1：自定义域
+
+如果应用程序的所有内部 URL 都是完全限定的域名 (FQDN)，则可以配置应用程序的[自定义域](active-directory-application-proxy-custom-domains.md)。 使用自定义域创建与内部 URL 相同的外部 URL。 使用此配置，无论用户是本地用户还是远程用户，STS 创建的重定向工作方式相同。 
+
+### <a name="option-2-ws-federation"></a>方法 2：WS 联合身份验证
+
 1. 打开“ADFS 管理”。
-2. 转到“信赖方信任”，右键单击要使用应用程序代理进行发布的应用，然后选择“属性”。  
+2. 转到“信赖方信任”，右键单击要使用应用程序代理进行发布的应用，并选择“属性”。  
 
    ![信赖方信任右键单击应用名称 - 屏幕截图](./media/active-directory-application-proxy-claims-aware-apps/appproxyrelyingpartytrust.png)  
 
 3. 在“终结点”选项卡的“终结点类型”下，选择“WS-Federation”。
-4. 在“受信任的 URL”下输入 URL（曾在应用程序代理的“外部 URL”下输入过），然后单击“确定”。  
+4. 在“受信任的 URL”下输入 URL（曾在应用程序代理的“外部 URL”下输入过），并单击“确定”。  
 
    ![添加终结点 - 设置受信任的 URL 值 - 屏幕截图](./media/active-directory-application-proxy-claims-aware-apps/appproxyendpointtrustedurl.png)  
 
 ## <a name="next-steps"></a>后续步骤
-* [启用单一登录](active-directory-application-proxy-sso-using-kcd.md)
-* [解决使用应用程序代理时遇到的问题](active-directory-application-proxy-troubleshoot.md)
+* 为非声明感知应用程序[启用单一登录](application-proxy-sso-overview.md)
 * [允许本地客户端应用与代理应用程序交互](active-directory-application-proxy-native-client.md)
 
 

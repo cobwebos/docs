@@ -1,6 +1,6 @@
 ---
 title: "从 GitHub 更新 Azure Linux 代理 | Microsoft Docs"
-description: "了解如何从 GitHub 将 Azure 中 Linux VM 的 Azure Linux 代理更新到最新版本"
+description: "了解如何通过 GitHub 将 Azure 中 Linux VM 的 Azure Linux 代理更新为最新版本"
 services: virtual-machines-linux
 documentationcenter: 
 author: SuperScottz
@@ -13,53 +13,351 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2015
+ms.date: 08/02/2017
 ms.author: mingzhan
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: c9cea69fc6462f69c8627219aca11272bbdc493f
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: c79e37976a58ae5384b5856e0f7f258a773ef0fd
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/08/2017
 
 ---
-# <a name="how-to-update-the-azure-linux-agent-on-a-vm-to-the-latest-version-from-github"></a>如何从 GitHub 将 VM 上的 Azure Linux 代理更新到最新版本
+# <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>如何更新 VM 上的 Azure Linux 代理
+
 若要更新 Azure 中 Linux VM 上的 [Azure Linux 代理](https://github.com/Azure/WALinuxAgent)，则必须已具备以下条件：
 
-1. 在 Azure 中具有运行的 Linux VM。
-2. 使用 SHH 连接到该 Linux VM。
+- 在 Azure 中具有运行的 Linux VM。
+- 使用 SHH 连接到该 Linux VM。
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
+应始终先对 Linux 发行版存储库中的程序包进行检查。 虽然可用的程序包很有可能不是最新版本，但启用自动更新可确保 Linux 代理始终获得最新的更新。 如果程序包管理器中的安装存在问题，可以向发行版供应商寻求支持。
 
-<br>
+## <a name="updating-the-azure-linux-agent"></a>更新 Azure Linux 代理
 
-> [!NOTE]
-> 如果将从 Windows 计算机执行此任务，则可以使用 PuTTY 通过 SSH 登录到 Linux 计算机。 有关详细信息，请参阅[如何登录到运行 Linux 的虚拟机](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-> 
-> 
+## <a name="ubuntu"></a>Ubuntu
 
-Azure 支持的 Linux 发行版已将 Azure Linux 代理包放入其存储库中，因此，请先从该发行版存储库中查找并安装最新版本（如果可能）。  
+#### <a name="check-your-current-package-version"></a>检查当前程序包的版本
 
-对于 Ubuntu，只需键入：
+```bash
+apt list --installed | grep walinuxagent
+```
+
+#### <a name="update-package-cache"></a>更新程序包缓存
+
+```bash
+sudo apt-get -qq update
+```
+
+#### <a name="install-the-latest-package-version"></a>安装最新版本的程序包
 
 ```bash
 sudo apt-get install walinuxagent
 ```
 
-在 CentOS 中，请键入：
+#### <a name="ensure-auto-update-is-enabled"></a>确保已启用自动更新
+
+首先，检查是否已启用自动更新：
 
 ```bash
-sudo yum install waagent
+cat /etc/waagent.conf
 ```
 
-对于 Oracle Linux，请确保已启用 `Addons` 存储库。 选择编辑文件 `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) 或 `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux)，并在此文件中 **[ol6_addons]** 或 **[ol7_addons]** 下将行 `enabled=0` 更改为 `enabled=1`。
+找到“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
 
-然后，要安装最新版本的 Azure Linux 代理，请键入：
+```bash
+# AutoUpdate.Enabled=y
+AutoUpdate.Enabled=y
+```
+
+若要启用运行：
+
+```bash
+sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
+```
+
+### <a name="restart-the-waagent-service"></a>重新启动 waagent 服务
+
+#### <a name="restart-agent-for-1404"></a>重新启动 14.04 的代理
+
+```bash
+initctl restart walinuxagent
+```
+
+#### <a name="restart-agent-for-1604--1704"></a>重新启动 16.04 / 17.04 的代理
+
+```bash
+systemctl restart walinuxagent.service
+```
+
+## <a name="debian"></a>Debian
+
+### <a name="debian-7-wheezy"></a>Debian 7 “Wheezy”
+
+#### <a name="check-your-current-package-version"></a>检查当前程序包的版本
+
+```bash
+dpkg -l | grep waagent
+```
+
+#### <a name="update-package-cache"></a>更新程序包缓存
+
+```bash
+sudo apt-get -qq update
+```
+
+#### <a name="install-the-latest-package-version"></a>安装最新版本的程序包
+
+```bash
+sudo apt-get install waagent
+```
+
+#### <a name="enable-agent-auto-update"></a>启用代理自动更新
+由于此版本的 Debian 没有 > = 2.0.16 的版本，因此 AutoUpdate 对该版本不适用。 上述命令的输出将显示程序包是否为最新版。
+
+### <a name="debian-8-jessie--debian-9-stretch"></a>Debian 8 “Jessie” / Debian 9 “Stretch”
+
+#### <a name="check-your-current-package-version"></a>检查当前程序包的版本
+
+```bash
+apt list --installed | grep walinuxagent
+```
+
+#### <a name="update-package-cache"></a>更新程序包缓存
+
+```bash
+sudo apt-get -qq update
+```
+
+#### <a name="install-the-latest-package-version"></a>安装最新版本的程序包
+
+```bash
+sudo apt-get install waagent
+```
+#### <a name="ensure-auto-update-is-enabled"></a>确保已启用自动更新 
+
+首先，检查是否已启用自动更新：
+
+```bash
+cat /etc/waagent.conf
+```
+
+找到“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
+
+```bash
+# AutoUpdate.Enabled=y
+AutoUpdate.Enabled=y
+```
+
+若要启用运行：
+
+```bash
+sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
+```
+
+### <a name="restart-the-waagent-service"></a>重新启动 waagent 服务
+
+```
+sudo systemctl restart walinuxagent.service
+```
+
+## <a name="redhat--centos"></a>Redhat / CentOS
+
+### <a name="rhelcentos-6"></a>RHEL/CentOS 6
+
+#### <a name="check-your-current-package-version"></a>检查当前程序包的版本
+
+```bash
+sudo yum list WALinuxAgent
+```
+
+#### <a name="check-available-updates"></a>检查可用的更新
+
+```bash
+sudo yum check-update WALinuxAgent
+```
+
+#### <a name="install-the-latest-package-version"></a>安装最新版本的程序包
 
 ```bash
 sudo yum install WALinuxAgent
 ```
 
-如果找不到外接程序存储库，你只需根据你的 Oracle Linux 版本，将这些行添加到 .repo 文件末尾处：
+#### <a name="ensure-auto-update-is-enabled"></a>确保已启用自动更新 
+
+首先，检查是否已启用自动更新：
+
+```bash
+cat /etc/waagent.conf
+```
+
+找到“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
+
+```bash
+# AutoUpdate.Enabled=y
+AutoUpdate.Enabled=y
+```
+
+若要启用运行：
+
+```bash
+sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
+```
+
+### <a name="restart-the-waagent-service"></a>重新启动 waagent 服务
+
+```
+sudo service waagent restart
+```
+
+### <a name="rhelcentos-7"></a>RHEL/CentOS 7
+
+#### <a name="check-your-current-package-version"></a>检查当前程序包的版本
+
+```bash
+sudo yum list WALinuxAgent
+```
+
+#### <a name="check-available-updates"></a>检查可用的更新
+
+```bash
+sudo yum check-update WALinuxAgent
+```
+
+#### <a name="install-the-latest-package-version"></a>安装最新版本的程序包
+
+```bash
+sudo yum install WALinuxAgent  
+```
+
+#### <a name="ensure-auto-update-is-enabled"></a>确保已启用自动更新 
+
+首先，检查是否已启用自动更新：
+
+```bash
+cat /etc/waagent.conf
+```
+
+找到“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
+
+```bash
+# AutoUpdate.Enabled=y
+AutoUpdate.Enabled=y
+```
+
+若要启用运行：
+
+```bash
+sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
+```
+
+### <a name="restart-the-waagent-service"></a>重新启动 waagent 服务
+
+```bash
+sudo systemctl restart waagent.service
+```
+
+## <a name="suse-sles"></a>SUSE SLES
+
+### <a name="suse-sles-11-sp4"></a>SUSE SLES 11 SP4
+
+#### <a name="check-your-current-package-version"></a>检查当前程序包的版本
+
+```bash
+zypper info python-azure-agent
+```
+
+#### <a name="check-available-updates"></a>检查可用的更新
+
+上面的输出将显示程序包是否为最新版。
+
+#### <a name="install-the-latest-package-version"></a>安装最新版本的程序包
+
+```bash
+sudo zypper install python-azure-agent
+```
+
+#### <a name="ensure-auto-update-is-enabled"></a>确保已启用自动更新 
+
+首先，检查是否已启用自动更新：
+
+```bash
+cat /etc/waagent.conf
+```
+
+找到“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
+
+```bash
+# AutoUpdate.Enabled=y
+AutoUpdate.Enabled=y
+```
+
+若要启用运行：
+
+```bash
+sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
+```
+
+### <a name="restart-the-waagent-service"></a>重新启动 waagent 服务
+
+```bash
+sudo /etc/init.d/waagent restart
+```
+
+### <a name="suse-sles-12-sp2"></a>SUSE SLES 12 SP2
+
+#### <a name="check-your-current-package-version"></a>检查当前程序包的版本
+
+```bash
+zypper info python-azure-agent
+```
+
+#### <a name="check-available-updates"></a>检查可用的更新
+
+上面的输出将显示程序包是否为最新版。
+
+#### <a name="install-the-latest-package-version"></a>安装最新版本的程序包
+
+```bash
+sudo zypper install python-azure-agent
+```
+
+#### <a name="ensure-auto-update-is-enabled"></a>确保已启用自动更新 
+
+首先，检查是否已启用自动更新：
+
+```bash
+cat /etc/waagent.conf
+```
+
+找到“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
+
+```bash
+# AutoUpdate.Enabled=y
+AutoUpdate.Enabled=y
+```
+
+若要启用运行：
+
+```bash
+sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
+```
+
+### <a name="restart-the-waagent-service"></a>重新启动 waagent 服务
+
+```bash
+sudo systemctl restart waagent.service
+```
+
+## <a name="oracle-6-and-7"></a>Oracle 6 和 7
+
+对于 Oracle Linux，请确保已启用 `Addons` 存储库。 选择编辑文件 `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) 或 `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux)，并在此文件中 **[ol6_addons]** 或 **[ol7_addons]** 下将行 `enabled=0` 更改为 `enabled=1`。
+
+然后，若要安装最新版本的 Azure Linux 代理，请键入：
+
+```bash
+sudo yum install WALinuxAgent
+```
+
+如果找不到外接程序存储库，只需根据 Oracle Linux 版本，将这些行添加到 .repo 文件末尾处：
 
 对于 Oracle Linux 6 虚拟机：
 
@@ -91,77 +389,60 @@ sudo yum update WALinuxAgent
 
 通常只需要这样做，但如果因某种原因而需要直接从 https://github.com 安装它，请使用以下步骤。
 
-## <a name="install-wget"></a>安装 wget
-使用 SSH 登录到你的 VM。
 
-通过在命令行上键入 `#sudo yum install wget` 来安装 wget（有一些发行版在默认情况下未安装它，如 Redhat、CentOS 和 Oracle Linux 6.4 和 6.5 版）。
+## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>没有可用于分发的代理程序包时，请更新 Linux 代理
 
-## <a name="download-the-latest-version"></a>下载最新版本
-在网页中打开 [GitHub 中的 Azure Linux 代理版本](https://github.com/Azure/WALinuxAgent/releases)，并找到最新的版本号。 （可以通过键入 `#waagent --version` 查明你的当前版本。）
+通过在命令行上键入 `sudo yum install wget` 来安装 wget（某些发行版在默认情况下未安装它，如 Redhat、CentOS 和 Oracle Linux 6.4 和 6.5 版）。
 
-### <a name="for-version-20x-type"></a>对于版本 2.0.x，请键入：
+### <a name="1-download-the-latest-version"></a>1.下载最新版本
+在网页中打开 [GitHub 中的 Azure Linux 代理版本](https://github.com/Azure/WALinuxAgent/releases)，并找到最新的版本号。 （可以通过键入 `waagent --version` 查明当前版本。）
 
+#### <a name="for-version-22x-or-later-type"></a>对于 2.2.x 或更高版本，请键入：
 ```bash
-wget https://raw.githubusercontent.com/Azure/WALinuxAgent/WALinuxAgent-[version]/waagent
+wget https://github.com/Azure/WALinuxAgent/archive/v2.2.x.zip
+unzip v2.2.x.zip.zip
+cd WALinuxAgent-2.2.x
 ```
 
-以下行使用版本 2.0.14 作为示例：
+以下行使用版本 2.2.0 作为示例：
 
 ```bash
-wget https://raw.githubusercontent.com/Azure/WALinuxAgent/WALinuxAgent-2.0.14/waagent
+wget https://github.com/Azure/WALinuxAgent/archive/v2.2.14.zip
+unzip v2.2.14.zip  
+cd WALinuxAgent-2.2.14
 ```
 
-### <a name="for-version-21x-or-later-type"></a>对于 2.1.x 或更高版本，请键入：
-```bash
-wget https://github.com/Azure/WALinuxAgent/archive/WALinuxAgent-[version].zip
-unzip WALinuxAgent-[version].zip
-cd WALinuxAgent-[version]
-```
+### <a name="2-install-the-azure-linux-agent"></a>2.安装 Azure Linux 代理
 
-以下行使用版本 2.1.0 作为示例：
-
-```bash
-wget https://github.com/Azure/WALinuxAgent/archive/WALinuxAgent-2.1.0.zip
-unzip WALinuxAgent-2.1.0.zip  
-cd WALinuxAgent-2.1.0
-```
-
-## <a name="install-the-azure-linux-agent"></a>安装 Azure Linux 代理
-### <a name="for-version-20x-use"></a>对于版本 2.0.x，请使用：
-使 waagent 成为可执行文件：
-
-```bash
-chmod +x waagent
-```
-
-将新的可执行文件复制到 /usr/sbin/。
-
-对于大多数 Linux，请使用：
-
-```bash
-sudo cp waagent /usr/sbin
-```
-
-对于 CoreOS，使用：
-
-```bash
-sudo cp waagent /usr/share/oem/bin/
-```
-
-如果这是新安装的 Azure Linux 代理，请运行：
-
-```bash
-sudo /usr/sbin/waagent -install -verbose
-```
-
-### <a name="for-version-21x-use"></a>对于版本 2.1.x，请使用：
+#### <a name="for-version-22x-use"></a>对于版本 2.2.x，请使用：
 可能需要先安装程序包 `setuptools` -- 详情请参阅[此处](https://pypi.python.org/pypi/setuptools)。 然后运行：
 
 ```bash
 sudo python setup.py install
 ```
 
-## <a name="restart-the-waagent-service"></a>重新启动 waagent 服务
+#### <a name="ensure-auto-update-is-enabled"></a>确保已启用自动更新
+
+首先，检查是否已启用自动更新：
+
+```bash
+cat /etc/waagent.conf
+```
+
+找到“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
+
+```bash
+# AutoUpdate.Enabled=y
+AutoUpdate.Enabled=y
+```
+
+若要启用运行：
+
+```bash
+sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
+```
+
+### <a name="3-restart-the-waagent-service"></a>3.重新启动 waagent 服务
 对于大多数 linux 发行版：
 
 ```bash
@@ -180,7 +461,7 @@ sudo service walinuxagent restart
 sudo systemctl restart waagent
 ```
 
-## <a name="confirm-the-azure-linux-agent-version"></a>确认 Azure Linux 代理版本
+### <a name="4-confirm-the-azure-linux-agent-version"></a>4.确认 Azure Linux 代理版本
     
 ```bash
 waagent -version
@@ -188,8 +469,6 @@ waagent -version
 
 对于 CoreOS，上面的命令可能无效。
 
-你将看到 Linux 代理版本已更新为新版本。
+会看到 Linux 代理版本已更新为新版本。
 
 有关 Azure Linux 代理的详细信息，请参阅 [Azure Linux 代理自述文件](https://github.com/Azure/WALinuxAgent)。
-
-

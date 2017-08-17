@@ -12,19 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2017
+ms.date: 08/03/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: b8a08eb8fd036ad07ee6ce4cf624e8b5bc4c3ddc
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: ded80330ad323a0019ad59ac54d076a78b70f521
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory 传递身份验证：常见问题
 
 本文解决了有关 Azure Active Directory (Azure AD) 传递身份验证的常见问题。 请随时返回查看新内容。
+
+>[!IMPORTANT]
+>传递身份验证目前以预览版提供。
 
 ## <a name="which-of-the-azure-ad-sign-in-methods---pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs---should-i-choose"></a>我应选择哪种 Azure AD 登录方法（传递身份验证、密码哈希同步和 Active Directory 联合身份验证服务 (AD FS)）？
 
@@ -48,7 +51,7 @@ ms.lasthandoff: 08/01/2017
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>密码哈希同步是否可以充当传递身份验证的回滚？
 
-不可以。密码哈希同步并非传递身份验证的通用回滚。 它仅可充当[传递身份验证尚不支持的方案](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios)的回滚。 为避免用户登录失败，应配置传递身份验证以实现[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)。
+不可以。密码哈希同步并非传递身份验证的通用回滚。 它仅可充当[传递身份验证尚不支持的方案](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios)的回滚。 为避免用户登录失败，应配置传递身份验证以实现[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)。
 
 ## <a name="can-i-install-an-azure-ad-application-proxyactive-directory-application-proxy-get-startedmd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>能否在传递身份验证代理所在的同一台服务器上安装 [Azure AD 应用程序代理](../active-directory-application-proxy-get-started.md)连接器？
 
@@ -62,7 +65,7 @@ ms.lasthandoff: 08/01/2017
 
 如果已针对特定的用户配置[密码写回](../active-directory-passwords-update-your-own-password.md)，则当用户使用传递身份验证进行登录时，可更改或重置其密码。 密码会按预期写回到本地 Active Directory。
 
-但是，若未配置密码写回，或者没有为用户分配有效的 Azure AD 许可证，则用户不能在云中更新其密码。 即使密码过期也不能更新。 用户会看到此消息：“你的组织不允许你更新此站点上的密码。 请根据组织建议的方法更新密码，或者请求管理员提供帮助。” 用户或管理员必须在你本地 Active Directory 中重置其密码。
+但是，若没有为特定用户配置密码写回，或者没有为用户分配有效的 Azure AD 许可证，则用户不能在云中更新其密码。 即使密码过期也不能更新。 用户会看到此消息：“你的组织不允许你更新此站点上的密码。 请根据组织建议的方法更新密码，或者请求管理员提供帮助。” 用户或管理员必须在你本地 Active Directory 中重置其密码。
 
 ## <a name="how-does-pass-through-authentication-protect-you-against-brute-force-password-attacks"></a>传递身份验证如何防止不受密码搜索攻击？
 
@@ -70,11 +73,11 @@ ms.lasthandoff: 08/01/2017
 
 ## <a name="what-do-pass-through-authentication-agents-communicate-over-ports-80-and-443"></a>传递身份验证通过端口 80 和 443 传递什么内容？
 
-- 身份验证代理通过端口 443 发出 HTTPS 请求以执行所有其他功能操作，如启用功能、处理所有用户登录请求以及其他操作。
+- 身份验证代理通过端口 443 为所有功能操作发出 HTTPS 请求。
 - 传递身份验证通过端口 80 发出 HTTP 请求以下载 SSL 证书吊销列表。
 
      >[!NOTE]
-     >我们在最近的更新中减少了身份验证代理与 Azure AD 进行通信所需的端口数量。 如果运行旧版 Azure AD Connect 和/或独立身份验证代理，应继续保持打开这些附加端口（5671、8080、9090、9091、9350、9352、10100-10120）。
+     >在最近的更新中，我们减少了功能所需的端口数。 如果有较旧版 Azure AD Connect 或身份验证代理，请也打开以下端口：5671、8080、9090、9091、9350、9352 和 10100-10120。
 
 ## <a name="can-the-pass-through-authentication-agents-communicate-over-an-outbound-web-proxy-server"></a>传递身份验证代理能否通过出站 Web 代理服务器进行通信？
 
@@ -82,7 +85,7 @@ ms.lasthandoff: 08/01/2017
 
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>能否在同一台服务器上安装两个或更多传递身份验证代理？
 
-否。在一台服务器上只能安装一个传递身份验证代理。 若要配置传递身份验证实现高可用性，请遵循这篇[文章](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)中的说明。
+否。在一台服务器上只能安装一个传递身份验证代理。 若要配置传递身份验证实现高可用性，请遵循这篇[文章](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)中的说明。
 
 ## <a name="i-already-use-active-directory-federation-services-ad-fs-for-azure-ad-sign-in-how-do-i-switch-it-to-pass-through-authentication"></a>已使用 Active Directory 联合身份验证服务 (AD FS) 登录 Azure AD。 如何将它切换为传递身份验证？
 
@@ -99,7 +102,7 @@ ms.lasthandoff: 08/01/2017
 
 ## <a name="do-pass-through-authentication-agents-provide-load-balancing-capability"></a>传递身份验证代理是否提供负载均衡功能？
 
-否。安装多个传递身份验证代理能保证[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)，但无法提供负载均衡。 一个或两个身份验证代理会处理这批登录请求。
+否。安装多个传递身份验证代理能保证[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)，但无法提供负载均衡。 一个或两个身份验证代理会处理这批登录请求。
 
 身份验证代理需要的处理的密码验证请求都是轻量级的。 因此只需两个或三个身份验证代理便可处理大多数客户的峰值和平均负载。
 
@@ -113,11 +116,12 @@ ms.lasthandoff: 08/01/2017
 
 我们建议：
 
-- 共安装两个或三个身份验证代理。 这已足够满足大多数客户的需求。
+- 共安装两个或三个身份验证代理。 此配置足够满足大多数客户的需求。
 - 可在域控制器上（或尽量靠近它们）安装身份验证代理以改善登录延迟。
 - 请确保将服务器（已安装身份验证代理）添加到需要验证密码的用户的 AD 林中。
 
-请注意，系统限制每位租户最多安装 12 个身份验证代理。
+>[!NOTE]
+>系统限制每位租户最多安装 12 个身份验证代理。
 
 ## <a name="how-can-i-disable-pass-through-authentication"></a>如何禁用传递身份验证？
 

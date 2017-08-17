@@ -1,6 +1,6 @@
 ---
 title: "创建并上传 Red Hat Enterprise Linux VHD，以供在 Azure 中使用 | Microsoft Docs"
-description: "了解如何创建和上载包含 Red Hat Linux 操作系统的 Azure 虚拟硬盘 (VHD)。"
+description: "了解如何创建和上传包含 Red Hat Linux 操作系统的 Azure 虚拟硬盘 (VHD)。"
 services: virtual-machines-linux
 documentationcenter: 
 author: szarkos
@@ -15,31 +15,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/28/2017
 ms.author: szark
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
-ms.openlocfilehash: bab651ffc314e64ca9b9432d1fae3ea29b8d15f5
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: b753c76b8c3d789c681d7fbff6aa07590b860be5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/29/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>为 Azure 准备基于 Red Hat 的虚拟机
-在本文中，你将了解如何准备 Red Hat Enterprise Linux (RHEL) 虚拟机，以供在 Azure 中使用。 本文介绍的 RHEL 版本为 6.7+ 和 7.1+。 本文所述的用于准备工作的虚拟机监控程序为 Hyper-V、基于内核的虚拟机 (KVM) 和 VMware。 有关参与 Red Hat 云访问计划的资格要求的详细信息，请参阅 [Red Hat 的云访问网站](http://www.redhat.com/en/technologies/cloud-computing/cloud-access)和[在 Azure 上运行 RHEL](https://access.redhat.com/articles/1989673)。
+在本文中，将了解如何准备 Red Hat Enterprise Linux (RHEL) 虚拟机，以供在 Azure 中使用。 本文介绍的 RHEL 版本为 6.7+ 和 7.1+。 本文所述的用于准备工作的虚拟机监控程序为 Hyper-V、基于内核的虚拟机 (KVM) 和 VMware。 有关参与 Red Hat 云访问计划的资格要求的详细信息，请参阅 [Red Hat 的云访问网站](http://www.redhat.com/en/technologies/cloud-computing/cloud-access)和[在 Azure 上运行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>从 Hyper-V 管理器准备基于 Red Hat 的虚拟机
 
 ### <a name="prerequisites"></a>先决条件
-本部分假定你已经从 Red Hat 网站获取 ISO 文件并将 RHEL 映像安装到虚拟硬盘 (VHD)。 有关如何使用 Hyper-V 管理器来安装操作系统映像的更多详细信息，请参阅[安装 Hyper-V 角色和配置虚拟机](http://technet.microsoft.com/library/hh846766.aspx)。
+本部分假定已经从 Red Hat 网站获取 ISO 文件并将 RHEL 映像安装到虚拟硬盘 (VHD)。 有关如何使用 Hyper-V 管理器来安装操作系统映像的更多详细信息，请参阅[安装 Hyper-V 角色和配置虚拟机](http://technet.microsoft.com/library/hh846766.aspx)。
 
 **RHEL 安装说明**
 
 * Azure 不支持 VHDX 格式。 Azure 仅支持固定 VHD。 可使用 Hyper-V 管理器将磁盘转换为 VHD 格式，也可以使用 convert-vhd cmdlet。 如果使用 VirtualBox，则选择“固定大小”，而不是在创建磁盘时默认动态分配选项。
 * Azure 仅支持第 1 代虚拟机。 可以将第 1 代虚拟机从 VHDX 转换为 VHD 文件格式，从动态扩展磁盘转换为固定大小磁盘。 但无法更改虚拟机的代次。 有关详细信息，请参阅[是否应在 Hyper-V 中创建第 1 代或第 2 代虚拟机？](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)。
 * VHD 允许的最大大小为 1,023 GB。
-* 在安装 Linux 操作系统时，建议使用标准分区而不是逻辑卷管理器 (LVM)（通常是许多安装的默认设置）。 这种做法可以避免 LVM 名称与克隆的虚拟机冲突，尤其是当你需要将操作系统磁盘附加到另一台相同的虚拟机进行故障排除时。 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 可以在数据磁盘上使用。
+* 在安装 Linux 操作系统时，建议使用标准分区而不是逻辑卷管理器 (LVM)（通常是许多安装的默认设置）。 这种做法可以避免 LVM 名称与克隆的虚拟机冲突，尤其是当需要将操作系统磁盘附加到另一台相同的虚拟机进行故障排除时。 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 可以在数据磁盘上使用。
 * 需要装载通用磁盘格式 (UDF) 文件系统的内核支持。 在 Azure 上首次启动时，附加到来宾的 UDF 格式媒体会将预配配置传递到 Linux 虚拟机。 Azure Linux 代理必须能够装载 UDF 文件系统才能读取其配置和预配虚拟机。
 * 早于 2.6.37 的 Linux 内核版本不支持虚拟机比较大的 Hyper-V 上的非一致性内存访问 (NUMA)。 此问题主要影响使用上游 Red Hat 2.6.32 内核的旧分发版，在 RHEL 6.6 (kernel-2.6.32-504) 中已得到解决。 运行版本低于 2.6.37 的自定义内核的系统或者版本低于 2.6.32-504 的基于 RHEL 的内核必须在 grub.conf 中的内核命令行上设置启动参数 `numa=off`。 有关详细信息，请参阅 Red Hat [KB 436883](https://access.redhat.com/solutions/436883)。
-* 不要在操作系统磁盘上配置交换分区。 可以配置 Linux 代理，然后在临时资源磁盘上创建交换文件。  可以在以下步骤中找到有关此内容的详细信息。
+* 不要在操作系统磁盘上配置交换分区。 可以配置 Linux 代理，并在临时资源磁盘上创建交换文件。  可以在以下步骤中找到有关此内容的详细信息。
 * 所有 VHD 的大小必须是 1 MB 的倍数。
 
 ### <a name="prepare-a-rhel-6-virtual-machine-from-hyper-v-manager"></a>从 Hyper-V 管理器准备 RHEL 6 虚拟机
@@ -73,11 +72,11 @@ ms.lasthandoff: 04/29/2017
         
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-7. 通过运行以下命令，确保网络服务将在引导时启动：
+7. 通过运行以下命令，确保网络服务会在引导时启动：
 
         # sudo chkconfig network on
 
-8. 注册你的 Red Hat 订阅，以通过运行以下命令来启用来自 RHEL 存储库中的包的安装：
+8. 注册 Red Hat 订阅，以通过运行以下命令来启用来自 RHEL 存储库中的包的安装：
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
@@ -134,7 +133,7 @@ ms.lasthandoff: 04/29/2017
 
         # logout
 
-16. 在 Hyper-V 管理器中单击“操作” > “关闭”。 Linux VHD 现已准备好上载到 Azure。
+16. 在 Hyper-V 管理器中单击“操作” > “关闭”。 Linux VHD 现已准备好上传到 Azure。
 
 
 ### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>从 Hyper-V 管理器准备 RHEL 7 虚拟机
@@ -159,11 +158,11 @@ ms.lasthandoff: 04/29/2017
         IPV6INIT=no
         NM_CONTROLLED=no
 
-5. 通过运行以下命令，确保网络服务将在引导时启动：
+5. 通过运行以下命令，确保网络服务会在引导时启动：
 
         # sudo chkconfig network on
 
-6. 注册你的 Red Hat 订阅，以通过运行以下命令来启用来自 RHEL 存储库中的包的安装：
+6. 注册 Red Hat 订阅，以通过运行以下命令来启用来自 RHEL 存储库中的包的安装：
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
@@ -205,7 +204,7 @@ ms.lasthandoff: 04/29/2017
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-13. 如果你想要取消注册订阅，运行以下命令：
+13. 如果想要取消注册订阅，运行以下命令：
 
         # sudo subscription-manager unregister
 
@@ -217,7 +216,7 @@ ms.lasthandoff: 04/29/2017
 
         # logout
 
-15. 在 Hyper-V 管理器中单击“操作” > “关闭”。 Linux VHD 现已准备好上载到 Azure。
+15. 在 Hyper-V 管理器中单击“操作” > “关闭”。 Linux VHD 现已准备好上传到 Azure。
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>从 KVM 准备基于 Red Hat 的虚拟机
@@ -227,7 +226,7 @@ ms.lasthandoff: 04/29/2017
 
 2. 设置 root 密码。
 
-    生成加密密码，然后复制命令的输出：
+    生成加密密码，并复制命令的输出：
 
         # openssl passwd -1 changeme
 
@@ -265,11 +264,11 @@ ms.lasthandoff: 04/29/2017
 
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-7. 通过运行以下命令，确保网络服务将在引导时启动：
+7. 通过运行以下命令，确保网络服务会在引导时启动：
 
         # chkconfig network on
 
-8. 注册你的 Red Hat 订阅，以通过运行以下命令来启用来自 RHEL 存储库中的包的安装：
+8. 注册 Red Hat 订阅，以通过运行以下命令来启用来自 RHEL 存储库中的包的安装：
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
@@ -369,7 +368,7 @@ ms.lasthandoff: 04/29/2017
 
 2. 设置 root 密码。
 
-    生成加密密码，然后复制命令的输出：
+    生成加密密码，并复制命令的输出：
 
         # openssl passwd -1 changeme
 
@@ -402,11 +401,11 @@ ms.lasthandoff: 04/29/2017
         IPV6INIT=no
         NM_CONTROLLED=no
 
-6. 通过运行以下命令，确保网络服务将在引导时启动：
+6. 通过运行以下命令，确保网络服务会在引导时启动：
 
         # chkconfig network on
 
-7. 注册你的 Red Hat 订阅，以通过运行以下命令来启用来自 RHEL 存储库中的包的安装：
+7. 注册 Red Hat 订阅，以通过运行以下命令来启用来自 RHEL 存储库中的包的安装：
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
@@ -504,7 +503,7 @@ ms.lasthandoff: 04/29/2017
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>从 VMware 准备基于 Red Hat 的虚拟机
 ### <a name="prerequisites"></a>先决条件
-本部分假设你已在 VMware 中安装了 RHEL 虚拟机。 有关如何在 VMware 中安装操作系统的详细信息，请参阅 [VMware 来宾操作系统安装指南](http://partnerweb.vmware.com/GOSIG/home.html)。
+本部分假设已在 VMware 中安装了 RHEL 虚拟机。 有关如何在 VMware 中安装操作系统的详细信息，请参阅 [VMware 来宾操作系统安装指南](http://partnerweb.vmware.com/GOSIG/home.html)。
 
 * 在安装 Linux 操作系统时，建议使用标准分区而不是 LVM，这通常是许多安装的默认设置。 这种做法可以避免 LVM 名称与克隆的虚拟机名称冲突，尤其是在需要将操作系统磁盘附加到另一台虚拟机进行故障排除时。 如果需要，可以在数据磁盘上使用 LVM 或 RAID。
 * 不要在操作系统磁盘上配置交换分区。 可将 Linux 代理配置为在临时资源磁盘上创建交换文件。 可以在下面的步骤中找到有关此操作的详细信息。
@@ -536,11 +535,11 @@ ms.lasthandoff: 04/29/2017
 
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-5. 通过运行以下命令，确保网络服务将在引导时启动：
+5. 通过运行以下命令，确保网络服务会在引导时启动：
 
         # sudo chkconfig network on
 
-6. 注册你的 Red Hat 订阅，以通过运行以下命令来启用来自 RHEL 存储库中的包的安装：
+6. 注册 Red Hat 订阅，以通过运行以下命令来启用来自 RHEL 存储库中的包的安装：
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
@@ -636,11 +635,11 @@ ms.lasthandoff: 04/29/2017
         IPV6INIT=no
         NM_CONTROLLED=no
 
-3. 通过运行以下命令，确保网络服务将在引导时启动：
+3. 通过运行以下命令，确保网络服务会在引导时启动：
 
         # sudo chkconfig network on
 
-4. 注册你的 Red Hat 订阅，以通过运行以下命令来启用来自 RHEL 存储库中的包的安装：
+4. 注册 Red Hat 订阅，以通过运行以下命令来启用来自 RHEL 存储库中的包的安装：
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
@@ -692,7 +691,7 @@ ms.lasthandoff: 04/29/2017
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-12. 如果你想要取消注册订阅，运行以下命令：
+12. 如果想要取消注册订阅，运行以下命令：
 
         # sudo subscription-manager unregister
 
@@ -853,17 +852,17 @@ ms.lasthandoff: 04/29/2017
 
 4. 打开虚拟机设置：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  将新的虚拟硬盘附加到虚拟机。 请务必选择“VHD 格式”和“固定大小”。
+    a.  将新的虚拟硬盘附加到虚拟机。 请务必选择“VHD 格式”和“固定大小”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。  将安装 ISO 附加到 DVD 光驱。
+    b.  将安装 ISO 附加到 DVD 光驱。
 
     c.  将 BIOS 设置为从 CD 启动。
 
 5. 启动虚拟机。 当安装指南出现时，请按 **Tab** 键来配置启动选项。
 
-6. 在启动选项的末尾输入 `inst.ks=<the location of the kickstart file>`，然后按 **Enter**。
+6. 在启动选项的末尾输入 `inst.ks=<the location of the kickstart file>`，并按 **Enter**。
 
-7. 等待安装完成。 完成后，虚拟机将自动关闭。 Linux VHD 现已准备好上载到 Azure。
+7. 等待安装完成。 完成后，虚拟机会自动关闭。 Linux VHD 现已准备好上传到 Azure。
 
 ## <a name="known-issues"></a>已知问题
 ### <a name="the-hyper-v-driver-could-not-be-included-in-the-initial-ram-disk-when-using-a-non-hyper-v-hypervisor"></a>使用非 Hyper-V 虚拟机监控程序时，初始 RAM 磁盘未包含 Hyper-V 驱动程序
@@ -872,7 +871,7 @@ ms.lasthandoff: 04/29/2017
 
 使用不同虚拟化系统（即 Virtualbox、Xen 等）来准备 Linux 映像时，可能需要重新生成 initrd 以确保至少 hv_vmbus 和 hv_storvsc 内核模块可在初始 RAM 磁盘上使用。 至少在基于上游 Red Hat 分发的系统上这是一个已知问题。
 
-若要解决此问题，请将 Hyper-V 模块添加到 initramfs 并进行重新生成：
+要解决此问题，请将 Hyper-V 模块添加到 initramfs 并进行重新生成：
 
 编辑 `/etc/dracut.conf` 并添加以下内容：
 
@@ -885,7 +884,7 @@ ms.lasthandoff: 04/29/2017
 有关详细信息，请参阅有关[重新生成 initramfs](https://access.redhat.com/solutions/1958) 的信息。
 
 ## <a name="next-steps"></a>后续步骤
-现在，你可以使用 Red Hat Enterprise Linux 虚拟硬盘在 Azure 中创建新的虚拟机。 如果这是第一次将 .vhd 文件上载到 Azure，请参阅[创建和上载包含 Linux 操作系统的虚拟硬盘](classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)中的步骤 2 和步骤 3。
+现在，可以使用 Red Hat Enterprise Linux 虚拟硬盘在 Azure 中创建新的虚拟机。 如果这是第一次将 .vhd 文件上传到 Azure，请参阅[创建和上传包含 Linux 操作系统的虚拟硬盘](classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)中的步骤 2 和步骤 3。
 
 有关已通过认证可运行 Red Hat Enterprise Linux 的虚拟机监控程序的更多详细信息，请参阅 [Red Hat 网站](https://access.redhat.com/certified-hypervisors)。
 
