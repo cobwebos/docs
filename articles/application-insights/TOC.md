@@ -96,7 +96,7 @@
 #### [用户、会话、事件](app-insights-usage-segmentation.md)
 #### [漏斗图](usage-funnels.md)
 #### [保留](app-insights-usage-retention.md)
-#### [Flows](app-insights-usage-flows.md)
+#### [用户流](app-insights-usage-flows.md)
 #### [工作簿](app-insights-usage-workbooks.md)
 
 ### 分析

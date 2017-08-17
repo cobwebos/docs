@@ -5,7 +5,7 @@
 否，只有基于路由的 VPN 网关支持 BGP。
 
 ### <a name="can-i-use-private-asns-autonomous-system-numbers"></a>能否使用专用 ASN（自治系统编号）？
-能，你可以将自己的公共 ASN 或专用 ASN 同时用于本地网络和 Azure 虚拟网络。
+能，可以将自己的公共 ASN 或专用 ASN 同时用于本地网络和 Azure 虚拟网络。
 
 ### <a name="are-there-asns-reserved-by-azure"></a>是否存在由 Azure 保留的 ASN？
 是，Azure 保留了以下 ASN 用于内部和外部的对等互连：
@@ -15,8 +15,13 @@
 
 连接到 Azure VPN 网关时，不能为本地 VPN 设备指定这些 ASN。
 
+### <a name="are-there-any-other-asns-that-i-cant-use"></a>是否有任何其他我不能使用的 ASN？
+是的。以下 ASN 是 [IANA 保留](http://www.iana.org/assignments/iana-as-numbers-special-registry/iana-as-numbers-special-registry.xhtml)的，不能在 Azure VPN 网关上配置：
+
+23456、64496-64511、65535-65551 和 429496729
+
 ### <a name="can-i-use-the-same-asn-for-both-on-premises-vpn-networks-and-azure-vnets"></a>能否将同一个 ASN 同时用于本地 VPN 网络和 Azure VNet？
-否，必须在本地网络和 Azure VNet 之间分配不同 ASN（如果你要使用 BGP 将它们连接在一起）。 无论是否为跨界连接启用了 BGP，都会为 Azure VPN 网关分配默认 ASN（即 65515）。 可以通过在创建 VPN 网关时分配不同 ASN，或者在创建网关后更改 ASN 来覆盖此默认值。 你需要将本地 ASN 分配给相应的 Azure 本地网关。
+否，必须在本地网络和 Azure VNet 之间分配不同 ASN（如果要使用 BGP 将它们连接在一起）。 无论是否为跨界连接启用了 BGP，都会为 Azure VPN 网关分配默认 ASN（即 65515）。 可以通过在创建 VPN 网关时分配不同 ASN，或者在创建网关后更改 ASN 来覆盖此默认值。 需要将本地 ASN 分配给相应的 Azure 本地网关。
 
 ### <a name="what-address-prefixes-will-azure-vpn-gateways-advertise-to-me"></a>Azure VPN 网关将播发给我哪些地址前缀？
 Azure VPN 网关会将以下路由播发到本地 BGP 设备：
@@ -40,13 +45,13 @@ Azure VPN 网关会将以下路由播发到本地 BGP 设备：
 能，可以将 BGP 同时用于跨界连接和 VNet 到 VNet 连接。
 
 ### <a name="can-i-mix-bgp-with-non-bgp-connections-for-my-azure-vpn-gateways"></a>能否将 BGP 连接与非 BGP 连接混合用于 Azure VPN 网关？
-能，你可以将 BGP 连接和非 BGP 连接混合用于同一 Azure VPN 网关。
+能，可以将 BGP 连接和非 BGP 连接混合用于同一 Azure VPN 网关。
 
 ### <a name="does-azure-vpn-gateway-support-bgp-transit-routing"></a>Azure VPN 网关是否支持 BGP 传输路由？
 是，支持 BGP 传输路由，但例外是 Azure VPN 网关 **不** 会将默认路由播发到其他 BGP 对等节点。 若要启用跨多个 Azure VPN 网关的传输路由，必须在所有中间 VNet 到 VNet 连接上启用 BGP。
 
 ### <a name="can-i-have-more-than-one-tunnel-between-azure-vpn-gateway-and-my-on-premises-network"></a>在 Azure VPN 网关和我的本地网络之间能否有多个隧道？
-能，你可以在 Azure VPN 网关和本地网络之间建立多个 S2S VPN 隧道。 请注意，所有这些隧道都将计入 Azure VPN 网关的隧道总数，必须在两个隧道上启用 BGP。
+能，可以在 Azure VPN 网关和本地网络之间建立多个 S2S VPN 隧道。 请注意，所有这些隧道都将计入 Azure VPN 网关的隧道总数，必须在两个隧道上启用 BGP。
 
 例如，如果在 Azure VPN 网关与一个本地网络之间有两个冗余隧道，它们将占用 Azure VPN 网关的总配额（标准为 10 个，高性能为 30 个）中的 2 个隧道。
 
@@ -63,8 +68,8 @@ Azure VPN 网关将从为虚拟网络定义的 GatewaySubnet 范围内分配单�
 本地 BGP 对等节点地址 **不能** 与 VPN 设备的公共 IP 地址相同。 在 VPN 设备上对 BGP 对等节点 IP 使用不同的 IP 地址。 它可以是分配给该设备上环回接口的地址。 在表示该位置的相应本地网关中指定此地址。
 
 ### <a name="what-should-i-specify-as-my-address-prefixes-for-the-local-network-gateway-when-i-use-bgp"></a>使用 BGP 时应将什么指定为本地网关的地址前缀？
-Azure 本地网关为本地网络指定初始地址前缀。 使用 BGP 时，必须分配 BGP 对等节点 IP 地址的主机前缀（/32 前缀）作为本地网络的地址空间。 如果你的 BGP 对等节点 IP 为 10.52.255.254，则应指定“10.52.255.254/32”作为表示此本地网络的本地网关的 localNetworkAddressSpace。 这是为了确保 Azure VPN 网关通过 S2S VPN 隧道建立 BGP 会话。
+Azure 本地网关为本地网络指定初始地址前缀。 使用 BGP 时，必须分配 BGP 对等节点 IP 地址的主机前缀（/32 前缀）作为本地网络的地址空间。 如果 BGP 对等节点 IP 为 10.52.255.254，则应指定“10.52.255.254/32”作为表示此本地网络的本地网关的 localNetworkAddressSpace。 这是为了确保 Azure VPN 网关通过 S2S VPN 隧道建立 BGP 会话。
 
 ### <a name="what-should-i-add-to-my-on-premises-vpn-device-for-the-bgp-peering-session"></a>应为 BGP 对等会话添加到本地 VPN 设备什么内容？
-你应在指向 IPsec S2S VPN 隧道的 VPN 设备上添加 Azure BGP 对等节点 IP 地址的主机路由。 例如，如果 Azure VPN 对等节点 IP 为“10.12.255.30”，则应在 VPN 设备上添加“10.12.255.30”的主机路由（包含匹配的 IPsec 隧道接口的下一跃点接口）。
+应在指向 IPsec S2S VPN 隧道的 VPN 设备上添加 Azure BGP 对等节点 IP 地址的主机路由。 例如，如果 Azure VPN 对等节点 IP 为“10.12.255.30”，则应在 VPN 设备上添加“10.12.255.30”的主机路由（包含匹配的 IPsec 隧道接口的下一跃点接口）。
 

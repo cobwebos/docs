@@ -13,14 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/22/2017
+ms.date: 7/18/2017
 ms.author: markgal;trinadhk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 6d390a75df51a22aa4e60094f3e4ba945a5725ad
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: d44bb8207edae22ab9d6b1c7b9a3e4da888aa06e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>在 Azure 中计划 VM 备份基础结构
@@ -40,6 +39,7 @@ Azure 备份服务创建快照后，数据将传输到保管库。 为最大限�
 > [!NOTE]
 > 1. 在备份过程中，Azure 备份不包括附加到虚拟机的临时磁盘。 有关详细信息，请参阅[临时存储](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)博客。
 > 2. 由于 Azure 备份创建存储级快照，并将该快照传输到保管库，因此在备份作业完成前，不要更改存储帐户密钥。
+> 3. 对于高级 VM，我们将快照复制到存储帐户。 这是为了确保 Azure 备份服务获得足够的 IOPS 将数据传输到保管库。 根据 VM 分配的大小，对此额外的存储副本收费。 
 >
 
 ### <a name="data-consistency"></a>数据一致性

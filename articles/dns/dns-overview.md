@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: dadf2ba4121960ae05257197e0b5f222b993ec73
-ms.lasthandoff: 04/25/2017
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 3705457e4c90f8869496f7f5177531bd128d1057
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -33,7 +34,7 @@ ms.lasthandoff: 04/25/2017
 
 * 无缝集成 - Azure DNS 服务可用于管理 Azure 服务的 DNS 记录，还可用于为外部资源提供 DNS。 Azure DNS 集成在 Azure 门户中，与其他 Azure 服务使用相同的凭据、计费和支持协定。
 
-* 安全性 - Azure DNS 服务基于 Azure Resource Manager。 因此，它可以利用资源管理器功能，例如基于角色的访问控制、审核日志和资源锁定。 可以通过 Azure 门户、Azure PowerShell cmdlet 和跨平台 Azure CLI 对域和记录进行管理。 需要自动 DNS 管理的应用程序可通过 REST API 和 SDK 与服务集成。
+* 安全性 - Azure DNS 服务基于 Azure Resource Manager。 因此，它可以利用 Resource Manager 功能，例如基于角色的访问控制、审核日志和资源锁定。 可以通过 Azure 门户、Azure PowerShell cmdlet 和跨平台 Azure CLI 对域和记录进行管理。 需要自动 DNS 管理的应用程序可通过 REST API 和 SDK 与服务集成。
 
 Azure DNS 当前不支持购买域名。 如果想要购买域，则需要使用第三方域名注册机构。 注册机构通常收取小额年费。 然后，域可以托管在 Azure DNS 中以管理 DNS 记录。 有关详细信息，请参阅[向 Azure DNS 委托域](dns-domain-delegation.md)。
 
@@ -50,5 +51,7 @@ DNS 基于 Azure 中托管的 DNS 区域数并按 DNS 查询数进行计费。 �
 若要了解 DNS 区域和记录，请访问 [DNS 区域和记录概述](dns-zones-records.md)。
 
 了解如何在 Azure DNS 中[创建 DNS 区域](./dns-getstarted-create-dnszone-portal.md)。
+
+了解 Azure 的部分其他关键[网络功能](../networking/networking-overview.md)。
 
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: compute
 ms.date: 04/26/2017
 ms.author: mbaldwin
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 8bea98274f94853cb52fe8b51fdaa4f224c649e4
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: e6338dc283b5a26f20a467df9582181381967931
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="use-windows-powershell-cmdlets-with-azure-remoteapp"></a>将 Windows PowerShell cmdlet 与 Azure RemoteApp 一起使用
@@ -45,9 +45,20 @@ ms.lasthandoff: 04/27/2017
 2. 启动 Microsoft Azure PowerShell。
 3. 运行 **Add-AzureAccount** 向 Azure 订阅进行身份验证。 出现提示时，输入用于登录 Azure 门户的用户名和密码。  
 4. 运行 **Get-azuresubscription** 以列出与你的用户帐户相关联的订阅。 
-5. 运行 **Select-AzureSubscription** 并指定要在 PowerShell 控制台中使用的订阅名称或 ID。
+5. 运行 Select-AzureSubscription -SubscriptionName &lt;订阅名称&gt; 或 Select-AzureSubscription -SubscriptionId &lt;订阅 ID&gt;来指定要使用的订阅。
 
 祝贺你，你的 Azure PowerShell 控制台已配置好并可以使用了。 请注意，每次启动 Azure PowerShell 控制台时都需要重复步骤 2 至步骤 5。  
+
+
+## <a name="list-all-collections"></a>列出所有集合
+- - -
+     Get-AzureRemoteAppCollection
+
+## <a name="delete-a-collection"></a>删除集合
+- - -
+    Remove-AzureRemoteAppCollection <enter collection name>
+
+示例：`Remove-AzureRemoteAppCollection ContosoProduction`。
 
 ## <a name="create-a-cloud-collection"></a>创建云集合
 - - -

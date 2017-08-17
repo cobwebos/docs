@@ -13,14 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/7/2017
+ms.date: 7/10/2017
 ms.author: markgal;trinadhk;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: c1185358cc10e450c0c67baab407c49de56ad767
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: eb6a7069da36a462f8dd27454bc1834d2e3844f0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>准备环境以备份 Resource Manager 部署的虚拟机
@@ -57,10 +56,10 @@ Azure 备份服务提供两种类型的保管库（备份保管库和恢复服�
 准备环境之前，请先了解限制。
 
 * 不支持备份超过 16 个数据磁盘的虚拟机。
-* 不支持备份带 4TB 磁盘的虚拟机。 
+* 不支持备份数据磁盘大小超过 1023GB 的虚拟机。
 * 不支持备份使用保留 IP 地址且未定义终结点的虚拟机。
 * 不支持备份仅使用 BEK 加密的 VM。 不支持备份使用 LUKS 加密加密的 Linux VM。
-* 不支持备份装有 Docker 扩展的 Linux 虚拟机。
+* 不建议使用“在横向扩展文件服务器上备份 VM”配置。
 * 备份数据不包括连接到 VM 的网络挂载驱动器。
 * 不支持在恢复过程中替换现有虚拟机。 如果在 VM 存在时尝试还原 VM，还原操作将会失败。
 * 不支持跨区域备份和还原。

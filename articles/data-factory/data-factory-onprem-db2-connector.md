@@ -12,25 +12,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 07/19/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: 6d54203797ad970d590b853b171b383708dbcb5d
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: ee4ea351866b23b10cb8b6ebd7f5a674e5aea158
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
+ms.lasthandoff: 07/20/2017
 
 ---
-<a id="move-data-from-db2-using-azure-data-factory" class="xliff"></a>
-
-# 使用 Azure 数据工厂从 DB2 移动数据
+# <a name="move-data-from-db2-using-azure-data-factory"></a>使用 Azure 数据工厂从 DB2 移动数据
 本文概括介绍了如何使用 Azure 数据工厂中的复制活动将数据从本地 DB2 数据库复制到[支持的源和接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)部分的“接收器”列下所列出的任何数据存储。 本文基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何结合使用复制活动和受支持的数据存储进行数据移动。
 
 数据工厂当前仅支持将数据从 DB2 数据库移到[支持的接收器数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)，而不支持将数据从其他数据存储移到 DB2 数据库。
 
-<a id="prerequisites" class="xliff"></a>
-
-## 先决条件
+## <a name="prerequisites"></a>先决条件
 数据工厂支持通过数据管理网关连接到本地 DB2 数据库。 若要了解数据管理网关，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文，有关设置网关以便数据管道移动数据的分步说明，请参阅[将数据从本地移动到云](data-factory-move-data-between-onprem-and-cloud.md)。
 
 即使 DB2 托管在 Azure IaaS VM 中，仍需要网关。 可在与数据存储相同的 IaaS VM 上或不同的 VM 上安装网关，只要网关能连接数据库即可。
@@ -40,9 +36,7 @@ ms.lasthandoff: 04/12/2017
 > [!NOTE]
 > 请参阅[网关问题故障排除](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)，了解连接/网关相关问题的故障排除提示。
 
-<a id="supported-versions" class="xliff"></a>
-
-## 支持的版本
+## <a name="supported-versions"></a>支持的版本
 此 DB2 连接器支持以下 IBM DB2 平台和版本，以及分布式关系数据库结构 (DRDA) SQL 访问管理器 (SQLAM) 版本 9、版本 10 和版本 11：
 
 * IBM DB2 for z/OS 11.1
@@ -54,11 +48,11 @@ ms.lasthandoff: 04/12/2017
 * IBM DB2 for LUW 10.1
 
 > [!TIP]
-> 如果遇到错误，指出“找不到与 SQL 语句执行请求对应的包。 SQLSTATE=51002 SQLCODE=-805”，具有高特权帐户（超级用户或管理员）的用户会运行一次复制活动，然后在复制过程中会自动创建所需的包。 之后，可以切换回正常用户，继续运行后续复制。
+> 如果看到错误消息“找不到与 SQL 语句执行请求对应的包。 SQLSTATE=51002 SQLCODE=-805”，这是因为没有为此类 OS 上的普通用户创建所需的包。 请按照以下说明操作，具体视 DB2 服务器类型而异：
+> - 用于 i (AS400) 的 DB2：让 Power User 在使用复制活动前，先为登录用户创建集合。 命令：`create collection <username>`
+> - 用于 z/OS 或 LUW 的 DB2：使用高权限帐户（即拥有包权限和 BIND、BINDADD、GRANT EXECUTE TO PUBLIC 权限的 Power User 或管理员）运行复制活动一次，然后所需的包便会在复制期间自动创建。 之后，可以切换回正常用户，继续运行后续复制。
 
-<a id="getting-started" class="xliff"></a>
-
-## 入门
+## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 DB2 数据存储移动数据。 
 
 - 创建管道的最简单方法是使用**复制向导**。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
@@ -74,9 +68,7 @@ ms.lasthandoff: 04/12/2017
 
 对于特定于 DB2 数据存储的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息：
 
-<a id="linked-service-properties" class="xliff"></a>
-
-## 链接服务属性
+## <a name="linked-service-properties"></a>链接服务属性
 下表提供 DB2 链接服务专属 JSON 元素的描述。
 
 | 属性 | 说明 | 必选 |
@@ -91,9 +83,7 @@ ms.lasthandoff: 04/12/2017
 | gatewayName |网关的名称 - 数据工厂服务应使用此网关连接到本地 DB2 数据库。 |是 |
 
 
-<a id="dataset-properties" class="xliff"></a>
-
-## 数据集属性
+## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅 [Creating datasets](data-factory-create-datasets.md)（创建数据集）一文。 结构、可用性和数据集 JSON 的策略等部分与所有数据集类型（Azure SQL、Azure blob、Azure 表等）类似。
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 RelationalTable 类型数据集（包括 DB2 数据集）的 typeProperties 部分具有以下属性。
@@ -102,9 +92,7 @@ ms.lasthandoff: 04/12/2017
 | --- | --- | --- |
 | tableName |链接服务引用的 DB2 数据库实例中表的名称。 TableName 区分大小写。 |否（如果指定了 **RelationalSource** 的**query**） |
 
-<a id="copy-activity-properties" class="xliff"></a>
-
-## 复制活动属性
+## <a name="copy-activity-properties"></a>复制活动属性
 有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
 
 而可用于此活动的 typeProperties 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
@@ -125,9 +113,7 @@ ms.lasthandoff: 04/12/2017
 ```
 
 
-<a id="json-example-copy-data-from-db2-to-azure-blob" class="xliff"></a>
-
-## JSON 示例：将数据从 DB2 复制到 Azure Blob
+## <a name="json-example-copy-data-from-db2-to-azure-blob"></a>JSON 示例：将数据从 DB2 复制到 Azure Blob
 此示例提供示例 JSON 定义，可使用这些定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它演示了如何从 DB2 数据库和 Azure Blob 存储复制数据。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
 
 此示例具有以下数据工厂实体：
@@ -314,9 +300,7 @@ ms.lasthandoff: 04/12/2017
 ```
 
 
-<a id="type-mapping-for-db2" class="xliff"></a>
-
-## DB2 的类型映射
+## <a name="type-mapping-for-db2"></a>DB2 的类型映射
 如[数据移动活动](data-factory-data-movement-activities.md)一文中所述，复制活动使用以下 2 步方法执行从源类型到接收器类型的自动类型转换：
 
 1. 从本机源类型转换为 .NET 类型
@@ -367,18 +351,12 @@ ms.lasthandoff: 04/12/2017
 | Xml |Byte[] |
 | Char |String |
 
-<a id="map-source-to-sink-columns" class="xliff"></a>
-
-## 将源映射到接收器列
+## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
 若要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
-<a id="repeatable-read-from-relational-sources" class="xliff"></a>
-
-## 从关系源进行可重复读取
+## <a name="repeatable-read-from-relational-sources"></a>从关系源进行可重复读取
 从关系数据源复制数据时，请注意可重复性，以免发生意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试策略，以便在出现故障时重新运行切片。 无论以哪种方式重新运行切片，都需要确保读取相同的数据，而与运行切片的次数无关。 请参阅[从关系源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
 
-<a id="performance-and-tuning" class="xliff"></a>
-
-## 性能和优化
+## <a name="performance-and-tuning"></a>性能和优化
 请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
 

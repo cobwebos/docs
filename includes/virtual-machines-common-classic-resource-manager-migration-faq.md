@@ -2,7 +2,7 @@
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>此迁移计划是否影响 Azure 虚拟机上运行的任何现有服务或应用程序？ 
 
-不可以。 VM（经典）是公开上市的完全受支持的服务。 你可以继续使用这些资源拓展你在 Microsoft Azure 上的足迹。
+不可以。 VM（经典）是公开上市的完全受支持的服务。 可以继续使用这些资源拓展你在 Microsoft Azure 上的足迹。
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>如果我近期不打算迁移，我的 VM 会发生什么情况？ 
 
@@ -26,15 +26,20 @@
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>如果我必须使用 Resource Manager 下的 IaaS，是否必须购买其他 ExpressRoute 线路？ 
 
-不会。 我们近期实现了[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](../articles/expressroute/expressroute-move.md)。 如果你已有 ExpressRoute 线路，则不需要购买新的线路。
+不会。 我们近期实现了[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](../articles/expressroute/expressroute-move.md)。 如果已有 ExpressRoute 线路，则不需要购买新的线路。
 
 ## <a name="what-if-i-had-configured-role-based-access-control-policies-for-my-classic-iaas-resources"></a>如果我已经为经典 IaaS 资源配置基于角色的访问控制策略，该怎么办？ 
 
 在迁移期间，资源从经典资源转换为 Resource Manager 资源。 因此，建议计划需要在迁移之后进行的 RBAC 策略更新。
 
-## <a name="what-if-im-using-azure-site-recovery-or-azure-backup-today"></a>如果我目前正在使用 Azure Site Recovery 或 Azure 备份，该怎么办？ 
+## <a name="i-backed-up-my-classic-vms-in-a-backup-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>我已在备份保管库中备份了经典 VM。 是否可以将 VM 从经典模式迁移到 Resource Manager 模式并在恢复服务保管库中保护它们？ 
 
-若要迁移允许进行备份的虚拟机，请参阅[已经在备份保管库中备份了经典 VM。现在，我想将我的 VM 从经典模式迁移到资源管理器模式。如何在恢复服务保管库中备份它们？](../articles/backup/backup-azure-backup-ibiza-faq.md)我已在备份保管库中备份经典 VM。 现在，我想将我的 VM 从经典模式迁移到资源管理器模式。  如何在恢复服务保管库中备份它们？
+将 VM 从经典模式迁移到 Resource Manager 模式时，备份保管库中的经典 VM 恢复点不会自动迁移到恢复服务保管库。 可以按照以下步骤传输 VM 备份：
+
+1. 在备份保管库中，转到“受保护的项”选项卡并选择 VM。 单击[停止保护](../articles/backup/backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines)。 将“ *删除关联的备份数据* ”选项保留为 **取消选中**状态。
+2. 从 VM 中删除备份/快照扩展。
+3. 将虚拟机从经典模式迁移到 Resource Manager 模式。 确保与虚拟机对应的存储和网络信息也已迁移到 Resource Manager 模式。
+4. 创建一个恢复服务保管库，并使用保管库仪表板顶部的“备份”操作在迁移的虚拟机上配置备份。 有关将 VM 备份到恢复服务保管库的详细信息，请参阅文章[使用恢复服务保管库保护 Azure VM](../articles/backup/backup-azure-vms-first-look-arm.md)。
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>我是否可以验证订阅或资源，以查看其是否能够迁移？ 
 
@@ -42,11 +47,11 @@
 
 ## <a name="what-happens-if-i-run-into-a-quota-error-while-preparing-the-iaas-resources-for-migration"></a>如果我在准备要迁移的 IaaS 资源时遇到配额错误，会发生什么情况？ 
 
-建议你中止迁移，然后记录支持请求，以在要迁移 VM 的区域中增加配额。 配额请求经过批准后，可以重新开始执行迁移步骤。
+建议中止迁移，然后记录支持请求，以在要迁移 VM 的区域中增加配额。 配额请求经过批准后，可以重新开始执行迁移步骤。
 
 ## <a name="how-do-i-report-an-issue"></a>如何报告问题？ 
 
-请在 [VM 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesforWindows)上使用关键字 ClassicIaaSMigration 发布有关迁移的问题和疑惑。 建议你将所有问题都发布在此论坛上。 如果你有支持协定，也欢迎你记录支持票证。
+请在 [VM 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesforWindows)上使用关键字 ClassicIaaSMigration 发布有关迁移的问题和疑惑。 建议将所有问题都发布在此论坛上。 如果有支持协定，也欢迎你记录支持票证。
 
 ## <a name="what-if-i-dont-like-the-names-of-the-resources-that-the-platform-chose-during-migration"></a>如果我不喜欢平台在迁移期间选择的资源名称，该怎么做？ 
 

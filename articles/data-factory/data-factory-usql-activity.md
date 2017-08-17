@@ -12,18 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 08/10/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 88628fb2c07ad72c646f7e3ed076e7a4b1519200
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: 13268f14388e511f2ad106939b0913388b89e16c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
-<a id="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics" class="xliff"></a>
-# 通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来转换数据 
+# <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来转换数据 
 > [!div class="op_single_selector" title1="Transformation Activities"]
 > * [Hive 活动](data-factory-hive-activity.md) 
 > * [Pig 活动](data-factory-pig-activity.md)
@@ -43,42 +41,86 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 > 
 > 查看[生成首个管道教程](data-factory-build-your-first-pipeline.md)，了解创建数据工厂、链接服务、数据集和管道的详细步骤。 通过数据工厂编辑器或 Visual Studio 或 Azure PowerShell 使用 JSON 代码段创建数据工厂实体。
 
+## <a name="supported-authentication-types"></a>支持的身份验证类型
+U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
+* 服务主体身份验证
+* 用户凭据 (OAuth) 身份验证 
 
-<a id="azure-data-lake-analytics-linked-service" class="xliff"></a>
-## Azure Data Lake Analytics 链接服务
+建议使用服务主体身份验证，特别是对于已计划的 U-SQL 执行。 使用用户凭据身份验证时可能会出现令牌过期行为。 有关配置详细信息，请参阅[链接服务属性](#azure-data-lake-analytics-linked-service)部分。
+
+## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics 链接服务
 创建 **Azure Data Lake Analytics** 链接服务将 Azure Data Lake Analytics 计算服务链接到 Azure 数据工厂。 管道中的 Data Lake Analytics U-SQL 活动是指此链接服务。 
 
-以下示例为 Azure Data Lake Analytics 链接服务提供 JSON 定义。 
+下表介绍了 JSON 定义中使用的一般属性。 可以进一步选择服务主体身份验证，还是用户凭据身份验证。
 
-```JSON
+| 属性 | 说明 | 必选 |
+| --- | --- | --- |
+| **类型** |类型属性应设置为 **AzureDataLakeAnalytics**。 |是 |
+| **accountName** |Azure Data Lake Analytics 帐户名。 |是 |
+| **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI。 |否 |
+| **subscriptionId** |Azure 订阅 ID |否（如果未指定，则使用数据工厂的订阅）。 |
+| **resourceGroupName** |Azure 资源组名称 |否（如果未指定，则使用数据工厂的资源组）。 |
+
+### <a name="service-principal-authentication-recommended"></a>服务主体身份验证（推荐）
+若要使用服务主体身份验证，请在 Azure Active Directory (Azure AD) 中注册一个应用程序实体并授予其访问 Data Lake Store 的权限。 有关详细步骤，请参阅[服务到服务身份验证](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。 记下下面的值，这些值用于定义链接服务：
+* 应用程序 ID
+* 应用程序密钥 
+* 租户 ID
+
+通过指定以下属性使用服务主体身份验证：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| **servicePrincipalId** | 指定应用程序的客户端 ID。 | 是 |
+| **servicePrincipalKey** | 指定应用程序的密钥。 | 是 |
+| **tenant** | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 是 |
+
+**示例：服务主体身份验证**
+```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
     "properties": {
         "type": "AzureDataLakeAnalytics",
         "typeProperties": {
             "accountName": "adftestaccount",
-            "dataLakeAnalyticsUri": "datalakeanalyticscompute.net",
-            "authorization": "<authcode>",
-            "sessionId": "<session ID>", 
-            "subscriptionId": "<subscription id>",
-            "resourceGroupName": "<resource group name>"
+            "dataLakeAnalyticsUri": "azuredatalakeanalytics.net",
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": "<service principal key>",
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
+            "subscriptionId": "<optional, subscription id of ADLA>",
+            "resourceGroupName": "<optional, resource group name of ADLA>"
         }
     }
 }
 ```
 
-下表为 JSON 定义中使用的属性提供了描述。 
+### <a name="user-credential-authentication"></a>用户凭据身份验证
+也可以指定下列属性，对 Data Lake Analytics 使用用户凭据身份验证：
 
 | 属性 | 说明 | 必选 |
-| --- | --- | --- |
-| 类型 |类型属性应设置为 **AzureDataLakeAnalytics**。 |是 |
-| accountName |Azure Data Lake Analytics 帐户名。 |是 |
-| dataLakeAnalyticsUri |Azure Data Lake Analytics URI。 |否 |
-| authorization |在数据工厂编辑器中单击“授权”按钮并完成 OAuth 登录后，将自动检索授权代码。 |是 |
-| subscriptionId |Azure 订阅 ID |否（如果未指定，则使用数据工厂的订阅）。 |
-| resourceGroupName |Azure 资源组名称 |否（如果未指定，则使用数据工厂的资源组）。 |
-| sessionId |OAuth 授权会话中的会话 ID。 每个会话 ID 都是唯一的，并且可能仅可使用一次。 会话 ID 在数据工厂编辑器中自动生成。 |是 |
+|:--- |:--- |:--- |
+| **authorization** | 单击数据工厂编辑器中的“授权”按钮，并输入凭据以将自动生成的授权 URL 分配给此属性。 | 是 |
+| **sessionId** | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时会自动生成此设置。 | 是 |
 
+**示例：用户凭据身份验证**
+```json
+{
+    "name": "AzureDataLakeAnalyticsLinkedService",
+    "properties": {
+        "type": "AzureDataLakeAnalytics",
+        "typeProperties": {
+            "accountName": "adftestaccount",
+            "dataLakeAnalyticsUri": "azuredatalakeanalytics.net",
+            "authorization": "<authcode>",
+            "sessionId": "<session ID>", 
+            "subscriptionId": "<optional, subscription id of ADLA>",
+            "resourceGroupName": "<optional, resource group name of ADLA>"
+        }
+    }
+}
+```
+
+#### <a name="token-expiration"></a>令牌过期
 使用“授权”按钮生成的授权代码在一段时间后便会过期。 请参阅下表，了解不同类型用户帐户的过期时间。 身份验证**令牌过期**时可能会看到以下错误消息：凭据操作错误: invalid_grant-AADSTS70002: 验证凭据时出错。 AADSTS70008：提供的访问权限已过期或已被吊销。 跟踪 ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 相关 ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 时间戳: 2015-12-15 21:09:31Z
 
 | 用户类型 | 过期时间 |
@@ -86,10 +128,7 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 | 不由 Azure Active Directory 管理的用户帐户（@hotmail.com、@live.com，等等） |12 小时 |
 | 由 Azure Active Directory (AAD) 管理的用户帐户 |最后一次运行切片后的 14 天。 <br/><br/>如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
 
-若要避免/解决此错误，**令牌过期**时，使用“授权”按钮重新授权，并重新部署链接服务。 还可以使用以下部分中的代码以编程方式生成 **sessionId** 和 **authorization** 属性的值：
-
-<a id="to-programmatically-generate-sessionid-and-authorization-values" class="xliff"></a>
-### 以编程方式生成 sessionId 和 authorization 值
+若要避免/解决此错误，**令牌过期**时，使用“授权”按钮重新授权，并重新部署链接服务。 还可以使用下列代码，以编程方式生成 sessionId 和 authorization 属性值：
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
@@ -118,11 +157,10 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 请参阅 [AzureDataLakeStoreLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)、[AzureDataLakeAnalyticsLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)和 [AuthorizationSessionGetResponse 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)主题，了解关于代码中使用的数据工厂类的详细信息。 针对 WindowsFormsWebAuthenticationDialog 类向 Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll 添加引用。 
 
-<a id="data-lake-analytics-u-sql-activity" class="xliff"></a>
-## Data Lake Analytics U-SQL 活动
+## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL 活动
 以下 JSON 代码段定义了具有 Data Lake Analytics U-SQL 活动的管道。 活动定义具有对之前创建的 Azure Data Lake Analytics 链接服务的引用。   
 
-```JSON
+```json
 {
     "name": "ComputeEventsByRegionPipeline",
     "properties": {
@@ -189,13 +227,11 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 有关脚本定义，请参阅 [SearchLogProcessing.txt 脚本定义](#sample-u-sql-script)。 
 
-<a id="sample-input-and-output-datasets" class="xliff"></a>
-## 输入和输出数据集示例
-<a id="input-dataset" class="xliff"></a>
-### 输入数据集
+## <a name="sample-input-and-output-datasets"></a>输入和输出数据集示例
+### <a name="input-dataset"></a>输入数据集
 在此示例中，输入数据驻留在 Azure Data Lake Store 中（datalake/input 文件夹中的 SearchLog.tsv 文件）。 
 
-```JSON
+```json
 {
     "name": "DataLakeTable",
     "properties": {
@@ -218,11 +254,10 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }    
 ```
 
-<a id="output-dataset" class="xliff"></a>
-### 输出数据集
+### <a name="output-dataset"></a>输出数据集
 在此示例中，U-SQL 脚本生成的输出数据存储在 Azure Data Lake Store 中（datalake/output 文件夹）。 
 
-```JSON
+```json
 {
     "name": "EventsByRegionTable",
     "properties": {
@@ -239,19 +274,19 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-<a id="sample-data-lake-store-linked-service" class="xliff"></a>
-### Data Lake Store 链接服务示例
+### <a name="sample-data-lake-store-linked-service"></a>Data Lake Store 链接服务示例
 下面是输入/输出数据集使用的示例 Azure Data Lake Store 链接服务的定义。 
 
-```JSON
+```json
 {
     "name": "AzureDataLakeStoreLinkedService",
     "properties": {
         "type": "AzureDataLakeStore",
         "typeProperties": {
             "dataLakeUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
-            "sessionId": "<session ID>",
-            "authorization": "<authorization URL>"
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": "<service principal key>",
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
         }
     }
 }
@@ -259,8 +294,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 请参阅[将数据移入和移出 Azure Data Lake Store](data-factory-azure-datalake-connector.md) 一文了解 JSON 属性的说明。 
 
-<a id="sample-u-sql-script" class="xliff"></a>
-## 示例 U-SQL 脚本
+## <a name="sample-u-sql-script"></a>示例 U-SQL 脚本
 
 ```
 @searchlog =
@@ -293,11 +327,10 @@ ADF 使用“parameters”部分动态传递 U-SQL 脚本中 **@in** 和 **@out*
 
 也可在 Azure Data Lake Analytics 服务上运行的作业的管道定义中指定其他属性，如 degreeOfParallelism 和 priority。
 
-<a id="dynamic-parameters" class="xliff"></a>
-## 动态参数
+## <a name="dynamic-parameters"></a>动态参数
 在示例管道定义中，in 和 out 参数都分配有硬编码值。 
 
-```JSON
+```json
 "parameters": {
     "in": "/datalake/input/SearchLog.tsv",
     "out": "/datalake/output/Result.tsv"
@@ -306,7 +339,7 @@ ADF 使用“parameters”部分动态传递 U-SQL 脚本中 **@in** 和 **@out*
 
 可改为使用动态参数。 例如： 
 
-```JSON
+```json
 "parameters": {
     "in": "$$Text.Format('/datalake/input/{0:yyyy-MM-dd HH:mm:ss}.tsv', SliceStart)",
     "out": "$$Text.Format('/datalake/output/{0:yyyy-MM-dd HH:mm:ss}.tsv', SliceStart)"

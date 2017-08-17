@@ -16,16 +16,15 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 1063807ac83d2f63229f397da7ecc01f4072efd5
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: c163c715eb1438a0d6b0ab53cbb43816ca8dbbb4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 07/20/2017
 
 ---
 
-# 使用 Azure CLI 创建和管理 Linux VM
-<a id="create-and-manage-linux-vms-with-the-azure-cli" class="xliff"></a>
+# <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>使用 Azure CLI 创建和管理 Linux VM
 
 Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azure 虚拟机的基本部署项目，例如选择 VM 大小、选择 VM 映像和部署 VM。 你将学习如何：
 
@@ -41,8 +40,7 @@ Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azu
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
-## 创建资源组
-<a id="create-resource-group" class="xliff"></a>
+## <a name="create-resource-group"></a>创建资源组
 
 使用 [az group create](https://docs.microsoft.com/cli/azure/group#create) 命令创建资源组。 
 
@@ -54,8 +52,7 @@ az group create --name myResourceGroupVM --location eastus
 
 创建或修改 VM 时指定资源组，本教程会对此进行演示。
 
-## 创建虚拟机
-<a id="create-virtual-machine" class="xliff"></a>
+## <a name="create-virtual-machine"></a>创建虚拟机
 
 使用 [az vm create](https://docs.microsoft.com/cli/azure/vm#create) 命令创建虚拟机。 
 
@@ -80,8 +77,7 @@ az vm create --resource-group myResourceGroupVM --name myVM --image UbuntuLTS --
 }
 ```
 
-## 连接到 VM
-<a id="connect-to-vm" class="xliff"></a>
+## <a name="connect-to-vm"></a>连接到 VM
 
 现在可以使用 SSH 连接到 VM。 将示例 IP 地址替换为上一步骤中记下的 `publicIpAddress`。
 
@@ -95,8 +91,7 @@ ssh 52.174.34.95
 exit
 ```
 
-## 了解 VM 映像
-<a id="understand-vm-images" class="xliff"></a>
+## <a name="understand-vm-images"></a>了解 VM 映像
 
 Azure 应用商店包括许多可用于创建 VM 的映像。 在之前的步骤中，使用 Ubuntu 映像创建了虚拟机。 在此步骤中，Azure CLI 用于在应用商店中搜索 CentOS 映像，此映像稍后将用于部署第二个虚拟机。  
 
@@ -149,28 +144,25 @@ CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20170207     
 az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:CentOS:6.5:latest --generate-ssh-keys
 ```
 
-## 了解 VM 大小
-<a id="understand-vm-sizes" class="xliff"></a>
+## <a name="understand-vm-sizes"></a>了解 VM 大小
 
 虚拟机大小决定虚拟机可用计算资源（如 CPU、GPU 和内存）的数量。 需要根据预期的工作负载适当调整虚拟机的大小。 如果工作负荷增加，则可调整现有虚拟机的大小。
 
-### VM 大小
-<a id="vm-sizes" class="xliff"></a>
+### <a name="vm-sizes"></a>VM 大小
 
 下表将大小分类成了多个用例。  
 
 | 类型                     | 大小           |    说明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [常规用途](sizes-general.md)         |DSv2、Dv2、DS、D、Av2、A0-7| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
+| [常规用途](sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
 | [计算优化](sizes-compute.md)   | Fs, F             | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
-| [内存优化](../virtual-machines-windows-sizes-memory.md)    | GS, G, DSv2, DS, Dv2, D   | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存中分析。                 |
+| [内存优化](../virtual-machines-windows-sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、DS、Dv2、D   | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存中分析。                 |
 | [存储优化](../virtual-machines-windows-sizes-storage.md)      | LS                | 高磁盘吞吐量和 IO。 适用于大数据、SQL 和 NoSQL 数据库。                                                         |
 | [GPU](sizes-gpu.md)          | NV, NC            | 专门针对大量图形绘制和视频编辑的 VM。       |
 | [高性能](sizes-hpc.md) | H, A8-11          | 功能极其强大的 CPU VM 具有可选的高吞吐量网络接口 (RDMA)。 
 
 
-### 查找可用的 VM 大小
-<a id="find-available-vm-sizes" class="xliff"></a>
+### <a name="find-available-vm-sizes"></a>查找可用的 VM 大小
 
 若要查看在特定区域可用的 VM 大小的列表，请使用 [az vm list-sizes](/cli/azure/vm#list-sizes) 命令。 
 
@@ -201,8 +193,7 @@ az vm list-sizes --location eastus --output table
                 16         57344  Standard_A7                           8           1047552                  619520
 ```
 
-### 创建具有特定大小的 VM
-<a id="create-vm-with-specific-size" class="xliff"></a>
+### <a name="create-vm-with-specific-size"></a>创建具有特定大小的 VM
 
 在前面的 VM 创建示例中未提供大小，因此会使用默认大小。 可以在创建时使用 [az vm create](/cli/azure/vm#create) 和 `--size` 参数选择 VM 大小。 
 
@@ -215,8 +206,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-### 调整 VM 的大小
-<a id="resize-a-vm" class="xliff"></a>
+### <a name="resize-a-vm"></a>调整 VM 的大小
 
 部署 VM 后，可调整其大小以增加或减少资源分配。
 
@@ -249,13 +239,11 @@ az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_GS1
 az vm start --resource-group myResourceGroupVM --name myVM
 ```
 
-## VM 电源状态
-<a id="vm-power-states" class="xliff"></a>
+## <a name="vm-power-states"></a>VM 电源状态
 
 Azure VM 可能会处于多种电源状态之一。 从虚拟机监控程序的角度来看，此状态表示 VM 的当前状态。 
 
-### 电源状态
-<a id="power-states" class="xliff"></a>
+### <a name="power-states"></a>电源状态
 
 | 电源状态 | 说明
 |----|----|
@@ -267,8 +255,7 @@ Azure VM 可能会处于多种电源状态之一。 从虚拟机监控程序的�
 | 已解除分配 | 指示虚拟机已从监控程序中删除，但仍可在控制面板中使用。 处于“已解除分配”状态的虚拟机不会产生计算费用。 |
 | - | 指示虚拟机的电源状态未知。 |
 
-### 查找电源状态
-<a id="find-power-state" class="xliff"></a>
+### <a name="find-power-state"></a>查找电源状态
 
 若要检索特定 VM 的状态，请使用 [az vm get instance-view](/cli/azure/vm#get-instance-view) 命令。 请确保为虚拟机和资源组指定有效的名称。 
 
@@ -287,13 +274,11 @@ ode                DisplayStatus    Level
 PowerState/running  VM running       Info
 ```
 
-## 管理任务
-<a id="management-tasks" class="xliff"></a>
+## <a name="management-tasks"></a>管理任务
 
 在虚拟机生命周期中，你可能需要运行管理任务，例如启动、停止或删除虚拟机。 此外，可能还需要创建脚本来自动执行重复或复杂的任务。 使用 Azure CLI，可从命令行或脚本运行许多常见的管理任务。 
 
-### 获取 IP 地址
-<a id="get-ip-address" class="xliff"></a>
+### <a name="get-ip-address"></a>获取 IP 地址
 
 此命令返回虚拟机的私有 IP 地址和公共 IP 地址。  
 
@@ -301,22 +286,19 @@ PowerState/running  VM running       Info
 az vm list-ip-addresses --resource-group myResourceGroupVM --name myVM --output table
 ```
 
-### 停止虚拟机
-<a id="stop-virtual-machine" class="xliff"></a>
+### <a name="stop-virtual-machine"></a>停止虚拟机
 
 ```azurecli-interactive 
 az vm stop --resource-group myResourceGroupVM --name myVM
 ```
 
-### 启动虚拟机
-<a id="start-virtual-machine" class="xliff"></a>
+### <a name="start-virtual-machine"></a>启动虚拟机
 
 ```azurecli-interactive 
 az vm start --resource-group myResourceGroupVM --name myVM
 ```
 
-### 删除资源组
-<a id="delete-resource-group" class="xliff"></a>
+### <a name="delete-resource-group"></a>删除资源组
 
 删除资源组会删除其包含的所有资源。
 
@@ -324,8 +306,7 @@ az vm start --resource-group myResourceGroupVM --name myVM
 az group delete --name myResourceGroupVM --no-wait --yes
 ```
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 在本教程中，已学习 VM 创建和管理的基本知识，例如如何：
 

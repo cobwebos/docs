@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 07/05/2017
+ms.date: 07/13/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: f78735afd8aa8f560455c3fd47e6833c37644583
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: c1de192c405f2e93483527569c65d368cac40a9b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>如何配置 Azure Redis 缓存
@@ -97,8 +96,6 @@ ms.lasthandoff: 07/06/2017
 ## <a name="settings"></a>设置
 “设置”部分用于访问和配置缓存的下列设置。
 
-![设置](./media/cache-configure/redis-cache-general-settings.png)
-
 * [访问密钥](#access-keys)
 * [高级设置](#advanced-settings)
 * [Redis 缓存顾问](#redis-cache-advisor)
@@ -106,6 +103,7 @@ ms.lasthandoff: 07/06/2017
 * [Redis 群集大小](#cluster-size)
 * [Redis 数据持久性](#redis-data-persistence)
 * [计划更新](#schedule-updates)
+* [异地复制](#geo-replication)
 * [虚拟网络](#virtual-network)
 * [防火墙](#firewall)
 * [属性](#properties)
@@ -123,7 +121,7 @@ ms.lasthandoff: 07/06/2017
 在“高级设置”边栏选项卡上配置以下设置。
 
 * [访问端口](#access-ports)
-* [Maxmemory-policy 和 maxmemory-reserved](#maxmemory-policy-and-maxmemory-reserved)
+* [内存策略](#memory-policies)
 * [密钥空间通知（高级设置）](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>访问端口
@@ -131,12 +129,13 @@ ms.lasthandoff: 07/06/2017
 
 ![Redis 缓存访问端口](./media/cache-configure/redis-cache-access-ports.png)
 
-#### <a name="maxmemory-policy-and-maxmemory-reserved"></a>Maxmemory-policy 和 maxmemory-reserved
-“高级设置”边栏选项卡中的“Maxmemory-policy”和“maxmemory-reserved”设置用于为缓存配置内存策略。 “maxmemory-policy”设置将为缓存配置逐出策略，“maxmemory-reserved”将为非缓存进程配置保留的内存。
+<a name="maxmemory-policy-and-maxmemory-reserved"></a>
+#### <a name="memory-policies"></a>内存策略
+“高级设置”边栏选项卡上的“Maxmemory policy”、“maxmemory-reserved”和“maxfragmentationmemory-reserved”设置用于为缓存配置内存策略。
 
 ![Redis 缓存 Maxmemory 策略](./media/cache-configure/redis-cache-maxmemory-policy.png)
 
-“Maxmemory 策略”允许从以下逐出策略中进行选择：
+“Maxmemory policy”用于为缓存配置逐出策略，并允许你从以下逐出策略中进行选择：
 
 * `volatile-lru` - 这是默认值。
 * `allkeys-lru`
@@ -149,8 +148,12 @@ ms.lasthandoff: 07/06/2017
 
 “maxmemory-reserved”设置可为故障转移过程中的复制等非缓存操作配置保留的内存量 (MB)。 设置此值能够在负载变化时具有更一致的 Redis 服务器体验。 对于写入密集型工作负荷，应将此值设置为较高。 为此类操作保留内存后，将无法存储缓存数据。
 
+“maxfragmentationmemory-reserve”设置配置保留以容纳内存碎片的内存量（以 MB 为单位）。 设置此值后，即使在缓存已满或接近满的状态并且碎片比率很高时，你也能拥有更加稳定的 Redis 服务器体验。 为此类操作保留内存后，将无法存储缓存数据。
+
+在选择新的内存保留值（maxmemory-reserved 或 maxfragmentationmemory-reserved）时，请注意此更改可能会如何影响已在运行的包含大量数据的缓存。 例如，如果你的 53 GB 缓存中已有 49 GB 数据，那么，将保留值更改为 8 GB 后，会将系统的最大可用内存降至 45 GB。 如果你的当前 `used_memory` 或 `used_memory_rss` 值高于 45 GB 的新限制，则系统需要逐出数据，直到 `used_memory` 和 `used_memory_rss` 均低于 45 GB。 逐出可能会增加服务器负载和内存碎片。 有关 `used_memory` 和 `used_memory_rss` 等缓存指标的详细信息，请参阅[可用指标和报告时间间隔](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)。
+
 > [!IMPORTANT]
-> “maxmemory-reserved”设置仅适用于标准缓存和高级缓存。
+> “maxmemory-reserved”和“maxfragmentationmemory-reserved”设置仅适用于标准缓存和高级缓存。
 > 
 > 
 
@@ -412,7 +415,7 @@ Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 �
 | --- | --- | --- |
 | `databases` |16 |默认的数据库数为 16，但可以根据定价层配置不同数目。<sup>1</sup> 默认数据库是 DB 0，可以基于每个连接使用 `connection.GetDatabase(dbid)`（其中 `dbid` 是介于 `0` 和 `databases - 1` 之间的数字）选择其他数据库。 |
 | `maxclients` |取决于定价层<sup>2</sup> |这是同一时间内允许的最大已连接客户端数。 一旦达到该限制，Redis 将在关闭所有新连接的同时返回“达到客户端最大数量”的错误。 |
-| `maxmemory-policy` |`volatile-lru` |Maxmemory 策略是达到 `maxmemory`（创建缓存时所选缓存服务的大小）时，Redis 将根据它选择要删除内容的设置。 Azure Redis 缓存的默认设置为 `volatile-lru`，此设置使用 LRU 算法删除具有过期设置的密钥。 可以在 Azure 门户中配置此设置。 有关详细信息，请参阅 [Maxmemory-policy 和 maxmemory-reserved](#maxmemory-policy-and-maxmemory-reserved)。 |
+| `maxmemory-policy` |`volatile-lru` |Maxmemory 策略是达到 `maxmemory`（创建缓存时所选缓存服务的大小）时，Redis 将根据它选择要删除内容的设置。 Azure Redis 缓存的默认设置为 `volatile-lru`，此设置使用 LRU 算法删除具有过期设置的密钥。 可以在 Azure 门户中配置此设置。 有关详细信息，请参阅[内存策略](#memory-policies)。 |
 | `maxmemory-samples` |3 |为了节省内存，LRU 和最小 TTL 算法是近似算法而不是精确算法。 默认情况下，Redis 将检查三个密钥并选取最近使用较少的一个。 |
 | `lua-time-limit` |5,000 |Lua 脚本的最大执行时间（以毫秒为单位）。 如果达到最大执行时间，Redis 将记录脚本在达到最大允许时间后仍在执行，并开始以错误响应查询。 |
 | `lua-event-limit` |500 |脚本事件队列的最大大小。 |

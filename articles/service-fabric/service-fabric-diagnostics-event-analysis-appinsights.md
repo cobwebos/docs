@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/26/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: c88b2b5cff70e7a4b3642c53502f348f2e789e81
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: 4085a607b800f4f4f155cdc266bc203b0858fd7c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 
@@ -75,7 +74,7 @@ Azure Application Insights 是用于应用程序监视和诊断的可扩展平�
 
 在以上两个代码片段中，名称“applicationInsights”用于描述该接收器。 这不是必需的，并且只要接收器名称包含在“接收器”中，就可将名称设定为任何字符串。
 
-目前，群集的日志会在 AI 日志查看器中作为跟踪显示。 由于大部分来源于基础结构级别的跟踪都是“信息”类，可以考虑将接收器配置更改为仅发送“关键”和“错误”类日志。 这可通过将“通道”添加到接收器完成，如[本文](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)所示。
+目前，群集的日志会在 AI 日志查看器中作为跟踪显示。 由于来自平台的大部分跟踪信息都是“参考”级别，因此还可以考虑将接收器配置更改为仅发送类型为“关键”或“错误”的日志。 这可通过将“通道”添加到接收器完成，如[本文](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)所示。
 
 >[!NOTE]
 >若在门户或 Resource Manager 模板中使用了错误的 AI 密钥，则必须手动更改密钥并更新/重新部署群集。 

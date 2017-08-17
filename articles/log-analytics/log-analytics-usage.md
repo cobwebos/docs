@@ -52,7 +52,7 @@ Log Analytics 包括以下信息：收集的数据量、哪些计算机发送了
 4. 在“工作区”仪表板中，单击“Log Analytics 使用情况”。
 5. 在“Log Analytics 使用情况”仪表板中，单击“时间: 过去 24 小时”更改时间间隔。  
     ![时间间隔](./media/log-analytics-usage/time.png)
-6. 查看“使用情况类别”边栏选项卡以显示感兴趣的区域。 选择一个边栏选项卡，并单击其中的项以在“日志搜索”中查看更多详细信息[](log-analytics-log-searches.md)。  
+6. 查看“使用情况类别”边栏选项卡以显示感兴趣的区域。 选择一个边栏选项卡，并单击其中的项以在“[日志搜索](log-analytics-log-searches.md)”中查看更多详细信息。  
     ![示例数据使用量边栏选项卡](./media/log-analytics-usage/blade.png)
 7. 在“日志搜索”仪表板中，查看搜索返回的结果。  
     ![日志搜索用法示例](./media/log-analytics-usage/usage-log-search.png)

@@ -12,7 +12,7 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
-ms.author: sewhee
+ms.author: bwren
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: 68820f9c018b1076bae8dc0195906d0f34590748
@@ -161,3 +161,4 @@ ms.lasthandoff: 05/26/2017
 * [使用诊断搜索](app-insights-diagnostic-search.md)
 * [探查器](app-insights-profiler.md)
 * [快照调试器](app-insights-snapshot-debugger.md)
+

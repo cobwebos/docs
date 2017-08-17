@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 4d34bb29df95ae83952d8f421f3f2a9118ad5e1d
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 6b41fd8090dd771fc40769c134bad258b3d4bd36
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/20/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="create-a-xamarinandroid-app"></a>创建 Xamarin.Android 应用
@@ -39,17 +39,12 @@ ms.lasthandoff: 01/20/2017
 * 有效的 Azure 帐户。 如果没有帐户，可以注册 Azure 试用版并获取多达 10 个免费的移动应用。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 * Visual Studio with Xamarin。 有关说明，请参阅 [设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) 。
 
-> [!NOTE]
-> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service](https://azure.microsoft.com/try/app-service/mobile/)（试用应用服务）。  可以立即在应用服务中创建一个短期的入门级移动应用。 你不需要使用信用卡，也不需要做出承诺。
->
->
-
 ## <a name="create-an-azure-mobile-app-backend"></a>创建 Azure 移动应用后端
 按照这些步骤创建移动应用后端。
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-现已预配可供移动客户端应用程序使用的 Azure 移动应用后端。 接下来，下载一个简单的“待办事项列表”后端的服务器项目并将其发布到 Azure。
+现已预配可供移动客户端应用程序使用的 Azure 移动应用后端。 接下来，为简单的“待办事项列表”后端下载服务器项目并将其发布到 Azure。
 
 ## <a name="configure-the-server-project"></a>配置服务器项目
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
@@ -59,7 +54,7 @@ ms.lasthandoff: 01/20/2017
 
       将压缩的项目文件保存到本地计算机，并记下保存位置。
 2. 按 **F5** 键生成项目并启动该应用。
-3. 在应用中键入有意义的文本（例如“完成教程”），然后单击“添加”图标。
+3. 在应用中键入有意义的文本（例如“完成教程”），并单击“添加”图标。
 
     ![][10]
 

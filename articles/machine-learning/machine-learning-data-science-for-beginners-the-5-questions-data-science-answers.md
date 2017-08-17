@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2017
-ms.author: cgronlun;garye
+ms.author: cgronlun
 ms.translationtype: HT
 ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
 ms.openlocfilehash: e77e7e99747995a4a6ad800e391f0c063bded82f

@@ -45,9 +45,9 @@ ms.lasthandoff: 08/08/2017
 2. 在“设置”边栏选项卡中，单击“资产”。
    
     ![上传文件](./media/media-services-portal-vod-get-started/media-services-upload.png)
-3. 单击 **上传** 按钮。
+3. 单击“上传”按钮。
    
-    此时会显示 **上传视频资产** 窗口。
+    此时会显示“上传视频资产”窗口。
    
    > [!NOTE]
    > 没有文件大小限制。

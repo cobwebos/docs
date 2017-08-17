@@ -92,7 +92,7 @@ ms.lasthandoff: 07/26/2017
     ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 桌面连接窗口](./media/powerbi-visualize/power_bi_connector_pbiconnectwindow.png)
 8. 如果是首次连接到此终结点，则会提示输入帐户密钥。 若使用自己的帐户，请从 Azure 门户的[“只读密钥”](manage-account.md#keys)边栏选项卡中的“主密钥”框中检索密钥。 对于演示帐户，该密钥为 `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==`。 输入相应的密钥，然后单击“连接”。
    
-    我们建议在生成报表时使用只读密钥。  这会防止主密钥不必要地暴露于潜在的安全风险中。 只读密钥从 Azure 门户的“密钥”[](manage-account.md#keys)边栏选项卡中可用，或者可以使用上文提供的演示帐户信息。
+    我们建议在生成报表时使用只读密钥。  这会防止主密钥不必要地暴露于潜在的安全风险中。 只读密钥从 Azure 门户的 [密钥](manage-account.md#keys) 边栏选项卡中可用，或者可以使用上文提供的演示帐户信息。
    
     ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 帐户密钥](./media/powerbi-visualize/power_bi_connector_pbidocumentdbkey.png)
     

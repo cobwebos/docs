@@ -16,10 +16,10 @@ ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: f892ec7bd61124f7958a50ebdfb49c7310d4ee18
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: 06d6d305eb9711768dc62a04726359e6280d1b69
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/14/2017
 
 ---
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 08/01/2017
 <li>用于使用脚本部署应用的 Azure CLI</li>
 </ul>
 
-本教程将介绍如何执行下列操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建免费 Azure 帐户。
@@ -48,7 +48,7 @@ ms.lasthandoff: 08/01/2017
 
 Azure 快速入门模板使用户能够快速、可靠地在 Azure 上部署复杂的技术。  Azure Resource Manager 允许用户使用[声明性模板](https://azure.microsoft.com/en-us/resources/templates/?term=jenkins)预配应用程序。 在单个模板中，可以部署多个服务及其依赖项。 在应用程序生命周期的每个阶段，可使用相同模板重复部署应用程序。
 
-查看此模板的[计划和定价](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.jenkins?tab=PlansAndPrice)信息，了解成本选项。
+查看此模板的[计划和定价](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/azure-oss.jenkins?tab=Overview)信息，了解成本选项。
 
 转到[适用于 Jenkins 应用商店映像](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/azure-oss.jenkins?tab=Overview)，单击“立即获取”  
 
