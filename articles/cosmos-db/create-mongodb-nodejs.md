@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 06/19/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
-ms.openlocfilehash: d1b887e68b1040ea9340235cd215028300c14fac
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: a26477d692cc98ed16c195233ade5434cc536a36
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB：迁移现有的 Node.js MongoDB Web 应用 
@@ -28,7 +28,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 本快速入门演示如何使用以 Node.js 编写的现有 [MongoDB](mongodb-introduction.md) 应用，并将其连接到支持 MongoDB 客户端连接的 Azure Cosmos DB 数据库。 换而言之，Node.js 应用程序仅知道它要使用 MongoDB API 连接到某个数据库。 应用程序完全知道数据存储在 Azure Cosmos DB 中。
 
-完成本教程后，[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 中将会运行一个 MEAN（MongoDB、Express、AngularJS 和 Node.js）应用程序。 
+完成本教程后，[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 中会运行一个 MEAN（MongoDB、Express、AngularJS 和 Node.js）应用程序。 
 
 ![在 Azure 应用服务中运行的 MEAN.js 应用](./media/create-mongodb-nodejs/meanjs-in-azure.png)
 
@@ -92,7 +92,7 @@ az group create --name myResourceGroup --location "West Europe"
 
 使用 [az cosmosdb create](/cli/azure/cosmosdb#create) 命令创建 Azure Cosmos DB 帐户。
 
-在以下命令中，请将 `<cosmosdb-name>` 占位符替换为你自己的唯一 Azure Cosmos DB 帐户名。 此唯一名称将用作 Azure Cosmos DB 终结点 (`https://<cosmosdb-name>.documents.azure.com/`) 的一部分，因此需要在 Azure 中的所有 Azure Cosmos DB 帐户之间保持唯一。 
+在以下命令中，请将 `<cosmosdb-name>` 占位符替换成自己的唯一 Azure Cosmos DB 帐户名。 此唯一名称将用作 Azure Cosmos DB 终结点 (`https://<cosmosdb-name>.documents.azure.com/`) 的一部分，因此需要在 Azure 中的所有 Azure Cosmos DB 帐户之间保持唯一。 
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -100,7 +100,10 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 
 `--kind MongoDB` 参数启用 MongoDB 客户端连接。
 
-创建 Azure Cosmos DB 帐户后，Azure CLI 将显示类似于以下示例的信息： 
+创建 Azure Cosmos DB 帐户后，Azure CLI 会显示类似于以下示例的信息： 
+
+> [!NOTE]
+> 此示例使用 JSON 作为 Azure CLI 输出格式，此为默认设置。 若要使用其他输出格式，请参阅 [Azure CLI 2.0 命令的输出格式](https://docs.microsoft.com/cli/azure/format-output-azure-cli)。
 
 ```json
 {
@@ -183,7 +186,7 @@ npm start
 
 此时应会显示一条控制台消息，告知开发环境已启动并运行。 
 
-在浏览器中导航至 `http://localhost:3000`。 在顶部菜单中单击“注册”，然后尝试创建两个虚构的用户。 
+在浏览器中导航至 `http://localhost:3000`。 在顶部菜单中单击“注册”，并尝试创建两个虚构的用户。 
 
 MEAN.js 示例应用程序将用户数据存储在数据库中。 如果上述操作成功并且 MEAN.js 可自动登录到已创建的用户，则表示 Azure Cosmos DB 连接可正常工作。 
 
@@ -195,7 +198,7 @@ MEAN.js 示例应用程序将用户数据存储在数据库中。 如果上述�
 
 若要查看、查询和处理在上一步骤中创建的用户数据，请在 Web 浏览器中登录到 [Azure 门户](https://portal.azure.com)。
 
-在顶部搜索框中，键入“Azure Cosmos DB”。 打开 Cosmos DB 帐户边栏选项卡后，请选择你的 Cosmos DB 帐户。 在左侧导航栏中，单击“数据资源管理器”。 在“集合”窗格中展开你的集合，然后即可查看该集合中的文档，查询数据，甚至可以创建和运行存储过程、触发器与 UDF。 
+在顶部搜索框中，键入“Azure Cosmos DB”。 打开 Cosmos DB 帐户边栏选项卡后，请选择 Cosmos DB 帐户。 在左侧导航栏中，单击“数据资源管理器”。 在“集合”窗格中展开集合，然后即可查看该集合中的文档，查询数据，甚至可以创建和运行存储过程、触发器与 UDF。 
 
 ![Azure 门户中的数据资源管理器](./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png)
 
@@ -204,7 +207,7 @@ MEAN.js 示例应用程序将用户数据存储在数据库中。 如果上述�
 
 此步骤将已连接 MongoDB 的 Node.js 应用程序部署到 Azure Cosmos DB。
 
-你可能已经注意到，前面更改的配置文件适用于开发环境 (`/config/env/local-development.js`)。 将应用程序部署到应用服务后，该应用程序默认在生产环境中运行。 因此，现在需要对相应的配置文件做出相同的更改。
+可能已经注意到，前面更改的配置文件适用于开发环境 (`/config/env/local-development.js`)。 将应用程序部署到应用服务后，该应用程序默认在生产环境中运行。 因此，现在需要对相应的配置文件做出相同的更改。
 
 在 MEAN.js 存储库中，打开 `config/env/production.js`。
 
@@ -229,8 +232,8 @@ git commit -m "configured MongoDB connection string"
 
 如果不打算继续使用此应用，请删除本快速入门教程在 Azure 门户中创建的所有资源，步骤如下：
 
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击已创建资源的名称。 
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，然后单击“删除”。
+1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。 
+2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

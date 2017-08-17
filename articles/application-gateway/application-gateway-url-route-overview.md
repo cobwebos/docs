@@ -14,17 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 4b649379ce41a4d6cea93b42fc492fdc0940e689
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 75c3279d2d02cb3c6e949d191c88a1eb18b58a27
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="url-path-based-routing-overview"></a>基于 URL 路径的路由概述
 
-基于 URL 路径的路由可让你根据请求的 URL 路径，将流量路由到后端服务器池。 
+基于 URL 路径的路由用于根据请求的 URL 路径，将流量路由到后端服务器池。 
 
 方案之一是将针对不同内容类型的请求路由到不同的后端服务器池。
 
@@ -33,7 +32,10 @@ ms.lasthandoff: 06/08/2017
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
 对 http://contoso.com/video* 的请求会路由到 VideoServerPool，对 http://contoso.com/images* 的请求会路由到 ImageServerPool。 如果没有任何路径模式匹配，则选择 DefaultServerPool。
-    
+
+> [!IMPORTANT]
+> 规则将按照门户中的列出顺序进行处理。 我们强烈建议先配置多站点侦听器，然后再配置基本侦听器。  这确保将流量路由到适当的后端。 如果基本侦听器先列出并且与传入的请求匹配，则该侦听器将处理该请求。
+
 ## <a name="urlpathmap-configuration-element"></a>UrlPathMap 配置元素
 
 UrlPathMap 元素用于指定后端服务器池映射的路径模式。 以下代码示例是模板文件中 urlPathMap 元素的代码片段。
@@ -74,7 +76,7 @@ UrlPathMap 元素用于指定后端服务器池映射的路径模式。 以下�
 
 ## <a name="pathbasedrouting-rule"></a>PathBasedRouting 规则
 
-PathBasedRouting 类型的 RequestRoutingRule 可用于将侦听器绑定到 urlPathMap。 此侦听器收到的所有请求将根据 urlPathMap 中指定的策略进行路由。
+PathBasedRouting 类型的 RequestRoutingRule 可用于将侦听器绑定到 urlPathMap。 此侦听器收到的所有请求会根据 urlPathMap 中指定的策略进行路由。
 PathBasedRouting 规则的代码段：
 
 ```json
