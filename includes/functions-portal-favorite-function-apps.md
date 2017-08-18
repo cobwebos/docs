@@ -4,13 +4,13 @@
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 单击左下角的箭头以展开所有服务，在“筛选器”字段中键入 `Functions`，然后单击“Function App”旁边的星形。  
+2. 单击左下角的箭头以展开所有服务，在“筛选器”字段中键入 `Functions`，并单击“Function App”旁边的星形。  
  
     ![在 Azure 门户中创建 Function App](./media/functions-portal-favorite-function-apps/functions-favorite-function-apps.png)
 
-    这将在门户左侧的菜单中添加“函数”图标。
+    这会在门户左侧的菜单中添加“函数”图标。
 
-3. 关闭菜单，然后向下滚动到底部才能看到“函数”图标。 单击该图标可查看所有 Function App 的列表。 单击 Function App 以在此应用中使用函数。 
+3. 关闭菜单，向下滚动到底部才能看到“函数”图标。 单击该图标可查看所有 Function App 的列表。 单击 Function App 以在此应用中使用函数。 
  
     ![](./media/functions-portal-favorite-function-apps/functions-function-apps-hub.png)
  

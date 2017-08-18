@@ -8,4 +8,4 @@
 az group create --name myResourceGroup --location westeurope
 ```
 
-若要查看可用位置，请运行 `az appservice list-locations` 命令。 你通常在附近的区域中创建资源。
+若要查看可用位置，请运行 `az appservice list-locations` 命令。 通常在附近的区域中创建资源。
