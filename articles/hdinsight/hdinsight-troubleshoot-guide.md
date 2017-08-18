@@ -13,10 +13,10 @@ ms.topic: landing - page
 ms.date: 7/06/2017
 ms.author: arijitt
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 29aa2510fc04f24c437d6bb6142eebb8859569c0
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 9313f0713818f80bae99c32a438d97ba544a7a6b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 07/11/2017
 | 有关以下方面的信息 | 请参阅以下资源 |
 | --- | --- |
 | HDInsight on Linux 和优化 | [有关在 Linux 上使用 HDInsight 的信息](hdinsight-hadoop-linux-information.md)<br>[Hadoop 内存和性能](hdinsight-hadoop-stack-trace-error-messages.md)<br>[Hive 查询性能](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/) |
-| 日志和转储 | [在 Linux 上访问 Hadoop YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)<br>[为 Hadoop 服务启用堆转储](hdinsight-hadoop-collect-debug-heap-dump-linux.md)<br>[分析 HDInsight 日志](hdinsight-debug-jobs.md)|
+| 日志和转储 | [在 Linux 上访问 Hadoop YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)<br>[为 Hadoop 服务启用堆转储](hdinsight-hadoop-collect-debug-heap-dump-linux.md)|
 | 错误 | [了解和解决 WebHCat 错误](hdinsight-hadoop-templeton-webhcat-debug-errors.md)<br>[通过 Hive 设置解决内存不足错误](hdinsight-hadoop-hive-out-of-memory-error-oom.md) |
 | 工具 | [使用 Ambari 视图调试 Tez 作业](hdinsight-debug-ambari-tez-view.md)<br>[优化 Hive 查询](hdinsight-hadoop-optimize-hive-query.md) |
 

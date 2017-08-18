@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: markvi;dhanyahk
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: a1e385c235c3530744a83527574880c5f37caadd
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 93cb0baeab8f13f81257ed1bd32ed08561c54b72
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory 报告延迟
@@ -72,7 +72,7 @@ Azure Active Directory 使用自适应机器学习算法和试探法来检测与
 | 从匿名 IP 地址登录 |5 分钟 |15 分钟 |2 小时 |
 | 从不熟悉的位置登录 |5 分钟 |15 分钟 |2 小时 |
 | 具有已泄漏凭据的用户 |2 小时 |4 小时 |8 小时 |
-| 不可能前往异常位置 |2 小时 |4 小时 |8 小时  |
+| 不可能前往异常位置 |5 分钟 |1 小时	 |8 小时  |
 | 从受感染的设备登录 |2 小时 |4 小时 |8 小时  |
 | 从具有可疑活动的 IP 地址登录 |2 小时 |4 小时 |8 小时  |
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 87b9da134bce20b037e2dce7e1c9f54454fafe9e
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 69156ec555b34d066a65bdc202267cfc53de47a0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="introduction-to-azure-web-app-on-linux"></a>Linux 上的 Azure Web 应用简介
@@ -83,10 +83,14 @@ Azure 门户仅显示当前可用于 Linux Web 应用的功能，隐藏其他功
 * 美国东部
 * 欧洲西部
 * 欧洲北部
+* 美国中南部
+* 美国中北部
 * 东南亚
+* 东亚
 * 澳大利亚东部
 * 日本东部
 * 巴西南部
+* 印度南部
 
 Linux Web 应用只能在专用应用服务计划中使用，没有免费层或共享层。 另外，常规 Web 应用和 Linux Web 应用的应用服务计划是互斥的，因此不能在非 Linux 应用服务计划中创建 Linux Web 应用。
 
