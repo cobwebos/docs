@@ -15,20 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2016
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 360b99c8ab93f016fd2225e8e874fda2ca21df3c
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 41d427862150d17e1ad726afc51114d6f62f5a8e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="how-to-configure-an-availability-set-for-linux-virtual-machines-in-the-classic-deployment-model"></a>如何在经典部署模型中为 Linux 虚拟机配置可用性集
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 也可以在 Resource Manager 部署中[配置可用性集](../../azure-cli-arm-commands.md#azure-availset-commands-to-manage-your-availability-sets)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 也可以在 Resource Manager 部署中[配置可用性集](../../azure-cli-arm-commands.md#azure-availset-commands-to-manage-your-availability-sets)。
 
 [!INCLUDE [virtual-machines-common-classic-configure-availability](../../../../includes/virtual-machines-common-classic-configure-availability.md)]
-
-## <a name="next-steps"></a>后续步骤
-有关经典部署的其他文章，请参阅 [Azure 上的 Linux 和开源计算](../opensource-links.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-
-

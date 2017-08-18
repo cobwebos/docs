@@ -16,10 +16,10 @@ ms.date: 08/02/2017
 ms.author: trinadhk;markgal;
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: eb94f7222476af3d15089589a5e69556f7d6888b
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: d876bb1759600fa29a26730bfa8b4ec19db1e442
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="manage-common-azure-backup-jobs-and-trigger-alerts-in-the-classic-portal"></a>在经典门户中管理常见的 Azure 备份作业和触发器警报
@@ -37,8 +37,8 @@ ms.lasthandoff: 08/03/2017
 > [!IMPORTANT]
 >从 2017 年 3 月份开始，无法再使用经典门户来创建备份保管库。
 >
-> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 10 月 15 日之后，不能使用 PowerShell 创建备份保管库。 **直到 2017 年 11 月 1 日**：
->- 剩余的所有备份保管库都将自动升级到恢复服务保管库。
+> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 10 月 15 日之后，将无法使用 PowerShell 创建备份保管库。 2017 年 11 月 1 日之前：
+>- 其余所有备份保管库都将自动升级到恢复服务保管库。
 >- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
 
 ## <a name="manage-protected-virtual-machines"></a>管理受保护的虚拟机
@@ -52,7 +52,7 @@ ms.lasthandoff: 08/03/2017
 
     ![虚拟机策略](./media/backup-azure-manage-vms/manage-policy-settings.png)
 
-    “**备份策略**”选项卡将显示现有策略。 你可以根据需要进行更改。 如果需要创建新策略，请在“**策略**”页上单击“**创建**”。 请注意，如果要删除某个策略，则它不应当具有与之关联的任何虚拟机。
+    “**备份策略**”选项卡会显示现有策略。 可以根据需要进行更改。 如果需要创建新策略，请在“**策略**”页上单击“**创建**”。 请注意，如果要删除某个策略，则它不应当具有与之关联的任何虚拟机。
 
     ![虚拟机策略](./media/backup-azure-manage-vms/backup-vmpolicy.png)
 4. 可以在“**作业**”页上获取有关虚拟机的操作或状态的更多信息。 单击列表中的某个作业可获取更多详细信息，还可以筛选特定虚拟机的作业。
@@ -60,7 +60,7 @@ ms.lasthandoff: 08/03/2017
     ![作业](./media/backup-azure-manage-vms/backup-job.png)
 
 ## <a name="on-demand-backup-of-a-virtual-machine"></a>虚拟机的按需备份
-为虚拟机配置保护后，可以对它执行按需备份。 如果虚拟机的初始备份已挂起，则按需备份将在 Azure 备份保管库中创建虚拟机的完整副本。 如果已完成第一个备份，按需备份只会将以前备份的更改发送到 Azure 备份保管库，即始终进行增量备份。
+为虚拟机配置保护后，可以对它执行按需备份。 如果虚拟机的初始备份已挂起，则按需备份会在 Azure 备份保管库中创建虚拟机的完整副本。 如果已完成第一个备份，按需备份只会以前备份的更改发送到 Azure 备份保管库，即始终进行增量备份。
 
 > [!NOTE]
 > 按需备份的保留期范围设置为保留期值，该值在备份策略中根据 VM 针对“每日”保留期来指定。  
@@ -95,7 +95,7 @@ ms.lasthandoff: 08/03/2017
 * 保留 Azure 备份保管库中与虚拟机关联的备份数据
 * 删除与虚拟机关联的备份数据
 
-如果你已选择保留与虚拟机关联的备份数据，则可使用该备份数据来还原虚拟机。 有关此类虚拟机的定价详细信息，请单击[此处](https://azure.microsoft.com/pricing/details/backup/)。
+如果已选择保留与虚拟机关联的备份数据，则可使用该备份数据来还原虚拟机。 有关此类虚拟机的定价详细信息，请单击[此处](https://azure.microsoft.com/pricing/details/backup/)。
 
 若要停止保护虚拟机，请执行以下操作：
 
@@ -109,7 +109,7 @@ ms.lasthandoff: 08/03/2017
 
     ![确认停止保护](./media/backup-azure-manage-vms/confirm-stop-protection.png)
 
-    如果你要删除备份数据，请选中该复选框。
+    如果要删除备份数据，请选中该复选框。
 
     ![复选框](./media/backup-azure-manage-vms/checkbox.png)
 
@@ -118,37 +118,37 @@ ms.lasthandoff: 08/03/2017
 
     ![停止保护](./media/backup-azure-manage-vms/stop-protect-success.png)
 
-    如果你未在“**停止保护**”向导中选择“**删除关联的备份数据**”选项，则在作业完成后，保护状态将更改为“**已停止保护**”。 数据将会使用 Azure 备份保留，直到被显式删除。 随时都可通过在“**受保护的项**”页中选择虚拟机，然后单击“**删除**”来删除数据。
+    如果未在“**停止保护**”向导中选择“**删除关联的备份数据**”选项，则在作业完成后，保护状态将更改为“**已停止保护**”。 数据会使用 Azure 备份保留，直到被显式删除。 随时都可通过在“**受保护的项**”页中选择虚拟机，然后单击“**删除**”来删除数据。
 
     ![已停止保护](./media/backup-azure-manage-vms/protection-stopped-status.png)
 
     如果已选择“**删除关联的备份数据**”选项，则虚拟机不会出现在“**受保护的项**”页中。
 
 ## <a name="re-protect-virtual-machine"></a>重新保护虚拟机
-如果未在“**停止保护**”中选择“**删除关联的备份数据**”选项，可以遵循类似于备份已注册虚拟机的步骤来重新保护虚拟机。 受保护后，此虚拟机将在停止保护之前保留备份数据，并在重新保护后创建恢复点。
+如果未在“**停止保护**”中选择“**删除关联的备份数据**”选项，可以遵循类似于备份已注册虚拟机的步骤来重新保护虚拟机。 受保护后，此虚拟机会在停止保护之前保留备份数据，并在重新保护后创建恢复点。
 
 重新保护后，如果有“**停止保护**”之前的恢复点，则虚拟机的保护状态将更改为“**受保护**”。
 
   ![重新保护 VM](./media/backup-azure-manage-vms/reprotected-status.png)
 
 > [!NOTE]
-> 重新保护虚拟机时，你可以选择一个不同的策略，而不是最初用于保护虚拟机的策略。
+> 重新保护虚拟机时，可以选择一个不同的策略，而不是最初用于保护虚拟机的策略。
 >
 >
 
 ## <a name="unregister-virtual-machines"></a>取消注册虚拟机
-如果你想要从备份保管库中删除虚拟机，请执行以下操作：
+如果想要从备份保管库中删除虚拟机，请执行以下操作：
 
 1. 单击页底部的“**注销**”按钮。
 
     ![禁用保护](./media/backup-azure-manage-vms/unregister-button.png)
 
-    屏幕底部将会显示要求你进行确认的 Toast 通知。 单击“**是**”继续。
+    屏幕底部会显示要求进行确认的 Toast 通知。 单击“**是**”继续。
 
     ![禁用保护](./media/backup-azure-manage-vms/confirm-unregister.png)
 
 ## <a name="delete-backup-data"></a>删除备份数据
-你可以通过以下方法之一删除与虚拟机关联的备份数据：
+可以通过以下方法之一删除与虚拟机关联的备份数据：
 
 * 在停止保护作业期间
 * 在虚拟机上完成停止保护作业之后
@@ -158,7 +158,7 @@ ms.lasthandoff: 08/03/2017
 1. 导航到“**受保护的项**”页，选择“**Azure 虚拟机**”作为*类型*，并单击“**选择**”按钮。
 
     ![VM 类型](./media/backup-azure-manage-vms/vm-type.png)
-2. 选择虚拟机。 虚拟机将显示为“**已停止保护**”状态。
+2. 选择虚拟机。 虚拟机会显示为“**已停止保护**”状态。
 
     ![已停止保护](./media/backup-azure-manage-vms/protection-stopped-b.png)
 3. 单击页底部的“**删除**”按钮。
@@ -167,14 +167,14 @@ ms.lasthandoff: 08/03/2017
 4. 在“**删除备份数据**”向导中，选择删除备份数据的原因（强烈建议），并单击“**提交**”。
 
     ![删除备份数据](./media/backup-azure-manage-vms/delete-backup-data.png)
-5. 这将创建一个作业来删除选定虚拟机的备份数据。 单击“**查看作业**”，在“作业”页中查看相应的作业。
+5. 这会创建一个作业来删除选定虚拟机的备份数据。 单击“**查看作业**”，在“作业”页中查看相应的作业。
 
     ![已成功删除数据](./media/backup-azure-manage-vms/delete-data-success.png)
 
     完成该作业后，与虚拟机对应的条目将从“**受保护的项**”页中删除。
 
 ## <a name="dashboard"></a>仪表板
-在“**仪表板**”页中，可以查看有关 Azure 虚拟机、其存储和过去 24 小时内关联作业的信息。 你可以查看备份状态和任何关联的备份错误。
+在“**仪表板**”页中，可以查看有关 Azure 虚拟机、其存储和过去 24 小时内关联作业的信息。 可以查看备份状态和任何关联的备份错误。
 
 ![仪表板](./media/backup-azure-manage-vms/dashboard-protectedvms.png)
 
@@ -217,7 +217,7 @@ ms.lasthandoff: 08/03/2017
     ![操作详细信息](./media/backup-azure-manage-vms/ops-logs-details-window.png)
 
 ## <a name="alert-notifications"></a>警报通知
-你可以获取门户中作业的自定义警报通知。 为此，你需要针对操作日志事件定义基于 PowerShell 的警报规则。 我们建议使用 *PowerShell 1.3.0 或更高版本*。
+可以获取门户中作业的自定义警报通知。 为此，需要针对操作日志事件定义基于 PowerShell 的警报规则。 我们建议使用 *PowerShell 1.3.0 或更高版本*。
 
 若要定义自定义通知以便在备份失败时发出警报，可使用如下所示的示例命令：
 
@@ -244,9 +244,9 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 ### <a name="limitations-on-alerts"></a>对警报的限制
 基于事件的警报会受到以下限制：
 
-1. 警报在备份保管库的所有虚拟机上触发。 你不能通过自定义来获取备份保管库中特定虚拟机集的警报。
-2. 此功能以预览版提供。 [了解详细信息](../monitoring-and-diagnostics/insights-powershell-samples.md#create-alert-rules)
-3. 你将收到来自“alerts-noreply@mail.windowsazure.com”的警报。 目前无法修改电子邮件发件人。
+1. 警报在备份保管库的所有虚拟机上触发。 不能通过自定义来获取备份保管库中特定虚拟机集的警报。
+2. 此功能以预览版提供。 [了解详细信息](../monitoring-and-diagnostics/insights-powershell-samples.md#create-metric-alerts)
+3. 将收到来自“alerts-noreply@mail.windowsazure.com”的警报。 目前无法修改电子邮件发件人。
 
 ## <a name="next-steps"></a>后续步骤
 * [还原 Azure VM](backup-azure-restore-vms.md)

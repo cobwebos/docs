@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/19/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: c306000e898f5fe0260ef3347988923266ed096e
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: c8a920a0523cb4737e6bbca7e49d0b9e2c942565
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Azure VM 安全最佳做法
@@ -65,15 +65,15 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="vm-availability-and-network-access"></a>VM 可用性和网络访问
 
-如果 VM 运行需要具有高可用性的关键应用程序，我们强烈建议使用多个 VM。 为提高可用性，请在[可用性集](../virtual-machines/windows/infrastructure-availability-sets-guidelines.md)中至少创建两个 VM。
+如果 VM 运行需要具有高可用性的关键应用程序，我们强烈建议使用多个 VM。 为提高可用性，请在[可用性集](../virtual-machines/windows/tutorial-availability-sets.md)中至少创建两个 VM。
 
 [Azure 负载均衡器](../load-balancer/load-balancer-overview.md)还要求负载均衡 VM 属于同一可用性集。 如果必须通过 Internet 访问 VM，则必须配置[面向 Internet 的负载均衡器](../load-balancer/load-balancer-internet-overview.md)。
 
-对 Internet 公开 VM 后，请务必[使用网络安全组 (NSG) 控制网络流量](../virtual-network/virtual-networks-nsg.md)。 由于 NSG 可以应用于子网，因此你可以通过按子网来组合资源以及将 NSG 应用到子网来尽量减少 NSG 的数量。 其目的是创建一个网络隔离层（可通过在 Azure 中正确配置[网络安全](../best-practices-network-security.md)功能来适当实现）。
+对 Internet 公开 VM 后，请务必[使用网络安全组 (NSG) 控制网络流量](../virtual-network/virtual-networks-nsg.md)。 由于 NSG 可以应用于子网，因此可以通过按子网来组合资源以及将 NSG 应用到子网来尽量减少 NSG 的数量。 其目的是创建一个网络隔离层（可通过在 Azure 中正确配置[网络安全](../best-practices-network-security.md)功能来适当实现）。
 
 还可在 Azure 安全中心使用适时 (JIT) VM 访问功能来控制谁可远程访问特定 VM 及其访问持续时间。
 
-如果组织未强制执行对面向 Internet 的 VM 的网络访问限制，将会面临远程桌面协议 (RDP) 暴力攻击等安全风险。
+如果组织未强制执行对面向 Internet 的 VM 的网络访问限制，会面临远程桌面协议 (RDP) 暴力攻击等安全风险。
 
 ## <a name="protect-data-at-rest-in-your-vms-by-enforcing-encryption"></a>通过强制加密保护 VM 中的静态数据
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 03/31/2017
 
 与所有本地 VM 一样，Azure VM 应该由用户自行管理，因此，Azure 不会向这些 VM 推送 Windows 更新。 但是，我们依然建议启用 Windows 自动更新设置。 另一种方法是在另一个 VM 上或本地部署 [Windows Server 更新服务 (WSUS)](https://technet.microsoft.com/windowsserver/bb332157.aspx) 或其他适合的更新管理产品。 WSUS 和 Windows 更新都可使 VM 保持最新状态。 此外，我们建议使用扫描产品来验证是否所有 IaaS VM 都处于最新状态。
 
-Azure 提供的库存映像会定期更新，以包含最新的 Windows 更新。 但是，无法保证映像在部署时为最新状态， 其版本可能比公共版略有滞后（最多几周）。 每个部署的第一步应是检查和安装所有 Windows 更新。 在部署你自己或你的库中提供的映像时，采用此措施就特别重要。 默认情况下，作为 Azure 应用商店一部分提供的映像会自动更新。
+Azure 提供的库存映像会定期更新，以包含最新的 Windows 更新。 但是，无法保证映像在部署时为最新状态， 其版本可能比公共版略有滞后（最多几周）。 每个部署的第一步应是检查和安装所有 Windows 更新。 在部署自己或库中提供的映像时，采用此措施就特别重要。 默认情况下，作为 Azure 应用商店一部分提供的映像会自动更新。
 
 未实施软件更新策略的组织面临更多利用已修复的已知漏洞的威胁。 除了应对此类威胁以外，为了遵守行业法规，公司还必须证明他们在不断作出相应努力并使用正确的安全控制机制来帮助确保云中工作负荷的安全性。
 
@@ -100,7 +100,7 @@ Azure 提供的库存映像会定期更新，以包含最新的 Windows 更新�
 
 ## <a name="manage-your-vm-security-posture"></a>管理 VM 安全状况
 
-网络威胁不断加剧，因此保护 VM 需要更丰富的监视功能，以便快速检测威胁、防止有人未经授权访问你的资源、触发警报并减少误报。 此类工作负荷的安全状况包括 VM 的所有安全因素，例如更新管理和网络访问安全等。
+网络威胁不断加剧，因此保护 VM 需要更丰富的监视功能，以便快速检测威胁、防止有人未经授权访问资源、触发警报并减少误报。 此类工作负荷的安全状况包括 VM 的所有安全因素，例如更新管理和网络访问安全等。
 
 若要监视 [Windows](../security-center/security-center-virtual-machine.md) 和 [Linux VM](../security-center/security-center-linux-virtual-machine.md) 的安全状况，可以使用 [Azure 安全中心](../security-center/security-center-intro.md)。 可以利用 Azure 安全中心的以下功能来保护 VM：
 

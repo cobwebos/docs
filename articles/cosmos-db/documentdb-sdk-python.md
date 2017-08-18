@@ -1,6 +1,6 @@
 ---
 title: "Azure Cosmos DB Python API、SDK 和资源 | Microsoft Docs"
-description: "了解有关 Python API 和 SDK 的全部信息，包括发布日期、停用日期和 DocumentDB Python SDK 各版本之间所做的更改。"
+description: "了解有关 Python API 和 SDK 的全部信息，包括发布日期、停用日期和 Azure Cosmos DB Python SDK 各版本之间所做的更改。"
 services: cosmos-db
 documentationcenter: python
 author: rnagpal
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 413b8a41ea4d87125e6fa1b46ee86288f7ec8c66
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 70d2550f713ff0e9daed235eb8053589b8682633
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
-# <a name="documentdb-python-sdk-release-notes-and-resources"></a>DocumentDB Python SDK：发行说明和资源
+# <a name="azure-cosmos-db-python-sdk-release-notes-and-resources"></a>Azure Cosmos DB Python SDK：发行说明和资源
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
+> * [.NET 更改源](documentdb-sdk-dotnet-changefeed.md)
 > * [.NET Core](documentdb-sdk-dotnet-core.md)
 > * [Node.js](documentdb-sdk-node.md)
 > * [Java](documentdb-sdk-java.md)
@@ -53,13 +53,12 @@ ms.lasthandoff: 05/31/2017
 
 ## <a name="release-notes"></a>发行说明
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
-* 添加了对每分钟请求单位 (RU/m) 功能的支持。
 * 添加了对名为 ConsistentPrefix 的新一致性级别的支持。
 
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * 添加了对聚合查询（COUNT、MIN、MAX、SUM、AVG）的支持。
-* 添加了在对 DocumentDB 模拟器运行时禁用 SSL 验证的选项。
+* 添加了一个 Cosmos DB 模拟器运行时禁用 SSL 验证的选项。
 * 删除了依赖请求模块精确是 2.10.0 的限制。
 * 将分区集合上的最小吞吐量从 10,100 RU/s 降低到 2500 RU/s。
 * 添加了在存储过程执行期间对启用脚本日志记录的支持。
@@ -75,7 +74,7 @@ ms.lasthandoff: 05/31/2017
 * 已对分区集合添加 TOP/ORDERBY 查询支持。
 
 ### <a name="a-name190190"></a><a name="1.9.0"/>1.9.0
-* 对限制添加了重试策略支持。 （限制请求收到请求速率太大的异常，错误代码 429。）默认情况下，遇到错误代码 429 时，DocumentDB 将针对每个请求重试九次，具体取决于响应标头中的 retryAfter 时间。 如果想要忽略重试之间由服务器返回的 retryAfter 时间，现在可以对 ConnectionPolicy 对象设置固定的重试间隔时间，并将其作为 RetryOptions 属性的一部分。 DocumentDB 现在对每个要中止的请求等待最多 30 秒（不考虑重试计数），并返回错误代码为 429 的响应。 还可以在 ConnectionPolicy 对象的 RetryOptions 属性中替代该时间。
+* 对限制添加了重试策略支持。 （限制请求收到请求速率太大的异常，错误代码 429。）默认情况下，出现错误代码 429 时，Azure Cosmos DB 将针对每个请求重试九次，具体取决于响应标头中的 retryAfter 时间。 如果想要忽略重试之间由服务器返回的 retryAfter 时间，现在可以对 ConnectionPolicy 对象设置固定的重试间隔时间，并将其作为 RetryOptions 属性的一部分。 Azure Cosmos DB 现在对每个要中止的请求等待最多 30 秒（不考虑重试次数），并返回对错误代码 429 作出的响应。 还可以在 ConnectionPolicy 对象的 RetryOptions 属性中替代该时间。
 * Cosmos DB 现在将 x-ms-throttle-retry-count 和 x-ms-throttle-retry-wait-time-ms 作为每个请求的响应标头返回，以表示限制重试计数和重试之间请求所等待的累计时间。
 * 已移除 document_client 类上公开的 RetryPolicy 类以及相应的属性 (retry_policy)，引入了在 ConnectionPolicy 对象上公开 RetryOptions 属性的 RetryOptions 类，该类可用于覆盖一些默认的重试选项。
 
@@ -115,12 +114,12 @@ ms.lasthandoff: 05/31/2017
 ## <a name="release--retirement-dates"></a>发布和停用日期
 Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺利转换到更新的/受支持的版本。
 
-新特性和功能以及优化仅添加到当前 SDK，因此建议你始终尽早升级到最新 SDK 版本。 
+新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新 SDK 版本。 
 
-使用已停用的 SDK 对 Cosmos DB 发出的任何请求都将被服务拒绝。
+使用已停用的 SDK 对 Cosmos DB 发出的任何请求都会被服务拒绝。
 
 > [!WARNING]
-> Azure DocumentDB SDK for Python 在 **1.0.0** 版之前的所有版本都将在 **2016 年 2 月 29 日**停用。 
+> Azure DocumentDB SDK for Python 在 **1.0.0** 版之前的所有版本都会在 **2016 年 2 月 29 日**停用。 
 > 
 > 
 

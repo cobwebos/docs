@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: davidmu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 907e5b80aeeee4ab2eb0466490ba9ef9b0348144
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 61e9cab7ba0b1b86a54b5282662bef3bdfba6e7d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -159,7 +159,7 @@ ms.lasthandoff: 05/17/2017
 "apiVersion": "2016-04-30-preview",
 ```
 
-在模板中指定的 API 版本会影响到可在模板中定义的属性。 通常，在创建模板时，应选择最新的 API 版本。 对于现有模板，你可以决定是要继续使用以前的 API 版本，还是要选择最新版本来更新模板以利用新功能。
+在模板中指定的 API 版本会影响到可在模板中定义的属性。 通常，在创建模板时，应选择最新的 API 版本。 对于现有模板，可以决定是要继续使用以前的 API 版本，还是要选择最新版本来更新模板以利用新功能。
 
 可通过以下方式获取最新的 API 版本：
 
@@ -218,7 +218,7 @@ ms.lasthandoff: 05/17/2017
 
 ## <a name="resource-loops"></a>资源循环
 
-如果需要为应用程序创建多个虚拟机，可在模板中使用 copy 元素。 此可选元素将根据以参数形式指定的数目反复创建 VM：
+如果需要为应用程序创建多个虚拟机，可在模板中使用 copy 元素。 此可选元素会根据以参数形式指定的数目反复创建 VM：
 
 ```
 "copy": {
@@ -281,7 +281,7 @@ Resource Manager 将同时部署所有不依赖于其他所要部署的资源的
 定义虚拟机资源时，需要使用几个 profile 元素。 其中一些元素是必需的，还有一些是可选的。 例如，hardwareProfile、osProfile、storageProfile 和 networkProfile 元素是必需的，而 diagnosticsProfile 是可选的。 这些配置文件定义如下所述的设置：
    
 - [大小](sizes.md)
-- [名称](../linux/infrastructure-naming-guidelines.md)和凭据
+- [名称](/architecture/best-practices/naming-conventions)和凭据
 - 磁盘和[操作系统设置](cli-ps-findimage.md)
 - [网络接口](../../virtual-network/virtual-networks-multiple-nics.md) 
 - 启动诊断
@@ -326,7 +326,7 @@ Resource Manager 将同时部署所有不依赖于其他所要部署的资源的
 
 ### <a name="create-new-virtual-machines-from-existing-managed-disks"></a>从现有托管磁盘创建新虚拟机
 
-若要从现有磁盘创建虚拟机，请删除 imageReference 和 osProfile 元素，然后定义以下磁盘设置：
+要从现有磁盘创建虚拟机，请删除 imageReference 和 osProfile 元素，并定义以下磁盘设置：
 
 ```
 "osDisk": { 
@@ -341,7 +341,7 @@ Resource Manager 将同时部署所有不依赖于其他所要部署的资源的
 
 ### <a name="create-new-virtual-machines-from-a-managed-image"></a>从托管映像创建新虚拟机
 
-若要从托管映像创建虚拟机，请更改 imageReference 元素，然后定义以下磁盘设置：
+要从托管映像创建虚拟机，请更改 imageReference 元素，并定义以下磁盘设置：
 
 ```
 "storageProfile": { 
@@ -408,9 +408,9 @@ Resource Manager 将同时部署所有不依赖于其他所要部署的资源的
 },
 ```
 
-此扩展资源使用 storageName 变量和 diagnostic 变量来提供值。 若要更改此扩展收集的数据，可将更多的性能计数器添加到 wadperfcounters 变量。 还可以选择将诊断数据放入其他存储帐户，而不是 VM 磁盘所在的存储帐户。
+此扩展资源使用 storageName 变量和 diagnostic 变量来提供值。 要更改此扩展收集的数据，可将更多的性能计数器添加到 wadperfcounters 变量。 还可以选择将诊断数据放入其他存储帐户，而不是 VM 磁盘所在的存储帐户。
 
-可在 VM 上安装许多扩展，但最有用的扩展也许是[自定义脚本扩展](extensions-customscript.md)。 在本示例中，首次启动每个 VM 时，将在 VM 上运行名为 start.ps1 的 PowerShell 脚本：
+可在 VM 上安装许多扩展，但最有用的扩展也许是[自定义脚本扩展](extensions-customscript.md)。 在本示例中，首次启动每个 VM 时，会在 VM 上运行名为 start.ps1 的 PowerShell 脚本：
 
 ```
 {
@@ -437,7 +437,7 @@ Resource Manager 将同时部署所有不依赖于其他所要部署的资源的
 }
 ```
 
-start.ps1 脚本可以完成许多配置任务。 例如，在本示例中已添加到 VM 的数据磁盘并未初始化；可以使用自定义脚本将它们初始化。 如果要执行多个启动任务，可在 Azure 存储中使用 start.ps1 文件调用其他 PowerShell 脚本。 本示例使用 PowerShell，但你可以使用自己的操作系统支持的任何脚本方法。
+start.ps1 脚本可以完成许多配置任务。 例如，在本示例中已添加到 VM 的数据磁盘并未初始化；可以使用自定义脚本将它们初始化。 如果要执行多个启动任务，可在 Azure 存储中使用 start.ps1 文件调用其他 PowerShell 脚本。 本示例使用 PowerShell，但可以使用自己的操作系统支持的任何脚本方法。
 
 可在门户中通过“扩展”设置查看已安装的扩展的状态：
 
@@ -447,9 +447,9 @@ start.ps1 脚本可以完成许多配置任务。 例如，在本示例中已添
 
 ## <a name="deployments"></a>部署
 
-部署模板时，Azure 将会跟踪以组的形式部署的资源，并自动为这个部署的组分配一个名称。 部署名称与模板名称相同。
+部署模板时，Azure 会跟踪以组的形式部署的资源，并自动为这个部署的组分配一个名称。 部署名称与模板名称相同。
 
-如果你很想知道部署中的资源状态，可以使用 Azure 门户中的“资源组”边栏选项卡：
+如果很想知道部署中的资源状态，可以使用 Azure 门户中的“资源组”边栏选项卡：
 
 ![获取部署信息](./media/template-description/virtual-machines-deployment-info.png)
     

@@ -8,7 +8,6 @@ manager: timlt
 editor: 
 tags: acs, azure-container-service, kubernetes
 keywords: 
-ms.assetid: what-goes-here?
 ms.service: container-service
 ms.devlang: na
 ms.topic: article
@@ -16,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
-translationtype: Human Translation
-ms.sourcegitcommit: f7377b3d0c0b89d7e196a31890173575688687cf
-ms.openlocfilehash: 901cbf5093c6a547f5dffa7ed6d71fe67caaadb9
-ms.lasthandoff: 03/02/2017
-
+ms.custom: mvc
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 40b34457447a8f80d8cdf77579750e0c42df22d0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/12/2017
 
 ---
 

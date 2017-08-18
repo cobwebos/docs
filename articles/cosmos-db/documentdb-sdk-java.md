@@ -16,10 +16,10 @@ ms.date: 07/11/2017
 ms.author: khdang
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: 089bb12b66e772b1fe62eeca9a306b5723fc8c06
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 15e3f7ef3bfd6b1f61fe6081a378bdb29e0a1aa2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="azure-cosmos-db-documentdb-java-sdk-release-notes-and-resources"></a>Azure Cosmos DB：DocumentDB Java SDK 发行说明和资源
@@ -58,7 +58,6 @@ ms.lasthandoff: 07/26/2017
 * 解决了 Strong 和 BoundedStaleness 一致性级别存在的问题。
 
 ### <a name="a-name11101110"></a><a name="1.11.0"/>1.11.0
-* 添加了对每分钟请求单位 (RU/m) 功能的支持。
 * 添加了对名为 ConsistentPrefix 的新一致性级别的支持。
 * 修复了在会话模式下读取集合时的 bug。
 
@@ -158,9 +157,9 @@ ms.lasthandoff: 07/26/2017
 ## <a name="release--retirement-dates"></a>发布和停用日期
 Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺利转换到更新的/受支持的版本。
 
-新特性和功能以及优化仅添加到当前 SDK，因此建议你始终尽早升级到最新 SDK 版本。
+新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新 SDK 版本。
 
-使用已停用的 SDK 对 Cosmos DB 发出的任何请求都将被服务拒绝。
+使用已停用的 SDK 对 Cosmos DB 发出的任何请求都会被服务拒绝。
 
 > [!WARNING]
 > DocumentDB SDK for Java 在 **1.0.0** 版之前的所有版本都会在 **2016 年 2 月 29 日**停用。

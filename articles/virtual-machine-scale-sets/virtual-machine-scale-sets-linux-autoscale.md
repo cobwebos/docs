@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 7d67ae1bd0c53f99d9c298f5ae8f161e6a484359
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 3a8a5d25123905e6c5cf91c4bc0c04258e442b5c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="automatically-scale-linux-machines-in-a-virtual-machine-scale-set"></a>自动缩放虚拟机规模集中的 Linux 计算机
-使用虚拟机规模集可轻松地将相同的虚拟机作为集来进行部署和管理。 规模集为超大规模应用程序提供高度可缩放且可自定义的计算层，并且它们支持 Windows 平台映像、Linux 平台映像、自定义映像和扩展。 有关详细信息，请参阅[虚拟机规模集概述](virtual-machine-scale-sets-overview.md)。
+使用虚拟机规模集可以轻松地将相同的虚拟机作为集来进行部署和管理。 规模集为超大规模应用程序提供高度可缩放且可自定义的计算层，并且它们支持 Windows 平台映像、Linux 平台映像、自定义映像和扩展。 有关详细信息，请参阅[虚拟机规模集概述](virtual-machine-scale-sets-overview.md)。
 
-本教程将演示如何使用最新版本的 Ubuntu Linux 创建 Linux 虚拟机的规模集。 本教程还演示了如何自动缩放规模集中的计算机。 通过使用 Azure CLI 创建和部署 Azure Resource Manager 模板，以创建规模集并设置缩放。 有关模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。 若要了解有关规模集自动缩放的详细信息，请参阅[自动缩放和虚拟机规模集](virtual-machine-scale-sets-autoscale-overview.md)。
+本教程会演示如何使用最新版本的 Ubuntu Linux 创建 Linux 虚拟机的规模集。 本教程还演示了如何自动缩放规模集中的计算机。 通过使用 Azure CLI 创建和部署 Azure Resource Manager 模板，以创建规模集并设置缩放。 有关模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。 若要了解有关规模集自动缩放的详细信息，请参阅[自动缩放和虚拟机规模集](virtual-machine-scale-sets-autoscale-overview.md)。
 
-在本教程中，你将部署以下资源和扩展：
+在本教程中，将部署以下资源和扩展：
 
 * Microsoft.Storage/storageAccounts
 * Microsoft.Network/virtualNetworks
@@ -46,7 +46,7 @@ ms.lasthandoff: 04/03/2017
 ## <a name="step-1-create-a-resource-group-and-a-storage-account"></a>步骤 1：创建资源组和存储帐户
 
 1. **登录 Microsoft Azure**  
-在命令行接口（Bash、终端、命令行提示符）中，切换到 Resource Manager 模式，然后[使用工作或学校 ID 登录](../xplat-cli-connect.md#scenario-1-azure-login-with-interactive-login)。 按照提示进行操作以获取 Azure 帐户的交互式登录体验。
+在命令行接口（Bash、终端、命令行提示符）中，切换到 Resource Manager 模式，并[使用工作或学校 ID 登录](../xplat-cli-connect.md#scenario-1-azure-login-with-interactive-login)。 按照提示进行操作以获取 Azure 帐户的交互式登录体验。
 
     ```cli   
     azure config mode arm
@@ -55,7 +55,7 @@ ms.lasthandoff: 04/03/2017
     ```
    
     > [!NOTE]
-    > 如果有工作或学校 ID，并且不启用双重身份验证，请使用 `azure login -u` 的 ID 登录而无需交互式会话。 如果没有工作或学校 ID，则可以[从 Microsoft 个人帐户创建工作或学校 ID](../virtual-machines/linux/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+    > 如果有工作或学校 ID，并且不启用双重身份验证，请使用 `azure login -u` 的 ID 登录而无需交互式会话。 如果没有工作或学校 ID，则可以[从 Microsoft 个人帐户创建工作或学校 ID](../active-directory/active-directory-users-create-azure-portal.md)。
     
 2. **创建资源组**  
 必须将所有资源部署到资源组。 对于本教程，将资源组命名为 **vmsstest1**。
@@ -72,7 +72,7 @@ ms.lasthandoff: 04/03/2017
     ```
 
 ## <a name="step-2-create-the-template"></a>步骤 2：创建模板
-借助 Azure Resource Manager 模板，你可以使用资源和关联部署参数的 JSON 描述来统一部署和管理 Azure 资源。
+借助 Azure Resource Manager 模板，可以使用资源和关联部署参数的 JSON 描述来统一部署和管理 Azure 资源。
 
 1. 在常用的编辑器中，创建文件 VMSSTemplate.json 并添加初始 JSON 结构以支持模板。
 
@@ -238,7 +238,7 @@ ms.lasthandoff: 04/03/2017
     },
     ```
 
-8. 添加单独虚拟机使用的网络接口资源。 由于规模集中的虚拟机不可使用公共 IP 地址访问，因此将在相同的虚拟网络中创建单独虚拟机，并使用它来远程访问虚拟机。
+8. 添加单独虚拟机使用的网络接口资源。 由于规模集中的虚拟机不可使用公共 IP 地址访问，因此会在相同的虚拟网络中创建单独虚拟机，并使用它来远程访问虚拟机。
 
     ```json
     {
@@ -315,7 +315,7 @@ ms.lasthandoff: 04/03/2017
     },
     ```
 
-10. 添加虚拟机规模集资源，并指定将在规模集中的所有虚拟机上安装的诊断扩展。 此资源的许多设置都与虚拟机资源相似。 主要区别在于指定规模集中虚拟机数量的容量元素和指定虚拟机更新方式的 upgradePolicy。 在所有存储帐户都根据 dependsOn 元素的指定创建之前，不会创建规模集。
+10. 添加虚拟机规模集资源，并指定会在规模集中的所有虚拟机上安装的诊断扩展。 此资源的许多设置都与虚拟机资源相似。 主要区别在于指定规模集中虚拟机数量的容量元素和指定虚拟机更新方式的 upgradePolicy。 在所有存储帐户都根据 dependsOn 元素的指定创建之前，不会创建规模集。
 
     ```json
     {
@@ -510,7 +510,7 @@ ms.lasthandoff: 04/03/2017
 
 12. 保存模板文件。    
 
-## <a name="step-3-upload-the-template-to-storage"></a>步骤 3：将模板上载到存储空间
+## <a name="step-3-upload-the-template-to-storage"></a>步骤 3：将模板上传到存储空间
 只要知道在步骤 1 中创建的存储帐户名称和主密钥，就可以上传模板。
 
 1. 在命令行界面（Bash、终端、命令提示符）中，运行以下命令以设置访问存储帐户所需的环境变量：
@@ -528,7 +528,7 @@ ms.lasthandoff: 04/03/2017
     azure storage container create -p Blob templates
     ```
 
-3. 将模板文件上载到新容器。
+3. 将模板文件上传到新容器。
    
     ```cli
     azure storage blob upload VMSSTemplate.json templates VMSSTemplate.json
@@ -541,7 +541,7 @@ ms.lasthandoff: 04/03/2017
 azure group deployment create --template-uri https://vmsstestsa.blob.core.windows.net/templates/VMSSTemplate.json vmsstestrg1 vmsstestdp1
 ```
 
-当你按 Enter 时，系统将提示你为所指定的变量提供值。 提供以下值：
+按 Enter 时，系统会提示为所指定的变量提供值。 提供以下值：
 
 ```cli
 vmName: vmsstestvm1
@@ -559,11 +559,11 @@ resourcePrefix: vmsstest
 
 
 ## <a name="step-5-monitor-resources"></a>步骤 5：监视资源
-你可以使用以下方法获取有关虚拟机规模集的一些信息：
+可以使用以下方法获取有关虚拟机规模集的一些信息：
 
 * Azure 门户 - 当前使用门户可以获取有限数量的信息。
 
-* [Azure 资源浏览器](https://resources.azure.com/) - 要浏览规模集的当前状态，这是最好的工具。 遵循此路径，你应该看到所创建的规模集的实例视图：
+* [Azure 资源浏览器](https://resources.azure.com/) - 要浏览规模集的当前状态，这是最好的工具。 遵循此路径，应该看到所创建的规模集的实例视图：
   
     ```cli
     subscriptions > {your subscription} > resourceGroups > vmsstestrg1 > providers > Microsoft.Compute > virtualMachineScaleSets > vmsstest1 > virtualMachines
@@ -575,13 +575,13 @@ resourcePrefix: vmsstest
     azure resource show -n vmsstest1 -r Microsoft.Compute/virtualMachineScaleSets -o 2015-06-15 -g vmsstestrg1
     ```
 
-* 就像连接任何其他虚拟机一样连接到 jumpbox 虚拟机，然后可以远程访问规模集中的虚拟机，以监视单个进程。
+* 就像连接任何其他虚拟机一样连接到 jumpbox 虚拟机，并可以远程访问缩放集中的虚拟机，以监视单个进程。
 
 > [!NOTE]
 > 用于获取有关规模集的信息的完整 REST API 可在[Virtual Machine Scale Sets](https://msdn.microsoft.com/library/mt589023.aspx)（虚拟机规模集）中找到。
 
 ## <a name="step-6-remove-the-resources"></a>步骤 6：删除资源
-由于你需要为 Azure 中使用的资源付费，因此，删除不再需要的资源总是一种良好的做法。 你不需要单独从资源组中删除每个资源， 删除资源组，其中包含的所有资源即会自动删除。
+由于需要为 Azure 中使用的资源付费，因此，删除不再需要的资源总是一种良好的做法。 不需要单独从资源组中删除每个资源， 删除资源组，其中包含的所有资源即会自动删除。
 
 ```cli
 azure group delete vmsstestrg1

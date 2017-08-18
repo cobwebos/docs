@@ -15,20 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 4282ee8c549061bb818038a4312411c87c1b44c7
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: a5cbbdf402ee06a34a339b193b0cdd5c952d6248
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="how-to-configure-an-availability-set-for-windows-virtual-machines-in-the-classic-deployment-model"></a>如何在经典部署模型中为 Windows 虚拟机配置可用性集
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 也可以在 Resource Manager 部署中[配置可用性集](../create-availability-set.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 也可以在 Resource Manager 部署中[配置可用性集](../tutorial-availability-sets.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 [!INCLUDE [virtual-machines-common-classic-configure-availability](../../../../includes/virtual-machines-common-classic-configure-availability.md)]
-
-## <a name="next-steps"></a>后续步骤
-有关经典部署的其他文章，请参阅[有关经典部署模型中的 Windows VM的技术文章](../../virtual-machines-windows-index.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 
