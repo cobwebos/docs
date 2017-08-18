@@ -10,7 +10,7 @@ az webapp deployment source config-local-git --name <app_name> --resource-group 
 git remote add azure <URI from previous step>
 ```
 
-推送到 Azure 远程功能以部署应用。 系统将提示你输入之前创建部署用户时创建的密码。 请确保输入之前在快速入门中创建的密码，而不是用于登录 Azure 门户的密码。
+推送到 Azure 远程功能以部署应用。 系统会提示输入之前创建部署用户时创建的密码。 请确保输入之前在快速入门中创建的密码，而不是用于登录 Azure 门户的密码。
 
 ```bash
 git push azure master
