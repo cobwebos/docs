@@ -31,7 +31,7 @@ Application Insights 收集的数据为典型的应用程序执行模式建模�
 
 * [请求](application-insights-data-model-request-telemetry.md) - 生成该类型的遥测用以记录应用接收的请求。 例如，Application Insights Web SDK 会自动为 Web 应用接收到的每个 HTTP 请求生成请求遥测项。 
 
-    “操作”是处理请求的执行线程。 还可以[编写代码](app-insights-api-custom-events-metrics.md#trackrequest)监视其他类型的操作，例如 Web 作业或函数中定期处理数据的“唤醒”操作。  每个操作都有一个 ID。 此 ID 可用于将应用处理请求时生成的所有遥测 [分组](application-insights-correlation.md)。 每个操作无论成功或失败都需要持续一段时间。
+    “操作”是处理请求的执行线程。 还可以[编写代码](app-insights-api-custom-events-metrics.md#trackrequest)监视其他类型的操作，例如 Web 作业或函数中定期处理数据的“唤醒”操作。  每个操作都有一个 ID。 此 ID 可用于将应用处理请求时生成的所有遥测 [分组] \(application-insights-correlation.md)。 每个操作无论成功或失败都需要持续一段时间。
 * [异常](application-insights-data-model-exception-telemetry.md) - 通常表示导致操作失败的异常。
 * [依赖项](application-insights-data-model-dependency-telemetry.md) - 表示从应用到外部服务或存储（如 REST API 或 SQL）的调用。 在 ASP.NET 中，对 SQL 的依赖项调用由 `System.Data` 定义。 对 HTTP 终结点的调用由 `System.Net` 定义。 
 
