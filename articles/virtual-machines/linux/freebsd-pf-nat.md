@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: a1470234489d67e0dd90237029ce454437f9bfee
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: cd777291a1321eabf4efe0d7b9b101f932d9398b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -30,8 +30,8 @@ ms.lasthandoff: 04/03/2017
 PF（数据包筛选器，也写为 pf）是 BSD 许可的有状态数据包筛选器，是用于创建防火墙的软件的中心部分。 由于 PF 的快速发展，现在相比其他可用的防火墙具有一些优势。 从一开始 PF 就包括网络地址转换 (NAT) 功能，随后通过集成 ALTQ 并可使用 PF 的配置对其进行配置，将数据包计划程序和活动队列管理功能集成到 PF。 PF 具有一些扩展功能，例如用于故障转移和冗余的 pfsync 和 CARP、用于会话身份验证的 authpf，以及用于简化使用复杂的 FTP 协议创建防火墙的 ftp-proxy 等。 简而言之，PF 是一个功能强大且丰富的防火墙。 
 
 ## <a name="get-started"></a>入门
-如果你有兴趣在云中为你的 Web 服务器设置安全防火墙，那么让我们开始吧。 你还可以将此 Azure Resource Manager 模板中使用的脚本应用于网络拓扑的设置。
-Azure Resource Manager 模板设置一个使用 PF 执行 NAT/重定向的 FreeBSD 虚拟机和两个安装并配置了 Nginx Web 服务器的 FreeBSD 虚拟机。 除了为两个 Web 服务器出口流量执行 NAT，NAT/重定向虚拟机还在轮询机制下截获 HTTP 请求并将其重定向到这两个 Web 服务器。 VNet 使用专用的不可路由 IP 地址空间 10.0.0.2/24，你可以修改模板的参数。 Azure Resource Manager 模板还为整个 VNet 定义路由表，该路由表是用于替代基于目标 IP 地址的 Azure 默认路由的各个路由的集合。 
+如果有兴趣在云中为 Web 服务器设置安全防火墙，那么让我们开始吧。 还可以将此 Azure Resource Manager 模板中使用的脚本应用于网络拓扑的设置。
+Azure Resource Manager 模板设置一个使用 PF 执行 NAT/重定向的 FreeBSD 虚拟机和两个安装并配置了 Nginx Web 服务器的 FreeBSD 虚拟机。 除了为两个 Web 服务器出口流量执行 NAT，NAT/重定向虚拟机还在轮询机制下截获 HTTP 请求并将其重定向到这两个 Web 服务器。 VNet 使用专用的不可路由 IP 地址空间 10.0.0.2/24，可以修改模板的参数。 Azure Resource Manager 模板还为整个 VNet 定义路由表，该路由表是用于替代基于目标 IP 地址的 Azure 默认路由的各个路由的集合。 
 
 ![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
     
@@ -50,7 +50,7 @@ az group deployment create --resource-group myResourceGroup --name myDeploymentN
     --parameters '@azuredeploy.parameters.json' --verbose
 ```
 
-大约五分钟后，你将获得 `"provisioningState": "Succeeded"` 的信息。 然后你可以使用 ssh 访问前端 VM (NAT) 或使用前端 VM (NAT) 的公共 IP 地址或 FQDN 在浏览器中访问 Nginx Web 服务器。 以下示例列出了分配给 `myResourceGroup` 资源组中前端 VM (NAT) 的 FQDN 和公共 IP 地址。 
+大约五分钟后，会获得 `"provisioningState": "Succeeded"` 的信息。 然后可以使用 ssh 访问前端 VM (NAT) 或使用前端 VM (NAT) 的公共 IP 地址或 FQDN 在浏览器中访问 Nginx Web 服务器。 以下示例列出了分配给 `myResourceGroup` 资源组中前端 VM (NAT) 的 FQDN 和公共 IP 地址。 
 
 ```azurecli
 az network public-ip list --resource-group myResourceGroup
@@ -59,7 +59,7 @@ az network public-ip list --resource-group myResourceGroup
 ## <a name="next-steps"></a>后续步骤
 是否要在 Azure 中设置自己的 NAT？ 是否开源、免费，但功能强大？ 那么 PF 是一个不错的选择。 通过使用模板 [pf-freebsd-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup)，只需要五分钟即可在 Azure 中使用 FreeBSD 的 PF 为通用 Web 服务器方案设置具有轮循机制负载均衡的 NAT 防火墙。 
 
-如果想要了解 Azure 中的 FreeBSD 产品，请参阅 [Azure FreeBSD 简介](./../virtual-machines-freebsd-intro-on-azure.md)。
+如果想要了解 Azure 中的 FreeBSD 产品，请参阅 [Azure FreeBSD 简介](freebsd-intro-on-azure.md)。
 
 如果想要了解有关 PF 的详细信息，请参阅 [FreeBSD 手册](https://www.freebsd.org/doc/handbook/firewalls-pf.html)或 [PF - 用户指南](https://www.freebsd.org/doc/handbook/firewalls-pf.html)。
 
