@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/23/2017
 ms.author: iainfou
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 3109da1dac6ebb6564c94b5c6635ded77ea9be8d
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: f7ba456a0d23560ee70f14ecb61c0d016e24e7e1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
@@ -96,17 +96,6 @@ ms.lasthandoff: 08/09/2017
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
     ```
-
-## <a name="managed-disks-and-azure-storage-service-encryption"></a>托管磁盘和 Azure 存储服务加密
-如果非托管磁盘所在的存储帐户曾使用 [Azure 存储服务加密](../../storage/storage-service-encryption.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)进行了加密，则无法使用之前的步骤将其转换为托管磁盘。 下列步骤详细说明了如何复制和使用曾位于加密存储帐户中的非托管磁盘：
-
-1. 使用 [az storage blob copy start](/cli/azure/storage/blob/copy#start) 将 VHD 复制到从未针对 Azure 存储服务加密启用的存储帐户。
-
-2. 采用以下任一方式使用复制的 VM：
-
-   * 使用 [az vm create](/cli/azure/vm#create) 创建使用托管磁盘的 VM 并在创建期间指定该 VHD 文件。
-
-   * 使用 [az vm disk attach](/cli/azure/vm/disk#attach) 将复制的 VHD 附加到正在运行且使用托管磁盘的 VM。
 
 ## <a name="next-steps"></a>后续步骤
 有关存储选项的详细信息，请参阅 [Azure 托管磁盘概述](../../storage/storage-managed-disks-overview.md)。

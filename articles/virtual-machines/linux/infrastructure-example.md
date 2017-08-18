@@ -16,19 +16,18 @@ ms.topic: article
 ms.date: 06/26/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: aed95844ef230ee0f34a9a17cb67e1a9dcd9f81d
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: b18be0d81d6fad7328edb47c9b69af4eecd3b971
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>适用于 Linux VM 的 Azure 示例基础结构演练
 
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
-本文将逐步讲述如何构建示例应用程序基础结构。 我们将详细介绍如何设计简单在线商店的基础结构，此在线商店可将关于命名约定、可用性集、虚拟网络及负载均衡器的所有准则和决策聚集在一起；以及如何实际部署你的虚拟机 (VM)。
+本文将逐步讲述如何构建示例应用程序基础结构。 我们将详细介绍如何设计简单在线商店的基础结构，此在线商店可将关于命名约定、可用性集、虚拟网络及负载均衡器的所有准则和决策聚集在一起；以及如何实际部署虚拟机 (VM)。
 
 ## <a name="example-workload"></a>示例工作负荷
 Adventure Works Cycles 想要在 Azure 中生成一个在线商店应用程序，该应用程序将包含：
@@ -116,11 +115,7 @@ Adventure Works Cycles 决定为其 Azure VM 使用以下名称：
 * 同时使用标准磁盘和高级磁盘的 Azure 托管磁盘
 * 四个可用性集，每个在线商店层一个
 * 四个层中的虚拟机
-* 用于从 Internet 到 Web 服务器的基于 HTTPS 的 Web 流量的外部负载平衡集
-* 用于从 Web 服务器到应用程序服务器的未加密 Web 流量的内部负载平衡集
+* 用于从 Internet 到 Web 服务器的基于 HTTPS 的 Web 流量的外部负载均衡集
+* 用于从 Web 服务器到应用程序服务器的未加密 Web 流量的内部负载均衡集
 * 单个资源组
-
-## <a name="next-steps"></a>后续步骤
-[!INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
-
 

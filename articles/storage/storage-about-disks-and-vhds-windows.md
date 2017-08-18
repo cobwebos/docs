@@ -15,11 +15,10 @@ ms.topic: article
 ms.date: 06/15/2017
 ms.author: robinsh
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 953704c7eb8613d321a15a9f245118f87d33b51e
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 34a4d8fa176484fbadb1b385d794cada5be607c8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="about-disks-and-vhds-for-azure-windows-vms"></a>关于 Azure Windows VM 的磁盘和 VHD
@@ -39,7 +38,7 @@ ms.lasthandoff: 07/10/2017
 ### <a name="temporary-disk"></a>临时磁盘
 每个 VM 包含一个临时磁盘。 临时磁盘为应用程序和进程提供短期存储存储空间，仅用于存储页面或交换文件等数据。 在[维护事件](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)期间或[重新部署 VM](../virtual-machines/windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 时，临时磁盘上的数据可能会丢失。 在 VM 标准重启期间，临时驱动器上的数据应会保留。
 
-临时磁盘默认标记为 D: 盘，用于存储 pagefile.sys。 若要将此磁盘重新映射到其他驱动器号，请参阅 [Change the drive letter of the Windows temporary disk](../virtual-machines/windows/change-drive-letter.md)（更改 Windows 临时磁盘的驱动器号）。 临时磁盘的大小因虚拟机的大小而异。 有关详细信息，请参阅 [Sizes for Windows virtual machines](../virtual-machines/windows/sizes.md)（Windows 虚拟机的大小）。
+临时磁盘默认标记为 D: 盘，用于存储 pagefile.sys。 要将此磁盘重新映射到其他驱动器号，请参阅 [Change the drive letter of the Windows temporary disk](../virtual-machines/windows/change-drive-letter.md)（更改 Windows 临时磁盘的驱动器号）。 临时磁盘的大小因虚拟机的大小而异。 有关详细信息，请参阅 [Sizes for Windows virtual machines](../virtual-machines/windows/sizes.md)（Windows 虚拟机的大小）。
 
 有关 Azure 如何使用临时磁盘的详细信息，请参阅 [Understanding the temporary drive on Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)（了解 Microsoft Azure 虚拟机上的临时驱动器）
 
@@ -51,9 +50,9 @@ ms.lasthandoff: 07/10/2017
 > 有关虚拟机容量的详细信息，请参阅 [Sizes for Windows virtual machines](../virtual-machines/windows/sizes.md)（Windows 虚拟机的大小）。
 > 
 
-当你基于映像创建虚拟机时，Azure 将会创建操作系统磁盘。 如果你使用包含数据磁盘的映像，则 Azure 还会在创建虚拟机时创建数据磁盘。 否则，你需要在创建虚拟机后添加数据磁盘。
+基于映像创建虚拟机时，Azure 会创建操作系统磁盘。 如果使用包含数据磁盘的映像，则 Azure 还会在创建虚拟机时创建数据磁盘。 否则，需要在创建虚拟机后添加数据磁盘。
 
-随时可以将数据磁盘添加到虚拟机，只需将该磁盘**附加**到虚拟机即可。 你可以使用已上传或复制到存储帐户的 VHD，也可以让 Azure 为你创建 VHD。 附加数据磁盘会将 VHD 文件与 VM 关联，方法是在 VHD 上放置“租约”，因此在仍附加 VHD 时无法从存储中删除它。
+随时可以将数据磁盘添加到虚拟机，只需将该磁盘**附加**到虚拟机即可。 可以使用已上传或复制到存储帐户的 VHD，也可以让 Azure 创建 VHD。 附加数据磁盘会将 VHD 文件与 VM 关联，方法是在 VHD 上放置“租约”，因此在仍附加 VHD 时无法从存储中删除它。
 
 
 [!INCLUDE [storage-about-vhds-and-disks-windows-and-linux](../../includes/storage-about-vhds-and-disks-windows-and-linux.md)]
@@ -81,7 +80,7 @@ fsutil behavior set DisableDeleteNotify 0
 
 <!-- Might want to match next-steps from overview of managed disks -->
 ## <a name="next-steps"></a>后续步骤
-* [附加磁盘](../virtual-machines/windows/attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)可为 VM 添加额外的存储。
+* [附加磁盘](../virtual-machines/windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)可为 VM 添加额外的存储。
 * [更改 Windows 临时磁盘的驱动器号](../virtual-machines/windows/change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)，使应用程序能够将 D: 盘用于数据。
 
 
