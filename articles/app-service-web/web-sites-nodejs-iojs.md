@@ -3,8 +3,8 @@ title: "如何将 io.js 与 Azure App Service Web Apps 配合使用"
 description: "了解如何将 Azure App Service 中的 Web 应用与 io.js 配合使用。"
 services: app-service\web
 documentationcenter: nodejs
-author: rmcmurray
-manager: erikre
+author: TomArcher
+manager: routlaw
 editor: 
 ms.assetid: d6320725-ffcb-4ad7-ba63-fc72fa2f2808
 ms.service: app-service-web
@@ -12,13 +12,13 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 04/25/2017
-ms.author: robmcm
-translationtype: Human Translation
+ms.date: 08/17/2016
+ms.author: tarcher
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 5c14bd2ae2effd554f52662961c2e219433f8cd8
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/16/2017
-
 
 ---
 # <a name="how-to-use-iojs-with-azure-app-service-web-apps"></a>如何将 io.js 与 Azure App Service Web Apps 配合使用

@@ -13,7 +13,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/18/2017
+ms.date: 08/15/2017
 ms.author: owend
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 194910a3e4cb655b39a64d2540994d90d34a68e4
@@ -21,10 +21,8 @@ ms.openlocfilehash: 90a0cfb7c7cd7d3364ff42559dd7fdc7b2951abf
 ms.contentlocale: zh-cn
 ms.lasthandoff: 02/16/2017
 
-
 ---
-# 创建 Office 数据连接 (.odc) 文件
-<a id="create-an-office-data-connection-odc-file" class="xliff"></a>
+# <a name="create-an-office-data-connection-odc-file"></a>创建 Office 数据连接 (.odc) 文件
 
 本文中的信息描述了如何创建 .odc 文件以从 Excel 2016 版本号 16.0.7369.2117 或更早版本或 Excel 2013 连接到 Azure Analysis Services 服务器。 还需要更新的 [MSOLAP.7 提供程序](analysis-services-data-providers.md)。
 
