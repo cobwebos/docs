@@ -15,27 +15,31 @@ ms.custom:
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 094ae187ec8ba5ff38f174ee4cf139d30db7e057
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: c3e93614f012eecff0e88f5f2ad13db199406f4a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 
 # <a name="customize-web-application-firewall-rules-through-the-portal"></a>通过门户自定义 Web 应用程序防火墙规则
 
-应用程序网关 Web 应用程序防火墙可为 Web 应用程序提供保护。 这些保护由 OWASP CRS 规则集提供。 某些规则可能会导致误报，并会阻止实际流量。  出于此原因，应用程序网关在启用了 Web 应用程序防火墙的应用程序网关上提供了自定义规则组和规则的功能。 有关特定规则组和规则的详细信息，请访问 [Web 应用程序防火墙 CRS 规则组和规则](application-gateway-crs-rulegroups-rules.md)
+> [!div class="op_single_selector"]
+> * [Azure 门户](application-gateway-customize-waf-rules-portal.md)
+> * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
+> * [Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md)
+
+应用程序网关 Web 应用程序防火墙可为 Web 应用程序提供保护。 这些保护由 OWASP CRS 规则集提供。 某些规则可能会导致误报，并会阻止实际流量。  出于此原因，应用程序网关在启用了 Web 应用程序防火墙的应用程序网关上提供自定义规则组和规则的功能。 有关特定规则组和规则的详细信息，请访问 [Web 应用程序防火墙 CRS 规则组和规则](application-gateway-crs-rulegroups-rules.md)
 
 >[!NOTE]
-> 如果应用程序网关未使用 WAF 层，将显示“将应用程序网关升级到 WAF 层”选项，如下图所示：
+> 如果应用程序网关未使用 WAF 层，会显示“将应用程序网关升级到 WAF 层”选项，如下图所示：
 
-![启用 waf][fig1]
+![启用 WAF][fig1]
 
 ## <a name="view-rule-groups-and-rules"></a>查看规则组和规则
 
-导航到应用程序网关并选择“Web 应用程序防火墙”。  单击“高级规则配置”。  这将在随所选规则集提供的所有规则组页上显示一个表。
+导航到应用程序网关并选择“Web 应用程序防火墙”。  单击“高级规则配置”。  此视图会在随所选规则集提供的所有规则组页上显示一个表。
 
 ![配置已禁用的规则][1]
 
@@ -47,13 +51,13 @@ ms.lasthandoff: 06/14/2017
 
 ## <a name="disable-rule-groups-and-rules"></a>禁用规则组和规则
 
-禁用规则时可以禁用整个规则组，也可以禁用一个或多个规则组下的特定规则。  取消选中要禁用的规则后，请单击“保存”。  这会将更改保存到应用程序网关。
+禁用规则时可以禁用整个规则组，也可以禁用一个或多个规则组下的特定规则。  取消选中要禁用的规则后，请单击“保存”。  此步骤会将更改保存到应用程序网关。
 
 ![保存更改][3]
 
 ## <a name="next-steps"></a>后续步骤
 
-配置已禁用的规则后，可通过访问[应用程序网关诊断](application-gateway-diagnostics.md#diagnostic-logs)来了解如何查看 WAF 日志
+配置已禁用的规则后，可通过访问[应用程序网关诊断](application-gateway-diagnostics.md#diagnostic-logging)来了解如何查看 WAF 日志
 
 [fig1]: ./media/application-gateway-customize-waf-rules-portal/1.png
 [1]: ./media/application-gateway-customize-waf-rules-portal/figure1.png
