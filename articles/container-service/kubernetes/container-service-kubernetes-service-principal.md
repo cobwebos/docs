@@ -3,7 +3,7 @@ title: "Azure Kubernetes 群集的服务主体 | Microsoft Docs"
 description: "在 Azure 容器服务中为 Kubernetes 群集创建和管理 Azure Active Directory 服务主体"
 services: container-service
 documentationcenter: 
-author: dlepow
+author: neilpeterson
 manager: timlt
 editor: 
 tags: acs, azure-container-service, kubernetes
@@ -14,7 +14,7 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2017
-ms.author: danlep
+ms.author: nepeters
 ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3

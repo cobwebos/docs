@@ -3,8 +3,8 @@ title: "为 Azure App Service 中使用流量管理器进行负载平衡的 Web 
 description: "为 Azure App Service 中包含流量管理器（用于负载平衡）的 Web 应用使用自定义域名。"
 services: app-service\web
 documentationcenter: 
-author: rmcmurray
-manager: erikre
+author: cephalin
+manager: cfowler
 editor: 
 ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.service: app-service-web
@@ -12,13 +12,13 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2017
-ms.author: robmcm
-translationtype: Human Translation
+ms.date: 08/17/2016
+ms.author: cephalin
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
 ms.openlocfilehash: 532a953c02ef40eb55705eac885d74c5574deed5
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/05/2017
-
 
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>使用流量管理器为 Azure App Service 中的 Web 应用配置自定义域名

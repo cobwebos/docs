@@ -70,7 +70,7 @@ Service Fabric 具有自身的运行状况模型，以下文章对此做了详�
 若要报告指标，请使用如下所示的代码：
 
   ```csharp
-    this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("MemoryInMb", 1234), new LoadMetric("metric1", 42) });
+    this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("MemoryInMb", 1234), new LoadMetric("metric1", 42) });
   ```
 
 ### <a name="service-fabric-support-logs"></a>Service Fabric 支持日志
