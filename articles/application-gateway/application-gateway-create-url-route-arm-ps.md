@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: 76dfd1c2b2f17e6bc798f4313c4dc4817d2136a4
-ms.lasthandoff: 04/04/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: ba756d3262b9780c5701e69faad860ba32bba08b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="create-an-application-gateway-using-path-based-routing"></a>使用基于路径的路由创建应用程序网关
@@ -26,8 +26,9 @@ ms.lasthandoff: 04/04/2017
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-create-url-route-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-url-route-arm-ps.md)
+> * [Azure CLI 2.0](application-gateway-create-url-route-cli.md)
 
-借助基于 URL 路径的路由，可根据 Http 请求的 URL 路径来关联路由。 它将检查是否有路由连接到为应用程序网关中显示的 URL 配置的后端池，并将网络流量发送到定义的后端池。 基于 URL 的路由的常见用法是将不同内容类型的请求负载均衡到不同的后端服务器池。
+借助基于 URL 路径的路由，可根据 Http 请求的 URL 路径来关联路由。 它检查是否有路由连接到为应用程序网关中显示的 URL 配置的后端池。 然后将网络流量发送到定义的后端池。 基于 URL 的路由的常见用法是将不同内容类型的请求负载均衡到不同的后端服务器池。
 
 基于 URL 的路由将新的规则类型引入应用程序网关。 应用程序网关有两种规则类型：基本和 PathBasedRouting。 基本规则类型针对后端池提供轮循机制服务，而 PathBasedRouting 除了轮循机制分发以外，还在选择后端池时考虑请求 URL 的路径模式。
 
@@ -51,13 +52,13 @@ ms.lasthandoff: 04/04/2017
 * **后端服务器池设置：** 每个池都有一些设置，例如端口、协议和基于 Cookie 的关联性。 这些设置绑定到池，并会应用到池中的所有服务器。
 * **前端端口：** 此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，然后重定向到后端服务器之一。
 * **侦听器：** 侦听器具有前端端口、协议（Http 或 Https，这些值区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。
-* **规则：** 规则将会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。
+* **规则：**规则会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
 使用 Azure 经典部署和 Azure Resource Manager 部署的差别在于创建应用程序网关的顺序和需要配置的项。
 
-使用 Resource Manager 时，组成应用程序网关的所有项都将分开配置，然后放在一起创建应用程序网关资源。
+使用 Resource Manager 时，组成应用程序网关的所有项都将分开配置，并放在一起创建应用程序网关资源。
 
 以下是创建应用程序网关所需执行的步骤：
 
@@ -66,7 +67,7 @@ ms.lasthandoff: 04/04/2017
 3. 创建应用程序网关配置对象。
 4. 创建应用程序网关资源。
 
-## <a name="create-a-resource-group-for-resource-manager"></a>创建资源管理器的资源组
+## <a name="create-a-resource-group-for-resource-manager"></a>创建 Resource Manager 的资源组
 
 确保使用最新版本的 Azure PowerShell。 [将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)中提供了详细信息。
 
@@ -78,7 +79,7 @@ ms.lasthandoff: 04/04/2017
 Login-AzureRmAccount
 ```
 
-系统将提示用户使用凭据进行身份验证。<BR>
+系统会提示用户使用凭据进行身份验证。<BR>
 
 ### <a name="step-2"></a>步骤 2
 
@@ -110,18 +111,18 @@ $resourceGroup = New-AzureRmResourceGroup -Name appgw-RG -Location "West US"
 $resourceGroup = New-AzureRmResourceGroup -Name appgw-RG -Location "West US" -Tags @{Name = "testtag"; Value = "Application Gateway URL routing"} 
 ```
 
-Azure 资源管理器要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
+Azure 资源管理器要求所有资源组指定一个位置。 此资源组用作该资源组中资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
 
 在上面的示例中，我们在位置“美国西部”创建了名为“appgw-RG”的资源组。
 
 > [!NOTE]
-> 如果你需要为应用程序网关配置自定义探测，请参阅 [Create an application gateway with custom probes by using PowerShell](application-gateway-create-probe-ps.md)（使用 PowerShell 创建带自定义探测的应用程序网关）。 有关详细信息，请查看 [custom probes and health monitoring](application-gateway-probe-overview.md) （自定义探测和运行状况监视）。
+> 如果需要为应用程序网关配置自定义探测，请参阅 [Create an application gateway with custom probes by using PowerShell](application-gateway-create-probe-ps.md)（使用 PowerShell 创建带自定义探测的应用程序网关）。 有关详细信息，请查看 [custom probes and health monitoring](application-gateway-probe-overview.md) （自定义探测和运行状况监视）。
 > 
 > 
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>为应用程序网关创建虚拟网络和子网
 
-以下示例演示如何使用 Resource Manager 创建虚拟网络。 该示例创建适用于应用程序网关的 VNET。 应用程序网关需要其自己的子网，因此，为应用程序网关创建的子网小于 VNET 地址空间。 这允许在同一 VNET 中配置其他资源（包括但不限于 Web 服务器）。
+以下示例演示如何使用 Resource Manager 创建虚拟网络。 该示例创建适用于应用程序网关的 VNET。 应用程序网关需要自己的子网，因此，为应用程序网关创建的子网小于 VNET 地址空间。 这允许在同一 VNET 中配置其他资源（包括但不限于 Web 服务器）。
 
 ### <a name="step-1"></a>步骤 1
 
@@ -141,7 +142,7 @@ $vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-RG -L
 
 ### <a name="step-3"></a>步骤 3
 
-为后续步骤分配子网变量，将在以后的步骤中将该变量传递给 `New-AzureRMApplicationGateway` cmdlet。
+为后续步骤分配子网变量，会在以后的步骤中将该变量传递给 `New-AzureRMApplicationGateway` cmdlet。
 
 ```powershell
 $subnet=$vnet.Subnets[0]
@@ -217,12 +218,12 @@ $listener = New-AzureRmApplicationGatewayHttpListener -Name "listener01" -Protoc
 
 ### <a name="step-7"></a>步骤 7
 
-配置后端池的 URL 规则路径。 此步骤配置应用程序网关用于定义 URL 路径间映射的相对路径，并会分配到后端池来处理传入流量。
+配置后端池的 URL 规则路径。 此步骤配置应用程序网关的相对路径，并定义 URL 路径和分配为处理传入流量的后端池之间的映射。
 
 > [!IMPORTANT]
 > 每个路径必须以 / 开头，“\*”只允许放在末尾处。 有效示例包括 /xyz, /xyz* 或 /xyz/*。 发送到路径匹配器的字符串不会在第一个“?”或“#”之后包含任何文本，不允许使用这些字符。 
 
-以下示例将创建两个规则：一个用于将流量路由到后端“pool1”的“/image/”路径，另一个用于将流量路由到后端“pool2”的“/video/”路径。 这些规则可确保将每个 URL 集的流量路由到后端。 例如，http://contoso.com/image/figure1.jpg 将转到 pool1，而 http://contoso.com/video/example.mp4 将转到 pool2。
+以下示例创建两个规则：一个用于将流量路由到后端“pool1”的“/image/”路径，另一个用于将流量路由到后端“pool2”的“/video/”路径。 这些规则可确保将每个 URL 集的流量路由到后端。 例如，http://contoso.com/image/figure1.jpg 转到 pool1，而 http://contoso.com/video/example.mp4 转到 pool2。
 
 ```powershell
 $imagePathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "pathrule1" -Paths "/image/*" -BackendAddressPool $pool1 -BackendHttpSettings $poolSetting01
@@ -230,7 +231,7 @@ $imagePathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "pathrule1" -
 $videoPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "pathrule2" -Paths "/video/*" -BackendAddressPool $pool2 -BackendHttpSettings $poolSetting02
 ```
 
-如果路径不符合任何预定义的路径规则，规则路径映射配置也会配置默认的后端地址池。 例如，http://contoso.com/shoppingcart/test.html 将转到 pool1，因为它定义为非匹配流量的默认池。
+如果路径不符合任何预定义的路径规则，规则路径映射配置也会配置默认的后端地址池。 例如，http://contoso.com/shoppingcart/test.html 转到 pool1，因为它定义为非匹配流量的默认池。
 
 ```powershell
 $urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -PathRules $videoPathRule, $imagePathRule -DefaultBackendAddressPool $pool1 -DefaultBackendHttpSettings $poolSetting02
@@ -262,7 +263,7 @@ $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-
 
 ## <a name="get-application-gateway-dns-name"></a>获取应用程序网关 DNS 名称
 
-创建网关后，下一步是配置前端以进行通信。 使用公共 IP 时，应用程序网关需要动态分配 DNS 名称，该名称不友好。 若要确保最终用户可以访问应用程序网关，可以使用 CNAME 记录以指向应用程序网关的公共终结点。 [在 Azure 中配置自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。 若要配置前端 IP CNAME 记录，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 应使用应用程序网关的 DNS 名称来创建 CNAME 记录，使两个 Web 应用程序都指向此 DNS 名称。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
+创建网关后，下一步是配置前端以进行通信。 使用公共 IP 时，应用程序网关需要动态分配的 DNS 名称，这会造成不方便。 若要确保最终用户能够访问应用程序网关，可以使用 CNAME 记录指向应用程序网关的公共终结点。 [在 Azure 中配置自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。 若要配置前端 IP CNAME 记录，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 应用程序网关 DNS 名称必须用于创建 CNAME 记录。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01

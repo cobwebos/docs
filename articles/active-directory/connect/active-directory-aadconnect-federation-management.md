@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 2a64405c0862d09dd487d260a651123eafbcaf99
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 14f03542a6553c5bb697192828368ffe6b96441c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/10/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>使用 Azure AD Connect 管理和自定义 Active Directory 联合身份验证服务
@@ -48,18 +48,18 @@ ms.lasthandoff: 04/10/2017
 1. 从其他任务列表中选择“修复 AAD 和 ADFS 信任”。
    ![修复 AAD 和 ADFS 信任](media/active-directory-aadconnect-federation-management/RepairADTrust1.PNG)
 
-2. 在“连接到 Azure AD”页上，提供 Azure AD 的全局管理员凭据，然后单击“下一步”。
+2. 在“连接到 Azure AD”页上，提供 Azure AD 的全局管理员凭据，并单击“下一步”。
    ![连接到 Azure AD](media/active-directory-aadconnect-federation-management/RepairADTrust2.PNG)
 
 3. 在“远程访问凭据”页上，输入域管理员的凭据。
 
    ![远程访问凭据](media/active-directory-aadconnect-federation-management/RepairADTrust3.PNG)
 
-    单击“下一步”后，Azure AD Connect 将检查证书运行状况，并显示任何问题。
+    单击“下一步”后，Azure AD Connect 会检查证书运行状况，并显示任何问题。
 
     ![证书状态](media/active-directory-aadconnect-federation-management/RepairADTrust4.PNG)
 
-    “已准备好配置”页将显示为修复信任而将要执行的操作列表。
+    “已准备好配置”页会显示为修复信任而将要执行的操作列表。
 
     ![已准备好配置](media/active-directory-aadconnect-federation-management/RepairADTrust5.PNG)
 
@@ -75,11 +75,11 @@ ms.lasthandoff: 04/10/2017
 
 为 AD FS 配置备用登录 ID 包括两个主要步骤：
 1. **配置正确的颁发声明集**：已将 Azure AD 信赖方信任中的颁发声明规则修改为使用所选的 UserPrincipalName 属性作为用户的备用 ID。
-2. **在 AD FS 配置中启用备用登录 ID**：已更新 AD FS 配置，以便 AD FS 可以使用备用 ID 查找相应林中的用户。 此配置支持 Windows Server 2012 R2（带 KB2919355）或更高版本上的 AD FS。 如果 AD FS 服务器为 2012 R2，则 Azure AD Connect 会检查是否存在所需的知识库 (KB)。 如果未检测到知识库 (KB)，则在配置完成后将显示一条警告，如下所示：
+2. **在 AD FS 配置中启用备用登录 ID**：已更新 AD FS 配置，以便 AD FS 可以使用备用 ID 查找相应林中的用户。 此配置支持 Windows Server 2012 R2（带 KB2919355）或更高版本上的 AD FS。 如果 AD FS 服务器为 2012 R2，则 Azure AD Connect 会检查是否存在所需的知识库 (KB)。 如果未检测到知识库 (KB)，则在配置完成后会显示一条警告，如下所示：
 
     ![警告：2012R2 上缺少知识库 (KB)](media/active-directory-aadconnect-federation-management/kbwarning.png)
 
-    若要纠正缺少知识库 (KB) 情况下的配置，请安装所需的 [KB2919355](http://go.microsoft.com/fwlink/?LinkID=396590)，然后借助[修复 AAD 和 AD FS 信任](#repairthetrust)修复信任。
+    要纠正缺少知识库 (KB) 情况下的配置，请安装所需的 [KB2919355](http://go.microsoft.com/fwlink/?LinkID=396590)，并借助[修复 AAD 和 AD FS 信任](#repairthetrust)修复信任。
 
 > [!NOTE]
 > 有关 AlternateID 和手动配置步骤的详细信息，请阅读[配置备用登录 ID](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id)
@@ -89,11 +89,11 @@ ms.lasthandoff: 04/10/2017
 > [!NOTE]
 > 若要添加 AD FS 服务器，Azure AD Connect 需要 PFX 证书。 因此，只有使用 Azure AD Connect 配置了 AD FS 场，才能执行此操作。
 
-1. 选择“部署其他联合服务器”，然后单击“下一步”。
+1. 选择“部署其他联合服务器”，并单击“下一步”。
 
    ![其他联合服务器](media/active-directory-aadconnect-federation-management/AddNewADFSServer1.PNG)
 
-2. 在“连接到 Azure AD”页上，输入 Azure AD 的全局管理员凭据，然后单击“下一步”。
+2. 在“连接到 Azure AD”页上，输入 Azure AD 的全局管理员凭据，并单击“下一步”。
 
    ![连接到 Azure AD](media/active-directory-aadconnect-federation-management/AddNewADFSServer2.PNG)
 
@@ -101,7 +101,7 @@ ms.lasthandoff: 04/10/2017
 
    ![域管理员凭据](media/active-directory-aadconnect-federation-management/AddNewADFSServer3.PNG)
 
-4. Azure AD Connect 将要求你提供在使用 Azure AD Connect 配置新的 AD FS 场时提供的 PFX 文件的密码。 单击“输入密码”提供 PFX 文件的密码。
+4. Azure AD Connect 将要求提供在使用 Azure AD Connect 配置新的 AD FS 场时提供的 PFX 文件的密码。 单击“输入密码”提供 PFX 文件的密码。
 
    ![证书密码](media/active-directory-aadconnect-federation-management/AddNewADFSServer4.PNG)
 
@@ -130,7 +130,7 @@ ms.lasthandoff: 04/10/2017
 
    ![连接到 Azure AD](media/active-directory-aadconnect-federation-management/wapserver2.PNG)
 
-3. 在“指定 SSL 证书”页上，为你在使用 Azure AD Connect 配置 AD FS 场时提供的 PFX 文件提供密码。
+3. 在“指定 SSL 证书”页上，为使用 Azure AD Connect 配置 AD FS 场时提供的 PFX 文件提供密码。
    ![证书密码](media/active-directory-aadconnect-federation-management/WapServer3.PNG)
 
     ![指定 SSL 证书](media/active-directory-aadconnect-federation-management/WapServer4.PNG)
@@ -153,7 +153,7 @@ ms.lasthandoff: 04/10/2017
 
 ## 添加联合域 <a name=addfeddomain></a>
 
-使用 Azure AD Connect 可以轻松添加要与 Azure AD 联合的域。 Azure AD Connect 将添加域用于联合身份验证，并修改声明规则，以便在你有多个域与 Azure AD 联合时，正确反映发布者。
+使用 Azure AD Connect 可以轻松添加要与 Azure AD 联合的域。 Azure AD Connect 将添加域用于联合身份验证，并修改声明规则，以便在有多个域与 Azure AD 联合时，正确反映发布者。
 
 1. 若要添加联合域，请选择任务“添加其他 Azure AD 域”。
 
@@ -173,9 +173,12 @@ ms.lasthandoff: 04/10/2017
 
     选择域后，向导将提供有关向导将采取的进一步操作以及配置产生的影响的适当信息。 在某些情况下，如果选择的域尚未在 Azure AD 中进行验证，则向导将提供帮助验证域的信息。 有关更多详细信息，请参阅[将自定义域名添加到 Azure Active Directory](../active-directory-add-domain.md)。
 
-5. 单击“资源组名称” 的 Azure 数据工厂。 “已准备好配置”页将显示 Azure AD Connect 将要执行的操作列表。 单击“安装”完成配置。
+5. 单击“下一步”。 “已准备好配置”页会显示 Azure AD Connect 将要执行的操作列表。 单击“安装”完成配置。
 
    ![已准备好配置](media/active-directory-aadconnect-federation-management/AdditionalDomain5.PNG)
+
+> [!NOTE]
+> 已添加的联合域中的用户必须在同步之后才能登录到 Azure AD。
 
 ## <a name="ad-fs-customization"></a>AD FS 自定义
 以下部分提供有关自定义 AD FS 登录页时可能必须执行的一些常见任务的详细信息。
@@ -192,17 +195,17 @@ ms.lasthandoff: 04/10/2017
 > *TargetName* 参数是必填参数。 随 AD FS 一起发布的默认主题名为“默认”。
 
 ## 添加登录说明 <a name=addsignindescription></a>
-若要将登录页说明添加到“登录”页，请使用以下 Windows PowerShell cmdlet 和语法。
+要将登录页说明添加到“登录”页，请使用以下 Windows PowerShell cmdlet 和语法。
 
     Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
 
 ## 修改 AD FS 声明规则 <a name=modclaims></a>
-AD FS 支持丰富的声明语言，让你用来创建自定义声明规则。 有关详细信息，请参阅[声明规则语言的作用](https://technet.microsoft.com/library/dd807118.aspx)。
+AD FS 支持丰富的声明语言，可用于创建自定义声明规则。 有关详细信息，请参阅[声明规则语言的作用](https://technet.microsoft.com/library/dd807118.aspx)。
 
 以下部分详细介绍了如何针对与 Azure AD 和 AD FS 联合身份验证有关的某些情况编写自定义规则。
 
 ### <a name="immutable-id-conditional-on-a-value-being-present-in-the-attribute"></a>属性中存在的值上的不可变 ID 条件
-当对象将同步到 Azure AD 时，通过 Azure AD Connect，你可以指定一个属性以用作源锚点。 如果自定义属性中的值非空，你可能需要发出不可变的 ID 声明。
+当对象将同步到 Azure AD 时，通过 Azure AD Connect，可以指定一个属性以用作源锚点。 如果自定义属性中的值非空，可能需要发出不可变的 ID 声明。
 
 例如，可以选择“ms-ds-consistencyguid”作为源锚点的属性，并且需要发出 **ImmutableID** 作为 **ms-ds-consistencyguid** 以防属性具有反对自身的值。 如果没有反对属性的值，则发出 **objectGuid** 作为不可变 ID。 可以按以下部分中所述构造自定义声明规则集。
 
@@ -220,7 +223,7 @@ AD FS 支持丰富的声明语言，让你用来创建自定义声明规则。 �
     NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
     => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 
-此规则定义名为 **idflag** 的临时标志，当没有为用户填充的 **ms-ds-consistencyguid** 时，该标志设置为 **useguid**。 这背后的逻辑在于 AD FS 不允许空的声明。 因此，在规则 1 中添加声明 http://contoso.com/ws/2016/02/identity/claims/objectguid 和 http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid 时，仅当为用户填充该值时会最终得到 **msdsconsistencyguid** 声明。 如果未填充该值，在 AD FS 中它就会作为空值出现，然后立即删除。 所有对象都具有 **objectGuid**，因此在执行规则 1 后声明将始终存在。
+此规则定义名为 **idflag** 的临时标志，当没有为用户填充的 **ms-ds-consistencyguid** 时，该标志设置为 **useguid**。 这背后的逻辑在于 AD FS 不允许空的声明。 因此，在规则 1 中添加声明 http://contoso.com/ws/2016/02/identity/claims/objectguid 和 http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid 时，仅当为用户填充该值时会最终得到 **msdsconsistencyguid** 声明。 如果未填充该值，AD FS 发现该空值后会立即将它删除。 所有对象都具有 **objectGuid**，因此在执行规则 1 后声明将始终存在。
 
 **规则 3：如果存在，将 ms-ds-consistencyguid 作为不可变 ID 发出**
 
