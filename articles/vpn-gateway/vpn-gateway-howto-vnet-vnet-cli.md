@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 85d89568f5022dafd44ae7f8578e0bebb22d472d
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: ae42f661b39e8b6170fd415d758404fb33009ccc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>使用 Azure CLI 配置 VNet 到 VNet 的 VPN 网关连接
@@ -44,13 +44,13 @@ ms.lasthandoff: 08/03/2017
 
 ![关于连接](./media/vpn-gateway-howto-vnet-vnet-cli/aboutconnections.png)
 
-### <a name="why-connect-virtual-networks"></a>为什么要连接虚拟网络？
+### <a name="why"></a>为什么要连接虚拟网络？
 
 你可能会出于以下原因而连接虚拟网络：
 
 * **跨区域地域冗余和地域存在**
 
-  * 你可以使用安全连接设置自己的异地复制或同步，而无需借助于面向 Internet 的终结点。
+  * 可以使用安全连接设置自己的异地复制或同步，而无需借助于面向 Internet 的终结点。
   * 使用 Azure 流量管理器和负载均衡器，可以设置支持跨多个 Azure 区域实现异地冗余的高可用性工作负荷。 一个重要的示例就是对分布在多个 Azure 区域中的可用性组设置 SQL Always On。
 * **具有隔离或管理边界的区域多层应用程序**
 
@@ -185,11 +185,11 @@ ms.lasthandoff: 08/03/2017
   az network vnet-gateway create -n VNet4GW -l westus --public-ip-address VNet4GWIP -g TestRG4 --vnet TestVNet4 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
   ```
 
-### <a name="step-4---create-the-connections"></a>步骤 4 - 创建连接
+### <a name="createconnect"></a>步骤 4 - 创建连接
 
 现在有两个带 VPN 网关的 VNet。 下一步是创建虚拟网关之间的 VPN 网关连接。 如果使用了上面的示例，则 VNet 网关位于不同的资源组。 如果网关位于不同的资源组中，则在进行连接时需标识并指定每个网关的资源 ID。 如果 VNet 位于同一资源组中，则可使用[第二组说明](#samerg)，因为不需指定资源 ID。
 
-### <a name="to-connect-vnets-that-reside-in-different-resource-groups"></a>若要连接驻留在不同资源组中的 VNet，请执行以下步骤
+### <a name="diffrg"></a>若要连接驻留在不同资源组中的 VNet，请执行以下步骤
 
 1. 从以下命令的输出中获取 VNet1GW 的资源 ID：
 
@@ -238,7 +238,7 @@ ms.lasthandoff: 08/03/2017
   ```azurecli
   az network vpn-connection create -n VNet4ToVNet1 -g TestRG4 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG4/providers/Microsoft.Network/virtualNetworkGateways/VNet4GW -l westus --shared-key "aabbcc" --vnet-gateway2 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1G
   ```
-5. 验证你的连接。 请参阅[验证连接](#verify)。
+5. 验证连接。 请参阅[验证连接](#verify)。
 
 ### <a name="samerg"></a>若要连接驻留在同一资源组中的 VNet，请执行以下步骤
 
@@ -252,7 +252,7 @@ ms.lasthandoff: 08/03/2017
   ```azurecli
   az network vpn-connection create -n VNet4ToVNet1 -g TestRG1 --vnet-gateway1 VNet4GW -l eastus --shared-key "eeffgg" --vnet-gateway2 VNet1GW
   ```
-3. 验证你的连接。 请参阅[验证连接](#verify)。
+3. 验证连接。 请参阅[验证连接](#verify)。
 
 ## <a name="difsub"></a>连接不同订阅中的 VNet
 
@@ -322,7 +322,7 @@ ms.lasthandoff: 08/03/2017
   az network vnet-gateway create -n VNet5GW -l japaneast --public-ip-address VNet5GWIP -g TestRG5 --vnet TestVNet5 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
   ```
 
-### <a name="step-8---create-the-connections"></a>步骤 8 - 创建连接
+### <a name="connections5"></a>步骤 8 - 创建连接
 
 由于网关位于不同订阅中，因此将此步骤拆分成两个 CLI 会话，分别标记为“[订阅 1]”和“[订阅 5]”。 要在订阅之间进行切换，请使用“az account list --all”列出可供帐户使用的订阅，并使用“az account set --subscription <subscriptionID>”切换到要使用的订阅。
 

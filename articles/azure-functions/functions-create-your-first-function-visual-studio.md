@@ -17,20 +17,17 @@ ms.workload: na
 ms.date: 07/05/2017
 ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 4a6b706b63c4e1b0df3c46bce4ff6877efca4ead
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: f3aa6740751db9aa979a88f9600f68cf4353643c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>使用 Visual Studio 创建你的第一个函数
 
-Azure Functions 可让你在无服务器环境中执行代码，而无需先创建 VM 或发布 Web 应用程序。
+Azure Functions 用于在无服务器环境中执行代码，无需先创建 VM 或发布 Web 应用程序。
 
-> [!IMPORTANT]
-> 本主题使用 Visual Studio 预览版完成所述的步骤。 在继续下一步之前，请确保已安装 [Visual Studio 2017 预览版 15.3](https://www.visualstudio.com/vs/preview/)。
-
-本主题介绍如何使用 Azure Function Tools for Visual Studio 2017 在本地创建并测试“hello world”函数。 然后将函数代码发布到 Azure。
+本主题介绍如何使用 Azure Function Tools for Visual Studio 2017 在本地创建并测试“hello world”函数。 然后将函数代码发布到 Azure。 这些工具包含在 Visual Studio 2017 版本 15.3 或更高版本的 Azure 开发工作负荷中。
 
 ![Visual Studio 项目中的 Azure Functions 代码](./media/functions-create-your-first-function-visual-studio/functions-vstools-intro.png)
 
@@ -38,17 +35,11 @@ Azure Functions 可让你在无服务器环境中执行代码，而无需先创�
 
 若要完成本教程，请安装：
 
-* [Visual Studio 2017 预览版 15.3](https://www.visualstudio.com/vs/preview/)，包括 **Azure 开发**工作负荷。
+* [Visual Studio 2017 版本 15.3](https://www.visualstudio.com/vs/preview/)，包括 **Azure 开发**工作负荷。
 
     ![使用 Azure 开发工作负荷安装 Visual Studio 2017](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="install-azure-functions-tools-for-visual-studio-2017"></a>安装 Azure Functions Tools for Visual Studio 2017
-
-在开始之前，必须下载并安装 Azure Functions Tools for Visual Studio 2017。 这些工具只能用于 Visual Studio 2017 预览版 15.3 或更高版本。 如果已安装 Azure Functions Tools，则可跳过此部分。
-
-[!INCLUDE [Install the Azure Functions Tools for Visual Studio](../../includes/functions-install-vstools.md)]   
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
 ## <a name="create-an-azure-functions-project-in-visual-studio"></a>在 Visual Studio 中创建 Azure Functions 项目
 

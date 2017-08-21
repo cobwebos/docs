@@ -5,14 +5,14 @@
 2. 从本地迁移具有较大 OS 驱动器的物理电脑或虚拟机。
 
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：Resource Manager 和经典。 本文介绍如何使用 Resource Manager 模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：Resource Manager 和经典。 本文介绍如何使用 Resource Manager 模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
 > 
 > 
 
 ## <a name="resize-the-os-drive"></a>调整 OS 驱动器的大小
 在本文中，我们将使用 [Azure Powershell](/powershell/azureps-cmdlets-docs) 的 Resource Manager 模块，完成调整 OS 驱动器大小的任务。 在管理模式下打开 Powershell ISE 或 Powershell 窗口，并遵循以下步骤：
 
-1. 在资源管理模式下登录 Microsoft Azure 帐户，然后选择订阅，如下所示：
+1. 在资源管理模式下登录 Microsoft Azure 帐户，并选择订阅，如下所示：
    
    ```Powershell
    Login-AzureRmAccount
@@ -51,10 +51,10 @@
    Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
    ```
 
-这就是所有的操作！ 现在，请通过 RDP 访问 VM，打开“计算机管理”（或“磁盘管理”），然后使用刚刚分配的空间扩展驱动器。
+这就是所有的操作！ 现在，请通过 RDP 访问 VM，打开“计算机管理”（或“磁盘管理”），并使用刚刚分配的空间扩展驱动器。
 
 ## <a name="summary"></a>摘要
-在本文中，我们已使用 Powershell 的 Azure Resource Manager 模块扩展 IaaS 虚拟机的 OS 驱动器。 以下重现了完整的脚本供你参考：
+在本文中，我们已使用 Powershell 的 Azure Resource Manager 模块扩展 IaaS 虚拟机的 OS 驱动器。 下面重新生成了完整脚本，供你参考：
 
 ```Powershell
 Login-AzureRmAccount
@@ -69,7 +69,7 @@ Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 ```
 
 ## <a name="next-steps"></a>后续步骤
-在本文中，我们着重于扩展 VM 的 OS 磁盘，但是，开发的脚本也可用于通过更改一行代码，来扩展附加到 VM 的数据磁盘。 例如，若要扩展附加到 VM 的第一个数据磁盘，请将 ```StorageProfile``` 的 ```OSDisk``` 对象替换为 ```DataDisks``` 数组，并使用数字索引获取对第一个附加的数据磁盘的引用，如下所示：
+在本文中，我们着重于扩展 VM 的 OS 磁盘，但是，开发的脚本也可用于通过更改一行代码，来扩展附加到 VM 的数据磁盘。 例如，要扩展附加到 VM 的第一个数据磁盘，请将 ```StorageProfile``` 的 ```OSDisk``` 对象替换为 ```DataDisks``` 数组，并使用数字索引获取对第一个附加的数据磁盘的引用，如下所示：
 
 ```Powershell
 $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
@@ -80,5 +80,5 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 ($vm.StorageProfile.DataDisks | Where {$_.Name -eq 'my-second-data-disk'})[0].DiskSizeGB = 1023
 ```
 
-如果想要了解如何将磁盘附加到 Azure Resource Manager VM，请参阅[此文](../articles/virtual-machines/windows/attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+如果想要了解如何将磁盘附加到 Azure Resource Manager VM，请参阅[此文](../articles/virtual-machines/windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 

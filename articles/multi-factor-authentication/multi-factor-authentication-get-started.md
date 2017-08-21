@@ -1,6 +1,6 @@
 ---
 title: "在 Azure MFA 云和服务器之间选择 | Microsoft 文档"
-description: "通过询问自己想要保护什么以及用户的位置，选择适合你的多重身份验证安全解决方案。  然后选择云、MFA 服务器或 AD FS。"
+description: "通过询问自己想要保护什么以及用户的位置，选择适合多重身份验证安全解决方案。  然后选择云、MFA 服务器或 AD FS。"
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/23/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 8c3cc27f1fa708371d415d00cdff59f77712cd41
-ms.lasthandoff: 05/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 6f8ee3449244b12d2c8b5714e6ad893e2f0b10ee
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>选择适合自己的 Azure 多重身份验证解决方案
@@ -33,13 +33,13 @@ ms.lasthandoff: 05/03/2017
 ## <a name="what-am-i-trying-to-secure"></a>我要保护什么？
 为了确定适当的多重验证解决方案，首先我们必须回答一个问题：试图使用第二种身份验证方法来保护什么？  它是 Azure 中的应用程序，  还是远程访问系统？  通过判断我们尝试保护的项目，就可以回答要在何处启用多重身份验证。  
 
-| 你想要保护什么 | 云中的 MFA | MFA 服务器 |
+| 想要保护什么 | 云中的 MFA | MFA 服务器 |
 | --- |:---:|:---:|
 | 第一方 Microsoft 应用 |● |● |
 | 应用库中的 SaaS 应用 |● |  |
 | 通过 Azure AD 应用代理发布的 Web 应用程序 |● |  |
 | 不是通过 Azure AD 应用代理发布的 IIS 应用程序 | |● |
-| VPN、RDG 等远程访问系统 | |● |
+| VPN、RDG 等远程访问系统 | ● | ● |
 
 ## <a name="where-are-the-users-located"></a>用户位于何处
 接下来，了解用户位于何处有助于确定要用的正确解决方案，不论是云中的多重身份验证还使用 MFA 服务器的本地多重身份验证。
@@ -76,13 +76,14 @@ ms.lasthandoff: 05/03/2017
 | 条件性访问 | ● | ● |
 | 缓存 |  | ● |
 
-在确定是要使用云 Multi-Factor Authentication 还是本地 MFA 服务器后，接下来可以开始设置并使用 Azure Multi-Factor Authentication。 **选择代表你的方案的图标！**
+## <a name="next-steps"></a>后续步骤
+
+在确定是要使用云多重身份验证还是本地 MFA 服务器后，接下来可以开始设置并使用 Azure 多重身份验证。 选择代表方案的图标
 
 <center>
 
 
 
 
-[![云](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</center>
+[![云](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![服务器](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </center>
 

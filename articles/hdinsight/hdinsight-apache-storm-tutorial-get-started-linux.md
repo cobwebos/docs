@@ -13,28 +13,26 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/25/2017
+ms.date: 08/15/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 5121861dc9fa11bbde32c12f3987bb60f2dda057
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 83fc6db1ddb43eb87e7c58684505d7196c1e53d0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 08/16/2017
 
 ---
-#通过 storm-starter 示例开始使用 Apache Storm on HDInsight
-<a id="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples" class="xliff"></a>
+#<a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>通过 storm-starter 示例开始使用 Apache Storm on HDInsight
 
 了解如何通过 storm-starter 示例在 HDInsight 中使用 Apache Storm。
 
-Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算系统，用于处理数据流。 使用 Azure HDInsight 上的 Storm，你可以创建一个基于云的、用于实时执行大数据分析的 Storm 群集。
+Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算系统，用于处理数据流。 使用 Azure HDInsight 上的 Storm，可以创建一个基于云的、用于实时执行大数据分析的 Storm 群集。
 
 > [!IMPORTANT]
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -42,12 +40,11 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
 
 * **熟悉 SSH 和 SCP**。 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-## 创建 Storm 群集
-<a id="create-a-storm-cluster" class="xliff"></a>
+## <a name="create-a-storm-cluster"></a>创建 Storm 群集
 
 使用以下步骤创建 Storm on HDInsight 群集：
 
-1. 从 [Azure 门户](https://portal.azure.com)，选择“+ 新建”**、“智能 + 分析”**，然后选择“HDInsight”。
+1. 从 [Azure 门户](https://portal.azure.com)，选择“+ 新建”**、“智能 + 分析”**，并选择“HDInsight”。
 
     ![创建 HDInsight 群集](./media/hdinsight-apache-storm-tutorial-get-started-linux/create-hdinsight.png)
 
@@ -62,13 +59,13 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
 
     ![选择订阅](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-basic-configuration.png)
 
-3. 选择“群集类型”，然后在“群集配置”边栏选项卡上设置以下值：
+3. 选择“群集类型”，并在“群集配置”边栏选项卡上设置以下值：
 
     * **群集类型**：Storm
 
     * **操作系统**：Linux
 
-    * **版本**：Storm 1.0.1 (HDI 3.5)
+    * 版本：Storm 1.1.0 (HDI 3.6)
 
     * **群集层**：标准
 
@@ -89,14 +86,13 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
     > [!NOTE]
     > 创建群集可能需要 20 分钟。
 
-## 在 HDInsight 上运行 Storm 初学者示例
-<a id="run-a-storm-starter-sample-on-hdinsight" class="xliff"></a>
+## <a name="run-a-storm-starter-sample-on-hdinsight"></a>在 HDInsight 上运行 Storm 初学者示例
 
 1. 使用 SSH 连接到 HDInsight 群集：
 
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
-    如果使用了密码来保护 SSH 帐户，系统会提示你输入密码。 如果使用了公钥，则可能需要使用 `-i` 参数来指定匹配的私钥。 例如，`ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`。
+    如果使用了密码来保护 SSH 帐户，系统会提示输入密码。 如果使用了公钥，则可能需要使用 `-i` 参数来指定匹配的私钥。 例如，`ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`。
 
     有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -114,19 +110,18 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
     >
     > WordCount 示例和其他 Storm 初学者示例已经包含在群集中，其位置为 `/usr/hdp/current/storm-client/contrib/storm-starter/`。
 
-如果有兴趣查看 Storm 初学者示例的源，可以在以下网页中找到代码：[https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter)。 此链接针对与 HDInsight 3.5 一起提供的 Storm 1.0.x。 对于其他版本的 Storm，可使用页面顶部的“分支”按钮选择不同的 Storm 版本。
+如果有兴趣查看 Storm 初学者示例的源，可以在以下网页中找到代码：[https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter)。 此链接针对与 HDInsight 3.6 一起提供的 Storm 1.1.x。 对于其他版本的 Storm，可使用页面顶部的“分支”按钮选择不同的 Storm 版本。
 
-## 监视拓扑
-<a id="monitor-the-topology" class="xliff"></a>
+## <a name="monitor-the-topology"></a>监视拓扑
 
-Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，你的 HDInsight 群集随附了此界面。
+Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，HDInsight 群集随附了此界面。
 
 执行以下步骤以使用 Storm UI 来监视拓扑。
 
 1. 若要显示 Storm UI，请在 Web 浏览器中打开 https://CLUSTERNAME.azurehdinsight.net/stormui。 将 **CLUSTERNAME** 替换为群集名称。
 
     > [!NOTE]
-    > 如果系统要求你提供用户名和密码，请输入创建群集时使用的群集管理员用户名 (admin) 和密码。
+    > 如果系统要求提供用户名和密码，请输入创建群集时使用的群集管理员用户名 (admin) 和密码。
 
 2. 在“拓扑摘要”下，选择“名称”列中的“Wordcount”条目。 将显示有关拓扑的信息。
 
@@ -151,7 +146,7 @@ Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，你的 HDIns
 
     * **停用** - 暂停正在运行的拓扑。
 
-    * **重新平衡** - 调整拓扑的并行度。 更改群集中的节点数目之后，你应该重新平衡正在运行的拓扑。 重新平衡可调整并行度，以弥补群集中增加/减少的节点数目。 有关详细信息，请参阅 [了解 Storm 拓扑的并行度](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
+    * **重新平衡** - 调整拓扑的并行度。 更改群集中的节点数目之后，应该重新平衡正在运行的拓扑。 重新平衡可调整并行度，以弥补群集中增加/减少的节点数目。 有关详细信息，请参阅 [了解 Storm 拓扑的并行度](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
 
     * **终止** - 在经过指定的超时之后终止 Storm 拓扑。
 
@@ -187,13 +182,11 @@ Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，你的 HDIns
 
     在此示例中，**seven** 一词出现了 1493957 次。 此计数就是自从启动此拓扑以来该单词出现的次数。
 
-## 停止拓扑
-<a id="stop-the-topology" class="xliff"></a>
+## <a name="stop-the-topology"></a>停止拓扑
 
-返回到单词计数拓扑的“拓扑摘要”页，然后从“拓扑操作”部分中选择“终止”按钮。 出现提示时，输入停止拓扑之前要等待的秒数，即 10。 在超时期限之后访问仪表板的“Storm UI”部分，将不再显示该拓扑。
+返回到单词计数拓扑的“拓扑摘要”页，并从“拓扑操作”部分中选择“终止”按钮。 出现提示时，输入停止拓扑之前要等待的秒数，即 10。 在超时期限之后访问仪表板的“Storm UI”部分，不再显示该拓扑。
 
-## 删除群集
-<a id="delete-the-cluster" class="xliff"></a>
+## <a name="delete-the-cluster"></a>删除群集
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -203,7 +196,7 @@ Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，你的 HDIns
 
 此 Apache Storm 教程介绍了有关使用 HDInsight 上 Storm 的基础知识。 接下来，了解如何 [使用 Maven 开发基于 Java 的拓扑](hdinsight-storm-develop-java-topology.md)。
 
-如果已知道怎样开发基于 Java 的拓扑并想要将现有拓扑部署到 HDInsight，请参阅 [在 HDInsight 上部署和管理 Apache Storm 拓扑](hdinsight-storm-deploy-monitor-topology-linux.md)。
+如果已知道怎样开发基于 Java 的拓扑并想要将现有拓扑部署到 HDInsight，请参阅[在 HDInsight 上部署和管理 Apache Storm 拓扑](hdinsight-storm-deploy-monitor-topology-linux.md)。
 
 如果用户是 .NET 开发人员，则可使用 Visual Studio 创建 C# 拓扑或混合性的 C#/Java 拓扑。 有关详细信息，请参阅[使用用于 Visual Studio 的 Hadoop 工具开发 Apache Storm on HDInsight 的 C# 拓扑](hdinsight-storm-develop-csharp-visual-studio-topology.md)。
 

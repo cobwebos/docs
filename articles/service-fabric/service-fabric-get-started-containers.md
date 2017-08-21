@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/18/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: 0c0b567d353fd77f72170a4bf807ec0d2585e357
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: e37a8ee4d7eda192caf7a4d3ab0db6e4a08576d8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 07/22/2017
 一台运行以下软件的开发计算机：
 * Visual Studio 2015 或 Visual Studio 2017。
 * [Service Fabric SDK 和工具](service-fabric-get-started.md)。
-*  适用于 Windows 的 Docker。  [Get Docker CE for Windows (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)（获取适用于 Windows 的 Docker CE（稳定版））。 安装并启动 Docker 以后，右键单击任务栏图标，然后选择“切换到 Windows 容器”。 这是运行基于 Windows 的 Docker 映像所必需的。
+*  适用于 Windows 的 Docker。  [Get Docker CE for Windows (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)（获取适用于 Windows 的 Docker CE（稳定版））。 安装并启动 Docker 以后，右键单击任务栏图标，并选择“切换到 Windows 容器”。 这是运行基于 Windows 的 Docker 映像所必需的。
 
 一个 Windows 群集，其中至少有三个节点运行在包含容器的 Windows Server 2016 上 - [创建群集](service-fabric-cluster-creation-via-portal.md)或[免费试用 Service Fabric](https://aka.ms/tryservicefabric)。
 
@@ -170,10 +170,10 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 Service Fabric SDK 和工具提供服务模板，用于创建容器化应用程序。
 
 1. 启动 Visual Studio。  选择“文件” > “新建” > “项目”。
-2. 选择“Service Fabric 应用程序”，将其命名为“MyFirstContainer”，然后单击“确定”。
+2. 选择“Service Fabric 应用程序”，将其命名为“MyFirstContainer”，并单击“确定”。
 3. 从“服务模板”列表中选择“来宾容器”。
 4. 在“映像名称”中输入“myregistry.azurecr.io/samples/helloworldapp”，这是已推送到容器存储库中的映像。
-5. 为服务命名，然后单击“**确定**”。
+5. 为服务命名，并单击“**确定**”。
 
 ## <a name="configure-communication"></a>配置通信
 容器化服务需要使用终结点进行通信。 请将 `Endpoint` 元素以及协议、端口和类型添加到 ServiceManifest.xml 文件。 本文所述的容器化服务在端口 8081 上侦听。  在此示例中，使用固定端口 8081。  如果未指定端口，则从应用程序端口范围中选择一个随机端口。  
@@ -426,6 +426,46 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
   </DefaultServices>
 </ApplicationManifest>
 ```
+
+## <a name="configure-time-interval-before-container-is-force-terminated"></a>配置在强制终止容器之前需经历的时间间隔
+
+可以配置一个时间间隔，目的是在启动服务删除操作（或移动到另一个节点的操作）之后，要求运行时在删除容器之前等待特定的时间。 配置时间间隔时，会向容器发送 `docker stop <time in seconds>` 命令。   有关更多详细信息，请参阅 [docker stop](https://docs.docker.com/engine/reference/commandline/stop/)。 等待时间间隔在 `Hosting` 节指定。 以下群集清单代码片段显示了如何设置等待时间间隔：
+
+```xml
+{
+        "name": "Hosting",
+        "parameters": [
+          {
+            "ContainerDeactivationTimeout": "10",
+          ...
+          }
+        ]
+}
+```
+默认时间间隔设置为 10 秒。 由于此配置是动态的，因此对群集进行仅限配置的升级即可更新超时。 
+
+
+## <a name="configure-the-runtime-to-remove-unused-container-images"></a>将运行时配置为删除未使用的容器映像
+
+可以将 Service Fabric 群集配置为从节点删除未使用的容器映像。 如果节点上存在过多容器映像，则可通过此配置回收磁盘空间。  若要启用此功能，请更新群集清单中的 `Hosting` 节，如以下代码片段所示： 
+
+
+```xml
+{
+        "name": "Hosting",
+        "parameters": [
+          {
+            "PruneContainerImages": “True”,
+            "ContainerImagesToSkip": "microsoft/windowsservercore|microsoft/nanoserver|…",
+          ...
+          }
+        ]
+} 
+```
+
+对于不应删除的映像，可以在 `ContainerImagesToSkip` 参数下进行指定。 
+
+
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解如何运行 [Service Fabric 上的容器](service-fabric-containers-overview.md)。

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2017
 ms.author: cherylmc,yushwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 3627b3dfa5067883625b9a714645164ec99c8a51
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 27e5dbff8d4a9a2ed82ab6691aa82c2668fec958
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="vpn-gateway-faq"></a>VPN 网关常见问题
@@ -36,7 +35,7 @@ ms.lasthandoff: 06/01/2017
 
 ### <a name="can-i-connect-to-multiple-sites-from-a-single-virtual-network"></a>能否从一个虚拟网络连接到多个站点？
 
-你可以使用 Windows PowerShell 和 Azure REST API 连接到多个站点。 请参阅 [多站点与 VNet 到 VNet 连接](#V2VMulti) 的“常见问题”部分。
+可以使用 Windows PowerShell 和 Azure REST API 连接到多个站点。 请参阅 [多站点与 VNet 到 VNet 连接](#V2VMulti) 的“常见问题”部分。
 
 ### <a name="what-are-my-cross-premises-connection-options"></a>我的跨界连接选项有哪些？
 
@@ -45,20 +44,20 @@ ms.lasthandoff: 06/01/2017
 * 站点到站点 - 基于 IPsec（IKE v1 和 IKE v2）的 VPN 连接。 此类型的连接需要 VPN 设备或 RRAS。 有关详细信息，请参阅[站点到站点](vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
 * 点到站点 - 基于 SSTP（安全套接字隧道协议）的 VPN 连接。 此连接不需要 VPN 设备。 有关详细信息，请参阅[点到站点](vpn-gateway-howto-point-to-site-resource-manager-portal.md)。
 * VNet 到 VNet - 此类连接与站点到站点配置相同。 VNet 到 VNet 是一种基于 IPsec（IKE v1 和 IKE v2）的 VPN 连接。 它不需要 VPN 设备。 有关详细信息，请参阅 [VNet 到 VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)。
-* 多站点 - 这是站点到站点配置的变体，可以让你将多个本地站点连接到虚拟网络。 有关详细信息，请参阅[多站点](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)。
+* 多站点 - 这是站点到站点配置的变体，可以用于将多个本地站点连接到虚拟网络。 有关详细信息，请参阅[多站点](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)。
 * ExpressRoute - ExpressRoute 可以从 WAN 直接连接到 Azure，不需要经公共 Internet 的 VPN 连接。 有关详细信息，请参阅 [ExpressRoute 技术概述](../expressroute/expressroute-introduction.md)和 [ExpressRoute 常见问题](../expressroute/expressroute-faqs.md)。
 
 有关 VPN 网关连接的详细信息，请参阅[关于 VPN 网关](vpn-gateway-about-vpngateways.md)。
 
 ### <a name="what-is-the-difference-between-a-site-to-site-connection-and-point-to-site"></a>站点到站点连接和点到站点连接的区别是什么？
 
-**站点到站点**（IPsec/IKE VPN 隧道）配置是指本地位置与 Azure 之间的配置。 这意味着，你可以将任何本地计算机连接到虚拟网络中的任何虚拟机或角色实例，具体取决于如何选择路由和权限的配置。 它对于需要始终可用的跨界连接来说是一个极佳的选项，很适合混合配置。 此类连接依赖于 IPsec VPN 设备（硬件设备或软件设备），该设备必须部署在网络边缘。 若要创建此类连接，必须具有面向外部且不在 NAT 之后的 IPv4 地址。
+**站点到站点**（IPsec/IKE VPN 隧道）配置是指本地位置与 Azure 之间的配置。 这意味着，可以将任何本地计算机连接到虚拟网络中的任何虚拟机或角色实例，具体取决于如何选择路由和权限的配置。 它对于需要始终可用的跨界连接来说是一个极佳的选项，很适合混合配置。 此类连接依赖于 IPsec VPN 设备（硬件设备或软件设备），该设备必须部署在网络边缘。 若要创建此类连接，必须具有面向外部且不在 NAT 之后的 IPv4 地址。
 
-**点到站点**（基于 SSTP 的 VPN）配置允许你从任何位置的单台计算机连接到虚拟网络中的任何内容。 它使用 Windows 内置的 VPN 客户端。 在进行点到站点配置时，你需要安装证书和 VPN 客户端配置包，其中包含的设置允许你的计算机连接到虚拟网络中的任何虚拟机或角色实例。 此连接适用于需要连接到虚拟网络但该虚拟网络不在本地的情况。 当你无法访问 VPN 硬件或面向外部的 IPv4 地址（二者是进行站点到站点连接所必需的）时，它也是一个很好的选项。
+**点到站点**（基于 SSTP 的 VPN）配置允许从任何位置的单台计算机连接到虚拟网络中的任何内容。 它使用 Windows 内置的 VPN 客户端。 在进行点到站点配置时，需要安装证书和 VPN 客户端配置包，其中包含的设置允许计算机连接到虚拟网络中的任何虚拟机或角色实例。 此连接适用于需要连接到虚拟网络但该虚拟网络不在本地的情况。 无法访问 VPN 硬件或面向外部的 IPv4 地址（二者是进行站点到站点连接所必需的）时，它也是一个很好的选项。
 
 可以将虚拟网络配置为同时使用站点到站点连接和点到站点连接，前提是使用基于路由的 VPN 类型为网关创建站点到站点连接。 在经典部署模型中，基于路由的 VPN 类型称为动态网关。
 
-## <a name="virtual-network-gateways"></a>虚拟网络网关
+## <a name="gateways"></a>虚拟网关
 
 ### <a name="is-a-vpn-gateway-a-virtual-network-gateway"></a>VPN 网关是否为虚拟网关？
 
@@ -82,9 +81,9 @@ VPN 网关是一类虚拟网关。 VPN 网关可跨公共连接在虚拟网络�
 
 否。
 
-### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>能否先获得 VPN 网关 IP 地址，然后再创建网关？
+### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>能否先获得 VPN 网关 IP 地址，再创建网关？
 
-否。 必须先创建网关，然后才能获得 IP 地址。 如果删除再重新创建 VPN 网关，IP 地址将更改。
+否。 必须先创建网关，才能获得 IP 地址。 如果删除再重新创建 VPN 网关，IP 地址将更改。
 
 ### <a name="can-i-request-a-static-public-ip-address-for-my-vpn-gateway"></a>能否为 VPN 网关请求静态公共 IP 地址？
 
@@ -92,7 +91,7 @@ VPN 网关是一类虚拟网关。 VPN 网关可跨公共连接在虚拟网络�
 
 ### <a name="how-does-my-vpn-tunnel-get-authenticated"></a>VPN 隧道如何进行身份验证？
 
-Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 网关时生成一个预共享密钥 (PSK)。 你可以使用设置预共享密钥 PowerShell cmdlet 或 REST API 将自动生成的 PSK 更改成你自己的 PSK。
+Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 网关时生成一个预共享密钥 (PSK)。 可以使用设置预共享密钥 PowerShell cmdlet 或 REST API 会自动生成的 PSK 更改成自己的 PSK。
 
 ### <a name="can-i-use-the-set-pre-shared-key-api-to-configure-my-policy-based-static-routing-gateway-vpn"></a>能否使用“设置预共享密钥 API”来配置基于策略的（静态路由）网关 VPN？
 
@@ -118,9 +117,9 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 网
 
 是的。 请参阅 [配置强制隧道](vpn-gateway-about-forced-tunneling.md)。
 
-### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network"></a>能否在 Azure 中设置自己的 VPN 服务器，然后使用该服务器连接到本地网络？
+### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network"></a>能否在 Azure 中设置自己的 VPN 服务器，并使用该服务器连接到本地网络？
 
-能。你可以在 Azure 中部署你自己的 VPN 网关或服务器，可以从 Azure 应用商店部署，也可以通过创建你自己的 VPN 路由器来部署。 需要在虚拟网络中配置用户定义的路由，确保流量在本地网络和虚拟网络子网之间正确路由。
+能。可以在 Azure 中部署自己的 VPN 网关或服务器，可以从 Azure 应用商店部署，也可以通过创建自己的 VPN 路由器来部署。 需要在虚拟网络中配置用户定义的路由，确保流量在本地网络和虚拟网络子网之间正确路由。
 
 ### <a name="why-are-certain-ports-opened-on-my-vpn-gateway"></a>我的 VPN 网关上的某些端口为何处于打开状态？
 
@@ -132,7 +131,7 @@ VPN 网关基本上是一个多宿主设备，其中一个 NIC 进入客户专�
 
 有关详细信息，请参阅[关于 VPN 网关配置设置](vpn-gateway-about-vpn-gateway-settings.md)。
 
-## <a name="site-to-site-connections-and-vpn-devices"></a>站点到站点连接和 VPN 设备
+## <a name="s2s"></a>站点到站点连接和 VPN 设备
 
 ### <a name="what-should-i-consider-when-selecting-a-vpn-device"></a>选择 VPN 设备时应考虑什么？
 
@@ -178,7 +177,7 @@ VPN 网关基本上是一个多宿主设备，其中一个 NIC 进入客户专�
 
 ### <a name="does-azure-generate-the-same-ipsecike-pre-shared-key-for-all-my-vpn-connections-for-the-same-virtual-network"></a>Azure 会为同一虚拟网络的所有 VPN 连接生成同一 IPsec/IKE 预共享密钥吗？
 
-不会。默认情况下，Azure 会为不同 VPN 连接生成不同的预共享密钥。 但是，你可以使用设置 VPN 网关密钥 REST API 或 PowerShell cmdlet 设置你想要的密钥值。 该密钥必须是长度介于 1 到 128 个字符之间的字母数字字符串。
+不会。默认情况下，Azure 会为不同 VPN 连接生成不同的预共享密钥。 但是，可以使用设置 VPN 网关密钥 REST API 或 PowerShell cmdlet 设置你想要的密钥值。 该密钥必须是长度介于 1 到 128 个字符之间的字母数字字符串。
 
 ### <a name="do-i-get-more-bandwidth-with-more-site-to-site-vpns-than-for-a-single-virtual-network"></a>使用更多站点到站点 VPN 我会为单个虚拟网络获取更多带宽吗？
 
@@ -196,7 +195,7 @@ VPN 网关基本上是一个多宿主设备，其中一个 NIC 进入客户专�
 
 能，系统支持该操作。 有关详细信息，请参阅 [配置可共存的 ExpressRoute 连接和站点到站点 VPN 连接](../expressroute/expressroute-howto-coexist-classic.md)。
 
-## <a name="ipsecike-policy"></a>IPsec/IKE 策略
+## <a name="ipsecike"></a>IPsec/IKE 策略
 
 [!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-ipsecikepolicy-faq-include.md)]
 
@@ -205,11 +204,11 @@ VPN 网关基本上是一个多宿主设备，其中一个 NIC 进入客户专�
 
 [!INCLUDE [vpn-gateway-bgp-faq-include](../../includes/vpn-gateway-bpg-faq-include.md)]
 
-## <a name="cross-premises-connectivity-and-vms"></a>跨界连接和 VM
+## <a name="vms"></a>跨界连接和 VM
 
 ### <a name="if-my-virtual-machine-is-in-a-virtual-network-and-i-have-a-cross-premises-connection-how-should-i-connect-to-the-vm"></a>如果虚拟机位于虚拟网络中，而连接是跨界连接，应如何连接到该 VM？
 
-有几个选择。 如果为 VM 启用了 RDP，则可使用专用 IP 地址连接到虚拟机。 在这种情况下，你需要指定要连接到的专用 IP 地址和端口（通常为 3389）。 你需要配置用于流量的虚拟机端口。
+有几个选择。 如果为 VM 启用了 RDP，则可使用专用 IP 地址连接到虚拟机。 在这种情况下，需要指定要连接到的专用 IP 地址和端口（通常为 3389）。 需要配置用于流量的虚拟机端口。
 
 也可以使用位于同一虚拟网络中的另一个虚拟机的专用 IP 地址连接到虚拟机。 如果要从虚拟网络外部的位置进行连接，则无法使用专用 IP 地址 RDP 到虚拟机。 例如，如果配置了点到站点虚拟网络，并且未从计算机建立连接，则无法通过专用 IP 地址连接到虚拟机。
 
@@ -222,7 +221,7 @@ VPN 网关基本上是一个多宿主设备，其中一个 NIC 进入客户专�
 [!INCLUDE [Troubleshoot VM connection](../../includes/vpn-gateway-connect-vm-troubleshoot-include.md)]
 
 
-## <a name="virtual-network-faq"></a>虚拟网络常见问题解答
+## <a name="faq"></a>虚拟网络常见问题解答
 
 请在 [虚拟网络常见问题](../virtual-network/virtual-networks-faq.md)中查看更多虚拟网络信息。
 

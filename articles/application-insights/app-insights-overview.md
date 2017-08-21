@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/14/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: e57912a197394fbb8ea8bc374a1f3934ae0ff464
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: d06bb37ba38ad7bc2b9b3c5c09b45be6c7fd17bb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="what-is-application-insights"></a>什么是 Application Insights？
@@ -48,7 +48,7 @@ Application Insights 是多个平台上面向 Web 开发人员的可扩展应用
 Application Insights 主要面向开发团队，旨在帮助用户了解应用的运行性能和使用方式。 监视：
 
 * **请求率、响应时间和失败率** - 了解最受欢迎的页面、时段以及用户的位置。 查看哪些页面效果最好。 当有较多请求时，如果响应时间长且失败率高，则可能存在资源问题。 
-* **依赖项速率、响应时间和失败率** - 了解外部服务是否正拖慢你的速度。
+* **依赖项速率、响应时间和失败率** - 了解外部服务是否正拖慢速度。
 * **异常** - 分析聚合的统计信息，或选择特定实例并钻取堆栈跟踪和相关请求。 报告服务器和浏览器异常。
 * **页面查看次数和负载性能** - 由用户的浏览器报告。
 * **AJAX 调用**（从网页） - 速率、响应时间和失败率。
@@ -60,11 +60,11 @@ Application Insights 主要面向开发团队，旨在帮助用户了解应用�
 
 ## <a name="where-do-i-see-my-telemetry"></a>在哪里可以查看我的遥测数据？
 
-可通过许多方式浏览你的数据。 请查看以下文章：
+可通过许多方式浏览数据。 请查看以下文章：
 
 |  |  |
 | --- | --- |
-| [**智能检测和手动警报**](app-insights-proactive-diagnostics.md)<br/>当某些内容处于异常模式时，自动警报适应你的应用的遥测和触发器正常模式。 还可以在自定义或标准指标的特定级别上[设置警报](app-insights-alerts.md)。 |![警报示例](./media/app-insights-overview/alerts-tn.png) |
+| [**智能检测和手动警报**](app-insights-proactive-diagnostics.md)<br/>当某些内容处于异常模式时，自动警报适应应用的遥测和触发器正常模式。 还可以在自定义或标准指标的特定级别上[设置警报](app-insights-alerts.md)。 |![警报示例](./media/app-insights-overview/alerts-tn.png) |
 | [**应用程序映射**](app-insights-app-map.md)<br/>应用的组件，包含关键指标和警报。 |![应用程序映射](./media/app-insights-overview/appmap-tn.png)  |
 | [**探查器**](app-insights-profiler.md)<br/>检查抽样请求的执行配置文件。 |![探查器](./media/app-insights-overview/profiler.png) |
 | [**使用情况分析**](app-insights-usage-overview.md)<br/>分析用户细分和保留情况。|![留存情况工具](./media/app-insights-overview/retention.png) |
@@ -103,9 +103,9 @@ Application Insights 主要面向开发团队，旨在帮助用户了解应用�
 * 使下一个开发周期基于遥测的硬性证据。
 
 ## <a name="get-started"></a>入门
-Application Insights 是 Microsoft Azure 中托管的众多服务之一，遥测会发送到此处进行分析和展示。 因此在执行任何其他操作之前，需要有 [Microsoft Azure](http://azure.com) 订阅。 可免费注册该订阅，如果选择 Application Insights 的基本[pricing plan](https://azure.microsoft.com/pricing/details/application-insights/)（定价计划），不会产生费用，但如果应用的使用量大幅增加，将会产生费用。 如果你的组织已有订阅，则组织可向其中添加你的 Microsoft 帐户。
+Application Insights 是 Microsoft Azure 中托管的众多服务之一，遥测会发送到此处进行分析和展示。 因此在执行任何其他操作之前，需要有 [Microsoft Azure](http://azure.com) 订阅。 可免费注册该订阅，如果选择 Application Insights 的基本[pricing plan](https://azure.microsoft.com/pricing/details/application-insights/)（定价计划），不会产生费用，但如果应用的使用量大幅增加，会产生费用。 如果组织已有订阅，则组织可向其中添加 Microsoft 帐户。
 
-可通过多种方法开始使用。 可从最适合你的方法开始。 可在以后添加其他方法。
+可通过多种方法开始使用。 可从最适合方法开始。 可在以后添加其他方法。
 
 * **运行时：检测服务器上的 Web 应用。** 避免任何代码更新。 需要服务器的管理员访问权限。
   * [**本地或 VM 上的 IIS**](app-insights-monitor-performance-live-website-now.md)
