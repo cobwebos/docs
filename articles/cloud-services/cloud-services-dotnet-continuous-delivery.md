@@ -12,19 +12,20 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/18/2016
+ms.date: 06/12/2017
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
-ms.openlocfilehash: 14212dd4b9eff135d379a7431d0aaa0e396a6f7f
-
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: f18605ec638a628805f5bd1c7207e9d874f104f3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="continuous-delivery-for-cloud-services-in-azure"></a>在 Azure 中持续交付云服务
 本文中所述过程向你演示如何设置对 Azure 云应用程序的持续交付。 此过程使你能够在签入每个代码后，自动创建服务包并将其部署到 Azure。 本文中介绍的包生成过程与 Visual Studio 中的 **Package** 命令等效，而发布步骤与 Visual Studio 中的 **Publish** 命令等效。
 本文包含用于创建生成服务器的方法以及 MSBuild 命令行语句和 Windows PowerShell 脚本，并演示了如何选择性地配置 Visual Studio Team Foundation Server - Team Build 定义以使用 MSBuild 命令和 PowerShell 脚本。 可针对你的生成环境和 Azure 目标环境自定义此过程。
 
-你也可以使用 Visual Studio Team Services（Azure 中托管的 TFS 版本）更轻松地实现此目的。 有关详细信息，请参阅[使用 Visual Studio Team Services 向 Azure 持续交付][Continuous Delivery to Azure by Using Visual Studio Team Services]。
+你也可以使用 Visual Studio Team Services（Azure 中托管的 TFS 版本）更轻松地实现此目的。 
 
 开始之前，您应从 Visual Studio 中发布应用程序。
 这将确保所有资源在您尝试实现发布过程的自动化时可用并进行初始化。
@@ -45,7 +46,7 @@ ms.openlocfilehash: 14212dd4b9eff135d379a7431d0aaa0e396a6f7f
 ## <a name="2-build-a-package-using-msbuild-commands"></a>2：使用 MSBuild 命令生成包
 本部分介绍如何构造用于生成 Azure 包的 MSBuild 命令。 在生成服务器上执行此步骤可确认所有内容配置正确并且 MSBuild 命令起到预期作用。 你可将此命令行添加到生成服务器上的现有生成脚本中，也可在 TFS 生成定义中使用此命令行，如下一部分所述。 有关命令行参数和 MSBuild 的详细信息，请参阅 [MSBuild 命令行参考](https://msdn.microsoft.com/library/ms164311%28v=vs.140%29.aspx)。
 
-1. 如果在生成服务器上安装了 Visual Studio，请在 Windows 上的“**Visual Studio 工具**”文件夹中找到并选择“**Visual Studio 命令提示符**”。
+1. 如果在生成服务器上安装了 Visual Studio，请在 Windows 的“Visual Studio Tools”文件夹中找到并选择“Visual Studio 命令提示符”。
 
    如果未在生成服务器上安装 Visual Studio，则请打开命令提示符并确保可按相应的路径访问 MSBuild.exe。 MSBuild 与 .NET Framework 一起安装在路径 %WINDIR%\\Microsoft.NET\\Framework\\*版本* 中。 例如，若要在已安装 .NET Framework 4 的情况下将 MSBuild.exe 添加到 PATH 环境变量，请在命令提示符处键入以下命令：
 
@@ -113,18 +114,18 @@ ms.openlocfilehash: 14212dd4b9eff135d379a7431d0aaa0e396a6f7f
    这会显示有关订阅的信息。 确认所有内容正确。
 5. 将本文末尾提供的脚本模板保存到脚本文件夹，路径为 c:\\scripts\\WindowsAzure\\**PublishCloudService.ps1**。
 6. 查看脚本的参数部分。 添加或修改任何默认值。 始终可通过传入显式参数来覆盖这些值。
-7. 确保已在订阅中创建可通过发布脚本定位的有效云服务和存储帐户。 存储帐户（Blob 存储）将用于在创建部署时上载和临时存储部署包和配置文件。
+7. 确保已在订阅中创建可通过发布脚本定位的有效云服务和存储帐户。 存储帐户（Blob 存储）将用于在创建部署时上传和临时存储部署包和配置文件。
 
-   * 若要创建新的云服务，可以调用此脚本或使用 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)。 云服务名称将用作完全限定域名中的前缀，因此该名称必须是唯一的。
+   * 若要创建新的云服务，可以调用此脚本或使用 [Azure 门户](https://portal.azure.com)。 云服务名称将用作完全限定域名中的前缀，因此该名称必须是唯一的。
 
          New-AzureService -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
-   * 若要创建新的存储帐户，可以调用此脚本或使用 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)。 存储帐户名称将用作完全限定域名中的前缀，因此该名称必须是唯一的。 您可尝试使用与云服务相同的名称。
+   * 若要创建新的存储帐户，可以调用此脚本或使用 [Azure 门户](https://portal.azure.com)。 存储帐户名称将用作完全限定域名中的前缀，因此该名称必须是唯一的。 您可尝试使用与云服务相同的名称。
 
          New-AzureStorageAccount -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
 8. 直接从 Azure PowerShell 调用脚本，或将此脚本连接到在包生成后进行的主机生成自动化。
 
    > [!IMPORTANT]
-   > 默认情况下，此脚本将始终删除或替换现有部署（如果检测到这些部署）。 这对于从没有用户提示的自动化中启用持续集成是必需的。
+   > 默认情况下，此脚本将始终删除或替换现有部署（如果检测到这些部署）。 这对于从没有用户提示的自动化中启用持续交付是必需的。
    >
    >
 
@@ -132,7 +133,7 @@ ms.openlocfilehash: 14212dd4b9eff135d379a7431d0aaa0e396a6f7f
 
        PowerShell c:\scripts\windowsazure\PublishCloudService.ps1 -environment Staging -serviceName mycloudservice -storageAccountName mystoragesaccount -packageLocation c:\drops\app.publish\ContactManager.Azure.cspkg -cloudConfigLocation c:\drops\app.publish\ServiceConfiguration.Cloud.cscfg -subscriptionDataFile c:\scripts\default.publishsettings
 
-   通常，此操作后跟测试运行验证和 VIP 交换。 VIP 交换可通过 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)或使用 Move-Deployment cmdlet 执行。
+   通常，此操作后跟测试运行验证和 VIP 交换。 VIP 交换可通过 [Azure 门户](https://portal.azure.com)或使用 Move-Deployment cmdlet 执行。
 
    **示例方案 2：**对专用测试服务的生产环境进行持续部署
 
@@ -140,7 +141,7 @@ ms.openlocfilehash: 14212dd4b9eff135d379a7431d0aaa0e396a6f7f
 
    **远程桌面：**
 
-   如果在 Azure 项目中启用远程桌面，则将需要执行额外的一次性步骤以确保将正确的云服务证书上载到通过此脚本定位的所有云服务中。
+   如果在 Azure 项目中启用远程桌面，则将需要执行额外的一次性步骤以确保将正确的云服务证书上传到通过此脚本定位的所有云服务中。
 
    查找角色所需的证书指纹值。 这些指纹值在云配置文件（即 ServiceConfiguration.Cloud.cscfg）的“证书”部分中可见。 此外，在显示选项并查看选定证书时，可在 Visual Studio 的“远程桌面配置”对话框中查看这些指纹值。
 
@@ -148,7 +149,7 @@ ms.openlocfilehash: 14212dd4b9eff135d379a7431d0aaa0e396a6f7f
              <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="C33B6C432C25581601B84C80F86EC2809DC224E8" thumbprintAlgorithm="sha1" />
        </Certificates>
 
-   使用以下 cmdlet 脚本将远程桌面证书作为一次性安装步骤上载：
+   使用以下 cmdlet 脚本将远程桌面证书作为一次性安装步骤上传：
 
        Add-AzureCertificate -serviceName <CLOUDSERVICENAME> -certToDeploy (get-item cert:\CurrentUser\MY\<THUMBPRINT>)
 
@@ -156,7 +157,7 @@ ms.openlocfilehash: 14212dd4b9eff135d379a7431d0aaa0e396a6f7f
 
        Add-AzureCertificate -serviceName 'mytestcloudservice' -certToDeploy (get-item cert:\CurrentUser\MY\C33B6C432C25581601B84C80F86EC2809DC224E8
 
-   或者，可以导出带私钥的证书文件 PFX，并使用 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)将证书上载到每个目标云服务。
+   或者，可以导出带私钥的证书文件 PFX，并使用 [Azure 门户](https://portal.azure.com)将证书上传到每个目标云服务。
 
    <!---
    Fixing broken links for Azure content migration from ACOM to DOCS. I'm unable to find a replacement links, so I'm commenting out this reference for now. The author can investigate in the future. "Read the following article to learn more: http://msdn.microsoft.com/library/windowsazure/gg443832.aspx.
@@ -168,7 +169,7 @@ ms.openlocfilehash: 14212dd4b9eff135d379a7431d0aaa0e396a6f7f
    可使用脚本 ($enableDeploymentUpgrade = 0) 或通过将 *-enableDeploymentUpgrade 0* 作为参数传递（这会将脚本行为更改为首先删除任何现有部署，然后创建新的部署）来禁用升级部署。
 
    > [!IMPORTANT]
-   > 默认情况下，此脚本将始终删除或替换现有部署（如果检测到这些部署）。 这对于从没有用户/操作员提示的自动化中启用持续集成是必需的。
+   > 默认情况下，此脚本将始终删除或替换现有部署（如果检测到这些部署）。 这对于从没有用户/操作员提示的自动化中启用持续交付是必需的。
    >
    >
 
@@ -515,7 +516,6 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
 ## <a name="next-steps"></a>后续步骤
 若要在使用持续交付时启用远程调试，请参阅[使用持续交付功能发布到 Azure 时如何启用远程调试](cloud-services-virtual-machines-dotnet-continuous-delivery-remote-debugging.md)。
 
-[Continuous Delivery to Azure by Using Visual Studio Team Services]: cloud-services-continuous-delivery-use-vso.md
 [Team Foundation Build Service]: https://msdn.microsoft.com/library/ee259687.aspx
 [.NET Framework 4]: https://www.microsoft.com/download/details.aspx?id=17851
 [.NET Framework 4.5]: https://www.microsoft.com/download/details.aspx?id=30653
@@ -530,9 +530,4 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
 [4]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-04.png
 [5]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-05.png
 [6]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-06.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

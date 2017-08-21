@@ -6,20 +6,21 @@ keywords: "Active Directory 密码管理, 密码管理, Azure AD 自助密码重
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
+ms.reviewer: gahug
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 07/17/2017
 ms.author: joflore
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 0c586692720512d2822e67994e22e1f6d50fd921
+ms.custom: it-pro
+ms.translationtype: HT
+ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
+ms.openlocfilehash: 4b35c5d126375735f070a7fe2331896c524b5a61
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和限制
@@ -103,7 +104,7 @@ Microsoft 云服务的全局管理员可使用用于 Windows PowerShell 的 Micr
 
 ## <a name="set-or-check-password-policies-using-powershell"></a>使用 PowerShell 设置或检查密码策略
 
-若要开始，需要[下载并安装 Azure AD PowerShell 模块](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule)。 安装后，你可以遵照以下步骤配置每个字段。
+若要开始，需要[下载并安装 Azure AD PowerShell 模块](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0)。 安装后，你可以遵照以下步骤配置每个字段。
 
 ### <a name="how-to-check-expiration-policy-for-a-password"></a>如何检查密码过期策略
 1. 使用公司管理员凭据连接到 Windows PowerShell。

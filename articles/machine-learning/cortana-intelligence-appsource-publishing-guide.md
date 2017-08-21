@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 07/06/2017
 ms.author: anupams;v-bruham;garye
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 67e2e7906df78ff3e57765e0a6706f98123c3428
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9f867641b77c8148c1d6cbf2913da9c1f5ce5b71
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
+ms.lasthandoff: 07/08/2017
 
 --- 
 # <a name="cortana-intelligence-appsource-publishing-guide"></a>Cortana Intelligence AppSource 发布指南
@@ -30,11 +30,13 @@ AppSource 是业务决策制定者 (BDM) 的单个目标平台，用户可在其
 - 你的解决方案或应用可解决具体业务问题。
 - 你的客户能够以可预测的方式相对快速地重用你所构建的模块或智力资产。
 
+查看已在 AppSource 上发布的 [Cortana Intelligence 解决方案](https://appsource.microsoft.com/en-us/marketplace/apps?product=cortana-intelligence&page=1)。 
+
 本文逐步介绍如何获取发布到 AppSource 的合作伙伴的 Cortana Intelligence 解决方案的相关步骤
 
 ## <a name="getting-started"></a>入门
 1. 在[合作伙伴社区权益指南](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Partner%20Community%20Benefits%20Guide%20-%20Cloud%20and%20Enterprise.pdf) (PDF) 中，请参阅第 9 页以列为高级分析合作伙伴。
-1. 完成[提交你的应用](https://appsource.microsoft.com/en-us/)表单。
+1. 完成[提交你的应用](https://appsource.microsoft.com/en-us/partners/list-an-app)表单。
 
     对于“选择你的应用所构建的产品”问题，选中“其他”复选框，并在编辑控件中列出“Cortana Intelligence”。
 1. 在可以将 Cortana Intelligence 应用上架到 AppSource 之前，它必须获取 Cortana Intelligence 合作伙伴解决方案技术团队的认证。 要开始此过程，请在[面向 AppSource 发布的 Cortana Intelligence 解决方案评估](https://aka.ms/cisappsrceval)处填写调查表单，以共享有关你的应用的详细信息。 此站点受密码保护，并且站点提供了有关如何获取密码的说明。
@@ -63,7 +65,7 @@ AppSource 是业务决策制定者 (BDM) 的单个目标平台，用户可在其
 1. 在你的解决方案中使用 Power BI：此项可选，但强烈建议采用，因为经证明这会生成较大数量的潜在客户。
 
 ## <a name="devcenter-account-setup"></a>DevCenter 帐户设置
-此过程通过 Microsoft 将你的公司注册为发布者。 如果你已使用现有 DevCenter 帐户注册为发布者，请共享与 DevCenter 帐户关联的电子邮件 ID。 
+此过程通过 Microsoft 将你的公司注册为发布者。 如果你已使用现有 DevCenter 帐户注册为发布者，请共享与 DevCenter 帐户关联的电子邮件 ID。 在你的应用程序获得批准可发布后，你便能够访问关于[云门户管理发布者个人资料](https://cloudpartner.azure.com/#documentation/manage-publisher-profile)的完整文档
 
 如果你没有帐户，请执行以下设置 DevCenter 帐户的关键步骤。
 1. 在[此处](https://signup.live.com/signup.aspx)创建 Microsoft 帐户。

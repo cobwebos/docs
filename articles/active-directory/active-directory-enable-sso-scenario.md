@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/05/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f6bceb2fd03230e4a39c22605ad1fea8dd422be1
+ms.reviewer: asteen
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: b8f0cfdb468094bc761d6b939ca318fcfbea3ea4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 12/29/2016
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>使用 Azure Active Directory 管理应用程序

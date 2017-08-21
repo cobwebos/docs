@@ -17,10 +17,10 @@ ms.workload: identity
 ms.date: 06/05/2017
 ms.author: curtand
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 36ea3356648a1a6333c2a1e2c042d27ae2f829b4
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4a322365b2764dc13b5079f2c4c0634c9c950d92
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -281,7 +281,7 @@ function UserHasLicenseAssignedFromGroup
 }
 ```
 
-此脚本使用 SKU ID 作为输入，对租户中的每个用户执行这些函数：
+此脚本使用 SKU ID 作为输入，对租户中的每位用户执行这些功能 - 在本示例中，用于企业移动性 + 安全性的许可证在租户中的 ID 表示为：contoso:EMS：
 ```
 #the license SKU we are interested in. use Msol-GetAccountSku to see a list of all identifiers in your tenant
 $skuId = "contoso:EMS"

@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/28/2017
+ms.date: 06/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: 68155ebaa6af36500bfe856c9bcd49f5efb6cbc2
-ms.lasthandoff: 03/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bfa951a897c9b383072c0d29c9a4266c163fe753
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -33,7 +34,26 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 
 使用基于组的许可时，可能会发生相同的错误，但是在 Azure AD 服务分配许可证时在后台发生这些错误。 由于此原因，这些错误无法立即传达给你。 但是，这些错误会记录在用户对象中，然后通过管理门户进行报告。 请注意，为用户提供许可证的原始意图永远不会丢失，但以错误状态记录，供以后调查和解决。
 
-若要查找每个组中处于错误状态的用户，请打开每个组的边栏选项卡。 如果有任何用户处于错误状态，将在“许可证”下显示通知。 选择通知以打开所有受影响的用户列表。 可以逐个查看用户以了解基本问题。 本文将介绍每个潜在问题及其解决方法。
+## <a name="how-to-find-license-assignment-errors"></a>如何查找许可证分配错误
+
+1. 若要查找特定组中处于错误状态的用户，请打开相应组的边栏选项卡。 如果有任何用户处于错误状态，将在“许可证”下显示通知。
+
+![组，错误通知](media/active-directory-licensing-group-problem-resolution-azure-portal/group-error-notification.png)
+
+2. 单击通知以打开所有受影响的用户列表。 可以分别单击每个用户以查看更多详细信息。
+
+![组，处于错误状态的用户的列表](media/active-directory-licensing-group-problem-resolution-azure-portal/list-of-users-with-errors.png)
+
+3. 若要查找包含至少一个错误的所有组，请在“Azure Active Directory”边栏选项卡上，选择“许可证”，然后选择“概览”。 如果有一些组需要关注，则会显示信息框。
+
+![概览，有关处于错误状态的组的信息](media/active-directory-licensing-group-problem-resolution-azure-portal/group-errors-widget.png)
+
+4. 单击该框可查看具有错误的所有组的列表。 可以单击每个组以了解更多详细信息。
+
+![概览，具有错误的组的列表](media/active-directory-licensing-group-problem-resolution-azure-portal/list-of-groups-with-errors.png)
+
+
+下面是每个潜在问题的说明及其解决方法。
 
 ## <a name="not-enough-licenses"></a>许可证不足
 
@@ -88,6 +108,20 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 Azure AD 会尝试将该组中指定的所有许可证分配给每个用户。 如果由于业务逻辑问题（例如，所有的许可证数量不足，或者与针对用户启用的其他服务冲突），Azure AD 无法分配某个产品，我们也不会在该组中分配其他许可证。
 
 可以查看无法被分配许可证的用户，并且可以查看哪些产品已受此影响。
+
+## <a name="license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online"></a>对于某个用户，许可证分配在无提示的情况下失败，因为 Exchange Online 中存在重复代理地址
+
+如果使用的是 Exchange Online，可能会使用相同的代理地址值错误地配置租户中的某些用户。 当基于组的许可尝试向这类用户分配许可证时，它会失败，并且不会记录错误（与上述其他错误情况不同）- 这是此功能的预览版本中的限制，我们将在*公开上市*之前解决它。
+
+> [!TIP]
+> 如果你注意到某些用户未收到许可证，并且没有针对这些用户错误记录，请先检查它们是否具有重复代理地址。
+> 这可以通过对 Exchange Online 执行以下 PowerShell cmdlet 来完成：
+```
+Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+```
+> [这篇文章](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)包含有关此问题的详细信息，其中包括有关[如何使用远程 PowerShell 连接到 Exchange Online](https://technet.microsoft.com/library/jj984289.aspx) 的信息。
+
+为受影响的用户解决了代理地址问题之后后，请确保强制对组进行许可证处理以确保现在可以再次应用许可证。
 
 ## <a name="how-do-you-force-license-processing-in-a-group-to-resolve-errors"></a>如何强制处理组中的许可证以解决错误？
 

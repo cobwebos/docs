@@ -3,7 +3,7 @@ title: "Azure Active Directory 审核 API 参考 | Microsoft 文档"
 description: "如何开始使用 Azure Active Directory 审核 API"
 services: active-directory
 documentationcenter: 
-author: markusvi
+author: MarkusVi
 manager: femila
 editor: 
 ms.assetid: 44e46be8-09e5-4981-be2b-d474aaa92792
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/05/2017
 ms.author: dhanyahk;markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 87c7990834eaf2aa6c4aff0c341150ba9bd9eed4
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
+ms.openlocfilehash: 573e940c5390e7b990d889681eb37b73c5b253d9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/10/2017
-
+ms.lasthandoff: 07/17/2017
 
 ---
 # <a name="azure-active-directory-audit-api-reference"></a>Azure Active Directory 审核 API 参考
@@ -29,10 +29,17 @@ Azure AD 报告向你提供了一个允许你使用代码或相关工具访问�
 
 请参阅：
 
-* [审核日志](active-directory-reporting-azure-portal.md#audit-logs)，获取更多概念性信息
+* [审核日志](active-directory-reporting-azure-portal.md#activity-reports)，获取更多概念性信息
+
 * [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started.md)，获取有关报告 API 的详细信息。
 
-有关疑问、问题或反馈，请联系 [AAD 报告帮助](mailto:aadreportinghelp@microsoft.com)。
+
+对于：
+
+- 常见问题解答，请参阅我们的[常见问题解答](active-directory-reporting-faq.md) 
+
+- 问题，请[提交支持票证](active-directory-troubleshooting-support-howto.md) 
+
 
 ## <a name="who-can-access-the-data"></a>谁可以访问该数据？
 * 安全管理员或安全读者角色中的用户

@@ -2,236 +2,279 @@
 title: "教程：Azure Active Directory 与 DocuSign 的集成 | Microsoft 文档"
 description: "了解如何在 Azure Active Directory 和 DocuSign 之间配置单一登录。"
 services: active-directory
-documentationcenter: 
+documentationCenter: na
 author: jeevansd
 manager: femila
-editor: 
 ms.assetid: a691288b-84c1-40fb-84bd-5b06878865f0
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 07/10/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: ac53d0a2c1c0a257e86fe74e10c8781aa6305975
-ms.openlocfilehash: 662e853ca31d426a71121d22733256556ca56fc6
-ms.lasthandoff: 02/23/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 29c99fdf39d366df90abc070f7b836320935035c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-docusign"></a>教程：Azure Active Directory 与 DocuSign 的集成
-本教程的目标是展示 Azure 与 DocuSign 的集成。
-在本教程中概述的方案假定已具有以下各项：
 
-* 有效的 Azure 订阅
-* DocuSign 中的租户
+本教程介绍如何将 DocuSign 与 Azure Active Directory (Azure AD) 集成。
 
-在本教程中概述的方案由以下构建基块组成：
+将 DocuSign 与 Azure AD 集成具有优势：
 
-1. [为 DocuSign 启用应用程序集成](#enabling-the-application-integration-for-docusign) 
-2. [配置单一登录](#configuring-single-sign-on) 
-3. [配置帐户预配](#configuring-account-provisioning) 
-4. [分配用户](#assigning-users) 
-   
-![配置单一登录][0]
+- 可在 Azure AD 中控制谁有权访问 DocuSign
+- 可使用户通过其 Azure AD 帐户自动登录到 DocuSign（单一登录）
+- 可以在一个中心位置（即 Azure 门户）中管理帐户
 
-## <a name="enabling-the-application-integration-for-docusign"></a>为 DocuSign 启用应用程序集成
-本部分的目的是概述如何为 DocuSign 启用应用程序集成。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-### <a name="to-enable-the-application-integration-for-docusign-perform-the-following-steps"></a>若要为 DocuSign 启用应用程序集成，请执行以下步骤：
-1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
-   
-    ![配置单一登录][1]
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
-3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
-   
-    ![配置单一登录][2]
-4. 在页面底部单击“添加”。
-   
+## <a name="prerequisites"></a>先决条件
+
+若要配置 Azure AD 与 DocuSign 的集成，需要以下项：
+
+- 一个 Azure AD 订阅
+- 已启用 DocuSign 单一登录的订阅
+
+> [!NOTE]
+> 不建议使用生产环境测试本教程中的步骤。
+
+测试本教程中的步骤应遵循以下建议：
+
+- 除非必要，请勿使用生产环境。
+- 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+
+## <a name="scenario-description"></a>方案描述
+在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+
+1. 从库中添加 DocuSign
+2. 配置和测试 Azure AD 单一登录
+
+## <a name="adding-docusign-from-the-gallery"></a>从库中添加 DocuSign
+若要配置 DocuSign 与 Azure AD 的集成，需要从库中将 DocuSign 添加到托管 SaaS 应用列表。
+
+**若要从库中添加 DocuSign，请执行以下步骤：**
+
+1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+
+    ![Active Directory][1]
+
+2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+
+    ![应用程序][2]
+    
+3. 单击对话框顶部的“新建应用程序”按钮。
+
     ![应用程序][3]
-5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
-   
+
+4. 在搜索框中，键入“DocuSign”。
+
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_search.png)
+
+5. 在结果面板中，选择“DocuSign”，然后单击“添加”按钮添加该应用程序。
+
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_addfromgallery.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+在本部分中，将使用名为“Britta Simon”的测试用户配置和测试 DocuSign 的 Azure AD 单一登录。
+
+为使单一登录能正常工作，Azure AD 需要知道与 Azure AD 用户相对应的 DocuSign 用户。 换句话说，需要在 Azure AD 用户与 DocuSign 中的相关用户之间建立链接关系。
+
+可以通过将 Azure AD 中“用户名”的值指定为 DocuSign 中“用户名”的值来建立此链接关系。
+
+若要配置和测试 DocuSign 的 Azure AD 单一登录，需要完成以下构建基块：
+
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
+2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+3. **[创建 DocuSign 测试用户](#creating-a-docusign-test-user)** - 在 DocuSign 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+
+### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+
+在本部分中，会在 Azure 门户中启用 Azure AD 单一登录，并在 DocuSign 应用程序中配置单一登录。
+
+**若要配置 DocuSign 的 Azure AD 单一登录，请执行以下步骤：**
+
+1. 在 Azure 门户中的“DocuSign”应用程序集成页上，单击“单一登录”。
+
     ![配置单一登录][4]
-6. 在搜索框中，键入“DocuSign”。
-   
-    ![配置单一登录][5]
-7. 在结果窗格中，选择“DocuSign”，然后单击“完成”以添加该应用程序。
-   
-    ![配置单一登录][6]
 
-## <a name="configuring-single-sign-on"></a>配置单一登录
-本部分的目的是概述如何让用户能够使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 DocuSign 证明自己的身份。
+2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+ 
+    ![配置单一登录](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_samlbase.png)
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
-1. 在 Azure 经典门户中，在 **DocuSign** 应用程序集成页上，单击“配置单一登录”，以打开“配置单一登录”对话框。
-   
-    ![配置单一登录][7]
-2. 在“你希望用户如何登录到 DocuSign”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
-   
-    ![配置单一登录][8]
-3. 在“配置应用设置”页上，执行以下步骤：
-   
-    ![配置单一登录][61]
-   
-    a. 在“登录 URL”文本框中，键入 `https://account.docusign.com/*`。  
-   
-    b. 在“标识符”文本框中，键入 `https://account.docusign.com/*`。  
-   
-    c. 单击“下一步”。 
+3. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
 
-    > [!TIP] 
-    > “登录 URL”和“标识符”值只是占位符。 本主题下文中的内容包含了有关如何为你的环境检索实际值的说明。
+    ![配置单一登录](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_certificate.png) 
 
+4. 在 Azure 门户的“DocuSign 配置”部分中，单击“配置 DocuSign”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+    
+    ![配置单一登录](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_configure.png)
 
-1. 在“在 DocuSign 处配置单一登录”页上，单击“下载证书”，然后将证书文件保存在计算机本地。
-   
-    ![配置单一登录][10]
-2. 在另一个 Web 浏览器窗口中，以管理员身份登录到你的 **DocuSign 管理门户**。
-3. 在左侧的导航菜单中，单击“域”。
+5. 在另一个 Web 浏览器窗口中，以管理员身份登录到 DocuSign 管理门户。
+
+6. 在左侧的导航菜单中，单击“域”。
    
     ![配置单一登录][51]
-4. 在右窗格上，单击“声明域”。
+
+7. 在右窗格上，单击“声明域”。
    
     ![配置单一登录][52]
-5. 在“声明域”对话框中，在“域名”文本框中，键入你的公司域，然后单击“声明”。 确保对域进行验证并且其状态为活动。
+
+8. 在“声明域”对话框中，在“域名”文本框中，键入你的公司域，然后单击“声明”。 确保对域进行验证并且其状态为活动。
    
     ![配置单一登录][53]
-6. 在左侧的菜单中，单击“标识提供者”。  
+
+9. 在左侧的菜单中，单击“标识提供者”。  
    
     ![配置单一登录][54]
-7. 在右窗格上，单击“添加标识提供者”。 
+10. 在右窗格上，单击“添加标识提供者”。 
    
     ![配置单一登录][55]
-8. 在“标识提供者设置”页上，执行以下步骤：
+
+11. 在“标识提供者设置”页上，执行以下步骤：
    
     ![配置单一登录][56]
 
     a. 在“名称”文本框中，为配置键入一个唯一的名称。 请不要使用空格。
 
-    b. 在 Azure 经典门户中，复制颁发者 URL，然后将其粘贴到“标识提供者颁发者”文本框中。
+    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 将 SAML 实体 ID 粘贴到“标识提供者颁发者”文本框中。
 
-    c. 在 Azure 经典门户中，复制“远程登录 URL”，然后将其粘贴到“标识提供者登录 URL”文本框中。
+    c. 将 SAML 单一登录服务 URL 粘贴到“标识提供者登录 URL”文本框中。
 
-    d. 在 Azure 经典门户中，复制“远程注销 URL”，然后将其粘贴到“标识提供者注销 URL”文本框中。
+    d. 将“注销 URL”粘贴到“标识提供者注销 URL”文本框中。
 
     e. 选择“对身份验证请求签名”。
 
     f. 对于“身份验证请求发送方式”，选择“POST”。
 
-    g. 对于“注销请求发送方式”，选择“POST”。 
+    g. 对于“注销请求发送方式”，选择“GET”。
 
-
-1. 在“自定义属性映射”部分中，选择要通过 Azure AD 声明映射的字段。 在此示例中，**emailaddress** 声明是通过 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** 的值映射的。 这是 Azure AD 中用于电子邮件声明的默认声明名称。 
+12. 在“自定义属性映射”部分中，选择要通过 Azure AD 声明映射的字段。 在此示例中，**emailaddress** 声明是通过 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** 的值映射的。 这是 Azure AD 中用于电子邮件声明的默认声明名称。 
    
     > [!NOTE]
     > 请使用合适的“用户标识符”将用户从 Azure AD 映射到 Docusign 用户映射。 根据你的组织设置选择正确的字段并输入合适的值。
-    > 
-    > 
-   
+          
     ![配置单一登录][57]
-2. 在“标识提供者证书”部分中，单击“添加证书”，然后上载已从 Azure 经典门户下载的证书。   
+
+13. 在“标识提供者证书”部分中，单击“添加证书”，然后上传已从 Azure AD 门户下载的证书。   
    
     ![配置单一登录][58]
-3. 单击“保存”。
-4. 在“标识提供者”部分中，单击“操作”，然后单击“终结点”。   
+
+14. 单击“保存”。
+
+15. 在“标识提供者”部分中，单击“操作”，然后单击“终结点”。   
    
     ![配置单一登录][59]
-5. 在 Azure 经典门户中，返回到“配置应用设置”页。 
-6. 在 **DocuSign 管理门户**中，在“查看 SAML 2.0 终结点”部分中，执行以下步骤：
+ 
+16. 在“DocuSign 管理门户”上的“查看 SAML 2.0 终结点”部分中，执行以下步骤：
    
     ![配置单一登录][60]
    
-    a. 在 Azure 经典门户中，复制“服务提供者颁发者 URL”，然后将其粘贴到“标识符”文本框中。
+    a.在“横幅徽标”下面，选择“删除上传的徽标”。 复制“服务提供程序颁发者 URL”，然后将其粘贴到 Azure 门户的“DocuSign 域和 URL”部分中的“标识符”文本框中，其模式如下：`https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/login/sp/<uniqueID>`。
    
-    b. 在 Azure 经典门户中，复制“服务提供者登录 URL”，然后将其粘贴到“登录 URL”文本框中。
-   
-    c.  单击“关闭”。  
-7. 在 Azure 经典门户中，单击“下一步”。 
-8. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
-   
-    ![应用程序][14]
-9. 在“单一登录确认”页上，单击“完成”。
-   
-    ![应用程序][15]
+    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 复制“服务提供程序登录 URL”，然后将其粘贴到 Azure 门户的“DocuSign 域和 URL”部分中的“登录 URL”文本框中，其模式如下：`https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/`。
 
-## <a name="configuring-account-provisioning"></a>配置帐户预配
-本部分的目的是概述如何对 DocuSign 启用 Active Directory 用户帐户的用户预配。
+    ![配置单一登录](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_url.png)
+      
+    c.  单击“关闭”。
+    
+17. 在 Azure 门户中，单击“保存”。
+    
+    ![配置单一登录](./media/active-directory-saas-docusign-tutorial/tutorial_general_400.png)
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>若要配置用户预配，请执行以下步骤：
-1. 在 **Azure 经典门户**中，在 **DocuSign** 应用程序集成页上，单击“配置帐户设置”，以打开“配置用户设置”对话框。
-   
-    ![配置帐户预配][30]
-2. 在“设置和管理员凭据”页上，若要启用自动用户预配，请提供具有足够权限的 DocuSign 帐户的凭据，然后单击“下一步”。 
-   
-    ![配置帐户预配][31]
-3. 在“测试连接”对话框中，单击“开始测试”，在测试成功后单击“下一步”。
-   
-    ![配置帐户预配][32]
-4. 在“确认”页上，单击“完成”。
-   
-    ![配置帐户预配][33]
+> [!TIP]
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-## <a name="assigning-users"></a>分配用户
-若要测试配置，需要向希望能够通过应用程序访问配置的 Azure AD 用户分配访问权限，从而向他们授予该权限。
+### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-### <a name="to-assign-users-to-docusign-perform-the-following-steps"></a>若要将用户分配到 DocuSign，请执行以下步骤：
-1. 在 **Azure 经典门户**中，创建一个测试帐户。
-2. 在 **DocuSign** 应用程序集成页上，单击“分配用户”。
-   
-    ![分配用户][40]
-3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
-   
-    ![分配用户][41]
+![创建 Azure AD 用户][100]
 
-现在应等待 10 分钟，然后验证该帐户是否已同步到 DocuSign。
+**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
 
-作为第一个验证步骤，你可以通过在 Azure 经典门户中的 DocuSign 应用程序集成页上单击“仪表板”来检查预配状态。
+1. 在 **Azure 门户**的左侧导航窗格中，单击“Azure Active Directory”图标。
 
-![分配用户][42]
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-docusign-tutorial/create_aaduser_01.png) 
 
-成功完成的用户预配周期将由一个相关状态予以指示：
+2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+    
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-docusign-tutorial/create_aaduser_02.png) 
 
-![分配用户][43]
+3. 在对话框顶部，单击“添加”以打开“用户”对话框。
+ 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-docusign-tutorial/create_aaduser_03.png) 
 
-如果要测试单一登录设置，请打开访问面板。
+4. 在“用户”对话框页上，执行以下步骤：
+ 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-docusign-tutorial/create_aaduser_04.png) 
 
-有关访问面板的详细信息，请参阅“访问面板简介”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+
+    c. 选择“显示密码”并记下“密码”的值。
+
+    d.单击“下一步”。 单击“创建” 。
+ 
+### <a name="creating-a-docusign-test-user"></a>创建 DocuSign 测试用户
+
+应用程序支持实时用户预配，进行身份验证后，将在应用程序中自动创建用户。
+
+### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
+在本部分中，通过授予 Britta Simon 访问 DocuSign 的权限，允许她使用 Azure 单一登录。
+
+![分配用户][200] 
+
+**若要将 Britta Simon 分配到 DocuSign，请执行以下步骤：**
+
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+
+    ![分配用户][201] 
+
+2. 在应用程序列表中，选择“DocuSign”。
+
+    ![配置单一登录](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_app.png) 
+
+3. 在左侧菜单中，单击“用户和组”。
+
+    ![分配用户][202] 
+
+4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+
+    ![分配用户][203]
+
+5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+
+6. 在“用户和组”对话框中单击“选择”按钮。
+
+7. 在“添加分配”对话框中单击“分配”按钮。
+    
+### <a name="testing-single-sign-on"></a>测试单一登录
+
+在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+
+在访问面板中单击 DocuSign 磁贴时，应该会自动登录到 DocuSign 应用程序。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
+
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [配置用户预配](active-directory-saas-docusign-provisioning-tutorial.md)
+
 
 <!--Image references-->
 
-[0]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_00.png
 [1]: ./media/active-directory-saas-docusign-tutorial/tutorial_general_01.png
 [2]: ./media/active-directory-saas-docusign-tutorial/tutorial_general_02.png
 [3]: ./media/active-directory-saas-docusign-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-docusign-tutorial/tutorial_general_04.png
-[5]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_01.png
-[6]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_02.png
-[7]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_03.png
-[8]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_04.png
-[9]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_05.png
-[10]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_06.png
-
-[14]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_10.png
-[15]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_11.png
-
-[30]: ./media/active-directory-saas-docusign-tutorial/tutorial_general_400.png
-[31]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_12.png
-[32]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_13.png
-[33]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_14.png
-
-
-
-[40]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_15.png
-[41]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_16.png
-[42]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_17.png
-[43]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_18.png
-
 [51]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_21.png
 [52]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_22.png
 [53]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_23.png
@@ -243,4 +286,11 @@ ms.lasthandoff: 02/23/2017
 [59]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_27.png
 [60]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_28.png
 [61]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_29.png
+[100]: ./media/active-directory-saas-docusign-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-docusign-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-docusign-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-docusign-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-docusign-tutorial/tutorial_general_203.png
+
 

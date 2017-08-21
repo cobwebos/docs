@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/10/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: a1349e53774732ffbfacefc7bd8dcc493f78fbd6
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: f173111fb827a1f25fad857596fef13447bcca38
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 07/11/2017
 
 
 ---
@@ -42,7 +42,7 @@ ms.lasthandoff: 05/08/2017
 
 | 数据源 | 引入方式 |
 | --- | --- |
-| 本地计算机 |<ul> <li>[Azure 门户](/data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure 跨平台 CLI](data-lake-store-get-started-cli.md)</li> <li>[使用适用于 Visual Studio 的 Data Lake 工具](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md#upload-source-data-files) </li></ul> |
+| 本地计算机 |<ul> <li>[Azure 门户](/data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure 跨平台 CLI 2.0](data-lake-store-get-started-cli-2.0.md)</li> <li>[使用适用于 Visual Studio 的 Data Lake 工具](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
 | Azure 存储 Blob |<ul> <li>[Azure 数据工厂](../data-factory/data-factory-azure-datalake-connector.md)</li> <li>[AdlCopy 工具](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight 群集上运行的 DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>流数据
@@ -63,7 +63,7 @@ ms.lasthandoff: 05/08/2017
 ### <a name="web-server-log-data-upload-using-custom-applications"></a>Web 服务器日志数据（使用自定义应用程序上传）
 由于分析 web 服务器日志数据是大数据应用程序的常见用途，且需要上传大量日志文件到 Data Lake Store，因此会明确调用此类数据集。 可使用以下任何工具编写自己的脚本或应用程序来上传此类数据。
 
-* [Azure 跨平台 CLI](data-lake-store-get-started-cli.md)
+* [Azure 跨平台 CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
 * [Azure Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Azure 数据工厂](../data-factory/data-factory-data-movement-activities.md)
@@ -77,13 +77,13 @@ ms.lasthandoff: 05/08/2017
 * [AdlCopy 服务](data-lake-store-copy-data-azure-storage-blob.md)
 * [Azure 数据工厂](../data-factory/data-factory-azure-datalake-connector.md)
 
-### <a name="data-stored-in-on-premise-or-iaas-hadoop-clusters"></a>存储在本地或 IaaS Hadoop 群集的数据
+### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>存储在本地或 IaaS Hadoop 群集的数据
 使用 HDFS 可在本地计算机上的现有 Hadoop 群集中存储大量数据。 Hadoop 群集可能在本地部署或 Azure 上的 IaaS 群集中。 将此类数据以一次性或重复方式复制到 Azure Data Lake Store 可能存在一些要求。 实现此目的有多种可用选项。 以下是替代项和相关折衷方案的列表。
 
 | 方法 | 详细信息 | 优点 | 注意事项 |
 | --- | --- | --- | --- |
 | 使用 Azure 数据工厂 (ADF) 直接将数据从 Hadoop 群集复制到 Azure Data Lake Store |[ADF 支持将 HDFS 作为数据源](../data-factory/data-factory-hdfs-connector.md) |ADF 提供 HDFS 开箱即用支持和一流的端到端管理和监视 |要求在本地或 IaaS 群集中部署数据管理网关 |
-| 从 Hadoop 将数据以文件形式导出。 然后使用适当机制将文件复制到 Azure Data Lake Store。 |可使用如下应用将文件复制到 Azure Data Lake Store： <ul><li>[适用于 Windows 操作系统的 Azure PowerShell](data-lake-store-get-started-powershell.md)</li><li>[适用于非 Windows 操作系统的 Azure 跨平台 CLI](data-lake-store-get-started-cli.md)</li><li>使用任何 Data Lake Store SDK 自定义应用</li></ul> |快速入门。 可执行自定义上传 |涉及多种技术的多步处理。 由于工具的自定义性质，随着时间推移，管理和监视会逐渐变得具有挑战性 |
+| 从 Hadoop 将数据以文件形式导出。 然后使用适当机制将文件复制到 Azure Data Lake Store。 |可使用如下应用将文件复制到 Azure Data Lake Store： <ul><li>[适用于 Windows 操作系统的 Azure PowerShell](data-lake-store-get-started-powershell.md)</li><li>[适用于非 Windows 操作系统的 Azure 跨平台 CLI 2.0](data-lake-store-get-started-cli-2.0.md)</li><li>使用任何 Data Lake Store SDK 自定义应用</li></ul> |快速入门。 可执行自定义上传 |涉及多种技术的多步处理。 由于工具的自定义性质，随着时间推移，管理和监视会逐渐变得具有挑战性 |
 | 使用 Distcp 将数据从 Hadoop 复制到 Azure 存储。 然后使用适当机制将数据从 Azure 存储复制到 Data Lake Store。 |从 Azure 存储复制数据到 Data Lake Store 可使用以下工具： <ul><li>[Azure 数据工厂](../data-factory/data-factory-data-movement-activities.md)</li><li>[AdlCopy 工具](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight 群集上运行的 Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)</li></ul> |可使用开放源代码工具。 |涉及多种技术的多步处理 |
 
 ### <a name="really-large-datasets"></a>大型数据集
@@ -123,7 +123,7 @@ ms.lasthandoff: 05/08/2017
 
 也可使用以下方法自己编写脚本/应用程序来从 Data Lake Store 下载数据。
 
-* [Azure 跨平台 CLI](data-lake-store-get-started-cli.md)
+* [Azure 跨平台 CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
 * [Azure Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md)
 

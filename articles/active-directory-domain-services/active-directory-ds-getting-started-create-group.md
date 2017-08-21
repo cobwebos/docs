@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory 域服务：创建 Azure AD DC 管理员组 | Microsoft Docs"
-description: "Azure Active Directory 域服务入门"
+description: "通过 Azure 经典门户启用 Azure Active Directory 域服务"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -12,17 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/15/2017
+ms.date: 07/13/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 99607cf642bb6767c845ceb6fb4e62b1c15834f9
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 5ed0125e05928cf0f6d9941e099b433ecb46e6e2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/13/2017
 
 ---
-# <a name="get-started-with-azure-active-directory-domain-services"></a>Azure Active Directory 域服务入门
+# <a name="enable-azure-active-directory-domain-services-using-the-azure-classic-portal"></a>通过 Azure 经典门户启用 Azure Active Directory 域服务
 本文介绍并指导你完成为 Azure Active Directory (Azure AD) 租户启用 Azure Active Directory 域服务 (Azure AD DS) 所需的配置任务。
+
+> [!NOTE]
+> [**改为尝试新的（预览版）Azure 门户体验**](active-directory-ds-getting-started.md)。 
+>
 
 ## <a name="task-1-create-the-azure-ad-dc-administrators-group"></a>任务 1：创建 Azure AD DC 管理员组
 第一个任务是在 Azure AD 租户中创建管理组。 此特殊管理组称为 *AAD DC 管理员*。 此组的成员在已加入 Azure Active Directory 域服务托管域的计算机上拥有管理权限。 在已加入域的计算机上，此组将添加到管理员组。 此外，此组的成员可以使用远程桌面远程连接到已加入域的计算机。  
@@ -51,7 +55,7 @@ ms.lasthandoff: 04/12/2017
 
     ![“添加组”对话框](./media/active-directory-domain-services-getting-started/create-admin-group.png)
 7. 在“说明”框中，输入一个说明，使其他人可以了解此组在 Azure Active Directory 域服务中授予管理权限。
-8. 已创建组后，单击组名称以查看其属性。 
+8. 已创建组后，单击组名称以查看其属性。
 9. 若要将用户添加为此组的成员，请在窗口底部单击“添加成员”按钮。
 
     ![添加组成员按钮](./media/active-directory-domain-services-getting-started/add-group-members-button.png)
@@ -59,7 +63,7 @@ ms.lasthandoff: 04/12/2017
 
     ![将用户添加到管理员组](./media/active-directory-domain-services-getting-started/add-group-members.png)
 
-## <a name="next-steps"></a>后续步骤
-任务 2：[创建或选择 Azure 虚拟网络](active-directory-ds-getting-started-vnet.md)
-  
+
+## <a name="next-step"></a>后续步骤
+[任务 2：创建或选择 Azure 虚拟网络](active-directory-ds-getting-started-vnet.md)
 

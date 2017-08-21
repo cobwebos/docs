@@ -3,7 +3,7 @@ title: "Azure 数据工厂中数据移动的安全注意事项 | Microsoft Docs"
 description: "了解如何为 Azure 数据工厂中的数据移动提供保护。"
 services: data-factory
 documentationcenter: 
-author: abnarain
+author: nabhishek
 manager: jhubbard
 editor: monicar
 ms.service: data-factory
@@ -11,14 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2017
-ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: de9453e6764279c481e569542433d095772f304d
+ms.date: 07/27/2017
+ms.author: abnarain
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 33ccb820b786b9aa28f9e10c35ef1d2c00eaf7f1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/11/2017
 
 ---
 
@@ -142,7 +141,7 @@ IPSec VPN：
 
 ### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>网关的防火墙配置和白名单 IP 地址
 
-#### <a name="firewall-requirements-for-on-premiseprivate-network"></a>本地/专用网络的防火墙要求   
+#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>本地/专用网络的防火墙要求  
 在企业中，企业防火墙在组织的中央路由器上运行。 并且，Windows 防火墙在安装网关的本地计算机上作为守护程序运行。 
 
 下表提供了企业防火墙的出站端口和域要求。

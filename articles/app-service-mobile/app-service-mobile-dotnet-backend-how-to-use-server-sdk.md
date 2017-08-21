@@ -4,8 +4,8 @@ description: "了解如何使用适用于 Azure 应用服务移动应用的 .NET
 keywords: "应用服务, azure 应用服务, 移动应用, 移动服务, 缩放, 可缩放, 应用部署, azure 应用部署"
 services: app-service\mobile
 documentationcenter: 
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: 0620554f-9590-40a8-9f47-61c48c21076b
 ms.service: app-service-mobile
@@ -14,13 +14,12 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: adrianha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: fcbaa0df29fac22917695046ebc4015f3abf108f
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: ebaeee9b68810d0e5d47da20373e7951c57147d4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>使用适用于 Azure 移动应用的 .NET 后端服务器 SDK
@@ -118,25 +117,20 @@ Azure 门户中的服务器快速启动代码调用 **UseDefaultConfiguration()*
 以下基于 NuGet 的扩展包提供应用程序可以使用的多种移动功能。 可以使用 **MobileAppConfiguration** 对象在初始化期间启用扩展。
 
 * [Microsoft.Azure.Mobile.Server.Quickstart] 支持基本的移动应用设置。 在初始化期间，通过调用 **UseDefaultConfiguration** 扩展方法添加到配置。 此扩展包含以下扩展：通知、身份验证、实体、表、跨域和主目录包。 此包由 Azure 门户上可用的“移动应用快速入门”使用。
-* [Microsoft.Azure.Mobile.Server.Home](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/)
-   实现网站根目录的默认*此移动应用已启动并正在运行*页。 通过调用   **AddMobileAppHomeController** 扩展方法添加到配置。
-* [Microsoft.Azure.Mobile.Server.Tables](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/)
-   包含用于处理数据和设置数据管道的类。 通过调用 **AddTables** 扩展方法添加到配置。
-* [Microsoft.Azure.Mobile.Server.Entity](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/)
-    使实体框架能够访问 SQL 数据库中的数据。 通过调用 **AddTablesWithEntityFramework** 扩展方法添加到配置。
-* [Microsoft.Azure.Mobile.Server.Authentication] 启用身份验证，并设置用于验证令牌的 OWIN 中间件。 通过调用 **AddAppServiceAuthentication**
-   与 **IAppBuilder**.**UseAppServiceAuthentication** 扩展方法添加到配置。
+* [Microsoft.Azure.Mobile.Server.Home](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/) 为网站根目录实现默认的此移动应用已启动并正在运行页。 通过调用 **AddMobileAppHomeController** 扩展方法添加到配置。
+* [Microsoft.Azure.Mobile.Server.Tables](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/) 包含用于处理数据和设置数据管道的类。 通过调用 **AddTables** 扩展方法添加到配置。
+* [Microsoft.Azure.Mobile.Server.Entity](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/) 使实体框架能够访问 SQL 数据库中的数据。 通过调用 **AddTablesWithEntityFramework** 扩展方法添加到配置。
+* [Microsoft.Azure.Mobile.Server.Authentication] 启用身份验证，并设置用于验证令牌的 OWIN 中间件。 通过调用 AddAppServiceAuthentication 与 IAppBuilder.UseAppServiceAuthentication 扩展方法添加到配置。
 * [Microsoft.Azure.Mobile.Server.Notifications] 启用推送通知并定义推送注册终结点。 通过调用 **AddPushNotifications** 扩展方法添加到配置。
-* [Microsoft.Azure.Mobile.Server.CrossDomain](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/)
-   创建从移动应用向旧版 Web 浏览器提供数据的控制器。 通过调用   **MapLegacyCrossDomainController** 扩展方法添加到配置。
+* [Microsoft.Azure.Mobile.Server.CrossDomain](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) 创建从移动应用向旧版 Web 浏览器提供数据的控制器。 通过调用 **MapLegacyCrossDomainController** 扩展方法添加到配置。
 * [Microsoft.Azure.Mobile.Server.Login] 通过 AppServiceLoginHandler.CreateToken() 方法，该方法为静态方法，在自定义身份验证方案下使用。
 
 ## <a name="publish-server-project"></a>如何发布服务器项目
-本部分说明如何从 Visual Studio 发布 .NET 后端项目。 也可以使用 Git 或 [Azure App Service 部署文档](../app-service-web/web-sites-deploy.md)中介绍的任何其他方法部署后端项目。
+本部分说明如何从 Visual Studio 发布 .NET 后端项目。 也可以使用 Git 或 [Azure 应用服务部署文档](../app-service-web/web-sites-deploy.md)中介绍的任何其他方法部署后端项目。
 
 1. 在 Visual Studio 中，重新生成项目以还原 NuGet 包。
 2. 在“解决方案资源管理器”中，右键单击该项目并单击“发布”。 首次发布时，需要定义发布配置文件。 如果已定义配置文件，可以直接选择该配置文件，然后单击“发布”。
-3. 如果系统要求选择发布目标，请单击“Microsoft Azure App Service” > “下一步”，然后根据需要使用 Azure 凭据登录。
+3. 如果系统要求选择发布目标，请单击“Microsoft Azure 应用服务” > “下一步”，然后根据需要使用 Azure 凭据登录。
    Visual Studio 将直接从 Azure 下载并安全存储发布设置。
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-1.png)
@@ -419,9 +413,9 @@ SID 派生自提供程序特定的用户 ID，对于给定的用户和登录提�
 ## <a name="how-to-debug-and-troubleshoot-the-net-server-sdk"></a>如何对 .NET 服务器 SDK 进行调试和故障排除
 Azure 应用服务提供多种适用于 ASP.NET 应用程序的调试和故障排除方法：
 
-* [监视 Azure App Service](../app-service-web/web-sites-monitor.md)
-* [在 Azure App Service 中启用诊断日志记录](../app-service-web/web-sites-enable-diagnostic-log.md)
-* [在 Visual Studio 中对 Azure App Service 进行故障排除](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md)
+* [监视 Azure 应用服务](../app-service-web/web-sites-monitor.md)
+* [在 Azure 应用服务中启用诊断日志记录](../app-service-web/web-sites-enable-diagnostic-log.md)
+* [在 Visual Studio 中对 Azure 应用服务进行故障排除](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md)
 
 ### <a name="logging"></a>日志记录
 可以使用标准的 ASP.NET 跟踪写入来写入应用服务诊断日志。 写入日志之前，必须在移动应用后端中启用诊断。
@@ -478,5 +472,4 @@ Azure 应用服务提供多种适用于 ASP.NET 应用程序的调试和故障�
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 [MapHttpAttributeRoutes]: https://msdn.microsoft.com/library/dn479134(v=vs.118).aspx
-
 

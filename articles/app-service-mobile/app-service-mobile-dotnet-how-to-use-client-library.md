@@ -3,8 +3,8 @@ title: "使用应用服务移动应用托管的客户端库 (Windows | Microsoft
 description: "了解如何在 Windows 和 Xamarin 应用中使用 Azure 应用服务移动应用的 .NET 客户端。"
 services: app-service\mobile
 documentationcenter: 
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: 0280785c-e027-4e0d-aaf2-6f155e5a6197
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2017
-ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: a02b817ecc45594f55de9a94b67dd35e34386735
-ms.openlocfilehash: 1f0dfe06bbcd22727d12b651cd708b208350831a
-ms.lasthandoff: 01/05/2017
-
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 2a5ac8d7bfbed4969cb9baf46e0fc35e5c84b4a3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>如何使用 Azure 移动应用的托管客户端
@@ -68,7 +68,7 @@ public class TodoItem
 使用下述某个方法从 [NuGet][9] 安装适用于移动应用的托管客户端 SDK 包：
 
 * **Visual Studio** 右键单击项目，单击“管理 NuGet 包”，搜索 `Microsoft.Azure.Mobile.Client` 包，然后单击“安装”。
-* **Xamarin Studio** 右键单击项目，单击“添加” > “添加 NuGet 包”，搜索 `Microsoft.Azure.Mobile.Client ` 包，然后单击“添加包”。
+* **Xamarin Studio** 右键单击项目，单击“添加”>“添加 NuGet 包”，搜索 `Microsoft.Azure.Mobile.Client ` 包，并单击“添加包”。
 
 在主活动文件中，请记得添加以下 **using** 语句：
 
@@ -628,7 +628,7 @@ InvokeApiAsync() 方法在想要调用的 API 前附加“/api/”，除非 API 
 > [!NOTE]
 > 建议在生产应用中使用客户端托管流。
 
-若要设置身份验证，必须向一个或多个标识提供者注册应用。  标识提供者为你的应用生成客户端 ID 和客户端机密。  随后在后端设置这些值，以启用 Azure App Service 身份验证/授权。  有关详细信息，请遵循[向应用添加身份验证]教程中的详细说明。
+若要设置身份验证，必须向一个或多个标识提供者注册应用。  标识提供者为你的应用生成客户端 ID 和客户端机密。  随后在后端设置这些值，以启用 Azure 应用服务身份验证/授权。  有关详细信息，请遵循[向应用添加身份验证]教程中的详细说明。
 
 本部分介绍以下主题：
 
@@ -652,7 +652,7 @@ InvokeApiAsync() 方法在想要调用的 API 前附加“/api/”，除非 API 
 2. 在 Visual Studio 或 Xamarin Studio 中打开项目，然后添加对 `Microsoft.IdentityModel.CLients.ActiveDirectory` NuGet 包的引用。 搜索时，请包含预发行版。
 3. 根据使用的平台，将以下代码添加到应用程序。 在每条代码中进行以下替换：
 
-   * 将 **INSERT-AUTHORITY-HERE** 替换为在其中预配应用程序的租户的名称。 格式应为 https://login.windows.net/contoso.onmicrosoft.com。 可以在 [Azure 经典门户]中从 Azure Active Directory 的“域”选项卡复制此值。
+   * 将 **INSERT-AUTHORITY-HERE** 替换为在其中预配应用程序的租户的名称。 格式应为 https://login.microsoftonline.com/contoso.onmicrosoft.com。 可以在 [Azure 经典门户]中从 Azure Active Directory 的“域”选项卡复制此值。
    * 将 **INSERT-RESOURCE-ID-HERE** 替换为移动应用后端的客户端 ID。 可以在门户中“Azure Active Directory 设置”下面的“高级”选项卡获取此客户端 ID。
    * 将 **INSERT-CLIENT-ID-HERE** 替换为从本机客户端应用程序复制的客户端 ID。
    * 使用 HTTPS 方案将 **INSERT-REDIRECT-URI-HERE** 替换为站点的 */.auth/login/done* 终结点。 此值应类似于 *https://contoso.azurewebsites.net/.auth/login/done*。
@@ -881,7 +881,7 @@ private async System.Threading.Tasks.Task Authenticate()
 
 如果使用的标识提供者不是 Facebook，请将 [MobileServiceAuthenticationProvider] 的值更改为提供者的值。
 
-在服务器流中，Azure App Service 通过显示所选提供者的登录页管理 OAuth 身份验证流。  返回标识提供者后，Azure App Service 将生成应用服务身份验证令牌。 [LoginAsync] 方法返回 [MobileServiceUser]，后者提供已经过身份验证的用户的 [UserId]，以及 JSON Web 令牌 (JWT) 形式的 [MobileServiceAuthenticationToken]。 可以缓存此令牌，并在它过期之前重复使用。 有关详细信息，请参阅[缓存身份验证令牌](#caching)。
+在服务器流中，Azure 应用服务通过显示所选提供者的登录页管理 OAuth 身份验证流。  返回标识提供者后，Azure 应用服务将生成应用服务身份验证令牌。 [LoginAsync] 方法返回 [MobileServiceUser]，后者提供已经过身份验证的用户的 [UserId]，以及 JSON Web 令牌 (JWT) 形式的 [MobileServiceAuthenticationToken]。 可以缓存此令牌，并在它过期之前重复使用。 有关详细信息，请参阅[缓存身份验证令牌](#caching)。
 
 ### <a name="caching"></a>缓存身份验证令牌
 在某些情况下，存储来自提供者的身份验证令牌可避免在首次成功身份验证后调用登录方法。  Windows 应用商店和 UWP 应用可以使用 [PasswordVault] 在成功登录后缓存当前身份验证令牌，如下所示：

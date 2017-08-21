@@ -13,31 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 2429ebef69aaddf28d10cd77bf4ce9072ea71476
+ms.reviewr: japere
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: f8ccf2cf66b49940bc7f2b9f4764020efc04838e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/11/2017
+ms.lasthandoff: 07/13/2017
 
 ---
 
-<a id="how-applications-appear-on-the-access-panel" class="xliff"></a>
-
-# 应用程序为何在访问面板上显示
+# <a name="how-applications-appear-on-the-access-panel"></a>应用程序为何在访问面板上显示
 
 访问面板是一个基于 Web 的门户，在 Azure Active Directory (Azure AD) 中拥有工作或学校帐户的用户可以使用它来查看和启动 Azure AD 管理员已授权他们访问的基于云的应用程序。 这些应用程序代替用户配置在 Azure AD 门户中。 管理员可以直接向用户或用户所在组提供应用程序，这会导致应用程序出现在用户的访问面板上。
 
-<a id="general-issues-to-check-first" class="xliff"></a>
-
-## 首先要检查的常规问题
+## <a name="general-issues-to-check-first"></a>首先要检查的常规问题
 
 -   如果刚将应用程序从用户或用户所在组中删除，请在几分钟后重新登录该用户的访问面板以查看应用程序是否已删除。
 
--   如果刚将许可证从用户或用户所在组中删除，则可能要花较长时间，具体取决于被更改的组的大小和复杂程度。 在登录访问面板前，请多等一会儿。
+-   如果刚从用户或用户所在组中删除一个许可证，则此操作可能要花较长时间，这取决于被更改的组的大小和复杂程度。 登录访问面板前请多等一会儿。
 
-<a id="problems-related-to-assigning-applications-to-users" class="xliff"></a>
-
-## 有关为用户分配应用程序的问题
+## <a name="problems-related-to-assigning-applications-to-users"></a>有关向用户分配应用程序的问题
 
 如果用户以前被分配到应用程序，则可能会在其访问面板中看到该应用程序。 以下是一些检查方式：
 
@@ -46,11 +41,9 @@ ms.lasthandoff: 04/11/2017
 -   [检查用户是否符合与应用程序相关的许可证](#check-if-a-user-is-under-a-license-related-to-the-application)
 
 
-<a id="check-if-a-user-is-assigned-to-the-application" class="xliff"></a>
+### <a name="check-if-a-user-is-assigned-to-the-application"></a>检查用户是否被分配给应用程序
 
-### 检查用户是否被分配给应用程序
-
-若要检查用户是否被分配给应用程序，请按照下列步骤操作：
+若要检查是否向用户分配了应用程序，请遵循以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，以**全局管理员**身份登录
 
@@ -70,13 +63,11 @@ ms.lasthandoff: 04/11/2017
 
   * 若要将用户从应用程序中删除，请**单击用户对应的行**，然后选择“删除”。
 
-<a id="check-if-a-user-is-under-a-license-related-to-the-application" class="xliff"></a>
+### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>检查用户是否符合与应用程序相关的许可证
 
-### 检查用户是否符合与应用程序相关的许可证
+若要检查用户的已分配许可证，请执行以下步骤：
 
-要检查用户的已分配许可证，请执行以下步骤：
-
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，以**全局管理员**身份登录
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
@@ -86,29 +77,25 @@ ms.lasthandoff: 04/11/2017
 
 5.  单击“所有用户”。
 
-6.  **搜索**你感兴趣的用户，然后**单击对应的行**进行选择。
+6.  **搜索**感兴趣的用户，然后**单击对应的行**进行选择。
 
 7.  单击“许可证”查看当前分配给用户的许可证有哪些。
 
    * 如果已向用户分配 Office 许可证，则第一方 Office 应用程序将显示在用户的访问面板中。
 
-<a id="problems-related-to-assigning-applications-to-groups" class="xliff"></a>
+## <a name="problems-related-to-assigning-applications-to-groups"></a>有关为组分配应用程序的问题
 
-## 有关为组分配应用程序的问题
-
-用户可能会在访问面板中看到应用程序，这是因为他们是某个组的成员，而该组已经被分配给应用程序。 以下是一些检查方式：
+由于用户所在组已分配有应用程序，因此他们可以在访问面板中看到应用程序。 以下是一些检查方式：
 
 -   [检查用户的组成员身份](#check-a-users-group-memberships)
 
 -   [检查用户是否是被分配许可证的组的成员](#check-if-a-user-is-a-member-of-a-group-assigned-to-a-license)
 
-<a id="check-a-users-group-memberships" class="xliff"></a>
+### <a name="check-a-users-group-memberships"></a>检查用户的组成员身份
 
-### 检查用户的组成员身份
+若要检查组的成员身份，请执行以下步骤：
 
-要检查组的成员身份，请执行以下步骤：
-
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，以**全局管理员**身份登录
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
@@ -126,9 +113,7 @@ ms.lasthandoff: 04/11/2017
 
    * 若要将用户从组中删除，请**单击组对应的行**，并选择删除。
 
-<a id="check-if-a-user-is-a-member-of-a-group-assigned-to-a-license" class="xliff"></a>
-
-### 检查用户是否是被分配许可证的组的成员
+### <a name="check-if-a-user-is-a-member-of-a-group-assigned-to-a-license"></a>检查用户是否是被分配许可证的组的成员
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，以**全局管理员**身份登录
 
@@ -146,14 +131,12 @@ ms.lasthandoff: 04/11/2017
 
 8.  单击特定组所在的行。
 
-9.  单击“许可证”查看当前分配给组的许可证有哪些。
+9.  单击“许可证”查看已分配给组的许可证有哪些。
 
   * 如果已向组分配 Office 许可证，则某个第一方 Office 应用程序可能会显示在用户的访问面板中。
 
 
-<a id="if-these-troubleshooting-steps-do-not-the-resolve-the-issue" class="xliff"></a>
-
-## 如果这些故障排除步骤未解决此问题
+## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>如果这些故障排除步骤未解决此问题
 
 打开支持票证，并提供以下信息（如有）：
 
@@ -169,8 +152,6 @@ ms.lasthandoff: 04/11/2017
 
 -   Fiddler 跟踪
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 [使用 Azure Active Directory 管理应用程序](active-directory-enable-sso-scenario.md)
 

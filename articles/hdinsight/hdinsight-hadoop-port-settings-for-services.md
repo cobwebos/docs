@@ -1,5 +1,5 @@
 ---
-title: "HDInsight 使用的端口 | Microsoft Docs"
+title: "HDInsight 上的 Hadoop 服务所使用的端口 — Azure | Microsoft Docs"
 description: "HDInsight 上运行的 Hadoop 服务使用的端口列表。"
 services: hdinsight
 documentationcenter: 
@@ -13,17 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/17/2017
+ms.date: 06/02/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 3bf5ff732b03a1ecffb4e149d7805a6216ab0019
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: b1a4ca17a53a6d337d704bc4eef6d441de1f32d8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
-# <a name="ports-and-uris-used-by-hdinsight"></a>HDInsight 使用的端口和 URI
+# <a name="ports-used-by-hadoop-services-on-hdinsight"></a>HDInsight 上的 Hadoop 服务所使用的端口
 
 本文档提供在基于 Linux 的 HDInsight 群集上运行的 Hadoop 服务使用的端口列表。 此外，还提供了用于通过 SSH 连接到群集的端口的信息。
 
@@ -76,6 +75,14 @@ HDInsight 群集中的所有节点都在 Azure 虚拟网络中，无法直接从
 > [!NOTE]
 > 某些服务仅适用于特定的群集类型。 例如，HBase 仅适用于 HBase 群集类型。
 
+### <a name="ambari"></a>Ambari
+
+| 服务 | Nodes | 端口 | 路径 | 协议 | 
+| --- | --- | --- | --- | --- |
+| Ambari Web UI | 头节点 | 8080 | / | HTTP |
+| Ambari REST API | 头节点 | 8080 | /api/v1 | HTTP |
+
+
 ### <a name="hdfs-ports"></a>HDFS 端口
 
 | 服务 | Nodes | 端口 | 协议 | 说明 |
@@ -105,8 +112,8 @@ HDInsight 群集中的所有节点都在 Azure 虚拟网络中，无法直接从
 
 | 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
-| HiveServer2 |头节点 |10001 |Thrift |用于以编程方式连接到 Hive 的服务 (Thrift/JDBC) |
-| Hive 元存储 |头节点 |9083 |Thrift |用于以编程方式连接到 Hive 元数据的服务 (Thrift/JDBC) |
+| HiveServer2 |头节点 |10001 |Thrift |用于连接到 Hive 的服务 (Thrift/JDBC) |
+| Hive 元存储 |头节点 |9083 |Thrift |用于连接到 Hive 元数据的服务 (Thrift/JDBC) |
 
 ### <a name="webhcat-ports"></a>WebHCat 端口
 
@@ -152,4 +159,8 @@ HDInsight 群集中的所有节点都在 Azure 虚拟网络中，无法直接从
 | 代理 |辅助角色节点 |9092 |[Kafka Wire Protocol](http://kafka.apache.org/protocol.html)（Kafka 线路协议） |用于客户端通信 |
 | &nbsp; |Zookeeper 节点 |2181 |&nbsp; |客户端用来连接 Zookeeper 的端口 |
 
+### <a name="spark-ports"></a>Spark 端口
 
+| 服务 | Nodes | 端口 | 协议 | 说明 |
+| --- | --- | --- | --- | --- |
+| Spark Thrift 服务器 |头节点 |10002 |Thrift |用于连接到 Spark SQL 的服务 (Thrift/JDBC) |

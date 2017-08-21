@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/28/2017
+ms.date: 07/12/2017
 ms.author: robb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 0764b9f3ac262b7c65944d6e2c82490daefa54c3
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: df53e92b877b4790bb700f176a1988d265ec4678
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 诊断故障排除
@@ -43,6 +42,7 @@ ms.lasthandoff: 06/17/2017
 | **监视代理配置文件** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
 | **Azure 诊断扩展包** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version> |
 | **日志收集实用工具路径** | %SystemDrive%\Packages\GuestAgent\ |
+| **MonAgentHost 日志文件** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ### <a name="virtual-machines"></a>虚拟机
 | 项目 | 路径 |
@@ -54,9 +54,12 @@ ms.lasthandoff: 06/17/2017
 | **状态文件** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\Status |
 | **Azure 诊断扩展包** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
 | **日志收集实用工具路径** | C:\WindowsAzure\Packages |
+| **MonAgentHost 日志文件** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ## <a name="azure-diagnostics-is-not-starting"></a>Azure Diagnostics 不启动
-从上面提供的日志文件的位置查看“DiagnosticsPluginLauncher.log”和“DiagnosticsPlugin.log”，获取有关诊断未能启动的原因的信息。  
+从上面提供的日志文件的位置查看“DiagnosticsPluginLauncher.log”和“DiagnosticsPlugin.log”，获取有关诊断未能启动的原因的信息。 
+
+如果这些日志指示 `Monitoring Agent not reporting success after launch`，则表示启动 MonAgentHost.exe 失败。 在上面部分中指示 `MonAgentHost log file` 的位置查看其日志。
 
 日志文件的最后一行包含退出代码。  
 
@@ -86,7 +89,7 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 - **性能计数器**：打开 perfmon 并检查计数器。
 - **跟踪日志**：通过远程桌面连接到 VM 并向应用的配置文件添加 TextWriterTraceListener。  请参阅 http://msdn.microsoft.com/en-us/library/sk36c28t.aspx 以设置文本侦听器。  确保 `<trace>` 元素具有 `<trace autoflush="true">`。<br />
 如果没有看到生成跟踪日志，请按照[关于跟踪日志丢失的更多信息](#more-about-trace-logs-missing)中的说明操作。
- - **ETW 跟踪**：通过远程桌面连接到 VM 并安装 PerfView。  在“PerfView”中运行“文件”->“用户命令”->“侦听 etwprovder1、etwprovider2 等”。请注意，侦听命令区分大小写，ETW 提供程序的逗号分隔列表之间不能有空格。  如果命令未能运行，可以单击 Perfview 工具右下角的“日志”按钮，查看尝试运行的内容以及结果。  假设输入正确，将弹出一个新窗口，几秒钟后，你将开始看到 ETW 跟踪。
+- **ETW 跟踪**：通过远程桌面连接到 VM 并安装 PerfView。  在“PerfView”中运行“文件”->“用户命令”->“侦听 etwprovder1、etwprovider2 等”。请注意，侦听命令区分大小写，ETW 提供程序的逗号分隔列表之间不能有空格。  如果命令未能运行，可以单击 Perfview 工具右下角的“日志”按钮，查看尝试运行的内容以及结果。  假设输入正确，将弹出一个新窗口，几秒钟后，你将开始看到 ETW 跟踪。
 - **事件日志**：通过远程桌面连接到 VM。 打开`Event Viewer`并确保事件存在。
 #### <a name="is-data-getting-captured-locally"></a>数据是否是本地捕获的：
 接下来，请确保从本地获取数据。
@@ -241,4 +244,3 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 - 如果性能计数器名称中使用了通配符(\*)，门户将无法关联配置和收集的计数器。
 
 **缓解措施**：将系统帐户的计算机语言更改为英语。 控制面板->区域->管理->复制设置->取消选中“欢迎屏幕和系统帐户”，从而不向系统帐户应用自定义语言。 如果希望门户为主要消费体验，还要确保不使用通配符。
-

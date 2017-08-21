@@ -11,21 +11,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 07/07/2017
 ms.author: anupams;v-bruham;garye
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 6d85e02ec538a0a7073915a9d613328cedb41bfb
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e79ca131bddc9e65dd24da109b9e8a08606f7bc6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
+ms.lasthandoff: 07/08/2017
 
 --- 
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Cortana Intelligence 解决方案评估工具
 ## <a name="overview"></a>概述
-可以使用 Cortana Intelligence 解决方案评估工具来评估高级分析应用程序，以便符合 Microsoft 推荐的最佳做法。 Microsoft 很高兴能与我们的合作伙伴 (ISV/SI) 协作，为客户、经销商和实现过程提供高质量解决方案。 本指南演示使用解决方案评估工具评估应用程序的过程，并描述检查中的具体最佳做法。
+可以使用 Cortana Intelligence 解决方案评估工具来评估高级分析解决方案是否符合 Microsoft 推荐的最佳做法。 Microsoft 很高兴能与我们的合作伙伴 (ISV/SI) 协作，为客户、经销商和实现过程提供高质量解决方案。 本指南演示使用解决方案评估工具评估解决方案的过程，并描述检查中的具体最佳做法。
 
 ## <a name="getting-started"></a>入门
-请[下载](https://aka.ms/aa-evalution-tool-download)并安装 Cortana Intelligence 解决方案评估工具。
+请[下载](https://aka.ms/aa-evaluation-tool-download)并安装 Cortana Intelligence 解决方案评估工具。
 
 先决条件：
 - Windows 10：[Windows 10 官方网站](https://www.microsoft.com/en-us/windows)
@@ -36,7 +36,7 @@ ms.lasthandoff: 07/01/2017
 
 ![打开评估工具](./media/cortana-intelligence-appsource-evaluation-tool/1-open-evaluation-tool.png)
 
-提供有关应用程序的标识信息。
+提供有关解决方案的标识信息。
 
 ![连接 Azure 订阅](./media/cortana-intelligence-appsource-evaluation-tool/2-connect-azure-subscription.png)
 
@@ -44,18 +44,18 @@ ms.lasthandoff: 07/01/2017
 
 ![选择资源](./media/cortana-intelligence-appsource-evaluation-tool/3-select-resources.png)
 
-加载资源组后，请选择应用程序中包含的资源，并将任意数据资源的可访问性标识为以下选项之一：
+加载资源组后，请选择解决方案中包含的资源，并将任意数据资源的可访问性标识为以下选项之一：
 - 引入
 - 消耗
 - 内部
 
-通过此信息，可以更好地了解应用程序如何利用各种组件，并确保面向用户的组件符合最佳做法。
+通过此信息，可以更好地了解解决方案如何利用各种组件，并确保面向用户的组件符合最佳做法。
 
 ### <a name="ingestion"></a>引入
-这里引入是指用于从应用程序外部拉取数据的任何数据源，或者用于将数据推送到应用程序的应用程序之外的任何服务。
+这里的引入是指用于从解决方案外部拉取数据的任何数据源，或者用于将数据推送到解决方案的任何服务，这些服务不包括在解决方案内。
 
 ### <a name="consumption"></a>消耗
-此处发布是指用于直接或间接地将数据推送给最终用户的任何数据集。 例如：
+这里的消耗是指用于直接或间接地将数据推送给最终用户的任何数据集。 例如：
 - 用于从 PowerBI 进行直接查询的数据集。
 - 在 WebApp 中查询的数据集。
 
@@ -70,25 +70,29 @@ ms.lasthandoff: 07/01/2017
 ![设置测试先决条件](./media/cortana-intelligence-appsource-evaluation-tool/4-set-test-prerequisites.png)
 
 ## <a name="solution-test-cases"></a>解决方案测试用例
-解决方案工具将针对你的应用程序执行一系列自动测试。
+解决方案工具将针对你的解决方案执行一系列自动测试。
 
 ![设置测试执行](./media/cortana-intelligence-appsource-evaluation-tool/5-set-test-execution.png)
 
-测试完成后，系统会要求你提供对于应用程序不符合要求的解释或理由。
+测试完成后，系统会要求你提供对于解决方案不符合要求的解释或理由。
 
 ![提供业务理由](./media/cortana-intelligence-appsource-evaluation-tool/6-provide-business-justification.png)
 
-例如，如果你的应用程序发布到 Azure SQL DW，那么评估测试还会要求你同时发布到 Azure Analysis Services。 
+例如，如果你的解决方案发布到 Azure SQL DW，那么评估测试还会要求你同时发布到 Azure Analysis Services。 
 
-应用程序可能会使用运行 SQL Server Analysis Services（而不是 Azure Analysis Services）的 IaaS虚拟机。 这会是测试失败的一个可接受原因。
+解决方案可能会使用运行 SQL Server Analysis Services（而不是 Azure Analysis Services）的 IaaS虚拟机。 这会是测试失败的一个可接受原因。
 ## <a name="packaging-your-evaluation-results"></a>打包评估结果
-完成测试用例后，评估包将导出为 zip 文件，系统会要求你提供评估工具的反馈。
+完成测试用例后，评估包将导出为 zip 文件，系统会要求你提供评估工具的反馈。 
+
+需要先将此测试结果 zip 文件与 Microsoft 共享，然后再申请添加到 AppSource
 
 ![为评估工具评分](./media/cortana-intelligence-appsource-evaluation-tool/7-grade-evaluation-tool.png)
 
+本文上面部分介绍了该工具的各种功能，现在让我们查看此工具将评估的最佳做法类型。
+
 ## <a name="security-evaluation-considerations"></a>安全评估注意事项
 ### <a name="databases-should-use-azure-active-directory-authentication"></a>数据库应使用 Azure Active Directory 身份验证
-进行 Azure Active Directory (AAD) 身份验证时，应启用应用程序中的全部 Azure SQL 或 Azure SQL DW 资源。 借助 AAD，在一个位置即可管理所有标识和角色。
+进行 Azure Active Directory (AAD) 身份验证时，应启用解决方案中的任何 Azure SQL 或 Azure SQL DW 资源。 借助 AAD，在一个位置即可管理所有标识和角色。
 
 | 详细信息 | 参考文章 |
 | --- | --- |
@@ -126,21 +130,21 @@ Azure SQL 和 Azure SQL DW 均支持透明数据加密 (TDE)，它提供数据�
 除 TDE 之外，Azure SQL 还支持 Always Encrypted，这是一种新的数据加密技术，在服务器上执行命令时，它可以确保不仅在静态时以及在客户端和服务器之间移动时加密数据，还可在使用数据时进行加密。
 
 ### <a name="any-virtual-machines-must-be-deployed-from-the-azure-marketplace"></a>必须从 Azure 应用商店部署任何虚拟机
-为 在 AppSource 中提供一致的安全级别，我们要求在 Azure 应用商店中认证和发布任何作为 Cortana Intelligence 应用程序一部分部署的虚拟机。
+为了在 AppSource 中提供一致的安全级别，请在 Azure Marketplace 中认证和发布任何作为 Cortana Intelligence 解决方案一部分部署的虚拟机。
 
 要搜索 Azure 应用商店映像的当前列表，请参阅 [Microsoft Azure 应用商店](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute)。
 
 有关如何发布 Azure 应用商店的虚拟机映像的信息，请参阅[为 Azure 应用商店创建虚拟机映像的指南](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation)。
 
 ## <a name="scalability-evaluation-considerations"></a>可伸缩性评估注意事项
-### <a name="cortana-intelligence-apps-should-include-a-scalable-big-data-platform"></a>Cortana Intelligence 应用程序应包括可缩放的大数据平台
-Cortana Intelligence 应用程序应缩放至非常大的数据大小。 在 Azure 中，这意味着它们应该包括两个 PB 缩放数据平台之一：
+### <a name="cortana-intelligence-solutions-should-include-a-scalable-big-data-platform"></a>Cortana Intelligence 解决方案应包括可缩放的大数据平台
+Cortana Intelligence 解决方案应延伸到超大规模的数据。 在 Azure 中，这意味着它们应该包括两个 PB 缩放数据平台之一：
 - Azure Data Lake Store
 - Azure SQL 数据仓库
 
-如果应用程序不要求支持这些数据大小，或者如果你正在使用其他数据平台，请在测试用例理由中对此进行解释。
-### <a name="cortana-intelligence-apps-should-include-dedicated-ingestion-data-environments"></a>Cortana Intelligence 应用程序应包括专用的引入数据环境
-Cortana Intelligence 应用程序通常应避免将数据直接插入关系数据源。 相反，原始数据应存储在非结构化环境中，并使用 Azure 数据工厂将幂等插入/更新到任意关系存储区。
+如果解决方案不要求支持这些数据大小，或者如果你正在使用其他数据平台，请在测试用例理由中对此进行解释。
+### <a name="cortana-intelligence-solutions-should-include-dedicated-ingestion-data-environments"></a>Cortana Intelligence 解决方案应包括专用的引入数据环境
+Cortana Intelligence 解决方案通常应避免将数据直接插入关系数据源。 相反，原始数据应存储在非结构化环境中，并使用 Azure 数据工厂将幂等插入/更新到任意关系存储区。
 
 有关使用 Azure 数据工厂复制数据的详细信息，请参阅[教程：使用 Visual Studio 创建带有复制活动的管道](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-copy-activity-tutorial-using-visual-studio)。
 
@@ -170,7 +174,7 @@ Azure SQL 数据库支持到辅助实例的异地复制。 此实例随后可用
 有关如何配置 Azure SQL 异地复制的说明，请参阅[使用 Transact-SQL 为 Azure SQL 数据库配置活动异地复制](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-geo-replication-transact-sql)。
 
 ### <a name="azure-sql-data-warehouse-should-have-geo-redundant-backups-enabled"></a>Azure SQL 数据仓库应启用异地冗余备份
-Azure SQL DW 支持到异地冗余存储的日常备份。 此异地复制功能可确保即使在无法访问主要区域中存储的快照的情况下，你仍可以还原数据仓库。 默认启用此功能，并且 Cortana Intelligence 应用程序不应禁用此功能。
+Azure SQL DW 支持到异地冗余存储的日常备份。 此异地复制功能可确保即使在无法访问主要区域中存储的快照的情况下，你仍可以还原数据仓库。 默认启用此功能，并且 Cortana Intelligence 解决方案不应禁用此功能。
 
 有关 Azure SQL DW 备份和还原的详细信息，请参阅此处[SQL 数据仓库备份](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-backups)。
 
@@ -190,5 +194,10 @@ Azure机器学习 (AzureML) 提供了易于使用的工具，用于创建和部�
 有关在 Azure ML 中创建重新训练 Web 服务的详细信息，请参阅[以编程方式重新训练机器学习模型](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-retrain-models-programmatically)。
 
 有关使用 Azure 数据工厂自动执行模型训练过程的详细信息，请参阅[使用更新资源活动更新 Azure 机器学习模型](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-azure-ml-update-resource-activity)。
+
+## <a name="existing-documentation"></a>现有文档
+[通过 Microsoft Azure 认证发展云业务](https://azure.microsoft.com/en-us/marketplace/programs/certified/)
+
+[Microsoft Azure Cortana Intelligence 认证](https://azure.microsoft.com/en-us/marketplace/programs/certified/cortana/)
 
 

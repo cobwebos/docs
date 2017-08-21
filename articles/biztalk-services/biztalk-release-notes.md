@@ -14,15 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: 84ad965ed6ef1711fda983220cf004fdd48d290d
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 18ed891a9bba2b4011d3492722a2366d96fb3c01
 ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 07/11/2017
 
 
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Azure BizTalk 服务发行说明
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 Microsoft Azure BizTalk 服务发行说明包含此版本中的已知问题。
 
 ## <a name="whats-new-in-the-november-update-of-biztalk-services"></a>BizTalk 服务 11 月更新版中的新增功能
@@ -31,8 +34,8 @@ Microsoft Azure BizTalk 服务发行说明包含此版本中的已知问题。
 ## <a name="update-history"></a>更新历史记录
 ### <a name="october-update"></a>10 月更新
 * 支持组织帐户：  
-  * **应用场景**：使用 Microsoft 帐户（如 user@live.com).）注册了 BizTalk 服务部署。在此场景中，只能使用 Microsoft 用户帐户通过 BizTalk 服务门户管理 BizTalk 服务。 不可使用组织帐户。  
-  * **应用场景**：在 Azure Active Directory 中使用组织帐户（例如 user@fabrikam.com 或 user@contoso.com).）注册了 BizTalk 服务部署。在此场景中，只能使用同一组织内部的 Azure Active Directory 用户帐户通过 BizTalk 服务门户管理 BizTalk 服务。 不可使用 Microsoft 帐户。  
+  * 方案：使用 Microsoft 帐户（如 user@live.com）注册 BizTalk 服务部署。 在此方案中，仅 Microsoft 帐户用户可使用 BizTalk 服务门户管理 BizTalk 服务。 不可使用组织帐户。  
+  * **方案**：使用 Azure Active Directory 中的组织帐户（如 user@fabrikam.com 或 user@contoso.com）注册 BizTalk 服务部署。 在此方案中，仅同一组织内的 Azure Active Directory 用户可使用 BizTalk 服务门户管理 BizTalk 服务。 不可使用 Microsoft 帐户。  
 * 在 Azure 经典门户中创建 BizTalk 服务时，会在 BizTalk 服务门户中自动注册。
   * **方案**：首次登录 Azure 经典门户、创建 BizTalk 服务，然后选择“管理”。 BizTalk 服务门户打开时，BizTalk 服务会自动注册并可供部署。  
     请参阅[在 BizTalk 服务门户中注册和更新 BizTalk 服务部署](https://msdn.microsoft.com/library/azure/hh689837.aspx)。  
@@ -136,7 +139,7 @@ BizTalk 适配器服务功能中的 BizTalk 适配器包适配器可利用用户
 > 
 
 ### <a name="restarting-the-biztalk-adapter-service-web-site"></a>重启 BizTalk 适配器服务网站
-通过安装 **BizTalk 适配器服务运行时** *会在 IIS 中创建包含* *BAService* *应用程序的* *BizTalk 适配器服务 网站** 。**BAService** 应用程序在内部使用中继绑定将本地服务终结点的工作范围扩展到云中。 对于本地托管的服务，仅在该本地服务启动时，才在服务总线上注册相应的中继终结点。  
+安装 BizTalk 适配器服务运行时*会在 IIS 中创建包含 BAService 应用程序的 BizTalk 适配器服务网站。 BAService 应用程序在内部使用中继绑定将本地服务终结点的工作范围扩展到云中。 对于本地托管的服务，仅在该本地服务启动时，才在服务总线上注册相应的中继终结点。  
 
 如果停止后再启动应用程序，系统不会接受用于自动启动应用程序的配置。 因此，停止 **BAService** 后，必须始终改为重启 **BizTalk 适配器服务**网站。 请勿启动或停止 **BAService** 应用程序。
 

@@ -15,18 +15,20 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: e3f8db4560efc4c1425e1e88f2afee97ba7a8fea
+ms.translationtype: HT
+ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
+ms.openlocfilehash: 03c4b6d225dce99d79ef6c1ba2af43af8dea3eae
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/18/2017
-
+ms.lasthandoff: 07/15/2017
 
 ---
 # <a name="integrate-azure-ad-with-a-windows-phone-app"></a>将 Azure AD 与 Windows Phone 应用程序集成
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
+
+> [!NOTE]
+> Visual Studio 2017 中不支持 Windows Phone 8.1 和更低版本的项目。  有关详细信息，请参阅 [Visual Studio 2017 平台目标以及兼容性](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs)。
 
 如果你要开发 Windows Phone 8.1 应用，Azure AD 可让你简单直接地使用用户的 Active Directory 帐户对其进行身份验证。  它还可以让应用程序安全地使用 Azure AD 保护的任何 Web API，例如 Office 365 API 或 Azure API。
 

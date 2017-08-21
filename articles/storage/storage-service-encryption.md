@@ -1,6 +1,6 @@
 ---
 title: "静态数据的 Azure 存储服务加密 | Microsoft Docs"
-description: "使用 Azure 存储空间服务加密功能可在存储数据时在服务端加密 Azure Blob 存储，并在检索数据时解密数据。"
+description: "使用 Azure 存储服务加密功能可在存储数据时在服务端加密 Azure Blob 存储，并在检索数据时解密数据。"
 services: storage
 documentationcenter: .net
 author: robinsh
@@ -21,13 +21,13 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 07/13/2017
 
 ---
-# <a name="azure-storage-service-encryption-for-data-at-rest"></a>静态数据的 Azure 存储空间服务加密
-静态数据的 Azure 存储空间服务加密 (SSE) 可帮助你保护数据，使你的组织能够信守在安全性与合规性方面所做的承诺。 使用此功能，Azure 存储空间可以先自动加密数据，再将数据保存到存储空间，并在检索之前解密数据。 加密、解密和密钥管理对于用户而言是完全透明的。
+# <a name="azure-storage-service-encryption-for-data-at-rest"></a>静态数据的 Azure 存储服务加密
+静态数据的 Azure 存储服务加密 (SSE) 可帮助你保护数据，使你的组织能够信守在安全性与合规性方面所做的承诺。 使用此功能，Azure 存储可以先自动加密数据，再将数据保存到存储，并在检索之前解密数据。 加密、解密和密钥管理对于用户而言是完全透明的。
 
 以下部分提供有关如何使用存储服务加密功能的详细指导，以及支持的方案和用户体验。
 
 ## <a name="overview"></a>概述
-Azure 存储空间提供配套的安全性功能，这些功能相辅相成，可让开发人员共同构建安全的应用程序。 在应用程序和 Azure 之间传输数据时，可使用[客户端加密](storage-client-side-encryption.md)、HTTPS 或 SMB 3.0 保护数据。 存储服务加密提供静态加密，以完全透明的方式处理加密、解密和密钥管理。 采用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)所有数据，它是现在最强有力的分组密码之一。
+Azure 存储提供配套的安全性功能，这些功能相辅相成，可让开发人员共同构建安全的应用程序。 在应用程序和 Azure 之间传输数据时，可使用[客户端加密](storage-client-side-encryption.md)、HTTPS 或 SMB 3.0 保护数据。 存储服务加密提供静态加密，以完全透明的方式处理加密、解密和密钥管理。 采用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)所有数据，它是现在最强有力的分组密码之一。
 
 SSE 的工作方式是在数据写入到 Azure 存储时对其加密，可用于 Azure Blob 存储和文件存储。 它适用于：
 
@@ -62,7 +62,7 @@ SSE 具有以下限制：
 
 * 不支持经典存储帐户的加密。
 * 现有数据 - SSE 只将加密启用加密之后新建的数据。 例如，如果你创建新的 Resource Manager 存储帐户但未打开加密，然后将 blob 或存档 VHD 上传到该存储帐户，然后打开 SSE，则那些 Blob 不会被加密，除非重新写入或复制。
-* 应用商店支持 - 使用 [Azure 门户](https://portal.azure.com)、PowerShell 和 Azure CLI 为应用商店中创建的 VM 启用加密。 VHD 基本映像将保持未加密状态；但是，在 VM 启动之后完成的任何写入将会加密。
+* Marketplace 支持 - 使用 [Azure 门户](https://portal.azure.com)、PowerShell 和 Azure CLI 为 Marketplace 中创建的 VM 启用加密。 VHD 基本映像将保持未加密状态；但是，在 VM 启动之后完成的任何写入将会加密。
 * 表和队列数据将不会加密。
 
 ## <a name="getting-started"></a>入门
@@ -92,8 +92,8 @@ Azure 文件存储使用标准 SMB 协议在云中提供文件共享。 可以�
 
 有关详细信息，请访问[使用 .NET 的 Azure Blob 存储入门](storage-dotnet-how-to-use-blobs.md)。
 
-#### <a name="using-a-storage-explorer"></a>使用存储空间资源管理器
-可以使用存储资源管理器创建存储帐户、上传和下载数据、查看 Blob 内容，以及浏览目录。 可以使用其中一个存储空间资源管理器将 Blob 上传到已启用加密的存储帐户。 使用某些存储资源管理器，还可以将现有 Blob 存储中的数据复制到存储账户中的不同容器或已启用 SSE 的新存储帐户。
+#### <a name="using-a-storage-explorer"></a>使用存储资源管理器
+可以使用存储资源管理器创建存储帐户、上传和下载数据、查看 Blob 内容，以及浏览目录。 可以使用其中一个存储资源管理器将 Blob 上传到已启用加密的存储帐户。 使用某些存储资源管理器，还可以将现有 Blob 存储中的数据复制到存储账户中的不同容器或已启用 SSE 的新存储帐户。
 
 有关详细信息，请访问 [Azure 存储资源管理器](storage-explorers.md)。
 
@@ -136,7 +136,7 @@ Azure 文件存储使用标准 SMB 协议在云中提供文件共享。 可以�
 
 **问：如果我创建新的存储帐户并启用 SSE，然后使用该存储帐户创建新的 VM，是否表示我的 VM 已加密？**
 
-答：是的。 使用新存储帐户创建的任何磁盘将会加密，只要它们是在启用 SSE 之后创建的。 如果 VM 是使用 Azure 应用商店创建的，VHD 基本映像将保持未加密状态；但是，在 VM 启动之后完成的任何写入将会加密。
+答：是的。 使用新存储帐户创建的任何磁盘将会加密，只要它们是在启用 SSE 之后创建的。 如果 VM 是使用 Azure Marketplace 创建的，VHD 基本映像将保持未加密状态；但是，在 VM 启动之后完成的任何写入将会加密。
 
 **问：是否可以使用 Azure PowerShell 和 Azure CLI 创建新的存储帐户并启用 SSE？**
 
@@ -172,7 +172,7 @@ Azure 文件存储使用标准 SMB 协议在云中提供文件共享。 可以�
 
 **问：我的存储帐户设置为异地冗余复制。如果启用 SSE，我的冗余副本是否也会加密？**
 
-答：是的，将加密存储帐户的所有副本，并且支持所有冗余选项 – 本地冗余存储 (LRS)、区域冗余存储空间 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。
+答：是的，将加密存储帐户的所有副本，并且支持所有冗余选项 – 本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。
 
 **问：我无法对我的存储帐户启用加密。**
 
@@ -187,6 +187,6 @@ Azure 文件存储使用标准 SMB 协议在云中提供文件共享。 可以�
 答：任何有关存储服务加密的问题，请联系 [ssediscussions@microsoft.com](mailto:ssediscussions@microsoft.com)。
 
 ## <a name="next-steps"></a>后续步骤
-Azure 存储空间提供配套的安全性功能，这些功能相辅相成，可让开发人员共同构建安全的应用程序。 有关详细信息，请访问[存储安全指南](storage-security-guide.md)。
+Azure 存储提供配套的安全性功能，这些功能相辅相成，可让开发人员共同构建安全的应用程序。 有关详细信息，请访问[存储安全指南](storage-security-guide.md)。
 
 

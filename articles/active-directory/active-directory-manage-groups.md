@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 27ce2b472cd10d8c6e9bbfb64588a824980fb656
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: cd8125eda7643f0b190d35cbb89edf8b7b4eca30
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 07/11/2017
 
 
 ---
@@ -32,7 +32,7 @@ Azure Active Directory (Azure AD) 是综合性的标识和访问管理解决方�
 >
 >
 
-Azure AD 的主要功能之一是管理对资源的访问。 这些资源可以是目录的一部分（例如，用于通过目录中的角色管理对象的权限）、目录外部的资源（例如 SaaS 应用程序、Azure 服务以及 SharePoint 站点）或者本地资源。 可通过四种方式向用户分配资源访问权限：
+Azure AD 的主要功能之一是管理对资源的访问。 这些资源可以是目录的一部分（例如用于通过目录中的角色管理对象的权限）、目录外部的资源（例如 SaaS 应用程序、Azure 服务以及 SharePoint 站点）或者本地资源。 可通过四种方式向用户分配资源访问权限：
 
 1. 直接分配
 

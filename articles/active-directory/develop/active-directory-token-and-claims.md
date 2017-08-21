@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 02/08/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 83bb2090d3a2fbd4fabdcd660c72590557cfcafc
-ms.openlocfilehash: 46702abb229ba0a6512f336cb0aa4e4a75b51771
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: c211c59b00d445a62ebe3ae9334101c983e05c57
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/18/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="azure-ad-token-reference"></a>Azure AD 令牌参考
@@ -98,7 +97,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 
 ## <a name="validating-tokens"></a>验证令牌
 
-为了验证 id_token 或 access_token，应用应验证该令牌的签名和声明。 若要验证访问令牌，你的应用还应验证颁发者、目标受众和签名令牌。 这些需要根据 OpenID 发现文档中的值进行验证。 例如，文档的租户独立版本位于 [https://login.windows.net/common/.well-known/openid-configuration](https://login.windows.net/common/.well-known/openid-configuration)。 Azure AD 中间件具有验证访问令牌的内置功能，你可以浏览我们的[示例](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-code-samples)，以所选语言进行查找。 有关如何显式验证 JWT 令牌的详细信息，请参阅[手动 JWT 验证示例](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation)。  
+为了验证 id_token 或 access_token，应用应验证该令牌的签名和声明。 若要验证访问令牌，你的应用还应验证颁发者、目标受众和签名令牌。 这些需要根据 OpenID 发现文档中的值进行验证。 例如，文档的租户独立版本位于 [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration)。 Azure AD 中间件具有验证访问令牌的内置功能，你可以浏览我们的[示例](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-code-samples)，以所选语言进行查找。 有关如何显式验证 JWT 令牌的详细信息，请参阅[手动 JWT 验证示例](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation)。  
 
 我们提供了库和代码示例（用于演示如何轻松处理令牌验证），想要了解基本过程的用户可以参阅以下信息。  另外还提供了多个适用于 JWT 验证的第三方开放源代码库 - 几乎每个平台和语言都至少有一个选项。 有关 Azure AD 身份验证库和代码示例的详细信息，请参阅 [Azure AD 身份验证库](active-directory-authentication-libraries.md)。
 

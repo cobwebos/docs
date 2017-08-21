@@ -3,7 +3,7 @@ title: "Azure Cosmos DB Gremlin 支持 | Microsoft Docs"
 description: "了解可在 Azure Cosmos DB 中使用的 Apache TinkerPop Gremlin 语言及其功能和步骤"
 services: cosmos-db
 documentationcenter: 
-author: arramac
+author: dennyglee
 manager: jhubbard
 editor: 
 tags: 
@@ -14,18 +14,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 06/10/2017
-ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: acea54d202d1117cf2dfb1d35ad48346daa9053d
+ms.author: denlee
+ms.translationtype: HT
+ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
+ms.openlocfilehash: 3f2d2af1d6be41d98f9780b4cf9ca4cd79de0fd7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/13/2017
-
+ms.lasthandoff: 07/17/2017
 
 ---
 
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin 图形支持
-Azure Cosmos DB 支持 [Apache Tinkerpop](http://tinkerpop.apache.org) 的图形遍历语言 [Gremlin]([Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps))，该语言是一种图形 API，用于创建图形实体以及执行图形查询操作。 可以使用 Gremlin 语言创建图形实体（顶点和边缘）、修改这些实体内部的属性、执行查询和遍历，以及删除实体。 
+Azure Cosmos DB 支持 [Apache Tinkerpop](http://tinkerpop.apache.org) 的图形遍历语言 [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)，该语言是一种图形 API，用于创建图形实体以及执行图形查询操作。 可以使用 Gremlin 语言创建图形实体（顶点和边缘）、修改这些实体内部的属性、执行查询和遍历，以及删除实体。 
 
 Azure Cosmos DB 为图形数据库提供企业级的功能。 这些功能包括全局分布、存储和吞吐量独立缩放、10 毫秒以下的可预测延迟、自动编制索引和 99.99% 的 SLA 保证。 由于 Azure Cosmos DB 支持 TinkerPop/Gremlin，因此你可以轻松迁移使用其他图形数据库编写的应用程序，而无需更改代码。 此外，由于具有 Gremlin 支持，Azure Cosmos DB 可与支持 TinkerPop 的分析框架（例如 [Apache Spark GraphX](http://spark.apache.org/graphx/)）无缝集成。 
 
@@ -150,7 +149,7 @@ GraphSON 为顶点使用的属性如下：
 | --- | --- |
 | id | 边缘的 ID。 必须唯一（在适用的情况下，可与 _partition 的值合并） |
 | label | 边缘的标签。 此属性是可选的，用于描述关系类型。 |
-| inV | 与边缘关联的用户定义属性包。 每个属性可以有多个值。 |
+| inV | 包含边缘的一系列顶点。 存储顶点的相邻信息可以快速执行遍历。 顶点根据其标签分组。 |
 | 属性 | 与边缘关联的用户定义属性包。 每个属性可以有多个值。 |
 
 每个属性可在一个数组中存储多个值。 
@@ -210,3 +209,4 @@ Azure Cosmos DB 的写入优化引擎默认支持自动对顶点和边缘中的�
 ## <a name="next-steps"></a>后续步骤
 * 开始[使用我们的 SDK](create-graph-dotnet.md) 构建图形应用程序 
 * 详细了解 [Azure Cosmos DB 的图形支持](graph-introduction.md)
+

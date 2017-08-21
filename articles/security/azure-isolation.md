@@ -1,5 +1,4 @@
 ---
-
 title: "Azure 公有云中的隔离 | Microsoft Docs"
 description: "了解基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动增加或减少。"
 services: security
@@ -15,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: a167f15b1c885c51c9a85c501a9a9a60992cdf5d
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 2559bdbca8002392ef925e0eddfd23044cc563b5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
 
@@ -116,9 +114,9 @@ Azure Active Directory 的其他部分功能包括:
 ### <a name="isolation-from-microsoft-administrators--data-deletion"></a>与 Microsoft 管理员和数据删除隔离
 Microsoft 采取强硬措施保护数据免受不适当的访问或未经授权的用户使用。 这些操作过程和控制由[联机服务条款](http://aka.ms/Online-Services-Terms)提供支持，该条款提供有关管理数据访问权限的合同承诺。
 
--    Microsoft 工程师没有访问云端数据的默认权限。 而是在必要时在管理监督下获取访问权限。 将谨慎控制并记录该访问权限，并在不再需要时撤回。
+-   Microsoft 工程师没有访问云端数据的默认权限。 而是在必要时在管理监督下获取访问权限。 将谨慎控制并记录该访问权限，并在不再需要时撤回。
 
--    Microsoft 可能雇佣其他公司代表其提供有限的服务。 分包商访问客户数据可能只是为了提供服务，这些服务是 Microsoft 雇佣他们来提供的，并且 Microsoft 禁止他们将这些数据用于其他用途。 此外，受合同限制，他们必须维护客户信息的机密性。
+-   Microsoft 可能雇佣其他公司代表其提供有限的服务。 分包商访问客户数据可能只是为了提供服务，这些服务是 Microsoft 雇佣他们来提供的，并且 Microsoft 禁止他们将这些数据用于其他用途。 此外，受合同限制，他们必须维护客户信息的机密性。
 
 对于经过审核认证（如 ISO/IEC 27001）的企业服务，Microsoft 和认证审核公司会定期进行验证，仅出于合法的商业目的对这些服务访问的资产执行样本审计。 用户始终都可随时访问自己的客户数据，而不论出于什么原因。
 
@@ -176,9 +174,9 @@ Azure 虚拟机监控程序、根 OS/FA 和客户 VM/GA 的集合包含一个计
 
 进行编程的规则有两类：
 
--    **计算机配置或基础结构规则**：默认情况下，将阻止所有通信。 在例外情况下，可以允许虚拟机发送和接收 DHCP 和 DNS 流量。 虚拟机还可以将流量发送到“公共”Internet 以及同一 Azure 虚拟网络和 OS 激活服务器内的其他虚拟机。 虚拟机的传出目标允许列表不包括 Azure 路由器子网、Azure 管理以及其他 Microsoft 属性。
+-   **计算机配置或基础结构规则**：默认情况下，将阻止所有通信。 在例外情况下，可以允许虚拟机发送和接收 DHCP 和 DNS 流量。 虚拟机还可以将流量发送到“公共”Internet 以及同一 Azure 虚拟网络和 OS 激活服务器内的其他虚拟机。 虚拟机的传出目标允许列表不包括 Azure 路由器子网、Azure 管理以及其他 Microsoft 属性。
 
--    **角色配置文件**：根据租户的服务模型定义入站访问控制列表 (ACL)。
+-   **角色配置文件**：根据租户的服务模型定义入站访问控制列表 (ACL)。
 
 ### <a name="vlan-isolation"></a>VLAN 隔离
 每个群集中有三个 VLAN：
@@ -186,11 +184,11 @@ Azure 虚拟机监控程序、根 OS/FA 和客户 VM/GA 的集合包含一个计
 ![VLAN 隔离](./media/azure-isolation/azure-isolation-fig8.jpg)
 
 
--    主 VLAN – 互连不受信任的客户节点
+-   主 VLAN – 互连不受信任的客户节点
 
--    FC VLAN – 包含受信任的 FC 及支持的系统
+-   FC VLAN – 包含受信任的 FC 及支持的系统
 
--    设备 VLAN – 包含受信任的网络和其他基础结构设备
+-   设备 VLAN – 包含受信任的网络和其他基础结构设备
 
 允许从 FC VLAN 到主 VLAN 的通信，但不能启动从主 VLAN 到 FC VLAN 的通信。 还会阻止从主 VLAN 到设备 VLAN 的通信。 这可确保即使运行客户代码的节点遭到破坏， FC 或设备 VLAN 上的节点也不会受到攻击。
 
@@ -215,27 +213,27 @@ Azure 虚拟机监控程序、根 OS/FA 和客户 VM/GA 的集合包含一个计
 
 ### <a name="encryption"></a>加密
 Azure 提供了以下加密类型来保护数据：
--    传输中加密
+-   传输中加密
 
--    静态加密
+-   静态加密
 
 #### <a name="encryption-in-transit"></a>传输中加密
 传输中加密是通过网络传输数据时用于保护数据的一种机制。 在 Azure 存储中，可以使用以下加密方式来保护数据：
 
--    [传输级别加密](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit)，例如从 Azure 存储传入或传出数据时使用的 HTTPS。
+-   [传输级别加密](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit)，例如从 Azure 存储传入或传出数据时使用的 HTTPS。
 
--    [线路加密](https://docs.microsoft.com/azure/storage/storage-security-guide#using-encryption-during-transit-with-azure-file-shares)，例如 Azure 文件共享的 SMB 3.0 加密。
+-   [线路加密](../storage/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares)，例如 Azure 文件共享的 SMB 3.0 加密。
 
--    [客户端加密](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage)，在将数据传输到存储之前加密数据，以及从存储传出数据后解密数据。
+-   [客户端加密](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage)，在将数据传输到存储之前加密数据，以及从存储传出数据后解密数据。
 
 #### <a name="encryption-at-rest"></a>静态加密
 对许多组织而言，[静态数据加密](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)是实现数据隐私性、合规性和数据所有权的必要措施。 有三项 Azure 功能可提供“静态”数据加密：
 
--    [存储服务加密](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest)可以请求存储服务在将数据写入 Azure 存储时自动加密数据。
+-   [存储服务加密](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest)可以请求存储服务在将数据写入 Azure 存储时自动加密数据。
 
--    [客户端加密](https://docs.microsoft.com/azure/storage/storage-security-guide#client-side-encryption)也提供静态加密功能。
+-   [客户端加密](https://docs.microsoft.com/azure/storage/storage-security-guide#client-side-encryption)也提供静态加密功能。
 
--    [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。
+-   [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。
 
 #### <a name="azure-disk-encryption"></a>Azure 磁盘加密
 适用于虚拟机 (VM) 的 [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)通过使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中控制的密钥和策略加密 VM 磁盘（包括引导磁盘和数据磁盘），帮助解决企业的安全和符合性要求。
@@ -243,46 +241,46 @@ Azure 提供了以下加密类型来保护数据：
 适用于 Windows 的磁盘加密解决方案是基于 [Microsoft BitLocker 驱动器加密](https://technet.microsoft.com/library/cc732774.aspx)技术，Linux 解决方案基于 [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)。
 
 在 Microsoft Azure 中启用 IaaS VM 时，该解决方案支持以下 IaaS VM 方案：
--    与 Azure 密钥保管库集成
+-   与 Azure 密钥保管库集成
 
--    标准层 VM：A、D、DS、G 和 GS 等系列 IaaS VM
+-   标准层 VM：A、D、DS、G 和 GS 等系列 IaaS VM
 
--    在 Windows 和 Linux IaaS VM 上启用加密
+-   在 Windows 和 Linux IaaS VM 上启用加密
 
--    在 Windows IaaS VM 的 OS 和数据驱动器上禁用加密
+-   在 Windows IaaS VM 的 OS 和数据驱动器上禁用加密
 
--    在 Linux IaaS VM 的数据驱动器上禁用加密
+-   在 Linux IaaS VM 的数据驱动器上禁用加密
 
--    在运行 Windows 客户端 OS 的 IaaS VM 上启用加密
+-   在运行 Windows 客户端 OS 的 IaaS VM 上启用加密
 
--    在包含安装路径的卷上启用加密
+-   在包含安装路径的卷上启用加密
 
--    在使用 [mdadm](https://en.wikipedia.org/wiki/Mdadm) 配置了磁盘条带化 (RAID) 的 Linux VM 上启用加密
+-   在使用 [mdadm](https://en.wikipedia.org/wiki/Mdadm) 配置了磁盘条带化 (RAID) 的 Linux VM 上启用加密
 
--    使用 [LVM（逻辑卷管理器）](https://msdn.microsoft.com/library/windows/desktop/bb540532)对 Linux VM 上的数据磁盘启用加密
+-   使用 [LVM（逻辑卷管理器）](https://msdn.microsoft.com/library/windows/desktop/bb540532)对 Linux VM 上的数据磁盘启用加密
 
--    在使用存储空间配置的 Windows VM 上启用加密
+-   在使用存储空间配置的 Windows VM 上启用加密
 
--    支持所有 Azure 公共区域
+-   支持所有 Azure 公共区域
 
 该解决方案不支持版本中的以下方案、功能和技术：
 
--    基本层 IaaS VM
+-   基本层 IaaS VM
 
--    在 Linux IaaS VM 的 OS 驱动器上禁用加密
+-   在 Linux IaaS VM 的 OS 驱动器上禁用加密
 
--    使用经典 VM 创建方法创建的 IaaS VM
+-   使用经典 VM 创建方法创建的 IaaS VM
 
--    与本地密钥管理服务集成
+-   与本地密钥管理服务集成
 
--    Azure 文件（文件共享系统）、网络文件系统 (NFS)、动态卷，以及配置了基于软件的 RAID 系统的 Windows VM
+-   Azure 文件（文件共享系统）、网络文件系统 (NFS)、动态卷，以及配置了基于软件的 RAID 系统的 Windows VM
 
 ## <a name="sql-azure-database-isolation"></a>SQL Azure 数据库隔离
-SQL 数据库是 Microsoft 云中的关系数据库服务，它基于行业领先的 Microsoft SQL Server 引擎，能够处理任务关键型工作负荷。 SQL 数据库在联网时基于地理位置/区域提供帐户级别的可预测数据隔离，几乎不用人工管理。
+SQL 数据库是 Microsoft 云中的关系型数据库服务，它基于行业领先的 Microsoft SQL Server 引擎，能够处理任务关键型工作负荷。 SQL 数据库在联网时基于地理位置/区域提供帐户级别的可预测数据隔离，几乎不用人工管理。
 
 ### <a name="sql-azure-application-model"></a>SQL Azure 应用程序模型
 
-[Microsoft SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-get-started) 数据库是一项基于云的关系数据库服务，是根据 SQL Server 技术构建的。 它提供由 Microsoft 在云端托管的多租户数据库服务，该服务高度可用并且可缩放。
+[Microsoft SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-get-started) 数据库是一项基于云的关系型数据库服务，是根据 SQL Server 技术构建的。 它提供由 Microsoft 在云端托管的多租户数据库服务，该服务高度可用并且可缩放。
 
 在应用程序方面，SQL Azure 提供以下层次结构：每个级别都包含以下一个或多个级别。
 
@@ -298,9 +296,9 @@ SQL Azure 服务器不是物理实例或 VM 实例，而是数据库、共享管
 
 逻辑主数据库包括：
 
--    用于连接到服务器的 SQL 登录名
+-   用于连接到服务器的 SQL 登录名
 
--    防火墙规则
+-   防火墙规则
 
 对于同一逻辑服务器中 SQL Azure 数据库的计费和使用情况相关信息，不保证其位于 SQL Azure 群集中的同一物理实例中，而应用程序在连接时必须提供目标数据库名称。
 
@@ -311,13 +309,13 @@ SQL Azure 服务器不是物理实例或 VM 实例，而是数据库、共享管
 创建逻辑服务器并注册其 DNS 名称后，该 DNS 名称指向该服务器所在的特定数据中心内所谓的“网关 VIP”地址。
 
 在 VIP（虚拟 IP 地址）后面，有一个无状态网关服务的集合。 通常，多个数据源（主数据库、用户数据库等）之间需要协调时，将涉及到网关。 网关服务可实现以下功能：
--    **TDS 连接代理。** 这包括查找后端群集中的用户数据库，实现登录序列，然后将 TDS 数据包转发到后端并返回。
+-   **TDS 连接代理。** 这包括查找后端群集中的用户数据库，实现登录序列，然后将 TDS 数据包转发到后端并返回。
 
--    **数据库管理。** 这包括采用工作流集合来执行数据库的创建/更改/删除操作。 可通过探查 TDS 数据包或显式 OData API 调用数据库操作。
+-   **数据库管理。** 这包括采用工作流集合来执行数据库的创建/更改/删除操作。 可通过探查 TDS 数据包或显式 OData API 调用数据库操作。
 
--    创建/更改/删除登录/用户操作
+-   创建/更改/删除登录/用户操作
 
--    通过 OData API 进行的逻辑服务器管理操作
+-   通过 OData API 进行的逻辑服务器管理操作
 
 ![通过网络拓扑实现的隔离](./media/azure-isolation/azure-isolation-fig12.png)
 

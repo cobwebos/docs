@@ -1,6 +1,6 @@
 ---
-title: "使用适用于 Visual Studio 的 Hadoop 执行 Hive 查询 | Microsoft Docs"
-description: "了解如何通过 Visual Studio Hadoop 工具将 Hive 与 HDInsight 中的 Hadoop 配合使用。"
+title: "将 Hive 与用于 Visual Studio 的 Data Lake (Hadoop) 工具配合使用 — Azure HDInsight | Microsoft Docs"
+description: "了解如何使用用于 Visual Studio 的 Data Lake 工具，通过 Azure HDInsight 上的 Apache Hadoop 运行 Apache Hive 查询。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -14,33 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/28/2017
+ms.date: 07/07/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 125531d8d52d4e27951a9e6cae0c50582c5b110e
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 3411c59fee73aa2e26a05d70e1dae11cdfc865ff
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/13/2017
 
 ---
-# <a name="run-hive-queries-using-the-hdinsight-tools-for-visual-studio"></a>使用适用于 Visual Studio 的 HDInsight 工具运行 Hive 查询
+# <a name="run-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具运行 Hive 查询
 
-[!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
-
-了解如何使用适用于 Visual Studio 的 HDInsight 工具将 Hive 查询提交到 HDInsight 群集。
+了解如何使用针对 Visual Studio 的 Data Lake 工具查询 Apache Hive。 使用 Data Lake 工具，可以轻松创建 Hive 查询，将其提交到 Azure HDInsight 上的 Hadoop 并进行监视。
 
 ## <a id="prereq"></a>先决条件
-
-若要完成本文中的步骤，需要以下各项。
 
 * Azure HDInsight（HDInsight 上的 Hadoop）群集
 
   > [!IMPORTANT]
-  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 * Visual Studio（以下版本之一）：
 
-    * 包含 [Update 4](https://www.microsoft.com/download/details.aspx?id=44921)
+    * 包含 Update 4 的 Visual Studio 2013 Community/Professional/Premium/Ultimate
 
     * Visual Studio 2015（任何版本）
 
@@ -70,7 +66,7 @@ ms.lasthandoff: 04/12/2017
    * `CREATE EXTERNAL TABLE`：在 Hive 中创建一个新的“外部”表。 外部表仅在 Hive 中存储表定义；数据会保留在原始位置。
 
      > [!NOTE]
-     > 当你预期以外部源更新基础数据（例如自动化数据上载过程），或以其他 MapReduce 操作更新基础数据，但希望 Hive 查询始终使用最新数据时，必须使用外部表。
+     > 如果希望通过外部源更新基础数据，应使用外部表。 例如，MapReduce 作业或 Azure 服务。
      >
      > 删除外部表**不会**删除数据，只会删除表定义。
 
@@ -115,7 +111,7 @@ ms.lasthandoff: 04/12/2017
 
 8. 从工具栏中，选择“提交”以运行该作业。 使用“作业状态”确定作业是否已成功完成。
 
-9. 若要验证作业是否已创建新表，请使用“服务器资源管理器”，然后展开“Azure” > “HDInsight”> 你的 HDInsight 群集 >“Hive 数据库” > “默认值”。 此时会列出 **errorLogs** 表和 **log4jLogs** 表。
+9. 若要验证作业是否已创建表，请使用“服务器资源管理器”，然后展开“Azure” > “HDInsight”> 用户的 HDInsight 群集 >“Hive 数据库” > “默认值”。 此时会列出 **errorLogs** 表和 **log4jLogs** 表。
 
 ## <a id="nextsteps"></a>后续步骤
 

@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
+ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: e8a22545e00b16f02124980cba4a8831e0df207a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ebf54f5a203adb7f0e5b0c47dcc07595e269e218
 ms.contentlocale: zh-cn
 
 
@@ -26,14 +27,14 @@ ms.contentlocale: zh-cn
 
 本部分介绍使用 OpenID Connect 通过 OWIN 中间件在 ASP.NET 项目上安装和配置身份验证管道的步骤。 
 
-> 想要改为下载此示例的 Visual Studio 项目？ [下载项目](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)并跳到[配置](#create-an-application-express)步骤，在执行前配置代码示例。
+> 想要改为下载此示例的 Visual Studio 项目？ [下载项目](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)并跳到[配置步骤](#create-an-application-express)，在执行前配置代码示例。
 
 <!--start-collapse-->
 > ### <a name="create-your-aspnet-project"></a>创建 ASP.NET 项目
 
 > 1. 在 Visual Studio 中：`File` > `New` > `Project`<br/>
 > 2. 在 *Visual C#\Web* 下，选择 `ASP.NET Web Application (.NET Framework)`。
-> 3. 命名应用程序，然后单击“确定”**
+> 3. 命名应用程序，然后单击“确定”
 > 4. 选择 `Empty` 并选中复选框，添加 `MVC` 引用
 <!--end-collapse-->
 

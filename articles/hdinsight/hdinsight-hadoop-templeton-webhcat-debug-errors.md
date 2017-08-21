@@ -1,5 +1,5 @@
 ---
-title: "了解和解决 HDInsight 上的 WebHCat 错误"
+title: "了解和解决 HDInsight 上的 WebHCat 错误 — Azure | Microsoft Docs"
 description: "了解 HDInsight 上的 WebHCat 返回的常见错误以及如何解决它们。"
 services: hdinsight
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/04/2017
+ms.date: 06/26/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 140d061fefbd9b8cd1b45061bf4dee607f2df44b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6d8162e0d64ec9fc42690392b7c822593c0c2767
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -42,7 +42,7 @@ ms.lasthandoff: 05/18/2017
 * 对于 **Linux** 群集：使用 Ambari（Web 或 REST API）修改值。 有关详细信息，请参阅[使用 Ambari 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
 
 > [!IMPORTANT]
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 ### <a name="default-configuration"></a>默认配置
 
@@ -87,7 +87,7 @@ ms.lasthandoff: 05/18/2017
 | 原因 | 解决方法 |
 | --- | --- |
 | WebHCat 进程内发生内部垃圾回收 |等待垃圾回收完成或重新启动 WebHCat 服务 |
-| 等待 ResourceManager 服务的响应超时。 当活动应用程序的数量达到配置的最大值（默认为 10,000）时，可能会发生这种情况 |等待当前正在运行的作业完成，或者通过修改 `yarn.scheduler.capacity.maximum-applications` 来提高并发作业限制。 请参阅[修改配置](#modifying-configuration)以获取详细信息 |
+| 等待 ResourceManager 服务的响应超时。 当活动应用程序的数量达到配置的最大值（默认为 10,000）时，可能会发生此错误 |等待当前正在运行的作业完成，或者通过修改 `yarn.scheduler.capacity.maximum-applications` 来提高并发作业限制。 有关详细信息，请参阅[修改配置](#modifying-configuration)部分。 |
 | 在 `Fields` 设置为 `*` 时，尝试通过 [GET /jobs ](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) 调用来检索所有作业 |不检索全部作业详细信息。 而是改用 `jobid` 来仅检索作业 ID 大于特定作业 ID 的作业的详细信息。 或者，不使用 `Fields` |
 | 在 HeadNode 故障转移期间 WebHCat 服务关闭 |等待两分钟，然后重试该操作 |
 | 通过 WebHCat 提交的作业有超过 500 个处于挂起状态 |等到当前挂起的作业完成再提交更多作业 |

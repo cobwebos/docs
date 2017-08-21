@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 07/18/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: 0b404af5b638ec2d543ce98b562b7df538652f70
-ms.openlocfilehash: 71863e52dca951b1fc3847e1bba47977a6e49c7c
-
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 2a2172a78bfd3ac923edbc9de366b035629dd27b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>如何创建和部署云服务
@@ -32,7 +33,7 @@ Azure 经典门户提供两种创建和部署云服务的方法：**快速创建
 本主题介绍如何使用“快速创建”方法创建新的云服务，然后使用“上传”在 Azure 中上传和部署云服务包。 使用此方法时，Azure 经典门户将在用户操作时提供方便的链接以便满足所有要求。 如果可以在创建云服务时对其进行部署，可使用“自定义创建”同时执行这两项操作。
 
 > [!NOTE]
-> 如果计划从 Visual Studio Team Services (VSTS) 发布云服务，请使用“快速创建”，然后从“快速启动”或仪表板设置 VSTS 发布。 有关详细信息，请参阅[使用 Visual Studio Team Services 向 Azure 持续交付][TFSTutorialForCloudService]，或查看“快速启动”页的帮助。
+> 如果计划从 Visual Studio Team Services (VSTS) 发布云服务，请使用“快速创建”，并从“快速启动”或仪表板设置 VSTS 发布。
 > 
 > 
 
@@ -120,17 +121,11 @@ Azure 经典门户提供两种创建和部署云服务的方法：**快速创建
    
     ![云服务_速览](./media/cloud-services-how-to-create-deploy/CloudServices_QuickGlance.png)
 
-[TFSTutorialForCloudService]: cloud-services-continuous-delivery-use-vso.md
 
 ## <a name="next-steps"></a>后续步骤
 * [云服务的常规配置](cloud-services-how-to-configure.md)。
 * 配置[自定义域名](cloud-services-custom-domain-name.md)。
 * [管理云服务](cloud-services-how-to-manage.md)。
 * 配置 [SSL 证书](cloud-services-configure-ssl-certificate.md)。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

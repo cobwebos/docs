@@ -1,5 +1,5 @@
 ---
-title: "在 HDInsight 中的查询控制台上使用 Hadoop Hive | Microsoft Docs"
+title: "在 HDInsight 中的查询控制台上使用 Hadoop Hive — Azure | Microsoft Docs"
 description: "了解如何在浏览器中使用基于 Web 的查询控制台在 HDInsight Hadoop 群集上运行 Hive 查询。"
 services: hdinsight
 documentationcenter: 
@@ -17,11 +17,10 @@ ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 3000f8db8357793c68f49b47cb5a1df16bb8df51
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9e3b4dbda4ba753ac93540d121b3831a6ed3b75e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="run-hive-queries-using-the-query-console"></a>使用查询控制台运行 Hive 查询
@@ -30,7 +29,7 @@ ms.lasthandoff: 05/18/2017
 在本文中，你将了解如何在浏览器中使用 HDInsight 查询控制台在 HDInsight Hadoop 群集上运行 Hive 查询。
 
 > [!IMPORTANT]
-> HDInsight 查询控制台只能在基于 Windows 的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
+> HDInsight 查询控制台只能在基于 Windows 的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 >
 > 有关 HDInsight 3.4 或更高版本，请参阅[在 Ambari Hive 视图中运行 Hive 查询](hdinsight-hadoop-use-hive-ambari-view.md)，了解如何通过 Web 浏览器运行 Hive 查询。
 
@@ -41,7 +40,7 @@ ms.lasthandoff: 05/18/2017
 * 现代 Web 浏览器
 
 ## <a id="run"></a>使用查询控制台运行 Hive 查询
-1. 打开 Web 浏览器并导航到 **https://CLUSTERNAME.azurehdinsight.net** ，其中 **CLUSTERNAME** 是 HDInsight 群集的名称。 出现提示时，输入在创建群集时使用的用户名和密码。
+1. 打开 Web 浏览器并导航到 **https://CLUSTERNAME.azurehdinsight.net**，其中 **CLUSTERNAME**是 HDInsight 群集的名称。 出现提示时，输入在创建群集时使用的用户名和密码。
 2. 在页面顶部的链接中，选择“Hive 编辑器”。 此时将显示一个窗体，你可以在其中输入要在 HDInsight 群集上运行的 HiveQL 语句。
 
     ![hive 编辑器](./media/hdinsight-hadoop-use-hive-query-console/queryconsole.png)
@@ -52,7 +51,7 @@ ms.lasthandoff: 05/18/2017
         DROP TABLE log4jLogs;
         CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
         ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
-        STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
+        STORED AS TEXTFILE LOCATION 'wasb:///example/data/';
         SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
 
     这些语句将执行以下操作：
