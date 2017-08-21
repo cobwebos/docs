@@ -14,32 +14,36 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 300403fb483818e5eb1851968ef7f36ff0507fb8
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 9938c3e994acf31244825b1afb347f8c9f90ebe3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/18/2017
 
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-xamarinios-apps"></a>适用于 Xamarin.iOS 应用的 Azure Mobile Engagement 入门
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 本主题介绍如何借助 Azure Mobile Engagement 了解应用的使用，并向 Xamarin.iOS 应用程序的细分用户发送推送通知。
-在本教程中，你将创建一个空白 Xamarin.iOS 应用，用于通过 Apple Push Notification 系统 (APNS) 接收推送通知。
+在本教程中，将创建一个空白 Xamarin.iOS 应用，用于通过 Apple Push Notification 系统 (APNS) 接收推送通知。
+
+> [!NOTE]
+> Azure Mobile Engagement 服务将于 2018 年 3 月停用，且当前仅向现有客户提供。 有关详细信息，请参阅 [Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/)。
 
 本教程需要的内容如下：
 
-* [Xamarin Studio](http://xamarin.com/studio)。 你也可以将 Xamarin 与 Visual Studio 配合使用，但是本教程使用的是 Xamarin Studio。 如需安装说明，请参阅 [设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/library/mt613162.aspx)。 
+* [Xamarin Studio](http://xamarin.com/studio)。 也可以将 Xamarin 与 Visual Studio 配合使用，但是本教程使用的是 Xamarin Studio。 如需安装说明，请参阅 [设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/library/mt613162.aspx)。 
 * [Mobile Engagement Xamarin SDK](https://www.nuget.org/packages/Microsoft.Azure.Engagement.Xamarin/)
 
 > [!NOTE]
-> 若要完成本教程，你必须有一个有效的 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-xamarin-ios-get-started)。
+> 要完成本教程，必须有一个有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-xamarin-ios-get-started)。
 > 
 > 
 
-## <a name="a-idsetupazmeasetup-mobile-engagement-for-your-ios-app"></a><a id="setup-azme"></a>为 iOS 应用设置 Mobile Engagement
+## <a id="setup-azme"></a>为 iOS 应用设置 Mobile Engagement
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>将应用连接到 Mobile Engagement 后端
+## <a id="connecting-app"></a>将应用连接到 Mobile Engagement 后端
 本教程介绍的“基本集成”是收集数据和发送推送通知的最低要求。
 
 通过 Xamarin 创建一个基本应用即可演示该集成：
@@ -48,10 +52,10 @@ ms.openlocfilehash: 300403fb483818e5eb1851968ef7f36ff0507fb8
 1. 启动 Xamarin Studio。 转到“文件” -> “新建” -> “解决方案” 
    
     ![][1]
-2. 选择“单一视图应用”，确保所选语言为“C#”，然后单击“下一步”。
+2. 选择“单一视图应用”，确保所选语言为“C#”，并单击“下一步”。
    
     ![][2]
-3. 填写“应用名称”和“组织标识符”，然后单击“下一步”。 
+3. 填写“应用名称”和“组织标识符”，并单击“下一步”。 
    
     ![][3]
    
@@ -59,23 +63,23 @@ ms.openlocfilehash: 300403fb483818e5eb1851968ef7f36ff0507fb8
    > 请确保最终用于部署 iOS 应用的发布配置文件所用的“应用 ID”与此处使用的“捆绑标识符”完全匹配。 
    > 
    > 
-4. 如果需要，更新“项目名称”、“解决方案名称”和“位置”，然后单击“创建”。
+4. 如果需要，更新“项目名称”、“解决方案名称”和“位置”，并单击“创建”。
    
     ![][4]
 
 Xamarin Studio 将创建在其中集成 Mobile Engagement 的演示应用。 
 
 ### <a name="connect-your-app-to-mobile-engagement-backend"></a>将应用连接到 Mobile Engagement 后端
-1. 右键单击“解决方案”窗口中的“程序包”文件夹并选择“添加程序包...”
+1. 右键单击“解决方案”窗口中的“包”文件夹并选择“添加包...”
    
     ![][5]
-2. 搜索 **Microsoft Azure Mobile Engagement Xamarin SDK** 并将其添加到你的解决方案。  
+2. 搜索 **Microsoft Azure Mobile Engagement Xamarin SDK** 并将其添加到解决方案。  
    
     ![][6]
 3. 打开 **AppDelegate.cs** ，添加以下 using 语句：
    
         using Microsoft.Azure.Engagement.Xamarin;
-4. 在 **FinishedLaunching** 方法中，添加以下代码来初始化与 Mobile Engagement 后端的连接。 请确保添加 **ConnectionString**。 此代码还使用一个由 Mobile Engagement SDK 添加的虚拟 **NotificationIcon** ，你可能需要将它替换掉。 
+4. 在 **FinishedLaunching** 方法中，添加以下代码来初始化与 Mobile Engagement 后端的连接。 请确保添加 **ConnectionString**。 此代码还使用一个由 Mobile Engagement SDK 添加的虚拟 **NotificationIcon**，可能需要将它替换掉。 
    
         EngagementConfiguration config = new EngagementConfiguration {
                         ConnectionString = "YourConnectionStringFromAzurePortal",
@@ -83,7 +87,7 @@ Xamarin Studio 将创建在其中集成 Mobile Engagement 的演示应用。
                     };
         EngagementAgent.Init (config);
 
-## <a name="a-idmonitoraenabling-realtime-monitoring"></a><a id="monitor"></a>启用实时监视
+## <a id="monitor"></a>启用实时监视
 为了开始发送数据并确保用户处于活动状态，必须将至少一个屏幕发送到 Mobile Engagement 后端。
 
 1. 打开 **ViewController.cs** ，添加以下 using 语句：
@@ -91,14 +95,14 @@ Xamarin Studio 将创建在其中集成 Mobile Engagement 的演示应用。
         using Microsoft.Azure.Engagement.Xamarin;
 2. 将 `ViewController` 继承自的类从 `UIViewController` 替换为 `EngagementViewController`。 
 
-## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>将应用与实时监视相连接
+## <a id="monitor"></a>将应用与实时监视相连接
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="a-idintegratepushaenable-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>启用推送通知和应用内消息传送
+## <a id="integrate-push"></a>启用推送通知和应用内消息传送
 在市场推广活动中，可以使用 Mobile Engagement 通过推送通知和应用内消息传送与 REACH 模块和用户进行交互。 在 Mobile Engagement 门户中，此模块称为 REACH。
-以下各部分将介绍如何设置应用以接收推送通知。
+以下各部分介绍如何设置应用以接收推送通知。
 
-### <a name="modify-your-application-delegate"></a>修改你的应用程序代理
+### <a name="modify-your-application-delegate"></a>修改应用程序代理
 1. 打开 **AppDelegate.cs** ，添加以下 using 语句：
    
         using System; 
@@ -158,9 +162,4 @@ Xamarin Studio 将创建在其中集成 Mobile Engagement 的演示应用。
 [6]: ./media/mobile-engagement-xamarin-ios-get-started/add-nuget-azme.png
 [7]: ./media/mobile-engagement-xamarin-ios-get-started/info-plist-confirm-bundle.png
 [8]: ./media/mobile-engagement-xamarin-ios-get-started/info-plist-configure-push.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 
