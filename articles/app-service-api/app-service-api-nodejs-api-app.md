@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 06/13/2017
 ms.author: rachelap
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 49f6a49f3f97841e896ff2d497555c42a1ec8e0d
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 806585edd43b9d2d678bfa41523e4d9d40af8cba
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/18/2017
 
 ---
 # <a name="build-a-nodejs-restful-api-and-deploy-it-to-an-api-app-in-azure"></a>构建 Node.js RESTful API 并将它部署到 Azure 中的 API 应用
@@ -60,16 +60,16 @@ ms.lasthandoff: 07/20/2017
 
 ## <a name="generate-nodejs-code"></a>生成 Node.js 代码 
 
-本教程部分为 API 开发工作流建模，将在其中先创建 Swagger 元数据，然后以此创建（自动生成）API 服务器代码基架。 
+本教程部分为 API 开发工作流建模，会在其中先创建 Swagger 元数据，然后以此创建（自动生成）API 服务器代码基架。 
 
 将目录更改为 start 文件夹，然后运行 `yo swaggerize`。 Swaggerize 从 api.json 中的 Swagger 定义创建用于 API 的 Node.js 项目。
 
-    ```bash
-    cd start
-    yo swaggerize --apiPath api.json --framework express
-    ```
+```bash
+cd start
+yo swaggerize --apiPath api.json --framework express
+```
 
-     When Swaggerize asks for a project name, use *ContactList*.
+当 Swaggerize 要求你提供项目名称时，请使用 ContactList。
    
    ```bash
    Swaggerize Generator
@@ -206,7 +206,7 @@ ms.lasthandoff: 07/20/2017
    
     ![Swagger Web 界面](media/app-service-api-nodejs-api-app/swagger-ui.png)
 
-## <a id="createapiapp"></a>创建 API 应用
+## <a id="createapiapp"></a> 创建 API 应用
 
 本部分将使用 Azure CLI 2.0 创建在 Azure 应用服务上托管 API 的资源。 
 

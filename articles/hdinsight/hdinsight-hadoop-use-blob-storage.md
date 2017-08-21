@@ -15,20 +15,20 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/09/2017
+ms.date: 08/09/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: 4a46c7d9a030adb9c0407fda622ccd787212b030
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: e01d12338ae7d80f734d855f9901339390ca0830
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/10/2017
+ms.lasthandoff: 08/18/2017
 
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
-若要分析 HDInsight 群集中的数据，可以将数据存储在 Azure 存储和/或 Azure Data Lake Store 中。 这两个存储选项都允许安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。
+要分析 HDInsight 群集中的数据，可以将数据存储在 Azure 存储和/或 Azure Data Lake Store 中。 这两个存储选项都允许安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。
 
-Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可以指定 Azure 存储中的 Blob 容器作为默认文件系统，或者借助 HDInsight 3.5，可以选择 Azure 存储或 Azure Data Lake Store 作为默认文件系统（有少数例外）。 有关将 Data Lake Store 同时用作默认存储和链接存储的可支持性，请参阅 [HDInsight 群集的可用性](#availabilities-for-hdinsight-clusters])。
+Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可以指定 Azure 存储中的 Blob 容器作为默认文件系统，或者借助 HDInsight 3.5，可以选择 Azure 存储或 Azure Data Lake Store 作为默认文件系统（有少数例外）。 有关将 Data Lake Store 同时用作默认存储和链接存储的可支持性，请参阅 [HDInsight 群集的可用性](./hdinsight-hadoop-use-data-lake-store.md#availabilities-for-hdinsight-clusters)。
 
 本文介绍如何配合使用 Azure 存储和 HDInsight 群集。 若要了解 Data Lake Store 与 HDInsight 群集如何配合工作，请参阅[如何配合使用 Azure Data Lake Store 和 Azure HDInsight 群集](hdinsight-hadoop-use-data-lake-store.md)。 若要深入了解如何创建 HDInsight 群集，请参阅[在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
@@ -63,34 +63,36 @@ HDInsight 提供对在本地附加到计算节点的分布式文件系统的访�
 
 以下是将 Azure 存储帐户与 HDInsight 群集配合使用时的一些注意事项。
 
-* **连接到群集的存储帐户中的容器：** 由于在创建过程中帐户名称和密钥将与群集相关联，因此你对这些容器中的 Blob 具有完全访问权限。
+* **连接到群集的存储帐户中的容器：**由于在创建过程中帐户名称和密钥将与群集相关联，因此，对这些容器中的 Blob 具有完全访问权限。
 
-* **没有连接到群集的存储帐户中的公共容器或公共 Blob：** 你对这些容器中的 Blob 具有只读权限。
+* 
+            **没有连接到群集的存储帐户中的公共容器或公共 Blob：**你对这些容器中的 Blob 具有只读权限。
   
   > [!NOTE]
-  > 利用公共容器，你可以获得该容器中可用的所有 Blob 的列表以及容器元数据。 利用公共 Blob，你仅在知道正确 URL 时才可访问 Blob。 有关详细信息，请参阅<a href="http://msdn.microsoft.com/library/windowsazure/dd179354.aspx">限制对容器和 Blob 的访问</a>。
+  > 利用公共容器，可以获得该容器中可用的所有 Blob 的列表以及容器元数据。 利用公共 Blob，仅在知道正确 URL 时才可访问 Blob。 有关详细信息，请参阅<a href="http://msdn.microsoft.com/library/windowsazure/dd179354.aspx">限制对容器和 Blob 的访问</a>。
   > 
   > 
-* **没有连接到群集的存储帐户中的私有容器：** 你不能访问这些容器中的 Blob，除非在提交 WebHCat 作业时定义存储帐户。 本文后面对此做了解释。
+* 
+            **没有连接到群集的存储帐户中的私有容器：**不能访问这些容器中的 Blob，除非在提交 WebHCat 作业时定义存储帐户。 本文后面对此做了解释。
 
-创建过程中定义的存储帐户及其密钥存储在群集节点上的 %HADOOP/_HOME%/conf/core-site.xml 中。 HDInsight 的默认行为是使用 core-site.xml 文件中定义的存储帐户。 不推荐直接编辑 core-site.xml 文件，因为群集头节点 (master) 可能会随时重新映像或迁移，对该文件所做的任何更改都不会保留。
+创建过程中定义的存储帐户及其密钥存储在群集节点上的 %HADOOP/_HOME%/conf/core-site.xml 中。 HDInsight 的默认行为是使用 core-site.xml 文件中定义的存储帐户。 可以使用 [Ambari](./hdinsight-hadoop-manage-ambari.md) 修改此设置
 
-多个 WebHCat 作业，包括 Hive、MapReduce、Hadoop 流和 Pig，都可以带有存储帐户和元数据的说明。 （它目前对带有存储帐户的 Pig 有效，但对元数据无效。）在本文的[使用 Azure PowerShell 访问 Blob](#powershell) 部分中，提供了此功能的示例。 有关详细信息，请参阅 [将 HDInsight 群集与备用存储帐户和元存储配合使用](http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx)。
+多个 WebHCat 作业，包括 Hive、MapReduce、Hadoop 流和 Pig，都可以带有存储帐户和元数据的说明。 （它目前对带有存储帐户的 Pig 有效，但对元数据无效。）有关详细信息，请参阅[将 HDInsight 群集与备用存储帐户和元存储配合使用](http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx)。
 
 Blob 可用于结构化和非结构化数据。 Blob 容器将数据存储为键值对，没有目录层次结构。 不过，可在键名称中使用斜杠字符 (/)，使其看起来像存储在目录结构中的文件。 例如，Blob 的键可以是 *input/log1.txt*。 不存在实际的 *input* 目录，但由于键名称中包含斜杠字符，因此使其看起来像一个文件路径。
 
 ## <a id="benefits"></a>Azure 存储的优点
-通过在 Azure 区域的存储帐户资源附近创建计算群集，使计算节点能够通过高速网络非常高效地访问 Azure 存储中的数据，从而减少了非并置计算群集和存储资源所产生的隐含性能成本。
+通过在 Azure 区域的存储帐户资源附近创建计算群集，使计算节点能够通过高速网络高效地访问 Azure 存储中的数据，从而减少了非并置计算群集和存储资源所产生的隐含性能成本。
 
 在 Azure 存储而非 HDFS 中存储数据有几个好处：
 
 * **数据重用和共享：** HDFS 中的数据位于计算群集内。 仅有权访问计算群集的应用程序才能通过 HDFS API 使用数据。 Azure 存储中的数据可通过 HDFS API 或 [Blob 存储 REST API][blob-storage-restAPI] 访问。 因此，可使用大量应用程序（包括其他 HDInsight 群集）和工具来生成和使用此类数据。
 * **数据存档：** 通过在 Azure 存储中存储数据，可以安全地删除用于计算的 HDInsight 群集而不会丢失用户数据。
-* **数据存储成本：**与在 Azure 存储中存储数据相比，在 DFS 中长期存储数据的成本更高，因为计算群集的成本高于 Azure 存储的成本。 此外，由于数据无需在每次生成计算群集时重新加载，也为你节省了数据加载成本。
-* **弹性向外扩展：** 尽管 HDFS 为你提供了向外扩展文件系统，但缩放将由你为群集创建的节点数量决定。 与依靠自动获得的 Azure 存储的弹性缩放功能相比，更改缩放的过程可能会更复杂。
-* **异地复制：**可对 Azure 存储进行异地复制。 尽管这可为你提供地理恢复和数据冗余功能，但针对异地复制位置的故障转移将大大影响你的性能，并且可能会产生额外成本。 因此，我们建议你仅在数据的价值值得你支付额外成本时才选择适当的地理复制。
+* **数据存储成本：**与在 Azure 存储中存储数据相比，在 DFS 中长期存储数据的成本更高，因为计算群集的成本高于 Azure 存储的成本。 此外，由于数据无需在每次生成计算群集时重新加载，也节省了数据加载成本。
+* **弹性向外扩展：**尽管 HDFS 提供了向外扩展文件系统，但缩放由你为群集创建的节点数量决定。 与依靠自动获得的 Azure 存储的弹性缩放功能相比，更改缩放的过程可能会更复杂。
+* **异地复制：**可对 Azure 存储进行异地复制。 尽管这可提供地理恢复和数据冗余功能，但针对异地复制位置的故障转移将大大影响性能，并且可能会产生额外成本。 因此，我们建议你仅在数据的价值值得你支付额外成本时才选择适当的异地复制。
 
-某些 MapReduce 作业和包可能会产生中间结果，你并不想在 Azure 存储中存储这些结果。 在此情况下，你仍可以选择将数据存储在本地 HDFS 中。 实际上，HDInsight 在 Hive 作业和其他过程中会为其中某些中间结果使用 DFS。
+某些 MapReduce 作业和包可能会产生中间结果，并不想在 Azure 存储中存储这些结果。 在此情况下，仍可以选择将数据存储在本地 HDFS 中。 实际上，HDInsight 在 Hive 作业和其他过程中会为其中某些中间结果使用 DFS。
 
 > [!NOTE]
 > 大多数 HDFS 命令（例如 <b>ls</b>、<b>copyFromLocal</b> 和 <b>mkdir</b>）仍按预期工作。 只有特定于本机 HDFS 实现（称作 DFS）的命令在 Azure 存储上会显示不同的行为，例如 <b>fschk</b> 和 <b>dfsadmin</b>。
@@ -102,7 +104,7 @@ Blob 可用于结构化和非结构化数据。 Blob 容器将数据存储为键
 
 无论所创建的每个 Blob 位于何处，它都属于 Azure 存储帐户中的某个容器。 此容器可以是在 HDInsight 外部创建的现有的 Blob，也可以是为 HDInsight 群集创建的容器。
 
-默认的 Blob 容器存储群集特定的信息，如作业历史记录和日志。 请不要多个 HDInsight 群集之间共享默认的 Blob 容器。 这可能会损坏作业历史记录。 建议对每个群集使用不同的容器，并将共享数据放入在所有相关群集的部署中指定的链接存储帐户，而不是放入默认存储帐户。 有关配置链接存储帐户的详细信息，请参阅[创建 HDInsight 群集][hdinsight-creation]。 但是，在删除原始的 HDInsight 群集后，你可以重用默认存储容器。 对于 HBase 群集，实际上可以通过使用已删除的 HBase 群集使用的默认 Blob 容器创建新的 HBase 群集，从而保留 HBase 表架构和数据。
+默认的 Blob 容器存储群集特定的信息，如作业历史记录和日志。 请不要多个 HDInsight 群集之间共享默认的 Blob 容器。 这可能会损坏作业历史记录。 建议对每个群集使用不同的容器，并将共享数据放入在所有相关群集的部署中指定的链接存储帐户，而不是放入默认存储帐户。 有关配置链接存储帐户的详细信息，请参阅[创建 HDInsight 群集][hdinsight-creation]。 但是，在删除原始的 HDInsight 群集后，可以重用默认存储容器。 对于 HBase 群集，实际上可以通过使用已删除的 HBase 群集使用的默认 Blob 容器创建新的 HBase 群集，从而保留 HBase 表架构和数据。
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
@@ -154,7 +156,7 @@ Blob 可用于结构化和非结构化数据。 Blob 容器将数据存储为键
 > 
 > 
 
-系统会提示你指定创建存储帐户的地理区域。 应在计划创建 HDInsight 群集的同一区域中创建存储帐户。
+系统会提示指定创建存储帐户的地理区域。 应在计划创建 HDInsight 群集的同一区域中创建存储帐户。
 
 创建存储帐户后，使用以下命令检索存储帐户密钥：
 
@@ -174,7 +176,7 @@ URI 方案提供了使用 *wasb:* 前缀的未加密访问和使用 *wasbs* 的 
 &lt;BlobStorageContainerName&gt; 标识 Azure 存储中 Blob 容器的名称。
 &lt;StorageAccountName 标识&gt; Azure 存储帐户名。 完全限定域名 (FQDN) 是必需的。
 
-如果既没有指定 &lt;BlobStorageContainerName&gt; 也没有指定 &lt;StorageAccountName&gt;，则使用默认文件系统。 对于默认文件系统中的文件，你可以使用相对路径或绝对路径。 例如，可以使用以下任一方式引用随 HDInsight 群集提供的 *hadoop-mapreduce-examples.jar* 文件：
+如果既没有指定 &lt;BlobStorageContainerName&gt; 也没有指定 &lt;StorageAccountName&gt;，则使用默认文件系统。 对于默认文件系统中的文件，可以使用相对路径或绝对路径。 例如，可以使用以下任一方式引用随 HDInsight 群集提供的 *hadoop-mapreduce-examples.jar* 文件：
 
     wasb://mycontainer@myaccount.blob.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
     wasb:///example/jars/hadoop-mapreduce-examples.jar
@@ -190,7 +192,7 @@ URI 方案提供了使用 *wasb:* 前缀的未加密访问和使用 *wasbs* 的 
     example/jars/hadoop-mapreduce-examples.jar
 
 > [!NOTE]
-> 在 HDInsight 外部使用 Blob 时，大多数实用程序无法识别 WASB 格式，你应该改用基本的路径格式，如 `example/jars/hadoop-mapreduce-examples.jar`。
+> 在 HDInsight 外部使用 Blob 时，大多数实用程序无法识别 WASB 格式，应该改用基本的路径格式，如 `example/jars/hadoop-mapreduce-examples.jar`。
 > 
 > 
 
@@ -210,10 +212,10 @@ URI 方案提供了使用 *wasb:* 前缀的未加密访问和使用 *wasbs* 的 
 ![Blob 相关 PowerShell cmdlet 的列表。][img-hdi-powershell-blobcommands]
 
 #### <a name="upload-files"></a>上传文件
-请参阅[将数据上载到 HDInsight][hdinsight-upload-data]。
+请参阅[将数据上传到 HDInsight][hdinsight-upload-data]。
 
 #### <a name="download-files"></a>下载文件
-以下脚本将一个块 Blob 下载到当前文件夹。 运行该脚本之前，请将该目录更改为你有写权限的文件夹。
+以下脚本将一个块 Blob 下载到当前文件夹。 运行该脚本之前，请将该目录更改成有写权限的文件夹。
 
     $resourceGroupName = "<AzureResourceGroupName>"
     $storageAccountName = "<AzureStorageAccountName>"   # The storage account used for the default file system specified at creation.
@@ -301,7 +303,7 @@ $clusterName = "<HDInsightClusterName>"
 > 不支持在 HDInsight 群集之外的其他位置使用别的存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍如何将与 HDFS 兼容的 Azure 存储和 HDInsight 配合使用。 这使你能够生成可缩放的长期存档数据采集解决方案，并使用 HDInsight 来解锁所存储结构化和非结构化数据内的信息。
+本文介绍如何将与 HDFS 兼容的 Azure 存储和 HDInsight 配合使用。 这样可以生成可缩放的长期存档数据采集解决方案，并使用 HDInsight 来解锁所存储结构化和非结构化数据内的信息。
 
 有关详细信息，请参阅：
 

@@ -13,18 +13,18 @@ ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 7/21/2017
 ms.author: markgal;arunak;trinadhk;
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 6f204f2f0dca33e68b9853af3c94934af65ca1f9
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 62ca4e395a7390c57b46c548395333283a06c21a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/18/2017
 
 ---
 # <a name="questions-about-the-azure-backup-service"></a>有关 Azure 备份服务的问题
-本文提供常见问题的解答，有助于快速了解 Azure 备份组件。 某些答案提供内含全面信息的文章的链接。 单击“评论”（右侧）即可提问有关 Azure 备份的问题。 评论显示在本文末尾。 需要使用 Livefyre 帐户发表评论。 你也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
+本文提供常见问题的解答，有助于快速了解 Azure 备份组件。 某些答案提供内含全面信息的文章的链接。 单击“评论”（右侧）即可提问有关 Azure 备份的问题。 评论显示在本文末尾。 需要使用 Livefyre 帐户发表评论。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
 
 若要快速浏览本文的各个部分，请使用右侧“本文内容”下的链接。
 
@@ -37,14 +37,14 @@ ms.lasthandoff: 07/24/2017
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>可针对每个保管库注册的服务器/计算机数量是否有限制？ <br/>
 是的，最多可为每个保管库注册 50 个计算机。 对于 Azure IaaS 虚拟机，限制为每个保管库 200 个 VM。 如果需要注册更多的计算机，请创建另一个保管库。
 
-### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>如果本组织有一个保管库，如何在还原数据时将一个服务器的数据与另一个服务器隔离？<br/>
-注册到同一个保管库的所有服务器都将能够恢复由 *使用同一密码*的其他服务器备份的数据。 如果想要隔离服务器中的备份数据与组织中的其他服务器，请使用这些服务器的指定通行短语。 例如，人力资源服务器可能使用一个加密通行短语，会计结算服务器使用另一个通行短语，而存储服务器使用第三个通行短语。
+### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>如果本组织有一个保管库，如何在还原数据时会一个服务器的数据与另一个服务器隔离？<br/>
+注册到同一个保管库的所有服务器都能够恢复由 *使用同一密码*的其他服务器备份的数据。 如果想要隔离服务器中的备份数据与组织中的其他服务器，请使用这些服务器的指定通行短语。 例如，人力资源服务器可能使用一个加密通行短语，会计结算服务器使用另一个通行短语，而存储服务器使用第三个通行短语。
 
 ### <a name="can-i-migrate-my-backup-data-or-vault-between-subscriptions-br"></a>是否可以在订阅之间“迁移”我的备份数据或保管库？ <br/>
 否。 保管库是在订阅级别创建的，在创建后无法重新分配到另一订阅。
 
 ### <a name="recovery-services-vaults-are-resource-manager-based-are-backup-vaults-classic-mode-still-supported-br"></a>恢复服务保管库基于 Resource Manager。 是否仍支持备份保管库（经典模式）？ <br/>
-仍然支持[经典门户](https://manage.windowsazure.com)中所有现有的备份保管库。 但是，无法再使用经典门户来部署新的备份保管库。 Microsoft 建议你对所有部署使用恢复服务保管库，因为将来只会对恢复服务保管库进行增强。 如果尝试在经典门户中创建备份保管库，系统会将你重定向到 [Azure 门户](https://portal.azure.com)。
+仍然支持[经典门户](https://manage.windowsazure.com)中所有现有的备份保管库。 但是，无法再使用经典门户来部署新的备份保管库。 Microsoft 建议对所有部署使用恢复服务保管库，因为将来只会对恢复服务保管库进行增强。 如果尝试在经典门户中创建备份保管库，系统会你将重定向到 [Azure 门户](https://portal.azure.com)。
 
 ### <a name="can-i-migrate-a-backup-vault-to-a-recovery-services-vault-br"></a>是否可以将备份保管库迁移到恢复服务保管库？ <br/>
 很遗憾不可以，无法将备份保管库的内容迁移到恢复服务保管库。 我们正在着手添加此功能，但当前未提供。
@@ -53,8 +53,9 @@ ms.lasthandoff: 07/24/2017
 将 VM 从经典模式迁移到 Resource Manager 模式时，备份保管库中的经典 VM 恢复点不会自动迁移到恢复服务保管库。 可以按照以下步骤传输 VM 备份：
 
 1. 在备份保管库中，转到“受保护的项”选项卡并选择 VM。 单击[停止保护](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines)。 将“ *删除关联的备份数据* ”选项保留为 **取消选中**状态。
-2. 将虚拟机从经典模式迁移到 Resource Manager 模式。 确保与虚拟机对应的存储和网络信息也已迁移到 Resource Manager 模式。
-3. 创建一个恢复服务保管库，并使用保管库仪表板顶部的“备份”操作在迁移的虚拟机上配置备份。 有关将 VM 备份到恢复服务保管库的详细信息，请参阅文章[使用恢复服务保管库保护 Azure VM](backup-azure-vms-first-look-arm.md)。
+2. 从 VM 中删除备份/快照扩展。
+3. 将虚拟机从经典模式迁移到 Resource Manager 模式。 确保与虚拟机对应的存储和网络信息也已迁移到 Resource Manager 模式。
+4. 创建一个恢复服务保管库，并使用保管库仪表板顶部的“备份”操作在迁移的虚拟机上配置备份。 有关将 VM 备份到恢复服务保管库的详细信息，请参阅文章[使用恢复服务保管库保护 Azure VM](backup-azure-vms-first-look-arm.md)。
 
 ## <a name="azure-backup-agent"></a>Azure 备份代理
 [Azure 文件-文件夹备份常见问题解答](backup-azure-file-folder-backup-faq.md)中提供了问题的详细列表
@@ -80,14 +81,14 @@ ms.lasthandoff: 07/24/2017
 建议在适用于 System Center Data Protection Manager (DPM) 的最新更新汇总版本 (UR) 上安装[最新](http://aka.ms/azurebackup_agent)的 Azure 备份代理。 到 2016 年 8 月为止，更新汇总版本 11 是最新的更新。
 
 ### <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-now-install-system-center-dpm-to-work-with-azure-backup-agent-to-protect-on-premises-applicationvm-workloads-to-azure-br"></a>我已安装 Azure 备份代理来保护我的文件和文件夹。 现在可以安装 System Center DPM 来与 Azure 备份代理配合使用，以便在 Azure 中保护本地应用程序/VM 工作负荷吗？ <br/>
-若要将 Azure 备份与 System Center Data Protection Manager (DPM) 一起使用，请先安装 DPM，然后再安装 Azure 备份代理。 按此顺序安装 Azure 备份组件可以确保 Azure 备份代理能够与 DPM 一起工作。 不建议也不支持在安装 DPM 之前安装 Azure 备份代理。
+要将 Azure 备份与 System Center Data Protection Manager (DPM) 一起使用，请先安装 DPM，然后再安装 Azure 备份代理。 按此顺序安装 Azure 备份组件可以确保 Azure 备份代理能够与 DPM 一起工作。 不建议也不支持在安装 DPM 之前安装 Azure 备份代理。
 
 
 ## <a name="how-azure-backup-works"></a>Azure 备份工作原理
 ### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted-br"></a>如果在备份作业开始后取消，是否会删除已传输的备份数据？ <br/>
 否。 在备份作业取消之前传输到保管库中的所有数据将保留在保管库中。 Azure 备份使用检查点机制，在备份过程中偶尔要对备份数据添加检查点。 由于备份数据中有检查点，下次备份过程可以验证文件的完整性。 下一次备份作业将是以前备份的数据的增量。 增量备份仅传输新增或更改的数据，这相当于更好地利用带宽。
 
-如果取消了 Azure VM 的备份作业，则已传输的数据将被忽略。 下次备份作业将传输上次成功的备份作业之后的增量数据。
+如果取消了 Azure VM 的备份作业，则已传输的数据会被忽略。 下次备份作业将传输上次成功的备份作业之后的增量数据。
 
 ### <a name="are-there-limits-on-when-or-how-many-times-a-backup-job-can-be-scheduledbr"></a>备份作业可计划的时间或次数是否有限制？<br/>
 是的。 一天可以在 Windows Server 或 Windows 工作站上运行备份操作最多三次。 一天可以在 System Center DPM 上运行备份操作最多两次。 一天可以运行 IaaS VM 的备份作业一次。 可以将计划策略用于 Windows Server 或 Windows 工作站，以便指定每日或每周计划。 使用 System Center DPM 时，可以指定每日、每周、每月和每年计划。
@@ -149,7 +150,7 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 否，DPM 和 Windows Server/客户端都有每日、每周、每月和每年保留策略。
 
 ### <a name="can-i-configure-my-retention-policies-selectively--ie-configure-weekly-and-daily-but-not-yearly-and-monthlybr"></a>是否可以选择性地配置我的保留策略 – 例如，配置每周和每日保留策略，但不配置每年和每月保留策略？<br/>
-是的，Azure 备份保留结构允许你根据自己的要求十分灵活地定义保留策略。
+是的，Azure 备份保留结构允许根据自己的要求十分灵活地定义保留策略。
 
 ### <a name="can-i-schedule-a-backup-at-6pm-and-specify-retention-policies-at-a-different-timebr"></a>我是否可以计划下午 6 点的备份，同时指定不同时间的保留策略？<br/>
 否。 只能在备份时间点应用保留策略。 在下图中，保留策略是针对上午 12 点和下午 6 点生成的备份指定的。 <br/>
@@ -161,7 +162,7 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 否，恢复最旧或最新时间点所需的时间相同。 每个恢复点的行为类似一个完整的点。
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storagebr"></a>如果每个恢复点相当于完整的点，它会影响总体可计费备份存储吗？<br/>
-典型的长期保留点产品将备份数据存储为完整的点。 完整点的存储 *效率不高* ，但能使还原变得更方便和快速。 增量复制是 *高效* 存储，但要求还原数据链，这会影响恢复时间。 Azure 备份存储体系结构为你提供这两个领域的最佳产品，它以最佳方式将用于快速恢复的数据存储中，产生较低的存储成本。 这种数据存储方法可确保提高（入口和出口）带宽使用效率。 数据存储量和恢复数据所需的时间都会尽量减少。 详细了解[增量备份](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/)的效用。
+典型的长期保留点产品将备份数据存储为完整的点。 完整点的存储 *效率不高* ，但能使还原变得更方便和快速。 增量复制是 *高效* 存储，但要求还原数据链，这会影响恢复时间。 Azure 备份存储体系结构提供这两个领域的最佳产品，它以最佳方式用于快速恢复的数据存储中，产生较低的存储成本。 这种数据存储方法可确保提高（入口和出口）带宽使用效率。 数据存储量和恢复数据所需的时间都会尽量减少。 详细了解[增量备份](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/)的效用。
 
 ### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-createdbr"></a>可创建的恢复点数量是否有限制？<br/>
 最多可为单个受保护实例创建 9999 个恢复点。 受保护的实例是计算机、服务器（物理或虚拟）或配置为向 Azure 备份数据的工作负荷。 有关详细信息，请参阅[备份和保留](./backup-introduction-to-azure-backup.md#backup-and-retention)和[什么是受保护实例？](./backup-introduction-to-azure-backup.md#what-is-a-protected-instance)的说明
@@ -174,7 +175,7 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 
 ## <a name="azure-backup-encryption"></a>Azure 备份加密
 ### <a name="is-the-data-sent-to-azure-encrypted-br"></a>发送到 Azure 的数据会加密吗？ <br/>
-是的。 数据将在本地 SCDPM 服务器/客户端/SCDPM 计算机上使用 AES256 加密，并通过安全的 HTTPS 链接发送。
+是的。 数据会在本地 SCDPM 服务器/客户端/SCDPM 计算机上使用 AES256 加密，并通过安全的 HTTPS 链接发送。
 
 ### <a name="is-the-backup-data-on-azure-encrypted-as-wellbr"></a>Azure 中的备份数据也会加密吗？<br/>
 是的。 发送到 Azure 的数据将保持加密（静态加密）。 Microsoft 不会解密任何位置的备份数据。 备份 Azure VM 时，Azure 备份依赖于虚拟机的加密。 例如，如果使用 Azure 磁盘加密或其他某种加密技术对 VM 进行了加密，则 Azure 备份会使用同样的加密技术来保护数据。

@@ -16,18 +16,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2017
 ms.author: nepeters
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017, mvc
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: a278f76fc0ac2aa42633ed0ce2ad4fbc4e7290da
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 718240ec0d83f879ea153649d7a737394fa015c8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/18/2017
 
 ---
 
 # <a name="deploy-kubernetes-cluster-for-linux-containers"></a>为 Linux 容器部署 Kubernetes 群集
 
-在本快速入门中，将使用 Azure CLI 部署 Kubernetes 群集。 然后，在群集上部署和运行包含 Web 前端和 Redis 实例的多容器应用程序。 完成后，即可通过 Internet 访问应用程序。
+在本快速入门中，将使用 Azure CLI 部署 Kubernetes 群集。 然后，在群集上部署和运行包含 Web 前端和 Redis 实例的多容器应用程序。 完成后，即可通过 Internet 访问应用程序。 
+
+在本文档中使用的示例应用程序是以 Python 编写的。 此处详述的概念和步骤可以用来将任何容器映像部署到 Kubernetes 群集中。 [GitHub](https://github.com/Azure-Samples/azure-voting-app-redis.git) 上提供了与此项目相关的代码、Dockerfile 和预先创建的 Kubernetes 清单文件。
 
 ![浏览到 Azure Vote 的图像](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
@@ -69,7 +71,7 @@ az group create --name myResourceGroup --location eastus
 使用 [az acs create](/cli/azure/acs#create) 命令在 Azure 容器服务中创建 Kubernetes 群集。 以下示例创建名为 myK8sCluster 的群集，其中包含一个 Linux 主节点和三个 Linux 代理节点。
 
 ```azurecli-interactive 
-az acs create --orchestrator-type=kubernetes --resource-group myResourceGroup --name=myK8sCluster --generate-ssh-keys 
+az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8sCluster --generate-ssh-keys 
 ```
 
 几分钟后，该命令完成并返回有关群集的 JSON 格式信息。 
@@ -104,9 +106,9 @@ k8s-master-14ad53a1-0   Ready,SchedulingDisabled   10m       v1.6.6
 
 ## <a name="run-the-application"></a>运行应用程序
 
-Kubernetes 清单文件用于定义群集的所需状态，例如，应该运行什么容器图像，等等。 就此示例来说，清单用于创建运行 Azure Vote 应用程序所需的所有对象。 
+Kubernetes 清单文件用于定义群集的所需状态，例如，应该运行什么容器图像。 就此示例来说，清单用于创建运行 Azure Vote 应用程序所需的所有对象。 
 
-创建名为 `azure-vote.yaml` 的文件，并将以下 YAML 复制到其中。
+创建名为 `azure-vote.yaml` 的文件，并将以下 YAML 复制到其中。 如果在 Azure Cloud Shell 中操作，则可使用 vi 或 Nano 来创建此文件，就像在虚拟或物理系统中操作一样。
 
 ```yaml
 apiVersion: apps/v1beta1
@@ -226,3 +228,4 @@ az group delete --name myResourceGroup --yes --no-wait
 
 > [!div class="nextstepaction"]
 > [管理 ACS Kubernetes 群集](./container-service-tutorial-kubernetes-prepare-app.md)
+

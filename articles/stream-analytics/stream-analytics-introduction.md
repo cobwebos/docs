@@ -4,7 +4,7 @@ description: "了解流分析，这是一种托管的服务，可以帮助你分
 keywords: "分析即服务、托管服务、流处理、流式分析、什么是流分析"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: jenniehubbard
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 613c9b01-d103-46e0-b0ca-0839fee94ca8
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 06/16/2017
-ms.author: jeffstok
+ms.date: 08/08/2017
+ms.author: jhubbard
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 2fda07b8444b196d831e5e9fe7ade3e5017d36f9
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 5081ecaf569aef9e2f99cc27e91c4b64a25b0deb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -27,11 +27,11 @@ ms.lasthandoff: 07/20/2017
 
 Azure 流分析是完全托管的事件处理引擎，可以用来设置针对流式处理数据的实时分析计算。 数据可能来自设备、传感器、网站、社交媒体源、应用程序、基础结构系统等。 
 
-## <a name="what-can-i-use-stream-analytics-for"></a>流分析有什么用途？
+## <a name="what-can-i-do-with-stream-analytics"></a>流分析有什么用途？
 
 可以使用流分析检查来自设备或进程的大量数据流，从数据流提取信息，以及查找模式、趋势和关系。 然后，可以根据数据中的信息执行应用程序任务。 例如，可以引发警报、启动自动化工作流、向 Power BI 之类的报告工具馈送信息，或者将数据存储起来，供以后调查之用。 
 
-流分析方案的示例包括：
+示例:
 
 * 由金融服务公司提供的个性化实时股票交易分析和提醒。
 * 通过检查事务数据来实时检测欺诈事件。 
@@ -69,7 +69,7 @@ Azure 流分析是完全托管的事件处理引擎，可以用来设置针对�
 
 作业输入也可包括引用数据（静态数据或缓慢变化的数据）。 可以通过将流式处理数据联接到该引用数据来执行查找操作，其方式与数据库查询方式相同。
 
-可以多向路由流分析作业的输出。 可以将其写入存储，例如 Azure 存储 Blob/表、Azure SQL DB、Azure Data Lake Store 或 Azure Cosmos DB。 可以在该处通过 Azure HDInsight 对数据进行批处理分析。 可以将输出发送到供其他进程使用的其他服务，例如事件中心、Azure 服务总线主题或队列。 可以将输出发送到 Power BI，使之可视化。
+在多个方向路由流分析作业输出。 可以将其写入存储，例如 Azure 存储 Blob/表、Azure SQL DB、Azure Data Lake Store 或 Azure Cosmos DB。 可以在该处通过 Azure HDInsight 对数据进行批处理分析。 可以将输出发送到供其他进程使用的其他服务，例如事件中心、Azure 服务总线主题或队列。 可以将输出发送到 Power BI，使之可视化。
 
 ### <a name="ease-of-use"></a>易于使用
 

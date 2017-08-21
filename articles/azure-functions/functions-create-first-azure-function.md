@@ -13,19 +13,19 @@ ms.devlang: multiple
 ms.topic: hero-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 07/19/2017
+ms.date: 08/07/2017
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: ed096cf202a85f44755c9eee110b1b7c5c4074ad
+ms.sourcegitcommit: f14e85ba4ef967f4247f66f570d8ecebd9373b91
+ms.openlocfilehash: 2ee870f81aed9d424e319f3e0f1011513d2f13e4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/18/2017
 
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>在 Azure 门户中创建第一个函数
 
-Azure Functions 可让你在无服务器环境中执行代码，而无需先创建 VM 或发布 Web 应用程序。 在本主题中，了解如何使用 Functions 在 Azure 门户中创建“hello world”函数。
+Azure Functions 用于在无服务器环境中执行代码，无需先创建 VM 或发布 Web 应用程序。 在本主题中，了解如何使用 Functions 在 Azure 门户中创建“hello world”函数。
 
 ![在 Azure 门户中创建 Function App](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
 
@@ -41,15 +41,13 @@ Azure Functions 可让你在无服务器环境中执行代码，而无需先创�
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-![已成功创建 Function App。](./media/functions-create-first-azure-function/function-app-create-success.png)
-
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
 接下来，在新的 Function App 中创建一个函数。
 
 ## <a name="create-function"></a>创建 HTTP 触发的函数
 
-1. 展开新的 Function App，然后单击 **Functions** 旁边的 **+** 按钮。
+1. 展开新的 Function App，并单击 **Functions** 旁边的 **+** 按钮。
 
 2.  在“快速入门”页上，选择“WebHook + API”，选择函数的语言，然后单击“创建此函数”。 
    
@@ -69,7 +67,7 @@ Azure Functions 可让你在无服务器环境中执行代码，而无需先创�
 
     请求 URL 包含通过 HTTP 访问函数默认所需的密钥。   
 
-3. 运行函数时，会在日志中写入跟踪信息。 若要查看上次执行的跟踪输出，请返回到门户中的函数，然后单击屏幕底部的向上箭头以展开“日志”。 
+3. 运行函数时，会在日志中写入跟踪信息。 要查看上次执行的跟踪输出，请返回到门户中的函数，并单击屏幕底部的向上箭头以展开“日志”。 
 
    ![Azure 门户中的“函数日志”查看器。](./media/functions-create-first-azure-function/function-view-logs.png)
 

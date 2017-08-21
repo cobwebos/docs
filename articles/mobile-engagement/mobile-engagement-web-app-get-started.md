@@ -14,49 +14,53 @@ ms.devlang: js
 ms.topic: hero-article
 ms.date: 06/01/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 555342e88c912a3f43c578a40dc34933996ade4c
-ms.openlocfilehash: ef75623a0b8c2a4d38f527a26cbc2cf070765302
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: abcb04e4e0a3ae4fdba3a4ded20b3846ac3b21e6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/18/2017
 
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-web-apps"></a>适用于 Web 应用的 Azure Mobile Engagement 入门
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
-本主题介绍如何使用 Azure Mobile Engagement 来了解你的 Web 应用使用情况。
+本主题介绍如何使用 Azure Mobile Engagement 来了解 Web 应用使用情况。
+
+> [!NOTE]
+> Azure Mobile Engagement 服务将于 2018 年 3 月停用，且当前仅向现有客户提供。 有关详细信息，请参阅 [Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/)。
 
 本教程需要的内容如下：
 
-* Visual Studio 2015 或你选择的任何其他编辑器
-* [Web SDK](http://aka.ms/P7b453) 
+* Visual Studio 2015 或者所选的任何其他编辑器
+* [Web SDK](http://aka.ms/P7b453)
 
 此 Web SDK 是预览版，目前仅支持分析，尚不支持发送浏览器或应用内推送通知。 
 
 > [!NOTE]
-> 若要完成本教程，你必须有一个有效的 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-web-app-get-started)。
+> 要完成本教程，必须有一个有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-web-app-get-started)。
 > 
 > 
 
 ## <a name="setup-mobile-engagement-for-your-web-app"></a>为 Web 应用设置 Mobile Engagement
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="a-idconnecting-appaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>将应用连接到 Mobile Engagement 后端
+## <a id="connecting-app"></a>将应用连接到 Mobile Engagement 后端
 本教程提供的“基本集成”是收集数据的最低要求。
 
-我们将使用 Visual Studio 创建一个基本 Web 应用来演示集成，但你也可以按照在 Visual Studio 外部创建任何 Web 应用程序的步骤。 
+我们会通过 Visual Studio 创建一个基本的 Web 应用，用于演示集成。当然，你也可以在 Visual Studio 外部创建 Web 应用程序，只需按照相应步骤操作即可。 
 
 ### <a name="create-a-new-web-app"></a>创建新的 Web 应用
 以下步骤假定使用 Visual Studio 2015，步骤与 Visual Studio 早期版本中的类似。 
 
-1. 启动 Visual Studio，然后在“主页”屏幕上，选择“新建项目”。
-2. 在弹出窗口中，选择“Web” -> “ASP.Net Web 应用程序”。 输入应用“名称”、“位置”和“解决方案名称”，然后单击“确定”。
-3. 在“选择模板”弹出窗口中，在“ASP.Net 4.5 模板”下选择“空”，然后单击“确定”。 
+1. 启动 Visual Studio，并在“主页”屏幕上，选择“新建项目”。
+2. 在弹出窗口中，选择“Web” -> “ASP.Net Web 应用程序”。 输入应用“名称”、“位置”和“解决方案名称”，并单击“确定”。
+3. 在“选择模板”弹出窗口中，在“ASP.Net 4.5 模板”下选择“空”，并单击“确定”。 
 
 现在已创建一个新的空白 Web 应用项目，我们将向其中集成 Azure Mobile Engagement Web SDK。
 
 ### <a name="connect-your-app-to-mobile-engagement-backend"></a>将应用连接到 Mobile Engagement 后端
 1. 在解决方案中创建名为 **javascript** 的新文件夹，并将 Web SDK JS 文件 **azure engagement.js** 添加到其中。 
-2. 使用以下代码在此 javascript 文件夹中添加名称为 **main.js** 的新文件。 请确保更新连接字符串。 此 `azureEngagement` 对象将用于访问 Web SDK 方法。 
+2. 使用以下代码在此 javascript 文件夹中添加名称为 **main.js** 的新文件。 请确保更新连接字符串。 此 `azureEngagement` 对象用于访问 Web SDK 方法。 
    
         var azureEngagement = {
             debug: true,
@@ -114,10 +118,5 @@ ms.openlocfilehash: ef75623a0b8c2a4d38f527a26cbc2cf070765302
 <!-- Images. -->
 [1]: ./media/mobile-engagement-web-app-get-started/visual-studio-solution-js.png
 [2]: ./media/mobile-engagement-web-app-get-started/session.png
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

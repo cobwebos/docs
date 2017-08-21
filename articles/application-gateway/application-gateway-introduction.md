@@ -13,13 +13,13 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 07/10/2017
+ms.date: 07/19/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 396d8b9532eb55341670ad61bd4c2a16882b35e4
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 49ca4ed2452d71dec17cedebaf48bbd5ab9e615f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="overview-of-application-gateway"></a>应用程序网关概述
@@ -42,6 +42,7 @@ Microsoft Azure 应用程序网关是以服务形式提供应用程序传递控�
 * [多站点路由](application-gateway-multi-site-overview.md) - 应用程序网关允许在单个应用程序网关上合并最多 20 个网站。
 * [WebSocket 支持](application-gateway-websocket.md) - 应用程序网关的另一个重要功能是对 WebSocket 的本机支持。
 * [运行状况监视](application-gateway-probe-overview.md) - 应用程序网关提供默认的后端资源运行状况监视，以及用于监视更多特定方案的自定义探测。
+* [SSL 策略和密码](application-gateway-ssl-policy-overview.md) - 此功能可以限制受支持的 SSL 协议版本和密码套件，以及其处理顺序。
 * [请求重定向](application-gateway-redirect-overview.md) - 使用此功能可将 HTTP 请求重定向到 HTTPS 侦听器。
 * [多租户后端支持](application-gateway-web-app-overview.md) - 应用程序网关支持将多租户后端服务（例如 Azure Web 应用和 API 网关）配置为后端池成员。 
 * [高级诊断](application-gateway-diagnostics.md) - 应用程序网关提供完整的诊断和访问日志。 防火墙日志可用于已启用 WAF 的应用程序网关资源。
@@ -105,5 +106,5 @@ Azure 应用程序网关会通过基本或自定义运行状况探测，自动�
 
 若要详细了解如何使用基于 URL 的内容路由创建应用程序网关，请转到[使用基于 URL 的路由创建应用程序网关](application-gateway-create-url-route-arm-ps.md)。
 
-若要了解 Azure 的部分其他关键网络功能，请参阅 [Azure 网络]((../networking/networking-overview.md)。
+若要了解 Azure 的一些其他关键网络功能，请参阅 [Azure 网络](../networking/networking-overview.md)。
 

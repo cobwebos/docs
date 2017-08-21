@@ -7,8 +7,8 @@
 
 以下步骤说明了如何创建新的 ASP.NET WebAPI 后端： 
 
-> [!NOTE]
-> 重要提示：如果使用 Visual Studio 2015 或更低版本，则在开始学习本教程之前，请确保已安装最新版本的 NuGet 包管理器。 若要进行检查，请启动 Visual Studio。 从“工具”菜单中，单击“扩展和更新”。 搜索适用于 Visual Studio 版本的“NuGet 包管理器”，确保版本为最新。 否则，请卸载并重新安装 NuGet 程序包管理器。
+> [!IMPORTANT]
+> 如果使用 Visual Studio 2015 或更低版本，则在开始学习本教程之前，请确保已安装最新版本的 NuGet 包管理器。 若要进行检查，请启动 Visual Studio。 从“工具”菜单中，单击“扩展和更新”。 搜索适用于 Visual Studio 版本的“NuGet 包管理器”，确保版本为最新。 否则，请卸载并重新安装 NuGet 程序包管理器。
 > 
 > ![][B4]
 > 

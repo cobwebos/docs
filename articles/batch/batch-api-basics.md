@@ -16,10 +16,10 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 824f900545136428f6e377c52e2dda7e3ab97cfe
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 233965bf54cbca79c7ff059aaccfa5780d672cab
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/18/2017
 
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
@@ -98,17 +98,18 @@ ms.lasthandoff: 07/28/2017
 
 下表比较了“Batch 服务”和“用户订阅”这两种池分配模式。
 
-| 池分配模式：                 | Batch 服务                                                                                       | 用户订阅                                                              |
+| 池分配模式                 | Batch 服务                                                                                       | 用户订阅                                                              |
 |-------------------------------------------|---------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| 池分配位置：               | Azure 托管订阅                                                                           | 在其中创建 Batch 帐户的用户订阅                        |
-| 支持的配置：             | <ul><li>云服务配置</li><li>虚拟机配置（Linux 和 Windows）</li></ul> | <ul><li>虚拟机配置（Linux 和 Windows）</li></ul>                |
-| 支持的 VM 映像：                  | <ul><li>Azure Marketplace 映像</li></ul>                                                              | <ul><li>Azure Marketplace 映像</li><li>自定义映像</li></ul>                   |
-| 支持的计算节点类型：         | <ul><li>专用节点</li><li>低优先级节点</li></ul>                                            | <ul><li>专用节点</li></ul>                                                  |
-| 支持的身份验证：             | <ul><li>共享密钥</li><li>Azure AD</li></ul>                                                           | <ul><li>Azure AD</li></ul>                                                         |
-| 需要 Azure Key Vault：             | 否                                                                                                      | 是                                                                                |
-| 核心配额：                           | 取决于 Batch 核心配额                                                                          | 取决于订阅核心配额                                              |
-| Azure 虚拟网络 (VNet) 支持： | 使用云服务配置创建的池                                                      | 使用虚拟机配置创建的池                               |
-| 支持的 VNet 部署模型：      | 使用经典部署模型创建的 VNet                                                             | 使用经典部署模型或 Azure Resource Manager 创建的 VNet |
+| 池分配位置               | Azure 托管订阅                                                                           | 在其中创建 Batch 帐户的用户订阅                        |
+| 支持的配置             | <ul><li>云服务配置</li><li>虚拟机配置（Linux 和 Windows）</li></ul> | <ul><li>虚拟机配置（Linux 和 Windows）</li></ul>                |
+| 支持的 VM 映像                  | <ul><li>Azure Marketplace 映像</li></ul>                                                              | <ul><li>Azure Marketplace 映像</li><li>自定义映像</li></ul>                   |
+| 支持的计算节点类型         | <ul><li>专用节点</li><li>低优先级节点</li></ul>                                            | <ul><li>专用节点</li></ul>                                                  |
+| 支持的身份验证             | <ul><li>共享密钥</li><li>Azure AD</li></ul>                                                           | <ul><li>Azure AD</li></ul>                                                         |
+| 需要 Azure Key Vault             | 否                                                                                                      | 是                                                                                |
+| 核心配额                           | 取决于 Batch 核心配额                                                                          | 取决于订阅核心配额                                              |
+| Azure 虚拟网络 (VNet) 支持 | 使用云服务配置创建的池                                                      | 使用虚拟机配置创建的池                               |
+| 支持的 VNet 部署模型      | 使用经典部署模型创建的 VNet                                                             | 使用经典部署模型或 Azure Resource Manager 创建的 VNet |
+
 ## <a name="azure-storage-account"></a>Azure 存储帐户
 
 大多数 Batch 解决方案使用 Azure 存储来存储资源文件和输出文件。  
@@ -171,6 +172,8 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
     * 与云服务中的辅助角色一样，可以指定 *OS 版本*（有关辅助角色的详细信息，请参阅 [Cloud Services overview](../cloud-services/cloud-services-choose-me.md)（云服务概述）中的 [Tell me about cloud services](../cloud-services/cloud-services-choose-me.md#tell-me-about-cloud-services)（介绍云服务）部分）。
     * 与辅助角色一样，对于 *OS 版本*，建议指定 `*`，使节点可自动升级，而无需采取措施来适应新的版本。 选择特定 OS 版本的主要用例是在允许更新版本之前执行向后兼容测试，以确保保持应用程序兼容性。 验证后，便可以更新池的 *OS 版本*并安装新的操作系统映像 – 所有正在运行的任务会中断并重新排队。
 
+创建池时，需要选择适当的 **nodeAgentSkuId**，具体取决于 VHD 基本映像的 OS。 可通过调用[列出支持的节点代理 SKU](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus) 操作获得可用节点代理 SKU ID 到其 OS 映像引用的映射。
+
 有关在创建批处理帐户时如何设置池分配模式的信息，请参阅[帐户](#account)部分。
 
 #### <a name="custom-images-for-virtual-machine-pools"></a>虚拟机池的自定义映像
@@ -195,8 +198,6 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 - 当前仅支持标准型通用存储帐户。 未来将支持 Azure 高级存储。
 - 可以指定具有多个自定义 VHD Blob 的一个存储帐户，也可以指定每个都有一个 Blob 的多个存储帐户。 建议使用多个存储帐户来获得更好的性能。
 - 一个唯一的自定义映像 VHD Blob 最多可支持 40 个 Linux VM 实例或 20 个 Windows VM 实例。 将需要创建 VHD Blob 的副本以创建具有更多 VM 的池。 例如，具有 200 个 Windows VM 的池需要为 **osDisk** 属性指定 10 个唯一的 VHD Blob。
-
-创建池时，需要选择适当的 **nodeAgentSkuId**，具体取决于 VHD 基本映像的 OS。 可通过调用[列出支持的节点代理 SKU](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus) 操作获得可用节点代理 SKU ID 到其 OS 映像引用的映射。
 
 使用 Azure 门户从自定义映像创建池：
 
@@ -594,7 +595,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
     有时必须从池中完全删除节点。
 * **禁用节点上的任务计划** ([REST][rest_offline] | [.NET][net_offline])
 
-    这实际上是使节点脱机，以便不再收到任何分配的任务，但允许节点继续运行并保留在池中。 这可让你执行进一步的调查以了解失败原因，却又会不丢失失败任务的数据，并且不让节点造成额外的任务失败。 例如，可以禁用节点上的任务计划，并从 [远程登录](#connecting-to-compute-nodes) 以检查节点的事件日志，或执行其他故障排除操作。 完成调查后，可以启用任务计划 ([REST][rest_online] | [.NET][net_online]) 使节点重新联机，或者执行上述其他操作。
+    这实际上是使节点脱机，以便不再收到任何分配的任务，但允许节点继续运行并保留在池中。 这可让你执行进一步的调查以了解失败原因，却又不丢失失败任务的数据，并且不让节点造成额外的任务失败。 例如，可以禁用节点上的任务计划，并从 [远程登录](#connecting-to-compute-nodes) 以检查节点的事件日志，或执行其他故障排除操作。 完成调查后，可以启用任务计划 ([REST][rest_online] | [.NET][net_online]) 使节点重新联机，或者执行上述其他操作。
 
 > [!IMPORTANT]
 > 可以使用本部分中所述的每项操作（重新启动、重置映像、删除和禁用任务计划），来指定当执行操作时要如何处理节点上当前正在运行的任务。 例如，禁用具有 Batch .NET 客户端库的节点上的任务计划时，可以指定 [DisableComputeNodeSchedulingOption][net_offline_option] 枚举值，以指定是要**终止**运行中的任务、将任务**重新排队**以在其他节点上计划，还是允许执行中的任务先完成再执行操作 (**TaskCompletion**)。

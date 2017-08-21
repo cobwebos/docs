@@ -13,13 +13,13 @@ ms.devlang: R
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 07/13/2017
+ms.date: 08/14/2017
 ms.author: bradsev
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: f0ee0d23f28df2824ea41f7c9f7490e1ec62d041
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 14e2a14c74e00709e18a80325fbdd3cbcd71da37
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="get-started-using-r-server-on-hdinsight"></a>开始使用 R Server on HDInsight
@@ -670,6 +670,26 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
 6. 退出 SSH
 
 ![操作诊断](./media/hdinsight-hadoop-r-server-get-started/admin-util-diagnostics.png)
+
+
+>[!NOTE]
+>在 Spark 上使用 Web 服务时延迟时间很长
+>
+>如果在尝试使用 Web 服务时遇到长时间的延迟，而这些服务是在 Spark 计算上下文中使用 mrsdeploy 函数创建的，则可能需要添加一些缺失的文件夹。 Spark 应用程序属于名为“rserve2”的用户，不论何时使用 mrsdeploy 函数从 Web 服务调用它。 若要解决此问题，请执行以下操作：
+
+    # Create these required folders for user 'rserve2' in local and hdfs:
+
+    hadoop fs -mkdir /user/RevoShare/rserve2
+    hadoop fs -chmod 777 /user/RevoShare/rserve2
+
+    mkdir /var/RevoShare/rserve2
+    chmod 777 /var/RevoShare/rserve2
+
+
+    # Next, create a new Spark compute context:
+ 
+    rxSparkConnect(reset = TRUE)
+
 
 在此阶段，操作化的配置已完成。 现在，可以使用 RClient 上的“mrsdeploy”包连接到边缘节点上的操作化，并开始使用其功能（如[远程执行](https://msdn.microsoft.com/microsoft-r/operationalize/remote-execution)和 [Web 服务](https://msdn.microsoft.com/microsoft-r/mrsdeploy/mrsdeploy-websrv-vignette)）。 可能需要通过 SSH 登录设置端口转发隧道，具体取决于群集是否设置在虚拟网络上。 以下部分介绍如何设置此隧道。
 
