@@ -1,5 +1,5 @@
 ---
-title: "使用脚本操作在基于 Linux 的 HDInsight 上安装 Solr | Microsoft Docs"
+title: "使用脚本操作在基于 Linux 的 HDInsight 上安装 Solr — Azure | Microsoft Docs"
 description: "了解如何使用脚本操作在基于 Linux 的 HDInsight Hadoop 群集上安装 Solr。"
 services: hdinsight
 documentationcenter: 
@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 07/07/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 9035dd639433f1edc628db85f1663add4abfdbd3
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: ad930ca023a36fa5874483873c82fdba11d117c7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Solr
@@ -29,10 +28,10 @@ ms.lasthandoff: 05/18/2017
 了解如何使用脚本操作在 Azure HDInsight 上安装 Solr。 Solr 是一种功能强大的搜索平台，提供了企业级搜索功能，用于搜索由 Hadoop 管理的数据。
 
 > [!IMPORTANT]
-    > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
+    > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 > [!IMPORTANT]
-> 此文档中使用的示例脚本通过特定配置创建 Solr 群集。 如果要使用不同集合、分片、架构、副本等配置 Solr 群集，必须修改脚本和 Solr 二进制文件。
+> 本文档中使用的示例脚本通过特定配置安装 Solr 4.9。 如果要使用不同集合、分片、架构、副本等配置 Solr 群集，必须修改脚本和 Solr 二进制文件。
 
 ## <a name="whatis"></a>什么是 Solr
 
@@ -47,7 +46,7 @@ ms.lasthandoff: 05/18/2017
 
 此脚本对 HDInsight 群集进行以下更改：
 
-* 将 Solr 安装到 `/usr/hdp/current/solr` 中
+* 将 Solr 4.9 安装到 `/usr/hdp/current/solr` 中
 * 创建用于运行 Solr 服务的用户 **solrusr**
 * 将 **solruser** 设置为 `/usr/hdp/current/solr` 的所有者
 * 添加自动启动 Solr 的 [Upstart](http://upstart.ubuntu.com/) 配置。
@@ -321,7 +320,7 @@ sudo start solr
     hdfs dfs -put snapshot.20150806185338855.tgz /example/data
     ```
 
-有关使用 Solr 备份和还原的详细信息，请参阅[创建和还原 SolrCores 的备份](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups+of+SolrCores)。
+有关使用 Solr 备份和还原的详细信息，请参阅 [https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups)。
 
 ## <a name="next-steps"></a>后续步骤
 

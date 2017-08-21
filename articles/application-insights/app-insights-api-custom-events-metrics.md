@@ -12,17 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 05/17/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
-ms.openlocfilehash: 8793744f63388c5df04a167585d5f7b99ec7acee
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: fe769fb433d65374109fec60c6c6d032b1ad97fb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/19/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
-
 
 在应用程序中插入几行代码，即可了解用户在该应用程序中执行的操作或帮助诊断问题。 可以从设备和桌面应用、Web 客户端和 Web 服务器发送遥测数据。 使用 [Visual Studio Application Insights](app-insights-overview.md) 核心遥测 API 发送自定义事件和指标，以及自己的标准遥测版本。 此 API 与标准 Application Insights 数据收集器使用的 API 相同。
 
@@ -42,7 +40,7 @@ API 在所有平台中是一致的，只有一些微小的差异。
 可以[将属性和指标附加到](#properties)其中的大多数遥测调用。
 
 ## <a name="prep"></a>开始之前
-如果尚未完成以下操作：
+如果还没有 Application Insights SDK 引用：
 
 * 将 Application Insights SDK 添加到项目：
 
@@ -58,7 +56,7 @@ API 在所有平台中是一致的，只有一些微小的差异。
     *Java：* `import com.microsoft.applicationinsights.TelemetryClient;`
 
 ## <a name="constructing-a-telemetryclient-instance"></a>构造 TelemetryClient 实例
-构造 TelemetryClient 的实例（网页中的 JavaScript 除外）：
+构造 `TelemetryClient` 的实例（网页中的 JavaScript 除外）：
 
 *C#*
 
@@ -79,7 +77,7 @@ TelemetryClient 是线程安全的。
 ## <a name="trackevent"></a>TrackEvent
 在 Application Insights 中，自定义事件是一个数据点，它可在[指标资源管理器](app-insights-metrics-explorer.md)中显示为聚合计数，在[诊断搜索](app-insights-diagnostic-search.md)中显示为单个事件。 （它与 MVC 或其他框架“事件”不相关。）
 
-在代码中插入 TrackEvent 调用可以统计用户选择特定功能的频率、实现特定目标的频率，或可能制造特定类型的错误的频率。
+在代码中插入 `TrackEvent` 调用来统计各种事件。 用户选择特定功能的频率、实现特定目标的频率，或可能制造特定类型的错误的频率。
 
 例如，在游戏应用中，每当用户获胜时将会发送事件：
 
@@ -99,8 +97,7 @@ Visual Basic
 
     telemetry.trackEvent("WinGame");
 
-
-### <a name="view-your-events-in-the-azure-portal"></a>在 Azure 门户中查看事件
+### <a name="view-your-events-in-the-microsoft-azure-portal"></a>在 Microsoft Azure 门户中查看事件
 若要查看事件计数，请打开[“指标资源管理器”](app-insights-metrics-explorer.md)边栏选项卡、添加新图表，然后选择“事件”。  
 
 ![查看自定义事件计数](./media/app-insights-api-custom-events-metrics/01-custom.png)
@@ -109,7 +106,7 @@ Visual Basic
 
 ![设置图表类型和分组](./media/app-insights-api-custom-events-metrics/07-grid.png)
 
-在网格中逐个单击事件名称，查看该事件的发生次数。 单击任何一项事件可查看详细信息。
+在网格中逐个单击事件名称，查看该事件的发生次数。 单击列表中的任何一项事件可查看详细信息。
 
 ![钻取事件](./media/app-insights-api-custom-events-metrics/03-instances.png)
 
@@ -121,7 +118,7 @@ Visual Basic
 
 [Application Insights Analytics](app-insights-analytics.md) 的 `customEvents` 表格提供了遥测。 每行表示对应用中 `trackEvent(..)` 的调用。 
 
-如果正在进行[采样](app-insights-sampling.md)，那么 itemCount 属性将会显示大于 1 的值。 例如，itemCount==10 表明对 trackEvent() 调用了 10 次，采样进程只传输其中一次。 若要获取自定义事件的正确计数，应使用 `customEvent | summarize sum(itemCount)` 之类的代码。
+如果正在进行[采样](app-insights-sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackEvent() 调用了 10 次，采样进程只传输其中一次。 若要获取自定义事件的正确计数，应使用 `customEvent | summarize sum(itemCount)` 之类的代码。
 
 
 ## <a name="trackmetric"></a>TrackMetric
@@ -130,9 +127,9 @@ Application Insights 可绘制未附加到特定事件的指标。 例如，可�
 
 若要将指标发送到 Application Insights，可以使用 `TrackMetric(..)` API。 可通过两种方式发送指标： 
 
-* 单个值。 每次在应用中执行测量时，会发送相应的值到 Application Insights。 例如，假设有个指标用于描述容器中项的数量。 在特定时间段，先将 3 个项放入容器中，然后从容器中移除 2 个项。 相应地，将会调用 `TrackMetric` 两次：首先传递值 `3`，然后传递值 `-2`。 Application Insights 会替你存储这两个值。 
+* 单个值。 每次在应用中执行测量时，会发送相应的值到 Application Insights。 例如，假设有个指标用于描述容器中项的数量。 在特定时间段，先将 3 个项放入容器中，再从容器中移除 2 个项。 相应地，将会调用 `TrackMetric` 两次：首先传递值 `3`，然后传递值 `-2`。 Application Insights 会替你存储这两个值。 
 
-* 聚合。 使用指标时，每个单次测量几乎无关紧要。 反而特定时间段内发生活动的摘要很重要。 此类摘要名为聚合。 在上一示例中，该时间段的聚合指标总数为 `1`，同时指标值的计数为 `2`. 使用聚合方法时，每个时间段将只调用一次 `TrackMetric` 并发送聚合值。 建议采用此方法是因为它可以通过发送更少的数据点到 Application Insights 同时仍然收集所有相关信息来显著降低成本和性能开销。
+* 聚合。 使用指标时，每个单次测量几乎无关紧要。 反而特定时间段内发生活动的摘要很重要。 此类摘要名为聚合。 在上一示例中，该时间段的聚合指标总数为 `1`，同时指标值的计数为 `2`。 使用聚合方法时，每个时间段只调用一次 `TrackMetric` 并发送聚合值。 建议采用此方法是因为它可以通过发送更少的数据点到 Application Insights 同时仍然收集所有相关信息来显著降低成本和性能开销。
 
 ### <a name="examples"></a>示例:
 
@@ -405,21 +402,20 @@ pageViews | join (dependencies) on operation_Id
 *C#*
 
 ```C#
+// Establish an operation context and associated telemetry item:
+using (var operation = telemetry.StartOperation<RequestTelemetry>("operationName"))
+{
+    // Telemetry sent in here will use the same operation ID.
+    ...
+    telemetry.TrackTrace(...); // or other Track* calls
+    ...
+    // Set properties of containing telemetry item--for example:
+    operation.Telemetry.ResponseCode = "200";
 
-    // Establish an operation context and associated telemetry item:
-    using (var operation = telemetry.StartOperation<RequestTelemetry>("operationName"))
-    {
-        // Telemetry sent in here will use the same operation ID.
-        ...
-        telemetry.TrackEvent(...); // or other Track* calls
-        ...
-        // Set properties of containing telemetry item--for example:
-        operation.Telemetry.ResponseCode = "200";
+    // Optional: explicitly send telemetry item:
+    telemetry.StopOperation(operation);
 
-        // Optional: explicitly send telemetry item:
-        telemetry.StopOperation(operation);
-
-    } // When operation is disposed, telemetry item is sent.
+} // When operation is disposed, telemetry item is sent.
 ```
 
 除了设置操作上下文之外，`StartOperation` 还会创建一个所指定类型的遥测项。 在处理操作时，或如果显式调用 `StopOperation`，它将发送遥测项。 如果使用 `RequestTelemetry` 作为遥测类型，其持续时间将设置为开始与停止的间隔时间。
@@ -429,6 +425,8 @@ pageViews | join (dependencies) on operation_Id
 在搜索中，操作上下文可用于创建“相关项”列表：
 
 ![相关项](./media/app-insights-api-custom-events-metrics/21.png)
+
+有关自定义操作追踪的详细信息，请参阅[application-insights-custom-operations-tracking.md]。
 
 ### <a name="requests-in-analytics"></a>Analytics 中的请求 
 
@@ -488,13 +486,13 @@ SDK 将自动捕获许多异常，因此不一定需要显式调用 TrackExcepti
 
 在 [Application Insights Analytics](app-insights-analytics.md) 中，异常出现在 `exceptions` 表中。
 
-如果正在进行[采样](app-insights-sampling.md)，那么 itemCount 属性将会显示大于 1 的值。 例如，itemCount==10 表明对 trackException() 调用了 10 次，采样进程只传输其中一次。 若要按异常类型获取正确的异常数，请使用如下所示的代码：
+如果正在进行[采样](app-insights-sampling.md)，那么 `itemCount` 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackException() 调用了 10 次，采样进程只传输其中一次。 若要按异常类型获取正确的异常数，请使用如下所示的代码：
 
 ```
 exceptions | summarize sum(itemCount) by type
 ```
 
-虽然大部分重要的堆栈信息已提取到了单独的变量中，但可以扩展“详细信息”结构，获取更多信息。 由于这是一个动态结构，应该将结果转换为预期的类型。 例如：
+虽然大部分重要的堆叠信息已提取到了单独的变量中，但可以扩展 `details` 结构，获取更多信息。 由于这个结构是动态的，应将结果转换为预期的类型。 例如：
 
 ```AIQL
 exceptions
@@ -537,25 +535,24 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 
 在 [Application Insights Analytics](app-insights-analytics.md) 中，对 TrackTrace 的调用出现在 `traces` 表中。
 
-如果正在进行[采样](app-insights-sampling.md)，那么 itemCount 属性将会显示大于 1 的值。 例如，itemCount==10 表明对 trackTrace() 调用了 10 次，采样进程只传输其中一次。 若要获取正确的跟踪调用数，应使用 `traces | summarize sum(itemCount)` 之类的代码。
+如果正在进行[采样](app-insights-sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 `trackTrace()` 调用了 10 次，采样进程只传输其中一次。 若要获取正确的跟踪调用数，应使用 `traces | summarize sum(itemCount)` 之类的代码。
 
 ## <a name="trackdependency"></a>TrackDependency
 可使用 TrackDependency 调用跟踪响应时间以及调用外部代码片段的成功率。 结果将显示在门户上的依赖项图表中。
 
 ```C#
-
-            var success = false;
-            var startTime = DateTime.UtcNow;
-            var timer = System.Diagnostics.Stopwatch.StartNew();
-            try
-            {
-                success = dependency.Call();
-            }
-            finally
-            {
-                timer.Stop();
-                telemetry.TrackDependency("myDependency", "myCall", startTime, timer.Elapsed, success);
-            }
+var success = false;
+var startTime = DateTime.UtcNow;
+var timer = System.Diagnostics.Stopwatch.StartNew();
+try
+{
+    success = dependency.Call();
+}
+finally
+{
+    timer.Stop();
+    telemetry.TrackDependency("myDependency", "myCall", startTime, timer.Elapsed, success);
+}
 ```
 
 请记住，服务器 SDK 包含[依赖项模块](app-insights-asp-net-dependencies.md)，用于自动发现和跟踪特定的依赖项调用（例如，数据库和 REST API）。 必须在服务器上安装一个代理才能让模块正常运行。 如果想要跟踪自动跟踪未捕获的调用，或不想安装代理，可以使用此调用。
@@ -566,7 +563,7 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 
 在 [Application Insights Analytics](app-insights-analytics.md) 中，trackDependency 调用出现在 `dependencies` 表中。
 
-如果正在进行[采样](app-insights-sampling.md)，那么 itemCount 属性将会显示大于 1 的值。 例如，itemCount==10 表明对 trackDependency() 调用了 10 次，采样进程只传输其中一次。 若要按目标组件获取正确的依赖项数，请使用如下所示的代码：
+如果正在进行[采样](app-insights-sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackDependency() 调用了 10 次，采样进程只传输其中一次。 若要按目标组件获取正确的依赖项数，请使用如下所示的代码：
 
 ```
 dependencies | summarize sum(itemCount) by target
@@ -599,12 +596,12 @@ dependencies
 *JavaScript*
 
 ```JS
-    // Called when my app has identified the user.
-    function Authenticated(signInId) {
-      var validatedId = signInId.replace(/[,;=| ]+/g, "_");
-      appInsights.setAuthenticatedUserContext(validatedId);
-      ...
-    }
+// Called when my app has identified the user.
+function Authenticated(signInId) {
+    var validatedId = signInId.replace(/[,;=| ]+/g, "_");
+    appInsights.setAuthenticatedUserContext(validatedId);
+    ...
+}
 ```
 
 例如，在 ASP.NET Web MVC 应用程序中：
@@ -628,7 +625,7 @@ dependencies
 
       appInsights.setAuthenticatedUserContext(validatedId, accountId);
 
-在[指标资源管理器](app-insights-metrics-explorer.md)中，可以创建统计**经身份验证的用户**和**用户帐户**的图表。
+在[指标资源管理器](app-insights-metrics-explorer.md)中，可以创建统计“经身份验证的用户”和“用户帐户”的图表。
 
 还可以[搜索](app-insights-diagnostic-search.md)具有特定用户名和帐户的客户端数据点。
 
@@ -753,7 +750,7 @@ Visual Basic
 
 在 [Analytics](app-insights-analytics.md) 中，自定义指标和属性显示在每个遥测记录的 `customMeasurements` 和 `customDimensions` 属性中。
 
-例如，如果已向请求遥测添加名为 "game" 的属性，此查询将会计算 "game" 不同值的出现次数，同时显示自定义指标 "score" 的平均值：
+例如，如果已向请求遥测添加名为“game”的属性，此查询将计算“game”不同值的出现次数，同时显示自定义指标“score”的平均值：
 
 ```
 requests
@@ -925,7 +922,7 @@ TelemetryClient 具有上下文属性，其中包含与所有遥测数据一起�
 * **Operation**：在 Web 应用中，为当前的 HTTP 请求。 在其他应用类型中，可将此属性设置为将事件分组在一起。
   * **Id**：一个生成的值，它将不同的事件关联在一起，以便在诊断搜索中检查任何事件时，可以发现相关项。
   * **Name**：一个标识符，通常是 HTTP 请求的 URL。
-  * **SyntheticSource**：如果不为 null 或空，则此字符串表示请求的源已标识为傀儡或 Web 测试。 默认情况下，该属性将从指标资源管理器的计算中排除。
+  * **SyntheticSource**：如果不为 null 或空，则此字符串表示请求的源已标识为傀儡或 Web 测试。 默认情况下，该属性会从指标资源管理器的计算中排除。
 * **Properties**：与所有遥测数据一起发送的属性。 可在单个 Track* 调用中重写。
 * **Session**：用户的会话。 ID 设置为生成的值，当用户有一段时间处于非活动状态时，此值将会更改。
 * **User**：用户信息。

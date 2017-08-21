@@ -14,9 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c1614eeac922a4fc496be77b4d1d1588f28b4284
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 57ba0e46139bda2d74c9f7db0ffab2f2122b0df2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/11/2017
 
 
 ---
@@ -35,13 +37,13 @@ ms.openlocfilehash: c1614eeac922a4fc496be77b4d1d1588f28b4284
 
 * **隔离**：各个租户的活动不会影响其他租户使用应用程序。 租户无法访问彼此的数据。 看上去租户好像拥有应用程序的专用权。
 * **可用性**：各个租户希望应用程序始终可用，并可能在 SLA 中明确保证。 同样，其他租户的活动不应影响应用程序的可用性。
-* **可缩放性**：应用程序可进行缩放以满足各个租户的需求。 其他租户的状态和操作不应影响应用程序的性能。
+* **伸缩性**：应用程序可进行缩放以满足各个租户的需求。 其他租户的状态和操作不应影响应用程序的性能。
 * **成本**：成本低于运行单租户专用应用程序，因为多租户技术支持资源共享。
 * **可定制性**。 能够通过多种方式（例如添加或删除功能、更改颜色和徽标，或者甚至添加自己的代码或脚本）为单个租户定制应用程序。
 
 总之，虽然提供高度可扩展的服务必须考虑很多事项，但对于许多多租户应用程序，也有一些共同的目标和要求。 有些要求在特定情况下可能并不相关，并且各个目标和要求的重要性在各种情况下也会有所不同。 作为多租户应用程序的提供商，你的目标和要求还有：满足租户的目标和要求、盈利能力、计费、多个服务级别、配置、可维护性监视以及自动化。
 
-有关多租户应用程序的其他设计注意事项的详细信息，请参阅[在 Azure 中托管多租户应用程序][在 Azure 中托管多租户应用程序]。 有关多租户软件即服务 (SaaS) 数据库应用程序的常见数据体系结构模式的信息，请参阅 [包含 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md)。 
+有关多租户应用程序的其他设计注意事项的详细信息，请参阅[在 Azure 中托管多租户应用程序][Hosting a Multi-Tenant Application on Azure]。 有关多租户软件即服务 (SaaS) 数据库应用程序的常见数据体系结构模式的信息，请参阅 [包含 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md)。 
 
 Azure 提供了许多功能，使你能够解决在设计多租户系统时遇到的关键问题。
 
@@ -71,9 +73,9 @@ Azure 提供了许多功能，使你能够解决在设计多租户系统时遇�
 Azure 提供了一些联网服务，它们支持身份验证且提高了托管应用程序的可管理性。 这些服务包括：
 
 * 利用 Azure 虚拟网络，你可以设置和管理 Azure 中的虚拟专用网 (VPN)，并将其与内部部署的 IT 基础结构安全链接。
-* 利用虚拟网络流量管理器，你可以跨多项 Azure 托管服务对传入流量进行负载平衡，无论这些服务运行在同一数据中心内，还是运行在全球的不同数据中心内。
+* 利用虚拟网络流量管理器，你可以跨多项 Azure 托管服务对传入流量进行负载均衡，无论这些服务运行在同一数据中心内，还是运行在全球的不同数据中心内。
 * Azure Active Directory (Azure AD) 是一项基于 REST 的新型服务，它可为你的云应用程序提供标识管理和访问控制功能。 可对应用程序资源使用 Azure AD - Azure AD 不仅允许将身份验证和授权功能从代码中分离出来，而且还提供对用户进行身份验证和授权以获取对 Web 应用程序和服务的访问权限的简便方法。
-* Azure Service Bus 为分布式应用程序和混合应用程序提供了安全消息传送和数据流功能，例如在 Azure 托管的应用程序与本地应用程序和服务之间进行通信，而不需要复杂的防火墙和安全基础结构。 可对应用程序资源使用 Service Bus 中继 - 公开为终结点的服务可能属于租户（例如托管在系统之外的服务，如本地服务），也可能是专门为租户配置的服务（因为特定于租户的敏感数据通过这些服务传输）。
+* Azure Service Bus 为分布式应用程序和混合应用程序提供了安全消息传送和数据流功能，例如在 Azure 托管的应用程序与本地应用程序和服务之间进行通信，而不需要复杂的防火墙和安全基础结构。 可对应用程序资源使用服务总线中继 - 公开为终结点的服务可能属于租户（例如托管在系统之外的服务，如本地服务），也可能是专门为租户配置的服务（因为特定于租户的敏感数据通过这些服务传输）。
 
 **预配资源**
 
@@ -90,11 +92,6 @@ Azure 提供了许多方法来为应用程序配置新租户。 对于具有大�
 
 <!--links-->
 
-[在 Azure 中托管多租户应用程序]: http://msdn.microsoft.com/library/hh534480.aspx
-[在 Azure 中设计多租户应用程序]: http://msdn.microsoft.com/library/windowsazure/hh689716
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[Hosting a Multi-Tenant Application on Azure]: http://msdn.microsoft.com/library/hh534480.aspx
+[Designing Multitenant Applications on Azure]: http://msdn.microsoft.com/library/windowsazure/hh689716
 

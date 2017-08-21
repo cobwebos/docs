@@ -12,23 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2017
+ms.date: 07/19/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 7f6d82d211e9b3d25b0efe62ab8dd32f827b08ef
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: f1875582476c3817b9eb0082b6548cc15043cb98
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 07/20/2017
 
 ---
-# 在 Azure 门户中查找活动报告
-<a id="find-activity-reports-in-the-azure-portal" class="xliff"></a>
+# <a name="find-activity-reports-in-the-azure-portal"></a>在 Azure 门户中查找活动报告
 
 如果要从 Azure 经典门户移到 Azure 门户，请刷新 Azure Active Directory (Azure AD) 活动日志。 在最近的[博客文章](https://blogs.technet.microsoft.com/enterprisemobility/2016/11/08/azuread-weve-just-turned-on-detailed-auditing-and-sign-in-logs-in-the-new-azure-portal/)中，我们介绍了如何在 Azure 门户中查看要处理的资源上下文中的活动日志。 本文介绍如何在 Azure 门户中查找 Azure 经典门户中使用的报告。
 
-## 新增功能
-<a id="whats-new" class="xliff"></a>
+## <a name="whats-new"></a>新增功能
 
 Azure 经典门户中的报告分为以下类别：
 
@@ -36,8 +34,7 @@ Azure 经典门户中的报告分为以下类别：
 2.  活动报表
 3.  集成的应用报告
 
-### 活动和集成的应用报表
-<a id="activity-and-integrated-app-reports" class="xliff"></a>
+### <a name="activity-and-integrated-app-reports"></a>活动和集成的应用报表
 
 对于 Azure 门户中基于上下文的报告，现有报告将合并成单个视图。 单个基础 API 为视图提供数据。
 
@@ -65,13 +62,11 @@ Azure 经典门户中的报告分为以下类别：
 
 ![企业应用程序](./media/active-directory-reporting-migration/484.png "企业应用程序")
 
-## 访问特定报告
-<a id="access-a-specific-report" class="xliff"></a>
+## <a name="access-a-specific-report"></a>访问特定报告
 
 虽然 Azure 门户提供了单个视图，但你也可以查看特定报告。
 
-### 审核日志
-<a id="audit-logs" class="xliff"></a>
+### <a name="audit-logs"></a>审核日志
 
 为响应客户反馈，可以在 Azure 门户中使用高级筛选来访问所需的数据。 可以使用的一个筛选器是*活动类别*，其中列出了 Azure AD 中不同类型的活动日志。 若要将结果的范围缩小到要查找的内容，可以选择某个类别。
 
@@ -86,18 +81,15 @@ Azure 经典门户中的报告分为以下类别：
 - 自助服务组管理
 - 帐户预配
 
-### 应用程序使用情况
-<a id="application-usage" class="xliff"></a>
+### <a name="application-usage"></a>应用程序使用情况
 
 若要查看有关所有应用或单个应用的应用程序使用情况的详细信息，请在“活动”下选择“登录”。 若要缩小结果范围，可以按用户名或应用程序名称进行筛选。
 
 ![“筛选登录事件”页](./media/active-directory-reporting-migration/07.png "“筛选登录事件”页")
 
-### 安全报表
-<a id="security-reports" class="xliff"></a>
+### <a name="security-reports"></a>安全报表
 
-#### Azure AD 异常活动报告
-<a id="azure-ad-anomalous-activity-reports" class="xliff"></a>
+#### <a name="azure-ad-anomalous-activity-reports"></a>Azure AD 异常活动报告
 
 Azure 经典门户的 Azure AD 异常活动安全报告已合并，以向你提供一个主要视图。 此视图显示 Azure AD 可以检测和报告的所有与安全相关的风险事件。
 
@@ -122,8 +114,7 @@ Azure 经典门户的 Azure AD 异常活动安全报告已合并，以向你提�
 有关详细信息，请参阅 [Azure Active Directory 风险事件](active-directory-identity-protection-risk-events.md)。  
 
 
-#### 检测到的风险事件
-<a id="detected-risk-events" class="xliff"></a>
+#### <a name="detected-risk-events"></a>检测到的风险事件
 
 在 Azure 门户中，可以在 **Azure Active Directory** 边栏选项卡的“安全性”部分下访问有关检测到的风险事件的报告。 可以在以下报告中跟踪检测到的风险事件：   
 
@@ -138,8 +129,7 @@ Azure 经典门户的 Azure AD 异常活动安全报告已合并，以向你提�
 - [Azure Active Directory 门户中的“有风险的登录”报告](active-directory-reporting-security-risky-sign-ins.md)
 
 
-## Azure 经典门户与 Azure 门户中的活动报告
-<a id="activity-reports-in-the-azure-classic-portal-vs-the-azure-portal" class="xliff"></a>
+## <a name="activity-reports-in-the-azure-classic-portal-vs-the-azure-portal"></a>Azure 经典门户与 Azure 门户中的活动报告
 
 本部分中的表列出了 Azure 经典门户中的现有报告。 它还说明了如何在 Azure 门户中获取相同的信息。
 
@@ -162,4 +152,8 @@ Azure 经典门户的 Azure AD 异常活动安全报告已合并，以向你提�
 
 
 ![“企业应用程序登录”报告](./media/active-directory-reporting-migration/199.png "“企业应用程序登录”报告")
+
+## <a name="next-steps"></a>后续步骤
+
+有关报告的概述，请参阅 [Azure Active Directory 报告](active-directory-reporting-azure-portal.md)。
 

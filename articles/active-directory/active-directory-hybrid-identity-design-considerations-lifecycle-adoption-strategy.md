@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2017
+ms.date: 07/18/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 14e78eca1e03125143b8814c5652c43f3f3fd3a8
-ms.lasthandoff: 12/29/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 18b40486a66d8e092a8af299460145989a1ab99d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>确定混合标识生命周期采用策略
-在本任务中，将定义混合标识解决方案的标识管理策略，以满足在[确定混合标识管理任务](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)中定义的业务需求。
+蝻进在本任务中，将定义混合标识解决方案的标识管理策略，以满足在[确定混合标识管理任务](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)中定义的业务需求。
 
 若要依据本步骤前面介绍的端到端标识生命周期定义混合标识管理任务，需要考虑每个生命周期阶段的可用选项。
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 12/29/2016
 
 | 生命周期管理阶段 | 本地 | 云 | 混合 |
 | --- | --- | --- | --- |
-| 帐户管理和预配 |使用 Active Directory® 域服务 (AD DS) 服务器角色，为用户和资源管理创建可伸缩、安全和可管理的基础结构，以及为支持目录的应用程序（如 Microsoft® Exchange Server）提供支持。 <br><br> [使用标识管理器在 AD DS 中预配组](https://technet.microsoft.com/library/ff686261.aspx) <br>[在 AD DS 中预配用户](https://technet.microsoft.com/library/ff686263.aspx) <br><br> 出于安全目的，管理员可以使用访问控制来管理对共享资源的用户访问。 在 Active Directory 中，通过设置不同的对象访问级别或权限等级，例如，完全控制、写入、读取或无访问权限，在对象级管理访问控制。 在 Active Directory 中，访问控制定义不同用户使用 Active Directory 对象的方式。 默认情况下，Active Directory 中对象的权限设置为最安全的设置。 |你必须为想要访问 Microsoft 云服务的每个用户创建帐户。 你还可以更改用户帐户或删除不再需要的用户帐户。 默认情况下，用户不具有管理员权限，但你可以选择给他们分配权限。 有关详细信息，请参阅[在 Azure AD 中管理用户](active-directory-create-users.md)。 <br><br> Azure Active Directory 的主要功能之一是管理对资源的访问。 这些资源可以是目录的一部分（例如，用于通过目录中的角色管理对象的权限）、目录外部的资源（例如 SaaS 应用程序、Azure 服务以及 SharePoint 站点）或者本地资源。 <br><br> Azure Active Directory 访问管理解决方案的核心是安全组。 资源所有者（或目录管理员）可以分配组，以提供对其拥有的资源的特定访问权限。 组成员将获得访问权限，而资源所有者可将组成员列表管理权限委托给其他人，例如，部门经理或支持管理员<br> <br> “在 Azure AD 中管理组”主题提供了通过组管理访问权限的更多信息。 |通过同步和联合身份验证将 Active Directory 标识扩展到云中 |
+| 帐户管理和预配 |使用 Active Directory® 域服务 (AD DS) 服务器角色，为用户和资源管理创建可伸缩、安全和可管理的基础结构，以及为支持目录的应用程序（如 Microsoft® Exchange Server）提供支持。 <br><br> [使用标识管理器在 AD DS 中预配组](https://technet.microsoft.com/library/ff686261.aspx) <br>[在 AD DS 中预配用户](https://technet.microsoft.com/library/ff686263.aspx) <br><br> 出于安全目的，管理员可以使用访问控制来管理对共享资源的用户访问。 在 Active Directory 中，通过设置不同的对象访问级别或权限等级，例如，完全控制、写入、读取或无访问权限，在对象级管理访问控制。 在 Active Directory 中，访问控制定义不同用户使用 Active Directory 对象的方式。 默认情况下，Active Directory 中对象的权限设置为最安全的设置。 |你必须为想要访问 Microsoft 云服务的每个用户创建帐户。 你还可以更改用户帐户或删除不再需要的用户帐户。 默认情况下，用户不具有管理员权限，但你可以选择给他们分配权限。 有关详细信息，请参阅[在 Azure AD 中管理用户](active-directory-create-users.md)。 <br><br> Azure Active Directory 的主要功能之一是管理对资源的访问。 这些资源可以是目录的一部分（例如用于通过目录中的角色管理对象的权限）、目录外部的资源（例如 SaaS 应用程序、Azure 服务以及 SharePoint 站点）或者本地资源。 <br><br> Azure Active Directory 访问管理解决方案的核心是安全组。 资源所有者（或目录管理员）可以分配组，以提供对其拥有的资源的特定访问权限。 组成员将获得访问权限，而资源所有者可将组成员列表管理权限委托给其他人，例如，部门经理或支持管理员<br> <br> “在 Azure AD 中管理组”主题提供了通过组管理访问权限的更多信息。 |通过同步和联合身份验证将 Active Directory 标识扩展到云中 |
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 基于角色的访问控制 (RBAC) 使用角色和预配策略来评估、测试并强制执行业务流程和向用户授予访问权限的规则。 主要管理员创建预配策略并为用户分配角色，从而定义这些角色访问资源的权限集。 RBAC 扩展了标识管理解决方案，以便使用基于软件的流程并减少在预配过程中的用户手动交互。

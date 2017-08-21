@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a12e9d342daf41ee9f83cadb9e29ee867be055de
+ms.translationtype: HT
+ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
+ms.openlocfilehash: 65e9bba4ce9ac41ae2a9a8c3fa7f661165fc1403
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>使用门户创建应用程序网关的自定义探测
@@ -74,7 +73,7 @@ ms.lasthandoff: 04/27/2017
 1. 在“appGatewayBackEndHttpSettings”设置边栏选项卡上，选中“使用自定义探测”复选框，然后在“自定义探测”下拉列表中选择在[创建探测](#createprobe)部分创建的探测。
 完成后，单击“保存”即可应用相关设置。
 
-默认探测检查对 Web 应用程序的默认访问权限。 现已创建自定义探测，因此应用程序网关可以使用定义的自定义路径来监视后端服务器的运行状况。 应用程序网关根据所定义的条件检查探测中指定的路径。 如果调用 host:Port/path 时没有返回 HTTP 200-299 状态响应，则在达到不正常阈值后，服务器将不再进行轮换。 将继续对不正常的实例进行探测，看其何时恢复正常。 将实例添加回正常的服务器池以后，其流量即可恢复，同时也会继续按用户指定的正常时间间隔对实例进行探测。
+默认探测检查对 Web 应用程序的默认访问权限。 现已创建自定义探测，因此应用程序网关可以使用定义的自定义路径来监视后端服务器的运行状况。 应用程序网关根据所定义的条件检查探测中指定的路径。 如果调用 host:Port/path 时没有返回 HTTP 200-399 状态响应，则在达到不正常阈值后，服务器不再进行轮换。 将继续对不正常的实例进行探测，看其何时恢复正常。 将实例添加回正常的服务器池以后，其流量即可恢复，同时也会继续按用户指定的正常时间间隔对实例进行探测。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 中创建和上载 Linux VHD"
-description: "了解如何创建和上载包含 Linux 操作系统的 Azure 虚拟硬盘 (VHD)。"
+title: "在 Azure 中创建和上传 Linux VHD"
+description: "了解如何创建和上传包含 Linux 操作系统的 Azure 虚拟硬盘 (VHD)。"
 services: virtual-machines-linux
 documentationcenter: 
 author: szarkos
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: f0a1717219bfc33033bdb827e66e80dd18388e64
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
+ms.openlocfilehash: ccadf55c492c097ef96f25e469dbf36fc87b6102
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/15/2017
 
 ---
 # <a name="information-for-non-endorsed-distributions"></a>有关未认可分发版的信息
@@ -53,8 +53,8 @@ ms.lasthandoff: 04/03/2017
 * 不要在操作系统磁盘上配置交换分区。 可以配置 Linux 代理，以在临时资源磁盘上创建交换文件。  可以在下面的步骤中找到有关此内容的详细信息。
 * 所有 VHD 的大小必须是 1 MB 的倍数。
 
-### <a name="installing-linux-without-hyper-v"></a>安装不带 Hyper-V 的 Linux
-在某些情况下，Linux 安装程序可能无法在初始 ramdisk（initrd 或 initramfs）中包含 Hyper-V 驱动程序，除非它检测到它正在运行 Hyper-V 环境。  使用不同虚拟化系统（即 Virtualbox、KVM 等）来准备 Linux 映像时，可能需要重新生成 initrd 以确保至少 `hv_vmbus` 和 `hv_storvsc` 内核模块可在初始 ramdisk 上使用。  至少在基于上游 Red Hat 分发的系统上这是一个已知问题。
+### <a name="installing-kernel-modules-without-hyper-v"></a>安装无 Hyper-V 的内核模块
+Azure 在 Hyper-V 虚拟机监控程序上运行，因此 Linux 需要安装某些内核模块才能在 Azure 中运行。 如果具有在 Hyper-V 外部创建的虚拟机，Linux 安装程序可能无法在初始 ramdisk（initrd 或 initramfs）中包含 Hyper-V 驱动程序，除非它检测到它正在运行 Hyper-V 环境。 使用不同虚拟化系统（即 Virtualbox、KVM 等）来准备 Linux 映像时，可能需要重新生成 initrd 以确保至少 `hv_vmbus` 和 `hv_storvsc` 内核模块可在初始 ramdisk 上使用。  至少在基于上游 Red Hat 分发的系统上这是一个已知问题。
 
 重新生成 initrd 或 initramfs 映像的机制可能会因分发而有所不同。 请查阅分发的文档或相应过程的支持。  下面是有关如何使用 `mkinitrd` 实用工具重新生成 initrd 的示例：
 
@@ -186,6 +186,6 @@ Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游
   > 
   > 
 
-* 然后，需要关闭虚拟机并将 VHD 上载到 Azure。
+* 然后，需要关闭虚拟机并将 VHD 上传到 Azure。
 
 

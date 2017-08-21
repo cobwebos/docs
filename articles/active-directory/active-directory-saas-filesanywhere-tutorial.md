@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 40164cfba8b54634278194c599a4493a5b7910b2
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 4153056bd21006061c6ad8ff9cf3c17de9248628
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>教程：Azure Active Directory 与 FilesAnywhere 集成
@@ -117,6 +117,8 @@ ms.lasthandoff: 04/03/2017
     ![配置单一登录](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_filesanywhere_url.png)
     
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<company name>.filesanywhere.com/saml20.aspx?c=215`
+> [!NOTE]
+> 请注意，“clientid”的值“215”只是一个示例。 需要将其替换为实际的 clientid 值。
 
 4. 在“FilesAnywhere 域和 URL”部分中，如果要在“SP 启动的模式”下配置应用程序，请执行以下步骤：
     
@@ -154,7 +156,7 @@ ms.lasthandoff: 04/03/2017
     
     c. 在“值”列表中，选择为该行显示的属性值。
     
-    d.单击“下一步”。 单击“确定”
+    d. 单击“确定”
 
 7. 单击“保存”按钮。
 
@@ -170,7 +172,7 @@ ms.lasthandoff: 04/03/2017
 
     ![配置单一登录](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_configuresignon.png)
 
-10.    若要在 FilesAnywhere 端完成应用程序的 SSO 配置，请与 [FilesAnywhere 支持团队](mailto:support@FilesAnywhere.com)联系，并向其提供下载的 SAML 令牌签名证书和单一登录 (SSO) URL。
+10. 若要在 FilesAnywhere 端完成应用程序的 SSO 配置，请与 [FilesAnywhere 支持团队](mailto:support@FilesAnywhere.com)联系，并向其提供下载的 SAML 令牌签名证书和单一登录 (SSO) URL。
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 管理门户中创建名为 Britta Simon 的测试用户。

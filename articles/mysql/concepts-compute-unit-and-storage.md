@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 05/23/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 5f804920e85bf3aecee93ed486dea8f03d561f08
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: a82c283df688d36cd284973312e276f30ed893c0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 07/11/2017
 
 ---
 # <a name="explaining-compute-units-in-azure-database-for-mysql"></a>Azure Database for MySQL 中计算单元的介绍

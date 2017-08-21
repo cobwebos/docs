@@ -1,135 +1,207 @@
 ---
-title: "教程：Azure Active Directory 与 TalentLMS 集成 | Microsoft 文档"
-description: "了解如何使用 TalentLMS 与 Azure Active Directory 来启用单一登录、自动化预配和其他功能！"
+title: "教程：Azure Active Directory 与 TalentLMS 集成 | Microsoft Docs"
+description: "了解如何在 Azure Active Directory 和 TalentLMS 之间配置单一登录。"
 services: active-directory
+documentationCenter: na
 author: jeevansd
-documentationcenter: na
 manager: femila
 ms.assetid: c903d20d-18e3-42b0-b997-6349c5412dde
 ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 3/07/2017
+ms.date: 07/13/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: a9de3004a1968f514227f0ba5dfde0f562a2b392
-ms.lasthandoff: 03/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
+ms.openlocfilehash: f28d6fbfad9dae578a20db7218b7e3b174ed859c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>教程：Azure Active Directory 与 TalentLMS 集成
-本教程的目的是说明 Azure 与 TalentLMS 的集成。  
 
-在本教程中概述的方案假定您已具有以下各项：
+本教程介绍如何将 TalentLMS 与 Azure Active Directory (Azure AD) 集成。
 
-* 一个有效的 Azure 订阅
-* TalentLMS 租户
+将 TalentLMS 与 Azure AD 集成可提供以下优势：
 
-完成本教程后，已向 TalentLMS 分配的 Azure AD 用户将能够在 TalentLMS 公司站点（服务提供商发起的登录）或使用[访问面板简介](active-directory-saas-access-panel-introduction.md)单一登录到应用程序。
+- 可在 Azure AD 中控制谁有权访问 TalentLMS
+- 可以让用户使用其 Azure AD 帐户自动登录到 TalentLMS（单一登录）
+- 可以在一个中心位置（即 Azure 门户）中管理帐户
 
-在本教程中概述的方案由以下构建基块组成：
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-1. 为 TalentLMS 启用应用程序集成
-2. 配置单一登录 (SSO)
-3. 配置用户设置
-4. 分配用户
+## <a name="prerequisites"></a>先决条件
 
-![方案](./media/active-directory-saas-talentlms-tutorial/IC777289.png "方案")
+若要配置 Azure AD 与 TalentLMS 的集成，需要以下项：
 
-## <a name="enable-the-application-integration-for-talentlms"></a>为 TalentLMS 启用应用程序集成
-本部分的目的是概述如何为 TalentLMS 启用应用程序集成。
+- 一个 Azure AD 订阅
+- 已启用 TalentLMS 单一登录的订阅
 
-**若要为 TalentLMS 启用应用程序集成，请执行以下步骤：**
+> [!NOTE]
+> 不建议使用生产环境测试本教程中的步骤。
 
-1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
-   
-    ![Active Directory](./media/active-directory-saas-talentlms-tutorial/IC700993.png "Active Directory")
+测试本教程中的步骤应遵循以下建议：
 
-2. 在“目录”列表中，选择要启用目录集成的目录。
+- 除非必要，请勿使用生产环境。
+- 如果没有 Azure AD 试用环境，可在此处获取一个月的试用版：[试用产品/服务](https://azure.microsoft.com/pricing/free-trial/)。
 
-3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
-   
-    ![应用程序](./media/active-directory-saas-talentlms-tutorial/IC700994.png "应用程序")
+## <a name="scenario-description"></a>方案描述
+在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
-4. 在页面底部单击“添加”。
-   
-    ![添加应用程序](./media/active-directory-saas-talentlms-tutorial/IC749321.png "添加应用程序")
+1. 从库中添加 TalentLMS
+2. 配置和测试 Azure AD 单一登录
 
-5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
-   
-    ![从库添加应用程序](./media/active-directory-saas-talentlms-tutorial/IC749322.png "从库添加应用程序")
+## <a name="adding-talentlms-from-the-gallery"></a>从库中添加 TalentLMS
+若要配置 TalentLMS 与 Azure AD 的集成，需要从库中将 TalentLMS 添加到托管 SaaS 应用列表。
 
-6. 在搜索框中，键入“TalentLMS”。
-   
-    ![应用程序库](./media/active-directory-saas-talentlms-tutorial/IC777290.png "应用程序库")
+若要从库中添加 TalentLMS，请执行以下步骤：
 
-7. 在结果窗格中，选择“TalentLMS”，然后单击“完成”以添加该应用程序。
-   
-   ![TalentLMS](./media/active-directory-saas-talentlms-tutorial/IC777291.png "TalentLMS")
+1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
 
-## <a name="configure-single-sign-on"></a>配置单一登录
-本部分的目的是概述如何让用户使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 TalentLMS 进行身份验证。
+    ![Active Directory][1]
 
-配置 TalentLMS 的 SSO 需要检索证书的指纹值。  
+2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
-如果不熟悉此过程，请参阅[如何检索证书的指纹值](http://youtu.be/YKQF266SAxI)。
+    ![应用程序][2]
+    
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-**若要配置单一登录，请执行以下步骤：**
+    ![应用程序][3]
 
-1. 在 Azure 经典门户的“TalentLMS”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
-   
-    ![配置单一登录](./media/active-directory-saas-talentlms-tutorial/IC777292.png "配置单一登录")
+4. 在搜索框中，键入“TalentLMS”。
 
-2. 在“你希望用户如何登录 TalentLMS”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
-   
-    ![配置单一登录](./media/active-directory-saas-talentlms-tutorial/IC777293.png "配置单一登录")
-3. 在“配置应用 URL”页上的“TalentLMS 登录 URL”文本框中，使用模式“*https://\<tenant-name\>.TalentLMSapp.com*”键入 URL，然后单击“下一步”。
-   
-    ![登录 URL](./media/active-directory-saas-talentlms-tutorial/IC777294.png "登录 URL")
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-talentlms-tutorial/tutorial_talentlms_search.png)
 
-4. 在“配置 TalentLMS 的单一登录”页上，若要下载证书，请单击“下载证书”，然后在本地将证书文件保存为 **c:\\TalentLMS.cer**。
-   
-    ![配置单一登录](./media/active-directory-saas-talentlms-tutorial/IC777295.png "配置单一登录")
+5. 在结果面板中，选择“TalentLMS”，并单击“添加”按钮添加该应用程序。
 
-5. 在另一个 Web 浏览器窗口中，以管理员身份登录 TalentLMS 公司站点。
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-talentlms-tutorial/tutorial_talentlms_addfromgallery.png)
 
-6. 在“帐户与设置” 部分中，单击“用户”选项卡。
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+在本部分中，将基于一个名为“Britta Simon”的测试用户使用 TalentLMS 配置和测试 Azure AD 单一登录。
+
+为使单一登录能正常工作，Azure AD 需要知道与 Azure AD 用户相对应的 TalentLMS 用户。 换句话说，需要建立 Azure AD 用户与 TalentLMS 中相关用户之间的链接关系。
+
+可通过将 Azure AD 中“用户名”的值指定为 TalentLMS 中“用户名”的值来建立此链接关系。
+
+若要配置并测试 TalentLMS 的 Azure AD 单一登录，需要完成以下构建基块：
+
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
+2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+3. [创建 TalentLMS 测试用户](#creating-a-talentlms-test-user) - 在 TalentLMS 中创建 Britta Simon 的对应用户，链接到用户的 Azure AD 表示形式。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+
+### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+
+在本部分中，将介绍如何在 Azure 门户中启用 Azure AD 单一登录并在 TalentLMS 应用程序中配置单一登录。
+
+若要配置 TalentLMS 的 Azure AD 单一登录，请执行以下步骤：
+
+1. 在 Azure 门户中的 TalentLMS 应用程序集成页上，单击“单一登录”。
+
+    ![配置单一登录][4]
+
+2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+ 
+    ![配置单一登录](./media/active-directory-saas-talentlms-tutorial/tutorial_talentlms_samlbase.png)
+
+3. 在“TalentLMS 域和 URL”部分中，执行以下步骤：
+
+    ![配置单一登录](./media/active-directory-saas-talentlms-tutorial/tutorial_talentlms_url.png)
+
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.TalentLMSapp.com`
+
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`http://<tenant-name>.talentlms.com`
+
+    > [!NOTE] 
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [TalentLMS 客户端支持团队](https://www.talentlms.com/contact)获取这些值。 
+ 
+4. 在“SAML 签名证书”部分中，复制证书的指纹值。
+
+    ![配置单一登录](./media/active-directory-saas-talentlms-tutorial/tutorial_talentlms_certificate.png) 
+
+5. 单击“保存”按钮。
+
+    ![配置单一登录](./media/active-directory-saas-talentlms-tutorial/tutorial_general_400.png)
+
+6. 在“TalentLMS 配置”部分中，单击“配置 TalentLMS”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+
+    ![配置单一登录](./media/active-directory-saas-talentlms-tutorial/tutorial_talentlms_configure.png)  
+
+7. 在另一个 Web 浏览器窗口中，以管理员身份登录 TalentLMS 公司站点。
+
+8. 在“帐户与设置” 部分中，单击“用户”选项卡。
    
     ![帐户与设置](./media/active-directory-saas-talentlms-tutorial/IC777296.png "帐户与设置")
 
-7. 单击“单一登录(SSO)”。
+9. 单击“单一登录(SSO)”。
 
-8. 在“单一登录”部分中，执行以下步骤：
+10. 在“单一登录”部分中，执行以下步骤：
    
     ![单一登录](./media/active-directory-saas-talentlms-tutorial/IC777297.png "单一登录")   
-  1. 从“SSO 集成类型”列表中，选择“SAML 2.0”。
-  2. 在 Azure 经典门户的“配置 TalentLMS 的单一登录”对话框页上，复制“标识提供者 ID”值，然后将其粘贴到“标识提供者(IdP)”文本框中。
-  3. 从导出的证书中复制“指纹”值，然后将其粘贴到“证书指纹”文本框中。
-      
-     >[!TIP]
-     >有关更多详细信息，请参阅[如何检索证书的指纹值](http://youtu.be/YKQF266SAxI)。 
-     >    
 
-  4. 在 Azure 经典门户的“配置 TalentLMS 的单一登录”对话框页面上，复制“远程登录 URL”值，然后将其粘贴到“远程登录 URL”文本框中。 
-  5. 在 Azure 经典门户的“配置 TalentLMS 的单一登录”对话框页面上，复制“远程注销 URL”值，然后将其粘贴到“远程注销 URL”文本框中。
-  6. 填写以下信息： 
-    * 在“目标 ID”文本框中，键入“http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name”。
-    * 在“名字”文本框中，键入“http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname”。
-    * 在“姓氏”文本框中，键入“http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname”。
-    * 在“电子邮件”文本框中，键入“http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress”。
-  7. 单击“保存” 。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 从“SSO 集成类型”列表中，选择“SAML 2.0”。
 
-9. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
-   
-    ![配置单一登录](./media/active-directory-saas-talentlms-tutorial/IC777298.png "配置单一登录")
+    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“标识提供程序 (IDP)”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
+ 
+    c. 将 Azure 门户中的指纹值粘贴到“证书指纹”文本框。    
 
-## <a name="configure-user-provisioning"></a>配置用户设置
-要使 Azure AD 用户能够登录 TalentLMS，必须将这些用户预配到 TalentLMS 中。  
+    d.  在“远程登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+ 
+    e. 在“远程注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
-* 对于 TalentLMS，预配是一项手动任务。
+    f. 填写以下信息： 
+
+    * 在“TargetedID”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`
+     
+    * 在“名字”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+    
+    * 在“姓氏”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
+    
+    * 在“电子邮件”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    
+11. 单击“保存” 。
+ 
+> [!TIP]
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 
+
+### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
+
+![创建 Azure AD 用户][100]
+
+**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+
+1. 在 **Azure 门户**的左侧导航窗格中，单击“Azure Active Directory”图标。
+
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-talentlms-tutorial/create_aaduser_01.png) 
+
+2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+    
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-talentlms-tutorial/create_aaduser_02.png) 
+
+3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+ 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-talentlms-tutorial/create_aaduser_03.png) 
+
+4. 在“用户”对话框页上，执行以下步骤：
+ 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-talentlms-tutorial/create_aaduser_04.png) 
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+
+    c. 选择“显示密码”并记下“密码”的值。
+
+    d.单击“下一步”。 单击“创建” 。
+ 
+### <a name="creating-a-talentlms-test-user"></a>创建 TalentLMS 测试用户
+
+若要使 Azure AD 用户能够登录 TalentLMS，必须将这些用户预配到 TalentLMS 中。 对于 TalentLMS，预配是一项手动任务。
 
 **若要预配用户帐户，请执行以下步骤：**
 
@@ -139,29 +211,75 @@ ms.lasthandoff: 03/28/2017
 
 3. 在“添加用户”对话框页上，执行以下步骤：
    
-    ![添加用户](./media/active-directory-saas-talentlms-tutorial/IC777299.png "添加用户")   
-  1. 在以下文本框中键入 Azure AD 用户帐户的相关属性值：**名字**、**姓氏**、**电子邮件地址**。
-  2. 单击“添加用户”。
+    ![添加用户](./media/active-directory-saas-talentlms-tutorial/IC777299.png "添加用户")  
+
+    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“名字”文本框中，输入用户的名字（如“Britta”）。
+
+    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“姓氏”文本框中，输入用户的姓氏（如“Simon”）。
+ 
+    c. 在“电子邮件地址”文本框中，输入用户的电子邮件地址（例如 brittasimon@contoso.com）。
+
+    d. 单击“添加用户”。
 
 >[!NOTE]
 >可以使用任何其他 TalentLMS 用户帐户创建工具或 TalentLMS 提供的 API 来预配 AAD 用户帐户。
->  
+ 
 
-## <a name="assign-users"></a>分配用户
-若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
+### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-**若要将用户分配到 TalentLMS，请执行以下步骤：**
+在本节中，将通过授予 Britta Simon 访问 TalentLMS 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 经典门户中，创建测试帐户。
+![分配用户][200] 
 
-2. 在“TalentLMS”应用程序集成页上，单击“分配用户”。
-   
-    ![分配用户](./media/active-directory-saas-talentlms-tutorial/IC777300.png "分配用户")
+若要将 Britta Simon 分配到 TalentLMS，请执行以下步骤：
 
-3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
-   
-    ![是](./media/active-directory-saas-talentlms-tutorial/IC767830.png "是")
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+    ![分配用户][201] 
+
+2. 在应用程序列表中，选择“TalentLMS”。
+
+    ![配置单一登录](./media/active-directory-saas-talentlms-tutorial/tutorial_talentlms_app.png) 
+
+3. 在左侧菜单中，单击“用户和组”。
+
+    ![分配用户][202] 
+
+4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+
+    ![分配用户][203]
+
+5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+
+6. 在“用户和组”对话框中单击“选择”按钮。
+
+7. 在“添加分配”对话框中单击“分配”按钮。
+    
+### <a name="testing-single-sign-on"></a>测试单一登录
+
+本部分的目的是使用访问面板测试 Azure AD 单一登录配置。
+
+单击访问面板中的 TalentLMS 磁贴时，应自动登录到 TalentLMS 应用程序
+
+## <a name="additional-resources"></a>其他资源
+
+* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+
+
+
+<!--Image references-->
+
+[1]: ./media/active-directory-saas-talentlms-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-talentlms-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-talentlms-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-talentlms-tutorial/tutorial_general_04.png
+
+[100]: ./media/active-directory-saas-talentlms-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-talentlms-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-talentlms-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-talentlms-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-talentlms-tutorial/tutorial_general_203.png
 
 

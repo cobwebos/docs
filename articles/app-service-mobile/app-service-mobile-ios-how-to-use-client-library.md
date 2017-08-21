@@ -14,10 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 614038da2384b3efa48cd46ade347392ffef9d44
-ms.openlocfilehash: 2cb7b5aff47a81ae53d1ce68426b085eba4c96fc
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 65817208e1b26fb5f9eb56d164f48b44d57dce56
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 iOS 客户端库
@@ -34,10 +35,10 @@ iOS 客户端 SDK 的参考文档位于：[Azure 移动应用 iOS 客户端参�
 “服务器流”身份验证使用 WebView 显示 UI。  如果设备无法显示 WebView UI，则需要产品范围以外的另一种身份验证方法。  
 因此，此 SDK 不适用于手表类型或类似的受限设备。
 
-## <a name="a-namesetupasetup-and-prerequisites"></a><a name="Setup"></a>安装与先决条件
+## <a name="Setup"></a>安装与先决条件
 本指南假设已创建了包含表的后端。 本指南假设该表的架构与这些教程中的表相同。 本指南还假设在代码中引用了 `MicrosoftAzureMobile.framework` 并导入了 `MicrosoftAzureMobile/MicrosoftAzureMobile.h`。
 
-## <a name="a-namecreate-clientahow-to-create-client"></a><a name="create-client"></a>如何创建客户端
+## <a name="create-client"></a>如何创建客户端
 若要在项目中访问 Azure 移动应用后端，请创建 `MSClient`。 将 `AppUrl` 替换为应用 URL。 可以将 `gatewayURLString` 和 `applicationKey` 留空。 如果设置了用于身份验证的网关，请使用网关 URL 填充 `gatewayURLString`。
 
 **Objective-C**：
@@ -53,7 +54,7 @@ let client = MSClient(applicationURLString: "AppUrl")
 ```
 
 
-## <a name="a-nametable-referenceahow-to-create-table-reference"></a><a name="table-reference"></a>如何：创建表引用
+## <a name="table-reference"></a>如何：创建表引用
 若要访问或更新数据，请创建到后端表的引用。 将 `TodoItem` 替换为表名称
 
 **Objective-C**：
@@ -69,7 +70,7 @@ let table = client.tableWithName("TodoItem")
 ```
 
 
-## <a name="a-namequeryingahow-to-query-data"></a><a name="querying"></a>如何：查询数据
+## <a name="querying"></a>如何：查询数据
 若要创建数据库查询，请查询 `MSTable` 对象。 以下查询将获取 `TodoItem` 中的所有项，并记录每个项的文本。
 
 **Objective-C**：
@@ -100,7 +101,7 @@ table.readWithCompletion { (result, error) in
 }
 ```
 
-## <a name="a-namefilteringahow-to-filter-returned-data"></a><a name="filtering"></a>如何：筛选器返回的数据
+## <a name="filtering"></a>如何：筛选器返回的数据
 可以使用许多可用选项来筛选结果。
 
 若要使用谓词进行筛选，请使用 `NSPredicate` 和 `readWithPredicate`。 以下筛选器返回的数据只用于查找未完成的待办事项。
@@ -139,7 +140,7 @@ table.readWithPredicate(predicate) { (result, error) in
 }
 ```
 
-## <a name="a-namequery-objectahow-to-use-msquery"></a><a name="query-object"></a>如何：使用 MSQuery
+## <a name="query-object"></a>如何：使用 MSQuery
 若要执行复杂查询（包括排序和分页），请使用谓词直接创建 `MSQuery` 对象：
 
 **Objective-C**：
@@ -167,7 +168,7 @@ let query = table.queryWithPredicate(NSPredicate(format: "complete == NO"))
 
 通过对对象调用 `readWithCompletion` 来执行 `MSQuery` 查询。
 
-## <a name="a-namesortingahow-to-sort-data-with-msquery"></a><a name="sorting"></a>如何：使用 MSQuery 对数据排序
+## <a name="sorting"></a>如何：使用 MSQuery 对数据排序
 让我们先看一个示例，来了解如何对结果排序。 若要先按“文本”字段升序排列，再按“完成”降序排列，请调用 `MSQuery`，如下所示：
 
 **Objective-C**：
@@ -203,7 +204,7 @@ query.readWithCompletion { (result, error) in
 ```
 
 
-## <a name="a-nameselectingaa-nameparametersahow-to-limit-fields-and-expand-query-string-parameters-with-msquery"></a><a name="selecting"></a><a name="parameters"></a>如何：使用 MSQuery 限制字段和展开查询字符串参数
+## <a name="selecting"></a><a name="parameters"></a>如何：使用 MSQuery 限制字段和展开查询字符串参数
 若要限制在查询中返回的字段，请在 **selectFields** 属性中指定字段的名称。 此示例仅返回文本和已完成的字段：
 
 **Objective-C**：
@@ -235,7 +236,7 @@ query.parameters = @{
 query.parameters = ["myKey1": "value1", "myKey2": "value2"]
 ```
 
-## <a name="a-namepagingahow-to-configure-page-size"></a><a name="paging"></a>如何：配置页面大小
+## <a name="paging"></a>如何：配置页面大小
 凭借 Azure 移动应用，页面大小可以控制从后端表中一次所拉取的记录数量。 对 `pull` 数据的调用随之会根据此页面大小来批处理数据，直到没有记录可拉取为止。
 
 可以使用 **MSPullSettings** 配置页面大小，如下所示。 默认页面大小为 50，以下示例中则改为 3。
@@ -272,8 +273,8 @@ table.pullWithQuery(query, queryId:nil, settings: pullSettings) { (error) in
 }
 ```
 
-## <a name="a-nameinsertingahow-to-insert-data"></a><a name="inserting"></a>如何：插入数据
-若要插入新的表行，请创建 `NSDictionary` 并调用 `table insert`。 如果启用[动态架构]，Azure App Service 移动后端将根据 `NSDictionary` 自动生成新列。
+## <a name="inserting"></a>如何：插入数据
+若要插入新的表行，请创建 `NSDictionary` 并调用 `table insert`。 如果启用[动态架构]，Azure 应用服务移动后端将根据 `NSDictionary` 自动生成新列。
 
 如果未提供 `id`，后端会自动生成新的唯一 ID。 提供你自己的 `id`，以使用电子邮件地址、用户名或你自己的自定义值作为 ID。 提供自己的 ID 可以让联接和业务导向型数据库逻辑变得更容易。
 
@@ -305,7 +306,7 @@ table.insert(newItem) { (result, error) in
 }
 ```
 
-## <a name="a-namemodifyingahow-to-modify-data"></a><a name="modifying"></a>如何：修改数据
+## <a name="modifying"></a>如何：修改数据
 若要更新现有的行，请修改项并调用 `update`：
 
 **Objective-C**：
@@ -365,7 +366,7 @@ table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
 
 进行更新时，至少必须设置 `id` 属性。
 
-## <a name="a-namedeletingahow-to-delete-data"></a><a name="deleting"></a>如何：删除数据
+## <a name="deleting"></a>如何：删除数据
 若要删除某个项，请对该项调用 `delete`：
 
 **Objective-C**：
@@ -420,7 +421,7 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
 
 进行删除时，至少必须设置 `id` 属性。
 
-## <a name="a-namecustomapiahow-to-call-custom-api"></a><a name="customapi"></a>如何调用自定义 API
+## <a name="customapi"></a>如何调用自定义 API
 使用自定义 API 可以公开任何后端功能。 无需映射到表操作。 不仅能进一步控制消息，甚至还可以读取或设置标头，并更改响应正文格式。 若要了解如何在后端上创建自定义 API，请阅读[自定义 API](app-service-mobile-node-backend-how-to-use-server-sdk.md#work-easy-apis)
 
 若要调用自定义 API，请调用 `MSClient.invokeAPI`。 请求和响应内容被视为 JSON。 若要使用其他媒体类型，[请使用 `invokeAPI` 的其他重载][5]。  若要发出 `GET` 请求而不是 `POST` 请求，请将参数 `HTTPMethod` 设置为 `"GET"`，将参数 `body` 设置为 `nil`（因为 GET 请求没有消息正文）。如果自定义 API 支持其他 HTTP 谓词，请相应地更改 `HTTPMethod`。
@@ -460,7 +461,7 @@ client.invokeAPI("sendEmail",
         }
 ```
 
-## <a name="a-nametemplatesahow-to-register-push-templates-to-send-cross-platform-notifications"></a><a name="templates"></a>如何注册推送模板以发送跨平台通知
+## <a name="templates"></a>如何注册推送模板以发送跨平台通知
 若要注册模板，请在客户端应用中使用 **client.push registerDeviceToken** 方法传递模板。
 
 **Objective-C**：
@@ -499,8 +500,8 @@ let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
 
 出于安全性考虑，将去除所有请求的标记。  若要将标记添加到安装或安装中的模板，请参阅 [使用适用于 Azure 移动应用的 .NET 后端服务器 SDK][4]。  若要使用这些注册的模板发送通知，请参阅[通知中心 API][3]。
 
-## <a name="a-nameerrorsahow-to-handle-errors"></a><a name="errors"></a>如何：处理错误
-在调用 Azure App Service 移动后端时，完成块包含 `NSError` 参数。 如果出错，此参数为非 nil 值。 在代码中，应检查此参数，并根据需要处理错误，如上面代码片段中所示。
+## <a name="errors"></a>如何：处理错误
+在调用 Azure 应用服务移动后端时，完成块包含 `NSError` 参数。 如果出错，此参数为非 nil 值。 在代码中，应检查此参数，并根据需要处理错误，如上面代码片段中所示。
 
 文件 [`<WindowsAzureMobileServices/MSError.h>`][6] 定义常量 `MSErrorResponseKey`、`MSErrorRequestKey` 和 `MSErrorServerItemKey`。 获取更多与错误相关的数据：
 
@@ -530,7 +531,7 @@ if (error.code == MSErrorPreconditionFailed) {
 if (error.code == MSErrorPreconditionFailed) {
 ```
 
-## <a name="a-nameadalahow-to-authenticate-users-with-the-active-directory-authentication-library"></a><a name="adal"></a>如何使用 Active Directory 身份验证库对用户进行身份验证
+## <a name="adal"></a>如何使用 Active Directory 身份验证库对用户进行身份验证
 可以借助 Active Directory 身份验证库 (ADAL) 使用 Azure Active Directory 将用户登录到应用程序。 使用标识提供者 SDK 的客户端流身份验证会首选使用 `loginWithProvider:completion:` 方法。  客户端流身份验证提供更直观的 UX 风格，并允许进行其他自定义。
 
 1. 根据[如何为 Active Directory 登录配置应用服务][7]教程的说明，为 AAD 登录配置移动应用。 请务必完成注册本机客户端应用程序的可选步骤。 对于 iOS，我们推荐重定向 URI 的格式为 `<app-scheme>://<bundle-id>`。 有关详细信息，请参阅 [ADAL iOS 快速入门][8]。
@@ -546,7 +547,7 @@ if (error.code == MSErrorPreconditionFailed) {
 3. 使用终端，从包含项目的目录运行 `pod install`，然后打开生成的 Xcode 工作区（而不是项目）。
 4. 根据使用的语言，将以下代码添加到应用程序。 在每个应用程序中，进行以下替换：
 
-   * 将 **INSERT-AUTHORITY-HERE** 替换为在其中预配应用程序的租户的名称。 格式应为 https://login.windows.net/contoso.onmicrosoft.com。 可以在 [Azure 经典门户] 中从 Azure Active Directory 的“域”选项卡复制此值。
+   * 将 **INSERT-AUTHORITY-HERE** 替换为在其中预配应用程序的租户的名称。 格式应为 https://login.microsoftonline.com/contoso.onmicrosoft.com。 可以在 [Azure 经典门户] 中从 Azure Active Directory 的“域”选项卡复制此值。
    * 将 **INSERT-RESOURCE-ID-HERE** 替换移动应用后端的客户端 ID。 可以在门户中“Azure Active Directory 设置”下面的“高级”选项卡获取此客户端 ID。
    * 将 **INSERT-CLIENT-ID-HERE** 替换为从本机客户端应用程序复制的客户端 ID。
    * 使用 HTTPS 方案将 **INSERT-REDIRECT-URI-HERE** 替换为站点的 */.auth/login/done* 终结点。 此值应类似于 *https://contoso.azurewebsites.net/.auth/login/done*。
@@ -612,7 +613,7 @@ if (error.code == MSErrorPreconditionFailed) {
             }
     }
 
-## <a name="a-namefacebook-sdkahow-to-authenticate-users-with-the-facebook-sdk-for-ios"></a><a name="facebook-sdk"></a>如何使用 Facebook SDK for iOS 对用户进行身份验证
+## <a name="facebook-sdk"></a>如何使用 Facebook SDK for iOS 对用户进行身份验证
 可以使用 Facebook SDK for iOS 以用户的身份登录到使用 Facebook 的应用程序。  使用客户端流身份验证会优先使用 `loginWithProvider:completion:` 方法。  客户端流身份验证提供更直观的 UX 风格，并允许进行其他自定义。
 
 1. 根据[如何为 Facebook 登录配置应用服务][9] 教程的说明，为 Facebook 登录配置移动应用后端。
@@ -684,7 +685,7 @@ if (error.code == MSErrorPreconditionFailed) {
         }
     }
 
-## <a name="a-nametwitter-fabricahow-to-authenticate-users-with-twitter-fabric-for-ios"></a><a name="twitter-fabric"></a>如何使用 Twitter Fabric for iOS 对用户进行身份验证
+## <a name="twitter-fabric"></a>如何使用 Twitter Fabric for iOS 对用户进行身份验证
 可以使用 Fabric for iOS 将用户登录到使用 Twitter 的应用程序。 客户端流身份验证会首选使用 `loginWithProvider:completion:` 方法，因为它提供更直观的 UX 风格，并允许进行其他自定义。
 
 1. 根据[如何为 Twitter 登录配置应用服务](app-service-mobile-how-to-configure-twitter-authentication.md)教程的说明，为 Twitter 登录配置移动应用后端。
@@ -758,7 +759,7 @@ if (error.code == MSErrorPreconditionFailed) {
         }
     }
 
-## <a name="a-namegoogle-sdkahow-to-authenticate-users-with-the-google-sign-in-sdk-for-ios"></a><a name="google-sdk"></a>如何使用 Google Sign-In SDK for iOS 对用户进行身份验证
+## <a name="google-sdk"></a>如何使用 Google Sign-In SDK for iOS 对用户进行身份验证
 可以使用 Google Sign-In SDK for iOS 将用户登录到使用 Google 帐户的应用程序。  Google 最近已宣布要对 OAuth 安全策略进行更改。  将来这些策略更改将要求使用 Google SDK。
 
 1. 根据[如何为 Google 登录配置应用服务](app-service-mobile-how-to-configure-google-authentication.md)教程的说明，为 Google 登录配置移动应用后端。
@@ -879,9 +880,4 @@ if (error.code == MSErrorPreconditionFailed) {
 [8]: ../active-directory/active-directory-devquickstarts-ios.md
 [9]: app-service-mobile-how-to-configure-facebook-authentication.md
 [10]: https://developers.facebook.com/docs/ios/getting-started
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

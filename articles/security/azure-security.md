@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: TomSh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 65d24488ce4910c59f7afce5d540ace81ffc50ac
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: f5d33b6a36b84589a24108a84636c42043f21c69
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
 
@@ -136,20 +135,20 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 #### <a name="web-server-diagnostics"></a>Web 服务器诊断
 你可以启用或禁用以下种类的日志：
 
--    详细错误日志记录 - 指示故障的 HTTP 状态代码（状态代码 400 或更大数字）的详细错误消息。 其中可能包含有助于确定服务器返回错误代码的原因的信息。
+-   详细错误日志记录 - 指示故障的 HTTP 状态代码（状态代码 400 或更大数字）的详细错误消息。 其中可能包含有助于确定服务器返回错误代码的原因的信息。
 
--    失败请求跟踪 - 有关失败请求的详细信息，包括对用于处理请求的 IIS 组件和每个组件所用的时间的跟踪。 在尝试提高站点性能或隔离导致要返回特定 HTTP 错误的内容时，此信息很有用。
+-   失败请求跟踪 - 有关失败请求的详细信息，包括对用于处理请求的 IIS 组件和每个组件所用的时间的跟踪。 在尝试提高站点性能或隔离导致要返回特定 HTTP 错误的内容时，此信息很有用。
 
--    Web 服务器日志记录 - 使用 W3C 扩展日志文件格式的 HTTP 事务信息。 这在确定整体站点度量值（如处理的请求数量或来自特定 IP 地址的请求数）时非常有用。
+-   Web 服务器日志记录 - 使用 W3C 扩展日志文件格式的 HTTP 事务信息。 这在确定整体站点度量值（如处理的请求数量或来自特定 IP 地址的请求数）时非常有用。
 
 #### <a name="application-diagnostics"></a>应用程序诊断
 [应用程序诊断](https://docs.microsoft.com/azure/app-service-web/web-sites-enable-diagnostic-log)可以捕获由 Web 应用程序生成的信息。 ASP.NET 应用程序可使用 [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) 类将信息记录到应用程序诊断日志。 在应用程序诊断中，有两种主要类型的事件，即与应用程序性能相关的事件以及与应用程序故障和错误相关的事件。 故障和错误可以进一步分为连接性、安全性和故障问题。 故障问题通常与应用程序代码问题相关。
 
 在应用程序诊断中，可以查看按以下方式分组的事件：
 
--    全部（显示所有事件）
--    应用程序错误（显示异常事件）
--    性能（显示性能事件）
+-   全部（显示所有事件）
+-   应用程序错误（显示异常事件）
+-   性能（显示性能事件）
 
 ## <a name="storage"></a>存储
 本部分提供了关于 Azure 存储安全中主要特性的其他信息以及有关这些功能的摘要信息。
@@ -162,30 +161,30 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 
 ### <a name="encryption-in-transit"></a>传输中加密
 传输中加密是通过网络传输数据时用于保护数据的一种机制。 在 Azure 存储中，可以使用以下加密方式来保护数据：
--    [传输级别加密](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit)，例如从 Azure 存储传入或传出数据时使用的 HTTPS。
+-   [传输级别加密](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit)，例如从 Azure 存储传入或传出数据时使用的 HTTPS。
 
--    [线路加密](https://docs.microsoft.com/azure/storage/storage-security-guide#using-encryption-during-transit-with-azure-file-shares)，例如 [Azure 文件共享](https://docs.microsoft.com/azure/storage/storage-dotnet-how-to-use-files)的 [SMB 3.0 加密](https://docs.microsoft.com/azure/storage/storage-security-guide)。
+-   [线路加密](https://docs.microsoft.com/azure/storage/storage-security-guide#using-encryption-during-transit-with-azure-file-shares)，例如 [Azure 文件共享](https://docs.microsoft.com/azure/storage/storage-dotnet-how-to-use-files)的 [SMB 3.0 加密](https://docs.microsoft.com/azure/storage/storage-security-guide)。
 
--    客户端加密，在将数据传输到存储之前加密数据，以及从存储传出数据后解密数据。
+-   客户端加密，在将数据传输到存储之前加密数据，以及从存储传出数据后解密数据。
 
 ### <a name="encryption-at-rest"></a>静态加密
 对许多组织而言，静态数据加密是实现数据隐私性、符合性和数据所有权的必要措施。 有三项 Azure 存储安全功能可提供“静态”数据加密：
 
--    [存储服务加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)可以请求存储服务在将数据写入 Azure 存储时自动加密数据。
+-   [存储服务加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)可以请求存储服务在将数据写入 Azure 存储时自动加密数据。
 
--    [客户端加密](https://docs.microsoft.com/azure/storage/storage-client-side-encryption)也提供静态加密功能。
+-   [客户端加密](https://docs.microsoft.com/azure/storage/storage-client-side-encryption)也提供静态加密功能。
 
--    [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。
+-   [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。
 
 ### <a name="storage-analytics"></a>存储分析
 [Azure 存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)执行日志记录并为存储帐户提供指标数据。 可以使用此数据跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。 存储分析记录成功和失败的存储服务请求的详细信息。 可以使用该信息监视各个请求和诊断存储服务问题。 将最大程度地记录请求。 将记录以下类型的已经过身份验证的请求：
--    成功的请求。
+-   成功的请求。
 
--    失败的请求，包括超时、限制、网络、授权和其他错误。
+-   失败的请求，包括超时、限制、网络、授权和其他错误。
 
--    使用共享访问签名 (SAS) 的请求，包括失败和成功的请求。
+-   使用共享访问签名 (SAS) 的请求，包括失败和成功的请求。
 
--    分析数据请求。
+-   分析数据请求。
 
 ### <a name="enabling-browser-based-clients-using-cors"></a>使用 CORS 启用基于浏览器的客户端
 [跨源资源共享 (CORS)](https://docs.microsoft.com/rest/api/storageservices/fileservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) 是一种允许域授予彼此资源访问权限的机制。 用户代理发送额外的标头，以确保允许从特定域中加载的 JavaScript 代码访问位于另一个域的资源。 然后，后一个域使用额外标头进行回复，允许或拒绝原始域访问其资源。
@@ -220,13 +219,13 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它�
 
 Azure 网络支持各种安全远程访问方案。 其中包括：
 
--    [将单独的工作站连接到 Azure 虚拟网络](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
+-   [将单独的工作站连接到 Azure 虚拟网络](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
 
--    [通过 VPN 将本地网络连接到 Azure 虚拟网络](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design)
+-   [通过 VPN 将本地网络连接到 Azure 虚拟网络](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design)
 
--    [通过专用 WAN 链接将本地网络连接到 Azure 虚拟网络](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)
+-   [通过专用 WAN 链接将本地网络连接到 Azure 虚拟网络](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)
 
--    [相互连接 Azure 虚拟网络](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps)
+-   [相互连接 Azure 虚拟网络](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps)
 
 ### <a name="vpn-gateway"></a>VPN 网关
 若要在 Azure 虚拟网络与本地站点之间发送网络流量，必须为 Azure 虚拟网络创建 VPN 网关。 [VPN 网关](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)是一种虚拟网络网关，可以通过公共连接发送加密流量。 也可以使用 VPN 网关在基于 Azure 网络结构的 Azure 虚拟网络之间发送流量。
@@ -257,17 +256,17 @@ Web 应用程序防火墙是 [Azure 应用程序网关](https://docs.microsoft.c
 
 ![Web 应用程序防火墙](./media/azure-security/azure-security-fig1.png)
 
--    SQL 注入保护
+-   SQL 注入保护
 
--    常见 Web 攻击保护，例如命令注入、HTTP 请求走私、HTTP 响应拆分和远程文件包含攻击
+-   常见 Web 攻击保护，例如命令注入、HTTP 请求走私、HTTP 响应拆分和远程文件包含攻击
 
--    防止 HTTP 协议违反行为
+-   防止 HTTP 协议违反行为
 
--    防止 HTTP 协议异常行为，例如缺少主机用户代理和接受标头
+-   防止 HTTP 协议异常行为，例如缺少主机用户代理和接受标头
 
--    防止自动程序、爬网程序和扫描程序
+-   防止自动程序、爬网程序和扫描程序
 
--    检测常见应用程序错误配置（即 Apache、IIS 等）
+-   检测常见应用程序错误配置（即 Apache、IIS 等）
 
 
 可防止 Web 攻击的集中式 Web 应用程序防火墙，可简化安全管理，并可针对入侵威胁为应用程序提供更好的保障。 相较保护每个单独的 Web 应用程序，WAF 解决方案还可通过在中央位置修补已知漏洞，更快地响应安全威胁。 现有应用程序网关可以轻松地转换为带有 Web 应用程序防火墙的应用程序网关。
@@ -278,9 +277,9 @@ Web 应用程序防火墙是 [Azure 应用程序网关](https://docs.microsoft.c
 ### <a name="azure-load-balancer"></a>Azure 负载均衡器
 [Azure 负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) 可提高应用程序的可用性和网络性能。 它是第 4 层（TCP、UDP）类型的负载均衡器，可在负载均衡集中定义的运行状况良好的服务实例之间分配传入流量。 可以将 Azure 负载均衡器配置为：
 
--    对传入到虚拟机的 Internet 流量进行负载均衡。 此配置称为[面向 Internet 的负载均衡](https://docs.microsoft.com/azure/load-balancer/load-balancer-internet-overview)。
+-   对传入到虚拟机的 Internet 流量进行负载均衡。 此配置称为[面向 Internet 的负载均衡](https://docs.microsoft.com/azure/load-balancer/load-balancer-internet-overview)。
 
--    对虚拟网络中虚拟机之间的流量、云服务中虚拟机之间的流量或本地计算机和跨界虚拟网络中虚拟机之间的流量进行负载均衡。 此配置称为[内部负载均衡](https://docs.microsoft.com/azure/load-balancer/load-balancer-internal-overview)。 
+-   对虚拟网络中虚拟机之间的流量、云服务中虚拟机之间的流量或本地计算机和跨界虚拟网络中虚拟机之间的流量进行负载均衡。 此配置称为[内部负载均衡](https://docs.microsoft.com/azure/load-balancer/load-balancer-internal-overview)。 
 
 - 将外部流量转发到特定的虚拟机
 
@@ -291,22 +290,22 @@ Web 应用程序防火墙是 [Azure 应用程序网关](https://docs.microsoft.c
 [域名系统](https://technet.microsoft.com/library/bb629410.aspx)或 DNS 负责将网站或服务名称转换（或解析）为它的 IP 地址。 [Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管你的域，你可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理你的 DNS 记录。 DNS 支持“CIA”安全三因素的可用性方面。
 ### <a name="log-analytics-nsgs"></a>Log Analytics NSG
 可以为 NSG 启用以下诊断日志类别：
--    事件：包含根据 MAC 地址向 VM 和实例角色应用的 NSG 规则条目。 每隔 60 秒收集一次这些规则的状态。
+-   事件：包含根据 MAC 地址向 VM 和实例角色应用的 NSG 规则条目。 每隔 60 秒收集一次这些规则的状态。
 
--    规则计数器：包含应用每个 NSG 规则以拒绝或允许流量的次数的条目。
+-   规则计数器：包含应用每个 NSG 规则以拒绝或允许流量的次数的条目。
 
 ### <a name="azure-security-center"></a>Azure 安全中心
 安全中心可帮助预防、检测和响应威胁，同时提高对 Azure 资源安全性的可见性和控制力度。 它提供对 Azure 订阅的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。 网络建议围绕防火墙和网络安全组，配置入站流量规则等。
 
 可用的网络建议如下：
 
--    [添加下一代防火墙](https://docs.microsoft.com/azure/security-center/security-center-add-next-generation-firewall)：建议从 Microsoft 合作伙伴添加下一代防火墙 (NGFW)，以增强安全保护
+-   [添加下一代防火墙](https://docs.microsoft.com/azure/security-center/security-center-add-next-generation-firewall)：建议从 Microsoft 合作伙伴添加下一代防火墙 (NGFW)，以增强安全保护
 
--    [仅通过 NGFW 路由流量](https://docs.microsoft.com/azure/security-center/security-center-add-next-generation-firewall#route-traffic-through-ngfw-only)：建议配置通过 NGFW 强制将流量入站到 VM 的网络安全组 (NSG) 规则。
+-   [仅通过 NGFW 路由流量](https://docs.microsoft.com/azure/security-center/security-center-add-next-generation-firewall#route-traffic-through-ngfw-only)：建议配置通过 NGFW 强制将流量入站到 VM 的网络安全组 (NSG) 规则。
 
--    [在子网或虚拟机上启用网络安全组](https://docs.microsoft.com/azure/security-center/security-center-enable-network-security-groups)：建议在子网或 VM 上启用 NSG。
+-   [在子网或虚拟机上启用网络安全组](https://docs.microsoft.com/azure/security-center/security-center-enable-network-security-groups)：建议在子网或 VM 上启用 NSG。
 
--    [通过面向 Internet 的终结点限制访问](https://docs.microsoft.com/azure/security-center/security-center-restrict-access-through-internet-facing-endpoints)：建议为 NSG 配置入站流量规则。
+-   [通过面向 Internet 的终结点限制访问](https://docs.microsoft.com/azure/security-center/security-center-restrict-access-through-internet-facing-endpoints)：建议为 NSG 配置入站流量规则。
 
 
 ## <a name="compute"></a>计算
@@ -353,24 +352,24 @@ Azure 密钥保管库 (AKV) 服务专用于在一个高度可用的安全位置�
 
 ### <a name="secure-identity"></a>安全标识
 Microsoft 在其产品和服务中使用多种安全实践和技术来管理标识和访问权限。
--    [多重身份验证](https://azure.microsoft.com/services/multi-factor-authentication/)要求用户在本地和云中使用多种方法进行访问。 它提供强大的身份验证和一系列简单的验证选项，同时满足用户对简单登录过程的需求。
+-   [多重身份验证](https://azure.microsoft.com/services/multi-factor-authentication/)要求用户在本地和云中使用多种方法进行访问。 它提供强大的身份验证和一系列简单的验证选项，同时满足用户对简单登录过程的需求。
 
--    [Microsoft Authenticator ](https://aka.ms/authenticator) 提供了一种用户友好型多重身份验证体验，它可与 Microsoft Azure Active Directory 和 Microsoft 帐户兼容，并支持可穿戴设备和基于指纹的批准。
+-   [Microsoft Authenticator ](https://aka.ms/authenticator) 提供了一种用户友好型多重身份验证体验，它可与 Microsoft Azure Active Directory 和 Microsoft 帐户兼容，并支持可穿戴设备和基于指纹的批准。
 
--    [强制实施密码策略](https://azure.microsoft.com/documentation/articles/active-directory-passwords-policy/)通过强制执行长度和复杂性要求、强制定期轮换和身份验证尝试失败后的帐户锁定来提高传统密码的安全性。
+-   [强制实施密码策略](https://azure.microsoft.com/documentation/articles/active-directory-passwords-policy/)通过强制执行长度和复杂性要求、强制定期轮换和身份验证尝试失败后的帐户锁定来提高传统密码的安全性。
 
--    [基于令牌的身份验证](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/)通过 Active Directory 联合身份验证服务 (AD FS) 或第三方安全令牌系统启用身份验证。
+-   [基于令牌的身份验证](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/)通过 Active Directory 联合身份验证服务 (AD FS) 或第三方安全令牌系统启用身份验证。
 
--    [基于角色的访问控制 (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) 能够根据用户分配的角色来授予访问权限，从而轻松为用户仅提供执行作业所需的访问量。 可以根据组织的业务模型和风险允许范围自定义 RBAC。
+-   [基于角色的访问控制 (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) 能够根据用户分配的角色来授予访问权限，从而轻松为用户仅提供执行作业所需的访问量。 可以根据组织的业务模型和风险允许范围自定义 RBAC。
 
--    [集成标识管理（混合标识）](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/)能够保持对用户在内部数据中心和云平台中的访问控制，并为所有资源的身份验证和授权创建单个用户标识。
+-   [集成标识管理（混合标识）](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/)能够保持对用户在内部数据中心和云平台中的访问控制，并为所有资源的身份验证和授权创建单个用户标识。
 
 ### <a name="secure-apps-and-data"></a>保护应用和数据
 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 是综合性的标识和访问管理云解决方案，可帮助确保安全访问站点和云中的应用程序数据，并简化对用户和组的管理。 它结合了核心目录服务、高级 Identity Governance、安全性以及应用程序访问管理，使开发人员可以轻松在其应用中构建基于策略的标识管理。 若要增强 Azure Active Directory，可以使用 Azure Active Directory Basic、Premium P1、和 Premium P2 版添加付费功能。
 
 | 免费/常用功能     | 基本功能    |高级 P1 功能 |高级 P2 功能 | Azure Active Directory Join – 仅适用于 Windows 10 的相关功能|
 | :------------- | :------------- |:------------- |:------------- |:------------- |
-|     [Directory 对象](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#directory-objects)，[用户/组管理（添加/更新/删除）/基于用户的预配，设备注册](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#usergroup-management-addupdatedelete-user-based-provisioning-device-registration)，[单一登录 (SSO)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#single-sign-on-sso)，[云用户的自助密码更改](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-change-for-cloud-users)，[连接（将本地目录扩展到 Azure Active Directory 的同步引擎）](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#connect-sync-engine-that-extends-on-premises-directories-to-azure-active-directory)，[安全/使用情况报告](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#securityusage-reports)       |     [基于组的访问管理/预配](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#group-based-access-managementprovisioning)，[云用户的自助密码重置](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-reset-for-cloud-users)，[公司品牌（登录页/访问面板自定义）](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#company-branding-logon-pagesaccess-panel-customization)，[应用程序代理](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#application-proxy)，[SLA 99.9%](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#sla-999) |  [自助组和应用管理/自助应用程序添加件/动态组](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-group)，[通过本地写回实现自助密码重置/更改/解锁](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-resetchangeunlock-with-on-premises-write-back)，[多重身份验证（云和本地（MFA 服务器））](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#multi-factor-authentication-cloud-and-on-premises-mfa-server)，[MIM CAL + MIM 服务器](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#mim-cal-mim-server)，[Cloud App Discovery](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#cloud-app-discovery)，[连接运行状况](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#connect-health)，[组帐户的自动密码滚动更新](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#automatic-password-rollover-for-group-accounts)|     [标识保护](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-identityprotection)，[Privileged Identity Management](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-privileged-identity-management-configure)|    [让设备加入 Azure AD、Desktop SSO、Microsoft Passport for Azure AD 和 Administrator Bitlocker 恢复](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#join-a-device-to-azure-ad-desktop-sso-microsoft-passport-for-azure-ad-administrator-bitlocker-recovery)，[MDM 自动注册、自助 Bitlocker 恢复、通过 Azure AD Join 将其他本地管理员加入 Windows 10 设备](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#mdm-auto-enrollment)|
+|   [Directory 对象](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#directory-objects)，[用户/组管理（添加/更新/删除）/基于用户的预配，设备注册](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#usergroup-management-addupdatedelete-user-based-provisioning-device-registration)，[单一登录 (SSO)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#single-sign-on-sso)，[云用户的自助密码更改](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-change-for-cloud-users)，[连接（将本地目录扩展到 Azure Active Directory 的同步引擎）](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#connect-sync-engine-that-extends-on-premises-directories-to-azure-active-directory)，[安全/使用情况报告](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#securityusage-reports)       |     [基于组的访问管理/预配](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#group-based-access-managementprovisioning)，[云用户的自助密码重置](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-reset-for-cloud-users)，[公司品牌（登录页/访问面板自定义）](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#company-branding-logon-pagesaccess-panel-customization)，[应用程序代理](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#application-proxy)，[SLA 99.9%](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#sla-999) |  [自助组和应用管理/自助应用程序添加件/动态组](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-group)，[通过本地写回实现自助密码重置/更改/解锁](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-resetchangeunlock-with-on-premises-write-back)，[多重身份验证（云和本地（MFA 服务器））](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#multi-factor-authentication-cloud-and-on-premises-mfa-server)，[MIM CAL + MIM 服务器](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#mim-cal-mim-server)，[Cloud App Discovery](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#cloud-app-discovery)，[连接运行状况](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#connect-health)，[组帐户的自动密码滚动更新](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#automatic-password-rollover-for-group-accounts)|     [标识保护](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-identityprotection)，[Privileged Identity Management](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-privileged-identity-management-configure)|    [让设备加入 Azure AD、Desktop SSO、Microsoft Passport for Azure AD 和 Administrator Bitlocker 恢复](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#join-a-device-to-azure-ad-desktop-sso-microsoft-passport-for-azure-ad-administrator-bitlocker-recovery)，[MDM 自动注册、自助 Bitlocker 恢复、通过 Azure AD Join 将其他本地管理员加入 Windows 10 设备](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#mdm-auto-enrollment)|
 
 
 - [Cloud App Discovery](https://docs.microsoft.com/azure/active-directory/active-directory-cloudappdiscovery-whatis) 是 Azure Active Directory 的一项高级功能，能够识别组织中的人员所使用的云应用程序。

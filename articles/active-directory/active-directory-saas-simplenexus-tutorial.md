@@ -1,108 +1,171 @@
 ---
 title: "教程：Azure Active Directory 与 SimpleNexus 集成 | Microsoft 文档"
-description: "了解如何使用 SimpleNexus 与 Azure Active Directory 来启用单一登录、自动化预配和其他功能！"
+description: "了解如何在 Azure Active Directory 和 SimpleNexus 之间配置单一登录。"
 services: active-directory
+documentationCenter: na
 author: jeevansd
-documentationcenter: na
 manager: femila
 ms.assetid: 89821a05-88e2-4579-b144-0123b2b9cb95
 ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 3/10/2017
+ms.date: 07/12/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: da3b1e506e603b1f5e3660f31c6d939d77cd2938
-ms.lasthandoff: 03/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: bddd82b986039cf67827cb407f500edb2000964b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>教程：Azure Active Directory 与 SimpleNexus 集成
-本教程的目的是说明 Azure 与 SimpleNexus 的集成。  
 
-在本教程中概述的方案假定您已具有以下各项：
+本教程介绍如何将 SimpleNexus 与 Azure Active Directory (Azure AD) 集成。
 
-* 一个有效的 Azure 订阅
-* 已启用 SimpleNexus 单一登录 (SSO) 的订阅
+将 SimpleNexus 与 Azure AD 集成可提供以下优势：
 
-完成本教程后，已向 SimpleNexus 分配的 Azure AD 用户将能够在 SimpleNexus 公司站点（服务提供商发起的登录）或使用[访问面板简介](active-directory-saas-access-panel-introduction.md)单一登录到应用程序。
+- 可在 Azure AD 中控制谁有权访问 SimpleNexus
+- 可使用户通过其 Azure AD 帐户自动登录 SimpleNexus（单一登录）
+- 可以在一个中心位置（即 Azure 门户）中管理帐户
 
-在本教程中概述的方案由以下构建基块组成：
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-1. 为 SimpleNexus 启用应用程序集成
-2. 配置单一登录 (SSO) 
-3. 配置用户设置
-4. 分配用户
+## <a name="prerequisites"></a>先决条件
 
-![方案](./media/active-directory-saas-simplenexus-tutorial/IC785893.png "方案")
+若要配置 Azure AD 与 SimpleNexus 的集成，需要以下项：
 
-## <a name="enabling-the-application-integration-for-simplenexus"></a>为 SimpleNexus 启用应用程序集成
-本部分的目的是概述如何为 SimpleNexus 启用应用程序集成。
+- 一个 Azure AD 订阅
+- 已启用 SimpleNexus 单一登录的订阅
 
-**若要为 SimpleNexus 启用应用程序集成，请执行以下步骤：**
+> [!NOTE]
+> 不建议使用生产环境测试本教程中的步骤。
 
-1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
-   
-    ![Active Directory](./media/active-directory-saas-simplenexus-tutorial/IC700993.png "Active Directory")
+测试本教程中的步骤应遵循以下建议：
 
-2. 在“目录”列表中，选择要启用目录集成的目录。
+- 除非必要，请勿使用生产环境。
+- 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
-3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
-   
-    ![应用程序](./media/active-directory-saas-simplenexus-tutorial/IC700994.png "应用程序")
+## <a name="scenario-description"></a>方案描述
+在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
-4. 在页面底部单击“添加”。
-   
-    ![添加应用程序](./media/active-directory-saas-simplenexus-tutorial/IC749321.png "添加应用程序")
+1. 从库中添加 SimpleNexus
+2. 配置和测试 Azure AD 单一登录
 
-5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
-   
-    ![从库添加应用程序](./media/active-directory-saas-simplenexus-tutorial/IC749322.png "从库添加应用程序")
+## <a name="adding-simplenexus-from-the-gallery"></a>从库中添加 SimpleNexus
+若要配置 SimpleNexus 与 Azure AD 的集成，需要从库中将 SimpleNexus 添加到托管 SaaS 应用列表。
 
-6. 在搜索框中，键入“simple nexus”。
-   
-    ![应用程序库](./media/active-directory-saas-simplenexus-tutorial/IC785894.png "应用程序库")
+若要从库添加 SimpleNexus，请执行以下步骤：
 
-7. 在结果窗格中，选择“SimpleNexus”，然后单击“完成”以添加该应用程序。
-   
-    ![Simple Nexus](./media/active-directory-saas-simplenexus-tutorial/IC809578.png "Simple Nexus")
-   
-## <a name="configure-single-sign-on"></a>配置单一登录
+1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
 
-本部分的目的是概述如何让用户使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 SimpleNexus 进行身份验证。
+    ![Active Directory][1]
 
-**若要配置单一登录，请执行以下步骤：**
+2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
-1. 在 Azure 经典门户的“SimpleNexus”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
-   
-    ![配置单一登录](./media/active-directory-saas-simplenexus-tutorial/IC785896.png "配置单一登录")
+    ![应用程序][2]
+    
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-2. 在“你希望用户如何登录 SimpleNexus”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
-   
-    ![配置单一登录](./media/active-directory-saas-simplenexus-tutorial/IC785897.png "配置单一登录")
+    ![应用程序][3]
 
-3. 在“配置应用 URL”页上的“SimpleNexus 登录 URL”文本框中，使用模式“*https://simplenexus.com/CompanyName\_login*”键入 URL，然后单击“下一步”。
-   
-    ![配置应用 URL](./media/active-directory-saas-simplenexus-tutorial/IC786904.png "配置应用 URL")
+4. 在搜索框中，键入“SimpleNexus”。
 
-4. 在“配置 SimpleNexus 的单一登录”页上，单击“下载元数据”，然后将元数据文件转发给 SimpleNexus 支持团队。
-   
-    ![配置单一登录](./media/active-directory-saas-simplenexus-tutorial/IC785899.png "配置单一登录")
-   
-    >[!NOTE]
-    >单一登录需要由 SimpleNexus 支持团队启用。 
-    > 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-simplenexus-tutorial/tutorial_simplenexus_search.png)
 
-5. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
-   
-    ![配置单一登录](./media/active-directory-saas-simplenexus-tutorial/IC785900.png "配置单一登录")
-   
-## <a name="configure-user-provisioning"></a>配置用户设置
+5. 在结果面板中，选择“SimpleNexus”，并单击“添加”按钮添加该应用程序。
 
-要使 Azure AD 用户能够登录 SimpleNexus，必须将这些用户预配到 SimpleNexus 中。
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-simplenexus-tutorial/tutorial_simplenexus_addfromgallery.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+在本部分中，基于一个名为“Britta Simon”的测试用户使用 SimpleNexus 配置和测试 Azure AD 单一登录。
+
+为使单一登录能正常工作，Azure AD 需要知道 SimpleNexus 中与 Azure AD 用户对应的用户。 换句话说，需要建立 Azure AD 用户与 SimpleNexus 中相关用户之间的链接关系。
+
+可通过将 Azure AD 中“用户名”的值指定为 SimpleNexus 中“用户名”的值来建立此链接关系。
+
+若要配置并测试 SimpleNexus 的 Azure AD 单一登录，需要完成以下构建基块：
+
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
+2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+3. [创建 SimpleNexus 测试用户](#creating-a-simplenexus-test-user) - 在 SimpleNexus 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 身份。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+
+### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+
+本部分介绍如何在 Azure 门户中启用 Azure AD 单一登录并在 SimpleNexus 应用程序中配置单一登录。
+
+若要配置 SimpleNexus 的 Azure AD 单一登录，请执行以下步骤：
+
+1. 在 Azure 门户中的 SimpleNexus 应用程序集成页上，单击“单一登录”。
+
+    ![配置单一登录][4]
+
+2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+ 
+    ![配置单一登录](./media/active-directory-saas-simplenexus-tutorial/tutorial_simplenexus_samlbase.png)
+
+3. 在“SimpleNexus 域和 URL”部分中，执行以下步骤：
+
+    ![配置单一登录](./media/active-directory-saas-simplenexus-tutorial/tutorial_simplenexus_url.png)
+
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://simplenexus.com/<companyname>_login`
+
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://simplenexus.com/<companyname>`
+
+    > [!NOTE] 
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [SimpleNexus 客户端支持团队](https://simplenexus.com/site/contact)获取这些值。 
+ 
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+
+    ![配置单一登录](./media/active-directory-saas-simplenexus-tutorial/tutorial_simplenexus_certificate.png) 
+
+5. 单击“保存”按钮。
+
+    ![配置单一登录](./media/active-directory-saas-simplenexus-tutorial/tutorial_general_400.png)
+
+6. 若要在 SimpleNexus 端配置单一登录，需将下载的元数据 XML 发送给 [SimpleNexus 支持团队](https://simplenexus.com/site/contact)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+
+> [!TIP]
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 
+
+### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
+
+![创建 Azure AD 用户][100]
+
+**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+
+1. 在 **Azure 门户**的左侧导航窗格中，单击“Azure Active Directory”图标。
+
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-simplenexus-tutorial/create_aaduser_01.png) 
+
+2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+    
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-simplenexus-tutorial/create_aaduser_02.png) 
+
+3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+ 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-simplenexus-tutorial/create_aaduser_03.png) 
+
+4. 在“用户”对话框页上，执行以下步骤：
+ 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-simplenexus-tutorial/create_aaduser_04.png) 
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+
+    c. 选择“显示密码”并记下“密码”的值。
+
+    d.单击“下一步”。 单击“创建” 。
+ 
+### <a name="creating-a-simplenexus-test-user"></a>创建 SimpleNexus 测试用户
+
+若要使 Azure AD 用户能够登录 SimpleNexus，必须将这些用户预配到 SimpleNexus 中。
 
 对于 SimpleNexus，预配是由租户管理员执行的一项手动任务。
 
@@ -110,20 +173,61 @@ ms.lasthandoff: 03/28/2017
 >可以使用任何其他 SimpleNexus 用户帐户创建工具或 SimpleNexus 提供的 API 来预配 AAD 用户帐户。 
 > 
 
-## <a name="assign-users"></a>分配用户
-若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
+### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-**若要将用户分配到 SimpleNexus，请执行以下步骤：**
+在本部分中，通过授予 Britta Simon 访问 SimpleNexus 的权限，以支持其使用 Azure 单一登录。
 
-1. 在 Azure 经典门户中，创建测试帐户。
-2. 在“SimpleNexus”应用程序集成页上，单击“分配用户”。
-   
-    ![分配用户](./media/active-directory-saas-simplenexus-tutorial/IC785901.png "分配用户")
+![分配用户][200] 
 
-3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
-   
-    ![是](./media/active-directory-saas-simplenexus-tutorial/IC767830.png "是")
+若要将 Britta Simon 分配到 SimpleNexus，请执行以下步骤：
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+
+    ![分配用户][201] 
+
+2. 在应用程序列表中，选择“SimpleNexus”。
+
+    ![配置单一登录](./media/active-directory-saas-simplenexus-tutorial/tutorial_simplenexus_app.png) 
+
+3. 在左侧菜单中，单击“用户和组”。
+
+    ![分配用户][202] 
+
+4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+
+    ![分配用户][203]
+
+5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+
+6. 在“用户和组”对话框中单击“选择”按钮。
+
+7. 在“添加分配”对话框中单击“分配”按钮。
+    
+### <a name="testing-single-sign-on"></a>测试单一登录
+
+本部分的目的是使用访问面板测试 Azure AD 单一登录配置。
+
+在访问面板中单击 SimpleNexus 磁贴就会自动登录到 SimpleNexus 应用程序。
+
+## <a name="additional-resources"></a>其他资源
+
+* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+
+
+
+<!--Image references-->
+
+[1]: ./media/active-directory-saas-simplenexus-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-simplenexus-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-simplenexus-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-simplenexus-tutorial/tutorial_general_04.png
+
+[100]: ./media/active-directory-saas-simplenexus-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-simplenexus-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-simplenexus-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-simplenexus-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-simplenexus-tutorial/tutorial_general_203.png
 
 
