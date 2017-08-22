@@ -83,6 +83,7 @@
 ## [启用计费](active-directory-b2c-how-to-enable-billing.md)
 ## [威胁管理](active-directory-b2c-reference-threat-management.md)
 ## [创建目录时出现的问题](active-directory-b2c-support-create-directory.md)
+## [“扩展”应用](active-directory-b2c-reference-extensions-app.md)
 
 # 相关内容
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)

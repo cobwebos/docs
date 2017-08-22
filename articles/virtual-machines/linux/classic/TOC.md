@@ -54,14 +54,12 @@
 ### [使用 Visual Studio 编写的 Web 应用程序](web-app-visual-studio.md)
 ### [用于运行 MPI 应用程序的 RDMA 群集](rdma-cluster.md)
 ### [如何在 Hudson CI 中使用 Azure 从属插件](../../virtual-machines-azure-slave-plugin-for-hudson.md)
-
-
-## HPC Pack
-### [用于运行 MPI 应用的 Windows RDMA 群集](hpcpack-cluster.md)
-### [使用 HPC Pack IaaS 部署脚本管理 HPC 群集](hpcpack-cluster-starccm.md)
-### [管理计算节点的数量和可用性](hpcpack-cluster-powershell-script.md)
-### [添加按需节点](hpcpack-cluster-openfoam.md)
-### [自动缩放资源](hpcpack-cluster-namd.md)
+### HPC Pack
+#### [创建用于 Linux 工作负荷的群集](hpcpack-cluster-powershell-script.md)
+#### [管理包含 Linux 节点的群集](hpcpack-cluster.md)
+#### [运行 STAR-CCM+](hpcpack-cluster-starccm.md)
+#### [运行 OpenFOAM](hpcpack-cluster-openfoam.md)
+#### [运行 NAMD](hpcpack-cluster-namd.md)
 
 ## 故障排除
 ### [VM 部署](troubleshoot-deployment-new-vm.md)
@@ -72,7 +70,7 @@
 ## [PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)
-## [创建 Resource Manager 模板](../../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+## [创建资源管理器模板](../../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [社区模板](https://azure.microsoft.com/documentation/templates)
 ## [计算 REST](/rest/api/compute)
 ## [网络 REST](/rest/api)

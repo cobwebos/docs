@@ -4,10 +4,10 @@ hide_bc: true
 title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 745c7bdc2898d20ac361f4d0fb92b4c1313a89f1
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: c9bb109df050041aaff861adfa8dfcd2947d981d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 <div id="main" class="v2">
@@ -383,7 +383,7 @@ ms.lasthandoff: 08/02/2017
                                         <li>
                                             <a href="/azure/logic-apps/">
                                                 <img src="media/index/LogicApp.svg" alt="" />
-                                                <p>Logic Apps</p>
+                                                <p>逻辑应用</p>
                                             </a>
                                         </li>
                                         <li>
@@ -940,7 +940,7 @@ ms.lasthandoff: 08/02/2017
                                         <li>
                                             <a href="/azure/key-vault/">
                                                 <img src="media/index/KeyVault.svg" alt="" />
-                                                <p>密钥保管库</p>
+                                                <p>Key Vault</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1039,7 +1039,13 @@ ms.lasthandoff: 08/02/2017
                                         <li>
                                             <a href="/azure/azure-resource-manager/">
                                                 <img src="media/index/AzureDefaultBlack.svg" alt="" />
-                                                <p>Azure Resource Manager</p>
+                                                <p>Azure 资源管理器</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/event-grid/">
+                                                <img src="media/index/azure_event_grid.svg" alt="" />
+                                                <p>Azure 事件网格</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -2649,7 +2655,7 @@ ms.lasthandoff: 08/02/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>密钥保管库</h3>
+                                                    <h3>Key Vault</h3>
                                                     <p>了解如何管理加密密钥和机密</p>
                                                 </div>
                                             </div>
@@ -3058,8 +3064,27 @@ ms.lasthandoff: 08/02/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Resource Manager</h3>
+                                                    <h3>Azure 资源管理器</h3>
                                                     <p>部署和管理 Azure 资源</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/event-grid/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure_event_grid.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure 事件网格</h3>
+                                                    <p>实现大规模的可靠事件传递</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3628,4 +3653,3 @@ ms.lasthandoff: 08/02/2017
         </ul>
     </div>
 </div>
-
