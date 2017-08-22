@@ -2,6 +2,7 @@
 ## [什么是 Azure Analysis Services？](analysis-services-overview.md)
 ## [支持的数据源](analysis-services-datasource.md)
 ## [身份验证和用户权限](analysis-services-manage-users.md)
+## [连接到本地数据源](analysis-services-gateway.md)
 ## [兼容性级别](analysis-services-compat-level.md)
 ## [高可用性](analysis-services-bcdr.md)
 
@@ -15,7 +16,7 @@
 ## [管理服务器](analysis-services-manage.md)
 ## [管理数据库用户](analysis-services-database-users.md)
 ## [管理服务器管理员](analysis-services-server-admins.md)
-## [安装本地数据网关](analysis-services-gateway.md)
+## [安装并配置本地数据网关](analysis-services-gateway-install.md)
 ## [获取客户端库](analysis-services-data-providers.md)
 ## [备份和还原](analysis-services-backup.md)
 ## [使用 Excel 进行连接](analysis-services-connect-excel.md)

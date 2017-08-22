@@ -58,7 +58,7 @@
 ### 创建警报规则
 #### [OMS 门户](log-analytics-alerts-creating.md)
 #### [REST API](log-analytics-api-alerts.md)
-#### [Resource Manager 模板](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md)
+#### [资源管理器模板](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md)
 ### [Webhook 操作示例](log-analytics-alerts-webhooks.md)
 ### [警报管理解决方案](log-analytics-solution-alert-management.md)
 ## 使用解决方案
@@ -78,7 +78,7 @@
 ### [DNS 分析](log-analytics-dns.md)
 ### [IT Service Management Connector](log-analytics-itsmc-overview.md)
 #### [IT Service Management 连接](log-analytics-itsmc-connections.md)
-### [密钥保管库](log-analytics-azure-key-vault.md)
+### [Key Vault](log-analytics-azure-key-vault.md)
 ### 逻辑应用 B2B 消息
 #### [逻辑应用 B2B 消息解决方案](../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json)
 #### [逻辑应用 B2B 自定义跟踪架构](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json)
@@ -88,7 +88,8 @@
 ### [Office 365](../operations-management-suite/oms-solution-office-365.md?toc=%2fazure%2flog-analytics%2ftoc.json)
 ### [SCOM 评估](log-analytics-scom-assessment.md)
 ### [安全审核](../operations-management-suite/oms-security-getting-started.md?toc=%2fazure%2flog-analytics%2ftoc.json)
-### [Service Fabric](log-analytics-service-fabric.md)
+### [将 Service Fabric 与 PowerShell 配合使用](log-analytics-service-fabric.md)
+#### [将 Service Fabric 与 Azure 资源管理器配合使用](log-analytics-service-fabric-azure-resource-manager.md)
 ### [服务地图](../operations-management-suite/operations-management-suite-service-map.md?toc=%2fazure%2flog-analytics%2ftoc.json)
 ### [SQL 评估](log-analytics-sql-assessment.md)
 ### [Surface Hub](log-analytics-surface-hubs.md)
@@ -101,7 +102,7 @@
 ## 开发
 ### [数据收集器 API](log-analytics-data-collector-api.md)
 ### [PowerShell cmdlets](log-analytics-powershell-workspace-configuration.md)
-### [Resource Manager 模板](log-analytics-template-workspace-configuration.md)
+### [资源管理器模板](log-analytics-template-workspace-configuration.md)
 ### [日志搜索 API](log-analytics-log-search-api.md)
 #### [Python](log-analytics-log-search-api-python.md)
 ### [警报 API](log-analytics-api-alerts.md)

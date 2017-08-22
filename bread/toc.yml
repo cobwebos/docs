@@ -40,7 +40,7 @@
         - name: 移动应用
           tocHref: /azure/app-service-mobile/
           topicHref: /azure/app-service-mobile/
-        - name: API Apps
+        - name: API 应用
           tocHref: /azure/app-service-api/
           topicHref: /azure/app-service-api/
     - name: 顾问
@@ -70,7 +70,7 @@
     - name: 门户
       tocHref: /azure/azure-portal/
       topicHref: /azure/azure-portal/
-    - name: Resource Manager
+    - name: 资源管理器
       tocHref: /azure/azure-resource-manager/
       topicHref: /azure/azure-resource-manager/
     - name: Azure Stack
@@ -165,6 +165,9 @@
     - name: DNS
       tocHref: /azure/dns/
       topicHref: /azure/dns/
+    - name: 事件网格
+      tocHref: /azure/event-grid/
+      topicHref: /azure/event-grid
     - name: 事件中心
       tocHref: /azure/event-hubs/
       topicHref: /azure/event-hubs/
@@ -183,7 +186,7 @@
     - name: IoT 套件
       tocHref: /azure/iot-suite/
       topicHref: /azure/iot-suite/
-    - name: 密钥保管库
+    - name: Key Vault
       tocHref: /azure/key-vault/
       topicHref: /azure/key-vault/
     - name: 负载均衡器
@@ -192,7 +195,7 @@
     - name: Log Analytics
       tocHref: /azure/log-analytics/
       topicHref: /azure/log-analytics/
-    - name: Logic Apps
+    - name: 逻辑应用
       tocHref: /azure/logic-apps/
       topicHref: /azure/logic-apps/
     - name: 机器学习
@@ -280,7 +283,7 @@
     - name: Service Fabric
       tocHref: /azure/service-fabric/
       topicHref: /azure/service-fabric/
-    - name: 站点恢复
+    - name: Site Recovery
       tocHref: /azure/site-recovery/
       topicHref: /azure/site-recovery/
     - name: SQL 数据仓库

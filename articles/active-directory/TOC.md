@@ -144,8 +144,14 @@
 
 ## 管理设备
 ### [介绍](device-management-introduction.md)
-### [注册设备](active-directory-device-registration-overview.md)
-#### [设置](active-directory-conditional-access-automatic-device-registration-setup.md)
+### [常见问题](device-management-faq.md)
+### 任务
+#### [配置加入混合 Azure AD 的设备](device-management-hybrid-azuread-joined-devices-setup.md) 
+#### 故障排除
+##### [加入混合 Azure AD 的 Windows 10 和 Windows Server 2016 设备](device-management-troubleshoot-hybrid-join-windows-current.md)
+##### [加入混合 Azure AD 的旧式 Windows 设备](device-management-troubleshoot-hybrid-join-windows-legacy.md)
+
+### 注册设备
 #### [本地部署](active-directory-device-registration-on-premises-setup.md)
 #### [常见问题](active-directory-device-registration-faq.md)
 #### 故障排除
