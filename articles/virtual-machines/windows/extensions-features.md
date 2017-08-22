@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/06/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 09b4a34a45ad676a5279dad85fc84578f40a212a
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 1ce0eebd2585c9457d7f922898d7f2fa3e7ffad7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>适用于 Windows 的虚拟机扩展和功能
@@ -40,7 +40,6 @@ Azure 虚拟机扩展是小型应用程序，可在Azure 虚拟机上提供部�
 
 除了进程特定的扩展外，“自定义脚本”扩展也可用于 Windows 和 Linux 虚拟机。 适用于 Windows 的自定义脚本扩展允许在虚拟机上运行任何 PowerShell 脚本。 在设计需要本机 Azure 工具无法提供的配置的 Azure 部署时，这很有用。 有关详细信息，请参阅 [Windows VM 自定义脚本扩展](extensions-customscript.md)。
 
-若要完成在端到端应用程序部署中使用 VM 扩展的示例，请参阅[将应用程序自动部署到 Azure 虚拟机](dotnet-core-1-landing.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -74,7 +73,7 @@ Azure 虚拟机扩展可以在现有虚拟机上运行，当需要在已部署�
 get-command Set-AzureRM*Extension* -Module AzureRM.Compute
 ```
 
-这将提供类似以下内容的输出：
+这会提供类似以下内容的输出：
 
 ```powershell
 CommandType     Name                                               Version    Source
@@ -117,7 +116,7 @@ Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM"
 
 ### <a name="azure-portal"></a>Azure 门户
 
-可通过 Azure 门户将 VM 扩展应用到现有虚拟机。 为此，请选择要使用的虚拟机，选择“扩展”，然后单击“添加”。 这将提供可用扩展的列表。 选择所需的扩展并按照向导中的步骤进行操作。
+可通过 Azure 门户将 VM 扩展应用到现有虚拟机。 为此，请选择要使用的虚拟机，选择“扩展”，并单击“添加”。 这会提供可用扩展的列表。 选择所需的扩展并按照向导中的步骤进行操作。
 
 下图显示了从 Azure 门户安装 Microsoft 反恶意软件扩展。
 
@@ -125,7 +124,7 @@ Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM"
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager 模板
 
-VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过程中执行。 使用模板部署扩展对于创建完全配置的 Azure 部署很有用。 例如，以下 JSON 取自一个 Resource Manager 模板，该模板将在每个 VM 上部署一组负载均衡的虚拟机、一个 Azure SQL 数据库，然后安装一个 .NET Core 应用程序。 VM 扩展负责安装软件。
+VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过程中执行。 使用模板部署扩展对于创建完全配置的 Azure 部署很有用。 例如，以下 JSON 取自一个 Resource Manager 模板，该模板会在每个 VM 上部署一组负载均衡的虚拟机、一个 Azure SQL 数据库，然后安装一个 .NET Core 应用程序。 VM 扩展负责安装软件。
 
 有关详细信息，请参阅完整的 [Resource Manager 模板](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)。
 
@@ -159,7 +158,7 @@ VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过�
 }
 ```
 
-有关详细信息，请参阅[使用 Windows VM 扩展创作 Azure Resource Manager 模板](extensions-authoring-templates.md)。
+有关详细信息，请参阅[使用 Windows VM 扩展创作 Azure Resource Manager 模板](template-description.md#extensions)。
 
 ## <a name="secure-vm-extension-data"></a>保护 VM 扩展数据
 
@@ -236,7 +235,7 @@ VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过�
 
 ### <a name="view-extension-status"></a>查看扩展状态
 
-针对虚拟机运行虚拟机扩展后，使用以下 PowerShell 命令返回扩展状态。 请将示例参数名称替换为你自己的值。 `Name` 参数采用执行时提供给扩展的名称。
+针对虚拟机运行虚拟机扩展后，使用以下 PowerShell 命令返回扩展状态。 请将示例参数名称替换成自己的值。 `Name` 参数采用执行时提供给扩展的名称。
 
 ```PowerShell
 Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
@@ -263,11 +262,11 @@ AutoUpgradeMinorVersion : False
 ForceUpdateTag          :
 ```
 
-此外，还可以在 Azure 门户中找到扩展执行状态。 若要查看扩展的状态，请选择虚拟机，选择“扩展”，然后选择所需的扩展。
+此外，还可以在 Azure 门户中找到扩展执行状态。 要查看扩展的状态，请选择虚拟机，选择“扩展”，并选择所需的扩展。
 
 ### <a name="rerun-vm-extensions"></a>重新运行 VM 扩展
 
-在某些情况下，可能需要重新运行虚拟机扩展。 这可以通过删除扩展，然后使用所选执行方法重新运行扩展来实现。 若要删除扩展，请使用 Azure PowerShell 模块运行以下命令。 请将示例参数名称替换为你自己的值。
+在某些情况下，可能需要重新运行虚拟机扩展。 这可以通过删除扩展，并使用所选执行方法重新运行扩展来实现。 若要删除扩展，请使用 Azure PowerShell 模块运行以下命令。 请将示例参数名称替换成自己的值。
 
 ```powershell
 Remove-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName

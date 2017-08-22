@@ -16,29 +16,26 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: 9071ab19844898abf7feb7fc0d84120298bb5eaf
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a43d7e30a6f4176afba27f0de2c2c116df741080
 ms.contentlocale: zh-cn
 
 
 ---
 
-## 设置项目
-<a id="set-up-your-project" class="xliff"></a>
+## <a name="set-up-your-project"></a>设置项目
 
-> 想要改为下载此示例的 Android Studio 项目？ [下载项目](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)并跳到[配置](#create-an-application-express "配置步骤")步骤，在执行代码示例前对其进行配置。
+> 想要改为下载此示例的 Android Studio 项目？ [下载项目](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)并跳到[配置步骤](#create-an-application-express)，在执行前配置代码示例。
 
 
-### 创建新项目
-<a id="create-a-new-project" class="xliff"></a> 
+### <a name="create-a-new-project"></a>创建新项目 
 1.  打开 Android Studio，转到： `File` > `New` > `New Project`
 2.  命名应用程序，然后单击 `Next`
 3.  务必选择 API 21 或更新版本 (Android 5.0)，然后单击 `Next`
 4.  保留 `Empty Activity`，然后依次单击 `Next` 和 `Finish`
 
 
-### 向项目添加 Microsoft 身份验证库 (MSAL)
-<a id="add-the-microsoft-authentication-library-msal-to-your-project" class="xliff"></a>
+### <a name="add-the-microsoft-authentication-library-msal-to-your-project"></a>向项目添加 Microsoft 身份验证库 (MSAL)
 1.  在 Android Studio 中，转到： `Gradle Scripts` > `build.gradle (Module: app)`
 2.  复制以下代码并将其粘贴在 `Dependencies` 下：
 
@@ -50,14 +47,12 @@ compile 'com.android.volley:volley:1.0.0'
 ```
 
 <!--start-collapse-->
-### 关于此包
-<a id="about-this-package" class="xliff"></a>
+### <a name="about-this-package"></a>关于此包
 
 以上包将安装 Microsoft 身份验证库 (MSAL)。 MSAL 负责获取、缓存和刷新用于访问受 Azure Active Directory v2 终结点保护的 API 的用户令牌。
 <!--end-collapse-->
 
-## 创建应用程序 UI
-<a id="create-your-applications-ui" class="xliff"></a>
+## <a name="create-your-applications-ui"></a>创建应用程序 UI
 
 1.  在 `res` > `layout` 下打开：`activity_main.xml`
 2.  将活动布局从 `android.support.constraint.ConstraintLayout` 或其他布局更改为 `LinearLayout`

@@ -155,8 +155,7 @@ ms.lasthandoff: 08/01/2017
 * **CommonEncryptionProtected** - 上传经过通用加密或 PlayReady DRM 加密并受其保护的内容（例如，受 PlayReady DRM 保护的平滑流）时使用此选项。
 * **EnvelopeEncryptionProtected** - 如果要上传使用 AES 加密的 HLS，请使用此选项。 请注意，Transform Manager 必须已对文件进行编码和加密。
 
-
-            **CreateFromFile** 方法还允许指定回调，以报告文件的上传进度。
+**CreateFromFile** 方法还允许指定回调，以报告文件的上传进度。
 
 在以下示例中，指定了 **None** 作为资产选项。
 

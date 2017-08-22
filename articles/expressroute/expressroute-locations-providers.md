@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/01/2017
+ms.date: 08/08/2017
 ms.author: kaanan
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 1dcfcde43bf2a41cf5ac3651a23c097a30a84dd3
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: a98c216fcc4351a339554ce0adcf8fccb717d3e0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/18/2017
 
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
@@ -83,9 +83,9 @@ ms.lasthandoff: 08/02/2017
 | **伦敦** |AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、Megaport、MTN、NTT Communications、Orange、Tata Communications、Telecity Group、Telehouse - KDDI、Telenor、Verizon、Vodafone、Zayo Group+ |
 | **洛杉矶** |CoreSite、Equinix、Megaport、NTT、Zayo Group |
 | **墨尔本** |AARNet、Equinix、Megaport、NEXTDC、Telstra Corporation |
-| **迈阿密** |Megaport |
+| **迈阿密** |C3ntro+、Megaport |
 | **Montreal** |Bell Canada、Cologix |
-| **Mumbai** |Airtel+、Tata Communications |
+| **Mumbai** |Airtel+、Sify、Tata Communications |
 | **纽约** |Coresite、Equinix、Megaport、Zayo Group |
 | **Newport(Wales)** |Next Generation Data |
 | **大阪** |Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、NTT SmartConnect、Softbank |

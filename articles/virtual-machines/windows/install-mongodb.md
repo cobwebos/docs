@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 5fdf061d6bf9961455377935304e9075ef4e59fa
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: db1a550b9273925b304fe4280f2a1b0e115f856d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>在 Azure 中的 Windows VM 上安装和配置 MongoDB
@@ -29,7 +28,7 @@ ms.lasthandoff: 05/12/2017
 在安装和配置 MongoDB 之前，需要创建一个 VM，并且最好将一个磁盘添加到该 VM。 请参阅以下文章创建 VM 并向其添加数据磁盘：
 
 * 使用 [Azure 门户](quick-create-portal.md)或 [Azure PowerShell](quick-create-powershell.md) 创建 Windows Server VM。
-* 使用 [Azure 门户](attach-disk-portal.md)或 [Azure PowerShell](attach-disk-ps.md) 将数据磁盘附加到 Windows Server VM。
+* 使用 [Azure 门户](attach-managed-disk-portal.md)或 [Azure PowerShell](attach-disk-ps.md) 将数据磁盘附加到 Windows Server VM。
 
 使用远程桌面[登录到 Windows Server VM](connect-logon.md)，开始安装和配置 MongoDB。
 
@@ -39,16 +38,16 @@ ms.lasthandoff: 05/12/2017
 
 
 1. 使用远程桌面连接到 VM 后，请在 VM 上从“开始”菜单打开 Internet Explorer。
-2. 当 Internet Explorer 首次打开时，请选择“使用推荐的安全性、隐私和兼容性设置”，然后单击“确定”。
+2. 当 Internet Explorer 首次打开时，请选择“使用推荐的安全性、隐私和兼容性设置”，并单击“确定”。
 3. 默认情况下已启用 Internet Explorer 增强的安全性配置。 将 MongoDB 网站添加到允许的站点列表：
    
    * 选择右上角的“工具”图标。
-   * 在“Internet 选项”中，选择“安全”选项卡，然后选择“可信站点”图标。
+   * 在“Internet 选项”中，选择“安全”选项卡，并选择“可信站点”图标。
    * 单击“站点”按钮。 将 *https://\*.mongodb.org* 添加到受信任的站点列表，然后关闭对话框。
      
      ![配置 Internet Explorer 安全性设置](./media/install-mongodb/configure-internet-explorer-security.png)
 4. 浏览到[MongoDB - 下载](http://www.mongodb.org/downloads)页 ( http://www.mongodb.org/downloads )。
-5. 如有需要，选择“社区服务器”版本，然后选择 Windows Server 2008 R2 64 位及更高版本的最新稳定版本。 若要下载安装程序，请单击“DOWNLOAD (msi)”。
+5. 如有需要，选择“社区服务器”版本，并选择 Windows Server 2008 R2 64 位及更高版本的最新稳定版本。 若要下载安装程序，请单击“DOWNLOAD (msi)”。
    
     ![下载 MongoDB 安装程序](./media/install-mongodb/download-mongodb.png)
    
@@ -57,11 +56,11 @@ ms.lasthandoff: 05/12/2017
 7. 在最后一个屏幕上，单击“安装”。
 
 ## <a name="configure-the-vm-and-mongodb"></a>配置 VM 和 MongoDB
-1. MongoDB 安装程序不会更新路径变量。 如果路径变量中不包含 MongoDB `bin` 位置，则每次使用 MongoDB 可执行文件时都需要指定完整路径。 若要将位置添加到路径变量，请执行以下操作：
+1. MongoDB 安装程序不会更新路径变量。 如果路径变量中不包含 MongoDB `bin` 位置，则每次使用 MongoDB 可执行文件时都需要指定完整路径。 要将位置添加到路径变量，请执行以下操作：
    
-   * 右键单击“开始”菜单，然后选择“系统”。
+   * 右键单击“开始”菜单，并选择“系统”。
    * 依次单击“高级系统设置”和“环境变量”。
-   * 在“系统变量”下，选择“路径”，然后单击“编辑”。
+   * 在“系统变量”下，选择“路径”，并单击“编辑”。
      
      ![配置 PATH 变量](./media/install-mongodb/configure-path-variables.png)
      

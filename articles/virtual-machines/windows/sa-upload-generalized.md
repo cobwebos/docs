@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 4cacc7f7cd68cf8508daa395afe9521dd2118e06
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: e6fc49855b449a7723a7f8a0c1c41516b3a44ee5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -73,7 +72,7 @@ ms.lasthandoff: 05/27/2017
 ### <a name="log-in-to-azure"></a>登录 Azure
 如果尚未安装 Azure PowerShell 1.4 或更高版本，请阅读 [How to install and configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell）。
 
-1. 打开 Azure PowerShell 并登录到 Azure 帐户。 此时将打开一个弹出窗口让输入 Azure 帐户凭据。
+1. 打开 Azure PowerShell 并登录到 Azure 帐户。 此时会打开一个弹出窗口让输入 Azure 帐户凭据。
    
     ```powershell
     Login-AzureRmAccount
@@ -90,7 +89,7 @@ ms.lasthandoff: 05/27/2017
     ```
 
 ### <a name="get-the-storage-account"></a>获取存储帐户
-需要在 Azure 中创建一个存储帐户用于存储上传的 VM 映像。 你可以使用现有存储帐户，也可以创建新的存储帐户。 
+需要在 Azure 中创建一个存储帐户用于存储上传的 VM 映像。 可以使用现有存储帐户，也可以创建新的存储帐户。 
 
 若要显示可用的存储帐户，请键入：
 
@@ -133,7 +132,7 @@ Add-AzureRmVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd `
 ```
 
 
-如果成功，将显示类似于下面的响应：
+如果成功，会显示类似于下面的响应：
 
 ```powershell
 MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
@@ -292,7 +291,7 @@ $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
 ## <a name="next-steps"></a>后续步骤
-若要使用 Azure PowerShell 管理新虚拟机，请参阅[使用 Azure Resource Manager 与 PowerShell 来管理虚拟机](ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+若要使用 Azure PowerShell 管理新虚拟机，请参阅[使用 Azure Resource Manager 与 PowerShell 来管理虚拟机](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 
 

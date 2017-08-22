@@ -14,14 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: support-article
-ms.date: 05/18/2017
+ms.date: 07/06/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: f31f17121fdb42f4ae911efde9e98bbd223d0680
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 9ccdb3fbca21264065eeb1c4e46314c62af4c2e8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>对连接到 Azure 中 Linux VM 时出现的问题进行 SSH 故障排除的具体步骤
@@ -34,28 +33,14 @@ ms.lasthandoff: 05/18/2017
 
 以下步骤将帮助用户查明失败的原因，并得出解决方法或应对措施。
 
-首先，在门户中检查 VM 的状态。
+1. 在门户中检查 VM 的状态。
+   在 [Azure 门户](https://portal.azure.com)中，选择“虚拟机” > “VM 名称”。
 
-在 [Azure 门户](https://portal.azure.com)中：
+   VM 的状态窗格应显示“正在运行”。 向下滚动以显示计算、存储和网络资源的最近活动。
 
-1. 对于使用 Resource Manager 模型创建的 VM，请选择“虚拟机” >  VM 名称。
-   
-    - 或 -
-   
-    对于使用经典部署模型创建的 VM，请选择“虚拟机(经典)” >  VM 名称。
-   
-    VM 的状态窗格应显示“正在运行”。 向下滚动以显示计算、存储和网络资源的最近活动。
+2. 选择“设置”检查终结点、IP 地址、网络安全组和其他设置。
 
-2. 选择“设置”以检查终结点、IP 地址和其他设置。
-   
-    若要识别 VM 中使用 Resource Manager 创建的终结点，请验证是否已定义[网络安全组](../../virtual-network/virtual-networks-nsg.md)。 此外，请验证对网络安全组应用的规则，以及子网中是否引用了这些规则。
-
-在 [Azure 经典门户](https://manage.windowsazure.com)中，针对使用经典部署模型创建的 VM 执行以下操作：
-
-1. 选择“虚拟机” >  VM 名称。
-2. 选择 VM 的“仪表板”查看 VM 的状态。
-3. 选择“监视器”，查看计算、存储和网络资源的最近活动。
-4. 选择“终结点”，确保 SSH 流量有终结点。
+   VM 必须有为 SSH 流量定义的终结点，可以在“终结点”或“[网络安全组](../../virtual-network/virtual-networks-nsg.md)”查看 SSH 流量。 将 VM 中使用 Resource Manager 创建的终结点存储在网络安全组中。 此外，请验证对网络安全组应用的规则，以及子网中是否引用了这些规则。
 
 若要验证网络连接，请检查所配置的终结点，并了解是否可通过其他协议（例如 HTTP 或其他服务）连接到该 VM。
 
@@ -118,7 +103,7 @@ ms.lasthandoff: 05/18/2017
 
 如果可以与同一虚拟网络中的某个 VM 建立 SSH 连接，请检查以下区域：
 
-* **目标 VM 上 SSH 流量的终结点配置。** 终结点的专用 TCP 端口应该与 VM 上的 SSH 服务正在侦听的 TCP 端口匹配。 （默认端口为 22）。 对于使用 Resource Manager 部署模型创建的 VM，请在 Azure 门户中选择“虚拟机” >  VM 名称  > “设置” > “终结点”来验证 SSH TCP 端口号。
+* **目标 VM 上 SSH 流量的终结点配置。** 终结点的专用 TCP 端口应该与 VM 上的 SSH 服务正在侦听的 TCP 端口匹配。 （默认端口为 22）。 请在 Azure 门户中选择“虚拟机” > “VM 名称” > “设置” > “终结点”来验证 SSH TCP 端口号。
 * **目标虚拟机上的 SSH 流量终结点的 ACL。** ACL 允许你指定基于源 IP 地址允许或拒绝的从 Internet 传入的流量。 错误配置的 ACL 可能会阻止 SSH 流量传入终结点。 检查你的 ACL 以确保允许从你的代理服务器或其他边缘服务器的公共 IP 地址传入的流量。 有关详细信息，请参阅[关于网络访问控制列表 (ACL)](../../virtual-network/virtual-networks-acl.md)。
 
 若要将终结点从问题原因中排除，请删除当前终结点，创建另一个终结点，然后指定 SSH 名称（公共和专用端口号为 TCP 端口 22）。 有关详细信息，请参阅[在 Azure 中的虚拟机上设置终结点](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
@@ -128,6 +113,8 @@ ms.lasthandoff: 05/18/2017
 ## <a name="source-4-network-security-groups"></a>来源 4：网络安全组
 通过使用网络安全组，可以对允许的入站和出站流量进行更精细的控制。 你可以创建跨 Azure 虚拟网络中的子网和云服务的规则。 检查你的网络安全组规则，以确保允许来自和去往 Internet 的 SSH 流量。
 有关详细信息，请参阅[关于网络安全组](../../virtual-network/virtual-networks-nsg.md)。
+
+还可使用 IP Verify 验证 NSG 配置。 有关详细信息，请参阅 [Azure network monitoring overview](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview)（Azure 网络监视概述）。 
 
 ## <a name="source-5-linux-based-azure-virtual-machine"></a>来源 5：基于 Linux 的 Azure 虚拟机
 最后一个可能出现问题的来源是 Azure 虚拟机本身。
@@ -145,5 +132,4 @@ ms.lasthandoff: 05/18/2017
 
 ## <a name="additional-resources"></a>其他资源
 有关对应用程序访问进行故障排除的详细信息，请参阅 [Troubleshoot access to an application running on an Azure virtual machine](troubleshoot-app-connection.md)（对在 Azure 虚拟机上运行的应用程序的访问进行故障排除）
-
 

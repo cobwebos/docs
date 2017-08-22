@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/11/2017
+ms.date: 08/09/2017
 ms.author: motanv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 00f703cf9e727cd5981c4f8254fc11330e41a470
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 3b3b93bc9ec5ecdcfc289e5b62e84de6aa4172ed
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>在 Service Fabric 群集中引入受控的混沌测试
@@ -53,10 +52,6 @@ ms.lasthandoff: 05/12/2017
 
 ## <a name="important-configuration-options"></a>重要的配置选项
 * **TimeToRun**：混沌测试在成功完成之前的总运行时间。 在混沌测试运行了 TimeToRun 这段时间之前，可以通过 StopChaos API 将它停止。
-
-> [!NOTE]
-> *TimeToRun* 结束后，混沌测试可能仍在运行，可能需要再运行一段时间（约为 MaxClusterStabilizationTime + MaxConcurrentFaults * WaitTimeBetweenFaults + WaitTimeBetweenIterations）才会自动停止。
->
 
 * **MaxClusterStabilizationTimeout**：在生成 ValidationFailedEvent 之前，等待群集变得正常的最长时间。 等待这段时间的目的是在恢复时减少群集上的负载。 执行的检查包括：
   * 群集运行状况是否正常

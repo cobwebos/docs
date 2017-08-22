@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/15/2017
+ms.date: 07/06/2017
 ms.author: kgremban
+ms.reviewer: harshja
+ms.custom: it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 31e8e39580ed83f13fd3ffb9981221765063a0b7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 194367028c3c2c571dd8645a794f67a0c3a21d4c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/21/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
 
@@ -35,8 +36,6 @@ ms.lasthandoff: 04/21/2017
 
 ## <a name="before-you-start"></a>开始之前
 
-### <a name="determine-the-home-page-url"></a>确定主页 URL
-
 在设置主页 URL 之前，请注意以下事项：
 
 * 确保指定的路径是根域 URL 的子域路径。
@@ -44,6 +43,16 @@ ms.lasthandoff: 04/21/2017
   例如，如果根域 URL 为 https://apps.contoso.com/app1/，则配置的主页 URL 必须以 https://apps.contoso.com/app1/ 开头。
 
 * 如果对发布的应用做了更改，这种更改可能会重置主页 URL 的值。 将来更新应用时，应该重新检查并根据需要更新主页 URL。
+
+## <a name="change-the-home-page-in-the-azure-portal"></a>更改 Azure 门户的主页
+
+1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
+2. 导航到“Azure Active Directory” > “应用注册”，然后从列表中选择应用程序。 
+3. 从设置中选择“属性”。
+4. 使用新路径更新“主页 URL”字段。 
+5. 选择“保存”
+
+## <a name="change-the-home-page-with-powershell"></a>使用 PowerShell 更改主页
 
 ### <a name="install-the-azure-ad-powershell-module"></a>安装 Azure AD PowerShell 模块
 
@@ -59,7 +68,7 @@ ms.lasthandoff: 04/21/2017
     如果以非管理员身份运行该命令，请使用 `-scope currentuser` 选项。
 2. 在安装期间，请选择“Y”安装来自 Nuget.org 的两个包。 这两个包是必需的。 
 
-## <a name="step-1-find-the-objectid-of-the-app"></a>步骤 1：查找应用的 ObjectID
+### <a name="find-the-objectid-of-the-app"></a>查找应用的 ObjectID
 
 获取应用的 ObjectID，然后按主页搜索该应用。
 
@@ -87,7 +96,7 @@ ms.lasthandoff: 04/21/2017
     ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
     ```
 
-## <a name="step-2-update-the-home-page-url"></a>步骤 2：更新主页 URL
+### <a name="update-the-home-page-url"></a>更新主页 URL
 
 在步骤 1 所使用的同一 PowerShell 模块中，执行以下操作：
 

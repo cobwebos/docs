@@ -3,8 +3,8 @@ title: "Xamarin Android 中的移动应用身份验证入门"
 description: "了解如何使用移动应用通过各种标识提供程序（包括 AAD、Google、Facebook、Twitter 和 Microsoft）对 Xamarin Android 应用的用户进行身份验证。"
 services: app-service\mobile
 documentationcenter: xamarin
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: panarasi
 editor: 
 ms.assetid: 570fc12b-46a9-4722-b2e0-0d1c45fb2152
 ms.service: app-service-mobile
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/01/2016
-ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4c0ba82ca010f1ee571424fa3d650718e5acdd8b
-ms.lasthandoff: 11/17/2016
-
+ms.date: 07/05/2017
+ms.author: panarasi
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 210def15c339c7349d1c868fe144e58303a2157e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>向 Xamarin.Android 应用添加身份验证
@@ -30,6 +30,20 @@ ms.lasthandoff: 11/17/2016
 
 ## <a name="register"></a>注册应用以进行身份验证并配置应用服务
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
+
+## <a name="redirecturl"></a>将应用添加到允许的外部重定向 URL
+
+安全身份验证要求为应用定义新的 URL 方案。 这允许身份验证系统在身份验证过程完成后，重定向回你的应用。 在本教程中，我们将通篇使用 URL 方案 _appname_。 但是，你可以使用所选择的任何 URL 方案。 对于你的移动应用程序而言，它应是唯一的。 在服务器端启用重定向：
+
+1. 在 [Azure 门户]中，选择应用服务。
+
+2. 单击“身份验证/授权”菜单选项。
+
+3. 在“允许的外部重定向 URL”中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，因为你将需要在几个地方使用 URL 方案调整移动应用程序代码。
+
+4. 单击 **“确定”**。
+
+5. 单击“保存” 。
 
 ## <a name="permissions"></a>将权限限制给已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
@@ -52,7 +66,7 @@ ms.lasthandoff: 11/17/2016
                 {
                     // Sign in with Facebook login using a server-managed flow.
                     user = await client.LoginAsync(this,
-                        MobileServiceAuthenticationProvider.Facebook);
+                        MobileServiceAuthenticationProvider.Facebook, "{url_scheme_of_your_app}");
                     CreateAndShowDialog(string.Format("you are now logged in - {0}",
                         user.UserId), "Logged in!");
    
@@ -99,10 +113,18 @@ ms.lasthandoff: 11/17/2016
 4. 将以下元素添加到 Strings.xml 资源文件：
    
         <string name="login_button_text">Sign in</string>
-5. 在 Visual Studio 或 Xamarin Studio 中，运行设备或模拟器中的客户端项目，并使用所选的标识提供者登录。
-   
-       When you are successfully logged-in, the app will display your login ID and the list of todo items, and you can make updates to the data.
+5. 打开 AndroidManifest.xml 文件，并在 `<application>` XML 元素中添加以下代码：
+
+        <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity" android:launchMode="singleTop" android:noHistory="true">
+          <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="{url_scheme_of_your_app}" android:host="easyauth.callback" />
+          </intent-filter>
+        </activity>
+
+6. 在 Visual Studio 或 Xamarin Studio 中，运行设备或模拟器中的客户端项目，并使用所选的标识提供者登录。 成功登录后，应用将显示登录 ID 和待办事项列表，用户可以对数据进行更新。
 
 <!-- URLs. -->
 [创建 Xamarin.Android 应用]: app-service-mobile-xamarin-android-get-started.md
-

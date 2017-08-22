@@ -3,7 +3,7 @@
 2. 依次单击“新建”、“Web + 移动”和“Mobile Engagement”。
    
     ![](./media/mobile-engagement-create-app-in-portal-new/browse-azme-extension.png)
-3. 在显示的“新 Mobile Engagement 应用集合”  边栏选项卡中，将要创建的是一个应用集合，而不是创建类似于 Azure 经典门户中的某个应用。 输入以下信息：
+3. 在显示的“新 Mobile Engagement 应用集合”边栏选项卡中，将要创建的是一个应用集合，而不是创建类似于 Azure 经典门户中的某个应用。 输入以下信息：
    
     ![](./media/mobile-engagement-create-app-in-portal-new/new-azme-app.png)
    
@@ -13,7 +13,7 @@
       ![](./media/mobile-engagement-create-app-in-portal-new/choose-platform.png)
    * **订阅**：选择 Azure 订阅。 
    * **资源组**：选择要将此 Azure 资源放入其中的 Azure 资源组（Mobile Engagement 应用集合）。 可以选择创建新资源组。  
-   * **位置**：有关此应用集合和应用的数据将要存储的区域。
+   * 位置：有关此应用集合和应用的数据将要存储的区域。
 4. 单击“浏览”浏览 Mobile Engagement 应用集合，并搜索“Mobile Engagement”
    
     ![](./media/mobile-engagement-create-app-in-portal-new/browse-mobile-engagement-menu.png)

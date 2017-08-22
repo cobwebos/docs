@@ -16,10 +16,10 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: 8523f46d6a352c9a6625ddeacc5abe2b4bbf977e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6df64f4820f8409bd8897d5ac24f81bffeeef102
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -43,8 +43,8 @@ ms.lasthandoff: 07/06/2017
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>有关作用域和委派权限的详细信息
-Graph API 需要 `user.read` 作用域来读取用户个人资料。 默认情况下，通过我们的注册门户注册的每个应用程序均添加了此作用域。 某些其他 Graph API 及后端服务器的自定义 API 需要其他作用域。 例如，对于 Graph，需要 `Calendars.Read` 才能列出用户的日历。 若要在应用程序环境中访问用户的日历，则需要添加此委派应用程序注册的信息，然后将 `Calendars.Read` 添加到 `AcquireTokenAsync` 调用。 增加作用域数量时，用户可能收到接受其他许可的提示。
 
-如果后端 API 不需要作用域（不推荐），则可以将 `ClientId` 用作 `AcquireTokenAsync` 调用中的作用域。
+Microsoft Graph API 需要 `user.read` 作用域来读取用户的配置文件。 默认情况下，在我们的注册门户上注册的每个应用程序中，都会自动添加此作用域。 Microsoft Graph 的某些其他 API 及后端服务器的自定义 API 可能需要其他作用域。 例如，对于 Microsoft Graph，需要作用域 `Calendars.Read` 才能列出用户日历。 若要在应用程序上下文中访问用户的日历，则需将 `Calendars.Read` 委派权限添加到应用程序注册信息，然后将 `Calendars.Read` 作用域添加到 `acquireTokenSilentAsync` 调用。 增加作用域数量时，用户可能收到其他许可的提示。
+
 <!--end-collapse-->
 

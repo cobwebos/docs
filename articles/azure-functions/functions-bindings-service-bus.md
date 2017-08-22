@@ -15,13 +15,12 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
-ms.author: chrande; glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: a930e02313aa0a2238ecfaa31af68d59b2c8e961
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 58b6d5c6ef40891e56ea4811f5e778286bdb8bc3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="azure-functions-service-bus-bindings"></a>Azure Functions 服务总线绑定
@@ -76,7 +75,7 @@ Azure Functions 支持对服务总线队列和主题的触发器和输出绑定�
 
 ## <a name="trigger-behavior"></a>触发器行为
 * **单线程** - 默认情况下，Functions 运行时同时处理多个消息。 若要指示运行时一次只处理单个队列或主题消息，请在 host.json 中将 `serviceBus.maxConcurrentCalls` 设置为 1。 
-  有关 *host.json* 的信息，请参阅[文件夹结构](functions-reference.md#folder-structure)和 [host.json](https://git.com/Azure/azure-webjobs-sdk-script/wiki/host.json)。
+  有关 host.json 的信息，请参阅[文件夹结构](functions-reference.md#folder-structure)和 [host.json](https://github .com/Azure/azure-webjobs-sdk-script/wiki/host.json)。
 * **有害消息处理** - 服务总线执行自己的有害消息处理，此操作无法在 Azure Functions 配置或代码中控制或配置。 
 * **PeekLock 行为** - Functions 运行时接收 [`PeekLock` 模式](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode) 的消息，并且在函数成功完成时，对此消息调用 `Complete`；如果函数失败，则调用 `Abandon`。 
   如果函数的运行时间长于 `PeekLock` 超时时间，则会自动续订锁定。

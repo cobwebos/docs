@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/12/2016
-ms.author: cephalin;riande
-translationtype: Human Translation
+ms.author: cephalin
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
 ms.openlocfilehash: b23dfdcf99cab46bb4cedc690e00d29d37b3a044
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/01/2017
-
 
 ---
 # <a name="deploy-an-aspnet-mvc-5-mobile-web-app-in-azure-app-service"></a>在 Azure App Service 上部署 ASP.NET MVC 5 移动 Web 应用
@@ -58,7 +58,7 @@ ms.lasthandoff: 03/01/2017
 * [初学者项目下载][StarterProject]
 * [已完成项目下载][CompletedProject]
 
-## <a name="a-namebkmkdeploystarterprojectadeploy-the-starter-project-to-an-azure-web-app"></a><a name="bkmk_DeployStarterProject"></a>将初学者项目部署到 Microsoft Azure Web 应用
+## <a name="bkmk_DeployStarterProject"></a>将初学者项目部署到 Microsoft Azure Web 应用
 1. 下载会议列表应用程序[初学者项目][StarterProject]。
 2. 然后，在 Windows 资源管理器中，右键单击下载的 ZIP 文件并选择“属性”。
 3. 在“属性”对话框中，选择“取消阻止”按钮。 （取消阻止后，当你尝试使用从 Web 下载的 *.zip* 文件时，将不再显示安全警告。）
@@ -107,7 +107,7 @@ ms.lasthandoff: 03/01/2017
 
 ASP.NET 标记视图已根据屏幕大小缩放，这是 Bootstrap 自动为你调整的。 但是，你可以改进此视图，以更好地适应移动浏览器。 例如，“日期”列难以阅读。 本教程的随后部分，你将更改 *AllTags* 视图，使其更适合移动应用。
 
-## <a name="a-namebkmkbootstrapa-bootstrap-css-framework"></a><a name="bkmk_bootstrap"></a> Bootstrap CSS 框架
+## <a name="bkmk_bootstrap"></a> Bootstrap CSS 框架
 Bootstrap 支持是 MVC 5 模板中内置的新功能。 你已经看到了它如何立即改进应用程序中的不同视图。 例如，当浏览器宽度较小时，顶部导航栏可自动折叠。 在桌面浏览器中，尝试调整浏览器窗口的大小，并了解导航栏如何改变其外观。 这是 Bootstrap 内置的响应式 Web 设计。
 
 要在没有 Bootstrap 的情况下查看 Web 应用的外观，请打开 *App\_Start\\BundleConfig.cs* 并注释掉包含 *bootstrap.js* 和 *bootstrap.css* 的行。 以下代码显示了更改后 `RegisterBundles` 方法的最后两个语句：
@@ -135,7 +135,7 @@ Bootstrap 并不特定于 ASP.NET MVC 5，你可以在任何 Web 应用程序上
 
 在下一部分中，你将了解如何提供移动浏览器特定的视图。
 
-## <a name="a-namebkmkoverrideviewsa-override-the-views-layouts-and-partial-views"></a><a name="bkmk_overrideviews"></a> 重写视图、布局和分部视图
+## <a name="bkmk_overrideviews"></a> 重写视图、布局和分部视图
 你可以重写一般性移动浏览器、单个移动浏览器或任何特定浏览器的任何视图（包括布局和分部视图）。 要提供移动特定的视图，你可以复制视图文件并在文件名中添加 *.Mobile*。 例如，若要创建移动 *Index* 视图，可将 *Views\\Home\\Index.cshtml* 复制到 *Views\\Home\\Index.Mobile.cshtml*。
 
 在本节中，你将创建一个移动特定布局文件。
@@ -163,7 +163,7 @@ Bootstrap 并不特定于 ASP.NET MVC 5，你可以在任何 Web 应用程序上
 
 ![][AllTagsMobile_LayoutMobileDesktop]
 
-## <a name="a-namebkmkbrowserviewsa-create-browser-specific-views"></a><a name="bkmk_browserviews"></a> 创建浏览器特定的视图
+## <a name="bkmk_browserviews"></a> 创建浏览器特定的视图
 除了移动特定和桌面特定的视图以外，你还可以为单个浏览器创建视图。 例如，你可以创建专门针对 iPhone 或 Android 浏览器的视图。 在本节中，你将为 iPhone 浏览器和 iPhone 版本的 *AllTags* 视图创建布局。
 
 打开 *Global.asax* 文件，并将以下代码添加到 `Application_Start` 方法的底部。
@@ -230,7 +230,7 @@ Bootstrap 并不特定于 ASP.NET MVC 5，你可以在任何 Web 应用程序上
 在本节中，我们已了解如何创建移动布局和视图，以及如何为特定的设备（如 iPhone）创建布局和视图。
 但是，Bootstrap CSS 框架的主要优势是响应式布局，也就是说，可以跨桌面、电话和平板电脑浏览器应用单个样式表，以创建一致的外观。 在下一节中，你将了解如何利用 Bootstrap 来创建适合移动的视图。
 
-## <a name="a-namebkmkimprovespeakerslista-improve-the-speakers-list"></a><a name="bkmk_Improvespeakerslist"></a>改进发言人列表
+## <a name="bkmk_Improvespeakerslist"></a>改进发言人列表
 正如你刚才看到的，“发言人”视图虽然可读，但链接字迹小，不易在移动设备上点击。 在本节中，你将使 *AllSpeakers* 视图适合移动应用，显示较大的便于点按的链接，并包含一个搜索框，用于快速查找发言人。
 
 可以使用 Bootstrap [链接列表组][linked list group]样式来改进“发言人”视图。 在 *Views\\Home\\AllSpeakers.cshtml* 中，将 Razor 文件的内容替换为以下代码。
@@ -327,7 +327,7 @@ Bootstrap [链接列表组][linked list group]样式使每个链接的整个框�
 
 ![][AllSpeakersFixedSearchBySC]
 
-## <a name="a-namebkmkimprovetagsa-improve-the-tags-list"></a><a name="bkmk_improvetags"></a> 改进标记列表
+## <a name="bkmk_improvetags"></a> 改进标记列表
 与默认“发言人”视图一样，“标记”视图虽然可读，但链接字迹小，不易在移动设备上点击。 如果使用前面所述的代码更改，你可以使用与修复“发言人”视图相同的方式来修复“标记”视图，但是需要在 *Views\\Home\\AllTags.cshtml* 中使用以下 `Html.ActionLink` 方法语法：
 
     @Html.ActionLink(tag, 
@@ -348,7 +348,7 @@ Bootstrap [链接列表组][linked list group]样式使每个链接的整个框�
 > 
 > 
 
-## <a name="a-namebkmkimprovedatesa-improve-the-dates-list"></a><a name="bkmk_improvedates"></a> 改进日期列表
+## <a name="bkmk_improvedates"></a> 改进日期列表
 如果使用前面所述的代码更改，你可以使用与改进“发言人”视图和“标记”视图相同的方式来修复“日期”视图，但是需要在 *Views\\Home\\AllDates.cshtml* 中使用以下 `Html.ActionLink` 方法语法：
 
     @Html.ActionLink(date.ToString("ddd, MMM dd, h:mm tt"), 
@@ -396,7 +396,7 @@ Bootstrap [链接列表组][linked list group]样式使每个链接的整个框�
 
 ![][AllDatesFixed2Desktop]
 
-## <a name="a-namebkmkimprovesessionstablea-improve-the-sessionstable-view"></a><a name="bkmk_improvesessionstable"></a> 改进 SessionsTable 视图
+## <a name="bkmk_improvesessionstable"></a> 改进 SessionsTable 视图
 在本节中，你将使 *SessionsTable* 视图更适合移动应用。 此项更改比前面的更改更宽泛。
 
 在移动浏览器中，点击“标记”按钮，然后在搜索框中输入 `asp`。
@@ -456,7 +456,7 @@ Bootstrap [链接列表组][linked list group]样式使每个链接的整个框�
 
 在桌面浏览器中，请注意标记现在已显示。 此外，你可以看到应用的 Bootstrap 网格系统会在两列中排列会话项。 如果放大浏览器，就会看到排列方式更改为三列。
 
-## <a name="a-namebkmkimprovesessionbycodea-improve-the-sessionbycode-view"></a><a name="bkmk_improvesessionbycode"></a> 改进 SessionByCode 视图
+## <a name="bkmk_improvesessionbycode"></a> 改进 SessionByCode 视图
 最后，需要修复 *SessionByCode* 视图，使其适合移动应用。
 
 在移动浏览器中，点击“标记”按钮，然后在搜索框中输入 `asp`。

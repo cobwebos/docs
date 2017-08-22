@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2017
+ms.date: 07/13/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 40eb1d80830818a492c78d5091aaa9cca8d48f16
+ms.reviewer: calebb
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 38c8cb00b21416add28eeb06187b89f64518dc92
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="applications-and-browsers-that-use-conditional-access-rules-in-azure-active-directory"></a>使用 Azure Active Directory 中条件访问规则的应用程序和浏览器
@@ -38,21 +38,30 @@ ms.lasthandoff: 05/04/2017
 
 以下应用程序支持对 Office 365 及其他连接了 Azure AD 的服务应用程序的条件性访问：
 
-| 目标服务 | 平台 | 应用程序 |
+
+| 目标服务| 平台| 应用程序 |
 | --- | --- | --- |
-| Office 365 Exchange Online |Windows 10 |邮件/日历/人脉应用、Outlook 2016、Outlook 2013（采用新式身份验证）、Skype for Business（采用新式身份验证） |
-| Office 365 Exchange Online |Windows 8.1、Windows 7 |Outlook 2016、Outlook 2013（采用新式身份验证）、Skype for Business（采用新式身份验证） |
-| Office 365 Exchange Online |iOS、Android |Outlook 移动应用 |
-| Office 365 Exchange Online |Mac OS X |仅限多重身份验证和位置的 Outlook 2016；计划将来提供的基于设备的策略支持、计划将来提供的 Skype for Business 支持 |
-| Office 365 SharePoint Online |Windows 10 |Office 2016 应用、通用 Office 应用、Office 2013（采用新式身份验证）、OneDrive 同步客户端（参见[说明](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)）、计划将来提供的 Office 组支持、计划将来提供的 SharePoint 应用支持 |
-| Office 365 SharePoint Online |Windows 8.1、Windows 7 |Office 2016 应用、Office 2013（采用新式身份验证）、OneDrive 同步客户端（参见[说明](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)） |
-| Office 365 SharePoint Online |iOS、Android |Office 移动应用 |
-| Office 365 SharePoint Online |Mac OS X |仅限多重身份验证和位置的 Office 2016 应用；计划将来提供的基于设备的策略支持 |
-| Office 365 Yammer |Windows 10、iOS；计划将来提供 Android 支持 |Office Yammer 应用 |
-| Dynamics CRM |Windows 10、Windows 8.1、Windows 7、iOS 和 Android |Dynamics CRM 应用 |
-| PowerBI 服务 |Windows 10、Windows 8.1、Windows 7、iOS 和 Android |PowerBI 应用 |
-| Azure 远程应用服务 |Windows 10、Windows 8.1、Windows 7、iOS、Android 和 Mac OS X |Azure 远程应用 |
-| 任何“我的应用”应用服务 |Android 和 iOS |任何“我的应用”应用服务 |
+| 任何“我的应用”应用服务| Android 和 iOS| 用于应用的 MFA 和位置策略。 不支持基于设备的策略。 |
+| Azure 远程应用服务| Windows 10、Windows 8.1、Windows 7、iOS、Android 和 Mac OS X| Azure 远程应用|
+| Dynamics CRM| Windows 10、Windows 8.1、Windows 7、iOS 和 Android| Dynamics CRM 应用|
+| Microsoft Teams| Windows 10、Windows 8.1、Windows 7、iOS/Android 和 MAC OSX| Microsoft Teams 服务 - 这控制支持 Microsoft Teams 及其所有客户端应用（Windows 桌面、MAC OS X、iOS、Android、WP 和 Web 客户端）的所有服务|
+| Office 365 Exchange Online| Windows 10| 邮件/日历/人脉应用、Outlook 2016、Outlook 2013（采用新式身份验证）、Skype for Business（采用新式身份验证）|
+| Office 365 Exchange Online| Windows 8.1、Windows 7| Outlook 2016、Outlook 2013（采用新式身份验证）、Skype for Business（采用新式身份验证）|
+| Office 365 Exchange Online| iOS| Outlook 移动应用|
+| Office 365 Exchange Online| Mac OS X| 仅限多重身份验证和位置的 Outlook 2016；计划将来提供的基于设备的策略支持、计划将来提供的 Skype for Business 支持|
+| Office 365 SharePoint Online| Windows 10| Office 2016 应用、通用 Office 应用、Office 2013（采用新式身份验证）、OneDrive 同步客户端（参见[说明](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)）、计划将来提供的 Office 组支持、计划将来提供的 SharePoint 应用支持|
+| Office 365 SharePoint Online| Windows 8.1、Windows 7| Office 2016 应用、Office 2013（采用新式身份验证）、OneDrive 同步客户端（参见[说明](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)）|
+| Office 365 SharePoint Online| iOS、Android| Office 移动应用|
+| Office 365 SharePoint Online| Mac OS X| 仅限多重身份验证和位置的 Office 2016 应用；计划将来提供的基于设备的策略支持|
+| Office 365 Yammer| Windows 10、iOS、Android| Office Yammer 应用|
+| PowerBI 服务| Windows 10、Windows 8.1、Windows 7 和 iOS| PowerBI 应用。 适用于 Android 的 Power BI 应用当前不支持基于设备的条件访问。|
+| Visual Studio Team Services| Windows 10、Windows 8.1、Windows 7、iOS 和 Android| Visual Studio Team Services 应用|
+
+
+
+
+
+
 
 ## <a name="applications-that-do-not-use-modern-authentication"></a>未使用新式身份验证的应用程序
 目前，必须使用其他方法来阻止访问未使用新式身份验证的应用。 不会通过条件性访问来强制实施未使用新式身份验证的应用的访问规则。 这主要是出于对 Exchange 和 SharePoint 访问的考量。 大多数早期版本的应用使用较旧的访问控制协议。
@@ -60,7 +69,7 @@ ms.lasthandoff: 05/04/2017
 ### <a name="control-access-in-office-365-sharepoint-online"></a>在 Office 365 SharePoint Online 中控制访问
 可以通过使用 Set-SPOTenant cmdlet 来禁用用于 SharePoint 访问的旧版协议。 使用此 cmdlet 可阻止使用非新式身份验证协议的 Office 客户端访问 SharePoint Online 资源。
 
-**示例命令**：    `Set-SPOTenant -LegacyAuthProtocolsEnabled $false`
+**示例命令**：`Set-SPOTenant -LegacyAuthProtocolsEnabled $false`
 
 ### <a name="control-access-in-office-365-exchange-online"></a>在 Office 365 Exchange Online 中控制访问
 Exchange 提供两种主要类型的协议。 查看以下选项，然后选择适合你组织的策略。
@@ -113,12 +122,14 @@ Exchange 提供两种主要类型的协议。 查看以下选项，然后选择�
     => issue(Type = "http://schemas.microsoft.com/authorization/claims/permit", Value = "true");
 
 
-## <a name="supported-browsers"></a>支持的浏览器
+## <a name="supported-browsers-for-device-based-policies"></a>基于设备的策略所支持的浏览器 
+
+仅当 Azure AD 可以对设备进行识别和身份验证时，你才能针对检查设备合规性和域加入的基于设备的策略获得访问权限。 虽然大多数检查（如位置和 MFA）可在大多数设备和浏览器上正常运行，不过设备策略需要下面列出的操作系统版本和浏览器。 实时设备策略时，会对不支持的浏览器或操作系统上的用户阻止访问。 
 
 | 操作系统                     | 浏览器                 | 支持     |
 | :--                    | :--                      | :-:         |
 | Win 10                 | IE、Edge                 | ![勾选标记][1] |
-| Win 10                 | Chrome                   | 即将支持 |
+| Win 10                 | Chrome                   | 预览     |
 | Win 8/8.1            | IE、Chrome               | ![勾选标记][1] |
 | Win 7                  | IE、Chrome               | ![勾选标记][1] |
 | iOS                    | Safari                   | ![勾选标记][1] |
@@ -131,10 +142,15 @@ Exchange 提供两种主要类型的协议。 查看以下选项，然后选择�
 | Mac OS                 | Safari                   | ![勾选标记][1] |
 | Mac OS                 | Chrome                   | 即将支持 |
 
+> [!NOTE]
+> 对于 Chrome 支持，必须使用 Windows 10 创建者更新并安装位于[此处](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)的扩展。
+>
+>
 
 ## <a name="next-steps"></a>后续步骤
 
 有关更多详细信息，请参阅 [Azure Active Directory 中的条件访问](active-directory-conditional-access.md)
+
 
 
 

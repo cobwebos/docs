@@ -1,5 +1,5 @@
 ---
-title: "使用命令行创建 Azure HDInsight (Hadoop) | Microsoft Docs"
+title: "使用命令行创建 Hadoop 群集 — Azure HDInsight | Microsoft Docs"
 description: "了解如何使用跨平台 Azure CLI 1.0 创建 HDInsight 群集。"
 services: hdinsight
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/04/2017
+ms.date: 06/26/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: ccb2c827aa95ea967d740860ed17e6cc7bd3b392
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8f2fcb46789d000cd66164508f1159338dcae5f9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 05/18/2017
 本文介绍了使用 Azure CLI 1.0 创建 HDInsight 3.5 群集的相关步骤。
 
 > [!IMPORTANT]
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -40,7 +40,7 @@ ms.lasthandoff: 05/18/2017
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
-* **Azure CLI**。 本文档中的步骤最近已使用 Azure CLI 版本 0.10.1 进行测试。
+* **Azure CLI**。 本文档中的步骤最近已使用 Azure CLI 版本 0.10.14 进行测试。
 
     > [!IMPORTANT]
     > 本文中的步骤不适用于 Azure CLI 2.0。 Azure CLI 2.0 不支持创建 HDInsight 群集。
@@ -51,7 +51,7 @@ ms.lasthandoff: 05/18/2017
 
 ## <a name="create-a-cluster"></a>创建群集
 
-安装并配置 Azure CLI 之后，应从命令提示符、shell 或终端会话中执行以下步骤。
+应从命令行（例如 PowerShell 或 Bash）执行以下步骤。
 
 1. 使用以下命令对 Azure 订阅进行身份验证：
 
@@ -67,21 +67,21 @@ ms.lasthandoff: 05/18/2017
 
         azure group create groupname location
 
-    * 将“groupname”替换为组的唯一名称。
+    * 将 `groupname` 替换为组的唯一名称。
 
-    * 将“location”替换为要在其中创建该组的地理区域。
+    * 将 `location` 替换为要在其中创建该组的地理区域。
 
-       有关有效位置的列表，请使用 `azure location list` 命令，然后使用 **Name** 列中的位置之一。
+       有关有效位置的列表，请使用 `azure location list` 命令，然后使用 `Name` 列中的位置之一。
 
 4. 创建存储帐户。 此存储帐户将用作 HDInsight 群集的默认存储。
 
         azure storage account create -g groupname --sku-name RAGRS -l location --kind Storage storagename
 
-    * 将“groupname”替换为上一步中创建的组的名称。
+    * 将 `groupname` 替换为上一步中创建的组的名称。
 
-    * 将“location”替换为上一步中使用的同一个位置。
+    * 将 `location` 替换为上一步中使用的同一位置。
 
-    * 将“storagename”替换为存储帐户的唯一名称。
+    * 将 `storagename` 替换为存储帐户的唯一名称。
 
         > [!NOTE]
         > 有关此命令中使用参数的详细信息，请使用 `azure storage account create -h` 查看此命令的帮助。
@@ -90,36 +90,36 @@ ms.lasthandoff: 05/18/2017
 
         azure storage account keys list -g groupname storagename
 
-    * 将“groupname”替换为资源组名称。
-    * 将“storagename”替换为存储帐户的名称。
+    * 将 `groupname` 替换为资源组名称。
+    * 将 `storagename` 替换为存储帐户的名称。
 
-     在返回的数据中，保存 **key1** 的 **key** 值。
+     在返回的数据中，保存 `key1` 的 `key` 值。
 
 6. 创建 HDInsight 群集。
 
-        azure hdinsight cluster create -g groupname -l location -y Linux --clusterType Hadoop --defaultStorageAccountName storagename.blob.core.windows.net --defaultStorageAccountKey storagekey --defaultStorageContainer clustername --workerNodeCount 2 --userName admin --password httppassword --sshUserName sshuser --sshPassword sshuserpassword clustername
+        azure hdinsight cluster create -g groupname -l location -y Linux --clusterType Hadoop --defaultStorageAccountName storagename.blob.core.windows.net --defaultStorageAccountKey storagekey --defaultStorageContainer clustername --workerNodeCount 3 --userName admin --password httppassword --sshUserName sshuser --sshPassword sshuserpassword clustername
 
-    * 将“groupname”替换为资源组名称。
+    * 将 `groupname` 替换为资源组名称。
 
-    * 用希望创建的群集类型替换 **Hadoop**。 例如，Hadoop、HBase、Storm 或 Spark。
+    * 将 `Hadoop` 替换为希望创建的群集类型。 例如，`Hadoop`、`HBase`、`Kafka`、`Spark` 或 `Storm`。
 
      > [!IMPORTANT]
      > HDInsight 群集具有各种不同的类型，与该群集进行优化的工作负荷或技术相对应。 不支持在一个群集上创建合并了多个类型（如 Storm 和 HBase）的群集。
 
-    * 将“location”替换为上一步中使用的同一位置。
+    * 将 `location` 替换为上一步中使用的同一位置。
 
-    * 将“storagename”替换为存储帐户名称。
+    * 将 `storagename` 替换为存储帐户名称。
 
-    * 将“storagekey”替换为上一步中获取的密钥。
+    * 将 `storagekey` 替换为上一步中获取的密钥。
 
     * 对于 `--defaultStorageContainer` 参数，请使用你为群集使用的同一个名称。
 
-    * 将“admin”和“httppassword”替换为通过 HTTPS 访问群集时要使用的用户名和密码。
+    * 将 `admin` 和 `httppassword` 替换为通过 HTTPS 访问群集时要使用的用户名和密码。
 
-    * 将“sshuser”和“sshuserpassword”替换为通过 SSH 访问群集时要使用的用户名和密码
+    * 将 `sshuser` 和 `sshuserpassword` 替换为通过 SSH 访问群集时要使用的用户名和密码
 
     > [!IMPORTANT]
-    > 此示例创建一个具有两个辅助节点的群集。 如果计划（在创建或扩展群集时）辅助节点在 32 个以上，则必须选择至少具有 8 个核心和 14GB RAM 的头节点大小。 可以使用 `--headNodeSize` 参数设置头节点大小。
+    > 此示例创建一个具有两个辅助节点的群集。 也可以在创建群集后，通过执行缩放操作更改辅助节点数。 如果计划使用 32 个以上的辅助节点，则必须选择至少具有 8 个核心和 14 GB RAM 的头节点大小。 可以在创建群集的过程中使用 `--headNodeSize` 参数设置头节点大小。
     >
     > 有关节点大小和相关费用的详细信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
 

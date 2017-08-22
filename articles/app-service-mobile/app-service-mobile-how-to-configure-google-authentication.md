@@ -37,8 +37,8 @@ ms.lasthandoff: 03/09/2017
 6. 将之前复制的应用服务 **URL** 粘贴到“已授权的 JavaScript 源”中，然后将重定向 URI 粘贴到“已授权的重定向 URI”中。 重定向 URI 是应用程序的 URL 加上路径 */.auth/login/google/callback*。 例如，`https://contoso.azurewebsites.net/.auth/login/google/callback`。 请务必使用 HTTPS 方案。 然后单击“创建” 。
 7. 在下一个屏幕上，记下客户端 ID 和客户端密钥的值。
 
-    > [AZURE.IMPORTANT]
-    客户端密钥是一个非常重要的安全凭据。 请勿与任何人分享此密钥或在客户端应用程序中分发它。
+    > [!IMPORTANT]
+    > 客户端密钥是一个非常重要的安全凭据。 请勿与任何人分享此密钥或在客户端应用程序中分发它。
 
 
 ## <a name="secrets"> </a>将 Google 信息添加到应用程序

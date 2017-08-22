@@ -23,7 +23,7 @@ ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="run-openfoam-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>在 Azure 中的 Linux RDMA 群集上运行 OpenFoam 和 Microsoft HPC Pack
-本文介绍在 Azure 虚拟机中运行 OpenFoam 的一种方法。 此处，将在 Azure 上部署一个具有 Linux 计算节点的 Microsoft HPC Pack 群集，并使用 Intel MPI 来运行 [OpenFoam](http://openfoam.com/) 作业。 可以使用支持 RDMA 的 Azure VM 作为计算节点，使计算节点能够通过 Azure RDMA 网络进行通信。 在 Azure 中运行 OpenFoam 的其他方法包括使用应用商店中提供的经过完全配置的商用映像（例如 UberCloud 的 [OpenFoam 2.3 on CentOS 6](https://azure.microsoft.com/marketplace/partners/ubercloud/openfoam-v2dot3-centos-v6/)），以及在 [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) 上运行该产品。 
+本文介绍在 Azure 虚拟机中运行 OpenFoam 的一种方法。 此处，将在 Azure 上部署一个具有 Linux 计算节点的 Microsoft HPC Pack 群集，并使用 Intel MPI 来运行 [OpenFoam](http://openfoam.com/) 作业。 可以使用支持 RDMA 的 Azure VM 作为计算节点，使计算节点能够通过 Azure RDMA 网络进行通信。 在 Azure 中运行 OpenFoam 的其他方法包括使用 Marketplace 中提供的经过完全配置的商用映像（例如 UberCloud 的 [OpenFoam 2.3 on CentOS 6](https://azure.microsoft.com/marketplace/partners/ubercloud/openfoam-v2dot3-centos-v6/)），以及在 [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) 上运行该产品。 
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 

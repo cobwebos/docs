@@ -1,6 +1,6 @@
 ---
 title: "搭配使用 Azure 应用程序网关和内部负载均衡器 - PowerShell | Microsoft Docs"
-description: "本页提供有关使用 Azure Resource Manager 创建、配置、启动和删除具有内部负载平衡器 (ILB) 的 Azure 应用程序网关的说明"
+description: "本页提供有关使用 Azure Resource Manager 创建、配置、启动和删除具有内部负载均衡器 (ILB) 的 Azure 应用程序网关的说明"
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -14,19 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: db097fd947112dc4747523693f89c80d984bd26d
-
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: d218eab7e9f124e4825a8a781b4eeb0dcca58b4a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/13/2017
 
 ---
-# <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb-by-using-azure-resource-manager"></a>使用 Azure Resource Manager 创建具有内部负载平衡器 (ILB) 的应用程序网关
+# <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb-by-using-azure-resource-manager"></a>使用 Azure Resource Manager 创建具有内部负载均衡器 (ILB) 的应用程序网关
 
 > [!div class="op_single_selector"]
 > * [Azure 经典 PowerShell](application-gateway-ilb.md)
 > * [Azure Resource Manager PowerShell](application-gateway-ilb-arm.md)
 
-可以配置使用面向 Internet 的 VIP 或不向 Internet 公开的内部终结点（也称为内部负载平衡器 (ILB) 终结点）的 Azure 应用程序网关。 配置使用 ILB 的网关适用于不向 Internet 公开的内部业务线应用程序。 对于位于不向 Internet 公开的安全边界内的多层应用程序中的服务和层也很有用，但仍需要执行循环负载分散、会话粘性或安全套接字层 (SSL) 终止。
+可以配置使用面向 Internet 的 VIP 或不向 Internet 公开的内部终结点（也称为内部负载均衡器 (ILB) 终结点）的 Azure 应用程序网关。 配置使用 ILB 的网关适用于不向 Internet 公开的内部业务线应用程序。 对于位于不向 Internet 公开的安全边界内的多层应用程序中的服务和层也很有用，但仍需要执行循环负载分散、会话粘性或安全套接字层 (SSL) 终止。
 
 本文介绍了配置具有 ILB 的应用程序网关的步骤。
 
@@ -51,12 +52,12 @@ ms.openlocfilehash: db097fd947112dc4747523693f89c80d984bd26d
 
 以下是创建应用程序网关所需执行的步骤：
 
-1. 创建资源管理器的资源组
+1. 创建 Resource Manager 的资源组
 2. 为应用程序网关创建虚拟网络和子网
 3. 创建应用程序网关配置对象
 4. 创建应用程序网关资源
 
-## <a name="create-a-resource-group-for-resource-manager"></a>创建资源管理器的资源组
+## <a name="create-a-resource-group-for-resource-manager"></a>创建 Resource Manager 的资源组
 
 确保切换 PowerShell 模式，以便使用 Azure Resource Manager cmdlet。 [将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)中提供了详细信息。
 
@@ -92,7 +93,7 @@ Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 New-AzureRmResourceGroup -Name appgw-rg -location "West US"
 ```
 
-Azure 资源管理器要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
+Azure Resource Manager 要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
 
 在上述示例中，我们创建了名为“appgw-rg”的资源组，位置为“美国西部”。
 
@@ -137,10 +138,10 @@ $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Sub
 ### <a name="step-2"></a>步骤 2
 
 ```powershell
-$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
+$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 10.1.1.8,10.1.1.9,10.1.1.10
 ```
 
-此步骤会配置名为“pool01”的后端 IP 地址池，其 IP 地址为“134.170.185.46, 134.170.188.221,134.170.185.50”。 这些 IP 地址将接收来自前端 IP 终结点的网络流量。 替换上述 IP 地址，添加自己的应用程序 IP 地址终结点。
+此步骤配置名为“pool01”、IP 地址为“10.1.1.8, 10.1.1.9, 10.1.1.10”的后端 IP 地址池。 这些 IP 地址将接收来自前端 IP 终结点的网络流量。 替换上述 IP 地址，添加自己的应用程序 IP 地址终结点。
 
 ### <a name="step-3"></a>步骤 3
 
@@ -148,7 +149,7 @@ $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPA
 $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 ```
 
-此步骤会为后端池中进行了负载平衡的网络流量配置应用程序网关设置“poolsetting01”。
+此步骤会为后端池中进行了负载均衡的网络流量配置应用程序网关设置“poolsetting01”。
 
 ### <a name="step-4"></a>步骤 4
 
@@ -180,7 +181,7 @@ $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01  -Protoco
 $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 ```
 
-此步骤会创建名为“rule01”的负载平衡器路由规则，用于配置负载平衡器的行为。
+此步骤会创建名为“rule01”的负载均衡器路由规则，用于配置负载均衡器的行为。
 
 ### <a name="step-8"></a>步骤 8
 
@@ -268,16 +269,11 @@ Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 
 如果你要配置 SSL 卸载，请参阅 [Configure an application gateway for SSL offload](application-gateway-ssl.md)（配置应用程序网关以进行 SSL 卸载）。
 
-如果要将应用程序网关配置为与 ILB 配合使用，请参阅 [创建具有内部负载平衡器 (ILB) 的应用程序网关](application-gateway-ilb.md)。
+如果要将应用程序网关配置为与 ILB 配合使用，请参阅 [创建具有内部负载均衡器 (ILB) 的应用程序网关](application-gateway-ilb.md)。
 
-如需负载平衡选项的其他常规信息，请参阅：
+如需负载均衡选项的其他常规信息，请参阅：
 
-* [Azure 负载平衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
+* [Azure 负载均衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure 流量管理器](https://azure.microsoft.com/documentation/services/traffic-manager/)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

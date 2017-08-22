@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 06/20/2017
 ms.author: mahender
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 6a6043de57eb211c93c510cf2a139141c3950662
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 0d166a2e5b60c3b9f911f9fc3ad49ad7f252abb4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -38,49 +38,64 @@ ms.lasthandoff: 05/11/2017
 
 ## <a name="sharing-an-api-definition"></a>共享 API 定义
 
-通常使用 [Open API 文档](https://www.openapis.org/)（有时也称为“Swagger”文档）来描述 API。 其包含有关可用操作和数据的组织结构的所有信息。 PowerApps 和 Microsoft Flow 可为任意 Open API 2.0 文档创建自定义连接器。 创建自定义连接器后，可通过与内置连接器完全相同的方式使用它，并可将其快速集成到应用程序。
+通常使用 [OpenAPI 文档](https://www.openapis.org/)（有时也称为“Swagger”文档）来描述 API。 其包含有关可用操作和数据的组织结构的所有信息。 PowerApps 和 Microsoft Flow 可为任意 OpenAPI 2.0 文档创建自定义连接器。 创建自定义连接器后，可通过与内置连接器完全相同的方式使用它，并可将其快速集成到应用程序。
 
-Azure 应用服务和 Azure Functions 具有[内置支持](https://docs.microsoft.com/azure/app-service-api/app-service-api-metadata)，用于创建、托管和管理 Open API 文档。 若要为 Web、移动、API 或 Function App 创建自定义连接器，需要执行以下两个步骤：
-
-1. [从应用服务或 Azure Functions 检索 API 定义](#export)
-2. [将 API 定义导入 PowerApps](#import)
-
-这两个步骤可能需要由组织中的不同人员执行，因为给定用户可能不具有同时执行这两个操作的权限。 在这种情况下，具有对应用服务或 Azure Functions 应用程序的参与者访问权限的开发人员将需要获取 API 定义（单个 JSON 文件）或其链接。 然后，他们需要向 PowerApps 或 Microsoft Flow 所有者提供该定义。 该所有者可使用元数据来创建自定义连接器。
+Azure 应用服务和 Azure Functions 具有[内置支持](https://docs.microsoft.com/azure/app-service-api/app-service-api-metadata)，用于创建、托管和管理 OpenAPI 文档。 若要为 Web、移动、API 或 函数应用创建自定义连接器，需要为 PowerApps 和 Flow 提供定义的副本。
 
 > [!NOTE]
 > 因为正在使用 API 定义的副本，PowerApps 和 Microsoft Flow 将不会立即知道对应用程序的更新或重大更改。 如果新版本的 API 可用，则应对新版本重复执行这些步骤。 
 
-<a name="export"></a>
-## <a name="retrieving-the-api-definition-from-app-service-or-azure-functions"></a>从应用服务或 Azure Functions 检索 API 定义
-
-本部分将导出应用服务 API 的 API 定义，稍后会在 PowerApps 中使用此定义。
+若要为 PowerApps 和 Microsoft Flow 提供应用的托管 API 定义，请执行以下步骤：
 
 1. 打开 [Azure 门户](https://portal.azure.com)，然后导航到应用服务或 Azure Functions 应用程序。
 
     如果使用的是 Azure 应用服务，请从设置列表中选择“API 定义”。 
     
-    如果使用的是 Azure Functions，请选择“Function App 设置”，然后选择“配置 API 元数据”。
+    如果使用的是 Azure Functions，请选择你的函数应用，然后依次选择“平台功能”、“API 定义”。 或者，也可以选择打开“API 定义(预览)”选项卡。
 
 2. 如果已提供 API 定义，将看到“导出到 PowerApps 和 Microsoft Flow”按钮。 单击此按钮将开始导出过程。
 
-3. 可以选择**下载 API 定义**或**获取链接**。 无论选择什么，都会在下一部分提供结果。 选择以下选项之一，然后按照说明进行操作。
- 
-4. 如果 API 定义包含任何安全定义，将在步骤 2 中调用它们。 在导入期间，PowerApps 和 Microsoft Flow 将检测它们并提示安全信息。 此服务通过它让用户登录，以便访问 API。 如果你的 API 需要身份验证，请确保在 Open API 文档中将其作为_安全定义_捕获。
+3. 选择“导出模式”。 这会确定创建连接器时所要遵循的步骤。 应用服务提供两个选项让你为 PowerApps 和 Microsoft Flow 提供 API 定义：
 
-    收集与每个定义相关的凭据，以供下一部分使用。
+    使用“快速”选项可以从 Azure 门户内部创建自定义连接器。 此选项要求当前登录的用户有权在目标环境中创建连接器。 如果可以满足此要求，则我们建议采用此方法。 如果使用此模式，请遵照下面的[快速导出](#express)说明。
+
+    使用“手动”选项可以导出 API 定义的副本，然后可以使用 PowerApps 或 Microsoft Flow 门户导入该副本。 如果 Azure 用户与有权创建连接器的用户是不同的用户，或者需要在另一个租户中创建连接器，则我们建议采用此方法。 如果使用此模式，请遵照下面的[手动导出和导入](#manual)说明。
+
+<a name="express"></a>
+## <a name="express-export"></a>快速导出
+
+本部分将从 Azure 门户内部创建新的自定义连接器。 此操作要求登录到要导出的租户，并且你在目标环境中必须有权创建自定义连接器。
+
+1. 选择要在其中创建连接器的环境。 然后提供自定义连接器的名称。
+
+2. 如果 API 定义包含任何安全定义，将在步骤 2 中调用它们。 如果需要，请提供所需的安全配置详细信息来授予用户对你的 API 的访问权限。 有关详细信息，请参阅下面的[身份验证](#auth)。 
+
+3. 单击“确定”创建自定义连接器。
+
+
+<a name="manual"></a>
+## <a name="manual-export-and-import"></a>手动导出和导入
+
+若要为 Web、移动、API 或 Function App 创建自定义连接器，需要执行以下两个步骤：
+
+1. [从应用服务或 Azure Functions 检索 API 定义](#export)
+2. [将 API 定义导入 PowerApps 和 Microsoft Flow](#import)
+
+这两个步骤可能需要由组织中的不同人员执行，因为给定用户可能不具有同时执行这两个操作的权限。 在这种情况下，具有对应用服务或 Azure Functions 应用程序的参与者访问权限的开发人员将需要获取 API 定义（单个 JSON 文件）或其链接。 然后，他们需要向 PowerApps 或 Microsoft Flow 所有者提供该定义。 该所有者可使用元数据来创建自定义连接器。
+
+<a name="export"></a>
+### <a name="retrieving-the-api-definition-from-app-service-or-azure-functions"></a>从应用服务或 Azure Functions 检索 API 定义
+
+本部分将导出应用服务 API 的 API 定义，稍后会在 PowerApps 或 Microsoft Flow 门户中使用此定义。
+
+1. 可以选择**下载 API 定义**或**获取链接**。 无论选择什么，都会在下一部分提供结果。 选择以下选项之一，然后按照说明进行操作。
  
-> [!NOTE]
-> 如果使用的是 Azure Active Directory 身份验证，将需要一个新的 AAD 应用注册，其已授权访问你的 API 和回复 URL _https://msmanaged-na.consent.azure-apim.net/redirect_。 有关详细信息，请参阅[此示例](
-https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/)，将 API 替换为 Azure Resource Manager。
->
-> 如果其他用户要将 API 定义导入 PowerApps，那么除 API 定义文件之外，你还将提供**新注册**的客户端 ID 和客户端密钥以及 API 的资源 URL。 请确保安全地管理这些机密。 **请勿共享 API 本身的安全凭据。**
+2. 如果 API 定义包含任何安全定义，将在步骤 2 中调用它们。 在导入期间，PowerApps 和 Microsoft Flow 将检测它们并提示安全信息。 收集与每个定义相关的凭据，以供下一部分使用。 有关详细信息，请参阅下面的[身份验证](#auth)。 
 
 <a name="import"></a>
-## <a name="importing-the-api-definition-into-powerapps-and-microsoft-flow"></a>将 API 定义导入 PowerApps 和 Microsoft Flow
+### <a name="importing-the-api-definition-into-powerapps-and-microsoft-flow"></a>将 API 定义导入 PowerApps 和 Microsoft Flow
 
 本部分将使用先前获得的 API 定义在 PowerApps 和 Microsoft Flow 中创建自定义连接器。 自定义连接器在两项服务间共享，因此只需导入定义一次即可。 有关自定义连接器的详细信息，请参阅[在 PowerApps 中注册并使用自定义连接器]以及[在 Microsoft Flow 中注册并使用自定义连接器]。
-
-导入 PowerApps 或 Microsoft Flow：
 
 1. 打开 [PowerApps Web 门户](https://web.powerapps.com)或 [Microsoft Flow Web 门户](https://flow.microsoft.com/)并登录。 
 
@@ -99,6 +114,45 @@ https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutor
 7. 在“测试”选项卡上，创建连接，选择一个操作进行测试，并输入操作所需的任何数据。
 
 8. 单击“测试操作”。
+
+
+<a name="auth"></a>
+## <a name="authentication"></a>身份验证
+
+PowerApps 和 Microsoft Flow 原生支持可用于将自定义连接器用户登录的标识提供者集合。 如果 API 需要身份验证，请确保在 OpenAPI 文档中将其作为_安全定义_捕获。 在导出期间，需要提供可让 PowerApps 和 Microsoft Flow 执行登录操作的配置值。
+
+本部分介绍快速流支持的身份验证类型：API 密钥、Azure Active Directory 和通用 OAuth 2.0。 有关提供程序的完整列表以及每种提供程序所需的凭据，请参阅[在 PowerApps 中注册并使用自定义连接器]以及[在 Microsoft Flow 中注册并使用自定义连接器]。
+
+### <a name="api-key"></a>API 密钥
+如果使用此安全方案，当连接器的用户创建连接时，系统会提示他们提供密钥。 你可以提供一个 API 密钥名称来帮助他们了解需要哪个密钥。 对于 Azure Functions，这通常是某个主机密钥，其中涵盖函数应用中的多个函数。
+
+### <a name="azure-active-directory"></a>Azure Active Directory
+在配置需要 AAD 登录的自定义连接器时，需要创建两个 AAD 应用程序注册：一个用来为后端 API 建模，另一个用来为 PowerApps 和 Flow 中的连接器建模。
+
+应将 API 配置为使用第一个注册，如果你使用了[应用服务身份验证/授权](https://docs.microsoft.com/azure/app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication)功能，则系统已经完成了此配置。
+
+必须使用[添加 AAD 应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#adding-an-application)中所述的步骤，手动为连接器创建第二个注册。 该注册需要对你的 API 拥有委派访问权限，并且其答复 URL 应为 `https://msmanaged-na.consent.azure-apim.net/redirect`。 请参阅[此示例](
+https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/)了解详细信息，但要将其中的 Azure Resource Manager 替换为你的 API。
+
+需要以下配置值：
+- **客户端 ID** - 连接器 AAD 注册的客户端 ID
+- **客户端机密** - 连接器 AAD 注册的客户端机密
+- **登录 URL** - AAD 的基 URL。 在 Azure 公共版中，这通常是 `https://login.windows.net`。
+- **租户 ID** - 用于登录的租户的 ID。 这应是“common”，或在其中创建连接器的租户的 ID。
+- **资源 URL** - API 后端 AAD 注册的资源 URL
+
+> [!IMPORTANT]
+> 如果其他人要在执行手动流的过程中将 API 定义导入 PowerApps 和 Microsoft Flow，则你需要向他们提供**连接器注册**的客户端 ID 和客户端机密，以及 API 的资源 URL。 请确保安全地管理这些机密。 **请勿共享 API 本身的安全凭据。**
+
+### <a name="generic-oauth-20"></a>通用 OAuth 2.0
+借助通用 OAuth 2.0 支持可与任何 OAuth 2.0 提供程序相集成。 这样，便可以引入原生并不支持的任何自定义提供程序。
+
+需要以下配置值：
+- **客户端 ID** - OAuth 2.0 客户端 ID
+- **客户端机密** - OAuth 2.0 客户端机密
+- **授权 URL** - OAuth 2.0 授权 URL
+- **令牌 URL** - OAuth 2.0 令牌 URL
+- **刷新 URL** - OAuth 2.0 刷新 URL
 
 
 

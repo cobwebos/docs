@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2016
 ms.author: v-livech
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 72efef9eb7a2ab61743fa54c5340160de89f6ece
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: bfba2cf38a0624e8480a32bf153f391d820da5a1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -149,7 +149,7 @@ azure network vnet subnet create mySubNet \
 
 ## <a name="creating-static-dns-names"></a>创建静态 DNS 名称
 
-Azure 非常灵活，但若要使用 DNS 名称进行 VM 名称解析，需要使用 DNS 标签将它们创建为虚拟网卡 (VNic)。  VNic 很重要，因为用户可以通过将它们连接到不同的 VM 重新使用它们，这使 VNic 保持作为静态资源，而 VM 可以是临时 VM。  通过在 VNic 上使用 DNS 标签，我们能够从 VNet 中的其他 VM 启用简单名称解析。  使用可解析名称可使其他 VM 能够通过 DNS 名称 `Jenkins` 或作为 `gitrepo` 的 Git 服务器访问自动化服务器。  创建 VNic 并将其与上一步创建的子网相关联。
+Azure 非常灵活，但要使用 DNS 名称进行 VM 名称解析，需要使用 DNS 标签将它们创建为虚拟网卡 (VNic)。  VNic 很重要，因为用户可以通过将它们连接到不同的 VM 重新使用它们，这使 VNic 保持作为静态资源，而 VM 可以是临时 VM。  通过在 VNic 上使用 DNS 标签，我们能够从 VNet 中的其他 VM 启用简单名称解析。  使用可解析名称可使其他 VM 能够通过 DNS 名称 `Jenkins` 或作为 `gitrepo` 的 Git 服务器访问自动化服务器。  创建 VNic 并将其与上一步创建的子网相关联。
 
 ```azurecli
 azure network nic create jenkinsVNic \
@@ -183,8 +183,6 @@ azure vm create jenkins \
 使用 CLI 标志调用现有资源是为了指示 Azure 将 VM 部署到现有网络中。  再说一遍，部署 VNet 和子网以后，即可将其作为静态资源或永久资源留在 Azure 区域。  
 
 ## <a name="next-steps"></a>后续步骤
-
-* [使用 Azure Resource Manager 模板创建特定部署](../windows/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [直接使用 Azure CLI 命令创建自定义的 Linux VM 环境](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [使用模板在 Azure 上创建 Linux VM](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

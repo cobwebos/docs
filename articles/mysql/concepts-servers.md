@@ -8,16 +8,15 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 07/06/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 33508edb1b1aee058bff4b186f76d172f11f272f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a2556206ac53829fcd6ab92ffe292859349790d7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的服务器概念
-
 本主题提供使用 Azure Database for MySQL 服务器的注意事项和指南。
 
 ## <a name="what-is-an-azure-database-for-mysql-server"></a>什么是 Azure Database for MySQL 服务器？
@@ -34,6 +33,8 @@ Azure Database for MySQL 服务器：
 - 为服务器和数据库访问提供连接终结点。
 - 提供应用于其数据库的管理策略的作用域：登录名、防火墙、用户、角色、配置等。
 - 在多个版本内可用。 有关详细信息，请参阅[支持的 Azure Database for MySQL 数据库版本](./concepts-supported-versions.md)。
+
+在 Azure Database for MySQL 数据库中，可创建一个或多个数据库。 可以选择为每个服务器创建单一数据库来使用所有资源，还可以创建多个数据库来共享资源。 按服务器根据定价层、计算单位、存储 (GB) 的配置采用结构化定价。 有关详细信息，请参阅[定价层](./concepts-service-tiers.md)。
 
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>如何连接到 Azure Database for MySQL 服务器并进行身份验证？
 

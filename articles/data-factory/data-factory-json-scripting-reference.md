@@ -11,14 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/10/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 96c46b2c01272abfaf1dd2667a45e3818cbe49a0
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 4e38b54d9ddcb29958f4b078b63c09bec666257a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/11/2017
 
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>数据工厂 - JSON 脚本参考
@@ -4849,9 +4848,10 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
     "properties": {
         "type": "HDInsightOnDemand",
         "typeProperties": {
-            "clusterSize": 4,
+            "version": "3.5",
+            "clusterSize": 1,
             "timeToLive": "00:05:00",
-            "osType": "linux",
+            "osType": "Linux",
             "linkedServiceName": "StorageLinkedService"
         }
     }
@@ -5383,7 +5383,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 - **type** 属性设置为 **HDInsightSpark**。
 - **rootPath** 设置为 **adfspark\\pyFiles**，其中，adfspark 是 Azure Blob 容器，pyFiles 是该容器中的文件夹。 在此示例中，Azure Blob 存储是与 Spark 群集关联的存储。 可将文件上传到不同的 Azure 存储。 如果这样做，请创建 Azure 存储链接服务，将该存储帐户链接到数据工厂。 然后，将该链接的服务的名称指定为 **sparkJobLinkedService** 属性的值。 请参阅 [Spark 活动属性](#spark-activity-properties)，了解有关 Spark 活动支持的此属性及其他属性的详细信息。
 - **entryFilePath** 设置为 **test.py**，这是 python 文件。 
-- **getDebugInfo** 属性设置为 **Always**，表示始终生成日志文件（成功或失败）。    
+- **getDebugInfo** 属性设置为 **Always**，表示始终生成日志文件（成功或失败）。  
 
     > [!IMPORTANT]
     > 在生产环境中，除非你要排查问题，否则我们不建议将此属性设置为 Always。 

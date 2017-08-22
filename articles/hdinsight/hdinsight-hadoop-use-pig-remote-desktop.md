@@ -1,5 +1,5 @@
 ---
-title: "在 HDInsight 中将 Hadoop Pig 与远程桌面配合使用 | Microsoft Docs"
+title: "在 HDInsight 中将 Hadoop Pig 与远程桌面配合使用 — Azure | Microsoft Docs"
 description: "了解如何使用 Pig 命令从到基于 Windows 的 HDInsight Hadoop 群集的远程桌面连接运行 Pig Latin 语句。"
 services: hdinsight
 documentationcenter: 
@@ -16,11 +16,11 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 543483b08b32b7a280979502c5548702995f90af
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9ab67d21b65323b7f927cb2197c0e123ebe3351e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>从远程桌面连接运行 Pig 作业
@@ -29,7 +29,7 @@ ms.lasthandoff: 04/12/2017
 本文档演练了如何使用 Pig 命令从到基于 Windows 的 HDInsight 群集的远程桌面连接运行 Pig Latin 语句。 Pig Latin 可让你通过描述数据转换来创建 MapReduce 应用程序，而不是创建映射和化简函数。
 
 > [!IMPORTANT]
-> 远程桌面只能在使用 Windows 作为操作系统的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上即将弃用](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)。
+> 远程桌面只能在使用 Windows 作为操作系统的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 >
 > 有关 HDInsight 3.4 或更高版本，请参阅[将 Pig 与 HDInsight 和 SSH 配合使用](hdinsight-hadoop-use-pig-ssh.md)，了解如何通过命令行直接在群集上以交互方式运行 Pig 作业。
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 04/12/2017
     系统将为你提供 `grunt>` 提示符。
 3. 输入以下语句：
 
-        LOGS = LOAD 'wasbs:///example/data/sample.log';
+        LOGS = LOAD 'wasb:///example/data/sample.log';
 
     此命令会将 sample.log 文件的内容加载到 LOGS 文件中。 你可以通过使用以下方法查看该文件的内容：
 
@@ -80,9 +80,9 @@ ms.lasthandoff: 04/12/2017
     <td>RESULT = order FREQUENCIES by COUNT desc;</td><td>按计数为日志级别排序（降序），并存储到 RESULT</td>
     </tr>
     </table>
-6. 你也可以使用 `STORE` 语句保存转换结果。 例如，以下命令将 `RESULT` 保存到群集的默认存储容器中的 **/example/data/pigout**目录：
+6. 也可以使用 `STORE` 语句保存转换结果。 例如，以下命令将 `RESULT` 保存到群集的默认存储容器中的 **/example/data/pigout**目录：
 
-        STORE RESULT into 'wasbs:///example/data/pigout'
+        STORE RESULT into 'wasb:///example/data/pigout'
 
    > [!NOTE]
    > 数据将存储到指定目录中名为 **part-nnnnn** 的文件中。 如果该目录已存在，则你将会收到错误消息。
@@ -98,7 +98,7 @@ ms.lasthandoff: 04/12/2017
 1. 退出 grunt 提示符之后，请打开“记事本”，并在 **%PIG_HOME%** 目录中创建名为 **pigbatch.pig** 的新文件。
 2. 在 **pigbatch.pig** 文件中键入或粘贴以下行，然后保存它：
 
-        LOGS = LOAD 'wasbs:///example/data/sample.log';
+        LOGS = LOAD 'wasb:///example/data/sample.log';
         LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
         FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
         GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;

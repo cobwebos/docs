@@ -1,5 +1,5 @@
 ---
-title: "配置已加入域的 HDInsight 群集 | Microsoft Docs"
+title: "配置已加入域的 HDInsight 群集 — Azure | Microsoft Docs"
 description: "了解如何安装并配置已加入域的 HDInsight 群集"
 services: hdinsight
 documentationcenter: 
@@ -15,15 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 1fb13d60eebbaf45ca9cb394c073c834bbe59bb9
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9964c3dff24ef8a3a6047fe18c0f36c12c1de33d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/08/2017
 
 
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-preview"></a>配置已加入域的 HDInsight 群集（预览版）
+
 了解如何使用 Azure Active Directory (Azure AD) 和 [Apache Ranger](http://hortonworks.com/apache/ranger/) 安装 Azure HDInsight 群集，以便利用强身份验证和丰富的基于角色的访问控制 (RBAC) 策略。  仅可在基于 Linux 的群集上配置已加入域的 HDInsight。 有关详细信息，请参阅[引入已加入域的 HDInsight 群集](hdinsight-domain-joined-introduction.md)。
+
+> [!IMPORTANT]
+> 在加入域的 HDInsight 上未启用 Oozie。
 
 本文是本系列的第一个教程：
 
@@ -71,8 +76,8 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
 
 通过 PowerShell 脚本，可通过步骤 7 自动执行步骤 3。  有关详细信息，请参阅[使用 Azure PowerShell 配置已加入域的 HDInsight 群集](hdinsight-domain-joined-configure-use-powershell.md)。
 
-## <a name="create-an-azure-classic-vnet"></a>创建 Azure 经典 VNet
-在本部分中，可使用 Azure 门户创建经典 VNet。 在下一部分中，可在经典 VNet 中为 Azure AD 启用 Azure AD DS。 若要深入了解以下过程并了解如何使用其他 VNet 创建方法，请参阅[使用 Azure 门户创建虚拟网络（经典）](../virtual-network/virtual-networks-create-vnet-classic-portal.md)。
+## <a name="create-an-azure-virtual-network-classic"></a>创建 Azure 虚拟网络（经典）
+在本部分，将使用 Azure 门户创建虚拟网络（经典）。 在下一部分，将在虚拟网络中为 Azure AD 启用 Azure AD DS。 若要深入了解以下过程并了解如何使用其他虚拟网络创建方法，请参阅[使用 Azure 门户创建虚拟网络（经典）](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)。
 
 **创建经典 VNet**
 
@@ -250,7 +255,7 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
      
      * **群集类型**：Hadoop。 已加入域的 HDInsight 当前仅在 Hadoop 群集上受支持。
      * **操作系统**：Linux。  已加入域的 HDInsight 仅在基于 Linux 的 HDInsight 群集上受支持。
-     * **版本**：Hadoop 2.7.3 (HDI 3.5)。 已加入域的 HDInsight 仅在 HDInsight 群集 3.5 版上受支持。
+     * **版本**：HDI 3.6。 已加入域的 HDInsight 仅在 HDInsight 群集 3.6 版上受支持。
      * **群集类型**：PREMIUM
        
        单击“选择”保存更改。
@@ -311,7 +316,7 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
    * **固定到仪表板**：（检查）
 3. 单击“购买”。 此时会出现标题为“正在部署模板”的新磁贴。 创建群集大约需要 20 分钟时间。 创建群集之后，便可以在门户中单击群集边栏选项卡以打开它。
 
-完成教程之后，你可能要删除群集。 有了 HDInsight，你就可以将数据存储在 Azure 存储空间中，因此可以在群集不用时安全地删除群集。 此外，你还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 有关删除群集的说明，请参阅[使用 Azure 门户在 HDInsight 中管理 Hadoop 群集](hdinsight-administer-use-management-portal.md#delete-clusters)。
+完成教程之后，你可能要删除群集。 有了 HDInsight，你就可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，你还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 有关删除群集的说明，请参阅[使用 Azure 门户在 HDInsight 中管理 Hadoop 群集](hdinsight-administer-use-management-portal.md#delete-clusters)。
 
 ## <a name="next-steps"></a>后续步骤
 * 若要配置 Hive 策略和运行 Hive 查询，请参阅 [Configure Hive policies for Domain-joined HDInsight clusters](hdinsight-domain-joined-run-hive.md)（为已加入域的 HDInsight 群集配置 Hive 策略）。

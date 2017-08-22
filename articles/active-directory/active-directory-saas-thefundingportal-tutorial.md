@@ -2,50 +2,50 @@
 title: "教程：Azure Active Directory 与 The Funding Portal 集成 | Microsoft 文档"
 description: "了解如何在 Azure Active Directory 和 The Funding Portal 之间配置单一登录。"
 services: active-directory
-documentationcenter: 
+documentationCenter: na
 author: jeevansd
 manager: femila
-editor: 
 ms.assetid: 4663cc8a-976a-4c6c-b3b4-1e5df9b66744
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 07/11/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 82e5a947d48f8a289deb2f6e85bbb47990a9fcd7
-ms.openlocfilehash: 76d52c52489cb3cc85223066fb5821b1b9915b96
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: d0bfc793bb26c551f85706eaec857962a3415e1f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-the-funding-portal"></a>教程：Azure Active Directory 与 The Funding Portal 集成
+
 在本教程中，了解如何将 The Funding Portal 与 Azure Active Directory (Azure AD) 集成。
 
 将 The Funding Portal 与 Azure AD 集成提供以下优势：
 
-* 可在 Azure AD 中控制谁有权访问 The Funding Portal
-* 可以让用户使用其 Azure AD 帐户自动登录到 The Funding Portal（单一登录）
-* 可在一个中心位置（即 Azure 经典门户）管理帐户
+- 可在 Azure AD 中控制谁有权访问 The Funding Portal
+- 可以让用户使用其 Azure AD 帐户自动登录到 The Funding Portal（单一登录）
+- 可以在一个中心位置（即 Azure 门户）中管理帐户
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
 ## <a name="prerequisites"></a>先决条件
+
 若要配置 Azure AD 与 The Funding Portal 的集成，需要以下项：
 
-* Azure AD 订阅
-* 已启用 **The Funding Portal** 单一登录的订阅
+- 一个 Azure AD 订阅
+- 已启用 The Funding Portal 单一登录的订阅
 
 > [!NOTE]
 > 不建议使用生产环境测试本教程中的步骤。
-> 
-> 
 
 测试本教程中的步骤应遵循以下建议：
 
-* 不应使用生产环境，除非有此必要。
-* 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+- 除非必要，请勿使用生产环境。
+- 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
 ## <a name="scenario-description"></a>方案描述
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
@@ -58,174 +58,179 @@ ms.openlocfilehash: 76d52c52489cb3cc85223066fb5821b1b9915b96
 
 **若要从库中添加 The Funding Portal，请执行以下步骤：**
 
-1. 在 **Azure 经典门户**的左侧导航窗格上，单击“Active Directory”。 
-   
-    ![Active Directory][1]
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
-3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
-   
-    ![应用程序][2]
-4. 在页面底部单击“添加”。
-   
-    ![应用程序][3]
-5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
-   
-    ![应用程序][4]
-6. 在搜索框中，键入“The Funding Portal”。
-   
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_01.png)
-7. 在结果窗格中，选择“The Funding Portal”，然后单击“完成”以添加该应用程序。
-   
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_02.png)
+1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+    ![Active Directory][1]
+
+2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+
+    ![应用程序][2]
+    
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+
+    ![应用程序][3]
+
+4. 在搜索框中，键入“The Funding Portal”。
+
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_search.png)
+
+5. 在结果面板中，选择“The Funding Portal”，并单击“添加”按钮，添加该应用程序。
+
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_addfromgallery.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 The Funding Portal 的 Azure AD 单一登录。
 
 若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 The Funding Portal 用户。 换句话说，需要在 Azure AD 用户与 The Funding Portal 中相关用户之间建立链接关系。
-通过将 Azure AD 中“用户名”的值分配为 The Funding Portal 中“用户名”的值来建立此链接关系。
+
+将 Azure AD 中“用户名”的值指定为 The Funding Portal 中“用户名”的值，从而建立此链接关系。
 
 若要配置和测试 The Funding Portal 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 The Funding Portal 测试用户](#creating-a-the-funding-portal-test-user)** - 在 The Funding Portal 中创建 Britta Simon 的对应用户，将其链接到她的 Azure AD 表示形式。
+3. [创建 The Funding Portal 测试用户](#creating-the-funding-portal-test-user) - 在 The Funding Portal 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
-本部分的目的是在 Azure 经典门户中启用 Azure AD 单一登录并在 The Funding Portal 应用程序中配置单一登录。
 
-The Funding Portal 应用程序需要 SAML 断言包含名为“externalId1”的属性。 “externalId1”的值应为已识别的 studentID。 请为此应用程序配置“externalId1”声明。 可从应用程序的“属性”选项卡管理这些属性的值。 以下屏幕截图显示一个示例。
-
-![配置单一登录](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_03.png) 
+在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 The Funding Portal 应用程序中配置单一登录。
 
 **若要配置 The Funding Portal 的 Azure AD 单一登录，请执行以下步骤：**
 
-1. 在 Azure 经典门户中的“The Funding Portal”应用程序集成页上，单击顶部菜单中的“属性”。
-   
-    ![配置单一登录][5]
-2. 在 SAML 令牌属性对话框中，添加“externalId1”属性。
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“添加用户属性”，打开“添加用户属性”对话框。 
-   
-    ![配置单一登录](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_05.png)
-   
-    b. 在“属性名称”文本框中，键入属性名称“externalId1”。
-   
+1. 在 Azure 门户中的 The Funding Portal 应用程序集成页上，单击“单一登录”。
+
+    ![配置单一登录][4]
+
+2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+ 
+    ![配置单一登录](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_samlbase.png)
+
+3. 在“The Funding Portal 域和 URL”部分中，执行以下步骤：
+
+    ![配置单一登录](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_url.png)
+
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.regenteducation.net/`
+
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.regenteducation.net`
+
+    > [!NOTE] 
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [The Funding Portal 客户端支持团队](mailto:info@regenteducation.com)获取这些值。 
+
+4. The Funding Portal 应用程序需要 SAML 断言包含名为“externalId1”的属性。 “externalId1”的值应为已识别的 studentID。 为此应用程序配置“externalId1”声明。 可从应用程序的“用户属性”下管理这些属性的值。 以下屏幕截图显示一个示例。
+
+    ![配置单一登录](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_attribute.png)
+
+5. 在“单一登录”对话框的“用户属性”部分，按图中所示配置 SAML 令牌属性，然后执行以下步骤：
+
+    | 属性名称 | 属性值 |
+    | ------------------- | ---------------- |
+    | externalId1 | user.extensionattribute1 |
+
+    a.在“横幅徽标”下面，选择“删除上传的徽标”。 单击“添加属性”，打开“添加属性”对话框。
+
+    ![配置单一登录](./media/active-directory-saas-thefundingportal-tutorial/tutorial_attribute_04.png)
+
+    ![配置单一登录](./media/active-directory-saas-thefundingportal-tutorial/tutorial_attribute_05.png)
+
+    b.保留“数据库类型”设置，即设置为“共享”。 在“名称”文本框中，键入为该行显示的属性名称。
+
     c. 从“属性值”列表中，选择要用于实现的属性。 例如，如果已在 ExtensionAttribute1 中存储 StudentID 值，则选择“user.extensionattribute1”。
-   
-    d.单击“下一步”。 单击“完成”。 然后，单击“应用更改”。
-3. 在顶部菜单中，单击“快速启动”。
-   
-    ![配置单一登录][6]
-4. 在经典门户中的“The Funding Portal”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
-   
-    ![配置单一登录][7] 
-5. 在“你希望用户如何登录 The Funding Portal”页上，选择“Azure AD 单一登录”，然后单击“下一步”。
-   
-    ![配置单一登录](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_06.png)
-6. 在“配置应用设置”对话框页上，执行以下步骤： 
-   
-    ![配置单一登录](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_07.png)
+    
+    d. 单击“确定” 。
+ 
+6. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.regenteducation.net/`。
+    ![配置单一登录](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_certificate.png) 
 
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“资源组名称” 的 Azure 数据工厂。
+7. 单击“保存”按钮。
 
-1. 在“配置 The Funding Portal 的单一登录”页上，单击“下载元数据”，然后将该文件保存在计算机上。
-   
-    ![配置单一登录](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_08.png)
-2. 若要为应用程序配置 SSO，请联系 The Funding Portal 支持。 他们会通过适当的渠道协助用户配置 SSO。 请注意，需要将下载的元数据文件作为附件通过电子邮件发送到 info@regenteducation.com。
-3. 在经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
-   
-    ![Azure AD 单一登录][10]
-4. 在“单一登录确认”页上，单击“完成”。  
-   
-    ![Azure AD 单一登录][11]
+    ![配置单一登录](./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_400.png)
+
+8. 若要在 The Funding Portal 端配置单一登录，需要将下载的元数据 XML 发送给 [The Funding Portal 支持团队](mailto:info@regenteducation.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+
+> [!TIP]
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-在本部分中，在经典门户中创建名为“Britta Simon”的测试用户。
+本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-![创建 Azure AD 用户][20]
+![创建 Azure AD 用户][100]
 
 **若要在 Azure AD 中创建测试用户，请执行以下步骤：**
 
-1. 在 **Azure 经典门户**中，在左侧导航窗格上，单击“Active Directory”。
-   
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_09.png) 
-2. 在“目录”列表中，选择要启用目录集成的目录。
-3. 若要显示用户列表，请在顶部菜单中，单击“用户”。
-   
+1. 在 **Azure 门户**的左侧导航窗格中，单击“Azure Active Directory”图标。
+
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_01.png) 
+
+2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+    
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_02.png) 
+
+3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+ 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_03.png) 
-4. 若要打开“添加用户”对话框，请在底部工具栏中单击“添加用户”。
-   
+
+4. 在“用户”对话框页上，执行以下步骤：
+ 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_04.png) 
-5. 在“告诉我们有关此用户的信息”对话框页上，执行以下步骤：
-   
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_05.png) 
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
-   
-    b. 在“用户名”文本框中，键入“BrittaSimon”。
-   
-    c. 单击“下一步”。
-6. 在“用户配置文件”对话框页上，执行以下步骤：
-   
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_06.png) 
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
-   
-    b. 在“姓氏”文本框中，键入“Simon”。
-   
-    c. 在“显示名称”文本框中，键入“Britta Simon”。
-   
-    d.单击“下一步”。 在“角色”列表中，选择“用户”。
-   
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 
-7. 在“获取临时密码”对话框页上，单击“创建”。
-   
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_07.png) 
-8. 在“获取临时密码”对话框页上，执行以下步骤：
-   
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_08.png) 
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
-   
-    b. 单击“完成”。   
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
-### <a name="creating-a-the-funding-portal-test-user"></a>创建 The Funding Portal 测试用户
-在本部分中，将在 The Funding Portal 中创建一个名为“Britta Simon”的用户。 如果不知道如何在 The Funding Portal 中添加 Britta Simon，请求助 The Funding Portal 支持团队来添加测试用户并启用 SSO。 通过 info@regenteducation.com 与他们联系。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+
+    c. 选择“显示密码”并记下“密码”的值。
+
+    d.单击“下一步”。 单击“创建” 。
+ 
+### <a name="creating-the-funding-portal-test-user"></a>创建 The Funding Portal 测试用户
+
+在本部分中，将在 The Funding Portal 中创建一个名为“Britta Simon”的用户。 与 [The Funding Portal 支持团队](mailto:info@regenteducation.com)一起添加测试用户并启用 SSO。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
 在本部分中，通过授予 Britta Simon 访问 The Funding Portal 的权限，允许她使用 Azure 单一登录。
 
 ![分配用户][200] 
 
 **若要将 Britta Simon 分配到 The Funding Portal，请执行以下步骤：**
 
-1. 在经典门户中，若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
-   
-    ![分配用户][201] 
-2. 在应用程序列表中，选择“The Funding Portal”。
-   
-    ![配置单一登录](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_09.png) 
-3. 在顶部菜单中，单击“用户”。
-   
-    ![分配用户][203] 
-4. 在“所有用户”列表中，选择“Britta Simon”。
-5. 在底部工具栏中，单击“分配”。
-   
-    ![分配用户][205]
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
 
+    ![分配用户][201] 
+
+2. 在应用程序列表中，选择“The Funding Portal”。
+
+    ![配置单一登录](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_app.png) 
+
+3. 在左侧菜单中，单击“用户和组”。
+
+    ![分配用户][202] 
+
+4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+
+    ![分配用户][203]
+
+5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+
+6. 在“用户和组”对话框中单击“选择”按钮。
+
+7. 在“添加分配”对话框中单击“分配”按钮。
+    
 ### <a name="testing-single-sign-on"></a>测试单一登录
+
 本部分的目的是使用“访问面板”测试 Azure AD 单一登录配置。
 
 单击访问面板中的“The Funding Portal”磁贴时，用户应自动登录到 The Funding Portal 应用程序。
 
 ## <a name="additional-resources"></a>其他资源
+
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+
+
 
 <!--Image references-->
 
@@ -234,22 +239,11 @@ The Funding Portal 应用程序需要 SAML 断言包含名为“externalId1”�
 [3]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_04.png
 
-
-[5]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_05.png
-[6]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_06.png
-[7]:  ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_050.png
-[10]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_060.png
-[11]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_070.png
-[20]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_100.png
+[100]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_100.png
 
 [200]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_200.png
 [201]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_203.png
-[204]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_204.png
-[205]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

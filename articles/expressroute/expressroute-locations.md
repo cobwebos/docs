@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/26/2017
+ms.date: 08/01/2017
 ms.author: kaanan
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 742621fc71cc45a30628b1a4cb01d5c644766b77
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: d254a72116bbd8b1cbe19269f7c1e0ba98a45e3c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/18/2017
 
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
@@ -95,7 +95,7 @@ ms.lasthandoff: 07/28/2017
 | **Jisc** |支持 |支持 |伦敦 |
 | **KINX** |支持 |支持 |首尔 |
 | **[KPN](http://www.kpn.com/cloudconnect)** | 支持 | 支持 | 阿姆斯特丹 | 
-| **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、拉斯维加斯+、伦敦、圣保罗、西雅图、硅谷、新加坡、华盛顿特区 |
+| **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、拉斯维加斯、伦敦、圣保罗、西雅图、硅谷、新加坡、华盛顿特区 |
 | **LG CNS** |支持 |支持 |釜山 |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、香港特别行政区、拉斯维加斯、伦敦、洛杉矶、墨尔本、迈阿密、纽约、魁北克市、圣安东尼奥、西雅图、硅谷、新加坡、悉尼、多伦多、华盛顿特区 |
 | **MTN** |支持 |支持 |伦敦 |
@@ -149,6 +149,7 @@ ms.lasthandoff: 07/28/2017
 | **[e-shelter](https://www.e-shelter.de/en/microsoft-expressroutetm)** |支持 |不支持 |柏林 |
 | **Interxion** |支持 |不支持 |法兰克福 |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持  | 不支持 | 柏林 |
+| **T-Systems** |支持 |不支持 |柏林 |
 
 ## <a name="connectivity-through-exchange-providers"></a>通过 Exchange 提供商建立的连接
 

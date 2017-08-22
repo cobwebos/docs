@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: af83156022fe7b7122b8fc8b71443592da4d3950
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 992920adb1ae3736d43cc5f0bbb2081a20a1674d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -121,7 +121,7 @@ az network nsg rule create \
 ```
 
 ## <a name="associate-the-subnet-with-the-network-security-group"></a>将子网与网络安全组相关联
-若要将子网与网络安全组相关联，请使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#update)。 以下示例将名为 `mySubnet` 的子网与名为 `myNetworkSecurityGroup` 的网络安全组相关联：
+要将子网与网络安全组相关联，请使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#update)。 以下示例将名为 `mySubnet` 的子网与名为 `myNetworkSecurityGroup` 的网络安全组相关联：
 
 ```azurecli
 az network vnet subnet update \
@@ -164,8 +164,6 @@ az vm create \
 使用 CLI 标志调用现有资源是为了指示 Azure 将 VM 部署到现有网络中。 再说一遍，部署 VNet 和子网以后，即可将其作为静态资源或永久资源留在 Azure 区域。  
 
 ## <a name="next-steps"></a>后续步骤
-
-* [使用 Azure Resource Manager 模板创建特定部署](../windows/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [直接使用 Azure CLI 命令创建自定义的 Linux VM 环境](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [使用模板在 Azure 上创建 Linux VM](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/15/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 274e8db8e35243dc4b7ef20c3e7085f47975bb1c
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: e7b78907fafcee99c807bfe8f7b311986ba7ffcc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>为 .NET 应用程序手动配置 Application Insights
@@ -29,14 +28,14 @@ ms.lasthandoff: 05/17/2017
 
 #### <a name="before-you-start"></a>开始之前
 
-你需要：
+需要：
 
-* [Microsoft Azure](http://azure.com)订阅。 如果你的团队或组织拥有 Azure 订阅，则所有者可以使用你的 [Microsoft 帐户](http://live.com)将你加入其中。
+* [Microsoft Azure](http://azure.com)订阅。 如果团队或组织拥有 Azure 订阅，则所有者可以使用 [Microsoft 帐户](http://live.com)你将加入其中。
 * Visual Studio 2013 或更高版本。
 
 ## <a name="add"></a>1.选择 Application Insights 资源
 
-“资源”是指收集数据并在 Azure 门户中显示的地方。 你需要决定，是创建新资源，还是共享现有资源。
+“资源”是指收集数据并在 Azure 门户中显示的地方。 需要决定，是创建新资源，还是共享现有资源。
 
 ### <a name="part-of-a-larger-app-use-existing-resource"></a>更大型应用的一部分：使用现有资源
 
@@ -54,19 +53,19 @@ ms.lasthandoff: 05/17/2017
 
 ![依次单击“新建”、“Application Insights”](./media/app-insights-windows-services/01-new-asp.png)
 
-选择应用程序类型将会设置资源边栏选项卡的默认内容。
+选择应用程序类型会设置资源边栏选项卡的默认内容。
 
 ## <a name="2-copy-the-instrumentation-key"></a>2.复制检测密钥
 该密钥用于标识资源。 很快会在 SDK 中安装它，以便将数据定向到资源。
 
-![单击“属性”，选择密钥，然后按 Ctrl+C](./media/app-insights-windows-services/02-props-asp.png)
+![单击“属性”，选择密钥，并按 Ctrl+C](./media/app-insights-windows-services/02-props-asp.png)
 
 ## <a name="sdk"></a>3.在应用程序中安装 Application Insights 程序包
 Application Insights 程序包的安装和配置因使用的平台而异。 
 
-1. 在 Visual Studio 中右键单击项目，然后选择“管理 NuGet 包”。
+1. 在 Visual Studio 中右键单击项目，并选择“管理 NuGet 包”。
    
-    ![右键单击项目，然后选择“管理 NuGet 包”](./media/app-insights-windows-services/03-nuget.png)
+    ![右键单击项目，并选择“管理 NuGet 包”](./media/app-insights-windows-services/03-nuget.png)
 2. 安装适用于 Windows Server 应用的 Application Insights 包“Microsoft.ApplicationInsights.WindowsServer”。
    
     ![搜索“Application Insights”](./media/app-insights-windows-services/04-ai-nuget.png)
@@ -82,7 +81,7 @@ Application Insights 程序包的安装和配置因使用的平台而异。
 ### <a name="to-upgrade-to-future-package-versions"></a>升级到未来的程序包版本
 我们会不时发布 SDK 的新版本。
 
-若要升级到[程序包的新版本](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases/)，请再次打开 NuGet 包管理器，然后筛选已安装的程序包。 选择“Microsoft.ApplicationInsights.WindowsServer”，然后选择“升级”。
+要升级到[程序包的新版本](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases/)，请再次打开 NuGet 包管理器，并筛选已安装的程序包。 选择“Microsoft.ApplicationInsights.WindowsServer”，并选择“升级”。
 
 如果对 ApplicationInsights.config 执行了任何自定义操作，请在升级前保存相关副本，并在升级后将更改合并到新版本中。
 
@@ -98,7 +97,7 @@ Application Insights 程序包的安装和配置因使用的平台而异。
 
 * 编辑 ApplicationInsights.config（通过 NuGet 安装添加）。 在结束标记前插入此内容：
   
-    `<InstrumentationKey>` *所复制的检测密钥* `</InstrumentationKey>`
+    `<InstrumentationKey>` *复制的检测密钥* `</InstrumentationKey>`
 * 确保解决方案资源管理器中的 ApplicationInsights.config 的属性设置为“生成操作”=“内容”、“复制到输出目录”=“复制” 。
 
 如果要[针对不同生成配置切换密钥](app-insights-separate-resources.md)，则在代码中设置检测密钥会很有用。 如果在代码中设置密钥，则无需在 `.config` 文件中设置它。
@@ -122,7 +121,7 @@ Application Insights 程序包的安装和配置因使用的平台而异。
 ### <a name="no-data"></a>没有数据？
 * 使用应用程序打开不同的页面，以生成一些遥测。
 * 打开 [“搜索”](app-insights-diagnostic-search.md) 磁贴，查看每个事件。 有时，事件会需要较长的时间才能通过指标管道。
-* 请等待几秒钟，然后单击“刷新” 。 图表会定期刷新本身，但如果正在等待某些数据显示，则可以手动刷新。
+* 请等待几秒钟，并单击“刷新” 。 图表会定期刷新本身，但如果正在等待某些数据显示，则可以手动刷新。
 * 请参阅 [疑难解答](app-insights-troubleshoot-faq.md)。
 
 ## <a name="publish-your-app"></a>发布应用
@@ -139,7 +138,7 @@ Application Insights 程序包的安装和配置因使用的平台而异。
 请参阅 [此疑难解答项](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild)。
 
 > [!NOTE]
-> 如果应用生成大量遥测，自适应采样模块将通过仅发送具有代表性的事件部分自动减少发送到门户的量。 但是，将以组为单位选择或取消选择与同一请求相关的事件，以便可以在相关事件之间浏览。 
+> 如果应用生成大量遥测，自适应采样模块将通过仅发送具有代表性的事件部分自动减少发送到门户的量。 但是，以组为单位选择或取消选择与同一请求相关的事件，以便可以在相关事件之间浏览。 
 > [了解采样](app-insights-sampling.md)。
 > 
 > 

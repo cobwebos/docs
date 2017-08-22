@@ -9,7 +9,7 @@
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
 ```
 
-创建 Web 应用后，Azure CLI 将显示类似于以下示例的信息：
+创建 Web 应用后，Azure CLI 会显示类似于以下示例的信息：
 
 ```json
 {

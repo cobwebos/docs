@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/12/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 538b0064fef8d54c5cac9d4dd43f70ebf1772819
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 6ad188fb752474ff5c7d8a3fb9d609eefe8c7a9a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>将基于 Windows 的 HDInsight 的 .NET 解决方案迁移到基于 Linux 的 HDInsight
@@ -48,7 +48,7 @@ Mono 版本 4.2.1 包含在 HDInsight 版本 3.5 中。 有关包含在 HDInsigh
 
     选择“确定”以保存配置。
 
-3. 依次选择“分析” > “分析程序集可移植性”。 选择包含解决方案的程序集，然后选择“打开”以开始分析。
+3. 依次选择“分析” > “分析程序集可移植性”。 选择包含解决方案的程序集，并选择“打开”以开始分析。
 
 4. 分析完成后，依次选择“分析” > “查看分析报表”。 在“可移植性分析结果”中，选择“打开报表”以打开某个报表。
 
@@ -71,7 +71,6 @@ Mono 版本 4.2.1 包含在 HDInsight 版本 3.5 中。 有关包含在 HDInsigh
 
 有关访问日志的详细信息，请参阅以下文档：
 
-* [分析 HDInsight 日志](hdinsight-debug-jobs.md)
 * [在基于 Linux 的 HDInsight 上访问 YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 
 ## <a name="next-steps"></a>后续步骤

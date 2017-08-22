@@ -1,5 +1,5 @@
 ---
-title: "使用 HDInsight 进行脚本操作开发 | Microsoft Docs"
+title: "使用 HDInsight 进行脚本操作开发 — Azure | Microsoft Docs"
 description: "了解如何使用脚本操作自定义 Hadoop 群集。 脚本操作可用于安装运行在 Hadoop 群集上的其他软件，或更改安装在群集上的应用程序的配置。"
 services: hdinsight
 documentationcenter: 
@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 989f45eed033409b1ade183827719acdd9a4b0b4
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 04f79442b72a58abb0eba9c2162e0b7b9d390e41
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>为 HDInsight 基于 Windows 的群集开发脚本操作脚本
@@ -29,7 +29,7 @@ ms.lasthandoff: 04/12/2017
 
 
 > [!IMPORTANT]
-> 本文档中的步骤仅适用于基于 Windows 的 HDInsight 群集。 Windows 上仅可使用低于 HDInsight 3.4 版本的 HDInsight。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。 有关在基于 Linux 的群集上使用脚本操作的信息，请参阅[使用 HDInsight 进行脚本操作开发 (Linux)](hdinsight-hadoop-script-actions-linux.md)。
+> 本文档中的步骤仅适用于基于 Windows 的 HDInsight 群集。 Windows 上仅可使用低于 HDInsight 3.4 版本的 HDInsight。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。 有关在基于 Linux 的群集上使用脚本操作的信息，请参阅[使用 HDInsight 进行脚本操作开发 (Linux)](hdinsight-hadoop-script-actions-linux.md)。
 >
 >
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 04/12/2017
 >
 
 ## <a name="sample-scripts"></a>示例脚本
-在 Windows 操作系统上创建 HDInsight 群集时，脚本操作为 Azure PowerShell 脚本。以下是有关配置站点配置文件的示例脚本：
+若要在 Windows 操作系统上创建 HDInsight 群集，则脚本操作为 Azure PowerShell 脚本。 以下脚本是用于配置站点配置文件的示例：
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 04/12/2017
 
     hive-site.xml hive.metastore.client.socket.timeout 90
 
-这些参数会在 hive-site.xml 文件中将 hive.metastore.client.socket.timeout 值设置为 90。  默认值为 60 秒。
+这些参数在 hive-site.xml 文件中将 hive.metastore.client.socket.timeout 值设置为 90。  默认值为 60 秒。
 
 也可以在 [https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1](https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1) 上找到该示例脚本。
 
@@ -118,7 +118,7 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
 >
 
 ## <a name="helper-methods-for-custom-scripts"></a>自定义脚本的帮助器方法
-脚本操作帮助器方法是可以在编写自定义脚本时使用的实用工具。 这些方法在 [https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1](https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1) 中定义，可以使用以下语法包括在脚本中：
+脚本操作帮助器方法是可以在编写自定义脚本时使用的实用工具。 这些方法在 [https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1](https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1) 中定义，可以使用以下示例将其包括在脚本中：
 
     # Download config action module from a well-known directory.
     $CONFIGACTIONURI = "https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1";
@@ -167,22 +167,22 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
     只有 HDInsight 3.1 (Hadoop 2.4) 及其更高版本才支持使用脚本操作在群集上安装自定义组件。 在自定义脚本中，必须先使用 **Get-HDIHadoopVersion** 帮助器方法检查 Hadoop 版本，然后才能继续在脚本中执行其他任务。
 * 提供指向脚本资源的可靠链接
 
-    用户应确保自定义群集过程中使用的所有脚本和其他项目在群集的整个生存期内都必须一直可用，并且这些文件的版本在此期间也不会发生更改。 如果需要为群集中的节点重新制作映像，则需要用到这些资源。 最佳做法是，下载用户控制的存储帐户中的所有内容并将其存档。 这可能是默认存储帐户，也可能是在部署自定义群集时指定的其他任何存储帐户。
+    用户应确保自定义群集过程中使用的所有脚本和其他项目在群集的整个生存期内一直可用，并且这些文件的版本在此期间也不会发生更改。 如果需要为群集中的节点重置映像，则需要用到这些资源。 最佳做法是，下载用户控制的存储帐户中的所有内容并将其存档。 这可能是默认存储帐户，也可能是在部署自定义群集时指定的其他任何存储帐户。
     例如，在文档提供的 Spark 和 R 自定义群集示例中，我们已为此存储帐户中的资源创建了本地副本：https://hdiconfigactions.blob.core.windows.net/。
 * 确保群集自定义脚本是幂等的
 
-    必须预期在群集的生存期内将对 HDInsight 群集的节点重新制作映像。 只要对群集重新制作映像，就会运行群集自定义脚本。 在某种意义上讲，此脚本必须设计为幂等的，即重新制作映像时，该脚本应确保将群集返回到在初次创建群集时首次运行脚本后所处的相同自定义状态。 例如，如果自定义脚本在其首次运行时在 D:\AppLocation 上安装了应用程序，则在随后每次运行时，重新制作映像后，该脚本应检查应用程序是否在 D:\AppLocation 位置存在，然后才能继续在该脚本中执行其他步骤。
+    用户必须预料到在群集生存期内对 HDInsight 群集的节点重置映像。 只要对群集重置映像，就会运行群集自定义脚本。 从某种意义上讲，此脚本必须设计为幂等的，即重置映像时，该脚本应确保将群集恢复为在初次创建群集时首次运行脚本后所处的自定义状态。 例如，如果自定义脚本首次运行时在 D:\AppLocation 上安装了应用程序，则在随后每次运行时，重置映像后，该脚本应检查应用程序是否在 D:\AppLocation 位置存在，然后才能继续在该脚本中执行其他步骤。
 * 在最佳位置安装自定义组件
 
-    在对群集节点重新制作映像时，可以对 C:\ 资源驱动器和 D:\ 系统驱动器重新格式化，这会导致已安装在这些驱动器上的数据和应用程序丢失。 如果群集中的 Azure 虚拟机 (VM) 节点发生故障，被新节点所取代，则也会发生这种情况。 你可以在 D:\ 驱动器上安装组件，也可以在群集上的 C:\apps 位置中进行安装。 C:\ 驱动器上的其他所有位置都将保留。 指定要使用群集自定义脚本将应用程序或库安装到的位置。
+    在对群集节点重置映像时，可以对 C:\ 资源驱动器和 D:\ 系统驱动器重新格式化，这会导致已安装在这些驱动器上的数据和应用程序丢失。 如果群集中的 Azure 虚拟机 (VM) 节点发生故障，被新节点所取代，则也会发生这种情况。 你可以在 D:\ 驱动器上安装组件，也可以在群集上的 C:\apps 位置中进行安装。 C:\ 驱动器上的其他所有位置都将保留。 指定要使用群集自定义脚本将应用程序或库安装到的位置。
 * 确保群集体系结构的高可用性
 
-    HDInsight 具有实现高可用性的主-被体系结构，在该结构中，一个头节点处于主动模式（HDInsight 服务正在运行），而另一头节点处于备用模式（HDInsight 服务未在运行）。 如果 HDInsight 服务中断，则节点会在主动和被动模式之间切换。 如果使用脚本操作在两个头节点上安装服务以实现高可用性，请注意，HDInsight 故障转移机制无法对这些用户安装的服务执行自动故障转移。 因此，用户在 HDInsight 头节点上安装的服务如果预期具有高可用性，则必须具有自己的故障转移机制，无论是在主-被模式还是在主-主模式下。
+    HDInsight 具有实现高可用性的主-被体系结构，在该结构中，一个头节点处于主动模式（HDInsight 服务正在运行），而另一头节点处于备用模式（HDInsight 服务未在运行）。 如果 HDInsight 服务中断，则节点会在主动和被动模式之间切换。 如果使用脚本操作在两个头节点上安装服务以实现高可用性，请注意，HDInsight 故障转移机制无法对这些用户安装的服务自动执行故障转移。 因此，用户在 HDInsight 头节点上安装的服务如果预期具有高可用性，则必须具有自己的故障转移机制，无论是在主-被模式还是在主-主模式下。
 
-    如果将头节点角色指定为 *ClusterRoleCollection* 参数中的值，则 HDInsight 脚本操作命令会在两个头节点上运行。 因此，设计自定义脚本时，请确保你的脚本知道此设置。 如果在两个头节点上安装并启动相同服务，并且这两个服务以相互争用结束，则你不会遇到问题。 另请注意，数据将在重新制作映像期间丢失，因此，通过脚本操作安装的软件必须能够灵活应对此类事件。 应用程序应设计使用分布在很多节点上的高可用数据。 请注意，有 1/5 之多的群集节点可以同时重新制作映像。
+    如果将头节点角色指定为 *ClusterRoleCollection* 参数中的值，则 HDInsight 脚本操作命令会在两个头节点上运行。 因此，设计自定义脚本时，请确保你的脚本知道此设置。 如果在两个头节点上安装并启动相同服务，并且这两个服务以相互争用结束，则你不会遇到问题。 另请注意，数据会在重置映像期间丢失，因此，通过脚本操作安装的软件必须能够灵活应对此类事件。 应用程序应设计使用分布在很多节点上的高可用数据。 请注意，有 1/5 之多的群集节点可以同时重置映像。
 * 配置自定义组件以使用 Azure Blob 存储
 
-    你在群集节点上安装的自定义组件可能具有使用 Hadoop 分布式文件系统 (HDFS) 存储的默认配置。 应该更改该配置以改用 Azure Blob 存储。 在对群集重新制作映像时，HDFS 文件系统将会进行格式化，因此，可能会丢失存储在此处的所有数据。 改用 Azure Blob 存储可确保将保留你的数据。
+    你在群集节点上安装的自定义组件可能具有使用 Hadoop 分布式文件系统 (HDFS) 存储的默认配置。 应该更改该配置以改用 Azure Blob 存储。 在对群集重置映像时，HDFS 文件系统会进行格式化，因此，可能会丢失存储在此处的所有数据。 改用 Azure Blob 存储可确保保留数据。
 
 ## <a name="common-usage-patterns"></a>常见使用模式
 本部分提供有关实现你在编写自己的自定义脚本时可能遇到的一些常见使用模式的指导。
@@ -200,12 +200,12 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
 
     Save-HDIFile -SrcUri 'https://somestorageaccount.blob.core.windows.net/somecontainer/some-file.jar' -DestFile 'C:\apps\dist\hadoop-2.4.0.2.1.9.0-2196\share\hadoop\mapreduce\some-file.jar'
 
-在此示例中，必须确保存储帐户“somestorageaccount”中的容器“somecontainer”可公开访问。 否则，该脚本将引发“未找到”异常并失败。
+在此示例中，必须确保存储帐户“somestorageaccount”中的容器“somecontainer”可公开访问。 否则，该脚本引发“未找到”异常并失败。
 
 ### <a name="pass-parameters-to-the-add-azurermhdinsightscriptaction-cmdlet"></a>将参数传递给 Add-AzureRmHDInsightScriptAction cmdlet
 若要将多个参数传递给 Add-AzureRmHDInsightScriptAction cmdlet，你需要将字符串值的格式设置为包含脚本的所有参数。 例如：
 
-    "-CertifcateUri wasbs:///abc.pfx -CertificatePassword 123456 -InstallFolderName MyFolder"
+    "-CertifcateUri wasb:///abc.pfx -CertificatePassword 123456 -InstallFolderName MyFolder"
 
 或
 
@@ -241,7 +241,7 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
 2. 向脚本中添加检查，以确保这些脚本可以幂等方式执行，从而使脚本可在同一节点上多次执行。
 3. 使用 **Write-Output** Azure PowerShell cmdlet 输出到 STDOUT 以及 STDERR。 请勿使用 **Write-Host**。
 4. 使用临时文件夹，例如 $env:TEMP，来保留脚本使用的下载文件，并在执行脚本后将其清除。
-5. 仅在 D:\ 或 C:\apps 上安装自定义软件。 不应使用 C: 驱动器上的其他位置，因为这些位置已保留。 请注意，在 C: 驱动器上 C:\apps 文件夹外安装文件可能会导致在对节点重新制作映像时设置失败。
+5. 仅在 D:\ 或 C:\apps 上安装自定义软件。 不应使用 C: 驱动器上的其他位置，因为这些位置已保留。 请注意，在 C: 盘的 C:\apps 文件夹外安装文件可能会导致在对节点重置映像时设置失败。
 6. 如果 OS 级设置或 Hadoop 服务配置文件发生更改，则你可能需要重新启动 HDInsight 服务，使其可以选取任何 OS 级设置，例如脚本中设置的环境变量。
 
 ## <a name="debug-custom-scripts"></a>调试自定义脚本
@@ -297,7 +297,7 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
 
 在此日志中，显然 Spark 脚本操作已在名为 HEADNODE0 的 VM 上执行，并且在执行期间未引发异常。
 
-如果执行失败，则描述该情况的输出也将包含在此日志文件中。 这些日志中提供的信息应该对调试可能出现的脚本问题有所帮助。
+如果执行失败，则描述该情况的输出也包含在此日志文件中。 这些日志中提供的信息应该对调试可能出现的脚本问题有所帮助。
 
 ## <a name="see-also"></a>另请参阅
 * [使用脚本操作自定义 HDInsight 群集][hdinsight-cluster-customize]

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: davidmu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: a7370598dd6570d2e124ed2a10d92cfcd1d5087a
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 0f2c6ce3e5df6c513d8077b3dfcca0beb4a247bf
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -35,7 +35,7 @@ Azure 中的虚拟机 (VM) 将[磁盘](../../storage/storage-managed-disks-overv
 
 若要使用 VHD 作为映像创建其他 VM，请完成以下步骤：
 
-1.  如果你尚未登录 [Azure 门户](https://portal.azure.com/)，请先登录。
+1.  如果尚未登录 [Azure 门户](https://portal.azure.com/)，请先登录。
 2.  [连接到 VM](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 3.  在 VM 上，以管理员身份打开“命令提示符”窗口。
 4.  将目录切换到 *%windir%\system32\sysprep*，然后运行 sysprep.exe。
@@ -79,7 +79,7 @@ Azure 中的虚拟机 (VM) 将[磁盘](../../storage/storage-managed-disks-overv
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[将 VHD 文件上传到 Azure](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
-- [从存储帐户中的非托管磁盘创建托管磁盘](create-managed-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+- [从存储帐户中的非托管磁盘创建托管磁盘](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 - [使用 PowerShell 管理 Azure 磁盘](tutorial-manage-data-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 

@@ -13,17 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 9fc961ca143d4c9d0ab8bb0224fd350df890b55c
+ms.reviewer: japere
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 08a05a70d976104d4e0a37b0a0dd15042b0212d8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/11/2017
+ms.lasthandoff: 07/13/2017
 
 ---
 
-<a id="how-to-use-self-service-application-access" class="xliff"></a>
-
-# 如何使用自助服务应用程序访问
+# <a name="how-to-use-self-service-application-access"></a>如何使用自助服务应用程序访问
 
 在用户能够从其访问面板中自行发现应用程序之前，需要先对要允许用户自行发现并请求访问的任何应用程序启用“自助应用程序访问”。
 
@@ -43,9 +42,7 @@ ms.lasthandoff: 04/11/2017
 
 -   （可选）自动将自助服务分配的用户直接分配到应用程序角色。
 
-<a id="enable-self-service-application-access-to-allow-users-to-find-their-own-applications" class="xliff"></a>
-
-## 启用自助服务应用程序访问以允许用户查找自己的应用程序
+## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>启用自助服务应用程序访问以允许用户查找自己的应用程序
 
 自助应用程序访问是帮助用户自己发现应用程序的绝佳方式，可选择性地允许业务组批准对这些应用程序的访问。 可允许业务组直接从其访问面板，管理分配给用户的密码单一登录应用程序的凭据。
 
@@ -85,10 +82,8 @@ ms.lasthandoff: 04/11/2017
 
 完成自助应用程序配置后，用户可以导航到其[应用程序访问面板](https://myapps.microsoft.com/)，单击“+添加”按钮以查找已启用自助访问的应用。 业务审批人还可以在其[应用程序访问面板](https://myapps.microsoft.com/)中看到通知。 可以启用电子邮件，在用户请求需要审批人批准的应用程序的访问权限时，向审批人发送电子邮件通知。 
 
-这些批准仅支持单个审批工作流，这意味着如果指定了多个审批人，任何一个审批人都可以批准对该应用程序的访问。
+这些批准仅支持单个审批工作流，意味着如果指定多个审批人，任何一个审批人都可以批准对该应用程序的访问。
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 [为自助组管理设置 Azure Active Directory](active-directory-accessmanagement-self-service-group-management.md)
 

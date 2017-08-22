@@ -12,21 +12,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/03/2017
+ms.date: 08/15/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 41435316adaee5c66de503571184fce8937d38ee
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: bc525e7ca8b21e9e5f1e36b3152d71420b041700
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 
 # <a name="event-hubs-net-framework-api-overview"></a>事件中心 .NET Framework API 概述
-本文汇总了一些重要的事件中心 .NET Framework 客户端 API。 有两个类别：管理 API 和运行时 API。 运行时 API 包括发送和接收消息所需的全部操作。 使用管理操作，你可以通过创建、更新和删除实体来管理事件中心实体状态。
+本文汇总了一些重要的事件中心 .NET Framework 客户端 API。 有两个类别：管理 API 和运行时 API。 运行时 API 包括发送和接收消息所需的全部操作。 使用管理操作，可以通过创建、更新和删除实体来管理事件中心实体状态。
 
-监视方案跨越管理和运行时。 有关 .NET API 的详细参考文档，请参阅[服务总线 .NET](/dotnet/api) 和 [EventProcessorHost API](/dotnet/api) 参考。
+监视方案跨越管理和运行时。 有关 .NET API 的详细参考文档，请参阅[服务总线 .NET](/dotnet/api/microsoft.servicebus.messaging) 和 [EventProcessorHost API](/dotnet/api/microsoft.azure.eventhubs.processor) 参考。
 
 ## <a name="management-apis"></a>管理 API
 若要执行以下管理操作，必须对事件中心命名空间具有**管理**权限：

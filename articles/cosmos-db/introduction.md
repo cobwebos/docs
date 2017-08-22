@@ -16,10 +16,10 @@ ms.date: 07/14/2017
 ms.author: mimig
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: 600894bffe367ee1412df6a82f668143829688cc
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: c9d04ae0bc11b99f893e5f003f136fbfe0dfccc9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -50,7 +50,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布式多模型数据库。 �
         * 即将推出其他数据模型 
 
 * 在全球范围内按需求灵活缩放吞吐量和存储
-    * 以[秒](request-units.md)和[分钟](request-units-per-minute.md)为时间粒度轻松缩放数据库吞吐量，并随时对其进行更改。 
+    * 以[秒](request-units.md)为时间粒度轻松缩放数据库吞吐量，并随时对其进行更改。 
     * [透明且自动地](partition-data.md)缩放存储大小，以满足现在和将来对大小的要求。
 
 * 构建快速响应的任务关键型应用程序

@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/12/2017
+ms.date: 08/08/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 9147d2f349f59417e44e288ef057e5857a266815
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 7bdbdf8654ae22ba143d5f87384e04fe4a11d10e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/18/2017
 
 ---
 # <a name="get-started-with-a-log-analytics-workspace"></a>Log Analytics 工作区入门
@@ -28,7 +27,7 @@ ms.lasthandoff: 06/16/2017
 本文为 Log Analytics 简介，以简易教程的方式指导用户在开始使用服务之前完成 Azure 中的最小型部署。 用于存储 Azure 中的管理数据的逻辑容器称为工作区。 用户在查看此信息并完成自己的评估以后，可以删除评估工作区。 本文为教程，因此不讨论业务需求、规划或体系结构指南方面的问题。
 
 >[!NOTE]
->如果你使用 Microsoft Azure 政府版云，可改用 [Azure 政府版监视 + 管理文档](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#log-analytics)。
+>如果使用 Microsoft Azure 政府版云，可改用 [Azure 政府版监视 + 管理文档](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#log-analytics)。
 
 下面快速介绍入门过程：
 
@@ -36,7 +35,7 @@ ms.lasthandoff: 06/16/2017
 
 ## <a name="1-create-an-azure-account-and-sign-in"></a>1 创建 Azure 帐户并登录
 
-如果还没有 Azure 帐户，需先创建一个，然后才能使用 Log Analytics。 可以先创建一个[免费帐户](https://azure.microsoft.com/free/)，这样就可以访问任何 Azure 服务（期限为 30 天）。
+如果还没有 Azure 帐户，需先创建一个，才能使用 Log Analytics。 可以先创建一个[免费帐户](https://azure.microsoft.com/free/)，这样就可以访问任何 Azure 服务（期限为 30 天）。
 
 ### <a name="to-create-a-free-account-and-sign-in"></a>创建免费帐户并登录
 1. 按[创建免费 Azure 帐户](https://azure.microsoft.com/free/)中的指示操作。
@@ -46,9 +45,9 @@ ms.lasthandoff: 06/16/2017
 
 下一步是创建工作区。
 
-1. 在 Azure 门户的应用商店的服务列表中，搜索“Log Analytics”，然后选择“Log Analytics”。  
+1. 在 Azure 门户的应用商店的服务列表中，搜索“Log Analytics”，并选择“Log Analytics”。  
     ![Azure 门户](./media/log-analytics-get-started/log-analytics-portal.png)
-2. 单击“创建”，然后为以下各项选择选项：
+2. 单击“创建”，并为以下各项选择选项：
    * **OMS 工作区** - 键入工作区的名称。
    * **订阅** -若有多个订阅，请选择要与新工作区相关联的订阅。
    * **资源组**
@@ -59,7 +58,12 @@ ms.lasthandoff: 06/16/2017
 4. 选择工作区以在 Azure 门户中查看其详细信息。       
     ![工作区详细信息](./media/log-analytics-get-started/oms-onboard-workspace-details.png)         
 
-## <a name="3-add-solutions-and-solution-offerings"></a>3 添加解决方案和解决方案产品/服务
+## <a name="3-upgrade-workspace-to-new-log-search"></a>3 将工作区升级到新的日志搜索
+新的 Log Analytics 查询语言已发布，需对工作区进行转换才能使用该语言。  如果托管工作区的区域已升级，则会在工作区顶部看到一个紫色横幅，邀请你进行转换。 升级是完全自愿的，并不影响 Log Analytics 以及所添加解决方案的使用体验。  
+
+若要详细了解升级的优点、注意事项和过程，请参阅[将 Azure Log Analytics 升级到新的日志搜索](log-analytics-log-search-upgrade.md)。  
+
+## <a name="4-add-solutions-and-solution-offerings"></a>4 添加解决方案和解决方案产品/服务
 
 接下来，添加管理解决方案和解决方案产品/服务。 管理解决方案是逻辑、可视化效果和数据采集规则的集合，提供围绕特定问题领域制定的指标。 一种解决方案产品/服务是管理解决方案捆绑包。
 
@@ -67,8 +71,8 @@ ms.lasthandoff: 06/16/2017
 
 ### <a name="to-add-solutions-and-solution-offerings"></a>添加解决方案和解决方案产品/服务
 
-1. 在 Azure 门户中单击“新建”，在“搜索应用商店”框中键入“活动 Log Analytics”，然后按 Enter。
-2. 在“全部”边栏选项卡中，选择“活动 Log Analytics”，然后单击“创建”。  
+1. 在 Azure 门户中单击“新建”，在“搜索应用商店”框中键入“活动 Log Analytics”，并按 Enter。
+2. 在“全部”边栏选项卡中，选择“活动 Log Analytics”，并单击“创建”。  
     ![活动 Log Analytics](./media/log-analytics-get-started/activity-log-analytics.png)  
 3. 在*管理解决方案名称*边栏选项卡中，选择要与该管理解决方案相关联的工作区。
 4. 单击“创建” 。  
@@ -77,7 +81,7 @@ ms.lasthandoff: 06/16/2017
     - **安全性与符合性**服务产品，包含反恶意软件评估以及安全和审核解决方案。
     - **自动化与控制**服务产品，包含自动化混合辅助角色、更改跟踪以及系统更新评估（也称“更新管理”）解决方案。 添加解决方案产品/服务时，必须创建自动化帐户。  
         ![自动化帐户](./media/log-analytics-get-started/automation-account.png)  
-6. 可以查看已添加到工作区的管理解决方案，只需导航到“Log Analytics” > “订阅” > ***工作区名称*** > “概览”即可。 将会显示已添加管理解决方案的磁贴。  
+6. 可以查看已添加到工作区的管理解决方案，只需导航到“Log Analytics” > “订阅” > ***工作区名称*** > “概览”即可。 会显示已添加管理解决方案的磁贴。  
     >[!NOTE]
     >我们还没有将任何代理连接到工作区，因此用户看不到所添加解决方案的任何数据。  
 
@@ -95,15 +99,15 @@ ms.lasthandoff: 06/16/2017
 
 - 按照[将 Azure 虚拟机连接到 Log Analytics](log-analytics-azure-vm-extension.md) 中的指示进行操作，使用 Azure 门户将 VM 连接到 Log Analytics。
 
-## <a name="5-view-and-act-on-data"></a>5 查看和处理数据
+## <a name="6-view-and-act-on-data"></a>6 查看和处理数据
 
 用户此前已启用活动 Log Analytics 解决方案、安全性与符合性服务产品，以及自动化与控制服务产品。 接下来，我们开始查看通过解决方案收集的数据以及日志搜索中的结果。
 
-开始时，请先查看解决方案中显示的数据， 然后查看一些可以通过日志搜索访问的日志搜索结果。 日志搜索允许你将环境内来自多个源的任意计算机数据进行组合和关联。 有关详细信息，请参阅 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)。 最后，处理我们使用 OMS 门户（位于 Azure 门户外面）找到的数据。
+开始时，请先查看解决方案中显示的数据， 然后查看一些可以通过日志搜索访问的日志搜索结果。 日志搜索允许将环境内来自多个源的任意计算机数据进行组合和关联。 有关详细信息，请参阅 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)；或者，如果已将工作区转换成新的查询语言，请参阅[了解 Log Analytics 中的日志搜索](log-analytics-log-search-new.md)。 
 
 ### <a name="to-view-antimalware-data"></a>查看反恶意软件数据
 
-1. 在 Azure 门户中，导航到 **Log Analytics** > ***你的工作区***。
+1. 在 Azure 门户中，导航到 **Log Analytics** > ***工作区***。
 2. 在工作区的边栏选项卡的“常规”下单击“概览”。  
     ![概述](./media/log-analytics-get-started/overview.png)
 3. 单击“反恶意软件评估”磁贴。 在此示例中，可以看到 Windows Defender 已安装在一台计算机上，但其签名已过期。  
@@ -133,7 +137,7 @@ ms.lasthandoff: 06/16/2017
     ![“更新管理”磁贴](./media/log-analytics-get-started/update-management.png)
 7. 在“更新部署”页中，单击“添加”创建*更新运行*。  
     ![更新部署](./media/log-analytics-get-started/update-management-update-deployments.png)
-8.  在“新建更新部署”页中，键入更新部署的名称，选择要更新的计算机（此示例中为 *getstarted*），选择一个计划，然后单击“保存”。  
+8.  在“新建更新部署”页中，键入更新部署的名称，选择要更新的计算机（此示例中为 *getstarted*），选择一个计划，并单击“保存”。  
     ![新部署](./media/log-analytics-get-started/new-deployment.png)  
     保存更新部署以后，可以看到计划的更新。  
     ![计划的更新](./media/log-analytics-get-started/scheduled-update.png)  

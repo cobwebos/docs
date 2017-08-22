@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: d2f94ead2e5c7e60037e601ce65a03e809b66dd3
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 29e13b51e094047be07843ad3d865290be32446b
 ms.contentlocale: zh-cn
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
@@ -40,10 +40,10 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 1. 登录到 [Microsoft Azure 门户](https://portal.azure.com)。
 2. 创建 Application Insights 资源。 将应用程序类型设置为 Java Web 应用程序。
 
-    ![填写名称，选择 Java Web 应用，然后单击“创建”](./media/app-insights-java-get-started/02-create.png)
+    ![填写名称，选择 Java Web 应用，并单击“创建”](./media/app-insights-java-get-started/02-create.png)
 3. 查找新资源的检测密钥。 稍后需要将此密钥粘贴到代码项目中。
 
-    ![在新资源概述中，单击“属性”，然后复制检测密钥](./media/app-insights-java-get-started/03-key.png)
+    ![在新资源概述中，单击“属性”，并复制检测密钥](./media/app-insights-java-get-started/03-key.png)
 
 ## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2.将用于 Java 的 Application Insights SDK 添加到项目
 *为项目选择适当的方式。*
@@ -158,7 +158,7 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 * 检测密钥随遥测的每个项一起发送，并告知 Application Insights 在资源中显示它。
 * HTTP 请求组件是可选的。 它自动将请求和响应时间的遥测数据发送到门户。
 * 事件关联是对 HTTP 请求组件的补充。 它将标识符分配到服务器收到的每个请求，并将此标识符添加为遥测的每个项的“Operation.Id”属性。 使用它可以通过在[诊断搜索][diagnostic]中设置筛选器，来关联与每个请求关联的遥测。
-* 可以从 Azure 门户将 Application Insights 密钥动态传递为系统属性 (-DAPPLICATION_INSIGHTS_IKEY=your_ikey)。 如果未定义任何属性，它将检查 Azure 应用设置中的环境变量 (APPLICATION_INSIGHTS_IKEY)。 如果未定义这两个属性，则使用 ApplicationInsights.xml 中的默认 InstrumentationKey。 此序列有助于动态管理不同环境的不同 InstrumentationKey。
+* 可以从 Azure 门户将 Application Insights 密钥动态传递为系统属性 (-DAPPLICATION_INSIGHTS_IKEY=your_ikey)。 如果未定义任何属性，它会检查 Azure 应用设置中的环境变量 (APPLICATION_INSIGHTS_IKEY)。 如果未定义这两个属性，则使用 ApplicationInsights.xml 中的默认 InstrumentationKey。 此序列有助于动态管理不同环境的不同 InstrumentationKey。
 
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>设置检测密钥的替代方法
 Application Insights SDK 按以下顺序查找密钥：
@@ -229,7 +229,7 @@ Application Insights SDK 按以下顺序查找密钥：
 ## <a name="6-view-your-telemetry-in-application-insights"></a>6.在 Application Insights 中查看遥测数据
 返回 [Microsoft Azure 门户](https://portal.azure.com)中的 Application Insights 资源。
 
-“概述”边栏选项卡中显示了 HTTP 请求数据。 （如果未显示，请稍候片刻，然后单击“刷新”。）
+“概述”边栏选项卡中显示了 HTTP 请求数据。 （如果未显示，请稍候片刻，并单击“刷新”。）
 
 ![示例数据](./media/app-insights-java-get-started/5-results.png)
 
@@ -293,7 +293,7 @@ Application Insights 中显示两种类型的数据：聚合数据（存储并�
 ![](./media/app-insights-java-get-started/11-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>自定义性能计数器收集
-若要禁用收集性能计数器的标准集，请将以下代码添加到 ApplicationInsights.xml 文件的根节点下：
+要禁用收集性能计数器的标准集，请将以下代码添加到 ApplicationInsights.xml 文件的根节点下：
 
 ```XML
     <PerformanceCounters>
@@ -385,7 +385,7 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 * [监视 Unix 性能计数器](app-insights-java-collectd.md)
 * [将监视功能添加到网页](app-insights-javascript.md)，监视器页面加载时间、AJAX 调用、浏览器异常。
 * 编写[自定义遥测](app-insights-api-custom-events-metrics.md)来跟踪浏览器或服务器中的使用情况。
-* 创建[仪表板](app-insights-dashboards.md)，将用于监视系统的关键图表组合在一起。
+* 创建[仪表板](app-insights-dashboards.md)，用于监视系统的关键图表组合在一起。
 * 使用[分析](app-insights-analytics.md)从应用通过遥测执行功能强大的查询
 * 有关详细信息，请参阅 [Java 开发人员中心](/develop/java/)。
 

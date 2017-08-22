@@ -15,13 +15,12 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
-ms.author: donnam, glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 85a3386c8159eb1abf01ccd35c6aea04f5710d5c
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
+ms.openlocfilehash: f39f674bf576a2661a0e03710b9005b0515b3aa5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="azure-functions-queue-storage-bindings"></a>Azure Functions 队列存储绑定
@@ -75,7 +74,7 @@ ms.lasthandoff: 05/31/2017
 * ExpirationTime - `DateTimeOffset?` 类型。 消息过期的时间。
 * Id - `string` 类型。 队列消息 ID。
 * InsertionTime - `DateTimeOffset?` 类型。 消息添加到队列的时间。
-* NextVisibleTime - `DateTimeOffset? 类型。 消息下一次可见的时间。
+* NextVisibleTime - 类型 `DateTimeOffset?`。 消息下一次可见的时间。
 * PopReceipt - `string` 类型。 消息的 pop 接收方。
 
 请参阅如何使用[触发器示例](#triggersample)中的队列元数据。
@@ -294,3 +293,4 @@ module.exports = function(context) {
 <!-- LINKS -->
 
 [`CloudQueueMessage`]: /dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage
+

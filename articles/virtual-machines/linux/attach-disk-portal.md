@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 185e09366a8d68746415f4cbbac217d4ad558de7
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: fb3b4ea612777d0ba801342dacf4b2ece46afed6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="how-to-attach-a-data-disk-to-a-linux-vm-in-the-azure-portal"></a>如何在 Azure 门户中将数据磁盘附加到 Linux VM
-本文介绍如何通过 Azure 门户将新磁盘和现有磁盘附加到 Linux 虚拟机。 也可以[在 Azure 门户中将数据磁盘附加到 Windows VM](../windows/attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 可以选择使用 Azure 托管磁盘或非托管磁盘。 托管磁盘由 Azure 平台处理，无需任何准备或位置来存储它们。 非托管磁盘需要存储帐户，且存在一些[适用的配额和限制](../../azure-subscription-service-limits.md#storage-limits)。 有关 Azure 托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../../storage/storage-managed-disks-overview.md)。
+本文介绍如何通过 Azure 门户将新磁盘和现有磁盘附加到 Linux 虚拟机。 也可以[在 Azure 门户中将数据磁盘附加到 Windows VM](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 可以选择使用 Azure 托管磁盘或非托管磁盘。 托管磁盘由 Azure 平台处理，无需任何准备或位置来存储它们。 非托管磁盘需要存储帐户，且存在一些[适用的配额和限制](../../azure-subscription-service-limits.md#storage-limits)。 有关 Azure 托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../../storage/storage-managed-disks-overview.md)。
 
 将磁盘附加到 VM 前，请查看以下提示：
 
@@ -47,11 +47,11 @@ ms.lasthandoff: 04/03/2017
 ### <a name="attach-a-new-disk"></a>附加新磁盘
 
 1. 在“磁盘”边栏选项卡上，单击“+ 添加数据磁盘”。
-2. 单击“名称”的下拉列表菜单，然后选择“创建磁盘”：
+2. 单击“名称”的下拉列表菜单，并选择“创建磁盘”：
 
     ![创建 Azure 托管磁盘](./media/attach-disk-portal/create-new-md.png)
 
-3. 输入托管磁盘的名称。 查看默认设置，根据需要更新，然后单击“创建”。
+3. 输入托管磁盘的名称。 查看默认设置，根据需要更新，并单击“创建”。
    
    ![检查磁盘设置](./media/attach-disk-portal/create-new-md-settings.png)
 
@@ -80,7 +80,7 @@ ms.lasthandoff: 04/03/2017
 ### <a name="attach-a-new-disk"></a>附加新磁盘
 
 1. 在“磁盘”边栏选项卡上，单击“+ 添加数据磁盘”。
-2. 检查默认设置，根据需要更新，然后单击“确定”。
+2. 检查默认设置，根据需要更新，并单击“确定”。
    
    ![检查磁盘设置](./media/attach-disk-portal/attach-new.png)
 3. 在 Azure 创建磁盘并将磁盘附加到虚拟机之后，新磁盘将出现在“数据磁盘”下的虚拟机磁盘设置中。

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: 04810ffa33d90d31003d0919c3edb2710fed453c
+ms.translationtype: HT
+ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
+ms.openlocfilehash: cd314049a536ad4a95e243eac26aa044c90c8164
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 07/17/2017
 
 ---
 # <a name="azure-cosmos-db-documentdb-api-sql-query-cheat-sheet-pdf"></a>Azure Cosmos DB：DocumentDB API SQL 查询备忘单 PDF
@@ -40,7 +39,7 @@ Cosmos DB 支持使用 [SQL](documentdb-sql-query.md) 的 JSON 文档的相关�
 
 ## <a name="more-help-with-writing-sql-queries"></a>编写 SQL 查询的更多帮助
 * 有关 Cosmos DB 中可用的查询选项的演练操作，请参阅 [Cosmos DB 查询](documentdb-sql-query.md)。
-* 有关参考文档的相关信息，请参阅 [Cosmos DB SQL 查询语言](https://msdn.microsoft.com/library/azure/dn782250.aspx)。
+* 若要了解相关的引用文档，请参阅 [Azure Cosmos DB DocumentDB API：SQL 语法参考](https://msdn.microsoft.com/library/azure/dn782250.aspx)。
 
 ## <a name="release-notes"></a>发行说明
 于 7/29/2016 更新以包括 TOP。

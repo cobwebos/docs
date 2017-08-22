@@ -1,5 +1,5 @@
 ---
-title: "在基于 Linux 的 HDInsight 上使用 Hive 分析航班延误数据 | Microsoft Docs"
+title: "在 HDInsight 上使用 Hive 分析航班延误数据 — Azure | Microsoft Docs"
 description: "了解如何在基于 Linux 的 HDInsight 上使用 Hive 分析航班数据，然后使用 Sqoop 将数据导出到 SQL 数据库中。"
 services: hdinsight
 documentationcenter: 
@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 07/31/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: cf460eed4bd290fbdcb9670a4ec4999f4c96c275
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 88031b3698ec575eb48531b118c45f11ef7f19c0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上使用 Hive 分析航班延误数据
@@ -28,7 +28,7 @@ ms.lasthandoff: 05/05/2017
 了解如何在基于 Linux 的 HDInsight 上使用 Hive 分析航班延误数据，然后使用 Sqoop 将数据导出到 Azure SQL 数据库中。
 
 > [!IMPORTANT]
-> 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+> 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -52,9 +52,9 @@ ms.lasthandoff: 05/05/2017
 
 3. 单击“下载”。
 
-## <a name="upload-the-data"></a>上载数据
+## <a name="upload-the-data"></a>上传数据
 
-1. 使用以下命令将该 zip 文件上载到 HDInsight 群集头节点：
+1. 使用以下命令将该 zip 文件上传到 HDInsight 群集头节点：
 
     ```
     scp FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:
@@ -65,7 +65,7 @@ ms.lasthandoff: 05/05/2017
    > [!NOTE]
    > 如果使用密码对 SSH 登录名进行身份验证，则系统会提示输入密码。 如果你使用了公钥，则可能需要使用 `-i` 参数并指定匹配私钥的路径。 例如，`scp -i ~/.ssh/id_rsa FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`。
 
-2. 上载完成后，使用 SSH 连接到群集：
+2. 上传完成后，使用 SSH 连接到群集：
 
     ```ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net```
 
@@ -163,7 +163,7 @@ ms.lasthandoff: 05/05/2017
 3. 若要启动 Hive 并运行 **flightdelays.hql** 文件，请使用以下命令：
 
     ```
-    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin -f flightdelays.hql
+    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
     ```
 
    > [!NOTE]
@@ -172,7 +172,7 @@ ms.lasthandoff: 05/05/2017
 4. __flightdelays.hql__ 脚本完成运行后，使用以下命令打开交互式 Beeline 会话：
 
     ```
-    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
+    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
     ```
 
 5. 收到 `jdbc:hive2://localhost:10001/>` 提示时，请使用以下查询从导入的航班延误数据中检索数据。

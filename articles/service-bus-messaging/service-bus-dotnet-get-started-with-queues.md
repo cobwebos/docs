@@ -14,11 +14,11 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 06/26/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 02d0ce093bc42cffa4f3993826c61c8aeca4d033
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 99a377db6341d90d263b98e14227db61dd9beabd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="get-started-with-service-bus-queues"></a>服务总线队列入门
@@ -56,8 +56,8 @@ ms.lasthandoff: 07/01/2017
 启动 Visual Studio 并创建新的控制台应用 (.NET Framework) 项目。
 
 ### <a name="add-the-service-bus-nuget-package"></a>添加服务总线 NuGet 包
-1. 右键单击新创建的项目，然后选择“管理 NuGet 包” 。
-2. 单击“浏览”选项卡，搜索“Microsoft Azure 服务总线”，然后选择“WindowsAzure.ServiceBus”项。 单击“安装”以完成安装，然后关闭此对话框。
+1. 右键单击新创建的项目，并选择“管理 NuGet 包” 。
+2. 单击“浏览”选项卡，搜索“Microsoft Azure 服务总线”，然后选择“WindowsAzure.ServiceBus”项。 单击“安装”以完成安装，并关闭此对话框。
    
     ![选择 NuGet 包][nuget-pkg]
 
@@ -179,7 +179,7 @@ ms.lasthandoff: 07/01/2017
    
     ![队列长度][queue-message-receive]
 
-祝贺你！ 你已创建队列、发送和接收消息。
+祝贺你！ 已创建队列、发送和接收消息。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -199,7 +199,6 @@
 #### [Hadoop 内存和性能](hdinsight-hadoop-stack-trace-error-messages.md)
 #### [在 Linux 上访问 Hadoop YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 #### [为 Hadoop 服务启用堆转储](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-#### [分析 HDInsight 日志](hdinsight-debug-jobs.md)
 #### [了解和解决 WebHCat 错误](hdinsight-hadoop-templeton-webhcat-debug-errors.md)
 #### [通过 Hive 设置解决内存不足错误](hdinsight-hadoop-hive-out-of-memory-error-oom.md)
 #### [使用 Ambari 视图调试 Tez 作业](hdinsight-debug-ambari-tez-view.md)
