@@ -12,20 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: baa8880e47c827e09f6027637d73f2522fec60b9
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: edcf294856582569c00f7cf49beb3a481e28d7d8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/07/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Application Insights 中 Analytics 的演示
-[Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍 Analytics 查询语言。
+[Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍 Log Analytics 查询语言。
 
 * **[观看介绍视频](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**。
-* **[针对模拟数据测试驱动 Analytics](https://analytics.applicationinsights.io/demo)**（如果应用尚未将数据发送到 Application Insights）。
+* **[在模拟数据上体验 Analytics](https://analytics.applicationinsights.io/demo)**（如果应用尚未将数据发送到 Application Insights）
 * **[SQL 用户的备忘单](https://aka.ms/sql-analytics)**转换最常见的惯用语言。
 
 让我们一起来逐步了解一些基本查询，帮助你入门。
@@ -33,9 +32,9 @@ ms.lasthandoff: 04/07/2017
 ## <a name="connect-to-your-application-insights-data"></a>连接到 Application Insights 数据
 在 Application Insights 中从应用的[概述边栏选项卡](app-insights-dashboards.md)打开 Analytics：
 
-![依次打开 portal.azure.com 和 Application Insights 资源，然后单击“Analytics”。](./media/app-insights-analytics-tour/001.png)
+![依次打开 portal.azure.com 和 Application Insights 资源，并单击“Analytics”。](./media/app-insights-analytics-tour/001.png)
 
-## <a name="takeapp-insights-analytics-referencemdtake-operator-show-me-n-rows"></a>[Take](app-insights-analytics-reference.md#take-operator)：显示 n 行
+## <a name="takehttpsdocsloganalyticsioquerylanguagequerylanguagetakeoperatorhtml-show-me-n-rows"></a>[Take](https://docs.loganalytics.io/queryLanguage/query_language_takeoperator.html)：显示 n 行
 记录用户操作的数据点（通常是 Web 应用收到的 HTTP 请求）存储在名为 `requests` 的表中。 每一行均为应用从 Application Insights SDK 接收的遥测数据点。
 
 先来检查一下表中的几个示例行：
@@ -43,7 +42,7 @@ ms.lasthandoff: 04/07/2017
 ![结果](./media/app-insights-analytics-tour/010.png)
 
 > [!NOTE]
-> 先将光标置于语句中的某一位置，然后单击“转到”。 可将一个语句拆分为多行，但请勿在语句中放置空白行。 使用空白行便于在窗口中保留多个单独查询。
+> 先将光标置于语句中的某一位置，并单击“转到”。 可将一个语句拆分为多行，但请勿在语句中放置空白行。 使用空白行便于在窗口中保留多个单独查询。
 >
 >
 
@@ -60,7 +59,7 @@ ms.lasthandoff: 04/07/2017
 >
 >
 
-## <a name="topapp-insights-analytics-referencemdtop-operator-and-sortapp-insights-analytics-referencemdsort-operator"></a>[Top](app-insights-analytics-reference.md#top-operator) 和 [sort](app-insights-analytics-reference.md#sort-operator)
+## <a name="tophttpsdocsloganalyticsioquerylanguagequerylanguagetopoperatorhtml-and-sorthttpsdocsloganalyticsioquerylanguagequerylanguagesortoperatorhtml"></a>[Top](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) 和 [sort](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html)
 `take` 用于快速获取结果示例，但其不以特定顺序显示表中的行。 若要获取有序视图，请使用 `top`（针对示例）或 `sort`（针对整个表）。
 
 显示前 n 行，按特定列排序：
@@ -86,7 +85,7 @@ ms.lasthandoff: 04/07/2017
 
 还可使用表视图中的列标头对屏幕上的结果进行排序。 当然，如果已使用 `take` 或 `top` 来检索表中的部分内容，则仅会重新排列已检索到的记录。
 
-## <a name="whereapp-insights-analytics-referencemdwhere-operator-filtering-on-a-condition"></a>[Where](app-insights-analytics-reference.md#where-operator)：按条件筛选
+## <a name="wherehttpsdocsloganalyticsioquerylanguagequerylanguagewhereoperatorhtml-filtering-on-a-condition"></a>[Where](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html)：按条件筛选
 
 来了解一下仅返回特定结果代码的请求：
 
@@ -105,7 +104,7 @@ ms.lasthandoff: 04/07/2017
 * `==`、`<>`、`!=`：等于和不等于
 * `=~`、`!~`：不区分大小写的字符串等于和不等于。 还有许多其他字符串比较运算符。
 
-了解[标量表达式](app-insights-analytics-reference.md#scalars)的所有相关信息。
+<!---Read all about [scalar expressions]().--->
 
 ### <a name="getting-the-right-type"></a>获取正确的类型
 查找失败的请求：
@@ -115,10 +114,11 @@ ms.lasthandoff: 04/07/2017
     requests
     | where isnotempty(resultCode) and toint(resultCode) >= 400
 ```
+<!---
+`resultCode` has type string, so we must cast it app-insights-analytics-reference.md#casts for a numeric comparison.
+--->
 
-`resultCode` 具有类型字符串，因此必须[将其转换](app-insights-analytics-reference.md#casts)以进行数值比较。
-
-## <a name="time-range"></a>时间范围
+## <a name="time"></a>时间
 
 默认情况下，查询限制在最近 24 小时内。 但可更改此范围：
 
@@ -160,11 +160,11 @@ ms.lasthandoff: 04/07/2017
 
 ```
 
-[日期和时间参考](app-insights-analytics-reference.md#date-and-time)。
+[日期和时间参考](https://docs.loganalytics.io/concepts/concepts_datatypes_datetime.html)。
 
 
-## <a name="projectapp-insights-analytics-referencemdproject-operator-select-rename-and-compute-columns"></a>[Project](app-insights-analytics-reference.md#project-operator)：选择、重命名和计算列
-使用 [`project`](app-insights-analytics-reference.md#project-operator) 挑选出所需列：
+## <a name="projecthttpsdocsloganalyticsioquerylanguagequerylanguageprojectoperatorhtml-select-rename-and-compute-columns"></a>[Project](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html)：选择、重命名和计算列
+使用 [`project`](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) 挑选出所需列：
 
 ```AIQL
 
@@ -189,15 +189,15 @@ ms.lasthandoff: 04/07/2017
 
 ![结果](./media/app-insights-analytics-tour/270.png)
 
-* 如果采用括号（`['...']` 或 `["..."]`）将列名称括起来，则[列名称](app-insights-analytics-reference.md#names)可包含空格或符号
+* 如果采用括号（`['...']` 或 `["..."]`）将列名称括起来，则列名称可包含空格或符号
 * `%` 是常用的取模运算符。
 * `1d`（一个数字加上“d”）是一个时间跨度文本，表示一天。 以下为其他时间跨度文本：`12h`、`30m`、`10s`、`0.01s`。
 * `floor`（别名 `bin`）会向下舍入值，使其成为所提供的基值的最近倍数。 因此 `floor(aTime, 1s)` 会向下舍入时间，使其成为最近的秒数。
 
-[表达式](app-insights-analytics-reference.md#scalars)可包括所有常用运算符（`+`、`-`...），且含有一系列有用的函数。
+表达式可包含所有常用运算符（`+`、`-`、...），且含有一系列有用的函数。
 
-## <a name="extendapp-insights-analytics-referencemdextend-operator-compute-columns"></a>[Extend](app-insights-analytics-reference.md#extend-operator)：计算列
-如果只想将列添加到现有列，请使用 [`extend`](app-insights-analytics-reference.md#extend-operator)：
+## <a name="extend"></a>Extend
+如果只想将列添加到现有列，请使用 [`extend`](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html)：
 
 ```AIQL
 
@@ -206,11 +206,11 @@ ms.lasthandoff: 04/07/2017
     | extend timeOfDay = floor(timestamp % 1d, 1s)
 ```
 
-如果想保留所有现有列，使用 [`extend`](app-insights-analytics-reference.md#extend-operator) 比 [`project`](app-insights-analytics-reference.md#project-operator) 更简便。
+如果想保留所有现有列，使用 [`extend`](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html) 比 [`project`](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) 更简便。
 
 ### <a name="convert-to-local-time"></a>转换为本地时间
 
-时间戳始终为 UTC。 因此，如果你位于正值冬季的美国太平洋海岸，则可能需要：
+时间戳始终为 UTC。 因此，如果位于正值冬季的美国太平洋海岸，则可能需要：
 
 ```AIQL
 
@@ -220,7 +220,7 @@ ms.lasthandoff: 04/07/2017
 ```
 
 
-## <a name="summarizeapp-insights-analytics-referencemdsummarize-operator-aggregate-groups-of-rows"></a>[Summarize](app-insights-analytics-reference.md#summarize-operator)：聚合成组的行
+## <a name="summarizehttpsdocsloganalyticsioquerylanguagequerylanguagesummarizeoperatorhtml-aggregate-groups-of-rows"></a>[Summarize](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html)：聚合成组的行
 `Summarize` 会向成组的行应用指定的聚合函数。
 
 例如，会在 `duration` 字段中报告 Web 应用响应请求所需的时间。 来看看所有请求的平均响应时间：
@@ -258,7 +258,7 @@ ms.lasthandoff: 04/07/2017
 
 如果要对组中的行数进行计数，还可使用 `count()` 聚合（以及一个计数运算）。
 
-存在一系列[聚合函数](app-insights-analytics-reference.md#aggregations)。
+存在一系列[聚合函数](https://docs.loganalytics.io/learn/tutorials/aggregations.html)。
 
 ## <a name="charting-the-results"></a>绘制结果图表
 ```AIQL
@@ -399,7 +399,7 @@ ms.lasthandoff: 04/07/2017
 
 ![](./media/app-insights-analytics-tour/290.png)
 
-## <a name="percentilesapp-insights-analytics-referencemdpercentiles"></a>[百分点值](app-insights-analytics-reference.md#percentiles)
+## <a name="percentileshttpsdocsloganalyticsioquerylanguagequerylanguagepercentilesaggfunctionhtml"></a>[百分点值](https://docs.loganalytics.io/queryLanguage/query_language_percentiles_aggfunction.html)
 哪些持续时间范围涵盖不同会话百分比？
 
 使用上述查询，但替换掉最后一行：
@@ -460,7 +460,7 @@ ms.lasthandoff: 04/07/2017
 执行联接前，最好使用 `project` 选中所需列。
 在同一子句中，重命名时间戳列。
 
-## <a name="letapp-insights-analytics-referencemdlet-clause-assign-a-result-to-a-variable"></a>[Let](app-insights-analytics-reference.md#let-clause)：将结果分配给变量
+## <a name="lethttpsdocsloganalyticsioquerylanguagequerylanguageletstatementhtml-assign-a-result-to-a-variable"></a>[Let](https://docs.loganalytics.io/queryLanguage/query_language_letstatement.html)：将结果分配给变量
 
 使用 `let` 分离出上一个表达式的各部分。 结果不变：
 
@@ -520,7 +520,7 @@ requests
     | extend method1 = tostring(details[0].parsedStack[1].method)
 ```
 
-请注意，需使用[转换](app-insights-analytics-reference.md#casts)，将其转换为适当类型。
+请注意，需要将结果转换为适当的类型。
 
 
 ## <a name="custom-properties-and-measurements"></a>自定义属性和度量值
@@ -581,7 +581,7 @@ Analytics 报表在仪表板上看起来不错，但有时需要将数据转换�
 
 若要导入表，请在“架构”边栏选项卡的“其他数据源”下，遵循说明，通过上传数据示例，添加新数据源。 然后使用此定义上传表。
 
-导入功能当前处于预览状态，因此一开始将在“其他数据源”下看到“联系我们”的链接。 使用此链接登录预览计划，然后该链接将替换为“添加新数据源”按钮。
+导入功能当前处于预览状态，因此一开始将在“其他数据源”下看到“联系我们”的链接。 使用此链接登录预览计划，并该链接将替换为“添加新数据源”按钮。
 
 
 ## <a name="tables"></a>表

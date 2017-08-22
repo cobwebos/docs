@@ -17,10 +17,10 @@ ms.date: 07/25/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 9cb7aa1e0b4e96a6f40620685b5505587b94ec66
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: bdeb4d5ca1d9ff4d7dfd0961690412dd7530572a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -81,12 +81,18 @@ ms.lasthandoff: 07/14/2017
 
 6. 当系统询问你是否要运行 nvidia-xconfig 实用程序以更新 X 配置文件时，请选择“是”。
 
-7. 安装完成后，将以下内容添加到 `/etc/nvidia/gridd.conf.template`：
+7. 完成安装后，将 /etc/nvidia/gridd.conf.template 复制到位于 /etc/nvidia/ 的新文件 gridd.conf
+
+  ```bash
+  sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
+  ```
+
+8. 将下列内容添加到 `/etc/nvidia/gridd.conf`：
  
   ```
   IgnoreSP=TRUE
   ```
-8. 重新启动 VM，然后继续验证安装。
+9. 重新启动 VM，然后继续验证安装。
 
 
 ### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>基于 CentOS 的 7.3 或 Red Hat Enterprise Linux 7.3
@@ -139,12 +145,18 @@ ms.lasthandoff: 07/14/2017
   ``` 
 6. 当系统询问你是否要运行 nvidia-xconfig 实用程序以更新 X 配置文件时，请选择“是”。
 
-7. 安装完成后，将以下内容添加到 `/etc/nvidia/gridd.conf.template`：
+7. 完成安装后，将 /etc/nvidia/gridd.conf.template 复制到位于 /etc/nvidia/ 的新文件 gridd.conf
+  
+  ```bash
+  sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
+  ```
+  
+8. 将下列内容添加到 `/etc/nvidia/gridd.conf`：
  
   ```
   IgnoreSP=TRUE
   ```
-8. 重新启动 VM，然后继续验证安装。
+9. 重新启动 VM，然后继续验证安装。
 
 ### <a name="verify-driver-installation"></a>验证驱动程序安装
 
@@ -349,3 +361,4 @@ sudo reboot
     * [NVIDIA Tesla M60](http://www.nvidia.com/object/tesla-m60.html)（适用于 Azure NV VM）
 
 * 若要捕获安装了 NVIDIA 驱动程序的 Linux VM 映像，请参阅[如何通用化和捕获 Linux 虚拟机](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+

@@ -1,6 +1,6 @@
 ---
 title: "Log Analytics HTTP 数据收集器 API | Microsoft Docs"
-description: "可以使用 Log Analytics HTTP 数据收集器 API，从能够调用 REST API 的任何客户端将 POST JSON 数据添加到 Log Analytics 存储库。 本文将介绍如何使用 API，并提供关于如何使用不同的编程语言发布数据的示例。"
+description: "可以使用 Log Analytics HTTP 数据收集器 API，从能够调用 REST API 的任何客户端将 POST JSON 数据添加到 Log Analytics 存储库。 本文介绍如何使用 API，并提供关于如何使用不同的编程语言发布数据的示例。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2017
+ms.date: 07/13/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 2b5899ba43f651ae6f5fdf84d7aa5ee35d81b738
-ms.openlocfilehash: be27695cd1d998eedff0ca76f6ae9d4ff69bb97b
-ms.lasthandoff: 01/05/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: b0c45ff8c1d4c9d35fbb3c8839b38a20df277055
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api"></a>使用 HTTP 数据收集器 API 将数据发送到 Log Analytics
@@ -57,7 +57,7 @@ Log Analytics 存储库中的所有数据都存储为具有某种特定记录类
 | 授权 |授权签名。 在本文的后面部分，可以了解有关如何创建 HMAC-SHA256 标头的信息。 |
 | Log-Type |指定正在提交的数据的记录类型。 目前，日志类型仅支持字母字符。 它不支持数字或特殊字符。 |
 | x-ms-date |处理请求的日期，采用 RFC 1123 格式。 |
-| time-generated-field |数据中包含数据项时间戳的字段名称。 如果指定某一字段，其内容将用于 **TimeGenerated**。 如果未指定此字段，**TimeGenerated** 的默认值是引入消息的时间。 消息字段的内容应遵循 ISO 8601 格式 YYYY-MM-DDThh:mm:ssZ。 |
+| time-generated-field |数据中包含数据项时间戳的字段名称。 如果指定某一字段，其内容用于 **TimeGenerated**。 如果未指定此字段，**TimeGenerated** 的默认值是引入消息的时间。 消息字段的内容应遵循 ISO 8601 格式 YYYY-MM-DDThh:mm:ssZ。 |
 
 ## <a name="authorization"></a>授权
 Log Analytics HTTP 数据收集器 API 的任何请求都必须包含授权标头。 若要验证请求，必须针对发出请求的工作区使用主要或辅助密钥对请求进行签名。 然后，传递该签名作为请求的一部分。   
@@ -86,7 +86,7 @@ StringToSign = VERB + "\n" +
 POST\n1024\napplication/json\nx-ms-date:Mon, 04 Apr 2016 08:00:00 GMT\n/api/logs
 ```
 
-如果具有签名字符串，可在 UTF-8 编码的字符串上使用 HMAC-SHA256 算法对其进行编码，然后以 Base64 形式对结果进行编码。 使用以下格式：
+如果具有签名字符串，可在 UTF-8 编码的字符串上使用 HMAC-SHA256 算法对其进行编码，并以 Base64 形式对结果进行编码。 使用以下格式：
 
 ```
 Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
@@ -124,11 +124,11 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 ```
 
 ## <a name="record-type-and-properties"></a>记录类型和属性
-在通过 Log Analytics HTTP 数据收集器 API 提交数据时，定义自定义的记录类型。 目前，无法将数据写入已由其他数据类型和解决方案创建的现有记录类型。 Log Analytics 会读取传入数据，然后创建与输入值的数据类型匹配的属性。
+在通过 Log Analytics HTTP 数据收集器 API 提交数据时，定义自定义的记录类型。 目前，无法将数据写入已由其他数据类型和解决方案创建的现有记录类型。 Log Analytics 会读取传入数据，并创建与输入值的数据类型匹配的属性。
 
-对 Log Analytics API 的每个请求必须包括 **Log-Type** 标头以及记录类型的名称。 后缀 **_CL** 会自动附加到所输入的名称作为自定义日志，以将其与其他日志类型区分开来。 例如，如果你输入的名称为 **MyNewRecordType**，Log Analytics 将创建类型为 **MyNewRecordType_CL** 的记录。 这将有助于确保用户创建的类型名称与当前或未来的 Microsoft 解决方案中提供的名称之间不存在任何冲突。
+对 Log Analytics API 的每个请求必须包括 **Log-Type** 标头以及记录类型的名称。 后缀 **_CL** 会自动附加到所输入的名称作为自定义日志，以将其与其他日志类型区分开来。 例如，如果输入的名称为 **MyNewRecordType**，Log Analytics 将创建类型为 **MyNewRecordType_CL** 的记录。 这会有助于确保用户创建的类型名称与当前或未来的 Microsoft 解决方案中提供的名称之间不存在任何冲突。
 
-若要标识属性的数据类型，Log Analytics 将为属性名称添加后缀。 如果某个属性包含 null 值，该属性将不包括在该记录中。 下表列出了属性数据类型及相应的后缀：
+要标识属性的数据类型，Log Analytics 将为属性名称添加后缀。 如果某个属性包含 null 值，该属性将不包括在该记录中。 下表列出了属性数据类型及相应的后缀：
 
 | 属性数据类型 | 后缀 |
 |:--- |:--- |
@@ -147,23 +147,23 @@ Log Analytics 对每个属性所使用的数据类型取决于新记录的记录
 
 ![示例记录 1](media/log-analytics-data-collector-api/record-01.png)
 
-如果提交了这接下来的条目，并且所有值都已格式化为字符串，则这些属性将不会更改。 这些值都可以转换为现有数据类型：
+如果提交了下面的条目，并且所有值都采用字符串格式，则这些属性将不会更改。 这些值都可以转换为现有数据类型：
 
 ![示例记录 2](media/log-analytics-data-collector-api/record-02.png)
 
-但是，如果进行了这接下来的提交，Log Analytics 会创建新属性 **boolean_d** 和 **string_d**。 这些值不能转换：
+但是，如果提交了下面的内容，Log Analytics 会创建新属性 **boolean_d** 和 **string_d**。 这些值不能转换：
 
 ![示例记录 3](media/log-analytics-data-collector-api/record-03.png)
 
-如果提交了后续条目，在记录类型创建前，Log Analytics 将创建具有以下三个属性的记录：**number_s**、**boolean_s** 和 **string_s**。 在此条目中，每个初始值都将格式化为字符串：
+如果提交了后续条目，在记录类型创建前，Log Analytics 将创建具有以下三个属性的记录：**number_s**、**boolean_s** 和 **string_s**。 在此条目中，每个初始值都采用字符串的格式：
 
 ![示例记录 4](media/log-analytics-data-collector-api/record-04.png)
 
 ## <a name="data-limits"></a>数据限制
 发布到 Log Analytics 数据收集 API 的数据有一些限制。
 
-* 每次发布到 Log Analytics 数据收集器 API 的数据最大为 30 MB。 这是对单次发布的大小限制。 如果单次发布的数据超过 30 MB，应将数据拆分为较小的区块，并同时发送它们。 
-* 字段值最大为 32 KB。 如果字段值大于 32 KB，数据将截断。 
+* 每次发布到 Log Analytics 数据收集器 API 的数据最大为 30 MB。 这是对单次发布的大小限制。 如果单次发布的数据超过 30 MB，应将数据拆分为较小的区块，并同时发送它们。
+* 字段值最大为 32 KB。 如果字段值大于 32 KB，数据将截断。
 * 给定类型的推荐最大字段数是 50 个。 这是从可用性和搜索体验角度考虑的现实限制。  
 
 ## <a name="return-codes"></a>返回代码
@@ -187,19 +187,24 @@ HTTP 状态代码 200 表示已接收请求以便进行处理。 这表示操作
 | 404 |未找到 | | 提供的 URL 不正确，或请求太大。 |
 | 429 |请求过多 | | 服务遇到来自你帐户的大量数据。 请稍后重试请求。 |
 | 500 |内部服务器错误 |UnspecifiedError |服务遇到内部错误。 请重试请求。 |
-| 503 |服务不可用 |ServiceUnavailable |服务当前不可用于接收请求。 请重试你的请求。 |
+| 503 |服务不可用 |ServiceUnavailable |服务当前不可用，无法接收请求。 请重试请求。 |
 
 ## <a name="query-data"></a>查询数据
 若要查询由 Log Analytics HTTP 数据收集器 API 提交的数据，请搜索以下记录：**Type** 等于指定的 **LogType** 值并且附加 **_CL**。 例如，如果使用了 **MyCustomLog**，则返回具有 **Type=MyCustomLog_CL** 的所有记录。
 
+>[!NOTE]
+> 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则上述查询会更改为如下所示。
+
+> `MyCustomLog_CL`
+
 ## <a name="sample-requests"></a>示例请求
-在接下来的部分中，你将找到如何使用不同的编程语言将数据提交到 Log Analytics HTTP 数据收集器 API 的示例。
+在接下来的部分中，将找到如何使用不同的编程语言将数据提交到 Log Analytics HTTP 数据收集器 API 的示例。
 
 对于每个示例，执行以下步骤来设置授权标头的变量：
 
-1. 在 Operations Management Suite 门户中，选择“设置”磁贴，然后选择“已连接的源”选项卡。
-2. 在 **Workspace ID** 的右侧，选择复制图标，然后粘贴该 ID 作为 **Customer ID** 变量的值。
-3. 在 **Primary Key** 的右侧，选择复制图标，然后粘贴该 ID 作为 **Shared Key** 变量的值。
+1. 在 Operations Management Suite 门户中，选择“设置”磁贴，并选择“已连接的源”选项卡。
+2. 在 **Workspace ID** 的右侧，选择复制图标，并粘贴该 ID 作为 **Customer ID** 变量的值。
+3. 在 **Primary Key** 的右侧，选择复制图标，并粘贴该 ID 作为 **Shared Key** 变量的值。
 
 或者，可以针对日志类型和 JSON 数据更改变量。
 
@@ -323,7 +328,7 @@ namespace OIAPIExample
             string stringToHash = "POST\n" + json.Length + "\napplication/json\n" + "x-ms-date:" + datestring + "\n/api/logs";
             string hashedString = BuildSignature(stringToHash, sharedKey);
             string signature = "SharedKey " + customerId + ":" + hashedString;
-    
+
             PostData(signature, datestring, json);
         }
 
@@ -344,20 +349,20 @@ namespace OIAPIExample
         public static void PostData(string signature, string date, string json)
         {
             try
-            { 
+            {
                 string url = "https://" + customerId + ".ods.opinsights.azure.com/api/logs?api-version=2016-04-01";
-    
+
                 System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
                 client.DefaultRequestHeaders.Add("Log-Type", LogName);
                 client.DefaultRequestHeaders.Add("Authorization", signature);
                 client.DefaultRequestHeaders.Add("x-ms-date", date);
                 client.DefaultRequestHeaders.Add("time-generated-field", TimeStampField);
-    
+
                 System.Net.Http.HttpContent httpContent = new StringContent(json, Encoding.UTF8);
                 httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 Task<System.Net.Http.HttpResponseMessage> response = client.PostAsync(new Uri(url), httpContent);
-    
+
                 System.Net.Http.HttpContent responseContent = response.Result.Content;
                 string result = responseContent.ReadAsStringAsync().Result;
                 Console.WriteLine("Return Result: " + result);

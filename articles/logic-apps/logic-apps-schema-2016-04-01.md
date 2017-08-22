@@ -15,16 +15,14 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/25/2016
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dab219386a32f519e50f76e18013f8f94a2266ff
-ms.openlocfilehash: 9d8f0be3d5c8e2c2e5f169dc1d0851c95a641d0c
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 43df04d6478e44c82c88b17d916cfc9fe4afc03e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/01/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
-# Azure 逻辑应用的架构更新 - 2016 年 6 月 1 日
-<a id="schema-updates-for-azure-logic-apps---june-1-2016" class="xliff"></a>
+# <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure 逻辑应用的架构更新 - 2016 年 6 月 1 日
 
 适用于 Azure 逻辑应用的这个新架构和 API 版本包含多项关键改进，使逻辑应用更可靠，更易于使用：
 
@@ -32,11 +30,10 @@ ms.lasthandoff: 03/01/2017
 * [条件和循环](#conditions-loops)现在是一流操作。
 * 针对 `runAfter` 属性运行操作时排序更精确，替换了 `dependsOn`
 
-若要将逻辑应用从 2015 年 8 月 1 日的预览版架构升级到 2016 年 6 月 1 日的架构，请[查看升级部分](#upgrading-to-2016-06-01-schema)。
+要将逻辑应用从 2015 年 8 月 1 日的预览版架构升级到 2016 年 6 月 1 日的架构，请[查看升级部分](##upgrade-your-schema)。
 
 <a name="scopes"></a>
-## 范围
-<a id="scopes" class="xliff"></a>
+## <a name="scopes"></a>范围
 
 此架构包含作用域，方便用户将操作组合或嵌套到一起。 例如，一个条件可以包含另一个条件。 请详细了解[作用域语法](../logic-apps/logic-apps-loops-and-scopes.md)，或者查看下面这个基本的作用域示例：
 
@@ -61,8 +58,7 @@ ms.lasthandoff: 03/01/2017
 ```
 
 <a name="conditions-loops"></a>
-## 条件和循环更改
-<a id="conditions-and-loops-changes" class="xliff"></a>
+## <a name="conditions-and-loops-changes"></a>条件和循环更改
 
 在以前的架构版本中，条件和循环是与单个操作关联的参数。 此架构提升了该限制，因此条件和循环现在显示为操作类型。 请详细了解[循环和作用域](../logic-apps/logic-apps-loops-and-scopes.md)，或者查看下面这个基本的条件操作示例：
 
@@ -91,8 +87,7 @@ ms.lasthandoff: 03/01/2017
 ```
 
 <a name="run-after"></a>
-## “runAfter”属性
-<a id="runafter-property" class="xliff"></a>
+## <a name="runafter-property"></a>“runAfter”属性
 
 `runAfter` 属性替换了 `dependsOn`，根据以前操作的状态为操作指定运行顺序时更精确。
 
@@ -108,8 +103,7 @@ ms.lasthandoff: 03/01/2017
 }
 ```
 
-## 升级架构
-<a id="upgrade-your-schema" class="xliff"></a>
+## <a name="upgrade-your-schema"></a>升级架构
 
 升级到新的架构只需几个步骤。 升级过程包括运行升级脚本、另存为新的逻辑应用，以及在可能情况下根据需要覆盖旧逻辑应用。
 
@@ -120,8 +114,7 @@ ms.lasthandoff: 03/01/2017
     ![选择“更新架构”][1]
    
     此时会返回升级的定义，用户可以根据需要将其复制并粘贴到资源定义中。 
-    但是，我们**强烈建议**用户选择**“另存为”**，确保已升级逻辑应用中的所有连接引用有效。 
-   
+    但是，强烈建议选择“另存为”，确保已升级逻辑应用中的所有连接引用有效。
 
 3. 在升级边栏选项卡工具栏中，选择“另存为”。
 
@@ -134,44 +127,35 @@ ms.lasthandoff: 03/01/2017
 
 6. *可选* 若要使用新的架构版本覆盖以前的逻辑应用，请在工具栏上选择“更新架构”旁边的“克隆”。 仅当需要保留逻辑应用的同一资源 ID 或请求触发器 URL 时，此步骤才是必需的。
 
-### 升级工具说明
-<a id="upgrade-tool-notes" class="xliff"></a>
+### <a name="upgrade-tool-notes"></a>升级工具说明
 
-#### 映射条件
-<a id="mapping-conditions" class="xliff"></a>
+#### <a name="mapping-conditions"></a>映射条件
 
 在升级的定义中，该工具尽量将 true 和 false 分支操作作为作用域组合在一起。 具体而言，`@equals(actions('a').status, 'Skipped')` 设计器模式应显示为 `else` 操作。 但是，如果检测到无法识别的模式，该工具可能会为 true 和 false 分支创建单独条件。 可以根据需要在升级后重新映射操作。
 
-#### 带条件的“foreach”循环
-<a id="foreach-loop-with-condition" class="xliff"></a>
+#### <a name="foreach-loop-with-condition"></a>带条件的“foreach”循环
 
 在新架构中，可以使用筛选器操作复制每个项都有一个条件的 `foreach` 循环的模式，不过，此更改会在用户升级时自动发生。 条件会变为 foreach 循环前的筛选器操作，仅返回与条件匹配的项数组，而该数组会传递到 foreach 操作中。 有关示例，请参阅[循环和作用域](../logic-apps/logic-apps-loops-and-scopes.md)。
 
-#### 资源标记
-<a id="resource-tags" class="xliff"></a>
+#### <a name="resource-tags"></a>资源标记
 
 升级之后会删除资源标记，因此必须针对升级的工作流重置这些标记。
 
-## 其他更改
-<a id="other-changes" class="xliff"></a>
+## <a name="other-changes"></a>其他更改
 
-### 已将“manual”触发器重命名为“request”触发器
-<a id="renamed-manual-trigger-to-request-trigger" class="xliff"></a>
+### <a name="renamed-manual-trigger-to-request-trigger"></a>已将“manual”触发器重命名为“request”触发器
 
 `manual` 触发器类型已弃用，并已通过类型 `http` 将其重命名为 `request`。 对于使用触发器构建的那类模式，此更改加强了一致性。
 
-### 新“筛选器”操作
-<a id="new-filter-action" class="xliff"></a>
+### <a name="new-filter-action"></a>新“筛选器”操作
 
 新的 `filter` 类型用于将大型数组筛选为小型项集，可以接受一个数组和一个条件，针对每个项对条件进行评估，返回项符合条件的数组。
 
-### “foreach”和“until”操作的限制
-<a id="restrictions-for-foreach-and-until-actions" class="xliff"></a>
+### <a name="restrictions-for-foreach-and-until-actions"></a>“foreach”和“until”操作的限制
 
 `foreach` 和 `until` 循环限制为单个操作。
 
-### 新的针对操作的“trackedProperties”
-<a id="new-trackedproperties-for-actions" class="xliff"></a>
+### <a name="new-trackedproperties-for-actions"></a>新的针对操作的“trackedProperties”
 
 操作现在可以有一个名为 `trackedProperties` 的额外属性，与 `runAfter` 和 `type` 属性同级。 此对象指定要包含在 Azure 诊断遥测中的特定操作输入或输出，作为工作流的一部分发出。 例如：
 
@@ -192,8 +176,7 @@ ms.lasthandoff: 03/01/2017
 }
 ```
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 * [为逻辑应用创建工作流定义](../logic-apps/logic-apps-author-definitions.md)
 * [创建逻辑应用的部署模板](../logic-apps/logic-apps-create-deploy-template.md)
 

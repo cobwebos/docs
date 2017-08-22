@@ -15,26 +15,29 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 9f084dce3f01466aaa0e4c32d339c925d9faccd3
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 5539623f7ae35e14b6dafe6fdf9efe4bcaba4fd3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
-# <a name="reporting-apis-for-enterprise-customers---marketplace-charges-preview"></a>适用于企业客户的报告 API - 应用商店费用（预览版）
+# <a name="reporting-apis-for-enterprise-customers---marketplace-store-charge"></a>适用于企业客户的报告 API - Marketplace 存储费用
 
 应用商店费用 API 会返回基于使用情况的应用商店费用明细（不包括一次性费用），且按指定计费周期或开始和结束日期排列。
 
 ##<a name="request"></a>请求 
-[此处](billing-enterprise-api.md)指定了需要添加的通用标头属性。 如果未指定计费周期，则返回当前计费周期的数据。 可以使用 yyyy-MM-dd 格式的开始日期和结束日期参数指定自定义时间范围，支持的最大时间范围为 36 个月。  
+[此处](billing-enterprise-api.md)指定了需要添加的通用标头属性。 如果未指定计费周期，则返回当前计费周期的数据。 可通过指定开始日期参数和结束日期参数（yyyy-MM-dd 格式）自定义时间范围，最大时间范围为 36 个月。  
 
 |方法 | 请求 URI|
 |-|-|
-|GET|https://consumption.azure.com/v1/enrollments/{enrollmentNumber}/marketplacecharges|
-|GET|https://consumption.azure.com/v1/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/marketplacecharges|
-|GET|https://consumption.azure.com/v1/enrollments/{enrollmentNumber}/marketplacechargesbycustomdate?startTime=2017-01-01&endTime=2017-01-10|
+|GET|https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/marketplacecharges|
+|GET|https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/marketplacecharges|
+|GET|https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/marketplacechargesbycustomdate?startTime=2017-01-01&endTime=2017-01-10|
+
+> [!Note]
+> 若要使用预览版 API，请在上述 URL 中将 v2 替换为 v1。
+>
 
 ## <a name="response"></a>响应
  
@@ -100,6 +103,7 @@ ms.lasthandoff: 05/03/2017
 |extendedCost|decimal|基于已耗用数量和扩展成本的估计费用|
 <br/>
 ## <a name="see-also"></a>另请参阅
+
 * [计费周期 API](billing-enterprise-api-billing-periods.md)
 
 * [使用情况详细信息 API](billing-enterprise-api-usage-detail.md) 

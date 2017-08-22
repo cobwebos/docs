@@ -16,10 +16,10 @@ ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: 4da95dc4bfc99be3f128dfaa53ba4dd9dc713d9d
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 173353d67772c2549aa1b8ec9f2a471bd1c65677
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/17/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 
@@ -38,8 +38,11 @@ ms.lasthandoff: 07/17/2017
 | **HTTP_CONNECT_ERROR** | 在运行 NPS 扩展的服务器上，验证是否能够访问 https://adnotifications.windowsazure.com 和 https://login.microsoftonline.com/。 如果无法加载这些站点，请排查该服务器上的连接问题。 |
 | **REGISTRY_CONFIG_ERROR** | 注册表中缺少应用程序的某个项，原因可能是 [PowerShell 脚本](multi-factor-authentication-nps-extension.md#install-the-nps-extension)不是在安装后运行的。 错误消息应包括缺少的项。 请确保在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa 下创建该项。 |
 | **REQUEST_FORMAT_ERROR** <br> Radius 请求缺少必需的 Radius userName\Identifier 属性。请验证 NPS 是否能够接收 RADIUS 请求 | 此错误通常反映了安装问题。 必须在可以接收 RADIUS 请求的 NPS 服务器上安装 NPS 扩展。 安装为 RRAS 和 RDG 等服务的依赖项的 NPS 服务器无法接收 Radius 请求。 安装在此类安装中的 NPS 扩展无法正常工作并会出错，因为它无法读取身份验证请求中的详细信息。 |
-| **REQUEST_MISSING_CODE** | 如果 SMS 或 Oath 令牌用于辅助身份验证方法，则 NPS 和 Nas 服务器之间的密码加密协议必须是 PAP。 NPS 扩展目前不支持其他密码加密方法。|
+| **REQUEST_MISSING_CODE** | 请确保 NPS 和 NAS 服务器之间密码加密协议支持你正在使用的辅助身份验证方法。 PAP 在云中支持 Azure MFA 的所有身份验证方法：电话呼叫、单向短信、移动应用通知和移动应用验证码。 **CHAPV2** 和 **EAP** 支持电话呼叫和移动应用通知。 |
 | **USERNAME_CANONICALIZATION_ERROR** | 验证该用户是否在你的本地 Active Directory 实例中存在，以及 NPS 服务是否有权访问目录。 如果使用跨林信任，请[联系支持人员](#contact-microsoft-support)，以获得进一步的帮助。 |
+
+
+   
 
 ### <a name="alternate-login-id-errors"></a>备用登录 ID 错误
 

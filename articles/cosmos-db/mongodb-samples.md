@@ -1,6 +1,6 @@
 ---
 title: "使用 MongoDB API 生成 Cosmos DB 应用 | Microsoft Docs"
-description: "使用适用于 MongoDB 的 DocumentDB API 创建联机数据库的教程。"
+description: "使用适用于 MongoDB 的 Azure Cosmos DB API 创建联机数据库的教程。"
 keywords: "mongodb 示例"
 services: cosmos-db
 author: AndrewHoh
@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: anhoh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 5afe7e716bc33e2d6d07edf15ab1686466c05bb8
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 433d2e585c884a10e7e923a0b27c179a95410d01
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="build-an-azure-cosmos-db-api-for-mongodb-app-using-nodejs"></a>使用 Node.js 生成 Azure Cosmos DB: API for MongoDB 应用
@@ -49,7 +48,7 @@ ms.lasthandoff: 05/31/2017
     var MongoClient = require('mongodb').MongoClient;
     var assert = require('assert');
     var ObjectId = require('mongodb').ObjectID;
-    var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10250/?ssl=true';
+    var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';
 
     var insertDocument = function(db, callback) {
     db.collection('families').insertOne( {
@@ -127,10 +126,10 @@ ms.lasthandoff: 05/31/2017
 2. 按照帐户设置修改 app.js 文件中的以下变量（了解如何查找[连接字符串](connect-mongodb-account.md)）：
    
     ```nodejs
-    var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10250/?ssl=true';
+    var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';
     ```
      
-3. 打开偏爱的终端，运行 **npm install mongodb --save**，然后使用 **node app.js** 运行应用程序
+3. 打开偏爱的终端，运行 **npm install mongodb --save**，并使用 **node app.js** 运行应用程序
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何配合[使用 MongoChef](mongodb-mongochef.md) 与 Azure Cosmos DB: API for MongoDB 帐户。

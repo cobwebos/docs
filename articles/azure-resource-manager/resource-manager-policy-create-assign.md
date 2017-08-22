@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/29/2017
+ms.date: 07/26/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: e9a858addb768ce051fccce0eaf83e49a83da21b
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: f461efbc2a23f85e8b6d3fdec156a0df1636708a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="assign-and-manage-resource-policies"></a>分配和管理资源策略
@@ -37,7 +36,7 @@ ms.lasthandoff: 06/30/2017
 
 ### <a name="create-policy-definition"></a>创建策略定义
 
-可以使用[用于策略定义的 REST API](/rest/api/resources/policydefinitions) 来创建策略。 REST API 可让你创建和删除策略定义，以及获取现有定义的信息。
+可以使用[用于策略定义的 REST API](/rest/api/resources/policydefinitions) 来创建策略。 借助 REST API，可创建和删除策略定义，以及获取现有定义的相关信息。
 
 若要创建策略定义，请运行：
 
@@ -79,7 +78,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/providers/Micro
 
 ### <a name="assign-policy"></a>分配策略
 
-可以通过[用于策略分配的 REST API](/rest/api/resources/policyassignments)，在所需范围内应用策略定义。 REST API 可让你创建和删除策略分配，以及获取现有分配的信息。
+可以通过[用于策略分配的 REST API](/rest/api/resources/policyassignments)，在所需范围内应用策略定义。 借助 REST API，可创建和删除策略分配，以及获取现有分配的相关信息。
 
 若要创建策略分配，请运行：
 
@@ -115,7 +114,7 @@ PUT https://management.azure.com /subscriptions/{subscription-id}/providers/Micr
 GET /subscriptions/{id}/providers?$expand=resourceTypes/aliases&api-version=2015-11-01
 ```
 
-以下示例介绍了别名的定义： 如你所见，别名在不同的 API 版本中定义路径，无论属性名称是否更改。 
+以下示例介绍了别名的定义： 如你所见，别名定义不同 API 版本中的路径，无论属性名称是否更改。 
 
 ```json
 "aliases": [
@@ -142,7 +141,7 @@ GET /subscriptions/{id}/providers?$expand=resourceTypes/aliases&api-version=2015
 
 ## <a name="powershell"></a>PowerShell
 
-在继续完成 PowerShell 示例之前，请确保你[已安装最新版本](/powershell/azure/install-azurerm-ps)的 Azure PowerShell。 版本 3.6.0 中添加了策略参数。 如果使用较早版本，示例将返回一个错误，指示“找不到参数”。
+在继续完成 PowerShell 示例之前，请确保[已安装最新版本](/powershell/azure/install-azurerm-ps)的 Azure PowerShell。 版本 3.6.0 中添加了策略参数。 如果使用较早版本，示例将返回一个错误，指示“找不到参数”。
 
 ### <a name="view-policy-definitions"></a>查看策略定义
 若要查看订阅中的所有策略定义，请运行以下命令：
@@ -170,7 +169,7 @@ PolicyDefinitionId : /providers/Microsoft.Authorization/policyDefinitions/e56962
 可使用 `New-AzureRmPolicyDefinition` cmdlet 创建策略定义。
 
 ```powershell
-$policy = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy to specify access tier." -Policy '{
+$definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy to specify access tier." -Policy '{
   "if": {
     "allOf": [
       {
@@ -195,12 +194,49 @@ $policy = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy 
 }'
 ```            
 
-输出存储在 `$policy` 对象中，这将在策略分配过程中使用。 
+输出存储在 `$definition` 对象中，这会在策略分配过程中使用。 
 
 可提供包含策略规则的 .json 文件路径，而不是指定 JSON 作为参数。
 
 ```powershell
-$policy = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy to specify access tier." -Policy "c:\policies\coolAccessTier.json"
+$definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy to specify access tier." -Policy "c:\policies\coolAccessTier.json"
+```
+
+以下示例创建包含参数的策略定义：
+
+```powershell
+$policy = '{
+    "if": {
+        "allOf": [
+            {
+                "field": "type",
+                "equals": "Microsoft.Storage/storageAccounts"
+            },
+            {
+                "not": {
+                    "field": "location",
+                    "in": "[parameters(''allowedLocations'')]"
+                }
+            }
+        ]
+    },
+    "then": {
+        "effect": "Deny"
+    }
+}'
+
+$parameters = '{
+    "allowedLocations": {
+        "type": "array",
+        "metadata": {
+          "description": "The list of locations that can be specified when deploying storage accounts.",
+          "strongType": "location",
+          "displayName": "Allowed locations"
+        }
+    }
+}' 
+
+$definition = New-AzureRmPolicyDefinition -Name storageLocations -Description "Policy to specify locations for storage accounts." -Policy $policy -Parameter $parameters 
 ```
 
 ### <a name="assign-policy"></a>分配策略
@@ -209,17 +245,17 @@ $policy = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy 
 
 ```powershell
 $rg = Get-AzureRmResourceGroup -Name "ExampleGroup"
-New-AzureRMPolicyAssignment -Name accessTierAssignment -Scope $rg.ResourceId -PolicyDefinition $policy
+New-AzureRMPolicyAssignment -Name accessTierAssignment -Scope $rg.ResourceId -PolicyDefinition $definition
 ```
 
 若要分配需要参数的策略，请创建包含这些值的对象。 下面的示例展示了如何检索内置策略并传递参数值：
 
 ```powershell
 $rg = Get-AzureRmResourceGroup -Name "ExampleGroup"
-$policy = Get-AzureRmPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/e5662a6-4747-49cd-b67b-bf8b01975c4c
+$definition = Get-AzureRmPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/e5662a6-4747-49cd-b67b-bf8b01975c4c
 $array = @("West US", "West US 2")
 $param = @{"listOfAllowedLocations"=$array}
-New-AzureRMPolicyAssignment -Name locationAssignment -Scope $rg.ResourceId -PolicyDefinition $policy -PolicyParameterObject $param
+New-AzureRMPolicyAssignment -Name locationAssignment -Scope $rg.ResourceId -PolicyDefinition $definition -PolicyParameterObject $param
 ```
 
 ### <a name="view-policy-assignment"></a>查看策略分配
@@ -259,7 +295,21 @@ az policy definition list
 ```azurecli
 {                                                            
   "description": "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements.",                      
-  "displayName": "Allowed locations",                                                                                                                "id": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c",                                                 "name": "e56962a6-4747-49cd-b67b-bf8b01975c4c",                                                                                                    "policyRule": {                                                                                                                                      "if": {                                                                                                                                              "not": {                                                                                                                                             "field": "location",                                                                                                                               "in": "[parameters('listOfAllowedLocations')]"                                                                                                   }                                                                                                                                                },                                                                                                                                                 "then": {                                                                                                                                            "effect": "Deny"                                                                                                                                 }                                                                                                                                                },                                                                                                                                                 "policyType": "BuiltIn"
+  "displayName": "Allowed locations",
+  "id": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c",
+  "name": "e56962a6-4747-49cd-b67b-bf8b01975c4c",
+  "policyRule": {
+    "if": {
+      "not": {
+        "field": "location",
+        "in": "[parameters('listOfAllowedLocations')]"
+      }
+    },
+    "then": {
+      "effect": "Deny"
+    }
+  },
+  "policyType": "BuiltIn"
 }
 ```
 

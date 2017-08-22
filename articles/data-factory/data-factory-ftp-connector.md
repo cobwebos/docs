@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 1c37802e2b908747773afa093a28ea218dd60509
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: f8f31f3a2ee02c964737dd32145499f3dcfd0624
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/19/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 FTP 服务器移动数据
@@ -48,7 +47,7 @@ ms.lasthandoff: 04/19/2017
 2. 创建**数据集**以表示复制操作的输入和输出数据。
 3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。
 
-使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具或 API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关用于从 FTP 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 FTP 服务器复制到 Azure blob](#json-example-copy-data-from-ftp-server-to-azure-blob) 部分。
+使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具或 API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关用于从 FTP 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 FTP 服务器复制到 Azure blob](#json-example-copy-data-from-ftp-server-to-azure-blob) 部分。
 
 > [!NOTE]
 > 有关要使用的受支持文件和压缩格式的详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)。
@@ -148,7 +147,7 @@ ms.lasthandoff: 04/19/2017
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | folderPath |文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅 [Sample linked service and dataset definitions](#sample-linked-service-and-dataset-definitions)（链接服务和数据集定义示例）。<br/><br/>可将此属性与 **partitionBy** 组合在一起，基于切片开始和结束的日期时间构成文件夹路径。 |是 |
-| fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 **fileName**，生成文件的名称将采用以下格式： <br/><br/>Data.<Guid>.txt（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
+| fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 **fileName**，生成文件的名称会采用以下格式： <br/><br/>Data.<Guid>.txt（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
 | fileFilter |指定在 **folderPath** 中选择一部分文件而不是所有文件时要使用的筛选器。<br/><br/>允许的值为：`*`（多个字符）和 `?`（单个字符）。<br/><br/>示例 1：`"fileFilter": "*.log"`<br/>示例 2：`"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** 适用于 FileShare 输入数据集。 Hadoop 分布式文件系统 (HDFS) 不支持此属性。 |否 |
 | partitionedBy |用于指定时序数据的动态 **folderPath** 和 **fileName**。 例如，可以指定每小时参数化以形成数据的 **folderPath**。 |否 |
 | 格式 | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式部分。 |否 |
@@ -200,7 +199,7 @@ ms.lasthandoff: 04/19/2017
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True、False（默认值） |否 |
 
-## <a name="json-example-copy-data-from-ftp-server-to-azure-blob-storage"></a>JSON 示例：将数据从 FTP 服务器复制到 Azure Blob 存储
+## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON 示例：将数据从 FTP 服务器复制到 Azure Blob
 此示例演示如何将数据从 FTP 服务器复制到 Azure Blob 存储。 但是，使用数据工厂中的复制活动，可以直接将数据复制到[支持的数据存储和格式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中所述的任何接收器。  
 
 以下示例提供示例 JSON 定义，可用于通过使用 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道：
@@ -278,7 +277,7 @@ ms.lasthandoff: 04/19/2017
 
 ### <a name="azure-blob-output-dataset"></a>Azure Blob 输出数据集
 
-数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。 根据正在处理的切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据正在处理的切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```JSON
 {
@@ -379,7 +378,7 @@ ms.lasthandoff: 04/19/2017
 }
 ```
 > [!NOTE]
-> 若要将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
+> 要将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：

@@ -18,10 +18,10 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 79b0405f57fd2221f897ded042a111236006c6e0
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 35dcbb91e6af1480685c9fd5b829c54277c1c605
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-hadoop-on-hdinsight-and-sql-database"></a>使用 Apache Sqoop 在 Hadoop on HDInsight 与 SQL 数据库之间导入和导出数据
@@ -46,7 +46,7 @@ ms.lasthandoff: 07/20/2017
 2. 使用以下命令安装 FreeTDS：
 
     ```bash
-    sudo apt install --assume-yes install freetds-dev freetds-bin
+    sudo apt --assume-yes install freetds-dev freetds-bin
     ```
 
     在多个步骤中使用 FreeTDS 连接到 SQL 数据库。
@@ -118,10 +118,10 @@ ms.lasthandoff: 07/20/2017
 2. 使用以下命令将数据从 **hivesampletable** 导出到 **mobiledata** 表：
 
     ```bash
-    sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> -P --table 'mobiledata' --export-dir 'wasbs:///hive/warehouse/hivesampletable' --fields-terminated-by '\t' -m 1
+    sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> -P --table 'mobiledata' --export-dir 'wasb:///hive/warehouse/hivesampletable' --fields-terminated-by '\t' -m 1
     ```
 
-    此命令指示 Sqoop 连接到 **sqooptest** 数据库。 然后，Sqoop 将数据从 **wasbs:///hive/warehouse/hivesampletable** 导出到 **mobiledata** 表。
+    此命令指示 Sqoop 连接到 **sqooptest** 数据库。 Sqoop 随后将数据从 wasb:///hive/warehouse/hivesampletable 导出到 mobiledata 表。
 
     > [!IMPORTANT]
     > 如果群集的默认存储是 Azure 存储帐户，请使用 `wasb:///`。 如果是 Azure Data Lake Store，请使用 `adl:///`。
@@ -144,10 +144,10 @@ ms.lasthandoff: 07/20/2017
 
 ## <a name="sqoop-import"></a>Sqoop 导入
 
-1. 使用以下命令将数据从 SQL 数据库中的 **mobiledata** 表导入 HDInsight 上的 **wasbs:///tutorials/usesqoop/importeddata** 目录：
+1. 使用以下命令将数据从 SQL 数据库中的 mobiledata 表导入 HDInsight 上的 wasb:///tutorials/usesqoop/importeddata 目录：
 
     ```bash
-    sqoop import --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasbs:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
+    sqoop import --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
     ```
 
     数据中的字段将通过制表符分隔，并且相关行将由换行符终止。
@@ -194,7 +194,7 @@ ms.lasthandoff: 07/20/2017
 * 在从 HDInsight 连接到 SQL Server 时，可能需要使用 SQL Server 的 IP 地址。 例如：
 
     ```bash
-    sqoop import --connect 'jdbc:sqlserver://10.0.1.1:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasbs:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
+    sqoop import --connect 'jdbc:sqlserver://10.0.1.1:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
     ```
 
 ## <a name="limitations"></a>限制

@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c31abf49a05f7911d4ec82db59efa2724ab7b49b
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 43733e452126c85ab9e19b6036aea96f56fc4d12
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>设置 Application Insights：依赖项跟踪
@@ -38,7 +37,7 @@ ms.lasthandoff: 05/10/2017
 
 通过围绕所选方法使用[字节代码检测](https://msdn.microsoft.com/library/z9z62c29.aspx)监视工作。 性能开销最低。
 
-你还可以编写自己的 SDK 调用，以便使用 [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency) 监视客户端和服务器代码中的其他依赖项。
+还可以编写自己的 SDK 调用，以便使用 [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency) 监视客户端和服务器代码中的其他依赖项。
 
 ## <a name="set-up-dependency-monitoring"></a>设置依赖项监视
 [Application Insights SDK](app-insights-asp-net.md) 会自动收集部分依赖项信息。 若要获取完整数据，请为主机服务器安装相应的代理。
@@ -46,7 +45,7 @@ ms.lasthandoff: 05/10/2017
 | 平台 | 安装 |
 | --- | --- |
 | IIS 服务器 |[在服务器上安装状态监视器](app-insights-monitor-performance-live-website-now.md)或者[将应用程序升级到 .NET framework 4.6 或更高版本](http://go.microsoft.com/fwlink/?LinkId=528259)，并在应用中安装 [Application Insights SDK](app-insights-asp-net.md)。 |
-| Azure Web 应用 |在 Web 应用控件面板中[打开“Application Insights”边栏选项卡](app-insights-azure-web-apps.md)，然后在出现提示时选择“安装”。 |
+| Azure Web 应用 |在 Web 应用控件面板中[打开“Application Insights”边栏选项卡](app-insights-azure-web-apps.md)，并在出现提示时选择“安装”。 |
 | Azure 云服务 |[使用启动任务](app-insights-cloudservices.md)或[安装 .NET framework 4.6+](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
 
 ## <a name="where-to-find-dependency-data"></a>在何处查找依赖项数据
@@ -78,7 +77,7 @@ ms.lasthandoff: 05/10/2017
 “失败计数”显示在“失败”边栏选项卡上。 失败是指不在 200-399 范围内或者未知的返回代码。
 
 > [!NOTE]
-> **全部失败？** - 这可能表示你只获取了部分依赖项数据。 需要[设置适用于平台的依赖项监视](#set-up-dependency-monitoring)。
+> **全部失败？** - 这可能表示只获取了部分依赖项数据。 需要[设置适用于平台的依赖项监视](#set-up-dependency-monitoring)。
 >
 >
 
@@ -86,12 +85,12 @@ ms.lasthandoff: 05/10/2017
 “浏览器”边栏选项卡显示[网页中的 JavaScript](app-insights-javascript.md) 发出的 AJAX 调用的持续时间和失败率。 这些信息显示为依赖项。
 
 ## <a name="diagnosis"></a>诊断慢速请求
-每个请求事件是应用处理请求时跟踪到的依赖项调用、异常和其他事件相关联。 因此，如果某些请求的性能不佳，你可以判断其原因是否为某个依赖项的响应速度缓慢。
+每个请求事件是应用处理请求时跟踪到的依赖项调用、异常和其他事件相关联。 因此，如果某些请求的性能不佳，可以判断其原因是否为某个依赖项的响应速度缓慢。
 
 让我们演练一个相关的示例。
 
 ### <a name="tracing-from-requests-to-dependencies"></a>从发往依赖项的请求开始跟踪
-打开“性能”边栏选项卡，然后查看请求网格：
+打开“性能”边栏选项卡，并查看请求网格：
 
 ![包含平均值和计数的请求列表](./media/app-insights-asp-net-dependencies/02-reqs.png)
 
@@ -101,7 +100,7 @@ ms.lasthandoff: 05/10/2017
 
 ![请求事件的列表](./media/app-insights-asp-net-dependencies/03-instances.png)
 
-单击任何一个长时间运行的实例以做进一步调查，然后向下滚动到与此请求相关的远程依赖项调用：
+单击任何一个长时间运行的实例以做进一步调查，并向下滚动到与此请求相关的远程依赖项调用：
 
 ![查找对远程依赖项的调用，标识异常持续时间](./media/app-insights-asp-net-dependencies/04-dependencies.png)
 
@@ -129,12 +128,12 @@ ms.lasthandoff: 05/10/2017
 
 ![单击失败的请求图表](./media/app-insights-asp-net-dependencies/06-fail.png)
 
-单击某个失败的请求，然后查看其关联的事件。
+单击某个失败的请求，并查看其关联的事件。
 
 ![单击请求类型、单击实例以访问同一实例的不同视图、单击它以获取异常详细信息。](./media/app-insights-asp-net-dependencies/07-faildetail.png)
 
 ## <a name="analytics"></a>分析
-可以跟踪[分析查询语言](app-insights-analytics.md)中的依赖项。 下面是一些示例。
+可以跟踪 [Log Analytics 查询语言](https://docs.loganalytics.io/)中的依赖项。 下面是一些示例。
 
 * 查找所有失败的依赖项调用：
 
@@ -174,11 +173,11 @@ ms.lasthandoff: 05/10/2017
 
 
 ## <a name="custom-dependency-tracking"></a>自定义依赖项跟踪
-标准依赖项跟踪模块自动发现内部依赖项，例如数据库和 REST API。 但你可能希望使用相同方式处理其他某些组件。
+标准依赖项跟踪模块自动发现内部依赖项，例如数据库和 REST API。 但可能希望使用相同方式处理某些其他组件。
 
 可以通过标准模块所使用的同一 [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency)，编写可发送依赖项信息的代码。
 
-例如，如果你使用未自行编写的程序集生成代码，可以对其所有调用进行计时，以了解它对你的响应时间所做的贡献。 若要使此数据显示在 Application Insights 中的依赖项图表中，请使用 `TrackDependency` 发送它。
+例如，如果使用未自行编写的程序集生成代码，可以对其所有调用进行计时，以了解它对响应时间所做的贡献。 若要使此数据显示在 Application Insights 中的依赖项图表中，请使用 `TrackDependency` 发送它。
 
 ```C#
 
@@ -195,7 +194,7 @@ ms.lasthandoff: 05/10/2017
             }
 ```
 
-如果你想要关闭标准依赖项跟踪模块，请在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 中删除对 DependencyTrackingTelemetryModule 的引用。
+如果想要关闭标准依赖项跟踪模块，请在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 中删除对 DependencyTrackingTelemetryModule 的引用。
 
 ## <a name="troubleshooting"></a>故障排除
 *依赖项成功标志使用显示 true 或 false。*
@@ -204,7 +203,7 @@ ms.lasthandoff: 05/10/2017
 
 * 升级到最新版本的 SDK。 如果 .NET 版本低于 4.6：
   * IIS 主机：在主机服务器上安装 [Application Insights 代理](app-insights-monitor-performance-live-website-now.md)。
-  * Azure Web 应用：在 Web 应用控制面板中打开“Application Insights”选项卡，然后安装 Application Insights。
+  * Azure Web 应用：在 Web 应用控制面板中打开“Application Insights”选项卡，并安装 Application Insights。
 
 ## <a name="video"></a>视频
 

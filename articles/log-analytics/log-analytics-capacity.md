@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 07/13/2017
 ms.author: banders
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: bb89bed9778056c52e47d984e5d559a4abf864a2
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 5ca005127721092b8efcf0ac83cc967ab15fe72d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>使用容量和性能解决方案（预览版）计划 Hyper-V 虚拟机容量
@@ -113,9 +112,9 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 ### <a name="evaluate-performance"></a>评估性能
 
-不同组织的生产计算环境相差很大。 另外，容量和性能工作负荷可能取决于 VM 的运行方式以及你所认为的正常的标准。 特定的用于衡量性能的过程可能不适用于你的环境。 因此，更通用的说明性指导帮助性更大。 Microsoft 发布了各种说明性的关于如何衡量性能的指导文章。
+不同组织的生产计算环境相差很大。 另外，容量和性能工作负荷可能取决于 VM 的运行方式以及你所认为的正常的标准。 特定的用于衡量性能的过程可能不适用于环境。 因此，更通用的说明性指导帮助性更大。 Microsoft 发布了各种说明性的关于如何衡量性能的指导文章。
 
-总之，该解决方案从包括性能计数器在内的各种源收集容量和性能数据。 请使用在解决方案的各个图面中提供的该容量和性能数据，并将你的结果与 [Measuring Performance on Hyper-V](https://msdn.microsoft.com/library/cc768535.aspx)（衡量 Hyper-V 上的性能）一文中的结果进行比较。 虽然该文已发布了一段时间，但指标、注意事项和准则仍然有效。 该文包含指向其他有用资源的链接。
+总之，该解决方案从包括性能计数器在内的各种源收集容量和性能数据。 请使用在解决方案的各个图面中提供的该容量和性能数据，并将结果与 [Measuring Performance on Hyper-V](https://msdn.microsoft.com/library/cc768535.aspx)（衡量 Hyper-V 上的性能）一文中的结果进行比较。 虽然该文已发布了一段时间，但指标、注意事项和准则仍然有效。 该文包含指向其他有用资源的链接。
 
 
 ## <a name="sample-log-searches"></a>示例日志搜索
@@ -132,7 +131,18 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 | 所有 CSV 的总吞吐量明细 | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Read MB/s" OR CounterName="CSV Write MB/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
 | 所有 CSV 的总延迟明细 | <code> Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Read Latency" OR CounterName="CSV Write Latency") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
 
+>[!NOTE]
+> 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则上述查询会更改为如下所示。
 
+> | 查询 | 说明 |
+|:--- |:--- |
+| 所有主机内存配置 | Perf | 其中 ObjectName == "Capacity and Performance" 且 CounterName == "Host Assigned Memory MB" | summarize MB = avg(CounterValue) by InstanceName |
+| 所有 VM 内存配置 | Perf | 其中 ObjectName == "Capacity and Performance" 且 CounterName == "VM Assigned Memory MB" | summarize MB = avg(CounterValue) by InstanceName |
+| 所有 VM 的总磁盘 IOPS 明细 | Perf | 其中 ObjectName == "Capacity and Performance" 且 (CounterName == "VHD Reads/s" 或 CounterName == "VHD Writes/s") | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), CounterName, InstanceName |
+| 所有 VM 的总磁盘吞吐量明细 | Perf | 其中 where ObjectName == "Capacity and Performance" 且 (CounterName == "VHD Read MB/s" 或 CounterName == "VHD Write MB/s") | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), CounterName, InstanceName |
+| 所有 CSV 的总 IOPS 明细 | Perf | 其中 ObjectName == "Capacity and Performance" 且 (CounterName == "CSV Reads/s" 或 CounterName == "CSV Writes/s") | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), CounterName, InstanceName |
+| 所有 CSV 的总吞吐量明细 | Perf | 其中 ObjectName == "Capacity and Performance" 且 (CounterName == "CSV Reads/s" 或 CounterName == "CSV Writes/s") | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), CounterName, InstanceName |
+| 所有 CSV 的总延迟明细 | Perf | 其中 ObjectName == "Capacity and Performance" 且 (CounterName == "CSV Read Latency" 或 CounterName == "CSV Write Latency") | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), CounterName, InstanceName |
 
 
 ## <a name="next-steps"></a>后续步骤

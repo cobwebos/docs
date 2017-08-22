@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2016
 ms.author: andrl
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 53b9cdd948e6b4c1d4da9fe52f81816050332a62
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 8cddc7a8c9aa677b9c93bee3a7e05c226cc1f655
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB 服务器端编程：存储过程、数据库触发器和 UDF
@@ -32,7 +31,7 @@ ms.lasthandoff: 06/20/2017
 > 
 > 
 
-然后，返回到本文，你将在其中了解以下问题的答案：  
+然后，返回到本文，会在其中了解以下问题的答案：  
 
 * 如何使用 JavaScript 编写存储过程、触发器或 UDF？
 * Cosmos DB 如何保证 ACID？
@@ -44,7 +43,7 @@ ms.lasthandoff: 06/20/2017
 ## <a name="introduction-to-stored-procedure-and-udf-programming"></a>存储过程和 UDF 编程简介
 这种“将 JavaScript 用作新式 T-SQL”的方法让应用程序开发人员摆脱了类型系统不匹配和对象关系映射技术的复杂性。 它还具有许多可利用以构建丰富应用程序的内在优势：  
 
-* **过程逻辑：**作为一种高级编程语言，JavaScript 具有丰富且熟悉的界面来表达业务逻辑。 你可以执行与数据更接近的操作的复杂序列。
+* **过程逻辑：**作为一种高级编程语言，JavaScript 具有丰富且熟悉的界面来表达业务逻辑。 可以执行与数据更接近的操作的复杂序列。
 * **原子事务：**Cosmos DB 保证在单个存储过程或触发器内执行的数据库操作是原子事务。 这使得应用程序能在单个批处理中合并相关操作，因此要么它们全部成功，要么全部不成功。 
 * **性能：**JSON 在本质上映射到 Javascript 语言类型系统且 JSON 是 Cosmos DB 中的存储基本单位，这一事实让许多优化成为可能，例如缓冲池中 JSON 文档的滞后具体化以及根据需要向执行代码提供这些文档。 还有更多与传送业务逻辑到数据库相关的性能优点：
   
@@ -55,7 +54,7 @@ ms.lasthandoff: 06/20/2017
   * 它会在原始数据之上添加抽象层，这使得数据架构师能够从数据独立发展他们的应用程序。 当数据无架构时，如果他们必须直接处理数据，则由于可能需要兼并到应用程序中的脆性假设，使得这样做尤其有益。  
   * 这种抽象使企业通过从脚本简化访问来保证他们的数据安全。  
 
-数据库触发器、存储过程和自定义查询运算符的创建和执行通过 [REST API](/rest/api/documentdb/)、[Azure Document DB Studio](https://github.com/mingaliu/DocumentDBStudio/releases) 和[客户端 SDK](documentdb-sdk-dotnet.md) 在许多平台（包括 .NET、Node.js 和 JavaScript）中得到支持。
+数据库触发器、存储过程和自定义查询运算符的创建和执行通过 [REST API](/rest/api/documentdb/)、[Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases) 和[客户端 SDK](documentdb-sdk-dotnet.md) 在许多平台（包括 .NET、Node.js 和 JavaScript）中得到支持。
 
 本教程使用[具有 Q Promises 的 Node.js SDK](http://azure.github.io/azure-documentdb-node-q/) 来阐明存储过程、触发器和 UDF 的语法和用法。   
 
@@ -122,7 +121,7 @@ ms.lasthandoff: 06/20/2017
     }
 
 
-此存储过程将 documentToCreate 作为输入，它是要在当前集合中创建的文档的主体。 所有此类操作均是异步操作且依赖 JavaScript 函数回调。 回调函数具有两个参数，一个用于错误对象（假如操作失败），另一个用于已创建的对象。 在回调内部，用户可以处理异常或引发错误。 如果未提供回调而又存在错误，则 Azure Cosmos DB 运行时将引发错误。   
+此存储过程将 documentToCreate 作为输入，它是要在当前集合中创建的文档的主体。 所有此类操作均是异步操作且依赖 JavaScript 函数回调。 回调函数具有两个参数，一个用于错误对象（假如操作失败），另一个用于已创建的对象。 在回调内部，用户可以处理异常或引发错误。 如果未提供回调而又存在错误，则 Azure Cosmos DB 运行时会引发错误。   
 
 在上面的示例中，如果操作失败，回调将引发错误。 否则，它会将已创建文档的 ID 设置为对客户端的响应的主体。 此为该存储过程如何使用输入参数进行执行。
 
@@ -152,14 +151,14 @@ ms.lasthandoff: 06/20/2017
 
 请注意，可以修改该存储过程以将文档主体的数组作为输入并在同一存储过程执行中创建它们全部，而不用执行多个网络请求以单独创建它们中的每一个。 这可以用来实现 Cosmos DB 的高效批量导入程序（本教程稍后会进行讨论）。   
 
-所述的示例演示了如何使用存储过程。 稍后我们将在教程中介绍触发器和用户定义的函数 (UDF)。
+所述的示例演示了如何使用存储过程。 稍后我们会在教程中介绍触发器和用户定义的函数 (UDF)。
 
 ## <a name="database-program-transactions"></a>数据库程序事务
 典型数据库中的事务可以定义为一系列作为单个逻辑单元工作执行的操作。 每个事务提供 **ACID 保证**。 ACID 是已知的代表四个属性（Atomicity、Consistency、Isolation 和 Durability）的缩写词。  
 
 简单地说，原子性保证所有在一个事物内部执行的工作被视为单个单元，其中要么全部工作都提交，要么都不提交。 一致性确保数据始终在各个事务间处于良好内部状态。 隔离保证没有两个互相干扰的事务存在 – 一般来说，大多数商业系统都提供多个可以基于应用程序需求而使用的隔离级别。 持续性确保数据库中提交的任何更改将始终存在。   
 
-在 Cosmos DB 中，JavaScript 被托管在与数据库相同的内存空间中。 因此，在存储过程和触发器内提出的请求将在相同范围的数据库会话中执行。 这让 Cosmos DB 能够保证所有属于单个存储过程/触发器的操作的 ACID。 考虑以下存储过程定义：
+在 Cosmos DB 中，JavaScript 被托管在与数据库相同的内存空间中。 因此，在存储过程和触发器内提出的请求会在相同范围的数据库会话中执行。 这让 Cosmos DB 能够保证所有属于单个存储过程/触发器的操作的 ACID。 考虑以下存储过程定义：
 
     // JavaScript source code
     var exchangeItemsSproc = {
@@ -226,12 +225,12 @@ ms.lasthandoff: 06/20/2017
 
 此存储过程使用游戏应用内的事务在单个操作中的两个玩家之间交易项。 该存储过程尝试读取两个分别与作为参数传递的玩家 ID 对应的文档。 如果两个玩家文档都被找到，那么存储过程将通过交换它们的项来更新文档。 如果在此过程中遇到了任何错误，它将引发隐式终止事务的 JavaScript 异常。
 
-如果存储过程针对其注册的集合是单区集合，那么该事务的范围为该集合内的所有文档。 如果集合已分区，那么存储过程将在单个分区键的事务范围中执行。 每个存储过程执行必须包含对应于事务在其下运行的范围的分区键值。 有关更多详细信息，请参阅 [Azure Cosmos DB 分区](partition-data.md)。
+如果存储过程针对其注册的集合是单区集合，那么该事务的范围为该集合内的所有文档。 如果集合已分区，那么存储过程会在单个分区键的事务范围中执行。 每个存储过程执行必须包含对应于事务在其下运行的范围的分区键值。 有关更多详细信息，请参阅 [Azure Cosmos DB 分区](partition-data.md)。
 
 ### <a name="commit-and-rollback"></a>提交和回滚
-事务将在本机深入集成到 Cosmos DB 的 JavaScript 编程模型中。 在 JavaScript 函数内，所有操作都在单个事务下自动包装。 如果 JavaScript 在没有任何异常的情况下完成，将提交针对数据库的操作。 实际上，关系数据库中的“BEGIN TRANSACTION”和“COMMIT TRANSACTION”语句在 Cosmos DB 中是隐式的。  
+事务会在本机深入集成到 Cosmos DB 的 JavaScript 编程模型中。 在 JavaScript 函数内，所有操作都在单个事务下自动包装。 如果 JavaScript 在没有任何异常的情况下完成，将提交针对数据库的操作。 实际上，关系数据库中的“BEGIN TRANSACTION”和“COMMIT TRANSACTION”语句在 Cosmos DB 中是隐式的。  
 
-如果存在任何传播自脚本的异常，Cosmos DB 的 JavaScript 运行时将回退整个事务。 如之前示例中所示，引发异常实际上等同于 Cosmos DB 中的“ROLLBACK TRANSACTION”。
+如果存在任何传播自脚本的异常，Cosmos DB 的 JavaScript 运行时会回退整个事务。 如之前示例中所示，引发异常实际上等同于 Cosmos DB 中的“ROLLBACK TRANSACTION”。
 
 ### <a name="data-consistency"></a>数据一致性
 存储过程和触发器始终在 Azure Cosmos DB 容器的主要副本上执行。 这确保了从存储过程内部的读取提供强一致性。 使用用户定义的函数的查询可以在主要或任何次要副本上执行，但通过选择合适的副本我们可以确保满足所要求的一致性级别。
@@ -244,7 +243,7 @@ ms.lasthandoff: 06/20/2017
 JavaScript 函数也被绑定在资源消耗量上。 Cosmos DB 基于预配的数据库帐户大小按集合保留吞吐量。 吞吐量按照规范化单位的 CPU、内存和 IO 消耗量（称为请求单位或 RU）来表示。 JavaScript 函数可能在短时间内耗尽大量的 RU，如果达到了集合的限制，则可能受到速率限制。 资源密集型存储过程还可能被隔离以确保原始数据库操作的可用性。  
 
 ### <a name="example-bulk-importing-data-into-a-database-program"></a>示例：将数据批量导入到数据库程序中
-下面是一个编写以批量导入文档到集合的存储过程的示例。 请注意存储过程通过检查来自 createDocument 的布尔返回值，然后使用插入在每次存储过程调用中的文档的计数以在批处理之间跟踪和恢复进度，从而处理绑定执行的方式。
+下面是一个编写以批量导入文档到集合的存储过程的示例。 请注意存储过程通过检查来自 createDocument 的布尔返回值，并使用插入在每次存储过程调用中的文档的计数以在批处理之间跟踪和恢复进度，从而处理绑定执行的方式。
 
     function bulkImport(docs) {
         var collection = getContext().getCollection();
@@ -297,7 +296,7 @@ JavaScript 函数也被绑定在资源消耗量上。 Cosmos DB 基于预配的�
 
 ## <a id="trigger"></a>数据库触发器
 ### <a name="database-pre-triggers"></a>数据库预触发器
-Cosmos DB 提供通过文档中的操作执行或触发的触发器。 例如，当创建文档时你可以指定预触发器 – 此预触发器将在文档创建之前运行。 下面就是如何使用预触发器来验证正在创建的文档的属性的示例：
+Cosmos DB 提供通过文档中的操作执行或触发的触发器。 例如，当创建文档时可以指定预触发器 – 此预触发器会在文档创建之前运行。 下面就是如何使用预触发器来验证正在创建的文档的属性的示例：
 
     var validateDocumentContentsTrigger = {
         id: "validateDocumentContents",
@@ -436,12 +435,12 @@ Cosmos DB 提供通过文档中的操作执行或触发的触发器。 例如，
 
 此触发器查询元数据文档并在其中更新新建文档的详细信息。  
 
-务必要注意的一点是 Cosmos DB 中触发器的**事务**执行。 此后触发器作为与原始文档的创建相同的事务的一部分运行。 因此，如果我们从后触发器引发异常（假设我们无法更新元数据文档），那么整个事务都将失败并回滚。 不会创建文档，而将返回异常。  
+务必要注意的一点是 Cosmos DB 中触发器的**事务**执行。 此后触发器作为与原始文档的创建相同的事务的一部分运行。 因此，如果我们从后触发器引发异常（假设我们无法更新元数据文档），那么整个事务都会失败并回滚。 不会创建文档，而将返回异常。  
 
 ## <a id="udf"></a>用户定义的函数
 用户定义的函数 (UDF) 用于扩展 DocumentDB API SQL 查询语言语法和实现自定义业务逻辑。 它们只能从查询内部调用。 它们不具有对上下文对象的访问权限且旨在被用作仅计算的 JavaScript。 因此，UDF 可以在 Cosmos DB 服务的次要副本上运行。  
 
-以下示例创建 UDF 来计算基于各种收入档次的税率的所得税，然后在查询内部使用它查找所有支付税款超过 $20,000 的人。
+以下示例创建 UDF 来计算基于各种收入档次的税率的所得税，并在查询内部使用它查找所有支付税款超过 $20,000 的人。
 
     var taxUdf = {
         id: "tax",
@@ -481,7 +480,7 @@ UDF 随后可以用在诸如下面示例的查询中：
     });
 
 ## <a name="javascript-language-integrated-query-api"></a>JavaScript 语言集成的查询 API
-除了使用 DocumentDB 的 SQL 语法发起查询外，服务器端 SDK 还允许你在没有任何 SQL 知识的情况下使用流畅的 JavaScript 接口来执行优化的查询。 JavaScript 查询 API 允许你使用与 ECMAScript5 的数组内置项类似的语法和如 lodash 等热门的 JavaScript 库，通过将谓词函数传递到可链的函数调用中以编程方式生成查询。 查询由将使用 Azure Cosmos DB 的索引有效执行的 JavaScript 运行时进行分析。
+除了使用 DocumentDB 的 SQL 语法发起查询外，服务器端 SDK 还允许在没有任何 SQL 知识的情况下使用流畅的 JavaScript 接口来执行优化的查询。 JavaScript 查询 API 允许使用与 ECMAScript5 的数组内置项类似的语法和如 lodash 等热门的 JavaScript 库，通过将谓词函数传递到可链的函数调用中以编程方式生成查询。 查询由将使用 Azure Cosmos DB 的索引有效执行的 JavaScript 运行时进行分析。
 
 > [!NOTE]
 > `__`（双下划线）是 `getContext().getCollection()` 的别名。
@@ -639,8 +638,8 @@ UDF 随后可以用在诸如下面示例的查询中：
 2. 从所有文档投影 ID、消息（别名为 msg）和操作。
 3. 查询具有此谓词的文档：id = "X998_Y998"。
 4. 查询具有 Tags 属性且 Tags 为一个包含值 123 的数组的文档。
-5. 查询具有谓词 id = "X998_Y998" 的文档，然后投影 ID 和消息（别名为 msg）。
-6. 筛选具有数组属性 Tags 的文档，按 _ts 时间戳系统属性对结果文档进行排序，然后投影并平展 Tags 数组。
+5. 查询具有谓词 id = "X998_Y998" 的文档，并投影 ID 和消息（别名为 msg）。
+6. 筛选具有数组属性 Tags 的文档，按 _ts 时间戳系统属性对结果文档进行排序，并投影并平展 Tags 数组。
 
 
 ## <a name="runtime-support"></a>运行时支持
@@ -749,7 +748,7 @@ JavaScript 存储过程和触发器经过沙盒处理，以使一个脚本的效
 
 
 通过针对 URI dbs/testdb/colls/testColl/sprocs 执行 POST 请求（其主体包含要创建的存储过程）来注册存储过程。 同样，可以通过分别针对 /triggers 和 /udfs 发出 POST 来注册触发器和 UDF。
-然后可以通过针对其资源链接发出 POST 请求来执行此存储过程。
+然后可以通过针对其资源链接发出 POST 请求来执行此存储过程：
 
     POST https://<url>/sprocs/<sproc> HTTP/1.1
     authorization: <<auth>>
@@ -792,12 +791,12 @@ JavaScript 存储过程和触发器经过沙盒处理，以使一个脚本的效
     }
 
 
-此处，要通过请求运行的预触发器在 x-ms-documentdb-pre-trigger-include 标头中指定。 相应地，任何后触发器将在 x-ms-documentdb-post-trigger-include 标头中给定。 请注意，可以针对某个给定的请求指定预触发器和后触发器。
+此处，要通过请求运行的预触发器在 x-ms-documentdb-pre-trigger-include 标头中指定。 相应地，任何后触发器会在 x-ms-documentdb-post-trigger-include 标头中给定。 请注意，可以针对某个给定的请求指定预触发器和后触发器。
 
 ## <a name="sample-code"></a>代码示例
 可在 [GitHub 存储库](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples)上找到更多服务器端代码示例（包括 [bulk-delete](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js) 和 [update](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)）。
 
-想要共享你令人惊叹的存储过程吗？ 请向我们发送拉取请求！ 
+想要共享这出色的存储过程吗？ 请向我们发送拉取请求！ 
 
 ## <a name="next-steps"></a>后续步骤
 在创建了一个或多个存储过程、触发器和用户定义的函数之后，可以使用数据资源管理器在 Azure 门户中加载和查看它们。

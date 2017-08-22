@@ -15,18 +15,17 @@ ms.topic: article
 ms.date: 06/08/2017
 ms.author: denlee
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: dc947bb132b14278f38b378bc80ca232c94fcdb7
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 427864fc4e494c19fcda4cfd454a9923499f6337
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="Azure Cosmos DB-HDInsight"></a>使用 Azure Cosmos DB 和 HDInsight 运行 Apache Hive、Pig 或 Hadoop 作业
 本教程演示如何在带有 Cosmos DB 的 Hadoop 连接器的 Azure HDInsight 上运行 [Apache Hive][apache-hive]、[Apache Pig][apache-pig] 和 [Apache Hadoop][apache-hadoop] MapReduce 作业。 Cosmos DB 的 Hadoop 连接器使 Cosmos DB 可以充当 Hive、Pig 以及 MapReduce 作业的源和接收器。 本教程将 Cosmos DB 用作 Hadoop 作业的数据源和目的地。
 
-完成本教程后，你将能够回答以下问题：
+完成本教程后，能够回答以下问题：
 
 * 如何使用 Hive、Pig 或 MapReduce 作业从 Cosmos DB 加载数据？
 * 如何使用 Hive、Pig 或 MapReduce 作业在 Cosmos DB 中存储数据？
@@ -37,10 +36,10 @@ ms.lasthandoff: 06/09/2017
 >
 >
 
-然后，返回到本文，在这里你将获得有关如何对 Cosmos DB 数据运行分析作业的完整详细信息。
+然后，返回到本文，在这里可以获得有关如何对 Cosmos DB 数据运行分析作业的完整详细信息。
 
 > [!TIP]
-> 本教程假定你之前有使用 Apache Hadoop、Hive 和/或 Pig的经验。 如果你不熟悉 Apache Hadoop、Hive 和 Pig，建议访问 [Apache Hadoop 文档][apache-hadoop-doc]。 本教程还假定你具有使用 Cosmos DB 的经验，并且拥有一个 Cosmos DB 帐户。 如果不熟悉 Cosmos DB 或没有 Cosmos DB 帐户，请查看[入门][getting-started]页。
+> 本教程假定先前有使用 Apache Hadoop、Hive 和/或 Pig 的经验。 如果不熟悉 Apache Hadoop、Hive 和 Pig，建议访问 [Apache Hadoop 文档][apache-hadoop-doc]。 本教程还假定你具有使用 Cosmos DB 的经验，并且拥有一个 Cosmos DB 帐户。 如果不熟悉 Cosmos DB 或没有 Cosmos DB 帐户，请查看[入门][getting-started]页。
 >
 >
 
@@ -57,7 +56,7 @@ ms.lasthandoff: 06/09/2017
     <tr><th>支持的 HDInsight 版本</th>
         <td>3.1, 3.2</td></tr>
     <tr><th>更改日志</th>
-        <td>DocumentDB Java SDK 已更新到 1.6.0</br>
+        <td>将 Azure Cosmos DB Java SDK 更新到 1.6.0</br>
             针对同时作为来源和接收器的已分区集合添加了支持</br>
         </td></tr>
 </table>
@@ -66,13 +65,13 @@ ms.lasthandoff: 06/09/2017
 在按照本教程中的说明操作之前，请确保已有下列各项：
 
 * Cosmos DB 帐户、数据库，以及内部已有文档的集合。 有关详细信息，请参阅 [Cosmos DB 入门][getting-started]。 使用 [Cosmos DB 导入工具][import-data]将示例数据导入到 Cosmos DB 帐户中。
-* 吞吐量。 从 HDInsight 进行的读取和写入操作将计入你为集合分配的请求单位。
+* 吞吐量。 从 HDInsight 进行的读取和写入操作将计入为集合分配的请求单位。
 * 在每个输出集合中用于其他存储的步骤的容量。 存储过程用于传输生成的文档。
 * 从 Hive、Pig 或 MapReduce 作业生成的文档的容量。
 * [可选]其他集合的容量。
 
 > [!WARNING]
-> 为了避免在任何作业期间创建一个新集合，你可以将结果打印到 stdout，将输出保存到你的 WASB 容器，或指定一个现有集合。 指定现有集合时，将在集合内创建新文档，如果 ID 中有冲突，只会影响现有文档。 **连接器将自动覆盖出现 ID 冲突的现有文档**。 通过将 upsert 选项设置为 false 可以关闭此功能。 如果 upsert 为 false，并且发生冲突，则 Hadoop 作业将失败；并报告 ID 冲突错误。
+> 为了避免在任何作业期间创建一个新集合，可以将结果打印到 stdout，将输出保存到 WASB 容器，或指定一个现有集合。 指定现有集合时，会在集合内创建新文档，如果 ID 中有冲突，只会影响现有文档。 **连接器会自动覆盖出现 ID 冲突的现有文档**。 通过将 upsert 选项设置为 false 可以关闭此功能。 如果 upsert 为 false，并且发生冲突，则 Hadoop 作业会失败；并报告 ID 冲突错误。
 >
 >
 
@@ -81,15 +80,15 @@ ms.lasthandoff: 06/09/2017
 
 1. 登录到 [Azure 门户][azure-portal]。
 2. 单击左侧导航栏顶部的“+ 新建”，在“新建”边栏选项卡的顶部搜索栏中，搜索“HDInsight”。
-3. **Microsoft** 发布的 **HDInsight** 将出现在结果顶部。 单击，然后单击“创建”。
-4. 在“新建 HDInsight 群集”的“创建”边栏选项卡中，输入**群集名称**，然后选择想要在其下预配此资源的**订阅**。
+3. **Microsoft** 发布的 **HDInsight** 将出现在结果顶部。 单击，并单击“创建”。
+4. 在“新建 HDInsight 群集”的“创建”边栏选项卡中，输入**群集名称**，并选择想要在其下预配此资源的**订阅**。
 
     <table border='1'>
         <tr><td>群集名称</td><td>命名群集。<br/>
 DNS 名称必须以字母数字字符开头和结尾，并且可以包含短划线。<br/>
 字段必须是介于 3 到 63 个字符之间的字符串。</td></tr>
         <tr><td>订阅名称</td>
-            <td>如果你具有多个 Azure 订阅，请选择将承载你的 HDInsight 群集的订阅。 </td></tr>
+            <td>如果具有多个 Azure 订阅，请选择将承载 HDInsight 群集的订阅。 </td></tr>
     </table>
 5. 单击 **选择群集类型** 并将以下属性设置为指定值。
 
@@ -103,18 +102,18 @@ DNS 名称必须以字母数字字符开头和结尾，并且可以包含短划�
     现在，单击“选择”。
 
     ![提供 Hadoop HDInsight 初始群集详细信息][image-customprovision-page1]
-6. 单击“凭据”来设置你的登录和远程访问凭据。 选择“群集登录用户名”“群集登录密码”。
+6. 单击“凭据”来设置登录和远程访问凭据。 选择“群集登录用户名”“群集登录密码”。
 
-    如果希望远程进入你的群集，请选择边栏选项卡底部的“是”，并提供用户名和密码。
-7. 单击“数据源”来设置你进行数据访问的主要位置。 选择“选取方法”并指定一个现有的存储帐户或创建一个新的帐户。
-8. 在同一边栏选项卡上，指定“默认容器”和“位置”。 然后单击“选择”。
+    如果希望远程进入群集，请选择边栏选项卡底部的“是”，并提供用户名和密码。
+7. 单击“数据源”设置数据访问的主要位置。 选择“选取方法”并指定一个现有的存储帐户或创建一个新的帐户。
+8. 在同一边栏选项卡上，指定“默认容器”和“位置”。 然后，单击“选择”。
 
    > [!NOTE]
    > 选择一个接近 Cosmos DB 帐户所在区域的位置，以实现更好的性能
    >
    >
 9. 单击“定价”以选择节点的数量和类型。 可保留默认配置，稍后可调整辅助角色节点数。
-10. 单击“可选配置”，然后单击可选配置边栏选项卡的“脚本操作”。
+10. 单击“可选配置”，并单击可选配置边栏选项卡的“脚本操作”。
 
      在“脚本操作”中，输入以下信息，以自定义 HDInsight 群集。
 
@@ -146,30 +145,30 @@ DNS 名称必须以字母数字字符开头和结尾，并且可以包含短划�
 1. 安装 Azure PowerShell 中的说明进行操作。 可在[此处][powershell-install-configure]找到说明。
 
    > [!NOTE]
-   > 或者，只需了解 Hive 查询，可以使用 HDInsight 的联机 Hive 编辑器。 若要这样做，请登录到 [Azure 门户][azure-portal]，单击左侧窗格中的“HDInsight”查看 HDInsight 群集的列表。 单击要对其运行 Hive 查询的群集，然后单击“查询控制台”。
+   > 或者，只需了解 Hive 查询，可以使用 HDInsight 的联机 Hive 编辑器。 若要这样做，请登录到 [Azure 门户][azure-portal]，单击左侧窗格中的“HDInsight”查看 HDInsight 群集的列表。 单击要对其运行 Hive 查询的群集，并单击“查询控制台”。
    >
    >
 2. 打开 Azure PowerShell 集成脚本环境：
 
    * 在运行 Windows 8 或 Windows Server 2012 或更高版本的计算机上，可以使用内置搜索。 从“开始”屏幕上，键入 **powershell ise**，并单击“Enter”。
-   * 在运行早于 Windows 8 或 Windows Server 2012 的版本的计算机上，请使用“开始”菜单。 从“开始”菜单上，在搜索框中键入**命令提示符**，然后在结果列表中，单击“命令提示符”。 在命令提示符中，键入 **powershell_ise**，然后单击“Enter”。
-3. 添加你的 Azure 帐户。
+   * 在运行早于 Windows 8 或 Windows Server 2012 的版本的计算机上，请使用“开始”菜单。 从“开始”菜单上，在搜索框中键入**命令提示符**，并在结果列表中，单击“命令提示符”。 在命令提示符中，键入 **powershell_ise**，并单击“Enter”。
+3. 添加 Azure 帐户。
 
    1. 在控制台窗格中，键入 **Add-AzureAccount**，并单击“Enter”。
-   2. 键入与你的 Azure 订阅相关联的电子邮件地址并单击“继续”。
-   3. 键入你的 Azure 订阅的密码。
+   2. 键入与 Azure 订阅相关联的电子邮件地址并单击“继续”。
+   3. 键入 Azure 订阅的密码。
    4. 单击“登录”。
-4. 以下关系图标识你的 Azure PowerShell 脚本环境的重要部分。
+4. 以下关系图标识 Azure PowerShell 脚本环境的重要部分。
 
     ![Azure PowerShell 的关系图][azure-powershell-diagram]
 
 ## <a name="RunHive"></a>步骤 3：使用 Cosmos DB 和 HDInsight 运行 Hive 作业
 > [!IMPORTANT]
-> 必须使用你的配置设置填写所有由 < > 表示的变量。
+> 必须使用配置设置填写所有由 < > 表示的变量。
 >
 >
 
-1. 在你的 PowerShell 脚本窗格中设置以下变量。
+1. 在 PowerShell 脚本窗格中设置以下变量。
 
         # Provide Azure subscription name, the Azure Storage account and container that is used for the default HDInsight file system.
         $subscriptionName = "<SubscriptionName>"
@@ -178,9 +177,9 @@ DNS 名称必须以字母数字字符开头和结尾，并且可以包含短划�
 
         # Provide the HDInsight cluster name where you want to run the Hive job.
         $clusterName = "<HDInsightClusterName>"
-2. <p>让我们开始构造查询字符串。 我们将编写 Hive 查询，该查询采用来自 DocumentDB 集合的所有文档的系统生成的时间戳 (_ts) 和唯一 ID (_rid)，按分钟计算所有文档，然后将结果存储回新 DocumentDB 集合。</p>
+2. <p>让我们开始构造查询字符串。 我们将编写 Hive 查询，该查询采用来自 Azure Cosmos DB 集合的所有文档系统生成的时间戳 (_ts) 和唯一 ID (_rid)，按分钟计算所有文档，并将结果存储回新 Azure Cosmos DB 集合。</p>
 
-    <p>首先，让我们从 DocumentDB 集合创建 Hive 表。 将以下代码片段添加到 PowerShell 脚本窗格中从 #1 开始的代码片段<strong>之后</strong>。 请确保包括可选的 DocumentDB.query 参数，以便将我们的文档调整为 just_ts 和 _rid。</p>
+    <p>首先，从 Azure Cosmos DB 集合创建 Hive 表。 将以下代码片段添加到 PowerShell 脚本窗格中从 #1 开始的代码片段<strong>之后</strong>。 请确保包括可选的 DocumentDB.query 参数，以便将我们的文档调整为 just_ts 和 _rid。</p>
 
    > [!NOTE]
    > **命名 DocumentDB.inputCollections 不是一个错误。** 是，我们允许将多个集合作为输入添加： </br>
@@ -256,28 +255,28 @@ DNS 名称必须以字母数字字符开头和结尾，并且可以包含短划�
 
    1. 单击左侧面板上的“浏览”<strong></strong>。 </br>
    2. 单击浏览面板右上角的“全部”<strong></strong>。 </br>
-   3. 找到并单击“DocumentDB 帐户”<strong></strong>。 </br>
-   4. 接下来，找到你的 <strong>DocumentDB 帐户</strong>、<strong>DocumentDB 数据库</strong>和与 Hive 查询中指定的输出集合相关联的 <strong>DocumentDB 集合</strong>。</br>
+   3. 找到并单击“Azure Cosmos DB 帐户”<strong></strong>。 </br>
+   4. 接下来，找到“Azure Cosmos DB 帐户”、“Azure Cosmos DB 数据库”以及与 Hive 查询中所指定的输出集合相关联的“Azure Cosmos DB 集合”<strong></strong><strong></strong><strong></strong>。</br>
    5. 最后，单击“开发人员工具”<strong></strong>下方的“文档资源管理器”<strong></strong>。</br></p>
 
-   你将看到 Hive 查询的结果。
+   会看到 Hive 查询的结果。
 
    ![Hive 查询结果][image-hive-query-results]
 
 ## <a name="RunPig"></a>步骤 4：使用 Cosmos DB 和 HDInsight 运行 Pig 作业
 > [!IMPORTANT]
-> 必须使用你的配置设置填写所有由 < > 表示的变量。
+> 必须使用配置设置填写所有由 < > 表示的变量。
 >
 >
 
-1. 在你的 PowerShell 脚本窗格中设置以下变量。
+1. 在 PowerShell 脚本窗格中设置以下变量。
 
         # Provide Azure subscription name.
         $subscriptionName = "Azure Subscription Name"
 
         # Provide HDInsight cluster name where you want to run the Pig job.
         $clusterName = "Azure HDInsight Cluster Name"
-2. <p>让我们开始构造查询字符串。 我们将编写 Pig 查询，该查询采用来自 DocumentDB 集合的所有文档的系统生成的时间戳 (_ts) 和唯一 ids (_rid)，按分钟计算所有文档，然后将结果存储回新 DocumentDB 集合。</p>
+2. <p>让我们开始构造查询字符串。 我们将编写 Pig 查询，该查询采用来自 Azure Cosmos DB 集合的所有文档系统生成的时间戳 (_ts) 和唯一 ID (_rid)，按分钟计算所有文档，并将结果存储回新 Azure Cosmos DB 集合。</p>
     <p>首先，从 Cosmos DB 将文档加载到 HDInsight 中。 将以下代码片段添加到 PowerShell 脚本窗格中从 #1 开始的代码片段<strong>之后</strong>。 请确保添加了 DocumentDB.query 到可选的 DocumentDB 查询参数，以便将我们的文档调整到 just_ts 和 _rid。</p>
 
    > [!NOTE]
@@ -321,7 +320,7 @@ DNS 名称必须以字母数字字符开头和结尾，并且可以包含短划�
         $queryString = $queryStringPart1 + $queryStringPart2 + $queryStringPart3
         $pigJobDefinition = New-AzureHDInsightPigJobDefinition -Query $queryString -StatusFolder $statusFolder
 
-    你也可以使用 -File 开关来指定 HDFS 上的 Pig 脚本文件。
+    也可以使用 -File 开关来指定 HDFS 上的 Pig 脚本文件。
 6. 添加以下代码段以保存开始时间并提交 Pig 作业。
 
         # Save the start time and submit the job to the cluster.
@@ -343,20 +342,20 @@ DNS 名称必须以字母数字字符开头和结尾，并且可以包含短划�
 
     1. 单击左侧面板上的“浏览”<strong></strong>。 </br>
     2. 单击浏览面板右上角的“全部”<strong></strong>。 </br>
-    3. 找到并单击“DocumentDB 帐户”<strong></strong>。 </br>
-    4. 接下来，找到你的 <strong>DocumentDB 帐户</strong>、<strong>DocumentDB 数据库</strong>和与 Pig 查询中指定的输出集合相关联的 <strong>DocumentDB 集合</strong>。</br>
+    3. 找到并单击“Azure Cosmos DB 帐户”<strong></strong>。 </br>
+    4. 接下来，找到“Azure Cosmos DB 帐户”、“Azure Cosmos DB 数据库”以及与 Pig 查询中所指定输出集合相关联的“Azure Cosmos DB 集合”<strong></strong><strong></strong><strong></strong>。</br>
     5. 最后，单击“开发人员工具”<strong></strong>下方的“文档资源管理器”<strong></strong>。</br></p>
 
-    你将看到 Pig 查询的结果。
+    会看到 Pig 查询的结果。
 
     ![Pig 查询结果][image-pig-query-results]
 
-## <a name="RunMapReduce"></a>步骤 5：使用 DocumentDB 和 HDInsight 运行 MapReduce 作业
-1. 在你的 PowerShell 脚本窗格中设置以下变量。
+## <a name="RunMapReduce"></a>步骤 5：使用 Azure Cosmos DB 和 HDInsight 运行 MapReduce 作业
+1. 在 PowerShell 脚本窗格中设置以下变量。
 
         $subscriptionName = "<SubscriptionName>"   # Azure subscription name
         $clusterName = "<ClusterName>"             # HDInsight cluster name
-2. 我们将执行 MapReduce 作业，该作业从你的 DocumentDB 集合计算每个文档属性的发生次数。 在以上片段**之后**添加此脚本片段。
+2. 我们将执行 MapReduce 作业，该作业从 Azure Cosmos DB 集合计算每个文档属性的发生次数。 在以上片段**之后**添加此脚本片段。
 
         # Define the MapReduce job.
         $TallyPropertiesJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars/TallyProperties-v01.jar" -ClassName "TallyProperties" -Arguments "<DocumentDB Endpoint>","<DocumentDB Primary Key>", "<DocumentDB Database Name>","<DocumentDB Input Collection Name>","<DocumentDB Output Collection Name>","<[Optional] DocumentDB Query>"
@@ -372,7 +371,7 @@ DNS 名称必须以字母数字字符开头和结尾，并且可以包含短划�
         Select-AzureSubscription $subscriptionName
         $TallyPropertiesJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $TallyPropertiesJobDefinition | Wait-AzureHDInsightJob -WaitTimeoutInSeconds 3600  
 
-    除了 MapReduce 作业定义外，你还要提供需运行 MapReduce 作业的 HDInsight 群集名称，以及凭据。 Start-AzureHDInsightJob 是异步调用。 要检查作业是否完成，请使用 *Wait-AzureHDInsightJob* cmdlet。
+    除了 MapReduce 作业定义外，还要提供需运行 MapReduce 作业的 HDInsight 群集名称，以及凭据。 Start-AzureHDInsightJob 是异步调用。 要检查作业是否完成，请使用 *Wait-AzureHDInsightJob* cmdlet。
 4. 添加以下命令来检查运行 MapReduce 作业时的错误。
 
         # Get the job output and print the start and end time.
@@ -384,18 +383,18 @@ DNS 名称必须以字母数字字符开头和结尾，并且可以包含短划�
 
    1. 单击左侧面板上的“浏览”<strong></strong>。
    2. 单击浏览面板右上角的“全部”<strong></strong>。
-   3. 找到并单击“Cosmos DB 帐户”<strong></strong>。
-   4. 接下来，找到你的 <strong>Cosmos DB 帐户</strong>、<strong>Cosmos DB 数据库</strong>和与 MapReduce 作业中指定的输出集合相关联的 <strong>DocumentDB 集合</strong>。
+   3. 找到并单击“Azure Cosmos DB 帐户”<strong></strong>。
+   4. 接下来，找到“Azure Cosmos DB 帐户”、“Azure Cosmos DB 数据库”以及与 MapReduce 作业中所指定输出集合相关联的“Azure Cosmos DB 集合”<strong></strong><strong></strong><strong></strong>。
    5. 最后，单击“开发人员工具”<strong></strong>下方的“文档资源管理器”<strong></strong>。
 
-      你将看到 MapReduce 作业的结果。
+      会看到 MapReduce 作业的结果。
 
       ![MapReduce 查询结果][image-mapreduce-query-results]
 
 ## <a name="NextSteps"></a>后续步骤
 祝贺你！ 只需使用 Azure Cosmos DB 和 HDInsight 运行第一个 Hive、Pig 和 MapReduce 作业。
 
-我们的 Hadoop Connector 是开源的。 如果你有兴趣，欢迎在 [GitHub][github] 上供稿。
+我们的 Hadoop Connector 是开源的。 如果有兴趣，欢迎在 [GitHub][github] 上供稿。
 
 若要了解更多信息，请参阅下列文章：
 

@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 07/31/2017
 ms.author: milanga;juliako;
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 549be7c3439dfc00a5a8b771811d59261f56ddc9
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 4ccd5efb0d5651d90d70f382fd7d2ebed8bed4eb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>使用 Azure 媒体分析检测动作
@@ -164,7 +164,7 @@ ms.lasthandoff: 07/20/2017
 以下程序演示如何：
 
 1. 创建资产并将媒体文件上传到资产。
-2. 使用基于包含以下 json 预设的配置文件的视频动作检测任务创建一个作业。 
+2. 基于包含以下 json 预设的配置文件，使用视频动作检测任务创建作业。 
    
         {
           "Version": "1.0",

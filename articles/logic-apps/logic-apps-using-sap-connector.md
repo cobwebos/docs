@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/01/2017
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 89cd987cee841ea24dce85c0249e0eb3489c8d90
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 3fea93f558d5a4ef62550fd1f6486903cb812930
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -32,13 +32,11 @@ ms.lasthandoff: 05/03/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-- 安装并配置最新的[本地数据网关](https://www.microsoft.com/download/details.aspx?id=53127)版本1.15.6150.1 或更高版本。 [如何在逻辑应用中连接到本地数据网关](http://aka.ms/logicapps-gateway)中列出了相关步骤。 必须先在本地计算机上安装网关，然后才能继续后续步骤。
+- 安装并配置最新的[本地数据网关](https://www.microsoft.com/download/details.aspx?id=53127)版本1.15.6150.1 或更高版本。 [如何在逻辑应用中连接到本地数据网关](http://aka.ms/logicapps-gateway)中列出了相关步骤。 必须先在本地计算机上安装网关，才能继续后续步骤。
 
 - 在安装有数据网关的同一计算机上下载并安装最新的 SAP 客户端库。 使用下方任意 SAP 版本： 
     - SAP Server
-        - SAP ECC 6.0 Unicode
-        - SAP ECC 6.0 Unicode（含 EHP 4.0）
-        - SAP ECC 6.0（含 EHP 7.0）和所有 EHP 早期版本
+        - 支持 .NET 连接器 (NCo) 3.0 的任何 SAP Server
  
     - SAP 客户端
         - SAP.NET 连接器 (NCo) 3.0
@@ -47,15 +45,15 @@ ms.lasthandoff: 05/03/2017
 
 SAP 连接器包含操作，但不包含触发器。 因此，必须在工作流开始时使用其他触发器。 
 
-1. 添加请求/响应触发器，然后选择“新建步骤”。
+1. 添加请求/响应触发器，并选择“新建步骤”。
 
-2. 选择“添加操作”，然后通过在搜索字段中键入 `SAP` 选择 SAP 连接器：    
+2. 选择“添加操作”，并通过在搜索字段中键入 `SAP` 选择 SAP 连接器：    
 
      ![选择 SAP 应用程序服务器或 SAP 消息服务器](media/logic-apps-using-sap-connector/sap-action.png)
 
 3. 根据 SAP 设置，选择 [SAP 应用程序服务器](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server)或 [SAP 消息服务器](http://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm)。 如果没有现有连接，系统会提示创建连接。
 
-   1. 选择“通过本地数据网关连接”，然后输入 SAP 系统的详细信息：   
+   1. 选择“通过本地数据网关连接”，并输入 SAP 系统的详细信息：   
 
        ![向 SAP 添加连接字符串](media/logic-apps-using-sap-connector/picture2.png)  
 
@@ -68,7 +66,7 @@ SAP 连接器包含操作，但不包含触发器。 因此，必须在工作流
 
 4. 输入 SAP 连接的名称。
 
-5. 现在可以使用不同的 SAP 选项。 若要查找 IDOC 类别，请从列表中选择。 或者手动键入路径，然后在“正文”字段中选择 HTTP 响应：
+5. 现在可以使用不同的 SAP 选项。 若要查找 IDOC 类别，请从列表中选择。 或者手动键入路径，并在“正文”字段中选择 HTTP 响应：
 
      ![SAP 操作](media/logic-apps-using-sap-connector/picture3.png)
 

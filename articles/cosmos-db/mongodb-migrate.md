@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 06/12/2017
 ms.author: anhoh
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 3823cfc0696c917a66d41e9dbde4349f635a4011
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 1555f13c3ea88b61be0ea240b51218b83f6f9724
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 06/29/2017
 * 从 [MongoDB 下载中心](https://www.mongodb.com/download-center)下载 *mongoimport.exe* 或 *mongorestore.exe*。
 * 获取[适用于 MongoDB 的 API 连接字符串](connect-mongodb-account.md)。
 
-若要从 MongoDB 导入数据，并计划将导入数据与 DocumentDB API 配合使用，应使用[数据迁移工具](import-data.md)导入数据。
+如果要从 MongoDB 导入数据，并计划将其与 Azure Cosmos DB 搭配使用，则应使用[数据迁移工具](import-data.md)来导入数据。
 
 本教程涵盖以下任务：
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 06/29/2017
 
 ## <a name="import-data-to-the-api-for-mongodb-by-using-mongorestore"></a>使用 mongorestore 将数据导入 MongoDB API
 
-若要将数据还原到适用于 MongoDB 的 API 帐户，请使用以下模板执行导入。 使用特定于帐户的值填写“主机”、“用户名”和“密码”。
+要将数据还原到适用于 MongoDB 的 API 帐户，请使用以下模板执行导入。 使用特定于帐户的值填写“主机”、“用户名”和“密码”。
 
 模板：
 
@@ -89,9 +89,9 @@ ms.lasthandoff: 06/29/2017
 
 2. 计算单文档写入的近似 RU 费用：
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 通过 MongoDB Shell 连接到 Azure Cosmos DB MongoDB 数据库。 有关说明，可以参阅[将 MongoDB 应用程序连接到 Azure Cosmos DB](connect-mongodb-account.md)。
+    a. 通过 MongoDB Shell 连接到 Azure Cosmos DB MongoDB 数据库。 有关说明，可以参阅[将 MongoDB 应用程序连接到 Azure Cosmos DB](connect-mongodb-account.md)。
     
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 通过 MongoDB Shell 使用示例文档之一运行示例插入命令：
+    b. 通过 MongoDB Shell 使用示例文档之一运行示例插入命令：
     
         ```db.coll.insert({ "playerId": "a067ff", "hashedid": "bb0091", "countryCode": "hk" })```
         
@@ -112,9 +112,9 @@ ms.lasthandoff: 06/29/2017
     
 3. 确定计算机连接 Azure Cosmos DB 云服务的延迟时间：
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 运行以下命令，通过 MongoDB Shell 启用详细日志记录：```setVerboseShell(true)```
+    a. 运行以下命令，通过 MongoDB Shell 启用详细日志记录：```setVerboseShell(true)```
     
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 对数据库运行简单查询：```db.coll.find().limit(1)```。 响应如下所示：
+    b. 对数据库运行简单查询：```db.coll.find().limit(1)```。 响应如下所示：
 
         ```
         Fetched 1 record(s) in 100(ms)
@@ -130,7 +130,7 @@ ms.lasthandoff: 06/29/2017
     
     * 如果计算出的 batchSize > 24，请将 batchSize 值设置为 24。
     
-    * 若要计算 *numInsertionWorkers* ，请使用以下公式：  *numInsertionWorkers =  (预配的吞吐量 * 延迟秒数) / (批大小 * 单文档写入所使用的 RU)*。
+    * 若要计算 numInsertionWorkers，请使用以下公式：numInsertionWorkers = (预配的吞吐量 * 延迟秒数) / (批大小 * 单文档写入所使用的 RU)。
         
     |属性|值|
     |--------|-----|

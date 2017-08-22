@@ -1,6 +1,6 @@
 ---
 title: "如何使用 Azure Resource Manager 模板创建 ILB ASE | Microsoft Docs"
-description: "了解如何使用 Azure Resource Manager 模板创建内部负载平衡器 ASE。"
+description: "了解如何使用 Azure Resource Manager 模板创建内部负载均衡器 ASE。"
 services: app-service
 documentationcenter: 
 author: stefsch
@@ -12,26 +12,32 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2016
+ms.date: 07/11/2017
 ms.author: stefsch
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 33d1638dfbf1e314d7ea298a39dd4e646c3faf10
-
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 147ab76d38c8bbbf34d35ed6c2a194d97fe711ab
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>如何使用 Azure Resource Manager 模板创建 ILB ASE
+
+> [!NOTE] 
+> 本文介绍应用服务环境 v1。 应用服务环境有一个较新版本，此版本更易于使用并在更强大的基础结构上运行。 若要深入了解新版本，请先参阅[应用服务环境简介](../app-service/app-service-environment/intro.md)。
+>
+
 ## <a name="overview"></a>概述
-使用虚拟网络内部地址（而不是公用 VIP）可以创建应用服务环境。  此内部地址由称为内部负载平衡器 (ILB) 的 Azure 组件提供。  使用 Azure 门户可以创建 ILB ASE。  也可以通过 Azure Resource Manager 模板使用自动化功能创建。  本文介绍了使用 Azure Resource Manager 模板创建 ILB ASE 所需的步骤和语法。
+使用虚拟网络内部地址（而不是公用 VIP）可以创建应用服务环境。  此内部地址由称为内部负载均衡器 (ILB) 的 Azure 组件提供。  使用 Azure 门户可以创建 ILB ASE。  也可以通过 Azure Resource Manager 模板使用自动化功能创建。  本文介绍了使用 Azure Resource Manager 模板创建 ILB ASE 所需的步骤和语法。
 
 自动创建 ILB ASE 涉及三个步骤：
 
-1. 首先，使用内部负载平衡器地址（而不是公用 VIP）在虚拟网络中创建基础 ASE。  在此步骤中，将为 ILB ASE 分配根域名称。
+1. 首先，使用内部负载均衡器地址（而不是公用 VIP）在虚拟网络中创建基础 ASE。  在此步骤中，将为 ILB ASE 分配根域名称。
 2. 一旦创建 ILB ASE，就会上传 SSL 证书。  
-3. 上传的 SSL 证书显式分配给 ILB ASE 作为其“默认”SSL 证书。  如果应用使用分配给 ASE 的一般根域（例如 https://someapp.mycustomrootcomain.com）来寻址，此 SSL 证书将用于 ILB ASE 上应用的 SSL 流量
+3. 上传的 SSL 证书显式分配给 ILB ASE 作为其“默认”SSL 证书。  如果应用使用分配给 ASE 的一般根域（例如 https://someapp.mycustomrootcomain.com）来寻址，此 SSL 证书用于 ILB ASE 上应用的 SSL 流量
 
 ## <a name="creating-the-base-ilb-ase"></a>创建基础 ILB ASE
-GitHub 上（[此处][quickstartilbasecreate]）提供了示例 Azure Resource Manager 模板及其相关联的参数文件。
+GitHub（[此处][quickstartilbasecreate]）上提供了 Azure 资源管理器模板示例及其相关联的参数文件。
 
 *azuredeploy.parameters.json* 文件中的大部分参数通用于创建 ILB ASE 以及绑定到公用 VIP 的 ASE。  创建 ILB ASE 时，以下列表会调出特殊注释的参数或唯一的参数：
 
@@ -54,13 +60,13 @@ GitHub 上（[此处][quickstartilbasecreate]）提供了示例 Azure Resource M
 可通过各种方式获取有效的 SSL 证书，包括内部 CA、向外部颁发者购买证书，以及使用自签名证书。  无论 SSL 证书的来源如何，都需要正确配置以下证书属性：
 
 * *使用者*：此属性必须设置为 **.your-root-domain-here.com*
-* *使用者可选名称*：此属性必须同时包含 **.your-root-domain-here.com* 和 **.scm.your-root-domain-here.com*。  输入第二项是因为将使用 *your-app-name.scm.your-root-domain-here.com* 形式的地址，建立与每个应用关联的 SCM/Kudu 站点的 SSL 连接。
+* *使用者可选名称*：此属性必须同时包含 **.your-root-domain-here.com* 和 **scm.your-root-domain-here.com*。  输入第二项是因为将使用 *your-app-name.scm.your-root-domain-here.com* 形式的地址，建立与每个应用关联的 SCM/Kudu 站点的 SSL 连接。
 
 备妥有效的 SSL 证书还需要两个额外的准备步骤。  SSL 证书必须转换/另存为 .pfx 文件。  记住，.pfx 文件必须包含所有中间证书和根证书，还必须使用密码保护。
 
-然后必须将生成的 .pfx 文件转换为 base64 字符串，因为会使用 Azure Resource Manager 模板上传 SSL 证书。  Azure Resource Manager 模板是文本文件，因此必须将 .pfx 文件转换为 base64 字符串，才能纳入为模板的参数。
+然后需要将生成的 .pfx 文件转换为 base64 字符串，因为会使用 Azure 资源管理器模板上传 SSL 证书。  Azure Resource Manager 模板是文本文件，因此必须将 .pfx 文件转换为 base64 字符串，才能纳入为模板的参数。
 
-以下 Powershell 代码片段显示生成自签名证书、将证书导出为 .pfx 文件、将 .pfx 文件转换为 base64 编码字符串，然后将 base64 编码字符串保存到一个单独文件的示例。  base64 编码的 Powershell 代码改写自 [Powershell 脚本博客][examplebase64encoding]。
+以下 Powershell 代码片段显示生成自签名证书、将证书导出为 .pfx 文件、将 .pfx 文件转换为 base64 编码字符串，并将 base64 编码字符串保存到一个单独文件的示例。  base64 编码的 Powershell 代码改写自 [Powershell 脚本博客][examplebase64encoding]。
 
     $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
@@ -123,7 +129,7 @@ GitHub 上（[此处][quickstartilbasecreate]）提供了示例 Azure Resource M
 
 完成模板后，可通过 HTTPS 访问 ILB ASE 上的应用，并使用默认 SSL 证书保护连接。  如果 ILB ASE 上的应用使用应用程序名称与默认主机名的组合来寻址，则会使用默认 SSL 证书。  例如 *https://mycustomapp.internal-contoso.com* 会使用 **.internal-contoso.com* 的默认 SSL 证书。
 
-不过，与公共多租户服务上运行的应用一样，开发人员也可以为单个应用配置自定义主机名，然后为单个应用配置唯一的 SNI SSL 证书绑定。  
+不过，与公共多租户服务上运行的应用一样，开发人员也可以为单个应用配置自定义主机名，并为单个应用配置唯一的 SNI SSL 证书绑定。  
 
 ## <a name="getting-started"></a>入门
 若要开始使用应用服务环境，请参阅 [Introduction to App Service Environment](app-service-app-service-environment-intro.md)（应用服务环境简介）
@@ -138,10 +144,5 @@ GitHub 上（[此处][quickstartilbasecreate]）提供了示例 Azure Resource M
 [quickstartilbasecreate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-create/
 [examplebase64encoding]: http://powershellscripts.blogspot.com/2007/02/base64-encode-file.html 
 [configuringDefaultSSLCertificate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-configure-default-ssl/ 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 07/20/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 286ba47b801d4f21add1a8429035729be6ff7e00
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: e4bc03c624c9930d7a9b0bef22d3179633de3365
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 #  <a name="use-azure-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>使用 Azure Media Encoder Standard 自动生成比特率阶梯
@@ -27,10 +27,13 @@ ms.lasthandoff: 07/20/2017
 
 本主题介绍如何使用 Media Encoder Standard (MES) 根据输入分辨率和比特率自动生成比特率阶梯（比特率-分辨率对）。 自动生成的预设不会超过输入分辨率和比特率。 例如，如果输入在 3Mbps 时为 720p，则输出最多会保持 720p，并且会以低于 3Mbps 的速率开始。
 
-若要使用此功能，需在创建编码任务时指定“自适应流式处理”预设。 使用“自适应流式处理”预设时，MES 编码器会以智能方式为比特率阶梯设置一个上限。 但是，用户无法控制编码成本，因为是由服务确定要使用的层数和分辨率。 可以在本主题[末尾](#output)看到 MES 生成的输出层的示例，是使用“自适应流式处理”预设进行编码得来的。
+### <a name="encoding-for-streaming-only"></a>编码为仅流式处理
 
->[!NOTE]
-> 只有在生成可流式处理的输出资产时，才使用此预设。 具体而言，该输出资产将包含无音频和视频交错的 MP4 文件。 如果需要输出包含音频和视频交错的 MP4 文件（例如，作为渐进式下载文件使用），请使用列在[本部分](media-services-mes-presets-overview.md)的其中一个预设。
+如果打算将源视频编码为仅用于流式处理，则应在创建编码任务时使用“自适应流式处理”预设。 使用“自适应流式处理”预设时，MES 编码器会以智能方式为比特率阶梯设置一个上限。 但是，用户无法控制编码成本，因为是由服务确定要使用的层数和分辨率。 可以在本主题末尾看到 MES 生成的输出层示例，这些示例是使用“自适应流式处理”预设进行编码得来的。 该输出资包含无音频和视频交错的 MP4 文件。
+
+### <a name="encoding-for-streaming-and-progressive-download"></a>编码为流式处理和渐进式下载
+
+如果打算将源视频编码为用于流式处理以及生成可供渐进式下载的 MP4 文件，则应在创建编码任务时使用“内容自适应多比特率 MP4”预设。 使用“内容自适应多比特率 MP4”预设时，MES 编码器将应用与上述相同的编码逻辑，但现在输出资产将包含音频和视频交叠的 MP4 文件。 可使用其中一个 MP4 文件（例如，最高比特率版本）作为渐进式下载文件。
 
 ## <a id="encoding_with_dotnet"></a>使用媒体服务 .NET SDK 进行编码
 

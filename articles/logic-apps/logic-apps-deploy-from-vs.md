@@ -15,17 +15,17 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 2/14/2017
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: ad18896548449d85e2af8a91ddd90c8192db1ab2
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: e7f5cf483d22e4c60dedbe5176ceb0bc8b2b6e66
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 
 # <a name="design-build-and-deploy-azure-logic-apps-in-visual-studio"></a>在 Visual Studio 中设计、生成和部署 Azure 逻辑应用
 
-虽然 [Azure 门户](https://portal.azure.com/)提供了创建和管理 Azure 逻辑应用的良好方法，但你可能想要使用 Visual Studio 设计、生成和部署逻辑应用。 Visual Studio 提供了丰富的工具（如逻辑应用设计器），使你能够创建逻辑应用，配置部署和自动化模板，并部署到任何环境。 
+虽然 [Azure 门户](https://portal.azure.com/)提供了创建和管理 Azure 逻辑应用的良好方法，但你可以使用 Visual Studio 设计、生成和部署逻辑应用。 Visual Studio 提供了丰富的工具（如逻辑应用设计器），使你能够创建逻辑应用，配置部署和自动化模板，并部署到任何环境。 
 
 若要开始使用 Azure 逻辑应用，请参阅[如何在 Azure 门户中创建第一个逻辑应用](logic-apps-create-a-logic-app.md)。
 
@@ -57,15 +57,15 @@ ms.lasthandoff: 04/06/2017
 
 ## <a name="create-your-project"></a>创建项目
 
-1. 在“文件”菜单上，转到“新建”，然后选择“项目”。 或者，若要将项目添加到现有解决方案，请转到“添加”，然后选择“新建项目”。
+1. 在“文件”菜单上，转到“新建”，并选择“项目”。 或者，要将项目添加到现有解决方案，请转到“添加”，然后选择“新建项目”。
 
     ![“文件”菜单](./media/logic-apps-deploy-from-vs/filemenu.png)
 
-2. 在“新建项目”窗口中，找到“云”，然后选择“Azure 资源组”。 为项目命名，然后单击“确定”。
+2. 在“新建项目”窗口中，找到“云”，并选择“Azure 资源组”。 为项目命名，并单击“确定”。
 
     ![添加新项目](./media/logic-apps-deploy-from-vs/addnewproject.png)
 
-3. 选择“逻辑应用”模板，这将创建一个空白的逻辑应用部署模板以供使用。 选择模板后，单击“确定”。
+3. 选择“逻辑应用”模板，这会创建一个空白的逻辑应用部署模板以供使用。 选择模板后，单击“确定”。
 
     ![选择逻辑应用模板](./media/logic-apps-deploy-from-vs/selectazuretemplate1.png)
 
@@ -86,13 +86,13 @@ ms.lasthandoff: 04/06/2017
 2. 选择 Azure 订阅、资源组和部署模板的位置。
 
     > [!NOTE]
-    > 在设计期间，设计逻辑应用会创建查询属性的 API 连接资源。 Visual Studio 使用所选资源组在设计期间创建这些连接。 若要查看或更改任何 API 连接，请转到 Azure 门户，然后浏览“API 连接”。
+    > 在设计期间，设计逻辑应用会创建查询属性的 API 连接资源。 Visual Studio 使用所选资源组在设计期间创建这些连接。 要查看或更改任何 API 连接，请转到 Azure 门户，并浏览“API 连接”。
 
     ![订阅选取器](./media/logic-apps-deploy-from-vs/designer_picker.png)
 
     设计器使用 `<template>.json` 文件中的定义进行绘制。
 
-4. 创建和设计逻辑应用。 将使用你的更改更新部署模板。
+4. 创建和设计逻辑应用。 将使用更改更新部署模板。
 
     ![Visual Studio 中的逻辑应用设计器](./media/logic-apps-deploy-from-vs/designer_in_vs.png)
 
@@ -102,11 +102,11 @@ Visual Studio 将 `Microsoft.Web/connections` 资源添加到逻辑应用运行�
 
 若要显示逻辑应用的 JSON 表示形式，请在设计器底部选择“代码视图”选项卡。
 
-若要切换回完整资源 JSON，请右键单击 `<template>.json` 文件，然后选择“打开”。
+要切换回完整资源 JSON，请右键单击 `<template>.json` 文件，并选择“打开”。
 
 ### <a name="add-references-for-dependent-resources-to-visual-studio-deployment-templates"></a>将从属资源的引用添加到 Visual Studio 部署模板
 
-如果想要逻辑应用引用从属资源，可以在逻辑应用部署模板中使用 [Azure Resource Manager 模板函数](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions)（如参数）。 例如，可能想让逻辑应用引用要与逻辑应用一起部署的 Azure 函数或集成帐户。 请遵循以下准则，了解如何在部署模板中使用参数，使逻辑应用设计器可正确地呈现。 
+如果希望逻辑应用引用从属资源，可以在逻辑应用部署模板中使用 [Azure 资源管理器模板函数](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions)。 例如，可能想让逻辑应用引用要与逻辑应用一起部署的 Azure 函数或集成帐户。 请遵循以下准则，了解如何在部署模板中使用参数，使逻辑应用设计器可正确地呈现。 
 
 可以在以下类型的触发器和操作中使用逻辑应用参数：
 
@@ -114,15 +114,16 @@ Visual Studio 将 `Microsoft.Web/connections` 资源添加到逻辑应用运行�
 *   函数应用
 *   APIM 调用
 *   API 连接运行时 URL
+*   API 连接路径
 
-还可以使用这些模板参数：在下面列出的，包括参数、变量、资源 ID、concat 等。 例如，下面是替换 Azure 函数资源 ID 的方法：
+可以使用模板函数，如参数、变量、资源 ID、concat 等。例如，下面是替换 Azure 函数资源 ID 的方法：
 
 ```
 "parameters":{
     "functionName": {
-    "type":"string",
-    "minLength":1,
-    "defaultValue":"<FunctionName>"
+        "type":"string",
+        "minLength":1,
+        "defaultValue":"<FunctionName>"
     }
 },
 ```
@@ -131,16 +132,43 @@ Visual Studio 将 `Microsoft.Web/connections` 资源添加到逻辑应用运行�
 
 ```
 "MyFunction": {
-        "type": "Function",
-        "inputs": {
+    "type": "Function",
+    "inputs": {
         "body":{},
         "function":{
-        "id":"[resourceid('Microsoft.Web/sites/functions','functionApp',parameters('functionName'))]"
+            "id":"[resourceid('Microsoft.Web/sites/functions','functionApp',parameters('functionName'))]"
         }
     },
     "runAfter":{}
 }
 ```
+再举一例，可以参数化服务总线发送消息操作：
+
+```
+"Send_message": {
+    "type": "ApiConnection",
+        "inputs": {
+            "host": {
+                "connection": {
+                    "name": "@parameters('$connections')['servicebus']['connectionId']"
+                }
+            },
+            "method": "post",
+            "path": "[concat('/@{encodeURIComponent(''', parameters('queueuname'), ''')}/messages')]",
+            "body": {
+                "ContentData": "@{base64(triggerBody())}"
+            },
+            "queries": {
+                "systemProperties": "None"
+            }
+        },
+        "runAfter": {}
+    }
+```
+> [!NOTE] 
+> host.runtimeUrl 是可选的，可从模板中删除（如果存在）。
+> 
+
 
 > [!NOTE] 
 > 为了使逻辑应用设计器能工作，在使用参数时必须提供默认值，例如：
@@ -159,13 +187,13 @@ Visual Studio 将 `Microsoft.Web/connections` 资源添加到逻辑应用运行�
 
 若要随时保存逻辑应用，请转到“文件” > “保存”。 (`Ctrl+S`) 
 
-如果保存应用时逻辑应用出现任何错误，这些错误都将显示在 Visual Studio 的“输出”窗口中。
+如果保存应用时逻辑应用出现任何错误，这些错误都会显示在 Visual Studio 的“输出”窗口中。
 
 ## <a name="deploy-your-logic-app-from-visual-studio"></a>从 Visual Studio 部署逻辑应用
 
 完成应用配置后，只需几个步骤，即可直接从 Visual Studio 进行部署。 
 
-1. 在“解决方案资源管理器”中，右键单击项目，然后转到“部署” > “新部署...”
+1. 在“解决方案资源管理器”中，右键单击项目，并转到“部署” > “新部署...”
 
     ![新部署](./media/logic-apps-deploy-from-vs/newdeployment.png)
 
@@ -178,7 +206,7 @@ Visual Studio 将 `Microsoft.Web/connections` 资源添加到逻辑应用运行�
 
     ![部署到资源组](./media/logic-apps-deploy-from-vs/deploytoresourcegroup.png)
 
-    部署状态将显示在“输出”窗口中。 
+    部署状态会显示在“输出”窗口中。 
     需要在“显示输出来源”列表中选择“Azure 预配”。
 
     ![部署状态输出](./media/logic-apps-deploy-from-vs/output.png)
@@ -186,7 +214,7 @@ Visual Studio 将 `Microsoft.Web/connections` 资源添加到逻辑应用运行�
 将来，可以在源控件中编辑逻辑应用，并使用 Visual Studio 部署新版本。
 
 > [!NOTE]
-> 如果直接在 Azure 门户中更改定义，那么下次从 Visual Studio 部署时将覆盖这些更改。 
+> 如果直接在 Azure 门户中更改定义，那么下次从 Visual Studio 部署时会覆盖这些更改。 
 
 ## <a name="add-your-logic-app-to-an-existing-resource-group-project"></a>将逻辑应用添加到现有资源组项目
 
@@ -196,11 +224,11 @@ Visual Studio 将 `Microsoft.Web/connections` 资源添加到逻辑应用运行�
 
 2. 若要打开“JSON 大纲”窗口，请转到“视图” > “其他窗口” > “JSON 大纲”。
 
-3. 若要将资源添加到模板文件，请在“JSON 大纲”窗口顶部单击“添加资源”。 或者在“JSON 大纲”窗口中，右键单击“资源”，然后选择“添加新资源”。
+3. 要将资源添加到模板文件，请在“JSON 大纲”窗口顶部单击“添加资源”。 或者在“JSON 大纲”窗口中，右键单击“资源”，并选择“添加新资源”。
 
     ![“JSON 大纲”窗口](./media/logic-apps-deploy-from-vs/jsonoutline.png)
     
-4. 在“添加资源”对话框中，找到并选择“逻辑应用”。 为逻辑应用命名，然后选择“添加”。
+4. 在“添加资源”对话框中，找到并选择“逻辑应用”。 为逻辑应用命名，并选择“添加”。
 
     ![添加资源](./media/logic-apps-deploy-from-vs/addresource.png)
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure App Service 中 API 应用的身份验证和授权 | Microsoft Docs"
+title: "Azure 应用服务中 API 应用的身份验证和授权 | Microsoft Docs"
 description: "了解 Azure 应用服务为 API 应用提供的身份验证和授权服务。"
 services: app-service\api
 documentationcenter: .net
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
 ms.author: alkarche
-translationtype: Human Translation
-ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
-ms.openlocfilehash: cd66296718d8ae3cd2bcd69c66f54684f57d7ece
-ms.lasthandoff: 01/20/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: f9fd533dfbd54517232f9dae5000ed4779baebd4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="authentication-and-authorization-for-api-apps-in-azure-app-service"></a>Azure 应用服务中 API 应用的身份验证和授权
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/20/2017
 > 
 > 
 
-Azure App Service 提供内置的身份验证与授权服务，可实现 [OAuth 2.0](#oauth) 和 [OpenID Connect](#oauth)。 本文介绍 Azure 应用服务中 API 应用可用的服务和选项。
+Azure 应用服务提供内置的身份验证与授权服务，可实现 [OAuth 2.0](#oauth) 和 [OpenID Connect](#oauth)。 本文介绍 Azure 应用服务中 API 应用可用的服务和选项。
 
 下图演示了应用服务身份验证的几个重要特征：
 
@@ -71,7 +71,7 @@ Azure App Service 提供内置的身份验证与授权服务，可实现 [OAuth 
 
 ![](./media/app-service-api-authentication/authblade.png)
 
-如果选择选项 1 和 2，请打开“应用服务身份验证”，然后在“请求未经身份验证时需执行的操作”下拉列表中，选择“登录”或“允许请求(无操作)”。  如果选择“登录”，则必须选择身份验证提供程序并配置该提供程序。
+如果选择选项 1 和 2，请打开“应用服务身份验证”，并在“请求未经身份验证时需执行的操作”下拉列表中，选择“登录”或“允许请求(无操作)”。  如果选择“登录”，则必须选择身份验证提供程序并配置该提供程序。
 
 ![](./media/app-service-api-authentication/actiontotake.png)
 
@@ -99,7 +99,7 @@ Azure App Service 提供内置的身份验证与授权服务，可实现 [OAuth 
 
 * [OAuth 2.0 入门](http://shop.oreilly.com/product/0636920021810.do "OAuth 2.0 入门") 
 * [Introduction to OAuth2, OpenID Connect and JSON Web Tokens (JWT) - PluralSight Course](http://www.pluralsight.com/courses/oauth2-json-web-tokens-openid-connect-introduction)（OAuth2、OpenID Connect 和 JSON Web 令牌 (JWT) 简介 — PluralSight 课程） 
-* [Building and Securing a RESTful API for Multiple Clients in ASP.NET - PluralSight course](http://www.pluralsight.com/courses/building-securing-restful-api-aspdotnet)（在 ASP.NET 中生成和保护多个客户端的 RESTful API - PluralSight 课程）
+* [Building and Securing a RESTful API for Multiple Clients in ASP.NET - PluralSight course](http://www.pluralsight.com/courses/building-securing-restful-api-aspdotnet)（在 ASP.NET 中生成和保护多个客户端的 RESTful API — PluralSight 课程）
 
 有关 Azure Active Directory 的详细信息，请参阅以下资源。
 

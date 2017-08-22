@@ -6,20 +6,18 @@ services: application-gateway
 author: georgewallace
 manager: timlt
 editor: tysonn
-ms.assetid: 8192ee25-d9f0-4b32-a45e-1d74629c54e5
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 07/31/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 46a036c5f1646197522874b1302b95947e90cdd8
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: f44e33ef722cd30787a9d2942ec55ceb73174978
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建应用程序网关
@@ -31,18 +29,15 @@ ms.lasthandoff: 06/29/2017
 > * [Azure Resource Manager 模板](application-gateway-create-gateway-arm-template.md)
 > * [Azure CLI](application-gateway-create-gateway-cli.md)
 
-Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。
-应用程序网关提供许多应用程序传送控制器 (ADC) 功能，包括 HTTP 负载均衡、基于 cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测、多站点支持，以及许多其他功能。
+Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地​​的服务器间提供故障转移和性能路由 HTTP 请求。 应用程序网关提供许多应用程序传送控制器 (ADC) 功能，包括 HTTP 负载均衡、基于 Cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测、多站点支持，以及许多其他功能。 若要查找受支持功能的完整列表，请访问[应用程序网关概述](application-gateway-introduction.md)
 
-若要查找支持功能的完整列表，请参阅[应用程序网关概述](application-gateway-introduction.md)
+本文介绍如何从 GitHub 下载并修改现有 Azure 资源管理器模板，以及如何通过 GitHub、PowerShell 和 Azure CLI 部署该模板。
 
-了解如何从 GitHub 下载并修改现有 Azure Resource Manager 模板，以及如何通过 GitHub、PowerShell 和 Azure CLI 部署该模板。
-
-如果你只是直接从 GitHub 部署 Azure Resource Manager 模板，而不进行任何更改，请跳到“从 GitHub 部署模板”。
+如果只是直接从 GitHub 部署 Azure Resource Manager 模板，而不进行任何更改，请跳到“从 GitHub 部署模板”。
 
 ## <a name="scenario"></a>方案
 
-在此方案中，你将：
+在此方案中，将：
 
 * 创建具有 Web 应用程序防火墙的应用程序网关。
 * 创建名为 VirtualNetwork1 且包含 10.0.0.0/16 保留 CIDR 块的虚拟网络。
@@ -56,12 +51,12 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
 
 ## <a name="download-and-understand-the-azure-resource-manager-template"></a>下载 Azure Resource Manager 模板并对其进行了解
 
-可以从 GitHub 下载用于创建虚拟网络和两个子网的现有 Azure Resource Manager 模板，进行任何所需的更改，然后重用该模板。 为此，请按照以下步骤操作：
+可以从 GitHub 下载用于创建虚拟网络和两个子网的现有 Azure Resource Manager 模板，进行任何所需的更改，并重用该模板。 为此，请按照以下步骤操作：
 
 1. 导航到[创建启用了 Web 应用程序防火墙的应用程序网关](https://github.com/Azure/azure-quickstart-templates/tree/master/101-application-gateway-waf)。
-1. 单击 **azuredeploy.json**，然后单击 **RAW**。
-1. 将该文件保存到你计算机上的本地文件夹。
-1. 如果你熟悉 Azure Resource Manager 模板，则跳到步骤 7。
+1. 单击 **azuredeploy.json**，并单击 **RAW**。
+1. 将该文件保存到计算机上的本地文件夹。
+1. 如果熟悉 Azure Resource Manager 模板，则跳到步骤 7。
 1. 打开保存的文件，并查看 **parameters** 下行中的内容
 1. Azure Resource Manager 模板参数提供了在部署过程中可以填充的值的占位符。
 
@@ -86,8 +81,8 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
    > 有关模板的详细信息，请参阅：[Resource Manager 模板参考](/templates/)
 
 1. 导航回 [https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf)。
-1. 单击 **azuredeploy-parameters.json**，然后单击 **RAW**。
-1. 将该文件保存到你计算机上的本地文件夹。
+1. 单击 **azuredeploy-parameters.json**，并单击 **RAW**。
+1. 将该文件保存到计算机上的本地文件夹。
 1. 打开保存的文件并编辑参数的值。 使用以下值部署本方案中所述的应用程序网关。
 
     ```json
@@ -200,11 +195,11 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
 
     ![部署到 Azure](./media/application-gateway-create-gateway-arm-template/deploytoazure.png)
     
-1. 在门户上填写部署模板的参数，然后单击“确定” 。
+1. 在门户上填写部署模板的参数，并单击“确定” 。
 
     ![parameters](./media/application-gateway-create-gateway-arm-template/ibiza1.png)
     
-1. 选择“我同意上述条款和条件”，然后单击“购买”。
+1. 选择“我同意上述条款和条件”，并单击“购买”。
 
 1. 在“自定义部署”边栏选项卡上，单击“创建” 。
 
@@ -243,7 +238,7 @@ az group delete --name appgatewayRG
 
 若要配置 SSL 卸载，请访问：[配置应用程序网关以进行 SSL 卸载](application-gateway-ssl.md)。
 
-若要将应用程序网关配置为与内部负载均衡器配合使用，请访问：[创建具有内部负载均衡器 (ILB) 的应用程序网关](application-gateway-ilb.md)。
+要将应用程序网关配置为与内部负载均衡器配合使用，请访问：[创建具有内部负载均衡器 (ILB) 的应用程序网关](application-gateway-ilb.md)。
 
 如需负载均衡选项的其他常规信息，请访问：
 

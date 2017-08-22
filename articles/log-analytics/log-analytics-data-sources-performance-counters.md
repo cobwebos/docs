@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/16/2017
+ms.date: 07/12/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 4ce302095fc36f046785ac45d1a9452de321113c
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 953bb453b0a9635627fbbb6c3913d0cd757101c7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Log Analytics 中的 Windows 和 Linux 性能数据源
@@ -30,9 +29,9 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 ## <a name="configuring-performance-counters"></a>配置性能计数器
 可以在 OMS 门户中从 [Log Analytics 设置中的数据菜单](log-analytics-data-sources.md#configuring-data-sources)配置性能计数器。
 
-首次为新的 OMS 工作区配置 Windows 或 Linux 性能计数器时，可以选择快速创建几个通用的计数器。  将这些计数器在一个复选框中依次列出。  请确保已选中所有想要首先创建的计数器，然后单击“**添加选定的性能计数器**。
+首次为新的 OMS 工作区配置 Windows 或 Linux 性能计数器时，可以选择快速创建几个通用的计数器。  将这些计数器在一个复选框中依次列出。  请确保已选中所有想要首先创建的计数器，并单击“**添加选定的性能计数器**。
 
-对于 Windows 性能计数器，可以为每个性能计数器选择一个特定实例。 对于 Linux 性能计数器，你选择的每个计数器的实例会应用于父计数器的所有子计数器。 下表显示 Linux 和 Windows 性能计数器的可用通用实例。
+对于 Windows 性能计数器，可以为每个性能计数器选择一个特定实例。 对于 Linux 性能计数器，选择的每个计数器的实例会应用于父计数器的所有子计数器。 下表显示 Linux 和 Windows 性能计数器的可用通用实例。
 
 | 实例名称 | 说明 |
 | --- | --- |
@@ -46,10 +45,10 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 
 遵循以下步骤添加要收集的新 Windows 性能计数器。
 
-1. 按照 *object(instance)\counter* 格式在文本框中键入计数器的名称。  开始键入时，将会显示通用计数器的匹配列表。  可以选择列表中的计数器或者键入自己的计数器。  还可以通过指定 *object\counter* 返回特定计数器的所有实例。  
+1. 按照 *object(instance)\counter* 格式在文本框中键入计数器的名称。  开始键入时，会显示通用计数器的匹配列表。  可以选择列表中的计数器或者键入自己的计数器。  还可以通过指定 *object\counter* 返回特定计数器的所有实例。  
 
-    在从命名实例中收集 SQL Server 性能计数器时，所有命名实例计数器以 MSSQL$ 开头，并且后面接实例的名称。  例如，若要从命名 SQL 实例 INST2 的数据库性能对象收集所有数据库的“日志缓存命中率”计数器，请指定 `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`。 
- 
+    在从命名实例中收集 SQL Server 性能计数器时，所有命名实例计数器以 MSSQL$ 开头，并且后面接实例的名称。  例如，若要从命名 SQL 实例 INST2 的数据库性能对象收集所有数据库的“日志缓存命中率”计数器，请指定 `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`。
+
 2. 单击 **+** 或按 **Enter** 将计数器添加到列表中。
 3. 添加计数器后，计数器将把 10 秒作为“**采样间隔**”的默认时间。  如果想要降低收集的性能数据的存储要求，可以将此值更改为更高值，最高可达 1800 秒（30 分钟）。
 4. 添加完计数器后，单击屏幕顶部的“**保存**”按钮保存配置。
@@ -61,13 +60,13 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 遵循以下步骤添加要收集的新 Linux 性能计数器。
 
 1. 默认情况下，所有配置更改均会自动推送到所有代理。  对于 Linux 代理，配置文件发送到 Fluentd 数据收集器。  如果想在每个 Linux 代理上手动修改此文件，请取消选中“将下面的配置应用到我的 Linux 计算机”框并遵循下面的指南。
-2. 按照 *object(instance)\counter* 格式在文本框中键入计数器的名称。  开始键入时，将会显示通用计数器的匹配列表。  可以选择列表中的计数器或者键入自己的计数器。  
+2. 按照 *object(instance)\counter* 格式在文本框中键入计数器的名称。  开始键入时，会显示通用计数器的匹配列表。  可以选择列表中的计数器或者键入自己的计数器。  
 3. 单击 **+** 或按 **Enter** 将计数器添加到此对象的其他计数器列表中。
 4. 一个对象的所有计数器使用相同的“**采样间隔**”。  默认为 10 秒。  如果想要降低收集的性能数据的存储要求，可以将此值更改为更高值，最高可达 1800 秒（30 分钟）。
 5. 添加完计数器后，单击屏幕顶部的“**保存**”按钮保存配置。
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>在配置文件中配置 Linux 性能计数器
-可以不使用 OMS 门户配置 Linux 性能计数器，而是在 Linux 代理上编辑配置文件。  要收集的性能指标由 **/etc/opt/microsoft/omsagent/\<workspace id\>/conf/omsagent.conf** 中的配置进行控制。 
+可以不使用 OMS 门户配置 Linux 性能计数器，而是在 Linux 代理上编辑配置文件。  要收集的性能指标由 **/etc/opt/microsoft/omsagent/\<workspace id\>/conf/omsagent.conf** 中的配置进行控制。
 
 要收集的性能指标的每个对象或类别应在配置文件中作为单个 `<source>` 元素进行定义。 语法遵循下面的模式。
 
@@ -90,7 +89,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 | interval | 收集对象计数器时采用的频率。 |
 
 
-下表列出了可以在配置文件中指定的对象和计数器。  如[在 Log Analytics 中收集 Linux 应用程序的性能计数器](log-analytics-data-sources-linux-applications.md)中所述，对于某些应用程序，还有其他计数器可用。 
+下表列出了可以在配置文件中指定的对象和计数器。  如[在 Log Analytics 中收集 Linux 应用程序的性能计数器](log-analytics-data-sources-linux-applications.md)中所述，对于某些应用程序，还有其他计数器可用。
 
 | 对象名称 | 计数器名称 |
 |:--|:--|
@@ -158,7 +157,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
       counter_name_regex ".*"
       interval 5m
     </source>
-    
+
     <source>
       type oms_omi
       object_name "Logical Disk"
@@ -166,7 +165,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
       counter_name_regex ".*"
       interval 5m
     </source>
-    
+
     <source>
       type oms_omi
       object_name "Processor"
@@ -174,7 +173,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
       counter_name_regex ".*"
       interval 30s
     </source>
-    
+
     <source>
       type oms_omi
       object_name "Memory"
@@ -222,6 +221,23 @@ Log Analytics 以指定的采样间隔在已安装相应计数器的所有代理
 | Type=Perf CounterName="% Processor Time" InstanceName="_Total"  (Computer="MyComputer") &#124; measure min(CounterValue), avg(CounterValue), percentile75(CounterValue), max(CounterValue) by Computer Interval 1HOUR |每小时特定计算机的 CPU 使用率的平均值、最小值、最大值和第 75 百分位数 |
 | Type=Perf ObjectName="MSSQL$INST2:Databases" InstanceName=master | 所有性能数据来自命名 SQL Server 实例 INST2 的 master 数据库的数据库性能对象。  
 
+>[!NOTE]
+> 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则上述查询会更改为如下所示。
+
+> | 查询 | 说明 |
+|:--- |:--- |
+| 性能 |所有性能数据 |
+| Perf &#124; where Computer == "MyComputer" |特定计算机中的所有性能数据 |
+| Perf &#124; where CounterName == "Current Disk Queue Length" |特定计数器的所有性能数据 |
+| Perf &#124; where ObjectName == "Processor" and CounterName == "% Processor Time" and InstanceName == "_Total" &#124; summarize AVGCPU = avg(Average) by Computer |所有计算机的平均 CPU 使用率 |
+| Perf &#124; where CounterName == "% Processor Time" &#124; summarize AggregatedValue = max(Max) by Computer |所有计算机的最大 CPU 使用率 |
+| Perf &#124; where ObjectName == "LogicalDisk" and CounterName == "Current Disk Queue Length" and Computer == "MyComputerName" &#124; summarize AggregatedValue = avg(Average) by InstanceName |指定计算机的所有实例上的当前磁盘队列平均长度 |
+| Perf &#124; where CounterName == "DiskTransfers/sec" &#124; summarize AggregatedValue = percentile(Average, 95) by Computer |每秒所有计算机上磁盘传输的第 95 百分位数 |
+| Perf &#124; where CounterName == "% Processor Time" and InstanceName == "_Total" &#124; summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), Computer |每小时所有计算机 CPU 使用率的平均值 |
+| Perf &#124; where Computer == "MyComputer" and CounterName startswith_cs "%" and InstanceName == "_Total" &#124; summarize AggregatedValue = percentile(CounterValue, 70) by bin(TimeGenerated, 1h), CounterName | 每小时特定计算机的每个 % 百分比计数器的第 70 百分位数 |
+| Perf &#124; where CounterName == "% Processor Time" and InstanceName == "_Total" and Computer == "MyComputer" &#124; summarize ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] = percentile(CounterValue, 75), ["max(CounterValue)"] = max(CounterValue) by bin(TimeGenerated, 1h), Computer |每小时特定计算机的 CPU 使用率的平均值、最小值、最大值和第 75 百分位数 |
+| Perf &#124; where ObjectName == "MSSQL$INST2:Databases" and InstanceName == "master" | 所有性能数据来自命名 SQL Server 实例 INST2 的 master 数据库的数据库性能对象。  
+
 ## <a name="viewing-performance-data"></a>查看性能数据
 运行性能数据的日志查询时，默认情况下将显示**列表**视图。  若要以图像形式查看数据，单击“**指标**”。  若要详细查看图形，单击计数器旁的 **+**。  
 
@@ -234,3 +250,4 @@ Log Analytics 以指定的采样间隔在已安装相应计数器的所有代理
 * [从 Linux 应用程序收集性能计数器](log-analytics-data-sources-linux-applications.md)，包括 MySQL 和 Apache HTTP Server。
 * 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。  
 * 将收集的数据导出到 [Power BI](log-analytics-powerbi.md) 以进行其他可视化操作和分析。
+

@@ -13,14 +13,13 @@ ms.devlang: c#
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2017
+ms.date: 07/25/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: ec4b2808e6984821200be182183e53b69887b912
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 86a4d6d3ab4d29fba8f554265958ffa079b69ec2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>自定义已连接工厂解决方案如何显示来自 OPC UA 服务器的数据
@@ -41,7 +40,7 @@ ms.lasthandoff: 06/08/2017
 
 ![使用时序见解探索数据][img-tsi]
 
-本文将介绍：
+本文介绍：
 
 - 如何使数据适用于解决方案中的各种视图。
 - 如何自定义解决方案显示数据的方式。
@@ -56,7 +55,7 @@ ms.lasthandoff: 06/08/2017
 
     ![导航到“选择 OPC UA 服务器”视图][img-select-server]
 
-1. 选择一台服务器，然后单击“连接”。 出现安全警告时，单击“继续”。
+1. 选择一台服务器，并单击“连接”。 出现安全警告时，单击“继续”。
 
     > [!NOTE]
     > 此警告针对每个服务器仅出现一次，它在解决方案仪表板和服务器之间建立信任关系。
@@ -65,11 +64,11 @@ ms.lasthandoff: 06/08/2017
 
     ![已发布的项目][img-published]
 
-1. 如果是解决方案中的管理员，你可以发布数据项目，使其在已连接的工厂解决方案中可用。 管理员还可在 OPC UA 服务器中更改数据项目的值以及调用方法。
+1. 如果是解决方案中的管理员，可以发布数据项目，使其在已连接的工厂解决方案中可用。 管理员还可在 OPC UA 服务器中更改数据项目的值以及调用方法。
 
 ## <a name="map-the-data"></a>映射数据
 
-已连接的工厂解决方案将 OPC UA 服务器中的已发布数据项目映射并集成到解决方案中的各种视图。 预配解决方案时，已连接的工厂解决方案会部署到 Azure 帐户。 已连接 Visual Studio 的工厂解决方案中的 JSON 文件存储此映射信息。 可以在已连接的工厂 Visual Studio 解决方案中查看、修改并重新部署此 JSON 配置文件。
+已连接的工厂解决方案将 OPC UA 服务器中的已发布数据项目映射并集成到解决方案中的各种视图。 预配解决方案时，已连接的工厂解决方案会部署到 Azure 帐户。 已连接 Visual Studio 的工厂解决方案中的 JSON 文件存储此映射信息。 可以在已连接的工厂 Visual Studio 解决方案中查看和修改此 JSON 配置文件。 在进行更改后，可重新部署解决方案。
 
 配置文件可用于：
 
@@ -103,11 +102,11 @@ JSON 文件的内容按工厂、生产线和工作站节点的层次结构进行
 
 每个工厂、生产线和工作站均有一个图像属性。 可以在 WebApp 项目的 Content\img 文件夹中找到这些 JPEG 文件。 已连接的工厂仪表板中显示了这些图像文件。
 
-每个工作站包括多个详细属性，用于定义从 OPC UA 数据项目的映射。 下面各节将介绍这些属性：
+每个工作站包括多个详细属性，用于定义从 OPC UA 数据项目的映射。 下面各节介绍这些属性：
 
 ### <a name="opcuri"></a>OpcUri
 
-OpcUri 值是唯一标识 OPC UA 服务器的 OPC UA 应用程序 URI。 例如，慕尼黑工厂中生产线 1 上装配工作站的 OpcUri 值与此类似：urn:scada2194:ua:munich:productionline0:assemblystation。
+OpcUri 值是唯一标识 OPC UA 服务器的 OPC UA 应用程序 URI。 例如，慕尼黑工厂中生产线 1 上装配工作站的 OpcUri 值如下所示：urn:scada2194:ua:munich:productionline0:assemblystation。
 
 可在解决方案仪表板中查看已连接 OPC UA 服务器的 URI：
 

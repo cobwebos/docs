@@ -1,10 +1,10 @@
 ---
 title: "连接到云的模拟 Raspberry Pi (Node.js) - 将 Raspberry Pi Web 模拟器连接到 Azure IoT 中心 | Microsoft Docs"
-description: "了解如何设置模拟 Raspberry Pi 并将其连接到 Azure IoT 中心，使其能够将数据发送到 Azure 云平台。 在本教程中，不需要使用物理板。"
+description: "将 Raspberry Pi Web 模拟器连接到 Azure IoT 中心，以供 Raspberry Pi 将数据发送到 Azure 云。"
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timlt
+manager: timtl
 tags: 
 keywords: "Raspberry Pi 模拟器, Azure IoT Raspberry Pi, Raspberry Pi IoT 中心, Raspberry Pi 将数据发送到云, 连接到云的 Raspberry Pi"
 ms.service: iot-hub
@@ -12,13 +12,13 @@ ms.devlang: node
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/7/2017
+ms.date: 7/28/2017
 ms.author: xshi
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: b76c64b677a1a57a032cb71d2922778e7cf700c8
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 3b80bf35d6af91d5bdb196d97668dc0f837b92cc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 07/31/2017
 
 ---
 
@@ -29,6 +29,17 @@ ms.lasthandoff: 07/14/2017
 本教程会先介绍使用 Raspberry Pi 联机模拟器的基础知识。 然后介绍如何使用 [Azure IoT 中心](iot-hub-what-is-iot-hub.md)将 Pi 模拟器无缝连接到云。 
 
 如果有物理设备，请访问[将 Raspberry Pi 连接到 Azure IoT 中心](iot-hub-raspberry-pi-kit-node-get-started.md)以开始进行操作。 
+
+<p>
+<div id="diag" style="width:100%; text-align:center">
+<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#getstarted" target="_blank">
+<img src="media/iot-hub-raspberry-pi-web-simulator/3_banner.png" alt="Connect Raspberry Pi web simulator to Azure IoT Hub" width="400">
+</div>
+<p>
+<div id="button" style="width:100%; text-align:center">
+<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#Getstarted" target="_blank">
+<img src="media/iot-hub-raspberry-pi-web-simulator/6_button_default.png" alt="Start Raspberry Pi simulator" width="400" onmouseover="this.src='media/iot-hub-raspberry-pi-web-simulator/5_button_click.png';" onmouseout="this.src='media/iot-hub-raspberry-pi-web-simulator/6_button_default.png';">
+</div>
 
 ## <a name="what-you-do"></a>准备工作
 
@@ -50,12 +61,12 @@ ms.lasthandoff: 07/14/2017
 单击用于启动 Raspberry Pi 联机模拟器的按钮。
 
 > [!div class="button"]
-[启动 Raspberry Pi 模拟器](https://azure-samples.github.io/raspberry-pi-web-simulator/)
+<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">启动 Raspberry Pi 模拟器</a>
 
 Web 模拟器中有三个区域。
-* 程序集区域 - 默认电路是 Pi 连接到 BME280 传感器和 LED。 该区域在预览版本中为锁定状态，因此目前无法执行自定义操作。
-* 编码区域 - 一个联机代码编辑器，可在其中使用 Raspberry Pi 进行编码。 默认示例应用程序可帮助从 BME280 传感器收集传感器数据，并将其发送到 Azure IoT 中心。 该应用程序与真实 Pi 设备完全兼容。 
-* 集成控制台窗口 - 显示代码输出。 在此窗口的顶部，有三个按钮。
+1. 程序集区域 - 默认电路是 Pi 连接到 BME280 传感器和 LED。 该区域在预览版本中为锁定状态，因此目前无法执行自定义操作。
+2. 编码区域 - 一个联机代码编辑器，可在其中使用 Raspberry Pi 进行编码。 默认示例应用程序可帮助从 BME280 传感器收集传感器数据，并将其发送到 Azure IoT 中心。 该应用程序与真实 Pi 设备完全兼容。 
+3. 集成控制台窗口 - 显示代码输出。 在此窗口的顶部，有三个按钮。
    * 运行 - 在编码区域运行应用程序。
    * 重置 - 将编码区域重置为默认示例应用程序。
    * 折叠/展开 - 可使用右侧的按钮折叠/展开控制台窗口。

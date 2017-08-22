@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/22/2017
 ms.author: yushwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 7b0736eeaab387312206f94322684c020894f6c5
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: c789e6c278fc0c58c64f5d96e57f94aee5a6cefc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>关于加密要求和 Azure VPN 网关
@@ -28,7 +27,7 @@ ms.lasthandoff: 06/01/2017
 本文介绍如何配置 Azure VPN 网关，满足 Azure 中跨界 S2S VPN 隧道和 VNet 到 VNet 连接的加密要求。 
 
 ## <a name="about-ipsec-and-ike-policy-parameters-for-azure-vpn-gateways"></a>关于 Azure VPN 网关的 IPsec 和 IKE 策略参数
-IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 如果客户不要求使用特定加密算法和参数组合，则 Azure VPN 网关会使用一组默认方案。 选择了默认策略集，通过默认配置中的多种第三方 VPN 设备，最大化互操作性。 因此，策略和方案数无法涵盖所有可能的可用加密算法和密钥强度组合。
+IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 如果客户不要求使用特定加密算法和参数组合，则 Azure VPN 网关会使用一组默认方案。 选择默认策略集，最大限度地实现默认配置中各种第三方 VPN 设备的互操作性。 因此，策略和方案数无法涵盖所有可能的可用加密算法和密钥强度组合。
 
 [关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数](vpn-gateway-about-vpn-devices.md)一文中列出了 Azure VPN 网关的默认策略集。
 
@@ -38,11 +37,13 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 如�
 例如，Azure VPN 网关的 IKEv2 主模式策略仅使用 Diffie-Hellman 组 2（1024 位），而客户可能需要指定更强的组用于 IKE，例如组 14（2048 位）、组 24（2048 位 MODP 组）或 ECP（椭圆曲线组）256 或 384 位（分别为组 19 和组 20）。 类似的要求也适用于 IPsec 快速模式策略。
 
 ## <a name="custom-ipsecike-policy-with-azure-vpn-gateways"></a>借助 Azure VPN 网关自定义 IPsec/IKE 策略
-Azure VPN 网关现支持根据连接自定义 IPsec/IKE 策略。 可为 IPsec 和 IKE 选择特定加密算法组合（S2S 或 VNet 到 VNet 连接具有所需密钥强度），如下例所示：
+Azure VPN 网关现支持根据连接自定义 IPsec/IKE 策略。 对于站点到站点或 VNet 到 VNet 连接，可为具有所需密钥强度的 IPsec 和 IKE 选择特定加密算法组合，如下例所示：
 
 ![ipsec-ike-policy](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
 
-可创建 IPsec/IKE 策略并将其应用于新的或现有的连接。 下面列出了该工作流：
+可创建 IPsec/IKE 策略并将其应用于新的或现有的连接。 
+
+### <a name="workflow"></a>工作流
 
 1. 为连接拓扑创建虚拟网络、VPN 网关或本地网络网关，如其他操作文档所述
 2. 创建 IPsec/IKE 策略

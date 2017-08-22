@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 08/01/2017
 ms.author: krnese
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 3e9321255b65d46af59d0ee478e214df795664ac
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: cdb88505427cdea05f594277170633183dbe6d3e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="deploy-the-mobility-service-with-azure-automation-dsc-for-replication-of-vm"></a>使用 Azure Automation DSC 部署移动服务以复制 VM
@@ -26,14 +26,14 @@ ms.lasthandoff: 07/14/2017
 
 我们可以通过使用 Hyper-V 副本，先从 Hyper-V 开启这段学习旅程。 但我们在支持异类安装方面已经进行了扩展，因为客户在自己的云中拥有多个虚拟机监控程序和平台。
 
-如果你目前运行的是 VMware 工作负荷和/或物理服务器，则管理服务器可运行你环境中的所有 Azure Site Recovery 组件，以处理与 Azure 的通信和数据复制（如果 Azure 是你的目标）。
+如果目前运行的是 VMware 工作负荷和/或物理服务器，当 Azure 是目标时，管理服务器将运行环境中的所有 Azure Site Recovery 组件来处理与 Azure 之间的通信和数据复制。
 
 ## <a name="deploy-the-site-recovery-mobility-service-by-using-automation-dsc"></a>使用 Automation DSC 部署 Site Recovery 移动服务。
 下面让我们先对此管理服务器的功能进行一个快速的剖析。
 
 管理服务器运行着多个服务器角色。 其中的一个角色就是*配置*，用于协调通信、管理数据复制和恢复进程。
 
-此外，*进程*角色充当复制网关。 此角色从受保护的源计算机接收复制数据，通过缓存、压缩和加密对数据进行优化，然后将数据发送到 Azure 存储帐户。 进程角色的一大功能是，它还可以将移动服务的安装推送到受保护的计算机，并执行自动发现 VMware VM 的操作。
+此外，*进程*角色充当复制网关。 此角色从受保护的源计算机接收复制数据，通过缓存、压缩和加密对数据进行优化，并将数据发送到 Azure 存储帐户。 进程角色的一大功能是，它还可以将移动服务的安装推送到受保护的计算机，并执行自动发现 VMware VM 的操作。
 
 如果有来自 Azure 的故障回复，则*主目标*角色会处理此操作过程中的复制数据。
 
@@ -53,15 +53,14 @@ ms.lasthandoff: 07/14/2017
 * 一个存储库，用于存储注册到管理服务器时所需的通行短语
 
   > [!NOTE]
-  > 将会为每个管理服务器生成一个唯一的通行短语。 若要部署多个管理服务器，需确保将正确的通行短语存储在 passphrase.txt 文件中。
+  > 会为每个管理服务器生成一个唯一的通行短语。 要部署多个管理服务器，需确保将正确的通行短语存储在 passphrase.txt 文件中。
   >
   >
 * 在计算机上安装 Windows Management Framework (WMF) 5.0，需要启用以获取保护（Automation DSC 的要求）
 
   > [!NOTE]
-  > 如需将 DSC 用于安装了 WMF 4.0 的 Windows 计算机上，请参阅[在断开连接的环境中使用 DSC](#Use DSC in disconnected environments) 部分。
-  >
-  >
+  > 如需将 DSC 用于安装了 WMF 4.0 的 Windows 计算机上，请参阅[在断开连接的环境中使用 DSC](## Use DSC in disconnected environments) 部分。
+  
 
 移动服务可以通过命令行安装，并可接受多个参数。 因此，在从安装中提取二进制文件后，需要保留这些文件，并将其存储在能够使用 DSC 配置进行检索的某个位置。
 
@@ -82,7 +81,7 @@ ms.lasthandoff: 07/14/2017
 现在，已拥有了所需的二进制文件，可以使用 Automation DSC 自动安装移动服务。
 
 ### <a name="passphrase"></a>通行短语
-接下来，你需要确定在何处放置这个压缩的文件夹。 可以使用如下所示的 Azure 存储帐户，存储进行安装所需的通行短语。 然后，代理将与管理服务器作为进程的一部分一起注册。
+接下来，需要确定在何处放置这个压缩的文件夹。 可以使用如下所示的 Azure 存储帐户，存储进行安装所需的通行短语。 然后，作为进程一部分，代理向管理服务器注册。
 
 部署管理服务器时获得的通行短语可以保存到 txt 文件 (passphrase.txt) 中。
 
@@ -93,7 +92,7 @@ ms.lasthandoff: 07/14/2017
 如果想要将这些文件保存在网络的共享文件夹中，也完全没有问题。 只需确保随后会使用的 DSC 资源可以进行访问，并可获取安装程序和通行短语。
 
 ## <a name="step-2-create-the-dsc-configuration"></a>步骤 2：创建 DSC 配置
-安装程序依赖于 WMF 5.0。 若要让计算机成功将配置应用到 Automation DSC，则必须有 WMF 5.0。
+安装程序依赖于 WMF 5.0。 要让计算机成功将配置应用到 Automation DSC，则必须有 WMF 5.0。
 
 该环境使用以下示例 DSC 配置：
 
@@ -194,11 +193,11 @@ configuration ASRMobilityService {
 ```
 配置将执行以下操作：
 
-* 变量将告诉配置将在何处获取移动服务和 Azure VM 代理的二进制文件、在何处获取通行短语，以及在何处存储输出。
+* 变量将告诉配置会在何处获取移动服务和 Azure VM 代理的二进制文件、在何处获取通行短语，以及在何处存储输出。
 * 配置将导入 xPSDesiredStateConfiguration DSC 资源，以便使用 `xRemoteFile` 下载存储库中的文件。
 * 配置将创建需存储二进制文件的目录。
 * 存档资源将从已压缩文件夹中提取文件。
-* 包安装资源将使用特定参数安装 UNIFIEDAGENT.EXE 安装程序的移动服务。 （需要根据你的实际环境对构造参数的变量进行更改。）
+* 包安装资源将使用特定参数安装 UNIFIEDAGENT.EXE 安装程序的移动服务。 （需要根据实际环境对构造参数的变量进行更改。）
 * 包 AzureAgent 资源将安装 Azure VM 代理（推荐在 Azure 中运行的每个 VM 上安装此代理）。 Azure VM 代理还可以在故障转移后向 VM 添加扩展。
 * 服务资源或资源将确保相关的移动服务和 Azure 服务始终运行。
 
@@ -212,16 +211,16 @@ configuration ASRMobilityService {
 ## <a name="step-3-upload-to-automation-dsc"></a>步骤 3：上传到 Automation DSC
 由于所进行的 DSC 配置会导入所需的 DSC 资源模块 (xPSDesiredStateConfiguration)，因此，需要先将该模块导入 Automation 中，然后才能上传 DSC 配置。
 
-登录到你的 Automation 帐户，浏览到“**资产**” > “**模块**”，然后单击“**浏览库**”。
+登录到 Automation 帐户，浏览到“**资产**” > “**模块**”，然后单击“**浏览库**”。
 
-你可以在此处搜索模块，并将其导入到帐户中。
+可以在此处搜索模块，并将其导入到帐户中。
 
 ![导入模块](./media/site-recovery-automate-mobilitysevice-install/search-and-import-module.png)
 
-完成此操作后，转到安装了 Azure Resource Manager 模块的计算机，然后导入新建的 DSC 配置。
+完成此操作后，转到安装了 Azure Resource Manager 模块的计算机，并导入新建的 DSC 配置。
 
 ### <a name="import-cmdlets"></a>导入 cmdlet
-在 PowerShell 中，登录到你的 Azure 订阅。 修改 Cmdlet 以反映你的环境，并捕获变量中的 Automation 帐户信息：
+在 PowerShell 中，登录到 Azure 订阅。 修改 Cmdlet 以反映环境，并捕获变量中的 Automation 帐户信息：
 
 ```powershell
 $AAAccount = Get-AzureRmAutomationAccount -ResourceGroupName 'KNOMS' -Name 'KNOMSAA'
@@ -255,11 +254,11 @@ $AAAccount | Start-AzureRmAutomationDscCompilationJob -ConfigurationName ASRMobi
 
 ## <a name="step-4-onboard-machines-to-automation-dsc"></a>步骤 4 ：将计算机加入 Automation DSC
 > [!NOTE]
-> 完成此方案的一个先决条件是，你的 Windows 计算机已使用最新版的 WMF 进行了更新。 可以从[下载中心](https://www.microsoft.com/download/details.aspx?id=50395)下载和安装正确版本的平台。
+> 完成此方案的一个先决条件是，Windows 计算机已使用最新版的 WMF 进行了更新。 可以从[下载中心](https://www.microsoft.com/download/details.aspx?id=50395)下载和安装正确版本的平台。
 >
 >
 
-现在将创建需应用到节点的 DSC 元配置。 若要成功，你需要检索适用于 Azure 中所选自动化帐户的终结点 URL 和主密钥。 可以在 Automation 帐户的“**所有设置**”边栏选项卡上的“**密钥**”下找到这些值。
+现在将创建需应用到节点的 DSC 元配置。 要成功，需要检索适用于 Azure 中所选自动化帐户的终结点 URL 和主密钥。 可以在 Automation 帐户的“**所有设置**”边栏选项卡上的“**密钥**”下找到这些值。
 
 ![密钥值](./media/site-recovery-automate-mobilitysevice-install/key-values.png)
 
@@ -353,9 +352,9 @@ Get-DscConfigurationStatus
 ## <a name="use-dsc-in-disconnected-environments"></a>在断开连接的环境中使用 DSC
 即使计算机未连接到 Internet，仍可以通过 DSC 在需要保护的工作负荷上部署和配置移动服务。
 
-可以在你的环境中实例化自己的 DSC 拉取服务器，以从本质上提供从 Automation DSC 获取的相同功能。 即，客户端将请求到 DSC 终结点的配置（在其注册后）。 但是，也可以手动将 DSC 配置推送到你的本地或远程计算机。
+可以在环境中实例化自己的 DSC 拉取服务器，以从本质上提供从 Automation DSC 获取的相同功能。 即，客户端将请求到 DSC 终结点的配置（在其注册后）。 但是，也可以手动将 DSC 配置推送到本地或远程计算机。
 
-请注意，在此示例中，在计算机名称中有一个添加的参数。 远程文件现在位于远程共享上（可由想要保护的计算机访问）。 脚本的末尾启用配置，然后开始将 DSC 配置应用于目标计算机。
+请注意，在此示例中，在计算机名称中有一个添加的参数。 远程文件现在位于远程共享上（可由想要保护的计算机访问）。 脚本的末尾启用配置，并开始将 DSC 配置应用于目标计算机。
 
 ### <a name="prerequisites"></a>先决条件
 请确保已安装 xPSDesiredStateConfiguration PowerShell 模块。 对于安装了 WMF 5.0 的 Windows 计算机，可以在目标计算机上通过运行以下 cmdlet 来安装 xPSDesiredStateConfiguration 模块：
@@ -476,9 +475,9 @@ Start-DscConfiguration .\ASRMobilityService -Wait -Force -Verbose
 若要在公司网络中实例化自己的 DSC 拉取服务器，以模拟可从 Automation DSC 获取的功能，请参阅[设置 DSC Web 拉取服务器](https://msdn.microsoft.com/powershell/dsc/pullserver?f=255&MSPPError=-2147217396)。
 
 ## <a name="optional-deploy-a-dsc-configuration-by-using-an-azure-resource-manager-template"></a>可选：使用 Azure Resource Manager 模板部署 DSC 配置
-本文目前重点介绍的是，如何通过创建自己的 DSC 配置来自动部署移动服务和 Azure VM 代理，以及如何确保它们在要保护的计算机上始终处于运行状态。 我们还有将此 DSC 配置部署到新的或现有 Azure 自动化帐户的 Azure Resource Manager 模板。 该模板将使用输入参数来创建包含你的环境变量的 Automation 资产。
+本文目前重点介绍的是，如何通过创建自己的 DSC 配置来自动部署移动服务和 Azure VM 代理，以及如何确保它们在要保护的计算机上始终处于运行状态。 我们还有将此 DSC 配置部署到新的或现有 Azure 自动化帐户的 Azure Resource Manager 模板。 该模板将使用输入参数来创建包含环境变量的 Automation 资产。
 
-部署模板后，若要加入你的计算机，可直接参阅本指南中的步骤 4。
+部署模板后，要加入计算机，可直接参阅本指南中的步骤 4。
 
 该模板将执行以下操作：
 
