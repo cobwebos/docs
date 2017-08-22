@@ -6,6 +6,7 @@
 ### [事件响应](security-center-incident-response.md)
 ### [使用建议增强安全性](security-center-using-recommendations.md)
 ## [平台迁移](security-center-platform-migration.md)
+### [平台迁移常见问题解答](security-center-platform-migration-faq.md)
 
 # 入门
 ## [快速入门](security-center-get-started.md)
