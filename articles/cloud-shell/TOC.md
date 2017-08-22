@@ -14,6 +14,7 @@
 
 # 引用
 ## [Azure CLI 2.0](/cli/azure) 
+
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)

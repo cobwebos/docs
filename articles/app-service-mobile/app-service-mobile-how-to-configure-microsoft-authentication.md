@@ -37,8 +37,7 @@ ms.lasthandoff: 03/09/2017
    > [!NOTE]
    > 重定向 URI 是应用程序 URL 加上路径 /.auth/login/microsoftaccount/callback。 例如，`https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`。   
    > 请务必使用 HTTPS 方案。
-   > 
-   > 
+   
 7. 在“应用程序机密”下，单击“生成新密码”。 请记下显示的值。 关闭页面后，就不再显示该值。
 
     > [!IMPORTANT]
