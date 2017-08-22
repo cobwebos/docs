@@ -13,14 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2017
+ms.date: 08/02/2017
 ms.author: markgal;trinadhk;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 0d35d01ccd48dcddd18ba13ea0543a68bff97206
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: e1da8bce96078a43c656f84005cefc8bbe81c9e3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="back-up-azure-virtual-machines-classic-portal"></a>备份 Azure 虚拟机（经典门户）
@@ -30,7 +29,7 @@ ms.lasthandoff: 06/16/2017
 >
 >
 
-本文提供了将经典部署的 Azure 虚拟机 (VM) 备份到 Azure 保管库的过程。 在备份 Azure 虚拟机之前，需要注意一些任务。 如果你尚未这样做，请完成[先决条件](backup-azure-vms-prepare.md)部分，在环境中做好 VM 备份的准备。
+本文提供了将经典部署的 Azure 虚拟机 (VM) 备份到 Azure 保管库的过程。 在备份 Azure 虚拟机之前，需要注意一些任务。 如果尚未这样做，请完成[先决条件](backup-azure-vms-prepare.md)部分，在环境中做好 VM 备份的准备。
 
 有关其他信息，请参阅[在 Azure 中规划 VM 备份基础结构](backup-azure-vms-introduction.md)和 [Azure 虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/)。
 
@@ -48,8 +47,8 @@ ms.lasthandoff: 06/16/2017
 >
 > [!IMPORTANT]
 > 从 2017 年 3 月份开始，无法再使用经典门户来创建备份保管库。
-> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 从 2017 年 11 月 1 日起：
->- 其余的所有备份保管库都将自动升级到恢复服务保管库。
+> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 10 月 15 日之后，将无法使用 PowerShell 创建备份保管库。 2017 年 11 月 1 日之前：
+>- 其余所有备份保管库都将自动升级到恢复服务保管库。
 >- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
 >
 
@@ -88,13 +87,13 @@ ms.lasthandoff: 06/16/2017
 ## <a name="step-2---register-azure-virtual-machines"></a>步骤 2 - 注册 Azure 虚拟机
 注册 Azure 虚拟机即可将其与 Azure 备份服务相关联。 这通常是一次性活动。
 
-1. 导航到备份保管库（位于 Azure 门户的“**恢复服务**”下），然后单击“**已注册的项**”。
+1. 导航到备份保管库（位于 Azure 门户的“**恢复服务**”下），并单击“**已注册的项**”。
 2. 从下拉菜单中选择“**Azure 虚拟机**”。
 
     ![选择工作负荷](./media/backup-azure-vms/discovery-select-workload.png)
 3. 单击页面底部的“**注册**”。
     ![注册按钮](./media/backup-azure-vms/register-button-only.png)
-4. 在“**注册项**”快捷菜单中，选择你要注册的虚拟机。 如果存在两个或两个以上的同名虚拟机，请使用云服务来区别它们。
+4. 在“**注册项**”快捷菜单中，选择要注册的虚拟机。 如果存在两个或两个以上的同名虚拟机，请使用云服务来区别它们。
 
    > [!TIP]
    > 可以一次注册多个虚拟机。
@@ -119,7 +118,7 @@ ms.lasthandoff: 06/16/2017
 
 2015 年 5 月之后创建的 Azure 备份保管库内置了默认策略。 此默认策略随附默认 30 天保留期和每日一次的备份计划。
 
-1. 导航到备份保管库（位于 Azure 门户的“**恢复服务**”下），然后单击“**已注册的项**”。
+1. 导航到备份保管库（位于 Azure 门户的“**恢复服务**”下），并单击“**已注册的项**”。
 2. 从下拉菜单中选择“**Azure 虚拟机**”。
 
     ![在门户中选择工作负荷](./media/backup-azure-vms/select-workload.png)
@@ -163,7 +162,7 @@ ms.lasthandoff: 06/16/2017
    * **每年保留策略**：每年 1 月份的第一个星期日创建备份并保留 99 年。
 
      为每个所选虚拟机创建一个作业，以便配置保护策略并将虚拟机关联到该策略。
-6. 若要查看“**配置保护**”作业列表，请在保管库菜单中，单击“**作业**”，然后从“**操作**”筛选器中选择“**配置保护**”。
+6. 要查看“**配置保护**”作业列表，请在保管库菜单中，单击“**作业**”，并从“**操作**”筛选器中选择“**配置保护**”。
 
     ![配置保护作业](./media/backup-azure-vms/protect-configureprotection.png)
 

@@ -13,12 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: sedusch
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 7fa853983119ef4e570b768ca177d169c6e17153
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 951150e621d21037b0adde7287b9f985290d8d11
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="high-availability-of-sap-hana-on-azure-virtual-machines-vms"></a>Azure 虚拟机 (VM) 上的 SAP HANA 高可用性
@@ -27,31 +26,55 @@ ms.lasthandoff: 05/31/2017
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[hana-ha-guide-replication]:sap-hana-high-availability.md#14c19f65-b5aa-4856-9594-b81c7e4df73d
-[hana-ha-guide-shared-storage]:sap-hana-high-availability.md#498de331-fa04-490b-997c-b078de457c9d
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
 [1944799]:https://launchpad.support.sap.com/#/notes/1944799
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1984787]:https://launchpad.support.sap.com/#/notes/1984787
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+
+[hana-ha-guide-replication]:sap-hana-high-availability.md#14c19f65-b5aa-4856-9594-b81c7e4df73d
+[hana-ha-guide-shared-storage]:sap-hana-high-availability.md#498de331-fa04-490b-997c-b078de457c9d
+
 [suse-hana-ha-guide]:https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf
 [sap-swcenter]:https://launchpad.support.sap.com/#/softwarecenter
 [template-multisid-db]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db%2Fazuredeploy.json
 [template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged%2Fazuredeploy.json
 
 在本地，可以使用 HANA 系统复制或共享存储来建立 SAP HANA 的高可用性。
-目前，仅支持在 Azure 上设置 HANA 系统复制。 SAP HANA 复制由一个主节点和至少一个从属节点组成。 对主节点上数据所做的更改将以同步或异步方式复制到从属节点。
+目前，仅支持在 Azure 上设置 HANA 系统复制。 SAP HANA 复制由一个主节点和至少一个从属节点组成。 对主节点上数据所做的更改以同步或异步方式复制到从属节点。
 
 本文介绍如何部署虚拟机、配置虚拟机、安装群集框架，以及安装和配置 SAP HANA 系统复制。
 在示例配置和安装命令等内容中，使用了实例编号 03 和 HANA 系统 ID HDB。
 
 请先阅读以下 SAP 说明和文档
 
-* SAP 说明 [2205917]：SUSE Linux Enterprise Server for SAP Applications 的建议 OS 设置
-* SAP 说明 [1944799]：SUSE Linux Enterprise Server for SAP Applications 的 SAP HANA 指导原则
+* SAP 说明 [1928533]，其中包含：
+  * SAP 软件部署支持的 Azure VM 大小的列表
+  * Azure VM 大小的重要容量信息
+  * 支持的 SAP 软件、操作系统 (OS) 和数据库组合
+  * Microsoft Azure 上 Windows 和 Linux 所需的 SAP 内核版本
+* SAP 说明 [2015553] 列出了在 Azure 中 SAP 支持的 SAP 软件部署的先决条件。
+* SAP 说明 [2205917] 包含适用于 SUSE Linux Enterprise Server for SAP Applications 的推荐 OS 设置
+* SAP 说明 [1944799] 包含适用于 SUSE Linux Enterprise Server for SAP Applications 的 SAP HANA 准则
+* SAP 说明 [2178632] 包含为 Azure 中的 SAP 报告的所有监控指标的详细信息。
+* SAP 说明 [2191498] 包含 Azure 中的 Linux 所需的 SAP 主机代理版本。
+* SAP 说明 [2243692] 包含 Azure 中的 Linux 上的 SAP 许可的相关信息。
+* SAP 说明 [1984787] 包含有关 SUSE Linux Enterprise Server 12 的一般信息。
+* SAP 说明 [1999351] 包含适用于 SAP 的 Azure 增强型监视扩展的其他故障排除信息。
+* [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含适用于 Linux 的所有必需 SAP 说明。
+* [针对 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署（本文）][deployment-guide]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * [SAP HANA SR 性能优化方案][suse-hana-ha-guide]本指南包含用于在本地设置 SAP HANA 系统复制的全部所需信息。 请使用本指南作为基准。
-  
+
 ## <a name="deploying-linux"></a>部署 Linux
 
 SUSE Linux Enterprise Server for SAP Applications 中已随附 SAP HANA 的资源代理。
-Azure 应用商店中包含 SUSE Linux Enterprise Server for SAP Applications 12 的映像，你可以使用该映像中的 BYOS（自带订阅）部署新的虚拟机。
+Azure 应用商店中包含 SUSE Linux Enterprise Server for SAP Applications 12 的映像，可以使用该映像中的 BYOS（自带订阅）部署新的虚拟机。
 
 ### <a name="manual-deployment"></a>手动部署
 
@@ -75,24 +98,24 @@ Azure 应用商店中包含 SUSE Linux Enterprise Server for SAP Applications 12
 1. 添加数据磁盘
 1. 配置负载均衡器
     1. 创建前端 IP 池
-        1. 打开负载均衡器，选择前端 IP 池，然后单击“添加”
+        1. 打开负载均衡器，选择前端 IP 池，并单击“添加”
         1. 输入新前端 IP 池的名称（例如 hana-frontend）
        1. 单击“确定”
         1. 创建新前端 IP 池后，请记下其 IP 地址
     1. 创建后端池
-        1. 打开负载均衡器，单击后端池，然后单击“添加”
+        1. 打开负载均衡器，单击后端池，并单击“添加”
         1. 输入新后端池的名称（例如 hana-backend）
         1. 单击“添加虚拟机”
         1. 选择前面创建的可用性集
         1. 选择 SAP HANA 群集的虚拟机
         1. 单击“确定”
     1. 创建运行状况探测器
-       1. 打开负载均衡器，选择运行状况探测，然后单击“添加”
+       1. 打开负载均衡器，选择运行状况探测，并单击“添加”
         1. 输入新运行状况探测的名称（例如 hana-hp）
         1. 选择 TCP 作为协议，选择端口 625**03**，将“间隔”保留为 5，将“不正常阈值”保留为 2
         1. 单击“确定”
     1. 创建负载均衡规则
-        1. 打开负载均衡器，选择负载均衡规则，然后单击“添加”
+        1. 打开负载均衡器，选择负载均衡规则，并单击“添加”
         1. 输入新负载均衡器规则的名称（例如 hana-lb-3**03**15）
         1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 hana-frontend）
         1. 将协议保留为“TCP”，输入端口 3**03**15
@@ -104,7 +127,7 @@ Azure 应用商店中包含 SUSE Linux Enterprise Server for SAP Applications 12
 ### <a name="deploy-with-template"></a>使用模板进行部署
 可以使用 github 上的某个快速启动模板部署全部所需的资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
 
-1. 在 Azure 门户中打开[数据库模板][template-multisid-db]或[聚合模板][template-converged]。数据库模板只会创建数据库的负载均衡规则，而聚合模板还会创建 ASCS/SCS 和 ERS（仅限 Linux）实例的负载均衡规则。 如果你打算安装基于 SAP NetWeaver 的系统，同时想要在同一台计算机上安装 ASCS/SCS 实例，请使用[聚合模板][template-converged]。
+1. 在 Azure 门户中打开[数据库模板][template-multisid-db]或[聚合模板][template-converged]。数据库模板只会创建数据库的负载均衡规则，而聚合模板还会创建 ASCS/SCS 和 ERS（仅限 Linux）实例的负载均衡规则。 如果打算安装基于 SAP NetWeaver 的系统，同时想要在同一台计算机上安装 ASCS/SCS 实例，请使用[聚合模板][template-converged]。
 1. 输入以下参数
     1. SAP 系统 ID  
        输入要安装的 SAP 系统的 SAP 系统 ID。 该 ID 将用作所部署的资源的前缀。
@@ -115,7 +138,7 @@ Azure 应用商店中包含 SUSE Linux Enterprise Server for SAP Applications 12
     1. 数据库类型  
        选择 HANA
     1. SAP 系统大小  
-       新系统将提供的 SAPS 数量。 如果不确定系统需要多少 SAPS，请咨询你的 SAP 技术合作伙伴或系统集成商
+       新系统将提供的 SAPS 数量。 如果不确定系统需要多少 SAPS，请咨询 SAP 技术合作伙伴或系统集成商
     1. 系统可用性  
        选择 HA
     1. 管理员用户名和管理员密码  
@@ -179,7 +202,7 @@ Azure 应用商店中包含 SUSE Linux Enterprise Server for SAP Applications 12
 
 1. [A] 设置磁盘布局
     1. LVM  
-    我们通常建议对存储数据和日志文件的卷使用 LVM。 以下示例假设虚拟机上附加了四个应该用于创建两个卷的数据磁盘。
+    我们通常建议对存储数据和日志文件的卷使用 LVM。 以下示例假设虚拟机上附加了四个应用于创建两个卷的数据磁盘。
         * 为想要使用的所有磁盘创建物理卷。
     <pre><code>
     sudo pvcreate /dev/sdc
@@ -305,17 +328,17 @@ Azure 应用商店中包含 SUSE Linux Enterprise Server for SAP Applications 12
     } 
     <b>nodelist {
       node {
-        ring0_addr:     < ip address of note 1 >
+        ring0_addr:     < ip address of node 1 >
       }
       node {
-        ring0_addr:     < ip address of note 2 > 
+        ring0_addr:     < ip address of node 2 > 
       } 
     }</b>
     logging {
       [...]
     </code></pre>
 
-    然后重新启动 corosync 服务
+    然后重启 corosync 服务
 
     ```bash
     sudo service corosync restart
@@ -362,7 +385,7 @@ Azure 应用商店中包含 SUSE Linux Enterprise Server for SAP Applications 12
     * 是否继续? (y/n)：  
   验证摘要并输入 y 继续
 1. [A] 升级 SAP 主机代理  
-  从 [SAP 软件中心][sap-swcenter]下载最新的 SAP 主机代理存档，然后运行以下命令升级代理。 替换存档的路径，使其指向已下载的文件。
+  从 [SAP 软件中心][sap-swcenter]下载最新的 SAP 主机代理存档，并运行以下命令升级代理。 替换存档的路径，使其指向已下载的文件。
     ```bash
     sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive <path to SAP Host Agent SAR>
     ```
@@ -404,7 +427,7 @@ Azure 应用商店中包含 SUSE Linux Enterprise Server for SAP Applications 12
 
 <pre>
 sudo vi crm-defaults.txt
-# enter the following to crm-saphana.txt
+# enter the following to crm-defaults.txt
 <code>
 property $id="cib-bootstrap-options" \
   no-quorum-policy="ignore" \
@@ -431,10 +454,10 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请遵循以下步
    转到“属性”并记下目录 ID。 这是**租户 ID**。
 1. 单击“应用注册”
 1. 单击“添加”
-1. 输入名称，选择应用程序类型“Web 应用/API”，输入登录 URL（例如 http://localhost），然后单击“创建”
+1. 输入名称，选择应用程序类型“Web 应用/API”，输入登录 URL（例如 http://localhost），并单击“创建”
 1. 不会使用登录 URL，可为它输入任何有效的 URL
-1. 选择新应用，然后在“设置”选项卡中单击“密钥”
-1. 输入新密钥的说明，选择“永不过期”，然后单击“保存”
+1. 选择新应用，并在“设置”选项卡中单击“密钥”
+1. 输入新密钥的说明，选择“永不过期”，并单击“保存”
 1. 记下值。 此值用作服务主体的**密码**
 1. 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的**登录 ID**）
 
@@ -531,7 +554,7 @@ sudo crm configure load update crm-saphana.txt
 </pre>
 
 ### <a name="test-cluster-setup"></a>测试群集设置
-下一章介绍如何测试设置。 每项测试假设你是 root 用户，SAP HANA 主控节点在虚拟机 saphanavm1 上运行。
+下一章介绍如何测试设置。 每项测试都假设你是根用户，且 SAP HANA 主机在虚拟机 saphanavm1 上运行。
 
 #### <a name="fencing-test"></a>隔离测试
 
@@ -542,7 +565,7 @@ sudo ifdown eth0
 </code></pre>
 
 现在，虚拟机应会根据群集配置重新启动或停止。
-如果将 stonith-action 设置为 off，虚拟机将会停止，资源将迁移到正在运行的虚拟机。
+如果将 stonith-action 设置为 off，虚拟机会停止，资源将迁移到正在运行的虚拟机。
 
 如果设置 AUTOMATED_REGISTER ="false"，则再次启动虚拟机后，SAP HANA 资源将无法作为辅助节点启动。 在这种情况下，需要执行以下命令，将 HANA 实例配置为辅助节点：
 

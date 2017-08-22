@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 07/26/2017
 ms.author: asmalser
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 118b77064a96585b0d5b951ca56313776021624e
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: c975428550690254ba989935fe5110c5903e7102
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>管理适用于企业应用的单一登录
@@ -28,15 +27,14 @@ ms.lasthandoff: 05/08/2017
 > * [Azure 经典门户](active-directory-sso-integrate-saas-apps.md)
 > 
 
-本文介绍如何使用 [Azure 门户](https://portal.azure.com)管理应用程序的单一登录设置，尤其是已从 [Azure Active Directory 应用程序库](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)中添加的设置。 
+本文介绍如何使用 [Azure 门户](https://portal.azure.com)管理企业应用程序的单一登录设置。 企业应用是在组织内部署和使用的应用。 本文特别适用于从 [Azure Active Directory 应用程序库](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)添加的应用。 
 
-## <a name="finding-your-apps"></a>查找应用
 ## <a name="finding-your-apps-in-the-portal"></a>在门户中查找应用
-所有由目录管理员在目录中使用 [Azure Active Directory 应用程序库](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)进行过单一登录配置的应用程序均可在 [Azure 门户](https://portal.azure.com)中查看和管理。 这些应用程序可在门户的“更多服务”&gt;“企业应用程序”部分中找到。 企业应用是在组织内部署和使用的应用。
+可以在 Azure 门户中查看和管理所有设置为单一登录的企业应用。 这些应用程序可在门户的“更多服务”&gt;“企业应用程序”部分中找到。 
 
 ![“企业应用程序”边栏选项卡][1]
 
-选择“所有应用程序”即可查看包含所有已配置应用的列表，包括那些已从库中添加的应用。 选择某个应用时，会加载该应用的资源边栏选项卡，可在其中查看该应用的报告，以及管理各种设置。
+选择“所有应用程序”可查看已配置的所有应用的列表。 选择某个应用时，会加载该应用的资源边栏选项卡，可在其中查看该应用的报告，以及管理各种设置。
 
 若要管理单一登录设置，请选择“单一登录”。
 
@@ -83,12 +81,12 @@ ms.lasthandoff: 05/08/2017
 ![嵌入式文档][3]
 
 ## <a name="password-based-sign-on"></a>基于密码的登录
-如果应用程序支持，可选择基于密码的 SSO 模式，然后选择“保存”，这样即可将其配置为进行基于密码的 SSO。 如需详细了解如何部署基于密码的 SSO，请参阅 [How does single sign-on with Azure Active Directory work](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)（通过 Azure Active Directory 实现单一登录的原理）。
+如果应用程序支持，可选择基于密码的 SSO 模式，并选择“保存”，这样即可将其配置为进行基于密码的 SSO。 如需详细了解如何部署基于密码的 SSO，请参阅 [How does single sign-on with Azure Active Directory work](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)（通过 Azure Active Directory 实现单一登录的原理）。
 
 ![基于密码的登录][4]
 
 ## <a name="linked-sign-on"></a>联合登录
-如果应用程序支持，可选择联合 SSO 模式，然后即可输入一个 URL，该 URL 是用户单击此应用时，Azure AD 访问面板或 Office 365 的重定向目标。 有关联合 SSO（以前称为“现有 SSO”）的详细信息，请参阅 [How does single sign-on with Azure Active Directory work](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)（通过 Azure Active Directory 实现单一登录的原理）。
+如果应用程序支持，可选择联合 SSO 模式，并即可输入一个 URL，该 URL 是用户单击此应用时，Azure AD 访问面板或 Office 365 的重定向目标。 有关联合 SSO（以前称为“现有 SSO”）的详细信息，请参阅 [How does single sign-on with Azure Active Directory work](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)（通过 Azure Active Directory 实现单一登录的原理）。
 
 ![联合登录][5]
 

@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 07/31/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: eae360dd3e627a82986cef32ef39860f60ffe51f
-ms.lasthandoff: 02/16/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 668ba10474fc1b01d5ebccbff1f50fe09ade5f30
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="azure-media-services-error-codes"></a>Azure 媒体服务错误代码
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/16/2017
 请求包含无效信息，并因以下可能的原因之一被拒绝：
 
 * 指定了不支持的 API 版本。 有关最新版本，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
-* 未指定媒体服务的 API 版本。 有关如何指定 API 版本的信息，请参阅[使用媒体服务 REST API 连接到媒体服务](media-services-rest-connect-programmatically.md)。
+* 未指定媒体服务的 API 版本。 若要了解如何指定 API 版本，请参阅[媒体服务操作 REST API 参考](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)。
   
   > [!NOTE]
   > 如果使用 .NET 或 Java SDK 连接到媒体服务，每当尝试对媒体服务执行某种操作时，系统会自动指定 API 版本。
@@ -48,8 +48,8 @@ ms.lasthandoff: 02/16/2017
 
 * 缺少身份验证标头。
 * 错误的身份验证标头值。
-  * 令牌已过期。 如果直接使用 REST API，请参阅[使用媒体服务 REST API 连接到媒体服务](media-services-rest-connect-programmatically.md)，了解如何生成新的身份验证令牌。 如果在使用 .NET 或 Java SDK，可通过创建 CloudMediaContext 或 MediaContract 对象来生成令牌。 有关如何进行操作的详细信息，请参阅[使用适用于 .NET 的媒体服务 SDK 连接到媒体服务](media-services-dotnet-connect-programmatically.md)。
-  * 令牌包含无效签名。</li></ul></li></ul>
+  * 令牌已过期。 
+  * 令牌包含无效签名。
 
 ## <a name="403-forbidden"></a>403 禁止访问
 出于以下原因之一，未允许该请求：

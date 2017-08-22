@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: chackdan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 628df1df8f5de99a5c18d0df5b7ee41e2fb747df
-ms.openlocfilehash: c3ff370b105a1f9bdacd1bdb4b32d6209e150be2
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 5afbe575a8affc37b8f902c0988585a83921e3d2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 12/08/2016
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 群集安全方案
@@ -38,9 +38,9 @@ Service Fabric 群集是你拥有的资源。 必须保护群集以防止未经�
 在 Azure 上运行的群集或在 Windows 上运行的独立群集可以使用[证书安全性](https://msdn.microsoft.com/library/ff649801.aspx)或适用于 Windows Server 计算机的 [Windows 安全性](https://msdn.microsoft.com/library/ff649396.aspx)。
 
 ### <a name="node-to-node-certificate-security"></a>节点到节点的证书安全性
-当你创建群集时，Service Fabric 将使用指定为节点类型配置一部分的 X.509 服务器证书。 本文末尾概述了这些证书是什么，以及如何获取或创建这些证书。
+创建群集时，Service Fabric 将使用指定为节点类型配置一部分的 X.509 服务器证书。 本文末尾概述了这些证书是什么，以及如何获取或创建这些证书。
 
-证书安全性是在通过 Azure 门户、Azure Resource Manager 模板或独立的 JSON 模板创建群集时配置的。 可以指定一个主要证书和一个可选的辅助证书（用于证书滚动更新）。 你指定的主证书和辅助证书应该不同于你为[客户端到节点安全性](#client-to-node-security)指定的管理员客户端证书和只读客户端证书。
+证书安全性是在通过 Azure 门户、Azure Resource Manager 模板或独立的 JSON 模板创建群集时配置的。 可以指定一个主要证书和一个可选的辅助证书（用于证书滚动更新）。 指定的主证书和辅助证书应该不同于为[客户端到节点安全性](#client-to-node-security)指定的管理员客户端证书和只读客户端证书。
 
 对于 Azure，请参阅[使用 Azure Resource Manager 模板设置群集](service-fabric-cluster-creation-via-arm.md)，了解如何在群集中配置证书安全性。
 
@@ -50,14 +50,14 @@ Service Fabric 群集是你拥有的资源。 必须保护群集以防止未经�
 对于独立的 Windows Server，请参阅[使用 Windows 安全性保护 Windows 上的独立群集](service-fabric-windows-cluster-windows-security.md)
 
 ## <a name="client-to-node-security"></a>客户端到节点安全性
-对客户端进行身份验证，并保护客户端与群集中单个节点之间的通信。 这种类型的安全性将验证并保护客户端通信，确保只有已获授权的用户可以访问群集与群集上部署的应用程序。 客户端通过其 Windows 安全性凭据或其证书安全性凭据进行唯一标识。
+对客户端进行身份验证，并保护客户端与群集中单个节点之间的通信。 这种类型的安全性会验证并保护客户端通信，确保只有已获授权的用户可以访问群集与群集上部署的应用程序。 客户端通过其 Windows 安全性凭据或其证书安全性凭据进行唯一标识。
 
 ![客户端到节点通信示意图][Client-to-Node]
 
 在 Azure 上运行的群集或在 Windows 上运行的独立群集可以使用[证书安全性](https://msdn.microsoft.com/library/ff649801.aspx)或 [Windows 安全性](https://msdn.microsoft.com/library/ff649396.aspx)。
 
 ### <a name="client-to-node-certificate-security"></a>客户端到节点的证书安全性
- 客户端到节点证书安全性是在使用 Azure 门户、Resource Manager 模板或独立的 JSON 模板创建群集时，通过指定管理员客户端证书和/或用户客户端证书来配置的。  你指定的管理员客户端证书和用户客户端证书应该不同于你为[节点到节点安全性](#node-to-node-security)指定的主证书和辅助证书。
+ 客户端到节点证书安全性是在使用 Azure 门户、Resource Manager 模板或独立的 JSON 模板创建群集时，通过指定管理员客户端证书和/或用户客户端证书来配置的。  作为最佳做法，指定的管理员客户端证书和用户客户端证书应该不同于为[节点到节点安全性](#node-to-node-security)指定的主证书和辅助证书。 默认情况下，用于实现节点到节点安全性的群集证书会添加到允许的客户端管理员证书列表中。
 
 客户端如果使用管理员证书连接到群集，则拥有管理功能的完全访问权限。  客户端如果使用只读的用户客户端证书连接到群集，则只拥有管理功能的只读访问权限。 换而言之，这些证书用于本文稍后所述的基于角色的访问控制 (RBAC)。
 

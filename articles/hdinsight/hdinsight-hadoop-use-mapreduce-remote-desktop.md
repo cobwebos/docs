@@ -1,5 +1,5 @@
 ---
-title: "将 MapReduce 和远程桌面与 HDInsight 中的 Hadoop 配合使用 | Microsoft Docs"
+title: "将 MapReduce 和远程桌面与 HDInsight 中的 Hadoop 配合使用 — Azure | Microsoft Docs"
 description: "了解如何使用远程桌面连接到 HDInsight 上的 Hadoop 并运行 MapReduce 作业。"
 services: hdinsight
 documentationcenter: 
@@ -16,12 +16,11 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 5e91fd06fb2ae22496832d7afedb3f003edf7ea6
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: b56674857b013f9bb3d4dd4b6e97b34e0a97b1b2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="use-mapreduce-in-hadoop-on-hdinsight-with-remote-desktop"></a>通过远程桌面在 HDInsight 上的 Hadoop 中使用 MapReduce
@@ -30,7 +29,7 @@ ms.lasthandoff: 05/18/2017
 在本文中，你将学习如何通过使用远程桌面连接到 HDInsight 群集上的 Hadoop，然后通过使用 Hadoop 命令运行 MapReduce 作业。
 
 > [!IMPORTANT]
-> 远程桌面只能在基于 Windows 的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
+> 远程桌面只能在基于 Windows 的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 >
 > 有关 HDInsight 3.4 或更高版本，请参阅[将 MapReduce 与 SSH 配合使用](hdinsight-hadoop-use-mapreduce-ssh.md)，了解如何连接到 HDInsight 群集以及如何运行 MapReduce 作业。
 
@@ -54,9 +53,9 @@ ms.lasthandoff: 05/18/2017
    >
 2. 若要使用 **Hadoop** 命令运行示例 MapReduce 作业，请使用以下命令：
 
-        hadoop jar hadoop-mapreduce-examples.jar wordcount wasbs:///example/data/gutenberg/davinci.txt wasbs:///example/data/WordCountOutput
+        hadoop jar hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
 
-    这将启动 **wordcount** 类（包含在当前目录中的 **hadoop-mapreduce-examples.jar** 文件内）。 作为输入，它会使用 **wasbs://example/data/gutenberg/davinci.txt** 文档，输出将存储到：**wasbs:///example/data/WordCountOutput**。
+    这将启动 **wordcount** 类（包含在当前目录中的 **hadoop-mapreduce-examples.jar** 文件内）。 作为输入，它使用 wasbs://example/data/gutenberg/davinci.txt 文档，输出的存储位置：wasbs:///example/data/WordCountOutput。
 
    > [!NOTE]
    > 有关此 MapReduce 作业和示例数据的详细信息，请参阅<a href="hdinsight-use-mapreduce.md">在 HDInsight Hadoop 中使用 MapReduce</a>。
@@ -68,9 +67,9 @@ ms.lasthandoff: 05/18/2017
         Bytes Read=1395666
         File Output Format Counters
         Bytes Written=337623
-4. 作业完成之后，请使用以下命令行列出存储在 **wasbs://example/data/WordCountOutput** 的输出文件：
+4. 作业完成之后，使用以下命令行列出存储在 **wasbs://example/data/WordCountOutput** 的输出文件：
 
-        hadoop fs -ls wasbs:///example/data/WordCountOutput
+        hadoop fs -ls wasb:///example/data/WordCountOutput
 
     这应会显示两个文件：**_SUCCESS** 和 **part-r-00000**。 **part-r-00000** 文件包含此作业的输出。
 
@@ -80,7 +79,7 @@ ms.lasthandoff: 05/18/2017
    >
 5. 若要查看输出，请使用以下命令：
 
-        hadoop fs -cat wasbs:///example/data/WordCountOutput/part-r-00000
+        hadoop fs -cat wasb:///example/data/WordCountOutput/part-r-00000
 
     这会显示 **wasbs://example/data/gutenberg/davinci.txt** 文件中包含的单词列表，以及每个单词的出现次数。 下面是要包含在文件中的数据示例：
 

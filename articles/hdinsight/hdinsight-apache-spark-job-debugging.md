@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 07/21/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: 069f63dd43bd81c209826382d04266c2640f017e
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: bf66757cc9439a969c9f28abc0b95055ff697c3b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>调试 Azure HDInsight 中运行的 Apache Spark 作业
@@ -32,18 +32,18 @@ ms.lasthandoff: 07/22/2017
 
 * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
-* 你应该已开始运行笔记本，相关信息请参阅 **[Machine learning: Predictive analysis on food inspection data using MLLib](hdinsight-apache-spark-machine-learning-mllib-ipython.md)**（机器学习：使用 MLLib 对食品检测数据进行预测分析）。 有关如何运行此笔记本的说明，请单击以下链接。  
+* 应该已开始运行笔记本，相关信息请参阅 **[Machine learning: Predictive analysis on food inspection data using MLLib](hdinsight-apache-spark-machine-learning-mllib-ipython.md)**（机器学习：使用 MLLib 对食品检测数据进行预测分析）。 有关如何运行此笔记本的说明，请单击以下链接。  
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>在 YARN UI 中跟踪应用程序
-1. 启动 YARN UI。 在群集边栏选项卡中，单击“群集仪表板”，然后单击“YARN”。
+1. 启动 YARN UI。 在群集边栏选项卡中，单击“群集仪表板”，并单击“YARN”。
    
     ![启动 YARN UI](./media/hdinsight-apache-spark-job-debugging/launch-yarn-ui.png)
    
    > [!TIP]
-   > 或者，也可以从 Ambari UI 启动 YARN UI。 若要启动 Ambari UI，请在群集边栏选项卡中单击“群集仪表板”，然后单击“HDInsight 群集仪表板”。 在 Ambari UI 中依次单击“YARN”、“快速链接”、活动的 Resource Manager 和“ResourceManager UI”。    
+   > 或者，也可以从 Ambari UI 启动 YARN UI。 要启动 Ambari UI，请在群集边栏选项卡中单击“群集仪表板”，并单击“HDInsight 群集仪表板”。 在 Ambari UI 中依次单击“YARN”、“快速链接”、活动的 Resource Manager 和“ResourceManager UI”。    
    > 
    > 
-2. 由于 Spark 作业是使用 Jupyter 笔记本启动的，因此应用程序的名称为 **remotesparkmagics**（这是从笔记本启动的所有应用程序的名称）。 单击应用程序名称旁边的应用程序 ID，以获取有关该作业的详细信息。 此时将启动应用程序视图。
+2. 由于 Spark 作业是使用 Jupyter 笔记本启动的，因此应用程序的名称为 **remotesparkmagics**（这是从笔记本启动的所有应用程序的名称）。 单击应用程序名称旁边的应用程序 ID，以获取有关该作业的详细信息。 此时会启动应用程序视图。
    
     ![查找 Spark 应用程序 ID](./media/hdinsight-apache-spark-job-debugging/find-application-id.png)
    
@@ -65,7 +65,7 @@ ms.lasthandoff: 07/22/2017
    
     ![查看 Spark 阶段](./media/hdinsight-apache-spark-job-debugging/view-spark-stages.png)
    
-    每个阶段可能有多个任务，你可以查看这些任务的执行统计信息，如下所示。
+    每个阶段可能有多个任务，可以查看这些任务的执行统计信息，如下所示。
    
     ![查看 Spark 阶段](./media/hdinsight-apache-spark-job-debugging/view-spark-stages-details.png) 
 4. 在阶段详细信息页上，可以启动 DAG 可视化。 展开页面顶部的“DAG 可视化”链接，如下所示。
@@ -77,7 +77,7 @@ ms.lasthandoff: 07/22/2017
    
     ![查看 Spark 阶段事件时间线](./media/hdinsight-apache-spark-job-debugging/view-spark-stages-event-timeline.png)
    
-    此时将以时间线形式显示 Spark 事件。 时间线视图提供三个级别：跨作业、作业内和阶段内。 上图中捕获了指定阶段的时间线视图。
+    此时以时间线形式显示 Spark 事件。 时间线视图提供三个级别：跨作业、作业内和阶段内。 上图中捕获了指定阶段的时间线视图。
    
    > [!TIP]
    > 如果选中“启用缩放”复选框，则可以在时间线视图中左右滚动。
@@ -85,7 +85,7 @@ ms.lasthandoff: 07/22/2017
    > 
 6. Spark UI 中的其他选项卡也提供了有关 Spark 实例的有用信息。
    
-   * “存储”选项卡 - 如果应用程序创建了 RDD，你可以在“存储”选项卡中找到相关信息。
+   * “存储”选项卡 - 如果应用程序创建了 RDD，可以在“存储”选项卡中找到相关信息。
    * “环境”选项卡 - 此选项卡提供有关 Spark 实例的有用信息，例如 
      * Scala 版本
      * 与群集关联的事件日志目录
@@ -95,12 +95,12 @@ ms.lasthandoff: 07/22/2017
 ## <a name="find-information-about-completed-jobs-using-the-spark-history-server"></a>使用 Spark History Server 查找有关已完成的作业的信息
 完成某个作业后，有关该作业的信息将保存在 Spark History Server 中。
 
-1. 若要启动 Spark History Server，请在群集边栏选项卡中单击“群集仪表板”，然后单击“Spark History Server”。
+1. 要启动 Spark History Server，请在群集边栏选项卡中单击“群集仪表板”，并单击“Spark History Server”。
    
     ![启动 Spark History Server](./media/hdinsight-apache-spark-job-debugging/launch-spark-history-server.png)
    
    > [!TIP]
-   > 或者，也可以从 Ambari UI 启动 Spark History Server UI。 若要启动 Ambari UI，请在群集边栏选项卡中单击“群集仪表板”，然后单击“HDInsight 群集仪表板”。 在 Ambari UI 中，依次单击“Spark”、“快速链接”和“Spark History Server UI”。
+   > 或者，也可以从 Ambari UI 启动 Spark History Server UI。 要启动 Ambari UI，请在群集边栏选项卡中单击“群集仪表板”，并单击“HDInsight 群集仪表板”。 在 Ambari UI 中，依次单击“Spark”、“快速链接”和“Spark History Server UI”。
    > 
    > 
 2. 随后会看到已列出所有已完成的应用程序。 单击应用程序 ID 可深入到该应用程序以获取更多信息。
@@ -108,7 +108,27 @@ ms.lasthandoff: 07/22/2017
     ![启动 Spark History Server](./media/hdinsight-apache-spark-job-debugging/view-completed-applications.png)
 
 ## <a name="see-also"></a>另请参阅
-* [概述：Azure HDInsight 上的 Apache Spark](hdinsight-apache-spark-overview.md)
+*  [管理 Azure HDInsight 中 Apache Spark 群集的资源](hdinsight-apache-spark-resource-manager.md)
+
+### <a name="for-data-analysts"></a>适用于数据分析师
+
+* [Spark 和机器学习：使用 HDInsight 中的 Spark 对使用 HVAC 数据生成温度进行分析](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
+* [Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [使用 HDInsight 中的 Spark 分析网站日志](hdinsight-apache-spark-custom-library-website-log-analysis.md)
+* [Application Insight telemetry data analysis using Spark in HDInsight（使用 HDInsight 中的 Spark 执行 Application Insight 遥测数据分析）](hdinsight-spark-analyze-application-insight-logs.md)
+* [使用 Caffe on Azure HDInsight Spark 进行分布式深度学习](hdinsight-deep-learning-caffe-spark.md)
+
+### <a name="for-spark-developers"></a>适用于 Spark 开发人员
+
+* [使用 Scala 创建独立的应用程序](hdinsight-apache-spark-create-standalone-application.md)
+* [使用 Livy 在 Spark 群集中远程运行作业](hdinsight-apache-spark-livy-rest-interface.md)
+* [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Spark 流式处理：使用 HDInsight 中的 Spark 生成实时流式处理应用程序](hdinsight-apache-spark-eventhub-streaming.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely（使用 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Spark 应用程序）](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](hdinsight-apache-spark-zeppelin-notebook.md)
+* [在 HDInsight 的 Spark 群集中可用于 Jupyter 笔记本的内核](hdinsight-apache-spark-jupyter-notebook-kernels.md)
+* [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+* [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 
 
 

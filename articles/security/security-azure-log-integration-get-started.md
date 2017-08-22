@@ -12,23 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 05/20/2017
+ms.date: 07/26/2017
 ms.author: TomSh
 ms.custom: azlog
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 02b3095bb77a122fddd74e636395628333a13936
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: a5c51817688140cc2778602b4c1d5184ae4729a0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/23/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>将 Azure 日志集成与 Azure 诊断日志记录和 Windows 事件转发相结合
-Azure 日志集成 (AzLog) 使你能够将 Azure 资源中的原始日志集成到你的本地安全信息和事件管理 (SIEM) 系统。 此集成可以让本地或云中的所有资产使用统一的仪表板，以便聚合、相互关联、分析和警示与应用程序相关的安全事件。
+Azure 日志集成 (AzLog) 使你能够将 Azure 资源中的原始日志集成到本地安全信息和事件管理 (SIEM) 系统。 此集成可以让本地或云中的所有资产使用统一的仪表板，以便聚合、相互关联、分析和警示与应用程序相关的安全事件。
 >[!NOTE]
 有关 Azure 日志集成的详细信息，请查阅 [Azure 日志集成概述](https://docs.microsoft.com/azure/security/security-azure-log-integration-overview)。
 
-本文将重点介绍如何安装 Azlog 服务和如何将服务与 Azure 诊断集成，从而帮助你开始使用 Azure 日志集成。 然后，Azure 日志集成服务就可以从部署在 Azure IaaS 中的虚拟机上通过 Windows 安全事件通道收集 Windows 事件日志信息。 你可能已经在本地使用了“事件转发”，这二者非常类似。
+本文将重点介绍如何安装 Azlog 服务和如何将服务与 Azure 诊断集成，从而帮助你开始使用 Azure 日志集成。 然后，Azure 日志集成服务就可以从部署在 Azure IaaS 中的虚拟机上通过 Windows 安全事件通道收集 Windows 事件日志信息。 可能已经在本地使用了“事件转发”，这二者非常类似。
 
 >[!NOTE]
 >SIEM 自身能够将 Azure 日志集成的输出集成到 SIEM。 有关详细信息，请参阅文章[将 Azure 日志集成与本地 SIEM 集成](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/)。
@@ -50,7 +49,7 @@ Azure 日志集成 (AzLog) 使你能够将 Azure 资源中的原始日志集成�
    * 运行 Azure 日志集成服务的计算机；这台计算机会收集所有的日志信息，而这些日志信息随后会被导入到 SIEM 中。
     * 此系统可以位于本地也可以位于 Microsoft Azure 中。  
     * 需要在 64 位版本的 Windows server 2008 R2 SP1 或更高版本中运行，并且需要安装 .NET 4.5.1。 可以按照标题为[如何：确定所安装的 .NET Framework 版本](https://msdn.microsoft.com/library/hh925568)的文章进行操作，以确定所安装的 .NET 版本  
-    必须连接到 Azure 诊断日志记录所使用的 Azure 存储帐户。 本文稍后将介绍如何确认此连接
+    必须连接到 Azure 诊断日志记录所使用的 Azure 存储帐户。 本文稍后介绍如何确认此连接
 
 有关使用 Azure 门户创建虚拟机的过程的快速演示，请观看以下视频。
 
@@ -59,13 +58,13 @@ Azure 日志集成 (AzLog) 使你能够将 Azure 资源中的原始日志集成�
 
 
 ## <a name="deployment-considerations"></a>部署注意事项
-测试 Azure 日志集成时，可以使用任何系统，只要它满足最低操作系统要求。 但是在生产环境中，负载可能需要你进行缩放。
+测试 Azure 日志集成时，可以使用任何系统，只要它满足最低操作系统要求。 但是在生产环境中，负载可能需要你计划缩放。
 
 当事件量过高时，可以运行 Azure 日志集成服务的多个实例（一个实例对应一台实体或虚拟计算机）。 此外，还可以为 Windows (WAD) 加载均衡的 Azure 诊断存储帐户，并且根据容量确定用于提供给实例的订阅数。
 >[!NOTE]
 此处我们不针对应该在什么时候扩展 Azure 日志集成计算机（即运行 Azure 日志集成服务的计算机）的实例做出具体建议，也不针对存储帐户或订阅做具体建议。 应该根据上述每个方面的性能观察结果做出缩放决定。
 
-还可以通过扩展 Azure 日志集成服务来提高性能。 以下性能指标有助于你确定运行 Azure 日志集成服务所使用的计算机的大小：
+还可以通过扩展 Azure 日志集成服务来提高性能。 以下性能指标有助于确定运行 Azure 日志集成服务所使用的计算机的大小：
 * 在一台 8 处理器（内核）的计算机上，Azlog 集成器的单个实例每天可以处理大约 2400 万个事件（每小时处理大约 100 万个事件）。
 
 * 在一台 ４ 处理器（内核）的计算机上，Azlog 集成器的单个实例每天可以处理大约 150 万个事件（每小时处理大约 6.25 万个事件）。
@@ -100,18 +99,18 @@ Azure 日志集成服务会收集安装了该服务的计算机中的遥测数�
 2. 首先需要导入 AzLog Cmdlet。 可以通过运行 **LoadAzlogModule.ps1** 脚本来实现此目的（请注意以下命令中的“\”）。 输入 **.\LoadAzlogModule.ps1** 并按 **Enter** 。  
 应该会看到如下图所示的内容。 </br></br>
 ![选中了遥测数据框的安装屏幕](./media/security-azure-log-integration-get-started/loaded-modules.png) </br></br>
-3. 现在需要将 AzLog 配置为使用特定的 Azure 环境。 “Azure 环境”即想使用的 Azure 云数据中心的“类型”。 虽然此时有多个 Azure 环境，但是当前最相关的选项是 **AzureCloud** 或者 **AzureUSGovernment**。   在提升权限的 PowerShell 环境中，确保你位于 **c:\program files\Microsoft Azure Log Integration\** </br></br>
-   位于此处后，运行以下命令： </br>
+3. 现在需要将 AzLog 配置为使用特定的 Azure 环境。 “Azure 环境”即想使用的 Azure 云数据中心的“类型”。 虽然此时有多个 Azure 环境，但是当前最相关的选项是 **AzureCloud** 或者 **AzureUSGovernment**。   在提升权限的 PowerShell 环境中，确保位于 **c:\program files\Microsoft Azure Log Integration\** </br></br>
+    位于此处后，运行以下命令： </br>
     ``Set-AzlogAzureEnvironment -Name AzureCloud``（适用于 Azure 商业版）
 
       >[!NOTE]
       如果命令成功，则不会受到任何反馈。  如果想使用美国政府 Azure 云，请使用适用于美国政府云的 **AzureUSGovernment**（用于 -Name 变量）。 此时不支持其他 Azure 云。  
-4. 监视系统之前，需要 Azure 诊断使用的存储帐户的名称。  在 Azure 门户中，导航到“虚拟机”并找到你想监视的虚拟机。 在“属性”部分，选择“诊断设置”。  单击“代理”并记下指定的存储帐户名称。 后面的步骤中需要此帐户名称。
+4. 监视系统之前，需要 Azure 诊断使用的存储帐户的名称。  在 Azure 门户中，导航到“虚拟机”并找到想监视的虚拟机。 在“属性”部分，选择“诊断设置”。  单击“代理”并记下指定的存储帐户名称。 后面的步骤中需要此帐户名称。
 ![Azure 诊断设置](./media/security-azure-log-integration-get-started/storage-account-large.png) </br></br>
 
       ![Azure 诊断设置](./media/security-azure-log-integration-get-started/azure-monitoring-not-enabled-large.png)
       >[!NOTE]
-      如果你在创建虚拟机时未启用监视，会为你提供启用监视的选项，如上所示。
+      如果在创建虚拟机时未启用监视，会提供启用监视的选项，如上所示。
 5. 现在我们重新将注意力放回 Azure 日志集成计算机。 我们需要验证已安装 Azure 日志集成的系统是否连接到了存储帐户。 运行 Azure 日志集成服务的实体计算机或虚拟计算机需要访问存储帐户，以便按每台被监视系统上的配置检索由 Azure 诊断记录的信息。  
   1. 可在[此处](http://storageexplorer.com/)下载 Azure 存储资源管理器。
   2. 执行安装例程
@@ -136,7 +135,7 @@ Azure 日志集成服务会收集安装了该服务的计算机中的遥测数�
  ![更多服务](./media/security-azure-log-integration-get-started/more-services.png)
  3. 在“筛选器”文本框中，输入“存储”。 单击“存储帐户”（输入“存储”后会出现此内容）
 
-  ![筛选器框](./media/security-azure-log-integration-get-started/filter.png)
+   ![筛选器框](./media/security-azure-log-integration-get-started/filter.png)
  4. 之后会显示存储帐户列表，请双击分配给日志存储的帐户。
 
    ![存储帐户列表](./media/security-azure-log-integration-get-started/storage-accounts.png)
@@ -151,7 +150,7 @@ Azure 日志集成服务会收集安装了该服务的计算机中的遥测数�
  9. 运行 ``Azlog source add <FriendlyNameForTheSource> WAD <StorageAccountName> <StorageKey> `` </br> 例如 ``Azlog source add Azlogtest WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==``如果希望将订阅 ID 显示在事件 XML 中，请将订阅 ID 追加到友好名称中：``Azlog source add <FriendlyNameForTheSource>.<SubscriptionID> WAD <StorageAccountName> <StorageKey>``。或者例如 ``Azlog source add Azlogtest.YourSubscriptionID WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==``
 
 >[!NOTE]  
-最多等待 60 分钟，然后查看从存储帐户拉取的事件。 若要查看，请在 Azlog 集成器上打开“事件查看器 > Windows 日志 > 已转发事件”。
+最多等待 60 分钟，并查看从存储帐户拉取的事件。 若要查看，请在 Azlog 集成器上打开“事件查看器 > Windows 日志 > 已转发事件”。
 
 可在此处观看视频，回顾上面介绍的步骤。
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Log-Integration-Videos-Enable-Diagnostics-and-Storage/player]
@@ -182,8 +181,8 @@ Azure 日志集成服务会收集安装了该服务的计算机中的遥测数�
 
 * [适用于 Azure 日志的 Microsoft Azure 日志集成](https://www.microsoft.com/download/details.aspx?id=53324) - 下载中心，其中包含有关 Azure 日志集成的详细信息、系统要求和安装说明。
 * [Azure 日志集成简介](security-azure-log-integration-overview.md)– 本文档介绍 Azure 日志集成、其主要功能及其工作原理。
-* [合作伙伴配置步骤](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) - 此博客文章介绍如何配置 Azure 日志集成，以使用 Splunk、HP ArcSight 和 IBM QRadar 合作伙伴解决方案。
+* [合作伙伴配置步骤](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) - 此博客文章介绍如何配置 Azure 日志集成，以使用 Splunk、HP ArcSight 和 IBM QRadar 合作伙伴解决方案。 这是关于如何配置 SIEM 组件的当前指导。 有关其他详细信息，请先与 SIEM 供应商联系。
 * [Azure 日志集成常见问题解答 (FAQ)](security-azure-log-integration-faq.md) - 此常见问题解答回答了有关 Azure 日志集成的问题。
-* [集成安全中心警报与 Azure 日志集成](../security-center/security-center-integrating-alerts-with-log-integration.md) - 本文档介绍如何将安全中心警报以及由 Azure 诊断和 Azure 审核日志收集的虚拟机安全事件与你的日志分析或 SIEM 解决方案同步。
+* [集成安全中心警报与 Azure 日志集成](../security-center/security-center-integrating-alerts-with-log-integration.md) - 本文档介绍如何将安全中心警报以及由 Azure 诊断和 Azure 活动日志收集的虚拟机安全事件与日志分析或 SIEM 解决方案同步。
 * [New features for Azure diagnostics and Azure Audit Logs](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/)（Azure 诊断和 Azure 审核日志的新功能）– 此博客文章介绍 Azure 审核日志和其他功能，可帮助你深入了解 Azure 资源的操作。
 

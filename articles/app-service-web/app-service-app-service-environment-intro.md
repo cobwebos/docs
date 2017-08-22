@@ -1,6 +1,6 @@
 ---
-title: "App Service 环境简介"
-description: "了解有关可提供安全、加入 VNet 的专用缩放单位用于运行所有应用的 App Service 环境功能。"
+title: "应用服务环境 v1 简介"
+description: "了解有关可提供安全、加入 VNet 的专用缩放单位用于运行所有应用的应用服务环境 v1 功能。"
 services: app-service
 documentationcenter: 
 author: stefsch
@@ -12,16 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
-ms.author: stefsch
-translationtype: Human Translation
-ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
-ms.openlocfilehash: 91b1d6315a9414789b28442f3f19d14c2aed8f00
-ms.lasthandoff: 03/01/2017
-
+ms.date: 07/11/2017
+ms.author: ccompy
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 38cb79eb32bd61cdbfb6da91d50e6713d71a2b0d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/26/2017
 
 ---
-# <a name="introduction-to-app-service-environment"></a>App Service 环境简介
+# <a name="introduction-to-app-service-environment-v1"></a>应用服务环境 v1 简介
+
+> [!NOTE]
+> 本文介绍应用服务环境 v1。  应用服务环境有一个较新版本，此版本更易于使用并在更强大的基础结构上运行。 若要深入了解新版本，请先参阅[应用服务环境简介](../app-service/app-service-environment/intro.md)。
+> 
+
 ## <a name="overview"></a>概述
 应用服务环境是 Azure 应用服务的一项[高级][PremiumTier]服务计划选项，可提供完全隔离的专用环境来安全地大规模运行 Azure 应用服务应用，包括 [Web 应用][WebApps]、[移动应用][MobileApps]和 [API 应用][APIApps]。  
 
@@ -51,11 +56,11 @@ ms.lasthandoff: 03/01/2017
 
 应用服务环境由前端计算资源池，以及一到三个工作线程计算资源池组成。 
 
-前端池包含负责处理 SSL 终止以及 App Service 环境中应用请求的自动负载平衡的计算资源。 
+前端池包含负责处理 SSL 终止以及应用服务环境中应用请求的自动负载均衡的计算资源。 
 
-每个工作线程池包含分配给[应用服务计划][AppServicePlan]的计算资源，而这些资源又包含一个或多个 Azure 应用服务应用。  由于 App Service 环境中可能有多达三个不同的工作线程池，因此你可以灵活地为每个工作线程池选择不同的计算资源。  
+每个工作线程池包含分配给[应用服务计划][AppServicePlan]的计算资源，而这些资源又包含一个或多个 Azure 应用服务应用。  由于应用服务环境中可能有多达三个不同的工作线程池，因此可以灵活地为每个工作线程池选择不同的计算资源。  
 
-例如，可以针对主要用于开发或测试应用的应用服务方案创建一个计算资源较不强大的工作线程池。  第二个（甚至第三个）工作线程池可以使用比较强大的计算资源，以供 App Service 计划运行生产应用。
+例如，可以针对主要用于开发或测试应用的应用服务方案创建一个计算资源较不强大的工作线程池。  第二个（甚至第三个）工作线程池可以使用比较强大的计算资源，以供应用服务计划运行生产应用。
 
 有关前端和工作线程池可用计算资源数量的详细信息，请参阅[如何配置应用服务环境][HowToConfigureanAppServiceEnvironment]。  
 
@@ -66,7 +71,7 @@ ms.lasthandoff: 03/01/2017
 
 应用服务环境既可以是面向 Internet 的（使用公共 IP 地址），也可以是面向内部的（只使用 Azure 内部负载均衡器 (ILB) 地址）。
 
-可以使用[网络安全组][NetworkSecurityGroups]将入站网络通信限制为应用服务环境所在的子网。  这样，你便可以在上游设备和服务（例如 Ｗeb 应用程序防火墙和网络 SaaS 提供者）后面运行应用。
+可以使用[网络安全组][NetworkSecurityGroups]将入站网络通信限制为应用服务环境所在的子网。  这样，便可以在上游设备和服务（例如 Ｗeb 应用程序防火墙和网络 SaaS 提供者）后面运行应用。
 
 应用还经常需要访问公司资源，例如内部数据库和 Web 服务。  常见的做法是让这些终结点仅可用于在 Azure 虚拟网络中流动的内部网络流量。  一旦应用服务环境加入到与内部服务相同的虚拟网络，在此环境中运行的应用即可访问这些内部服务，包括可通过[站点到站点][SiteToSite]和 [Azure ExpressRoute][ExpressRoute] 连接访问的终结点。
 

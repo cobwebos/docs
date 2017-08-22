@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: anhoh
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 18a2f6fba707ad920df96117f1c5fb4c8cf9142a
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 8051742c7c368d1ed84bcd90ab75b20f62105e2f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Azure Cosmos DB 分层资源模型和核心概念
@@ -39,7 +38,7 @@ Azure Cosmos DB 管理的数据库实体被称为**资源**。 每个资源都�
 如下面的关系图所示，Cosmos DB 分层**资源模型**由一个数据库帐户下的多组资源构成，每个资源可通过一个稳定的逻辑 URI 进行寻址。 本文将一组资源称为一个**源**。 
 
 > [!NOTE]
-> Cosmos DB 提供高效的 TCP 协议，该协议在其通信模型中也是 RESTful，可通过 [DocumentDB .NET 客户端 API](documentdb-sdk-dotnet.md) 获得。
+> Azure Cosmos DB 提供高效的 TCP 协议，该协议在其通信模型中也是 RESTful，可通过 [DocumentDB .NET 客户端 API](documentdb-sdk-dotnet.md) 获得。
 > 
 > 
 
@@ -194,7 +193,7 @@ Cosmos DB 是真正无架构的数据库系统。 无需为 JSON 文档假设或
 可以通过对集合执行 PUT 更改索引策略。 这可以通过[客户端 SDK](documentdb-sdk-dotnet.md)、[Azure 门户](https://portal.azure.com)或 [REST API](/rest/api/documentdb/) 来实现。
 
 ### <a name="querying-a-collection"></a>查询集合
-集合中的文档可以具有任意的数据库架构，而你无需提前提供任何架构或辅助索引，就可以查询集合中的文档。 可以使用 [DocumentDB API SQL 语法](https://msdn.microsoft.com/library/azure/dn782250.aspx)查询集合，该语法通过基于 JavaScript 的 UDF 提供丰富的分层运算符、关系运算符和空间运算符以及扩展性。 JSON 语法允许将 JSON 文档建模为树，其中标签作为树节点。 DocumentDB API 的自动索引技术和 DocumentDB API 的 SQL 方言都利用了此语法。 DocumentDB API 查询语言包含三个主要方面：   
+集合中的文档可以具有任意的数据库架构，而你无需提前提供任何架构或辅助索引，就可以查询集合中的文档。 可以使用 [Azure Cosmos DB DocumentDB API：SQL 语法引用](https://msdn.microsoft.com/library/azure/dn782250.aspx)查询集合，该语法通过基于 JavaScript 的 UDF 提供丰富的分层运算符、关系运算符和空间运算符以及扩展性。 JSON 语法允许将 JSON 文档建模为树，其中标签作为树节点。 DocumentDB API 的自动索引技术和 DocumentDB API 的 SQL 方言都利用了此语法。 DocumentDB API 查询语言包含三个主要方面：   
 
 1. 一小组查询操作，它自然映射到包括分层查询和投影的树结构。 
 2. 一小部分关系操作，包括组合、筛选、投影、聚合和自联接。 
@@ -426,7 +425,7 @@ Cosmos DB 可通过 Cosmos DB 存储二进制 Blob/媒体（每个帐户最大 2
 
 请注意，上面列出的示例使用易于理解的 ID 来表示资源层次结构。 通过唯一的资源 ID 和 REST API 访问资源。 
 
-对于由 Cosmos DB 管理的媒体，附件的 _media 属性将通过 URI 引用媒体。 Cosmos DB 确保在删除所有未完成的引用时对媒体进行垃圾回收。 当你上传新的媒体并填充 _media 以指向新添加的媒体时，Cosmos DB 会自动生成附件。 如果你选择将媒体存储在由你（例如 OneDrive、Azure 存储空间、DropBox 等）管理的远程 blob 存储区，你仍可以使用附件以引用媒体。 在这种情况下，你将自行创建附件并填充其 _media 属性。   
+对于由 Cosmos DB 管理的媒体，附件的 _media 属性将通过 URI 引用媒体。 Cosmos DB 确保在删除所有未完成的引用时对媒体进行垃圾回收。 当你上传新的媒体并填充 _media 以指向新添加的媒体时，Cosmos DB 会自动生成附件。 如果你选择将媒体存储在由你（例如 OneDrive、Azure 存储、DropBox 等）管理的远程 blob 存储区，你仍可以使用附件以引用媒体。 在这种情况下，你将自行创建附件并填充其 _media 属性。   
 
 至于所有其他资源，可以创建、替换、删除、读取、枚举附件，也可以轻松地使用 REST API 或任一客户端 SDK 查询附件。 至于文档，附件的读取一致性级别遵守数据库帐户中的一致性策略。 可以根据你的应用程序的数据一致性要求在每个请求中重写此策略。 查询附件时，读取一致性遵循集合上的索引编制模式设置。 对于“一致性”，将遵循帐户的一致性策略。 
  

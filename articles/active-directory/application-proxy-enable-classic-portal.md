@@ -5,31 +5,31 @@ services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: harshja
 ms.assetid: c7186f98-dd80-4910-92a4-a7b8ff6272b9
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/02/2017
+ms.date: 07/02/2017
 ms.author: kgremban
-ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: dc49397f76f982cc7d35bbe3e073cb828a4965c6
+ms.reviewer: harshja
+ms.custom: it-pro; oldportal
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: ea97fdc8d146ed524a932018b572ceda0982738b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 
 # <a name="enable-application-proxy-in-the-classic-portal-and-download-connectors"></a>在经典门户中启用应用程序代理并下载连接器
-本文将指导你完成在 Azure AD 中为云目录启用 Microsoft Azure AD 应用程序代理的步骤。
+本文指导完成在 Azure AD 中为云目录启用 Microsoft Azure AD 应用程序代理的步骤。
 
-如果你不了解应用程序代理可以做些什么，可了解有关 [如何提供对本地应用程序的安全远程访问](active-directory-application-proxy-get-started.md)的详细信息。
+如果不了解应用程序代理可以做些什么，可了解有关 [如何提供对本地应用程序的安全远程访问](active-directory-application-proxy-get-started.md)的详细信息。
 
 ## <a name="application-proxy-prerequisites"></a>应用程序代理先决条件
-在启用和使用应用程序代理服务之前，你需要：
+在启用和使用应用程序代理服务之前，需要：
 
 * [Microsoft Azure AD 基本或高级版订阅](active-directory-editions.md) 以及你本人为全局管理员的 Azure AD 目录。
 * 可以安装应用程序代理连接器、运行 Windows Server 2012 R2 或 2016 的服务器。 该服务器将请求发送到云中的应用程序代理服务，并且需要与要发布的应用程序建立 HTTP 或 HTTPS 连接。
@@ -47,7 +47,7 @@ ms.lasthandoff: 06/09/2017
    | 80 | 下载证书吊销列表 (Crl) 的同时验证 SSL 证书 |
    | 443 | 与应用程序代理服务进行所有出站通信 |
 
-   如果你的防火墙根据发起用户强制实施流量，请针对来自作为网络服务运行的 Windows 服务的流量打开这些端口。
+   如果防火墙根据发起用户强制实施流量，请针对来自作为网络服务运行的 Windows 服务的流量打开这些端口。
 
    > [!IMPORTANT]
    > 表中会显示针对连接器版本 1.5.132.0 及更高版本的端口要求。 如果你仍然使用较低的连接器版本，还需要启用下列端口：5671、8080、9090、9091、9350、9352 以及 10100 – 10120。
@@ -60,29 +60,29 @@ ms.lasthandoff: 06/09/2017
 
 ## <a name="enable-application-proxy-in-azure-ad"></a>在 Azure AD 中启用应用程序代理
 1. 在 [Azure 经典门户](https://manage.windowsazure.com/)中，以管理员身份登录。
-2. 转到 Active Directory，并选择你要在其中启用应用程序代理的目录。
+2. 转到 Active Directory，并选择要在其中启用应用程序代理的目录。
 
     ![Active Directory - 图标](./media/active-directory-application-proxy-enable/ad_icon.png)
 3. 从目录页中选择“配置”，并向下滚动至“应用程序代理”。
 4. 将“为此目录启用应用程序代理服务”切换至“已启用”状态。
 
     ![启用应用程序代理](./media/active-directory-application-proxy-enable/app_proxy_enable.png)
-5. 选择“立即下载” 。 “Azure AD 应用程序代理连接器下载”随即打开。 阅读并接受许可条款，然后单击“下载”  为连接器保存 Windows Installer 文件 (.exe)。
+5. 选择“立即下载” 。 “Azure AD 应用程序代理连接器下载”随即打开。 阅读并接受许可条款，并单击“下载”  为连接器保存 Windows Installer 文件 (.exe)。
 
 ## <a name="install-and-register-the-connector"></a>安装并注册连接器
 1. 在根据先决条件准备的服务器上运行 **AADApplicationProxyConnectorInstaller.exe** 。
 2. 按照向导中的说明进行安装。
-3. 在安装期间，系统将提示你将连接器注册到 Azure AD 租户的应用程序代理。
+3. 在安装期间，系统会提示将连接器注册到 Azure AD 租户的应用程序代理。
 
-   * 提供你的 Azure AD 全局管理员凭据。 全局管理员租户可能不同于 Microsoft Azure 凭据。
-   * 确保注册连接器的管理员在你启用应用程序代理服务的同一目录中。 例如，如果租户域为 contoso.com，则管理员应该为 admin@contoso.com 或该域上的任何其他别名。
-   * 如果要安装连接器的服务器上将“IE 增强的安全配置”设为“打开”，则可能无法显示注册屏幕。 请按照错误消息中的说明来允许访问。 确保 Internet Explorer 增强的安全性已关闭。
+   * 提供 Azure AD 全局管理员凭据。 全局管理员租户可能不同于 Microsoft Azure 凭据。
+   * 确保注册连接器的管理员在启用应用程序代理服务的同一目录中。 例如，如果租户域为 contoso.com，则管理员应该为 admin@contoso.com 或该域上的任何其他别名。
+   * 如果将服务器上的“IE 增强的安全配置”设为“打开”，则可能无法显示注册屏幕。 若要允许访问，请按照错误消息中的说明进行操作。 确保 Internet Explorer 增强的安全性已关闭。
    * 如果连接器注册不成功，请参阅 [故障排除应用程序代理](active-directory-application-proxy-troubleshoot.md)。  
 4. 安装完成后，服务器上会添加两个新的服务：
 
    * **Microsoft AAD 应用程序代理连接器** 将启用连接
 
-     * **Microsoft AAD 应用程序代理连接器更新程序** 是一项自动更新服务，它会定期检查连接器新版本并根据需要更新连接器。
+     * **Microsoft AAD 应用程序代理连接器更新程序**是一项自动更新服务。 它会定期检查新的连接器版本，根据需要更新连接器。
 
      ![应用代理连接器服务 - 屏幕截图](./media/active-directory-application-proxy-enable/app_proxy_services.png)
 5. 在安装窗口中单击“完成”  。
@@ -94,7 +94,7 @@ ms.lasthandoff: 06/09/2017
 如果要卸载连接器，请先卸载连接器服务和更新程序服务。 重新启动计算机以完全删除该服务。
 
 ## <a name="next-steps"></a>后续步骤
-现在，你可以随时 [使用应用程序代理发布应用程序](active-directory-application-proxy-publish.md)。
+现在，可以随时 [使用应用程序代理发布应用程序](active-directory-application-proxy-publish.md)。
 
 如果应用程序位于单独网络或其他位置，可以使用连接器组将不同连接器组织到逻辑单元中。 了解有关 [使用应用程序代理连接器](active-directory-application-proxy-connectors.md)的详细信息。
 

@@ -13,20 +13,19 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/03/2017
+ms.date: 07/24/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: 7a16a1c2a10279b5e7fb523addfdfcd433c8937e
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 4d5bb90c0e7573afb75282810c9ba58e7163e127
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/10/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="analyze-real-time-twitter-sentiment-with-hbase-in-hdinsight"></a>在 HDInsight 中使用 HBase 分析实时 Twitter 观点
 了解如何通过在 HDInsight 中使用 HBase 群集对 Twitter 中的大数据执行实时[情绪分析](http://en.wikipedia.org/wiki/Sentiment_analysis)。
 
-社交网站是采用大数据的主要推动力之一。 Twitter 等网站所提供的公共 API 是一类用于分析和了解流行趋势的有用数据源。 在本教程中，你将开发一个控制台流式处理服务应用程序和一个 ASP.NET Web 应用程序用于执行以下操作：
+社交网站是采用大数据的主要推动力之一。 Twitter 等网站所提供的公共 API 是一类用于分析和了解流行趋势的有用数据源。 在本教程中，将开发一个控制台流式处理服务应用程序和一个 ASP.NET Web 应用程序用于执行以下操作：
 
 ![HDInsight HBase 分析 Twitter 观点][img-app-arch]
 
@@ -37,25 +36,18 @@ ms.lasthandoff: 06/10/2017
   * 使用 Microsoft HBase SDK 将观点信息存储在 HBase 中
 * Azure 网站应用程序
 
-  * 使用 ASP.NET Web 应用程序将实时统计结果绘制在必应地图上。 推文的视觉效果如下所示：
+  * 使用 ASP.NET Web 应用程序将实时统计结果绘制在必应地图上。 推文的可视化效果与以下屏幕截图相似：
 
     ![hdinsight.hbase.twitter.sentiment.bing.map][img-bing-map]
 
-    你可以利用某些关键字来查询推文，以此感知推文中表达的观点是肯定的、否定的还是中立的。
+    可以利用某些关键字来查询推文，以此感知推文中表达的观点是肯定的、否定的还是中立的。
 
 有关完整的 Visual Studio 解决方案示例，请访问 GitHub：[实时社交情绪分析应用](https://github.com/maxluk/tweet-sentiment)。
 
 ### <a name="prerequisites"></a>先决条件
 在开始阅读本教程前，你必须具有：
 
-* **HDInsight 中的 HBase 群集**。 有关创建群集的说明，请参阅[开始在 HDInsight 中将 HBase 与 Hadoop 配合使用][hbase-get-started]。 你将需要以下数据才能完成本教程：
-
-    <table border="1">
-    <tr><th>群集属性</th><th>说明</th></tr>
-    <tr><td>HBase 群集名称</td><td>你的 HDInsight HBase 群集名称。 例如：https://myhbase.azurehdinsight.net/</td></tr>
-    <tr><td>群集用户名</td><td>Hadoop 用户帐户名称。 默认的 Hadoop 用户名为 <strong>admin</strong>。</td></tr>
-    <tr><td>群集用户密码</td><td>Hadoop 群集用户密码。</td></tr>
-    </table>
+* **HDInsight 中的 HBase 群集**。 有关创建群集的说明，请参阅[开始在 HDInsight 中将 HBase 与 Hadoop 配合使用][hbase-get-started]。 
 
 * 安装有 Visual Studio 2013/2015/2017 的**一个工作站**。 有关说明，请参阅[安装 Visual Studio](http://msdn.microsoft.com/library/e2h7fzkw.aspx)。
 
@@ -68,13 +60,12 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 2. 单击“创建新应用”。
 3. 输入“名称”、“说明”和“网站”。 Twitter 应用程序名称必须是唯一的名称。 我们实际上不会用到“网站”字段。 因此不必输入有效的 URL。
 4. 选中“是，我同意”，然后单击“创建 Twitter 应用程序”。
-5. 单击“权限”选项卡。 默认权限为“只读”。 这对于本教程来说已足够。
+5. 单击“权限”选项卡，然后单击“只读”。 对于本教程而言，只读权限已足够。
 6. 单击“密钥和访问令牌”选项卡。
-7. 单击“创建我的访问令牌”。
-8. 在页面右上角单击“测试 OAuth”。
-9. 复制“使用者密钥”、“使用者机密”、“访问令牌”和“访问令牌机密”值。 本教程后面的步骤中将会用到这些值。
+7. 单击页面底部的“创建我的访问令牌”。
+9. 复制“使用者密钥(API 密钥)”、“使用者机密(API 机密)”、“访问令牌”和“访问令牌机密”值。 在本教程后面的步骤中需要用到这些值。
 
-    ![hdi.hbase.twitter.sentiment.twitter.app][img-twitter-app]
+    > ![注意]“测试 OAuth”按钮不再有效。
 
 ## <a name="create-twitter-streaming-service"></a>创建 Twitter 流式处理服务
 需要创建一个应用程序来获取推文、计算推文观点分数，以及将处理过的推文文字发送到 HBase。
@@ -94,7 +85,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
    >
    >
 3. 从“解决方案资源管理器”中，将 **System.Configuration** 添加到引用中。
-4. 将新的类文件添加到名为 **HBaseWriter.cs** 的项目中，然后将代码替换为以下内容：
+4. 将新的类文件添加到名为 **HBaseWriter.cs** 的项目中，并将代码替换为以下内容：
 
         using System;
         using System.Collections.Generic;
@@ -354,7 +345,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                 public string Polarity { get; set; }
             }
         }
-5. 设置上述代码中的常量，包括 **CLUSTERNAME**、**HADOOPUSERNAME**、**HADOOPUSERPASSWORD** 和 DICTIONARYFILENAME。 DICTIONARYFILENAME 是 direction.tsv 的文件名和位置。  可从 **https://hditutorialdata.blob.core.windows.net/twittersentiment/dictionary.tsv** 下载该文件。 如果你想要更改 HBase 表名称，则必须相应地更改 Web 应用程序中的表名称。
+5. 设置上述代码中的常量，包括 **CLUSTERNAME**、**HADOOPUSERNAME**、**HADOOPUSERPASSWORD** 和 DICTIONARYFILENAME。 DICTIONARYFILENAME 是 direction.tsv 的文件名和位置。  可从 **https://hditutorialdata.blob.core.windows.net/twittersentiment/dictionary.tsv** 下载该文件。 如果想要更改 HBase 表名称，则必须相应地更改 Web 应用程序中的表名称。
 6. 打开 **Program.cs**，将代码替换为以下内容：
 
         using System;
@@ -386,7 +377,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
                         {
                             HBaseWriter hbase = new HBaseWriter();
                             var stream = Stream.CreateFilteredStream();
-                            stream.AddLocation(new Coordinates(-180, -90), new Coordinates(180, 90));
+                            stream.AddLocation(new Coordinates(90, -180), new Coordinates(-90,180));
 
                             var tweetCount = 0;
                             var timer = Stopwatch.StartNew();
@@ -435,7 +426,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 开发 Web 应用程序时，请保持流式处理控制台应用程序的运行状态，以便有更多的数据可用。 若要检查数据是否已插入表中，可以使用 HBase Shell。 请参阅 [HDInsight 中的 HBase 入门](hdinsight-hbase-tutorial-get-started-linux.md#create-tables-and-insert-data)。
 
 ## <a name="visualize-real-time-sentiment"></a>可视化实时观点
-在本部分中，你将创建一个 ASP.NET MVC Web 应用程序，以便从 HBase 读取实时观点数据，并将数据绘制在必应地图上。
+在本部分中，会创建一个 ASP.NET MVC Web 应用程序，以便从 HBase 读取实时观点数据，并将数据绘制在必应地图上。
 
 **创建 ASP.NET MVC Web 应用程序**
 
@@ -451,15 +442,15 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 5. 在“选择模板”中单击“MVC”。
 6. 在“Microsoft Azure”中，单击“管理订阅”。
 7. 在“管理 Microsoft Azure 订阅”中单击“登录”。
-8. 输入你的 Azure 凭据。 Azure 订阅信息将显示在“帐户”选项卡中。
+8. 输入 Azure 凭据。 Azure 订阅信息显示在“帐户”选项卡中。
 9. 单击“关闭”，关闭“管理 Microsoft Azure 订阅”窗口。
 10. 在“新建 ASP.NET 项目 - TweetSentimentWeb”中单击“确定”。
-11. 在“配置 Microsoft Azure 站点设置”中，选择与你最靠近的“区域”。 你不需要指定数据库服务器。
+11. 在“配置 Microsoft Azure 站点设置”中，选择距你最近的“区域”。 不需要指定数据库服务器。
 12. 单击 **“确定”**。
 
 **安装 NuGet 包**
 
-1. 在“工具”菜单中，单击“Nuget 程序包管理器”，然后单击“程序包管理器控制台”。 控制台面板将在页面底部打开。
+1. 在“工具”菜单中，单击“Nuget 程序包管理器”，并单击“程序包管理器控制台”。 控制台面板会在页面底部打开。
 2. 使用以下命令安装 [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/) 包（访问 HBase 群集的客户端库）：
 
         Install-Package Microsoft.HBase.Client
@@ -467,8 +458,8 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 **添加 HBaseReader 类**
 
 1. 在“解决方案资源管理器”中展开“TweetSentiment”。
-2. 右键单击“模型”，然后依次单击“添加”和“类”。
-3. 在“名称”字段中键入 **HBaseReader.cs**，然后单击“添加”。
+2. 右键单击“模型”，并依次单击“添加”和“类”。
+3. 在“名称”字段中键入 **HBaseReader.cs**，并单击“添加”。
 4. 将此代码替换为以下代码：
 
         using System;
@@ -589,9 +580,9 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 **添加 TweetsController 控制器**
 
 1. 在“解决方案资源管理器”中展开“TweetSentimentWeb”。
-2. 右键单击“控制器”，单击“添加”，然后单击“控制器”。
-3. 单击“Web API 2 控制器 - 空”，然后单击“添加”。
-4. 在“控制器名称”字段中键入 **TweetsController**，然后单击“添加”。
+2. 右键单击“控制器”，单击“添加”，并单击“控制器”。
+3. 单击“Web API 2 控制器 - 空”，并单击“添加”。
+4. 在“控制器名称”字段中键入 **TweetsController**，并单击“添加”。
 5. 在“解决方案资源管理器”中，双击 TweetsController.cs 打开该文件。
 6. 修改该文件，使其类似于：
 
@@ -621,7 +612,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 **添加 heatmap.js**
 
 1. 在“解决方案资源管理器”中展开“TweetSentimentWeb”。
-2. 右键单击“脚本”，然后依次单击“添加”和“JavaScript 文件”。
+2. 右键单击“脚本”，并依次单击“添加”和“JavaScript 文件”。
 3. 在“项名称”字段中键入 **heatmap.js**。
 4. 将以下代码粘贴到文件中。 该代码由 Alastair Aitchison 编写。 有关详细信息，请参阅[必应地图 AJAX v7 HeatMap 库](http://alastaira.wordpress.com/2011/04/15/bing-maps-ajax-v7-heatmap-library/)。
 
@@ -875,7 +866,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 **添加 twitterStream.js**
 
 1. 在“解决方案资源管理器”中展开“TweetSentimentWeb”。
-2. 右键单击“脚本”，然后依次单击“添加”和“JavaScript 文件”。
+2. 右键单击“脚本”，并依次单击“添加”和“JavaScript 文件”。
 3. 在“项名称”字段中键入 **twitterStream.js**。
 4. 将以下代码复制并粘贴到文件中：
 
@@ -1075,7 +1066,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 
 **修改 layout.cshtml**
 
-1. 在“解决方案资源管理器”中，依次展开“TweetSentimentWeb”、“视图”和“共享”，然后双击“_Layout.cshtml”。
+1. 在“解决方案资源管理器”中，依次展开“TweetSentimentWeb”、“视图”和“共享”，并双击“_Layout.cshtml”。
 2. 将文件中的内容替换为以下内容：
 
         <!DOCTYPE html>
@@ -1138,7 +1129,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 
 **修改 Index.cshtml**
 
-1. 在“解决方案资源管理器”中，依次展开“TweetSentimentWeb”、“视图”和“主页”，然后双击“Index.cshtml”。
+1. 在“解决方案资源管理器”中，依次展开“TweetSentimentWeb”、“视图”和“主页”，并双击“Index.cshtml”。
 2. 将文件中的内容替换为以下内容：
 
         @{
@@ -1151,7 +1142,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 
 **修改 site.css 文件**
 
-1. 在“解决方案资源管理器”中，依次展开“TweetSentimentWeb”和“内容”，然后双击“Site.css”。
+1. 在“解决方案资源管理器”中，依次展开“TweetSentimentWeb”和“内容”，并双击“Site.css”。
 2. 将以下代码附加到文件中：
 
         /* make container, and thus map, 100% width */
@@ -1174,7 +1165,7 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 
 **修改 global.asax 文件**
 
-1. 在“解决方案资源管理器”中，展开“TweetSentimentWeb”，然后双击“Global.asax”。
+1. 在“解决方案资源管理器”中，展开“TweetSentimentWeb”，并双击“Global.asax”。
 2. 添加以下 **using** 语句：
 
         using System.Web.Http;
@@ -1191,14 +1182,14 @@ Twitter 流式传输 API 使用 [OAuth](http://oauth.net/) 对请求授权。 �
 2. 按 **F5** 运行 Web 应用程序：
 
     ![hdinsight.hbase.twitter.sentiment.bing.map][img-bing-map]
-3. 在文本框中输入一个关键字，然后单击“搜索”。  根据在 HBase 表中收集的数据，可能找不到某些关键字。 请尝试搜索一些常见的关键字，例如“love”、“xbox”和“playstation”。
+3. 在文本框中输入一个关键字，并单击“搜索”。  根据在 HBase 表中收集的数据，可能找不到某些关键字。 请尝试搜索一些常见的关键字，例如“love”、“xbox”和“playstation”。
 4. 在“肯定”、“否定”和“中立”之间切换，以比较用户对主题的观点。
-5. 让流式处理服务再多运行一小时，然后搜索相同的关键字并比较结果。
+5. 让流式处理服务再多运行一小时，并搜索相同的关键字并比较结果。
 
-你也可以选择性地将应用程序部署到 Azure 网站。 有关说明，请参阅 [Azure 网站和 ASP.NET 入门][website-get-started]。
+也可以选择性地将应用程序部署到 Azure 网站。 有关说明，请参阅 [Azure 网站和 ASP.NET 入门][website-get-started]。
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已学习如何获取推文、分析推文的观点、将观点数据保存到 HBase，以及在必应地图上呈现实时的 Twitter 观点数据。 若要了解更多信息，请参阅以下文章：
+在本教程中，已学习如何获取推文、分析推文的观点、将观点数据保存到 HBase，以及在必应地图上呈现实时的 Twitter 观点数据。 若要了解更多信息，请参阅以下文章：
 
 * [HDInsight 入门][hdinsight-get-started]
 * [在 HDInsight 中配置 HBase 复制](hdinsight-hbase-replication.md)

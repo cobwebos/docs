@@ -15,12 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 06/07/2017
 ms.author: heidist
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: d41a02b837d2cd0c478abdcf3068a5ccf7ed1b6f
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 60e63401e3915e62e1ec5ac03cd548c291580b24
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="service-limits-in-azure-search"></a>Azure 搜索中的服务限制
@@ -49,13 +48,15 @@ ms.lasthandoff: 06/08/2017
 | 索引：每个索引的最大计分配置文件 |100 |100 |100 |100 |100 |100 |
 | 索引：每个配置文件的最大函数 |8 |8 |8 |8 |8 |8 |
 | 索引器：每次调用的最大索引编制负载 |10,000 个文档 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |N/A <sup>2</sup> |
-| 索引器：最长运行时间 |3 分钟 |24 小时 |24 小时 |24 小时 |24 小时 |N/A <sup>2</sup> |
+| 索引器：最长运行时间 | 1-3 分钟 <sup>3</sup> |24 小时 |24 小时 |24 小时 |24 小时 |N/A <sup>2</sup> |
 | Blob 索引器：最大 blob 大小，MB |16 |16 |128 |256 |256 |N/A <sup>2</sup> |
 | Blob 索引器：从 blob 中提取的内容的最大字符数 |32,000 |64,000 |4 百万 |4 百万 |4 百万 |N/A <sup>2</sup> |
 
 <sup>1</sup> 基本层是唯一具有最低限制（每个索引 100 个字段）的 SKU。
 
 <sup>2</sup> S3 HD 当前不支持索引器。 如果亟需此功能，请联系 Azure 支持。
+
+<sup>3</sup> 对于免费层，索引器最长执行时间为 blob 源 3 分钟，所有其他数据源 1 分钟。
 
 ## <a name="document-size-limits"></a>文档大小限制
 | 资源 | 免费 | 基本 | S1 | S2 | S3 | S3 HD |

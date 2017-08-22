@@ -13,27 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: 8b401036d4fa8e6c4e6430433b1641f5cb4ae010
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 5b1362854dbc3b0098718bd2ea3cffb06366000c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/26/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 
 # <a name="app-service-environment-documentation"></a>应用服务环境文档
-应用服务环境是一项 Azure App Service 功能，可提供完全隔离和专用的环境，以便高度安全地运行 Azure App Service 应用。 此功能可托管 [Web 应用][webapps]、[移动应用][mobileapps]、[API 应用][APIApps]和 [Functions][Functions]。
+ Azure 应用服务环境是一项 Azure 应用服务功能，可提供完全隔离和专用的环境，以便高度安全地运行应用服务应用。 此功能可托管 [Web 应用][webapps]、[移动应用][mobileapps]、[API 应用][APIApps]和 [Functions][Functions]。
 
-应用服务环境适用于有以下要求的应用程序工作负荷：
+应用服务环境 (ASE) 适用于有以下要求的应用程序工作负荷：
 
-* 极高的缩放性
-* 隔离和安全的网络访问
+* 极高的缩放性。
+* 隔离和安全网络访问。
 
-客户可以在单个 Azure 区域和多个 Azure 区域创建多个应用服务环境。 因此，应用服务环境适用于水平缩放无状态应用层，支持高 RPS 工作负荷。
+客户可以在单个 Azure 区域和多个 Azure 区域创建多个 ASE。 这种多样性使得 ASE 非常适合用于水平缩放无状态应用程序层，以支持高 RPS 工作负荷。
 
-应用服务环境可在隔离后只运行单个客户的应用程序，并可始终部署到虚拟网络中。 客户可以使用[网络安全组][NSGs]对入站和出站应用程序网络流量进行精细控制。 应用程序也可以通过虚拟网络建立到本地公司资源的高速安全连接。
+ASE 可在隔离后只运行单个客户的应用程序，并可始终部署到 Azure 虚拟网络中。 客户可以使用[网络安全组][NSGs]对入站和出站应用程序网络流量进行精细控制。 应用程序也可以通过虚拟网络建立到本地公司资源的高速安全连接。
 
-应用经常需要访问公司资源，例如内部数据库和 Web 服务。 在应用服务环境中运行的应用可以通过[站点到站点][SiteToSite] VPN 和 [Azure ExpressRoute][ExpressRoute] 连接访问那些允许访问的资源。
+应用经常需要访问公司资源，例如内部数据库和 Web 服务。 在 ASE 上 运行的应用可通过[站点到站点][SiteToSite] VPN 和 [Azure ExpressRoute][ExpressRoute] 连接访问资源。
 
 * [什么是应用服务环境？][Intro]
 * [创建应用服务环境][MakeExternalASE]
@@ -53,8 +53,8 @@ ms.lasthandoff: 06/26/2017
 在 Azure App Service 上运行 Enterprise Web 和移动应用
 >[!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3715/player]
 
-## <a name="asev1"></a>ASEv1 ##
-App Service 环境有两个版本：ASEv1 和 ASEv2。 有关 ASEv1 的信息，请参阅 [App Service 环境 v1 文档][ASEv1README]。
+## <a name="app-service-environment-v1"></a>应用服务环境 v1 ##
+应用服务环境有两个版本：ASEv1 和 ASEv2。 有关 ASEv1 的信息，请参阅 [应用服务环境 v1 文档][ASEv1README]。
 
 
 <!--Links-->

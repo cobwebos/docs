@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 07/21/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 013a3175d5e19689629d1d0ea3b413184e71c485
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: a921eeabe0df6dbc32ab62f74fe585ac2eaf9d42
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>使用用于 Eclipse 的 Azure 工具包为 HDInsight 群集创建 Spark 应用程序
@@ -83,8 +82,8 @@ ms.lasthandoff: 06/07/2017
     ![选择 Spark on HDInsight (Scala) 项目](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-2.png)
 3. 在“新建 HDInsight Scala 项目”对话框中提供以下值，然后单击“下一步”：
    * 输入项目的名称。
-   * 在“JRE”区域中，确保“使用执行环境 JRE”已设置为“JavaSE-1.7”。
-   * 确保 Spark SDK 已设置为你下载 SDK 的位置。 下载位置的链接包含在本文前面的[先决条件](#prerequisites)中。 也可以从包含在此对话框中的链接下载 SDK。
+   * 在“JRE”区域中，确保“使用执行环境 JRE”设置为“JavaSE-1.7”或更高版本。
+   * 确保 Spark SDK 已设置为下载 SDK 的位置。 下载位置的链接包含在本文前面的[先决条件](#prerequisites)中。 也可以从包含在此对话框中的链接下载 SDK。
 
     ![“新建 HDInsight Scala 项目”对话框](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-3.png)
 4.  在下一个对话框中，单击“库”选项卡并保留默认值，然后单击“完成”。 
@@ -116,12 +115,12 @@ ms.lasthandoff: 06/07/2017
             val conf = new SparkConf().setAppName("MyClusterApp")
             val sc = new SparkContext(conf)
    
-            val rdd = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+            val rdd = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
    
             //find the rows that have only one digit in the seventh column in the CSV
             val rdd1 =  rdd.filter(s => s.split(",")(6).length() == 1)
    
-            rdd1.saveAsTextFile("wasbs:///HVACOut")
+            rdd1.saveAsTextFile("wasb:///HVACOut")
           }        
         }
 5. 在 HDInsight Spark 群集中运行该应用程序：
@@ -130,8 +129,8 @@ ms.lasthandoff: 06/07/2017
    2. 在“Spark 提交”对话框中提供以下值，然后单击“提交”：
       
       * 对于“群集名称”，选择要在其上运行应用程序的 HDInsight Spark 群集。
-      * 从 Eclipse 项目或硬盘中选择一个项目。
-      * 在“主类名称”文本框中，输入在代码中指定的对象名称。
+      * 从 Eclipse 项目或硬盘中选择一个项目。 默认值取决于从包资源管理器右键单击的项。
+      * 在“主类名”下拉列表中，提交向导显示所选项目中的所有对象名。 选择或输入要运行的对象的名称。 如果从硬盘中选择项目，需要自行输入主类名。 
       * 由于本示例中的应用程序代码不需要任何命令行参数，也不需要引用 JAR 或文件，因此可以将其余的文本框留空。
         
        ![“Spark 提交”对话框](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-scala-proj-3.png)
@@ -141,6 +140,18 @@ ms.lasthandoff: 06/07/2017
       
 ## <a name="access-and-manage-hdinsight-spark-clusters-by-using-hdinsight-tools-in-azure-toolkit-for-eclipse"></a>使用 Azure Toolkit for Eclipse 中的 HDInsight 工具访问和管理 HDInsight Spark 群集
 可以使用 HDInsight 工具执行各种操作，包括访问作业输出。
+
+### <a name="access-the-job-view"></a>访问作业视图
+1. 在“Azure 资源管理器”中依次展开“HDInsight”和 Spark 群集名称，然后单击“作业”。  
+       ![“作业视图”节点](./media/hdinsight-apache-spark-intellij-tool-plugin/job-view-node.png)
+2. 在右窗格中，“Spark 作业视图”选项卡显示了群集上运行的所有应用程序。 单击想要查看其详细信息的应用程序的名称。
+       ![应用程序详细信息](./media/hdinsight-apache-spark-intellij-tool-plugin/view-job-logs.png)
+3. 将鼠标悬停在作业图上，将显示正在运行的作业的基本信息。 单击作业图，可以看到每个作业生成的阶段图和信息。
+       ![作业阶段详细信息](./media/hdinsight-apache-spark-intellij-tool-plugin/Job-graph-stage-info.png)
+
+4. “日志”选项卡列出包含驱动程序 Stderr、驱动程序 Stdout 和目录信息的常用日志。
+       ![日志详细信息](./media/hdinsight-apache-spark-intellij-tool-plugin/Job-log-info.png)
+5. 也可以单击窗口顶部的相应超链接打开“Spark 历史记录 UI”和“YARN UI”（应用程序级别）。
 
 ### <a name="access-the-storage-container-for-the-cluster"></a>访问群集的存储容器
 1. 在 Azure 资源管理器中展开“HDInsight”根节点，查看可用 HDInsight Spark 群集的列表。
@@ -207,7 +218,9 @@ ms.lasthandoff: 06/07/2017
 
 ### <a name="tools-and-extensions"></a>工具和扩展
 * [使用用于 IntelliJ 的 Azure 工具包创建和提交 Spark Scala 应用程序](hdinsight-apache-spark-intellij-tool-plugin.md)
-* [使用用于 IntelliJ 的 Azure 工具包远程调试 Spark 应用程序](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [使用 Azure Toolkit for IntelliJ 通过 VPN 远程调试 Spark 应用程序](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [使用 Azure Toolkit for IntelliJ 通过 SSH 远程调试 Spark 应用程序](hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [将用于 IntelliJ 的 HDInsight 工具与 Hortonworks 沙盒配合使用](hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
 * [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](hdinsight-apache-spark-zeppelin-notebook.md)
 * [在 HDInsight 的 Spark 群集中可用于 Jupyter 笔记本的内核](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)

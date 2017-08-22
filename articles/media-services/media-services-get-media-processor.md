@@ -1,5 +1,5 @@
 ---
-title: "如何创建媒体处理器 | Microsoft Docs"
+title: "如何使用用于 .NET 的 Azure 媒体服务 SDK 创建媒体处理器 | Microsoft Docs"
 description: "了解如何创建一个媒体处理器组件用来为 Azure 媒体服务编码、转换格式、加密或解密媒体内容。 代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。"
 services: media-services
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 07/31/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 88f6e1da090eb6088e54c6f81d0f83b1737d3c2c
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: cb14bebfaf073cb38bdc1f1718ef3d8c7f6c45fc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>如何：获取媒体处理器实例
@@ -29,23 +29,18 @@ ms.lasthandoff: 04/12/2017
 > 
 
 ## <a name="overview"></a>概述
-在媒体服务中，媒体处理器是完成特定处理任务（例如，对媒体内容进行编码、格式转换、加密或解密）的组件。 通常，当你创建一个任务以便对媒体内容进行编码、加密或格式转换时，就需要创建一个媒体处理器。
+在媒体服务中，媒体处理器是完成特定处理任务（例如，对媒体内容进行编码、格式转换、加密或解密）的组件。 通常，创建一个任务以便对媒体内容进行编码、加密或格式转换时，就需要创建一个媒体处理器。
 
-下表提供了每个可用媒体处理器的名称和说明。
+## <a name="azure-media-processors"></a>Azure 媒体处理器 
 
-| 媒体处理器名称 | 说明 | 更多信息 |
-| --- | --- | --- |
-| 媒体编码器标准版 |为按需编码提供标准功能。 |[简要介绍并比较 Azure 按需媒体编码器](media-services-encode-asset.md) |
-| 媒体编码器高级工作流 |允许你使用媒体编码器高级工作流运行编码任务。 |[简要介绍并比较 Azure 按需媒体编码器](media-services-encode-asset.md) |
-| Azure Media Indexer |使媒体文件和内容可搜索，以及生成隐藏字幕跟踪和关键字。 |[Azure Media Indexer](media-services-index-content.md) |
-| Azure Media Hyperlapse（预览） |使你能够通过视频防抖动功能消除视频中的“晃动”。 也可使将内容制作为可用剪辑的速度加快。 |[Azure Media Hyperlapse](media-services-hyperlapse-content.md) |
-| Azure Media Encoder |已放弃 | |
-| 存储解密 |已放弃 | |
-| Azure 媒体包装器 |已放弃 | |
-| Azure 媒体加密器 |已放弃 | |
+以下主题提供媒体处理器列表：
+
+* [编码媒体处理器](scenarios-and-availability.md#encoding-media-processors)
+* [分析媒体处理器](scenarios-and-availability.md#analytics-media-processors)
 
 ## <a name="get-media-processor"></a>获取媒体处理器
-以下方法演示了如何获取媒体处理器实例。 该代码示例假设使用名为 **_context** 的模块级变量来引用[如何：以编程方式连接到媒体服务](media-services-dotnet-connect-programmatically.md)部分中描述的服务器上下文。
+
+以下方法演示了如何获取媒体处理器实例。 该代码示例假设使用名为 **_context** 的模块级变量来引用[如何：以编程方式连接到媒体服务](media-services-use-aad-auth-to-access-ams-api.md)部分中描述的服务器上下文。
 
     private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
     {

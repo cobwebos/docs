@@ -1,5 +1,5 @@
 ---
-title: "在 HDInsight 中将 Hadoop Pig 与 REST 配合使用 | Microsoft Docs"
+title: "在 HDInsight 中将 Hadoop Pig 与 REST 配合使用 — Azure | Microsoft Docs"
 description: "了解如何使用 REST 在 Azure HDInsight 中的 Hadoop 群集上运行 Pig Latin 作业。"
 services: hdinsight
 documentationcenter: 
@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/03/2017
+ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 1c719a33001654755ec8d83f4bf43ca1fc52954e
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: a86864a779b0de1c6d5669cfbba0f3e1a27f1ff1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="run-pig-jobs-with-hadoop-on-hdinsight-by-using-rest"></a>使用 REST 通过 HDInsight 上的 Hadoop 运行 Pig 作业
@@ -38,7 +37,7 @@ ms.lasthandoff: 05/18/2017
 * Azure HDInsight（HDInsight 上的 Hadoop）群集（基于 Linux 或 Windows）
 
   > [!IMPORTANT]
-  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 * [Curl](http://curl.haxx.se/)
 
@@ -106,7 +105,7 @@ ms.lasthandoff: 05/18/2017
 
 ## <a id="results"></a>查看结果
 
-作业状态更改为“成功”后，可从群集所用的默认存储中检索作业结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置；在本例中，该位置为 `/example/pigcurl`。
+当作业的状态更改为“成功”后，可检索作业结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置；在本例中，该位置为 `/example/pigcurl`。
 
 HDInsight 可以使用 Azure 存储或 Azure Data Lake Store 作为默认数据存储。 有多种方法可访问数据，具体取决于使用哪种存储。 有关详细信息，请参阅[基于 Linux 的 HDInsight 信息](hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store)文档的存储部分。
 

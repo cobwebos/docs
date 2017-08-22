@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 32cbfbc78fbb808ed59142b80602a751f607706d
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: a0e93881e0d75541fc04d7bc736459f8109d1c9f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 
@@ -33,13 +33,13 @@ ms.lasthandoff: 06/29/2017
 |功能|媒体编码器标准版|媒体编码器高级工作流|
 |---|---|---|
 |在编码时应用条件逻辑<br/>（例如，如果输入是 HD，执行 5.1 音频编码）|否|是|
-|隐藏式字幕|否|[是](media-services-premium-workflow-encoder-formats.md#a-idclosedcaptioningasupport-for-closed-captioning)|
+|隐藏式字幕|否|[是](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
 |[Dolby® 专业响度校正](http://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> （使用 Dialogue Intelligence™）|否|是|
 |反交错、反转电视电影|基本|广播质量|
 |检测和删除黑色边框 <br/>（左右黑边、上下黑边）|否|是|
-|生成缩略图|[是](media-services-dotnet-generate-thumbnail-with-mes.md)|[是](media-services-media-encoder-premium-workflow-tutorials.md#a-idthumbnailstomultibitratemp4aadding-thumbnails-to-multibitrate-mp4-output)|
-|剪裁/修整并拼接视频|[是](media-services-advanced-encoding-with-mes.md#a-idtrimvideoatrim-a-video-clipping)|是|
-|音频或视频叠加层|[是](media-services-advanced-encoding-with-mes.md#a-idoverlayacreate-an-overlay)|[是](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-1--overlay-an-image-on-top-of-the-video)|
+|生成缩略图|[是](media-services-dotnet-generate-thumbnail-with-mes.md)|[是](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
+|剪裁/修整并拼接视频|[是](media-services-advanced-encoding-with-mes.md#trim_video)|是|
+|音频或视频叠加层|[是](media-services-advanced-encoding-with-mes.md#overlay)|[是](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-1--overlay-an-image-on-top-of-the-video)|
 |图形叠加层|来自图像源|来自图像和文本源|
 |多语言音轨|受限制|[是](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-2--multiple-audio-language-encoding)|
 
