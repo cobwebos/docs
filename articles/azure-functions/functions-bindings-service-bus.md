@@ -15,7 +15,7 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
-ms.author: chrande; glenga
+ms.author: glenga
 ms.translationtype: HT
 ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
 ms.openlocfilehash: 58b6d5c6ef40891e56ea4811f5e778286bdb8bc3

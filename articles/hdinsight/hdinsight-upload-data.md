@@ -284,9 +284,9 @@ Sqoop 是一种为在 Hadoop 和关系数据库之间传输数据而设计的工
 [azure-powershell]: http://msdn.microsoft.com/library/windowsazure/jj152841.aspx
 
 [azure-storage-client-library]: /develop/net/how-to-guides/blob-storage/
-[azure-create-storage-account]: ../storage/storage-create-storage-account.md
-[azure-azcopy-download]: ../storage/storage-use-azcopy.md
-[azure-azcopy]: ../storage/storage-use-azcopy.md
+[azure-create-storage-account]:../storage/common/storage-create-storage-account.md
+[azure-azcopy-download]:../storage/common/storage-use-azcopy.md
+[azure-azcopy]:../storage/common/storage-use-azcopy.md
 
 [hdinsight-use-sqoop]: hdinsight-use-sqoop.md
 

@@ -20,7 +20,6 @@ ms.openlocfilehash: 8f87f2c0caccded5b0f24052deee6cefaad08013
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/09/2017
 
-
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 应用商店创建虚拟机映像指南
 本文的**步骤 2** 将引导用户完成虚拟硬盘 (VHD) 的准备工作，然后将其部署到 Azure 应用商店。 VHD 是 SKU 的基础。 此过程各有不同，具体取决于提供的是基于 Linux 还是基于 Windows 的 SKU。 本文对这两种方案都做了介绍。 此过程可与[帐户创建和注册][link-acct-creation] 并行执行。
@@ -299,9 +298,9 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 可以通过多种方式生成 SAS URL，以便向 Azure 应用商店共享你的 VHD。
 以下是 3 个建议的工具：
 
-1.    Azure 存储资源管理器
-2.    Microsoft 存储资源管理器
-3.    Azure CLI
+1.  Azure 存储资源管理器
+2.  Microsoft 存储资源管理器
+3.  Azure CLI
 
 **Azure 存储资源管理器（向 Windows 用户推荐）**
 
@@ -332,15 +331,15 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_06.png)
 
-8.    选择容器中的 .vhd 文件后，请单击“安全”选项卡。
+8.  选择容器中的 .vhd 文件后，请单击“安全”选项卡。
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_07.png)
 
-9.    在“Blob 容器安全”对话框中，保留“访问级别”选项卡上的默认值，然后单击“共享访问签名”选项卡。
+9.  在“Blob 容器安全”对话框中，保留“访问级别”选项卡上的默认值，然后单击“共享访问签名”选项卡。
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_08.png)
 
-10.    请遵循以下步骤，为 .vhd 映像生成共享访问签名 URI：
+10. 请遵循以下步骤，为 .vhd 映像生成共享访问签名 URI：
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_09.png)
 
@@ -360,45 +359,45 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
        - 在签名末尾，确保显示“=rl”。 这显示“读取”和“列出”访问权限已成功提供。
        - 在签名中间，确保显示“sr=c”。 这表示你具有容器级访问权限
 
-11.    若要确保生成的共享访问签名 URI 可运行，请单击“在浏览器中测试”。 这应开始下载过程。
+11. 若要确保生成的共享访问签名 URI 可运行，请单击“在浏览器中测试”。 这应开始下载过程。
 
-12.    复制共享访问签名 URI。 这是要粘贴到发布门户中的 URI。
+12. 复制共享访问签名 URI。 这是要粘贴到发布门户中的 URI。
 
-13.    对 SKU 中的每个 VHD 重复步骤 6-10。
+13. 对 SKU 中的每个 VHD 重复步骤 6-10。
 
 **Microsoft Azure 存储资源管理器 (Windows/MAC/Linux)**
 
 下面是使用 Microsoft Azure 存储资源管理器生成 SAS URL 的步骤
 
-1.    从 [http://storageexplorer.com/](http://storageexplorer.com/) 网站下载 Microsoft Azure 存储资源管理器。 转到 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/releasenotes.html)，单击“下载 Windows 版”。
+1.  从 [http://storageexplorer.com/](http://storageexplorer.com/) 网站下载 Microsoft Azure 存储资源管理器。 转到 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/releasenotes.html)，单击“下载 Windows 版”。
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_10.png)
 
-2.    安装之后，打开该应用程序。
+2.  安装之后，打开该应用程序。
 
-3.    单击“添加帐户”。
+3.  单击“添加帐户”。
 
-4.    登录到你的帐户，在订阅中配置 Microsoft Azure 存储资源管理器
+4.  登录到你的帐户，在订阅中配置 Microsoft Azure 存储资源管理器
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_11.png)
 
-5.    转到存储帐户并选择“容器”
+5.  转到存储帐户并选择“容器”
 
-6.    选择“获取共享访问签名...” （通过右键单击“容器”）
+6.  选择“获取共享访问签名...” （通过右键单击“容器”）
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_12.png)
 
-7.    按照以下所示更新“开始时间”、“到期时间”和“权限”
+7.  按照以下所示更新“开始时间”、“到期时间”和“权限”
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_13.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。    **开始时间**：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  **开始时间**：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
 
-    b.保留“数据库类型”设置，即设置为“共享”。    **到期时间**：选择至少为“开始时间”后 3 周的日期。
+    b.保留“数据库类型”设置，即设置为“共享”。  **到期时间**：选择至少为“开始时间”后 3 周的日期。
 
-    c.    **权限**：选择“列出”和“读取”权限
+    c.  **权限**：选择“列出”和“读取”权限
 
-8.    复制容器共享访问签名 URI
+8.  复制容器共享访问签名 URI
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_14.png)
 
@@ -418,21 +417,21 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
     - 在签名中间，确保显示“sp=rl”。 这显示“读取”和“列出”访问权限已成功提供。
     - 在签名中间，确保显示“sr=c”。 这表示你具有容器级访问权限
 
-9.    若要确保生成的共享访问签名 URI 可正常运行，请在浏览器中测试它。 这应开始下载过程
+9.  若要确保生成的共享访问签名 URI 可正常运行，请在浏览器中测试它。 这应开始下载过程
 
-10.    复制共享访问签名 URI。 这是要粘贴到发布门户中的 URI。
+10. 复制共享访问签名 URI。 这是要粘贴到发布门户中的 URI。
 
-11.    对 SKU 中的每个 VHD 重复这些步骤。
+11. 对 SKU 中的每个 VHD 重复这些步骤。
 
 **Azure CLI（推荐用于非 Windows 和持续集成）**
 
 下面是使用 Azure CLI 生成 SAS URL 的步骤
 
-1.    从[此处](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/)下载 Microsoft Azure CLI。 还可以找到用于 **[Windows](http://aka.ms/webpi-azure-cli)** 和 **[MAC OS](http://aka.ms/mac-azure-cli)** 的不同链接。
+1.  从[此处](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/)下载 Microsoft Azure CLI。 还可以找到用于 **[Windows](http://aka.ms/webpi-azure-cli)** 和 **[MAC OS](http://aka.ms/mac-azure-cli)** 的不同链接。
 
-2.    下载后，请安装
+2.  下载后，请安装
 
-3.    使用以下代码创建一个 PowerShell 文件并将它保存在本地
+3.  使用以下代码创建一个 PowerShell 文件并将它保存在本地
 
           $conn="DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<Storage Account Key>"
           azure storage container list vhds -c $conn
@@ -454,21 +453,21 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
           azure storage container list vhds -c $conn
           azure storage container sas create vhds rl 11/02/2016 -c $conn --start 10/25/2016  
 
-4.    在“以管理员身份运行”模式下打开 Powershell 编辑器并打开步骤 #3 中的文件。
+4.  在“以管理员身份运行”模式下打开 Powershell 编辑器并打开步骤 #3 中的文件。
 
-5.    运行脚本，脚本将为你提供容器级别访问权限所对应的 SAS URL
+5.  运行脚本，脚本将为你提供容器级别访问权限所对应的 SAS URL
 
     以下是 SAS 签名的输出，请将突出显示部分复制到记事本中
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_16.png)
 
-6.    现在，你将获得容器级别 SAS URL，并需要在其中添加 VHD 名称。
+6.  现在，你将获得容器级别 SAS URL，并需要在其中添加 VHD 名称。
 
     容器级别 SAS URL #
 
     `https://st20151.blob.core.windows.net/vhds?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
-7.    在 SAS URL 中的容器名称后插入 VHD 名称，如下所示：`https://st20151.blob.core.windows.net/vhds/<VHDName>?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
+7.  在 SAS URL 中的容器名称后插入 VHD 名称，如下所示：`https://st20151.blob.core.windows.net/vhds/<VHDName>?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
     示例：
 
@@ -477,14 +476,14 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
     `https://st20151.blob.core.windows.net/vhds/ TestRGVM201631920152.vhd?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
     - 请确保映像文件名称和“.vhd”均在 URI 中。
-    -    在签名中间，确保显示“sp=rl”。 这显示“读取”和“列出”访问权限已成功提供。
-    -    在签名中间，确保显示“sr=c”。 这表示你具有容器级访问权限
+    -   在签名中间，确保显示“sp=rl”。 这显示“读取”和“列出”访问权限已成功提供。
+    -   在签名中间，确保显示“sr=c”。 这表示你具有容器级访问权限
 
-8.    若要确保生成的共享访问签名 URI 可正常运行，请在浏览器中测试它。 这应开始下载过程
+8.  若要确保生成的共享访问签名 URI 可正常运行，请在浏览器中测试它。 这应开始下载过程
 
-9.    复制共享访问签名 URI。 这是要粘贴到发布门户中的 URI。
+9.  复制共享访问签名 URI。 这是要粘贴到发布门户中的 URI。
 
-10.    对 SKU 中的每个 VHD 重复这些步骤。
+10. 对 SKU 中的每个 VHD 重复这些步骤。
 
 
 ### <a name="53-provide-information-about-the-vm-image-and-request-certification-in-the-publishing-portal"></a>5.3 在发布门户中提供有关 VM 映像的信息并请求认证
@@ -547,8 +546,8 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 [link-pushstaging]:marketplace-publishing-push-to-staging.md
 [link-github-waagent]:https://github.com/Azure/WALinuxAgent
 [link-azure-codeplex]:https://azurestorageexplorer.codeplex.com/
-[link-azure-2]: ../storage/storage-dotnet-shared-access-signature-part-2.md
-[link-azure-1]: ../storage/storage-dotnet-shared-access-signature-part-1.md
+[link-azure-2]:../storage/blobs/storage-dotnet-shared-access-signature-part-2.md
+[link-azure-1]:../storage/common/storage-dotnet-shared-access-signature-part-1.md
 [link-msft-download]:http://www.microsoft.com/download/details.aspx?id=44299
 [link-technet-3]:https://technet.microsoft.com/library/hh846766.aspx
 [link-technet-2]:https://msdn.microsoft.com/library/dn495261.aspx

@@ -76,8 +76,9 @@ ms.lasthandoff: 07/13/2017
 6. 添加以下代码，以便在 IoT 中心的标识注册表中创建设备定义。 如果该设备 ID 在标识注册表中不存在，此代码将创建一个设备，否则将返回现有设备的密钥：
    
     ```
-    var device = new iothub.Device(null);
-    device.deviceId = 'myFirstNodeDevice';
+    var device = {
+      deviceId: 'myFirstNodeDevice'
+    }
     registry.create(device, function(err, deviceInfo, res) {
       if (err) {
         registry.get(device.deviceId, printDeviceInfo);

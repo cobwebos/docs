@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
-ms.author: magoedte;csand
-translationtype: Human Translation
+ms.author: magoedte
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
 ms.openlocfilehash: 4fcfa2e7ec2e8257407026ed4cca0e15fd0b5bb6
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/16/2017
 
 ---
 # <a name="managing-azure-web-app-using-azure-automation"></a>使用 Azure 自动化管理 Azure Web 应用程序
@@ -41,10 +42,5 @@ Azure 自动化提供了具有高可靠性和高可用性的工作流执行引�
 在了解 Azure 自动化 以及如何使用它来管理 Azure Web 应用程序的基础知识后，请使用以下链接了解有关 Azure 自动化的更多信息。
 
 * 请参阅 Azure 自动化[入门教程](../automation/automation-first-runbook-graphical.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -13,13 +13,12 @@ ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2017
-ms.author: rachelap, glenga
+ms.author: glenga
 ms.translationtype: Human Translation
 ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
 ms.openlocfilehash: e6f5798b260c4923452dcc96c18d4839f5c34bfc
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/25/2017
-
 
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>如何在 Azure 门户中管理 Function App 

@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
-ms.author: juliako;mikhegn
-translationtype: Human Translation
+ms.author: juliako
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 71c5a4f1b816fdcfe7ef267c20e6ed42e6cc51e6
 ms.openlocfilehash: 3c3fb275a7c980f71a3a30e6875b9515321bad99
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/01/2017
-
 
 ---
 # <a name="azure-sdk-for-net-29-release-notes"></a>用于 .NET 2.9 的 Azure SDK 发行说明

@@ -11,17 +11,16 @@ keywords: "azure functions, functions 无服务体系结构, 基础结构即代�
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.server: functions
 ms.devlang: multiple
-ms.topic: 
+ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
-ms.author: donnam;glenga
+ms.author: glenga
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
 ms.openlocfilehash: 9458b3b619649d094ddab1638e146571d9268fb0
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/06/2017
-
 
 ---
 
