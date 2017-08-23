@@ -9,14 +9,13 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 05/05/2017
+ms.date: 07/21/2017
 ms.author: markscu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 69e26eaf4aedaf17b58091420430ca996c01cf69
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 9bf0ac322020d8a8453011c3207c1930175db6d3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 
@@ -29,6 +28,8 @@ Azure Batch 提供优先级别虚拟机 (VM) 来降低 Batch 工作负荷的成�
 使用低优先级 VM 的弊端是，当 Azure 中没有多余的容量时，这些 VM 可能会被取代。 出于此原因，低优先级 VM 最适合用于某些类型的工作负荷。 对于作业完成时间很灵活且工作分布在多个 VM 上的批处理和异步处理工作负荷，可以使用低优先级 VM。
 
 低优先级 VM 的成本远远低于专用 VM。 有关价格详细信息，请参阅 [Batch 定价](https://azure.microsoft.com/pricing/details/batch/)。
+
+有关低优先级 VM 的详细介绍，请参阅博文：[Batch computing at a fraction of the price](https://azure.microsoft.com/blog/announcing-public-preview-of-azure-batch-low-priority-vms/)（低价格批量计算）。
 
 > [!IMPORTANT]
 > 低优先级 VM 目前以预览版提供，仅适用于在 Batch 中运行的工作负荷。 
@@ -72,6 +73,9 @@ Azure Batch 提供多种功能来方便你使用低优先级 VM 并从中受益�
 -   Batch 池会自动确定低优先级 VM 的目标数量。 如果 VM 被取代，Batch 将尝试替换丢失的容量并返回到目标。
 
 -   如果任务被中断，Batch 可检测到这种状态，并自动将任务重新排队，以便重新运行。
+
+-   低优先级 VM 具有不同于专用 VM 的核心配额。 
+    低优先级 VM 成本更低，因此低优先级 VM 的配额高于专用 VM 的配额。 有关详细信息，请参阅 [Batch 服务的配额和限制](batch-quota-limit.md#resource-quotas)。    
 
 > [!NOTE]
 > 池分配模式设置为[用户订阅](batch-account-create-portal.md#user-subscription-mode)的 Batch 帐户目前不支持低优先级 VM。
@@ -167,6 +171,22 @@ VM 有时会被取代；如果发生这种情况，Batch 将执行以下操作�
 -   VM 被有效删除，导致 VM 本地存储的所有数据丢失。
 -   池将不断地尝试用完低优先级节点的可用目标数量。 如果找到替代容量，节点将保留其 ID 但会被重新初始化，依次经历“正在创建”和“正在启动”状态，然后供任务计划使用。
 -   Azure 门户将以指标形式提供取代计数。
+
+## <a name="metrics"></a>度量值
+
+[Azure 门户](https://portal.azure.com)提供了低优先级节点的新指标。 这些指标是：
+
+- 低优先级节点计数
+- 低优先级核心计数 
+- 已占用节点计数
+
+在 Azure 门户中查看指标：
+
+1. 在门户中导航到 Batch 帐户，查看此帐户设置。
+2. 从“监视”部分选择“指标”。
+3. 从“可用指标”列表选择所需指标。
+
+![低优先级节点的指标](media/batch-low-pri-vms/low-pri-metrics.png)
 
 ## <a name="next-steps"></a>后续步骤
 

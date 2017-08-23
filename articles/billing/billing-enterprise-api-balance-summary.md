@@ -15,17 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 7af4865a5455c314c1bdeb315fb87b0f92c1ddf9
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: f6b149f0e656d2263705048aa5b644f5bb4a5712
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
-# <a name="reporting-apis-for-enterprise-customers---balance-and-summary-preview"></a>适用于企业客户的报告 API 概述 - 余额和摘要（预览版）
+# <a name="reporting-apis-for-enterprise-customers---balance-and-summary"></a>适用于企业客户的报告 API - 余额和摘要
 
-余额和费用 API 提供了关于余额、新购买、Azure 应用商店服务费用、调整和超额费用信息的每月摘要。
+余额和摘要 API 提供了关于余额、新购买、Azure Marketplace 服务费用、调整和超额费用信息的每月摘要。
 
 
 ##<a name="request"></a>请求 
@@ -33,42 +32,45 @@ ms.lasthandoff: 05/03/2017
 
 |方法 | 请求 URI|
 |-|-|
-|GET| https://consumption.azure.com/v1/enrollments/{enrollmentNumber}/balancesummary|
-|GET| https://consumption.azure.com/v1/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/balancesummary|
+|GET| https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/balancesummary|
+|GET| https://consumption.azure.com/v2/enrollments/ {enrollmentNumber} / balancesummary|
 
+> [!Note]
+> 若要使用预览版 API，请在上述 URL 中将 v2 替换为 v1。
+>
 
 ## <a name="response"></a>响应
 
         {
             "id": "enrollments/100/billingperiods/201507/balancesummaries",
-              "billingPeriodId": 201507,
-              "currencyCode": "USD",
-              "beginningBalance": 0,
-              "endingBalance": 1.1,
-              "newPurchases": 1,
-              "adjustments": 1.1,
-              "utilized": 1.1,
-              "serviceOverage": 1,
-              "chargesBilledSeparately": 1,
-              "totalOverage": 1,
-              "totalUsage": 1.1,
-              "azureMarketplaceServiceCharges": 1,
-              "newPurchasesDetails": [
+            "billingPeriodId": 201507,
+            "currencyCode": "USD",
+            "beginningBalance": 0,
+            "endingBalance": 1.1,
+            "newPurchases": 1,
+            "adjustments": 1.1,
+            "utilized": 1.1,
+            "serviceOverage": 1,
+            "chargesBilledSeparately": 1,
+            "totalOverage": 1,
+            "totalUsage": 1.1,
+            "azureMarketplaceServiceCharges": 1,
+            "newPurchasesDetails": [
                 {
-                  "name": "",
-                  "value": 1
+                "name": "",
+                "value": 1
                 }
-              ],
-              "adjustmentDetails": [
+            ],
+            "adjustmentDetails": [
                 {
-                  "name": "Promo Credit",
-                  "value": 1.1
+                "name": "Promo Credit",
+                "value": 1.1
                 },
                 {
-                  "name": "SIE Credit",
-                  "value": 1.0
+                "name": "SIE Credit",
+                "value": 1.0
                 }
-              ]
+            ]
         }
 
 
@@ -95,6 +97,7 @@ ms.lasthandoff: 05/03/2017
 
 <br/>
 ## <a name="see-also"></a>另请参阅
+
 * [计费周期 API](billing-enterprise-api-billing-periods.md)
 
 * [使用情况详细信息 API](billing-enterprise-api-usage-detail.md) 

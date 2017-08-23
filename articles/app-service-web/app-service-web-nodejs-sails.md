@@ -14,12 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 09ececc567c09ea4e0b77d4d37445b7c232de23c
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: deb9ce304069e6bd92518610a9953fb1f29cb555
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="deploy-a-sailsjs-web-app-to-azure-app-service"></a>将 Sails.js Web 应用部署到 Azure 应用服务
@@ -73,7 +72,7 @@ ms.lasthandoff: 05/31/2017
         logDirectory: iisnode
 
     现在已为 Azure 应用服务用于运行 Node.js 应用的 [iisnode](https://github.com/tjanczuk/iisnode) 服务器启用日志记录。 
-    有关其工作原理的详细信息，请参阅 [如何调试 Azure 应用服务中的 Node.js Web 应用](web-sites-nodejs-debug.md)。
+    有关其工作原理的详细信息，请参阅[如何调试 Azure 应用服务中的 Node.js Web 应用](web-sites-nodejs-debug.md)。
 
 2. 接下来，配置 Sails.js 应用使用 Azure 环境变量。 打开 config/env/production.js 来配置生产环境，并设置 `port` 和 `hookTimeout`：
 
@@ -88,7 +87,7 @@ ms.lasthandoff: 05/31/2017
             ...
         };
 
-    可以在  [Sails.js 文档](http://sailsjs.org/documentation/reference/configuration/sails-config)中找到这些配置设置的文档。
+    可在 [Sails.js 文档](http://sailsjs.org/documentation/reference/configuration/sails-config)中找到这些配置设置的文档。
 
 4. 接下来，对想要使用的 Node.js 版本进行硬编码。 在 package.json 中，添加以下 `engines` 属性，将 Node.js 设置为所需的版本。
 
@@ -156,7 +155,7 @@ ms.lasthandoff: 05/31/2017
 
         az appservice web browse --name <app_name> --resource-group my-sailsjs-app-group
 
-    现在，你应会看到相同的 Sails.js 主页。
+    现在，应会看到相同的 Sails.js 主页。
 
     ![](./media/app-service-web-nodejs-sails/sails-in-azure.png)
 
@@ -188,7 +187,7 @@ ms.lasthandoff: 05/31/2017
 
 1. [创建具有 MongoDB 协议支持的 Cosmos DB 帐户](../documentdb/documentdb-create-mongodb-account.md)。
 2. [创建 Cosmos DB 集合和数据库](../documentdb/documentdb-create-collection.md)。 集合的名称不重要，但从 Sails.js 连接时需要数据库的名称。
-3. [查找 Cosmos DB 数据库的连接信息](../cosmos-db/connect-mongodb-account.md#a-idgetcustomconnectiona-get-the-mongodb-connection-string-to-customize)。
+3. [查找 Cosmos DB 数据库的连接信息](../cosmos-db/connect-mongodb-account.md#GetCustomConnection)。
 2. 从命令行终端安装 MongoDB 适配器：
 
         npm install sails-mongo --save
@@ -245,8 +244,8 @@ ms.lasthandoff: 05/31/2017
             migrate: 'alter'
         },
 
-    借助 `migrate: 'alter'`，可使用数据库迁移功能轻松创建和更新数据库集合或表。 但是，在 Azure（生产）环境中使用 `migrate: 'safe'`，因为 Sails.js 不允许在生产环境中使用 `migrate: 'alter'`（请参阅  [Sails.js 文档](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings)）。
-8. 和往常一样在终端[生成](http://sailsjs.org/documentation/reference/command-line-interface/sails-generate) Sails.js 的[蓝图 API](http://sailsjs.org/documentation/concepts/blueprints)，然后运行 `sails lift` 使用 Sails.js 数据库迁移功能创建数据库。 例如：
+    借助 `migrate: 'alter'`，可使用数据库迁移功能轻松创建和更新数据库集合或表。 但是，在 Azure（生产）环境中使用 `migrate: 'safe'`，因为 Sails.js 不允许在生产环境中使用 `migrate: 'alter'`（请参阅 [Sails.js 文档](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings)）。
+8. 和往常一样在终端[生成](http://sailsjs.org/documentation/reference/command-line-interface/sails-generate) Sails.js 的[蓝图 API](http://sailsjs.org/documentation/concepts/blueprints)，并运行 `sails lift` 使用 Sails.js 数据库迁移功能创建数据库。 例如：
 
          sails generate api mywidget
          sails lift
@@ -274,6 +273,6 @@ ms.lasthandoff: 05/31/2017
      如果 API 返回另一个新条目，那么 Azure Web 应用正在和 Cosmos DB (MongoDB) 数据库通信。
 
 ## <a name="more-resources"></a>更多资源
-* [Azure 应用服务中的 Node.js Web 应用入门](app-service-web-get-started-nodejs.md)
+* [Azure App Service 中的 Node.js Web 应用入门](app-service-web-get-started-nodejs.md)
 * [将 Node.js 模块与 Azure 应用程序一起使用](../nodejs-use-node-modules-azure-apps.md)
 

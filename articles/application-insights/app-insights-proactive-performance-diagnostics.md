@@ -12,24 +12,23 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 0e9c10b77110efe90239863ee603acbd54b17ead
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: dab2e54dedf55f0d9a0b0b4e66d101ed7df94bfa
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
 
 [Application Insights](app-insights-overview.md) 可自动分析 Web 应用程序的性能，并在出现潜在问题时发出警告。 我们会通过邮件将智能检测通知发送给你。
 
-不需要对此功能进行任何特殊设置，只需在应用中配置 Application Insights 即可（在 [ASP.NET](app-insights-asp-net.md)、Java(app-insights-java-get-started.md) 或 [Node.js](app-insights-nodejs.md) 和[网页代码](app-insights-javascript.md)中）。 在应用生成足够多的遥测数据后，此功能将会激活。
+不需要对此功能进行任何特殊设置，只需在应用中配置 Application Insights 即可（在 [ASP.NET](app-insights-asp-net.md)、[Java](app-insights-java-get-started.md) 或 [Node.js](app-insights-nodejs.md) 和[网页代码](app-insights-javascript.md)中）。 在应用生成足够多的遥测数据后，此功能会激活。
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>我何时会收到智能检测通知？
 
-Application Insights 已根据以下依据之一检测到你的应用程序出现性能下降：
+Application Insights 已根据以下依据之一检测到应用程序出现性能下降：
 
 * **响应时间延长** - 应用响应请求的速度比平时要慢。 这种变化可能是在瞬间发生的，例如，最新的部署中出现回归。 也有可能是逐渐发生的，原因可能是内存泄漏。 
 * **依赖项持续时间延长** - 应用对 REST API、数据库或其他依赖项发出调用。 依赖项的响应速度比平时要慢。
@@ -40,7 +39,7 @@ Application Insights 已根据以下依据之一检测到你的应用程序出�
 
 ## <a name="does-my-app-definitely-have-a-problem"></a>收到通知是否意味着我的应用肯定有问题？
 
-不是，通知并不意味着应用肯定有问题。 这只是关于你可能需要密切关注的某些内容的建议。
+不是，通知并不意味着应用肯定有问题。 这只是关于可能需要密切关注的某些内容的建议。
 
 ## <a name="how-do-i-fix-it"></a>如何解决问题？
 
@@ -49,11 +48,11 @@ Application Insights 已根据以下依据之一检测到你的应用程序出�
 
 ![下面是“服务器响应时间延长”检测的示例](./media/app-insights-proactive-diagnostics/server_response_time_degradation.png)
 
-1. **会审**。 通知将显示有多少用户或多少操作受到影响。 这可以帮助你对问题分配优先级。
+1. **会审**。 通知会显示有多少用户或多少操作受到影响。 这可以帮助你对问题分配优先级。
 2. **范围**。 该问题是影响所有流量，还是只影响某些页面？ 它是否只出现在特定的浏览器或位置中？ 可以从通知中获取此信息。
 3. **诊断**。 通常，通知的诊断信息会提示问题的性质。 例如，如果请求率较高时响应速度变慢，则表示服务器或依赖项过载。 
 
-    否则，可在 Application Insights 中打开“性能”边栏选项卡， 在其中可以找到[探查器](app-insights-profiler.md)数据。 如果引发了异常，你还可以尝试[快照调试器](app-insights-snapshot-debugger.md)。
+    否则，可在 Application Insights 中打开“性能”边栏选项卡， 在其中可以找到[探查器](app-insights-profiler.md)数据。 如果引发了异常，还可以尝试[快照调试器](app-insights-snapshot-debugger.md)。
 
 
 
@@ -65,17 +64,17 @@ Application Insights 已根据以下依据之一检测到你的应用程序出�
   
   * 可使用“智能检测”电子邮件中的“取消订阅”链接来停止接收电子邮件通知。
 
-每天只会针对每个 Application Insights 资源发送一封有关智能检测性能异常的电子邮件。 只有当天至少检测到一个新问题时，才会发送电子邮件。 你将不会收到任何重复的消息。 
+每天只会针对每个 Application Insights 资源发送一封有关智能检测性能异常的电子邮件。 只有当天至少检测到一个新问题时，才会发送电子邮件。 将不会收到任何重复的消息。 
 
 ## <a name="faq"></a>常见问题
 
 * *所以你们会查看我的数据？*
-  * 否。 该服务完全是自动的。 只有你会收到通知。 你的数据是[私有](app-insights-data-retention-privacy.md)数据。
+  * 否。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](app-insights-data-retention-privacy.md)数据。
 * *是否分析由 Application Insights 收集的所有数据？*
   * 目前不会。 目前，我们分析请求响应时间、依赖项响应时间和页面加载时间。 其他指标的分析功能正在规划中，今后有望推出。
 
 * 此功能适用于哪些类型的应用程序？
-  * 在生成相应遥测数据的任何应用程序中都可以检测到这些降级。 如果你已在 Web 应用中安装 Application Insights，则可以自动跟踪请求和依赖项。 但在后端服务或其他应用中，如果插入 [TrackRequest()](app-insights-api-custom-events-metrics.md#trackrequest) 或 [TrackDependency](app-insights-api-custom-events-metrics.md#trackdependency) 调用，智能检测将以相同的方式工作。
+  * 在生成相应遥测数据的任何应用程序中都可以检测到这些降级。 如果已在 Web 应用中安装 Application Insights，则可以自动跟踪请求和依赖项。 但在后端服务或其他应用中，如果插入 [TrackRequest()](app-insights-api-custom-events-metrics.md#trackrequest) 或 [TrackDependency](app-insights-api-custom-events-metrics.md#trackdependency) 调用，智能检测以相同的方式工作。
 
 * *是否可以创建自己的异常检测规则或自定义现有的规则？*
 
@@ -90,7 +89,7 @@ Application Insights 已根据以下依据之一检测到你的应用程序出�
 
 
 * *如果不执行任何操作来响应通知，是否会收到提醒？*
-  * 否，你仅会收到关于每个问题的消息一次。 如果问题持续出现，它将在智能检测的源边栏选项卡中更新。
+  * 否，仅会收到关于每个问题的消息一次。 如果问题持续出现，它会在智能检测的源边栏选项卡中更新。
 * *我丢失了电子邮件。在哪里可以找到门户中的通知？*
   * 在应用的 Application Insights 概述中，单击“智能检测”磁贴。 在该磁贴中可以找到过去最长 90 天的所有通知。
 
@@ -98,7 +97,7 @@ Application Insights 已根据以下依据之一检测到你的应用程序出�
 正如你从自己的经验所知，缓慢和失败的响应对于网站用户而言是最大的困扰之一。 因此，必须解决问题。
 
 ### <a name="triage"></a>会审
-首先，这是否很重要？ 如果某个页面的加载速度总是很慢，但仅 1% 的站点用户曾需要查看它，或许你可以考虑更重要的事情。 另一方面，如果只有 1% 的用户打开该页面，但它每次都引发异常，这可能值得调查。
+首先，这是否很重要？ 如果某个页面的加载速度总是很慢，但仅 1% 的站点用户曾需要查看它，或许可以考虑更重要的事情。 另一方面，如果只有 1% 的用户打开该页面，但它每次都引发异常，这可能值得调查。
 
 使用影响声明（受影响的用户或流量百分比）作为一般原则，但请注意这并非全部。 收集其他证据以确认。
 
@@ -111,13 +110,13 @@ Application Insights 已根据以下依据之一检测到你的应用程序出�
 
 * 如果**发送请求时间**过高，则服务器响应速度缓慢，或者请求是包含大量数据的 post 请求。 查看[性能指标](app-insights-web-monitor-performance.md#metrics)以调查响应时间。
 * 设置[依赖项跟踪](app-insights-asp-net-dependencies.md)以查看缓慢是否由于外部服务或数据库引起的。
-* 如果**接收响应**占主导地位，则页面及其依赖部分（JavaScript、CSS、图像等（但并非异步加载的数据））较长。 设置[可用性测试](app-insights-monitor-web-app-availability.md)，并确保设置用于加载依赖部分的选项。 当获得一些结果时，打开某一结果的详细信息，然后展开它以查看不同文件的加载时间。
+* 如果**接收响应**占主导地位，则页面及其依赖部分（JavaScript、CSS、图像等（但并非异步加载的数据））较长。 设置[可用性测试](app-insights-monitor-web-app-availability.md)，并确保设置用于加载依赖部分的选项。 当获得一些结果时，打开某一结果的详细信息，展开它以查看不同文件的加载时间。
 * 高**客户端处理时间**表明脚本运行缓慢。 如果原因并不明显，请考虑添加一些计时代码并发送 trackMetric 调用中的时间。
 
 ### <a name="improve-slow-pages"></a>改进缓慢的页面
-存在其上充满关于改进服务器响应和页面加载时间的建议的 Web，因此我们不尝试在此处全都重复一遍。 下面是一些你可能已经知道的提示，仅供考虑：
+存在其上充满关于改进服务器响应和页面加载时间的建议的 Web，因此我们不尝试在此处全都重复一遍。 以下是一些你可能已经知道的提示，仅供考虑：
 
-* 由于文件较大使得加载缓慢：以异步方式加载脚本和其他部分。 使用脚本捆绑。 将主页拆分为单独加载其数据的多个小组件。 对于长表格，不要发送普通旧 HTML：使用脚本以 JSON 或其他紧凑格式请求数据，然后适当地填充表格。 有很好的框架，可以帮助实现所有这些目标。 （当然，它们还需要大脚本。）
+* 由于文件较大使得加载缓慢：以异步方式加载脚本和其他部分。 使用脚本捆绑。 将主页拆分为单独加载其数据的多个小组件。 对于长表格，不要发送普通旧 HTML：使用脚本以 JSON 或其他紧凑格式请求数据，并适当地填充表格。 有很好的框架，可以帮助实现所有这些目标。 （当然，它们还需要大脚本。）
 * 缓慢的服务器依赖项：考虑组件的地理位置。 例如，如果使用的是 Azure，请确保 Web 服务器和数据库位于同一区域。 查询检索的信息是否超出自己所需的信息？ 缓存或批处理是否有帮助？
 * 容量问题：查看响应时间和请求计数的服务器指标。 如果响应时间的峰值与请求计数的峰值不成比例，则服务器很有可能是外延式。
 
@@ -139,7 +138,7 @@ Application Insights 已根据以下依据之一检测到你的应用程序出�
 
 ## <a name="dependency-duration-degradation"></a>依赖项持续时间延长
 
-新型应用程序越来越多地采用微服务设计方案，在许多情况下这会导致严重依赖于外部服务。 例如，如果应用程序依赖于某个数据平台，或者，即使你的机器人服务是由你自己构建的，它也可能会依赖于某个认知服务提供程序来使机器人能够以更加类似于人类的方式交互，并依赖于某个数据存储服务来让机器人提取解答。  
+新型应用程序越来越多地采用微服务设计方案，在许多情况下这会导致严重依赖于外部服务。 例如，如果应用程序依赖于某个数据平台，或者，即使机器人服务是由自己构建的，它也可能会依赖于某个认知服务提供程序来使机器人能够以更加类似于人类的方式交互，并依赖于某个数据存储服务来让机器人提取解答。  
 
 依赖项降级通知的示例：
 
@@ -161,11 +160,11 @@ Application Insights 已根据以下依据之一检测到你的应用程序出�
 
 Application Insights 可以找到只会影响一部分用户，或者只会在某些情况下影响用户的性能问题。 例如，如果页面在某种浏览器中的加载速度比在其他浏览器中要慢，或者通过特定服务器处理请求时速度较慢，则它会发出通知。 它还可以发现与属性组合关联的问题，例如在某个地理区域中使用特定操作系统的客户端上加载页面的速度缓慢。  
 
-仅通过检查数据，检测类似于这样的异常会很困难，但它们比你想象的更普遍。 通常仅在收到客户投诉时，它们才会显现出来。 到那时就为时已晚：受影响用户已转用你的竞争对手的产品！
+类似于这样的异常现象，仅通过检查数据很难检测，但它们比你想象的更为普遍。 通常仅在收到客户投诉时，它们才会显现出来。 到那时就为时已晚：受影响用户已转用竞争对手的产品！
 
 目前，我们的算法关注页面加载时间、服务器上的请求响应时间和依赖项响应时间。  
 
-你不必设置任何阈值或配置规则。 机器学习和数据挖掘算法用于检测异常模式。
+不必设置任何阈值或配置规则。 机器学习和数据挖掘算法用于检测异常模式。
 
 ![从电子邮件警报，单击链接以在 Azure 中打开诊断报告](./media/app-insights-proactive-performance-diagnostics/03.png)
 
@@ -188,7 +187,8 @@ Application Insights 可以找到只会影响一部分用户，或者只会在�
 * [分析](app-insights-analytics-tour.md)
 * [分析智能诊断](app-insights-analytics-diagnostics.md)
 
-智能检测是完全自动执行的。 但或许你想要设置更多一些警报？
+智能检测是完全自动执行的。 但是或许你想要设置更多的警报？
 
 * [手动配置的指标警报](app-insights-alerts.md)
 * [可用性 Web 测试](app-insights-monitor-web-app-availability.md)
+

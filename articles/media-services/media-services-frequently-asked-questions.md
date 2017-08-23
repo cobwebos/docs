@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 07/31/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
-ms.openlocfilehash: 9a6d772bddc4417004c99f319ec7592d026efdb1
-ms.lasthandoff: 01/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 1f0c5cf93b44433aab2163548de916626a7fa480
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="frequently-asked-questions"></a>常见问题
@@ -30,13 +30,13 @@ ms.lasthandoff: 01/27/2017
 
 答：编码任务和索引任务的保留单位相同。 请遵循[如何缩放编码保留单位](media-services-scale-media-processing-overview.md)中的说明。 **请注意**，保留单位类型不影响索引器性能。
 
-问：我已经上载、编码并发布了视频。 为什么在我尝试对视频进行流式处理时，它不播放？
+问：我已经上传、编码并发布了视频。 为什么在我尝试对视频进行流式处理时，它不播放？
 
-答：最常见的原因之一是，你没有“正在运行”状态下从其播放的流式处理终结点。  
+答：最常见的原因之一是，没有“正在运行”状态下从其播放的流式处理终结点。  
 
 问：我是否可以在实时流上进行合成操作？
 
-答：Azure 媒体服务当前不提供实时流上的合成操作，因此你需要在计算机上进行预合成。
+答：Azure 媒体服务当前不提供实时流上的合成操作，因此需要在计算机上进行预合成。
 
 问：我是否可以将 Azure CDN 与实时流式处理一起使用？
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 01/27/2017
 
 问：Azure 媒体服务是否支持存储图像？
 
-答：如果需要存储 JPEG 或 PNG 图像，应将其存储在 Azure Blob 存储中。 除非你想要将图像与你的视频或音频资产相关联，否则将图像放入媒体服务帐户毫无益处。 或者，你可能需要在视频编码器中将图像用作叠加。媒体编码器标准版支持在视频上叠加图像，且它将 JPEG 和 PNG 列为支持的输入格式。 有关详细信息，请参阅[创建覆盖](media-services-advanced-encoding-with-mes.md#overlay)。
+答：如果需要存储 JPEG 或 PNG 图像，应将其存储在 Azure Blob 存储中。 除非你想要将图像与视频或音频资产相关联，否则将图像放入媒体服务帐户毫无益处。 或者，可能需要在视频编码器中将图像用作叠加。Media Encoder Standard 支持在视频上叠加图像，且它将 JPEG 和 PNG 列为支持的输入格式。 有关详细信息，请参阅[创建覆盖](media-services-advanced-encoding-with-mes.md#overlay)。
 
 问：如何将资产从一个媒体服务帐户复制到另一个媒体服务帐户？
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 01/27/2017
 
 问：如何使用 REST 进行连接？
 
-答：成功连接到 https://media.windows.net 后，将收到指定另一个媒体服务 URI 的 301 重定向。 必须按[使用 REST API 连接到媒体服务](media-services-rest-connect-programmatically.md)中所述，对新的 URI 执行后续调用。
+答：有关如何连接到 AMS API 的信息，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 成功连接到 https://media.windows.net 后，将收到指定另一个媒体服务 URI 的 301 重定向。 必须对这个新 URI 进行后续调用。 
 
 问：如何在编码过程中旋转视频。
 
@@ -74,8 +74,6 @@ ms.lasthandoff: 01/27/2017
     "Codecs": [
 
     ...
-
-
 
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径

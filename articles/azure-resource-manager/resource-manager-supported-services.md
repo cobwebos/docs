@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/12/2017
+ms.date: 07/25/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 09537fb4058f1fd27469fb9386bc52d938c027ec
+ms.translationtype: HT
+ms.sourcegitcommit: a678700884b612cad6281eb8f3b74ce63a0ebb69
+ms.openlocfilehash: 6a9128f45d4199404019cee594842d59c7f1aaf3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 
@@ -55,7 +55,7 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-默认情况下，会自动注册多个资源提供程序；但是，你可能需要手动注册某些资源提供程序。 若要注册资源提供程序，请提供命名空间：
+通过注册资源提供程序来配置订阅，以供资源提供程序使用。 注册的作用域始终是订阅。 默认情况下，将自动注册许多资源提供程序。 但可能需要手动注册某些资源提供程序。 若要注册资源提供程序，必须具备为资源提供程序执行 `/register/action` 操作的权限。 此操作包含在“参与者”和“所有者”角色中。
 
 ```powershell
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
@@ -69,6 +69,8 @@ RegistrationState : Registering
 ResourceTypes     : {batchAccounts, operations, locations, locations/quotas}
 Locations         : {West Europe, East US, East US 2, West US...}
 ```
+
+当订阅中仍有某个资源提供程序的资源类型时，不能注销该资源提供程序。
 
 若要查看特定资源提供程序的信息，请使用：
 
@@ -157,13 +159,15 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-默认情况下，会自动注册多个资源提供程序；但是，你可能需要手动注册某些资源提供程序。 若要注册资源提供程序，请提供命名空间：
+通过注册资源提供程序来配置订阅，以供资源提供程序使用。 注册的作用域始终是订阅。 默认情况下，将自动注册许多资源提供程序。 但可能需要手动注册某些资源提供程序。 若要注册资源提供程序，必须具备为资源提供程序执行 `/register/action` 操作的权限。 此操作包含在“参与者”和“所有者”角色中。
 
 ```azurecli
 az provider register --namespace Microsoft.Batch
 ```
 
 这将返回“注册正在进行中”的信息。
+
+当订阅中仍有某个资源提供程序的资源类型时，不能注销该资源提供程序。
 
 若要查看特定资源提供程序的信息，请使用：
 
@@ -255,9 +259,11 @@ West US
 
 ![显示资源提供程序](./media/resource-manager-supported-services/show-resource-providers.png)
 
-默认情况下，会自动注册多个资源提供程序；但是，你可能需要手动注册某些资源提供程序。 若要注册资源提供程序，请选择“注册”。
+通过注册资源提供程序来配置订阅，以供资源提供程序使用。 注册的作用域始终是订阅。 默认情况下，将自动注册许多资源提供程序。 但可能需要手动注册某些资源提供程序。 若要注册资源提供程序，必须具备为资源提供程序执行 `/register/action` 操作的权限。 此操作包含在“参与者”和“所有者”角色中。 若要注册资源提供程序，请选择“注册”。
 
 ![注册资源提供程序](./media/resource-manager-supported-services/register-provider.png)
+
+当订阅中仍有某个资源提供程序的资源类型时，不能注销该资源提供程序。
 
 若要查看特定资源提供程序的信息，请选择“更多服务”。
 

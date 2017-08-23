@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 74982663b0501d3a5c7973a5f383e14e0f964696
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 0bd9ec41761c9ce575f3bcf4d1f8e8578b83e01c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>用于 Azure Resource Manager 模板的数组和对象函数 
@@ -34,6 +33,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 * [empty](#empty)
 * [first](#first)
 * [intersection](#intersection)
+* [json](#json)
 * [last](#last)
 * [length](#length)
 * [min](#min)
@@ -179,7 +179,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 上面具有默认值的示例的输出为：
 
-| Name | 类型 | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | stringOutput | String | default |
 | intOutput | int | 1 |
@@ -350,7 +350,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 上面具有默认值的示例的输出为：
 
-| Name | 类型 | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -420,7 +420,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 上面具有默认值的示例的输出为：
 
-| Name | 类型 | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | stringArray | Array | ["a", "b", "c"] |
 | intArray | Array | [1, 2, 3] |
@@ -488,7 +488,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 上面具有默认值的示例的输出为：
 
-| Name | 类型 | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -542,7 +542,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 上面具有默认值的示例的输出为：
 
-| Name | 类型 | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | String | one |
 | stringOutput | String | O |
@@ -609,10 +609,57 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 上面具有默认值的示例的输出为：
 
-| Name | 类型 | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | objectOutput | 对象 | {"one": "a", "three": "c"} |
 | arrayOutput | Array | ["two", "three"] |
+
+
+## <a name="json"></a>json
+`json(arg1)`
+
+返回一个 JSON 对象。
+
+### <a name="parameters"></a>parameters
+
+| 参数 | 必选 | 类型 | 说明 |
+|:--- |:--- |:--- |:--- |
+| arg1 |是 |字符串 |要转换为 JSON 的值。 |
+
+
+### <a name="return-value"></a>返回值
+
+指定字符串中的 JSON 对象，或指定 null 时的空对象。
+
+### <a name="example"></a>示例
+
+以下示例演示如何对数组和对象使用 intersection：
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+    ],
+    "outputs": {
+        "jsonOutput": {
+            "type": "object",
+            "value": "[json('{\"a\": \"b\"}')]"
+        },
+        "nullOutput": {
+            "type": "bool",
+            "value": "[empty(json('null'))]"
+        }
+    }
+}
+```
+
+上面具有默认值的示例的输出为：
+
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| jsonOutput | 对象 | {"a": "b"} |
+| nullOutput | 布尔 | True |
 
 <a id="last" />
 
@@ -662,7 +709,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 上面具有默认值的示例的输出为：
 
-| Name | 类型 | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | String | three |
 | stringOutput | String | e |
@@ -837,7 +884,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 上面具有默认值的示例的输出为：
 
-| Name | 类型 | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | int | 5 |
 | intOutput | int | 5 |
@@ -890,7 +937,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 上面具有默认值的示例的输出为：
 
-| Name | 类型 | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | rangeOutput | Array | [5, 6, 7] |
 
@@ -1027,7 +1074,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 上面具有默认值的示例的输出为：
 
-| Name | 类型 | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
 | stringOutput | String | on |
@@ -1094,14 +1141,14 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 上面具有默认值的示例的输出为：
 
-| Name | 类型 | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | objectOutput | 对象 | {"one": "a", "two": "b", "three": "c", "four": "d", "five": "e"} |
 | arrayOutput | Array | ["one", "two", "three", "four"] |
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure Resource Manager 模板中各部分的说明，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
-* 若要合并多个模板，请参阅 [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md)（将链接的模板与 Azure Resource Manager 配合使用）。
+* 要合并多个模板，请参阅 [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md)（将链接的模板与 Azure Resource Manager 配合使用）。
 * 若要在创建资源类型时迭代指定的次数，请参阅 [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)（在 Azure Resource Manager 中创建多个资源实例）。
 * 若要查看如何部署已创建的模板，请参阅 [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md)（使用 Azure Resource Manager 模板部署应用程序）。
 

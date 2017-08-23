@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: a3f2e8634981ac158312e6b9700db92415e9e6c5
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: b5a1edd08819e82437c5b22d8eb131665d7c9645
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>执行 Azure Cosmos DB 缩放和性能测试
@@ -28,7 +27,7 @@ ms.lasthandoff: 06/20/2017
 
 要针对其 Cosmos DB 工作负荷实施性能测试套件或针对高性能应用程序方案评估 Cosmos DB 的开发人员可以参考本文。 本文重点演示隔离的数据库性能测试，但也提供适用于生产应用程序的最佳实践。
 
-阅读本文后，你将能够回答以下问题：   
+阅读本文后，能够回答以下问题：   
 
 * 在哪里可以找到可用于 Cosmos DB 性能测试的示例 .NET 客户端应用程序？ 
 * 如何从客户端应用程序实现 Cosmos DB 的高吞吐量级别？
@@ -43,18 +42,18 @@ ms.lasthandoff: 06/20/2017
 如果正在寻找用于提高 Cosmos DB 性能的客户端配置选项，请参阅 [Azure Cosmos DB 性能提示](performance-tips.md)。
 
 ## <a name="run-the-performance-testing-application"></a>运行性能测试应用程序
-最快的入门方法是根据以下步骤中所述，编译并运行下面的 .NET 示例。 你也可以查看源代码，然后在自己的客户端应用程序中实施类似的配置。
+最快的入门方法是根据以下步骤中所述，编译并运行下面的 .NET 示例。 也可以查看源代码，然后在自己的客户端应用程序中实施类似的配置。
 
 **步骤 1：**从 [Azure Cosmos DB 性能测试示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)下载项目，或创建 GitHub 存储库分支。
 
 **步骤 2：**在 App.config 中修改 EndpointUrl、AuthorizationKey、CollectionThroughput 和 DocumentTemplate（可选）的设置。
 
 > [!NOTE]
-> 为集合预配高吞吐量之前，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)以估算每个集合的成本。 Cosmos DB 根据存储和吞吐量单独按小时计费，因此你可以通过在测试后删除或降低 DocumentDB 集合的吞吐量来节省成本。
+> 为集合预配高吞吐量之前，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)以估算每个集合的成本。 Azure Cosmos DB 根据存储和吞吐量单独按小时计费，因此可通过在测试后消除或减少 Azure Cosmos DB 集合的吞吐量来节省成本。
 > 
 > 
 
-**步骤 3：**从命令行编译并运行控制台应用。 你应会看到如下输出：
+**步骤 3：**从命令行编译并运行控制台应用。 应会看到如下输出：
 
     Summary:
     ---------------------------------------------------------------------
@@ -102,7 +101,7 @@ ms.lasthandoff: 06/20/2017
 
 **步骤 4（如有必要）：**工具报告的吞吐量（RU/秒）应该等于或大于预配的集合吞吐量。 如果情况并非如此，以较小的增量提高 DegreeOfParallelism 可帮助达到该限制。 如果客户端应用的吞吐量达到持平状态，则在相同或不同计算机上启动多个应用程序实例可帮助在各个不同的实例中达到预配的限制。 如果需要此步骤的帮助，请撰写电子邮件并将其发送到 askcosmosdb@microsoft.com 或填写来自 [Azure 门户](https://portal.azure.com)的支持票证。
 
-应用处于运行状态后，可以尝试不同的[编制索引策略](indexing-policies.md)和[一致性级别](consistency-levels.md)，以了解它们对吞吐量和延迟的影响。 你也可以查看源代码，然后在自己的测试套件或生产应用程序中实施类似的配置。
+应用处于运行状态后，可以尝试不同的[编制索引策略](indexing-policies.md)和[一致性级别](consistency-levels.md)，以了解它们对吞吐量和延迟的影响。 也可以查看源代码，然后在自己的测试套件或生产应用程序中实施类似的配置。
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何使用 .NET 控制台应用对 Cosmos DB 执行性能和缩放测试。 有关使用 Azure Cosmos DB 的其他信息，请参阅下面的链接。

@@ -1,14 +1,13 @@
 --- 
 layout: HubPage
 hide_bc: true
-experiment_id: 81ba5f65-59fb-4d
 title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: b2bac33c6613cc96942acef4df3b8a0f579c9795
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 282e1da4a5ec8ccb3c6119c6de6fd37b83bbb71e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 <div id="main" class="v2">
@@ -62,7 +61,7 @@ ms.lasthandoff: 05/25/2017
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <span class="likeAnH3">适用于 Azure 的免费 PluralSight 视频培训</span>
+                                    <span class="likeAnH3">适用于 Azure 的免费 Pluralsight 视频培训</span>
                                 </div>
                             </div>
                         </div>
@@ -366,7 +365,7 @@ ms.lasthandoff: 05/25/2017
                                         <li>
                                             <a href="/azure/logic-apps/">
                                                 <img src="media/index/LogicApp.svg" alt="" />
-                                                <p>Logic Apps</p>
+                                                <p>逻辑应用</p>
                                             </a>
                                         </li>
                                         <li>
@@ -3004,7 +3003,7 @@ ms.lasthandoff: 05/25/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure 资源运行状况</h3>
-                                                    <p>在 Azure 问题影响你的资源时帮助你进行诊断并获得支持</p>
+                                                    <p>在 Azure 问题影响资源时帮助你进行诊断并获得支持</p>
                                                 </div>
                                             </div>
                                         </div>

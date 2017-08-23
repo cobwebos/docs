@@ -12,17 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/07/2017
+ms.date: 07/26/2017
 ms.author: bwren
-ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 6dbe7713c48a60974f1026dddc8ee9d2aeb01708
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: bf237a837297cb8f1ab3a3340139133adcd2b244
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 07/28/2017
 
 ---
-# <a name="find-data-using-log-searches"></a>使用日志搜索查找数据
+# <a name="find-data-using-log-searches-in-log-analytics"></a>在 Log Analytics 中使用日志搜索查找数据
+
+>[!NOTE]
+> 本文介绍 Log Analytics 中使用当前查询语言的日志搜索。  如果工作区已升级到[新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则应参考[了解 Log Analytics 中的日志搜索（新）](log-analytics-log-search-new.md)。
+
 
 Log Analytics 的核心是日志搜索功能，该功能允许你将环境内来自多个源的任意计算机数据进行组合和关联。 日志搜索还提供解决方案，以提供围绕某个特定问题区域的度量值。
 
@@ -274,7 +277,7 @@ Measure 是 Log Analytics 搜索中功能最全的命令之一。 它允许向�
 ### <a name="measure-count"></a>Measure count()
 要使用的第一个统计函数是 *count()* 函数，它也是最容易理解的函数之一。
 
-来自任意搜素查询的结果（例如 `Type=Event`）在搜索结果左侧显示筛选器（也称为 Facet）。 筛选器根据执行的搜索中结果的给定字段显示值的分布。
+来自任意搜索查询的结果（例如 `Type=Event`）在搜索结果左侧显示筛选器（也称为 Facet）。 筛选器根据执行的搜索中结果的给定字段显示值的分布。
 
 ![search measure count](./media/log-analytics-log-searches/oms-search-measure-count01.png)
 

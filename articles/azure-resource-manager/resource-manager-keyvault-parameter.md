@@ -12,141 +12,192 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/09/2016
+ms.date: 07/25/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 0bf872a44b8ed7cae53d2659aa7be878902130e9
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 1ca72599e67e79d42a3d430dbb13e89ea7265334
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="use-key-vault-to-pass-secure-parameter-value-during-deployment"></a>在部署过程中使用密钥保管库传递安全参数值
 
 在部署过程中，需要将安全值（例如密码）作为参数传递时，可从 [Azure 密钥保管库](../key-vault/key-vault-whatis.md)检索值。 通过引用参数文件中的密钥保管库和密钥来检索值。 值永远不会公开，因为仅引用其密钥保管库 ID。 不需要每次部署资源时手动输入机密的值。 密钥保管库与部署到的资源组不需要位于同一订阅中。 引用密钥保管库时，需要包括订阅 ID。
 
-本主题说明如何创建密钥保管库和密钥、为 Resource Manager 模板配置密钥访问权限，以及将密钥作为参数传递。 如果已经拥有密钥保管库和密钥，但需要检查模板和用户访问权限，请转到[启用密钥访问权限](#enable-access-to-the-secret)部分。 如果已经拥有密钥保管库和密钥，并确定已针对模板和用户访问权限进行配置，请转到[通过静态 ID 引用密钥](#reference-a-secret-with-static-id)部分。 
+创建密钥保管库时，将 enabledForTemplateDeployment 属性设置为 true。 通过将该值设置为 true，在部署过程中可允许来自资源管理器模板的访问。  
 
 ## <a name="deploy-a-key-vault-and-secret"></a>部署密钥保管库和机密
 
-可通过 Resource Manager 模板部署密钥保管库和密钥。 有关示例，请参阅[密钥保管库模板](resource-manager-template-keyvault.md)和[密钥保管库密钥模板](resource-manager-template-keyvault-secret.md)。 创建密钥保管库时，将 **enabledForTemplateDeployment** 属性设置为 **true**，以便可以从其它 Resource Manager 模板引用密钥保管库。 
+若要创建密钥保管库和机密，请使用 Azure CLI 或 PowerShell。 请注意，已为模板部署启用密钥保管库。 
 
-或者，可通过 Azure 门户创建密钥保管库和密钥。 
+对于 Azure CLI，请使用：
 
-1. 选择“新建” -> “安全性 + 标识” -> “密钥保管库”。
+```azurecli
+vaultname={your-unique-vault-name}
+password={password-value}
 
-   ![创建新的密钥保管库](./media/resource-manager-keyvault-parameter/new-key-vault.png)
+az group create --name examplegroup --location 'South Central US'
+az keyvault create --name $vaultname --resource-group examplegroup --location 'South Central US' --enabled-for-template-deployment true
+az keyvault secret set --vault-name $vaultname --name examplesecret --value $password
+```
 
-2. 为密钥保管库提供值。 暂时可以忽略“访问策略”和“高级访问策略”设置。 相关部分会介绍这些设置。 选择“创建” 。
+对于 PowerShell，请使用：
 
-   ![设置密钥保管库](./media/resource-manager-keyvault-parameter/create-key-vault.png)
+```powershell
+$vaultname = "{your-unique-vault-name}"
+$password = "{password-value}"
 
-3. 现在拥有一个密钥保管库。 选择该密钥保管库。
-
-4. 在密钥保管库边栏选项卡中，选择“密钥”。
-
-   ![选择密钥](./media/resource-manager-keyvault-parameter/select-secret.png)
-
-5. 选择“添加”。
-
-   ![选择添加](./media/resource-manager-keyvault-parameter/add-secret.png)
-
-6. 选择“手动”作为上传选项。 为密钥提供名称和值。 选择“创建” 。
-
-   ![提供密钥](./media/resource-manager-keyvault-parameter/provide-secret.png)
-
-现已创建密钥保管库和密钥。
+New-AzureRmResourceGroup -Name examplegroup -Location "South Central US"
+New-AzureRmKeyVault -VaultName $vaultname -ResourceGroupName examplegroup -Location "South Central US" -EnabledForTemplateDeployment
+$secretvalue = ConvertTo-SecureString $password -AsPlainText -Force
+Set-AzureKeyVaultSecret -VaultName $vaultname -Name "examplesecret" -SecretValue $secretvalue
+```
 
 ## <a name="enable-access-to-the-secret"></a>启用密钥访问权限
 
-无论使用的是新密钥保管库还是现有密钥保管库，请确保部署模板的用户可以访问密钥。 部署引用某个密钥的模板的用户必须具有密钥保管库的 `Microsoft.KeyVault/vaults/deploy/action` 权限。 [所有者](../active-directory/role-based-access-built-in-roles.md#owner)和[参与者](../active-directory/role-based-access-built-in-roles.md#contributor)角色均应授予该权限。 还可以创建授予该权限的[自定义角色](../active-directory/role-based-access-control-custom-roles.md)，并将用户添加到该角色。 此外，必须授予 Resource Manager 在部署过程中访问密钥保管库的能力。
+无论使用的是新密钥保管库还是现有密钥保管库，请确保部署模板的用户可以访问密钥。 部署引用某个密钥的模板的用户必须具有密钥保管库的 `Microsoft.KeyVault/vaults/deploy/action` 权限。 [所有者](../active-directory/role-based-access-built-in-roles.md#owner)和[参与者](../active-directory/role-based-access-built-in-roles.md#contributor)角色均应授予该权限。 还可以创建授予该权限的[自定义角色](../active-directory/role-based-access-control-custom-roles.md)，并将用户添加到该角色。 有关向角色添加用户的信息，请参阅[在 Azure Active Directory 中向用户分配管理员角色](../active-directory/active-directory-users-assign-role-azure-portal.md)。
 
-可通过门户检查或执行这些步骤。
-
-1. 选择“访问控制 (IAM)”。
-
-   ![选择访问控制](./media/resource-manager-keyvault-parameter/select-access-control.png)
-
-2. 如果想要用于部署模板的帐户尚不是所有者或参与者（或尚未添加到授予 `Microsoft.KeyVault/vaults/deploy/action` 权限的自定义角色），请选择“添加”
-
-   ![添加用户](./media/resource-manager-keyvault-parameter/add-user.png)
-
-3. 选择参与者或所有者角色，然后搜索要分配到该角色的标识。 选择“确定”完成将标识添加到角色的操作。
-
-   ![添加用户](./media/resource-manager-keyvault-parameter/search-user.png)
-
-4. 若要在部署过程中通过模板启用访问权限，请选择“高级访问控制”。 选择“启用对 Azure Resource Manager 的访问以进行模板部署”选项。
-
-   ![启用模板访问权限](./media/resource-manager-keyvault-parameter/select-template-access.png)
 
 ## <a name="reference-a-secret-with-static-id"></a>通过静态 ID 引用机密
 
-从用于将值传递到模板的**参数文件（而不是模板）**内部引用密钥。 你可以通过传递密钥保管库的资源标识符和机密的名称来引用机密。 在下面示例中，密钥保管库机密必须已存在，而且为其资源 ID 提供了静态值。
+接收密钥保管库机密的模板与任何其他模板一样。 这是因为在参数文件（而不是在模板）中引用密钥保管库。 例如，以下模板部署包括管理员密码的 SQL 数据库。 密码参数设置为安全字符串。 但是，该模板未指定该值的来源。
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-      "sqlsvrAdminLoginPassword": {
-        "reference": {
-          "keyVault": {
-            "id": "/subscriptions/{guid}/resourceGroups/{group-name}/providers/Microsoft.KeyVault/vaults/{vault-name}"
-          },
-          "secretName": "adminPassword"
+        "administratorLogin": {
+            "type": "string"
+        },
+        "administratorLoginPassword": {
+            "type": "securestring"
+        },
+        "collation": {
+            "type": "string"
+        },
+        "databaseName": {
+            "type": "string"
+        },
+        "edition": {
+            "type": "string"
+        },
+        "requestedServiceObjectiveId": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "maxSizeBytes": {
+            "type": "string"
+        },
+        "serverName": {
+            "type": "string"
+        },
+        "sampleName": {
+            "type": "string",
+            "defaultValue": ""
         }
-      },
-      "sqlsvrAdminLogin": {
-        "value": "exampleadmin"
-      }
+    },
+    "resources": [
+        {
+            "apiVersion": "2015-05-01-preview",
+            "location": "[parameters('location')]",
+            "name": "[parameters('serverName')]",
+            "properties": {
+                "administratorLogin": "[parameters('administratorLogin')]",
+                "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+                "version": "12.0"
+            },
+            "resources": [
+                {
+                    "apiVersion": "2014-04-01-preview",
+                    "dependsOn": [
+                        "[concat('Microsoft.Sql/servers/', parameters('serverName'))]"
+                    ],
+                    "location": "[parameters('location')]",
+                    "name": "[parameters('databaseName')]",
+                    "properties": {
+                        "collation": "[parameters('collation')]",
+                        "edition": "[parameters('edition')]",
+                        "maxSizeBytes": "[parameters('maxSizeBytes')]",
+                        "requestedServiceObjectiveId": "[parameters('requestedServiceObjectiveId')]",
+                        "sampleName": "[parameters('sampleName')]"
+                    },
+                    "type": "databases"
+                },
+                {
+                    "apiVersion": "2014-04-01-preview",
+                    "dependsOn": [
+                        "[concat('Microsoft.Sql/servers/', parameters('serverName'))]"
+                    ],
+                    "location": "[parameters('location')]",
+                    "name": "AllowAllWindowsAzureIps",
+                    "properties": {
+                        "endIpAddress": "0.0.0.0",
+                        "startIpAddress": "0.0.0.0"
+                    },
+                    "type": "firewallrules"
+                }
+            ],
+            "type": "Microsoft.Sql/servers"
+        }
+    ]
+}
+```
+
+现在，为上述模板创建参数文件。 在参数文件中，指定匹配模板中的参数名称的参数。 对于参数值，请从密钥保管库中引用机密。 可以通过传递密钥保管库的资源标识符和机密的名称来引用机密。 在下面示例中，密钥保管库机密必须已存在，而且为其资源 ID 提供了静态值。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "administratorLogin": {
+            "value": "exampleadmin"
+        },
+        "administratorLoginPassword": {
+            "reference": {
+              "keyVault": {
+                "id": "/subscriptions/{guid}/resourceGroups/examplegroup/providers/Microsoft.KeyVault/vaults/{vault-name}"
+              },
+              "secretName": "examplesecret"
+            }
+        },
+        "collation": {
+            "value": "SQL_Latin1_General_CP1_CI_AS"
+        },
+        "databaseName": {
+            "value": "exampledb"
+        },
+        "edition": {
+            "value": "Standard"
+        },
+        "location": {
+            "value": "southcentralus"
+        },
+        "maxSizeBytes": {
+            "value": "268435456000"
+        },
+        "requestedServiceObjectiveId": {
+            "value": "455330e1-00cd-488b-b5fa-177c226f28b7"
+        },
+        "sampleName": {
+            "value": ""
+        },
+        "serverName": {
+            "value": "exampleserver"
+        }
     }
 }
 ```
 
-在模板中，接受密钥的参数应是 **securestring**。 以下示例显示了某个模板的相关部分，该模板将部署需要管理员密码的 SQL Server。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "sqlsvrAdminLogin": {
-            "type": "string",
-            "minLength": 4
-        },
-        "sqlsvrAdminLoginPassword": {
-            "type": "securestring"
-        },
-        ...
-    },
-    "resources": [
-        {
-          "name": "[variables('sqlsvrName')]",
-          "type": "Microsoft.Sql/servers",
-          "location": "[resourceGroup().location]",
-          "apiVersion": "2014-04-01-preview",
-          "properties": {
-              "administratorLogin": "[parameters('sqlsvrAdminLogin')]",
-              "administratorLoginPassword": "[parameters('sqlsvrAdminLoginPassword')]"
-          },
-          ...
-        }
-    ],
-    "variables": {
-        "sqlsvrName": "[concat('sqlsvr', uniqueString(resourceGroup().id))]"
-    },
-    "outputs": { }
-}
-```
-
-
-
 ## <a name="reference-a-secret-with-dynamic-id"></a>通过动态 ID 引用机密
 
-上一节介绍了如何传递密钥保管库机密的静态资源 ID。 但是，在某些情况下，你需要引用随当前部署而变的密钥保管库机密。 在这种情况下，不能在参数文件中对资源 ID 进行硬编码。 遗憾的是，不能在参数文件中动态生成资源 ID，因为参数文件中不允许模板表达式。
+上一节介绍了如何传递密钥保管库机密的静态资源 ID。 但是，在某些情况下，需要引用随当前部署而变的密钥保管库机密。 在这种情况下，不能在参数文件中对资源 ID 进行硬编码。 遗憾的是，不能在参数文件中动态生成资源 ID，因为参数文件中不允许模板表达式。
 
-若要动态生成密钥保管库机密的资源 ID，必须将需要机密的资源迁移到嵌套式模板。 需要在主模板中添加嵌套式模板，然后传入包含动态生成的资源 ID 的参数。
+要动态生成密钥保管库机密的资源 ID，必须将需要机密的资源迁移到嵌套式模板。 在主模板中添加嵌套式模板，然后传入包含动态生成的资源 ID 的参数。
 
 ```json
 {

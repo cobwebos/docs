@@ -11,13 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
-ms.openlocfilehash: 9b26ade6c3a90e6ebe49bfbc6f3fa801dc7f8d20
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: d8b466caba7201a5bb8612e773ad61943f6d1cf2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/19/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="monitor-multi-component-applications-with-application-insights-preview"></a>使用 Application Insights（预览版）监视多组件应用程序
@@ -30,7 +29,9 @@ ms.lasthandoff: 05/19/2017
 
 ### <a name="sharing-a-single-application-insights-resource"></a>共享单个 Application Insights 资源 
 
-此处的关键技术是将遥测数据从应用程序中的每个组件发送到同一个 Application Insights 资源，但必要时使用 `cloud_RoleName` 属性来区分组件。 
+此处的关键技术是将遥测数据从应用程序中的每个组件发送到同一个 Application Insights 资源，但必要时使用 `cloud_RoleName` 属性来区分组件。 Application Insights SDK 将 `cloud_RoleName` 属性添加到遥测组件。 例如，SDK 会将网站名称或服务角色名称添加到 `cloud_RoleName` 属性。 你可以用 telemetryinitializer 替代此值。 应用程序映射使用 `cloud_RoleName` 属性标识映射上的组件。
+
+若要深入了解如何替代 `cloud_RoleName` 属性，请参阅[添加属性：ITelemetryInitializer](app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer)。  
 
 在某些情况下，这种方法可能不适用，你可能偏向于对不同的组件组使用不同的资源。 例如，可能需要为管理或计费目的使用不同的资源。 使用不同的资源意味着单个应用程序映射中不会显示所有组件，并且无法在 [Analytics](app-insights-analytics.md) 中跨组件查询。 此外，必须设置不同的资源。
 
@@ -50,7 +51,7 @@ ms.lasthandoff: 05/19/2017
 
 在项目中为每个服务器组件更新或安装 Appication Insights 包。 如果使用 Visual Studio：
 
-1. 右键单击某个项目，然后选择“管理 NuGet 包”。 
+1. 右键单击某个项目，并选择“管理 NuGet 包”。 
 2. 选择“包括预发行版”。
 3. 如果 Application Insights 包显示在“更新”中，请选择这些包。 
 
@@ -63,11 +64,11 @@ ms.lasthandoff: 05/19/2017
 
 ### <a name="2-share-a-single-application-insights-resource"></a>2.共享单个 Application Insights 资源
 
-* 在 Visual Studio 中右键单击某个项目，然后选择“配置 Application Insights”或“Application Insights”>“配置”。 对于第一个项目，请使用向导创建 Application Insights 资源。 对于后续项目，请选择相同的资源。
+* 在 Visual Studio 中右键单击某个项目，并选择“配置 Application Insights”或“Application Insights”>“配置”。 对于第一个项目，请使用向导创建 Application Insights 资源。 对于后续项目，请选择相同的资源。
 * 如果未显示 Application Insights 菜单，请手动配置：
 
    1. 在 [Azure 门户](https://portal,azure.com)中，打开已经为另一个组件创建的 Application Insights 资源。
-   2. 单击“概述”边栏选项卡中打开“概要”下拉选项卡，然后复制**检测密钥**。
+   2. 单击“概述”边栏选项卡中打开“概要”下拉选项卡，并复制**检测密钥**。
    3. 在项目中打开 ApplicationInsights.config 并插入：`<InstrumentationKey>your copied key</InstrumentationKey>`
 
 ![将检测密钥复制到 .config 文件](./media/app-insights-monitor-multi-role-apps/copy-instrumentation-key.png)

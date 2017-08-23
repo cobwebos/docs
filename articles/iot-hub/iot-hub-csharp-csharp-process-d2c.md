@@ -12,34 +12,32 @@ ms.devlang: csharp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 07/25/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 8c02e911770577bd51bc2bebbb3e29b66ed0235b
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 1d2b52ea005ab520bf294efa603512c00a92ee63
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="process-iot-hub-device-to-cloud-messages-using-routes-net"></a>使用路由处理 IoT 中心设备到云消息 (.NET)
 
 [!INCLUDE [iot-hub-selector-process-d2c](../../includes/iot-hub-selector-process-d2c.md)]
 
-## <a name="introduction"></a>介绍
-Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一个解决方案后端之间实现安全可靠的双向通信。 其他教程（[IoT 中心入门]和[使用 IoT 中心发送“云到设备”消息][lnk-c2d]）介绍了如何使用 IoT 中心的“设备到云”和“云到设备”的基本消息传递功能。
+本教程是在 [IoT 中心入门]教程的基础上制作的。 本教程：
 
-本教程以 [IoT 中心入门]教程为基础，说明如何以基于配置的轻松方式，使用路由规则发送设备到云消息。 本教程介绍如何隔离需要解决方案后端立即执行操作以进行进一步处理的消息。 例如，设备可能将发送一条警报消息，触发在 CRM 系统中插入票证。 与此相反，数据点消息仅送入分析引擎。 例如，设备中存储便于日后分析的温度遥测是数据点消息。
+* 介绍如何以基于配置的轻松方式，使用路由规则发送设备到云的消息。
+* 介绍如何隔离需要解决方案后端立即执行操作以进行进一步处理的交互式消息。 例如，设备可能将发送一条警报消息，触发在 CRM 系统中插入票证。 与此相反，数据点消息（例如温度遥测）则送入分析引擎。
 
 在本教程结束时，会运行三个 .NET 控制台应用：
 
-* **SimulatedDevice**（在 [IoT 中心入门]教程中创建的应用的修改版本）每秒发送一次设备到云的数据点消息，每 10 秒发送一次设备到云的交互式消息。 此应用使用 AMQP 协议来与 IoT 中心通信。
+* **SimulatedDevice**，（在 [IoT 中心入门]教程中创建的应用的修改版本）每秒发送一次设备到云的数据点消息，每 10 秒发送一次设备到云的交互式消息。
 * **ReadDeviceToCloudMessages**，显示设备应用发送的非关键遥测数据。
-* **ReadCriticalQueue**，从附加到 IoT 中心的服务总线队列中取消设备应用发送的关键消息的排队。
+* **ReadCriticalQueue**，从服务总线队列取消设备应用发送的关键消息的排队。 此队列附加到 IoT 中心。
 
 > [!NOTE]
-> IoT 中心对许多设备平台和语言（包括 C、Java 和 JavaScript）提供 SDK 支持。 若要了解如何将本教程中的模拟设备替换为物理设备，以及如何将设备连接到 IoT 中心，请参阅 [Azure IoT 开发人员中心]。
-> 
-> 
+> IoT 中心对许多设备平台和语言（包括 C、Java 和 JavaScript）提供 SDK 支持。 若要了解如何将本教程中的模拟设备替换为物理设备，请参阅 [Azure IoT 开发人员中心]。
 
 若要完成本教程，您需要以下各项：
 
@@ -48,12 +46,13 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
 
 应具备 [Azure 存储]和 [Azure 服务总线]的一些基础知识。
 
-## <a name="send-interactive-messages-from-a-device-app"></a>从设备应用发送交互式消息
-在本部分中，会修改在 [IoT 中心入门]教程中创建的设备应用，不定期发送需要立即处理的消息。
+## <a name="send-interactive-messages"></a>发送交互式消息
+
+修改在 [IoT 中心入门]教程中创建的设备应用，以不定期发送交互式消息。
 
 在 Visual Studio 的 **SimulatedDevice** 项目中，将 `SendDeviceToCloudMessagesAsync` 方法替换为以下代码：
 
-```
+```csharp
 private static async void SendDeviceToCloudMessagesAsync()
 {
     double minTemperature = 20;
@@ -103,7 +102,8 @@ private static async void SendDeviceToCloudMessagesAsync()
 > [!NOTE]
 > 为简单起见，本教程不实现任何重试策略。 在生产代码中，应按 MSDN 文章 [Transient Fault Handling]（暂时性故障处理）中建议来实施重试策略（如指数退让）。
 
-## <a name="add-a-queue-to-your-iot-hub-and-route-messages-to-it"></a>向 IoT 中心添加一个队列并向其路由消息
+## <a name="route-messages-to-a-queue-in-your-iot-hub"></a>将消息路由到 IoT 中心中的队列
+
 本部分的操作：
 
 * 创建服务总线队列。
@@ -134,6 +134,7 @@ private static async void SendDeviceToCloudMessagesAsync()
     ![回退路由][33]
 
 ## <a name="read-from-the-queue-endpoint"></a>从队列终结点读取
+
 在本部分中，会从队列终结点读取消息。
 
 1. 在 Visual Studio 中，使用“控制台应用(.NET Framework)”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 将项目命名为 **ReadCriticalQueue**。
@@ -144,14 +145,14 @@ private static async void SendDeviceToCloudMessagesAsync()
 
 4. 在 **Program.cs** 文件顶部添加以下 **using** 语句：
    
-    ```
+    ```csharp
     using System.IO;
     using Microsoft.ServiceBus.Messaging;
     ```
 
 5. 最后，将下面的行添加到 **Main** 方法。 将连接字符串替换为队列的“侦听”权限：
    
-    ```
+    ```csharp
     Console.WriteLine("Receive critical messages. Ctrl-C to exit.\n");
     var connectionString = "{service bus listen string}";
     var queueName = "{queue name}";
@@ -190,46 +191,20 @@ private static async void SendDeviceToCloudMessagesAsync()
 
 <!-- Images. -->
 [50]: ./media/iot-hub-csharp-csharp-process-d2c/run1.png
-[10]: ./media/iot-hub-csharp-csharp-process-d2c/create-identity-csharp1.png
-
 [30]: ./media/iot-hub-csharp-csharp-process-d2c/click-endpoints.png
 [31]: ./media/iot-hub-csharp-csharp-process-d2c/endpoint-creation.png
 [32]: ./media/iot-hub-csharp-csharp-process-d2c/route-creation.png
 [33]: ./media/iot-hub-csharp-csharp-process-d2c/fallback-route.png
 
 <!-- Links -->
-
-[Azure blob storage]: ../storage/storage-dotnet-how-to-use-blobs.md
-[Azure Data Factory]: https://azure.microsoft.com/documentation/services/data-factory/
-[HDInsight (Hadoop)]: https://azure.microsoft.com/documentation/services/hdinsight/
 [Service Bus queue]: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
-
-[IoT Hub developer guide - Device to cloud]: iot-hub-devguide-messaging.md
-
 [Azure 存储]: https://azure.microsoft.com/documentation/services/storage/
 [Azure 服务总线]: https://azure.microsoft.com/documentation/services/service-bus/
-
 [IoT 中心开发人员指南]: iot-hub-devguide.md
 [IoT 中心入门]: iot-hub-csharp-csharp-getstarted.md
 [lnk-devguide-messaging]: iot-hub-devguide-messaging.md
 [Azure IoT 开发人员中心]: https://azure.microsoft.com/develop/iot
-[lnk-service-fabric]: https://azure.microsoft.com/documentation/services/service-fabric/
-[lnk-stream-analytics]: https://azure.microsoft.com/documentation/services/stream-analytics/
-[lnk-event-hubs]: https://azure.microsoft.com/documentation/services/event-hubs/
-[Transient Fault Handling]: https://msdn.microsoft.com/library/hh675232.aspx
-
-<!-- Links -->
-[About Azure Storage]: ../storage/storage-create-storage-account.md#create-a-storage-account
-[Get Started with Event Hubs]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
-[Azure Storage scalability Guidelines]: ../storage/storage-scalability-targets.md
-[Azure Block Blobs]: https://msdn.microsoft.com/library/azure/ee691964.aspx
-[Event Hubs]: ../event-hubs/event-hubs-overview.md
-[EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
-[Event Hubs Programming Guide]: ../event-hubs/event-hubs-programming-guide.md
-[暂时性故障处理]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[Build multi-tier applications with Service Bus]: ../service-bus-messaging/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
-
-[lnk-classic-portal]: https://manage.windowsazure.com
+[Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [lnk-c2d]: iot-hub-csharp-csharp-process-d2c.md
 [lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 

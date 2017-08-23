@@ -1,5 +1,5 @@
 ---
-title: "在基于 Linux 的 HDInsight 上访问 Hadoop YARN 应用程序日志 | Microsoft Docs"
+title: "在基于 Linux 的 HDInsight 上访问 Hadoop YARN 应用程序日志 — Azure | Microsoft Docs"
 description: "了解如何使用命令行和 Web 浏览器在基于 Linux 的 HDInsight (Hadoop) 群集上访问 YARN 应用程序日志。"
 services: hdinsight
 documentationcenter: 
@@ -14,22 +14,21 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: d2dbddeab8e71950a41370818c622306ed097b81
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: fbbbddc47f24a46eac9bc64d4420ee8429ed4ad1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="access-yarn-application-logs-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上访问 YARN 应用程序日志
 
-了解如何访问 Azure HDInsight 中的 Hadoop 群集上已完成的 YARN (Yet Another Resource Negotiator) 应用程序的日志。
+了解如何访问 Azure HDInsight 中 Hadoop 群集上的 YARN (Yet Another Resource Negotiator) 应用程序日志。
 
 > [!IMPORTANT]
-> 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 组件版本控制](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
+> 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 组件版本控制](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 ## <a name="YARNTimelineServer"></a>YARN Timeline Server
 
@@ -51,7 +50,7 @@ YARN 通过将资源管理与应用程序计划/监视相分离，来支持多�
 
 每个应用程序可能包含多个应用程序尝试。 如果应用程序失败，可能会重试作为新的尝试。 在容器中运行每次尝试。 在某种意义上，容器提供了由 YARN 应用程序执行的基本工作单位的上下文。 在分配了容器的单个辅助角色节点上执行容器上下文中完成的所有工作。 请参阅 [YARN 的概念][YARN-concepts]，以获取更多参考信息。
 
-应用程序日志（和关联的容器日志）在对有问题的 Hadoop 应用程序进行调试上相当重要。 YARN 提供一个良好的框架，通过使用[日志聚合][log-aggregation]功能收集、聚合和储应用程序日志。 日志聚合功能使访问应用程序日志更具确定性。 它聚合辅助角色节点上所有容器的日志，并将其存储为一个聚合日志文件（每个辅助角色节点）。 应用程序完成后，日志存储在默认文件系统中。 应用程序可能使用数百或数千个容器，但在单个辅助角色节点上运行的所有容器的日志始终聚合成单个文件。 因此，在每个辅助角色节点上，应用程序只使用一个日志。 在 HDInsight 群集版本 3.0 和更高版本上，日志聚合默认已启用。 聚合日志位于群集的默认存储中。 下面的路径是日志的 HDFS 路径：
+应用程序日志（和关联的容器日志）在对有问题的 Hadoop 应用程序进行调试上相当重要。 YARN 提供一个良好的框架，通过使用[日志聚合][log-aggregation]功能收集、聚合和储应用程序日志。 日志聚合功能使访问应用程序日志更具确定性。 它聚合辅助角色节点上所有容器的日志，并将其存储为一个聚合日志文件（每个辅助角色节点）。 应用程序完成后，日志存储在默认文件系统中。 应用程序可能使用数百或数千个容器，但在单个辅助角色节点上运行的所有容器的日志始终聚合成单个文件。 因此，在每个辅助角色节点上，应用程序只使用 1 个日志。 在 HDInsight 群集版本 3.0 和更高版本上，日志聚合默认已启用。 聚合日志位于群集的默认存储中。 下面的路径是日志的 HDFS 路径：
 
     /app-logs/<user>/logs/<applicationId>
 

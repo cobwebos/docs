@@ -14,14 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 05/31/2017
+ms.date: 07/25/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: bd832efd3902dd61be1a8b64396eaadf1cd76e24
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 7a9d994e10ec79437d6ccf60531cb12b86f34151
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure 中 Windows VM 远程桌面连接问题的详细故障排除步骤
@@ -110,16 +109,9 @@ RDP 连接涉及以下组件：
 若要检查终结点是否是问题的源，请删除当前终结点，然后创建一个新终结点，并选择范围 49152-65535 中的随机端口作为外部端口号。 有关详细信息，请参阅[如何对虚拟机设置终结点](classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="source-4-network-security-groups"></a>来源 4：网络安全组
-使用网络安全组可以对允许的入站和出站流量进行更精细的控制。 你可以创建跨 Azure 虚拟网络中的子网和云服务的规则。 检查你的网络安全组规则，以确保允许来自 Internet 的远程桌面流量：
+使用网络安全组可以对允许的入站和出站流量进行更精细的控制。 你可以创建跨 Azure 虚拟网络中的子网和云服务的规则。
 
-* 在 Azure 门户中，选择你的 VM
-* 单击“所有设置” | “网络接口”，然后选择你的网络接口。
-* 单击“所有设置” | “网络安全组”，然后选择你的网络安全组。
-* 单击“所有设置” | “入站安全规则”，并确保 TCP 端口 3389 上有允许 RDP 的规则。
-  * 如果尚无规则，请单击“添加”创建规则。 输入 **TCP** 作为协议，然后输入 **3389** 作为目标端口范围。
-  * 确保将操作设置为“允许”，然后单击“确定”保存新的入站规则。
-
-有关详细信息，请参阅 [什么是网络安全组 (NSG)？](../../virtual-network/virtual-networks-nsg.md)
+使用 [IP 流验证](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md)来确认网络安全组中的规则是否阻止了传入或传出虚拟机的流量。 还可以查看有效的安全组规则，确保入站“允许”NSG 规则存在并已针对 RDP 端口（默认值 3389）进行优化。 有关详细信息，请参阅[使用有效的安全规则排查 VM 流量流问题](../../virtual-network/virtual-network-nsg-troubleshoot-portal.md#using-effective-security-rules-to-troubleshoot-vm-traffic-flow)。
 
 ## <a name="source-5-windows-based-azure-vm"></a>来源 5：基于 Windows 的 Azure VM
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_5.png)

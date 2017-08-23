@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 虚拟机中部署 Windows Server Active Directory 的准则 | Microsoft Docs"
-description: "如果你知道如何在本地部署 AD 域服务和 AD 联合身份验证服务，则就了解这些服务在 Azure 虚拟机上的工作方式。"
+description: "如果知道如何在本地部署 AD 域服务和 AD 联合身份验证服务，则就了解这些服务在 Azure 虚拟机上的工作方式。"
 services: active-directory
 documentationcenter: 
 author: femila
@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/16/2017
+ms.date: 07/26/2017
 ms.author: femila
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 4e76a20c7c7eef9a51c6c0373785fd810c09e34a
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 342d9e2787add3d04f1b744152e135db98848179
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>有关在 Azure 虚拟机上部署 Windows Server Active Directory 的指导
@@ -38,18 +37,18 @@ ms.lasthandoff: 04/27/2017
 * 部署、配置和管理可使用 Windows Server AD FS 令牌的信赖方应用程序（网站和 Web 服务）
 * 一般的虚拟机概念，例如如何配置虚拟机、虚拟磁盘和虚拟网络
 
-本文重点介绍混合部署方案的要求，该方案是将 Windows Server AD DS 或 AD FS 的一部分部署在本地，一部分部署在 Azure 虚拟机上。 本文首先介绍在 Azure 虚拟机上以及在本地运行 Windows Server AD DS 和 AD FS 之间的关键区别以及影响设计和部署的重要决策点。 本文的其余部分则详细地介绍每个决策点的适用准则以及如何将这些准则应用于不同的部署方案。
+本文重点介绍混合部署方案的要求，该方案是将 Windows Server AD DS 或 AD FS 的一部分部署在本地，一部分部署在 Azure 虚拟机上。 本文首先介绍在 Azure 虚拟机上以及在本地运行 Windows Server AD DS 和 AD FS 之间的关键区别以及影响设计和部署的重要决策点。 本文的其余部分更详细地介绍每个决策点的准则以及如何将这些准则应用于不同的部署方案。
 
 本文不讨论如何配置 [Azure Active Directory](http://azure.microsoft.com/services/active-directory/) — 一种基于 REST 的服务，用于为云应用程序提供身份管理和访问控制功能。 但是，Azure Active Directory (Azure AD) 和 Windows Server AD DS 旨在协同使用以为当前的混合 IT 环境和新式应用程序提供身份和访问管理解决方案。 要帮助了解 Windows Server AD DS 与 Azure AD 之间的区别和关系，请设想以下情况：
 
 1. 使用 Azure 将本地数据中心扩展到云中时，可能在云中 Azure 虚拟机上运行 Windows Server AD DS。
-2. 你可以使用 Azure AD 允许用户单一登录到软件即服务 (SaaS) 应用程序。 例如，Microsoft Office 365 使用此项技术，并且在 Azure 或其他云平台上运行的应用程序也可使用它。
+2. 可以使用 Azure AD 允许用户单一登录到软件即服务 (SaaS) 应用程序。 例如，Microsoft Office 365 使用此项技术，并且在 Azure 或其他云平台上运行的应用程序也可使用它。
 3. 可能使用 Azure AD（其访问控制服务）让用户使用来自 Facebook、Google、Microsoft 或其他身份提供商的身份登录到在云中或本地托管的应用程序。
 
 有关这些区别的详细信息，请参阅 [Azure 标识](fundamentals-identity.md)。
 
 ## <a name="related-resources"></a>相关资源
-用户可以下载并运行 [Azure 虚拟机就绪评估工具](https://www.microsoft.com/download/details.aspx?id=40898)。 该评估工具将自动检查你的本地环境并根据本主题中的指南生成一份自定义报告以帮助你将环境迁移到 Azure。
+用户可以下载并运行 [Azure 虚拟机就绪评估工具](https://www.microsoft.com/download/details.aspx?id=40898)。 该评估工具会自动检查本地环境并根据本主题中的指南生成一份自定义报告以帮助将环境迁移到 Azure。
 
 建议首先查看涉及以下主题的教程、指南和视频：
 
@@ -64,7 +63,7 @@ ms.lasthandoff: 04/27/2017
 在 Azure 虚拟机上部署 Windows Server Active Directory 的基本要求与在本地虚拟机（某种程度上还包括物理计算机）中部署它几乎没有区别。 例如，就 Windows Server AD DS 而言，如果在 Azure 虚拟机上部署的域控制器 (DC) 是现有本地企业域/林中的副本，则对待 Azure 部署的方式与对待任何其他额外的 Windows Server Active Directory 站点的方式大体上相同。 即，必须在 Windows Server AD DS 中定义子网，必须创建站点，必须将子网链接到该站点，并且必须使用相应的站点链接连接到其他站点。 但是，有一些区别为所有 Azure 部署共有，还有一些区别根据具体的部署方案而异。 下面概述了两个重要区别：
 
 ### <a name="azure-virtual-machines-may-need-connectivity-to-the-on-premises-corporate-network"></a>可能需要向 Azure 虚拟机提供与本地企业网络的连接。
-将 Azure 虚拟机连回本地企业网络需要 Azure 虚拟网络，其中包括可无缝连接 Azure 虚拟机和本地虚拟机的站点到站点或站点到点虚拟专用网络 (VPN) 组件。 此 VPN 组件还可使本地域成员计算机可访问在 Azure 虚拟机上独占托管其域控制器的 Windows Server Active Directory 域。 但是，如果 VPN 失败，则依赖于 Windows Server Active Directory 的身份验证和其他操作也将失败，注意到这一点很重要。 虽然用户也许能够使用现有缓存的凭据进行登录，但其票证尚未发出或已过时的所有对等或客户端对服务器身份验证尝试都将失败。
+将 Azure 虚拟机连回本地企业网络需要 Azure 虚拟网络，其中包括可无缝连接 Azure 虚拟机和本地虚拟机的站点到站点或站点到点虚拟专用网络 (VPN) 组件。 此 VPN 组件还可使本地域成员计算机可访问在 Azure 虚拟机上独占托管其域控制器的 Windows Server Active Directory 域。 但是，如果 VPN 失败，则依赖于 Windows Server Active Directory 的身份验证和其他操作也会失败，注意到这一点很重要。 虽然用户也许能够使用现有缓存的凭据进行登录，但其票证尚未发出或已过时的所有对等或客户端对服务器身份验证尝试都会失败。
 
 请参阅[虚拟网络](http://azure.microsoft.com/documentation/services/virtual-network/)，观看演示视频并获得分步教程的列表，其中包括[在 Azure 门户中配置站点到站点 VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md)。
 
@@ -74,7 +73,7 @@ ms.lasthandoff: 04/27/2017
 > 
 
 ### <a name="static-ip-addresses-must-be-configured-with-azure-powershell"></a>必须使用 Azure PowerShell 配置静态 IP 地址。
-默认情况下分配动态地址，但可改用 Set-AzureStaticVNetIP cmdlet 分配静态 IP 地址。 这将设置静态 IP 地址，该地址将通过服务修复和 VM 关闭/重新启动而持久保留。 有关详细信息，请参阅 [Static internal IP address for virtual machines](http://azure.microsoft.com/blog/static-internal-ip-address-for-virtual-machines/)（虚拟机的静态内部 IP 地址）。
+默认情况下分配动态地址，但可改用 Set-AzureStaticVNetIP cmdlet 分配静态 IP 地址。 这会设置静态 IP 地址，该地址将通过服务修复和 VM 关闭/重新启动而持久保留。 有关详细信息，请参阅 [Static internal IP address for virtual machines](http://azure.microsoft.com/blog/static-internal-ip-address-for-virtual-machines/)（虚拟机的静态内部 IP 地址）。
 
 ## <a name="BKMK_Glossary"></a>术语和定义
 下面是本文中所述各种 Azure 技术的术语的不完整列表。
@@ -109,7 +108,7 @@ ms.lasthandoff: 04/27/2017
 从 Windows Server 2012 开始，[AD DS 中内置了额外的安全措施](https://technet.microsoft.com/library/hh831734.aspx)。 只要底层虚拟机监控程序平台支持 VM-GenerationID，这些安全保护就可以防止虚拟化域控制器出现上述问题。 Azure 支持 VM-GenerationID，这意味着 Azure 虚拟机上运行 Windows Server 2012 或更高版本的域控制器具有额外的安全防护措施。
 
 > [!NOTE]
-> 用户应在来宾操作系统中关闭并重新启动 Azure 中运行域控制器角色的 VM，而不是使用 Azure 门户或经典门户中的“关闭”选项。 目前，使用门户关闭 VM 会导致解除分配 VM。 解除分配 VM 的优点是不会产生费用，但也会重置 VM-GenerationID，这对于 DC 来说是不希望发生的。 重置 VM-GenerationID 时，也会重置 AD DS 数据库的 invocationID，RID 池将被丢弃，SYSVOL 将标记为非权威性。 有关详细信息，请参阅 [Introduction to Active Directory Domain Services (AD DS) Virtualization](https://technet.microsoft.com/library/hh831734.aspx)（Active Directory 域服务 (AD DS) 虚拟化简介）和 [Safely Virtualizing DFSR](http://blogs.technet.com/b/filecab/archive/2013/04/05/safely-virtualizing-dfsr.aspx)（安全虚拟化 DFSR）。
+> 用户应在来宾操作系统中关闭并重新启动 Azure 中运行域控制器角色的 VM，而不是使用 Azure 门户中的“关闭”选项。 目前，使用门户关闭 VM 会导致解除分配 VM。 解除分配 VM 的优点是不会产生费用，但也会重置 VM-GenerationID，这对于 DC 来说是不希望发生的。 重置 VM-GenerationID 时，也会重置 AD DS 数据库的 invocationID，RID 池会被丢弃，SYSVOL 将标记为非权威性。 有关详细信息，请参阅 [Introduction to Active Directory Domain Services (AD DS) Virtualization](https://technet.microsoft.com/library/hh831734.aspx)（Active Directory 域服务 (AD DS) 虚拟化简介）和 [Safely Virtualizing DFSR](http://blogs.technet.com/b/filecab/archive/2013/04/05/safely-virtualizing-dfsr.aspx)（安全虚拟化 DFSR）。
 > 
 > 
 
@@ -118,7 +117,7 @@ ms.lasthandoff: 04/27/2017
 
 Azure 也很适合替代其他情况下成本高昂的灾难恢复 (DR) 站点。 在 Azure 上托管少量域控制器和一个虚拟网络的成本相对较低，因此是一个有吸引力的备选方案。
 
-最后，你可能要在 Azure 上部署需要 Windows Server Active Directory、但不依赖本地网络或企业 Windows Server Active Directory 的网络应用程序，如 SharePoint。 在这种情况下，最好在 Azure 上部署一个独立的林以满足 SharePoint 服务器的要求。 同样，也支持部署需要连接到本地网络和企业 Active Directory 的网络应用程序。
+最后，可能要在 Azure 上部署需要 Windows Server Active Directory、但不依赖本地网络或企业 Windows Server Active Directory 的网络应用程序，如 SharePoint。 在这种情况下，最好在 Azure 上部署一个独立的林以满足 SharePoint 服务器的要求。 同样，也支持部署需要连接到本地网络和企业 Active Directory 的网络应用程序。
 
 > [!NOTE]
 > 由于提供 3 层连接，因此在 Azure 虚拟网络与本地网络之间提供连接的 VPN 组件还可使在本地运行的成员服务器利用在 Azure 虚拟网络上作为 Azure 虚拟机运行的 DC。 但是，如果没有 VPN 可用，则在本地计算机与基于 Azure 的域控制器之间将无法通信，从而导致身份验证错误和各种其他错误。  
@@ -127,7 +126,7 @@ Azure 也很适合替代其他情况下成本高昂的灾难恢复 (DR) 站点�
 
 ## <a name="contrasts-between-deploying-windows-server-active-directory-domain-controllers-on-azure-virtual-machines-versus-on-premises"></a>在 Azure 虚拟机上部署的 Windows Server Active Directory 域控制器与本地部署的域控制器之间的比较
 * 对于任何包括多个 VM 的 Windows Server Active Directory 部署方案，必须使用 Azure 虚拟网络以确保 IP 地址一致。 请注意，本指南假设 DC 在 Azure 虚拟网络上运行。
-* 就本地 DC 来说，建议使用静态 IP 地址。 静态 IP 地址只能使用 Azure PowerShell 配置。 有关详细信息，请参阅 [Static internal IP address for VMs](http://azure.microsoft.com/blog/static-internal-ip-address-for-virtual-machines/)（VM 的静态内部 IP 地址）。 如果你使用监视系统或其他解决方案来检查来宾操作系统中的静态 IP 地址配置，则可以为 VM 的网络适配器属性分配同一静态 IP 地址。 但请注意，如果 VM 正在进行服务修复或已在 Azure 门户中关闭并且其地址已解除分配，则该网络适配器将被放弃。 在这种情况下，需要重置来宾中的静态 IP 地址。
+* 就本地 DC 来说，建议使用静态 IP 地址。 静态 IP 地址只能使用 Azure PowerShell 配置。 有关详细信息，请参阅 [Static internal IP address for VMs](http://azure.microsoft.com/blog/static-internal-ip-address-for-virtual-machines/)（VM 的静态内部 IP 地址）。 如果使用监视系统或其他解决方案来检查来宾操作系统中的静态 IP 地址配置，则可以为 VM 的网络适配器属性分配同一静态 IP 地址。 但请注意，如果 VM 正在进行服务修复或已在门户中关闭并且其地址已解除分配，则该网络适配器会被放弃。 在这种情况下，需要重置来宾中的静态 IP 地址。
 * 在虚拟网络上部署 VM 并不意味着（或要求）连回本地网络；虚拟网络仅产生这种可能性。 必须创建一个虚拟网络，供 Azure 与本地网络之间进行专用通信。 需要在本地网络上部署 VPN 终结点。 打开的 VPN 从 Azure 通向本地网络。 有关详细信息，请参阅[虚拟网络概述](../virtual-network/virtual-networks-overview.md)和[在 Azure 门户中配置站点到站点 VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md)。
 
 > [!NOTE]
@@ -143,11 +142,11 @@ Azure 也很适合替代其他情况下成本高昂的灾难恢复 (DR) 站点�
 
 1. **切勿直接在 Internet 中公开安全令牌服务 (STS) 服务器。**
    
-    由于 STS 角色会发出安全令牌，因此这一点很重要。 因此，应该将 STS 服务器（如 AD FS 服务器）视为要与域控制器受到相同级别的保护。 如果某一 STS 的安全性受到威胁，恶意用户将能够向信赖方应用程序和信任组织中的其他 STS 服务器发出可能包含其选择的声明的访问令牌。
+    由于 STS 角色会发出安全令牌，因此这一点很重要。 因此，应该将 STS 服务器（如 AD FS 服务器）视为要与域控制器受到相同级别的保护。 如果某一 STS 的安全性受到威胁，恶意用户能够向信赖方应用程序和信任组织中的其他 STS 服务器发出可能包含其选择的声明的访问令牌。
 2. **将所有用户域的 Active Directory 域控制器部署在 AD FS 服务器所在的同一个网络中。**
    
     AD FS 服务器使用 Active Directory 域服务对用户进行身份验证。 建议将域控制器部署在 AD FS 服务器所在的同一个网络中。 这样，当 Azure 网络与本地网络之间的链接断开时可以保持业务连续性，并可以在登录时降低延迟和提高性能。
-3. **部署多个 AD FS 节点以实现高可用性和负载平衡。**
+3. **部署多个 AD FS 节点以实现高可用性和负载均衡。**
    
     在大多数情况下，AD FS 启用的应用程序失败是不可接受的，因为需要安全令牌的应用程序往往是任务关键型应用程序。 鉴于 AD FS 现在对于访问任务关键型应用程序起着关键作用，必须通过多个 AD FS 代理和 AD FS 服务器为 AD FS 服务提供高可用性。 为实现请求分发，负载均衡器通常部署在 AD FS 代理和 AD FS 服务器的前端。
 4. **部署一个或多个 Web 应用程序代理节点以进行 Internet 访问。**
@@ -155,7 +154,7 @@ Azure 也很适合替代其他情况下成本高昂的灾难恢复 (DR) 站点�
     当用户需要访问受 AD FS 服务保护的应用程序时，需要通过 Internet 使用 AD FS 服务。 这可以通过部署 Web 应用程序代理服务来实现。 强烈建议部署多个节点以提供高可用性和负载均衡。
 5. **限制从 Web 应用程序代理节点访问内部网络资源。**
    
-    若要允许外部用户从 Internet 访问 AD FS，你需要部署 Web 应用程序代理节点（在早期版本的 Windows Server 中为 AD FS 代理）。 Web 应用程序代理节点直接向 Internet 公开。 这些节点不需要加入域，并且它们只需通过 TCP 端口 443 和 80 访问 AD FS 服务器。 强烈建议阻止与其他所有计算机（尤其是域控制器）进行通信。
+    要允许外部用户从 Internet 访问 AD FS，需要部署 Web 应用程序代理节点（在早期版本的 Windows Server 中为 AD FS 代理）。 Web 应用程序代理节点直接向 Internet 公开。 这些节点不需要加入域，并且它们只需通过 TCP 端口 443 和 80 访问 AD FS 服务器。 强烈建议阻止与其他所有计算机（尤其是域控制器）进行通信。
    
     通常可以通过外围网络在本地实现此目的。 防火墙使用允许列表操作模式限制将外围网络的流量定向到本地网络（也就是说，只允许来自指定 IP 地址的流量和通过指定端口传送的流量，并阻止其他所有流量）。
 
@@ -187,7 +186,7 @@ Azure 也很适合替代其他情况下成本高昂的灾难恢复 (DR) 站点�
    4. 将基于声明的网站更新为使用其声明提供程序的外部 FQDN。
 7. 限制在 Web 应用程序代理与 AD FS 虚拟网络中的任何计算机之间进行访问。
 
-若要限制流量，需要对 Azure 内部负载均衡器的负载平衡集进行配置，以仅只向 TCP 端口 80 和 443 传送流量，并丢弃传送到负载平衡集内部动态 IP 地址的所有其他流量。
+若要限制流量，需要对 Azure 内部负载均衡器的负载均衡集进行配置，以仅只向 TCP 端口 80 和 443 传送流量，并丢弃传送到负载均衡集内部动态 IP 地址的所有其他流量。
 
 ![允许 TCP 443 和 80 的 ADFS 网络 ACL 示意图](media/active-directory-deploying-ws-ad-guidelines/ADFS_ACLs.png)
 
@@ -207,14 +206,14 @@ Azure 也很适合替代其他情况下成本高昂的灾难恢复 (DR) 站点�
 
 另一种做法是使用 [Barracuda NG 防火墙](https://www.barracuda.com/products/ngfirewall)设备控制 AD FS 代理服务器与 AD FS 服务器之间的流量。 这种做法符合安全性和高可用性的最佳实践，在完成初始设置后需要更少的管理，因为 Barracuda NG 防火墙设备提供允许列表防火墙管理模式，并且可以直接在 Azure 虚拟网络中安装。 这样，便不需要在每次向部署中添加新服务器后都要配置网络 ACL。 但这种做法加大了初始部署的复杂性和成本。
 
-在这种情况下，将要部署两个虚拟网络而不是一个。 我们将这两个虚拟网络称为 VNet1 和 VNet2。 VNet1 包含代理，VNet2 包含 STS，并负责将网络连接回到企业网络。 因此，VNet1 在物理上（尽管它是虚拟网络）与 VNet2 相互隔离，从而与企业网络也相互隔离。 VNet1 使用专用的隧道技术（称为独立于传输的网络体系结构 (TINA)）连接到 VNet2。 TINA 隧道附加到每个使用 Barracuda NG 防火墙的虚拟网络 - 每个虚拟网络上各有一个 Barracuda。  为实现高可用性，建议你在每个虚拟网络上部署两个 Barracuda，其中一个处于主动状态，另一个处于被动状态。 这些 Barracuda 提供极其丰富的防火墙功能，使我们能够在 Azure 中模拟传统本地外围网络的操作。
+在这种情况下，将要部署两个虚拟网络而不是一个。 我们将这两个虚拟网络称为 VNet1 和 VNet2。 VNet1 包含代理，VNet2 包含 STS，并负责将网络连接回到企业网络。 因此，VNet1 在物理上（尽管它是虚拟网络）与 VNet2 相互隔离，从而与企业网络也相互隔离。 VNet1 使用专用的隧道技术（称为独立于传输的网络体系结构 (TINA)）连接到 VNet2。 TINA 隧道附加到每个使用 Barracuda NG 防火墙的虚拟网络 - 每个虚拟网络上各有一个 Barracuda。  为实现高可用性，建议在每个虚拟网络上部署两个 Barracuda，其中一个处于主动状态，另一个处于被动状态。 这些 Barracuda 提供极其丰富的防火墙功能，使我们能够在 Azure 中模拟传统本地外围网络的操作。
 
 ![Azure 上具有防火墙的 ADFS。](media/active-directory-deploying-ws-ad-guidelines/ADFS_Azure_firewall.png)
 
 有关详细信息，请参阅 [AD FS：将声明感知本地前端应用程序扩展到 Internet](#BKMK_CloudOnlyFed)。
 
 ### <a name="an-alternative-to-ad-fs-deployment-if-the-goal-is-office-365-sso-alone"></a>当目标仅为实现 Office 365 SSO 时部署 AD FS 的替代做法
-如果你的目标只是针对 Office 365 实现单一登录，则还可以采用另一种方法部署 AD FS。 在这种情况下，使用本地密码同步就可轻松部署 DirSync 并实现相同的最终结果，部署复杂性接近于零，因为这种方法不需要 AD FS 或 Azure。
+如果目标只是针对 Office 365 实现单一登录，则还可以采用另一种方法部署 AD FS。 在这种情况下，使用本地密码同步就可轻松部署 DirSync 并实现相同的最终结果，部署复杂性接近于零，因为这种方法不需要 AD FS 或 Azure。
 
 下表对部署和不部署 AD FS 这两种情况下的登录过程进行比较。
 
@@ -235,8 +234,8 @@ Azure 也很适合替代其他情况下成本高昂的灾难恢复 (DR) 站点�
 ### <a name="additional-food-for-thought"></a>额外的精神食粮
 * 如果在 Azure 虚拟机上部署 AD FS 代理服务器，则需要与 AD FS 服务器建立连接。 如果这些服务器在本地，则建议利用虚拟网络提供的站点到站点 VPN 连接使 Web 应用程序代理节点可与其 AD FS 服务器通信。
 * 如果在 Azure 虚拟机上部署 AD FS 服务器，则需要与 Windows Server Active Directory 域控制器、属性存储和配置数据库建立连接，并且还可能需要在 Azure 虚拟网络与本地网络之间建立 ExpressRoute 或站点到站点 VPN 连接。
-* 从 Azure 虚拟机传出的所有流量（传出流量）都要付费。 如果成本是驱动要素，则最好在 Azure 上部署 Web 应用程序代理节点，使 AD FS 服务器保留在本地。 如果将 AD FS 服务器也部署在 Azure 虚拟机上，则在对本地用户进行身份验证时将会产生额外的成本。 无论是否遍历 ExpressRoute 或 VPN 站点到站点连接，传出流量都会产生成本。
-* 如果你决定使用 Azure 固有的服务器负载均衡功能为 AD FS 服务器提供高可用性，则请注意，负载均衡提供用于确定云服务中虚拟机的运行状况的探测。 就 Azure 虚拟机（相对于 Web 或辅助角色）而言，必须使用自定义探测，因为 Azure 虚拟机上没有可响应自定义探测的代理。 为简单起见，可使用自定义 TCP 探测 - 此方式只需成功建立 TCP 连接（使用 TCP SYN ACK 段发送和响应的 TCP SYN 段）即可确定虚拟机运行状况。 可配置自定义探测以使其使用任何当前正在侦听虚拟机的 TCP 端口。
+* 从 Azure 虚拟机传出的所有流量（传出流量）都要付费。 如果成本是驱动要素，则最好在 Azure 上部署 Web 应用程序代理节点，使 AD FS 服务器保留在本地。 如果将 AD FS 服务器也部署在 Azure 虚拟机上，则在对本地用户进行身份验证时会产生额外的成本。 无论是否遍历 ExpressRoute 或 VPN 站点到站点连接，传出流量都会产生成本。
+* 如果决定使用 Azure 固有的服务器负载均衡功能为 AD FS 服务器提供高可用性，则请注意，负载均衡提供用于确定云服务中虚拟机的运行状况的探测。 就 Azure 虚拟机（相对于 Web 或辅助角色）而言，必须使用自定义探测，因为 Azure 虚拟机上没有可响应自定义探测的代理。 为简单起见，可使用自定义 TCP 探测 - 此方式只需成功建立 TCP 连接（使用 TCP SYN ACK 段发送和响应的 TCP SYN 段）即可确定虚拟机运行状况。 可配置自定义探测以使其使用任何当前正在侦听虚拟机的 TCP 端口。
 
 > [!NOTE]
 > 需要直接向 Internet公开同一组端口（如端口 80 和 443）的虚拟机无法共享同一云服务。 因此，建议为 Windows Server AD FS 服务器创建一个专用的云服务，以避免应用程序与 Windows Server AD FS 的端口要求之间可能发生重叠。
@@ -266,7 +265,7 @@ SharePoint 部署在 Azure 虚拟机上，并且该应用程序不依赖企业�
 #### <a name="scenario-considerations-and-how-technology-areas-apply-to-the-scenario"></a>方案注意事项和技术领域如何适用于方案
 * [网络拓扑](#BKMK_NetworkTopology)：创建没有跨界连接的 Azure 虚拟网络（也称为站点到站点连接）。
 * [DC 部署配置](#BKMK_DeploymentConfig)：将一个新的域控制器部署到一个新的单域 Windows Server Active Directory 林。 该域控制器应与 Windows DNS 服务器一起部署。
-* [Windows Server Active Directory 站点拓扑](#BKMK_ADSiteTopology)：使用默认 Windows Server Active Directory 站点（所有计算机都将在 Default-First-Site-Name 中）。
+* [Windows Server Active Directory 站点拓扑](#BKMK_ADSiteTopology)：使用默认 Windows Server Active Directory 站点（所有计算机都会在 Default-First-Site-Name 中）。
 * [IP 寻址和 DNS](#BKMK_IPAddressDNS)：
   
   * 通过使用 Set-AzureStaticVNetIP Azure PowerShell cmdlet 为 DC 设置静态 IP 地址。
@@ -293,9 +292,9 @@ SharePoint 部署在 Azure 虚拟机上，并且该应用程序不依赖企业�
   > 
   > 
 * [云服务配置](#BKMK_CloudSvcConfig)：确保有两个云服务以提供两个经过负载均衡的虚拟 IP 地址。 第一个云服务的虚拟 IP 地址将定向到端口 80 和 443 上的两个 Windows Server AD FS 代理 VM。 Windows Server AD FS 代理 VM 将配置为指向面向 Windows Server AD FS STS 的本地负载均衡器的 IP 地址。 第二个云服务的虚拟 IP 地址将再次定向到端口 80 和 443 上两个运行 Web 前端的 VM。 配置自定义探测以确保负载均衡器将流量仅定向到正常运行的 Windows Server AD FS 代理和 Web 前端 VM。
-* [联合服务器配置](#BKMK_FedSrvConfig)：将 Windows Server AD FS 配置为联合服务器 (STS) 以为在云中创建的 Windows Server Active Directory 林生成安全令牌。 设置联合声明提供程序与要从其接受身份的不同合作伙伴的信任关系，然后配置信赖方与要向其生成令牌的不同应用程序的信任关系。
+* [联合服务器配置](#BKMK_FedSrvConfig)：将 Windows Server AD FS 配置为联合服务器 (STS) 以为在云中创建的 Windows Server Active Directory 林生成安全令牌。 设置联合声明提供程序与要从其接受身份的不同合作伙伴的信任关系，并配置信赖方与要向其生成令牌的不同应用程序的信任关系。
   
-    大多数方案下，为安全起见，Windows Server AD FS 代理服务器均部署在面向 Internet 的设备中，而其对应的 Windows Server AD FS 联合服务器仍与直接 Internet 连接隔离。 无论你采用哪种部署方案，都必须使用虚拟 IP 地址配置云服务，虚拟 IP 地址将提供公开的 IP 地址和能够跨两个 Windows Server AD FS STS 实例或代理实例进行负载均衡的端口。
+    大多数方案下，为安全起见，Windows Server AD FS 代理服务器均部署在面向 Internet 的设备中，而其对应的 Windows Server AD FS 联合服务器仍与直接 Internet 连接隔离。 无论采用哪种部署方案，都必须使用虚拟 IP 地址配置云服务，虚拟 IP 地址将提供公开的 IP 地址和能够跨两个 Windows Server AD FS STS 实例或代理实例进行负载均衡的端口。
 * [Windows Server AD FS 高可用性配置](#BKMK_ADFSHighAvail)：建议所部署的 Windows Server AD FS 场至少具有两个用于故障转移和负载均衡的服务器。 可能要考虑对 Windows Server AD FS 配置数据使用 Windows 内部数据库 (WID)，并使用 Azure 的内部负载均衡功能将传入请求分配到场中的服务器上。
 
 有关详细信息，请参阅 [AD DS Deployment Guide](https://technet.microsoft.com/library/cc753963)（AD DS 部署指南）。
@@ -310,7 +309,7 @@ SharePoint 部署在 Azure 虚拟机上，并且该应用程序不依赖企业�
 #### <a name="scenario-considerations-and-how-technology-areas-apply-to-the-scenario"></a>方案注意事项和技术领域如何适用于方案
 * [网络拓扑](#BKMK_NetworkTopology)：创建使用[跨界连接](../vpn-gateway/vpn-gateway-site-to-site-create.md)的 Azure 虚拟网络。
 * [安装方法](#BKMK_InstallMethod)：从企业 Windows Server Active Directory 域中部署副本 DC。 对于副本 DC，可在 VM 上安装 Windows Server AD DS，并可使用“从介质安装”(IFM) 功能减少在安装期间需要复制到新 DC 的数据量。 有关教程，请参阅[在 Azure 上安装副本 Active Directory 域控制器](active-directory-install-replica-active-directory-domain-controller.md)。 即使使用 IFM，在本地生成虚拟 DC 再将整个虚拟硬盘 (VHD) 移至云也比在安装期间复制 Windows Server AD DS 更加高效。 为安全起见，建议将 VHD 复制到 Azure 后立即从本地网络中删除它。
-* [Windows Server Active Directory 站点拓扑](#BKMK_ADSiteTopology)：在 Active Directory 站点和服务中新建一个 Azure 站点。 创建一个 Windows Server Active Directory 子网对象以表示 Azure 虚拟网络，然后将该子网添加到站点中。 新建包括新 Azure 站点和 Azure 虚拟网络 VPN 终结点所在站点的站点链接以控制和优化 Azure 往返 Windows Server Active Directory 的流量。
+* [Windows Server Active Directory 站点拓扑](#BKMK_ADSiteTopology)：在 Active Directory 站点和服务中新建一个 Azure 站点。 创建一个 Windows Server Active Directory 子网对象以表示 Azure 虚拟网络，并将该子网添加到站点中。 新建包括新 Azure 站点和 Azure 虚拟网络 VPN 终结点所在站点的站点链接以控制和优化 Azure 往返 Windows Server Active Directory 的流量。
 * [IP 寻址和 DNS](#BKMK_IPAddressDNS)：
   
   * 通过使用 Set-AzureStaticVNetIP Azure PowerShell cmdlet 为 DC 设置静态 IP 地址。
@@ -349,25 +348,25 @@ SharePoint 部署在 Azure 虚拟机上，并且该应用程序不依赖企业�
 ### <a name="BKMK_NetworkTopology"></a>网络拓扑
 为了满足 Windows Server AD DS 的 IP 地址一致性和 DNS 要求，必须首先创建一个 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)，然后将虚拟机连接到该网络。 在其创建期间，必须决定是否（可选）将连接扩展到本地企业网络，这样将 Azure 虚拟机透明地连接到本地虚拟机 - 使用传统 VPN 技术实现这一点，其中要求在企业网络的边缘公开 VPN 终结点。 即，从 Azure 发起通向企业网络的 VPN，反之则不然。
 
-请注意，将虚拟网络扩展到本地网络后超出适用于每个 VM 的标准收费时将额外收费。 具体而言，将按 Azure 虚拟网络网关的 CPU 时间以及通过 VPN 与本地虚拟机通信的每个 VM 产生的传出流量收费。 有关网络流量收费的详细信息，请参阅 [Azure 定价一览](http://azure.microsoft.com/pricing/)。
+请注意，将虚拟网络扩展到本地网络后超出适用于每个 VM 的标准收费时会额外收费。 具体而言，将按 Azure 虚拟网络网关的 CPU 时间以及通过 VPN 与本地虚拟机通信的每个 VM 产生的传出流量收费。 有关网络流量收费的详细信息，请参阅 [Azure 定价一览](http://azure.microsoft.com/pricing/)。
 
 ### <a name="BKMK_DeploymentConfig"></a>DC 部署配置
-配置 DC 的方式取决于要在 Azure 上运行的服务的要求。 例如，你可能部署一个新林，与你自己的企业林隔离，用于测试概念验证、新应用程序或某些需要目录服务但并不具体访问内部企业资源的其他短期项目。
+配置 DC 的方式取决于要在 Azure 上运行的服务的要求。 例如，你可能部署一个新林，与自己的企业林隔离，用于测试概念验证、新应用程序或某些需要目录服务但并不具体访问内部企业资源的其他短期项目。
 
 优点是隔离的林 DC 对于本地 DC 不进行复制，导致系统自身产生的出站网络流量较少，从而直接降低成本。 有关网络流量收费的详细信息，请参阅 [Azure 定价一览](http://azure.microsoft.com/pricing/)。
 
-另举一例，假设你对于服务有隐私方面的要求，但该服务需要访问内部 Windows Server Active Directory。 如果允许在云中托管该服务的数据，则可能在 Azure 上为内部林部署新子域。 在这种情况下，可为该新子域部署 DC（无全局目录以帮助解决地址私密性问题）。 此方案与副本 DC 部署一起，需要一个虚拟网络与本地 DC 相连。
+另举一例，假设对于服务有隐私方面的要求，但该服务需要访问内部 Windows Server Active Directory。 如果允许在云中托管该服务的数据，则可能在 Azure 上为内部林部署新子域。 在这种情况下，可为该新子域部署 DC（无全局目录以帮助解决地址私密性问题）。 此方案与副本 DC 部署一起，需要一个虚拟网络与本地 DC 相连。
 
 如果新建林，则选择要使用 [Active Directory 信任](https://technet.microsoft.com/library/cc771397)还是[联合信任](https://technet.microsoft.com/library/dd807036)。 请在由兼容性、安全性、合规性、成本和复原能力规定的要求之间达到均衡。 例如，为了利用[选择性身份验证](https://technet.microsoft.com/library/cc755844)，可能决定在 Azure 上部署新林，并在本地林与云林之间建立 Windows Server Active Directory 信任。 但是，如果应用程序可感知声明，则可能部署联合信任而非 Active Directory 林信任。 另一个因素将是通过将本地 Windows Server Active Directory 扩展到云而复制更多数据或因身份验证和查询负载而产生更多出站流量的成本。
 
-可用性和容错的要求也会影响你的选择。 例如，如果链接中断，则除非在 Azure 上部署了充足的基础结构，否则利用 Kerberos 信任或联合信任的应用程序完全有可能全部中断。 副本 DC（可写或 RODC）等其他部署配置将提高可承受链接中断的可能性。
+可用性和容错的要求也会影响选择。 例如，如果链接中断，则除非在 Azure 上部署了充足的基础结构，否则利用 Kerberos 信任或联合信任的应用程序完全有可能全部中断。 副本 DC（可写或 RODC）等其他部署配置将提高可承受链接中断的可能性。
 
 ### <a name="BKMK_ADSiteTopology"></a>Windows Server Active Directory 站点拓扑
-需要正确定义站点和站点链接以优化流量并将成本降至最低。 站点、站点链接和子网影响 DC 之间的复制拓扑与身份验证流量的流动。 考虑以下流量费，然后根据部署方案的要求部署和配置 DC：
+需要正确定义站点和站点链接以优化流量并将成本降至最低。 站点、站点链接和子网影响 DC 之间的复制拓扑与身份验证流量的流动。 考虑以下流量费，并根据部署方案的要求部署和配置 DC：
 
 * 网关自身象征性地每小时少量收费：
   
-  * 可在你认为合适的时候启动和停止它
+  * 可在认为合适的时候启动和停止它
   * 如果停止，则将 Azure VM 与企业网络隔离
 * 入站流量免费
 * 按 [Azure 价格一览](http://azure.microsoft.com/pricing/)对出站流量收费。 可在本地站点与云站点之间优化站点链接属性，如下所示：
@@ -406,7 +405,7 @@ VM 在启动时或名称发生更改时自动注册其 DNS 名称。
 有关配置虚拟网络之间的直接通信的信息，请参阅[配置虚拟网络到虚拟网络连接](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)。
 
 ### <a name="BKMK_RODC"></a>只读 DC
-需要选择部署只读还是可写 DC。 你可能倾向于部署 RODC，因为你将无法控制其实物，而 RODC 适合部署在其实物安全性有风险的地点，如分支机构。
+需要选择部署只读还是可写 DC。 可能倾向于部署 RODC，你将无法控制其实物，而 RODC 适合部署在其实物安全性有风险的地点，如分支机构。
 
 Azure 不会引发分支机构的实物安全性风险，但仍有可能证实 RODC 更具成本效益，因为虽然出于各种不同的原因，但其提供的功能适合这些环境。 例如，RODC 无出站复制，并可有选择地填充机密（密码）。 缺点是缺少这些机密可能需要按需出站流量以验证这些机密，正如用户或计算机进行身份验证那样。 但可有选择地预先填充和缓冲机密。
 
@@ -417,7 +416,7 @@ RODC 在 HBI 和 PII 问题方面具有其他优势，因为可向 RODC 筛选�
 ### <a name="BKMK_GC"></a>全局目录
 需要选择是否安装全局目录 (GC)。 在单域林中，应将所有 DC 都配置为全局目录服务器。 这样不会增加成本，因为将没有其他复制流量。
 
-在多域林中，必须在身份验证过程中使用 GC 扩展通用组成员身份。 如果未部署 GC，则虚拟网络上对 Azure 上的 DC 进行身份验证的工作负荷将在每次尝试进行身份验证的过程中间接地产生查询本地 GC 的出站身份验证流量。
+在多域林中，必须在身份验证过程中使用 GC 扩展通用组成员身份。 如果未部署 GC，则虚拟网络上对 Azure 上的 DC 进行身份验证的工作负荷会在每次尝试进行身份验证的过程中间接地产生查询本地 GC 的出站身份验证流量。
 
 与 GC 关联的成本不太容易预测，因为他们托管每个域（的其中一部分）。 如果工作负荷托管面向 Internet 的服务，并对 Windows Server AD DS 验证用户身份，则可能完全无法预测成本。 若要帮助减少身份验证期间云站点以外的 GC 查询，可[启用通用组成员身份缓存](https://technet.microsoft.com/library/cc816928)。
 
@@ -439,7 +438,7 @@ RODC 在 HBI 和 PII 问题方面具有其他优势，因为可向 RODC 筛选�
 > 
 > 
 
-数据磁盘驱动器默认情况下不对写入进行缓存。 附加到 VM 的数据磁盘驱动器使用写通式缓存。 写通式缓存确保在从 VM 操作系统的角度认为事务完成前将写入提交到持久的 Azure 存储空间。 它具有持续性，代价是写入速度略有下降。
+数据磁盘驱动器默认情况下不对写入进行缓存。 附加到 VM 的数据磁盘驱动器使用写通式缓存。 写通式缓存确保在从 VM 操作系统的角度认为事务完成前将写入提交到持久的 Azure 存储。 它具有持续性，代价是写入速度略有下降。
 
 这对于 Windows Server AD DS 很重要，因为后写式磁盘缓存与 DC 作出的假设相悖。 Windows Server AD DS 尝试禁用写入缓存，但具体由磁盘 IO 系统执行。 在某些情况下，无法禁用写入缓存可能会引发 USN 回滚，导致延迟对象和其他问题。
 
@@ -495,7 +494,7 @@ Windows Server AD FS 联合服务器 (STS) 的配置在某种程度上依赖于�
 请参阅 [AD FS 2.0 Design Guide](https://technet.microsoft.com/library/dd807036)（AD FS 2.0 设计指南）中的 [AD FS 2.0 deployment topology considerations](https://technet.microsoft.com/library/gg982489)（AD FS 2.0 部署拓扑注意事项），决定哪些部署配置选项最适合特定需要。
 
 > [!NOTE]
-> 若要为 Azure 上的 Windows Server AD FS 终结点实现负载均衡，请在同一云服务中配置 Windows Server AD FS 场的所有成员，并将 Azure 的负载均衡功能用于 HTTP（默认 80）和 HTTPS 端口（默认 443）。 有关详细信息，请参阅 [Azure load-balancer probe](https://msdn.microsoft.com/library/azure/jj151530)（Azure 负载均衡器探测）。
+> 要为 Azure 上的 Windows Server AD FS 终结点实现负载均衡，请在同一云服务中配置 Windows Server AD FS 场的所有成员，并将 Azure 的负载均衡功能用于 HTTP（默认 80）和 HTTPS 端口（默认 443）。 有关详细信息，请参阅 [Azure load-balancer probe](https://msdn.microsoft.com/library/azure/jj151530)（Azure 负载均衡器探测）。
 > Azure 不支持 Windows Server 网络负载均衡 (NLB)。
 > 
 > 

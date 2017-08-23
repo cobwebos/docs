@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 05/23/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 20ca0abab5e17f82b94a31c1b2c9a0942ba9508a
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: d9ec4556d57ff1975a93d806237ad0c7416b9988
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="azure-database-for-mysql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Azure Database for MySQL 选项和性能：了解每个定价层提供的功能
@@ -52,6 +52,9 @@ ms.lasthandoff: 05/25/2017
 
 在预览时间范围内，在创建服务器之后无法更改定价层。 将来可以将服务器从某一定价层升级或降级到另一定价层。
 
+## <a name="understand-the-price"></a>了解价格
+在 [Azure 门户](https://portal.azure.com/#create/Microsoft.MySQLServer)内新建用于 PostgreSQL 的 Azure 数据库时，单击“定价层”边栏选项卡，系统会基于所选的选项显示每月费用。 如果没有 Azure 订阅，可使用 Azure 定价计算器获取估计价格。 访问 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)网站，然后单击“添加项”，展开“数据库”类别，并选择“用于 PostgreSQL 的 Azure 数据库”自定义选项。
+
 ## <a name="choose-a-performance-level-compute-units"></a>选择性能级别（计算单元）
 为 Azure Database for MySQL 服务器确定了定价层之后，便准备好通过选择所需计算单元数来确定性能级别。 对于对其 Web 和分析型工作负荷需要更高用户并发，并且根据需要进行递增调整的应用程序，良好的起点是 200 或 400 个计算单元。 
 
@@ -84,7 +87,7 @@ ms.lasthandoff: 05/25/2017
 
 每个性能级别中的 IOPS 配置都与所选的定价层和存储大小相关。 基本层不提供 IOPS 保证。 在标准定价层中，IOPS 以固定的 3:1 比率，按比例扩展到最大存储。 所含的 125 GB 存储保证预配 IOPS 为 375，其中每个 IO 的大小最多可达 256 KB。 可以选择最大为 1 TB 的额外存储，以保证 3,000 预配 IOPS。
 
-在 Azure 门户中监视指标图或编写 Azure CLI 命令以度量存储和 IOPS 的消耗。 要监视的相关指标是存储空间上限、存储百分比、已用存储和 IO 百分比。
+在 Azure 门户中监视指标图或编写 Azure CLI 命令以度量存储和 IOPS 的消耗。 要监视的相关指标是存储上限、存储百分比、已用存储和 IO 百分比。
 
 >[!IMPORTANT]
 > 在预览中，创建服务器时可选择存储量。 尚不支持更改现有服务器上的存储大小。 

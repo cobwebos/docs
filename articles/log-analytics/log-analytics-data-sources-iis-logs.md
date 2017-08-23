@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/23/2017
+ms.date: 07/12/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c6e2ecebf6cd1b246c155c158d12d4d83bd1feda
-ms.openlocfilehash: bda2da933accb769bae4c9b420ae330014fc2ba0
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 2114bdafb3b9fe2eb0632271840b8b70a76d10f1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/27/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="iis-logs-in-log-analytics"></a>Log Analytics 中的 IIS 日志
@@ -28,14 +27,14 @@ Internet 信息服务 (IIS) 会将用户活动存储在日志文件中，并可�
 ![IIS 日志](media/log-analytics-data-sources-iis-logs/overview.png)
 
 ## <a name="configuring-iis-logs"></a>配置 IIS 日志
-Log Analytics 会从 IIS 创建的日志文件中收集条目，因此，你必须[配置 IIS 以进行日志记录](https://technet.microsoft.com/library/hh831775.aspx)。
+Log Analytics 会从 IIS 创建的日志文件中收集条目，因此，必须[配置 IIS 以进行日志记录](https://technet.microsoft.com/library/hh831775.aspx)。
 
 Log Analytics 仅支持以 W3C 格式存储的 IIS 日志文件，不支持自定义字段或 IIS 高级日志记录。  
 Log Analytics 不会收集 NCSA 或 IIS 本机格式的日志。
 
 从 [Log Analytics 设置中的“数据”菜单](log-analytics-data-sources.md#configuring-data-sources)配置 Log Analytics 中的 IIS 日志。  只需选择**收集 W3C 格式 IIS 日志文件**，即可完成配置。
 
-当你启用 IIS 日志收集时，建议应在每台服务器上配置 IIS 日志变换更新设置。
+启用 IIS 日志收集时，建议应在每台服务器上配置 IIS 日志变换更新设置。
 
 ## <a name="data-collection"></a>数据收集
 Log Analytics 会从每个连接源收集 IIS 日志条目，时间间隔大约每 15 分钟。  代理会在将其收集到的每个事件日志的位置记录下来。  如果代理脱机，则 Log Analytics 会从上次离开的位置收集事件，即使这些事件是在代理脱机期间创建的。
@@ -78,9 +77,19 @@ IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 | Type=W3CIISLog csHost="www.contoso.com" &#124; Measure count() by csUriStem |按主机的 URL www.contoso.com 的 IIS 日志条目的计数。 |
 | Type=W3CIISLog &#124; Measure Sum(csBytes) by Computer &#124; top 500000 |每台 IIS 计算机接收的总字节数。 |
 
+>[!NOTE]
+> 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则上述查询会更改为如下所示。
+
+> | 查询 | 说明 |
+|:--- |:--- |
+| W3CIISLog |所有 IIS 日志记录。 |
+| W3CIISLog &#124; where scStatus==500 |返回状态为 500 的所有 IIS 日志记录。 |
+| W3CIISLog &#124; summarize count() by cIP |按客户端 IP 地址的 IIS 日志条目计数。 |
+| W3CIISLog &#124; where csHost=="www.contoso.com" &#124; summarize count() by csUriStem |按主机的 URL www.contoso.com 的 IIS 日志条目的计数。 |
+| W3CIISLog &#124; summarize sum(csBytes) by Computer &#124; take 500000 |每台 IIS 计算机接收的总字节数。 |
+
 ## <a name="next-steps"></a>后续步骤
 * 配置 Log Analytics 以收集其他[数据源](log-analytics-data-sources.md)进行分析。
 * 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。
-* 配置 Log Analytics 中的警报，以主动向你通知在 IIS 日志中找到的重要情况。
-
+* 在 Log Analytics 中配置警报，以主动通知你在 IIS 日志中找到的重要情况。
 

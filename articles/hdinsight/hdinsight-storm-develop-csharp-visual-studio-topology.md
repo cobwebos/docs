@@ -14,14 +14,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/23/2017
+ms.date: 08/02/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 9447cf1919cacee5319afe559e7745e5d218fb0d
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 3ee89b6644ba395e0a6c28ecc2c082c2f7393ac8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 Apache Storm 的 C# 拓扑
@@ -121,6 +120,9 @@ namespace ConsoleApplication2
 | Storm HBase 写入器示例 |如何写入 HDInsight 群集上的 HBase。 |
 | Storm 混合示例 |如何使用 Java 组件。 |
 | Storm 示例 |基本的字数统计拓扑。 |
+
+> [!WARNING]
+> 并非所有的模板都可用于基于 Linux 的 HDInsight。 模板使用的 NuGet 程序包可能与 Mono 不兼容。 查看 [Mono 兼容性](http://www.mono-project.com/docs/about-mono/compatibility/)文档并使用 [.NET Portability Analyzer](hdinsight-hadoop-migrate-dotnet-to-linux.md#automated-portability-analysis) 确定潜在问题。
 
 在本文档的步骤中，使用基本 Storm 应用程序项目类型创建拓扑。
 
@@ -238,7 +240,7 @@ HBase 读取器和写入器模板使用 HBase REST API（而不是 HBase Java AP
      > [!NOTE]
      > 这些 Bolt 读取和写入流，但是你也可以使用 Bolt 来与数据库或服务等源进行通信。
 
-3. 打开 **Splitter.cs**。 默认情况下它只包含一个方法：**Execute**。 在 Bolt 收到要处理的元组时将调用 Execute 方法。 此时，可读取和处理传入元组，以及发出传出元组。
+3. 打开 **Splitter.cs**。 默认情况下它只包含一个方法：**Execute**。 在 Bolt 收到要处理的元组时会调用 Execute 方法。 此时，可读取和处理传入元组，以及发出传出元组。
 
 4. 将 **Splitter** 类的内容替换为以下代码：
 
@@ -479,7 +481,7 @@ return topologyBuilder;
 
 * 应使用 **microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer** 将传入或传出 Java 组件的数据从 Java 对象序列化为 JSON。
 
-* 将拓扑提交到服务器时，必须使用“其他配置”选项指定 **Java 文件路径**。 指定的路径应该是包含 JAR 文件的目录，而 JAR 文件包含你的 Java 类
+* 将拓扑提交到服务器时，必须使用“其他配置”选项指定 **Java 文件路径**。 指定的路径应该是包含 JAR 文件的目录，而 JAR 文件包含 Java 类
 
 ### <a name="azure-event-hubs"></a>Azure 事件中心
 
@@ -492,7 +494,7 @@ SCP.NET 版本 0.9.4.203 引入了专用于事件中心 Spout（从事件中心�
 > [!NOTE]
 > 仍必须使用 **CustomizedInteropJSONSerializer** 序列化 Spout 生成的数据。
 
-## <a id="configurationmanager"></a>使用 ConfigurationManager
+## <a id="configurationmanager"></a>使用 Configuration Manager
 
 请勿使用 **ConfigurationManager** 从 Bolt 和 Spout 组件检索配置值。 这样做会导致空指针异常。 而项目的配置将作为拓扑上下文中的键值对传递到 Storm 拓扑中。 对于依赖于配置值的每个组件，必须在初始化期间从上下文中检索它们。
 
@@ -535,13 +537,13 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 1. 在“解决方案资源管理器”中，右键单击项目，然后选择“管理 NuGet 包”。
 
-2. 从包管理器中选择“更新”。 有可用更新时将列出。 单击“更新”让包安装更新。
+2. 从包管理器中选择“更新”。 有可用更新时会列出。 单击“更新”让包安装更新。
 
 > [!IMPORTANT]
 > 如果项目是通过未使用 NuGet 的旧版 SCP.NET 创建的，则必须执行以下步骤以更新到更新版本：
 >
 > 1. 在“解决方案资源管理器”中，右键单击项目，然后选择“管理 NuGet 包”。
-> 2. 使用“搜索”字段搜索 **Microsoft.SCP.Net.SDK**，然后将其添加到项目中。
+> 2. 使用“搜索”字段搜索 **Microsoft.SCP.Net.SDK**，并将其添加到项目中。
 
 ## <a name="troubleshoot-common-issues-with-topologies"></a>排查使用拓扑的常见问题
 
@@ -565,12 +567,12 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 ### <a name="test-a-topology-locally"></a>在本地测试拓扑
 
-虽然很容易就可以将拓扑部署到群集，但是，在某些情况下，你可能需要在本地测试拓扑。 使用以下步骤，在开发环境上本地执行和测试本教程中的示例拓扑。
+虽然很容易就可以将拓扑部署到群集，但是，在某些情况下，可能需要在本地测试拓扑。 使用以下步骤，在开发环境上本地执行和测试本教程中的示例拓扑。
 
 > [!WARNING]
 > 本地测试只适用于仅限 C# 的基本拓扑。 不能将本地测试用于混合拓扑或使用多个流的拓扑。
 
-1. 在“解决方案资源管理器”中，右键单击项目，然后选择“属性”。 在项目属性中，将“输出类型”更改为“控制台应用程序”。
+1. 在“解决方案资源管理器”中，右键单击项目，并选择“属性”。 在项目属性中，将“输出类型”更改为“控制台应用程序”。
 
     ![突出显示“输出类型”的项目属性屏幕截图](./media/hdinsight-storm-develop-csharp-visual-studio-topology/outputtype.png)
 
@@ -689,7 +691,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 2. 保存更改，然后单击“F5”，或选择“调试” > “开始调试”以启动项目。 随后应会出现一个控制台窗口，并记录测试进行的状态。 出现“测试已完成”后，请按任意键关闭窗口。
 
-3. 使用“Windows 资源管理器”找到包含项目的目录。 例如：**C:\Users\<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount**。 在此目录中打开 **Bin**，然后单击“调试”。 应可看到运行测试时生成的文本文件：sentences.txt、counter.txt 和 splitter.txt。 打开每个文本文件并检查数据。
+3. 使用“Windows 资源管理器”找到包含项目的目录。 例如：**C:\Users\<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount**。 在此目录中打开 **Bin**，并单击“调试”。 应可看到运行测试时生成的文本文件：sentences.txt、counter.txt 和 splitter.txt。 打开每个文本文件并检查数据。
 
    > [!NOTE]
    > 字符串数据保存为这些文件中的十进制值数组。 例如，**splitter.txt** 文件中的 \[[97,103,111]] 是单词 *and*。
@@ -699,7 +701,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 ### <a name="log-information"></a>记录信息
 
-你可以使用 `Context.Logger` 轻松记录拓扑组件中的信息。 例如，以下代码会创建一个信息日志条目：
+可以使用 `Context.Logger` 轻松记录拓扑组件中的信息。 例如，以下代码会创建一个信息日志条目：
 
 ```csharp
 Context.Logger.Info("Component started");
@@ -714,7 +716,7 @@ Context.Logger.Info("Component started");
 
 若要查看运行中拓扑中所发生的错误，请使用以下步骤：
 
-1. 在“服务器资源管理器”中，右键单击 Storm on HDInsight 群集，然后选择“查看 Storm 拓扑”。
+1. 在“服务器资源管理器”中，右键单击 Storm on HDInsight 群集，并选择“查看 Storm 拓扑”。
 
 2. 对于 **Spout** 和 **Bolt**，“上一错误”列包含有关上次发生的错误的信息。
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/13/2017
+ms.date: 08/01/2017
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: b5085f98d01c91ecabb690ad2aaf5992b707f302
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 1324bed07e991e9d84cb6832afe78bdb2d3348fa
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager 模板函数
@@ -58,6 +58,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 * [empty](resource-group-template-functions-array.md#empty)
 * [first](resource-group-template-functions-array.md#first)
 * [intersection](resource-group-template-functions-array.md#intersection)
+* [json](resource-group-template-functions-array.md#json)
 * [last](resource-group-template-functions-array.md#last)
 * [length](resource-group-template-functions-array.md#length)
 * [min](resource-group-template-functions-array.md#min)
@@ -104,6 +105,15 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 <a id="mul" />
 <a id="sub" />
 
+## <a name="logical-functions"></a>逻辑函数
+资源管理器提供以下用于逻辑条件的函数：
+
+* [and](resource-group-template-functions-logical.md#and)
+* [bool](resource-group-template-functions-logical.md#bool)
+* [if](resource-group-template-functions-logical.md#if)
+* [not](resource-group-template-functions-logical.md#not)
+* [or](resource-group-template-functions-logical.md#or)
+
 ## <a name="numeric-functions"></a>数值函数
 Resource Manager 提供以下用于处理整数的函数：
 
@@ -139,7 +149,6 @@ Resource Manager 提供以下用于获取资源值的函数：
 <a id="base64" />
 <a id="base64tojson" />
 <a id="base64tostring" />
-<a id="bool" />
 <a id="concat" />
 <a id="containsstring" />
 <a id="datauri" />
@@ -173,7 +182,6 @@ Resource Manager 提供以下用于处理字符串的函数：
 * [base64](resource-group-template-functions-string.md#base64)
 * [base64ToJson](resource-group-template-functions-string.md#base64tojson)
 * [base64ToString](resource-group-template-functions-string.md#base64tostring)
-* [bool](resource-group-template-functions-string.md#bool)
 * [concat](resource-group-template-functions-string.md#concat)
 * [contains](resource-group-template-functions-string.md#contains)
 * [dataUri](resource-group-template-functions-string.md#datauri)
@@ -204,7 +212,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure Resource Manager 模板中各部分的说明，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）
-* 若要合并多个模板，请参阅 [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md)（将链接的模板与 Azure Resource Manager 配合使用）
+* 要合并多个模板，请参阅 [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md)（将链接的模板与 Azure Resource Manager 配合使用）
 * 若要在创建资源类型时迭代指定的次数，请参阅 [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)（在 Azure Resource Manager 中创建多个资源实例）
 * 若要查看如何部署已创建的模板，请参阅 [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md)（使用 Azure Resource Manager 模板部署应用程序）
 

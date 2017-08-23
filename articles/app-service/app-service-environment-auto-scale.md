@@ -1,5 +1,5 @@
 ---
-title: "自动缩放和应用服务环境 | Microsoft Docs"
+title: "自动缩放和应用服务环境 v1"
 description: "自动缩放和应用服务环境"
 services: app-service
 documentationcenter: 
@@ -12,17 +12,22 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
-ms.author: byvinyal
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 41ad9eb4d248b1f3e6c888c3037b121511799193
-ms.lasthandoff: 12/08/2016
-
+ms.date: 7/11/2017
+ms.author: ccompy
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: f32affd285f3918feb0e893543f2a28f678b7b10
+ms.contentlocale: zh-cn
+ms.lasthandoff: 07/26/2017
 
 ---
-# <a name="autoscaling-and-app-service-environment"></a>自动缩放和应用服务环境
-Azure App Service 环境支持*自动调整规模*。 可以根据指标或计划自动缩放各个辅助池。
+# <a name="autoscaling-and-app-service-environment-v1"></a>自动缩放和应用服务环境 v1
+
+> [!NOTE]
+> 本文介绍应用服务环境 v1。  应用服务环境有一个较新版本，此版本更易于使用并在更强大的基础结构上运行。 若要深入了解新版本，请先参阅[应用服务环境简介](../app-service/app-service-environment/intro.md)。
+> 
+
+Azure 应用服务环境支持*自动调整规模*。 可以根据指标或计划自动缩放各个辅助池。
 
 ![辅助池的自动缩放选项。][intro]
 

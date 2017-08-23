@@ -3,7 +3,7 @@ title: "设置独立的 Azure Service Fabric 群集 | Microsoft Docs"
 description: "创建一个独立的开发群集，在同一计算机上运行三个节点。 完成此设置后，即可开始创建多机群集。"
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: dkkapur
 manager: timlt
 editor: 
 ms.assetid: 
@@ -13,13 +13,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/06/2017
-ms.author: ryanwi
+ms.author: dekapur
 ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: a96150a6a7f83d1c220e0450f7704634a1f6ed1b
 ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
-
 
 ---
 
