@@ -67,7 +67,7 @@ ms.lasthandoff: 08/07/2017
 使用以下清单排查无缝 SSO 问题：
 
 - 在 Azure AD Connect 中检查是否已启用无缝 SSO 功能。 如果无法启用该功能（例如，由于端口被阻止），请确保事先满足所有[先决条件](active-directory-aadconnect-sso-quick-start.md#step-1-check-prerequisites)。
-- 检查是否两个 Azure AD URL（https://autologon.microsoftazuread-sso.com 和 https://aadg.windows.net.nsatc.net）均为用户 Intranet 区域设置的一部分。
+- 检查是否两个 Azure AD URL （https://autologon.microsoftazuread-sso.com 和 https://aadg.windows.net.nsatc.net） 均为用户 Intranet 区域设置的一部分。
 - 确保企业设备已加入 AD 域。
 - 确保用户使用 AD 域帐户登录到设备。
 - 确保用户的帐户来自已设置了无缝 SSO 的 AD 林。

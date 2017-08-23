@@ -123,8 +123,7 @@ ms.lasthandoff: 08/07/2017
 
 **问：**可在何处请求新功能？
 
-
-            **答：**可以在 [Web 应用反馈论坛](https://aka.ms/webapps-uservoice)提交建议。 请将“[Linux]”添加到建议的标题中。
+**答：**可以在 [Web 应用反馈论坛](https://aka.ms/webapps-uservoice)提交建议。 请将“[Linux]”添加到建议的标题中。
 
 ## <a name="next-steps"></a>后续步骤
 * [什么是 Linux 上的 Azure Web 应用？](app-service-linux-intro.md)
