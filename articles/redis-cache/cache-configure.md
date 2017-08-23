@@ -1,4 +1,4 @@
----
+﻿---
 title: "如何配置 Azure Redis 缓存 | Microsoft Docs"
 description: "了解 Azure Redis 缓存的默认 Redis 配置，并了解如何配置 Azure Redis 缓存实例"
 services: redis-cache
