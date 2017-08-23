@@ -14,7 +14,6 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: anwestg
-ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: 98d1e2ad162f4b69be4fdf9a5b004f640fbb5d7e
