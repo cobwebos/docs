@@ -5,7 +5,7 @@ metadata:
   document_id: c0fe8cd3-35da-e3e5-718e-8f3cf2f87f34
   title: Azure PostgreSQL 文档 - 教程和 API 参考
   description: 用于 PostgreSQL 的 Azure 数据库是 Microsoft 云中基于开源 PostgreSQL 数据库引擎的、为开发人员构建的关系型数据库服务。
-  services: app-service
+  services: postgresql
   author: jasonwhowell
   manager: jhubbard
   ms.service: postgresql

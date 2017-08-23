@@ -53,7 +53,7 @@ ADFS 管理员可以使用[添加登录页说明](https://docs.microsoft.com/win
 
 在 ADFS 服务器上使用随后的命令可添加 ADFS 登录页链接，从而使用户可以直接进入自助服务密码重置工作流。
 
-``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href=’https://passwordreset.microsoftonline.com’>Can’t access your account?<A/></p>" ```
+``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href=’https://passwordreset.microsoftonline.com’>Can’t access your account?</A></p>" ```
 
 ## <a name="customize-the-sign-in-and-access-panel-look-and-feel"></a>自定义登录页和访问面板的外观
 

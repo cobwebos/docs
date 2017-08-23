@@ -203,7 +203,7 @@ ms.lasthandoff: 08/04/2017
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
 
-此操作会在 Azure DNS 中打开应用服务域的“DNS 区域”页。[](../dns/dns-zones-records.md) 有关如何编辑 DNS 记录的信息，请参阅[如何在 Azure 门户中管理 DNS 区域](../dns/dns-operations-dnszones-portal.md)。
+此操作会在 Azure DNS 中打开应用服务域的[“DNS 区域”](../dns/dns-zones-records.md)页。 有关如何编辑 DNS 记录的信息，请参阅[如何在 Azure 门户中管理 DNS 区域](../dns/dns-operations-dnszones-portal.md)。
 
 ## <a name="cancel-purchase-delete-domain"></a>取消购买（删除域）
 
