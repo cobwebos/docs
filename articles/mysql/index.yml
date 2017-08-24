@@ -20,7 +20,7 @@ sections:
 - title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: 了解如何通过以下方式创建 Azure 上的 MySQL 数据库：
+    text: 了解如何通过以下方式创建 MySQL Database on Azure：
   - type: list
     style: icon48
     items: 
