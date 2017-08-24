@@ -64,12 +64,12 @@
 ### [来自模板的 Linux VM](../../virtual-machines/virtual-machines-linux-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [来自模板的 Windows VM](../../virtual-machines/virtual-machines-windows-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## 存储数据
-### [Blob](../../storage/storage-dotnet-how-to-use-blobs.md)
-### [文件共享](../../storage/storage-dotnet-how-to-use-files.md)
-### [键-值对](../../storage/storage-dotnet-how-to-use-tables.md)
+### [Blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)
+### [文件共享](../../storage/files/storage-dotnet-how-to-use-files.md)
+### [键-值对](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 ### [JSON 文档](../../documentdb/documentdb-get-started.md)
 ### [关系表](../../sql-database/sql-database-get-started.md)
-### [消息队列](../../storage/storage-dotnet-how-to-use-queues.md)
+### [消息队列](../../storage/queues/storage-dotnet-how-to-use-queues.md)
 
 ## 缩放
 ### [Web 和移动应用](../../app-service-web/web-sites-scale.md)
