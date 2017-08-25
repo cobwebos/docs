@@ -72,7 +72,7 @@ SHOWHOST = 'false'
 使用 [docker-compose](https://docs.docker.com/compose/) 重新创建前端映像并运行更新的应用程序。
 
 ```bash
-docker-compose -f ./azure-voting-app-redis/docker-compose.yaml up --build -d
+docker-compose -f ./azure-voting-app-redis/docker-compose.yml up --build -d
 ```
 
 ## <a name="test-application-locally"></a>在本地测试应用程序

@@ -7,7 +7,7 @@
 * 应用服务缩放最佳做法
   
   * 端口消耗和连接池
-  * [利用应用服务应用的 Azure 存储](../articles/storage/storage-dotnet-how-to-use-blobs.md)
+  * [利用应用服务应用的 Azure 存储](../articles/storage/blobs/storage-dotnet-how-to-use-blobs.md)
   * [利用应用服务应用的 Azure CDN](../articles/cdn/cdn-overview.md)
   * [利用应用服务应用的 Azure Redis 缓存](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md)
 * 地理分布

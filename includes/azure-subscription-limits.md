@@ -2,7 +2,7 @@
 | --- | --- | --- |
 | 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的核心数 <sup>1</sup> |20 |10,000 |
 | 每个订阅的[共同管理员数](../articles/billing-add-change-azure-subscription-administrator.md) |200 |200 |
-| 每个订阅的[存储帐户数](../articles/storage/storage-create-storage-account.md)<sup>2</sup> |200 |250 |
+| 每个订阅的[存储帐户数](../articles/storage/common/storage-create-storage-account.md)<sup>2</sup> |200 |250 |
 | 每个订阅的[云服务数](../articles/cloud-services/cloud-services-choose-me.md) |20 |200 |
 | 每个订阅的[本地网络数](http://msdn.microsoft.com/library/jj157100.aspx) |10 |500 |
 | 每个订阅的 SQL 数据库服务器数 |6 |150 |
@@ -14,5 +14,5 @@
 
 <sup>1</sup>特小实例作为一项核心至核心限制计数，即使使用了部分核心。
 
-<sup>2</sup>这包括标准和高级存储帐户。 如果需要的存储帐户超过 100 个，请通过 [Azure 支持](https://azure.microsoft.com/support/faq/)提出请求。 Azure 存储空间团队将评审你的业务案例，最多可以批准 250 个存储帐户。 
+<sup>2</sup>这包括标准和高级存储帐户。 如果需要的存储帐户超过 100 个，请通过 [Azure 支持](https://azure.microsoft.com/support/faq/)提出请求。 Azure 存储团队将评审业务案例，最多可以批准 250 个存储帐户。 
 

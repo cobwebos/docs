@@ -14,27 +14,24 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/07/2017
+ms.date: 08/21/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 5e9cae224e5a36e1529c962ad8cbab77176dda8c
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 370b2f081930fe88527436a1a127309aed6681f0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>在 Azure HDInsight 中使用安全传输存储帐户创建 Hadoop 群集
 
-[需要安全传输](../storage/storage-require-secure-transfer.md)功能强制提交到帐户的所有请求都通过安全连接来进行，从而增强 Azure 存储帐户的安全性。 仅 HDInsight 群集 3.6 或更高版本支持此功能和 wasbs 方案。 
-
->[!NOTE] 
-> 目前不支持使用 .NET SDK 通过启用安全传输的存储帐户创建群集。 解决方法是在作为 ClusterCreateParametersExtended 一部分的 core-site 配置的“fs.defaultFS”属性中设置“wasbs”。
+[需要安全传输](../storage/common/storage-require-secure-transfer.md)功能强制提交到帐户的所有请求都通过安全连接来进行，从而增强 Azure 存储帐户的安全性。 仅 HDInsight 群集 3.6 或更高版本支持此功能和 wasbs 方案。 
 
 ## <a name="prerequisites"></a>先决条件
 开始学习本教程之前，必须做好以下准备：
 
 * **Azure 订阅**：若要创建一个月的免费试用帐户，请访问 [azure.microsoft.com/free](https://azure.microsoft.com/free)。
-* 启用安全传输的 Azure 存储帐户。 有关说明，请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)和[需要安全传输](../storage/storage-require-secure-transfer.md)。
+* 启用安全传输的 Azure 存储帐户。 有关说明，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)和[需要安全传输](../storage/common/storage-require-secure-transfer.md)。
 * 存储帐户中的 Blob 容器。 
 ## <a name="create-cluster"></a>创建群集
 

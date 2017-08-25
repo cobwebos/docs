@@ -17,10 +17,10 @@ ms.date: 8/11/2017
 ms.author: markgal;trinadhk;anuragm
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 7cc29feaf7411bac1d081f7f7aa3daf92fae88d1
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 5a6aad672ddaa43f993daf4cf48975e91d2657da
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure 备份功能概述
@@ -35,7 +35,7 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 
 **无限缩放** - Azure 备份利用 Azure 云的基础功能和无限缩放功能实现高可用性 - 无需维护或监视开销。 可设置警报来获取相关事件信息，但无需担忧云端数据的高可用性。
 
-**多个存储选项** - 高可用性的一个方面是存储复制。 Azure 备份提供两种类型的复制：[本地冗余存储](../storage/storage-redundancy.md#locally-redundant-storage)和[异地冗余存储](../storage/storage-redundancy.md#geo-redundant-storage)。 根据需要选择备份存储选项：
+**多个存储选项** - 高可用性的一个方面是存储复制。 Azure 备份提供两种类型的复制：[本地冗余存储](../storage/common/storage-redundancy.md#locally-redundant-storage)和[异地冗余存储](../storage/common/storage-redundancy.md#geo-redundant-storage)。 根据需要选择备份存储选项：
 
 * 本地冗余存储 (LRS) 将同一区域的成对数据中心内的数据复制三次（创建三个数据副本）。 LRS 是一种低成本选项，用于保护数据免受本地硬件故障的影响。
 
@@ -95,10 +95,10 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 | Azure IaaS VM 备份 |应用程序一致性备份，使用[前脚本和后脚本框架](backup-azure-linux-app-consistent.md)<br/> [精细文件恢复](backup-azure-restore-files-from-vm.md)<br/> [还原所有 VM 磁盘](backup-azure-arm-restore-vms.md#restore-backed-up-disks)<br/> [VM 还原](backup-azure-arm-restore-vms.md#create-a-new-vm-from-restore-point) |
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>结合使用高级存储 VM 和 Azure 备份
-Azure 备份会保护高级存储 VM。 Azure 高级存储是基于固态硬盘 (SSD) 的存储，用于支持 I/O 密集型工作负荷。 高级存储很适合虚拟机 (VM) 工作负荷。 有关高级存储的详细信息，请参阅[高级存储：Azure 虚拟机工作负荷的高性能存储](../storage/storage-premium-storage.md)一文。
+Azure 备份会保护高级存储 VM。 Azure 高级存储是基于固态硬盘 (SSD) 的存储，用于支持 I/O 密集型工作负荷。 高级存储很适合虚拟机 (VM) 工作负荷。 有关高级存储的详细信息，请参阅[高级存储：Azure 虚拟机工作负荷的高性能存储](../storage/common/storage-premium-storage.md)一文。
 
 ### <a name="back-up-premium-storage-vms"></a>备份高级存储 VM
-在备份高级存储 VM 时，备份服务在高级存储帐户中创建名为“AzureBackup-”的临时暂存位置。 暂存位置大小与恢复点快照大小相同。 请确保高级存储帐户有足够的可用空间，可以容纳临时暂存位置。 有关详细信息，请参阅[高级存储限制](../storage/storage-premium-storage.md#scalability-and-performance-targets)一文。 备份作业完成后，将删除暂存位置。 用于暂存位置的存储的价格与所有 [高级存储定价](../storage/storage-premium-storage.md#pricing-and-billing)一致。
+在备份高级存储 VM 时，备份服务在高级存储帐户中创建名为“AzureBackup-”的临时暂存位置。 暂存位置大小与恢复点快照大小相同。 请确保高级存储帐户有足够的可用空间，可以容纳临时暂存位置。 有关详细信息，请参阅[高级存储限制](../storage/common/storage-premium-storage.md#scalability-and-performance-targets)一文。 备份作业完成后，将删除暂存位置。 用于暂存位置的存储的价格与所有 [高级存储定价](../storage/common/storage-premium-storage.md#pricing-and-billing)一致。
 
 > [!NOTE]
 > 请不要修改或编辑暂存位置。
@@ -199,7 +199,7 @@ Azure 备份代理提供网络限制功能，可用于控制数据传输期间�
 
 ## <a name="backup-and-retention"></a>备份和保留
 
-Azure 备份针对每个受保护实例实施 9999 个恢复点（也称为备份副本或快照）的限制。 受保护的实例是计算机、服务器（物理或虚拟）或配置为向 Azure 备份数据的工作负荷。 有关详细信息，请参阅[什么是受保护实例](backup-introduction-to-azure-backup.md#what-is-a-protected-instance)部分。 保存数据的备份副本时，将保护实例。 数据的备份副本是保护项。 如果源数据丢失或损坏，备份副本可还原源数据。 下表显示了每个组件的最大备份频率。 备份策略配置确定了恢复点的消耗速度。 例如，如果每天创建一个恢复点，可以保留恢复点 27 年，27 年后配额会耗尽。 如果每月创建一个恢复点，可以保留恢复点 833 年。 备份服务未针对恢复点实施过期时间限制。
+Azure 备份针对每个受保护实例实施 9999 个恢复点（也称为备份副本或快照）的限制。 受保护的实例是计算机、服务器（物理或虚拟）或配置为向 Azure 备份数据的工作负荷。 有关详细信息，请参阅[什么是受保护实例](backup-introduction-to-azure-backup.md#what-is-a-protected-instance)部分。 保存数据的备份副本时，将保护实例。 数据的备份副本是保护项。 如果源数据丢失或损坏，备份副本可还原源数据。 下表显示了每个组件的最大备份频率。 备份策略配置确定了恢复点的消耗速度。 例如，如果每天创建一个恢复点，可以保留恢复点 27 年，27 年后配额会耗尽。如果每月创建一个恢复点，可以保留恢复点 833 年。备份服务未针对恢复点实施过期时间限制。
 
 |  | Azure 备份代理 | System Center DPM | Azure 备份服务器 | Azure IaaS VM 备份 |
 | --- | --- | --- | --- | --- |

@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 06/06/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 99bb3db7cc80e8426e1dca14bc3d733ee6c7342c
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2875f4089231ed12a0312b2c2e077938440365c6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/07/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-a-private-docker-container-registry-using-the-azure-cli-20"></a>使用 Azure CLI 2.0 创建专用 Docker 容器注册表
@@ -33,16 +33,16 @@ ms.lasthandoff: 06/07/2017
 
 
 ## <a name="prerequisites"></a>先决条件
-* **Azure CLI 2.0**：若要安装并开始使用 CLI 2.0，请参阅[安装说明](/cli/azure/install-azure-cli)。 运行 `az login` 登录到你的 Azure 订阅。 有关详细信息，请参阅 [CLI 2.0 入门](/cli/azure/get-started-with-azure-cli)。
+* **Azure CLI 2.0**：若要安装并开始使用 CLI 2.0，请参阅[安装说明](/cli/azure/install-azure-cli)。 运行 `az login` 登录到 Azure 订阅。 有关详细信息，请参阅 [CLI 2.0 入门](/cli/azure/get-started-with-azure-cli)。
 * **资源组**：在创建容器注册表之前创建[资源组](../azure-resource-manager/resource-group-overview.md#resource-groups)，或使用现有资源组。 请确保该资源组位于[提供](https://azure.microsoft.com/regions/services/)容器注册表服务的位置。 若要使用 CLI 2.0 创建资源组，请查看 [CLI 2.0 参考](/cli/azure/group)。
-* **存储帐户**（可选）：创建一个标准的 Azure [存储帐户](../storage/storage-introduction.md)，用于在同一位置备份容器注册表。 如果使用 `az acr create` 创建注册表时未指定存储帐户，该命令将自动创建一个存储帐户。 若要使用 CLI 2.0 创建存储帐户，请查看 [CLI 2.0 参考](/cli/azure/storage/account)。 当前不支持高级存储。
+* **存储帐户**（可选）：创建一个标准的 Azure [存储帐户](../storage/common/storage-introduction.md)，用于在同一位置备份容器注册表。 如果使用 `az acr create` 创建注册表时未指定存储帐户，该命令会自动创建一个存储帐户。 若要使用 CLI 2.0 创建存储帐户，请查看 [CLI 2.0 参考](/cli/azure/storage/account)。 当前不支持高级存储。
 * **服务主体**（可选）：使用 CLI 创建注册表时，默认情况下不会为该注册表设置访问权限。 可以根据需要将现有 Azure Active Directory 服务主体分配到注册表（或创建并分配新的服务主体），或者启用注册表的管理员用户帐户。 请参阅本文稍后的部分。 有关注册表访问权限的详细信息，请参阅 [Authenticate with the container registry](container-registry-authentication.md)（使用容器注册表进行身份验证）。
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 运行 `az acr create` 命令可以创建容器注册表。
 
 > [!TIP]
-> 创建注册表时，请指定仅包含字母和数字的全局唯一顶级域名。 示例中的注册表名称为 `myRegistry1`，但需要将它替换为你自己的唯一名称。
+> 创建注册表时，请指定仅包含字母和数字的全局唯一顶级域名。 示例中的注册表名称为 `myRegistry1`，但需要将它替换成自己的唯一名称。
 >
 >
 
@@ -86,7 +86,7 @@ az acr create --name myRegistry1 --resource-group myResourceGroup --sku Basic
 * `loginServer` - 为[登录到注册表](container-registry-authentication.md)而指定的完全限定名称。 在本示例中，名称为 `myregistry1.exp.azurecr.io`（全部小写）。
 
 ## <a name="assign-a-service-principal"></a>分配服务主体
-使用 CLI 2.0 命令可将 Azure Active Directory 服务主体分配到注册表。 为这些示例中的服务主体分配了“所有者”角色，但你可以根据需要分配[其他角色](../active-directory/role-based-access-control-configure.md)。
+使用 CLI 2.0 命令可将 Azure Active Directory 服务主体分配到注册表。 为这些示例中的服务主体分配了“所有者”角色，但可以根据需要分配[其他角色](../active-directory/role-based-access-control-configure.md)。
 
 ### <a name="create-a-service-principal-and-assign-access-to-the-registry"></a>创建服务主体并分配注册表访问权限
 在以下命令中，新服务主体有权以“所有者”角色身份访问使用 `--scopes` 参数传递的注册表标识符。 使用 `--password` 参数指定一个强密码。
@@ -98,7 +98,7 @@ az ad sp create-for-rbac --scopes /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx
 
 
 ### <a name="assign-an-existing-service-principal"></a>分配现有的服务主体
-如果你已有一个服务主体并想要为它分配对注册表的“所有者”角色访问权限，请运行类似于以下示例的命令。 使用 `--assignee` 参数传递服务主体应用 ID：
+如果已有一个服务主体并想要为它分配对注册表的“所有者”角色访问权限，请运行类似于以下示例的命令。 使用 `--assignee` 参数传递服务主体应用 ID：
 
 ```azurecli
 az role assignment create --scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/Microsoft.ContainerRegistry/registries/myregistry1 --role Owner --assignee myAppId
