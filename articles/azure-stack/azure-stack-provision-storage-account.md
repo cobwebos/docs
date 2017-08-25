@@ -14,16 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 3/1/2017
 ms.author: victorh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 1a0e04d3a5d4c90484c9323097daf1a84c29d6ba
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: de32c0ce79e8357274cc19cd1ea4ec23b85b918f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/06/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
-<a id="storage-accounts-in-azure-stack" class="xliff"></a>
-# Storage accounts in Azure Stack
+# <a name="storage-accounts-in-azure-stack"></a>Storage accounts in Azure Stack
 Storage accounts include Blob and Table services, and the unique namespace for your storage data objects. By default, the data in your account is available only to you, the storage account owner.
 
 1. On the Azure Stack POC computer, log in to `https://adminportal.local.azurestack.external` as [an admin](azure-stack-connect-azure-stack.md), and then click **New** > **Data + Storage** > **Storage account**.
@@ -36,11 +34,10 @@ Storage accounts include Blob and Table services, and the unique namespace for y
 
     ![](media/azure-stack-provision-storage-account/image03.png)
 
-<a id="next-steps" class="xliff"></a>
-### Next steps
+### <a name="next-steps"></a>Next steps
 [Use Azure Resource Manager templates](azure-stack-arm-templates.md)
 
-[Learn about Azure storage accounts](../storage/storage-create-storage-account.md)
+[Learn about Azure storage accounts](../storage/common/storage-create-storage-account.md)
 
 [Download the Azure Stack Azure-consistent Storage Validation Guide](http://aka.ms/azurestacktp1doc)
 

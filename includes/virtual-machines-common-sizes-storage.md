@@ -13,7 +13,7 @@ ACU：180-240
 | Standard_L32s* | 32 | 256  | 5,630 | 64             | NA/NA (0)          | 40,000 / 1,000                            | 8 / 20000 | 
  
 
-Ls 系列 VM 可能的最大磁盘吞吐量可能受限于任何附加磁盘的数量、大小和条带化。 有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../articles/storage/storage-premium-storage.md)。 
+Ls 系列 VM 可能的最大磁盘吞吐量可能受限于任何附加磁盘的数量、大小和条带化。 有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../articles/storage/common/storage-premium-storage.md)。 
 
 *实例对于专用于单个客户的硬件独立。
 
