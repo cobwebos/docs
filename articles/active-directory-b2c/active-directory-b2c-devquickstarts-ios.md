@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory B2C：使用 iOS 应用程序获取令牌 | Microsoft 文档"
+title: "使用 iOS 应用程序获取令牌 - Azure AD B2C | Microsoft Docs"
 description: "本文说明如何创建一个使用 AppAuth 和 Azure Active Directory B2C 来管理用户标识以及对用户进行身份验证的 iOS 应用。"
 services: active-directory-b2c
 documentationcenter: ios
-author: saeeda
+author: saeedakhter-msft
 manager: krassk
-editor: 
+editor: parakhj
 ms.assetid: d818a634-42c2-4cbd-bf73-32fa0c8c69d3
 ms.service: active-directory-b2c
 ms.workload: identity
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objectivec
 ms.topic: article
 ms.date: 03/07/2017
-ms.author: saeeda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 9756e9019d1f79c1fb17cf142daaaaca442722c7
+ms.author: saeedakhter-msft
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ebec5d910b8987dcc8155cd4ead00f87d219941c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C：使用 iOS 应用程序登录
@@ -34,7 +33,7 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 对于 OAuth2 或 OpenID Connect 的新手，该示例配置中的大部分内容可能较难理解。 建议查看 [此处所述的简要协议概述](active-directory-b2c-reference-protocols.md)。
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>获取 Azure AD B2C 目录
-只有在创建目录或租户之后，才可使用 Azure AD B2C。 目录是所有用户、应用、组等对象的容器。 如果没有容器，请先 [创建 B2C 目录](active-directory-b2c-get-started.md) ，然后再继续。
+只有在创建目录或租户之后，才可使用 Azure AD B2C。 目录是所有用户、应用、组等对象的容器。 如果没有容器，请先 [创建 B2C 目录](active-directory-b2c-get-started.md) ，再继续。
 
 ## <a name="create-an-application"></a>创建应用程序
 接下来，需要在 B2C 目录中创建应用。 应用注册为 Azure AD 提供所需的 Azure AD 信息，使之能够与应用安全通信。 若要创建移动应用，请遵循[这些说明](active-directory-b2c-app-registration.md)。 请务必：
@@ -125,7 +124,7 @@ appDelegate.currentAuthorizationFlow =
     }];
 ```
 
-若要将应用程序设置为处理重定向到使用自定义方案的 URI，需要在 Info.pList 中更新“URL 方案”列表：
+要将应用程序设置为处理重定向到使用自定义方案的 URI，需要在 Info.pList 中更新“URL 方案”列表：
 * 打开 Info.pList。
 * 将鼠标悬停在带有“BBundle OS 类型代码”字样的行上，然后单击 \+ 符号。
 * 将新行重命名为“URL 类型”。
@@ -135,7 +134,7 @@ appDelegate.currentAuthorizationFlow =
 * 单击“URL 方案”左侧的箭头打开该树。
 * 在“值”列中，“URL 方案”下面“项目 0”左侧具有空白字段。  将值设置为应用程序的唯一方案。  创建 OIDAuthorizationRequest 对象时，该值必须与 redirectURL 中使用的方案匹配。  本示例使用了方案“com.onmicrosoft.fabrikamb2c.exampleapp”。
 
-有关如何完成余下的过程，请参阅 [AppAuth 指南](https://openid.github.io/AppAuth-iOS/)。 如果需要快速开始创建一个正常运行的应用，请查看[我们的示例](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c)。 遵循 [README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) 中的步骤输入你自己的 Azure AD B2C 配置。
+有关如何完成余下的过程，请参阅 [AppAuth 指南](https://openid.github.io/AppAuth-iOS/)。 如果需要快速开始创建一个正常运行的应用，请查看[我们的示例](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c)。 遵循 [README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) 中的步骤输入自己的 Azure AD B2C 配置。
 
 我们始终乐于接受反馈和建议！ 如果在完成本主题的过程中遇到任何难题，或者在改进此内容方面有任何建议，请在页面底部提供反馈，我们将不胜感激。 对于功能请求，请将其添加到 [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)。
 

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: a5bc3a72eccc48ec26ef5f029d780175d66080c0
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3d0801053721f98ce7a2b0fcbe3c65da8dbdd8d3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>部署 StorSimple 虚拟阵列 - 准备 Azure 门户
@@ -144,13 +144,13 @@ StorSimple Device Manager 服务的单个实例可以管理多个 StorSimple 虚
 
 此步骤是可选的，只应在未通过服务启用自动创建存储帐户的情况下执行。
 
-如需在其他区域创建 Azure 存储帐户，请参阅[如何创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)以获取分步说明。
+如需在其他区域创建 Azure 存储帐户，请参阅[如何创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)以获取分步说明。
 
 在 [Azure 门户](https://ms.portal.azure.com/)的“StorSimple Device Manager 服务”页上执行以下步骤，添加现有的 Microsoft Azure 存储帐户。
 
 #### <a name="to-add-a-storage-account-credential-that-has-the-same-azure-subscription-as-the-device-manager-service"></a>添加与 Device Manager 服务具有相同 Azure 订阅的存储帐户凭据
 
-1. 导航到 Device Manager 服务，选择并双击它。 这将打开“概述”边栏选项卡。
+1. 导航到 Device Manager 服务，选择并双击它。 这会打开“概述”边栏选项卡。
 2. 在“配置”部分中，选择“存储帐户凭据”。
 3. 单击 **“添加”**。
 4. 在“添加存储帐户”边栏选项卡中，执行以下操作：
@@ -161,7 +161,7 @@ StorSimple Device Manager 服务的单个实例可以管理多个 StorSimple 虚
    
     3. 选择“启用”，创建用于在 StorSimple 设备和云之间传输网络通信的安全通道。 仅当要在私有云中操作时，才选择“禁用”。
    
-    4. 单击 **“添加”**。 成功创建存储帐户后，你将收到通知。<br></br>
+    4. 单击 **“添加”**。 成功创建存储帐户后，将收到通知。<br></br>
    
      ![添加现有的存储帐户凭据](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 

@@ -15,48 +15,62 @@ ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 3525661bd55aead07ce8d97464ba16393d28c04c
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 63a24f6b153390533bba0888fd1051508c65bf6e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Microsoft Azure 存储资源管理器（预览版）发行说明
 
-本文包含 Azure 存储资源管理器 0.8.15（预览版）以及之前版本的发行说明。
+本文包含 Azure 存储资源管理器 0.8.16（预览版）以及之前版本的发行说明。
 
 [Microsoft Azure 存储资源管理器（预览版）](./vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。
 
-## <a name="version-0815-preview"></a>版本 0.8.15（预览版）
-2017/7/13
+## <a name="version-0816-preview"></a>版本 0.8.16（预览版）
+8/21/2017
 
-### <a name="download-azure-storage-explorer-0815-preview"></a>下载 Azure 存储资源管理器 0.8.15（预览版）
-- [适用于 Windows 的 Azure 存储资源管理器 0.8.15（预览版）](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [适用于 Mac 的 Azure 存储资源管理器 0.8.15（预览版）](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [适用于 Linux 的 Azure 存储资源管理器 0.8.15（预览版）](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-0816-preview"></a>下载 Azure 存储资源管理器 0.8.16（预览版）
+- [适用于 Windows 的 Azure 存储资源管理器 0.8.16（预览版）](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [适用于 Mac 的 Azure 存储资源管理器 0.8.16（预览版）](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [适用于 Linux 的 Azure 存储资源管理器 0.8.16（预览版）](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>新建
+* 打开 Blob 时，如果检测到更改，存储资源管理器会提示上传已下载的文件
+* 增强的 Azure Stack 登录体验
+* 改善了同时上传/下载多个小型文件时的性能
 
-* 改进了 blob 上传和 blob 下载性能。
-* 改进了 blob 上传和 blob 下载的冲突文件体验。
-* 改进了在 blob 上传和 blob 下载期间显示的活动日志错误。
-* 将 blob 上传和下载的最大大小针对页 blob 增加为 8 TB，针对块 blob 增加为约 4.7 TB。
 
-### <a name="known-issues"></a>已知问题
+### <a name="fixes"></a>修复项
+* 对于某些 Blob 类型，在发生上传冲突期间选择“替换”有时会导致重新开始上传。 
+* 在版本 0.8.15 中，上传有时会停滞在 99%。
+* 将文件上传到文件共享时，如果选择上传到某个不存在的目录，上传将会失败。
+* 存储资源管理器为共享访问签名和表查询生成错误的时间戳。
 
-* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是 [Azure 存储节点库的局限性](https://github.com/Azure/azure-storage-node/issues/317)。
-* 完成 blob 上传后，系统会刷新启动上传的选项卡。 这是对以前行为的更改，也将导致回转到所在容器的根目录中。 
+
+已知问题
+* 目前无法正常使用名称和密钥连接字符串。 下一个版本会修复此问题。 在此之前，可以使用附加名称和密钥的功能。
+* 如果尝试打开具有无效 Windows 文件名的文件，下载操作会导致“找不到文件”错误。
+* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是 Azure 存储节点库的局限性。
+* 完成 blob 上传后，系统会刷新启动上传的选项卡。 这是对以前行为的更改，也将导致回转到所在容器的根目录中。
 * 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器使其忘记该选择。
-* 帐户设置面板可能显示需重新输入凭据才能筛选订阅。
+* 帐户设置面板可能显示需重新输入凭据以筛选订阅。
 * 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
-* Ubuntu 14.04 安装需要更新或升级 gcc 版本 - 升级步骤如下： 
-    * sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-    * sudo apt-get update
-    * sudo apt-get upgrade
-    * sudo apt-get dist-upgrade
-* 对于 Ubuntu 17.04 用户，需要安装 GConf - 通过运行以下命令，然后重启计算机即可完成： 
-    * sudo apt-get install libgconf-2-4
+* 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* 对于 Ubuntu 17.04 用户，需要安装 GConf - 通过运行以下命令，然后重启计算机即可完成：
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-0814-preview"></a>版本 0.8.14（预览版）
 2017/06/22
@@ -82,10 +96,16 @@ ms.lasthandoff: 08/02/2017
 * 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。 
 * Ubuntu 14.04 安装需要更新或升级 gcc 版本 - 升级步骤如下：
-    * sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-    * sudo apt-get update
-    * sudo apt-get upgrade
-    * sudo apt-get dist-upgrade
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+
+
 
 ## <a name="previous-releases"></a>以前的版本
 
@@ -104,6 +124,7 @@ ms.lasthandoff: 08/02/2017
 * [版本 0.7.20160129.1](#version-07201601291)
 * [版本 0.7.20160105.0](#version-07201601050)
 * [版本 0.7.20151116.0](#version-07201511160)
+
 
 ### <a name="version-0813"></a>版本 0.8.13
 05/12/2017
@@ -131,10 +152,14 @@ ms.lasthandoff: 08/02/2017
 * 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。 
 * Ubuntu 14.04 安装需要更新或升级 gcc 版本 - 升级步骤如下：
-    * sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-    * sudo apt-get update
-    * sudo apt-get upgrade
-    * sudo apt-get dist-upgrade
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
 
 ### <a name="version-0812--0811--0810"></a>版本 0.8.12/0.8.11/0.8.10
 2017/04/07
@@ -170,10 +195,14 @@ ms.lasthandoff: 08/02/2017
 * 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。 
 * Ubuntu 14.04 安装需要更新或升级 gcc 版本 - 升级步骤如下：
-    * sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-    * sudo apt-get update
-    * sudo apt-get upgrade
-    * sudo apt-get dist-upgrade
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
 
 ### <a name="version-089--088"></a>版本 0.8.9/0.8.8
 2017/02/23
@@ -243,7 +272,7 @@ ms.lasthandoff: 08/02/2017
 #### <a name="new"></a>新建
 
 * 现可将最常用服务固定到快速访问，从而实现轻松导航
-* 现可在不同选项卡中打开多个编辑器。 单击可打开临时选项卡；双击可打开永久选项卡。 也可通过单击临时选项卡，将其变为永久选项卡
+* 现可在不同选项卡中打开多个编辑器。 单击可打开临时选项卡；双击可打开永久选项卡。也可通过单击临时选项卡，将其变为永久选项卡
 * 已显著提升上传和下载的性能及稳定性，尤其是对于快速计算机上的大文件
 * 现可在 blob 容器中创建空白“虚拟”文件夹
 * 已重新引入通过新的增强子字符串搜索进行的限定范围搜索，因此现可通过两种方式进行搜索： 

@@ -16,10 +16,10 @@ ms.custom: performance
 ms.date: 6/2/2017
 ms.author: shigu;barbkess
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: a0452c4dedc218dff17404c4ecee70d788e49644
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: f0e0b839b4a0c216eee2eb5134d43b91d8f83289
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -142,7 +142,7 @@ OPTION (MAXDOP 1);
 DWU 大小和用户资源类共同确定用户查询可用的内存量。 若要增加加载查询的内存授予，可增加 DWU 的数量或增加资源类。
 
 - 若要增加 DWU，请参阅[如何进行性能缩放？](sql-data-warehouse-manage-compute-overview.md#scale-compute)
-- 若要更改查询的资源类，请参阅[更改用户资源类示例](sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example)。
+- 若要更改查询的资源类，请参阅[更改用户资源类示例](sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example)。
 
 例如，使用 DWU 100 时，smallrc 资源类中的用户在每次分发时可使用 100 MB 的内存。 有关详细信息，请参阅 [SQL 数据仓库中的并发](sql-data-warehouse-develop-concurrency.md)。
 

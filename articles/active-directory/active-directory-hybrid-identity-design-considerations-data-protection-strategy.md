@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 3d0508c5cc31ab9fda728596895aaab8e4cb7814
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 6c9b7423fa56886104bc6060d25904277b75f30c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>为混合标识解决方案定义数据保护策略
-在此任务中，你将根据规定的业务要求，为混合标识解决方案定义数据保护策略。
+在此任务中，会根据规定的业务要求，为混合标识解决方案定义数据保护策略。
 
 * [确定数据保护要求](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
 * [确定内容管理要求](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)
@@ -34,7 +34,7 @@ ms.lasthandoff: 05/09/2017
 
 完成身份验证后，将从身份验证令牌中读取用户主体名称 (UPN)，并确定对应于用户域的复制分区和容器。 授权系统使用有关用户存在性、已启用状态和角色的信息，确定此用户在此会话中对目标租户的访问请求是否已获授权。 特定的已授权操作（具体而言，指创建用户和重置密码）将创建可供租户管理员用来管理法规遵从工作或调查的审核线索。
 
-由于数据量、带宽可用性或其他考虑因素，通过 Internet 连接将数据从本地数据中心转到 Azure 存储并不一定始终可行。 [Azure 存储导入/导出服务](../storage/storage-import-export-service.md)提供基于硬件的选项用于在 Blob 存储中放置/检索大量数据。 使用该服务可将 [BitLocker 加密的](https://technet.microsoft.com/library/dn306081#BKMK_BL2012R2)硬盘直接发送到 Azure 数据中心，云操作员可在数据中心将内容上载到存储帐户，或者将 Azure 数据下载到你的驱动器并返还给你。 在此过程中只能使用加密磁盘（使用服务本身在作业设置期间生成的 BitLocker 密钥）。 BitLocker 密钥单独提供给 Azure，以此提供带外密钥共享。
+由于数据量、带宽可用性或其他考虑因素，通过 Internet 连接将数据从本地数据中心转到 Azure 存储并不一定始终可行。 [Azure 存储导入/导出服务](../storage/common/storage-import-export-service.md)提供基于硬件的选项用于在 Blob 存储中放置/检索大量数据。 使用该服务可将 [BitLocker 加密的](https://technet.microsoft.com/library/dn306081#BKMK_BL2012R2)硬盘直接发送到 Azure 数据中心，云操作员可在数据中心将内容上传到存储帐户，或者将 Azure 数据下载到你的驱动器并返还给你。 在此过程中只能使用加密磁盘（使用服务本身在作业设置期间生成的 BitLocker 密钥）。 BitLocker 密钥单独提供给 Azure，以此提供带外密钥共享。
 
 由于数据传输可能在不同的情况下进行，因此还需要了解 Microsoft Azure 使用[虚拟网络](https://azure.microsoft.com/documentation/services/virtual-network/)隔离租户彼此之间的流量，它所采用的机制有可能是主机和来宾级别防火墙、IP 数据包筛选、端口阻止和 HTTPS 终结点等。 但是，Azure 的内部通信大多也已加密，包括基础结构到基础结构和基础结构到客户（本地）的通信。 另一个重要的方案是 Azure 数据中心内的通信；Microsoft 管理网络，确保没有 VM 可以模拟或窃听其他 VM 的 IP 地址。 访问 Azure 存储或 SQL 数据库，或者在连接到云服务时，将使用 TLS/SSL。 在此情况下，客户的管理员负责获取 TLS/SSL 证书，并将其部署到其租户基础结构。 通过 Microsoft Azure 虚拟网络在相同部署中的虚拟机之间或单个部署中的租户之间移动的数据流量，可通过加密的协议（例如 HTTPS、SSL/TLS 或其他协议）受到保护。
 
@@ -119,7 +119,7 @@ Azure Active Directory 为数千种 SaaS 应用程序与本地 Web 应用程序�
 
 2. 对 Azure 门户的访问控制：Azure 还允许通过使用基于角色的访问控制 (RBAC) 来控制对门户的访问。 公司可以使用此方法限制个人可以在 Azure 门户中执行的操作数量。 使用 RBAC 控制对门户的访问时，IT 管理员可通过下列访问管理方法委派访问权限：
 
-* 基于组的角色分配：为可从本地 Active Directory 同步的 Azure AD 组分配访问权限。 这使你能够充分利用组织在工具和组管理过程中已有的现有投资。 你也可以使用 Azure AD 高级版中的委派组管理功能。
+* 基于组的角色分配：为可从本地 Active Directory 同步的 Azure AD 组分配访问权限。 这使你能够利用组织在工具和组管理过程中已有的现有投资。 也可以使用 Azure AD 高级版中的委派组管理功能。
 * 充分利用 Azure 中的内置角色：可以使用三个角色 - 所有者、参与者和阅读人员，确保用户和组仅具有完成工作所需任务的权限。
 * 对资源的细致访问：针对特定的订阅、资源组或单独的 Azure 资源（例如，网站或数据库），可以将角色分配给用户和组。 这样，可以确保用户有权访问所有所需资源，并且无权访问不需要管理的资源。
 

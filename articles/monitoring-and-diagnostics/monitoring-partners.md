@@ -12,26 +12,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/9/2017
+ms.date: 8/16/2017
 ms.author: johnkem
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 5914e8be1cf2671da7af1d190811e0e809039135
+ms.translationtype: HT
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 46b6ec12655b64b8fce6e103d5d71a4e8021890e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 | 合作伙伴 |  |  |
 | --- | --- | --- |
 | [![Partner Logo][alertlogic-logo]<br/>**AlertLogic**][alertlogic-anchor] | [![Partner Logo][appdynamics-logo]<br/>**AppDynamics**][appdynamics-anchor] | [![Partner Logo][atlassian-logo]<br/>**Atlassian**][atlassian-anchor] |
-| [![Partner Logo][cloudhealth-logo]<br/>**CloudHealth**][cloudhealth-anchor] | [![Partner Logo][cloudmonix-logo]<br/>**CloudMonix**][cloudmonix-anchor] | [![Partner Logo][cloudyn-logo]<br/>**Cloudyn**][cloudyn-anchor] |
-| [![Partner Logo][datadog-logo]<br/>**Datadog**][datadog-anchor] | [![Partner Logo][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] | [![Partner Logo][newrelic-logo]<br/>**NewRelic**][newrelic-anchor] |
-| [![Partner Logo][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] | [![Partner Logo][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] | [![Partner Logo][sciencelogic-logo]<br/>**ScienceLogic**][sciencelogic-anchor] |
-| [![Partner Logo][splunk-logo]<br/>**Splunk**][splunk-anchor] | [![Partner Logo][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] | |
+| [![Partner Logo][circonus-logo]<br/>**Circonus**][circonus-anchor] | [![Partner Logo][cloudhealth-logo]<br/>**CloudHealth**][cloudhealth-anchor] | [![Partner Logo][cloudmonix-logo]<br/>**CloudMonix**][cloudmonix-anchor] |
+| [![Partner Logo][cloudyn-logo]<br/>**Cloudyn**][cloudyn-anchor] | [![Partner Logo][datadog-logo]<br/>**Datadog**][datadog-anchor] | [![Partner Logo][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] |
+| [![Partner Logo][newrelic-logo]<br/>**NewRelic**][newrelic-anchor] | [![Partner Logo][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] | [![Partner Logo][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] |
+| [![Partner Logo][sciencelogic-logo]<br/>**ScienceLogic**][sciencelogic-anchor] | [![Partner Logo][splunk-logo]<br/>**Splunk**][splunk-anchor] | [![Partner Logo][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] | |
 
 ## <a name="alertlogic-log-manager"></a>AlertLogic Log Manager
-Alert Logic Log Manager 收集 VM、应用程序和 Azure 平台日志进行安全分析和数据保留。 这包括通过 Azure 监视器 API 收集的 Azure 审核日志。  使用这些信息可以检测不法行为，确保满足合规性要求。
+Alert Logic Log Manager 通过 Azure Monitor API 收集 VM、应用程序和 Azure 平台日志进行安全分析和数据保留，包括 Azure 活动日志。  使用这些信息可以检测不法行为，确保满足合规性要求。
 
 [查看相关文档。][alertlogic-doc]
 
@@ -44,6 +44,11 @@ AppDynamics Application Performance Management (APM) 可让应用程序所有者
 可以在 Azure 监视器警报上创建 JIRA 票证。
 
 [查看相关文档。][atlassian-doc]
+
+## <a name="circonus"></a>Circonus
+Circonus 是一个微服务监视和分析平台，专为本地或 SaaS 部署而构建。 与其监视的系统相比，其以完全自动化的 API 为中心的平台更具伸缩性且更可靠。 Circonus 专为满足 DevOps 要求而开发，提供了基于百分比的警报、关系图、仪表板和实现业务优化的机器学习智能。 Circonus 实时监视 Microsoft Azure 云资源及其应用程序。 可以使用 Circonus 收集和跟踪要为资源和应用程序度量的变量的指标。 借助 Circonus，可在系统范围内获得 Azure 的资源利用率、应用程序性能和运行健康状况的可见性。
+
+[查看相关文档。][circonus-doc]
 
 ## <a name="cloudhealth"></a>CloudHealth
 借助专为显著省时省钱而构建的平台整合云并实现云的自动化。 凭借无与伦比的可视性、直观的优化和可靠的管理实践，CloudHealth 将重新定义云管理。 通过 Cloudhealth 平台，企业和 MSP 能够最大限度地提高云投资的回报率，并在成本、使用率、性能和安全性方面制定可靠的决策。
@@ -61,12 +66,12 @@ Cloudyn 可以管理和优化多平台混合云部署，帮助企业完全了解
 [查看相关文档。][cloudyn-doc]
 
 ## <a name="datadog"></a>Datadog
-Datadog 是适用于云规模应用程序的全球领先监视服务，将服务器、数据库、工具和服务的数据整合，呈现整个堆栈的统一视图。 这些功能已在基于 SaaS 的数据分析平台上提供，使开发和运营团队可以协作，避免停机，解决性能问题，确保开发和部署周期按时完成。 通过将 Datadog 与 Azure 集成，可以从整个基础结构收集和查看指标，将 VM 指标与应用程序级的指标相互关联，使用属性与自定义标记的任意组合对指标进行分片和分解。
+Datadog 是适用于云规模应用程序的全球领先监视服务，将服务器、数据库、工具和服务的数据整合在一起，呈现整个堆栈的统一视图。 这些功能已在基于 SaaS 的数据分析平台上提供，使开发和运营团队可以协作，避免停机，解决性能问题，确保开发和部署周期按时完成。 通过将 Datadog 与 Azure 集成，可以从整个基础结构收集和查看指标，将 VM 指标与应用程序级的指标相互关联，使用属性与自定义标记的任意组合对指标进行分片和分解。
 
 [查看相关文档。][datadog-doc]
 
 ## <a name="dynatrace"></a>Dynatrace
-Dynatrace OneAgent 通过相应的 Azure 扩展机制来与 Azure VM 和应用服务集成。 这样，Dynatrace OneAgent 便可以收集有关主机、网络和服务的性能指标。 除了显示指标以外，Dynatrace 还可以实现环境的端到端可视化，显示从客户端到数据库层的事务。 基于 AI 的问题关联与完全集成的根本原因分析（包括代码和数据库的方法级洞察），简化了故障排除和性能优化工作。
+Dynatrace OneAgent 通过 Azure 扩展机制来与 Azure VM 和应用程序服务集成。 这样，Dynatrace OneAgent 便可以收集有关主机、网络和服务的性能指标。 除了显示指标以外，Dynatrace 还可以实现环境的端到端可视化，显示从客户端到数据库层的事务。 基于 AI 的问题关联与完全集成的根本原因分析（包括代码和数据库的方法级洞察），简化了故障排除和性能优化工作。
 
 [查看相关文档。][dynatrace-doc]
 
@@ -108,6 +113,7 @@ Sumo Logic 是一项安全的云本机计算机数据分析服务，可实时、
 [alertlogic-anchor]: #alertlogic-log-manager "AlertLogic"
 [appdynamics-anchor]: #appdynamics "AppDynamics"
 [atlassian-anchor]: #atlassian-jira "Atlassian"
+[circonus-anchor]: #circonus "Circonus"
 [cloudhealth-anchor]: #cloudhealth "CloudHealth"
 [cloudmonix-anchor]: #cloudmonix "CloudMonix"
 [cloudyn-anchor]: #cloudyn "Cloudyn"
@@ -124,6 +130,7 @@ Sumo Logic 是一项安全的云本机计算机数据分析服务，可实时、
 [alertlogic-logo]: ./media/partner-logos/alertlogic.png
 [appdynamics-logo]: ./media/partner-logos/appdynamics.png
 [atlassian-logo]: ./media/partner-logos/atlassian.png
+[circonus-logo]: ./media/partner-logos/circonus.png
 [cloudhealth-logo]: ./media/partner-logos/cloudhealth.png
 [cloudmonix-logo]: ./media/partner-logos/cloudmonix.png
 [cloudyn-logo]: ./media/partner-logos/cloudyn.png
@@ -140,6 +147,7 @@ Sumo Logic 是一项安全的云本机计算机数据分析服务，可实时、
 [alertlogic-doc]: https://docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "AlertLogic 文档。"
 [appdynamics-doc]: https://www.appdynamics.com/net/azure/ "AppDynamics 文档。"
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
+[circonus-doc]: https://support.circonus.com/support/solutions/articles/24000013515-azure-integration 
 [cloudhealth-doc]: https://www.cloudhealthtech.com/azure
 [cloudmonix-doc]: http://cloudmonix.com/features/azure-management/ "CloudMonix 简介。"
 [cloudyn-doc]: https://www.cloudyn.com/azure-monitoring "Cloudyn 简介。"

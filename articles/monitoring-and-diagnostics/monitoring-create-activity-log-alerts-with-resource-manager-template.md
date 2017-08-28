@@ -1,5 +1,5 @@
 ---
-title: "使用 Resource Manager 模板创建活动日志 | Microsoft Docs"
+title: "使用资源管理器模板创建活动日志警报 | Microsoft Docs"
 description: "创建 Azure 资源时收到通知。"
 author: anirudhcavale
 manager: orenr
@@ -15,22 +15,23 @@ ms.topic: article
 ms.date: 07/06/2017
 ms.author: ancav
 ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
-ms.openlocfilehash: 26b140fef46a176b21bddbd7588543e71c251ed6
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 92076c7fe1f867919b7e02abf79cf0fb74fb7eb4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 08/24/2017
 
 ---
-# <a name="create-an-activity-log-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建活动日志
-本文说明如何使用 [Azure Resource Manager 模板](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates)配置活动日志警报。 这样，便可以在创建资源时自动对资源设置警报（作为自动部署过程的一部分）。
+# <a name="create-an-activity-log-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建活动日志警报
+本文说明如何使用 [Azure 资源管理器模板](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates)配置活动日志警报。 使用模板，可以轻松设置在自动执行的部署过程中基于特定活动日志事件条件激活的多个警报。
 
-基本步骤如下所示：
+基本步骤如下：
 
-1.  以 JSON 文件的形式创建一个描述如何创建活动日志警报的模板。
-2.  [使用任意部署方法部署模板。](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
+1. 以 JSON 文件的形式创建一个描述如何创建活动日志警报的模板。
+
+2. 使用[任意部署方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)部署模板。
 
 ## <a name="resource-manager-template-for-an-activity-log-alert"></a>活动日志警报的 Resource Manager 模板
-若要使用 Resource Manager 模板创建活动日志警报，需要创建 `microsoft.insights/activityLogAlerts` 类型的资源，并填充所有相关属性。 下面是创建活动日志警报的模板。
+若要使用资源管理器模板创建活动日志警报，需要创建 `microsoft.insights/activityLogAlerts` 类型的资源。 然后，填充所有相关属性。 下面是用于创建活动日志警报的模板。
 
 ```json
 {
@@ -98,11 +99,11 @@ ms.lasthandoff: 07/18/2017
 }
 ```
 
-有关活动日志警报模板的一些示例，还可以[访问我们的快速入门库](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Insights)。
+有关活动日志警报模板的一些示例，请访问我们的 [Azure 快速入门库](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Insights)。
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解[警报](monitoring-overview-alerts.md)  
-- 如何[使用 Resource Manager 模板添加操作组](monitoring-create-action-group-with-resource-manager-template.md)
-- [创建活动日志警报以监视订阅上的所有自动缩放引擎操作。](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [创建活动日志警报以监视订阅上所有失败的自动缩放缩小/扩大操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+- 详细了解[警报](monitoring-overview-alerts.md)。
+- 了解如何[使用资源管理器模板添加操作组](monitoring-create-action-group-with-resource-manager-template.md)。
+- 了解如何[创建活动日志警报以监视订阅上的所有自动缩放引擎操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)。
+- 了解如何[创建活动日志警报以监视订阅上所有失败的自动缩放缩小/扩大操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)。
 

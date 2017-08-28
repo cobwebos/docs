@@ -16,18 +16,17 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 0def8177e124b5d3ba39f1ae65ab3b41d5827e4a
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3d508877928e033f24dae62c1042745ea7250033
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>完成用于在 Azure 虚拟机中创建 Alwayson 可用性组的必备组件配置
 
-本教程演示如何完成用于[在 Azure 虚拟机 (VM) 中创建 SQL Server AlwaysOn 可用性组](virtual-machines-windows-portal-sql-availability-group-tutorial.md)的必备组件配置。 完成必备组件配置后，将在单个资源组中拥有 1 个域控制器、2 个 SQL Server VM 和 1 个见证服务器。
+本教程演示如何完成用于[在 Azure 虚拟机 (VM) 中创建 SQL Server AlwaysOn 可用性组](virtual-machines-windows-portal-sql-availability-group-tutorial.md)的必备组件配置。 完成必备组件配置后，会在单个资源组中拥有 1 个域控制器、2 个 SQL Server VM 和 1 个见证服务器。
 
 预估时间：可能需要几个小时才能完成必备组件配置。 大部分时间花费在创建虚拟机上。
 
@@ -37,7 +36,7 @@ ms.lasthandoff: 05/11/2017
 
 ## <a name="review-availability-group-documentation"></a>查看可用性组文档
 
-本教程假设你已基本了解 SQL Server AlwaysOn 可用性组。 若不熟悉此技术，请参阅 [AlwaysOn 可用性组概述 (SQL Server)](http://msdn.microsoft.com/library/ff877884.aspx)。
+本教程假设已基本了解 SQL Server AlwaysOn 可用性组。 若不熟悉此技术，请参阅 [AlwaysOn 可用性组概述 (SQL Server)](http://msdn.microsoft.com/library/ff877884.aspx)。
 
 
 ## <a name="create-an-azure-account"></a>创建 Azure 帐户
@@ -56,8 +55,8 @@ ms.lasthandoff: 05/11/2017
 5. 单击“创建” 。
 6. 在“资源组”边栏选项卡的“资源组名称”下，键入资源组的名称。 例如，键入 **sql-ha-rg**。
 7. 若有多个 Azure 订阅，请验证该订阅是否为要在其中创建可用性组的 Azure 订阅。
-8. 选择一个位置。 该位置是要创建可用性组的 Azure 区域。 对于本教程，将在单个 Azure 位置构建所有资源。
-9. 验证是否已选中“固定到仪表板”。 此可选设置将在 Azure 门户仪表板上放置资源组的快捷方式。
+8. 选择一个位置。 该位置是要创建可用性组的 Azure 区域。 对于本教程，会在单个 Azure 位置构建所有资源。
+9. 验证是否已选中“固定到仪表板”。 此可选设置会在 Azure 门户仪表板上放置资源组的快捷方式。
 
    ![资源组](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroup.png)
 
@@ -79,7 +78,7 @@ Azure 将创建资源组，并在门户中固定资源组的快捷方式。
 
      ![搜索虚拟网络](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/04-findvirtualnetwork.png)
 3. 单击“虚拟网络”。
-4. 在“虚拟网络”边栏选项卡中，单击“Resource Manager”部署模型，然后单击“创建”。
+4. 在“虚拟网络”边栏选项卡中，单击“Resource Manager”部署模型，并单击“创建”。
 
     下表显示了虚拟网络的设置：
 
@@ -90,12 +89,12 @@ Azure 将创建资源组，并在门户中固定资源组的快捷方式。
    | **子网名称** |管理员 |
    | **子网地址范围** |10.33.0.0/29 |
    | **订阅** |指定要使用的订阅。 如果只有一个订阅，“订阅”字段将是空白的。 |
-   | **资源组** |选择“使用现有项”，然后选择资源组的名称。 |
+   | **资源组** |选择“使用现有项”，并选择资源组的名称。 |
    | **位置** |指定 Azure 位置。 |
 
-   地址空间和子网地址范围可能与此表中有所不同。 门户将根据具体的订阅建议可用的地址空间和相应的子网地址范围。 如果没有足够的地址空间，请使用不同的订阅。
+   地址空间和子网地址范围可能与此表中有所不同。 门户会根据具体的订阅建议可用的地址空间和相应的子网地址范围。 如果没有足够的地址空间，请使用不同的订阅。
 
-   本示例使用子网名称 **Admin**。 此子网用于域控制器。
+   本示例使用子网名称 **Admin**。此子网用于域控制器。
 
 5. 单击“创建” 。
 
@@ -104,7 +103,7 @@ Azure 将创建资源组，并在门户中固定资源组的快捷方式。
 Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
 
 ### <a name="create-a-second-subnet"></a>创建第二个子网
-新虚拟网络包含一个名为 **Admin** 的子网。 域控制器使用此子网。 SQL Server VM 使用名为 SQL 的另一个子网。 配置此子网：
+新虚拟网络包含一个名为 **Admin** 的子网。域控制器使用此子网。 SQL Server VM 使用名为 SQL 的另一个子网。 配置此子网：
 
 1. 在仪表板上，单击所创建的资源组 **SQL-HA-RG**。 在“资源”下的资源组中找到网络。
 
@@ -116,7 +115,7 @@ Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
 
    ![配置虚拟网络](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/07-addsubnet.png)
 5. 创建第二个子网。 单击“+ 子网”。
-6. 在“添加子网”边栏选项卡中，通过在“名称”下键入 sqlsubnet 配置子网。 Azure 将自动指定一个有效的**地址范围**。 请确认此地址范围中至少有 10 个地址。 生产环境中可能需要更多地址。
+6. 在“添加子网”边栏选项卡中，通过在“名称”下键入 sqlsubnet 配置子网。 Azure 会自动指定一个有效的**地址范围**。 请确认此地址范围中至少有 10 个地址。 生产环境中可能需要更多地址。
 7. 单击 **“确定”**。
 
     ![配置虚拟网络](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/08-configuresubnet.png)
@@ -133,7 +132,7 @@ Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
 | **子网地址范围** |此值取决于订阅中可用的地址范围。 典型值为 10.0.1.0/24。 |
 | **订阅** |指定要使用的订阅。 |
 | **资源组** |**SQL-HA-RG** |
-| **位置** |指定你为资源组选择的同一位置。 |
+| **位置** |指定为资源组选择的同一位置。 |
 
 ## <a name="create-availability-sets"></a>创建可用性集
 
@@ -141,7 +140,7 @@ Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
 
 需要两个可用性集。 一个用于域控制器， 另一个用于 SQL Server VM。
 
-若要创建可用性集，请转到资源组，然后单击“添加”。 通过键入“可用性集”筛选结果。 单击结果中的“可用性集”，然后单击“创建”。
+要创建可用性集，请转到资源组，并单击“添加”。 通过键入“可用性集”筛选结果。 单击结果中的“可用性集”，并单击“创建”。
 
 根据下表中的参数配置两个可用性集：
 
@@ -160,9 +159,9 @@ Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
 ### <a name="create-virtual-machines-for-the-domain-controllers"></a>为域控制器创建虚拟机
 若要创建并配置域控制器，请返回到 **SQL-HA-RG** 资源组。
 
-1. 单击 **“添加”**。 此时将打开“全部”边栏选项卡。
+1. 单击 **“添加”**。 此时会打开“全部”边栏选项卡。
 2. 键入 **Windows Server 2016 Datacenter**。
-3. 单击“Windows Server 2016 Datacenter”。 在“Windows Server 2016 Datacenter”边栏选项卡中，确认部署模型为“Resource Manager”，然后单击“创建”。 Azure 将打开“创建虚拟机”边栏选项卡。
+3. 单击“Windows Server 2016 Datacenter”。 在“Windows Server 2016 Datacenter”边栏选项卡中，确认部署模型为“Resource Manager”，并单击“创建”。 Azure 将打开“创建虚拟机”边栏选项卡。
 
 重复上述步骤创建两个虚拟机。 将两个虚拟机命名为：
 
@@ -205,7 +204,7 @@ Azure 将创建虚拟机。
 ### <a name="configure-the-domain-controller"></a>配置域控制器
 执行以下步骤，将 **ad-primary-dc** 计算机配置为 corp.contoso.com 的域控制器。
 
-1. 在门户中打开 **SQL-HA-RG** 资源组，然后选择 **ad-primary-dc** 计算机。 在“ad-primary-dc”边栏选项卡中，单击“连接”，打开用于远程桌面访问的 RDP 文件。
+1. 在门户中打开 **SQL-HA-RG** 资源组，并选择 **ad-primary-dc** 计算机。 在“ad-primary-dc”边栏选项卡中，单击“连接”，打开用于远程桌面访问的 RDP 文件。
 
     ![连接到虚拟机](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/20-connectrdp.png)
 2. 使用已配置的管理员帐户 (\DomainAdmin) 和密码 (Contoso!0000) 登录。
@@ -237,7 +236,7 @@ Azure 将创建虚拟机。
     | **部署配置** |**添加新林**<br/> **根域名** = corp.contoso.com |
     | **域控制器选项** |**DSRM 密码** = Contoso!0000<br/>**确认密码** = Contoso!0000 |
 14. 单击“下一步”浏览向导中的其他页。 在“必备项检查”页上，确认看到以下消息：“所有先决条件检查都成功通过”。 查看任何适用的警告消息，但可继续安装。
-15. 单击“安装” 。 **ad-primary-dc** 虚拟机将自动重新启动。
+15. 单击“安装” 。 **ad-primary-dc** 虚拟机会自动重新启动。
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>记下主域控制器的 IP 地址
 
@@ -269,16 +268,16 @@ Azure 将创建虚拟机。
 ### <a name="configure-the-second-domain-controller"></a>配置第二个域控制器
 在主域控制器重新启动之后，可以配置第二个域控制器。 此可选步骤适用于实现高可用性。 遵循以下步骤配置第二个域控制器：
 
-1. 在门户中打开 **SQL-HA-RG** 资源组，然后选择 **ad-secondary-dc** 计算机。 在“ad-secondary-dc”边栏选项卡中单击“连接”，打开用于执行远程桌面访问的 RDP 文件。
+1. 在门户中打开 **SQL-HA-RG** 资源组，并选择 **ad-secondary-dc** 计算机。 在“ad-secondary-dc”边栏选项卡中单击“连接”，打开用于执行远程桌面访问的 RDP 文件。
 2. 使用已配置的管理员帐户 (BUILTIN\DomainAdmin) 和密码 (Contoso!0000) 登录到 VM。
 3. 将首选 DNS 服务器地址更改为域控制器的地址。
 4. 在“网络和共享中心”中，单击网络接口。
    ![网络接口](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/26-networkinterface.png)
 
 5. 单击“属性”。
-6. 选择“Internet 协议版本 4 (TCP/IPv4)”，然后单击“属性”。
+6. 选择“Internet 协议版本 4 (TCP/IPv4)”，并单击“属性”。
 7. 选择“使用以下 DNS 服务器地址”，并在“首选 DNS 服务器”中指定主域控制器的地址。
-8. 单击“确定”，然后单击“关闭”提交更改。 现在可将该 VM 加入 **corp.contoso.com**。
+8. 单击“确定”，并单击“关闭”提交更改。 现在可将该 VM 加入 **corp.contoso.com**。
 
    >[!IMPORTANT]
    >如果在更改 DNS 设置后与远程桌面断开了连接，请转到 Azure 门户并重新启动虚拟机。
@@ -297,12 +296,12 @@ Azure 将创建虚拟机。
    ![部署配置](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/28-deploymentconfig.png)
 18. 单击“选择”。
 19. 使用管理员帐户 (CORP.CONTOSO.COM\domainadmin) 和密码 (Contoso!0000) 进行连接。
-20. 在“从林中选择域”中单击你的域，然后单击“确定”。
+20. 在“从林中选择域”中单击你的域，并单击“确定”。
 21. 在“域控制器选项”中，使用默认值并设置 DSRM 密码。
 
    >[!NOTE]
-   >“DNS 选项”页可能会警告你无法创建此 DNS 服务器的委托。 在非生产环境中可以忽略此警告。
-22. 单击“下一步”，直到出现“必备项检查”对话框。 上提出。
+   >“DNS 选项”页可能会发出警告，指出无法为此 DNS 服务器创建委托。 在非生产环境中可以忽略此警告。
+22. 单击“下一步”，直到出现“必备项检查”对话框。 然后单击“安装”。
 
 服务器完成配置更改后，请重启服务器。
 
@@ -312,7 +311,7 @@ Azure 将创建虚拟机。
 
 ### <a name=DomainAccounts></a>配置域帐户
 
-接下来的步骤将配置 Active Directory 帐户。 下表显示了帐户：
+后续步骤将配置 Active Directory 帐户。 下表显示了帐户：
 
 | |安装帐户<br/> |sqlserver-0 <br/>SQL Server 和 SQL 代理服务帐户 |sqlserver-1<br/>SQL Server 和 SQL 代理服务帐户
 | --- | --- | --- | ---
@@ -322,9 +321,9 @@ Azure 将创建虚拟机。
 使用以下步骤创建每个帐户。
 
 1. 登录到 ad-primary-dc 计算机。
-2. 在“服务器管理器”中，选择“工具”，然后单击“Active Directory 管理中心”。   
+2. 在“服务器管理器”中，选择“工具”，并单击“Active Directory 管理中心”。   
 3. 在左窗格中选择“corp (local)”。
-4. 在右侧的“任务”窗格中，选择“新建”，然后单击“用户”。
+4. 在右侧的“任务”窗格中，选择“新建”，并单击“用户”。
    ![Active Directory 管理中心](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/29-addcnewuser.png)
 
    >[!TIP]
@@ -337,15 +336,15 @@ Azure 将创建虚拟机。
 1. 在“Active Directory 管理中心”的左窗格中，选择“corp (本地)”。 然后，在右侧的“任务”窗格中，单击“属性”。
 
     ![CORP 用户属性](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/31-addcproperties.png)
-2. 选择“扩展”，然后单击“安全性”选项卡上的“高级”按钮。
+2. 选择“扩展”，并单击“安全性”选项卡上的“高级”按钮。
 3. 在“corp 的高级安全设置”对话框中，单击“添加”。
-4. 单击“选择主体”，搜索“CORP\Install”，然后单击“确定”。
+4. 单击“选择主体”，搜索“CORP\Install”，并单击“确定”。
 5. 选中“读取所有属性”复选框。
 
 6. 选中“创建计算机对象”复选框。
 
      ![CORP 用户权限](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/33-addpermissions.png)
-7. 单击“确定”，然后再次单击“确定”。 关闭“corp”属性窗口。
+7. 单击“确定”，并再次单击“确定”。 关闭“corp”属性窗口。
 
 现已完成 Active Directory 和用户对象的配置，接下来请创建两个 SQL Server VM 和 1 个见证服务器 VM。 然后，将这三个 VM 加入域中。
 
@@ -357,14 +356,14 @@ Azure 将创建虚拟机。
 
 * **存储：Azure 托管磁盘**
 
-   将 Azure 托管磁盘用作虚拟机存储。 Microsoft 建议为 SQL Server 虚拟机使用托管磁盘。 托管磁盘在后台处理存储。 此外，当使用托管磁盘的虚拟机位于同一可用性集中时，Azure 会分发存储资源以提供适当冗余。 有关其他信息，请参阅 [Azure 托管磁盘概述](../../../storage/storage-managed-disks-overview.md)。 有关可用性集中托管磁盘的具体信息，请参阅[为可用性集中的 VM 使用托管磁盘](../manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)。
+   将 Azure 托管磁盘用作虚拟机存储。 Microsoft 建议为 SQL Server 虚拟机使用托管磁盘。 托管磁盘在后台处理存储。 此外，当使用托管磁盘的虚拟机位于同一可用性集中时，Azure 会分发存储资源以提供适当冗余。 有关其他信息，请参阅 [Azure 托管磁盘概述](../managed-disks-overview.md)。 有关可用性集中托管磁盘的具体信息，请参阅[为可用性集中的 VM 使用托管磁盘](../manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)。
 
 * **网络：生产环境中的专用 IP 地址**
 
    本教程对虚拟机使用公共 IP 地址。 这样一来，就可以通过 Internet 直接远程连接到虚拟机，从而使配置过程更加轻松。 在生产环境中，Microsoft 建议仅使用专用 IP 地址，以减少 SQL Server 实例 VM 资源的漏洞涉及面。
 
 ### <a name="create-and-configure-the-sql-server-vms"></a>创建并配置 SQL Server VM
-接下来请创建 3 个 VM，包括 2 个 SQL Server VM 和 1 个用于其他群集节点的 VM。 若要创建每个 VM，请返回到 SQL-HA-RG 资源组，单击“添加”，搜索相应的库项，然后依次单击“虚拟机”和“从库中”。 参考下表中的信息创建 VM：
+接下来请创建 3 个 VM，包括 2 个 SQL Server VM 和 1 个用于其他群集节点的 VM。 要创建每个 VM，请返回到 SQL-HA-RG 资源组，单击“添加”，搜索相应的库项，并依次单击“虚拟机”和“从库中”。 参考下表中的信息创建 VM：
 
 
 | Page | VM1 | VM2 | VM3 |
@@ -386,7 +385,7 @@ Azure 将创建虚拟机。
 
 ### <a name="joinDomain"></a>将服务器加入域
 
-现可将这些 VM 加入 corp.contoso.com。 针对 SQL Server VM 和文件共享见证服务器执行以下操作：
+现可将这些 VM 加入 corp.contoso.com。针对 SQL Server VM 和文件共享见证服务器执行以下操作：
 
 1. 使用 **BUILTIN\DomainAdmin** 远程连接到虚拟机。
 2. 在“服务器管理器”中，单击“本地服务器”。
@@ -395,21 +394,21 @@ Azure 将创建虚拟机。
 5. 选中“域”复选框并在文本框中键入 **corp.contoso.com**。 单击 **“确定”**。
 6. 在“Windows 安全性”弹出对话框中，指定默认域管理员帐户 (**CORP\DomainAdmin**) 和密码 (**Contoso!0000**) 的凭据。
 7. 在看到“欢迎使用 corp.contoso.com 域”消息时，请单击“确定”。
-8. 单击“关闭”，然后单击弹出对话框中的“立即重新启动”。
+8. 单击“关闭”，并单击弹出对话框中的“立即重新启动”。
 
 ### <a name="add-the-corpinstall-user-as-an-administrator-on-each-cluster-vm"></a>添加 Corp\Install 用户作为每个群集 VM 上的管理员
 
 将每个虚拟机作为域的成员重新启动后，请将 **CORP\Install** 添加为本地管理员组的成员。
 
-1. 等待 VM 重启，然后从主域控制器重新启动 RDP 文件，以使用 CORP\DomainAdmin 帐户登录到 sqlserver-0。
+1. 等待 VM 重启，并从主域控制器重新启动 RDP 文件，以使用 CORP\DomainAdmin 帐户登录到 sqlserver-0。
    >[!TIP]
    >请确保使用域管理员帐户登录。 在前面的步骤中，使用的是内置管理员帐户。 既然服务器已加入域，现在就应该使用域帐户。 在 RDP 会话中，指定*域*\\*用户名*。
 
-2. 在“服务器管理器”中，选择“工具”，然后单击“计算机管理”。
-3. 在“计算机管理”窗口中，展开“本地用户和组”，然后选择“组”。
+2. 在“服务器管理器”中，选择“工具”，并单击“计算机管理”。
+3. 在“计算机管理”窗口中，展开“本地用户和组”，并选择“组”。
 4. 双击“管理员”组。
 5. 在“管理员属性”对话框中，单击“添加”按钮。
-6. 输入用户 **CORP\Install**，然后单击“确定”。
+6. 输入用户 **CORP\Install**，并单击“确定”。
 7. 单击“确定”以关闭“管理员属性”对话框。
 8. 在 sqlserver-1 和 cluster-fsw 上重复上述步骤。
 
@@ -418,7 +417,7 @@ Azure 将创建虚拟机。
 在每个 SQL Server VM 上设置 SQL Server 服务帐户。 使用[配置域帐户](#DomainAccounts)时创建的帐户。
 
 1. 打开“SQL Server 配置管理器”。
-2. 右键单击 SQL Server 服务，然后单击“属性”。
+2. 右键单击 SQL Server 服务，并单击“属性”。
 3. 设置帐户和密码。
 4. 在另一个 SQL Server VM 上重复上述步骤。  
 
@@ -430,7 +429,7 @@ Azure 将创建虚拟机。
 
 1. 使用 \<MachineName\>\DomainAdmin 帐户通过远程桌面协议 (RDP) 连接到服务器。
 
-1. 打开 SQL Server Management Studio，然后连接到 SQL Server 的本地实例。
+1. 打开 SQL Server Management Studio，并连接到 SQL Server 的本地实例。
 
 1. 在“对象资源管理器”中，单击“安全性”。
 
@@ -478,7 +477,7 @@ Azure 将创建虚拟机。
 
 需要在两个 SQL Server VM 上打开这些防火墙端口。
 
-端口的打开方式取决于所用的防火墙解决方案。 下一部分将介绍如何在 Windows 防火墙中打开端口。 在每个 SQL Server VM 上打开所需的端口。
+端口的打开方式取决于所用的防火墙解决方案。 下一部分介绍如何在 Windows 防火墙中打开端口。 在每个 SQL Server VM 上打开所需的端口。
 
 ### <a name="open-a-tcp-port-in-the-firewall"></a>在防火墙中打开 TCP 端口
 
@@ -490,9 +489,9 @@ Azure 将创建虚拟机。
    ![SQL 防火墙](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/35-tcpports.png)
 
 5. 单击“下一步”。
-6. 在“操作”页上，保持选中“允许连接”，然后单击“下一步”。
-7. 在“配置文件”页上，接受默认设置，然后单击“下一步”。
-8. 在“名称”页的“名称”文本框中指定一个规则名称（如 Azure LB Probe），然后单击“完成”。
+6. 在“操作”页上，保持选中“允许连接”，并单击“下一步”。
+7. 在“配置文件”页上，接受默认设置，并单击“下一步”。
+8. 在“名称”页的“名称”文本框中指定一个规则名称（如 Azure LB Probe），并单击“完成”。
 
 在另一个 SQL Server VM 上重复上述步骤。
 

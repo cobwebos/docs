@@ -17,17 +17,17 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 21b675e0baddd634583c6ecbd78e46885bb51386
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 5ce282aac94d0f22ea587cbe4005819310e23b1f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-applications-remotely-on-hdinsight-spark-through-vpn"></a>使用 Azure Toolkit for IntelliJ 通过 VPN 远程调试 HDInsight Spark 上的应用程序
 
 建议通过 SSH 远程调试 Spark 应用程序。 有关说明，请参阅[使用 Azure Toolkit for IntelliJ 通过 SSH 远程调试 HDInsight 群集上的 Spark 应用程序](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh)。
 
-本文提供有关如何在 HDInsight Spark 群集上使用 Azure Toolkit for IntelliJ 中的 HDInsight 工具插件提交 Spark 作业，然后从台式机远程调试该作业的逐步指导。 为此，必须执行以下概要步骤：
+本文提供有关如何在 HDInsight Spark 群集上使用 Azure Toolkit for IntelliJ 中的 HDInsight 工具插件提交 Spark 作业，并从台式机远程调试该作业的逐步指导。 为此，必须执行以下概要步骤：
 
 1. 创建站点到站点或点到站点 Azure 虚拟网络。 本文档中的步骤假设你使用站点到站点网络。
 2. 在 Azure HDInsight 中创建属于站点到站点 Azure 虚拟网络一部分的 Spark 群集。
@@ -45,7 +45,7 @@ ms.lasthandoff: 07/28/2017
 * 在 Windows 计算机上运行 Spark Scala 应用程序进行远程调试时，可能会发生 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中所述的异常，原因是在 Windows 中缺少 WinUtils.exe。 若要解决此错误，必须[从此处下载该可执行文件](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)到相应位置（例如 **C:\WinUtils\bin**）。 然后必须添加环境变量 **HADOOP_HOME**，并将其值设置为 **C\WinUtils**。
 
 ## <a name="step-1-create-an-azure-virtual-network"></a>步骤 1：创建 Azure 虚拟网络
-遵循以下链接中的说明创建 Azure 虚拟网络，然后确认台式机与 Azure 虚拟网络之间的连接。
+遵循以下链接中的说明创建 Azure 虚拟网络，并确认台式机与 Azure 虚拟网络之间的连接。
 
 * [使用 Azure 门户创建具有站点到站点 VPN 连接的 VNet](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 * [使用 PowerShell 创建具有站点到站点 VPN 连接的 VNet](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
@@ -61,15 +61,15 @@ ms.lasthandoff: 07/28/2017
 2. 在 Ambari UI 的右上角单击“主机”。
 
     ![查找头节点 IP](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely-through-vpn/ambari-hosts.png)
-3. 你应会看到头节点、辅助角色节点和 zookeeper 节点的列表。 头节点带有 **hn*** 前缀。 单击第一个头节点。
+3. 应会看到头节点、辅助角色节点和 zookeeper 节点的列表。 头节点带有 **hn*** 前缀。 单击第一个头节点。
 
     ![查找头节点 IP](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely-through-vpn/cluster-headnodes.png)
 4. 在打开的页面底部，从“摘要”框复制头节点的 IP 地址和主机名。
 
     ![查找头节点 IP](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely-through-vpn/headnode-ip-address.png)
-5. 将头节点的 IP 地址和主机名包含在要从中运行和远程调试 Spark 作业的计算机上的 **hosts** 文件中。 这样，你便可以使用 IP 地址和主机名来与头节点通信。
+5. 将头节点的 IP 地址和主机名包含在要从中运行和远程调试 Spark 作业的计算机上的 **hosts** 文件中。 这样，便可以使用 IP 地址和主机名来与头节点通信。
 
-   1. 以提升的权限打开记事本。 在“文件”菜单中单击“打开”，然后导航到 hosts 文件的位置。 在 Windows 计算机上，该位置为 `C:\Windows\System32\Drivers\etc\hosts`。
+   1. 以提升的权限打开记事本。 在“文件”菜单中单击“打开”，并导航到 hosts 文件的位置。 在 Windows 计算机上，该位置为 `C:\Windows\System32\Drivers\etc\hosts`。
    2. 将以下内容添加到 **hosts** 文件中。
 
            # For headnode0
@@ -84,20 +84,20 @@ ms.lasthandoff: 07/28/2017
 8. 针对其他头节点重复上述步骤。
 
 ## <a name="step-4-create-a-spark-scala-application-using-the-hdinsight-tools-in-azure-toolkit-for-intellij-and-configure-it-for-remote-debugging"></a>步骤 4：使用 Azure Toolkit for IntelliJ 中的 HDInsight 工具创建 Spark Scala 应用程序，并对其进行配置以进行远程调试
-1. 启动 IntelliJ IDEA 并创建一个新项目。 在“新建项目”对话框中做出以下选择，然后单击“下一步”。
+1. 启动 IntelliJ IDEA 并创建一个新项目。 在“新建项目”对话框中做出以下选择，并单击“下一步”。
 
     ![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely-through-vpn/create-hdi-scala-app.png)
 
    * 在左窗格中，选择“HDInsight”。
    * 在右窗格中，选择“Spark on HDInsight (Scala)”。
    * 单击“下一步”。
-2. 在下一个窗口中提供以下项目详细信息，然后单击“完成”。  
+2. 在下一个窗口中提供以下项目详细信息，并单击“完成”。  
    - 提供项目名称和项目位置。
    - 对于“项目 SDK”，将 Java 1.8 用于 spark 2.x 群集，将 Java 1.7 用于 spark 1.x 群集。
    - 对于“Spark 版本”，Scala 项目创建向导集成了 Spark SDK 和 Scala SDK 的适当版本。 如果 spark 群集版本是较低的 2.0，请选择 spark 1.x。 否则，应选择 spark2.x。 此示例使用 Spark2.0.2(Scala 2.11.8)。
        ![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely-through-vpn/hdi-scala-project-details.png)
   
-3. Spark 项目将自动为你创建一个项目。 若要查看该项目，请遵循以下步骤。
+3. Spark 项目会自动创建一个项目。 若要查看该项目，请遵循以下步骤。
 
    1. 在“文件”菜单中，单击“项目结构”。
    2. 在“项目结构”对话框中，单击“项目”以查看创建的默认项目。
@@ -105,7 +105,7 @@ ms.lasthandoff: 07/28/2017
 
       也可以通过单击上图中突出显示的“+”图标创建自己的项目。
 
-4. 将库添加到项目。 若要添加库，请在项目树中右键单击项目名称，然后单击“打开模块设置”。 在“项目结构”对话框的左窗格中单击“库”，单击加号 (+)，然后单击“从 Maven”。
+4. 将库添加到项目。 要添加库，请在项目树中右键单击项目名称，并单击“打开模块设置”。 在“项目结构”对话框的左窗格中单击“库”，单击加号 (+)，并单击“从 Maven”。
 
     ![添加库](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely-through-vpn/add-library.png)
 
@@ -125,7 +125,7 @@ ms.lasthandoff: 07/28/2017
     将这些文件复制到项目树中的 **/src** 文件夹下（例如 `<your project directory>\src`），从而将它们添加到项目。
 6. 更新 `core-site.xml` 以进行以下更改。
 
-   1. `core-site.xml` 包含与群集关联的存储帐户的已加密密钥。 在已添加到项目的 `core-site.xml` 中，将已加密密钥替换为与默认存储帐户关联的实际存储密钥。 请参阅[管理存储访问密钥](../storage/storage-create-storage-account.md#manage-your-storage-account)。
+   1. `core-site.xml` 包含与群集关联的存储帐户的已加密密钥。 在已添加到项目的 `core-site.xml` 中，将已加密密钥替换为与默认存储帐户关联的实际存储密钥。 请参阅[管理存储访问密钥](../storage/common/storage-create-storage-account.md#manage-your-storage-account)。
 
            <property>
                  <name>fs.azure.account.key.hdistoragecentral.blob.core.windows.net</name>
@@ -148,10 +148,10 @@ ms.lasthandoff: 07/28/2017
                  <value>/etc/hadoop/conf/topology_script.py</value>
            </property>
    3. 保存文件。
-7. 添加应用程序的 Main 类。 在“项目资源管理器”中，右键单击“src”，指向“新建”，然后单击“Scala 类”。
+7. 添加应用程序的 Main 类。 在“项目资源管理器”中，右键单击“src”，指向“新建”，并单击“Scala 类”。
 
     ![添加源代码](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely-through-vpn/hdi-spark-scala-code.png)
-8. 在“新建 Scala 类”对话框中，提供名称，对于“种类”，选择“对象”，然后单击“确定”。
+8. 在“新建 Scala 类”对话框中，提供名称，对于“种类”，选择“对象”，并单击“确定”。
 
     ![添加源代码](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely-through-vpn/hdi-spark-scala-code-object.png)
 9. 在 `MyClusterAppMain.scala` 文件中粘贴以下代码。 此代码将创建 Spark 上下文，并从 `SparkSample` 对象启动 `executeJob` 方法。
@@ -214,11 +214,11 @@ ms.lasthandoff: 07/28/2017
 
    * 对于.`.set("spark.yarn.jar", "wasb:///hdp/apps/2.4.2.0-258/spark-assembly-1.6.1.2.4.2.0-258-hadoop2.7.1.2.4.2.0-258.jar")`，请确保 Spark 程序集 JAR 可在指定路径上的群集存储中使用。
    * 对于 `setJars`，指定将创建项目 jar 的位置。 这通常是 `<Your IntelliJ project directory>\out\<project name>_DefaultArtifact\default_artifact.jar`。
-12. 在 `RemoteClusterDebugging` 类中，右键单击 `test` 关键字，然后选择“创建 RemoteClusterDebugging 配置”。
+12. 在 `RemoteClusterDebugging` 类中，右键单击 `test` 关键字，并选择“创建 RemoteClusterDebugging 配置”。
 
     ![创建远程配置](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely-through-vpn/create-remote-config.png)
 
-13. 在对话框中提供配置的名称，然后选择“测试种类”作为“测试名称”。 将其他所有值保留默认值，单击“应用”，然后单击“确定”。
+13. 在对话框中提供配置的名称，并选择“测试种类”作为“测试名称”。 将其他所有值保留默认值，单击“应用”，然后单击“确定”。
 
     ![创建远程配置](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely-through-vpn/provide-config-value.png)
 14. 现在，应会在菜单栏中看到“远程运行”配置下拉列表。
@@ -243,11 +243,11 @@ ms.lasthandoff: 07/28/2017
 
     ![在调试模式下运行程序](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely-through-vpn/debug-add-watch-variable-value.png)
 
-    从上图可以看到，在运行时，你可以查询 TB 量级的数据，并可以逐步调试应用程序。 例如，在上图显示的输出中，可以看到输出的第一行是标头。 基于此信息，你可以修改应用程序代码，以根据需要跳过标头行。
+    从上图可以看到，在运行时，可以查询 TB 量级的数据，并可以逐步调试应用程序。 例如，在上图显示的输出中，可以看到输出的第一行是标头。 基于此信息，可以修改应用程序代码，以根据需要跳过标头行。
 5. 现在可以单击“恢复程序”图标以继续运行应用程序。
 
     ![在调试模式下运行程序](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely-through-vpn/debug-continue-run.png)
-6. 如果应用程序成功完成，你应会看到类似于下面的输出。
+6. 如果应用程序成功完成，应会看到类似于下面的输出。
 
     ![在调试模式下运行程序](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely-through-vpn/debug-complete.png)
 

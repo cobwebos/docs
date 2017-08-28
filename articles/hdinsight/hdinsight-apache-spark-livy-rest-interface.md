@@ -17,18 +17,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 10c8b1806a13d07e804b15cf8357de48a16fbc64
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f8567c4c5e1a2260b5dba7551bf14f51e9e388ec
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/07/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>使用 Apache Spark REST API 将远程作业提交到 HDInsight Spark 群集
 
 了解如何使用 Livy，这是 Apache Spark REST API，用来将远程作业提交到 Azure HDInsight Spark 群集。 有关详细文档，请参阅 [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)。
 
-你可以使用 Livy 运行交互式 Spark shell，或提交要在 Spark 上运行的批处理作业。 本文介绍如何使用 Livy 提交批处理作业。 以下语法使用 Curl 向Livy Spark 终结点发出 REST API 调用。
+可以使用 Livy 运行交互式 Spark shell，或提交要在 Spark 上运行的批处理作业。 本文介绍如何使用 Livy 提交批处理作业。 以下语法使用 Curl 向Livy Spark 终结点发出 REST API 调用。
 
 **先决条件：**
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 06/07/2017
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
 
 ## <a name="submit-a-livy-spark-batch-job"></a>提交 Livy Spark 批处理作业
-在提交批处理作业之前，必须将应用程序 jar 上传到与群集关联的群集存储。 可以使用命令行实用工具 [**AzCopy**](../storage/storage-use-azcopy.md) 来执行此操作。 可以使用其他许多客户端来上传数据。 有关详细信息，请参阅[在 HDInsight 中上传 Hadoop 作业的数据](hdinsight-upload-data.md)。
+在提交批处理作业之前，必须将应用程序 jar 上传到与群集关联的群集存储。 可以使用命令行实用工具 [**AzCopy**](../storage/common/storage-use-azcopy.md) 来执行此操作。 可以使用其他许多客户端来上传数据。 有关详细信息，请参阅[在 HDInsight 中上传 Hadoop 作业的数据](hdinsight-upload-data.md)。
 
     curl -k --user "<hdinsight user>:<user password>" -v -H <content-type> -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches'
 
@@ -76,7 +76,7 @@ Livy 可为群集上运行的 Spark 作业提供高可用性。 下面是一些�
 * 适用于 HDInsight 的 Jupyter 笔记本由后端中的 Livy 提供支持。 如果在笔记本运行 Spark 作业时重新启动 Livy 服务，笔记本将继续运行代码单元。 
 
 ## <a name="show-me-an-example"></a>举个例子
-在本部分中，我们通过示例了解了如何使用 Livy Spark 提交批处理作业、监视作业进度，然后删除作业。 本示例中使用的应用程序是[创建独立的 Scala 应用程序并在 HDInsight Spark 群集上运行](hdinsight-apache-spark-create-standalone-application.md)一文中开发的应用程序。 以下步骤假设：
+在本部分中，我们通过示例了解了如何使用 Livy Spark 提交批处理作业、监视作业进度，并删除作业。 本示例中使用的应用程序是[创建独立的 Scala 应用程序并在 HDInsight Spark 群集上运行](hdinsight-apache-spark-create-standalone-application.md)一文中开发的应用程序。 以下步骤假设：
 
 * 已将应用程序 jar 复制到与群集关联的存储帐户。
 * 已将 CuRL 安装在用于执行这些步骤的计算机上。
@@ -87,7 +87,7 @@ Livy 可为群集上运行的 Spark 作业提供高可用性。 下面是一些�
    
         curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches"
    
-    你应会看到类似于下面的输出：
+    应会看到类似于下面的输出：
    
         < HTTP/1.1 200 OK
         < Content-Type: application/json; charset=UTF-8
@@ -109,7 +109,7 @@ Livy 可为群集上运行的 Spark 作业提供高可用性。 下面是一些�
    
         { "file":"wasb:///example/jars/SparkSimpleApp.jar", "className":"com.microsoft.spark.example.WasbIOTest" }
    
-    你应该会看到与下面类似的输出：
+    应该会看到与下面类似的输出：
    
         < HTTP/1.1 201 Created
         < Content-Type: application/json; charset=UTF-8
@@ -128,7 +128,7 @@ Livy 可为群集上运行的 Spark 作业提供高可用性。 下面是一些�
    
         curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches/0"
    
-    你应该会看到与下面类似的输出：
+    应该会看到与下面类似的输出：
    
         < HTTP/1.1 200 OK
         < Content-Type: application/json; charset=UTF-8
@@ -146,7 +146,7 @@ Livy 可为群集上运行的 Spark 作业提供高可用性。 下面是一些�
    
         curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehdinsight.net/livy/batches/0"
    
-    你应该会看到与下面类似的输出：
+    应该会看到与下面类似的输出：
    
         < HTTP/1.1 200 OK
         < Content-Type: application/json; charset=UTF-8
@@ -166,9 +166,9 @@ HDInsight 3.5 群集默认情况下禁止使用本地文件路径访问示例数
 
 1. 转到群集的 Ambari 门户。 Ambari Web UI 在 HDInsight 群集上提供，网址为 https://**CLUSTERNAME**.azurehdidnsight.net，其中 CLUSTERNAME 是群集的名称。
 
-2. 在左侧导航中，单击“Livy”，然后单击“配置”。
+2. 在左侧导航中，单击“Livy”，并单击“配置”。
 
-3. 如果要允许完全访问文件系统，请在 **livy-default** 下添加属性名称 `livy.file.local-dir-whitelist`，并将其值设置为 **"/"**。 如果要仅允许访问特定目录，请提供该目录的路径作为值。
+3. 如果要允许完全访问文件系统，请在 **livy-default** 下添加属性名称 `livy.file.local-dir-whitelist`，并将其值设置为 "/"。 如果要仅允许访问特定目录，请提供该目录的路径作为值。
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -176,7 +176,7 @@ HDInsight 3.5 群集默认情况下禁止使用本地文件路径访问示例数
 
 ### <a name="using-an-external-jar-from-the-additional-storage-is-not-supported"></a>不支持从附加存储使用外部 jar
 
-**问题：**如果正在运行 Livy Spark 作业并引用了与群集关联的附加存储中的外部 jar，则作业将失败。
+**问题：**如果正在运行 Livy Spark 作业并引用了与群集关联的附加存储中的外部 jar，则作业会失败。
 
 **解决方法：**请确保要使用的 jar 在与 HDInsight 群集关联的默认存储中可用。
 

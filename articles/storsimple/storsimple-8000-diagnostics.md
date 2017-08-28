@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: d3488b1e7857799d8ed7de796610e8d52034bd8f
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 8fae7bb357f8e5e8eff249edfe3a2aaafe04283c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/18/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>使用 StorSimple 诊断工具排查 8000 系列设备的问题
@@ -75,7 +74,7 @@ StorSimple 诊断工具可诊断 StorSimple 设备的系统、性能、网络和
     * 如果发生任何硬件组件或群集故障，请提出支持请求。
 
 * **设备性能较低** - StorSimple 设备运行速度缓慢。
-    * 在这种情况下，请结合设置为 performance 的 scope 参数运行此 cmdlet。 分析输出。 获取云读写延迟。 使用报告的延迟作为最高可实现目标，考虑到内部数据处理的某些开销，然后在系统上部署工作负荷。 有关详细信息，请参阅 [Use the network test to troubleshoot device performance](#network-test)（使用网络测试排查设备性能问题）。
+    * 在这种情况下，请结合设置为 performance 的 scope 参数运行此 cmdlet。 分析输出。 获取云读写延迟。 使用报告的延迟作为最高可实现目标，考虑到内部数据处理的某些开销，并在系统上部署工作负荷。 有关详细信息，请参阅 [Use the network test to troubleshoot device performance](#network-test)（使用网络测试排查设备性能问题）。
 
 
 ## <a name="diagnostics-test-and-sample-outputs"></a>诊断测试和示例输出
@@ -383,13 +382,13 @@ Web proxy                               Not enabled         Web proxy is not...
 
     `Invoke-HcsDiagnostics -Scope Performance`
 
-3. 记下工具报告的读写延迟。 此项测试可能需要运行几分钟，然后报告结果。
+3. 记下工具报告的读写延迟。 此项测试可能需要运行几分钟，并报告结果。
 
 4. 如果连接延迟全部低于预期的范围，则在部署工作负荷时，可将工具报告的延迟用作最高可实现目标。 考虑到内部数据处理的某些开销。
 
     如果诊断工具报告的读写延迟较高：
 
-    1. 为 Blob 服务配置存储分析，然后分析输出以了解 Azure 存储帐户的延迟。 有关详细说明，请参阅 [enable and configure Storage Analytics](../storage/storage-enable-and-view-metrics-classic-portal.md)（启用和配置存储分析）。 如果这些延迟也是很高，与 StorSimple 诊断工具提供的数字相当，则需要提出 Azure 存储相关的服务请求。
+    1. 为 Blob 服务配置存储分析，并分析输出以了解 Azure 存储帐户的延迟。 有关详细说明，请参阅 [enable and configure Storage Analytics](../storage/common/storage-enable-and-view-metrics.md)（启用和配置存储分析）。 如果这些延迟也是很高，与 StorSimple 诊断工具提供的数字相当，则需要提出 Azure 存储相关的服务请求。
 
     2. 如果存储帐户延迟较低，请联系网络管理员调查网络中的任何延迟问题。
 

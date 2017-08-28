@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: e0a7ff391e5a03ed563912dea54c7cfe73111bcf
-ms.lasthandoff: 03/30/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 1e989c72fc03697bf6d2e515ff53003703665d1a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/23/2017
 
 ---
 
 # <a name="canceling-and-deleting-azure-importexport-jobs"></a>取消和删除 Azure 导入/导出作业
 
-在作业进入 `Packaging` 状态之前，可以通过调用[更新作业属性](/rest/api/storageimportexport/jobs#Jobs_Update)操作并将 `CancelRequested` 元素设置为 `true` 来请求取消该作业。 系统会尽最大努力取消该作业。 如果驱动器正在传输数据，则即使在请求取消后，数据也仍可能继续传输。
+ 若要在作业处于 `Packaging` 状态之前请求取消该作业，请调用[更新作业属性](/rest/api/storageimportexport/jobs#Jobs_Update)操作并将 `CancelRequested` 元素设置为 `true`。 系统会尽最大努力取消该作业。 如果驱动器正在传输数据，则即使在请求取消后，数据也仍可能继续传输。
 
- 已取消的作业将转换为 `Completed` 状态并保留 90 天，之后将被删除。
+ 已取消的作业将转为 `Completed` 状态并保留 90 天，届时它将被删除。
 
- 若要删除某个作业，请在传送该作业之前（*即*，在该作业处于 `Creating` 状态时）调用[删除作业](/rest/api/storageimportexport/jobs#Jobs_Delete)操作。 也可以在作业处于 `Completed` 状态时将其删除。 删除某个作业后，不再能够通过 REST API 或 Azure 门户访问其信息和状态。
+ 若要删除某个作业，请在传送该作业之前（即，在该作业处于 `Creating` 状态时）调用[删除作业](/rest/api/storageimportexport/jobs#Jobs_Delete)操作。 也可以在作业处于 `Completed` 状态时将其删除。 删除某个作业后，不再能够通过 REST API 或 Azure 门户访问其信息和状态。
 
 ## <a name="next-steps"></a>后续步骤
 

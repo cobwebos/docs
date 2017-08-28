@@ -13,21 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/02/2017
+ms.date: 08/22/2017
 ms.author: markvi
 ms.reviewer: calebb
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 0f7e00d1fe6e47e4a04eb2853f09e195a03405ce
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 20572ecbde79bc2722f3a25f297c92d8e722a3e8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件性访问
-
-> [!div class="op_single_selector"]
-> * [Azure 门户](active-directory-conditional-access-azure-portal.md)
-> * [Azure 经典门户](active-directory-conditional-access.md)
 
 在移动优先、云优先的世界中，使用 Azure Active Directory 可以实现从任意位置单一登录到设备、应用和服务。 随着 BYOD 等设备、脱离企业网络的办公和第三方 SaaS 应用的普及，IT 专业人员面临着两个对立的目标：
 
@@ -36,7 +32,7 @@ ms.lasthandoff: 08/04/2017
 
 为了提高工作效率，Azure Active Directory 提供多种选项来让用户访问企业资产。 Azure Active Directory 通过应用程序访问管理确保只有*适当的人员*才可以访问应用程序。 如何以更大的力度控制适当的人员在特定的条件下如何访问资源？ 对于*适当的人员*，在某些情况下如何阻止其访问特定的应用？ 例如，有时可以允许适当的人员通过受信任的网络访问特定的应用，但不允许他们通过不受信任的网络访问这些应用。 使用条件性访问可以解决这些问题。
 
-条件性访问是 Azure Active Directory 的一项功能，可让你根据特定的条件针对环境中的应用实施访问控制。 通过这种控制，可以将其他要求关联到访问，或者阻止访问。 条件性访问的实现基于策略。 基于策略的方法可以简化配置体验，因为它遵循访问要求方面的考虑因素。  
+条件访问是 Azure Active Directory 的一项功能，可用于根据特定条件针对环境中的应用强制实施访问控制。 通过这种控制，可以将其他要求关联到访问，或者阻止访问。 条件性访问的实现基于策略。 基于策略的方法可以简化配置体验，因为它遵循访问要求方面的考虑因素。  
 
 通常，我们会使用基于以下模式的语句来定义访问要求：
 
@@ -73,11 +69,11 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 
 - **多重身份验证** - 可以要求在多重身份验证过程中进行强身份验证。 对于提供程序，可以结合 Active Directory 联合服务 (AD FS) 使用 Azure 多重身份验证或本地多重身份验证提供程序。 对于可能已获有效用户的凭据的访问权限的未授权用户，使用多重身份验证可帮助防止其访问资源。
 
-- **合规设备** - 可以在设备级别设置条件性访问策略。 可以设置一个策略，以便只允许合规的计算机或在移动设备管理应用程序中注册的移动设备才可以访问组织的资源。 例如，可以使用 Intune 来检查设备的合规性，并在用户尝试访问应用程序时将其报告给 Azure AD 以执行策略。 有关如何使用 Intune 保护应用和数据的详细指南，请参阅“Protect apps and data with Microsoft Intune”（使用 Microsoft Intune 保护应用和数据）。 此外还可以使用 Intune 保护丢失或被盗设备的数据。 有关详细信息，请参阅“Help protect your data with full or selective wipe using Microsoft Intune”（使用 Microsoft Intune 的完全擦除或选择性擦除保护数据）。
+- **合规设备** - 可以在设备级别设置条件性访问策略。 可以设置一个策略，以便只允许合规的计算机或在移动设备管理中注册的移动设备访问组织的资源。 例如，可以使用 Intune 来检查设备的合规性，然后在用户尝试访问应用程序时将其报告给 Azure AD 以执行策略。 有关如何使用 Intune 保护应用和数据的详细指南，请参阅[使用 Microsoft Intune 保护应用和数据](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune)。 此外还可以使用 Intune 保护丢失或被盗设备的数据。 有关详细信息，请参阅[使用 Microsoft Intune 的完全擦除或选择性擦除保护数据](https://docs.microsoft.com/intune-classic/deploy-use/use-remote-wipe-to-help-protect-data-using-microsoft-intune)。
 
-- **已加入域的设备** - 可以要求用于连接 Azure Active Directory 的设备是已加入域的设备。 此策略可应用于 Windows 台式机、笔记本电脑和企业平板电脑。 有关如何设置已加入域的设备在 Azure AD 中自动注册的详细信息，请参阅 [Automatic device registration with Azure Active Directory for Windows domain-joined devices](active-directory-conditional-access-automatic-device-registration.md)（将已加入 Windows 域的设备自动注册到 Azure Active Directory）。
+- **已加入域的设备** - 可以要求用于连接 Azure Active Directory 的设备在本地 Active Directory (AD) 中已加入域。 此策略可应用于 Windows 台式机、笔记本电脑和企业平板电脑。 
 
-如果在条件性访问策略中选择了多项要求，还可以配置这些要求以进行应用。 可以选择要求应用所有选定的控制措施，或应用其中的一项。
+如果已选择多项控制，还可以配置在处理策略时是否所有这些控制都是必需的。
 
 ![控制](./media/active-directory-conditional-access-azure-portal/06.png)
 
@@ -137,10 +133,19 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 
 ### <a name="device-platforms"></a>设备平台
 
-设备平台根据设备上运行的操作系统（Android、iOS、Windows Phone、Windows）来划分特征。 可以定义要在策略中包含以及排除的设备平台。  
-要在策略中使用设备平台，请先将“配置”开关更改为“是”，然后选择要将策略应用到的所有或单个设备平台。 如果选择单个设备平台，该策略只对这些平台产生影响。 在这种情况下，登录到其他受支持的平台不受该策略的影响。
+设备平台根据设备上运行的操作系统来定义特征：
+
+- Android
+- iOS
+- Windows Phone
+- Windows
+- macOS（预览）。 
 
 ![条件](./media/active-directory-conditional-access-azure-portal/02.png)
+
+可以定义要在策略中包含以及排除的设备平台。  
+要在策略中使用设备平台，请先将“配置”开关更改为“是”，然后选择要将策略应用到的所有或单个设备平台。 如果选择单个设备平台，该策略只对这些平台产生影响。 在这种情况下，登录到其他受支持的平台不受该策略的影响。
+
 
 ### <a name="locations"></a>位置
 
@@ -198,4 +203,4 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 
 若要了解如何配置条件性访问策略，请参阅 [Get started with conditional access in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md)（Azure Active Directory 中的条件性访问入门）。
 
-有关配置条件性访问策略时的用户须知内容以及应避免的操作的更多详细信息，请参阅 
+如果已准备好配置环境的条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](active-directory-conditional-access-best-practices.md)。 

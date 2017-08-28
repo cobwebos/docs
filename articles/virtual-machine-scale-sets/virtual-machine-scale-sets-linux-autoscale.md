@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 3a8a5d25123905e6c5cf91c4bc0c04258e442b5c
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: eff4add1cb16fe25022787668dc1d2277845dd95
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="automatically-scale-linux-machines-in-a-virtual-machine-scale-set"></a>自动缩放虚拟机规模集中的 Linux 计算机
@@ -46,7 +46,7 @@ ms.lasthandoff: 08/11/2017
 ## <a name="step-1-create-a-resource-group-and-a-storage-account"></a>步骤 1：创建资源组和存储帐户
 
 1. **登录 Microsoft Azure**  
-在命令行接口（Bash、终端、命令行提示符）中，切换到 Resource Manager 模式，并[使用工作或学校 ID 登录](../xplat-cli-connect.md#scenario-1-azure-login-with-interactive-login)。 按照提示进行操作以获取 Azure 帐户的交互式登录体验。
+在命令行接口（Bash、终端、命令行提示符）中，切换到 Resource Manager 模式，并[使用工作或学校 ID 登录](../xplat-cli-connect.md#scenario-1-azure-login-with-interactive-login)。按照提示进行操作以获取 Azure 帐户的交互式登录体验。
 
     ```cli   
     azure config mode arm
@@ -591,6 +591,6 @@ azure group delete vmsstestrg1
 * 在 [Azure 监视器跨平台 CLI 快速入门示例](../monitoring-and-diagnostics/insights-cli-samples.md)中查找 Azure 监视器监视功能的示例
 * 若要了解有关通知功能的相关信息，请参阅[使用自动缩放操作在 Azure 监视器中发送电子邮件和 webhook 警报通知](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)
 * 了解如何[使用审核日志在 Azure 监视器中发送电子邮件和 webhook 警报通知](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
-* 请查看[自动缩放运行 Ubuntu/Apache/PHP 应用的 VM 规模集](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale)模板，该模板设置 LAMP 堆栈以执行虚拟机规模集的自动缩放功能。
+* 查看用于设置 Python/bottle 应用的[自动缩放 Ubuntu 16.04 上的演示应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)模板，执行虚拟机规模集的自动缩放功能。
 
 

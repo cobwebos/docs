@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 475c878e34a83d06cffca5e114ccd920c7956256
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 565091e24a8c0009793e2e2365fb95013cad5028
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>使用数据管理网关在本地源与云之间移动数据
@@ -46,7 +46,7 @@ ms.lasthandoff: 08/10/2017
 开始本演练之前，必须具备以下先决条件：
 
 * **Azure 订阅**。  如果没有订阅，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[免费使用](http://azure.microsoft.com/pricing/free-trial/)一文。
-* **Azure 存储帐户**。 在本教程中，将 Blob 存储用作**目标/接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)一文获取创建步骤。
+* **Azure 存储帐户**。 在本教程中，将 Blob 存储用作**目标/接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)一文获取创建步骤。
 * **SQL Server**。 在本教程中，将本地 SQL Server 数据库用作**源**数据存储。 
 
 ## <a name="create-data-factory"></a>创建数据工厂
@@ -129,7 +129,7 @@ ms.lasthandoff: 08/10/2017
    * 在一天中的特定时间安装**计划更新**。
    * 查看网关的**上次更新时间**。
    * 指定可以安装网关更新的时间点。
-8. 切换到“设置”选项卡。 使用在**证书**部分中指定的证书，加密/解密在门户上指定的本地数据存储的凭据。 （可选）单击“更改”以改为使用自己的证书。 默认情况下，网关使用由数据工厂服务自动生成的证书。
+8. 切换到“设置”选项卡。使用在**证书**部分中指定的证书，加密/解密在门户上指定的本地数据存储的凭据。 （可选）单击“更改”以改为使用自己的证书。 默认情况下，网关使用由数据工厂服务自动生成的证书。
 
     ![网关证书配置](./media/data-factory-move-data-between-onprem-and-cloud/gateway-certificate.png)
 

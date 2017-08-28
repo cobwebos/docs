@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 02/03/2017
 ms.author: genemi
 ms.translationtype: HT
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: 6953166f21194f3cbcef3f260b3e7a50d5bf5460
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 7e5da1c32484b0b94d2ad32ead6bb7c28f9744aa
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="extended-events-in-sql-database"></a>SQL 数据库中的扩展事件
@@ -54,7 +54,7 @@ ms.lasthandoff: 07/19/2017
 
 
 - PowerShell
-    - [对 Azure 存储使用 Azure PowerShell](../storage/storage-powershell-guide-full.md) - 提供有关 PowerShell 和 Azure 存储服务的综合信息。
+    - [对 Azure 存储使用 Azure PowerShell](../storage/common/storage-powershell-guide-full.md) - 提供有关 PowerShell 和 Azure 存储服务的综合信息。
 
 ## <a name="code-samples"></a>代码示例
 
@@ -182,7 +182,7 @@ SELECT
 
 在某些情况下，大量使用扩展事件可能会累积过多的活动内存，使整个系统变得不太正常。 因此，Azure SQL 数据库系统会动态设置和调整事件会话可以累积的活动内存量限制。 动态计算会考虑许多因素。
 
-如果你收到错误消息，指出已强制实施内存最大值，则你可以采取以下一些纠正措施：
+如果收到错误消息，指出已强制实施内存最大值，则可以采取以下一些纠正措施：
 
 - 运行更少的并发事件会话。
 - 通过对事件会话执行 **CREATE** 和 **ALTER** 语句，减少在 **MAX\_MEMORY** 子句中指定的内存量。
@@ -191,14 +191,14 @@ SELECT
 
 **事件文件**目标在将数据保存到 Azure 存储 Blob 时可能会遇到网络延迟或故障。 SQL 数据库中的其他事件可能会延迟，因为它们要等待网络通信完成。 这种延迟可能会导致工作负荷变慢。
 
-- 若要缓解这种性能风险，请避免在事件会话定义中将 **EVENT_RETENTION_MODE** 选项设为 **NO_EVENT_LOSS**。
+- 要缓解这种性能风险，请避免在事件会话定义中将 **EVENT_RETENTION_MODE** 选项设为 **NO_EVENT_LOSS**。
 
 ## <a name="related-links"></a>相关链接
 
-- [对 Azure 存储使用 Azure PowerShell](../storage/storage-powershell-guide-full.md)。
+- [对 Azure 存储使用 Azure PowerShell](../storage/common/storage-powershell-guide-full.md)。
 - [Azure 存储 Cmdlet](http://msdn.microsoft.com/library/dn806401.aspx)
-- [对 Azure 存储使用 Azure PowerShell](../storage/storage-powershell-guide-full.md) - 提供有关 PowerShell 和 Azure 存储服务的综合信息。
-- [如何通过 .NET 使用 Blob 存储](../storage/storage-dotnet-how-to-use-blobs.md)
+- [对 Azure 存储使用 Azure PowerShell](../storage/common/storage-powershell-guide-full.md) - 提供有关 PowerShell 和 Azure 存储服务的综合信息。
+- [如何通过 .NET 使用 Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 - [CREATE CREDENTIAL (Transact-SQL)](http://msdn.microsoft.com/library/ms189522.aspx)
 - [CREATE EVENT SESSION (Transact-SQL)](http://msdn.microsoft.com/library/bb677289.aspx)
 - [Jonathan Kehayias 撰写的有关 Microsoft SQL Server 中扩展事件的博客文章](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)
@@ -208,7 +208,7 @@ SELECT
     - [https://azure.microsoft.com/updates/?service=sql-database](https://azure.microsoft.com/updates/?service=sql-database)
 
 
-可通过以下链接访问有关扩展事件的其他代码示例主题。 不过，你必须定期检查所有示例，以确定这些示例是针对 Microsoft SQL Server 还是 Azure SQL 数据库。 然后，你可以在运行示例时确定是否要做出细微的更改。
+可通过以下链接访问有关扩展事件的其他代码示例主题。 不过，必须定期检查所有示例，以确定这些示例是针对 Microsoft SQL Server 还是 Azure SQL 数据库。 然后，可以在运行示例时确定是否要做出细微的更改。
 
 <!--
 ('lock_acquired' event.)

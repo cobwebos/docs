@@ -1,6 +1,6 @@
 ---
-title: "使用 Resource Manager 模板创建操作组 | Microsoft Docs"
-description: "通过操作组可以在发生特定事件时通知电子邮件、短信或调用 webhook。"
+title: "使用资源管理器模板创建操作组 | Microsoft Docs"
+description: "了解如何使用 Azure 资源管理器模板创建操作组。"
 author: anirudhcavale
 manager: orenr
 editor: 
@@ -15,26 +15,27 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
 ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
-ms.openlocfilehash: 88e7b2e7781b80ea360531f4c3a45256de83b594
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 76bf353cac13f1c2169380f8dd3c1e163d4f3f41
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 
-# <a name="create-an-action-group-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建操作组
-本文说明如何使用 [Azure Resource Manager 模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)配置操作组。 通过模板可以在创建资源时自动对资源设置操作组，以确保在触发警报时通知所有正确的当事方。
+# <a name="create-an-action-group-with-a-resource-manager-template"></a>使用资源管理器模板创建操作组
+本文说明如何使用 [Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)配置操作组。 使用模板，可以自动设置可以在某些类型的警报中重复使用的操作组。 这些操作组可确保警报触发时所有相应的当事方可以收到通知。
 
-基本步骤如下所示：
+基本步骤如下：
 
-1.  以 JSON 文件的形式创建一个描述如何创建操作组的模板。
-2.  [使用任意部署方法部署模板。](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
+1. 以 JSON 文件的形式创建一个描述如何创建操作组的模板。
 
-下面我们先介绍如何为操作组创建 Resource Manager 模板，操作组中的操作定义已在模板中进行硬编码，然后在部署模板时再为使用 webhook 配置信息作为输入参数的模板创建 Resource Manager 模板。
+2. 使用[任意部署方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)部署模板。
 
-## <a name="resource-manager-template-for-an-action-group"></a>操作组的 Resource Manager 模板
+首先，我们将介绍如何为操作定义在模板中进行了硬编码的操作组创建资源管理器模板。 其次，我们将介绍如何创建在部署模板时以输入参数形式接受 webhook 配置信息的模板。
 
-若要使用 Resource Manager 模板创建操作组，需要创建 `Microsoft.Insights/actionGroups` 类型的资源，并填充所有相关属性。 以下是几个创建操作组的示例模板。
+## <a name="resource-manager-templates-for-an-action-group"></a>用于操作组的资源管理器模板
+
+若要使用资源管理器模板创建操作组，需要创建 `Microsoft.Insights/actionGroups` 类型的资源。 然后，填充所有相关属性。 以下是两个用于创建操作组的示例模板。
 
 ```json
 {
@@ -170,7 +171,7 @@ ms.lasthandoff: 07/18/2017
 
 
 ## <a name="next-steps"></a>后续步骤
-详细了解[操作组](monitoring-action-groups.md)  
-详细了解[警报](monitoring-overview-alerts.md)  
-如何[使用 Resource Manager 模板添加警报](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
+* 详细了解[操作组](monitoring-action-groups.md)。
+* 详细了解[警报](monitoring-overview-alerts.md)。
+* 了解如何[使用资源管理器模板添加警报](monitoring-create-activity-log-alerts-with-resource-manager-template.md)。
 

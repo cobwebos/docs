@@ -1,6 +1,6 @@
 ---
 title: "将数据迁移到 SQL 数据仓库 | Microsoft 文档"
-description: "有关在开发解决方案时将数据迁移到 Azure SQL 数据仓库的技巧。"
+description: "有关在开发解决方案时会数据迁移到 Azure SQL 数据仓库的技巧。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
@@ -15,21 +15,20 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 06/29/2017
 ms.author: joeyong;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 7835797bc353a64c934b362c31fdcd9b448aca34
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: dbdf1696cd169aa7e5e23f116027a1170347f4ea
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/17/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="migrate-your-data"></a>迁移数据
-数据可以使用各种工具从不同源移动到 SQL 数据仓库中。  ADF 复制、SSIS 和 bcp 都可用来实现此目标。 但是，随着数据量的增加，你应该考虑将数据迁移过程划分成多个步骤。 这样，你便有机会优化每个步骤以提高性能和弹性，确保顺利迁移数据。
+数据可以使用各种工具从不同源移动到 SQL 数据仓库中。  ADF 复制、SSIS 和 bcp 都可用来实现此目标。 但是，随着数据量的增加，应该考虑将数据迁移过程划分成多个步骤。 这样，便有机会优化每个步骤以提高性能和弹性，确保顺利迁移数据。
 
 本文首先讨论 ADF 复制、SSIS 和 bcp 的简单迁移方案。 然后稍微深入讨论如何优化迁移。
 
 ## <a name="azure-data-factory-adf-copy"></a>Azure 数据工厂 (ADF) 复制
-[ADF 复制][ADF Copy]属于 [Azure 数据工厂][Azure Data Factory]。 你可以使用 ADF 复制将数据导出到位于本地存储的平面文件、保留在 Azure Blob 存储中的远程平面文件，或者直接导出到 SQL 数据仓库。
+[ADF 复制][ADF Copy]属于 [Azure 数据工厂][Azure Data Factory]。 可以使用 ADF 复制将数据导出到位于本地存储的平面文件、保留在 Azure Blob 存储中的远程平面文件，或者直接导出到 SQL 数据仓库。
 
 如果数据从平面文件开始，则在开始将数据载入 SQL 数据仓库之前，首先要将数据传输到 Azure 存储 Blob。 将数据传输到 Azure Blob 存储后，可以选择再次使用 [ADF 复制][ADF Copy]，将数据推送到 SQL 数据仓库。
 
@@ -49,7 +48,7 @@ PolyBase 还提供高性能的选项来加载数据。 但是，这意味着要�
 > 
 > 
 
-SSIS 将连接到 SQL 数据仓库，就像连接到 SQL Server 部署一样。 但是，你的连接需要使用 ADO.NET 连接管理器。 你还应谨慎配置“可用时使用批量插入”设置，以最大化吞吐量。 请参阅 [ADO.NET 目标适配器][ADO.NET destination adapter]一文，深入了解此属性
+SSIS 将连接到 SQL 数据仓库，就像连接到 SQL Server 部署一样。 但是，连接需要使用 ADO.NET 连接管理器。 还应谨慎配置“可用时使用批量插入”设置，以最大化吞吐量。 请参阅 [ADO.NET 目标适配器][ADO.NET destination adapter]一文，深入了解此属性
 
 > [!NOTE]
 > 不支持使用 OLEDB 连接到 Azure SQL 数据仓库。
@@ -142,15 +141,15 @@ Azure 导入和导出服务是一个数据传输进程，用于将大量 (GB++) 
 3. 使用 [Azure 导入/导出工具] 将数据复制到 3.5 英吋 SATA II/III 硬盘
 4. 使用 Azure 导入和导出服务，并提供 [Azure 导入/导出工具] 生成的日记文件，来创建导入作业
 5. 将磁盘寄送到指定的 Azure 数据中心
-6. 你的数据将传输到 Azure Blob 存储容器
+6. 数据将传输到 Azure Blob 存储容器
 7. 使用 PolyBase 将数据载入 SQLDW
 
 ### <a name="azcopyazcopy-utility"></a>[AZCopy][AZCopy] 实用程序
-[AZCopy][AZCopy] 实用程序是将数据传输到 Azure 存储 Blob 的一个极佳工具。 它旨在用于少量 (MB++) 到极大量 (GB++) 的数据传输。 将数据传输到 Azure 时，[AZCopy] 还能提供高度灵活的吞吐量，因此是数据传输措施的理想选择。 传输后，你可以使用 PolyBase 将数据载入 SQL 数据仓库。 你还可以使用“执行进程”任务将 AZCopy 合并到 SSIS 包中。
+[AZCopy][AZCopy] 实用程序是将数据传输到 Azure 存储 Blob 的一个极佳工具。 它旨在用于少量 (MB++) 到极大量 (GB++) 的数据传输。 将数据传输到 Azure 时，[AZCopy] 还能提供高度灵活的吞吐量，因此是数据传输措施的理想选择。 传输后，可以使用 PolyBase 将数据载入 SQL 数据仓库。 还可以使用“执行进程”任务将 AZCopy 合并到 SSIS 包中。
 
 若要使用 AZCopy，必须先下载并安装它。 可用版本包括[生产版][production version]和[预览版][preview version]。
 
-若要从文件系统上载文件，需要执行如下所示的命令：
+若要从文件系统上传文件，需要执行如下所示的命令：
 
 ```
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Pattern:abc.txt
@@ -166,19 +165,19 @@ AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/myconta
 完整文档：[AZCopy][AZCopy]。
 
 ## <a name="optimizing-data-export"></a>优化数据导出
-除了确保导出符合 PolyBase 规定的要求外，你还可以设法优化数据导出，以进一步改善过程。
+除了确保导出符合 PolyBase 规定的要求外，还可以设法优化数据导出，以进一步改善过程。
 
 
 
 ### <a name="data-compression"></a>数据压缩
-PolyBase 可以读取 gzip 压缩数据。 如果你可以将数据压缩成 gzip 文件，就能将网络上推送的数据量减到最少。
+PolyBase 可以读取 gzip 压缩数据。 如果可以将数据压缩成 gzip 文件，就能将网络上推送的数据量减到最少。
 
 ### <a name="multiple-files"></a>多个文件
 将大型表分割成多个文件不仅有助于改善导出速度，还有助于重新开始传输，以及数据进入 Azure Blob 存储之后的整体易管理性。 PolyBase 的众多优点之一是可以读取文件夹内的所有文件，并将其视为一个表。 因此，最好将每个表的文件隔离到它自身的文件夹中。
 
-PolyBase 还支持名为“递归文件夹遍历”的功能。 你可以使用此功能来进一步增强所导出数据的组织方式，以改善数据管理。
+PolyBase 还支持名为“递归文件夹遍历”的功能。 可以使用此功能来进一步增强所导出数据的组织方式，以改善数据管理。
 
-若要深入了解如何使用 PolyBase 加载数据，请参阅[使用 PolyBase 将数据载入 SQL 数据仓库][Use PolyBase to load data into SQL Data Warehouse]。
+要深入了解如何使用 PolyBase 加载数据，请参阅[使用 PolyBase 将数据载入 SQL 数据仓库][Use PolyBase to load data into SQL Data Warehouse]。
 
 ## <a name="next-steps"></a>后续步骤
 有关迁移的详细信息，请参阅[将解决方案迁移到 SQL 数据仓库][Migrate your solution to SQL Data Warehouse]。
@@ -187,7 +186,7 @@ PolyBase 还支持名为“递归文件夹遍历”的功能。 你可以使用�
 <!--Image references-->
 
 <!--Article references-->
-[AZCopy]: ../storage/storage-use-azcopy.md
+[AZCopy]:../storage/common/storage-use-azcopy.md
 [ADF Copy]: ../data-factory/data-factory-data-movement-activities.md 
 [ADF samples]: ../data-factory/data-factory-samples.md
 [ADF Copy examples]: ../data-factory/data-factory-copy-activity-tutorial-using-visual-studio.md

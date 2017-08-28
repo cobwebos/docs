@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 9b212bcfcb604319ff9bc39fd284a5eb98c0d2c3
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b4c97e8f51581f9a3f7c5a8d8e82562255fe7b48
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>使用 PowerShell 创建和管理 SQL 数据库弹性作业（预览）
@@ -33,7 +32,7 @@ ms.lasthandoff: 06/20/2017
 * **弹性数据库作业** PowerShell 包：请参阅[安装弹性数据库作业](sql-database-elastic-jobs-service-installation.md)
 
 ### <a name="select-your-azure-subscription"></a>选择 Azure 订阅
-若要选择订阅，你需要提供订阅 ID (**-SubscriptionId**) 或订阅名称 (**-SubscriptionName**)。 如果有多个订阅，可以运行 **Get-AzureRmSubscription** cmdlet，然后从结果集中复制所需的订阅信息。 获得订阅信息后，请运行下面的 commandlet 将此订阅设置为默认值，即创建和管理作业的目标：
+要选择订阅，需要提供订阅 ID (**-SubscriptionId**) 或订阅名称 (**-SubscriptionName**)。 如果有多个订阅，可以运行 **Get-AzureRmSubscription** cmdlet，并从结果集中复制所需的订阅信息。 获得订阅信息后，请运行下面的 commandlet 将此订阅设置为默认值，即创建和管理作业的目标：
 
     Select-AzureRmSubscription -SubscriptionId {SubscriptionID}
 
@@ -57,7 +56,7 @@ ms.lasthandoff: 06/20/2017
 
   <tr>
     <td>脚本</td>
-    <td>用于跨数据库执行的 Transact-SQL 脚本。  脚本应该编写为幂等，因为服务将在失败时重试执行脚本。
+    <td>用于跨数据库执行的 Transact-SQL 脚本。  脚本应该编写为幂等，因为服务会在失败时重试执行脚本。
     </td>
     <td>
     <p>Get-AzureSqlJobContent</p>
@@ -130,7 +129,7 @@ ms.lasthandoff: 06/20/2017
 <tr>
     <td>作业执行</td>
     <td>
-    <p>必要的任务容器，以便使用数据库连接的凭据执行脚本或将 DACPAC 应用到目标，将会根据执行策略处理失败。</p>
+    <p>必要的任务容器，以便使用数据库连接的凭据执行脚本或将 DACPAC 应用到目标，会根据执行策略处理失败。</p>
     </td>
     <td>
     <p>Get-AzureSqlJobExecution</p>
@@ -194,7 +193,7 @@ ms.lasthandoff: 06/20/2017
 
 有两种可以创建的组类型： 
 
-* [分片映射](sql-database-elastic-scale-shard-map-management.md)组：提交以分片映射为目标的作业时，该作业会通过查询分片映射来确定其当前的分片集，然后为分片映射中的每个分片创建子作业。
+* [分片映射](sql-database-elastic-scale-shard-map-management.md)组：提交以分片映射为目标的作业时，该作业会通过查询分片映射来确定其当前的分片集，并为分片映射中的每个分片创建子作业。
 * 自定义集合组：一种自定义数据库集。 当作业以自定义集合为目标时，它会针对当前位于自定义集合中的每个数据库创建子作业。
 
 ## <a name="to-set-the-elastic-database-jobs-connection"></a>设置弹性数据库作业连接
@@ -231,7 +230,7 @@ ms.lasthandoff: 06/20/2017
     Set-AzureSqlJobCredential -CredentialName $credentialName -Credential $credential 
 
 ## <a name="to-define-an-elastic-database-shard-map-target"></a>定义弹性数据库分片映射目标
-若要针对分片集（使用[弹性数据库客户端库](sql-database-elastic-database-client-library.md)创建）中的所有数据库执行作业，请将分片映射用作数据库目标。 本示例要求使用弹性数据库客户端库创建分片应用程序。 请参阅[弹性数据库工具示例入门](sql-database-elastic-scale-get-started.md)。
+要针对分片集（使用[弹性数据库客户端库](sql-database-elastic-database-client-library.md)创建）中的所有数据库执行作业，请将分片映射用作数据库目标。 本示例要求使用弹性数据库客户端库创建分片应用程序。 请参阅[弹性数据库工具示例入门](sql-database-elastic-scale-get-started.md)。
 
 必须将分片映射管理器数据库设置为数据库目标，然后将特定分片映射指定为目标。
 
@@ -246,7 +245,7 @@ ms.lasthandoff: 06/20/2017
 ## <a name="create-a-t-sql-script-for-execution-across-databases"></a>创建 T-SQL 脚本用于跨数据库执行
 创建要执行的 T-SQL 脚本时，强烈建议将其构建为[幂等](https://en.wikipedia.org/wiki/Idempotence)模式，以便灵活地应对各种故障。 每当执行发生失败时，不论失败的分类，弹性数据库作业将重试执行脚本。
 
-使用 [**New-AzureSqlJobContent cmdlet**](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent) 创建并保存执行脚本，然后设置 **-ContentName** 和 **-CommandText** 参数。
+使用 [**New-AzureSqlJobContent cmdlet**](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent) 创建并保存执行脚本，并设置 **-ContentName** 和 **-CommandText** 参数。
 
     $scriptName = "Create a TestTable"
 
@@ -342,7 +341,7 @@ ms.lasthandoff: 06/20/2017
     Write-Output $jobExecutions 
 
 ## <a name="to-view-the-state-across-multiple-job-executions"></a>查看多次执行作业时的状态
-[**Get-AzureSqlJobExecution cmdlet**](/powershell/module/elasticdatabasejobs/new-azuresqljob) 具有多个可选参数，用于显示多个作业执行（已通过提供的参数进行筛选）。 下面演示了 Get-AzureSqlJobExecution 的一些可能的用法：
+[**Get-AzureSqlJobExecution cmdlet**](/powershell/module/elasticdatabasejobs/new-azuresqljob) 具有多个可选参数，可用于显示多个作业执行（已通过提供的参数进行筛选）。 下面演示了 Get-AzureSqlJobExecution 的一些可能的用法：
 
 检索所有处于活动状态的顶级作业执行：
 
@@ -460,7 +459,7 @@ ms.lasthandoff: 06/20/2017
 
 弹性数据库作业可通过两种不同的方式执行取消：
 
-1. 取消当前正在执行的任务：如果在任务正在执行时检测到取消，将在当前正在执行的任务层面尝试取消。  例如：当尝试取消时，如果有某个长时间运行的查询当前正在执行，将尝试取消该查询。
+1. 取消当前正在执行的任务：如果在任务正在执行时检测到取消，会在当前正在执行的任务层面尝试取消。  例如：当尝试取消时，如果有某个长时间运行的查询当前正在执行，将尝试取消该查询。
 2. 取消任务重试：如果控制线程在启动任务执行之前检测到取消，控制线程将避免启动该任务，并将请求声明为已取消。
 
 如果针对父作业请求了作业取消，则会对父作业及其所有子作业执行取消请求。
@@ -471,7 +470,7 @@ ms.lasthandoff: 06/20/2017
     Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
 
 ## <a name="to-delete-a-job-and-job-history-asynchronously"></a>以异步方式删除作业和作业历史记录
-弹性数据库作业支持异步删除作业。 可将某个作业标记为待删除，系统将在作业的作业执行都已完成后，删除该作业及其所有作业历史记录。 系统不会自动取消处于活动状态的作业执行。  
+弹性数据库作业支持异步删除作业。 可将某个作业标记为待删除，系统会在作业的作业执行都已完成后，删除该作业及其所有作业历史记录。 系统不会自动取消处于活动状态的作业执行。  
 
 调用 [**Stop-AzureSqlJobExecution**](/powershell/module/elasticdatabasejobs/stop-azuresqljobexecution) 即可取消正在执行的作业。
 
@@ -481,7 +480,7 @@ ms.lasthandoff: 06/20/2017
     Remove-AzureSqlJob -JobName $jobName
 
 ## <a name="to-create-a-custom-database-target"></a>创建自定义数据库目标
-你可以定义各种可以直接执行或包括到自定义数据库组中的自定义数据库目标。 例如，由于**弹性池**尚不能通过 PowerShell API 直接使用，可创建自定义数据库目标和自定义数据库集合目标，其中包含池中的所有数据库。
+可以定义各种可以直接执行或包括到自定义数据库组中的自定义数据库目标。 例如，由于**弹性池**尚不能通过 PowerShell API 直接使用，可创建自定义数据库目标和自定义数据库集合目标，其中包含池中的所有数据库。
 
 设置以下变量以反映所需的数据库信息：
 
@@ -498,7 +497,7 @@ ms.lasthandoff: 06/20/2017
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName 
 
 ### <a name="to-add-databases-to-a-custom-database-collection-target"></a>将数据库添加到自定义数据库集合目标
-若要将数据库添加到特定的自定义集合，请使用 [**Add-AzureSqlJobChildTarget**](/powershell/module/elasticdatabasejobs/add-azuresqljobchildtarget) cmdlet。
+要将数据库添加到特定的自定义集合，请使用 [**Add-AzureSqlJobChildTarget**](/powershell/module/elasticdatabasejobs/add-azuresqljobchildtarget) cmdlet。
 
     $databaseServerName = "{Database Server Name}"
     $databaseName = "{Database Name}"
@@ -525,7 +524,7 @@ ms.lasthandoff: 06/20/2017
     Write-Output $job
 
 ## <a name="data-collection-across-databases"></a>跨数据库收集数据
-你可以使用作业跨一组数据库来执行查询，然后将结果发送到特定的表。 可以在事实之后查询数据表，以查看每个数据库的查询结果。 这提供了跨多个数据库执行查询的异步方法。 可通过重试自动处理失败的尝试。
+可以使用作业跨一组数据库来执行查询，然后将结果发送到特定的表。 可以在事实之后查询数据表，以查看每个数据库的查询结果。 这提供了跨多个数据库执行查询的异步方法。 可通过重试自动处理失败的尝试。
 
 如果不存在指定的目标表，则自动创建该表。 新表与返回的结果集的架构相符。 如果脚本返回多个结果集，弹性数据库作业只将第一个结果集发送到目标表。
 
@@ -610,7 +609,7 @@ ms.lasthandoff: 06/20/2017
     Write-Output $jobTriggers
 
 ## <a name="to-create-a-data-tier-application-dacpac-for-execution-across-databases"></a>创建可以跨数据库执行的数据层应用程序 (DACPAC)
-若要创建 DACPAC，请参阅[数据层应用程序](https://msdn.microsoft.com/library/ee210546.aspx)。 若要部署 DACPAC，请使用 [New-AzureSqlJobContent cmdlet](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent)。 DACPAC 必须可供服务访问。 建议将创建的 DACPAC 上载到 Azure 存储空间，并创建 DACPAC 的[共享访问签名](../storage/storage-dotnet-shared-access-signature-part-1.md)。
+若要创建 DACPAC，请参阅[数据层应用程序](https://msdn.microsoft.com/library/ee210546.aspx)。 若要部署 DACPAC，请使用 [New-AzureSqlJobContent cmdlet](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent)。 DACPAC 必须可供服务访问。 建议将创建的 DACPAC 上载到 Azure 存储空间，并创建 DACPAC 的[共享访问签名](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 
     $dacpacUri = "{Uri}"
     $dacpacName = "{Dacpac Name}"

@@ -15,10 +15,11 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: b870974efdde2ebdf339013ca86b772b665151a4
-ms.openlocfilehash: 8cfdad48524c24b3ad69c01ae0330e90ce197b3a
-ms.lasthandoff: 03/01/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3062c7c060c3730c5edef3ada16f3a5077cf5558
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 管理 StorSimple 虚拟阵列的警报
@@ -43,25 +44,25 @@ StorSimple Device Manager 服务中的警报功能提供了一种实时查看和
 
 #### <a name="to-enable-email-notification-for-alerts"></a>为警报启用电子邮件通知
 
-1. 转到 StorSimple Device Manager 服务，在“管理”部分中，选择和单击“设备”。 从显示的设备列表中，选择并单击你的设备。
+1. 转到 StorSimple Device Manager 服务，在“管理”部分中，选择和单击“设备”。 从显示的设备列表中，选择并单击设备。
    
     ![警报设置](./media/storsimple-virtual-array-manage-alerts/alerts2.png)
-2. 此时将打开“设置”边栏选项卡。 在“设备设置”部分中，选择“常规”。 此时将打开“常规设置”边栏选项卡。
+2. 此时会打开“设置”边栏选项卡。 在“设备设置”部分中，选择“常规”。 此时会打开“常规设置”边栏选项卡。
    
     ![警报通知配置](./media/storsimple-virtual-array-manage-alerts/alerts4.png)
 3. 在“常规设置”边栏选项卡中，转到“警报设置”部分，并设置以下项：
    
    1. 在“启用电子邮件通知”字段中，选择“是”。
    2. 如果希望服务管理员和所有协同管理员接收警报通知，请在“电子邮件服务管理员”字段中选择“是”。
-   3. 在“其他电子邮件收件人”字段中，输入应接收警报通知的所有其他收件人的电子邮件地址。 以 *someone@somewhere.com* 格式输入名称。 使用分号分隔电子邮件地址。 对于每个虚拟设备，最多可以配置 20 个电子邮件地址。
+   3. 在“其他电子邮件收件人”字段中，输入应接收警报通知的所有其他收件人的电子邮件地址。 以 *someone@somewhere.com* 格式输入名称。使用分号分隔电子邮件地址。 对于每个虚拟设备，最多可以配置 20 个电子邮件地址。
       
        ![警报通知配置](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
-   4. 若要发送测试电子邮件通知，请单击“发送测试电子邮件”。 StorSimple Device Manager 服务在转发测试通知时将显示状态消息。
+   4. 若要发送测试电子邮件通知，请单击“发送测试电子邮件”。 StorSimple Device Manager 服务在转发测试通知时会显示状态消息。
       
        ![警报测试通知电子邮件已发送](./media/storsimple-virtual-array-manage-alerts/alerts7.png)
       
       > [!NOTE]
-      > 如果无法发送测试通知消息，StorSimple Device Manager 服务将显示相应的消息。 单击“确定”、等待几分钟，然后再次尝试发送测试通知消息。
+      > 如果无法发送测试通知消息，StorSimple Device Manager 服务会显示相应的消息。 请单击“确定”，并在几分钟后重试发送测试通知消息。
       > 
       > 
    5. 在页面底部，单击“保存”保存配置。 出现确认提示时，单击“是”。
@@ -99,7 +100,7 @@ StorSimple 虚拟阵列可在响应各种条件时生成警报。 以下是最�
 
 ![警报列表和详细信息](./media/storsimple-virtual-array-manage-alerts/alerts16.png)
 
-如果需要将信息发送到 Microsoft 支持部门，可将警报详细信息复制到文本文件。 遵循建议消除本地警报条件后，应从列表中清除该警报。 从列表中选择该警报，然后单击“清除”。 若要清除多个警报，请选择每个警报，单击除“警报”列以外的任意列，然后在选择要清除的所有警报之后单击“清除”。
+如果需要将信息发送到 Microsoft 支持部门，可将警报详细信息复制到文本文件。 遵循建议消除本地警报条件后，应从列表中清除该警报。 从列表中选择该警报，并单击“清除”。 要清除多个警报，请选择每个警报，单击除“警报”列以外的所有列，并在选择要清除的所有警报之后单击“清除”。
 
 单击“清除”时，可以提供有关警报的注释，以及采用的解决问题的步骤。 
 
@@ -138,7 +139,7 @@ StorSimple 虚拟阵列可在响应各种条件时生成警报。 以下是最�
 | 警报文本 | 事件 | 详细信息/建议的操作 |
 |:--- |:--- |:--- |
 | 本地虚拟设备配置不受支持。 |降低性能。 |当前配置可能导致性能降低。 确保服务器满足最低配置要求。 有关详细信息，请转到 [StorSimple 虚拟阵列要求](storsimple-ova-system-requirements.md)。 |
-| <*device name*> 上的预配磁盘空间不足。 |磁盘空间警告。 |预配磁盘空间不足。 若要释放空间，请考虑将工作负荷移动到另一个卷或共享，或者删除数据。 |
+| <*device name*> 上的预配磁盘空间不足。 |磁盘空间警告。 |预配磁盘空间不足。 要释放空间，请考虑将工作负荷移动到另一个卷或共享，或者删除数据。 |
 
 ### <a name="job-failure-alerts"></a>作业失败警报
 
@@ -151,8 +152,8 @@ StorSimple 虚拟阵列可在响应各种条件时生成警报。 以下是最�
 
 | 警报文本 | 事件 | 详细信息/建议的操作 |
 |:--- |:--- |:--- |
-| 在数据传输中遇到意外延迟。 |数据传输较慢。 |当超出存储服务的可伸缩性目标时，会发生限制错误。 存储服务这样做是为了确保没有单个客户端或租户可以在损害其他客户端或租户的情况下使用服务。 有关 Azure 存储帐户疑难解答的详细信息，请转到[监视、诊断和排查 Microsoft Azure 存储问题](../storage/storage-monitoring-diagnosing-troubleshooting.md)。 |
-| <*device name*> 上的本地预留磁盘空间不足。 |响应时间较长。 |在本地设备上预留 <*device name*> 的总预配大小的&10;%，现在预留空间不足。 <*device name*> 上的工作负荷正在生成更高的改动率，或者你最近迁移了大量数据。 这可能导致性能降低。 若要解决此问题，请考虑采取以下措施之一：<ul><li>增加此设备的云带宽。</li><li>减少工作负荷或将工作负荷移到其他卷或共享。</li></ul> |
+| 在数据传输中遇到意外延迟。 |数据传输较慢。 |当超出存储服务的可伸缩性目标时，会发生限制错误。 存储服务这样做是为了确保没有单个客户端或租户可以在损害其他客户端或租户的情况下使用服务。 有关 Azure 存储帐户疑难解答的详细信息，请转到[监视、诊断和排查 Microsoft Azure 存储问题](../storage/common/storage-monitoring-diagnosing-troubleshooting.md)。 |
+| <*device name*> 上的本地预留磁盘空间不足。 |响应时间较长。 |在本地设备上预留 <*device name*> 的总预配大小的 10%，现在预留空间不足。 <*device name*> 上的工作负荷正在生成更高的改动率，或者最近迁移了大量数据。 这可能导致性能降低。 若要解决此问题，请考虑采取以下措施之一：<ul><li>增加此设备的云带宽。</li><li>减少工作负荷或将工作负荷移到其他卷或共享。</li></ul> |
 
 ### <a name="security-alerts"></a>安全警报
 

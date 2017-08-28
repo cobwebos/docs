@@ -14,16 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/10/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: c852374b6f6ca58d807631fdfcc8e42abf99b673
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b469c0ebe9838a1ea986cff3043e3008941e9aa9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-store"></a>使用 Azure 导入/导出服务将数据脱机复制到 Data Lake Store
-本文介绍如何使用脱机复制方法（例如 [Azure 导入导出/服务](../storage/storage-import-export-service.md)）将大型数据集 (>200GB) 复制到 Azure Data Lake Store。 具体而言，本文中用作示例的文件大小为 339,420,860,416 字节，即约 319GB 磁盘空间。 命名此文件为 319GB.tsv。
+本文介绍如何使用脱机复制方法（例如 [Azure 导入/导出服务](../storage/common/storage-import-export-service.md)）将大型数据集 (>200 GB) 复制到 Azure Data Lake Store。 具体而言，本文中用作示例的文件大小为 339,420,860,416 字节，即约 319GB 磁盘空间。 命名此文件为 319GB.tsv。
 
 使用 Azure 导入/导出服务，可以将硬盘驱动器传送到 Azure 数据中心，从而安全地将大量数据传输到 Azure Blob 存储。
 
@@ -50,7 +49,7 @@ ms.lasthandoff: 05/08/2017
     319GB.tsv-part-ad
 
 ## <a name="get-disks-ready-with-data"></a>准备好数据可使用的磁盘
-遵循[使用 Azure 导入/导出服务](../storage/storage-import-export-service.md)中的说明（“准备驱动器”部分下面）准备硬盘。 下面是整个步骤：
+遵循[使用 Azure 导入/导出服务](../storage/common/storage-import-export-service.md)中的说明（“准备驱动器”部分下面）准备硬盘。 下面是整个步骤：
 
 1. 购买满足用于 Auzre 导入/导出服务要求的硬盘。
 2. 数据发送到 Azure 数据中心后，确认数据要复制到的 Azure 存储帐户。
@@ -59,11 +58,11 @@ ms.lasthandoff: 05/08/2017
     ````
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
     ````
-    请参阅[使用 Azure 导入/导出服务](../storage/storage-import-export-service.md)查看更多示例代码片段。
+    请参阅[使用 Azure 导入/导出服务](../storage/common/storage-import-export-service.md)查看更多示例代码片段。
 4. 上面的命令会在指定位置创建日志文件。 之后使用此日志文件从 [Azure 经典门户](https://manage.windowsazure.com)创建导入作业。
 
 ## <a name="create-an-import-job"></a>创建导入作业
-现在可按照使用 [Azure 导入/导出服务](../storage/storage-import-export-service.md)（**创建导入作业**部分之下）中的说明创建导入作业。 对于此导入作业，除其他详细信息外，还提供准备磁盘驱动器时创建的日志文件。
+现在可按照使用 [Azure 导入/导出服务](../storage/common/storage-import-export-service.md)（**创建导入作业**部分之下）中的说明创建导入作业。 对于此导入作业，除其他详细信息外，还提供准备磁盘驱动器时创建的日志文件。
 
 ## <a name="physically-ship-the-disks"></a>物理发送磁盘
 现在可以物理方式将磁盘发送到 Azure 数据中心。 随后，会在 Azure 数据中心将数据复制到创建此导入作业时提供的 Azure 存储 blob 中。 此外，创建此作业时，如果选择了稍后提供跟踪信息，则现在可返回到导入作业并更新跟踪号。

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: arramac
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 061e79be546a80d254f2915313d747cf69cee9d2
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 52cb5f2569b6c3a5301752b1e8bfb6cea13ff7f6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB：在 .NET 中使用表 API 进行开发
@@ -42,7 +42,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
  
 ## <a name="tables-in-azure-cosmos-db"></a>Azure Cosmos DB 中的表 
 
-Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduction.md)（预览），这些应用程序需要采用无架构设计的键-值存储。 [Azure 表存储](../storage/storage-introduction.md) SDK 和 REST API 可用于处理 Azure Cosmos DB。 可以使用 Azure Cosmos DB 创建具有高吞吐量要求的表。 Azure Cosmos DB 当前在公共预览版中支持吞吐量优化表（非正式地称为“高级表”）。 
+Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduction.md)（预览），这些应用程序需要采用无架构设计的键-值存储。 [Azure 表存储](../storage/common/storage-introduction.md) SDK 和 REST API 可用于处理 Azure Cosmos DB。 可以使用 Azure Cosmos DB 创建具有高吞吐量要求的表。 Azure Cosmos DB 当前在公共预览版中支持吞吐量优化表（非正式地称为“高级表”）。 
 
 可以继续对具有高存储和低吞吐量要求的表使用 Azure 表存储。 Azure Cosmos DB 会在将来更新中引入对存储优化表的支持，并且现有和新的 Azure 表存储帐户将无缝升级到 Azure Cosmos DB。
 
@@ -64,7 +64,7 @@ Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduct
 * 有关可用 API 的完整详细信息的表服务参考文档[用于 .NET 的存储客户端库参考](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 
 ### <a name="about-this-tutorial"></a>关于本教程
-本教程供熟悉 Azure 表存储 SDK 并想要通过 Azure Cosmos DB 使用高级功能的开发人员使用。 本教程基于[通过 .NET 开始使用 Azure 表存储](../storage/storage-dotnet-how-to-use-tables.md)，并演示如何利用辅助索引、预配的吞吐量和多宿主等附加功能。 涵盖如何使用 Azure 门户创建 Azure Cosmos DB 帐户，然后生成并部署表应用程序。 还将演练用于创建和删除表，以及插入、更新、删除和查询表数据的 .NET 示例。 
+本教程供熟悉 Azure 表存储 SDK 并想要通过 Azure Cosmos DB 使用高级功能的开发人员使用。 本教程基于[通过 .NET 开始使用 Azure 表存储](table-storage-how-to-use-dotnet.md)，并演示如何利用辅助索引、预配的吞吐量和多宿主等附加功能。 涵盖如何使用 Azure 门户创建 Azure Cosmos DB 帐户，生成并部署表应用程序。 还将演练用于创建和删除表，以及插入、更新、删除和查询表数据的 .NET 示例。 
 
 如果尚未安装 Visual Studio 2017，可以下载并使用免费的 [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
 
@@ -76,8 +76,8 @@ Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduct
 
 > [!TIP]
 > * 已有一个 Azure Cosmos DB 帐户？ 如果有，请跳到[设置 Visual Studio 解决方案](#SetupVS)。
-> * 是否具有 Azure DocumentDB 帐户？ 如果有，则该帐户现为 Azure Cosmos DB 帐户，你可以直接跳到[设置 Visual Studio 解决方案](#SetupVS)。  
-> * 如果使用 Azure Cosmos DB Emulator，请遵循 [Azure Cosmos DB Emulator](local-emulator.md) 中的步骤设置该模拟器，然后直接跳到[设置 Visual Studio 解决方案](#SetupVS)。
+> * 是否具有 Azure DocumentDB 帐户？ 如果有，则该帐户现为 Azure Cosmos DB 帐户，可以直接跳到[设置 Visual Studio 解决方案](#SetupVS)。  
+> * 如果使用 Azure Cosmos DB Emulator，请遵循 [Azure Cosmos DB Emulator](local-emulator.md) 中的步骤设置该模拟器，并直接跳到[设置 Visual Studio 解决方案](#SetupVS)。
 <!---Loc Comment: Please, check link [Set up your Visual Studio solution] since it's not redirecting to any location.---> 
 >
 >
@@ -102,24 +102,24 @@ Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduct
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
-1. 在 [Azure 门户](http://portal.azure.com/)的 Azure Cosmos DB 帐户的左侧导航栏中，单击“密钥”，然后单击“读写密钥”。 将在下一步使用屏幕右侧的复制按钮将连接字符串复制到 app.config 文件中。
+1. 在 [Azure 门户](http://portal.azure.com/)的 Azure Cosmos DB 帐户的左侧导航栏中，单击“密钥”，并单击“读写密钥”。 将在下一步使用屏幕右侧的复制按钮将连接字符串复制到 app.config 文件中。
 
 2. 在 Visual Studio 中，打开 app.config 文件。 
 
-3. 使用复制按钮从门户中复制 URI 值，并使其成为 app.config 中的 account-key 的值。 使用 app.config 中之前为 account-name 创建的帐户名。
+3. 使用复制按钮从门户中复制 URI 值，并使其成为 app.config 中的 account-key 的值。使用 app.config 中之前为 account-name 创建的帐户名。
   
 ```
 <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key;TableEndpoint=https://account-name.documents.azure.com" />
 ```
 
 > [!NOTE]
-> 若要将此应用与标准 Azure 表存储配合使用，需要更改 `app.config file` 中的连接字符串。 将帐户名用作 Table-account 名称，将密钥用作 Azure 存储主密钥。 <br>
+> 要将此应用与标准 Azure 表存储配合使用，需要更改 `app.config file` 中的连接字符串。 将帐户名用作 Table-account 名称，将密钥用作 Azure 存储主密钥。 <br>
 >`<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key;EndpointSuffix=core.windows.net" />`
 > 
 >
 
 ## <a name="build-and-deploy-the-app"></a>生成并部署应用
-1. 在 Visual Studio 中，右键单击解决方案资源管理器中的项目，然后单击“管理 NuGet 包”。 
+1. 在 Visual Studio 中，右键单击解决方案资源管理器中的项目，并单击“管理 NuGet 包”。 
 
 2. 在 NuGet“浏览”框中，键入 WindowsAzure.Storage-PremiumTable。 选中“包括预发行版本”。
 
@@ -130,7 +130,7 @@ Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduct
 现可返回到数据资源管理器，查看查询、修改和处理此表数据。 
 
 > [!NOTE]
-> 若要将此应用与 Azure Cosmos DB Emulator 配合使用，只需更改 `app.config file` 中的连接字符串。 将以下值用于模拟器。 <br>
+> 要将此应用与 Azure Cosmos DB Emulator 配合使用，只需更改 `app.config file` 中的连接字符串。 将以下值用于模拟器。 <br>
 >`<add key="StorageConnectionString" value=DefaultEndpointsProtocol=https;AccountName=localhost;AccountKey=<insertkey>==;TableEndpoint=https://localhost -->`
 > 
 >
@@ -146,7 +146,7 @@ Azure Cosmos DB 支持大量 Azure 表存储 API 中不可用的功能。 可以
 | TablePreferredLocations | 以逗号分隔的首选（多主页）位置列表，用于读取。 每个 Azure Cosmos DB 帐户可与 1-30+ 个区域关联。 每个客户端实例可按首选顺序指定这些区域的一个子集以实现低延迟的读取。 必须使用这些区域的[显示名称](https://msdn.microsoft.com/library/azure/gg441293.aspx)命名这些区域，例如 `West US`。 另请参阅[多宿主 API](tutorial-global-distribution-table.md)。
 | TableConsistencyLevel | 通过在后列五个定义完善的一致性级别之间进行选择，可在延迟、一致性和可用性之间权衡：`Strong`、`Session`、`Bounded-Staleness`、`ConsistentPrefix` 和 `Eventual`。 默认值为 `Session`。 一致性级别的选择会在多区域设置中产生显著的性能差异。 有关详细信息，请参阅[一致性级别](consistency-levels.md)。 |
 | TableThroughput | 表的保留吞吐量以请求单位 (RU) /秒表示。 单个表可支持数百至数百万的 RU/s。 请参阅[请求单位](request-units.md)。 默认为 `400` |
-| TableIndexingPolicy | 针对表中所有列的一致和自动辅助索引 | 符合索引策略规范的 JSON 字符串。 若要查看如何将索引策略更改为包括/排除特定列，请参阅[索引策略](indexing-policies.md)。 | 所有属性的自动索引（字符串哈希、数字范围） |
+| TableIndexingPolicy | 针对表中所有列的一致和自动辅助索引 | 符合索引策略规范的 JSON 字符串。 要查看如何将索引策略更改为包括/排除特定列，请参阅[索引策略](indexing-policies.md)。 | 所有属性的自动索引（字符串哈希、数字范围） |
 | TableQueryMaxItemCount | 配置单个往返过程中按每个表查询所返回的最大项数。 默认为 `-1`，使 Azure Cosmos DB 在运行时能够动态确定该值。 |
 | TableQueryEnableScan | 如果查询无法使用任何筛选器的索引，则无论如何要通过扫描运行它。 默认值为 `false`。|
 | TableQueryMaxDegreeOfParallelism | 用于执行跨分区查询的并行度。 `0` 是不使用任何预提取的串行，`1` 是使用预提取的串行，更高的值会增加并行度的速率。 默认为 `-1`，使 Azure Cosmos DB 在运行时能够动态确定该值。 |
@@ -206,7 +206,7 @@ table.CreateIfNotExists();
 
 可通过以 RU（请求单位）/秒的形式配置 `TableThroughput` 的设置，来配置默认吞吐量。 
 
-对 1-KB 实体的 1 次读取规范化为 1 RU，并将根据其他操作的 CPU、内存和 IOPS 消耗量将其规范化为固定 RU 值。 详细了解 [Azure Cosmos DB 中的请求单位](request-units.md)。
+对 1-KB 实体的 1 次读取规范化为 1 RU，并会根据其他操作的 CPU、内存和 IOPS 消耗量将其规范化为固定 RU 值。 详细了解 [Azure Cosmos DB 中的请求单位](request-units.md)。
 
 > [!NOTE]
 > 虽然表存储 SDK 当前不支持修改吞吐量，但可在任何时候通过 Azure 门户或 Azure CLI 即时更改吞吐量。
@@ -309,10 +309,10 @@ foreach (CustomerEntity entity in table.ExecuteQuery(emailQuery))
 }
 ```
 
-在预览版中，对于表 API，Azure Cosmos DB 支持与 Azure 表存储相同的查询功能。 Azure Cosmos DB 还支持排序、聚合、地理空间查询、层次结构和各种内置函数。 在将来的服务更新中，将在表 API 中提供更多的功能。 有关这些功能的概述，请参阅 [Azure Cosmos DB 查询](documentdb-sql-query.md)。 
+在预览版中，对于表 API，Azure Cosmos DB 支持与 Azure 表存储相同的查询功能。 Azure Cosmos DB 还支持排序、聚合、地理空间查询、层次结构和各种内置函数。 在将来的服务更新中，会在表 API 中提供更多的功能。 有关这些功能的概述，请参阅 [Azure Cosmos DB 查询](documentdb-sql-query.md)。 
 
 ## <a name="replace-an-entity"></a>替换实体
-若要更新实体，请从表服务中检索它，修改实体对象，然后将更改保存回表服务。 以下代码将更改现有客户的电话号码。 
+要更新实体，请从表服务中检索它，修改实体对象，然后将更改保存回表服务。 以下代码将更改现有客户的电话号码。 
 
 ```csharp
 TableOperation updateOperation = TableOperation.Replace(updateEntity);
@@ -340,8 +340,8 @@ table.DeleteIfExists();
 
 如果不打算继续使用此应用，请使用以下步骤删除本教程在 Azure 门户中创建的所有资源。   
 
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击已创建资源的名称。  
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，然后单击“删除”。 
+1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。  
+2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。 
 
 ## <a name="next-steps"></a>后续步骤
 

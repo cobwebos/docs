@@ -18,59 +18,81 @@ ms.workload: big-data
 ms.date: 05/25/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: d252a4a8b811f966098348866cc498e2be2924f2
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c49f185db5a035f70a711bf309b973182d94a2b0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/17/2017
+ms.lasthandoff: 08/22/2017
 
 ---
-#<a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>将用于 IntelliJ 的 HDInsight 工具与 Hortonworks 沙盒配合使用
+# <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>将用于 IntelliJ 的 HDInsight 工具与 Hortonworks 沙盒配合使用
 
-了解如何通过用于 IntelliJ 的 HDInsight 工具开发 Apache Scala 应用程序，并在运行在工作站上的 [Hortonworks 沙盒](http://hortonworks.com/products/sandbox/)上测试应用程序。 [IntelliJ IDEA](https://www.jetbrains.com/idea/) 是一种 Java 集成开发环境 (IDE)，用于开发计算机软件。 在 Hortonworks 沙盒上开发并测试应用程序以后，即可将应用程序移至 [Azure HDInsight](hdinsight-hadoop-introduction.md)。
+了解如何通过用于 IntelliJ 的 HDInsight 工具开发 Apache Scala 应用程序，并在运行在工作站上的 [Hortonworks 沙盒](http://hortonworks.com/products/sandbox/)上测试应用程序。 
 
-##<a name="prerequisites"></a>先决条件
+[IntelliJ IDEA](https://www.jetbrains.com/idea/) 是一种 Java 集成开发环境 (IDE)，用于开发计算机软件。 在 Hortonworks 沙盒上开发并测试应用程序以后，即可将应用程序移至 [Azure HDInsight](hdinsight-hadoop-introduction.md)。
 
-在开始阅读本教程前，必须具备以下条件：
+## <a name="prerequisites"></a>先决条件
 
-- 基于 Hortonworks 沙盒的 HDP 2.4，运行在本地环境中。 若要进行配置，请参阅[通过虚拟机上的 Hadoop 沙盒了解 Hadoop 生态系统](hdinsight-hadoop-emulator-get-started.md)。 请注意，用于 IntelliJ 的 HDInsight 工具只使用 HDP 2.4 测试过。 在 [Hortonworks 沙盒下载站点](http://hortonworks.com/downloads/#sandbox)中，展开 **Hortonworks 沙盒存档**即可获取。
+开始学习本教程之前，必须做好以下准备：
+
+- 基于 Hortonworks 沙盒的 Hortonworks 数据平台 (HDP) 2.4，运行在本地环境中。 若要配置 HDP，请参阅[通过虚拟机上的 Hadoop 沙盒了解 Hadoop 生态系统](hdinsight-hadoop-emulator-get-started.md)。 
+    >[!NOTE]
+    >用于 IntelliJ 的 HDInsight 工具只使用 HDP 2.4 测试过。 若要获取 HDP 2.4，请在 [Hortonworks 沙盒下载站点](http://hortonworks.com/downloads/#sandbox)中，展开 **Hortonworks 沙盒存档**。
+
 - [Java 开发人员工具包 (JDK) 1.8 或更高版本](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。 JDK 是用于 IntelliJ 的 Azure 工具包所必需的。
-- [IntelliJ IDEA 社区版](https://www.jetbrains.com/idea/download)，带 [Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) 插件和[用于 IntelliJ 的 Azure 工具包](../azure-toolkit-for-intellij.md)插件。 用于 IntelliJ 的 Azure 工具包随附了用于 IntelliJ 的 HDInsight 工具。 
 
-  **安装这些插件的步骤：**
+- [IntelliJ IDEA 社区版](https://www.jetbrains.com/idea/download)，带 [Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) 插件和[用于 IntelliJ 的 Azure 工具包](../azure-toolkit-for-intellij.md)插件。 用于 IntelliJ 的 HDInsight 工具作为 Azure Toolkit for IntelliJ 的一部分提供。 
+
+  若要安装插件，请执行以下操作：
 
   1. 打开 IntelliJ IDEA。
-  2. 在“欢迎”屏幕上单击“配置”，然后单击“插件”。
-  3. 单击左下角的“安装 JetBrains 插件”。
-  4. 使用搜索功能搜索“Scala”，然后单击“安装”。
-  5. 单击“重新启动 IntelliJ IDEA”完成安装。
+  2. 在“欢迎”屏幕上，依次选择“配置”、“插件”。
+  3. 选择左下角的“安装 JetBrains 插件”。
+  4. 使用搜索功能搜索 **Scala**，并选择“安装”。
+  5. 选择“重启 IntelliJ IDEA”完成安装。
   6. 重复步骤 4 和步骤 5，安装**用于 IntelliJ 的 Azure 工具包**。 有关详细信息，请参阅[安装用于 IntelliJ 的 Azure 工具包](../azure-toolkit-for-intellij-installation.md)。
 
 ## <a name="create-a-spark-scala-application"></a>创建 Spark Scala 应用程序
 
 本部分使用 IntelliJ IDEA 创建示例 Scala 项目。 在下一部分，用户在提交项目之前，需将 IntelliJ IDEA 链接到 Hortonworks 沙盒（仿真程序）。
 
-1. 从工作站打开 IntelliJ IDEA。
-2. 单击“创建新项目”。
-3. 在左窗格中单击“HDInsight”，在右窗格中单击“Spark on HDInsight(Scala)”，然后单击“下一步”。
+1. 从工作站打开 IntelliJ IDEA。 在“新建项目”对话框中执行以下操作：
 
-    ![创建 IntelliJ Scala 项目](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
-    - 生成工具：Scala 项目创建向导支持使用 Maven 或 SBT 管理依赖项和构建 scala 项目。 根据需求选择一个生成工具。
-4. 输入以下信息：
+   a. 选择“HDInsight” > “Spark on HDInsight (Scala)”
+
+   b. 在“生成工具”列表中，根据需要选择以下选项之一：
+
+    * 用于支持 Scala 项目创建向导的“Maven”
+    * 用于管理依赖项和生成 Scala 项目的“SBT”
+
+   ![“新建项目”对话框](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
+
+2. 选择“下一步”。
+
+3. 在接下来显示的“新建项目”对话框中执行以下操作：
 
     ![创建 IntelliJ Scala 项目属性](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
 
-    - **项目名称**：提供项目名称。
-    - **项目位置**：提供项目位置。
-    - **项目 SDK**：依次单击“新建”和“JDK”，然后指定 Java JDK 7 或更高版本的文件夹。 将 Java 1.8 用于 spark 2.x 群集，将 Java 1.7 用于 spark 1.x 群集。 默认位置为 C:\Program Files\Java\jdk1.8.x_xxx。
-    - **Spark 版本**：Scala 项目创建向导集成了 Spark SDK 和 Scala SDK 的适当版本。 如果 spark 群集版本是较低的 2.0，请选择 spark 1.x。 否则，应选择 spark2.x。 此示例使用 Spark1.6.2(Scala 2.10.5)。 此外，请确保使用的是标记为 Scala 2.10.x 的存储库 - 不要使用标记为 Scala 2.11.x 的存储库）
-5. 单击“完成” 。
-6. 按 **[ALT]+1** 打开“项目”视图（如果尚未打开）。
-7. 在“项目资源管理器”中展开项目，然后单击“src”。
-8. 右键单击“src”，指向“新建”，然后单击“Scala 类”。
-9. 输入一个名称，在“类型”中选择“对象”，然后单击“确定”。
+    a. 在“项目名称”框中输入项目名称。
 
-    ![创建新的 IntelliJ Scala 类](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-new-scala-class.png)
-10. 在 .scala 文件中粘贴以下代码：
+    b. 在“项目位置”框中输入项目位置。
+
+    c. 在“项目 SDK”下拉列表旁边，依次选择“新建”和“JDK”，并指定 Java JDK 1.7 或更高版本的文件夹。 选择适用于 Spark 2.x 群集的“Java 1.8”，或选择适用于 Spark 1.x 群集的“Java 1.7”。 默认位置为 C:\Program Files\Java\jdk1.8.x_xxx。
+
+    d.单击“下一步”。 在“Spark 版本”下拉列表中，Scala 项目创建向导集成了 Spark SDK 和 Scala SDK 的适当版本。 如果 Spark 群集版本低于 2.0，请选择“Spark 1.x”。 否则，请选择“Spark 2.x”。 本示例使用“Spark 1.6.2 (Scala 2.10.5)”。 请确保使用标记为 Scala 2.10.x 的存储库。 不要使用标记为 Scala 2.11.x 的存储库。
+
+4. 选择“完成”。
+
+5. 如果“项目”视图尚未打开，请按 **Alt+1** 将其打开。
+
+6. 在“项目资源管理器”中展开项目，并选择“src”。
+
+7. 右键单击“src”，指向“新建”，并选择“Scala 类”。
+
+8. 在“名称”框中输入一个名称，在“类型”框中选择“对象”，并选择“确定”。
+
+    ![“新建 Scala 类”窗口](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-new-scala-class.png)
+
+9. 在 .scala 文件中粘贴以下代码：
 
         import java.util.Random
         import org.apache.spark.{SparkConf, SparkContext}
@@ -106,44 +128,56 @@ ms.lasthandoff: 07/17/2017
             }
         }
 
-11. 在“生成”菜单中，单击“生成项目”。 请确保已成功完成编译。
+10. 在“生成”菜单中，选择“生成项目”。 确保已成功完成编译。
 
 
-## <a name="link-to-the-hortonworks-sandbox"></a>HortonWorks 沙盒链接
+## <a name="link-to-the-hortonworks-sandbox"></a>Hortonworks 沙盒链接
 
-必须先有 IntelliJ 应用程序，然后才能链接到 Hortonworks 沙盒（仿真程序）。
+必须先有 IntelliJ 应用程序，才能链接到 Hortonworks 沙盒（仿真器）。
 
-**链接到仿真程序**
+若要链接到仿真器，请执行以下操作：
 
-1. 在 IntelliJ 中打开项目（如果尚未打开）。
-2. 在“视图”菜单中，单击“工具窗口”，然后单击“Azure 资源管理器”。
-3. 展开“Azure”，右键单击“HDInsight”，然后单击“链接仿真程序”。
-4. 输入为 Hortonworks 沙盒的根帐户配置的密码，以及其余值（类似于以下屏幕截图），然后单击“确定”。 
+1. 在 IntelliJ 中打开项目。
 
-  ![IntelliJ 链接一个仿真程序](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-link-an-emulator.png)
+2. 在“视图”菜单中，依次选择“工具窗口”、“Azure 资源管理器”。
 
-5. 单击“是”配置仿真程序。
+3. 展开“Azure”，右键单击“HDInsight”，并选择“链接仿真器”。
 
-  连接成功以后，即可看到仿真程序（Hortonworks 沙盒）列在 HDInsight 节点下。
+4. 在“链接新仿真器”窗口中，输入为 Hortonworks 沙盒的 root 帐户配置的密码，以及类似于以下屏幕截图所示的值，并选择“确定”。 
 
-## <a name="submit-the-spark-scala-application-to-the-sandbox"></a>将 Spark Scala 应用程序提交到沙盒
+   ![“链接新仿真器”窗口](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-link-an-emulator.png)
 
-将 IntelliJ IDEA 链接到仿真程序以后，即可提交项目。
+5. 若要配置仿真器，请选择“是”。
 
-**将项目提交到仿真程序**
+成功连接仿真器后，仿真器（Hortonworks 沙盒）会列在 HDInsight 节点中。
 
-1. 在“项目资源管理器”中，右键单击项目，然后单击“将 Spark 应用程序提交到 HDInsight”。
-2. 指定以下字段：
+## <a name="submit-the-spark-scala-application-to-the-hortonworks-sandbox"></a>将 Spark Scala 应用程序提交到 Hortonworks 沙盒
 
-    - **Spark 群集(仅 Linux)**：选择本地 Hortonworks 沙盒。
-    - **主类名称**：选择或输入主类名称。  对于本教程，该名称为 **GroupByTest**。
-3. 单击“提交”。 作业提交日志显示在“Spark”提交工具窗口。
+将 IntelliJ IDEA 链接到仿真器之后，即可提交项目。
 
-## <a name="next-steps"></a>后续步骤：
+若要将项目提交到仿真器，请执行以下操作：
 
-- 若要了解如何通过用于 IntelliJ 的 HDInsight 工具为 HDInsight 创建 Spark 应用程序，请参阅[通过用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具为 HDInsight Spark Linux 群集创建 Spark 应用程序](hdinsight-apache-spark-intellij-tool-plugin.md)。
-- 若要观看用于 IntelliJ 的 HDInsight 工具的视频，请参阅 [Introduce HDInsight Tools for IntelliJ for Spark Development](https://www.youtube.com/watch?v=YTZzYVgut6c)（介绍如何通过用于 IntelliJ 的 HDInsight 工具进行 Spark 开发）。
-- 若要了解如何以远程方式通过 SSH 使用 HDInsight 上的工具包调试 Spark 应用程序，请参阅[通过 SSH 使用用于 IntelliJ 的 Azure 工具包对 HDInsight 群集上的 Spark 应用程序进行远程调试](hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)。
-- 若要了解如何以远程方式通过 VPN 使用 HDInsight 上的工具包调试 Spark 应用程序，请参阅[通过用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具对 HDInsight Spark Linux 群集上的 Spark 应用程序进行远程调试](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)。
-- 若要了解如何通过用于 Eclipse 的 HDInsight 工具创建 Spark 应用程序，请参阅[通过用于 Eclipse 的 Azure 工具包中的 HDInsight 工具创建 Spark 应用程序](hdinsight-apache-spark-eclipse-tool-plugin.md)。
-- 若要观看用于 Eclipse 的 HDInsight 工具的视频，请参阅[通过用于 Eclipse 的 HDInsight 工具创建 Spark 应用程序](https://mix.office.com/watch/1rau2mopb6fha)。
+1. 在“项目资源管理器”中，右键单击项目，并选择“将 Spark 应用程序提交到 HDInsight”。
+
+2. 请执行以下操作：
+
+    a. 在“Spark 群集(仅 Linux)”下拉列表中，选择本地 Hortonworks 沙盒。
+
+    b. 在“主类名”框中，选择或输入主类名。 对于本教程，该名称为 **GroupByTest**。
+
+3. 选择“提交”。 作业提交日志显示在“Spark”提交工具窗口。
+
+## <a name="next-steps"></a>后续步骤
+
+- 若要了解如何通过用于 IntelliJ 的 HDInsight 工具为 HDInsight 创建 Spark 应用程序，请转到[通过用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具为 HDInsight Spark Linux 群集创建 Spark 应用程序](hdinsight-apache-spark-intellij-tool-plugin.md)。
+
+- 若要观看用于 IntelliJ 的 HDInsight 工具的视频，请转到 [Introduce HDInsight Tools for IntelliJ for Spark Development](https://www.youtube.com/watch?v=YTZzYVgut6c)（介绍如何通过用于 IntelliJ 的 HDInsight 工具进行 Spark 开发）。
+
+- 若要了解如何以远程方式通过 SSH 使用 HDInsight 上的工具包调试 Spark 应用程序，请转到[通过 SSH 使用用于 IntelliJ 的 Azure 工具包对 HDInsight 群集上的 Spark 应用程序进行远程调试](hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)。
+
+- 若要了解如何以远程方式通过 VPN 使用 HDInsight 上的工具包调试 Spark 应用程序，请转到[通过用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具对 HDInsight Spark Linux 群集上的 Spark 应用程序进行远程调试](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)。
+
+- 若要了解如何通过用于 Eclipse 的 HDInsight 工具创建 Spark 应用程序，请转到[通过用于 Eclipse 的 Azure 工具包中的 HDInsight 工具创建 Spark 应用程序](hdinsight-apache-spark-eclipse-tool-plugin.md)。
+
+- 若要观看用于 Eclipse 的 HDInsight 工具的视频，请转到[通过用于 Eclipse 的 HDInsight 工具创建 Spark 应用程序](https://mix.office.com/watch/1rau2mopb6fha)。
+

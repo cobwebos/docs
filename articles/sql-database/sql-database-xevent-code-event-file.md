@@ -17,17 +17,17 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: genemi
 ms.translationtype: HT
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: aeaed63e00b77f885312204f17f024af462dbf25
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e8c7a9af11ac4c22be00426337ab7c8b8ff0860f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL 数据库中扩展事件的事件文件目标代码
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-你需要一个完整的代码示例来可靠捕获和报告扩展事件的信息。
+需要一个完整的代码示例来可靠捕获和报告扩展事件的信息。
 
 在 Microsoft SQL Server 中，[事件文件目标](http://msdn.microsoft.com/library/ff878115.aspx)用于将事件输出存储在本地硬盘驱动器文件中。 但是，此类文件并不适用于 Azure SQL 数据库。 我们改为使用 Azure 存储空间服务来支持事件文件目标。
 
@@ -36,12 +36,12 @@ ms.lasthandoff: 07/19/2017
 * PowerShell：用于在云中创建 Azure 存储空间容器。
 * Transact-SQL：
   
-  * 将 Azure 存储空间容器分配到事件文件目标。
+  * 将 Azure 存储容器分配到事件文件目标。
   * 创建和启动事件会话，等等。
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 帐户和订阅。 你可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure 帐户和订阅。 可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 可以在其中创建表的任何数据库。
   
   * 或者，也可以快速[创建一个 **AdventureWorksLT** 演示数据库](sql-database-get-started.md)。
@@ -62,11 +62,11 @@ ms.lasthandoff: 07/19/2017
 
 1. 将 PowerShell 脚本粘贴到 Notepad.exe 等简单的文本编辑器中，并将脚本保存为扩展名为 **.ps1** 的文件。
 2. 以管理员身份启动 PowerShell ISE。
-3. 在提示符下键入<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>然后按 ENTER。
-4. 在 PowerShell ISE 中打开你的 **.ps1** 文件。 运行该脚本。
-5. 该脚本会先启动新的窗口让你登录 Azure。
+3. 在提示符下键入<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>然后按 Enter。
+4. 在 PowerShell ISE 中打开 **.ps1** 文件。 运行该脚本。
+5. 该脚本先启动一个新窗口，供你在其中登录到 Azure。
    
-   * 如果你想要重新运行脚本而不中断会话，可以很方便地选择注释禁止 **Add-AzureAccount** 命令。
+   * 如果想要重新运行脚本而不中断会话，可以很方便地选择注释禁止 **Add-AzureAccount** 命令。
 
 ![在准备运行脚本之前，必须准备好已装有 Azure 模块的 PowerShell ISE。][30_powershell_ise]
 
@@ -253,18 +253,18 @@ Now shift to the Transact-SQL portion of the two-part code sample!'
 
 脚本开头的命令将清除以前可能运行后的结果，并且可重复运行。
 
-PowerShell 脚本在结束时输出了几个命名值。 你必须编辑 Transact-SQL 脚本以使用这些值。 在 Transact-SQL 脚本中查找 **TODO** 以找到编辑点。
+PowerShell 脚本在结束时输出了几个命名值。 必须编辑 Transact-SQL 脚本以使用这些值。 在 Transact-SQL 脚本中查找 **TODO** 以找到编辑点。
 
 1. 打开 SQL Server Management Studio (ssms.exe)。
-2. 连接到你的 Azure SQL 数据库。
+2. 连接到 Azure SQL 数据库。
 3. 单击打开新的查询窗格。
 4. 将以下 Transact-SQL 脚本粘贴到查询窗格中。
 5. 在脚本中查找每个 **TODO** 并进行适当的编辑。
-6. 保存然后运行该脚本。
+6. 保存并运行该脚本。
 
 
 > [!WARNING]
-> 之前 PowerShell 脚本生成的 SAS 密钥值可能以“?”（问号）开头。 在以下 T-SQL 脚本中使用 SAS 密钥时，必须*删除前导“?”*。 否则，安全性可能会阻止你的操作。
+> 之前 PowerShell 脚本生成的 SAS 密钥值可能以“?”（问号）开头。 在以下 T-SQL 脚本中使用 SAS 密钥时，必须*删除前导“?”*。 否则，安全性可能会阻止操作。
 
 
 ### <a name="transact-sql-code"></a>Transact-SQL 代码
@@ -463,7 +463,7 @@ GO
 ```
 
 
-如果当你运行脚本时无法附加目标，则你必须停止再重新启动事件会话：
+如果运行脚本时无法附加目标，则你必须停止再重新启动事件会话：
 
 ```sql
 ALTER EVENT SESSION ... STATE = STOP;
@@ -475,7 +475,7 @@ GO
 
 ## <a name="output"></a>输出
 
-完成 Transact-SQL 脚本后，请单击 **event_data_XML** 列标题下的单元格。 此时将显示一个 **<event>** 元素，其中显示了一个 UPDATE 语句。
+完成 Transact-SQL 脚本后，请单击 **event_data_XML** 列标题下的单元格。 此时会显示一个 **<event>** 元素，其中显示了一个 UPDATE 语句。
 
 下面是测试期间生成的一个 **<event>** 元素：
 
@@ -531,7 +531,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 ## <a name="converting-the-code-sample-to-run-on-sql-server"></a>转换代码示例以在 SQL Server 上运行
 
-假设你要在 Microsoft SQL Server 上运行上述 Transact-SQL 示例。
+假设要在 Microsoft SQL Server 上运行上述 Transact-SQL 示例。
 
 * 为了方便，想要将 Azure 存储容器完全替换为一个简单文件（例如 **C:\myeventdata.xel**）。 该文件将写入托管 SQL Server 的计算机的本地硬盘驱动器上。
 * 不需要为 **CREATE MASTER KEY** 和 **CREATE CREDENTIAL** 使用任何类型的 Transact-SQL 语句。
@@ -543,7 +543,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 有关 Azure 存储空间服务中帐户和容器的详细信息，请参阅：
 
-* [如何通过 .NET 使用 Blob 存储](../storage/storage-dotnet-how-to-use-blobs.md)
+* [如何通过 .NET 使用 Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 * [命名和引用容器、Blob 与元数据](http://msdn.microsoft.com/library/azure/dd135715.aspx)
 * [使用根容器](http://msdn.microsoft.com/library/azure/ee395424.aspx)
 * [第 1 课：在 Azure 容器上创建存储访问策略和共享访问签名](http://msdn.microsoft.com/library/dn466430.aspx)

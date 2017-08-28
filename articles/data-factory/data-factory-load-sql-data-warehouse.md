@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: c1485205f49dae28adbddbf679fc120a6e52bff6
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: c29f1f01b660c4eb780e178a68036327fafa9ba6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/07/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>在不到 15 分钟的时间里通过数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库
@@ -43,15 +43,15 @@ ms.lasthandoff: 06/07/2017
 >
 
 ## <a name="prerequisites"></a>先决条件
-* Azure Blob 存储：此试验使用 Azure Blob 存储 (GRS) 来存储 TPC-H 测试数据集。  如果还没有 Azure 存储帐户，请参阅[如何创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)。
-* [TPC-H](http://www.tpc.org/tpch/) 数据：我们将使用 TPC-H 作为测试数据集。  为此，需要使用 TPC-H 工具包中的 `dbgen`，它将有助于生成数据集。  可以从 [TPC 工具](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp)下载 `dbgen` 的源代码，然后自己进行编译，或从 [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TPCHTools) 下载已编译的二进制。  使用以下命令运行 dbgen.exe，为分布在 10 个文件中的 `lineitem` 表生成 1 TB 的平面文件：
+* Azure Blob 存储：此试验使用 Azure Blob 存储 (GRS) 来存储 TPC-H 测试数据集。  如果还没有 Azure 存储帐户，请参阅[如何创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。
+* [TPC-H](http://www.tpc.org/tpch/) 数据：我们将使用 TPC-H 作为测试数据集。  为此，需要使用 TPC-H 工具包中的 `dbgen`，它将有助于生成数据集。  可以从 [TPC 工具](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp)下载 `dbgen` 的源代码，并自己进行编译，或从 [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TPCHTools) 下载已编译的二进制。  使用以下命令运行 dbgen.exe，为分布在 10 个文件中的 `lineitem` 表生成 1 TB 的平面文件：
 
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
   * `Dbgen -s 1000 -S **2** -C 10 -T L -v`
   * …
   * `Dbgen -s 1000 -S **10** -C 10 -T L -v`
 
-    现在将生成的文件复制到 Azure Blob。  请参阅[使用 Azure 数据工厂将数据移入和移出本地文件系统](data-factory-onprem-file-system-connector.md)，了解如何使用 ADF 复制执行此操作。    
+    现在将生成的文件复制到 Azure Blob。  请参阅[使用 Azure 数据工厂将数据移入和移出本地文件系统](data-factory-onprem-file-system-connector.md)了解如何使用 ADF 复制执行此操作。    
 * Azure SQL 数据仓库：此试验将数据加载到通过 6,000 DWU 创建的 Azure SQL 数据仓库
 
     有关如何创建 SQL 数据仓库数据库的详细说明，请参阅[创建 Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)。  若要使用 Polybase 获取到 SQL 数据仓库的最佳加载性能，我们选择性能设置中允许的数据仓库单位 (DWU) 的最大数，即 6,000 DWU。
@@ -63,7 +63,7 @@ ms.lasthandoff: 06/07/2017
   >
   >
 
-    若要创建 6,000 DWU 的 SQL 数据仓库，可将性能滑块移动到最右侧：
+    要创建 6,000 DWU 的 SQL 数据仓库，可将性能滑块移动到最右侧：
 
     ![性能滑块](media/data-factory-load-sql-data-warehouse/performance-slider.png)
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 06/07/2017
 
     此实验使用 `xlargerc` 资源类将数据加载到 Azure SQL 数据仓库。
 
-    若要获得可能的最佳吞吐量，需要使用属于 `xlargerc` 资源类的 SQL 数据仓库用户来执行复制操作。  请参阅[更改用户资源类示例](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example)，了解如何执行该操作。  
+    若要获得可能的最佳吞吐量，需要使用属于 `xlargerc` 资源类的 SQL 数据仓库用户来执行复制操作。  请参阅[更改用户资源类示例](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example)，了解如何执行该操作。  
 * 通过运行以下 DDL 语句在 Azure SQL 数据仓库数据库中创建目标表架构：
 
     ```SQL  
@@ -110,7 +110,7 @@ ms.lasthandoff: 06/07/2017
 
 ## <a name="launch-copy-wizard"></a>启动复制向导
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 单击左上角的“+ 新建”，单击“智能 + 分析”，然后单击“数据工厂”。
+2. 单击左上角的“+ 新建”，单击“智能 + 分析”，并单击“数据工厂”。
 3. 在“新建数据工厂”  边栏选项卡中：
 
    1. 输入 **LoadIntoSQLDWDataFactory** 作为**名称**。
@@ -128,7 +128,7 @@ ms.lasthandoff: 06/07/2017
 5. 在“数据工厂”主页上，单击“复制数据”磁贴，启动“复制向导”。
 
    > [!NOTE]
-   > 如果 Web 浏览器卡在“正在授权...”处，请禁用或取消选中“阻止第三方 Cookie 和站点数据”设置，或在保持启用的状态下为 **login.microsoftonline.com** 创建一个例外，然后尝试再次启动该向导。
+   > 如果 Web 浏览器卡在“正在授权...”处，请禁用或取消选中“阻止第三方 Cookie 和站点数据”设置，或在保持启用该项的状态下为 **login.microsoftonline.com** 创建一个例外，然后尝试再次启动该向导。
    >
    >
 
@@ -154,11 +154,11 @@ ms.lasthandoff: 06/07/2017
 
     ![复制向导 - 源连接信息](media/data-factory-load-sql-data-warehouse/source-connection-info.png)
 
-3. 选择包含 TPC-H 行项目文件的“文件夹”，然后单击“下一步”。
+3. 选择包含 TPC-H 行项目文件的“文件夹”，并单击“下一步”。
 
     ![复制向导 - 选择输入文件夹](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
-4. 单击“下一步”时将自动检测文件格式设置。  请检查，以确保列分隔符为“|”而非默认的逗号“，”。  预览数据后，单击“下一步”。
+4. 单击“下一步”时会自动检测文件格式设置。  请检查，以确保列分隔符为“|”而非默认的逗号“，”。  预览数据后，单击“下一步”。
 
     ![复制向导 - 文件格式设置](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
@@ -169,15 +169,15 @@ ms.lasthandoff: 06/07/2017
 
     ![复制向导 - 选择目标数据存储](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-2. 填写 Azure SQL 数据仓库的连接信息。  请确保指定作为 `xlargerc` 角色的成员的用户（有关详细说明，请参阅**先决条件**部分），然后单击“下一步”。
+2. 填写 Azure SQL 数据仓库的连接信息。  请确保指定作为 `xlargerc` 角色的成员的用户（有关详细说明，请参阅**先决条件**部分），并单击“下一步”。
 
     ![复制向导 - 目标连接信息](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
-3. 选择目标表，然后单击“下一步”。
+3. 选择目标表，并单击“下一步”。
 
     ![复制向导 - 表映射页](media/data-factory-load-sql-data-warehouse/table-mapping-page.png)
 
-4. 在架构映射页中，保留“应用列映射”选项的未勾选状态，然后单击“下一步”。
+4. 在架构映射页中，保留“应用列映射”选项的未勾选状态，并单击“下一步”。
 
 ## <a name="step-4-performance-settings"></a>步骤 4：性能设置
 

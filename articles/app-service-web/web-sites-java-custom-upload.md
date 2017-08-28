@@ -1,6 +1,6 @@
 ---
-title: "将自定义 Java Web 应用上载到 Azure"
-description: "本教程说明如何将自定义 Java Web 应用上载到 Azure App Service Web Apps。"
+title: "将自定义 Java Web 应用上传到 Azure"
+description: "本教程说明如何将自定义 Java Web 应用上传到 Azure 应用服务 Web 应用。"
 services: app-service\web
 documentationcenter: java
 author: rmcmurray
@@ -14,17 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: df6443bb27285e8ba719c229dd1b12114acc48c7
-ms.lasthandoff: 11/17/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 9c8f9ee7780859f7640ac82d6ebce85082170ad7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
-# <a name="upload-a-custom-java-web-app-to-azure"></a>将自定义 Java Web 应用上载到 Azure
-本主题介绍如何将自定义 Java Web 应用上载到 [Azure 应用服务] Web 应用。 包括适用于所有 Java 网站或 Web 应用的信息和一部分特定应用程序示例。
+# <a name="upload-a-custom-java-web-app-to-azure"></a>将自定义 Java Web 应用上传到 Azure
+本主题介绍如何将自定义 Java Web 应用上传到 [Azure 应用服务] Web 应用。 包括适用于所有 Java 网站或 Web 应用的信息和一部分特定应用程序示例。
 
-请注意，Azure 提供了一种使用 Azure 门户配置 UI 和 Azure 应用商店创建 Java Web 应用的方法，如[在 Azure App Service 中创建 Java Web 应用](web-sites-java-get-started.md)中所述。 此教程适用于无需使用 Azure 门户配置 UI 或 Azure 应用商店的方案。  
+请注意，Azure 提供了一种使用 Azure 门户配置 UI 和 Azure 应用商店创建 Java Web 应用的方法，如[在 Azure 应用服务中创建 Java Web 应用](web-sites-java-get-started.md)中所述。 此教程适用于无需使用 Azure 门户配置 UI 或 Azure 应用商店的方案。  
 
 ## <a name="configuration-guidelines"></a>配置指南
 下面描述了 Azure 上自定义 Java Web 应用的预期设置。
@@ -61,7 +61,7 @@ ms.lasthandoff: 11/17/2016
 
     processPath="%HOME%\site\wwwroot\bin\tomcat\bin\catalina.bat"
 
-**rapidFailsPerMinute**（默认值=10。）允许 **processPath** 中指定的进程每分钟崩溃的次数。 如果超出此限制，则 **HttpPlatformHandler** 将在每分钟达到此限制后的剩余时间内停止启动该进程。
+**rapidFailsPerMinute**（默认值=10。）允许 **processPath** 中指定的进程每分钟崩溃的次数。 如果超出此限制，则 **HttpPlatformHandler** 会在每分钟达到此限制后的剩余时间内停止启动该进程。
 
 **requestTimeout**（默认值="00:02:00"。）**HttpPlatformHandler** 等待侦听 `%HTTP_PLATFORM_PORT%` 的进程响应的持续时间。
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 11/17/2016
 对于以下应用程序，提供了 web.config 文件和应用程序配置作为示例，用以说明如何在应用服务 Web 应用上启用 Java 应用程序。
 
 ### <a name="tomcat"></a>Tomcat
-尽管应用服务 Web 应用提供了两个 Tomcat 变体，但仍可以上载客户特定的实例。 使用不同 Java 虚拟机 (JVM) 安装 Tomcat 的示例如下。
+尽管应用服务 Web 应用提供了两个 Tomcat 变体，但仍可以上传客户特定的实例。 使用不同 Java 虚拟机 (JVM) 安装 Tomcat 的示例如下。
 
     <?xml version="1.0" encoding="UTF-8"?>
     <configuration>
@@ -116,7 +116,7 @@ ms.lasthandoff: 11/17/2016
 应用服务 Web 应用上不支持 Direct3d 调用。 若要禁用这些调用，添加以下 Java 选项使应用程序进行以下调用：`-Dsun.java2d.d3d=false`
 
 ### <a name="jetty"></a>Jetty
-和 Tomcat 一样，客户可以上载自己的 Jetty 实例。 对于运行完整安装的 Jetty，配置应如下所示：
+和 Tomcat 一样，客户可以上传自己的 Jetty 实例。 对于运行完整安装的 Jetty，配置应如下所示：
 
     <?xml version="1.0" encoding="UTF-8"?>
     <configuration>
@@ -136,7 +136,7 @@ ms.lasthandoff: 11/17/2016
 应在 start.ini 中更改 Jetty 配置并设置 `java.net.preferIPv4Stack=true`。
 
 ### <a name="springboot"></a>Springboot
-若要运行 Springboot 应用程序，需要上载你的 JAR 或 WAR 文件，并添加以下 web.config 文件。 该 web.config 文件位于 wwwroot 文件夹中。 在 web.config 中，调整参数以指向你的 JAR 文件，以下示例中的 JAR 文件同样位于 wwwroot 文件夹中。  
+要运行 Springboot 应用程序，需要上传 JAR 或 WAR 文件，并添加以下 web.config 文件。 该 web.config 文件位于 wwwroot 文件夹中。 在 web.config 中，调整参数以指向 JAR 文件，以下示例中的 JAR 文件同样位于 wwwroot 文件夹中。  
 
     <?xml version="1.0" encoding="UTF-8"?>
     <configuration>
@@ -179,10 +179,10 @@ ms.lasthandoff: 11/17/2016
         </configuration>
    
     此时，可以重新启动 Web 应用，使所做的更改生效。  连接到 http://yourwebapp/hudson，启动 Hudson。
-4. Hudson 自行配置后，将显示以下屏幕：
+4. Hudson 自行配置后，会显示以下屏幕：
    
     ![Hudson](./media/web-sites-java-custom-upload/hudson1.png)
-5. 访问 Hudson 配置页：单击“管理 Hudson”，然后单击“配置系统”。
+5. 访问 Hudson 配置页：单击“管理 Hudson”，并单击“配置系统”。
 6. 如下所示配置 JDK：
    
     ![Hudson 配置](./media/web-sites-java-custom-upload/hudson2.png)
@@ -201,7 +201,7 @@ ms.lasthandoff: 11/17/2016
 **Server.xml**
 
 * 将 Shutdown 端口更改为 -1。
-* 将 HTTP 连接器更改为       `<Connector port="${port.http}" protocol="HTTP/1.1" connectionTimeout="600000" address="127.0.0.1" URIEncoding="UTF-8" />`
+* 将 HTTP 连接器更改为 `<Connector port="${port.http}" protocol="HTTP/1.1" connectionTimeout="600000" address="127.0.0.1" URIEncoding="UTF-8" />`
 * 注释掉 AJP 连接器。
 
 在 **liferay\tomcat-7.0.40\webapps\ROOT\WEB-INF\classes** 文件夹中，创建文件 **portal-ext.properties**。 此文件需要包含一行如下所示的内容：
@@ -236,12 +236,12 @@ ms.lasthandoff: 11/17/2016
 
 请注意，在上述 web.config 文件中指定的 JRE_HOME 环境变量指向 64 位 JDK。 默认为 32 位，但由于 Liferay 可能需要大量内存，因此建议使用 64 位 JDK。
 
-做完上述更改后，重新启动运行 Liferay 的 Web 应用，然后打开 http://yourwebapp。 可从 Web 应用根目录访问 Liferay 门户。 
+做完上述更改后，重新启动运行 Liferay 的 Web 应用，并打开 http://yourwebapp。 可从 Web 应用根目录访问 Liferay 门户。 
 
 ## <a name="next-steps"></a>后续步骤
 有关 Liferay 的详细信息，请参阅 [http://www.liferay.com](http://www.liferay.com)。
 
-有关 Java 的详细信息，请参阅 [Java 开发人员中心](/develop/java/)。
+有关 Java 的详细信息，请访问 [面向 Java 开发人员的 Azure](/java/azure)。
 
 [!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 

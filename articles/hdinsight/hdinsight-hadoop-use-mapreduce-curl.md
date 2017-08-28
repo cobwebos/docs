@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/12/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: df22c7315cc55df0e7963bc03a215ab09589b25b
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 8238bb829df95dcb8c99c0b7fff53c627a56f47c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/10/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-rest"></a>使用 REST 在 HDInsight 上通过 Hadoop 运行 MapReduce 作业
@@ -44,10 +44,10 @@ ms.lasthandoff: 06/10/2017
 >
 > 对本部分中的命令，请将 **USERNAME** 替换为要对群集进行身份验证的用户，并将 **PASSWORD** 替换为用户帐户的密码。 将 **CLUSTERNAME** 替换为群集名称。
 >
-> REST API 使用[basic access authentication](http://en.wikipedia.org/wiki/Basic_access_authentication)（基本访问验证）进行保护。 你应该始终通过使用 HTTPS 来发出请求，以确保安全地将凭据发送到服务器。
+> REST API 使用[basic access authentication](http://en.wikipedia.org/wiki/Basic_access_authentication)（基本访问验证）进行保护。 应该始终通过使用 HTTPS 来发出请求，以确保安全地将凭据发送到服务器。
 
 
-1. 在命令行中，使用以下命令验证你是否可以连接到 HDInsight 群集。
+1. 在命令行中，使用以下命令验证是否可以连接到 HDInsight 群集：
 
     ```bash
     curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/status
@@ -97,7 +97,7 @@ ms.lasthandoff: 06/10/2017
 
 4. 在作业的状态更改为 `SUCCEEDED` 后，可以从 Azure Blob 存储中检索作业的结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置。 在本示例中，位置为 `/example/curl`。 此地址在群集默认存储的 `/example/curl` 中存储作业的输出。
 
-使用 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) 可以列出和下载这些文件。 有关从 Azure CLI 中使用 blob 的详细信息，请参阅[将 Azure CLI 2.0 与 Azure 存储配合使用](../storage/storage-azure-cli.md#create-and-manage-blobs)文档。
+使用 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) 可以列出和下载这些文件。 有关从 Azure CLI 中使用 blob 的详细信息，请参阅[将 Azure CLI 2.0 与 Azure 存储配合使用](../storage/common/storage-azure-cli.md#create-and-manage-blobs)文档。
 
 ## <a id="nextsteps"></a>后续步骤
 

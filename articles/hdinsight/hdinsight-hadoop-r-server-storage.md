@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 017a66ae1ade5e0f64fc799b7bb6aa97b67791a8
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: aef9c15636ccaecce07d4fa218a40ed26ebad9df
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-storage-solutions-for-r-server-on-hdinsight"></a>适用于 R Server on HDInsight 的 Azure 存储解决方案
@@ -38,9 +37,9 @@ Microsoft R Server on HDInsight 具有多种存储解决方案，用于保留数
 - [配合使用 Azure 存储与 HDInsight ](hdinsight-hadoop-use-blob-storage.md)
 - [配合使用 Data Lake Store 和 Azure HDInsight 群集](hdinsight-hadoop-use-data-lake-store.md)。 
 
-有关 Azure 存储解决方案的详细信息，请参阅 [Microsoft Azure 存储简介](../storage/storage-introduction.md)。 
+有关 Azure 存储解决方案的详细信息，请参阅 [Microsoft Azure 存储简介](../storage/common/storage-introduction.md)。 
 
-有关如何选择最适用于你的具体情况的存储选项的指南，请参阅[确定何时使用 Azure Blob、Azure 文件或 Azure 数据磁盘](../storage/storage-decide-blobs-files-disks.md) 
+有关如何选择最适用于你的具体情况的存储选项的指南，请参阅[确定何时使用 Azure Blob、Azure 文件或 Azure 数据磁盘](../storage/common/storage-decide-blobs-files-disks.md) 
 
 
 ## <a name="use-azure-blob-storage-accounts-with-r-server"></a>配合使用 Azure Blob 存储帐户和 R Server
@@ -48,11 +47,11 @@ Microsoft R Server on HDInsight 具有多种存储解决方案，用于保留数
 如果需要，可以使用 HDI 群集访问多个 Azure 存储帐户或容器。 为此，需要在创建群集时在 UI 中指定其他存储帐户，并按照下列步骤进行操作，以便与 R Server 配合使用。
 
 > [!WARNING]
-> 出于性能目的，HDInsight 群集将在与你指定的主存储帐户相同的数据中心内创建。 不支持在 HDInsight 群集之外的其他位置使用存储帐户。
+> 出于性能目的，HDInsight 群集会在与你指定的主存储帐户相同的数据中心内创建。 不支持在 HDInsight 群集之外的其他位置使用存储帐户。
 
 1. 使用存储帐户名 **storage1** 并使用名为 **container1** 的默认容器创建 HDInsight 群集。
 2. 指定名为 **storage2** 的另一个存储帐户。  
-3. 将 mycsv.csv 文件复制到 /share 目录，然后对该文件执行分析。  
+3. 将 mycsv.csv 文件复制到 /share 目录，并对该文件执行分析。  
 
         hadoop fs –mkdir /share
         hadoop fs –copyFromLocal myscsv.scv /share  
@@ -77,14 +76,14 @@ Microsoft R Server on HDInsight 具有多种存储解决方案，用于保留数
         #Specify the input file to analyze in HDFS:
         inputFile <-file.path(bigDataDirRoot,"mycsv.csv")
 
-所有目录和文件引用都指向存储帐户 wasbs://container1@storage1.blob.core.windows.net。 这是与 HDInsight 群集关联的**默认存储帐户**。
+所有目录和文件引用都指向存储帐户 wasb://container1@storage1.blob.core.windows.net。 这是与 HDInsight 群集关联的**默认存储帐户**。
 
-现在，假设你要处理名为 mySpecial.csv 的文件，其所在位置为 **storage2** 的 **container2** 中的 /private 目录。
+现在，假设要处理名为 mySpecial.csv 的文件，其所在位置为 **storage2** 的 **container2** 中的 /private 目录。
 
 在 R 代码中，将名称节点引用指向 **storage2** 存储帐户。
 
 
-    myNameNode <- "wasbs://container2@storage2.blob.core.windows.net"
+    myNameNode <- "wasb://container2@storage2.blob.core.windows.net"
     myPort <- 0
 
     #Location of the data:
@@ -102,20 +101,20 @@ Microsoft R Server on HDInsight 具有多种存储解决方案，用于保留数
     #Specify the input file to analyze in HDFS:
     inputFile <-file.path(bigDataDirRoot,"mySpecial.csv")
 
-所有目录和文件引用现在都指向存储帐户 wasbs://container2@storage2.blob.core.windows.net。 这是已指定的**名称节点**。
+所有目录和文件引用现在都指向存储帐户 wasb://container2@storage2.blob.core.windows.net。 这是已指定的**名称节点**。
 
 必须在 storage2 上配置 /user/RevoShare/<SSH username> 目录，如下所示：
 
 
-    hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user
-    hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShare
-    hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
+    hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user
+    hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare
+    hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
 
 
 
 ## <a name="use-an-azure-data-lake-store-with-r-server"></a>配合使用 Azure Data Lake store 和 R Server
 
-若要以 HDInsight 帐户使用 Data Lake Store，必须允许群集访问你要使用的每个 Azure Data Lake Store。 有关如何使用 Azure 门户创建 HDInsight 群集，并将 Azure Data Lake Store 帐户作为默认存储或附加存储的说明，请参阅[使用 Azure 门户创建带 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。
+要以 HDInsight 帐户使用 Data Lake Store，必须允许群集访问你要使用的每个 Azure Data Lake Store。 有关如何使用 Azure 门户创建 HDInsight 群集，并将 Azure Data Lake Store 帐户作为默认存储或附加存储的说明，请参阅[使用 Azure 门户创建带 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。
 
 在 R 脚本中使用该存储的方式与使用辅助 Azure 存储帐户的方式（如上一过程中所述）非常类似。
 
@@ -187,10 +186,10 @@ Microsoft R Server on HDInsight 具有多种存储解决方案，用于保留数
 
 还有一个可在边缘节点上使用的便利数据存储选项，我们称之为 [Azure 文件]((https://azure.microsoft.com/services/storage/files/)。 使用该选项可将 Azure 存储的文件共享装载到 Linux 文件系统。 对比 HDFS，如果可以在边缘节点上使用本机文件系统，则存储数据文件、R 脚本以及随后可能需要的结果对象将更方便。 
 
-使用 Azure 文件的主要好处之一是，装有受支持 OS（例如 Windows 或 Linux）的系统都可以装载和使用文件共享。 例如，你自己或者团队成员拥有的另一个 HDInsight 群集、Azure VM 甚至本地系统均可使用 Azure 文件。 有关详细信息，请参阅：
+使用 Azure 文件的主要好处之一是，装有受支持 OS（例如 Windows 或 Linux）的系统都可以装载和使用文件共享。 例如，自己或者团队成员拥有的另一个 HDInsight 群集、Azure VM 甚至本地系统均可使用 Azure 文件。 有关详细信息，请参阅：
 
-- [如何配合使用 Azure 文件存储与 Linux ](../storage/storage-how-to-use-files-linux.md)
-- [如何配合使用 Azure 文件存储与 Windows ](../storage/storage-dotnet-how-to-use-files.md)
+- [如何配合使用 Azure 文件存储与 Linux ](../storage/files/storage-how-to-use-files-linux.md)
+- [如何配合使用 Azure 文件存储与 Windows ](../storage/files/storage-dotnet-how-to-use-files.md)
 
 
 ## <a name="next-steps"></a>后续步骤

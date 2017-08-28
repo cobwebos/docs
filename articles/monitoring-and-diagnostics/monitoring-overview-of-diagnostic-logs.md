@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2017
+ms.date: 08/21/2017
 ms.author: johnkem; magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 8961676a60d922912e383937ca38c5d2f89a348a
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: d59abde29fc7b73a799e5bf3659b02f824b693de
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>从 Azure 资源收集和使用日志数据
 
 ## <a name="what-are-azure-resource-diagnostic-logs"></a>什么是 Azure 资源诊断日志
-Azure 资源级诊断日志是资源发出的日志，记录与该资源的操作相关的各种频繁生成的数据。 这些日志的内容因资源类型而异。 例如，网络安全组规则计数器和 Key Vault 审核是两种类别的资源日志。
+**Azure 资源级诊断日志**是资源发出的日志，记录与该资源的操作相关的各种频繁生成的数据。 这些日志的内容因资源类型而异。 例如，网络安全组规则计数器和 Key Vault 审核是两种类别的资源日志。
 
 资源级诊断日志与[活动日志](monitoring-overview-activity-logs.md)不同。 通过活动日志，可以深入了解使用资源管理器在订阅中的资源上执行的操作，例如创建虚拟机或删除逻辑应用。 活动日志是一个订阅级别的日志。 通过资源级诊断日志深入了解在资源本身内执行的操作，例如，从 Key Vault 获取机密。
 
@@ -34,39 +34,37 @@ Azure 资源级诊断日志是资源发出的日志，记录与该资源的操�
 
 ![资源诊断日志与其他类型的日志 ](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_vs_other_logs_v5.png)
 
-图 1：资源诊断日志与其他类型的日志
-
 ## <a name="what-you-can-do-with-resource-level-diagnostic-logs"></a>可以对资源级诊断日志执行的操作
 可以对资源诊断日志执行的部分操作如下：
 
 ![资源诊断日志的逻辑位置](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_Actions.png)
 
 
-* 将诊断日志保存到[**存储帐户**](monitoring-archive-diagnostic-logs.md)进行审核或手动检查。 可以使用“资源诊断设置”指定保留时间（天）。
+* 将诊断日志保存到[**存储帐户**](monitoring-archive-diagnostic-logs.md)进行审核或手动检查。 可以使用**资源诊断设置**指定保留时间（天）。
 * [将诊断日志流式传输到**事件中心**](monitoring-stream-diagnostic-logs-to-event-hubs.md)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
 * 使用 [OMS Log Analytics](../log-analytics/log-analytics-azure-storage.md) 对诊断日志进行分析
 
 可以使用与发出日志的订阅不同的订阅中的存储帐户或事件中心命名空间。 配置此设置的用户必须对两个订阅都具有合适的 RBAC 访问权限。
 
 ## <a name="resource-diagnostic-settings"></a>资源诊断设置
-非计算资源的资源诊断日志是使用资源诊断设置配置的。 资源控制的“资源诊断设置”：
+非计算资源的资源诊断日志是使用资源诊断设置配置的。 资源控制的**资源诊断设置**：
 
-* 将资源诊断日志发送到何处：存储帐户、事件中心和/或 OMS Log Analytics。
-* 发送哪些日志类别。
+* 将资源诊断日志和指标发送到何处：存储帐户、事件中心和/或 OMS Log Analytics。
+* 发送哪些日志类别，是否也会发送指标数据。
 * 应该将每个日志类别在存储帐户中保留多长时间
     - 保留期为零天表示日志将永久保留。 如果不需永久保留，则可将该值设置为 1 到 2147483647 之间的任意天数。
     - 如果设置了保留策略，但禁止将日志存储在存储帐户中（例如，如果仅选择事件中心或 OMS 选项），则保留策略无效。
-    - 保留策略按天应用，因此在一天结束时 (UTC)，将会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，将会删除前天的日志。
+    - 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。
 
-这些设置可以通过“诊断”边栏选项卡（适用于 Azure 门户中的资源）、Azure PowerShell 和 CLI 命令或 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx) 轻松进行配置。
+这些设置可以通过诊断设置（适用于 Azure 门户中的资源）、Azure PowerShell 和 CLI 命令或 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx) 轻松进行配置。
 
 > [!WARNING]
-> 计算资源（例如，VM 或 Service Fabric）的诊断日志和指标使用[单独的输出配置和选择机制](../azure-diagnostics.md)。
+> 来自计算资源（例如，VM 或 Service Fabric）来宾 OS 层的诊断日志和指标使用[单独的输出配置和选择机制](../azure-diagnostics.md)。
 >
 >
 
 ## <a name="how-to-enable-collection-of-resource-diagnostic-logs"></a>如何启用资源诊断日志集合
-可以在门户中通过资源的边栏选项卡[在资源管理器模板里创建资源的过程中](./monitoring-enable-diagnostic-logs-using-template.md)或在创建资源以后启用资源诊断日志集合。 也可使用 Azure PowerShell 或 CLI 命令（或者使用 Azure Monitor REST API）在任何时间点启用集合。
+可以在门户中通过该资源的页面[在资源管理器模板里创建资源的过程中](./monitoring-enable-diagnostic-logs-using-template.md)或在创建资源以后启用资源诊断日志的收集。 也可使用 Azure PowerShell 或 CLI 命令（或者使用 Azure Monitor REST API）在任何时间点启用集合。
 
 > [!TIP]
 > 这些说明可能不能直接应用到每个资源。 请参阅此页底部的架构链接，了解适用于特定资源类型的特殊步骤。
@@ -74,14 +72,29 @@ Azure 资源级诊断日志是资源发出的日志，记录与该资源的操�
 >
 
 ### <a name="enable-collection-of-resource-diagnostic-logs-in-the-portal"></a>在门户中启用资源诊断日志的集合
-可以通过执行以下步骤在资源创建后，在 Azure 门户中启用资源诊断日志的集合：
+可以在创建资源后，在 Azure 门户中通过转到特定的资源或导航到 Azure Monitor 来启用资源诊断日志的收集。 通过 Azure Monitor 启用日志收集：
 
-1. 转到资源的边栏选项卡，打开“诊断”边栏选项卡。
-2. 单击“启用”，并选取存储帐户和/或事件中心。
+1. 在 [Azure 门户](http://portal.azure.com)中，导航到 Azure Monitor 并单击“诊断设置”
 
-   ![在创建资源以后启用诊断日志](./media/monitoring-overview-of-diagnostic-logs/enable-portal-existing.png)
-3. 在“日志”下，选择要进行收集或流式传输操作的“日志类别”。
+    ![Azure Monitor 的“监视”部分](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-blade.png)
+
+2. （可选）按资源组或资源类型筛选列表，并单击要为其设置诊断的资源。
+
+3. 如果选定的资源上不存在任何设置，系统会提示创建设置。 单击“启用诊断”。
+
+   ![添加诊断设置 - 没有现有的设置](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-none.png)
+
+   如果资源上没有现有的设置，则会看到已在此资源上配置的设置列表。 单击“添加诊断设置”。
+
+   ![添加诊断设置 - 现有的设置](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-multiple.png)
+
+3. 为设置命名，选中要将数据发送到的每个目标对应的复选框，并配置要对每个目标使用哪个资源。 （可选）使用“保留期(天)”滑块设置这些日志的保留天数（仅适用于存储帐户目标）。 如果保留期为 0 天，则会无限期存储日志。
+   
+   ![添加诊断设置 - 现有的设置](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-configure.png)
+    
 4. 单击“保存” 。
+
+几分钟后，新设置会显示在此资源的设置列表中，只要生成新的事件数据，就会立即将诊断日志发送到指定的目标。
 
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-powershell"></a>通过 PowerShell 启用资源诊断日志的集合
 若要通过 Azure PowerShell 启用资源诊断日志的集合，请使用以下命令：
@@ -144,91 +157,23 @@ azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource 
 可以组合这些参数以启用多个输出选项。
 
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-rest-api"></a>通过 REST API 启用资源诊断日志的集合
-若要使用 Azure 监视器 REST API 更改诊断设置，请参阅[此文档](https://msdn.microsoft.com/library/azure/dn931931.aspx)。
+若要使用 Azure Monitor REST API 更改诊断设置，请参阅[此文档](https://msdn.microsoft.com/library/azure/dn931931.aspx)。
 
 ## <a name="manage-resource-diagnostic-settings-in-the-portal"></a>在门户中管理资源诊断设置
-确保使用诊断设置来设置所有资源。 导航到门户中的“监视”边栏选项卡，并打开“诊断日志”边栏选项卡。
+确保使用诊断设置来设置所有资源。 在门户中导航到“监视”并打开“诊断设置”。
 
-![门户中的“诊断日志”边栏选项卡](./media/monitoring-overview-of-diagnostic-logs/manage-portal-nav.png)
+![门户中的“诊断日志”边栏选项卡](./media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-nav.png)
 
-可能需要单击“更多服务”才能找到“监视”边栏选项卡。
+可能需要单击“更多服务”才能找到“监视”部分。
 
-在此边栏选项卡中，可以查看和筛选所有支持诊断日志的资源，确定它们是否启用了诊断。 还可以检查这些日志流向哪个存储帐户、事件中心和/或 Log Analytics 工作区。
+在此处可以查看和筛选所有支持诊断设置的资源，确定它们是否启用了诊断。 还可以向下钻取，以查看是否在某个资源上指定了多个设置，并检查这些数据流向哪个存储帐户、事件中心命名空间和/或 Log Analytics 工作区。
 
-![门户中的“诊断日志”边栏选项卡结果](./media/monitoring-overview-of-diagnostic-logs/manage-portal-blade.png)
+![门户中的“诊断日志”结果](./media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-blade.png)
 
-单击资源可显示已存储在存储帐户中的所有日志，并且可以选择关闭或修改诊断设置。 单击下载图标以下载特定时间段的日志。
+添加诊断设置会打开“诊断设置”视图，可在其中启用、禁用或修改选定资源的诊断设置。
 
-![“诊断日志”边栏选项卡一个资源](./media/monitoring-overview-of-diagnostic-logs/manage-portal-logs.png)
-
-> [!NOTE]
-> 如果已将诊断设置配置为将其保存到存储帐户，则诊断日志将仅显示在此视图中并且可供下载。
->
->
-
-单击“诊断设置”链接可显示“诊断设置”边栏选项卡，可在其中启用、禁用或修改所选资源的诊断设置。
-
-## <a name="supported-services-and-schema-for-resource-diagnostic-logs"></a>资源诊断日志支持的服务和架构
-资源诊断日志的架构因资源和日志类别而异。   
-
-| 服务 | 架构和文档 |
-| --- | --- |
-| API 管理 | 架构不可用。 |
-| 应用程序网关 |[应用程序网关的诊断日志记录](../application-gateway/application-gateway-diagnostics.md) |
-| Azure 自动化 |[Azure 自动化的 Log Analytics](../automation/automation-manage-send-joblogs-log-analytics.md) |
-| Azure Batch |[Azure Batch 诊断日志记录](../batch/batch-diagnostics.md) |
-| Customer Insights | 架构不可用。 |
-| 内容传送网络 | 架构不可用。 |
-| CosmosDB | 架构不可用。 |
-| 数据湖分析 |[访问 Azure Data Lake Analytics 的诊断日志](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
-| Data Lake Store |[访问 Azure Data Lake Store 的诊断日志](../data-lake-store/data-lake-store-diagnostic-logs.md) |
-| 事件中心 |[Azure 事件中心诊断日志](../event-hubs/event-hubs-diagnostic-logs.md) |
-| 密钥保管库 |[Azure 密钥保管库日志记录](../key-vault/key-vault-logging.md) |
-| 负载均衡器 |[Azure 负载均衡器的 Log Analytics](../load-balancer/load-balancer-monitor-log.md) |
-| 逻辑应用 |[逻辑应用 B2B 自定义跟踪架构](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
-| 网络安全组 |[网络安全组 (NSG) 的 Log Analytics](../virtual-network/virtual-network-nsg-manage-log.md) |
-| 恢复服务 | 架构不可用。|
-| 搜索 |[允许并使用搜索流量分析](../search/search-traffic-analytics.md) |
-| 服务器管理 | 架构不可用。 |
-| 服务总线 |[Azure 服务总线诊断日志](../service-bus-messaging/service-bus-diagnostic-logs.md) |
-| 流分析 |[作业诊断日志](../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
-
-## <a name="supported-log-categories-per-resource-type"></a>每种资源类型支持的日志类别
-|资源类型|类别|类别显示名称|
-|---|---|---|
-|Microsoft.ApiManagement/service|GatewayLogs|ApiManagement 网关的相关日志|
-|Microsoft.Automation/automationAccounts|JobLogs|作业日志|
-|Microsoft.Automation/automationAccounts|JobStreams|作业流|
-|Microsoft.Automation/automationAccounts|DscNodeStatus|Dsc 节点状态|
-|Microsoft.Batch/batchAccounts|ServiceLog|服务日志|
-|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|获取终结点的指标，例如带宽、流出量等。|
-|Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
-|Microsoft.DataLakeAnalytics/accounts|审核|审核日志|
-|Microsoft.DataLakeAnalytics/accounts|请求|请求日志|
-|Microsoft.DataLakeStore/accounts|审核|审核日志|
-|Microsoft.DataLakeStore/accounts|请求|请求日志|
-|Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
-|Microsoft.EventHub/namespaces|ArchiveLogs|存档日志|
-|Microsoft.EventHub/namespaces|OperationalLogs|运行日志|
-|Microsoft.EventHub/namespaces|AutoScaleLogs|自动缩放日志|
-|Microsoft.KeyVault/vaults|AuditEvent|审核日志|
-|Microsoft.Logic/workflows|WorkflowRuntime|工作流运行时诊断事件|
-|Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|集成帐户跟踪事件|
-|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|网络安全组事件|
-|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|网络安全组规则计数器|
-|Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|负载均衡器警报事件|
-|Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|负载均衡器探测运行状况|
-|Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|应用程序网关访问日志|
-|Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|应用程序网关性能日志|
-|Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|应用程序网关防火墙日志|
-|Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure 备份报告数据|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery 作业|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Azure Site Recovery 事件|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicatedItems|Azure Site Recovery 复制项|
-|Microsoft.Search/searchServices|OperationLogs|操作日志|
-|Microsoft.ServiceBus/namespaces|OperationalLogs|运行日志|
-|Microsoft.StreamAnalytics/streamingjobs|执行|执行|
-|Microsoft.StreamAnalytics/streamingjobs|创作|创作|
+## <a name="supported-services-categories-and-schemas-for-resource-diagnostic-logs"></a>资源诊断日志支持的服务、类别和架构
+[参阅此文](monitoring-diagnostic-logs-schema.md)获取受支持服务的完整列表，以及这些服务使用的日志类别和架构。
 
 ## <a name="next-steps"></a>后续步骤
 

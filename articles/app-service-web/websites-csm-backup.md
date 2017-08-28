@@ -1,6 +1,6 @@
 ---
 title: "使用 REST 备份和还原应用服务应用"
-description: "了解如何使用 RESTful API 调用在 Azure App Service 中备份和还原应用"
+description: "了解如何使用 RESTful API 调用在 Azure 应用服务中备份和还原应用"
 services: app-service
 documentationcenter: 
 author: NKing92
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2016
 ms.author: nicking
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1ad2911f809a17e4a6c0f2fe9087e1d9eb2da39e
-ms.lasthandoff: 12/08/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c1b8fc3be3af46279bf35bddbc82acf1827b9eb9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="use-rest-to-back-up-and-restore-app-service-apps"></a>使用 REST 备份和还原应用服务应用
@@ -35,14 +35,14 @@ ms.lasthandoff: 12/08/2016
 <a name="gettingstarted"></a>
 
 ## <a name="getting-started"></a>入门
-若要发送 REST 请求，需要知道应用的“名称”、“资源组”和“订阅 ID”。 可通过在 [Azure 门户](https://portal.azure.com)的“应用服务”边栏选项卡中单击应用找到此信息。 本文中的示例配置的是网站 **backuprestoreapiexamples.azurewebsites.net**。 它存储在 Default-Web-WestUS 资源组中，并在 ID 为 00001111-2222-3333-4444-555566667777 的订阅上运行。
+若要发送 REST 请求，需要知道应用的“名称”、“资源组”和“订阅 ID”。可通过在 [Azure 门户](https://portal.azure.com)的“应用服务”边栏选项卡中单击应用找到此信息。 本文中的示例配置的是网站 **backuprestoreapiexamples.azurewebsites.net**。 它存储在 Default-Web-WestUS 资源组中，并在 ID 为 00001111-2222-3333-4444-555566667777 的订阅上运行。
 
 ![示例网站信息][SampleWebsiteInformation]
 
 <a name="backup-restore-rest-api"></a>
 
 ## <a name="backup-and-restore-rest-api"></a>备份和还原 REST API
-现在，我们将介绍如何使用 REST API 来备份和还原应用的几个示例。 每个示例均包括 URL 和 HTTP 请求正文。 示例 URL 包含包装在大括号内的占位符，如 {subscription-id}。 应将这些占位符替换为应用的相应信息。 为了参考方便，下面是示例 URL 中显示的每个占位符的说明。
+现在，我们介绍如何使用 REST API 来备份和还原应用的几个示例。 每个示例均包括 URL 和 HTTP 请求正文。 示例 URL 包含包装在大括号内的占位符，如 {subscription-id}。 应将这些占位符替换为应用的相应信息。 为了参考方便，下面是示例 URL 中显示的每个占位符的说明。
 
 * subscription-id – 包含应用的 Azure 订阅的 ID
 * resource-group-name – 包含应用的资源组的名称
@@ -58,7 +58,7 @@ ms.lasthandoff: 12/08/2016
 
 使用示例网站时，URL 如下所示。 **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backup/**
 
-在请求的正文中提供 JSON 对象，以指定要使用哪个存储帐户存储备份。 JSON 对象必须具有一个名为 **storageAccountUrl** 的属性，该属性存储着一个 [SAS URL](../storage/storage-dotnet-shared-access-signature-part-1.md)，该 URL 授予对包含备份 blob 的 Azure 存储容器的写入权限。 如果要备份数据库，还必须提供一个包含要备份的数据库的名称、类型和连接字符串的列表。
+在请求的正文中提供 JSON 对象，以指定要使用哪个存储帐户存储备份。 JSON 对象必须具有一个名为 **storageAccountUrl** 的属性，该属性存储着一个 [SAS URL](../storage/common/storage-dotnet-shared-access-signature-part-1.md)，该 URL 授予对包含备份 blob 的 Azure 存储容器的写入权限。 如果要备份数据库，还必须提供一个包含要备份的数据库的名称、类型和连接字符串的列表。
 
 ```
 {
@@ -141,9 +141,9 @@ ms.lasthandoff: 12/08/2016
 }
 ```
 
-此示例将应用配置为每 7 天自动备份一次。 参数 **frequencyInterval** 和 **frequencyUnit** 共同确定了备份的发生频率。 **frequencyUnit** 的有效值为 **hour** 和 **day**。 例如，若要每 12 个小时备份一次应用，请将 frequencyInterval 设为 12 并将 frequencyUnit 设为 hour。
+此示例将应用配置为每 7 天自动备份一次。 参数 **frequencyInterval** 和 **frequencyUnit** 共同确定了备份的发生频率。 **frequencyUnit** 的有效值为 **hour** 和 **day**。 例如，要每 12 个小时备份一次应用，请将 frequencyInterval 设为 12 并将 frequencyUnit 设为 hour。
 
-旧备份将自动从存储帐户中删除。 可以通过设置 **retentionPeriodInDays** 参数来控制备份的保留期限。 如果始终要至少保存一个备份，且不管它保留多长时间，请将 **keepAtLeastOneBackup** 设为 True。
+旧备份会自动从存储帐户中删除。 可以通过设置 **retentionPeriodInDays** 参数来控制备份的保留期限。 如果始终要至少保存一个备份，且不管它保留多长时间，请将 **keepAtLeastOneBackup** 设为 True。
 
 ### <a name="get-the-automatic-backup-schedule"></a>获取自动备份计划
 若要获取应用的备份配置，请向 URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/config/backup/list** 发送一个 **POST** 请求。
@@ -220,7 +220,7 @@ ms.lasthandoff: 12/08/2016
 ```
 
 ### <a name="restore-to-a-new-app"></a>还原到新应用
-有时你可能想要在还原备份时创建新应用，而不是覆盖现有的应用。 为此，请更改请求 URL 以指向要创建的新应用，并将 JSON 中的 **overwrite** 属性更改为 **false**。
+有时在还原备份时，可能想要创建新的应用，而不是覆盖已存在的应用。 为此，请更改请求 URL 以指向要创建的新应用，并将 JSON 中的 **overwrite** 属性更改为 **false**。
 
 <a name="delete-app-backup"></a>
 
@@ -232,7 +232,7 @@ ms.lasthandoff: 12/08/2016
 <a name="manage-sas-url"></a>
 
 ## <a name="manage-a-backups-sas-url"></a>管理备份的 SAS URL
-Azure App Service 将尝试使用在创建备份时提供的 SAS URL 从 Azure 存储中删除备份。 如果此 SAS URL 不再有效，则无法通过 REST API 删除备份。 不过，可以通过向 URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backups/{backup-id}/list** 发送一个 **POST** 请求来更新与备份关联的 SAS URL。
+Azure 应用服务将尝试使用在创建备份时提供的 SAS URL 从 Azure 存储中删除备份。 如果此 SAS URL 不再有效，则无法通过 REST API 删除备份。 不过，可以通过向 URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backups/{backup-id}/list** 发送一个 **POST** 请求来更新与备份关联的 SAS URL。
 
 对于示例网站，URL 如下所示。 **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backups/1/list**
 
