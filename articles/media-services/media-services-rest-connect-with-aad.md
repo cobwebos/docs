@@ -4,7 +4,7 @@ description: "了解如何通过 Azure Active Directory 身份验证使用 REST 
 services: media-services
 documentationcenter: 
 author: willzhan
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.service: media-services
 ms.workload: media

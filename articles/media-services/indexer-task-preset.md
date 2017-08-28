@@ -4,7 +4,7 @@ description: "本主题概述 Azure Media Indexer 的任务预设。"
 services: media-services
 documentationcenter: 
 author: Asolanki
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.service: media-services
 ms.workload: media

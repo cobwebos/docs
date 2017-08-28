@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 05/02/2017
+ms.date: 08/11/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: fceaf1b1d1c243ef8cff6ba6b188bb66514d0591
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 2b8d519e11f70eda164bd8f6e131a3989f242ab0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
 # <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux"></a>在 Linux 上创建虚拟机规模集和部署高度可用的应用
-利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据 CPU 使用率、内存需求或网络流量进行自动缩放。 在本教程中，将在 Azure 中部署虚拟机规模集。 你将学习如何：
+利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据 CPU 使用率、内存需求或网络流量进行自动缩放。 在本教程中，会在 Azure 中部署虚拟机规模集。 学习如何：
 
 > [!div class="checklist"]
 > * 使用 cloud-init 创建用于缩放的应用
@@ -47,9 +47,11 @@ ms.lasthandoff: 06/20/2017
 
 
 ## <a name="create-an-app-to-scale"></a>创建用于缩放的应用
-对于生产用途，可能需要[创建自定义 VM 映像](tutorial-custom-images.md)，其中包含已安装和配置的应用程序。 在本教程中，我们将在首次启动时自定义 VM，以便快速了解规模集的运作方式。
+对于生产用途，可能需要[创建自定义 VM 映像](tutorial-custom-images.md)，其中包含已安装和配置的应用程序。 在本教程中，我们会在首次启动时自定义 VM，以便快速了解规模集的运作方式。
 
-上一篇教程已介绍[如何使用 cloud-init 在首次启动时自定义 Linux 虚拟机](tutorial-automate-vm-deployment.md)。 可使用同一个 cloud-init 配置文件安装 NGINX 并运行简单的“Hello World”Node.js 应用。 创建名为“cloud-init.txt”的文件并粘贴下面的配置：
+上一篇教程已介绍[如何使用 cloud-init 在首次启动时自定义 Linux 虚拟机](tutorial-automate-vm-deployment.md)。 可使用同一个 cloud-init 配置文件安装 NGINX 并运行简单的“Hello World”Node.js 应用。 
+
+在当前 shell 中，创建名为“cloud-init.txt”的文件并粘贴下面的配置。 例如，在不处于本地计算机上的 Cloud Shell 中创建文件。 输入 `sensible-editor cloud-init.txt` 以创建文件并查看可用编辑器的列表。 请确保已正确复制整个 cloud-init 文件，尤其是第一行：
 
 ```yaml
 #cloud-config
@@ -95,26 +97,26 @@ runcmd:
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-使用 [az group create](/cli/azure/group#create) 创建资源组，然后才能创建规模集。 以下示例在“eastus”位置创建名为“myResourceGroupScaleSet”的资源组：
+使用 [az group create](/cli/azure/group#create) 创建资源组，才能创建规模集。 以下示例在“eastus”位置创建名为“myResourceGroupScaleSet”的资源组：
 
 ```azurecli-interactive 
 az group create --name myResourceGroupScaleSet --location eastus
 ```
 
-现在，使用 [az vmss create](/cli/azure/vmss#create) 创建虚拟机规模集。 以下示例创建名为“myScaleSet”的规模集，使用 cloud-int 文件自定义 VM，然后生成 SSH 密钥（如果不存在）：
+现在，使用 [az vmss create](/cli/azure/vmss#create) 创建虚拟机规模集。 以下示例创建名为“myScaleSet”的规模集，使用 cloud-int 文件自定义 VM，并生成 SSH 密钥（如果不存在）：
 
 ```azurecli-interactive 
 az vmss create \
   --resource-group myResourceGroupScaleSet \
   --name myScaleSet \
-  --image Canonical:UbuntuServer:14.04.4-LTS:latest \
+  --image UbuntuLTS \
   --upgrade-policy-mode automatic \
   --custom-data cloud-init.txt \
   --admin-username azureuser \
   --generate-ssh-keys      
 ```
 
-创建和配置所有的规模集资源和 VM 需要几分钟时间。
+创建和配置所有的规模集资源和 VM 需要几分钟时间。 在 Azure CLI 向你返回提示之后，仍然存在继续运行的后台任务。 可能还需等待几分钟才能访问应用。
 
 
 ## <a name="allow-web-traffic"></a>允许 Web 流量
@@ -211,18 +213,18 @@ az vmss list-instance-connection-info \
 可以创建数据磁盘并与规模集配合使用。 前面的教程介绍了如何[管理 Azure 磁盘](tutorial-manage-disks.md)，其中概述了在数据磁盘而非 OS 磁盘上生成应用的最佳做法和性能改进。
 
 ### <a name="create-scale-set-with-data-disks"></a>创建具有数据磁盘的规模集
-若要创建规模集并附加数据磁盘，请将 `--data-disk-sizes-gb` 参数添加到 [az vmss create](/cli/azure/vmss#create) 命令中。 以下示例创建具有附加到每个实例的 50 GB 数据磁盘的规模集：
+要创建规模集并附加数据磁盘，请将 `--data-disk-sizes-gb` 参数添加到 [az vmss create](/cli/azure/vmss#create) 命令中。 以下示例创建具有附加到每个实例的 50 GB 数据磁盘的规模集：
 
 ```azurecli-interactive 
 az vmss create \
-  --resource-group myResourceGroupScaleSet \
-  --name myScaleSetDisks \
-  --image Canonical:UbuntuServer:14.04.4-LTS:latest \
-  --upgrade-policy-mode automatic \
-  --custom-data cloud-init.txt \
-  --admin-username azureuser \
-  --generate-ssh-keys \
-  --data-disk-sizes-gb 50
+    --resource-group myResourceGroupScaleSet \
+    --name myScaleSetDisks \
+    --image UbuntuLTS \
+    --upgrade-policy-mode automatic \
+    --custom-data cloud-init.txt \
+    --admin-username azureuser \
+    --generate-ssh-keys \
+    --data-disk-sizes-gb 50
 ```
 
 删除规模集中的实例时，也会删除所有附加的数据磁盘。
@@ -231,10 +233,10 @@ az vmss create \
 若要向规模集中的实例添加数据磁盘，请使用 [az vmss disk attach](/cli/azure/vmss/disk#attach)。 以下示例向每个实例添加一个 50 GB 的磁盘：
 
 ```azurecli-interactive 
-az vmss disk attach `
-    --resource-group myResourceGroupScaleSet `
-    --name myScaleSet `
-    --size-gb 50 `
+az vmss disk attach \
+    --resource-group myResourceGroupScaleSet \
+    --name myScaleSet \
+    --size-gb 50 \
     --lun 2
 ```
 
@@ -242,9 +244,9 @@ az vmss disk attach `
 若要删除附加到规模集中实例的数据磁盘，请使用 [az vmss disk detach](/cli/azure/vmss/disk#detach)。 以下示例在 LUN 2 删除每个实例中的数据磁盘：
 
 ```azurecli-interactive 
-az vmss disk detach `
-    --resource-group myResourceGroupScaleSet `
-    --name myScaleSet `
+az vmss disk detach \
+    --resource-group myResourceGroupScaleSet \
+    --name myScaleSet \
     --lun 2
 ```
 

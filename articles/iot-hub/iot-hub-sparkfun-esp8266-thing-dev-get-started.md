@@ -13,13 +13,13 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/15/2017
+ms.date: 08/16/2017
 ms.author: xshi
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 9b3d968379d38ac4e4080de7eae6ffea89f73a49
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 557f0cdf375b345e0dbe0526f5a5bd3c050dec38
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="connect-sparkfun-esp8266-thing-dev-to-azure-iot-hub-in-the-cloud"></a>将 Sparkfun ESP8266 Thing Dev 连接到云中的 Azure IoT 中心
@@ -35,7 +35,7 @@ ms.lasthandoff: 07/13/2017
 > [!NOTE]
 > 如果使用其他 ESP8266 开发板，仍可遵循这些步骤将它连接到 IoT 中心。 根据所用的 ESP8266 开发板，可能需要重新配置 `LED_PIN`。 例如，如果使用 AI-Thinker 提供的 ESP8266，可将此参数从 `0` 更改为 `2`。 没有工具包？请单击[此处](http://azure.com/iotstarterkits)
 
-## <a name="what-you-will-learn"></a>你要学习的知识
+## <a name="what-you-will-learn"></a>要学习的知识
 
 * 如何创建 IoT 中心以及注册 Thing Dev 的设备。
 * 如何将 Thing Dev 与传感器和计算机相连接。
@@ -120,13 +120,13 @@ ms.lasthandoff: 07/13/2017
    sudo usermod -a -G <group-owner-name> <username>
    ```
 
-   `<group-owner-name>` 是在上一步骤中获取的组所有者名称。 `<username>` 是你的 Ubuntu 用户名。
+   `<group-owner-name>` 是在上一步骤中获取的组所有者名称。 `<username>` 是 Ubuntu 用户名。
 
-1. 从 Ubuntu 中注销，然后再次登录，使更改生效。
+1. 从 Ubuntu 中注销，并再次登录，使更改生效。
 
 ## <a name="collect-sensor-data-and-send-it-to-your-iot-hub"></a>收集传感器数据并将其发送到 IoT 中心
 
-在本部分，你将在 Sparkfun ESP8266 Thing Dev 上部署并运行一个示例应用程序。 该示例应用程序会使 Sparkfun ESP8266 Thing Dev 上的 LED 闪烁，并将从 DHT22 传感器收集的温度和湿度数据发送到 IoT 中心。
+在本部分，会在 Sparkfun ESP8266 Thing Dev 上部署并运行一个示例应用程序。 该示例应用程序会使 Sparkfun ESP8266 Thing Dev 上的 LED 闪烁，并将从 DHT22 传感器收集的温度和湿度数据发送到 IoT 中心。
 
 ### <a name="get-the-sample-application-from-github"></a>从 GitHub 获取示例应用程序
 
@@ -149,14 +149,14 @@ ms.lasthandoff: 07/13/2017
 
 1. 在 Arduino IDE 中，单击“File”（文件） > “Preferences”（首选项）。
 1. 在“Preferences”（首选项）对话框中，单击“Additional Boards Manager URLs”（其他 Boards Manager URL）文本框旁边的图标。
-1. 在弹出窗口中输入以下 URL，然后单击“OK”（确定）。
+1. 在弹出窗口中输入以下 URL，并单击“OK”（确定）。
 
    `http://arduino.esp8266.com/stable/package_esp8266com_index.json`
 
    ![指向 arduino ide 中的包 url](media/iot-hub-sparkfun-thing-dev-get-started/11_arduino-ide-package-url.png)
 
 1. 在“Preference”（首选项）对话框中，单击“OK”（确定）。
-1. 单击“Tools”（工具） > “Board”（开发板） > “Boards Manager”，然后搜索 esp8266。
+1. 单击“Tools”（工具） > “Board”（开发板） > “Boards Manager”，并搜索 esp8266。
    应安装 2.2.0 或更高版本的 ESP8266。
 
    ![已安装 esp8266 包](media/iot-hub-sparkfun-thing-dev-get-started/12_arduino-ide-esp8266-installed.png)
@@ -176,7 +176,7 @@ ms.lasthandoff: 07/13/2017
 
 ### <a name="dont-have-a-real-dht22-sensor"></a>没有真正的 DHT22 传感器？
 
-如果你没有真正的 DHT22 传感器，示例应用程序可以模拟温度和湿度数据。 若要让示例应用程序使用模拟的数据，请执行以下步骤：
+如果没有真正的 DHT22 传感器，示例应用程序可以模拟温度和湿度数据。 若要让示例应用程序使用模拟的数据，请执行以下步骤：
 
 1. 打开 `app` 文件夹中的 `config.h` 文件。
 1. 找到以下代码行并将值从 `false` 更改为 `true`：
@@ -189,8 +189,16 @@ ms.lasthandoff: 07/13/2017
 
 ### <a name="deploy-the-sample-application-to-sparkfun-esp8266-thing-dev"></a>将示例应用程序部署到 Sparkfun ESP8266 Thing Dev
 
-1. 在 Arduino IDE 中，单击“Tool”（工具） > “Port”（端口），然后单击 Sparkfun ESP8266 Thing Dev 的串行端口。
-1. 单击 **Sketch** > **Upload** （上传），生成示例应用程序并将其部署到 Sparkfun ESP8266 Thing Dev。
+1. 在 Arduino IDE 中，单击“Tool”（工具） > “Port”（端口），并单击 Sparkfun ESP8266 Thing Dev 的串行端口。
+1. 单击“Sketch” > “Upload”（上传），生成示例应用程序并将其部署到 Sparkfun ESP8266 Thing Dev。
+
+> [!Note]
+> 如果你使用 macOS，那么可能会在上传期间看到以下消息。 `warning: espcomm_sync failed`,`error: espcomm_open failed`. 请打开终端窗口，然后完成以下操作来解决此问题。
+> ```bash
+> cd /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns
+> sudo mv AppleUSBFTDI.kext AppleUSBFTDI.disabled
+> sudo touch /System/Library/Extensions
+> ```
 
 ### <a name="enter-your-credentials"></a>输入凭据
 
@@ -200,7 +208,7 @@ ms.lasthandoff: 07/13/2017
 1. 在串行监视器窗口的右下角，可以看到两个下拉列表。
 1. 在左侧下拉列表中选择“No line ending”（无行尾）。
 1. 在右侧下拉列表中选择“115200 baud”（115200 波特率）。
-1. 在串行监视器窗口顶部的输入框中输入以下信息（如果系统要求提供），然后单击“Send”（发送）。
+1. 在串行监视器窗口顶部的输入框中输入以下信息（如果系统要求提供），并单击“Send”（发送）。
    * Wi-Fi SSID
    * Wi-Fi 密码
    * 设备连接字符串

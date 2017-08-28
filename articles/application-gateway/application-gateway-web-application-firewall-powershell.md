@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: ceca07e1244af2937ed66f41e5cddc41014fdde2
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: dab489a1c9fb7d4a51b9ccbce543b209bec23575
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="configure-web-application-firewall-on-a-new-or-existing-application-gateway"></a>在新的或现有的应用程序网关上配置 Web 应用程序防火墙
@@ -44,7 +44,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
 
 | **设置** | **详细信息**
 |---|---|
-|**SKU** |没有 WAF 的普通应用程序网关支持 **Standard\_Small**、**Standard\_Medium** 和 **Standard\_Large** 大小。 随着 WAF 的引入，还提供了其他两个 SKU，分别是 **WAF\_Medium** 和 **WAF\_Large**。 小型应用程序网关不支持 WAF。|
+|**SKU** |没有 WAF 的普通应用程序网关支持 Standard\_Small、Standard\_Medium 和 Standard\_Large 大小。 随着 WAF 的引入，还提供了其他两个 SKU，分别是 **WAF\_Medium** 和 **WAF\_Large**。 小型应用程序网关不支持 WAF。|
 |**层** | 可用值为“标准”或 **WAF**。 使用 Web 应用程序防火墙时，必须选择“WAF”。|
 |**模式** | 此设置是 WAF 的模式。 允许的值为**检测**和**阻止**。 WAF 设置为检测模式时，所有威胁都会存储在日志文件中。 在阻止模式下，仍然会记录事件，但攻击者会从应用程序网关收到“403 未授权”响应。|
 
@@ -121,14 +121,14 @@ Azure 资源管理器要求所有资源组指定一个位置。 此位置将用�
 在上述示例中，我们创建了名为“appgw-RG”的资源组，位置为“美国西部”。
 
 > [!NOTE]
-> 如果需要为应用程序网关配置自定义探测，请参阅 [Create an application gateway with custom probes by using PowerShell](application-gateway-create-probe-ps.md)（使用 PowerShell 创建带自定义探测的应用程序网关）。 有关详细信息，请查看 [custom probes and health monitoring](application-gateway-probe-overview.md) （自定义探测和运行状况监视）。
+> 如果需要为应用程序网关配置自定义探测，请参阅[使用 PowerShell 创建带自定义探测的应用程序网关](application-gateway-create-probe-ps.md)。 有关详细信息，请查看 [custom probes and health monitoring](application-gateway-probe-overview.md) （自定义探测和运行状况监视）。
 
 ### <a name="configure-virtual-network"></a>配置虚拟网络
 
 应用程序网关需要自己的子网。 在此步骤中，将创建一个具有 10.0.0.0/16 地址空间的虚拟网络和两个子网（一个子网用于应用程序网关，另一子网用于后端池成员）。
 
 ```powershell
-# Create a subnet configuration object for the application gateway subnet. A subnet for an application should have a minimum of 28 mask bits. This value leaves 10 available addresses in the subnet for Application Gateway instances. With a smaller subnet, you may not be able to add more instance of your application gateway in the future.
+# Create a subnet configuration object for the Application Gateway subnet. A subnet for an application should have a minimum of 28 mask bits. This value leaves 10 available addresses in the subnet for Application Gateway instances. With a smaller subnet, you may not be able to add more instance of your Application Gateway in the future.
 $gwSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 10.0.0.0/24
 
 # Create a subnet configuration object for the backend pool members subnet
@@ -143,7 +143,7 @@ $vnet = New-AzureRmvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg 
 若要处理外部请求，应用程序网关需要公共 IP 地址。 此公共 IP 地址不能将 `DomainNameLabel` 定义为由应用程序网关使用。
 
 ```powershell
-# Create a public IP address for use with the application gateway. Defining the domainnamelabel during creation is not supported for use with application gateway
+# Create a public IP address for use with the Application Gateway. Defining the domainnamelabel during creation is not supported for use with Application Gateway
 $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -name 'appgwpip' -Location "West US" -AllocationMethod Dynamic
 ```
 
@@ -153,7 +153,7 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -name 'appgwp
 # Create a IP configuration. This configures what subnet the Application Gateway uses. When Application Gateway starts, it picks up an IP address from the subnet configured and routes network traffic to the IP addresses in the back-end IP pool.
 $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name 'gwconfig' -Subnet $gwSubnet
 
-# Create a backend pool to hold the addresses or NICs for the application that application gateway is protecting.
+# Create a backend pool to hold the addresses or NICs for the application that Application Gateway is protecting.
 $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 1.1.1.1, 2.2.2.2, 3.3.3.3
 
 # Upload the authenication certificate that will be used to communicate with the backend servers
@@ -165,25 +165,28 @@ $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name 'setting01
 # Create a frontend port to be used by the listener.
 $fp = New-AzureRmApplicationGatewayFrontendPort -Name 'port01'  -Port 443
 
-# Create a frontend IP configuration to associate the public IP address with the application gateway
+# Create a frontend IP configuration to associate the public IP address with the Application Gateway
 $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAddress $publicip
 
-# Configure the certificate for the application gateway. This certificate is used to decrypt and re-encrypt the traffic on the application gateway.
+# Configure the certificate for the Application Gateway. This certificate is used to decrypt and re-encrypt the traffic on the Application Gateway.
 $cert = New-AzureRmApplicationGatewaySslCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password <password for certificate file>
 
-# Create the HTTP listener for the application gateway. Assign the front-end ip configuration, port, and ssl certificate to use.
+# Create the HTTP listener for the Application Gateway. Assign the front-end ip configuration, port, and ssl certificate to use.
 $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SslCertificate $cert
 
 #Create a load balancer routing rule that configures the load balancer behavior. In this example, a basic round robin rule is created.
 $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 
-# Configure the SKU of the application gateway
+# Configure the SKU of the Application Gateway
 $sku = New-AzureRmApplicationGatewaySku -Name WAF_Medium -Tier WAF -Capacity 2
+
+# Define the SSL policy to use
+$policy = New-AzureRmApplicationGatewaySslPolicy -PolicyType Predefined -PolicyName AppGwSslPolicy20170401S
 
 #Configure the waf configuration settings.
 $config = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention"
 
-# Create the application gateway utilizing all the previously created configuration objects
+# Create the Application Gateway utilizing all the previously created configuration objects
 $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -WebApplicationFirewallConfig $config -SslCertificates $cert -AuthenticationCertificates $authcert
 ```
 

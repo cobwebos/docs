@@ -4,7 +4,7 @@ description: "了解如何使用 Azure 门户访问 Azure Active Directory (Azur
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.service: media-services
 ms.workload: media

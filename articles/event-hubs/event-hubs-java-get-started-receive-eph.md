@@ -12,14 +12,13 @@ ms.workload: core
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2017
+ms.date: 08/15/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 024a9dd00d086d5c1cc14d6731b34ee0eab3b2c5
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 62f89087af9a82eddeec4dd745a26c3559bb0c04
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 
@@ -27,39 +26,41 @@ ms.lasthandoff: 06/29/2017
 
 
 ## <a name="introduction"></a>介绍
-事件中心是一个具备高度可伸缩性的引入系统，每秒可收入大量事件，从而使应用程序能够处理和分析你连接的设备和应用程序所产生的海量数据。 将数据采集到事件中心后，你可以使用任何实时分析提供程序或存储群集来转换和存储数据。
+事件中心是一个具备高度伸缩性的引入系统，每秒可收入大量事件，从而使应用程序能够处理和分析连接的设备和应用程序所产生的海量数据。 将数据采集到事件中心后，可以使用任何实时分析提供程序或存储群集来转换和存储数据。
 
 有关详细信息，请参阅[事件中心概述][Event Hubs overview]。
 
 本教程演示如何使用用 Java 编写的控制台应用程序从事件中心接收事件。
 
-若要完成本教程，你需要以下各项：
+## <a name="prerequisites"></a>先决条件
 
-* Java 开发环境。 对于本教程，我们将采用 [Eclipse](https://www.eclipse.org/)。
+若要完成本教程，需要具备以下先决条件：
+
+* Java 开发环境。 对于本教程，我们会采用 [Eclipse](https://www.eclipse.org/)。
 * 有效的 Azure 帐户。 <br/>如果没有帐户，只需花费几分钟就能创建一个免费帐户。 有关详细信息，请参阅 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure 免费试用</a>。
 
 ## <a name="receive-messages-with-eventprocessorhost-in-java"></a>使用 Java 中的 EventProcessorHost 接收消息
 
-EventProcessorHost 是一个 Java 类，通过从事件中心管理持久检查点和并行接收来简化从事件中心接收事件的过程。 使用 EventProcessorHost，可跨多个接收方拆分事件，即使在不同节点中托管也是如此。 此示例演示如何为单一接收方使用 EventProcessorHost。
+EventProcessorHost 是一个 Java 类，通过在这些事件中心管理持久检查点和并行接收来简化从事件中心接收事件的过程。 使用 EventProcessorHost，可跨多个接收方拆分事件，即使在不同节点中托管也是如此。 此示例演示如何为单一接收方使用 EventProcessorHost。
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
-若要使用 EventProcessorHost，必须具有一个 [Azure 存储帐户][Azure Storage account]：
+若要使用 EventProcessorHost，必须有一个 [Azure 存储帐户][Azure Storage account]：
 
-1. 登录到 [Azure 经典门户][Azure classic portal]，然后单击屏幕底部的“新建”。
-2. 依次单击“数据服务”、“存储”、“快速创建”，然后为存储帐户键入一个名称。 选择所需的区域，然后单击“创建存储帐户” 。
+1. 登录到 [Azure 门户][Azure portal]，然后单击屏幕左边的“+新建”。
+2. 单击“存储”，并单击“存储帐户”。 在“创建存储帐户”  边栏选项卡中，键入存储帐户的名称。 填写其余字段，选择所需区域，然后单击“创建”。
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
 
-3. 单击新创建的存储帐户，然后单击“管理访问密钥” ：
+3. 单击新创建的存储帐户，并单击“管理访问密钥” ：
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 
-    复制主访问密钥，供本教程后面使用。
+    将主访问密钥复制到临时区域，以供本教程后面使用。
 
 ### <a name="create-a-java-project-using-the-eventprocessor-host"></a>EventProcessor Host 创建一个 Java 项目
 事件中心的 Java 客户端库可用于 [Maven 中央存储库][Maven Package]中的 Maven 项目，并且可以使用 Maven 项目文件中的以下依赖项声明进行引用：    
 
-```XML
+```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs</artifactId>
@@ -79,9 +80,9 @@ EventProcessorHost 是一个 Java 类，通过从事件中心管理持久检查�
 
 对于不同类型的生成环境，可以从 [Maven 中央存储库][Maven Package]或 [GitHub 上的版本分发点](https://github.com/Azure/azure-event-hubs/releases)显式获取最新发布的 JAR 文件。  
 
-1. 对于下面的示例，请首先在你最喜欢的 Java 开发环境中为控制台/shell 应用程序创建一个新的 Maven 项目。 该类将称为 ```ErrorNotificationHandler```。     
+1. 对于以下示例，请首先在你最喜欢的 Java 开发环境中为控制台/shell 应用程序创建一个新的 Maven 项目。 此类名为 `ErrorNotificationHandler`。     
    
-    ```Java
+    ```java
     import java.util.function.Consumer;
     import com.microsoft.azure.eventprocessorhost.ExceptionReceivedEventArgs;
    
@@ -94,9 +95,9 @@ EventProcessorHost 是一个 Java 类，通过从事件中心管理持久检查�
         }
     }
     ```
-2. 使用以下代码创建名为 ```EventProcessor```的新类。
+2. 使用以下代码创建名为 `EventProcessor`的新类。
    
-    ```Java
+    ```java
     import com.microsoft.azure.eventhubs.EventData;
     import com.microsoft.azure.eventprocessorhost.CloseReason;
     import com.microsoft.azure.eventprocessorhost.IEventProcessor;
@@ -147,9 +148,9 @@ EventProcessorHost 是一个 Java 类，通过从事件中心管理持久检查�
         }
     }
     ```
-3. 使用以下代码创建一个名为 ```EventProcessorSample```的最终类。
+3. 使用以下代码另外创建一个名为 `EventProcessorSample` 的类。
    
-    ```Java
+    ```java
     import com.microsoft.azure.eventprocessorhost.*;
     import com.microsoft.azure.servicebus.ConnectionStringBuilder;
     import com.microsoft.azure.eventhubs.EventData;
@@ -214,7 +215,7 @@ EventProcessorHost 是一个 Java 类，通过从事件中心管理持久检查�
     ```
 4. 将以下字段替换为创建事件中心和存储帐户时所使用的值。
    
-    ```Java
+    ```java
     final String namespaceName = "----ServiceBusNamespaceName-----";
     final String eventHubName = "----EventHubName-----";
    
@@ -226,7 +227,7 @@ EventProcessorHost 是一个 Java 类，通过从事件中心管理持久检查�
     ```
 
 > [!NOTE]
-> 本教程使用了一个 EventProcessorHost 实例。 若要增加吞吐量，建议运行多个 EventProcessorHost 实例，最好是在单独的计算机上运行。  这也会变得冗余。   在那些情况下，为了对接收到的事件进行负载均衡，各个不同实例会自动相互协调。 如果希望多个接收方都各自处理 *全部* 事件，则必须使用 **ConsumerGroup** 概念。 在从不同计算机中接收事件时，根据部署 EventProcessorHost 实例的计算机（或角色）来指定该实例的名称可能会很有用。
+> 本教程使用了一个 EventProcessorHost 实例。 若要增加吞吐量，建议运行多个 EventProcessorHost 实例，最好是在单独的计算机上运行。  这也会提供冗余。 在那些情况下，为了对接收到的事件进行负载均衡，各个不同实例会自动相互协调。 如果希望多个接收方都各自处理 *全部* 事件，则必须使用 **ConsumerGroup** 概念。 在从不同计算机中接收事件时，根据部署 EventProcessorHost 实例的计算机（或角色）来指定该实例的名称可能会很有用。
 > 
 > 
 
@@ -239,8 +240,8 @@ EventProcessorHost 是一个 Java 类，通过从事件中心管理持久检查�
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
-[Azure Storage account]: ../storage/storage-create-storage-account.md
-[Azure classic portal]: http://manage.windowsazure.com
+[Azure Storage account]: ../storage/common/storage-create-storage-account.md
+[Azure portal]: https://portal.azure.com
 [Maven Package]: https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22
 
 <!-- Images -->

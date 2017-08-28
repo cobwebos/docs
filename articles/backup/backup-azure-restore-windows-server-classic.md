@@ -12,14 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2017
+ms.date: 08/11/2017
 ms.author: saurse;trinadhk;markgal;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: e2eac02d194c8a3de653292664cb94a55aafc9b7
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 300b2b17b44e21ed446fd63d572a2461e2fc1343
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-the-classic-deployment-model"></a>使用经典部署模型将文件还原到 Windows Server 或 Windows 客户端计算机
@@ -32,7 +31,7 @@ ms.lasthandoff: 06/16/2017
 本文介绍如何从备份保管库中恢复数据并将其还原到服务器或计算机。 自 2017 年 3 月起，无法再在经典门户中创建备份保管库。
 
 > [!IMPORTANT]
-> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 从 2017 年 11 月 1 日起：
+> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 10 月 15 日之后，将无法使用 PowerShell 创建备份保管库。 <br/> 从 2017 年 11 月 1 日起：
 >- 其余的所有备份保管库都将自动升级到恢复服务保管库。
 >- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
 >
@@ -53,9 +52,9 @@ ms.lasthandoff: 06/16/2017
 
 ## <a name="use-instant-restore-to-recover-data-to-the-same-machine"></a>使用即时还原将数据恢复到同一台计算机
 
-如果你意外删除了某个文件并想要在同一台计算机（备份位置）中还原文件，以下步骤可帮助你恢复数据。
+如果意外删除了某个文件并想要在同一台计算机（备份位置）中还原文件，以下步骤可帮助你恢复数据。
 
-1. 打开“**Microsoft Azure 备份**”管理单元。 如果你不知道该管理单元的安装位置，请在计算机或服务器中搜索“Microsoft Azure 备份”。
+1. 打开“**Microsoft Azure 备份**”管理单元。 如果不知道该管理单元的安装位置，请在计算机或服务器中搜索“Microsoft Azure 备份”。
 
     该桌面应用应该会显示在搜索结果中。
 
@@ -63,11 +62,11 @@ ms.lasthandoff: 06/16/2017
 
     ![恢复数据](./media/backup-azure-restore-windows-server/recover.png)
 
-3. 若要将数据还原到同一台服务器或计算机，请在“开始”窗格中选择“此服务器(`<server name>`)”，然后单击“下一步”。
+3. 要将数据还原到同一台服务器或计算机，请在“开始”窗格中选择“此服务器(`<server name>`)”，然后单击“下一步”。
 
     ![选择“此服务器”选项将数据还原到同一台计算机](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
-4. 在“选择恢复模式”窗格中选择“单个文件和文件夹”，然后单击“下一步”。
+4. 在“选择恢复模式”窗格中选择“单个文件和文件夹”，并单击“下一步”。
 
     ![浏览文件](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
 
@@ -79,14 +78,14 @@ ms.lasthandoff: 06/16/2017
 
 6. 选择要还原的恢复点后，单击“装载”。
 
-    Azure 备份将会装载本地恢复点，并将其用作恢复卷。
+    Azure 备份会装载本地恢复点，并将其用作恢复卷。
 
 7. 在“浏览和恢复文件”窗格中，单击“浏览”打开 Windows 资源管理器并找到所需的文件和文件夹。
 
     ![恢复选项](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
 
 
-8. 在 Windows 资源管理器中，复制想要还原的文件和/或文件夹，将其粘贴到服务器或计算机本地的任何位置。 可以从恢复卷直接打开或流式传输文件，然后验证是否恢复了正确的版本。
+8. 在 Windows 资源管理器中，复制想要还原的文件和/或文件夹，将其粘贴到服务器或计算机本地的任何位置。 可以从恢复卷直接打开或流式传输文件，并验证是否恢复了正确的版本。
 
     ![将文件和文件夹从装载的卷复制并粘贴到本地位置](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
 
@@ -95,12 +94,12 @@ ms.lasthandoff: 06/16/2017
     ![卸载卷并确认](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > 如果不单击“卸载”，恢复卷将保持装载六个小时（从装载时算起）。 装载卷时，不会运行任何备份操作。 计划为在装载卷时运行的任何备份操作将在卸载恢复卷后运行。
+    > 如果不单击“卸载”，恢复卷将保持装载六个小时（从装载时算起）。 装载卷时，不会运行任何备份操作。 计划为在装载卷时运行的任何备份操作会在卸载恢复卷后运行。
     >
 
 
 ## <a name="recover-data-to-the-same-machine"></a>将数据恢复到同一台计算机
-如果你意外删除了某个文件并想要在同一台计算机（备份位置）中还原文件，以下步骤可帮助你恢复数据。
+如果意外删除了某个文件并想要在同一台计算机（备份位置）中还原文件，以下步骤可帮助你恢复数据。
 
 1. 打开“**Microsoft Azure 备份**”管理单元。
 2. 单击“**恢复数据**”以启动工作流。
@@ -111,12 +110,12 @@ ms.lasthandoff: 06/16/2017
     ![同一台计算机](./media/backup-azure-restore-windows-server-classic/samemachine.png)
 4. 选择“**浏览文件**”或“**搜索文件**”。
 
-    如果你想要还原路径已知的一个或多个文件，请保留默认选项。 如果你不确定文件夹的结构，但想要搜索文件，请选择“**搜索文件**”选项。 对于本部分，我们将使用默认选项继续操作。
+    如果想要还原路径已知的一个或多个文件，请保留默认选项。 如果不确定文件夹的结构，但想要搜索文件，请选择“**搜索文件**”选项。 对于本部分，我们将使用默认选项继续操作。
 
     ![浏览文件](./media/backup-azure-restore-windows-server-classic/browseandsearch.png)
-5. 选择你要从中还原文件的卷。
+5. 选择要从中还原文件的卷。
 
-    可以从任意时间点还原。 日历控件中以**粗体**显示的日期指明了还原点的可用性。 选择日期后，根据你的备份计划（和备份操作的成功与否），可以从“**时间**”下拉列表中选择一个时间点。
+    可以从任意时间点还原。 日历控件中以**粗体**显示的日期指明了还原点的可用性。 选择日期后，根据备份计划（和备份操作的成功与否），可以从“**时间**”下拉列表中选择一个时间点。
 
     ![卷和日期](./media/backup-azure-restore-windows-server-classic/volanddate.png)
 6. 选择要恢复的项。 可以选择多个要还原的文件夹/文件。
@@ -126,13 +125,13 @@ ms.lasthandoff: 06/16/2017
 
     ![恢复选项](./media/backup-azure-restore-windows-server-classic/recoveroptions.png)
 
-   * 你可以选择还原到原始位置（将覆盖其中的文件/文件夹），或者同一台计算机中的另一个位置。
-   * 如果要还原的文件/文件夹在目标位置存在，则你可以创建副本（同一文件的两个版本）、覆盖目标位置中的文件，或者跳过目标中存在的文件的恢复。
-   * 强烈建议你保留所要恢复的文件中的 ACL 还原默认选项。
-8. 提供这些输入后，单击“**下一步**”。 将文件还原到此计算机的恢复工作流将会开始。
+   * 可以选择还原到原始位置（将覆盖其中的文件/文件夹），或者同一台计算机中的另一个位置。
+   * 如果要还原的文件/文件夹在目标位置存在，则可以创建副本（同一文件的两个版本）、覆盖目标位置中的文件，或者跳过目标中存在的文件的恢复。
+   * 强烈建议保留所要恢复的文件中的 ACL 还原默认选项。
+8. 提供这些输入后，单击“**下一步**”。 将文件还原到此计算机的恢复工作流会开始。
 
 ## <a name="recover-to-an-alternate-machine"></a>恢复到备用计算机
-如果整个服务器断开连接，你仍可以将 Azure 备份中的数据恢复到另一台计算机。 下面的步骤演示了工作流。  
+如果整个服务器断开连接，仍可以将 Azure 备份中的数据恢复到另一台计算机。 下面的步骤演示了工作流。  
 
 这些步骤中使用的术语包括：
 
@@ -153,14 +152,14 @@ ms.lasthandoff: 06/16/2017
 4. 选择“**另一台服务器**”
 
     ![另一台服务器](./media/backup-azure-restore-windows-server-classic/anotherserver.png)
-5. 提供对应于“*示例保管库*”的保管库凭据文件。 如果保管库凭据文件无效（或已过期），请在 Azure 经典门户中从“*示例保管库*”下载新的保管库凭据文件。 提供保管库凭据文件后，系统将根据保管库凭据文件显示备份保管库。
+5. 提供对应于“*示例保管库*”的保管库凭据文件。 如果保管库凭据文件无效（或已过期），请在 Azure 经典门户中从“*示例保管库*”下载新的保管库凭据文件。 提供保管库凭据文件后，系统会根据保管库凭据文件显示备份保管库。
 6. 从显示的计算机列表中选择“*源计算机*”。
 
     ![计算机列表](./media/backup-azure-restore-windows-server-classic/machinelist.png)
 7. 选择“**搜索文件**”或“**浏览文件**”选项。 对于本部分，我们将使用“**搜索文件**”选项。
 
     ![搜索](./media/backup-azure-restore-windows-server-classic/search.png)
-8. 在下一屏幕中选择卷和日期。 搜索你要还原的文件夹/文件名称。
+8. 在下一屏幕中选择卷和日期。 搜索要还原的文件夹/文件名称。
 
     ![搜索项](./media/backup-azure-restore-windows-server-classic/searchitems.png)
 9. 选择这些文件需要还原到的位置。
@@ -169,10 +168,10 @@ ms.lasthandoff: 06/16/2017
 10. 提供在将“*源计算机*”注册到“*示例保管库*”期间所用的加密通行短语。
 
     ![加密](./media/backup-azure-restore-windows-server-classic/encryption.png)
-11. 提供输入后，单击“**恢复**”，随即将会触发在提供的目标中还原备份文件的操作。
+11. 提供输入后，单击“**恢复**”，随即会触发在提供的目标中还原备份文件的操作。
 
 ## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>使用即时还原将数据还原到另一台计算机
-如果整个服务器断开连接，你仍可以将 Azure 备份中的数据恢复到另一台计算机。 下面的步骤演示了工作流。
+如果整个服务器断开连接，仍可以将 Azure 备份中的数据恢复到另一台计算机。 下面的步骤演示了工作流。
 
 这些步骤中使用的术语包括：
 
@@ -197,15 +196,15 @@ ms.lasthandoff: 06/16/2017
 
     ![另一台服务器](./media/backup-azure-restore-windows-server/alternatemachine_gettingstarted_instantrestore.png)
 
-5. 提供对应于“示例保管库”的保管库凭据文件，然后单击“下一步”。
+5. 提供对应于“示例保管库”的保管库凭据文件，并单击“下一步”。
 
-    如果保管库凭据文件无效（或已过期），请在 Azure 门户中从“示例保管库”下载新的保管库凭据文件。 提供有效的保管库凭据后，将显示相应备份保管库的名称。
+    如果保管库凭据文件无效（或已过期），请在 Azure 门户中从“示例保管库”下载新的保管库凭据文件。 提供有效的保管库凭据后，会显示相应备份保管库的名称。
 
-6. 在“选择备份服务器”窗格中，从显示的计算机列表中选择“源计算机”并提供通行短语。 。
+6. 在“选择备份服务器”窗格中，从显示的计算机列表中选择“源计算机”并提供通行短语。 然后单击“下一步”。
 
     ![计算机列表](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 
-7. 在“选择恢复模式”窗格中选择“单个文件和文件夹”，然后单击“下一步”。
+7. 在“选择恢复模式”窗格中选择“单个文件和文件夹”，并单击“下一步”。
 
     ![搜索](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
 
@@ -221,7 +220,7 @@ ms.lasthandoff: 06/16/2017
 
     ![Encryption](./media/backup-azure-restore-windows-server/alternatemachine_browserecover_instantrestore.png)
 
-11. 在 Windows 资源管理器中，从恢复卷复制文件和/或文件夹，并将其粘贴到“目标计算机”位置。 可以从恢复卷直接打开或流式传输文件，然后验证是否恢复了正确的版本。
+11. 在 Windows 资源管理器中，从恢复卷复制文件和/或文件夹，并将其粘贴到“目标计算机”位置。 可以从恢复卷直接打开或流式传输文件，并验证是否恢复了正确的版本。
 
     ![Encryption](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
 
@@ -230,7 +229,7 @@ ms.lasthandoff: 06/16/2017
     ![Encryption](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > 如果不单击“卸载”，恢复卷将保持装载六个小时（从装载时算起）。 装载卷时，不会运行任何备份操作。 计划为在装载卷时运行的任何备份操作将在卸载恢复卷后运行。
+    > 如果不单击“卸载”，恢复卷将保持装载六个小时（从装载时算起）。 装载卷时，不会运行任何备份操作。 计划为在装载卷时运行的任何备份操作会在卸载恢复卷后运行。
     >
 
 

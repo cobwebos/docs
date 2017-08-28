@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/12/2017
 ms.author: yushwang
-translationtype: Human Translation
-ms.sourcegitcommit: 5961c73c3f147ab6b3eca4e9d920003df1ca2c82
-ms.openlocfilehash: 298eab8ad562cfb32edf8609ac29052dc403f406
-ms.lasthandoff: 01/14/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 60d8dd45ecbd4a075721c25acadb21d4e2fd5448
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="overview-of-bgp-with-azure-vpn-gateways"></a>Azure VPN 网关的 BGP 概述
@@ -28,17 +28,17 @@ ms.lasthandoff: 01/14/2017
 BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交换路由和可访问性信息的标准路由协议。 在 Azure 虚拟网络的上下文中使用时，BGP 允许 Azure VPN 网关和本地 VPN 设备（称为 BGP 对等节点或邻居）交换“路由”，这些路由将通知这两个网关这些前缀的可用性和可访问性，以便这些前缀可通过涉及的网关或路由器。 BGP 还可以通过将 BGP 网关从一个 BGP 对等节点获知的路由传播到所有其他 BGP 对等节点来允许在多个网络之间传输路由。 
 
 ## <a name="why-use-bgp"></a>为什么使用 BGP？
-BGP 是可用于 Azure 基于路由的 VPN 网关的可选功能。 在启用此功能之前，你还应确保本地 VPN 设备支持 BGP。 你可以继续使用不带 BGP 的 Azure VPN 网关和本地 VPN 设备。 它等效于在你的网络与 Azure 之间使用静态路由（不带 BGP） *与* 使用带 BGP 的动态路由。
+BGP 是可用于 Azure 基于路由的 VPN 网关的可选功能。 在启用此功能之前，还应确保本地 VPN 设备支持 BGP。 可以继续使用不带 BGP 的 Azure VPN 网关和本地 VPN 设备。 它等效于在网络与 Azure 之间使用静态路由（不带 BGP）*与* 使用带 BGP 的动态路由。
 
 使用 BGP 有几个优点和新功能：
 
 ### <a name="support-automatic-and-flexible-prefix-updates"></a>支持自动和灵活的前缀更新
-使用 BGP，你只需通过 IPsec S2S VPN 隧道为特定 BGP 对等节点声明最小前缀。 它最小可为本地 VPN 设备的 BGP 对等节点 IP 地址的主机前缀（/32）。 你可以控制要将哪些本地网络前缀播发到 Azure 以允许 Azure 虚拟网络访问。
+使用 BGP，只需通过 IPsec S2S VPN 隧道为特定 BGP 对等节点声明最小前缀。 它最小可为本地 VPN 设备的 BGP 对等节点 IP 地址的主机前缀（/32）。 可以控制要将哪些本地网络前缀播发到 Azure 以允许 Azure 虚拟网络访问。
 
-你还可以播发更大的前缀，可以包括一些 VNet 地址前缀，如大型专用 IP 地址空间（例如，10.0.0.0/8）。 但请注意，这些前缀不能与任一 VNet 前缀相同。 与 VNet 前缀相同的这些路由将被拒绝。
+还可以播发更大的前缀，可以包括一些 VNet 地址前缀，如大型专用 IP 地址空间（例如，10.0.0.0/8）。 但请注意，这些前缀不能与任一 VNet 前缀相同。 与 VNet 前缀相同的这些路由会被拒绝。
 
 ### <a name="support-multiple-tunnels-between-a-vnet-and-an-on-premises-site-with-automatic-failover-based-on-bgp"></a>支持 VNet 与本地站点之间的多个隧道基于 BGP 自动进行故障转移
-你可以在同一位置的 Azure VNet 和本地 VPN 设备之间建立多个连接。 在主-主配置中，此功能在两个网络之间提供多个隧道（路径）。 如果其中一个隧道断开连接，则将通过 BGP 撤消相应的路由，流量将会自动转移到其余隧道。
+可以在同一位置的 Azure VNet 和本地 VPN 设备之间建立多个连接。 在主-主配置中，此功能在两个网络之间提供多个隧道（路径）。 如果其中一个隧道断开连接，则将通过 BGP 撤销相应的路由，流量会自动转移到其余隧道。
 
 下图显示了此高度可用设置的简单示例：
 

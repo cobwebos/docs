@@ -4,7 +4,7 @@ description: "本教程介绍了使用 Azure 媒体服务和 REST API 实现点�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 88194b59-e479-43ac-b179-af4f295e3780
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2017
+ms.date: 08/10/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 93481fe9c3920ea4c578f3da326de9f9e8531a71
-ms.lasthandoff: 04/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 731c32970941c6a3963dcb48bf03ee0f53e0c7af
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>开始使用 REST 传送点播内容
@@ -26,7 +26,7 @@ ms.lasthandoff: 04/25/2017
 
 本快速入门介绍了使用 Azure 媒体服务 (AMS) REST API 实现视频点播 (VoD) 内容传送应用程序的步骤。
 
-本教程介绍了基本的媒体服务工作流，以及进行媒体服务开发需要用到的最常见编程对象和任务。 完成本教程后，你就能够流式传输或渐进下载你已上载、编码和下载的示例媒体文件。
+本教程介绍了基本的媒体服务工作流，以及进行媒体服务开发需要用到的最常见编程对象和任务。 完成本教程后，就能够流式传输或渐进下载已上传、编码和下载的示例媒体文件。
 
 下图显示了在针对媒体服务 OData 模型开发 VoD 应用程序时，某些最常用的对象。
 
@@ -54,8 +54,10 @@ ms.lasthandoff: 04/25/2017
 >[!NOTE]
 >不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
 
-
 若要深入了解本主题中使用的 AMS REST 实体，请参阅 [Azure 媒体服务 REST API 参考](/rest/api/media/services/azure-media-services-rest-api-reference)。 也可参阅 [Azure 媒体服务概念](media-services-concepts.md)。
+
+>[!NOTE]
+>访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
 
 ## <a name="start-streaming-endpoints-using-the-azure-portal"></a>使用 Azure 门户启动流式处理终结点
 
@@ -70,163 +72,34 @@ ms.lasthandoff: 04/25/2017
 2. 在“设置”窗口中，单击“流式处理终结点”。
 3. 单击默认的流式处理终结点。
 
-    此时将显示“默认流式处理终结点详细信息”窗口。
+    此时会显示“默认流式处理终结点详细信息”窗口。
 
 4. 单击“启动”图标。
 5. 单击“保存”按钮保存更改。
 
 ## <a id="connect"></a>使用 REST API 连接到媒体服务帐户
-访问 Azure 媒体服务时需要以下两项内容：由 Azure 访问控制服务 (ACS) 提供的访问令牌和媒体服务本身的 URI。 在创建这些请求时，可以使用任何想要的方法，前提是在调用媒体服务时指定了正确的标头值，并且正确地传入了访问令牌。
 
-以下步骤描述了在使用媒体服务 REST API 连接到媒体服务时运用的最常见工作流：
+若要了解如何连接到 AMS API，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
-1. 获取访问令牌。
-2. 连接到媒体服务 URI。  
+>[!NOTE]
+>成功连接到 https://media.windows.net 后，将收到指定另一个媒体服务 URI 的 301 重定向。 必须对这个新 URI 进行后续调用。
 
-    请记住，成功连接到 https://media.windows.net 后，将收到指定另一个媒体服务 URI 的 301 重定向。 你必须对这个新 URI 进行后续调用。 还可能会收到包含 ODATA API 元数据说明的 HTTP/1.1 200 响应。
-3. 将后续 API 调用发布到新的 URL。
-
-    例如，如果在尝试连接后收到以下消息：
-
-        HTTP/1.1 301 Moved Permanently
-        Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
-
-    应该将后续 API 调用发布到 https://wamsbayclus001rest-hs.cloudapp.net/api/。
-
-### <a name="getting-an-access-token"></a>获取访问令牌
-若要直接通过 REST API 访问媒体服务，请从 ACS 中检索一个访问令牌，并在向该服务提出每个 HTTP 请求期间使用该令牌。 在直接连接到媒体服务之前，你不需要满足任何其他先决条件。
-
-以下示例显示了用于检索令牌的 HTTP 请求标头和正文。
-
-**标头**：
-
-    POST https://wamsprodglobal001acs.accesscontrol.windows.net/v2/OAuth2-13 HTTP/1.1
-    Content-Type: application/x-www-form-urlencoded
-    Host: wamsprodglobal001acs.accesscontrol.windows.net
-    Content-Length: 120
-    Expect: 100-continue
-    Connection: Keep-Alive
-    Accept: application/json
-
-
-**正文**：
-
-请在此请求的正文中提供 client_id 和 client_secret 值；client_id 和 client_secret 分别对应于 AccountName 和 AccountKey 值。 在你设置帐户时，媒体服务将提供这些值。
-
-当用作访问令牌请求中的 client_secret 值时，媒体服务帐户的 AccountKey 必须进行 URL 编码。
-
-    grant_type=client_credentials&client_id=ams_account_name&client_secret=URL_encoded_ams_account_key&scope=urn%3aWindowsAzureMediaServices
-
-
-例如：
-
-    grant_type=client_credentials&client_id=amstestaccount001&client_secret=wUNbKhNj07oqjqU3Ah9R9f4kqTJ9avPpfe6Pk3YZ7ng%3d&scope=urn%3aWindowsAzureMediaServices
-
-
-以下示例显示了在响应正文中包含访问令牌的 HTTP 响应。
-
-    HTTP/1.1 200 OK
-    Cache-Control: no-cache, no-store
-    Pragma: no-cache
-    Content-Type: application/json; charset=utf-8
-    Expires: -1
-    request-id: a65150f5-2784-4a01-a4b7-33456187ad83
-    X-Content-Type-Options: nosniff
-    Strict-Transport-Security: max-age=31536000; includeSubDomains
-    Date: Thu, 15 Jan 2015 08:07:20 GMT
-    Content-Length: 670
-
-    {  
-       "token_type":"http://schemas.xmlsoap.org/ws/2009/11/swt-token-profile-1.0",
-       "access_token":"http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421330840&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=uf69n82KlqZmkJDNxhJkOxpyIpA2HDyeGUTtSnq1vlE%3d",
-       "expires_in":"21600",
-       "scope":"urn:WindowsAzureMediaServices"
-    }
-
-
-> [!NOTE]
-> 建议在外部存储中缓存“access_token”和“expires_in”（访问令牌的有效期，以秒为单位）值。 以后可以从存储中检索令牌数据，并在你的媒体服务 REST API 调用中重新使用。 这对于令牌可以在多个进程或多台计算机之间安全共享的方案尤其有用。
->
->
-
-确保监视访问令牌的“expires_in”值，并在必要时使用新令牌更新你的 REST API 调用。
-
-### <a name="connecting-to-the-media-services-uri"></a>连接到媒体服务 URI
-
-媒体服务的根 URI 为 https://media.windows.net/。 你最初应连接到此 URI，如果在响应中收到“301 重定向”，则应随后调用新 URI。 此外，请勿在请求中使用任何自动重定向/跟踪逻辑。 HTTP 谓词和请求正文将不会转发到新 URI。
-
-用于上传和下载资产文件的根 URI 为 https://yourstorageaccount.blob.core.windows.net/，其中的存储帐户名为你在媒体服务帐户设置期间使用的同一帐户名。
-
-以下示例演示了对媒体服务根 URI (https://media.windows.net/) 发出的 HTTP 请求。 该请求将在响应中获取 301 重定向。 后续请求使用新的 URI (https://wamsbayclus001rest-hs.cloudapp.net/api/)。     
-
-**HTTP 请求**：
-
-    GET https://media.windows.net/ HTTP/1.1
-    Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421500579&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=ElVWXOnMVggFQl%2ft9vhdcv1qH1n%2fE8l3hRef4zPmrzg%3d
-    x-ms-version: 2.11
-    Accept: application/json
-    Host: media.windows.net
-
-
-**HTTP 响应**：
+例如，如果在尝试连接后收到以下消息：
 
     HTTP/1.1 301 Moved Permanently
     Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
-    Server: Microsoft-IIS/8.5
-    request-id: 987d7652-497a-44e5-b815-f492e02aef97
-    x-ms-request-id: 987d7652-497a-44e5-b815-f492e02aef97
-    X-Powered-By: ASP.NET
-    Strict-Transport-Security: max-age=31536000; includeSubDomains
-    Date: Sat, 17 Jan 2015 07:44:53 GMT
-    Content-Length: 164
 
-    <html><head><title>Object moved</title></head><body>
-    <h2>Object moved to <a href="https://wamsbayclus001rest-hs.cloudapp.net/api/">here</a>.</h2>
-    </body></html>
-
-
-**HTTP 请求**（使用新 URI）：
-
-    GET https://wamsbayclus001rest-hs.cloudapp.net/api/ HTTP/1.1
-    Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421500579&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=ElVWXOnMVggFQl%2ft9vhdcv1qH1n%2fE8l3hRef4zPmrzg%3d
-    x-ms-version: 2.11
-    Accept: application/json
-    Host: wamsbayclus001rest-hs.cloudapp.net
-
-
-**HTTP 响应**：
-
-    HTTP/1.1 200 OK
-    Cache-Control: no-cache
-    Content-Length: 1250
-    Content-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8
-    Server: Microsoft-IIS/8.5
-    request-id: 5f52ea9d-177e-48fe-9709-24953d19f84a
-    x-ms-request-id: 5f52ea9d-177e-48fe-9709-24953d19f84a
-    X-Content-Type-Options: nosniff
-    DataServiceVersion: 3.0;
-    X-Powered-By: ASP.NET
-    Strict-Transport-Security: max-age=31536000; includeSubDomains
-    Date: Sat, 17 Jan 2015 07:44:52 GMT
-
-    {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata","value":[{"name":"AccessPolicies","url":"AccessPolicies"},{"name":"Locators","url":"Locators"},{"name":"ContentKeys","url":"ContentKeys"},{"name":"ContentKeyAuthorizationPolicyOptions","url":"ContentKeyAuthorizationPolicyOptions"},{"name":"ContentKeyAuthorizationPolicies","url":"ContentKeyAuthorizationPolicies"},{"name":"Files","url":"Files"},{"name":"Assets","url":"Assets"},{"name":"AssetDeliveryPolicies","url":"AssetDeliveryPolicies"},{"name":"IngestManifestFiles","url":"IngestManifestFiles"},{"name":"IngestManifestAssets","url":"IngestManifestAssets"},{"name":"IngestManifests","url":"IngestManifests"},{"name":"StorageAccounts","url":"StorageAccounts"},{"name":"Tasks","url":"Tasks"},{"name":"NotificationEndPoints","url":"NotificationEndPoints"},{"name":"Jobs","url":"Jobs"},{"name":"TaskTemplates","url":"TaskTemplates"},{"name":"JobTemplates","url":"JobTemplates"},{"name":"MediaProcessors","url":"MediaProcessors"},{"name":"EncodingReservedUnitTypes","url":"EncodingReservedUnitTypes"},{"name":"Operations","url":"Operations"},{"name":"StreamingEndpoints","url":"StreamingEndpoints"},{"name":"Channels","url":"Channels"},{"name":"Programs","url":"Programs"}]}
-
-
-
-> [!NOTE]
-> 从现在起，本教程使用新 URI。
->
->
+应该将后续 API 调用发布到 https://wamsbayclus001rest-hs.cloudapp.net/api/。
 
 ## <a id="upload"></a>使用 REST API 创建新资产并上载视频文件
 
-在媒体服务中，可以将数字文件上载到资产中。 **资产**实体可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据。）将文件上载到资产后，相关内容即安全地存储在云中供后续处理和流式处理。
+在媒体服务中，可以将数字文件上传到资产中。 **资产**实体可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据。）将文件上传到资产后，相关内容即安全地存储在云中供后续处理和流式处理。
 
 创建资产时必须提供的值之一是资产创建选项。 **Options** 属性是一个枚举值，描述可用于创建资产的加密选项。 有效值为以下列表中的某个值，而不是此列表中值的组合：
 
 * **None** = **0** - 不使用加密。 使用此选项时，内容在传送过程中或静态存储过程中都不会受到保护。
     如果计划使用渐进式下载交付 MP4，则使用此选项。
-* **StorageEncrypted** = **1** - 使用 AES-256 位加密在本地加密明文内容，然后将其上传到 Azure 存储，在其中以加密形式静态存储相关内容。 受存储加密保护的资产将在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上载为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
+* **StorageEncrypted** = **1** - 使用 AES-256 位加密在本地加密明文内容，然后将其上传到 Azure 存储，在其中以加密形式静态存储相关内容。 受存储加密保护的资产会在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上传为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
 * **CommonEncryptionProtected** = **2** - 上传经过通用加密或 PlayReady DRM 加密并受其保护的内容（例如，受 PlayReady DRM 保护的平滑流式处理）时使用此选项。
 * **EnvelopeEncryptionProtected** = **4** - 如果要上传使用 AES 加密的 HLS，请使用此选项。 Transform Manager 必须已对文件进行编码和加密。
 
@@ -285,7 +158,7 @@ ms.lasthandoff: 04/25/2017
     }
 
 ### <a name="create-an-assetfile"></a>创建 AssetFile
-[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) 实体表示 blob 容器中存储的视频或音频文件。 一个资产文件始终与一个资产关联，而一个资产则可能包含一个或多个 AssetFiles。 如果资产文件对象未与 BLOB 容器中的数字文件关联，则媒体服务 Encoder 任务将失败。
+[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) 实体表示 blob 容器中存储的视频或音频文件。 一个资产文件始终与一个资产关联，而一个资产则可能包含一个或多个 AssetFiles。 如果资产文件对象未与 BLOB 容器中的数字文件关联，则媒体服务 Encoder 任务会失败。
 
 将数字媒体文件上传到 blob 容器中后，可使用 **MERGE** HTTP 请求更新 AssetFile 中有关媒体文件的信息（如本主题稍后所述）。
 
@@ -347,7 +220,7 @@ ms.lasthandoff: 04/25/2017
 
 
 ### <a name="creating-the-accesspolicy-with-write-permission"></a>创建具有写入权限的 AccessPolicy
-将任何文件上载到 BLOB 存储之前，请设置用于对资产执行写入操作的访问策略权限。 为此，请向 AccessPolicy 实体集发送一个 HTTP POST 请求。 请在执行创建操作时定义 DurationInMinutes 值，否则会在响应中收到 500 内部服务器错误消息。 有关 AccessPolicies 的详细信息，请参阅 [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy)。
+将任何文件上传到 BLOB 存储之前，请设置用于对资产执行写入操作的访问策略权限。 为此，请向 AccessPolicy 实体集发送一个 HTTP POST 请求。 请在执行创建操作时定义 DurationInMinutes 值，否则会在响应中收到 500 内部服务器错误消息。 有关 AccessPolicies 的详细信息，请参阅 [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy)。
 
 以下示例说明了如何创建 AccessPolicy：
 
@@ -394,9 +267,9 @@ ms.lasthandoff: 04/25/2017
        "Permissions":2
     }
 
-### <a name="get-the-upload-url"></a>获取上载 URL
+### <a name="get-the-upload-url"></a>获取上传 URL
 
-若要检索实际上载 URL，请创建一个 SAS 定位符。 定位符为希望访问资产中文件的客户端定义连接终结点的开始时间和类型。 可以为给定 AccessPolicy 和资产对创建多个定位符实体，以处理不同的客户端请求和需求。 这其中的任一定位符都可使用 AccessPolicy 的 StartTime 值和 DurationInMinutes 值来确定可以使用某 URL 的时间长度。 有关详细信息，请参阅[定位符](https://docs.microsoft.com/rest/api/media/operations/locator)。
+若要检索实际上传 URL，请创建一个 SAS 定位符。 定位符为希望访问资产中文件的客户端定义连接终结点的开始时间和类型。 可以为给定 AccessPolicy 和资产对创建多个定位符实体，以处理不同的客户端请求和需求。 这其中的任一定位符都可使用 AccessPolicy 的 StartTime 值和 DurationInMinutes 值来确定可以使用某 URL 的时间长度。 有关详细信息，请参阅[定位符](https://docs.microsoft.com/rest/api/media/operations/locator)。
 
 SAS URL 采用以下格式：
 
@@ -405,7 +278,7 @@ SAS URL 采用以下格式：
 请注意以下事项：
 
 * 一项给定的资产一次最多只能与五个唯一的定位符相关联。 有关详细信息，请参阅定位符。
-* 如果需要立即上载文件，应将 StartTime 值设置为当前时间前五分钟。 这是因为你的客户端计算机与媒体服务之间可能存在时钟偏差。 此外，StartTime 值必须采用以下 DateTime 格式：YYYY-MM-DDTHH:mm:ssZ（例如，“2014-05-23T17:53:50Z”）。    
+* 如果需要立即上传文件，应将 StartTime 值设置为当前时间前五分钟。 这是因为客户端计算机与媒体服务之间可能存在时钟偏差。 此外，StartTime 值必须采用以下 DateTime 格式：YYYY-MM-DDTHH:mm:ssZ（例如，“2014-05-23T17:53:50Z”）。    
 * 定位符从创建到可用可能会有 30-40 秒的延迟。 SAS URL 和源定位符都会出现这个问题。
 
 有关 SAS 定位符的详细信息，请参阅[此](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/)博客。
@@ -465,7 +338,7 @@ SAS URL 采用以下格式：
        "Name":null
     }
 
-### <a name="upload-a-file-into-a-blob-storage-container"></a>将文件上载到 Blob 存储容器
+### <a name="upload-a-file-into-a-blob-storage-container"></a>将文件上传到 Blob 存储容器
 设置 AccessPolicy 和定位符后，即可使用 Azure 存储 REST API 将具体的文件上传到 Azure Blob 存储容器。 必须以块 blob 形式上传文件。 Azure 媒体服务不支持页 blob。  
 
 > [!NOTE]
@@ -476,7 +349,7 @@ SAS URL 采用以下格式：
 有关使用 Azure 存储 Blob 的详细信息，请参阅 [Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)。
 
 ### <a name="update-the-assetfile"></a>更新 AssetFile
-上载文件后，请更新 FileAsset 大小（和其他）信息。 例如：
+上传文件后，请更新 FileAsset 大小（和其他）信息。 例如：
 
     MERGE https://wamsbayclus001rest-hs.cloudapp.net/api/Files('nb%3Acid%3AUUID%3Af13a0137-0a62-9d4c-b3b9-ca944b5142c5') HTTP/1.1
     Content-Type: application/json
@@ -705,12 +578,12 @@ SAS URL 采用以下格式：
 * 传递给 JobInputAsset 或 JobOutputAsset 的 value 参数代表资产的索引值。 实际资产在作业实体定义的 InputMediaAssets 和 OutputMediaAssets 导航属性中定义。
 
 > [!NOTE]
-> 由于媒体服务基于 OData v3，因此 InputMediaAssets 和 OutputMediaAssets 导航属性集合中的单个资产将通过“__metadata : uri”名称-值对。
+> 由于媒体服务基于 OData v3，因此，InputMediaAssets 和 OutputMediaAssets 导航属性集合中的单个资产将通过“__metadata : uri”名称/值对进行引用。
 >
 >
 
 * InputMediaAssets 将映射到已在媒体服务中创建的一个或多个资产。 OutputMediaAssets 由系统创建。 它们不引用现有资产。
-* OutputMediaAssets 可以使用 assetName 属性来命名。 如果该属性不存在，则 OutputMediaAsset 的名称为 <outputAsset> 元素的任意内部文本值，并以作业名称值或作业 ID 值（在没有定义名称属性的情况下）为后缀。 例如，如果将 assetName 的值设置为“Sample”，则会将 OutputMediaAsset 名称属性设置为“Sample”。 但是，如果未设置 assetName 的值，但已将作业名称设置为“NewJob”，则 OutputMediaAsset 名称为“JobOutputAsset(value)_NewJob”。
+* OutputMediaAssets 可以使用 assetName 属性来命名。 如果该属性不存在，则 OutputMediaAsset 的名称为 <outputAsset> 元素的任意内部文本值，并以作业名称值或作业 ID 值（在没有定义名称属性的情况下）为后缀。 例如，如果将 assetName 的值设置为“Sample”，则会将 OutputMediaAsset 名称属性设置为“Sample”。 但是，如果未设置 assetName 的值，但已将作业名称设置为“NewJob”，则 OutputMediaAsset 名称将为“JobOutputAsset(value)_NewJob”。
 
     以下示例说明了如何设置 assetName 属性：
 
@@ -884,7 +757,7 @@ MPEG DASH 的流 URL 采用以下格式：
 如果成功，将返回描述已创建的 AccessPolicy 实体的 201 成功代码。 然后，需要使用 AccessPolicy ID 以及包含需传送文件的资产（如某个输出资产）的资产 ID 来创建定位符实体。
 
 > [!NOTE]
-> 此基本工作流与引入资产时上传文件的工作流相同（如本主题前面所述）。 此外，和上传文件一样，如果（或你的客户端）需要立即访问文件，请将 StartTime 值设置为当前时间前五分钟。 此操作是必需的，因为客户端与媒体服务之间可能存在时钟偏差。 StartTime 值必须采用以下 DateTime 格式：YYYY-MM-DDTHH:mm:ssZ（例如，“2014-05-23T17:53:50Z”）。
+> 此基本工作流与引入资产时上传文件的工作流相同（如本主题前面所述）。 此外，和上传文件一样，如果（或客户端）需要立即访问文件，请将 StartTime 值设置为当前时间前五分钟。 此操作是必需的，因为客户端与媒体服务之间可能存在时钟偏差。 StartTime 值必须采用以下 DateTime 格式：YYYY-MM-DDTHH:mm:ssZ（例如，“2014-05-23T17:53:50Z”）。
 >
 >
 
@@ -1057,7 +930,7 @@ MPEG DASH 的流 URL 采用以下格式：
 ## <a id="play"></a>播放内容
 若要流式处理视频，请使用 [Azure 媒体服务播放器](http://amsplayer.azurewebsites.net/azuremediaplayer.html)。
 
-若要测试渐进式下载，请将 URL 粘贴到浏览器（例如 IE、Chrome、Safari）中。
+要测试渐进式下载，请将 URL 粘贴到浏览器（例如 IE、Chrome、Safari）中。
 
 ## <a name="next-steps-media-services-learning-paths"></a>后续步骤：媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/17/2017
 ms.author: parakhj
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: 14736524bf3c6d299838d8e3dc8b18db117d1041
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 3144ced01b524abb035dc1c6f0cdf764bec46804
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>使用 Azure Active Directory B2C 注册、登录、配置文件编辑和密码重置创建 ASP.NET Web 应用
@@ -61,7 +61,7 @@ ms.lasthandoff: 08/08/2017
 
 ### <a name="add-your-identity-providers"></a>添加标识提供者
 
-在设置中，选择“标识提供者”，然后选择用户 ID 注册或电子邮件注册。
+在设置中，选择“标识提供者”，然后选择用户名注册或电子邮件注册。
 
 ### <a name="create-a-sign-up-and-sign-in-policy"></a>创建注册或登录策略
 

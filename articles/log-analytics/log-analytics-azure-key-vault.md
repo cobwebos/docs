@@ -14,21 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 708bf39b69cf798ac44aca65cf7dee6fa9a24591
+ms.translationtype: HT
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: 651586e0846ffb22a23e64b73c2cc614980d9b92
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 08/14/2017
 
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Log Analytics 中的 Azure Key Vault 分析解决方案
 
 ![Key Vault 符号](./media/log-analytics-azure-keyvault/key-vault-analytics-symbol.png)
 
-你可以在 Log Analytics 中使用 Azure 密钥保管库解决方案来查看 Azure 密钥保管库 AuditEvent 日志。
+可以在 Log Analytics 中使用 Azure 密钥保管库解决方案来查看 Azure 密钥保管库 AuditEvent 日志。
 
-若要使用该解决方案，需要启用 Azure Key Vault 诊断的日志记录，并将诊断引导到 Log Analytics 工作区。 不需要将日志写入 Azure Blob 存储。
+要使用该解决方案，需要启用 Azure Key Vault 诊断的日志记录，并将诊断引导到 Log Analytics 工作区。 不需要将日志写入 Azure Blob 存储。
 
 > [!NOTE]
 > 2017 年 1 月，从 Key Vault 向 Log Analytics 发送日志的受支持方式已发生更改。 如果所用 Key Vault 解决方案的标题中演示了“(已弃用)”中，请参阅[从旧 Key Vault 解决方案迁移](#migrating-from-the-old-key-vault-solution)，了解需要执行的步骤。
@@ -38,7 +37,7 @@ ms.lasthandoff: 06/09/2017
 ## <a name="install-and-configure-the-solution"></a>安装和配置解决方案
 使用以下说明来安装和配置 Azure 密钥保管库解决方案：
 
-1. 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure Key Vault 解决方案。
+1. 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) 或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure Key Vault 解决方案。
 2. 使用[门户](#enable-key-vault-diagnostics-in-the-portal)或 [PowerShell](#enable-key-vault-diagnostics-using-powershell) 为要监视的 Key Vault 资源启用诊断日志记录
 
 ### <a name="enable-key-vault-diagnostics-in-the-portal"></a>在门户中启用 Key Vault 诊断
@@ -76,14 +75,14 @@ Azure Key Vault 解决方案直接从 Key Vault 收集诊断日志。
 
 | 平台 | 直接代理 | Systems Center Operations Manager 代理 | Azure | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Azure |![否](./media/log-analytics-azure-keyvault/oms-bullet-red.png) |![否](./media/log-analytics-azure-keyvault/oms-bullet-red.png) |![是](./media/log-analytics-azure-keyvault/oms-bullet-green.png) |![否](./media/log-analytics-azure-keyvault/oms-bullet-red.png) |![否](./media/log-analytics-azure-keyvault/oms-bullet-red.png) | 到达时 |
+| Azure |  |  |&#8226; |  |  | 到达时 |
 
 ## <a name="use-azure-key-vault"></a>使用 Azure 密钥保管库
 [安装解决方案](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)后，请在 Log Analytics 的“概述”页中单击“Azure Key Vault”磁贴，查看 Key Vault 数据。
 
 ![Azure 密钥保管库磁贴的图像](./media/log-analytics-azure-keyvault/log-analytics-keyvault-tile.png)
 
-单击“**概述**”磁贴后，可以查看日志摘要，然后钻取以下类别的详细信息：
+单击“概述”磁贴后，可以查看日志摘要，并钻取以下类别的详细信息：
 
 * 一段时间内的所有密钥保管库操作量
 * 一段时间内失败的操作量
@@ -96,9 +95,9 @@ Azure Key Vault 解决方案直接从 Key Vault 收集诊断日志。
 
 ### <a name="to-view-details-for-any-operation"></a>查看任何操作的详细信息
 1. 在“**概述**”页上，单击“**Azure 密钥保管库**”磁贴。
-2. 在“**Azure 密钥保管库**”仪表板中，查看其中一个边栏选项卡中的摘要信息，然后单击一个以在日志搜索页查看其详细信息。
+2. 在“**Azure 密钥保管库**”仪表板中，查看其中一个边栏选项卡中的摘要信息，并单击一个以在日志搜索页查看其详细信息。
 
-    在任何日志搜索页上，都可以按时间、详细结果和日志搜索历史记录查看结果。 你也可以按方面进行筛选以缩减搜索结果。
+    在任何日志搜索页上，都可以按时间、详细结果和日志搜索历史记录查看结果。 也可以按方面进行筛选以缩减搜索结果。
 
 ## <a name="log-analytics-records"></a>Log Analytics 记录
 Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日志](../key-vault/key-vault-logging.md)收集的类型为 **KeyVaults** 的记录。  这些记录的属性如下表中所列：  
@@ -142,7 +141,7 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
   - 不要使用 `Type=KeyVaults`，应使用 `Type=AzureDiagnostics ResourceType=VAULTS`
   + 字段：（字段名称区分大小写）
   - 对于名称中包含 \_s、\_d 或 \_g 后缀的任何字段，请将第一个字符更改为小写
-  - 对于名称中包含 \_o 后缀的任何字段，数据将根据嵌套的字段名称拆分为单个字段。 例如，调用方的 UPN 存储在字段 `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s` 中
+  - 对于名称中包含 \_o 后缀的任何字段，数据会根据嵌套的字段名称拆分为单个字段。 例如，调用方的 UPN 存储在字段 `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s` 中
    - 字段 CallerIpAddress 已更改为 CallerIPAddress
    - 字段 RemoteIPCountry 不再存在
 4. 删除“Key Vault Analytics (已弃用)”解决方案。 如果使用的是 PowerShell，请使用 `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`

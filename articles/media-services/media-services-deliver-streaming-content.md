@@ -2,7 +2,7 @@
 title: "使用 .NET 发布 Azure 媒体服务内容 | Microsoft Docs"
 description: "了解如何创建用于生成流 URL 的定位符。 代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。"
 author: juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

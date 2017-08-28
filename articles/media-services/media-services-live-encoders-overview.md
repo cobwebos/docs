@@ -4,7 +4,7 @@ description: "本主题列出的本地实时编码器可用于捕获实时事件
 services: media-services
 documentationcenter: 
 author: juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 0ec6f046-0841-4673-9057-883bdbc30d5c
 ms.service: media-services

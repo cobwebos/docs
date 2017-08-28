@@ -14,27 +14,31 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a1367739c87138afb5b1b3e136acd8620ac56468
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 0e945b5626a08fcb428131f2abb465c2c141011a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="use-notification-hubs-to-send-breaking-news"></a>使用通知中心发送突发新闻
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 ## <a name="overview"></a>概述
-本主题演示如何使用 Azure 通知中心将突发新闻通知广播到 Windows 应用商店或 Windows Phone 8.1（非 Silverlight）应用。 如果你要以 Windows Phone 8.1 Silverlight 为目标，请参阅 [Windows Phone](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) 版本。 完成时，你可以注册感兴趣的突发新闻类别并仅接收这些类别的推送通知。 此方案对于很多应用程序来说是常见模式，在其中必须将通知发送到以前声明过对它们感兴趣的一组用户，这样的应用程序有 RSS 阅读器、针对音乐迷的应用程序等。 
+本主题演示如何使用 Azure 通知中心将突发新闻通知广播到 Windows 应用商店或 Windows Phone 8.1（非 Silverlight）应用。 如果要以 Windows Phone 8.1 Silverlight 为目标，请参阅 [Windows Phone](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) 版本。 完成时，可以注册感兴趣的突发新闻类别并仅接收这些类别的推送通知。 此方案对于很多应用程序来说是常见模式，在其中必须将通知发送到以前声明过对它们感兴趣的一组用户，这样的应用程序有 RSS 阅读器、针对音乐迷的应用程序等。 
 
 在通知中心创建注册时，通过加入一个或多个*标记*来启用广播方案。 将通知发送到标签时，已注册该标签的所有设备将接收通知。 因为标签是简单的字符串，它们不必提前设置。 有关标记的详细信息，请参阅[通知中心路由和标记表达式](notification-hubs-tags-segment-push-message.md)。
 
+> [!NOTE]
+> Visual Studio 2017 中不支持 Windows 应用商店和 Windows Phone 项目 8.1 及更早的版本。  有关详细信息，请参阅 [Visual Studio 2017 平台目标以及兼容性](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs)。 
+
 ## <a name="prerequisites"></a>先决条件
-本主题以你在[通知中心入门][入门]中创建的应用为基础。 在开始本教程之前，必须先阅读[通知中心入门][入门]。
+本主题以你在[通知中心入门][get-started]中创建的应用为基础。 在开始本教程之前，必须先完成[通知中心入门][get-started]教程的学习。
 
 ## <a name="add-category-selection-to-the-app"></a>向应用程序中添加类别选择
-第一步是向现有主页添加 UI 元素，这些元素允许用户选择要注册的类别。 用户选择的类别存储在设备上。 应用程序启动时，使用所选类别作为标签在你的通知中心创建设备注册。
+第一步是向现有主页添加 UI 元素，这些元素允许用户选择要注册的类别。 用户选择的类别存储在设备上。 应用程序启动时，使用所选类别作为标签在通知中心创建设备注册。
 
-1. 打开 MainPage.xaml 项目文件，然后在 **Grid** 元素中复制以下代码：
+1. 打开 MainPage.xaml 项目文件，并在 **Grid** 元素中复制以下代码：
    
         <Grid>
             <Grid.RowDefinitions>
@@ -119,7 +123,7 @@ ms.openlocfilehash: a1367739c87138afb5b1b3e136acd8620ac56468
     在上面的代码中，将 `<hub name>` 和 `<connection string with listen access>` 占位符替换为通知中心的名称和之前获取的 *DefaultListenSharedAccessSignature* 的连接字符串。
    
    > [!NOTE]
-   > 由于使用客户端应用程序分发的凭据通常是不安全的，你只应使用客户端应用程序分发具有侦听访问权限的密钥。 侦听访问权限允许应用程序注册通知，但是无法修改现有注册，也无法发送通知。 在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
+   > 由于使用客户端应用程序分发的凭据通常是不安全的，只应使用客户端应用程序分发具有侦听访问权限的密钥。 侦听访问权限允许应用程序注册通知，但是无法修改现有注册，也无法发送通知。 在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
    > 
    > 
 5. 在 MainPage.xaml.cs 中，添加以下行：
@@ -144,15 +148,15 @@ ms.openlocfilehash: a1367739c87138afb5b1b3e136acd8620ac56468
             await dialog.ShowAsync();
         }
    
-    此方法创建一个类别列表并使用 **Notifications** 类将该列表存储在本地存储区中，将相应的标签注册到你的通知中心。 更改类别时，使用新类别重新创建注册。
+    此方法创建一个类别列表并使用 **Notifications** 类将该列表存储在本地存储区中，将相应的标签注册到通知中心。 更改类别时，使用新类别重新创建注册。
 
-你的应用程序现在可以将一组类别存储在设备的本地存储区中了，每当用户更改所选类别时，会将这些类别注册到通知中心。
+应用程序现在可以将一组类别存储在设备的本地存储区中了，每当用户更改所选类别时，会将这些类别注册到通知中心。
 
 ## <a name="register-for-notifications"></a>注册通知
-这些步骤用于在启动时将在本地存储区中存储的类别注册到通知中心。
+这些步骤用于在启动时会在本地存储区中存储的类别注册到通知中心。
 
 > [!NOTE]
-> 由于 Windows 通知服务 (WNS) 分配的通道 URI 随时可能更改，因此你应该经常注册通知以避免通知失败。 此示例在每次应用程序启动时注册通知。 对于经常运行（一天一次以上）的应用程序，如果每次注册间隔时间不到一天，你可以跳过注册来节省带宽。
+> 由于 Windows 通知服务 (WNS) 分配的通道 URI 随时可能更改，因此，应该经常注册通知以避免通知失败。 此示例在每次应用程序启动时注册通知。 对于经常运行（一天一次以上）的应用程序，如果每次注册间隔时间不到一天，可以跳过注册来节省带宽。
 > 
 > 
 
@@ -165,7 +169,7 @@ ms.openlocfilehash: a1367739c87138afb5b1b3e136acd8620ac56468
    
         var result = await notifications.SubscribeToCategories();
    
-    这确保每次应用程序启动时，它从本地存储区检索类别并请求注册这些类别。 **InitNotificationsAsync** 方法是在学习[通知中心入门][入门]教程中创建的。
+    这确保每次应用程序启动时，它从本地存储区检索类别并请求注册这些类别。 **InitNotificationsAsync** 方法是在学习[通知中心入门][get-started]教程中创建的。
 2. 在 MainPage.xaml.cs 项目文件的 *OnNavigatedTo* 方法中添加以下代码：
    
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -182,7 +186,7 @@ ms.openlocfilehash: a1367739c87138afb5b1b3e136acd8620ac56468
    
     这基于以前保存的类别状态更新主页。
 
-应用程序现在已完成，可以在设备的本地存储区中存储一组类别了，每当用户更改所选类别时将使用这些类别注册到通知中心。 接下来，我们将定义一个后端，它可将类别通知发送到此应用程序。
+应用程序现在已完成，可以在设备的本地存储区中存储一组类别了，每当用户更改所选类别时会使用这些类别注册到通知中心。 接下来，我们将定义一个后端，它可将类别通知发送到此应用程序。
 
 ## <a name="sending-tagged-notifications"></a>发送带标记的通知
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
@@ -192,8 +196,8 @@ ms.openlocfilehash: a1367739c87138afb5b1b3e136acd8620ac56468
    
     ![][1]
    
-    请注意，应用程序 UI 提供了一组开关，你可以使用它们选择要订阅的类别。
-2. 启用一个或多个类别开关，然后单击“**订阅**”。
+    请注意，应用程序 UI 提供了一组开关，可以使用它们选择要订阅的类别。
+2. 启用一个或多个类别开关，并单击“**订阅**”。
    
     应用程序将所选类别转换为标签并针对所选标签从通知中心请求注册新设备。 返回注册的类别并显示在对话框中。
    
@@ -201,7 +205,8 @@ ms.openlocfilehash: a1367739c87138afb5b1b3e136acd8620ac56468
 3. 使用以下方式之一从后端发送新通知：
    
    * **控制台应用：**启动控制台应用。
-   * **Java/PHP：**运行你的应用/脚本。
+   * 
+            **Java/PHP：**运行应用/脚本。
      
      所选类别的通知作为 toast 通知显示。
      
@@ -215,11 +220,11 @@ ms.openlocfilehash: a1367739c87138afb5b1b3e136acd8620ac56468
     了解如何扩展突发新闻应用程序以允许发送本地化的通知。
 
 <!-- Anchors. -->
-[向应用中添加类别选择]: #adding-categories
-[注册通知]: #register
-[从后端发送通知]: #send
-[运行应用并生成通知]: #test-app
-[后续步骤]: #next-steps
+[Add category selection to the app]: #adding-categories
+[Register for notifications]: #register
+[Send notifications from your back-end]: #send
+[Run the app and generate notifications]: #test-app
+[Next Steps]: #next-steps
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png
@@ -230,20 +235,15 @@ ms.openlocfilehash: a1367739c87138afb5b1b3e136acd8620ac56468
 [19]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png
 
 <!-- URLs.-->
-[入门]: /manage/services/notification-hubs/getting-started-windows-dotnet/
+[get-started]: /manage/services/notification-hubs/getting-started-windows-dotnet/
 [使用通知中心广播本地化的突发新闻]: /manage/services/notification-hubs/breaking-news-localized-dotnet/
-[使用通知中心通知用户]: /manage/services/notification-hubs/notify-users
-[移动服务]: /develop/mobile/tutorials/get-started/
-[通知中心指南]: http://msdn.microsoft.com/library/jj927170.aspx
-[针对 Windows 应用商店的通知中心操作指南]: http://msdn.microsoft.com/library/jj927172.aspx
-[提交应用页]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[我的应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Notify users with Notification Hubs]: /manage/services/notification-hubs/notify-users
+[Mobile Service]: /develop/mobile/tutorials/get-started/
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
+[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
-[wns 对象]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 

@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 9687b8342723239d1ab07bcaf59176f4a0911215
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 181ed544ae4697753490642fea8eef636322a114
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="reprotect-from-azure-to-an-on-premises-site"></a>在本地站点中重新保护 Azure 上的虚拟机
@@ -46,7 +46,7 @@ ms.lasthandoff: 07/14/2017
 * 如果 vCenter 服务器管理着要故障回复到的虚拟机，请确保拥有在 vCenter 服务器上发现虚拟机[所必需的权限](site-recovery-vmware-to-azure-classic.md)。
 
   > [!WARNING]
-  > 如果本地主目标或虚拟机上存在快照，则重新保护会失败。 可以先删除主目标上的快照，然后再继续重新保护。 在执行重新保护作业期间，虚拟机上的快照会自动合并。
+  > 如果本地主目标或虚拟机上存在快照，则重新保护会失败。 可以先删除主目标上的快照，再继续重新保护。 在执行重新保护作业期间，虚拟机上的快照会自动合并。
 
 * 在进行故障回复之前，创建两个其他组件：
 
@@ -58,7 +58,10 @@ ms.lasthandoff: 07/14/2017
 
     主目标具有[在重新保护前要在主目标上检查的公共事项](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server)中列出的其他先决条件。
 
-* 执行故障回复时，本地需有配置服务器。 故障回复期间，虚拟机必须位于配置服务器数据库中。 否则，故障回复不会成功。 请确保定期计划服务器备份。 如果发生灾难，请使用相同的 IP 地址还原服务器，以便故障回复正常工作。
+* 执行故障回复时，本地需有配置服务器。 故障回复期间，虚拟机必须位于配置服务器数据库中。 否则，故障回复不会成功。 
+
+> [!IMPORTANT]
+> 请确保定期计划配置服务器备份。 如果发生灾难，请使用相同的 IP 地址还原服务器，以便故障回复正常工作。
 
 * 在 VMware 中的主目标虚拟机的配置参数中设置 `disk.EnableUUID=true` 设置。 如果此行不存在，请添加此行。 若要为虚拟机磁盘 (VMDK) 提供一致的 UUID，以便能够正确进行装载，则必须指定此设置。
 
@@ -115,7 +118,7 @@ ms.lasthandoff: 07/14/2017
 
 #### <a name="what-datastore-types-are-supported-on-the-on-premises-esxi-host-during-failback"></a>故障回复期间，本地 ESXi 主机支持哪些数据存储类型？
 
-当前，Azure Site Recovery 仅支持故障回复到虚拟机文件系统 (VMFS) 数据存储。 不支持 vSAN 或 NFS 数据存储。 由于此限制，如果使用 NFS 数据存储，则重新保护屏幕中的数据存储选择输入将为空；或者它会显示 vSAN 数据存储，但在执行作业时将失败。 如果打算执行故障回复，则可在本地创建 VMFS 数据存储并故障回复到该数据存储。 此故障回复操作将引发完整下载 VMDK 的操作。
+当前，Azure Site Recovery 仅支持故障回复到虚拟机文件系统 (VMFS) 或 vSAN 数据存储。 不支持 NFS 数据存储。 由于此限制，如果使用 NFS 数据存储，则重新保护屏幕中的数据存储选择输入将为空；或者它会显示 vSAN 数据存储，但在执行作业时将失败。 如果打算执行故障回复，则可在本地创建 VMFS 数据存储并故障回复到该数据存储。 此故障回复操作将引发完整下载 VMDK 的操作。
 
 ### <a name="common-things-to-check-after-completing-installation-of-the-master-target-server"></a>在完成主目标服务器的安装后要检查的常见事项
 
@@ -177,7 +180,7 @@ To replicate back to on-premises, you will need a failback policy. This policy g
 
 
 
-1. 在“保管库” > “已复制的项”中，右键单击已故障转移的虚拟机，然后选择“重新保护”。 也可以单击该计算机，然后从命令按钮中选择“重新保护”。
+1. 在“保管库” > “已复制的项”中，右键单击已故障转移的虚拟机，并选择“重新保护”。 也可以单击该计算机，并从命令按钮中选择“重新保护”。
 2. 在边栏选项卡中，可以看到已选中“Azure 到本地”的保护方向。
 3. 在“主目标服务器”和“进程服务器”中，选择本地主目标服务器和进程服务器。
 4. 对于“数据存储”，选择要将本地磁盘恢复到的数据存储。 删除本地虚拟机后，如果需要创建新磁盘，可使用此选项。 如果磁盘已存在，则会忽略此选项，但你仍然需要指定一个值。
@@ -210,7 +213,7 @@ To replicate back to on-premises, you will need a failback policy. This policy g
 
 * 如果虚拟机是使用模板创建的，请确保每个虚拟机对于磁盘具有其自己的 UUID。 如果本地虚拟机的 UUID 与主目标的 UUID 冲突（因为两者都是基于同一模板创建的），重新保护会失败。 请部署不是基于同一模板创建的另一个主目标。
 
-* 如果执行只读的用户 vCenter 发现并保护虚拟机，保护将会成功且故障转移可正常工作。 进行重新保护期间，操作会失败，因为无法发现数据存储。 症状是在重新保护期间数据存储没有列出。 若要解决此问题，可以使用具有适当权限的帐户更新 vCenter 凭据并重试该作业。 有关详细信息，请参阅[通过 Azure Site Recovery 将 VMware 虚拟机和物理服务器复制到 Azure](site-recovery-vmware-to-azure-classic.md)。
+* 如果执行只读的用户 vCenter 发现并保护虚拟机，保护会成功且故障转移可正常工作。 进行重新保护期间，操作会失败，因为无法发现数据存储。 症状是在重新保护期间数据存储没有列出。 若要解决此问题，可以使用具有适当权限的帐户更新 vCenter 凭据并重试该作业。 有关详细信息，请参阅[通过 Azure Site Recovery 将 VMware 虚拟机和物理服务器复制到 Azure](site-recovery-vmware-to-azure-classic.md)。
 
 * 在故障回复 Linux 虚拟机并在本地运行它时，会看到网络管理器程序包已从该计算机卸载。 发生此卸载的原因是虚拟机在 Azure 中恢复时，网络管理器程序包遭到删除。
 

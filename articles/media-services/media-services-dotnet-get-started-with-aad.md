@@ -4,7 +4,7 @@ description: "本主题介绍了如何使用 Azure Active Directory (Azure AD) �
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.service: media-services
 ms.workload: media

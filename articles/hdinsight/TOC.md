@@ -153,7 +153,7 @@
 #### [安装 HDInsight 应用](hdinsight-apps-install-applications.md)
 #### [安装自定义应用](hdinsight-apps-install-custom-applications.md)
 #### [使用 REST 安装应用](https://msdn.microsoft.com/library/mt706515.aspx)
-#### [将 HDInsight 应用发布到 Azure 应用商店](hdinsight-apps-publish-applications.md)
+#### [将 HDInsight 应用发布到 Azure Marketplace](hdinsight-apps-publish-applications.md)
 ## 安全
 ### [将 Pig 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
 ### [使用 SSH 隧道](hdinsight-linux-ambari-ssh-tunnel.md)

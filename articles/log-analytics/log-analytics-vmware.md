@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 08/11/2017
 ms.author: banders
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: a9fc8427e76ee8fa48fa8f1ad452c6fe9b544ce2
+ms.translationtype: HT
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: 17072c4b6e4fdf6e4dc2b7a6a4ded7fa9f9f6fde
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
+ms.lasthandoff: 08/14/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 06/09/2017
 
 ![VMware 符号](./media/log-analytics-vmware/vmware-symbol.png)
 
-Log Analytics 中的 VMware 监视解决方案是一个有助于创建针对大型 VMware 日志的集中式日志记录和监视方法的解决方案。 本文介绍如何使用该解决方案在单个位置对 ESXi 主机进行故障排除、捕获和管理。 使用该解决方案，你可以看到在单个位置中看到所有 ESXi 主机的详细数据。 可以看到通过 ESXi 主机日志提供的 VM 和 ESXi 主机的重要事件计数、状态及趋势。 可以通过查看和搜索集中式 ESXi 主机日志进行故障排除。 而且，可以基于日志搜索查询创建警报。
+Log Analytics 中的 VMware 监视解决方案是一个有助于创建针对大型 VMware 日志的集中式日志记录和监视方法的解决方案。 本文介绍如何使用该解决方案在单个位置对 ESXi 主机进行故障排除、捕获和管理。 使用该解决方案，可以看到在单个位置中看到所有 ESXi 主机的详细数据。 可以看到通过 ESXi 主机日志提供的 VM 和 ESXi 主机的重要事件计数、状态及趋势。 可以通过查看和搜索集中式 ESXi 主机日志进行故障排除。 而且，可以基于日志搜索查询创建警报。
 
 解决方案使用 ESXi 主机的本机 syslog功能将数据推送到具有 OMS 代理的目标 VM。 但是，该解决方案不会将文件写入到目标 VM 内的 syslog 中。 OMS 代理打开端口 1514 并对它进行侦听。 当接收到数据后，OMS 代理将数据推送到 OMS 中。
 
@@ -81,7 +81,7 @@ VMware 监视解决方案使用已启用的 OMS Agent for Linux 从 ESXi 主机�
 
 | 平台 | OMS Agent for Linux | SCOM 代理 | Azure 存储 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Linux |![是](./media/log-analytics-vmware/oms-bullet-green.png) |![否](./media/log-analytics-vmware/oms-bullet-red.png) |![否](./media/log-analytics-vmware/oms-bullet-red.png) |![否](./media/log-analytics-containers/oms-bullet-red.png) |![否](./media/log-analytics-vmware/oms-bullet-red.png) |每隔 3 分钟 |
+| Linux |&#8226; |  |  |  |  |每隔 3 分钟 |
 
 下表显示了由 VMware 监视解决方案所收集的数据字段示例：
 
@@ -129,13 +129,13 @@ VMware 磁贴显示在 OMS 门户中。 它提供任何失败的高级视图。 
 在此处可以编辑搜索查询，以对某些具体内容进行修改。 有关 OMS 搜索的基础知识教程，请参阅 [OMS 日志搜索教程](log-analytics-log-searches.md)。
 
 #### <a name="find-esxi-host-events"></a>查找 ESXi 主机事件
-单台 ESXi 主机基于其进程会生成多个日志。 VMware 监视解决方案可对其进行集中管理，并总结事件计数。 此集中式视图可帮助你了解哪些 ESXi 主机有大量的事件，以及在你的环境中最常发生哪些事件。
+单台 ESXi 主机基于其进程会生成多个日志。 VMware 监视解决方案可对其进行集中管理，并总结事件计数。 此集中式视图可帮助你了解哪些 ESXi 主机有大量的事件，以及在环境中最常发生哪些事件。
 
 ![event](./media/log-analytics-vmware/events.png)
 
 可以通过单击 ESXi 主机或事件类型进一步了解相关信息。
 
-单击 ESXi 主机名时，可查看该 ESXi 主机的信息。 如果要缩小包含事件类型的结果范围，将 `“ProcessName_s=EVENT TYPE”` 添加到搜索查询中。 可以在搜索筛选器中选择“ProcessName”。 将会缩小信息范围。
+单击 ESXi 主机名时，可查看该 ESXi 主机的信息。 如果要缩小包含事件类型的结果范围，将 `“ProcessName_s=EVENT TYPE”` 添加到搜索查询中。 可以在搜索筛选器中选择“ProcessName”。 会缩小信息范围。
 
 ![钻取](./media/log-analytics-vmware/eventhostdrilldown.png)
 
@@ -203,6 +203,7 @@ syslog 时间戳有一个 ESXi 主机 bug。 有关详细信息，请参阅 [VMw
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 Log Analytics 中的“[日志搜索](log-analytics-log-searches.md)”可查看详细的 VMware 主机数据。
-* [创建你自己的仪表板](log-analytics-dashboards.md)显示了 VMware 主机数据。
+* 
+            [创建自己的仪表板](log-analytics-dashboards.md)显示了 VMware 主机数据。
 * 发生特定 VMware 主机事件时[创建警报](log-analytics-alerts.md)。
 

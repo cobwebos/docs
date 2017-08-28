@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 10ca10b2f644c29aad244abab720d2ce5586714f
+ms.translationtype: HT
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: 06b67322b3812a668a515ecc357171ede1d85441
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 08/14/2017
 
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Log Analytics 中的 Azure 网络监视解决方案
@@ -64,7 +63,7 @@ Azure 应用程序网关分析和网络安全组分析管理解决方案直接�
 
 | 平台 | 直接代理 | Systems Center Operations Manager 代理 | Azure | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Azure |![否](./media/log-analytics-azure-networking/oms-bullet-red.png) |![否](./media/log-analytics-azure-networking/oms-bullet-red.png) |![是](./media/log-analytics-azure-networking/oms-bullet-green.png) |![否](./media/log-analytics-azure-networking/oms-bullet-red.png) |![否](./media/log-analytics-azure-networking/oms-bullet-red.png) |登录时 |
+| Azure |  |  |&#8226; |  |  |登录时 |
 
 
 ## <a name="azure-application-gateway-analytics-solution-in-log-analytics"></a>Log Analytics 中的 Azure 应用程序网关分析解决方案
@@ -84,7 +83,7 @@ Azure 应用程序网关分析和网络安全组分析管理解决方案直接�
 ### <a name="install-and-configure-the-solution"></a>安装和配置解决方案
 使用以下说明安装并配置 Azure 应用程序网关分析解决方案：
 
-1. 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview)或者使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure 应用程序网关分析解决方案。
+1. 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) 或者使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure 应用程序网关分析解决方案。
 2. 为需要监视的[应用程序网关](../application-gateway/application-gateway-diagnostics.md)启用诊断日志记录。
 
 #### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>在门户中启用 Azure 应用程序网关诊断
@@ -117,7 +116,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $work
 ### <a name="use-azure-application-gateway-analytics"></a>使用 Azure 应用程序网关分析
 ![Azure 应用程序网关分析磁贴图像](./media/log-analytics-azure-networking/log-analytics-appgateway-tile.png)
 
-在“概述”中单击“Azure 应用程序网关分析”磁贴后，可以查看日志摘要，然后钻取以下类别的详细信息：
+在“概述”中单击“Azure 应用程序网关分析”磁贴后，可以查看日志摘要，并钻取以下类别的详细信息：
 
 * 应用程序网关访问日志
   * 应用程序网关访问日志的客户端和服务器错误
@@ -149,7 +148,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $work
 ### <a name="install-and-configure-the-solution"></a>安装和配置解决方案
 使用以下说明安装和配置 Azure 网络分析解决方案：
 
-1. 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview)或者使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure 网关安全组分析解决方案。
+1. 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) 或者使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure 网关安全组分析解决方案。
 2. 为想要监视的[网络安全组](../virtual-network/virtual-network-nsg-manage-log.md)资源启用诊断日志记录。
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>在门户中启用 Azure 网络安全组诊断
@@ -179,7 +178,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspac
 ```
 
 ### <a name="use-azure-network-security-group-analytics"></a>使用 Azure 网络安全组分析
-在“概述”中单击“Azure 网络安全组分析”磁贴后，可以查看日志摘要，然后钻取以下类别的详细信息：
+在“概述”中单击“Azure 网络安全组分析”磁贴后，可以查看日志摘要，并钻取以下类别的详细信息：
 
 * 网络安全组阻止的流
   * 具有阻止流的网络安全组规则
@@ -192,7 +191,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspac
 
 ![Azure 网络安全组分析仪表板图像](./media/log-analytics-azure-networking/log-analytics-nsg02.png)
 
-在“Azure 网络安全组分析”仪表板上，查看其中一个边栏选项卡中的摘要信息，然后单击一项摘要，在日志搜索页查看其详细信息。
+在“Azure 网络安全组分析”仪表板上，查看其中一个边栏选项卡中的摘要信息，并单击一项摘要，在日志搜索页查看其详细信息。
 
 在任何日志搜索页上，都可以按时间、详细结果和日志搜索历史记录查看结果。 还可以按方面进行筛选以缩减搜索结果。
 
@@ -218,7 +217,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspac
     | `Type=NetworkSecuritygroups` | `Type=AzureDiagnostics ResourceType=NETWORKSECURITYGROUPS` |
 
    + 对于名称中包含 \_s、\_d 或 \_g 后缀的任何字段，请将第一个字符更改为小写
-   + 对于名称中包含 \_o 后缀的任何字段，数据将根据嵌套的字段名称拆分为单个字段。
+   + 对于名称中包含 \_o 后缀的任何字段，数据会根据嵌套的字段名称拆分为单个字段。
 4. 删除“Azure 网络分析(已弃用)”解决方案。
   + 如果使用的是 PowerShell，请使用 `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
 

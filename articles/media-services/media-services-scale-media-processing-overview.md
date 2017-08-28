@@ -4,7 +4,7 @@ description: "本主题概述了如何使用 Azure 媒体服务调整媒体处�
 services: media-services
 documentationcenter: 
 author: juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 780ef5c2-3bd6-4261-8540-6dee77041387
 ms.service: media-services

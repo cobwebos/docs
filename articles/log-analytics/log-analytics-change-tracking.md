@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 7e0fa9a83c3c83145a4813422bf73a0e711d0ecc
+ms.translationtype: HT
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: 57af000e47188786a77cdb84ebb6ffb5c50eafaa
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/14/2017
 
 ---
 # <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的软件更改
@@ -28,13 +28,13 @@ ms.lasthandoff: 07/06/2017
 
 本文可帮助你使用 Log Analytics 中的更改跟踪解决方案，以便轻松标识环境中的更改。 该解决方案会跟踪对 Windows 和 Linux 软件、Windows 文件和注册表项、Windows 服务和 Linux 守护程序的更改。 标识配置更改可帮助你查明操作问题。
 
-安装该解决方案，以更新已安装代理的类型。 系统会读取对受监视服务器上的已安装软件、Windows 服务和 Linux 守护程序的更改，然后将数据发送到云中的 Log Analytics 服务进行处理。 逻辑应用于接收的数据，云服务记录数据。 通过使用“更改跟踪”仪表板上的信息，你可以轻松看到服务器基础结构中所做的更改。
+安装该解决方案，以更新已安装代理的类型。 在监视服务器上读取对已安装软件、Windows 服务和 Linux 守护程序的更改。 然后，将数据发送到云中的 Log Analytics 服务进行处理。 逻辑应用于接收的数据，云服务记录数据。 通过使用“更改跟踪”仪表板上的信息，可以轻松看到服务器基础结构中所做的更改。
 
 ## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
 使用以下信息安装和配置解决方案。
 
 * 在想要监视更改的每台计算机上，都必须装有 [Windows](log-analytics-windows-agents.md)、[Operations Manager](log-analytics-om-agents.md) 或 [Linux](log-analytics-linux-agents.md) 代理。
-* 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ChangeTrackingOMS?tab=Overview)或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将更改跟踪解决方案添加到 OMS 工作区。  无需进一步的配置。
+* 将更改跟踪解决方案从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ChangeTrackingOMS?tab=Overview) 添加到 OMS 工作区。 或者，你可以使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中的信息来添加解决方案。 无需进一步配置。
 
 ### <a name="configure-linux-files-to-track"></a>配置要跟踪的 Linux 文件
 使用以下步骤，配置要在 Linux 计算机上跟踪的文件。
@@ -43,7 +43,7 @@ ms.lasthandoff: 07/06/2017
 2. 在“设置”页上，依次单击“数据”和“Linux 文件跟踪”。
 3. 在“Linux 文件更改跟踪”下，键入整个路径（包括要跟踪的文件的文件名），然后单击“添加”符号。 例如："/etc/*.conf"
 4. 单击“保存” 。  
-  
+
 > [!NOTE]
 > Linux 文件跟踪具有其他功能，包括目录跟踪、递归通过目录和通配符跟踪。
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 07/06/2017
 
 1. 在 OMS 门户中，单击“设置”（齿轮符号）。
 2. 在“设置”页上，依次单击“数据”和“Windows 文件跟踪”。
-3. 在“Windows 文件更改跟踪”下，键入整个路径（包括要跟踪的文件的文件名），然后单击“添加”符号。 例如：C:\Program Files (x86)\Internet Explorer\iexplore.exe 或 C:\Windows\System32\drivers\etc\hosts。
+3. 在“Windows 文件更改跟踪”下，键入整个路径（包括要跟踪的文件的文件名），并单击“添加”符号。 例如：C:\Program Files (x86)\Internet Explorer\iexplore.exe 或 C:\Windows\System32\drivers\etc\hosts。
 4. 单击“保存” 。  
    ![Windows 文件更改跟踪](./media/log-analytics-change-tracking/windows-file-change-tracking.png)
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 07/06/2017
 
 1. 在 OMS 门户中，单击“设置”（齿轮符号）。
 2. 在“设置”页上，依次单击“数据”和“Windows 注册表跟踪”。
-3. 在“Windows 注册表更改跟踪”下，键入要跟踪的完整注册表项，然后单击“添加”符号。
+3. 在“Windows 注册表更改跟踪”下，键入要跟踪的完整注册表项，并单击“添加”符号。
 4. 单击“保存” 。  
    ![Windows 注册表更改跟踪](./media/log-analytics-change-tracking/windows-registry-change-tracking.png)
 
@@ -72,11 +72,11 @@ ms.lasthandoff: 07/06/2017
 2. **链接**（处理对其他文件或目录的 Linux 符号链接引用）
    * **忽略**（在递归期间忽略符号链接以便不包括引用的文件/目录）
    * **追随**（在递归期间追随符号链接以便同时包括引用的文件/目录）
-   * **管理**（追随符号链接并修改返回内容的处置） 
-   
+   * **管理**（追随符号链接并修改返回内容的处置）
+
    > [!NOTE]   
-   > 建议不要使用“管理”链接选项，因为当前不支持文件内容检索。
-   
+   > 不建议使用“管理”链接选项。 不支持文件内容检索。
+
 3. **递归**（递归通过文件夹级别并跟踪满足路径声明的所有文件）
 4. **Sudo**（实现对需要 sudo 权限的文件或目录的访问）
 
@@ -102,9 +102,9 @@ ms.lasthandoff: 07/06/2017
 
 下表显示“更改跟踪”的数据收集方法和其他数据收集方式的详细信息。
 
-| 平台 | 直接代理 | SCOM 代理 | Linux 代理 | Azure 存储 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
+| 平台 | 直接代理 | Operations Manager 代理 | Linux 代理 | Azure 存储 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Windows 和 Linux |![是](./media/log-analytics-change-tracking/oms-bullet-green.png) |![是](./media/log-analytics-change-tracking/oms-bullet-green.png) |![是](./media/log-analytics-change-tracking/oms-bullet-green.png) |![否](./media/log-analytics-change-tracking/oms-bullet-red.png) |![否](./media/log-analytics-change-tracking/oms-bullet-red.png) |![是](./media/log-analytics-change-tracking/oms-bullet-green.png) | 耗时 5 分钟到 50 分钟，具体取决于更改类型。 有关详细信息，请参阅下文。 |
+| Windows 和 Linux | &#8226; | &#8226; | &#8226; |  |  | &#8226; | 耗时 5 分钟到 50 分钟，具体取决于更改类型。 有关详细信息，请参阅下表。 |
 
 
 下表显示了各种更改类型的数据收集频率。
@@ -128,7 +128,7 @@ Log Analytics 通过“更改跟踪”解决方案执行 Windows 注册表监视
 - HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown
     - 监视关机时运行的脚本。
 - HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run
-    - 对于在 64 位计算机上运行的 32 位程序，监视用户登录 Windows 帐户之前加载的注册表项。
+    - 监视用户登录 Windows 帐户之前加载的注册表项。 该注册表项用于在 64 位计算机上运行的 32 位程序。
 - HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components
     - 监视应用程序设置的更改。
 - HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers
@@ -142,9 +142,9 @@ Log Analytics 通过“更改跟踪”解决方案执行 Windows 注册表监视
 - HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers
     - 对于在 64 位计算机上运行的 32 位程序，监视图标覆盖处理程序注册。
 - HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects
-    - 监视适用于 Internet Explorer 的新浏览器帮助程序对象插件，该插件可用于访问当前页面的文档对象模型 (DOM) 并控制导航。
+    - 监视 Internet Explorer 的新浏览器帮助程序对象插件。 用于访问当前页的文档对象模型 (DOM) 并控制导航。
 - HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects
-    - 对于在 64 位计算机上运行的 32 位程序，监视适用于 Internet Explorer 的新浏览器帮助程序对象插件，该插件可用于访问当前页面的文档对象模型 (DOM) 并控制导航。
+    - 监视 Internet Explorer 的新浏览器帮助程序对象插件。 对于在 64 位计算机上运行的 32 位程序，该插件可用于访问当前页的文档对象模型 (DOM) 并控制导航。
 - HKEY\_LOCAL\_MACHINE\Software\Microsoft\Internet Explorer\Extensions
     - 监视新的 Internet Explorer 扩展，如自定义工具菜单和自定义工具栏按钮。
 - HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions
@@ -160,11 +160,11 @@ Log Analytics 通过“更改跟踪”解决方案执行 Windows 注册表监视
 
 
 ## <a name="use-change-tracking"></a>使用“更改跟踪”
-安装解决方案后，你可以通过使用 OMS 中“**概述**”页上的“**更改跟踪**”磁贴，查看受监视服务器的更改摘要。
+安装解决方案后，可以通过使用 OMS 中“**概述**”页上的“**更改跟踪**”磁贴，查看受监视服务器的更改摘要。
 
 ![“更改跟踪”磁贴的图像](./media/log-analytics-change-tracking/change-tracking-tile.png)
 
-你可以查看基础结构的更改，然后向下钻取以下类别的详细信息：
+可以查看基础结构的更改，并向下钻取以下类别的详细信息：
 
 * 软件和 Windows 服务的配置类型所做的更改
 * 应用程序的软件更改和单个服务器的更新
@@ -179,7 +179,7 @@ Log Analytics 通过“更改跟踪”解决方案执行 Windows 注册表监视
 
 ### <a name="to-view-changes-for-any-change-type"></a>查看任何更改类型的更改
 1. 在“**概述**”页上单击“**更改跟踪**”磁贴。
-2. 在“**更改跟踪**”仪表板上，查看其中一个更改类型边栏选项卡中的摘要信息，然后在“**日志搜索**”页中单击一条信息，以查看其详细信息。
+2. 在“**更改跟踪**”仪表板上，查看其中一个更改类型边栏选项卡中的摘要信息，并在“**日志搜索**”页中单击一条信息，以查看其详细信息。
 3. 在任何日志搜索页上，都可以按时间、详细结果和日志搜索历史记录查看结果。 还可以按方面进行筛选以缩减搜索结果。
 
 ## <a name="next-steps"></a>后续步骤

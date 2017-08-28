@@ -13,19 +13,19 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/02/2017
+ms.date: 08/11/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 9dd85d38a64f0557fb4ef250b0e177e21bb84e53
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 7b3a089d2f6386afcc46cbc4377594be0d758fc6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
 # <a name="how-to-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application"></a>如何在 Azure 中均衡 Linux 虚拟机负载以创建高可用性应用程序
-负载均衡通过将传入请求分布到多个虚拟机来提供更高级别的可用性。 本教程介绍 Azure 负载均衡器的不同组件，这些组件用于分发流量和提供高可用性。 你将学习如何：
+负载均衡通过将传入请求分布到多个虚拟机来提供更高级别的可用性。 本教程介绍 Azure 负载均衡器的不同组件，这些组件用于分发流量和提供高可用性。 学习如何：
 
 > [!div class="checklist"]
 > * 创建 Azure 负载均衡器
@@ -167,7 +167,9 @@ done
 ## <a name="create-virtual-machines"></a>创建虚拟机
 
 ### <a name="create-cloud-init-config"></a>创建 cloud-init 配置
-在有关[如何在首次启动时自定义 Linux 虚拟机](tutorial-automate-vm-deployment.md)的上一个教程中，已了解如何使用 cloud-init 自动执行 VM 自定义。 可使用同一个 cloud-init 配置文件安装 NGINX 并运行简单的“Hello World”Node.js 应用。 创建名为“cloud-init.txt”的文件并粘贴下面的配置：
+在有关[如何在首次启动时自定义 Linux 虚拟机](tutorial-automate-vm-deployment.md)的上一个教程中，已了解如何使用 cloud-init 自动执行 VM 自定义。 可使用同一个 cloud-init 配置文件安装 NGINX 并运行简单的“Hello World”Node.js 应用。
+
+在当前 shell 中，创建名为“cloud-init.txt”的文件并粘贴下面的配置。 例如，在不处于本地计算机上的 Cloud Shell 中创建文件。 输入 `sensible-editor cloud-init.txt` 以创建文件并查看可用编辑器的列表。 请确保已正确复制整个 cloud-init 文件，尤其是第一行：
 
 ```yaml
 #cloud-config
@@ -219,9 +221,7 @@ runcmd:
 ```azurecli-interactive 
 az vm availability-set create \
     --resource-group myResourceGroupLoadBalancer \
-    --name myAvailabilitySet \
-    --platform-fault-domain-count 3 \
-    --platform-update-domain-count 2
+    --name myAvailabilitySet
 ```
 
 现在，可使用 [az vm create](/cli/azure/vm#create) 创建 VM。 以下示例创建三个 VM，并生成 SSH 密钥（如果它们尚不存在）：
@@ -233,7 +233,7 @@ for i in `seq 1 3`; do
         --name myVM$i \
         --availability-set myAvailabilitySet \
         --nics myNic$i \
-        --image Canonical:UbuntuServer:14.04.4-LTS:latest \
+        --image UbuntuLTS \
         --admin-username azureuser \
         --generate-ssh-keys \
         --custom-data cloud-init.txt \
@@ -241,7 +241,7 @@ for i in `seq 1 3`; do
 done
 ```
 
-创建和配置所有三个 VM 需要几分钟时间。 在每个 VM 上运行应用时，负载均衡器运行状况探测器会自动检测。 应用运行后，负载均衡器规则将开始分布流量。
+在 Azure CLI 向你返回提示之后，仍然存在继续运行的后台任务。 `--no-wait` 参数不会等待所有任务完成。 可能还需等待几分钟才能访问应用。 在每个 VM 上运行应用时，负载均衡器运行状况探测器会自动检测。 应用运行后，负载均衡器规则将开始分布流量。
 
 
 ## <a name="test-load-balancer"></a>测试负载均衡器
@@ -255,7 +255,7 @@ az network public-ip show \
     --output tsv
 ```
 
-然后，可将公共 IP 地址输入 Web 浏览器中。 随即显示应用，包括负载均衡器将流量分发到的 VM 的主机名，如下例所示：
+然后，可将公共 IP 地址输入 web 浏览器中。 请记住 - 在负载均衡器开始向 VM 分发流量之前，VM 需要几分钟才能准备就绪。 随即显示应用，包括负载均衡器将流量分发到的 VM 的主机名，如下例所示：
 
 ![运行 Node.js 应用](./media/tutorial-load-balancer/running-nodejs-app.png)
 

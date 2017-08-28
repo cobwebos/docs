@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: nepeters
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 77f50a830c38b3a90110845e58ee7cbb28742c10
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 8a5b39351f665c51ae7d83f755329e54ff3cf786
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -34,13 +34,12 @@ Azure 虚拟机扩展是小型应用程序，可在Azure 虚拟机上提供部�
 有许多不同的 Azure VM 扩展可用，每个都有特定用例。 下面是一些示例：
 
 - 使用适用于 Linux 的 DSC 扩展将 PowerShell 所需状态配置应用于虚拟机。 有关详细信息，请参阅 [Azure 所需状态配置扩展](https://github.com/Azure/azure-linux-extensions/tree/master/DSC)。
-- 使用 Microsoft 监视代理 VM 扩展配置虚拟机监视功能。 有关详细信息，请参阅 [Enable or disable VM monitoring](vm-monitoring.md)（启用或禁用 VM 监视）。
+- 使用 Microsoft 监视代理 VM 扩展配置虚拟机监视功能。 有关详细信息，请参阅[如何监视 Linux VM](tutorial-monitoring.md)。
 - 使用 Datadog 扩展配置 Azure 基础结构监视功能。 有关详细信息，请参阅 [Datadog 博客](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)。
 - 使用 Docker VM 扩展在 Azure 虚拟机上配置 Docker 主机。 有关详细信息，请参阅 [Docker VM extension](dockerextension.md)（Docker VM 扩展）。
 
 除了进程特定的扩展外，“自定义脚本”扩展也可用于 Windows 和 Linux 虚拟机。 适用于 Linux 的“自定义脚本”扩展允许在虚拟机上运行任何 Bash 脚本。 在设计需要本机 Azure 工具无法提供的配置的 Azure 部署时，自定义脚本很有用。 有关详细信息，请参阅 [Linux VM Custom Script extension](extensions-customscript.md)（Linux VM“自定义脚本”扩展）。
 
-若要完成在端到端应用程序部署中使用 VM 扩展的示例，请参阅[将应用程序自动部署到 Azure 虚拟机](../linux/dotnet-core-1-landing.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -48,13 +47,13 @@ Azure 虚拟机扩展是小型应用程序，可在Azure 虚拟机上提供部�
 
 ### <a name="azure-vm-agent"></a>Azure VM 代理
 
-Azure VM 代理可管理 Azure 虚拟机与 Azure 结构控制器之间的交互。 VM 代理负责部署和管理 Azure 虚拟机的许多功能层面，包括运行 VM 扩展。 Azure VM 代理预先安装在 Azure 应用商店映像上，并可手动安装在受支持的操作系统上。
+Azure VM 代理可管理 Azure 虚拟机与 Azure 结构控制器之间的交互。 VM 代理负责部署和管理 Azure 虚拟机的许多功能层面，包括运行 VM 扩展。 Azure VM 代理预先安装在 Azure Marketplace 映像上，并可手动安装在受支持的操作系统上。
 
 有关受支持的操作系统以及安装说明的信息，请参阅 [Azure virtual machine agent](../windows/classic/agents-and-extensions.md)（Azure 虚拟机代理）。
 
 ## <a name="discover-vm-extensions"></a>发现 VM 扩展
 
-有许多不同的 VM 扩展可与 Azure 虚拟机配合使用。 若要查看完整列表，请使用 Azure CLI 运行以下命令，并将命令中的示例位置替换为你选择的位置。
+有许多不同的 VM 扩展可与 Azure 虚拟机配合使用。 要查看完整列表，请使用 Azure CLI 运行以下命令，并将命令中的示例位置替换成选择的位置。
 
 ```azurecli
 az vm extension image list --location westus -o table
@@ -90,7 +89,7 @@ info:    vm extension set command OK
 
 ### <a name="azure-portal"></a>Azure 门户
 
-可通过 Azure 门户将 VM 扩展应用到现有虚拟机。 为此，请选择虚拟机，选择“扩展”，然后单击“添加”。 从可用扩展的列表中选择所需扩展，并按向导中的说明操作。
+可通过 Azure 门户将 VM 扩展应用到现有虚拟机。 为此，请选择虚拟机，选择“扩展”，并单击“添加”。 从可用扩展的列表中选择所需扩展，并按向导中的说明操作。
 
 下图展示了如何从 Azure 门户安装 Linux 自定义脚本扩展。
 
@@ -98,7 +97,7 @@ info:    vm extension set command OK
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager 模板
 
-VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过程中执行。 使用模板部署扩展时，可以创建完全配置的 Azure 部署。 例如，以下 JSON 取自 Resource Manager 模板。 该模板将在每个 VM 上部署一组负载均衡的虚拟机、一个 Azure SQL 数据库，然后安装一个 .NET Core 应用程序。 VM 扩展负责安装软件。
+VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过程中执行。 使用模板部署扩展时，可以创建完全配置的 Azure 部署。 例如，以下 JSON 取自 Resource Manager 模板。 该模板会在每个 VM 上部署一组负载均衡的虚拟机、一个 Azure SQL 数据库，然后安装一个 .NET Core 应用程序。 VM 扩展负责安装软件。
 
 有关详细信息，请参阅完整的 [Resource Manager 模板](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)。
 
@@ -131,7 +130,7 @@ VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过�
 }
 ```
 
-有关详细信息，请参阅 [Authoring Azure Resource Manager templates with Linux VM extensions](../linux/extensions-authoring-templates.md)（使用 Linux VM 扩展创作 Azure Resource Manager 模板）。
+有关详细信息，请参阅[创作 Azure 资源管理器模板](../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#extensions)。
 
 ## <a name="secure-vm-extension-data"></a>保护 VM 扩展数据
 
@@ -206,7 +205,7 @@ VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过�
 
 ### <a name="view-extension-status"></a>查看扩展状态
 
-针对虚拟机运行虚拟机扩展后，使用以下 Azure CLI 命令返回扩展状态。 请将示例参数名称替换为你自己的值。
+针对虚拟机运行虚拟机扩展后，使用以下 Azure CLI 命令返回扩展状态。 请将示例参数名称替换成自己的值。
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
@@ -220,11 +219,11 @@ AutoUpgradeMinorVersion    Location    Name          ProvisioningState    Publis
 True                       westus      customScript  Succeeded            Microsoft.Azure.Extensions  exttest                             2  customScript
 ```
 
-此外，还可以在 Azure 门户中找到扩展执行状态。 若要查看扩展的状态，请选择虚拟机，选择“扩展”，然后选择所需的扩展。
+此外，还可以在 Azure 门户中找到扩展执行状态。 要查看扩展的状态，请选择虚拟机，选择“扩展”，并选择所需的扩展。
 
 ### <a name="rerun-a-vm-extension"></a>重新运行 VM 扩展
 
-在某些情况下，可能需要重新运行虚拟机扩展。 若要重新运行扩展，可以先删除扩展，然后使用所选执行方法重新运行扩展。 若要删除扩展，请使用 Azure CLI 模块运行以下命令。 请将示例参数名称替换为你自己的值。
+在某些情况下，可能需要重新运行虚拟机扩展。 要重新运行扩展，可以先删除扩展，然后使用所选执行方法重新运行扩展。 若要删除扩展，请使用 Azure CLI 模块运行以下命令。 请将示例参数名称替换成自己的值。
 
 ```azurecli
 az vm extension delete --name customScript --resource-group myResourceGroup --vm-name myVM

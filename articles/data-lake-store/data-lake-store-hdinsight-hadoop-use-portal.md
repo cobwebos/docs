@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/26/2017
+ms.date: 08/14/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: b9a659e88d7cd73077bfa5f5f3264eb33b4e2661
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 9dd56efb89e07ea61ae431d1ea2accd721cd6502
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-by-using-the-azure-portal"></a>使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集
@@ -41,7 +40,7 @@ ms.lasthandoff: 06/09/2017
 * **一个 Azure Active Directory 服务主体**。 本教程提供了有关如何在 Azure Active Directory (Azure AD) 中创建服务主体的说明。 但是，只有 Azure AD 管理员才能创建服务主体。 管理员可以跳过此先决条件部分，继续阅读本教程。
 
     >[!NOTE]
-    >仅当你是 Azure AD 管理员时，才能创建服务主体。 Azure AD 管理员必须先创建服务主体，然后才能创建包含 Data Lake Store 的 HDInsight 群集。 此外，必须根据[使用证书创建服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority)中所述，使用证书创建服务主体。
+    >仅是 Azure AD 管理员时，才能创建服务主体。 Azure AD 管理员必须先创建服务主体，才能创建包含 Data Lake Store 的 HDInsight 群集。 此外，必须根据[使用证书创建服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate)中所述，使用证书创建服务主体。
     >
 
 ## <a name="create-an-hdinsight-cluster"></a>创建 HDInsight 群集
@@ -63,7 +62,7 @@ ms.lasthandoff: 06/09/2017
     - **Data Lake Store 访问**：配置 Data Lake Store 帐户和 HDInsight 群集之间的访问。 有关说明，请参阅[配置 Data Lake Store 访问](#configure-data-lake-store-access)。
     - **附加存储帐户**：添加 Azure 存储帐户作为群集的附加存储帐户。 添加附加的 Data Lake Store 后，为群集提供对更多 Data Lake Store 帐户中数据的权限，并将某个 Data Lake Store 帐户配置为主存储类型。 请参阅[配置 Data Lake Store 访问](#configure-data-lake-store-access)。
 
-4. 在“Data Lake Store 访问”中单击“选择”，然后根据[在 HDInsight 中创建 Hadoop 群集](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md)中所述继续创建群集。
+4. 在“Data Lake Store 访问”中单击“选择”，并根据[在 HDInsight 中创建 Hadoop 群集](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md)中所述继续创建群集。
 
 
 ### <a name="create-a-cluster-with-data-lake-store-as-additional-storage"></a>创建具有作为附加存储的 Data Lake Store 的群集
@@ -79,8 +78,8 @@ ms.lasthandoff: 06/09/2017
 
     - **选择方法**：使用以下选项之一：
 
-        * 若要指定属于 Azure 订阅的存储帐户，请选择“我的订阅”，然后选择存储帐户。
-        * 若要指定不属于 Azure 订阅的存储帐户，请选择“访问密钥”，然后提供该外部存储帐户的信息。
+        * 要指定属于 Azure 订阅的存储帐户，请选择“我的订阅”，并选择存储帐户。
+        * 要指定不属于 Azure 订阅的存储帐户，请选择“访问密钥”，并提供该外部存储帐户的信息。
 
     - **默认容器**：使用默认值或指定自己的名称。
 

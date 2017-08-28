@@ -4,7 +4,7 @@ description: "此主题列出了在执行编码任务期间发生错误的情况
 services: media-services
 documentationcenter: 
 author: juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: ce4e939f-5aee-41f9-859d-e4429815e9f2
 ms.service: media-services

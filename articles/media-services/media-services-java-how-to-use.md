@@ -4,7 +4,7 @@ description: "本教程介绍了在 Java 中使用 Azure 媒体服务 (AMS) 应�
 services: media-services
 documentationcenter: java
 author: juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: b884bd61-dbdb-42ea-b170-8fb02e7fded7
 ms.service: media-services

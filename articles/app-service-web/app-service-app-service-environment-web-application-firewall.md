@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: naziml
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
 ms.openlocfilehash: 36f38409366d2a0b52387091c5e93296756a0178
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>为 App Service 环境配置 Web 应用程序防火墙 (WAF)
 ## <a name="overview"></a>概述
-[Azure 应用商店中](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/)的 Web 应用程序防火墙（如 [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure)）可以通过检查入站 Web 流量来阻止 SQL 注入、跨站脚本、恶意上载和应用程序 DDoS 及其他攻击，从而帮助保护 Web 应用程序的安全。 它还会检查后端 Web 服务器的响应，实现针对数据丢失预防 (DLP)。 与隔离功能以及 App Service 环境提供的附加缩放相结合，它可以提供一个理想的环境，用于托管需要承受恶意请求和大量流量的业务关键型 Web 应用程序。
+[Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) 中的 Web 应用程序防火墙（如 [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure)）可以通过检查入站 Web 流量来阻止 SQL 注入、跨站脚本、恶意上载和应用程序 DDoS 及其他攻击，从而帮助保护 Web 应用程序的安全。 它还会检查后端 Web 服务器的响应，实现针对数据丢失预防 (DLP)。 与隔离功能以及 App Service 环境提供的附加缩放相结合，它可以提供一个理想的环境，用于托管需要承受恶意请求和大量流量的业务关键型 Web 应用程序。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)] 
 

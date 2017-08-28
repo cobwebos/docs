@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 08/15/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 2279e609a5d81ecd40bd469a3e98b5cdf81fde2f
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 97368f0b9e89ffd0cd982b6e8670d5a1f62ad42c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-assessment-solution-in-log-analytics"></a>使用 Log Analytics 中的 Active Directory 评估解决方案优化 Active Directory 环境
@@ -45,7 +45,7 @@ ms.lasthandoff: 08/04/2017
 
 * 代理必须安装在属于要评估的域成员的域控制器上。
 * Active Directory 评估解决方案要求在每台具有 OMS 代理的计算机上安装受支持版本的 .NET Framework 4（4.5.2 或更高版本）。
-* 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ADAssessmentOMS?tab=Overview)或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将 Active Directory 评估解决方案添加到 OMS 工作区。  无需进一步的配置。
+* 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ADAssessmentOMS?tab=Overview) 或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将 Active Directory 评估解决方案添加到 OMS 工作区。  无需进一步的配置。
 
   > [!NOTE]
   > 添加该解决方案后，AdvisorAssessment.exe 文件会随代理添加到服务器中。 读取配置数据，并将其发送到云中的 OMS 服务进行处理。 逻辑应用于接收的数据，云服务记录数据。
@@ -73,7 +73,7 @@ Active Directory 评估使用已启用的代理收集以下来源的数据：
 
 | 平台 | 直接代理 | SCOM 代理 | Azure 存储 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |![是](./media/log-analytics-ad-assessment/oms-bullet-green.png) |![是](./media/log-analytics-ad-assessment/oms-bullet-green.png) |![否](./media/log-analytics-ad-assessment/oms-bullet-red.png) |![否](./media/log-analytics-ad-assessment/oms-bullet-red.png) |![是](./media/log-analytics-ad-assessment/oms-bullet-green.png) |7 天 |
+| Windows |&#8226; |&#8226; |  |  |&#8226; |7 天 |
 
 ## <a name="understanding-how-recommendations-are-prioritized"></a>了解如何划分建议的优先级
 每项建议都指定有一个权重值，用于标识该建议的相对重要性。 仅显示 10 个最重要的建议。
@@ -176,13 +176,6 @@ Active Directory 评估使用已启用的代理收集以下来源的数据：
 *收集数据需要多长时间？*
 
 * 在服务器上执行的实际数据收集需要 1 个小时。 在有大量 Active Directory 服务器的服务器上，则可能需要更长时间。
-
-*收集的数据类型是什么？*
-
-* 将收集以下类型的数据：
-  * WMI
-  * 注册表
-  * 性能计数器
 
 *是否有某种方法来配置收集数据的时间？*
 

@@ -4,7 +4,7 @@ description: "本教程逐步演示如何使用 Azure 门户缩放流式处理�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 1008b3a3-2fa1-4146-85bd-2cf43cd1e00e
 ms.service: media-services

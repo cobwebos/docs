@@ -66,7 +66,7 @@ N2：如果 OS 是专用的 Windows，但是以通用设置上传的，则会发
 
 若要解决这两个错误，请从门户中删除当前映像，并[从当前 VHD 重新捕获映像](create-vm-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，该映像具有与该 OS（通用/专用）相同的设置。
 
-## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>问题：自定义/库/应用商店映像；分配失败
+## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>问题：自定义/库/Marketplace 映像；分配失败
 当新的 VM 请求被固定到不支持所请求的 VM 大小、或没有可用空间可处理请求的群集时，便会发生此错误。
 
 **原因 1：**群集不支持请求的 VM 大小。

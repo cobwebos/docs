@@ -1,5 +1,5 @@
 ---
-title: "使用 Mahout 和 HDInsight (SSH) 生成推荐 | Microsoft Docs"
+title: "使用 Mahout 和 HDInsight (SSH) 生成推荐 — Azure | Microsoft Docs"
 description: "了解如何使用 Apache Mahout 机器学习库通过 HDInsight (Hadoop) 生成电影推荐。"
 services: hdinsight
 documentationcenter: 
@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 08/15/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: d10d86fdb6ade326fb49fded9676a6106ab53aef
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 28450d72f19a5467d88bc787d11f6c37c5afbf9a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-hadoop-in-hdinsight-ssh"></a>通过 HDInsight (SSH) 中基于 Linux 的 Hadoop 使用 Apache Mahout 生成电影推荐
@@ -37,7 +36,9 @@ Mahout 是适用于 Apache Hadoop 的[机器学习][ml]库。 Mahout 包含用�
 * 基于 Linux 的 HDInsight 群集。 有关创建该群集的信息，请参阅[开始在 HDInsight 中使用基于 Linux 的 Hadoop][getstarted]。
 
 > [!IMPORTANT]
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)。
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
+
+* SSH 客户端。 有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)文档。
 
 ## <a name="mahout-versioning"></a>Mahout 版本控制
 
@@ -57,7 +58,7 @@ Mahout 是适用于 Apache Hadoop 的[机器学习][ml]库。 Mahout 包含用�
 
 ### <a name="understanding-the-data"></a>了解数据
 
-为方便起见，[GroupLens 研究][movielens]以兼容 Mahout 的格式提供电影的评价数据。 此数据在 `/HdiSamples/HdiSamples/MahoutMovieData` 中你的群集的默认存储中可用。
+为方便起见，[GroupLens 研究][movielens]以兼容 Mahout 的格式提供电影的评价数据。 此数据在 `/HdiSamples/HdiSamples/MahoutMovieData` 中群集的默认存储中可用。
 
 有两个文件，即 `moviedb.txt` 和 `user-ratings.txt`。 user-ratings.txt 文件在分析过程中使用，而 moviedb.txt 会在显示分析结果时，提供用户友好的文本信息。
 
@@ -168,16 +169,10 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
     按 **Ctrl-X**、**Y**，最后按 **Enter** 来保存数据。
 
-4. 使用以下命令以使该文件成为可执行文件：
+4. 运行 Python 脚本。 以下命令假设已处于所有文件都已下载的目录中：
 
     ```bash
-    chmod +x show_recommendations.py
-    ```
-
-5. 运行 Python 脚本。 以下命令假设你已处于所有文件都已下载的目录中：
-
-    ```bash
-    ./show_recommendations.py 4 user-ratings.txt moviedb.txt recommendations.txt
+    python show_recommendations.py 4 user-ratings.txt moviedb.txt recommendations.txt
     ```
 
     此命令将查看为用户 ID 4 生成的建议。
@@ -208,7 +203,7 @@ hdfs dfs -rm -f -r /temp/mahouttemp
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已经学习了如何使用 Mahout，因此可以探索通过其他方式来使用 HDInsight 上的数据：
+现在，已经学习了如何使用 Mahout，因此可以探索通过其他方式来使用 HDInsight 上的数据：
 
 * [Hive 和 HDInsight 配合使用](hdinsight-use-hive.md)
 * [Pig 和 HDInsight 配合使用](hdinsight-use-pig.md)

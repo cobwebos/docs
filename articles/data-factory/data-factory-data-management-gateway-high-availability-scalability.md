@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: abnarain
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: ed62e35930b64919f4be0f3491f4eda995b81e7f
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: b6bf353a2bad28b0db3a88e971e5c6b209b7ab2b
 ms.contentlocale: zh-cn
 ms.lasthandoff: 08/10/2017
 
@@ -24,7 +24,9 @@ ms.lasthandoff: 08/10/2017
 本文有助于对数据管理网关配置高可用性和可伸缩性解决方案。    
 
 > [!NOTE]
-> 本文假定你已熟悉数据管理网关的基础知识。 如不熟悉，请参阅[数据管理网关](data-factory-data-management-gateway.md)。  
+> 本文假定你已熟悉数据管理网关的基础知识。 如不熟悉，请参阅[数据管理网关](data-factory-data-management-gateway.md)。
+
+>**数据管理网关版本 2.12.xxxx.x 及更高版本正式支持此预览功能**。 请确保你使用的是版本 2.12.xxxx.x 或更高版本。 在[此处](https://www.microsoft.com/download/details.aspx?id=39717)下载最新版本的数据管理网关。
 
 ## <a name="overview"></a>概述
 可将安装于多台本地计算机上的数据管理网关与门户中的单个逻辑网关相关联。 这些计算机称为节点。 至多可将 4 个节点与一个逻辑网关相关联。 一个逻辑网关配多个节点（已安装网关的本地计算机）的好处如下：  
@@ -125,7 +127,7 @@ ms.lasthandoff: 08/10/2017
 11. 若要删除网关节点，请单击工具栏上的“删除节点”，选择要删除的节点，然后在工具栏中单击“删除”。 此操作将从组中删除所选节点。 请注意，此操作不会从节点（本地 Windows 计算机）删除数据管理网关软件。 在本地计算机的“控制面板”中通过“添加或删除程序”即可卸载网关。 从节点卸载网关时，将在门户中自动删除它。   
 
 ## <a name="upgrade-an-existing-gateway"></a>升级现有网关
-可升级现有网关，以使用高可用性和可伸缩性功能。 此功能仅适用于安装有 2.9.xxxx 及更高版本的数据管理网关的节点。 可在数据管理网关配置管理器的“帮助”选项卡中查看计算机上安装的数据管理网关版本。 
+可升级现有网关，以使用高可用性和可伸缩性功能。 此功能仅适用于安装有 2.12.xxxx 及更高版本的数据管理网关的节点。 可在数据管理网关配置管理器的“帮助”选项卡中查看计算机上安装的数据管理网关版本。 
 
 1. 可从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载并运行 MSI 安装包，将本地计算机上的网关升级为最新版。 有关详细信息，请参阅[安装](data-factory-data-management-gateway.md#installation)部分。  
 2. 导航到 Azure 门户。 启动数据工厂的“数据工厂”页。 单击“链接的服务”磁贴以启动“链接的服务”页。 选择网关以启动“网关”页。 单击并启用“预览功能”，如下图所示： 
@@ -173,7 +175,7 @@ ms.lasthandoff: 08/10/2017
 
 监视属性 | 说明
 :------------------ | :---------- 
-Name | 逻辑网关和与网关关联的节点的名称。  
+名称 | 逻辑网关和与网关关联的节点的名称。  
 状态 | 逻辑网关和网关节点的状态。 示例：联机/脱机/受限等。有关这些状态的信息，请参阅[网关状态](#gateway-status)部分。 
 版本 | 显示逻辑网关和每个网关节点的版本。 逻辑网关的版本根据组中多数节点的版本而决定。 如果逻辑网关安装程序中的节点版本不同，只有与逻辑网关的版本号相同的节点能正常运行。 其他节点将处于受限模式，需要手动进行更新（仅当自动更新失败时）。 
 可用内存 | 网关节点上的可用内存。 此值为近实时快照。 
@@ -247,3 +249,4 @@ Azure 门户提供具有粒度节点级别详情的管道监视体验。 例如�
 请参阅以下文章：
 - [数据管理网关](data-factory-data-management-gateway.md) - 提供对网关的详细概述。
 - [在本地和云数据存储间移动数据](data-factory-move-data-between-onprem-and-cloud.md) - 包含使用单节点网关的分布说明演练。 
+

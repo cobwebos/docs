@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/9/2017
 ms.author: LADocs; divswa
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 91c747a4fbb3c3c3d799741e7d3b5d4646931136
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 0e9f0ef3c87b5c0da1cc4ad16d37178c8f5c9625
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 08/09/2017
 
    ![选择“OMS 门户”](media/logic-apps-monitor-your-logic-apps-oms/oms-portal-page.png)
 
-4. 在 OMS 主页上，选择“解决方案库”。
+4. 在 OMS 主页上，如果出现升级横幅，请选择横幅，以便首先升级 OMS 工作区。 然后选择“解决方案库”。
 
    ![选择“解决方案库”](media/logic-apps-monitor-your-logic-apps-oms/solutions-gallery.png)
 
@@ -91,6 +91,11 @@ ms.lasthandoff: 08/09/2017
 1. 要查看逻辑应用运行的计数和状态，请转到 OMS 工作区的概述页。 在“逻辑应用管理”磁贴上查看详细信息。
 
    ![显示逻辑应用运行计数和状态的概述磁贴](media/logic-apps-monitor-your-logic-apps-oms/overview.png)
+
+   > [!Note]
+   > 如果出现此升级横幅而不是逻辑应用管理磁贴，请选择横幅，以便首先升级 OMS 工作区。
+  
+   > ![升级“OMS 工作区”](media/logic-apps-monitor-your-logic-apps-oms/oms-upgrade-banner.png)
 
 2. 要查看有关逻辑应用运行更多详细信息的摘要，请选择“逻辑应用管理”磁贴。
 

@@ -5,19 +5,20 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: femila
+ms.reviewer: joflore
 ms.assetid: 6c5e44f0-4e52-463f-b879-834d80a55cdf
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
+ms.date: 08/14/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 85723eeb9c030dc51bdad47ea8e0996ff7868336
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: a09e965b6fc9b89023c09092860fcf79773a4518
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>教程：将 Azure Active Directory 与 SAP Business Object Cloud 集成
@@ -36,7 +37,7 @@ ms.lasthandoff: 06/16/2017
 
 若要配置 Azure AD 与 SAP Business Object Cloud 的集成，需备齐以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 SAP Business Object Cloud 单一登录的订阅
 
 > [!NOTE]
@@ -45,7 +46,7 @@ ms.lasthandoff: 06/16/2017
 测试本教程中的步骤应遵循以下建议：
 
 - 除非必要，请勿使用生产环境。
-- 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+- 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
@@ -111,14 +112,22 @@ ms.lasthandoff: 06/16/2017
 
     ![配置单一登录](./media/active-directory-saas-sapboc-tutorial/tutorial_sapboc_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<sub-domain>.projectorca.cloud/`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： 
+    | |
+    |-|-|
+    | `https://<sub-domain>.sapanalytics.cloud/` |
+    | `https://<sub-domain>.sapbusinessobjects.cloud/` |
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：`<sub-domain>.projectorca.cloud`
+    b. 在“标识符”文本框中，使用以下模式键入 URL：
+    | |
+    |-|-|
+    | `<sub-domain>.sapbusinessobjects.cloud` |
+    | `<sub-domain>.sapanalytics.cloud` |
 
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [SAP Business Object Cloud 客户端支持团队](https://www.sap.com/product/analytics/cloud-analytics.support.html)获取登录 URL，并且可以获得从管理员控制台中下载 SAP Business Object Cloud 元数据的标识符，教程后面会作详细说明。 
  
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-sapboc-tutorial/tutorial_sapboc_certificate.png) 
 
@@ -185,7 +194,7 @@ ms.lasthandoff: 06/16/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-sapboc-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -195,8 +204,7 @@ ms.lasthandoff: 06/16/2017
  
 ### <a name="creating-an-sap-business-object-cloud-test-user"></a>创建 SAP Business Object Cloud 测试用户
 
-为了使 Azure AD 用户能够登录到 SAP Business Object Cloud，必须将其预配到 SAP Business Object Cloud 中。  
-使用 SAP Business Object Cloud 时，预配属手动任务。
+为了使 Azure AD 用户能够登录到 SAP Business Object Cloud，必须将其预配到 SAP Business Object Cloud 中。 对于 SAP Business Object Cloud，预配属手动任务。
 
 **若要预配用户帐户，请执行以下步骤：**
 
@@ -210,9 +218,9 @@ ms.lasthandoff: 06/16/2017
 
     ![邀请人员](./media/active-directory-saas-sapboc-tutorial/user4.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“用户 ID”文本框中，键入用户的用户 ID（如 Britta）。
+    a. 在“用户 ID”文本框中，键入用户的用户 ID，例如 Britta。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“名字”文本框中，键入用户的名字（如“Britta”）。
+    b. 在“名字”文本框中，键入用户的名字（如“Britta”）。
 
     c. 在“姓氏”文本框中，键入用户的姓氏（如“Simon”）。
 
@@ -235,7 +243,7 @@ ms.lasthandoff: 06/16/2017
 
 若要将 Britta Simon 分配到 SAP Business Object Cloud，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 

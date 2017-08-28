@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 08/08/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 6c01fe7a791742d283505057a310891a075029ef
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 9746170f157ed5065adc953a31687ff18bd73708
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="using-regular-expressions-to-filter-log-searches-in-log-analytics"></a>在 Log Analytics 中使用正则表达式筛选日志搜索结果
@@ -25,6 +25,9 @@ ms.lasthandoff: 04/12/2017
 可以通过[日志搜索](log-analytics-log-searches.md)从 Log Analytics 存储库提取信息。  可以通过[筛选表达式](log-analytics-search-reference.md#filter-expressions)按特定条件筛选搜索结果。  可以使用 **RegEx** 关键字为该筛选器指定正则表达式。  
 
 本文详细介绍了 Log Analytics 使用的正则表达式语法。
+
+> [!NOTE]
+> 你只能使用带可搜索字段的正则表达式。  有关可搜索字段的详细信息，请参阅[在 Log Analytics 中使用日志搜索查找数据](log-analytics-log-searches.md#use-additional-filters)中的“字段类型”。
 
 
 ## <a name="regex-keyword"></a>RegEx 关键字
@@ -62,7 +65,7 @@ ms.lasthandoff: 04/12/2017
 | [*a*-*z*] | 与范围中的单个字符匹配。  可以包含多个范围。 | Computer=RegEx("srv0[1-3].contoso.com") | srv01.contoso.com<br>srv02.contoso.com<br>srv03.contoso.com |
 | [^*abc*] | 不是方括号中的任何字符。 | Computer=RegEx("srv0[^123].contoso.com") | srv05.contoso.com<br>srv06.contoso.com<br>srv07.contoso.com |
 | [^*a*-*z*] | 不是范围中的任何字符。 | Computer=RegEx("srv0[^1-3].contoso.com") | srv05.contoso.com<br>srv06.contoso.com<br>srv07.contoso.com |
-| [*n*-*m*] | 与数字字符范围匹配。 | Computer=RegEx("srv[01-03].contoso.com") | srv01.contoso.com<br>srv02.contoso.com<br>srv03.contoso.com |
+| [n-m] | 与数字字符范围匹配。 | Computer=RegEx("srv[01-03].contoso.com") | srv01.contoso.com<br>srv02.contoso.com<br>srv03.contoso.com |
 | @ | 任何字符串。 | Computer=RegEx("srv@.contoso.com") | srv01.contoso.com<br>srv02.contoso.com<br>srv03.contoso.com |
 
 
@@ -71,9 +74,9 @@ ms.lasthandoff: 04/12/2017
 
 | Character | 说明 | 示例 | 示例匹配 |
 |:--|:--|:--|:--|
-| a{n} |  字符出现 *n* 次。 | Computer=RegEx("bw-win-sc01{3}.bwren.lab") | bw-win-sc0111.bwren.lab |
-| a{n,} |  字符至少出现 *n* 次。 | Computer=RegEx("bw-win-sc01{3,}.bwren.lab") | bw-win-sc0111.bwren.lab<br>bw-win-sc01111.bwren.lab<br>bw-win-sc011111.bwren.lab<br>bw-win-sc0111111.bwren.lab |
-| a{n,m} |  字符出现 *n* 到 *m* 次。 | Computer=RegEx("bw-win-sc01{3,5}.bwren.lab") | bw-win-sc0111.bwren.lab<br>bw-win-sc01111.bwren.lab<br>bw-win-sc011111.bwren.lab |
+| a{n} |  字符出现 n 次。 | Computer=RegEx("bw-win-sc01{3}.bwren.lab") | bw-win-sc0111.bwren.lab |
+| a{n,} |  字符至少出现 n 次。 | Computer=RegEx("bw-win-sc01{3,}.bwren.lab") | bw-win-sc0111.bwren.lab<br>bw-win-sc01111.bwren.lab<br>bw-win-sc011111.bwren.lab<br>bw-win-sc0111111.bwren.lab |
+| a{n,m} |  字符出现 n 到 m 次。 | Computer=RegEx("bw-win-sc01{3,5}.bwren.lab") | bw-win-sc0111.bwren.lab<br>bw-win-sc01111.bwren.lab<br>bw-win-sc011111.bwren.lab |
 
 
 ## <a name="logical-expressions"></a>逻辑表达式

@@ -13,17 +13,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2016
+ms.date: 08/16/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 398abb0a56f1a12ad563dce889c602af4a5b9bcf
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 7f56f6d89a9990ab7e7f50a86993e9e22b73d646
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Azure Cosmos DB 的 Power BI 教程：使用 Power BI 连接器可视化数据
-[PowerBI.com](https://powerbi.microsoft.com/) 是一个在线服务，在此处你可以创建和共享包含对你和你的组织来说很重要的数据的仪表板和报表。  Power BI Desktop 是一个专用的报表创作工具，使你能够从各种数据源检索数据、合并和转换数据、创建功能强大的报表和可视化效果以及将报表发布到 Power BI。  使用最新版本的 Power BI Desktop，现在可以通过 Power BI 的 Cosmos DB 连接器连接到 Cosmos DB 帐户。   
+
+            [PowerBI.com](https://powerbi.microsoft.com/) 是一个在线服务，在此处可以创建和共享包含对你和组织来说很重要的数据的仪表板和报表。  Power BI Desktop 是一个专用的报表创作工具，使你能够从各种数据源检索数据、合并和转换数据、创建功能强大的报表和可视化效果以及将报表发布到 Power BI。  使用最新版本的 Power BI Desktop，现在可以通过 Power BI 的 Cosmos DB 连接器连接到 Cosmos DB 帐户。   
 
 在此 Power BI 教程中，我们将逐步讲解各步骤 - 在 Power BI Desktop 中连接到 Cosmos DB 帐户、使用导航器导航至我们想要在其中提取数据的集合、使用 Power BI Desktop 查询编辑器将 JSON 数据转换为表格格式、以及生成报表并将其发布到 PowerBI.com。
 
@@ -34,6 +35,9 @@ ms.lasthandoff: 07/26/2017
 * 如何在 Power BI Desktop 中从集合检索数据？
 * 如何在 Power BI Desktop 中转换嵌套的 JSON 数据？
 * 如何在 PowerBI.com 中发布和共享我的报表？
+
+> [!NOTE]
+> 用于 Azure Cosmos DB 连接到 Power BI Desktop 以获取和转换数据的 Power BI 连接器。 在 Power BI Desktop 中创建的报表随后可以发布到 PowerBI.com。 无法在 PowerBI.com 中执行 Azure Cosmos DB 数据的直接提取和转换。 
 
 ## <a name="prerequisites"></a>先决条件
 在按照此 Power BI 教程中的说明操作之前，请确保已拥有对以下资源的访问权限：
@@ -48,7 +52,7 @@ ms.lasthandoff: 07/26/2017
 要在 PowerBI.com 中共享报表，必须在 PowerBI.com 中拥有帐户。  若要了解更多有关 Power BI 免费版和 Power BI Pro 的信息，请访问 [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing)。
 
 ## <a name="lets-get-started"></a>让我们开始吧
-在本教程中，让我们假设你是一位研究世界各地的火山的地理学家。  火山数据存储在 Cosmos DB 帐户中且 JSON 文档的外观如以下示例文档所示。
+在本教程中，假设你是一位研究世界各地火山的地理学家。  火山数据存储在 Cosmos DB 帐户中且 JSON 文档的外观如以下示例文档所示。
 
     {
         "Volcano Name": "Rainier",
@@ -167,7 +171,7 @@ ms.lasthandoff: 07/26/2017
 2. 现在，从“字段”窗格将经纬度字段拖放到“可视化”窗格中的“位置”属性。
 3. 接下来，将“火山名称”字段拖放到“图例”属性。  
 4. 然后，将“海拔”字段拖放到“大小”属性。  
-5. 现在你应该会看到显示一组表示每座火山位置的气泡的地图视觉，气泡的大小与火山的海拔相关联。
+5. 现在，你应会看到该地图视觉对象显示有一组表示每座火山位置的气泡，并用气泡的大小对应火山的海拔。
 6. 此时已成功创建了基本报表。  可以通过添加更多可视化效果来进一步自定义该报表。  在本例中，我们添加了火山类型切片器以使报表具有交互性。  
    
     ![Azure Cosmos DB 的 Power BI 教程完成时最终 Power BI Desktop 报表的屏幕截图](./media/powerbi-visualize/power_bi_connector_pbireportfinal.png)
@@ -176,7 +180,7 @@ ms.lasthandoff: 07/26/2017
 要共享报表，必须在 PowerBI.com 中拥有帐户。
 
 1. 在 Power BI Desktop 中，单击“主页”功能区。
-2. 单击“发布” 。  系统会提示输入 PowerBI.com 帐户的用户名和密码。
+2. 单击“发布”。  系统会提示输入 PowerBI.com 帐户的用户名和密码。
 3. 一旦验证凭据后，就可将报表发布到所选目的地。
 4. 单击“打开 Power BI 中的‘PowerBITutorial.pbix’”，查看并共享 Power BI.com 上的报表。
    
@@ -219,6 +223,6 @@ ms.lasthandoff: 07/26/2017
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Power BI 的详细信息，请参阅 [Power BI 入门](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)。
-* 若要了解有关 Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB 文档登陆页](https://azure.microsoft.com/documentation/services/documentdb/)。
+* 若要了解有关 Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB 文档登录页](https://azure.microsoft.com/documentation/services/documentdb/)。
 
 

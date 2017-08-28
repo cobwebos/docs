@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/08/2017
+ms.date: 08/11/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 2c796156df6ed2a891d423030bdd07b5c19f3235
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 317792e04244a96cf8e47bc7e4a7f633f7a6d8c3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="azure-cosmos-db-net-sdk-download-and-release-notes"></a>Azure Cosmos DB .NET SDK：下载和发行说明
@@ -53,6 +53,11 @@ ms.lasthandoff: 08/09/2017
 
 ## <a name="release-notes"></a>发行说明
 
+### <a name="a-name11701170"></a><a name="1.17.0"/>1.17.0 
+
+* 添加了 PartitionKeyRangeId 的支持作为 FeedOption，将查询结果限定在某个特定分区键范围值。 
+* 添加了 StartTime 的支持作为 ChangeFeedOption，以开始查找该时间后的更改。
+
 ### <a name="a-name11611161"></a><a name="1.16.1"/>1.16.1
 * 修复了 JsonSerializable 类中可能引起堆栈溢出异常的问题。
 
@@ -67,7 +72,6 @@ ms.lasthandoff: 08/09/2017
 *   修复了影响 x64 计算机的一个问题，该计算机不支持 SSE4 指令，并在运行 Azure Cosmos DB DocumentDB API 查询时引发 SEHException。
 
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
-*   现已开始支持每分钟请求单位 (RU/m) 功能。
 *   添加了对名为 ConsistentPrefix 的新一致性级别的支持。
 *   添加了对单独分区的查询指标的支持。
 *   添加了对限制查询的继续令牌大小的支持。
@@ -162,7 +166,7 @@ ms.lasthandoff: 08/09/2017
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
 * 添加了对多区域数据库帐户的支持。
 * 添加了对重试限制请求的支持。  用户可以通过配置 ConnectionPolicy.RetryOptions 属性来自定义重试次数和最长等待时间。
-* 添加新的 IDocumentClient 接口，用于定义所有 DocumenClient 属性和方法的签名。  在做出此项更改的同时，已将用于创建 IQueryable 和 IOrderedQueryable 的扩展方法更改为 DocumentClient 类本身的方法。
+* 添加新的 IDocumentClient 接口，用于定义所有 DocumenClient 属性和方法的签名。  在做出此项更改的同时，已用于创建 IQueryable 和 IOrderedQueryable 的扩展方法更改为 DocumentClient 类本身的方法。
 * 添加了配置选项，以便设置给定 Azure Cosmos DB 终结点 URI 的 ServicePoint.ConnectionLimit。  使用 ConnectionPolicy.MaxConnectionLimit 可以更改默认值（设置为 50）。
 * 已弃用 IPartitionResolver 及其实现。  对 IPartitionResolver 的支持现已过时。 建议使用分区集合来提高存储和吞吐量。
 
@@ -232,7 +236,7 @@ ms.lasthandoff: 08/09/2017
     
     **可能推出的重大更改** 
     
-    如果现有代码预配包含自定义索引策略的集合，需要将现有代码更新为支持新的 IndexingPolicy 类。 如果你没有任何自定义索引策略，此更改不会影响你。
+    如果现有代码预配包含自定义索引策略的集合，需要将现有代码更新为支持新的 IndexingPolicy 类。 如果没有任何自定义索引策略，此更改不会影响你。
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 * 现已开始支持使用新的 HashPartitionResolver 和 RangePartitionResolver 类以及 IPartitionResolver 执行数据分区。
@@ -254,6 +258,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.17.0](#1.17.0) |2017 年 8 月 10 日 |--- |
 | [1.16.1](#1.16.1) |2017 年 8 月 7 日 |--- |
 | [1.16.0](#1.16.0) |2017 年 8 月 2 日 |--- |
 | [1.15.0](#1.15.0) |2017 年 6 月 30 日 |--- |

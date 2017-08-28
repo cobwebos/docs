@@ -11,18 +11,18 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 05/03/2017
-ms.author: cfreeman
+ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 33aebd002458d40a5a09b6fe334ad43ec578df83
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 80142d9f27abed181bca6f5f536b950198e66e20
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
 # <a name="usage-analysis-for-web-applications-with-application-insights"></a>使用 Application Insights 的 Web 应用程序使用情况分析
 
-Web 应用有哪些最热门的功能？ 用户是否使用应用实现了其目标？ 他们是否中途放弃应用，后来又回头使用了吗？  [Azure Application Insights](app-insights-overview.md) 可帮助你有效地深入分析人们如何使用你的 Web 应用。 每次更新应用时，都可以评估它在用户那里的运行状况。 了解这些信息后，可以针对下一个开发周期做出数据驱动的决策。
+Web 应用有哪些最热门的功能？ 用户是否使用应用实现了其目标？ 他们是否中途放弃应用，后来又回头使用了吗？  [Azure Application Insights](app-insights-overview.md) 可帮助你有效地深入分析人们如何使用 Web 应用。 每次更新应用时，都可以评估它在用户那里的运行状况。 了解这些信息后，可以针对下一个开发周期做出数据驱动的决策。
 
 ## <a name="send-telemetry-from-your-app"></a>从应用发送遥测数据
 
@@ -37,7 +37,7 @@ Web 应用有哪些最热门的功能？ 用户是否使用应用实现了其目
     ![将脚本复制到主网页的开头。](./media/app-insights-usage-overview/02-monitor-web-page.png)
 
 
-3. **获取遥测：**在调试模式下运行项目几分钟，然后在“Application Insights”中的“概述”边栏选项卡中查找结果。
+3. **获取遥测：**在调试模式下运行项目几分钟，并在“Application Insights”中的“概述”边栏选项卡中查找结果。
 
     发布应用以监视应用性能，并查看用户使用该应用在执行哪些操作。
 
@@ -90,7 +90,7 @@ Web 应用有哪些最热门的功能？ 用户是否使用应用实现了其目
 
 ![保留](./media/app-insights-usage-overview/retention.png) 
 
-使用顶部的保留控件可以定义特定的事件和时间范围来计算保留。 中间的图表根据指定的时间范围提供总体保留百分比的视觉表示形式。 底部的图表显示给定时间段内的各个保留。 这种详细程度可让你更细致地了解用户正在做什么，以及哪些因素可能会影响用户回头。  
+使用顶部的保留控件可以定义特定的事件和时间范围来计算保留。 中间的图表根据指定的时间范围提供总体保留百分比的视觉表示形式。 底部的图表显示给定时间段内的各个保留。 这种详细程度可让你更细致地了解用户正在做什么，以及哪些因素可能会影响用户回归。  
 
 [有关保留工具的详细信息](app-insights-usage-retention.md)
 
@@ -173,6 +173,7 @@ Web 应用有哪些最热门的功能？ 用户是否使用应用实现了其目
    - [用户、会话、事件](app-insights-usage-segmentation.md)
    - [漏斗图](usage-funnels.md)
    - [保留](app-insights-usage-retention.md)
+   - [用户流](app-insights-usage-flows.md)
    - [工作簿](app-insights-usage-workbooks.md)
    - [添加用户上下文](app-insights-usage-send-user-context.md)
 

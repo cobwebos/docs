@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/07/2017
+ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 6754505e7f58a8e7305987db9204271ca9b93870
+ms.translationtype: HT
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: 4992d98397da409f7c1cfbdeb40fdb0cdd0d2f19
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 08/14/2017
 
 ---
 
@@ -28,7 +27,7 @@ ms.lasthandoff: 06/09/2017
 
 ![“System Center Operations Manager 评估”符号](./media/log-analytics-scom-assessment/scom-assessment-symbol.png)
 
-可以使用 System Center Operations Manager 评估解决方案定期评估 System Center Operations Manager 服务器环境的风险和运行状况。 本文将帮助你安装、配置和使用该解决方案，以便针对潜在问题采取纠正措施。
+可以使用 System Center Operations Manager 评估解决方案定期评估 System Center Operations Manager 服务器环境的风险和运行状况。 本文会帮助你安装、配置和使用该解决方案，便于你针对潜在问题采取纠正措施。
 
 此解决方案提供了特定于已部署服务器基础结构的建议优先级列表。 这些建议跨四个重点领域进行了分类，将帮助你快速了解风险并采取纠正措施。
 
@@ -36,7 +35,7 @@ ms.lasthandoff: 06/09/2017
 
 可以选择对组织最重要的重点领域，并跟踪一个运行正常无风险环境的进度。
 
-在添加解决方案并完成评估后，将在基础结构的“System Center Operations Manager 评估”仪表板上显示有关重点领域的摘要信息。 以下部分介绍如何使用“System Center Operations Manager 评估”仪表板上的信息，可以在其中查看并针对 SCOM 基础结构采取建议的操作。
+在添加解决方案并完成评估后，会在基础结构的“System Center Operations Manager 评估”仪表板上显示有关重点领域的摘要信息。 以下部分介绍如何使用“System Center Operations Manager 评估”仪表板上的信息，可以在其中查看并针对 SCOM 基础结构采取建议的操作。
 
 ![System Center Operations Manager 解决方案磁贴](./media/log-analytics-scom-assessment/scom-tile.png)
 
@@ -48,9 +47,9 @@ ms.lasthandoff: 06/09/2017
 
 使用以下信息安装和配置解决方案。
 
- - 在 OMS 中使用评估解决方案之前，必须先安装该解决方案。 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview)或按照[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中的说明，安装解决方案。
+ - 在 OMS 中使用评估解决方案之前，必须先安装该解决方案。 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview) 或按照[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中的说明，安装解决方案。
 
- - 将解决方案添加到工作区以后，仪表板上的“System Center Operations Manager 评估”磁贴会显示“需要更多的配置”这样一条消息。 单击该磁贴，然后按照页面中所述的配置步骤操作
+ - 将解决方案添加到工作区以后，仪表板上的“System Center Operations Manager 评估”磁贴会显示“需要更多的配置”这样一条消息。 单击该磁贴，并按照页面中所述的配置步骤操作
 
  ![System Center Operations Manager 仪表板磁贴](./media/log-analytics-scom-assessment/scom-configrequired-tile.png)
 
@@ -68,7 +67,7 @@ System Center Operations Manager 评估使用启用的服务器，通过 Windows
 
 | 平台 | 直接代理 | SCOM 代理 | Azure 存储 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |  ![否](./media/log-analytics-scom-assessment/oms-bullet-red.png) | ![否](./media/log-analytics-scom-assessment/oms-bullet-red.png)  | ![否](./media/log-analytics-scom-assessment/oms-bullet-red.png)  |  ![是](./media/log-analytics-scom-assessment/oms-bullet-green.png) | ![否](./media/log-analytics-scom-assessment/oms-bullet-red.png)  | 七天 |
+| Windows | | | | &#8226; | | 七天 |
 
 ## <a name="operations-manager-run-as-accounts-for-oms"></a>OMS 的 Operations Manager 运行方式帐户
 
@@ -94,7 +93,7 @@ OMS 基于工作负荷的管理包生成，提供增值服务。 每个工作负
 3. 返回“运行方式配置”并单击“配置文件”。
 4. 搜索“SCOM 评估配置文件”。
 5. 配置文件名应为：“Microsoft System Center Advisor SCOM 评估运行方式配置文件”。
-6. 右键单击该配置文件并更新其属性，然后添加最近在步骤 3 中创建的运行方式帐户。
+6. 右键单击该配置文件并更新其属性，添加最近在步骤 3 中创建的运行方式帐户。
 
 ### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>向运行方式帐户授予具体权限的 SQL 脚本
 
@@ -157,7 +156,7 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 
 1. 在 Operations Manager 控制台的“创作”工作区的“规则”窗格中，搜索规则“Microsoft System Center Advisor SCOM 评估运行评估规则”。
 2. 在搜索结果中，选择包含“类型: 管理服务器”字样的规则。
-3. 右键单击该规则，然后单击“重写” > “对于类为管理服务器的特定对象”。
+3. 右键单击该规则，并单击“重写” > “对于类为管理服务器的特定对象”。
 4.  在可用管理服务器列表中，选择要在其上运行该规则的管理服务器。
 5.  请务必将“已启用”参数值的重写值更改为 **True**。  
     ![重写参数](./media/log-analytics-scom-assessment/rule.png)
@@ -170,7 +169,7 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 
 1. 在 Operations Manager 控制台的“创作”工作区的“规则”窗格中，搜索规则“Microsoft System Center Advisor SCOM 评估运行评估规则”。
 2. 在搜索结果中，选择包含“类型: 管理服务器”字样的规则。
-3. 右键单击该规则，然后单击“重写规则” > “对于类为管理服务器的所有对象”。
+3. 右键单击该规则，并单击“重写规则” > “对于类为管理服务器的所有对象”。
 4. 将“间隔”参数值更改为所需的间隔值。 在以下示例中，该值设置为 1440 分钟（一天）。  
     ![间隔参数](./media/log-analytics-scom-assessment/interval.png)  
     如果设置的值小于 1440 分钟，该规则将按一天的间隔运行。 在本示例中，规则将忽略间隔值，按一天的频率运行。
@@ -202,31 +201,33 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 
 ### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>每个重点区域的分数都应该以 100% 为目标吗？
 
-不一定。 建议基于 Microsoft 工程师从数千次客户拜访中所获得的知识和经验。 但是，服务器基础结构各不相同，或多或少都需要一些具体的相关建议。 例如，如果虚拟机未公开到 Internet，那么一些安全建议可能没什么用。 某些可用性建议可能不太适用于提供低优先级临时数据收集和报告的服务。 对于成熟企业至关重要的问题对于一家初创公司可能不太重要。 你可能要确定哪些重点区域是你要优先考虑的，然后查看你的分数随时间的变化。
+不一定。 建议基于 Microsoft 工程师从数千次客户拜访中所获得的知识和经验。 但是，服务器基础结构各不相同，或多或少都需要一些具体的相关建议。 例如，如果虚拟机未公开到 Internet，那么一些安全建议可能没什么用。 某些可用性建议可能不太适用于提供低优先级临时数据收集和报告的服务。 对于成熟企业至关重要的问题对于一家初创公司可能不太重要。 可能要确定哪些重点区域是要优先考虑的，并查看分数随时间的变化。
 
-每项建议都会提供有关该建议为何重要的指导。 考虑 IT 服务的性质和组织的业务需求，请使用本指导来评估实施建议对你是否适用。
+每项建议都会提供有关该建议为何重要的指导。 考虑 IT 服务的性质和组织的业务需求，请使用本指导评估实施建议对你是否适用。
 
 ## <a name="use-assessment-focus-area-recommendations"></a>使用评估重点区域建议
 
 在 OMS 中使用评估解决方案之前，必须先安装该解决方案。 若要了解有关安装解决方案的详细信息，请参阅[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)。 安装完成后，可以通过使用 OMS“概述”页上的“System Center Operations Manager 评估”磁贴来查看建议摘要。
 
-查看概述的针对基础结构的合规性评估，然后深入分析建议。
+查看概述的针对基础结构的合规性评估，并深入分析建议。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>查看针对重点区域的建议并采取纠正措施
 
 1. 在“概述”页上，单击“System Center Operations Manager 评估”磁贴。
-2. 在“System Center Operations Manager 评估”页上，查看某个重点区域边栏选项卡中的摘要信息，然后单击其中一个查看针对该重点区域的建议。
-3. 在任何重点区域页上，均可以查看针对你的环境所做的优先级建议。 单击“受影响的对象”下的建议，以查看有关为何给出此建议的详细信息。  
+2. 在“System Center Operations Manager 评估”页上，查看某个重点区域边栏选项卡中的摘要信息，并单击其中一个查看针对该重点区域的建议。
+3. 在任何重点区域页上，均可以查看针对环境所做的优先级建议。 单击“受影响的对象”下的建议，以查看有关为何给出此建议的详细信息。  
     ![重点区域](./media/log-analytics-scom-assessment/focus-area.png)
-4. 可以采取“建议的操作”中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且将提高合规性分数。 已更正的项将显示为“通过的对象”。
+4. 可以采取“建议的操作”中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且将提高合规性分数。 已更正的项会显示为“通过的对象”。
 
 ## <a name="ignore-recommendations"></a>忽略建议
 
 如果有要忽略的建议，可以创建 OMS 用来防止建议出现在评估结果中的文本文件。
 
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+
 ### <a name="to-identify-recommendations-that-you-want-to-ignore"></a>确定要忽略的建议
 
-1. 登录到工作区，并打开“日志搜索”。 使用以下查询列出对于你环境中计算机失败的建议。
+1. 登录到工作区，并打开“日志搜索”。 使用以下查询列出对于环境中计算机失败的建议。
 
     ```
     Type=SCOMAssessmentRecommendationRecommendationResult=Failed | select  Computer, RecommendationId, Recommendation | sort  Computer
@@ -240,7 +241,7 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 ### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>创建和使用 IgnoreRecommendations.txt 文本文件
 
 1. 创建一个名为 IgnoreRecommendations.txt 的文件。
-2. 在单独的行上粘贴或键入希望 OMS 忽略的每个建议的 RecommendationId，然后保存并关闭该文件。
+2. 在单独的行上粘贴或键入希望 OMS 忽略的每个建议的 RecommendationId，保存并关闭该文件。
 3. 将以下文件夹中的文件置于每台要 OMS 忽略建议的计算机上。
 4. 在 Operations Manager 管理服务器上 - *SystemDrive*:\Program Files\Microsoft System Center 2012 R2\Operations Manager\Server。
 

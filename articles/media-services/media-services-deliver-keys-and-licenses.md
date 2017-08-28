@@ -4,7 +4,7 @@ description: "本文介绍如何使用 Azure 媒体服务 (AMS) 来传送 PlayRe
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 8546c2c1-430b-4254-a88d-4436a83f9192
 ms.service: media-services

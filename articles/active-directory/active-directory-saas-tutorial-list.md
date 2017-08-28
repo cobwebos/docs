@@ -16,10 +16,10 @@ ms.author: joflore
 ms.custom: it-pro
 ms.reviewer: jeedes
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 7ed79cad4e796aa98e54065180ecfb5244903509
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 5bedead730e0538c4cad464a9aee7f97a5a8c3ef
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>SaaS 应用程序与 Azure Active Directory 集成
@@ -110,7 +110,6 @@ ms.lasthandoff: 08/05/2017
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-competencyiq-tutorial.png)| [Competency IQ](active-directory-saas-competencyiq-tutorial.md)
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-concur-tutorial.png)| [Concur](active-directory-saas-concur-tutorial.md)| [Concur - 用户预配](active-directory-saas-concur-provisioning-tutorial.md)|
 | ![徽标](./media/active-directory-saas-tutorial-list/SaaSApp_Condeco.png)| [Condeco](active-directory-saas-condeco-tutorial.md)|
-| ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-confluencemicrosoft-tutorial.png)| [Confluence SAML SSO by Microsoft](active-directory-saas-confluencemicrosoft-tutorial.md)||
 | ![徽标](./media/active-directory-saas-tutorial-list/SaaSApp_Convercent.png)| [Convercent](active-directory-saas-convercent-tutorial.md)|
 | ![徽标](./media/active-directory-saas-tutorial-list/SaaSApp_CornerstoneOnDemand.png)| [Cornerstone OnDemand](active-directory-saas-cornerstone-ondemand-tutorial.md)|
 | ![徽标](./media/active-directory-saas-tutorial-list/SaaSApp_Coupa.png)| [Coupa](active-directory-saas-coupa-tutorial.md)|
@@ -180,11 +179,11 @@ ms.lasthandoff: 08/05/2017
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-insideview-tutorial.png)| [InsideView](active-directory-saas-insideview-tutorial.md)|
 | ![徽标](./media/active-directory-saas-tutorial-list/SaaSApp_Insperity.png)| [Insperity ExpensAble](active-directory-saas-insperityexpensable-tutorial.md)|
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-intacct-tutorial.png)| [Intacct](active-directory-saas-intacct-tutorial.md)|
+| ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-intime-tutorial.png)| [InTime](active-directory-saas-intime-tutorial.md)||
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-iqnavigatorvms-tutorial.png)| [IQNavigator VMS](active-directory-saas-iqnavigatorvms-tutorial.md)||
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-intralinks-tutorial.png)| [Intralinks](active-directory-saas-intralinks-tutorial.md)|
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-itslearning-tutorial.png)| [itslearning](active-directory-saas-itslearning-tutorial.md)
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-itrp-tutorial.png)| [ITRP](active-directory-saas-itrp-tutorial.md)|
-| ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-jiramicrosoft-tutorial.png)| [JIRA SAML SSO by Microsoft](active-directory-saas-jiramicrosoft-tutorial.md)||
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-jitbit-helpdesk-tutorial.png)| [Jitbit Helpdesk](active-directory-saas-jitbit-helpdesk-tutorial.md)|
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-jive-tutorial.png)| [Jive](active-directory-saas-jive-tutorial.md)| [Jive - 用户预配](active-directory-saas-jive-provisioning-tutorial.md)|
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-jobbadmin-tutorial.png)| [Jobbadmin](active-directory-saas-jobbadmin-tutorial.md)
@@ -226,6 +225,7 @@ ms.lasthandoff: 08/05/2017
 | ![徽标](./media/active-directory-saas-tutorial-list/SaaSApp_MaxxPoint.png)| [MaxxPoint](active-directory-saas-maxxpoint-tutorial.md)
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-mcm-tutorial.png)| [MCM](active-directory-saas-mcm-tutorial.md)|
 | ![徽标](./media/active-directory-saas-tutorial-list/saasapp_menlosecurity.png)| [Menlo Security](active-directory-saas-menlosecurity-tutorial.md)|
+| ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-merchlogix-tutorial.png)| [MerchLogix](active-directory-saas-merchlogix-tutorial.md)||
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-m-files-tutorial.png)| [M-Files](active-directory-saas-m-files-tutorial.md)|
 | ![徽标](./media/active-directory-saas-tutorial-list/SaaSApp_Mimecast.png)| [Mimecast Admin Console](active-directory-saas-mimecast-admin-console-tutorial.md)|
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-mimecast-personal-portal-tutorial.png)| [Mimecast Personal Portal](active-directory-saas-mimecast-personal-portal-tutorial.md)|
@@ -262,6 +262,7 @@ ms.lasthandoff: 08/05/2017
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-pantheon-tutorial.png)| [Pantheon](active-directory-saas-pantheon-tutorial.md)|
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-people-tutorial.png)| [People](active-directory-saas-people-tutorial.md)|
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-peoplecart-tutorial.png)| [Peoplecart](active-directory-saas-peoplecart-tutorial.md)||
+| ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-perceptionunitedstates-tutorial.png)| [Perception United States (Non-UltiPro)](active-directory-saas-perceptionunitedstates-tutorial.md)||
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-performancecentre-tutorial.png)| [PerformanceCentre](active-directory-saas-performancecentre-tutorial.md)|
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-picturepark-tutorial.png)| [Picturepark](active-directory-saas-picturepark-tutorial.md)|
 | ![徽标](./media/active-directory-saas-tutorial-list/SaaSApp_Pingboard.png)| [Pingboard](active-directory-saas-PingBoard-tutorial.md)
@@ -389,7 +390,7 @@ ms.lasthandoff: 08/05/2017
 | ![徽标](./media/active-directory-saas-tutorial-list/SaaSApp_Yardi.png)| [Yardi eLearning](active-directory-saas-yardielearning-tutorial.md)|
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-yonyx-tutorial.png)| [Yonyx Interactive Guides](active-directory-saas-yonyx-tutorial.md)|
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-youearnedit-tutorial.png)| [YouEarnedIt](active-directory-saas-youearnedit-tutorial.md)|
-| ![徽标](./media/active-directory-saas-tutorial-list/SaaSApp_Zendesk.png)| [Zendesk](active-directory-saas-zendesk-tutorial.md)|
+| ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-zendesk-tutorial.png)| [Zendesk](active-directory-saas-zendesk-tutorial.md)|
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-zivver-tutorial.png)| [ZIVVER](active-directory-saas-zivver-tutorial.md)
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-zoho-mail-tutorial.png)| [Zoho Mail](active-directory-saas-zoho-mail-tutorial.md)|
 | ![徽标](./media/active-directory-saas-tutorial-list/active-directory-saas-zoom-tutorial.png)| [Zoom](active-directory-saas-zoom-tutorial.md)|

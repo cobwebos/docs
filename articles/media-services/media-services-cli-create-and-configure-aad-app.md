@@ -4,7 +4,7 @@ description: "本主题展示了如何使用 CLI 2.0 创建 Azure AD 应用程�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.service: media-services
 ms.workload: media

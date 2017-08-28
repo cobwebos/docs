@@ -4,7 +4,7 @@ description: "了解如何通过创建和上传资产将媒体内容加入媒体
 services: media-services
 documentationcenter: 
 author: juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: c9c86380-9395-4db8-acea-507c52066f73
 ms.service: media-services

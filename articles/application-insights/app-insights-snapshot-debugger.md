@@ -11,13 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: a499f1d5f3a53a0cafb9056c9b5a4d164f80d8c5
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: bb6c93557ea26bed721315dc82da917e4727b5f9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 应用中发生异常时的调试快照
@@ -71,16 +70,39 @@ ms.lasthandoff: 07/04/2017
 
 2. 将 [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包添加到应用。
 
-3. 修改应用程序 `Startup` 类中的 `ConfigureServices` 方法，添加快照收集器的遥测处理器。
+3. 修改应用程序 `Startup` 类中的 `ConfigureServices` 方法，添加快照收集器的遥测处理器。 应添加的代码取决于 Microsoft.ApplicationInsights.ASPNETCore NuGet 包的引用版本。
+
+   对于 Microsoft.ApplicationInsights.AspNetCore 2.1.0，添加：
    ```C#
    using Microsoft.ApplicationInsights.SnapshotCollector;
    ...
    class Startup
    {
-       // This method gets called by the runtime. Use this method to add services to the container.
+       // This method is called by the runtime. Use it to add services to the container.
        public void ConfigureServices(IServiceCollection services)
        {
            services.AddSingleton<Func<ITelemetryProcessor, ITelemetryProcessor>>(next => new SnapshotCollectorTelemetryProcessor(next));
+           // TODO: Add any other services your application needs here.
+       }
+   }
+   ```
+
+   对于 Microsoft.ApplicationInsights.AspNetCore 2.1.1，添加：
+   ```C#
+   using Microsoft.ApplicationInsights.SnapshotCollector;
+   ...
+   class Startup
+   {
+       private class SnapshotCollectorTelemetryProcessorFactory : ITelemetryProcessorFactory
+       {
+           public ITelemetryProcessor Create(ITelemetryProcessor next) =>
+               new SnapshotCollectorTelemetryProcessor(next);
+       }
+
+       // This method is called by the runtime. Use it to add services to the container.
+       public void ConfigureServices(IServiceCollection services)
+       {
+            services.AddSingleton<ITelemetryProcessorFactory>(new SnapshotCollectorTelemetryProcessorFactory());
            // TODO: Add any other services your application needs here.
        }
    }
@@ -93,7 +115,7 @@ ms.lasthandoff: 07/04/2017
 2. 将 [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包添加到应用。
 
 3. 仅当向 Application Insights 报告了异常时，才收集快照。 可能需要修改代码才能报告。 异常处理代码取决于应用程序的结构，示例如下：
-   ```C#
+    ```C#
    TelemetryClient _telemetryClient = new TelemetryClient();
 
    void ExampleRequest()
@@ -110,51 +132,55 @@ ms.lasthandoff: 07/04/2017
             // TODO: Rethrow the exception if desired.
         }
    }
+    ```
+    
+## <a name="grant-permissions"></a>授予权限
 
-## Grant permissions
+Azure 订阅的所有者可以检查快照。 其他用户必须获得所有者的授权。
 
-Owners of the Azure subscription can inspect snapshots. Other users must be granted permission by an owner.
+要授予权限，请将 `Application Insights Snapshot Debugger` 角色分配给要检查快照的用户。 订阅所有者可将该角色分配给目标 Application Insights 资源或其资源组或订阅的各个用户或组。
 
-To grant permission, assign the `Application Insights Snapshot Debugger` role to users who will inspect snapshots. This role can be assigned to individual users or groups by subscription owners for the target Application Insights resource or its resource group or subscription.
+1. 打开“访问控制(IAM)”边栏选项卡。
+1. 单击“+添加”按钮。
+1. 从“角色”下拉列表中，选择“Application Insights 快照调试程序”。
+1. 搜索并输入要添加的用户的名称。
+1. 单击“保存”按钮将用户添加到角色。
 
-1. On the Application Insights navigation menu, select **Access Control (IAM)**.
-2. Click **Roles** > **Application Insights Snapshot Debugger**.
-3. Click **Add**, and then select a user or group.
 
-    >[!IMPORTANT] 
-    Snapshots can potentially contain personal and other sensitive information in variable and parameter values.
+[!IMPORTANT]
+    快照的变量和参数值中可能包含个人信息和其他敏感信息。
 
-## Debug snapshots in the Application Insights portal
+## <a name="debug-snapshots-in-the-application-insights-portal"></a>在 Application Insights 门户中调试快照
 
-If a snapshot is available for a given exception or a problem ID, an **Open Debug Snapshot** button appears on the [exception](app-insights-asp-net-exceptions.md) in the Application Insights portal.
+如果某个快照适用于给定的异常或问题 ID，Application Insights 门户上的[异常](app-insights-asp-net-exceptions.md)区域中会显示“打开调试快照”按钮。
 
-![Open Debug Snapshot button on exception](./media/app-insights-snapshot-debugger/snapshot-on-exception.png)
+![异常区域中的“打开调试快照”按钮](./media/app-insights-snapshot-debugger/snapshot-on-exception.png)
 
-In the Debug Snapshot view, you see a call stack and a variables pane. When you select frames of the call stack in the call stack pane, you can view local variables and parameters for that function call in the variables pane.
+在“调试快照”视图中，可以看到调用堆栈和变量窗格。 当在调用堆栈窗格中选择调用堆栈帧时，可在变量窗格中查看该函数调用的局部变量和参数。
 
-![View Debug Snapshot in the portal](./media/app-insights-snapshot-debugger/open-snapshot-portal.png)
+![在门户中查看调试快照](./media/app-insights-snapshot-debugger/open-snapshot-portal.png)
 
-Snapshots might contain sensitive information, and by default they are not viewable. To view snapshots, you must have the `Application Insights Snapshot Debugger` role assigned to you.
+快照可能包含敏感信息，默认情况下不可查看。 要查看快照，必须获取 `Application Insights Snapshot Debugger` 角色。
 
-## Debug snapshots with Visual Studio 2017 Enterprise
-1. Click the **Download Snapshot** button to download a `.diagsession` file, which can be opened by Visual Studio 2017 Enterprise. 
+## <a name="debug-snapshots-with-visual-studio-2017-enterprise"></a>使用 Visual Studio 2017 Enterprise 调试快照
+1. 单击“下载快照”按钮，下载可在 Visual Studio 2017 Enterprise 中打开的 `.diagsession` 文件。 
 
-2. To open the `.diagsession` file, you must first [download and install the Snapshot Debugger extension for Visual Studio](https://aka.ms/snapshotdebugger).
+2. 要打开 `.diagsession` 文件，必须先[下载并安装用于 Visual Studio 的快照调试程序扩展](https://aka.ms/snapshotdebugger)。
 
-3. After you open the snapshot file, the Minidump Debugging page in Visual Studio appears. Click **Debug Managed Code** to start debugging the snapshot. The snapshot opens to the line of code where the exception was thrown so that you can debug the current state of the process.
+3. 打开快照文件后，将出现 Visual Studio 中的“小型转储调试”页面。 单击“调试托管代码”开始调试快照。 快照将打开到引发异常的代码行，以便可以调试进程的当前状态。
 
-    ![View debug snapshot in Visual Studio](./media/app-insights-snapshot-debugger/open-snapshot-visualstudio.png)
+    ![在 Visual Studio 中查看调试快照](./media/app-insights-snapshot-debugger/open-snapshot-visualstudio.png)
 
-The downloaded snapshot contains any symbol files that were found on your web application server. These symbol files are required to associate snapshot data with source code. For App Service apps, make sure to enable symbol deployment when you publish your web apps.
+下载的快照中包含在 Web 应用程序服务器上找到的所有符号文件。 需要使用这些符号文件将快照数据与源代码相关联。 对于应用服务应用，请确保在发布 Web 应用时启用符号部署。
 
-## How snapshots work
+## <a name="how-snapshots-work"></a>快照的工作原理
 
-When your application starts, a separate snapshot uploader process is created that monitors your application for snapshot requests. When a snapshot is requested, a shadow copy of the running process is made in about 10 to 20 minutes. The shadow process is then analyzed, and a snapshot is created while the main process continues to run and serve traffic to users. The snapshot is then uploaded to Application Insights along with any relevant symbol (.pdb) files that are needed to view the snapshot.
+启动应用程序时，将创建一个可在应用程序中监视快照请求的独立快照上传程序进程。 请求快照时，会在大约 10 到 20 分钟内创建运行中进程的影子副本。 然后，将分析该影子进程并创建快照，同时，主进程会继续运行并向用户提供流量。 接下来，将快照连同查看快照所需的任何相关符号文件 (.pdb) 一起上传到 Application Insights。
 
-## Current limitations
+## <a name="current-limitations"></a>当前限制
 
-### Publish symbols
-The Snapshot Debugger requires symbol files on the production server to decode variables and to provide a debugging experience in Visual Studio. The 15.2 release of Visual Studio 2017 publishes symbols for release builds by default when it publishes to App Service. In prior versions, you need to add the following line to your publish profile `.pubxml` file so that symbols are published in release mode:
+### <a name="publish-symbols"></a>发布符号
+快照调试程序要求符号文件位于生产服务器上，这样它才能在 Visual Studio 中解码变量并提供调试体验。 默认情况下，在发布到应用服务时，Visual Studio 2017 版本 15.2 会发布适用于发行版本的符号。 在以前的版本中，需要将以下代码行添加到发布配置文件 `.pubxml`，以便在发布模式下发布符号：
 
 ```xml
     <ExcludeGeneratedDebugSymbol>False</ExcludeGeneratedDebugSymbol>

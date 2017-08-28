@@ -1,10 +1,10 @@
 ---
-title: "使用 REST 创建 ContentKey | Microsoft Docs"
+title: "使用 REST 创建内容密钥 | Microsoft 文档"
 description: "了解如何创建提供对资产进行安全访问的内容密钥。"
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 95e9322b-168e-4a9d-8d5d-d7c946103745
 ms.service: media-services
@@ -12,23 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 08/10/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: ffe17f50db9afe7c562b0890e8ea24d517e31bf7
-ms.lasthandoff: 02/16/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 5792346788b6635a517af6c9fda1b896039e29e6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/15/2017
 
 ---
-# <a name="create-contentkeys-with-rest"></a>使用 REST 创建 ContentKey
+# <a name="create-content-keys-with-rest"></a>使用 REST 创建内容密钥
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-create-contentkey.md)
 > * [.NET](media-services-dotnet-create-contentkey.md)
 > 
 > 
 
-媒体服务允许你创建新资产和传送加密的资产。 **ContentKey** 提供对**资产**的安全访问。 
+媒体服务允许创建新资产和传送加密的资产。 **ContentKey** 提供对**资产**的安全访问。 
 
 创建新资产时（例如，[上传文件](media-services-rest-upload-files.md)之前），可以指定以下加密选项：**StorageEncrypted**、**CommonEncryptionProtected** 或 **EnvelopeEncryptionProtected**。 
 
@@ -36,51 +36,54 @@ ms.lasthandoff: 02/16/2017
 
 加密的资产必须与 **ContentKey** 关联。 本文介绍如何创建内容密钥。
 
-以下是用于生成内容密钥的常规步骤，你会将这些内容密钥与你想要进行加密的资产关联。 
+以下是用于生成内容密钥的常规步骤，会将这些内容密钥与你想要进行加密的资产关联。 
 
 1. 随机生成一个 16 字节 AES 密钥（用于常规和信封加密）或 32 字节 AES 密钥（用于存储加密）。 
    
-    这将成为你资产的内容密钥，这意味着该资产的所有关联文件在解密过程中需要使用同一内容密钥。 
+    这会成为资产的内容密钥，这意味着该资产的所有关联文件在解密过程中需要使用同一内容密钥。 
 2. 调用 [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) 和 [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) 方法来获取正确的 X.509 证书，必须使用该证书加密内容密钥。
-3. 使用 X.509 证书的公钥来加密你的内容密钥。 
+3. 使用 X.509 证书的公钥来加密内容密钥。 
    
    媒体服务 .NET SDK 在加密时使用 RSA 和 OAEP。  可以参阅 [EncryptSymmetricKeyData 函数](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)中的示例。
 4. 创建一个使用密钥标识符和内容密钥计算得出的校验和值（基于 PlayReady AES 密钥校验和算法）。 有关详细信息，请参阅位于[此处](http://www.microsoft.com/playready/documents/)的 PlayReady 标头对象文档的“PlayReady AES 密钥校验和算法”部分。
    
    下面的 .NET 示例将使用密钥标识符和明文内容密钥的 GUID 部分计算校验和。
-   
-     public static string CalculateChecksum(byte[] contentKey, Guid keyId)   {
-   
-         byte[] array = null;
-         using (AesCryptoServiceProvider aesCryptoServiceProvider = new AesCryptoServiceProvider())
+
+         public static string CalculateChecksum(byte[] contentKey, Guid keyId)
          {
-             aesCryptoServiceProvider.Mode = CipherMode.ECB;
-             aesCryptoServiceProvider.Key = contentKey;
-             aesCryptoServiceProvider.Padding = PaddingMode.None;
-             ICryptoTransform cryptoTransform = aesCryptoServiceProvider.CreateEncryptor();
-             array = new byte[16];
-             cryptoTransform.TransformBlock(keyId.ToByteArray(), 0, 16, array, 0);
+
+            byte[] array = null;
+            using (AesCryptoServiceProvider aesCryptoServiceProvider = new AesCryptoServiceProvider())
+            {
+                aesCryptoServiceProvider.Mode = CipherMode.ECB;
+                aesCryptoServiceProvider.Key = contentKey;
+                aesCryptoServiceProvider.Padding = PaddingMode.None;
+                ICryptoTransform cryptoTransform = aesCryptoServiceProvider.CreateEncryptor();
+                array = new byte[16];
+                cryptoTransform.TransformBlock(keyId.ToByteArray(), 0, 16, array, 0);
+            }
+            byte[] array2 = new byte[8];
+            Array.Copy(array, array2, 8);
+            return Convert.ToBase64String(array2);
          }
-         byte[] array2 = new byte[8];
-         Array.Copy(array, array2, 8);
-         return Convert.ToBase64String(array2);
-     }
 5. 使用前面步骤中收到的 **EncryptedContentKey**（转换为 base64 编码的字符串）、**ProtectionKeyId**、**ProtectionKeyType**、**ContentKeyType** 和 **Checksum** 值创建内容密钥。
 6. 通过 $links 操作将 **ContentKey** 实体与**资产**实体相关联。
 
-请注意，本主题中省略了生成 AES 密钥、加密密钥以及计算校验和的示例。 仅提供了演示如何与媒体服务进行交互的示例。
+请注意，本主题中未说明如何生成 AES 密钥、加密密钥以及计算校验和。 
 
-> [!NOTE]
-> 使用媒体服务 REST API 时，需注意以下事项：
-> 
-> 访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
-> 
-> 成功连接到 https://media.windows.net 后，将收到指定另一个媒体服务 URI 的 301 重定向。 必须按[使用 REST API 连接到媒体服务](media-services-rest-connect-programmatically.md)中所述，对新的 URI 执行后续调用。 
-> 
-> 
+>[!NOTE]
+
+>访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
+
+## <a name="connect-to-media-services"></a>连接到媒体服务
+
+若要了解如何连接到 AMS API，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
+
+>[!NOTE]
+>成功连接到 https://media.windows.net 后，将收到指定另一个媒体服务 URI 的 301 重定向。 必须对这个新 URI 进行后续调用。
 
 ## <a name="retrieve-the-protectionkeyid"></a>检索 ProtectionKeyId
-以下示例演示了如何检索证书的证书指纹 ProtectionKeyId，你在加密内容密钥时必须使用此指纹。 执行此步骤以确保你的计算机已具备适当的证书。
+以下示例演示了如何检索证书的证书指纹 ProtectionKeyId，在加密内容密钥时必须使用此指纹。 执行此步骤以确保计算机已具备适当的证书。
 
 请求：
 
@@ -228,7 +231,7 @@ ms.lasthandoff: 02/16/2017
     "Checksum":"calculated checksum"}
 
 ## <a name="associate-the-contentkey-with-an-asset"></a>将 ContentKey 与资产关联
-创建 ContentKey 后，使用 $links 操作将其与你的资产关联，如以下示例所示：
+创建 ContentKey 后，使用 $links 操作将其与资产关联，如以下示例所示：
 
 请求：
 

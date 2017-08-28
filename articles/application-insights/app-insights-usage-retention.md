@@ -11,23 +11,22 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 05/03/2017
-ms.author: cfreeman
+ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 75abfb977a47ccef45bcc2124b31fbd06ea7d68e
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 2363e725d44facc5417c0baf3f80c8b55fdca470
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>使用 Azure Application Insights 为 Web 应用程序进行用户留存情况分析
 
-
-            [Azure Application Insights](app-insights-overview.md) 中的“留存情况”边栏选项卡可以帮助你分析有多少用户回归到应用，以及他们以何频率执行特定的任务或达成目标。 例如，如果运行游戏网站，则可以会在输掉游戏后回归到网站的用户数与在获胜后回归的用户数进行比较。 此信息有助于改进用户体验和业务策略。
+[Azure Application Insights](app-insights-overview.md) 中的“留存情况”功能可以帮助分析有多少用户回归到应用，以及他们以何频率执行特定的任务或达成目标。 例如，如果运行游戏网站，则可以会在输掉游戏后回归到网站的用户数与在获胜后回归的用户数进行比较。 此信息有助于改进用户体验和业务策略。
 
 ## <a name="get-started"></a>入门
 
-如果在 Application Insights 门户的“留存情况”边栏选项卡中没有看到数据，请[了解如何开始使用“使用情况”工具](app-insights-usage-overview.md)。
+如果在 Application Insights 门户的“留存情况”工具中没有看到数据，请[了解如何开始使用“使用情况”工具](app-insights-usage-overview.md)。
 
 ## <a name="the-retention-tool"></a>留存情况工具
 
@@ -40,6 +39,9 @@ ms.lasthandoff: 08/09/2017
 5. 网格根据 2 号图标处的查询生成器显示保留的用户数。 每行都表示在所显示的时间段内执行了任意事件的一群用户。 行中的每个单元格显示了该用户群中有多少人在之后的某个时间段内至少回归了一次。 某些用户可能在多个时间段内都回归过。 
 6. 见解卡中显示了排名前 5 的启动事件和排名前 5 的返回事件，帮助用户更好地了解留存情况报表。 
 
+![留存情况鼠标悬停](./media/app-insights-usage-retention/hover.png)
+
+用户可将鼠标悬停在留存情况工具的单元格上，以访问分析按钮和解释单元格含义的工具提示。 “分析”按钮可让用户使用预填充的查询来生成“分析”工具，以便从单元格生成用户。 
 
 ## <a name="use-business-events-to-track-retention"></a>使用业务事件跟踪留存情况
 
@@ -67,6 +69,9 @@ ms.lasthandoff: 08/09/2017
 - 如果已经发送自定义事件或页面视图，请浏览使用情况工具，了解用户如何使用服务。
     - [用户、会话、事件](app-insights-usage-segmentation.md)
     - [漏斗图](usage-funnels.md)
+    - [用户流](app-insights-usage-flows.md)
     - [工作簿](app-insights-usage-workbooks.md)
     - [添加用户上下文](app-insights-usage-send-user-context.md)
+
+
 

@@ -1,24 +1,25 @@
 ---
 title: "在 Azure 容器服务中将 Spring Boot 应用部署于 Kubernetes | Microsoft Docs"
 description: "本教程将指导用户完成在 Microsoft Azure 的 Kubernetes 群集中部署 Spring Boot 应用程序的步骤。"
-services: 
+services: container-service
 documentationcenter: java
 author: rmcmurray
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 
-ms.service: multiple
+ms.service: container-service
 ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 05/20/2017
+ms.date: 08/04/2017
 ms.author: asirveda;robmcm
+ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 824eaf3362243763c8e24080c351e5c43d319ad7
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 7f726436b2d459b8c16abb02e07de099abfd8974
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -297,11 +298,8 @@ ms.lasthandoff: 07/25/2017
 
 有关使用 Azure 上的 Spring Boot 的详细信息，请参阅以下文章：
 
-* [将 Spring Boot 应用程序部署到 Azure 应用服务](../../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
-
-* [在 Azure 容器服务中运行 Linux 上的 Spring Boot 应用程序](container-service-deploy-spring-boot-app-on-linux.md)
-
-## <a name="additional-resources"></a>其他资源
+* [将 Spring Boot 应用程序部署到 Azure App Service](../../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
+* [在 Azure 容器服务中将 Spring Boot 应用程序部署于 Linux 上](container-service-deploy-spring-boot-app-on-linux.md)
 
 有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心]和[用于 Visual Studio Team Services 的 Java 工具]。
 

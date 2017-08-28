@@ -2,7 +2,7 @@
 title: "使用 REST 管理媒体服务实体 | Microsoft Docs"
 description: "了解如何使用 REST API 管理媒体服务实体。"
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2017
+ms.date: 08/10/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 946ec4d9c2638cf65f725341dfad1d08751473c6
-ms.openlocfilehash: 534c6e42ace9f42b25fe287de14b02732ed496a4
-ms.lasthandoff: 02/10/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 1e4336bef9324b5aa9456135cac9b71d19e02050
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="managing-media-services-entities-with-rest"></a>使用 REST 管理媒体服务实体 
@@ -28,24 +28,23 @@ ms.lasthandoff: 02/10/2017
 > 
 > 
 
-Microsoft Azure 媒体服务是一项以 OData v3 为基础的基于 REST 的服务。 因此，你可以像在任何其他 OData 服务上一样添加、查询、更新和删除实体。 适用时，将标注例外情况。 有关 OData 的详细信息，请参阅[开放数据协议文档](http://www.odata.org/documentation/)。
+Microsoft Azure 媒体服务是一项以 OData v3 为基础的基于 REST 的服务。 你可以像在任何其他 OData 服务上一样添加、查询、更新和删除实体。 适用时，将标注例外情况。 有关 OData 的详细信息，请参阅[开放数据协议文档](http://www.odata.org/documentation/)。
 
 本主题演示如何使用 REST 管理 Azure 媒体服务实体。
 
+>[!NOTE]
+> 自 2017 年 4 月 1 日起，即使记录总数低于最大配额，也会自动删除帐户中所有超过 90 天的作业记录，及其相关的任务记录。 例如，将于 2017 年 4 月 1 日自动删除帐户中 2016 年 12 月 31 日前的所有作业记录。 在需要时，可使用本主题中所述的代码存档作业/任务信息。
+
+## <a name="considerations"></a>注意事项  
+
+访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
+
+## <a name="connect-to-media-services"></a>连接到媒体服务
+
+若要了解如何连接到 AMS API，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
 >[!NOTE]
-> 自 2017 年 4 月 1 日起，即使记录总数低于最大配额，也将自动删除帐户中所有超过 90 天的作业记录，及其相关的任务记录。 例如，将于 2017 年 4 月 1 日自动删除帐户中 2016 年 12 月 31 日前的所有作业记录。 在需要时，可使用本主题中所述的代码存档作业/任务信息。
-
-## <a name="considerations-when-working-with-ams-rest"></a>使用 AMS REST 时的注意事项
-
-使用媒体服务 REST API 时，需注意以下事项：
-
-> [!NOTE]
-> 访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
-> 
-> 成功连接到 https://media.windows.net 后，将收到指定另一个媒体服务 URI 的 301 重定向。 必须按[使用 REST API 连接到媒体服务](media-services-rest-connect-programmatically.md)中所述，对新的 URI 执行后续调用。 
-> 
-> 
+>成功连接到 https://media.windows.net 后，将收到指定另一个媒体服务 URI 的 301 重定向。 必须对这个新 URI 进行后续调用。
 
 ## <a name="adding-entities"></a>添加实体
 媒体服务中的每个实体都会通过 POST HTTP 请求添加到实体集（如资产）中。
@@ -65,7 +64,6 @@ Microsoft Azure 媒体服务是一项以 OData v3 为基础的基于 REST 的服
 
     {"Name": "DownloadPolicy", "DurationInMinutes" : "300", "Permissions" : 1}
 
-
 ## <a name="querying-entities"></a>查询实体
 查询和列出实体非常简单，仅涉及 GET HTTP 请求和可选的 OData 操作。
 下面的示例会检索一个包含所有 MediaProcessor 实体的列表。
@@ -79,7 +77,7 @@ Microsoft Azure 媒体服务是一项以 OData v3 为基础的基于 REST 的服
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337078831&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=suFkxhvPWxQVMjOYelOJfYEWkyTWJCBc02pF0N7NghI%3d
     Host: media.windows.net
 
-你也可以检索特定实体或与特定实体关联的所有实体集，如下列示例所示：
+也可以检索特定实体或与特定实体关联的所有实体集，如下列示例所示：
 
     GET https://media.windows.net/API/JobTemplates('nb:jtid:UUID:e81192f5-576f-b247-b781-70a790c20e7c') HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -159,9 +157,9 @@ Microsoft Azure 媒体服务是一项以 OData v3 为基础的基于 REST 的服
     {"Name" : "NewName" }
 
 ## <a name="deleting-entities"></a>删除实体
-可以使用 DELETE HTTP 请求在媒体服务中删除实体。 删除实体的顺序可能很重要，具体视实体而定。 例如，资产等实体要求先撤消（或删除）引用该特定资产的所有定位符，然后再删除资产。
+可以使用 DELETE HTTP 请求在媒体服务中删除实体。 删除实体的顺序可能很重要，具体视实体而定。 例如，资产等实体要求先撤消（或删除）引用该特定资产的所有定位符，再删除资产。
 
-下面的示例演示如何删除用于将文件上载到 blob 存储的定位符。
+下面的示例演示如何删除用于将文件上传到 blob 存储的定位符。
 
     DELETE https://media.windows.net/API/Locators('nb:lid:UUID:76dcc8e8-4230-463d-97b0-ce25c41b5c8d') HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -172,8 +170,6 @@ Microsoft Azure 媒体服务是一项以 OData v3 为基础的基于 REST 的服
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337067658&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=dithjGvlXR9HlyAf5DE99N5OCYkPAxsHIcsTSjm9%2fVE%3d
     Host: media.windows.net
     Content-Length: 0
-
-
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

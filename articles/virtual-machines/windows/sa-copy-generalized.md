@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 28fbe7d802a1258dd025b570a264b9306ba11dd6
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: d7f4a9558175835eba9096e6845726f21c7459d3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -28,7 +27,7 @@ ms.lasthandoff: 05/27/2017
 
 本文介绍如何使用存储帐户。 建议使用托管磁盘和托管映像而不是使用存储帐户。 有关详细信息，请参阅[在 Azure 中捕获通用 VM 的托管映像](capture-image-resource.md)。
 
-本文介绍如何通过 Azure PowerShell 使用存储帐户创建通用化 Azure VM 的映像。 然后可以使用该映像来创建另一个 VM。 该映像包含 OS 磁盘和附加到虚拟机的数据磁盘。 该映像不包含虚拟网络资源，因此，创建新 VM 时需要设置这些资源。 
+本文介绍如何通过 Azure PowerShell 使用存储帐户创建通用化 Azure VM 的映像。 然后可以使用该映像创建另一个 VM。 该映像包含 OS 磁盘和附加到虚拟机的数据磁盘。 该映像不包含虚拟网络资源，因此，创建新 VM 时需要设置这些资源。 
 
 ## <a name="prerequisites"></a>先决条件
 需要安装 Azure PowerShell 1.0.x 版或更新版本。 如果尚未安装 PowerShell，请参阅 [How to install and configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell）了解安装步骤。
@@ -43,7 +42,7 @@ ms.lasthandoff: 05/27/2017
 > 
 > 
 
-还可以使用 `sudo waagent -deprovision+user` 通用化 Linux VM，然后使用 PowerShell 捕获该 VM。 有关使用 CLI 捕获 VM 的信息，请参阅[如何使用 Azure CLI 对 Linux 虚拟机进行通用化和捕获](../linux/capture-image.md)。
+还可以使用 `sudo waagent -deprovision+user` 通用化 Linux VM，并使用 PowerShell 捕获该 VM。 有关使用 CLI 捕获 VM 的信息，请参阅[如何使用 Azure CLI 对 Linux 虚拟机进行通用化和捕获](../linux/capture-image.md)。
 
 
 1. 登录到 Windows 虚拟机。
@@ -67,7 +66,7 @@ ms.lasthandoff: 05/27/2017
     Login-AzureRmAccount
     ```
    
-    此时将打开一个弹出窗口让输入 Azure 帐户凭据。
+    此时会打开一个弹出窗口让输入 Azure 帐户凭据。
 2. 获取可用订阅的订阅 ID。
    
     ```powershell
@@ -101,7 +100,7 @@ ms.lasthandoff: 05/27/2017
 
 ## <a name="create-the-image"></a>创建映像
 
-使用此命令在目标存储容器中创建非托管虚拟机映像。 该映像在创建时所在的存储帐户与原始虚拟机的相同。 `-Path` 参数将源 VM 的 JSON 模板的副本保存到本地计算机。 `-DestinationContainerName` 参数是要在其中保存映像的容器的名称。 如果该容器不存在，系统将自动创建。
+使用此命令在目标存储容器中创建非托管虚拟机映像。 该映像在创建时所在的存储帐户与原始虚拟机的相同。 `-Path` 参数将源 VM 的 JSON 模板的副本保存到本地计算机。 `-DestinationContainerName` 参数是要在其中保存映像的容器的名称。 如果该容器不存在，系统会自动创建。
    
 ```powershell
 Save-AzureRmVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
@@ -255,7 +254,7 @@ $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
 ## <a name="next-steps"></a>后续步骤
-若要使用 Azure PowerShell 管理新虚拟机，请参阅[使用 Azure Resource Manager 与 PowerShell 来管理虚拟机](ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+若要使用 Azure PowerShell 管理新虚拟机，请参阅[使用 Azure Resource Manager 与 PowerShell 来管理虚拟机](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 
 

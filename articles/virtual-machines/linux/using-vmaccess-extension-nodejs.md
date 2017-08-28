@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: v-livech
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d58bf287284673c0767a25289660db06aa8e5863
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 278bf1785aac71068ab94cf9916af69a204c44be
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="manage-users-ssh-and-check-or-repair-disks-on-azure-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-10"></a>配合使用 VMAccess 扩展和 Azure CLI 1.0 管理用户、SSH，并检查或修复 Azure Linux VM 上的磁盘
@@ -27,7 +27,7 @@ ms.lasthandoff: 04/03/2017
 
 * 一个 Azure 帐户（[获取免费试用版](https://azure.microsoft.com/pricing/free-trial/)）。
 * 已使用 `azure login` 登录 [Azure CLI](../../cli-install-nodejs.md)。
-* Azure CLI *必须处于*Azure Resource Manager 模式`azure config mode arm`。
+* Azure CLI *必须处于* Azure Resource Manager 模式`azure config mode arm`。
 
 
 ## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本
@@ -116,7 +116,7 @@ azure vm reset-access \
 
 ## <a name="detailed-walkthrough"></a>详细演练
 ### <a name="vmaccess-defined"></a>定义的 VMAccess：
-Linux VM 上的磁盘显示错误。 不知道怎样重置 Linux VM 的 root 密码，或者不小心删除了 SSH 私钥。 如果在数据中心的时代发生这种情况，则需要开车到那里，然后打开 KVM 访问服务器控制台。 请将 Azure VMAccess 扩展想像成该 KVM 交换机，它允许你访问控制台以重置 Linux 访问或执行磁盘级维护。
+Linux VM 上的磁盘显示错误。 不知道怎样重置 Linux VM 的 root 密码，或者不小心删除了 SSH 私钥。 如果在数据中心的时代发生这种情况，则需要开车到那里，并打开 KVM 访问服务器控制台。 请将 Azure VMAccess 扩展想像成该 KVM 交换机，它允许访问控制台以重置 Linux 访问或执行磁盘级维护。
 
 在详细演练中，将使用使用原始 JSON 文件的 VMAccess 的长格式。  从 Azure 模板也可以调用这些 VMAccess JSON 文件。
 
@@ -240,7 +240,7 @@ azure vm extension set \
 ```
 
 ### <a name="using-vmaccess-to-reset-the-sshd-configuration"></a>使用 VMAccess 重置 SSHD 配置
-如果你更改了 Linux VM SSHD 配置，并在验证更改之前关闭 SSH 连接，可能无法恢复 SSH 操作。  使用 VMAccess 可将 SSHD 配置重置回到已知正常的配置，而无需通过 SSH 登录。
+如果更改了 Linux VM SSHD 配置，并在验证更改之前关闭 SSH 连接，可能无法恢复 SSH 操作。  使用 VMAccess 可将 SSHD 配置重置回到已知正常的配置，而无需通过 SSH 登录。
 
 使用此 VMAccess 脚本重置 SSHD 配置：
 
@@ -268,7 +268,7 @@ azure vm extension set \
 
 [关于虚拟机扩展和功能](../windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[使用 Linux VM 扩展创作 Azure Resource Manager 模板](../windows/extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[使用 Linux VM 扩展创作 Azure Resource Manager 模板](../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [在创建期间使用 cloud-init 自定义 Linux VM](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

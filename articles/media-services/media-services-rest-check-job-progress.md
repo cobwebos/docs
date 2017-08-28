@@ -4,7 +4,7 @@ description: "了解如何跟踪作业进度。"
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: a1a1f956-c035-448a-af9c-5ac15fcce9dd
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2017
+ms.date: 08/10/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 0f66bb4291d4e8c457f592734437513a727ecc29
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 23b6c0f7abd40d67792d45e4ea0fae02efeae861
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/16/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="how-to-check-job-progress"></a>如何：检查作业进度
@@ -29,7 +29,16 @@ ms.lasthandoff: 02/16/2017
 > 
 > 
 
-当你运行作业时，通常需要采用某种方式来跟踪作业进度。 你可以使用作业的 State 属性来查看该作业的状态。 有关 State 属性的详细信息，请参阅[作业实体属性](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties)。
+运行作业时，通常需要采用某种方式来跟踪作业进度。 可以使用作业的 State 属性来查看该作业的状态。 有关 State 属性的详细信息，请参阅[作业实体属性](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties)。
+
+## <a name="connect-to-media-services"></a>连接到媒体服务
+
+若要了解如何连接到 AMS API，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
+
+>[!NOTE]
+>成功连接到 https://media.windows.net 后，将收到指定另一个媒体服务 URI 的 301 重定向。 必须对这个新 URI 进行后续调用。
+
+## <a name="check-job-progress"></a>检查作业进度
 
 请求：
 
@@ -67,4 +76,7 @@ ms.lasthandoff: 02/16/2017
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
+## <a name="see-also"></a>另请参阅
+
+[媒体服务操作 REST API 概述](media-services-rest-how-to-use.md)
 

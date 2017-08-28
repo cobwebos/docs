@@ -4,7 +4,7 @@ description: "本文简要概述了如何使用 Azure 媒体服务管理编码�
 services: media-services
 documentationcenter: 
 author: juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 676313f8-a158-4e3a-a99b-2c29a341ecc9
 ms.service: media-services

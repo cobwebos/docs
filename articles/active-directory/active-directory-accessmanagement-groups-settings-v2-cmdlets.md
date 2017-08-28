@@ -1,5 +1,5 @@
 ---
-title: "用于在 Azure AD 中进行组管理的 Azure Active Directory PowerShell cmdlet | Microsoft 文档"
+title: "在 Azure Active Directory 中管理组的 PowerShell 示例 | Microsoft Docs"
 description: "本页提供的 PowerShell 示例适用于在 Azure Active Directory 中管理组"
 keywords: "Azure AD, Azure Active Directory, PowerShell, 组, 组管理"
 services: active-directory
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2017
+ms.date: 08/09/2017
 ms.author: curtand
 ms.reviewer: rodejo
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: c2a313c5ad011d03309a962bf2905750a478b890
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: f1ce76178baa44428afca5631c749c2739ad779e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>用于组管理的 Azure Active Directory 版本 2 cmdlet
@@ -31,10 +31,10 @@ ms.lasthandoff: 08/05/2017
 >
 >
 
-以下文档提供的示例介绍如何使用 PowerShell 在 Azure Active Directory (Azure AD) 中管理组。  该文档还介绍如何使用 Azure AD PowerShell 模块进行设置。 首先，必须[下载 Azure AD PowerShell 模块](https://www.powershellgallery.com/packages/AzureAD/)。
+本文包含有关如何使用 PowerShell 在 Azure Active Directory (Azure AD) 中管理组的示例。  此外，本文还介绍如何安装 Azure AD PowerShell 模块。 首先，必须[下载 Azure AD PowerShell 模块](https://www.powershellgallery.com/packages/AzureAD/)。
 
 ## <a name="installing-the-azure-ad-powershell-module"></a>安装 Azure AD PowerShell 模块
-若要安装 AzureAD PowerShell 模块，请使用以下命令：
+若要安装 Azure AD PowerShell 模块，请使用以下命令：
 
     PS C:\Windows\system32> install-module azuread
 
@@ -46,10 +46,10 @@ ms.lasthandoff: 08/05/2017
     ---------- ---------    ----                                ----------------
     Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 
-现在可以开始使用模块中的 cmdlet 了。 有关 Azure AD 模块中 cmdlet 的完整说明，请参阅[联机参考文档](/powershell/azure/install-adv2?view=azureadps-2.0)。
+现在可以开始使用模块中的 cmdlet 了。 有关 Azure AD 模块中 cmdlet 的完整说明，请参阅 [Azure Active Directory PowerShell 版本 2](/powershell/azure/install-adv2?view=azureadps-2.0) 的联机参考文档。
 
 ## <a name="connecting-to-the-directory"></a>连接到目录
-在开始使用 Azure AD PowerShell cmdlet 管理组之前，必须将 PowerShell 会话连接到要管理的目录。 为此，请使用以下命令：
+在开始使用 Azure AD PowerShell cmdlet 管理组之前，必须将 PowerShell 会话连接到要管理的目录。 请使用以下命令：
 
     PS C:\Windows\system32> Connect-AzureAD
 
@@ -109,7 +109,8 @@ ms.lasthandoff: 08/05/2017
     ProxyAddresses               : {}
     SecurityEnabled              : True
 
-请注意，AzureAD PowerShell cmdlet 实施 OData 查询标准。如需详细信息，可单击[此处](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter)。
+> [!NOTE] 
+> AzureAD PowerShell cmdlet 实现 OData 查询标准。 有关详细信息，请参阅[使用 OData 终结点的 OData 系统查询选项](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter)中的 $filter。
 
 ## <a name="creating-groups"></a>创建组
 若要在目录中创建新的组，可使用 New-AzureADGroup cmdlet。 此 cmdlet 创建名为“Marketing”的新安全组：
@@ -212,7 +213,7 @@ ms.lasthandoff: 08/05/2017
 
 #NAME?
 
-若要检索组的所有者，请使用 Get-AzureADGroupOwner：
+若要检索组的所有者，请使用 Get-AzureADGroupOwner cmdlet：
 
     PS C:\Windows\system32> Get-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
 
@@ -222,13 +223,12 @@ ms.lasthandoff: 08/05/2017
     ----------------- --------                             ----------
                           e831b3fd-77c9-49c7-9fca-de43e109ef67 User
 
-若需从组中删除所有者，请使用 Remove-AzureADGroupOwner：
+若需从组中删除所有者，请使用 Remove-AzureADGroupOwner cmdlet：
 
     PS C:\Windows\system32> remove-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -OwnerId e831b3fd-77c9-49c7-9fca-de43e109ef67
 
 ## <a name="reserved-aliases"></a>保留的别名 
-创建组后，某些终结点允许最终用户指定一个 mailNickname 或别名，用作组的电子邮件地址的一部分。   
-仅 Azure AD 全局管理员可以创建具有以下权限较高的电子邮件别名的组。 
+创建组后，某些终结点允许最终用户指定一个 mailNickname 或别名，用作组的电子邮件地址的一部分。 仅 Azure AD 全局管理员可以创建具有以下权限较高的电子邮件别名的组。 
   
 * abuse 
 * admin 

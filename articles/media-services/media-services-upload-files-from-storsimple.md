@@ -4,7 +4,7 @@ description: "本文简述 Azure StorSimple 数据管理器。 本文还提供�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 1dd09328-262b-43ef-8099-73241b49a925
 ms.service: media-services

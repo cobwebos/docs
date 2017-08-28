@@ -14,16 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: c0413f9c83fd6dceb4a1d956c0f32712e29bdc58
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 07c0265490cfae733133b6e0c938f90f9b392da4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
+ms.lasthandoff: 08/11/2017
 
 ---
-<a id="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management" class="xliff"></a>
-
-# 如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
+# <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 通过 Azure API 管理选择发布和管理 API，即可充分利用了许多容错和基础结构功能，否则必须设计、实现和管理这些功能。 Azure 平台通过花费少量成本消除大量潜在故障。
 
 若要从影响托管 API 管理服务的区域的可用性问题中恢复，应随时准备好在不同的区域中重建服务。 根据可用性目标和恢复时间目标，可能要在一个或多个区域中保留备份服务，并尝试使其配置和内容与活动服务保持同步。 服务备份和还原功能为实现灾难恢复策略提供必要的构建基块。
@@ -33,13 +31,11 @@ ms.lasthandoff: 03/31/2017
 > [!NOTE]
 > 为灾难恢复备份和还原 API 管理服务实例的过程还可用于为暂存之类的方案复制 API 管理服务实例。
 >
-> 请注意，每个备份都将在 30 天后过期。 如果在 30 天有效期到期后尝试还原备份，还原将失败并显示 `Cannot restore: backup expired` 消息。
+> 请注意，每个备份都会在 30 天后过期。 如果在 30 天有效期到期后尝试还原备份，还原会失败并显示 `Cannot restore: backup expired` 消息。
 >
 >
 
-<a id="authenticating-azure-resource-manager-requests" class="xliff"></a>
-
-## 对 Azure Resource Manager 请求进行身份验证
+## <a name="authenticating-azure-resource-manager-requests"></a>对 Azure Resource Manager 请求进行身份验证
 > [!IMPORTANT]
 > 用于还原和备份的 REST API 使用 Azure Resource Manager，并且具有与用于管理 API 管理实体的 REST API 不同的身份验证机制。 本部分中的步骤介绍如何对 Azure Resource Manager 请求进行身份验证。 有关详细信息，请参阅[对 Azure Resource Manager 请求进行身份验证](http://msdn.microsoft.com/library/azure/dn790557.aspx)。
 >
@@ -49,28 +45,26 @@ ms.lasthandoff: 03/31/2017
 
 * 向 Azure Active Directory 租户添加应用程序。
 * 为添加的应用程序设置权限。
-* 获取用于对 Azure Active Directory 的请求进行身份验证的令牌。
+* 获取用于对 Azure Resource Manager 的请求进行身份验证的令牌。
 
 第一步是创建 Azure Active Directory 应用程序。 使用包含 API 管理服务实例的订阅登录 [Azure 经典门户](http://manage.windowsazure.com/)并导航到默认 Azure Active Directory 的“应用程序”选项卡。
 
 > [!NOTE]
-> 如果 Azure Active Directory 默认目录对帐户不可见，请联系 Azure 订阅的管理员以向帐户授予所需权限。 若要了解如何查找默认目录，请参阅[在 Azure Active Directory 中创建用于 Windows VM 的工作或学校标识](../virtual-machines/windows/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中的“在 Azure 经典门户中查找默认目录”。
->
->
+> 如果 Azure Active Directory 默认目录对帐户不可见，请联系 Azure 订阅的管理员以向帐户授予所需权限。
 
 ![创建 Azure Active Directory 应用程序][api-management-add-aad-application]
 
-依次单击“添加”、“添加我的组织正在开发的应用程序”，然后选择“本机客户端应用程序”。 输入描述性名称，然后单击“下一步”箭头。 输入占位符 URL，如为“重定向 URI”输入 `http://resources`，因为它是必填字段，但以后不使用该值。 单击此复选框保存应用程序。
+依次单击“添加”、“添加我的组织正在开发的应用程序”，并选择“本机客户端应用程序”。 输入描述性名称，并单击“下一步”箭头。 输入占位符 URL，如为“重定向 URI”输入 `http://resources`，因为它是必填字段，但以后不使用该值。 单击此复选框保存应用程序。
 
-保存应用程序后，单击“配置”、向下滚动到“针对其他应用程序层VDE权限”部分，然后单击“添加应用程序”。
+保存应用程序后，单击“配置”、向下滚动到“针对其他应用程序层VDE权限”部分，并单击“添加应用程序”。
 
 ![添加权限][api-management-aad-permissions-add]
 
-依次选择“Windows”、“Azure Service Management API”，然后单击该复选框添加应用程序。
+依次选择“Windows”、“Azure Service Management API”，并单击该复选框添加应用程序。
 
 ![添加权限][api-management-aad-permissions]
 
-单击新添加的“Windows”“Azure Service Management API”应用程序旁边的“委派的权限”、选中“访问 Azure 服务管理(预览版)”的复选框，然后单击“保存”。
+单击新添加的“Windows”“Azure Service Management API”应用程序旁边的“委派的权限”、选中“访问 Azure 服务管理(预览版)”的复选框，并单击“保存”。
 
 ![添加权限][api-management-aad-delegated-permissions]
 
@@ -123,7 +117,7 @@ namespace GetTokenResourceManagerRequests
 request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 ```
 
-## <a name="step1"> </a>备份 API 管理服务
+## <a name="step1"></a>备份 API 管理服务
 若要备份 API 管理服务问题，请发送以下 HTTP 请求：
 
 `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}`
@@ -159,7 +153,7 @@ request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 * 执行服务备份的频率将影响恢复点目标。 为了最大程度减少它，建议实现定期备份，以及在对 API 管理服务进行重大更改后执行按需备份。
 * 备份操作正在进行时对服务配置（例如 API、策略、开发人员门户外观）所作的**更改****可能不包含在备份中，因此将丢失**。
 
-## <a name="step2"> </a>还原 API 管理服务
+## <a name="step2"></a>还原 API 管理服务
 若要从之前创建的备份还原 API 管理服务，请发出以下 HTTP 请求：
 
 `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}`
@@ -193,9 +187,7 @@ request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 >
 >
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 查看以下 Microsoft 博客了解备份/还原过程的两种不同的演练。
 
 * [复制 Azure API 管理帐户](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)

@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 08/11/2017
 ms.author: banders
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 5c2cb05ced7841899c2bd19f627d13b86a4b05cc
+ms.translationtype: HT
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: c6568e491429f6046ab164ab5eacd0ae5846e201
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 08/14/2017
 
 ---
 # <a name="network-performance-monitor-solution-in-log-analytics"></a>Log Analytics 中的网络性能监视器解决方案
@@ -51,12 +50,12 @@ ms.lasthandoff: 06/09/2017
 使用[将 Windows 计算机连接到 Log Analytics](log-analytics-windows-agents.md) 和[将 Operations Manager 连接到 Log Analytics](log-analytics-om-agents.md) 中的基本过程安装代理。
 
 > [!NOTE]
-> 若要有足够数据发现并监视你的网络资源，需要安装至少 2 个代理。 否则，该解决方案会一直保持为配置状态，直到你安装并配置其他代理。
+> 要有足够数据发现并监视网络资源，需要安装至少 2 个代理。 否则，该解决方案会一直保持为配置状态，直到安装并配置其他代理。
 >
 >
 
 ### <a name="where-to-install-the-agents"></a>代理安装位置
-在安装代理之前，请考虑网络的拓扑结构以及要监视网络的哪些部分。 我们建议你为想要监视的每个子网安装一个以上的代理。 也就是说，对于要监视的每一个子网，请选择至少两个服务器或 VM，并在其上安装代理。
+在安装代理之前，请考虑网络的拓扑结构以及要监视网络的哪些部分。 我们建议为想要监视的每个子网安装一个以上的代理。 也就是说，对于要监视的每一个子网，请选择至少两个服务器或 VM，并在其上安装代理。
 
 如果不确定你网络的拓扑结构，请在具有关键工作负荷、想要监视网络性能的服务器上安装代理。 例如，可能想要跟踪 Web 服务器与运行 SQL Server 的服务器之间的网络连接。 在该示例中，应在这两台服务器上都安装代理。
 
@@ -76,7 +75,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 ```
 
 
-如果打算使用 TCP 协议，则需要打开这些计算机的防火墙端口，确保代理可以通信。 你需要下载 [EnableRules.ps1 PowerShell 脚本](https://gallery.technet.microsoft.com/OMS-Network-Performance-04a66634)，然后使用管理员权限在 PowerShell 窗口中在不使用任何参数的情况下运行该脚本。
+如果打算使用 TCP 协议，则需要打开这些计算机的防火墙端口，确保代理可以通信。 需要下载 [EnableRules.ps1 PowerShell 脚本](https://gallery.technet.microsoft.com/OMS-Network-Performance-04a66634)，并使用管理员权限在 PowerShell 窗口中在不使用任何参数的情况下运行该脚本。
 
 该脚本会创建网络性能监视器所需的注册表项，还会创建用于允许代理创建相互之间的 TCP 连接的 Windows 防火墙规则。 该脚本创建的注册表项还指定是否记录调试日志和该日志文件的路径。 还会定义用于通信的代理 TCP 端口。 该脚本会自动设置这些注册表项的值，因此不应手动更改这些注册表项。
 
@@ -94,13 +93,13 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
     >[!NOTE]
     >Windows 服务器操作系统的代理同时支持使用 TCP 和 ICMP 作为综合事务的协议。 不过，Windows 客户端操作系统的代理仅支持使用 ICMP 作为综合事务的协议。
 
-2. 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将网络性能监视器解决方案添加到工作区。  
+2. 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) 或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将网络性能监视器解决方案添加到工作区。  
    ![网络性能监视器符号](./media/log-analytics-network-performance-monitor/npm-symbol.png)
 3. 在 OMS 门户中，将看到一个标题为**网络性能监视器**的新磁贴以及*解决方案需要进行额外配置*消息。 需要配置解决方案，以基于代理发现的子网和节点添加网络。 单击“网络性能监视器”开始配置默认网络。  
    ![解决方案需要进行额外配置](./media/log-analytics-network-performance-monitor/npm-config.png)
 
 ### <a name="configure-the-solution-with-a-default-network"></a>使用默认网络配置解决方案
-在配置页上，会看到名为**默认**的单个网络。 尚未定义任何网络时，会将自动发现的所有子网置于默认网络中。
+在配置页上，会看到名为**默认**的单个网络。 尚未定义任何网络时，会会自动发现的所有子网置于默认网络中。
 
 每当创建网络时，会向创建的网络中添加子网，并从默认网络中删除该子网。 删除某个网络时，会自动将其中的所有子网返回到默认网络。
 
@@ -112,8 +111,8 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 网络性能监视器中的网络是子网的容器。 可以创建根据你喜好命名的网络，然后将子网添加到该网络中。 例如，可以创建名为 *Building1* 的网络，然后添加子网；也可以创建名为 *DMZ* 的网络，然后将外围安全区域所属的全部子网添加到该网络。
 
 #### <a name="to-create-a-new-network"></a>新建网络
-1. 单击“添加网络”，然后键入网络名称和描述。
-2. 选择一个或多个子网，然后单击“添加”。
+1. 单击“添加网络”，并键入网络名称和描述。
+2. 选择一个或多个子网，并单击“添加”。
 3. 单击“保存”以保存配置。  
    ![添加网络](./media/log-analytics-network-performance-monitor/npm-add-network.png)
 
@@ -134,8 +133,8 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 配置页上的“子网”选项卡中将列出至少安装一个代理的所有子网。
 
 #### <a name="to-enable-or-disable-monitoring-for-particular-subnetworks"></a>启用或禁用对特定子网的监视
-1. 选中或清除“子网 ID”旁边的框，然后确保已选中或已清除“用于监视”（视情况而定）。 可以选择或清除多个子网。 禁用时，不会监视子网，因为会更新代理以停止 ping 其他代理。
-2. 通过以下方式选择想要监视的特定子网的节点：从列表中选择子网，然后在包含未监视节点的列表与包含已监视节点的列表之间移动所需节点。
+1. 选中或清除“子网 ID”旁边的框，并确保已选中或已清除“用于监视”（视情况而定）。 可以选择或清除多个子网。 禁用时，不会监视子网，因为会更新代理以停止 ping 其他代理。
+2. 通过以下方式选择想要监视的特定子网的节点：从列表中选择子网，并在包含未监视节点的列表与包含已监视节点的列表之间移动所需节点。
    可以根据需要向子网添加自定义“描述”。
 3. 单击“保存”以保存配置。  
    ![编辑子网](./media/log-analytics-network-performance-monitor/npm-edit-subnet.png)
@@ -155,7 +154,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 系统会创建*默认规则*，并且每当一对网络或子网链接之间的丢失或延迟突破系统获知的阈值时，它会生成运行状况事件。 可以选择禁用默认规则，并创建自定义监视规则
 
 #### <a name="to-create-custom-monitoring-rules"></a>创建自定义监视规则
-1. 在“监视器”选项卡中，单击“添加规则”，然后输入规则名称和描述。
+1. 在“监视器”选项卡中，单击“添加规则”，并输入规则名称和描述。
 2. 从列表中选择要监视的网络或子网链接对。
 3. 首先从网络下拉列表中选择含有第一个感兴趣子网的网络，然后从相应的子网下拉列表中选择子网。
    如果想要监视网络链接中的所有子网，请选择“全部子网”。 同样，选择其他感兴趣的子网。 还可以单击“添加例外”从已选项中排除对特定子网链接的监视。
@@ -181,7 +180,7 @@ NPM 提供了 ICMP 与 TCP 协议之间的选择，以便于执行综合事务�
 选择要使用的协议之前，请考虑以下信息：
 
 ##### <a name="discovering-multiple-network-routes"></a>发现多个网络路由
-发现多个路由时，TCP 更为准确，并且在每个子网中需要使用的代理更少。 例如，一个或两个使用 TCP 的代理可以发现子网之间的所有冗余路径。 但是，你需要多个使用 ICMP 的代理才能达到类似结果。 使用 ICMP，如果两个子网之间有 *N* 个路由，则源或目标子网中需要 5*N* 个以上的代理。
+发现多个路由时，TCP 更为准确，并且在每个子网中需要使用的代理更少。 例如，一个或两个使用 TCP 的代理可以发现子网之间的所有冗余路径。 但是，需要多个使用 ICMP 的代理才能达到类似结果。 使用 ICMP，如果两个子网之间有 *N* 个路由，则源或目标子网中需要 5*N* 个以上的代理。
 
 ##### <a name="accuracy-of-results"></a>结果的准确性
 路由器和交换机往往将较低的优先级分配给 ICMP ECHO 数据包（与 TCP 数据包相比）。 在某些情况下，当网络设备负载很重时，TCP 获取的数据将更准确地反映应用程序遇到的丢失和延迟情况。 这是因为大部分应用程序流量都是通过 TCP 传送的。 在这种情况下，与 TCP 相比，ICMP 提供的结果准确性较低。
@@ -202,8 +201,8 @@ TCP 协议要求 TCP 数据包发送到目标端口。 NPM 代理使用的默认
 如果在部署期间选择使用 ICMP，可以随时通过编辑默认监视规则来切换到 TCP。
 
 ##### <a name="to-edit-the-default-monitoring-rule"></a>编辑默认监视规则
-1.  导航到“网络性能” > “监视” > “配置” > “监视”，然后单击“默认规则” 。
-2.  滚动到“协议”部分，然后选择要使用的协议。
+1.  导航到“网络性能” > “监视” > “配置” > “监视”，并单击“默认规则” 。
+2.  滚动到“协议”部分，并选择要使用的协议。
 3.  单击“保存”以应用设置。
 
 即使默认规则使用特定协议，也可以使用其他协议创建新规则。 甚至可以创建混合规则，其中一些规则使用 ICMP，另一些规则使用 TCP。
@@ -218,9 +217,9 @@ TCP 协议要求 TCP 数据包发送到目标端口。 NPM 代理使用的默认
 
 | 平台 | 直接代理 | SCOM 代理 | Azure 存储 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |![是](./media/log-analytics-network-performance-monitor/oms-bullet-green.png) |![是](./media/log-analytics-network-performance-monitor/oms-bullet-green.png) |![否](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |![否](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |![否](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |每隔 5 秒发送 TCP 握手/ICMP ECHO 消息，每隔 3 分钟发送数据 |
+| Windows | &#8226; | &#8226; |  |  |  |每隔 5 秒发送 TCP 握手/ICMP ECHO 消息，每隔 3 分钟发送数据 |
 
-解决方案使用综合事务来评估网络的运行状况。 网络中各个点安装的 OMS 代理将会相互交换 TCP 数据包或 ICMP Echo（取决于选择用于监视的协议）。 在此过程中，代理将了解往返时间和丢包情况（如果有）。 每个代理还会定期对其他代理执行跟踪路由，以全部找出网络中必须测试的各种路由。 使用此数据，代理就可以推断出网络延迟和丢包数字。 代理每隔 5 秒钟重复执行测试，聚合数据 3 分钟，然后将数据上传到 Log Analytics 服务。
+解决方案使用综合事务来评估网络的运行状况。 网络中各个点安装的 OMS 代理会相互交换 TCP 数据包或 ICMP Echo（取决于选择用于监视的协议）。 在此过程中，代理将了解往返时间和丢包情况（如果有）。 每个代理还会定期对其他代理执行跟踪路由，以全部找出网络中必须测试的各种路由。 使用此数据，代理就可以推断出网络延迟和丢包数字。 代理每隔 5 秒钟重复执行测试，聚合数据 3 分钟，然后将数据上传到 Log Analytics 服务。
 
 > [!NOTE]
 > 尽管代理相互频繁地通信，但它们在进行测试时并不会产生大量网络流量。 代理仅仅依靠 TCP SYN-SYNACK-ACK 握手数据包确定丢失和延迟 - 不会交换任何数据包。 在此过程中，代理只在需要时才会进行相互通信，并且会对代理通信拓扑进行优化以减少网络流量。
@@ -249,7 +248,7 @@ TCP 协议要求 TCP 数据包发送到目标端口。 NPM 代理使用的默认
 ![网络性能监视器仪表板](./media/log-analytics-network-performance-monitor/npm-dash01.png)
 
 ### <a name="drill-down-for-depth"></a>深入了解
-可以单击解决方案仪表板中的各个链接来进一步了解任何感兴趣部分。 例如，当看到警报或不正常的网络链接出现在仪表板上时，可以单击它以进一步进行调查。 会将你转到列出该特定网络链接的所有子网链接的页面。 将能够查看每个子网链接的丢失、延迟和运行状况状态，快速找出哪个子网链接导致了该问题。 可以单击“查看节点链接”查看不正常的子网链接的所有节点链接。 然后，可以查看个别节点到节点链接，找到不正常的节点链接。
+可以单击解决方案仪表板中的各个链接来进一步了解任何感兴趣部分。 例如，当看到警报或不正常的网络链接出现在仪表板上时，可以单击它以进一步进行调查。 会你将转到列出该特定网络链接的所有子网链接的页面。 将能够查看每个子网链接的丢失、延迟和运行状况状态，快速找出哪个子网链接导致了该问题。 可以单击“查看节点链接”查看不正常的子网链接的所有节点链接。 然后，可以查看个别节点到节点链接，找到不正常的节点链接。
 
 可以单击“查看拓扑”查看源节点和目标节点之间路由的逐跳拓扑。 不正常的路由或跃点会显示为红色，以便你能够快速确定网络特定部分的问题。
 
@@ -257,7 +256,7 @@ TCP 协议要求 TCP 数据包发送到目标端口。 NPM 代理使用的默认
 
 ### <a name="network-state-recorder"></a>网络状态记录器
 
-每个视图显示特定时间点的网络运行状况快照。 默认会显示最新的状态。 页面顶部栏显示该状态所处的时间点。 可以选择后退到某个时间，然后在栏中单击“操作”查看网络运行状况的快照。 查看最新状态时，还可以选择启用或禁用任何页面的自动刷新。
+每个视图显示特定时间点的网络运行状况快照。 默认会显示最新的状态。 页面顶部栏显示该状态所处的时间点。 可以选择后退到某个时间，并在栏中单击“操作”查看网络运行状况的快照。 查看最新状态时，还可以选择启用或禁用任何页面的自动刷新。
 
 ![网络状态](./media/log-analytics-network-performance-monitor/network-state.png)
 
@@ -271,7 +270,7 @@ TCP 协议要求 TCP 数据包发送到目标端口。 NPM 代理使用的默认
 ![趋势图](./media/log-analytics-network-performance-monitor/npm-trend.png)
 
 #### <a name="hop-by-hop-topology-map"></a>逐跳拓扑图
-网络性能监视器会向你呈现交互式拓扑图中两个节点之间路由的逐跳拓扑图。 可以通过以下方式查看拓扑图：选择某个节点链接，然后单击“查看拓扑”。 此外，也可以通过单击仪表板上的“路径”磁贴来查看拓扑图。 单击仪表板上的“路径”时，需要从左侧面板中选择源节点和目标节点，然后单击“绘图”即可绘制两个节点之间的路由。
+网络性能监视器会向你呈现交互式拓扑图中两个节点之间路由的逐跳拓扑图。 可以通过以下方式查看拓扑图：选择某个节点链接，并单击“查看拓扑”。 此外，也可以通过单击仪表板上的“路径”磁贴来查看拓扑图。 单击仪表板上的“路径”时，需要从左侧面板中选择源节点和目标节点，单击“绘图”即可绘制两个节点之间的路由。
 
 拓扑图会显示两个节点之间存在多少个路由，以及数据包会采用哪条路径。 在拓扑图上，网络性能瓶颈会以红色标记。 可以通过查看拓扑图上标为红色的元素，定位到发生问题的网络连接或网络设备。
 
@@ -284,7 +283,7 @@ TCP 协议要求 TCP 数据包发送到目标端口。 NPM 代理使用的默认
 #### <a name="fault-localization"></a>错误本地化
 网络性能监视器无需连接到网络设备即可找到网络瓶颈。 基于从网络收集的数据以及通过在网络图上应用高级算法，网络性能监视器可大概估计最有可能是问题根源的网络部分。
 
-当不可访问跃点时，此方法可用于确定网络瓶颈，因为不需要从网络设备（例如，路由器或交换机）收集任何数据。 当两个节点之间的跃点不在你的管理控制下时，此方法也非常有用。 例如，跃点可能是 ISP 路由器。
+当不可访问跃点时，此方法可用于确定网络瓶颈，因为不需要从网络设备（例如，路由器或交换机）收集任何数据。 当两个节点之间的跃点不在管理控制下时，此方法也非常有用。 例如，跃点可能是 ISP 路由器。
 
 ### <a name="log-analytics-search"></a>Log Analytics 搜索
 通过网络性能监视器仪表板和挖掘页面以图形方式显示的所有数据也可以在 Log Analytics 搜索中以本地方式使用。 可以使用搜索查询语言查询数据，然后通过将数据导出到 Excel 或 PowerBI 创建自定义报表。 仪表板的“常见查询”边栏选项卡中有一些查询非常有用，可以基于这些查询创建自己的查询和报表。
@@ -292,7 +291,7 @@ TCP 协议要求 TCP 数据包发送到目标端口。 NPM 代理使用的默认
 ![搜索查询](./media/log-analytics-network-performance-monitor/npm-queries.png)
 
 ## <a name="investigate-the-root-cause-of-a-health-alert"></a>调查运行状况警报的根本原因
-现在，你已对网络性能监视器有所了解，下面我们简单分析一下某个运行状况事件的根本原因。
+现在，已对网络性能监视器有所了解，下面我们简单分析一下某个运行状况事件的根本原因。
 
 1. 在“概述”页上，通过观察“网络性能监视器”磁贴即可快速获取网络的运行状况快照。 可以看到，在 6 个受监视的子网链接中，有 2 个是不正常的。 这需要调查。 单击该磁贴以查看解决方案仪表板。  
    ![网络性能监视器磁贴](./media/log-analytics-network-performance-monitor/npm-investigation01.png)
@@ -311,8 +310,8 @@ TCP 协议要求 TCP 数据包发送到目标端口。 NPM 代理使用的默认
 
 ## <a name="provide-feedback"></a>提供反馈
 
-- **UserVoice** - 你可以发表有关你希望我们开发的网络性能监视器功能的想法。 请访问我们的 [UserVoice 页](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring)。
-- **加入我们的队伍** - 我们总是希望一直有新客户不断加入我们的队伍。 那样，你将能够在早期接触到新功能并帮助我们改进网络性能监视器。 如果你有兴趣加入，请填写此[快速调查](https://aka.ms/npmcohort)。
+- **UserVoice** - 可以发表有关希望我们开发的网络性能监视器功能的想法。 请访问我们的 [UserVoice 页](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring)。
+- **加入我们的队伍** - 我们总是希望一直有新客户不断加入我们的队伍。 那样，能够在早期接触到新功能并帮助我们改进网络性能监视器。 如果有兴趣加入，请填写此[快速调查](https://aka.ms/npmcohort)。
 
 ## <a name="next-steps"></a>后续步骤
 * [搜索日志](log-analytics-log-searches.md)以查看详细的网络性能数据记录。

@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/15/2017
+ms.date: 08/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: cb36fdd0032d6d3c47e68a782d3bba427fe9fcd5
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 71ab5cb02ac70871fb8207ab9220b45d1c842dde
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/14/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory 风险事件
@@ -50,7 +50,14 @@ Microsoft 对检测过程的持续投入使得：
 
 ### <a name="leaked-credentials"></a>已泄漏凭据
 
-Microsoft 安全研究人员发现了在暗网中公开发布的已泄漏凭据。 这些凭据通常以纯文本形式出现。 针对 Azure AD 凭据检查它们，如果存在匹配项，它们将在 Identity Protection 中报告为“已泄漏凭据”。
+当网络犯罪分子泄露合法用户的有效密码时，他们通常会共享这些凭据。 共享方式通常为将凭据公开发布在暗网或粘贴网站上，或者在黑市上交易或出售凭据。 Microsoft 泄露凭据服务通过监控公网和暗网并与以下机构合作获取用户名/密码对：
+
+- 研究人员
+- 执法机构
+- Microsoft 安全团队
+- 其他受信任的来源 
+
+当服务获取用户名/密码对时，将根据 AAD 用户当前的有效凭据进行检查。 当找到匹配项时，意味着用户的密码已泄露，并且创建已泄露凭据风险事件。
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>从匿名 IP 地址登录
 
@@ -124,7 +131,7 @@ Microsoft 安全研究人员发现了在暗网中公开发布的已泄漏凭据�
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>从匿名 IP 地址登录
 
 此风险事件类型的风险级别为“中等”，因为使用匿名 IP 无法明显指示帐户受到威胁。  
-我们建议你立即联系用户，验证他们是否使用了匿名 IP 地址。
+我们建议立即联系用户，验证他们是否使用了匿名 IP 地址。
 
 
 ### <a name="impossible-travel-to-atypical-locations"></a>不可能前往异常位置
@@ -142,14 +149,14 @@ Microsoft 安全研究人员发现了在暗网中公开发布的已泄漏凭据�
 
 此风险事件可标识 IP 地址，而非用户设备。 如果有多台设备使用单个 IP 地址，并且僵尸网络只控制了其中部分设备，那么从未被控制的设备登录则会发生误报，这就是将此风险事件的级别分类为“低”的原因。  
 
-我们建议你联系用户并扫描用户的所有设备。 用户的个人设备也可能受感染，或者如前面所述，其他人也可能以用户身份从相同 IP 地址使用受感染的设备。 这些设备之所以受感染，通常是因为下载了防病毒软件尚未识别的恶意软件，也可能是因为用户存在不良习惯，导致设备容易遭受感染。
+我们建议联系用户并扫描用户的所有设备。 用户的个人设备也可能受感染，或者如前面所述，其他人也可能以用户身份从相同 IP 地址使用受感染的设备。 这些设备之所以受感染，通常是因为下载了防病毒软件尚未识别的恶意软件，也可能是因为用户存在不良习惯，导致设备容易遭受感染。
 
 有关如何解决恶意软件感染的详细信息，请参阅[恶意软件防护中心](http://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409)。
 
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>从具有可疑活动的 IP 地址登录
 
-我们建议你联系用户，验证他们实际上是否已从标记为可疑的 IP 地址登录。 此事件类型的风险级别是“中等”，因为同一 IP 地址后可能有多台设备，但仅某些设备可能导致可疑活动。 
+我们建议联系用户，验证他们实际上是否已从标记为可疑的 IP 地址登录。 此事件类型的风险级别是“中等”，因为同一 IP 地址后可能有多台设备，但仅某些设备可能导致可疑活动。 
 
 
  

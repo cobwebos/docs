@@ -4,7 +4,7 @@ description: "本主题概括介绍并演示了如何使用 Azure 媒体服务�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
 ms.service: media-services

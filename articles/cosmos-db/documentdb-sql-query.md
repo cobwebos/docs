@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/25/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 1b3ce3d87e02a6ffb6fcbf4e6778017f5a129ef9
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 862594bcbd6df8a2c62a12340ceb8096fb6bd691
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="sql-queries-for-azure-cosmos-db-documentdb-api"></a>Azure Cosmos DB DocumentDB API 的 SQL 查询
@@ -167,10 +167,10 @@ Microsoft Azure Cosmos DB 通过将 SQL（结构化查询语言）用作 JSON �
 
 根据我们目前已看到的示例，请注意 Cosmos DB 查询语言一些值得注意的方面：  
 
-* 由于 DocumentDB API SQL 适用于 JSON 值，因此它可以处理三种形式的实体，而不是行和列。 因此，该语言可让你在任意深度引用树的节点，如 `Node1.Node2.Node3…..Nodem`，这类似于引用 `<table>.<column>` 的两个部分引用的关系 SQL。   
+* 由于 DocumentDB API SQL 适用于 JSON 值，因此它可以处理三种形式的实体，而不是行和列。 因此，通过该语言可以在任意深度引用树的节点（如 `Node1.Node2.Node3…..Nodem`），这类似于引用 `<table>.<column>` 的两部分引用的关系 SQL。   
 * 结构化查询语言适用于无架构的数据。 因此，需要动态绑定类型系统。 相同的表达式在不同文档上可能会产生不同的类型。 查询的结果是一个有效的 JSON 值，但不保证它为固定的架构。  
 * Cosmos DB 仅支持严格的 JSON 文档。 这意味着类型系统和表达式仅限于处理 JSON 类型。 有关更多详细信息，请参阅 [JSON 规范](http://www.json.org/)。  
-* Cosmos DB 集合是 JSON 文档的一个无架构容器。 集合中，文档内和跨文档的数据实体的关系是按包含关系隐式捕获的，而不是按主键和外键关系。 考虑到稍后将在本文中讨论文档内联接，因此这是一个值得注意的重要方面。
+* Cosmos DB 集合是 JSON 文档的一个无架构容器。 集合中，文档内和跨文档的数据实体的关系是按包含关系隐式捕获的，而不是按主键和外键关系。 考虑到稍后会在本文中讨论文档内联接，因此这是一个值得注意的重要方面。
 
 ## <a id="Indexing"></a>Cosmos DB 索引
 了解 DocumentDB API SQL 语法前，有必要先了解 Cosmos DB 中的索引设计。 
@@ -519,7 +519,7 @@ Undefined </td>
 如果筛选器中标量表达式的结果为 Undefined，则相应的文档不会包含在结果中，因为 Undefined 在逻辑上不等于“True”。
 
 ### <a name="between-keyword"></a>BETWEEN 关键字
-你也可以使用 BETWEEN 关键字来对一定范围内的值（如在 ANSI SQL 中）进行快速查询。 可对字符串或数字使用 BETWEEN。
+也可以使用 BETWEEN 关键字来对一定范围内的值（如在 ANSI SQL 中）进行快速查询。 可对字符串或数字使用 BETWEEN。
 
 例如，此查询返回在其中第一个子女的年级为 1-5 之间（包括 1 和 5）的所有家庭文档。 
 
@@ -527,7 +527,7 @@ Undefined </td>
     FROM Families.children[0] c
     WHERE c.grade BETWEEN 1 AND 5
 
-与在 ANSI-SQL 中不同，你也可以使用 FROM 子句中的 BETWEEN 子句，如以下示例所示。
+与在 ANSI-SQL 中不同，也可以使用 FROM 子句中的 BETWEEN 子句，如以下示例所示。
 
     SELECT (c.grade BETWEEN 0 AND 10)
     FROM Families.children[0] c
@@ -573,12 +573,12 @@ IN 关键字可用于检查指定的值是否与列表中的任意值匹配。 �
 ### <a name="ternary--and-coalesce--operators"></a>三元 (?) 和联合 (??) 运算符
 三元和联合运算符可以用于生成条件表达式，类似于常用的编程语言（如 C# 和 JavaScript）。 
 
-当动态构建新的 JSON 属性时，使用三元 (?) 运算符会非常方便。 例如，现在你可以写入查询以将类级别（初学者/中级/高级）分类到用户可读的表单中，如下面所示。
+当动态构建新的 JSON 属性时，使用三元 (?) 运算符会非常方便。 例如，现在可以写入查询以将类级别（初学者/中级/高级）分类到用户可读的表单中，如下面所示。
 
      SELECT (c.grade < 5)? "elementary": "other" AS gradeLevel 
      FROM Families.children[0] c
 
-你也可以将调用嵌套到运算符，如以下查询中所示。
+也可以将调用嵌套到运算符，如以下查询中所示。
 
     SELECT (c.grade < 5)? "elementary": ((c.grade < 9)? "junior": "high")  AS gradeLevel 
     FROM Families.children[0] c
@@ -591,7 +591,7 @@ IN 关键字可用于检查指定的值是否与列表中的任意值匹配。 �
     FROM Families f
 
 ### <a id="EscapingReservedKeywords"></a>带引号的属性访问器
-你也可以使用带引号的属性运算符 `[]` 访问属性。 例如，`SELECT c.grade` 和 `SELECT c["grade"]` 是等效的。 此语法在需要转义包含空格和特殊字符的属性或正好将相同的名称作为 SQL 关键字或保留字共享的属性时很有用。
+也可以使用带引号的属性运算符 `[]` 访问属性。 例如，`SELECT c.grade` 和 `SELECT c["grade"]` 是等效的。 此语法在需要转义包含空格和特殊字符的属性或正好将相同的名称作为 SQL 关键字或保留字共享的属性时很有用。
 
     SELECT f["lastName"]
     FROM Families f
@@ -1239,7 +1239,7 @@ Azure Cosmos DB 使用存储过程和触发器提供编程模型，用于对集�
 ### <a id="UserDefinedFunctions"></a>用户定义的函数 (UDF)
 除了本文中已定义的类型外，DocumentDB API SQL 也对用户定义的函数 (UDF) 提供支持。 具体而言，支持标量 UDF，开发人员可在其中传入零个或许多参数并返回单个参数结果。 检查每个参数是否是合法的 JSON 值。  
 
-扩展 DocumentDB API SQL 语法，以支持使用这些用户定义的函数的自定义应用程序逻辑。 可使用 DocumentDB API 注册 UDF，然后作为 SQL 查询的一部分引用这些函数。 事实上，UDF 经过精心设计，可由查询调用。 作为此选择的必然结果，UDF 不能访问其他 JavaScript 类型（存储过程和触发器）所拥有的上下文对象。 由于查询以只读方式执行，因此它们可以在主要或次要副本上运行。 因此，UDF 设计为在次要副本上运行，这与其他 JavaScript 类型不同。
+扩展 DocumentDB API SQL 语法，以支持使用这些用户定义的函数的自定义应用程序逻辑。 可使用 DocumentDB API 注册 UDF，并作为 SQL 查询的一部分引用这些函数。 事实上，UDF 经过精心设计，可由查询调用。 作为此选择的必然结果，UDF 不能访问其他 JavaScript 类型（存储过程和触发器）所拥有的上下文对象。 由于查询以只读方式执行，因此它们可以在主要或次要副本上运行。 因此，UDF 设计为在次要副本上运行，这与其他 JavaScript 类型不同。
 
 以下是如何在 Cosmos DB 数据库中（特别是在文档集合下）注册 UDF 的示例。
 
@@ -1344,7 +1344,7 @@ Azure Cosmos DB 使用存储过程和触发器提供编程模型，用于对集�
 
 如之前的示例所示，UDF 将 JavaScript 语言的功能与 DocumentDB API SQL 集成，在内置 JavaScript 运行时功能的帮助下，提供丰富编程接口来执行复杂的过程和条件逻辑。
 
-DocumentDB API SQL 在处理 UDF 当前阶段（WHERE 子句或 SELECT 子句），为源中每个文档的 UDF 提供参数。 将结果无缝地纳入总体执行管道中。 如果由 UDF 参数引用的属性在 JSON 值中不可用，则参数将被视为未定义，因此会完全跳过 UDF 调用。 同样，如果未定义 UDF的结果，则它不会包含在结果中。 
+DocumentDB API SQL 在处理 UDF 当前阶段（WHERE 子句或 SELECT 子句），为源中每个文档的 UDF 提供参数。 将结果无缝地纳入总体执行管道中。 如果由 UDF 参数引用的属性在 JSON 值中不可用，则参数会被视为未定义，因此会完全跳过 UDF 调用。 同样，如果未定义 UDF的结果，则它不会包含在结果中。 
 
 总而言之，UDF 是作为查询的一部分处理复杂业务逻辑重要的工具。
 
@@ -1358,7 +1358,7 @@ Cosmos DB 是一个 JSON 数据库，与 JavaScript 运算符及其评估语义�
 ## <a name="parameterized-sql-queries"></a>参数化 SQL 查询
 Cosmos DB 支持通过常用 @ 表示法表示的参数进行查询。 参数化 SQL 为用户输入提供可靠的处理和转义，可防止通过 SQL 注入发生意外的数据泄露。 
 
-例如，你可以编写一个将姓氏和省/自治区地址作为参数的查询，然后基于用户输入针对姓氏和省/自治区地址执行此查询。
+例如，可以编写一个将姓氏和省/自治区地址作为参数的查询，然后基于用户输入针对姓氏和省/自治区地址执行此查询。
 
     SELECT * 
     FROM Families f
@@ -1428,7 +1428,7 @@ Cosmos DB 还支持使用许多内置函数进行常见操作，这些函数可�
 | [SIN (num_expr)](#bk_sin) | 返回指定表达式中指定角度的三角正弦（弧度）。 |
 | [TAN (num_expr)](#bk_tan) | 返回指定表达式中输入表达式的正切。 |
 
-例如，你现在可以运行以下查询：
+例如，现在可以运行以下查询：
 
 **查询**
 
@@ -1438,10 +1438,10 @@ Cosmos DB 还支持使用许多内置函数进行常见操作，这些函数可�
 
     [4]
 
-与 ANSI SQL 相比，Cosmos DB 的函数的主要差异在于它们可以良好地适用于无架构和混合架构数据。 例如，如果你有一个缺少 Size 属性或有一个非数值的值（如“unknown”）的文档，那么会跳过该文档，而不是返回错误。
+与 ANSI SQL 相比，Cosmos DB 的函数的主要差异在于它们可以良好地适用于无架构和混合架构数据。 例如，如果有一个缺少 Size 属性或有一个非数值的值（如“unknown”）的文档，那么会跳过该文档，而不是返回错误。
 
 ### <a name="type-checking-functions"></a>类型检查函数
-类型检查函数使你能够检查 SQL 查询内表达式的类型。 当类型是变量或未知时，可使用类型检查函数动态确定文档内属性的类型。 以下是受支持的内置类型检查函数表。
+通过类型检查函数可以检查 SQL 查询内表达式的类型。 当类型是变量或未知时，可使用类型检查函数动态确定文档内属性的类型。 以下是受支持的内置类型检查函数表。
 
 <table>
 <tr>
@@ -1483,7 +1483,7 @@ Cosmos DB 还支持使用许多内置函数进行常见操作，这些函数可�
 
 </table>
 
-使用这些函数，你现在可以运行以下查询：
+使用这些函数，现在可以运行以下查询：
 
 **查询**
 
@@ -1515,7 +1515,7 @@ Cosmos DB 还支持使用许多内置函数进行常见操作，这些函数可�
 | [REPLICATE (str_expr, num_expr)](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-reference#bk_replicate) |将一个字符串值重复指定的次数。 |
 | [REVERSE (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_reverse) |返回字符串值的逆序排序形式。 |
 
-使用这些函数，你现在可以运行以下查询。 例如，你可以返回大写形式的家庭名称，如下所示：
+使用这些函数，现在可以运行以下查询。 例如，可以返回大写形式的家庭名称，如下所示：
 
 **查询**
 
@@ -1882,7 +1882,7 @@ Cosmos DB 查询提供程序执行从 LINQ 查询到 Cosmos DB SQL 查询的最�
 
 
 ### <a name="composite-sql-queries"></a>复合 SQL 查询
-可以将以上运算符组合在一起，形成功能更强大的查询。 由于 Cosmos DB 支持嵌套的集合，因此可以连接或嵌套运算符组合。
+可以以上运算符组合在一起，形成功能更强大的查询。 由于 Cosmos DB 支持嵌套的集合，因此可以连接或嵌套运算符组合。
 
 #### <a name="concatenation"></a>串联
 语法为 `input(.|.SelectMany())(.Select()|.Where())*`。 串联的查询可以可选的 `SelectMany` 查询开始，后接多个 `Select` 或 `Where` 运算符。

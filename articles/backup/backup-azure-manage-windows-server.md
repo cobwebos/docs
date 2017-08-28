@@ -12,14 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/9/2017
+ms.date: 08/15/2017
 ms.author: markgal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 70ea11a7ee273d8c8497a6f12693ddb41ac7cb77
+ms.translationtype: HT
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 5922e308f5c205a07bd329c28322ae82cea0e1fa
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="monitor-and-manage-azure-recovery-services-vaults-and-servers-for-windows-machines"></a>监视和管理适用于 Windows 计算机的 Azure 恢复服务保管库和服务器
@@ -43,11 +42,11 @@ ms.lasthandoff: 06/29/2017
 
     ![打开恢复服务保管库列表步骤 1](./media/backup-azure-manage-windows-server/open-rs-vault-list.png) <br/>
 
-3. 如果要打开恢复服务保管库。 在对话框中，开始键入“恢复服务”。 当你开始键入时，会根据你的输入筛选该列表。 单击“恢复服务保管库”，显示订阅中恢复服务保管库的列表。
+3. 如果要打开恢复服务保管库。 在对话框中，开始键入“恢复服务”。 开始键入时，会根据输入筛选该列表。 单击“恢复服务保管库”，显示订阅中恢复服务保管库的列表。
 
     ![创建恢复服务保管库步骤 1](./media/backup-azure-manage-windows-server/browse-to-rs-vaults-2.png) <br/>
 
-    此时将打开恢复服务保管库列表。
+    此时会打开恢复服务保管库列表。
 
     ![创建恢复服务保管库步骤 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
@@ -63,7 +62,7 @@ ms.lasthandoff: 06/29/2017
 
 * 备份警报详细信息
 * 文件和文件夹，以及在云中受保护的 Azure 虚拟机
-* 在 Azure 中消耗的存储空间总量
+* 在 Azure 中消耗的存储总量
 * 备份作业状态
 
 ![备份仪表板任务](./media/backup-azure-manage-windows-server/dashboard-tiles.png)
@@ -111,7 +110,7 @@ ms.lasthandoff: 06/29/2017
 
 如果选择“**每次发起警报**”作为“**通知**”频率，则不会在电子邮件中进行分组或缩减操作。 每个警报均会发送 1 个通知。 这是默认设置，此外还会立即发送解决方法电子邮件。
 
-如果选择“**每小时摘要**”作为“**通知**”频率，则会向用户发送一封电子邮件，告知他们在过去一小时内生成了尚未解决的新警报。 在该小时结束时，将会发送解决方法电子邮件。
+如果选择“**每小时摘要**”作为“**通知**”频率，则会向用户发送一封电子邮件，告知他们在过去一小时内生成了尚未解决的新警报。 在该小时结束时，会发送解决方法电子邮件。
 
 可以发送以下严重级别的警报：
 
@@ -124,7 +123,7 @@ ms.lasthandoff: 06/29/2017
 使用“**选择列**”按钮即可选择要显示在警报中的列。
 
 > [!NOTE]
-> 在“**设置**”边栏选项卡中管理备份警报时，可先选择“**监视和报告 > 警报和事件 > 备份警报**”，然后单击“**筛选器**”或“**配置通知**”。
+> 在“**设置**”边栏选项卡中管理备份警报时，可先选择“**监视和报告 > 警报和事件 > 备份警报**”，并单击“**筛选器**”或“**配置通知**”。
 >
 >
 
@@ -142,7 +141,7 @@ ms.lasthandoff: 06/29/2017
 如果选择列表中的特定备份项，则会显示该项的重要详细信息。
 
 > [!NOTE]
-> 在“**设置**”边栏选项卡中管理文件和文件夹时，可先选择“**受保护的项 > 备份项**”，然后从下拉列表中选择“**文件-文件夹**”。
+> 在“设置”边栏选项卡中管理文件和文件夹时，可先选择“受保护的项”>“备份项”，然后从下拉菜单中选择“文件-文件夹”。
 >
 >
 
@@ -164,15 +163,15 @@ ms.lasthandoff: 06/29/2017
 
 使用“**筛选器**”按钮在文件和文件夹及 Azure 虚拟机备份之间进行选择。
 
-如果看不到备份的文件和文件夹，可单击页面顶部的“**筛选器**”按钮，然后从“项类型”菜单中选择“**文件和文件夹**”。
+如果看不到备份的文件和文件夹，可单击页面顶部的“**筛选器**”按钮，并从“项类型”菜单中选择“**文件和文件夹**”。
 
 > [!NOTE]
-> 在“**设置**”边栏选项卡中管理备份作业时，可先选择“**监视和报告 > 作业 > 备份作业**”，然后从下拉菜单中选择“**文件-文件夹**”。
+> 在“设置”边栏选项卡中管理备份作业时，可先选择“监视和报告”>“作业”>“备份作业”，然后从下拉菜单中选择“文件-文件夹”。
 >
 >
 
 ## <a name="monitor-backup-usage"></a>监视备份使用情况
-在仪表板的“备份”部分，“备份使用情况”磁贴显示在 Azure 中耗用的存储空间。 具体提供以下存储使用情况：
+在仪表板的“备份”部分，“备份使用情况”磁贴显示在 Azure 中耗用的存储。 具体提供以下存储使用情况：
 
 * 与保管库关联的 Cloud LRS 存储使用情况
 * 与保管库关联的 Cloud GRS 存储使用情况
@@ -202,7 +201,7 @@ ms.lasthandoff: 06/29/2017
 ![Microsoft Azure 备份代理控制台操作](./media/backup-azure-manage-windows-server/console-actions.png)
 
 > [!NOTE]
-> 若要**恢复数据**，请参阅 [Restore files to a Windows server or Windows client machine](backup-azure-restore-windows-server.md)（将文件还原到 Windows Server 或 Windows 客户端计算机）。
+> 要**恢复数据**，请参阅 [Restore files to a Windows server or Windows client machine](backup-azure-restore-windows-server.md)（将文件还原到 Windows Server 或 Windows 客户端计算机）。
 >
 >
 
@@ -213,10 +212,10 @@ ms.lasthandoff: 06/29/2017
 2. 在**计划备份向导**中，将“**更改备份项或时间**”选项保留选中状态，然后单击“**下一步**”。
 
     ![计划 Windows Server 备份](./media/backup-azure-manage-windows-server/modify-or-stop-a-scheduled-backup.png)
-3. 如果你要添加或更改项，请在“**选择要备份的项**”屏幕中单击“**添加项**”。
+3. 如果要添加或更改项，请在“**选择要备份的项**”屏幕中单击“**添加项**”。
 
-    还可以在此向导页中设置“**排除设置**”。 如果你要排除文件或文件类型，请阅读有关添加[排除设置](#manage-exclusion-settings) 的过程。
-4. 选择要备份的文件和文件夹，然后单击“**确定**”。
+    还可以在此向导页中设置“**排除设置**”。 如果要排除文件或文件类型，请阅读有关添加[排除设置](#manage-exclusion-settings) 的过程。
+4. 选择要备份的文件和文件夹，并单击“**确定**”。
 
     ![计划 Windows Server 备份](./media/backup-azure-manage-windows-server/add-items-modify.png)
 5. 指定“**备份计划**”并单击“**下一步**”。
@@ -229,17 +228,17 @@ ms.lasthandoff: 06/29/2017
    > [此文](backup-azure-backup-cloud-as-tape.md)中详细介绍了如何指定备份计划。
    >
 
-6. 选择备份副本的“**保留策略**”，然后单击“**下一步**”。
+6. 选择备份副本的“**保留策略**”，并单击“**下一步**”。
 
     ![Windows Server 备份项](./media/backup-azure-manage-windows-server/select-retention-policy-modify.png)
-7. 在“**确认**”屏幕上复查信息，然后单击“**完成**”。
+7. 在“**确认**”屏幕上复查信息，并单击“**完成**”。
 8. 向导完成创建**备份计划**后，请单击“**关闭**”。
 
     修改保护设置后，可以通过转到“**作业**”选项卡并确认更改已反映在备份作业中，来确认可正确触发备份。
 
 ## <a name="enable-network-throttling"></a>启用网络限制
 
-Azure 备份代理提供的“限制”选项卡可让你控制在数据传输期间使用网络带宽的方式。 如果需要在上班时间内备份数据，但不希望备份程序干扰其他 Internet 流量，此控制机制很有帮助。 数据传输的限制适用于备份和还原活动。  
+Azure 备份代理提供“限制”选项卡，可用于控制在数据传输期间使用网络带宽的方式。 如果需要在上班时间内备份数据，但不希望备份程序干扰其他 Internet 流量，此控制机制很有帮助。 数据传输的限制适用于备份和还原活动。  
 
 若要启用限制，请执行以下操作：
 
@@ -250,7 +249,7 @@ Azure 备份代理提供的“限制”选项卡可让你控制在数据传输�
 
     启用限制后，指定在“**工作时间**”和“**非工作时间**”允许使用多少带宽进行备份数据传输。
 
-    带宽值从每秒 512 千字节 (Kbps) 开始，最高可为每秒 1023 兆字节 (Mbps)。 你还可以指定“**工作时间**”的开始和结束时间，以及一周中有哪几天被视为工作日。 在指定的工作时间之外的时间被视为非工作时间。
+    带宽值从每秒 512 千字节 (Kbps) 开始，最高可为每秒 1023 兆字节 (Mbps)。 还可以指定“**工作时间**”的开始和结束时间，以及一周中有哪几天被视为工作日。 在指定的工作时间之外的时间被视为非工作时间。
 3. 单击 **“确定”**。
 
 ## <a name="manage-exclusion-settings"></a>管理排除设置
@@ -269,7 +268,7 @@ Azure 备份代理提供的“限制”选项卡可让你控制在数据传输�
 5. 单击“**添加排除项**”。
 
     ![计划 Windows Server 备份](./media/backup-azure-manage-windows-server/add-exclusion.png)
-6. 选择位置，然后单击“**确定**”。
+6. 选择位置，并单击“**确定**”。
 
     ![计划 Windows Server 备份](./media/backup-azure-manage-windows-server/exclusion-location.png)
 7. 在“**文件类型**”字段中添加文件扩展名。
@@ -280,7 +279,7 @@ Azure 备份代理提供的“限制”选项卡可让你控制在数据传输�
 
     ![计划 Windows Server 备份](./media/backup-azure-manage-windows-server/exclude-mp3.png)
 
-    若要添加其他扩展名，请单击“**添加排除项**”，然后输入另一个文件类型扩展名（添加 .jpeg 扩展名）。
+    要添加其他扩展名，请单击“**添加排除项**”，并输入另一个文件类型扩展名（添加 .jpeg 扩展名）。
 
     ![计划 Windows Server 备份](./media/backup-azure-manage-windows-server/exclude-jpg.png)
 8. 添加所有扩展名之后，请单击“**确定**”。
@@ -314,8 +313,7 @@ A3. 以下是为了降低警报噪音而不发送通知的情况：
 2. 假设此进程未运行，请打开“控制面板”，并浏览服务列表。 启动或重启 **Microsoft Azure 恢复服务管理代理**。
 
     有关详细信息，请浏览以下位置中的日志：<br/>
-   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*`
-    例如：<br/>
+   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*` 例如：<br/>
    `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 
 ## <a name="next-steps"></a>后续步骤

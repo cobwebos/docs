@@ -4,7 +4,7 @@ description: "本主题概述了 Microsoft Azure 媒体服务功能和服务的�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.service: media-services
 ms.workload: media

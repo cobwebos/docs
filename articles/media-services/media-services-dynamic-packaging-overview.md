@@ -2,7 +2,7 @@
 title: "Azure 媒体服务动态打包概述 | Microsoft 文档"
 description: "本主题提供动态打包概述。"
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

@@ -4,7 +4,7 @@ description: "本教程逐步演示如何使用 Azure 门户发布内容。"
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 92c364eb-5a5f-4f4e-8816-b162c031bb40
 ms.service: media-services

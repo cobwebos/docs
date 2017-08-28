@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure 网络观察程序检查连接性 - Azure REST API | Microsoft Docs"
-description: "此页说明如何使用 Azure REST API 通过网络观察程序检查连接性"
+title: "使用 Azure 网络观察程序检查连接性 - Azure 门户 | Microsoft 文档"
+description: "此页说明如何在 Azure 门户中使用网络观察程序检查连接性"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -11,31 +11,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/11/2017
+ms.date: 08/02/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 9a900752dccfd82524951a01ebf70f882a35afd9
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: ca62bea581acb59d3c3c0b8a204cc9d42de2b27f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
-# <a name="check-connectivity-with-azure-network-watcher-using-azure-rest-api"></a>使用 Azure REST API 通过 Azure 网络观察程序检查连接性
+# <a name="check-connectivity-with-azure-network-watcher-using-the-azure-portal"></a>使用 Azure 门户通过 Azure 网络观察程序检查连接性
 
 > [!div class="op_single_selector"]
+> - [门户](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [CLI 2.0](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
 了解如何使用连接来验证是否可以建立从虚拟机到给定终结点的直接 TCP 连接。
-
-本文指导你完成使用连接运行不同类型的检查。
-
-* [检查与虚拟机的连接](#check-connectivity-to-a-virtual-machine)
-* [验证路由问题](#validate-routing-issues)
-* [检查网站延迟](#check-website-latency)
-* [检查与存储终结点的连接](#check-connectivity-to-a-storage-endpoint)
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -47,7 +41,7 @@ ms.lasthandoff: 07/13/2017
 
 ARMclient 用于使用 PowerShell 调用 REST API。 根据 [Chocolatey 上的 ARMClient](https://chocolatey.org/packages/ARMClient) 中所述在 chocolatey 上找到 ARMClient。
 
-此方案假定你已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
+此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
 [!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
@@ -91,8 +85,8 @@ armclient login
 
 以下代码需要以下变量的值：
 
-- **subscriptionId** - 要使用的订阅 Id。
-- **resourceGroupName** - 包含虚拟机的资源组的名称。
+- subscriptionId - 要使用的订阅 ID。
+- resourceGroupName - 包含虚拟机的资源组的名称。
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -101,7 +95,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-从以下输出看，在以下示例中使用虚拟机的 id：
+从以下输出看，在以下示例中使用了虚拟机的 ID：
 
 ```json
 ...
@@ -170,7 +164,7 @@ null
 
 ### <a name="response"></a>响应
 
-以下响应来自前面的示例。  在此响应中，`ConnectionStatus` 为“不可到达”。 可以看到所有探测都发送失败。 由于用户配置的名为“UserRule_Port80”的 `NetworkSecurityRule` 已配置为阻止端口 80 上的传入流量，虚拟设备上的连接失败。 可以使用此信息来了解连接问题。
+以下响应来自前面的示例。  在此响应中，`ConnectionStatus` 为“不可访问”。 可以看到所有探测都发送失败。 由于用户配置的名为 **UserRule_Port80** 的 `NetworkSecurityRule` 已配置为阻止端口 80 上的传入流量，虚拟设备上的连接失败。 可以使用此信息来了解连接问题。
 
 ```json
 {
@@ -286,7 +280,7 @@ null
 
 ### <a name="response"></a>响应
 
-在以下示例中，`connectionStatus` 显示为“不可到达”。 在 `hops` 详细信息中，可以在 `issues` 下看到由于 `UserDefinedRoute` 流量已被阻止。
+在以下示例中，`connectionStatus` 显示为“不可访问”。 在 `hops` 详细信息中，可以在 `issues` 下看到由于 `UserDefinedRoute` 流量已被阻止。
 
 ```json
 {
@@ -469,7 +463,7 @@ null
 
 ### <a name="response"></a>响应
 
-下面是运行前面 API 调用的示例响应。 由于此检查成功，`connectionStatus` 属性显示为“可以访问”。  提供了有关到达存储 blob 所需的跃点数和延迟的详细信息。
+下面是运行前面 API 调用的响应示例。 由于此检查成功，`connectionStatus` 属性显示为“可以访问”。  提供了有关到达存储 Blob 所需的跃点数和延迟的详细信息。
 
 ```json
 {

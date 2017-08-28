@@ -2,7 +2,7 @@
 title: "媒体服务 PlayReady 许可证模板概述"
 description: "本主题简要介绍了用于配置 PlayReady 许可证的 PlayReady 许可证模板。"
 author: juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

@@ -46,7 +46,7 @@ Azure 虚拟机扩展是小型应用程序，可在Azure 虚拟机上提供部�
 每个虚拟机扩展可能都有其自己的一组先决条件。 例如，Docker VM 扩展有支持的 Linux 分发的先决条件。 特定于扩展的文档中详细介绍了各个扩展的要求。
 
 ### <a name="azure-vm-agent"></a>Azure VM 代理
-Azure VM 代理可管理 Azure 虚拟机与 Azure 结构控制器之间的交互。 VM 代理负责部署和管理 Azure 虚拟机的许多功能层面，包括运行 VM 扩展。 Azure VM 代理预先安装在 Azure 应用商店映像上，并可安装在受支持的操作系统上。
+Azure VM 代理可管理 Azure 虚拟机与 Azure 结构控制器之间的交互。 VM 代理负责部署和管理 Azure 虚拟机的许多功能层面，包括运行 VM 扩展。 Azure VM 代理预先安装在 Azure Marketplace 映像上，并可安装在受支持的操作系统上。
 
 有关受支持的操作系统以及安装说明的信息，请参阅 [Azure virtual machine agent](agent-user-guide.md)（Azure 虚拟机代理）。
 

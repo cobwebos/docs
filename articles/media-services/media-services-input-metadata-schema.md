@@ -2,7 +2,7 @@
 title: "Azure 媒体服务输入元数据架构 | Microsoft Docs"
 description: "本主题概述了 Azure 媒体服务输入元数据架构。"
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

@@ -4,7 +4,7 @@ description: "媒体分析公共预览版概述，其中集合了企业级的语
 services: media-services
 documentationcenter: 
 author: juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: c56e3781-8510-4f7f-b5ff-a218c1bb6f4c
 ms.service: media-services

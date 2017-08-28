@@ -4,7 +4,7 @@ description: "本主题说明了通过 Azure 媒体包装器完成的各种任�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 0582628e-a525-4a78-90ac-9f7fc1cd909f
 ms.service: media-services

@@ -4,7 +4,7 @@ description: "本主题说明如何配置 Wirecast 实时编码器，以便将�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
 ms.service: media-services

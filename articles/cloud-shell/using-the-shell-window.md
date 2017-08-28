@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: juluk
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 17e5f98923345cdf88e6d3e2ef194f54dd1105c2
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: a47961dfdaf178a6b793bd68105d9792a9275bb3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
@@ -40,7 +40,7 @@ Cloud Shell 允许每个会话作为单独的 Bash 进程，因此可在多个�
 ## <a name="minimize--maximize-cloud-shell-window"></a>最小化和最大化 Cloud Shell 窗口
 ![](media/minmax.png)
 * 单击窗口右上角的最小化图标隐藏窗口。 再次单击 Cloud Shell 图标取消隐藏。
-* 单击最大化图标将窗口设置为最大高度。 若要将窗口还原到先前大小，请单击还原图标。
+* 单击最大化图标将窗口设置为最大高度。 要将窗口还原到先前大小，请单击还原图标。
 
 ## <a name="copy-and-paste"></a>复制和粘贴
 * Windows：使用 `Ctrl-insert` 复制，使用 `Shift-insert` 粘贴。 右键单击下拉列表也可以启用复制/粘贴。
@@ -54,7 +54,8 @@ Cloud Shell 允许每个会话作为单独的 Bash 进程，因此可在多个�
 * 使用鼠标或触摸板进行滚动以移动终端文本。
 
 ## <a name="exit-command"></a>退出命令
-运行 `exit` 终止活动会话。 超过 10 分钟无交互操将默认触发此行为。
+运行 `exit` 终止活动会话。 超过 20 分钟无交互操作将默认触发此行为。
 
 ## <a name="next-steps"></a>后续步骤
 [Cloud Shell 快速入门](quickstart.md)
+
