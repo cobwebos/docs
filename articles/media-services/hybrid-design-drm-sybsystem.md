@@ -4,7 +4,7 @@ description: "本主题介绍如何使用 Azure 媒体服务进行 DRM 子系统
 services: media-services
 documentationcenter: 
 author: willzhan
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601
 ms.service: media-services

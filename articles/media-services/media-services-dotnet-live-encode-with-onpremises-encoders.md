@@ -4,7 +4,7 @@ description: "本主题演示如何使用 .NET 通过本地编码器执行实时
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 15908152-d23c-4d55-906a-3bfd74927db5
 ms.service: media-services

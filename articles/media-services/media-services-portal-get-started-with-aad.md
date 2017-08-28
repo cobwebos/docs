@@ -4,7 +4,7 @@ description: "了解如何使用 Azure 门户访问 Azure Active Directory (Azur
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.service: media-services
 ms.workload: media
@@ -18,7 +18,6 @@ ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
 ms.openlocfilehash: 0a32c758693c1889d7acfa6510bffba46b7eabc2
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/01/2017
-
 
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>通过 Azure 门户开始使用 Azure AD 身份验证

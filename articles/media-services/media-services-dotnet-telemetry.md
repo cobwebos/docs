@@ -4,7 +4,7 @@ description: "本文说明了如何通过 .NET SDK 使用 Azure 媒体服务遥�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: f8f55e37-0714-49ea-bf4a-e6c1319bec44
 ms.service: media-services

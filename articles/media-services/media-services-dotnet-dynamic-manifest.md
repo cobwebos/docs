@@ -4,7 +4,7 @@ description: "本主题介绍如何创建筛选器，以便客户端能够使用
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 2f6894ca-fb43-43c0-9151-ddbb2833cafd
 ms.service: media-services

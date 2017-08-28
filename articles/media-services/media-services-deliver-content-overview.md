@@ -4,7 +4,7 @@ description: "本主题概述使用 Azure 媒体服务传送内容所涉及的�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 89ede54a-6a9c-4814-9858-dcfbb5f4fed5
 ms.service: media-services
@@ -19,7 +19,6 @@ ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: 249b87ecc9e43fa26a74e27f91f807d60b275eeb
 ms.contentlocale: zh-cn
 ms.lasthandoff: 01/13/2017
-
 
 ---
 # <a name="deliver-content-to-customers"></a>向客户传送内容

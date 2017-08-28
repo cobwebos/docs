@@ -4,7 +4,7 @@ description: "本主题说明如何配置 Tricaster 实时编码器，以便将�
 services: media-services
 documentationcenter: 
 author: cenkdin
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 8973181a-3059-471a-a6bb-ccda7d3ff297
 ms.service: media-services
@@ -14,10 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkd;anilmur
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
 ms.openlocfilehash: 4c1a50e26e5cde606d0ef34889fb1c9db80e8ee0
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/11/2017
 
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>使用 NewTek TriCaster 编码器发送单比特率实时流
@@ -74,7 +75,7 @@ ms.openlocfilehash: 4c1a50e26e5cde606d0ef34889fb1c9db80e8ee0
 >
 >
 
-## <a name="a-idconfiguretricasterrtmpaconfigure-the-newtek-tricaster-encoder"></a><a id=configure_tricaster_rtmp></a>配置 NewTek TriCaster 编码器
+## <a id=configure_tricaster_rtmp></a>配置 NewTek TriCaster 编码器
 在本教程中，将使用以下输出设置。 本部分的其余内容介绍更详细的配置步骤。
 
 **视频**：
@@ -164,9 +165,4 @@ ms.openlocfilehash: 4c1a50e26e5cde606d0ef34889fb1c9db80e8ee0
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

@@ -4,7 +4,7 @@ description: "了解如何使用媒体服务 REST API 配置内容密钥的授�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 7af5f9e2-8ed8-43f2-843b-580ce8759fd4
 ms.service: media-services

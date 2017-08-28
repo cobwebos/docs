@@ -4,7 +4,7 @@ description: "本文演示如何使用 Azure 门户配置内容保护策略。 �
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 270b3272-7411-40a9-ad42-5acdbba31154
 ms.service: media-services

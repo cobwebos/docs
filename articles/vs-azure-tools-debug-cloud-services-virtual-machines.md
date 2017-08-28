@@ -3,8 +3,8 @@ title: "在 Visual Studio 中调试 Azure 云服务或虚拟机 | Microsoft Docs
 description: "在 Visual Studio 中调试云服务或虚拟机"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 945e06e0-2100-41af-b218-72347367ddab
 ms.service: visual-studio-online
@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/11/2016
-ms.author: tarcher
-translationtype: Human Translation
+ms.author: kraigb
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 01623fa76175091439d5a571fb8b8f96aee01c4c
 ms.openlocfilehash: dd9019a6feb86d90fc6219b06bf1e69da4c2b18f
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/08/2016
 
 ---
 # <a name="debugging-an-azure-cloud-service-or-virtual-machine-in-visual-studio"></a>在 Visual Studio 中调试云服务或虚拟机
@@ -165,9 +166,4 @@ Visual Studio ASP.NET 项目提供了一个选项，让您创建可用于应用�
 ## <a name="next-steps"></a>后续步骤
 * 使用 **Intellitrace** 从发布服务器中收集调用和事件的日志。 请参阅[使用 IntelliTrace 和 Visual Studio 调试已发布的云服务](http://go.microsoft.com/fwlink/?LinkID=623016)。
 * 使用“Azure 诊断”以记录在角色内运行的代码的详细信息，角色是否在开发环境或 Azure 中运行。 请参阅[使用 Azure 诊断收集日志记录数据](http://go.microsoft.com/fwlink/p/?LinkId=400450)。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

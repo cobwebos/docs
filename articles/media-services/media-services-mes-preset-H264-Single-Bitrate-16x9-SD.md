@@ -2,7 +2,7 @@
 title: "H264 单比特率 16x9 SD Media Encoder Standard 预设 - Azure | Microsoft 文档"
 description: "本主题概述了 **H264 单比特率 16x9 SD** 任务预设。"
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 services: media-services
 documentationcenter: 

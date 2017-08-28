@@ -4,7 +4,7 @@ description: "本教程逐步演示如何使用 Azure 门户监视作业进度�
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: bb4e3ee3-1ab9-46d0-9ae7-848d945bc0b8
 ms.service: media-services

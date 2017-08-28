@@ -4,7 +4,7 @@ description: "本教程会引导完成使用 Azure 媒体服务和 .NET 实施�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 388b8928-9aa9-46b1-b60a-a918da75bd7b
 ms.service: media-services

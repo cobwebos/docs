@@ -2,7 +2,7 @@
 title: "适用于 .NET 的媒体服务 SDK 中的重试逻辑 | Microsoft Docs"
 description: "本主题概述了适用于 .NET 的媒体服务 SDK 中的重试逻辑。"
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 services: media-services
 documentationcenter: 

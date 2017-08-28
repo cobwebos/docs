@@ -4,7 +4,7 @@ description: "此 Azure 媒体服务 (AMS) 社区页讨论了如何通过不同�
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 0df020f4-8297-4f31-92bf-de098283e997
 ms.service: media-services

@@ -3,8 +3,8 @@ title: "如何将项目升级到最新版本的 Azure Tools | Microsoft Docs"
 description: "了解如何在 Visual Studio 中将 Azure 项目升级到最新版本的 Azure Tools"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 1d64070a-078d-468a-87f4-e6715de6475f
 ms.service: multiple
@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/18/2016
-ms.author: tarcher
-translationtype: Human Translation
+ms.author: kraigb
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: e346640f6cbf7969bf373b84d8a20a24a74f654e
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="how-to-upgrade-projects-to-the-current-version-of-the-azure-tools-for-visual-studio"></a>如何将项目升级到最新版本的 Azure Tools for Visual Studio
@@ -46,10 +47,5 @@ ms.openlocfilehash: e346640f6cbf7969bf373b84d8a20a24a74f654e
     “应用程序”选项卡将显示与项目关联的工具版本。 如果显示了 Azure Tools 的最新版本，则表示项目已升级。 如果已安装的工具版本比选项卡中显示的版本更高，则会出现“升级”按钮。
 3. 选择“升级”按钮，将项目升级到最新版本的工具。
 4. 生成项目，然后解决由于 API 更改而导致的任何错误。 有关如何针对新版本修改代码的信息，请参阅特定 API 的文档。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

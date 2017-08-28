@@ -4,7 +4,7 @@ description: "本教程将逐步指导用户使用 Azure 门户创建频道，�
 services: media-services
 documentationcenter: 
 author: anilmur
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 504f74c2-3103-42a0-897b-9ff52f279e23
 ms.service: media-services

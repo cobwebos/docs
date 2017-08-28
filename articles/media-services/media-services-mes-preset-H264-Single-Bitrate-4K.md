@@ -2,7 +2,7 @@
 title: "H264 单比特率 4K Media Encoder Standard 预设 - Azure | Microsoft 文档"
 description: "本主题概述 **H264 单比特率 4K** 任务预设。"
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 services: media-services
 documentationcenter: 

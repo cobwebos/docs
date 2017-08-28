@@ -4,7 +4,7 @@ description: "本教程介绍了使用 Azure 门户将文件上传到媒体服�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 3ad3dcea-95be-4711-9aae-a455a32434f6
 ms.service: media-services

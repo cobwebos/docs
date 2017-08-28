@@ -20,7 +20,6 @@ ms.openlocfilehash: 146c9f5c751443608f8f405be949398f9f721053
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>更换 StorSimple 8000 系列设备上的磁盘驱动器
 
@@ -105,6 +104,7 @@ StorSimple 设备支持类似 RAID 10 的存储空间配置。 这意味着它�
 3. 插入驱动器托架后，合上驱动器托架把手，同时继续将驱动器托架推入底盘中，直到驱动器托架把手卡入锁定位置。
 4. 使用 Microsoft（防伪 Torx 起子）提供的锁钥将锁定螺丝顺时针旋转四分之一圈，使托架把手固定到位。
 5. 验证更换是否成功、驱动器是否可正常工作。 访问 Azure 门户并导航到“设置” > “硬件运行状况”。 在“共享组件”或“EBOD 共享组件”下，驱动器状态应为绿色，表示一切正常。
+<!---Loc Comment: It seems it should say "Device settings > Hardware health" instead of "Settings > Hardware health"---->
    
    > [!NOTE]
    > 更换后，可能需要数小时磁盘状态才会变为绿色。

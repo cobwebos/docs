@@ -21,7 +21,6 @@ ms.openlocfilehash: 312f84fe2aaf3f63fe2b8d818786ef1c570ccfe1
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/11/2017
 
-
 ---
 # <a name="design-and-build-a-management-solution-in-operations-management-suite-oms-preview"></a>在 Operations Management Suite (OMS)（预览版）中设计和生成管理解决方案
 > [!NOTE]
@@ -86,4 +85,3 @@ Log Analytics 中的视图用于可视化 Log Analytics 存储库中的数据。
 * 了解如何为管理解决方案[创建解决方案文件](operations-management-suite-solutions-solution-file.md)。
 * 了解[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)的详细信息。
 * 在 [Azure 快速启动模板](https://azure.microsoft.com/documentation/templates)中搜索不同 Resource Manager 模板的示例。
-

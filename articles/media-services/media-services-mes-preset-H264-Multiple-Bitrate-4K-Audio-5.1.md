@@ -2,7 +2,7 @@
 title: "264 多比特率 4K Audio 5.1 | Microsoft 文档"
 description: "本主题概述了 **264 多比特率 4K Audio 5.1** 任务预设。"
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 services: media-services
 documentationcenter: 

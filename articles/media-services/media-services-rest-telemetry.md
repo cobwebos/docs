@@ -4,7 +4,7 @@ description: "本文介绍如何通过 REST API 使用 Azure 媒体服务遥测�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: e1a314fb-cc05-4a82-a41b-d1c9888aab09
 ms.service: media-services

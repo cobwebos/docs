@@ -4,7 +4,7 @@ description: "本主题讨论如何通过 Azure 门户使用媒体分析媒体�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601
 ms.service: media-services

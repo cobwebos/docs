@@ -2,7 +2,7 @@
 title: "H264 单比特率 720p Audio 5.1 | Microsoft Docs"
 description: "本主题概述“H264 单比特率 720p Audio 5.1”任务预设。"
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 services: media-services
 documentationcenter: 

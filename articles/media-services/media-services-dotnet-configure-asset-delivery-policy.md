@@ -4,7 +4,7 @@ description: "本主题说明如何通过 Azure 媒体服务 .NET SDK 配置不�
 services: media-services
 documentationcenter: 
 author: Mingfeiy
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 3ec46f58-6cbb-4d49-bac6-1fd01a5a456b
 ms.service: media-services

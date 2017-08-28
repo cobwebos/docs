@@ -4,7 +4,7 @@ description: "本主题说明如何配置 Elemental Live 编码器，以便将�
 services: media-services
 documentationcenter: 
 author: cenkdin
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 9c6bf6a9-6273-4fdd-9477-f0e565280b5b
 ms.service: media-services
@@ -14,10 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: cenkd;anilmur;juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
 ms.openlocfilehash: bb4966cbd2af7a14caeac108a001b0820a67d2a1
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/11/2017
 
 ---
 # <a name="use-the-elemental-live-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Elemental Live 编码器发送单比特率实时流
@@ -74,7 +75,7 @@ ms.openlocfilehash: bb4966cbd2af7a14caeac108a001b0820a67d2a1
 >
 >
 
-### <a name="a-idconfigureelementalrtpaconfigure-the-elemental-live-encoder"></a><a id=configure_elemental_rtp></a>配置 Elemental Live 编码器
+### <a id=configure_elemental_rtp></a>配置 Elemental Live 编码器
 在本教程中，将使用以下输出设置。 本部分的其余内容介绍更详细的配置步骤。
 
 **视频**：
@@ -173,9 +174,4 @@ ms.openlocfilehash: bb4966cbd2af7a14caeac108a001b0820a67d2a1
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

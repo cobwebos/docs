@@ -4,7 +4,7 @@ description: "了解如何创建提供对资产进行安全访问的内容密钥
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 225b05e5-7d30-409c-b5b7-3ef0634310c7
 ms.service: media-services

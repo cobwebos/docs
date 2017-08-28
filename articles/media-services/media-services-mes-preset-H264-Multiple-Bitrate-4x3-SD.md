@@ -2,7 +2,7 @@
 title: "H264 多比特率 4x3 SD | Microsoft 文档"
 description: "本主题概述了 **H264 多比特率 4x3 SD** 任务预设。"
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 services: media-services
 documentationcenter: 

@@ -4,7 +4,7 @@ description: "本部分提供 Azure 媒体服务的概述"
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 7a5e9723-c379-446b-b4d6-d0e41bd7d31f
 ms.service: media-services
@@ -20,10 +20,8 @@ ms.openlocfilehash: 38c3637cc477e24ac8d056611e7fda9a4d693cdb
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/06/2017
 
-
 ---
-# Azure 媒体服务概述
-<a id="azure-media-services-overview" class="xliff"></a> 
+# <a name="azure-media-services-overview"></a>Azure 媒体服务概述 
 
 Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发人员能够生成可缩放的媒体管理和传送应用程序。 媒体服务基于 REST API，你可以使用这些 API 安全地上传、存储、编码和打包视频或音频内容，以供点播以及以实时流形式传送到各种客户端（例如，电视、电脑和移动设备）。
 
@@ -31,15 +29,13 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 
 可以选择实时流式播放你的内容，或者根据点播情况交付内容。 本主题还提供了其他相关主题的链接。
 
-## 媒体服务学习路径
-<a id="media-services-learning-paths" class="xliff"></a>
+## <a name="media-services-learning-paths"></a>媒体服务学习路径
 你可以在此处查看 AMS 学习路径：
 
 * [AMS 实时流式处理工作流](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 * [AMS 按需流式处理工作流](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 
 若要开始使用 Azure 媒体服务，你应该具备以下条件：
 
@@ -50,8 +46,7 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
     此外，请学习如何[以编程方式连接到 AMS API](media-services-use-aad-auth-to-access-ams-api.md)。
 * 处于已启动状态的标准或高级流式处理终结点。  有关详细信息，请参阅[管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
 
-## SDK 和工具
-<a id="sdks-and-tools" class="xliff"></a>
+## <a name="sdks-and-tools"></a>SDK 和工具
 
 若要构建媒体服务解决方案，你可以使用：
 
@@ -65,19 +60,16 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
     * [Azure 门户](https://portal.azure.com/)
     * [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) （Azure 媒体服务资源管理器 (AMSE) 是适用于 Windows 的 Winforms/C# 应用程序）
 
-## 概念和概述
-<a id="concepts-and-overview" class="xliff"></a>
+## <a name="concepts-and-overview"></a>概念和概述
 有关 Azure 媒体服务的概念，请参阅 [概念](media-services-concepts.md)。
 
 有关介绍 Azure 媒体服务所有主要组件的操作说明系列文章，请参阅 [Azure 媒体服务分步教程](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series)。 此系列文章全面概述了各个概念，并使用 AMSE 工具演示了 AMS 任务。 AMSE 工具是一种 Windows 工具。 使用 [AMS SDK for.NET](https://github.com/Azure/azure-sdk-for-media-services)、[Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java) 或 [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) 以编程方式完成的大多数任务也可以使用此工具来完成。
 
-## 支持的媒体服务功能跨数据中心方案和可用性
-<a id="supported-scenarios-and-availability-of-media-services-across-data-centers" class="xliff"></a>
+## <a name="supported-scenarios-and-availability-of-media-services-across-data-centers"></a>支持的媒体服务功能跨数据中心方案和可用性
 
 有关详细信息，请参阅 [AMS 功能和服务的跨数据中心方案和可用性](scenarios-and-availability.md)。
 
-## 服务级别协议 (SLA)
-<a id="service-level-agreement-sla" class="xliff"></a>
+## <a name="service-level-agreement-sla"></a>服务级别协议 (SLA)
 
 * 对于媒体服务编码，我们保证 REST API 事务可实现 99.9% 的可用性。
 * 如果客户购买了标准或高级流式处理终结点，则对于流式处理，我们将以 99.9% 的可用性保证成功处理现有媒体内容的请求。
@@ -89,13 +81,11 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 
 若要了解此功能在数据中心的可用性，请参阅[可用性](scenarios-and-availability.md#availability)部分。
 
-## 支持
-<a id="support" class="xliff"></a>
+## <a name="support"></a>支持
 
 [Azure 支持](https://azure.microsoft.com/support/options/) 为 Azure（包括媒体服务）提供支持选项。
 
-## 提供反馈
-<a id="provide-feedback" class="xliff"></a>
+## <a name="provide-feedback"></a>提供反馈
 
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
