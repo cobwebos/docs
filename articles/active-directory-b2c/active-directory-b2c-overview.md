@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory B2C：概述 | Microsoft Docs"
+title: "概述 - Azure AD B2C | Microsoft Docs"
 description: "使用 Azure Active Directory B2C 开发面向用户的应用程序"
 services: active-directory-b2c
 documentationcenter: 
-author: saeeda
+author: saeedakhter-msft
 manager: krassk
-editor: parja
+editor: parakhj
 ms.assetid: c465dbde-f800-4f2e-8814-0ff5f5dae610
 ms.service: active-directory-b2c
 ms.workload: identity
@@ -13,16 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/06/2016
-ms.author: saeeda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
-ms.openlocfilehash: f3c2760ec66c0292ebeb53d0acb5f9ee1df388ae
+ms.author: saeedakhter-msft
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 44d5d31d49c375c802a67511d1f962df20656559
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/06/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
-# <a name="azure-ad-b2c-focus-on-your-app-let-us-worry-about-sign-up-and-sign-in"></a>Azure AD B2C：专注于你的应用，让我们考虑注册和登录问题
+# <a name="azure-ad-b2c-focus-on-your-app-let-us-worry-about-sign-up-and-sign-in"></a>Azure AD B2C：专注于应用，让我们考虑注册和登录问题
 
 Azure AD B2C 是一种云标识管理解决方案，适用于 Web 和移动应用程序。 它是一个具有高可用性的全球服务，可扩展到亿万标识。 Azure AD B2C 以企业级安全平台为基础，可保护应用程序、业务和用户。
 
@@ -72,7 +71,7 @@ Azure AD B2C 是一种云标识管理解决方案，适用于 Web 和移动应�
 * 请参阅 [Azure Active Directory B2C 定价信息](https://azure.microsoft.com/pricing/details/active-directory-b2c/)。
 * 查看我们提供的适用于 Azure Active Directory B2C 的[代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory&term=b2c)。 
 * 使用 [azure-ad-b2c](http://stackoverflow.com/questions/tagged/azure-ad-b2c) 标记获取有关 Stack Overflow 的帮助。
-* 使用[用户之声](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)反馈你的看法 — 我们希望听到这些！
+* 使用[用户之声](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)反馈看法 — 我们希望听到这些！
 * 查看 [Azure AD B2C 协议参考](active-directory-b2c-reference-protocols.md)。
 * 查看 [Azure AD B2C 令牌参考](active-directory-b2c-reference-tokens.md)。
 * 参阅 [Azure Active Directory B2C 常见问题解答](active-directory-b2c-faqs.md)。

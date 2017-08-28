@@ -1,14 +1,16 @@
-## <a name="meaning-of-migration-of-iaas-resources-from-classic-to-resource-manager"></a>将 IaaS 资源从经典模型迁移到 Resource Manager 的意义
+## <a name="meaning-of-migration-of-iaas-resources-from-the-classic-deployment-model-to-resource-manager"></a>将 IaaS 资源从经典部署模型迁移到资源管理器的意义
 在详细了解详细信息之前，先看看 IaaS 资源的数据平面和管理平面操作之间的差异。
 
 * *管理/控制平面*描述进入管理/控制平面或 API 修改资源的调用。 例如，创建 VM、重启 VM 以及将虚拟网络更新成新子网等操作均可管理正在运行的资源。 它们并不直接影响与实例之间的连接。
 * *数据平面*（应用程序）描述应用程序本身的运行时，并涉及与不通过 Azure API 的实例的交互。 访问网站或从运行中的 SQL Server 实例或 MongoDB 服务器拉取数据，全都被视为数据平面或应用程序交互。 从存储帐户复制 Blob，以及访问公共 IP 地址以通过 RDP 或 SSH 连接到虚拟机也属于数据平面。 这些操作可让应用程序继续跨计算、网络和存储运行。
 
+在后台，经典部署模型和资源管理器堆栈之间的数据平面是相同的。 在迁移过程中，我们会将资源的表示方式从经典部署模型转换为资源管理器堆栈中的相应模型。 因此，需在资源管理器堆栈中使用新的工具、API、SDK 来管理资源。
+
 ![演示管理/控制平面和数据平面之间的差异的屏幕截图](../articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
+
 
 > [!NOTE]
 > 在某些迁移方案中，Azure 平台会停止、释放和重新启动虚拟机。 这会造成短暂的数据平面停机。
->
 >
 
 ## <a name="the-migration-experience"></a>迁移体验
@@ -31,25 +33,40 @@
 >
 
 ### <a name="validate"></a>验证
-验证操作是迁移过程中的第一个步骤。 此步骤的目的是在后台对进行迁移的资源执行数据分析，并在资源能够进行迁移时返回成功/失败。
+验证操作是迁移过程中的第一个步骤。 此步骤的目的是分析要在经典部署模型中迁移的资源的状态，并通过返回成功/失败来表明资源能否迁移。
 
-可选择需要进行迁移验证的虚拟网络或托管服务（如果不是虚拟网络）。
+可选择需要进行迁移验证的虚拟网络或云服务（如果不在虚拟网络中）。
 
 * 如果资源无法迁移，Azure 平台会列出不支持迁移该资源的所有原因。
 
-在验证存储服务时，会发现资源组迁移帐户的名称与存储帐户附加“-Migrated”后的名称相同。  例如，如果存储帐户名为“mystorage”，则会在名为“mystorage-Migrated”的资源组中找到支持 Azure 资源管理器的资源，并且它会包含名为“mystorage”的存储帐户。
+#### <a name="checks-not-done-in-validate"></a>未在验证中完成的检查
+
+验证操作仅分析经典部署模型中资源的状态。 它可以查看因经典部署模型中配置的不同而导致的所有失败方案和不支持的方案。 它不能检查 Azure 资源管理器堆栈对迁移过程中的资源造成的所有问题。 仅当资源在下一步的迁移过程（即“准备”）中进行转换时，才会检查是否存在这些问题。 下表列出了在验证过程中未检查的所有问题。
+
+
+|不在验证过程中进行的网络检查|
+|-|
+|虚拟网络同时具有 ER 和 VPN 网关|
+|虚拟网关连接处于断开状态|
+|所有 ER 线路都预先迁移到 Azure 资源管理器堆栈|
+|Azure 资源管理器配额检查网络资源，即静态公共 IP、动态公共 IP、负载均衡器、网络安全组、路由表、网络接口 |
+| 查看所有负载均衡器规则是否在整个部署/VNET 中有效 |
+| 查看同一 VNET 中处于“已停止-已取消分配”状态的 VM 之间是否存在冲突的专用 IP |
 
 ### <a name="prepare"></a>准备
-准备操作是迁移过程中的第二个步骤。 此步骤的目标是要模拟将 IaaS 资源从经典资源转换为 Resource Manager 资源的过程，并以并排方式让此转换过程直观可见。
+准备操作是迁移过程中的第二个步骤。 此步骤的目标是要模拟将 IaaS 资源从经典部署模型资源转换为资源管理器资源的过程，并以并排方式让此转换过程直观可见。
 
-可选择需要进行迁移准备的虚拟网络或托管服务（如果不是虚拟网络）。
+> [!NOTE] 
+> 此步骤不修改经典资源。 因此，若要尝试迁移，这是可以运行的安全步骤。 
+
+可选择需要进行迁移准备的虚拟网络或云服务（如果不是虚拟网络）。
 
 * 如果资源无法迁移，Azure 平台会停止迁移过程，并列出准备操作失败的原因。
 * 如果资源可迁移，Azure 平台会先锁定进行迁移的资源的管理平面操作。 例如，无法将数据磁盘添加到进行迁移的 VM。
 
-然后，Azure 平台就会开始将迁移中资源的元数据从经典模型迁移到资源管理器模型。
+然后，Azure 平台就会开始将迁移中资源的元数据从经典部署模型迁移到资源管理器模型。
 
-准备操作完成之后，可以选择在经典模型和 Resource Manager 模型中将资源可视化。 对于经典部署模型中的每项云服务，Azure 平台都会创建模式为 `cloud-service-name>-Migrated` 的资源组名称。
+准备操作完成之后，可以选择在经典部署模型和资源管理器模型中将资源可视化。 对于经典部署模型中的每项云服务，Azure 平台都会创建模式为 `cloud-service-name>-Migrated` 的资源组名称。
 
 > [!NOTE]
 > 不可选择为已迁移资源创建的资源组名称（即“-Migrated”），但迁移完成后，可使用 Azure 资源管理器移动功能将资源移动到所需的任何资源组。 要了解详细信息，请参阅[将资源移动到新的资源组或订阅](../articles/resource-group-move-resources.md)
@@ -60,9 +77,12 @@
 
 ![显示准备中的门户 Azure Resource Manager 资源的屏幕截图](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
 
+下面是在完成准备阶段以后，在幕后查看资源的情形。 请注意，数据平面中的资源是相同的。 它同时在管理平面（经典部署模型）和控制平面（资源管理器）中呈现。
+
+![准备阶段的幕后](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
+
 > [!NOTE]
-> 不属于经典虚拟网络的虚拟机会在此迁移阶段中停止（解除分配）。
->
+> 不属于经典虚拟网络的虚拟机在此迁移阶段中停止（解除分配）。
 >
 
 ### <a name="check-manual-or-scripted"></a>检查（手动或通过脚本）
@@ -77,27 +97,33 @@
 如果发现任何问题，始终可以中止迁移，并返回到经典部署模型。 在用户返回后，Azure 平台会打开资源的管理平面操作，使用户可以继续在经典部署模型中对这些 VM 执行正常操作。
 
 ### <a name="abort"></a>中止
-中止是可选步骤，用于将更改还原为经典部署模型，并停止迁移。
+中止是可选步骤，用于将更改还原为经典部署模型，并停止迁移。 对于在前面的准备步骤中创建的资源，此操作会删除资源管理器元数据。 
+
+![中止阶段的幕后](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
+
 
 > [!NOTE]
 > 触发提交操作后，就无法执行此操作。     
 >
->
 
 ### <a name="commit"></a>提交
-完成验证之后，就可以提交迁移。 资源不会再出现在经典部署模型中，而只有在 Resource Manager 部署模型中才能使用这些资源。 只能在新门户中管理迁移的资源。
+完成验证之后，就可以提交迁移。 资源不会再出现在经典部署模型中，而只有在资源管理器部署模型中才能使用这些资源。 只能在新门户中管理迁移的资源。
 
 > [!NOTE]
 > 这是幂等操作。 如果该操作失败，建议重试该操作。 如果一直失败，请创建支持票证，或在 [VM 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesforWindows)上创建标记为 ClassicIaaSMigration 的论坛帖子。
 >
 >
-<br>
-以下是迁移过程中的步骤流程图
+
+![提交阶段的幕后](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
+
+## <a name="where-to-begin-migration"></a>从哪里开始迁移？
+
+下面是一个流程图，说明了如何进行迁移
 
 ![显示迁移步骤的屏幕截图](../articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png)
 
-## <a name="translation-of-classic-to-azure-resource-manager-resources"></a>从经典资源转换为 Azure Resource Manager 资源
-可以在下表中找到资源的经典与 Resource Manager 表示形式。 目前不支持其他功能和资源。
+## <a name="translation-of-classic-deployment-model-to-azure-resource-manager-resources"></a>从经典部署模型资源转换为 Azure 资源管理器资源
+可以在下表中找到资源的经典部署模型与资源管理器表示形式。 目前不支持其他功能和资源。
 
 | 经典表示形式 | Resource Manager 表示形式 | 详细说明 |
 | --- | --- | --- |

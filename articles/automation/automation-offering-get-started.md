@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/12/2017
+ms.date: 08/18/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 7ef31d7d72844c0ed3be0701549e49e26aac9abf
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 54f137b26bf1c8f966e8ef110dcf3d25abf7ac5b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 07/24/2017
 
 ![Azure 自动化概述](media/automation-offering-get-started/automation-infradiagram-networkcomms.png)
 
-Azure 自动化是软件即服务 (SaaS) 型应用程序，提供可缩放且可靠的多租户环境，可以在本地、Azure 或其他云服务中通过 Runbook 实现过程的自动化，并使用 Desired State Configuration (DSC) 管理对 Windows 和 Linux 系统的配置更改。 包含在自动化帐户中的实体（例如 Runbook、资产、运行方式帐户）与你的订阅以及其他订阅中的其他自动化帐户相互隔离。  
+Azure 自动化是软件即服务 (SaaS) 型应用程序，提供可缩放且可靠的多租户环境，可以在本地、Azure 或其他云服务中通过 Runbook 实现过程的自动化，并使用 Desired State Configuration (DSC) 管理对 Windows 和 Linux 系统的配置更改。 包含在自动化帐户中的实体（例如 Runbook、资产、运行方式帐户）与订阅以及其他订阅中的其他自动化帐户相互隔离。  
 
 Azure 中运行的 Runbook 在自动化沙盒中执行，这些沙盒托管在 Azure 平台即服务 (PaaS) 型虚拟机中。  自动化沙盒针对 Runbook 执行的所有方面（模块、存储、内存、网络通信、作业流等）提供租户隔离。此角色由服务管理，不可从 Azure 或 Azure 自动化帐户访问，因此，无法控制它。         
 
@@ -67,8 +67,8 @@ Azure 自动化 DSC 可用于管理各种计算机：
 ### <a name="permissions-required-to-create-automation-account"></a>创建自动化帐户所需的权限
 若要创建或更新自动化帐户，必须具有完成本主题所需的下述特定权限。   
  
-* 若要创建自动化帐户，需将 AD 用户帐户添加到一个角色，该角色的权限相当于 Microsoft.Automation 资源的参与者角色，如 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md#contributor-role-permissions)一文所述。  
-* Azure AD 租户中的非管理员用户可以[注册 AD 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions)，前提是“应用注册设置”已设置为“是”。  如果“应用注册设置”设置为“否”，则执行此操作的用户必须是 Azure AD 中的全局管理员。 
+* 若要创建自动化帐户，需将 AD 用户帐户添加到一个角色，该角色的权限相当于 Microsoft.Automation 资源的所有者角色，如 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md)一文所述。  
+* Azure AD 租户中的非管理员用户可以**注册 AD 应用程序**，前提是“应用注册设置”已设置为“是”。[](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions)  如果“应用注册设置”设置为“否”，则执行此操作的用户必须是 Azure AD 中的全局管理员。 
 
 如果你在被添加到订阅的全局管理员/共同管理员角色之前不是订阅的 Active Directory 实例的成员，则会将你作为来宾添加到 Active Directory。 在这种情况下，“添加自动化帐户”边栏选项卡中会显示 “你无权创建...”警告。 可以先从订阅的 Active Directory 实例中删除已添加到全局管理员/共同管理员角色的用户，然后重新添加，使其成为 Active Directory 中的完整用户。 若要验证这种情况，可在 Azure 门户的“Azure Active Directory”窗格中选择“用户和组”，选择“所有用户”，在选择特定的用户后再选择“配置文件”。 用户配置文件下的“用户类型”属性值不应等于“来宾”。
 
@@ -120,7 +120,7 @@ Azure 自动化 DSC 可用于管理各种计算机：
 * 端口：只需使用 TCP 443 进行出站 Internet 访问
 * 全局 URL：*.azure-automation.net
 
-如果你为特定的区域定义了自动化帐户并想要限制与该区域数据中心之间的通信，请参考下表中为每个区域提供的 DNS 记录。
+如果为特定的区域定义了自动化帐户并想要限制与该区域数据中心之间的通信，请参考下表中为每个区域提供的 DNS 记录。
 
 | **区域** | **DNS 记录** |
 | --- | --- |
@@ -150,7 +150,7 @@ Azure 自动化 DSC 可用于管理各种计算机：
 |方法 | 说明 |
 |-------|-------------|
 | 从应用商店选择“自动化与控制” | 一种服务，用于创建自动化帐户和 OMS 工作区，二者在同一资源组和区域中互相关联。  与 OMS 的集成还包括使用 Log Analytics 监视和分析随时间推移的 runbook 作业状态和作业流，以及利用高级功能上报或调查问题的好处。 该服务还部署更改跟踪和更新管理解决方案（默认启用）。 |
-| 从应用商店选择“自动化” | 在新的或现有的资源组中创建自动化帐户，该资源组与 OMS 工作区没有关联，也不包含“自动化与控制”服务提供的任何解决方案。 这是自动化操作入门的基本配置，你可以借此了解如何编写 Runbook 和 DSC 配置，以及如何使用该服务的功能。 |
+| 从应用商店选择“自动化” | 在新的或现有的资源组中创建自动化帐户，该资源组与 OMS 工作区没有关联，也不包含“自动化与控制”服务提供的任何解决方案。 这是自动化操作入门的基本配置，可以借此了解如何编写 Runbook 和 DSC 配置，以及如何使用该服务的功能。 |
 | 选定管理解决方案 | 如果从**[更新管理](../operations-management-suite/oms-solution-update-management.md)**、**[在空闲时间启动/停止 VM](automation-solution-vm-management.md)** 或**[更改跟踪](../log-analytics/log-analytics-change-tracking.md)**中选择一个解决方案，系统会提示你选择现有的自动化与 OMS 工作区，或者允许你同时创建二者，这是在订阅中部署解决方案所必需的。 |
 
 本主题演示如何载入“自动化与控制”服务，以便创建自动化帐户和 OMS 工作区。  若要创建独立的自动化帐户，以便进行测试或对服务进行预览，请参阅[创建独立的自动化帐户](automation-create-standalone-account.md)一文。  
@@ -162,30 +162,30 @@ Azure 自动化 DSC 可用于管理各种计算机：
 
 2. 单击“新建” 。<br><br> ![在 Azure 门户中选择“新建”选项](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
 
-3. 搜索“自动化”，然后在搜索结果中选择“自动化与控制”*。<br><br> ![从应用商店搜索并选择“自动化与控制”](media/automation-offering-get-started/automation-portal-martketplace-select-automationandcontrol.png)。<br>   
+3. 搜索“自动化”，并在搜索结果中选择“自动化与控制”*。<br><br> ![从应用商店搜索并选择“自动化与控制”](media/automation-offering-get-started/automation-portal-martketplace-select-automationandcontrol.png)。<br>   
 
 4. 在阅读服务说明后，单击“创建”。  
 
-5. 在“自动化与控制”设置边栏选项卡上，选择“OMS 工作区”。  在“OMS 工作区”边栏选项卡上，选择一个 OMS 工作区（其链接到的 Azure 订阅正是自动化帐户所在的订阅），或创建一个 OMS 工作区。  如果没有 OMS 工作区，请选择“新建工作区”，然后在“OMS 工作区”边栏选项卡上执行以下操作： 
+5. 在“自动化与控制”设置边栏选项卡上，选择“OMS 工作区”。  在“OMS 工作区”边栏选项卡上，选择一个 OMS 工作区（其链接到的 Azure 订阅正是自动化帐户所在的订阅），或创建一个 OMS 工作区。  如果没有 OMS 工作区，请选择“新建工作区”，并在“OMS 工作区”边栏选项卡上执行以下操作： 
    - 指定新 **OMS 工作区**的名称。
    - 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
    - 对于“资源组”，可以创建资源组，也可以选择现有资源组。  
    - 选择“位置” 。  目前提供的位置只有“澳大利亚东南部”、“美国东部”、“东南亚”、“美国中西部”和“西欧”。
    - 选择“定价层” 。  该解决方案提供两种定价层：“免费”层和“按节点 (OMS)”层。  免费层的每日可收集数据量、保留期和 Runbook 作业运行时分钟数有限制。  “按节点 (OMS)”层对每日收集的数据量没有限制。  
-   - 选择“自动化帐户”。  若要创建新的 OMS 工作区，则还需创建一个与前面指定的新 OMS 工作区相关联的自动化帐户，其中包括 Azure 订阅、资源组和区域。  可以选择“创建自动化帐户”，然后在“自动化帐户”边栏选项卡上提供以下信息： 
+   - 选择“自动化帐户”。  若要创建新的 OMS 工作区，则还需创建一个与前面指定的新 OMS 工作区相关联的自动化帐户，其中包括 Azure 订阅、资源组和区域。  可以选择“创建自动化帐户”，并在“自动化帐户”边栏选项卡上提供以下信息： 
   - 在“名称”字段中输入自动化帐户的名称。
 
     系统会根据所选的 OMS 工作区自动填充所有其他选项，无法修改这些选项。  Azure 运行方式帐户是此服务的默认身份验证方法。  单击“确定”后，系统会验证配置选项并创建自动化帐户。  可以在菜单中的“通知”下面跟踪操作进度。 
 
     否则，请选择现有的自动化运行方式帐户。  选择的帐户不能已关联到另一 OMS 工作区，否则会在边栏选项卡中显示一条通知消息。  如果该帐户已进行关联，则需选择其他自动化运行方式帐户，或者创建一个。
 
-    提供完所需信息以后，请单击“创建”。  此时会对信息进行验证，并创建自动化帐户和运行方式帐户。  你会自动返回到“OMS 工作区”边栏选项卡。  
+    提供完所需信息以后，请单击“创建”。  此时会对信息进行验证，并创建自动化帐户和运行方式帐户。  会自动返回到“OMS 工作区”边栏选项卡。  
 
 6. 在“OMS 工作区”边栏选项卡上提供所需信息后，单击“创建”。  在验证信息和创建工作区时，可以在菜单中的“通知”下面跟踪操作进度。  随后将返回到“添加解决方案”边栏选项卡。  
 
 7. 在“自动化与控制”设置边栏选项卡上，确认你想要安装建议的预选解决方案。 如果取消选择某个解决方案，可以稍后单独进行安装。  
 
-8. 单击“创建”，继续载入自动化和 OMS 工作区。 系统将验证所有设置，然后尝试在订阅中部署该服务。  此过程需要几秒钟才能完成，可以在菜单中的“通知”下面跟踪进度。 
+8. 单击“创建”，继续载入自动化和 OMS 工作区。 系统会验证所有设置，然后尝试在订阅中部署该服务。  此过程需要几秒钟才能完成，可以在菜单中的“通知”下面跟踪进度。 
 
 载入该服务以后，即可开始创建 runbook，运行已启用的管理解决方案，部署[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)，或者开始使用 [Log Analytics](https://docs.microsoft.com/azure/log-analytics) 收集云或本地环境中的资源所生成的数据。   
 

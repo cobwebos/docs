@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/10/2017
 ms.author: alkohli
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 905a70bfd37ccdb9f2944b4a9348c3b60dedda44
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e7f58c8c1414f41d1d43e98b2faa327165f6eb75
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>在 Azure 中部署和管理 StorSimple 云设备（Update 3 及更高版本）
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/12/2017
 
 StorSimple 8000 系列云设备是 Microsoft Azure StorSimple 解决方案附带的一项额外功能。 StorSimple 云设备在 Microsoft Azure 虚拟网络中的虚拟机上运行，可用于备份和克隆来自主机的数据。
 
-本文介绍了在 Azure 中部署和管理 StorSimple 云设备的分步过程。 阅读本文后，将会：
+本文介绍了在 Azure 中部署和管理 StorSimple 云设备的分步过程。 阅读本文后，可以：
 
 * 了解云设备与物理设备之间的差异。
 * 能够创建和配置云设备。
@@ -44,8 +44,8 @@ StorSimple 云设备以两种型号提供：标准 8010（前身为 1100）和�
 | --- | --- | --- |
 | **最大容量** |30 TB |64 TB |
 | **Azure VM** |Standard_A3（4 核，7 GB 内存）| Standard_DS3（4 核，14 GB 内存）|
-| **上市区域** |所有 Azure 区域 |支持高级存储和 DS3 Azure VM 的 Azure 区域<br></br>请使用[此列表](https://azure.microsoft.com/regions/services/)，看“虚拟机”>“DS 系列”和“存储”>“磁盘存储”在你的区域是否均可用。 |
-| **存储类型** |为本地磁盘使用 Azure 标准存储<br></br> 了解如何 [创建标准存储帐户](../storage/storage-create-storage-account.md) |为本地磁盘使用 Azure 高级存储<sup>2</sup> <br></br>了解如何[创建高级存储帐户](../storage/storage-premium-storage.md) |
+| **上市区域** |所有 Azure 区域 |支持高级存储和 DS3 Azure VM 的 Azure 区域<br></br>请使用[此列表](https://azure.microsoft.com/regions/services/)，看“虚拟机”>“DS 系列”和“存储”>“磁盘存储”在区域是否均可用。 |
+| **存储类型** |为本地磁盘使用 Azure 标准存储<br></br> 了解如何 [创建标准存储帐户](../storage/common/storage-create-storage-account.md) |为本地磁盘使用 Azure 高级存储<sup>2</sup> <br></br>了解如何[创建高级存储帐户](../storage/common/storage-premium-storage.md) |
 | **工作负荷指导** |在级别从备份中检索文件 |云开发和测试方案 <br></br>低延迟和更高性能工作负载<br></br>用于灾难恢复的辅助设备 |
 
 <sup>1</sup>*前身为 1100*。
@@ -65,7 +65,7 @@ StorSimple 云设备是软件形式的 StorSimple，在 Microsoft Azure 虚拟�
 | **位置** |驻留在数据中心。 |在 Azure 中运行。 |
 | **网络接口** |有六个网络接口：DATA 0 到 DATA 5。 |只有一个网络接口：DATA 0。 |
 | **注册** |在初始配置步骤中注册的。 |注册是一个单独的任务。 |
-| **服务数据加密密钥** |在物理设备上重新生成，然后使用新密钥更新云设备。 |无法从云设备重新生成。 |
+| **服务数据加密密钥** |在物理设备上重新生成，并使用新密钥更新云设备。 |无法从云设备重新生成。 |
 | **支持的卷类型** |支持本地固定卷和分层卷。 |仅支持分层卷。 |
 
 ## <a name="prerequisites-for-the-cloud-appliance"></a>云设备的先决条件
@@ -80,7 +80,7 @@ StorSimple 云设备是软件形式的 StorSimple，在 Microsoft Azure 虚拟�
 
 * 确保在数据中心部署并运行 StorSimple 8000 系列物理设备（型号为 8100 或 8600）。 将此设备注册到要为其创建 StorSimple 云设备的 StorSimple 设备管理器服务。
 * 对于云设备，[在 Azure 中配置虚拟网络](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)。 如果使用高级存储，必须在支持高级存储的 Azure 区域中创建虚拟网络。 高级存储区域是 [Azure 服务（按区域）](https://azure.microsoft.com/regions/services/)列表中与“磁盘存储”所在的行对应的区域。
-* 建议使用 Azure 提供的默认 DNS 服务器，而不要指定自己的 DNS 服务器名称。 如果 DNS 服务器名称无效，或者 DNS 服务器无法正确解析 IP 地址，则创建云设备将会失败。
+* 建议使用 Azure 提供的默认 DNS 服务器，而不要指定自己的 DNS 服务器名称。 如果 DNS 服务器名称无效，或者 DNS 服务器无法正确解析 IP 地址，则创建云设备会失败。
 * 点到站点和站点到站点连接是可选的，而不是必需的。 如果需要，可以针对更高级方案配置这些选项。
 * 可以在可使用云设备公开的卷的虚拟网络中创建 [Azure 虚拟机](../virtual-machines/virtual-machines-windows-quick-create-portal.md)（主机服务器）。 这些服务器必须满足以下要求：
 
@@ -94,7 +94,7 @@ StorSimple 云设备是软件形式的 StorSimple，在 Microsoft Azure 虚拟�
 创建云设备之前，请对 StorSimple Device Manager 服务进行以下更新：
 
 * 针对要用作云设备主机服务器的 VM 添加[访问控制记录](storsimple-8000-manage-acrs.md)。
-* 使用与云设备位于同一区域中的[存储帐户](storsimple-8000-manage-storage-accounts.md#add-a-storage-account)。 使用不同区域中的存储帐户可能导致性能不佳。 可以将标准或高级存储帐户用于云设备。 如何创建[标准存储帐户](../storage/storage-create-storage-account.md)或[高级存储帐户](../storage/storage-premium-storage.md)的详细信息
+* 使用与云设备位于同一区域中的[存储帐户](storsimple-8000-manage-storage-accounts.md#add-a-storage-account)。 使用不同区域中的存储帐户可能导致性能不佳。 可以将标准或高级存储帐户用于云设备。 如何创建[标准存储帐户](../storage/common/storage-create-storage-account.md)或[高级存储帐户](../storage/common/storage-premium-storage.md)的详细信息
 * 用于创建云设备的存储帐户应该与用于存储数据的存储帐户不同。 使用相同的存储帐户可能会导致性能不佳。
 
 在开始之前，请确保已准备好以下信息：
@@ -118,7 +118,7 @@ StorSimple 云设备是软件形式的 StorSimple，在 Microsoft Azure 虚拟�
 
 ### <a name="step-2-configure-and-register-the-cloud-appliance"></a>步骤 2：配置并注册云设备
 
-开始此过程之前，请确保已获得服务数据加密密钥的副本。 服务数据加密密钥是在向 StorSimple Device Manager 服务注册第一台 StorSimple 物理设备时创建的。 创建时会指示你将其保存在一个安全位置。 如果没有服务数据加密密钥的副本，则必须联系 Microsoft 支持部门获得帮助。
+开始此过程之前，请确保已获得服务数据加密密钥的副本。 服务数据加密密钥是在向 StorSimple Device Manager 服务注册第一台 StorSimple 物理设备时创建的。 创建时会指示将其保存在一个安全位置。 如果没有服务数据加密密钥的副本，则必须联系 Microsoft 支持部门获得帮助。
 
 执行以下步骤来配置并注册 StorSimple 云设备。
 
@@ -148,7 +148,7 @@ StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员�
 > [!NOTE]
 > 对云设备而言，Windows 主机就是 Azure 虚拟机。
 
-在 StorSimple Snapshot Manager 中配置设备时，系统将提示你提供 StorSimple 设备 IP 地址和密码对存储设备进行身份验证。 有关详细步骤，请转到 [配置 StorSimple Snapshot Manager 密码](storsimple-8000-change-passwords.md#set-the-storsimple-snapshot-manager-password)。
+在 StorSimple Snapshot Manager 中配置设备时，系统会提示提供 StorSimple 设备 IP 地址和密码对存储设备进行身份验证。 有关详细步骤，请转到 [配置 StorSimple Snapshot Manager 密码](storsimple-8000-change-passwords.md#set-the-storsimple-snapshot-manager-password)。
 
 #### <a name="change-the-device-administrator-password"></a>更改设备管理员密码
 
@@ -168,7 +168,7 @@ StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员�
 
 ### <a name="step-2-remotely-access-the-cloud-appliance"></a>步骤 2：远程访问云设备
 
-在云设备上启用远程管理后，使用 Windows PowerShell 远程处理从同一虚拟网络中的另一虚拟机上连接到设备。 例如，可以从你配置的用来连接 iSCSI 的宿主 VM 进行连接。 在大多数部署中，你将打开一个公共终结点来访问可用于访问云设备的宿主 VM。
+在云设备上启用远程管理后，使用 Windows PowerShell 远程处理从同一虚拟网络中的另一虚拟机上连接到设备。 例如，可以从配置的用来连接 iSCSI 的宿主 VM 进行连接。 在大多数部署中，将打开一个公共终结点来访问可用于访问云设备的宿主 VM。
 
 > [!WARNING]
 > **为了增强安全性，强烈建议在连接到终结点时使用 HTTPS，并在完成 PowerShell 远程会话之后删除终结点。**
@@ -187,7 +187,7 @@ StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员�
 
 ## <a name="work-with-the-storsimple-cloud-appliance"></a>使用 StorSimple 云设备
 
-现在，你已创建并配置了 StorSimple 云设备，可以开始使用它执行工作了。 可以像在物理 StorSimple 设备上一样使用卷容器、卷和备份策略。 唯一的区别是你需要确保从设备列表中选择云设备。 有关云设备的各种管理任务的分步过程，请参阅[使用 StorSimple Device Manager 服务管理云设备](storsimple-8000-manager-service-administration.md)。
+现在，已创建并配置了 StorSimple 云设备，可以开始使用它执行工作了。 可以像在物理 StorSimple 设备上一样使用卷容器、卷和备份策略。 唯一的区别是需要确保从设备列表中选择云设备。 有关云设备的各种管理任务的分步过程，请参阅[使用 StorSimple Device Manager 服务管理云设备](storsimple-8000-manager-service-administration.md)。
 
 以下各部分介绍了在使用云设备时会遇到的一些差异。
 
@@ -200,7 +200,7 @@ StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员�
 
 ### <a name="storage-accounts-for-a-cloud-appliance"></a>云设备的存储帐户
 
-创建的存储帐户供 StorSimple Device Manager 服务、云设备和物理设备使用。 创建存储帐户时，建议你在友好名称中使用区域标识符。 这有助于确保区域在所有系统组件中保持一致。 对于云设备，所有组件必须位于同一区域中，防止出现性能问题。
+创建的存储帐户供 StorSimple Device Manager 服务、云设备和物理设备使用。 创建存储帐户时，建议在友好名称中使用区域标识符。 这有助于确保区域在所有系统组件中保持一致。 对于云设备，所有组件必须位于同一区域中，防止出现性能问题。
 
 有关分步过程，请转到 [添加存储帐户](storsimple-8000-manage-storage-accounts.md#add-a-storage-account)。
 
@@ -222,7 +222,7 @@ StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员�
 ### <a name="start-stop-and-restart-a-cloud-appliance"></a>停止、启动和重新启动云设备
 不同于 StorSimple 物理设备，StorSimple 云设备上没有开机或关机按钮。 但是，有时可能需要停止和重新启动云设备。
 
-若要启动、停止和重启云设备，最简单的方法是使用“虚拟机服务”边栏选项卡。 转到“虚拟机服务”。 从 VM 列表中，找出与你的云设备对应的 VM（名称相同），然后单击该 VM 名称。 在查看虚拟机边栏选项卡时，可以看到云设备状态为“正在运行”，因为它在创建之后已默认启动。 可以随时启动、停止和重新启动虚拟机。
+若要启动、停止和重启云设备，最简单的方法是使用“虚拟机服务”边栏选项卡。 转到“虚拟机服务”。 从 VM 列表中，找出与云设备对应的 VM（名称相同），并单击该 VM 名称。 在查看虚拟机边栏选项卡时，可以看到云设备状态为“正在运行”，因为它在创建之后已默认启动。 可以随时启动、停止和重新启动虚拟机。
 
 [!INCLUDE [Stop and restart cloud appliance](../../includes/storsimple-8000-stop-restart-cloud-appliance.md)]
 
@@ -244,18 +244,18 @@ DR 的先决条件如下：
 有关分步过程，请转到[故障转移到云设备](storsimple-8000-device-failover-cloud-appliance.md)。
 
 ## <a name="delete-the-cloud-appliance"></a>删除云设备
-如果以前配置并使用了 StorSimple 云设备，但现在希望停止由于使用该设备而产生计算费用，则必须停止云设备。 停止云设备会解除分配 VM。 此操作将停止你的订阅上产生的费用。 不过，OS 和数据磁盘的存储费用仍然会继续产生。
+如果以前配置并使用了 StorSimple 云设备，但现在希望停止由于使用该设备而产生计算费用，则必须停止云设备。 停止云设备会解除分配 VM。 此操作将停止订阅上产生的费用。 不过，OS 和数据磁盘的存储费用仍然会继续产生。
 
 若要停止所有费用，必须删除云设备。 若要删除云设备创建的备份，可以停用或删除该设备。 有关详细信息，请参阅 [停用和删除 StorSimple 设备](storsimple-8000-deactivate-and-delete-device.md)。
 
 [!INCLUDE [Delete a cloud appliance](../../includes/storsimple-8000-delete-cloud-appliance.md)]
 
 ## <a name="troubleshoot-internet-connectivity-errors"></a>对 Internet 连接错误进行故障排除
-创建云设备时，如果没有 Internet 连接，则创建步骤将会失败。 若要排查 Internet 连接故障，请在 Azure 门户中执行以下步骤：
+创建云设备时，如果没有 Internet 连接，则创建步骤会失败。 若要排查 Internet 连接故障，请在 Azure 门户中执行以下步骤：
 
 1. [在 Azure 中创建 Windows server 2012 虚拟机](/articles/virtual-machines/windows/quick-create-portal.md)。 此虚拟机应使用与云设备相同的存储帐户、VNet 和子网。 如果 Azure 中存在使用相同存储帐户、VNet 和子网的现有 Windows Server 主机，也可以使用它来排除 Internet 连接故障。
 2. 远程登录到上一步中创建的虚拟机。
-3. 打开虚拟机内的命令窗口（Win + R，然后键入 `cmd`）。
+3. 打开虚拟机内的命令窗口（Win + R，并键入 `cmd`）。
 4. 在提示符处运行以下 cmd。
 
     `nslookup windows.net`

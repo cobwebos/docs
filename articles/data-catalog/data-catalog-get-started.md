@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 05/03/2017
+ms.date: 08/03/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: 2b128e2771ea89d1c0d6b8d52357d1bcc993115a
-ms.openlocfilehash: a9629d0a4bfc44f5d035a29f8e97d76922cc0060
-ms.lasthandoff: 02/16/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 5a3445aee7722579405b67830ca49ef8c0b29d0e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Azure 数据目录入门
@@ -31,7 +31,7 @@ Azure 数据目录是一个完全托管的云服务，具有企业数据资产�
 |:--- |:--- |
 | [预配数据目录](#provision-data-catalog) |在此过程中预配或设置 Azure 数据目录。 仅当以前尚未设置目录时才执行此步骤。 即使有多个订阅与 Azure 帐户关联，每个组织也只能有一个数据目录（Microsoft Azure Active Directory 域）。 |
 | [注册数据资产](#register-data-assets) |在此过程中，将 AdventureWorks2014 示例数据库中的数据资产注册到数据目录。 注册是从数据源提取关键结构元数据（例如名称、类型和位置）并将该元数据复制到目录的过程。 数据源与数据资产保留在原地，但目录使用元数据，使数据源及其数据更容易发现和识别。 |
-| [发现数据资产](#discover-data-assets) |在此过程中，使用 Azure 数据目录门户发现上一步骤注册的数据资产。 将数据源注册到 Azure 数据目录之后，其元数据将由此服务编制索引，使用户可以轻松搜索所需的数据。 |
+| [发现数据资产](#discover-data-assets) |在此过程中，使用 Azure 数据目录门户发现上一步骤注册的数据资产。 将数据源注册到 Azure 数据目录之后，其元数据由此服务编制索引，使用户可以轻松搜索所需的数据。 |
 | [批注数据资产](#annotate-data-assets) |在此过程中，为数据资产提供注释（描述、标记、文档或专家等信息）。 这些信息可以补充从数据源提取的元数据，使更多人可以更轻松识别数据源。 |
 | [连接到数据资产](#connect-to-data-assets) |在此过程中，通过集成式客户端工具（例如 Excel 和 SQL Server 数据工具）和非集成式工具（SQL Server Management Studio）打开数据资产。 |
 | [管理数据资产](#manage-data-assets) |在此过程中，设置数据资产的安全性。 数据目录不允许用户访问数据本身。 数据源的所有者将控制数据访问权限。 <br/><br/> 使用数据目录可以发现数据源，以及查看与目录中注册的源相关的 **元数据** 。 但在某些情况下，只有特定用户或特定组的成员才能看到数据源。 对于这种情况，可以使用数据目录获取目录中已注册数据资产的所有权，以及控制拥有的资产的可见性。 |
@@ -73,16 +73,16 @@ Azure AD 为企业提供在云中和本地轻松管理标识与访问权限的�
 3. 指定数据目录的**名称**、要使用的**订阅**和目录的**位置**。
 4. 展开“定价”，选择 Azure 数据目录的**版本**（“免费”或“标准”）。
     ![Azure 数据目录 - 选择版本](media/data-catalog-get-started/data-catalog-create-catalog-select-edition.png)
-5. 展开“目录用户”，然后单击“添加”添加数据目录的用户。 用户将自动添加到此组。
+5. 展开“目录用户”，并单击“添加”添加数据目录的用户。 用户会自动添加到此组。
     ![Azure 数据目录 - 用户](media/data-catalog-get-started/data-catalog-add-catalog-user.png)
-6. 展开“目录管理员”，然后单击“添加”添加数据目录的其他管理员。 用户将自动添加到此组。
+6. 展开“目录管理员”，并单击“添加”添加数据目录的其他管理员。 用户会自动添加到此组。
     ![Azure 数据目录 - 管理员](media/data-catalog-get-started/data-catalog-add-catalog-admins.png)
 7. 单击“创建目录”创建组织的数据目录。 创建数据目录后，将看到其主页。
     ![Azure 数据目录 - 已创建](media/data-catalog-get-started/data-catalog-created.png)    
 
 ### <a name="find-a-data-catalog-in-the-azure-portal"></a>在 Azure 门户中查找数据目录
-1. 在Web 浏览器的另一个选项卡中或在不同的Web 浏览器窗口中，转到 [Azure 门户](https://portal.azure.com) ，然后使用上一步骤中用于创建数据目录的同一个帐户登录。
-2. 选择“浏览”，然后单击“数据目录”。
+1. 在Web 浏览器的另一个选项卡中或在不同的Web 浏览器窗口中，转到 [Azure 门户](https://portal.azure.com) ，并使用上一步骤中用于创建数据目录的同一个帐户登录。
+2. 选择“浏览”，并单击“数据目录”。
    
     ![Azure 数据目录 - 浏览 Azure](media/data-catalog-get-started/data-catalog-browse-azure-portal.png) 将看到所创建的数据目录。
    
@@ -95,20 +95,20 @@ Azure AD 为企业提供在云中和本地轻松管理标识与访问权限的�
     ![Azure 数据目录 - 定价层](media/data-catalog-get-started/data-catalog-change-pricing-tier.png)
 
 ### <a name="adventure-works-sample-database"></a>Adventure Works 示例数据库
-本教程将注册 AdventureWorks2014 示例数据库中用于 SQL Server Database Engine 的数据资产（表），但如果想使用熟悉且与角色相关的数据，也可以使用任何支持的数据源。 有关支持的数据源列表，请参阅 [Supported data sources](data-catalog-dsr.md)（支持的数据源）。
+本教程会注册 AdventureWorks2014 示例数据库中用于 SQL Server Database Engine 的数据资产（表），但如果想使用熟悉且与角色相关的数据，也可以使用任何支持的数据源。 有关支持的数据源列表，请参阅 [Supported data sources](data-catalog-dsr.md)（支持的数据源）。
 
 ### <a name="install-the-adventure-works-2014-oltp-database"></a>安装 Adventure Works 2014 OLTP 数据库
-Adventure Works 数据库支持一家虚构自行车制造商 (Adventure Works Cycles) 的标准在线事务处理方案，包括产品、销售和采购。 本教程将在 Azure 数据目录中注册产品信息。
+Adventure Works 数据库支持一家虚构自行车制造商 (Adventure Works Cycles) 的标准在线事务处理方案，包括产品、销售和采购。 本教程会在 Azure 数据目录中注册产品信息。
 
 安装 Adventure Works 示例数据库：
 
 1. 下载 CodePlex 上的 [Adventure Works 2014 Full Database Backup.zip](https://msftdbprodsamples.codeplex.com/downloads/get/880661) 。
 2. 若要在计算机上还原数据库，请遵循 [Restore a Database Backup by using SQL Server Management Studio](http://msdn.microsoft.com/library/ms177429.aspx)（使用 SQL Server Management Studio 还原数据库备份）中的说明，或遵循以下步骤：
-   1. 打开 SQL Server Management Studio，然后连接到 SQL Server 数据库引擎。
-   2. 右键单击“数据库”，然后单击“还原数据库”。
-   3. 在“还原数据库”下面，单击“源”对应的“设备”选项，然后单击“浏览”。
+   1. 打开 SQL Server Management Studio，并连接到 SQL Server 数据库引擎。
+   2. 右键单击“数据库”，并单击“还原数据库”。
+   3. 在“还原数据库”下面，单击“源”对应的“设备”选项，并单击“浏览”。
    4. 在“选择备份设备”下面，单击“添加”。
-   5. 转到包含 **AdventureWorks2014.bak** 文件的文件夹，选择该文件，然后单击“确定”关闭“查找备份文件”对话框。
+   5. 转到包含 **AdventureWorks2014.bak** 文件的文件夹，选择该文件，并单击“确定”关闭“查找备份文件”对话框。
    6. 单击“确定”关闭“选择备份设备”对话框。    
    7. 单击“确定”关闭“还原数据库”对话框。
 
@@ -130,12 +130,12 @@ Adventure Works 数据库支持一家虚构自行车制造商 (Adventure Works C
 4. 在“Microsoft Azure 数据目录”页上，依次单击“SQL Server”和“下一步”。
    
     ![Azure 数据目录 - 数据源](media/data-catalog-get-started/data-catalog-data-sources.png)
-5. 输入 **AdventureWorks2014** 的 SQL Server 连接属性（参阅以下示例），然后单击“连接”。
+5. 输入 **AdventureWorks2014** 的 SQL Server 连接属性（参阅以下示例），并单击“连接”。
    
    ![Azure 数据目录 - SQL Server 连接设置](media/data-catalog-get-started/data-catalog-sql-server-connection.png)
 6. 注册数据资产的元数据。 在本示例中，将注册 AdventureWorks Production 命名空间中的 **Production/Product** 对象：
    
-   1. 在“服务器层次结构”树中展开“AdventureWorks2014”，然后单击“Production”。
+   1. 在“服务器层次结构”树中展开“AdventureWorks2014”，并单击“Production”。
    2. 按住 Ctrl 键的同时单击鼠标，选择“Product”、“ProductCategory”、“ProductDescription”和“ProductPhoto”。
    3. 单击“移动所选箭头”(**>**)。 此操作将所有选定的对象移到“要注册的对象”列表中。
       
@@ -158,7 +158,7 @@ Adventure Works 数据库支持一家虚构自行车制造商 (Adventure Works C
 ## <a name="discover-data-assets"></a>发现数据资产
 Azure 数据目录中的发现使用两个主要机制：搜索和筛选。
 
-搜索机制直截了当且功能强大。 默认情况下，将会根据目录中的任何属性（包括用户提供的批注）来匹配搜索词。
+搜索机制直截了当且功能强大。 默认情况下，会根据目录中的任何属性（包括用户提供的批注）来匹配搜索词。
 
 筛选是对搜索的补充。 可以选择特定特征，例如专家、数据源类型、对象类型和标记，来查看匹配的数据资产并将搜索结果限制为匹配的资产。
 
@@ -172,10 +172,10 @@ Azure 数据目录中的发现使用两个主要机制：搜索和筛选。
 基本搜索可帮助使用一个或多个搜索词搜索目录。 结果是与一个或多个指定搜索词的属性匹配的所有资产。
 
 1. 在 Azure 数据目录门户中单击“主页”。 如果已关闭 Web 浏览器，请转到 [Azure 数据目录主页](https://www.azuredatacatalog.com)。
-2. 在搜索框中输入 `cycles` ，然后按 **ENTER**。
+2. 在搜索框中输入 `cycles` ，并按 **ENTER**。
    
     ![Azure 数据目录 - 基本文本搜索](media/data-catalog-get-started/data-catalog-basic-text-search.png)
-3. 确认是否在结果中看到全部四个表和数据库 (AdventureWorks2014)。 可以单击工具栏上的按钮切换**网格视图**和**列表视图**，如下图所示。 请注意，由于“突出显示”选项为“打开”，因此搜索结果中突出显示了搜索关键字。 **每页显示的结果数** 。
+3. 确认是否在结果中看到全部四个表和数据库 (AdventureWorks2014)。 可以单击工具栏上的按钮切换**网格视图**和**列表视图**，如下图所示。 请注意，由于“突出显示”选项为“打开”，因此搜索结果中突出显示了搜索关键字。 也可在搜索结果中指定**每页显示的结果数**。
    
     ![Azure 数据目录 - 基本文本搜索结果](media/data-catalog-get-started/data-catalog-basic-text-search-results.png)
    
@@ -195,7 +195,7 @@ Azure 数据目录中的发现使用两个主要机制：搜索和筛选。
 属性范围可帮助发现搜索词符合指定属性的数据资产。
 
 1. 清除“筛选器”中“对象类型”下面的“表”筛选器。  
-2. 在搜索框中输入 `tags:cycles` ，然后按 **ENTER**。 有关可用于搜索数据目录的所有属性，请参阅 [Data Catalog Search syntax reference](https://msdn.microsoft.com/library/azure/mt267594.aspx) （数据目录搜索语法参考）。
+2. 在搜索框中输入 `tags:cycles` ，并按 **ENTER**。 有关可用于搜索数据目录的所有属性，请参阅 [Data Catalog Search syntax reference](https://msdn.microsoft.com/library/azure/mt267594.aspx) （数据目录搜索语法参考）。
 3. 确认是否在结果中看到全部四个表和数据库 (AdventureWorks2014)。  
    
     ![数据目录 - 属性范围搜索结果](media/data-catalog-get-started/data-catalog-property-scoping-results.png)
@@ -214,7 +214,7 @@ Azure 数据目录中的发现使用两个主要机制：搜索和筛选。
 ### <a name="boolean-operators"></a>布尔运算符
 可以使用布尔运算符来扩大或缩小搜索范围。
 
-1. 在搜索框中输入 `tags:cycles AND objectType:table`，然后按 **ENTER**。
+1. 在搜索框中输入 `tags:cycles AND objectType:table`，并按 **ENTER**。
 2. 确认结果中只显示了表，而未显示数据库。  
    
     ![Azure 数据目录 - 搜索中的布尔运算符](media/data-catalog-get-started/data-catalog-search-boolean-operator.png)
@@ -222,7 +222,7 @@ Azure 数据目录中的发现使用两个主要机制：搜索和筛选。
 ### <a name="grouping-with-parentheses"></a>使用括号分组
 使用括号分组可将一部分查询分组以实现逻辑隔离，尤其是与布尔运算符结合使用时。
 
-1. 在搜索框中输入 `name:product AND (tags:cycles AND objectType:table)` ，然后按 **ENTER**。
+1. 在搜索框中输入 `name:product AND (tags:cycles AND objectType:table)` ，并按 **ENTER**。
 2. 确认搜索结果中只显示了 **Product** 表。
    
     ![Azure 数据目录 - 分组搜索](media/data-catalog-get-started/data-catalog-grouping-search.png)   
@@ -255,7 +255,7 @@ Azure 数据目录中的发现使用两个主要机制：搜索和筛选。
 还可以在此页上执行以下操作：
 
 * 添加数据资产的专家。 在“专家”区域中单击“添加”。
-* 添加数据集级别的标记。 在“标记”区域中单击“添加”。 标记可以是用户标记或词汇标记。 标准版的数据目录包包含帮助目录管理员定义中心业务分类的业务词汇。 然后，目录用户可以使用词汇中的术语来批注数据资产。 有关详细信息，请参阅 [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md)
+* 添加数据集级别的标记。 在“标记”区域中单击“添加”。 标记可以是用户标记或词汇标记。 标准版的数据目录包包含帮助目录管理员定义中心业务分类的业务词汇。 然后，目录用户即可使用术语表术语对数据资产进行批注。 有关详细信息，请参阅 [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md)
 * 添加列级别的标记。 针对想要批注的列，单击“标记”下面的“添加”。
 * 添加列级别的描述。 输入列的 **描述** 。 还可以查看从数据源提取的描述元数据。
 * 添加“请求访问”信息，向用户显示如何请求对数据资产的访问权限。
@@ -282,7 +282,7 @@ Azure 数据目录支持众包批注方式。 Azure 数据目录用户可以添�
 > 
 
 ### <a name="connect-to-a-data-asset-from-excel"></a>从 Excel 连接到数据资产
-1. 在搜索结果中选择“Product”。 单击工具栏上的“打开方式”，然后单击“Excel”。
+1. 在搜索结果中选择“Product”。 单击工具栏上的“打开方式”，并单击“Excel”。
    
     ![Azure 数据目录 - 连接到数据资产](media/data-catalog-get-started/data-catalog-connect1.png)
 2. 在下载弹出窗口中单击“打开”。 这种体验根据浏览器而有所不同。
@@ -291,7 +291,7 @@ Azure 数据目录支持众包批注方式。 Azure 数据目录用户可以添�
 3. 在“Microsoft Excel 安全声明”窗口中，单击“启用”。
    
     ![Azure 数据目录 - Excel 安全声明弹出窗口](media/data-catalog-get-started/data-catalog-excel-security-popup.png)
-4. 保留“导入数据”对话框中的默认值，然后单击“确定”。
+4. 保留“导入数据”对话框中的默认值，并单击“确定”。
    
     ![Azure 数据目录 - Excel 导入数据](media/data-catalog-get-started/data-catalog-excel-import-data.png)
 5. 在 Excel 中查看数据源。
@@ -311,7 +311,7 @@ Azure 数据目录支持众包批注方式。 Azure 数据目录用户可以添�
 ## <a name="manage-data-assets"></a>管理数据资产
 在此步骤中了解如何设置数据资产的安全性。 数据目录不允许用户访问数据本身。 数据源的所有者将控制数据访问权限。
 
-使用数据目录可以发现数据源，以及查看与目录中注册的源相关的元数据。 但在某些情况下，只有特定用户或特定组的成员才能看到数据源。 对于这种情况，可以使用数据目录获取目录中已注册数据资产的所有权，然后控制拥有的资产的可见性。
+使用数据目录可以发现数据源，以及查看与目录中注册的源相关的元数据。 但在某些情况下，只有特定用户或特定组的成员才能看到数据源。 对于这种情况，可以使用数据目录获取目录中已注册数据资产的所有权，并控制拥有的资产的可见性。
 
 > [!NOTE]
 > 本练习所述的管理功能只在标准版 Azure 数据目录中提供，免费版本不提供。
@@ -320,23 +320,23 @@ Azure 数据目录支持众包批注方式。 Azure 数据目录用户可以添�
 > 
 
 ### <a name="take-ownership-of-data-assets-and-restrict-visibility"></a>获取数据资产的所有权和限制可见性
-1. 转到 [Azure 数据目录主页](https://www.azuredatacatalog.com)。 在“搜索”文本框中输入 `tags:cycles`，然后按 **ENTER**。
-2. 在结果列表中单击某个项，然后单击工具栏上的“取得所有权”。
+1. 转到 [Azure 数据目录主页](https://www.azuredatacatalog.com)。 在“搜索”文本框中输入 `tags:cycles`，并按 **ENTER**。
+2. 在结果列表中单击某个项，并单击工具栏上的“取得所有权”。
 3. 在“属性”面板的“管理”部分中，单击“取得所有权”。
    
     ![Azure 数据目录 - 取得所有权](media/data-catalog-get-started/data-catalog-take-ownership.png)
-4. 若要限制可见性，请选择“可见性”部分的“所有者和这些用户”，然后单击“添加”。 **ENTER**。
+4. 要限制可见性，请选择“可见性”部分的“所有者和这些用户”，并单击“添加”。 **ENTER**。
    
     ![Azure 数据目录 - 限制访问](media/data-catalog-get-started/data-catalog-ownership.png)
 
 ## <a name="remove-data-assets"></a>删除数据资产
-本练习使用 Azure 数据目录门户从已注册的数据资产中删除预览数据，然后从目录中删除数据资产。
+本练习使用 Azure 数据目录门户从已注册的数据资产中删除预览数据，并从目录中删除数据资产。
 
 在 Azure 数据目录中，可以删除单个资产或多个资产。
 
 1. 转到 [Azure 数据目录主页](https://www.azuredatacatalog.com)。
-2. 在“搜索”文本框中输入 `tags:cycles`，然后单击 **ENTER**。
-3. 在结果列表中选择某个项，然后单击工具栏上的“删除”，如下图所示： 
+2. 在“搜索”文本框中输入 `tags:cycles`，并单击 **ENTER**。
+3. 在结果列表中选择某个项，并单击工具栏上的“删除”，如下图所示： 
    
     ![Azure 数据目录 - 删除网格项](media/data-catalog-get-started/data-catalog-delete-grid-item.png)
    

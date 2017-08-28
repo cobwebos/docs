@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: quickstart
 ms.date: 01/26/2017
 ms.author: elbutter;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 75c2e0f119ac5669c3ab5bd528899d6e4b7818c9
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 95e14824ba3b705bb909ec983652dd3305b98805
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="get-started-with-sql-data-warehouse"></a>SQL 数据仓库入门
@@ -34,7 +33,7 @@ ms.lasthandoff: 06/14/2017
 本教程假设读者熟悉 SQL 数据仓库的基本概念。 如需相关的介绍，请参阅[什么是 SQL 数据仓库？](sql-data-warehouse-overview-what-is.md) 
 
 ### <a name="sign-up-for-microsoft-azure"></a>注册 Microsoft Azure
-如果你没有 Microsoft Azure 帐户，需要注册一个帐户才能使用此服务。 如果已有帐户，则可以跳过此步骤。 
+如果没有 Microsoft Azure 帐户，需要注册一个帐户才能使用此服务。 如果已有帐户，则可以跳过此步骤。 
 
 1. 导航到帐户页 [https://azure.microsoft.com/account/](https://azure.microsoft.com/account/)
 2. 创建免费 Azure 帐户，或购买一个帐户。
@@ -63,14 +62,14 @@ SQL 数据仓库是旨在执行大规模并行处理的一种特殊类型的数�
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 单击“新建” > “数据库” > “SQL 数据仓库”。
 
-    ![NewBlade](../../includes/media/sql-data-warehouse-create-dw/blade-click-new.png)
-    ![SelectDW](../../includes/media/sql-data-warehouse-create-dw/blade-select-dw.png)
+    ![NewBlade](../../includes/media/sql-data-warehouse-create-dw/blade-click-new.png) ![SelectDW](../../includes/media/sql-data-warehouse-create-dw/blade-select-dw.png)
 
 3. 填写部署详细信息
 
-    **数据库名称**：填写所需的任何名称。 如果你有多个数据仓库，我们建议在名称中包含区域、环境等详细信息，例如 *mydw-westus-1-test*。
+    **数据库名称**：填写所需的任何名称。 如果有多个数据仓库，我们建议在名称中包含区域、环境等详细信息，例如 *mydw-westus-1-test*。
 
-    **订阅**：你的 Azure 订阅
+    
+            **订阅**：Azure 订阅
 
     **资源组**：创建资源组，或使用现有的资源组。
     > [!NOTE]
@@ -84,8 +83,7 @@ SQL 数据仓库是旨在执行大规模并行处理的一种特殊类型的数�
 
     **选择性能**：建议从标准的 400DWU 着手。
 
-4. 选择**“固定到仪表板”**
-    ![“固定到仪表板”](./media/sql-data-warehouse-get-started-tutorial/pin-to-dashboard.png)
+4. 选择“固定到仪表板”![固定到仪表板](./media/sql-data-warehouse-get-started-tutorial/pin-to-dashboard.png)
 
 5. 请稍候片刻，等待数据仓库部署完成！ 在正常情况下，完成此过程需要几分钟时间。 当数据仓库可供使用时，门户会发出通知。 
 
@@ -110,7 +108,7 @@ SQL 数据仓库是旨在执行大规模并行处理的一种特殊类型的数�
 
     ![使用 SSMS 进行连接](./media/sql-data-warehouse-get-started-tutorial/ssms-connect.png)
 
-如果一切正常，应会立即连接到逻辑 SQL 服务器。 由于你是以服务器管理员身份登录的，因此可以连接到该服务器托管的任何数据库，包括 master 数据库。 
+如果一切正常，应会立即连接到逻辑 SQL 服务器。 由于是以服务器管理员身份登录的，因此可以连接到该服务器托管的任何数据库，包括 master 数据库。 
 
 只有一个服务器管理员帐户，该帐户拥有任何用户的大部分权限。 请妥善保护管理员密码，不要让组织中太多的人知道。 
 
@@ -133,7 +131,7 @@ SQL 数据仓库是旨在执行大规模并行处理的一种特殊类型的数�
 
 ### <a name="create-an-account-that-can-control-a-database"></a>创建可控制数据库的帐户
 
-由于你当前是以服务器管理员的身份登录的，因此有权创建登录名和用户。
+由于当前是以服务器管理员的身份登录的，因此有权创建登录名和用户。
 
 1. 使用 SSMS 或其他查询客户端，针对 **master** 打开一个新查询。
 
@@ -185,7 +183,7 @@ SQL 数据仓库是旨在执行大规模并行处理的一种特殊类型的数�
 
 - 将数据载入 SQL 数据仓库的常用方法之一是先将数据移入 Azure Blob 存储，然后将数据载入数据仓库。 为方便读者理解加载方法，我们事先在一个公共 Azure 存储 Blob 中托管了纽约市出租车数据。 
 
-- 今后若要了解如何将数据移入 Azure Blob 存储，或者将数据直接从源载入 SQL 数据仓库，请参阅 [loading overview](sql-data-warehouse-overview-load.md)（有关加载的概述）。
+- 今后要了解如何将数据移入 Azure Blob 存储，或者将数据直接从源载入 SQL 数据仓库，请参阅 [loading overview](sql-data-warehouse-overview-load.md)（有关加载的概述）。
 
 
 ### <a name="define-external-data"></a>定义外部数据
@@ -619,7 +617,7 @@ SQL 数据仓库支持名为 CREATE TABLE AS SELECT (CTAS) 的关键语句。 �
         ON  tr.DateID = dt.DateID
     ```
 
-    此查询需要一段时间，因为 SQL 数据仓库必须先对数据进行随机排列，然后才能执行联接。 如果联接旨在以与分布数据相同的方式联接数据，则它们不必随机排列数据。 这是一个更深入的主题。 
+    此查询需要一段时间，因为 SQL 数据仓库必须先对数据进行随机排列，才能执行联接。 如果联接旨在以与分布数据相同的方式联接数据，则它们不必随机排列数据。 这是一个更深入的主题。 
 
 2. 统计信息会有所帮助。 
 3. 运行此语句以在联接列上创建统计信息。
@@ -635,13 +633,13 @@ SQL 数据仓库支持名为 CREATE TABLE AS SELECT (CTAS) 的关键语句。 �
     > **基于涉及联接的列、WHERE 子句中使用的列以及 GROUP BY 中的列创建信息统计可以获得最大的效益。**
     >
 
-3. 再次根据“先决条件”中的步骤运行查询，然后观察性能是否出现任何差异。 尽管查询性能的差异不像扩展实例那样明显，但仍可注意到速度有所提升。 
+3. 再次根据“先决条件”中的步骤运行查询，并观察性能是否出现任何差异。 尽管查询性能的差异不像扩展实例那样明显，但仍可注意到速度有所提升。 
 
 ## <a name="next-steps"></a>后续步骤
 
 现在，可以查询和浏览数据。 请查看我们的最佳实践或提示。
 
-在完成一天的浏览工作后，请务必暂停你的实例！ 在生产环境中，根据业务需要暂停和缩放实例可以大幅节省成本。
+在完成一天的浏览工作后，请务必暂停实例！ 在生产环境中，根据业务需要暂停和缩放实例可以大幅节省成本。
 
 ![暂停](./media/sql-data-warehouse-get-started-tutorial/pause.png)
 
@@ -657,7 +655,7 @@ SQL 数据仓库支持名为 CREATE TABLE AS SELECT (CTAS) 的关键语句。 �
 
 [将数据迁移到 Azure SQL 数据仓库][]
 
-[并发性和工作负荷管理]: sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example
+[并发性和工作负荷管理]: sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example
 [Azure SQL 数据仓库最佳实践]: sql-data-warehouse-best-practices.md#hash-distribute-large-tables
 [查询监视]: sql-data-warehouse-manage-monitor.md
 [有关构建大规模关系数据仓库的前 10 条最佳实践]: https://blogs.msdn.microsoft.com/sqlcat/2013/09/16/top-10-best-practices-for-building-a-large-scale-relational-data-warehouse/

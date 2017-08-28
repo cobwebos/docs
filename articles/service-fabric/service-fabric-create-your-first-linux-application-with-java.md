@@ -12,34 +12,67 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/29/2017
+ms.date: 08/23/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: 254f38a600ea4026120bc411368eeb01310e56b2
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: baf948587ede31fe3d5b4f6f0981269b4cfe4d3d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>在 Linux 上创建第一个 Java Service Fabric Reliable Actors 应用程序
+> [!div class="op_single_selector"]
+> * [C# - Windows](service-fabric-create-your-first-application-in-visual-studio.md)
+> * [Java-Linux](service-fabric-create-your-first-linux-application-with-java.md)
+> * [C# - Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
+>
+>
 
 借助本快速入门，只需几分钟即可在 Linux 开发环境中创建第一个 Azure Service Fabric Java 应用程序。  完成后，即拥有一个在本地开发群集上运行的简单 Java 单一服务应用程序。  
 
 ## <a name="prerequisites"></a>先决条件
-开始之前，请安装 Service Fabric SDK、Azure CLI，并在 [Linux 开发环境](service-fabric-get-started-linux.md)中设置开发群集。 如果使用 Mac OS X，则可[使用 Vagrant 在虚拟机中设置 Linux 开发环境](service-fabric-get-started-mac.md)。
+开始之前，请安装 Service Fabric SDK、Service Fabric CLI，并在 [Linux 开发环境](service-fabric-get-started-linux.md)中设置开发群集。 如果使用 Mac OS X，则可[使用 Vagrant 在虚拟机中设置 Linux 开发环境](service-fabric-get-started-mac.md)。
 
-此外还需配置 [Azure CLI 2.0](service-fabric-azure-cli-2-0.md)（推荐）或 [XPlat CLI](service-fabric-azure-cli.md)，以便部署应用程序。
+还需要安装 [Service Fabric CLI](service-fabric-cli.md)。
+
+### <a name="install-and-set-up-the-generators-for-java"></a>为 Java 安装和设置生成器
+Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模板生成器从终端创建 Service Fabric Java 应用程序。 请执行以下步骤，确保已经有可以在计算机上运行的适用于 Java 的 Service Fabric yeoman 模板生成器。
+1. 在计算机上安装 nodejs 和 NPM
+
+  ```bash
+  sudo apt-get install npm
+  sudo apt install nodejs-legacy
+  ```
+2. 通过 NPM 在计算机上安装 [Yeoman](http://yeoman.io/) 模板生成器
+
+  ```bash
+  sudo npm install -g yo
+  ```
+3. 通过 NPM 安装 Service Fabric Yeo Java 应用程序生成器
+
+  ```bash
+  sudo npm install -g generator-azuresfjava
+  ```
 
 ## <a name="create-the-application"></a>创建应用程序
-Service Fabric 应用程序包含一个或多个服务，每个服务都在提供应用程序功能时具有特定角色。 用于 Linux 的 Service Fabric SDK 包括 [Yeoman](http://yeoman.io/) 生成器，利用它可以轻松地创建第一个服务和在以后添加其他服务。  此外，还可使用适用于 Eclipse 的插件创建、生成和部署 Service Fabric Java 应用程序。 请参阅[使用 Eclipse 创建和部署第一个 Java 应用程序](service-fabric-get-started-eclipse.md)。 对于本快速入门，使用 Yeoman 创建具有单项服务的应用程序，该服务用于存储和获取获取计数器值。
+Service Fabric 应用程序包含一个或多个服务，每个服务都在提供应用程序功能时具有特定角色。 有了在上一部分安装的生成器，就可以轻松地创建第一个服务，并在以后添加更多服务。  此外，还可使用适用于 Eclipse 的插件创建、生成和部署 Service Fabric Java 应用程序。 请参阅[使用 Eclipse 创建和部署第一个 Java 应用程序](service-fabric-get-started-eclipse.md)。 对于本快速入门，使用 Yeoman 创建具有单项服务的应用程序，该服务用于存储和获取获取计数器值。
 
 1. 在终端中，键入 ``yo azuresfjava``。
-2. 命名应用程序。 
+2. 命名应用程序。
 3. 选择第一个服务的类型并将其命名。 对于本教程，请选择“可靠角色服务”。 有关其他服务类型的详细信息，请参阅 [Service Fabric 编程模型概述](service-fabric-choose-framework.md)。
    ![适用于 Java 的 Service Fabric Yeoman 生成器][sf-yeoman]
 
 ## <a name="build-the-application"></a>构建应用程序
-Service Fabric Yeoman 模板包含 [Gradle](https://gradle.org/) 的生成脚本，可用于从终端生成应用程序。 若要生成并打包应用程序，请运行以下命令：
+Service Fabric Yeoman 模板包含 [Gradle](https://gradle.org/) 的生成脚本，可用于从终端生成应用程序。
+Service Fabric Java 依赖项从 Maven 提取。 若要生成和使用 Service Fabric Java 应用程序，需确保已安装 JDK 和 Gradle。 如果尚未安装，可运行以下命令来安装 JDK (openjdk-8-jdk) 和 Gradle：
+
+  ```bash
+  sudo apt-get install openjdk-8-jdk-headless
+  sudo apt-get install gradle
+  ```
+
+若要生成并打包应用程序，请运行以下命令：
 
   ```bash
   cd myapp
@@ -49,12 +82,10 @@ Service Fabric Yeoman 模板包含 [Gradle](https://gradle.org/) 的生成脚本
 ## <a name="deploy-the-application"></a>部署应用程序
 生成应用程序后，可以将其部署到本地群集。
 
-### <a name="using-xplat-cli"></a>使用 XPlat CLI
-
 1. 连接到本地 Service Fabric 群集。
 
     ```bash
-    azure servicefabric cluster connect
+    sfctl cluster select --endpoint http://localhost:19080
     ```
 
 2. 运行模板中提供的安装脚本可将应用程序包复制到群集的映像存储区、注册应用程序类型和创建应用程序实例。
@@ -63,9 +94,7 @@ Service Fabric Yeoman 模板包含 [Gradle](https://gradle.org/) 的生成脚本
     ./install.sh
     ```
 
-### <a name="using-azure-cli-20"></a>使用 Azure CLI 2.0
-
-部署生成的应用程序时，其方式与部署任何其他 Service Fabric 应用程序相同。 如需详细的说明，请参阅相关文档，了解如何[使用 Azure CLI 管理 Service Fabric 应用程序](service-fabric-application-lifecycle-azure-cli-2-0.md)。
+部署生成的应用程序时，其方式与部署任何其他 Service Fabric 应用程序相同。 如需详细的说明，请参阅相关文档，了解如何[使用 Service Fabric CLI 管理 Service Fabric 应用程序](service-fabric-application-lifecycle-sfctl.md)。
 
 这些命令的参数可以在应用程序包内的已生成清单中找到。
 
@@ -97,17 +126,104 @@ Service Fabric Yeoman 模板包含 [Gradle](https://gradle.org/) 的生成脚本
 
 在 Service Fabric Explorer 中，可看到应用程序和应用程序类型不再显示在“应用程序”节点中。
 
+## <a name="service-fabric-java-libraries-on-maven"></a>Maven 上的 Service Fabric Java 库
+Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 或 ``build.gradle`` 中添加依赖项，以便使用 mavenCentral 提供的 Service Fabric Java 库。
+
+### <a name="actors"></a>执行组件
+
+针对应用程序的 Service Fabric Reliable Actor 支持。
+
+  ```XML
+  <dependency>
+      <groupId>com.microsoft.servicefabric</groupId>
+      <artifactId>sf-actors-preview</artifactId>
+      <version>0.10.0</version>
+  </dependency>
+  ```
+
+  ```gradle
+  repositories {
+      mavenCentral()
+  }
+  dependencies {
+      compile 'com.microsoft.servicefabric:sf-actors-preview:0.10.0'
+  }
+  ```
+
+### <a name="services"></a>服务
+
+针对应用程序的 Service Fabric 无状态服务支持。
+
+  ```XML
+  <dependency>
+      <groupId>com.microsoft.servicefabric</groupId>
+      <artifactId>sf-services-preview</artifactId>
+      <version>0.10.0</version>
+  </dependency>
+  ```
+
+  ```gradle
+  repositories {
+      mavenCentral()
+  }
+  dependencies {
+      compile 'com.microsoft.servicefabric:sf-services-preview:0.10.0'
+  }
+  ```
+
+### <a name="others"></a>其他
+#### <a name="transport"></a>传输
+
+针对 Service Fabric Java 应用程序的传输层支持。 不需向 Reliable Actor 或 Service 应用程序显式添加此依赖项，除非在传输层编程。
+
+  ```XML
+  <dependency>
+      <groupId>com.microsoft.servicefabric</groupId>
+      <artifactId>sf-transport-preview</artifactId>
+      <version>0.10.0</version>
+  </dependency>
+  ```
+
+  ```gradle
+  repositories {
+      mavenCentral()
+  }
+  dependencies {
+      compile 'com.microsoft.servicefabric:sf-transport-preview:0.10.0'
+  }
+  ```
+
+#### <a name="fabric-support"></a>Fabric 支持
+
+针对 Service Fabric（与本机 Service Fabric 运行时通信）的系统级支持。 不需向 Reliable Actor 或 Service 应用程序显式添加此依赖项。 当你包括上述其他依赖项时，会自动从 Maven 提取此依赖项。
+
+  ```XML
+  <dependency>
+      <groupId>com.microsoft.servicefabric</groupId>
+      <artifactId>sf-preview</artifactId>
+      <version>0.10.0</version>
+  </dependency>
+  ```
+
+  ```gradle
+  repositories {
+      mavenCentral()
+  }
+  dependencies {
+      compile 'com.microsoft.servicefabric:sf-preview:0.10.0'
+  }
+  ```
+
+## <a name="migrating-old-service-fabric-java-applications-to-be-used-with-maven"></a>迁移要与 Maven 配合使用的旧式 Service Fabric Java 应用程序
+我们最近已将 Service Fabric Java 库从 Service Fabric Java SDK 移至 Maven 存储库。 虽然使用 Yeoman 或 Eclipse 生成的新应用程序会生成最近更新的项目（会兼容 Maven），但你可以对现有的 Service Fabric 无状态或执行组件 Java 应用程序（此前使用 Service Fabric Java SDK）进行更新，使之能够使用 Maven 提供的 Service Fabric Java 依赖项。 请按[此处](service-fabric-migrate-old-javaapp-to-use-maven.md)提及的步骤操作，确保旧版应用程序兼容 Maven。
+
 ## <a name="next-steps"></a>后续步骤
+
 * [使用 Eclipse 在 Linux 上创建第一个 Service Fabric Java 应用程序](service-fabric-get-started-eclipse.md)
 * [了解有关 Reliable Actors 的详细信息](service-fabric-reliable-actors-introduction.md)
-* [使用 Azure CLI 与 Service Fabric 群集交互](service-fabric-azure-cli.md)
-* [排查部署问题](service-fabric-azure-cli.md#troubleshooting)
+* [使用 Service Fabric CLI 与 Service Fabric 群集交互](service-fabric-cli.md)
 * 了解 [Service Fabric 支持选项](service-fabric-support.md)
-
-## <a name="related-articles"></a>相关文章
-
-* [Service Fabric 和 Azure CLI 2.0 入门](service-fabric-azure-cli-2-0.md)
-* [Service Fabric XPlat CLI 入门](service-fabric-azure-cli.md)
+* [Service Fabric CLI 入门](service-fabric-cli.md)
 
 <!-- Images -->
 [sf-yeoman]: ./media/service-fabric-create-your-first-linux-application-with-java/sf-yeoman.png

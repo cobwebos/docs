@@ -16,10 +16,10 @@ ms.date: 06/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 331d08da8a70eee893fb1b01b1fef4475cc8bca0
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e6e27595f625fcb3ffdb0a6bccf75ad2dcc77cb3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 门户创建 Batch 帐户
@@ -48,7 +48,7 @@ ms.lasthandoff: 07/24/2017
 2. 单击“新建” > “计算” > “批处理服务”。
 
     ![应用商店中的批处理][marketplace_portal]
-3. 将显示“新建 Batch 帐户”  边栏选项卡。 请查看下面的针对每个边栏选项卡元素的说明。
+3. 将显示“新建 Batch 帐户”边栏选项卡。 请查看下面的针对每个边栏选项卡元素的说明。
 
     ![创建批处理帐户][account_portal]
 
@@ -62,11 +62,11 @@ ms.lasthandoff: 07/24/2017
 
     d.单击“下一步”。 **位置**：要在其中创建批处理帐户的 Azure 区域。 只有订阅和资源组支持的区域显示为选项。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 **存储帐户**（可选）：与批处理帐户关联的通用 Azure 存储帐户。 建议大多数批处理帐户采用此设置。 如需更多详细信息，请参阅本文后面的[关联的 Azure 存储帐户](#linked-azure-storage-account)。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 **存储帐户**（可选）：与批处理帐户关联的通用 Azure 存储帐户。 建议大多数批处理帐户采用此设置。 如需更多详细信息，请参阅本文后面的[关联的 Azure 存储帐户](#linked-azure-storage-account)。
 
 4. 单击“创建”  以创建帐户。
 
-   门户指示部署正在进行。 完成后，将会在“通知”中显示“部署成功”通知。
+   门户指示部署正在进行。 完成后，会在“通知”中显示“部署成功”通知。
 
 ## <a name="user-subscription-mode"></a>“用户订阅”模式
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 07/24/2017
 
 1. 登录到 [Azure 门户][azure_portal]。
 
-2. 单击“更多服务” > “订阅”，然后单击要用于批处理帐户的订阅。
+2. 单击“更多服务” > “订阅”，并单击要用于批处理帐户的订阅。
 
 3. 在“订阅”边栏选项卡中，单击“访问控制(IAM)” > “添加”。
 
@@ -95,14 +95,14 @@ ms.lasthandoff: 07/24/2017
 
 1. 在 [Azure 门户][azure_portal]中，单击“新建” > “安全性 + 标识” > “密钥保管库”。
 
-2. 在“创建密钥保管库”边栏选项卡中，输入密钥保管库的名称，然后在区域中创建需要用于批处理帐户的资源组。 让其余设置保留默认值，然后单击“创建”。
+2. 在“创建密钥保管库”边栏选项卡中，输入密钥保管库的名称，并在区域中创建需要用于批处理帐户的资源组。 让其余设置保留默认值，并单击“创建”。
 
 ### <a name="create-a-batch-account"></a>创建批处理帐户
 
 1. 在 [Azure 门户][azure_portal]中，单击“新建” > “计算” > “批处理服务”。
 
     ![应用商店中的批处理][marketplace_portal]
-3. 将显示“新建 Batch 帐户”  边栏选项卡。 请查看下面的针对每个边栏选项卡元素的说明。
+3. 将显示“新建 Batch 帐户”边栏选项卡。 请查看下面的针对每个边栏选项卡元素的说明。
 
     ![创建批处理帐户][account_portal_byos]
 
@@ -118,11 +118,11 @@ ms.lasthandoff: 07/24/2017
 
     d.单击“下一步”。 **位置**：在其中为批处理帐户创建了密钥保管库的 Azure 区域。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 **存储帐户**（可选）：与批处理帐户关联的通用 Azure 存储帐户。 建议大多数批处理帐户采用此设置。 有关详细信息，请参阅下面的[链接的 Azure 存储帐户](#linked-azure-storage-account)。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 **存储帐户**（可选）：与批处理帐户关联的通用 Azure 存储帐户。 建议大多数批处理帐户采用此设置。 有关详细信息，请参阅下面的[链接的 Azure 存储帐户](#linked-azure-storage-account)。
 
 4. 单击“创建”  以创建帐户。
 
-   门户指示部署正在进行。 完成后，将会在“通知”中显示“部署成功”通知。
+   门户指示部署正在进行。 完成后，会在“通知”中显示“部署成功”通知。
 
 
 
@@ -139,7 +139,7 @@ ms.lasthandoff: 07/24/2017
 
 * **访问密钥**（“批处理服务”模式）：从应用程序访问批处理帐户时，若要进行身份验证，需提供帐户访问密钥。 （此设置不适用于“用户订阅”模式，该模式使用 Azure Active Directory 身份验证。）
 
-    若要查看或重新生成批处理帐户的访问密钥，请在“批处理帐户”边栏选项卡左侧菜单的“搜索”框中输入 `keys`，然后选择“密钥”。
+    要查看或重新生成批处理帐户的访问密钥，请在“批处理帐户”边栏选项卡左侧菜单的“搜索”框中输入 `keys`，并选择“密钥”。
 
     ![Azure 门户中的 Batch 帐户密钥][account_keys]
 
@@ -154,12 +154,12 @@ ms.lasthandoff: 07/24/2017
 ![创建通用存储帐户][storage_account]
 
 > [!NOTE]
-> Azure Batch 目前仅支持通用存储帐户类型。 此帐户类型在[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)的步骤 5：[创建存储帐户] (../storage/storage-create-storage-account.md#create-a-storage-account) 中进行了说明。
+> Azure Batch 目前仅支持通用存储帐户类型。 此帐户类型在[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)的步骤 5：[创建存储帐户] (../storage/common/storage-create-storage-account.md#create-a-storage-account) 中进行了说明。
 >
 >
 
 > [!WARNING]
-> 重新生成关联的存储帐户的访问密钥时请小心。 只能重新生成一个存储帐户密钥，然后单击链接的存储帐户边栏选项卡上的“同步密钥”  。 等待五分钟，让密钥传播到池中的计算节点，然后重新生成并同步其他密钥（如有必要）。 如果同时重新生成这两个密钥，计算节点将无法同步任何一个密钥，并且无法访问存储帐户。
+> 重新生成关联的存储帐户的访问密钥时请小心。 只能重新生成一个存储帐户密钥，并单击链接的存储帐户边栏选项卡上的“同步密钥”  。 等待五分钟，让密钥传播到池中的计算节点，重新生成并同步其他密钥（如有必要）。 如果同时重新生成这两个密钥，计算节点将无法同步任何一个密钥，并且无法访问存储帐户。
 >
 >
 

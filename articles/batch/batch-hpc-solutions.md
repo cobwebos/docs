@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 32569d7e75a7a4ddee28041c0487ff158c20fd78
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: d30c09d23a84200ba81df133c9de5b11910ffb61
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="batch-and-hpc-solutions-for-large-scale-computing-workloads"></a>适用于大规模计算工作负荷的 Batch 和 HPC 解决方案
@@ -32,7 +32,7 @@ Azure 提供高效且可缩放的云解决方案来进行批处理和高性能�
 * 完全在 Azure 中运行 HPC 群集工具和工作负荷
 * 使用托管的可缩放 Azure 服务（例如 [Batch](https://azure.microsoft.com/documentation/services/batch/) ）运行计算密集型工作负荷，而无需部署和管理计算基础结构
 
-Azure 还为开发人员和合作伙伴提供一整套功能、体系结构选项和开发工具，用于构建大规模的自定义大型计算工作流，当然这超出了本文的范围。 你还可以使用规模不断扩大的合作伙伴生态系统，以提高大型计算工作流在 Azure 云中的工作效率。
+Azure 还为开发人员和合作伙伴提供一整套功能、体系结构选项和开发工具，用于构建大规模的自定义大型计算工作流，当然这超出了本文的范围。 还可以使用规模不断扩大的合作伙伴生态系统，以提高大型计算工作流在 Azure 云中的工作效率。
 
 ## <a name="batch-and-hpc-applications"></a>Batch 和 HPC 应用程序
 与 Web 应用程序和许多业务线应用程序不同，批处理和 HPC 应用程序有确定的开始和结束时间，而且它们可以按照计划运行或按需运行。 其中的大多数应用程序可分为两大类：*内在并行*（有时称为“高度并行”，因为它们解决的问题有助于使自身在多个计算机或处理器上并行运行）和*紧密耦合*。 有关这些应用程序类型的详细信息，请参阅下表。 某些 Azure 解决方案方法更适合一种类型或其他类型。
@@ -53,7 +53,7 @@ Azure 还为开发人员和合作伙伴提供一整套功能、体系结构选�
 * **云资源的可用性** - 根据所使用的云计算资源类型，在运行作业时可能无法持续使用计算机。 状态处理和进度检查点是处理可能的暂时性故障的常见技巧，且在利用云资源时更有必要。
 * **数据访问** - 通常在企业群集中提供的数据访问技术（例如 NFS）在云中可能需要特殊的配置。 或者可能需要为云采用不同的数据访问实践与模式。
 * **数据移动** - 对于处理大量数据的应用程序，需要使用策略将数据移至云存储和计算资源。 可能需要部署高速跨界网络，例如 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/)。 另外，还要考虑到法律、法规或政策对存储或访问该数据的限制。
-* **许可** - 请向供应商咨询有关任何商业应用程序在云中的运行许可或其他限制。 并非所有供应商都提供即付即用许可。 你可能需要根据自己的解决方案，在云中规划许可证服务器，或连接到本地许可证服务器。
+* **许可** - 请向供应商咨询有关任何商业应用程序在云中的运行许可或其他限制。 并非所有供应商都提供即付即用许可。 可能需要根据自己的解决方案，在云中规划许可证服务器，或连接到本地许可证服务器。
 
 ### <a name="big-compute-or-big-data"></a>大型计算还是大数据？
 大型计算和大数据应用程序之间的分界线并不总是很清晰，而且有些应用程序可能同时具有这两者的特征。 两者通常都涉及在计算机群集上运行大规模计算。 但解决方案方法和支持工具可能会不同。
@@ -70,7 +70,7 @@ Azure 还为开发人员和合作伙伴提供一整套功能、体系结构选�
 
 为基于 Windows 的群集和基于 Linux 的群集提供的群集工具与作业计划工具都可以顺利迁移到 Azure。 例如， [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029)（Microsoft 推出的免费计算群集解决方案，适用于 Windows 和 Linux HPC 工作负荷）提供多种可在 Azure 中运行的选项。 还可以构建 Linux 群集，以便运行 Torque 和 SLURM 等开源工具。 也可以在 Azure 中部署商用网格解决方案，例如 [TIBCO DataSynapse GridServer](https://azure.microsoft.com/blog/tibco-datasynapse-comes-to-the-azure-marketplace/)、[IBM Spectrum Symphony and Symphony LSF](https://azure.microsoft.com/blog/ibm-and-microsoft-azure-support-spectrum-symphony-and-spectrum-lsf/) 和 [Univa Grid Engine](http://www.univa.com/products/grid-engine)。
 
-如以下部分所示，你还可以利用 Azure 服务来管理计算资源和计划作业，不需要使用传统群集管理工具（也可以在使用传统群集管理工具的基础上进行该操作）。
+如以下部分所示，还可以利用 Azure 服务来管理计算资源和计划作业，不需要使用传统群集管理工具（也可以在使用传统群集管理工具的基础上进行该操作）。
 
 ## <a name="scenarios"></a>方案
 以下是使用现有 HPC 群集解决方案和/或 Azure 服务在 Azure 中运行大型计算工作负荷的三种常见方案。 已列出选择每种方案时的重要注意事项（尚未详尽）。 本文后面会详细介绍可以在解决方案中使用的 Azure 服务。
@@ -85,7 +85,7 @@ Azure 还为开发人员和合作伙伴提供一整套功能、体系结构选�
 下面是有关计算、数据、网络和相关服务的详细信息，可以将它们组合用于大型计算解决方案和工作流。 有关 Azure 服务的深入指导，请参阅 Azure 服务 [文档](https://azure.microsoft.com/documentation/)。 本文前面的 [方案](#scenarios) 仅显示了这些服务的部分使用方法。
 
 > [!NOTE]
-> Azure 会定期推出新的服务，这些服务可能适用于你的方案。 如有疑问，请联系 [Azure 合作伙伴](https://pinpoint.microsoft.com/en-US/search?keyword=azure)或者向 *bigcompute@microsoft.com* 发送电子邮件。
+> Azure 会定期推出新的服务，这些服务可能适用于方案。 如有疑问，请联系 [Azure 合作伙伴](https://pinpoint.microsoft.com/en-US/search?keyword=azure)或者向 *bigcompute@microsoft.com* 发送电子邮件。
 > 
 > 
 
@@ -99,14 +99,14 @@ Azure 计算服务是大型计算解决方案的核心，不同的计算服务�
 
 | 服务 | 说明 |
 | --- | --- |
-| **[虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/)**<br/><br/> |• 使用 Microsoft Hyper-V 技术提供计算基础结构即服务 (IaaS)<br/><br/>• 可让你基于 [Azure 应用商店](https://azure.microsoft.com/marketplace/)中的 Windows Server 或 Linux 标准映像或者自己提供的映像与数据磁盘灵活预配及管理持久性云计算机<br/><br/>• 能够以 [VM 规模集](https://azure.microsoft.com/documentation/services/virtual-machine-scale-sets/)的形式进行部署或管理，从相同的虚拟机构建大规模服务，使用自动缩放功能自动增加或减少容量<br/><br/>• 完全在云中运行本地计算群集工具和应用程序<br/><br/> |
+| **[虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/)**<br/><br/> |• 使用 Microsoft Hyper-V 技术提供计算基础结构即服务 (IaaS)<br/><br/>• 可让你基于 [Azure Marketplace](https://azure.microsoft.com/marketplace/) 中的 Windows Server 或 Linux 标准映像或者自己提供的映像与数据磁盘灵活预配及管理持久性云计算机<br/><br/>• 能够以 [VM 规模集](https://azure.microsoft.com/documentation/services/virtual-machine-scale-sets/)的形式进行部署或管理，从相同的虚拟机构建大规模服务，使用自动缩放功能自动增加或减少容量<br/><br/>• 完全在云中运行本地计算群集工具和应用程序<br/><br/> |
 | **[云服务](https://azure.microsoft.com/documentation/services/cloud-services/)**<br/><br/> |• 可以在辅助角色实例中运行大型计算应用程序，辅助角色实例是运行某个 Windows Server 版本的虚拟机并且完全由 Azure 托管<br/><br/>• 以较低的管理开销支持平台即服务 (PaaS) 模型中运行的可缩放且可靠的应用程序<br/><br/>• 可能需要额外的工具或开发来与现有的本地 HPC 群集解决方案进行集成 |
 | **[Batch](https://azure.microsoft.com/documentation/services/batch/)**<br/><br/> |• 在完全托管的服务中运行大规模的并行与批处理工作负荷<br/><br/>• 针对虚拟机的托管池提供作业计划和自动缩放<br/><br/>• 允许开发人员以服务形式构建和运行应用程序，或者运行支持云的现有应用程序<br/> |
 
 ### <a name="storage-services"></a>存储服务
-大型计算解决方案通常会操作一组输入数据，然后生成其结果的数据。 大型计算解决方案中使用的一些 Azure 存储服务包括：
+大型计算解决方案通常会操作一组输入数据，并生成其结果的数据。 大型计算解决方案中使用的一些 Azure 存储服务包括：
 
-* [Blob、表和队列存储](https://azure.microsoft.com/documentation/services/storage/) - 分别管理大量非结构化数据、NoSQL 数据，以及有关工作流和通信的消息。 例如，可以为大型技术数据集或应用程序处理的输入图像或媒体文件使用 Blob 存储。 可以在解决方案中使用队列以进行异步通信。 请参阅 [Microsoft Azure 存储简介](../storage/storage-introduction.md)。
+* [Blob、表和队列存储](https://azure.microsoft.com/documentation/services/storage/) - 分别管理大量非结构化数据、NoSQL 数据，以及有关工作流和通信的消息。 例如，可以为大型技术数据集或应用程序处理的输入图像或媒体文件使用 Blob 存储。 可以在解决方案中使用队列以进行异步通信。 请参阅 [Microsoft Azure 存储简介](../storage/common/storage-introduction.md)。
 * [Azure 文件存储](https://azure.microsoft.com/services/storage/files/) - 在 Azure 中使用标准 SMB 通信协议（某些 HPC 群集解决方案需要这种协议）来共享公用文件和数据。
 * [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) - 为云提供超大规模 Apache Hadoop 分布式文件系统，对于批处理、实时和交互式分析非常有用。
 
