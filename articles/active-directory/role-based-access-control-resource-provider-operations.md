@@ -1105,9 +1105,9 @@ ms.lasthandoff: 05/18/2017
 
 | 操作 | 说明 |
 |---|---|
-|/agreements/offers/plans/read|返回给定应用商店项的协议|
-|/agreements/offers/plans/sign/action|为给定应用商店项的协议签名|
-|/agreements/offers/plans/cancel/action|取消给定应用商店项的协议|
+|/agreements/offers/plans/read|返回给定 Marketplace 项的协议|
+|/agreements/offers/plans/sign/action|为给定 Marketplace 项的协议签名|
+|/agreements/offers/plans/cancel/action|取消给定 Marketplace 项的协议|
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
 
