@@ -171,7 +171,7 @@ $ ssh azureuser@<publicIpAddress>
 
 ### <a name="create-the-database-on-myvm1-primary"></a>在 myVM1（主）上创建数据库
 
-Oracle 软件已在应用商店映像上安装，因此下一步是安装数据库。 
+Oracle 软件已在 Marketplace 映像上安装，因此下一步是安装数据库。 
 
 切换到 Oracle 超级用户：
 

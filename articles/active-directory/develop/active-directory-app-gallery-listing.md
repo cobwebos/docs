@@ -54,7 +54,7 @@ ms.lasthandoff: 07/15/2017
 > 
 > 客户注册和/或购买应用程序时所用的应用程序注册 URL：
 > 
-> 选择应用程序所要列入到的最多三个类别（有关可用类别，请参阅“Azure Active Directory 应用商店”）：
+> 选择应用程序所要列入到的最多三个类别（有关可用类别，请参阅“Azure Active Directory Marketplace”）：
 > 
 > 附加应用程序小图标（PNG 文件，45 x 45 像素，实色背景）：
 > 
@@ -86,7 +86,7 @@ ms.lasthandoff: 07/15/2017
 > 
 > 客户注册和/或购买应用程序时所用的应用程序注册 URL：
 > 
-> 选择应用程序所要列入到的最多三个类别（有关可用类别，请参阅 [Azure Active Directory 应用商店](https://azure.microsoft.com/marketplace/active-directory/)）：
+> 选择应用程序所要列入到的最多三个类别（有关可用类别，请参阅 [Azure Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/)）：
 > 
 > 附加应用程序小图标（PNG 文件，45 x 45 像素，实色背景）：
 > 

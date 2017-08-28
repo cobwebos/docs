@@ -209,7 +209,7 @@ Azure 存储服务现支持 CORS，因此，为服务设置 CORS 规则后，便
 强制隧道通常用于强制到 Internet 的外部流量通过本地安全代理和防火墙。
 
 #### <a name="virtual-network-security-appliances"></a>虚拟网络安全设备
-虽然网络安全组、用户定义的路由和强制隧道在 [OSI 模型](https://en.wikipedia.org/wiki/OSI_model)的网络层和传输层为用户提供了一定程度的安全性，但有时可能想要启用堆栈的更高级别安全性。 可以使用 Azure 合作伙伴安全设备解决方案访问这些增强的网络安全功能。 通过访问 [Azure 应用商店](https://azure.microsoft.com/marketplace/)并搜索“安全”和“网络安全”，可以找到最新的 Azure 合作伙伴网络安全解决方案。
+虽然网络安全组、用户定义的路由和强制隧道在 [OSI 模型](https://en.wikipedia.org/wiki/OSI_model)的网络层和传输层为用户提供了一定程度的安全性，但有时可能想要启用堆栈的更高级别安全性。 可以使用 Azure 合作伙伴安全设备解决方案访问这些增强的网络安全功能。 通过访问 [Azure Marketplace](https://azure.microsoft.com/marketplace/) 并搜索“安全”和“网络安全”，可以找到最新的 Azure 合作伙伴网络安全解决方案。
 
 ### <a name="azure-virtual-network"></a>Azure 虚拟网络
 

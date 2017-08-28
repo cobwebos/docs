@@ -129,12 +129,12 @@ Azure SQL 和 Azure SQL DW 均支持透明数据加密 (TDE)，它提供数据�
 
 除 TDE 之外，Azure SQL 还支持 Always Encrypted，这是一种新的数据加密技术，在服务器上执行命令时，它可以确保不仅在静态时以及在客户端和服务器之间移动时加密数据，还可在使用数据时进行加密。
 
-### <a name="any-virtual-machines-must-be-deployed-from-the-azure-marketplace"></a>必须从 Azure 应用商店部署任何虚拟机
+### <a name="any-virtual-machines-must-be-deployed-from-the-azure-marketplace"></a>必须从 Azure Marketplace 部署任何虚拟机
 为了在 AppSource 中提供一致的安全级别，请在 Azure Marketplace 中认证和发布任何作为 Cortana Intelligence 解决方案一部分部署的虚拟机。
 
-要搜索 Azure 应用商店映像的当前列表，请参阅 [Microsoft Azure 应用商店](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute)。
+要搜索 Azure Marketplace 映像的当前列表，请参阅 [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute)。
 
-有关如何发布 Azure 应用商店的虚拟机映像的信息，请参阅[为 Azure 应用商店创建虚拟机映像的指南](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation)。
+有关如何发布 Azure Marketplace 的虚拟机映像的信息，请参阅[为 Azure Marketplace 创建虚拟机映像的指南](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation)。
 
 ## <a name="scalability-evaluation-considerations"></a>可伸缩性评估注意事项
 ### <a name="cortana-intelligence-solutions-should-include-a-scalable-big-data-platform"></a>Cortana Intelligence 解决方案应包括可缩放的大数据平台

@@ -25,7 +25,7 @@ ms.lasthandoff: 07/08/2017
 
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上备份和恢复 Oracle Database 12c 数据库
 
-可从命令提示符使用 Azure CLI 或通过脚本来创建和管理 Azure 资源。 在本文中，我们使用 Azure CLI 脚本从 Azure 应用商店库映像部署 Oracle Database 12c 数据库。
+可从命令提示符使用 Azure CLI 或通过脚本来创建和管理 Azure 资源。 在本文中，我们使用 Azure CLI 脚本从 Azure Marketplace 库映像部署 Oracle Database 12c 数据库。
 
 在开始之前，请确保已安装 Azure CLI。 有关详细信息，请参阅 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
