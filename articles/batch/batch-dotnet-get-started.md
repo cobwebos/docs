@@ -16,10 +16,10 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: 3c7a6ac092854bc2d78ac23079d168cf8b5a2201
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: cf8fdca51a6a4ad1b7cd4fe6980543199f6b36e0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>通过适用于 .NET 的 Batch 客户端库开始构建解决方案
@@ -31,7 +31,7 @@ ms.lasthandoff: 08/04/2017
 >
 >
 
-在我们分步讨论 C# 示例应用程序时，了解本文中的 [Azure Batch][azure_batch]和[批处理 .NET][net_api] 库的基础知识。 我们将探讨该示例应用程序如何利用批处理服务来处理云中的并行工作负荷，以及如何与 [Azure 存储](../storage/storage-introduction.md)交互来暂存和检索文件。 将了解常见的 Batch 应用程序工作流，并基本了解 Batch 的主要组件，例如作业、任务、池和计算节点。
+在我们分步讨论 C# 示例应用程序时，了解本文中的 [Azure Batch][azure_batch]和[批处理 .NET][net_api] 库的基础知识。 我们将探讨该示例应用程序如何利用批处理服务来处理云中的并行工作负荷，以及如何与 [Azure 存储](../storage/common/storage-introduction.md)交互来暂存和检索文件。 将了解常见的 Batch 应用程序工作流，并基本了解 Batch 的主要组件，例如作业、任务、池和计算节点。
 
 ![Batch 解决方案工作流（基础）][11]<br/>
 
@@ -41,10 +41,10 @@ ms.lasthandoff: 08/04/2017
 ### <a name="accounts"></a>帐户
 * **Azure 帐户**：如果没有 Azure 订阅，可以[创建一个免费 Azure 帐户][azure_free_account]。
 * **Batch 帐户**：获取 Azure 订阅后，请 [创建 Azure Batch 帐户](batch-account-create-portal.md)。
-* **存储帐户**：请参阅[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)中的[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)。
+* **存储帐户**：请参阅[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)中的[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。
 
 > [!IMPORTANT]
-> Batch 目前仅支持常规用途存储帐户类型，如[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)的[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)中的步骤 5 所述。
+> Batch 目前仅支持常规用途存储帐户类型，如[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)的[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)中的步骤 5 所述。
 >
 >
 
@@ -128,7 +128,7 @@ private const string StorageAccountKey  = "";
 ![在 Azure 存储中创建容器][1]
 <br/>
 
-Batch 包含的内置支持支持与 Azure 存储交互。 存储帐户中的容器将为 Batch 帐户中运行的任务提供所需的文件。 这些容器还提供存储任务生成的输出数据所需的位置。 *DotNetTutorial* 客户端应用程序首先在 [Azure Blob 存储](../storage/storage-introduction.md)中创建三个容器：
+Batch 包含的内置支持支持与 Azure 存储交互。 存储帐户中的容器将为 Batch 帐户中运行的任务提供所需的文件。 这些容器还提供存储任务生成的输出数据所需的位置。 *DotNetTutorial* 客户端应用程序首先在 [Azure Blob 存储](../storage/common/storage-introduction.md)中创建三个容器：
 
 * **应用程序**：此容器用于存储任务所要运行的应用程序及其依赖项，例如 DLL。
 * **输入**：任务将从 *输入* 容器下载所要处理的数据文件。
@@ -188,7 +188,7 @@ private static async Task CreateContainerIfNotExistAsync(
 创建容器之后，应用程序现在即可上传任务使用的文件。
 
 > [!TIP]
-> [如何通过 .NET 使用 Blob 存储](../storage/storage-dotnet-how-to-use-blobs.md)对如何使用 Azure 存储容器和 Blob 做了全面的概述。 开始使用 Batch 时，它应该位于阅读列表顶部附近。
+> [如何通过 .NET 使用 Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)对如何使用 Azure 存储容器和 Blob 做了全面的概述。 开始使用 Batch 时，它应该位于阅读列表顶部附近。
 >
 >
 
@@ -286,7 +286,7 @@ DotNetTutorial 示例应用程序不使用 JobPreparationTask 或 JobReleaseTask
 * **容器共享访问签名**：每个任务在计算节点上完成其工作后，会将其输出文件上传到 Azure 存储中的 *输出* 容器。 为此，TaskApplication 使用容器共享访问签名，在上传文件时，该共享访问签名提供对路径中包含的容器的写访问。 获取容器共享访问签名的操作方式类似于获取 blob 共享访问签名。 在 DotNetTutorial 中，可以发现 `GetContainerSasUrl` 帮助器方法调用 [CloudBlobContainer.GetSharedAccessSignature][net_sas_container] 来执行该操作。 可以在下面的“步骤 6：监视任务”中详细了解 TaskApplication 如何使用容器共享访问签名。
 
 > [!TIP]
-> 请查看有关共享访问签名的两篇系列教程的[第 1 部分：了解共享访问签名 (SAS) 模型](../storage/storage-dotnet-shared-access-signature-part-1.md)和[第 2 部分：创建共享访问签名 (SAS) 并将其用于 Blob 存储](../storage/storage-dotnet-shared-access-signature-part-2.md)，详细了解如何提供对存储帐户中数据的安全访问。
+> 请查看有关共享访问签名的两篇系列教程的[第 1 部分：了解共享访问签名 (SAS) 模型](../storage/common/storage-dotnet-shared-access-signature-part-1.md)和[第 2 部分：创建共享访问签名 (SAS) 并将其用于 Blob 存储](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md)，详细了解如何提供对存储帐户中数据的安全访问。
 >
 >
 
@@ -471,7 +471,7 @@ private static async Task<List<CloudTask>> AddTasksAsync(
 
 1. **第一个参数** 是要处理的文件的路径。 这是节点上现有文件的本地路径。 首次创建上面 `UploadFileToContainerAsync` 中的 ResourceFile 对象时，会将文件名用于此属性（作为 ResourceFile 构造函数的参数）。 这意味着可以在 *TaskApplication.exe*所在的目录中找到此文件。
 2. **第二个参数** 指定应将前 *N* 个单词写入输出文件。 在示例中，此参数已经过硬编码，因此会将前 3 个单词写入输出文件。
-3. **第三个参数**是共享访问签名 (SAS)，提供对 Azure 存储中**输出**容器的写访问。 *TaskApplication.exe* 使用此共享访问签名 URL。 可以在 TaskApplication 项目的 `Program.cs` 文件的 `UploadFileToContainer` 方法中找到此方面的代码：
+3. **第三个参数**是共享访问签名 (SAS)，提供对 Azure 存储中**输出**容器的写访问。 TaskApplication.exe 在将输出文件上传到 Azure 存储时使用此共享访问签名 URL。 可以在 TaskApplication 项目的 `Program.cs` 文件的 `UploadFileToContainer` 方法中找到此方面的代码：
 
 ```csharp
 // NOTE: From project TaskApplication Program.cs
