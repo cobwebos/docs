@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cjiang
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: 990914e3d9541e8574ce6ba0bf6c996cb394470a
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/27/2017
 
 
@@ -63,7 +64,7 @@ ms.lasthandoff: 03/27/2017
 
 若要解决这两个错误，请从门户中删除当前映像，并[从当前 VHD 重新捕获映像](capture-image.md)，该映像具有与该 OS（通用/专用）相同的设置。
 
-## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>问题：自定义/库/应用商店映像；分配失败
+## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>问题：自定义/库/Marketplace 映像；分配失败
 当新的 VM 请求被发送到没有可用空间可处理请求、或不支持所请求的 VM 大小的群集，便发生此错误。 在相同的云服务中不可混合不同系列的 VM。 因此，如果想要创建和云服务可支持大小不同的新 VM，计算请求将失败。
 
 可能遇到因两种情况造成的错误，取决于用于创建新 VM 的云服务的条件约束。

@@ -15,9 +15,10 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: dc9f354191b9e80ff6a01bd401a874c6998bda79
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/27/2017
 
 
@@ -30,7 +31,7 @@ ms.lasthandoff: 03/27/2017
 > 此外，本文所述的 PowerShell 脚本不可在 HPC Pack 2016 中使用。
 
 ## <a name="prerequisites"></a>先决条件
-* **Azure VM 中的 HPC Pack 2012 R2 群集**：在经典部署模型中创建一个 HPC Pack 2012 R2 群集。 例如，可以通过使用 Azure 应用商店中的 HPC Pack 2012 R2 VM 映像和 Azure PowerShell 脚本，自动执行部署。 有关信息和先决条件，请参阅[使用 HPC Pack IaaS 部署脚本创建 HPC 群集](hpcpack-cluster-powershell-script.md)。
+* **Azure VM 中的 HPC Pack 2012 R2 群集**：在经典部署模型中创建一个 HPC Pack 2012 R2 群集。 例如，可以通过使用 Azure Marketplace 中的 HPC Pack 2012 R2 VM 映像和 Azure PowerShell 脚本，自动执行部署。 有关信息和先决条件，请参阅[使用 HPC Pack IaaS 部署脚本创建 HPC 群集](hpcpack-cluster-powershell-script.md)。
   
     部署后，在头节点上的 %CCP\_HOME%bin 文件夹中查找节点管理脚本。 以管理员身份运行各个脚本。
 * **Azure 发布设置文件或管理证书**：需要在头节点上执行下列操作之一：
