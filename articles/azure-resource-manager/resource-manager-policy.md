@@ -254,10 +254,10 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 
 | 别名 | 说明 |
 | ----- | ----------- |
-| Microsoft.Compute/imageOffer | 设置用于创建虚拟机的平台映像或应用商店映像的产品/服务。 |
-| Microsoft.Compute/imagePublisher | 设置用于创建虚拟机的平台映像或应用商店映像的发布者。 |
-| Microsoft.Compute/imageSku | 设置用于创建虚拟机的平台映像或应用商店映像的 SKU。 |
-| Microsoft.Compute/imageVersion | 设置用于创建虚拟机的平台映像或应用商店映像的版本。 |
+| Microsoft.Compute/imageOffer | 设置用于创建虚拟机的平台映像或 Marketplace 映像的产品/服务。 |
+| Microsoft.Compute/imagePublisher | 设置用于创建虚拟机的平台映像或 Marketplace 映像的发布者。 |
+| Microsoft.Compute/imageSku | 设置用于创建虚拟机的平台映像或 Marketplace 映像的 SKU。 |
+| Microsoft.Compute/imageVersion | 设置用于创建虚拟机的平台映像或 Marketplace 映像的版本。 |
 
 
 **Microsoft.Compute/virtualMachines**
@@ -265,15 +265,15 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 | 别名 | 说明 |
 | ----- | ----------- |
 | Microsoft.Compute/imageId | 设置用于创建虚拟机的映像的标识符。 |
-| Microsoft.Compute/imageOffer | 设置用于创建虚拟机的平台映像或应用商店映像的产品/服务。 |
-| Microsoft.Compute/imagePublisher | 设置用于创建虚拟机的平台映像或应用商店映像的发布者。 |
-| Microsoft.Compute/imageSku | 设置用于创建虚拟机的平台映像或应用商店映像的 SKU。 |
-| Microsoft.Compute/imageVersion | 设置用于创建虚拟机的平台映像或应用商店映像的版本。 |
+| Microsoft.Compute/imageOffer | 设置用于创建虚拟机的平台映像或 Marketplace 映像的产品/服务。 |
+| Microsoft.Compute/imagePublisher | 设置用于创建虚拟机的平台映像或 Marketplace 映像的发布者。 |
+| Microsoft.Compute/imageSku | 设置用于创建虚拟机的平台映像或 Marketplace 映像的 SKU。 |
+| Microsoft.Compute/imageVersion | 设置用于创建虚拟机的平台映像或 Marketplace 映像的版本。 |
 | Microsoft.Compute/licenseType | 设置本地许可的映像或磁盘。 此值仅用于包含 Windows Server 操作系统的映像。  |
-| Microsoft.Compute/virtualMachines/imageOffer | 设置用于创建虚拟机的平台映像或应用商店映像的产品/服务。 |
-| Microsoft.Compute/virtualMachines/imagePublisher | 设置用于创建虚拟机的平台映像或应用商店映像的发布者。 |
-| Microsoft.Compute/virtualMachines/imageSku | 设置用于创建虚拟机的平台映像或应用商店映像的 SKU。 |
-| Microsoft.Compute/virtualMachines/imageVersion | 设置用于创建虚拟机的平台映像或应用商店映像的版本。 |
+| Microsoft.Compute/virtualMachines/imageOffer | 设置用于创建虚拟机的平台映像或 Marketplace 映像的产品/服务。 |
+| Microsoft.Compute/virtualMachines/imagePublisher | 设置用于创建虚拟机的平台映像或 Marketplace 映像的发布者。 |
+| Microsoft.Compute/virtualMachines/imageSku | 设置用于创建虚拟机的平台映像或 Marketplace 映像的 SKU。 |
+| Microsoft.Compute/virtualMachines/imageVersion | 设置用于创建虚拟机的平台映像或 Marketplace 映像的版本。 |
 | Microsoft.Compute/virtualMachines/osDisk.Uri | 设置 vhd URI。 |
 | Microsoft.Compute/virtualMachines/sku.name | 设置虚拟机的大小。 |
 
@@ -290,10 +290,10 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 | 别名 | 说明 |
 | ----- | ----------- |
 | Microsoft.Compute/imageId | 设置用于创建虚拟机的映像的标识符。 |
-| Microsoft.Compute/imageOffer | 设置用于创建虚拟机的平台映像或应用商店映像的产品/服务。 |
-| Microsoft.Compute/imagePublisher | 设置用于创建虚拟机的平台映像或应用商店映像的发布者。 |
-| Microsoft.Compute/imageSku | 设置用于创建虚拟机的平台映像或应用商店映像的 SKU。 |
-| Microsoft.Compute/imageVersion | 设置用于创建虚拟机的平台映像或应用商店映像的版本。 |
+| Microsoft.Compute/imageOffer | 设置用于创建虚拟机的平台映像或 Marketplace 映像的产品/服务。 |
+| Microsoft.Compute/imagePublisher | 设置用于创建虚拟机的平台映像或 Marketplace 映像的发布者。 |
+| Microsoft.Compute/imageSku | 设置用于创建虚拟机的平台映像或 Marketplace 映像的 SKU。 |
+| Microsoft.Compute/imageVersion | 设置用于创建虚拟机的平台映像或 Marketplace 映像的版本。 |
 | Microsoft.Compute/licenseType | 设置本地许可的映像或磁盘。 此值仅用于包含 Windows Server 操作系统的映像。 |
 | Microsoft.Compute/VirtualMachineScaleSets/computerNamePrefix | 设置规模集中所有虚拟机的计算机名前缀。 |
 | Microsoft.Compute/VirtualMachineScaleSets/osdisk.imageUrl | 设置用户映像的 blob URI。 |

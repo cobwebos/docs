@@ -210,7 +210,7 @@ Log Analytics 是 Operations Management Suite (OMS) 中的一个服务，用于�
 
 使用管理解决方案可通过各种方式显示数据。 可从 [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions) 获取管理解决方案。
 
-可以通过单击每个解决方案底部的“立即获取”链接从 Azure 应用商店安装管理解决方案。
+可以通过单击每个解决方案底部的“立即获取”链接从 Azure Marketplace 安装管理解决方案。
 
 ### <a name="adding-an-oms-cdn-management-solution"></a>添加 OMS CDN 管理解决方案
 
@@ -219,9 +219,9 @@ Log Analytics 是 Operations Management Suite (OMS) 中的一个服务，用于�
 1.   如果尚未登录 Azure 门户，请使用 Azure 订阅登录并转到仪表板。
     ![Azure 仪表板](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
 
-2. 在“新建”边栏选项卡中，在“应用商店”下，选择“监视 + 管理”。
+2. 在“新建”边栏选项卡中，在“Marketplace”下，选择“监视 + 管理”。
 
-    ![应用商店](./media/cdn-diagnostics-log/14_Marketplace.png)
+    ![Marketplace](./media/cdn-diagnostics-log/14_Marketplace.png)
 
 3. 在“监视 + 管理”边栏选项卡中，单击“查看所有”。
 

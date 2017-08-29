@@ -36,11 +36,11 @@ ms.lasthandoff: 08/04/2017
 ## <a name="consumption-apis"></a>消耗量 API
 可在[此处](https://consumption.azure.com/swagger/ui/index)找到为下面所述的 API 提供的 Swagger 终结点，该终结点可以使用 [AutoRest](https://github.com/Azure/AutoRest) 或 [Swagger CodeGen](http://swagger.io/swagger-codegen/) 进行简单的 API 自检并生成客户端 SDK。 2014 年 5 月 1 日开始的数据就是通过此 API 提供的。 
 
-* 余额和摘要 - [余额和摘要 API](billing-enterprise-api-balance-summary.md) 提供关于余额、新购买、Azure 应用商店服务费用、调整和超额费用信息的每月摘要。
+* 余额和摘要 - [余额和摘要 API](billing-enterprise-api-balance-summary.md) 提供关于余额、新购买、Azure Marketplace 服务费用、调整和超额费用信息的每月摘要。
 
 * 使用情况详细信息 - [使用情况详细信息 API](billing-enterprise-api-usage-detail.md) 提供已耗用量和注册估计费用的日常明细。 结果还包括有关实例、计量和部门信息。 可以按照计费周期或指定的开始日期和结束日期查询 API。 
 
-* 应用商店费用 - [应用商店费用 API](billing-enterprise-api-marketplace-storecharge.md) 会返回基于使用情况的应用商店费用明细（不包括一次性费用），且按指定计费周期或开始和结束日期排列。
+* Marketplace 费用 - [Marketplace 费用 API](billing-enterprise-api-marketplace-storecharge.md) 会返回基于使用情况的 Marketplace 费用明细（不包括一次性费用），且按指定计费周期或开始和结束日期排列。
 
 * 价目表 - [价目表 API](billing-enterprise-api-pricesheet.md) 为给定注册和计费周期的每个计量提供适用的费率。 
 

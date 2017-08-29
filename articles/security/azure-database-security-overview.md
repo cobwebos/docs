@@ -208,7 +208,7 @@ SQL 数据库审核可让你：
 -   集成来自 [Azure SQL 数据库威胁检测](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)的警报。
 -   安全中心支持基于角色的访问。
 
-## <a name="azure-marketplace"></a>Azure 应用商店
+## <a name="azure-marketplace"></a>Azure Marketplace
 
 Azure Marketplace 是一个在线应用程序和服务市场，初创公司和独立软件供应商 (ISV) 能够通过它为全球 Azure 客户提供解决方案。
 Azure Marketplace 与 Microsoft Azure 合作伙伴生态系统结合为一个统一的平台，以便更好地为我们的客户和合作伙伴提供服务。 单击[此处](https://azuremarketplace.microsoft.com/marketplace/apps?search=Database%20Security&page=1)浏览 Azure Marketplace 中提供的数据库安全产品。
