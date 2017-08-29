@@ -66,7 +66,7 @@ ms.lasthandoff: 06/21/2017
 
 ### <a name="image-configuration"></a>映像配置
 
-若要创建 Linux (Ubuntu) 代理，请选择“映像引用”并使用以下配置作为示例。 请参阅 [Azure 应用商店](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1)获取 Azure 支持的最新映像。
+若要创建 Linux (Ubuntu) 代理，请选择“映像引用”并使用以下配置作为示例。 请参阅 [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) 获取 Azure 支持的最新映像。
 
 * 映像发布者：Canonical
 * 映像产品：UbuntuServer

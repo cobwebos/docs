@@ -201,10 +201,10 @@
     - name: 机器学习
       tocHref: /azure/machine-learning/
       topicHref: /azure/machine-learning/
-    - name: 应用商店消费者
+    - name: Marketplace 消费者
       tocHref: /azure/marketplace-consumer/
       topicHref: /azure/marketplace-consumer/
-    - name: 应用商店发布
+    - name: Marketplace 发布
       tocHref: /azure/marketplace-publishing/
       topicHref: /azure/marketplace-publishing/
     - name: 媒体服务
