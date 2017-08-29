@@ -1,6 +1,6 @@
 ---
-title: "访问 Azure 应用商店的发布者支持 | Microsoft Docs"
-description: "如何为 Azure 应用商店访问和提交发布者支持和请求"
+title: "访问 Azure Marketplace 的发布者支持 | Microsoft Docs"
+description: "如何为 Azure Marketplace 访问和提交发布者支持和请求"
 services: marketplace-publishing
 documentationcenter: na
 author: v-jeana
@@ -22,12 +22,12 @@ ms.lasthandoff: 06/17/2017
 
 
 ---
-# <a name="accessing-publisher-support-for-the-azure-marketplace"></a>访问 Azure 应用商店的发布者支持
+# <a name="accessing-publisher-support-for-the-azure-marketplace"></a>访问 Azure Marketplace 的发布者支持
 Microsoft 支持各种产品和服务。 请确保查询找到正确的支持团队，这对确保收到适当即时的回复而言很重要。 请考虑使用以下有助于将查询路由到相应团队的方案：
 
-* 如果你是 Azure 应用商店的发布者，并且仍在开发 VM，应参与 Microsoft 载入和计算团队。
-* 如果你是应用商店的发布者，并且客户有问题，请告知客户通过支持链接请求支持，网址是 https://portal.azure.com/。
-* 如果你是应用商店的发布者，并且遇到有关应用或服务的问题，请继续阅读以下文章。
+* 如果你是 Azure Marketplace 的发布者，并且仍在开发 VM，应参与 Microsoft 载入和计算团队。
+* 如果你是 Marketplace 的发布者，并且客户有问题，请告知客户通过支持链接请求支持，网址是 https://portal.azure.com/。
+* 如果你是 Marketplace 的发布者，并且遇到有关应用或服务的问题，请继续阅读以下文章。
 
 本文将向你介绍如何：
 
@@ -81,7 +81,7 @@ Microsoft 支持各种产品和服务。 请确保查询找到正确的支持团
 * 可在任何时候查看问题解决进度。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解如何解决特定的支持问题，请参阅 [Azure 应用商店常见问题疑难解答](marketplace-publishing-support-common-issues.md)。
+若要了解如何解决特定的支持问题，请参阅 [Azure Marketplace 常见问题疑难解答](marketplace-publishing-support-common-issues.md)。
 
 [1]: ./media/marketplace-publishing-get-publisher-support/step1.png
 [2]: ./media/marketplace-publishing-get-publisher-support/step2.png

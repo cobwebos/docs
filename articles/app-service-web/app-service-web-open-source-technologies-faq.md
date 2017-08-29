@@ -145,7 +145,7 @@ ms.lasthandoff: 06/15/2017
 
 ## <a name="where-are-the-tomcat-log-files-located"></a>Tomcat 日志文件位于何处？
 
-对于 Azure 应用商店和自定义部署：
+对于 Azure Marketplace 和自定义部署：
 
 * 文件夹位置：D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
 * 相关文件：
@@ -177,7 +177,7 @@ The web application[ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but
 解决该错误：
 
 1. 从 app/lib 文件夹中删除 sqljdbc*.jar 文件。
-2. 如果使用自定义 Tomcat 或 Azure 应用商店 Tomcat Web 服务器，请将此 .jar 文件复制到 Tomcat lib 文件夹中。
+2. 如果使用自定义 Tomcat 或 Azure Marketplace Tomcat Web 服务器，请将此 .jar 文件复制到 Tomcat lib 文件夹中。
 3. 如果从 Azure 门户启用 Java（选择“Java 1.8” > “Tomcat 服务器”），则在与应用平行的文件夹中复制 sqljdbc.* jar 文件。 然后，将以下类路径设置添加到 web.config 文件：
 
     ```
@@ -209,7 +209,7 @@ The process cannot access the file because it is being used by another process.
 
 ## <a name="where-do-i-find-the-log-files-for-jetty"></a>可在何处找到 Jetty 的日志文件？
 
-对于应用商店和自定义部署，日志文件位于 D:\home\site\wwwroot\bin\jetty-distribution-9.1.2.v20140210\logs 文件夹中。 请注意，文件夹位置取决于所使用的 Jetty 版本。 例如，此处提供的路径适用于 Jetty 9.1.2。 查找 jetty_YYYY_MM_DD.stderrout.log。
+对于 Marketplace 和自定义部署，日志文件位于 D:\home\site\wwwroot\bin\jetty-distribution-9.1.2.v20140210\logs 文件夹中。 请注意，文件夹位置取决于所使用的 Jetty 版本。 例如，此处提供的路径适用于 Jetty 9.1.2。 查找 jetty_YYYY_MM_DD.stderrout.log。
 
 对于门户应用设置部署，日志文件位于 D:\home\LogFiles 中。 查找 jetty_YYYY_MM_DD.stderrout.log
 

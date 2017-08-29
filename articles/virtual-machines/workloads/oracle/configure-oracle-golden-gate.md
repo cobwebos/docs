@@ -25,7 +25,7 @@ ms.lasthandoff: 06/20/2017
 
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上实现 Oracle Golden Gate 
 
-Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南详述了如何使用 Azure CLI 通过 Azure 应用商店库映像部署 Oracle 12c 数据库。 
+Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南详述了如何使用 Azure CLI 通过 Azure Marketplace 库映像部署 Oracle 12c 数据库。 
 
 本文档逐步演示如何在 Azure VM 上创建、安装和配置 Oracle Golden Gate。
 
@@ -33,7 +33,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南�
 
 ## <a name="prepare-the-environment"></a>准备环境
 
-若要执行 Oracle Golden Gate 安装，需要在同一可用性集中创建两个 Azure VM。 用于创建 VM 的应用商店映像是 **Oracle:Oracle-Database-Ee:12.1.0.2:latest**。
+若要执行 Oracle Golden Gate 安装，需要在同一可用性集中创建两个 Azure VM。 用于创建 VM 的 Marketplace 映像是 **Oracle:Oracle-Database-Ee:12.1.0.2:latest**。
 
 还需要熟悉 Unix 编辑器 vi 并基本了解 x11 (X Windows)。
 
@@ -180,7 +180,7 @@ ssh <publicIpAddress>
 
 ### <a name="create-the-database-on-myvm1-primary"></a>在 myVM1（主）上创建数据库
 
-Oracle 软件已在应用商店映像上安装，因此下一步是安装数据库。 
+Oracle 软件已在 Marketplace 映像上安装，因此下一步是安装数据库。 
 
 以“oracle”超级用户身份运行软件：
 

@@ -24,7 +24,7 @@ ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>开始在 Azure 的 HPC Pack 群集上运行 Excel 和 SOA 工作负荷
-本文介绍如何使用 Azure 快速入门模板或 Azure PowerShell 部署脚本将 Microsoft HPC Pack 2012 R2 群集部署到 Azure 虚拟机。 此群集使用 Azure 应用商店 VM 映像，这些映像根据设计可以通过 HPC Pack 运行 Microsoft Excel 工作负荷或面向服务的体系结构 (SOA) 工作负荷。 可使用群集从本地客户端计算机运行 Excel HPC 和 SOA 服务。 Excel HPC 服务提供 Excel 工作簿卸载和 Excel 用户定义的函数或 UDF。
+本文介绍如何使用 Azure 快速入门模板或 Azure PowerShell 部署脚本将 Microsoft HPC Pack 2012 R2 群集部署到 Azure 虚拟机。 此群集使用 Azure Marketplace VM 映像，这些映像根据设计可以通过 HPC Pack 运行 Microsoft Excel 工作负荷或面向服务的体系结构 (SOA) 工作负荷。 可使用群集从本地客户端计算机运行 Excel HPC 和 SOA 服务。 Excel HPC 服务提供 Excel 工作簿卸载和 Excel 用户定义的函数或 UDF。
 
 > [!IMPORTANT] 
 > 本文以 HPC Pack 2012 R2 的功能、模板和脚本为基础。 HPC Pack 2016 当前不支持此方案。
@@ -49,7 +49,7 @@ ms.lasthandoff: 06/03/2017
 使用 Azure 快速入门模板可在 Azure 门户中快速部署 HPC Pack 群集。 当你在门户中打开该模板时，将显示简单的 UI，你可以在其中输入群集的设置。 下面是相关步骤。 
 
 > [!TIP]
-> 如果需要，可以使用 [Azure 应用商店模板](https://portal.azure.com/?feature.relex=*%2CHubsExtension#create/microsofthpc.newclusterexcelcn)专门为 Excel 工作负荷创建类似的群集。 步骤与下文中的内容稍有不同。
+> 如果需要，可以使用 [Azure Marketplace 模板](https://portal.azure.com/?feature.relex=*%2CHubsExtension#create/microsofthpc.newclusterexcelcn)专门为 Excel 工作负荷创建类似的群集。 步骤与下文中的内容稍有不同。
 > 
 > 
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 06/03/2017
    ![输入参数][parameters-new-portal]
    
    > [!NOTE]
-   > 将在 Windows Server 2012 R2 上从 HPC Pack 2012 R2 的[最新应用商店映像](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)自动创建头节点 VM。 当前，该映像基于 HPC Pack 2012 R2 Update 3。
+   > 将在 Windows Server 2012 R2 上从 HPC Pack 2012 R2 的[最新 Marketplace 映像](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)自动创建头节点 VM。 当前，该映像基于 HPC Pack 2012 R2 Update 3。
    > 
    > 将从所选计算节点系列的最新映像创建计算节点 VM。 为包含 Microsoft Excel Professional Plus 2013 的评估版本的最新 HPC Pack 计算节点映像选择 **ComputeNodeWithExcel** 选项。 若要为常规 SOA 会话或 Excel UDF 卸载部署群集，请选择 **ComputeNode** 选项（不会安装 Excel）。
    > 

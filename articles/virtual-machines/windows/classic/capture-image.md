@@ -43,7 +43,7 @@ Azure 将映像存储在“VM 映像(经典)”下，这是查看所有 Azure �
 >
 >
 
-捕获 Azure 虚拟机映像之前，建议备份目标虚拟机。 可以使用 Azure 备份来备份 Azure 虚拟机。 有关详细信息，请参阅[备份 Azure 虚拟机](../../../backup/backup-azure-vms.md)。 认证合作伙伴提供其他解决方案。 若要了解当前提供的内容，请搜索 Azure 应用商店。
+捕获 Azure 虚拟机映像之前，建议备份目标虚拟机。 可以使用 Azure 备份来备份 Azure 虚拟机。 有关详细信息，请参阅[备份 Azure 虚拟机](../../../backup/backup-azure-vms.md)。 认证合作伙伴提供其他解决方案。 若要了解当前提供的内容，请搜索 Azure Marketplace。
 
 ## <a name="capture-the-virtual-machine"></a>捕获虚拟机
 1. 在 [Azure 门户](http://portal.azure.com)中，**连接**到虚拟机。 有关说明，请参阅[如何登录到运行 Windows Server 的虚拟机][How to sign in to a virtual machine running Windows Server]。
@@ -69,7 +69,7 @@ Azure 将映像存储在“VM 映像(经典)”下，这是查看所有 Azure �
 
 9. 单击“我已在虚拟机上运行 Sysprep”。 此复选框是指步骤 3-5 中的 Sysprep 操作。 将 Windows Server 映像添加到自定义映像集之前，_必须_通过运行 Sysprep 使该映像通用化。
 
-10. 捕获完成后，可在**应用商店**的“计算”、“VM 映像(经典)”容器中获取新映像。
+10. 捕获完成后，可在 **Marketplace** 的“计算”、“VM 映像(经典)”容器中获取新映像。
 
     ![成功捕获映像](./media/capture-image/VMCapturedImageAvailable.png)
 

@@ -24,8 +24,8 @@ ms.lasthandoff: 06/09/2017
 
 
 ---
-# <a name="publish-hdinsight-applications-into-the-azure-marketplace"></a>将 HDInsight 应用程序发布到 Azure 应用商店中
-HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安装的应用程序。 这些应用程序可能是 Microsoft、独立软件供应商 (ISV) 或你自己开发的。 在本文中，你将学习如何将 HDInsight 应用程序发布到 Azure Marketplace 中。  有关发布到 Azure 应用商店的一般信息，请参阅 [将产品发布到 Azure 应用商店](../marketplace-publishing/marketplace-publishing-getting-started.md)。
+# <a name="publish-hdinsight-applications-into-the-azure-marketplace"></a>将 HDInsight 应用程序发布到 Azure Marketplace 中
+HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安装的应用程序。 这些应用程序可能是 Microsoft、独立软件供应商 (ISV) 或你自己开发的。 在本文中，你将学习如何将 HDInsight 应用程序发布到 Azure Marketplace 中。  有关发布到 Azure Marketplace 的一般信息，请参阅[将产品/服务发布到 Azure Marketplace](../marketplace-publishing/marketplace-publishing-getting-started.md)。
 
 HDInsight 应用程序使用 *自带许可 (BYOL)* 模型，其中，应用程序提供商负责将应用程序授权给最终用户，而 Azure 只是向最终用户收取其所创建资源（例如 HDInsight 群集及其 VM/节点）的费用。 目前，Azure 不经手应用程序本身的计费。
 
@@ -39,10 +39,10 @@ HDInsight 应用程序使用 *自带许可 (BYOL)* 模型，其中，应用程�
 
 * [安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)：了解如何安装和测试自定义 HDInsight 应用程序。
 
-此外，必须注册开发者帐户。 请参阅[将产品/服务发布到 Azure 应用商店](../marketplace-publishing/marketplace-publishing-getting-started.md)和[创建 Microsoft 开发人员帐户](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md)。
+此外，必须注册开发者帐户。 请参阅[将产品/服务发布到 Azure Marketplace](../marketplace-publishing/marketplace-publishing-getting-started.md) 和[创建 Microsoft 开发人员帐户](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md)。
 
 ## <a name="define-application"></a>定义应用程序
-将应用程序发布到 Azure 应用商店的过程包括两个步骤。  首先，定义“createUiDef.json”  文件，指示你的应用程序与哪些群集兼容；然后从 Azure 门户发布模板。 以下部分是一个示例 createUiDef.json 文件。
+将应用程序发布到 Azure Marketplace 的过程包括两个步骤。  首先，定义“createUiDef.json”  文件，指示你的应用程序与哪些群集兼容；然后从 Azure 门户发布模板。 以下部分是一个示例 createUiDef.json 文件。
 
     {
         "handler": "Microsoft.HDInsight",
