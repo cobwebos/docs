@@ -45,7 +45,7 @@ ms.lasthandoff: 05/26/2017
    | 任务 | 学习内容 |
    | --- | --- |
    | [在 Azure 开发测试实验室中创建实验室](devtest-lab-create-lab.md) |了解如何在 Azure 门户中的 Azure 开发测试实验室中创建实验室。 |
-2. 使用现成应用商店映像和自定义映像在几分钟内创建 VM 
+2. 使用现成 Marketplace 映像和自定义映像在几分钟内创建 VM 
    
     可在 Azure Marketplace 从多种映像中选择现成映像并使它们在实验室中可用。 如果现成的映像不能满足需求，可使用 Azure Marketplace 中的现成映像创建实验室 VM，安装所需的所有软件并在实验室中将 VM 保存为自定义映像来创建自定义映像。
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 05/26/2017
    
    | 任务 | 学习内容 |
    | --- | --- |
-   | [配置 Azure 应用商店映像](devtest-lab-configure-marketplace-images.md) |了解如何将 Azure Marketplace 映像列入允许列表，仅使需用于开发人员的映像可供选择。|
+   | [配置 Azure Marketplace 映像](devtest-lab-configure-marketplace-images.md) |了解如何将 Azure Marketplace 映像列入允许列表，仅使需用于开发人员的映像可供选择。|
    | [创建自定义映像](devtest-lab-create-template.md) |通过预安装所需的软件创建自定义映像，让开发人员能够使用自定义映像快速创建 VM。|
    | [了解映像工厂](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) |观看介绍如何设置和使用映像工厂的视频。|
 
