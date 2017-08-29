@@ -4,7 +4,7 @@ description: "本教程介绍了使用 Azure 门户创建 Azure 媒体服务帐�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: c551e158-aad6-47b4-931e-b46260b3ee4c
 ms.service: media-services
