@@ -29,6 +29,8 @@
           href: connect-cpp.md
         - name: Go
           href: connect-go.md
+        - name: MySQL Workbench
+          href: connect-workbench.md
 - name: 教程
   items:
     - name: 1 - 设计数据库

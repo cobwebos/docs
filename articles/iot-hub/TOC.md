@@ -15,11 +15,11 @@
 ### [使用联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)
 
 ### [使用物理设备](iot-hub-get-started-physical.md)
+#### [将 Raspberry Pi 与 Python 配合使用](iot-hub-raspberry-pi-kit-python-get-started.md)
 #### [将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)
 #### [将 Raspberry Pi 与 C 配合使用](iot-hub-raspberry-pi-kit-c-get-started.md)
-#### [将 Raspberry Pi 与 Python 配合使用](iot-hub-raspberry-pi-kit-python-get-started.md)
 
-#### [将 IoT 开发工具包与 Visual Studio Code 配合使用](iot-hub-arduino-iot-devkit-az3166-get-started.md)
+#### [将 MXChip IoT DevKit 与 Arduino 配合使用](iot-hub-arduino-iot-devkit-az3166-get-started.md)
 
 #### [将 Intel Edison 与 Node.js 配合使用](iot-hub-intel-edison-kit-node-get-started.md)
 #### [将 Intel Edison 与 C 配合使用](iot-hub-intel-edison-kit-c-get-started.md)

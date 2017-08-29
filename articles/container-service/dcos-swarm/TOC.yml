@@ -59,7 +59,7 @@
               href: container-service-monitoring-dynatrace.md
     - name: Docker Swarm
       items:
-        - name: Swarm 模式快速入门
+        - name: Docker CE 快速入门
           href: container-service-swarm-mode-walkthrough.md
         - name: Docker 和 Docker Compose
           href: container-service-docker-swarm.md

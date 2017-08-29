@@ -8,6 +8,7 @@
 ## [Service Fabric 安全](azure-service-fabric-security-overview.md)
 ## [标识管理](security-identity-management-overview.md)
 ## [IoT 安全性](../iot-suite/iot-security-architecture.md#security-in-iot)
+## [Azure 加密概述](security-azure-encryption-overview.md)
 ## [安全体系结构](azure-security-architecture-overview.md)
 ### [实现运营安全](azure-operational-security.md)
 ### [高级威胁检测](azure-threat-detection.md)
@@ -30,7 +31,7 @@
 
 ## 存储安全
 ### [数据安全与加密最佳实践](azure-security-data-encryption-best-practices.md)
-### [存储安全指南](../storage/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json)
+### [存储安全指南](../storage/common/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
 ## 计算安全
 ### [Azure VM 最佳做法](azure-security-best-practices-vms.md)
@@ -63,11 +64,12 @@
 
 ## PaaS 服务
 ### [保护 PaaS 部署](security-paas-deployments.md)
-#### [使用 SQL 保护 PaaS Web 和移动应用程序](security-paas-applications-using-sql.md)
-#### [SQL 数据库安全最佳实践](azure-database-security-best-practices.md)
-#### [SQL 数据库安全清单](azure-database-security-checklist.md)
 #### [使用应用服务保护 PaaS Web 和移动应用程序](security-paas-applications-using-app-services.md)
+#### [使用 SQL 保护 PaaS Web 和移动应用程序](security-paas-applications-using-sql.md)
+##### [SQL 数据库安全最佳实践](azure-database-security-best-practices.md)
+##### [SQL 数据库安全清单](azure-database-security-checklist.md)
 ####[运营安全清单](azure-operational-security-checklist.md)
+#### [使用 Azure 存储保护 PaaS Web 和移动应用程序](security-paas-applications-using-storage.md)
 
 ## 物联网
 ### [保护 IoT 部署](../iot-suite/iot-suite-security-deployment.md)
@@ -97,13 +99,17 @@
 ## [Virtual Academy 中的安全课程](security-microsoft-virtual-academy.md)
 ## [第 9 频道上的安全视频](security-channel-nine.md)
 ## [威胁建模工具](azure-security-threat-modeling-tool.md)
-###[审核和日志记录](azure-security-threat-modeling-tool-auditing-and-logging.md)
-###[身份验证](azure-security-threat-modeling-tool-authentication.md)
-###[授权](azure-security-threat-modeling-tool-authorization.md)
-###[通信安全性](azure-security-threat-modeling-tool-communication-security.md)
-###[配置管理](azure-security-threat-modeling-tool-configuration-management.md)
-###[加密](azure-security-threat-modeling-tool-cryptography.md)
-###[异常管理](azure-security-threat-modeling-tool-exception-management.md)
-###[输入验证](azure-security-threat-modeling-tool-input-validation.md)
-###[敏感数据](azure-security-threat-modeling-tool-sensitive-data.md)
-###[会话管理](azure-security-threat-modeling-tool-session-management.md)
+### [入门](azure-security-threat-modeling-tool-getting-started.md)
+### [功能概述](azure-security-threat-modeling-tool-feature-overview.md)
+### [威胁](azure-security-threat-modeling-tool-threats.md)
+### [缓解措施](azure-security-threat-modeling-tool-mitigations.md)
+#### [审核和日志记录](azure-security-threat-modeling-tool-auditing-and-logging.md)
+#### [身份验证](azure-security-threat-modeling-tool-authentication.md)
+#### [授权](azure-security-threat-modeling-tool-authorization.md)
+#### [通信安全性](azure-security-threat-modeling-tool-communication-security.md)
+#### [配置管理](azure-security-threat-modeling-tool-configuration-management.md)
+#### [加密](azure-security-threat-modeling-tool-cryptography.md)
+#### [异常管理](azure-security-threat-modeling-tool-exception-management.md)
+#### [输入验证](azure-security-threat-modeling-tool-input-validation.md)
+#### [敏感数据](azure-security-threat-modeling-tool-sensitive-data.md)
+#### [会话管理](azure-security-threat-modeling-tool-session-management.md)

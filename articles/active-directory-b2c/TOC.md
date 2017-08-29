@@ -56,9 +56,12 @@
 ## [自定义策略](active-directory-b2c-overview-custom.md)
 ## 指南
 ### [入门](active-directory-b2c-get-started-custom.md)
-### 配置 OIDC 提供程序
+### 配置 OIDC/OAUTH2 提供程序
 #### [Azure AD](active-directory-b2c-setup-aad-custom.md)
+#### [Microsoft 帐户](active-directory-b2c-custom-setup-msa-idp.md)
+#### [Google+](active-directory-b2c-custom-setup-goog-idp.md)
 ### 配置 SAML 提供程序
+#### [ADFS](active-directory-b2c-custom-setup-adfs2016-idp.md)
 #### [Salesforce](active-directory-b2c-setup-sf-app-custom.md)
 ### 集成 RESTful API
 #### [验证用户输入](active-directory-b2c-rest-api-validation-custom.md)
@@ -72,7 +75,7 @@
 #### [使用 Application Insights 收集日志](active-directory-b2c-troubleshoot-custom.md)
 ## 引用
 ### [发行说明](active-directory-b2c-developer-notes-custom.md)
-
+### [信任框架定义](active-directory-b2c-reference-trustframeworks-defined-ief-custom.md) 
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory-b2c)
 ## 术语表
