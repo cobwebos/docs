@@ -24,7 +24,7 @@ ms.lasthandoff: 02/16/2017
 # <a name="create-a-wordpress-web-app-in-azure-app-service"></a>在 Azure App Service 中创建 WordPress Web 应用
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-本教程说明如何从 Azure 应用商店部署 WordPress 博客站点。
+本教程说明如何从 Azure Marketplace 部署 WordPress 博客站点。
 
 完成本教程以后，你将在云中启动并运行自己的 WordPress 博客站点。
 
@@ -32,13 +32,13 @@ ms.lasthandoff: 02/16/2017
 
 学习内容：
 
-* 如何在 Azure 应用商店中查找应用程序模板。
+* 如何在 Azure Marketplace 中查找应用程序模板。
 * 如何在 Azure App Service 中根据模板创建 Web 应用。
 * 如何配置适用于新 Web 应用和数据库的 Azure App Service 设置。
 
-Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划开发的各种流行 Web 应用。 Web 应用基于各种常用的框架，例如此 WordPress 示例中的 [PHP](/develop/nodejs/)，以及 [.NET](/develop/net/)、[Node.js](/develop/nodejs/)、[Java](/develop/java/)、[Python ](/develop/python/)等。 若要从 Azure 应用商店创建 Web 应用，你所需要的唯一软件就是用于浏览 [Azure 门户](https://portal.azure.com/)的浏览器。 
+Azure Marketplace 提供了由 Microsoft、第三方公司和开源软件计划开发的各种流行 Web 应用。 Web 应用基于各种常用的框架，例如此 WordPress 示例中的 [PHP](/develop/nodejs/)，以及 [.NET](/develop/net/)、[Node.js](/develop/nodejs/)、[Java](/develop/java/)、[Python ](/develop/python/)等。 若要从 Azure Marketplace 创建 Web 应用，你所需要的唯一软件就是用于浏览 [Azure 门户](https://portal.azure.com/)的浏览器。 
 
-在本教程中部署的 WordPress 站点使用 MySQL 作为数据库。 如果要改用 SQL 数据库作为数据库，请参阅 [Project Nami](http://projectnami.org/)。 **Project Nami** 也可通过应用商店获取。
+在本教程中部署的 WordPress 站点使用 MySQL 作为数据库。 如果要改用 SQL 数据库作为数据库，请参阅 [Project Nami](http://projectnami.org/)。 **Project Nami** 也可通过 Marketplace 获取。
 
 > [!NOTE]
 > 若要完成本教程，您需要一个 Microsoft Azure 帐户。 如果没有帐户，可以[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)，或者[注册免费试用帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
