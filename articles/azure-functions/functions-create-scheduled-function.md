@@ -4,7 +4,7 @@ description: "了解如何在 Azure 中创建根据你定义的计划运行的�
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701

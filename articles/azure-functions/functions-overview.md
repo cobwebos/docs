@@ -4,7 +4,7 @@ description: "了解如何使用 Azure Functions 以分钟为单位优化异步�
 services: functions
 documentationcenter: na
 author: mattchenderson
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构"

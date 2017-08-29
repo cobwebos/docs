@@ -33,17 +33,15 @@
   items:
     - name: 保护容器
       href: container-service-security.md
-    - name: 服务主体 - Kubernetes
-      href: container-service-kubernetes-service-principal.md
 - name: 操作指南
   items:
-    - name: “将 Kubernetes 与 Windows 配合使用”快速入门
+    - name: 将 Kubernetes 与 Windows 配合使用
       href: container-service-kubernetes-windows-walkthrough.md
-    - name: 容器管理 - Kubernetes UI
+    - name: Kubernetes Web 界面
       href: container-service-kubernetes-ui.md
     - name: 部署 Helm 图表
       href: container-service-kubernetes-helm.md
-    - name: 将 CI/CD 与 Kubernetes 和 Jenkins 配合使用
+    - name: Jenkins 和 ACS Kubernetes
       href: container-service-kubernetes-jenkins.md
     - name: 将“草稿”与 ACR 和 ACS 配合使用
       href: container-service-draft-up.md

@@ -4,7 +4,7 @@ description: "使用 Azure 应用服务连续部署功能来发布 Azure Functio
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/25/2016
 ms.author: glenga
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
 ms.openlocfilehash: 3756f1a039730bfd99b0375ce9bfeaf27178f2e0
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/25/2017
-
 
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions 的连续部署

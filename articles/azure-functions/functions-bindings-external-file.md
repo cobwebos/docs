@@ -4,7 +4,7 @@ description: "在 Azure Functions 中使用外部文件绑定"
 services: functions
 documentationcenter: 
 author: alexkarcher-msft
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 
 ms.service: functions

@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
 ms.openlocfilehash: be957651af78519f678321aec511b71cb18a85f2
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/19/2017
 
 
@@ -1707,7 +1708,7 @@ ms.lasthandoff: 04/19/2017
     vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password
 
 > [!TIP]
-> 从 CLI 0.10 版开始，可以为某些热门应用商店映像提供“UbuntuLTS”或“Win2012R2Datacenter”之类的简短别名作为 `image-urn`。 针对选项运行 `azure help vm quick-create`。 另外，从 0.10 版开始，`azure vm quick-create` 默认使用高级存储，前提是所选区域提供该存储。
+> 从 CLI 0.10 版开始，可以为某些热门 Marketplace 映像提供“UbuntuLTS”或“Win2012R2Datacenter”之类的简短别名作为 `image-urn`。 针对选项运行 `azure help vm quick-create`。 另外，从 0.10 版开始，`azure vm quick-create` 默认使用高级存储，前提是所选区域提供该存储。
 > 
 > 
 

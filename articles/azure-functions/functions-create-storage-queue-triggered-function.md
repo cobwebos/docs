@@ -4,7 +4,7 @@ description: "使用 Azure Functions 创建由提交到 Azure 存储队列的消
 services: azure-functions
 documentationcenter: na
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4

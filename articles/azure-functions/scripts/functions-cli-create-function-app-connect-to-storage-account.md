@@ -4,7 +4,7 @@ description: "Azure CLI 脚本示例 - 创建用于连接到 Azure 存储的 Azu
 services: functions
 documentationcenter: functions
 author: rachelappel
-manager: erikre
+manager: cfowler
 editor: 
 tags: functions
 ms.assetid: 

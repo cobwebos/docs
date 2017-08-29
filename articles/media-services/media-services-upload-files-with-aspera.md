@@ -27,7 +27,7 @@ ms.lasthandoff: 04/19/2017
 
 **Aspera** 是一个高速文件传输软件。 使用 **Aspera Server On Demand** for Azure 可快速将大型文件直接上载和下载到 Azure Blob 对象存储。 有关 **Aspera On Demand** 的信息，请参阅 [Aspera 云](http://cloud.asperasoft.com/)站点。 
   
-可从 [Azure 应用商店](https://azure.microsoft.com/en-us/marketplace/)购买 **Aspera Server On Demand** for Azure。 若要完成 **Aspera Server On Demand** for Azure 的购买，请使用 Windows Live ID 登录到 Azure 应用商店。
+可从 [Azure Marketplace](https://azure.microsoft.com/en-us/marketplace/) 购买 **Aspera Server On Demand** for Azure。 若要完成 **Aspera Server On Demand** for Azure 的购买，请使用 Windows Live ID 登录到 Azure Marketplace。
 
 本教程逐步讲解如何使用 Azure 上的 **Aspera Server On Demand** 服务将文件上载到与媒体服务帐户关联的存储帐户。 
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 04/19/2017
 
 ## <a name="purchase-aspera-on-demand-for-azure"></a>购买 Aspera On Demand for Azure
 
-登录到 Azure 应用商店后，请遵循以下基本步骤完成 Aspera On Demand for Azure 的购买。
+登录到 Azure Marketplace 后，请遵循以下基本步骤完成 Aspera On Demand for Azure 的购买。
 
 1. 搜索“Aspera”，然后选择“Server On Demand”。
 

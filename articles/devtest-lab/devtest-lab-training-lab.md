@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2016
 ms.author: sdanie
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
 ms.openlocfilehash: a85999b7963e9a07d3f91ec47f298f91439c0808
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/15/2017
 
 
@@ -47,15 +48,15 @@ Azure 开发测试实验室满足在任意虚拟环境中进行培训所需的�
    | 任务 | 学习内容 |
    | --- | --- |
    | [在 Azure 开发测试实验室中创建实验室](devtest-lab-create-lab.md) |了解如何在 Azure 门户中的 Azure 开发测试实验室中创建实验室。 |
-2. **使用现成应用商店映像和自定义映像在几分钟内创建培训 VM** 
+2. **使用现成 Marketplace 映像和自定义映像在几分钟内创建培训 VM** 
    
-    可在 Azure 应用商店从多种映像中选择现成映像并将其提供给实验室中的学员。 如果现成的映像不能满足你的需求，可使用 Azure 应用商店中的现成映像创建实验室 VM、在培训所需的所有软件上安装和在实验室中将 VM 保存为自定义映像来创建自定义映像。 
+    可在 Azure Marketplace 从多种映像中选择现成映像并将其提供给实验室中的学员。 如果现成的映像不能满足你的需求，可使用 Azure Marketplace 中的现成映像创建实验室 VM、在培训所需的所有软件上安装和在实验室中将 VM 保存为自定义映像来创建自定义映像。 
    
     在以下表中单击链接可了解详细信息：
    
    | 任务 | 学习内容 |
    | --- | --- |
-   | [配置 Azure 应用商店映像](devtest-lab-configure-marketplace-images.md) |了解如何将 Azure 应用商店映像列入允许列表；仅将培训所需的映像选择为可用。 |
+   | [配置 Azure Marketplace 映像](devtest-lab-configure-marketplace-images.md) |了解如何将 Azure Marketplace 映像列入允许列表；仅将培训所需的映像选择为可用。 |
    | [创建自定义映像](devtest-lab-create-template.md) |通过预先安装培训所需的软件创建自定义映像，让学员能够使用自定义映像快速创建 VM。 |
 3. **为培训计算机创建可重复使用的模板** 
    

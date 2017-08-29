@@ -24,7 +24,7 @@ sections:
         style: icon48
         items:
           - image:
-              src: /azure/container-instances/media/container-instances.png
+              src: /azure/container-instances/media/container-instances.svg
             text: 创建容器实例
             href: /azure/container-instances/container-instances-quickstart
   - title: 分步教程
