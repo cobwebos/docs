@@ -3,7 +3,7 @@ title: "Microsoft Authenticator 应用的帮助和支持 | Microsoft Docs"
 description: "提供与 Microsoft Authenticator 应用和 Azure Multi-Factor Authentication 相关的常见问题与解答列表。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: barlanmsft
 manager: femila
 ms.assetid: f04d5bce-e99e-4f75-82d1-ef6369be3402
 ms.service: multi-factor-authentication
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
-ms.author: kgremban
+ms.author: barlan
 ms.reviewer: librown
 ms.custom: end-user
 ms.translationtype: Human Translation
@@ -48,9 +48,9 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 
 - 手机是否进入“免打扰”或“静音”模式？ 在这些模式下，应用可能不会发送通知。
 - 是否能从其他应用接收通知？ 如果不能，可能是手机出现网络连接问题或出现 Android/Apple 通知频道问题。 第一种问题可通过手机设置解决，但对于第二个问题，可能需要联系服务提供商获取帮助。
-- 是否应用上的某些帐户可以收到通知而其他帐户不能？ 如果是这样的话，从应用中删除有问题的帐户，然后重新添加该帐户以启用推送通知。 
+- 是否应用上的某些帐户可以收到通知而其他帐户不能？ 如果是这样的话，从应用中删除有问题的帐户，然后重新添加该帐户以启用推送通知。
 
-如果尝试过这些建议的故障排除方法，但仍然有问题，请向我们发送你的日志以供诊断。 请转到应用程序设置，然后选择“帮助和反馈”和“发送日志”。 然后，请转到 [ 应用论坛](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)告诉我们你所遇到的问题以及目前为止你已尝试过步骤。 
+如果尝试过这些建议的故障排除方法，但仍然有问题，请向我们发送你的日志以供诊断。 请转到应用程序设置，然后选择“帮助和反馈”和“发送日志”。 然后，请转到 [ 应用论坛](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)告诉我们你所遇到的问题以及目前为止你已尝试过步骤。
 
 ### <a name="im-already-using-the-microsoft-authenticator-application-for-verification-codes-how-do-i-switch-to-one-click-push-notifications"></a>我已使用 Microsoft Authenticator 应用程序生成验证代码。 如何切换到一键式推送通知？
 通过推送通知批准登录仅适用于个人 Microsoft 帐户或工作和学校 Microsoft 帐户，并不适用于 Google 或 Facebook 等第三方帐户。 如果你拥有工作或学校 Microsoft 帐户，你的组织可以选择禁用此选项。
@@ -95,7 +95,7 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 
 ### <a name="why-does-the-microsoft-authenticator-app-allow-you-to-approve-a-request-without-unlocking-the-device"></a>为什么 Microsoft Authenticator 应用允许在不解锁设备的情况下批准请求？
 
-同意验证请求时无需解锁设备，因为仅需证明的是你带了你的电话。 双重验证要求提供两项证明：一件你知道的事和一件你拥有的物品。 你只需知道密码。 你拥有的物品是你的手机（已使用 Microsoft Authenticator 应用设置，并已注册为 MFA 证明）。因此，拥有手机和批准请求符合第二个身份验证因素的标准。 
+同意验证请求时无需解锁设备，因为仅需证明的是你带了你的电话。 双重验证要求提供两项证明：一件你知道的事和一件你拥有的物品。 你只需知道密码。 你拥有的物品是你的手机（已使用 Microsoft Authenticator 应用设置，并已注册为 MFA 证明）。因此，拥有手机和批准请求符合第二个身份验证因素的标准。
 
 ### <a name="what-does-the-lock-icon-in-the-account-list-mean"></a>帐户列表中的锁状图标是什么意思？
 
@@ -111,5 +111,4 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 * 关于 Microsoft 帐户的[双重验证](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification)
 * 为工作或学校帐户[进行设置双重验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)？
 * [使用 Microsoft Authenticator 通过手机登录](microsoft-authenticator-app-phone-signin-faq.md)
-
 

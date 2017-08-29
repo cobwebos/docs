@@ -4,7 +4,7 @@ description: "管理 Azure 多重身份验证的使用方式包括更改联系�
 services: multi-factor-authentication
 keywords: "multifactor authentication 客户端, 身份验证问题, 相关性 ID"
 documentationcenter: 
-author: kgremban
+author: barlanmsft
 manager: femila
 editor: yossib
 ms.assetid: d3372d9a-9ad1-4609-bdcf-2c4ca9679a3b
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
-ms.author: kgremban
+ms.author: barlan
 ms.custom: end-user
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 847a8bdcf880b56f587f6759058825fd1965d29e
@@ -60,10 +60,10 @@ ms.lasthandoff: 03/01/2017
 
 ## <a name="require-two-step-verification-again-on-a-device-youve-marked-as-trusted"></a>需要在已标记为受信任的设备上重新进行双重验证
 
-在浏览器中执行双重验证时，根据组织设置，可能会有一个复选框显示“**X** 天不再询问”。 如果选中了此复选框，然后丢失了设备或认为你的帐户受到安全威胁，则应将双重验证还原到所有设备。 
+在浏览器中执行双重验证时，根据组织设置，可能会有一个复选框显示“**X** 天不再询问”。 如果选中了此复选框，然后丢失了设备或认为你的帐户受到安全威胁，则应将双重验证还原到所有设备。
 
 1. 在“其他安全验证”页中，选择“在以前受信任的设备上还原多重身份验证”。
-2. 下次登录任何设备时，将会提示你执行双重验证。 
+2. 下次登录任何设备时，将会提示你执行双重验证。
 
 ## <a name="how-do-i-clean-up-microsoft-authenticator-from-my-old-device-and-move-to-a-new-one"></a>如何从旧设备清除 Microsoft Authenticator 并将其迁移到新设备？
 从设备上卸载应用或者重置设备时，不会在后端删除激活信息。 有关详细信息，请参阅 [Microsoft Authenticator](microsoft-authenticator-app-how-to.md)。

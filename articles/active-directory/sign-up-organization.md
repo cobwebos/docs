@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2017
+ms.date: 08/28/2017
 ms.author: curtand
+ms.reviewer: jeffsta
+ms.custom: it-pro
 ms.translationtype: HT
 ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: 07ad266ad87028996c4a7b3e4365c11b019f8529
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
-
 
 ---
 # <a name="sign-up-for-azure-as-an-organization"></a>以组织身份注册 Azure

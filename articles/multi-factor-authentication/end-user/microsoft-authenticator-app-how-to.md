@@ -3,7 +3,7 @@ title: "Microsoft Authenticator 应用手机版 | Microsoft 文档"
 description: "了解如何升级到最新版本的 Azure Authenticator。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: barlanmsft
 manager: femila
 ms.assetid: 3065a1ee-f253-41f0-a68d-2bd84af5ffba
 ms.service: multi-factor-authentication
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
-ms.author: kgremban
+ms.author: barlan
 ms.reviewer: librown
 ms.custom: H1Hack27Feb2017, end-user
 ms.translationtype: HT
@@ -28,20 +28,20 @@ Microsoft Authenticator 应用在工作或学校帐户（例如，bsimon@contoso
 
 该应用以下面两种方式之一工作：
 
-* **通知**。 该应用通过将通知推送到智能手机或平板电脑，可帮助防止对帐户进行未经授权的访问，以及停止欺诈性交易。 只需查看通知，选择“验证”即可（如果合法）。 否则，可以选择“拒绝”。 
+* **通知**。 该应用通过将通知推送到智能手机或平板电脑，可帮助防止对帐户进行未经授权的访问，以及停止欺诈性交易。 只需查看通知，选择“验证”即可（如果合法）。 否则，可以选择“拒绝”。
 * **验证码**。 该应用可用作生成 OAuth 验证码所需的软件令牌。 输入用户名和密码后，在登录屏幕中输入该应用提供的代码。 验证码提供了第二种形式的身份验证。
 
 Microsoft 验证器应用将替换 Azure 验证器应用。 可以继续使用 Azure Authenticator 应用，不过，如果决定移到新的 Microsoft Authenticator 应用，本文内容可提供帮助。  
 
 ## <a name="opt-in-for-two-step-verification"></a>针对双重验证选择加入
 
-Microsoft Authenticator 应用不能单独发挥作用。 需要将每个帐户配置为在通过用户名和密码登录后提示进行二次验证方法。 
+Microsoft Authenticator 应用不能单独发挥作用。 需要将每个帐户配置为在通过用户名和密码登录后提示进行二次验证方法。
 
 对于工作或学校帐户，通常不需要自己选择此功能。 而是，安全管理员会代表你选择加入，然后通知你为帐户注册验证方法。 如果是这种情况，请在 [Azure 多重身份验证对我意味着什么](multi-factor-authentication-end-user.md)中了解详细信息。
 
-对于个人帐户，需要自己设置双重验证。 如果有 Microsoft 帐户，[关于双重验证](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification)中提供了那些步骤。 
+对于个人帐户，需要自己设置双重验证。 如果有 Microsoft 帐户，[关于双重验证](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification)中提供了那些步骤。
 
-还可以将 Microsoft Authenticator 与非 Microsoft 帐户一起使用。 它们可能不将此功能称为双重验证，但你应该能在安全性或登录设置下找到此功能。 
+还可以将 Microsoft Authenticator 与非 Microsoft 帐户一起使用。 它们可能不将此功能称为双重验证，但你应该能在安全性或登录设置下找到此功能。
 
 ## <a name="install-the-app"></a>安装应用
 Microsoft Authenticator 应用可用于 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072) 和 [iOS](http://go.microsoft.com/fwlink/?Linkid=825073)。
@@ -67,7 +67,7 @@ Microsoft Authenticator 应用可用于 [Windows Phone](http://go.microsoft.com/
 
     如果相机不能正常工作，可以[手动输入 QR 码和 URL](#add-an-account-to-the-app-manually)。
 
-5. 当该应用显示帐户名称和其下的六位代码时，已完成。 
+5. 当该应用显示帐户名称和其下的六位代码时，已完成。
 
     ![帐户屏幕](./media/authenticator-app-how-to/accounts.png)
 
@@ -109,3 +109,4 @@ iOS 上的 Microsoft Authenticator 应用支持 Touch ID。  Azure 多重身份�
 将帐户添加到应用后，可能会提示执行测试验证来确保所有事项都已正确配置。 之后，大功告成！ 在下次登录之前，不需要执行任何其他操作。
 
 如果选择在应用中使用验证码，则会在主页上看到它们。 它们每 30 秒更改一次，以便你在需要验证码时始终有新的验证码可用。 但是，在登录且系统提示输入验证码之前，不需要对它们执行任何操作。  
+
