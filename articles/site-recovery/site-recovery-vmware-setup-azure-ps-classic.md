@@ -38,7 +38,7 @@ ms.lasthandoff: 06/30/2017
 
 ## <a name="deploy-a-process-server-on-azure"></a>在 Azure 上部署进程服务器
 
-1. 在 Azure 应用商店中，使用 **Microsoft Azure Site Recovery 进程服务器 V2** 创建虚拟机 </br>
+1. 在 Azure Marketplace 中，使用 **Microsoft Azure Site Recovery 进程服务器 V2** 创建虚拟机 </br>
     ![Marketplace_image_1](./media/site-recovery-vmware-setup-azure-ps-classic/marketplace-ps-image.png)
 2. 确保将部署模型选为“经典” </br>
   ![Marketplace_image_2](./media/site-recovery-vmware-setup-azure-ps-classic/marketplace-ps-image-classic.png)

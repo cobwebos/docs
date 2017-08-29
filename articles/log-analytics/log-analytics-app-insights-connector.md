@@ -54,7 +54,7 @@ ms.lasthandoff: 06/30/2017
 
 ## <a name="configuration"></a>配置
 
-1. 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview)或者使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure Web 应用分析解决方案。
+1. 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) 或者使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure Web 应用分析解决方案。
 2. 在 OMS 门户中，单击“设置”&gt;“数据”&gt;“Application Insights”。
 3. 在“选择订阅”下面选择包含 Application Insights 资源的订阅，然后在“应用程序名称”下面选择一个或多个应用程序。
 4. 单击“保存” 。

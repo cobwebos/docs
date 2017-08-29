@@ -46,7 +46,7 @@ ms.lasthandoff: 07/04/2017
 ## <a name="getting-started"></a>入门
 
 1. 安装 `.NET Core SDK`。
-2. 从 Visual Studio Code 应用商店安装 `Visual Studio Code` 和 `C# extension`。
+2. 从 Visual Studio Code Marketplace 安装 `Visual Studio Code` 和 `C# extension`。
 
 观看此[快速教程视频](https://channel9.msdn.com/Blogs/dotnet/Get-started-VSCode-Csharp-NET-Core-Windows)，了解如何开始使用 `Visual Studio Code` 和 `.NET Core SDK`。
 

@@ -109,8 +109,8 @@ Azure 开发测试实验室允许通过管理每个实验室的策略（设置�
 * [了解共享 IP 地址](devtest-lab-shared-ip.md) - 说明了在开发测试实验室中如何使用共享 IP 地址以最大程度地减少连接到你的实验室 VM 时所需的公共 IP 地址数。
 * [配置成本管理](devtest-lab-configure-cost-management.md) - 演示了如何使用**每月的估计成本趋势**图表  
   查看当前所处月份的截止目前估计的成本以及截止本月结束预计成本。
-* [创建自定义映像](devtest-lab-create-template.md) - 创建 VM 时，指定一个基本映像，可以是自定义映像或应用商店映像。 本文演示了如何从 VHD 文件创建自定义映像。
-* [配置应用商店映像](devtest-lab-configure-marketplace-images.md) - Azure 开发测试实验室支持创建基于 Azure 应用商店映像的 VM。 本文展示了如何指定可用于在实验室中创建 VM 的 Azure 应用商店映像（如果有）。
-* [在实验室中创建 VM](devtest-lab-add-vm-with-artifacts.md) - 演示了如何从基本映像（自定义或应用商店映像）创建 VM，以及如何使用在 VM 中使用项目。
+* [创建自定义映像](devtest-lab-create-template.md) - 创建 VM 时，指定一个基本映像，可以是自定义映像或 Marketplace 映像。 本文演示了如何从 VHD 文件创建自定义映像。
+* [配置 Marketplace 映像](devtest-lab-configure-marketplace-images.md) - Azure 开发测试实验室支持创建基于 Azure Marketplace 映像的 VM。 本文展示了如何指定可用于在实验室中创建 VM 的 Azure Marketplace 映像（如果有）。
+* [在实验室中创建 VM](devtest-lab-add-vm-with-artifacts.md) - 演示了如何从基本映像（自定义或 Marketplace 映像）创建 VM，以及如何使用在 VM 中使用项目。
 
 
