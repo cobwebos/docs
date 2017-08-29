@@ -48,8 +48,8 @@ Azure Active Directory 为组织的云应用程序提供企业级标识管理。
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>获取对用户配置文件、日历、电子邮件、联系人、文件等的访问权限
 **Azure AD 是一款面向 Office 365 和其他 Microsoft 业务服务的授权服务器。**  如果你支持使用 Azure AD 登录到你的应用程序，或者支持将当前用户帐户链接到使用 OAuth 2.0 的 Azure AD 用户帐户，则你可以请求对用户配置文件、日历、电子邮件、联系人、文件和其他信息的读取和写入访问权限。  你可以顺利地将事件写入用户日历，以及在其 OneDrive 中读取或写入文件。  深入了解如何[访问 Office 365 API](https://msdn.microsoft.com/office/office365/howto/platform-development-overview)。
 
-### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>在 Azure 和 Office 365 应用商店中推广应用程序
-**向数百万个已使用 Azure AD 的组织推广应用程序。**  搜索和浏览这些应用商店的用户已在使用一个或多个云服务，这让他们成为合格的云服务客户。  深入了解如何在 [Azure 应用商店](https://azure.microsoft.com/marketplace/partner-program/)中推广应用程序。
+### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>在 Azure 和 Office 365 Marketplace 中推广应用程序
+**向数百万个已使用 Azure AD 的组织推广应用程序。**  搜索和浏览这些 Marketplace 的用户已在使用一个或多个云服务，这让他们成为合格的云服务客户。  深入了解如何在 [Azure Marketplace](https://azure.microsoft.com/marketplace/partner-program/) 中推广应用程序。
 
 **用户注册应用程序后，该程序将在其 Azure AD 访问面板和 Office 365 应用启动器中显示。**  之后，用户将能够快速轻松地返回应用程序，可提高用户参与度。  深入了解 [Azure AD 访问面板](../active-directory-saas-access-panel-introduction.md)。
 

@@ -1,6 +1,6 @@
 ---
-title: "通过 Azure 应用商店创建 Web 应用 | Microsoft Docs"
-description: "了解如何使用 Azure 门户从 Azure 应用商店创建新的 WordPress Web 应用。"
+title: "通过 Azure Marketplace 创建 Web 应用 | Microsoft Docs"
+description: "了解如何使用 Azure 门户从 Azure Marketplace 创建新的 WordPress Web 应用。"
 services: app-service\web
 documentationcenter: 
 author: sunbuild
@@ -21,12 +21,12 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 05/10/2017
 
 ---
-# <a name="create-a-web-app-from-the-azure-marketplace"></a>通过 Azure 应用商店创建 Web 应用
+# <a name="create-a-web-app-from-the-azure-marketplace"></a>通过 Azure Marketplace 创建 Web 应用
 <!-- Note: This article replaces web-sites-php-web-site-gallery.md -->
 
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-Azure 应用商店提供开放源代码软件社区开发的各种流行 Web 应用，例如 WordPress 和 Umbraco CMS。 在本教程中，你将了解如何通过 Azure 应用商店创建 WordPress 应用，
+Azure Marketplace 提供开放源代码软件社区开发的各种流行 Web 应用，例如 WordPress 和 Umbraco CMS。 在本教程中，你将了解如何通过 Azure Marketplace 创建 WordPress 应用，
 具体而言，如何创建 Azure Web 应用和 MySQL 数据库。 
 
 ![示例 WordPress Web 应用仪表板](./media/app-service-web-create-web-app-from-marketplace/wpdashboard2.png)
@@ -35,14 +35,14 @@ Azure 应用商店提供开放源代码软件社区开发的各种流行 Web 应
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-## <a name="deploy-from-azure-marketplace"></a>从 Azure 应用商店部署
-遵循以下步骤通过 Azure 应用商店部署 WordPress。
+## <a name="deploy-from-azure-marketplace"></a>从 Azure Marketplace 部署
+遵循以下步骤通过 Azure Marketplace 部署 WordPress。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 登录到 [Azure 门户](https://portal.azure.com)。
 
 ### <a name="deploy-wordpress-template"></a>部署 WordPress 模板
-Azure 应用商店提供用于设置资源的模板。我们首先设置 [WordPress](https://portal.azure.com/#create/WordPress.WordPress) 模板。
+Azure Marketplace 提供用于设置资源的模板。我们首先设置 [WordPress](https://portal.azure.com/#create/WordPress.WordPress) 模板。
    
 输入以下信息部署 WordPress 应用及其资源。
 
@@ -148,7 +148,7 @@ Azure 应用商店提供用于设置资源的模板。我们首先设置 [WordPr
 | 要执行以下操作... | 请使用以下方法... |
 | --- | --- |
 | **了解应用服务实例功能** |[定价详细信息，包括应用服务层的功能](https://azure.microsoft.com/en-us/pricing/details/app-service/)|
-| **缓存资源** |用 [Azure Redis 缓存](https://azure.microsoft.com/en-us/services/cache/)，或 [Azure 应用商店](https://azuremarketplace.microsoft.com)中的其他缓存产品之一 |
+| **缓存资源** |用 [Azure Redis 缓存](https://azure.microsoft.com/en-us/services/cache/)，或 [Azure Marketplace](https://azuremarketplace.microsoft.com) 中的其他缓存产品之一 |
 | **缩放应用程序** |需要缩放 [Azure 应用服务中的 Web 应用](web-sites-scale.md)和/或 MySQL 数据库。 MySQL 应用内产品不支持横向扩展，因此请选择 ClearDB 或用于 MySQL 的 Azure 数据库（预览版）。 [缩放用于 MySQL 的 Azure 数据库（预览版）](https://azure.microsoft.com/en-us/pricing/details/mysql/)，如果使用 [ClearDB 高可用性路由](http://w2.cleardb.net/faqs/)，请扩展数据库 |
 
 ## <a name="availability-and-disaster-recovery"></a>可用性和灾难恢复

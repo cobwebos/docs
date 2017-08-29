@@ -27,7 +27,7 @@ ms.lasthandoff: 04/27/2017
 
 [!INCLUDE [devtest-lab-formula-definition](../../includes/devtest-lab-formula-definition.md)]
 
-本文将介绍如何从基项（自定义映像、应用商店映像或其他公式）或现有 VM 创建公式。 本文还引导你完成管理现有公式的操作。
+本文将介绍如何从基项（自定义映像、Marketplace 映像或其他公式）或现有 VM 创建公式。 本文还引导你完成管理现有公式的操作。
 
 ## <a name="create-a-formula"></a>创建公式
 任何拥有开发测试实验室用户权限的用户都可以使用公式作为基础创建 VM。 有两种创建公式的方法： 
@@ -38,7 +38,7 @@ ms.lasthandoff: 04/27/2017
 有关添加用户和权限的详细信息，请参阅[在 Azure 开发测试实验室中添加所有者和用户](./devtest-lab-add-devtest-user.md)。
 
 ### <a name="create-a-formula-from-a-base"></a>从基项创建公式
-以下步骤介绍从自定义映像、应用商店映像或其他公式创建公式的过程。
+以下步骤介绍从自定义映像、Marketplace 映像或其他公式创建公式的过程。
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 04/27/2017
    
     ![添加公式](./media/devtest-lab-create-formulas/add-formula.png)
 
-6. 在“选择基项”边栏选项卡上，选择要从中创建公式的基项（自定义映像、应用商店映像或公式）。
+6. 在“选择基项”边栏选项卡上，选择要从中创建公式的基项（自定义映像、Marketplace 映像或公式）。
    
     ![基项列表](./media/devtest-lab-create-formulas/base-list.png)
 

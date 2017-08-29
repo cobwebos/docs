@@ -125,7 +125,7 @@ Azure 负载均衡器为所有 UDP 和 TCP 协议提供高性能、低延迟的�
 - **网络：**可以实现 Azure 网络安全组 (NSG) 来筛选 Azure 资源的入站和出站流量。 每个 NSG 包含一个或多个入站和出站规则。 每个规则指定用于筛选流量的源 IP 地址、目标 IP 地址、端口和协议。 可将 NSG 应用到单个子网和单个 VM。 有关 NSG 的详细信息，请参阅[网络安全组概述](../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
 - **应用程序：**将应用程序网关与 Web 应用程序防火墙结合使用可以保护 Web 应用程序，使其免受漏洞和攻击的影响。 常见的示例包括 SQL 注入攻击、跨站点脚本和格式不当的标头。 应用程序网关可筛选掉这些流量，并阻止其传入 Web 服务器。 你可以配置想要启用的规则。 还可以配置 SSL 协商策略，以便能够禁用某些策略。 若要详细了解 Web 应用程序防火墙，请参阅 [Web 应用程序防火墙](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
 
-如果 Azure 无法提供所需的网络功能，或者你要使用本地使用的网络应用程序，可以在 VM 中实施产品并将其连接到 VNet。 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances)包含许多不同的 VM，其中已预配置了你当前使用的网络应用程序。 这些预配置的 VM 通常称为网络虚拟设备 (NVA)。 NVA 可用于防火墙等应用程序以及 WAN 优化。
+如果 Azure 无法提供所需的网络功能，或者你要使用本地使用的网络应用程序，可以在 VM 中实施产品并将其连接到 VNet。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) 包含许多不同的 VM，其中已预配置了你当前使用的网络应用程序。 这些预配置的 VM 通常称为网络虚拟设备 (NVA)。 NVA 可用于防火墙等应用程序以及 WAN 优化。
 
 ## <a name="routing"></a>路由
 
