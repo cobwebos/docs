@@ -33,7 +33,7 @@ ms.lasthandoff: 07/31/2017
 |方法 | 请求 URI|
 |-|-|
 |GET| https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/balancesummary|
-|GET| https://consumption.azure.com/v2/enrollments/ {enrollmentNumber} / balancesummary|
+|GET| https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/balancesummary|
 
 > [!Note]
 > 若要使用预览版 API，请在上述 URL 中将 v2 替换为 v1。
@@ -90,7 +90,7 @@ ms.lasthandoff: 07/31/2017
 |chargesBilledSeparately|decimal| 单独计费收费|
 |totalOverage|decimal| serviceOverage + chargesBilledSeparately|
 |totalUsage|decimal| Azure 服务承诺 + 总超额|
-|azureMarketplaceServiceCharges|decimal| Azure 应用商店的总费用|
+|azureMarketplaceServiceCharges|decimal| Azure Marketplace 的总费用|
 |newPurchasesDetails|名称值对的 JSON 字符串数组|新购买列表|
 |adjustmentDetails|名称值对的 JSON 字符串数组|调整列表（促销贷方、SIE 贷方等） |
 
@@ -102,6 +102,6 @@ ms.lasthandoff: 07/31/2017
 
 * [使用情况详细信息 API](billing-enterprise-api-usage-detail.md) 
 
-* [应用商店费用 API](billing-enterprise-api-marketplace-storecharge.md) 
+* [Marketplace 费用 API](billing-enterprise-api-marketplace-storecharge.md) 
 
 * [价目表 API](billing-enterprise-api-pricesheet.md)
