@@ -17,11 +17,11 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: e64c0336578be2c1a1126f7459775f47d73f9d6e
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 8a856c39eb11546f35cb4e8c21e6bdcce98857a8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/07/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅所有权转让给其他帐户
@@ -35,7 +35,7 @@ ms.lasthandoff: 04/07/2017
 * 想要将 Azure 订阅从一个目录转移到另一个目录。
 * 想要合并位于不同租户中的 Azure 和 Office 365。
 
-若要将订阅更改为其他产品/服务，请参阅[将 Azure 订阅切换到其他产品/服务](billing-how-to-switch-azure-offer.md)。 
+要将订阅更改为其他产品/服务，请参阅[将 Azure 订阅切换到其他产品/服务](billing-how-to-switch-azure-offer.md)。 
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>转让 Azure 订阅的所有权
 > [!VIDEO https://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/Transfer-an-Azure-subscription/player]
@@ -66,15 +66,15 @@ ms.lasthandoff: 04/07/2017
 企业管理员可以转让注册内的订阅的所有权。 若要开始使用，请参阅 EA 门户中的[装让帐户所有权](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription)。
 
 ## <a name="next-steps-after-accepting-ownership-of-a-subscription"></a>接受订阅所有权后的后续步骤
-1. 现在你是帐户管理员。 请查看并更新服务管理员和共同管理员。 在 [Azure 经典门户](https://manage.windowsazure.com)中转到“设置”来管理管理员。 [了解有关管理员角色的详细信息](billing-add-change-azure-subscription-administrator.md)。
+1. 现在是帐户管理员。 请查看并更新服务管理员和共同管理员。 在 [Azure 经典门户](https://manage.windowsazure.com)中转到“设置”来管理管理员。 [了解有关管理员角色的详细信息](billing-add-change-azure-subscription-administrator.md)。
 
 2. 用户还可以针对订阅和服务使用基于角色的访问控制 (RBAC)。 访问 [Azure 门户](https://portal.azure.com)。 [了解有关 RBAC 的详细信息](../active-directory/role-based-access-control-configure.md)
 
 3. 更新与此订阅的服务关联的凭据，包括：
    
-   * 用于向用户授予订阅资源管理权限的管理证书。 有关详细信息，请参阅[创建并上载 Azure 的管理证书](../cloud-services/cloud-services-certs-create.md)
+   * 用于向用户授予订阅资源管理权限的管理证书。 有关详细信息，请参阅[创建并上传 Azure 的管理证书](../cloud-services/cloud-services-certs-create.md)
    
-   * 存储空间等服务的访问密钥。 有关详细信息，请参阅[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)
+   * 存储等服务的访问密钥。 有关详细信息，请参阅[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)
    
    * Azure 虚拟机等服务的远程访问凭据。 
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 04/07/2017
 
   1. 登录到 [Azure 门户](https://portal.azure.com)。
   2. 在“中心”菜单上，选择“订阅”。
-  3. 选择要检查的订阅，然后关注“设置”下的信息。
+  3. 选择要检查的订阅，并关注“设置”下的信息。
   4. 选择“属性”。 订阅的帐户管理员会显示在“帐户管理员”框中。  
 
 * **所有内容都会转让吗？包括资源组、VM、磁盘和其他正在运行的服务吗？**
@@ -115,7 +115,7 @@ ms.lasthandoff: 04/07/2017
   如果将订阅转让给另一个租户，与前一租户关联的用户将失去订阅的访问权限。 即使用户不再是服务管理员或共同管理员，他们仍可以通过其他安全机制来访问订阅，包括：
 
   * 用于向用户授予订阅资源管理权限的管理证书。 有关详细信息，请参阅[创建并上传 Azure 的管理证书](../cloud-services/cloud-services-certs-create.md)。
-  * 存储空间等服务的访问密钥。 有关详细信息，请参阅[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)。
+  * 存储等服务的访问密钥。 有关详细信息，请参阅[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。
   * Azure 虚拟机等服务的远程访问凭据。
 
  如果接收方需要限制对其资源的访问，他们应考虑更新与服务关联的任何机密。 可通过以下步骤更新大多数资源：
@@ -123,7 +123,7 @@ ms.lasthandoff: 04/07/2017
     1. 转到 [Azure 门户](https://portal.azure.com)。
     2. 在“中心”菜单上，选择“所有资源”。
     3. 选择资源。 
-    4. 在资源边栏选项卡中，单击“设置”。 你可以在这里查看和更新现有机密。
+    4. 在资源边栏选项卡中，单击“设置”。 可以在这里查看和更新现有机密。
 
 * **如果在计费周期中途转让订阅，接收方需要支付整个计费周期的费用吗？**
 
@@ -135,7 +135,7 @@ ms.lasthandoff: 04/07/2017
 
 * **转让期间可以更改优惠吗？**
 
-  优惠肯定会保持不变。 若要更改产品/服务，请参阅[将 Azure 订阅切换到其他产品/服务](billing-how-to-switch-azure-offer.md)。
+  优惠肯定会保持不变。 要更改产品/服务，请参阅[将 Azure 订阅切换到其他产品/服务](billing-how-to-switch-azure-offer.md)。
 
 * **可以将订阅转让给另一国家/地区的用户帐户吗？**
 

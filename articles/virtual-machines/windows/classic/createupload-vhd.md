@@ -15,16 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 1d2b51f2a8a03a94b7ce92af54f89128bcfc9471
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: bc75c8cdd98b0ea0fbff6483c0e3c9d4468d3941
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-and-upload-a-windows-server-vhd-to-azure"></a>创建 Windows Server VHD 并将其上传到 Azure
-本文说明如何上传自己的通用化 VM 映像作为虚拟硬盘 (VHD)，以便使用它来创建虚拟机。 有关 Microsoft Azure 中的磁盘和 VHD 的更多详细信息，请参阅[关于虚拟机的磁盘和 VHD](../../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+本文说明如何上传自己的通用化 VM 映像作为虚拟硬盘 (VHD)，以便使用它来创建虚拟机。 有关 Microsoft Azure 中的磁盘和 VHD 的更多详细信息，请参阅[关于虚拟机的磁盘和 VHD](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 > [!IMPORTANT]
 > Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 也可以使用 Resource Manager 模型来[上传](../upload-generalized-managed.md)虚拟机。
@@ -56,7 +55,7 @@ ms.lasthandoff: 05/27/2017
 6. 单击 **“确定”**。
 
 ## <a name="step-2-create-a-storage-account-and-a-container"></a>步骤 2：创建存储帐户和容器
-你需要一个 Azure 存储帐户，以便有一个可向其上传 .vhd 文件的位置。 此步骤演示了如何创建一个帐户，或如何从现有帐户获取需要的信息。 将 &lsaquo; 和 &rsaquo; 括号中的变量替换为自己的信息。
+需要一个 Azure 存储帐户，以便有一个可向其上传 .vhd 文件的位置。 此步骤演示了如何创建一个帐户，或如何从现有帐户获取需要的信息。 将 &lsaquo; 和 &rsaquo; 括号中的变量替换为自己的信息。
 
 1. 登录
 
@@ -64,7 +63,7 @@ ms.lasthandoff: 05/27/2017
     Add-AzureAccount
     ```
 
-2. 设置你的 Azure 订阅。
+2. 设置 Azure 订阅。
 
     ```powershell
     Select-AzureSubscription -SubscriptionName <SubscriptionName>
@@ -89,7 +88,7 @@ ms.lasthandoff: 05/27/2017
     ```
 
 ## <a name="step-3-upload-the-vhd-file"></a>步骤 3：上传 .vhd 文件
-使用 [Add-AzureVhd](https://docs.microsoft.com/en-us/powershell/module/azure/add-azurevhd) 上传 VHD。
+使用 [Add-AzureVhd](https://docs.microsoft.com/en-us/powershell/module/azure/add-azurevhd)上传 VHD。
 
 在上一步骤使用的 Azure PowerShell 窗口中键入以下命令，并将 &lsaquo; 和 &rsaquo; 括号中的变量替换为自己的信息。
 
