@@ -12,25 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 08/09/2017
 ms.author: ashwink
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 8165147d9ff811b26f7fe2626c892f2aba5bb4f8
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: f06e5dd7d17c1d7795fb1f112e649cd42d7dd6d4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure 监视器 PowerShell 快速入门示例
 本文给出了示例 PowerShell 命令，可帮助用户访问 Azure 监视器的功能。 使用 Azure 监视器，可以基于配置的遥测数据值自动缩放云服务、虚拟机和 Web 应用以及发送警报通知或调用 Web URL。
 
 > [!NOTE]
-> 自 2016 年 9 月 25 日起，“Azure Insights”更名为 Azure 监视器。 但是，命名空间及其下命令仍包含“insights”。
+> 自 2016 年 9 月 25 日起，“Azure Insights”更名为 Azure 监视器。 但是，命名空间及以下命令仍包含“insights”。
 > 
 > 
 
 ## <a name="set-up-powershell"></a>设置 PowerShell
-如果尚未安装，请在你的计算机上安装要运行的 PowerShell。 有关详细信息，请参阅[如何安装和配置 PowerShell](/powershell/azure/overview)。
+如果尚未安装，请在计算机上安装要运行的 PowerShell。 有关详细信息，请参阅[如何安装和配置 PowerShell](/powershell/azure/overview)。
 
 ## <a name="examples-in-this-article"></a>本文中的示例
 本文中的示例演示了如何使用 Azure 监视器 cmdlet。 还可以在 [Azure 监视器 (Insights) Cmdlet](https://msdn.microsoft.com/library/azure/mt282452#40v=azure.200#41.aspx) 上查看 Azure 监视器 PowerShell cmdlet 的完整列表。
@@ -42,13 +42,13 @@ ms.lasthandoff: 04/27/2017
 Login-AzureRmAccount
 ```
 
-这要求你进行登录。 登录后，将看到帐户、TenantId 和默认订阅 ID。 所有 Azure cmdlets 都在默认订阅的上下文中工作。 若要查看有权访问的订阅的列表，请使用以下命令。
+这要求进行登录。 登录后，将看到帐户、TenantID 和默认订阅 ID。 所有 Azure cmdlets 都在默认订阅的上下文中工作。 若要查看有权访问的订阅的列表，请使用以下命令。
 
 ```PowerShell
 Get-AzureRmSubscription
 ```
 
-若要将工作上下文更改为其他订阅，请使用以下命令。
+要将工作上下文更改为其他订阅，请使用以下命令。
 
 ```PowerShell
 Set-AzureRmContext -SubscriptionId <subscriptionid>
@@ -56,7 +56,7 @@ Set-AzureRmContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log-for-a-subscription"></a>检索订阅的活动日志
-使用 `Get-AzureRmLog` cmdlet。  下面是一些常用示例。
+使用 `Get-AzureRmLog` cmdlet。  下面是一些常见示例。
 
 从此时间/日期中获取要显示的日志条目︰
 
@@ -139,14 +139,11 @@ Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/
 
 `Get-AzureRmAlertRule` 支持其他参数。 有关详细信息，请参阅 [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx)。
 
-## <a name="create-alert-rules"></a>创建警报规则
+## <a name="create-metric-alerts"></a>创建指标警报
 可以使用 `Add-AlertRule` cmdlet 来创建、更新或禁用警报规则。
 
 可以分别使用 `New-AzureRmAlertRuleEmail` 和 `New-AzureRmAlertRuleWebhook` 创建电子邮件和 webhook 属性。 在警报规则 cmdlet 中，将这些作为操作分配给警报规则的**操作**属性。
 
-下一节中的示例演示了如何创建具有多个参数的警报规则。
-
-### <a name="alert-rule-on-a-metric"></a>指标的警报规则
 下表描述了用于使用指标创建警报的参数和值。
 
 | 参数 | value |
@@ -155,7 +152,7 @@ Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/
 | 此警报规则的位置 |美国东部 |
 | resourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| 创建的警报的 MetricName |\PhysicalDisk(_Total)\Disk Writes/sec。 有关如何检索精确指标名称的信息，请参阅下面的 `Get-MetricDefinitions` cmdlet |
+| 创建的警报的 MetricName |\PhysicalDisk(_Total)\Disk Writes/sec。 有关如何检索精确指标名称的信息，请参阅 `Get-MetricDefinitions` cmdlet |
 | operator |GreaterThan |
 | 阈值（此指标的计数/秒） |1 |
 | WindowSize（hh:mm:ss 格式） |00:05:00 |
@@ -189,40 +186,6 @@ Get-AzureRmAlertRule -Name vmcpu_gt_1 -ResourceGroup myrg1 -DetailedOutput
 
 如果给定属性已存在警报规则，则添加警报 cmdlet 还会更新该规则。 若要禁用警报规则，请包括 **-DisableRule** 参数。
 
-### <a name="alert-on-activity-log-event"></a>针对活动日志事件的警报
-> [!NOTE]
-> 此功能目前处于预览状态，将在以后删除（即将替换）。
-> 
-> 
-
-在此方案中，在资源组 abhingrgtest123 中的网站在订阅中成功启动时，将发送电子邮件。
-
-设置电子邮件规则
-
-```PowerShell
-$actionEmail = New-AzureRmAlertRuleEmail -CustomEmail myname@company.com
-```
-
-设置 webhook 规则
-
-```PowerShell
-$actionWebhook = New-AzureRmAlertRuleWebhook -ServiceUri https://example.com?token=mytoken
-```
-
-针对事件创建规则
-
-```PowerShell
-Add-AzureRmLogAlertRule -Name superalert1 -Location "East US" -ResourceGroup myrg1 -OperationName microsoft.web/sites/start/action -Status Succeeded -TargetResourceGroup abhingrgtest123 -Actions $actionEmail, $actionWebhook
-```
-
-检索警报规则
-
-```PowerShell
-Get-AzureRmAlertRule -Name superalert1 -ResourceGroup myrg1 -DetailedOutput
-```
-
-`Add-AlertRule` cmdlet 允许使用多个其他参数。 有关详细信息，请参阅 [Add-AlertRule](https://msdn.microsoft.com/library/mt282468.aspx)。
-
 ## <a name="get-a-list-of-available-metrics-for-alerts"></a>获取警报的可用指标的列表
 可以使用 `Get-AzureRmMetricDefinition` cmdlet 来查看针对特定资源的所有指标的列表。
 
@@ -239,7 +202,7 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 `Get-AzureRmMetricDefinition` 的可用选项的完整列表位于 [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx) 中。
 
 ## <a name="create-and-manage-autoscale-settings"></a>创建和管理自动缩放设置
-资源（例如 Web 应用、虚拟机、云服务或 VM 缩放设置）只能有一种为其配置的自动缩放设置。
+资源（例如 Web 应用、VM、云服务或虚拟机规模集）只能有一种为其配置的自动缩放设置。
 但是，每个自动缩放设置可具有多个配置文件。 例如，一个用于基于性能的缩放配置文件，另一个用于基于计划的配置文件。 每个配置文件可以为其配置多个规则。 有关自动缩放的详细信息，请参阅[如何自动缩放应用程序](../cloud-services/cloud-services-how-to-scale.md)。
 
 下面列出了要使用的步骤：
@@ -249,7 +212,7 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 3. 可选︰通过配置 webhook 和电子邮件属性，创建自动缩放通知。
 4. 通过映射在前面步骤中创建的配置文件和通知，创建自动缩放设置，并使用目标资源上的名称。
 
-以下示例演示了如何使用 CPU 利用率指标为基于 Windows 操作系统的 VM 缩放设置创建自动缩放设置。
+以下示例演示了如何使用 CPU 使用率指标为基于 Windows 操作系统的虚拟机规模集创建自动缩放设置。
 
 首先，创建向外扩展规则，实例计数增加。
 
@@ -263,7 +226,7 @@ $rule1 = New-AzureRmAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId
 $rule2 = New-AzureRmAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 30 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Decrease -ScaleActionValue 1
 ```
 
-然后，为规则创建配置文件。
+然后，创建规则的配置文件。
 
 ```PowerShell
 $profile1 = New-AzureRmAutoscaleProfile -DefaultCapacity 2 -MaximumCapacity 10 -MinimumCapacity 2 -Rules $rule1,$rule2 -Name "My_Profile"
