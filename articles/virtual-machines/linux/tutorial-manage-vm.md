@@ -93,7 +93,7 @@ exit
 
 ## <a name="understand-vm-images"></a>了解 VM 映像
 
-Azure 应用商店包括许多可用于创建 VM 的映像。 在之前的步骤中，使用 Ubuntu 映像创建了虚拟机。 在此步骤中，Azure CLI 用于在应用商店中搜索 CentOS 映像，此映像稍后将用于部署第二个虚拟机。  
+Azure Marketplace 包括许多可用于创建 VM 的映像。 在之前的步骤中，使用 Ubuntu 映像创建了虚拟机。 在此步骤中，Azure CLI 用于在 Marketplace 中搜索 CentOS 映像，此映像稍后将用于部署第二个虚拟机。  
 
 若要查看最常用的映像列表，请使用 [az vm image list](/cli/azure/vm/image#list) 命令。
 
