@@ -53,7 +53,7 @@ Azure VPN 网关现支持根据连接自定义 IPsec/IKE 策略。 对于站点�
 
 ## <a name="ipsecike-policy-faq"></a>IPsec/IKE 策略常见问题解答
 
-[!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-ipsecikepolicy-faq-include.md)]
+[!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-faq-ipsecikepolicy-include.md)]
 
 
 ## <a name="next-steps"></a>后续步骤
