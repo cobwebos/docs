@@ -1,3 +1,4 @@
+
 ---
 title: "在 Azure 中使用 Visual Studio 创建你的第一个函数 | Microsoft Docs"
 description: "使用 Azure Functions Tools for Visual Studio 创建一个简单的 HTTP 触发的函数并将其发布到 Azure。"
@@ -11,23 +12,24 @@ keywords: "azure functions, functions, 事件处理, 计算, 无服务器体系�
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.service: functions
 ms.devlang: multiple
-ms.topic: hero-article
+ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 07/05/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: f3aa6740751db9aa979a88f9600f68cf4353643c
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 7e1fcecbf77da402b8c223caf6a2e81c704c3219
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>使用 Visual Studio 创建你的第一个函数
 
 Azure Functions 用于在无服务器环境中执行代码，无需先创建 VM 或发布 Web 应用程序。
 
-本主题介绍如何使用 Azure Function Tools for Visual Studio 2017 在本地创建并测试“hello world”函数。 然后将函数代码发布到 Azure。 这些工具包含在 Visual Studio 2017 版本 15.3 或更高版本的 Azure 开发工作负荷中。
+本主题介绍如何使用 Azure Functions 的 Visual Studio 2017 工具在本地创建并测试“hello world”函数。 然后将函数代码发布到 Azure。 这些工具包含在 Visual Studio 2017 版本 15.3 或更高版本的 Azure 开发工作负荷中。
 
 ![Visual Studio 项目中的 Azure Functions 代码](./media/functions-create-your-first-function-visual-studio/functions-vstools-intro.png)
 
@@ -38,6 +40,9 @@ Azure Functions 用于在无服务器环境中执行代码，无需先创建 VM 
 * [Visual Studio 2017 版本 15.3](https://www.visualstudio.com/vs/preview/)，包括 **Azure 开发**工作负荷。
 
     ![使用 Azure 开发工作负荷安装 Visual Studio 2017](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+    
+    >[!NOTE]  
+    安装或升级到 Visual Studio 2017 版本 15.3 后，你可能需要手动更新 Azure Functions 的 Visual Studio 2017 工具。 可以在“扩展和更新...” > “更新” > “Visual Studio Marketplace” > “Azure Functions 和 Web 作业工具” > “更新”下的“工具”中更新工具。 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 

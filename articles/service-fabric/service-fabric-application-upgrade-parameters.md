@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: aa26d72524f035cca92cd39062873ceb15bffac1
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: f09dad590f32c10f75484bba9afb7ea60f29d81e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/11/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="application-upgrade-parameters"></a>应用程序升级参数
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/11/2017
 | HealthCheckWaitDurationSec |完成升级域的升级后，在 Service Fabric 评估应用程序的运行状况之前需要等待的时间（以秒为单位）。 也可将此持续时间视为应用程序应先运行多长时间才可被视为正常运行。 如果运行状况检查通过，升级过程将转到下一个升级域。  如果运行状况检查失败，则在再次重试运行状况检查之前，Service Fabric 会等待一定的时间间隔 (UpgradeHealthCheckInterval)，直到达到 HealthCheckRetryTimeout。 建议的默认值为 0 秒。 |
 | HealthCheckRetryTimeoutSec |声明升级失败之前，Service Fabric 继续执行运行状况评估的持续时间（以秒为单位）。 默认为 600 秒。 此持续时间在达到 HealthCheckWaitDuration 后开始。 在此 HealthCheckRetryTimeout 期间，Service Fabric 可能会对应用程序运行状况执行多次运行状况检查。 默认值为 10 分钟，应该针对应用程序相应地自定义该值。 |
 | HealthCheckStableDurationSec |在转到下一个升级域或完成升级之前，为了验证应用程序是否稳定而要等待的持续时间（以秒为单位）。 此等待持续时间用于防止在执行了运行状况检查后，未检测到运行状况更改。 默认值为 120 秒，应该针对应用程序相应地自定义该值。 |
-| UpgradeDomainTimeoutSec |升级单个升级域的最长时间（以秒为单位）。 如果达到了此超时，升级将会停止，然后根据 UpgradeFailureAction 的设置继续下一步。 默认值为 never（无期限），应该针对应用程序相应地自定义该值。 |
+| UpgradeDomainTimeoutSec |升级单个升级域的最长时间（以秒为单位）。 如果达到了此超时，升级会停止，然后根据 UpgradeFailureAction 的设置继续下一步。 默认值为 never（无期限），应该针对应用程序相应地自定义该值。 |
 | UpgradeTimeout |应用于整个升级的超时（以秒为单位）。 如果达到了此超时，则升级将停止，并将触发 UpgradeFailureAction。 默认值为 never（无期限），应该针对应用程序相应地自定义该值。 |
 | UpgradeHealthCheckInterval |检查运行状况的频率。 在*群集* *清单*的 ClusterManager 节中指定了参数，无法使用 upgrade cmdlet 指定此参数。 默认值为 60 秒。 |
 
@@ -65,7 +65,7 @@ MaxPercentUnhealthyServices、MaxPercentUnhealthyPartitionsPerService 和 MaxPer
 
 [使用 Powershell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)逐步讲解了如何使用 PowerShell 进行应用程序升级。
 
-[在 Linux 上使用 Azure CLI 升级应用程序](service-fabric-azure-cli.md#upgrading-your-application)介绍如何使用 Azure CLI 完成应用程序升级。
+[在 Linux 上使用 Service Fabric CLI 升级应用程序](service-fabric-application-lifecycle-sfctl.md#upgrade-application)介绍如何使用 Service Fabric CLI 完成应用程序升级。
 
 [使用 Service Fabric Eclipse 插件升级应用程序](service-fabric-get-started-eclipse.md#upgrade-your-service-fabric-java-application)
 

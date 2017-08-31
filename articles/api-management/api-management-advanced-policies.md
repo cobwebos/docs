@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: f9272946fe4a03a732aa686680bba054c8ef1688
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 0c65ac74316421a0258f01143baa25ffecb5be3b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="api-management-advanced-policies"></a>API 管理高级策略
@@ -28,13 +28,15 @@ ms.lasthandoff: 05/08/2017
   
 -   [控制流](api-management-advanced-policies.md#choose) - 根据布尔[表达式](api-management-policy-expressions.md)的求值结果，有条件地应用策略语句。  
   
--   [转发请求](#ForwardRequest) - 将请求转发到后端服务。  
+-   [转发请求](#ForwardRequest) - 将请求转发到后端服务。
+
+-   [限制并发](#LimitConcurrency) - 阻止括住的策略一次执行超过指定数量的请求。
   
 -   [记录到事件中心](#log-to-eventhub) - 将指定格式的消息发送到记录器实体定义的事件中心。 
 
 -   [模拟响应](#mock-response) - 中止管道执行，将模拟的响应直接返回给调用方。
   
--   [重试](#Retry) - 重试执行括住的策略语句，直到符合条件为止。 系统将根据指定的时间间隔重复，直到执行指定的重试计数为止。  
+-   [重试](#Retry) - 重试执行括住的策略语句，直到符合条件为止。 系统会根据指定的时间间隔重复，直到执行指定的重试计数为止。  
   
 -   [返回响应](#ReturnResponse) - 中止管道执行，将指定的响应直接返回给调用方。 
   
@@ -139,7 +141,7 @@ ms.lasthandoff: 05/08/2017
 |元素|说明|必选|  
 |-------------|-----------------|--------------|  
 |choose|根元素。|是|  
-|when|条件，用于 `choose` 策略的 `if` 或 `ifelse` 部分。 如果 `choose` 策略包含多个 `when` 节，则按顺序对其求值。 一旦 when 元素的 `condition` 的求值结果为 `true`，将不再对 `when` 条件求值。|是|  
+|when|条件，用于 `choose` 策略的 `if` 或 `ifelse` 部分。 如果 `choose` 策略包含多个 `when` 节，则按顺序对其求值。 一旦 when 元素的 `condition` 的求值结果为 `true`，不再对 `when` 条件求值。|是|  
 |otherwise|包含策略代码片段，该片段在没有 `when` 条件的求值结果为 `true` 的情况下使用。|否|  
   
 ### <a name="attributes"></a>属性  
@@ -148,7 +150,7 @@ ms.lasthandoff: 05/08/2017
 |---------------|-----------------|--------------|  
 |condition="布尔表达式 &#124; 布尔常量"|对包含 `when` 的策略语句求值时需求值的布尔表达式或常量。|是|  
   
-###  <a name="ChooseUsage"></a> 用法  
+###  <a name="ChooseUsage"></a> 使用  
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：**入站、出站、后端、错误时  
@@ -266,6 +268,56 @@ ms.lasthandoff: 05/08/2017
   
 -   **策略范围：**所有范围  
   
+##  <a name="LimitConcurrency"></a> 限制并发  
+ `limit-concurrency` 策略阻止括住的策略在给定时间执行超过指定数量的请求。 超过阈值时，会向队列中添加新的请求，直到达到最大队列长度。 队列排满后，新请求将立即失败。
+  
+###  <a name="LimitConcurrencyStatement"></a> 策略语句  
+  
+```xml  
+<limit-concurrency key="expression" max-count="number" timeout="in seconds" max-queue-length="number">
+        <!— nested policy statements -->  
+</limit-concurrency>
+``` 
+
+### <a name="examples"></a>示例  
+  
+####  <a name="ChooseExample"></a> 示例  
+ 下例演示了如何基于上下文变量的值限制转发到后端的请求数。
+ 
+```xml  
+<policies>
+  <inbound>…</inbound>
+  <backend>
+    <limit-concurrency key="@((string)context.Variables["connectionId"])" max-count="3" timeout="60">
+      <forward-request timeout="120"/>
+    <limit-concurrency/>
+  </backend>
+  <outbound>…</outbound>
+</policies>
+```
+
+### <a name="elements"></a>元素  
+  
+|元素|说明|必选|  
+|-------------|-----------------|--------------|    
+|limit-concurrency|根元素。|是|  
+  
+### <a name="attributes"></a>属性  
+  
+|属性|说明|必选|默认|  
+|---------------|-----------------|--------------|--------------|  
+|key|一个字符串。 允许使用表达式。 指定并发作用域。 可以由多个策略共享。|是|不适用|  
+|max-count|一个整数。 指定允许输入策略的最大请求数。|是|不适用|  
+|timeout|一个整数。 允许使用表达式。 指定在失败并出现“403 请求数过多”消息之前请求进入作用域应等待的秒数。|否|Infinity|  
+|max-queue-length|一个整数。 允许使用表达式。 指定最大队列长度。 队列已满时，尝试进入此策略的传入请求将立即被终止，并出现“403 请求数过多”消息。|否|Infinity|  
+  
+###  <a name="ChooseUsage"></a> 使用  
+ 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+  
+-   **策略节：**入站、出站、后端、错误时  
+  
+-   **策略范围：**所有范围  
+
 ##  <a name="log-to-eventhub"></a> 记录到事件中心  
  `log-to-eventhub` 策略将指定格式的消息发送到记录器实体定义的事件中心。 从名称可以看出，此策略用于保存所选请求或响应上下文信息，以便进行联机或脱机分析。  
   
@@ -360,7 +412,7 @@ status code and media type. If no example or schema found, the content is empty.
 -   **策略范围：**所有范围
 
 ##  <a name="Retry"></a> 重试  
- `retry` 策略会执行其子策略一次，然后重新尝试执行，直至重试 `condition` 变为 `false`，或者重试 `count` 为零。  
+ `retry` 策略会执行其子策略一次，并重新尝试执行，直至重试 `condition` 变为 `false`，或者重试 `count` 为零。  
   
 ### <a name="policy-statement"></a>策略语句  
   
@@ -425,7 +477,7 @@ status code and media type. If no example or schema found, the content is empty.
 -   **策略范围：**所有范围  
   
 ##  <a name="ReturnResponse"></a> 返回响应  
- `return-response` 策略会中止管道执行，为调用方返回默认响应或自定义响应。 默认响应为`200 OK`，无正文。 可以通过上下文变量或策略语句指定自定义响应。 二者都提供时，将会通过策略语句对上下文变量中包含的响应进行修改，然后再将其返回给调用方。  
+ `return-response` 策略会中止管道执行，为调用方返回默认响应或自定义响应。 默认响应为`200 OK`，无正文。 可以通过上下文变量或策略语句指定自定义响应。 二者都提供时，会通过策略语句对上下文变量中包含的响应进行修改，然后再将其返回给调用方。  
   
 ### <a name="policy-statement"></a>策略语句  
   
@@ -862,7 +914,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 -   System.DateTime?  
 
-##  <a name="Trace"></a> 跟踪  
+##  <a name="Trace"></a>跟踪  
  `trace` 策略将字符串添加到 [API 检查器](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/)输出中。 此策略会执行的前提是触发跟踪，即 `Ocp-Apim-Trace` 请求标头存在且设置为 `true`，同时 `Ocp-Apim-Subscription-Key` 请求标头存在且包含与管理员帐户关联的有效密钥。  
   
 ### <a name="policy-statement"></a>策略语句  
@@ -963,6 +1015,6 @@ status code and media type. If no example or schema found, the content is empty.
   
 ## <a name="next-steps"></a>后续步骤
 有关如何使用策略的详细信息，请参阅：
--    [API 管理中的策略](api-management-howto-policies.md) 
--    [Policy expressions](api-management-policy-expressions.md)（策略表达式）
+-   [API 管理中的策略](api-management-howto-policies.md) 
+-   [Policy expressions](api-management-policy-expressions.md)（策略表达式）
 

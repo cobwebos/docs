@@ -1,3 +1,24 @@
+---
+title: "Azure AD v2 iOS 入门 - 简介 | Microsoft 文档"
+description: "iOS (Swift) 应用程序如何通过 Azure Active Directory v2 终结点调用需访问令牌的 API"
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mbaldwin
+editor: 
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 05/09/2017
+ms.author: andret
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: e1a28c70edddca878c18d860b3029324955fff15
+ms.contentlocale: zh-cn
+
+---
 
 # <a name="call-the-microsoft-graph-api-from-an-ios-app"></a>从 iOS 应用调用 Microsoft Graph API
 
@@ -32,4 +53,5 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 |库|说明|
 |---|---|
 |[MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|适用于 iOS 的 Microsoft 身份验证库预览|
+
 

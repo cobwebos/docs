@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 08/17/2017
 ms.author: curtand
-ms.reviewer: 
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: b48488719d8bcef54e3742a338f0444db82f76d1
+ms.reviewer: aaronsm
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: fc0d297598c334ca8f6f8a2bd3ae948c87956342
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="integrate-azure-active-directory-single-sign-on-with-saas-apps"></a>将 Azure Active Directory 单一登录与 SaaS 应用相集成
@@ -32,7 +32,10 @@ ms.lasthandoff: 05/08/2017
 
 [!INCLUDE [active-directory-sso-use-case-intro](../../includes/active-directory-sso-use-case-intro.md)]
 
-若要开始为组织中安装的应用设置单一登录，你将要使用 Azure Active Directory (Azure AD) 中的现有目录。 你可以使用通过 Microsoft Azure、Office 365 或 Windows Intune 获取的 Azure AD 目录。 如果有两个或更多个目录，请参阅[管理 Azure AD 目录](active-directory-administer.md)来确定要使用哪一个。
+要开始为组织中安装的应用设置单一登录，将要使用 Azure Active Directory (Azure AD) 中的现有目录。 可以使用通过 Microsoft Azure、Office 365 或 Windows Intune 获取的 Azure AD 目录。 如果有两个或更多个目录，请参阅[管理 Azure AD 目录](active-directory-administer.md)来确定要使用哪一个。
+
+> [!IMPORTANT]
+> Microsoft 建议使用 Azure 门户而不是本文中引用的 Azure 经典门户通过 [Azure AD 管理中心](https://aad.portal.azure.com)管理 Azure AD。 有关如何在 Azure AD 管理中心分配管理员角色的信息，请参阅[在 Azure Active Directory 中分配管理员角色](active-directory-enterprise-apps-manage-sso.md)。
 
 ## <a name="authentication"></a>身份验证
 对于支持 SAML 2.0、WS-联合身份验证或 OpenID Connect 协议的应用程序，Azure Active Directory 将使用签名证书来建立信任关系。 有关详细信息，请参阅[管理联合单一登录的证书](active-directory-sso-certs.md)。
@@ -40,18 +43,18 @@ ms.lasthandoff: 05/08/2017
 对于仅支持基于 HTML 窗体的登录的应用程序，Azure Active Directory 将使用“密码保管库”来建立信任关系。 这样，组织中的用户便可以使用 SaaS 应用程序中的用户帐户信息自动登录到 SaaS 应用程序。 Azure AD 将收集并安全地存储用户帐户信息和相关密码。 有关详细信息，请参阅[基于密码的单一登录](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)。
 
 ## <a name="authorization"></a>授权
-预配的帐户通过单一登录身份验证之后，可授权用户使用应用程序。 用户预配可以手动完成，在某些情况下，你可以根据 Azure Active Directory 中所做的更改在 SaaS 应用程序中添加和删除用户信息。 有关使用现有 Azure AD 连接器自动化预配的详细信息，请参阅 [SaaS 应用程序的自动化用户预配和取消预配](active-directory-saas-app-provisioning.md)。
+预配的帐户通过单一登录身份验证之后，可授权用户使用应用程序。 用户预配可以手动完成，在某些情况下，可以根据 Azure Active Directory 中所做的更改在 SaaS 应用程序中添加和删除用户信息。 有关使用现有 Azure AD 连接器自动化预配的详细信息，请参阅 [SaaS 应用程序的自动化用户预配和取消预配](active-directory-saas-app-provisioning.md)。
 
-否则，你可以手动将用户信息添加到应用，或使用应用商店中提供的其他预配解决方案。
+否则，可以手动将用户信息添加到应用，或使用应用商店中提供的其他预配解决方案。
 
 ## <a name="access"></a>Access
-Azure AD 提供多种可自定义的方式来向组织中的用户部署应用程序。 你不会受限于任一特定的部署或访问解决方案。 可以使用[最符合需要的解决方案](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)。
+Azure AD 提供多种可自定义的方式来向组织中的用户部署应用程序。 不会受限于任一特定的部署或访问解决方案。 可以使用[最符合需要的解决方案](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)。
 
 ## <a name="additional-considerations-for-applications-already-in-use"></a>有关使用中应用程序的其他注意事项
 为组织中已在使用的应用程序设置单一登录的过程，与为新应用程序创建新帐户的过程不同。 基本步骤包括：将应用程序中的用户标识映射到 Azure AD 标识，以及了解集成之后用户如何体验登录应用程序。
 
 > [!NOTE]
-> 若要为现有应用程序设置 SSO，你需要有 Azure AD 和 SaaS 应用程序的全局管理员权限。
+> 要为现有应用程序设置 SSO，需要有 Azure AD 和 SaaS 应用程序的全局管理员权限。
 >
 >
 
@@ -68,11 +71,11 @@ Azure AD 提供多种可自定义的方式来向组织中的用户部署应用�
 另一个有价值的资源是[开发人员指导](active-directory-applications-guiding-developers-for-lob-applications.md)一文中的隐藏用户同意。
 
 ## <a name="next-steps"></a>后续步骤
-对于你在应用库中找到的 SaaS 应用，Azure AD 提供了许多[有关如何集成 SaaS 应用的教程](active-directory-saas-tutorial-list.md)。
+对于在应用库中找到的 SaaS 应用，Azure AD 提供了许多[有关如何集成 SaaS 应用的教程](active-directory-saas-tutorial-list.md)。
 
-如果应用不在应用库中，则可以[将其作为自定义应用程序添加到 Azure AD 应用库](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx)。
+如果某个应用不在应用库中，可以[将该应用作为自定义应用程序添加到 Azure AD 应用库](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx)。
 
-Azure.com 库中还提供了有关所有这些问题的更多详细信息，请先阅读 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+Azure.com 库中还提供了有关所有这些问题的更多详细信息，请先阅读 [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)。
 
 此外，请不要错过[有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)。
 

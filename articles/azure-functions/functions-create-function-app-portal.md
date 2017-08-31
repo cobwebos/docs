@@ -4,23 +4,23 @@ description: "通过门户在 Azure 应用服务中创建新的 Function App。"
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 ms.assetid: 
 ms.service: functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/11/2017
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: f9f1b95ade5f397fa1a3bcdc4165c81c1c9628c0
+ms.custom: mvc
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 85a88c537415cd6f2b6bc005cc18e3baaa29e9a4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>通过 Azure 门户创建 Function App
@@ -33,7 +33,7 @@ Azure Function App 使用 Azure 应用服务基础结构。 本主题演示如�
 
 创建 Function App 时，需提供有效的**应用名称**，其中只能包含字母、数字和连字符。 下划线 (**_**) 是不允许的字符。
 
-存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 你的存储帐户名称在 Azure 中必须是唯一的。 
+存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 存储帐户名称在 Azure 中必须是唯一的。 
 
 创建 Function App 后，可以使用一种或多种不同的语言创建各个函数。 [通过使用门户](functions-create-first-azure-function.md#create-function)、[连续部署](functions-continuous-deployment.md)，或通过[使用 FTP 上传](https://github.com/projectkudu/kudu/wiki/Accessing-files-via-ftp)来创建函数。
 
@@ -52,7 +52,7 @@ Azure Functions 有两个不同的服务计划：消耗量计划和应用服务�
 >[!NOTE]
 >使用消耗托管计划时，函数代码和绑定配置文件存储在主存储帐户的 Azure 文件存储中。 删除主存储帐户时，此内容将随之删除且无法恢复。
 
-若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介] (.../ storage/storage-introduction.md#introducing-the-azure-storage-services)。
+若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介](../storage/common/storage-introduction.md#introducing-the-azure-storage-services)。 
 
 ## <a name="next-steps"></a>后续步骤
 

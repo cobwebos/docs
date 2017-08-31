@@ -1,5 +1,5 @@
 ---
-title: "Linux 上的 Azure Web 应用简介 | Microsoft Docs"
+title: "Linux 上的 Azure Web 应用简介 | Microsoft 文档"
 description: "了解 Linux 上的 Azure Web 应用。"
 keywords: "azure 应用服务, linux, oss"
 services: app-service
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 69156ec555b34d066a65bdc202267cfc53de47a0
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 67dee77dd4e46d097358d86626a859b7dc7982e7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="introduction-to-azure-web-app-on-linux"></a>Linux 上的 Azure Web 应用简介
@@ -39,6 +39,9 @@ Linux Web 应用目前支持以下应用程序堆栈：
     * 6.6
     * 6.9
     * 6.10
+    * 6.11
+    * 8.0
+    * 8.1
 * PHP
     * 5.6
     * 7.0
@@ -96,6 +99,17 @@ Linux Web 应用只能在专用应用服务计划中使用，没有免费层或�
 
 在资源组中创建 Linux Web 应用时，该资源组不得在同一区域包含非 Linux Web 应用。
 
+## <a name="troubleshooting"></a>故障排除 ##
+
+如果未能启动应用程序或希望检查应用中的日志记录，请查看 LogFiles 目录中的 Docker 日志。 可通过 SCM 站点或 FTP 访问此目录。
+若要从容器记录 `stdout` 和 `stderr`，需要在“诊断记录”下启用“Docker 容器记录”。
+
+![启用日志记录][2]
+
+![使用 Kudu 查看 Docker 日志][1]
+
+可从“开发工具”菜单中的“高级工具”访问 SCM 站点。
+
 ## <a name="next-steps"></a>后续步骤
 请参阅以下链接，开始使用 Linux 应用服务。 如有问题和疑问，请在[我们的论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)上发帖。
 
@@ -109,4 +123,6 @@ Linux Web 应用只能在专用应用服务计划中使用，没有免费层或�
 * [设置 Azure 应用服务中的过渡环境](./web-sites-staged-publishing.md)
 * [使用 Linux 上的 Azure Web 应用进行 Docker 中心持续部署](./app-service-linux-ci-cd.md)
 
-
+<!--Image references-->
+[1]: ./media/app-service-linux-intro/kudu-docker-logs.png
+[2]: ./media/app-service-linux-intro/logging.png

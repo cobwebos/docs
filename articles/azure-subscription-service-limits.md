@@ -13,19 +13,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 08/21/2017
 ms.author: byvinyal
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: a54d38948ee5a752297167c7f4435e52b5dbb27f
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a76acd67e9ba7822f2837b3c08e2ede389047f11
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移，此列表将得以展开并更新，以便涵盖更多平台。
 
-若要了解有关 Azure 定价的详细信息，请访问 [Azure 定价概述](https://azure.microsoft.com/pricing/)。 在那里，你可以使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)或访问某服务（例如，[Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)）的详情页面预估所需的成本。 有关帮助管理成本的提示，请参阅[通过 Azure 计费和成本管理来防止意外成本](billing/billing-getting-started.md)。
+若要了解有关 Azure 定价的详细信息，请访问 [Azure 定价概述](https://azure.microsoft.com/pricing/)。 在那里，可以使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)或访问某服务（例如，[Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)）的详情页面预估所需的成本。 有关帮助管理成本的提示，请参阅[通过 Azure 计费和成本管理来防止意外成本](billing/billing-getting-started.md)。
 
 > [!NOTE]
 > 如果想要提高限制或配额，使其超出**默认限制**，可以[打开免费的联机客户支持请求](azure-supportability/resource-manager-core-quotas-request.md)。 无法将限制提高到超过下表中显示的**最大限制值**。 如果没有**最大限制**列，则资源没有可调整的限制。 
@@ -39,9 +39,9 @@ ms.lasthandoff: 07/26/2017
 在下面的限制中，添加了一个新表以反映在使用 Azure 资源管理器时限制中的任何差异。 例如，会存在一个**订阅限制**表和一个**订阅数限制 - Azure 资源管理器**表。 如果某个限制同时适用于这两种方案，它将仅显示在第一个表中。 除非另有说明，否则限制是跨所有区域的全局限制。
 
 > [!NOTE]
-> 请务必强调 Azure 资源组中的资源配额是用户的订阅可以访问的每个区域，而不像服务管理配额那样是可以访问的每个订阅。 我们来使用核心配额作为示例。 如果您需要根据对核心的支持请求增加配额，则需要决定您想要在哪个区域中使用多少核心，然后针对您希望的 Azure 资源组核心配额的数量和区域进行特定请求。 因此，如果您需要在西欧使用 30 个核心以在那里运行您的应用程序，则应专门在西欧请求 30 个核心。 但这不会增加您在任何其他区域的核心配额 -- 仅西欧会有 30 个核心配额。
+> 请务必强调 Azure 资源组中的资源配额是用户的订阅可以访问的每个区域，而不像服务管理配额那样是可以访问的每个订阅。 我们来使用核心配额作为示例。 如果需要根据对核心的支持请求增加配额，则需要决定想要在哪个区域中使用多少核心，并针对希望的 Azure 资源组核心配额的数量和区域进行特定请求。 因此，如果需要在西欧使用 30 个核心以在那里运行应用程序，则应专门在西欧请求 30 个核心。 但这不会增加在任何其他区域的核心配额 -- 仅西欧会有 30 个核心配额。
 > <!-- -->
-> 因此，你可能会发现考虑决定你在任何一个区域中的工作负荷所需的 Azure 资源组配额数量，以及请求你考虑在其中进行部署的每个区域的数量很有用。 请参阅[部署问题疑难解答](resource-manager-common-deployment-errors.md)，了解有关发现你特定区域的当前配额的更多帮助。
+> 因此，你可能会发现考虑决定你在任何一个区域中的工作负荷所需的 Azure 资源组配额数量，以及请求你考虑在其中进行部署的每个区域的数量很有用。 请参阅[部署问题疑难解答](resource-manager-common-deployment-errors.md)，获取有关发现你特定区域的当前配额的更多帮助。
 > 
 > 
 
@@ -52,6 +52,8 @@ ms.lasthandoff: 07/26/2017
 * [应用程序网关](#application-gateway-limits)
 * [Application Insights](#application-insights-limits)
 * [自动化](#automation-limits)
+* [Azure Cosmos DB](#azure-cosmos-db-limits)
+* [Azure 事件网格](#azure-event-grid-limits)
 * [Azure Redis 缓存](#azure-redis-cache-limits)
 * [Azure RemoteApp](#azure-remoteapp-limits)
 * [备份](#backup-limits)
@@ -64,7 +66,6 @@ ms.lasthandoff: 07/26/2017
 * [Data Lake Analytics](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
 * [DNS](#dns-limits)
-* [DocumentDB](#documentdb-limits)
 * [事件中心](#event-hubs-limits)
 * [IoT 中心](#iot-hub-limits)
 * [密钥保管库](#key-vault-limits)
@@ -139,7 +140,7 @@ ms.lasthandoff: 07/26/2017
 [!INCLUDE [dns-limits](../includes/dns-limits.md)]
 
 ### <a name="storage-limits"></a>存储限制
-有关存储帐户限制的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](storage/storage-scalability-targets.md)。
+有关存储帐户限制的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](storage/common/storage-scalability-targets.md)。
 <!--like # storage accts --> 
 #### <a name="storage-service-limits"></a>存储服务限制
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
@@ -182,8 +183,8 @@ ms.lasthandoff: 07/26/2017
 
 [!INCLUDE [biztalk-services-service-limits](../includes/biztalk-services-service-limits.md)]
 
-### <a name="documentdb-limits"></a>DocumentDB 限制
-DocumentDB 是一个全规模数据库，该数据库对吞吐量和存储进行规模调整以满足应用程序的任何需求。 如果你有任何关于 DocumentDB 提供的规模的问题，请发送电子邮件到 askdocdb@microsoft.com。
+### <a name="azure-cosmos-db-limits"></a>Azure Cosmos DB 限制
+Azure Cosmos DB 是全局缩放数据库，可对吞吐量和存储进行缩放，以处理应用程序的任何需求。 如果对 Azure Cosmos DB 提供的规模有任何问题，请发送电子邮件到 askcosmosdb@microsoft.com。
 
 ### <a name="mobile-engagement-limits"></a>Mobile Engagement 限制
 [!INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]
@@ -243,6 +244,9 @@ DocumentDB 是一个全规模数据库，该数据库对吞吐量和存储进行
 
 ### <a name="active-directory-limits"></a>Active Directory 限制
 [!INCLUDE [AAD-service-limits](../includes/active-directory-service-limits-include.md)]
+
+### <a name="azure-event-grid-limits"></a>Azure 事件网格限制
+[!INCLUDE [event-grid-limits](../includes/event-grid-limits.md)]
 
 ### <a name="azure-remoteapp-limits"></a>Azure RemoteApp 限制
 [!INCLUDE [azure-remoteapp-limits](../includes/azure-remoteapp-limits.md)]

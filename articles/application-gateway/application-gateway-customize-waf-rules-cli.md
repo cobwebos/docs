@@ -1,6 +1,6 @@
 ---
-title: "自定义 Azure 应用程序网关的 Web 应用程序防火墙规则 - Azure CLI 2.0 | Microsoft Docs"
-description: "此页提供有关如何使用 Azure CLI 2.0 自定义应用程序网关的 Web 应用程序防火墙规则的信息。"
+title: "自定义 Azure 应用程序网关的 Web 应用程序防火墙规则 - Azure CLI 2.0 | Microsoft 文档"
+description: "本文将介绍如何使用 Azure CLI 2.0 自定义应用程序网关的 Web 应用程序防火墙规则。"
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: cfc01caf5c8ca11f790a6640ec57e3d14c1b7767
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 456be048dc2d82cd50d145b71f17a84a7189ea96
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -29,19 +29,21 @@ ms.lasthandoff: 08/04/2017
 > * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
 > * [Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md)
 
-应用程序网关 Web 应用程序防火墙可为 Web 应用程序提供保护。 这些保护由 OWASP CRS 规则集提供。 某些规则可能会导致误报，并会阻止实际流量。  出于此原因，应用程序网关在启用了 Web 应用程序防火墙的应用程序网关上提供自定义规则组和规则的功能。 有关特定规则组和规则的详细信息，请访问 [Web 应用程序防火墙 CRS 规则组和规则](application-gateway-crs-rulegroups-rules.md)
+Azure 应用程序网关 Web 应用程序防火墙 (WAF) 可为 Web 应用程序提供保护。 这些保护通过打开 Web 应用程序安全性项目 (OWASP) 核心规则集 (CRS) 来提供。 某些规则可能会导致误报，并会阻止实际流量。 出于此原因，应用程序网关提供了自定义规则组和规则的功能。 有关特定规则组和规则的详细信息，请参阅 [Web 应用程序防火墙 CRS 规则组和规则列表](application-gateway-crs-rulegroups-rules.md)。
 
 ## <a name="view-rule-groups-and-rules"></a>查看规则组和规则
 
-以下示例演示如何查看可在启用了 WAF 的应用程序网关上配置的规则和规则组。
+以下代码示例演示了如何查看可配置的规则和规则组。
 
 ### <a name="view-rule-groups"></a>查看规则组
+
+以下示例演示了如何查看规则组：
 
 ```azurecli-interactive
 az network application-gateway waf-config list-rule-sets --type OWASP
 ```
 
-下面是截取自前一示例的响应。
+以下输出截取自前一示例的响应：
 
 ```
 [
@@ -88,13 +90,13 @@ az network application-gateway waf-config list-rule-sets --type OWASP
 
 ### <a name="view-rules-in-a-rule-group"></a>查看规则组中的规则
 
-以下示例演示如何查看指定的规则组中的规则。
+以下示例演示如何查看指定的规则组中的规则：
 
 ```azurecli-interactive
 az network application-gateway waf-config list-rule-sets --group "REQUEST-910-IP-REPUTATION"
 ```
 
-以下输出是截取自前一示例的响应。
+以下输出截取自前一示例的响应：
 
 ```
 [
@@ -127,7 +129,7 @@ az network application-gateway waf-config list-rule-sets --group "REQUEST-910-IP
 
 ## <a name="disable-rules"></a>禁用规则
 
-以下示例在应用程序网关上禁用规则 `910018` 和 `910017`。
+以下示例在应用程序网关上禁用了规则 `910018` 和 `910017`：
 
 ```azurecli-interactive
 az network application-gateway waf-config set --resource-group AdatumAppGatewayRG --gateway-name AdatumAppGateway --enabled true --rule-set-version 3.0 --disabled-rules 910018 910017
@@ -135,9 +137,10 @@ az network application-gateway waf-config set --resource-group AdatumAppGatewayR
 
 ## <a name="next-steps"></a>后续步骤
 
-配置已禁用的规则后，可通过访问[应用程序网关诊断](application-gateway-diagnostics.md#diagnostic-logging)来了解如何查看 WAF 日志
+配置你禁用的规则后，可以了解如何查看 WAF 日志。 有关详细信息，请参阅[应用程序网关诊断](application-gateway-diagnostics.md#diagnostic-logging)。
 
 [fig1]: ./media/application-gateway-customize-waf-rules-portal/1.png
 [1]: ./media/application-gateway-customize-waf-rules-portal/figure1.png
 [2]: ./media/application-gateway-customize-waf-rules-portal/figure2.png
 [3]: ./media/application-gateway-customize-waf-rules-portal/figure3.png
+

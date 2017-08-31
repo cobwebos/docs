@@ -14,29 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/29/2017
 ms.author: barclayn
-translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 3123c8d780406c92f04592767e47c217c0a0ba73
-ms.lasthandoff: 03/28/2017
-
-
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b05ab20087c9bb391be7317b47d6dc2565206947
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure 中 IaaS 工作负荷的安全性最佳实践
 
-在开始考虑将工作负荷移到 Azure 基础结构即服务 (IaaS) 时，你可能会意识到一些注意事项似曾相识。 你可能在保护虚拟环境方面有一定的经验。 迁移到 Azure IaaS 后，可以运用保护虚拟环境方面的专业知识，使用一组新的选项来帮助保护资产。
+在开始考虑将工作负荷移到 Azure 基础结构即服务 (IaaS) 时，你可能会意识到一些注意事项似曾相识。 可能在保护虚拟环境方面有一定的经验。 迁移到 Azure IaaS 后，可以运用保护虚拟环境方面的专业知识，使用一组新的选项来帮助保护资产。
 
 首先，我们不应期望将本地资源作为一一对应的资源加入到 Azure。 新的挑战和新的选项为重新评估现有设计、工具和进程提供了机会。
 
-你对安全的责任取决于云服务的类型。 下图总结了 Microsoft 和客户的责任平衡：
+对安全的责任取决于云服务的类型。 下图总结了 Microsoft 和客户的责任平衡：
 
 
 ![责任范围](./media/azure-security-iaas/sec-cloudstack-new.png)
 
 
-我们将讨论一些在 Azure 中可用的选项，这些选项有助于满足你组织的安全要求。 请记住不同类型的工作负荷可能有不同的安全要求。 这些最佳实践没有一种可以单独保护你的系统。 就像安全中的其他内容，必须选择相应的选项，了解解决方案如何通过填补其他内容留下的缺口来相互补充。
+我们将讨论一些在 Azure 中可用的选项，这些选项有助于满足组织的安全要求。 请记住不同类型的工作负荷可能有不同的安全要求。 这些最佳实践没有一种可以单独保护系统。 就像安全中的其他内容，必须选择相应的选项，了解解决方案如何通过填补其他内容留下的缺口来相互补充。
 
 ## <a name="use-privileged-access-workstations"></a>使用特权访问工作站
 
@@ -108,7 +106,7 @@ Azure 开发测试实验室的功能包括：
 
 ## <a name="control-and-limit-endpoint-access"></a>控制和限制终结点访问
 
-在 Azure 中承载实验室或生产系统意味着可从 Internet 访问你的系统。 默认情况下，新的 Windows 虚拟机的 RDP 端口可从 Internet 访问，并且 Linux 虚拟机的 SSH 端口打开。 为了将未经授权访问的风险降至最低，有必要采取措施限制公开的终结点。
+在 Azure 中承载实验室或生产系统意味着可从 Internet 访问系统。 默认情况下，新的 Windows 虚拟机的 RDP 端口可从 Internet 访问，并且 Linux 虚拟机的 SSH 端口打开。 为了将未经授权访问的风险降至最低，有必要采取措施限制公开的终结点。
 
 Azure 中的一些技术可有助于限制对这些管理终结点的访问。 在 Azure 中，可以使用[网络安全组](../virtual-network/virtual-networks-nsg.md) (NSG)。 在使用 Azure Resource Manager 进行部署时，NSG 将限制从所有网络访问此管理终结点（RDP 或 SSH）。 考虑 NSG 时，请考虑路由器 ACL。 可以使用它们紧密控制 Azure 网络的各个部分之间的网络通信。 这类似于在外围网络或其他隔离的网络中创建网络。 它们不检查流量，但它们将有助于网络分段。
 
@@ -135,7 +133,7 @@ Azure 中的一些技术可有助于限制对这些管理终结点的访问。 �
 
 安全的密钥管理对在云中保护数据必不可少。 借助 [Azure 密钥保管库](../key-vault/key-vault-whatis.md)，可以在硬件安全模块 (HSM) 中安全存储加密密钥和小机密（例如密码）。 为了提升可靠性，可以在 HSM 中导入或生成密钥。
 
-Microsoft 将在通过 FIPS 140-2 第 2 级验证的 HSM（硬件和固件）中处理密钥。 使用 Azure 日志记录来监视和审核密钥使用情况；将日志传输到 Azure 或安全信息与事件管理 (SIEM) 解决方案做进一步分析和威胁检测。
+Microsoft 会在通过 FIPS 140-2 第 2 级验证的 HSM（硬件和固件）中处理密钥。 使用 Azure 日志记录来监视和审核密钥使用情况；将日志传输到 Azure 或安全信息与事件管理 (SIEM) 解决方案做进一步分析和威胁检测。
 
 具有 Azure 订阅的任何人都可以创建和使用密钥保管库。 尽管 Key Vault 能够为开发人员和安全管理员提供便利，但负责管理 Azure 服务的组织管理员也可以实现和管理 Key Vault。
 
@@ -146,7 +144,7 @@ Microsoft 将在通过 FIPS 140-2 第 2 级验证的 HSM（硬件和固件）中
 
 有关详细信息，请参阅 [Windows 和 Linux IaaS VM 中的 Azure 磁盘加密](azure-security-disk-encryption.md)。
 
-[Azure 存储服务加密](../storage/storage-service-encryption.md)可帮助保护静态数据。 它在存储帐户级别启用。 它在向数据中心写入数据时对数据进行加密，并在你访问数据时自动解密。 它支持以下方案：
+[Azure 存储服务加密](../storage/common/storage-service-encryption.md)可帮助保护静态数据。 它在存储帐户级别启用。 它在向数据中心写入数据时对数据进行加密，并在访问数据时自动解密。 它支持以下方案：
 
 - 块 Blob、追加 Blob 和页 Blob 的加密
 - 从本地移到 Azure 的存档 VHD 和模板的加密
@@ -163,7 +161,7 @@ Microsoft 将在通过 FIPS 140-2 第 2 级验证的 HSM（硬件和固件）中
 
 ## <a name="manage-operating-systems"></a>管理操作系统
 
-在 IaaS 部署中，你仍负责管理在环境中像任何其他服务器或工作站一样部署的系统。 你仍要负责修补、强化、权限分配以及与系统维护相关的任何其他活动。 对于与本地资源紧密集成的系统，建议对防病毒、反恶意软件、修补和备份等活动使用在本地使用的同一工具和过程。
+在 IaaS 部署中，仍负责管理在环境中像任何其他服务器或工作站一样部署的系统。 仍要负责修补、强化、权限分配以及与系统维护相关的任何其他活动。 对于与本地资源紧密集成的系统，建议对防病毒、反恶意软件、修补和备份等活动使用在本地使用的同一工具和过程。
 
 ### <a name="harden-systems"></a>强化系统
 应强化 Azure IaaS 中的所有虚拟机，以便它们仅公开安装的应用程序所需的服务终结点。 对于 Windows 虚拟机，请遵循 Microsoft 发布作为[安全合规管理器](https://technet.microsoft.com/solutionaccelerators/cc835245.aspx)解决方案基准的建议。
@@ -172,7 +170,7 @@ Microsoft 将在通过 FIPS 140-2 第 2 级验证的 HSM（硬件和固件）中
 
 安全合规管理器提供已经过测试的随时可部署的策略和 Desired Configuration Management 配置包。 这些基准基于 [Microsoft 安全指南](https://technet.microsoft.com/en-us/library/cc184906.aspx)建议和行业最佳做法。 它们可帮助你管理配置漂移、满足合规性要求，以及减少安全威胁。
 
-可以使用安全合规管理器以两种不同的方法导入计算机的当前配置。 首先，可以导入基于 Active Directory 的组策略。 然后，可以通过使用 [LocalGPO](https://blogs.technet.microsoft.com/secguide/2016/01/21/lgpo-exe-local-group-policy-object-utility-v1-0/) 工具导入“黄金母版”引用计算机的配置，来备份本地组策略。 稍后可将本地组策略导入安全合规管理器。
+可以使用安全合规管理器以两种不同的方法导入计算机的当前配置。 首先，可以导入基于 Active Directory 的组策略。 然后，可以通过使用 [LocalGPO](https://blogs.technet.microsoft.com/secguide/2016/01/21/lgpo-exe-local-group-policy-object-utility-v1-0/) 工具导入“黄金母版”引用计算机的配置，以备份本地组策略。 稍后可将本地组策略导入安全合规管理器。
 
 将标准与行业最佳做法相比较、对其进行自定义，并创建新的策略和 Desired Configuration Management 配置包。 已为所有受支持的操作系统（包括 Windows 10 周年更新和 Windows Server 2016）发布基准。
 
@@ -214,7 +212,7 @@ Microsoft 将在通过 FIPS 140-2 第 2 级验证的 HSM（硬件和固件）中
 
 [Operations Management Suite](../operations-management-suite/operations-management-suite-overview.md) 是 Microsoft 的基于云的 IT 管理解决方案，可帮助管理和保护本地和云基础结构。 由于 Operations Management Suite 作为基于云的服务实现，因此在基础结构资源上进行极低的投资即可快速对其进行部署。
 
-自动交付新增功能，从而节省持续维护和升级成本。 Operations Management Suite 还与 System Center Operations Manager 集成。 它具有不同的组件帮助你更好地管理 Azure 工作负荷，包括[安全性和合规性](../operations-management-suite/oms-security-getting-started.md)模块。
+自动交付新增功能，从而节省持续维护和升级成本。 Operations Management Suite 还与 System Center Operations Manager 集成。 它具有不同的组件，可帮助你更好地管理 Azure 工作负荷，包括[安全性和符合性](../operations-management-suite/oms-security-getting-started.md)模块。
 
 可以使用 Operations Management Suite 中的安全性和合规性功能查看有关资源的信息。 这些信息划分为四个主要类别：
 

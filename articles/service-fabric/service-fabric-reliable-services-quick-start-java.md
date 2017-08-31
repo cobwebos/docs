@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 35d7f6d655f53891c00ca6c736c8c12b99fdc5ef
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 1ebabe4844732412e04bab8c277f7ebbc4a5737c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 入门
@@ -80,7 +79,7 @@ HelloWorldApplication/
 ```
 
 ## <a name="implement-the-service"></a>实现服务
-打开 **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java**。 此类定义服务类型，可以运行任何代码。 服务 API 为你的代码提供两个入口点：
+打开 **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java**。 此类定义服务类型，可以运行任何代码。 服务 API 为代码提供两个入口点：
 
 * 名为 `runAsync()` 的开放式入口点方法，可在其中开始执行任何工作负荷，包括长时间运行的计算工作负荷。
 
@@ -91,7 +90,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 }
 ```
 
-* 一个通信入口点，可在其中插入选择的通信堆栈。 这就是你可以开始接收来自用户和其他服务请求的位置。
+* 一个通信入口点，可在其中插入选择的通信堆栈。 这就是可以开始接收来自用户和其他服务请求的位置。
 
 ```java
 @Override
@@ -100,7 +99,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 }
 ```
 
-在本教程中，我们将重点放在 `runAsync()` 入口点方法上。 这是你可以立即开始运行代码的位置。
+在本教程中，我们将重点放在 `runAsync()` 入口点方法上。 这是可以立即开始运行代码的位置。
 
 ### <a name="runasync"></a>RunAsync
 当服务实例已放置并且可以执行时，平台将调用此方法。 对于无状态服务，这就意味着打开服务实例。 需要关闭服务实例时，将提供取消标记进行协调。 在 Service Fabric 中，服务实例的此打开-关闭循环可能会在服务的整个生存期内出现多次。 发生这种情况的原因多种多样，包括：
@@ -115,7 +114,7 @@ Service Fabric 将管理此业务流程，以便保持服务的高度可用和�
 `runAsync()` 不应阻止同步。 runAsync 的实现应返回一个 CompletableFuture，以允许运行时继续执行。 如果工作负荷需要实现一个应该在 CompletableFuture 内完成的、长期运行的任务。
 
 #### <a name="cancellation"></a>取消
-取消工作负荷是一项由所提供的取消标记协调的协同操作。 系统会等任务结束后（成功完成、取消或出现故障）再执行下一步操作。 当系统请求取消时，请务必接受取消标记，完成所有任务，然后尽快退出 `runAsync()`。 以下示例演示如何处理取消事件：
+取消工作负荷是一项由所提供的取消标记协调的协同操作。 系统会等任务结束后（成功完成、取消或出现故障）再执行下一步操作。 当系统请求取消时，请务必接受取消标记，完成所有任务，并尽快退出 `runAsync()`。 以下示例演示如何处理取消事件：
 
 ```java
     @Override
@@ -166,22 +165,17 @@ Yeoman 基架包含用于生成应用程序的 gradle 脚本，以及用于部�
 $ gradle
 ```
 
-这会生成可以使用 Service Fabric Azure CLI 部署的 Service Fabric 应用程序包。
+这会生成可以使用 Service Fabric CLI 部署的 Service Fabric 应用程序包。
 
-### <a name="deploy-with-xplat-cli"></a>使用 XPlat CLI 进行部署
+### <a name="deploy-with-service-fabric-cli"></a>使用 Service Fabric CLI 部署
 
-如果使用的是 XPlat CLI，Install.sh 脚本包含部署应用程序包所必需的 Azure CLI 命令。 运行 install.sh 脚本，以部署应用程序。
+Install.sh 脚本包含用于部署应用程序包的 Service Fabric CLI 命令。 运行 install.sh 脚本以部署此应用程序。
 
 ```bash
 $ ./install.sh
 ```
 
-### <a name="deploy-with-azure-cli-20"></a>使用 Azure CLI 2.0 进行部署
+## <a name="next-steps"></a>后续步骤
 
-如果使用的是 Azure CLI 2.0，请参阅[使用 Azure CLI 2.0 管理应用程序生命周期](service-fabric-application-lifecycle-azure-cli-2-0.md)参考文档。
-
-## <a name="related-articles"></a>相关文章
-
-* [Service Fabric 和 Azure CLI 2.0 入门](service-fabric-azure-cli-2-0.md)
-* [Service Fabric XPlat CLI 入门](service-fabric-azure-cli.md)
+* [Service Fabric CLI 入门](service-fabric-cli.md)
 

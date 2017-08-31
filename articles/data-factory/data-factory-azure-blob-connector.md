@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
-ms.openlocfilehash: 7be5e5095b8aa6f2ae3d8c0b636883c4ff7ced63
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2cf955b52010869a4e753c441e17bdd32fd2e63d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/22/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure Blob 存储中或从 Azure Blob 存储中复制数据
@@ -57,7 +56,7 @@ ms.lasthandoff: 06/22/2017
 2. 创建**数据集**以表示复制操作的输入和输出数据。 在上一个步骤所述的示例中，创建了一个数据集来指定 Blob 容器和包含输入数据的文件夹。 创建了另一个数据集来指定 Azure SQL 数据库中用于保存从 Blob 存储复制的数据的 SQL 表。 有关特定于 Azure Blob 存储的数据集属性，请参阅[数据集属性](#dataset-properties)部分。
 3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 在前面所述的示例中，在复制活动中使用 BlobSource 作为源，SqlSink 作为接收器。 同样，如果从 Azure SQL 数据库复制到 Azure Blob 存储，则在复制活动中使用 SqlSource 和 BlobSink。 有关特定于 Azure Blob 存储的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。  
 
-使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从 Azure Blob 存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples-for-copying-data-to-and-from-blob-storage  )部分。
+使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从 Azure Blob 存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples-for-copying-data-to-and-from-blob-storage  )部分。
 
 对于特定于 Azure Blob 存储的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息。
 
@@ -67,7 +66,7 @@ ms.lasthandoff: 06/22/2017
 [!INCLUDE [data-factory-azure-storage-linked-services](../../includes/data-factory-azure-storage-linked-services.md)]
 
 ## <a name="dataset-properties"></a>数据集属性
-若要指定数据集来表示 Azure Blob 存储中的输入或输出数据，可以将数据集的类型属性设置为：**AzureBlob**。 将数据集的 **linkedServiceName** 属性设置为 Azure 存储或 Azure 存储 SAS 链接服务的名称。  数据集的 type 属性指定 Blob 存储中的 **Blob 容器**和**文件夹**。
+要指定数据集来表示 Azure Blob 存储中的输入或输出数据，可以将数据集的类型属性设置为：**AzureBlob**。 将数据集的 **linkedServiceName** 属性设置为 Azure 存储或 Azure 存储 SAS 链接服务的名称。  数据集的 type 属性指定 Blob 存储中的 **Blob 容器**和**文件夹**。
 
 有关可用于定义数据集的 JSON 部分和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
 
@@ -78,7 +77,7 @@ ms.lasthandoff: 06/22/2017
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | folderPath |到 Blob 存储中的容器和文件夹的路径。 示例：myblobcontainer\myblobfolder\ |是 |
-| fileName |blob 的名称。 fileName 可选，并且区分大小写。<br/><br/>如果指定文件名，则活动（包括复制）将对特定 Blob 起作用。<br/><br/>如果未指定 fileName，则复制将包括输入数据集的 folderPath 中所有的 Blob。<br/><br/>如果没有为输出数据集指定 **fileName**，并且没有在活动接收器中指定 **preserveHierarchy**，所生成文件的名称将采用以下格式：Data.<Guid>.txt（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
+| fileName |blob 的名称。 fileName 可选，并且区分大小写。<br/><br/>如果指定文件名，则活动（包括复制）将对特定 Blob 起作用。<br/><br/>如果未指定 fileName，则复制将包括输入数据集的 folderPath 中所有的 Blob。<br/><br/>如果没有为输出数据集指定 **fileName**，并且没有在活动接收器中指定 **preserveHierarchy**，所生成文件的名称会采用以下格式：Data.<Guid>.txt（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
 | partitionedBy |partitionedBy 是一个可选属性。 它可用于指定时序数据的动态 folderPath 和 filename。 例如，folderPath 可针对每小时的数据参数化。 请参阅[使用 partitionedBy 属性](#using-partitionedBy-property)部分，了解详细信息和示例。 |否 |
 | 格式 | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
 | compression | 指定数据的压缩类型和级别。 支持的类型为：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：**最佳**和**最快**。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
@@ -117,7 +116,7 @@ ms.lasthandoff: 06/22/2017
 在本示例中，SliceStart 的年、月、日和时间已提取到 folderPath 和 fileName 属性使用的各个变量。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
-有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出数据集等属性和策略可用于所有类型的活动。 但是，可用于此活动的 **typeProperties** 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。 若要从 Azure Blob 存储移动数据，请在复制活动中将源类型设置为 **BlobSource**。 同样，若要将数据移动到 Azure Blob 存储，请在复制活动中将接收器类型设置为 **BlobSink**。 本部分提供 BlobSource 和 BlobSink 支持的属性列表。
+有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出数据集等属性和策略可用于所有类型的活动。 但是，可用于此活动的 **typeProperties** 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。 要从 Azure Blob 存储移动数据，请在复制活动中将源类型设置为 **BlobSource**。 同样，要将数据移动到 Azure Blob 存储，请在复制活动中将接收器类型设置为 **BlobSink**。 本部分提供 BlobSource 和 BlobSink 支持的属性列表。
 
 **BlobSource** 支持 **typeProperties** 部分的以下属性：
 
@@ -129,7 +128,7 @@ ms.lasthandoff: 06/22/2017
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| copyBehavior |源为 BlobSource 或 FileSystem 时，请定义复制行为。 |<b>PreserveHierarchy</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><br/><b>FlattenHierarchy：</b>源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><br/><b>MergeFiles</b>：将源文件夹的所有文件合并到一个文件中。 如果指定文件/Blob 名称，则合并的文件名称将为指定的名称；否则，将会自动生成文件名。 |否 |
+| copyBehavior |源为 BlobSource 或 FileSystem 时，请定义复制行为。 |<b>PreserveHierarchy</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><br/><b>FlattenHierarchy：</b>源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><br/><b>MergeFiles</b>：将源文件夹的所有文件合并到一个文件中。 如果指定文件/Blob 名称，则合并的文件名称将为指定的名称；否则，会自动生成文件名。 |否 |
 
 **BlobSource** 还支持向后兼容性的这两种属性。
 
@@ -168,7 +167,7 @@ ms.lasthandoff: 06/22/2017
 让我们看一下如何快速将数据复制到 Azure Blob 存储/从 Azure Blob 存储复制数据。 在本演练中，源和目标数据存储都属于 Azure Blob 存储类型。 本演练中的管道将数据从一个文件夹复制到同一 blob 容器中的其他文件夹中。 本演练有意简单设计，以显示使用 Blob 存储作为源或接收器时的设置或属性。 
 
 ### <a name="prerequisites"></a>先决条件
-1. 如果尚无 Azure 存储帐户，请创建一个通用 Azure 存储帐户。 在本演练中，使用 blob 存储同时作为源和目标数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)一文获取创建步骤。
+1. 如果尚无 Azure 存储帐户，请创建一个通用 Azure 存储帐户。 在本演练中，使用 blob 存储同时作为源和目标数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)一文获取创建步骤。
 2. 在存储帐户中创建名为 adfblobconnector 的 Blob 容器。 
 4. 在 adfblobconnector 容器中创建名为 input 的文件夹。
 5. 创建含以下内容且名为 emp.txt 的文件，并使用 [Azure 存储资源管理器](https://azurestorageexplorer.codeplex.com/)等工具将其上传到 input 文件夹
@@ -178,9 +177,9 @@ ms.lasthandoff: 06/22/2017
     ```
 ### <a name="create-the-data-factory"></a>创建数据工厂
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 单击左上角的“+ 新建”，单击“智能 + 分析”，然后单击“数据工厂”。
+2. 单击左上角的“+ 新建”，单击“智能 + 分析”，并单击“数据工厂”。
 3. 在“新建数据工厂”  边栏选项卡中：   
-    1. 输入 ADFBlobConnectorDF作为名称。 Azure 数据工厂的名称必须全局唯一。 如果收到错误“`*Data factory name “ADFBlobConnectorDF” is not available`”，请更改数据工厂的名称（例如改为 yournameADFBlobConnectorDF），然后重新尝试创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
+    1. 输入 ADFBlobConnectorDF作为名称。 Azure 数据工厂的名称必须全局唯一。 如果收到错误“`*Data factory name “ADFBlobConnectorDF” is not available`”，请更改数据工厂的名称（例如改为 yournameADFBlobConnectorDF），并重新尝试创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
     2. 选择 **Azure 订阅**。
     3. 对于资源组，选择“使用现有”以选择现有资源组（或）选择“新建”以输入资源组的名称。
     4. 选择数据工厂的**位置**。
@@ -213,18 +212,18 @@ ms.lasthandoff: 06/22/2017
       ![复制工具 - 指定 Azure Blob 存储帐户](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
 5. 在“选择输入文件或文件夹”  页上：
    1. 双击“adfblobcontainer”。
-   2. 选择“input”，然后单击“选择”。 在本演练中，选择输入文件夹。 也可以改为选择文件夹中的 emp.txt 文件。 
+   2. 选择“input”，并单击“选择”。 在本演练中，选择输入文件夹。 也可以改为选择文件夹中的 emp.txt 文件。 
       ![复制工具 - 选择输入文件或文件夹](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
 6. 在“选择输入文件或文件夹” 页上：
-    1. 确认“文件或文件夹”已设置为 adfblobconnector/input。 如果文件位于子文件夹中，例如，2017/04/01、2017/04/02 依此类推，请输入 adfblobconnector/input/{年}/{月}/{日} 作为文件或文件夹。 在文本框外按 Tab 时，你会看到三个下拉列表，用于选择年 (yyyy)、月 (MM) 和日 (dd) 的格式。 
-    2. 请勿设置“以递归方式复制文件”。 选择此选项将以递归方式遍历文件夹，寻找要复制到目标的文件。 
+    1. 确认“文件或文件夹”已设置为 adfblobconnector/input。 如果文件位于子文件夹中，例如，2017/04/01、2017/04/02 依此类推，请输入 adfblobconnector/input/{年}/{月}/{日} 作为文件或文件夹。 在文本框外按 Tab 时，会看到三个下拉列表，用于选择年 (yyyy)、月 (MM) 和日 (dd) 的格式。 
+    2. 请勿设置“以递归方式复制文件”。 选择此选项以递归方式遍历文件夹，寻找要复制到目标的文件。 
     3. 请勿选择“二进制复制”选项。 选择此选项将对源文件执行到目标的二进制复制。 请勿对此演练选择该选项，以便在下一页中看到更多选项。 
     4. 确认“压缩类型”已设为“无”。 如果源文件使用支持的格式之一进行压缩，请为此选项选择一个值。 
     5. 单击“下一步”。
     ![复制工具 - 选择输入文件或文件夹](./media/data-factory-azure-blob-connector/chose-input-file-folder.png) 
 7. 在“文件格式设置”页上，可以看到分隔符以及向导通过分析文件自动检测到的架构。 
     1. 请确认以下选项：a. “文件格式”已设为“文本格式”。 可在下拉列表中看到所有支持的格式。 例如：JSON、Avro、ORC 和 Parquet。
-        b.在“磁贴徽标”下面，选择“删除上传的徽标”。 “列分隔符”已设为 `Comma (,)`。 可在下拉列表中看到数据工厂支持的其他列分隔符。 还可以指定自定义分隔符。
+        b. “列分隔符”已设为 `Comma (,)`。 可在下拉列表中看到数据工厂支持的其他列分隔符。 还可以指定自定义分隔符。
         c. “行分隔符”已设为 `Carriage Return + Line feed (\r\n)`。 可在下拉列表中看到数据工厂支持的其他行分隔符。 还可以指定自定义分隔符。
         d. “跳过行计数”已设为“0”。 如果想要跳过文件顶部的几行，请在此处输入数字。
         e.  未设置“第一数据行包含列名”。 如果源文件的第一行包含列名称，请选择此选项。
@@ -234,7 +233,7 @@ ms.lasthandoff: 06/22/2017
     4. 单击底部的“架构”选项卡，查看复制向导通过查看源文件中的数据推断出来的架构。
     5. 检查分隔符并预览数据之后，请单击“下一步”。
     ![复制工具 - 文件格式设置](./media/data-factory-azure-blob-connector/copy-tool-file-format-settings.png)  
-8. 在“目标数据存储”页上，选择“Azure Blob 存储”，然后单击“下一步”。 在本演练中，使用 Azure blob 存储同时作为源和目标数据存储。    
+8. 在“目标数据存储”页上，选择“Azure Blob 存储”，并单击“下一步”。 在本演练中，使用 Azure blob 存储同时作为源和目标数据存储。    
     ![复制工具 - 选择目标数据存储](media/data-factory-azure-blob-connector/select-destination-data-store.png)
 9. 在“指定 Azure Blob 存储帐户”页上：
    1. 在“连接名称”字段中输入 AzureStorageLinkedService。
@@ -251,20 +250,19 @@ ms.lasthandoff: 06/22/2017
     11. 确认“复制行为”已设为“合并文件”。 如果已存在具有相同名称的输出文件，新内容将添加到相同文件的末尾。
     12. 单击“下一步”。
     ![复制工具 - 选择输出文件或文件夹](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
-11. 在“文件格式设置”页上，查看设置，然后单击“下一步”。 可在此处选择“向输出文件添加标题”。 如果选择该选项，将添加一个标题行，包含源架构的列名称。 查看源的架构时，可以重命名默认列名称。 例如，可以将第一列改为“名字”，而第二列改为“姓氏”。 然后，将生成输出文件和标题，其中这些名称为列名称。 
+11. 在“文件格式设置”页上，查看设置，并单击“下一步”。 可在此处选择“向输出文件添加标题”。 如果选择该选项，将添加一个标题行，包含源架构的列名称。 查看源的架构时，可以重命名默认列名称。 例如，可以将第一列改为“名字”，而第二列改为“姓氏”。 然后，将生成输出文件和标题，其中这些名称为列名称。 
     ![复制工具 - 目标的文件格式设置](media/data-factory-azure-blob-connector/file-format-destination.png)
-12. 在“性能设置”页上，确认“云单位”和“并行副本”已设为“自动”，然后单击“下一步”。 有关这些设置的详细信息，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md#parallel-copy)。
+12. 在“性能设置”页上，确认“云单位”和“并行副本”已设为“自动”，并单击“下一步”。 有关这些设置的详细信息，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md#parallel-copy)。
     ![复制工具 - 性能设置](media/data-factory-azure-blob-connector/copy-performance-settings.png) 
-14. 在“摘要”页上，查看所有设置（任务属性、源和目标的设置以及复制设置），然后单击“下一步”。
+14. 在“摘要”页上，查看所有设置（任务属性、源和目标的设置以及复制设置），并单击“下一步”。
     ![复制工具 -“摘要”页](media/data-factory-azure-blob-connector/copy-tool-summary-page.png)
-15. 在“摘要”页中检查信息，然后单击“完成”。 复制向导在数据工厂（即启动该向导的位置）中创建两个链接服务、两个数据集（输入和输出）和一个管道。
+15. 在“摘要”页中检查信息，并单击“完成”。 复制向导在数据工厂（即启动该向导的位置）中创建两个链接服务、两个数据集（输入和输出）和一个管道。
     ![复制工具 -“部署”页](media/data-factory-azure-blob-connector/copy-tool-deployment-page.png)
 
 ### <a name="monitor-the-pipeline-copy-task"></a>监视管道（复制任务）
 
 1. 单击“部署”页中的链接`Click here to monitor copy pipeline`。 
-2. 将以单独的选项卡形式显示“监视和管理应用程序”。 
-    ![监视和管理应用](media/data-factory-azure-blob-connector/monitor-manage-app.png)
+2. 将以单独的选项卡形式显示“监视和管理应用程序”。![监视和管理应用](media/data-factory-azure-blob-connector/monitor-manage-app.png)
 3. 将顶部的“开始”时间更改为 `04/19/2017`，“结束”时间改为 `04/27/2017`，然后单击“应用”。 
 4. “活动时段”列表中应会显示五个活动时段。 “WindowStart”时间应包含从管道开始到管道结束时间的所有日子。 
 5. 针对“活动时段”列表多次单击“刷新”按钮，直到看到所有活动时段均已设为“就绪”。 
@@ -296,7 +294,7 @@ ms.lasthandoff: 06/22/2017
 以下各节详细介绍了这些实体。 
 
 #### <a name="linked-services"></a>链接服务
-你应看到两项链接服务。 一个用于源，另一个用于目标。 在本演练中，这两个服务除名称不同外，定义看起来完全一样。 链接服务的“类型”已设为“AzureStorage”。 链接服务定义中最重要的属性是“connectionString”，数据工厂在运行时用其连接到 Azure 存储帐户。 忽略定义中的 hubName 属性。 
+应看到两项链接服务。 一个用于源，另一个用于目标。 在本演练中，这两个服务除名称不同外，定义看起来完全一样。 链接服务的“类型”已设为“AzureStorage”。 链接服务定义中最重要的属性是“connectionString”，数据工厂在运行时用其连接到 Azure 存储帐户。 忽略定义中的 hubName 属性。 
 
 ##### <a name="source-blob-storage-linked-service"></a>源 blob 存储链接服务
 ```json
@@ -400,7 +398,7 @@ ms.lasthandoff: 06/22/2017
 ```
 
 #### <a name="pipeline"></a>管道
-管道只包含一个活动。 将活动的“类型”设为“复制”。  活动的类型属性有两个部分，一部分用于源，另一部分用于接收器。 源类型已设为“BlobSource”，因为活动从 blob 存储复制数据。 接收器类型已设为“BlobSink” ，因为活动将数据复制到 blob 存储。 复制活动采用 InputDataset-z4y 作为输入，采用OutputDataset-z4y 作为输出。 
+管道只包含一个活动。 将活动的“类型”设为“复制”。  活动的类型属性有两个部分，一部分用于源，另一部分用于接收器。 源类型已设为“BlobSource”，因为活动从 blob 存储复制数据。 接收器类型已设为“BlobSink”，因为活动将数据复制到 blob 存储。 复制活动采用 InputDataset-z4y 作为输入，采用OutputDataset-z4y 作为输出。 
 
 有关 BlobSource 和 BlobSink 支持的属性的详细信息，请参阅[复制活动属性](#copy-activity-properties)部分。 
 
@@ -764,7 +762,7 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 ```
 
 > [!NOTE]
-> 若要将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
+> 要将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
 ## <a name="performance-and-tuning"></a>性能和优化
 请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。

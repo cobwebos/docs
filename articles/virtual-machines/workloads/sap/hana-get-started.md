@@ -16,12 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 88441cd85dd07d701805131f67eda20bbe857ae1
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 05fb31007e1e4c2243f93169129ec5b2c93099e2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>快速入门：在 Azure VM 上手动安装单实例 SAP HANA
@@ -202,7 +201,7 @@ Azure 上 Linux VM 中的根文件系统具有大小限制。 因此，有必要
 
 Azure 高级存储允许定义磁盘缓存模式。 对于保存 /hana/data 和 /hana/log 的条带化集，应禁用磁盘缓存。 对于其他卷（磁盘），缓存模式都应设置为“ReadOnly”。
 
-有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../../../storage/storage-premium-storage.md)。
+有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../../../storage/common/storage-premium-storage.md)。
 
 要查找用于创建 VM 的示例 JSON 模板，请转到 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates)。
 vm-simple-sles 模板是基本模板。 它包含具有额外 100-GB 数据磁盘的存储区。 此模板可以用作基类。 可将模板调整为特定配置。
@@ -284,7 +283,7 @@ SLES for SAP Applications 12 GA 和 SLES for SAP Applications 12 SP1 具有替�
 
    `zypper in -t pattern gnome-basic`
 
-2. 然后安装 xrdp，以便通过 RDP 连接到 VM：
+2. 然后安装 xrdp，以便通过 RDP 连接到虚拟机：
 
    `zypper in xrdp`
 

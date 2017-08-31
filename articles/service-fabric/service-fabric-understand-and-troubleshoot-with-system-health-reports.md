@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2017
+ms.date: 08/18/2017
 ms.author: oanapl
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: 458e14f48a329cd36d3986986724e587839b355e
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 54e20146b2f1e0ca6153b66319be70c6f7c2fb59
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>使用系统运行状况报告进行故障排除
@@ -48,7 +48,7 @@ Azure Service Fabric 组件报告包含群集中的所有实体。 [运行状况
 群集运行状况实体在运行状况存储中自动创建。 如果一切工作正常，则不会有任何系统报告。
 
 ### <a name="neighborhood-loss"></a>邻居丢失
-**System.Federation** 在检测到邻居丢失时会报告一个错误。 报告来自于单个节点，并且在属性名称中包含节点 ID。 如果在整个 Service Fabric 环中出现一个邻居丢失，通常你会预料到两个事件（间隙的两侧都会报告）。 如果有多个邻居丢失，则将有更多事件。
+**System.Federation** 在检测到邻居丢失时会报告一个错误。 报告来自于单个节点，并且在属性名称中包含节点 ID。 如果在整个 Service Fabric 环中出现一个邻居丢失，通常可预料到两个事件（间隙的两侧都会报告）。 如果有多个邻居丢失，则将有更多事件。
 
 报告将全局租约超时指定为生存时间。 只要条件仍处于活动状态，就会在每半个 TTL 期间重新发送一次报告。 事件到期后会自动将其删除。 过期后删除行为可以确保即使在报告节点处于关闭状态时也会将报告从运行状况存储中正常清除。
 
@@ -213,7 +213,7 @@ HealthEvents          :
                         Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-以下示例显示了一个小于目标副本计数的分区的运行状况。 下一步是获取显示分区配置方式的分区描述：**MinReplicaSetSize** 为 2，**TargetReplicaSetSize** 为 7。 然后获得群集中的节点数：5。 因此在这种情形下，不能放置两个副本。
+以下示例显示了一个小于目标副本计数的分区的运行状况。 下一步是获取显示分区配置方式的分区描述：MinReplicaSetSize 为 3，TargetReplicaSetSize 为 7。 然后获得群集中的节点数：5。 因此，这种情况下无法放置两个副本，因为副本的目标数量大于可用的节点数。
 
 ```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth -ReplicasFilter None -ExcludeHealthStatistics
@@ -388,7 +388,7 @@ PartitionLowKey        : -9223372036854775808
 PartitionHighKey       : 9223372036854775807
 PartitionStatus        : InQuorumLoss
 LastQuorumLossDuration : 00:00:13
-MinReplicaSetSize      : 2
+MinReplicaSetSize      : 3
 TargetReplicaSetSize   : 3
 HealthState            : Error
 DataLossNumber         : 130743746152927699

@@ -4,7 +4,7 @@ description: "了解如何在 Azure Functions 中使用计时器触发器。"
 services: functions
 documentationcenter: na
 author: christopheranderson
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions，函数，事件处理，动态计算，无服务体系结构"
@@ -15,14 +15,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/27/2017
-ms.author: chrande; glenga
+ms.author: glenga
 ms.custom: 
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
-ms.openlocfilehash: 12a793c4df497f221dbd592ca3d249b8c1f65e04
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 6a97ab8508f889b77d064a5da70e3c726d62900c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/22/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-functions-timer-trigger"></a>Azure Functions 计时器触发器
@@ -31,7 +30,7 @@ ms.lasthandoff: 06/22/2017
 
 本文介绍了如何在 Azure Functions 中对计时器触发器进行配置和编写代码。 Azure Functions 有一个计时器触发器绑定，允许用户根据定义的计划运行函数代码。 
 
-计时器触发器支持多实例扩展。 特定计时器函数的单个实例在所有实例上运行。
+计时器触发器支持多实例扩展。特定计时器函数的单个实例在所有实例上运行。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 

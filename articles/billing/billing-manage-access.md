@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2017
+ms.date: 08/22/2017
 ms.author: vikdesai
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 247782a86a0d20486513dff0dae0c1564b5ecb72
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: c70904097f139bc2178feed83f1cf1274f3c738d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>使用基于角色的访问控制管理对 Azure 计费信息的访问
@@ -30,11 +30,15 @@ ms.lasthandoff: 05/25/2017
 
 帐户管理员必须使用 [Azure 门户](https://portal.azure.com/)加入，允许通过 API 访问其他用户的发票。
 
-1. 作为帐户管理员，请从 Azure 门户的[“订阅”边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中选择你的订阅。
+1. 作为帐户管理员，请从 Azure 门户的[“订阅”边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中选择订阅。
 
-1. 选择“发票”，然后“访问发票”。
+1. 选择“发票”，并“访问发票”。
 
-1. 打开访问。
+    ![显示如何委托对发票的访问权限的屏幕截图](./media/billing-manage-access/AA-optin.png)
+
+1. 启用访问权限，然后保存所做更改，允许具有划归到订阅的角色身份的用户下载发票。
+
+    ![屏幕截图，显示用于委托对发票的访问权限的开关](./media/billing-manage-access/AA-optinAllow.png)
 
 通过选择加入，允许订阅的服务管理员、协同管理员、所有者、参与者、读取者和计费读取者在 Azure 门户中下载 PDF 发票。 但是，早于 2016 年 12 月的发票目前仅供帐户管理员查看。
 
@@ -46,7 +50,7 @@ ms.lasthandoff: 05/25/2017
 
 1. 从 Azure 门户的[“订阅”边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中选择订阅。
 
-1. 选择“访问控制(IAM)”，然后单击“添加”。
+1. 选择“访问控制(IAM)”，并单击“添加”。
 
     ![在“订阅”边栏选项卡中显示 IAM 的屏幕截图](./media/billing-manage-access/select-iam.PNG)
 
@@ -54,7 +58,7 @@ ms.lasthandoff: 05/25/2017
 
     ![在弹出窗口视图中显示计费读取者的屏幕快照](./media/billing-manage-access/select-roles.PNG)
 
-1. 键入想邀请的用户的电子邮件，然后单击“确定”发送邀请。
+1. 键入想邀请的用户的电子邮件，并单击“确定”发送邀请。
 
     ![显示输入电子邮件进行邀请的屏幕截图](./media/billing-manage-access/add-user.PNG)
 

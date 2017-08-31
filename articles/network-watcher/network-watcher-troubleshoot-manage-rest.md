@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 33ae214a0cb606393c449920b78bde3230ff30c3
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: bc61be74d85a309c158716460b918baaf4fa94dc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -32,18 +31,18 @@ ms.lasthandoff: 06/20/2017
 > - [CLI 2.0](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
-网络观察程序提供了许多功能，因为它关系到了解 Azure 中的网络资源。 其中一项功能就是资源故障排除。 可以通过门户、PowerShell、CLI 或 REST API 调用资源故障排除。 调用后，网络观察程序将检查虚拟网络网关或连接的运行状况，并返回调查结果。
+网络观察程序提供了许多功能，因为它关系到了解 Azure 中的网络资源。 其中一项功能就是资源故障排除。 可以通过门户、PowerShell、CLI 或 REST API 调用资源故障排除。 调用后，网络观察程序会检查虚拟网络网关或连接的运行状况，并返回调查结果。
 
 本文逐步讲解如何完成当前可用于资源故障排除的不同管理任务。
 
-- [**排查虚拟网络网关问题**](#troubleshoot-a-virtual-network-gateway)
-- [**排查连接问题**](#troubleshoot-connections)
+- [排查虚拟网络网关问题](#troubleshoot-a-virtual-network-gateway)
+- [排查连接问题](#troubleshoot-connections)
 
 ## <a name="before-you-begin"></a>开始之前
 
 ARMclient 用于使用 PowerShell 调用 REST API。 根据 [Chocolatey 上的 ARMClient](https://chocolatey.org/packages/ARMClient) 中所述在 chocolatey 上找到 ARMClient
 
-此方案假定你已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
+此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
 有关支持的网关类型列表，请访问[支持的网关类型](network-watcher-troubleshoot-overview.md#supported-gateway-types)。
 
@@ -87,7 +86,7 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${NWresourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/troubleshoot?api-version=2016-03-30 "
 ```
 
-由于此操作会长时间运行，因此将在响应标头中返回用于查询操作的 URI 以及结果的 URI，如以下响应中所示：
+由于此操作会长时间运行，因此会在响应标头中返回用于查询操作的 URI 以及结果的 URI，如以下响应中所示：
 
 **重要值**
 
@@ -120,7 +119,7 @@ null
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operations/8a1167b7-6768-4ac1-85dc-703c9c9b9247?api-version=2016-03-30"
 ```
 
-当操作正在进行时，响应将显示 **InProgress**，如以下示例中所示：
+当操作正在进行时，响应会显示 **InProgress**，如以下示例中所示：
 
 ```json
 {
@@ -216,7 +215,7 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 ```
 
 > [!NOTE]
-> 无法同时针对连接及其相应的网关运行故障排除操作。 必须先完成该操作，然后才能针对前一个资源执行该操作。
+> 无法同时针对连接及其相应的网关运行故障排除操作。 必须先完成该操作，才能针对前一个资源执行该操作。
 
 由于此操作是一个长时间运行的事务，因此将返回响应标头、用于查询操作的 URI 以及结果的 URI，如以下响应中所示：
 
@@ -251,7 +250,7 @@ null
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operations/843b1c31-4717-4fdd-b7a6-4c786ca9c501?api-version=2016-03-30"
 ```
 
-当操作正在进行时，响应将显示 **InProgress**，如以下示例中所示：
+当操作正在进行时，响应会显示 **InProgress**，如以下示例中所示：
 
 ```json
 {
@@ -328,7 +327,7 @@ is a transient state while the Azure platform is being updated.",
 
 操作文本提供有关如何解决问题的常规指导。 如果可以对问题采取措施，将提供一个包含更多指导的链接。 如果没有更多指导，响应将提供一个用于建立支持案例的 URL。  有关响应的属性及其包含的内容的详细信息，请访问[网络观察程序故障排除概述](network-watcher-troubleshoot-overview.md)
 
-有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/storage-dotnet-how-to-use-blobs.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息可以在此链接中找到：[存储资源管理器](http://storageexplorer.com/)
+有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息可以在此链接中找到：[存储资源管理器](http://storageexplorer.com/)
 
 ## <a name="next-steps"></a>后续步骤
 

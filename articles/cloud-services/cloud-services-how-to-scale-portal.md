@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
-ms.openlocfilehash: e746decaea19477e52aba3ce714d8dd10140602e
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e9683d4c5779450fd67fa42ab13095c7f201b4cd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/23/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -39,15 +39,15 @@ ms.lasthandoff: 05/23/2017
 
     角色实例越大，使用的内核越多。 只能在订阅的内核限制内缩放应用程序。 例如，假设订阅有 20 个核心的限制。 如果通过两个中等规模的云服务（一共 4 个核心）运行某个应用程序，则对于订阅中的其他云服务部署，只有 16 个核心的扩展空间。 有关大小的详细信息，请参阅[云服务的大小](cloud-services-sizes-specs.md)。
 
-* 你可以基于队列消息阈值来进行缩放。 有关如何使用队列的详细信息，请参阅[如何使用队列存储服务](../storage/storage-dotnet-how-to-use-queues.md)。
+* 可以基于队列消息阈值来进行缩放。 有关如何使用队列的详细信息，请参阅[如何使用队列存储服务](../storage/queues/storage-dotnet-how-to-use-queues.md)。
 
-* 你还可以缩放与订阅关联的其他资源。
+* 还可以缩放与订阅关联的其他资源。
 
 * 若要使应用程序具有高可用性，应确保为其部署两个或更多角色实例。 有关详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)。
 
 
 ## <a name="where-scale-is-located"></a>缩放位置
-选择云服务之后，你应会看到云服务边栏选项卡。
+选择云服务之后，应会看到云服务边栏选项卡。
 
 1. 在云服务边栏选项卡上的“角色和实例”磁贴中，选择云服务的名称。   
    **重要说明**：请务必单击云服务角色，而不是角色下面的角色实例。
@@ -96,18 +96,18 @@ ms.lasthandoff: 05/23/2017
 #### <a name="rule"></a>规则
 规则将添加到配置文件，代表触发缩放的条件。
 
-规则触发器基于云服务的指标（CPU 使用量、磁盘活动或网络活动），你可以在其中添加条件值。 此外，你也可以基于消息队列或与订阅关联的其他一些 Azure 资源的指标来设置触发器。
+规则触发器基于云服务的指标（CPU 使用量、磁盘活动或网络活动），可以在其中添加条件值。 此外，也可以基于消息队列或与订阅关联的其他一些 Azure 资源的指标来设置触发器。
 
 ![](./media/cloud-services-how-to-scale-portal/rule-settings.png)
 
 配置规则之后，请选择规则边栏选项卡底部的“确定”按钮。
 
 ## <a name="back-to-manual-scale"></a>返回到手动缩放
-导航到 [缩放设置](#where-scale-is-located)，并将 **缩放方式** 选项设置为 **手动输入的实例计数** 。
+导航到 [缩放设置](#where-scale-is-located)，并将 **缩放方式** 选项设置为 **手动输入的实例计数**。
 
 ![包含配置文件和规则的云服务缩放设置](./media/cloud-services-how-to-scale-portal/manual-basics.png)
 
-此设置会删除角色中的自动缩放，然后用户就可以直接设置实例计数。
+此设置会删除角色中的自动缩放，用户就可以直接设置实例计数。
 
 1. 缩放（手动或自动）选项。
 2. 角色实例滑块，用于设置要缩放的实例。

@@ -1,9 +1,9 @@
 ---
-title: "Azure Active Directory B2C：使用 Application Insights 排查自定义策略问题 | Microsoft Docs"
+title: "使用 Application Insights 排查自定义策略问题 - Azure AD B2C | Microsoft Docs"
 description: "如何设置 Application Insights 来跟踪自定义策略的执行"
 services: active-directory-b2c
 documentationcenter: 
-author: saeeda
+author: saeedakhter-msft
 manager: krassk
 editor: parakhj
 ms.assetid: 658c597e-3787-465e-b377-26aebc94e46d
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
-ms.author: saeeda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
-ms.openlocfilehash: db658319637f1a45616091e034a0fc4db44885d4
+ms.author: saeedakhter-msft
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ad31e5f4ef3be78d8d2dd6b9c7d83e447d9ef776
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/22/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -32,12 +32,12 @@ Azure AD B2C 支持将数据发送到 Application Insights 的功能。  Applica
 
 ### <a name="setup-application-insights"></a>设置 Application Insights
 
-1. 转到 [Azure 门户](https://portal.azure.com)。 确保你在具有 Azure 订阅的租户（而不是 Azure AD B2C 租户）中。
+1. 转到 [Azure 门户](https://portal.azure.com)。 确保在具有 Azure 订阅的租户（而不是 Azure AD B2C 租户）中。
 1. 在左侧导航菜单中，单击“+ 新建”。
-1. 搜索并选择“Application Insights”，然后单击“创建”。
-1. 完成表单，然后单击“创建”。 选择“常规”作为“应用程序类型”。
+1. 搜索并选择“Application Insights”，单击“创建”。
+1. 完成表单，并单击“创建”。 选择“常规”作为“应用程序类型”。
 1. 创建资源后，打开 Application Insights 资源。
-1. 在左侧菜单中找到“属性”，然后单击它。
+1. 在左侧菜单中找到“属性”，并单击它。
 1. 复制**检测密钥**并将其保存，以便在下一部分中使用。
 
 ### <a name="set-up-the-custom-policy"></a>设置自定义策略
@@ -102,7 +102,7 @@ traces \| where timestamp > ago(1d) | 查看 Azure AD B2C 为前一天生成的�
 可在[此处](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)了解更多有关 Analytics 工具的信息。
 
 >[!NOTE]
->社区已开发一个用户旅程查看器来帮助标识开发人员。  Microsoft 不支持它，严格按原样提供。  它将读取 Application Insights 实例，并提供用户旅程事件的有序视图。  可以获取源代码并将其部署在你自己的解决方案中。
+>社区已开发一个用户旅程查看器来帮助标识开发人员。  Microsoft 不支持它，严格按原样提供。  它将读取 Application Insights 实例，并提供用户旅程事件的有序视图。  可以获取源代码并将其部署在自己的解决方案中。
 
 [不支持的自定义策略示例和相关工具的 Github 存储库](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
 

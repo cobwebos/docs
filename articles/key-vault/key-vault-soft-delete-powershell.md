@@ -8,13 +8,13 @@ manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
-ms.date: 08/04/2017
+ms.date: 08/21/2017
 ms.author: bruceper
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: b5ce7d5e0e353002803991f58dde78ab5c4627b9
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 1775902aa7ec820c3b6c34eda60961eecd27f014
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>如何将 Key Vault 软删除与 PowerShell 配合使用
@@ -27,6 +27,12 @@ Azure Key Vault 的软删除功能可以恢复已删除的保管库和保管库�
 ## <a name="prerequisites"></a>先决条件
 
 - Azure PowerShell 4.0.0 或更高版本 - 若尚未安装此产品，请安装 Azure PowerShell 并将其与 Azure 订阅相关联，请参阅[如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。 
+
+>[!NOTE]
+> 环境中可能加载了过期版本的 Key Vault PowerShell 输出格式化文件，而没有加载正确版本。 你可以从以下解决方案中选择一个使用：
+> 
+> - 升级到[版本 4.4.0 或更高版本的 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.2.0)即可解决此问题。
+> - 如果发现未看到此主题中所述的已启用软删除的属性，请使用以下查询：`$vault = Get-AzureRmKeyVault -VaultName myvault; $vault.EnableSoftDelete`。
 
 有关适用于 PowerShell 的 Key Vault 特定引用信息，请参阅 [Azure Key Vault PowerShell 引用](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-4.2.0)。
 

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/09/2017
 ms.author: mikhegn
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 530749275b720caefd7e7e57291b4bc0d313faf0
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: d11b9af982112db8ba94b62110c18be843f1abb1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -139,7 +139,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 ![应用程序前端](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>在群集中缩放应用程序和服务
-可以跨群集轻松缩放 Service Fabric 服务，以便适应服务负载变化。 可以通过更改群集中运行的实例数量来缩放服务。 服务缩放方式有多种，可以使用 PowerShell 或 Azure CLI 2.0 脚本/命令。 在此示例中，我们使用的是 Service Fabric Explorer。
+可以跨群集轻松缩放 Service Fabric 服务，以便适应服务负载变化。 可以通过更改群集中运行的实例数量来缩放服务。 服务缩放方式有多种，可以使用 PowerShell 或 Service Fabric CLI (sfctl) 脚本/命令。 在此示例中，我们使用的是 Service Fabric Explorer。
 
 Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过浏览器进行访问，访问方法是转到群集 HTTP 管理端口 19080（例如，`http://winh1x87d1d.westus.cloudapp.azure.com:19080`）。
 

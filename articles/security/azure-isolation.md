@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 2559bdbca8002392ef925e0eddfd23044cc563b5
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 9e6331df4a8a07c3f2524891caf77bbaab3bff0b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 07/12/2017
 这些主题涵盖各类不同宽度和深度的内容，并且定期更新。 本文档属于下面摘要部分中总结的系列的一部分。
 
 ### <a name="azure-platform"></a>Azure 平台
-Azure 是一种开放灵活的云服务平台，支持多种操作系统、编程语言、框架、工具、数据库和设备。 例如，你可以：
+Azure 是一种开放灵活的云服务平台，支持多种操作系统、编程语言、框架、工具、数据库和设备。 例如，可以：
 - 使用 Docker 集成运行 Linux 容器；
 - 使用 JavaScript、Python、.NET、PHP、Java 和 Node.js 生成应用；还可以生成
 - 生成适用于 iOS、Android 和 Windows 设备的后端。
@@ -51,7 +51,7 @@ Microsoft Azure 同时针对恶意和非恶意用户提供了隔离，并向架�
 
 在启用云的工作区中，可以将“租户”定义为拥有并管理该云服务的特定实例的客户端或组织。 使用 Microsoft Azure 提供的标识平台，租户只是组织在注册 Microsoft 云服务时接收并拥有的 Azure Active Directory (Azure AD) 专用实例。
 
-每个 Azure AD 目录都是独特的，独立于其他 Azure AD 目录。 就像公司办公大楼是你的组织特有的安全资产一样，根据设计，Azure AD 目录也是仅供你的组织使用的安全资产。 Azure AD 体系结构隔离了客户数据和身份信息，避免混合存放。 这意味着，一个 Azure AD 目录的用户和管理员不可能意外或恶意性地访问另一目录中的数据。
+每个 Azure AD 目录都是独特的，独立于其他 Azure AD 目录。 就像公司办公大楼是组织特有的安全资产一样，根据设计，Azure AD 目录也是仅供组织使用的安全资产。 Azure AD 体系结构隔离了客户数据和身份信息，避免混合存放。 这意味着，一个 Azure AD 目录的用户和管理员不可能意外或恶意性地访问另一目录中的数据。
 
 ### <a name="azure-tenancy"></a>Azure 租户
 Azure 租户（Azure 订阅）是指 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 中的“客户/账单”关系和唯一的[租户](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant)。 Microsoft Azure 中的租户级别隔离是使用 Azure Active Directory 及其提供的[基于角色的控制](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)实现的。 每个 Azure 订阅都会与一个 Azure Active Directory (AD) 目录关联。
@@ -71,7 +71,7 @@ Azure 租户（Azure 订阅）是指 [Azure Active Directory](https://docs.micro
 
 - Azure AD 用户无权访问物理资产或位置，因此他们不可能绕过下述逻辑 RBAC 策略检查。
 
-为了满足诊断和维护需求，需要使用采用实时特权提升系统的操作模型。 Azure AD Privileged Identity Management (PIM) 引入了有资格管理员的概念。 [有资格管理员](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)应是不时（但不是每天）需要特权访问的用户。 该角色处于非活动状态，直到用户需要访问权限，然后他们完成激活过程，并在预定的时间内成为活动管理员。
+为了满足诊断和维护需求，需要使用采用实时特权提升系统的操作模型。 Azure AD Privileged Identity Management (PIM) 引入了有资格管理员的概念。[有资格管理员](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)应是不时（但不是每天）需要特权访问的用户。 该角色将处于非活动状态，直到用户需要访问权限，然后他们完成激活过程，并在预定的时间内成为活动管理员。
 
 ![Azure AD 特权标识管理](./media/azure-isolation/azure-isolation-fig2.png)
 
@@ -120,9 +120,9 @@ Microsoft 采取强硬措施保护数据免受不适当的访问或未经授权�
 
 对于经过审核认证（如 ISO/IEC 27001）的企业服务，Microsoft 和认证审核公司会定期进行验证，仅出于合法的商业目的对这些服务访问的资产执行样本审计。 用户始终都可随时访问自己的客户数据，而不论出于什么原因。
 
-如果用户删除了任何数据，Microsoft Azure 也将删除该数据，包括所有缓存或备份副本。 对于范围内服务，该删除操作将在保留期结束后 90 天内进行。 （[联机服务条款](http://aka.ms/Online-Services-Terms)的数据处理条款部分对范围内服务进行了定义。）
+如果用户删除了任何数据，Microsoft Azure 也将删除该数据，包括所有缓存或备份副本。 对于范围内服务，该删除操作会在保留期结束后 90 天内进行。 （[联机服务条款](http://aka.ms/Online-Services-Terms)的数据处理条款部分对范围内服务进行了定义。）
 
-如果用于存储的磁盘驱动器发生硬件故障，在 Microsoft 将其送回给制造商进行更换或修复前，将安全[擦除或销毁](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data)该磁盘驱动器上的数据。 驱动器上的数据将被覆盖，以确保无法通过任何方式恢复数据。
+如果用于存储的磁盘驱动器发生硬件故障，在 Microsoft 将其送回给制造商进行更换或修复前，将安全[擦除或销毁](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data)该磁盘驱动器上的数据。 驱动器上的数据会被覆盖，以确保无法通过任何方式恢复数据。
 
 ## <a name="compute-isolation"></a>计算隔离
 Microsoft Azure 提供各种基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动增加或减少。 这些计算实例和服务提供多个级别的隔离来保护数据，且不会降低客户所需配置的灵活性。
@@ -143,7 +143,7 @@ Azure 平台使用虚拟化环境。 用户实例以单独的虚拟机方式运�
 Azure 的虚拟机监控程序相当于微内核，可将所有硬件访问请求从来宾虚拟机传递到主机，以便使用名为 VMBus 的共享内存界面进行处理。 这样可以防止用户获取对系统的原始读取/写入/执行访问权限，减轻共享系统资源的风险。
 
 ### <a name="advanced-vm-placement-algorithm--protection-from-side-channel-attacks"></a>高级 VM 布局算法和侧信道攻击防护
-任何跨 VM 攻击都包括两个步骤：在同一主机上放置一个攻击者控制的 VM 作为牺牲品 VM 之一，然后破坏隔离边界以窃取敏感的牺牲品信息，或者故意或因贪婪影响其性能。 Microsoft Azure 通过使用高级 VM 布局算法同时针对这两个步骤提供保护，并防止所有已知侧信道攻击，包括干扰性邻居 VM。
+任何跨 VM 攻击都包括两个步骤：在同一主机上放置一个攻击者控制的 VM 作为牺牲品 VM 之一，并破坏隔离边界以窃取敏感的牺牲品信息，或者故意或因贪婪影响其性能。 Microsoft Azure 通过使用高级 VM 布局算法同时针对这两个步骤提供保护，并防止所有已知侧信道攻击，包括干扰性邻居 VM。
 
 ### <a name="the-azure-fabric-controller"></a>Azure 结构控制器
 Azure 结构控制器负责将基础结构资源分配到租户工作负荷，并管理从主机到虚拟机的单向通信。 Azure 结构控制器的 VM 布局算法高度复杂，并且作为物理主机级别几乎不可能预测。
@@ -170,7 +170,7 @@ Azure 虚拟机监控程序、根 OS/FA 和客户 VM/GA 的集合包含一个计
 
 
 ### <a name="additional-rules-configured-by-fabric-controller-agent-to-isolate-vm"></a>结构控制器代理为隔离 VM 而配置的其他规则
-默认情况下，在创建虚拟机时，会阻止所有流量，然后结构控制器代理会配置数据包筛选器，添加规则和例外以允许经授权的流量。
+默认情况下，在创建虚拟机时，会阻止所有流量，结构控制器代理会配置数据包筛选器，添加规则和例外以允许经授权的流量。
 
 进行编程的规则有两类：
 
@@ -222,7 +222,7 @@ Azure 提供了以下加密类型来保护数据：
 
 -   [传输级别加密](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit)，例如从 Azure 存储传入或传出数据时使用的 HTTPS。
 
--   [线路加密](../storage/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares)，例如 Azure 文件共享的 SMB 3.0 加密。
+-   [线路加密](../storage/common/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares)，例如 Azure 文件共享的 SMB 3.0 加密。
 
 -   [客户端加密](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage)，在将数据传输到存储之前加密数据，以及从存储传出数据后解密数据。
 
@@ -321,10 +321,10 @@ SQL Azure 服务器不是物理实例或 VM 实例，而是数据库、共享管
 
 网关后面的层称为“后端”。 这是以高度可用的方式存储所有数据的位置。 每段数据都被认为属于某个“分区”或“故障转移单元”，并且有至少三个副本。 副本由 SQL Server 引擎存储和复制，并由通常称为“结构”的故障转移系统进行管理。
 
-通常，作为安全预防措施，后端系统不会与其他系统进行出站通信。 这将保留到前端（网关）层中的系统。 作为深层防御机制，网关层计算机对后端计算机具有有限的特权，可最大限度减少攻击。
+通常，作为安全预防措施，后端系统不会与其他系统进行出站通信。 这会保留到前端（网关）层中的系统。 作为深层防御机制，网关层计算机对后端计算机具有有限的特权，可最大限度减少攻击。
 
 ### <a name="isolation-by-machine-function-and-access"></a>按计算机功能和访问权限的隔离
-SQL Azure（由针对不同计算机功能运行的服务组成。 按照流量在后端只进不出的一般原则，SQL Azure 分为“后端”云数据库和“前端”（网关/管理）环境。 前端环境可与其他服务外部进行通信，而在后端只有有限的权限（足以调用进行调用所需的入口点）。
+SQL Azure（由针对不同计算机功能运行的服务组成。 按照流量在后端只进不出的一般原则，SQL Azure 分为“后端”云数据库和“前端”（网关/管理）环境。前端环境可与其他服务外部进行通信，而在后端只有有限的权限（足以调用进行调用所需的入口点）。
 
 ## <a name="networking-isolation"></a>网络隔离
 Azure 部署具有多层网络隔离。 下图显示了 Azure 提供给客户的各种网络隔离层。 这些层同时属于 Azure 平台本身的本机功能和客户定义的功能。 对于来自 Internet 的入站流量，Azure DDoS 提供针对 Azure 的大规模攻击的隔离。 下一层隔离是客户定义的公共 IP 地址（终结点），可以根据这些终结点确定哪些流量可以通过云服务进入虚拟网络。 本机 Azure 虚拟网络隔离可确保与其他所有网络完全隔离，而且流量只能流经用户配置的路径和方法。 这些路径和方法就是下一个安全层，在该层中，可以使用 NSG、UDR 和网络虚拟设备来创建隔离边界，以保护受保护网络中的应用程序部署。

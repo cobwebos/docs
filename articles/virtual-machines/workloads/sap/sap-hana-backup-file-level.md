@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: b7e17b83afb7306b74b8769f31188642b54566ca
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 5db0ceb1648b5afa278e1cbe1c42fce8033bfdc1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -35,11 +35,11 @@ ms.lasthandoff: 07/12/2017
 
 此图显示 SAP HANA Studio 中备份菜单项的对话框。 选择&quot;文件&quot;作为类型时，必须在文件系统中指定 SAP HANA 要将备份文件写入到的路径。 还原的工作方式与此相同。
 
-尽管此选项看上去简单而直接，但仍然需要注意一些事项。 如前所述，Azure VM 上可附加的数据磁盘数有限制。 根据数据库和磁盘吞吐量的要求，VM 文件系统上可能没有足够的容量用于存储 SAP HANA 备份文件，因此，可能需要使用软件 RAID 来跨多个数据磁盘进行条带化。 本文稍后将会提供用于移动这些备份文件，以及在处理 TB 量级的数据时管理文件大小限制和性能的选项。
+尽管此选项看上去简单而直接，但仍然需要注意一些事项。 如前所述，Azure VM 上可附加的数据磁盘数有限制。 根据数据库和磁盘吞吐量的要求，VM 文件系统上可能没有足够的容量用于存储 SAP HANA 备份文件，因此，可能需要使用软件 RAID 来跨多个数据磁盘进行条带化。 本文稍后会提供用于移动这些备份文件，以及在处理 TB 量级的数据时管理文件大小限制和性能的选项。
 
-在总容量方面能够提供更高自由度的另一个选项是 Azure Blob 存储。 尽管单个 Blob 的容量也限制为 1 TB，但是，单个 Blob 容器的总容量目前可以达到 500 TB。 此外，该选项可让客户选择性价比较高的所谓&quot;冷&quot; Blob 存储。 有关冷 Blob 存储的详细信息，请参阅 [Azure Blob 存储：热存储层和冷存储层](../../../storage/storage-blob-storage-tiers.md)。
+在总容量方面能够提供更高自由度的另一个选项是 Azure Blob 存储。 尽管单个 Blob 的容量也限制为 1 TB，但是，单个 Blob 容器的总容量目前可以达到 500 TB。 此外，该选项可让客户选择性价比较高的所谓&quot;冷&quot; Blob 存储。 有关冷 Blob 存储的详细信息，请参阅 [Azure Blob 存储：热存储层和冷存储层](../../../storage/blobs/storage-blob-storage-tiers.md)。
 
-为进一步提高安全性，可以使用异地复制的存储帐户来存储 SAP HANA 备份。 有关存储帐户复制的详细信息，请参阅 [Azure 存储复制](../../../storage/storage-redundancy.md)。
+为进一步提高安全性，可以使用异地复制的存储帐户来存储 SAP HANA 备份。 有关存储帐户复制的详细信息，请参阅 [Azure 存储复制](../../../storage/common/storage-redundancy.md)。
 
 可将专门用于 SAP HANA 备份的 VHD 放在异地复制的专用备份存储帐户中。 或者，可将保存 SAP HANA 备份的 VHD 复制到异地复制的存储帐户或位于不同区域的存储帐户。
 
@@ -47,11 +47,11 @@ ms.lasthandoff: 07/12/2017
 
 Azure 备份提供的选项不仅可以备份整个 VM，而且还能通过备份代理（必须在来宾 OS 上安装）备份文件和目录。 但是截止 2016 年 12 月，仅支持在 Windows 上使用此代理（请参阅[使用 Resource Manager 部署模型将 Windows Server 或客户端备份到 Azure](../../../backup/backup-configure-vault.md)）。
 
-一种解决方法是先将 SAP HANA 备份文件复制到 Azure 上的 Windows VM（例如通过 SAMBA 共享），然后从该 VM 使用 Azure 备份代理。 尽管这种方法在技术上是可行的，但由于要在 Linux 和 Windows VM 之间复制，因此复杂性将会增大，同时会大大减慢备份或还原过程的速度。 我们不建议采用此方法。
+一种解决方法是先将 SAP HANA 备份文件复制到 Azure 上的 Windows VM（例如通过 SAMBA 共享），然后从该 VM 使用 Azure 备份代理。 尽管这种方法在技术上是可行的，但由于要在 Linux 和 Windows VM 之间复制，因此复杂性会增大，同时会大大减慢备份或还原过程的速度。 我们不建议采用此方法。
 
 ## <a name="azure-blobxfer-utility-details"></a>Azure blobxfer 实用工具详细信息
 
-若要在 Azure 存储中存储目录和文件，可以使用 CLI 或 PowerShell，或者使用某个 [Azure SDK](https://azure.microsoft.com/downloads/) 开发一个工具。 此外，还可以使用即时可用的实用工具 AzCopy 将数据复制到 Azure 存储，但只能在 Windows 上执行此操作（请参阅[使用 AzCopy 命令行实用工具传输数据](../../../storage/storage-use-azcopy.md)）。
+若要在 Azure 存储中存储目录和文件，可以使用 CLI 或 PowerShell，或者使用某个 [Azure SDK](https://azure.microsoft.com/downloads/) 开发一个工具。 此外，还可以使用即时可用的实用工具 AzCopy 将数据复制到 Azure 存储，但只能在 Windows 上执行此操作（请参阅[使用 AzCopy 命令行实用工具传输数据](../../../storage/common/storage-use-azcopy.md)）。
 
 因此，我们使用了 blobxfer 来复制 SAP HANA 备份文件。 blobxfer 是许多客户在生产环境中使用的开源工具，可在 [GitHub](https://github.com/Azure/blobxfer) 上获取。 使用此工具可将数据直接复制到 Azure Blob 存储或 Azure 文件共享。 它还提供多种有用功能，例如 md5 哈希，或者在复制包含多个文件的目录时自动调整并行度。
 
@@ -71,7 +71,7 @@ Azure 备份提供的选项不仅可以备份整个 VM，而且还能通过备�
 
 ## <a name="copy-sap-hana-backup-files-to-azure-blob-storage"></a>将 SAP HANA 备份文件复制到 Azure Blob 存储
 
-截止 2016 年 12 月，快速存储 SAP HANA 备份文件的最佳选项是 Azure Blob 存储。 单个 Blob 容器的容量限制为 500 TB，这足以让 Azure 上的 GS5 VM 中运行的 SAP HANA 系统保存足够多的 SAP HANA 备份。 客户可以在&quot;热&quot;和&quot;冷&quot; Blob 存储之间选择（请参阅 [Azure Blob 存储：热存储层和冷存储层](../../../storage/storage-blob-storage-tiers.md)）。
+截止 2016 年 12 月，快速存储 SAP HANA 备份文件的最佳选项是 Azure Blob 存储。 单个 Blob 容器的容量限制为 500 TB，这足以让 Azure 上的 GS5 VM 中运行的 SAP HANA 系统保存足够多的 SAP HANA 备份。 客户可以在&quot;热&quot;和&quot;冷&quot; Blob 存储之间选择（请参阅 [Azure Blob 存储：热存储层和冷存储层](../../../storage/blobs/storage-blob-storage-tiers.md)）。
 
 使用 blobxfer 工具可以轻松地将 SAP HANA 备份文件直接复制到 Azure Blob 存储。
 
@@ -139,7 +139,7 @@ NFS 共享是一个高速带区集，与 SAP HANA 服务器上的带区集类似
 
 ## <a name="copy-sap-hana-backup-files-to-azure-file-service"></a>将 SAP HANA 备份文件复制到 Azure 文件服务
 
-可以在在 Azure Linux VM 内部装入 Azure 文件共享。 [如何通过 Linux 使用 Azure 文件存储](../../../storage/storage-how-to-use-files-linux.md)一文提供了有关如何执行此操作的详细信息。 请记住，一个 Azure 文件共享目前有 5-TB 的配额限制，每个文件的大小限制为 1 TB。 有关存储限制的信息，请参阅 [Azure 存储的可伸缩性和性能目标](../../../storage/storage-scalability-targets.md)。
+可以在在 Azure Linux VM 内部装入 Azure 文件共享。 [如何通过 Linux 使用 Azure 文件存储](../../../storage/files/storage-how-to-use-files-linux.md)一文提供了有关如何执行此操作的详细信息。 请记住，一个 Azure 文件共享目前有 5-TB 的配额限制，每个文件的大小限制为 1 TB。 有关存储限制的信息，请参阅 [Azure 存储的可伸缩性和性能目标](../../../storage/common/storage-scalability-targets.md)。
 
 但是测试表明，SAP HANA 备份目前无法直接与此类 CIFS 装入配合工作。 [SAP 说明 1820529](https://launchpad.support.sap.com/#/notes/1820529) 中也提到不建议使用 CIFS。
 

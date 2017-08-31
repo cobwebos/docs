@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/21/2017
 ms.author: gokuma;weig;bradsev
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: b154bd42c0f8bc6e185fa871b21249cad2869e72
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 45af1cd3a05b483429d2307659f1882ef28921f6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>数据科研虚拟机的十大功能
@@ -250,7 +250,7 @@ DSVM 已在命令行以及 GUI 上加载了用于访问 GitHub 存储库的客�
 
 ![Visual Studio 中的 Git](./media/machine-learning-data-science-vm-do-ten-things/VSGit.PNG)
 
-可以从 github.com 上提供的多种资源中找到有关使用 Git 操作 GitHub 存储库的更多信息。 [备忘单](https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf)是一个有用的参考。
+可以从 github.com 上提供的多种资源中找到有关使用 Git 操作 GitHub 存储库的更多信息。[备忘单](https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf)是一个有用的参考。
 
 ## <a name="7-access-various-azure-data-and-analytics-services"></a>7.访问各种 Azure 数据和分析服务
 ### <a name="azure-blob"></a>Azure Blob
@@ -262,7 +262,7 @@ Azure Blob 是适合大小数据的经济可靠云存储。 了解如何移动�
 
 ![Create_Azure_Blob](./media/machine-learning-data-science-vm-do-ten-things/Create_Azure_Blob.PNG)
 
-* 确认在 ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` 找到了预安装的命令行工具 AzCopy。 可以将包含 azcopy.exe 的目录添加到 PATH 环境变量，以避免在运行此工具时键入完整的命令路径。 有关 AzCopy 工具的详细信息，请参阅 [AzCopy 文档](../storage/storage-use-azcopy.md)
+* 确认在 ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` 找到了预安装的命令行工具 AzCopy。 可以将包含 azcopy.exe 的目录添加到 PATH 环境变量，以避免在运行此工具时键入完整的命令路径。 有关 AzCopy 工具的详细信息，请参阅 [AzCopy 文档](../storage/common/storage-use-azcopy.md)
 * 启动 Azure 存储资源管理器工具。 可以从 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)下载该工具。 
 
 ![AzureStorageExplorer_v4](./media/machine-learning-data-science-vm-do-ten-things/AzureStorageExplorer_v4.png)

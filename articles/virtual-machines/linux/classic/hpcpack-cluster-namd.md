@@ -16,14 +16,14 @@ ms.workload: big-compute
 ms.date: 10/13/2016
 ms.author: danlep
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 46d71ebd493004bc1ac1b7634722d2abe8b67343
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e31845f3d7aa08357b0e8a1b3b77d97302442ac3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="run-namd-with-microsoft-hpc-pack-on-linux-compute-nodes-in-azure"></a>在 Azure 中的 Linux 计算节点上使用 Microsoft HPC Pack 运行 NAMD
-本文介绍在 Azure 虚拟机上运行 Linux 高性能计算 (HPC) 工作负荷的一种方式。 在学习过程中，你将在包含 Linux 计算节点的 Azure 上设置一个 [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) 群集，然后运行 [NAMD](http://www.ks.uiuc.edu/Research/namd/) 仿真，以计算和直观呈现大型生物分子系统的结构。  
+本文介绍在 Azure 虚拟机上运行 Linux 高性能计算 (HPC) 工作负荷的一种方式。 在学习过程中，会在包含 Linux 计算节点的 Azure 上设置一个 [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) 群集，然后运行 [NAMD](http://www.ks.uiuc.edu/Research/namd/) 仿真，以计算和直观呈现大型生物分子系统的结构。  
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 07/12/2017
 1. 使用部署群集时提供的域凭据（例如，hpc\clusteradmin）[通过远程桌面连接到头节点 VM](../../windows/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 可以从头节点管理群集。
 2. 使用 Windows Server 标准程序，在群集的 Active Directory 域中创建一个域用户帐户。 例如，在头节点上使用 Active Directory 用户和计算机工具。 本文中的示例假设你在 hpclab 域中创建了一个名为 hpcuser 的域用户 (hpclab\hpcuser)。
 3. 将域用户作为群集用户添加到 HPC Pack 群集中。 有关说明，请参阅 [Add or remove cluster users](https://technet.microsoft.com/library/ff919330.aspx)（添加或删除群集用户）。
-4. 创建一个名为 C:\cred.xml 的文件，将 RSA 密钥数据复制到此文件中。 你可以在本文末尾的示例文件中找到一个示例。
+4. 创建一个名为 C:\cred.xml 的文件，将 RSA 密钥数据复制到此文件中。 可以在本文末尾的示例文件中找到一个示例。
    
    ```
    <ExtendedData>
@@ -78,16 +78,16 @@ ms.lasthandoff: 07/12/2017
    hpccred setcreds /extendeddata:c:\cred.xml /user:hpclab\hpcuser /password:<UserPassword>
    ```
    
-   此命令成功完成后，没有输出。 为你需要运行作业的用户帐户设置凭据后，请将 cred.xml 文件存储在安全位置，或者删除 cred.xml 文件。
-6. 如果你在一个 Linux 节点上生成 RSA 密钥对，请记住在使用完成后删除这些密钥。 如果找到一个现有 id_rsa 文件或 id_rsa.pub 文件，HPC Pack 并不会建立互信关系。
+   此命令成功完成后，没有输出。 为需要运行作业的用户帐户设置凭据后，请将 cred.xml 文件存储在安全位置，或者删除 cred.xml 文件。
+6. 如果在一个 Linux 节点上生成 RSA 密钥对，请记住在使用完成后删除这些密钥。 如果找到一个现有 id_rsa 文件或 id_rsa.pub 文件，HPC Pack 并不会建立互信关系。
 
 > [!IMPORTANT]
-> 我们不建议在共享群集上以群集管理员的身份运行 Linux 作业，因为由管理员提交的作业会在 Linux 节点的根帐户下运行。 由非管理员用户提交的作业会在本地 Linux 用户帐户（名称与作业用户相同）下运行。 在这种情况下，HPC Pack 将在该作业分配到的所有节点中为这位 Linux 用户建立互信关系。 在运行作业之前，你可以在 Linux 节点上手动设置 Linux 用户，也可以在提交作业时由 HPC Pack 自动创建用户。 如果 HPC Pack 创建了一个用户，则作业完成后 HPC Pack 会删除此用户。 为了减少安全威胁，请在节点上完成作业后删除密钥。
+> 我们不建议在共享群集上以群集管理员的身份运行 Linux 作业，因为由管理员提交的作业会在 Linux 节点的根帐户下运行。 由非管理员用户提交的作业会在本地 Linux 用户帐户（名称与作业用户相同）下运行。 在这种情况下，HPC Pack 会在该作业分配到的所有节点中为这位 Linux 用户建立互信关系。 在运行作业之前，可以在 Linux 节点上手动设置 Linux 用户，也可以在提交作业时由 HPC Pack 自动创建用户。 如果 HPC Pack 创建了一个用户，则作业完成后 HPC Pack 会删除此用户。 为了减少安全威胁，请在节点上完成作业后删除密钥。
 > 
 > 
 
 ## <a name="set-up-a-file-share-for-linux-nodes"></a>为 Linux 节点设置文件共享
-现在，请设置 SMB 文件共享，并在所有 Linux 节点上装入共享文件夹，以允许 Linux 节点使用通用路径访问 NAMD 文件。 下面是在头节点上装载共享文件夹的步骤。 对于 CentOS 6.6 这种目前不支持 Azure 文件服务的分发版，建议使用共享。 如果 Linux 节点支持 Azure 文件共享，请参阅 [How to use Azure File storage with Linux](../../../storage/storage-how-to-use-files-linux.md)（如何通过 Linux 使用 Azure 文件存储）。 有关 HPC Pack 的其他文件共享选项，请参阅 [Get started with Linux compute nodes in an HPC Pack Cluster in Azure](hpcpack-cluster.md)（Azure 的 HPC Pack 群集中的 Linux 计算节点入门）。
+现在，请设置 SMB 文件共享，并在所有 Linux 节点上装入共享文件夹，以允许 Linux 节点使用通用路径访问 NAMD 文件。 下面是在头节点上装载共享文件夹的步骤。 对于 CentOS 6.6 这种目前不支持 Azure 文件服务的分发版，建议使用共享。 如果 Linux 节点支持 Azure 文件共享，请参阅 [How to use Azure File storage with Linux](../../../storage/files/storage-how-to-use-files-linux.md)（如何通过 Linux 使用 Azure 文件存储）。 有关 HPC Pack 的其他文件共享选项，请参阅 [Get started with Linux compute nodes in an HPC Pack Cluster in Azure](hpcpack-cluster.md)（Azure 的 HPC Pack 群集中的 Linux 计算节点入门）。
 
 1. 在头节点上创建一个文件夹，然后通过设置读/写权限将其与所有人共享。 在本示例中，\\\\CentOS66HN\Namd 是文件夹的名称，其中 CentOS66HN 是头节点的主机名称。
 2. 在共享文件夹中创建一个名为 namd2 的子文件夹。 在 namd2 中创建名为 namdsample 的另一个子文件夹。
@@ -111,12 +111,12 @@ ms.lasthandoff: 07/12/2017
 > 
 
 ## <a name="create-a-bash-script-to-run-a-namd-job"></a>创建 Bash 脚本以运行 NAMD 作业
-NAMD 作业需要一个适用于 *charmrun* 的 **nodelist** 文件，确定启动 NAMD 流程时要使用的节点数量。 使用 Bash 脚本生成 nodelist 文件并使用此 nodelist 文件运行 **charmrun**。 然后，你可以在 HPC 群集管理器中提交 NAMD 作业并调用此脚本。
+NAMD 作业需要一个适用于 *charmrun* 的 **nodelist** 文件，确定启动 NAMD 流程时要使用的节点数量。 使用 Bash 脚本生成 nodelist 文件并使用此 nodelist 文件运行 **charmrun**。 然后，可以在 HPC 群集管理器中提交 NAMD 作业并调用此脚本。
 
-使用你选择的文本编辑器，在包含 NAMD 程序文件的 /namd2 文件夹中创建 Bash 脚本并将其命名为 hpccharmrun.sh。 为了快速完成概念认证，将复制本文末尾提供的示例 hpccharmrun.sh 脚本并转到 [提交 NAMD 作业](#submit-a-namd-job)。
+使用选择的文本编辑器，在包含 NAMD 程序文件的 /namd2 文件夹中创建 Bash 脚本并将其命名为 hpccharmrun.sh。为了快速完成概念认证，将复制本文末尾提供的示例 hpccharmrun.sh 脚本并转到 [提交 NAMD 作业](#submit-a-namd-job)。
 
 > [!TIP]
-> 将你的脚本保存为带有 Linux 换行（仅 LF，而不是 CR LF）的文本文件。 这可确保其在 Linux 节点上正常运行。
+> 将脚本保存为带有 Linux 换行（仅 LF，而不是 CR LF）的文本文件。 这可确保其在 Linux 节点上正常运行。
 > 
 > 
 
@@ -221,15 +221,15 @@ host CENTOS66LN-03 ++cpus 2
 ```
 
 ## <a name="submit-a-namd-job"></a>提交 NAMD 作业
-现在你可以在 HPC 群集管理器中提交 NAMD 作业。
+现在可以在 HPC 群集管理器中提交 NAMD 作业。
 
-1. 连接到你的群集头节点，然后启动 HPC 群集管理器。
+1. 连接到群集头节点，并启动 HPC 群集管理器。
 2. 在“资源管理”中，确保 Linux 计算节点处于“联机”状态。 如果节点未处于联机状态，请选择它们并单击“联机”。
 3. 在“作业管理”中，单击“新作业”。
 4. 为作业输入一个名称，如 *hpccharmrun*。
    
    ![新 HPC 作业][namd_job]
-5. 在“作业详细信息”页中，在“作业资源”下，将资源类型选为“节点”，并将“最小数量”设置为 3。 我们将在 3 个 Linux 节点上运行此作业，每个节点有 4 个核心。
+5. 在“作业详细信息”页中，在“作业资源”下，将资源类型选为“节点”，并将“最小数量”设置为 3。 我们会在 3 个 Linux 节点上运行此作业，每个节点有 4 个核心。
    
    ![作业资源][job_resources]
 6. 在左侧导航栏中单击“编辑任务”，然后单击“添加”将任务添加到作业。    
@@ -239,7 +239,7 @@ host CENTOS66LN-03 ++cpus 2
      `/namd2/hpccharmrun.sh ++remote-shell ssh /namd2/namd2 /namd2/namdsample/1-2-sphere/ubq_ws_eq.conf > /namd2/namd2_hpccharmrun.log`
      
      > [!TIP]
-     > 上述命令行是不带换行符的单个命令。 但在“命令行”下，它将会换行在多行上显示。
+     > 上述命令行是不带换行符的单个命令。 但在“命令行”下，它会换行在多行上显示。
      > 
      > 
    * **工作目录** - /namd2
@@ -251,20 +251,20 @@ host CENTOS66LN-03 ++cpus 2
      > 在此处设置工作目录，因为 **charmrun** 尝试导航到各个节点上相同的工作目录。 如果没有设置工作目录，则 HPC Pack 会启动在其中一个 Linux 节点上创建的一个随机命名文件夹中的命令。 这会导致其他节点上出现以下错误：`/bin/bash: line 37: cd: /tmp/nodemanager_task_94_0.mFlQSN: No such file or directory.` 为避免发生此问题，请指定一个可作为工作目录由所有节点进行访问的文件夹路径。
      > 
      > 
-8. 单击“确定”，然后单击“提交”运行此作业。
+8. 单击“确定”，并单击“提交”运行此作业。
    
-   默认情况下，HPC Pack 将以当前登录的用户帐户提交作业。 单击“提交”后，对话框可能会提示输入用户名和密码。
+   默认情况下，HPC Pack 以当前登录的用户帐户提交作业。 单击“提交”后，对话框可能会提示输入用户名和密码。
    
    ![作业凭据][creds]
    
-   在某些情况下，HPC Pack 会记住以前输入的用户信息，并不会显示此对话框。 为了使 HPC Pack 再次显示此对话框，请在命令提示符下输入以下命令，然后提交作业。
+   在某些情况下，HPC Pack 会记住以前输入的用户信息，并不会显示此对话框。 为了使 HPC Pack 再次显示此对话框，请在命令提示符下输入以下命令，并提交作业。
    
    ```command
    hpccred delcreds
    ```
 9. 作业需要几分钟时间才能完成。
 10. 在 \\<headnodeName>\Namd\namd2\namd2_hpccharmrun.log 中找到作业日志，在 \\<headnodeName>\Namd\namd2\namdsample\1-2-sphere\. 中找到输出文件。
-11. 也可启动 VMD 以查看你的作业结果。 可视化 NAMD 输出文件的步骤（在本例中，水中的 ubiquitin 蛋白质分子）不在本文的讨论范围之内。 有关详细信息，请参阅 [NAMD 教程](http://www.life.illinois.edu/emad/biop590c/namd-tutorial-unix-590C.pdf)。
+11. 也可启动 VMD 以查看作业结果。 可视化 NAMD 输出文件的步骤（在本例中，水中的 ubiquitin 蛋白质分子）不在本文的讨论范围之内。 有关详细信息，请参阅 [NAMD 教程](http://www.life.illinois.edu/emad/biop590c/namd-tutorial-unix-590C.pdf)。
     
     ![作业结果][vmd_view]
 

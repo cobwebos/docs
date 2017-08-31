@@ -1,5 +1,5 @@
 ---
-title: "Azure 门户仪表板 | Microsoft Docs"
+title: "创建和共享 Azure 门户仪表板 | Microsoft 文档"
 description: "本文介绍如何在 Azure 门户中创建和编辑仪表板。"
 services: azure-portal
 documentationcenter: 
@@ -14,19 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/06/2016
 ms.author: sewatson
-translationtype: Human Translation
-ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
-ms.openlocfilehash: dc5b6f194a7e34d5061b9fa2e4a6123f54f6c14a
-
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 5429e68723448ff5db6ef0ed8da1b927e97e6dd9
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/24/2017
 
 ---
-# <a name="creating-and-sharing-dashboards-in-the-azure-portal"></a>在 Azure 门户中创建和共享仪表板
-可以创建多个仪表板，并与对你的 Azure 订阅有访问权限的其他用户共享。  本文介绍创建/编辑、发布和管理仪表板访问权限的基础知识。
-
-## <a name="customizing-dashboards-versus-blades"></a>自定义仪表板与边栏选项卡
-自几个月前推出仪表板以来，边栏选项卡自定义项的数量便稳步下降，而仪表板自定义项的数量则快速增长。 这种强劲的使用趋势表明，相较边栏选项卡，用户更喜欢自定义仪表板。 为了支持该趋势，我们将删除自定义边栏选项卡的功能，并致力于增强仪表板的功能。 如果之前自定了边栏选项卡，自定义项将很快删除。 若要保留该自定义项，请将自定义磁贴固定到仪表板。 只需右键单击该磁贴，然后选择“固定到仪表板”，如下图所示。
-
-![保存自定义磁贴](./media/azure-portal-dashboards/save-customization.png)
+# <a name="create-and-share-dashboards-in-the-azure-portal"></a>在 Azure 门户中创建和共享仪表板
+可以创建多个仪表板，并与对 Azure 订阅有访问权限的其他用户共享。  本文介绍创建、编辑、发布和管理仪表板访问权限的基础知识。
 
 ## <a name="create-a-dashboard"></a>创建仪表板
 若要创建仪表板，请选择当前仪表板名称旁边的“新建仪表板”按钮。  
@@ -82,7 +78,7 @@ ms.openlocfilehash: dc5b6f194a7e34d5061b9fa2e4a6123f54f6c14a
 
 系统会要求选择可将仪表板发布到的订阅和资源组。 为了将仪表板无缝集成到生态系统，我们已将共享仪表板作为 Azure 资源实现（因此，无法通过键入电子邮件地址进行共享）。  对门户中大多数磁贴显示的信息的访问由 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)管理。 从访问控制角度来看，共享仪表板与虚拟机或存储帐户没有什么不同。  
 
-假设拥有 Azure 订阅，并且团队中的成员都分配了订阅的**所有者**、**参与者**或**读取者**角色。  作为所有者或参与者的用户能够列出、查看、创建、修改或删除该订阅中的仪表板。  作为读取者的用户能够列出并查看仪表板，但不能修改或删除它们。  具有读取者访问权限的用户能够对共享仪表板进行本地编辑，但不能将这些更改发布回服务器。  但是，他们可以制作仪表板的专用副本供自己使用。  与往常一样，仪表板中的各个磁贴将根据其对应的资源强制实施自己的访问控制规则。  
+假设拥有 Azure 订阅，并且团队中的成员都分配了订阅的**所有者**、**参与者**或**读取者**角色。  作为所有者或参与者的用户能够列出、查看、创建、修改或删除该订阅中的仪表板。  作为读取者的用户能够列出并查看仪表板，但不能修改或删除它们。  具有读取者访问权限的用户能够对共享仪表板进行本地编辑，但不能将这些更改发布回服务器。  但是，他们可以制作仪表板的专用副本供自己使用。  与往常一样，仪表板中的各个磁贴会根据其对应的资源强制实施自己的访问控制规则。  
 
 为方便起见，门户的发布体验会引导完成将仪表板放在名为**仪表板**的资源组中的模式。  
 
@@ -99,10 +95,5 @@ ms.openlocfilehash: dc5b6f194a7e34d5061b9fa2e4a6123f54f6c14a
 ## <a name="next-steps"></a>后续步骤
 * 若要管理资源，请参阅[通过门户管理 Azure 资源](../azure-resource-manager/resource-group-portal.md)。
 * 若要部署资源，请参阅[使用 Resource Manager 模板和 Azure 门户部署资源](../azure-resource-manager/resource-group-template-deploy-portal.md)。
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

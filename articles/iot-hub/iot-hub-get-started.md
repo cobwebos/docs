@@ -13,42 +13,42 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/28/2017
+ms.date: 07/25/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: c02b4bb6e01bc6e6e5b7e373a8d6d2ab2d2395da
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 298f30c8241749ca5088f36e3227dcc66d15295d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-iot-hub-get-started-tutorials"></a>Azure IoT 中心入门教程
 
-可以使用 Azure IoT 中心和 Azure IoT 设备 SDK 生成物联网 (IoT) 解决方案。
+可以使用 Azure IoT 中心和 Azure IoT 设备 SDK 生成物联网 (IoT) 解决方案：
 
 * Azure IoT 中心是在云中完全托管的服务，可安全地连接、监视和管理 IoT 设备。 使用 Azure IoT 设备 SDK 实现 IoT 设备。
-* 在更复杂的 IoT 方案中使用 IoT 网关，在这些方案中需要考虑一些因素，例如旧设备、带宽成本、安全和隐私策略或边缘数据处理等。 在这些方案中，可以使用 Azure IoT Edge 实现用于将设备连接到 IoT 中心的网关。
+* 在更复杂的 IoT 方案中使用 IoT 网关。 例如在这些方案中需要考虑一些因素，如旧设备、带宽成本、安全性和隐私策略或边缘数据处理等。 在这些方案中，可以使用 Azure IoT Edge 实现用于将设备连接到 IoT 中心的网关。
 
 ## <a name="what-the-tutorials-cover"></a>教程涵盖内容
 
 这些教程介绍 Azure IoT 中心和设备 SDK。 这些教程介绍用于演示 IoT 中心功能的常见 IoT 方案。 这些教程还说明了如何将 IoT 中心与其他 Azure 服务和工具结合在一起，以构建更强大的 IoT 解决方案。 在这些教程中，可以选择是使用模拟 IoT 设备还是使用真实 IoT 设备。 此外，还可以了解如何使用网关使设备能够连接到 IoT 中心。
 
-## <a name="setup-your-device-connect-iot-device-or-gateway-to-azure-iot-hub"></a>设置你的设备：将 IoT 设备或网关连接到 Azure IoT 中心
+## <a name="set-up-your-device"></a>设置设备
 
-可以选择是使用真实设备还是使用模拟设备开始。
+将 IoT 设备或网关连接到 Azure IoT 中心。 可以选择是使用物理设备还是使用模拟设备开始：
 
 | IoT 设备                       | 编程语言 |
-|---------------------------------|----------------------|
-| Raspberry Pi                    | [Node.js][Pi_Nd]、[C][Pi_C]、[Python][Pi_Py]           |
-| Intel Edison                    | [Node.js][Ed_Nd]、[C][Ed_C]           |
-| Adafruit Feather HUZZAH ESP8266 | [Arduino][Hu_Ard]              |
-| Sparkfun ESP8266 Thing Dev      | [Arduino][Th_Ard]              |
-| Adafruit Feather M0             | [Arduino][M0_Ard]              |
-| PC 上的模拟设备          | [.NET][Sim_NET]、[Java][Sim_Jav]、[Node.js][Sim_Nd]、[Python][Sim_Pyth]              |
+|----------------------------------|----------------------|
+| Raspberry Pi                     | [Node.js][Pi_Nd]、[C][Pi_C]、[Python][Pi_Py]    |
+| IoT DevKit                       | [VSCode 中的 Arduino][DevKit]     |
+| Intel Edison                     | [Node.js][Ed_Nd]、[C][Ed_C]    |
+| Adafruit Feather HUZZAH ESP8266  | [Arduino][Hu_Ard]              |
+| Sparkfun ESP8266 Thing Dev       | [Arduino][Th_Ard]              |
+| Adafruit Feather M0              | [Arduino][M0_Ard]              |
+| PC 上的模拟设备           | [.NET][Sim_NET]、[Java][Sim_Jav]、[Node.js][Sim_Nd]、[Python][Sim_Pyth] |
 | 联机设备模拟器         | [Raspberry Pi (Node.js)][Ol_Sim] |
 
-此外，还可以使用 IoT Edge 网关使设备能够连接到 IoT 中心。
+此外，还可以使用 IoT Edge 网关使设备能够连接到 IoT 中心：
 
 | 网关设备               | 编程语言 | 平台         |
 |------------------------------|----------------------|------------------|
@@ -57,10 +57,10 @@ ms.lasthandoff: 07/08/2017
 
 [!INCLUDE [iot-hub-get-started-extended](../../includes/iot-hub-get-started-extended.md)]
 
-
 [Pi_Nd]: iot-hub-raspberry-pi-kit-node-get-started.md
 [Pi_C]: iot-hub-raspberry-pi-kit-c-get-started.md
-[Pi_Py]: iot-hub-raspberry-pi-kit-node-get-started.md
+[Pi_Py]: iot-hub-raspberry-pi-kit-python-get-started.md
+[DevKit]: iot-hub-arduino-iot-devkit-az3166-get-started.md
 [Ed_Nd]: iot-hub-intel-edison-kit-node-get-started.md
 [Ed_C]: iot-hub-intel-edison-kit-c-get-started.md
 [Hu_Ard]: iot-hub-arduino-huzzah-esp8266-get-started.md

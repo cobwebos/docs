@@ -1,6 +1,6 @@
 ---
 title: "管理 Azure 安全中心的安全建议 | Microsoft Docs"
-description: "本文档介绍 Azure 安全中心中的建议如何帮助你保护 Azure 资源并保持符合安全策略。"
+description: "本文档介绍 Azure 安全中心的建议如何帮助保护 Azure 资源并保持符合安全策略。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 07/19/2017
 ms.author: terrylan
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: e1768600776716e7265742beeac300a3027b82c8
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 37419e40808fc8104cb89f6a742874ad6f8c838f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>管理 Azure 安全中心的安全建议
-本文档介绍如何使用 Azure 安全中心中的建议帮助你保护 Azure 资源。
+本文档介绍如何使用 Azure 安全中心的建议帮助保护 Azure 资源。
 
 > [!NOTE]
 > 本文档通过使用示例部署介绍该服务。  本文档不是一份分步指南。
@@ -30,7 +30,7 @@ ms.lasthandoff: 07/20/2017
 >
 
 ## <a name="what-are-security-recommendations"></a>安全建议是什么？
-安全中心定期分析 Azure 资源的安全状态。 安全中心识别到潜在的安全漏洞时，会创建建议。 此建议将指导你完成配置所需控件的过程。
+安全中心定期分析 Azure 资源的安全状态。 安全中心识别到潜在的安全漏洞时，会创建建议。 此建议指导完成配置所需控件的过程。
 
 ## <a name="implementing-security-recommendations"></a>实施安全性建议
 ### <a name="set-recommendations"></a>设置建议
@@ -38,20 +38,20 @@ ms.lasthandoff: 07/20/2017
 
 * 配置安全策略。
 * 启用数据收集。
-* 选择视作你的安全策略的一部分的建议。
+* 选择视作安全策略的一部分的建议。
 
 当前的策略建议以系统更新、基线规则、反恶意程序、子网和网络接口的[网络安全组](../virtual-network/virtual-networks-nsg.md)、SQL 数据库审核、SQL 数据库透明数据加密和 Web 应用程序防火墙为中心。  [设置安全策略](security-center-policies.md)提供每个建议选项的说明。
 
 ### <a name="monitor-recommendations"></a>监视建议
-设置安全策略之后，安全中心将分析你的资源的安全状态，以识别潜在的漏洞。 通过“安全中心”边栏选项卡的“建议”磁贴，可以知道安全中心定义的建议的总数。
+设置安全策略之后，安全中心将分析资源的安全状态，以识别潜在的漏洞。 通过“安全中心”边栏选项卡的“建议”磁贴，可以知道安全中心定义的建议的总数。
 
 ![“建议”磁贴][1]
 
 若要查看每一项建议的详细信息：
 
-选择“安全中心”边栏选项卡上的“建议”磁贴。 这将打开“建议”边栏选项卡。
+选择“安全中心”边栏选项卡上的“建议”磁贴。 这会打开“建议”边栏选项卡。
 
-建议将以表格形式显示，其中每一行都表示一个特定的建议。 此表的列有：
+建议以表格形式显示，其中每一行都表示一个特定的建议。 此表的列有：
 
 * **说明**：解释建议以及处理此建议所需执行的操作。
 * **资源**：列出了此建议适用的资源。
@@ -89,20 +89,20 @@ ms.lasthandoff: 07/20/2017
 | [在 SQL 服务器上启用审核与威胁检测](security-center-enable-auditing-on-sql-servers.md) |建议开启 Azure SQL Server 的审核与威胁检测。 （仅 Azure SQL 服务。 不包括在虚拟机上运行的 SQL。） |
 | [在 SQL 数据库上启用审核与威胁检测](security-center-enable-auditing-on-sql-databases.md) |建议开启 Azure SQL 数据库的审核与威胁检测。 （仅 Azure SQL 服务。 不包括在虚拟机上运行的 SQL。） |
 | [启用 SQL 数据库的透明数据加密](security-center-enable-transparent-data-encryption.md) |建议启用 SQL 数据库加密。 （仅 Azure SQL 服务。） |
-| [启用 VM 代理](security-center-enable-vm-agent.md) |使你能够查看需要 VM 代理的 VM。 若要设置修补程序扫描、基线扫描以及反恶意软件程序，则必须在 VM 上安装 VM 代理。 对于从 Azure Marketplace 部署的 VM，默认安装 VM 代理。 文章 [VM 代理和扩展 - 第 2 部分](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)提供有关如何安装 VM 代理的信息。 |
+| [启用 VM 代理](security-center-enable-vm-agent.md) |使用户能够查看需要 VM 代理的 VM。 若要设置修补程序扫描、基线扫描以及反恶意软件程序，则必须在 VM 上安装 VM 代理。 对于从 Azure Marketplace 部署的 VM，默认安装 VM 代理。 文章 [VM 代理和扩展 - 第 2 部分](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)提供有关如何安装 VM 代理的信息。 |
 | [应用磁盘加密](security-center-apply-disk-encryption.md) |建议使用 Azure 磁盘加密（Windows 和 Linux VM）对 VM 磁盘进行加密。 对于 VM 上的 OS 和数据卷，建议使用加密。 |
-| [提供安全联系人详细信息](security-center-provide-security-contact-details.md) |建议为每个订阅提供安全联系人详细信息。 联系人详细信息为电子邮件地址和电话号码。 如果安全团队发现你的资源遭到盗用，将采用此信息与你联系。 |
+| [提供安全联系人详细信息](security-center-provide-security-contact-details.md) |建议为每个订阅提供安全联系人详细信息。 联系人详细信息为电子邮件地址和电话号码。 如果安全团队发现资源遭到盗用，则会采用此信息与你联系。 |
 | [更新 OS 版本](security-center-update-os-version.md) |建议将云服务的操作系统 (OS) 版本更新为 OS 系列可用的最新版本。  若要了解有关云服务的详细信息，请参阅[云服务概述](../cloud-services/cloud-services-choose-me.md)。 |
 | [未安装漏洞评估](security-center-vulnerability-assessment-recommendations.md) |建议在 VM 上安装漏洞评估解决方案。 |
-| [修正漏洞](security-center-vulnerability-assessment-recommendations.md#review-the-recommendation) |使你可以查看由安装在 VM 上的漏洞评估解决方案检测到的系统和应用程序漏洞。 |
-| [为 Azure 存储帐户启用加密](security-center-enable-encryption-for-storage-account.md) | 建议为静态数据启用 Azure 存储服务加密。 存储服务加密 (SSE) 的工作原理是，在将数据写入 Azure 存储时对数据进行加密，以及在检索前对数据进行解密。 SSE 当前仅适用于 Azure Blob 服务，并可用于块 blob、页 blob 和追加 blob。 若要了解详细信息，请参阅[静态数据的存储服务加密](../storage/storage-service-encryption.md)。</br>只有 Resource Manager 存储帐户支持 SSE。 |
+| [修正漏洞](security-center-vulnerability-assessment-recommendations.md#review-the-recommendation) |使用户可以查看由安装在 VM 上的漏洞评估解决方案检测到的系统和应用程序漏洞。 |
+| [为 Azure 存储帐户启用加密](security-center-enable-encryption-for-storage-account.md) | 建议为静态数据启用 Azure 存储服务加密。 存储服务加密 (SSE) 的工作原理是，在将数据写入 Azure 存储时对数据进行加密，以及在检索前对数据进行解密。 SSE 当前仅适用于 Azure Blob 服务，并可用于块 blob、页 blob 和追加 blob。 若要了解详细信息，请参阅[静态数据的存储服务加密](../storage/common/storage-service-encryption.md)。</br>只有 Resource Manager 存储帐户支持 SSE。 |
 
 可筛选和取消建议。
 
-1. 选择“建议”边栏选项卡上的“筛选器”。 此时将打开“筛选器”边栏选项卡，选择要查看严重性和状态值。
+1. 选择“建议”边栏选项卡上的“筛选器”。 此时会打开“筛选器”边栏选项卡，选择要查看严重性和状态值。
 
     ![筛选器建议][2]
-2. 如果确定某个建议不适用，即可取消此建议，将其从视图中筛除。 有两种方法可取消建议。 一种方法是右键单击项目，然后选择“取消”。 另一种方法是将鼠标悬停在某个项目上，单击右侧显示的三个点，选择“取消”。 可以单击“筛选器”，选择“已取消”，查看已取消的建议。
+2. 如果确定某个建议不适用，即可取消此建议，将其从视图中筛除。 有两种方法可取消建议。 一种方法是右键单击项目，并选择“取消”。 另一种方法是将鼠标悬停在某个项目上，单击右侧显示的三个点，选择“取消”。 可以单击“筛选器”，选择“已取消”，查看已取消的建议。
 
     ![取消建议][3]
 
@@ -112,7 +112,7 @@ ms.lasthandoff: 07/20/2017
 在上面的建议表中，选择某建议，将其作为如何应用建议的示例进行查看。
 
 ## <a name="next-steps"></a>后续步骤
-在本文档中，已向你介绍安全中心的安全建议。 若要了解有关安全中心的详细信息，请参阅以下文章：
+本文档介绍了安全中心的安全建议。 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 * [在 Azure 安全中心中设置安全策略](security-center-policies.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
 * [Security health monitoring in Azure Security Center](security-center-monitoring.md) （Azure 安全中心的安全运行状况监视）- 了解如何监视 Azure 资源的运行状况。

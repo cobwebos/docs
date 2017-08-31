@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;garye
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b6751bf2367ca849f35c81a7857b4f85d75ef6a2
-ms.lasthandoff: 11/17/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2ef2acfea2372ac7fd52d099a2b4203ee2242d81
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-features-for-azure-blob-storage-data-using-panda"></a>使用 Panda 创建 Azure blob 存储数据功能
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/17/2016
 该**菜单**链接到介绍如何在各种环境中为数据创建特征的主题。 此任务是[团队数据科学过程 (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中的一个步骤。
 
 ## <a name="prerequisites"></a>先决条件
-本文假定已创建 Azure blob 存储帐户，且已存入数据。 如果需要帐户设置说明，请参阅[创建 Azure 存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)
+本文假定已创建 Azure blob 存储帐户，且已存入数据。 如果需要帐户设置说明，请参阅[创建 Azure 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>将数据加载到 Pandas 数据帧
 要浏览和操作数据集，必须从 blob 源下载数据集到本地文件，然后将数据集加载到 Pandas 数据帧。 下面是此过程的所需步骤：
@@ -58,10 +58,10 @@ ms.lasthandoff: 11/17/2016
 
 现在可以准备浏览数据并在此数据集上生成功能了。
 
-## <a name="blob-featuregen"></a>生成功能
+## <a name="blob-featuregen"></a>功能生成
 接下来的两部分介绍如何通过指示器值和装箱功能使用 Python 脚本生成分类功能。
 
-### <a name="blob-countfeature"></a>基于生成功能的指示器值
+### <a name="blob-countfeature"></a>基于指示器值生成功能
 可以按如下方式创建分类功能：
 
 1. 检查分类列的分布：

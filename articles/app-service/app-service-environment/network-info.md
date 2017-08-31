@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/08/2017
 ms.author: ccompy
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 891ed3f496ca394c9139ad9f94986a19d8cef769
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: cd498198e0f206ddca2e3396813b2f2093ec3731
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
@@ -48,7 +48,7 @@ ms.lasthandoff: 08/03/2017
 
 普通的应用访问端口为：
 
-| 使用 | 从 | 到 |
+| 使用 | 发件人 | 到 |
 |----------|---------|-------------|
 |  HTTP/HTTPS  | 用户可配置 |  80、443 |
 |  FTP/FTPS    | 用户可配置 |  21, 990, 10001-10020 |
@@ -62,11 +62,18 @@ ASE 入站访问依赖项如下：
 
 | 使用 | 发件人 | 收件人 |
 |-----|------|----|
-| 管理 | Internet | ASE 子网：454、455 |
+| 管理 | 应用服务管理地址 | ASE 子网：454、455 |
 |  ASE 内部通信 | ASE 子网：所有端口 | ASE 子网：所有端口
-|  允许 Azure 负载均衡器入站流量 | Azure 负载均衡器 | 任意
+|  允许 Azure 负载均衡器入站流量 | Azure 负载均衡器 | ASE 子网：所有端口
+|  应用分配的 IP 地址 | 应用分配的地址 | ASE 子网：所有端口
 
-除系统监视以外，入站流量还提供对 ASE 的指挥与控制。 此流量的源 IP 可能有变。 网络安全配置需要允许通过端口 454 和 455 上的所有 IP 进行访问。
+除系统监视以外，入站流量还提供对 ASE 的指挥与控制。 [ASE 管理地址][ASEManagement]文档中列出了此流量的源 IP。 网络安全配置需要允许通过端口 454 和 455 上的所有 IP 进行访问。
+
+在 ASE 子网内，有多个用于内部组件通信的端口，并且可以更改。  这要求 ASE 子网中的所有端口均可从 ASE 子网访问。 
+
+对于 Azure 负载均衡器和 ASE 子网间的通信，需要开放的最小端口是 454、455 和 16001。 端口 16001 用于使负载均衡器和 ASE 之间的流量保持活动状态。 如果使用 ILB ASE，则可将流量锁定为仅 454、455 和 16001 端口。  如果使用外部 ASE，则需要考虑常规的应用访问端口。  如果使用应用分配的地址，则需要向所有端口开放。  如果地址分配给特定应用，则负载均衡器将使用未知的端口提前向 ASE 发送 HTTP 和 HTTPS 流量。
+
+如果使用应用分配的 IP 地址，则需要允许从分配给应用的 IP 到 ASE 子网的流量。
 
 对于出站访问，ASE 依赖于多个外部系统。 这些系统依赖项是使用 DNS 名称定义的，不会映射到一组固定的 IP 地址。 因此，ASE 需要从 ASE 子网跨各种端口对所有外部 IP 进行出站访问。 ASE 具有以下出站依赖项：
 
@@ -245,4 +252,5 @@ ASE 管理系统时所用的 Azure SQL 数据库配有防火墙。 它要求通�
 [AppDeploy]: ../../app-service-web/web-sites-deploy.md
 [ASEWAF]: ../../app-service-web/app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[ASEManagement]: ./management-addresses.md
 

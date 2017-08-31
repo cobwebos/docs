@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 7795e6fd5cc175e3a0cc91e35a5b1900fbeb2fdc
-ms.lasthandoff: 03/29/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 67a33a9abc3d3dcdd2fc7205e11feff97e3582a3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>使用 Hive 查询在 Hive 表中浏览数据
@@ -29,20 +29,20 @@ ms.lasthandoff: 03/29/2017
 [!INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 
 ## <a name="prerequisites"></a>先决条件
-本文假设你具备以下条件：
+本文假设用户具备以下条件：
 
-* 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)
+* 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)
 * 已预配具有 HDInsight 服务的自定义 Hadoop 群集。 如果需要说明，请参阅[为高级分析自定义 Azure HDInsight Hadoop 群集](machine-learning-data-science-customize-hadoop-cluster.md)。
 * 数据已上传到 Azure HDInsight Hadoop 群集中的 Hive 表。 如果没有，请按照[创建并将数据上传到 Hive 表](machine-learning-data-science-move-hive-tables.md)中的说明，先将数据上传到 Hive 表。
 * 已启用群集的远程访问权限。 如果需要说明，请参阅[访问 Hadoop 群集的头节点](machine-learning-data-science-customize-hadoop-cluster.md#headnode)。
 * 如果需要有关如何提交 Hive 查询的说明，请参阅[如何提交 Hive 查询](machine-learning-data-science-move-hive-tables.md#submit)
 
 ## <a name="example-hive-query-scripts-for-data-exploration"></a>数据浏览的示例 Hive 查询脚本
-1. 获取每个分区的观测值计数  `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
-2. 获取每个工作日的观测值计数  `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
+1. 获取每个分区的观测值计数 `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
+2. 获取每一天的观测值计数 `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
 3. 获取某分类列中的级别  
     `SELECT  distinct <column_name> from <databasename>.<tablename>`
-4. 获取两个分类列组合中的级别数  `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
+4. 获取两个分类列组合中的级别数 `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
 5. 获取数字列的分布  
     `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
 6. 从连接的两个表中提取记录

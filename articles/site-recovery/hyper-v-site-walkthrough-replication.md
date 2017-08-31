@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/22/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: 42a0421b4589b95c0da806be0ec8875b7d62c91d
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ca5bec5cf1152e6259b9fe7a869edd2d62b88e1a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 06/23/2017
 
 Hyper-V 使用两种类型的快照 — 标准快照，它提供整个虚拟机的增量快照；与应用程序一致的快照，它生成虚拟机内的应用程序数据的时间点快照。
     - 与应用程序一致的快照使用卷影复制服务 (VSS) 来确保应用程序在拍摄快照时处于一致状态。
-    - 如果启用了与应用程序一致的快照，它将影响在源虚拟机上运行的应用程序的性能。 请确保你设置的值小于你配置的额外恢复点的数目。
+    - 如果启用了与应用程序一致的快照，它将影响在源虚拟机上运行的应用程序的性能。 请确保设置的值小于配置的额外恢复点的数目。
 
 ## <a name="set-up-a-replication-policy"></a>设置复制策略
 
@@ -43,11 +43,11 @@ Hyper-V 使用两种类型的快照 — 标准快照，它提供整个虚拟机�
 3. 在“复制频率” 中，指定要在初始复制后复制增量数据的频率（每隔 30 秒、5 或 15 分钟）。
 
     > [!NOTE]
-    > 复制到高级存储时，不支持 30 秒的频率。 该限制取决于高级存储支持的每 blob 快照数 (100)。 [了解详细信息](../storage/storage-premium-storage.md#snapshots-and-copy-blob)。
+    > 复制到高级存储时，不支持 30 秒的频率。 该限制取决于高级存储支持的每 blob 快照数 (100)。 [了解详细信息](../storage/common/storage-premium-storage.md#snapshots-and-copy-blob)。
 
 4. 在“恢复点保留期”中，针对每个恢复点指定保留期窗口的长度（以小时为单位）。 VM 可以恢复到某个时段内的任意时间点。
 5. 在“应用一致性快照频率”中，指定创建包含应用程序一致性快照的恢复点的频率（1-12 小时）。
-6. 在“初始复制开始时间”中，指定开始初始复制的时间。 复制通过 Internet 带宽进行，因此你可能需要将它安排在非繁忙时间。 。
+6. 在“初始复制开始时间”中，指定开始初始复制的时间。 复制通过 Internet 带宽进行，因此，可能需要将它安排在非繁忙时间。 然后单击“确定”。
 
     ![复制策略](./media/hyper-v-site-walkthrough-replication/gs-replication2.png)
 

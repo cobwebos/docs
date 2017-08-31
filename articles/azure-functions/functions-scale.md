@@ -1,10 +1,10 @@
 ---
-title: "Azure Functions 消耗计划和应用服务计划 | Microsoft Docs"
+title: "Azure Functions 消耗计划和应用服务计划 | Microsoft 文档"
 description: "了解 Azure Functions 如何进行扩展，满足事件驱动工作负荷的需求。"
 services: functions
 documentationcenter: na
 author: lindydonna
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构"
@@ -15,14 +15,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/12/2017
-ms.author: donnam, glenga
+ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: 5131a432a5de26ed1fc82005446d101d3094ef8b
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 70e77e09b2e2116153159167af61776398904a3c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="azure-functions-consumption-and-app-service-plans"></a>Azure Functions 消耗计划和应用服务计划 
@@ -71,7 +70,7 @@ VM 将运行时和内容大小进行成本分离。 因此，支付的费用不�
 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 <a name="always-on"></a>
-### Always On
+### 始终可用
 
 如果在应用服务计划上运行，应该启用“始终可用”设置，使函数应用能正常运行。 在应用服务计划中，若函数运行时处于不活动状态，几分钟后就会进入空闲状态，因此只有 HTTP 触发器才能“唤醒”函数。 必须为 Web 作业启用 Always On 的原因与此类似。 
 
@@ -81,7 +80,7 @@ VM 将运行时和内容大小进行成本分离。 因此，支付的费用不�
 
 无论是在消耗计划还是应用服务计划中，函数应用都需要一个支持 Azure Blob、队列和表存储的 Azure 存储帐户。 Azure Functions 在内部使用 Azure 存储，执行管理触发器和记录函数执行等操作。 某些存储帐户不支持队列和表，例如仅限 blob 的存储帐户（包括高级存储）和使用区域冗余存储空间复制的常规用途存储帐户。 创建函数应用时，将在“存储帐户”边栏选项卡中筛选这些帐户。
 
-若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介](../storage/storage-introduction.md#introducing-the-azure-storage-services)。
+若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介](../storage/common/storage-introduction.md#introducing-the-azure-storage-services)。
 
 ## <a name="how-the-consumption-plan-works"></a>如何使用消耗量计划
 

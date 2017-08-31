@@ -16,10 +16,10 @@ ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 048854b440f939077a7a95fa1db9ba42daf55ede
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 809d3944311badf265117d353b65642e044d900c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Azure 的 HPC Pack 群集中的 Linux 计算节点入门
@@ -64,7 +64,7 @@ ms.lasthandoff: 07/12/2017
 
 ### <a name="deployment-option-1-use-a-resource-manager-template"></a>部署选项 1。 使用 Resource Manager 模板
 1. 转到 Azure Marketplace 中的[适用于 Linux 工作负荷的 HPC Pack 群集](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)模板，然后单击“部署”。
-2. 在 Azure 门户中复查信息，然后单击“创建”。
+2. 在 Azure 门户中复查信息，并单击“创建”。
    
     ![在门户中创建][portal]
 3. 在“基本信息”边栏选项卡中输入群集的名称，这也是头节点 VM 的名称。 可以选择现有的资源组，或者在可用的位置中为部署创建一个组。 该位置会影响某些 VM 大小和其他 Azure 服务的可用性（请参阅 [Products available by region](https://azure.microsoft.com/regions/services/)（按区域提供的产品））。
@@ -146,7 +146,7 @@ HPC Pack IaaS 部署脚本使用 XML 配置文件作为输入来描述 HPC 群�
     .\New-HpcIaaSCluster.ps1 –ConfigFile E:\HPCDemoConfig.xml –AdminUserName MyAdminName
     ```
    
-    a. 由于在上述命令中未指定 **AdminPassword**，系统将提示输入用户 *MyAdminName* 的密码。
+    a. 由于在上述命令中未指定 **AdminPassword**，系统会提示输入用户 *MyAdminName* 的密码。
    
     b. 然后，此脚本将开始验证配置文件。 这可能最多需要几分钟时间，具体取决于网络连接。
    
@@ -161,14 +161,14 @@ HPC Pack IaaS 部署脚本使用 XML 配置文件作为输入来描述 HPC 群�
     ![部署][deploy]
    
    > [!NOTE]
-   > 在本示例中，由于未指定 **-LogFile** 参数，脚本将自动生成日志文件。 日志不是实时写入的，而是在验证和部署结束时收集的。 如果 PowerShell 进程已停止但脚本仍在运行，一些日志将会丢失。
+   > 在本示例中，由于未指定 **-LogFile** 参数，脚本会自动生成日志文件。 日志不是实时写入的，而是在验证和部署结束时收集的。 如果 PowerShell 进程已停止但脚本仍在运行，一些日志会丢失。
    > 
    > 
 
 ## <a name="connect-to-the-head-node"></a>连接到头节点
 在 Azure 中部署 HPC Pack 群集后，使用部署群集时提供的域凭据（例如，*hpc\\clusteradmin*）[通过远程桌面连接](../../windows/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)到头节点 VM。 可以从头节点管理群集。
 
-在头节点上，启动 HPC 群集管理器来查看 HPC Pack 群集的状态。 你可以用处理 Windows 计算节点的相同方式管理和监视 Linux 计算节点。 例如，在“资源管理”中，将会看到列出的 Linux 节点（这些节点都是使用 **LinuxNode** 模板部署的）。
+在头节点上，启动 HPC 群集管理器来查看 HPC Pack 群集的状态。 可以用处理 Windows 计算节点的相同方式管理和监视 Linux 计算节点。 例如，在“资源管理”中，会看到列出的 Linux 节点（这些节点都是使用 **LinuxNode** 模板部署的）。
 
 ![节点管理][management]
 
@@ -186,9 +186,9 @@ HPC Pack IaaS 部署脚本使用 XML 配置文件作为输入来描述 HPC 群�
 ### <a name="azure-file-storage"></a>Azure 文件存储
 [Azure 文件](https://azure.microsoft.com/services/storage/files/)服务使用标准 SMB 2.1 协议公开文件共享。 Azure VM 和云服务可通过装载的共享在应用程序组件之间共享文件数据，本地应用程序可通过文件存储 API 来访问共享中的文件数据。 
 
-有关创建 Azure 文件共享以及将其装入头节点的详细步骤，请参阅 [Get started with Azure File storage on Windows](../../../storage/storage-file-how-to-use-files-windows.md)（在 Windows 上开始使用 Azure 文件存储）。 若要在 Linux 节点上装载 Azure 文件共享，请参阅 [How to use Azure File storage with Linux](../../../storage/storage-how-to-use-files-linux.md)（如何通过 Linux 使用 Azure 文件存储）。 若要设置持久性连接，请参阅 [Persisting connections to Microsoft Azure Files](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)（将连接保存到 Microsoft Azure 文件中）。
+有关创建 Azure 文件共享以及将其装入头节点的详细步骤，请参阅[在 Windows 上开始使用 Azure 文件存储](../../../storage/files/storage-how-to-use-files-windows.md)。 若要在 Linux 节点上装载 Azure 文件共享，请参阅 [How to use Azure File storage with Linux](../../../storage/files/storage-how-to-use-files-linux.md)（如何通过 Linux 使用 Azure 文件存储）。 要设置持久性连接，请参阅 [Persisting connections to Microsoft Azure Files](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)（将连接保存到 Microsoft Azure 文件中）。
 
-在下面的示例中，将在存储帐户上创建 Azure 文件共享。 若要在头节点上装入该共享，请打开命令提示符并输入以下命令：
+在下面的示例中，会在存储帐户上创建 Azure 文件共享。 若要在头节点上装入该共享，请打开命令提示符并输入以下命令：
 
 ```command
 cmdkey /add:allvhdsje.file.core.windows.net /user:allvhdsje /pass:<storageaccountkey>
@@ -239,7 +239,7 @@ clusrun /nodegroup:LinuxNodes mount -t cifs //allvhdsje.file.core.windows.net/rd
 > 
 
 ### <a name="nfs-server"></a>NFS 服务器
-NFS 服务使你能够在运行 Windows Server 2012 操作系统的计算机之间使用 SMB 协议共享和迁移文件，并在基于 Linux 的计算机之间使用 NFS 协议共享和迁移文件。 NFS 服务器和所有其他节点必须部署在同一虚拟网络中。 与 SMB 共享相比，它提供了与 Linux 节点更好的兼容性。 例如，它支持文件链接。
+NFS 服务使用户能够在运行 Windows Server 2012 操作系统的计算机之间使用 SMB 协议共享和迁移文件，并在基于 Linux 的计算机之间使用 NFS 协议共享和迁移文件。 NFS 服务器和所有其他节点必须部署在同一虚拟网络中。 与 SMB 共享相比，它提供了与 Linux 节点更好的兼容性。 例如，它支持文件链接。
 
 1. 若要安装和设置 NFS 服务器，请按照[网络文件系统第一个共享端到端的服务器](http://blogs.technet.com/b/filecab/archive/2012/10/08/server-for-network-file-system-first-share-end-to-end.aspx)中的步骤操作。
    
@@ -281,7 +281,7 @@ HPC Pack [clusrun](https://technet.microsoft.com/library/cc947685.aspx) 工具�
     ```command
     clusrun whoami
     ```
-* 在 linuxnodes 组中的所有节点上安装 **gdb** 调试器工具与 **yum**，然后在 10 分钟后重启节点。
+* 在 linuxnodes 组中的所有节点上安装 **gdb** 调试器工具与 **yum**，并在 10 分钟后重启节点。
   
     ```command
     clusrun /nodegroup:linuxnodes yum install gdb –y; shutdown –r 10

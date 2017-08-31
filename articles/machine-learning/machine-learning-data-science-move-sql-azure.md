@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: ae7977f756fc83cf07109b6aa5b5a27b6b401dba
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: dfd1649b666c3793339f8624bdf77aa92cca4e88
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>将数据转移到 Azure SQL 数据库以便在 Azure 机器学习中处理
@@ -42,7 +41,7 @@ ms.lasthandoff: 06/08/2017
 此处所述的过程要求具有：
 
 * **Azure 订阅帐户**。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* 一个 **Azure 存储帐户**。 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)一文。 创建存储帐户后，需要获取用于访问存储的帐户密钥。 请参阅[管理存储访问密钥](../storage/storage-create-storage-account.md#manage-your-storage-access-keys)。
+* 一个 **Azure 存储帐户**。 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)一文。 创建存储帐户后，需要获取用于访问存储的帐户密钥。 请参阅[管理存储访问密钥](../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys)。
 * 访问 **Azure SQL 数据库**。 如果必须设置 Azure SQL 数据库，可在 [Microsoft Azure SQL 数据库入门](../sql-database/sql-database-get-started.md)中找到相关信息，了解如何设置 Azure SQL 数据库的新实例。
 * 已在本地安装和配置 **Azure PowerShell**。 有关说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
@@ -53,10 +52,10 @@ ms.lasthandoff: 06/08/2017
 ## <a name="file-to-azure-sql-database"></a>将数据从平面文件源移动到 Azure SQL 数据库
 可以使用批量插入 SQL 查询将平面文件（CSV 或 TSV 格式）中的数据移动到 Azure SQL 数据库。
 
-### <a name="bulk-insert-sql-query"></a> 批量插入 SQL 查询
+### <a name="bulk-insert-sql-query"></a>批量插入 SQL 查询
 使用批量插入 SQL 查询过程的步骤类似于将数据从平面文件源移到 Azure VM 上的 SQL Server 部分中所述的步骤。 有关详细信息，请参阅[批量插入 SQL 查询](machine-learning-data-science-move-sql-server-virtual-machine.md#insert-tables-bulkquery)。
 
-## <a name="sql-on-prem-to-sazure-sql-database"></a> 将数据从本地 SQL Server 移动到 Azure SQL 数据库
+## <a name="sql-on-prem-to-sazure-sql-database"></a>将数据从本地 SQL Server 移动到 Azure SQL 数据库
 如果源数据存储在本地 SQL Server 中，则有多种方式可将数据移动到 Azure SQL 数据库：
 
 1. [导出到平面文件](#export-flat-file)

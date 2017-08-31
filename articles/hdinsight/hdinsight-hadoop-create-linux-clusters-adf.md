@@ -1,5 +1,5 @@
 ---
-title: "使用数据工厂创建按需 Hadoop 群集 - Azure HDInsight | Microsoft Docs"
+title: "使用数据工厂创建按需 Hadoop 群集 - Azure HDInsight | Microsoft 文档"
 description: "了解如何在 HDInsight 中使用 Azure 数据工厂创建按需 Hadoop 群集。"
 services: hdinsight
 documentationcenter: 
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/20/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 657c436cc45bb3818f89b922d74e03cae894778e
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e68f1d72965d9516e0552c84d03d234c21739390
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/13/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>在 HDInsight 中使用 Azure 数据工厂创建按需 Hadoop 群集
@@ -76,7 +76,7 @@ adfgetstarted/partitioneddata/year=2014/month=3/000000_0
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell.md)]
 
 ### <a name="prepare-storage-account"></a>准备存储帐户
-在此方案中，你最多可以使用三个存储帐户：
+在此方案中，最多可以使用三个存储帐户：
 
 - HDInsight 群集的默认存储帐户
 - 输入数据的存储帐户
@@ -175,31 +175,31 @@ write-host "Storage Account Key: $destStorageAccountKey"
 Write-host "`nScript completed" -ForegroundColor Green
 ```
 
-如果需要关于此 PowerShell 脚本的帮助，请参阅[将 Azure PowerShell 用于 Azure 存储](../storage/storage-powershell-guide-full.md)。 若要改用 Azure CLI，请参阅[附录](#appendix)部分的 Azure CLI 脚本。
+如果需要关于此 PowerShell 脚本的帮助，请参阅[将 Azure PowerShell 用于 Azure 存储](../storage/common/storage-powershell-guide-full.md)。 若要改用 Azure CLI，请参阅[附录](#appendix)部分的 Azure CLI 脚本。
 
 **检查存储帐户和内容**
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 单击左侧窗格中的“资源组”。
 3. 双击使用 PowerShell 脚本创建的资源组名称。 如果列出了太多资源组，请使用筛选器。
-4. 除非你与其他项目共享资源组，否则在“资源”磁贴中，应列出一个资源。 该资源就是具有你在前面指定的名称的存储帐户。 单击存储帐户名称。
+4. 除非你与其他项目共享资源组，否则在“资源”磁贴中，应列出一个资源。 该资源就是在前面你为其指定名称的存储帐户。 单击存储帐户名称。
 5. 单击“Blob”磁贴。
 6. 单击“adfgetstarted”容器。 可看到两个文件夹：**inputdata** 和 **script**。
 7. 打开文件夹，并检查文件夹中的文件。 inputdata 包含 input.log 文件（其中有输入数据），script 文件夹包含 HiveQL 脚本文件。
 
 ## <a name="create-a-data-factory-using-resource-manager-template"></a>使用 Resource Manager 模板创建数据工厂
-准备好存储帐户、输入数据和 HiveQL 脚本后，你便可以创建 Azure 数据工厂了。 有几种方法可以创建数据工厂。 本教程使用 Azure 门户部署 Azure Resource Manager 模板，从而创建数据工厂。 还可以使用 [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) 和 [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md#deploy-local-template) 部署 Resource Manager 模板。 有关其他数据工厂创建方法，请参阅[教程：构建第一个数据工厂](../data-factory/data-factory-build-your-first-pipeline.md)。
+准备好存储帐户、输入数据和 HiveQL 脚本后，便可以创建 Azure 数据工厂了。 有几种方法可以创建数据工厂。 本教程使用 Azure 门户部署 Azure Resource Manager 模板，从而创建数据工厂。 还可以使用 [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) 和 [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md#deploy-local-template) 部署 Resource Manager 模板。 有关其他数据工厂创建方法，请参阅[教程：构建第一个数据工厂](../data-factory/data-factory-build-your-first-pipeline.md)。
 
-1. 单击以下映像以登录到 Azure，然后在 Azure 门户中打开 Resource Manager 模板。 该模板位于 https://hditutorialdata.blob.core.windows.net/adfhiveactivity/data-factory-hdinsight-on-demand.json。 请参阅[模板中的数据工厂实体](#data-factory-entities-in-the-template)部分，以便详细了解模板中定义的实体。 
+1. 单击以下映像以登录到 Azure，并在 Azure 门户中打开 Resource Manager 模板。 该模板位于 https://hditutorialdata.blob.core.windows.net/adfhiveactivity/data-factory-hdinsight-on-demand.json。 请参阅[模板中的数据工厂实体](#data-factory-entities-in-the-template)部分，以便详细了解模板中定义的实体。 
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fadfhiveactivity%2Fdata-factory-hdinsight-on-demand.json" target="_blank"><img src="./media/hdinsight-hadoop-create-linux-clusters-adf/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. 针对“资源组”设置选择“使用现有项”选项，然后选择在上一步创建（使用 PowerShell 脚本）的资源组的名称。
+2. 针对“资源组”设置选择“使用现有项”选项，并选择在上一步创建（使用 PowerShell 脚本）的资源组的名称。
 3. 输入数据工厂的名称（**数据工厂名称**）。 该名称必须全局唯一。
 4. 输入在前面的步骤中记下的**存储帐户名称**和**存储帐户密钥**。
 5. 阅读完“条款和条件”后，选择“我同意上述条款和条件”。
 6. 选择“固定到仪表板”选项。
 6. 单击“购买/创建”。 在仪表板上，可看到一个名为“部署模板部署”的磁贴。 等待资源组的“资源组”边栏选项卡打开。 也可单击标题为资源组名称的磁贴，打开资源组边栏选项卡。
-6. 如果资源组边栏选项卡尚未打开，请单击该磁贴打开资源组。 现在，你应看到除了存储帐户资源外，多列出了一个数据工厂资源。
+6. 如果资源组边栏选项卡尚未打开，请单击该磁贴打开资源组。 现在，应看到除了存储帐户资源外，多列出了一个数据工厂资源。
 7. 单击数据工厂的名称（为 **Data Factory Name** 参数指定的值）。
 8. 在“数据工厂”边栏选项卡中，单击“图表”磁贴。 图表显示一个包含输入数据集和输出数据集的活动：
 
@@ -425,7 +425,7 @@ folderPath 指定保留输出数据的文件夹的路径：
 },
 ```
 
-在 Azure 数据工厂中，输出数据集可用性将驱动管道。 在此示例中，将在每月的最后一天 (EndOfInterval) 生成切片。 有关详细信息，请参阅[数据工厂计划和执行](../data-factory/data-factory-scheduling-and-execution.md)。
+在 Azure 数据工厂中，输出数据集可用性将驱动管道。 在此示例中，会在每月的最后一天 (EndOfInterval) 生成切片。 有关详细信息，请参阅[数据工厂计划和执行](../data-factory/data-factory-scheduling-and-execution.md)。
 
 #### <a name="data-pipeline"></a>数据管道
 定义一个管道，用于在按需 Azure HDInsight 群集上通过运行 Hive 脚本来转换数据。 有关用于定义本示例中所述管道的 JSON 元素的说明，请参阅 [Pipeline JSON](../data-factory/data-factory-create-pipelines.md#pipeline-json)（管道 JSON）。
@@ -480,7 +480,7 @@ folderPath 指定保留输出数据的文件夹的路径：
 }
 ```
 
-该管道包含一个活动（HDInsightHive 活动）。 由于开始和结束日期均在 2016 年 1 月，只处理一个月的数据（切片）。 活动的*开始* 和*结束* 日期均为过去的日期，因此数据工厂会立即处理该月的数据。 如果结束是将来的日期，则数据工厂将在该时间到来时再创建一个切片。 有关详细信息，请参阅[数据工厂计划和执行](../data-factory/data-factory-scheduling-and-execution.md)。
+该管道包含一个活动（HDInsightHive 活动）。 由于开始和结束日期均在 2016 年 1 月，只处理一个月的数据（切片）。 活动的*开始* 和*结束* 日期均为过去的日期，因此数据工厂会立即处理该月的数据。 如果结束是将来的日期，则数据工厂会在该时间到来时再创建一个切片。 有关详细信息，请参阅[数据工厂计划和执行](../data-factory/data-factory-scheduling-and-execution.md)。
 
 ## <a name="clean-up-the-tutorial"></a>结束本教程
 
@@ -497,7 +497,7 @@ folderPath 指定保留输出数据的文件夹的路径：
 3. 单击使用 PowerShell 脚本创建的资源组名称。 如果列出了太多资源组，请使用筛选器。 此时在新的边栏选项卡中打开资源组。
 4. 除非你与其他项目共享资源组，否则在“资源”磁贴中，应列出默认存储帐户和数据工厂。
 5. 在边栏选项卡顶部，单击“删除”。 这样做会删除存储帐户和存储帐户中存储的数据。
-6. 输入资源组名称对删除进行确认，然后单击“删除”。
+6. 输入资源组名称对删除进行确认，并单击“删除”。
 
 如果不想在删除资源组时删除存储帐户，则可以通过将业务数据与默认存储帐户分离，实现以下体系结构。 在这种情况下，将为包含业务数据的存储帐户创建一个资源组，为 HDInsight 链接服务的默认存储帐户和数据工厂创建另一个资源组。 删除第二个资源组时，不会影响业务数据存储帐户。 为此，请执行以下操作：
 
@@ -563,7 +563,7 @@ folderPath 指定保留输出数据的文件夹的路径：
     },            
     ```
 ## <a name="next-steps"></a>后续步骤
-在本文中，你学习了如何使用 Azure 数据工厂创建按需 HDInsight 群集以处理 Hive 作业。 若要了解更多信息，请参考以下文章：
+在本文中，学习了如何使用 Azure 数据工厂创建按需 HDInsight 群集以处理 Hive 作业。 若要了解更多信息，请参考以下文章：
 
 * [Hadoop 教程：在 HDInsight 中使用基于 Linux 的 Hadoop 入门](hdinsight-hadoop-linux-tutorial-get-started.md)
 * [在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)
@@ -595,5 +595,5 @@ azure storage blob copy start "https://hditutorialdata.blob.core.windows.net/adf
 azure storage blob copy start "https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql" --dest-account-name "<Azure Storage Account Name>" --dest-account-key "<Azure Storage Account Key>" --dest-container "adfgetstarted"
 ```
 
-容器名称为 *adfgetstarted*。 请保留该名称。 否则，需要更新 Resource Manager 模板。 如果需要关于此 CLI 脚本的帮助，请参阅[将 Azure CLI 用于 Azure 存储](../storage/storage-azure-cli.md)。
+容器名称为 *adfgetstarted*。 请保留该名称。 否则，需要更新 Resource Manager 模板。 如果需要关于此 CLI 脚本的帮助，请参阅[将 Azure CLI 用于 Azure 存储](../storage/common/storage-azure-cli.md)。
 

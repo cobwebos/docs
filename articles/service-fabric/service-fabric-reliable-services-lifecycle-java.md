@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: pakunapa;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: ddec69e57e84f33c37831a0da2c21955d78fff98
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 80eb68346dd05c256c60725eb082aa0651fe7cbd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 
@@ -60,13 +60,13 @@ ms.lasthandoff: 04/03/2017
 
 1. 并行
     - 关闭所有已打开的侦听器（针对每个侦听器调用 `CommunicationListener.closeAsync()`）
-    - 取消传递给 `runAsync()` 的取消标记（检查取消标记的 `isCancelled` 属性是否返回 true，如果调用标记的 `throwIfCancellationRequested` 方法，则会返回 `CancellationException`）
+    - 取消传递给 `runAsync()` 的取消令牌（检查取消令牌的 `isCancelled` 属性是否返回 true，如果调用令牌的 `throwIfCancellationRequested` 方法，则会引发 `CancellationException`）
 2. 针对每个侦听器完成 `closeAsync()` 并且完成 `runAsync()` 后，将调用服务的 `StatelessService.onCloseAsync()` 方法（如果存在）（这也是一种不常见的重写）。
 3. 完成 `StatelessService.onCloseAsync()` 后，销毁服务对象
 
 ## <a name="notes-on-service-lifecycle"></a>有关服务生命周期的说明
 * `runAsync()` 方法和 `createServiceInstanceListeners` 调用都是可选的。 服务可能使用其中的一个或两个，或者都不使用。 例如，如果服务执行的所有工作都只是为了响应用户调用，则无需实现 `runAsync()`。 只需提供通信侦听器及其关联的代码。 同样，创建和返回通信侦听器的操作也是可选的，因为服务可能只需执行后台工作，在这种情况下，只需实现 `runAsync()`
-* 服务成功完成 `runAsync()` 并从中返回即可。 这不被视为一种错误状态，只是表示正在完成服务的后台工作。 对于有状态 Reliable Services，如果服务已从主副本降级，然后重新升级到主副本，则会再次调用 `runAsync()`。
+* 服务成功完成 `runAsync()` 并从中返回即可。 这不被视为一种错误状态，只是表示正在完成服务的后台工作。 对于有状态可靠服务，如果服务已从主副本降级，然后重新升级为主副本，则会再次调用 `runAsync()`。
 * 如果服务通过引发某种意外的异常而从 `runAsync()` 退出，则就属于一种失败状态，在此情况下，将关闭服务对象并报告运行状况错误。
 * 虽然从这些方法返回没有时间限制，但会立即丧失写入的能力，并因此无法完成任何实际工作。 建议尽快在收到取消请求后返回。 如果服务在合理的时间内未响应这些 API 调用，Service Fabric 可能会强行终止服务。 通常，只有在应用程序升级期间或删除服务时，才发生这种情况。 此超时默认为 15 分钟。
 * `onCloseAsync()` 路径中的失败会导致调用 `onAbort()`，服务可以凭借这最后一个机会，尽最大努力清理并释放它们所占用的资源。

@@ -1,6 +1,6 @@
 ---
-title: "Azure 中 Liunx VM 的计划维护 | Microsoft Docs"
-description: "了解什么是 Azure 计划内维护以及它如何影响正在 Azure 中运行的 Windows 虚拟机。"
+title: "Azure 中 Linux VM 的维护和更新 | Microsoft Docs"
+description: "概述 Azure 中运行的 Linux 虚拟机的维护和更新。"
 services: virtual-machines-linux
 documentationcenter: 
 author: zivr
@@ -13,28 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/27/2017
+ms.date: 08/14/2017
 ms.author: zivr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: f5e52f4642b85a75f0c9f1892fbf0e565aa8b35b
+ms.translationtype: HT
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 6ead5f0b6a065710a70f1e44d9672c6d8cc4c1e2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 
 # <a name="planned-maintenance-for-linux-virtual-machines"></a>Linux 虚拟机的计划维护 
 
-Microsoft Azure 在全球范围内定期执行更新，以提高虚拟机所基于的主机基础结构的可靠性、性能及安全性。 此类更新包括修补主机环境（OS、虚拟机监控程序以及主机上部署的各种代理）中的软件组件、升级网络组件以及硬件解除授权等多项内容。
+[!INCLUDE [virtual-machines-common-planned-maintenance](../../../includes/virtual-machines-common-planned-maintenance.md)]
 
-大多数此类更新在执行时不会影响托管的虚拟机或云服务。
+## <a name="next-steps"></a>后续步骤
 
-但是，也会存在更新对托管的虚拟机产生影响的情况：
+使用 [Azure 元数据服务](instance-metadata-service.md)可以发现有关 Azure 中托管的虚拟机的信息。 
 
--   使用就地 VM 迁移的 VM 保留维护会描述一种类型的更新，其中虚拟机在维护期间不会被重启。
-
--   VM 重启维护，维护时需要重启或重新部署到托管虚拟机。
-
-请注意，本页介绍 Microsoft Azure 如何执行计划内维护。 有关非计划事件（故障）的详细信息，请参阅[管理虚拟机的可用性](../linux/manage-availability.md)。
 

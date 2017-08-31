@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2017
 ms.author: sasolank
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: f9160be8c0fb3cff9efdd22ff623a4827ce3946f
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 8131ded6b74e9c544bf70b1a4659ed07e5def04d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>在包含应用程序网关的内部 VNET 中集成 API 管理 
@@ -54,8 +53,8 @@ ms.lasthandoff: 06/15/2017
 * **前端端口：**此端口是应用程序网关上打开的公共端口。 抵达此端口的流量将重定向到后端服务器之一。
 * **侦听器：** 侦听器具有前端端口、协议（Http 或 Https，这些值区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。
 * **规则：**规则将侦听器绑定到后端服务器池。
-* **自定义运行状况探测：**默认情况下，应用程序网关使用基于 IP 地址的探测来判断 BackendAddressPool 中的哪些服务器处于活动状态。 API 管理服务只响应包含正确主机标头的请求，因此默认的探测将会失败。 需要定义一个自定义运行状况探测，帮助应用程序网关确定服务处于活动状态，应该转发该请求。
-* **自定义域证书：**若要从 Internet 访问 API 管理，需要创建从服务主机名到应用程序网关前端 DNS 名称的 CNAME 映射。 这可以确保发送到应用程序网关，然后转发到 API 管理的主机名标头和证书是 APIM 可以识别为有效的对象。
+* **自定义运行状况探测：**默认情况下，应用程序网关使用基于 IP 地址的探测来判断 BackendAddressPool 中的哪些服务器处于活动状态。 API 管理服务只响应包含正确主机标头的请求，因此默认的探测会失败。 需要定义一个自定义运行状况探测，帮助应用程序网关确定服务处于活动状态，应该转发该请求。
+* **自定义域证书：**若要从 Internet 访问 API 管理，需要创建从服务主机名到应用程序网关前端 DNS 名称的 CNAME 映射。 这可以确保发送到应用程序网关，并转发到 API 管理的主机名标头和证书是 APIM 可以识别为有效的对象。
 
 ## <a name="overview-steps"></a> 集成 API 管理和应用程序网关所要执行的步骤 
 
@@ -148,7 +147,7 @@ $apimVirtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location "West US"
 在虚拟网络中创建一个 API 管理服务。
 
 ```powershell
-$apimService = New-AzureRmApiManagement -ResourceGroupName "apim-appGw-RG" -Location "West US" -Name "ContosoApi" -Organization "Contoso" -AdminEmail "admin@contoso.com" -VirtualNetwork $apimVirtualNetwork -VpnType "Internal" -Sku "Premium"
+$apimService = New-AzureRmApiManagement -ResourceGroupName "apim-appGw-RG" -Location "West US" -Name "ContosoApi" -Organization "Contoso" -AdminEmail "admin@contoso.com" -VirtualNetwork $apimVirtualNetwork -VpnType "Internal" -Sku "Developer"
 ```
 上述命令成功后，请参阅 [DNS Configuration required to access internal VNET API Management service](api-management-using-with-internal-vnet.md#apim-dns-configuration)（访问内部 VNET API 管理服务所要完成的 DNS 配置）访问该服务。
 
@@ -268,7 +267,7 @@ $apimProxyBackendPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "a
 $dummyBackendSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "dummySetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 ```
 
-配置虚拟后端“dummyBackendPool”，它指向 FQDN 地址“dummybackend.com”。 虚拟网络中不存在此 FQDN 地址。
+配置虚拟后端“dummyBackendPool”，它指向 FQDN 地址“dummybackend.com”。虚拟网络中不存在此 FQDN 地址。
 
 ```powershell
 $dummyBackendPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "dummyBackendPool" -BackendFqdns "dummybackend.com"
@@ -296,7 +295,7 @@ $echoapiRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "externalapis" 
 $urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -PathRules $echoapiRule, $dummyPathRule -DefaultBackendAddressPool $dummyBackendPool -DefaultBackendHttpSettings $dummyBackendSetting
 ```
 
-上述步骤可确保只允许针对路径“/echo/”发出的请求通过应用程序网关。 从 Internet 访问时，针对在 API 管理中配置的其他 API 发出的请求将在应用程序网关中引发 404 错误。 
+上述步骤可确保只允许针对路径“/echo/”发出的请求通过应用程序网关。 从 Internet 访问时，针对在 API 管理中配置的其他 API 发出的请求会在应用程序网关中引发 404 错误。 
 
 ### <a name="step-12"></a>步骤 12
 

@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 38afe40cf45cf13d587faf13cc5216e4326b84a0
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c8d4733e57eb760dbb8e8ca96f6ba55671d1742f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>停用 S1、S2 和 S3 性能级别
@@ -29,7 +28,7 @@ ms.lasthandoff: 06/20/2017
 > 本文中所述的 S1、S2 和 S3 性能级别即将停用，到时不再适用于新的 DocumentDB API 帐户。
 >
 
-本文概述 S1、S2 和 S3 性能级别，并介绍在 2017 年 8 月 1 日，使用这些性能级别的集合将如何迁移到单分区集合。 阅读本文之后，你将能够回答以下问题：
+本文概述 S1、S2 和 S3 性能级别，并介绍在 2017 年 8 月 1 日，使用这些性能级别的集合将如何迁移到单分区集合。 阅读本文之后，能够回答以下问题：
 
 - [为何要停用 S1、S2 和 S3 性能级别？](#why-retired)
 - [单分区集合和分区集合与 S1、S2、S3 性能级别相比存在哪些差别？](#compare)
@@ -59,27 +58,27 @@ S1、S2 和 S3 性能级别无法提供 DocumentDB API 集合具备的灵活性�
 |最大吞吐量|不受限制|10K RU/秒|250 RU/秒|1 K RU/秒|2.5 K RU/秒|
 |最小吞吐量|2.5K RU/秒|400 RU/秒|250 RU/秒|1 K RU/秒|2.5 K RU/秒|
 |最大存储|不受限制|10 GB|10 GB|10 GB|10 GB|
-|价格|吞吐量：6 美元/100 RU/秒<br><br>存储：0.25 美元/GB|吞吐量：6 美元/100 RU/秒<br><br>存储：0.25 美元/GB|25 美元|50 美元|100 美元|
+|价格（每月）|吞吐量：6 美元/100 RU/秒<br><br>存储：0.25 美元/GB|吞吐量：6 美元/100 RU/秒<br><br>存储：0.25 美元/GB|25 美元|50 美元|100 美元|
 
-你是 EA 客户？ 如果是，请参阅[如果我是 EA 客户，我会受到怎样的影响？](#ea-customer)
+是 EA 客户？ 如果是，请参阅[如果我是 EA 客户，我会受到怎样的影响？](#ea-customer)
 
 <a name="uninterrupted-access"></a>
 
 ## <a name="what-do-i-need-to-do-to-ensure-uninterrupted-access-to-my-data"></a>我需要做些什么才能确保不间断地访问我的数据？
 
-什么也不需要做，Cosmos DB 会代你处理迁移。 如果你正在使用 S1、S2 或 S3 集合，当前集合将在 2017 年 7 月 31 日迁移到单分区集合。 
+什么也不需要做，Cosmos DB 会代你处理迁移。 如果正在使用 S1、S2 或 S3 集合，当前集合会在 2017 年 7 月 31 日迁移到单分区集合。 
 
 <a name="collection-change"></a>
 
 ## <a name="how-will-my-collection-change-after-the-migration"></a>迁移后我的集合会发生怎样的变化？
 
-如果你正在使用 S1 集合，该集合将迁移到吞吐量为 400 RU/秒的单分区集合。 400 RU/秒是单分区集合提供的最低吞吐量。 但是，单分区集合中 400 RU/秒吞吐量的费用大致与 S1 集合中 250 RU/秒吞吐量的费用相同 – 因此，不需要为额外的 150 RU/秒付费。
+如果正在使用 S1 集合，该集合将迁移到吞吐量为 400 RU/秒的单分区集合。 400 RU/秒是单分区集合提供的最低吞吐量。 但是，单分区集合中 400 RU/秒吞吐量的费用大致与 S1 集合中 250 RU/秒吞吐量的费用相同 – 因此，不需要为额外的 150 RU/秒付费。
 
-如果你正在使用 S2 集合，该集合将迁移到吞吐量为 1 K RU/秒的单分区集合。 你不会察觉到吞吐量级别有变化。
+如果正在使用 S2 集合，该集合将迁移到吞吐量为 1 K RU/秒的单分区集合。 不会察觉到吞吐量级别有变化。
 
-如果你正在使用 S3 集合，该集合将迁移到吞吐量为 2.5 K RU/秒的单分区集合。 你不会察觉到吞吐量级别有变化。
+如果正在使用 S3 集合，该集合将迁移到吞吐量为 2.5 K RU/秒的单分区集合。 不会察觉到吞吐量级别有变化。
 
-对于上面的每种情况，在迁移集合后，便可以根据需要自定义吞吐量级别，或者将它调高和调低，向用户提供低延迟的访问。 若要在迁移集合后更改吞吐量级别，只需在 Azure 门户中打开 Cosmos DB 帐户，单击“缩放”，选择集合，然后如以下屏幕截图中所示调整吞吐量级别：
+对于上面的每种情况，在迁移集合后，便可以根据需要自定义吞吐量级别，或者将它调高和调低，向用户提供低延迟的访问。 要在迁移集合后更改吞吐量级别，只需在 Azure 门户中打开 Cosmos DB 帐户，单击“缩放”，选择集合，然后如以下屏幕截图中所示调整吞吐量级别：
 
 ![如何在 Azure 门户中缩放吞吐量](./media/performance-levels/portal-scale-throughput.png)
 
@@ -95,19 +94,19 @@ S1、S2 和 S3 性能级别无法提供 DocumentDB API 集合具备的灵活性�
 
 ## <a name="what-if-i-need-more-than-10-gb-of-storage"></a>如果需要 10 GB 以上的存储该怎么办？
 
-无论使用的是 S1、S2 或 S3 性能级别的集合还是单分区集合，它们的可用存储都是 10 GB。可以使用 Cosmos DB 数据迁移工具将数据迁移到分区集合，它们的存储空间几乎无限。 有关分区集合优势的信息，请参阅 [Azure Cosmos DB 中的分区和缩放](documentdb-partition-data.md)。 有关如何将 S1、S2、S3 或单分区集合迁移到分区集合的信息，请参阅[从单分区集合迁移到分区集合](documentdb-partition-data.md#migrating-from-single-partition)。 
+无论使用的是 S1、S2 或 S3 性能级别的集合还是单分区集合，它们的可用存储都是 10 GB。可以使用 Cosmos DB 数据迁移工具将数据迁移到分区集合，它们的存储几乎无限。 有关分区集合优势的信息，请参阅 [Azure Cosmos DB 中的分区和缩放](documentdb-partition-data.md)。 有关如何将 S1、S2、S3 或单分区集合迁移到分区集合的信息，请参阅[从单分区集合迁移到分区集合](documentdb-partition-data.md#migrating-from-single-partition)。 
 
 <a name="change-before"></a>
 
 ## <a name="can-i-change-between-the-s1-s2-and-s3-performance-levels-before-august-1-2017"></a>在 2017 年 8 月 1 日之前，是否可以在 S1、S2 和 S3 性能级别之间切换？
 
-只有使用 S1、S2 和 S3 性能的现有帐户才能通过门户或编程方式切换和更改性能级别层。 从 2017 年 8 月 1 日开始，S1、S2 和 S3 性能级别将不再可用。 如果从 S1、S3 或 S3 切换到了单分区集合，将无法恢复 S1、S2 或 S3 性能级别。
+只有使用 S1、S2 和 S3 性能的现有帐户才能通过门户或编程方式切换和更改性能级别层。 从 2017 年 8 月 1 日开始，S1、S2 和 S3 性能级别不再可用。 如果从 S1、S3 或 S3 切换到了单分区集合，将无法恢复 S1、S2 或 S3 性能级别。
 
 <a name="when-migrated"></a>
 
 ## <a name="how-will-i-know-when-my-collection-has-migrated"></a>如何知道我的集合已迁移？
 
-迁移将在 2017 年 7 月 31 日进行。 如果某个集合使用 S1、S2 或 S3 性能级别，发生迁移之前，Cosmos DB 团队将通过电子邮件与你联系。 2017 年 8 月 1 日完成迁移后，Azure 门户将显示你的集合使用的是标准定价。
+迁移会在 2017 年 7 月 31 日进行。 如果某个集合使用 S1、S2 或 S3 性能级别，发生迁移之前，Cosmos DB 团队将通过电子邮件与你联系。 2017 年 8 月 1 日完成迁移后，Azure 门户会显示集合使用的是标准定价。
 
 ![如何确认集合已迁移到标准定价层](./media/performance-levels/portal-standard-pricing-applied.png)
 
@@ -115,26 +114,26 @@ S1、S2 和 S3 性能级别无法提供 DocumentDB API 集合具备的灵活性�
 
 ## <a name="how-do-i-migrate-from-the-s1-s2-s3-performance-levels-to-single-partition-collections-on-my-own"></a>如何自行从 S1、S2、S3 性能级别迁移到单分区集合？
 
-可以使用 Azure 门户或编程方式从 S1、S2 和 S3 性能级别迁移到单分区集合。 你可以在 8 月 1 日之前自行执行此操作，然后即可享用单分区集合提供的灵活吞吐量选项；或者，我们会在 2017 年 7 月 31 日代你迁移集合。
+可以使用 Azure 门户或编程方式从 S1、S2 和 S3 性能级别迁移到单分区集合。 可以在 8 月 1 日之前自行执行此操作，即可享用单分区集合提供的灵活吞吐量选项；或者，我们会在 2017 年 7 月 31 日代你迁移集合。
 
 **使用 Azure 门户迁移到单分区集合**
 
-1. 在 [Azure 门户](https://portal.azure.com)中，单击“Azure Cosmos DB”，然后选择要修改的 Cosmos DB 帐户。 
+1. 在 [Azure 门户](https://portal.azure.com)中，单击“Azure Cosmos DB”，并选择要修改的 Cosmos DB 帐户。 
  
-    如果跳转栏上没有“Azure Cosmos DB”，请单击 >，滚动到“数据库”，选择“Azure Cosmos DB”，然后选择 DocumentDB 帐户。  
+    如果跳转栏上没有“Azure Cosmos DB”，请单击 >，滚动到“数据库”，选择“Azure Cosmos DB”，并选择 DocumentDB 帐户。  
 
-2. 在资源菜单中的“容器”下单击“缩放”，从下拉列表中选择要修改的集合，然后单击“定价层”。 使用预定义吞吐量的帐户拥有定价层 S1、S2 或 S3。  在“选择定价层”边栏选项卡中，单击“标准”以更改为用户定义的吞吐量，然后单击“选择”保存更改。
+2. 在资源菜单中的“容器”下单击“缩放”，从下拉列表中选择要修改的集合，并单击“定价层”。 使用预定义吞吐量的帐户拥有定价层 S1、S2 或 S3。  在“选择定价层”边栏选项卡中，单击“标准”以更改为用户定义的吞吐量，并单击“选择”保存更改。
 
     ![显示在何处更改吞吐量值的“设置”边栏选项卡屏幕截图](./media/performance-levels/change-performance-set-thoughput.png)
 
-3. 返回到“规模”边栏选项卡中，“定价层”已更改为“标准”，“吞吐量(RU/s)”框显示默认值 400。 可以在 400 和 10,000 [请求单位](request-units.md)/秒 (RU/s) 之间设置吞吐量。 页面底部的“每月预期账单”将自动更新，以提供月度成本估算。 
+3. 返回到“规模”边栏选项卡中，“定价层”已更改为“标准”，“吞吐量(RU/s)”框显示默认值 400。 可以在 400 和 10,000 [请求单位](request-units.md)/秒 (RU/s) 之间设置吞吐量。 页面底部的“每月预期账单”将自动提供月度成本估算。 
 
     >[!IMPORTANT] 
     > 保存更改后并转移到标准定价层后，无法回滚到 S1、S2 或 S3 性能级别。
 
 4. 单击“保存”以保存更改。
 
-    如果你确定需要更多吞吐量（大于 10,000 RU/s）或更多存储（大于 10GB），可以创建分区集合。 若要将单分区集合迁移到分区集合，请参阅[从单分区集合迁移到分区集合](documentdb-partition-data.md#migrating-from-single-partition)。
+    如果确定需要更多吞吐量（大于 10,000 RU/s）或更多存储（大于 10GB），可以创建分区集合。 要将单分区集合迁移到分区集合，请参阅[从单分区集合迁移到分区集合](documentdb-partition-data.md#migrating-from-single-partition)。
 
     > [!NOTE]
     > 从 S1、S2 或 S3 切换到标准定价层最长可能需要 2 分钟时间。

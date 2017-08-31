@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 5949ae254233aa32384aab50b188fdd6527787a0
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 5336543e06d60be555722a615568b12048c2aa2f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>教程：Azure Active Directory 与 LinkedIn Elevate 的集成
@@ -55,7 +54,7 @@ ms.lasthandoff: 05/31/2017
 2. 配置并测试 Azure AD 单一登录
 
 ## <a name="adding-linkedin-elevate-from-the-gallery"></a>从库中添加 LinkedIn Elevate
-若要配置 LinkedIn Elevate 与 Azure AD 的集成，需要从库中将 LinkedIn Elevate 添加到托管 SaaS 应用列表。
+要配置 LinkedIn Elevate 与 Azure AD 的集成，需要从库中将 LinkedIn Elevate 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 LinkedIn Elevate，请执行以下步骤：**
 
@@ -86,8 +85,8 @@ ms.lasthandoff: 05/31/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 LinkedIn Elevate 测试用户](#creating-a-linkedin-elevate-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 能够使用 Azure AD 单一登录。
+3. **[创建 LinkedIn Elevate 测试用户](#creating-a-linkedin-elevate-test-user)** - 通过 Britta Simon 测试 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -104,7 +103,7 @@ ms.lasthandoff: 05/31/2017
  
     ![配置单一登录](./media/active-directory-saas-linkedinElevate-tutorial/tutorial-linkedin_01.png)
 
-3. 在另一个 Web 浏览器窗口中，以管理员身份登录到你的 LinkedIn Elevate 租户。
+3. 在另一个 Web 浏览器窗口中，以管理员身份登录到 LinkedIn Elevate 租户。
 
 4. 在“帐户中心”，单击“设置”下的“全局设置”。 此外，请从下拉列表中选择“提升 - 提升 AAD 测试”。
 
@@ -118,7 +117,7 @@ ms.lasthandoff: 05/31/2017
 
     ![配置单一登录](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_signon_01.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“标识符”文本框中，输入从 LinkedIn 门户复制的“实体 ID” 
+    a. 在“标识符”文本框中，输入从 LinkedIn 门户复制的“实体 ID” 
 
     b. 在“回复 URL”文本框中，输入从 LinkedIn 门户复制的“断言使用者访问(ACS) URL”
 
@@ -138,18 +137,18 @@ ms.lasthandoff: 05/31/2017
     | --- | --- |    
     | department| user.department |
 
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-linkedinElevate-tutorial/userattribute.png)
+      ![创建 Azure AD 测试用户](./media/active-directory-saas-linkedinElevate-tutorial/userattribute.png)
 
-       a. Click on Add attribute to open the attribute details page add the department attribute as shown below-
+      a. 单击“添加属性”，打开属性详细信息页，添加如下所示的 department 属性
 
-       ![Creating an Azure AD test user](./media/active-directory-saas-linkedinElevate-tutorial/adduserattribute.png)
+      ![创建 Azure AD 测试用户](./media/active-directory-saas-linkedinElevate-tutorial/adduserattribute.png)
 
-       b. Click on **Ok** to save the attribute.
+      b. 单击“确定”保存属性。
 
-    c. 将属性 emailaddress 的名称更改为 email。
+      c. 将属性 emailaddress 的名称更改为 email。
 
 
-10. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存 XML 文件。
+10. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
 
     ![配置单一登录](./media/active-directory-saas-linkedinElevate-tutorial/tutorial-linkedinElevate_certificate.png) 
 
@@ -188,7 +187,7 @@ ms.lasthandoff: 05/31/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-linkedinElevate-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -198,7 +197,7 @@ ms.lasthandoff: 05/31/2017
 
 ### <a name="creating-a-linkedin-elevate-test-user"></a>创建 LinkedIn Elevate 测试用户
 
-LinkedIn Elevate 应用程序支持及时用户设置，进行身份验证后，将在应用程序中自动创建用户。 在 LinkedIn Elevate 门户的管理设置页上，将“自动分配许可证”开关打开为活动状态以启用及时预配，这也会将许可证分配给用户。
+LinkedIn Elevate 应用程序支持及时用户设置，进行身份验证后，会在应用程序中自动创建用户。 在 LinkedIn Elevate 门户的管理设置页上，将“自动分配许可证”开关打开为活动状态以启用及时预配，这也会将许可证分配给用户。
 
    ![创建 Azure AD 测试用户](./media/active-directory-saas-linkedinElevate-tutorial/LinkedinUserprovswitch.png)
 
@@ -208,9 +207,9 @@ LinkedIn Elevate 应用程序支持及时用户设置，进行身份验证后，
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 LinkedIn Elevate，请执行以下步骤：**
+**要将 Britta Simon 分配到 LinkedIn Elevate，请执行以下步骤：**
 
-1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -258,3 +257,4 @@ LinkedIn Elevate 应用程序支持及时用户设置，进行身份验证后，
 [201]: ./media/active-directory-saas-linkedinElevate-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-linkedinElevate-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-linkedinElevate-tutorial/tutorial_general_203.png
+

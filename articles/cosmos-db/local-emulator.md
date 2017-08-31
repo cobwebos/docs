@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2017
+ms.date: 08/22/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: 8e21861de95308a99beab3ff5ed5bd95c4f04e33
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: a0f6a845a345ebd4ef0a58abf4934ce400103109
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>将 Azure Cosmos DB 模拟器用于本地开发和测试
@@ -146,7 +146,7 @@ Azure Cosmos DB 模拟器启动时，会在浏览器中自动打开 Azure Cosmos
 > 在某版本的 Azure Cosmos DB 模拟器中创建数据后，不能保证在使用其他版本时可访问。 如果需要长期保存数据，建议将该数据存储在 Azure Cosmos DB 帐户中，而不是存储在 Azure Cosmos DB 模拟器中。 
 
 ## <a name="authenticating-requests"></a>对请求进行身份验证
-与云中的 Azure 文档一样，针对 Azure Cosmos DB 模拟器的每个请求都必须进行身份验证。 Azure Cosmos DB 模拟器支持单一固定帐户和用于主密钥身份验证的公开的身份验证密钥。 此帐户和密钥是允许用于 Azure Cosmos DB 模拟器的唯一凭据。 它们具有以下特点：
+与云中的 Azure Cosmos DB 一样，针对 Azure Cosmos DB 模拟器的每个请求都必须进行身份验证。 Azure Cosmos DB 模拟器支持单一固定帐户和用于主密钥身份验证的公开的身份验证密钥。 此帐户和密钥是允许用于 Azure Cosmos DB 模拟器的唯一凭据。 它们具有以下特点：
 
     Account name: localhost:<port>
     Account key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
@@ -362,6 +362,8 @@ Azure Cosmos DB 模拟器启动时，会在浏览器中自动打开 Azure Cosmos
 
 使用以下提示来帮助解决使用 Azure Cosmos DB 模拟器时遇到的问题：
 
+- 如果安装了新版本的模拟器并遇到错误，请务必重置数据。 重置数据的方法如下：在系统任务栏上右键单击“Azure Cosmos DB 模拟器”图标，然后单击“重置数据...”。 如果这样做无法修复错误，则可卸载并重新安装该应用。 有关说明，请参阅[卸载本地模拟器](#uninstall)。
+
 - 如果 Azure Cosmos DB 模拟器崩溃，请从 c:\Users\user_name\AppData\Local\CrashDumps 文件夹收集转储文件、进行压缩并将其附加到电子邮件，发送至 [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com)。
 
 - 如果 CosmosDB.StartupEntryPoint.exe 崩溃，请从管理员命令提示符运行以下命令：`lodctr /R` 
@@ -382,6 +384,13 @@ Azure Cosmos DB 模拟器启动时，会在浏览器中自动打开 Azure Cosmos
 5. `CosmosDB.Emulator.exe /stoptraces`
 6. 导航到 `%ProgramFiles%\Azure Cosmos DB Emulator`，查找 docdbemulator_000001.etl 文件。
 7. 将 .etl 文件和重现步骤一起发送至 [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) 进行调试。
+
+### <a id="uninstall"></a>卸载本地模拟器
+
+1. 通过在系统任务栏上右键单击“Azure Cosmos DB 模拟器”图标，然后单击“退出”，退出所有打开的本地模拟器实例。 退出所有实例可能需要一分钟。
+2. 在 Windows 搜索框中，键入“应用和功能”，然后单击“应用和功能(系统设置)”结果。
+3. 在应用列表中，滚动到“Azure Cosmos DB 模拟器”并将其选中，单击“卸载”，然后确认并再次单击“卸载”。
+4. 卸载应用后，导航到 C:\Users\<user>\AppData\Local\CosmosDBEmulator 并删除该文件夹。 
 
 ## <a name="next-steps"></a>后续步骤
 

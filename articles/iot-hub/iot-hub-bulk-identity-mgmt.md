@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 8df8cdfd0b265b11e6a11f0a5eb7ad8f0e669ca2
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ad2c6d585eef5450f7f0912ffa4753fe80d86b37
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>批量管理 IoT 中心设备标识
 
 每个 IoT 中心都有一个标识注册表，可以使用该注册表在服务中创建每设备资源。 设备标识注册表还可控制对面向设备的终结点的访问。 本文介绍如何在标识注册表中批量导入和导出设备标识。
 
-*作业*的上下文中发生导入和导出操作，可允许你对 IoT 中心执行批量服务操作。
 
-**RegistryManager** 类包括使用**作业**框架的 **ExportDevicesAsync** 和 **ImportDevicesAsync** 方法。 这些方法可让你导出、导入和同步整个 IoT 中心标识注册表。
+            *作业*的上下文中发生导入和导出操作，可允许对 IoT 中心执行批量服务操作。
+
+**RegistryManager** 类包括使用**作业**框架的 **ExportDevicesAsync** 和 **ImportDevicesAsync** 方法。 使用这些方法可导出、导入和同步整个 IoT 中心标识注册表。
 
 ## <a name="what-are-jobs"></a>什么是作业？
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 07/04/2017
 * 相较标准运行时操作，其执行时间可能很长。
 * 向用户返回大量数据。
 
-操作将以异步方式为该 IoT 中心创建**作业**，而非在操作结果处进行单一的 API 调用等待或阻塞。 然后，操作立即返回 **JobProperties** 对象。
+操作将以异步方式为该 IoT 中心创建**作业**，而非在操作结果处进行单一的 API 调用等待或阻塞。 然后，操作立即返回 JobProperties 对象。
 
 以下 C# 代码段演示如何创建导出作业：
 
@@ -47,7 +47,7 @@ JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasU
 ```
 
 > [!NOTE]
-> 若要在 C# 代码中使用 **RegistryManager** 类，请将 **Microsoft.Azure.Devices** NuGet 包添加到项目。 **RegistryManager** 类位于 **Microsoft.Azure.Devices** 命名空间。
+> 要在 C# 代码中使用 **RegistryManager** 类，请将 **Microsoft.Azure.Devices** NuGet 包添加到项目。 **RegistryManager** 类位于 **Microsoft.Azure.Devices** 命名空间。
 
 可使用 **RegistryManager** 类，查询使用返回的 **JobProperties** 元数据的**作业**的状态。
 
@@ -72,9 +72,9 @@ while(true)
 
 ## <a name="export-devices"></a>导出设备
 
-使用 **ExportDevicesAsync** 方法，将整个 IoT 中心标识注册表导出到使用[共享访问签名](../storage/storage-security-guide.md#data-plane-security)的 [Azure 存储](../storage/index.md) Blob 容器。
+使用 **ExportDevicesAsync** 方法，将整个 IoT 中心标识注册表导出到使用[共享访问签名](../storage/common/storage-security-guide.md#data-plane-security)的 [Azure 存储](../storage/index.md) Blob 容器。
 
-此方法可让你在所控制的 Blob 容器中创建可靠的设备信息备份。
+使用此方法，可在所控制的 blob 容器中创建可靠的设备信息备份。
 
 **ExportDevicesAsync** 方法需要两个参数：
 
@@ -84,9 +84,9 @@ while(true)
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
    ```
 
-* 一个*布尔值*，该值指示你是否想要从导出数据中排除身份验证密钥。 如果为 **false**，则身份验证密钥包含在导出输出中。 否则，密钥导出为 **null**。
+* 一个布尔值，该值指示是否要从导出数据中排除身份验证密钥。 如果为 **false**，则身份验证密钥包含在导出输出中。 否则，密钥导出为 **null**。
 
-下面的 C# 代码段演示了如何启动在导出数据中包含设备身份验证密钥的导出作业，然后对完成情况进行轮询：
+下面的 C# 代码段演示了如何启动在导出数据中包含设备身份验证密钥的导出作业，并对完成情况进行轮询：
 
 ```csharp
 // Call an export job on the IoT Hub to retrieve all devices
@@ -167,7 +167,7 @@ while(true)
 }
 ```
 
-如果你需要在代码中访问此数据，可以使用 **ExportImportDevice** 类轻松反序列化此数据。 以下 C# 代码段演示如何读取前面导出到块 Blob 的设备信息：
+如果需要在代码中访问此数据，可以使用 **ExportImportDevice** 类轻松反序列化此数据。 以下 C# 代码段演示如何读取前面导出到块 Blob 的设备信息：
 
 ```csharp
 var exportedDevices = new List<ExportImportDevice>();
@@ -184,7 +184,7 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 ```
 
 > [!NOTE]
-> 你还可以使用 **RegistryManager** 类的 **GetDevicesAsync** 方法获取设备的列表。 但是，此方法有一个硬性限制，那就是返回的设备对象数最多只能有 1000 个。 **GetDevicesAsync** 方法的预期用例用于帮助调试的开发方案，不建议用于生产工作负荷。
+> 还可以使用 **RegistryManager** 类的 **GetDevicesAsync** 方法获取设备的列表。 但是，此方法有一个硬性限制，那就是返回的设备对象数最多只能有 1000 个。 **GetDevicesAsync** 方法的预期用例用于帮助调试的开发方案，不建议用于生产工作负荷。
 
 ## <a name="import-devices"></a>导入设备
 
@@ -372,7 +372,7 @@ while(true)
 
 ## <a name="get-the-container-sas-uri"></a>获取容器 SAS URI
 
-下面的代码示例演示如何使用 Blob 容器的读取、写入和删除权限生成 [SAS URI](../storage/storage-dotnet-shared-access-signature-part-2.md)：
+下面的代码示例演示如何使用 Blob 容器的读取、写入和删除权限生成 [SAS URI](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md)：
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
@@ -399,7 +399,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你已学习如何针对 IoT 中心内的标识注册表执行批量操作。 若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
+在本文中，已学习如何针对 IoT 中心内的标识注册表执行批量操作。 若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
 
 * [IoT 中心度量值][lnk-metrics]
 * [操作监视][lnk-monitor]

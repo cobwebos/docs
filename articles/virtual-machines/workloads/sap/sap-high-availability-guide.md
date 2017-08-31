@@ -399,7 +399,7 @@ Azure Resource Manager 中的三层模板还支持高可用性方案，例如体
 
 可在以下位置获取本文中所述的示例方案的 Azure Resource Manager 模板：
 
-* [Azure 应用商店映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
+* [Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
 * [使用托管磁盘的 Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md)  
 * [自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
 * [使用托管磁盘的自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-md)
@@ -492,7 +492,7 @@ Azure Resource Manager 中的三层模板还支持高可用性方案，例如体
 
 可从以下位置获取适用于此部署方案的 Azure Resource Manager 模板：
 
-* [Azure 应用商店映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
+* [Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
 * [使用托管磁盘的 Azure Marketplace 映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md)  
 * [自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
 * [使用托管磁盘的自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged-md)

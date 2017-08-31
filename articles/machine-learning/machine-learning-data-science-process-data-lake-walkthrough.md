@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: bradsev;weig
-translationtype: Human Translation
-ms.sourcegitcommit: 29c718d0c34d1e2f9d17b285a7270541a9ff15cf
-ms.openlocfilehash: c7444d457592538a26834091c77f49a3c1ef8591
-ms.lasthandoff: 02/24/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 34fbe99572b4a6cee73de6ae5412a0ec09dd1ccc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake 中可缩放的数据科研：端到端演练
-此演练介绍如何使用 Azure Data Lake 对 NYC 出租车行程和车费数据集的示例进行数据浏览和二进制分类任务，以预测小费是否是按车费所支付的。 它将以端到端的方式指导用户完成从数据采集到模型定型，再到部署发布模型的 Web 服务的 [Team Data Science Process](http://aka.ms/datascienceprocess)。
+此演练介绍如何使用 Azure Data Lake 对 NYC 出租车行程和车费数据集的示例进行数据浏览和二进制分类任务，以预测小费是否是按车费所支付的。 它指导端到端完成 [Team Data Science Process](http://aka.ms/datascienceprocess) 的步骤，从数据采集到模型训练，再到部署发布模型的 Web 服务。
 
 ### <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 [Microsoft Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/) 具有数据科学家所需的所有功能，让他们可以轻松存储任何大小、形状和速度的数据，并且可以以经济高效的方式执行数据处理、高级分析以及具有高扩展性的机器学习建模。   按每个作业付费，只有实际处理数据时才会产生费用。 Azure Data Lake Analytics 包括一种名为 U-SQL 的语言，它将 SQL 的声明性本质与 C# 的表达能力很好地加以结合，借此提供可扩展的分布式查询功能。 它通过读取应用构架、插入自定义逻辑和用户定义函数 (UDF) 使用户能够处理非结构化数据，同时包括了可扩展性以实现大规模精细化控制。 若要深入了解 U-SQL 的设计理念，请参阅 [Visual Studio 博客文章](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)。
@@ -50,7 +50,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 * [建议] Visual Studio 2013 或更高版本。 如果尚未安装这些版本之一，可从 [Visual Studio Community](https://www.visualstudio.com/vs/community/) 下载免费的 Community 版本。
 
 > [!NOTE]
-> 除了 Visual Studio，还可以使用 Azure 门户提交 Azure Data Lake 查询。 我们将在标题为**使用 U-SQL 处理数据**的部分中提供相关说明，其中将介绍如何使用 Visual Studio 和 Azure 门户完成此操作。 
+> 除了 Visual Studio，还可以使用 Azure 门户提交 Azure Data Lake 查询。 我们会在名为**使用 U-SQL 处理数据**的部分中提供相关说明，可从中了解如何使用 Visual Studio 以及在门户中完成此操作。 
 > 
 > 
 
@@ -68,7 +68,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 
 
 > [!NOTE]
-> **Azure Data Lake Store** 可创建为默认存储，它可单独创建，也可在创建 **Azure Data Lake Analytics** 时创建。 单独创建每种资源的方法将在下面进行说明，但是不需要单独创建 Data Lake 存储帐户。
+> **Azure Data Lake Store** 可创建为默认存储，它可单独创建，也可在创建 **Azure Data Lake Analytics** 时创建。 单独创建每种资源的方法会在下面进行说明，但是不需要单独创建 Data Lake 存储帐户。
 >
 > 
 
@@ -85,19 +85,19 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
  ![4](./media/machine-learning-data-science-process-data-lake-walkthrough/4-create-ADLA-new.PNG)
 
 ### <a name="create-an-azure-blob-storage-account"></a>创建 Azure Blob 存储帐户
-从 [Azure 门户](http://portal.azure.com)创建 Azure Blob 存储帐户。 有关详细信息，请参阅[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)中的“创建存储帐户”部分。
+从 [Azure 门户](http://portal.azure.com)创建 Azure Blob 存储帐户。 有关详细信息，请参阅[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)中的“创建存储帐户”部分。
 
  ![5](./media/machine-learning-data-science-process-data-lake-walkthrough/5-Create-Azure-Blob.PNG)
 
 ### <a name="set-up-an-azure-machine-learning-studio-account"></a>设置 Azure 机器学习工作室帐户
-从 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)页面注册/登录到 Azure 机器学习工作室。 单击“立即开始”按钮，然后选择“免费工作区”或“标准工作区”。 完成此操作后，就能够在 Azure 机器学习工作室中创建试验。  
+从 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)页面注册/登录到 Azure 机器学习工作室。 单击“立即开始”按钮，并选择“免费工作区”或“标准工作区”。 完成此操作后，就能够在 Azure 机器学习工作室中创建试验。  
 
 ### <a name="install-azure-data-lake-tools-recommended"></a>安装 Azure Data Lake 工具 [推荐]
-从 [Azure Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)（用于 Visual Studio 的 Azure Data Lake 工具）中，为你的 Visual Studio 版本安装 Azure Data Lake 工具。
+从 [Azure Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)（用于 Visual Studio 的 Azure Data Lake 工具）中，为 Visual Studio 版本安装 Azure Data Lake 工具。
 
  ![6](./media/machine-learning-data-science-process-data-lake-walkthrough/6-install-ADL-tools-VS.PNG)
 
-成功完成安装后，打开 Visual Studio。 顶部菜单上应显示“Data Lake”选项卡。 登录 Azure 帐户之后，左侧面板中应显示你的 Azure 资源。
+成功完成安装后，打开 Visual Studio。 顶部菜单上应显示“Data Lake”选项卡。 登录 Azure 帐户之后，左侧面板中应显示 Azure 资源。
 
  ![7](./media/machine-learning-data-science-process-data-lake-walkthrough/7-install-ADL-tools-VS-done.PNG)
 
@@ -124,7 +124,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 联接 trip\_data 和 trip\_fare 的唯一键由以下三个字段组成：medallion、hack\_licence 和 pickup\_datetime。 可从公共 Azure 存储 blob访问原始 CSV 文件。 此联接的 U-SQL 脚本位于[联接行程和费用表](#join)部分中。
 
 ## <a name="process-data-with-u-sql"></a>使用 U-SQL 处理数据
-本部分中列举的数据处理任务包括数据的引入、质量检查、浏览和采样。 此外，还将介绍如何联接行程和费用表。 最后一部分介绍如何从 Azure 门户运行 U-SQL 脚本化作业。 下面是每个小节的链接：
+本部分中列举的数据处理任务包括数据的引入、质量检查、浏览和采样。 此外，还介绍如何联接行程和费用表。 最后一部分介绍如何从 Azure 门户运行 U-SQL 脚本化作业。 下面是每个小节的链接：
 
 * [数据引入：从公共 blob 读入数据](#ingest)
 * [数据质量检查](#quality)
@@ -135,7 +135,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 
 此处所述的 U-SQL 脚本将提供在单独的文件中。 可从 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) 下载完整的 **U-SQL 脚本**。
 
-若要执行 U-SQL，请打开 Visual Studio，单击“文件”-->“新建”-->“项目”，选择“U-SQL 项目”，然后进行命名并将其保存到文件夹。
+要执行 U-SQL，请打开 Visual Studio，单击“文件”-->“新建”-->“项目”，选择“U-SQL 项目”，对其进行命名，并将其保存到文件夹。
 
 ![8](./media/machine-learning-data-science-process-data-lake-walkthrough/8-create-USQL-project.PNG)
 
@@ -202,7 +202,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
     TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_trip.csv"
     USING Outputters.Csv();  
 
-同样，我们可以读入费用数据集。 右键单击 Azure Data Lake Store，可在“Azure 门户”-->“数据资源管理器”或 Visual Studio 中的“文件资源管理器”中选择查看数据。 
+同样，我们可以读入费用数据集。 右键单击 Azure Data Lake Store，可在“Azure 门户”-->“数据资源管理器”或 Visual Studio 中的“文件资源管理器”中，选择查看数据。 
 
  ![10](./media/machine-learning-data-science-process-data-lake-walkthrough/10-data-in-ADL-VS.PNG)
 
@@ -430,11 +430,11 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 
 
 ### <a name="run"></a>运行 U-SQL 作业
-完成 U-SQL 脚本编辑后，可使用 Azure Data Lake Analytics 帐户将其提交到服务器。 依次单击“Data Lake”、“提交作业”，选择你的“Analytics 帐户”，然后选择“并行度”，最后单击“提交”按钮。  
+完成 U-SQL 脚本编辑后，可使用 Azure Data Lake Analytics 帐户将其提交到服务器。 依次单击“Data Lake”、“提交作业”，选择你的“Analytics 帐户”，并选择“并行度”，最后单击“提交”按钮。  
 
  ![12](./media/machine-learning-data-science-process-data-lake-walkthrough/12-submit-USQL.PNG)
 
-成功编译作业之后，Visual Studio 中将显示作业的状态，以便对作业进行监视。 作业完成运行之后，甚至可以重播作业执行过程，并找到瓶颈步骤以提高作业效率。 也可转到 Azure 门户来检查 U-SQL 作业的状态。
+成功编译作业之后，Visual Studio 中会显示作业的状态，以便对作业进行监视。 作业完成运行之后，甚至可以重播作业执行过程，并找到瓶颈步骤以提高作业效率。 也可转到 Azure 门户来检查 U-SQL 作业的状态。
 
  ![13](./media/machine-learning-data-science-process-data-lake-walkthrough/13-USQL-running-v2.PNG)
 
@@ -558,7 +558,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 ### <a name="build-web-service-api-and-consume-it-in-python"></a>生成 Web 服务 API 并在 Python 中使用
 生成完成后，需要使机器学习模型可操作化。 此处我们以二进制逻辑模型为例。 请确保本地计算机中的 scikit-learn 版本为 0.15.1。 如果使用的是 Azure 机器学习工作室，则无需担心这点。
 
-* 在 Azure 机器学习工作室设置中查找你的工作区凭据。 在 Azure 机器学习工作室中，单击“设置” --> “名称” --> “授权令牌”。 
+* 在 Azure 机器学习工作室设置中查找工作区凭据。 在 Azure 机器学习工作室中，单击“设置” --> “名称” --> “授权令牌”。 
   
     ![c3](./media/machine-learning-data-science-process-data-lake-walkthrough/c3-workspace-id.PNG)
 
@@ -601,11 +601,11 @@ Azure 机器学习工作室可直接从 Azure Data Lake Store 中读取数据，
  ![18](./media/machine-learning-data-science-process-data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
 ### <a name="create-hive-table-in-hdinsight"></a>在 HDInsight 中创建 Hive 表
-现在，我们将使用上一步中存储在 Azure Data Lake Store 中的数据来创建 Hive 表，该表将在 HDInsight 群集中的 Azure 机器学习工作室中使用。 请转到刚创建的 HDInsight 群集。 单击“设置” --> “属性” --> “群集 AAD 标识” --> “ADLS 访问”，请确保已将你的 Azure Data Lake Store 帐户添加到具有读取、写入和执行权限的列表中。 
+现在，我们将使用上一步中存储在 Azure Data Lake Store 中的数据来创建 Hive 表，该表会在 HDInsight 群集中的 Azure 机器学习工作室中使用。 请转到刚创建的 HDInsight 群集。 单击“设置” --> “属性” --> “群集 AAD 标识” --> “ADLS 访问”，请确保已将 Azure Data Lake Store 帐户添加到具有读取、写入和执行权限的列表中。 
 
  ![19](./media/machine-learning-data-science-process-data-lake-walkthrough/19-HDI-cluster-add-ADLS.PNG)
 
-然后单击“设置”按钮旁的“仪表板”，接着会弹出一个窗口。 在页面的右上角，单击“Hive 视图”，然后将看到“查询编辑器”。
+然后单击“设置”按钮旁的“仪表板”，随即会弹出一个窗口。 在页面的右上角，单击“Hive 视图”，然后将看到“查询编辑器”。
 
  ![20](./media/machine-learning-data-science-process-data-lake-walkthrough/20-HDI-dashboard.PNG)
 
@@ -672,7 +672,7 @@ Azure 机器学习工作室可直接从 Azure Data Lake Store 中读取数据，
 
  ![26](./media/machine-learning-data-science-process-data-lake-walkthrough/26-AML-exp-deploy-web.PNG)
 
-很快将显示 Web 服务仪表板：
+很快会显示 Web 服务仪表板：
 
  ![27](./media/machine-learning-data-science-process-data-lake-walkthrough/27-AML-web-api.PNG)
 

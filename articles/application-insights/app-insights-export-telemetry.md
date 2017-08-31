@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 4ad60c18d451ee5f92eafaf5ca81176698496dd2
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a55bec84bebf9d86886fcd255b84a665b6d04638
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="export-telemetry-from-application-insights"></a>从 Application Insights 导出遥测数据
 想要将遥测数据保留超过标准保留期限？ 或者要以某种专业方式处理这些数据？ 连续导出很适合此目的。 可以使用 JSON 格式将 Application Insights 门户中显示的事件导出到 Microsoft Azure 中的存储。 可以从该存储中下载这些数据，并编写所需的代码来处理这些数据。  
 
-使用连续导出可能会产生额外费用。 检查你的[定价模型](http://azure.microsoft.com/pricing/details/application-insights/)。
+使用连续导出可能会产生额外费用。 检查[定价模型](http://azure.microsoft.com/pricing/details/application-insights/)。
 
 在设置连续导出之前，请考虑一些备选方法：
 
@@ -36,18 +36,18 @@ ms.lasthandoff: 04/12/2017
 连续导出将数据复制到存储后（数据可在其中保存任意长的时间），在正常[保留期](app-insights-data-retention-privacy.md)内，这些数据仍可在 Application Insights 中使用。
 
 ## <a name="setup"></a> 创建连续导出
-1. 在应用的 Application Insights 资源中，打开“连续导出”，然后选择“添加”：
+1. 在应用的 Application Insights 资源中，打开“连续导出”，并选择“添加”：
 
     ![向下滚动并单击“连续导出”](./media/app-insights-export-telemetry/01-export.png)
 
 2. 选择要导出的遥测数据类型。
 
-3. 创建或选择要用于存储数据的 [Azure 存储帐户](../storage/storage-introduction.md)。
+3. 创建或选择要用于存储数据的 [Azure 存储帐户](../storage/common/storage-introduction.md)。
 
     > [!Warning]
     > 默认情况下，存储位置将设置为与 Application Insights 资源相同的地理区域。 如果存储在不同的区域中，则可能会产生传输费用。
 
-    ![单击“添加”、“导出目标”、“存储帐户”，然后创建新存储或选择现有存储](./media/app-insights-export-telemetry/02-add.png)
+    ![单击“添加”、“导出目标”、“存储帐户”，并创建新存储或选择现有存储](./media/app-insights-export-telemetry/02-add.png)
 
 4. 在存储中创建或选择一个容器：
 
@@ -67,12 +67,12 @@ ms.lasthandoff: 04/12/2017
 
 若要停止导出，请单击“禁用”。 再次单击“启用”时，将使用新数据重新启动导出。 无法获取在禁用导出时传入门户的数据。
 
-若要永久停止导出，请将其删除。 这样做不会将数据从存储中删除。
+要永久停止导出，请将其删除。 这样做不会将数据从存储中删除。
 
 ### <a name="cant-add-or-change-an-export"></a>无法添加或更改导出？
 * 若要添加或更改导出，需要“所有者”、“参与者”或“Application Insights 参与者”访问权限。 [了解角色][roles]。
 
-## <a name="analyze"></a>获取哪些事件？
+## <a name="analyze"></a> 获取哪些事件？
 导出的数据是从应用程序接收的原始遥测数据，只不过我们添加了从客户端 IP 地址计算的位置数据。
 
 被[采样](app-insights-sampling.md)丢弃的数据不会包含在导出的数据中。
@@ -86,10 +86,10 @@ ms.lasthandoff: 04/12/2017
 >
 >
 
-## <a name="get"></a>检查数据
-可以直接在门户中检查存储。 单击“浏览”、选择你的存储帐户，然后打开“容器”。
+## <a name="get"></a> 检查数据
+可以直接在门户中检查存储。 单击“浏览”、选择存储帐户，然后打开“容器”。
 
-若要在 Visual Studio 中检查 Azure 存储，请依次打开“视图”、“Cloud Explorer”。 （如果未看到该菜单命令，则需要安装 Azure SDK：打开“新建项目”对话框，展开“Visual C#/云”，然后选择“获取用于 .NET 的 Microsoft Azure SDK”。）
+若要在 Visual Studio 中检查 Azure 存储，请依次打开“视图”、“Cloud Explorer”。 （如果未看到该菜单命令，则需要安装 Azure SDK：打开“新建项目”对话框，展开“Visual C#/云”，并选择“获取用于 .NET 的 Microsoft Azure SDK”。）
 
 打开 Blob 存储后，会看到包含一组 Blob 文件的容器。 每个文件的 URI 派生自 Application Insights 的资源名称、其检测密钥、遥测类型/日期/时间。 （资源名称为全小写形式，检测密钥不包含连字符。）
 
@@ -106,10 +106,10 @@ ms.lasthandoff: 04/12/2017
 * `blobCreationTimeUtc` 是在内部暂存存储中创建 Blob 的时间
 * `blobDeliveryTimeUtc` 是将 Blob 复制到导出目标存储的时间
 
-## <a name="format"></a>数据格式
+## <a name="format"></a> 数据格式
 * 每个 Blob 是一个文本文件，其中包含多个以“\n”分隔的行。 它包含大约半分钟时间内处理的遥测数据。
 * 每行代表遥测数据点，例如请求或页面视图。
-* 每行是未设置格式的 JSON 文档。 如果想要琢磨该文档，请在 Visual Studio 中打开它，然后依次选择“编辑”、“高级”、“设置文件格式”：
+* 每行是未设置格式的 JSON 文档。 如果想要琢磨该文档，请在 Visual Studio 中打开它，并依次选择“编辑”、“高级”、“设置文件格式”：
 
 ![使用适当的工具查看遥测数据](./media/app-insights-export-telemetry/06-json.png)
 
@@ -144,14 +144,14 @@ ms.lasthandoff: 04/12/2017
 如需更详细的代码示例，请参阅[使用辅助角色][exportasa]。
 
 ## <a name="delete"></a>删除旧数据
-请注意，你要负责管理存储容量，以及在必要时删除旧数据。
+请注意，要负责管理存储容量，以及在必要时删除旧数据。
 
 ## <a name="if-you-regenerate-your-storage-key"></a>如果重新生成存储密钥...
 如果更改存储密钥，连续导出将停止运行。 Azure 帐户中会显示通知。
 
 打开“连续导出”边栏选项卡并编辑导出。 编辑“导出目标”，只保留选定的同一存储。 单击“确定”以确认。
 
-![编辑连续导出，打开然后关闭导出目标。](./media/app-insights-export-telemetry/07-resetstore.png)
+![编辑连续导出，打开并关闭导出目标。](./media/app-insights-export-telemetry/07-resetstore.png)
 
 连续导出将重新开始。
 
@@ -168,7 +168,7 @@ ms.lasthandoff: 04/12/2017
     没问题，可以这样做。 请在边栏选项卡顶部单击“导出数据”。
 * *我设置了导出，但存储中没有数据。*
 
-    自设置导出之后，Application Insights 是否从应用程序收到了任何遥测数据？ 你只会收到新数据。
+    自设置导出之后，Application Insights 是否从应用程序收到了任何遥测数据？ 只会收到新数据。
 * *尝试设置导出时出现拒绝访问错误*
 
     如果帐户由组织拥有，则你必须是所有者或参与者组的成员。
@@ -177,14 +177,14 @@ ms.lasthandoff: 04/12/2017
     很抱歉，不可以。 我们的导出引擎目前仅适用于 Azure 存储。  
 * *放置在存储中的数据量是否有任何限制？*
 
-    否。 我们将持续推送数据，直到你删除了导出。 如果达到 Blob 存储的外在限制，推送将会停止，但那个限制极大。 你可以自行控制使用的存储量。  
+    否。 我们将持续推送数据，直到删除了导出。 如果达到 Blob 存储的外在限制，推送会停止，但那个限制极大。 可以自行控制使用的存储量。  
 * *存储中应会出现多少个 Blob？*
 
   * 对于选择要导出的每种数据类型，将每隔分钟创建一个新 Blob（如果有可用的数据）。
   * 此外，对于高流量应用程序，将分配额外的分区单元。 在此情况下，每个单元每隔一分钟创建一个 Blob。
 * *我为存储重新生成了密钥或更改了容器的名称，但现在导出不能正常进行。*
 
-    请编辑导出并打开导出目标边栏选项卡。 像以前一样保留选择相同的存储，然后单击“确定”以确认。 导出将重新开始。 如果更改是在最近几天内做出的，则不会丢失数据。
+    请编辑导出并打开导出目标边栏选项卡。 像以前一样保留选择相同的存储，并单击“确定”以确认。 导出将重新开始。 如果更改是在最近几天内做出的，则不会丢失数据。
 * *是否可以暂停导出？*
 
     是的。 单击“禁用”即可。

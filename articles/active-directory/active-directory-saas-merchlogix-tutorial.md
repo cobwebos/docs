@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/05/2017
+ms.date: 08/17/2017
 ms.author: jeedes
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 55227c7302285c721381886c63b7cbfdc114b0bb
+ms.sourcegitcommit: 2d978248c78b84fe4ad37ecf7429e827a25d896f
+ms.openlocfilehash: 44fc8226480cafc130720fbe78aa85ee95caec6c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/18/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-merchlogix"></a>教程：Azure Active Directory 与 Merchlogix 的集成
@@ -89,7 +89,7 @@ ms.lasthandoff: 08/05/2017
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. [创建 Merchlogix 测试用户](#create-a-merchlogix-test-user) - 在 Merchlogix 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)**：验证配置是否正常工作。
+5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -109,11 +109,14 @@ ms.lasthandoff: 08/05/2017
 
     ![Merchlogix 域和 URL 单一登录信息](./media/active-directory-saas-merchlogix-tutorial/tutorial_merchlogix_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<domain>/login.php?saml=true`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<DOMAIN>/login.php?saml=true`
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<domain>/simplesaml/module.php/saml/sp/metadata.php/login-windows-net`
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<DOMAIN>/simplesaml/module.php/saml/sp/metadata.php/<SAML_NAME>`
+    
+    > [!NOTE]
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Merchlogix 支持团队](http://www.merchlogix.com/contact/)获取这些值。
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/active-directory-saas-merchlogix-tutorial/tutorial_merchlogix_certificate.png) 
 

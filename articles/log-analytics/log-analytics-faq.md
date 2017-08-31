@@ -12,19 +12,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 08/18/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: 508cf1ebaf4d7ee87c4d6b5e3dd3abd64366f8e8
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 8ddea06b1a90e9b1599466ad4d1c3af7a6dc8ba9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="log-analytics-faq"></a>Log Analytics 常见问题解答
 此 Microsoft 常见问题解答是有关 Microsoft 操作管理套件 (OMS) 中 Log Analytics 的常见问题列表。 如果有与 Log Analytics 有关的任何其他问题，请转到[论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
 
 ## <a name="general"></a>常规
+
+### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>问： Log Analytics 是否与 Azure 安全中心使用同一代理？
+
+A. 2017 年 6 月初，Azure 安全中心开始使用 Microsoft Monitoring Agent 收集和存储数据。 要了解详细信息，请参阅 [Azure 安全中心平台迁移常见问题解答](../security-center/security-center-platform-migration-faq.md)。
+
 ### <a name="q-what-checks-are-performed-by-the-ad-and-sql-assessment-solutions"></a>问： AD 和 SQL 评估解决方案会执行哪些检查？
 
 答： 以下查询显示了当前执行的所有检查的说明：
@@ -33,17 +38,17 @@ ms.lasthandoff: 07/18/2017
 (Type=SQLAssessmentRecommendation OR Type=ADAssessmentRecommendation) | dedup RecommendationId | select FocusArea, ActionArea, Recommendation, Description | sort Type, FocusArea,ActionArea, Recommendation
 ```
 
-你可以将结果导出到 Excel，以便深入查看。
+可以将结果导出到 Excel，以便深入查看。
 
 ### <a name="q-why-do-i-see-something-different-than-oms-in-system-center-operations-manager-console"></a>问：为何我在 System Center Operations Manager 控制台中看到了不同于 *OMS* 的内容？
 
 答：你可能会看到*系统中心顾问*、*操作见解*或 *Log Analytics* 节点，具体取决于所使用的 Operations Manager 更新汇总。
 
-对 *OMS* 进行的文本字符串更新包含在一个管理包中，需要你手动导入。 若想看到最新文本和功能，请按照最新 System Center Operations Manager 更新汇总知识库文章中的说明进行操作并刷新控制台。
+对“OMS”进行的文本字符串更新包含在一个管理包中，需要手动导入。 若想看到最新文本和功能，请按照最新 System Center Operations Manager 更新汇总知识库文章中的说明进行操作并刷新控制台。
 
 ### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>问：Log Analytics 是否有“本地”版本？
 
-答：没有。 Log Analytics 处理并存储大量数据。 作为云服务，Log Analytics 可根据需要向上扩展，以避免对你的环境造成任何性能影响。
+答：没有。 Log Analytics 处理并存储大量数据。 作为云服务，Log Analytics 可根据需要向上扩展，以避免对环境造成任何性能影响。
 
 其他优势包括：
 - Log Analytics 基础结构由 Microsoft 运行，节省了你的成本
@@ -109,7 +114,7 @@ Log Analytics 通信流量使用的是公共对等 ExpressRoute 线路。
 
 也可在 Azure 门户中进行此更改。
 
-你不能将数据从一个 Log Analytics 工作区移到另一个工作区，或更改 Log Analytics 数据所存储的区域。
+不能将数据从一个 Log Analytics 工作区移到另一个工作区，或更改 Log Analytics 数据所存储的区域。
 
 ### <a name="q-how-do-i-add-log-analytics-to-system-center-operations-manager"></a>问：如何将 Log Analytics 添加到 System Center Operations Manager？
 
@@ -143,7 +148,7 @@ Log Analytics 通信流量使用的是公共对等 ExpressRoute 线路。
 
 Log Analytics 代理设计为确保占用较小的数据空间。 我们的一位客户针对他们对我们的代理执行的测试写了一篇博客，测试结果令人印象深刻。 数据量因启用的解决方案而异。 在[“使用情况”](log-analytics-usage.md)页面中可以找到有关数据量的详细信息以及按解决方案列出的细目。
 
-有关更多信息，你可以阅读[客户博客](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html)以了解 OMS 代理的低数据占用空间。
+有关更多信息，可以阅读[客户博客](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html)以了解 OMS 代理的低数据占用空间。
 
 ### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>问： 将数据发送到 Log Analytics 时，Microsoft 管理代理 (MMA) 使用多少网络带宽？
 

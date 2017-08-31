@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 7/31/2017
 ms.author: xshi
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 08c4df6a4d7fd3d80f047192125afc9f5831999a
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 1b1a9dc960846cbc15ce09d0fd106e1492937439
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -108,7 +108,7 @@ ms.lasthandoff: 08/03/2017
 
 使用试验板和跳线，将 LED 灯和 BME280 连接到 Pi，如下所示。 如果没有该传感器，请[跳过此部分](#connect-pi-to-the-network)。
 
-![Raspberry Pi 和传感器连接](media/iot-hub-raspberry-pi-kit-c-get-started/3_raspberry-pi-sensor-connection.png)
+![Raspberry Pi 和传感器连接](media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
 
 BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通信，LED 将闪烁。 
 
@@ -116,27 +116,27 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
 
 | 启动（传感器和 LED 灯）     | 结束（开发板）            | 线缆颜色   |
 | -----------------------  | ---------------------- | ------------: |
-| LED VDD（引脚 5G）         | GPIO 4（引脚 7）         | 白线   |
-| LED GND（引脚 6G）         | GND（引脚 6）            | 黑线   |
-| VDD（引脚 18F）            | 3.3 伏 PWR（引脚 17）      | 白线   |
-| GND（引脚 20F）            | GND（引脚 20）           | 黑线   |
-| SCK（引脚 21F）            | SPI0 SCLK（引脚 23）     | 橙色电缆  |
-| SDO（引脚 22F）            | SPI0 MISO（引脚 21）     | 黄色电缆  |
-| SDI（引脚 23F）            | SPI0 MOSI（引脚 19）     | 绿色电缆   |
-| CS（引脚 24F）             | SPI0 CS（引脚 24）       | 蓝线    |
+| VDD（引脚 5G）             | 3.3 伏 PWR（引脚 1）       | 白线   |
+| GND（引脚 7G）             | GND（引脚 6）            | 棕色电缆   |
+| SDI（引脚 10G）            | I2C1 SDA（引脚 3）       | 红线     |
+| SCK（引脚 8G）             | I2C1 SCL（引脚 5）       | 橙色电缆  |
+| LED VDD（引脚 18F）        | GPIO 24（引脚 18）       | 白线   |
+| LED GND（引脚 17F）        | GND（引脚 20）           | 黑线   |
 
 单击查看 [Raspberry Pi 2 和 3 引脚映射](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi)以供参考。
 
 成功将 BME280 连接到 Raspberry Pi 后，它应如下图所示。
 
-![连接在一起的 Pi 和 BME280](media/iot-hub-raspberry-pi-kit-c-get-started/4_connected-pi.jpg)
+![连接在一起的 Pi 和 BME280](media/iot-hub-raspberry-pi-kit-node-get-started/4_connected-pi.jpg)
 
 ### <a name="connect-pi-to-the-network"></a>将 Pi 连接到网络
 
 通过使用微型 USB 电缆和电源为 Pi 通电。 使用以太网电缆将 Pi 连接到有线网络，或者按照 [Raspberry Pi Foundation 中的说明](https://www.raspberrypi.org/learning/software-guide/wifi/)将 Pi 连接到无线网络。 将 Pi 成功连接到网络后，需要记下 [Pi 的 IP 地址](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address)。
 
-![已连接到有线网络](media/iot-hub-raspberry-pi-kit-c-get-started/5_power-on-pi.jpg)
+![已连接到有线网络](media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg)
 
+> [!NOTE]
+> 请确保将 Pi 与计算机连接到同一网络。 例如，如果计算机连接到无线网络，而 Pi 连接到有线网络，则在 devdisco 输出中可能看不到 IP 地址。
 
 ## <a name="run-a-sample-application-on-pi"></a>在 Pi 上运行示例应用程序
 

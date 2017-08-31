@@ -14,19 +14,18 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: lmazuel
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: 90c8c6d91de667f2d234b1d4e89ce7336813fb62
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c9df4e1f7677b2ed10684f6f3c981f2abf64f171
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="installing-python-and-the-sdk"></a>安装 Python 和 SDK
-在 Windows 上安装 Python 很简单，并且 Mac、Linux 和 [Bash for Windows](https://msdn.microsoft.com/commandline/wsl/about) 上可能已预安装了 Python。 本指南将指导你完成安装过程，并使你的计算机可随时用于 Azure。
+在 Windows 上安装 Python 很简单，并且 Mac、Linux 和 [Bash for Windows](https://msdn.microsoft.com/commandline/wsl/about) 上可能已预安装了 Python。 本指南指导完成安装过程，并使计算机可随时用于 Azure。
 
 ## <a name="whats-in-the-python-azure-sdk"></a>Python Azure SDK 包含哪些内容？
-Azure SDK for Python 包括允许您针对 Azure 开发、部署和管理 Python 应用程序的组件。 具体而言，Azure SDK for Python 包括以下组件：
+Azure SDK for Python 包括允许针对 Azure 开发、部署和管理 Python 应用程序的组件。 具体而言，Azure SDK for Python 包括以下组件：
 
 * **管理库**。 这些类库提供管理 Azure 资源（例如存储帐户、虚拟机）的接口。
 * **运行时库**。 这些类库提供用于访问 Azure 功能（例如存储和服务总线）的接口。
@@ -51,7 +50,7 @@ Azure SDK for Python 包括允许您针对 Azure 开发、部署和管理 Python
 除非有特定需求，否则建议使用前两个选项。
 
 ## <a name="sdk-installation-on-windows-linux-and-macos-client-libraries-only"></a>Windows、Linux 和 MacOS 上的 SDK 安装（仅限客户端库）
-如果你已安装 Python，则可以使用 pip 在现有的 Python 2.7 或 Python 3.3+ 环境中安装所有客户端库的捆绑包。 这将从 [Python 包索引][Python Package Index] (PyPI) 中下载包。
+如果已安装 Python，则可以使用 pip 在现有的 Python 2.7 或 Python 3.3+ 环境中安装所有客户端库的捆绑包。 这会从 [Python 包索引][Python Package Index] (PyPI) 中下载包。
 
 可能需要管理员权限：
 
@@ -68,13 +67,13 @@ Azure SDK for Python 包括允许您针对 Azure 开发、部署和管理 Python
 可以使用 `--pre` 标志安装预览包：
 
 ```console
-   $ pip install --pre azure-mgmt-compute # will install only the latest Compute Management library
+   $ pip install --pre azure-mgmt-compute # installs only the latest Compute Management library
 ```
 
 还可以使用 `azure` 元程序包在单个行中安装一组 Azure 库。 由于此元程序包中并非所有包都已作为稳定版本发布，因此 `azure` 元程序包仍为预览版。
 但是这一次，核心程序包的代码质量/完整性方面都可以被视为是“稳定”的
 
-* 我们将尽快将其正式标记为“稳定”（与其他语言同步）。
+* 我们会尽快将其正式标记为“稳定”（与其他语言同步）。
   在此之前，我们不会作出任何重大的更改。
 
 由于这是预览版本，需要使用 `--pre` 标志：
@@ -107,16 +106,16 @@ PTVS 适用于现有的 Visual Studio 2013、2015 或 2017 版本的安装。  �
 对于 Linux 或 MacOS，支持的主要 Azure 方案为：
 
 1. 通过使用 Python 的客户端库来使用 Azure 服务
-2. 在 Linux VM 中运行你的应用程序
+2. 在 Linux VM 中运行应用程序
 3. 使用 Git 开发和发布到 Azure 网站
 
-第一个方案使你能够通过 Azure REST API 的 Pythonic 包装来创作利用 Azure PaaS 功能（例如 [Blob 存储](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、[队列存储](storage/storage-python-how-to-use-queue-storage.md)、[表存储](storage/storage-python-how-to-use-table-storage.md)等）的丰富 Web 应用。 这些应用程序在 Windows、Mac 和 Linux 上的工作方式是相同的。  此外可以从本地开发计算机或在 Azure 上运行的 Linux VM 中使用这些客户端库。
+通过第一个方案，可使你通过 Azure REST API 的 Pythonic 包装器来创作利用 Azure PaaS 功能（例如 [Blob 存储](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、[队列存储](storage/queues/storage-python-how-to-use-queue-storage.md)、[表存储](cosmos-db/table-storage-how-to-use-python.md)等）的丰富 Web 应用。 这些应用程序在 Windows、Mac 和 Linux 上的工作方式是相同的。  此外可以从本地开发计算机或在 Azure 上运行的 Linux VM 中使用这些客户端库。
 
-对于 VM 方案，你只需启动所选的 Linux VM（Ubuntu、CentOS、Suse）并运行/管理所需内容。  例如，可以在 Windows/Mac/Linux 计算机上运行 [IPython][IPython] REPL/notebook，并使浏览器指向在 Azure 上运行 IPython 引擎的 Linux 或 Windows 多处理器 VM。 请参阅 [IPython Notebook on Azure](virtual-machines/linux/jupyter-notebook.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（Azure 上的 IPython Notebook）教程了解详细信息。
+对于 VM 方案，只需启动所选的 Linux VM（Ubuntu、CentOS、Suse）并运行/管理所需内容。  例如，可以在 Windows/Mac/Linux 计算机上运行 [IPython][IPython] REPL/notebook，并使浏览器指向在 Azure 上运行 IPython 引擎的 Linux 或 Windows 多处理器 VM。
 
-有关如何安装 Linux VM 的信息，请参阅 [Create a Virtual Machine Running Linux](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（创建运行 Linux 的虚拟机）教程。
+有关如何安装 Linux VM 的信息，请参阅[创建运行 Linux 的虚拟机](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)教程。
 
-使用 Git 部署，可以从任何操作系统开发 Python web 应用程序并将其发布到 Azure 网站。  当将您的存储库推送到 Azure 时，它将自动创建虚拟环境和 pip 安装所需的包。
+使用 Git 部署，可以从任何操作系统开发 Python web 应用程序并将其发布到 Azure 网站。  当将存储库推送到 Azure 时，它会自动创建虚拟环境和 pip 安装所需的包。
 
 有关开发和发布 Azure 网站的详细信息，请参阅有关教程：[Creating Websites with Django](app-service-web/web-sites-python-create-deploy-django-app.md)（使用 Django 创建网站）、[Creating Websites with Bottle](app-service-web/web-sites-python-create-deploy-bottle-app.md)（使用 Bottle 创建网站）和 [Creating Websites with Flask](app-service-web/web-sites-python-create-deploy-flask-app.md)（使用 Flask 创建网站）。 有关使用任何 WSGI 合规框架的更多常规信息，请参阅 [Configuring Python with Azure Websites](app-service-web/web-sites-python-configure.md)（使用 Azure 网站配置 Python）。
 
@@ -131,7 +130,6 @@ PTVS 适用于现有的 Visual Studio 2013、2015 或 2017 版本的安装。  �
 * [NumPy - Python 的数字库][NumPy - A numerics library for Python]
 * [Django 项目 - 成熟的 Web 框架/CMS][Django Project - A mature web framework/CMS]
 * [IPython - Python 的高级 REPL/Notebook][IPython - an advanced REPL/Notebook for Python]
-* [Azure 上的 IPython Notebook](virtual-machines/linux/jupyter-notebook.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [GitHub 上的用于 Visual Studio 的 Python 工具][Python Tools for Visual Studio on GitHub]
 * [Python 开发人员中心](/develop/python/)
 
@@ -164,5 +162,5 @@ PTVS 适用于现有的 Visual Studio 2013、2015 或 2017 版本的安装。  �
 [Configuring Python with Azure Websites]: web-sites-python-configure.md
 [table storage]: storage-python-how-to-use-table-storage.md
 [queue storage]: storage-python-how-to-use-queue-storage.md
-[blob storage]: storage-python-how-to-use-blob-storage.md
+[blob storage]:storage/blobs/storage-python-how-to-use-blob-storage.md
 

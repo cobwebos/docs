@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 2/7/2017
 ms.author: rasquill
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: 598d6a62fc7c4a769043c4d6d6547e5b8f8a5d5a
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 5e8a62bb180de7288531139594cb61440cab04c5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-and-linux-vm-storage"></a>Azure 和 Linux VM 存储
@@ -26,15 +26,15 @@ Azure 存储是依赖于持续性、可用性和伸缩性来满足客户需求�
 
 ## <a name="managed-disks"></a>托管磁盘
 
-目前 Azure VM 支持使用 [Azure 托管磁盘](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，使得你自身无需创建或管理任何 [Azure 存储帐户](../../storage/storage-introduction.md)便可创建 VM。 你指定是需要高级还是标准存储，以及磁盘应具有的容量，随之 Azure 便会为你创建 VM 磁盘。 使用托管磁盘的 VM 具有许多重要功能，包括：
+Azure VM 现支持使用 [Azure 托管磁盘](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，不必自行创建或管理任何 [Azure 存储帐户](../../storage/common/storage-introduction.md)即可创建 VM。 指定是需要高级还是标准存储，以及磁盘应具有的容量，随之 Azure 便会创建 VM 磁盘。 使用托管磁盘的 VM 具有许多重要功能，包括：
 
 - 自动可伸缩性支持。 Azure 创建磁盘并管理基础存储，每个订阅最多可支持 10,000 个磁盘。
 - 可用性集带来更高的可靠性。 Azure 可确保 VM 磁盘在可用集内自动彼此隔离。
 - 增强的访问控制。 托管磁盘公开由 [Azure 基于角色的访问控制 (RBAC)](../../active-directory/role-based-access-control-what-is.md) 所控制的各种操作。
 
-托管磁盘与非托管磁盘的定价不同。 有关这方面的信息，请参阅[托管磁盘的定价和计费](../../storage/storage-managed-disks-overview.md#pricing-and-billing)。
+托管磁盘与非托管磁盘的定价不同。 有关这方面的信息，请参阅[托管磁盘的定价和计费](../windows/managed-disks-overview.md#pricing-and-billing)。
 
-可以通过 [az vm convert](/cli/azure/vm#convert)，将使用非托管磁盘的现有 VM 转换为使用托管磁盘。 有关详细信息，请参阅[如何将 Linux VM 从非托管磁盘转换为 Azure 托管磁盘](convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 如果非托管磁盘所在的存储帐户已使用或曾使用 [Azure 存储服务加密 (SSE)](../../storage/storage-service-encryption.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 加密，则无法将其转换为托管磁盘。 下列步骤详细说明如何转换位于（或曾位于）已加密存储帐户的非托管磁盘：
+可以通过 [az vm convert](/cli/azure/vm#convert)，将使用非托管磁盘的现有 VM 转换为使用托管磁盘。 有关详细信息，请参阅[如何将 Linux VM 从非托管磁盘转换为 Azure 托管磁盘](convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 如果非托管磁盘所在的存储帐户已使用或曾使用 [Azure 存储服务加密 (SSE)](../../storage/common/storage-service-encryption.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 加密，则无法将其转换为托管磁盘。 下列步骤详细说明如何转换位于（或曾位于）已加密存储帐户的非托管磁盘：
 
 - 使用 [az storage blob copy start](/cli/azure/storage/blob/copy#start) 将虚拟硬盘 (VHD) 复制到从未启用 Azure 存储服务加密的存储帐户。
 - 使用 [az vm create](/cli/azure/vm#create) 创建使用托管磁盘的 VM 并指定创建期间的 VHD 文件，或
@@ -42,7 +42,7 @@ Azure 存储是依赖于持续性、可用性和伸缩性来满足客户需求�
 
 
 ## <a name="azure-storage-standard-and-premium"></a>Azure 存储：标准和高级
-Azure VM - 无论它使用托管磁盘还是非托管磁盘 - 都能以标准存储磁盘或高级存储磁盘为基础进行构建。 使用门户选择 VM 时，必须在“基本信息”屏幕上使用一个下拉列表来切换标准和高级磁盘。 切换到 SSD 时，只显示支持高级存储的 VM，所有这些 VM 由 SSD 驱动器提供支持。  切换到 HDD 时，将显示支持标准存储的 VM（这些 VM 由机械磁盘驱动器提供支持），以及由 SSD 提供支持的高级存储 VM。
+Azure VM - 无论它使用托管磁盘还是非托管磁盘 - 都能以标准存储磁盘或高级存储磁盘为基础进行构建。 使用门户选择 VM 时，必须在“基本信息”屏幕上使用一个下拉列表来切换标准和高级磁盘。 切换到 SSD 时，只显示支持高级存储的 VM，所有这些 VM 由 SSD 驱动器提供支持。  切换到 HDD 时，会显示支持标准存储的 VM（这些 VM 由机械磁盘驱动器提供支持），以及由 SSD 提供支持的高级存储 VM。
 
 从 `azure-cli` 创建 VM 时，可以在通过 `-z` 或 `--vm-size` cli 标志选择 VM 大小时选择标准或高级存储。
 
@@ -92,7 +92,7 @@ Azure 高级存储为运行 I/O 密集型工作负荷的虚拟机提供高性能
 * 高级存储磁盘：Azure 高级存储支持可连接到 DS、DSv2 或 GS 系列 Azure VM 的 VM 磁盘。
 * 高级页 Blob：高级存储支持 Azure 页 Blob（用于保存 Azure 虚拟机 (VM) 的永久性磁盘）。
 * 高级本地冗余存储：高级存储帐户仅支持使用本地冗余存储 (LRS) 作为复制选项，并在单个区域中保留三个数据副本。
-* [高级存储](../../storage/storage-premium-storage.md)
+* [高级存储](../../storage/common/storage-premium-storage.md)
 
 ## <a name="premium-storage-supported-vms"></a>支持高级存储的 VM
 高级存储支持 DS 系列、DSv2 系列、GS 系列和 Fs 系列 Azure 虚拟机 (VM)。 可以在支持高级存储的 VM 上同时使用标准和高级存储磁盘。 但不能在不兼容高级存储的 VM 系列中使用高级存储磁盘。
@@ -111,11 +111,11 @@ Azure 高级存储为运行 I/O 密集型工作负荷的虚拟机提供高性能
 | RHEL |6.8+、7.2+ | |
 
 ## <a name="azure-file-storage"></a>Azure 文件存储
-Azure 文件存储使用标准 SMB 协议在云中提供文件共享。 使用 Azure 文件，你可以将依赖于文件服务器的企业应用程序迁移到 Azure。 在 Azure 中运行的应用程序可以轻松地从运行 Linux 的 Azure 虚拟机装载文件共享。 并且使用最新版本的文件存储，你还可以从支持 SMB 3.0 的本地应用程序装载文件共享。  由于文件共享是 SMB 共享，因此还可以通过标准的文件系统 API 来访问它们。
+Azure 文件存储使用标准 SMB 协议在云中提供文件共享。 使用 Azure 文件，可以将依赖于文件服务器的企业应用程序迁移到 Azure。 在 Azure 中运行的应用程序可以轻松地从运行 Linux 的 Azure 虚拟机装载文件共享。 并且使用最新版本的文件存储，还可以从支持 SMB 3.0 的本地应用程序装载文件共享。  由于文件共享是 SMB 共享，因此还可以通过标准的文件系统 API 来访问它们。
 
 文件存储基于与 Blob、表和队列存储相同的技术构建，因此文件存储能够提供 Azure 存储平台内置的现有可用性、持续性、可伸缩性和异地冗余。 有关存文件存储性能目标和限制的详细信息，请参阅“Azure 存储伸缩性和性能目标”。
 
-* [如何将 Azure 文件存储与 Linux 配合使用](../../storage/storage-how-to-use-files-linux.md)
+* [如何将 Azure 文件存储与 Linux 配合使用](../../storage/files/storage-how-to-use-files-linux.md)
 
 ## <a name="hot-storage"></a>热存储
 Azure 热存储层为存储经常访问的数据进行了优化。  热存储是 Blob 存储的默认存储类型。
@@ -142,23 +142,23 @@ Azure 冷存储层为存储不常访问且长期留存的数据进行了优化�
 * 读取访问异地冗余存储 (RA-GRS)
 
 ### <a name="locally-redundant-storage"></a>本地冗余存储
-本地冗余存储 (LRS) 在你创建存储帐户所在的区域中复制数据。 为最大程度地提高持久性，针对你的存储帐户中的数据发出的每个请求将复制三次。 这三个副本每个都驻留在不同的容错域和升级域中。  请求仅在写入所有三个副本后，才成功返回。
+本地冗余存储 (LRS) 在创建存储帐户所在的区域中复制数据。 为最大程度地提高持久性，针对存储帐户中的数据发出的每个请求将复制三次。 这三个副本每个都驻留在不同的容错域和升级域中。  请求仅在写入所有三个副本后，才成功返回。
 
 ### <a name="zone-redundant-storage"></a>区域冗余存储
-区域冗余存储 (ZRS) 在两到三个设施之间复制数据（在单个区域内或两个区域之间），提供比 LRS 更高的持久性。 如果你的存储帐户启用了 ZRS，即使其中一个设施出现故障，你的数据也能持久保存。
+区域冗余存储 (ZRS) 在两到三个设施之间复制数据（在单个区域内或两个区域之间），提供比 LRS 更高的持久性。 如果存储帐户启用了 ZRS，即使其中一个设施出现故障，数据也能持久保存。
 
 ### <a name="geo-redundant-storage"></a>异地冗余存储
-异地冗余存储 (GRS) 将数据复制到距主区域数百英里以外的辅助区域。 如果你的存储帐户启用了 GRS，则即使遇到区域完全停电或导致主区域不可恢复的灾难，你的数据也能持久保存。
+异地冗余存储 (GRS) 将数据复制到距主区域数百英里以外的辅助区域。 如果存储帐户启用了 GRS，则即使遇到区域完全停电或导致主区域不可恢复的灾难，数据也能持久保存。
 
 ### <a name="read-access-geo-redundant-storage"></a>读取访问异地冗余存储
 除了 GRS 所提供的在两个区域之间进行复制外，读取访问异地冗余存储 (RA-GRS) 还提供对辅助位置中的数据的只读访问权限，从而最大限度地提高了存储帐户的可用性。 当主区域中的数据不可用时，应用程序可以从辅助区域读取数据。
 
 若要深入了解 Azure 存储冗余，请参阅：
 
-* [Azure 存储复制](../../storage/storage-redundancy.md)
+* [Azure 存储复制](../../storage/common/storage-redundancy.md)
 
 ## <a name="scalability"></a>可伸缩性
-Azure 存储可以大规模伸缩，因此你可以存储和处理数百 TB 的数据来支持科学、财务分析和媒体应用程序所需的大数据方案。 你也可以存储小型商业网站所需的少量数据。 当你的需求降低时，你只需要为你当前存储的数据支付费用。 Azure 存储当前存储了数十万亿个唯一的客户对象，平均每秒处理数百万个请求。
+Azure 存储可以大规模伸缩，因此可以存储和处理数百 TB 的数据来支持科学、财务分析和媒体应用程序所需的大数据方案。 也可以存储小型商业网站所需的少量数据。 当需求降低时，只需要为当前存储的数据支付费用。 Azure 存储当前存储了数十万亿个唯一的客户对象，平均每秒处理数百万个请求。
 
 标准存储帐户：标准存储帐户的总请求率上限为 20,000 IOPS。 在标准存储帐户中，所有虚拟机磁盘的 IOPS 总数不应超过此限制。
 
@@ -189,18 +189,18 @@ Azure 存储提供配套的安全性功能，这些功能相辅相成，可让�
 管理平面包含用于管理存储帐户的资源。 此部分讨论 Azure Resource Manager 部署模型，以及如何使用基于角色的访问控制 (RBAC) 来控制访问存储帐户。 此外，还将讨论如何管理存储帐户密钥以及重新生成此类密钥。
 
 ### <a name="data-plane-security"></a>数据平面安全性
-此部分探讨如何在存储帐户（例如 Blob、文件、队列和表）中，允许使用共享访问签名和存储访问策略来访问实际的数据对象。 我们将介绍服务级别 SAS 和帐户级别 SAS。 此外，还将了解如何限制访问特定的 IP 地址（或 IP 地址范围）、如何限制用于 HTTPS 的协议，以及如何吊销共享访问签名而无需等到它过期。
+此部分探讨如何在存储帐户（例如 Blob、文件、队列和表）中，允许使用共享访问签名和存储访问策略来访问实际的数据对象。 我们介绍服务级别 SAS 和帐户级别 SAS。 此外，还将了解如何限制访问特定的 IP 地址（或 IP 地址范围）、如何限制用于 HTTPS 的协议，以及如何吊销共享访问签名而无需等到它过期。
 
 ## <a name="encryption-in-transit"></a>传输中加密
 此部分讨论如何在将数据传输到 Azure 存储或从中传出时提供保护。 我们将介绍 HTTPS 的建议用法，以及 SMB 3.0 对 Azure 文件共享使用的加密。 同时还将探讨客户端加密，它可让你在将数据传输到客户端应用程序中的存储之前加密数据，以及从存储传出后解密数据。
 
 ## <a name="encryption-at-rest"></a>静态加密
-我们将讨论存储服务加密 (SSE) 以及如何对存储帐户启用它，从而使你的块 Blob、页 Blob 以及追加 Blob 在写入到 Azure 存储时自动进行加密。 此外，将了解如何使用 Azure 磁盘加密，并探究磁盘加密、SSE 与客户端加密之间的基本差异和用例。 我们将简要探讨美国政府针对计算机实施的FIPS 合规性。
+我们将讨论存储服务加密 (SSE) 以及如何对存储帐户启用它，从而使块 Blob、页 Blob 以及追加 Blob 在写入到 Azure 存储时自动进行加密。 此外，将了解如何使用 Azure 磁盘加密，并探究磁盘加密、SSE 与客户端加密之间的基本差异和用例。 我们将简要探讨美国政府针对计算机实施的FIPS 合规性。
 
-* [Azure 存储安全指南](../../storage/storage-security-guide.md)
+* [Azure 存储安全指南](../../storage/common/storage-security-guide.md)
 
 ## <a name="temporary-disk"></a>临时磁盘
-每个 VM 包含一个临时磁盘。 临时磁盘为应用程序和进程提供短期存储存储空间，仅用于存储页面或交换文件等数据。 在[维护事件](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)期间或[重新部署 VM](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 时，临时磁盘上的数据可能会丢失。 在 VM 标准重启期间，临时驱动器上的数据应会保留。
+每个 VM 包含一个临时磁盘。 临时磁盘为应用程序和进程提供短期存储，仅用于存储页面或交换文件等数据。 在[维护事件](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)期间或[重新部署 VM](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 时，临时磁盘上的数据可能会丢失。 在 VM 标准重启期间，临时驱动器上的数据应会保留。
 
 在 Linux 虚拟机上，此磁盘通常为 **/dev/sdb**，并且由 Azure Linux 代理格式化和装入到 **/mnt**。 临时磁盘的大小因虚拟机的大小而异。 有关详细信息，请参阅 [Linux 虚拟机的大小](sizes.md)。
 

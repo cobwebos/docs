@@ -549,7 +549,7 @@ sudo crm configure property stonith-enabled=true
 
 ### <a name="deploying-linux"></a>部署 Linux
 
-Azure Marketplace 中包含适用于 SUSE Linux Enterprise Server for SAP Applications 12 的映像，可以用于部署新的虚拟机。 应用商店映像包含适用于 SAP NetWeaver 的资源代理。
+Azure Marketplace 中包含适用于 SUSE Linux Enterprise Server for SAP Applications 12 的映像，可以用于部署新的虚拟机。 Marketplace 映像包含适用于 SAP NetWeaver 的资源代理。
 
 可以使用 github 上的某个快速启动模板部署全部所需的资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
 
