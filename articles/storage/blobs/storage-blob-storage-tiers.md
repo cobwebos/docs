@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 06/05/2017
 ms.author: mihauss
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 9f8648b0d6774bd45b57f50a4810535a8dacbab6
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 544b11d74a926fe62b8ceca51570ce9d2ee7e6e7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-preview-storage-tiers"></a>Azure Blob 存储：热、冷、存档（预览版）存储层
@@ -302,7 +302,7 @@ AzCopy 是一个 Windows 命令行实用程序，旨在实现高性能地将数�
 
 可以创建自定义应用程序以使用其中一个 Azure 客户端库或 Azure 存储服务 REST API 将数据迁移到 Blob 存储帐户。 Azure 存储对多种语言和平台（如 .NET、Java、C++、Node.JS、PHP、Ruby 和 Python）提供了内容丰富的客户端库。 客户端库提供高级功能，如重试逻辑、日志记录和并行上传。 也可以直接针对可以由发出 HTTP/HTTPS 请求的任何语言调用的 REST API 进行开发。
 
-有关更多详细信息，请参阅 [开始使用 Azure Blob 存储](storage-dotnet-how-to-use-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+有关更多详细信息，请参阅 [开始使用 Azure Blob 存储](storage-dotnet-how-to-use-blobs.md)。
 
 > [!NOTE]
 > 使用客户端加密进行加密的 blob 将存储与 blob 一起存储的加密相关元数据。 任何复制机制应确保保留 blob 元数据，尤其是与加密相关的元数据，这一点非常重要。 如果复制不包含此元数据的 Blob，则不能再次检索 Blob 内容。 有关加密相关元数据的详细信息，请参阅 [Azure 存储客户端加密](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。

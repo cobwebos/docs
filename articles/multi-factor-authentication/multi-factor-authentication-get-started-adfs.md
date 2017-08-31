@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/23/2017
+ms.date: 08/25/2017
 ms.author: kgremban
 ms.translationtype: HT
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 28aede545c738137ff04257214e4a3f42792d85c
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 564e98a4b6b9bd8bf9b58f06cee0027bfdf84458
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services"></a>Azure Multi-Factor Authentication 服务器和 Active Directory 联合身份验证服务入门
 <center>![云](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
-如果你的组织已使用 AD FS 将本地 Active Directory 与 Azure Active Directory 联合，则使用 Azure Multi-Factor Authentication 有两个选项。
+如果组织已使用 AD FS 将本地 Active Directory 与 Azure Active Directory 联合，则使用 Azure Multi-Factor Authentication 有两个选项。
 
 * 使用 Azure Multi-Factor Authentication 或 Active Directory 联合身份验证服务保护 Azure Active Directory 资源
 * 使用 Azure Multi-Factor Authentication 服务器保护云和本地资源
@@ -43,7 +43,6 @@ ms.lasthandoff: 07/12/2017
 * 使用应用密码时，无法使用本地身份验证日志记录功能。
 * 帐户禁用/删除可能需要长达 3 小时才能实现目录同步，从而延迟了云标识中应用密码的禁用/删除。
 
-## <a name="next-steps"></a>后续步骤
 有关设置 Azure 多重身份验证或具有 AD FS 的 Azure 多重身份验证服务器的信息，请参阅以下文章：
 
 * [使用 Azure Multi-Factor Authentication 和 Azure AD 保护云资源](multi-factor-authentication-get-started-adfs-cloud.md)
