@@ -4,7 +4,7 @@ description: "本主题介绍如何设置频道，以从本地编码器接收单
 services: media-services
 documentationcenter: 
 author: anilmur
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 30ce6556-b0ff-46d8-a15d-5f10e4c360e2
 ms.service: media-services

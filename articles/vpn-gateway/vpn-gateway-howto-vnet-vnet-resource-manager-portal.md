@@ -188,7 +188,7 @@ TestVNet1 和 TestVNet4 的虚拟网络网关创建完成后，可以开始创�
 ## <a name="faq"></a>VNet 到 VNet 常见问题解答
 查看常见问题解答详细信息以获取有关 VNet 到 VNet 连接的其他信息。
 
-[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
+[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
 连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机文档](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。
