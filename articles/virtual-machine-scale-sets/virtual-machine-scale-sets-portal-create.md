@@ -17,9 +17,10 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: negat
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 308355e7d66c977f5cbfc8de3b939b76c2f8f83c
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
 
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 03/31/2017
 # <a name="how-to-create-a-virtual-machine-scale-set-with-the-azure-portal"></a>如何使用 Azure 门户创建虚拟机规模集
 本教程介绍如何通过 Azure 门户在数分钟内轻松创建虚拟机规模集。 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/) 。
 
-## <a name="choose-the-vm-image-from-the-marketplace"></a>从应用商店中选择 VM 映像
+## <a name="choose-the-vm-image-from-the-marketplace"></a>从 Marketplace 中选择 VM 映像
 在门户中，可以使用 CentOS、CoreOS、Debian、Open Suse、Red Hat Enterprise Linux、SUSE Linux Enterprise Server、Ubuntu Server 或 Windows Server 映像轻松部署规模集。
 
 首先，在 Web 浏览器中导航到 [Azure 门户](https://portal.azure.com)。 单击 `New`，搜索 `scale set`，然后选择 `Virtual machine scale set` 条目：

@@ -16,9 +16,10 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: hermannd
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 118b56376eace80788a20625497849181ad2e253
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
 
@@ -30,12 +31,12 @@ ms.lasthandoff: 04/03/2017
 以下信息应有助于避免一些潜在的陷阱。
 
 ## <a name="suse-images-on-azure-for-running-sap"></a>Azure 上用于运行 SAP 的 SUSE 映像
-若要在 Azure 上运行 SAP NetWeaver，只能使用 SUSE Linux Enterprise Server SLES 12 (SPx) — 另请参阅 SAP 说明 1928533。 专门的 SUSE 映像（“SLES 11 SP3 for SAP CAL”）位于 Azure 应用商店中，但这并非适用于常规用途。 请不要使用此映像，因为它是为 [SAP 云设备库](https://cal.sap.com/)解决方案保留的。  
+若要在 Azure 上运行 SAP NetWeaver，只能使用 SUSE Linux Enterprise Server SLES 12 (SPx) — 另请参阅 SAP 说明 1928533。 专门的 SUSE 映像（“SLES 11 SP3 for SAP CAL”）位于 Azure Marketplace 中，但这并非适用于常规用途。 请不要使用此映像，因为它是为 [SAP 云设备库](https://cal.sap.com/)解决方案保留的。  
 
 应使用 Azure Resource Manager 完成 Azure 上的所有新测试和安装。 若要通过 Azure PowerShell 或 Azure 命令行界面 (CLI) 查找 SUSE SLES 映像和版本，请使用以下命令。 然后可以使用输出，例如，在 JSON 模板中定义 OS 映像以部署新的 SUSE Linux VM。
 这些 PowerShell 命令适用于 Azure PowerShell 1.0.1 和更高版本。
 
-尽管仍可使用标准 SLES 映像进行 SAP 安装，但建议使用新的 SLES for SAP 映像（Azure 映像库现已提供）。 有关这些映像的详细信息，可参阅相应的 [Azure 应用商店页面]( https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SUSE.SLES-SAP )或[关于 SLES for SAP 的 SUSE FAQ 网页]( https://www.suse.com/products/sles-for-sap/frequently-asked-questions/ )。
+尽管仍可使用标准 SLES 映像进行 SAP 安装，但建议使用新的 SLES for SAP 映像（Azure 映像库现已提供）。 有关这些映像的详细信息，可参阅相应的 [Azure Marketplace 页面]( https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SUSE.SLES-SAP )或[关于 SLES for SAP 的 SUSE FAQ 网页]( https://www.suse.com/products/sles-for-sap/frequently-asked-questions/ )。
 
 
 * 查找现有发布服务器（包括 SUSE）：
@@ -68,7 +69,7 @@ ms.lasthandoff: 04/03/2017
    ```
 
 ## <a name="installing-walinuxagent-in-a-suse-vm"></a>在 SUSE VM 中安装 WALinuxAgent
-名为 WALinuxAgent 的代理是 Azure 应用商店中 SLES 映像的一部分。 有关如何手动安装该代理的信息（例如，从本地上载 SLES OS 虚拟硬盘 (VHD) 时），请参阅：
+名为 WALinuxAgent 的代理是 Azure Marketplace 中 SLES 映像的一部分。 有关如何手动安装该代理的信息（例如，从本地上载 SLES OS 虚拟硬盘 (VHD) 时），请参阅：
 
 * [OpenSUSE](http://software.opensuse.org/package/WALinuxAgent)
 * [Azure](../../linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -89,11 +90,11 @@ SAP“增强型监视”是在 Azure 上运行 SAP 的必要先决条件。 请�
 
 解决此问题的方法之一是从受损的 VM 将 OS 磁盘附加到 Azure 上的另一个 SUSE VM。 然后进行适当的更改，例如，编辑 /etc/fstab 或删除网络 udev 规则，如下一部分中所述。
 
-需要考虑一个重要事项。 从同一 Azure 应用商店映像（例如 SLES 11 SP4）部署多个 SUSE VM 会导致始终通过同一个 UUID 装载 OS 磁盘。 因此，通过 UUID 从使用同一 Azure 应用商店映像部署的不同 VM 附加 OS 磁盘将生成两个相同的 UUID。 这会导致问题，并且可能意味着用于故障排除的 VM 实际上将从附加的已损坏 OS 磁盘（而不是原始磁盘）启动。
+需要考虑一个重要事项。 从同一 Azure Marketplace 映像（例如 SLES 11 SP4）部署多个 SUSE VM 会导致始终通过同一个 UUID 装载 OS 磁盘。 因此，通过 UUID 从使用同一 Azure Marketplace 映像部署的不同 VM 附加 OS 磁盘将生成两个相同的 UUID。 这会导致问题，并且可能意味着用于故障排除的 VM 实际上将从附加的已损坏 OS 磁盘（而不是原始磁盘）启动。
 
 可通过两种方式来避免此问题：
 
-* 将不同 Azure 应用商店映像用于要进行故障排除的 VM（例如，使用 SLES 11 SPx 而不是 SLES 12）。
+* 将不同 Azure Marketplace 映像用于要进行故障排除的 VM（例如，使用 SLES 11 SPx 而不是 SLES 12）。
 * 不要使用 UUID（而是使用其他内容）从另一个 VM 附加损坏的 OS 磁盘
 
 ## <a name="uploading-a-suse-vm-from-on-premises-to-azure"></a>从本地将 SUSE VM 上载到 Azure

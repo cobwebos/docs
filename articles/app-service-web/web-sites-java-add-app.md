@@ -14,9 +14,10 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
 ms.openlocfilehash: bc23bf745f0e212de8ea652c8e57e4797013e3cc
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/06/2017
 
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/06/2017
 
 **webapps** 文件夹的导航路径因你设置 Web 应用的方式不同而异。
 
-* 如果使用 Azure 应用商店设置 Web 应用，则 **webapps** 文件夹的路径格式为 **d:\home\site\wwwroot\bin\application\_server\webapps**，其中 **application\_server** 是对你的 Web 应用实例起作用的应用程序服务器的名称。 
+* 如果使用 Azure Marketplace 设置 Web 应用，则 **webapps** 文件夹的路径格式为 **d:\home\site\wwwroot\bin\application\_server\webapps**，其中 **application\_server** 是对你的 Web 应用实例起作用的应用程序服务器的名称。 
 * 如果使用 Azure 配置 UI 设置 Web 应用，则 **webapps** 文件夹的路径格式为 **d:\home\site\wwwroot\webapps**。 
 
 请注意，可使用源代码管理上载应用程序或网页，即使在[连续集成方案](app-service-continuous-deployment.md)中亦是如此。 还可以选择 FTP 上载应用程序或网页；有关通过 FTP 部署应用程序的详细信息，请参阅[将应用部署到 Azure App Service]。

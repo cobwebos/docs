@@ -15,9 +15,10 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 02/06/2017
 ms.author: danlep
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 616006d29149f7f47b03bd127cf3c83ad63a5c39
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
 
@@ -30,7 +31,7 @@ ms.lasthandoff: 04/03/2017
 ## <a name="run-an-hpc-pack-cluster-in-azure-vms"></a>在 Azure VM 中运行 HPC Pack 群集
 ### <a name="azure-templates"></a>Azure 模板
 * (GitHub) [HPC Pack 2016 群集模板](https://github.com/MsHpcPack/HPCPack2016)
-* （应用商店）[Linux 工作负荷的 HPC Pack 群集](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)
+* (Marketplace) [Linux 工作负荷的 HPC Pack 群集](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)
 * （快速入门）[使用 Linux 计算节点创建 HPC 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster-linux-cn)
 
 ### <a name="powershell-deployment-script"></a>PowerShell 部署脚本

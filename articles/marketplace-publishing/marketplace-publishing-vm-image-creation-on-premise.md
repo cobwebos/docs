@@ -1,6 +1,6 @@
 ---
-title: "为 Azure 应用商店创建本地虚拟机映像 | Microsoft Docs"
-description: "了解并执行相关步骤，以便创建本地 VM 映像并针对要购买的其他用户部署到 Azure 应用商店。"
+title: "为 Azure Marketplace 创建本地虚拟机映像 | Microsoft Docs"
+description: "了解并执行相关步骤，以便创建本地 VM 映像并针对要购买的其他用户部署到 Azure Marketplace。"
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,14 +14,15 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 8f6b9a9293dc149586e6e5fd55028170ea825b07
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
 
 ---
-# <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 应用商店部署本地虚拟机映像
+# <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure Marketplace 部署本地虚拟机映像
 我们强烈建议使用远程桌面协议直接在云中开发 Azure 虚拟硬盘 (VHD)。 但是，如有必要，可以下载 VHD 并使用本地基础结构进行开发。  
 
 对于本地开发，必须下载所创建 VM 的操作系统 VHD。 这些步骤将作为上述步骤 3.3 的一部分执行。  
@@ -147,7 +148,7 @@ ms.lasthandoff: 04/03/2017
 借助 [Linux 命令行工具](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)，使用以下项：azure vm image create <image name> --location <Location of the data center> --OS Linux <LocationOfLocalVHD>
 
 ## <a name="see-also"></a>另请参阅
-* [为应用商店创建虚拟机映像](marketplace-publishing-vm-image-creation.md)
+* [为 Marketplace 创建虚拟机映像](marketplace-publishing-vm-image-creation.md)
 * [设置 Azure PowerShell](marketplace-publishing-powershell-setup.md)
 
 

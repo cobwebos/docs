@@ -15,9 +15,10 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 02/06/2017
 ms.author: danlep
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 96a5520d8440af7d8a880c2675a5d4eb4121e9ab
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/03/2017
 
 
@@ -31,8 +32,8 @@ ms.lasthandoff: 04/03/2017
 ## <a name="run-an-hpc-pack-cluster-in-azure-vms"></a>在 Azure VM 中运行 HPC Pack 群集
 ### <a name="azure-templates"></a>Azure 模板
 * (GitHub) [HPC Pack 2016 群集模板](https://github.com/MsHpcPack/HPCPack2016)
-* （应用商店）[Windows 工作负荷的 HPC Pack 群集](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/)
-* （应用商店）[Excel 工作负荷的 HPC Pack 群集](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterexcelcn/)
+* (Marketplace) [Windows 工作负荷的 HPC Pack 群集](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/)
+* (Marketplace) [Excel 工作负荷的 HPC Pack 群集](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterexcelcn/)
 * （快速入门）[创建 HPC 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster)
 * （快速入门）[使用自定义计算节点映像创建 HPC 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster-custom-image)
 
