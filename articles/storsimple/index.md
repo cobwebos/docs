@@ -2,7 +2,7 @@
 title: "Azure StorSimple 文档 - 教程 | Microsoft 文档"
 description: "了解如何使用 Azure StorSimple（集成的存储解决方案，用于管理本地设备与 Azure 云存储之间的存储任务）。"
 services: storsimple
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
 ms.openlocfilehash: 21f24f387e96ac763419c37eeb16c75eab0bc452
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/28/2017
 
 ---

@@ -3,7 +3,7 @@ title: "使用 API 管理中的客户端证书身份验证确保 API 安全 - Az
 description: "了解如何使用客户端证书保护对 API 的访问"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.service: api-management

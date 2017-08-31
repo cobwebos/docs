@@ -2,7 +2,7 @@
 title: "Azure Redis 缓存文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用 Azure Redis 缓存 - 一个安全的数据缓存和消息传送中转站，可让应用程序快速访问数据。 教程、API 参考和其他资源。"
 services: redis-cache
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ba5cba11b7b5ba142094e9d2c0b027386266e83a
 ms.openlocfilehash: 19756171a8831eef9ac25cfa619a815d17140257
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/09/2017
 
 ---

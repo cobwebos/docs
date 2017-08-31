@@ -4,7 +4,7 @@ description: "了解如何使用 Azure WebHook 监视媒体服务作业通知。
 services: media-services
 documentationcenter: 
 author: juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: a61fe157-81b1-45c1-89f2-224b7ef55869
 ms.service: media-services

@@ -2,7 +2,7 @@
 title: "Azure Time Series Insights 文档 - 教程和 API 参考 | Microsoft Docs"
 description: "了解如何使用完全托管的事件处理在云中运行 IoT 分析。 实时分析来自应用程序、传感器、设备等的数据。"
 services: time-series-insights
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

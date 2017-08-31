@@ -115,7 +115,7 @@ private DocumentClient client;
 现在创建 DocumentClient 的新实例。
 
 ```csharp
-DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
+DocumentClient client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
 ```
 
 ## <a id="create-database"></a>创建数据库

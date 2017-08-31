@@ -2,7 +2,7 @@
 title: "Azure Mobile Engagement 文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何深入分析移动应用的使用情况和实时用户细分，以及如何实现区分上下文的推送通知和应用内消息传送。"
 services: mobile-engagement
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 3de3024e93aee7ace0e243eef0beb4008dc50db5
 ms.openlocfilehash: 738cc1fc5b5cca411c08fda4229950f481cd0aa6
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/09/2017
 
 ---

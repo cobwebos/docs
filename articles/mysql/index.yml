@@ -6,46 +6,46 @@ metadata:
   title: Azure MySQL 文档 - 教程和 API 参考 | Microsoft Docs
   description: 用于 MySQL 的 Azure 数据库是 Microsoft 云中基于开源 MySQL 数据库引擎的、为开发人员构建的关系数据库服务。
   services: mysql
-  author: jasonh
-  manager: jhubbard
+  author: czeumault
+  manager: carolz
   ms.service: mysql
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 04/13/2017
-  ms.author: jasonh
+  ms.author: carolz
 abstract:
   description: 用于 MySQL 的 Azure 数据库是基于开源 MySQL Server 引擎的关系数据库服务。  它是一个完全托管的数据库即服务产品，能够处理任务关键型工作负荷，并提供可预测的性能和动态可伸缩性。 利用所选的开源工具和平台开发包含用于 MySQL 的 Azure 数据库的应用程序。 参考我们的快速入门、教程和示例了解如何使用用于 MySQL 的 Azure 数据库。
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何通过以下方式创建 MySQL Database on Azure：
-  - type: list
-    style: icon48
-    items: 
-    - image: 
-        src: /azure/virtual-machines/linux/media/index/portal.svg
-      text: Azure 门户
-      href: /azure/mysql/quickstart-create-mysql-server-database-using-azure-portal
-    - image: 
-        src: /azure/virtual-machines/linux/media/index/cli.svg
-      text: Azure CLI
-      href: /azure/mysql/quickstart-create-mysql-server-database-using-azure-cli
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何设计数据库和开发应用：
-  - type: list
-    style: ordered
+  - title: 5 分钟快速入门
     items:
-    - html: '设计数据库&#58; <a href="/azure/mysql/tutorial-design-database-using-portal">Azure 门户</a> | <a href="/azure/mysql/tutorial-design-database-using-cli">Azure CLI</a>'
-    - html: '创建 Web 应用&#58; <a href="../app-service-web/app-service-web-create-web-app-from-marketplace.md?toc=%2fazure%2fmysql%2ftoc.json">Wordpress - 门户</a> | <a href="../app-service-web/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json">PHP - Azure CLI</a>'
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 了解如何通过以下方式创建 MySQL Database on Azure：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/virtual-machines/linux/media/index/portal.svg
+            text: Azure 门户
+            href: /azure/mysql/quickstart-create-mysql-server-database-using-azure-portal
+          - image:
+              src: /azure/virtual-machines/linux/media/index/cli.svg
+            text: Azure CLI
+            href: /azure/mysql/quickstart-create-mysql-server-database-using-azure-cli
+  - title: 分步教程
     items:
-    - title: 命令行
-      html: <p><a href="/cli/azure/mysql">Azure CLI</a></p>
+      - type: paragraph
+        text: 了解如何设计数据库和开发应用：
+      - type: list
+        style: ordered
+        items:
+          - html: '设计数据库&#58; <a href="/azure/mysql/tutorial-design-database-using-portal">Azure 门户</a> | <a href="/azure/mysql/tutorial-design-database-using-cli">Azure CLI</a>'
+          - html: '创建 Web 应用&#58; <a href="../app-service-web/app-service-web-create-web-app-from-marketplace.md?toc=%2fazure%2fmysql%2ftoc.json">Wordpress - 门户</a> | <a href="../app-service-web/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json">PHP - Azure CLI</a>'
+  - title: 引用
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 命令行
+            html: <p><a href="/cli/azure/mysql">Azure CLI</a></p>

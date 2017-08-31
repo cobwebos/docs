@@ -3,7 +3,7 @@ title: "Azure API 管理中的问题模板 | Microsoft Docs"
 description: "了解如何使用 Azure API 管理自定义开发人员门户中问题页面的内容。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 47da4bb2-426e-4e53-8fa7-214ee2e3ab37
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
 ms.openlocfilehash: 6a14bd0cb95f8965ae53ff60fe1e638199a0b5b5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Azure API 管理中的问题模板
@@ -29,7 +31,7 @@ ms.openlocfilehash: 6a14bd0cb95f8965ae53ff60fe1e638199a0b5b5
 > [!NOTE]
 >  示例默认模板包含在后续文档中，但是会因持续改进而有所更改。 通过导航到所需单个模板，可在开发人员门户中查看实时的默认模板。 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](api-management-developer-portal-templates.md)。  
   
-##  <a name="a-nameissuelista-issue-list"></a><a name="IssueList"></a>问题列表  
+##  <a name="IssueList"></a>问题列表  
  **问题列表**模板可用于自定义开发人员门户中问题列表页的正文。  
   
  ![问题列表开发人员门户](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM 问题列表开发人员门户")  
@@ -134,8 +136,3 @@ ms.openlocfilehash: 6a14bd0cb95f8965ae53ff60fe1e638199a0b5b5
 
 ## <a name="next-steps"></a>后续步骤
 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](api-management-developer-portal-templates.md)。
-
-
-<!--HONumber=Jan17_HO2-->
-
-

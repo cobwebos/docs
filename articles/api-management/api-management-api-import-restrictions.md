@@ -3,7 +3,7 @@ title: "Azure API 管理 API 导入中的限制和已知问题 | Microsoft Docs"
 description: "有关使用 Open API、WSDL 或 WADL 格式导入到 Azure API 管理的已知问题和限制的详细信息。"
 services: api-management
 documentationcenter: 
-author: mattfarm
+author: vladvino
 manager: vlvinogr
 editor: 
 ms.assetid: 7a5a63f0-3e72-49d3-a28c-1bb23ab495e2
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: apipm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
 ms.openlocfilehash: ac799d66b5038c207413086b0fa71239ff2a332f
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/15/2017
-
 
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API 导入限制和已知问题

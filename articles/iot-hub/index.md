@@ -2,7 +2,7 @@
 title: "Azure IoT 中心文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用 IoT 中心来连接、监视和控制数十亿个物联网资产。 教程、API 参考、视频和其他文档。"
 services: iot-hub
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

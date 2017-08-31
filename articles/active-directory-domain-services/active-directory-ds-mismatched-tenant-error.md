@@ -11,7 +11,7 @@ ms.service: active-directory-ds
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: 
+ms.topic: article
 ms.date: 07/06/2017
 ms.author: maheshu
 ms.translationtype: Human Translation
@@ -19,7 +19,6 @@ ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: ca9ff29f5f91b8d796a29706ab49a82e417d1ecd
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
-
 
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>解决现有 Azure AD 域服务托管域的不匹配目录错误

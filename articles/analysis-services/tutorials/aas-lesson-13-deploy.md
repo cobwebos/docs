@@ -3,7 +3,7 @@ title: "Azure Analysis Services 教程第 13 课：部署 | Microsoft Docs"
 description: "介绍了如何将教程项目部署到 Azure Analysis Services。"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

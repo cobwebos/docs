@@ -2,7 +2,7 @@
 title: "Azure API 管理文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用 API 管理来安全、大规模地发布 API。 文档介绍了如何为现有后端服务创建现代 API 网关。"
 services: api-management
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5710f0aeb9af0f5d829c30d4b3e604c0a62afdb5
 ms.openlocfilehash: 09eb558a4e4b32fa6e1094c55f321db8ce008d4d
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/09/2017
 
 ---

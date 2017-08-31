@@ -3,7 +3,7 @@ title: "Azure API 管理缓存策略 | Microsoft 文档"
 description: "了解可在 Azure API 管理中使用的缓存策略。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 8147199c-24d8-439f-b2a9-da28a70a890c
@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
 ms.openlocfilehash: 606670068acd407a8f35e991f0cde12b84cdb1bf
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="api-management-caching-policies"></a>API 管理缓存策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
   
-##  <a name="a-namecachingpoliciesa-caching-policies"></a><a name="CachingPolicies"></a> 缓存策略  
+##  <a name="CachingPolicies"></a> 缓存策略  
   
 -   响应缓存策略  
   
@@ -38,7 +40,7 @@ ms.openlocfilehash: 606670068acd407a8f35e991f0cde12b84cdb1bf
   
     -   [从缓存中删除值](#RemoveCacheByKey) - 根据密钥在缓存中删除项。  
   
-##  <a name="a-namegetfromcachea-get-from-cache"></a><a name="GetFromCache"></a> 从缓存中获取  
+##  <a name="GetFromCache"></a> 从缓存中获取  
  使用 `cache-lookup` 策略执行缓存查找，并返回有效的缓存响应（如果有）。 当响应内容在某个时间段内保持静态时，即可应用该策略。 响应缓存可以降低后端 Web 服务器需要满足的带宽和处理能力要求，并可以减小 API 使用者能够察觉到的延迟。  
   
 > [!NOTE]
@@ -128,7 +130,7 @@ ms.openlocfilehash: 606670068acd407a8f35e991f0cde12b84cdb1bf
   
 -   **策略范围：**API、操作、产品  
   
-##  <a name="a-namestoretocachea-store-to-cache"></a><a name="StoreToCache"></a> 存储到缓存  
+##  <a name="StoreToCache"></a> 存储到缓存  
  `cache-store` 策略根据指定的缓存设置缓存响应。 当响应内容在某个时间段内保持静态时，即可应用该策略。 响应缓存可以降低后端 Web 服务器需要满足的带宽和处理能力要求，并可以减小 API 使用者能够察觉到的延迟。  
   
 > [!NOTE]
@@ -201,7 +203,7 @@ ms.openlocfilehash: 606670068acd407a8f35e991f0cde12b84cdb1bf
   
 -   **策略范围：**API、操作、产品  
   
-##  <a name="a-namegetfromcachebykeya-get-value-from-cache"></a><a name="GetFromCacheByKey"></a> 从缓存中获取值  
+##  <a name="GetFromCacheByKey"></a> 从缓存中获取值  
  使用 `cache-lookup-value` 策略，可以通过密钥执行缓存查找，并返回缓存的值。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。  
   
 > [!NOTE]
@@ -246,7 +248,7 @@ ms.openlocfilehash: 606670068acd407a8f35e991f0cde12b84cdb1bf
   
 -   **策略范围：**全局、API、操作、产品  
   
-##  <a name="a-namestoretocachebykeya-store-value-in-cache"></a><a name="StoreToCacheByKey"></a> 在缓存中存储值  
+##  <a name="StoreToCacheByKey"></a> 在缓存中存储值  
  `cache-store-value` 按密钥执行缓存存储。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。  
   
 > [!NOTE]
@@ -289,7 +291,7 @@ ms.openlocfilehash: 606670068acd407a8f35e991f0cde12b84cdb1bf
   
 -   **策略范围：**全局、API、操作、产品  
   
-###  <a name="a-nameremovecachebykeya-remove-value-from-cache"></a><a name="RemoveCacheByKey"></a> 从缓存中删除值  
+###  <a name="RemoveCacheByKey"></a> 从缓存中删除值  
  `cache-remove-value` 删除通过密钥标识的缓存项。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。  
   
 #### <a name="policy-statement"></a>策略语句  
@@ -330,8 +332,3 @@ ms.openlocfilehash: 606670068acd407a8f35e991f0cde12b84cdb1bf
 
 ## <a name="next-steps"></a>后续步骤
 有关如何使用策略的详细信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  
-
-
-<!--HONumber=Jan17_HO2-->
-
-

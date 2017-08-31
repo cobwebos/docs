@@ -3,7 +3,7 @@ title: "Azure API 管理中的页模板 | Microsoft Docs"
 description: "了解如何在 Azure API 管理中使用一组模板自定义开发人员门户页面的内容。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: e57df269-1019-4b74-b74d-53155b809d59
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
 ms.openlocfilehash: d3c947ec67a6acba3058afcef36a18bf5debd55d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="page-templates-in-azure-api-management"></a>Azure API 管理中的页模板
@@ -33,7 +35,7 @@ ms.openlocfilehash: d3c947ec67a6acba3058afcef36a18bf5debd55d
 > [!NOTE]
 >  示例默认模板包含在后续文档中，但是会因持续改进而有所更改。 通过导航到所需单个模板，可在开发人员门户中查看实时的默认模板。 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
   
-##  <a name="a-namesignina-sign-in"></a><a name="SignIn"></a>登录  
+##  <a name="SignIn"></a>登录  
  **登录**模板用于自定义开发人员门户中的登录页面。  
   
  ![登录页](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM 登录页开发人员门户模板")  
@@ -132,7 +134,7 @@ ms.openlocfilehash: d3c947ec67a6acba3058afcef36a18bf5debd55d
 }  
 ```  
   
-##  <a name="a-namesignupa-sign-up"></a><a name="SignUp"></a>注册  
+##  <a name="SignUp"></a>注册  
  **注册**模板用于自定义开发人员门户中的注册页面。  
   
  ![注册页](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM 注册页开发人员门户模板")  
@@ -180,7 +182,7 @@ ms.openlocfilehash: d3c947ec67a6acba3058afcef36a18bf5debd55d
 }  
 ```  
   
-##  <a name="a-namepagenotfounda-page-not-found"></a><a name="PageNotFound"></a>找不到页面  
+##  <a name="PageNotFound"></a>找不到页面  
  **找不到页面**模板用于自定义开发人员门户中的“找不到页面”页面。  
   
  ![找不到页面](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM 找不到页面开发人员门户模板")  
@@ -244,8 +246,3 @@ ms.openlocfilehash: d3c947ec67a6acba3058afcef36a18bf5debd55d
 
 ## <a name="next-steps"></a>后续步骤
 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](api-management-developer-portal-templates.md)。
-
-
-<!--HONumber=Jan17_HO2-->
-
-

@@ -2,8 +2,8 @@
 title: "Azure Data Lake Analytics 文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用 Data Lake Analytics 执行大数据分析。 教程介绍了如何运行实时交互式批处理分析，以及如何编写 U-SQL 查询。"
 services: data-lake-analytics
-author: saveenr
-manager: saveenr
+author: czeumault
+manager: carolz
 layout: LandingPage
 ms.assetid: 
 ms.service: data-lake-analytics

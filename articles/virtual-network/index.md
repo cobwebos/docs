@@ -2,7 +2,7 @@
 title: "Azure 虚拟网络文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何在云中使用虚拟网络。 文档介绍了如何部署 VNet、使用它来启动资源，以及与本地网络集成。"
 services: virtual-network
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
 ms.openlocfilehash: d65301d1ca71f62b52c97f1de772a61c33933b8a
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/18/2017
 
 ---

@@ -3,7 +3,7 @@ title: "Azure Analysis Services 教程第 1 课：创建新的表格模型项目
 description: "介绍如何创建新的 Azure Analysis Services 教程项目。"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

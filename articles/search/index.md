@@ -2,7 +2,7 @@
 title: "Azure 搜索文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何向自定义 Web 应用程序或移动应用程序添加强大的搜索功能，包括活动监视功能。 API 参考和其他文档。"
 services: search
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
 ms.openlocfilehash: 7fffe78bebd6799cad544c12c20eb1926975a68f
+ms.contentlocale: zh-cn
 ms.lasthandoff: 05/03/2017
 
 ---

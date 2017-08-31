@@ -8,16 +8,17 @@ author: op-ravi
 manager: santoshb
 editor: cgronlun
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/21/2017
 ms.author: omravi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
 ms.openlocfilehash: eb710795916a2d7beea75a6408a0982fb4dc8750
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/26/2017
 
 ---
@@ -30,23 +31,23 @@ ms.lasthandoff: 04/26/2017
 
 请按以下步骤创建环境：
 
-1.    登录到 [Azure 门户](https://portal.azure.com)。
-2.    单击左上角的加号（“+”）。
-3.    在搜索框中搜索“时序见解”。
+1.  登录到 [Azure 门户](https://portal.azure.com)。
+2.  单击左上角的加号（“+”）。
+3.  在搜索框中搜索“时序见解”。
 
   ![创建时序见解环境](media/get-started/getstarted-create-environment1.png)
 
-4.    选择“时序见解”，然后单击“创建”。
+4.  选择“时序见解”，然后单击“创建”。
 
   ![创建时序见解资源组](media/get-started/getstarted-create-environment2.png)
 
-5.    指定环境名称。 在[时序资源管理器](https://insights.timeseries.azure.com)中，该名称将代表环境。
-6.    选择一个订阅。 包含一个包含事件源的订阅。 时序见解可以自动检测存在于同一订阅中的 Azure IoT 中心和事件中心资源。
-7.    选择或创建资源组。 资源组是结合使用的 Azure 资源的集合。
-8.    选择托管位置。 若要避免跨数据中心移动数据，请选择包含事件源的位置。
-9.    选择定价层。
-10.    选择容量。 可以在创建环境后更改其容量。
-11.    创建环境。 也可将环境固定到仪表板，方便每次登录时的访问。
+5.  指定环境名称。 在[时序资源管理器](https://insights.timeseries.azure.com)中，该名称将代表环境。
+6.  选择一个订阅。 包含一个包含事件源的订阅。 时序见解可以自动检测存在于同一订阅中的 Azure IoT 中心和事件中心资源。
+7.  选择或创建资源组。 资源组是结合使用的 Azure 资源的集合。
+8.  选择托管位置。 若要避免跨数据中心移动数据，请选择包含事件源的位置。
+9.  选择定价层。
+10. 选择容量。 可以在创建环境后更改其容量。
+11. 创建环境。 也可将环境固定到仪表板，方便每次登录时的访问。
 
   ![创建时序见解 固定到仪表板](media/get-started/getstarted-create-environment3.png)
 

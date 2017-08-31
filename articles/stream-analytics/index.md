@@ -2,7 +2,7 @@
 title: "Azure 流分析文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用完全托管的事件处理在云中运行 IoT 分析。 实时分析来自应用程序、传感器、设备等的数据。"
 services: stream-analytics
-author: samacha
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -11,7 +11,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/23/2017
-ms.author: samacha
+ms.author: carolz
 ms.translationtype: Human Translation
 ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: f82be4ff7bd0839be4f826f9a04ba0876f4ec91d

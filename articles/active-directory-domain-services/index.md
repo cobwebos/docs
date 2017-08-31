@@ -2,7 +2,7 @@
 title: "Azure Active Directory 域服务文档 - 教程 | Microsoft 文档"
 description: "了解如何使用 Active Directory 域服务将 Azure 虚拟机加入域，而无需使用域控制器并使用组策略来管理这些虚拟机。"
 services: active-directory-ds
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ca9fd58260f97836c08e71a50d8411d1862fd650
 ms.openlocfilehash: 9654ec8791de56c33e4973e8ba20ef6e52780955
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/09/2017
 
 ---

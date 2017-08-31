@@ -3,7 +3,7 @@ title: "Azure Analysis Services 教程补充课程：详细信息行 | Microsoft
 description: "介绍了在 Azure Analysis Services 教程中如何创建详细信息行表达式。"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

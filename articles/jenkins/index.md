@@ -2,15 +2,15 @@
 title: "Jenkins 和 Azure"
 description: "在 Azure 上部署 Jenkins 并将其与 Azure 集成"
 services: multiple
-author: mlearned
-manager: douge
+author: czeumault
+manager: carolz
 layout: LandingPage
 ms.service: multiple
 ms.tgt_pltfrm: na
 ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/20/2017
-ms.author: mlearned
+ms.author: carolz
 ms.custom: Jenkins
 ms.translationtype: HT
 ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df

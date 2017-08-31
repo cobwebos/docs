@@ -3,7 +3,7 @@ title: "Azure Analysis Services 教程补充课程：不规则层次结构 | Mic
 description: "介绍了在 Azure Analysis Services 教程中如何修复不规则层次结构。"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

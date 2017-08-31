@@ -3,7 +3,7 @@ title: "Azure Analysis Services Adventure Works 教程 | Microsoft Docs"
 description: "介绍了 Azure Analysis Services 的 Adventure Works 教程"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

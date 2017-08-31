@@ -2,7 +2,7 @@
 title: "Azure Batch 文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用 Batch 有效运行大规模并行和高性能计算应用程序。 教程、API 参考和其他文档。"
 services: batch
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

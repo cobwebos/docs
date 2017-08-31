@@ -2,15 +2,15 @@
 title: "Azure 上的 Docker"
 description: "在 Azure 上部署 Docker 并将其与 Azure 集成"
 services: multiple
-author: mlearned
-manager: douge
+author: czeumault
+manager: carolz
 layout: LandingPage
 ms.service: multiple
 ms.tgt_pltfrm: na
 ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
-ms.author: mlearned
+ms.author: carolz
 ms.translationtype: Human Translation
 ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
 ms.openlocfilehash: 5f529f32cf7d0c12416b838bd9974a9c3e89fd12

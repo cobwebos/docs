@@ -2,7 +2,7 @@
 title: "Azure 备份文档 - 教程和 API 参考 | Microsoft 文档"
 description: "使用备份文档了解如何备份到云。 查看有关应用程序、Windows 服务器和 Azure 虚拟机备份的教程和视频。"
 services: backup
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

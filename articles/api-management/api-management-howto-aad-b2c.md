@@ -3,7 +3,7 @@ title: "使用 Azure Active Directory B2C 为开发人员帐户授权 - Azure AP
 description: "了解如何在 API 管理中使用 Azure Active Directory B2C 为用户授权。"
 services: api-management
 documentationcenter: API Management
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 33a69a83-94f2-4e4e-9cef-f2a5af3c9732
@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
 ms.openlocfilehash: eb7deb1a79d9db9ac5cfbea69b8d3c564eb55577
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/09/2017
 
 ---

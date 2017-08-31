@@ -3,7 +3,7 @@ title: "Azure Analysis Services 教程第 3 课：标记为日期表 | Microsoft
 description: "介绍了在 Azure Analysis Services 教程项目中如何标记日期表。"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

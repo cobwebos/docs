@@ -3,7 +3,7 @@ title: "Azure API 管理中的应用程序模板 | Microsoft Docs"
 description: "了解如何在 Azure API 管理中自定义开发人员门户中的应用程序页面的内容。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: f3122c4d-e10e-4cdf-977b-36e8f4133fc8
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
 ms.openlocfilehash: df71d6d36949f457ad95576e37ae3da2fef7d4d7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="application-templates-in-azure-api-management"></a>Azure API 管理中的应用程序模板
@@ -31,7 +33,7 @@ ms.openlocfilehash: df71d6d36949f457ad95576e37ae3da2fef7d4d7
 > [!NOTE]
 >  示例默认模板包含在后续文档中，但是会因持续改进而有所更改。 通过导航到所需单个模板，可在开发人员门户中查看实时的默认模板。 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
   
-##  <a name="a-nameproductlista-application-list"></a><a name="ProductList"></a>应用程序列表  
+##  <a name="ProductList"></a>应用程序列表  
  **应用程序列表**模板可用于自定义开发人员门户中应用程序列表页的正文。  
   
  ![应用程序列表页开发人员门户模板](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM 应用程序列表页开发人员门户模板")  
@@ -132,7 +134,7 @@ ms.openlocfilehash: df71d6d36949f457ad95576e37ae3da2fef7d4d7
 }  
 ```  
   
-##  <a name="a-nameapplicationa-application"></a><a name="Application"></a>应用程序  
+##  <a name="Application"></a>应用程序  
  **应用程序**模板可用于自定义开发人员门户中应用程序页的正文。  
   
  ![应用程序页开发人员门户模板](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM 应用程序页开发人员门户模板")  
@@ -220,8 +222,3 @@ ms.openlocfilehash: df71d6d36949f457ad95576e37ae3da2fef7d4d7
 
 ## <a name="next-steps"></a>后续步骤
 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](api-management-developer-portal-templates.md)。
-
-
-<!--HONumber=Jan17_HO2-->
-
-

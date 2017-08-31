@@ -3,7 +3,7 @@ title: "Azure Analysis Services 教程第 12 课：在 Excel 中分析 | Microso
 description: "介绍了在 Azure Analysis Services 教程项目中如何使用“在 Excel 中分析”功能。"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

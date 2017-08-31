@@ -2,7 +2,7 @@
 title: "Azure 开发测试实验室文档 - 教程 | Microsoft 文档"
 description: "了解如何使用可重用项目快速创建应用程序测试环境。 教程、视频和其他资源演示了如何创建、管理和保护实验室。"
 services: devtest-lab
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

@@ -2,7 +2,7 @@
 title: "Azure Site Recovery 文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何通过部署和管理复制，为物理服务器和虚拟机设置云灾难恢复和业务连续性。"
 services: site-recovery
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

@@ -2,7 +2,7 @@
 title: "Azure 计费文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解 Azure 计费方式，以及如何管理和监视使用量与费用。 教程、常见问题解答、API 参考和其他文档。"
 services: billing
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

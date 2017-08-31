@@ -2,7 +2,7 @@
 title: "Azure 逻辑应用文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何开发逻辑应用，用于自动化及简化跨本地和云的业务工作流。 教程、模板和 API 参考。"
 services: logic-apps
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
