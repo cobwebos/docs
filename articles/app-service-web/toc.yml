@@ -115,8 +115,8 @@
           items:
             - name: 概述
               href: app-service-linux-intro.md
-            - name: 在 Linux 上创建 Web 应用
-              href: app-service-linux-how-to-create-web-app.md
+            - name: 使用 CLI 管理
+              href: app-service-linux-cli.md
             - name: Linux 上的 Ruby Web 应用
               href: app-service-linux-ruby-get-started.md
             - name: Linux 上的 Node.js Web 应用
