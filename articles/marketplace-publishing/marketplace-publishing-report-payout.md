@@ -1,6 +1,6 @@
 ---
-title: "了解 Azure 应用商店付款报表 | Microsoft Docs"
-description: "了解如何查看和引入 Azure 应用商店付款报表。"
+title: "了解 Azure Marketplace 付款报表 | Microsoft Docs"
+description: "了解如何查看和引入 Azure Marketplace 付款报表。"
 services: marketplace-publishing
 documentationcenter: na
 author: v-jeana
@@ -22,11 +22,11 @@ ms.lasthandoff: 02/11/2017
 
 
 ---
-# <a name="understand-your-azure-marketplace-payout-reports"></a>了解 Azure 应用商店付款报表
+# <a name="understand-your-azure-marketplace-payout-reports"></a>了解 Azure Marketplace 付款报表
 ## <a name="access-and-view-your-payout-reports"></a>访问和查看付款报表
 尽管我们转换到开发人员中心，但一些付款报表可通过 https://dev.windows.com/zh-cn 处的开发人员中心获取，而其他报表仍可在 https://publish.windowsazure.com 处的发布门户中找到。
 
-对于与现代付款关联的任何应用商店产品/服务，付款报表现在可在**开发人员中心**中获取；这当前包括：
+对于与现代付款关联的任何 Marketplace 产品/服务，付款报表现在可在**开发人员中心**中获取；这当前包括：
 
 * VM
 * B+C 产品/服务
