@@ -15,9 +15,10 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: yuaxu
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: dc4987b16b2e930641c6c90eff8b65c1bf8d573c
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/21/2017
 
 
