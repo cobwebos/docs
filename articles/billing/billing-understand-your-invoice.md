@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/29/2017
+ms.date: 08/31/2017
 ms.author: tonguyen
 ms.translationtype: Human Translation
 ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: a5be3c9bcdd99128217e441d62ce9650c9764580
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
-
 
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>了解 Microsoft Azure 发票的条款
@@ -32,6 +31,10 @@ ms.lasthandoff: 07/08/2017
 -   在上一计费周期结束时，最多 24 小时的使用情况可能显示在当前发票中。
 
 -   对于国际客户，帐单上列出的费用仅用于估算目的。 不同的银行可能会根据不同的兑换率计算费用。
+
+<div style="padding-top: 56.25%; position: relative; width: 100%;">
+<iframe style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;" width="100%" height="100%" src="https://www.youtube.com/embed/jWG1lyJe3Mg" frameborder="0" allowfullscreen></iframe>
+</div>
 
 ## <a name="detailed-terms-and-descriptions-of-your-invoice"></a>发票的详细条款和说明
 下列部分列出了发票上显示的重要条款以及每个条款的说明。

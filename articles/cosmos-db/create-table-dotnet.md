@@ -12,7 +12,7 @@ ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 06/22/2017
 ms.author: arramac
 ms.translationtype: Human Translation
@@ -21,34 +21,28 @@ ms.openlocfilehash: 29e7eebda5177d6e852ef04ad82d9d38a8d30ed8
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/23/2017
 
-
 ---
-# Azure Cosmos DB：使用表 API 生成 .NET 应用程序
-<a id="azure-cosmos-db-build-a-net-application-using-the-table-api" class="xliff"></a>
+# <a name="azure-cosmos-db-build-a-net-application-using-the-table-api"></a>Azure Cosmos DB：使用表 API 生成 .NET 应用程序
 
 Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，它们都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
 
 本快速入门教程演示如何使用 Azure 门户创建 Azure Cosmos DB 帐户，以及如何在该帐户内创建表。 然后将编写代码来插入、更新和删除条目，以及使用 NuGet 中的新 [Microsoft Azure 存储高级表](https://aka.ms/premiumtablenuget)（预览版）包运行某些查询。 此库与 [Microsoft Azure 存储 SDK](https://www.nuget.org/packages/WindowsAzure.Storage) 具有相同的类和方法签名，但还具有使用[表 API](table-introduction.md)（预览版）连接到 Azure Cosmos DB 帐户的功能。 
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 
 如果尚未安装 Visual Studio 2017，可以下载并使用**免费的** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## 创建数据库帐户
-<a id="create-a-database-account" class="xliff"></a>
+## <a name="create-a-database-account"></a>创建数据库帐户
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
 
-## 添加表
-<a id="add-a-table" class="xliff"></a>
+## <a name="add-a-table"></a>添加表
 
 [!INCLUDE [cosmos-db-create-table](../../includes/cosmos-db-create-table.md)]
 
-## 添加示例数据
-<a id="add-sample-data" class="xliff"></a>
+## <a name="add-sample-data"></a>添加示例数据
 
 现在可以使用数据资源管理器（预览版）将数据添加到新表。
 
@@ -61,8 +55,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
   
     现在可以在数据资源管理器中将更多实体添加到表、编辑实体或查询数据。 使用数据资源管理器还可以缩放吞吐量，并将存储过程、用户定义的函数和触发器添加到表中。
 
-## 克隆示例应用程序
-<a id="clone-the-sample-application" class="xliff"></a>
+## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
 现在让我们从 github 克隆表应用、设置连接字符串，并运行。 你将看到以编程方式处理数据是多么容易。 
 
@@ -76,8 +69,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 3. 然后在 Visual Studio 中打开解决方案文件。 
 
-## 查看代码
-<a id="review-the-code" class="xliff"></a>
+## <a name="review-the-code"></a>查看代码
 
 让我们快速查看一下应用中发生的情况。 打开 Program.cs 文件，会发现以下代码行创建 Azure Cosmos DB 资源。 
 
@@ -108,8 +100,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
                 };
     ```
 
-## 更新连接字符串
-<a id="update-your-connection-string" class="xliff"></a>
+## <a name="update-your-connection-string"></a>更新连接字符串
 
 现在将更新连接字符串信息，使应用能够与 Azure Cosmos DB 通信。 
 
@@ -128,8 +119,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
 
-## 运行 Web 应用
-<a id="run-the-web-app" class="xliff"></a>
+## <a name="run-the-web-app"></a>运行 Web 应用
 
 1. 在 Visual Studio 中，右键单击**解决方案资源管理器**中的 **PremiumTableGetStarted** 项目，然后单击“管理 NuGet 包”。 
 
@@ -151,21 +141,18 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
     ![数据资源管理器中的新实体](./media/create-table-dotnet/azure-cosmosdb-table-quickstart-data-explorer.png)
 
-## 在 Azure 门户中查看 SLA
-<a id="review-slas-in-the-azure-portal" class="xliff"></a>
+## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## 清理资源
-<a id="clean-up-resources" class="xliff"></a>
+## <a name="clean-up-resources"></a>清理资源
 
 如果不打算继续使用此应用，请删除本快速入门教程在 Azure 门户中创建的所有资源，步骤如下： 
 
 1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击已创建资源的名称。 
 2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，然后单击“删除”。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 在本快速入门教程中，你已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建表和运行应用。  现在可以使用表 API 进行数据查询了。  
 

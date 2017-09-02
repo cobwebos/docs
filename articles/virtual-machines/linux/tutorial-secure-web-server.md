@@ -1,4 +1,3 @@
-
 ---
 title: "在 Azure 中使用 SSL 证书保护 Web 服务器 | Microsoft Docs"
 description: "了解如何在 Azure 中的 Linux VM 上使用 SSL 证书保护 NGINX Web 服务器"
@@ -11,7 +10,7 @@ tags: azure-resource-manager
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/17/2017

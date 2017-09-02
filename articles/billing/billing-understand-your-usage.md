@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/29/2017
+ms.date: 08/31/2017
 ms.author: tonguyen
 ms.translationtype: Human Translation
 ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 0d4f2e19ec3417b7ca111f777e34b1ce66ddb32d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
-
 
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>了解 Microsoft Azure 详细使用费条款 
@@ -29,6 +28,11 @@ ms.lasthandoff: 07/08/2017
 它以逗号分隔值 (.csv) 文件格式提供，你可以在电子表格应用程序中打开它。 如果看到两个版本可用，请下载版本 2。 这是最新的文件格式。
 
 使用费是订阅的总“月度”费用。 使用费不考虑任何信用额度或折扣。
+
+
+<div style="padding-top: 56.25%; position: relative; width: 100%;">
+<iframe style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;" width="100%" height="100%" src="https://www.youtube.com/embed/p13S350M2Vk" frameborder="0" allowfullscreen></iframe>
+</div>
 
 ## <a name="detailed-terms-and-descriptions-of-your-detailed-usage-file"></a>详细使用情况文件的详细条款和说明
 以下部分介绍版本 2 的详细使用情况文件中显示的重要条款。

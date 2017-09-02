@@ -12,7 +12,7 @@ ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: java
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
@@ -20,7 +20,6 @@ ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: 1683afd842294b3b45ae4d0e53bbecdccadc1ed5
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/31/2017
-
 
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-java-and-the-azure-portal"></a>Azure Cosmos DB：使用 Java 和 Azure 门户生成 MongoDB API 控制台应用
