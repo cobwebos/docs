@@ -56,9 +56,9 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
   
   * 此修复可以防止升级期间发生此问题。 不过，对于已受此问题影响的现有客户，它不会还原优先级值。 将来会提供一个单独的修复来帮助进行还原。
 
-* 修复了即使在启用了基于 OU 的筛选的情况下，Azure AD Connect 向导中的“域和 OU 筛选”屏幕也将“同步所有域和 OU”选项显示为已选中的问题。[](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)
+* 修复了即使在启用了基于 OU 的筛选的情况下，Azure AD Connect 向导中的“[域和 OU 筛选](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)”屏幕也将“同步所有域和 OU”选项显示为已选中的问题。
 
-*   修复了一个当单击“刷新”按钮时导致 Synchronization Service Manager 中的“配置目录分区”屏幕返回错误的问题。[](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) 错误消息为“刷新域时遇到错误: 无法将‘System.Collections.ArrayList’类型的对象转换为‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject’类型。 当已将新的 AD 域添加到现有的 AD 林并尝试使用“刷新”按钮更新 Azure AD Connect 时会出现此错误。
+*   修复了一个当单击“刷新”按钮时导致 Synchronization Service Manager 中的“[配置目录分区](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)”屏幕返回错误的问题。 错误消息为“刷新域时遇到错误: 无法将‘System.Collections.ArrayList’类型的对象转换为‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject’类型。 当已将新的 AD 域添加到现有的 AD 林并尝试使用“刷新”按钮更新 Azure AD Connect 时会出现此错误。
 
 #### <a name="new-features-and-improvements"></a>新增功能和改进
 
@@ -84,9 +84,9 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 
 * 修复了当更新基于 OU 的筛选配置时导致现成的同步规则“Out to AD - User ImmutableId”被删除的一个问题。 此同步规则是[将 msDS-ConsistencyGuid 用作源锚点](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor)功能所必需的。
 
-* 修复了即使在启用了基于 OU 的筛选的情况下，Azure AD Connect 向导中的“域和 OU 筛选”屏幕也将“同步所有域和 OU”选项显示为已选中的问题。[](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)
+* 修复了即使在启用了基于 OU 的筛选的情况下，Azure AD Connect 向导中的“[域和 OU 筛选](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)”屏幕也将“同步所有域和 OU”选项显示为已选中的问题。
 
-*   修复了一个当单击“刷新”按钮时导致 Synchronization Service Manager 中的“配置目录分区”屏幕返回错误的问题。[](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) 错误消息为“刷新域时遇到错误: 无法将‘System.Collections.ArrayList’类型的对象转换为‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject’类型。 当已将新的 AD 域添加到现有的 AD 林并尝试使用“刷新”按钮更新 Azure AD Connect 时会出现此错误。
+*   修复了一个当单击“刷新”按钮时导致 Synchronization Service Manager 中的“[配置目录分区](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)”屏幕返回错误的问题。 错误消息为“刷新域时遇到错误: 无法将‘System.Collections.ArrayList’类型的对象转换为‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject’类型。 当已将新的 AD 域添加到现有的 AD 林并尝试使用“刷新”按钮更新 Azure AD Connect 时会出现此错误。
 
 #### <a name="new-features-and-improvements"></a>新增功能和改进
 
@@ -138,7 +138,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect Sync
 
 #### <a name="known-issue"></a>已知问题
-* 有一个问题会影响将[基于 OU 的筛选](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)与 Azure AD Connect 同步一起使用的客户。 当导航到 Azure AD Connect 向导中的“域和 OU 筛选”[](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)页面时，预期会发生以下行为：
+* 有一个问题会影响将[基于 OU 的筛选](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)与 Azure AD Connect 同步一起使用的客户。 当导航到 Azure AD Connect 向导中的“[域和 OU 筛选](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)”页面时，预期会发生以下行为：
   * 如果启用了基于 OU 的筛选，则会选中“同步选定的域和 OU”选项。
   * 否则会选中“同步所有域和 OU”选项。
 
@@ -155,7 +155,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
   * In from AD - User Common.xml
   * In from AD - User Join SOAInAAD.xml
 
-* 以前，即使未启用“将 msDS-ConsistencyGuid 用作源锚点”功能，也会将“Out to AD – User ImmutableId”同步规则添加到 Azure AD Connect 中。[](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-msds-consistencyguid-as-sourceanchor) 影响是良性的，并且不会导致发生 msDS-ConsistencyGuid 属性写回。 为避免混淆，已添加了逻辑来确保只有启用了此功能时才添加同步规则。
+* 以前，即使未启用“[将 msDS-ConsistencyGuid 用作源锚点](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-msds-consistencyguid-as-sourceanchor)”功能，也会将“Out to AD – User ImmutableId”同步规则添加到 Azure AD Connect 中。 影响是良性的，并且不会导致发生 msDS-ConsistencyGuid 属性写回。 为避免混淆，已添加了逻辑来确保只有启用了此功能时才添加同步规则。
 
 * 修复了一个导致密码哈希同步失败且出现错误事件 611 的问题。 从本地 AD 中删除一个或多个域控制器后会发生此问题。 在每个密码同步周期结束时，本地 AD 发出的同步 cookie 包含 USN（更新序号）值为 0 的已删除域控制器的调用 ID。 密码同步管理器无法持久保存包含 USN 值 0 的同步 cookie，并且会失败且出现错误事件 611。 在下一个同步周期中，密码同步管理器将重新使用不包含 USN 值 0 的最后一个已持久保存的 cookie。 这将导致重新同步相同的密码更改。 使用此修复，密码同步管理器可以正确地持久保存同步 cookie。
 
