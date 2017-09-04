@@ -1,5 +1,5 @@
 ---
-title: "Linux 上 Azure Web 应用的持续部署 | Microsoft 文档"
+title: "Linux 上 Azure Web 应用的持续部署 | Microsoft Docs"
 description: "如何在 Linux 上的 Azure Web 应用中设置连续部署。"
 keywords: azure app service, linux, oss, acr
 services: app-service
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: aelnably;wesmc
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 026c4491818c8719c68a759ee9595ad9c765d526
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: f8f7d51003f8a55b7f51e8cc2cea838e8e5a6196
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="continuous-deployment-with-azure-web-app-on-linux"></a>在 Linux 上的 Azure Web 应用中进行持续部署
@@ -88,7 +88,6 @@ az webapp deployment container -n sname1 -g rgname -e true --show-cd-url
 
 ## <a name="next-steps"></a>后续步骤
 * [什么是 Linux 上的 Azure Web 应用？](./app-service-linux-intro.md)
-* [在 Linux 上的 Azure Web 应用中创建应用](./app-service-linux-how-to-create-web-app.md)
 * [Azure 容器注册表](https://azure.microsoft.com/en-us/services/container-registry/)
 * [在 Linux 上的 Azure Web 应用中使用针对 Node.js 的 PM2 配置](app-service-linux-using-nodejs-pm2.md)
 * [在 Linux 上的 Azure Web 应用中使用 .NET Core](app-service-linux-using-dotnetcore.md)

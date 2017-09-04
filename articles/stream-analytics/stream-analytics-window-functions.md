@@ -4,7 +4,7 @@ description: "了解流分析中的三个开窗函数（翻转、跳跃、滑动
 keywords: "翻转窗口, 滑动窗口, 跳跃窗口"
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 0d8d8717-5d23-43f0-b475-af078ab4627d
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 10115f445ae3aeb862446b340213b18698459f7c
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 2a6559551f608cf435e89997392a6a0ba995c583
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="introduction-to-stream-analytics-window-functions"></a>流分析开窗函数简介
@@ -34,7 +33,7 @@ ms.lasthandoff: 07/04/2017
 ![流分析翻转开窗函数简介](media/stream-analytics-window-functions/stream-analytics-window-functions-tumbling-intro.png)
 
 ## <a name="hopping-window"></a>跳跃窗口
-跳跃开窗函数在一段固定的时间内向前跳跃。 人们往往将此类窗口视为可以重叠的翻转窗口，因此一个事件可以属于多个跳跃窗口结果集。 若要使跳跃窗口与翻转窗口相同，只需将跃点大小指定为与窗口大小相同。 
+跳跃开窗函数在一段固定的时间内向前跳跃。 人们往往将此类窗口视为可以重叠的翻转窗口，因此一个事件可以属于多个跳跃窗口结果集。 要使跳跃窗口与翻转窗口相同，只需将跃点大小指定为与窗口大小相同。 
 
 ![流分析跳跃开窗函数简介](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
@@ -44,7 +43,7 @@ ms.lasthandoff: 07/04/2017
 ![流分析滑动开窗函数简介](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
 ## <a name="getting-help-with-window-functions"></a>获取开窗函数的帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 964b39053cf91285202f3af165f4313a15e9f9ee
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: feee7a5c91d213a6b0bfdaf264a4da4d9e79cbe7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="ssh-support-for-azure-web-app-on-linux"></a>对 Linux 上的 Azure Web 应用的 SSH 支持
@@ -111,7 +111,6 @@ Linux 上的 Web 应用程序对应用程序容器提供了 SSH 支持，每个�
 ## <a name="next-steps"></a>后续步骤
 有关 Linux 上的 Web 应用的详细信息，请参阅以下链接。 如有问题和疑问，请在[我们的论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)上发帖。
 
-* [在 Linux 上的 Azure Web 应用中创建应用](app-service-linux-how-to-create-web-app.md)
 * [如何使用 Linux 上 Azure Web 应用的自定义 Docker 映像](app-service-linux-using-custom-docker-image.md)
 * [在 Linux 上的 Azure Web 应用中使用针对 Node.js 的 PM2 配置](app-service-linux-using-nodejs-pm2.md)
 * [在 Linux 上的 Azure Web 应用中使用 .NET Core](app-service-linux-using-dotnetcore.md)

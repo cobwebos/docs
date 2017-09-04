@@ -3,7 +3,7 @@ title: "使用 Azure API 管理进行高级请求限制"
 description: "了解如何使用 Azure API 管理创建并应用灵活的配额和速率限制策略。"
 services: api-management
 documentationcenter: 
-author: darrelmiller
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: fc813a65-7793-4c17-8bb9-e387838193ae
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2a5078b34f74efd5d394587d8ace7f339ecedb5e
-
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 356f98aec072a1295915ae0701a3e3cd793aba07
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>使用 Azure API 管理进行高级请求限制
@@ -74,7 +75,7 @@ ms.openlocfilehash: 2a5078b34f74efd5d394587d8ace7f339ecedb5e
 Azure API 管理提供速率和配额限制，不但能保护 API 服务，而且能为 API 服务增加价值。 使用新的限制策略与自定义范围规则，可以更精细地控制这些策略，让客户构建更好的应用程序。 本文中的示例演示如何使用这些新策略，分别使用客户端 IP 地址、用户标识和客户端生成的值来创建速率限制密钥。 但是，消息中还有许多其他部分可供使用，例如用户代理、URL 路径段和消息大小。
 
 ## <a name="next-steps"></a>后续步骤
-欢迎在本主题的 Disqus 贴子中提供反馈。 我们很想知道是否还可以在你的方案中合理地选择其他可能的密钥值。
+欢迎在本主题的 Disqus 贴子中提供反馈。 我们很想知道是否还可以在方案中合理地选择其他可能的密钥值。
 
 ## <a name="watch-a-video-overview-of-these-policies"></a>观看这些策略的视频概述
 有关本文中所述的 [rate-limit-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) 和 [quota-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey) 策略的详细信息，请观看以下视频。
@@ -82,10 +83,5 @@ Azure API 管理提供速率和配额限制，不但能保护 API 服务，而�
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Advanced-Request-Throttling-with-Azure-API-Management/player]
 > 
 > 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

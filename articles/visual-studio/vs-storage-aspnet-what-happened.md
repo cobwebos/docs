@@ -3,8 +3,8 @@ title: "我的 ASP.NET 项目发生了什么情况？ | Microsoft 文档"
 description: "介绍使用 Visual Studio 连接服务向 ASP.NET 项目添加 Azure 存储后会发生什么情况"
 services: storage
 documentationcenter: 
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: e1fe1b6d-4e3d-476d-8b2f-f7ade050515e
 ms.service: storage
@@ -13,16 +13,17 @@ ms.tgt_pltfrm: vs-what-happened
 ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
-ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 086c2259aa4686e82f5fd121c4545f573c378414
-
+ms.author: kraigb
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 680960f51201a98c81db4bce3615e1602e795651
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="what-happened-to-my-aspnet-project-visual-studio-azure-storage-connected-service"></a>我的 ASP.NET 项目（Visual Studio Azure 存储连接服务）发生了什么情况？
 ## <a name="references-added"></a>已添加引用
-Azure 存储 NuGet 包已添加到你的 Visual Studio 项目。  
+Azure 存储 NuGet 包已添加到 Visual Studio 项目。  
 此包添加了以下 .NET 引用：
 
 * **Microsoft.Data.Edm**
@@ -38,10 +39,5 @@ Azure 存储 NuGet 包已添加到你的 Visual Studio 项目。
 在项目的 web.config 文件中，已使用选定存储帐户的连接字符串和密钥创建了一个元素。
 
 有关详细信息，请参阅 [ASP.NET](http://www.asp.net)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -12,22 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 07/17/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: d65f730a0f84b89d0228a22b42d0421ad4f2678f
-ms.lasthandoff: 03/09/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: e3c463d749dc4179df58286b9bb75584880a6bc6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="use-view-designer-to-create-custom-views-in-log-analytics"></a>使用视图设计器在 Log Analytics 中创建自定义视图
 通过 [Log Analytics](log-analytics-overview.md) 中的视图设计器可在 OMS 控制台中创建自定义视图，其包含 OMS 存储库中不同数据的可视化效果。 本文包含了视图设计器以及创建和编辑自定义视图的过程概述。
 
-可用于视图设计器的其他文章有：
+有关视图设计器的其他文章包括：
 
-* [磁贴参考](log-analytics-view-designer-tiles.md) - 可在自定义视图中使用的每个磁贴的设置参考。 
-* [可视化部分参考](log-analytics-view-designer-parts.md) - 针对可在自定义视图中使用的每个磁贴的设置参考。 
+* [磁贴参考](log-analytics-view-designer-tiles.md) - 可在自定义视图中使用的每个磁贴的设置参考。
+* [可视化部分参考](log-analytics-view-designer-parts.md) - 针对可在自定义视图中使用的每个磁贴的设置参考。
+
+>[!NOTE]
+> 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则必须使用[新查询语言](https://go.microsoft.com/fwlink/?linkid=856078)编写所有视图中的查询。  将自动转换工作区升级前创建的任何视图。
 
 ## <a name="concepts"></a>概念
 使用视图设计器创建的视图中含有下表中的元素。
@@ -57,12 +60,12 @@ ms.lasthandoff: 03/09/2017
 ![编辑视图](media/log-analytics-view-designer/menu-edit.png)
 
 ### <a name="clone-an-existing-view"></a>克隆现有视图
-克隆视图时，会创建一个新的视图，然后在视图设计器中打开它。  新视图将具有与原始视图相同的名称（其名称末尾会附加“Copy”）。  若要克隆视图，请通过以下方式打开现有视图：在 OMS 主仪表板中单击其磁贴。  然后单击“克隆”按钮即可在视图设计器中打开该视图。
+克隆视图时，会创建一个新的视图，并在视图设计器中打开它。  新视图将具有与原始视图相同的名称，其名称末尾会附加“Copy”。  若要克隆视图，请通过以下方式打开现有视图：在 OMS 主仪表板中单击其磁贴。  然后单击“克隆”按钮即可在视图设计器中打开该视图。
 
 ![克隆视图](media/log-analytics-view-designer/edit-menu-clone.png)
 
 ### <a name="delete-an-existing-view"></a>删除现有视图
-若要删除现有视图，请通过以下方式打开该视图：在 OMS 主仪表板中单击其磁贴。  接着单击“编辑”按钮以在视图设计器中打开该视图，然后单击“删除视图”。
+若要删除现有视图，请通过以下方式打开该视图：在 OMS 主仪表板中单击其磁贴。  接着单击“编辑”按钮以在视图设计器中打开该视图，并单击“删除视图”。
 
 ![删除视图](media/log-analytics-view-designer/edit-menu-delete.png)
 
@@ -72,7 +75,7 @@ ms.lasthandoff: 03/09/2017
 ![导出视图](media/log-analytics-view-designer/edit-menu-export.png)
 
 ### <a name="import-an-existing-view"></a>导入现有视图
-可以导入从另一个管理组中导出的 *omsview* 文件。  若要导入现有视图，请先创建一个新视图。  然后单击“导入”按钮，并选择 *omsview* 文件。  会将该文件中的配置复制到现有视图。
+可以导入从另一个管理组中导出的 *omsview* 文件。  若要导入现有视图，请先创建一个新视图。  然后单击“导入”按钮，并选择 omsview 文件。  该文件中的配置将复制到现有视图。
 
 ![导出视图](media/log-analytics-view-designer/edit-menu-import.png)
 
@@ -82,10 +85,10 @@ ms.lasthandoff: 03/09/2017
 ![视图设计器](media/log-analytics-view-designer/view-designer-screenshot.png)
 
 ### <a name="configure-view-tile"></a>配置视图磁贴
-一个自定义视图只能有一个磁贴。  在“控件”窗格中选择“磁贴”选项卡，以查看当前磁贴或选择另一个磁贴。  “属性”窗格会显示当前磁贴的属性。  根据 [磁贴引用](log-analytics-view-designer-tiles.md) 中的详细信息配置磁贴属性，然后单击 **应用** 保存更改。
+一个自定义视图只能有一个磁贴。  在“控件”窗格中选择“磁贴”选项卡，以查看当前磁贴或选择另一个磁贴。  “属性”窗格会显示当前磁贴的属性。  根据 [磁贴引用](log-analytics-view-designer-tiles.md) 中的详细信息配置磁贴属性，并单击 **应用** 保存更改。
 
 ### <a name="configure-visualization-parts"></a>配置可视化部件
-视图中可以包含任何数量的可视化部件。  选择“视图”选项卡，然后选择要添加到该视图中的可视化部件。  “属性”窗格会显示所选部件的属性。  根据 [可视化部件引用](log-analytics-view-designer-parts.md) 中的详细信息配置视图属性，然后单击“应用”保存更改。
+视图中可以包含任何数量的可视化部件。  选择“视图”选项卡，并选择要添加到该视图中的可视化部件。  “属性”窗格会显示所选部件的属性。  根据 [可视化部件引用](log-analytics-view-designer-parts.md) 中的详细信息配置视图属性，并单击“应用”保存更改。
 
 ### <a name="delete-a-visualization-part"></a>删除可视化部件
 可以通过以下方式从视图中删除可视化部件：单击该部件右上角的“X”按钮。
@@ -94,7 +97,6 @@ ms.lasthandoff: 03/09/2017
 视图只有一行可视化部件。  通过以下方式重新排列视图中的现有部件：单击这些部件并将其拖动到新位置。
 
 ## <a name="next-steps"></a>后续步骤
-* 将 [磁贴](log-analytics-view-designer-tiles.md) 添加到自定义视图。
+* 将“磁贴”[](log-analytics-view-designer-tiles.md)添加到自定义视图。
 * 将 [可视化部件](log-analytics-view-designer-parts.md) 添加到自定义视图。
-
 

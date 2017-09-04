@@ -12,22 +12,21 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: e6efa8c05c51b0438912738c3c5fcad4bc12b8f4
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 27ab2084cdb6506cbb807fc9c35b0e67630ad85f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/13/2017
-
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Application Insights 门户中的导航与仪表板
 [在项目中设置 Application Insights](app-insights-overview.md) 之后，有关应用性能和使用情况的遥测数据将出现在 [Azure 门户](https://portal.azure.com)中项目的 Application Insights 资源内。
 
 ## <a name="find-your-telemetry"></a>查找遥测数据
-登录到 [Azure 门户](https://portal.azure.com)，然后导航到为应用创建的 Application Insights 资源。
+登录到 [Azure 门户](https://portal.azure.com)，并导航到为应用创建的 Application Insights 资源。
 
-![单击“浏览”，选择“Application Insights”，然后选择你的应用。](./media/app-insights-dashboards/00-start.png)
+![单击“浏览”，选择“Application Insights”，然后选择应用。](./media/app-insights-dashboards/00-start.png)
 
 应用的概述边栏选项卡（页面）显示应用的关键诊断指标，它是访问其他门户功能所要通过的网关。
 
@@ -49,10 +48,10 @@ ms.lasthandoff: 04/13/2017
 ## <a name="add-to-a-dashboard"></a>添加到仪表板
 查看特别感兴趣的边栏选项卡或图表集时，可将其副本固定到仪表板。 下一次返回到该位置时，就能看到该副本。
 
-![若要固定某个图表，可将鼠标悬停在该图表上，然后单击标题中的“...”。](./media/app-insights-dashboards/33.png)
+![要固定某个图表，可将鼠标悬停在该图表上，并单击标题中的“...”。](./media/app-insights-dashboards/33.png)
 
-1. 将图表固定到仪表板。 图表的副本将显示在仪表板上。
-2. 将整个边栏选项卡固定到仪表板 - 该边栏选项卡将在仪表板上显示为可点击的磁贴。
+1. 将图表固定到仪表板。 图表的副本会显示在仪表板上。
+2. 将整个边栏选项卡固定到仪表板 - 该边栏选项卡会在仪表板上显示为可点击的磁贴。
 3. 单击左上角可返回到当前仪表板。 然后，可以使用下拉菜单返回到当前视图。
 
 请注意，图表分组成磁贴：一个磁贴可以包含多个图表。 可将整个磁贴固定到仪表板。
@@ -64,7 +63,7 @@ ms.lasthandoff: 04/13/2017
 * 时间范围为 24 小时以上：（时间范围）/60。
 
 ### <a name="pin-any-query-in-analytics"></a>固定 Analytics 中的任何查询
-还可以[将 Analytics 图表固定](app-insights-analytics-using.md#pin-to-dashboard)到[共享的](#share-dashboards-with-your-team)仪表板。 这样，便可以添加任意查询以及标准指标的图表。 （此功能收费。）
+还可以[将 Analytics 图表固定](app-insights-analytics-using.md#pin-to-dashboard)到[共享的](#share-dashboards-with-your-team)仪表板。 这样，便可以添加任意查询以及标准指标的图表。 
 
 每小时自动重新计算结果。 单击图表上的“刷新”图标可立即重新计算。 （刷新浏览器不会重新计算。）
 
@@ -85,7 +84,7 @@ ms.lasthandoff: 04/13/2017
 ## <a name="switch-between-dashboards"></a>切换仪表板
 可以保存多个仪表板并在它们之间切换。 固定图表或边栏选项卡时，它们将添加到当前仪表板。
 
-![若要在仪表板之间切换，请单击“仪表板”，然后选择某个已保存的仪表板。 若要创建并保存新仪表板，请单击“新建”。 若要重新排列，请单击“编辑”。](./media/app-insights-dashboards/32.png)
+![要在仪表板之间切换，请单击“仪表板”，并选择某个已保存的仪表板。 若要创建并保存新仪表板，请单击“新建”。 若要重新排列，请单击“编辑”。](./media/app-insights-dashboards/32.png)
 
 例如，可以使用一个仪表板在团队工作室中全屏显示信息，使用另一个仪表板用于普通开发工作。
 
@@ -110,7 +109,7 @@ ms.lasthandoff: 04/13/2017
 
 * [**指标资源管理器**](app-insights-metrics-explorer.md) - 创建自己的性能和使用情况图表。
 * [**搜索**](app-insights-diagnostic-search.md) - 调查特定事件的实例，例如请求、异常或日志跟踪。
-* [**Analytics**](app-insights-analytics.md) - 功能强大的遥测数据查询工具。
+* [**分析**](app-insights-analytics.md) - 功能强大的遥测数据查询工具。
 * **时间范围** - 调整边栏选项卡上所有图表显示的范围。
 * **删除** - 删除此应用的 Application Insights 资源。 还可以从应用代码中删除 Application Insights 包，或编辑应用中的[检测密钥](app-insights-create-new-resource.md#copy-the-instrumentation-key)，以便将遥测数据定向到不同的 Application Insights 资源。
 
@@ -130,7 +129,7 @@ ms.lasthandoff: 04/13/2017
 
 * [**应用程序地图**](app-insights-app-map.md) - 显示应用程序组件的活动地图，其内容派生自依赖关系信息。
 * [**智能检测**](app-insights-proactive-diagnostics.md) - 查看最近的性能警报。
-* [**实时流**](app-insights-live-stream.md) - 一组固定的近乎实时的指标，在部署新版本或调试时非常有用。
+* [**实时流**](app-insights-live-stream.md) - 一组固定的近乎实时的指标，在部署新的构建或调试时非常有用。
 * [**可用性/Web 测试**](app-insights-monitor-web-app-availability.md) - 从世界各地将常规请求发送到 Web 应用。*
 * [**故障、性能**](app-insights-web-monitor-performance.md) - 发往应用的请求以及从应用发往[依赖项](app-insights-asp-net-dependencies.md)的请求的异常、故障率和响应时间。
 * [**性能**](app-insights-web-monitor-performance.md) - 响应时间和依赖项响应时间。

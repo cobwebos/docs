@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e864e832b4c50644bf4062dee29d34ff9fe2774e
-
+ms.translationtype: HT
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 8f205188bd68e53b187b71981ed36dcf9129ec62
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="use-notification-hubs-to-send-localized-breaking-news"></a>使用通知中心发送本地化的突发新闻
@@ -28,7 +29,7 @@ ms.openlocfilehash: e864e832b4c50644bf4062dee29d34ff9fe2774e
 > 
 
 ## <a name="overview"></a>概述
-本主题介绍如何使用 Azure 通知中心的**模板**功能广播已按语言和设备本地化的突发新闻通知。 在本教程中，将从在[使用通知中心发送突发新闻]中创建的 Windows 应用商店应用开始操作。 完成时，你将可以注册感兴趣的突发新闻类别，指定要接收通知的语言并仅接收采用该语言的这些类别的推送通知。
+本主题介绍如何使用 Azure 通知中心的**模板**功能广播已按语言和设备本地化的突发新闻通知。 在本教程中，将从在[使用通知中心发送突发新闻]中创建的 Windows 应用商店应用开始操作。 完成时，将可以注册感兴趣的突发新闻类别，指定要接收通知的语言并仅接收采用该语言的这些类别的推送通知。
 
 此方案包含两个部分：
 
@@ -36,18 +37,18 @@ ms.openlocfilehash: e864e832b4c50644bf4062dee29d34ff9fe2774e
 * 后端使用 Azure 通知中心的**标记**和**模板**功能广播通知。
 
 ## <a name="prerequisites"></a>先决条件
-你必须已完成学习[使用通知中心发送突发新闻]教程并具有可用的代码，因为本教程直接围绕该代码展开论述。
+必须已完成学习[使用通知中心发送突发新闻]教程并具有可用的代码，因为本教程直接围绕该代码展开论述。
 
-你还需要 Visual Studio 2012 或更高版本。
+还需要 Visual Studio 2012 或更高版本。
 
 ## <a name="template-concepts"></a>模板概念
-在[使用通知中心发送突发新闻]中，你构建了一个使用**标记**订阅不同新闻类别通知的应用程序。
+在[使用通知中心发送突发新闻]中，构建了一个使用**标记**订阅不同新闻类别通知的应用程序。
 但是，很多应用程序针对多个市场，需要本地化。 这意味着通知内容本身必须本地化且传递到正确的设备组。
-在本主题中，我们将介绍如何使用通知中心的**模板**功能轻松传递本地化的突发新闻通知。
+在本主题中，我们介绍如何使用通知中心的**模板**功能轻松传递本地化的突发新闻通知。
 
 注意：发送本地化的通知的一种方式是创建每个标签的多个版本。 例如，要支持英语、法语和汉语，我们需要三种不同的标签用于世界新闻：“world_en”、“world_fr”和“world_ch”。 我们然后必须将世界新闻的本地化版本分别发送到这些标签。 在本主题中，我们使用模板来避免增生标签和发送多个消息的要求。
 
-在较高级别上，模板是指定特定设备应如何接收通知的一种方法。 模板通过引用作为你应用程序后端所发消息的一部分的属性，指定确切的负载格式。 在我们的示例中，我们将发送包含所有支持的语言的区域设置未知的消息：
+在较高级别上，模板是指定特定设备应如何接收通知的一种方法。 模板通过引用作为应用程序后端所发消息的一部分的属性，指定确切的负载格式。 在我们的示例中，我们将发送包含所有支持的语言的区域设置未知的消息：
 
     {
         "News_English": "...",
@@ -67,7 +68,7 @@ ms.openlocfilehash: e864e832b4c50644bf4062dee29d34ff9fe2774e
 
 
 
-模板是很强大的功能，你可以在[模板](notification-hubs-templates-cross-platform-push-messages.md)一文中了解其更多信息。 
+模板是很强大的功能，可以在[模板](notification-hubs-templates-cross-platform-push-messages.md)一文中了解其更多信息。 
 
 ## <a name="the-app-user-interface"></a>应用程序用户界面
 我们现在修改在[使用通知中心发送突发新闻]主题中创建的“突发新闻”应用，以使用模板发送本地化的突发新闻。
@@ -141,7 +142,7 @@ ms.openlocfilehash: e864e832b4c50644bf4062dee29d34ff9fe2774e
             var locale = (string) ApplicationData.Current.LocalSettings.Values["locale"];
             return locale != null ? locale : "English";
         }
-3. 在你的 MainPage.xaml.cs 中，通过检索“区域设置”组合框的当前值并将它提供给对 Notifications 类的调用，更新按钮单击处理程序，如下所示：
+3. 在 MainPage.xaml.cs 中，通过检索“区域设置”组合框的当前值并将它提供给对 Notifications 类的调用，更新按钮单击处理程序，如下所示：
    
         private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -182,38 +183,33 @@ ms.openlocfilehash: e864e832b4c50644bf4062dee29d34ff9fe2774e
 [!INCLUDE [notification-hubs-localized-back-end](../../includes/notification-hubs-localized-back-end.md)]
 
 <!-- Anchors. -->
-[模板概念]: #concepts
-[应用程序用户界面]: #ui
-[构建 Windows 应用商店客户端应用程序]: #building-client
-[从后端发送通知]: #send
-[后续步骤]:#next-steps
+[Template concepts]: #concepts
+[The app user interface]: #ui
+[Building the Windows Store client app]: #building-client
+[Send notifications from your back-end]: #send
+[Next Steps]:#next-steps
 
 <!-- Images. -->
 
 <!-- URLs. -->
-[移动服务]: /develop/mobile/tutorials/get-started
-[使用通知中心通知用户：ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
-[使用通知中心通知用户：移动服务]: /manage/services/notification-hubs/notify-users
-[使用通知中心发送突发新闻]: /manage/services/notification-hubs/breaking-news-dotnet
+[Mobile Service]: /develop/mobile/tutorials/get-started
+[Notify users with Notification Hubs: ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
+[Notify users with Notification Hubs: Mobile Services]: /manage/services/notification-hubs/notify-users
+[使用通知中心发送突发新闻]: /notification-hubs/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns
 
-[提交应用页]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[我的应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[移动服务入门]: /develop/mobile/tutorials/get-started/#create-new-service
-[数据处理入门]: /develop/mobile/tutorials/get-started-with-data-dotnet
-[身份验证入门]: /develop/mobile/tutorials/get-started-with-users-dotnet
-[推送通知入门]: /develop/mobile/tutorials/get-started-with-push-dotnet
-[向应用用户推送通知]: /develop/mobile/tutorials/push-notifications-to-app-users-dotnet
-[使用脚本为用户授权]: /develop/mobile/tutorials/authorize-users-in-scripts-dotnet
-[JavaScript 和 HTML]: /develop/mobile/tutorials/get-started-with-push-js
+[Get started with Mobile Services]: /develop/mobile/tutorials/get-started/#create-new-service
+[Get started with data]: /develop/mobile/tutorials/get-started-with-data-dotnet
+[Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-dotnet
+[Get started with push notifications]: /develop/mobile/tutorials/get-started-with-push-dotnet
+[Push notifications to app users]: /develop/mobile/tutorials/push-notifications-to-app-users-dotnet
+[Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-dotnet
+[JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 
-[wns 对象]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[通知中心指南]: http://msdn.microsoft.com/library/jj927170.aspx
-[适用于 iOS 的通知中心操作方法指南]: http://msdn.microsoft.com/library/jj927168.aspx
-[针对 Windows 应用商店的通知中心操作指南]: http://msdn.microsoft.com/library/jj927172.aspx
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
+[Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
 

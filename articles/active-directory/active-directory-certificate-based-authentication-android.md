@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/28/2017
+ms.date: 08/28/2017
 ms.author: markvi
 ms.reviewer: nigu
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: d37f0fcf4c91879c31b04dfd19cadee00e98ba91
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 239d2e1724f2759a52cccdac11fc781d57393125
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android 上 Azure Active Directory 基于证书的身份验证
@@ -41,15 +41,15 @@ ms.lasthandoff: 07/28/2017
 ## <a name="office-mobile-applications-support"></a>Office 移动应用程序支持
 | 应用 | 支持 |
 | --- | --- |
-| Word/Excel/PowerPoint |![勾选标记][1] |
+| Azure 信息保护应用 |![勾选标记][1] |
+| Microsoft Teams |![勾选标记][1] |
 | OneNote |![勾选标记][1] |
 | OneDrive |![勾选标记][1] |
 | Outlook |![勾选标记][1] |
-| Yammer |![勾选标记][1] |
+| Power BI |![勾选标记][1] |
 | Skype for Business |![勾选标记][1] |
-| Azure 信息保护应用 |![勾选标记][1] |
-| Microsoft Teams |![勾选标记][1] |
-
+| Word/Excel/PowerPoint |![勾选标记][1] |
+| Yammer |![勾选标记][1] |
 
 
 ### <a name="implementation-requirements"></a>实现要求

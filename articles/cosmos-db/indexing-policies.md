@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 08/17/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 2c03b498b1530388a48db4d2925debc2e03e30aa
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 30a21645831f0cfcb3b52c797dbddfa6b5283960
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Azure Cosmos DB 如何编制数据索引？
@@ -77,8 +77,6 @@ Azure Cosmos DB 支持三种索引模式，可通过索引策略对 Azure Cosmos
 > 将索引策略配置为“无”时，删除任何现有索引会产生不良影响。 如果访问模式只需要 ID 和/或“自助链接”，请使用此选项。
 > 
 > 
-
-下面的示例演示如何使用 .NET SDK 借助针对所有文档插入的一致自动索引创建 Azure Cosmos DB 集合。
 
 下表显示了根据为集合配置的索引模式（一致和延迟）和为查询请求指定的一致性级别进行查询的一致性。 这适用于使用任何接口（REST API、SDK 或在存储过程和触发器中）进行的查询。 
 

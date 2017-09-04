@@ -4,7 +4,7 @@ description: "了解如何使用流分析进行实时 Twitter 情绪分析。 �
 keywords: "实时 twitter 趋势分析、情绪分析、社交媒体分析、趋势分析示例"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 42068691-074b-4c3b-a527-acafa484fda2
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 67951a5afbd0dcdda327abf4a88bb9f169f4134f
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 98230a8b61d1776a9ab23fd416af306efc700959
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 
@@ -190,7 +190,7 @@ ms.lasthandoff: 07/06/2017
  
 4. 如果尚未启动应用程序，请立即运行 TwitterWpfClient.exe。 
 
-5. 单击绿色启动按钮，以收集社交情绪。 你将看到具有 **CreatedAt**、**Topic** 和 **SentimentScore** 值的推文事件，其中这些值已发送至事件中心。
+5. 单击绿色启动按钮，以收集社交情绪。 会看到具有 **CreatedAt**、**Topic** 和 **SentimentScore** 值的推文事件，其中这些值已发送至事件中心。
 
     ![正在运行的 TwitterWpfClient 应用程序，其中显示推文列表](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-app-listing.png)
 
@@ -225,7 +225,7 @@ ms.lasthandoff: 07/06/2017
     * 源类型：选择“数据流”。
     * 源：选择“事件中心”。
     * 导入选项：选择“从当前订阅使用事件中心”。 
-    * 服务总线命名空间：选择之前创建的事件中心命名空间 (`<yourname>-socialtwitter-eh-ns`)。
+    * 服务总线命名空间：选择之前创建的事件中心命名空间 (`<yourname>-socialtwitter-eh-ns`)
     * 事件中心：选择之前创建的事件中心 (`socialtwitter-eh`)。
     * 事件中心策略名称：选择之前创建的访问策略 (`socialtwitter-access`)。
 
@@ -236,7 +236,7 @@ ms.lasthandoff: 07/06/2017
 
 ## <a name="specify-the-job-query"></a>指定作业查询
 
-流分析支持简单的声明性查询模型，该模型用于描述转换。 若要了解有关语言的详细信息，请参阅 [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)。  本教程将帮助你创作和测试多个针对 Twitter 数据的查询。
+流分析支持简单的声明性查询模型，该模型用于描述转换。 若要了解有关语言的详细信息，请参阅 [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)。  本教程会帮助你创作和测试多个针对 Twitter 数据的查询。
 
 若要比较各个主题的提及次数，可使用[翻转窗口](https://msdn.microsoft.com/library/azure/dn835055.aspx)每五秒按主题获取提及次数。
 
@@ -270,7 +270,7 @@ ms.lasthandoff: 07/06/2017
 
     如果未将 `TwitterStream` 用作输入的别名，请在查询中将别名替换为 `TwitterStream`。  
 
-    此查询使用 **TIMESTAMP BY** 关键字指定在临时计算中使用的有效负载的时间戳字段。 如果未指定此字段，将根据每个事件到达事件中心的时间执行窗口化操作。 通过 [Stream Analytics Query Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx)（流分析查询参考）的“Arrival Time vs Application Time”（到达时间与应用程序时间比较）部分了解详细信息。
+    此查询使用 **TIMESTAMP BY** 关键字指定在临时计算中使用的有效负载的时间戳字段。 如果未指定此字段，会根据每个事件到达事件中心的时间执行窗口化操作。 通过 [Stream Analytics Query Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx)（流分析查询参考）的“Arrival Time vs Application Time”（到达时间与应用程序时间比较）部分了解详细信息。
 
     此查询还可以通过使用 **System.Timestamp** 属性访问每个窗口结束时的时间戳。
 
@@ -377,7 +377,7 @@ ms.lasthandoff: 07/06/2017
 
 
 ## <a name="get-support"></a>获取支持
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

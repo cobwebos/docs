@@ -12,21 +12,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 07/13/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 90706434eb78009bc56fc390cfa5a30e53827c19
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: fc9c9b0a6292dab256997a86a6db16367fc48cd3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="log-analytics-search-reference"></a>Log Analytics 搜索参考
-以下有关搜索语言的参考部分将介绍常规查询语法选项，可用于搜索数据和筛选表达式，以帮助缩小搜索范围。 另外还介绍了可用于对检索到的数据执行操作的命令。
 
-在[搜索字段和分面参考部分](#search-field-and-facet-reference)，可以了解在搜索中返回的字段，以及可以帮助你深入了解类似数据类别的分面。
+>[!NOTE]
+> 本文介绍 Log Analytics 中使用当前查询语言的日志搜索。  如果工作区已升级到[新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则应参考[新语言的语言参考](https://go.microsoft.com/fwlink/?linkid=856079)。
+
+以下有关搜索语言的参考部分介绍常规查询语法选项，可用于搜索数据和筛选表达式，以帮助缩小搜索范围。 另外还介绍了可用于对检索到的数据执行操作的命令。
+
+在[搜索字段和 Facet 参考部分](#search-field-and-facet-reference)，可以了解在搜索中返回的字段，以及可以帮助深入了解类似数据类别的 Facet。
 
 ## <a name="general-query-syntax"></a>常规查询语法
 常规查询的语法如下：
@@ -61,7 +64,7 @@ system error
 system error | sort ManagementGroupName, TimeGenerated desc | top 10
 ```
 
-此查询将返回包含单词 *system* 和 *error* 的结果。 然后，依次按照 *ManagementGroupName* 字段（升序）和 *TimeGenerated* 字段（降序）对结果进行排序。 并且，此查询仅获取前 10 个结果。
+此查询将返回包含单词 *system* 和 *error* 的结果。 然后，依次按照 ManagementGroupName 字段（升序）和 TimeGenerated 字段（降序）对结果进行排序。 并且，此查询仅获取前 10 个结果。
 
 > [!IMPORTANT]
 > 字符串和文本字段的所有字段名称和值都区分大小写。
@@ -80,13 +83,13 @@ system error | sort ManagementGroupName, TimeGenerated desc | top 10
 These all are string literals
 ```
 
-此查询将搜索包含出现所有这五个单词的结果。 若要执行复杂的字符串搜索，请将字符串文本用引号引起来。 例如：
+此查询将搜索包含出现所有这五个单词的结果。 要执行复杂的字符串搜索，请将字符串文本用引号引起来。 例如：
 
 ```
 "Windows Server"
 ```
 
-这将仅返回包含 *Windows Server* 的完全匹配项的结果。
+这会仅返回包含 *Windows Server* 的完全匹配项的结果。
 
 ### <a name="numbers"></a>数字
 对于数字字段，分析器支持十进制整数和浮点数语法。
@@ -104,7 +107,7 @@ HTTP 500
 ### <a name="dates-and-times"></a>日期和时间
 系统中的每个数据段都具有 *TimeGenerated* 属性，用于表示记录的原始日期和时间。 某些类型的数据可能包含更多日期和时间字段（例如 *LastModified*）。
 
-Log Analytics 中的时间线**图表/时间**选择器显示一段时间内的结果分布（根据正在运行的当前查询）。 此结果基于 *TimeGenerated* 字段。 日期和时间字段具有特定的字符串格式，可在查询中用于将查询限制为特定的时间范围。 你也可以使用语法来指代相对时间间隔（例如，“between 3 days ago and 2 hours ago”）。
+Log Analytics 中的时间线**图表/时间**选择器显示一段时间内的结果分布（根据正在运行的当前查询）。 此结果基于 *TimeGenerated* 字段。 日期和时间字段具有特定的字符串格式，可在查询中用于将查询限制为特定的时间范围。 也可以使用语法来指代相对时间间隔（例如，“between 3 days ago and 2 hours ago”）。
 
 下面是日期和时间语法的有效形式：
 
@@ -143,7 +146,7 @@ TimeGenerated:2013-10-01T12:20
 
 现在，分析器还支持助记日期/时间值。 （这可能也不会产生任何结果，因为数据不能如此快的通过系统传递。）
 
-这些示例都是用于相对和绝对日期的基本构件。 后续三个部分将以使用相对日期范围为例讲解如何在更高级的筛选器中使用这些字段。
+这些示例都是用于相对和绝对日期的基本构件。 后续三个部分以使用相对日期范围为例讲解如何在更高级的筛选器中使用这些字段。
 
 ### <a name="datetime-math"></a>日期/时间数学运算符
 通过简单的日期/时间计算，使用日期/时间数学运算符来偏移或取整日期/时间值。
@@ -345,7 +348,7 @@ system OR error
 Type:Alert AND NOT(Severity:1 OR ObjectId:"8066bbc0-9ec8-ca83-1edc-6f30d4779bcb8066bbc0-9ec8-ca83-1edc-6f30d4779bcb")
 ```
 
-可以省略顶级筛选器参数的逻辑运算符。 在这种情况下，将采用 AND 运算符。
+可以省略顶级筛选器参数的逻辑运算符。 在这种情况下，则会采用 AND 运算符。
 
 | 筛选器表达式 | 等效于 |
 | --- | --- |
@@ -382,7 +385,7 @@ Type=Event Computer=*SQL*
 
     sort field1 asc|desc, field2 asc|desc, …
 
-按特定字段对结果进行排序。 用于按升序或降序对结果排序的 asc/desc 后缀是可选的。 如果省略后缀，则采用 *asc* 排列顺序。 对于 **TimeGenerated** 字段，将采用 *desc* 排序顺序，因此默认首先返回最新结果。
+按特定字段对结果进行排序。 用于按升序或降序对结果排序的 asc/desc 后缀是可选的。 如果省略后缀，则采用 *asc* 排列顺序。 对于 **TimeGenerated** 字段，则会采用 *desc* 排序顺序，因此默认首先返回最新结果。
 
 ### <a name="toplimit"></a>Top/Limit
 语法：
@@ -745,7 +748,7 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | Ex
 | exp |返回上升到 x 次幂的欧拉数。 |`exp(x)` |
 | floor |向下取整为整数。 |`floor(x)`  <br> `floor(5.6)` 返回 5 |
 | hypo |返回没有中间上溢或下溢的 sqrt(sum(pow(x,2),pow(y,2)))。 |`hypo(x,y)`  <br> ` |
-| if |启用条件函数查询。 在 `if(test,value1,value2)` 中，test 是或是指一个逻辑值或返回逻辑值（TRUE 或 FALSE）的表达式。 test 产生的值为 TRUE 时，`value1` 是函数返回的值。 test 产生的值为 FALSE 时，`value2` 是函数返回的值。 表达式可以是输出布尔值的任何函数。 它也可以是返回数字值的函数，值为 0 时将解释为 false 或字符串，值为空字符串时解释为 false。 |`if(termfreq(cat,'electronics'),popularity,42)` 此函数检查每个文档以查看它是否在 cat 字段中包含术语“electronics”。 如果包含，则返回 popularity 字段的值。 否则返回值 42。 |
+| if |启用条件函数查询。 在 `if(test,value1,value2)` 中，test 是或是指一个逻辑值或返回逻辑值（TRUE 或 FALSE）的表达式。 test 产生的值为 TRUE 时，`value1` 是函数返回的值。 test 产生的值为 FALSE 时，`value2` 是函数返回的值。 表达式可以是输出布尔值的任何函数。 它也可以是返回数字值的函数，值为 0 时会解释为 false 或字符串，值为空字符串时解释为 false。 |`if(termfreq(cat,'electronics'),popularity,42)` 此函数检查每个文档以查看它是否在 cat 字段中包含术语“electronics”。 如果包含，则返回 popularity 字段的值。 否则返回值 42。 |
 | linear |实现 `m*x+c`，其中 m 和 c 是常量，x 是一个任意函数。 这等效于 `sum(product(m,x),c)`，但更为有效，因为它是作为单个函数实现的。 |`linear(x,m,c) linear(x,2,4)` 返回 `2*x+4` |
 | ln |返回指定函数的自然对数。 |`ln(x)` |
 | log |返回指定函数的底数为 10 的对数。 |`log(x)   log(sum(x,100))` |
@@ -773,7 +776,7 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | Ex
 | tanh |返回角的双曲正切值。 |`tanh(x)` |
 
 ## <a name="search-field-and-facet-reference"></a>搜索字段和方面参考
-使用日志搜索查找数据时，结果将显示各个字段和方面。 看到的一些信息可能不会显得非常具体。 可以使用以下信息帮助了解结果。
+使用日志搜索查找数据时，结果会显示各个字段和方面。 看到的一些信息可能不会显得非常具体。 可以使用以下信息帮助了解结果。
 
 | 字段 | 搜索类型 | 说明 |
 | --- | --- | --- |
