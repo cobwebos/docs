@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7f074883c2330c5814eef415f193e1775caec432
 ms.openlocfilehash: 0df4fca59575bd8e18e91fea2066a9e694ed320d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -70,7 +72,7 @@ ms.openlocfilehash: 0df4fca59575bd8e18e91fea2066a9e694ed320d
 | [修正 OS 漏洞](security-center-remediate-os-vulnerabilities.md) |建议 OS 配置匹配推荐的配置规则，例如不允许保存密码。 |
 | [应用系统更新](security-center-apply-system-updates.md) |建议在 VM 上部署缺少的系统安全和重要更新。 |
 | [在系统更新后重启](security-center-apply-system-updates.md#reboot-after-system-updates) |建议重启 VM 以完成应用系统更新的过程。 |
-| [启用 VM 代理](security-center-enable-vm-agent.md) |使你能够查看需要 VM 代理的 VM。 若要设置修补程序扫描、基线扫描以及反恶意程序，则必须在 VM 上安装 VM 代理。 对于从 Azure 应用商店部署的 VM，默认安装 VM 代理。 文章 [VM 代理和扩展 - 第 2 部分](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)提供有关如何安装 VM 代理的信息。 |
+| [启用 VM 代理](security-center-enable-vm-agent.md) |使你能够查看需要 VM 代理的 VM。 若要设置修补程序扫描、基线扫描以及反恶意程序，则必须在 VM 上安装 VM 代理。 对于从 Azure Marketplace 部署的 VM，默认安装 VM 代理。 文章 [VM 代理和扩展 - 第 2 部分](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)提供有关如何安装 VM 代理的信息。 |
 | [应用磁盘加密](security-center-apply-disk-encryption.md) |建议使用 Azure 磁盘加密（Windows 和 Linux VM）对 VM 磁盘进行加密。 对于 VM 上的 OS 和数据卷，建议使用加密。 |
 
 
@@ -106,10 +108,5 @@ ms.openlocfilehash: 0df4fca59575bd8e18e91fea2066a9e694ed320d
 * [在 Azure 安全中心中设置安全策略](security-center-policies.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。
 * [Azure 安全中心常见问题](security-center-faq.md) - 查找有关使用服务的常见问题。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 
