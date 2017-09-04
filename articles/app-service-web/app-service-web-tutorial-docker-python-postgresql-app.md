@@ -111,7 +111,7 @@ INFO  [alembic.runtime.migration] Running upgrade  -> 791cd7d80402, empty messag
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
 
-在浏览器中导航至 http://127.0.0.1:5000。 单击“注册!” 创建一个测试用户。
+在浏览器中导航至 http://127.0.0.1:5000 。 单击“注册!” 创建一个测试用户。
 
 ![在本地运行的 Python Flask 应用程序](./media/app-service-web-tutorial-docker-python-postgresql-app/local-app.png)
 
@@ -245,7 +245,7 @@ INFO  [alembic.runtime.migration] Running upgrade  -> 791cd7d80402, empty messag
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
 
-在浏览器中导航至 http://127.0.0.1:5000。 单击“注册!” 并创建测试注册。 现在，正将数据写入 Azure 中的数据库。
+在浏览器中导航至 http://127.0.0.1:5000 。 单击“注册!” 并创建测试注册。 现在，正将数据写入 Azure 中的数据库。
 
 ![在本地运行的 Python Flask 应用程序](./media/app-service-web-tutorial-docker-python-postgresql-app/local-app.png)
 

@@ -26,7 +26,7 @@ ms.lasthandoff: 05/09/2017
 
 # <a name="create-a-custom-image-of-an-azure-vm-using-powershell"></a>使用 PowerShell 创建 Azure VM 的自定义映像
 
-自定义映像类似于应用商店映像，不同的是自定义映像的创建者是你自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 在本教程中，将创建自己的 Azure 虚拟机自定义映像。 你将学习如何：
+自定义映像类似于 Marketplace 映像，不同的是自定义映像的创建者是你自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 在本教程中，将创建自己的 Azure 虚拟机自定义映像。 你将学习如何：
 
 > [!div class="checklist"]
 > * 使用 Sysprep 通用化 VM
@@ -100,7 +100,7 @@ New-AzureRmImage -Image $image -ImageName myImage -ResourceGroupName myResourceG
  
 ## <a name="create-vms-from-the-image"></a>从映像创建 VM
 
-在已有映像之后，可以从该映像创建一个或多个新 VM。 从自定义映像创建 VM 与使用应用商店映像创建 VM 非常相似。 如果使用应用商店映像，需提供有关映像、映像提供程序、产品/服务、SKU 和版本的信息。 如果使用自定义映像，则仅需提供自定义映像资源的 ID。 
+在已有映像之后，可以从该映像创建一个或多个新 VM。 从自定义映像创建 VM 与使用 Marketplace 映像创建 VM 非常相似。 如果使用 Marketplace 映像，需提供有关映像、映像提供程序、产品/服务、SKU 和版本的信息。 如果使用自定义映像，则仅需提供自定义映像资源的 ID。 
 
 在下列脚本中，我们创建了一个 $image 变量，用于存储使用 [Get-AzureRmImage](/powershell/module/azurerm.compute/get-azurermimage) 的自定义映像的信息，然后使用 [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage)，并通过刚创建的 $image 变量指定 ID。 
 

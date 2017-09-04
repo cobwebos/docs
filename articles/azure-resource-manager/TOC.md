@@ -81,8 +81,8 @@
 ## 使用托管应用程序
 ### [发布服务目录应用程序](managed-application-publishing.md)
 ### [使用服务目录应用程序](managed-application-consumption.md)
-### [发布应用商店应用程序](managed-application-author-marketplace.md)
-### [使用应用商店应用程序](managed-application-consume-marketplace.md)
+### [发布 Marketplace 应用程序](managed-application-author-marketplace.md)
+### [使用 Marketplace 应用程序](managed-application-consume-marketplace.md)
 ### [创建 UI 定义](managed-application-createuidefinition-overview.md)
 
 ## 审核

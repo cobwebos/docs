@@ -1,6 +1,6 @@
 ---
 title: "了解 Azure 外部服务收费 | Microsoft Docs"
-description: "了解 Azure 中外部服务（以前称为应用商店）的计费。"
+description: "了解 Azure 中外部服务（以前称为 Marketplace）的计费。"
 services: 
 documentationcenter: 
 author: adpick
@@ -24,11 +24,11 @@ ms.lasthandoff: 03/03/2017
 
 ---
 # <a name="understand-your-azure-billing-for-external-service-charges"></a>了解外部服务收费的 Azure 计费
-外部服务过去称为 Azure 应用商店。 通常情况下，它们是第三方发布的适用于 Azure 的服务，这些服务完全集成在 Azure 中。 例如，ClearDB 和 SendGrid 是可以在 Azure 中购买的外部服务，但不是 Microsoft 发布的。
+外部服务过去称为 Azure Marketplace。 通常情况下，它们是第三方发布的适用于 Azure 的服务，这些服务完全集成在 Azure 中。 例如，ClearDB 和 SendGrid 是可以在 Azure 中购买的外部服务，但不是 Microsoft 发布的。
 
 预配新的外部服务或资源时，会显示警告：
 
-![应用商店购买警告](./media/billing-understand-your-azure-marketplace-charges/marketplace-warning.PNG)
+![Marketplace 购买警告](./media/billing-understand-your-azure-marketplace-charges/marketplace-warning.PNG)
 
 > [!NOTE]
 > 外部服务是 Microsoft 以外的公司发布的，但有时候，Microsoft 产品也会被归类为外部服务。
@@ -59,7 +59,7 @@ ms.lasthandoff: 03/03/2017
     ![查看外部服务帐单](./media/billing-understand-your-azure-marketplace-charges/billing-overview-blade.png)
 
 ## <a name="view-external-service-spending-for-enterprise-agreement-ea-customers"></a>查看针对企业协议 (EA) 客户的外部服务支出
-EA 客户可以在 EA 门户中查看外部服务支出和下载报表。 若要开始使用，请参阅[适用于 EA 客户的 Azure 应用商店](https://ea.azure.com/helpdocs/azureMarketplace)。
+EA 客户可以在 EA 门户中查看外部服务支出和下载报表。 若要开始使用，请参阅[适用于 EA 客户的 Azure Marketplace](https://ea.azure.com/helpdocs/azureMarketplace)。
 
 ## <a name="manage-payment-methods-for-external-service-orders"></a>管理外部服务订单的付款方式
 在[帐户中心](https://account.windowsazure.com/)更新外部服务订单的付款方式。
@@ -69,9 +69,9 @@ EA 客户可以在 EA 门户中查看外部服务支出和下载报表。 若要
 > 
 > 
 
-1. 登录到[帐户中心](https://account.windowsazure.com/)，[导航到**应用商店**边栏选项卡](https://account.windowsazure.com/Store)
+1. 登录到[帐户中心](https://account.windowsazure.com/)，[导航到 **Marketplace** 边栏选项卡](https://account.windowsazure.com/Store)
    
-    ![在帐户中心选择“应用商店”](./media/billing-understand-your-azure-marketplace-charges/select-marketplace.png)
+    ![在帐户中心选择“Marketplace”](./media/billing-understand-your-azure-marketplace-charges/select-marketplace.png)
 2. 选择要管理的外部服务
    
     ![选择要管理的外部服务](./media/billing-understand-your-azure-marketplace-charges/select-ext-service.png)

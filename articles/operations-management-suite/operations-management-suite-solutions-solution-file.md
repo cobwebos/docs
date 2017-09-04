@@ -55,7 +55,7 @@ Operations Management Suite (OMS) 中的管理解决方案作为 [Resource Manag
 ## <a name="parameters"></a>parameters
 [parameters](../azure-resource-manager/resource-group-authoring-templates.md#parameters) 是你在用户安装管理解决方案时从用户请求的值。  存在所有解决方案均具有的标准参数，你也可以根据特定解决方案的需要添加其他参数。  用户安装解决方案时提供参数值的方式取决于特定参数和解决方案安装方式。
 
-用户通过 [Azure 应用商店](operations-management-suite-solutions.md#finding-and-installing-management-solutions)或 [Azure 快速入门模板](operations-management-suite-solutions.md#finding-and-installing-management-solutions) 安装管理解决方案时，系统会提示他们选择 [OMS 工作区和自动管理帐户](operations-management-suite-solutions.md#oms-workspace-and-automation-account)。  这些用于填充每个标准参数的值。  系统不提示用户直接提供标准参数的值，但会提示他们提供任何其他参数的值。
+用户通过 [Azure Marketplace](operations-management-suite-solutions.md#finding-and-installing-management-solutions) 或 [Azure 快速入门模板](operations-management-suite-solutions.md#finding-and-installing-management-solutions) 安装管理解决方案时，系统会提示他们选择 [OMS 工作区和自动管理帐户](operations-management-suite-solutions.md#oms-workspace-and-automation-account)。  这些用于填充每个标准参数的值。  系统不提示用户直接提供标准参数的值，但会提示他们提供任何其他参数的值。
 
 用户安装解决方案[另一种方法](operations-management-suite-solutions.md#finding-and-installing-management-solutions)时，必须为所有标准参数和所有其他参数提供一个值。
 
@@ -79,10 +79,10 @@ Operations Management Suite (OMS) 中的管理解决方案作为 [Resource Manag
 | description |参数的可选说明。  显示在参数旁边信息气球。 |
 
 ### <a name="standard-parameters"></a>标准参数
-下表列出了所有管理解决方案的标准参数。  从 Azure 应用商店或快速入门模板安装解决方案时，这些值用于为用户进行填充而不是提示他们。  如果使用其他方法安装解决方案，则用户必须为其提供值。
+下表列出了所有管理解决方案的标准参数。  从 Azure Marketplace 或快速入门模板安装解决方案时，这些值用于为用户进行填充而不是提示他们。  如果使用其他方法安装解决方案，则用户必须为其提供值。
 
 > [!NOTE]
-> Azure 应用商店和快速入门模板中的用户界面正在等待表中的参数名称。  如果使用不同的参数名称，则将对用户进行提示，这些参数不会自动填充。
+> Azure Marketplace 和快速入门模板中的用户界面正在等待表中的参数名称。  如果使用不同的参数名称，则将对用户进行提示，这些参数不会自动填充。
 >
 >
 

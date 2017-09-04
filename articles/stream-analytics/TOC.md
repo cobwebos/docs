@@ -66,7 +66,7 @@
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [博客](http://blogs.msdn.com/b/streamanalytics/)
 ## [反馈论坛](http://feedback.azure.com/forums/270577-azure-stream-analytics)
-## [论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+## [论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 ## [定价](https://azure.microsoft.com/pricing/details/stream-analytics/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [发行说明](stream-analytics-release-notes.md)

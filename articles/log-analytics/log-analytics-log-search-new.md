@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/25/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 07f8189d1380f5956db8614e82b8b704b152fb26
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 0f27db7018e398f71a8d7bd0b86e643367b15875
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="understanding-log-searches-in-log-analytics"></a>了解 Log Analytics 中的日志搜索
@@ -33,7 +33,7 @@ ms.lasthandoff: 07/28/2017
 
 在 Log Analytics 中使用日志搜索的方式包括以下几种：
 
-- **门户。** 可使用[日志搜索门户](log-analytics-log-search-log-search-portal.md)或[高级分析门户](https://docs.loganalytics.io/learn/tutorial_getting_started_with_analytics_portal.html)在存储库中执行交互式数据分析。  这样便可采用各种格式和可视化效果编辑查询并分析结果。  创建的大多数查询会在其中一个门户中启动，然后在用户已验证查询按预期工作后，查询将被复制。
+- **门户。** 可使用[日志搜索门户](log-analytics-log-search-log-search-portal.md)或[高级分析门户](https://go.microsoft.com/fwlink/?linkid=856587)在存储库中执行交互式数据分析。  这样便可采用各种格式和可视化效果编辑查询并分析结果。  创建的大多数查询会在其中一个门户中启动，然后在用户已验证查询按预期工作后，查询将被复制。
 - **警报规则。** [警报规则](log-analytics-alerts.md)主动识别工作区中数据的问题。  每个警报规则均基于定期自动运行的日志搜索。  对结果进行检查，确定是否应创建警报。
 - **视图。**  可以使用[视图设计器](log-analytics-view-designer.md)创建要包含在用户仪表板中的数据的可视化效果。  日志搜索提供每个视图中[磁贴](log-analytics-view-designer-tiles.md)和[可视化部件](log-analytics-view-designer-parts.md)使用的数据。  可以从可视化部件向下钻取到日志搜索门户，对数据执行进一步的分析。
 - **导出。**  将数据从 Log Analytics 工作区导出到 Excel 或 [Power BI](log-analytics-powerbi.md) 中时，创建日志搜索以定义要导出的数据。
@@ -83,5 +83,5 @@ Log Analytics 中日志搜索的核心是[扩展的查询语言](https://docs.lo
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[用于创建并编辑日志搜索的门户](log-analytics-log-search-portals.md)。
-- 查看使用新查询语言的[查询编写教程](https://docs.loganalytics.io/learn/tutorial_getting_started_with_queries.html)。
+- 查看使用新查询语言的[查询编写教程](https://go.microsoft.com/fwlink/?linkid=856078)。
 

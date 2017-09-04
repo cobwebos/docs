@@ -1,6 +1,6 @@
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure 流分析入门：实时检测欺诈行为
 
-本教程提供有关如何使用 Azure 流分析的端到端说明。 你将学习如何： 
+本教程提供有关如何使用 Azure 流分析的端到端说明。 学习如何： 
 
 * 将流事件引入 Azure 事件中心实例。 本教程将使用提供的一个应用来模拟移动电话元数据记录流。
 
@@ -383,7 +383,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 
 ## <a name="get-support"></a>获取支持
 
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 
