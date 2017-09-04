@@ -77,7 +77,7 @@ Log Analytics 中的视图用于可视化 Log Analytics 存储库中的数据。
 完成解决方案并进行测试以后，即可通过以下某种方式将其提供给客户。
 
 - **Azure 快速入门模板**。  [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)是一套 Resource Manager 模板，由社区通过 GitHub 提供。  你可以按[贡献指南](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)中的说明提供解决方案。
-- **Azure 应用商店**。  可以通过 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/)将解决方案分发和销售给其他开发人员、ISV 和 IT 专业人员。  若要了解如何将解决方案发布到 Azure 应用商店，可参阅[如何在 Azure 应用商店中发布和管理产品/服务](../marketplace-publishing/marketplace-publishing-getting-started.md)。
+- **Azure Marketplace**。  可以通过 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) 将解决方案分发和销售给其他开发人员、ISV 和 IT 专业人员。  若要了解如何将解决方案发布到 Azure Marketplace，可参阅[如何在 Azure Marketplace 中发布和管理产品/服务](../marketplace-publishing/marketplace-publishing-getting-started.md)。
 
 
 

@@ -15,14 +15,14 @@
 #### [SKU 表单](./cloud-partner-portal-publish-virtual-machine.md#how-to-create-skus)
 ##### [定价](./cloud-partner-portal-publish-virtual-machine.md#pricing)
 ##### [VM 映像](cloud-partner-portal-publish-virtual-machine.md#vm-images)
-#### [应用商店表单](./cloud-partner-portal-publish-virtual-machine.md#marketplace-form)
+#### [Marketplace 表单](./cloud-partner-portal-publish-virtual-machine.md#marketplace-form)
 #### [支持表单](cloud-partner-portal-publish-virtual-machine.md#support-form)
 ### [发布 VM 产品/服务](./Cloud-partner-portal-make-offer-live-on-Azure-Marketplace.md)
 
 ### [更新现有产品/服务](./cloud-partner-portal-update-existing-offer.md)
 ### [删除 VM 产品/服务/SKU](./cloud-partner-portal-delete-an-offer.md)
 ### [迁移到云合作伙伴门户](./cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
-## [Azure 应用商店卖家指南](./cloud-partner-portal-seller-guide.md)
+## [Azure Marketplace 卖家指南](./cloud-partner-portal-seller-guide.md)
 
 ## [获取潜在客户](./cloud-partner-portal-get-customer-leads.md)
 ### [Azure 表](./cloud-partner-portal-lead-management-instructions-azure-table.md)

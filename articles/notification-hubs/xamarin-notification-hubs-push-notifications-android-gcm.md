@@ -14,9 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cafe4f2d9ae9a79fd2e27b8734bda43bb774eeb2
 ms.openlocfilehash: e0ef1b006a2b202c08a71caaff4ef4d763d50d0a
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -477,9 +479,4 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329
 [Google Cloud Messaging 客户端组件]: http://components.xamarin.com/view/GCMClient/
 [Azure 消息传送组件]: http://components.xamarin.com/view/azure-messaging
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

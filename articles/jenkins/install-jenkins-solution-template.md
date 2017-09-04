@@ -50,7 +50,7 @@ Azure 快速入门模板使用户能够快速、可靠地在 Azure 上部署复�
 
 查看此模板的[计划和定价](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/azure-oss.jenkins?tab=Overview)信息，了解成本选项。
 
-转到[适用于 Jenkins 应用商店映像](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/azure-oss.jenkins?tab=Overview)，单击“立即获取”  
+转到[适用于 Jenkins Marketplace 映像](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/azure-oss.jenkins?tab=Overview)，单击“立即获取”  
 
 在 Azure 门户中，单击“创建”。  此模板需要使用 Resource Manager，以便禁用模板模型下拉列表。
    

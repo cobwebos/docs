@@ -15,9 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
 ms.openlocfilehash: 2443dd73fdf441721bd6f6f340da515d9f5a22a2
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/22/2017
 
 
@@ -33,15 +34,15 @@ ms.lasthandoff: 03/22/2017
 ## <a name="finding-and-installing-management-solutions"></a>查找和安装管理解决方案
 可以使用多种方法查找和安装管理解决方案，如以下各部分中所述。
 
-### <a name="azure-marketplace"></a>Azure 应用商店
-可以从 Azure 门户的 Azure 应用商店安装由 Microsoft 和受信任合作伙伴提供的管理解决方案。
+### <a name="azure-marketplace"></a>Azure Marketplace
+可以从 Azure 门户的 Azure Marketplace 安装由 Microsoft 和受信任合作伙伴提供的管理解决方案。
 
 1. 登录到 Azure 门户。
 2. 在左窗格中，选择“**更多服务**”。
 3. 向下滚动到“**解决方案**”，或者在“**筛选器**”对话框中键入 *solutions*。
 4. 单击“**+ 添加**”按钮。
 5. 要搜索你感兴趣的解决方案，请浏览，单击“**筛选器**”按钮，或在“**搜索所有内容**”框中键入。
-6. 单击要查看其详细信息的应用商店项。
+6. 单击要查看其详细信息的 Marketplace 项。
 7. 单击“**创建**”，以打开“**添加解决方案**”窗格。
 8. 除了解决方案中任何参数的值，系统还会提示你提供所需的信息，例如 [OMS 工作区和自动化帐户](#oms-workspace-and-automation-account)。
 9. 单击“**创建**”可安装解决方案。
@@ -80,8 +81,8 @@ ms.lasthandoff: 03/22/2017
 如何指定 OMS 工作区和自动化帐户取决于解决方案的安装方法。
 
 * 通过 OMS 门户安装 Microsoft 解决方案时，将其安装在当前 OMS 工作区中，不需要任何自动化帐户。
-* 通过 Azure 应用商店安装解决方案时，系统会提示你提供一个 OMS 工作区和自动化帐户，并为你创建它们之间的链接。  
-* 对于 Azure 应用商店外的解决方案，你必须在安装解决方案之前链接 OMS 工作区和自动化帐户。  为此，可以在 Azure 应用商店中选择任何解决方案，并选择 OMS 工作区和自动化帐户。  无需实际安装解决方案，因为只要选择了 OMS 工作区和自动化帐户，就会创建链接。  创建链接后，可以对任何解决方案使用该 OMS 工作区和自动化帐户。 
+* 通过 Azure Marketplace 安装解决方案时，系统会提示你提供一个 OMS 工作区和自动化帐户，并为你创建它们之间的链接。  
+* 对于 Azure Marketplace 外的解决方案，你必须在安装解决方案之前链接 OMS 工作区和自动化帐户。  为此，可以在 Azure Marketplace 中选择任何解决方案，并选择 OMS 工作区和自动化帐户。  无需实际安装解决方案，因为只要选择了 OMS 工作区和自动化帐户，就会创建链接。  创建链接后，可以对任何解决方案使用该 OMS 工作区和自动化帐户。 
 
 ### <a name="verifying-the-link-between-an-oms-workspace-and-automation-account"></a>验证 OMS 工作区和自动化帐户之间的链接
 可以使用以下过程验证 OMS 工作区和自动化帐户之间的链接。

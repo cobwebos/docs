@@ -104,10 +104,10 @@ ms.lasthandoff: 07/31/2017
 
 可以使用下述方法部署解决方案：
 
-* Azure 门户中的 Azure 应用商店：选择“自动化与控制”服务或“更新管理”解决方案
+* Azure 门户中的 Azure Marketplace：选择“自动化与控制”服务或“更新管理”解决方案
 * OMS 工作区中的 OMS 解决方案库
 
-如果已在同一资源组和区域中将自动化帐户和 OMS 工作区关联到一起，则选择“自动化和控制”时会对配置进行验证，仅安装该解决方案并在两项服务中对其进行配置。  从 Azure 应用商店选择“更新管理”解决方案会产生相同的行为。  如果订阅中没有部署任一服务，则请执行“创建新的解决方案”边栏选项卡中的步骤，确认需要安装其他预先选定的建议解决方案。  （可选）可以使用解决方案库中[添加 OMS 解决方案](../log-analytics/log-analytics-add-solutions.md)一文所述步骤，将“更新管理”解决方案添加到 OMS 工作区。  
+如果已在同一资源组和区域中将自动化帐户和 OMS 工作区关联到一起，则选择“自动化和控制”时会对配置进行验证，仅安装该解决方案并在两项服务中对其进行配置。  从 Azure Marketplace 选择“更新管理”解决方案会产生相同的行为。  如果订阅中没有部署任一服务，则请执行“创建新的解决方案”边栏选项卡中的步骤，确认需要安装其他预先选定的建议解决方案。  （可选）可以使用解决方案库中[添加 OMS 解决方案](../log-analytics/log-analytics-add-solutions.md)一文所述步骤，将“更新管理”解决方案添加到 OMS 工作区。  
 
 ### <a name="confirm-oms-agents-and-operations-manager-management-group-connected-to-oms"></a>确认 OMS 代理和 Operations Manager 管理组已连接到 OMS
 
@@ -166,9 +166,9 @@ ms.lasthandoff: 07/31/2017
 对工作区中的所有 Linux 和 Windows 计算机进行更新评估后，即可通过创建“更新部署”安装所需的更新。  更新部署是为一台或多台计算机计划的所需更新安装。  除了应包括在部署范围内的计算机或计算机组，还请指定部署的日期和时间。  若要详细了解计算机组，请参阅 [Log Analytics 中的计算机组](../log-analytics/log-analytics-computer-groups.md)。  在更新部署中包括计算机组时，只会在创建计划时对组成员身份评估一次。  不会反映对组所做的后续更改。  要解决此问题，请删除计划的更新部署，并重新创建它。
 
 > [!NOTE]
-> 默认情况下，从 Azure 应用商店部署的 Windows VM 设置为从 Windows 更新服务接收自动更新。  将此解决方案或 Windows VM 添加到工作区后，该行为不会改变。  如果不主动通过此解决方案管理更新，系统会应用默认行为（即自动应用更新）。  
+> 默认情况下，从 Azure Marketplace 部署的 Windows VM 设置为从 Windows 更新服务接收自动更新。  将此解决方案或 Windows VM 添加到工作区后，该行为不会改变。  如果不主动通过此解决方案管理更新，系统会应用默认行为（即自动应用更新）。  
 
-对于从 Azure 应用商店中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的虚拟机，已进行注册，以访问 Azure 中部署的 [Red Hat 更新基础结构 (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md)。  对于任何其他 Linux 分发，必须按照其所支持的方法从发行版联机文件存储库对其进行更新。  
+对于从 Azure Marketplace 中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的虚拟机，已进行注册，以访问 Azure 中部署的 [Red Hat 更新基础结构 (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md)。  对于任何其他 Linux 分发，必须按照其所支持的方法从发行版联机文件存储库对其进行更新。  
 
 ### <a name="viewing-update-deployments"></a>查看更新部署
 单击“更新部署” 磁贴以查看现有的更新部署列表。  这些对象按状态分组 – **已计划**、**正在运行**和 **已完成**。<br><br> ![更新部署计划页](./media/oms-solution-update-management/update-updatedeployment-schedule-page.png)<br>  

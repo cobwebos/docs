@@ -137,7 +137,7 @@ ms.lasthandoff: 07/26/2017
 
     >[!Note]
     >配置 IdP 时，需要指定子域。 若要确认正确的子域，请登录到 Workplace Online。 登录后，请记下 URL 中的子域。
-    >子域是“https://”和“.awp.autotask.net/”之间的部分，应为 us、eu、ca 或 au。
+    >子域是 “https://” 和 “.awp.autotask.net/” 之间的部分，应为 us、eu、ca 或 au。
 
 8. 转到“配置” > “单一登录”并执行以下步骤：
 

@@ -6,10 +6,10 @@ author: jasonwhowell
 ms.author: jasonh
 manager: jhubbard
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.custom: mvc
 ms.devlang: ruby
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 07/13/2017
 ms.translationtype: HT
 ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7

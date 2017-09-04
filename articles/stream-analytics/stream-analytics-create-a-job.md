@@ -4,7 +4,7 @@ description: "为流分析创建数据分析处理作业 | 学习路径段。"
 keywords: "数据分析处理"
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: e825fbcf-69e9-443f-b402-3b7a4568f415
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 2e989ab0cb95a1caef44b2f235b162f2c12a79cc
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 05fdf1e20efd129cdfc27e1d37bc9e124edf5dcd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="how-to-create-a-data-analytics-processing-job-for-stream-analytics"></a>如何为流分析创建数据分析处理作业
@@ -29,7 +28,7 @@ ms.lasthandoff: 07/04/2017
 若要开始使用流分析，请创建一个新的流分析作业。  请注意，该操作直到作业启动后才对计费产生影响。
 
 1. 登录在线 [Azure 经典门户](http://manage.windowsazure.com)或 [Azure 门户](https://portal.azure.com/)。
-2. 在门户中：单击“新建”，然后单击“数据服务”或“数据分析”（具体取决于门户），然后依次单击“Azure 流分析”或“流分析”和“快速创建”。
+2. 在门户中：单击“新建”，并单击“数据服务”或“数据分析”（具体取决于门户），依次单击“Azure 流分析”或“流分析”和“快速创建”。
    
    ![数据分析处理作业向导](./media/stream-analytics-create-a-job/1-stream-analytics-create-a-job.png)  
    
@@ -40,19 +39,19 @@ ms.lasthandoff: 07/04/2017
    * 使用 Azure 门户中的“区域”或“位置”来指定要运行作业的地理位置。
    * 如果使用 Azure 门户，请选择或创建存储帐户以用作**区域监视存储帐户**。 该存储帐户用来存储针对该区域内运行的所有流分析作业的监控数据。
    * 如果使用 Azure 门户，请指定新的或现有**资源组**，以保存应用程序的相关资源。
-4. 当新的流分析作业选项配置完成后，请单击“创建流分析作业”。 创建流分析作业需要几分钟时间。 要查看状态，你可以在通知中心监视进度。
+4. 当新的流分析作业选项配置完成后，请单击“创建流分析作业”。 创建流分析作业需要几分钟时间。 要查看状态，可以在通知中心监视进度。
    
    ![数据分析处理作业通知中心](./media/stream-analytics-create-a-job/2-stream-analytics-create-a-job.png)  
    
    ![Azure 门户 数据分析处理作业 创建作业](./media/stream-analytics-create-a-job/5-stream-analytics-create-a-job.png)  
-5. 新作业显示的状态为“已创建”。 请注意，“启动”按钮已禁用。 你必须先配置作业输入、查询和输出，然后才能启动作业。
+5. 新作业显示的状态为“已创建”。 请注意，“启动”按钮已禁用。 启动作业之前，先配置作业输入、查询和输出。
    
-   ![数据分析处理作业作业状态](./media/stream-analytics-create-a-job/3-stream-analytics-create-a-job.png)  
+   ![数据分析处理作业状态](./media/stream-analytics-create-a-job/3-stream-analytics-create-a-job.png)  
    
-   ![Azure 门户 数据分析处理作业 作业状态](./media/stream-analytics-create-a-job/6-stream-analytics-create-a-job.png)  
+   ![Azure 门户 数据分析处理作业状态](./media/stream-analytics-create-a-job/6-stream-analytics-create-a-job.png)  
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2017
+ms.date: 08/24/2017
 ms.author: seanmck
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 7ec6c7fd2125293ba47a48feb83250eeb667d1a6
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: cc96ba9f5abd45a7503ba3327b30e1f809391384
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -60,32 +60,12 @@ az acr create --resource-group myResourceGroup --name mycontainerregistry082 --s
 
 在本教程的其余部分，使用 `<acrname>` 作为所选容器注册表名称的占位符。
 
-## <a name="get-azure-container-registry-information"></a>获取 Azure 容器注册表信息
+## <a name="container-registry-login"></a>容器注册表登录
 
-创建容器注册表后，可查询其登录服务器和密码。 以下代码将返回这些值。 记录登录服务器和密码的每个值，因为在整个教程中都会引用这些值。
-
-容器注册表登录服务器（更新为注册表名）：
+在将映像推送到 ACR 实例之前必须先登录 ACR 实例。 使用 [az acr login](https://docs.microsoft.com/en-us/cli/azure/acr#login) 命令完成此操作。 需要提供创建容器注册表时所使用的唯一名称。
 
 ```azurecli
-az acr show --name <acrName> --query loginServer
-```
-
-在本教程的其余部分，使用 `<acrLoginServer>` 作为容器注册表登录服务器值的占位符。
-
-容器注册表密码：
-
-```azurecli
-az acr credential show --name <acrName> --query "passwords[0].value"
-```
-
-在本教程的其余部分，使用 `<acrPassword>` 作为容器注册表密码值的占位符。
-
-## <a name="login-to-the-container-registry"></a>登录到容器注册表
-
-必须先登录到容器注册表实例，才能向其推动映像。 使用 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令完成此操作。 运行 docker 登录时，需要提供注册表登录服务器名称和凭据。
-
-```bash
-docker login --username=<acrName> --password=<acrPassword> <acrLoginServer>
+az acr login --name <acrName>
 ```
 
 完成后，该命令会返回“登录成功”消息。
@@ -105,6 +85,12 @@ docker images
 ```bash
 REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
 aci-tutorial-app             latest              5c745774dfa9        39 seconds ago       68.1 MB
+```
+
+若要获取 loginServer 名称，请运行以下命令。
+
+```azurecli
+az acr show --name <acrName> --query loginServer --output table
 ```
 
 使用容器注册表的 loginServer 标记 aci-tutorial-app 映像。 另外，将 `:v1` 添加至映像名称的末端。 此标记代表映像版本号。
@@ -142,7 +128,7 @@ docker push <acrLoginServer>/aci-tutorial-app:v1
 若要返回已推送到 Azure 容器注册表的映像列表，请使用 [az acr repository list](/cli/azure/acr/repository#list) 命令。 使用容器注册表名称更新命令。
 
 ```azurecli
-az acr repository list --name <acrName> --username <acrName> --password <acrPassword> --output table
+az acr repository list --name <acrName> --output table
 ```
 
 输出：
@@ -156,7 +142,7 @@ aci-tutorial-app
 然后，若要查看特定映像的标记，请使用 [az acr repository show-tags](/cli/azure/acr/repository#show-tags) 命令。
 
 ```azurecli
-az acr repository show-tags --name <acrName> --username <acrName> --password <acrPassword> --repository aci-tutorial-app --output table
+az acr repository show-tags --name <acrName> --repository aci-tutorial-app --output table
 ```
 
 输出：

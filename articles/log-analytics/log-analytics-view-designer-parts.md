@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: cdee73b5234a2a6df67b5a9b33195860206558aa
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 40a6101576708936404447576d704a49666143fe
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="log-analytics-view-designer-visualization-part-reference"></a>Log Analytics 视图设计器可视化部分参考
@@ -30,7 +30,7 @@ Log Analytics 中的视图设计器允许在 OMS 控制台中创建自定义视�
 * [磁贴参考](log-analytics-view-designer-tiles.md) - 可在自定义视图中使用的每个磁贴的设置参考。
 
 >[!NOTE]
-> 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则必须使用[新查询语言](https://docs.loganalytics.io/docs/Learn/Tutorials/Getting-started-with-queries)编写所有视图中的查询。  将自动转换工作区升级前创建的任何视图。
+> 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则必须使用[新查询语言](https://go.microsoft.com/fwlink/?linkid=856078)编写所有视图中的查询。  将自动转换工作区升级前创建的任何视图。
 
 下表描述视图设计器中可用的不同类型的磁贴。  以下各节详细描述每个磁贴类型及其属性。
 

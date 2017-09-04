@@ -16,9 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: vybavar
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a9b48f149427e5ceb69bcaa97b1bf08519499b6f
 ms.openlocfilehash: 01657619cbe579c6818a790cc3ab95a33936a565
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -32,7 +34,7 @@ ms.openlocfilehash: 01657619cbe579c6818a790cc3ab95a33936a565
 ## <a name="guidance"></a>指南
 以下建议可帮助用户在使用解决方案时充分利用 **模板** ：
 
-* **模板** 是一种封装的资源，其中包含 Resource Manager 模板和其他元数据。 它的行为非常类似于应用商店中的项目。 关键区别是，与公共应用商店项目完全不同，它是私有项目。
+* **模板** 是一种封装的资源，其中包含 Resource Manager 模板和其他元数据。 它的行为非常类似于 Marketplace 中的项目。 关键区别是，与公共 Marketplace 项目完全不同，它是私有项目。
 * **模板** 库非常适合需要自定义部署的用户。
 * **模板** 非常适合在 Azure 中需要简单存储库的用户。
 * 从现有的 Resource Manager 模板开始。 在 [github](https://github.com/Azure/azure-quickstart-templates) 中查找模板，或者从现有的资源组[导出模板](../azure-resource-manager/resource-manager-export-template.md)。
@@ -132,10 +134,5 @@ ms.openlocfilehash: 01657619cbe579c6818a790cc3ab95a33936a565
 * 若要了解有关创建 Resource Manager 模板的信息，请参阅 [创作模板](../azure-resource-manager/resource-group-authoring-templates.md)
 * 若要了解可在 Resource Manager 模板中使用的函数，请参阅 [模板函数](../azure-resource-manager/resource-group-template-functions.md)
 * 有关如何设计你的模板的指南，请参阅 [设计 Azure 资源管理器模板的最佳实践](../azure-resource-manager/best-practices-resource-manager-design-templates.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

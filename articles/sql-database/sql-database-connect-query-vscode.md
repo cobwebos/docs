@@ -14,7 +14,7 @@ ms.custom: mvc,DBs & servers
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 06/20/2017
 ms.author: carlrab
 ms.translationtype: Human Translation
@@ -23,15 +23,12 @@ ms.openlocfilehash: 4076b1e7ab3a70009217a1deff72da4bff0dc871
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
-# Azure SQL 数据库：使用 Visual Studio Code 进行连接和数据查询
-<a id="azure-sql-database-use-visual-studio-code-to-connect-and-query-data" class="xliff"></a>
+# <a name="azure-sql-database-use-visual-studio-code-to-connect-and-query-data"></a>Azure SQL 数据库：使用 Visual Studio Code 进行连接和数据查询
 
 [Visual Studio Code](https://code.visualstudio.com/docs) 是一种图形代码编辑器，适用于 Linux、macOS 和 Windows，并且支持各种扩展，其中包括 [mssql 扩展](https://aka.ms/mssql-marketplace)（用于查询 Microsoft SQL Server、Azure SQL 数据库和 SQL 数据仓库）。 本快速入门演示了如何使用 Visual Studio Code 连接到 Azure SQL 数据库，然后使用 Transact-SQL 语句在数据库中查询、插入、更新和删除数据。
 
-## 先决条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>先决条件
 
 此快速入门使用以下某个快速入门中创建的资源作为其起点：
 
@@ -41,11 +38,9 @@ ms.lasthandoff: 07/08/2017
 
 在开始之前，请确保已安装最新版 [Visual Studio Code](https://code.visualstudio.com/Download) 并加载 [mssql 扩展](https://aka.ms/mssql-marketplace)。 有关 mssql 扩展的安装指南，请参阅 [Install VS Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-vs-code)（安装 VS Code）和 [mssql for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)（适用于 Visual Studio Code 的 mssql）。 
 
-## 配置 VS Code
-<a id="configure-vs-code" class="xliff"></a> 
+## <a name="configure-vs-code"></a>配置 VS Code 
 
-### **Mac OS**
-<a id="mac-os" class="xliff"></a>
+### <a name="mac-os"></a>**Mac OS**
 对于 macOS，需安装 OpenSSL，这是 mssql 扩展所使用的 DotNet Core 的先决条件。 打开终端并输入以下命令，以便安装 **brew** 和 **OpenSSL**。 
 
 ```bash
@@ -57,18 +52,15 @@ ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
 ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 ```
 
-### **Linux (Ubuntu)**
-<a id="linux-ubuntu" class="xliff"></a>
+### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 
 无需特殊配置。
 
-### **Windows**
-<a id="windows" class="xliff"></a>
+### <a name="windows"></a>**Windows**
 
 无需特殊配置。
 
-## SQL Server 连接信息
-<a id="sql-server-connection-information" class="xliff"></a>
+## <a name="sql-server-connection-information"></a>SQL Server 连接信息
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称、数据库名称和登录信息。
 
@@ -80,8 +72,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 4. 如果忘了 Azure SQL 数据库服务器的登录信息，请导航到 SQL 数据库服务器页，以查看服务器管理员名称并重置密码（如果需要）。 
 
-## 将语言模式设置为 SQL
-<a id="set-language-mode-to-sql" class="xliff"></a>
+## <a name="set-language-mode-to-sql"></a>将语言模式设置为 SQL
 
 在 Visual Studio Code 中将语言模式设置为 **SQL**，以便启用 mssql 命令和 T-SQL IntelliSense。
 
@@ -92,8 +83,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
    ![SQL 语言模式](./media/sql-database-connect-query-vscode/vscode-language-mode.png)
 
-## 连接到您的数据库
-<a id="connect-to-your-database" class="xliff"></a>
+## <a name="connect-to-your-database"></a>连接到您的数据库
 
 使用 Visual Studio Code 建立到 Azure SQL 数据库服务器的连接。
 
@@ -125,8 +115,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
    ![连接状态](./media/sql-database-connect-query-vscode/vscode-connection-status.png)
 
-## 查询数据
-<a id="query-data" class="xliff"></a>
+## <a name="query-data"></a>查询数据
 
 通过以下代码使用 [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL 语句，以便按类别查询前 20 个产品。
 
@@ -143,8 +132,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
     ![查询](./media/sql-database-connect-query-vscode/query.png)
 
-## 插入数据
-<a id="insert-data" class="xliff"></a>
+## <a name="insert-data"></a>插入数据
 
 通过以下代码使用 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 语句，将新产品插入到 SalesLT.Product 表中。
 
@@ -172,8 +160,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 2. 按 **CTRL+SHIFT+E** 在 Product 表中插入新行。
 
-## 更新数据
-<a id="update-data" class="xliff"></a>
+## <a name="update-data"></a>更新数据
 
 通过以下代码使用 [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL 语句，以便更新此前添加的新产品。
 
@@ -187,8 +174,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 2. 按 **CTRL+SHIFT+E** 更新 Product 表中的指定行。
 
-## 删除数据
-<a id="delete-data" class="xliff"></a>
+## <a name="delete-data"></a>删除数据
 
 通过以下代码使用 [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL 语句，以便删除此前添加的新产品。
 
@@ -201,8 +187,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 2. 按 **CTRL+SHIFT+E** 删除 Product 表中的指定行。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 - 若要使用 SQL Server Management Studio 进行连接和查询，请参阅[使用 SSMS 进行连接和查询](sql-database-connect-query-ssms.md)。
 - 有关使用 Visual Studio Code 的 MSDN 杂志文章，请参阅[“利用 MSSQL 扩展创建数据库 IDE”博客文章](https://msdn.microsoft.com/magazine/mt809115)。

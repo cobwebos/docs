@@ -4,7 +4,7 @@ description: "如何测试流分析作业中的查询。"
 keywords: "测试查询, 对查询进行故障排除"
 documentation center: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 9ca96196d2d4b898c79556867b5ff8d8be0f66dc
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 5e7bab0b0c3222ba093a93dc2d15f1e41898e62c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="test-azure-stream-analytics-queries-in-the-azure-portal"></a>在 Azure 门户中测试 Azure 流分析查询
@@ -29,7 +28,7 @@ ms.lasthandoff: 07/04/2017
 
 ## <a name="test-the-input"></a>测试输入
 
-1. 若要使用示例输入数据进行测试，请右键单击任意输入，然后选择“从文件上传示例数据”。
+1. 要使用示例输入数据进行测试，请右键单击任意输入，并选择“从文件上传示例数据”。
 
     ![流分析查询编辑器测试查询](media/stream-analytics-test-query/stream-analytics-test-query-editor-upload.png)
 
@@ -47,7 +46,7 @@ ms.lasthandoff: 07/04/2017
 
 ## <a name="get-help"></a>获取帮助
 
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 
