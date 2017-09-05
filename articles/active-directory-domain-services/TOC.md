@@ -7,17 +7,17 @@
 ## [兼容的第三方软件](active-directory-ds-compatible-software.md)
 
 # 入门
-## Azure 经典门户
-### [任务 1：创建管理员组](active-directory-ds-getting-started-create-group.md)
-### [任务 2：创建或选择虚拟网络](active-directory-ds-getting-started-vnet.md)
-### [任务 3：启用 Azure AD 域服务](active-directory-ds-getting-started-enableaadds.md)
-### [任务 4：更新虚拟网络的 DNS 设置](active-directory-ds-getting-started-update-dns.md)
-### [任务 5：启用密码同步](active-directory-ds-getting-started-password-sync.md)
 ## Azure 门户（预览版）
 ### [任务 1：配置基本设置](active-directory-ds-getting-started.md)
 ### [任务 2：配置网络设置](active-directory-ds-getting-started-network.md)
 ### [任务 3：配置管理员组并启用 Azure AD 域服务](active-directory-ds-getting-started-admingroup.md)
 ### [任务 4：更新虚拟网络的 DNS 设置](active-directory-ds-getting-started-dns.md)
+### [任务 5：启用密码同步](active-directory-ds-getting-started-password-sync.md)
+## Azure 经典门户（已弃用）
+### [任务 1：创建管理员组](active-directory-ds-getting-started-create-group.md)
+### [任务 2：创建或选择虚拟网络](active-directory-ds-getting-started-vnet.md)
+### [任务 3：启用 Azure AD 域服务](active-directory-ds-getting-started-enableaadds.md)
+### [任务 4：更新虚拟网络的 DNS 设置](active-directory-ds-getting-started-update-dns.md)
 ### [任务 5：启用密码同步](active-directory-ds-getting-started-password-sync.md)
 
 # 如何

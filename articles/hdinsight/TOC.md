@@ -57,14 +57,11 @@
 ### [将 DataFu 与 Pig 配合使用](hdinsight-hadoop-use-pig-datafu-udf.md)
 ### [按需群集](hdinsight-hadoop-create-linux-clusters-adf.md)
 ### [提交 Hadoop 作业](hdinsight-submit-hadoop-jobs-programmatically.md)
-## 使用 R Server
-### [存储选项](hdinsight-hadoop-r-server-storage.md)
-### [安装 RStudio](hdinsight-hadoop-r-server-install-r-studio.md)
-### [计算上下文](hdinsight-hadoop-r-server-compute-contexts.md)
-### [ScaleR 和 SparkR](hdinsight-hadoop-r-scaler-sparkr.md)
 ## 使用 Spark 进行内存中处理
+### 入门 - Spark 开发人员
+#### [创建独立应用](hdinsight-apache-spark-create-standalone-application.md)
+#### [远程作业与 Livy](hdinsight-apache-spark-livy-rest-interface.md) 
 ### [使用 Data Lake Store](hdinsight-apache-spark-use-with-data-lake-store.md)
-### [创建独立应用](hdinsight-apache-spark-create-standalone-application.md)
 ### [使用 Eclipse 创建应用](hdinsight-apache-spark-eclipse-tool-plugin.md)
 ### [使用 IntelliJ 创建应用](hdinsight-apache-spark-intellij-tool-plugin.md)
 ### [处理流事件](hdinsight-apache-spark-eventhub-streaming.md)
@@ -78,9 +75,13 @@
 ### [通过单元 Magic 将外部包与 Jupyter 配合使用](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 ### [通过脚本操作将外部包与 Jupyter 配合使用](hdinsight-apache-spark-python-package-installation.md)
 ### [使用本地 Jupyter 笔记本](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
-### [远程作业与 Livy](hdinsight-apache-spark-livy-rest-interface.md)
 ### [使用 IntelliJ 通过 VPN 远程调试作业](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 ### [已知问题](hdinsight-apache-spark-known-issues.md)
+## 使用 R Server
+### [存储选项](hdinsight-hadoop-r-server-storage.md)
+### [安装 RStudio](hdinsight-hadoop-r-server-install-r-studio.md)
+### [计算上下文](hdinsight-hadoop-r-server-compute-contexts.md)
+### [ScaleR 和 SparkR](hdinsight-hadoop-r-scaler-sparkr.md)
 ## 使用 HBase
 ### [使用 Phoenix 和 SQLLine](hdinsight-hbase-phoenix-squirrel-linux.md)
 ### [分析实时推文](hdinsight-hbase-analyze-twitter-sentiment.md)
@@ -153,7 +154,7 @@
 #### [安装 HDInsight 应用](hdinsight-apps-install-applications.md)
 #### [安装自定义应用](hdinsight-apps-install-custom-applications.md)
 #### [使用 REST 安装应用](https://msdn.microsoft.com/library/mt706515.aspx)
-#### [将 HDInsight 应用发布到 Azure Marketplace](hdinsight-apps-publish-applications.md)
+#### [将 HDInsight 应用发布到 Azure 应用商店](hdinsight-apps-publish-applications.md)
 ## 安全
 ### [将 Pig 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
 ### [使用 SSH 隧道](hdinsight-linux-ambari-ssh-tunnel.md)
