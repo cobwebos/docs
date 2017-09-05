@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: jaime-espinosa
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 00617f4d508c843000d69c02464a1bef36320a8e
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/16/2017
 
 
@@ -41,7 +42,7 @@ Azure 门户则可以利用多个服务中的组件端对端地轻松构建应�
 
 ![](./media/app-service-web-app-azure-portal/CreateWebApp.png)
 
-在新门户中，你可以从最常用的 Web 应用类型中选择，包括 WordPress 等受欢迎的库应用程序。 有关可用应用程序的完整列表，请访问 [Azure 应用商店]。
+在新门户中，你可以从最常用的 Web 应用类型中选择，包括 WordPress 等受欢迎的库应用程序。 有关可用应用程序的完整列表，请访问 [Azure Marketplace]。
 
 创建 Web 应用时，可以如在经典门户中所执行的操作一样，在新门户中指定 URL、应用服务计划和位置。 
 
@@ -76,7 +77,7 @@ Azure 门户则可以利用多个服务中的组件端对端地轻松构建应�
 
 ## <a name="more-resources"></a>更多资源
 [Azure Portal]: https://portal.azure.com
-[Azure 应用商店]: /marketplace/
+[Azure Marketplace]: /marketplace/
 
 > [!NOTE]
 > 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。

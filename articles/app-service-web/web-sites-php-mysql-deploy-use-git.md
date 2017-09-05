@@ -15,9 +15,10 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 1b1da346a253443c0b5eaf6f8a9a5a399923e760
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/20/2017
 
 
@@ -45,7 +46,7 @@ ms.lasthandoff: 01/20/2017
 
 1. 登录到 [Azure 门户][management-portal]。
 2. 单击“新建”图标。
-3. 单击“应用商店”旁边的“查看全部”。 
+3. 单击“Marketplace”旁边的“查看全部”。 
 4. 单击“Web + 移动”，然后单击“Web 应用 + MySQL”。 然后单击 **创建**。
 5. 为资源组输入有效的名称。
    

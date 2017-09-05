@@ -14,9 +14,10 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: c7dbb3ab55607e377abc3c91c7ee3e938248a676
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/20/2017
 
 
@@ -49,8 +50,8 @@ ms.lasthandoff: 01/20/2017
 按照以下步骤创建 Azure Web 应用和 SQL 数据库：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 单击仪表板左上方的“新建”图标打开 Azure 应用商店，接着单击应用商店旁的“全选”，然后选择“Web + 移动”。
-3. 在应用商店中，选择“Web + 移动”。
+2. 单击仪表板左上方的“新建”图标打开 Azure Marketplace，接着单击 Marketplace 旁的“全选”，然后选择“Web + 移动”。
+3. 在 Marketplace 中，选择“Web + 移动”。
 4. 单击“Web 应用 + SQL”图标。
 5. 阅读完 Web 应用 + SQL 应用的说明后，选择“创建”。
 6. 单击每个部分（“资源组”、“Web 应用”、“数据库”和“订阅”），然后为必填字段输入或选择值：

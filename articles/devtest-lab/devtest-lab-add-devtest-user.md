@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: tarcher
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f7656382500682898cd3ed6372630afa3c3f6350
 ms.openlocfilehash: d67fa257574d6cb4ad4b18521900374fb51da290
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -44,7 +46,7 @@ ms.openlocfilehash: d67fa257574d6cb4ad4b18521900374fb51da290
 | **VM 基本任务** | | | |
 | 添加和删除自定义映像 |否 |是 |是 |
 | 添加、更新和删除公式 |是 |是 |是 |
-| Azure 应用商店映像白名单 |否 |是 |是 |
+| 将 Azure Marketplace 映像加入允许列表 |否 |是 |是 |
 | **VM 任务** | | | |
 | 创建 VM |是 |是 |是 |
 | 启动、停止和删除 VM |用户仅创建 VM |是 |是 |
@@ -134,10 +136,5 @@ Azure 权限在 Azure 中从父范围传播到子范围。 因此，包含实验
 11. 返回到“用户”边栏选项卡时，已添加该用户为所有者。 现在，该用户是此订阅下创建的所有实验室的所有者，因此能够执行所有者任务。 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

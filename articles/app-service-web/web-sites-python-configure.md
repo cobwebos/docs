@@ -15,9 +15,10 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: huvalo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: c4fe19e608061c4b69f3856313ece87e9870bbf9
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/20/2017
 
 
@@ -28,7 +29,7 @@ ms.lasthandoff: 01/20/2017
 其中讲解了 Git 部署的一些功能，如使用 requirements.txt 安装虚拟环境和包。
 
 ## <a name="bottle-django-or-flask"></a>Bottle、Django 还是 Flask？
-Azure 应用商店包含用于 Bottle、Django 和 Flask 框架的模板。 如果你正在 Azure App Service 中开发第一个 Web 应用，或者不熟悉 Git，我们建议你遵循以下教程之一，其中包括有关从 Windows 或 Mac 使用 Git 部署从库生成工作应用程序的分步说明：
+Azure Marketplace 包含用于 Bottle、Django 和 Flask 框架的模板。 如果你正在 Azure App Service 中开发第一个 Web 应用，或者不熟悉 Git，我们建议你遵循以下教程之一，其中包括有关从 Windows 或 Mac 使用 Git 部署从库生成工作应用程序的分步说明：
 
 * [使用 Bottle 创建 Web 应用](web-sites-python-create-deploy-bottle-app.md)
 * [使用 Django 创建 Web 应用](web-sites-python-create-deploy-django-app.md)
