@@ -13,6 +13,7 @@
 ### [社交媒体](stream-analytics-twitter-sentiment-analysis-trends.md)
 ### [使用机器学习实现实时评分](stream-analytics-machine-learning-integration-tutorial.md)
 ### [实时事件处理](stream-analytics-real-time-event-processing-reference-architecture.md)
+### [Azure 用法指南（预览版）中的异常情况检测](stream-analytics-machine-learning-anomaly-detection.md)
 
 ## 创建作业
 ### [创建输入](stream-analytics-define-inputs.md)

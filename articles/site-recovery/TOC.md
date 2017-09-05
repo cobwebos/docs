@@ -140,6 +140,8 @@
 ## 监视和故障排除
 ### [Azure 到 Azure 复制问题](site-recovery-azure-to-azure-troubleshoot-errors.md)
 ### [本地到 Azure 的复制问题](site-recovery-vmware-to-azure-protection-troubleshoot.md)
+### [移动服务安装问题](site-recovery-vmware-to-azure-push-install-error-codes.md)
+### [故障转移到 Azure 的问题](site-recovery-failover-to-azure-troubleshoot.md)
 ### [收集日志并解决本地问题](site-recovery-monitoring-and-troubleshooting.md)
 
 # 引用

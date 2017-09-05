@@ -134,8 +134,11 @@
 ### [使用 Azure 门户](device-management-azure-portal.md)
 ### [常见问题](device-management-faq.md)
 ### 任务
-#### [配置加入混合 Azure AD 的设备](device-management-hybrid-azuread-joined-devices-setup.md) 
+#### [配置已注册到 Azure AD 的 Windows 10 设备](device-management-azuread-registered-devices-windows10-setup.md)
+#### [配置已加入 Azure AD 的设备](device-management-azuread-joined-devices-setup.md)
+#### [配置已加入混合 Azure AD 的设备](device-management-hybrid-azuread-joined-devices-setup.md) 
 #### [本地部署](active-directory-device-registration-on-premises-setup.md)
+#### [Windows 10 首次运行体验中的 Azure AD 加入](device-management-azuread-joined-devices-frx.md)
 ### 故障排除
 #### [加入混合 Azure AD 的 Windows 10 和 Windows Server 2016 设备](device-management-troubleshoot-hybrid-join-windows-current.md)
 #### [加入混合 Azure AD 的旧式 Windows 设备](device-management-troubleshoot-hybrid-join-windows-legacy.md)
@@ -297,7 +300,6 @@
 #### [入门](active-directory-conditional-access-azure-portal-get-started.md)
 #### [最佳实践](active-directory-conditional-access-best-practices.md)
 #### [技术参考](active-directory-conditional-access-technical-reference.md)
-#### [支持的应用](active-directory-conditional-access-supported-apps.md)
 #### [了解设备策略](active-directory-conditional-access-device-policies.md)
 #### [设置对已连接应用的访问权限](active-directory-conditional-access-policy-connected-applications.md)
 #### [补救方法](active-directory-conditional-access-device-remediation.md)
