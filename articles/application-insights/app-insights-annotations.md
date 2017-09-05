@@ -32,12 +32,12 @@ ms.lasthandoff: 01/20/2017
 版本批注是 Visual Studio Team Services 的基于云的生成和发布服务的一项功能。 
 
 ### <a name="install-the-annotations-extension-one-time"></a>安装批注扩展（一次性操作）
-若要创建版本批注，必须安装 Visual Studio 应用商店中提供的多个 Team Service 扩展中的一个。
+若要创建版本批注，必须安装 Visual Studio Marketplace 中提供的多个 Team Service 扩展中的一个。
 
 1. 登录到 [Visual Studio Team Services](https://www.visualstudio.com/en-us/get-started/setup/sign-up-for-visual-studio-online) 项目。
-2. 在 Visual Studio 应用商店中，[获取“版本批注”扩展](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)，并将其添加到 Team Services 帐户。
+2. 在 Visual Studio Marketplace 中，[获取“版本批注”扩展](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)，并将其添加到 Team Services 帐户。
 
-![在 Team Services 网页右上角打开“应用商店”。 选择“Visual Team Services”，然后在“生成与发布”下面选择“查看更多”。](./media/app-insights-annotations/10.png)
+![在 Team Services 网页右上角打开“Marketplace”。 选择“Visual Team Services”，然后在“生成与发布”下面选择“查看更多”。](./media/app-insights-annotations/10.png)
 
 只需针对 Visual Studio Team Services 帐户执行此操作一次。 现在，可为帐户中的任何项目配置版本批注。 
 

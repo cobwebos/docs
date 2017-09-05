@@ -31,7 +31,7 @@ Azure Active Directory Identity Protection 是一项新功能，提供的统一�
 
 ## <a name="steps-to-enable-azure-active-directory-identity-protection"></a>启用 Azure Active Directory Identity Protection 的步骤
 1. 以全局管理员身份[登录](https://ms.portal.azure.com/)到 Azure 门户。 
-2. 在 Azure 门户中，单击“应用商店”。
+2. 在 Azure 门户中，单击“Marketplace”。
    
     ![创建](./media/active-directory-identityprotection-enable/01.png "创建")
 3. 在应用程序列表中，单击“安全性 + 标识”。

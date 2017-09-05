@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: rachelap
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 30abc823a72431dfd12f1051434191ea904533f6
 ms.openlocfilehash: 4970db1f7b780ed0048f4c1839fff33bed640278
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/16/2017
 
 
@@ -68,7 +69,7 @@ Web 应用、移动应用和 API 应用中各自提供了 API 定义边栏选项
 ## <a name="management-portal"></a>管理门户
 在门户中选择“新建”>“Web + 移动”>“API 应用”可以创建体现本文所述新功能的 API 应用。 选择“浏览”>“API 应用”只会显示这些新的 API 应用。 浏览到 API 应用后，边栏选项卡中的布局和功能将与 Web 应用及移动应用中的布局和功能相同。 唯一的差别在于快速入门内容和设置顺序。
 
-具有之前预览功能的现有 API 应用（或从逻辑应用创建的应用商店 API 应用）将在逻辑应用设计器中以及在浏览资源组中的所有资源时仍然可见。
+具有之前预览功能的现有 API 应用（或从逻辑应用创建的 Marketplace API 应用）将在逻辑应用设计器中以及在浏览资源组中的所有资源时仍然可见。
 
 ## <a name="visual-studio"></a>Visual Studio
 大多数 Web 应用工具适用于新的 API 应用，因为它们共享相同的基础 **Microsoft.Web/sites** 资源类型。 但是，应该将 Azure Visual Studio 工具升级到 2.8.1 或更高版本，因为它公开一些特定于 API 的功能。 从 [Azure 下载页](https://azure.microsoft.com/downloads/)下载 SDK。
