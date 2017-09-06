@@ -6,21 +6,21 @@ keywords:
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-ms.reviewer: gahug
+ms.reviewer: sahenry
 ms.assetid: f8cd7e68-2c8e-4f30-b326-b22b16de9787
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/17/2017
+ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 5bd17fc68447b8387dfaad33fe2d0055596ec086
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 4cfc1652377f0cfd059e336aec6994b40d32c559
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="roll-out-password-reset-for-users"></a>为用户推出密码重置
@@ -37,7 +37,7 @@ ms.lasthandoff: 05/26/2017
     > [!NOTE]
     > 请使用用户而不是管理员来测试 SSPR，因为 Microsoft 对 Azure 管理员类型帐户强制实施强身份验证要求。 有关管理员密码策略的详细信息，请参阅我们的[深入分析文章](active-directory-passwords-how-it-works.md)。
 
-8. 你可以随时选择强制要求用户注册，并要求用户在特定时间过后重新确认其身份验证信息。 如果不要求用户必须注册，则可[在无需最终用户注册的情况下部署密码重置](active-directory-passwords-data.md)。
+8. 可以随时选择强制要求用户注册，并要求用户在特定时间过后重新确认其身份验证信息。 如果不要求用户必须注册，则可[在无需最终用户注册的情况下部署密码重置](active-directory-passwords-data.md)。
 9. 一段时间过后，可以通过查看 [Azure AD 提供的报告](active-directory-passwords-reporting.md)来了解用户注册和使用此功能的情况。
 
 ## <a name="email-based-rollout"></a>基于电子邮件的启用
@@ -50,7 +50,7 @@ ms.lasthandoff: 05/26/2017
 
 ## <a name="creating-your-own-password-portal"></a>创建自己的密码门户
 
-较大的客户很多选择托管网页并创建根 DNS 条目，例如 https://passwords.contoso.com。 他们会在该页中填充 Azure AD 密码重置链接、密码重置注册链接、密码更改门户链接，以及其他组织特定信息链接。 然后，你就可以在需要发出的任何电子邮件通信或传单中包括带品牌标记的易记 URL，供用户在需要使用相应服务时访问。
+较大的客户很多选择托管网页并创建根 DNS 条目，例如 https://passwords.contoso.com。他们会在该页中填充 Azure AD 密码重置链接、密码重置注册链接、密码更改门户链接，以及其他组织特定信息链接。 然后，便可以在需要发出的任何电子邮件通信或传单中包括带品牌标记的易记 URL，供用户在需要使用相应服务时访问。
 
 * 密码重置门户 - https://passwordreset.microsoftonline.com/
 * 密码重置注册门户 - http://aka.ms/ssprsetup
@@ -58,7 +58,7 @@ ms.lasthandoff: 05/26/2017
 
 ## <a name="using-enforced-registration"></a>使用强制注册
 
-如果你想要用户注册密码重置，则可在他们使用 Azure AD 登录时强制其注册。 可以在“注册”选项卡上启用“要求用户在登录时注册”选项，这样即可从目录的“密码重置”边栏选项卡启用此选项。
+如果想要用户注册密码重置，则可在他们使用 Azure AD 登录时强制其注册。 可以在“注册”选项卡上启用“要求用户在登录时注册”选项，这样即可从目录的“密码重置”边栏选项卡启用此选项。
 
 管理员可以要求用户在一段时间过后重新注册，只需将“要求用户在特定天数过后重新确认其身份验证信息”设置为 0-730 天即可。
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 05/26/2017
 
 ## <a name="disabling-self-service-password-reset"></a>禁用自助密码重置
 
-禁用自助密码重置很简单，只需打开 Azure AD 租户，转到“密码重置”>“属性”，然后在“已启用自助密码重置”下选择“无人”即可。
+禁用自助密码重置很简单，只需打开 Azure AD 租户，转到“密码重置”>“属性”，并在“已启用自助密码重置”下选择“无人”即可。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -83,6 +83,6 @@ ms.lasthandoff: 05/26/2017
 * [**策略**](active-directory-passwords-policy.md) - 了解并设置 Azure AD 密码策略
 * [**密码写回**](active-directory-passwords-writeback.md) - 如何对本地目录使用密码写回
 * [**报告**](active-directory-passwords-reporting.md) - 了解用户是否访问 SSPR 功能，以及在何时何处进行访问
-* [**深入技术探究**](active-directory-passwords-how-it-works.md) - 了解幕后的工作原理
+* [深入技术探究](active-directory-passwords-how-it-works.md) - 了解幕后的工作原理
 * [**常见问题**](active-directory-passwords-faq.md) - 如何？ 为什么？ 什么？ 何处？ 谁？ 何时？ - 常见问题的答案
 * [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何解决使用 SSPR 时遇到的常见问题

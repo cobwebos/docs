@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: fe2d13fd18de28864a4b3f00b0eb2e02c0867616
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: d944904db5b0bf176b214249ad59611e2b794ae0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -41,3 +41,4 @@ Azure 应用程序网关支持将虚拟机规模集、网络接口、公共/专�
 ## <a name="next-steps"></a>后续步骤
 
 若要了解如何设置应用程序网关，以便将 Web 应用用作后端池成员，请访问：[为应用服务 Web 应用配置应用程序网关](application-gateway-web-app-powershell.md)
+

@@ -1,6 +1,6 @@
 ---
-title: "快速入门 - 适用于 Linux 的 Azure Docker Swarm 模式群集 | Microsoft Docs"
-description: "快速学习在 Azure 容器服务中使用 Azure CLI 为 Linux 容器创建 Docker Swarm 模式群集。"
+title: "快速入门 - 适用于 Linux 的 Azure Docker CE 群集 | Microsoft Docs"
+description: "快速学习在 Azure 容器服务中使用 Azure CLI 为 Linux 容器创建 Docker CE 群集。"
 services: container-service
 documentationcenter: 
 author: neilpeterson
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/14/2017
+ms.date: 08/25/2017
 ms.author: nepeters
 ms.custom: 
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 3f49e72fa647d2b6c854123c271a88e1a8ff3cf8
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 7b8336e3865e7032e3ee0d5e4ee712bcb95aa4b5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
-# <a name="deploy-docker-swarm-mode-cluster"></a>部署 Docker Swarm 模式群集
+# <a name="deploy-docker-ce-cluster"></a>部署 Docker CE 群集
 
-在本快速入门中，将使用 Azure CLI 部署 Docker Swarm 模式群集。 然后，在群集上部署和运行包含 Web 前端和 Redis 实例的多容器应用程序。 完成后，即可通过 Internet 访问应用程序。
+在本快速入门中，将使用 Azure CLI 部署 Docker CE 群集。 然后，在群集上部署和运行包含 Web 前端和 Redis 实例的多容器应用程序。 完成后，即可通过 Internet 访问应用程序。
 
-Azure 容器服务上的 Docker Swarm 模式为预览版，不应用于生产工作负荷。
+Azure 容器服务上的 Docker CE 为预览版，不应用于生产工作负荷。
 
 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -62,7 +62,7 @@ az group create --name myResourceGroup --location ukwest
 
 ## <a name="create-docker-swarm-cluster"></a>创建 Docker Swarm 群集
 
-使用 [az acs create](/cli/azure/acs#create) 命令在 Azure 容器服务中创建 Docker Swarm 模式群集。 
+使用 [az acs create](/cli/azure/acs#create) 命令在 Azure 容器服务中创建 Docker CE 群集。 
 
 以下示例创建名为 mySwarmCluster 的群集，其中包含一个 Linux 主节点和三个 Linux 代理节点。
 

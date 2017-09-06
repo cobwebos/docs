@@ -9,18 +9,18 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: c561f600-a292-4e3b-b1d4-8ab89b81db48
 ms.service: sql-database
-ms.custom: overview
+ms.custom: overview, mvc
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 06/30/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 54aa8c2f738ef92c211462498103d368e4cb4c5c
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 28aa6d79f999fe9b247d9bb2c61a149a21e72a4a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务？ 
@@ -146,6 +146,14 @@ SQL 数据库让应用程序的构建和维护更加轻松、高效。 SQL 数�
 - [Visual Studio Code](https://code.visualstudio.com/docs)：一种免费可下载的开源代码编辑器，适用于 Windows、macOS 和 Linux，并支持各种扩展，其中包括 [mssql 扩展](https://aka.ms/mssql-marketplace)（用于查询 Microsoft SQL Server、Azure SQL 数据库和 SQL 数据仓库）。
 
 SQL 数据库支持在 MacOS、Linux 和 Windows 上使用 Python、Java、Node.js、PHP、 Ruby 和 .NET 生成应用程序。 SQL 数据库和 SQL Server 支持相同的[连接库](sql-database-libraries.md)。
+
+## <a name="engage-with-the-sql-server-engineering-team"></a>与 SQL Server 工程团队合作
+
+- [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server)：询问数据库管理问题
+- [Stack Overflow](http://stackoverflow.com/questions/tagged/sql-server)：询问开发问题
+- [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?category=sqlserver)：询问技术问题
+- [Microsoft Connect](https://connect.microsoft.com/SQLServer/Feedback)：报告 Bug 和请求功能
+- [Reddit](https://www.reddit.com/r/SQLServer/)：讨论 SQL Server
 
 ## <a name="next-steps"></a>后续步骤
 
