@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: a9dfb0af80ef018e5e655e6e5c78fb0b7e426794
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 4475baf3632c9e6870ff90244b773993a66b768c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -152,7 +152,7 @@ Azure 是一个全球性云平台，在世界各地的许多区域都可以使�
 ### <a name="azure-portal"></a>Azure 门户
 
 
-Azure 门户是一个基于 Web 的应用程序，可用于创建、管理和删除 Azure 资源及服务。 Azure 门户的网址是 https://portal.azure.com。 它包括一个可自定义的仪表板和用于管理 Azure 资源的工具。 还提供计费和订阅信息。 有关详细信息，请参阅 [Microsoft Azure 门户概述](https://azure.microsoft.com/documentation/articles/azure-portal-overview/)和[通过门户管理 Azure 资源](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)。
+Azure 门户是一个基于 Web 的应用程序，可用于创建、管理和删除 Azure 资源及服务。 Azure 门户的网址是 https://portal.azure.com。它包括一个可自定义的仪表板和用于管理 Azure 资源的工具。 还提供计费和订阅信息。 有关详细信息，请参阅 [Microsoft Azure 门户概述](https://azure.microsoft.com/documentation/articles/azure-portal-overview/)和[通过门户管理 Azure 资源](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)。
 
 ### <a name="resources"></a>资源
 
@@ -254,7 +254,7 @@ Azure 资源管理器是用于 Azure 资源的部署、管理和组织机制。 
 
 -   可以在整个开发生命周期内重复部署解决方案，并确保以一致的状态部署资源。
 
--   你可以通过声明性模板而非脚本来管理基础结构。
+-   可以通过声明性模板而非脚本来管理基础结构。
 
 -   可以定义各资源之间的依赖关系，使其按正确的顺序进行部署。
 
@@ -374,7 +374,7 @@ Azure 虚拟机是 Azure 中的一个中心 IaaS 服务。 Azure 虚拟机支持
 
 ## <a name="azure-storage"></a>Azure 存储
 
-Azure 存储是一款 Microsoft 托管的服务，可提供持久、可缩放的冗余存储。 可通过使用任何资源部署方法将 Azure 存储帐户作为资源添加到任何资源组。 Azure 包括四种存储类型：Blob 存储、文件存储、表存储和队列存储。 部署存储帐户时，可以使用两种帐户类型，即通用存储和 Blob 存储。 通用存储帐户可用于访问所有四种存储类型。 Blob 存储帐户类似于通用帐户，但它包含专门的 blob，其中包括热访问层和冷访问层。 有关 blob 存储的更多信息，请参阅 [Azure Blob 存储](../../storage/storage-blob-storage-tiers.md)。
+Azure 存储是一款 Microsoft 托管的服务，可提供持久、可缩放的冗余存储。 可通过使用任何资源部署方法将 Azure 存储帐户作为资源添加到任何资源组。 Azure 包括四种存储类型：Blob 存储、文件存储、表存储和队列存储。 部署存储帐户时，可以使用两种帐户类型，即通用存储和 Blob 存储。 通用存储帐户可用于访问所有四种存储类型。 Blob 存储帐户类似于通用帐户，但它包含专门的 blob，其中包括热访问层和冷访问层。 有关 blob 存储的更多信息，请参阅 [Azure Blob 存储](../../storage/blobs/storage-blob-storage-tiers.md)。
 
 Azure 存储帐户可以配置不同级别的冗余：
 
@@ -400,7 +400,7 @@ Azure 存储支持三种 blob：
 
 -   **追加 blob** 由块 blob 等块组成，但针对追加操作进行了优化。 它们经常用于将一个或多个源的信息记录到同一 blob。 例如，可将所有跟踪日志记录写入在多个 VM 上运行的应用程序的同一追加 blob。 单个追加 blob 最大大小可达 195 GB。
 
-有关详细信息，请参阅[通过 .NET 开始使用 Azure Blob 存储](../../storage/storage-dotnet-how-to-use-blobs.md)。
+有关详细信息，请参阅[通过 .NET 开始使用 Azure Blob 存储](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)。
 
 **文件存储**
 
@@ -408,21 +408,21 @@ Azure 文件存储服务通过使用标准服务器消息块 (SMB) 协议在云�
 
 由于文件存储共享是标准 SMB 文件共享，在 Azure 中运行的应用程序可以通过文件系统 I/O API 访问共享中的数据。 因此，开发者可以使用其现有代码和技术迁移现有应用程序。 IT 专业人员在管理 Azure 应用程序的过程中，可以使用 PowerShell cmdlet 来创建、装载和管理文件存储共享。
 
-有关详细信息，请参阅[在 Windows 上开始使用 Azure 文件存储](../../storage/storage-file-how-to-use-files-windows.md)或[如何通过 Linux 使用 Azure 文件存储](../../storage/storage-how-to-use-files-linux.md)。
+有关详细信息，请参阅[在 Windows 上开始使用 Azure 文件存储](../../storage/files/storage-how-to-use-files-windows.md)或[如何通过 Linux 使用 Azure 文件存储](../../storage/files/storage-how-to-use-files-linux.md)。
 
 **表存储**
 
 Azure 表存储是一种将结构化的 NoSQL 数据存储在云中的服务。 表存储是采用无架构设计的键/属性存储。 因为表存储无架构，因此可以很容易地随着应用程序需求的发展使数据适应存储。 对于所有类型的应用程序，都可以快速并经济高效地访问数据。 对于相似的数据量，表存储的成本通常显著低于传统的 SQL。
 
-你可以使用表存储来存储灵活的数据集，例如 Web 应用程序的用户数据、通讯簿、设备信息，以及你的服务需要的任何其他类型的元数据。 可以在表中存储任意数量的实体。 存储帐户可以包含任意数量的表，直至达到存储帐户的容量极限。
+可以使用表存储来存储灵活的数据集，例如 Web 应用程序的用户数据、通讯簿、设备信息，以及服务需要的任何其他类型的元数据。 可以在表中存储任意数量的实体。 存储帐户可以包含任意数量的表，直至达到存储帐户的容量极限。
 
-有关详细信息，请参阅[开始使用 Azure 表存储](../../storage/storage-dotnet-how-to-use-tables.md)。
+有关详细信息，请参阅[开始使用 Azure 表存储](../../cosmos-db/table-storage-how-to-use-dotnet.md)。
 
 **队列存储**
 
 Azure 队列存储用于在应用程序组件之间进行云消息传送。 设计可缩放的应用程序时，应用程序组件通常是分离的，各组件可以独立缩放。 队列存储提供的异步消息传送适用于在应用程序组件之间进行通信，无论这些应用程序组件是运行在云中、桌面上、本地服务器上还是移动设备上。 队列存储还支持管理异步任务以及构建过程工作流。
 
-有关详细信息，请参阅[开始使用 Azure 队列存储](../../storage/storage-dotnet-how-to-use-queues.md)。
+有关详细信息，请参阅[开始使用 Azure 队列存储](../../storage/queues/storage-dotnet-how-to-use-queues.md)。
 
 ### <a name="deploying-a-storage-account"></a>部署存储帐户
 
@@ -430,19 +430,19 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 **门户**
 
-要使用 Azure 门户部署存储帐户，只需要具有一个有效的 Azure 订阅，以及对 Web 浏览器的访问权限。 可将新的存储帐户部署到新的或现有资源组中。 创建存储帐户后，可以使用门户创建一个 blob 容器或文件共享。 可通过编程方式创建表和队列存储实体。 有关详细信息，请参阅[创建存储帐户](../../storage/storage-create-storage-account.md#create-a-storage-account)。
+要使用 Azure 门户部署存储帐户，只需要具有一个有效的 Azure 订阅，以及对 Web 浏览器的访问权限。 可将新的存储帐户部署到新的或现有资源组中。 创建存储帐户后，可以使用门户创建一个 blob 容器或文件共享。 可通过编程方式创建表和队列存储实体。 有关详细信息，请参阅[创建存储帐户](../../storage/common/storage-create-storage-account.md#create-a-storage-account)。
 
 使用 Azure 门户，除了部署存储帐户之外，还可以部署 Azure 资源管理器模板。 这将部署并配置模板中定义的所有资源，包括任何存储帐户。 有关详细信息，请参阅[使用资源管理器模板和 Azure 门户部署资源](../../azure-resource-manager/resource-group-template-deploy-portal.md)。
 
 **PowerShell**
 
-使用 PowerShell 部署 Azure 存储帐户，可以完全自动化地部署存储帐户。 有关详细信息，请参阅[对 Azure 存储使用 Azure PowerShell](../../storage/storage-powershell-guide-full.md)。
+使用 PowerShell 部署 Azure 存储帐户，可以完全自动化地部署存储帐户。 有关详细信息，请参阅[对 Azure 存储使用 Azure PowerShell](../../storage/common/storage-powershell-guide-full.md)。
 
 除了单独部署 Azure 资源之外，还可以使用 Azure PowerShell 模块来部署 Azure 资源管理器模板。 有关详细信息，请参阅[使用资源管理器模板和 Azure PowerShell 部署资源](../../azure-resource-manager/resource-group-template-deploy.md)。
 
 **命令行接口 (CLI)**
 
-与 PowerShell 模块一样，Azure 命令行接口也可实现部署自动化，并且可用于 Windows、OS X 或 Linux 系统。 可使用 Azure CLI“storage account create”命令创建存储帐户。 有关详细信息，请参阅[将 Azure CLI 用于 Azure 存储。](../../storage/storage-azure-cli.md)
+与 PowerShell 模块一样，Azure 命令行接口也可实现部署自动化，并且可用于 Windows、OS X 或 Linux 系统。 可使用 Azure CLI“storage account create”命令创建存储帐户。 有关详细信息，请参阅[将 Azure CLI 用于 Azure 存储。](../../storage/common/storage-azure-cli.md)
 
 同样，可以使用 Azure CLI 部署 Azure 资源管理器模板。 有关详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../../resource-group-template-deploy-cli.md)。
 
@@ -452,11 +452,11 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 **虚拟机磁盘**
 
-部署虚拟机时，还需要创建一个存储帐户来保存虚拟机操作系统磁盘和任何其他数据磁盘。 可选择现有存储帐户，也可以创建一个新存储帐户。 由于 blob 的最大大小为 1,024 GB，因此单个 VM 磁盘的最大大小为 1,023 GB。 若要配置较大的数据磁盘，可以将多个数据磁盘提供给虚拟机，并将它们汇集在一起，组成一个逻辑磁盘。 有关详细信息，请参阅用于 [Windows](../../virtual-machines/windows/infrastructure-storage-solutions-guidelines.md) 和 [Linux](../../virtual-machines/linux/infrastructure-storage-solutions-guidelines.md) 的“存储基础结构准则”。
+部署虚拟机时，还需要创建一个存储帐户来保存虚拟机操作系统磁盘和任何其他数据磁盘。 可选择现有存储帐户，也可以创建一个新存储帐户。 由于 blob 的最大大小为 1,024 GB，因此单个 VM 磁盘的最大大小为 1,023 GB。 若要配置较大的数据磁盘，可以将多个数据磁盘提供给虚拟机，并将它们汇集在一起，组成一个逻辑磁盘。 有关详细信息，请参阅 [Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) 和 [Linux](../../virtual-machines/linux/tutorial-manage-disks.md) 的“管理 Azure 磁盘”。
 
 **存储工具**
 
-可以通过多种不同的存储资源管理器访问 Azure 存储帐户，如 Visual Studio Cloud Explorer。 这些工具可用于浏览存储帐户和数据。 有关详细信息和可用存储资源管理器的列表，请参阅 [ Azure 存储客户端工具](../../storage/storage-explorers.md)。
+可以通过多种不同的存储资源管理器访问 Azure 存储帐户，如 Visual Studio Cloud Explorer。 这些工具可用于浏览存储帐户和数据。 有关详细信息和可用存储资源管理器的列表，请参阅 [ Azure 存储客户端工具](../../storage/common/storage-explorers.md)。
 
 **存储 API**
 
@@ -468,7 +468,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 **共享访问签名**
 
-如果需要允许用户具有对存储资源的受控访问权限，可以创建一个共享访问签名。 共享访问签名是一个可以追加到 URL 的令牌，可实现对存储资源的委托访问。 持有令牌的任何人都可以在令牌有效期间使用它指定的权限访问它指向的资源。 有关详细信息，请参阅[使用共享访问签名](../../storage/storage-dotnet-shared-access-signature-part-1.md)。
+如果需要允许用户具有对存储资源的受控访问权限，可以创建一个共享访问签名。 共享访问签名是一个可以追加到 URL 的令牌，可实现对存储资源的委托访问。 持有令牌的任何人都可以在令牌有效期间使用它指定的权限访问它指向的资源。 有关详细信息，请参阅[使用共享访问签名](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 
 ## <a name="azure-virtual-network"></a>Azure 虚拟网络
 
@@ -485,7 +485,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 **跨界虚拟网络**
 
-通过使用 ExpressRoute 或站点到站点 VPN 连接，可将本地网络连接到 Azure 虚拟网络。 在此配置中，Azure 虚拟网络实质上是你的本地网络基于云的扩展。
+通过使用 ExpressRoute 或站点到站点 VPN 连接，可将本地网络连接到 Azure 虚拟网络。 在此配置中，Azure 虚拟网络实质上是本地网络基于云的扩展。
 
 由于 Azure 虚拟网络连接到本地网络，因此跨界虚拟网络必须使用组织所用地址空间的一部分，并且该部分必须是唯一的。 与不同公司位置获得一个特定 IP 子网相同，Azure 会随着网络的扩展成为另一个位置。
 

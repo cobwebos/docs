@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: davidmu
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 61e9cab7ba0b1b86a54b5282662bef3bdfba6e7d
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: d9b9121bc5e38396ba4def6c17f9b373c2b48056
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -288,7 +288,7 @@ Resource Manager 将同时部署所有不依赖于其他所要部署的资源的
 
 ## <a name="disks-and-images"></a>磁盘和映像
    
-在 Azure 中，vhd 文件可以表示[磁盘或映像](../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 如果 vhd 文件中的操作系统专用于特定的 VM，则该文件称为磁盘。 如果 vhd 文件中的操作系统经过通用化，用于创建许多 VM，则该文件称为映像。   
+在 Azure 中，vhd 文件可以表示[磁盘或映像](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 如果 vhd 文件中的操作系统专用于特定的 VM，则该文件称为磁盘。 如果 vhd 文件中的操作系统经过通用化，用于创建许多 VM，则该文件称为映像。   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>从平台映像创建新虚拟机和新磁盘
 

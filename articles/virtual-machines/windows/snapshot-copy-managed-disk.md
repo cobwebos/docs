@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/9/2017
 ms.author: cwatson
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: bb913050fd3388d4632e6f75b36415006f370cbd
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a7527b12f4f0d2b45713a0c0109d81ff51293fd8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-a-copy-of-a-vhd-stored-as-an-azure-managed-disk-by-using-managed-snapshots"></a>使用托管快照创建一个存储为 Azure 托管磁盘的 VHD 的副本
-获取托管磁盘的快照以用于备份，或从快照创建托管磁盘，并将其附加到测试虚拟机进行故障排除。 托管快照是 VM 托管磁盘的完整时间点副本。 它创建 VHD 的只读副本，并且默认将其存储为标准托管磁盘。 有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+获取托管磁盘的快照以用于备份，或从快照创建托管磁盘，并将其附加到测试虚拟机进行故障排除。 托管快照是 VM 托管磁盘的完整时间点副本。 它创建 VHD 的只读副本，并且默认将其存储为标准托管磁盘。 有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 有关定价的详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/managed-disks/)。 
 

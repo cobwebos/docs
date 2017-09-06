@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 9d14022f46c15db531bb3430f302eb49e1335083
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3c7ab236d0a9efee6ac3fa97ed6de85cacbc9a89
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB 常见问题解答
@@ -41,7 +41,7 @@ DocumentDB API 是 Azure Cosmos DB 所支持的其中一个 API 和数据模型�
 对于侧重于以下要求的新 Web、移动、游戏和 IoT 应用程序而言，Azure Cosmos DB 是一个不错的选择：自动缩放、可预测的性能、毫秒响应时间的快速排序，以及查询无架构数据的能力。 Azure Cosmos DB 有助于快速开发，且支持应用程序数据模型的连续迭代。 管理用户生成的内容和数据的应用程序就是 [Azure Cosmos DB 的常见用例](use-cases.md)。 
 
 ### <a name="how-does-azure-cosmos-db-offer-predictable-performance"></a>Azure Cosmos DB 如何提供可预测的性能？
-[请求单位](request-units.md) (RU) 是 Azure Cosmos DB 中吞吐量的衡量单位。 1 RU 吞吐量相当于获取 1 KB 文档的吞吐量。 在 Azure Cosmos DB 中进行的每个操作（包括读取、写入、SQL 查询和存储过程执行）都具有一个确定性的 RU 值，该值基于完成该操作所需的吞吐量。 你无需考虑 CPU、IO 和内存，以及它们会怎样影响你的应用程序吞吐量，而是从单个 RU 度量值的角度进行考虑。
+[请求单位](request-units.md) (RU) 是 Azure Cosmos DB 中吞吐量的衡量单位。 1 RU 吞吐量相当于获取 1 KB 文档的吞吐量。 在 Azure Cosmos DB 中进行的每个操作（包括读取、写入、SQL 查询和存储过程执行）都具有一个确定性的 RU 值，该值基于完成该操作所需的吞吐量。 无需考虑 CPU、IO 和内存，以及它们会怎样影响应用程序吞吐量，而是从单个 RU 度量值的角度进行考虑。
 
 可以为每个 Azure Cosmos DB 容器保留以每秒 RU 表示的预配吞吐量。 对于任何规模的应用程序，都可以将单个请求设为基准以测量其 RU 值，并预配容器以处理所有请求的请求单位总和。 也可以根据应用程序的发展需求，相应地增加或减少容器的吞吐量。 如需请求单位的详细信息以及帮助确定容器需求，请参阅[估计吞吐量需求](request-units.md#estimating-throughput-needs)并尝试使用[吞吐量计算器](https://www.documentdb.com/capacityplanner)。 此处的*容器*一词是指 DocumentDB API 的集合、图形 API 的图、MongoDB API 的集合以及表 API 的表。 
 
@@ -138,7 +138,7 @@ DocumentDB API 通过 JavaScript 存储过程和触发器支持语言集成式�
 是，因为 Azure Cosmos DB 是 RESTful 服务，而资源链接固定不变，所以可以缓存。 DocumentDB API 客户端可以指定“If-None-Match”标头来读取任何资源，例如文档或集合，然后在服务器版本更改后更新其本地副本。
 
 ### <a name="is-a-local-instance-of-documentdb-api-available"></a>DocumentDB API 的本地实例是否可用？
-是的。 [Azure Cosmos DB 模拟器](local-emulator.md)提供对 Cosmos DB 服务的高保真模拟。 它支持与 Azure Cosmos DB 相同的功能，包括对创建和查询 JSON 文档、预配和缩放集合，以及执行存储过程和触发器的支持。 可以使用 Azure Cosmos DB 模拟器开发和测试应用程序，并且只需对 Azure Cosmos DB 的连接终结点进行单一配置更改，就可以将应用程序部署到全局范围的 Azure。
+是的。 [Azure Cosmos DB 模拟器](local-emulator.md)提供对 Cosmos DB 服务的高保真模拟。 它支持与 Azure Cosmos DB 相同的功能，包括对创建和查询 JSON 文档、预配和缩放集合，以及执行存储过程和触发器的支持。 可以使用 Azure Cosmos DB 模拟器开发和测试应用程序，然后对 Azure Cosmos DB 的连接终结点进行单一配置更改，可以将这些应用程序部署到全局范围的 Azure。
 
 ## <a name="develop-against-the-api-for-mongodb"></a>针对 API for MongoDB 进行开发
 ### <a name="what-is-the-azure-cosmos-db-api-for-mongodb"></a>什么是 Azure Cosmos DB API for MongoDB？
@@ -210,7 +210,7 @@ DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmos DB;AccountKey=
 ### <a name="which-tools-work-with-the-table-api-preview"></a>哪些工具适用于表 API（预览版）？ 
 可以使用早期版本的 Azure 资源管理器 (0.8.9)。
 
-灵活地采用之前指定格式的连接字符串的工具可以支持新的表 API（预览版）。 [Azure 存储客户端工具](../storage/storage-explorers.md)页上提供了表工具的列表。 
+灵活地采用之前指定格式的连接字符串的工具可以支持新的表 API（预览版）。 [Azure 存储客户端工具](../storage/common/storage-explorers.md)页上提供了表工具的列表。 
 
 ### <a name="do-powershell-or-azure-cli-work-with-the-new-table-api-preview"></a>PowerShell 或 Azure CLI 是否适用于新的表 API（预览版）？
 我们计划为表 API（预览版）添加对 PowerShell 和 Azure CLI 的支持。 
@@ -337,9 +337,6 @@ app.config 文件中 JSON 格式的字符串：
 ### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-preview-table"></a>是否可以增加或减少表 API（预览版）表的吞吐量？ 
 是，可以使用 Azure Cosmos DB 门户的缩放窗格来缩放吞吐量。 有关详细信息，请参阅[设置吞吐量](set-throughput.md)。
 
-### <a name="can-the-premium-table-api-preview-take-advantage-of-the-ru-per-minute-offering"></a>高级表 API（预览版）是否可以利用“每分钟 RU 数”服务？ 
-是，高级表 API（预览版）利用 Azure Cosmos DB 的功能来提供有关性能、延迟、可用性和一致性的 SLA。 此功能确保表可以使用“每分钟 RU 数”服务。 有关详细信息，请参阅 [Azure Cosmos DB 中的请求单位](request-units.md)。 借助此功能，客户无需预配峰值时的吞吐量，而且能使工作负荷的尖峰变得平缓。
-
 ### <a name="is-a-default-tablethroughput-set-for-newly-provisioned-tables"></a>是否为新预配的表设置了默认 TableThroughput？
 是，如果未通过 app.config 替代 TableThroughput，并且未使用 Azure Cosmos DB 中预创建的容器，服务则会创建吞吐量为 400 的表。
  
@@ -400,7 +397,7 @@ Azure Cosmos DB 在 2010 年以“Project Florence”的名义开始解决开发
 
 必须指出的是，DocumentDB 的 [SQL 方言](../documentdb/documentdb-sql-query.md)始终是基础 Azure Cosmos DB 能够支持的多种 API 之一。 对于使用 Azure Cosmos DB 等完全托管服务的开发人员，该服务的唯一接口就是该服务公开的 API。 现有 DocumentDB 客户在操作时与以往其实并无不同。 Azure Cosmos DB 提供的 SQL API 与 DocumentDB 完全相同。 现在（以及将来），你可以访问其他以前无法访问的功能。 
 
-我们持续努力的另一个成果是扩建了吞吐量和存储的全局分发与弹性缩放的基础。 [RU/m](../cosmos-db/request-units-per-minute.md) 就是可伸缩性的首发成果之一，但我们计划推出附加功能，帮助客户减少在各种工作负荷上花费的成本。 我们对全局分发子系统做了几项基础性的增强。 一致前缀一致性模型就是这众多面向开发人员的功能之中的一个（总共提供五个定义完善的一致性模型）。 我们还会推出其他许多有趣的功能，在它们成熟时即会发布。 
+我们持续努力的另一个成果是扩建了吞吐量和存储的全局分发与弹性缩放的基础。 我们对全局分发子系统做了几项基础性的增强。 一致前缀一致性模型就是这众多面向开发人员的功能之中的一个（总共提供五个定义完善的一致性模型）。 我们还会推出其他许多有趣的功能，在它们成熟时即会发布。 
 
 ### <a name="what-do-i-need-to-do-to-ensure-that-my-documentdb-resources-continue-to-run-on-azure-cosmos-db"></a>如何确保 DocumentDB 资源可继续在 Azure Cosmos DB 上运行？
 
@@ -418,7 +415,7 @@ DocumentDB 不再以 Azure 服务的形式显示在门户中。 它原来的位�
 
 ### <a name="are-there-changes-to-pricing"></a>价格是否有变化？
 
-没有，在 Azure Cosmos DB 上运行应用的费用与以前相同。 但是，可以受益于新功能“每分钟请求单位数”。 有关详细信息，请参阅[缩放每分钟吞吐量](../cosmos-db/request-units-per-minute.md)一文。
+没有，在 Azure Cosmos DB 上运行应用的费用与以前相同。
 
 ### <a name="are-there-changes-to-the-slas"></a>SLA 是否有变化？
 

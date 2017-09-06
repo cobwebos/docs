@@ -14,17 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: robb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 72b0c11f8bea24fc8777e3e0d7712577fab8ef97
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 619a004b9aff99be68988e1f7be3ccad400a8a0e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 
 # <a name="overview-of-azure-monitor"></a>Azure Monitor 概述
-本文概述了 Microsoft Azure 中的 Azure Monitor 服务。 它讨论了 Azure Monitor 可以执行的工作并指出了可以在哪里找到有关如何使用 Azure Monitor 的其他信息。  如果你喜欢观看视频介绍，请参阅本文底部“后续步骤”部分中的链接。 
+本文概述了 Microsoft Azure 中的 Azure Monitor 服务。 它讨论了 Azure Monitor 可以执行的工作并指出了可以在哪里找到有关如何使用 Azure Monitor 的其他信息。  如果喜欢观看视频介绍，请参阅本文底部“后续步骤”部分中的链接。 
 
 ## <a name="why-monitor-your-application-or-system"></a>为何要监视应用程序或系统
 云应用程序很复杂，包含很多移动部件。 监视可以为用户提供数据，确保应用程序始终处于健康运行状态。 监视还有助于避免潜在问题，或者解决过去的问题。 此外，还可以利用监视数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。
@@ -60,7 +59,7 @@ Microsoft 还提供了其他产品和服务，用以为还具有本地安装的�
 如果没有诊断扩展，则只有少数指标（例如 CPU 使用率）可用。 
 
 ### <a name="host-and-guest-vm-metrics"></a>宿主和来宾 VM 指标
-前面列出的计算资源具有它们与之交互的专用宿主 VM 和来宾 OS。 宿主 VM 和来宾 OS 是 Hyper-V 虚拟机监控程序模型中的根 VM 和来宾 VM 的等效项。 你可以收集关于这两者的指标。 你还可以收集关于来宾 OS 的诊断日志。   
+前面列出的计算资源具有它们与之交互的专用宿主 VM 和来宾 OS。 宿主 VM 和来宾 OS 是 Hyper-V 虚拟机监控程序模型中的根 VM 和来宾 VM 的等效项。 可以收集关于这两者的指标。 还可以收集关于来宾 OS 的诊断日志。   
 
 ### <a name="activity-log"></a>活动日志
 可以在活动日志（以前称为操作日志或审核日志）中搜索 Azure 基础结构所看到的资源的信息。 日志包含多种信息，例如创建或销毁资源的时间。  有关详细信息，请参阅[活动日志概述](monitoring-overview-activity-logs.md)。 
@@ -74,7 +73,7 @@ Microsoft 还提供了其他产品和服务，用以为还具有本地安装的�
 可收集的指标和诊断日志因资源类型而异。 例如，Web 应用提供有关磁盘 IO 和 CPU 百分比的统计信息。 对于服务总线队列来说，这些统计信息不存在，该队列提供的是队列大小和消息吞吐量之类的指标。 [支持的指标](monitoring-supported-metrics.md)中提供了每种资源的可收集指标的列表。 
 
 ### <a name="host-and-guest-vm-metrics"></a>宿主和来宾 VM 指标
-因为在你的资源与特定宿主 VM 或来宾 VM 之间不一定存在 1:1 映射关系，因此，这些指标不可用。
+因为在资源与特定宿主 VM 或来宾 VM 之间不一定存在 1:1 映射关系，因此，这些指标不可用。
 
 ### <a name="activity-log"></a>活动日志
 活动日志与针对计算资源的活动日志相同。  
@@ -96,7 +95,7 @@ Microsoft 还提供了其他产品和服务，用以为还具有本地安装的�
 - 活动日志条目存储 90 天。 
 - 诊断日志根本不存储。 
 
-如果希望将数据存储比上面列出的时间段更长的时间，可以使用 Azure 存储。 监视数据根据你设置的保留策略保留在你的存储帐户中。 你不需要为数据在 Azure 存储中占用的空间付款。 
+如果希望将数据存储比上面列出的时间段更长的时间，可以使用 Azure 存储。 监视数据根据你设置的保留策略保留在存储帐户中。 不需要为数据在 Azure 存储中占用的空间付款。 
 
 可以通过多种方式使用该数据：
 
@@ -147,6 +146,6 @@ Microsoft 还提供了其他产品和服务，用以为还具有本地安装的�
 - 根据 [Azure Monitor 入门](monitoring-get-started.md)中的说明浏览 Azure Monitor 界面
 - 如果要尝试诊断云服务、虚拟机、虚拟机规模集或 Service Fabric 应用程序中的问题，请设置 [Azure 诊断扩展](../azure-diagnostics.md)。
 - [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) 如果要尝试诊断应用服务 Web 应用中的问题。
-- [Azure 存储故障诊断](../storage/storage-e2e-troubleshooting.md) 在使用存储 Blob、表或队列的情况下。
+- [Azure 存储故障诊断](../storage/common/storage-e2e-troubleshooting.md) 在使用存储 Blob、表或队列的情况下。
 - [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) 和 [Operations Management Suite](https://www.microsoft.com/oms/)
 

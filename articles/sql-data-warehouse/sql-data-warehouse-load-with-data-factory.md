@@ -1,5 +1,4 @@
 ---
-
 title: "将数据载入 Azure SQL 数据仓库 – 数据工厂 | Microsoft 文档"
 description: "本教程使用 Azure 数据工厂将数据载入 Azure SQL 数据仓库，并使用 SQL Server 数据库作为数据源。"
 services: sql-data-warehouse
@@ -16,13 +15,11 @@ ms.topic: article
 ms.custom: loading
 ms.date: 02/08/2017
 ms.author: cakarst;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6474104846eefa1aa7e137e7914b7a7f1ee8a83a
-ms.openlocfilehash: aad76a633b127d23d59dae995d7a503023c5eac7
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 12a35213e07ff16bdc1c27be106792bcc032ac80
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/09/2017
-
-
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -38,18 +35,18 @@ ms.lasthandoff: 02/09/2017
 
 - 需要一个联机 **SQL 数据仓库**。 如果没有数据仓库，请学习如何[创建 Azure SQL 数据仓库](sql-data-warehouse-get-started-provision.md)。
 
-- 需要一个 **Azure 存储帐户**。 如果还没有存储帐户，请了解[如何创建存储帐户](../storage/storage-create-storage-account.md)。 为获得最佳性能，请将存储帐户和数据仓库放在同一个 Azure 区域。
+- 需要一个 **Azure 存储帐户**。 如果还没有存储帐户，请了解[如何创建存储帐户](../storage/common/storage-create-storage-account.md)。 为获得最佳性能，请将存储帐户和数据仓库放在同一个 Azure 区域。
 
 ## <a name="configure-a-data-factory"></a>配置数据工厂
 1. 登录到 [Azure 门户][]。
-2. 找到你的数据仓库，然后单击将它打开。
+2. 找到数据仓库，然后单击将它打开。
 3. 在主边栏选项卡中，单击“加载数据” > “Azure 数据工厂”。
 
     ![启动加载数据向导](media/sql-data-warehouse-load-with-data-factory/launch-load-data-wizard.png)
 
-4. 如果 Azure 订阅中没有数据工厂，浏览器中的一个单独的标签页上会显示“新建数据工厂”对话框。 请填写所需的信息，然后单击“创建”。 创建数据工厂后，“新建数据工厂”对话框将会关闭，同时出现“选择数据工厂”对话框。
+4. 如果 Azure 订阅中没有数据工厂，浏览器中的一个单独的标签页上会显示“新建数据工厂”对话框。 请填写所需的信息，并单击“创建”。 创建数据工厂后，“新建数据工厂”对话框会关闭，同时出现“选择数据工厂”对话框。
 
-    如果 Azure 订阅中已有一个或多个数据工厂，将会显示“选择数据工厂”对话框。 在此对话框中，可以选择一个现有的数据工厂，或单击“创建新数据工厂”来新建一个数据工厂。
+    如果 Azure 订阅中已有一个或多个数据工厂，会显示“选择数据工厂”对话框。 在此对话框中，可以选择一个现有的数据工厂，或单击“创建新数据工厂”来新建一个数据工厂。
 
     ![配置数据工厂](media/sql-data-warehouse-load-with-data-factory/configure-data-factory.png)
 
@@ -66,26 +63,26 @@ ms.lasthandoff: 02/09/2017
 ## <a name="configure-the-source-data-store-and-gateway"></a>配置源数据存储和网关
 现在，请告知数据工厂有关要从中加载数据的本地 SQL Server 数据库的信息。
 
-1. 从支持的源数据存储目录中选择“SQL Server”，然后单击“下一步”。
+1. 从支持的源数据存储目录中选择“SQL Server”，并单击“下一步”。
 
     ![选择 SQL Server 源](media/sql-data-warehouse-load-with-data-factory/choose-sql-server-source.png)
 
-2. 此时将显示“指定本地 SQL Server 数据库”对话框。 将自动填充第一个“连接名称”字段。 第二个字段要求提供**网关**的名称。 如果使用已有网关的现有数据工厂，可以重复使用该网关，从下拉列表中选择它即可。 单击“创建网关”链接创建数据管理网关。  
+2. 此时会显示“指定本地 SQL Server 数据库”对话框。 将自动填充第一个“连接名称”字段。 第二个字段要求提供**网关**的名称。 如果使用已有网关的现有数据工厂，可以重复使用该网关，从下拉列表中选择它即可。 单击“创建网关”链接创建数据管理网关。  
 
     > [!NOTE]
     > 如果源数据存储位于本地或者 Azure IaaS 虚拟机中，则需要数据管理网关。 网关与数据工厂之间存在一一对应的关系。 不能从另一个数据工厂使用不对应的网关，但是，一个网关可由同一数据工厂中的多个数据加载任务使用。 运行数据加载任务时，可以使用网关连接到多个数据存储。
     >
     > 有关网关的详细信息，请参阅[数据管理网关](../data-factory/data-factory-data-management-gateway.md)一文。
 
-3. 此时将显示“创建网关”对话框。 在“名称”中输入 **GatewayForDWLoading**，然后单击“创建”。
+3. 此时会显示“创建网关”对话框。 在“名称”中输入 **GatewayForDWLoading**，并单击“创建”。
 
-4. 此时将显示“配置网关”对话框。 单击“在此计算机上启动快速安装”，在当前计算机上自动下载、安装并注册数据管理网关。 弹出窗口中会显示进度。 如果该计算机无法连接到数据存储，则可在能够连接到数据存储的计算机上手动[下载并安装该网关](https://www.microsoft.com/download/details.aspx?id=39717)，然后使用密钥注册。
+4. 此时会显示“配置网关”对话框。 单击“在此计算机上启动快速安装”，在当前计算机上自动下载、安装并注册数据管理网关。 弹出窗口中会显示进度。 如果该计算机无法连接到数据存储，则可在能够连接到数据存储的计算机上手动[下载并安装该网关](https://www.microsoft.com/download/details.aspx?id=39717)，并使用密钥注册。
     > [!NOTE]
-    > 快速安装将在 Microsoft Edge 和 Internet Explorer 中本地运行。 如果使用 Google Chrome，请先通过 Chrome Web Store 安装 ClickOnce 扩展。
+    > 快速安装会在 Microsoft Edge 和 Internet Explorer 中本地运行。 如果使用 Google Chrome，请先通过 Chrome Web Store 安装 ClickOnce 扩展。
 
     ![启动快速安装程序](media/sql-data-warehouse-load-with-data-factory/launch-express-setup.png)
 
-5. 等待网关安装程序完成。 网关成功注册并联机后，弹出窗口将会关闭，新网关将出现在网关字段中。 然后填写其余必需字段，如下所示，然后单击“下一步”。
+5. 等待网关安装程序完成。 网关成功注册并联机后，弹出窗口会关闭，新网关将出现在网关字段中。 然后填写其余必需字段，如下所示，并单击“下一步”。
     - **服务器名称**：本地 SQL Server 的名称。
     - **数据库名称**：SQL Server 数据库。
     - **凭据加密**：使用默认的“按 Web 浏览器”。
@@ -106,26 +103,26 @@ ms.lasthandoff: 02/09/2017
 
     ![配置目标](media/sql-data-warehouse-load-with-data-factory/configure-destination.png)
 
-2. 此时将显示智能表映射，它可以根据表名将源映射到目标表。 如果目标位置中没有表格，默认情况下，ADF 将创建一个名称相同的表格（这适用于作为源的 SQL Server 或 Azure SQL 数据库）。 还可选择映射到现有表。 检查信息，然后单击“下一步”。
+2. 此时会显示智能表映射，它可以根据表名将源映射到目标表。 如果目标位置中没有表格，默认情况下，ADF 将创建一个名称相同的表格（这适用于作为源的 SQL Server 或 Azure SQL 数据库）。 还可选择映射到现有表。 检查信息，并单击“下一步”。
 
     ![映射表](media/sql-data-warehouse-load-with-data-factory/table-mapping.png)
 
-3. 检查架构映射并查看错误或警告消息。 智能映射基于列名。 如果在源列与目标列之间进行不受支持的数据类型转换，将显示错误消息以及相应的表。 如果选择让数据工厂自动创建表格，则当需要修复源和目标存储中的不兼容时，可能会出现适当的数据类型转换。
+3. 检查架构映射并查看错误或警告消息。 智能映射基于列名。 如果在源列与目标列之间进行不受支持的数据类型转换，会显示错误消息以及相应的表。 如果选择让数据工厂自动创建表格，则当需要修复源和目标存储中的不兼容时，可能会出现适当的数据类型转换。
 
     ![映射架构](media/sql-data-warehouse-load-with-data-factory/schema-mapping.png)
 
-4. 单击“资源组名称” 的 Azure 数据工厂。
+4. 单击“下一步”。
 
 ## <a name="configure-the-performance-settings"></a>配置性能设置
-在“性能配置”中，可以配置一个 Azure 存储帐户，在使用 [PolyBase](sql-data-warehouse-best-practices.md#use-polybase-to-load-and-export-data-quickly) 以执行方式将数据载入 SQL 数据仓库之前，可以使用该帐户来暂存数据。 复制完成后，将自动清除存储中的临时数据。
+在“性能配置”中，可以配置一个 Azure 存储帐户，在使用 [PolyBase](sql-data-warehouse-best-practices.md#use-polybase-to-load-and-export-data-quickly) 以执行方式将数据载入 SQL 数据仓库之前，可以使用该帐户来暂存数据。 复制完成后，会自动清除存储中的临时数据。
 
-选择现有的 Azure 存储帐户，然后单击“下一步”。
+选择现有的 Azure 存储帐户，并单击“下一步”。
 
 ![配置暂存 Blob](media/sql-data-warehouse-load-with-data-factory/configure-staging-blob.png)
 
-## <a name="review-summary-information-and-deploy-the-pipeline"></a>检查摘要信息，然后部署管道
+## <a name="review-summary-information-and-deploy-the-pipeline"></a>检查摘要信息，并部署管道
 
-查看配置，然后单击“完成”按钮以部署管道。
+查看配置，并单击“完成”按钮以部署管道。
 
 ![部署数据工厂](media/sql-data-warehouse-load-with-data-factory/deploy-data-factory.png)
 
@@ -149,11 +146,11 @@ ms.lasthandoff: 02/09/2017
 
     ![查看表活动详细信息](media/sql-data-warehouse-load-with-data-factory/view-table-activity-details.png)
 
-5. 以后若要启动此监视视图，请转到你的 SQL 数据仓库，单击“加载数据”>“Azure 数据工厂”，选择工厂，然后选择“监视现有加载任务”。
+5. 以后要启动此监视视图，请转到 SQL 数据仓库，单击“加载数据”>“Azure 数据工厂”，选择工厂，然后选择“监视现有加载任务”。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要将数据库迁移到 SQL 数据仓库，请参阅 [Migration overview](sql-data-warehouse-overview-migrate.md)（迁移概述）。
+要将数据库迁移到 SQL 数据仓库，请参阅 [Migration overview](sql-data-warehouse-overview-migrate.md)（迁移概述）。
 
 若要详细了解 Azure 数据工厂及其数据移动功能，请参阅以下文章：
 

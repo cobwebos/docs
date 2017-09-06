@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 7/26/2017
 ms.author: v-six
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 47a9736fd6498d15305fb2296446c61e709ad0b8
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e55009c72b977ee4a30f6c71043bde483849f78f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/07/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>导致角色回收的常见问题
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/07/2017
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="missing-runtime-dependencies"></a>缺少运行时依赖项
-如果应用程序中的某个角色依赖于某个程序集，而该程序集不属 .NET Framework 或 Azure 托管库的一部分，则必须在应用程序包中显式包括该程序集。 请记住，默认情况下，其他 Microsoft 框架在 Azure 上不可用。 如果你的角色依赖于此类框架，则必须将这些程序集添加到应用程序包。
+如果应用程序中的某个角色依赖于某个程序集，而该程序集不属 .NET Framework 或 Azure 托管库的一部分，则必须在应用程序包中显式包括该程序集。 请记住，默认情况下，其他 Microsoft 框架在 Azure 上不可用。 如果角色依赖于此类框架，则必须将这些程序集添加到应用程序包。
 
 生成和打包应用程序之前，请验证以下各项：
 
@@ -43,16 +43,16 @@ Azure 是一个 64 位的环境。 因此，针对 32 位目标编译的 .NET �
 任何通过 [RoleEntryPoint] 类的方法（包括 [OnStart]、[OnStop] 和 [Run] 方法）引发的异常均属未处理异常。 如果这些方法中的某个方法出现未处理异常，则角色将回收。 如果角色处于反复回收的状态，则每次该角色尝试启动时，都可能会引发未处理异常。
 
 ## <a name="role-returns-from-run-method"></a>角色从 Run 方法返回
-[Run] 方法会不限次数地运行。 如果你的代码重写了 [Run] 方法，该方法会无限地休眠下去。 如果 [Run] 方法返回，则角色会回收。
+[Run] 方法会不限次数地运行。 如果代码重写了 [Run] 方法，该方法会无限地休眠下去。 如果 [Run] 方法返回，则角色会回收。
 
 ## <a name="incorrect-diagnosticsconnectionstring-setting"></a>不正确的 DiagnosticsConnectionString 设置
-如果应用程序使用 Azure 诊断，则你的服务配置文件必须指定 `DiagnosticsConnectionString` 配置设置。 此设置应在 Azure 中指定一个连接到你的存储帐户的 HTTPS 连接。
+如果应用程序使用 Azure 诊断，则服务配置文件必须指定 `DiagnosticsConnectionString` 配置设置。 此设置应在 Azure 中指定一个连接到存储帐户的 HTTPS 连接。
 
-在将应用程序包部署到 Azure 之前，若要确保你的 `DiagnosticsConnectionString` 设置正确，请验证以下内容：  
+将应用程序包部署到 Azure 之前，要确保 `DiagnosticsConnectionString` 设置正确，请验证以下内容：  
 
 * `DiagnosticsConnectionString` 设置指向 Azure 中的有效存储帐户。  
   默认情况下，此设置指向模拟的存储帐户中，因此必须在部署应用程序包之前显式更改此设置。 如果不更改此设置，则当角色实例尝试启动诊断监视器时，将引发异常。 这可能导致角色实例无限期回收。
-* 连接字符串是使用以下[格式](../storage/storage-configure-connection-string.md)指定的。 （协议必须指定为 HTTPS。）将 *MyAccountName* 替换为你的存储帐户名称，将 *MyAccountKey* 替换为你的访问密钥：    
+* 连接字符串是使用以下[格式](../storage/common/storage-configure-connection-string.md)指定的。 （协议必须指定为 HTTPS。）将 *MyAccountName* 替换为存储帐户名称，将 *MyAccountKey* 替换为访问密钥：    
 
         DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 

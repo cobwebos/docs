@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: davidmu
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: d84c20dc74feedd7329cd390ff35765532bcf74d
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ddab80262fe27c1f5995858ec7de75d7c46df081
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 07/20/2017
 
 ## <a name="create-the-files"></a>创建文件
 
-在此步骤中，将创建一个用于部署资源的模板文件和一个用于向模板提供参数值的参数文件。 还创建用于执行 Azure Resource Manager 操作的授权文件。
+此步骤将创建一个用于部署资源的模板文件和一个用于向模板提供参数值的参数文件。 还创建用于执行 Azure Resource Manager 操作的授权文件。
 
 1. 创建一个名为 *CreateVMTemplate.json* 的文件，并向其中添加此 JSON 代码：
 
@@ -204,7 +204,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myResourceGroup" -Name "m
 ```
 
 > [!NOTE]
-> 你也可以从本地文件部署模板和参数。 有关详细信息，请参阅[对 Azure 存储使用 Azure PowerShell](../../storage/storage-powershell-guide-full.md)。
+> 也可以从本地文件部署模板和参数。 有关详细信息，请参阅[对 Azure 存储使用 Azure PowerShell](../../storage/common/storage-powershell-guide-full.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

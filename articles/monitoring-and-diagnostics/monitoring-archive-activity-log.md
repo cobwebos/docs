@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: johnkem
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 195751d4c5ac4021eb929e96d39b9d0e72d3070f
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 0e3a5b84f57eac96249430fa1c2c4cc076c2926a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="archive-the-azure-activity-log"></a>存档 Azure 活动日志
 本文介绍如何使用 Azure 门户、PowerShell Cmdlet 或跨平台 CLI 将 [**Azure 活动日志**](monitoring-overview-activity-logs.md)存档到存储帐户中。 此选项适用于对保留时长超过 90 天的活动日志进行审核、静态分析或备份（对保留策略具备完全控制权限）。 如果只需将事件保留 90 天或更短的时间，则不需设置到存储帐户的存档，因为在不启用存档的情况下，活动日志事件保留在 Azure 平台中的时间是 90 天。
 
 ## <a name="prerequisites"></a>先决条件
-在开始之前，需要[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)，将活动日志存档到其中。 强烈建议用户不要使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制监视数据所需的访问权限。 但是，如果还要将诊断日志和指标存档到存储帐户，则也可将该存储帐户用于活动日志，使得所有监视数据都位于一个中心位置。 所使用的存储帐户必须是一个通用存储帐户，而不是一个 blob 存储帐户。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，存储帐户就不必与订阅发出日志位于同一订阅中。
+在开始之前，需要[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)，将活动日志存档到其中。 强烈建议用户不要使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制监视数据所需的访问权限。 但是，如果还要将诊断日志和指标存档到存储帐户，则也可将该存储帐户用于活动日志，使得所有监视数据都位于一个中心位置。 所使用的存储帐户必须是一个通用存储帐户，而不是一个 blob 存储帐户。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，存储帐户就不必与订阅发出日志位于同一订阅中。
 
 ## <a name="log-profile"></a>日志配置文件
-若要使用下述任意方法存档活动日志，可为订阅设置**日志配置文件**。 日志配置文件定义已存储或流式传输的事件的类型，以及输出 - 存储帐户和/或事件中心。 它还定义存储在存储帐户中的事件的保留策略（需保留的天数）。 如果将保留策略设置为零，事件将无限期存储。 如果不想让事件无限期存储，可将保留策略设置为 1 到 2147483647 之间的任何值。 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，将会删除前天的日志。 [可在此处了解日志配置文件的详细信息](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)。 
+若要使用下述任意方法存档活动日志，可为订阅设置**日志配置文件**。 日志配置文件定义已存储或流式传输的事件的类型，以及输出 - 存储帐户和/或事件中心。 它还定义存储在存储帐户中的事件的保留策略（需保留的天数）。 如果将保留策略设置为零，事件将无限期存储。 如果不想让事件无限期存储，可将保留策略设置为 1 到 2147483647 之间的任何值。 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 [可在此处了解日志配置文件的详细信息](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)。 
 
 ## <a name="archive-the-activity-log-using-the-portal"></a>使用门户存档活动日志
 1. 在门户中，单击左侧导航中的“活动日志”链接。 如果看不到活动日志的链接，请先单击“更多服务”链接。
@@ -165,7 +165,7 @@ azure insights logprofile add --name my_log_profile --storageId /subscriptions/s
 > 
 
 ## <a name="next-steps"></a>后续步骤
-* [下载 blob 进行分析](../storage/storage-dotnet-how-to-use-blobs.md#download-blobs)
+* [下载 blob 进行分析](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)
 * [将活动日志流式传输到事件中心](monitoring-stream-activity-logs-event-hubs.md)
 * [详细了解活动日志](monitoring-overview-activity-logs.md)
 

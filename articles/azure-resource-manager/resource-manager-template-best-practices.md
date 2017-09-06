@@ -14,25 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 24c2b27948e9373bc3957f706ed802cc36c04148
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a23301ba88279af3f7bf4d353ae808e9eeb0900d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="best-practices-for-creating-azure-resource-manager-templates"></a>创建 Azure Resource Manager 模板的最佳做法
-本文中的指导可帮助你创建可靠且易于使用的 Azure Resource Manager 模板。 这些指导只属于建议， 除非有明确的规定，否则不一定非要遵循。 在具体的场合下，可能需要对以下方法或示例之一做出变通。
+这些指导可帮助创建可靠且易于使用的 Azure 资源管理器模板。 这些指导只属于建议， 除非有明确的规定，否则不一定非要遵循。 在具体的场合下，可能需要对以下方法或示例之一做出变通。
 
 ## <a name="resource-names"></a>资源名称
-通常，你会在 Resource Manager 中使用三种类型的资源名称：
+通常，会在 Resource Manager 中使用三种类型的资源名称：
 
 * 必须唯一的资源名称。
 * 不一定要唯一的资源名称，不过，提供的名称应可帮助根据上下文识别资源。
 * 通用的资源名称。
 
-有关建立命名约定的帮助，请参阅 [Azure 基础结构命名准则](../virtual-machines/windows/infrastructure-naming-guidelines.md)。 有关资源名称限制的信息，请参阅 [Azure 资源的建议命名约定](../guidance/guidance-naming-conventions.md)。
+ 有关资源名称限制的信息，请参阅 [Azure 资源的建议命名约定](../guidance/guidance-naming-conventions.md)。
 
 ### <a name="unique-resource-names"></a>唯一的资源名称
 对于具有数据访问终结点的任何资源类型，必须提供唯一的资源名称。 需要唯一名称的一些常见资源类型包括：
@@ -42,7 +41,7 @@ ms.lasthandoff: 05/11/2017
 * SQL Server
 * Azure 密钥保管库
 * Azure Redis 缓存
-* Azure 批处理
+* Azure Batch
 * Azure 流量管理器
 * Azure 搜索
 * Azure HDInsight
@@ -168,7 +167,7 @@ ms.lasthandoff: 05/11/2017
    ]
    ```
    
-   如果只有有限数量的位置支持某种资源类型，你可能需要在模板中直接指定有效的位置。 如果必须使用 **location** 参数，请尽量与可能需要位于同一位置的资源共享该参数值。 这样可以最大程度地减少用户必须提供位置信息的次数。
+   如果只有有限数量的位置支持某种资源类型，可能需要在模板中直接指定有效的位置。 如果必须使用 **location** 参数，请尽量与可能需要位于同一位置的资源共享该参数值。 这样可以最大程度地减少用户必须提供位置信息的次数。
 * 避免对资源类型的 API 版本使用参数或变量。 资源的属性和值可能会因版本号的不同而异。 如果将 API 版本设置为参数或变量，代码编辑器中的 IntelliSense 无法确定正确架构。 并且会在模板中将 API 版本硬编码。
 
 ## <a name="variables"></a>变量
@@ -342,7 +341,7 @@ ms.lasthandoff: 05/11/2017
 * 可将解决方案分解为目标组件。
 * 可在不同的主模板中重复使用嵌套模板。
 
-如果你选择使用嵌套模板，以下指导可帮助你标准化模板设计。 这些指导基于[用于设计 Azure Resource Manager 模板的模式](best-practices-resource-manager-design-templates.md)。 我们建议在设计中包含以下模板：
+如果选择使用嵌套模板，以下指导可帮助你标准化模板设计。 这些指导基于[用于设计 Azure Resource Manager 模板的模式](best-practices-resource-manager-design-templates.md)。 我们建议在设计中包含以下模板：
 
 * **主模板** (azuredeploy.json)。 用于输入参数。
 * **共享的资源模板**。 用于部署其他所有资源使用的共享资源（例如虚拟网络和可用性集）。 使用 **dependsOn** 表达式可确保在其他模板之前部署此模板。
@@ -395,8 +394,7 @@ ms.lasthandoff: 05/11/2017
 
 ## <a name="next-steps"></a>后续步骤
 * 有关为虚拟机构建解决方案的指导，请参阅[在 Azure 中运行 Windows VM](../guidance/guidance-compute-single-vm.md) 和[在 Azure 中运行 Linux VM](../guidance/guidance-compute-single-vm-linux.md)。
-* 有关设置存储帐户的指导，请参阅 [Azure 存储性能和可伸缩性清单](../storage/storage-performance-checklist.md)。
-* 有关虚拟网络的帮助，请参阅[网络基础结构指南](../virtual-machines/windows/infrastructure-networking-guidelines.md)。
+* 有关设置存储帐户的指导，请参阅 [Azure 存储性能和可伸缩性清单](../storage/common/storage-performance-checklist.md)。
 * 若要了解企业如何使用 Resource Manager 有效管理订阅，请参阅 [Azure 企业基架：出于合规目的监管订阅](resource-manager-subscription-governance.md)。
 
 

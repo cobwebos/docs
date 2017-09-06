@@ -16,18 +16,18 @@ ms.topic: article
 ms.date: 06/26/2017
 ms.author: davidmu
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 0f2c6ce3e5df6c513d8077b3dfcca0beb4a247bf
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: d8bf89a4b7c2a158302f9ba09a182a3d8d062adc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
 # <a name="download-a-windows-vhd-from-azure"></a>从 Azure 下载 Windows VHD
 
-本文介绍如何使用 Azure 门户从 Azure 下载 [Windows 虚拟硬盘 (VHD)](../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 文件。 
+本文介绍如何使用 Azure 门户从 Azure 下载 [Windows 虚拟硬盘 (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 文件。 
 
-Azure 中的虚拟机 (VM) 将[磁盘](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)用作存储操作系统、应用程序和数据的位置。 所有 Azure VM 都至少有两个磁盘，即 Windows 操作系统磁盘和临时磁盘。 操作系统磁盘最初基于映像创建，操作系统磁盘和该映像都是存储在 Azure 存储帐户中的 VHD。 虚拟机还可以有一个或多个数据磁盘，而这些磁盘也存储为 VHD。
+Azure 中的虚拟机 (VM) 将[磁盘](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)用作存储操作系统、应用程序和数据的位置。 所有 Azure VM 都至少有两个磁盘，即 Windows 操作系统磁盘和临时磁盘。 操作系统磁盘最初基于映像创建，操作系统磁盘和该映像都是存储在 Azure 存储帐户中的 VHD。 虚拟机还可以有一个或多个数据磁盘，而这些磁盘也存储为 VHD。
 
 ## <a name="stop-the-vm"></a>停止 VM
 
@@ -52,7 +52,7 @@ Azure 中的虚拟机 (VM) 将[磁盘](../../storage/storage-managed-disks-overv
 
 ## <a name="generate-sas-url"></a>生成 SAS URL
 
-若要下载 VHD 文件，需要生成[共享访问签名 (SAS)](../../storage/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL。 生成 URL 时，将为 URL 分配到期时间。
+若要下载 VHD 文件，需要生成[共享访问签名 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL。 生成 URL 时，将为 URL 分配到期时间。
 
 1.  在 VM 的边栏选项卡的菜单上，单击“磁盘”。
 2.  为 VM 选择操作系统磁盘，然后单击“导出”。

@@ -14,10 +14,10 @@ ms.workload: TBD
 ms.date: 07/09/2017
 ms.author: eslesar
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 6f7df68f8bc594ebd2b58798f02c1c513c0d86c7
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e511eee2f9eac3969b15ad3d45558dc7034f330a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/25/2017
 
 这样，便可以将 Azure 资源的部署自动化。 可以在一个安全的中心位置（例如 Azure 存储）维护资源管理器模板。
 
-本主题创建一个 PowerShell Runbook，该 Runbook 使用 [Azure 存储](../storage/storage-introduction.md)中存储的资源管理器模板部署新的 Azure 存储帐户。
+本主题创建一个 PowerShell Runbook，该 Runbook 使用 [Azure 存储](../storage/common/storage-introduction.md)中存储的资源管理器模板部署新的 Azure 存储帐户。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 07/25/2017
 
 * Azure 订阅。 如果还没有帐户，则可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或<a href="/pricing/free-account/" target="_blank">[注册免费帐户](https://azure.microsoft.com/free/)。
 * [自动化帐户](automation-sec-configure-azure-runas-account.md) ，用来保存 Runbook 以及向 Azure 资源进行身份验证。  此帐户必须有权启动和停止虚拟机。
-* 要在其中存储资源管理器模板的 [Azure 存储帐户](../storage/storage-create-storage-account.md)
+* 要在其中存储资源管理器模板的 [Azure 存储帐户](../storage/common/storage-create-storage-account.md)
 * 在本地计算机上安装的 Azure Powershell。 若要详细了解如何获得 Azure PowerShell，请参阅 [Install and configure Azure Powershell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.1.0)（安装和配置 Azure PowerShell）。
 
 ## <a name="create-the-resource-manager-template"></a>创建资源管理器模板
@@ -94,7 +94,7 @@ ms.lasthandoff: 07/25/2017
 ## <a name="save-the-resource-manager-template-in-azure-storage"></a>在 Azure 存储中保存资源管理器模板
 
 现在，我们使用 PowerShell 创建 Azure 存储文件共享并上传 `TemplateTest.json` 文件。
-有关如何在 Azure 门户中创建文件共享和上传文件的说明，请参阅[在 Windows 上开始使用 Azure 文件存储](../storage/storage-dotnet-how-to-use-files.md)。
+有关如何在 Azure 门户中创建文件共享和上传文件的说明，请参阅[在 Windows 上开始使用 Azure 文件存储](../storage/files/storage-dotnet-how-to-use-files.md)。
 
 在本地计算机上启动 PowerShell，运行以下命令创建文件共享并将资源管理器模板上传到该文件共享。
 
@@ -242,7 +242,7 @@ Get-AzureRmStorageAccount
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解有关资源管理器模板的详细信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)
-* 若要开始使用 Azure 存储，请参阅 [Azure 存储简介](../storage/storage-introduction.md)。
+* 若要开始使用 Azure 存储，请参阅 [Azure 存储简介](../storage/common/storage-introduction.md)。
 * 若要查找其他有用的 Azure 自动化 Runbook，请参阅 [Azure 自动化的 Runbook 和模块库](automation-runbook-gallery.md)。
 * 若要查找其他有用的资源管理器模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)
 

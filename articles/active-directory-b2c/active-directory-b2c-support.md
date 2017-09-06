@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: 578e0384750e8993865b1749baaed460d3ebc2bb
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: ad02321c99c57d0f83f7eacb354e47d8c6d4d14f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C：提出支持请求
 可以使用以下步骤在 Azure 门户上提出对 Azure Active Directory (Azure AD) B2C 的支持请求：
 
 1. [请按照以下步骤导航到 Azure 门户上的 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
-2. 从 B2C 租户切换到另一个拥有与其关联的 Azure 订阅的租户。 通常，后者是员工租户或在注册 Azure 订阅时创建的默认租户。 若要了解详细信息，请参阅 [Azure 订阅如何与 Azure AD 关联](../active-directory/active-directory-how-subscriptions-associated-directory.md#how-an-azure-subscription-is-related-to-azure-ad)。
+2. 从 B2C 租户切换到另一个拥有与其关联的 Azure 订阅的租户。 通常，后者是员工租户或在注册 Azure 订阅时创建的默认租户。 若要了解详细信息，请参阅 [Azure 订阅如何与 Azure AD 关联](../active-directory/active-directory-how-subscriptions-associated-directory.md)。
    
     ![支持 - 切换租户](./media/active-directory-b2c-support/support-switch-dir.png)
 3. 切换租户后，请单击“帮助 + 支持”。

@@ -3,8 +3,8 @@ title: "使用多种服务配置来配置 Azure 项目 | Microsoft Docs"
 description: "了解如何通过更改 ServiceDefinition.csdef 和 ServiceConfiguration.cscfg 文件来配置 Azure 云服务项目。"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: a4fb79ed-384f-4183-9f74-5cac257206b9
 ms.service: multiple
@@ -13,20 +13,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2016
-ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7e720b7d1f874f83d7d2ff516704f61b5e39601d
-
+ms.author: kraigb
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 24b2530b23211c654072a6edc8a31e53989bf0a8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="configuring-your-azure-project-using-multiple-service-configurations"></a>使用多种服务配置来配置 Azure 项目
-Azure 云服务项目包括两个配置文件：ServiceDefinition.csdef 和 ServiceConfiguration.cscfg。 这些文件将与你的 Azure 云服务应用程序一起打包并部署到 Azure。
+Azure 云服务项目包括两个配置文件：ServiceDefinition.csdef 和 ServiceConfiguration.cscfg。 这些文件将与 Azure 云服务应用程序一起打包并部署到 Azure。
 
-* **ServiceDefinition.csdef** 文件包含 Azure 环境根据你的云服务应用程序所需而确定的必备元数据，包括应用程序包含哪些角色。 此文件还包含适用于所有实例的配置设置。 可以在运行时使用 Azure 服务托管运行时 API 读取这些配置设置。 在 Azure 中运行你的服务时，无法更新此文件。
-* **ServiceConfiguration.cscfg** 文件将设置服务定义文件中定义的配置设置的值，并指定要为每个角色运行的实例的数目。 在 Azure 中运行你的云服务时，可以更新此文件。
+* 
+            **ServiceDefinition.csdef** 文件包含 Azure 环境根据云服务应用程序所需而确定的必备元数据，包括应用程序包含哪些角色。 此文件还包含适用于所有实例的配置设置。 可以在运行时使用 Azure 服务托管运行时 API 读取这些配置设置。 在 Azure 中运行服务时，无法更新此文件。
+* **ServiceConfiguration.cscfg** 文件将设置服务定义文件中定义的配置设置的值，并指定要为每个角色运行的实例的数目。 在 Azure 中运行云服务时，可以更新此文件。
 
-Azure Tools for Microsoft Visual Studio 提供可用于设置存储在这些文件中的配置设置的属性页。 若要访问这些属性页，请在解决方案资源管理器中，双击 Azure 云服务项目下的角色引用，或右键单击角色引用，然后选择“属性”，如下图所示。
+Azure Tools for Microsoft Visual Studio 提供可用于设置存储在这些文件中的配置设置的属性页。 要访问这些属性页，请在解决方案资源管理器中，双击 Azure 云服务项目下的角色引用，或右键单击角色引用，并选择“属性”，如下图所示。
 
 ![VS_Solution_Explorer_Roles_Properties](./media/vs-azure-tools-multiple-services-project-configurations/IC784076.png)
 
@@ -50,23 +52,23 @@ Web 角色的属性页与辅助角色的属性页类似，不过存在少许差�
 
 设置此属性可指定在开始调试时，Visual Studio 应为 HTTP 终结点、HTTPS 终结点还是两者启动 Web 浏览器。
 
-仅当你已经为角色定义了 HTTPS 终结点时，HTTPS 终结点选项才可用。 可以在“终结点”属性页上定义 HTTPS 终结点。
+仅已经为角色定义了 HTTPS 终结点时，HTTPS 终结点选项才可用。 可以在“终结点”属性页上定义 HTTPS 终结点。
 
-如果已添加 HTTPS 终结点，则按默认启用“HTTPS 终结点”选项，Visual Studio 除了为 HTTP 终结点启动浏览器之外，还将在开始调试时为此终结点启动浏览器。 此处假设两个启动选项都已启用。
+如果已添加 HTTPS 终结点，则按默认启用“HTTPS 终结点”选项，Visual Studio 除了为 HTTP 终结点启动浏览器之外，还会在开始调试时为此终结点启动浏览器。 此处假设两个启动选项都已启用。
 
 **诊断**
 
-默认情况下，将对 Web 角色启用诊断。 Azure 云服务项目和存储帐户都设置为使用本地存储模拟器。 准备好部署到 Azure 后，可以选择生成器按钮 (**…**) 来更新存储帐户，以便在云中使用 Azure 存储空间。 可以根据需要或自动计划的间隔，将诊断数据传输到存储帐户。 有关 Azure 诊断的详细信息，请参阅[在 Azure 云服务和虚拟机中启用诊断](cloud-services/cloud-services-dotnet-diagnostics.md)。
+默认情况下，将对 Web 角色启用诊断。 Azure 云服务项目和存储帐户都设置为使用本地存储模拟器。 准备好部署到 Azure 后，可以选择生成器按钮 (**…**) 来更新存储帐户，以便在云中使用 Azure 存储。 可以根据需要或自动计划的间隔，将诊断数据传输到存储帐户。 有关 Azure 诊断的详细信息，请参阅[在 Azure 云服务和虚拟机中启用诊断](cloud-services/cloud-services-dotnet-diagnostics.md)。
 
 ## <a name="settings-page"></a>“设置”页
-可以在“设置”页上为服务添加配置设置。 配置设置是名称-值对。 角色中运行的代码可以使用 [Azure 托管库](http://go.microsoft.com/fwlink?LinkID=171026)提供的类，在运行时读取配置设置的值。 具体而言，[GetConfigurationSettingValue](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getconfigurationsettingvalue.aspx) 方法将在运行时返回命名配置设置的值。
+可以在“设置”页上为服务添加配置设置。 配置设置是名称-值对。 角色中运行的代码可以使用 [Azure 托管库](http://go.microsoft.com/fwlink?LinkID=171026)提供的类，在运行时读取配置设置的值。 具体而言，[GetConfigurationSettingValue](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getconfigurationsettingvalue.aspx) 方法会在运行时返回命名配置设置的值。
 
 ### <a name="configuring-a-connection-string-to-a-storage-account"></a>将连接字符串配置为存储帐户
 连接字符串是一个配置设置，它为存储模拟器或 Azure 存储帐户提供连接和身份验证信息。 只要代码必须从角色中运行的代码访问 Azure 存储服务数据（即，blob、队列或表数据），就必须为该存储帐户定义连接字符串。
 
-指向 Azure 存储帐户的连接字符串必须使用定义的格式。 有关如何创建连接字符串的信息，请参阅 [Configure Azure Storage Connection Strings](storage/storage-configure-connection-string.md)（配置 Azure 存储连接字符串）。
+指向 Azure 存储帐户的连接字符串必须使用定义的格式。 有关如何创建连接字符串的信息，请参阅 [Configure Azure Storage Connection Strings](storage/common/storage-configure-connection-string.md)（配置 Azure 存储连接字符串）。
 
-在准备好对 Azure 存储服务测试你的服务时，或在准备好将你的云服务部署到 Azure 时，可以更改任何连接字符串的值以指向 Azure 存储帐户。 选择 (**…**)，选择“输入存储帐户凭据”。 输入包含你的帐户名和帐户密钥的帐户信息。 此外，还可以在“存储帐户连接字符串”对话框中，指示是希望使用默认 HTTPS 终结点（默认选项）、默认 HTTP 终结点还是自定义终结点。 如果已为服务注册了自定义域名，则可以决定使用自定义终结点，如[为 Azure 存储帐户中的 Blob 数据配置自定义域名](storage/storage-custom-domain-name.md)中所述。
+在准备好对 Azure 存储服务测试服务时，或在准备好将云服务部署到 Azure 时，可以更改任何连接字符串的值以指向 Azure 存储帐户。 选择 (**…**)，选择“输入存储帐户凭据”。 输入包含帐户名和帐户密钥的帐户信息。 此外，还可以在“存储帐户连接字符串”对话框中，指示是希望使用默认 HTTPS 终结点（默认选项）、默认 HTTP 终结点还是自定义终结点。 如果已为服务注册了自定义域名，则可以决定使用自定义终结点，如[为 Azure 存储帐户中的 Blob 数据配置自定义域名](storage/blobs/storage-custom-domain-name.md)中所述。
 
 > [!IMPORTANT]
 > 在部署服务之前，必须修改连接字符串以指向 Azure 存储帐户。 否则，可能导致角色无法启动，或是在初始化、忙碌、停止状态之间循环。
@@ -76,11 +78,11 @@ Web 角色的属性页与辅助角色的属性页类似，不过存在少许差�
 ## <a name="endpoints-page"></a>“终结点”页
 一个辅助角色可以有任意数量的 HTTP、HTTPS 或 TCP 终结点。 终结点可以是供外部客户端使用的输入终结点，也可以是供服务中其他运行角色使用的内部终结点。
 
-* 若要使 HTTP 终结点可用于外部客户端和 Web 浏览器，请将终结点类型更改为输入，然后指定名称和公用端口号。
-* 若要使 HTTPS 终结点可用于外部客户端和 Web 浏览器，请将终结点类型更改为“输入”，然后指定名称、公用端口号和管理证书名称。
+* 要使 HTTP 终结点可用于外部客户端和 Web 浏览器，请将终结点类型更改为输入，然后指定名称和公用端口号。
+* 要使 HTTPS 终结点可用于外部客户端和 Web 浏览器，请将终结点类型更改为“输入”，然后指定名称、公用端口号和管理证书名称。
   
-    请注意，必须先在“证书”属性页上定义一个管理证书，然后才能指定该证书。
-* 若要使终结点可供云服务中的其他角色进行内部访问，请将终结点类型更改为内部，然后为其指定名称和可行的专用端口。
+    请注意，必须先在“证书”属性页上定义一个管理证书，才能指定该证书。
+* 要使终结点可供云服务中的其他角色进行内部访问，请将终结点类型更改为内部，然后为其指定名称和可行的专用端口。
 
 ## <a name="local-storage-page"></a>“本地存储”页
 可以使用“本地存储”属性页来保留某个角色的一个或多个本地存储资源。 本地存储资源是运行角色实例的 Azure 虚拟机的文件系统中的保留目录。
@@ -88,11 +90,11 @@ Web 角色的属性页与辅助角色的属性页类似，不过存在少许差�
 ## <a name="certificates-page"></a>“证书”页
 可以在“证书”页上将证书与角色关联。 所添加的证书可用于在“终结点”属性页上配置 HTTPS 终结点。
 
-“证书”属性页会将有关证书的信息添加到服务配置。 请注意，证书不会与服务一起打包；必须通过 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)将证书单独上载到 Azure。
+“证书”属性页会将有关证书的信息添加到服务配置。 请注意，证书不会与服务一起打包；必须通过 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)将证书单独上传到 Azure。
 
-若要将证书与角色关联，请提供证书的名称。 在“终结点”属性页上配置 HTTPS 终结点时，你将使用此名称来引用证书。 接下来，指定证书存储是“本地计算机”还是“当前用户”，并指定存储的名称。 最后，输入证书的指纹。 如果证书位于“当前用户\个人(我的)”存储区中，可以通过从填充列表中选择证书来输入证书的指纹。 如果证书驻留在任何其他位置，则手动输入指纹值。
+要将证书与角色关联，请提供证书的名称。 在“终结点”属性页上配置 HTTPS 终结点时，将使用此名称来引用证书。 接下来，指定证书存储是“本地计算机”还是“当前用户”，并指定存储的名称。 最后，输入证书的指纹。 如果证书位于“当前用户\个人(我的)”存储区中，可以通过从填充列表中选择证书来输入证书的指纹。 如果证书驻留在任何其他位置，则手动输入指纹值。
 
-当你添加来自证书存储区中的证书时，系统会自动将任何中间证书添加到配置设置。 若要正确为服务配置 SSL，还必须将这些中间证书上载到 Azure。
+添加来自证书存储区中的证书时，系统会自动将任何中间证书添加到配置设置。 要正确为服务配置 SSL，还必须将这些中间证书上传到 Azure。
 
 仅当服务在云中运行时，与该服务关联的所有管理证书才会应用到该服务。 当服务在本地开发环境中运行时，它使用由计算模拟器管理的标准证书。
 
@@ -105,10 +107,5 @@ Web 角色的属性页与辅助角色的属性页类似，不过存在少许差�
 | 生成事件 |在此页中，可以设置生成前和生成后事件。 |
 | 开发 |在此页中，可以指定生成配置说明，以及运行任何生成后事件的条件。 |
 | Web |在此页中，可以配置与 Web 服务器相关的设置。 |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

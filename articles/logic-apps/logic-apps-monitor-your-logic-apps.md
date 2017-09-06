@@ -16,10 +16,10 @@ ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 8bacd408e49eb5f6eeb4b8f7eb10feac21830bb0
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 4795f5728d4ce6ff21b97bc3fefd6a53e0c6a11b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -175,7 +175,7 @@ ms.lasthandoff: 07/21/2017
 * [将数据从事件中心流式传输到流分析](../stream-analytics/stream-analytics-define-inputs.md)
 * [在 Power BI 中使用流分析来分析流数据，并创建实时分析仪表板](../stream-analytics/stream-analytics-power-bi-dashboard.md)
 
-根据要设置的选项，确保首先[创建 Azure 存储帐户](../storage/storage-create-storage-account.md)或[创建 Azure 事件中心](../event-hubs/event-hubs-create.md)。 然后选择要发送诊断数据的位置选项：
+根据要设置的选项，确保首先[创建 Azure 存储帐户](../storage/common/storage-create-storage-account.md)或[创建 Azure 事件中心](../event-hubs/event-hubs-create.md)。 然后选择要发送诊断数据的位置选项：
 
 ![将数据发送到 Azure 存储帐户或事件中心](./media/logic-apps-monitor-your-logic-apps/storage-account-event-hubs.png)
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;garye
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: a102b5f5ea04169d1992cad6d53c0a45de69b645
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 16d4586d82ed256a90d8eb6be4aab927aed1200a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-various-online-data-sources-with-the-import-data-module"></a>使用“导入数据”模块将数据从各种联机数据源导入 Azure 机器学习工作室
@@ -56,7 +56,7 @@ ms.lasthandoff: 07/28/2017
 > 一般情况下，在此服务选项推出之前创建的任何 Azure 存储帐户应该不受影响。 
 > 如果需要创建新帐户，请为“部署模型”选择“经典”或使用“资源管理器”；对于“帐户类型”，请选择“常规用途”而不是“Blob 存储”。 
 > 
-> 有关详细信息，请参阅 [Azure Blob 存储：热存储层和冷存储层](../storage/storage-blob-storage-tiers.md)。
+> 有关详细信息，请参阅 [Azure Blob 存储：热存储层和冷存储层](../storage/blobs/storage-blob-storage-tiers.md)。
 > 
 > 
 

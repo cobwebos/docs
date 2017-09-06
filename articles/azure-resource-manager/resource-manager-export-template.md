@@ -11,7 +11,7 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 07/06/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
@@ -20,10 +20,8 @@ ms.openlocfilehash: 1801ef47e5b182e0bcd5b23970a2999633b4a852
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/08/2017
 
-
 ---
-# 从现有资源导出 Azure Resource Manager 模板
-<a id="export-an-azure-resource-manager-template-from-existing-resources" class="xliff"></a>
+# <a name="export-an-azure-resource-manager-template-from-existing-resources"></a>从现有资源导出 Azure Resource Manager 模板
 本文介绍如何从订阅中的现有资源导出 Resource Manager 模板。 可以使用该生成的模板更好地了解模板语法。
 
 可以通过两种方式来导出模板：
@@ -33,8 +31,7 @@ ms.lasthandoff: 07/08/2017
 
 本主题通过门户演示这两种方法。
 
-## 部署资源
-<a id="deploy-resources" class="xliff"></a>
+## <a name="deploy-resources"></a>部署资源
 让我们开始将资源部署到 Azure，以便将其用作模板导出。 如果订阅中已有要导出到模板的资源组，则可跳过此部分。 本文其余部分假定你已部署此部分介绍的 Web 应用和 SQL 数据库解决方案。 如果使用其他解决方案，则体验可能会稍有不同，但导出模板的步骤是相同的。 
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“新建”。
@@ -54,8 +51,7 @@ ms.lasthandoff: 07/08/2017
 
 部署可能需要几分钟时间。 部署完成后，订阅将包含解决方案。
 
-## 在部署历史记录中查看模板
-<a id="view-template-from-deployment-history" class="xliff"></a>
+## <a name="view-template-from-deployment-history"></a>在部署历史记录中查看模板
 1. 转到新资源组的资源组边栏选项卡。 可以看到，该边栏选项卡列出了上次部署的结果。 选择此链接。
    
       ![资源组边栏选项卡](./media/resource-manager-export-template/select-deployment.png)
@@ -81,8 +77,7 @@ ms.lasthandoff: 07/08/2017
       
 事实上，创建 Web 应用和 SQL 数据库时使用的就是此模板。 请注意，可以使用该模板包含的参数在部署时提供不同的值。 若要详细了解模板的结构，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
 
-## 从资源组导出模板
-<a id="export-the-template-from-resource-group" class="xliff"></a>
+## <a name="export-the-template-from-resource-group"></a>从资源组导出模板
 如果已手动更改资源或将资源添加到多个部署中，则从部署历史记录中检索模板无法反映资源组的当前状态。 本部分介绍如何导出反映资源组当前状态的模板。 
 
 > [!NOTE]
@@ -117,8 +112,7 @@ ms.lasthandoff: 07/08/2017
    
       ![选择模板](./media/resource-manager-export-template/select-saved-template.png)
 
-## 自定义模板
-<a id="customize-the-template" class="xliff"></a>
+## <a name="customize-the-template"></a>自定义模板
 若要为每个部署创建相同的 Web 应用和 SQL 数据库，则导出的模板可满足要求。 但是，Resource Manager 提供相关选项，因此使用它可以更灵活地部署模板。 本文介绍如何针对数据库管理员名称和密码来添加参数。 可以通过这个相同的方法，提高模板中其他值的灵活性。
 
 1. 若要自定义模板，请选择“编辑”。
@@ -168,8 +162,7 @@ ms.lasthandoff: 07/08/2017
 9. 提供参数值，并选择要将资源部署到其中的资源组。
 
 
-## 修复导出问题
-<a id="fix-export-issues" class="xliff"></a>
+## <a name="fix-export-issues"></a>修复导出问题
 并非所有资源类型都支持导出模板功能。 若要解决此问题，可以手动将缺失的资源添加回模板中。 错误消息包含无法导出的资源类型。 请在[模板引用](/azure/templates/)中查找该资源类型。 例如，若要手动添加虚拟网关，请参阅 [Microsoft.Network/virtualNetworkGateways 模板引用](/azure/templates/microsoft.network/virtualnetworkgateways)。
 
 > [!NOTE]
@@ -177,8 +170,7 @@ ms.lasthandoff: 07/08/2017
 > 
 > 
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 你已学习如何从门户中创建的资源导出模板。
 
 * 可通过 [PowerShell](resource-group-template-deploy.md)、[Azure CLI](resource-group-template-deploy-cli.md) 或 [REST API](resource-group-template-deploy-rest.md) 部署模板。

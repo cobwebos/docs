@@ -4,7 +4,7 @@ description: "了解如何使用用于 Visual Studio 2017 的 Azure Functions �
 services: functions
 documentationcenter: .net
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 ms.service: functions
 ms.workload: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
-ms.author: glenga, donnam
+ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: fab2b3042faf870fe4b9d09d5e96dadb7155c450
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 1e0568bc58e8879cabe409cf8e9b5866f922e7c9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>用于 Visual Studio 的 Azure Functions 工具  
@@ -36,24 +36,15 @@ Azure Functions 工具提供以下优势：
 
 ## <a name="prerequisites"></a>先决条件
 
-在安装 Azure Functions 工具之前，必须事先安装 [Visual Studio 2017 预览版 15.3](https://www.visualstudio.com/vs/preview/)，包括以下工作负荷之一：
+Azure Functions 工具包含在 [Visual Studio 2017 版本 15.3](https://www.visualstudio.com/vs/) 或更高版本的 Azure 开发工作负荷中。 请确保在 Visual Studio 2017 版本 15.3 安装中包含 Azure 开发工作负荷：
 
-* Azure 开发
-* ASP.NET 和 Web 开发
+![使用 Azure 开发工作负荷安装 Visual Studio 2017](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
 若要创建和部署函数，还需要：
 
 * 一个有效的 Azure 订阅。 如果没有 Azure 订阅，可以使用[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 一个 Azure 存储帐户。 若要创建存储帐户，请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)。  
-
-## <a name="install-the-azure-functions-tools"></a>安装 Azure Functions 工具
-
-可以[下载并安装扩展包](https://marketplace.visualstudio.com/vsgallery/e3705d94-7cc3-4b79-ba7b-f43f30774d28)，或使用以下步骤从 Visual Studio 安装该包。  
-
-[!INCLUDE [Install the Azure Functions Tools for Visual Studio](../../includes/functions-install-vstools.md)] 
-
-
+* 一个 Azure 存储帐户。 若要创建存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。  
 ## <a name="create-an-azure-functions-project"></a>创建 Azure Functions 项目 
 
 [!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-create.md)]

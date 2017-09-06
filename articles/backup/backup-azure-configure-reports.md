@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/30/2017
+ms.date: 07/24/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: ea438530808b418e1a3b4673a72de5df0738e797
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 4629665e6fbe26c26eb45af7509de338367c4e18
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
@@ -33,7 +32,7 @@ ms.lasthandoff: 06/30/2017
 4. 在 Power BI 中，报表按计划每 24 小时刷新一次。 还可以在 Power BI 中临时刷新报表，这样客户存储帐户中的最新数据可用于呈现报表。 
 
 ## <a name="prerequisites"></a>先决条件
-1. 创建 [Azure 存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)，以便为报表配置此帐户。 此存储帐户用于存储报表的相关数据。
+1. 创建 [Azure 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)，以便为报表配置此帐户。 此存储帐户用于存储报表的相关数据。
 2. [创建 Power BI 帐户](https://powerbi.microsoft.com/landing/signin/)，以便可以使用 Power BI 门户查看、自定义并创建自己的报表。
 3. 向存储帐户订阅和恢复服务保管库订阅注册资源提供程序 Microsoft.insights（如果尚未注册的话），以便报表数据可以流向存储帐户。 同样，必须依次转到 Azure 门户 >“订阅”>“资源提供程序”，并找到此提供程序进行注册。 
 
@@ -42,13 +41,13 @@ ms.lasthandoff: 06/30/2017
 1. 如果已打开恢复服务保管库，请转到下一步。 如果未打开恢复服务保管库，而是位于 Azure 门户中，请在“中心”菜单中单击“浏览”。
 
    * 在资源列表中，键入“恢复服务”。
-   * 当你开始键入时，会根据你的输入筛选该列表。 出现“恢复服务保管库”时，请单击它。
+   * 开始键入时，会根据输入筛选该列表。 出现“恢复服务保管库”时，请单击它。
 
       ![创建恢复服务保管库步骤 1](./media/backup-azure-vms-encryption/browse-to-rs-vaults.png) <br/>
 
-     此时将显示恢复服务保管库列表。 在恢复服务保管库列表中选择一个保管库。
+     此时会显示恢复服务保管库列表。 在恢复服务保管库列表中选择一个保管库。
 
-     此时将打开选定的保管库仪表板。
+     此时会打开选定的保管库仪表板。
 2. 在保管库下显示的项列表中，单击“监视和报表”部分下的“备份报表”，以配置报表的存储帐户。
 
       ![选择“备份报表”菜单项 - 第 2 步](./media/backup-azure-configure-reports/backup-reports-settings.PNG)
@@ -66,6 +65,11 @@ ms.lasthandoff: 06/30/2017
       ![选择存储帐户 - 第 6 步](./media/backup-azure-configure-reports/save-configuration.png)
 7. 检查所有更改，再单击顶部的“保存”按钮，如上图所示。 此操作可确保保存所有更改，现在用于存储报表数据的存储帐户已配置完成。
 
+> [!NOTE]
+> 通过保存存储帐户配置报表后，为了完成初始数据推送，应等待 24 小时。 应仅在此之后导入 Power BI 中的 Azure 备份内容包。 有关更多详细信息，请参阅[常见问题解答部分](#frequently-asked-questions)。 
+>
+>
+
 ## <a name="view-reports-in-power-bi"></a>在 Power BI 中查看报表 
 使用恢复服务保管库配置报表的存储帐户后，报表数据大约需要 24 小时才会开始流向存储帐户。 设置存储帐户 24 小时后，按照下列步骤操作，在 Power BI 中查看报表：
 1. [登录](https://powerbi.microsoft.com/landing/signin/) Power BI。
@@ -78,7 +82,7 @@ ms.lasthandoff: 06/30/2017
 4. 输入在上面第 5 步中配置的存储帐户名称，再单击“下一步”按钮。
 
     ![输入存储帐户名称](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
-5. 输入此存储帐户的存储帐户密钥。 可以在 Azure 门户中转到存储帐户，[查看并复制存储访问密钥](../storage/storage-create-storage-account.md#manage-your-storage-account)。 
+5. 输入此存储帐户的存储帐户密钥。 可以在 Azure 门户中转到存储帐户，[查看并复制存储访问密钥](../storage/common/storage-create-storage-account.md#manage-your-storage-account)。 
 
      ![输入存储帐户](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
      

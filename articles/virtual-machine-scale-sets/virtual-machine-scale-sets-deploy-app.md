@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: e6a5e3a378a5661c09f770a202c10d270f324447
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: fa7d9d3bef4cb326844ede76171e8c566e87116b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 06/01/2017
 
 4. 使用在上一步中捕获的映像 URI 创建[虚拟机规模集][vmss-create]。
 
-有关磁盘的详细信息，请参阅[托管磁盘概述](../storage/storage-managed-disks-overview.md)和[使用附加数据磁盘](virtual-machine-scale-sets-attached-disks.md)。
+有关磁盘的详细信息，请参阅[托管磁盘概述](../virtual-machines/windows/managed-disks-overview.md)和[使用附加数据磁盘](virtual-machine-scale-sets-attached-disks.md)。
 
 ## <a name="install-when-the-scale-set-is-provisioned"></a>预配规模集时进行安装
 

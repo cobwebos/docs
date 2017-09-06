@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: pajosh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 1400fe83bec85a7ab1b4c96fb38abdaf6c944845
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 8ef9ddc345fb553b93815022dc3e6a796cae8b3a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>有助于保护使用 Azure 备份的混合备份的安全功能
@@ -44,11 +43,11 @@ ms.lasthandoff: 06/08/2017
 如果创建恢复服务保管库，则可使用所有安全功能。 如果使用现有的保管库，则可通过以下步骤启用安全功能：
 
 1. 使用 Azure 凭据登录到 Azure 门户。
-2. 选择“浏览”，然后键入“恢复服务”。
+2. 选择“浏览”，并键入“恢复服务”。
 
     ![Azure 门户“浏览”选项的屏幕截图](./media/backup-azure-security-feature/browse-to-rs-vaults.png) <br/>
 
-    此时将显示恢复服务保管库列表。 从此列表中，选择一个保管库。 此时将打开选定的保管库仪表板。
+    此时会显示恢复服务保管库列表。 从此列表中，选择一个保管库。 此时会打开选定的保管库仪表板。
 3. 从保管库下显示的项目列表中，单击“设置”下的“属性”。
 
     ![恢复服务保管库选项的屏幕截图](./media/backup-azure-security-feature/vault-list-properties.png)
@@ -56,11 +55,11 @@ ms.lasthandoff: 06/08/2017
 
     ![恢复服务保管库属性的屏幕截图](./media/backup-azure-security-feature/security-settings-update.png)
 
-    更新链接将打开“安全设置”边栏选项卡，其中提供功能摘要，并允许你启用它们。
+    更新链接将打开“安全设置”边栏选项卡，其中提供功能摘要，并允许启用它们。
 5. 从下拉列表“是否已配置 Azure 多重身份验证?”中选择一个值，确认是否已启用 [Azure 多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)。 如果已启用，则在登录到 Azure 门户时，系统会要求从另一设备（例如移动电话）进行身份验证。
 
    在备份中执行关键操作时，必须输入 Azure 门户中提供的安全 PIN。 启用多重身份验证相当于增加了一个安全层。 只有获得授权、具有有效 Azure 凭据且通过第二台设备进行身份验证的用户能够访问 Azure 门户。
-6. 若要保存安全设置，请选择“启用”，然后单击“保存”。 只有从上一步的“是否已配置 Azure 多重身份验证?”列表中选择值后，才可选择“启用”。
+6. 要保存安全设置，请选择“启用”，并单击“保存”。 只有从上一步的“是否已配置 Azure 多重身份验证?”列表中选择值后，才可选择“启用”。
 
     ![安全设置的屏幕截图](./media/backup-azure-security-feature/enable-security-settings-dpm-update.png)
 
@@ -75,18 +74,18 @@ ms.lasthandoff: 06/08/2017
 对于 **Azure 备份服务器**用户：
 
 1. 如果发生备份的服务器仍可用，则重新保护已删除的数据源，并使用**恢复数据**功能从所有旧的恢复点恢复。
-2. 如果该服务器不可用，则使用[从另一 Azure 备份服务器恢复数据](backup-azure-alternate-dpm-server.md#recover-data-from-another-azure-backup-server)功能，通过另一 Azure 备份服务器实例获取此数据。
+2. 如果该服务器不可用，则使用[从另一 Azure 备份服务器恢复数据](backup-azure-alternate-dpm-server.md)功能，通过另一 Azure 备份服务器实例获取此数据。
 
 对于 **Data Protection Manager** 用户：
 
 1. 如果发生备份的服务器仍可用，则重新保护已删除的数据源，并使用**恢复数据**功能从所有旧的恢复点恢复。
-2. 如果该服务器不可用，则通过[添加外部 DPM](backup-azure-alternate-dpm-server.md#recover-data-from-another-azure-backup-server) 来使用另一个 Data Protection Manager 服务器获取此数据。
+2. 如果该服务器不可用，则通过[添加外部 DPM](backup-azure-alternate-dpm-server.md) 来使用另一个 Data Protection Manager 服务器获取此数据。
 
 ## <a name="prevent-attacks"></a>防止攻击
 已添加检查，确保只有效用户才可执行各种操作。 这些检查包括：添加额外的身份验证层，以及为恢复目的而保持一个最小的保留期时间范围。
 
 ### <a name="authentication-to-perform-critical-operations"></a>执行关键操作的身份验证
-在为关键操作添加额外身份验证层的过程中，在执行**停止保护并删除数据**和**更改密码**操作时，系统会提示你输入安全 PIN。
+在为关键操作添加额外身份验证层的过程中，在执行**停止保护并删除数据**和**更改密码**操作时，系统会提示输入安全 PIN。
 
 若要接收此 PIN，请执行以下操作：
 
@@ -106,7 +105,7 @@ ms.lasthandoff: 06/08/2017
 ## <a name="notifications-for-critical-operations"></a>关键操作的通知
 通常情况下，执行关键操作时，将向订阅管理员发送包含该操作详细信息的电子邮件通知。 可以通过 Azure 门户为这些通知配置更多的电子邮件收件人。
 
-此文章中提到的安全功能提供对针对性攻击的防御机制。 更重要的是，在发生攻击的情况下，这些功能为你提供恢复数据的能力。
+此文章中提到的安全功能提供对针对性攻击的防御机制。 更重要的是，在发生攻击的情况下，这些功能提供恢复数据的能力。
 
 ## <a name="troubleshooting-errors"></a>排查错误
 | 操作 | 错误详细信息 | 解决方法 |
