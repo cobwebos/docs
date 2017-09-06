@@ -12,20 +12,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/09/2017
+ms.date: 08/24/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 9c1d1ba1ad70fee3db6dc6c2170b171e06f804d9
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: b316aa419d558547f90a914a22fb29935076de21
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解并在 IoT 中心内使用设备孪生
 ## <a name="overview"></a>概述
-“设备克隆”是存储设备状态信息（元数据、配置和条件）的 JSON 文档。 IoT 中心为连接到 IoT 中心的每台设备保留一个设备克隆。 本文将介绍：
+“设备克隆”是存储设备状态信息（元数据、配置和条件）的 JSON 文档。 IoT 中心为连接到 IoT 中心的每台设备保留一个设备克隆。 本文介绍：
 
 * 设备孪生的结构：*标记*、*所需的属性*和*报告的属性*，以及
 * 设备应用和后端可在设备孪生上执行的操作。
@@ -146,7 +145,7 @@ ms.lasthandoff: 06/01/2017
 ## <a name="back-end-operations"></a>后端操作
 解决方案后端使用以下通过 HTTP 公开的原子操作对设备孪生执行操作：
 
-1. **按 ID 检索设备克隆**。 此操作返回设备孪生的文档，包括标记、所需的属性、报告的属性和系统属性。
+1. **按 ID 检索设备克隆**。此操作返回设备孪生的文档，包括标记、所需的属性、报告的属性和系统属性。
 2. **部分更新设备克隆**。 解决方案后端可以使用此操作部分更新设备孪生中的标记或所需属性。 部分更新以 JSON 文档的形式表示，可添加或更新任何属性。 将删除设置为 `null` 的属性。 以下示例将创建值为 `{"newProperty": "newValue"}` 的新所需属性，将现有值 `existingProperty` 覆盖为 `"otherNewValue"`，并删除 `otherOldProperty`。 不会对现有的所需属性或标记进行其他任何更改：
    
         {
@@ -174,7 +173,7 @@ ms.lasthandoff: 06/01/2017
     $content-encoding | utf-8 |
     deviceId | 设备 ID |
     hubName | IoT 中心的名称 |
-    operationTimestamp | ISO8601 操作时间戳 |
+    operationTimestamp | [ISO8601] 操作时间戳 |
     iothub-message-schema | deviceLifecycleNotification |
     opType | “replaceTwin”或“updateTwin” |
 
@@ -346,7 +345,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 * [在设备上调用直接方法][lnk-methods]
 * [在多台设备上安排作业][lnk-jobs]
 
-如果要尝试本文中介绍的一些概念，你可能对以下 IoT 中心教程感兴趣：
+如果要尝试本文中介绍的一些概念，可能对以下 IoT 中心教程感兴趣：
 
 * [如何使用设备克隆][lnk-twin-tutorial]
 * [如何使用设备克隆属性][lnk-twin-properties]

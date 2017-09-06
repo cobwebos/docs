@@ -2,7 +2,7 @@
 title: "Media Encoder Standard 架构 | Microsoft Docs"
 description: "本主题概述 Media Encoder Standard 架构。"
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 13a3da67da28a1cdebd784e9e33021bb2c2668ce
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: c9333e745c75f134e045ee6d15c3552449d8edc3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard 架构
@@ -64,7 +64,7 @@ ms.lasthandoff: 07/26/2017
 ### <a name="attributes"></a>属性
 | Name | 类型 | 说明 |
 | --- | --- | --- |
-| **条件** |**xs:string** | 当输入不包含视频时，建议强制编码器插入单色视频轨。 为此，请使用 Condition="InsertBlackIfNoVideoBottomLayerOnly"（仅在最低比特率处插入视频）或 Condition="InsertBlackIfNoVideo"（在所有输出比特率处插入视频）。 有关详细信息，请参阅[此](media-services-advanced-encoding-with-mes.md#no_video)主题。|
+| **条件** |**xs:string** | 当输入不包含视频时，建议强制编码器插入单色视频轨。为此，请使用 Condition="InsertBlackIfNoVideoBottomLayerOnly"（仅在最低比特率处插入视频）或 Condition="InsertBlackIfNoVideo"（在所有输出比特率处插入视频）。 有关详细信息，请参阅[此](media-services-advanced-encoding-with-mes.md#no_video)主题。|
 
 ## <a name="H264Layers"></a>H264Layers
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 07/26/2017
 | **BFrames**<br/><br/> minOccurs=“0” |**xs:int** |参考帧之间的 B 帧数。 |
 | **ReferenceFrames**<br/><br/> minOccurs=“0”<br/><br/> 默认值 =“3” |**xs:int** |GOP 中的参考帧数。 |
 | **EntropyMode**<br/><br/> minOccurs=“0”<br/><br/> 默认值 =“Cabac” |**xs:string** |可能是以下值之一：**Cabac** 和 **Cavlc**。 |
-| **FrameRate**<br/><br/> minOccurs=“0” |有理数 |确定输出视频的帧速率。 使用默认值“0/1”，允许编码器使用与输入视频相同的帧速率。 允许的值应为常规视频帧速率，如下所示。 但是，允许使用任何有效有理数。 例如 1/1 表示 1 fps 且有效。<br/><br/> - 12/1 (12 fps)<br/><br/> - 15/1 (15 fps)<br/><br/> - 24/1 (24 fps)<br/><br/> - 24000/1001 (23.976 fps)<br/><br/> - 25/1 (25 fps)<br/><br/>  - 30/1 (30 fps)<br/><br/> - 30000/1001 (29.97 fps) <br/> <br/>**注意** 如果要创建多比特率编码的自定义预设，然后预设的所有层**必须**使用相同的帧速率值。|
+| **FrameRate**<br/><br/> minOccurs=“0” |有理数 |确定输出视频的帧速率。 使用默认值“0/1”，允许编码器使用与输入视频相同的帧速率。 允许的值应为常规视频帧速率，如下所示。 但是，允许使用任何有效有理数。 例如 1/1 表示 1 fps 且有效。<br/><br/> - 12/1 (12 fps)<br/><br/> - 15/1 (15 fps)<br/><br/> - 24/1 (24 fps)<br/><br/> - 24000/1001 (23.976 fps)<br/><br/> - 25/1 (25 fps)<br/><br/>  - 30/1 (30 fps)<br/><br/> - 30000/1001 (29.97 fps) <br/> <br/>**注意** 如果要创建多比特率编码的自定义预设，并预设的所有层**必须**使用相同的帧速率值。|
 | **AdaptiveBFrame**<br/><br/> minOccurs=“0” |**xs: boolean** |从 Azure 媒体编码器复制 |
 | **切片**<br/><br/> minOccurs=“0”<br/><br/> 默认值 =“0” |**xs:int** |确定将帧切分成多少片。 建议使用默认值。 |
 

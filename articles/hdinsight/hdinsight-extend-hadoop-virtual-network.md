@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 08/23/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 5574a234076797852b32631b90bb563441bbc6e7
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 00f2ecbf0d8542741bd78dcfe2692e6627b1f3cd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>使用 Azure 虚拟网络扩展 Azure HDInsight
@@ -214,6 +214,9 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 * 网络安全组(NSG) 允许你筛选往返于网络的入站和出站流量。 有关详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-networks-nsg.md)文档。
 
+    > [!WARNING]
+    > HDInsight 不支持限制出站流量。
+
 * 用户定义的路由(UDR) 定义流量网络中资源之间的流量发送方式。 有关详细信息，请参阅[用户定义的路由和 IP 转发](../virtual-network/virtual-networks-udr-overview.md)文档。
 
 * 网络虚拟设备复制防火墙和路由器等设备的功能。 有关详细信息，请参阅[网络设备](https://azure.microsoft.com/solutions/network-appliances)文档。
@@ -228,7 +231,7 @@ HDInsight 在多个端口上公开服务。 使用虚拟设备防火墙时，必
 
 1. 标识你计划用于 HDInsight 的 Azure 区域。
 
-2. 标识 HDInsight 所需的 IP 地址。 应允许的 IP 地址专门用于 HDInsight 群集和虚拟网络所在的区域。 对于按区域划分的 IP 地址列表，请参阅 [HDInsight 所需的 IP 地址](#hdinsight-ip)一节。
+2. 标识 HDInsight 所需的 IP 地址。 有关详细信息，请参阅 [HDInsight 所需的 IP 地址](#hdinsight-ip)部分。
 
 3. 为你计划安装 HDInsight 的子网创建或修改网络安全组或用户定义的路由。
 
@@ -247,11 +250,14 @@ HDInsight 在多个端口上公开服务。 使用虚拟设备防火墙时，必
 
 ## <a id="hdinsight-ip"></a>需要的 IP 地址
 
-Azure 运行状况和管理服务必须能够与 HDInsight 通信。 如果使用网络安全组或用户定义路由，则允许来自这些服务的 IP 地址的流量访问 HDInsight。
+> [!IMPORTANT]
+> Azure 运行状况和管理服务必须能够与 HDInsight 通信。 如果使用网络安全组或用户定义路由，则允许来自这些服务的 IP 地址的流量访问 HDInsight。
+>
+> 如果不使用网络安全组或用户定义的路由来控制流量，则可以忽略本部分。
 
-有两组 IP 地址：
+如果使用网络安全组或用户定义的路由，则必须允许来自 Azure 运行状况和管理服务的流量发往 HDInsight。 使用以下步骤来查找必须允许的 IP 地址：
 
-* 必须允许一组四个__全局__ IP：
+1. 必须始终允许来自以下 IP 地址的流量：
 
     | IP 地址 | 允许的端口 | 方向 |
     | ---- | ----- | ----- |
@@ -260,10 +266,10 @@ Azure 运行状况和管理服务必须能够与 HDInsight 通信。 如果使�
     | 168.61.48.131 | 443 | 入站 |
     | 138.91.141.162 | 443 | 入站 |
 
-* 必须允许__每个区域__的 IP 地址：
+2. 如果 HDInsight 群集位于以下区域之一，则必须允许针对该区域列出的 IP 地址发出的流量：
 
     > [!IMPORTANT]
-    > 如果未列出所使用的 Azure 区域，则仅使用前面提到的四个全局 IP。
+    > 如果未列出所用的 Azure 区域，则仅使用步骤 1 中所列的四个 IP 地址。
 
     | 国家/地区 | 区域 | 允许的 IP 地址 | 允许的端口 | 方向 |
     | ---- | ---- | ---- | ---- | ----- |
@@ -294,11 +300,7 @@ Azure 运行状况和管理服务必须能够与 HDInsight 通信。 如果使�
 
     若要获取用于 Azure 政府版的 IP 地址的信息，请参阅 [Azure 政府智能 + 分析](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics)文档。
 
-> [!WARNING]
-> HDInsight 不支持限制出站流量，仅可限制入站流量。
-
-> [!IMPORTANT]
-> 如果对虚拟网络使用自定义 DNS 服务器，还必须允许从 __168.63.129.16__ 进行访问。 此地址是 Azure 的递归解析程序。 有关详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)文档。
+3. 如果对虚拟网络使用自定义 DNS 服务器，还必须允许从 __168.63.129.16__ 进行访问。 此地址是 Azure 的递归解析程序。 有关详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)文档。
 
 有关详细信息，请参阅[控制网络流量](#networktraffic)一节。
 

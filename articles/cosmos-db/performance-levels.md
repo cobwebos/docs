@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 08/28/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: c8d4733e57eb760dbb8e8ca96f6ba55671d1742f
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 6692d5b75954b2162862e6be7c2e39c63fa8408b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>停用 S1、S2 和 S3 性能级别
@@ -28,7 +28,7 @@ ms.lasthandoff: 08/22/2017
 > 本文中所述的 S1、S2 和 S3 性能级别即将停用，到时不再适用于新的 DocumentDB API 帐户。
 >
 
-本文概述 S1、S2 和 S3 性能级别，并介绍在 2017 年 8 月 1 日，使用这些性能级别的集合将如何迁移到单分区集合。 阅读本文之后，能够回答以下问题：
+本文概述 S1、S2 和 S3 性能级别，并介绍在 2017 年下旬如何将使用这些性能级别的集合迁移到单分区集合。 阅读本文之后，能够回答以下问题：
 
 - [为何要停用 S1、S2 和 S3 性能级别？](#why-retired)
 - [单分区集合和分区集合与 S1、S2、S3 性能级别相比存在哪些差别？](#compare)
@@ -36,7 +36,7 @@ ms.lasthandoff: 08/22/2017
 - [迁移后我的集合会发生怎样的变化？](#collection-change)
 - [迁移到单分区集合后，帐单会发生怎样的变化？](#billing-change)
 - [如果需要 10 GB 以上的存储该怎么办？](#more-storage-needed)
-- [在 2017 年 8 月 1 日之前，是否可以在 S1、S2 和 S3 性能级别之间切换？](#change-before)
+- [在计划的迁移期限之前，是否可以在 S1、S2 和 S3 性能级别之间切换？](#change-before)
 - [如何知道我的集合已迁移？](#when-migrated)
 - [如何自行从 S1、S2、S3 性能级别迁移到单分区集合？](#migrate-diy)
 - [如果我是 EA 客户，我会受到怎样的影响？](#ea-customer)
@@ -66,7 +66,7 @@ S1、S2 和 S3 性能级别无法提供 DocumentDB API 集合具备的灵活性�
 
 ## <a name="what-do-i-need-to-do-to-ensure-uninterrupted-access-to-my-data"></a>我需要做些什么才能确保不间断地访问我的数据？
 
-什么也不需要做，Cosmos DB 会代你处理迁移。 如果正在使用 S1、S2 或 S3 集合，当前集合会在 2017 年 7 月 31 日迁移到单分区集合。 
+什么也不需要做，Cosmos DB 会代你处理迁移。 如果正在使用 S1、S2 或 S3 集合，当前集合会在 2017 年下旬迁移到单分区集合。 
 
 <a name="collection-change"></a>
 
@@ -94,19 +94,19 @@ S1、S2 和 S3 性能级别无法提供 DocumentDB API 集合具备的灵活性�
 
 ## <a name="what-if-i-need-more-than-10-gb-of-storage"></a>如果需要 10 GB 以上的存储该怎么办？
 
-无论使用的是 S1、S2 或 S3 性能级别的集合还是单分区集合，它们的可用存储都是 10 GB。可以使用 Cosmos DB 数据迁移工具将数据迁移到分区集合，它们的存储几乎无限。 有关分区集合优势的信息，请参阅 [Azure Cosmos DB 中的分区和缩放](documentdb-partition-data.md)。 有关如何将 S1、S2、S3 或单分区集合迁移到分区集合的信息，请参阅[从单分区集合迁移到分区集合](documentdb-partition-data.md#migrating-from-single-partition)。 
+无论使用的是 S1、S2 或 S3 性能级别的集合还是单分区集合，它们的可用存储都是 10 GB。可以使用 Cosmos DB 数据迁移工具将数据迁移到分区集合，它们的存储空间几乎无限。 有关分区集合优势的信息，请参阅 [Azure Cosmos DB 中的分区和缩放](documentdb-partition-data.md)。 有关如何将 S1、S2、S3 或单分区集合迁移到分区集合的信息，请参阅[从单分区集合迁移到分区集合](documentdb-partition-data.md#migrating-from-single-partition)。 
 
 <a name="change-before"></a>
 
-## <a name="can-i-change-between-the-s1-s2-and-s3-performance-levels-before-august-1-2017"></a>在 2017 年 8 月 1 日之前，是否可以在 S1、S2 和 S3 性能级别之间切换？
+## <a name="can-i-change-between-the-s1-s2-and-s3-performance-levels-before-the-planned-migration"></a>在计划的迁移期限之前，是否可以在 S1、S2 和 S3 性能级别之间切换？
 
-只有使用 S1、S2 和 S3 性能的现有帐户才能通过门户或编程方式切换和更改性能级别层。 从 2017 年 8 月 1 日开始，S1、S2 和 S3 性能级别不再可用。 如果从 S1、S3 或 S3 切换到了单分区集合，将无法恢复 S1、S2 或 S3 性能级别。
+只有使用 S1、S2 和 S3 性能的现有帐户才能通过门户或编程方式切换和更改性能级别层。 如果从 S1、S3 或 S3 切换到了单分区集合，将无法恢复 S1、S2 或 S3 性能级别。
 
 <a name="when-migrated"></a>
 
 ## <a name="how-will-i-know-when-my-collection-has-migrated"></a>如何知道我的集合已迁移？
 
-迁移会在 2017 年 7 月 31 日进行。 如果某个集合使用 S1、S2 或 S3 性能级别，发生迁移之前，Cosmos DB 团队将通过电子邮件与你联系。 2017 年 8 月 1 日完成迁移后，Azure 门户会显示集合使用的是标准定价。
+迁移会在 2017 年下旬进行。 如果某个集合使用 S1、S2 或 S3 性能级别，发生迁移之前，Cosmos DB 团队将通过电子邮件与你联系。 完成迁移后，Azure 门户会显示集合使用的是标准定价。
 
 ![如何确认集合已迁移到标准定价层](./media/performance-levels/portal-standard-pricing-applied.png)
 
@@ -114,7 +114,7 @@ S1、S2 和 S3 性能级别无法提供 DocumentDB API 集合具备的灵活性�
 
 ## <a name="how-do-i-migrate-from-the-s1-s2-s3-performance-levels-to-single-partition-collections-on-my-own"></a>如何自行从 S1、S2、S3 性能级别迁移到单分区集合？
 
-可以使用 Azure 门户或编程方式从 S1、S2 和 S3 性能级别迁移到单分区集合。 可以在 8 月 1 日之前自行执行此操作，即可享用单分区集合提供的灵活吞吐量选项；或者，我们会在 2017 年 7 月 31 日代你迁移集合。
+可以使用 Azure 门户或编程方式从 S1、S2 和 S3 性能级别迁移到单分区集合。 可以在计划的迁移期限之前自行执行此操作，即可享用单分区集合提供的灵活吞吐量选项；或者，我们会在 2017 年下旬代客户迁移集合。
 
 **使用 Azure 门户迁移到单分区集合**
 
