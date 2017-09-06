@@ -4,7 +4,7 @@ description: "了解如何开发使用 C # 的 Azure 功能。"
 services: functions
 documentationcenter: na
 author: lindydonna
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构"
@@ -16,12 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/07/2017
 ms.author: donnam
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 1d0143d72ab18deeba7a32cc732445cc7ba64019
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 25c5f72be8dc79d8b33a598c7be494bd955eb850
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-functions-c-script-developer-reference"></a>Azure Functions C# 脚本开发人员参考
@@ -152,7 +151,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 * `System.Net.Http`
 * `System.Threading.Tasks`
 * `Microsoft.Azure.WebJobs`
-* `Microsoft.Azure.WebJobs.Host`。
+* `Microsoft.Azure.WebJobs.Host`
 
 ## <a name="referencing-external-assemblies"></a>引用外部程序集
 对于框架程序集，通过使用 `#r "AssemblyName"` 指令添加引用。
@@ -178,7 +177,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 * `Microsoft.Azure.WebJobs.Host`
 * `Microsoft.Azure.WebJobs.Extensions`
 * `System.Web.Http`
-* `System.Net.Http.Formatting`。
+* `System.Net.Http.Formatting`
 
 可通过简单名称（例如 `#r "AssemblyName"`）引用以下程序集：
 
@@ -220,7 +219,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 
 上传 *project.json* 文件时，运行时获取包，并自动将引用添加到包程序集。 无需添加 `#r "AssemblyName"` 指令。 若要使用 NuGet 包中定义的类型，将需要的 `using` 语句添加到 run.csx 文件中 
 
-在 Functions 运行时，通过比较 `project.json` 和 `project.lock.json` 运行 NuGet 还原。 如果各文件的日期和时间戳不匹配，则会运行 NuGet 还原且 NuGet 会下载更新包。 但是，如果各文件的日期和时间戳匹配，则 NuGet 不执行还原。 因此，不应部署 `project.lock.json`，因为它会导致 NuGet 跳过包还原。 若要避免部署锁定文件，请将 `project.lock.json` 添加到 `.gitignore` 文件。
+在 Functions 运行时，通过比较 `project.json` 和 `project.lock.json` 运行 NuGet 还原。 如果各文件的日期和时间戳不匹配，则会运行 NuGet 还原且 NuGet 会下载更新包。 但是，如果各文件的日期和时间戳匹配，则 NuGet 不执行还原。 因此，不应部署 `project.lock.json`，因为它会导致 NuGet 跳过包还原。 要避免部署锁定文件，请将 `project.lock.json` 添加到 `.gitignore` 文件。
 
 若要使用自定义 NuGet 源，请在 Function App 根中指定“Nuget.Config”文件中的源。 有关详细信息，请参阅[配置 NuGet 行为](/nuget/consume-packages/configuring-nuget-behavior)。
 
@@ -265,7 +264,7 @@ public static string GetEnvironmentVariable(string name)
 ```
 
 ## <a name="reusing-csx-code"></a>重用.csx 代码
-可以使用类和方法定义其他 *.csx* 文件中您 *run.csx* 文件。 为此，需使用 run.csx 文件中的 `#load` 指令。 在下面的实例中，在 myLogger.csx 中共享了名为 `MyLogger` 的日志记录例程，并使用 `#load` 指令将其加载到 run.csx：
+可以在 *run.csx* 文件中使用其他 *run.csx* 文件中定义的类和方法。 为此，需使用 run.csx 文件中的 `#load` 指令。 在下面的实例中，在 myLogger.csx 中共享了名为 `MyLogger` 的日志记录例程，并使用 `#load` 指令将其加载到 run.csx：
 
 示例 *run.csx*：
 
@@ -446,3 +445,4 @@ public static async Task Run(string input, Binder binder)
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 
 [host\.json]: https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json
+

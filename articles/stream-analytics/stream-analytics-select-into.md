@@ -4,7 +4,7 @@ description: "在流分析中使用 SELECT INTO 语句进行数据中间查询�
 keywords: 
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 9952e2cf-b335-4a5c-8f45-8d3e1eda2e20
@@ -14,18 +14,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 5d782e2a23c76a95f5fa1e1f9c78369feb4e051b
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 6ffa756eef0cfa44d7dd397e43afbf054ac2df7a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="debug-queries-by-using-select-into-statements"></a>使用 SELECT INTO 语句调试查询
 
-在实时数据处理中，掌握查询过程中数据的状态是十分有用的。 由于可以多次读取 Azure 流分析作业的输入或步骤，因此可以编写额外的 SELECT INTO 语句。 这样做会将中间数据输出至存储，并允许你检查数据的正确性，就如调试程序时的监视变量一样。
+在实时数据处理中，掌握查询过程中数据的状态是十分有用的。 由于可以多次读取 Azure 流分析作业的输入或步骤，因此可以编写额外的 SELECT INTO 语句。 这样做会将中间数据输出至存储，并允许检查数据的正确性，就如调试程序时的监视变量一样。
 
 ## <a name="use-select-into-to-check-the-data-stream"></a>使用 SELECT INTO 检查数据流
 
@@ -33,7 +32,7 @@ ms.lasthandoff: 07/04/2017
 
 ![示例 SELECT INTO 查询](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
-请注意，虽然作业正在运行，但在输出中未生成任何事件。 在“监视”磁贴上，可以看见输入正在生成数据，但你不知道 JOIN 的哪个步骤导致所有事件被删除。
+请注意，虽然作业正在运行，但在输出中未生成任何事件。 在如下所示的“监视”磁贴上，可以看见输入正在生成数据，但你不知道 JOIN 的哪个步骤导致删除所有事件。
 
 ![“监视”磁贴](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
  
@@ -76,7 +75,7 @@ ms.lasthandoff: 07/04/2017
 
 ## <a name="get-help"></a>获取帮助
 
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 

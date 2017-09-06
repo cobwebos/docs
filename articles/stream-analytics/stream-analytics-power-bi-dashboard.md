@@ -4,7 +4,7 @@ description: "使用实时流式处理 Power BI 仪表板来采集商业智能�
 keywords: "分析仪表板, 实时仪表板"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: fe8db732-4397-4e58-9313-fec9537aa2ad
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/27/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: d55cadbd60ee47b9c4b551f1b2b5bc4431bfac97
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: b446e2296f2747012849936b994c4a4a2044869e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>流分析和 Power BI：针对流数据的实时分析仪表板
@@ -71,7 +70,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
     > [!WARNING]
     > 如果 Power BI 已有 1 个数据集和 1 个表，且与流分析作业中指定的数据集和表同名，则会覆盖现有的数据集和表。
-    > 建议不要在 Power BI 帐户中显式创建此数据集和表。 在启动流分析作业，并且该作业开始向 Power BI 发送输出时，这些文件将自动创建。 如果作业查询没有返回任何结果，则无法创建数据集和表。
+    > 建议不要在 Power BI 帐户中显式创建此数据集和表。 在启动流分析作业，并且该作业开始向 Power BI 发送输出时，这些文件会自动创建。 如果作业查询没有返回任何结果，则无法创建数据集和表。
     >
 
 8. 单击“创建” 。
@@ -169,7 +168,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
 5. 在“你的数据集”下，选择数据集，然后单击“下一步”。
 
-    ![你的流数据集](./media/stream-analytics-power-bi-dashboard/your-streaming-dataset.png)
+    ![流数据集](./media/stream-analytics-power-bi-dashboard/your-streaming-dataset.png)
 
 6. 在“可视化效果类型”下选择“卡”，然后在“字段”列表中选择“fraudulentcalls”。
 
@@ -213,7 +212,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
 
 ## <a name="learn-about-limitations-and-best-practices"></a>了解限制和最佳做法
-目前，大约每秒可调用 Power BI 一次。 流视觉对象支持 15 KB 的数据包。 超过该大小的流视觉对象将会失败（但推送将继续工作）。 由于这些限制，Power BI 最适合用于可通过 Azure 流分析来大幅减少数据加载的案例。 建议使用“翻转窗口”或“跳跃窗口”来确保数据推送速率最大为每秒推送一次，并且查询满足吞吐量要求。
+目前，大约每秒可调用 Power BI 一次。 流视觉对象支持 15 KB 的数据包。 超过该大小的流视觉对象会失败（但推送将继续工作）。 由于这些限制，Power BI 最适合用于可通过 Azure 流分析来大幅减少数据加载的案例。 建议使用“翻转窗口”或“跳跃窗口”来确保数据推送速率最大为每秒推送一次，并且查询满足吞吐量要求。
 
 可以使用以下公式来计算时间范围值（以秒为单位）：
 
@@ -223,7 +222,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
 * 1,000 个设备以一秒为间隔发送数据。
 * 使用的 Power BI Pro SKU 支持 1,000,000 行/小时。
-* 你想要将每个设备的平均数据量发布到 Power BI。
+* 想要将每个设备的平均数据量发布到 Power BI。
 
 因此，公式为：
 
@@ -247,12 +246,12 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 ### <a name="renew-authorization"></a>续订授权
 如果自作业创建后或上次身份验证后更改了密码，需要重新对 Power BI 帐户进行身份验证。 如果在 Azure Active Directory (Azure AD) 租户中配置了多重身份验证，还需要每两周续订一次 Power BI 授权。 如果不续订，操作日志中会出现缺少作业输出或者 `Authenticate user error` 之类的表现。
 
-同样，如果作业在令牌过期后启动，则会发生错误且作业将失败。 若要解决此问题，请停止正在运行的作业并转到 Power BI 输出。 为了避免数据丢失，请选择“续订授权”链接，然后从“上次停止时间”重新启动作业。
+同样，如果作业在令牌过期后启动，则会发生错误且作业将失败。 若要解决此问题，请停止正在运行的作业并转到 Power BI 输出。 为了避免数据丢失，请选择“续订授权”链接，并从“上次停止时间”重新启动作业。
 
 使用 Power BI 刷新授权后，授权区域中会出现一条绿色通知，指出问题已解决。
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

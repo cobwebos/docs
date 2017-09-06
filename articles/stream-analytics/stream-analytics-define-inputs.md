@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/05/2017
 ms.author: samacha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 09066927641054acb8c53a3585e111df87893e50
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 8ea05e1c3419f3e9c6b5806c1a2d4035239809d8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>数据连接：了解从事件到流分析的数据流输入
@@ -126,7 +126,7 @@ Azure Iot 中心是已针对 IoT 进行优化，具有高度伸缩性的发布-�
 CSV 格式的输入需要标头行，以便为数据集定义字段。 此外，所有标头行字段都必须唯一。
 
 > [!NOTE]
-> 流分析不支持将内容添加到现有 Blob。 流分析将仅查看 Blob 一次，并且在作业读取数据后对 Blob 所做的任何更改都不会得到处理。 最佳做法是一次性上传所有数据，然后不向该 Blob 存储添加任何事件。
+> 流分析不支持将内容添加到现有 blob 文件。 流分析将仅查看每个文件一次，并且在作业读取数据后对文件所做的任何更改都不会得到处理。 最佳做法是立即上传 blob 文件的全部数据，然后将其他较新的事件添加到其他全新的 blob 文件中。
 > 
 
 ### <a name="configure-blob-storage-as-a-data-stream-input"></a>将 Blob 存储配置为数据流输入
@@ -165,10 +165,10 @@ FROM Input
 ````
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
-你已经了解了 Azure 中针对流分析作业的数据连接选项。 若要了解流分析的更多内容，请参阅：
+已经了解了 Azure 中针对流分析作业的数据连接选项。 若要了解流分析的更多内容，请参阅：
 
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/21/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: c20f5c39b00992d801909c8e5de292f3c2f12673
-ms.lasthandoff: 04/22/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: f10bc67e4ee814d5aa0accff1a3dc1426b818084
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Data Lake Store 最终用户身份验证
@@ -49,12 +49,12 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
     ![获取 AAD 域](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
 ## <a name="end-user-authentication"></a>最终用户身份验证
-若希望最终用户通过 Azure AD 登录到你的应用，则推荐此方式。 你的应用程序可访问 Azure 资源，具有与已登录的用户相同的访问权限级别。 你的最终用户需要定期提供凭据，以使你的应用程序可继续访问。
+若希望最终用户通过 Azure AD 登录到应用，则推荐此方式。 然后，应用程序可访问 Azure 资源，且访问权限级别与已登录的最终用户相同。 最终用户需要定期提供凭据，以使应用程序可继续访问。
 
-让最终用户登录的结果是会向应用程序授予访问令牌和刷新令牌。 访问令牌会附加到对 Data Lake Store 或 Data Lake Analytics 作出的每个请求，默认情况下一小时内有效。 刷新令牌可用于获取新的访问令牌，并且如果定期使用，默认情况下两周内有效。 可使用两种不同的最终用户登录方式。
+让最终用户登录的结果是会向应用程序授予访问令牌和刷新令牌。 访问令牌会附加到对 Data Lake Store 或 Data Lake Analytics 作出的每个请求，默认情况下一小时内有效。 刷新令牌可用于获取新的访问令牌，默认情况下两周内有效。 可使用两种不同的最终用户登录方式。
 
 ### <a name="using-the-oauth-20-pop-up"></a>使用 OAuth 2.0 弹出窗口
-应用程序会触发 OAuth 2.0 身份验证弹出窗口，最终用户可在该弹出窗口中输入凭据。 如果需要，此弹出窗口也适用于 Azure AD 双重身份验证 (2FA) 过程。 
+应用程序会触发 OAuth 2.0 身份验证弹出窗口，最终用户可在其中输入凭据。 如有必要，此弹出窗口也适用于 Azure AD 双因素身份验证 (2FA) 过程。 
 
 > [!NOTE]
 > 此方法在 Azure AD 身份验证库 (ADAL) 中尚不支持 Python 或 Java。
@@ -62,10 +62,10 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 > 
 
 ### <a name="directly-passing-in-user-credentials"></a>直接传递用户凭据
-应用程序可直接向 Azure AD 提供用户凭据。 此方法仅适用于组织 ID 用户帐户，不适用于个人/“实时 ID”用户帐户，包括那些以 @outlook.com 或 @live.com 结尾的用户帐户。 此外，此方法不适用于需要 Azure AD 双因素身份验证 (2FA) 的用户帐户。
+应用程序可直接向 Azure AD 提供用户凭据。 此方法仅适用于组织 ID 用户帐户，不适用于个人/“实时 ID”用户帐户，包括以 @outlook.com 或 @live.com 结尾的用户帐户。此外，此方法不适用于需要 Azure AD 双因素身份验证 (2FA) 的用户帐户。
 
 ### <a name="what-do-i-need-to-use-this-approach"></a>使用此方式需要什么？
-* Azure AD 域名。 已在本文的先决条件中列出。
+* Azure AD 域名。 此要求已在本文的先决条件中列出。
 * Azure AD **本机应用程序**
 * Azure AD 本机应用程序的应用程序 ID
 * Azure AD 本机应用程序的重定向 URI
@@ -76,17 +76,17 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 
 创建并配置用于通过使用 Azure Active Directory 的 Azure Data Lake Store 进行最终用户身份验证的应用程序。 有关说明，请参阅[创建 Azure AD 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md)。
 
-遵循以上链接中的说明进行操作时，请确保选择“本机”作为应用程序类型，如以下屏幕截图中所示。
+遵循链接中的说明进行操作时，请确保选择“本机”作为应用程序类型，如以下屏幕截图中所示：
 
 ![创建 Web 应用](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "创建本机应用")
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>步骤 2：获取应用程序 ID 和重定向 URI
 
-若要检索 Azure AD 本机应用程序的应用程序 ID（也称为 Azure 经典门户中的客户端 ID），请参阅[获取应用程序 ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)。
+要检索 Azure AD 本机应用程序的应用程序 ID（也称为 Azure 经典门户中的客户端 ID），请参阅[获取应用程序 ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)。
 
 若要检索重定向 URI，请按照以下步骤进行操作。
 
-1. 从 Azure 门户中选择“Azure Active Directory”，单击“应用注册”，然后找到并单击刚刚创建的 Azure AD 本机应用程序。
+1. 从 Azure 门户中选择“Azure Active Directory”，单击“应用注册”，找到并单击已创建的 Azure AD 本机应用程序。
 
 2. 在应用程序的“设置”边栏选项卡上，单击“重定向 URI”。
 
@@ -97,9 +97,9 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 
 ## <a name="step-3-set-permissions"></a>步骤 3：设置权限
 
-1. 从 Azure 门户中选择“Azure Active Directory”，单击“应用注册”，然后找到并单击刚刚创建的 Azure AD 本机应用程序。
+1. 从 Azure 门户中选择“Azure Active Directory”，单击“应用注册”，找到并单击已创建的 Azure AD 本机应用程序。
 
-2. 在应用程序的“设置”边栏选项卡上，单击“所需权限”，然后单击“添加”。
+2. 在应用程序的“设置”边栏选项卡上，单击“所需权限”，并单击“添加”。
 
     ![客户端 ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
 
@@ -107,7 +107,7 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 
     ![客户端 ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
  
-4.  在“添加 API 访问”边栏选项卡上，单击“选择权限”，选中复选框以给予“Data Lake Store 的完全访问权限”，然后单击“选择”。
+4.  在“添加 API 访问”边栏选项卡上，单击“选择权限”，选中复选框以给予“Data Lake Store 的完全访问权限”，并单击“选择”。
 
     ![客户端 ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 

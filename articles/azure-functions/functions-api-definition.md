@@ -4,7 +4,7 @@ description: "Azure Functions 中的 OpenAPI 支持概述"
 services: functions
 documentationcenter: 
 author: alexkarcher-msft
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 
 ms.service: functions
@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: c144e22654629f600b8f630363239efc82ac79d7
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: e9499d036c8c5ef5a56a70f7e7ecf9afbff4e6b0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions 中的 OpenAPI 2.0 元数据支持（预览版）
@@ -30,12 +29,12 @@ Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一�
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 >[!TIP]
->建议先从[入门教程](./functions-api-definition-getting-started.md)开始，然后返回到本文档，以了解有关特定功能的详细信息。
+>建议先从[入门教程](./functions-api-definition-getting-started.md)开始，然后返回到本文档，了解有关特定功能的详细信息。
 
 ## <a name="enable"></a>启用 OpenAPI 定义支持
-可在“API 定义(预览)”页面的 Function App 设置中配置所有 OpenAPI 设置。
+可在函数应用的“平台功能”的“API 定义”页中配置所有 OpenAPI 设置。
 
-若要生成托管的 OpenAPI 定义和快速入门定义，请将“API 定义源”设置为“函数”。 外部 URL 允许函数使用托管在其他位置的 OpenAPI 定义。
+要生成托管的 OpenAPI 定义和快速入门定义，请将“API 定义源”设置为“函数(预览版)”。 外部 URL 允许函数使用托管在其他位置的 OpenAPI 定义。
 
 ## <a name="generate-definition"></a>通过函数元数据生成 Swagger 框架
 模板可帮助你开始编写第一个 OpenAPI 定义。 定义模板功能通过使用 function.json 文件中的所有元数据，为每个 HTTP 触发器函数创建稀疏的 OpenAPI 定义。 将需要按 [OpenAPI 规范](http://swagger.io/specification/)填写 API 详细信息，如请求和响应模板。

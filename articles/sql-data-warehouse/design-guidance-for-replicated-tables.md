@@ -15,10 +15,10 @@ ms.custom: tables
 ms.date: 07/14/2017
 ms.author: rortloff;barbkess
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: efb5361496a2199a960564f6213f509b693e3cfa
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 437a4f628a343312984d1fa2981df7fa01459e26
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -130,11 +130,11 @@ WHERE d.FiscalYear = 2004
 ```
 将 `DimDate` 和 `DimSalesTerritory` 重新创建为轮循表。 结果，查询显示了以下查询计划，其中包含多个广播移动操作： 
  
-![轮循查询计划](media/design-guidance-for-replicated-tables/round-robin-tables-query-plan.jpg "轮循查询计划") 
+![轮循查询计划](media/design-guidance-for-replicated-tables/round-robin-tables-query-plan.jpg) 
 
 将 `DimDate` 和 `DimSalesTerritory` 重新创建为复制表，然后重新运行查询。 生成的查询计划要短很多，而且不移动任何广播。
 
-![复制查询计划](media/design-guidance-for-replicated-tables/replicated-tables-query-plan.jpg "轮循查询计划") 
+![复制查询计划](media/design-guidance-for-replicated-tables/replicated-tables-query-plan.jpg) 
 
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>修改复制表的性能注意事项

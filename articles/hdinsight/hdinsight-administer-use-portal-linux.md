@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 08/25/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
-ms.openlocfilehash: 72c02eac9d627ad642d3e66492c314a2276e9c0a
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 736e1a52f55560dfded7a21eaeb1cbac7602f8d6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Hadoop 群集
@@ -156,11 +156,14 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
 
     可以顺利地在 HBase 群集运行时对其添加或删除节点。 在完成缩放操作后的几分钟内，区域服务器就能自动平衡。 不过，也可以手动平衡区域服务器，方法是登录到群集的头节点，并在命令提示符窗口中运行以下命令：
 
-        >pushd %HBASE_HOME%\bin
-        >hbase shell
-        >balancer
+    ```bash
+    >pushd %HBASE_HOME%\bin
+    >hbase shell
+    >balancer
+    ```
 
-    有关使用 HBase shell 的详细信息，请参阅 []
+    有关使用 HBase shell 的详细信息，请参阅 [HDInsight 中的 Apache HBase 示例入门](hdinsight-hbase-tutorial-get-started-linux.md)。
+
 * Storm
 
     可以顺利地在 Storm 群集运行时对其添加或删除数据节点。 但是，在缩放操作成功完成后，需要重新平衡拓扑。
@@ -178,10 +181,12 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
 
     以下是有关如何使用 CLI 命令重新平衡 Storm 拓扑的示例：
 
-        ## Reconfigure the topology "mytopology" to use 5 worker processes,
-        ## the spout "blue-spout" to use 3 executors, and
-        ## the bolt "yellow-bolt" to use 10 executors
-        $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
+    ```cli
+    ## Reconfigure the topology "mytopology" to use 5 worker processes,
+    ## the spout "blue-spout" to use 3 executors, and
+    ## the bolt "yellow-bolt" to use 10 executors
+    $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
+    ```
 
 **缩放群集**
 
@@ -207,6 +212,14 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
 
 有关定价信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。 若要从门户中删除群集，请参阅[删除群集](#delete-clusters)
 
+## <a name="move-cluster"></a>移动群集
+
+可以将 HDInsight 群集移到另一个 Azure 资源组或另一个订阅。  请参阅[列出和显示群集](#list-and-show-clusters)。
+
+## <a name="upgrade-clusters"></a>升级群集
+
+请参阅[将 HDInsight 群集升级到更新的版本](./hdinsight-upgrade-cluster.md)。
+
 ## <a name="change-passwords"></a>更改密码
 HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户（即 HTTP 用户帐户）和 SSH 用户帐户是在创建过程中创建的。 可以使用 Ambari Web UI 更改群集用户帐户用户名和密码，使用脚本操作更改 SSH 用户帐户
 
@@ -218,7 +231,7 @@ HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户（�
 >
 >
 
-1. 使用 HDInsight 群集用户凭据登录到 Ambari Web UI。 默认的用户名为 **admin**。 URL 为 **https://&lt;HDInsight Cluster Name>azurehdinsight.net**。
+1. 使用 HDInsight 群集用户凭据登录到 Ambari Web UI。 默认的用户名为 **admin**。URL 为 **https://&lt;HDInsight Cluster Name>azurehdinsight.net**。
 2. 在顶部菜单中单击“管理”，并单击“管理 Ambari”。
 3. 在左侧菜单中，单击“用户”。
 4. 单击“管理”。
@@ -229,16 +242,16 @@ HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户（�
 ### <a name="change-the-ssh-user-password"></a>更改 SSH 用户密码
 1. 使用文本编辑器将以下文本保存为名为“changepassword.sh”的文件。
 
-   > [!IMPORTANT]
-   > 所用的编辑器必须使用 LF 作为行尾。 如果编辑器使用 CRLF，则脚本将无法正常工作。
-   >
-   >
+    > [!IMPORTANT]
+    > 所用的编辑器必须使用 LF 作为行尾。 如果编辑器使用 CRLF，则脚本将无法正常工作。
 
-        #! /bin/bash
-        USER=$1
-        PASS=$2
+    ```bash
+    #! /bin/bash
+    USER=$1
+    PASS=$2
+    usermod --password $(echo $PASS | openssl passwd -1 -stdin) $USER
+    ```
 
-        usermod --password $(echo $PASS | openssl passwd -1 -stdin) $USER
 2. 将该文件上传到可以使用 HTTP 或 HTTPS 地址从 HDInsight 访问的存储位置。 例如，某个公共文件存储（如 OneDrive 或 Azure Blob 存储）。 将 URI（HTTP 或 HTTPS 地址）保存到文件中，因为下一步需要用到此 URI。
 3. 从 Azure 门户中，单击“HDInsight 群集”。
 4. 单击 HDInsight 群集。
@@ -282,18 +295,26 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 
 请参阅[列出和显示群集](#list-and-show-clusters)。
 
-## <a name="find-the-default-storage-account"></a>查找默认存储帐户
-每个 HDInsight 群集都有默认的存储帐户。 群集的默认存储帐户及其密钥显示在“存储帐户”下。 请参阅[列出和显示群集](#list-and-show-clusters)。
+## <a name="find-the-storage-accounts"></a>查找存储帐户
+
+HDInsight 群集使用 Azure 存储帐户或 Azure Data Lake Store 来存储数据。 每个 HDInsight 群集都可拥有一个默认存储帐户和多个链接的存储帐户。 若要列出存储帐户，请先从门户中打开群集，然后单击“存储帐户”：
+
+![HDInsight 群集存储帐户](./media/hdinsight-administer-use-portal-linux/hdinsight-storage-accounts.png)
+
+在上面的屏幕截图上，有一个“默认”列，指示帐户是否为默认存储帐户。
+
+若要列出 Data Lake Store 帐户，请单击上面屏幕截图中的“Data Lake Store 访问”。
 
 ## <a name="run-hive-queries"></a>运行 Hive 查询
 无法直接从 Azure 门户运行 Hive 作业，但可以使用 Ambari Web UI 上的 Hive 视图。
 
 **使用 Ambari Hive 视图运行 Hive 查询**
 
-1. 使用 HDInsight 群集用户凭据登录到 Ambari Web UI。 默认的用户名为 **admin**。 URL 为 **https://&lt;HDInsight Cluster Name>azurehdinsight.net**。
+1. 使用 HDInsight 群集用户凭据登录到 Ambari Web UI。 默认的用户名为 **admin**。URL 为 **https://&lt;HDInsight Cluster Name>azurehdinsight.net**。
 2. 打开 Hive 视图，如以下屏幕截图中所示：  
 
     ![HDIinsight Hive 视图](./media/hdinsight-administer-use-portal-linux/hdinsight-hive-view.png)
+
 3. 在顶部菜单中单击“查询”。
 4. 在“查询编辑器”中输入 Hive 查询，并单击“执行”。
 
@@ -316,8 +337,6 @@ HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息�
 
 > [!IMPORTANT]
 > 若要监视 HDInsight 群集提供的服务，必须使用 Ambari Web 或 Ambari REST API。 有关如何使用 Ambari 的详细信息，请参阅[使用 Ambari 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)
->
->
 
 ## <a name="connect-to-a-cluster"></a>连接到群集
 
@@ -325,7 +344,7 @@ HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息�
 * [将 Pig 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 ## <a name="next-steps"></a>后续步骤
-在本文中，你学习了一些基本管理功能。 若要了解更多信息，请参阅下列文章：
+本文介绍了一些基本管理功能。 若要了解更多信息，请参阅下列文章：
 
 * [使用 Azure PowerShell 管理 HDInsight](hdinsight-administer-use-powershell.md)
 * [使用 Azure CLI 管理 HDInsight](hdinsight-administer-use-command-line.md)

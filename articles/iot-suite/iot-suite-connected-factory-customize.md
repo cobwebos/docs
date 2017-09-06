@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 86a4d6d3ab4d29fba8f554265958ffa079b69ec2
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 90a6172dbd887ecda5a9f5d9082a4e136092bc10
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>自定义已连接工厂解决方案如何显示来自 OPC UA 服务器的数据
 
 ## <a name="introduction"></a>介绍
 
-已连接工厂解决方案将聚合并显示来自连接到该解决方案的 OPC UA 服务器的数据。 可以在解决方案中浏览命令并将其发送到 OPC UA 服务器。 有关 OPC UA 的详细信息，请参阅[常见问题解答][lnk-faq]。
+已连接工厂解决方案将聚合并显示来自连接到该解决方案的 OPC UA 服务器的数据。 可以在解决方案中浏览命令并将其发送到 OPC UA 服务器。 有关 OPC UA 的详细信息，请参阅[连接工厂常见问题解答](iot-suite-faq-cf.md)。
 
 解决方案中聚合数据的示例包括设备综合效率 (OEE) 和关键性能指标 (KPI)，可在工厂的仪表板、生产线和工作站级别查看这些数据。 以下屏幕截图显示慕尼黑工厂中生产线 1 上装配工作站的 OEE 和 KPI 值：
 
@@ -175,6 +175,7 @@ azure-iot-connected-factory 存储库包含 build.ps1 PowerShell 脚本，该脚
 * [连接工厂预配置解决方案演练][lnk-rm-walkthrough]
 * [为已连接的工厂部署网关][lnk-connect-cf]
 * [azureiotsuite.com 站点权限][lnk-permissions]
+* [连接的工厂常见问题解答](iot-suite-faq-cf.md)
 * [常见问题解答][lnk-faq]
 
 

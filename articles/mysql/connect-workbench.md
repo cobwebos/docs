@@ -6,15 +6,15 @@ author: jasonwhowell
 ms.author: jasonh
 manager: jhubbard
 editor: seanli1988
-ms.service: mysql-database
+ms.service: mysql
 ms.custom: mvc
-ms.topic: article
+ms.topic: quickstart
 ms.date: 08/23/2017
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: ffeca6670521fe2b43c4ac47cac26fd2ad30f968
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 20a1f31ce42abb924504c4008f85420fc49aec89
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 08/24/2017
 6.   将打开一个新的 SQL 选项卡，该选项卡包含一个可在其中键入查询的空白编辑器。
 
     > [!NOTE]
-    > 默认情况下，SSL 是在服务器上强制实施的，并且它需要额外配置才能成功连接。 请参阅[配置应用程序的 SSL 连接性以安全连接到 Azure Database for MySQL](./howto-configure-ssl.md)。  若要对此快速入门禁用 SSL，请访问 Azure 门户，然后单击“连接安全性”页来禁用“强制实施 SSL 连接”切换按钮。
+    > 默认情况下，SSL 连接安全性是必需的，并且在 Azure Database for MySQL 服务器上强制执行。 通常，不需要对 SSL 证书进行额外的配置，MySQL Workbench 即可连接到服务器。 有关 SSL 的详细信息，请参阅[配置应用程序中的 SSL 连接性以安全连接到 Azure Database for MySQL](./howto-configure-ssl.md)。  如果需要禁用 SSL，请访问 Azure 门户，然后单击“连接安全性”页来禁用“强制实施 SSL 连接”切换按钮。
 
 ## <a name="create-a-table-insert-data-read-data-update-data-delete-data"></a>创建表、插入数据、读取数据、更新数据、删除数据
 1. 将示例 SQL 代码复制并粘贴到一个空白 SQL 选项卡中，以阐释一些示例数据。
@@ -108,7 +108,7 @@ ms.lasthandoff: 08/24/2017
     ![运行示例 SQL 代码的 MySQL Workbench SQL 选项卡](media/connect-workbench/3-workbench-sql-tab.png)
 
 2. 若要运行示例 SQL 代码，请单击“SQL 文件”选项卡工具栏中的闪电图标。
-3. 请注意页面正中“结果集”部分中的三个选项卡式的结果。 
+3. 请注意页面中间“结果网格”部分中的三个选项卡式结果。 
 4. 请注意页面底部的“输出”列表。 显示有每个命令的状态。 
 
 现已使用 MySQL Workbench 连接到 Azure Database for MySQL，并已使用 SQL 语言查询数据。

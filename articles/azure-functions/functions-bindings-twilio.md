@@ -4,7 +4,7 @@ description: "了解如何将 Azure Functions 与 Twilio 绑定配合使用。"
 services: functions
 documentationcenter: na
 author: wesmc7777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, Functions, 事件处理, 动态计算, 无服务体系结构"
@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/20/2016
 ms.author: wesmc
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2fd12dd32ed3c8479c7460cbc0a1cac3330ff4f4
-ms.openlocfilehash: 9355aae6e3fbf70aae08cc829d7addd2decc44fd
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: e8c5e8f2dfedae26486e1c8afbe0cec3f3228e86
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/01/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="send-sms-messages-from-azure-functions-using-the-twilio-output-binding"></a>使用 Twilio 输出绑定从 Azure Functions 发送短信
@@ -36,14 +36,16 @@ Azure Functions 支持 Twilio 输出绑定，使函数能够通过几行代码�
 ## <a name="functionjson-for-the-twilio-output-binding"></a>用于 Twilio 输出绑定的 function.json
 function.json 文件提供以下属性：
 
-* `name`：在 Twilio 短信的函数代码中使用的变量名。
-* `type`：必须设置为“twilioSms”。
-* `accountSid`：此值必须设置为保留 Twilio 帐户 Sid 的应用设置的名称。
-* `authToken`：此值必须设置为保留 Twilio 身份验证令牌的应用设置的名称。
-* `to`：此值设置为短信将发送到的电话号码。
-* `from`：此值设置为发送短信的电话号码。
-* `direction`：必须设置为“out”。
-* `body`：如果不需要在函数的代码中动态设置短信，则可以使用此值对其进行硬编码。 
+|属性  |说明  |
+|---------|---------|
+|**name**| 在 Twilio 短信的函数代码中使用的变量名。 |
+|**类型**| 必须设置为 `twilioSms`。|
+|**accountSid**| 此值必须设置为保留 Twilio 帐户 Sid 的应用设置的名称。|
+|**authToken**| 此值必须设置为保留 Twilio 身份验证令牌的应用设置的名称。|
+|**to**| 此值设置为短信将发送到的电话号码。|
+|**from**| 此值设置为发送短信的电话号码。|
+|**direction**| 必须设置为 `out`。|
+|**body**| 如果不需要在函数的代码中动态设置短信，则可以使用此值对其进行硬编码。 |
 
 示例 function.json：
 

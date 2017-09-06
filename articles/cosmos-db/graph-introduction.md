@@ -10,21 +10,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 05/21/2017
+ms.date: 08/29/2017
 ms.author: denlee
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 4ee52c2665d5856cb0022365edf0485458b629fe
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: af4c67accf43c2f4f1498e3cafad6e9087a923af
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Azure Cosmos DB 简介：图形 API
 
 [Azure Cosmos DB](introduction.md) 是 Microsoft 针对任务关键型应用程序提供的全局分布式多模型数据库服务。 Azure Cosmos DB 在全球范围内提供[统包全局分发](distribute-data-globally.md)、[吞吐量和存储的弹性扩展](partition-data.md)、99% 的情况下低至个位数的毫秒级延迟、[五个妥善定义的一致性级别](consistency-levels.md)以及得到保证的高可用性，所有这些均由[行业领先的 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) 提供支持。 Azure Cosmos DB [自动为数据编制索引](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)，无需客户管理架构和索引。 它是多模型的，支持文档、键-值、图形和纵栏表数据模型。
 
-![Gremlin、图形和 Azure Cosmos DB](./media/graph-introduction/graph-gremlin.png)
+建议通过观看以下视频了解入门知识，Kirill Gavrylyuk 在视频中说明了如何开始使用 Azure Cosmos DB 上的图。
 
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Graphs-with-Azure-Cosmos-DB-Gremlin-API/player]
+> 
+> 
 Azure Cosmos DB 图形 API 可提供：
 
 - 图形建模
@@ -75,7 +78,7 @@ Azure Cosmos DB 是一个完全托管的图形数据库，提供全局分发、�
 
 * 完全托管
 
- 通过 Azure Cosmos DB 无需管理数据库和计算机资源。 Azure Cosmos DB 是完全托管的 Microsoft Azure 服务，你无需管理虚拟机、部署并配置软件、管理数据库和资源的增减，或处理复杂的数据层升级。 每个图形将自动备份，以防受到区域故障的影响。 你可以轻松添加 Azure Cosmos DB 帐户并根据需要预配容量，以便可以专注于应用程序而不是操作和管理数据库。
+ 通过 Azure Cosmos DB 无需管理数据库和计算机资源。 Azure Cosmos DB 是完全托管的 Microsoft Azure 服务，无需管理虚拟机、部署并配置软件、管理数据库和资源的增减，或处理复杂的数据层升级。 每个图形会自动备份，以防受到区域故障的影响。 你可以轻松添加 Azure Cosmos DB 帐户并根据需要预配容量，以便可以专注于应用程序而不是操作和管理数据库。
 
 * 自动索引编制
 

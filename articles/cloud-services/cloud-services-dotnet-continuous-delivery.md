@@ -3,8 +3,8 @@ title: "在 Azure 中使用 TFS 持续交付云服务 | Microsoft Docs"
 description: "了解如何设置 Azure 云应用程序的持续交付。 MSBuild 命令行语句和 PowerShell 脚本的代码示例。"
 services: cloud-services
 documentationcenter: 
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 4f3c93c6-5c82-4779-9d19-7404a01e82ca
 ms.service: cloud-services
@@ -13,25 +13,25 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/12/2017
-ms.author: tarcher
+ms.author: kraigb
 ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: f18605ec638a628805f5bd1c7207e9d874f104f3
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 0979722b9ec715e91825c7aba74657451df6e83f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="continuous-delivery-for-cloud-services-in-azure"></a>在 Azure 中持续交付云服务
-本文中所述过程向你演示如何设置对 Azure 云应用程序的持续交付。 此过程使你能够在签入每个代码后，自动创建服务包并将其部署到 Azure。 本文中介绍的包生成过程与 Visual Studio 中的 **Package** 命令等效，而发布步骤与 Visual Studio 中的 **Publish** 命令等效。
-本文包含用于创建生成服务器的方法以及 MSBuild 命令行语句和 Windows PowerShell 脚本，并演示了如何选择性地配置 Visual Studio Team Foundation Server - Team Build 定义以使用 MSBuild 命令和 PowerShell 脚本。 可针对你的生成环境和 Azure 目标环境自定义此过程。
+本文中所述过程演示了如何设置对 Azure 云应用程序的持续交付。 此过程使你能够在签入每个代码后，自动创建服务包并将其部署到 Azure。 本文中介绍的包生成过程与 Visual Studio 中的 **Package** 命令等效，而发布步骤与 Visual Studio 中的 **Publish** 命令等效。
+本文包含用于创建生成服务器的方法以及 MSBuild 命令行语句和 Windows PowerShell 脚本，并演示了如何选择性地配置 Visual Studio Team Foundation Server - Team Build 定义以使用 MSBuild 命令和 PowerShell 脚本。 可针对生成环境和 Azure 目标环境自定义此过程。
 
-你也可以使用 Visual Studio Team Services（Azure 中托管的 TFS 版本）更轻松地实现此目的。 
+也可以使用 Visual Studio Team Services（Azure 中托管的 TFS 版本）更轻松地实现此目的。 
 
-开始之前，您应从 Visual Studio 中发布应用程序。
-这将确保所有资源在您尝试实现发布过程的自动化时可用并进行初始化。
+开始之前，应从 Visual Studio 中发布应用程序。
+这会确保所有资源在尝试实现发布过程的自动化时可用并进行初始化。
 
 ## <a name="1-configure-the-build-server"></a>1：配置生成服务器
-你必须先在生成服务器上安装必需的软件和工具，然后才能使用 MSBuild 创建 Azure 包。
+必须先在生成服务器上安装必需的软件和工具，才能使用 MSBuild 创建 Azure 包。
 
 无需在生成服务器上安装 Visual Studio。 如果想要使用 Team Foundation 生成服务管理生成服务器，请按照 [Team Foundation 生成服务][Team Foundation Build Service]文档中的说明操作。
 
@@ -40,15 +40,15 @@ ms.lasthandoff: 07/19/2017
 3. 安装 [Azure Libraries for .NET](http://go.microsoft.com/fwlink/?LinkId=623519)。
 4. 将 Microsoft.WebApplication.targets 文件从 Visual Studio 安装复制到生成服务器。
 
-   在已安装 Visual Studio 的计算机上，此文件位于目录 C:\\Program Files(x86)\\MSBuild\\Microsoft\\VisualStudio\\v14.0\\WebApplications。 您应将该文件复制到生成服务器上的同一目录中。
+   在已安装 Visual Studio 的计算机上，此文件位于目录 C:\\Program Files(x86)\\MSBuild\\Microsoft\\VisualStudio\\v14.0\\WebApplications。 应将该文件复制到生成服务器上的同一目录中。
 5. 安装 [Azure Tools for Visual Studio](https://www.visualstudio.com/features/azure-tools-vs.aspx)。
 
 ## <a name="2-build-a-package-using-msbuild-commands"></a>2：使用 MSBuild 命令生成包
-本部分介绍如何构造用于生成 Azure 包的 MSBuild 命令。 在生成服务器上执行此步骤可确认所有内容配置正确并且 MSBuild 命令起到预期作用。 你可将此命令行添加到生成服务器上的现有生成脚本中，也可在 TFS 生成定义中使用此命令行，如下一部分所述。 有关命令行参数和 MSBuild 的详细信息，请参阅 [MSBuild 命令行参考](https://msdn.microsoft.com/library/ms164311%28v=vs.140%29.aspx)。
+本部分介绍如何构造用于生成 Azure 包的 MSBuild 命令。 在生成服务器上执行此步骤可确认所有内容配置正确并且 MSBuild 命令起到预期作用。 可将此命令行添加到生成服务器上的现有生成脚本中，也可在 TFS 生成定义中使用此命令行，如下一部分所述。 有关命令行参数和 MSBuild 的详细信息，请参阅 [MSBuild 命令行参考](https://msdn.microsoft.com/library/ms164311%28v=vs.140%29.aspx)。
 
 1. 如果在生成服务器上安装了 Visual Studio，请在 Windows 的“Visual Studio Tools”文件夹中找到并选择“Visual Studio 命令提示符”。
 
-   如果未在生成服务器上安装 Visual Studio，则请打开命令提示符并确保可按相应的路径访问 MSBuild.exe。 MSBuild 与 .NET Framework 一起安装在路径 %WINDIR%\\Microsoft.NET\\Framework\\*版本* 中。 例如，若要在已安装 .NET Framework 4 的情况下将 MSBuild.exe 添加到 PATH 环境变量，请在命令提示符处键入以下命令：
+   如果未在生成服务器上安装 Visual Studio，则请打开命令提示符并确保可按相应的路径访问 MSBuild.exe。 MSBuild 与 .NET Framework 一起安装在路径 %WINDIR%\\Microsoft.NET\\Framework\\*版本* 中。 例如，要在已安装 .NET Framework 4 的情况下将 MSBuild.exe 添加到 PATH 环境变量，请在命令提示符处键入以下命令：
 
        set PATH=%PATH%;"C:\Windows\Microsoft.NET\Framework\v4.0.30319"
 2. 在命令提示符处，导航到包含要生成的 Azure 项目文件的文件夹。
@@ -58,13 +58,13 @@ ms.lasthandoff: 07/19/2017
 
    此选项可缩写为 /t:Publish。 安装 Azure SDK 后，MSBuild 中的 /t:Publish 选项不应与 Visual Studio 中的可用 Publish 命令混淆。 /t:Publish 选项仅生成 Azure 包。 其部署包的方式与 Visual Studio 中的 Publish 命令部署包的方式不同。
 
-   您也可以将项目名称指定为 MSBuild 参数。 如果未指定，则将使用当前目录。 有关 MSBuild 命令行选项的详细信息，请参阅 [MSBuild 命令行参考](https://msdn.microsoft.com/library/ms164311%28v=vs.140%29.aspx)。
+   也可以将项目名称指定为 MSBuild 参数。 如果未指定，则将使用当前目录。 有关 MSBuild 命令行选项的详细信息，请参阅 [MSBuild 命令行参考](https://msdn.microsoft.com/library/ms164311%28v=vs.140%29.aspx)。
 4. 查找输出。 默认情况下，此命令将创建与项目的根文件夹相关的目录，例如 *ProjectDir*\\bin\\*Configuration*\\app.publish\\。 在生成 Azure 项目时，将生成两个文件，即包文件本身和附带的配置文件：
 
    * Project.cspkg
    * ServiceConfiguration.*TargetProfile*.cscfg
 
-   默认情况下，每个 Azure 项目均包含两个服务配置文件（.cscfg 文件），这两个文件分别针对本地（调试）生成和云（过渡或生产）生成，你可根据需要添加或删除服务配置文件。 在 Visual Studio 中生成包时，系统会询问您要将哪个服务配置文件与包一起包含。
+   默认情况下，每个 Azure 项目均包含两个服务配置文件（.cscfg 文件），这两个文件分别针对本地（调试）生成和云（过渡或生产）生成，可根据需要添加或删除服务配置文件。 在 Visual Studio 中生成包时，系统会询问你要将哪个服务配置文件与包一起包含。
 5. 指定服务配置文件。 使用 MSBuild 生成包时，默认情况下将包含本地服务配置文件。 若要包含其他服务配置文件，请设置 MSBuild 命令的 TargetProfile 属性，如以下示例所示：
 
        MSBuild /t:Publish /p:TargetProfile=Cloud
@@ -72,27 +72,27 @@ ms.lasthandoff: 07/19/2017
 
        MSBuild /target:Publish /p:PublishDir=\\myserver\drops\
 
-   构造并测试相应的 MSBuild 命令行以生成项目并将其并入一个 Azure 包后，你可将此命令行添加到生成脚本中。 如果生成服务器使用自定义脚本，则此过程将依赖自定义生成过程的细节。 如果你要将 TFS 用作生成环境，则可按照下一步中的说明操作来将 Azure 包生成添加到生成过程中。
+   构造并测试相应的 MSBuild 命令行以生成项目并将其并入一个 Azure 包后，可将此命令行添加到生成脚本中。 如果生成服务器使用自定义脚本，则此过程将依赖自定义生成过程的细节。 如果要将 TFS 用作生成环境，则可按照下一步中的说明操作来将 Azure 包生成添加到生成过程中。
 
 ## <a name="3-build-a-package-using-tfs-team-build"></a>3：使用 TFS Team Build 生成包
-如果你已将 Team Foundation Server (TFS) 设置为生成控制器并将生成服务器设置为 TFS 生成计算机，则可以选择为 Azure 包设置自动化生成。 有关如何设置 Team Foundation Server 并将其用作生成系统的信息，请参阅[扩大生成系统][Scale out your build system]。 具体而言，以下过程假设你已根据[部署和配置生成服务器][Deploy and configure a build server]中所述配置了生成服务器，并且你已创建了一个团队项目并在该团队项目中创建了一个云服务项目。
+如果已将 Team Foundation Server (TFS) 设置为生成控制器并将生成服务器设置为 TFS 生成计算机，则可以选择为 Azure 包设置自动化生成。 有关如何设置 Team Foundation Server 并将其用作生成系统的信息，请参阅[扩大生成系统][Scale out your build system]。 具体而言，以下过程假设已根据[部署和配置生成服务器][Deploy and configure a build server]中所述配置了生成服务器，并且已创建了一个团队项目并在该团队项目中创建了一个云服务项目。
 
-若要将 TFS 配置为生成 Azure 包，请执行下列步骤：
+要将 TFS 配置为生成 Azure 包，请执行下列步骤：
 
-1. 在开发计算机上的 Visual Studio 中，从“视图”菜单中选择“**团队资源管理器**”，或选择 Ctrl+\\Ctrl+M。 在“团队资源管理器”窗口中，展开“**生成**”节点，或者选择“**生成**”页，然后选择“**新建生成定义**”。
+1. 在开发计算机上的 Visual Studio 中，从“视图”菜单中选择“**团队资源管理器**”，或选择 Ctrl+\\Ctrl+M。 在“团队资源管理器”窗口中，展开“**生成**”节点，或者选择“**生成**”页，并选择“**新建生成定义**”。
 
    ![“新建生成定义”选项][0]
-2. 选择“**触发器**”选项卡，然后为希望生成包的时间指定所需条件。 例如，指定“**持续集成**”可在进行源控件签入时生成包。
-3. 选择“**源设置**”选项卡，并确保你的项目文件夹已列在“**源控件文件夹”**列中，并且状态为“**活动**”。
+2. 选择“**触发器**”选项卡，并为希望生成包的时间指定所需条件。 例如，指定“**持续集成**”可在进行源控件签入时生成包。
+3. 选择“**源设置**”选项卡，并确保项目文件夹已列在“**源控件文件夹”**列中，并且状态为“**活动**”。
 4. 选择“**生成默认值**”选项卡，并在生成控制器下确认生成服务器的名称。  此外，选择“**将生成输出复制到以下放置文件夹**”选项并指定所需的放置位置。
-5. 选择“**进程**”选项卡。 在“进程”选项卡上选择默认模板，在“**生成**”下选择项目（如果尚未选择），然后展开网格“**生成**”部分中的“**高级**”部分。
+5. 选择“**进程**”选项卡。在“进程”选项卡上选择默认模板，在“**生成**”下选择项目（如果尚未选择），并展开网格“**生成**”部分中的“**高级**”部分。
 6. 选择“**MSBuild 参数**”，并按上面步骤 2 中所述设置相应的 MSBuild 命令行参数。 例如，输入 **/t:Publish /p:PublishDir=\\\\myserver\\drops\\** 可以生成一个包并将包文件复制到位置 \\\\myserver\\drops\\：
 
    ![MSBuild 参数][2]
 
    > [!NOTE]
    > 通过将这些文件复制到公共共享，可以更轻松地手动从开发计算机部署包。
-7. 通过签入对项目的更改来测试生成步骤是否成功或对新生成进行排队。 若要对新生成进行排队，请在团队资源管理器中，右键单击“**所有生成定义**”，然后选择“**使新生成入队**”。
+7. 通过签入对项目的更改来测试生成步骤是否成功或对新生成进行排队。 要对新生成进行排队，请在团队资源管理器中，右键单击“**所有生成定义**”，并选择“**使新生成入队**”。
 
 ## <a name="4-publish-a-package-using-a-powershell-script"></a>4：使用 PowerShell 脚本发布包
 本节介绍如何构造使用可选参数将云应用程序包输出发布到 Azure 的 Windows PowerShell 脚本。 在执行自定义生成自动化中的生成步骤后，可以调用此脚本。 也可以从 Visual Studio TFS Team Build 中的过程模板工作流活动中调用此脚本。
@@ -100,7 +100,7 @@ ms.lasthandoff: 07/19/2017
 1. 安装 [Azure PowerShell cmdlet][Azure PowerShell cmdlets]（v0.6.1 或更高版本）。
    在 cmdlet 设置阶段，选择作为管理单元安装。 请注意，此受支持的正式版本将替代通过 CodePlex 提供的旧版本，尽管早期版本已采用 2.x.x 的形式进行编号。
 2. 使用“开始”菜单或“开始”页启动 Azure PowerShell。 如果通过此方式启动，则将加载 Azure PowerShell cmdlet。
-3. 在 PowerShell 提示符下，通过输入部分命令 `Get-Azure`，然后按 Tab 键完成语句，从而验证是否已加载 PowerShell cmdlet。
+3. 在 PowerShell 提示符下，通过输入部分命令 `Get-Azure`，并按 Tab 键完成语句，从而验证是否已加载 PowerShell cmdlet。
 
    重复按 Tab 键应会看到各个 Azure PowerShell 命令。
 4. 通过导入 .publishsettings 文件中的订阅信息来验证是否能够连接到 Azure 订阅。
@@ -119,7 +119,7 @@ ms.lasthandoff: 07/19/2017
    * 若要创建新的云服务，可以调用此脚本或使用 [Azure 门户](https://portal.azure.com)。 云服务名称将用作完全限定域名中的前缀，因此该名称必须是唯一的。
 
          New-AzureService -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
-   * 若要创建新的存储帐户，可以调用此脚本或使用 [Azure 门户](https://portal.azure.com)。 存储帐户名称将用作完全限定域名中的前缀，因此该名称必须是唯一的。 您可尝试使用与云服务相同的名称。
+   * 若要创建新的存储帐户，可以调用此脚本或使用 [Azure 门户](https://portal.azure.com)。 存储帐户名称将用作完全限定域名中的前缀，因此该名称必须是唯一的。 可以尝试使用与云服务相同的名称。
 
          New-AzureStorageAccount -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
 8. 直接从 Azure PowerShell 调用脚本，或将此脚本连接到在包生成后进行的主机生成自动化。
@@ -164,7 +164,7 @@ ms.lasthandoff: 07/19/2017
    -->
    **升级部署与删除部署 -\> 新建部署**
 
-   默认情况下，此脚本将在未传入参数或显式传递值 1 时执行升级部署 ($enableDeploymentUpgrade = 1)。 对于单一实例，此部署相对于完整部署的好处是，花费的时间更少。 对于需要高可用性的实例，此部署的好处是，在升级一些实例的同时使其他实例保持运行（检查更新域）且不会删除您的 VIP。
+   默认情况下，此脚本会在未传入参数或显式传递值 1 时执行升级部署 ($enableDeploymentUpgrade = 1)。 对于单一实例，此部署相对于完整部署的好处是，花费的时间更少。 对于需要高可用性的实例，此部署的好处是，在升级一些实例的同时使其他实例保持运行（检查更新域）且不会删除 VIP。
 
    可使用脚本 ($enableDeploymentUpgrade = 0) 或通过将 *-enableDeploymentUpgrade 0* 作为参数传递（这会将脚本行为更改为首先删除任何现有部署，然后创建新的部署）来禁用升级部署。
 
@@ -179,9 +179,9 @@ ms.lasthandoff: 07/19/2017
 1. 编辑负责持续部署的生成定义。
 2. 选择“**进程**”选项卡。
 3. 按照[这些说明](http://msdn.microsoft.com/library/dd647551.aspx)添加生成过程模板的活动项目，下载默认模板，将其添加到项目并将其签入。 为生成过程模板指定新名称，如 AzureBuildProcessTemplate。
-4. 返回到“**进程**”选项卡，然后使用“**显示详细信息**”显示可用生成过程模板的列表。 选择“**新建...**”按钮，然后导航到你刚刚添加并签入的项目。 找到刚刚创建的模板，然后选择“**确定**”。
+4. 返回到“**进程**”选项卡，并使用“**显示详细信息**”显示可用生成过程模板的列表。 选择“**新建...**”按钮，然后导航到刚刚添加并签入的项目。 找到刚刚创建的模板，并选择“**确定**”。
 5. 打开选定的过程模板以进行编辑。 可以直接在工作流设计器或 XML 编辑器中打开以处理 XAML。
-6. 在工作流设计器的参数选项卡中将以下一系列新参数作为单独的行项添加。 所有参数应具有 direction=In 和 type=String。 这两个值将用于将参数从生成定义流入工作流中，然后用于调用发布脚本。
+6. 在工作流设计器的参数选项卡中将以下一系列新参数作为单独的行项添加。 所有参数应具有 direction=In 和 type=String。 这两个值用于将参数从生成定义流入工作流中，然后用于调用发布脚本。
 
        SubscriptionName
        StorageAccountName
@@ -235,14 +235,14 @@ ms.lasthandoff: 07/19/2017
 
           Not String.IsNullOrEmpty(PublishScriptLocation)
    2. 在 If 语句的 Then 事例中，添加一个新的 Sequence 活动。 将显示名称设置为 'Start publish'
-   3. 在 Start publish 序列仍处于选定状态的情况下，在工作流设计器的变量选项卡中将以下一系列新变量作为单独的行项添加。 所有变量应具有 Variable type =String 和 Scope=Start publish。 这两个值将用于将参数从生成定义流入工作流中，然后用于调用发布脚本。
+   3. 在 Start publish 序列仍处于选定状态的情况下，在工作流设计器的变量选项卡中将以下一系列新变量作为单独的行项添加。 所有变量应具有 Variable type =String 和 Scope=Start publish。 这两个值用于将参数从生成定义流入工作流中，然后用于调用发布脚本。
 
       * String 类型的 SubscriptionDataFilePath
       * String 类型的 PublishScriptFilePath
 
         ![新建变量][4]
-   4. 如果你使用的是 TFS 2012 或更低版本，请在新序列的开头添加一个 ConvertWorkspaceItem 活动。 如果你使用的是 TFS 2013 或更高版本，请在新序列的开头添加一个 GetLocalPath 活动。 对于 ConvertWorkspaceItem，请按如下所示设置属性：Direction=ServerToLocal, DisplayName='Convert publish script filename', Input=' PublishScriptLocation', Result='PublishScriptFilePath', Workspace='Workspace'。 对于 GetLocalPath 活动，请将属性 IncomingPath 设置为“PublishScriptLocation”，将 Result 设置为“PublishScriptFilePath”。 此活动将发布脚本的路径从 TFS 服务器位置（如果适用）转换为标准本地磁盘路径。
-   5. 如果你使用的是 TFS 2012 或更低版本，请在新序列的末尾添加另一个 ConvertWorkspaceItem 活动。 Direction=ServerToLocal, DisplayName='Convert subscription filename', Input=' SubscriptionDataFileLocation', Result= 'SubscriptionDataFilePath', Workspace='Workspace'。 如果你使用的是 TFS 2013 或更高版本，请添加另一个 GetLocalPath。 IncomingPath='SubscriptionDataFileLocation' 和 Result='SubscriptionDataFilePath'。
+   4. 如果使用的是 TFS 2012 或更低版本，请在新序列的开头添加一个 ConvertWorkspaceItem 活动。 如果使用的是 TFS 2013 或更高版本，请在新序列的开头添加一个 GetLocalPath 活动。 对于 ConvertWorkspaceItem，请按如下所示设置属性：Direction=ServerToLocal, DisplayName='Convert publish script filename', Input=' PublishScriptLocation', Result='PublishScriptFilePath', Workspace='Workspace'。 对于 GetLocalPath 活动，请将属性 IncomingPath 设置为“PublishScriptLocation”，将 Result 设置为“PublishScriptFilePath”。 此活动将发布脚本的路径从 TFS 服务器位置（如果适用）转换为标准本地磁盘路径。
+   5. 如果使用的是 TFS 2012 或更低版本，请在新序列的末尾添加另一个 ConvertWorkspaceItem 活动。 Direction=ServerToLocal, DisplayName='Convert subscription filename', Input=' SubscriptionDataFileLocation', Result= 'SubscriptionDataFilePath', Workspace='Workspace'。 如果使用的是 TFS 2013 或更高版本，请添加另一个 GetLocalPath。 IncomingPath='SubscriptionDataFileLocation' 和 Result='SubscriptionDataFilePath'。
    6. 在新的 Sequence 的末尾添加一个 InvokeProcess 活动。
       此活动使用生成定义传入的参数调用 PowerShell.exe。
 
@@ -308,7 +308,7 @@ ms.lasthandoff: 07/19/2017
 
     ![参数属性值][6]
 11. 保存对生成定义所做的更改。
-12. 对生成进行排队以便同时执行包生成和发布。 如果你的触发器设置为“持续集成”，则将在每次签入时执行此行为。
+12. 对生成进行排队以便同时执行包生成和发布。 如果触发器设置为“持续集成”，则会在每次签入时执行此行为。
 
 ### <a name="publishcloudserviceps1-script-template"></a>PublishCloudService.ps1 脚本模板
 ```

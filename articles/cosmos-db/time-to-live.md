@@ -13,14 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 08/29/2017
 ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 6f1c43ca0113dc7579b0fc3743d3314c16ce78a4
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: c407152f54a6e7eb25a580491bd27ad291410d86
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>利用生存时间使 Azure Cosmos DB 集合中的数据自动过期
@@ -49,15 +48,15 @@ TTL 功能在两个级别受 TTL 属性控制 - 集合级别和文档级别。 �
 
 |  | 集合上的 DefaultTTL 缺失/未设置 | 集合上的 DefaultTTL =-1 | 集合上的 DefaultTTL =“n” |
 | --- |:--- |:--- |:--- |
-| 文档上的 TTL 缺失 |在文档级别没有要替代的内容，因为文档和集合都没有 TTL 的概念。 |在此集合中的文档不会过期。 |在此集合中的文档将在 n 秒间隔后过期。 |
+| 文档上的 TTL 缺失 |在文档级别没有要替代的内容，因为文档和集合都没有 TTL 的概念。 |在此集合中的文档不会过期。 |在此集合中的文档会在 n 秒间隔后过期。 |
 | 文档上的 TTL =-1 |在文档级别没有要替代的内容，因为集合并未定义文档可以替代的 DefaultTTL 属性。 系统未解释文档上的 TTL。 |在此集合中的文档不会过期。 |此集合中，TTL =-1 的文档将永不过期。 所有其他文档将在“n”秒间隔后过期。 |
-| 文档上的 TTL = n |在文档级别没有要替代的内容。 系统未解释文档上的 TTL。 |TTL = n 的文档将在时间间隔 n 秒后过期。 其他文档将继承 -1 时间间隔，并且永不过期。 |TTL = n 的文档将在时间间隔 n 秒后过期。 其他文档将从集合中继承“n”时间间隔。 |
+| 文档上的 TTL = n |在文档级别没有要替代的内容。 系统未解释文档上的 TTL。 |TTL = n 的文档会在时间间隔 n 秒后过期。 其他文档将继承 -1 时间间隔，并且永不过期。 |TTL = n 的文档会在时间间隔 n 秒后过期。 其他文档将从集合中继承“n”时间间隔。 |
 
 ## <a name="configuring-ttl"></a>配置 TTL
-默认情况下，在所有 Cosmos DB 集合和所有文档上禁用生存时间。
+默认情况下，在所有 Cosmos DB 集合和所有文档上禁用生存时间。 可以编程方式设置 TTL，或在 Azure 门户下，集合的“设置”部分中进行设置。 
 
 ## <a name="enabling-ttl"></a>启用 TTL
-若要在集合或集合内的文档上启用 TTL，需要将集合的 DefaultTTL 属性设置为 -1 或非零正数。 将 DefaultTTL 设置为 -1 表示默认情况下，集合中的所有文档将永久生存，但 Cosmos DB 服务应该监视此集合中已替代此默认值的文档。
+要在集合或集合内的文档上启用 TTL，需要将集合的 DefaultTTL 属性设置为 -1 或非零正数。 将 DefaultTTL 设置为 -1 表示默认情况下，集合中的所有文档将永久生存，但 Cosmos DB 服务应该监视此集合中已替代此默认值的文档。
 
     DocumentCollection collectionDefinition = new DocumentCollection();
     collectionDefinition.Id = "orders";
@@ -70,7 +69,7 @@ TTL 功能在两个级别受 TTL 属性控制 - 集合级别和文档级别。 �
         new RequestOptions { OfferThroughput = 20000 });
 
 ## <a name="configuring-default-ttl-on-a-collection"></a>在集合上配置默认 TTL
-你可以在集合级别配置默认生存时间。 若要在集合上设置 TTL，则需要提供一个非零正数，该数字表示自文档上次的修改时间戳 (`_ts`) 之后，集合中的所有文档过期所经过的时间段（以秒为单位）。 或者，可以将默认值设置为 -1，这意味着插入到集合中的所有文档在默认情况下将无限期地生存。
+可以在集合级别配置默认生存时间。 若要在集合上设置 TTL，则需要提供一个非零正数，该数字表示自文档上次的修改时间戳 (`_ts`) 之后，集合中的所有文档过期所经过的时间段（以秒为单位）。 或者，可以将默认值设置为 -1，这意味着插入到集合中的所有文档在默认情况下将无限期地生存。
 
     DocumentCollection collectionDefinition = new DocumentCollection();
     collectionDefinition.Id = "orders";
@@ -88,7 +87,7 @@ TTL 功能在两个级别受 TTL 属性控制 - 集合级别和文档级别。 �
 
 * 若要在文档上设置 TTL，则需要提供一个非零正数，该数字表示自文档上次的修改时间戳 (`_ts`) 之后，文档过期所经过的时间段（以秒为单位）。
 * 如果文档没有 TTL 字段，将应用集合的默认值。
-* 如果在集合级别禁用了 TTL，在文档上的 TTL 字段将被忽略，直到在集合上再次启用 TTL。
+* 如果在集合级别禁用了 TTL，在文档上的 TTL 字段会被忽略，直到在集合上再次启用 TTL。
 
 以下是演示如何在文档上设置 TTL 过期的代码片段：
 
@@ -130,7 +129,7 @@ TTL 功能在两个级别受 TTL 属性控制 - 集合级别和文档级别。 �
     response = await client.ReplaceDocumentAsync(salesOrder);
 
 ## <a name="removing-ttl-from-a-document"></a>从文档中移除 TTL
-如果已在文档上设置 TTL，并且不再想要该文档过期，则可以检索文档，移除 TTL 字段并替换服务器上的文档。 当从文档中移除 TTL 字段时，将应用集合的默认值。 若要阻止文档过期并且不从集合继承，则需要将 TTL 值设置为 -1。
+如果已在文档上设置 TTL，并且不再想要该文档过期，则可以检索文档，移除 TTL 字段并替换服务器上的文档。 当从文档中移除 TTL 字段时，将应用集合的默认值。 要阻止文档过期并且不从集合继承，则需要将 TTL 值设置为 -1。
 
     response = await client.ReadDocumentAsync(
         "/dbs/salesdb/colls/orders/docs/SO05"), 
@@ -142,7 +141,7 @@ TTL 功能在两个级别受 TTL 属性控制 - 集合级别和文档级别。 �
     response = await client.ReplaceDocumentAsync(salesOrder);
 
 ## <a name="disabling-ttl"></a>禁用 TTL
-若要在集合上完全禁用 TTL 并阻止后台进程查找过期文档，应删除集合上的 DefaultTTL 属性。 删除此属性不同于将其设置为 -1。 设置为 -1 表示添加到集合中的新文档将永久生存，但你可以替代此集合中的特定文档。 完全从集合中移除该属性意味着文档不会过期，即使有的文档已显示替代以前的默认值。
+若要在集合上完全禁用 TTL 并阻止后台进程查找过期文档，应删除集合上的 DefaultTTL 属性。 删除此属性不同于将其设置为 -1。 设置为 -1 表示添加到集合中的新文档将永久生存，但可以替代此集合中的特定文档。 完全从集合中移除该属性意味着文档不会过期，即使有的文档已显示替代以前的默认值。
 
     DocumentCollection collection = await client.ReadDocumentCollectionAsync("/dbs/salesdb/colls/orders");
     
@@ -163,11 +162,11 @@ TTL 启动后，文档将立即过期，并且无法通过 CRUD 或查询 API �
 
 **文档上的 TTL 对 RU 费用是否会产生影响？**
 
-否，将不会对通过 Cosmos DB 中的 TTL 删除过期文档的 RU 费用产生影响。
+否，不会对通过 Cosmos DB 中的 TTL 删除过期文档的 RU 费用产生影响。
 
 **TTL 功能是否仅应用于整个文档，或者是否可以使单个文档的属性值过期？**
 
-TTL 应用于整个文档。 如果只是想要使文档的一部分过期，则建议将该部分从主文档中提取到一个单独的“链接”文档，然后对被提取的文档使用 TTL。
+TTL 应用于整个文档。 如果只是想要使文档的一部分过期，则建议将该部分从主文档中提取到一个单独的“链接”文档，并对被提取的文档使用 TTL。
 
 **TTL 功能是否具有特定的索引编制要求？**
 

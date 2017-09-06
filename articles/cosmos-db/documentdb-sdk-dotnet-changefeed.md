@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 08/29/2017
 ms.author: maquaran
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 40c796bc5af1220c46950a6fac062ffdd243e59f
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 239b590a1e3a83fe0205dd8169697db745d7f75e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="documentdb-net-change-feed-processor-sdk-download-and-release-notes"></a>DocumentDB .NET 更改源处理器 SDK：下载和发行说明
@@ -48,6 +48,10 @@ ms.lasthandoff: 08/15/2017
 
 ## <a name="release-notes"></a>发行说明
 
+### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
+* 修复了更改源为空或无任何工作挂起时计算剩余工作估计值时的一个问题。
+* 兼容 [DocumentDB .NET SDK](documentdb-sdk-dotnet.md) 1.13.2 及更高版本。
+
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 * 添加了一个获取更改源中剩余待处理工作估计值的方法。
 * 兼容 [DocumentDB .NET SDK](documentdb-sdk-dotnet.md) 1.13.2 及更高版本。
@@ -67,6 +71,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.1.1](#1.1.1) |2017 年 8 月 29 日 |--- |
 | [1.1.0](#1.1.0) |2017 年 8 月 13 日 |--- |
 | [1.0.0](#1.0.0) |2017 年 7 月 7 日 |--- |
 

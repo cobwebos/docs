@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
-ms.openlocfilehash: f139674f96793b8486c541c9e3f1ead751b97232
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 73d0dabe5b8b179cbc0847c2819947febd6ef4d8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/07/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Accessing diagnostic logs for Azure Data Lake Store（访问 Azure Data Lake Store 的诊断日志）
@@ -33,7 +32,7 @@ ms.lasthandoff: 02/07/2017
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-store-account"></a>对 Data Lake Store 帐户启用诊断日志记录
 1. 登录到新的 [Azure 门户](https://portal.azure.com)。
-2. 打开 Data Lake Store 帐户，在 Data Lake Store 帐户边栏选项卡上单击“设置”，然后单击“诊断日志”。
+2. 打开 Data Lake Store 帐户，在 Data Lake Store 帐户边栏选项卡上单击“设置”，并单击“诊断日志”。
 3. 在“诊断日志”边栏选项卡中，单击“启用诊断”。
 
     ![启用诊断日志记录](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "启用诊断日志")
@@ -42,7 +41,7 @@ ms.lasthandoff: 02/07/2017
    
     ![启用诊断日志记录](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "启用诊断日志")
    
-   * 将“状态”设置为“开启”，启用诊断日志记录。
+   * 对于“名称”，请输入诊断日志配置的值。
    * 可选择以不同的方式存储/处理数据。
      
         * 选择选项“存档到存储帐户”将日志存储到 Azure 存储帐户。 要存档以后会进行批处理的数据时使用此选项。 如果选择此选项，必须提供一个要将日志保存到的 Azure 存储帐户。
@@ -71,12 +70,12 @@ ms.lasthandoff: 02/07/2017
    
    * 请求日志捕获 Data Lake Store 帐户上作出的每个 API 请求。
    * 审核日志类似于请求日志，但提供 Data Lake Store 帐户上正在执行的操作的更详细的分解结构。 例如，一个单一上传 API 调用请求日志可能导致审核日志中有多个“附加”操作。
-3. 单击每个日志条目的“下载”链接下载日志。
+3. 要下载日志，请单击每个日志条目的“下载”链接。
 
-### <a name="from-the-azure-storage-account-that-contains-log-data"></a>从包含日志数据的 Azure 存储帐户
-1. 打开与日志记录的 Data Lake Store 关联的 Azure 存储帐户边栏选项卡，然后单击 Blob。 “Blob 服务”边栏选项卡上会列出两个容器。
+### <a name="from-the-azure-storage-account-that-contains-log-data"></a>从包含日志数据的 Azure 存储帐户查看
+1. 打开与日志记录的 Data Lake Store 关联的 Azure 存储帐户边栏选项卡，并单击 Blob。 “Blob 服务”边栏选项卡上会列出两个容器。
    
-    ![查看诊断日志记录](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "查看诊断日志")
+    ![查看诊断日志记录](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "查看诊断日志记录")
    
    * 容器 **insights-logs-audit** 包含审核日志。
    * 容器 **insights-logs-requests** 包含请求日志。

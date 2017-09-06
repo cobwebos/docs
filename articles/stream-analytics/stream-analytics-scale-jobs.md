@@ -4,7 +4,7 @@ description: "了解如何通过配置输入分区、细化查询定义和设置
 keywords: "数据流式处理, 流数据处理, 优化分析"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 7e857ddb-71dd-4537-b7ab-4524335d7b35
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/22/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 9a2b16fc6dff687e2a1fa03c9194d50711f53476
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: f1e5e11e82d344508aa4375c42d509f96aaa1d00
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="scale-azure-stream-analytics-jobs-to-increase-stream-data-processing-throughput"></a>扩展 Azure 流分析作业，以增加流数据处理吞吐量
@@ -229,7 +228,7 @@ PowerBI 输出当前不支持分区。 因此，此方案不易并行。
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 
-对查询进行分区后，将在独立的分区组中处理和聚合输入事件。 此外，还会为每个组生成输出事件。 在输入数据流中，当“分组方式”字段不是分区键时，执行分区可能会导致某些意外的结果。 例如，在前面的查询中，TollBoothId 字段不是 Input1 的分区键。 因此，可以将 TollBooth #1 中的数据分布到多个分区。
+对查询进行分区后，会在独立的分区组中处理和聚合输入事件。 此外，还会为每个组生成输出事件。 在输入数据流中，当“分组方式”字段不是分区键时，执行分区可能会导致某些意外的结果。 例如，在前面的查询中，TollBoothId 字段不是 Input1 的分区键。 因此，可以将 TollBooth #1 中的数据分布到多个分区。
 
 流分析会分开处理每个 Input1 分区。 因此，将在相同的翻转窗口为同一收费亭创建多个关于车辆数的记录。 如果不能更改输入分区键，则可通过添加不分区步骤来解决此问题，如下例所示：
 
@@ -339,7 +338,7 @@ PowerBI 输出当前不支持分区。 因此，此方案不易并行。
 ![img.stream.analytics.perfgraph][img.stream.analytics.perfgraph]
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

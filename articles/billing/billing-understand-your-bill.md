@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/14/2017
+ms.date: 08/31/2017
 ms.author: tonguyen
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 547b035646ccb80d1001591ae59e6a0871d1ed2c
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 2bf75dc55d190522597eb8958d378aa1469027b7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>了解 Microsoft Azure 帐单
@@ -31,8 +31,11 @@ ms.lasthandoff: 08/04/2017
 
 有关成本管理报表的详细信息，请参阅 [Azure 门户成本管理](https://docs.microsoft.com/en-us/azure/billing/billing-getting-started)。
 
-
 ## <a name="charges"></a>如何确定发票中的费用是正确的？
+<div style="padding-top: 56.25%; position: relative; width: 100%;">
+<iframe style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;" width="100%" height="100%" src="https://www.youtube.com/embed/3YegFD769Pk" frameborder="0" allowfullscreen></iframe>
+</div>
+
 如果想要更详细地了解发票上的费用，可以选择以下几种方式。
 
 ### <a name="option-1-review-your-invoice-and-compare-the-usage-and-costs-with-the-detailed-usage-csv-file"></a>选项 1：查看发票，并将使用情况和成本与使用情况明细 CSV 文件相比较
@@ -72,7 +75,7 @@ ms.lasthandoff: 08/04/2017
 
 ### <a name="option-2-review-your-invoice-and-compare-with-the-usage-and-costs-in-the-azure-portal"></a>选项 2：查看发票，在 Azure 门户中将其与使用情况和成本相比较
 
-还可以通过 Azure 门户验证费用。 Azure 门户提供成本管理图表，可供快速了解发票上的使用情况和费用。
+Azure 门户也可帮助核查费用。Azure 门户提供费用管理图表，可供快速了解发票上的使用情况和费用。
 
 若要继续查看上文中的示例，请访问[订阅页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，选择订阅，然后选择“成本分析”。 在该处，可以指定时间范围并查看 Azure 计划程序服务的使用费。
 

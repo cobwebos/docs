@@ -65,13 +65,13 @@ Sysprep 将删除所有个人帐户信息及其他某些数据，并准备好要
 使用 [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) 对 VM 解除分配。
 
 ```powershell
-Stop-AzureRmVM -ResourceGroupName myResourceGroupImages -Name myVM -Force
+Stop-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM -Force
 ```
 
 使用 [Set-AzureRmVm](/powershell/module/azurerm.compute/set-azurermvm) 将虚拟机的状态设置为 `-Generalized`。 
    
 ```powershell
-Set-AzureRmVM -ResourceGroupName myResourceGroupImages -Name myVM -Generalized
+Set-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM -Generalized
 ```
 
 
@@ -82,7 +82,7 @@ Set-AzureRmVM -ResourceGroupName myResourceGroupImages -Name myVM -Generalized
 获取虚拟机。 
 
 ```powershell
-$vm = Get-AzureRmVM -Name myVM -ResourceGroupName myResourceGroupImages
+$vm = Get-AzureRmVM -Name myVM -ResourceGroupName myResourceGroup
 ```
 
 创建映像配置。
@@ -94,8 +94,8 @@ $image = New-AzureRmImageConfig -Location EastUS -SourceVirtualMachineId $vm.ID
 创建映像。
 
 ```powershell
-New-AzureRmImage -Image $image -ImageName myImage -ResourceGroupName myResourceGroupImages
-```    
+New-AzureRmImage -Image $image -ImageName myImage -ResourceGroupName myResourceGroup
+``` 
 
  
 ## <a name="create-vms-from-the-image"></a>从映像创建 VM
@@ -164,7 +164,7 @@ $vmConfig = New-AzureRmVMConfig `
 # Here is where we create a variable to store information about the image 
 $image = Get-AzureRmImage `
     -ImageName myImage `
-    -ResourceGroupName myResourceGroupImages
+    -ResourceGroupName myResourceGroup
 
 # Here is where we specify that we want to create the VM from and image and provide the image ID
 $vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig -Id $image.Id
