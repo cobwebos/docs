@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 9dba928b78c11213d4b0098986561b09678444eb
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 5553bcb8f9fd38630f694151dc644a684266387c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="protect-your-api-with-rate-limits-using-azure-api-management"></a>使用 Azure API 管理借助速率限制保护 API
@@ -110,7 +110,7 @@ ms.lasthandoff: 07/28/2017
 
 ![策略编辑器][api-management-policy-editor-inbound]
 
-策略 滚动访问策略列表，找到“限制每个订阅的调用速率”策略条目。
+滚动访问策略列表，找到“限制每个订阅的调用速率”策略条目。
 
 ![策略语句][api-management-limit-policies]
 

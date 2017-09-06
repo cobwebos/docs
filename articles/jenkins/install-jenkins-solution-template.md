@@ -1,150 +1,116 @@
 ---
-title: "在 Azure 上的 Linux (Ubuntu) VM 中创建第一个 Jenkins 主机"
-description: "利用解决方案模板部署 Jenkins。"
-services: app-service\web
-documentationcenter: 
+title: "在 Azure 上创建 Jenkins 服务器"
+description: "通过 Jenkins 解决方案模板在 Azure Linux 虚拟机上安装 Jenkins，然后生成示例 Java 应用程序。"
 author: mlearned
 manager: douge
-editor: 
-ms.assetid: 8bacfe3e-7f0b-4394-959a-a88618cb31e1
 ms.service: multiple
 ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: java
 ms.topic: hero-article
-ms.date: 6/7/2017
+ms.date: 08/21/2017
 ms.author: mlearned
 ms.custom: Jenkins
 ms.translationtype: HT
-ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
-ms.openlocfilehash: 06d6d305eb9711768dc62a04726359e6280d1b69
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 7bb74f297d52fb25171817175cce64187b397c38
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/14/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
-# <a name="create-your-first-jenkins-master-on-a-linux-ubuntu-vm-on-azure"></a>在 Azure 上的 Linux (Ubuntu) VM 中创建第一个 Jenkins 主机
+# <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>通过 Azure 门户在 Azure Linux VM 上创建 Jenkins 服务器
 
-本快速入门演示如何在 Linux (Ubuntu 14.04 LTS) VM 上同时安装最新稳定版 Jenkins 以及已配置为适用于 Azure 的工具和插件。 这些工具包括：
-<ul>
-<li>用于源控件的 Git</li>
-<li>用于进行安全连接的 Azure 凭据插件</li>
-<li>用于弹性生成、测试和持续集成的 Azure VM 代理插件</li>
-<li>用于存储项目的 Azure 存储插件</li>
-<li>用于使用脚本部署应用的 Azure CLI</li>
-</ul>
+本快速入门介绍如何使用经过配置的适用于 Azure 的工具和插件在 Ubuntu Linux VM 上安装 [Jenkins](https://jenkins.io)。 完成后，你会有一个在 Azure 中运行的 Jenkins 服务器，并可生成 [GitHub](https://github.com) 中的示例 Java 应用。
 
-本教程介绍如何执行下列操作：
+## <a name="prerequisites"></a>先决条件
 
-> [!div class="checklist"]
-> * 创建免费 Azure 帐户。
-> * 使用解决方案模板在 Azure VM 上创建 Jenkins 主机。 
-> * 执行 Jenkins 的初始配置。
-> * 安装建议的插件。
+* Azure 订阅
+* 可以在计算机的命令行（例如 Bash shell 或 [PuTTY](http://www.putty.org/)）上访问 SSH
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-the-vm-in-azure-by-deploying-the-solution-template-for-jenkins"></a>通过部署用于 Jenkins 的解决方案模板在 Azure 中创建 VM
+## <a name="create-the-jenkins-vm-from-the-solution-template"></a>从解决方案模板创建 Jenkins VM
 
-Azure 快速入门模板使用户能够快速、可靠地在 Azure 上部署复杂的技术。  Azure Resource Manager 允许用户使用[声明性模板](https://azure.microsoft.com/en-us/resources/templates/?term=jenkins)预配应用程序。 在单个模板中，可以部署多个服务及其依赖项。 在应用程序生命周期的每个阶段，可使用相同模板重复部署应用程序。
-
-查看此模板的[计划和定价](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/azure-oss.jenkins?tab=Overview)信息，了解成本选项。
-
-转到[适用于 Jenkins Marketplace 映像](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/azure-oss.jenkins?tab=Overview)，单击“立即获取”  
-
-在 Azure 门户中，单击“创建”。  此模板需要使用 Resource Manager，以便禁用模板模型下拉列表。
+在 Web 浏览器中打开 [Jenkins 的 Marketplace 映像](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview)，然后从页面左侧选择“立即获取”。 查看定价详细信息并选择“继续”，然后选择“创建”，在 Azure 门户中配置 Jenkins 服务器。 
    
 ![Azure 门户对话框](./media/install-jenkins-solution-template/ap-create.png)
 
-在“配置基本设置”选项卡中：
+在“配置基本设置”选项卡中，填充以下字段：
 
 ![配置基本设置](./media/install-jenkins-solution-template/ap-basic.png)
 
-* 提供 Jenkins 实例的名称。
-* 选择 VM 磁盘类型。  对于生产工作负荷，选择较大的 VM 和 SSD，以便获得更好的性能。  有关 Azure 磁盘类型的详细信息，可阅读[此文](https://docs.microsoft.com/en-us/azure/storage/storage-premium-storage)
-* 用户名：必须满足长度要求，并且不能包含保留字或不支持的字符。 类似“管理员”的名称是不允许的。  有关详细信息，请参阅[此处](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq)，了解用户名和密码要求。
-* 身份验证类型：创建用密码或 [SSH 公钥](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows)保护的实例。 如果使用密码，则它必须同时满足以下要求中的 3 个：1 个小写字符、1 个大写字符、1 个数字和 1 个特殊字符。
-* Jenkins 发行类型始终为 **LTS**
-* 选择一个订阅。
-* 创建一个资源组或使用现有的空资源组。 
-* 选择一个位置。
+* 使用“Jenkins”作为“名称”。
+* 输入“用户名”。 用户名称必须满足[特定要求](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm)。
+* 选择“密码”作为“身份验证类型”，然后输入密码。 密码必须包含一个大写字符、一个数字和一个特殊字符。
+* 使用“myJenkinsResourceGroup”作为“资源组”。
+* 从“位置”下拉列表中选择“美国东部”[Azure 区域](https://azure.microsoft.com/regions/)。
 
-在“配置更多选项”选项卡中：
+选择“确定”，转到“配置更多选项”选项卡。输入用于标识 Jenkins 服务器的唯一域名，然后选择“确定”。
 
-![设置其他选项](./media/install-jenkins-solution-template/ap-addtional.png)
+![设置其他选项](./media/install-jenkins-solution-template/ap-addtional.png)  
 
-* 提供域名标签，用于唯一标识 Jenkins 主机。
+ 通过验证以后，再次从“摘要”选项卡选择“确定”。最后选择“购买”，创建 Jenkins VM。 服务器就绪以后，Azure 门户中会出现一个通知：   
 
-单击“确定”转到下一步。 
-
-通过验证后，单击“确定”以下载模板和参数。 
-
-接下来，选择“购买”以预配所有资源。
-
-## <a name="setup-ssh-port-forwarding"></a>设置 SSH 端口转发
-
-默认情况下，Jenkins 实例使用 http 协议，并且在端口 8080 上侦听。 用户不应通过不安全的协议进行身份验证。
-    
-设置端口转发以查看本地计算机上的 Jenkins UI。
-
-### <a name="if-you-are-using-windows"></a>如果使用 Windows：
-
-如果使用密码保护 Jenkins，请安装 PuTTY 并运行此命令：
-```
-putty.exe -ssh -L 8080:localhost:8080 <username>@<Domain name label>.<location>.cloudapp.azure.com
-```
-* 要登录，请输入密码。
-
-![要登录，请输入密码。](./media/install-jenkins-solution-template/jenkins-pwd.png)
-
-如果使用 SSH，请运行此命令：
-```
-putty -i <private key file including path> -L 8080:localhost:8080 <username>@<Domain name label>.<location>.cloudapp.azure.com
-```
-
-### <a name="if-you-are-using-linux-or-mac"></a>如果使用 Linux 或 Mac：
-
-如果使用密码保护 Jenkins 主机，请运行此命令：
-```
-ssh -L 8080:localhost:8080 <username>@<Domain name label>.<location>.cloudapp.azure.com
-```
-* 要登录，请输入密码。
-
-如果使用 SSH，请运行此命令：
-```
-ssh -i <private key file including path> -L 8080:localhost:8080 <username>@<Domain name label>.<location>.cloudapp.azure.com
-```
+![Jenkins 就绪通知](./media/install-jenkins-solution-template/jenkins-deploy-notification-ready.png)
 
 ## <a name="connect-to-jenkins"></a>连接到 Jenkins
-启动隧道后，导航到本地计算机上的 http://localhost:8080/。
 
-首次解锁 Jenkins 仪表板时，请使用初始管理员密码。
+在 Web 浏览器中导航到虚拟机（例如 http://jenkins2517454.eastus.cloudapp.azure.com/）。 Jenkins 控制台无法通过不安全的 HTTP 进行访问，因此在页面上提供了说明，介绍如何在计算机中使用 SSH 隧道安全地访问 Jenkins 控制台。
+
+![解锁 Jenkins](./media/install-jenkins-solution-template/jenkins-ssh-instructions.png)
+
+在页面上通过命令行使用 `ssh` 命令设置该隧道，将 `username` 替换为此前从解决方案模板设置虚拟机时选择的虚拟机管理员用户的名称。
+
+```bash
+ssh -L 127.0.0.1:8080:localhost:8080 jenkinsadmin@jenkins2517454.eastus.cloudapp.azure.com
+```
+
+启动隧道后，导航到本地计算机上的 http://localhost:8080/。 
+
+通过 SSH 连接到 Jenkins VM 时，在命令行中运行以下命令，以便获取初始密码。
+
+```bash
+`sudo cat /var/lib/jenkins/secrets/initialAdminPassword`.
+```
+
+首次解锁 Jenkins 仪表板时，请使用此初始密码。
 
 ![解锁 Jenkins](./media/install-jenkins-solution-template/jenkins-unlock.png)
 
-若要获取令牌，请通过 SSH 访问 VM，然后运行 `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`。
-
-![解锁 Jenkins](./media/install-jenkins-solution-template/jenkins-ssh.png)
-
-系统会要求安装建议的插件。
-
-接下来，为 Jenkins 主机创建管理员用户。
-
-现在即可使用 Jenkins 实例！ 可以通过转到 http://\<刚创建的实例的公共 DNS 名称\> 访问只读视图。
+在下一页选择“安装建议的插件”，然后创建用于访问 Jenkins 仪表板的 Jenkins 管理员用户。
 
 ![Jenkins 已准备就绪！](./media/install-jenkins-solution-template/jenkins-welcome.png)
 
+Jenkins 服务器现在已就绪，可以生成代码了。
+
+## <a name="create-your-first-job"></a>创建第一个作业
+
+从 Jenkins 控制台选择“创建新作业”，将其命名为“mySampleApp”并选择“自由格式项目”，然后选择“确定”。
+
+![创建新的作业](./media/install-jenkins-solution-template/jenkins-new-job.png) 
+
+选择“源代码管理”选项卡，启用“Git”，然后在“存储库 URL”字段中输入以下 URL：`https://github.com/spring-guides/gs-spring-boot.git`
+
+![定义 Git 存储库](./media/install-jenkins-solution-template/jenkins-job-git-configuration.png) 
+
+依次选择“生成”选项卡、“添加生成步骤”、“调用 Gradle 脚本”。 选择“使用 Gradle 包装器”，然后在“包装器位置”中输入 `complete`，并输入 `build` 作为“任务”。
+
+![使用要生成的 Gradle 包装器](./media/install-jenkins-solution-template/jenkins-job-gradle-config.png) 
+
+选择“高级...”， 然后在“根生成脚本”字段中输入 `complete`。 选择“保存”。
+
+![在 Gradle 包装器生成步骤中设置高级设置](./media/install-jenkins-solution-template/jenkins-job-gradle-advances.png) 
+
+## <a name="build-the-code"></a>生成代码
+
+选择“立即生成”，编译代码并打包示例应用。 生成完成后，选择项目的 Workspace 链接。
+
+![浏览到要从生成中获取 JAR 文件的工作区](./media/install-jenkins-solution-template/jenkins-access-workspace.png) 
+
+导航到 `complete/build/libs`，确保能够验证生成是否成功的 `gs-spring-boot-0.1.0.jar` 位于其中。 Jenkins 服务器现已就绪，可以在 Azure 中生成你自己的项目了。
+
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中：
-
-> [!div class="checklist"]
-> * 使用解决方案模板创建了 Jenkins 主机。
-> * 执行了 Jenkins 的初始配置。
-> * 安装了插件。
-
-点击此链接了解如何使用 Azure VM 代理实现与 Jenkins 的持续集成。
-
 > [!div class="nextstepaction"]
-> [将 Azure VM 用作 Jenkins 代理](jenkins-azure-vm-agents.md)
+> [将 Azure VM 作为 Jenkins 代理添加](jenkins-azure-vm-agents.md)
 

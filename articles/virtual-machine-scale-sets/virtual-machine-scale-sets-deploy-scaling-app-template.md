@@ -13,14 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 4/4/2017
+ms.date: 08/24/2017
 ms.author: ryanwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 8a903cd870f01f9ca6224efd1386b68c63e3aa98
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 07883a33382cc660b043c99872312a9e77228253
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/06/2017
-
+ms.lasthandoff: 08/25/2017
 
 ---
 
@@ -29,7 +28,7 @@ ms.lasthandoff: 04/06/2017
 [Azure Resource Manager 模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)是部署成组的相关资源的好办法。 本教程基于[部署简单规模集](virtual-machine-scale-sets-mvss-start.md)，介绍如何使用 Azure Resource Manager 模板在规模集上部署简单的自动缩放应用程序。  还可以使用 PowerShell、CLI 或门户设置自动缩放。 有关详细信息，请参阅[自动缩放概述](virtual-machine-scale-sets-autoscale-overview.md)。
 
 ## <a name="two-quickstart-templates"></a>两个快速入门模板
-部署规模集时，可以使用 [VM 扩展](../virtual-machines/virtual-machines-windows-extensions-features.md)在平台映像中安装新软件。 VM 扩展是小型应用程序，可在Azure 虚拟机上提供部署后配置和自动化任务，例如部署应用。 [Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates) 中提供两个不同的示例模板，介绍了如何使用 VM 扩展将自动缩放应用程序部署到规模集上。
+部署规模集时，可以使用 [VM 扩展](../virtual-machines/virtual-machines-windows-extensions-features.md)在平台映像中安装新软件。 VM 扩展是小型应用程序，可在Azure 虚拟机上提供部署后配置和自动化任务，例如部署应用。 [Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates) 中提供两个不同的示例模板，介绍了如何使用 VM 扩展会自动缩放应用程序部署到规模集上。
 
 ### <a name="python-http-server-on-linux"></a>Linux 上的 Python HTTP 服务器
 [Linux 上的 Python HTTP 服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)示例模板部署一个在 Linux 规模集上运行的简单自动缩放应用程序。  使用自定义脚本 VM 扩展在规模集的每个 VM 上部署 Python Web 框架 [Bottle](http://bottlepy.org/docs/dev/) 和一个简单的 HTTP 服务器。 此规模集在所有 VM 的平均 CPU 使用率高于 60% 时增加，在平均 CPU 使用率低于 30% 时减少。
@@ -100,7 +99,7 @@ ms.lasthandoff: 04/06/2017
 部署 [Linux 上的 Python HTTP 服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)或 [Windows 上的 ASP.NET MVC 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)模板最简单的方式是使用 GitHub 的自述文件中的“部署到 Azure”按钮。  也可使用 PowerShell 或 Azure CLI 部署示例模板。
 
 ### <a name="powershell"></a>PowerShell
-将 [Linux 上的 Python HTTP 服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)或 [Windows 上的 ASP.NET MVC 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)文件从 GitHub 存储库复制到本地计算机上的文件夹。  打开 azuredeploy.parameters.json 文件并更新 `vmssName`、`adminUsername` 和 `adminPassword` 参数的默认值。 将以下 PowerShell 脚本保存到示例文件夹中的 deploy.ps1 作为 azuredeploy.json 模板。 若要部署示例模板，请从 PowerShell 命令窗口运行 deploy.ps1 脚本。
+将 [Linux 上的 Python HTTP 服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)或 [Windows 上的 ASP.NET MVC 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)文件从 GitHub 存储库复制到本地计算机上的文件夹。  打开 azuredeploy.parameters.json 文件并更新 `vmssName`、`adminUsername` 和 `adminPassword` 参数的默认值。 将以下 PowerShell 脚本保存到 azuredeploy.json 模板所在文件夹中的 deploy.ps1。 若要部署示例模板，请从 PowerShell 命令窗口运行 deploy.ps1 脚本。
 
 ```powershell
 param(
@@ -120,10 +119,10 @@ param(
  $deploymentName,
 
  [string]
- $templateFilePath = "azuredeploy.json",
+ $templateFilePath = "template.json",
 
  [string]
- $parametersFilePath = "azuredeploy.parameters.json"
+ $parametersFilePath = "parameters.json"
 )
 
 <#
@@ -154,7 +153,7 @@ Write-Host "Selecting subscription '$subscriptionId'";
 Select-AzureRmSubscription -SubscriptionID $subscriptionId;
 
 # Register RPs
-$resourceProviders = @("microsoft.resources");
+$resourceProviders = @("microsoft.compute","microsoft.insights","microsoft.network");
 if($resourceProviders.length) {
     Write-Host "Registering resource providers"
     foreach($resourceProvider in $resourceProviders) {
@@ -184,6 +183,127 @@ if(Test-Path $parametersFilePath) {
 } else {
     New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath;
 }
+```
+
+### <a name="azure-cli"></a>Azure CLI
+```azurecli
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# -e: immediately exit if any command has a non-zero exit status
+# -o: prevents errors in a pipeline from being masked
+# IFS new value is less likely to cause confusing bugs when looping arrays or arguments (e.g. $@)
+
+usage() { echo "Usage: $0 -i <subscriptionId> -g <resourceGroupName> -n <deploymentName> -l <resourceGroupLocation>" 1>&2; exit 1; }
+
+declare subscriptionId=""
+declare resourceGroupName=""
+declare deploymentName=""
+declare resourceGroupLocation=""
+
+# Initialize parameters specified from command line
+while getopts ":i:g:n:l:" arg; do
+    case "${arg}" in
+        i)
+            subscriptionId=${OPTARG}
+            ;;
+        g)
+            resourceGroupName=${OPTARG}
+            ;;
+        n)
+            deploymentName=${OPTARG}
+            ;;
+        l)
+            resourceGroupLocation=${OPTARG}
+            ;;
+        esac
+done
+shift $((OPTIND-1))
+
+#Prompt for parameters is some required parameters are missing
+if [[ -z "$subscriptionId" ]]; then
+    echo "Subscription Id:"
+    read subscriptionId
+    [[ "${subscriptionId:?}" ]]
+fi
+
+if [[ -z "$resourceGroupName" ]]; then
+    echo "ResourceGroupName:"
+    read resourceGroupName
+    [[ "${resourceGroupName:?}" ]]
+fi
+
+if [[ -z "$deploymentName" ]]; then
+    echo "DeploymentName:"
+    read deploymentName
+fi
+
+if [[ -z "$resourceGroupLocation" ]]; then
+    echo "Enter a location below to create a new resource group else skip this"
+    echo "ResourceGroupLocation:"
+    read resourceGroupLocation
+fi
+
+#templateFile Path - template file to be used
+templateFilePath="template.json"
+
+if [ ! -f "$templateFilePath" ]; then
+    echo "$templateFilePath not found"
+    exit 1
+fi
+
+#parameter file path
+parametersFilePath="parameters.json"
+
+if [ ! -f "$parametersFilePath" ]; then
+    echo "$parametersFilePath not found"
+    exit 1
+fi
+
+if [ -z "$subscriptionId" ] || [ -z "$resourceGroupName" ] || [ -z "$deploymentName" ]; then
+    echo "Either one of subscriptionId, resourceGroupName, deploymentName is empty"
+    usage
+fi
+
+#login to azure using your credentials
+az account show 1> /dev/null
+
+if [ $? != 0 ];
+then
+    az login
+fi
+
+#set the default subscription id
+az account set --name $subscriptionId
+
+set +e
+
+#Check for existing RG
+az group show $resourceGroupName 1> /dev/null
+
+if [ $? != 0 ]; then
+    echo "Resource group with name" $resourceGroupName "could not be found. Creating new resource group.."
+    set -e
+    (
+        set -x
+        az group create --name $resourceGroupName --location $resourceGroupLocation 1> /dev/null
+    )
+    else
+    echo "Using existing resource group..."
+fi
+
+#Start deployment
+echo "Starting deployment..."
+(
+    set -x
+    az group deployment create --name $deploymentName --resource-group $resourceGroupName --template-file $templateFilePath --parameters $parametersFilePath
+)
+
+if [ $?  == 0 ];
+ then
+    echo "Template has been successfully deployed"
+fi
 ```
 
 ## <a name="next-steps"></a>后续步骤

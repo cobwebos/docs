@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/27/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: a7d31be48ef06064b01cdb2dfd0331b34adbec4d
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: d502c8e2e2715899279f6ebcf7ed89c19a1bb9a6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="get-started-with-the-connected-factory-preconfigured-solution"></a>连接工厂预配置解决方案入门
@@ -53,7 +53,7 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 4. 单击磁贴，会在右边窗格中看到解决方案的详细信息。
 
 > [!NOTE]
-> 如果在部署预配置解决方案时遇到问题，请查看 [azureiotsuite.com 站点上的权限][lnk-permissions]和[常见问题][lnk-faq]。 如果问题仍然存在，请在[门户][lnk-portal]中创建服务票证。
+> 如果在部署预配置解决方案时遇到问题，请查看 [azureiotsuite.com 站点上的权限][lnk-permissions]和[连接工厂常见问题](iot-suite-faq-cf.md)。 如果问题仍然存在，请在[门户][lnk-portal]中创建服务票证。
 
 是否有你预期会看到但没有列出的解决方案详细信息？ 请在 [用户之声](https://feedback.azure.com/forums/321918-azure-iot)中向我们提供功能建议。
 
@@ -81,7 +81,7 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
 仪表板会显示以下信息：
 
-* 一个“工厂列表”面板，显示解决方案中的状态、位置和当前生产配置。 第一次运行解决方案时有多个模拟设备。 进行生产线模拟时，每条生产线有三个真实的 OPC UA 服务器，执行模拟任务并共享数据。 有关 OPC UA 的详细信息，请参阅[常见问题解答][lnk-faq]。
+* 一个“工厂列表”面板，显示解决方案中的状态、位置和当前生产配置。 第一次运行解决方案时有多个模拟设备。 进行生产线模拟时，每条生产线有三个真实的 OPC UA 服务器，执行模拟任务并共享数据。 有关 OPC UA 的详细信息，请参阅[连接工厂常见问题解答](iot-suite-faq-cf.md)。
 * 一个**地图**，用于显示每个连接到解决方案的设备的位置。 该解决方案可以使用必应地图 API，在地图上根据信息来绘图。 如果订阅启用了必应地图企业版 API，则会自动使用此功能。 否则，请参阅[常见问题][lnk-faq]，了解如何将地图变成动态地图。
 * 一个“警报”面板，显示在遥测或 OEE/KPI 值超出特定阈值时生成的警报。
 * 一个“设备综合效率”面板，显示整个企业的 OEE 值，或者显示所查看的工厂/生产线/装配站。 该值是从装配站视图聚合到企业级别的聚合值。 可以进一步分析 OEE 图及其构成元素。

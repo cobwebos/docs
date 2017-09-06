@@ -12,28 +12,29 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/28/2017
+ms.date: 08/28/2017
 ms.author: maheshu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: 457519b00b65b0157effe2d4aba033a1c99852e8
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: c0d3f90c0f15fbb7aad00fe24c2946738e24ffd8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
-# 为 Azure Active Directory 域服务创建或选择虚拟网络
-<a id="create-or-select-a-virtual-network-for-azure-active-directory-domain-services" class="xliff"></a>
-## 开始之前
-<a id="before-you-begin" class="xliff"></a>
+# <a name="create-or-select-a-virtual-network-for-azure-active-directory-domain-services"></a>为 Azure Active Directory 域服务创建或选择虚拟网络
+
+> [!IMPORTANT]
+> 很快会删除启用 Azure AD 域服务（如本文所示）的 Azure 经典门户体验。 对于全新部署，请[**改用新的（预览版）Azure 门户体验**](active-directory-ds-getting-started.md)。
+>
+
+## <a name="before-you-begin"></a>开始之前
 请参阅 [Azure Active Directory 域服务的网络注意事项](active-directory-ds-networking.md)。
 
-## 任务 2：创建 Azure 虚拟网络
-<a id="task-2-create-an-azure-virtual-network" class="xliff"></a>
+## <a name="task-2-create-an-azure-virtual-network"></a>任务 2：创建 Azure 虚拟网络
 下一个配置任务是创建 Azure 虚拟网络和其中的子网。 在虚拟网络的此子网中启用 Azure Active Directory 域服务。 如果已经有你想使用的现有虚拟网络，则可以跳过此步骤。
 
 > [!NOTE]
-> 确保创建或选择与 Azure Active Directory 域服务结合使用的 Azure 虚拟网络属于受 Azure Active Directory 域服务支持的 Azure 区域。 若要确定提供 Azure Active Directory 域服务的 Azure 区域，请参阅[按区域列出的 Azure 服务](https://azure.microsoft.com/regions/#services/)。
+> 确保创建或选择与 Azure Active Directory 域服务结合使用的 Azure 虚拟网络属于受 Azure Active Directory 域服务支持的 Azure 区域。 若要查看提供 Azure Active Directory 域服务的 Azure 区域，请参阅[按区域列出的 Azure 服务](https://azure.microsoft.com/regions/#services/)。
 >
 >记下虚拟网络的名称，确保在后续配置步骤中启用 Azure Active Directory 域服务时能够选择正确的虚拟网络。
 
@@ -48,7 +49,7 @@ ms.lasthandoff: 06/30/2017
 3. 在窗口底部的任务窗格中单击“新建”。
 
     ![“虚拟网络”窗口](./media/active-directory-domain-services-getting-started/virtual-networks.png)
-4. 单击“网络服务”，然后选择“虚拟网络”。
+4. 单击“网络服务”，并选择“虚拟网络”。
 
     ![虚拟网络 - 快速创建](./media/active-directory-domain-services-getting-started/virtual-network-quickcreate.png)
 5. 若要创建虚拟网络，请单击“快速创建”。
@@ -61,7 +62,7 @@ ms.lasthandoff: 06/30/2017
 8. 若要创建虚拟网络，请单击“创建虚拟网络”。
 
     ![为 Azure Active Directory 域服务创建虚拟网络](./media/active-directory-domain-services-getting-started/create-vnet.png)
-9. 创建虚拟网络后，选择虚拟网络的名称，然后单击“配置”选项卡。
+9. 创建虚拟网络后，选择虚拟网络的名称，并单击“配置”选项卡。
 
     ![创建子网](./media/active-directory-domain-services-getting-started/create-vnet-properties.png)
 10. 在“虚拟网络地址空间”下，单击“添加子网”，然后将子网名称指定为“AaddsSubnet”。
@@ -71,7 +72,6 @@ ms.lasthandoff: 06/30/2017
 11. 若要创建子网，请单击“保存”。
 
 
-## 后续步骤
-<a id="next-step" class="xliff"></a>
+## <a name="next-step"></a>后续步骤
 [任务 3：启用 Azure Active Directory 域服务](active-directory-ds-getting-started-enableaadds.md)
 
