@@ -13,18 +13,16 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/29/2017
+ms.date: 08/25/2017
 ms.author: xshi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 872930fd127729e0f444942ad1ee6fa11465ceb9
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 50ae54b9476c49b80236e295c0bf244df8236cff
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/25/2017
+ms.lasthandoff: 08/28/2017
 
 ---
-<a id="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning" class="xliff"></a>
-
-# 在 Azure 机器学习中使用 IoT 中心的传感器数据进行天气预报
+# <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>在 Azure 机器学习中使用 IoT 中心的传感器数据进行天气预报
 
 ![端到端关系图](media/iot-hub-get-started-e2e-diagram/6.png)
 
@@ -32,15 +30,11 @@ ms.lasthandoff: 04/25/2017
 
 机器学习是一项数据科研技术，可帮助计算机从现有的数据中学习，预测将来的行为、结果和趋势。 Azure 机器学习是一种云预测分析服务，使用它可以快速创建预测模型，并将其部署为分析解决方案。
 
-<a id="what-you-learn" class="xliff"></a>
-
-## 学习内容
+## <a name="what-you-learn"></a>学习内容
 
 了解如何使用 Azure 机器学习根据 Azure IoT 中心的温度和湿度数据来进行天气预报（下雨的可能性）。 下雨的可能性是已准备的天气预测模型的输出。 该模型基于历史数据构建，以根据温度和湿度预测下雨的可能性。
 
-<a id="what-you-do" class="xliff"></a>
-
-## 准备工作
+## <a name="what-you-do"></a>准备工作
 
 - 将天气预测模型部署为 Web 服务。
 - 添加一个使用者组，让 IoT 中心做好数据访问准备。
@@ -50,9 +44,7 @@ ms.lasthandoff: 04/25/2017
   - 将结果保存到 Azure Blob 存储中。
 - 使用 Microsoft Azure 存储资源管理器查看天气预报。
 
-<a id="what-you-need" class="xliff"></a>
-
-## 所需条件
+## <a name="what-you-need"></a>所需条件
 
 - 已完成教程[设置设备](iot-hub-raspberry-pi-kit-node-get-started.md)，其中涵盖以下要求：
   - 一个有效的 Azure 订阅。
@@ -60,9 +52,7 @@ ms.lasthandoff: 04/25/2017
   - 一个可向 Azure IoT 中心发送消息的客户端应用程序。
 - Azure 机器学习工作室帐户。 （[免费试用机器学习工作室](https://studio.azureml.net/)）。
 
-<a id="deploy-the-weather-prediction-model-as-a-web-service" class="xliff"></a>
-
-## 将天气预测模型部署为 Web 服务
+## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>将天气预测模型部署为 Web 服务
 
 1. 转到[天气预测模型页](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1)。
 1. 在 Microsoft Azure 机器学习工作室中单击“在工作室中打开”。
@@ -79,7 +69,7 @@ ms.lasthandoff: 04/25/2017
 1. 在模型的仪表板上，下载“Excel 2010 或更早版本的工作簿”用于“请求/响应”。
 
    > [!Note]
-   > 即使你在计算机上运行更高版本的 Excel，也请确保下载“Excel 2010 或更早版本的工作簿”。
+   > 即使你在计算机上运行更高版本的 Excel，也请确保下载 Excel 2010 或更早版本的工作簿。
 
    ![为请求响应终结点下载 Excel](media/iot-hub-weather-forecast-machine-learning/5_download-endpoint-app-excel-for-request-response.png)
 
@@ -87,13 +77,9 @@ ms.lasthandoff: 04/25/2017
 
 [!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
-<a id="create-configure-and-run-a-stream-analytics-job" class="xliff"></a>
+## <a name="create-configure-and-run-a-stream-analytics-job"></a>创建、配置和运行流分析作业
 
-## 创建、配置和运行流分析作业
-
-<a id="create-a-stream-analytics-job" class="xliff"></a>
-
-### 创建流分析作业
+### <a name="create-a-stream-analytics-job"></a>创建流分析作业
 
 1. 在 [Azure 门户](https://ms.portal.azure.com/)中，单击“新建” > “物联网” > “流分析作业”。
 1. 为作业输入以下信息。
@@ -110,13 +96,11 @@ ms.lasthandoff: 04/25/2017
 
 1. 单击“创建”。
 
-<a id="add-an-input-to-the-stream-analytics-job" class="xliff"></a>
-
-### 向流分析作业添加输入
+### <a name="add-an-input-to-the-stream-analytics-job"></a>向流分析作业添加输入
 
 1. 打开流分析作业。
 1. 在“作业拓扑”下，单击“输入”。
-1. 在“输入”窗格中单击“添加”，然后输入以下信息：
+1. 在“输入”窗格中单击“添加”，并输入以下信息：
 
    **输入别名**：输入的唯一别名。
 
@@ -128,12 +112,10 @@ ms.lasthandoff: 04/25/2017
 
 1. 单击“创建” 。
 
-<a id="add-an-output-to-the-stream-analytics-job" class="xliff"></a>
-
-### 向流分析作业添加输出
+### <a name="add-an-output-to-the-stream-analytics-job"></a>向流分析作业添加输出
 
 1. 在“作业拓扑”下，单击“输出”。
-1. 在“输出”窗格中单击“添加”，然后输入以下信息：
+1. 在“输出”窗格中单击“添加”，并输入以下信息：
 
    **输出别名**：输出的唯一别名。
 
@@ -149,9 +131,7 @@ ms.lasthandoff: 04/25/2017
 
 1. 单击“创建” 。
 
-<a id="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed" class="xliff"></a>
-
-### 向流分析作业添加函数以调用你部署的 Web 服务
+### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>向流分析作业添加函数以调用你部署的 Web 服务
 
 1. 在“作业拓扑”下，单击“函数” > “添加”。
 1. 输入以下信息：
@@ -170,9 +150,7 @@ ms.lasthandoff: 04/25/2017
 
 1. 单击“创建” 。
 
-<a id="configure-the-query-of-the-stream-analytics-job" class="xliff"></a>
-
-### 配置流分析作业的查询
+### <a name="configure-the-query-of-the-stream-analytics-job"></a>配置流分析作业的查询
 
 1. 在“作业拓扑”下，单击“查询”。
 1. 将现有代码替换为以下代码：
@@ -192,33 +170,27 @@ ms.lasthandoff: 04/25/2017
 
 1. 单击“保存” 。
 
-<a id="run-the-stream-analytics-job" class="xliff"></a>
-
-### 运行流分析作业
+### <a name="run-the-stream-analytics-job"></a>运行流分析作业
 
 在流分析作业中，单击“启动” > “现在” > “启动”。 成功启动作业以后，作业状态将从“已停止”更改为“正在运行”。
 
 ![运行流分析作业](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
 
-<a id="use-microsoft-azure-storage-explorer-to-view-the-weather-forecast" class="xliff"></a>
+## <a name="use-microsoft-azure-storage-explorer-to-view-the-weather-forecast"></a>使用 Microsoft Azure 存储资源管理器查看天气预报
 
-## 使用 Microsoft Azure 存储资源管理器查看天气预报
-
-运行客户端应用程序，以开始收集温度和湿度数据并将其发送到 IoT 中心。 对于你的 IoT 中心收到的每条消息，流分析作业将调用天气预报 Web 服务，以生成下雨的可能性。 然后，结果将保存到 Azure Blob 存储。 Azure 存储资源管理器是一种可用于查看结果的工具。
+运行客户端应用程序，以开始收集温度和湿度数据并将其发送到 IoT 中心。 对于 IoT 中心收到的每条消息，流分析作业将调用天气预报 Web 服务，以生成下雨的可能性。 然后，结果将保存到 Azure Blob 存储。 Azure 存储资源管理器是一种可用于查看结果的工具。
 
 1. [下载并安装 Microsoft Azure 存储资源管理器](http://storageexplorer.com/)。
 1. 打开 Azure 存储资源管理器。
-1. 登录到你的 Azure 帐户。
-1. 选择你的订阅。
-1. 单击你的 Azure 订阅 >“存储帐户”> 你的存储帐户 >“ Blob 容器”> 你的容器。
+1. 登录到 Azure 帐户。
+1. 选择订阅。
+1. 单击 Azure 订阅 >“存储帐户”> 存储帐户 >“ Blob 容器”> 容器。
 1. 打开一个 .csv 文件以查看结果。 最后一列记录下雨的可能性。
 
    ![使用 Azure 机器学习获取天气预报结果](media/iot-hub-weather-forecast-machine-learning/12_get-weather-forecast-result-azure-machine-learning.png)
 
-<a id="summary" class="xliff"></a>
+## <a name="summary"></a>摘要
 
-## 摘要
-
-你已成功使用 Azure 机器学习基于 IoT 中心收到的温度和湿度数据生成下雨的可能性。
+已成功使用 Azure 机器学习基于 IoT 中心收到的温度和湿度数据生成下雨的可能性。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

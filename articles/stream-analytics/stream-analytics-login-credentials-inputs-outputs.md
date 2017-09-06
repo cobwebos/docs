@@ -4,7 +4,7 @@ description: "了解如何更新流分析输入和输出的凭据。"
 keywords: "登录凭据"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 42ae83e1-cd33-49bb-a455-a39a7c151ea4
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 26a0281ca272ebb7366aefe392ab1d25b3806eb4
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: a1a927fa9c34b38e54fdb22782e80fd13bf430c7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-in-stream-analytics-jobs"></a>在流分析作业中轮转输入和输出的登录凭据
@@ -56,9 +55,9 @@ Azure 流分析目前不允许在作业运行时替换输入/输出上的凭据�
 ### <a name="event-hubs"></a>事件中心
 1. 转到 Azure 管理门户的服务总线扩展：  
    ![graphic6][graphic6]
-2. 找到作业使用的服务总线命名空间，然后进入该空间：  
+2. 找到作业使用的服务总线命名空间，并进入该空间：  
    ![graphic7][graphic7]
-3. 如果你的作业在 Service Bus 命名空间上使用共享访问策略，请跳到步骤 6  
+3. 如果作业在服务总线命名空间上使用共享访问策略，请跳到步骤 6  
 4. 转到“事件中心”选项卡：  
    ![graphic8][graphic8]
 5. 找到作业使用的事件中心并进入：  
@@ -76,19 +75,19 @@ Azure 流分析目前不允许在作业运行时替换输入/输出上的凭据�
 
 ### <a name="sql-database"></a>SQL 数据库
 > [!NOTE]
-> 注意：这将需要连接到 SQL 数据库服务。 我们将根据 Azure 管理门户的管理经验来演示如何连接，不过也可以选择使用某些客户端工具，例如 SQL Server Management Studio。
+> 注意：这会需要连接到 SQL 数据库服务。 我们会根据 Azure 管理门户的管理经验来演示如何连接，不过也可以选择使用某些客户端工具，例如 SQL Server Management Studio。
 >
 > 
 
 1. 转到 Azure 管理门户的 SQL 数据库扩展：  
    ![graphic14][graphic14]
-2. 找到作业使用的 SQL 数据库，然后**单击服务器**链接（位于同一行）：  
+2. 找到作业使用的 SQL 数据库，并**单击服务器**链接（位于同一行）：  
    ![graphic15][graphic15]
 3. 单击“管理”命令：  
    ![graphic16][graphic16]
 4. 键入主数据库：  
    ![graphic17][graphic17]
-5. 键入“用户名”、“密码”，然后单击“登录”：  
+5. 键入“用户名”、“密码”，并单击“登录”：  
    ![graphic18][graphic18]
 6. 单击“新建查询”：  
    ![graphic19][graphic19]
@@ -100,7 +99,7 @@ Azure 流分析目前不允许在作业运行时替换输入/输出上的凭据�
    ![graphic21][graphic21]
 10. 单击“管理”命令：  
    ![graphic22][graphic22]
-11. 键入“用户名”、“密码”，然后单击“登录”：  
+11. 键入“用户名”、“密码”，并单击“登录”：  
    ![graphic23][graphic23]
 12. 单击“新建查询”：  
    ![graphic24][graphic24]
@@ -120,7 +119,7 @@ Azure 流分析目前不允许在作业运行时替换输入/输出上的凭据�
    ![graphic28][graphic28]
 4. 单击“停止”命令，确认作业已停止：  
    ![graphic29][graphic29] 等待作业停止。
-5. 找到要轮转凭据的输入/输出，然后进入：  
+5. 找到要轮转凭据的输入/输出，并进入：  
    ![graphic30][graphic30]
 6. 转到第 3 部分。
 
@@ -128,37 +127,37 @@ Azure 流分析目前不允许在作业运行时替换输入/输出上的凭据�
 ### <a name="blob-storagetable-storage"></a>Blob 存储/表存储
 1. 找到“存储帐户密钥”字段，将新生成的密钥粘贴到其中：  
    ![graphic31][graphic31]
-2. 单击“保存”命令，然后确认保存更改：  
+2. 单击“保存”命令，并确认保存更改：  
    ![graphic32][graphic32]
-3. 当你保存所做的更改时，连接测试将自动启动，请确保连接测试成功通过。
+3. 保存所做的更改时，连接测试会自动启动，请确保连接测试成功通过。
 4. 转到第 4 部分。
 
 ### <a name="event-hubs"></a>事件中心
 1. 找到“事件中心策略密钥”字段，将新生成的密钥粘贴到其中：  
    ![graphic33][graphic33]
-2. 单击“保存”命令，然后确认保存更改：  
+2. 单击“保存”命令，并确认保存更改：  
    ![graphic34][graphic34]
-3. 当你保存所做的更改时，连接测试将自动启动，请确保连接测试成功通过。
+3. 保存所做的更改时，连接测试会自动启动，请确保连接测试成功通过。
 4. 转到第 4 部分。
 
 ### <a name="power-bi"></a>Power BI
 1. 单击“续订授权”：  
 
    ![graphic35][graphic35]
-2. 你将获得以下确认：  
+2. 将获得以下确认：  
 
    ![graphic36][graphic36]
-3. 单击“保存”命令，然后确认保存更改：  
+3. 单击“保存”命令，并确认保存更改：  
    ![graphic37][graphic37]
-4. 当你保存所做的更改时，连接测试将自动启动，请确保连接测试成功通过。
+4. 保存所做的更改时，连接测试会自动启动，请确保连接测试成功通过。
 5. 转到第 4 部分。
 
 ### <a name="sql-database"></a>SQL 数据库
 1. 找到“用户名”和“密码”字段，然后将新创建的一组凭据粘贴到其中：  
    ![graphic38][graphic38]
-2. 单击“保存”命令，然后确认保存更改：  
+2. 单击“保存”命令，并确认保存更改：  
    ![graphic39][graphic39]
-3. 当你保存所做的更改时，连接测试将自动启动，请确保连接测试成功通过。  
+3. 保存所做的更改时，连接测试会自动启动，请确保连接测试成功通过。  
 4. 转到第 4 部分。
 
 ## <a name="part-4-starting-your-job-from-last-stopped-time"></a>第 4 部分：启动上次停止时的作业
@@ -166,7 +165,7 @@ Azure 流分析目前不允许在作业运行时替换输入/输出上的凭据�
    ![graphic40][graphic40]
 2. 单击“开始”命令：  
    ![graphic41][graphic41]
-3. 选择“上次停止时间”，然后单击“确定”：  
+3. 选择“上次停止时间”，并单击“确定”：  
    ![graphic42][graphic42]
 4. 转到第 5 部分。  
 
@@ -179,10 +178,10 @@ Azure 流分析目前不允许在作业运行时替换输入/输出上的凭据�
 * 表存储
 
 ### <a name="blob-storagetable-storage"></a>Blob 存储/表存储
-重复第 1 部分以获取你的作业以前使用过的访问密钥，以便续订现在不使用的访问密钥。
+重复第 1 部分以获取作业以前使用过的访问密钥，以便续订现在不使用的访问密钥。
 
 ### <a name="event-hubs"></a>事件中心
-重复第 1 部分以获取你的作业以前使用过的密钥，以便续订现在不使用的密钥。
+重复第 1 部分以获取作业以前使用过的密钥，以便续订现在不使用的密钥。
 
 ### <a name="sql-database"></a>SQL 数据库
 1. 回到第 1 部分步骤 7 中的查询窗口，键入以下查询，将 <previous_login_name> 替换为作业以前使用过的用户名：  
@@ -190,12 +189,12 @@ Azure 流分析目前不允许在作业运行时替换输入/输出上的凭据�
 2. 单击“运行”：  
    ![graphic43][graphic43]  
 
-你会获得以下确认： 
+将获得以下确认： 
 
     Command(s) completed successfully.
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

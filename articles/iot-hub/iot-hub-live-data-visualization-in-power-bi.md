@@ -13,13 +13,13 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/29/2017
+ms.date: 08/24/2017
 ms.author: xshi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 404ab1682d9b77f22e60888340ffb70a101ed5d4
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: b190fea06ffc2406d781c7edad091f097cca9c2d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>使用 Power BI 可视化 Azure IoT 中心的实时传感器数据
@@ -72,7 +72,7 @@ ms.lasthandoff: 06/15/2017
 
 1. 打开流分析作业。
 1. 在“作业拓扑”下，单击“输入”。
-1. 在“输入”窗格中单击“添加”，然后输入以下信息：
+1. 在“输入”窗格中单击“添加”，并输入以下信息：
 
    **输入别名**：输入的唯一别名。
 
@@ -86,12 +86,12 @@ ms.lasthandoff: 06/15/2017
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>向流分析作业添加输出
 
 1. 在“作业拓扑”下，单击“输出”。
-1. 在“输出”窗格中单击“添加”，然后输入以下信息：
+1. 在“输出”窗格中单击“添加”，并输入以下信息：
 
    **输出别名**：输出的唯一别名。
 
    **接收器**：选择“Power BI”。
-1. 单击“授权”，然后登录到 Power BI 帐户。
+1. 单击“授权”，并登录到 Power BI 帐户。
 1. 获得授权后，请输入以下信息：
 
    **组工作区**：选择目标组工作区。
@@ -136,7 +136,7 @@ ms.lasthandoff: 06/15/2017
    1. 将 **EventEnqueuedUtcTime** 拖至“可视化效果”窗格中的“轴”。
    1. 将“温度”拖至“值”。
 
-      现在创建了一个折线图。 图表的 X 轴显示 UTC 时区的日期和时间。 Y 轴显示来自传感器的温度。
+      现在创建了一个折线图。 X 轴显示 UTC 时区的日期和时间。 Y 轴显示来自传感器的温度。
 
       ![向 Microsoft Power BI 报表添加温度折线图](media/iot-hub-live-data-visualization-in-power-bi/8_add-line-chart-for-temperature-to-power-bi-report-microsoft.png)
 
@@ -146,9 +146,9 @@ ms.lasthandoff: 06/15/2017
 
 1. 单击“保存”以保存该报表。
 1. 单击“文件” > “发布到 Web”。
-1. 单击“创建嵌入代码”，然后单击“发布”。
+1. 单击“创建嵌入代码”，并单击“发布”。
 
-系统会为你提供一个报表链接，方便你将其共享给任何需要进行报表访问的人；同时还会为你提供一个代码片段，方便你将报表集成到博客或网站中。
+系统会提供一个报表链接，以便将其共享给任何需要进行报表访问的人；同时还会提供一个代码片段，以便将报表集成到博客或网站中。
 
 ![发布 Microsoft Power BI 报表](media/iot-hub-live-data-visualization-in-power-bi/10_publish-power-bi-report-microsoft.png)
 

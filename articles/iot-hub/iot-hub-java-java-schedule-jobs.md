@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/10/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: 25ad960e456d20a3695d4245ddddc9772cbf47a0
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 003a548ef2da2921a699df1aa9f7aee366d341ab
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/31/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>计划和广播作业 (Java)
@@ -53,7 +53,7 @@ schedule-jobs：使用作业来调用 lockDoor 直接方法，并在多个设备
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程，你需要：
+要完成本教程，需要：
 
 * 最新的 [Java SE 开发工具包 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Maven 3](https://maven.apache.org/install.html)
@@ -480,7 +480,7 @@ schedule-jobs：使用作业来调用 lockDoor 直接方法，并在多个设备
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，然后在 IoT 中心的标识注册表中创建了设备标识。 创建了运行两个作业的后端应用。 第一个作业设置了所需的属性值，第二个作业调用了直接方法。
+在本教程中，已在 Azure 门户中配置了新的 IoT 中心，然后在 IoT 中心的标识注册表中创建了设备标识。 创建了运行两个作业的后端应用。 第一个作业设置了所需的属性值，第二个作业调用了直接方法。
 
 使用下列资源了解如何执行以下操作：
 

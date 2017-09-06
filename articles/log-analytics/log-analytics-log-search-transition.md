@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/25/2017
+ms.date: 08/23/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 281b6afc6aeaf65e87e1bd2820c35a14f7714aa1
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 10b7f3ad23d9c5451bc7ff82b8927c260230f6da
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -37,15 +37,16 @@ ms.lasthandoff: 07/28/2017
 
 ## <a name="cheat-sheet"></a>备忘单
 
-下表提供分别使用新、旧查询语言在 Azure Log Analytics 中对等效命令进行各种常见查询时的查询间比较。 
+下表提供分别使用新、旧查询语言在 Azure Log Analytics 中对等效命令进行各种常见查询时的查询间比较。
 
 | 说明 | 旧的 | 新的 |
 |:--|:--|:--|
+| 搜索所有表格      | error | 搜索“错误”（不区分大小写） |
 | 从表中选择数据 | Type=Event |  事件 |
 |                        | Type=Event &#124; select Source, EventLog, EventID | Event &#124; project Source, EventLog, EventID |
 |                        | Type=Event &#124; top 100 | Event &#124; take 100 |
 | 字符串比较      | Type=Event Computer=srv01.contoso.com   | Event &#124; where Computer == "srv01.contoso.com" |
-|                        | Type=Event Computer=contains("contoso") | Event &#124; where Computer contains "contoso" |
+|                        | Type=Event Computer=contains("contoso") | Event &#124; where Computer contains "contoso"（不区分大小写）<br>Event &#124; where Computer contains_cs "Contoso"（不区分大小写） |
 |                        | Type=Event Computer=RegEx("@contoso@")  | Event &#124; where Computer matches regex ".*contoso*" |
 | 日期比较        | Type=Event TimeGenerated > NOW-1DAYS | Event &#124; where TimeGenerated > ago(1d) |
 |                        | Type=Event TimeGenerated>2017-05-01 TimeGenerated<2017-05-31 | Event &#124; where TimeGenerated between (datetime(2017-05-01) .. datetime(2017-05-31)) |
@@ -62,6 +63,6 @@ ms.lasthandoff: 07/28/2017
 
 
 ## <a name="next-steps"></a>后续步骤
-- 查看使用新查询语言的[查询编写教程](https://docs.loganalytics.io/learn/tutorial_getting_started_with_queries.html)。
-- 若要深入了解新查询语言的所有命令、运算符和函数，请参阅[查询语言参考](https://docs.loganalytics.io/queryLanguage/query_language.html)。  
+- 查看使用新查询语言的[查询编写教程](https://go.microsoft.com/fwlink/?linkid=856078)。
+- 若要深入了解新查询语言的所有命令、运算符和函数，请参阅[查询语言参考](https://go.microsoft.com/fwlink/?linkid=856079)。  
 

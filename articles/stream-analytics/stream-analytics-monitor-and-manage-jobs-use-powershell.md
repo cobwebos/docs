@@ -4,7 +4,7 @@ description: "了解如何使用 Azure PowerShell 和 cmdlet 监视和管理流�
 keywords: "azure powershell、azure powershell cmdlet、powershell 命令、powershell 脚本"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 514f454e-d18c-4081-8304-ab48577e15e8
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: d968a22c61c8e9c3375927c01dd10aaf413fce00
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: ca819aa210118d32e3ddada61bfd2125d7ab2236
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>使用 Azure PowerShell cmdlet 监视和管理流分析作业
@@ -60,13 +59,13 @@ Azure PowerShell 1.0：
 
 
 > [!NOTE]
-> 以编程方式创建的流分析作业默认情况下并不启用监视功能。  可以在 Azure 门户中手动启用监视功能，只需导航到作业的“监视”页，然后单击“启用”按钮即可；你也可以通过编程方式来执行此操作，只需遵循 [Azure 流分析 - 以编程方式监视流分析作业](stream-analytics-monitor-jobs.md)中的步骤即可
+> 以编程方式创建的流分析作业默认情况下并不启用监视功能。  可以在 Azure 门户中手动启用监视功能，只需导航到作业的“监视”页，并单击“启用”按钮即可；也可以通过编程方式来执行此操作，只需遵循 [Azure 流分析 - 以编程方式监视流分析作业](stream-analytics-monitor-jobs.md)中的步骤即可
 > 
 > 
 
 ## <a name="azure-powershell-cmdlets-for-stream-analytics"></a>适用于流分析的 Azure PowerShell cmdlet
 下面的 Azure PowerShell cmdlet 可用于监视和管理 Azure 流分析作业。 请注意，Azure PowerShell 具有不同版本。 
-**在所列示例中，第一个命令用于 Azure PowerShell 0.9.8，第二个命令用于 Azure PowerShell 1.0。** Azure PowerShell 1.0 命令将在命令中始终包含“AzureRM”。
+**在所列示例中，第一个命令用于 Azure PowerShell 0.9.8，第二个命令用于 Azure PowerShell 1.0。** Azure PowerShell 1.0 命令会在命令中始终包含“AzureRM”。
 
 ### <a name="get-azurestreamanalyticsjob--get-azurermstreamanalyticsjob"></a>Get-AzureStreamAnalyticsJob | Get-AzureRMStreamAnalyticsJob
 列出所有在 Azure 订阅或指定资源组中定义的流分析作业，或者获取有关某个资源组中特定作业的作业信息。
@@ -196,9 +195,9 @@ Azure PowerShell 1.0：
 
 输入的名称可以在 .json 文件中指定，也可以在命令行中指定。 如果在两处同时指定，则命令行的名称必须与文件中的名称相同。
 
-如果你所指定的输入已存在，而且你并未指定 –Force 参数，则该 cmdlet 会询问你是否替换现有输入。
+如果所指定的输入已存在，而且你并未指定 –Force 参数，则该 cmdlet 会询问你是否替换现有输入。
 
-如果你指定了 –Force 参数，同时又指定了一个现有的输入名称，则会在不进行确认的情况下替换该输入。
+如果指定了 –Force 参数，同时又指定了一个现有的输入名称，则会在不进行确认的情况下替换该输入。
 
 有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][stream.analytics.rest.api.reference]的[创建输入（Azure 流分析）][msdn-rest-api-create-stream-analytics-input]部分。
 
@@ -243,9 +242,9 @@ Azure PowerShell 1.0：
 
 作业的名称可以在 .json 文件中指定，也可以在命令行中指定。 如果在两处同时指定，则命令行的名称必须与文件中的名称相同。
 
-如果你所指定的作业名称已存在，而且你并未指定 –Force 参数，则该 cmdlet 会询问你是否替换现有作业。
+如果所指定的作业名称已存在，而且你并未指定 –Force 参数，则该 cmdlet 会询问你是否替换现有作业。
 
-如果你指定了 –Force 参数，同时又指定了一个现有的作业名称，则会在不进行确认的情况下替换作业定义。
+如果指定了 –Force 参数，同时又指定了一个现有的作业名称，则会在不进行确认的情况下替换作业定义。
 
 有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][stream.analytics.rest.api.reference]的[创建流分析作业][msdn-rest-api-create-stream-analytics-job]部分。
 
@@ -278,9 +277,9 @@ Azure PowerShell 1.0：
 
 输出的名称可以在 .json 文件中指定，也可以在命令行中指定。 如果在两处同时指定，则命令行的名称必须与文件中的名称相同。
 
-如果你所指定的输出已存在，而且你并未指定 –Force 参数，则该 cmdlet 会询问你是否替换现有输出。
+如果所指定的输出已存在，而且你并未指定 –Force 参数，则该 cmdlet 会询问你是否替换现有输出。
 
-如果你指定了 –Force 参数，同时又指定了一个现有的输出名称，则会在不进行确认的情况下替换该输出。
+如果指定了 –Force 参数，同时又指定了一个现有的输出名称，则会在不进行确认的情况下替换该输出。
 
 有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][stream.analytics.rest.api.reference]的[创建输出（Azure 流分析）][msdn-rest-api-create-stream-analytics-output]部分。
 
@@ -313,9 +312,9 @@ Azure PowerShell 1.0：
 
 转换的名称可以在 .json 文件中指定，也可以在命令行中指定。 如果在两处同时指定，则命令行的名称必须与文件中的名称相同。
 
-如果你所指定的转换已存在，而且你并未指定 –Force 参数，则该 cmdlet 会询问你是否替换现有转换。
+如果所指定的转换已存在，而且你并未指定 –Force 参数，则该 cmdlet 会询问你是否替换现有转换。
 
-如果你指定了 –Force 参数，同时又指定了一个现有的转换名称，则会在不进行确认的情况下替换转换。
+如果指定了 –Force 参数，同时又指定了一个现有的转换名称，则会在不进行确认的情况下替换转换。
 
 有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][stream.analytics.rest.api.reference]的[创建转换（Azure 流分析）][msdn-rest-api-create-stream-analytics-transformation]部分。
 
@@ -452,7 +451,7 @@ Azure PowerShell 1.0：
 此 PowerShell 命令测试 StreamingJob 中输出 Output 的连接状态。  
 
 ## <a name="get-support"></a>获取支持
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。 
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。 
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

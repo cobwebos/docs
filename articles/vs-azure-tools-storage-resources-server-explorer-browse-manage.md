@@ -3,8 +3,8 @@ title: "使用服务器资源管理器浏览和管理存储资源 | Microsoft Do
 description: "使用服务器资源管理器浏览和管理存储资源"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 658dc064-4a4e-414b-ae5a-a977a34c930d
 ms.service: storage
@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/18/2016
-ms.author: tarcher
+ms.date: 8/24/2017
+ms.author: kraigb
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: c6eaa30e9eeb9547fcbfaa5e0b760895fe8c929a
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 43ab501c69c0c1e3271dbfcf08e5342a3507ab82
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="browsing-and-managing-storage-resources-with-server-explorer"></a>使用服务器资源管理器浏览和管理存储资源
@@ -47,7 +47,8 @@ Blob 节点显示所选存储帐户的容器列表。 Blob 容器包含 Blob 文
 
 ### <a name="to-create-a-blob-container"></a>创建 Blob 容器
 1. 打开“Blob”节点的快捷菜单，并选择“创建 Blob 容器”。
-2. 在“创建 Blob 容器”对话框中输入新容器的名称，并选择“确定”
+2. 在“创建 Blob 容器”对话框中，输入新容器的名称。  
+3. 在键盘上按 Enter，或者单击或点击名称字段以外的任何位置，即可保存 blob 容器。
    
    > [!NOTE]
    > Blob 容器名称必须以数字 (0-9) 或小写字母 (a-z) 开头。
@@ -58,7 +59,7 @@ Blob 节点显示所选存储帐户的容器列表。 Blob 容器包含 Blob 文
 * 打开要删除的 Blob 容器的快捷菜单，并选择“删除”。
 
 ### <a name="to-display-a-list-of-the-items-contained-in-a-blob-container"></a>显示 Blob 容器中包含的项目列表
-* 打开列表中 Blob 容器名称的快捷菜单，并选择“查看 Blob 容器”。
+* 打开列表中 Blob 容器名称的快捷菜单，并选择“打开”。
   
     查看 Blob 容器的内容时，该内容显示在称为“Blob 容器视图”的选项卡中。
   
@@ -79,12 +80,12 @@ Blob 节点显示所选存储帐户的容器列表。 Blob 容器包含 Blob 文
   * 将 Blob 保存到本地计算机
 
 ### <a name="to-create-a-folder-or-subfolder-in-a-blob-container"></a>在 Blob 容器中创建文件夹或子文件夹
-1. 在服务器资源管理器中选择 Blob 容器。 在容器窗口中，选择“上传 Blob”按钮。
+1. 在云资源管理器中选择 Blob 容器。 在容器窗口中，选择“上传 Blob”按钮。
    
     ![将文件上传到 Blob 文件夹](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC766037.png)
 2. 在“上载新文件”对话框中，选择“浏览”按钮并指定要上载的文件，并在“文件夹(可选)”框中输入文件夹名称。
    
-    可以遵循相同的过程将子文件夹添加到容器文件夹。 如果未指定文件夹名称，文件将上传到 Blob 容器的顶层。文件将出现在容器中指定的文件夹内。
+    可以遵循相同的过程将子文件夹添加到容器文件夹。 如果未指定文件夹名称，文件将上传到 Blob 容器的顶层。 文件将出现在容器中指定的文件夹内。
    
     ![已添加到 Blob 容器的文件夹](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC766038.png)
 3. 双击文件夹或按 Enter 以查看文件夹的内容。 位于容器的文件夹中时，可以通过选择“打开父目录”（向上箭头）按钮导航回到容器的根目录。
@@ -110,7 +111,7 @@ Blob 节点显示所选存储帐户的容器列表。 Blob 容器包含 Blob 文
 > 
 
 ### <a name="to-download-blob-data"></a>下载 Blob 数据
-* 在“服务器资源管理器”中，打开一个或多个 blob 的快捷菜单，然后选择“打开”；或者选择 blob 名称，然后选择“打开”按钮；或者双击 blob 名称。
+* 在“云资源管理器”中，打开一个或多个 blob 的快捷菜单，然后选择“打开”；或者选择 blob 名称，然后选择“打开”按钮；或者双击 blob 名称。
   
     Blob 下载的进度会显示在“Azure 活动日志”窗口中。
   
@@ -143,7 +144,7 @@ Blob 节点显示所选存储帐户的容器列表。 Blob 容器包含 Blob 文
 
 * 刷新队列的视图
 * 将消息添加到队列
-* 取消顶部消息的排队。
+* 取消顶部消息的排队
 * 清除整个队列
 
 下图显示了包含两条消息的队列。
@@ -161,11 +162,11 @@ Blob 节点显示所选存储帐户的容器列表。 Blob 容器包含 Blob 文
 Azure 表存储服务可存储大量结构化数据。 该服务是一个 NoSQL 数据存储，接受来自 Azure 云内部和外部的通过验证的呼叫。 Azure 表最适合存储结构化非关系型数据。
 
 ### <a name="to-create-a-table"></a>创建表
-1. 在服务器资源管理器中，选择存储帐户的“表”节点，并选择“创建表”。
+1. 在云资源管理器中，选择存储帐户的“表”节点，然后选择“创建表”。
 2. 在“创建表”对话框中，输入表的名称。
 
 ### <a name="to-view-table-data"></a>查看表数据
-1. 在服务器资源管理器中，打开“Azure”节点，并打开“存储”节点。
+1. 在云资源管理器中，打开“Azure”节点，然后打开“存储”节点。
 2. 打开所需的存储帐户节点，并打开“表”节点以查看存储帐户的表列表。
 3. 打开表的快捷菜单，并选择“查看表”。
    
@@ -186,7 +187,7 @@ Azure 表存储服务可存储大量结构化数据。 该服务是一个 NoSQL 
    * 如果输入日期时间值，必须使用适合计算机区域和语言设置的格式（例如，对于美国英语，必须使用 MM/DD/YYYY HH:MM:SS [AM|PM]）。
 
 ### <a name="to-add-entities"></a>添加实体
-1. 在“表设计器”中，选择靠近表视图右上角的“添加实体”按钮。
+1. 在“表设计器”中，选择“添加实体”按钮。
    
     ![添加实体](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC655336.png)
 2. 在“添加实体”对话框中，输入 **PartitionKey** 和 **RowKey** 属性的值。
@@ -199,7 +200,7 @@ Azure 表存储服务可存储大量结构化数据。 该服务是一个 NoSQL 
 如果使用查询生成器，则可以自定义表中显示的实体集。
 
 1. 若要打开查询生成器，请打开要查看的表。
-2. 选择表视图工具栏上最右侧的按钮。
+2. 选择表视图工具栏上的“查询生成器”按钮。
    
     随后将出现“查询生成器”对话框。 下图显示了正在查询生成器中进行生成的查询。
    

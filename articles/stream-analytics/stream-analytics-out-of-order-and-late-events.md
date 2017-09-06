@@ -4,7 +4,7 @@ description: "了解流分析如何处理数据流中的无序事件或延迟事
 keywords: "无序、延迟、事件"
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 
@@ -14,18 +14,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: d7a5620aef1f28ea065ec10ce095f7f3904a8060
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 5089dda48ea829902663ef9d09fe83177df6f220
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-stream-analytics-event-order-handling"></a>Azure 流分析事件顺序处理
 
-在事件的临时数据流中，每个事件记录有接收事件的时间。 某些条件可能会导致事件流偶尔以不同于发送事件的顺序接收某些事件。 简单的 TCP 重新传输或者发送设备和接收事件中心之间的时间偏差都可能造成此问题。 此外，还向接收的事件流添加了“标点”事件，以便在事件未到达时将时间提前。 在“3 分钟内没有登录时通知我”等方案中，需要使用这些操作。
+在事件的临时数据流中，每个事件记录有接收事件的时间。 某些条件可能会导致事件流偶尔以不同于发送事件的顺序接收某些事件。 简单的 TCP 重新传输或者发送设备和接收事件中心之间的时间偏差都可能造成此问题。 此外，还向接收的事件流添加了“标点”事件，以便在事件未到达时会时间提前。 在“3 分钟内没有登录时通知我”等方案中，需要使用这些操作。
 
 无序输入流包括：
 * 已排序（因此“已延迟”）。
@@ -60,12 +59,12 @@ ms.lasthandoff: 07/04/2017
 
 如果将无序容错时间范围设为 0 秒，则断言全体事件始终有序。 考虑到无序事件的三个源，则这不可能为 true。 
 
-若要允许流分析更正事件无序，可指定一个非零无序容错时间范围。 流分析缓冲事件到该时间范围，然后使用所选的时间戳对其重新排序。 然后，它将应用临时转换。 可以从 3 秒时间范围开始调整值，以减少时间调整的事件的数目。 
+若要允许流分析更正事件无序，可指定一个非零无序容错时间范围。 流分析缓冲事件到该时间范围，并使用所选的时间戳对其重新排序。 然后，它将应用临时转换。 可以从 3 秒时间范围开始调整值，以减少时间调整的事件的数目。 
 
 缓冲的一个副作用是输出将延迟相同时长。 可以通过调整值来减少无序事件的数目，并将作业延迟控制在较低的水平。
 
 ## <a name="get-help"></a>获取帮助
-有关更多帮助，请访问我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
+有关更多帮助，请访问我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [流分析简介](stream-analytics-introduction.md)

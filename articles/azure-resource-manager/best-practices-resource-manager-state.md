@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2016
 ms.author: tomfitz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
 ms.openlocfilehash: 23cc4321159a87b61c177b11381646af8bd9eb35
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/24/2017
 
 ---
 # <a name="share-state-to-and-from-azure-resource-manager-templates"></a>将状态共享到 Azure Resource Manager 模板或从 Azure 资源管理器模板共享状态
@@ -32,139 +33,143 @@ ms.openlocfilehash: 23cc4321159a87b61c177b11381646af8bd9eb35
 
 以下示例显示了如何定义包含复杂对象（代表数据聚合）的变量。 这些集合定义的值可用于虚拟机大小、网络设置、操作系统设置和可用性设置。
 
-    "variables": {
-      "tshirtSize": "[variables(concat('tshirtSize', parameters('tshirtSize')))]",
-      "tshirtSizeSmall": {
-        "vmSize": "Standard_A1",
-        "diskSize": 1023,
-        "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-2disk-resources.json')]",
-        "vmCount": 2,
-        "storage": {
-          "name": "[parameters('storageAccountNamePrefix')]",
-          "count": 1,
-          "pool": "db",
-          "map": [0,0],
-          "jumpbox": 0
-        }
+```json
+"variables": {
+  "tshirtSize": "[variables(concat('tshirtSize', parameters('tshirtSize')))]",
+  "tshirtSizeSmall": {
+    "vmSize": "Standard_A1",
+    "diskSize": 1023,
+    "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-2disk-resources.json')]",
+    "vmCount": 2,
+    "storage": {
+      "name": "[parameters('storageAccountNamePrefix')]",
+      "count": 1,
+      "pool": "db",
+      "map": [0,0],
+      "jumpbox": 0
+    }
+  },
+  "tshirtSizeMedium": {
+    "vmSize": "Standard_A3",
+    "diskSize": 1023,
+    "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-8disk-resources.json')]",
+    "vmCount": 2,
+    "storage": {
+      "name": "[parameters('storageAccountNamePrefix')]",
+      "count": 2,
+      "pool": "db",
+      "map": [0,1],
+      "jumpbox": 0
+    }
+  },
+  "tshirtSizeLarge": {
+    "vmSize": "Standard_A4",
+    "diskSize": 1023,
+    "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-16disk-resources.json')]",
+    "vmCount": 3,
+    "slaveCount": 2,
+    "storage": {
+      "name": "[parameters('storageAccountNamePrefix')]",
+      "count": 2,
+      "pool": "db",
+      "map": [0,1,1],
+      "jumpbox": 0
+    }
+  },
+  "osSettings": {
+    "scripts": [
+      "[concat(variables('templateBaseUrl'), 'install_postgresql.sh')]",
+      "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/shared_scripts/ubuntu/vm-disk-utils-0.1.sh"
+    ],
+    "imageReference": {
+      "publisher": "Canonical",
+      "offer": "UbuntuServer",
+      "sku": "14.04.2-LTS",
+      "version": "latest"
+    }
+  },
+  "networkSettings": {
+    "vnetName": "[parameters('virtualNetworkName')]",
+    "addressPrefix": "10.0.0.0/16",
+    "subnets": {
+      "dmz": {
+        "name": "dmz",
+        "prefix": "10.0.0.0/24",
+        "vnet": "[parameters('virtualNetworkName')]"
       },
-      "tshirtSizeMedium": {
-        "vmSize": "Standard_A3",
-        "diskSize": 1023,
-        "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-8disk-resources.json')]",
-        "vmCount": 2,
-        "storage": {
-          "name": "[parameters('storageAccountNamePrefix')]",
-          "count": 2,
-          "pool": "db",
-          "map": [0,1],
-          "jumpbox": 0
-        }
-      },
-      "tshirtSizeLarge": {
-        "vmSize": "Standard_A4",
-        "diskSize": 1023,
-        "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-16disk-resources.json')]",
-        "vmCount": 3,
-        "slaveCount": 2,
-        "storage": {
-          "name": "[parameters('storageAccountNamePrefix')]",
-          "count": 2,
-          "pool": "db",
-          "map": [0,1,1],
-          "jumpbox": 0
-        }
-      },
-      "osSettings": {
-        "scripts": [
-          "[concat(variables('templateBaseUrl'), 'install_postgresql.sh')]",
-          "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/shared_scripts/ubuntu/vm-disk-utils-0.1.sh"
-        ],
-        "imageReference": {
-          "publisher": "Canonical",
-          "offer": "UbuntuServer",
-          "sku": "14.04.2-LTS",
-          "version": "latest"
-        }
-      },
-      "networkSettings": {
-        "vnetName": "[parameters('virtualNetworkName')]",
-        "addressPrefix": "10.0.0.0/16",
-        "subnets": {
-          "dmz": {
-            "name": "dmz",
-            "prefix": "10.0.0.0/24",
-            "vnet": "[parameters('virtualNetworkName')]"
-          },
-          "data": {
-            "name": "data",
-            "prefix": "10.0.1.0/24",
-            "vnet": "[parameters('virtualNetworkName')]"
-          }
-        }
-      },
-      "availabilitySetSettings": {
-        "name": "pgsqlAvailabilitySet",
-        "fdCount": 3,
-        "udCount": 5
+      "data": {
+        "name": "data",
+        "prefix": "10.0.1.0/24",
+        "vnet": "[parameters('virtualNetworkName')]"
       }
     }
+  },
+  "availabilitySetSettings": {
+    "name": "pgsqlAvailabilitySet",
+    "fdCount": 3,
+    "udCount": 5
+  }
+}
+```
 
 请注意，**tshirtSize** 变量连接通过参数（**Small**、**Medium**、**Large**）提供给文本 **tshirtSize** 的 T 恤大小。 你将使用此变量来检索该 T 恤大小关联的复杂对象变量。
 
 然后，你可以在将来引用模板中的这些变量。 能够引用指定变量及其属性可以简化模板语法，从而轻松地理解上下文。 下面的示例定义的资源在部署时可以使用上述对象来设置值。 例如，VM 大小是通过检索 `variables('tshirtSize').vmSize` 的值来设置的，而磁盘大小的值是从 `variables('tshirtSize').diskSize` 检索的。 此外，已链接模板的 URI 是通过 `variables('tshirtSize').vmTemplate` 的值来设置的。
 
-    "name": "master-node",
-    "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2015-01-01",
-    "dependsOn": [
-        "[concat('Microsoft.Resources/deployments/', 'shared')]"
-    ],
-    "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[variables('tshirtSize').vmTemplate]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "adminPassword": {
-            "value": "[parameters('adminPassword')]"
-          },
-          "replicatorPassword": {
-            "value": "[parameters('replicatorPassword')]"
-          },
-          "osSettings": {
-            "value": "[variables('osSettings')]"
-          },
-          "subnet": {
-            "value": "[variables('networkSettings').subnets.data]"
-          },
-          "commonSettings": {
-            "value": {
-              "region": "[parameters('region')]",
-              "adminUsername": "[parameters('adminUsername')]",
-              "namespace": "ms"
-            }
-          },
-          "storageSettings": {
-            "value":"[variables('tshirtSize').storage]"
-          },
-          "machineSettings": {
-            "value": {
-              "vmSize": "[variables('tshirtSize').vmSize]",
-              "diskSize": "[variables('tshirtSize').diskSize]",
-              "vmCount": 1,
-              "availabilitySet": "[variables('availabilitySetSettings').name]"
-            }
-          },
-          "masterIpAddress": {
-            "value": "0"
-          },
-          "dbType": {
-            "value": "MASTER"
-          }
+```json
+"name": "master-node",
+"type": "Microsoft.Resources/deployments",
+"apiVersion": "2015-01-01",
+"dependsOn": [
+    "[concat('Microsoft.Resources/deployments/', 'shared')]"
+],
+"properties": {
+    "mode": "Incremental",
+    "templateLink": {
+      "uri": "[variables('tshirtSize').vmTemplate]",
+      "contentVersion": "1.0.0.0"
+    },
+    "parameters": {
+      "adminPassword": {
+        "value": "[parameters('adminPassword')]"
+      },
+      "replicatorPassword": {
+        "value": "[parameters('replicatorPassword')]"
+      },
+      "osSettings": {
+        "value": "[variables('osSettings')]"
+      },
+      "subnet": {
+        "value": "[variables('networkSettings').subnets.data]"
+      },
+      "commonSettings": {
+        "value": {
+          "region": "[parameters('region')]",
+          "adminUsername": "[parameters('adminUsername')]",
+          "namespace": "ms"
         }
+      },
+      "storageSettings": {
+        "value":"[variables('tshirtSize').storage]"
+      },
+      "machineSettings": {
+        "value": {
+          "vmSize": "[variables('tshirtSize').vmSize]",
+          "diskSize": "[variables('tshirtSize').diskSize]",
+          "vmCount": 1,
+          "availabilitySet": "[variables('availabilitySetSettings').name]"
+        }
+      },
+      "masterIpAddress": {
+        "value": "0"
+      },
+      "dbType": {
+        "value": "MASTER"
       }
     }
+  }
+}
+```
 
 ## <a name="pass-state-to-a-template"></a>将状态传递给模板
 通过在部署期间直接提供的参数，可以在模板中共享状态。
@@ -184,21 +189,22 @@ ms.openlocfilehash: 23cc4321159a87b61c177b11381646af8bd9eb35
 
 上一部分中使用的 **tshirtSize** 参数定义为：
 
-    "parameters": {
-      "tshirtSize": {
-        "type": "string",
-        "defaultValue": "Small",
-        "allowedValues": [
-          "Small",
-          "Medium",
-          "Large"
-        ],
-        "metadata": {
-          "Description": "T-shirt size of the MongoDB deployment"
-        }
-      }
+```json
+"parameters": {
+  "tshirtSize": {
+    "type": "string",
+    "defaultValue": "Small",
+    "allowedValues": [
+      "Small",
+      "Medium",
+      "Large"
+    ],
+    "metadata": {
+      "Description": "T-shirt size of the MongoDB deployment"
     }
-
+  }
+}
+```
 
 ## <a name="pass-state-to-linked-templates"></a>将状态传递给链接模板
 连接到已链接模板时，会经常混合使用静态变量和生成的变量。
@@ -210,24 +216,26 @@ ms.openlocfilehash: 23cc4321159a87b61c177b11381646af8bd9eb35
 
 这样做的好处是，如果模板位置发生更改，则只需在一个位置更改静态变量，并将静态变量传递到所有链接模板。
 
-    "variables": {
-      "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
-      "sharedTemplateUrl": "[concat(variables('templateBaseUrl'), 'shared-resources.json')]",
-      "tshirtSizeSmall": {
-        "vmSize": "Standard_A1",
-        "diskSize": 1023,
-        "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-2disk-resources.json')]",
-        "vmCount": 2,
-        "slaveCount": 1,
-        "storage": {
-          "name": "[parameters('storageAccountNamePrefix')]",
-          "count": 1,
-          "pool": "db",
-          "map": [0,0],
-          "jumpbox": 0
-        }
-      }
+```json
+"variables": {
+  "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
+  "sharedTemplateUrl": "[concat(variables('templateBaseUrl'), 'shared-resources.json')]",
+  "tshirtSizeSmall": {
+    "vmSize": "Standard_A1",
+    "diskSize": 1023,
+    "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-2disk-resources.json')]",
+    "vmCount": 2,
+    "slaveCount": 1,
+    "storage": {
+      "name": "[parameters('storageAccountNamePrefix')]",
+      "count": 1,
+      "pool": "db",
+      "map": [0,0],
+      "jumpbox": 0
     }
+  }
+}
+```
 
 ### <a name="generated-variables"></a>生成的变量
 除了静态变量之外，许多变量是动态生成的。 本部分介绍所生成变量的部分常见类型。
@@ -240,71 +248,81 @@ ms.openlocfilehash: 23cc4321159a87b61c177b11381646af8bd9eb35
 
 下面是网络设置通信的示例。
 
-    "networkSettings": {
-      "vnetName": "[parameters('virtualNetworkName')]",
-      "addressPrefix": "10.0.0.0/16",
-      "subnets": {
-        "dmz": {
-          "name": "dmz",
-          "prefix": "10.0.0.0/24",
-          "vnet": "[parameters('virtualNetworkName')]"
-        },
-        "data": {
-          "name": "data",
-          "prefix": "10.0.1.0/24",
-          "vnet": "[parameters('virtualNetworkName')]"
-        }
-      }
+```json
+"networkSettings": {
+  "vnetName": "[parameters('virtualNetworkName')]",
+  "addressPrefix": "10.0.0.0/16",
+  "subnets": {
+    "dmz": {
+      "name": "dmz",
+      "prefix": "10.0.0.0/24",
+      "vnet": "[parameters('virtualNetworkName')]"
+    },
+    "data": {
+      "name": "data",
+      "prefix": "10.0.1.0/24",
+      "vnet": "[parameters('virtualNetworkName')]"
     }
+  }
+}
+```
 
 #### <a name="availabilitysettings"></a>availabilitySettings
 在链接的模板中创建的资源通常都放在可用性集中。 在下面的示例中，指定了可用性集名称，以及要使用的容错域和更新域计数。
 
-    "availabilitySetSettings": {
-      "name": "pgsqlAvailabilitySet",
-      "fdCount": 3,
-      "udCount": 5
-    }
+```json
+"availabilitySetSettings": {
+  "name": "pgsqlAvailabilitySet",
+  "fdCount": 3,
+  "udCount": 5
+}
+```
 
 如果你需要多个可用性集（例如，一个用于主节点，另一个用于数据节点），你可以使用某个名称作为前缀，并指定多个可用性集，或者遵循此前显示的用于创建变量（针对特定 T 恤大小）的模型。
 
 #### <a name="storagesettings"></a>storageSettings
 通常会与链接的模板共享存储详细信息。 在以下示例中，*storageSettings* 对象提供了有关存储帐户和容器名称的详细信息。
 
-    "storageSettings": {
-        "vhdStorageAccountName": "[parameters('storageAccountName')]",
-        "vhdContainerName": "[variables('vmStorageAccountContainerName')]",
-        "destinationVhdsContainer": "[concat('https://', parameters('storageAccountName'), variables('vmStorageAccountDomain'), '/', variables('vmStorageAccountContainerName'), '/')]"
-    }
+```json
+"storageSettings": {
+    "vhdStorageAccountName": "[parameters('storageAccountName')]",
+    "vhdContainerName": "[variables('vmStorageAccountContainerName')]",
+    "destinationVhdsContainer": "[concat('https://', parameters('storageAccountName'), variables('vmStorageAccountDomain'), '/', variables('vmStorageAccountContainerName'), '/')]"
+}
+```
 
 #### <a name="ossettings"></a>osSettings
 使用链接的模板，可能需要通过不同的已知配置类型将操作系统设置传递给各种节点类型。 使用复杂对象可以轻松地存储和共享操作系统信息，还可以更轻松地支持多个操作系统部署选项。
 
 下面的示例演示了 *osSettings* 的一个对象：
 
-    "osSettings": {
-      "imageReference": {
-        "publisher": "Canonical",
-        "offer": "UbuntuServer",
-        "sku": "14.04.2-LTS",
-        "version": "latest"
-      }
-    }
+```json
+"osSettings": {
+  "imageReference": {
+    "publisher": "Canonical",
+    "offer": "UbuntuServer",
+    "sku": "14.04.2-LTS",
+    "version": "latest"
+  }
+}
+```
 
 #### <a name="machinesettings"></a>machineSettings
 生成的变量，*machineSettings* 是个复杂对象，其中包含各种用于创建 VM 的核心变量。 变量包括管理员用户名和密码、VM 名称前缀，以及操作系统映像引用。
 
-    "machineSettings": {
-        "adminUsername": "[parameters('adminUsername')]",
-        "adminPassword": "[parameters('adminPassword')]",
-        "machineNamePrefix": "mongodb-",
-        "osImageReference": {
-            "publisher": "[variables('osFamilySpec').imagePublisher]",
-            "offer": "[variables('osFamilySpec').imageOffer]",
-            "sku": "[variables('osFamilySpec').imageSKU]",
-            "version": "latest"
-        }
-    },
+```json
+"machineSettings": {
+    "adminUsername": "[parameters('adminUsername')]",
+    "adminPassword": "[parameters('adminPassword')]",
+    "machineNamePrefix": "mongodb-",
+    "osImageReference": {
+        "publisher": "[variables('osFamilySpec').imagePublisher]",
+        "offer": "[variables('osFamilySpec').imageOffer]",
+        "sku": "[variables('osFamilySpec').imageSKU]",
+        "version": "latest"
+    }
+},
+```
 
 请注意，*osImageReference* 会检索主模板中定义的 *osSettings* 变量的值。 这意味着你可以轻松更改 VM 的操作系统 — 完全进行更改或基于模板使用者的首选项进行更改。
 
@@ -318,28 +336,31 @@ ms.openlocfilehash: 23cc4321159a87b61c177b11381646af8bd9eb35
 
 在变量部分，可以找到用于定义特定文本以使用适当值执行脚本的变量。
 
-    "vmScripts": {
-        "scriptsToDownload": [
-            "[concat(variables('scriptUrl'), 'mongodb-', variables('osFamilySpec').osName, '-install.sh')]",
-            "[concat(variables('sharedScriptUrl'), 'vm-disk-utils-0.1.sh')]"
-        ],
-        "regularNodeInstallCommand": "[variables('installCommand')]",
-        "lastNodeInstallCommand": "[concat(variables('installCommand'), ' -l')]",
-        "arbiterNodeInstallCommand": "[concat(variables('installCommand'), ' -a')]"
-    },
-
+```json
+"vmScripts": {
+    "scriptsToDownload": [
+        "[concat(variables('scriptUrl'), 'mongodb-', variables('osFamilySpec').osName, '-install.sh')]",
+        "[concat(variables('sharedScriptUrl'), 'vm-disk-utils-0.1.sh')]"
+    ],
+    "regularNodeInstallCommand": "[variables('installCommand')]",
+    "lastNodeInstallCommand": "[concat(variables('installCommand'), ' -l')]",
+    "arbiterNodeInstallCommand": "[concat(variables('installCommand'), ' -a')]"
+},
+```
 
 ## <a name="return-state-from-a-template"></a>从模板返回状态
 不仅可以传递数据到模板中，还可以反过来将数据共享给调用的模板。 在已链接模板的**“输出”**部分，可以提供允许源模板使用的键/值对。
 
 以下示例演示如何传递在已链接模板中生成的专用 IP 地址。
 
-    "outputs": {
-        "masterip": {
-            "value": "[reference(concat(variables('nicName'),0)).ipConfigurations[0].properties.privateIPAddress]",
-            "type": "string"
-         }
-    }
+```json
+"outputs": {
+    "masterip": {
+        "value": "[reference(concat(variables('nicName'),0)).ipConfigurations[0].properties.privateIPAddress]",
+        "type": "string"
+     }
+}
+```
 
 在主模板中，可通过以下语法来使用该数据：
 
@@ -347,74 +368,76 @@ ms.openlocfilehash: 23cc4321159a87b61c177b11381646af8bd9eb35
 
 可以在主模板的 outputs 节或 resources 节中使用此表达式。 由于该表达式依赖于运行时状态，因此不能在 variables 节中使用。 若要从主模板返回此值，请使用：
 
-    "outputs": {
-      "masterIpAddress": {
-        "value": "[reference('master-node').outputs.masterip.value]",
-        "type": "string"
-      }
+```json
+"outputs": {
+  "masterIpAddress": {
+    "value": "[reference('master-node').outputs.masterip.value]",
+    "type": "string"
+  }
+```
 
 有关使用链接模板的 outputs 节返回虚拟机数据磁盘的示例，请参阅 [Creating multiple data disks for a Virtual Machine](resource-group-create-multiple.md)（为一个虚拟机创建多个数据磁盘）。
 
 ## <a name="define-authentication-settings-for-virtual-machine"></a>为虚拟机定义身份验证设置
 可以使用与前面所示相同的配置设置模式来指定虚拟机的身份验证设置。 需创建要在身份验证类型中传递的参数。
 
-    "parameters": {
-      "authenticationType": {
-        "allowedValues": [
-          "password",
-          "sshPublicKey"
-        ],
-        "defaultValue": "password",
-        "metadata": {
-          "description": "Authentication type"
-        },
-        "type": "string"
-      }
-    }
+```json
+"parameters": {
+  "authenticationType": {
+    "allowedValues": [
+      "password",
+      "sshPublicKey"
+    ],
+    "defaultValue": "password",
+    "metadata": {
+      "description": "Authentication type"
+    },
+    "type": "string"
+  }
+}
+```
 
 需要为不同的身份验证类型添加变量，并使用一个变量根据参数值存储此部署使用的类型。
 
-    "variables": {
-      "osProfile": "[variables(concat('osProfile', parameters('authenticationType')))]",
-      "osProfilepassword": {
-        "adminPassword": "[parameters('adminPassword')]",
-        "adminUsername": "notused",
-        "computerName": "[parameters('vmName')]",
-        "customData": "[base64(variables('customData'))]"
-      },
-      "osProfilesshPublicKey": {
-        "adminUsername": "notused",
-        "computerName": "[parameters('vmName')]",
-        "customData": "[base64(variables('customData'))]",
-        "linuxConfiguration": {
-          "disablePasswordAuthentication": "true",
-          "ssh": {
-            "publicKeys": [
-              {
-                "keyData": "[parameters('sshPublicKey')]",
-                "path": "/home/notused/.ssh/authorized_keys"
-              }
-            ]
+```json
+"variables": {
+  "osProfile": "[variables(concat('osProfile', parameters('authenticationType')))]",
+  "osProfilepassword": {
+    "adminPassword": "[parameters('adminPassword')]",
+    "adminUsername": "notused",
+    "computerName": "[parameters('vmName')]",
+    "customData": "[base64(variables('customData'))]"
+  },
+  "osProfilesshPublicKey": {
+    "adminUsername": "notused",
+    "computerName": "[parameters('vmName')]",
+    "customData": "[base64(variables('customData'))]",
+    "linuxConfiguration": {
+      "disablePasswordAuthentication": "true",
+      "ssh": {
+        "publicKeys": [
+          {
+            "keyData": "[parameters('sshPublicKey')]",
+            "path": "/home/notused/.ssh/authorized_keys"
           }
-        }
+        ]
       }
     }
+  }
+}
+```
 
 定义虚拟机时，请将 **osProfile** 设置为所创建的变量。
 
-    {
-      "type": "Microsoft.Compute/virtualMachines",
-      ...
-      "osProfile": "[variables('osProfile')]"
-    }
-
+```json
+{
+  "type": "Microsoft.Compute/virtualMachines",
+  ...
+  "osProfile": "[variables('osProfile')]"
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 * 若要了解模板的节，请参阅 [Authoring Azure Resource Manager Templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）
 * 若要查看模板中可用的函数，请参阅 [Azure Resource Manager Template Functions](resource-group-template-functions.md)（Azure Resource Manager 模板函数）
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

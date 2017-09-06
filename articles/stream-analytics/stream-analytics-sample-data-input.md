@@ -4,7 +4,7 @@ description: "在对流分析作业进行故障排除时确定问题。"
 keywords: "对输入、输入采样进行故障排除"
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 5d3dbd24fcc42c9539d1943170027ca493f80784
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: db9686fad7153d63fc659869b93821200e08397c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-stream-analytics-input-stream-sampling"></a>Azure 流分析输入流采样
@@ -37,9 +36,9 @@ ms.lasthandoff: 07/04/2017
 
 ![流分析查询编辑器输入和输出列表](media/stream-analytics-sample-data-input/stream-analytics-query-editor-highlight.png)
 
-同时还显示了未定义的其他输入和输出。 它们来自你开始使用的新查询模板。 编辑查询时，它们会更改，甚至完全消失。 目前你可以放心地忽略它们。
+同时还显示了未定义的其他输入和输出。 它们来自你开始使用的新查询模板。 编辑查询时，它们会更改，甚至完全消失。 目前可以放心地忽略它们。
 
-若要使用示例输入数据进行测试，请右键单击任意输入，然后选择“从文件上传示例数据”。
+要使用示例输入数据进行测试，请右键单击任意输入，并选择“从文件上传示例数据”。
 
 ![文件命令中的流分析查询编辑器上传示例数据](media/stream-analytics-sample-data-input/stream-analytics-query-editor-upload.png)
 
@@ -47,7 +46,7 @@ ms.lasthandoff: 07/04/2017
 
 ![流分析查询编辑器测试按钮](media/stream-analytics-sample-data-input/stream-analytics-query-editor-test.png)
 
-若要保存测试输出以供将来使用，浏览器中显示查询输出，以及下载结果链接。 现在可以轻松反复地修改查询，并对其进行重复测试，以查看输出有何变化。
+要保存测试输出以供将来使用，浏览器中显示查询输出，以及下载结果链接。 现在可以轻松反复地修改查询，并对其进行重复测试，以查看输出有何变化。
 
 ![流分析查询编辑器示例输出](media/stream-analytics-sample-data-input/stream-analytics-query-editor-samples-output.png)
 
@@ -59,7 +58,7 @@ ms.lasthandoff: 07/04/2017
 
 ## <a name="get-help"></a>获取帮助
 
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

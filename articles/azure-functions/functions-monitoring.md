@@ -4,7 +4,7 @@ description: "了解如何监视 Azure Functions。"
 services: functions
 documentationcenter: na
 author: wesmc7777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构"
@@ -16,10 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/03/2016
 ms.author: wesmc
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: b01ffb52f75fd23901f4bb245396f649e14c0389
-ms.lasthandoff: 04/27/2017
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 3ab6123b6acfdec57f1ca71b404c9e1123d1ff6d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/29/2017
 
 ---
 
@@ -34,14 +35,12 @@ ms.lasthandoff: 04/27/2017
 
 单击某个执行可查看持续时间、输入数据、错误和关联的日志文件。 这有助于对函数进行调试和性能优化。
 
-
 > [!IMPORTANT]
-> 对 Azure Functions 使用[消耗量托管计划](functions-overview.md#pricing)时，Function App 概述边栏选项卡中的“监视”磁贴将不显示任何数据。 这是因为平台为你动态缩放和管理计算实例，因此这些度量值对消耗量计划没有意义。 若要监视 Function App 的使用情况，应改为使用本文中的指南。
+> 对 Azure Functions 使用[消耗托管计划](functions-overview.md#pricing)时，Function App 中的“监视”磁贴不显示任何数据。 这是因为平台动态地缩放和管理计算实例。 这些指标在消耗计划上没有意义。 若要监视 Function App 的使用情况，应改为使用本文中的指南。
 > 
 > 以下屏幕截图显示了一个示例：
 > 
-> ![在主资源边栏选项卡上监视](./media/functions-monitoring/app-service-overview-monitoring.png)
-
+> ![监视函数](./media/functions-monitoring/app-service-overview-monitoring.png)
 
 
 ## <a name="real-time-monitoring"></a>实时监视
@@ -50,13 +49,13 @@ ms.lasthandoff: 04/27/2017
 
 ![监视器选项卡的实时事件流选项](./media/functions-monitoring/monitor-tab-live-event-stream.png)
 
-将在新的浏览器选项卡中绘制实时事件流，如下所示。 
+实时事件流在浏览器的新选项卡的图中显示，如以下示例： 
 
 ![实时事件流示例](./media/functions-monitoring/live-event-stream.png)
 
 
 > [!NOTE]
-> 存在一个已知问题，可能会导致数据无法进行填充。 如果遇到这种情况，可能需要关闭包含实时事件流的浏览器选项卡，然后再次单击“实时事件流”，让它可以正确填充事件流数据。 
+> 存在一个已知问题，可能会导致数据无法进行填充。 如果遇到这种情况，可能需要关闭包含实时事件流的浏览器选项卡，并再次单击“实时事件流”，让它可以正确填充事件流数据。 
 
 实时事件流将函数的以下统计信息绘入图表：
 
@@ -68,24 +67,19 @@ ms.lasthandoff: 04/27/2017
 这些统计信息是实时的，但执行数据的实际作图可能会有约 10 秒钟的延迟。
 
 
-
-
-
-
 ## <a name="monitoring-log-files-from-a-command-line"></a>从命令行监视日志文件
 
+可在本地工作站上使用 Azure 命令行接口 (CLI) 1.0 或 PowerShell 将日志文件流式传输到命令行会话。
 
-可在本地工作站上使用 Azure 命令行接口 (CLI) 或 PowerShell 将日志文件流式传输到命令行会话。
+### <a name="monitoring-function-app-log-files-with-the-azure-cli-10"></a>使用 Azure CLI 1.0 监视 Function App 日志文件
 
-### <a name="monitoring-function-app-log-files-with-the-azure-cli"></a>使用 Azure CLI 监视 Function App 日志文件
+若要开始，请[安装 Azure CLI 1.0](../cli-install-nodejs.md)
 
-若要开始，请[安装 Azure CLI](../cli-install-nodejs.md)
-
-使用以下命令或[从 Azure CLI 登录到 Azure](../xplat-cli-connect.md) 中涵盖的任何其他选项登录 Azure 帐户。
+使用以下命令或[从 Azure CLI 1.0 登录到 Azure](../xplat-cli-connect.md) 中涵盖的任何其他选项登录 Azure 帐户。
 
     azure login
 
-使用以下命令启用 Azure CLI 服务管理 (ASM) 模式：
+使用以下命令在经典服务管理模式中启用 Azure CLI 1.0：
 
     azure config mode asm
 

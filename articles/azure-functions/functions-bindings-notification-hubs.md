@@ -4,7 +4,7 @@ description: "了解如何在 Azure Functions 中使用 Azure 通知中心绑定
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, Functions, 事件处理, 动态计算, 无服务体系结构"
@@ -14,14 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/27/2016
+ms.date: 08/26/2017
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: fa3d37b963c1bb6b58127b9180cd657d7b1dabcc
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 02d01d0f6e945ed54dbe766aec2a0fd7c17c510f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-functions-notification-hub-output-binding"></a>Azure Functions 通知中心输出绑定
@@ -31,26 +30,23 @@ ms.lasthandoff: 06/20/2017
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-函数可使用已配置的 Azure 通知中心发送推送通知，只需几行代码即可。 但是，必须为想要使用的平台通知服务 (PNS) 配置 Azure 通知中心。 有关配置 Azure 通知中心和开发注册接收通知的的客户端应用程序的详细信息，请参阅[通知中心入门](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)，然后单击顶部的目标客户端平台。
+函数可使用已配置的 Azure 通知中心发送推送通知，只需几行代码即可。 但是，必须为想要使用的平台通知服务 (PNS) 配置 Azure 通知中心。 有关配置 Azure 通知中心和开发注册接收通知的的客户端应用程序的详细信息，请参阅[通知中心入门](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)，并单击顶部的目标客户端平台。
 
 发送的通知可为本机通知，或者模板通知。 本机通知面向在输出绑定的 `platform` 属性中配置的特定通知平台。 模板通知可用于面向多个平台。   
 
 ## <a name="notification-hub-output-binding-properties"></a>通知中心输出绑定属性
 function.json 文件提供以下属性：
 
-* `name`：在通知中心消息的函数代码中使用的变量名。
-* `type`必须设置为 "notificationHub"。
-* `tagExpression`：标记表达式允许指定将通知传递到一组已注册接收通知的与标记表达式匹配的设备。  有关详细信息，请参阅[路由和标记表达式](../notification-hubs/notification-hubs-tags-segment-push-message.md)。
-* `hubName`：在 Azure 门户中通知中心资源的名称。
-* `connection`：此连接字符串必须为**应用程序设置**连接字符串，且设置为用于通知中心的 DefaultFullSharedAccessSignature 值。
-* `direction`：必须设置为“out”。 
-* `platform`：平台属性表明通知面向的通知平台。 必须是以下值之一：
-  * 默认情况下，如果从输出绑定中省略平台属性，则模板通知可用于面向 Azure 通知中心上配置的任何平台。 有关一般情况下使用模板通过 Azure 通知中心发送跨平台通知的详细信息，请参阅[模板](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)。
-  * `apns`：Apple Push Notification 服务。 有关配置 APNS 的通知中心和在客户端应用中接收通知的详细信息，请参阅[通过 Azure 通知中心将推送通知发送到 iOS](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md) 
-  * `adm`[Amazon Device Messaging](https://developer.amazon.com/device-messaging)。 有关配置 ADM 的通知中心和在 Kindle 应用中接收通知的详细信息，请参阅 [Kindle 应用通知中心入门](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md) 
-  * `gcm`：[Google Cloud Messaging](https://developers.google.com/cloud-messaging/)。 同样支持 Firebase Cloud Messaging 这一新版本的 GCM。 有关配置 GCM/FCM 的通知中心和在 Android 客户端应用中接收通知的详细信息，请参阅[通过 Azure 通知中心将推送通知发送到 Android](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)
-  * `wns`：面向 Windows 平台的 [Windows 推送通知服务](https://msdn.microsoft.com/en-us/windows/uwp/controls-and-patterns/tiles-and-notifications-windows-push-notification-services--wns--overview)。 WNS 也支持 Windows Phone 8.1 及更高版本。 有关配置 WNS 的通知中心和在通用 Windows 平台 (UWP) 应用中接收通知的详细信息，请参阅 [Windows 通用平台应用通知中心入门](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
-  * `mpns`：[Microsoft 推送通知服务](https://msdn.microsoft.com/en-us/library/windows/apps/ff402558.aspx)。 此平台支持 Windows Phone 8 和早期版本的 Windows Phone 平台。 有关配置 MPNS 的通知中心和在 Windows Phone 应用中接收通知的详细信息，请参阅[在 Windows Phone 上通过 Azure 通知中心发送推送通知](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)
+
+|属性  |说明  |
+|---------|---------|
+|**name** | 在通知中心消息的函数代码中使用的变量名。 |
+|**类型** | 必须设置为 `notificationHub`。 |
+|**tagExpression** | 标记表达式允许指定将通知传递到一组已注册接收通知的与标记表达式匹配的设备。  有关详细信息，请参阅[路由和标记表达式](../notification-hubs/notification-hubs-tags-segment-push-message.md)。 |
+|**hubName** | 在 Azure 门户中通知中心资源的名称。 |
+|**连接** | 此连接字符串必须为应用程序设置连接字符串，且设置为用于通知中心的 DefaultFullSharedAccessSignature 值。 |
+|**direction** | 必须设置为 `out`。 | 
+|**platform** | 平台属性表明通知面向的通知平台。 默认情况下，如果从输出绑定中省略平台属性，则模板通知可用于面向 Azure 通知中心上配置的任何平台。 有关一般情况下使用模板通过 Azure 通知中心发送跨平台通知的详细信息，请参阅[模板](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)。 进行设置时，platform 必须是以下值之一： <ul><li><code>apns</code>&mdash;Apple Push Notification 服务。 有关配置 APNS 的通知中心和在客户端应用中接收通知的详细信息，请参阅[通过 Azure 通知中心向 iOS 发送推送通知](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md)。</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging)。 有关配置 ADM 的通知中心和在 Kindle 应用中接收通知的详细信息，请参阅[通知中心入门（Kindle 应用）](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md)。</li><li><code>gcm</code>&mdash;[Google Cloud Messaging](https://developers.google.com/cloud-messaging/)。 同样支持 Firebase Cloud Messaging 这一新版本的 GCM。 有关详细信息，请参阅[通过 Azure 通知中心向 Android 发送推送通知](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)。</li><li><code>wns</code>&mdash;面向 Windows 平台的 [Windows 推送通知服务](https://msdn.microsoft.com/en-us/windows/uwp/controls-and-patterns/tiles-and-notifications-windows-push-notification-services--wns--overview)。 WNS 也支持 Windows Phone 8.1 及更高版本。 有关详细信息，请参阅[适用于 Windows 通用平台应用的通知中心入门](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。</li><li><code>mpns</code>&mdash;[Microsoft 推送通知服务](https://msdn.microsoft.com/en-us/library/windows/apps/ff402558.aspx)。 此平台支持 Windows Phone 8 和早期版本的 Windows Phone 平台。 有关详细信息，请参阅[在 Windows Phone 上借助 Azure 通知中心发送推送通知](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)。</li></ul> |
 
 示例 function.json：
 
@@ -72,14 +68,15 @@ function.json 文件提供以下属性：
 ```
 
 ## <a name="notification-hub-connection-string-setup"></a>通知中心连接字符串设置
-要使用通知中心输出绑定，必须配置中心的连接字符串。 通过选择通知中心或创建新通知中心，即可在“集成”选项卡上完成此操作。 
+要使用通知中心输出绑定，必须配置中心的连接字符串。 可以选择现有通知中心，也可通过函数的“集成”选项卡创建一个新的通知中心。 还可以手动配置连接字符串。 
 
-也可通过将 DefaultFullSharedAccessSignature 的连接字符串添加到你的通知中心，手动为现有中心添加连接字符串。 此连接字符串提供了对你的函数的访问权限，来发送通知消息。 可从 Azure 门户中通知中心资源的主边栏选项卡的“密钥”按钮访问 DefaultFullSharedAccessSignature 连接字符串的值。 若要手动为你的中心添加连接字符串，请按照以下步骤操作： 
+配置现有通知中心的连接字符串：
 
-1. 在 Azure 门户的“Function App”边栏选项卡中，单击“Function App 设置”，转到“应用服务设置”。
-2. 在“设置”边栏选项卡中，单击“应用程序设置”。
-3. 向下滚动到“应用设置”部分，为通知中心添加已命名的 *DefaultFullSharedAccessSignature* 值项。
-4. 引用输出绑定中应用设置字符串的名称。 类似于上面示例中使用的 MyHubConnectionString。
+1. 导航到 [Azure 门户](https://portal.azure.com)中的通知中心，选择“访问策略”，然后选择 DefaultFullSharedAccessSignature 策略旁边的复制按钮。 这会将 DefaultFullSharedAccessSignature 策略的连接字符串复制到通知中心。 此连接字符串提供了对函数的访问权限，来发送通知消息。 
+    ![复制通知中心连接字符串](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
+1. 导航到 Azure 门户中的函数应用，选择“应用程序设置”，添加 `MyHubConnectionString` 等键，粘贴复制的 DefaultFullSharedAccessSignature 作为通知中心的值，然后单击“保存”。
+
+现在可使用此命名应用程序设置，定义输出绑定中的通知中心连接。
 
 ## <a name="apns-native-notifications-with-c-queue-triggers"></a>包含 C# 队列触发器的 APNS 本机通知
 此示例演示如何使用 [Microsoft Azure 通知中心库](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)中定义的类型发送本机 APNS 通知。 

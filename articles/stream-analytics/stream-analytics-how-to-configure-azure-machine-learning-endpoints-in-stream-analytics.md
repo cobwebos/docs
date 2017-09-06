@@ -4,7 +4,7 @@ description: "流分析中的机器语言用户定义函数"
 keywords: 
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 406b258f-b8c2-4e55-953c-b7f84e8e5354
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
+ms.author: samacha
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: df60686e7eeb4902bb9df045e28442ade2ad2cb7
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: d0771509dfa6ca4fc005edfdbc7c0a9cb5ca0e9e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>流分析中的机器学习集成
@@ -76,7 +76,7 @@ Microsoft Azure 机器学习是一个协作型拖放式工具，可用于根据�
 ````
 
 ## <a name="call-retrievedefaultdefinition-endpoint-for-default-udf"></a>调用默认 UDF 的 RetrieveDefaultDefinition 终结点
-创建框架 UDF 后，需要 UDF 的完整定义。 RetreiveDefaultDefinition 终结点可帮助你获取绑定到 Azure 机器学习终结点的标量函数的默认定义。 以下负载要求获取绑定到 Azure 机器学习终结点的标量函数的默认 UDF 定义。 它不指定实际的终结点，因为已在 PUT 请求期间提供终结点。 流分析会调用请求中提供的终结点（如果它已显式提供）。 否则，它会使用最初引用的终结点。 此处 UDF 采用单个字符串参数（一个句子），并返回类型字符串的单个输出以指示该句子的“情绪”标签。
+创建框架 UDF 后，需要 UDF 的完整定义。 RetreiveDefaultDefinition 终结点可帮助获取绑定到 Azure 机器学习终结点的标量函数的默认定义。 以下负载要求获取绑定到 Azure 机器学习终结点的标量函数的默认 UDF 定义。 它不指定实际的终结点，因为已在 PUT 请求期间提供终结点。 流分析会调用请求中提供的终结点（如果它已显式提供）。 否则，它会使用最初引用的终结点。 此处 UDF 采用单个字符串参数（一个句子），并返回类型字符串的单个输出以指示该句子的“情绪”标签。
 
 ````
 POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/RetrieveDefaultDefinition?api-version=<apiVersion>
@@ -196,7 +196,7 @@ PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers
 
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

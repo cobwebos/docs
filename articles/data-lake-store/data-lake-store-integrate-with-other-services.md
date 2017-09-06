@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 750540d0866e69ce043133e9c668c8a2e09b9d1c
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 0230ec0e4fc4ff7fe98a7c3e82f252bd8dd66d16
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="integrating-data-lake-store-with-other-azure-services"></a>集成 Data Lake Store 和其他 Azure 服务
@@ -64,6 +63,9 @@ Azure Data Lake Store 提供命令行工具 AdlCopy，可从 Azure 存储 Blob �
 
 ## <a name="use-data-lake-store-with-sql-data-warehouse"></a>在 SQL 数据仓库中使用 Data Lake Store
 可使用 PolyBase 将数据从 Azure Data Lake Store 加载到 SQL 数据仓库中。 有关详细信息，请参阅[在 SQL 数据仓库中使用 Data Lake Store](../sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)。
+
+## <a name="use-data-lake-store-with-azure-event-hubs"></a>配合使用 Data Lake Store 和 Azure 事件中心
+可以使用 Azure Data Lake Store 存档和捕获 Azure 事件中心收到的数据。 有关详细信息，请参阅[配合使用 Data Lake Store 和 Azure 事件中心](data-lake-store-archive-eventhub-capture.md)。
 
 ## <a name="see-also"></a>另请参阅
 * [Overview of Azure Data Lake Store](data-lake-store-overview.md)

@@ -1,5 +1,5 @@
 ---
-title: "Azure Functions 消耗计划和应用服务计划 | Microsoft 文档"
+title: "Azure Functions 消耗计划和应用服务计划 | Microsoft Docs"
 description: "了解 Azure Functions 如何进行扩展，满足事件驱动工作负荷的需求。"
 services: functions
 documentationcenter: na
@@ -18,10 +18,10 @@ ms.date: 06/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 70e77e09b2e2116153159167af61776398904a3c
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 0e677fb35279d155241a95cd5f33b63e8294fad2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-functions-consumption-and-app-service-plans"></a>Azure Functions 消耗计划和应用服务计划 
@@ -60,9 +60,10 @@ ms.lasthandoff: 08/23/2017
 
 对于以下情况，可以考虑使用应用服务计划：
 - 具有已运行其他应用服务实例的、未充分利用的现成 VM。
-- 预期函数应用会持续或几乎持续运行。
+- 预期函数应用会持续或几乎持续运行。 在这种情况下，应用服务计划可能更经济高效。
 - 所需 CPU 或内存选项超出消耗计划提供的选项。
 - 运行时间超过消耗计划允许的最长执行时间。
+- 需要仅对应用服务计划可用的功能，例如应用服务环境支持、VNET/VPN 连接性和更大的 VM。 
 
 VM 将运行时和内容大小进行成本分离。 因此，支付的费用不会超过分配的 VM 实例的费用。 如需详细了解如何使用应用服务计划，请参阅 [Azure 应用服务计划深入概述](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure 事件中心功能概述 | Microsoft 文档"
+title: "Azure 事件中心功能概述 | Microsoft Docs"
 description: "有关 Azure 事件中心功能的概述和详细信息"
 services: event-hubs
 documentationcenter: .net
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/17/2017
 ms.author: sethm
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: d790eec30b669469a0837ccdc14b771d1953829b
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: a74d767d57eb5ce2b3a716f9ba908a451f25f538
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -54,7 +54,7 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 ## <a name="capture"></a>捕获
 
-使用[事件中心捕获](event-hubs-capture-overview.md)可以自动捕获事件中心的流式处理数据，并将其存档到所选的 Blob 存储帐户。 可以从 Azure 门户启用捕获，并指定大小上限和时间范围以执行捕获。 事件中心捕获可让用户指定自己的 Azure Blob 存储帐户和容器（用于存储捕获的数据）。 捕获的数据用 Apache Avro 格式编写。
+使用[事件中心捕获](event-hubs-capture-overview.md)，可以自动捕获事件中心的流式处理数据，并将其保存到所选 Blob 存储帐户或 Azure Data Lake 服务帐户。 可以从 Azure 门户启用捕获，并指定大小上限和时间范围以执行捕获。 使用事件中心捕获，用户可以指定自己的 Azure Blob 存储帐户和容器或 Azure Data Lake 服务帐户（用于存储已捕获数据）。 捕获的数据用 Apache Avro 格式编写。
 
 ## <a name="partitions"></a>分区
 

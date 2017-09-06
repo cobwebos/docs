@@ -4,7 +4,7 @@ description: "如何对流分析作业进行故障排除"
 keywords: "故障排除指南"
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 25567d7aa586aaa1534c822fb635e4e62fb1b229
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: dcff312e4a282b15e76ea32aadb1981a496a2446
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 
@@ -51,14 +50,14 @@ Azure 流分析故障排除可能看上去是一项复杂的工作。 经过我�
 5.  避免常犯的错误，例如：
     - 查询中的一个 [WHERE](https://msdn.microsoft.com/library/azure/dn835048.aspx) 子句筛选掉了所有事件，从而阻止生成输出。
     - 使用窗口函数时，请等待整个窗口持续时间完成，以查看查询中的输出。
-    - 事件的时间戳要先于作业开始时间，因此事件将被删除。
+    - 事件的时间戳要先于作业开始时间，因此事件会被删除。
 
 6.  使用事件排序：
-    - 如果之前的所有步骤都可以正常执行，请转到“设置”边栏选项卡并选择[“事件排序”](stream-analytics-out-of-order-and-late-events.md)。 验证此策略的配置是否适合你的方案。 使用“测试”按钮测试查询时，不会应用此策略。 这是在浏览器中测试与在生产中运行作业之间的一个差别。
+    - 如果之前的所有步骤都可以正常执行，请转到“设置”边栏选项卡并选择[“事件排序”](stream-analytics-out-of-order-and-late-events.md)。 验证此策略的配置是否适合方案。 使用“测试”按钮测试查询时，不会应用此策略。 这是在浏览器中测试与在生产中运行作业之间的一个差别。
 
 7.  使用指标进行调试：
     - 如果在经过预期的持续时间（基于查询）后未获得任何输出，请尝试以下操作：
-        - 在“监视器”选项卡上查看[“监视指标”](stream-analytics-monitoring.md)。 由于值将进行聚合，因此指标会延迟几分钟。
+        - 在“监视器”选项卡上查看[“监控指标”](stream-analytics-monitoring.md)。由于值将进行聚合，因此指标会延迟几分钟。
             - 如果“输入事件数”大于 0，则作业可以读取输入数据。 如果“输入事件”不大于 0，则：
                 - 若要查看数据源是否具有有效数据，请使用[服务总线资源管理器](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a)。 如果作业使用事件中心作为输入，则会应用此检查。
                 - 检查以查看数据序列化格式和数据编码是否符合预期。
@@ -91,7 +90,7 @@ Azure 流分析故障排除可能看上去是一项复杂的工作。 经过我�
 
 ## <a name="get-help"></a>获取帮助
 
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 

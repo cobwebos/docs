@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 43bb5a1aa246004346765d1be4aea236ca17abd2
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: e49d1a0e0ccc6567d0a6841817667717ff5dba76
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="manage-azure-data-lake-analytics-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Data Lake Analytics
@@ -146,6 +146,24 @@ Data Lake Analytics 支持以下数据源：
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
 2. 单击“查看所有作业”。 将显示帐户中所有活动作业和最近已完成作业的列表。
 3. 根据需要单击“筛选器”，帮助按“时间范围”、“作业名称”和“作者”值查找作业。 
+
+### <a name="monitoring-pipeline-jobs"></a>监视管道作业
+管道中包含的作业通常按顺序一起工作，以完成特定方案。 例如，可使用一个管道来清理、提取、转换和聚合使用情况，获取客户见解。 提交作业时，使用“Pipeline”属性标识管道作业。 使用 ADF V2 计划的作业会自动填充此属性。 
+
+查看管道中包含的 U-SQL 作业的列表： 
+
+1. 在 Azure 门户中，转到 Data Lake Analytics 帐户。
+2. 单击“作业见解”。 默认显示“所有作业”选项卡，即显示正在运行的作业、排队的作业以及已结束作业的列表。
+3. 单击“管道作业”选项卡。管道作业列表随每个管道的聚合统计信息一起显示。
+
+### <a name="monitoring-recurring-jobs"></a>监视定期作业
+定期作业是指具有相同的业务逻辑，但每次运行时均使用不同输入数据的作业。 理想情况下，定期作业应始终成功，并具有相对稳定的执行时间；监视这些行为有助于确保作业处于正常状态。 定期作业是使用“Recurrence”属性标识的。 使用 ADF V2 计划的作业会自动填充此属性。
+
+查看定期 U-SQL 作业的列表： 
+
+1. 在 Azure 门户中，转到 Data Lake Analytics 帐户。
+2. 单击“作业见解”。 默认显示“所有作业”选项卡，即显示正在运行的作业、排队的作业以及已结束作业的列表。
+3. 单击“定期作业”选项卡。定期作业列表随每个定期作业的聚合统计信息一起显示。
 
 ## <a name="manage-policies"></a>管理策略
 
