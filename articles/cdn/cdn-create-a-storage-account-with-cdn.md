@@ -14,21 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 35896cc9891e2439df004cc4eab339219d47b805
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 511076935d06ed0908341044e37069e74530be49
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="integrate-an-azure-storage-account-with-azure-cdn"></a>将 Azure 存储帐户与 Azure CDN 集成
 启用 CDN 可以缓存 Azure 存储的内容。 它通过在遍布美国、欧洲、亚洲、澳大利亚和南美洲的众多物理节点上缓存 Blob 和计算实例的静态内容，为开发人员提供一个传送高带宽内容的全球性解决方案。
 
 ## <a name="step-1-create-a-storage-account"></a>步骤 1：创建存储帐户
-使用以下过程为 Azure 订阅创建新的存储帐户。 通过存储帐户可访问 Azure 存储服务。 存储帐户表示用于访问下述每个 Azure 存储服务组件的最高级别的命名空间：Blob 服务、队列服务、表服务。 有关详细信息，请参阅 [Microsoft Azure 存储简介](../storage/storage-introduction.md)。
+使用以下过程为 Azure 订阅创建新的存储帐户。 通过存储帐户可访问 Azure 存储服务。 存储帐户表示用于访问下述每个 Azure 存储服务组件的最高级别的命名空间：Blob 服务、队列服务、表服务。 有关详细信息，请参阅 [Microsoft Azure 存储简介](../storage/common/storage-introduction.md)。
 
-若要创建一个存储帐户，你必须是相关订阅的服务管理员或联合管理员。
+要创建一个存储帐户，必须是相关订阅的服务管理员或联合管理员。
 
 > [!NOTE]
 > 可使用多种方法创建存储帐户，包括 Azure 门户和 Powershell。  本教程使用 Azure 门户。  
@@ -38,9 +37,9 @@ ms.lasthandoff: 06/15/2017
 **为 Azure 订阅创建存储帐户**
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左上角，选择“新建”。 在“新建”对话框中，选择“数据 + 存储”，然后单击“存储帐户”。
+2. 在左上角，选择“新建”。 在“新建”对话框中，选择“数据 + 存储”，并单击“存储帐户”。
     
-    此时将显示“创建存储帐户”边栏选项卡。   
+    此时显示“创建存储帐户”边栏选项卡。   
 
     ![创建存储帐户][create-new-storage-account]  
 
@@ -63,7 +62,7 @@ ms.lasthandoff: 06/15/2017
 
 利用最新的集成，现无需离开存储门户扩展即可为存储帐户启用 CDN。 
 
-1. 选择存储帐户，搜索“CDN”或从左侧导航菜单中向下滚动，然后单击“Azure CDN”。
+1. 选择存储帐户，搜索“CDN”或从左侧导航菜单中向下滚动，并单击“Azure CDN”。
     
     随即显示“Azure CDN”边栏选项卡。
 
@@ -79,7 +78,7 @@ ms.lasthandoff: 06/15/2017
 
     ![创建新的 CDN 终结点][cdn-new-endpoint-creation]
 
-3. 创建后，新终结点将显示在上方的终结点列表中。
+3. 创建后，新终结点会显示在上方的终结点列表中。
 
     ![CDN 存储新终结点][cdn-storage-new-endpoint]
 
@@ -102,16 +101,16 @@ ms.lasthandoff: 06/15/2017
 http://<*EndpointName*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 
 > [!NOTE]
-> 一旦启用对存储帐户的 CDN 访问，所有公开可用的对象即有资格获得 CDN 边缘缓存。 如果你修改一个当前在 CDN 中缓存的对象，则只有 CDN 在缓存内容生存时间到期时刷新了对象的内容后，才能通过 CDN 访问新内容。
+> 一旦启用对存储帐户的 CDN 访问，所有公开可用的对象即有资格获得 CDN 边缘缓存。 如果修改一个当前在 CDN 中缓存的对象，则只有 CDN 在缓存内容生存时间到期时刷新了对象的内容后，才能通过 CDN 访问新内容。
 > 
 > 
 
 ## <a name="step-5-remove-content-from-the-cdn"></a>步骤 5：从 CDN 删除内容
-如果你不再想在 Azure 内容交付网络 (CDN) 中缓存对象，则可执行下列步骤之一：
+如果不再想在 Azure 内容交付网络 (CDN) 中缓存对象，则可执行下列步骤之一：
 
-* 您可将容器设为专用的而不是公用的。 有关详细信息，请参阅 [管理对容器和 Blob 的匿名读取访问](../storage/storage-manage-access-to-resources.md) 。
-* 你可使用管理门户禁用或删除 CDN 终结点。
-* 你可将托管服务修改为不再响应此对象的请求。
+* 可将容器设为专用的而不是公用的。 有关详细信息，请参阅 [管理对容器和 Blob 的匿名读取访问](../storage/blobs/storage-manage-access-to-resources.md) 。
+* 可使用管理门户禁用或删除 CDN 终结点。
+* 可将托管服务修改为不再响应此对象的请求。
 
 已在 CDN 中缓存的对象将保持缓存状态，直至对象的生存时间到期，或直至清除终结点为止。 当生存时间到期时，CDN 将查看 CDN 终结点是否仍有效，且是否仍可对该对象进行匿名访问。 如果不能，则不再对该对象进行缓存。
 

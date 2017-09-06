@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: c5eda443dcd41a481ad952d8472f7f67f4517abd
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 57894bbdd9208f8c32eb65e29f04e2ae723780ca
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>从 Azure 数据工厂管道调用 Spark 程序
@@ -52,7 +52,7 @@ Spark 活动是 Azure 数据工厂支持的[数据转换活动](data-factory-dat
 4. 创建一个包含 Spark 活动的管道，使该活动引用在步骤 2 中创建的 HDInsight 链接的服务。 该活动配置为使用上一步骤中创建的数据集作为输出数据集。 输出数据集驱动计划（每小时、每日等）。 因此，即使该活动实际上不生成任何输出，也必须指定输出数据集。
 
 ### <a name="prerequisites"></a>先决条件
-1. 遵循[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)演练中的说明创建一个**通用 Azure 存储帐户**。  
+1. 遵循[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)演练中的说明创建一个**通用 Azure 存储帐户**。  
 2. 遵循[在 Azure HDInsight 中创建 Apache Spark 群集](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md)教程中的说明**在 Azure HDInsight 中创建一个 Apache Spark 群集**。 将在步骤 1 中创建的 Azure 存储帐户与此群集相关联。  
 3. 下载并查看位于以下网址的 python 脚本文件 **test.py**：[https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py)。  
 3.  将 **test.py** 上传到你的 Azure Blob 存储中 **adfspark** 容器中的 **pyFiles** 文件夹。 如果该容器和文件夹不存在，则创建它们。
@@ -61,7 +61,7 @@ Spark 活动是 Azure 数据工厂支持的[数据转换活动](data-factory-dat
 首先，在此步骤中创建数据工厂。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在左侧菜单中单击“新建”，然后依次单击“数据 + 分析”、“数据工厂”。
+2. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。
 3. 在“新建数据工厂”边栏选项卡中，输入 **SparkDF** 作为名称。
 
    > [!IMPORTANT]
@@ -84,14 +84,14 @@ Spark 活动是 Azure 数据工厂支持的[数据转换活动](data-factory-dat
 #### <a name="create-azure-storage-linked-service"></a>创建 Azure 存储链接服务
 在此步骤中，将 Azure 存储帐户链接到数据工厂。 本演练中后面的一个步骤中创建的数据集将引用此链接服务。 在下一步骤中定义的 HDInsight 链接的服务也将引用此链接的服务。  
 
-1. 在数据工厂的“数据工厂”边栏选项卡中，单击“编写和部署”。 此时将显示“数据工厂编辑器”。
+1. 在数据工厂的“数据工厂”边栏选项卡中，单击“编写和部署”。 此时会显示“数据工厂编辑器”。
 2. 单击“新建数据存储”并选择“Azure 存储”。
 
    ![新建数据存储 - Azure 存储 - 菜单](./media/data-factory-spark/new-data-store-azure-storage-menu.png)
 3. 应当会在编辑器中看到用于创建 Azure 存储链接的服务的 **JSON 脚本**。
 
    ![Azure 存储链接服务](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
-4. 将**帐户名称**和**帐户密钥**替换为 Azure 存储帐户的名称和访问密钥。 若要了解如何获取存储访问密钥，请在[管理你的存储帐户](../storage/storage-create-storage-account.md#manage-your-storage-account)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
+4. 将**帐户名称**和**帐户密钥**替换为 Azure 存储帐户的名称和访问密钥。 要了解如何获取存储访问密钥，请在[管理存储帐户](../storage/common/storage-create-storage-account.md#manage-your-storage-account)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
 5. 若要部署链接服务，请单击命令栏上的“部署”。 成功部署链接服务后，“草稿 1”窗口应会消失，左侧树视图中会显示“AzureStorageLinkedService”。
 
 #### <a name="create-hdinsight-linked-service"></a>创建 HDInsight 链接的服务
@@ -131,7 +131,7 @@ Spark 活动是 Azure 数据工厂支持的[数据转换活动](data-factory-dat
 ### <a name="create-output-dataset"></a>创建输出数据集
 输出数据集驱动计划（每小时、每日等）。 因此，必须为管道中的 Spark 活动指定输出数据集，即使该活动实际上不生成任何输出。 为该活动指定输入数据集是可选的。
 
-1. 在“数据工厂编辑器”中，单击“...更多”（在命令栏上），单击“新建数据集”，然后选择“Azure Blob 存储”。  
+1. 在“数据工厂编辑器”中，单击“...更多”（在命令栏上），单击“新建数据集”，并选择“Azure Blob 存储”。  
 2. 将以下代码片段复制并粘贴到“草稿 1”窗口。 此 JSON 片段定义了一个名为 **OutputDataset** 的数据集。 此外，将指定将结果存储在名为 **adfspark** 的 Blob 容器和名为 **pyFiles/output** 的文件夹中。 如前所述，此数据集是一个虚拟数据集。 此示例中的 Spark 程序不生成任何输出。 **availability** 节指定输出数据集每日生成一次。  
 
     ```json

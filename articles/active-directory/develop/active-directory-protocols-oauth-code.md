@@ -16,10 +16,10 @@ ms.date: 02/08/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: c6670b97ebc0545dbcb01d2b0cb1e260f99cfed9
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 35132eae4d6a7f85b19a7a49ad4034e795d7df13
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # 使用 OAuth 2.0 和 Azure Active Directory 来授权访问 Web 应用程序
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) 使用 OAuth 2.0，使你能够授权访问 Az
 ![OAuth 授权代码流](media/active-directory-protocols-oauth-code/active-directory-oauth-code-flow-native-app.png)
 
 ## 请求授权代码
-授权代码流始于客户端将用户定向到的 `/authorize` 终结点。 在此请求中，客户端指示必须向用户获取的权限。 你可以在 Azure 经典门户的应用程序页中，通过底部抽屉中的“查看终结点”按钮获取 OAuth 2.0 终结点。
+授权代码流始于客户端将用户定向到的 `/authorize` 终结点。 在此请求中，客户端指示必须向用户获取的权限。 可以在 Azure 经典门户的应用程序页中，通过底部抽屉中的“查看终结点”按钮获取 OAuth 2.0 终结点。
 
 ```
 // Line breaks for legibility only
@@ -52,7 +52,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | 参数 |  | 说明 |
 | --- | --- | --- |
 | tenant |必填 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。  独立于租户的令牌的允许值为租户标识符，例如 `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` 或 `common` |
-| client_id |必填 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 门户中找到该值。 依次单击“Active Directory”、目录，选择应用程序，然后单击“配置” |
+| client_id |必填 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 门户中找到该值。 依次单击“Active Directory”、目录，选择应用程序，并单击“配置” |
 | response_type |必填 |必须包括授权代码流的 `code`。 |
 | redirect_uri |建议 |应用程序的 redirect_uri，应用程序可在此发送及接收身份验证响应。  其必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。  对于本机和移动应用，应使用默认值 `urn:ietf:wg:oauth:2.0:oob`。 |
 | response_mode |建议 |指定将生成的令牌送回到应用程序所应该使用的方法。  可以是 `query` 或 `form_post`。 |
@@ -67,7 +67,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 >
 >
 
-此时，会要求用户输入其凭据，并许可 `scope` 查询参数中指定的权限。 用户经过身份验证并同意后，Azure AD 将在请求的 `redirect_uri` 地址中向应用发送响应。
+此时，会要求用户输入其凭据，并许可 `scope` 查询参数中指定的权限。 用户经过身份验证并同意后，Azure AD 会在请求的 `redirect_uri` 地址中向应用发送响应。
 
 ### 成功的响应
 成功的响应如下所示：
@@ -113,7 +113,7 @@ error=access_denied
 | invalid_resource |目标资源无效，原因是它不存在，Azure AD 找不到它，或者未正确配置。 |这表示未在租户中配置该资源（如果存在）。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
 
 ## 使用授权代码请求访问令牌
-你已获取授权代码并获得用户授权，现在可以通过将 POST 请求发送到 `/token` 终结点，使用该代码兑换所需资源的访问令牌：
+已获取授权代码并获得用户授权，现在可以通过将 POST 请求发送到 `/token` 终结点，使用该代码兑换所需资源的访问令牌：
 
 ```
 // Line breaks for legibility only
@@ -134,7 +134,7 @@ grant_type=authorization_code
 | 参数 |  | 说明 |
 | --- | --- | --- |
 | tenant |必填 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。  独立于租户的令牌的允许值为租户标识符，例如 `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` 或 `common` |
-| client_id |必填 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 经典门户中找到此信息。 依次单击“Active Directory”、目录，选择应用程序，然后单击“配置” |
+| client_id |必填 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 经典门户中找到此信息。 依次单击“Active Directory”、目录，选择应用程序，并单击“配置” |
 | grant_type |必填 |必须是授权代码流的 `authorization_code`。 |
 | 代码 |必填 |在上一部分中获取的 `authorization_code` |
 | redirect_uri |必填 |用于获取 `authorization_code` 的相同 `redirect_uri` 值。 |
@@ -266,11 +266,11 @@ grant_type=authorization_code
 | invalid_client |客户端身份验证失败。 |客户端凭据无效。 若要修复，应用程序管理员应更新凭据。 |
 | unsupported_grant_type |授权服务器不支持权限授予类型。 |更改请求中的授权类型。 这种类型的错误应该只在开发过程中发生，并且应该在初始测试过程中检测到。 |
 | invalid_resource |目标资源无效，原因是它不存在，Azure AD 找不到它，或者未正确配置。 |这表示未在租户中配置该资源（如果存在）。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
-| interaction_required |请求需要用户交互。 例如，需要额外的身份验证步骤。 |使用同一资源重试请求。 |
+| interaction_required |请求需要用户交互。 例如，需要额外的身份验证步骤。 | 请对同一资源使用交互式授权请求进行重试，而不是非交互式请求。 |
 | temporarily_unavailable |服务器暂时繁忙，无法处理请求。 |重试请求。 客户端应用程序可能向用户说明，其响应由于临时状况而延迟。 |
 
 ## 使用访问令牌来访问资源
-你已经成功获取 `access_token`，现在可以通过在 `Authorization` 标头中包含令牌，在 Web API 的请求中使用令牌。 [RFC 6750](http://www.rfc-editor.org/rfc/rfc6750.txt) 规范说明了如何使用 HTTP 请求中的持有者令牌访问受保护的资源。
+已经成功获取 `access_token`，现在可以通过在 `Authorization` 标头中包含令牌，在 Web API 的请求中使用令牌。 [RFC 6750](http://www.rfc-editor.org/rfc/rfc6750.txt) 规范说明了如何使用 HTTP 请求中的持有者令牌访问受保护的资源。
 
 ### 示例请求
 ```
@@ -303,7 +303,7 @@ RFC 6750 规范为在响应中使用 WWW-Authenticate 标头和持有者方案�
 | HTTP 状态代码 | 错误代码 | 说明 | 客户端操作 |
 | --- | --- | --- | --- |
 | 400 |invalid_request |请求格式不正确。 例如，请求可能缺少某个参数或者使用了同一参数两次。 |修复错误并重试请求。 这种类型的错误应该只在开发过程中发生，并且应该在初始测试中检测到。 |
-| 401 |invalid_token |访问令牌缺失、无效或被吊销。 error_description 参数的值提供了更多详细信息。 |从授权服务器请求新令牌。 如果新令牌失败，则表示发生了意外的错误。 向用户发送一条错误消息，然后在随机延迟后重试。 |
+| 401 |invalid_token |访问令牌缺失、无效或被吊销。 error_description 参数的值提供了更多详细信息。 |从授权服务器请求新令牌。 如果新令牌失败，则表示发生了意外的错误。 向用户发送一条错误消息，并在随机延迟后重试。 |
 | 403 |insufficient_scope |访问令牌不包含访问资源所需的模拟权限。 |将新的授权请求发送到授权终结点。 如果响应包含 scope 参数，则在对资源的请求中使用 scope 值。 |
 | 403 |insufficient_access |令牌的使用者没有访问该资源所需的权限。 |提示用户使用其他帐户或请求对指定资源的权限。 |
 
@@ -312,7 +312,7 @@ RFC 6750 规范为在响应中使用 WWW-Authenticate 标头和持有者方案�
 
 刷新令牌没有指定的生存期。 通常，刷新令牌的生存期相对较长。 但是，在某些情况下，刷新令牌会过期、被吊销，或缺少执行所需操作的足够权限。 应用程序需要正确预期和处理令牌颁发终结点返回的错误。
 
-当你收到具有刷新令牌错误的响应时，请丢弃当前刷新令牌，并请求新的授权代码或访问令牌。 尤其是在授权代码授予流中使用刷新令牌时，如果收到具有 `interaction_required` 或 `invalid_grant` 错误代码的响应，请丢弃刷新令牌，并请求新的授权代码。
+收到具有刷新令牌错误的响应时，请丢弃当前刷新令牌，并请求新的授权代码或访问令牌。 尤其是在授权代码授予流中使用刷新令牌时，如果收到具有 `interaction_required` 或 `invalid_grant` 错误代码的响应，请丢弃刷新令牌，并请求新的授权代码。
 
 下面提供了一个请求**特定于租户的**终结点（也可以使用**公用**终结点）使用刷新令牌获取新访问令牌的示例：
 
@@ -329,15 +329,6 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &resource=https%3A%2F%2Fservice.contoso.com%2F
 &client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: Only required for web apps
 ```
-| 参数 | 说明 |
-| --- | --- |
-| access_token |所请求的新访问令牌。 |
-| expires_in |令牌的剩余生存期，以秒为单位。 典型值为 3600（1 小时）。 |
-| expires_on |令牌过期的日期和时间。 该日期表示为自 1970-01-01T0:0:0Z UTC 至过期时间的秒数。 |
-| refresh_token |一个新增的 OAuth 2.0 refresh_token，可用于在此响应中的某个令牌过期时请求新访问令牌。 |
-| resource |标识可使用访问令牌访问的受保护资源。 |
-| 作用域 |向本机客户端应用程序授予的模拟权限。 默认权限是 **user_impersonation**。 目标资源的所有者可在 Azure AD 中注册备用值。 |
-| token_type |令牌类型。 唯一支持的值为 **bearer**。 |
 
 ### 成功的响应
 成功的令牌响应如下：
@@ -352,6 +343,15 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
   "refresh_token": "AwABAAAAv YNqmf9SoAylD1PycGCB90xzZeEDg6oBzOIPfYsbDWNf621pKo2Q3GGTHYlmNfwoc-OlrxK69hkha2CF12azM_NYhgO668yfcUl4VBbiSHZyd1NVZG5QTIOcbObu3qnLutbpadZGAxqjIbMkQ2bQS09fTrjMBtDE3D6kSMIodpCecoANon9b0LATkpitimVCrl PM1KaPlrEqdFSBzjqfTGAMxZGUTdM0t4B4rTfgV29ghDOHRc2B-C_hHeJaJICqjZ3mY2b_YNqmf9SoAylD1PycGCB90xzZeEDg6oBzOIPfYsbDWNf621pKo2Q3GGTHYlmNfwoc-OlrxK69hkha2CF12azM_NYhgO668yfmVCrl-NyfN3oyG4ZCWu18M9-vEou4Sq-1oMDzExgAf61noxzkNiaTecM-Ve5cq6wHqYQjfV9DOz4lbceuYCAA"
 }
 ```
+| 参数 | 说明 |
+| --- | --- |
+| token_type |令牌类型。 唯一支持的值为 **bearer**。 |
+| expires_in |令牌的剩余生存期，以秒为单位。 典型值为 3600（1 小时）。 |
+| expires_on |令牌过期的日期和时间。 该日期表示为自 1970-01-01T0:0:0Z UTC 至过期时间的秒数。 |
+| resource |标识可使用访问令牌访问的受保护资源。 |
+| 作用域 |向本机客户端应用程序授予的模拟权限。 默认权限是 **user_impersonation**。 目标资源的所有者可在 Azure AD 中注册备用值。 |
+| access_token |所请求的新访问令牌。 |
+| refresh_token |一个新增的 OAuth 2.0 refresh_token，可用于在此响应中的某个令牌过期时请求新访问令牌。 |
 
 ### 错误响应
 下面是一个示例错误响应：

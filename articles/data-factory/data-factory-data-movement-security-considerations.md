@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 33ccb820b786b9aa28f9e10c35ef1d2c00eaf7f1
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 4c39d71a2a2f9451531f0c0082c05fd6dc54fbd5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 07/11/2017
 -   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
 -   [CSA STAR](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
      
-如果你对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://www.microsoft.com/TrustCenter/default.aspx)。 
+如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://www.microsoft.com/TrustCenter/default.aspx)。 
 
 在本文中，我们将查看以下两个数据移动方案中的安全注意事项： 
 
@@ -67,7 +67,7 @@ Azure SQL 数据库还支持透明数据加密 (TDE)，它无需更改应用程�
 Azure Data Lake Store 还为存储在帐户中的数据提供加密。 启用后，Data Lake Store 会在保存数据前进行自动加密，在检索前进行自动解密，从而使其对访问数据的客户端透明。 有关详细信息，请参阅 [Azure Data Lake Store 中的安全性](../data-lake-store/data-lake-store-security-overview.md)。 
 
 #### <a name="azure-blob-storage-and-azure-table-storage"></a>Azure Blob 存储和 Azure 表存储
-Azure Blob 存储和 Azure 表存储支持存储服务加密 (SSE)，它会在将数据保存到存储中前进行自动加密，在检索前进行自动解密。 有关详细信息，请参阅[静态数据的 Azure 存储服务加密](../storage/storage-service-encryption.md)。
+Azure Blob 存储和 Azure 表存储支持存储服务加密 (SSE)，它会在将数据保存到存储中前进行自动加密，在检索前进行自动解密。 有关详细信息，请参阅[静态数据的 Azure 存储服务加密](../storage/common/storage-service-encryption.md)。
 
 #### <a name="amazon-s3"></a>Amazon S3
 Amazon S3 支持静态数据的客户端和服务器加密。 有关详细信息，请参阅[使用加密保护数据](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html)。 目前，数据工厂不支持虚拟私有云 (VPC) 中的 Amazon S3。

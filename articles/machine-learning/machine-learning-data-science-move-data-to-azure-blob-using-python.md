@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: 9b32c0d9c3bc19a187873eebd6ab21036ee06db8
-ms.openlocfilehash: fb34986d947175ae4b4212e5bd0a1e90836ed170
-ms.lasthandoff: 12/07/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 0eea1ff8e4f4c1d108445e1a1250b6fa8ff48910
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-python"></a>使用 Python 将数据移入和移出 Azure Blob 存储
-本主题介绍如何使用 Python API 列出、上载和下载 Blob。 使用 Azure SDK 中提供的 Python API，可以：
+本主题介绍如何使用 Python API 列出、上传和下载 Blob。 使用 Azure SDK 中提供的 Python API，可以：
 
 * 创建容器
-* 将 Blob 上载到容器中
+* 将 Blob 上传到容器中
 * 下载 Blob
 * 列出容器中的 Blob
 * 删除 Blob
 
-有关使用 Python API 的详细信息，请参阅[如何从 Python 使用 Blob 存储服务](../storage/storage-python-how-to-use-blob-storage.md)。
+有关使用 Python API 的详细信息，请参阅[如何从 Python 使用 Blob 存储服务](../storage/blobs/storage-python-how-to-use-blob-storage.md)。
 
 [!INCLUDE [blob-storage-tool-selector](../../includes/machine-learning-blob-storage-tool-selector.md)]
 
@@ -38,18 +38,18 @@ ms.lasthandoff: 12/07/2016
 > 如果正在使用通过 [Azure 中数据科学虚拟机](machine-learning-data-science-virtual-machines.md)提供的脚本设置的 VM，则 VM 上已安装 AzCopy。
 > 
 > [!NOTE]
-> 有关 Azure Blob 存储的完整介绍，请参阅 [Azure Blob 基本知识](../storage/storage-dotnet-how-to-use-blobs.md)和 [Azure Blob 服务](https://msdn.microsoft.com/library/azure/dd179376.aspx)。
+> 有关 Azure Blob 存储的完整介绍，请参阅 [Azure Blob 基本知识](../storage/blobs/storage-dotnet-how-to-use-blobs.md)和 [Azure Blob 服务](https://msdn.microsoft.com/library/azure/dd179376.aspx)。
 > 
 > 
 
 ## <a name="prerequisites"></a>先决条件
-本文档假定已有 Azure 订阅、存储帐户，以及该帐户对应的存储密钥。 上载/下载数据之前，必须知道 Azure 存储帐户名和帐户密钥。
+本文档假定已有 Azure 订阅、存储帐户，以及该帐户对应的存储密钥。 上传/下载数据之前，必须知道 Azure 存储帐户名和帐户密钥。
 
 * 若要设置 Azure 订阅，请参阅[免费试用一个月版](https://azure.microsoft.com/pricing/free-trial/)。
-* 有关创建存储帐户的说明和有关获取帐户和密钥的信息，请参阅[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)。
+* 有关创建存储帐户的说明和有关获取帐户和密钥的信息，请参阅[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。
 
-## <a name="upload-data-to-blob"></a>将数据上载到 Blob
-在你希望在其中以编程方式访问 Azure 存储空间的任何 Python 代码中，将以下代码段添加到代码的顶部附近：
+## <a name="upload-data-to-blob"></a>将数据上传到 Blob
+在希望在其中以编程方式访问 Azure 存储的任何 Python 代码中，将以下代码段添加到代码的顶部附近：
 
     from azure.storage.blob import BlobService
 
@@ -57,18 +57,18 @@ ms.lasthandoff: 12/07/2016
 
     blob_service = BlobService(account_name="<your_account_name>", account_key="<your_account_key>")
 
-请使用以下方法将数据上载到 Blob：
+请使用以下方法将数据上传到 Blob：
 
 1. put\_block\_blob\_from\_path（从指定路径上传文件内容）
 2. put\_block_blob\_from\_file（从已经打开的文件/流上载内容）
 3. put\_block\_blob\_from\_bytes（上载字节数组）
 4. put\_block\_blob\_from\_text（使用指定的编码上载指定的文本值）
 
-以下示例代码将本地文件上载到容器：
+以下示例代码将本地文件上传到容器：
 
     blob_service.put_block_blob_from_path("<your_container_name>", "<your_blob_name>", "<your_local_file_name>")
 
-以下示例代码将本地目录中的所有文件（不包括目录）都上载到 Blob 存储:
+以下示例代码将本地目录中的所有文件（不包括目录）都上传到 Blob 存储:
 
     from azure.storage.blob import BlobService
     from os import listdir

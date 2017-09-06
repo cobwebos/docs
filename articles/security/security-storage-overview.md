@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 1fdff8fcc031f585b0d4eec7f1afa224e6bca089
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: da28cbf5f6f91df1f89114a63bc3f2ebac0f6d73
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-storage-security-overview"></a>Azure 存储安全概述
@@ -31,7 +31,7 @@ Azure 存储是依赖于持续性、可用性和伸缩性来满足客户需求�
 * 在 Azure 存储中，可以使用共享访问签名授予数据对象的委派访问权限。
 * 可以使用存储分析来跟踪某人访问存储时使用的身份验证方法。
 
-有关 Azure 存储中安全性的详细信息，请参阅 [Azure 存储安全指南](../storage/storage-security-guide.md)。 本指南深入探讨 Azure 存储的安全功能，例如存储帐户密钥、传输中和静态时的数据加密，以及存储分析。
+有关 Azure 存储中安全性的详细信息，请参阅 [Azure 存储安全指南](../storage/common/storage-security-guide.md)。 本指南深入探讨 Azure 存储的安全功能，例如存储帐户密钥、传输中和静态时的数据加密，以及存储分析。
 
 本文概述可与 Azure 存储配合使用的 Azure 安全功能。 此外，提供了有关每项功能详细信息的文章链接。
 
@@ -56,15 +56,15 @@ Azure 存储是依赖于持续性、可用性和伸缩性来满足客户需求�
 
 了解更多：
 
-* [了解 SAS 模型](../storage/storage-dotnet-shared-access-signature-part-1.md)
-* [创建 SAS 并将其用于 Blob 存储](../storage/storage-dotnet-shared-access-signature-part-2.md)
+* [了解 SAS 模型](../storage/common/storage-dotnet-shared-access-signature-part-1.md)
+* [创建 SAS 并将其用于 Blob 存储](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md)
 
 ## <a name="encryption-in-transit"></a>传输中加密
 传输中加密是通过网络传输数据时用于保护数据的一种机制。 在 Azure 存储中，可以使用以下功能保护数据：
 
-* [传输级别加密](../storage/storage-security-guide.md#encryption-in-transit)，例如从 Azure 存储传入或传出数据时使用的 HTTPS。
-* [线路加密](../storage/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares)，例如 Azure 文件共享的 SMB 3.0 加密。
-* [客户端加密](../storage/storage-security-guide.md#using-client-side-encryption-to-secure-data-that-you-send-to-storage)，在将数据传输到存储之前加密数据，以及从存储传出数据后解密数据。
+* [传输级别加密](../storage/common/storage-security-guide.md#encryption-in-transit)，例如从 Azure 存储传入或传出数据时使用的 HTTPS。
+* [线路加密](../storage/common/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares)，例如 Azure 文件共享的 SMB 3.0 加密。
+* [客户端加密](../storage/common/storage-security-guide.md#using-client-side-encryption-to-secure-data-that-you-send-to-storage)，在将数据传输到存储之前加密数据，以及从存储传出数据后解密数据。
 
 了解有关客户端加密的详细信息：
 
@@ -74,14 +74,14 @@ Azure 存储是依赖于持续性、可用性和伸缩性来满足客户需求�
 ## <a name="encryption-at-rest"></a>静态加密
 对许多组织而言，[静态数据加密](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)是实现数据隐私性、合规性和数据所有权的必要措施。 有三项 Azure 功能可提供“静态”数据加密：
 
-* [存储服务加密](../storage/storage-security-guide.md#encryption-at-rest)可以请求存储服务在将数据写入 Azure 存储时自动加密数据。
-* [客户端加密](../storage/storage-security-guide.md#client-side-encryption)也提供静态加密功能。
-* [Azure 磁盘加密](../storage/storage-security-guide.md#using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines)允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。
+* [存储服务加密](../storage/common/storage-security-guide.md#encryption-at-rest)可以请求存储服务在将数据写入 Azure 存储时自动加密数据。
+* [客户端加密](../storage/common/storage-security-guide.md#client-side-encryption)也提供静态加密功能。
+* [Azure 磁盘加密](../storage/common/storage-security-guide.md#using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines)允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。
 
 了解有关存储服务加密的详细信息：
 
 * [Azure 存储服务加密](https://azure.microsoft.com/services/storage/)适用于 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)。 有关其他 Azure 存储类型的详细信息，请参阅[文件](https://azure.microsoft.com/services/storage/files/)、[磁盘（高级存储）](https://azure.microsoft.com/services/storage/premium-storage/)、[表](https://azure.microsoft.com/services/storage/tables/)和[队列](https://azure.microsoft.com/services/storage/queues/)。
-* [静态数据的 Azure 存储服务加密](../storage/storage-service-encryption.md)
+* [静态数据的 Azure 存储服务加密](../storage/common/storage-service-encryption.md)
 
 ## <a name="azure-disk-encryption"></a>Azure 磁盘加密
 适用于虚拟机 (VM) 的 Azure 磁盘加密通过使用 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)中控制的密钥和策略加密 VM 磁盘（包括引导磁盘和数据磁盘），帮助解决企业的安全和合规性要求。

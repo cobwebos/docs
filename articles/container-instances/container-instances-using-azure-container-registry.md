@@ -18,10 +18,10 @@ ms.date: 08/02/2017
 ms.author: seanmck
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: cdac6362f0d51b3144024efd28af09eb6d97515f
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: aa1c4ea379c10dff246e2f924a345f9fa444aa64
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 
@@ -34,10 +34,10 @@ Azure 容器注册表是用于 Docker 容器映像的基于 Azure 的专用注�
 Azure CLI 包括用于创建和管理 Azure 容器实例中的容器的命令。 如果在 `create` 命令中指定专用映像，还可以指定使用容器注册表进行身份验证所需的映像注册表密码。
 
 ```azurecli-interactive
-az container create --name myprivatecontainer --image mycontainerregistry.azurecr.io/mycontainerimage:v1 --image-registry-password myRegistryPassword --resource-group myresourcegroup
+az container create --name myprivatecontainer --image mycontainerregistry.azurecr.io/mycontainerimage:v1 --registry-password myRegistryPassword --resource-group myresourcegroup
 ```
 
-`create` 命令还支持指定 `image-registry-login-server` 和 `image-registry-username`。 但是，Azure 容器注册表的登录服务器都是 registryname.azurecr.io，默认用户名是 registryname，因此这些值是从映像名称推断的（如果未显式提供）。
+`create` 命令还支持指定 `registry-login-server` 和 `registry-username`。 但是，Azure 容器注册表的登录服务器都是 registryname.azurecr.io，默认用户名是 registryname，因此这些值是从映像名称推断的（如果未显式提供）。
 
 ## <a name="using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
 
@@ -91,3 +91,4 @@ az container create --name myprivatecontainer --image mycontainerregistry.azurec
 [acr-create-deeplink]: ./media/container-instances-using-azure-container-registry/acr-create-deeplink.png
 
 [aci-detailsview]: ./media/container-instances-using-azure-container-registry/aci-detailsview.png
+

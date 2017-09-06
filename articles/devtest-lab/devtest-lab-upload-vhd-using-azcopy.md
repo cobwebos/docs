@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: cc14f7747c4a24acea434f62b7615d10819bd619
-ms.openlocfilehash: f79e76d2efbd71cdd828dbdf43353076c063f23b
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a4f43354740d9f17570932b0b9c753f46d67dc33
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -25,7 +26,7 @@ ms.openlocfilehash: f79e76d2efbd71cdd828dbdf43353076c063f23b
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-在 Azure 开发测试实验室中，可使用 VHD 文件创建用于预配虚拟机的自定义映像。 以下步骤将引导你使用 AzCopy 命令行实用工具将 VHD 文件上传到实验室的存储帐户。 上传 VHD 文件后，[后续步骤部分](#next-steps)将列出一些文章，说明如何基于已上传的 VHD 文件创建自定义映像。 若要深入了解 Azure 中的磁盘和 VHD，请参阅[关于虚拟机的磁盘和 VHD](../storage/storage-about-disks-and-vhds-linux.md)
+在 Azure 开发测试实验室中，可使用 VHD 文件创建用于预配虚拟机的自定义映像。 以下步骤将引导使用 AzCopy 命令行实用工具将 VHD 文件上传到实验室的存储帐户。 上传 VHD 文件后，[后续步骤部分](#next-steps)将列出一些文章说明如何基于已上传的 VHD 文件创建自定义映像。 若要深入了解 Azure 中的磁盘和 VHD，请参阅[关于虚拟机的磁盘和 VHD](../virtual-machines/linux/about-disks-and-vhds.md)
 
 > [!NOTE] 
 >  
@@ -33,13 +34,13 @@ ms.openlocfilehash: f79e76d2efbd71cdd828dbdf43353076c063f23b
 
 ## <a name="step-by-step-instructions"></a>分步说明
 
-以下步骤将引导你使用 [AzCopy](http://aka.ms/downloadazcopy) 将 VHD 文件上传到 Azure 开发测试实验室。 
+以下步骤将引导使用 [AzCopy](http://aka.ms/downloadazcopy) 将 VHD 文件上传到 Azure 开发测试实验室。 
 
 1. 使用 Azure 门户获取实验室的存储帐户名称：
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 选择“更多服务”，然后从列表中选择“开发测试实验室”。
+1. 选择“更多服务”，并从列表中选择“开发测试实验室”。
 
 1. 从实验室列表中，选择所需的实验室。  
 
@@ -61,7 +62,7 @@ ms.openlocfilehash: f79e76d2efbd71cdd828dbdf43353076c063f23b
     https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/...
     ``` 
 
-1. 请记下完整的 URI，因为将在后续步骤中使用。
+1. 请记下完整的 URI，因为会在后续步骤中使用。
 
 1. 使用 AzCopy 上传 VHD 文件：
  
@@ -83,8 +84,3 @@ ms.openlocfilehash: f79e76d2efbd71cdd828dbdf43353076c063f23b
 
 - [通过 Azure 门户，在 Azure 开发测试实验室中基于 VHD 文件创建自定义映像](devtest-lab-create-template.md)
 - [通过 PowerShell，在 Azure 开发测试实验室中基于 VHD 文件创建自定义映像](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

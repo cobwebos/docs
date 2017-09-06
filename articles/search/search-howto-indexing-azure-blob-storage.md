@@ -15,10 +15,10 @@ ms.tgt_pltfrm: na
 ms.date: 07/22/2017
 ms.author: eugenesh
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: b60662cbe655eea11cba2aaaaa4671209bf018f4
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 023c343122f872943fb3ab3eed7b4caedfae9ac4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -92,7 +92,7 @@ Blob 索引器可从以下文档格式提取文本：
 - **存储帐户共享访问签名** (SAS) 连接字符串：`BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`SAS 应当对容器和对象（在本例中为 blob）具有列出和读取权限。
 -  **容器共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`SAS 应当对容器具有列出和读取权限。
 
-有关存储共享访问签名的详细信息，请参阅[使用共享访问签名](../storage/storage-dotnet-shared-access-signature-part-1.md)。
+有关存储共享访问签名的详细信息，请参阅[使用共享访问签名](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 
 > [!NOTE]
 > 如果使用 SAS 凭据，则需使用续订的签名定期更新数据源凭据，以防止其过期。 如果 SAS 凭据过期，索引器会失败，出现类似于 `Credentials provided in the connection string are invalid or have expired.` 的错误消息。  
@@ -268,7 +268,7 @@ Azure 搜索的文档提取逻辑并不完美，有时无法分析包含受支�
 
 可以使用 `dataToExtract` 配置参数控制要为 Blob 中的哪些部分编制索引。 该参数采用以下值：
 
-* `storageMetadata` - 指定仅为[标准 Blob 属性和用户指定的元数据](../storage/storage-properties-metadata.md)编制索引。
+* `storageMetadata` - 指定仅为[标准 Blob 属性和用户指定的元数据](../storage/blobs/storage-properties-metadata.md)编制索引。
 * `allMetadata` - 指定要为从 Blob 内容中提取的存储元数据和[内容类型特定的元数据](#ContentSpecificMetadata)编制索引。
 * `contentAndMetadata` - 指定要为从 Blob 中提取的所有元数据和文本内容编制索引。 这是默认值。
 

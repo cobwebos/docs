@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 071c9c55d412514172106109eacc048722ab173e
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e0e7144c38c36f1583e0bcb7dfffba26e9a8bdad
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -165,7 +165,7 @@ Azure IoT 没有任何需要在服务本身上指定的自定义项。 若要对
 
 运行 `nslookup` 验证 DNS 解析
 
-若要详细了解如何将自定义域映射到 Blob 存储终结点，请访问[为 Blob 存储终结点配置自定义域名](../storage/storage-custom-domain-name.md?toc=%dns%2ftoc.json)
+若要详细了解如何将自定义域映射到 Blob 存储终结点，请访问[为 Blob 存储终结点配置自定义域名](../storage/blobs/storage-custom-domain-name.md?toc=%dns%2ftoc.json)
 
 ## <a name="azure-cdn"></a>Azure CDN
 

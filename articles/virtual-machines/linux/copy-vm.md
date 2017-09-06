@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 03/10/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 006123a4ab7d1c0208a7e5f33b6f05f9374511fc
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 7983061a933370803669480296d7625106e1360c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---                    
                
@@ -36,7 +36,7 @@ ms.lasthandoff: 04/03/2017
 
 -   使用 [az login](/cli/azure/#login) 登录到一个 Azure 帐户。
 
--   使用一个 Azure VM 作为你的副本的来源。
+-   使用一个 Azure VM 作为副本的来源。
 
 ## <a name="step-1-stop-the-source-vm"></a>步骤 1：停止源 VM
 
@@ -53,7 +53,7 @@ az vm deallocate --resource-group myResourceGroup --name myVM
 
 若要复制 VM，请创建基础虚拟硬盘的副本。 此过程将一个专用 VHD 创建为托管磁盘，其中包含与源 VM 相同的配置和设置。
 
-有关 Azure 托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../../storage/storage-managed-disks-overview.md)。 
+有关 Azure 托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../windows/managed-disks-overview.md)。 
 
 1.  使用 [az vm list](/cli/azure/vm#list) 列出每个 VM 及其 OS 磁盘的名称。 以下示例列出了名为 **myResourceGroup** 的资源组中的所有 VM：
     

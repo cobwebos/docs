@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/21/2016
 ms.author: richrund
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 6d9509935ad1924845e1e8d13778f4f52335ff89
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 6807ab67e3593da82c147669b29bfdae3b6c967c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="manage-log-analytics-using-powershell"></a>使用 PowerShell 管理 Log Analytics
@@ -213,7 +213,7 @@ New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGr
 
 有关可用指标的详细信息，请参阅 [Azure 监视器支持的指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md)。
 
-有关可用日志的详细信息，请参阅[诊断日志支持的服务和架构](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-resource-diagnostic-logs)。
+有关可用日志的详细信息，请参阅[诊断日志支持的服务和架构](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md)。
 
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"

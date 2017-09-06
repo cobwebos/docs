@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 30d02322f302ca58e6c1b2b674d9f242b7c40518
-ms.lasthandoff: 04/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 439353b7d22fb7376049ea8e1433a8d5840d3e0f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -87,7 +87,7 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 
 1. 使用订阅登录到 [Azure 门户](http://portal.azure.com)。
 
-1. [创建 Azure 可用性集](../create-availability-set.md)。
+1. [创建 Azure 可用性集](../tutorial-availability-sets.md)。
 
    可用性集可将各个容错域和更新域中的虚拟机分组。 可用性集确保应用程序不会受到单一故障点（例如网络交换机或服务器机架电源装置）的影响。
 
@@ -98,7 +98,8 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
    - 单击“创建” 。
    - 在“创建可用性集”边栏选项卡中设置以下值：
       - **名称**：可用性集的名称。
-      - **订阅**：你的 Azure 订阅。
+      - 
+            **订阅**：Azure 订阅。
       - **资源组**：如果想要使用现有的组，请单击“使用现有项”并从下拉列表中选择该组。 否则，请选择“新建”并键入组的名称。
       - **位置**：设置要在其中创建虚拟机的位置。
       - **容错域**：使用默认值 (3)。
@@ -146,14 +147,14 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 
 1. 如果使用某个基于 SQL Server 的虚拟机映像，请删除 SQL Server 实例。
 
-   - 在“程序和功能”中，右键单击“Microsoft SQL Server 2016 (64 位)”，然后单击“卸载/更改”。
+   - 在“程序和功能”中，右键单击“Microsoft SQL Server 2016 (64 位)”，并单击“卸载/更改”。
    - 单击“删除”。
    - 选择默认实例。
    - 删除“数据库引擎服务”下的所有功能。 不要删除“共享功能”。 参阅下图：
 
       ![删除功能](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
 
-   - 单击“下一步”，然后单击“删除”。
+   - 单击“下一步”，并单击“删除”。
 
 1. <a name="ports"></a>打开防火墙端口。
 
@@ -164,7 +165,7 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
    | SQL Server | 1433 | SQL Server 的默认实例正常使用的端口。 如果使用了库中的某个映像，此端口会自动打开。
    | 运行状况探测 | 59999 | 任何打开的 TCP 端口。 在后面的步骤中，需要将负载均衡器[运行状况探测](#probe)和群集配置为使用此端口。  
 
-1. 将存储添加到虚拟机。 有关详细信息，请参阅[添加存储](../../../storage/storage-premium-storage.md)。
+1. 将存储添加到虚拟机。 有关详细信息，请参阅[添加存储](../../../storage/common/storage-premium-storage.md)。
 
    这两个虚拟机至少需要两个数据磁盘。
 
@@ -199,7 +200,7 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 1. [将故障转移群集功能添加到每个虚拟机](virtual-machines-windows-portal-sql-availability-group-prereq.md#add-failover-clustering-features-to-both-sql-server-vms)。
 
    若要通过 UI 安装故障转移群集功能，请在两个虚拟机上执行以下步骤。
-   - 单击“服务器管理器”中单击“管理”，然后单击“添加角色和功能”。
+   - 单击“服务器管理器”中单击“管理”，并单击“添加角色和功能”。
    - 在“添加角色和功能向导”中，单击“下一步”，直到出现“选择功能”。
    - 在“选择功能”中，单击“故障转移群集”。 请包含所有所需的功能和管理工具。 单击“添加功能”。
    - 单击“下一步”，然后单击“完成”安装这些功能。
@@ -221,11 +222,11 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 
 若要使用 UI 验证群集，请在某个虚拟机中执行以下步骤。
 
-1. 在“服务器管理器”中单击“工具”，然后单击“故障转移群集管理器”。
-1. 在“故障转移群集管理器”中单击“操作”，然后单击“验证配置...”。
-1. 单击“资源组名称” 的 Azure 数据工厂。
+1. 在“服务器管理器”中单击“工具”，并单击“故障转移群集管理器”。
+1. 在“故障转移群集管理器”中单击“操作”，并单击“验证配置...”。
+1. 单击“下一步”。
 1. 在“选择服务器或群集”中，键入两个虚拟机的名称。
-1. 在“测试选项”中，选择“仅运行选择的测试”。 单击“资源组名称” 的 Azure 数据工厂。
+1. 在“测试选项”中，选择“仅运行选择的测试”。 单击“下一步”。
 1. 在“测试选择”中，包含除“存储”以外的所有测试。 参阅下图：
 
    ![验证测试](./media/virtual-machines-windows-portal-sql-create-failover-cluster/10-validate-cluster-test.png)
@@ -316,11 +317,11 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
 
 1. 单击“新建 SQL Server 故障转移群集安装”。 遵照向导中的说明安装 SQL Server FCI。
 
-   FCI 数据目录需位于群集存储中。 使用 S2D 时，该存储不是共享磁盘，而是每个服务器上的卷的装入点。 S2D 将在两个节点之间同步该卷。 该卷以群集共享卷的形式提供给群集。 使用数据目录的 CSV 装入点。
+   FCI 数据目录需位于群集存储中。 使用 S2D 时，该存储不是共享磁盘，而是每个服务器上的卷的装入点。 S2D 会在两个节点之间同步该卷。 该卷以群集共享卷的形式提供给群集。 使用数据目录的 CSV 装入点。
 
    ![DataDirectories](./media/virtual-machines-windows-portal-sql-create-failover-cluster/20-data-dicrectories.png)
 
-1. 完成向导中的操作后，安装程序将在第一个节点上安装 SQL Server FCI。
+1. 完成向导中的操作后，安装程序会在第一个节点上安装 SQL Server FCI。
 
 1. 安装程序在第一个节点上成功安装 FCI 后，请使用 RDP 连接到第二个节点。
 
@@ -354,10 +355,13 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
    - **虚拟网络**：虚拟机所在的同一网络。
    - **子网**：虚拟机所在的同一子网。
    - **专用 IP 地址**：分配给 SQL Server FCI 群集网络资源的同一 IP 地址。
-   - **订阅**：你的 Azure 订阅。
-   - **资源组**：使用你的虚拟机所在的同一资源组。
-   - **位置**：使用你的虚拟机所在的同一 Azure 位置。
-   参阅下图：
+   - 
+            **订阅**：Azure 订阅。
+   - 
+            **资源组**：使用虚拟机所在的同一资源组。
+   - 
+               **位置**：使用虚拟机所在的同一 Azure 位置。
+参阅下图：
 
    ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)
 
@@ -451,9 +455,9 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
 
 1. 右键单击“SQL Server FCI”角色。
 
-1. 单击“移动”，然后单击“最佳节点”。
+1. 单击“移动”，并单击“最佳节点”。
 
-“故障转移群集管理器”将显示该角色及其资源已脱机。 然后资源将会移动，并在另一个节点上联机。
+“故障转移群集管理器”会显示该角色及其资源已脱机。 然后资源会移动，并在另一个节点上联机。
 
 ### <a name="test-connectivity"></a>测试连接
 

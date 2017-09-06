@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2016
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b568cbdb30b5cef23355c0bfe895a8a6d9818341
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 0b22dcdfc0432533b286e70d130bfe2ee2db92b2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal-update-2"></a>在政府门户中部署本地 StorSimple 设备 (Update 2)
@@ -26,7 +27,7 @@ ms.openlocfilehash: b568cbdb30b5cef23355c0bfe895a8a6d9818341
 ## <a name="overview"></a>概述
 欢迎使用 Microsoft Azure StorSimple 设备部署。 这些部署教程适用于在 Azure 政府门户中运行 Update 2 软件的 StorSimple 8000 系列。 本系列教程包括 StorSimple 设备的配置清单、配置先决条件列表，以及详细配置步骤。
 
-这些教程中的信息均假定你已阅读安全预防措施，并已打开 StorSimple 设备包、装入机架，并连接好电缆。 如果你仍然需要执行这些任务，请从阅读 [安全预防措施](storsimple-safety.md)开始。 按照设备具体说明，将设备解包、装入机架并连接好电缆。
+这些教程中的信息均假定已阅读安全预防措施，并已打开 StorSimple 设备包、装入机架，并连接好电缆。 如果仍然需要执行这些任务，请从阅读 [安全预防措施](storsimple-safety.md)开始。 按照设备具体说明，将设备解包、装入机架并连接好电缆。
 
 * [解包、装载机架，并将电缆接到 8100](storsimple-8100-hardware-installation.md)
 * [解包、安装机架，将电缆连接到 8600](storsimple-8600-hardware-installation.md)
@@ -45,7 +46,7 @@ ms.openlocfilehash: b568cbdb30b5cef23355c0bfe895a8a6d9818341
 | --- | --- |
 | **先决条件** |这些是针对即将进行的部署需要做好准备。 |
 | [部署配置清单](#deployment-configuration-checklist) |使用此清单来收集和记录部署之前或期间的信息。 |
-| [部署先决条件](#deployment-prerequisites) |这些项将验证环境是否已做好部署准备。 |
+| [部署先决条件](#deployment-prerequisites) |这些项会验证环境是否已做好部署准备。 |
 |  | |
 | **逐步部署** |需要完成这些步骤，以在生产中部署 StorSimple 设备。 |
 | [步骤 1：创建新服务](#step-1-create-a-new-service) |设置 StorSimple 设备的云管理和存储。 *如果其他 StorSimple 设备有现有服务，请跳过此步骤*。 |
@@ -103,7 +104,7 @@ StorSimple Manager 服务可以管理多个 StorSimple 设备。 执行以下步
 [!INCLUDE [storsimple-create-new-service-gov](../../includes/storsimple-create-new-service-gov.md)]
 
 > [!IMPORTANT]
-> 如果未启用服务的自动创建存储帐户，则在成功创建服务后，需要创建至少一个存储帐户。 在创建卷容器时将会使用此帐户。
+> 如果未启用服务的自动创建存储帐户，则在成功创建服务后，需要创建至少一个存储帐户。 在创建卷容器时会使用此帐户。
 > 
 > * 如果未自动创建存储帐户，请转到 [针对服务配置新的存储帐户](#configure-a-new-storage-account-for-the-service) 了解详细说明。
 > * 如果启用了自动创建存储帐户，请转到 [步骤 2：获取服务注册密钥](#step-2-get-the-service-registration-key)。
@@ -134,7 +135,7 @@ StorSimple Manager 服务可以管理多个 StorSimple 设备。 执行以下步
 [!INCLUDE [storsimple-complete-minimum-device-setup](../../includes/storsimple-complete-minimum-device-setup-u1.md)]
 
 ## <a name="step-5-create-a-volume-container"></a>步骤 5：创建卷容器
-卷容器具有其中所包含的所有卷的存储帐户、带宽和加密设置。 你需要创建卷容器后才可以开始在 StorSimple 设备上设置卷。
+卷容器具有其中所包含的所有卷的存储帐户、带宽和加密设置。 需要创建卷容器后才可以开始在 StorSimple 设备上设置卷。
 
 在政府门户中执行以下步骤，创建卷容器。
 
@@ -171,12 +172,12 @@ StorSimple Manager 服务可以管理多个 StorSimple 设备。 执行以下步
 
 [!INCLUDE [storsimple-take-backup](../../includes/storsimple-take-backup.md)]
 
-你可以随时进行手动备份。 如需相关过程，请转到 [创建手动备份](#create-a-manual-backup)。
+可以随时进行手动备份。 如需相关过程，请转到 [创建手动备份](#create-a-manual-backup)。
 
 ## <a name="configure-a-new-storage-account-for-the-service"></a>针对服务配置新的存储帐户
 这是一个可选步骤，只有当未启用服务自动创建存储帐户时，才需要执行。 必须要具有 Microsoft Azure 存储帐户才可以创建 StorSimple 卷容器。
 
-如果需要在不同的区域创建 Azure 存储帐户，请参阅 [关于 Azure 存储帐户](../storage/storage-create-storage-account.md) 了解逐步说明。
+如果需要在不同的区域创建 Azure 存储帐户，请参阅 [关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md) 了解逐步说明。
 
 在政府门户的“StorSimple Manager 服务”页中执行以下步骤。
 
@@ -193,8 +194,8 @@ StorSimple Manager 服务可以管理多个 StorSimple 设备。 执行以下步
 <!--If you have a gateway configured on a network interface other than Data 0, you will need to disable Data 2 and Data 3 network interfaces before installing the update. Go to **Devices > Configure** and disable Data 2 and Data 3 interfaces. You should re-enable these interfaces after the device is updated.-->
 
 #### <a name="to-update-your-device"></a>更新设备
-1. 在设备“快速启动”页上，单击“设备”。 选择物理设备，单击“维护”，然后单击“扫描更新”。  
-2. 已创建一个用于扫描可用更新的作业。 如果更新可用，“扫描更新”将更改为“安装更新”。 单击“安装更新”。
+1. 在设备“快速启动”页上，单击“设备”。 选择物理设备，单击“维护”，并单击“扫描更新”。  
+2. 已创建一个用于扫描可用更新的作业。 如果更新可用，“扫描更新”将更改为“安装更新”。 单击“ **安装更新**”。
 3. 将创建更新作业。 通过导航到 **作业**监视更新状态。
    
    > [!NOTE]
@@ -226,10 +227,5 @@ StorSimple Manager 服务可以管理多个 StorSimple 设备。 执行以下步
 ## <a name="next-steps"></a>后续步骤
 * 配置 [虚拟设备](storsimple-virtual-device-u2.md)。
 * 使用 [StorSimple Manager 服务](storsimple-manager-service-administration.md) 管理 StorSimple 设备。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

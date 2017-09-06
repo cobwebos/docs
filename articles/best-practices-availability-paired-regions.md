@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 07/23/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 8a1e5333e893e2a3a205f08223f103793df452cd
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2984daa3b99fa9c858d43c3dcfb930add2040e2e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -62,7 +62,7 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 > (1) 巴西南部与其他区域的不同之处在于，它与自身地理位置外部的区域配对。 巴西南部的次要区域是美国中南部，但是美国中南部的次要区域不是巴西南部。
 
 
-我们建议你在区域对之间复制工作负荷，以受益于 Azure 的隔离与可用性策略。 例如，计划的 Azure 系统更新将在配对区域之间依序部署（并不是同时部署）。 这意味着，即使发生罕见的更新失败，两个区域也不会同时受到影响。 此外，如果遭遇少见的广泛中断，至少会优先恢复每个对中的一个区域。
+我们建议在区域对之间复制工作负荷，以受益于 Azure 的隔离与可用性策略。 例如，计划的 Azure 系统更新会在配对区域之间依序部署（并不是同时部署）。 这意味着，即使发生罕见的更新失败，两个区域也不会同时受到影响。 此外，如果遭遇少见的广泛中断，至少会优先恢复每个对中的一个区域。
 
 ## <a name="an-example-of-paired-regions"></a>配对区域的示例
 以下图 2 显示了使用区域对进行灾难恢复的虚构应用程序。 绿色数字突出显示了三个 Azure 服务（Azure 计算、存储和数据库）的跨区域活动，以及这些服务如何配置为跨区域复制。 橙色数字突出显示了跨配对区域部署的独特优势。
@@ -76,7 +76,7 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 
 ![PaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure 计算 (PaaS)** - 必须提前预配附加的计算资源，确保在发生灾难期间另一个区域可以提供资源。 有关详细信息，请参阅 [Azure resiliency technical guidance](resiliency/resiliency-technical-guidance.md)（Azure 复原技术指南）。
 
-![](./media/best-practices-availability-paired-regions/2Green.png) **Azure 存储** - 创建 Azure 存储帐户时，默认将配置异地冗余存储 (GRS)。 使用 GRS 时，数据将在主要区域自动复制三次，并在配对区域复制三次。 有关详细信息，请参阅 [Azure 存储冗余选项](storage/storage-redundancy.md)。
+![存储](./media/best-practices-availability-paired-regions/2Green.png)Azure 存储 - 创建 Azure 存储帐户时，将默认配置异地冗余存储 (GRS)。 使用 GRS 时，数据会在主要区域自动复制三次，并在配对区域复制三次。 有关详细信息，请参阅 [Azure 存储冗余选项](storage/common/storage-redundancy.md)。
 
 ![Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL 数据库** - 使用 Azure SQL 标准异地复制，可以配置为将事务异步复制到配对区域。 使用高级异地复制，可以配置为复制到全球任何区域；但是，我们建议在配对区域中为大多数灾难恢复方案部署这些资源。 有关详细信息，请参阅 [Azure SQL 数据库中的异地复制](sql-database/sql-database-geo-replication-overview.md)。
 

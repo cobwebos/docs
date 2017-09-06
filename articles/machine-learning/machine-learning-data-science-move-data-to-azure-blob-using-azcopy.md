@@ -1,6 +1,6 @@
 ---
 title: "使用 AzCopy 将数据移入和移出 Azure Blob 存储 | Microsoft Docs"
-description: "使用 AzCopy 将数据移入和移出 Azure Blob 存储"
+description: "使用 AzCopy 将数据移动到 Azure Blob 存储或从中移动数据"
 services: machine-learning,storage
 documentationcenter: 
 author: bradsev
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: 9b32c0d9c3bc19a187873eebd6ab21036ee06db8
-ms.openlocfilehash: 1acc98f9688ced2e1cf177a881b28ce98c0bff9e
-ms.lasthandoff: 12/07/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a41ccdd5739a5b10cef201910abd639ae3126c02
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azcopy"></a>使用 AzCopy 将数据移入和移出 Azure Blob 存储
 AzCopy 是一个命令行实用程序，用于将数据上传、复制到 Microsoft Azure Blob、文件和表存储以及从其中下载和复制数据。
 
-有关安装 AzCopy 的说明和将其与 Azure 平台配合使用的其他信息，请参阅 [AzCopy 命令行实用程序入门](../storage/storage-use-azcopy.md)。
+有关安装 AzCopy 的说明和将其与 Azure 平台配合使用的其他信息，请参阅 [AzCopy 命令行实用程序入门](../storage/common/storage-use-azcopy.md)。
 
 [!INCLUDE [blob-storage-tool-selector](../../includes/machine-learning-blob-storage-tool-selector.md)]
 
@@ -32,7 +32,7 @@ AzCopy 是一个命令行实用程序，用于将数据上传、复制到 Micros
 > 如果正在使用通过 [Azure 中数据科学虚拟机](machine-learning-data-science-virtual-machines.md)提供的脚本设置的 VM，则 VM 上已安装 AzCopy。
 > 
 > [!NOTE]
-> 有关 Azure Blob 存储的完整介绍，请参阅 [Azure Blob 基本知识](../storage/storage-dotnet-how-to-use-blobs.md)和 [Azure Blob 服务](https://msdn.microsoft.com/library/azure/dd179376.aspx)。
+> 有关 Azure Blob 存储的完整介绍，请参阅 [Azure Blob 基本知识](../storage/blobs/storage-dotnet-how-to-use-blobs.md)和 [Azure Blob 服务](https://msdn.microsoft.com/library/azure/dd179376.aspx)。
 > 
 > 
 
@@ -40,10 +40,10 @@ AzCopy 是一个命令行实用程序，用于将数据上传、复制到 Micros
 本文档假定已有 Azure 订阅、存储帐户，以及该帐户对应的存储密钥。 上传/下载数据之前，必须知道 Azure 存储帐户名和帐户密钥。
 
 * 若要设置 Azure 订阅，请参阅[免费试用一个月版](https://azure.microsoft.com/pricing/free-trial/)。
-* 有关创建存储帐户的说明和有关获取帐户和密钥的信息，请参阅[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)。
+* 有关创建存储帐户的说明和有关获取帐户和密钥的信息，请参阅[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。
 
 ## <a name="run-azcopy-commands"></a>运行 AzCopy 命令
-若要运行 AzCopy 命令，请打开一个命令窗口，然后导航到计算机上的 AzCopy 安装目录，该位置存放着可执行的 AzCopy.exe。 
+要运行 AzCopy 命令，请打开一个命令窗口，并导航到计算机上的 AzCopy 安装目录，该位置存放着可执行的 AzCopy.exe。 
 
 AzCopy 命令的基本语法是：
 
@@ -84,8 +84,8 @@ AzCopy 命令的基本语法是：
 
 ## <a name="tips-for-using-azcopy"></a>使用 AzCopy 的提示
 > [!TIP]
-> 1. **上传**文件时，*/S* 将以递归方式上传文件。 如果没有此参数，则不会上传子目录中的文件。  
-> 2. **下载**文件时，*/S* 将以递归方式搜索容器，直到指定目录及其子目录中的所有文件，或与给定目录及其子目录中指定模式匹配的所有文件，都已下载。  
+> 1. **上传**文件时，*/S* 以递归方式上传文件。 如果没有此参数，则不会上传子目录中的文件。  
+> 2. **下载**文件时，*/S* 以递归方式搜索容器，直到指定目录及其子目录中的所有文件，或与给定目录及其子目录中指定模式匹配的所有文件，都已下载。  
 > 3. 不能指定要使用 */Source* 参数下载的**特定 blob 文件**。 若要下载特定文件，请指定要使用 */Pattern* 参数下载的 blob 文件名称。 **/S** 参数可用于使用 AzCopy 以递归方式查找文件名称模式。 如果不使用模式参数，AzCopy 将下载该目录中的所有文件。
 > 
 > 

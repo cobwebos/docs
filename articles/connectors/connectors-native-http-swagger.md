@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan; LADocs
-translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: a881336bcb2384aaa57a75483c0e6fcd97096905
-ms.lasthandoff: 04/10/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3e9229d94e96aad7b769d0e55d208d856e3b80bc
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="get-started-with-the-http--swagger-action"></a>HTTP + Swagger 操作入门
@@ -43,7 +43,7 @@ HTTP + Swagger 触发器和操作与 [HTTP 操作](connectors-native-http.md)功
     ![选择 HTTP + Swagger 操作](./media/connectors-native-http-swagger/using-action-1.png)
 4. 键入 Swagger 文档的 URL：
    
-   * 若要从逻辑应用设计工作，URL 必须是 HTTPS 终结点并已启用 CORS。
+   * 若要从逻辑应用设计器工作，URL 必须是 HTTPS 终结点并已启用 CORS。
    * 如果 Swagger 文档不满足此要求，可以使用[启用 CORS 的 Azure 存储](#hosting-swagger-from-storage)存储该文档。
 5. 单击“下一步”从 Swagger 文档读取并呈现。
 6. 添加 HTTP 调用所需的任何参数。
@@ -52,11 +52,11 @@ HTTP + Swagger 触发器和操作与 [HTTP 操作](connectors-native-http.md)功
 7. 若要保存并发布逻辑应用，请在设计器工具栏上单击“保存”。
 
 ### <a name="host-swagger-from-azure-storage"></a>从 Azure 存储托管 Swagger
-可能要引用未托管或者不满足设计器的安全和跨源要求的 Swagger 文档。 若要解决此问题，可以将 Swagger 文档存储在 Azure 存储中，并使 CORS 引用该文档。  
+可能要引用未托管或者不满足设计器的安全和跨源要求的 Swagger 文档。 要解决此问题，可以将 Swagger 文档存储在 Azure 存储中，并使 CORS 引用该文档。  
 
 下面是在 Azure 存储中创建、配置和存储 Swagger 文档的步骤：
 
-1. [使用 Azure Blob 存储中创建 Azure 存储帐户](../storage/storage-create-storage-account.md)。 若要执行此步骤，请将权限设置为**公共访问**。
+1. [使用 Azure Blob 存储中创建 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。 要执行此步骤，请将权限设置为**公共访问**。
 
 2. 在 blob 上启用 CORS。 
 

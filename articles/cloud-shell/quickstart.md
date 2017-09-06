@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/10/2017
 ms.author: juluk
 ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
-ms.openlocfilehash: a174ecd452047d11f6ad374ede76becabcfff899
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 75676eb0ab784e2adbfd27b170c1dee5599b74ac
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -33,10 +33,10 @@ ms.lasthandoff: 07/18/2017
 3. 选择“创建存储”
 
 > [!TIP]
-> 在每个会话中将自动针对 Azure CLI 2.0 对你进行身份验证。
+> 在每个会话中会自动针对 Azure CLI 2.0 对你进行身份验证。
 
 ### <a name="set-your-subscription"></a>设置订阅
-1. 列出你可以访问的订阅： <br>
+1. 列出可以访问的订阅： <br>
 `az account list`
 2. 设置首选订阅： <br>
 `az account set --subscription my-subscription-name`
@@ -45,11 +45,11 @@ ms.lasthandoff: 07/18/2017
 > 将使用 `/home/<user>/.azure/azureProfile.json` 为将来的会话记住订阅。
 
 ### <a name="create-a-resource-group"></a>创建资源组
-在 WestUS 中创建名为“MyRG”的新资源组： <br>
+在 WestUS 中创建一个名为“MyRG”的新资源组： <br>
 `az group create -l westus -n MyRG` <br>
 
 ### <a name="create-a-linux-vm"></a>创建 Linux VM
-在新资源组中创建 Ubuntu VM。 Azure CLI 2.0 将创建 ssh 密钥并使用它们设置 VM。 <br>
+在新资源组中创建 Ubuntu VM。 Azure CLI 2.0 将创建 SSH 密钥并使用它们设置虚拟机。 <br>
 `az vm create -n my_vm_name -g MyRG --image UbuntuLTS --generate-ssh-keys`
 
 > [!NOTE]
@@ -63,7 +63,7 @@ ms.lasthandoff: 07/18/2017
 
 ![](media/sshcmd-copy.png)
 
-建立 SSH 连接后，你应看到 Ubuntu 欢迎提示。
+建立 SSH 连接后，应看到 Ubuntu 欢迎提示。
 ![](media/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>清理 
@@ -73,4 +73,4 @@ ms.lasthandoff: 07/18/2017
 ## <a name="next-steps"></a>后续步骤
 [了解如何持久保存 Cloud Shell 上的存储](persisting-shell-storage.md) <br>
 [了解 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/) <br>
-[了解 Azure 文件存储](../storage/storage-files-introduction.md) <br>
+[了解 Azure 文件存储](../storage/files/storage-files-introduction.md) <br>

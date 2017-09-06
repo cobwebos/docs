@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/22/2016
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
-ms.openlocfilehash: ac52924d928b293f4b1b58f0c25375f890c51837
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 0528d660f590e106f61729f10f8f68da3fe58cb7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -39,7 +38,7 @@ ms.lasthandoff: 05/04/2017
 
 ### <a name="shared-access-signature"></a>共享访问签名
 
-逻辑应用的每个请求终结点的 URL 包含[共享访问签名 (SAS)](../storage/storage-dotnet-shared-access-signature-part-1.md)。 每个 URL 包含 `sp`、`sv` 和 `sig` 查询参数。 权限由 `sp` 指定，对应于允许的 HTTP 方法；`sv` 是用于生成的版本，`sig` 用于对触发器访问进行身份验证。 签名是使用 SHA256 算法生成的，所有 URL 路径和属性中包含一个密钥。 该机密密钥会永远不会公开或向外发布，而是保留加密状态，存储为逻辑应用的一部分。 逻辑应用只会向包含有效签名（使用密钥创建）的触发器授权。
+逻辑应用的每个请求终结点的 URL 包含[共享访问签名 (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 每个 URL 包含 `sp`、`sv` 和 `sig` 查询参数。 权限由 `sp` 指定，对应于允许的 HTTP 方法；`sv` 是用于生成的版本，`sig` 用于对触发器访问进行身份验证。 签名是使用 SHA256 算法生成的，所有 URL 路径和属性中包含一个密钥。 该机密密钥会永远不会公开或向外发布，而是保留加密状态，存储为逻辑应用的一部分。 逻辑应用只会向包含有效签名（使用密钥创建）的触发器授权。
 
 #### <a name="regenerate-access-keys"></a>重新生成访问密钥
 
@@ -86,7 +85,7 @@ POST
 有效的 IP 范围采用 `192.168.1.1/255` 格式。 如果希望逻辑应用只作为嵌套逻辑应用触发，请选择“仅限其他逻辑应用”选项。 此选项将一个空数组写入资源，意味着只有来自服务本身（父逻辑应用）的调用才能成功触发。
 
 > [!NOTE]
-> 不管 IP 是什么，仍可通过 REST API/管理 `/triggers/{triggerName}/run` 运行包含请求触发器的逻辑应用。 在此情况下需要针对 Azure REST API 执行身份验证，所有事件将显示在 Azure 审核日志中。 请相应地设置访问控制策略。
+> 不管 IP 是什么，仍可通过 REST API/管理 `/triggers/{triggerName}/run` 运行包含请求触发器的逻辑应用。 在此情况下需要针对 Azure REST API 执行身份验证，所有事件会显示在 Azure 审核日志中。 请相应地设置访问控制策略。
 
 #### <a name="setting-ip-ranges-on-the-resource-definition"></a>在资源定义中设置 IP 范围
 
@@ -127,7 +126,7 @@ POST
 * **逻辑应用参与者** - 提供查看、编辑和更新逻辑应用的访问权限。  无法删除资源或执行管理操作。
 * **逻辑应用操作员** - 可以查看逻辑应用和运行历史记录，以及启用/禁用相关功能。  无法编辑或更新定义。
 
-你还可以使用 [Azure 资源锁](../azure-resource-manager/resource-group-lock-resources.md)来防止更改或删除逻辑应用。 此功能非常有用，它可以防止修改或删除生产资源。
+还可以使用 [Azure 资源锁](../azure-resource-manager/resource-group-lock-resources.md)来防止更改或删除逻辑应用。 此功能非常有用，它可以防止修改或删除生产资源。
 
 ## <a name="secure-access-to-contents-of-the-run-history"></a>保护对运行历史记录内容的访问
 
@@ -170,7 +169,7 @@ POST
 
 ## <a name="secure-parameters-and-inputs-within-a-workflow"></a>保护工作流中的参数和输入
 
-对于跨环境部署，可在某些方面将工作流定义参数化。 此外，其中的一些参数可能是安全参数，你不希望在编辑工作流时显示这些参数，例如，用于对 HTTP 操作进行 [Azure Active Directory 身份验证](../connectors/connectors-native-http.md#authentication)的客户端 ID 和客户端密码。
+对于跨环境部署，可在某些方面将工作流定义参数化。 此外，其中的一些参数可能是安全参数，不希望在编辑工作流时显示这些参数，例如，用于对 HTTP 操作进行 [Azure Active Directory 身份验证](../connectors/connectors-native-http.md#authentication)的客户端 ID 和客户端密码。
 
 ### <a name="using-parameters-and-secure-parameters"></a>使用参数和安全参数
 

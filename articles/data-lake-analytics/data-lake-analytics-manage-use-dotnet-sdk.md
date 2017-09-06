@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: saveenr
 ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
-ms.openlocfilehash: 058601f416ee9ae50d90149764c3991cc1f2923b
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 0f8a95f96ce4c816dfb9132923faa9a9bf20c205
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-net-sdk"></a>使用 Azure .NET SDK 管理 Azure Data Lake Analytics
@@ -223,7 +223,7 @@ if (adlaClient.Account.Exists(rg, adla))
 Data Lake Analytics 当前支持以下数据源：
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Azure 存储帐户](../storage/storage-introduction.md)
+* [Azure 存储帐户](../storage/common/storage-introduction.md)
 
 ### <a name="link-to-an-azure-storage-account"></a>链接到 Azure 存储帐户
 
@@ -309,7 +309,7 @@ bool containerExists = adlaClient.Account.StorageContainerExists(rg, adla, stora
 DataLakeAnalyticsCatalogManagementClient 对象提供用于管理 SQL 数据库（为每个 Azure Data Lake Analytics 帐户提供）的方法。 DataLakeAnalyticsJobManagementClient 提供使用 U-SQL 脚本来提交和管理数据库中运行的作业的方法。
 
 ### <a name="list-databases-and-schemas"></a>列出数据库和架构
-在可以列出的多种对象中，最常见的对象是数据库及其架构。 以下代码获取数据库的集合，然后枚举每个数据库的架构。
+在可以列出的多种对象中，最常见的对象是数据库及其架构。 以下代码获取数据库的集合，并枚举每个数据库的架构。
 
 ``` csharp
 var databases = adlaCatalogClient.Catalog.ListDatabases(adla);

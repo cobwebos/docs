@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: davidmu
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: 8ac757a84a932c434b508aa33c343c866a40bf02
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: bb777d41570d7b1dc97402d532519488912948e3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/31/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>在 Azure 中使用 Python 创建和管理 Windows VM
 
-[Azure 虚拟机](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) 需要多个支持性 Azure 资源。 本文涵盖使用 Python 创建、管理和删除 VM 资源。 你将学习如何：
+[Azure 虚拟机](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) 需要多个支持性 Azure 资源。 本文涵盖使用 Python 创建、管理和删除 VM 资源。 学习如何：
 
 > [!div class="checklist"]
 > * 创建 Visual Studio 项目
@@ -365,7 +365,7 @@ compute_client = ComputeManagementClient(
 
 ## <a name="perform-management-tasks"></a>执行管理任务
 
-在虚拟机生命周期中，你可能需要运行管理任务，例如启动、停止或删除虚拟机。 此外，建议创建代码来自动执行重复或复杂的任务。
+在虚拟机生命周期中，可能需要运行管理任务，例如启动、停止或删除虚拟机。 此外，建议创建代码来自动执行重复或复杂的任务。
 
 ### <a name="get-information-about-the-vm"></a>获取有关 VM 的信息
 
@@ -500,7 +500,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="add-a-data-disk-to-the-vm"></a>将数据磁盘添加到 VM
 
-虚拟机可以有一个或多个存储为 VHD 的[数据磁盘](../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+虚拟机可以有一个或多个存储为 VHD 的[数据磁盘](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 1. 若要将数据磁盘添加到虚拟机，请在 .py 文件中将此函数添加在变量之后： 
 

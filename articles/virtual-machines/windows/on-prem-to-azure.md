@@ -16,18 +16,17 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 24ee84bdd1c795d6354bb5cb8fe397b078e7c51f
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 685c35dbd4265ca6852de6db2e5a30fc2a611d7c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>从 Amazon Web Services (AWS) 和其他平台迁移到 Azure 中的托管磁盘
 
-可将 VHD 文件从 AWS 或本地虚拟化解决方案上传到 Azure，以创建可利用托管磁盘的 VM。 Azure 托管磁盘不需要为 Azure IaaS VM 管理存储帐户。 仅需指定类型（高级或标准）以及所需的磁盘大小，Azure 将为你创建和管理磁盘。 
+可将 VHD 文件从 AWS 或本地虚拟化解决方案上传到 Azure，以创建可利用托管磁盘的 VM。 Azure 托管磁盘不需要为 Azure IaaS VM 管理存储帐户。 仅需指定类型（高级或标准）以及所需的磁盘大小，Azure 将创建和管理磁盘。 
 
 可上传通用和专用 VHD。 
 - **通用 VHD** - 已使用 Sysprep 删除了所有个人帐户信息。 
@@ -41,22 +40,22 @@ ms.lasthandoff: 06/02/2017
 
 | 方案                                                                                                                         | 文档                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| 你希望将现有 AWS EC2 实例迁移到 Azure 托管磁盘                                     | [将 VM 从 Amazon Web Services (AWS) 移动到 Azure](aws-to-azure.md)                           |
-| 你希望将其他虚拟化平台中的 VM 用作创建多个 Azure VM 的映像。 | [上传通用 VHD 并使用它在 Azure 中创建新的 VM](upload-generalized-managed.md) |
-| 你希望在 Azure 中重新创建一个唯一自定义 VM。                                                      | [将专用 VHD 上传到 Azure 并创建新 VM](create-vm-specialized.md)         |
+| 希望将现有 AWS EC2 实例迁移到 Azure 托管磁盘                                     | [将 VM 从 Amazon Web Services (AWS) 移动到 Azure](aws-to-azure.md)                           |
+| 希望将其他虚拟化平台中的 VM 用作创建多个 Azure VM 的映像。 | [上传通用 VHD 并使用它在 Azure 中创建新的 VM](upload-generalized-managed.md) |
+| 希望在 Azure 中重新创建一个唯一自定义 VM。                                                      | [将专用 VHD 上传到 Azure 并创建新 VM](create-vm-specialized.md)         |
 
 
 ## <a name="overview-of-managed-disks"></a>托管磁盘概述
 
 Azure 托管磁盘无需管理存储帐户，从而简化 VM 管理。 可用性集中 VM 的更高可靠性使托管磁盘受益。 这可确保可用性集中不同 VM 的磁盘可充分地彼此隔离，避免出现单点故障。 这会自动将可用性集中不同 VM 的磁盘置于不同的存储缩放单位（戳），限制由于硬件和软件故障引起的单个存储缩放单位故障影响。 可根据需要，从两种类型的存储选项中进行选择： 
  
-- [高级托管磁盘](../../storage/storage-premium-storage.md)是基于固态硬盘 (SSD) 的存储介质，它为运行 I/O 密集型工作负荷的虚拟机提供高性能、低延迟的磁盘支持。 可以通过迁移到高级托管磁盘，充分利用这些磁盘的速度和性能。  
+- [高级托管磁盘](../../storage/common/storage-premium-storage.md)是基于固态硬盘 (SSD) 的存储介质，它为运行 I/O 密集型工作负荷的虚拟机提供高性能、低延迟的磁盘支持。 可以通过迁移到高级托管磁盘，充分利用这些磁盘的速度和性能。  
 
-- [标准托管磁盘](../../storage/storage-standard-storage.md)使用基于硬盘驱动器 (HDD) 的存储媒体，且最适合用于对性能变化不太敏感的开发/测试和其他不频繁的访问工作负荷。  
+- [标准托管磁盘](../../storage/common/storage-standard-storage.md)使用基于硬盘驱动器 (HDD) 的存储媒体，且最适合用于对性能变化不太敏感的开发/测试和其他不频繁的访问工作负荷。  
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>计划迁移到托管磁盘
 
-本部分有助于你在 VM 和磁盘类型方面做出最佳决策。
+本部分有助于在 VM 和磁盘类型方面做出最佳决策。
 
 
 ### <a name="location"></a>位置

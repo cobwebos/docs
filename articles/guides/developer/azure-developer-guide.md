@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: b53b044242f339d00dcc947c213dacb5dffdcce6
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: bfc69712a1ddcd4a225fd35cfcceb7fa0616887d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -123,7 +123,7 @@ Service Fabric 支持具有 Open Web Interface for .NET (OWIN) 和 ASP.NET Core 
 
     >何时使用：在应用存储非关系数据，如键值对（表）、blob、文件共享，或消息（队列）的情况下使用。
 
-    >开始使用：选择这些类型存储之一：[blob](../../storage/storage-dotnet-how-to-use-blobs.md)、[表](../../storage/storage-dotnet-how-to-use-tables.md)、[队列](../../storage/storage-dotnet-how-to-use-queues.md)或[文件](../../storage/storage-dotnet-how-to-use-files.md)。
+    >开始使用：选择这些类型存储之一：[blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)、[表](../../cosmos-db/table-storage-how-to-use-dotnet.md)、[队列](../../storage/queues/storage-dotnet-how-to-use-queues.md)或[文件](../../storage/files/storage-dotnet-how-to-use-files.md)。
 
 -   Azure DocumentDB：一个完全托管的可缩放 NoSQL 数据库服务，具有对对象数据的 SQL 查询功能。 你可以使用现有的 MongoDB 驱动程序来访问 DocumentDB。
     >何时使用：在应用程序需要能够对 JSON 文档执行 SQL 查询，或者在使用 MongoDB 的情况下使用。
@@ -229,7 +229,7 @@ Azure 提供了两种方式（通过使用 Bash、终端、命令提示符或你
 
 ### <a name="azure-portal"></a>Azure 门户
 
-Azure 门户是一个基于 Web 的应用程序，可用于创建、管理和删除 Azure 资源及服务。 Azure 门户位于 <https://portal.azure.com>。 它包括可自定义的仪表板、用于管理 Azure 资源的工具，以及对订阅设置和计费信息的访问权限。 有关详细信息，请参阅 [Azure 门户概述](../../azure-portal-overview.md)。
+Azure 门户是一个基于 Web 的应用程序，可用于创建、管理和删除 Azure 资源及服务。 Azure 门户位于 <https://portal.azure.com>。它包括可自定义的仪表板、用于管理 Azure 资源的工具，以及对订阅设置和计费信息的访问权限。 有关详细信息，请参阅 [Azure 门户概述](../../azure-portal-overview.md)。
 
 ### <a name="rest-apis"></a>REST API
 

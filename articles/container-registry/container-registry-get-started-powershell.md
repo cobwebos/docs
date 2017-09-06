@@ -8,17 +8,16 @@ manager: balans
 editor: dlepow
 ms.service: container-registry
 ms.devlang: na
-ms.topic: how-to-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: cristyg
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: 2fb060749c203a445196530bb7711d50d83c2923
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 1e5d5ea5b1ec121fe008abc48178b1d58f540ce1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -31,16 +30,16 @@ ms.lasthandoff: 06/09/2017
 
 
 ## <a name="prerequisites"></a>先决条件
-* **Azure PowerShell**：若要安装和开始使用 Azure PowerShell，请参阅[安装说明](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps)。 运行 `Login-AzureRMAccount` 登录到你的 Azure 订阅。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/en-us/powershell/azure/get-started-azurep)。
+* **Azure PowerShell**：若要安装和开始使用 Azure PowerShell，请参阅[安装说明](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps)。 运行 `Login-AzureRMAccount` 登录到 Azure 订阅。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/en-us/powershell/azure/get-started-azurep)。
 * **资源组**：在创建容器注册表之前创建[资源组](../azure-resource-manager/resource-group-overview.md#resource-groups)，或使用现有资源组。 请确保该资源组位于[提供](https://azure.microsoft.com/regions/services/)容器注册表服务的位置。 若要使用 Azure PowerShell 创建资源组，请参阅 [PowerShell 参考](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps#create-a-resource-group)。
-* **存储帐户**（可选）：创建一个标准的 Azure [存储帐户](../storage/storage-introduction.md)，用于在同一位置备份容器注册表。 如果使用 `New-AzureRMContainerRegistry` 创建注册表时未指定存储帐户，该命令将自动创建一个存储帐户。 若要使用 PowerShell 创建存储帐户，请参阅 [PowerShell 参考](https://docs.microsoft.com/en-us/powershell/module/azure/new-azurestorageaccount)。 当前不支持高级存储。
+* **存储帐户**（可选）：创建一个标准的 Azure [存储帐户](../storage/common/storage-introduction.md)，用于在同一位置备份容器注册表。 如果使用 `New-AzureRMContainerRegistry` 创建注册表时未指定存储帐户，该命令会自动创建一个存储帐户。 若要使用 PowerShell 创建存储帐户，请参阅 [PowerShell 参考](https://docs.microsoft.com/en-us/powershell/module/azure/new-azurestorageaccount)。 当前不支持高级存储。
 * **服务主体**（可选）：使用 PowerShell 创建注册表时，默认情况下不会为该注册表设置访问权限。 可以根据需要将现有 Azure Active Directory 服务主体分配到注册表，也可以创建并分配新的服务主体。 或者，可以启用注册表的管理员用户帐户。 请参阅本文稍后的部分。 有关注册表访问权限的详细信息，请参阅 [Authenticate with the container registry](container-registry-authentication.md)（使用容器注册表进行身份验证）。
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 运行 `New-AzureRMContainerRegistry` 命令可以创建容器注册表。
 
 > [!TIP]
-> 创建注册表时，请指定仅包含字母和数字的全局唯一顶级域名。 示例中的注册表名称为 `MyRegistry`，但需要将它替换为你自己的唯一名称。
+> 创建注册表时，请指定仅包含字母和数字的全局唯一顶级域名。 示例中的注册表名称为 `MyRegistry`，但需要将它替换成自己的唯一名称。
 >
 >
 
@@ -53,7 +52,7 @@ $Registry = New-AzureRMContainerRegistry -ResourceGroupName "MyResourceGroup" -N
 * `-StorageAccountName` 是可选项。 如果未指定，则会创建一个存储帐户，其名称由注册表名称以及指定资源组中的一个时间戳组成。
 
 ## <a name="assign-a-service-principal"></a>分配服务主体
-使用 PowerShell 命令可将 Azure Active Directory [服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md)分配到注册表。 为这些示例中的服务主体分配了“所有者”角色，但你可以根据需要分配[其他角色](../active-directory/role-based-access-control-configure.md)。
+使用 PowerShell 命令可将 Azure Active Directory [服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md)分配到注册表。 为这些示例中的服务主体分配了“所有者”角色，但可以根据需要分配[其他角色](../active-directory/role-based-access-control-configure.md)。
 
 ### <a name="create-a-service-principal"></a>创建服务主体
 在以下命令中，创建新的服务主体。 使用 `-Password` 参数指定一个强密码。

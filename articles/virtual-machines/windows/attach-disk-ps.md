@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 19a95e0299f49d908fa666f23637f5a4cc1d9c96
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 486e6a27fa28ec63001d824fe9f59c03a7aea5a7
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 04/27/2017
 
 在开始之前，请查看以下提示：
 * 虚拟机的大小决定了可以附加多少个磁盘。 有关详细信息，请参阅[虚拟机大小](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-* 若要使用高级存储，则需要使用支持高级存储的 VM，如 DS 系列或 GS 系列虚拟机。 可以从高级存储帐户和标准存储帐户通过这些虚拟机使用磁盘。 高级存储只在某些区域可用。 有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../../storage/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+* 若要使用高级存储，则需要使用支持高级存储的 VM，如 DS 系列或 GS 系列虚拟机。 可以从高级存储帐户和标准存储帐户通过这些虚拟机使用磁盘。 高级存储只在某些区域可用。 有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../../storage/common/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ## <a name="before-you-begin"></a>开始之前
 如果使用 PowerShell，请确保使用最新版本的 AzureRM.Compute PowerShell 模块。 运行以下命令进行安装。
@@ -75,7 +75,7 @@ Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 
 ### <a name="initialize-the-disk"></a>初始化磁盘
 
-添加空磁盘后，需对其进行初始化。 若要初始化该磁盘，可以登录到一个 VM，然后使用磁盘管理进行初始化。 如果在创建 VM 时在其上启用了 WinRM 和证书，则可以使用远程 PowerShell 初始化该磁盘。 还可以使用自定义脚本扩展： 
+添加空磁盘后，需对其进行初始化。 要初始化该磁盘，可以登录到一个 VM，并使用磁盘管理进行初始化。 如果在创建 VM 时在其上启用了 WinRM 和证书，则可以使用远程 PowerShell 初始化该磁盘。 还可以使用自定义脚本扩展： 
 
 ```powershell
     $location = "location-name"

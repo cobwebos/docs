@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 06/14/2017
+ms.date: 08/15/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
-ms.openlocfilehash: d41dc3c05d0d0cd0d9466c43bbebadcffd21e0dd
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: b897e81351ebee11c292e67ac76ba8202a6f0108
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="manage-analysis-services"></a>管理 Analysis Services
@@ -45,7 +44,7 @@ ms.lasthandoff: 06/23/2017
 ### <a name="to-connect-with-ssms"></a>连接 SSMS
  使用 SSMS 时，在首次连接到服务器之前，需确保用户名已包含在 Analysis Services 管理员组中。 有关详细信息，请参阅本文后面的[服务器管理员](#server-administrators)。
 
-1. 在连接之前，需要获取服务器名称。 在 **Azure 门户**中，单击“服务器”>“概述” > “服务器名称”，然后复制服务器名称。
+1. 在连接之前，需要获取服务器名称。 在 **Azure 门户**中，单击“服务器”>“概述” > “服务器名称”，并复制服务器名称。
    
     ![在 Azure 中获取服务器名称](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 2. 在 SSMS >“对象资源管理器”中，单击“连接” > “Analysis Services”。
@@ -64,7 +63,7 @@ Azure Analysis Services 中存在两种类型的用户，即服务器管理员�
 
 
 ## <a name="troubleshooting-connection-problems"></a>连接问题疑难解答
-若在使用 SSMS 进行连接时遇到问题，则可能需要清除登录缓存。 光盘中不缓存任何内容。 若要清除缓存，请关闭并重新启动连接进程。 
+若在使用 SSMS 进行连接时遇到问题，则可能需要清除登录缓存。 光盘中不缓存任何内容。若要清除缓存，请关闭并重新启动连接进程。 
 
 ## <a name="next-steps"></a>后续步骤
 如果尚未将表格模型部署到新服务器，现在正是一个好时机。 有关详细信息，请参阅[部署到 Azure Analysis Services](analysis-services-deploy.md)。

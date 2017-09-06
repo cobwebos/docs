@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/22/2017
+ms.date: 08/11/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 5cd05743425069925e71e85a616967c812bd3491
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2e4b1a307fae06c0639d93b9804c6f0f703d5900
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure 存储共享访问签名来限制访问 HDInsight 中的数据
@@ -55,26 +55,29 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 共享访问签名有两种形式：
 
-* 即席：在你创建一个临时 SAS 时，针对该 SAS 的开始时间、到期时间和权限全都在 SAS URI 上指定（在省略开始时间的情况下，也可以是隐式的）。
+* 即席：针对该 SAS 的开始时间、到期时间和权限全都在 SAS URI 上指定。
 
-* 存储访问策略：存储访问策略在资源容器（例如 Blob 容器）中定义。 可以使用策略管理一个或多个共享访问签名的约束。 在你将某一 SAS 与一个存储访问策略相关联时，该 SAS 将继承对该存储访问策略定义的约束：开始时间、到期时间和权限。
+* 存储访问策略：存储访问策略在资源容器（例如 Blob 容器）中定义。 可以使用策略管理一个或多个共享访问签名的约束。 在将某一 SAS 与一个存储访问策略相关联时，该 SAS 将继承对该存储访问策略定义的约束：开始时间、到期时间和权限。
 
 这两种形式之间的差异对于一个关键情形而言十分重要：吊销。 一个 SAS 就是一个 URL，因此，获取该 SAS 的任何人都可以使用它，而与是谁请求它以便开始的无关。 如果某一 SAS 是公开发布的，则世界上的任何人都可以使用它。 在发生以下四种情况之一前分发的 SAS 是有效的：
 
 1. 达到了对该 SAS 指定的到期时间。
 
-2. 达到了对该 SAS 引用的存储访问策略指定的到期时间。 这可能是因为经过了该间隔而发生，或者是因为你修改了该存储访问策略以使到期时间已经是过去时间而发生（这是用于吊销该 SAS 的一种方法）。
+2. 达到了对该 SAS 引用的存储访问策略指定的到期时间。 以下方案导致达到了到期时间：
+
+    * 时间间隔已过。
+    * 将存储访问策略修改为具有过去的到期时间。 更改到期时间是撤销 SAS 的一种方法。
 
 3. 删除了该 SAS 引用的存储访问策略，这是用于吊销 SAS 的另一种方法。 如果重新创建同名的存储访问策略，以前策略的所有 SAS 令牌都将有效（如果 SAS 的到期时间尚未过）。 如果想要撤销 SAS，请确保使用不同名称（如果使用将来的到期时间重新创建该访问策略）。
 
-4. 将重新生成用于创建 SAS 的帐户密钥。 重新生成密钥会导致使用以前密钥的所有应用程序身份验证失败。 必须将所有组件更新为使用新密钥。
+4. 将重新生成用于创建 SAS 的帐户密钥。 重新生成密钥会导致使用以前密钥的所有应用程序身份验证失败。 将所有组件更新为使用新密钥。
 
 > [!IMPORTANT]
 > 共享访问签名 URI 与用于创建签名的帐户密钥和关联的存储访问策略（如果有）相关联。 如果未指定存储访问策略，则吊销共享访问签名的唯一方法是更改帐户密钥。
 
-我们建议始终使用存储访问策略，以便可以根据需要撤销签名或延长过期日期。 本文档中的步骤使用存储访问策略生成 SAS。
+建议始终使用存储访问策略。 使用存储策略时，可以根据需要撤销签名或延长过期日期。 本文档中的步骤使用存储访问策略生成 SAS。
 
-有关共享访问签名的详细信息，请参阅[了解 SAS 模型](../storage/storage-dotnet-shared-access-signature-part-1.md)。
+有关共享访问签名的详细信息，请参阅[了解 SAS 模型](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 
 ### <a name="create-a-stored-policy-and-sas-using-c"></a>使用 C\# 创建存储策略和 SAS
 
@@ -92,7 +95,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
    * FileToUpload：上传到容器的文件的路径。
 
-4. 运行该项目。 将显示控制台窗口。生成 SAS 之后，将显示如以下文本所示的信息：
+4. 运行该项目。 生成 SAS 之后，会显示如以下文本所示的信息：
 
         Container SAS token using stored access policy: sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14
 
@@ -112,7 +115,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
    * example\_file\_path：上传到容器的文件的路径
 
-2. 运行该脚本。 脚本完成后，将显示如以下文本所示的 SAS 令牌：
+2. 运行该脚本。 脚本完成后，会显示如以下文本所示的 SAS 令牌：
 
         sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14
 
@@ -122,7 +125,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 创建 HDInsight 群集时，必须指定主存储帐户，可以选择性地指定其他存储帐户。 这两种添加存储的方法都需要对所用存储帐户和容器拥有完全访问权限。
 
-若要使用共享访问签名来限制对容器的访问，请将一个自定义条目添加到群集的 **core-site** 配置中。
+要使用共享访问签名来限制对容器的访问，请将一个自定义条目添加到群集的 **core-site** 配置中。
 
 * 对于**基于 Windows** 或**基于 Linux** 的 HDInsight 群集，可以使用 PowerShell 在创建群集期间添加条目。
 * 对于**基于 Linux** 的 HDInsight 群集，在创建群集后，可以使用 Ambari 更改配置。
@@ -131,45 +134,54 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 存储库的 `CreateCluster` 目录中包含创建使用 SAS 的 HDInsight 群集的示例。 若要使用该示例，请执行以下步骤：
 
-1. 在文本编辑器中打开 `CreateCluster\HDInsightSAS.ps1` 文件，然后修改位于文档开头的以下值。
+1. 在文本编辑器中打开 `CreateCluster\HDInsightSAS.ps1` 文件，并修改位于文档开头的以下值。
 
-        # Replace 'mycluster' with the name of the cluster to be created
-        $clusterName = 'mycluster'
-        # Valid values are 'Linux' and 'Windows'
-        $osType = 'Linux'
-        # Replace 'myresourcegroup' with the name of the group to be created
-        $resourceGroupName = 'myresourcegroup'
-        # Replace with the Azure data center you want to the cluster to live in
-        $location = 'North Europe'
-        # Replace with the name of the default storage account to be created
-        $defaultStorageAccountName = 'mystorageaccount'
-        # Replace with the name of the SAS container created earlier
-        $SASContainerName = 'sascontainer'
-        # Replace with the name of the SAS storage account created earlier
-        $SASStorageAccountName = 'sasaccount'
-        # Replace with the SAS token generated earlier
-        $SASToken = 'sastoken'
-        # Set the number of worker nodes in the cluster
-        $clusterSizeInNodes = 2
+    ```powershell
+    # Replace 'mycluster' with the name of the cluster to be created
+    $clusterName = 'mycluster'
+    # Valid values are 'Linux' and 'Windows'
+    $osType = 'Linux'
+    # Replace 'myresourcegroup' with the name of the group to be created
+    $resourceGroupName = 'myresourcegroup'
+    # Replace with the Azure data center you want to the cluster to live in
+    $location = 'North Europe'
+    # Replace with the name of the default storage account to be created
+    $defaultStorageAccountName = 'mystorageaccount'
+    # Replace with the name of the SAS container created earlier
+    $SASContainerName = 'sascontainer'
+    # Replace with the name of the SAS storage account created earlier
+    $SASStorageAccountName = 'sasaccount'
+    # Replace with the SAS token generated earlier
+    $SASToken = 'sastoken'
+    # Set the number of worker nodes in the cluster
+    $clusterSizeInNodes = 3
+    ```
 
     例如，将 `'mycluster'` 更改为要创建的群集的名称。 创建存储帐户和 SAS 令牌时，SAS 值应该与先前步骤中的值匹配。
 
     更改值之后，请保存该文件。
-2. 打开新的 Azure PowerShell 提示符。 如果你不熟悉或尚未安装 Azure PowerShell，请参阅[安装和配置 Azure PowerShell][powershell]。
-3. 在提示符下使用以下命令对 Azure 订阅进行身份验证：
 
-        Login-AzureRmAccount
+2. 打开新的 Azure PowerShell 提示符。 如果不熟悉或尚未安装 Azure PowerShell，请参阅[安装和配置 Azure PowerShell][powershell]。
+
+1. 在提示符下使用以下命令对 Azure 订阅进行身份验证：
+
+    ```powershell
+    Login-AzureRmAccount
+    ```
 
     出现提示时，请使用 Azure 订阅的帐户登录。
 
     如果帐户与多个 Azure 订阅关联，可能需要使用 `Select-AzureRmSubscription` 来选择想要使用的订阅。
+
 4. 在提示符下，将目录更改为包含 HDInsightSAS.ps1 文件的 `CreateCluster` 目录。 然后使用以下命令运行该脚本
 
-        .\HDInsightSAS.ps1
+    ```powershell
+    .\HDInsightSAS.ps1
+    ```
 
-    当脚本运行时，在创建资源组和存储帐户时，它将记录输出到 PowerShell 提示符。 系统会提示你输入 HDInsight 群集的 HTTP 用户。 此帐户用于保护群集的 HTTP/s 访问。
+    当脚本运行时，在创建资源组和存储帐户时，它将记录输出到 PowerShell 提示符。 系统会提示输入 HDInsight 群集的 HTTP 用户。 此帐户用于保护群集的 HTTP/s 访问。
 
-    如果要创建基于 Linux 的群集，系统将提示你输入 SSH 用户帐户名称和密码。 此帐户用于远程登录到群集。
+    如果要创建基于 Linux 的群集，系统会提示输入 SSH 用户帐户名称和密码。 此帐户用于远程登录到群集。
 
    > [!IMPORTANT]
    > 出现输入 HTTP/s 或 SSH 用户名和密码的提示时，必须提供符合以下条件的密码：
@@ -187,29 +199,29 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 1. 打开群集的 Ambari Web UI。 此页的地址是 https://YOURCLUSTERNAME.azurehdinsight.net。 出现提示时，请使用在创建群集时使用的管理员名称 (admin) 和密码对群集进行身份验证。
 
-2. 从 Ambari Web UI 的左侧，选择“HDFS”，然后在页面的中间选择“配置”选项卡。
+2. 从 Ambari Web UI 的左侧，选择“HDFS”，并在页面的中间选择“配置”选项卡。
 
-3. 选择“高级”选项卡，然后向下滚动，找到“自定义 core-site”部分。
+3. 选择“高级”选项卡，并向下滚动，找到“自定义 core-site”部分。
 
-4. 展开“自定义 core-site”部分，然后滚动到底部，选择“添加属性...”链接。 在“密钥”和“值”字段中使用以下值：
+4. 展开“自定义 core-site”部分，并滚动到底部，选择“添加属性...”链接。 在“密钥”和“值”字段中使用以下值：
 
    * **密钥**：fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net
    * **值**：之前运行的 C# 或 Python 应用程序所返回的 SAS
 
      将 **CONTAINERNAME** 替换为用于 C# 或 SAS 应用程序的容器名称。 将 **STORAGEACCOUNTNAME** 替换为使用的存储帐户名。
 
-5. 单击“添加”按钮以保存此密钥和值，然后单击“保存”按钮以保存配置更改。 出现提示时，请添加更改的说明（例如，“添加 SAS 存储访问”），然后单击“保存”。
+5. 单击“添加”按钮以保存此密钥和值，并单击“保存”按钮以保存配置更改。 出现提示时，请添加更改的说明（例如，“添加 SAS 存储访问”），并单击“保存”。
 
     完成更改后，单击“确定”。
 
    > [!IMPORTANT]
    > 必须重启几个服务才能使更改生效。
 
-6. 在 Ambari Web UI 中，从左侧的列表中选择“HDFS”，然后从右侧的“服务操作”下拉列表选择“全部重启”。 出现提示时，选择“打开维护模式”，然后选择“确认全部重启”。
+6. 在 Ambari Web UI 中，从左侧的列表中选择“HDFS”，并从右侧的“服务操作”下拉列表选择“全部重启”。 出现提示时，选择“打开维护模式”，并选择“确认全部重启”。
 
     对 MapReduce2 和 YARN 重复此过程。
 
-7. 重启这些服务后，请选择每个服务，然后从“服务操作”下拉列表中禁用维护模式。
+7. 重启这些服务后，请选择每个服务，并从“服务操作”下拉列表中禁用维护模式。
 
 ## <a name="test-restricted-access"></a>测试限制的访问
 
@@ -218,39 +230,52 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 * 对于**基于 Windows** 的 HDInsight 群集，请使用远程桌面连接到群集。 有关详细信息，请参阅[使用 RDP 连接到 HDInsight](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)。
 
     连接之后，请使用桌面上的“Hadoop 命令行”图标打开命令提示符。
+
 * 对于**基于 Linux** 的 HDInsight 群集，请使用 SSH 连接到群集。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
 连接到群集后，使用以下步骤验证是否只能读取和列出 SAS 存储帐户中的项：
 
-1. 在提示符下键入以下命令。 将 **SASCONTAINER** 替换为针对 SAS 存储帐户创建的容器名称。 将 **SASACCOUNTNAME** 替换为用于 SAS 的存储帐户名称：
+1. 要列出容器的内容，请在提示符下使用以下命令： 
 
-        hdfs dfs -ls wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/
+    ```bash
+    hdfs dfs -ls wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/
+    ```
 
-    此命令会列出容器的内容，其中应包含创建容器和 SAS 时上传的文件。
+    将 **SASCONTAINER** 替换为针对 SAS 存储帐户创建的容器名称。 将 SASACCOUNTNAME 替换为用于 SAS 的存储帐户名称。
+
+    该列表包含创建容器和 SAS 时上传的文件。
 
 2. 使用以下命令验证是否可以读取文件的内容。 如上一步中所述，替换 **SASCONTAINER** 和 **SASACCOUNTNAME**。 将 **FILENAME** 替换为前一个命令中显示的名称：
 
-        hdfs dfs -text wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME
+    ```bash
+    hdfs dfs -text wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME
+    ```
 
     此命令列出文件的内容。
 
 3. 使用以下命令将文件下载到本地文件系统：
 
-        hdfs dfs -get wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME testfile.txt
+    ```bash
+    hdfs dfs -get wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME testfile.txt
+    ```
 
     此命令会将文件下载到名为 **testfile.txt** 的本地文件中。
 
 4. 使用以下命令将本地文件上传到 SAS 存储上名为 testupload.txt 的新文件中：
 
-        hdfs dfs -put testfile.txt wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/testupload.txt
+    ```bash
+    hdfs dfs -put testfile.txt wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/testupload.txt
+    ```
 
-    你将收到类似于以下文本的消息：
+    将收到类似于以下文本的消息：
 
         put: java.io.IOException
 
     发生此错误的原因是存储位置是只读+仅限列出的。 使用以下命令将数据放在群集的可写默认存储中：
 
-        hdfs dfs -put testfile.txt wasb:///testupload.txt
+    ```bash
+    hdfs dfs -put testfile.txt wasb:///testupload.txt
+    ```
 
     这一次操作应会成功完成。
 

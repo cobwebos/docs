@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: sdanie
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 453314d603fdc25cfc0e37622e5394fc148a11a6
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 5e6d731f0a1cecc1a191c74a45e37a9b94fd98ee
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="import-and-export-data-in-azure-redis-cache"></a>在 Azure Redis 缓存中导入和导出数据
@@ -40,7 +40,7 @@ ms.lasthandoff: 08/02/2017
 导入可用于从任何云或环境中运行的任何 Redis 服务器引入与 Redis 兼容的 RDB 文件，包括在 Linux、Windows 上运行的 Redis 或任何云提供程序（如 Amazon Web Services 等）。 导入数据是使用预先填充的数据创建缓存的简单方式。 在导入过程中，Azure Redis 缓存从 Azure 存储将 RDB 文件加载到内存中，再将密钥插入到缓存中。
 
 > [!NOTE]
-> 在开始导入操作之前，请确保 Redis 数据库 (RDB) 文件已上传到 Azure 存储的页 blob 或块 blob 中，并与 Azure Redis 缓存实例在同一区域和订阅中。 有关详细信息，请参阅 [Get started with Azure Blob storage](../storage/storage-dotnet-how-to-use-blobs.md)（Azure Blob 存储入门）。 如果已使用 [Azure Redis 缓存导出](#export)功能导出 RDB 文件，则 RDB 文件已存储在页 blob 中并已准备好进行导入。
+> 在开始导入操作之前，请确保 Redis 数据库 (RDB) 文件已上传到 Azure 存储的页 blob 或块 blob 中，并与 Azure Redis 缓存实例在同一区域和订阅中。 有关详细信息，请参阅 [Get started with Azure Blob storage](../storage/blobs/storage-dotnet-how-to-use-blobs.md)（Azure Blob 存储入门）。 如果已使用 [Azure Redis 缓存导出](#export)功能导出 RDB 文件，则 RDB 文件已存储在页 blob 中并已准备好进行导入。
 >
 >
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 08/02/2017
 2. 单击“选择存储容器”并选择所需的存储帐户。 存储帐户必须与缓存在同一订阅和区域中。
 
    > [!IMPORTANT]
-   > 导出适用于页 blob，经典存储帐户和 Resource Manager 存储帐户都支持页 blob，但目前 [Blob 存储帐户](../storage/storage-blob-storage-tiers.md#blob-storage-accounts)不支持页 blob。
+   > 导出适用于页 blob，经典存储帐户和 Resource Manager 存储帐户都支持页 blob，但目前 [Blob 存储帐户](../storage/blobs/storage-blob-storage-tiers.md#blob-storage-accounts)不支持页 blob。
    >
    >
 
@@ -156,7 +156,7 @@ Azure Redis 缓存持久性能够将 Redis 中存储的数据长期保存在 Azu
 若要解决此问题，请在经过 15 分钟前发起导入或导出操作。
 
 ### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>在将我的数据导出到 Azure Blob 存储时收到错误。 发生了什么情况？
-导出仅适用于以页 blob 形式存储的 RDB 文件。 目前不支持其他 blob 类型，包括带有热层和冷层的 blob 存储帐户。 有关详细信息，请参阅 [Blob 存储帐户](../storage/storage-blob-storage-tiers.md#blob-storage-accounts)。
+导出仅适用于以页 blob 形式存储的 RDB 文件。 目前不支持其他 blob 类型，包括带有热层和冷层的 blob 存储帐户。 有关详细信息，请参阅 [Blob 存储帐户](../storage/blobs/storage-blob-storage-tiers.md#blob-storage-accounts)。
 
 ## <a name="next-steps"></a>后续步骤
 了解如何使用更多的高级版缓存功能。

@@ -16,20 +16,19 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/31/2016
 ms.author: saurinsh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 9f6de5b516da110b93a1e0cddf835b2bcec77bb7
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 303be1d303df8074283cb1d37c74923cca80ae59
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters-preview"></a>已加入域的 HDInsight 群集（预览版）的 Hadoop 安全性简介
 
-截止目前，Azure HDInsight 仅支持一个本地管理员用户。 这种情况对于应用程序团队或部门而言比较有利。 随着基于 Hadoop 的工作负荷在企业细分市场中越来越普及，基于 Active Directory 的身份验证、多用户支持和基于角色的访问控制等企业级功能需求也变得日益重要。 使用已加入域的 HDInsight 群集，可以创建一个已加入 Active Directory 域的 HDInsight 群集，配置可以通过 Azure Active Directory 进行身份验证并登录到 HDInsight 群集的企业员工列表。 企业外部的任何人都无法登录或访问 HDInsight 群集。 企业管理员可以使用 [Apache Ranger](http://hortonworks.com/apache/ranger/) 配置基于角色的访问控制来实现 Hive 安全性，从而根据最大需求权限来限制数据访问权限。 最后，管理员可以审核员工的数据访问活动以及对访问控制策略所做的任何更改，从而以较大的力度监管其企业资源。
+截止目前，Azure HDInsight 仅支持一个本地管理员用户。这种情况对于应用程序团队或部门而言比较有利。 随着基于 Hadoop 的工作负荷在企业细分市场中越来越普及，基于 Active Directory 的身份验证、多用户支持和基于角色的访问控制等企业级功能需求也变得日益重要。 使用已加入域的 HDInsight 群集，可以创建一个已加入 Active Directory 域的 HDInsight 群集，配置可以通过 Azure Active Directory 进行身份验证并登录到 HDInsight 群集的企业员工列表。 企业外部的任何人都无法登录或访问 HDInsight 群集。 企业管理员可以使用 [Apache Ranger](http://hortonworks.com/apache/ranger/) 配置基于角色的访问控制来实现 Hive 安全性，从而根据最大需求权限来限制数据访问权限。 最后，管理员可以审核员工的数据访问活动以及对访问控制策略所做的任何更改，从而以较大的力度监管其企业资源。
 
 > [!NOTE]
-> 本文所述的预览版新功能仅适用于 Hive 工作负荷中的基于 Linux 的 HDInsight 群集。 其他工作负荷，如 HBase、Spark、 Storm 和 Kafka，将在以后的版本中启用这些功能。
+> 本文所述的预览版新功能仅适用于 Hive 工作负荷中的基于 Linux 的 HDInsight 群集。 其他工作负荷，如 HBase、Spark、 Storm 和 Kafka，会在以后的版本中启用这些功能。
 
 > [!IMPORTANT]
 > 在加入域的 HDInsight 上未启用 Oozie。
@@ -52,7 +51,7 @@ HDInsight 中的外围安全性是使用虚拟网络和网关服务实现的。 
 除了防止未经授权的用户访问HDInsight 群集资源及保护数据以外，还有必要对群集资源和数据的所有访问进行审核，跟踪资源是否受到未经授权或无意的访问。 在本预览版中，管理员可以查看和报告对 HDInsight 群集资源与数据的所有访问。 管理员还可以查看和报告在 Apache Ranger 支持的终结点中对访问控制策略进行的所有更改。 已加入域的 HDInsight 群集使用我们熟悉的 Apache Ranger UI 来搜索审核日志。 在后端，Ranger 使用 [Apache Solr](http://hortonworks.com/apache/solr/) 来存储和搜索日志。
 
 ### <a name="encryption"></a>加密
-保护数据以及限制未经授权的员工访问数据对于符合组织安全与合规要求至关重要，此外，应该通过加密来确保数据的安全。 HDInsight 群集的数据存储、Azure 存储 Blob 和 Azure Data Lake Storage 都支持在服务器端以透明方式进行静态[数据加密](../storage/storage-service-encryption.md)。 HDInsight 安全群集能够与这种服务器端静态数据加密功能无缝协作。
+保护数据以及限制未经授权的员工访问数据对于符合组织安全与合规要求至关重要，此外，应该通过加密来确保数据的安全。 HDInsight 群集的数据存储、Azure 存储 Blob 和 Azure Data Lake Storage 都支持在服务器端以透明方式进行静态[数据加密](../storage/common/storage-service-encryption.md)。 HDInsight 安全群集能够与这种服务器端静态数据加密功能无缝协作。
 
 ## <a name="next-steps"></a>后续步骤
 * 若要配置已加入域的 HDInsight 群集，请参阅 [Configure Domain-joined HDInsight clusters](hdinsight-domain-joined-configure.md)（配置已加入域的 HDInsight 群集）。

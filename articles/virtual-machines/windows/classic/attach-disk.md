@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 806634bb66ebb538020f1ffa693704433fc43352
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 087d5cda354f6e1780bddd3725859444177abd16
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="attach-a-data-disk-to-a-windows-virtual-machine-created-with-the-classic-deployment-model"></a>将数据磁盘附加到使用经典部署模型创建的 Windows 虚拟机
@@ -36,9 +36,9 @@ Refernce article:
 
 * 虚拟机的大小决定了可以附加多少个磁盘。 有关详细信息，请参阅[虚拟机大小](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-* 若要使用高级存储，需要使用 DS 系列或 GS 序列虚拟机。 可以从高级存储帐户和标准存储帐户通过这些虚拟机使用磁盘。 高级存储只在某些区域可用。 有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../../../storage/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+* 若要使用高级存储，需要使用 DS 系列或 GS 序列虚拟机。 可以从高级存储帐户和标准存储帐户通过这些虚拟机使用磁盘。 高级存储只在某些区域可用。 有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../../../storage/common/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-* 对于新磁盘，你不必首先创建它，因为 Azure 将在附加磁盘时创建该磁盘。
+* 对于新磁盘，不必首先创建它，因为 Azure 会在附加磁盘时创建该磁盘。
 
 还可以[使用 Powershell 附加数据磁盘](../../virtual-machines-windows-attach-disk-ps.md)。
 
@@ -57,7 +57,7 @@ Refernce article:
 ## <a name="option-1-attach-and-initialize-a-new-disk"></a>选项 1：附加并初始化新的磁盘
 
 1. 在“磁盘”边栏选项卡上，单击“附加新磁盘”。
-2. 检查默认设置，根据需要更新，然后单击“确定”。
+2. 检查默认设置，根据需要更新，并单击“确定”。
 
    ![检查磁盘设置](./media/attach-disk/attach-new.png)
 
@@ -73,9 +73,9 @@ Refernce article:
 3. 选择“磁盘”。
 4. “磁盘”部分会列出磁盘。 大多数情况下，虚拟机包含磁盘 0、磁盘 1 和磁盘 2。 磁盘 0 是操作系统磁盘，磁盘 1 是临时磁盘，磁盘 2 是新附加到虚拟机的数据磁盘。 数据磁盘将分区列为“未知”。
 
- 右键单击磁盘，然后选择“初始化”。
+ 右键单击磁盘，并选择“初始化”。
 
-5. 在初始化磁盘时，系统会通知用户所有的数据将被擦除。 单击“是”以确认警告并初始化磁盘。 完成后，即会将分区列为“GPT”。 再次右键单击磁盘，然后选择“新建卷”。
+5. 在初始化磁盘时，系统会通知用户所有的数据会被擦除。 单击“是”以确认警告并初始化磁盘。 完成后，即会将分区列为“GPT”。 再次右键单击磁盘，并选择“新建卷”。
 
 6. 使用默认值完成向导操作。 完成向导后，“卷”部分将列出新卷。 现在，磁盘处于联机状态并已准备好存储数据。
 

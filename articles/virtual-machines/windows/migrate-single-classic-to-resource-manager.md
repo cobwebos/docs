@@ -15,24 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 4bae56abfdc609ad40e6fbefe120493f1cd4e66d
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 82389834d85981c0ed71bdcc891fbfdbe1377654
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 
 # <a name="manually-migrate-a-classic-vm-to-a-new-arm-managed-disk-vm-from-the-vhd"></a>手动将经典 VM 从 VHD 迁移到新的 ARM 托管磁盘 VM 
 
 
-本部分有助于将现有 Azure VM 从经典部署模型迁移到 Resource Manager 部署模型中的[托管磁盘](../../storage/storage-managed-disks-overview.md)。
+本部分有助于将现有 Azure VM 从经典部署模型迁移到 Resource Manager 部署模型中的[托管磁盘](managed-disks-overview.md)。
 
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>计划迁移到托管磁盘
 
-本部分有助于你在 VM 和磁盘类型方面做出最佳决策。
+本部分有助于在 VM 和磁盘类型方面做出最佳决策。
 
 
 ### <a name="location"></a>位置

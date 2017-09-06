@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: bacd5783a6db60dcc2aada4e8df55b2ec1e4f3aa
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e23697b390e03bd2b71f2c905882070d864d62ed
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -29,9 +28,9 @@ ms.lasthandoff: 06/16/2017
 Azure 托管磁盘无需单独管理存储帐户，从而简化存储管理。  还可以将现有的 Azure VM 迁移到托管磁盘，以利用可用性集中更好的 VM 可靠性。 这可确保可用性集中不同 VM 的磁盘可充分地彼此隔离，避免出现单点故障。 这会自动将可用性集中不同 VM 的磁盘置于不同的存储缩放单位（戳），限制由于硬件和软件故障引起的单个存储缩放单位故障影响。
 可根据需要，从两种类型的存储选项中进行选择：
 
-- [高级托管磁盘](../../storage/storage-premium-storage.md)是基于固态硬盘 (SSD) 的存储介质，它为运行 I/O 密集型工作负荷的虚拟机提供高性能、低延迟的磁盘支持。 可以通过迁移到高级托管磁盘，充分利用这些磁盘的速度和性能。
+- [高级托管磁盘](../../storage/common/storage-premium-storage.md)是基于固态硬盘 (SSD) 的存储介质，它为运行 I/O 密集型工作负荷的虚拟机提供高性能、低延迟的磁盘支持。 可以通过迁移到高级托管磁盘，充分利用这些磁盘的速度和性能。
 
-- [标准托管磁盘](../../storage/storage-standard-storage.md)使用基于硬盘驱动器 (HDD) 的存储媒体，且最适合用于对性能变化不太敏感的开发/测试和其他不频繁的访问工作负荷。
+- [标准托管磁盘](../../storage/common/storage-standard-storage.md)使用基于硬盘驱动器 (HDD) 的存储媒体，且最适合用于对性能变化不太敏感的开发/测试和其他不频繁的访问工作负荷。
 
 可在以下方案中迁移到托管磁盘：
 
@@ -48,7 +47,7 @@ Azure 托管磁盘无需单独管理存储帐户，从而简化存储管理。  
 
 ## <a name="plan-for-the-conversion-to-managed-disks"></a>计划到托管磁盘的转换
 
-本部分有助于你在 VM 和磁盘类型方面做出最佳决策。
+本部分有助于在 VM 和磁盘类型方面做出最佳决策。
 
 
 ## <a name="location"></a>位置
@@ -96,5 +95,5 @@ Azure 托管磁盘无需单独管理存储帐户，从而简化存储管理。  
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[托管磁盘](../../storage/storage-managed-disks-overview.md)
+- 详细了解[托管磁盘](managed-disks-overview.md)
 

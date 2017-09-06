@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/14/2017
 ms.author: markgal;
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: f41132d69dbbc9e5871851220e5f7de933c50efe
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 91451b2cdc42ed05ef7c1ba9c66ad5b4b45dd788
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="manage-azure-backup-vaults-and-servers-using-the-classic-deployment-model"></a>使用经典部署模型管理 Azure 备份保管库和服务器
@@ -34,8 +34,8 @@ ms.lasthandoff: 08/03/2017
 > Azure 提供两个不同的部署模型用于创建和处理资源：[资源管理器和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 > [!IMPORTANT]
-> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 10 月 15 日之后，不能使用 PowerShell 创建备份保管库。 **直到 2017 年 11 月 1 日**：
->- 剩余的所有备份保管库都将自动升级到恢复服务保管库。
+> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 10 月 15 日之后，将无法使用 PowerShell 创建备份保管库。 2017 年 11 月 1 日之前：
+>- 其余所有备份保管库都将自动升级到恢复服务保管库。
 >- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
 >
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 08/03/2017
 
 可从该处执行以下任务：
 
-* **允许重新注册** — 在为服务器选择该选项时，可使用本地 Microsoft Azure 备份代理中的**注册向导**再一次将服务器注册到备份保管库。 由于证书中存在错误或者如果必须重新构建服务器，你可能需要重新注册。
+* **允许重新注册** — 在为服务器选择该选项时，可使用本地 Microsoft Azure 备份代理中的**注册向导**再一次将服务器注册到备份保管库。 由于证书中存在错误或者如果必须重新构建服务器，可能需要重新注册。
 * **删除** — 从备份保管库中删除服务器。 将立即删除与服务器关联的所有已存储数据。
 
     ![已注册的项任务](./media/backup-azure-manage-windows-server-classic/registered-items-tasks.png)
@@ -87,13 +87,13 @@ ms.lasthandoff: 08/03/2017
 从“**配置**”选项卡中，可以选择适当的存储冗余选项。 选择存储冗余选项的最佳时机是在创建保管库之后、将任何计算机注册到保管库之前。
 
 > [!WARNING]
-> 将某个项注册到保管库后，存储冗余选项将会锁定且不能修改。
+> 将某个项注册到保管库后，存储冗余选项会锁定且不能修改。
 >
 >
 
 ![配置](./media/backup-azure-manage-windows-server-classic/configure.png)
 
-有关[存储冗余](../storage/storage-redundancy.md)的详细信息，请参阅此文。
+有关[存储冗余](../storage/common/storage-redundancy.md)的详细信息，请参阅此文。
 
 ## <a name="microsoft-azure-backup-agent-tasks"></a>Microsoft Azure 备份代理任务
 ### <a name="console"></a>控制台
@@ -111,7 +111,7 @@ ms.lasthandoff: 08/03/2017
 ![代理控制台操作](./media/backup-azure-manage-windows-server-classic/console-actions.png)
 
 > [!NOTE]
-> 若要**恢复数据**，请参阅 [Restore files to a Windows server or Windows client machine](backup-azure-restore-windows-server.md)（将文件还原到 Windows Server 或 Windows 客户端计算机）。
+> 要**恢复数据**，请参阅 [Restore files to a Windows server or Windows client machine](backup-azure-restore-windows-server.md)（将文件还原到 Windows Server 或 Windows 客户端计算机）。
 >
 >
 
@@ -147,7 +147,7 @@ ms.lasthandoff: 08/03/2017
     修改保护设置后，可以通过转到“**作业**”选项卡并确认更改已反映在备份作业中，来确认可正确触发备份。
 
 ### <a name="enable-network-throttling"></a>启用网络限制
-Azure 备份代理提供的“限制”选项卡可让你控制在数据传输期间使用网络带宽的方式。 如果需要在上班时间内备份数据，但不希望备份程序干扰其他 Internet 流量，此控制机制很有帮助。 数据传输的限制适用于备份和还原活动。  
+Azure 备份代理提供“限制”选项卡，可用于控制在数据传输期间使用网络带宽的方式。 如果需要在上班时间内备份数据，但不希望备份程序干扰其他 Internet 流量，此控制机制很有帮助。 数据传输的限制适用于备份和还原活动。  
 
 若要启用限制，请执行以下操作：
 
