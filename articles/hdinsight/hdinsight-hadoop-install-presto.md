@@ -12,14 +12,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 406ef84e72d253fec51a0b37c48f326dafd511b6
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: fb5e500b922522e4cdfa7dd07b5233688b916b3e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Presto
@@ -35,7 +34,7 @@ ms.lasthandoff: 05/18/2017
 > [!WARNING]
 > 完全支持通过 HDInsight 群集提供的组件，Microsoft 支持部门将帮助你找出并解决与这些组件相关的问题。
 > 
-> 自定义组件（如 Presto）可获得合理范围的支持，以帮助进一步排查问题。 这可能导致问题解决，或要求你参与可用的开放源代码技术渠道，在该处可找到该技术的深入专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)和 [http://stackoverflow.com](http://stackoverflow.com)。 此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)。
+> 自定义组件（如 Presto）可获得合理范围的支持，以帮助进一步排查问题。 这可能导致问题解决，或要求参与可用的开放源代码技术渠道，在该处可找到该技术的深入专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)和 [http://stackoverflow.com](http://stackoverflow.com)。此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)。
 > 
 > 
 
@@ -46,7 +45,7 @@ ms.lasthandoff: 05/18/2017
 
 1. 使用[预配基于 Linux 的 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-portal.md)中的步骤开始预配群集。 请确保使用**自定义**群集创建流创建群集。 必须确保创建的群集满足以下要求。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 它必须是装有 HDInsight 3.5 的 Hadoop 群集。
+    a. 它必须是装有 HDInsight 3.5 的 Hadoop 群集。
 
     b. 它必须使用 Azure 存储作为数据存储。 目前不支持在将 Azure Data Lake Store 用作存储选项的群集上使用 Presto。 
 
@@ -67,7 +66,7 @@ ms.lasthandoff: 05/18/2017
 4. 根据[预配基于 Linux 的 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-portal.md)中所述继续预配群集。
 
     > [!NOTE]
-    > Azure PowerShell、Azure CLI、HDInsight .NET SDK 或 Azure Resource Manager 模板也可用于应用脚本操作。 你也可以将脚本操作应用于已在运行的群集。 有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
+    > Azure PowerShell、Azure CLI、HDInsight .NET SDK 或 Azure Resource Manager 模板也可用于应用脚本操作。 也可以将脚本操作应用于已在运行的群集。 有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
     > 
     > 
 
@@ -90,7 +89,7 @@ ms.lasthandoff: 05/18/2017
    
         select count (*) from hivesampletable;
    
-    默认情况下，已配置适用于 Presto 的 [Hive](https://prestodb.io/docs/current/connector/hive.html) 和 [TPCH](https://prestodb.io/docs/current/connector/tpch.html) 连接器。 Hive 连接器配置为使用默认安装的 Hive 安装，因此 Hive 中的所有表将自动在 Presto 中显示。
+    默认情况下，已配置适用于 Presto 的 [Hive](https://prestodb.io/docs/current/connector/hive.html) 和 [TPCH](https://prestodb.io/docs/current/connector/tpch.html) 连接器。 Hive 连接器配置为使用默认安装的 Hive 安装，因此 Hive 中的所有表会自动在 Presto 中显示。
 
     有关如何使用 Presto 的详细说明，请参阅 [Presto 文档](https://prestodb.io/docs/current/index.html)。
 
@@ -110,14 +109,14 @@ ms.lasthandoff: 05/18/2017
 
         sudo slider registry  --name presto1 --getexp presto 
    
-    你应该看到如下输出：
+    应该看到如下输出：
 
         {
-              "coordinator_address" : [ {
+            "coordinator_address" : [ {
                 "value" : "10.0.0.12:9090",
                 "level" : "application",
                 "updatedTime" : "Mon Apr 03 20:13:41 UTC 2017"
-          } ]
+        } ]
 
 3. 在输出中，记下 **value** 属性的值。 在群集边缘节点上安装 Airpal 时需要用到它。 从上面的输出中，所需的值为 **10.0.0.12:9090**。
 
@@ -129,7 +128,7 @@ ms.lasthandoff: 05/18/2017
 
 6. 将更改应用到群集配置后，可以使用以下步骤访问 Airpal Web 接口。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在群集边栏选项卡中单击“应用程序”。
+    a. 在群集边栏选项卡中单击“应用程序”。
 
     ![HDInsight 在 Presto 群集上启动 Airpal](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal.png)
 
@@ -160,23 +159,23 @@ ms.lasthandoff: 05/18/2017
 
        sudo slider create presto1 --template /var/lib/presto/presto-hdinsight-master/appConfig-default.json --resources /var/lib/presto/presto-hdinsight-master/resources-default.json
 
-5. 等到新实例准备就绪，然后记下 Presto 的协调器地址。
+5. 等到新实例准备就绪，并记下 Presto 的协调器地址。
 
 
        sudo slider registry --name presto1 --getexp presto
 
 ## <a name="generate-benchmark-data-for-hdinsight-clusters-that-run-presto"></a>为运行 Presto 的 HDInsight 群集生成基准数据
 
-TPC-DS 是有关测量多个决策支持系统（包括大数据系统）的性能的行业标准。 可以在 HDInsight 群集上使用 Presto 生成数据，并将它与你自己的 HDInsight 基准数据进行比较并评估结果。 有关详细信息，请参阅[此文](https://github.com/hdinsight/tpcds-datagen-as-hive-query/blob/master/README.md)。
+TPC-DS 是有关测量多个决策支持系统（包括大数据系统）的性能的行业标准。 可以在 HDInsight 群集上使用 Presto 生成数据，并将它与自己的 HDInsight 基准数据进行比较并评估结果。 有关详细信息，请参阅[此文](https://github.com/hdinsight/tpcds-datagen-as-hive-query/blob/master/README.md)。
 
 
 
 ## <a name="see-also"></a>另请参阅
-* [在 HDInsight 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)。 Hue 是一个 Web UI，可让你轻松地创建、运行和保存 Pig 与 Hive 作业，以及浏览 HDInsight 群集的默认存储。
+* [在 HDInsight 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)。 Hue 是一个 Web UI，可用于轻松创建、运行和保存 Pig 与 Hive 作业，以及浏览 HDInsight 群集的默认存储。
 
-* [在 HDInsight 群集上安装 Giraph](hdinsight-hadoop-giraph-install-linux.md)。 使用群集自定义在 HDInsight Hadoop 群集上安装 Giraph。 Giraph 可让你通过使用 Hadoop 执行图形处理，并可以在 Azure HDInsight 上使用。
+* [在 HDInsight 群集上安装 Giraph](hdinsight-hadoop-giraph-install-linux.md)。 使用群集自定义在 HDInsight Hadoop 群集上安装 Giraph。 Giraph 允许通过使用 Hadoop 执行图形处理，并可以在 Azure HDInsight 上使用。
 
-* [在 HDInsight 群集上安装 Solr](hdinsight-hadoop-solr-install-linux.md)。 使用群集自定义在 HDInsight Hadoop 群集上安装 Solr。 Solr 允许你对存储的数据执行功能强大的搜索操作。
+* [在 HDInsight 群集上安装 Solr](hdinsight-hadoop-solr-install-linux.md)。 使用群集自定义在 HDInsight Hadoop 群集上安装 Solr。 Solr 允许对存储的数据执行功能强大的搜索操作。
 
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md

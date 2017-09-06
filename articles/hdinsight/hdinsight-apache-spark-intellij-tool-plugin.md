@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 08/24/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 97414ee55663662fb40a91b930d61634c83e30fa
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 19cb8f436fa4d86f323013a5d4b3b50bf6c80a1a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>使用用于 IntelliJ 的 Azure 工具包为 HDInsight 群集创建 Spark 应用程序
@@ -172,15 +172,6 @@ ms.lasthandoff: 08/22/2017
 ## <a name="run-or-debug-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>在 HDInsight Spark 群集上运行或调试 Spark Scala 应用程序
 我们还建议以另一种方式将 Spark 应用程序提交到群集。 为此，可在“运行/调试配置”IDE 中设置参数。 有关详细信息，请参阅[使用用于 IntelliJ 的 Azure 工具包通过 SSH 远程调试 HDInsight 群集上的 Spark 应用程序](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh)。
 
-## <a name="choose-azure-data-lake-store-as-spark-scala-application-storage"></a>选择 Azure Data Lake Store 作为 Spark Scala 应用程序存储
-若要将应用程序提交到 Azure Data Lake Store，请在 Azure 登录过程中选择“交互”模式。 
-
-![登录时的“交互”选项](./media/hdinsight-apache-spark-intellij-tool-plugin/authentication-interactive.png)
-
-如果选择“自动”模式，将收到以下错误：
-
-![登录错误](./media/hdinsight-apache-spark-intellij-tool-plugin/authentication-error.png)
-
 ## <a name="access-and-manage-hdinsight-spark-clusters-by-using-azure-toolkit-for-intellij"></a>使用用于 IntelliJ 的 Azure 工具包访问和管理 HDInsight Spark 群集
 可以使用用于 IntelliJ 的 Azure 工具包执行各种操作。
 
@@ -306,6 +297,13 @@ ms.lasthandoff: 08/22/2017
     -Xms128m -Xmx512m -XX:MaxPermSize=300m -ea
 
 ![将选项添加到 IntelliJ 中的“VM 选项”对话框](./media/hdinsight-apache-spark-intellij-tool-plugin/change-heap-size.png)
+
+## <a name="faq"></a>常见问题
+若要将应用程序提交到 Azure Data Lake Store，请在 Azure 登录过程中选择“交互”模式。 如果选择“自动”模式，可能会收到错误。
+
+![interative-signin](./media/hdinsight-apache-spark-intellij-tool-plugin/interative-signin.png)
+
+此问题现已解决。 可以选择 Azure Data Lake 群集以使用任何登录方法提交应用程序。
 
 ## <a name="feedback-and-known-issues"></a>反馈和已知问题
 目前不支持直接查看 Spark 输出。

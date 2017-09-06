@@ -2,7 +2,7 @@
 title: "Azure 媒体服务输出元数据架构 | Microsoft Docs"
 description: "本主题概述了 Azure 媒体服务输出元数据架构。"
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c3c5a3ee123fe021444370583c7f37737a03edce
-ms.openlocfilehash: 2e21c8df29a78da77505b6f67434d97698f7a212
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: c175d359f93e7cd8cd73aa498ad8b71c4ec497f2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="output-metadata"></a>输出元数据
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/17/2016
 | Name | 类型 | 说明 |
 | --- | --- | --- |
 | **Name**<br/><br/> 必选 |**xs:string** |媒体资产文件名。 |
-| **大小**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:long** |以字节为单位的资产文件大小。 |
+| **大小**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:long** |资产文件的大小（以字节为单位）。 |
 | **持续时间**<br/><br/> 必选 |**xs:duration** |内容播放持续时间。 |
 
 ### <a name="child-elements"></a>子元素
@@ -59,7 +59,7 @@ ms.lasthandoff: 11/17/2016
 | **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |每个物理 AssetFile 都可包含交错成适当容器格式的零个或多个视频轨道。 这是所有这些视频轨道的集合。 有关详细信息，请参阅 [VideoTracks 元素](media-services-output-metadata-schema.md)。 |
 | **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |每个物理 AssetFile 都可包含交错成适当容器格式的零个或多个音频轨道。 这是所有这些音频轨道的集合。 有关详细信息，请参阅 [AudioTracks 元素](media-services-output-metadata-schema.md)。 |
 
-## <a name="Sources "></a> 源元素
+## <a name="Sources "></a>Sources 元素
 为生成此 AssetFile 而处理的输入/源媒体文件集合。  
 
 可以找到 XML 示例 [XML 示例](media-services-output-metadata-schema.md#xml)。  
@@ -69,7 +69,7 @@ ms.lasthandoff: 11/17/2016
 | --- | --- |
 | **源**<br/><br/> minOccurs="1" maxOccurs="unbounded" |生成此资产时所使用的输入/源文件。 有关详细信息，请参阅[源元素](media-services-output-metadata-schema.md)。 |
 
-## <a name="Source "></a> 源元素
+## <a name="Source "></a>Source 元素
 生成此资产时所使用的输入/源文件。  
 
 可以找到 XML 示例 [XML 示例](media-services-output-metadata-schema.md#xml)。  
@@ -97,12 +97,12 @@ ms.lasthandoff: 11/17/2016
 ### <a name="attributes"></a>属性
 | Name | 类型 | 说明 |
 | --- | --- | --- |
-| **Id**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |此视频轨道的从零开始的索引。 **注意：**这不一定是 MP4 文件中使用的 TrackID。 |
+| **Id**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |此视频轨道的从零开始的索引。**注意：**这不一定是 MP4 文件中使用的 TrackID。 |
 | **FourCC**<br/><br/> 必选 |**xs:string** |视频编解码器 FourCC 代码。 |
 | **配置文件** |**xs:string** |H264 配置文件（仅适用于 H264 编解码器）。 |
 | **级别** |**xs:string** |H264 级别（仅适用于 H264 编解码器）。 |
-| **宽度**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |以像素为单位的编码视频宽度。 |
-| **高度**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |以像素为单位的编码视频高度。 |
+| **宽度**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |编码视频宽度（以像素为单位）。 |
+| **高度**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |编码视频高度（以像素为单位）。 |
 | **DisplayAspectRatioNumerator**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:double** |视频显示纵横比分子。 |
 | **DisplayAspectRatioDenominator**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:double** |视频显示纵横比分母。 |
 | **Framerate**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:decimal** |采用 .3f 格式测量的视频帧速率。 |
@@ -129,11 +129,11 @@ ms.lasthandoff: 11/17/2016
 ### <a name="attributes"></a>属性
 | Name | 类型 | 说明 |
 | --- | --- | --- |
-| **Id**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |此音频轨道从零开始的索引。 **注意：**这不一定是 MP4 文件中使用的 TrackID。 |
+| **Id**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |此音频轨道从零开始的索引。**注意：**这不一定是 MP4 文件中使用的 TrackID。 |
 | **编解码器** |**xs:string** |音频轨道编解码器字符串。 |
 | **EncoderVersion** |**xs:string** |可选的编码器版本字符串，对于 EAC3 是必需的。 |
 | **通道**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |音频通道数。 |
-| **SamplingRate**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |音频采样速率，以采样数/秒或 Hz 为单位。 |
+| **SamplingRate**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |音频采样速率（以采样数/秒或 Hz 为单位）。 |
 | **Bitrate**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |由 AssetFile 计算的平均音频比特率（以比特/秒为单位）。 只计算基本流有效负载，并且不包括打包开销。 |
 | **BitsPerSample**<br/><br/> minInclusive ="0"<br/><br/> 必选 |**xs:int** |wFormatTag 格式类型的每个样本的位数。 |
 

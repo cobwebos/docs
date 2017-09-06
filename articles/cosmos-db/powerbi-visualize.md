@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 7f56f6d89a9990ab7e7f50a86993e9e22b73d646
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 03127c9d35b8dd0fe54310c84ff89ea087f175b7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Azure Cosmos DB 的 Power BI 教程：使用 Power BI 连接器可视化数据
@@ -37,7 +37,10 @@ ms.lasthandoff: 08/17/2017
 * 如何在 PowerBI.com 中发布和共享我的报表？
 
 > [!NOTE]
-> 用于 Azure Cosmos DB 连接到 Power BI Desktop 以获取和转换数据的 Power BI 连接器。 在 Power BI Desktop 中创建的报表随后可以发布到 PowerBI.com。 无法在 PowerBI.com 中执行 Azure Cosmos DB 数据的直接提取和转换。 
+> 用于 Azure Cosmos DB 连接到 Power BI Desktop 以获取和转换数据的 Power BI 连接器。 在 Power BI Desktop 中创建的报表随后可以发布到 PowerBI.com。无法在 PowerBI.com 中执行 Azure Cosmos DB 数据的直接提取和转换。 
+
+> [!NOTE]
+> 若要使用 MongoDB API 将 Azure Cosmos DB 连接到 Power BI，必须使用 [Simba MongoDB ODBC 驱动程序](http://www.simba.com/drivers/mongodb-odbc-jdbc/)。
 
 ## <a name="prerequisites"></a>先决条件
 在按照此 Power BI 教程中的说明操作之前，请确保已拥有对以下资源的访问权限：
@@ -49,7 +52,7 @@ ms.lasthandoff: 08/17/2017
     * 只读密钥：MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==
   * 或者，要创建自己帐户，请参阅[使用 Azure 门户创建 Azure Cosmos DB 数据库帐户](https://azure.microsoft.com/documentation/articles/create-account/)。 然后，要获取类似于本教程中使用的示例火山数据（但不包含 GeoJSON 块），请参阅 [NOAA 站点](https://www.ngdc.noaa.gov/nndc/struts/form?t=102557&s=5&d=5)，并使用 [Azure Cosmos DB 数据迁移工具导入数据](import-data.md)。
 
-要在 PowerBI.com 中共享报表，必须在 PowerBI.com 中拥有帐户。  若要了解更多有关 Power BI 免费版和 Power BI Pro 的信息，请访问 [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing)。
+要在 PowerBI.com 中共享报表，必须在 PowerBI.com 中拥有帐户。若要了解更多有关 Power BI 免费版和 Power BI Pro 的信息，请访问 [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing)。
 
 ## <a name="lets-get-started"></a>让我们开始吧
 在本教程中，假设你是一位研究世界各地火山的地理学家。  火山数据存储在 Cosmos DB 帐户中且 JSON 文档的外观如以下示例文档所示。
@@ -180,7 +183,7 @@ ms.lasthandoff: 08/17/2017
 要共享报表，必须在 PowerBI.com 中拥有帐户。
 
 1. 在 Power BI Desktop 中，单击“主页”功能区。
-2. 单击“发布”。  系统会提示输入 PowerBI.com 帐户的用户名和密码。
+2. 单击“发布” 。  系统会提示输入 PowerBI.com 帐户的用户名和密码。
 3. 一旦验证凭据后，就可将报表发布到所选目的地。
 4. 单击“打开 Power BI 中的‘PowerBITutorial.pbix’”，查看并共享 Power BI.com 上的报表。
    
@@ -223,6 +226,6 @@ ms.lasthandoff: 08/17/2017
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Power BI 的详细信息，请参阅 [Power BI 入门](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)。
-* 若要了解有关 Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB 文档登录页](https://azure.microsoft.com/documentation/services/documentdb/)。
+* 若要了解有关 Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB 文档登陆页](https://azure.microsoft.com/documentation/services/documentdb/)。
 
 

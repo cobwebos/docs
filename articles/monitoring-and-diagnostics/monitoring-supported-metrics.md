@@ -1,7 +1,7 @@
 ---
 title: "Azure 监视器指标 - 每种资源类型支持的指标 | Microsoft 文档"
 description: "可在 Azure 监视器中为每种资源类型使用的指标的列表。"
-author: johnkemnetz
+author: anirudhcavale
 manager: orenr
 editor: 
 services: monitoring-and-diagnostics
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/05/2017
-ms.author: johnkem
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: b034251438c65dd13d9ca0bb116699532e3960ef
+ms.date: 8/24/2017
+ms.author: ancav
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 51255244a286fe1aed75b342e6a9b8d4681a1979
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure 监视器支持的指标
@@ -74,6 +74,8 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |ShortParsingIdleThreads|线程: 短分析空闲线程数|计数|平均值|短分析线程池中的空闲线程数。|
 |ShortParsingJobQueueLength|线程: 短分析作业队列长度|计数|平均值|短分析线程池队列中的作业数。|
 |memory_thrashing_metric|内存抖动|百分比|平均值|平均内存抖动。|
+|mashup_engine_qpu_metric|M 引擎 QPU|计数|平均值|糅合引擎进程的 QPU 使用率|
+|mashup_engine_memory_metric|M 引擎内存|字节|平均值|糅合引擎进程的内存使用率|
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
@@ -84,6 +86,14 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |UnauthorizedRequests|未经授权的网关请求数|计数|总计|未经授权的网关请求数|
 |FailedRequests|失败的网关请求数|计数|总计|失败的网关请求数|
 |OtherRequests|其他网关请求数|计数|总计|其他网关请求数|
+|持续时间|网关请求的总持续时间|毫秒|平均值、最大值|网关请求的总持续时间，以毫秒为单位|
+|容量|容量（预览）|百分比|平均值、最大值|ApiManagement 服务的利用率指标|
+
+## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
+
+|指标|指标显示名称|计价单位|聚合类型|说明|
+|---|---|---|---|---|
+|TotalJob|作业总数|计数|总计|作业总数|
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
@@ -284,6 +294,30 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |cacheRead9|缓存读取量(分片 9)|每秒字节数|最大值||
 |percentProcessorTime9|CPU (分片 9)|百分比|最大值||
 
+## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.ClassicCompute/virtualMachines
+
+|指标|指标显示名称|计价单位|聚合类型|说明|
+|---|---|---|---|---|
+|CPU 百分比|CPU 百分比|百分比|平均值|当前虚拟机正在使用的已分配计算单元百分比。|
+|网络传入|网络传入|字节|总计|虚拟机在所有网络接口上收到的字节数（传入流量）。|
+|网络传出|网络传出|字节|总计|虚拟机在所有网络接口上发出的字节数（传出流量）。|
+|磁盘读取字节数/秒|磁盘读取|每秒字节数|平均值|监视期间从磁盘读取的平均字节数。|
+|磁盘写入字节数/秒|磁盘写入|每秒字节数|平均值|监视期间向磁盘写入的平均字节数。|
+|磁盘读取操作次数/秒|磁盘读取操作次数/秒|每秒计数|平均值|磁盘读取 IOPS。|
+|磁盘写入操作次数/秒|磁盘写入操作次数/秒|每秒计数|平均值|磁盘写入 IOPS。|
+
+## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft.ClassicCompute/domainNames/slots/roles
+
+|指标|指标显示名称|计价单位|聚合类型|说明|
+|---|---|---|---|---|
+|CPU 百分比|CPU 百分比|百分比|平均值|当前虚拟机正在使用的已分配计算单元百分比。|
+|网络传入|网络传入|字节|总计|虚拟机在所有网络接口上收到的字节数（传入流量）。|
+|网络传出|网络传出|字节|总计|虚拟机在所有网络接口上发出的字节数（传出流量）。|
+|磁盘读取字节数/秒|磁盘读取|每秒字节数|平均值|监视期间从磁盘读取的平均字节数。|
+|磁盘写入字节数/秒|磁盘写入|每秒字节数|平均值|监视期间向磁盘写入的平均字节数。|
+|磁盘读取操作次数/秒|磁盘读取操作次数/秒|每秒计数|平均值|磁盘读取 IOPS。|
+|磁盘写入操作次数/秒|磁盘写入操作次数/秒|每秒计数|平均值|磁盘写入 IOPS。|
+
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
 |度量值|指标显示名称|计价单位|聚合类型|说明|
@@ -374,6 +408,16 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |JobAUEndedFailure|失败的 AU 时间|秒|总计|失败作业的总 AU 时间。|
 |JobAUEndedCancelled|已取消的 AU 时间|秒|总计|取消的作业的总 AU 时间。|
 
+## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/accounts
+
+|指标|指标显示名称|计价单位|聚合类型|说明|
+|---|---|---|---|---|
+|TotalStorage|总存储|字节|最大值|帐户中存储的数据总量。|
+|DataWritten|写入的数据量|字节|总计|写入帐户的数据总量。|
+|DataRead|读取的数据量|字节|总计|从帐户中读取的数据总量。|
+|WriteRequests|写入请求数|计数|总计|帐户的数据写入请求计数。|
+|ReadRequests|读取请求数|计数|总计|帐户的数据读取请求计数。|
+
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
 |度量值|指标显示名称|计价单位|聚合类型|说明|
@@ -428,6 +472,10 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |d2c.endpoints.latency.serviceBusTopics|服务总线主题终结点的消息延迟|毫秒|平均值|消息进入 IoT 中心与进入服务总线主题终结点之间的平均延迟（毫秒）|
 |d2c.endpoints.egress.builtIn.events|已传递到内置终结点的消息数（消息/事件）|计数|总计|已成功将消息写入到内置终结点的次数（消息/事件）|
 |d2c.endpoints.latency.builtIn.events|内置终结点的消息延迟（消息/事件）|毫秒|平均值|消息进入 IoT 中心与进入内置终结点（消息/事件）之间的平均延迟（毫秒） |
+|d2c.endpoints.egress.storage|传递到存储终结点的消息数|计数|总计|成功将消息写入存储终结点的次数|
+|d2c.endpoints.latency.storage|存储终结点的消息延迟|毫秒|平均值|消息进入 IoT 中心与进入存储终结点之间的平均延迟（毫秒）|
+|d2c.endpoints.egress.storage.bytes|写入存储的数据量|字节|总计|写入存储终结点的数据量，以字节为单位|
+|d2c.endpoints.egress.storage.blobs|写入存储的 Blob 数|计数|总计|写入存储终结点的 Blob 数|
 |d2c.twin.read.success|设备的成功克隆读取数|计数|总计|由设备发起的所有成功的克隆读取的计数。|
 |d2c.twin.read.failure|设备的失败克隆读取数|计数|总计|由设备发起的所有失败的克隆读取的计数。|
 |d2c.twin.read.size|设备的克隆读取的响应大小|字节|平均值|由设备发起的所有成功的克隆读取的平均大小、最小大小和最大大小。|
@@ -519,14 +567,14 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 |度量值|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
-|吞吐量|吞吐量|每秒字节数|平均值||
+|吞吐量|吞吐量|每秒字节数|平均值|应用程序网关每秒提供的字节数|
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
 
 |度量值|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
-|BytesIn|BytesIn|计数|总计||
-|BytesOut|BytesOut|计数|总计||
+|BytesIn|BytesIn|计数|总计|传入 Azure 的字节数|
+|BytesOut|BytesOut|计数|总计|传出 Azure 的字节数|
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
 
@@ -794,6 +842,41 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |AverageResponseTime|平均响应时间|秒|平均值|平均响应时间|
 |FunctionExecutionUnits|函数执行单位数|计数|平均值|函数执行单位数|
 |FunctionExecutionCount|函数执行计数|计数|平均值|函数执行计数|
+
+## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft.Web/hostingEnvironments/multiRolePools
+
+|指标|指标显示名称|计价单位|聚合类型|说明|
+|---|---|---|---|---|
+|请求|请求|计数|总计|请求|
+|BytesReceived|数据输入|字节|总计|数据输入|
+|BytesSent|数据输出|字节|总计|数据输出|
+|Http101|Http 101|计数|总计|Http 101|
+|Http2xx|Http 2xx|计数|总计|Http 2xx|
+|Http3xx|Http 3xx|计数|总计|Http 3xx|
+|Http401|Http 401|计数|总计|Http 401|
+|Http403|Http 403|计数|总计|Http 403|
+|Http404|Http 404|计数|总计|Http 404|
+|Http406|Http 406|计数|总计|Http 406|
+|Http4xx|Http 4xx|计数|总计|Http 4xx|
+|Http5xx|Http 服务器错误|计数|总计|Http 服务器错误|
+|AverageResponseTime|平均响应时间|秒|平均值|平均响应时间|
+|CpuPercentage|CPU 百分比|百分比|平均值|CPU 百分比|
+|MemoryPercentage|内存百分比|百分比|平均值|内存百分比|
+|DiskQueueLength|磁盘队列长度|计数|总计|磁盘队列长度|
+|HttpQueueLength|Http 队列长度|计数|总计|Http 队列长度|
+|ActiveRequests|活动请求数|计数|总计|活动请求数|
+|TotalFrontEnds|前端总数|计数|平均值|前端总数|
+|SmallAppServicePlanInstances|小型应用服务计划工作线程数|计数|平均值|小型应用服务计划工作线程数|
+|MediumAppServicePlanInstances|中型应用服务计划工作线程数|计数|平均值|中型应用服务计划工作线程数|
+|LargeAppServicePlanInstances|大型应用服务计划工作线程数|计数|平均值|大型应用服务计划工作线程数|
+
+## <a name="microsoftwebhostingenvironmentsworkerpools"></a>Microsoft.Web/hostingEnvironments/workerPools
+
+|指标|指标显示名称|计价单位|聚合类型|说明|
+|---|---|---|---|---|
+|WorkersTotal|工作线程总数|计数|平均值|工作线程总数|
+|WorkersAvailable|可用工作线程数|计数|平均值|可用工作线程数|
+|WorkersUsed|使用的工作线程数|计数|平均值|使用的工作线程数|
 
 ## <a name="next-steps"></a>后续步骤
 * [了解 Azure 监视器中的指标](monitoring-overview-metrics.md)

@@ -4,7 +4,7 @@ description: "本文演示如何使用 Azure 门户配置内容保护策略。 �
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 270b3272-7411-40a9-ad42-5acdbba31154
 ms.service: media-services
@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 08/25/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: 4256201f2fd505ed86734e900496eb7364c9a575
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 67b3fa9936daebeafb7e87fe3a7b0c7e0105b3b3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/11/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="configuring-content-protection-policies-using-the-azure-portal"></a>使用 Azure 门户配置内容保护策略
 > [!NOTE]
-> 若要完成本教程，你需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 > 
 > 
 
@@ -59,9 +59,9 @@ AMS 支持通过多种方式对发出密钥或许可证请求的用户进行身�
 开放限制意味着系统会将密钥传送到发出密钥请求的任何用户。 此限制可能适用于测试用途。 
 
 ### <a name="token"></a>令牌
-令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用简单 Web 令牌 (SWT) 格式和 JSON Web 令牌 (JWT) 格式的令牌。 媒体服务不提供安全令牌服务。 你可以创建自定义 STS 或利用 Microsoft Azure ACS 来颁发令牌。 必须将 STS 配置为创建令牌，该令牌使用指定密钥以及你在令牌限制配置中指定的颁发声明进行签名。 如果令牌有效，而且令牌中的声明与为密钥（或许可证）配置的声明相匹配，则媒体服务密钥传送服务会将请求的密钥（或许可证）返回到客户端。
+令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用简单 Web 令牌 (SWT) 格式和 JSON Web 令牌 (JWT) 格式的令牌。 媒体服务不提供安全令牌服务。 可以创建自定义 STS 或利用 Microsoft Azure ACS 来颁发令牌。 必须将 STS 配置为创建令牌，该令牌使用指定密钥以及在令牌限制配置中指定的颁发声明进行签名。 如果令牌有效，而且令牌中的声明与为密钥（或许可证）配置的声明相匹配，则媒体服务密钥传送服务会将请求的密钥（或许可证）返回到客户端。
 
-在配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。 主验证密钥包含用来为令牌签名的密钥，颁发者是颁发令牌的安全令牌服务。 受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥交付服务将验证令牌中的这些值是否与模板中的值匹配。
+在配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。 主验证密钥包含用来为令牌签名的密钥，颁发者是颁发令牌的安全令牌服务。 受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥交付服务会验证令牌中的这些值是否与模板中的值匹配。
 
 ![保护内容](./media/media-services-portal-content-protection/media-services-content-protection002.png)
 
@@ -95,7 +95,7 @@ AMS 支持通过多种方式对发出密钥或许可证请求的用户进行身�
 ![保护内容](./media/media-services-portal-content-protection/media-services-content-protection006.png)
 
 ## <a name="apply-dynamic-encryption-to-your-asset"></a>将动态加密应用于资产
-若要利用动态加密，需要将源文件编码为一组自适应比特率 MP4 文件。
+要利用动态加密，需要将源文件编码为一组自适应比特率 MP4 文件。
 
 ### <a name="select-an-asset-that-you-want-to-encrypt"></a>选择要加密的资产
 若要查看所有资产，选择“设置” > “资产”。
@@ -124,6 +124,9 @@ AMS 支持通过多种方式对发出密钥或许可证请求的用户进行身�
 ![保护内容](./media/media-services-portal-content-protection/media-services-content-protection009.png)
 
 选择加密后，按“应用”。
+
+>[!NOTE] 
+>如果打算在 Safari 中播放 AES 加密的 HLS，请参阅[此博客](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)。
 
 ## <a name="next-steps"></a>后续步骤
 查看媒体服务学习路径。

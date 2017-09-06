@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/17/2017
+ms.date: 08/30/2017
 ms.author: juanpere
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: c2192328a152e955d182c4a07b391c98a5960964
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 16603cc7f2d8743037da22466312f228f4319716
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-netnode"></a>使用设备管理启动设备固件更新 (.NET/Node)
@@ -51,14 +51,14 @@ ms.lasthandoff: 04/03/2017
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>使用直接方法在设备上触发远程固件更新
-在本部分中，你将创建一个 .NET 控制台应用（使用 C#）以启动设备上的远程固件更新。 该应用使用直接方法来启动更新，并使用设备孪生查询定期获取活动固件更新的状态。
+在本部分中，会创建一个 .NET 控制台应用（使用 C#）以启动设备上的远程固件更新。 该应用使用直接方法来启动更新，并使用设备孪生查询定期获取活动固件更新的状态。
 
 1. 在 Visual Studio 中，使用“ **控制台应用程序** ”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 将项目命名为 **TriggerFWUpdate**。
 
     ![新的 Visual C# Windows 经典桌面项目][img-createapp]
 
-1. 在“解决方案资源管理器”中，右键单击“TriggerFWUpdate”项目，然后单击“管理 NuGet 包...”。
-1. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
+1. 在“解决方案资源管理器”中，右键单击“TriggerFWUpdate”项目，并单击“管理 NuGet 包...”。
+1. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，并接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
 
     ![“NuGet 包管理器”窗口][img-servicenuget]
 1. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
@@ -121,7 +121,7 @@ ms.lasthandoff: 04/03/2017
     ```
     node dmpatterns_fwupdate_device.js
     ```
-2. 在 Visual Studio 中，右键单击“TriggerFWUpdate”项目运行 C# 控制台应用，依次选择“调试”和“启动新实例”。
+2. 在 Visual Studio 中，右键单击“TriggerFWUpdate”项目，依次选择“调试”和“启动新实例”。
 
 3. 可在控制台查看对直接方法的设备响应。
 
