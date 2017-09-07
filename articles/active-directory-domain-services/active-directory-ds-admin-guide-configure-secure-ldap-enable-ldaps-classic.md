@@ -70,8 +70,7 @@ ms.lasthandoff: 08/16/2017
 <br>
 
 ## <a name="task-4---enable-secure-ldap-access-over-the-internet"></a>任务 4 - 启用通过 Internet 进行安全 LDAP 访问
-
-            **可选任务** - 如果不打算使用 LDAPS 来通过 Internet 访问托管域，请跳过此配置任务。
+**可选任务** - 如果不打算使用 LDAPS 来通过 Internet 访问托管域，请跳过此配置任务。
 
 开始此任务之前，请确保已完成[任务 3](#task-3---enable-secure-ldap-for-the-managed-domain-using-the-classic-azure-portal) 中所述的步骤。
 
@@ -95,8 +94,7 @@ ms.lasthandoff: 08/16/2017
 <br>
 
 ## <a name="task-5---configure-dns-to-access-the-managed-domain-from-the-internet"></a>任务 5 - 配置 DNS 以便从 Internet 访问托管域
-
-            **可选任务** - 如果不打算使用 LDAPS 来通过 Internet 访问托管域，请跳过此配置任务。
+**可选任务** - 如果不打算使用 LDAPS 来通过 Internet 访问托管域，请跳过此配置任务。
 
 开始此任务之前，请确保已完成[任务 4](#task-4---enable-secure-ldap-access-over-the-internet) 中所述的步骤。
 
