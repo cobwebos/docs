@@ -88,8 +88,7 @@ NYC 出租车行程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 **安装 Visual Studio 和 SQL Server Data Tools。**  有关说明，请参阅[为 SQL 数据仓库安装 Visual Studio 2015 和/或 SSDT (SQL Server Data Tools) ](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)。
 
-
-            **使用 Visual Studio 连接到 Azure SQL DW。** 有关说明，请参阅[使用 Visual Studio 连接到 Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-connect-overview.md)中的步骤 1 和 2。
+**使用 Visual Studio 连接到 Azure SQL DW。** 有关说明，请参阅[使用 Visual Studio 连接到 Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-connect-overview.md)中的步骤 1 和 2。
 
 > [!NOTE]
 > 在 SQL 数据仓库中创建的数据库上运行下面的 SQL 查询（而不是在连接主题的步骤 3 中提供的查询）来**创建一个主密钥**。
@@ -104,8 +103,7 @@ NYC 出租车行程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
            --If the master key exists, do nothing
     END CATCH;
 
-
-            **在 Azure 订阅下创建一个 Azure 机器学习工作区。** 有关说明，请参阅[创建 Azure 机器学习工作区](machine-learning-create-workspace.md)。
+**在 Azure 订阅下创建一个 Azure 机器学习工作区。** 有关说明，请参阅[创建 Azure 机器学习工作区](machine-learning-create-workspace.md)。
 
 ## <a name="getdata"></a>将数据载入 SQL 数据仓库
 打开 Windows PowerShell 命令控制台。 运行以下 PowerShell 命令将我们在 GitHub 上与你共享的示例 SQL 脚本文件下载到使用参数 *-DestDir* 指定的本地目录中。 可以将参数 *-DestDir* 的值更改为任何本地目录。 如果 *-DestDir* 不存在，PowerShell 脚本将创建它。

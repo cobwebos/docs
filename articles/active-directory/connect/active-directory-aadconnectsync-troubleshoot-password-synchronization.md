@@ -207,7 +207,7 @@ ms.lasthandoff: 08/19/2017
 
 9. 在列表中，输入应由 Connect 用于密码同步的域控制器。同一列表也用于导入和导出。 对所有域执行这些步骤。
 
-10. 如果脚本显示没有检测信号，请运行“触发所有密码的完全同步”中的脚本[](#trigger-a-full-sync-of-all-passwords)。
+10. 如果脚本显示没有检测信号，请运行 [“触发所有密码的完全同步”](#trigger-a-full-sync-of-all-passwords) 中的脚本。
 
 ## <a name="one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps"></a>一个对象未同步密码：手动排查问题的步骤
 可以通过检查对象的状态，轻松排查密码同步问题。
