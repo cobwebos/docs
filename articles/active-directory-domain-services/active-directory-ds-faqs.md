@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 08/28/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 7f3212350b1158cd51a34ee1b20a456a73d41672
-ms.lasthandoff: 03/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 193e59c610d5c5b553469cf2ea2ecc150236ac27
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory 域服务：常见问题 (FAQ)
@@ -32,32 +32,35 @@ ms.lasthandoff: 03/21/2017
 不会。 对于单个 Azure AD 目录，只能创建一个由 Azure AD 域服务提供服务的域。  
 
 #### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>是否可以在 Azure Resource Manager 虚拟网络中启用 Azure AD 域服务？
-不会。 只能在经典 Azure 虚拟网络中启用 Azure AD 域服务。 可以使用虚拟网络对等互连将经典虚拟网络连接到 Resource Manager 虚拟网络，然后便可以在 Resource Manager 虚拟网络中使用托管域。
+是的。 可以在 Azure 资源管理器虚拟网络中启用 Azure AD 域服务。 此功能目前处于预览状态。
 
-#### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-use-adfs-to-authenticate-users-for-access-to-office-365-can-i-enable-azure-ad-domain-services-for-this-directory"></a>能否启用联合 Azure AD 目录中的 Azure AD 域服务？ 使用 ADFS 验证用户能否访问 Office 365。 能否为此目录启用 Azure AD 域服务？
+#### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>是否可以将现有托管域从经典虚拟网络迁移到资源管理器虚拟网络？
+目前不可以。 我们将提供一种机制，以在未来将现有托管域从经典虚拟网络迁移到资源管理器虚拟网络。 请持续关注最新信息。
+
+#### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-use-adfs-to-authenticate-users-for-access-to-office-365-and-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>能否启用联合 Azure AD 目录中的 Azure AD 域服务？ 我使用 ADFS 对访问 Office 365 的用户进行身份验证，而不是将密码哈希同步到 Azure AD。 能否为此目录启用 Azure AD 域服务？
 否。 Azure AD 域服务需要访问用户帐户的密码哈希，以便通过 NTLM 或 Kerberos 验证用户身份。 在联合目录中，密码哈希未存储于 Azure AD 目录中。 因此，Azure AD 域服务不适用于此类 Azure AD 目录。
 
 #### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>是否可以在订阅中的多个虚拟网络内使用 Azure AD 域服务？
-域服务本身无法直接支持这种方案。 Azure AD 域服务每次只能在一个虚拟网络中使用。 但是，可以在多个虚拟网络之间配置连接，将 Azure AD 域服务公开到其他虚拟网络。 有关操作方法，请参阅 [connect virtual networks in Azure](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)（在 Azure 中连接虚拟网络）一文。
+域服务本身无法直接支持这种方案。 托管域每次只能在一个虚拟网络中使用。 但是，可以在多个虚拟网络之间配置连接，将 Azure AD 域服务公开到其他虚拟网络。 请参阅[在 Azure 中连接虚拟网络](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)。
 
 #### <a name="can-i-enable-azure-ad-domain-services-using-powershell"></a>是否可以使用 PowerShell 来启用 Azure AD 域服务？
 目前不支持通过 PowerShell/自动化部署 Azure AD 域服务。
 
 #### <a name="is-azure-ad-domain-services-available-in-the-new-azure-portal"></a>是否可以在新 Azure 门户中使用 Azure AD 域服务？
-不会。 只能在 [Azure 经典门户](https://manage.windowsazure.com)中配置 Azure AD 域服务。 将来有望添加对 [Azure 门户](https://portal.azure.com)的支持。
+是的。 可以使用 [Azure 门户](https://portal.azure.com)配置 Azure AD 域服务。 我们预计将来会停止支持[经典 Azure 门户](https://manage.windowsazure.com)。
 
 #### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>是否可将域控制器添加到 Azure AD 域服务托管域？
 不会。 Azure AD 域服务提供的域是托管域。 无需预配、配置或管理此域的域控制器 - Microsoft 以服务的形式提供这些管理活动。 因此，无法为托管域添加其他域控制器（读写或只读）。
 
 ### <a name="administration-and-operations"></a>管理和操作
 #### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>是否可以使用远程桌面连接到托管域的域控制器？
-不会。 你没有权限通过远程桌面连接到托管域的域控制器。 “AAD DC 管理员”组的成员可以使用 AD 管理工具，例如 Active Directory 管理中心 (ADAC) 或 AD PowerShell 来管理托管域。 可使用“远程服务器管理工具”功能在加入托管域的 Windows 服务器上安装这些工具。
+不会。 没有权限通过远程桌面连接到托管域的域控制器。 “AAD DC 管理员”组的成员可以使用 AD 管理工具，例如 Active Directory 管理中心 (ADAC) 或 AD PowerShell 来管理托管域。 可使用“远程服务器管理工具”功能在加入托管域的 Windows 服务器上安装这些工具。
 
 #### <a name="ive-enabled-azure-ad-domain-services-what-user-account-do-i-use-to-domain-join-machines-to-this-domain"></a>我已启用 Azure AD 域服务。 应使用哪个用户帐户将计算机加入此域？
 “AAD DC 管理员”管理组的成员均可将计算机加入域。 此外，此组中的成员有权通过远程桌面访问已加入域的计算机。
 
 #### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>我是否具有 Azure AD 域服务提供的托管域的域管理员特权？
-否。 你在托管域上没有管理权限。 你不可以在该域中使用“域管理员”和“企业管理员”权限。 Azure AD 目录中现有的域管理员或企业管理员组在该域上也没有域/企业管理员权限。
+否。 在托管域上没有管理权限。 不可以在该域中使用“域管理员”和“企业管理员”权限。 Azure AD 目录中现有的域管理员或企业管理员组在该域上也没有域/企业管理员权限。
 
 #### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>能否在托管域上使用 LDAP 或其他 AD 管理工具修改组成员身份？
 否。 无法在 Azure AD 域服务服务的域上修改组成员身份。 这同样适用于用户属性。 但是，可以在 Azure AD 中或本地域上更改组成员身份或用户属性。 此类更改会自动同步到 Azure AD 域服务。

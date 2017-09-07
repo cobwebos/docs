@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory B2C：使用图形 API | Microsoft Docs"
+title: "使用图形 API - Azure AD B2C | Microsoft 文档"
 description: "如何通过使用应用程序标识自动执行该过程为 B2C 租户调用图形 API。"
 services: active-directory-b2c
 documentationcenter: .net
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/07/2017
 ms.author: parakhj
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: c838fcad21875c4f813159ad78d4c87129a40a86
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 1e6748f40c7b825615b3f58243afd9d50348214d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-ad-b2c-use-the-graph-api"></a>Azure AD B2C：使用图形 API
@@ -38,7 +38,7 @@ Azure Active Directory (Azure AD) B2C 租户往往会非常大。 这意味着�
 拥有 B2C 租户后，需要通过 [Azure 门户](https://portal.azure.com)注册应用程序。
 
 > [!IMPORTANT]
-> 要将 Graph API 用于 B2C 租户，需要使用 Azure 门户中的通用“应用注册”边栏选项卡（**而非** Azure AD B2C 的“应用程序”边栏选项卡）注册专用应用程序。 不能重复使用在 Azure AD B2C 的“应用程序”边栏选项卡中注册的现有 B2C 应用程序。
+> 要将图形 API 用于 B2C 租户，需要使用 Azure 门户中的通用“应用注册”菜单（而非 Azure AD B2C 的“应用程序”菜单）注册专用应用程序。 不能重复使用在 Azure AD B2C 的“应用程序”菜单中已注册的现有 B2C 应用程序。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 通过在页面右上角选择帐户，选择 Azure AD B2C 租户。
@@ -47,16 +47,16 @@ Azure Active Directory (Azure AD) B2C 租户往往会非常大。 这意味着�
     1. 选择“Web 应用/API”作为应用程序类型。    
     2. 提供**任何重定向 URI**（例如 https://B2CGraphAPI），因为它与此示例无关。  
 5. 应用程序现在会显示在应用程序列表中，单击它以获取**应用程序 ID**（也称为客户端 ID）。 复制它，因为会在后面的部分用到它。
-6. 在“设置”边栏选项卡中，单击“密钥”并添加新密钥（也称为客户端密码）。 也复制它以便在后面部分中使用。
+6. 在“设置”菜单中，单击“密钥”并添加新密钥（也称为客户端密码）。 也复制它以便在后面部分中使用。
 
 ## <a name="configure-create-read-and-update-permissions-for-your-application"></a>为应用程序配置创建、读取和更新权限
 现在，需要配置应用程序，以获取所有所需的创建、读取、更新和删除用户的权限。
 
-1. 继续在 Azure 门户的“应用注册”边栏选项卡中，选择应用程序。
-2. 在“设置”边栏选项卡中，单击“所需的权限”。
-3. 在“所需的权限”边栏选项卡中，单击 **Windows Azure Active Directory**。
-4. 在“启用访问权限”边栏选项卡中，从“应用程序权限”中选择“读取和写入目录数据”权限，并单击“保存”。
-5. 最后，返回“所需的权限”边栏选项卡，单击“授予权限”按钮。
+1. 继续在 Azure 门户的“应用注册”菜单中，选择应用程序。
+2. 在“设置”菜单中，单击“所需的权限”。
+3. 在“所需的权限”菜单中，单击“Windows Azure Active Directory”。
+4. 在“启用访问权限”菜单中，从“应用程序权限”中选择“读取和写入目录数据”权限，并单击“保存”。
+5. 最后，返回“所需的权限”菜单，单击“授予权限”按钮。
 
 现在就有了一个有权限从 B2C 租户创建、读取和更新用户的应用程序。
 

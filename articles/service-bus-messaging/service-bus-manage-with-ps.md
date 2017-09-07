@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/06/2017
+ms.date: 08/28/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 02e4e58418e289eaf4b619a6cfc411fe1f50f48f
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 1520cea72069be5d7bb078a3770d61fade26b853
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>使用 PowerShell 管理服务总线资源
@@ -29,7 +29,7 @@ Microsoft Azure PowerShell 是一个脚本编写环境，可用于控制和自�
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，你需要具备以下项：
+在开始之前，需要符合以下先决条件：
 
 * Azure 订阅。 有关获取订阅的详细信息，请参阅[购买选项][purchase options]、[成员优惠][member offers]或[免费帐户][free account]。
 * 配备 Azure PowerShell 的计算机。 有关说明，请参阅 [Azure PowerShell cmdlet 入门](/powershell/azure/get-started-azureps)。
@@ -46,7 +46,7 @@ Microsoft Azure PowerShell 是一个脚本编写环境，可用于控制和自�
 本示例在脚本中创建几个本地变量：`$Namespace` 和 `$Location`。
 
 * `$Namespace` 是我们要使用的服务总线命名空间的名称。
-* `$Location` 标识我们要在其中设置命名空间的数据中心。
+* `$Location` 标识我们要在其中预配命名空间的数据中心。
 * `$CurrentNamespace` 将存储我们检索（或创建）的引用命名空间。
 
 在实际脚本中，`$Namespace` 和 `$Location` 可作为参数传递。
@@ -55,7 +55,7 @@ Microsoft Azure PowerShell 是一个脚本编写环境，可用于控制和自�
 
 1. 尝试使用指定名称检索服务总线命名空间。
 2. 如果找到该命名空间，则报告它找到的内容。
-3. 如果找不到该命名空间，则会创建该命名空间，然后检索新创建的命名空间。
+3. 如果找不到该命名空间，则会创建该命名空间，并检索新创建的命名空间。
    
     ``` powershell
     # Query to see if the namespace currently exists

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: kgremban
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: cfe528021f2d069146fc7a34d9ea83b2681ffbf2
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 5784222608b01509fc4ff84b1a8792cbcfea89e6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>在应用程序代理中使用声明感知应用
@@ -39,7 +39,7 @@ ms.lasthandoff: 08/07/2017
 
 ### <a name="option-1-custom-domains"></a>方法 1：自定义域
 
-如果应用程序的所有内部 URL 都是完全限定的域名 (FQDN)，则可以配置应用程序的[自定义域](active-directory-application-proxy-custom-domains.md)。 使用自定义域创建与内部 URL 相同的外部 URL。 使用此配置，无论用户是本地用户还是远程用户，STS 创建的重定向工作方式相同。 
+如果应用程序的所有内部 URL 都是完全限定的域名 (FQDN)，则可以配置应用程序的[自定义域](active-directory-application-proxy-custom-domains.md)。 使用自定义域创建与内部 URL 相同的外部 URL。 外部 URL 匹配内部 URL 时，无论用户是在本地还是远程，STS 重定向都会起作用。 
 
 ### <a name="option-2-ws-federation"></a>方法 2：WS 联合身份验证
 

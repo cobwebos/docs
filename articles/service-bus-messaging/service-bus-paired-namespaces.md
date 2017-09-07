@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 08/30/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d987aa22379ede44da1b791f034d713a49ad486a
-ms.openlocfilehash: 84e125dffcac3f3a54250587c5238b50d3a6cb95
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: bdd4c7948608c03447d1e040a746ed0eb7b0771b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/16/2017
-
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="paired-namespace-implementation-details-and-cost-implications"></a>配对命名空间实现详细信息和成本影响
@@ -67,7 +66,7 @@ ms.lasthandoff: 02/16/2017
 
 例如，为命名空间 **contoso** 创建的第一个积压工作队列名为 `contoso/x-servicebus-transfer/0`。
 
-创建队列时，代码将首先检查是否存在此类队列。 如果队列不存在，将创建队列。 此代码不清理“额外的”积压工作队列。 具体而言，如果具有主命名空间 **contoso`contoso/x-servicebus-transfer/7` 的应用程序请求五个积压工作队列，但具有路径** 的积压工作队列存在，则该额外积压工作队列仍然存在，但未被使用。 系统显式允许额外积压工作队列存在，但它们不会被使用。 作为命名空间所有者，你负责清除任何未使用/不需要的积压工作队列。 此决策的原因是服务总线无法知道你的命名空间中的所有队列都存在何种目的。 此外，如果队列以给定名称存在，但不符合假定的 [QueueDescription][QueueDescription]，那么更改默认行为的原因是出于自身。 无法为通过你的代码对积压工作队列进行的修改提供保证。 请确保全面测试你所做的更改。
+创建队列时，代码将首先检查是否存在此类队列。 如果队列不存在，将创建队列。 此代码不清理“额外的”积压工作队列。 具体而言，如果具有主命名空间 **contoso`contoso/x-servicebus-transfer/7` 的应用程序请求五个积压工作队列，但具有路径** 的积压工作队列存在，则该额外积压工作队列仍然存在，但未被使用。 系统显式允许额外积压工作队列存在，但它们不会被使用。 作为命名空间所有者，负责清除任何未使用/不需要的积压工作队列。 此决策的原因是服务总线无法知道命名空间中的所有队列都存在何种目的。 此外，如果队列以给定名称存在，但不符合假定的 [QueueDescription][QueueDescription]，那么更改默认行为的原因是出于自身。 无法为通过代码对积压工作队列进行的修改提供保证。 请确保全面测试你所做的更改。
 
 ## <a name="custom-messagesender"></a>自定义 MessageSender
 在发送时，所有消息都将通过内部 [MessageSender][MessageSender] 对象，该对象在一切正常运转时正常行动，并在事情“中断”时重定向至积压工作队列。 一旦收到非瞬态故障，计时器启动。 在由 [FailoverInterval][FailoverInterval] 属性值构成的 [TimeSpan][TimeSpan] 时段之后（在此时段中未成功发送消息），将发生故障转移。 此时，每个实体会发生下列情况：
@@ -83,10 +82,10 @@ ms.lasthandoff: 02/16/2017
 
 原始目标路径也作为名为 x-ms-path 的属性存储在消息中。 此设计允许多个实体的消息共存于单个积压工作队列中。 属性将通过管道重新转换。
 
-消息接近 256-KB 限制且发生故障转移时，自定义 [MessageSender][MessageSender] 对象会遇到问题。 自定义 [MessageSender][MessageSender] 对象将所有队列和主题的消息一起存储在积压工作队列中。 此对象在积压工作队列中将来自许多主体的消息混合。 若要在互相不知道对方的多个客户端中处理负载平衡，SDK 将随机为每个用代码创建的 [QueueClient][QueueClient] 或 [TopicClient][TopicClient] 选择一个积压工作队列。
+消息接近 256-KB 限制且发生故障转移时，自定义 [MessageSender][MessageSender] 对象会遇到问题。 自定义 [MessageSender][MessageSender] 对象将所有队列和主题的消息一起存储在积压工作队列中。 此对象在积压工作队列中将来自许多主体的消息混合。 要在互相不知道对方的多个客户端中处理负载均衡，SDK 将随机为每个用代码创建的 [QueueClient][QueueClient] 或 [TopicClient][TopicClient] 选择一个积压工作队列。
 
 ## <a name="pings"></a>Ping
-一条 Ping 消息是一个空 [BrokeredMessage][BrokeredMessage]，其 [ContentType][ContentType] 属性设置为 application/vnd.ms-servicebus-ping 且其 [TimeToLive][TimeToLive] 值为 1 秒。 服务总线中，此 ping 有一个特殊的特性：任何调用方请求 [BrokeredMessage][BrokeredMessage] 时，服务器永远不会发送 ping 请求。 因此，你永远不需要了解如何接收和忽略这些消息。 每个客户端的每个 [MessagingFactory][MessagingFactory] 实例的每个实体（唯一的队列或主题）被视为不可用时，将对其执行 ping 命令。 默认情况下，每分钟发生一次。 Ping 消息被视为常规服务总线消息，并可能会产生针对带宽和消息的收费。 只要客户端检测到系统可用，消息将停止。
+一条 Ping 消息是一个空 [BrokeredMessage][BrokeredMessage]，其 [ContentType][ContentType] 属性设置为 application/vnd.ms-servicebus-ping 且其 [TimeToLive][TimeToLive] 值为 1 秒。 服务总线中，此 ping 有一个特殊的特性：任何调用方请求 [BrokeredMessage][BrokeredMessage] 时，服务器永远不会发送 ping 请求。 因此，永远不需要了解如何接收和忽略这些消息。 每个客户端的每个 [MessagingFactory][MessagingFactory] 实例的每个实体（唯一的队列或主题）被视为不可用时，将对其执行 ping 命令。 默认情况下，每分钟发生一次。 Ping 消息被视为常规服务总线消息，并可能会产生针对带宽和消息的收费。 只要客户端检测到系统可用，消息将停止。
 
 ## <a name="the-syphon"></a>管道
 应用程序中至少有一个可执行程序应活跃地运行管道。 管道会执行持续 15 分钟的长时间轮询接收。 当所有实体均可用且你有 10 个积压工作队列时，托管管道的应用程序每小时 40 次、每天 960 次，30 天 28800 次调用接收操作。 当管道活跃地将消息从积压工作向主要队列中移动时，每条消息会产生以下费用（在所有阶段中按照消息大小和带宽收取标准费用）：
@@ -97,7 +96,7 @@ ms.lasthandoff: 02/16/2017
 4. 从主体接收。
 
 ## <a name="closefault-behavior"></a>关闭/故障行为
-在托管管道的应用程序中，一旦主要或辅助 [MessagingFactory][MessagingFactory] 发生故障或关闭，同时其伙伴队列并未发生故障/关闭，且管道检测到此状态，则管道将发挥作用。 如果其他 [MessagingFactory][MessagingFactory] 在 5 秒内未关闭，管道将导致仍处于打开状态的 [MessagingFactory][MessagingFactory] 发生故障。
+在托管管道的应用程序中，一旦主要或辅助 [MessagingFactory][MessagingFactory] 发生故障或关闭，同时其合作伙伴队列并未发生故障或关闭，且管道检测到此状态，则管道将发挥作用。 如果其他 [MessagingFactory][MessagingFactory] 在 5 秒内未关闭，管道将导致仍处于打开状态的 [MessagingFactory][MessagingFactory] 发生故障。
 
 ## <a name="next-steps"></a>后续步骤
 有关服务总线异步消息传送的详细讨论，请参阅[异步消息传递模式和高可用性][Asynchronous messaging patterns and high availability]。 

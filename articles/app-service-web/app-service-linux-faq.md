@@ -4,7 +4,7 @@ description: "Linux 上的 Azure 应用服务 Web 应用常见问题解答。"
 keywords: "Azure 应用服务, Web 应用, 常见问题解答, Linux, oss"
 services: app-service
 documentationCenter: 
-authors: ahmedelnably
+author: ahmedelnably
 manager: erikre
 editor: 
 ms.assetid: 
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: ff4f4ecd12bc26fcc44a20a193d73f952ed56f1a
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 6122f28b35d143ec26a379ae9aa8aee9bdaaff9e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -51,6 +51,10 @@ ms.lasthandoff: 08/07/2017
 
 **答：**可以，可以通过 SCM 站点执行该操作，请查阅以下文章了解详细信息：[SSH 对 Linux 上 Web 应用的支持](./app-service-linux-ssh-support.md)
 
+**问：**我想要通过 SDK 或 ARM 模板创建 Linux 应用服务计划，该如何实现此目的？
+
+**答：**你需要将应用服务的 `reserved` 字段设置为 `true`。
+
 ## <a name="continuous-integrationdeployment"></a>持续集成/部署
 
 **问：**更新 Docker Hub 上的映像后，我的 Web 应用仍使用旧的 Docker 容器映像。 是否支持自定义容器的持续集成/部署？
@@ -80,6 +84,14 @@ ms.lasthandoff: 08/07/2017
 **问：**我使用的是我自己的自定义容器。 我的应用位于 `\home\` 目录中，但是当我使用 [SCM 站点](https://github.com/projectkudu/kudu)或 FTP 客户端浏览内容时找不到我的文件。 文件在哪里？
 
 **答：**我们将 SMB 共享装入 `\home\` 目录。 这会替代此处的所有内容。
+
+**问：**我使用的是我自己的自定义容器。 我不希望平台将 SMB 共享装载到 `\home\`。
+
+**答：**可以通过设置 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 应用设置为 `false` 来实现此目的。
+
+**问：**我的自定义容器需要很长时间才能启动，并且平台在它完成启动之前便重新启动了容器。
+
+**答：**可以配置该平台在重新启动容器之前的等待时间。 这可以通过设置 `WEBSITES_CONTAINER_START_TIME_LIMIT` 应用设置为所需的值（以秒为单位）来完成。 默认值为 230 秒，最大值为 600 秒。
 
 **问：**专用注册服务器 URL 的格式是什么？
 
@@ -123,11 +135,11 @@ ms.lasthandoff: 08/07/2017
 
 **问：**可在何处请求新功能？
 
-**答：**可以在 [Web 应用反馈论坛](https://aka.ms/webapps-uservoice)提交建议。 请将“[Linux]”添加到建议的标题中。
+
+            **答：**可以在 [Web 应用反馈论坛](https://aka.ms/webapps-uservoice)提交建议。 请将“[Linux]”添加到建议的标题中。
 
 ## <a name="next-steps"></a>后续步骤
 * [什么是 Linux 上的 Azure Web 应用？](app-service-linux-intro.md)
-* [在 Linux 上的 Azure Web 应用中创建 Web 应用](app-service-linux-how-to-create-web-app.md)
 * [SSH 对 Linux 上的 Azure Web 应用的支持](./app-service-linux-ssh-support.md)
 * [设置 Azure 应用服务中的过渡环境](./web-sites-staged-publishing.md)
 * [使用 Linux 上的 Azure Web 应用进行持续部署](./app-service-linux-ci-cd.md)

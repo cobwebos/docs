@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2017
+ms.date: 08/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 9253e05931e7434f9e69765fa552f1157b1c8cbb
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 58034ab8830cf655199875b448948ea14dc04a70
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 07/28/2017
 
 PingAccess for Azure Active Directory 是一种 PingAccess 产品/服务，能够允许用户访问和单一登录使用标头进行身份验证的应用程序。 应用程序代理将这些应用视为与其他任何应用一样，它使用 Azure AD 对访问进行身份验证，并通过连接器服务传递流量。 PingAccess 驻留在应用的前面，可将 Azure AD 提供的访问令牌转换为标头，使应用程序能够接收采用可读格式的身份验证令牌。
 
-用户登录后使用企业应用时，感觉不到任何差异。 他们仍可在任何位置的任何设备上工作。 当用户在办公室时，应用程序代理和 PingAccess 都不会截获流量，因此用户自始至终都会获得相同的体验。
+用户登录后使用企业应用时，感觉不到任何差异。 他们仍可在任何位置的任何设备上工作。 
 
 由于应用程序代理连接器会将远程流量定向到所有应用（不管其身份验证类型为何），因此也会继续自动进行负载均衡。
 
@@ -131,6 +131,20 @@ PingAccess for Azure Active Directory 是一种 PingAccess 产品/服务，能�
 6. 关闭“应用注册”边栏选项卡或一直向左滚动，返回“Azure Active Directory”菜单。
 7. 选择“属性”。
 8. 保存“目录 ID”GUID。
+
+### <a name="optional---update-graphapi-to-send-custom-fields"></a>可选 - 更新 GraphAPI 以发送自定义字段
+
+有关 Azure AD 用于身份验证发送的安全令牌列表，请参阅 [Azure AD 令牌引用](./develop/active-directory-token-and-claims.md)。 如果需要发送其他令牌的自定义声明，请使用 GraphAPI 将应用字段 acceptMappedClaims 设置为“True”。 可以使用 Azure AD Graph 浏览器或 MS Graph 来进行此配置。 
+
+本示例中使用的是 Graph 浏览器：
+
+```
+PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_your_application> 
+
+{
+  "acceptMappedClaims":true
+}
+```
 
 ## <a name="download-pingaccess-and-configure-your-app"></a>下载 PingAccess 并配置应用
 

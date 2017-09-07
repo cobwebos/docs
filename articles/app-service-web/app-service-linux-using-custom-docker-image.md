@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: f51cacb33251d479f48a39014cc2db60a23358d5
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 1458217a31c4781b28877c030a665f5b22819e13
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -81,6 +81,13 @@ ms.lasthandoff: 08/07/2017
 
 ![配置自定义 Docker 映像的端口应用设置][6]
 
+## <a name="how-to-set-the-startup-time-for-your-docker-image"></a>如何：设置 Docker 映像的启动时间 ##
+
+默认情况下，如果容器在 230 秒之前未启动，平台将重新启动容器。 如果自定义 Docker 映像在 230 秒之后启动，可以使用 `WEBSITES_CONTAINER_START_TIME_LIMIT` 应用设置，此设置的值以秒为单位，以便平台在重新启动容器之前使其继续保持运行。 默认值为 230 秒，允许的最大值为 600 秒。
+
+## <a name="how-to-unmount-the-platform-provided-storage"></a>如何：卸载平台提供的存储 ##
+
+默认情况下，该平台将永久存储共享装载到 `\home\` 目录。 如果容器映像不需要永久共享，则可以通过将 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 应用设置为 `false` 来禁用安装此存储。 你仍可以从 scm 站点访问该存储，并且所有 Docker 日志（如果已启用）都将写入到平台生成的日志文件。
 
 ## <a name="how-to-switch-back-to-using-a-built-in-image"></a>如何：向后切换以重新使用内置映像 ##
 
@@ -109,7 +116,6 @@ ms.lasthandoff: 08/07/2017
 单击以下链接，开始使用 Linux Web 应用。   
 
 * [Linux 上的 Azure Web 应用简介](./app-service-linux-intro.md)
-* [在 Linux 上的 Azure Web 应用中创建 Web 应用](./app-service-linux-how-to-create-web-app.md)
 * [在 Linux 上的 Azure Web 应用中使用针对 Node.js 的 PM2 配置](./app-service-linux-using-nodejs-pm2.md)
 * [Linux 上的 Azure 应用服务 Web 应用常见问题解答](app-service-linux-faq.md)
 

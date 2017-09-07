@@ -4,7 +4,7 @@ description: "使用 Azure CLI 管理 Linux 上的 Web 应用。"
 keywords: "azure app service、Web 应用、cli、linux、oss"
 services: app-service
 documentationCenter: 
-authors: ahmedelnably
+author: ahmedelnably
 manager: erikre
 editor: 
 ms.assetid: 
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: e0c913ef50db3572940928d9f739e26994c96981
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 04aceecf0cb4cad5c838b7254bf7079a36bbd0d8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -48,6 +48,14 @@ az appservice plan create -n appname -g rgname --islinux -l "South Central US" -
 
 ```azurecli-interactive
 az webapp create -n sname -g rgname -p pname -i elnably/dockerimagetest
+```
+ 
+## <a name="activate-the-docker-container-logging"></a>激活 Docker 容器日志记录
+
+若要激活 Docker 容器日志记录，可以使用以下命令：
+
+```azurecli-interactive
+az webapp log config -n sname -g rgname --web-server-logging filesystem
 ```
  
 ## <a name="change-the-custom-docker-container-for-an-existing-web-app-on-linux-app"></a>更改 Linux 应用上现有 Web 应用的自定义 Docker 容器
@@ -103,7 +111,6 @@ az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> -
 * [什么是 Linux 上的 Azure Web 应用？](app-service-linux-intro.md)
 * [安装 Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 * [Azure Cloud Shell（预览版）](../cloud-shell/overview.md)
-* [在 Linux 上的 Azure Web 应用中创建 Web 应用](app-service-linux-how-to-create-web-app.md)
 * [设置 Azure 应用服务中的过渡环境](./web-sites-staged-publishing.md)
 * [使用 Linux 上的 Azure Web 应用进行持续部署](./app-service-linux-ci-cd.md)
 

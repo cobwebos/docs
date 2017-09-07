@@ -1,43 +1,44 @@
 ---
-title: "Azure Active Directory B2C：令牌引用 |Microsoft Docs"
+title: "令牌引用 - Azure AD B2C | Microsoft 文档"
 description: "Azure Active Directory B2C 中颁发的令牌类型"
 services: active-directory-b2c
 documentationcenter: 
-author: dstrockis
-manager: mbaldwin
-editor: 
+author: parakhj
+manager: krassk
+editor: parakhj
 ms.assetid: 6df79878-65cb-4dfc-98bb-2b328055bc2e
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/17/2017
-ms.author: dastrock
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
-ms.openlocfilehash: 39cfbc1c6dea138fe2f1eb3190770606f3895d40
+ms.date: 08/16/2017
+ms.author: parakhj
+ms.translationtype: HT
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 7f98637264d1acb209d0379e4800e542fc91955b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/22/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
-# <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C：令牌参考
+# <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C：令牌引用
+
 Azure Active Directory B2C (Azure AD B2C) 在处理每个[身份验证流](active-directory-b2c-apps.md)时颁发多种安全令牌。 本文档说明每种令牌的格式、安全特征和内容。
 
 ## <a name="types-of-tokens"></a>类型的令牌
 Azure AD B2B 支持 [OAuth 2.0 身份验证协议](active-directory-b2c-reference-protocols.md)，该协议使用访问令牌和刷新令牌。 它还支持通过 [OpenID Connect](active-directory-b2c-reference-protocols.md) 进行身份验证和登录，其中引入了第三种类型的令牌：ID 令牌。 每个令牌表示为“持有者令牌”。
 
-持有者令牌是一种轻型安全令牌，它授予对受保护资源的“持有者”访问权限。 持有者是可以提供令牌的任何一方。 参与方必须先经 Azure AD 验证才能接收持有者令牌。 但如果不采取必要的步骤在传输过程和存储中对令牌进行保护，令牌可能会被意外的某一方拦截并使用。 某些安全令牌具有防止未授权方使用令牌的内置机制，但持有者令牌并不具有这种机制。 它们必须在安全通道中传输，例如传输层安全性 (HTTPS)。
+持有者令牌是一种轻型安全令牌，它授予对受保护资源的“持有者”访问权限。 持有者是可以提供令牌的任何一方。 参与方必须先经 Azure AD B2C 验证才能接收持有者令牌。 但如果不采取必要的步骤在传输过程和存储中对令牌进行保护，令牌可能会被意外的某一方拦截并使用。 某些安全令牌具有防止未授权方使用令牌的内置机制，但持有者令牌并不具有这种机制。 它们必须在安全通道中传输，例如传输层安全性 (HTTPS)。
 
-如果持有者令牌在安全通道外传输，则恶意方就可以利用中间人攻击来获得令牌，并使用它对受保护资源进行未经授权的访问。 存储或缓存持有者令牌以供以后使用时，也应遵循同样的安全原则。 请始终确保你的应用以安全的方式传输和存储持有者令牌。
+如果持有者令牌在安全通道外传输，则恶意方就可以利用中间人攻击来获得令牌，并使用它对受保护资源进行未经授权的访问。 存储或缓存持有者令牌以供以后使用时，也应遵循同样的安全原则。 请始终确保应用以安全的方式传输和存储持有者令牌。
 
 有关持有者令牌的其他安全注意事项，请参阅 [RFC 6750 第 5 部分](http://tools.ietf.org/html/rfc6750)。
 
-Azure AD B2C 颁发的许多令牌都实现为 JSON Web 令牌 (JWT)。 JWT 是一种精简的 URL 安全方法，可在两方之间传输信息。 JWT 包含称为“声明”的信息。 这些信息是令牌持有人和令牌主题的相关断言信息。 JWT 中的声明是为了传输而编码和序列化的 JSON 对象。 由于 Azure AD 所颁发的 JWT 已签名但未加密，因此可以轻松检查 JWT 的内容以进行调试。 有多个工具可执行此操作，其中包括 [calebb.net](http://calebb.net)。 有关 JWT 的详细信息，请参阅 [JWT 规范](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。
+Azure AD B2C 颁发的许多令牌都实现为 JSON Web 令牌 (JWT)。 JWT 是一种精简的 URL 安全方法，可在两方之间传输信息。 JWT 包含称为“声明”的信息。 这些信息是令牌持有人和令牌主题的相关断言信息。 JWT 中的声明是为了传输而编码和序列化的 JSON 对象。 由于 Azure AD 所颁发的 JWT 已签名但未加密，因此可以轻松检查 JWT 的内容以进行调试。 有多个工具可执行此操作，其中包括 [jwt.ms](https://jwt.ms)。 有关 JWT 的详细信息，请参阅 [JWT 规范](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。
 
 ### <a name="id-tokens"></a>ID 令牌
-ID 令牌是应用从 Azure AD B2C `authorize` 和 `token` 终结点接收的一种安全令牌。 ID 令牌表示为 [JWT](#types-of-tokens)，并且它们包含可用于标识应用中的用户的声明。 从 `authorize` 终结点获取 ID 令牌时，它们通常用来使用户登录 Web 应用程序。 从 `token` 终结点获取 ID 令牌时，它们可在同一应用程序或服务的两个组件之间进行通信时，在 HTTP 请求中发送。 可以根据需要使用 ID 令牌中的声明。 它们常用于显示帐户信息或者在应用中进行访问控制决策。  
+
+ID 令牌是应用从 Azure AD B2C `/authorize` 和 `/token` 终结点接收的一种安全令牌。 ID 令牌表示为 [JWT](#types-of-tokens)，并且它们包含可用于标识应用中的用户的声明。 从 `/authorize` 终结点获取 ID 令牌时，将通过使用[隐式流](active-directory-b2c-reference-spa.md)完成此操作，该令牌通常供用户用于登录到基于 javascript 的 Web 应用程序。 从 `/token` 终结点获取 ID 令牌时，将通过使用[机密代码流](active-directory-b2c-reference-oidc.md)完成此操作，从而使令牌隐藏在浏览器中。 以此可以在 HTTP 请求中安全地发送令牌，以便在相同应用程序或服务的两个组件之间进行通信。 可以根据需要使用 ID 令牌中的声明。 它们常用于显示帐户信息或者在应用中进行访问控制决策。  
 
 ID 令牌已签名，但目前尚未加密。 当应用或 API 收到 ID 令牌时，必须[验证签名](#token-validation)，证明令牌可信。 应用或 API 还必须验证令牌中的一些声明，证明令牌有效。 根据具体的方案要求，应用验证的声明有所不同，但应用在每个方案中均须执行某些[常见声明验证](#token-validation)。
 
@@ -60,14 +61,16 @@ CQhoFA
 ```
 
 ### <a name="access-tokens"></a>访问令牌
-访问令牌也是应用从 Azure AD B2C `authorize` 和 `token` 终结点接收的一种安全令牌。 访问令牌也以 [JWT](#types-of-tokens) 表示，并且它们包含声明，可用于标识已授予的对 API 的权限。 访问令牌已签名，但目前尚未加密。 访问令牌应用于提供对 API 和资源服务器的访问权限。 详细了解如何[使用访问令牌](active-directory-b2c-access-tokens.md)。 
+
+访问令牌也是应用从 Azure AD B2C `/authorize` 和 `/token` 终结点接收的一种安全令牌。 访问令牌也以 [JWT](#types-of-tokens) 表示，并且它们包含声明，可用于标识已授予的对 API 的权限。 访问令牌已签名，但目前尚未加密。 访问令牌应用于提供对 API 和资源服务器的访问权限。 详细了解如何[使用访问令牌](active-directory-b2c-access-tokens.md)。 
 
 当 API 收到访问令牌时，必须[验证签名](#token-validation)，证明令牌可信。 API 还必须验证令牌中的一些声明，证明令牌有效。 根据具体的方案要求，应用验证的声明有所不同，但应用在每个方案中均须执行某些[常见声明验证](#token-validation)。
 
 ### <a name="claims-in-id-and-access-tokens"></a>ID 及访问令牌中的声明
+
 使用 Azure AD B2C 时，必须对令牌内容有精细的控制。 可以配置[策略](active-directory-b2c-reference-policies.md)，在声明中发送应用操作所需的几组特定的用户数据。 这些声明可以包括标准属性，比如用户的 `displayName` 和 `emailAddress` 属性。 还可以包括可在 B2C 目录中定义的[自定义用户属性](active-directory-b2c-reference-custom-attr.md)。 收到的每个 ID 令牌和访问令牌均包含一组特定的安全相关声明。 应用程序可以使用这些声明来安全地对用户和请求进行身份验证。
 
-请注意，ID 令牌中的声明不按任何特定顺序返回。 此外，新的声明可以在任何时候引入 ID 令牌。 引入新的声明时，不得中断应用。 下面是预期在 Azure AD B2C 颁发的 ID 及访问令牌中存在的声明。 任何其他声明由策略确定。 练习时，请尝试将示例 ID 令牌中的声明粘贴到 [calebb.net](http://calebb.net) 中进行检查。 可以在 [OpenID Connect 规范](http://openid.net/specs/openid-connect-core-1_0.html)中找到进一步的详细信息。
+请注意，ID 令牌中的声明不按任何特定顺序返回。 此外，新的声明可以在任何时候引入 ID 令牌。 引入新的声明时，不得中断应用。 下面是预期在 Azure AD B2C 颁发的 ID 及访问令牌中存在的声明。 任何其他声明由策略确定。 练习时，请尝试将示例 ID 令牌中的声明粘贴到 [jwt.ms](https://jwt.ms) 中进行检查。 可以在 [OpenID Connect 规范](http://openid.net/specs/openid-connect-core-1_0.html)中找到进一步的详细信息。
 
 | Name | 声明 | 示例值 | 说明 |
 | --- | --- | --- | --- |
@@ -92,12 +95,12 @@ CQhoFA
 
 刷新令牌永远对应用程序完全不透明。 它们由 Azure AD 颁发，且只能由 Azure AD 检查和解释。 它们属于长效令牌，但编写应用时，不应期望刷新令牌将持续一段特定时间。 出于各种原因，可随时验证刷新令牌。 让应用知道刷新令牌是否有效的唯一方式就是对 Azure AD 发出令牌请求以尝试兑换刷新令牌。
 
-使用刷新令牌兑换新的访问令牌（而且应用已获得 `offline_access` 范围）时，将在令牌响应中收到新的刷新令牌。 应该保存新颁发的刷新令牌。 它应替代以前在请求中使用的刷新令牌。 这有助于保证刷新令牌尽可能长期保持有效。
+使用刷新令牌兑换新的访问令牌（而且应用已获得 `offline_access` 范围）时，会在令牌响应中收到新的刷新令牌。 应该保存新颁发的刷新令牌。 它应替代以前在请求中使用的刷新令牌。 这有助于保证刷新令牌尽可能长期保持有效。
 
 ## <a name="token-validation"></a>令牌验证
 若要验证令牌，应用应检查令牌的签名和声明。
 
-许多开放源代码库都可用于验证 JWT，具体取决于你的首选语言。 建议浏览这些选项，而不是实施自己的验证逻辑。 本指南中的信息可帮助了解如何正确使用这些库。
+许多开放源代码库都可用于验证 JWT，具体取决于首选语言。 建议浏览这些选项，而不是实施自己的验证逻辑。 本指南中的信息可帮助了解如何正确使用这些库。
 
 ### <a name="validate-the-signature"></a>验证签名
 JWT 包含三段，以 `.` 字符分隔。 第一个段称为*标头*，第二个称为*主体*，第三个称为*签名*。 签名段可用于验证令牌的真实性，使应用信任它。
@@ -122,7 +125,7 @@ Azure AD B2C 具有 OpenID Connect 元数据终结点。 这允许应用在运�
 https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in
 ```
 
-`fabrikamb2c.onmicrosoft.com` 是用于对用户进行身份验证的 B2C 目录，`b2c_1_sign_in` 是用来获取令牌的策略。 若要确定对令牌签名所用的策略（以及提取元数据的位置），你有两个选择。 首先，策略名称包含在令牌的 `acr` 声明中。 可以通过对主体进行 Base-64 解码，并反序列化生成的 JSON 字符串，从而分析 JWT 主体中的声明。 `acr` 声明将成为用于颁发令牌的策略名称。  另一个方法是在发出请求时在 `state` 参数的值中对策略进行编码，然后对其进行解码以确定使用的策略。 任意一种方法均有效。
+`fabrikamb2c.onmicrosoft.com` 是用于对用户进行身份验证的 B2C 目录，`b2c_1_sign_in` 是用来获取令牌的策略。 要确定对令牌签名所用的策略（以及提取元数据的位置），有两个选择。 首先，策略名称包含在令牌的 `acr` 声明中。 可以通过对主体进行 Base-64 解码，并反序列化生成的 JSON 字符串，从而分析 JWT 主体中的声明。 `acr` 声明将成为用于颁发令牌的策略名称。  另一个方法是在发出请求时在 `state` 参数的值中对策略进行编码，并对其进行解码以确定使用的策略。 任意一种方法均有效。
 
 元数据文档是包含多条有用信息的 JSON 对象。 其中包括执行 OpenID Connect 身份验证所需的终结点的位置。 还包括 `jwks_uri`，它提供用于对令牌签名的公钥集位置。 在此处提供该位置，但最好使用元数据文档并分析 `jwks_uri` 来动态提取位置：
 
@@ -130,7 +133,7 @@ https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/o
 https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in
 ```
 
-位于此 URL 的 JSON 文档包含将在特定时间点使用的所有公钥信息。 应用可以使用 JWT 标头中的 `kid` 声明，选择用于签名特定令牌的 JSON 文档中的公钥。 然后可以使用正确的公钥和指定的算法来执行签名验证。
+位于此 URL 的 JSON 文档包含将在特定时间点使用的所有公钥信息。 应用可以使用 JWT 标头中的 `kid` 声明，选择用于签名特定令牌的 JSON 文档中的公钥。 然后，可以使用正确的公钥和指定的算法来执行签名验证。
 
 关于如何执行签名验证的说明已超出了本文档的讨论范围。 如果需要，许多开放源代码库都可用于对此进行帮助。
 
@@ -145,7 +148,7 @@ https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/key
 有关应用应该执行的验证的完整列表，请参阅 [OpenID Connect 规范](https://openid.net)。 这些声明的预期值详细信息包含在前面的[令牌部分](#types-of-tokens)中。  
 
 ## <a name="token-lifetimes"></a>令牌生存期
-提供以下令牌生存期，以拓展你的知识。 它们在开发和调试应用时有所帮助。 请注意：编写应用时，不应期望任何这些生存期维持不变。 它们可以并且将会改变。 可以阅读有关在 Azure AD B2C 中[自定义令牌生存期](active-directory-b2c-token-session-sso.md)的详细信息。
+提供以下令牌生存期，以拓展知识。 它们在开发和调试应用时有所帮助。 请注意：编写应用时，不应期望任何这些生存期维持不变。 它们可以并且会改变。 可以阅读有关在 Azure AD B2C 中[自定义令牌生存期](active-directory-b2c-token-session-sso.md)的详细信息。
 
 | 令牌 | 生存期 | 说明 |
 | --- | --- | --- |

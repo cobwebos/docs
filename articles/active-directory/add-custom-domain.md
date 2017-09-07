@@ -1,5 +1,5 @@
 ---
-title: "将自定义域添加到 Azure AD |Microsoft Docs"
+title: "将自定义域添加到 Azure AD |Microsoft 文档"
 description: "介绍如何在 Azure Active Directory 中添加自定义域。"
 services: active-directory
 author: jeffgilb
@@ -10,20 +10,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 08/29/2017
 ms.author: jeffgilb
 ms.reviewer: jsnow
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 4848130601ffa18ed1565e79cb0f0db3274e950f
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 3acdc406b5e753d407c7c6fb32fe0ad5ed6dd68c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="quickstart-add-a-custom-domain-name-to-azure-active-directory"></a>快速入门：将自定义域名添加到 Azure Active Directory
 
-每个 Azure AD 都直接随附 domainname.onmicrosoft.com 形式的初始域名。 无法更改或删除初始域名，但可以将企业域名添加到 Azure AD。 例如，你的组织可能具有用来从事商业经营的其他域名和使用公司域名登录的用户。 通过在 Azure AD 中添加自定义域名可以在目录中分配用户熟悉的用户名，例如“alice@contoso.com”。 而不是“alice@<domain name>.onmicrosoft.com”。 过程很简单：
+每个 Azure AD 都直接随附 domainname.onmicrosoft.com 形式的初始域名。无法更改或删除初始域名，但可以将企业域名添加到 Azure AD。 例如，你的组织可能具有用来从事商业经营的其他域名和使用公司域名登录的用户。 通过在 Azure AD 中添加自定义域名可以在目录中分配用户熟悉的用户名，例如“alice@contoso.com”。 而不是“alice@<domain name>.onmicrosoft.com”。 过程很简单：
 
 1. 将自定义域名添加到目录
 2. 在域名注册机构中为域名添加 DNS 条目
@@ -46,10 +46,8 @@ ms.lasthandoff: 08/11/2017
 > [!TIP]
 > 如果计划使用 Azure AD 联合你的本地 Windows Server AD，则需要在运行 Azure AD Connect 工具来同步目录时选中“我计划将此域配置为使用本地 Active Directory 进行单一登录”复选框。 还需要在向导的“Azure AD 域”步骤中注册选择用于与本地目录进行联合的域名。 [这些说明](./connect/active-directory-aadconnect-get-started-custom.md#verify-the-azure-ad-domain-selected-for-federation)中示范了向导中该步骤的大致情形。 如果没有 Azure AD Connect 工具，可以 [在此处下载](http://go.microsoft.com/fwlink/?LinkId=615771)。
 
-添加域名后，Azure AD 必须验证组织是否拥有该域名。 必须先在 DNS 区域文件中添加该域名的 DNS 条目，Azure AD 才能执行此验证。 此任务是在域名注册机构网站上执行的。
-
 ## <a name="add-the-dns-entry-at-the-domain-name-registrar-for-the-domain"></a>在域名注册机构中为域添加 DNS 条目
-在 Azure AD 中使用自定义域名的下一个步骤就是更新域的 DNS 区域文件。 然后 Azure AD 可验证你的组织是否拥有该自定义域名。
+在 Azure AD 中使用自定义域名的下一个步骤就是更新域的 DNS 区域文件。 然后 Azure AD 可验证你的组织是否拥有该自定义域名。 可以使用 [Azure 门户中的 Azure DNS](https://docs.microsoft.com/azure/dns/dns-getstarted-portal) 对 Azure、Office 365 和 Azure 中的外部 DNS 记录进行单点管理。
 
 1. 登录到域的域名注册机构。 如果无权访问域名注册机构以更新 DNS 条目，请让具有此访问权限的个人或团队完成步骤 2 并在完成时通知你。
 2. 通过添加 Azure AD 提供给 DNS 条目来更新域的 DNS 区域文件。 Azure AD 可通过此 DNS 条目验证你是否拥有该域。 DNS 条目不会更改任何行为，例如邮件路由或 Web 托管。

@@ -3,7 +3,7 @@ title: "Azure API 管理中的产品模板 | Microsoft 文档"
 description: "了解如何在 Azure API 管理开发人员门户中自定义产品页面的内容。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 49f9254c-4c5f-4ed4-9c8d-798f44e805ee
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: 393b10042f35afabf00672f9015f714e211a9d43
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: dae757231d8f2ff7fcd8e032d941c0fa9f192796
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API 管理中的产品模板
@@ -29,9 +31,9 @@ ms.openlocfilehash: 393b10042f35afabf00672f9015f714e211a9d43
 -   [产品](#Product)  
   
 > [!NOTE]
->  示例默认模板包含在后面的文档中，但是会因持续改进而有所更改。 导航到所需单个模板以后，即可在开发人员门户中查看实时的默认模板。 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
+>  示例默认模板包含在后面的文档中，但是会因持续改进而有所更改。 通过导航到所需单个模板，可在开发人员门户中查看实时的默认模板。 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
   
-##  <a name="a-nameproductlista-product-list"></a><a name="ProductList"></a> 产品列表  
+##  <a name="ProductList"></a> 产品列表  
  **产品列表**模板可用于自定义开发人员门户中产品列表页的正文。  
   
  ![产品列表](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
@@ -65,7 +67,7 @@ ms.openlocfilehash: 393b10042f35afabf00672f9015f714e211a9d43
 ```  
   
 ### <a name="controls"></a>控制  
- `Product list` 模板使用以下[页面控件](api-management-page-controls.md)。  
+ `Product list` 模板可使用以下[页面控件](api-management-page-controls.md)。  
   
 -   [paging-control](api-management-page-controls.md#paging-control)  
   
@@ -117,7 +119,7 @@ ms.openlocfilehash: 393b10042f35afabf00672f9015f714e211a9d43
 }  
 ```  
   
-##  <a name="a-nameproducta-product"></a><a name="Product"></a> 产品  
+##  <a name="Product"></a> 产品  
  **产品**模板可用于自定义开发人员门户中产品页的正文。  
   
  ![开发人员门户产品页](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
@@ -202,7 +204,7 @@ ms.openlocfilehash: 393b10042f35afabf00672f9015f714e211a9d43
 |--------------|----------|-----------------|  
 |产品|[产品](api-management-template-data-model-reference.md#Product)|指定的产品。|  
 |IsDeveloperSubscribed|布尔值|当前用户是否订阅了此产品。|  
-|SubscriptionState|数字|订阅的状态。 可能的状态包括：<br /><br /> -   `0 - suspended` – 订阅被阻止，订阅服务器无法调用产品的任何 API。<br />-   `1 - active` – 订阅处于活动状态。<br />-   `2 - expired` – 订阅已到到期日期，因此已停用。<br />-   `3 - submitted` – 开发人员已提交订阅请求，但管理员尚未批准或拒绝该请求。<br />-   `4 - rejected` – 管理员已拒绝订阅请求。<br />-   `5 - cancelled` – 开发人员或管理员已取消订阅。|  
+|SubscriptionState|数字|订阅的状态。 可能的状态包括：<br /><br /> -   `0 - suspended` – 订阅被阻止，订阅服务器无法调用产品的任何 API。<br />-   `1 - active` – 订阅处于活动状态。<br />-   `2 - expired` – 订阅已达到其到期日期，因此已停用。<br />-   `3 - submitted` – 开发人员已提交订阅请求，但管理员尚未批准或拒绝该请求。<br />-   `4 - rejected` – 管理员已拒绝订阅请求。<br />-   `5 - cancelled` – 开发人员或管理员已取消订阅。|  
 |限制|数组|此属性已弃用，不应使用。|  
 |DelegatedSubscriptionEnabled|布尔值|是否为此订阅启用了[委派](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/)。|  
 |DelegatedSubscriptionUrl|字符串|委派的订阅 URL（如果启用了委派）。|  
@@ -258,8 +260,3 @@ ms.openlocfilehash: 393b10042f35afabf00672f9015f714e211a9d43
 
 ## <a name="next-steps"></a>后续步骤
 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](api-management-developer-portal-templates.md)。
-
-
-<!--HONumber=Jan17_HO2-->
-
-

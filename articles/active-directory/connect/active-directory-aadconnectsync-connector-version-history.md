@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/18/2017
+ms.date: 08/24/2017
 ms.author: fimguy
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 426f58a24798fd43f5079dd153b9e84d324da622
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 313145f4d8e5faa91fb3504cb0fd0ba87ca2e379
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="connector-version-release-history"></a>连接器版本发行历史记录
@@ -39,7 +39,7 @@ Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接�
 * [Lotus Domino 连接器](active-directory-aadconnectsync-connector-domino.md)参考文档
 
 
-## <a name="116040-aadconnect-11xxx0"></a>1.1.604.0 (AADConnect 1.1.XXX.0)
+## <a name="116040-aadconnect-pending-release"></a>1.1.604.0（AADConnect 等待发布）
 
 
 ### <a name="fixed-issues"></a>已解决的问题：
@@ -74,7 +74,7 @@ Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接�
 ### <a name="enhancements"></a>增强功能：
 
 * 泛型 SQL：
-  * 方案：重新实现：“*”功能
+  * **方案：重新设计实现：** "*"功能
   * 解决方案说明：更改用于[多值引用属性处理](active-directory-aadconnectsync-connector-genericsql.md)的方法。
 
 

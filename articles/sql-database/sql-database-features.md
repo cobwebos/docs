@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 03/03/2017
-ms.author: carlrab; jognanay
+ms.date: 08/25/2017
+ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: 90008cd53e4aba31db6d317d65e1fcff4d3246b1
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 4ef119d5218c844f3949bf4fc17fb320a7cbf7b4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL 数据库功能
@@ -78,6 +78,7 @@ Azure SQL 数据库与 SQL Server 共享通用基本代码，并在数据库级�
 | [文件流](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | 否 |
 | [全文搜索](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) | 不支持第三方断字符 |
 | [函数](https://docs.microsoft.com/sql/t-sql/functions/functions) | 大多数 - 请参阅单个函数 |
+| [图形处理](/sql/relational-databases/graphs/sql-graph-overview) | 是 |
 | [内存中优化](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | 是 - [仅限 Premium Edition](sql-database-in-memory.md) |
 | [JSON 数据支持](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | 是 |
 | [语言元素](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | 大多数 - 请参阅单个元素 |  
@@ -118,7 +119,7 @@ Azure SQL 数据库与 SQL Server 共享通用基本代码，并在数据库级�
 | [系统目录视图](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/catalog-views-transact-sql) | 部分 - 请参阅单个视图 |
 | [表分区](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes) | 是 - 仅限主文件组 |
 | [临时表](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql#temporary-tables) | 仅限本地和数据库范围的全局临时表 |
-| [时态表](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | 是 |
+| [临时表](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | 是 |
 | [Transactions](https://docs.microsoft.com/sql/t-sql/language-elements/transactions-transact-sql) | 否 |
 | [变量](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | 是 | 
 | [透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | 是 |

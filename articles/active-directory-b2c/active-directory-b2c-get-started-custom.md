@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.devlang: na
-ms.date: 04/04/2017
+ms.date: 08/04/2017
 ms.author: joroja;parahk;gsacavdm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 1cc36d1fd40121fed23ab6a84429a303690c2726
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 4f14dbf4b66f10290cd4f98d56a005f97cc6a207
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Azure Active Directory B2C：自定义策略入门
@@ -31,7 +31,8 @@ ms.lasthandoff: 06/08/2017
 
 确保你拥有 Azure AD B2C 租户（用于保存所有用户、应用、策略等资源的容器），然后再继续操作。 如果没有，则需要[创建 Azure AD B2C 租户](active-directory-b2c-get-started.md)。 我们强烈建议所有开发人员在继续下一步之前，先完成 Azure AD B2C 内置策略演练，并使用内置策略配置他们的应用程序。 对策略名称进行略微更改后，应用程序会使用两种类型的策略，以调用自定义策略。
 
-访问自定义策略编辑功能需要将一个有效的 Azure 订阅链接到租户。
+>[!NOTE]
+>访问自定义策略编辑功能需要将一个有效的 Azure 订阅链接到租户。 如果尚未[将 Azure AD B2C 租户链接到 Azure 订阅](active-directory-b2c-how-to-enable-billing.md)，或者你的 Azure 订阅已被禁用，则“标识体验框架”按钮将不可用。
 
 ## <a name="add-signing-and-encryption-keys-to-your-b2c-tenant-for-use-by-custom-policies"></a>将签名和加密密钥添加到 B2C 租户，供自定义策略使用
 
@@ -42,13 +43,13 @@ ms.lasthandoff: 06/08/2017
     b. 然后选择“生成”。<br>
     c. 使用 `TokenSigningKeyContainer` 作为“名称”。 <br> 
     可能会自动添加前缀 `B2C_1A_`。<br>
-    d. 使用 RSA 作为“密钥类型”。<br>
+    d.单击“下一步”。 使用 RSA 作为“密钥类型”。<br>
     e. 对“日期”使用默认值。 <br>
     f. 使用“签名”作为“密钥用法”。<br>
     g. 选择“创建” 。<br>
 4. 如果不存在 B2C_1A_TokenEncryptionKeyContainer，请创建一个：<br>
- a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“添加”。<br>
- b.在“磁贴徽标”下面，选择“删除上传的徽标”。 然后选择“生成”。<br>
+ a. 选择“添加”。<br>
+ b. 然后选择“生成”。<br>
  c. 使用 `TokenEncryptionKeyContainer` 作为“名称”。 <br>
    可能会自动添加前缀 `B2C_1A`_。<br>
  d. 使用 RSA 作为“密钥类型”。<br>
@@ -57,8 +58,8 @@ ms.lasthandoff: 06/08/2017
  g. 选择“创建” 。<br>
 5. 创建 B2C_1A_FacebookSecret。 <br>
 如果已有 Facebook 应用程序机密，请将它作为策略密钥添加到租户。 否则，必须创建包含占位符值的密钥，使策略能够通过验证。<br>
- a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“添加”。<br>
- b.在“磁贴徽标”下面，选择“删除上传的徽标”。 对于“选项”，使用“手动”。<br>
+ a. 选择“添加”。<br>
+ b. 对于“选项”，使用“手动”。<br>
  c. 使用 `FacebookSecret` 作为“名称”。 <br>
  可能会自动添加前缀 `B2C_1A_`。<br>
  d. 在“机密”框中，输入 developers.facebook.com 提供的 FacebookSecret，或输入 `0` 作为占位符。 *这不是 Facebook 应用 ID。* <br>
@@ -83,8 +84,8 @@ Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用�
    * 对于“登录 URL”，使用 `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`，其中 `yourtenant` 是你的 Azure AD B2C 租户域名。
 5. 选择“创建” 。
 6. 创建后，选择新创建的应用程序 IdentityExperienceFramework。<br>
-   a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“属性”。<br>
-   b.在“磁贴徽标”下面，选择“删除上传的徽标”。 复制应用程序 ID 并保存以备后用。
+   * 选择“属性”。<br>
+   * 复制应用程序 ID 并保存以备后用。
 
 ### <a name="create-the-proxyidentityexperienceframework-application"></a>创建 ProxyIdentityExperienceFramework 应用程序
 
@@ -95,8 +96,8 @@ Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用�
    * 对于“重定向 URI”，使用 `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`，其中 `yourtenant` 是你的 Azure AD B2C 租户。
 1. 选择“创建” 。
 1. 创建后，选择应用程序 ProxyIdentityExperienceFramework。<br>
-   a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“属性”。 <br>
-   b.在“磁贴徽标”下面，选择“删除上传的徽标”。 复制应用程序 ID 并保存以备后用。
+   * 选择“属性”。 <br>
+   * 复制应用程序 ID 并保存以备后用。
 1. 选择“所需权限”。
 1. 选择“添加”。
 1. 选择“选择 API”。
@@ -116,11 +117,11 @@ Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用�
 每个初学者包中包含：
 
 * 策略的[基本文件](active-directory-b2c-overview-custom.md#policy-files)。 需要对基本文件进行少量的修改。
-* 策略的[扩展文件](active-directory-b2c-overview-custom.md#policy-files)。  大多数配置更改将在此文件中进行。
-* [信赖方文件](active-directory-b2c-overview-custom.md#policy-files)。 应用程序调用的任务特定文件。
+* 策略的[扩展文件](active-directory-b2c-overview-custom.md#policy-files)。  大多数配置更改会在此文件中进行。
+* [信赖方文件](active-directory-b2c-overview-custom.md#policy-files)是应用程序调用的任务特定文件。
 
 >[!NOTE]
->如果 XML 编辑器支持验证，你可能需要根据初学者包根目录中的 TrustFrameworkPolicy_0.3.0.0.xsd XML 架构文件来验证文件。 XML 架构验证在上传之前会识别错误。
+>如果 XML 编辑器支持验证，则根据初学者包的根目录中的 TrustFrameworkPolicy_0.3.0.0.xsd XML 架构来验证文件。 XML 架构验证在上传之前会识别错误。
 
  让我们开始吧：
 
@@ -166,7 +167,7 @@ Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用�
 
 1. 在 [Azure 门户](https://portal.azure.com) 中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md) ，然后打开“Azure AD B2C”边栏选项卡。
 2. 选择“标识体验框架”。
-3. 选择“上传策略”以上传策略文件。
+3. 选择“上传策略”。
 
     >[!WARNING]
     >必须按以下顺序上传自定义策略文件：
@@ -176,7 +177,7 @@ Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用�
 3. 上传 SignUpOrSignIn.xml。
 4. 上传其他策略文件。
 
-上传某个文件时，将在策略文件的名称前面加上 `B2C_1A_`。
+上传某个文件时，会在策略文件的名称前面加上 `B2C_1A_`。
 
 ## <a name="test-the-custom-policy-by-using-run-now"></a>使用“立即运行”测试自定义策略
 

@@ -12,14 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 8/24/2017
 ms.author: asgang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: cf568d20f60709dbb64774bcbcc1b4aa6c43d8d3
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 03127c8f4841b67436c4819628319705af0b2cd5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="replicate-a-multi-tier-dynamics-ax-application-using-azure-site-recovery"></a>使用 Azure Site Recovery 复制多层 Dynamics AX 应用程序
@@ -27,11 +26,11 @@ ms.lasthandoff: 06/16/2017
 ## <a name="overview"></a>概述
 
 
-Microsoft Dynamics AX 是在企业中最广泛使用的 ERP 解决方案之一，可用于标准化不同位置的流程，管理资源及简化符合性。 假设应用程序是组织的业务关键型应用程序，应确保在发生任何灾难时，该应用程序都能尽快恢复正常运行。
+Microsoft Dynamics AX 是在企业中最广泛使用的 ERP 解决方案之一，可用于标准化不同位置的流程，管理资源及简化符合性。 假设应用程序是组织的业务关键型应用程序，应确保在发生任何灾难时，该应用程序都能够尽快恢复正常运行。
 
 目前，Microsoft Dynamics AX 不提供任何现成的灾难恢复功能。 Microsoft Dynamics AX 包括许多服务器组件，例如应用程序对象服务器、Active Directory (AD)、SQL 数据库服务器、SharePoint Server、Reporting Server等。手动管理其中每个组件的灾难恢复不仅费用高昂，而且还容易出错。
 
-本文详细介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 为 Dynamics AX 应用程序创建灾难恢复解决方案。 此外，还介绍使用一键式恢复计划的计划内/计划外/测试故障转移，以及支持的配置和先决条件。
+本文详细介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 为 Dynamics AX 应用程序创建灾难恢复解决方案。 此外，还介绍了使用一键式恢复计划的计划内/计划外/测试故障转移，以及支持的配置和先决条件。
 Microsoft Dynamics AX 已全面测试、认证并推荐基于 Azure Site Recovery 的灾难恢复解决方案。
 
 
@@ -59,7 +58,7 @@ Microsoft Dynamics AX 已全面测试、认证并推荐基于 Azure Site Recover
 **VMware** | 是 | 是
 **物理服务器** | 是 | 是
 
-## <a name="enable-dr-of-dynamics-ax-application-using-asr"></a>使用 ASR 为 Dynamics AX 应用程序启用 DR
+## <a name="enable-dr-of-dynamics-ax-application-using-azure-site-recovery"></a>使用 Azure Site Recovery 为 Dynamics AX 应用程序启用 DR
 ### <a name="protect-your-dynamics-ax-application"></a>保护 Dynamics AX 应用程序
 若要实现完整应用程序复制与恢复，Dynamics AX 的每个组件都需要受到保护。 本部分的内容：
 
@@ -103,7 +102,7 @@ Microsoft Dynamics AX 已全面测试、认证并推荐基于 Azure Site Recover
 ### <a name="4-configure-networking"></a>4.配置网络
 配置 VM 计算和网络设置
 
-对于 AX 客户端和 AOS VM，请在 ASR 中配置网络设置，以便在故障转移后将 VM 网络附加到适当的 DR 网络。 确保可将这些层的 DR 网络路由到 SQL 层。
+对于 AX 客户端和 AOS VM，请在 Azure Site Recovery 中配置网络设置，以便在故障转移后将 VM 网络附加到适当的 DR 网络。 确保可将这些层的 DR 网络路由到 SQL 层。
 
 可以在已复制的项中选择要配置网络设置的 VM，如以下快照中所示。
 
@@ -115,9 +114,9 @@ Microsoft Dynamics AX 已全面测试、认证并推荐基于 Azure Site Recover
 
 ### <a name="5-creating-a-recovery-plan"></a>5.创建恢复计划
 
-可以在 ASR 中创建恢复计划，将故障转移过程自动化。 在恢复计划中添加应用层和 Web 层。 在不同的组中将它们排序，以便先关闭前端，再关闭应用层。
+可以在 Azure Site Recovery 中创建恢复计划，将故障转移过程自动化。 在恢复计划中添加应用层和 Web 层。 在不同的组中将它们排序，以便先关闭前端，再关闭应用层。
 
-1)  在订阅中选择 ASR 保管库，然后单击“恢复计划”磁贴。
+1)  在订阅中选择 Azure Site Recovery 保管库，并单击“恢复计划”磁贴。
 
 2)  单击“+ 恢复计划”并指定名称。
 
@@ -125,7 +124,7 @@ Microsoft Dynamics AX 已全面测试、认证并推荐基于 Azure Site Recover
 
 ![创建恢复计划](./media/site-recovery-dynamics-ax/recoveryplancreation1.png)
 
-4)  选择在包含在恢复计划中的 AOS 和客户端 VM，然后单击 ✓。
+4)  选择在包含在恢复计划中的 AOS 和客户端 VM，并单击 ✓。
 ![创建恢复计划](./media/site-recovery-dynamics-ax/selectvms.png)
 
 
@@ -145,7 +144,7 @@ Microsoft Dynamics AX 已全面测试、认证并推荐基于 Azure Site Recover
 
 *3.脚本：添加负载均衡器（仅限 E-A）*AOS VM 组启动后，请添加一个脚本（通过 Azure 自动化），以便在其中添加负载均衡器。 可以使用脚本完成此任务。 请参阅[如何为多层应用程序 DR 添加负载均衡器](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/)一文
 
-*4.故障转移组 2：故障转移 AX 客户端 VM*
+*4.故障转移组 2：故障转移 AX 客户端 VM。*
 在执行恢复计划的过程中故障转移 Web 层 VM。
 
 
@@ -167,7 +166,7 @@ Microsoft Dynamics AX 已全面测试、认证并推荐基于 Azure Site Recover
 1.  转到 Azure 门户并选择 Site Recovery 保管库。
 2.  单击针对 Dynamics AX 创建的恢复计划。
 3.  单击“故障转移”并选择“故障转移”。
-4.  选择目标网络，然后单击 ✓ 开始故障转移过程。
+4.  选择目标网络，并单击 ✓ 开始故障转移过程。
 
 执行故障转移时，请遵循[此指南](site-recovery-failover.md)。
 
