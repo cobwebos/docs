@@ -75,8 +75,7 @@ ms.lasthandoff: 08/16/2017
 
 ## <a name="task-4---configure-dns-to-access-the-managed-domain-from-the-internet"></a>任务 4 - 配置 DNS 以便从 Internet 访问托管域
 > [!NOTE]
-> 
-            **可选任务** - 如果不打算使用 LDAPS 来通过 Internet 访问托管域，请跳过此配置任务。
+> **可选任务** - 如果不打算使用 LDAPS 来通过 Internet 访问托管域，请跳过此配置任务。
 >
 >
 
