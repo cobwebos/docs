@@ -1,6 +1,6 @@
 # [Cloud Foundry 文档](index.md)
 # 快速入门
-## [应用商店模板](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry)
+## [Marketplace 模板](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry)
 # 教程
 ## [将 CF 应用部署到 Azure](/azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app)
 ## [Azure 上的 CloudFoundry](/azure/virtual-machines/linux/cloudfoundry-get-started)

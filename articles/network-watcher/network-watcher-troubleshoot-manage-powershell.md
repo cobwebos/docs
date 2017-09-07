@@ -3,7 +3,7 @@ title: "对 Azure 虚拟网络网关和连接进行故障排除 - PowerShell | M
 description: "此页说明了如何使用 Azure 网络观察程序对 PowerShell cmdlet 进行故障排除"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: f6f0a813-38b6-4a1f-8cfc-1dfdf979f595
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: HT
 ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 0bdffbac18d1d236b7674feed4dbc784e50e0ea8

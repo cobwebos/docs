@@ -3,7 +3,7 @@ title: "对 Azure 虚拟网络网关和连接进行故障排除 — Azure CLI 2.
 description: "此页说明如何使用 Azure 网络观察程序对 Azure CLI 2.0 进行故障排除"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 2838bc61-b182-4da8-8533-27db8fdbd177
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: HT
 ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: e1d56317b10fa738a3d7089f6c4f357159fe2c2b

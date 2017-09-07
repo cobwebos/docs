@@ -3,7 +3,7 @@ title: "使用 Azure 网络观察程序管理数据包捕获 - REST API | Micros
 description: "此页说明如何使用 Azure REST API 管理网络观察程序的数据包捕获功能"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 53fe0324-835f-4005-afc8-145eeb314aeb
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: HT
 ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 49ec20802a252258d8493eb26510270b925e851a
