@@ -3,7 +3,7 @@ title: "自定义 Azure Active Directory 中的登录页 | Microsoft Docs"
 description: "了解如何在 Azure 登录页中添加公司品牌元素"
 services: active-directory
 documentationcenter: 
-author: jeffgilb
+author: curtand
 manager: femila
 editor: 
 ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2017
-ms.author: jeffgilb
+ms.date: 09/06/2017
+ms.author: curtand
+ms.reviewer: kexia
 custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: bddf2542eecce8bdeccda6053203bf2c2ba0ffb2
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: 6bfce3d4ec243779229cc4f39e1c22149229a66a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="quickstart-add-company-branding-to-your-sign-in-page-in-azure-ad"></a>快速入门：在 Azure AD 登录页中添加公司品牌元素
@@ -62,7 +63,7 @@ ms.lasthandoff: 08/15/2017
 ### <a name="sign-in-page-image"></a>登录页图像  
 说明 | 约束 | 建议
 ------- | ------- | ----------
-它显示在登录页的背景中，定位在可视空间的中心，并可通过缩放和裁剪来适应浏览器窗口。    <br>在诸如手机这类窄屏上，将不会显示此图像。<br>当页面加载时，我们的代码将对此图像应用一个不透明度为 0.55 的黑色蒙板。 | JPG 或 PNG<br>图像尺寸：1920x1080 px<br>文件大小：&gt; 300 KB | <br>在没有鲜明主题的位置处使用图像。 不透明的登录窗体出现在此图像的中心之上，可以覆盖图像的任何部分，具体取决于浏览器窗口的大小。<br>尽可能地缩小文件大小，以确保快速加载。 
+它显示在登录页的背景中，定位在可视空间的中心，并可通过缩放和裁剪来适应浏览器窗口。    <br>在诸如手机这类窄屏上，将不会显示此图像。<br>当页面加载时，我们的代码将对此图像应用一个不透明度为 0.55 的黑色蒙板。 | JPG 或 PNG<br>图像尺寸：1920x1080 px<br>文件大小：&lt; 300 KB | <br>在没有鲜明主题的位置处使用图像。 不透明的登录窗体出现在此图像的中心之上，可以覆盖图像的任何部分，具体取决于浏览器窗口的大小。<br>尽可能地缩小文件大小，以确保快速加载。 
 
 ### <a name="background-color"></a>背景色
 说明 | 约束 | 建议

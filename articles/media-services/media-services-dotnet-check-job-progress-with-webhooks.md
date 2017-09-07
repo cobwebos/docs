@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 615b1886137031b405eb512f2b175de34d0e1115
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: a54ea21ea2d5ce62aabaeca7c5d25281a7d3f4be
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure Webhook 通过 .NET 监视媒体服务作业通知
@@ -71,13 +71,13 @@ ms.lasthandoff: 08/30/2017
 3. 选择“通用 Webhook - C#”。
 4. 为 Webhook 命名，然后按“创建”。
 
-## <a name="files"></a>文件
+### <a name="files"></a>文件
 
 Azure 函数与代码文件以及本部分所述的其他文件相关联。 默认情况下，函数与 **function.json** 和 **run.csx** (C#) 文件相关联。 需要添加 **project.json** 文件。 本部分的余下内容介绍这些文件的定义。
 
 ![文件](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
-### <a name="functionjson"></a>function.json
+#### <a name="functionjson"></a>function.json
 
 Function.json 文件定义函数绑定和其他配置设置。 运行时使用此文件确定要监视的事件，以及如何将数据传入函数执行和从函数执行返回数据。 
 
@@ -100,7 +100,7 @@ Function.json 文件定义函数绑定和其他配置设置。 运行时使用�
 }
 ```
 
-### <a name="projectjson"></a>project.json
+#### <a name="projectjson"></a>project.json
 
 project.json 文件包含依赖项。 
 
@@ -119,7 +119,7 @@ project.json 文件包含依赖项。
 }
 ```
     
-### <a name="runcsx"></a>run.csx
+#### <a name="runcsx"></a>run.csx
 
 此部分中的代码演示一个作为 Webhook 的 Azure 函数的实现。 在此示例中，函数侦听来自媒体服务通知的 webhook 回调，并在作业完成之后发布输出资产。
 
@@ -346,7 +346,7 @@ internal sealed class NotificationMessage
 
 保存并运行函数。
 
-## <a name="function-output"></a>函数输出
+### <a name="function-output"></a>函数输出
 
 Webhook 触发后，上述示例会生成以下输出，值会有所变化。
 

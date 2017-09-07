@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 9fb4d440fad8e4c5af8030c91e6871c6418ab9be
+ms.translationtype: HT
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 55e1cd90df0e4413ce027361c636257d823a50d6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="storsimple-software-high-availability-and-networking-requirements"></a>StorSimple 软件、高可用性和网络要求
@@ -37,7 +36,7 @@ ms.lasthandoff: 06/08/2017
 
 | 支持的操作系统 | 所需版本 | 其他要求/说明 |
 | --- | --- | --- |
-| Windows Server |2008R2 SP1、2012、2012R2、2016 |仅支持将 StorSimple iSCSI 卷用于以下 Windows 磁盘类型：<ul><li>基本磁盘上的简单卷</li><li>动态磁盘上的简单和镜像卷</li></ul>仅支持操作系统中原本就存在的软件 iSCSI 发起程序。 不支持硬件 iSCSI 发起程序。<br></br>如果使用 StorSimple iSCSI 卷，则支持 Windows Server 2012 和 2016 的精简预配和 ODX 功能。<br><br>StorSimple 可以创建既精简预配和完全预配的卷。 但无法创建部分预配的卷。<br><br>重新格式化精简预配的卷可能需要很长时间。 建议删除该卷，然后新建一个卷而不是重新格式化。 但是，如果你仍希望重新格式化卷：<ul><li>请在重新格式化之前运行以下命令，以免造成空间回收延迟： <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>格式化完成后，请使用以下命令重新启用空间回收功能：<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>如 [KB 2878635](https://support.microsoft.com/kb/2870270) 中所述，对 Windows Server 计算机应用 Windows Server 2012 修补程序。</li></ul></li></ul></ul> 如果要配置 StorSimple Snapshot Manager 或 StorSimple Adapter for SharePoint，请转到[可选组件的软件要求](#software-requirements-for-optional-components)。 |
+| Windows Server |2008R2 SP1、2012、2012R2、2016 |仅支持将 StorSimple iSCSI 卷用于以下 Windows 磁盘类型：<ul><li>基本磁盘上的简单卷</li><li>动态磁盘上的简单和镜像卷</li></ul>仅支持操作系统中原本就存在的软件 iSCSI 发起程序。 不支持硬件 iSCSI 发起程序。<br></br>如果使用 StorSimple iSCSI 卷，则支持 Windows Server 2012 和 2016 的精简预配和 ODX 功能。<br><br>StorSimple 可以创建既精简预配和完全预配的卷。 但无法创建部分预配的卷。<br><br>重新格式化精简预配的卷可能需要很长时间。 建议删除该卷，并新建一个卷而不是重新格式化。 但是，如果仍希望重新格式化卷：<ul><li>请在重新格式化之前运行以下命令，以免造成空间回收延迟： <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>格式化完成后，请使用以下命令重新启用空间回收功能：<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>如 [KB 2878635](https://support.microsoft.com/kb/2870270) 中所述，对 Windows Server 计算机应用 Windows Server 2012 修补程序。</li></ul></li></ul></ul> 如果要配置 StorSimple Snapshot Manager 或 StorSimple Adapter for SharePoint，请转到[可选组件的软件要求](#software-requirements-for-optional-components)。 |
 | VMWare ESX |5.5 和 6.0 |支持将 VMWare vSphere 作为 iSCSI 客户端。 StorSimple 设备上的 VMware vSphere 支持 VAAI 块功能。 |
 | Linux RHEL/CentOS |5、6 和 7 |支持配有开放 iSCSI 发起程序版本 5、6 和 7 的 Linux iSCSI 客户端。 |
 | Linux |SUSE Linux 11 | |
@@ -56,7 +55,7 @@ ms.lasthandoff: 06/08/2017
 | StorSimple Adapter for SharePoint |Windows Server 2008R2 SP1、2012、2012R2 |<ul><li>仅 SharePoint 2010 和 SharePoint 2013 支持 StorSimple Adapter for SharePoint。</li><li>RBS 要求使用 SQL Server Enterprise Edition、版本 2008 R2 或 2012。</li></ul> |
 
 ## <a name="networking-requirements-for-your-storsimple-device"></a>StorSimple 设备的网络要求
-你的 StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口以允许传输 iSCSI、云和管理流量。 下表列出了需要在防火墙中打开的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 *出*或*出站*表示 StorSimple 设备从外部（超出部署范围）发送数据的方向：例如，到 Internet 的出站。
+StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口以允许传输 iSCSI、云和管理流量。 下表列出了需要在防火墙中打开的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 *出*或*出站*表示 StorSimple 设备从外部（超出部署范围）发送数据的方向：例如，到 Internet 的出站。
 
 | 端口号 <sup>1、2</sup> | 入或出 | 端口范围 | 必选 | 说明 |
 | --- | --- | --- | --- | --- |
@@ -81,7 +80,7 @@ ms.lasthandoff: 06/08/2017
 > 
 
 ### <a name="url-patterns-for-firewall-rules"></a>防火墙规则的 URL 模式
-通常，网络管理员可以基于 URL 模式配置高级防火墙规则，以筛选入站和出站流量。 StorSimple 设备和 StorSimple Manager 服务取决于其他 Microsoft 应用程序，如 Azure 服务总线、Azure Active Directory 访问控制、存储帐户和 Microsoft 更新服务器。 与这些应用程序相关联的 URL 模式可用于配置防火墙规则。 请务必了解可以更改与这些应用程序相关联的 URL 模式。 反之，这将要求网络管理员在需要时为 StorSimple 监视和更新防火墙规则。
+通常，网络管理员可以基于 URL 模式配置高级防火墙规则，以筛选入站和出站流量。 StorSimple 设备和 StorSimple Manager 服务取决于其他 Microsoft 应用程序，如 Azure 服务总线、Azure Active Directory 访问控制、存储帐户和 Microsoft 更新服务器。 与这些应用程序相关联的 URL 模式可用于配置防火墙规则。 请务必了解可以更改与这些应用程序相关联的 URL 模式。 反之，这会要求网络管理员在需要时为 StorSimple 监视和更新防火墙规则。
 
 绝大多数情况下，建议基于 StorSimple 固定 IP 地址为出站流量设置防火墙规则。 但是，下面的信息可用于设置创建安全环境所需的高级防火墙规则。
 
@@ -93,7 +92,7 @@ ms.lasthandoff: 06/08/2017
 #### <a name="url-patterns-for-azure-portal"></a>Azure 门户的 URL 模式
 | URL 模式 | 组件/功能 | 设备 IP |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` |StorSimple 管理器服务<br>访问控制服务<br>Azure 服务总线 |启用云的网络接口 |
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |StorSimple Device Manager 服务<br>访问控制服务<br>Azure 服务总线<br>身份验证服务 |启用云的网络接口 |
 | `https://*.backup.windowsazure.com` |设备注册 |仅限 DATA 0 |
 | `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |证书吊销 |启用云的网络接口 |
 | `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure 存储帐户和监视 |启用云的网络接口 |
@@ -104,7 +103,7 @@ ms.lasthandoff: 06/08/2017
 #### <a name="url-patterns-for-azure-government-portal"></a>Azure Government 门户的 URL 模式
 | URL 模式 | 组件/功能 | 设备 IP |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*` |StorSimple 管理器服务<br>访问控制服务<br>Azure 服务总线 |启用云的网络接口 |
+| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*` <br>`https://login-us.microsoftonline.com` |StorSimple Device Manager 服务<br>访问控制服务<br>Azure 服务总线<br>身份验证服务 |启用云的网络接口 |
 | `https://*.backup.windowsazure.us` |设备注册 |仅限 DATA 0 |
 | `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |证书吊销 |启用云的网络接口 |
 | `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure 存储帐户和监视 |启用云的网络接口 |
@@ -201,18 +200,18 @@ StorSimple 设备包括冗余的热插拔控制器模块。 控制器模块以�
 
 * 请确保始终都安装有两个控制器模块。
 * 如果控制器模块发生故障，立即请求更换。
-* 仅在有更换品并准备好安装时，才能移除发生故障的控制器模块。 持续时间过长的模块移除过程将会影响气流，进而影响系统冷却。
+* 仅在有更换品并准备好安装时，才能移除发生故障的控制器模块。 持续时间过长的模块移除过程会影响气流，进而影响系统冷却。
 * 请确保到两个控制器模块的网络连接相同并且连接的网络接口具有相同的网络配置。
 * 如果控制器模块发生故障或需要更换，在更换发生故障的控制器模块之前，请确保另一个控制器模块处于主动状态。 若要验证控制器是否处于主动状态，请转到 [Identify the active controller on your device](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device)（识别设备上的主动控制器）。
 * 不要同时移除两个控制器模块。 如果正在进行控制器故障转移，请不要关闭备用控制器模块或从机箱中移除它。
-* 控制器故障转移完成后，请等待至少五分钟，然后再移除其中任意一个控制器模块。
+* 控制器故障转移完成后，请等待至少五分钟，再移除其中任意一个控制器模块。
 
 #### <a name="network-interfaces"></a>网络接口
 每个 StorSimple 设备控制器模块都有四个 1 千兆位和两个 10 千兆位以太网网络接口。
 
 * 请确保到两个控制器模块的网络连接相同，并且控制器模块接口连接的网络接口具有相同的网络配置。
 * 如果可能，请在不同的交换机中部署网络连接，确保在发生网络设备故障时的服务可用性。
-* 拔出唯一或剩余的最后一个启用 iSCSI 的接口（已分配 IP）时，先禁用此接口，然后再拔出电缆。 如果先拔出此接口，将导致主动控制器故障转移到被动控制器。 如果与被动控制器对应的接口也被拔出，则两个控制器将在选定一个控制器之前多次重新启动。
+* 拔出唯一或剩余的最后一个启用 iSCSI 的接口（已分配 IP）时，先禁用此接口，再拔出电缆。 如果先拔出此接口，将导致主动控制器故障转移到被动控制器。 如果与被动控制器对应的接口也被拔出，则两个控制器会在选定一个控制器之前多次重新启动。
 * 从每个控制器模块将至少两个 DATA 接口连接到网络。
 * 如果已启用两个 10 GbE 接口，请将它们部署在不同的交换机上。
 * 如果可能，请在服务器上使用 MPIO，确保服务器可以容许链接、网络或接口故障。

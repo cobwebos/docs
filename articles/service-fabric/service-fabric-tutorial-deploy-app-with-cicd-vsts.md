@@ -9,16 +9,17 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/09/2017
 ms.author: ryanwi
+ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 631f9794994530092d05a33b06ebf8c07f331649
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 07e55117d92e2780ea0c2ec24af04832f3f704a7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -101,7 +102,7 @@ Team Services 发布定义描述了将应用程序程序包部署到群集的工
 
 选择“保存并排队”，并输入“托管 VS2017”作为“代理队列”。 选择“排队”，手动启动生成。  生成还会触发推送或签入。
 
-若要检查生成进度，请切换到“生成”选项卡。  在验证生成成功执行后，定义用于将应用程序部署到群集的发布定义。 
+若要检查生成进度，请切换到“生成”选项卡。在验证生成成功执行后，定义用于将应用程序部署到群集的发布定义。 
 
 ### <a name="create-a-release-definition"></a>创建发布定义  
 
