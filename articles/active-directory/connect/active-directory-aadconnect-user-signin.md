@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 99df1c65ee59a3c12e8818d9069a8b487839b08d
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: da517c096357bb8db4334715fa46aa209c273f22
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect 用户登录选项
@@ -104,7 +104,7 @@ Azure Active Directory (Azure AD) Connect 可让用户使用同一组密码登�
 ### <a name="user-principal-name-in-azure-ad"></a>Azure AD 中的用户主体名
 Azure AD Connect 向导使用 userPrincipalName 属性，或让你从本地指定（在自定义安装中）要用作 Azure AD 中的用户主体名的属性。 这是用于登录 Azure AD 的值。 如果 userPrincipalName 属性的值不对应于 Azure AD 中已验证的域，则 Azure AD 会将该值替换为默认的 .onmicrosoft.com 值。
 
-Azure Active Directory 中的每个目录随附内置域名，格式为 contoso.onmicrosoft.com，方便你开始使用 Azure 或其他 Microsoft 服务。 可以使用自定义域来改善和简化登录体验。 有关 Azure AD 中的自定义域名以及如何验证域的信息，请阅读[将自定义域名添加到 Azure Active Directory](../add-custom-domain.md#add-your-custom-domain)。
+Azure Active Directory 中的每个目录随附内置域名，格式为 contoso.onmicrosoft.com，方便你开始使用 Azure 或其他 Microsoft 服务。 可以使用自定义域来改善和简化登录体验。 有关 Azure AD 中的自定义域名以及如何验证域的信息，请阅读[将自定义域名添加到 Azure Active Directory](../add-custom-domain.md#add-the-custom-domain-name-to-your-directory)。
 
 ## <a name="azure-ad-sign-in-configuration"></a>Azure AD 登录配置
 ### <a name="azure-ad-sign-in-configuration-with-azure-ad-connect"></a>使用 Azure AD Connect 配置 Azure AD 登录
@@ -116,7 +116,7 @@ Azure AD 登录页列出了为本地 Active directory 定义的 UPN 后缀，并
 | 状态 | 说明 | 所需操作 |
 |:--- |:--- |:--- |
 | 已验证 |Azure AD Connect 在 Azure AD 中找到匹配的已验证域。 此域的所有用户均可使用其本地凭据登录。 |无需采取任何措施。 |
-| 未验证 |Azure AD Connect 在 Azure AD 中找到了匹配的但未验证的自定义域。 如果域未验证，则在同步后此域的用户的 UPN 后缀将更改为默认的 .onmicrosoft.com 后缀。 | [在 Azure AD 中验证自定义域。](../add-custom-domain.md#verify-the-domain-name-with-azure-ad) |
+| 未验证 |Azure AD Connect 在 Azure AD 中找到了匹配的但未验证的自定义域。 如果域未验证，则在同步后此域的用户的 UPN 后缀将更改为默认的 .onmicrosoft.com 后缀。 | [在 Azure AD 中验证自定义域。](../add-custom-domain.md#verify-the-custom-domain-name-in-azure-ad) |
 | 未添加 |Azure AD Connect 未找到对应于 UPN 后缀的自定义域。 如果未在 Azure 中添加域且域未进行验证，则此域的用户的 UPN 后缀将更改为默认的 .onmicrosoft.com 后缀。 | [添加和验证与 UPN 后缀相对应的自定义域。](../add-custom-domain.md) |
 
 Azure AD 登录页列出了针对本地 Active Directory 定义的 UPN 后缀，以及 Azure AD 中对应的自定义域与当前验证状态。 在自定义安装中，现在可以在“Azure AD 登录”页上选择用户主体名的属性。
