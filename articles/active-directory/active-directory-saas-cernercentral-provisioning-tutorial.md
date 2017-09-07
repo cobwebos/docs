@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: asmalser-msft
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 8f9c3fa677a93be109bcf423af651a5cd91c7679
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 84613b7f8d7bd031d492a62da0bc53be96ac45a3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 
@@ -105,9 +105,9 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
    * 在“租户 URL”字段中，输入以下格式的 URL，将“User-Roster-Realm-ID”替换为在第 4 步中获取的领域 ID。
 
-> 沙盒：https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/Users 
+> 沙盒：https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
-> 生产：https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/Users 
+> 生产：https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
    * 在“密钥标记”字段中，输入在第 3 步中生成的 OAuth 持有者令牌并单击“测试连接”。
 

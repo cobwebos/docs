@@ -1,5 +1,5 @@
 ---
-title: "Azure 中 IaaS 工作负荷的安全性最佳实践 | Microsoft Docs"
+title: "Azure 中 IaaS 工作负荷的安全性最佳实践 | Microsoft 文档"
 description: " 将工作负荷迁移到 Azure IaaS 为重新评估设计带来了机会 "
 services: security
 documentationcenter: na
@@ -12,16 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/29/2017
+ms.date: 08/29/2017
 ms.author: barclayn
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: b05ab20087c9bb391be7317b47d6dc2565206947
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: f93211d289553b7a8afbe8c17fa4847f3d4585a8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 08/30/2017
 
 ---
-
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure 中 IaaS 工作负荷的安全性最佳实践
 
 在开始考虑将工作负荷移到 Azure 基础结构即服务 (IaaS) 时，你可能会意识到一些注意事项似曾相识。 可能在保护虚拟环境方面有一定的经验。 迁移到 Azure IaaS 后，可以运用保护虚拟环境方面的专业知识，使用一组新的选项来帮助保护资产。
@@ -40,11 +39,11 @@ ms.lasthandoff: 08/22/2017
 
 组织通常成为网络攻击的牺牲品，原因在于管理员使用提升了权限的帐户执行操作。 虽然通常这并非出于恶意，只是因为现有的配置和进程允许他们执行此操作。 大多数用户从概念性角度了解这些操作的风险，但仍会选择执行这些操作。
 
-查看电子邮件和浏览 Internet 等操作看似没有风险。 但是，恶意行动者会使用浏览活动（特别是特制电子邮件）或其他技术获得企业的访问权限，造成提升权限的帐户泄露。 强烈建议使用安全管理工作站执行所有 Azure 管理任务，以此减少意外泄露。
+查看电子邮件和浏览 Internet 等操作看似没有风险。 但它们可能会公开提升的帐户，从而受到恶意参与者的破坏。 浏览活动、特制电子邮件或其他技术可以用来访问企业。 强烈建议使用安全管理工作站 (SAW) 来执行所有 Azure 管理任务。 SAW 是减少意外泄露的一种方式。
 
-特权访问工作站 (PAW) 为敏感任务提供专用操作系统，使其免受 Internet 攻击和威胁向量攻击。 从日常使用的工作站和设备中分离这些敏感任务和帐户可提供强大的保护，使其免受网络钓鱼攻击、应用程序和 OS 漏洞攻击、各种模拟攻击和凭据盗窃攻击（例如按键日志记录、哈希传递和票证传递）。
+特权访问工作站 (PAW) 为敏感任务提供专用操作系统，使其免受 Internet 攻击和威胁向量攻击。 将这些敏感的任务和帐户与日常使用的工作站及设备相分离，可提供有力的保护。 此分离操作可以限制网络钓鱼攻击、应用程序和 OS 漏洞、各种模拟攻击和凭证被盗攻击的影响。 （击键记录、哈希传递和票证传递）
 
-PAW 方法是获得广泛认可的推荐做法的延伸，使用不同于标准用户帐户的单独分配的管理帐户。 PAW 为这些敏感帐户提供可信的工作站。
+PAW 方法是获得广泛认可的推荐做法的延伸，以使用单独分配的管理帐户。 管理帐户不同于标准用户帐户。 PAW 为这些敏感帐户提供可信的工作站。
 
 有关详细信息和实现指南，请参阅[特权访问工作站](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/privileged-access-workstations)。
 
@@ -66,7 +65,7 @@ PAW 方法是获得广泛认可的推荐做法的延伸，使用不同于标准�
 
 ## <a name="limit-and-constrain-administrative-access"></a>限制和约束管理访问
 
-保护可以管理 Azure 订阅的帐户极其重要。 泄露任何这些帐户都会使可能采取的所有其他步骤的值无效，以确保数据的保密性和完整性。 如 [Edward Snowden](https://en.wikipedia.org/wiki/Edward_Snowden) 最近所述，机密信息的泄漏、内部攻击会为任何组织的整体安全性带来巨大威胁。
+保护可以管理 Azure 订阅的帐户极其重要。 泄露任何这些帐户都会使可能采取的所有其他步骤的值无效，以确保数据的保密性和完整性。 如 [Edward Snowden](https://en.wikipedia.org/wiki/Edward_Snowden) 最近所阐述的，内部攻击会为任何组织的整体安全性带来巨大威胁。
 
 应该遵循以下类似条件对具有管理权限的人员进行评估：
 
@@ -226,10 +225,7 @@ Microsoft 会在通过 FIPS 140-2 第 2 级验证的 HSM（硬件和固件）中
 
 ![Operations Management Suite 安全基准](./media/azure-security-iaas/oms-security-baseline.png)
 
-
-
 ## <a name="next-steps"></a>后续步骤
-
 
 * [Azure 安全团队博客](https://blogs.msdn.microsoft.com/azuresecurity/)
 * [Microsoft 安全响应中心](https://technet.microsoft.com/library/dn440717.aspx)

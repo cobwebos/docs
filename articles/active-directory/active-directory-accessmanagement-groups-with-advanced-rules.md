@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: curtand
-ms.reviewer: rodejo
+ms.reviewer: kairaz.contractor
+ms.custom: oldportal
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: b9b5ddf42958a2b4e241d0252101d979009e7dc0
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: ae2a2e477137bc117111b147e1f088d528a55de5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 
@@ -29,7 +30,7 @@ ms.lasthandoff: 07/25/2017
 当用户或设备的任何属性发生更改时，系统会评估目录中的所有动态组规则，以查看该更改是否会触发任何组添加或删除。 如果用户或设备满足组的规则，它们将添加为该组的成员。 如果用户或设备不再满足该规则，则会将其删除。
 
 > [!NOTE]
-> - 你可以为安全组或 Office 365 组中的动态成员身份设置规则。
+> - 可以为安全组或 Office 365 组中的动态成员身份设置规则。
 >
 > - 此功能需要将每个用户成员的 Azure AD Premium P1 许可证至少添加到一个动态组。
 >
@@ -38,12 +39,12 @@ ms.lasthandoff: 07/25/2017
 > - 目前不能基于所有者用户的属性创建设备组。 设备成员身份规则只能引用目录中设备对象的直接属性。
 
 ## <a name="to-create-an-advanced-rule"></a>创建高级规则
-1. 在 [Azure 经典门户](https://manage.windowsazure.com)中，选择“Active Directory”，然后打开你的组织的目录。
-2. 选择“组”选项卡，然后打开要编辑的组。
+1. 在 [Azure 经典门户](https://manage.windowsazure.com)中，选择“Active Directory”，然后打开组织的目录。
+2. 选择“组”选项卡，并打开要编辑的组。
 3. 选择“配置”选项卡，然后选择“高级规则”选项，再在文本框中输入高级规则。
 
 ## <a name="constructing-the-body-of-an-advanced-rule"></a>构造高级规则的正文
-你可以为动态组成员身份创建的高级规则，本质上是一种由三部分组成并生成 true 或 false 结果的二进制表达式。 这三部分如下：
+可以为动态组成员身份创建的高级规则，本质上是一种由三部分组成并生成 true 或 false 结果的二进制表达式。 这三部分如下：
 
 * 左侧参数
 * 二进制运算符
@@ -188,13 +189,14 @@ user.mail –ne null
 | 属性 | 允许的值 | 使用情况 |
 | --- | --- | --- |
 | otherMails |任意字符串值 |(user.otherMails -contains "alias@domain") |
+
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
 
 ## <a name="multi-value-properties"></a>多值属性
 允许的操作
 
-* -any（当集合中至少有一项符合条件时成立）
-* -all（当集合中的所有项都符合条件时成立）
+* -any（当集合中至少有一项符合条件时满足条件）
+* -all（当集合中的所有项都符合条件时满足条件）
 
 | 属性 | 值 | 使用情况 |
 | --- | --- | --- |
@@ -237,7 +239,7 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber  
 
-可以通过使用图形资源管理器查询用户的属性，以及通过搜索属性名称来查找自定义属性名称。
+可以通过使用图形资源管理器查询用户的属性，以及通过搜索属性名称来查找自定义属性名称。 目前我们不支持从本地 Active Directory 同步的多值属性。 
 
 ## <a name="direct-reports-rule"></a>“直接下属”规则
 可以创建包含经理的所有直接下属的组。 当经理的直接下属将来发生更改时，组的成员身份将自动进行调整。

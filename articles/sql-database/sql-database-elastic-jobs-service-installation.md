@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 9b8033a9dfc8063f96e168a154696e7fe6fef8ff
+ms.translationtype: HT
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 960e5e311571d1054a2ef5c15c33291de27b0878
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>安装弹性数据库作业概述
@@ -54,14 +53,14 @@ ms.lasthandoff: 04/27/2017
    
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
 
-2. 执行 .\InstallElasticDatabaseJobs.ps1 PowerShell 脚本，并提供其所请求变量的值。 此脚本将根据[弹性数据库作业组件和定价](sql-database-elastic-jobs-overview.md#components-and-pricing)中所述创建组件，并将 Azure 云服务配置为适当使用依赖组件。
+2. 执行 .\InstallElasticDatabaseJobs.ps1 PowerShell 脚本，并提供其所请求变量的值。 此脚本会根据[弹性数据库作业组件和定价](sql-database-elastic-jobs-overview.md#components-and-pricing)中所述创建组件，并将 Azure 云服务配置为适当使用依赖组件。
 
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobs.ps1
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobs.ps1
 
-运行此命令时，会打开一个窗口，要求提供“**用户名**”和“**密码**”。 这不是你的 Azure 凭据，请输入用户名和密码，将其作为你要为新服务器创建的管理员凭据。
+运行此命令时，会打开一个窗口，要求提供“**用户名**”和“**密码**”。 这不是 Azure 凭据，请输入用户名和密码，将其作为要为新服务器创建的管理员凭据。
 
-你可以根据所需的设置，修改此示例调用中提供的参数。 下面提供了有关每个参数行为的详细信息：
+可以根据所需的设置，修改此示例调用中提供的参数。 下面提供了有关每个参数行为的详细信息：
 
 <table style="width:100%">
   <tr>
@@ -95,19 +94,19 @@ ms.lasthandoff: 04/27/2017
 </tr>
     <tr>
     <td>SqlServerDatabaseSlo</td>
-    <td>提供标准版的服务级别目标。 此参数默认为 S0。 接受参数值 S0/S1/S2/S3，这会导致 Azure SQL 数据库使用各自的 SLO。 有关 SQL 数据库 SLO 的详细信息，请参阅[弹性数据库作业组件和定价](sql-database-elastic-jobs-overview.md#components-and-pricing)。</td>
+    <td>提供标准版的服务级别目标。 此参数默认为 S0。 接受参数值 S0/S1/S2/S3/S4/S6/S9/S12，这会导致 Azure SQL 数据库使用各自的 SLO。 有关 SQL 数据库 SLO 的详细信息，请参阅[弹性数据库作业组件和定价](sql-database-elastic-jobs-overview.md#components-and-pricing)。</td>
 </tr>
 
 </tr>
     <tr>
     <td>SqlServerAdministratorUserName</td>
-    <td>提供新建的 Azure SQL 数据库服务器的管理员用户名。 如果你未指定，系统将打开 PowerShell 凭据窗口提示你输入凭据。</td>
+    <td>提供新建的 Azure SQL 数据库服务器的管理员用户名。 如果未指定，系统将打开 PowerShell 凭据窗口提示输入凭据。</td>
 </tr>
 
 </tr>
     <tr>
     <td>SqlServerAdministratorPassword</td>
-    <td>提供新建的 Azure SQL 数据库服务器的管理员密码。 如果你未提供，系统将打开 PowerShell 凭据窗口提示你输入凭据。</td>
+    <td>提供新建的 Azure SQL 数据库服务器的管理员密码。 如果未提供，系统将打开 PowerShell 凭据窗口提示输入凭据。</td>
 </tr>
 </table>
 
@@ -119,7 +118,7 @@ ms.lasthandoff: 04/27/2017
 ## <a name="update-an-existing-elastic-database-jobs-components-installation-using-powershell"></a>使用 PowerShell 更新现有的弹性数据库作业组件安装
 可以在现有的安装中更新**弹性数据库作业**，以实现缩放和高可用性。 此程序允许升级将来的服务代码，而无需删除并重新创建控制数据库。 也可以在同一版本中使用此过程来修改服务 VM 的大小或服务器的辅助角色计数。
 
-若要更新安装的 VM 大小，请运行以下脚本，并将参数更新为你选择的值。
+要更新安装的 VM 大小，请运行以下脚本，并将参数更新选择的值。
 
     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>Unblock-File .\UpdateElasticDatabaseJobs.ps1
     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>.\UpdateElasticDatabaseJobs.ps1 -ServiceVmSize A1 -ServiceWorkerCount 2
@@ -132,7 +131,7 @@ ms.lasthandoff: 04/27/2017
 
   <tr>
     <td>ResourceGroupName</td>
-    <td>标识最初安装弹性数据库作业组件时使用的 Azure 资源组名称。 此参数默认为“__ElasticDatabaseJob”。 因为不建议更改此值，因此你应该不必指定此参数。</td>
+    <td>标识最初安装弹性数据库作业组件时使用的 Azure 资源组名称。 此参数默认为“__ElasticDatabaseJob”。 因为不建议更改此值，因此，应该不必指定此参数。</td>
     </tr>
 </tr>
 
@@ -163,10 +162,10 @@ ms.lasthandoff: 04/27/2017
 4. 在“安装服务”视图中，单击“**作业凭据**”。
    
     ![安装服务][1]
-5. 键入数据库管理员的用户名和密码。 在安装过程中，将新建 Azure SQL 数据库服务器。 在此新服务器中，创建了一个称为控制数据库的新数据库，用于包含弹性数据库作业的元数据。 此处创建的用户名和密码用于登录控制数据库。 单独的凭据用于对池中的数据库执行脚本。
+5. 键入数据库管理员的用户名和密码。在安装过程中，将新建 Azure SQL 数据库服务器。 在此新服务器中，创建了一个称为控制数据库的新数据库，用于包含弹性数据库作业的元数据。 此处创建的用户名和密码用于登录控制数据库。 单独的凭据用于对池中的数据库执行脚本。
    
     ![创建用户名和密码][2]
-6. 单击“确定”按钮。 几分钟后，将在新的[资源组](../azure-resource-manager/resource-group-overview.md)中创建组件。 新资源组已固定到开始面板，如下所示。 创建后，弹性数据库作业（云服务、SQL 数据库、服务总线和存储空间）都在该组中创建。
+6. 单击“确定”按钮。 几分钟后，会在新的[资源组](../azure-resource-manager/resource-group-overview.md)中创建组件。 新资源组已固定到开始面板，如下所示。 创建后，弹性数据库作业（云服务、SQL 数据库、服务总线和存储空间）都在该组中创建。
    
     ![开始面板中的资源组][3]
 7. 如果在安装弹性数据库作业时尝试创建或管理某个作业，则在提供“**凭据**”时，将看到以下消息。
@@ -176,7 +175,7 @@ ms.lasthandoff: 04/27/2017
 如果需要卸载，请删除资源组。 请参阅[如何卸载弹性数据库作业组件](sql-database-elastic-jobs-uninstall.md)。
 
 ## <a name="next-steps"></a>后续步骤
-确保已在组中的每个数据库上创建具有适当脚本执行权限的凭据。有关详细信息，请参阅[保护你的 SQL 数据库](sql-database-manage-logins.md)。
+确保已在组中的每个数据库上创建对脚本执行具有适当权限的凭据。有关详细信息，请参阅[保护 SQL 数据库](sql-database-manage-logins.md)。
 请参阅[创建和管理弹性数据库作业](sql-database-elastic-jobs-create-and-manage.md)以开始操作。
 
 <!--Image references-->

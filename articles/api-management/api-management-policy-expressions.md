@@ -3,7 +3,7 @@ title: "Azure API 管理策略表达式 | Microsoft 文档"
 description: "了解 Azure API 管理中的策略表达式。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: ea160028-fc04-4782-aa26-4b8329df3448
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: d96dde8c74141d000c1f7c5fd9ef624ff5e46953
-ms.lasthandoff: 04/07/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 33bcc51466fa0918bf4484c58fac813d07ae14da
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="api-management-policy-expressions"></a>API 管理策略表达式
@@ -67,7 +68,7 @@ ms.lasthandoff: 04/07/2017
 }  
 ```  
   
-##  <a name="PolicyExpressionsUsage"></a> 用法  
+##  <a name="PolicyExpressionsUsage"></a> 使用  
  在任何 API 管理[策略](api-management-policies.md)中，表达式可以用作属性值或文本值，除非策略引用另行指定。  
   
 > [!IMPORTANT]
@@ -172,7 +173,7 @@ ms.lasthandoff: 04/07/2017
   
 |上下文变量|允许的方法、属性和参数值|  
 |----------------------|-------------------------------------------------------|  
-|上下文|Api: IApi<br /><br /> 部署<br /><br /> LastError<br /><br /> 操作<br /><br /> 产品<br /><br /> 请求<br /><br /> RequestId：字符串<br /><br /> 响应<br /><br /> 订阅<br /><br /> Tracing：布尔值<br /><br /> 用户<br /><br /> Variables:IReadOnlyDictionary<string, object><br /><br /> void Trace(message: string)|  
+|上下文|Api: IApi<br /><br /> 部署<br /><br /> LastError<br /><br /> 操作<br /><br /> 产品<br /><br /> 请求<br /><br /> RequestId: Guid<br /><br /> 响应<br /><br /> 订阅<br /><br /> Tracing：布尔值<br /><br /> 用户<br /><br /> Variables:IReadOnlyDictionary<string, object><br /><br /> void Trace(message: string)|  
 |context.Api|Id: 字符串<br /><br /> Name: 字符串<br /><br /> Path: 字符串<br /><br /> ServiceUrl: IUrl|  
 |context.Deployment|Region: 字符串<br /><br /> ServiceName: 字符串|  
 |context.LastError|Source: 字符串<br /><br /> Reason: 字符串<br /><br /> Message: 字符串<br /><br /> Scope: 字符串<br /><br /> Section: 字符串<br /><br /> Path: 字符串<br /><br /> PolicyId: 字符串<br /><br /> 有关 context.LastError 的详细信息，请参阅[错误处理](api-management-error-handling-policies.md)。|  
@@ -186,7 +187,7 @@ ms.lasthandoff: 04/07/2017
 |context.User|Email: 字符串<br /><br /> FirstName: 字符串<br /><br /> Groups: IEnumerable<IGroup\><br /><br /> Id: 字符串<br /><br /> Identities: IEnumerable<IUserIdentity\><br /><br /> LastName: 字符串<br /><br /> Note: 字符串<br /><br /> RegistrationDate: DateTime|  
 |IApi|Id: 字符串<br /><br /> Name: 字符串<br /><br /> Path: 字符串<br /><br /> Protocols: IEnumerable<string\><br /><br /> ServiceUrl: IUrl<br /><br /> SubscriptionKeyParameterNames: ISubscriptionKeyParameterNames|  
 |IGroup|Id: 字符串<br /><br /> Name: 字符串|  
-|IMessageBody|As<T\>(preserveContent: 布尔值 = false): Where T: 字符串, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> `context.Request.Body.As<T>` 和 `context.Response.Body.As<T>` 方法用于读取请求和响应采用指定类型 `T` 的消息正文。 该方法默认使用原始消息正文流，并在返回后将其呈现为不可用。 若要通过让该方法在正文流的副本上执行操作而避免这种情况，请将 `preserveContent` 参数设置为 `true`。 请转到[此处](api-management-transformation-policies.md#SetBody)查看示例。|  
+|IMessageBody|As<T\>(preserveContent: 布尔值 = false): Where T: 字符串, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> `context.Request.Body.As<T>` 和 `context.Response.Body.As<T>` 方法用于读取请求和响应采用指定类型 `T` 的消息正文。 该方法默认使用原始消息正文流，并在返回后将其呈现为不可用。 要通过让该方法在正文流的副本上执行操作而避免这种情况，请将 `preserveContent` 参数设置为 `true`。 请转到[此处](api-management-transformation-policies.md#SetBody)查看示例。|  
 |IUrl|Host: 字符串<br /><br /> Path: 字符串<br /><br /> Port: 整数<br /><br /> Query: IReadOnlyDictionary<string, string[]><br /><br /> QueryString: 字符串<br /><br /> Scheme: 字符串|  
 |IUserIdentity|Id: 字符串<br /><br /> Provider: 字符串|  
 |ISubscriptionKeyParameterNames|Header: 字符串<br /><br /> Query: 字符串|  

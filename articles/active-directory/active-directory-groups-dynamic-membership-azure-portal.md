@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/18/2017
+ms.date: 08/28/2017
 ms.author: curtand
 ms.reviewer: piotrci
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017;it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: f4d9a08551d616ff98bc8734cbeec01d6e0d04ca
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 780f94f9863f73834ab72e9daf4362bea28242e9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>在 Azure Active Directory 中为动态组成员身份创建基于属性的规则
@@ -283,7 +283,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
  deviceCategory | 有效的设备类别名称 | (device.deviceCategory -eq "BYOD")
  deviceManufacturer | 任意字符串值 | (device.deviceManufacturer -eq "Samsung")
  deviceModel | 任意字符串值 | (device.deviceModel -eq "iPad Air")
- deviceOwnership | 个人、公司 | (device.deviceOwnership -eq "Company")
+ deviceOwnership | 个人、公司、未知 | (device.deviceOwnership -eq "Company")
  domainName | 任意字符串值 | (device.domainName -eq "contoso.com")
  enrollmentProfileName | Apple 设备注册配置文件名称 | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)

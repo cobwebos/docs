@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2017
+ms.date: 08/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: a65216e79b7e89da1c9ccd6d002cb7ab6b18190f
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 1b08a0b376cbcae8522364c9b6ef22e9c0176438
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 
@@ -78,11 +78,11 @@ ms.lasthandoff: 08/07/2017
 
 对于在 IaaS 上安装用于云访问的应用程序，连接器组提供常见服务，保护对应用的所有访问。 连接器不在公司网络上创建其他依赖项或分裂应用体验。 连接器可安装在每个云数据中心中，并且仅服务驻留在此网络中的应用程序。 可安装多个连接器，实现高可用性。
 
-在这种情况下，组织有许多虚拟机连接到其自己的 IaaS 托管虚拟网络。 为了允许员工使用这些应用程序，这些专用网络使用站点到站点 VPN 连接到公司网络。 这为位于本地的员工提供了良好的体验。 但是，这可能不适合远程员工，因为它需要额外的本地基础结构，如下图所示：
+例如，组织有许多虚拟机连接到其自己的 IaaS 托管虚拟网络。 为了允许员工使用这些应用程序，这些专用网络使用站点到站点 VPN 连接到公司网络。 这为位于本地的员工提供了良好的体验。 但是，这可能不适合远程员工，因为它需要额外的本地基础结构来路由访问权限，如下图所示：
 
 ![AzureAD Iaas 网络](./media/application-proxy-publish-apps-separate-networks/application-proxy-iaas-network.png)
   
-这可能会成为一个问题，因为许多组织使用多个云供应商，其应用程序驻留在许多数据中心内。 使用 Azure AD 应用程序代理连接器组，可以启用常见服务来保护对所有应用程序的访问，而不会对公司网络创建额外的依赖项：
+使用 Azure AD 应用程序代理连接器组，可以启用常见服务来保护对所有应用程序的访问，而不会对公司网络创建额外的依赖项：
 
 ![AzureAD Iaas 多个云供应商](./media/application-proxy-publish-apps-separate-networks/application-proxy-multiple-cloud-vendors.png)
 

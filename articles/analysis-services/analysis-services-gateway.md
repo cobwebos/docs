@@ -1,5 +1,5 @@
 ---
-title: "本地数据网关 | Microsoft Docs"
+title: "本地数据网关 | Microsoft 文档"
 description: "如果 Azure 中的 Analysis Services 服务器要连接到本地数据源，则本地网关是必需的。"
 services: analysis-services
 documentationcenter: 
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/21/2017
 ms.author: owend
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 8c142c5e89c5e4eb45bddd0943a6a130cc876f5a
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 514b5404e8cbfa0baa657eb41736e20cad502638
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>使用 Azure 本地数据网关连接到本地数据源
@@ -99,11 +99,11 @@ ms.lasthandoff: 08/24/2017
 
 ### <a name="general"></a>常规
 
-**问**：对于云中的数据源（如 SQL Azure），是否需要网关？ <br/>
+问：对于云中的数据源（如 Azure SQL 数据库），是否需要网关？ <br/>
 **答**：不需要。 网关只连接到本地数据源。
 
 **问**：网关是否必须安装在与数据源相同的计算机上？ <br/>
-**答**：不需要。 网关使用提供的连接信息连接到数据源。 从这种意义上讲，可将网关视为客户端应用程序。 网关只需能够连接到提供的服务器名称即可。
+**答**：不需要。 网关使用提供的连接信息连接到数据源。 从这种意义上讲，可将网关视为客户端应用程序。 网关只需能够连接到提供的服务器名称即可，通常在同一个网络上。
 
 <a name="why-azure-work-school-account"></a>
 
@@ -130,7 +130,7 @@ ms.lasthandoff: 08/24/2017
 **答**：查看网关使用的端口和主机。
 
 **问**：实际 Windows 服务的名称是什么？<br/>
-**答**：在“服务”中，网关名为“Power BI 企业网关服务”。
+**答**：在“服务”中，网关名为“本地数据网关服务”。
 
 **问**：是否可以使用 Azure Active Directory 帐户运行网关 Windows 服务？ <br/>
 **答**：不需要。 该 Windows 服务必须具有有效的 Windows 帐户。 默认情况下，服务使用服务 SID“NT SERVICE\PBIEgwService”来运行。
@@ -151,7 +151,7 @@ ms.lasthandoff: 08/24/2017
 还可以查看数据源用于跟踪查询的工具。 例如，可以使用 SQL Server 的扩展事件或 SQL 事件探查器以及 Analysis Services。
 
 **问**：网关日志在何处？ <br/>
-**答**：请参阅本主题后面的“工具”。
+**答**：请参阅本主题后面的“日志”。
 
 ### <a name="update"></a>更新到最新版本
 

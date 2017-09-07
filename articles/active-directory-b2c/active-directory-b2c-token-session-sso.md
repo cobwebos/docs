@@ -1,27 +1,28 @@
 ---
-title: "Azure Active Directory B2C：令牌、会话和单一登录配置 | Microsoft Docs"
+title: "令牌、会话和单一登录配置 - Azure AD B2C | Microsoft 文档"
 description: "Azure Active Directory B2C 中的令牌、会话和单一登录配置"
 services: active-directory-b2c
 documentationcenter: 
-author: swkrish
-manager: mbaldwin
-editor: bryanla
+author: parakhj
+manager: krassk
+editor: parakhj
 ms.assetid: e78e6344-0089-49bf-8c7b-5f634326f58c
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2017
-ms.author: swkrish
+ms.date: 08/16/2017
+ms.author: parakhj
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: 4442174a857681adff33001e660809ec7d47ad7d
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 256c93e5c343cba022599f8e13c5b7616bfa8b58
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Azure Active Directory B2C：令牌、会话和单一登录配置
+
 通过此功能，可以对以下各方面进行[按策略](active-directory-b2c-reference-policies.md)的精细控制：
 
 1. Azure Active Directory (Azure AD) B2C 发出的安全令牌的生存期。
@@ -29,21 +30,22 @@ ms.lasthandoff: 08/08/2017
 3. Azure AD B2C 发出的安全令牌中的重要声明格式。
 4. B2C 租户中跨多个应用和策略的单一登录 (SSO) 行为。
 
-可以按如下方式在 B2C 租户中使用此功能：
+对于内置策略，你可以在 Azure AD B2C 目录中使用此功能，如下所示：
 
-1. 请按照以下步骤在 Azure 门户上[导航到 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
-2. 单击“登录策略”。 注意：可以对任何策略类型使用此功能，不局限于登录策略**。
-3. 通过单击策略以打开它。 例如，单击“B2C_1_SiIn”。
-4. 单击边栏选项卡顶部的“编辑”。
+1. 请按照以下步骤在 Azure 门户上[导航到 B2C 功能菜单](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
+2. 单击“注册或登录策略”。 注意：可以对任何策略类型使用此功能，不局限于注册或登录策略**。
+3. 通过单击策略以打开它。 例如，单击“B2C_1_SiUpIn”。
+4. 单击菜单顶部的“编辑”。
 5. 单击“令牌、会话和单一登录配置”。
 6. 进行所需的更改。 在后续章节中了解可用的属性。
-7. 单击“确定”。
-8. 单击边栏选项卡顶部的“保存”。
+7. 单击 **“确定”**。
+8. 单击菜单顶部的“保存”。
 
 ## <a name="token-lifetimes-configuration"></a>令牌生存期配置
+
 Azure AD B2C 支持 [OAuth 2.0 授权协议](active-directory-b2c-reference-protocols.md)以启用对受保护资源的安全访问。 若要实现此支持，Azure AD B2C 需发出各种[安全令牌](active-directory-b2c-reference-tokens.md)。 以下是可用于管理 Azure AD B2C 发出的安全令牌的生存期的属性：
 
-* **访问令牌和 ID 令牌生存期（分钟）**：用于获取受保护资源的访问权限的 OAuth 2.0 持有者令牌的生存期。 当前，Azure AD B2C 仅发出 ID 令牌。 如果添加了对访问令牌的支持，该值也应用于访问令牌。
+* **访问令牌和 ID 令牌生存期（分钟）**：用于获取受保护资源的访问权限的 OAuth 2.0 持有者令牌的生存期。
   * 默认值 = 60 分钟。
   * 最小值（含）= 5 分钟。
   * 最大值（含）= 1440 分钟。
@@ -67,6 +69,7 @@ Azure AD B2C 支持 [OAuth 2.0 授权协议](active-directory-b2c-reference-prot
     > 
 
 ## <a name="token-compatibility-settings"></a>令牌兼容性设置
+
 我们对 Azure AD B2C 发出的安全令牌中的重要声明做出了格式更改。 这样做是为了改善标准协议支持以及与第三方标识库的互操作性。 但是，为了避免破坏现有应用，我们创建了以下属性，使客户能够根据需要选择格式：
 
 * **颁发者 (iss) 声明**：标识颁发令牌的 Azure AD B2C 租户。
@@ -80,6 +83,7 @@ Azure AD B2C 支持 [OAuth 2.0 授权协议](active-directory-b2c-reference-prot
   * **acr**：此项只是为了向后兼容而提供的，我们建议尽快改用 `tfp`。
 
 ## <a name="session-behavior"></a>会话行为
+
 Azure AD B2C 支持 [OpenID Connect 身份验证协议](active-directory-b2c-reference-oidc.md)以启用对 Web 应用的安全登录。 以下是可用于管理 Web 应用会话的属性：
 
 * **Web 应用会话生存期（分钟）**：身份验证成功后，存储在用户浏览器上的 Azure AD B2C 会话 Cookie 的生存期。

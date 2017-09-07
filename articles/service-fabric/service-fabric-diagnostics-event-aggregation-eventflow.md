@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: b8b4c3e48136c47eff6154abcf7ea5d7720be827
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: f57c915dd566e9da9b751bb776a1170842d87297
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 
@@ -29,7 +28,7 @@ ms.lasthandoff: 06/01/2017
 
 ## <a name="setting-up-eventflow"></a>设置 EventFlow
 
-EventFlow 二进制文件都可用作一组 NuGet 包。 若要将 EventFlow 添加到 Service Fabric 服务项目中，右键单击解决方案资源管理器中的项目，然后选择“管理 NuGet 包”。 切换到“浏览”选项卡，搜索“`Diagnostics.EventFlow`”：
+EventFlow 二进制文件都可用作一组 NuGet 包。 要将 EventFlow 添加到 Service Fabric 服务项目中，右键单击解决方案资源管理器中的项目，并选择“管理 NuGet 包”。 切换到“浏览”选项卡，搜索“`Diagnostics.EventFlow`”：
 
 ![Visual Studio NuGet 包管理器 UI 中的 EventFlow NuGet 包](./media/service-fabric-diagnostics-event-aggregation-eventflow/eventflow-nuget.png)
 
@@ -40,7 +39,7 @@ EventFlow 二进制文件都可用作一组 NuGet 包。 若要将 EventFlow 添
 * `Microsoft.Diagnostics.EventFlow.ServiceFabric`（允许初始化来自 Service Fabric 服务配置的 EventFlow 管道，并以 Service Fabric 运行状况报表的形式报告发送诊断数据的任何相关问题）
 
 >[!NOTE]
->`Microsoft.Diagnostics.EventFlow.Input.EventSource` 包要求服务项目面向.NET Framework 4.6 或更高版本。 请确保在项目属性中设置相应的目标框架，然后再安装此包。
+>`Microsoft.Diagnostics.EventFlow.Input.EventSource` 包要求服务项目面向.NET Framework 4.6 或更高版本。 请确保在项目属性中设置相应的目标框架，再安装此包。
 
 安装所有的包后，下一步是在服务中配置和启用 EventFlow。
 
@@ -158,3 +157,4 @@ servicefabric:/<section-name>/<setting-name>
 * [使用 Application Insights 进行事件分析和可视化](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [使用 OMS 进行事件分析和可视化](service-fabric-diagnostics-event-analysis-oms.md)
 * [EventFlow 文档](https://github.com/Azure/diagnostics-eventflow)
+

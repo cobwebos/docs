@@ -6,21 +6,21 @@ keywords:
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-ms.reviewer: gahug
+ms.reviewer: sahenry
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/08/2017
+ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 4bbfbbe41eb3f70c27f0721a6b35a8f7f1831af4
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 60d35b230534ca5721a49a770ea81cc79d52ec02
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 
@@ -32,14 +32,14 @@ ms.lasthandoff: 08/09/2017
 
 | 错误 | 详细信息 | 技术详细信息 |
 | --- | --- | --- |
-| TenantSSPRFlagDisabled = 9 | 很抱歉 <br> 你目前无法重置密码，因为管理员已对你的组织禁用密码重置。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们启用此功能。 若要了解详细信息，请参阅[请为我提供帮助，我忘记了 Azure AD 密码](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-update-your-own-password#common-problems-and-their-solutions)。 | SSPR_0009：我们检测到你的管理员尚未启用密码重置。 请联系管理员，并请求他们为组织启用密码重置。 |
-| WritebackNotEnabled = 10 |很抱歉 <br> 你目前无法重置密码，因为管理员未为你的组织启用必要的服务。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们检查你组织的配置。 若要了解此必要服务的详细信息，请参阅[配置密码写回](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-writeback#configuring-password-writeback)。 | SSPR_0010：我们检测到尚未启用密码写回。 请联系管理员，并请求他们启用密码写回。 |
-| SsprNotEnabledInUserPolicy = 11 | 很抱歉  <br> 你目前无法重置密码，因为管理员未为你的组织配置密码重置。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们配置密码重置。 若要了解有关密码重置配置的详细信息，请参阅[快速入门：Azure AD 自助密码重置](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-getting-started)一文。 | SSPR_0011：你的组织尚未定义密码重置策略。 请联系管理员，并请求他们定义密码重置策略。 |
-| UserNotLicensed = 12 | 很抱歉 <br> 你目前无法重置密码，因为你的组织缺少必需的许可证。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们检查许可证分配。 若要了解有关许可的详细信息，请参阅 [Azure AD 自助密码重置的许可要求](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-licensing)一文。 | SSPR_0012：你的组织没有执行密码重置所必需的许可证。 请联系管理员，并请求他们查阅许可证分配。 |
-| UserNotMemberOfScopedAccessGroup = 13 | 很抱歉 <br> 你目前无法重置密码，因为管理员尚未配置你的帐户以使用密码重置。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们配置你的帐户以进行密码重置。 若要了解有关帐户配置以进行密码重置的详细信息，请参阅[为用户推出密码重置](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-best-practices)一文。 | SSPR_0012：你不是已启用密码重置的组的成员。 请联系管理员，并请求添加到组。 |
-| UserNotProperlyConfigured = 14 | 很抱歉 <br> 你目前无法重置密码，因为你的帐户缺少必要的信息。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们为你重置密码。 当你可再次访问你的帐户后，可遵循[注册自助密码重置](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-reset-register)一文中所述的步骤，了解如何注册必要的信息。 | SSPR_0014：需要额外的安全信息，才可重置密码。 若要继续，请联系管理员，并请求他们重置你的密码。 当可访问你的帐户后，可前往 https://aka.ms/ssprsetup 注册额外安全信息。 管理员可按照[为密码重置设置和读取身份验证数据](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-data#set-and-read-authentication-data-using-powershell)中所述的步骤，向帐户添加额外安全信息。 |
-| OnPremisesAdminActionRequired = 29 | 很抱歉 <br> 由于你的组织的密码重置配置存在问题，我们目前无法重置你的密码。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们进行调查。 若要了解有关潜在问题的详细信息，请参阅[排查密码写回问题](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback)一文。 | SSPR_0029：由于本地配置中的问题，我们无法重置你的密码。 请联系管理员，并请求他们进行调查。 |
-| OnPremisesConnectivityError = 30 | 很抱歉 <br> 由于组织的连接问题，我们目前无法重置密码。 当前没有可执行的操作，但如果你稍后重新尝试，问题有可能已得到解决。 如果问题仍然存在，请联系管理员，并请求他们进行调查。 若要了解有关连接问题的详细信息，请参阅[排查密码写回连接问题](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback-connectivity)。 | SSPR_0030：由于本地环境连接不佳，无法重置你的密码。 请联系管理员，并请求他们进行调查。|
+| TenantSSPRFlagDisabled = 9 | 很抱歉 <br> 你目前无法重置密码，因为管理员已对你的组织禁用密码重置。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们启用此功能。 若要了解详细信息，请参阅[请为我提供帮助，我忘记了 Azure AD 密码](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-update-your-own-password#common-problems-and-their-solutions)。 | SSPR_0009：我们检测到你的管理员尚未启用密码重置。 请联系管理员，并请求他们为组织启用密码重置。 |
+| WritebackNotEnabled = 10 |很抱歉 <br> 你目前无法重置密码，因为管理员未为你的组织启用必要的服务。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们检查你组织的配置。 若要了解此必要服务的详细信息，请参阅[配置密码写回](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-writeback#configuring-password-writeback)。 | SSPR_0010：我们检测到尚未启用密码写回。 请联系管理员，并请求他们启用密码写回。 |
+| SsprNotEnabledInUserPolicy = 11 | 很抱歉  <br> 你目前无法重置密码，因为管理员未为你的组织配置密码重置。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们配置密码重置。 若要了解有关密码重置配置的详细信息，请参阅[快速入门：Azure AD 自助密码重置](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)一文。 | SSPR_0011：你的组织尚未定义密码重置策略。 请联系管理员，并请求他们定义密码重置策略。 |
+| UserNotLicensed = 12 | 很抱歉 <br> 你目前无法重置密码，因为你的组织缺少必需的许可证。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们检查许可证分配。 若要了解有关许可的详细信息，请参阅 [Azure AD 自助密码重置的许可要求](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-licensing)一文。 | SSPR_0012：你的组织没有执行密码重置所必需的许可证。 请联系管理员，并请求他们查阅许可证分配。 |
+| UserNotMemberOfScopedAccessGroup = 13 | 很抱歉 <br> 你目前无法重置密码，因为管理员尚未配置你的帐户以使用密码重置。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们配置你的帐户以进行密码重置。 若要了解有关帐户配置以进行密码重置的详细信息，请参阅[为用户推出密码重置](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-best-practices)一文。 | SSPR_0012：你不是已启用密码重置的组的成员。 请联系管理员，并请求添加到组。 |
+| UserNotProperlyConfigured = 14 | 很抱歉 <br> 你目前无法重置密码，因为你的帐户缺少必要的信息。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们为你重置密码。 当你可再次访问你的帐户后，可遵循[注册自助密码重置](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-reset-register)一文中所述的步骤，了解如何注册必要的信息。 | SSPR_0014：需要额外的安全信息，才可重置密码。 若要继续，请联系管理员，并请求他们重置你的密码。 当可访问你的帐户后，可前往 https://aka.ms/ssprsetup 注册额外安全信息。 管理员可按照[为密码重置设置和读取身份验证数据](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-data#set-and-read-authentication-data-using-powershell)中所述的步骤，向帐户添加额外安全信息。 |
+| OnPremisesAdminActionRequired = 29 | 很抱歉 <br> 由于你的组织的密码重置配置存在问题，我们目前无法重置你的密码。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们进行调查。 若要了解有关潜在问题的详细信息，请参阅[排查密码写回问题](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback)一文。 | SSPR_0029：由于本地配置中的问题，我们无法重置你的密码。 请联系管理员，并请求他们进行调查。 |
+| OnPremisesConnectivityError = 30 | 很抱歉 <br> 由于组织的连接问题，我们目前无法重置密码。 当前没有可执行的操作，但如果你稍后重新尝试，问题有可能已得到解决。 如果问题仍然存在，请联系管理员，并请求他们进行调查。 若要了解有关连接问题的详细信息，请参阅[排查密码写回连接问题](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback-connectivity)。 | SSPR_0030：由于本地环境连接不佳，无法重置你的密码。 请联系管理员，并请求他们进行调查。|
 
 
 ## <a name="troubleshoot-password-reset-configuration-in-the-azure-portal"></a>在 Azure 门户中排查密码重置配置问题
@@ -143,7 +143,7 @@ ms.lasthandoff: 08/09/2017
 | 32014| ServiceBusWarning| 此事件表示我们必须重新尝试连接到租户的服务总线实例。 正常情况下，这应当无需顾虑，但如果很多次看到此事件，请考虑检查到服务总线的网络连接，特别是当使用高延迟或低带宽连接时。|
 | 32015| ReportServiceHealthError| 为了监视密码写回服务的运行状况，我们每 5 分钟向我们的密码重置 web 服务发送一次检测信号数据。 此事件表示将此运行状况信息发送回云 web 服务时发生错误。 此运行状况信息不包含 OII 或 PII 数据，是纯粹的检测信号和基本的服务统计信息，以便我们可以在云中提供服务状态信息。|
 | 33001| ADUnKnownError| 此事件表示 AD 返回了未知的错误，有关此错误的详细信息，请检查 Azure AD Connect 服务器事件日志来自 ADSync 源的事件。|
-| 33002| ADUserNotFoundError| 此事件表示在本地目录中未找到尝试重置或更改密码的用户。 如果已在本地删除了该用户但在云中未删除，或者出现了同步问题时，可能会发生此情况。 有关详细信息，请检查同步日志以及最近运行的几次同步的详细信息。|
+| 33002| ADUserNotFoundError| 此事件表示在本地目录中未找到尝试重置或更改密码的用户。 如果已在本地删除了该用户但在云中未删除，或者出现了同步问题时，可能会发生此情况。有关详细信息，请检查同步日志以及最近运行的几次同步的详细信息。|
 | 33003| ADMutliMatchError| 当密码重置或更改请求来自云时，我们使用在 Azure AD Connect 的设置过程中指定的云定位点来确定如何将该请求链接回本地环境中的用户。 此事件表示我们在本地目录中找到了具有相同的云定位点属性的两个用户。 有关详细信息，请检查同步日志以及最近运行的几次同步的详细信息。|
 | 33004| ADPermissionsError| 此事件表示管理代理服务帐户在相关帐户上没有合适的权限来设置新密码。 请确保用户的林中的 MA 帐户对林中的所有对象都具有重置和更改密码的权限。 有关如何执行此操作的详细信息，请参阅“步骤 4：设置适当的 Active Directory 权限”。|
 | 33005| ADUserAccountDisabled| 此事件表示我们试图重置或更改在本地已被禁用的帐户的密码。 请启用该帐户，并重试操作。|
@@ -213,24 +213,24 @@ ms.lasthandoff: 08/09/2017
 
 如果安装最新版本的 Azure AD Connect 服务器无法解决你遇到的问题，我们建议在安装最新的版本之后，最后再尝试禁用密码写回，然后重新启用该功能。
 
-## <a name="verify-whether-azure-ad-connect-has-the-required-permission-for-password-writeback"></a>验证 Azure AD Connect 是否具有密码写回所需的权限 
+## <a name="verify-whether-azure-ad-connect-has-the-required-permission-for-password-writeback"></a>验证 Azure AD Connect 是否具有密码写回所需的权限
 Azure AD Connect 需要 AD“重置密码”权限才能执行密码写回。 若要了解 Azure AD Connect 是否具有给定本地 AD 用户帐户的权限，可使用 Windows 有效权限功能：
 
 1. 登录到 Azure AD Connect 服务器，并启动 Synchronization Service Manager（“开始”→“同步服务”）。
 2. 在“连接器”选项卡下，选择本地“AD 连接器”，并单击“属性”。  
 ![有效权限 - 步骤 2](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
 3. 在弹出式对话框中，选择“连接到 Active Directory 林”选项卡，并记下“用户名”属性。 这是 Azure AD Connect 用于执行目录同步的 AD DS 帐户。 Azure AD Connect 若要执行密码写回，AD DS 帐户必须具有重置密码权限。  
-![有效权限 - 步骤 3](./media/active-directory-passwords-troubleshoot/checkpermission02.png)  
+![有效权限 - 步骤 3](./media/active-directory-passwords-troubleshoot/checkpermission02.png) 
 4. 登录到本地域控制器并启动“Active Directory 用户和计算机”应用程序。
 5. 单击“视图”并确保已启用“高级功能”选项。  
-![有效权限 - 步骤 5](./media/active-directory-passwords-troubleshoot/checkpermission03.png)  
+![有效权限 - 步骤 5](./media/active-directory-passwords-troubleshoot/checkpermission03.png) 
 6. 查找要验证的 AD 用户帐户。 右键单击帐户并选择“属性”。  
-![有效权限 - 步骤 6](./media/active-directory-passwords-troubleshoot/checkpermission04.png)  
+![有效权限 - 步骤 6](./media/active-directory-passwords-troubleshoot/checkpermission04.png) 
 7. 在弹出式对话框中，转到“安全”选项卡，然后单击“高级”。  
-![有效权限 - 步骤 7](./media/active-directory-passwords-troubleshoot/checkpermission05.png)  
+![有效权限 - 步骤 7](./media/active-directory-passwords-troubleshoot/checkpermission05.png) 
 8. 在“高级安全设置”弹出式对话框中，转到“有效访问”选项卡。
 9. 单击“选择用户”并选择 Azure AD Connect 所使用的 AD DS 帐户（请参阅步骤 3）。 然后单击“查看有效访问”。  
-![有效权限 - 步骤 9](./media/active-directory-passwords-troubleshoot/checkpermission06.png)  
+![有效权限 - 步骤 9](./media/active-directory-passwords-troubleshoot/checkpermission06.png) 
 10. 向下滚动并查找“重置密码”。 如果选中该项，则表示 AD DS 帐户有权重置所选 AD 用户帐户的密码。  
 ![有效权限 - 步骤 10](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
 
@@ -246,7 +246,7 @@ Azure AD Connect 需要 AD“重置密码”权限才能执行密码写回。 �
 
 * **错误的一般说明** - 遇到了哪种错误？ 看到该错误时出现了哪种行为？ 我们如何再现该错误？ 请尽量提供详尽的信息。
 * **页面** - 在哪个页面上看到了该错误？ 请附送 URL（如果可以）和屏幕截图。
-* **支持代码** - 用户看到该错误时生成了哪个支持代码？ 
+* **支持代码** - 用户看到该错误时生成了哪个支持代码？
     * 要找到支持代码，请再现错误，然后单击屏幕底部的“支持代码”链接，将生成的 GUID 发送给支持工程师。
     ![在屏幕底部查找支持代码][Support Code]
     * 如果所在页面的底部没有支持代码，请按 F12，搜索 SID 和 CID，并将这两个结果发送给支持工程师。
@@ -256,18 +256,18 @@ Azure AD Connect 需要 AD“重置密码”权限才能执行密码写回。 �
     * 是否是密码哈希同步的用户？
     * 是否是仅限云的用户？
 * **许可** - 该用户是否分配有 Azure AD Premium 或 Azure AD Basic 许可证？
-* **应用程序事件日志** - 如果你使用密码写回，并且错误发生在本地基础结构中，请在联系支持人员时，包含 Azure AD Connect 服务器中的应用程序事件日志的压缩副本。
+* **应用程序事件日志** - 如果使用密码写回，并且错误发生在本地基础结构中，请在联系支持人员时，包含 Azure AD Connect 服务器中的应用程序事件日志的压缩副本。
 
-    
 
-[Service Restart]: ./media/active-directory-passwords-troubleshoot/servicerestart.png "重新启动 Azure AD Sync 服务"
+
+[Service Restart]: ./media/active-directory-passwords-troubleshoot/servicerestart.png "重启 Azure AD Sync 服务"
 [Support Code]: ./media/active-directory-passwords-troubleshoot/supportcode.png "支持代码位于窗口右下方"
 
 ## <a name="next-steps"></a>后续步骤
 
 以下链接提供了有关使用 Azure AD 进行密码重置的其他信息
 
-* [**快速入门**](active-directory-passwords-getting-started.md) - 启动并运行 Azure AD 自助服务密码管理 
+* [**快速入门**](active-directory-passwords-getting-started.md) - 启动并运行 Azure AD 自助服务密码管理
 * [**授权**](active-directory-passwords-licensing.md) - 配置 Azure AD 授权
 * [**数据**](active-directory-passwords-data.md) - 了解所需的数据以及如何使用它进行密码管理
 * [**推出**](active-directory-passwords-best-practices.md) - 使用此处提供的指南计划 SSPR 并将其部署到用户

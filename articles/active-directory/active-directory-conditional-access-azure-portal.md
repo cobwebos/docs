@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/22/2017
+ms.date: 08/24/2017
 ms.author: markvi
 ms.reviewer: calebb
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 20572ecbde79bc2722f3a25f297c92d8e722a3e8
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: c97f05caec4c302c847e2297d136c6614e82fd93
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件性访问
@@ -69,9 +69,9 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 
 - **多重身份验证** - 可以要求在多重身份验证过程中进行强身份验证。 对于提供程序，可以结合 Active Directory 联合服务 (AD FS) 使用 Azure 多重身份验证或本地多重身份验证提供程序。 对于可能已获有效用户的凭据的访问权限的未授权用户，使用多重身份验证可帮助防止其访问资源。
 
-- **合规设备** - 可以在设备级别设置条件性访问策略。 可以设置一个策略，以便只允许合规的计算机或在移动设备管理中注册的移动设备访问组织的资源。 例如，可以使用 Intune 来检查设备的合规性，然后在用户尝试访问应用程序时将其报告给 Azure AD 以执行策略。 有关如何使用 Intune 保护应用和数据的详细指南，请参阅[使用 Microsoft Intune 保护应用和数据](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune)。 此外还可以使用 Intune 保护丢失或被盗设备的数据。 有关详细信息，请参阅[使用 Microsoft Intune 的完全擦除或选择性擦除保护数据](https://docs.microsoft.com/intune-classic/deploy-use/use-remote-wipe-to-help-protect-data-using-microsoft-intune)。
+- 合规设备 - 可以配置基于设备的条件性访问策略。 基于设备的条件性访问策略旨在仅从受信任的设备授予对已配置资源的访问权限。 要求兼容设备是一个必须定义什么是可信任设备的选项。 有关详细信息，请参阅[配置 Azure Active Directory 基于设备的条件性访问策略](active-directory-conditional-access-policy-connected-applications.md)。
 
-- **已加入域的设备** - 可以要求用于连接 Azure Active Directory 的设备在本地 Active Directory (AD) 中已加入域。 此策略可应用于 Windows 台式机、笔记本电脑和企业平板电脑。 
+- 已加入域的设备 – 要求加入域的设备是你必须配置基于设备的条件性访问策略的另一个选项。 此要求是指加入本地 Active Directory 的 Windows 台式机、笔记本电脑和企业平板电脑。 有关详细信息，请参阅[配置 Azure Active Directory 基于设备的条件性访问策略](active-directory-conditional-access-policy-connected-applications.md)。
 
 如果已选择多项控制，还可以配置在处理策略时是否所有这些控制都是必需的。
 
@@ -80,11 +80,11 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 ### <a name="session-controls"></a>会话控制
 可以通过会话控制限制云应用中的体验。 会话控制由云应用强制实施，取决于由 Azure AD 提供给应用的有关会话的其他信息。
 
-![控制](./media/active-directory-conditional-access-azure-portal/session-control-pic.png)
+![控制](./media/active-directory-conditional-access-azure-portal/31.png)
 
 #### <a name="use-app-enforced-restrictions"></a>使用应用所强制实施的限制
 可以使用此控制要求 Azure AD 将设备信息传递给云应用。 这样是为了让云应用了解用户是否来自合规的设备或已加入域的设备。 目前仅用作云应用的 SharePoint 支持此控制。 SharePoint 在收到设备信息后，会根据设备状态为用户通过受限的体验或完整的体验。
-若要详细了解如何设置 SharePoint 的受限访问条件，请访问[此链接](https://aka.ms/spolimitedaccessdocs)。
+若要详细了解如何使用 SharePoint 进行受限访问设置，请参阅[控制从非托管设备的访问权限](https://aka.ms/spolimitedaccessdocs)。
 
 ## <a name="condition-statement"></a>条件语句
 
@@ -95,22 +95,29 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 ![控制](./media/active-directory-conditional-access-azure-portal/07.png)
 
 
-- **谁** - 在很多情况下，我们想要对特定的一组用户应用控制。 在条件语句中，可以通过选择要向其应用策略的用户和组来选择这组用户。 如果需要，还可以通过豁免的方式从策略中明确排除一组用户。  
-选择用户和组可以定义要将策略应用到的用户范围。    
+### <a name="who"></a>谁？
 
-    ![控制](./media/active-directory-conditional-access-azure-portal/08.png)
+在配置条件性访问策略时，需要选择要向其应用策略的用户或组。 在很多情况下，我们想要对特定的一组用户应用控制。 在条件语句中，可以通过选择要向其应用策略的所需用户和组来定义此设置。 如果需要，还可以通过豁免的方式从策略中明确排除一组用户。  
+
+![控制](./media/active-directory-conditional-access-azure-portal/08.png)
 
 
 
-- **什么** - 通常，从保护的角度来看，环境中运行的某些应用需要的关注程度比其他应用要多一些。 举例而言，这种控制会影响到有权访问敏感数据的应用。
+### <a name="what"></a>什么？
+
+在配置条件性访问策略时，需要选择要向其应用策略的云应用。
+通常，从保护的角度来看，环境中的某些应用需要的关注程度要比其他应用多一些。 举例而言，这种控制会影响到有权访问敏感数据的应用。
 通过选择云应用，可以定义要将策略适用到的云应用范围。 如果需要，还可以从策略中明确排除一组应用。
 
-    ![控制](./media/active-directory-conditional-access-azure-portal/09.png)
+![控制](./media/active-directory-conditional-access-azure-portal/09.png)
 
+对于可以在条件性访问策略中使用的完整云应用列表，请参阅 [Azure Active Directory 条件性访问技术参考](active-directory-conditional-access-technical-reference.md#cloud-apps-assignments)。
 
-- **如何** - 只要对应用的访问是根据可控的条件执行的，可能就不需要对用户如何访问云应用实施其他控制。 但是，如何对云应用的访问是通过不受信任的网络或者不合规的设备执行的，则情况可能就有所不同。 在条件语句中，可以定义特定的访问条件并附带一些要求来控制访问应用的执行方式。
+### <a name="how"></a>如何进行？
 
-    ![条件](./media/active-directory-conditional-access-azure-portal/21.png)
+只要对应用的访问是根据可控的条件执行的，可能就不需要对用户访问云应用的方式实施附加控制。 但是，如何对云应用的访问是通过不受信任的网络或者不合规的设备执行的，则情况可能就有所不同。 在条件语句中，可以定义特定的访问条件并附带一些要求来控制访问应用的执行方式。
+
+![条件](./media/active-directory-conditional-access-azure-portal/21.png)
 
 
 ## <a name="conditions"></a>条件
@@ -168,12 +175,16 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 ![条件](./media/active-directory-conditional-access-azure-portal/03.png)
 
 
-### <a name="client-app"></a>客户端应用
+### <a name="client-apps"></a>客户端应用
 
 客户端应用可以是用于连接 Azure Active Directory 的广泛意义上的应用（Web 浏览器、移动应用或桌面客户端），也可以是专门选择的 Exchange Active Sync。  
 旧式身份验证是指使用基本身份验证的客户端，例如，不使用新式身份验证的旧式 Office 客户端。 旧式身份验证目前不支持条件性访问。
 
 ![条件](./media/active-directory-conditional-access-azure-portal/04.png)
+
+
+对于可以在条件性访问策略中使用的完整客户端应用列表，请参阅 [Azure Active Directory 条件性访问技术参考](active-directory-conditional-access-technical-reference.md#client-apps-conditions)。
+
 
 
 ## <a name="common-scenarios"></a>常见方案
@@ -201,6 +212,6 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何配置条件性访问策略，请参阅 [Get started with conditional access in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md)（Azure Active Directory 中的条件性访问入门）。
+- 若要了解如何配置条件性访问策略，请参阅 [Get started with conditional access in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md)（Azure Active Directory 中的条件性访问入门）。
 
-如果已准备好配置环境的条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](active-directory-conditional-access-best-practices.md)。 
+- 如果已准备好配置环境的条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](active-directory-conditional-access-best-practices.md)。 

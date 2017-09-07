@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 0c65ac74316421a0258f01143baa25ffecb5be3b
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: e5a658e0d20d42911870f2522f6c1bab7529ea11
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="api-management-advanced-policies"></a>API 管理高级策略
@@ -308,8 +308,8 @@ ms.lasthandoff: 08/23/2017
 |---------------|-----------------|--------------|--------------|  
 |key|一个字符串。 允许使用表达式。 指定并发作用域。 可以由多个策略共享。|是|不适用|  
 |max-count|一个整数。 指定允许输入策略的最大请求数。|是|不适用|  
-|timeout|一个整数。 允许使用表达式。 指定在失败并出现“403 请求数过多”消息之前请求进入作用域应等待的秒数。|否|Infinity|  
-|max-queue-length|一个整数。 允许使用表达式。 指定最大队列长度。 队列已满时，尝试进入此策略的传入请求将立即被终止，并出现“403 请求数过多”消息。|否|Infinity|  
+|timeout|一个整数。 允许使用表达式。 指定在失败并出现“429 请求数过多”消息之前请求进入作用域应等待的秒数|否|Infinity|  
+|max-queue-length|一个整数。 允许使用表达式。 指定最大队列长度。 队列已满时，尝试进入此策略的传入请求将被立即终止，并出现“429 请求数过多”消息。|否|Infinity|  
   
 ###  <a name="ChooseUsage"></a> 使用  
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  

@@ -1,5 +1,5 @@
 ---
-title: "管理 Azure AD 应用程序代理的 SSO | Microsoft Docs"
+title: "管理 Azure AD 应用程序代理的 SSO | Microsoft 文档"
 description: "了解有关使用应用程序代理进行单一登录的基础知识"
 services: active-directory
 documentationcenter: 
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 08/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: a1b8445a4547f8742c8a60de2df8f3b535dfab5d
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 1deb3d91049d45fe26791783e13bd23e0a7d9f95
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/31/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 
@@ -61,6 +61,8 @@ ms.lasthandoff: 07/31/2017
 ## <a name="linked-sign-on"></a>联合登录
 
 如果已经为本地标识设置了单一登录解决方案，请选择“链接登录”。 此选项可让 Azure Active Directory 利用现有的 SSO 解决方案，但仍允许用户远程访问应用程序。 
+
+有关链接登录的信息（以前称为现有单一登录），请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)。
 
 ## <a name="integrated-windows-authentication"></a>Windows 集成身份验证
 

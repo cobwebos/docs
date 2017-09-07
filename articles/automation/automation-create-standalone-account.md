@@ -36,7 +36,7 @@ ms.lasthandoff: 08/19/2017
 若要创建或更新自动化帐户，必须具有完成本主题所需的下述特定权限。   
  
 * 若要创建自动化帐户，需将 AD 用户帐户添加到一个角色，该角色的权限相当于 Microsoft.Automation 资源的所有者角色，如 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md)一文所述。  
-* Azure AD 租户中的非管理员用户可以**注册 AD 应用程序**，前提是“应用注册设置”已设置为“是”。[](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions)  如果“应用注册设置”设置为“否”，则执行此操作的用户必须是 Azure AD 中的全局管理员。 
+* Azure AD 租户中的非管理员用户可以 注册 [AD 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions) ，前提是“应用注册设置”已设置为 **“是”** 。  如果“应用注册设置”设置为“否”，则执行此操作的用户必须是 Azure AD 中的全局管理员。 
 
 如果你在被添加到订阅的全局管理员/共同管理员角色之前不是订阅的 Active Directory 实例的成员，则会将你作为来宾添加到 Active Directory。 在这种情况下，“添加自动化帐户”边栏选项卡中会显示 “你无权创建...”警告。 可以先从订阅的 Active Directory 实例中删除已添加到全局管理员/共同管理员角色的用户，然后重新添加，使其成为 Active Directory 中的完整用户。 若要验证这种情况，可在 Azure 门户的“Azure Active Directory”窗格中选择“用户和组”，选择“所有用户”，在选择特定的用户后再选择“配置文件”。 用户配置文件下的“用户类型”属性值不应等于“来宾”。
 

@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 07/04/2017
 ms.author: rajanaki
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: a2ccc3d43a56a569897e1efe24f576eb92610ec3
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 30ccdc62e68ff86d693b9eb3477c65e4e6a1fe3f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>用于从本地复制到 Azure 的 Azure Site Recovery 支持矩阵
@@ -66,7 +66,7 @@ ms.lasthandoff: 07/24/2017
 
  **VMware/物理服务器** | **Hyper-V（使用/不使用 VMM）** |
 --- | --- |
-64 位 Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 及其更高版本<br/>*Windows Server 2016* - 当前在 VMware 虚拟机和物理服务器上不受支持。 <br/><br/> Red Hat Enterprise Linux：5.2 到 5.11、6.1 到 6.8、7.0 到 7.3 <br/><br/>Cent OS：5.2 到 5.11、6.1 到 6.8、7.0 到 7.3 <br/><br/>Ubuntu 14.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Oracle Enterprise Linux 6.4、6.5（运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3 (UEK3)） <br/><br/> SUSE Linux Enterprise Server 11 SP3 <br/><br/> SUSE Linux Enterprise Server 11 SP4 <br/>（不支持复制计算机从 SLES 11 SP3 升级到 SLES 11 SP4。 如果已将复制计算机从 SLES 11SP3 升级到 SLES 11 SP4，则需要禁用复制，并在升级后再次对计算机启用保护。） | [Azure 支持的](https://technet.microsoft.com/library/cc794868.aspx)任何来宾 OS
+64 位 Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 及其更高版本<br/>*Windows Server 2016* - 当前在 VMware 虚拟机和物理服务器上不受支持。 <br/><br/> Red Hat Enterprise Linux：5.2 到 5.11、6.1 到 6.9、7.0 到 7.3 <br/><br/>CentOS：5.2 到 5.11、6.1 到 6.9、7.0 到 7.3 <br/><br/>Ubuntu 14.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Debian 7 <br/><br/>Debian 8<br/><br/>Oracle Enterprise Linux 6.4、6.5（运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3 (UEK3)） <br/><br/>SUSE Linux Enterprise Server 11 SP3 <br/><br/>SUSE Linux Enterprise Server 11 SP4 <br/>（不支持复制计算机从 SLES 11 SP3 升级到 SLES 11 SP4。 如果已将复制计算机从 SLES 11SP3 升级到 SLES 11 SP4，则需要禁用复制，并在升级后再次对计算机启用保护。） | [Azure 支持的](https://technet.microsoft.com/library/cc794868.aspx)任何来宾 OS
 
 
 >[!IMPORTANT]
@@ -82,8 +82,9 @@ ms.lasthandoff: 07/24/2017
 --- | --- | --- |
 14.04 LTS | 9.9 | 3.13.0-24-generic 到 3.13.0-117-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-75-generic |
 14.04 LTS | 9.10 | 3.13.0-24-generic 到 3.13.0-121-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-81-generic |
+14.04 LTS | 9.11 | 3.13.0-24-generic 到 3.13.0-128-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-91-generic |
 16.04 LTS | 9.10 | 4.4.0-21-generic 到 4.4.0-81-generic、<br/>4.8.0-34-generic 到 4.8.0-56-generic、<br/>4.10.0-14-generic 到 4.10.0-24-generic |
-
+16.04 LTS | 9.11 | 4.4.0-21-generic 到 4.4.0-91-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-32-generic |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-linux-vmwarephysical-servers"></a>Linux 上支持的文件系统和来宾存储配置（VMware/物理服务器）
 
@@ -187,7 +188,7 @@ RA-GRS | 是 | 是
 ## <a name="support-for-azure-compute-configuration"></a>Azure 计算配置支持
 
 **计算功能** | **VMware/物理服务器** | **Hyper-V（具有/不具有 Virtual Machine Manager）**
---- | --- | --- 
+--- | --- | ---
 可用性集 | 是 | 是
 HUB | 是 | 是  
 托管磁盘 | 是 | 是<br/><br/>当前不支持从使用托管磁盘的 Azure VM 故障回复到本地。

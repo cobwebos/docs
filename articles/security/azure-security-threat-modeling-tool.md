@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 381922a7e83a65a855dc906a22c354380914f31e
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 6e26b0af2a16a872c8e02b736e24019b47ed5780
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
-# <a name="microsoft-threat-modeling-tool"></a>Microsoft 威胁建模工具 
+# <a name="microsoft-threat-modeling-tool"></a>Microsoft 威胁建模工具
 
 威胁建模工具是 Microsoft 安全开发生命周期 (SDL) 的核心要素。 当潜在安全问题处于无需花费过多成本即可相对容易解决的阶段，软件架构师可以使用威胁建模工具提前识别这些问题。 因此，它能大幅减少开发总成本。 此外，我们设计该工具时考虑到了非安全专家的体验，为他们提供有关创建和分析威胁模型的清晰指导，让所有开发人员都可以更轻松地使用威胁建模。 
 
@@ -43,10 +43,24 @@ ms.lasthandoff: 08/23/2017
 
 ## <a name="next-steps"></a>后续步骤
 
+下表包含可帮助你开始使用此威胁建模工具的重要链接：
+
+| 步骤  | 说明                                                                                   |
+| ----- | --------------------------------------------------------------------------------------------- |
+| **1** | [下载威胁建模工具](https://aka.ms/tmtpreview)                                |
+| **2** | [阅读入门指南](./azure-security-threat-modeling-tool-getting-started.md)    |
+| **3** | [熟悉功能](./azure-security-threat-modeling-tool-feature-overview.md)   |
+| **4** | [了解有关已发生威胁的类别](./azure-security-threat-modeling-tool-threats.md)   |
+| **5** | [查找已发生威胁的缓解措施](./azure-security-threat-modeling-tool-mitigations.md) |
+
+## <a name="resources"></a>资源
+
 下面是几篇较旧的文章，仍然与目前的威胁建模相关：
+
 * [有关威胁建模的重要性的文章](https://msdn.microsoft.com/magazine/dd347831.aspx)
 * [可信任计算发布的培训](https://www.microsoft.com/download/details.aspx?id=16420)
 
 查看一些威胁建模工具专家已完成的作品：
+
 * [威胁管理器](https://simoneonsecurity.com/threatsmanagersetup-v1-5-10/)
 * [Simone Curzi 安全博客](https://simoneonsecurity.com/)

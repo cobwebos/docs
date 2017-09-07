@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory 域服务：入门 | Microsoft Docs"
+title: "Azure Active Directory 域服务：入门 | Microsoft 文档"
 description: "通过 Azure 门户（预览版）启用 Azure Active Directory 域服务"
 services: active-directory-ds
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/15/2017
+ms.date: 08/28/2017
 ms.author: maheshu
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: 7f420d60862adf61e4f21e5abac2932a742bd55d
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: dd4a45c4eae6832026bce82670e914f5a02bbff7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/17/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal-preview"></a>通过 Azure 门户（预览版）启用 Azure Active Directory 域服务
@@ -33,12 +33,12 @@ ms.lasthandoff: 07/17/2017
 
 1. 单击“虚拟网络”以选择一个虚拟网络。
 2. 在“选择虚拟网络”边栏选项卡上，会看到所有现有虚拟网络。 只会看到属于在“基本信息”向导页上选择的资源组和 Azure 位置的虚拟网络。
-
-3. 选择应在其中启用 Azure AD 域服务的虚拟网络。 如果想创建新虚拟网络，则单击“新建”。 强烈建议对 Azure AD 域服务使用专用子网。 如果选取现有虚拟网络，则[使用虚拟网络扩展创建专用子网](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)，然后选取该子网。 
+3. 选择应在其中启用 Azure AD 域服务的虚拟网络。 可以选取现有虚拟网络，也可以创建新的虚拟网络。
+4. 创建虚拟网络：单击“新建”来创建新的虚拟网络。 强烈建议对 Azure AD 域服务使用专用子网。 例如，创建具有名称“DomainServices”的子网，从而使其他管理员可以方便地了解在该子网内部署的内容。 完成后，单击“确定”。
 
     ![选取虚拟网络](./media/getting-started/domain-services-blade-network-pick-vnet.png)
 
-4. 单击“子网”以在此虚拟网络中选取要在其中启用新托管域的专用子网。 在“创建子网”边栏选项卡中，为子网指定名称，然后在完成时单击“确定”。 例如，创建具有名称“DomainServices”的子网，从而使其他管理员可以方便地了解在该子网内部署的内容。
+5. 现有虚拟网络：如果计划选取现有虚拟网络，则[使用虚拟网络扩展创建专用子网](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)，然后选取该子网。 单击“虚拟网络”，以选择一个现有虚拟网络。 单击“子网”，以在现有虚拟网络中选取要在其中启用新托管域的专用子网。 完成后，单击“确定”。
 
     ![在虚拟网络中选取子网](./media/getting-started/domain-services-blade-network-pick-subnet.png)
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 07/17/2017
   3. 确保选择的子网具有足够可用地址空间 - 至少 3-5 个可用 IP 地址。
   >
 
-5. 完成后，单击“确定”以前进到向导的“管理组”页。
+6. 完成后，单击“确定”以前进到向导的“管理组”页。
 
 
 ## <a name="next-step"></a>后续步骤

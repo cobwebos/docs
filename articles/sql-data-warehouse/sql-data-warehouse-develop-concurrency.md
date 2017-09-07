@@ -16,10 +16,10 @@ ms.custom: performance
 ms.date: 08/23/2017
 ms.author: joeyong;barbkess;kavithaj
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: b1ab2a8253684c62be650eed2ea5f69c62188a22
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: eaf2d43286dbaa52ada1430fbb7ce1e37f41c0d4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="concurrency-and-workload-management-in-sql-data-warehouse"></a>SQL 数据仓库中的并发性和工作负荷管理
@@ -152,7 +152,7 @@ EXEC sp_addrolemember 'largerc', 'loaduser'
 ## <a name="concurrency-slot-consumption"></a>并发槽使用量  
 SQL 数据仓库对在更高资源类级别中运行的查询赋予了更多内存。 内存是固定的资源。  因此，每个查询分配的内存越多，可以执行的并发查询数就越少。 下表在单个视图中重述了上述所有概念，显示了按 DWU 分配的并发槽数，以及每个资源类使用的槽数。  
 
-### <a name="allocation-and-consumption-of-concurrency-slots"></a>分配和使用并发槽  
+### <a name="allocation-and-consumption-of-concurrency-slots-for-dynamic-resource-classes"></a>动态资源类并发槽的分配和使用  
 | DWU | 并发查询数上限 | 分配的并发槽数 | smallrc 使用的槽数 | mediumrc 使用的槽数 | largerc 使用的槽数 | xlargerc 使用的槽数 |
 |:--- |:---:|:---:|:---:|:---:|:---:|:---:|
 | DW100 |4 |4 |1 |1 |2 |4 |
@@ -168,7 +168,7 @@ SQL 数据仓库对在更高资源类级别中运行的查询赋予了更多内�
 | DW3000 |32 |120 |1 |16 |32 |64 |
 | DW6000 |32 |240 |1 |32 |64 |128 |
 
-### <a name="allocation-and-consumption-of-concurrency-slots-for-static-resource-classes"></a>静态资源类并发槽的分配和使用
+### <a name="allocation-and-consumption-of-concurrency-slots-for-static-resource-classes"></a>静态资源类并发槽的分配和使用  
 | DWU | 并发查询数上限 | 分配的并发槽数 |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
 |:--- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | DW100 |4 |4 |1 |2 |4 |4 |4 |4 |4 |4 |

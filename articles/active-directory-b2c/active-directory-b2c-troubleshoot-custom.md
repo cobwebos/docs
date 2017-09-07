@@ -12,19 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.devlang: na
-ms.date: 04/04/2017
-ms.author: saeedakhter-msft
+ms.date: 08/04/2017
+ms.author: saeda
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: ad31e5f4ef3be78d8d2dd6b9c7d83e447d9ef776
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 8c79df33cd5f04f490e2cc6372f7e8ac1c4d9bbe
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C：收集日志
 
 本文提供用于从 Azure AD B2C 收集日志的步骤，以便可以诊断自定义策略存在的问题。
+
+>[!NOTE]
+>目前，此处所述的详细活动日志仅用来帮助开发自定义策略。 请勿在生产中使用开发模式。  日志收集在开发过程中发送到标识提供者以及从中发出的所有声明。  如果在生产中使用，则开发人员对他们所拥有的 App Insights 日志中收集的 PII（私人身份信息）负责。  仅当策略处于“开发模式”时才会收集这些详细日志。
+
 
 ## <a name="use-application-insights"></a>使用 Application Insights
 
@@ -60,7 +64,7 @@ Azure AD B2C 支持将数据发送到 Application Insights 的功能。  Applica
   * `DeveloperMode="true"` 告知 ApplicationInsights 通过处理管道加快遥测，这样有利于开发，但在量大时会受到约束。
   * `ClientEnabled="true"` 发送用于跟踪页面视图和客户端错误的 ApplicationInsights 客户端脚本（不需要）。
   * `ServerEnabled="true"` 将现有 UserJourneyRecorder JSON 作为自定义事件发送到 Application Insights。
-  最终的 XML 将如下所示：
+示例：
 
   ```XML
   <TrustFrameworkPolicy
@@ -104,9 +108,14 @@ traces \| where timestamp > ago(1d) | 查看 Azure AD B2C 为前一天生成的�
 >[!NOTE]
 >社区已开发一个用户旅程查看器来帮助标识开发人员。  Microsoft 不支持它，严格按原样提供。  它将读取 Application Insights 实例，并提供用户旅程事件的有序视图。  可以获取源代码并将其部署在自己的解决方案中。
 
+>[!NOTE]
+>目前，此处所述的详细活动日志仅用来帮助开发自定义策略。 请勿在生产中使用开发模式。  日志收集在开发过程中发送到标识提供者以及从中发出的所有声明。  如果在生产中使用，则开发人员对他们所拥有的 App Insights 日志中收集的 PII（私人身份信息）负责。  仅当策略处于“开发模式”时才会收集这些详细日志。
+
 [不支持的自定义策略示例和相关工具的 Github 存储库](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
 
 
 
+## <a name="next-steps"></a>后续步骤
 
+浏览 Application Insights 中的数据，从而帮助你了解标识体验框架基础 B2C 如何运作来提供你自己的标识体验。
 

@@ -1,6 +1,6 @@
 ---
 title: "设计你的第一个 Azure SQL 数据库 | Microsoft Docs"
-description: "了解如何设计你的第一个 Azure SQL 数据库。"
+description: "了解如何设计第一个 Azure SQL 数据库。"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -11,16 +11,16 @@ ms.assetid:
 ms.service: sql-database
 ms.custom: mvc,develop databases
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 08/03/2017
+ms.date: 08/25/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: 69cfffdae5ce2db53acc6d668dbe468c3ef22dc2
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 63833db74eb5889611d4aeb45d00542217730910
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 
@@ -57,7 +57,7 @@ Azure SQL 数据库与 Microsoft 云（“Azure”）中的数据库即服务 (D
 
 1. 单击 Azure 门户左上角的“新建”按钮。
 
-2. 从“新建”页中选择“数据库”，然后从“数据库”页中选择“SQL 数据库”。 
+2. 从“新建”页中选择“数据库”，然后从“新建”页的“SQL 数据库”中选择“创建”。
 
    ![创建空数据库](./media/sql-database-design-first-database/create-empty-database.png)
 
@@ -79,23 +79,33 @@ Azure SQL 数据库与 Microsoft 云（“Azure”）中的数据库即服务 (D
    | **密码** | 任何有效的密码 | 密码必须至少有 8 个字符，且必须包含以下类别中的三个类别的字符：大写字符、小写字符、数字以及非字母数字字符。 |
    | **位置** | 任何有效的位置 | 有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。 |
 
-   ![创建数据库 - 服务器](./media//sql-database-design-first-database/create-database-server.png)
+   ![创建数据库 - 服务器](./media/sql-database-design-first-database/create-database-server.png)
 
 5. 单击“选择”。
 
-6. 单击“定价层”为新数据库指定服务层和性能级别。 对于本教程，请选择 **20 DTU** 和 **250** GB 存储。
+6. 单击“定价层”，指定服务层、DTU 数和存储量。 浏览相关选项，了解适用于每个服务层的 DTU 数和存储量。 
+
+7. 对于本教程，请选择“标准”服务层，然后使用滑块选择“100 DTU (S3)”和“400”GB 存储。
 
    ![创建数据库 - s1](./media/sql-database-design-first-database/create-empty-database-pricing-tier.png)
 
-7. 单击“应用” 。  
+8. 若要使用“附加存储”选项，请接受预览版条款。 
 
-8. 选择空白数据库的“排序规则”（就本教程来说，请使用默认值）。 有关排序规则的详细信息，请参阅 [Collations](https://docs.microsoft.com/sql/t-sql/statements/collations)（排序规则）
+   > [!IMPORTANT]
+   > \* 超出所包括存储量的存储大小为预览版，需额外付费。 有关详细信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。 
+   >
+   >\* 在高级层中，以下区域目前提供的存储超出 1 TB：美国东部 2、美国西部、美国弗吉尼亚州政府、西欧、德国中部、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。 请参阅 [P11-P15 当前限制](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
+   > 
 
-9. 单击“创建”预配数据库。 大约需要一分半的时间才能完成预配。 
+9. 选择服务器层、DTU 数和存储量后，单击“应用”。  
 
-10. 在工具栏上，单击“通知”可监视部署过程。
+10. 选择空白数据库的“排序规则”（就本教程来说，请使用默认值）。 有关排序规则的详细信息，请参阅 [Collations](https://docs.microsoft.com/sql/t-sql/statements/collations)（排序规则）
 
-   ![通知](./media/sql-database-get-started-portal/notification.png)
+11. 完成 SQL 数据库表单后，即可单击“创建”对数据库进行预配。 预配需要数分钟。 
+
+12. 在工具栏上，单击“通知”可监视部署过程。
+    
+     ![通知](./media/sql-database-get-started-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>创建服务器级防火墙规则
 
@@ -105,26 +115,21 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 > 通过端口 1433 进行的 SQL 数据库通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 1433。
 >
 
-1. 部署完成后，在左侧菜单中单击“SQL 数据库”，然后在“SQL 数据库”页上单击“mySampleDatabase”。 此时会打开数据库的概览页，显示完全限定的服务器名称（例如 mynewserver20170313.database.windows.net），并且会提供进行进一步配置所需的选项。 请复制此完全限定的服务器名称，供以后使用。
+1. 部署完成后，在左侧菜单中单击“SQL 数据库”，然后在“SQL 数据库”页上单击“mySampleDatabase”。 此时会打开数据库的概览页，其中显示了完全限定的服务器名称（例如 mynewserver-20170824.database.windows.net），并提供了其他配置的选项。 
 
-   > [!IMPORTANT]
-   > 在后续的快速入门中，需提供此完全限定的服务器名称才能连接到服务器及其数据库。
-   > 
+2. 在后续的快速入门中，请复制此完全限定的服务器名称，将其用于连接到服务器及其数据库。 
 
-   ![服务器名称](./media/sql-database-connect-query-dotnet/server-name.png) 
+   ![服务器名称](./media/sql-database-get-started-portal/server-name.png) 
 
-2. 如上图所示，在工具栏上单击“设置服务器防火墙”。 此时会打开 SQL 数据库服务器的“防火墙设置”页。 
+3. 单击工具栏上的“设置服务器防火墙”。 此时会打开 SQL 数据库服务器的“防火墙设置”页。 
 
    ![服务器防火墙规则](./media/sql-database-get-started-portal/server-firewall-rule.png) 
 
+4. 在工具栏上单击“添加客户端 IP”，将当前的 IP 地址添加到新的防火墙规则。 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
 
-3. 在工具栏上单击“添加客户端 IP”，将当前的 IP 地址添加到新的防火墙规则。 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
+5. 单击“保存” 。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
 
-4. 单击“保存” 。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
-
-   ![设置服务器防火墙规则](./media/sql-database-get-started-portal/server-firewall-rule-set.png) 
-
-4. 单击“确定”，然后关闭“防火墙设置”页。
+6. 单击“确定”，然后关闭“防火墙设置”页。
 
 现在可以使用之前创建的服务器管理员帐户通过 SQL Server Management Studio 或其他所选工具从此 IP 地址连接到 SQL 数据库服务器及其数据库。
 
@@ -136,10 +141,10 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 请在 Azure 门户中获取 Azure SQL 数据库服务器的完全限定服务器名称。 请使用 SQL Server Management Studio 通过完全限定的服务器名称连接到服务器。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 从左侧菜单中选择“SQL 数据库”，然后单击“SQL 数据库”页上的数据库。 
+2. 从左侧菜单中选择“SQL 数据库”，并单击“SQL 数据库”页上的数据库。 
 3. 在数据库的“Azure 门户”页的“概要”窗格中，找到并复制“服务器名称”。
 
-   ![连接信息](./media/sql-database-connect-query-dotnet/server-name.png)
+   ![连接信息](./media/sql-database-get-started-portal/server-name.png)
 
 ## <a name="connect-to-the-database-with-ssms"></a>使用 SSMS 连接到数据库
 
@@ -185,7 +190,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 
 ![表关系](./media/sql-database-design-first-database/tutorial-database-tables.png)
 
-1. 在“对象资源管理器”中，右键单击“mySampleDatabase”，然后单击“新建查询”。 此时会打开一个空白查询窗口，该窗口连接到数据库。
+1. 在“对象资源管理器”中，右键单击“mySampleDatabase”，并单击“新建查询”。 此时会打开一个空白查询窗口，该窗口连接到数据库。
 
 2. 在查询窗口中，执行以下查询以在数据库中创建 4 个表： 
 
@@ -315,7 +320,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
     * 还原点：选择更改数据库前的时间
     * 目标服务器：还原数据库时不能更改此值 
     * 弹性数据库池：选择“无”  
-    * 定价层：选择“20 个 DTU”和“250 GB”的存储。
+    * 定价层：选择“20 个 DTU”和“40 GB”的存储。
 
    ![还原点](./media/sql-database-design-first-database/restore-point.png)
 
