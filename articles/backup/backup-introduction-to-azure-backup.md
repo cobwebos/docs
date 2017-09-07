@@ -17,10 +17,10 @@ ms.date: 8/11/2017
 ms.author: markgal;trinadhk;anuragm
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 5a6aad672ddaa43f993daf4cf48975e91d2657da
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 699ec578832e894b5bfc0cfad35528eac377c4ff
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure 备份功能概述
@@ -78,6 +78,7 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 | 文件和文件夹 |Windows 计算机 |<p>[Azure 备份代理](backup-configure-vault.md)、</p> <p>[System Center DPM](backup-azure-dpm-introduction.md)（带 Azure 备份代理）、</p> <p>[Azure 备份服务器](backup-azure-microsoft-azure-backup.md)（带 Azure 备份代理）</p> |
 | Hyper-V 虚拟机 (Windows) |Windows Server |<p>[System Center DPM](backup-azure-backup-sql.md)（带 Azure 备份代理）、</p> <p>[Azure 备份服务器](backup-azure-microsoft-azure-backup.md)（带 Azure 备份代理）</p> |
 | Hyper-V 虚拟机 (Linux) |Windows Server |<p>[System Center DPM](backup-azure-backup-sql.md)（带 Azure 备份代理）、</p> <p>[Azure 备份服务器](backup-azure-microsoft-azure-backup.md)（带 Azure 备份代理）</p> |
+| VMware 虚拟机 |Windows Server |<p>[System Center DPM](backup-azure-backup-sql.md)（带 Azure 备份代理）、</p> <p>[Azure 备份服务器](backup-azure-microsoft-azure-backup.md)（带 Azure 备份代理）</p> |
 | Microsoft SQL Server |Windows Server |<p>[System Center DPM](backup-azure-backup-sql.md)（带 Azure 备份代理）、</p> <p>[Azure 备份服务器](backup-azure-microsoft-azure-backup.md)（带 Azure 备份代理）</p> |
 | Microsoft SharePoint |Windows Server |<p>[System Center DPM](backup-azure-backup-sql.md)（带 Azure 备份代理）、</p> <p>[Azure 备份服务器](backup-azure-microsoft-azure-backup.md)（带 Azure 备份代理）</p> |
 | Microsoft Exchange |Windows Server |<p>[System Center DPM](backup-azure-backup-sql.md)（带 Azure 备份代理）、</p> <p>[Azure 备份服务器](backup-azure-microsoft-azure-backup.md)（带 Azure 备份代理）</p> |
