@@ -37,8 +37,7 @@ Azure Active Directory 可向你提供各种报告。 对于应用程序（如 S
    
    * [使用审核 API 的示例](active-directory-reporting-api-audit-samples.md) 
    * [使用登录活动报告 API 的示例](active-directory-reporting-api-sign-in-activity-samples.md)
-3. 
-            **自定义** - 创建自己的解决方案： 
+3. **自定义** - 创建自己的解决方案： 
    
    * [使用审核 API 参考](active-directory-reporting-api-audit-reference.md) 
    * [使用登录活动报告 API 参考](active-directory-reporting-api-sign-in-activity-reference.md)

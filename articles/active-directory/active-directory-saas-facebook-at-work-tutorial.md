@@ -54,7 +54,7 @@ ms.lasthandoff: 08/23/2017
 ## <a name="add-workplace-by-facebook-from-the-gallery"></a>从库添加 Workplace by Facebook
 要配置 Workplace by Facebook 与 Azure AD 的集成，请从库中将 Workplace by Facebook 添加到托管 SaaS 应用列表。
 
-1. 在“Azure 门户”[](https://portal.azure.com)的左窗格中，选择“Azure Active Directory”。 
+1. 在 [Azure 门户](https://portal.azure.com) 的左窗格中，选择“Azure Active Directory”。 
 
     ![“Azure Active Directory”按钮][1]
 

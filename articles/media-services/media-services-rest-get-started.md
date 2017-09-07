@@ -12,7 +12,7 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 09/05/2017
 ms.author: juliako
 ms.translationtype: HT
 ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
@@ -479,7 +479,7 @@ SAS URL 采用以下格式：
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/Jobs HTTP/1.1
     DataServiceVersion: 1.0;NetFx
     MaxDataServiceVersion: 3.0;NetFx
-    Content-Type: application/json
+    Content-Type: application/json;odata=verbose
     Accept: application/json;odata=verbose
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421675491&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=9hUudHYnATpi5hN3cvTfgw%2bL4N3tL0fdsRnQnm6ZYIU%3d
@@ -702,8 +702,6 @@ SAS URL 采用以下格式：
        ]
     }
 
-
-
 ## <a id="publish_get_urls"></a>使用 REST API 发布资产并获取流式处理和渐进式下载 URL
 
 若要流处理或下载资产，必须先创建定位符来“发布”资产。 定位符提供对资产中所含文件的访问权限。 媒体服务支持两种类型的定位符：用于流媒体（例如 MPEG DASH、HLS 或平滑流式处理）的 OnDemandOrigin 定位符，以及用于下载媒体文件的访问签名 (SAS) 定位符。 有关 SAS 定位符的详细信息，请参阅[此](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/)博客。
@@ -724,7 +722,6 @@ HLS 的流 URL 采用以下格式：
 MPEG DASH 的流 URL 采用以下格式：
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
-
 
 用于下载文件的 SAS URL 采用以下格式：
 
@@ -819,7 +816,6 @@ MPEG DASH 的流 URL 采用以下格式：
        }
     }
 
-
 返回的 **Path** 属性包含 SAS URL。
 
 > [!NOTE]
@@ -854,7 +850,6 @@ MPEG DASH 的流 URL 采用以下格式：
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_AAC_und_ch2_96kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_AAC_und_ch2_56kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
-
 
 ### <a name="creating-a-streaming-url-for-streaming-content"></a>创建用于流式处理内容的流式处理 URL
 以下代码说明了如何创建流式处理 URL 定位符：

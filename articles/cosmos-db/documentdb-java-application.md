@@ -124,7 +124,7 @@ ms.lasthandoff: 08/24/2017
         }
    
     在此项目中，我们将使用 [项目 Lombok](http://projectlombok.org/) 生成构造函数、getter、setter 和一个生成器。 或者，可以手动编写此代码，或使用 IDE 生成此代码。
-2. 若要调用 Azure Cosmos DB 服务，必须实例化一个新的 **DocumentClient**。 一般情况下，最好是重用 **DocumentClient** -而不是为每个后续请求构造新的客户端。 我们可以通过在 **DocumentClientFactory**中包装客户端来重用此客户端。 在 DocumentClientFactory.java 中，需要在此处粘贴“步骤 1”[](#CreateDB)中保存到剪贴板中的 URI 和 PRIMARY KEY 值。 将 [YOUR\_ENDPOINT\_HERE] 替换为 URI，将 [YOUR\_KEY\_HERE] 替换为主密钥。
+2. 若要调用 Azure Cosmos DB 服务，必须实例化一个新的 **DocumentClient**。 一般情况下，最好是重用 **DocumentClient** -而不是为每个后续请求构造新的客户端。 我们可以通过在 **DocumentClientFactory**中包装客户端来重用此客户端。 在 DocumentClientFactory.java 中，需要在此处粘贴 [步骤 1](#CreateDB) 中保存到剪贴板中的 URI 和 PRIMARY KEY 值。 将 [YOUR\_ENDPOINT\_HERE] 替换为 URI，将 [YOUR\_KEY\_HERE] 替换为主密钥。
    
         private static final String HOST = "[YOUR_ENDPOINT_HERE]";
         private static final String MASTER_KEY = "[YOUR_KEY_HERE]";

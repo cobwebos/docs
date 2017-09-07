@@ -1183,7 +1183,7 @@ RTrim 函数从字符串中删除尾随空格。
 * condition：可以处理属性中某个项的任何函数
 
 **示例：**  
-`Select($item,[otherPhone],Replace($item,“-”,“”))`  
+`Select($item,[otherPhone],Replace($item,"-",""))`  
 在删除连字符 (-) 后，返回多值属性 otherPhone 中的所有值。
 
 - - -
