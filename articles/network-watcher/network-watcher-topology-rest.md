@@ -3,7 +3,7 @@ title: "查看 Azure 网络观察程序拓扑 - REST API | Microsoft 文档"
 description: "本文将介绍如何使用 REST API 查询网络拓扑。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: de9af643-aea1-4c4c-89c5-21f1bf334c06
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: 568f3060da372f4a08cec342e04359172522cb69

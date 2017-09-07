@@ -3,7 +3,7 @@ title: "使用 Azure 网络观察程序管理网络安全组流日志 - REST API
 description: "此页说明如何在 Azure 网络观察程序中使用 REST API 管理网络安全组流日志"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 2ab25379-0fd3-4bfe-9d82-425dfc7ad6bb
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: c89a2ab4c39978771c940a819493b4e2283d5f9f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
-
 
 ---
 

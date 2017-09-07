@@ -3,7 +3,7 @@ title: "使用开源工具可视化 Azure 网络观察程序 NSG 流日志 | Mic
 description: "本页介绍如何使用开源工具可视化 NSG 流日志。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: e9b2dcad-4da4-4d6b-aee2-6d0afade0cb8
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
 ms.openlocfilehash: 20f60ccd9108a7473705c2368f28d3152d0dd614
@@ -22,40 +22,28 @@ ms.lasthandoff: 04/07/2017
 
 ---
 
-<a id="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools" class="xliff"></a>
-
-# 使用开源工具可视化 Azure 网络观察程序 NSG 流日志
+# <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>使用开源工具可视化 Azure 网络观察程序 NSG 流日志
 
 可以通过网络安全组流日志提供的信息了解网络安全组的入口和出口 IP 流量。 这些流日志根据规则显示出站和入站流、流所适用的 NIC、有关流的 5 元组信息（源/目标 IP、源/目标端口、协议），以及是允许还是拒绝流量。
 
 这些流日志可能难以手动分析并获取见解。 不过，可以使用多个开源工具将相关数据可视化。 本文将提供一个使用 Elastic Stack 将这些日志可视化的解决方案，方便用户在 Kibana 仪表板上快速完成流日志的索引和可视化操作。
 
-<a id="scenario" class="xliff"></a>
-
-## 方案
+## <a name="scenario"></a>方案
 
 在本文中，我们将设置一个解决方案，方便用户使用 Elastic Stack 来可视化网络安全组流日志。  将使用 Logstash 输入插件直接从已配置为存储流日志的存储 Blob 获取流日志。 然后使用 Elastic Stack 为流日志编制索引并将这些日志用于创建 Kibana 仪表板，实现信息的可视化。
 
 ![方案][scenario]
 
-<a id="steps" class="xliff"></a>
+## <a name="steps"></a>步骤
 
-## 步骤
-
-<a id="enable-network-security-group-flow-logging" class="xliff"></a>
-
-### 启用网络安全组流日志记录
+### <a name="enable-network-security-group-flow-logging"></a>启用网络安全组流日志记录
 就本方案来说，必须在帐户的至少一个网络安全组上启用网络安全组流日志记录。 有关启用网络安全组流日志的说明，请参阅以下文章：[网络安全组流日志记录简介](network-watcher-nsg-flow-logging-overview.md)。
 
 
-<a id="set-up-the-elastic-stack" class="xliff"></a>
-
-### 设置 Elastic Stack
+### <a name="set-up-the-elastic-stack"></a>设置 Elastic Stack
 通过将 NSG 流日志与 Elastic Stack 相连接，可以创建一个 Kibana 仪表板，以便搜索、可视化、分析日志并从中获得见解。
 
-<a id="install-elasticsearch" class="xliff"></a>
-
-#### 安装 Elasticsearch
+#### <a name="install-elasticsearch"></a>安装 Elasticsearch
 
 1. Elastic Stack 5.0 及更高版本需要 Java 8。 运行命令 `java -version` 可以检查版本。 如果未安装 Java，请参阅 [Oracle 网站](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)上的文档
 1. 下载适用于系统的正确二进制程序包：
@@ -93,9 +81,7 @@ ms.lasthandoff: 04/07/2017
 
 有关安装 Elasticsearch 的其他说明，请参阅 [Installation](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html)（安装）页
 
-<a id="install-logstash" class="xliff"></a>
-
-### 安装 Logstash
+### <a name="install-logstash"></a>安装 Logstash
 
 1. 若要安装 Logstash，请运行以下命令：
 
@@ -169,9 +155,7 @@ ms.lasthandoff: 04/07/2017
 
 有关安装 Logstash 的其他说明，请参阅[正式文档](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)
 
-<a id="install-the-logstash-input-plugin-for-azure-blob-storage" class="xliff"></a>
-
-### 安装适用于 Azure Blob 存储的 Logstash 输入插件
+### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>安装适用于 Azure Blob 存储的 Logstash 输入插件
 
 可以使用该 Logstash 插件直接从指定的存储帐户访问流日志。 若要安装此插件，请从默认 Logstash 安装目录（在此示例中为 /usr/share/logstash/bin）运行以下命令：
 
@@ -187,9 +171,7 @@ sudo /etc/init.d/logstash start
 
 有关该插件的详细信息，请参阅[此处](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob)的文档
 
-<a id="install-kibana" class="xliff"></a>
-
-### 安装 Kibana
+### <a name="install-kibana"></a>安装 Kibana
 
 1. 运行以下命令以安装 Kibana：
 
@@ -210,9 +192,7 @@ sudo /etc/init.d/logstash start
 
 1. 如果想要远程查看 Kibana 仪表板，请创建允许访问**端口 5601** 的入站 NSG 规则。
 
-<a id="create-a-kibana-dashboard" class="xliff"></a>
-
-### 创建 Kibana 仪表板
+### <a name="create-a-kibana-dashboard"></a>创建 Kibana 仪表板
 
 在本文中，我们提供了一个示例仪表板，用于查看警报中的趋势和详细信息。
 
@@ -224,9 +204,7 @@ sudo /etc/init.d/logstash start
 
 还可以创建自己的可视化效果，以及根据感兴趣的指标定制的仪表板。 阅读 Kibana 的[正式文档](https://www.elastic.co/guide/en/kibana/current/visualize.html)，详细了解如何创建 Kibana 可视化效果。
 
-<a id="visualize-nsg-flow-logs" class="xliff"></a>
-
-### 可视化 NSG 流日志
+### <a name="visualize-nsg-flow-logs"></a>可视化 NSG 流日志
 
 示例仪表板提供了流日志的多种可视化效果：
 
@@ -256,15 +234,11 @@ sudo /etc/init.d/logstash start
 
 用户可以使用仪表板顶部的查询栏，根据流的任何参数（例如订阅 ID、资源组、规则或者任何其他感兴趣的变量）对仪表板的内容进行筛选。 有关 Kibana 的查询和筛选器的详细信息，请参阅[正式文档](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html)
 
-<a id="conclusion" class="xliff"></a>
-
-## 结束语
+## <a name="conclusion"></a>结束语
 
 通过组合使用网络安全组流日志和 Elastic Stack，我们提出了一种用于可视化网络流量的方式，该方式功能强大并且可以自定义。 用户可以通过这些仪表板快速获取和共享针对网络流量的见解，并且可以通过筛选来调查任何潜在的异常问题。 使用 Kibana 时，用户可以根据安全、审核和符合性需要对这些仪表板进行定制，打造特定的可视化效果。
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 
 访问[使用 Power BI 可视化 NSG 流日志](network-watcher-visualize-nsg-flow-logs-power-bi.md)，了解如何使用 Power BI 可视化 NSG 流日志
 

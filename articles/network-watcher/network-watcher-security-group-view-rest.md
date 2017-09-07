@@ -3,7 +3,7 @@ title: "使用 Azure 网络观察程序安全组视图分析网络安全性 - RE
 description: "本文将介绍如何使用 PowerShell 通过安全组视图分析虚拟机安全性。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: a2f418fe-f5d2-43ed-8dc3-df0ed2a4d4ac
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: afced52b3ae6f3b7f400364f5ec7d049aa166590

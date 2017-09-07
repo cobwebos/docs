@@ -3,7 +3,7 @@ title: "使用 Azure 网络观察程序检查连接性 - Azure 门户 | Microsof
 description: "本页说明如何使用 Azure 门户通过网络观察程序执行连接性检查"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.service: network-watcher
@@ -12,7 +12,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: HT
 ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 84774d0f40e06a819ca6de6cf0be68e17ba474e4

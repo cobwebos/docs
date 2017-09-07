@@ -3,7 +3,7 @@ title: "使用 Azure 网络观察程序“IP 流验证”功能验证流量 - RE
 description: "本文介绍如何检查是允许还是拒绝进出虚拟机的流量"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 3307a79f-03be-46a0-aaaf-b2079cb5f3b2
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: 6d3ce00a7d4f9c0cd57fa8815625a1065b03b5b5
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
-
 
 ---
 # <a name="check-if-traffic-is-allowed-or-denied-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>使用 Azure 网络观察程序的组件（即“IP 流验证”功能）检查是允许还是拒绝流量

@@ -3,7 +3,7 @@ title: "在 Azure 网络观察程序中进行资源故障排除简介 | Microsof
 description: "此页概述了网络观察程序资源故障排除功能"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: c1145cd6-d1cf-4770-b1cc-eaf0464cc315
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: HT
 ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 0d5091b682d1b25c47b224394bcc2c46366eeb2a

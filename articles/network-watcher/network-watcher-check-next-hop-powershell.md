@@ -3,7 +3,7 @@ title: "使用 Azure 网络观察程序“下一跃点”功能查找下一跃�
 description: "本文将介绍如何使用 PowerShell 通过“下一跃点”功能查找下一跃点类型和 ip 地址。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 6a656c55-17bd-40f1-905d-90659087639c
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: 00161e7c6fb4becdb7d8eab266fa27128e50f8ca
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/27/2017
-
 
 ---
 
