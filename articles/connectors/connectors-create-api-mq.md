@@ -1,4 +1,3 @@
- 
 ---
 title: "了解如何在 Azure 逻辑应用中使用 MQ 连接器 | Microsoft Docs"
 description: "从逻辑应用工作流连接到本地或 Azure MQ 服务器以浏览消息、接收消息以及将消息发送到 WebSphere MQ"
