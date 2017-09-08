@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 06/01/2017
 ms.author: valthom; ladocs
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 17c651585b56dae186286f5d8c68c363ae9c524d
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 9fb0258df3f45d121cda49d3b5c274bd9548c832
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 
