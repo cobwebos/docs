@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
 ms.openlocfilehash: 711407f7dd9e6d442e3f04a23962487f4808e8e2
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/17/2017
 
 
