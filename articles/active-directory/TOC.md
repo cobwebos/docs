@@ -132,25 +132,17 @@
 ## 管理设备
 ### [介绍](device-management-introduction.md)
 ### [使用 Azure 门户](device-management-azure-portal.md)
+### [计划 Azure AD 加入](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [常见问题](device-management-faq.md)
 ### 任务
 #### [配置已注册到 Azure AD 的 Windows 10 设备](device-management-azuread-registered-devices-windows10-setup.md)
 #### [配置已加入 Azure AD 的设备](device-management-azuread-joined-devices-setup.md)
-#### [配置已加入混合 Azure AD 的设备](device-management-hybrid-azuread-joined-devices-setup.md) 
+#### [配置加入混合 Azure AD 的设备](device-management-hybrid-azuread-joined-devices-setup.md) 
 #### [本地部署](active-directory-device-registration-on-premises-setup.md)
 #### [Windows 10 首次运行体验中的 Azure AD 加入](device-management-azuread-joined-devices-frx.md)
 ### 故障排除
 #### [加入混合 Azure AD 的 Windows 10 和 Windows Server 2016 设备](device-management-troubleshoot-hybrid-join-windows-current.md)
 #### [加入混合 Azure AD 的旧式 Windows 设备](device-management-troubleshoot-hybrid-join-windows-legacy.md)
-### [Azure AD Join](active-directory-azureadjoin-overview.md)
-#### [规划](active-directory-azureadjoin-deployment-aadjoindirect.md)
-#### [设置设备注册](active-directory-azureadjoin-setup.md)
-#### [注册新设备](active-directory-azureadjoin-user-frx.md)
-#### [部署](active-directory-azureadjoin-devices-group-policy.md)
-#### [了解 Windows 10 集成](active-directory-azureadjoin-windows10-devices-overview.md)
-#### [使用 Windows 10 设备](active-directory-azureadjoin-windows10-devices.md)
-#### [加入设备](active-directory-azureadjoin-personal-device.md)
-#### [加入 Windows 10 设备](active-directory-azureadjoin-user-upgrade.md)
 
 ## 管理应用
 ### [概述](active-directory-enable-sso-scenario.md)
@@ -299,6 +291,8 @@
 ### [条件性访问](active-directory-conditional-access-azure-portal.md)
 #### [入门](active-directory-conditional-access-azure-portal-get-started.md)
 #### [最佳实践](active-directory-conditional-access-best-practices.md)
+#### [VPN 连接](active-directory-conditional-access-vpn-connectivity-windows10.md)
+#### [移动应用管理](active-directory-conditional-access-mam.md)
 #### [技术参考](active-directory-conditional-access-technical-reference.md)
 #### [了解设备策略](active-directory-conditional-access-device-policies.md)
 #### [设置对已连接应用的访问权限](active-directory-conditional-access-policy-connected-applications.md)
@@ -306,7 +300,6 @@
 #### [常见问题](active-directory-conditional-faqs.md)
 #### [经典门户](active-directory-conditional-access.md)
 ##### [入门](active-directory-conditional-access-azuread-connected-apps.md)
-
 
 ### Windows Hello
 #### [无密码身份验证](active-directory-azureadjoin-passport.md)

@@ -53,6 +53,12 @@
 ## 管理
 ### [服务总线管理库](service-bus-management-libraries.md)
 ### [使用 Azure Resource Manager 模板](service-bus-resource-manager-overview.md)
+#### [创建命名空间](service-bus-resource-manager-namespace.md)
+#### [创建命名空间和队列](service-bus-resource-manager-namespace-queue.md)
+#### [创建包含主题和订阅的命名空间](service-bus-resource-manager-namespace-topic.md)
+#### [创建命名空间和队列的授权规则](service-bus-resource-manager-namespace-auth-rule.md)
+#### [创建包含主题、订阅和规则的命名空间](service-bus-resource-manager-namespace-topic-with-rule.md)
+#### 
 ### [使用 PowerShell 预配实体](service-bus-manage-with-ps.md)
 
 # 引用
