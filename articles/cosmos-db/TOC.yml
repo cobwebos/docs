@@ -4,6 +4,8 @@
   items:
     - name: 关于 Azure Cosmos DB
       href: introduction.md
+    - name: 20 天的提示
+      href: 20-days-of-tips.md
 - name: 快速入门
   expanded: true
   items:
@@ -49,8 +51,12 @@
       items:
         - name: DocumentDB
           href: tutorial-develop-documentdb-dotnet.md
-        - name: MongoDB
+        - name: 将 MongoDB 与 .NET 配合使用
           href: tutorial-develop-mongodb.md
+        - name: 将 MongoDB 与 Angular 配合使用
+          href: tutorial-develop-mongodb-nodejs.md
+        - name: 将 MongoDB 与 React 配合使用
+          href: tutorial-develop-mongodb-react.md
         - name: 表
           href: tutorial-develop-table-dotnet.md
         - name: 图形
@@ -208,7 +214,19 @@
               href: mongodb-mongochef.md
             - name: 使用 Robomongo
               href: mongodb-robomongo.md
-            - name: 教程
+            - name: Angular 教程系列
+              items:
+                - name: 第 2 部分 - 创建 Node 应用
+                  href: tutorial-develop-mongodb-nodejs-part2.md
+                - name: 第 3 部分 - 添加 Angular UI
+                  href: tutorial-develop-mongodb-nodejs-part3.md
+                - name: 第 4 部分 - 创建 Cosmos DB
+                  href: tutorial-develop-mongodb-nodejs-part4.md
+                - name: 第 5 部分 - 连接到 Cosmos DB
+                  href: tutorial-develop-mongodb-nodejs-part5.md
+                - name: 第 6 部分 - 写入到应用
+                  href: tutorial-develop-mongodb-nodejs-part6.md
+            - name: 其他教程
               items:
                 - name: Node.js 控制台应用
                   href: mongodb-samples.md

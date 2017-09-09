@@ -43,11 +43,7 @@
       href: sql-database-migrate-your-sql-server-database.md
     - name: 3 - 保护 SQL DB
       href: sql-database-security-tutorial.md
-    - name: 4 - 提高 SQL DB 性能
-      href: sql-database-performance-tutorial.md
-    - name: 5 - 实现多租户应用
-      href: sql-database-multi-tenant-application.md
-    - name: 6 - 实现地理分散的数据库
+    - name: 4 - 实现地理分散的数据库
       href: sql-database-implement-geo-distributed-database.md
 - name: 示例
   items:
