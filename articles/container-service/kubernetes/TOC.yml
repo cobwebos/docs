@@ -33,6 +33,8 @@
   items:
     - name: 保护容器
       href: container-service-security.md
+    - name: 服务主体 - Kubernetes
+      href: container-service-kubernetes-service-principal.md
 - name: 操作指南
   items:
     - name: 将 Kubernetes 与 Windows 配合使用
@@ -49,8 +51,12 @@
       href: container-service-connect.md
     - name: 缩放 ACS 群集
       href: container-service-scale.md
+    - name: 对 Kubernetes ACS 群集进行负载均衡
+      href: container-service-kubernetes-load-balancing.md
     - name: 监视
       items:
+        - name: 使用 OMS 进行监视
+          href: container-service-kubernetes-oms.md
         - name: 使用 Datadog 进行监视
           href: container-service-kubernetes-datadog.md
         - name: 使用 Sysdig 进行监视
@@ -68,7 +74,7 @@
     - name: Azure CLI 2.0
       href: /cli/azure/acs
     - name: REST
-      href: /rest/api/compute/containerservices
+      href: /rest/api/container-services
 - name: 资源
   items:
     - name: Azure 路线图

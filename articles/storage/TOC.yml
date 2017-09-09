@@ -2,7 +2,7 @@
   items:
     - name: 介绍
       href: ./common/storage-introduction.md
-    - name: 选择 Blob、文件或数据磁盘
+    - name: 选择 Blob、文件或磁盘
       href: ./common/storage-decide-blobs-files-disks.md
 - name: Blob
   href: ./blobs/storage-blobs-introduction.md
