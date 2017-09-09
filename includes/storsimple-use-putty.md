@@ -2,7 +2,7 @@
 
 #### <a name="to-connect-through-the-serial-console"></a>通过串行控制台进行连接
 1. 将串行电缆连接到设备（直接连接或通过 USB 串行适配器连接）。
-2. 打开“控制面板”，然后打开“设备管理器”。
+2. 打开“控制面板”，并打开“设备管理器”。
 3. 标识 COM 端口（如下图所示）。
    
      ![通过串行控制台进行连接](./media/storsimple-use-putty/HCS_ConnectingDeviceS-include.png)

@@ -57,7 +57,7 @@
 
 ## 管理
 ### [访问诊断日志](data-lake-store-diagnostic-logs.md)
-### [高可用性规划](data-lake-store-troubleshooting-guidance.md)
+### [高可用性规划](data-lake-store-disaster-recovery-guidance.md)
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=data-lake-store)

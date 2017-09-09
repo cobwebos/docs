@@ -120,6 +120,8 @@
           href: connect-logon.md
         - name: 使用 AHUB 授权
           href: hybrid-use-benefit-licensing.md
+        - name: 使用用于 Windows 10 的多租户托管权限
+          href: windows-desktop-multitenant-hosting-deployment.md
     - name: 保护 VM
       items:
         - name: 加密

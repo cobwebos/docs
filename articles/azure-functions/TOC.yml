@@ -49,7 +49,7 @@
       href: functions-cli-samples.md
 - name: 概念
   items:
-    - name: 消耗计划和应用服务计划
+    - name: 托管计划比较
       href: functions-scale.md
     - name: 触发器和绑定
       href: functions-triggers-bindings.md
