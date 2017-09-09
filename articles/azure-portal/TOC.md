@@ -6,11 +6,13 @@
 ## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 ## [键盘快捷方式](azure-portal-keyboard-shortcuts.md)
 ## [支持的浏览器和设备](../azure-preview-portal-supported-browsers-devices.md)
+## [Azure 仪表板结构](azure-portal-dashboards-structure.md)
 # 操作指南
 ## 部署
 ### [创建 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)
 ### [使用 Resource Manager 模板进行部署](../azure-resource-manager/resource-group-template-deploy.md)
 ### [创建并共享 Azure 仪表板](azure-portal-dashboards.md)
+### [以编程方式创建 Azure 仪表板](azure-portal-dashboards-create-programmatically.md)
 ## 管理
 ### [启用高对比度或更改主题](azure-portal-change-theme-high-contrast.md)
 ### [使用门户管理资源](../azure-resource-manager/resource-group-portal.md)
