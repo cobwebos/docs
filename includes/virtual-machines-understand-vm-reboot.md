@@ -85,7 +85,7 @@ VM 可能因自身问题重启。 在 VM 上运行的工作负荷或角色可能
 
 如果 I/O 请求因每秒输入/输出操作数 (IOPS) 超出磁盘 I/O 限制而持续受到限制，则可能暂时关闭 VM。 （标准磁盘存储的限制为 500 IOPS。）为缓解此问题，请在来宾 VM 中使用磁盘剥离或配置存储空间，具体情况取决于工作负荷。 有关详细信息，请参阅[配置 Azure VM 以获得最佳存储性能](http://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)。
 
-通过 Azure 高级存储提供高达 80,000 IOPS 的 IOPS 限制。 有关详细信息，请参阅[高性能高级存储](../articles/storage/storage-premium-storage.md)。
+通过 Azure 高级存储提供高达 80,000 IOPS 的 IOPS 限制。 有关详细信息，请参阅[高性能高级存储](../articles/storage/common/storage-premium-storage.md)。
 
 ### <a name="other-incidents"></a>其他事件
 在极少数情况下，普遍的问题可能影响 Azure 数据中心内的多台服务器。 如果出现这种问题，Azure 团队会向受影响订阅者发送电子邮件通知。 可查看 [Azure 服务运行状况仪表板](https://azure.microsoft.com/status/)和 Azure 门户，了解正在进行的服务中断和过去事件的状态。

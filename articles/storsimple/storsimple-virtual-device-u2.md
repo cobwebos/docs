@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/07/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: ead9fcc5ec582420d731faccb7abba0dc815ed84
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f9a9ff81913dda1457123525fe509d194798db14
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="deploy-and-manage-a-storsimple-virtual-device-in-azure"></a>在 Azure 中部署和管理 StorSimple 虚拟设备
@@ -34,15 +33,15 @@ StorSimple 虚拟设备可以在两种模型中使用：标准 8010（前身为 
 | **最大容量** |30 TB |64 TB |
 | **Azure VM** |Standard_A3（4 核，7 GB 内存） |Standard_DS3（4 核，14 GB 内存） |
 | **版本兼容性** |运行 pre-Update 2 或更高版本的设备版本 |运行 Update 2 或更高版本的设备版本 |
-| **上市区域** |所有 Azure 区域 |支持高级存储和 DS3 Azure VM 的所有 Azure 区域<br></br> 请使用[此列表](https://azure.microsoft.com/en-us/regions/services)，看“虚拟机”>“DS 系列”和“存储”>“磁盘存储”在你的区域是否均可用。 |
-| **存储类型** |为本地磁盘使用 Azure 标准存储<br></br> 了解如何 [创建标准存储帐户](../storage/storage-create-storage-account.md) |为本地磁盘使用 Azure 高级存储<sup>2</sup> <br></br>了解如何[创建高级存储帐户](../storage/storage-premium-storage.md) |
+| **上市区域** |所有 Azure 区域 |支持高级存储和 DS3 Azure VM 的所有 Azure 区域<br></br> 请使用[此列表](https://azure.microsoft.com/en-us/regions/services)，看“虚拟机”>“DS 系列”和“存储”>“磁盘存储”在区域是否均可用。 |
+| **存储类型** |为本地磁盘使用 Azure 标准存储<br></br> 了解如何 [创建标准存储帐户](../storage/common/storage-create-storage-account.md) |为本地磁盘使用 Azure 高级存储<sup>2</sup> <br></br>了解如何[创建高级存储帐户](../storage/common/storage-premium-storage.md) |
 | **工作负荷指导** |在级别从备份中检索文件 |云开发和测试方案、低延迟、高性能工作负荷 <br></br>用于灾难恢复的辅助设备 |
 
 <sup>1</sup>*前身为 1100*。
 
 <sup>2</sup> *8010 和 8020 为云层使用 Azure 标准存储。只有设备中的本地层存在差异*。
 
-本文介绍在 Azure 中部署 StorSimple 虚拟设备的逐步过程。 阅读本文后，将会：
+本文介绍在 Azure 中部署 StorSimple 虚拟设备的逐步过程。 阅读本文后，可以：
 
 * 了解虚拟设备与物理设备的差异。
 * 能够创建和配置虚拟设备。
@@ -62,7 +61,7 @@ StorSimple 虚拟设备是软件形式的 StorSimple，在 Microsoft Azure 虚�
 | **位置** |驻留在数据中心。 |在 Azure 中运行。 |
 | **网络接口** |有六个网络接口：DATA 0 到 DATA 5。 |只有一个网络接口：DATA 0。 |
 | **注册** |在配置过程中注册。 |注册是一个单独的任务。 |
-| **服务数据加密密钥** |在物理设备上重新生成密钥，然后使用新密钥更新虚拟设备。 |无法从虚拟设备重新生成。 |
+| **服务数据加密密钥** |在物理设备上重新生成密钥，并使用新密钥更新虚拟设备。 |无法从虚拟设备重新生成。 |
 
 ## <a name="prerequisites-for-the-virtual-device"></a>虚拟设备先决条件
 以下部分说明 StorSimple 虚拟设备的配置先决条件。 在部署虚拟设备之前，请查看 [有关使用虚拟设备的安全注意事项](storsimple-security.md#storsimple-virtual-device-security)。
@@ -71,7 +70,7 @@ StorSimple 虚拟设备是软件形式的 StorSimple，在 Microsoft Azure 虚�
 预配虚拟设备之前，需要在 Azure 环境中做好以下准备：
 
 * 对于虚拟设备，需 [在 Azure 中配置虚拟网络](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)。 如果使用高级存储，必须在支持高级存储的 Azure 区域中创建虚拟网络。 高级存储区域对应于 [Azure 服务（按区域）](https://azure.microsoft.com/en-us/regions/services)列表中“磁盘存储”所在的行。
-* 建议使用 Azure 提供的默认 DNS 服务器，而不要指定自己的 DNS 服务器名称。 如果 DNS 服务器名称无效，或者 DNS 服务器无法正确解析 IP 地址，则创建虚拟设备将会失败。
+* 建议使用 Azure 提供的默认 DNS 服务器，而不要指定自己的 DNS 服务器名称。 如果 DNS 服务器名称无效，或者 DNS 服务器无法正确解析 IP 地址，则创建虚拟设备会失败。
 * 点到站点和站点到站点连接是可选的，而不是必需的。 如果需要，可以针对更高级方案配置这些选项。
 * 可以在可使用虚拟设备公开的卷的虚拟网络中创建 [Azure 虚拟机](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) （主机服务器）。 这些服务器必须满足以下要求：                             
 
@@ -84,7 +83,7 @@ StorSimple 虚拟设备是软件形式的 StorSimple，在 Microsoft Azure 虚�
 创建虚拟设备之前，请对 Azure StorSimple 服务进行以下更新：
 
 * 针对要用作虚拟设备主机服务器的 VM 添加 [访问控制记录](storsimple-manage-acrs.md) 。
-* 使用与虚拟设备位于同一区域中的 [存储帐户](storsimple-manage-storage-accounts.md#add-a-storage-account) 。 使用不同区域中的存储帐户可能导致性能不佳。 可以配合虚拟设备使用标准或高级存储帐户。 如何创建[标准存储帐户](../storage/storage-create-storage-account.md)或[高级存储帐户](../storage/storage-premium-storage.md)的详细信息
+* 使用与虚拟设备位于同一区域中的 [存储帐户](storsimple-manage-storage-accounts.md#add-a-storage-account) 。 使用不同区域中的存储帐户可能导致性能不佳。 可以配合虚拟设备使用标准或高级存储帐户。 如何创建[标准存储帐户](../storage/common/storage-create-storage-account.md)或[高级存储帐户](../storage/common/storage-premium-storage.md)的详细信息
 * 用于创建虚拟设备的存储帐户应该与用于存储数据的存储帐户不同。 使用相同的存储帐户可能会导致性能不佳。
 
 在开始之前，请确保已准备好以下信息：
@@ -128,13 +127,13 @@ StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员�
 >
 >
 
-在 StorSimple Snapshot Manager 中配置设备时，系统将提示提供 StorSimple 设备 IP 地址和密码对存储设备进行身份验证。 有关详细步骤，请转到 [配置 StorSimple Snapshot Manager 密码](storsimple-change-passwords.md#change-the-storsimple-snapshot-manager-password)。
+在 StorSimple Snapshot Manager 中配置设备时，系统会提示提供 StorSimple 设备 IP 地址和密码对存储设备进行身份验证。 有关详细步骤，请转到 [配置 StorSimple Snapshot Manager 密码](storsimple-change-passwords.md#change-the-storsimple-snapshot-manager-password)。
 
 #### <a name="change-the-device-administrator-password"></a>更改设备管理员密码
 使用 Windows PowerShell 接口访问虚拟设备时，需要输入设备管理员密码。 为了确保数据的安全，必须更改此密码才能使用虚拟设备。 有关详细步骤，请转到 [配置设备管理员密码](storsimple-change-passwords.md#change-the-device-administrator-password)。
 
 ## <a name="connect-remotely-to-the-virtual-device"></a>远程连接到虚拟设备
-默认情况下，不支持通过 Windows PowerShell 接口远程访问虚拟设备。 首先需要在虚拟设备上启用远程管理，然后在用于访问虚拟设备的客户端上启用远程管理。
+默认情况下，不支持通过 Windows PowerShell 接口远程访问虚拟设备。 需首先在虚拟设备上启用远程管理，然后在用来访问虚拟设备的客户端上启用它。
 
 下面详述了包括两个步骤的远程连接过程。
 
@@ -160,7 +159,7 @@ StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员�
 
 [!INCLUDE [Create public endpoints on a virtual device](../../includes/storsimple-create-public-endpoints-virtual-device.md)]
 
-建议从同一虚拟网络中的另一个虚拟机进行连接，因为这种做法可将虚拟网络上的公共终结点数目减到最少。 使用此方法时，只需通过远程桌面会话连接到虚拟机，然后就像在局域网中配置任何其他 Windows 客户端一样配置该虚拟网络。 无需附加公共端口号，因为该端口是已知的。
+建议从同一虚拟网络中的另一个虚拟机进行连接，因为这种做法可将虚拟网络上的公共终结点数目减到最少。 使用此方法时，请直接通过远程桌面会话连接到虚拟机，然后就像在局域网中配置任何其他 Windows 客户端一样配置该虚拟网络。 无需附加公共端口号，因为该端口是已知的。
 
 ## <a name="work-with-the-storsimple-virtual-device"></a>使用 StorSimple 虚拟设备
 创建并配置 StorSimple 虚拟设备后，可以开始使用它。 可以在虚拟设备上使用卷容器、卷和备份策略，如同在物理 StorSimple 设备上所做的一样。唯一差别在于，必须确保从设备列表中选择虚拟设备。 有关虚拟设备的多种管理任务的分步过程，请参阅[使用 StorSimple Manager 服务管理虚拟设备](storsimple-manager-service-administration.md)。
@@ -170,7 +169,7 @@ StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员�
 ### <a name="maintain-a-storsimple-virtual-device"></a>维护 StorSimple 虚拟设备
 由于是纯软件设备，相比物理设备的维护，虚拟设备的维护可以说非常简单。 可以使用以下选项：
 
-* **软件更新** - 可以查看上次更新软件的日期，以及任何更新状态消息。 若要检查是否有新的更新，可以使用页面底部的“扫描更新”来执行手动扫描。  如果有可用的更新，请单击“安装更新”进行安装。 虚拟设备上只有一个接口，这意味着应用更新时，会造成轻微的服务中断。 虚拟设备将关闭并重新启动（如果需要），以应用任何已发布的更新。 有关分步过程，请转到 [更新设备](storsimple-update-device.md#install-regular-updates-via-the-azure-classic-portal)。
+* **软件更新** - 可以查看上次更新软件的日期，以及任何更新状态消息。 若要检查是否有新的更新，可以使用页面底部的“扫描更新”来执行手动扫描。 如果更新可用，请单击“安装更新”进行安装。 虚拟设备上只有一个接口，这意味着应用更新时，会造成轻微的服务中断。 虚拟设备将关闭并重新启动（如果需要），以应用任何已发布的更新。 有关分步过程，请转到 [更新设备](storsimple-update-device.md#install-regular-updates-via-the-azure-classic-portal)。
 * **支持包** - 可以创建并上传支持包，帮助 Microsoft 支持人员针对虚拟设备问题进行故障排除。 有关分步过程，请转到 [创建和管理支持包](storsimple-create-manage-support-package.md)。
 
 ### <a name="storage-accounts-for-a-virtual-device"></a>虚拟设备的存储帐户
@@ -223,11 +222,11 @@ StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员�
 [!INCLUDE [Delete a virtual device](../../includes/storsimple-delete-virtual-device.md)]
 
 ## <a name="troubleshoot-internet-connectivity-errors"></a>对 Internet 连接错误进行故障排除
-创建虚拟设备时，如果没有 Internet 连接，创建步骤将会失败。 若要了解失败是否由 Internet 连接造成，请在 Azure 经典门户中执行以下步骤：
+创建虚拟设备时，如果没有 Internet 连接，创建步骤会失败。 若要了解失败是否由 Internet 连接造成，请在 Azure 经典门户中执行以下步骤：
 
 1. 在 Azure 中创建 Windows server 2012 虚拟机。 此虚拟机应使用与虚拟设备相同的存储帐户、 VNet 和子网。 如果已在 Azure 中具有使用相同存储帐户、VNet 和子网的现有 Windows Server 主机，也可以将其用于排除 Internet 连接故障。
 2. 远程登录到上一步中创建的虚拟机。
-3. 打开虚拟机内的命令窗口（Win + R，然后键入 `cmd`）。
+3. 打开虚拟机内的命令窗口（Win + R，并键入 `cmd`）。
 4. 在提示符处运行以下 cmd。
 
     `nslookup windows.net`

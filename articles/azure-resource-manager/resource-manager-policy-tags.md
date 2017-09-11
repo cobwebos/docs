@@ -12,21 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/05/2017
+ms.date: 08/24/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 04338b62d942774368149b27e8b35713b77f8d7c
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 469bd8d637337e5900ea84c6bfaf88064695fb7e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/21/2017
-
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="apply-resource-policies-for-tags"></a>应用适用于标记的资源策略
 
 本主题提供通用策略规则，可应用这些规则确保资源上标记使用的一致性。
 
-向具有现有资源的资源组或订阅应用标记策略时，不会按追溯方式向这些资源应用策略。 若要强制对这些资源应用策略，请触发现有资源更新，如[触发现有资源更新](#trigger-updates-to-existing-resources)中所示。
+向具有现有资源的资源组或订阅应用标记策略时，不会按追溯方式向这些资源应用策略。 若要强制对这些资源应用策略，请触发现有资源更新。 本文包括用于触发更新的 PowerShell 示例。
 
 ## <a name="ensure-all-resources-in-a-resource-group-have-a-tagvalue"></a>确保资源组中的所有资源都有一个标记/值
 

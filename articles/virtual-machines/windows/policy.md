@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 3401c0af776691d22e51906eefaf895d684fdfd1
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 246f5958478fd6d9afc9ba990413ab08429bd25d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>使用 Azure Resource Manager 向 Windows VM 应用策略
@@ -60,7 +60,7 @@ ms.lasthandoff: 08/04/2017
             {
               "field": "Microsoft.Compute/imageSku",
               "in": [
-                "2012-Datacenter"
+                "2012-R2-Datacenter"
               ]
             },
             {
@@ -86,6 +86,23 @@ ms.lasthandoff: 08/04/2017
 {
   "field": "Microsoft.Compute/imageSku",
   "like": "*Datacenter"
+}
+```
+
+使用 anyOf 将上述策略修改为允许任何 Windows Server 2012 R2 Datacenter 或更高版本的映像：
+
+```json
+{
+  "anyOf": [
+    {
+      "field": "Microsoft.Compute/imageSku",
+      "like": "2012-R2-Datacenter*"
+    },
+    {
+      "field": "Microsoft.Compute/imageSku",
+      "like": "2016-Datacenter*"
+    }
+  ]
 }
 ```
 

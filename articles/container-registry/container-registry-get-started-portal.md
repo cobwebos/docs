@@ -18,10 +18,10 @@ ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 2cd5a08cc74473be594fc3c7a4fb934d65ffe0ab
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 7fbbb56d775ee96c9a44363a4e41d4fc3c630582
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -35,14 +35,14 @@ ms.lasthandoff: 07/12/2017
 2. 在应用商店中搜索“Azure 容器注册表”。
 3. 选择发行商为“Microsoft”的“Azure 容器注册表”。
     ![Azure 应用商店中的容器注册表服务](./media/container-registry-get-started-portal/container-registry-marketplace.png)
-4. 单击“创建” 。 此时将显示“Azure 容器注册表”边栏选项卡。
+4. 单击“创建” 。 此时会显示“Azure 容器注册表”边栏选项卡。
 
     ![容器注册表设置](./media/container-registry-get-started-portal/container-registry-settings.png)
 5. 在“Azure 容器注册表”边栏选项卡中输入以下信息。 完成后，单击“创建”。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **注册表名称**：特定注册表的全局唯一顶级域名。 在本示例中，注册表名称为 *myRegistry01*，但需要将它替换为你自己的唯一名称。 该名称只能包含字母和数字。
+    a. **注册表名称**：特定注册表的全局唯一顶级域名。 在本示例中，注册表名称为 *myRegistry01*，但需要将它替换成自己的唯一名称。 该名称只能包含字母和数字。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 **资源组**：选择现有的[资源组](../azure-resource-manager/resource-group-overview.md#resource-groups)，或键入新资源组的名称。
+    b. **资源组**：选择现有的[资源组](../azure-resource-manager/resource-group-overview.md#resource-groups)，或键入新资源组的名称。
 
     c. **位置**：选择[提供](https://azure.microsoft.com/regions/services/)该服务的 Azure 数据中心位置，例如“美国中南部”。
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 07/12/2017
       > 除了通过管理员用户帐户提供访问权限以外，容器注册表还基于 Azure Active Directory 服务主体的身份验证。 有关详细信息和注意事项，请参阅 [Authenticate with a container registry](container-registry-authentication.md)（使用容器注册表进行身份验证）。
       >
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 **存储帐户**：使用默认设置来创建[存储帐户](../storage/storage-introduction.md)，或选择位于同一位置的现有存储帐户。 当前不支持高级存储。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 **存储帐户**：使用默认设置来创建[存储帐户](../storage/common/storage-introduction.md)，或选择位于同一位置的现有存储帐户。 当前不支持高级存储。
 
 ## <a name="manage-registry-settings"></a>管理注册表设置
 创建注册表后，请在门户中的“容器注册表”在边栏选项卡上查找注册表设置。 例如，可能需要指定设置来登录注册表，或者需要启用或禁用管理员用户。

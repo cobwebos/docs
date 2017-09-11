@@ -16,23 +16,22 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: c3e9ee66974f8b7077a0436b3686fb0515ea5e22
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 741cce6f2c81efed1e4bd0547fcb46a231815263
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/10/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>在基于 Windows 的 HDInsight 中运行 Hadoop MapReduce 示例
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
-为帮助你开始使用 Azure HDInsight 在 Hadoop 群集上运行 MapReduce 作业，我们提供了一组示例。 在你创建的每一个 HDInsight 托管群集上都可以使用这些示例。 运行这些示例可熟悉如何使用 Azure PowerShell cmdlet 在 Hadoop 群集上运行作业。
+为帮助你开始使用 Azure HDInsight 在 Hadoop 群集上运行 MapReduce 作业，我们提供了一组示例。 在创建的每一个 HDInsight 托管群集上都可以使用这些示例。 运行这些示例可熟悉如何使用 Azure PowerShell cmdlet 在 Hadoop 群集上运行作业。
 
-* [**字数统计**][hdinsight-sample-wordcount]：计算单词在文本文件中出现的次数。
-* [**C# 流式处理字数统计**][hdinsight-sample-csharp-streaming]：使用 Hadoop 流式处理接口计算单词在文本文件中出现的次数。
-* [**Pi 估计器**][hdinsight-sample-pi-estimator]：使用统计学方法（拟蒙特卡罗法）来估算 pi 值。
-* [**10-GB Graysort**][hdinsight-sample-10gb-graysort]：使用 HDInsight 对 10 GB 文件运行常规用途的 GraySort。 有三个作业要运行：Teragen 生成数据，Terasort 对数据排序，而 Teravalidate 确认数据已正确排序。
+* [字数统计][hdinsight-sample-wordcount]：计算单词在文本文件中出现的次数。
+* [C# 流式处理字数统计][hdinsight-sample-csharp-streaming]：使用 Hadoop 流式处理接口计算单词在文本文件中出现的次数。
+* [Pi 估计器][hdinsight-sample-pi-estimator]：使用统计学方法（拟蒙特卡罗法）来估算 pi 值。
+* [10-GB Graysort][hdinsight-sample-10gb-graysort]：使用 HDInsight 对 10 GB 文件运行常规用途的 GraySort。 有三个作业要运行：Teragen 生成数据，Terasort 对数据排序，而 Teravalidate 确认数据已正确排序。
 
 > [!NOTE]
 > 可以在附录中找到源代码。
@@ -60,7 +59,7 @@ Web 上有许多介绍 Hadoop 相关技术（例如基于 Java 的 MapReduce 编
     > 请按照[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中的步骤安装最新版本的 Azure PowerShell。 如果脚本需要修改后才能使用与 Azure Resource Manager 兼容的新 cmdlet，请参阅[迁移到基于 Azure Resource Manager 的面向 HDInsight 群集的开发工具](hdinsight-hadoop-development-using-azure-resource-manager.md)。
 
 ## <a name="hdinsight-sample-wordcount"></a>字数统计 - Java
-若要提交 MapReduce 项目，请先创建 MapReduce 作业定义。 在作业定义中，指定 MapReduce 程序 jar 文件和 jar 文件的位置（即 **wasbs:///example/jars/hadoop-mapreduce-examples.jar**）、类名和参数。  Wordcount MapReduce 程序采用两个参数：输出位置以及用于计算字数的源文件。
+若要提交 MapReduce 项目，请先创建 MapReduce 作业定义。 在作业定义中，指定 MapReduce 程序 jar 文件和 jar 文件的位置（即 wasbs:///example/jars/hadoop-mapreduce-examples.jar）、类名和参数。  Wordcount MapReduce 程序采用两个参数：输出位置以及用于计算字数的源文件。
 
 可以在[附录 A](#apendix-a---the-word-count-MapReduce-program-in-java) 中找到源代码。
 
@@ -80,9 +79,9 @@ Web 上有许多介绍 Hadoop 相关技术（例如基于 Java 的 MapReduce 编
 
     # Define the MapReduce job
     $mrJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
-                                -JarFile "wasbs:///example/jars/hadoop-mapreduce-examples.jar" `
+                                -JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" `
                                 -ClassName "wordcount" `
-                                -Arguments "wasbs:///example/data/gutenberg/davinci.txt", "wasbs:///example/data/WordCountOutput"
+                                -Arguments "wasb:///example/data/gutenberg/davinci.txt", "wasb:///example/data/WordCountOutput"
 
     # Submit the job and wait for job completion
     $cred = Get-Credential -Message "Enter the HDInsight cluster HTTP user credential:"
@@ -123,10 +122,10 @@ Web 上有许多介绍 Hadoop 相关技术（例如基于 Java 的 MapReduce 编
     ```
 
     MapReduce 作业将生成一个名为 part-r-00000 的文件，其中包含单词和计数。 该脚本使用 **findstr** 命令列出包含“there”的所有单词。
-3. 设置前 3 个变量，然后运行脚本。
+3. 设置前 3 个变量，并运行脚本。
 
 ## <a name="hdinsight-sample-csharp-streaming"></a>字数统计 - C# 流式处理
-Hadoop 向 MapReduce 提供了一个流式处理 API，利用它，你可以采用 Java 之外的其他语言来编写映射函数和化简函数。
+Hadoop 向 MapReduce 提供了一个流式处理 API，利用它，可以采用 Java 之外的其他语言来编写映射函数和化简函数。
 
 > [!NOTE]
 > 本教程中的步骤仅适用于基于 Windows 的 HDInsight 群集。 有关基于 Linux 的 HDInsight 群集流式处理的示例，请参阅[开发适用于 HDInsight 的 Python 流式处理程序](hdinsight-hadoop-streaming-python.md)。
@@ -135,11 +134,11 @@ Hadoop 向 MapReduce 提供了一个流式处理 API，利用它，你可以采�
 
 如果为**映射器**指定可执行文件，则当初始化映射器时，每个映射器任务都将启动此可执行文件作为一个单独的进程。 当映射器任务运行时，它将其输入转换为行，并将这些行馈送到进程的 [stdin][stdin-stdout-stderr]。
 
-同时，映射器从进程的 stdout 中收集面向行的输出。 然后将每行转换为一个键/值对（作为映射器的输出收集）。 默认情况下，一行的前缀直至第一个制表符是键，而该行的剩余部分（不包括制表符）是值。 如果行中没有制表符，则整行被视为键，而值为 Null。
+同时，映射器从进程的 stdout 中收集面向行的输出。 将每行转换为一个键/值对（作为映射程序的输出而收集）。 默认情况下，一行的前缀直至第一个制表符是键，而该行的剩余部分（不包括制表符）是值。 如果行中没有制表符，则整行被视为键，而值为 Null。
 
 如果为**化简器**指定可执行文件，则当初始化化简器时，每个化简器任务都将启动此可执行文件作为一个单独的进程。 当化简器任务运行时，它将其输入键/值对转换为行，并将这些行馈送到进程的 [stdin][stdin-stdout-stderr]。
 
-同时，化简器从进程的 [stdout][stdin-stdout-stderr] 中收集面向行的输出。 然后将每行转换为一个键/值对（作为化简器的输出收集）。 默认情况下，一行的前缀直至第一个制表符是键，而该行的剩余部分（不包括制表符）是值。
+同时，化简器从进程的 [stdout][stdin-stdout-stderr] 中收集面向行的输出。 将每行转换为一个键/值对（作为化简器的输出收集）。 默认情况下，一行的前缀直至第一个制表符是键，而该行的剩余部分（不包括制表符）是值。
 
 **提交 C# 流式处理字数统计作业**
 
@@ -158,7 +157,7 @@ Hadoop 向 MapReduce 提供了一个流式处理 API，利用它，你可以采�
 
         example/data/StreamingOutput/wc.txt/part-00000
 
-## <a name="hdinsight-sample-pi-estimator"></a>PI 估计器
+## <a name="hdinsight-sample-pi-estimator"></a>PI 估算器
 pi 估计器使用统计学方法（拟蒙特卡罗法）来估算 pi 值。 单位平方形内部随机放置的点也落入该平方形内嵌的圆圈内，其概率等于圆圈面积 pi/4。 可以从 4R 的值来估算 pi 的值，其中 R 是落入圆圈内的点数与平方形内总点数的比率。 所使用的取样点越多，估算值越准确。
 
 为此示例提供的脚本提交了一个 Hadoop jar 作业，设置为使用特定的值（16 个映射）运行，其中每个映射都必须通过参数值计算 1 千万个取样点。 可以更改这些参数值以改进 pi 的估算值。 例如，pi 采用前 10 位小数时为 3.1415926535。
@@ -169,18 +168,18 @@ pi 估计器使用统计学方法（拟蒙特卡罗法）来估算 pi 值。 单
 
     ```powershell
     $mrJobJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
-                                -JarFile "wasbs:///example/jars/hadoop-mapreduce-examples.jar" `
+                                -JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" `
                                 -ClassName "pi" `
                                 -Arguments "16", "10000000"
     ```
 
-## <a name="hdinsight-sample-10gb-graysort"></a>10-GB Graysort
+## <a name="hdinsight-sample-10gb-graysort"></a>10 GB Graysort
 此示例使用适中的 10GB 数据，这样它运行时能相对快一点。 它使用由 Owen O'Malley 和 Arun Murthy 开发的 MapReduce 应用程序，此应用程序以 0.578TB/分钟（100TB 用时 173 分钟）的速率赢得了 2009 年年度常用（“daytona”）TB 级排序基准。 有关这一排序基准和其他排序基准的详细信息，请参阅 [Sortbenchmark](http://sortbenchmark.org/) 站点。
 
 本示例使用三组 MapReduce 程序：
 
 1. **TeraGen** 是一个 MapReduce 程序，可用于生成要排序的数据行。
-2. **TeraSort** 以输入数据为例，使用 MapReduce 将数据排序到总序中。 TeraSort 是 MapReduce 函数的一种标准排序，但自定义的分区程序除外，此分区程序使用 N-1 个抽样键（用于定义每次简化的键范围）的已排序列表。 具体说来，sample[i-1] <= key < sample[i] 的所有键都将会发送到化简变量 i。 这样可确保化简变量 i 的输出全都小于化简变量 i+1 的输出。
+2. **TeraSort** 以输入数据为例，使用 MapReduce 将数据排序到总序中。 TeraSort 是 MapReduce 函数的一种标准排序，但自定义的分区程序除外，此分区程序使用 N-1 个抽样键（用于定义每次简化的键范围）的已排序列表。 具体说来，sample[i-1] <= key < sample[i] 之类的所有键都将会发送到化简变量 i。 这样可确保化简变量 i 的输出全都小于化简变量 i+1 的输出。
 3. **TeraValidate** 是一个 MapReduce 程序，用于验证输出是否已全局排序。 它在输出目录中对于每个文件创建一个映射，每个映射都确保每个键均小于或等于前一个键。 映射函数也会生成每个文件的第一个和最后一个键的记录，而化简函数会确保文件 i 的第一个键大于文件 i-1 的最后一个键。 任何问题都会报告为包含故障键的化简的输出结果。
 
 所有三个应用程序所使用的输入和输出格式都以正确格式读写文本文件。 化简的输出结果的复制设置为 1，而不是默认值 3，因为基准比赛不要求输出结果数据复制到多个节点上。
@@ -213,14 +212,13 @@ pi 估计器使用统计学方法（拟蒙特卡罗法）来估算 pi 值。 单
     ```
 
 ## <a name="next-steps"></a>后续步骤
-从本文和每个示例的相关文章中，你了解到如何使用 Azure PowerShell 运行 HDInsight 群集附带的示例。 有关 Pig、Hive 和 MapReduce 如何与 HDInsight 配合使用的教程，请参阅以下主题：
+从本文和每个示例的相关文章中，了解到如何使用 Azure PowerShell 运行 HDInsight 群集附带的示例。 有关 Pig、Hive 和 MapReduce 如何与 HDInsight 配合使用的教程，请参阅以下主题：
 
 * [将 Hadoop 与 HDInsight 中的 Hive 配合使用以分析手机使用情况][hdinsight-get-started]
 * [将 Pig 与 Hadoop on HDInsight 配合使用][hdinsight-use-pig]
 * [将 Hive 与 Hadoop on HDInsight 配合使用][hdinsight-use-hive]
 * [在 HDInsight 中提交 Hadoop 作业][hdinsight-submit-jobs]
 * [Azure HDInsight SDK 文档][hdinsight-sdk-documentation]
-* [在 HDInsight 中调试 Hadoop：错误消息][hdinsight-errors]
 
 ## <a name="appendix-a---the-word-count-source-code"></a>附录 A - 字数统计源代码
 
@@ -378,10 +376,10 @@ namespace wc
 }
 ```
 
-wc.cs 文件中的化简器代码使用 [StreamReader][streamreader] 对象从 cat.exe 映射器输出的标准输入流读取字符。 当它使用 [Console.Writeline][console-writeline] 方法读取字符时，可通过统计位于每个单词末尾的空格和行结束字符的数目来计算单词数量。 然后使用 [Console.Writeline][console-writeline] 方法将总数写入标准输出流中。
+wc.cs 文件中的化简器代码使用 [StreamReader][streamreader] 对象从 cat.exe 映射器输出的标准输入流读取字符。 当它使用 [Console.Writeline][console-writeline] 方法读取字符时，可通过统计位于每个单词末尾的空格和行结束字符的数目来计算单词数量。 然后使用 [Console.Writeline][console-writeline] 方法将总数写入标准输出流。
 
 ## <a name="appendix-c---the-pi-estimator-source-code"></a>附录 C - PI 估计器源代码
-在下面可以检查包含映射器函数和化简器函数的 pi estimator Java 代码。 映射器程序生成在单位平方形内部随机放置的指定点数，然后计算位于圆圈内部的这些点的数目。 化简器程序累计由映射器统计的点数，然后根据公式 4R 估算 pi 的值，其中 R 是圆圈内统计的点数与方形内总点数的比率。
+在下面可以检查包含映射器函数和化简器函数的 pi estimator Java 代码。 映射器程序生成在单位平方形内部随机放置的指定点数，并计算位于圆圈内部的这些点的数目。 化简器程序累计由映射器统计的点数，并根据公式 4R 估算 pi 的值，其中 R 是圆圈内统计的点数与方形内总点数的比率。
 
 ```java
 /**
@@ -986,8 +984,6 @@ public class TeraSort extends Configured implements Tool {
     }
 }
 ```
-
-[hdinsight-errors]: hdinsight-debug-jobs.md
 
 [hdinsight-sdk-documentation]: https://msdn.microsoft.com/library/azure/dn479185.aspx
 

@@ -3,7 +3,7 @@ title: "Azure Analysis Services 教程第 13 课：部署 | Microsoft Docs"
 description: "介绍了如何将教程项目部署到 Azure Analysis Services。"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 
@@ -16,22 +16,22 @@ ms.workload: na
 ms.date: 07/17/2017
 ms.author: owend
 ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: 6f56d017702391b2027ad421de4c1919fa53090a
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 70dbf5786262f75199270aa8009e03b9b48b8559
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="lesson-13-deploy"></a>第 13 课：部署
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-本课介绍如何配置部署属性；指定要部署到的 Azure Analysis Services 服务器，以及模型的名称。 然后，你将模型部署到该实例。 在部署模型后，用户可以使用报告客户端应用程序连接到该模型。 有关详细信息，请参阅[部署到 Azure Analysis Services](https://docs.microsoft.com/azure/analysis-services/analysis-services-deploy)。  
+本课介绍如何配置部署属性；指定要部署到的 Azure Analysis Services 服务器，以及模型的名称。 然后，将模型部署到该实例。 在部署模型后，用户可以使用报告客户端应用程序连接到该模型。 有关详细信息，请参阅[部署到 Azure Analysis Services](https://docs.microsoft.com/azure/analysis-services/analysis-services-deploy)。  
   
-本课预计完成时间：5 分钟  
+本课预计完成时间：**5 分钟**  
   
 ## <a name="prerequisites"></a>先决条件  
-本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，你应当已完成上一课：[第 12 课：在 Excel 中分析](../tutorials/aas-lesson-12-analyze-in-excel.md)。  
+本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，应当已完成上一课：[第 12 课：在 Excel 中分析](../tutorials/aas-lesson-12-analyze-in-excel.md)。  
 
 > [!IMPORTANT]  
 > 必须在远程 Analysis Services 服务器上拥有[管理员权限](../analysis-services-server-admins.md)才能向其进行部署。  
@@ -44,7 +44,7 @@ ms.lasthandoff: 07/19/2017
 #### <a name="to-configure-deployment-properties"></a>配置部署属性  
 
   
-1.  在“解决方案资源管理器”中，右键单击“AW Internet 销售”项目，然后单击“属性”。  
+1.  在“解决方案资源管理器”中，右键单击“AW Internet 销售”项目，并单击“属性”。  
   
 2.  在“AW Internet 销售属性页”对话框中，在“部署服务器”下的“服务器”属性中输入完整的服务器名称。  
 
@@ -54,24 +54,24 @@ ms.lasthandoff: 07/19/2017
   
 4.  在“模型名称”属性中，键入“Adventure Works Internet 销售模型”。  
   
-5.  验证你的选择，然后单击“确定”。  
+5.  验证选择，然后单击“确定”。  
   
 #### <a name="to-deploy-the-adventure-works-internet-sales"></a>部署“Adventure Works Internet 销售”
   
-1.  在“解决方案资源管理器”中，右键单击“AW Internet 销售”项目，然后单击“生成”。  
+1.  在“解决方案资源管理器”中，右键单击“AW Internet 销售”项目，并单击“生成”。  
 
-2.  右键单击“AW Internet 销售”项目，然后单击“部署”。
+2.  右键单击“AW Internet 销售”项目，并单击“部署”。
 
-    部署到 Azure Analysis Services 时，可能会提示你输入你的帐户。 输入你的组织帐户和密码，例如 nancy@adventureworks.com。 此帐户必须位于服务器上的管理员组中。
+    部署到 Azure Analysis Services 时，可能会提示输入帐户。 输入组织帐户和密码，例如 nancy@adventureworks.com。此帐户必须位于服务器上的管理员组中。
   
-    “部署”对话框将会出现，其中显示了模型中包括的元数据和每个表的部署状态。  
+    “部署”对话框会出现，其中显示了模型中包括的元数据和每个表的部署状态。  
     
     ![aas-lesson13-deploy-status](../tutorials/media/aas-lesson13-deploy-status.png)
   
 3. 当部署成功完成时，继续操作并单击“关闭”。  
   
 ## <a name="conclusion"></a>结束语  
-祝贺你！ 你已完成了你的第一个 Analysis Services 表格模型的创作和部署。 本教程已指导你完成了创建表格模型时的最常见任务。 现在，你的“Adventure Works Internet 销售”模型已部署，你可以使用 SQL Server Management Studio 管理该模型，创建处理脚本和备份计划。 用户现在也可以使用报告客户端应用程序（例如 Microsoft Excel 或 Power BI）连接到该模型。  
+祝贺你！ 已完成了第一个 Analysis Services 表格模型的创作和部署。 本教程已指导完成了创建表格模型时的最常见任务。 现在，“Adventure Works Internet 销售”模型已部署，可以使用 SQL Server Management Studio 管理该模型，创建处理脚本和备份计划。 用户现在也可以使用报告客户端应用程序（例如 Microsoft Excel 或 Power BI）连接到该模型。  
 
 ![aas-lesson13-ssms](../tutorials/media/aas-lesson13-ssms.png)
   

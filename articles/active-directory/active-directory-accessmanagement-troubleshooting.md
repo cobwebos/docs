@@ -12,18 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 08/28/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4bab9f44d1c91f05618ea510b83beb06540429f2
-ms.openlocfilehash: 27f8d329c0dddd21cca7e3631594ab326f3610b2
+ms.reviewer: piotrci
+ms.custom: it-pro
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 8b4251c39a8883dfcb97ded8e4b533f073dce685
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/14/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="troubleshooting-dynamic-memberships-for-groups"></a>组的动态成员身份疑难解答
-**我在组上配置了一个规则，但该组中的成员身份未更新**<br/>在“配置”选项卡中，检查“启用委派组管理”设置是否设为“是”。 仅当你已使用分配有 Azure Active Directory Premium 许可证的用户登录时，才能看到此设置。 检查规则中的用户属性值：是否有用户满足该规则？
+**我在组上配置了一个规则，但该组中的成员身份未更新**<br/>在“配置”选项卡中，检查“启用委派组管理”设置是否设为“是”。仅已使用分配有 Azure Active Directory Premium 许可证的用户登录时，才能看到此设置。 检查规则中的用户属性值：是否有用户满足该规则？
 
 **我配置了一条规则，但现在却删除了该规则的现有成员**<br/>这是预期的行为。 在启用或更改某个规则时，会删除组中的现有成员。 评估规则后返回的用户将作为成员添加到组中。     
 

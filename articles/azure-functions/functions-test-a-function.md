@@ -4,7 +4,7 @@ description: "使用 Postman、cURL 和 Node.js 测试 Azure functions。"
 services: functions
 documentationcenter: na
 author: wesmc7777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions，函数，事件处理，webhook，动态计算，无服务体系结构，测试"
@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: wesmc
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 2fd12dd32ed3c8479c7460cbc0a1cac3330ff4f4
-ms.openlocfilehash: a58bf41ec11b5826b60c1fc999240ea655be6d9d
-ms.lasthandoff: 03/01/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: aca03ba4137893157fcbe6650336782ab88cd234
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中测试代码的策略
@@ -34,14 +34,14 @@ ms.lasthandoff: 03/01/2017
 + 计时器触发的函数
 + 测试应用程序或框架
 
-上述所有测试方法都使用一个 HTTP 触发器函数，该函数可通过查询字符串参数或请求正文接受输入。 你将在第一部分中创建此函数。
+上述所有测试方法都使用一个 HTTP 触发器函数，该函数可通过查询字符串参数或请求正文接受输入。 将在第一部分中创建此函数。
 
 ## <a name="create-a-function-for-testing"></a>创建用于测试的函数
 此教程的大部分内容都使用 HttpTrigger JavaScript 函数模板的略加修改的版本，创建函数时可使用该模板。 如果在创建函数时需要帮助，请查看此[教程](functions-create-first-azure-function.md)。 在 [Azure 门户]中创建测试函数时请选择 **HttpTrigger- JavaScript** 模板。
 
-默认函数模板基本上是一个“hello world”函数，它从请求正文或查询字符串 `name=<your name>` 回显名称。  我们将更新代码，以允许你提供名称和地址作为请求正文中的 JSON 内容。 然后，该函数会在提供了这些内容时将其回显到客户端。   
+默认函数模板基本上是一个“hello world”函数，它从请求正文或查询字符串 `name=<your name>` 回显名称。  我们将更新代码，以允许提供名称和地址作为请求正文中的 JSON 内容。 然后，该函数会在提供了这些内容时将其回显到客户端。   
 
-使用以下代码更新函数，测试将会用到这些代码：
+使用以下代码更新函数，测试会用到这些代码：
 
 ```javascript
 module.exports = function (context, req) {
@@ -119,7 +119,7 @@ Web 浏览器是通过 HTTP 来触发函数的一种简单方法。 可以对不
 推荐使用与 Chrome 浏览器集成的 Postman 来测试大多数函数。 若要安装 Postman，请参阅[获取 Postman](https://www.getpostman.com/)。 Postman 可控制更多 HTTP 请求的属性。
 
 > [!TIP]
-> 使用你最熟悉的 HTTP 测试工具。 下面是集中替代 Postman 的方案：  
+> 使用最熟悉的 HTTP 测试工具。 下面是集中替代 Postman 的方案：  
 >
 > * [Fiddler](http://www.telerik.com/fiddler)  
 > * [Paw](https://luckymarmot.com/paw)  
@@ -186,7 +186,7 @@ Web 浏览器是通过 HTTP 来触发函数的一种简单方法。 可以对不
 ### <a name="test-a-blob-trigger-by-using-storage-explorer"></a>使用存储浏览器测试 blob 触发器
 可使用 [Azure 存储资源管理器](http://storageexplorer.com/)测试 blob 触发器函数。
 
-1. 在你的 Function App 的 [Azure 门户]中，创建一个 C#、F# 或 JavaScript blob 触发器函数。 将要监视路径设为 blob 容器名。 例如：
+1. 在 Function App 的 [Azure 门户]中，创建一个 C#、F# 或 JavaScript blob 触发器函数。 将要监视路径设为 blob 容器名。 例如：
 
         files
 2. 单击 **+** 按钮选择或创建需要使用的存储帐户。 然后单击“创建”。
@@ -234,7 +234,7 @@ Azure Functions 门户旨在让你测试 HTTP 和计时器触发的函数。 还
 
 
 ### <a name="test-with-a-timer-trigger"></a>使用计时器触发器进行测试
-某些函数无法通过上述工具进行充分测试。 例如，以队列触发器函数为例，该函数在消息被放到 [Azure 队列存储](../storage/storage-dotnet-how-to-use-queues.md)中时运行。 你始终可以编写代码来将消息放到队列中，本文下文中的控制台项目中提供了这样的一个示例。 不过，还可以使用另一种方法来直接对函数进行测试。  
+某些函数无法通过上述工具进行充分测试。 例如，以队列触发器函数为例，该函数在消息被放到 [Azure 队列存储](../storage/queues/storage-dotnet-how-to-use-queues.md)中时运行。 始终可以编写代码来将消息放到队列中，本文下文中的控制台项目中提供了这样的一个示例。 不过，还可以使用另一种方法来直接对函数进行测试。  
 
 可以使用配置了队列输出绑定的计时器触发器。 该计时器触发器代码随后可将测试消息写入队列中。 本部分讲解了一个示例。
 
@@ -244,11 +244,11 @@ Azure Functions 门户旨在让你测试 HTTP 和计时器触发的函数。 还
 为了演示此方法，我们首先为名为 `queue-newusers` 的队列创建一个队列触发器函数。 此函数将处理放到 Azure 队列存储中的新用户的名称和地址信息。
 
 > [!NOTE]
-> 如果使用不同的队列名称，请确保使用的名称符合[命名队列和元数据](https://msdn.microsoft.com/library/dd179349.aspx)规则。 否则将会出错。
+> 如果使用不同的队列名称，请确保使用的名称符合[命名队列和元数据](https://msdn.microsoft.com/library/dd179349.aspx)规则。 否则会出错。
 >
 >
 
-1. 在你的 Function App 的 [Azure 门户]中，单击“新建函数” > “队列触发器 - C#”。
+1. 在 Function App 的 [Azure 门户]中，单击“新建函数” > “队列触发器 - C#”。
 2. 输入队列函数要监视的队列名称：
 
         queue-newusers
@@ -256,13 +256,13 @@ Azure Functions 门户旨在让你测试 HTTP 和计时器触发的函数。 还
 4. 将此门户浏览器窗口保持打开状态，以便可以监视默认队列函数模板代码的日志条目。
 
 #### <a name="create-a-timer-trigger-to-drop-a-message-in-the-queue"></a>创建计时器触发器，将消息放入队列
-1. 在新的浏览器窗口中打开 [Azure 门户]并导航到你的 Function App。
+1. 在新的浏览器窗口中打开 [Azure 门户]并导航到 Function App。
 2. 单击“新建函数” > “计时器触发器 - C#”。 输入一个 cron 表达式，设置计时器代码对队列函数进行测试的频率。 然后单击“创建”。 如果希望测试每 30 秒运行一次，可以使用以下 [CRON 表达式](https://wikipedia.org/wiki/Cron#CRON_expression)：
 
         */30 * * * * *
 3. 单击新计时器触发器的“集成”选项卡。
 4. 在“输出”下，单击“+ 新建输出”。 然后单击“队列”和“选择”。
-5. 请记下你为**队列消息对象**使用的名称。 在计时器函数代码中将使用此名称。
+5. 请记下用于“队列消息对象”的名称。 在计时器函数代码中将使用此名称。
 
         myQueue
 6. 输入要发送信息的队列名称：
@@ -303,13 +303,13 @@ Azure Functions 门户旨在让你测试 HTTP 和计时器触发的函数。 还
     2016-03-24T10:27:30.607 Function completed (Success, Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
 
 ## <a name="test-a-function-with-code"></a>使用代码测试函数
-你可能需要创建外部应用程序或框架来测试函数。
+可能需要创建外部应用程序或框架来测试函数。
 
 ### <a name="test-an-http-trigger-function-with-code-nodejs"></a>使用代码测试 HTTP 触发器函数：Node.js
 可使用 Node.js 应用执行 HTTP 请求以测试函数。
 请确保设置以下内容：
 
-* 将请求选项中的 `host` 设置为你的 Function App 主机。
+* 将请求选项中的 `host` 设置为 Function App 主机。
 * 在 `path` 中设置函数名。
 * 在 `path` 中设置访问代码 (`<your code>`)。
 
@@ -378,11 +378,11 @@ req.end(bodyString);
 
 
 ### <a name="test-a-queue-trigger-function-with-code-c"></a>使用代码测试队列触发器函数：C# #
-之前有提到，可以通过使用代码将消息放到队列中来测试队列触发器。 以下代码示例以 [Azure 队列存储入门](../storage/storage-dotnet-how-to-use-queues.md)教程中提供的 C# 代码为基础。 链接还提供了其他语言的代码。
+之前有提到，可以通过使用代码将消息放到队列中来测试队列触发器。 以下代码示例以 [Azure 队列存储入门](../storage/queues/storage-dotnet-how-to-use-queues.md)教程中提供的 C# 代码为基础。 链接还提供了其他语言的代码。
 
 若要在控制台应用中测试此代码，必须：
 
-* [在 app.config 文件中配置存储连接字符串](../storage/storage-dotnet-how-to-use-queues.md)。
+* [在 app.config 文件中配置存储连接字符串](../storage/queues/storage-dotnet-how-to-use-queues.md)。
 * 将 `name` 和 `address` 作为参数传送到应用。 例如，`C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"`。 （在运行期间，此代码将接受新用户的名称和地址作为命令行参数）。
 
 示例 C# 代码：

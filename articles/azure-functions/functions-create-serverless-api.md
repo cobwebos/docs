@@ -3,7 +3,7 @@ title: "使用 Azure Functions 创建无服务器 API | Microsoft Docs"
 description: "如何使用 Azure Functions 创建无服务器 API"
 services: functions
 author: mattchenderson
-manager: erikre
+manager: cfowler
 ms.service: functions
 ms.tgt_pltfrm: na
 ms.devlang: multiple

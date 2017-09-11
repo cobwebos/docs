@@ -1,6 +1,6 @@
 ---
 title: "Azure IoT 中心的实时传感器数据可视化 – Web 应用 | Microsoft Docs"
-description: "使用 Microsoft Azure 应用服务的 Web 应用功能可视化从传感器收集并发送到 IoT 中心的温度和湿度数据。"
+description: "使用 Microsoft Azure App Service 的 Web 应用功能可视化从传感器收集并发送到 IoT 中心的温度和湿度数据。"
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -13,16 +13,16 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/29/2017
+ms.date: 08/16/2017
 ms.author: xshi
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: 4f30643926def3259e603a94c741b8f65427b8da
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: e037f5c29cabf8e5d0d3e7ded187280a0652d5c3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/16/2017
 
 ---
-# <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>使用 Azure 应用服务的 Web 应用功能可视化 Azure IoT 中心的实时传感器数据
+# <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>使用 Azure App Service 的 Web 应用功能可视化 Azure IoT 中心的实时传感器数据
 
 ![端到端关系图](media/iot-hub-get-started-e2e-diagram/5.png)
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 07/13/2017
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
 1. 在 [Azure 门户](https://ms.portal.azure.com/)中，单击“新建” > “Web + 移动” > “Web 应用”。
-2. 输入唯一的作业名称，验证订阅，指定资源组和位置，选择“固定到仪表板”，然后单击“创建”。
+2. 输入唯一的作业名称，验证订阅，指定资源组和位置，选择“固定到仪表板”，并单击“创建”。
 
    建议选择与资源组相同的位置。 这有助于加快处理速度，并降低数据传输的费用。
 
@@ -112,6 +112,9 @@ ms.lasthandoff: 07/13/2017
 此时应会看到 IoT 中心的实时温度和湿度数据。
 
 ![显示实时温度和湿度的 Web 应用页](media/iot-hub-live-data-visualization-in-web-apps/9_web-app-page-show-real-time-temperature-humidity-azure.png)
+
+> [!NOTE]
+> 确保示例应用程序正在设备上运行。 如果没有，将会得到空白图表，可参考[设置设备](iot-hub-raspberry-pi-kit-node-get-started.md)中的教程。
 
 ## <a name="next-steps"></a>后续步骤
 现已成功使用 Web 应用可视化 IoT 中心的实时传感器数据。

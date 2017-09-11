@@ -1,5 +1,5 @@
 ## <a name="set-up-your-development-environment"></a>设置开发环境
-接下来在 Visual Studio 中设置开发环境，然后即可试用本指南中的代码示例。
+接下来在 Visual Studio 中设置开发环境，即可试用本指南中的代码示例。
 
 ### <a name="create-a-windows-console-application-project"></a>创建 Windows 控制台应用程序项目
 在 Visual Studio 中创建新的 Windows 控制台应用程序。 以下步骤演示如何在 Visual Studio 2017 中创建控制台应用程序，但是，其他 Visual Studio 版本中的步骤是类似的。
@@ -24,9 +24,9 @@
 
 可以使用 NuGet 获取这两个包。 执行以下步骤:
 
-1. 在“解决方案资源管理器”中，右键单击你的项目并选择“管理 NuGet 包”。
-2. 在线搜索“WindowsAzure.Storage”，然后单击“安装”  以安装存储客户端库和依赖项。
-3. 在线搜索“WindowsAzure.ConfigurationManager”，然后单击“安装”以安装 Azure Configuration Manager。
+1. 在“解决方案资源管理器”中，右键单击项目并选择“管理 NuGet 包”。
+2. 在线搜索“WindowsAzure.Storage”，并单击“安装”  以安装存储客户端库和依赖项。
+3. 在线搜索“WindowsAzure.ConfigurationManager”，并单击“安装”以安装 Azure Configuration Manager。
 
 > [!NOTE]
 > [用于 .NET 的 Azure SDK](https://azure.microsoft.com/downloads/)中也包含存储客户端库包。 但是我们建议同时从 NuGet 安装存储客户端库，以确保始终使用客户端库的最新版本。
@@ -39,26 +39,26 @@
 可从两个环境中选择用于运行本指南中示例的环境：
 
 * 可针对云中的 Azure 存储帐户运行代码。 
-* 可针对 Azure 存储模拟器运行代码。 存储模拟器是模拟云中 Azure 存储帐户的本地环境。 应用程序处于开发阶段时，可以选择使用模拟器免费测试和调试代码。 模拟器使用已知帐户和密钥。 有关详细信息，请参阅[使用 Azure 存储模拟器进行开发和测试](../articles/storage/storage-use-emulator.md)
+* 可针对 Azure 存储模拟器运行代码。 存储模拟器是模拟云中 Azure 存储帐户的本地环境。 应用程序处于开发阶段时，可以选择使用模拟器免费测试和调试代码。 模拟器使用已知帐户和密钥。 有关详细信息，请参阅[使用 Azure 存储模拟器进行开发和测试](../articles/storage/common/storage-use-emulator.md)
 
-如果以云中的存储帐户为目标，请从 Azure 门户复制存储帐户的主访问密钥。 有关详细信息，请参阅 [查看和复制存储访问密钥](../articles/storage/storage-create-storage-account.md#view-and-copy-storage-access-keys)。
+如果以云中的存储帐户为目标，请从 Azure 门户复制存储帐户的主访问密钥。 有关详细信息，请参阅 [查看和复制存储访问密钥](../articles/storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys)。
 
 > [!NOTE]
-> 您可以指向存储模拟器以避免引发与 Azure 存储空间有关的任何费用。 但是，如果您确实选择指向云中的 Azure 存储帐户，则执行此教程的费用将会忽略不计。
+> 可以指向存储模拟器以避免引发与 Azure 存储有关的任何费用。 但是，如果确实选择指向云中的 Azure 存储帐户，则执行此教程的费用会忽略不计。
 > 
 > 
 
 ### <a name="configure-your-storage-connection-string"></a>配置存储连接字符串
-用于 .NET 的 Azure 存储空间客户端库支持使用存储连接字符串来配置终结点和用于访问存储服务的凭据。 维护存储连接字符串的最佳方法在配置文件中。 
+用于 .NET 的 Azure 存储客户端库支持使用存储连接字符串来配置终结点和用于访问存储服务的凭据。 维护存储连接字符串的最佳方法在配置文件中。 
 
-有关连接字符串的详细信息，请参阅 [配置 Azure 存储的连接字符串](../articles/storage/storage-configure-connection-string.md)。
+有关连接字符串的详细信息，请参阅 [配置 Azure 存储的连接字符串](../articles/storage/common/storage-configure-connection-string.md)。
 
 > [!NOTE]
-> 您的存储帐户密钥类似于您的存储帐户的根密码。 始终要小心保护存储帐户密钥。 避免将其分发给其他用户、对其进行硬编码或将其保存在其他人可以访问的纯文本文件中。 如果认为密钥可能已泄漏，请使用 Azure 门户重新生成密钥。
+> 存储帐户密钥类似于存储帐户的根密码。 始终要小心保护存储帐户密钥。 避免将其分发给其他用户、对其进行硬编码或将其保存在其他人可以访问的纯文本文件中。 如果认为密钥可能已泄漏，请使用 Azure 门户重新生成密钥。
 > 
 > 
 
-若要配置连接字符串，请从 Visual Studio 中的解决方案资源管理器打开 `app.config` 文件。 添加 `<appSettings>` 元素的内容，如下所示。 将 `account-name` 替换为您的存储帐户名称，将 `account-key` 替换为您的存储帐户密钥：
+若要配置连接字符串，请从 Visual Studio 中的解决方案资源管理器打开 `app.config` 文件。 添加 `<appSettings>` 元素的内容，如下所示。 将 `account-name` 替换为存储帐户名称，将 `account-key` 替换为存储帐户密钥：
 
 ```xml
 <configuration>

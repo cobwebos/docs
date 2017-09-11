@@ -4,7 +4,7 @@ description: "常见的 Azure 流分析查询模式"
 keywords: "查询示例"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jenniehubbard
 editor: cgronlun
 ms.assetid: 6b9a7d00-fbcc-42f6-9cbb-8bbf0bbd3d0e
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/08/2017
-ms.author: jenniehubbard
+ms.author: samacha
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: bdaaf8fe6d18ba9dcb533864e691f11272dc9f9f
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: a27bae1828bd469d4439e0ce43098edd73f54243
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>常用流分析使用模式的查询示例
@@ -507,7 +507,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
 **说明**：此查询每隔 5 秒生成一个事件，并输出上次收到的最后一个事件。 [跳跃窗口](https://msdn.microsoft.com/library/dn835041.aspx "跳跃窗口 - Azure 流分析")持续时间确定查询将查找最新事件的时间（在本例中为 300 秒）。
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

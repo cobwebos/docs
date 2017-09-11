@@ -5,14 +5,14 @@ metadata:
   title: Azure 事件网格文档 - 教程和 API 参考
   description: 使用 Azure 事件网格可以跨 Azure 和非 Azure 服务，以近乎实时的方式对相关事件做出响应。
   services: event-grid
-  author: banisadr
-  manager: timlt
+  author: czeumault
+  manager: carolz
   ms.service: event-grid
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/10/2017
-  ms.author: banisadr
+  ms.author: carolz
 abstract:
   description: Azure 事件网格是一种完全托管的智能事件路由服务，允许通过发布-订阅模型来一致地使用事件。 使用 Azure 事件网格可以跨 Azure 和非 Azure 服务，以近乎实时的方式对相关事件做出响应。 参考快速入门、教程和示例，了解如何使用 Azure 事件网格。
 sections:

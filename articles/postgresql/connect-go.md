@@ -6,16 +6,16 @@ author: jasonwhowell
 ms.author: jasonh
 manager: jhubbard
 editor: jasonwhowell
-ms.service: postgresql-database
+ms.service: postgresql
 ms.custom: mvc
 ms.devlang: go
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 06/29/2017
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: a80adae0359aac6aa8c9e7922e3f4c3883dd8056
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: a7555464879826c5e4f55929d23163b002664e81
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -168,7 +168,7 @@ func main() {
 
 代码导入三个包：[sql 包](https://golang.org/pkg/database/sql/)、[pq 包](http://godoc.org/github.com/lib/pq)（充当与 Postgres 服务器通信所需的驱动程序）以及 [fmt 包](https://golang.org/pkg/fmt/)（适用于在命令行中列显的输入和输出）。
 
-代码通过调用 [sql.Open()](http://godoc.org/github.com/lib/pq#Open) 方法来连接到 Azure Database for PostgreSQL，并使用 [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) 方法来检查连接。 将始终使用[数据库句柄](https://golang.org/pkg/database/sql/#DB)来存储数据库服务器的连接池。 select 查询通过调用方法 [db.Query()](https://golang.org/pkg/database/sql/#DB.Query) 来运行，生成的行保留在类型为[行](https://golang.org/pkg/database/sql/#Rows)的变量中。 代码使用 [rows.Scan()](https://golang.org/pkg/database/sql/#Rows.Scan) 方法来读取当前行中的列数据值，并使用迭代器 [rows.Next()](https://golang.org/pkg/database/sql/#Rows.Next) 来循环访问相关行，直到再也没有行存在。 每行的列值列显到控制台。 每次都会使用自定义 checkError() 方法来检查是否发生错误，以及是否在发生错误时死机退出。
+代码通过调用 [sql.Open()](http://godoc.org/github.com/lib/pq#Open) 方法来连接到 Azure Database for PostgreSQL，并使用 [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) 方法来检查连接。 将始终使用[数据库句柄](https://golang.org/pkg/database/sql/#DB)来存储数据库服务器的连接池。 select 查询通过调用方法 [db.Query()](https://golang.org/pkg/database/sql/#DB.Query) 来运行，生成的行保留在类型为[行](https://golang.org/pkg/database/sql/#Rows)的变量中。 代码使用 [rows.Scan()](https://golang.org/pkg/database/sql/#Rows.Scan) 方法来读取当前行中的列数据值，并使用迭代器 [rows.Next()](https://golang.org/pkg/database/sql/#Rows.Next) 来循环访问相关行，直到再也没有行存在。 每行的列值列显到控制台。每次都会使用自定义 checkError() 方法来检查是否发生错误，以及是否在发生错误时死机退出。
 
 将 `HOST`、`DATABASE`、`USER` 和 `PASSWORD` 参数替换为你自己的值。 
 

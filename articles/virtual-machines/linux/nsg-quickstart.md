@@ -12,14 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/11/2017
+ms.date: 08/21/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: f1b4910ed0f63fd4914113e83e9fe4b483147c3a
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: d176187fe465264b5f433260de5178b48ca9dd4a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>使用 Azure CLI 打开 Linux VM 的端口和终结点
@@ -72,17 +71,13 @@ az network vnet subnet update \
 ```
 
 ## <a name="more-information-on-network-security-groups"></a>有关网络安全组的详细信息
-利用此处的快速命令，可以让流向 VM 的流量开始正常运行。 网络安全组提供许多出色的功能和粒度来控制资源的访问。 可以[在此处详细了解如何创建网络安全组和 ACL 规则](../../virtual-network/virtual-networks-create-nsg-arm-cli.md)。
+利用此处的快速命令，可以让流向 VM 的流量开始正常运行。 网络安全组提供许多出色的功能和粒度来控制资源的访问。 可以[在此处详细了解如何创建网络安全组和 ACL 规则](tutorial-virtual-network.md#secure-network-traffic)。
 
-可以将网络安全组和 ACL 规则定义为 Azure Resource Manager 模板的一部分。 详细了解如何[使用模板创建网络安全组](../../virtual-network/virtual-networks-create-nsg-arm-template.md)。
-
-如果需要使用端口转发将唯一的外部端口映射至 VM 上的内部端口，则需要使用负载均衡器和网络地址转换 (NAT) 规则。 例如，你可能想对外公开 TCP 端口 8080，然后让流量定向到 VM 上的 TCP 端口 80。 可以了解如何[创建面向 Internet 的负载均衡器](../../load-balancer/load-balancer-get-started-internet-arm-cli.md)。
+对于高可用性 Web 应用程序，应将 VM 放置在 Azure 负载均衡器后。 当负载均衡器向 VM 分配流量时，网络安全组可以筛选流量。 有关详细信息，请参阅[如何在 Azure 中均衡 Linux 虚拟机负载以创建高可用性应用程序](tutorial-load-balancer.md)。
 
 ## <a name="next-steps"></a>后续步骤
-在本示例中，你创建了简单的规则来允许 HTTP 流量。 你可以从下列文章中，找到有关创建更详细环境的信息：
+在本示例中，创建了简单的规则来允许 HTTP 流量。 可以从下列文章中，找到有关创建更详细环境的信息：
 
 * [Azure Resource Manager 概述](../../azure-resource-manager/resource-group-overview.md)
 * [什么是网络安全组 (NSG)？](../../virtual-network/virtual-networks-nsg.md)
-* [Azure Resource Manager 中负载均衡器的概述](../../load-balancer/load-balancer-arm.md)
-
 

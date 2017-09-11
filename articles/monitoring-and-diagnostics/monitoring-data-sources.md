@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 3/27/2017
 ms.author: johnkem
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: db2f27906504de6755718c4b6be8302dee097f18
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 6586cad908e6527b874dc3f0ee256c6b2cea8c49
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="consume-monitoring-data-from-azure"></a>使用 Azure 中的监视数据
@@ -35,7 +35,7 @@ ms.lasthandoff: 08/07/2017
 | 存储度量值 | 度量值 | Azure 存储 | <ul><li>**存储表：**[存储分析](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
 | 账单数据 | 度量值 | 所有 Azure 服务 | <ul><li>**REST API：**[Azure 资源使用状况和 RateCard API](../billing/billing-usage-rate-card-overview.md)</li></ul> |
 | 活动日志 | 事件 | 所有 Azure 服务 | <ul><li>**REST API：**[Azure Monitor 事件 API](https://docs.microsoft.com/rest/api/monitor/events)</li><li>**存储 blob 或事件中心：**[日志配置文件](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)</li></ul> |
-| Azure Monitor 诊断日志 | 事件 | [查看此处的列表](monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-resource-diagnostic-logs) | <ul><li>**存储 blob 或事件中心：** [诊断设置](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)</li></ul> |
+| Azure Monitor 诊断日志 | 事件 | [查看此处的列表](monitoring-diagnostic-logs-schema.md) | <ul><li>**存储 blob 或事件中心：** [诊断设置](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)</li></ul> |
 | 计算来宾 OS 日志（例如 IIS、ETW、syslog） | 事件 | [Windows](../virtual-machines-dotnet-diagnostics.md) 和 Linux 虚拟机 (v2)、[云服务](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)、[Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**存储表或 blob：**[Windows 或 Linux Azure 诊断](../cloud-services/cloud-services-dotnet-diagnostics-storage.md)</li><li>**事件中心：**[Windows Azure 诊断](../event-hubs/event-hubs-streaming-azure-diags-data.md)</li></ul> |
 | 应用服务日志 | 事件 | 应用程序服务 | <ul><li>**文件、表或 blob 存储：**[Web 应用诊断](../app-service-web/web-sites-enable-diagnostic-log.md)</li></ul> |
 | 存储日志 | 事件 | Azure 存储 | <ul><li>**存储表：**[存储分析](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |

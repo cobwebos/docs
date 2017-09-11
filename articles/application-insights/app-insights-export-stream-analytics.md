@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: c1a76f521cbee673eb473d40bb15badd40cead5f
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 1403b30ce46e93f244a10a8472e1dfd9e33e9de7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>使用流分析处理从 Application Insights 导出的数据
@@ -41,19 +40,19 @@ ms.lasthandoff: 04/12/2017
    ![在 Azure 门户中，依次选择“添加”、“数据”、“存储”](./media/app-insights-export-stream-analytics/030.png)
 2. 创建容器
    
-    ![在新存储中选择“容器”，单击“容器”磁贴，然后单击“添加”](./media/app-insights-export-stream-analytics/040.png)
+    ![在新存储中选择“容器”，单击“容器”磁贴，并单击“添加”](./media/app-insights-export-stream-analytics/040.png)
 3. 复制存储访问密钥
    
     稍后需要使用它来设置流分析服务的输入。
    
-    ![在存储中，依次打开“设置”、“密钥”，然后复制主访问密钥](./media/app-insights-export-stream-analytics/045.png)
+    ![在存储中，依次打开“设置”、“密钥”，并复制主访问密钥](./media/app-insights-export-stream-analytics/045.png)
 
 ## <a name="start-continuous-export-to-azure-storage"></a>开始向 Azure 存储连续导出
 [连续导出](app-insights-export-telemetry.md)会将数据从 Application Insights 移入 Azure 存储。
 
 1. 在 Azure 门户中，浏览到为应用程序创建的 Application Insights 资源。
    
-    ![依次选择“浏览”、“Application Insights”、你的应用程序](./media/app-insights-export-stream-analytics/050.png)
+    ![依次选择“浏览”、“Application Insights”、应用程序](./media/app-insights-export-stream-analytics/050.png)
 2. 创建连续导出。
    
     ![依次选择“设置”、“连续导出”、“添加”](./media/app-insights-export-stream-analytics/060.png)
@@ -69,16 +68,16 @@ ms.lasthandoff: 04/12/2017
 1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](app-insights-metrics-explorer.md)中会显示统计图表，[诊断搜索](app-insights-diagnostic-search.md)中会显示各个事件。 
    
     此外，数据将导出到存储。 
-2. 检查导出的数据 在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，然后打开“Azure”>“存储”。 （如果未看到此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，然后打开“Visual C#”>“云”>“获取用于 .NET 的 Microsoft Azure SDK”。）
+2. 检查导出的数据 在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，并打开“Azure”>“存储”。 （如果未看到此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，并打开“Visual C#”>“云”>“获取用于 .NET 的 Microsoft Azure SDK”。）
    
     ![](./media/app-insights-export-stream-analytics/04-data.png)
    
     记下派生自应用程序名称和检测密钥的路径名称的共同部分。 
 
-事件将以 JSON 格式写入 Blob 文件。 每个文件可能包含一个或多个事件。 因此我们想要读取事件数据，并筛选出所需的字段。 可以针对数据执行各种操作，但我们目前的计划是使用流分析通过管道将数据传送到 Power BI。
+事件以 JSON 格式写入 Blob 文件。 每个文件可能包含一个或多个事件。 因此我们想要读取事件数据，并筛选出所需的字段。 可以针对数据执行各种操作，但我们目前的计划是使用流分析通过管道将数据传送到 Power BI。
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>创建 Azure 流分析实例
-在[经典 Azure 门户](https://manage.windowsazure.com/)中，选择 Azure 流分析服务，然后创建新的流分析作业：
+在[经典 Azure 门户](https://manage.windowsazure.com/)中，选择 Azure 流分析服务，并创建新的流分析作业：
 
 ![](./media/app-insights-export-stream-analytics/090.png)
 
@@ -133,7 +132,7 @@ ms.lasthandoff: 04/12/2017
 ## <a name="set-the-output"></a>设置输出
 现在，请选择作业并设置输出。
 
-![选择新通道，然后依次单击“输出”、“添加”、“Power BI”](./media/app-insights-export-stream-analytics/160.png)
+![选择新通道，并依次单击“输出”、“添加”、“Power BI”](./media/app-insights-export-stream-analytics/160.png)
 
 提供**工作或学校帐户**，以授权流分析访问 Power BI 资源。 然后为输出、目标 Power BI 数据集和表指定名称。
 
@@ -142,7 +141,7 @@ ms.lasthandoff: 04/12/2017
 ## <a name="set-the-query"></a>设置查询
 查询控制从输入到输出的转换。
 
-![选择作业，然后单击“查询”。 粘贴以下示例。](./media/app-insights-export-stream-analytics/180.png)
+![选择作业，并单击“查询”。 粘贴以下示例。](./media/app-insights-export-stream-analytics/180.png)
 
 使用“测试”功能检查输出是否正确。 在测试中提供从输入页获取的示例数据。 
 
@@ -208,7 +207,7 @@ ms.lasthandoff: 04/12/2017
 ## <a name="run-the-job"></a>运行作业
 可以选择从过去的某个日期启动作业。 
 
-![选择作业，然后单击“查询”。 粘贴以下示例。](./media/app-insights-export-stream-analytics/190.png)
+![选择作业，并单击“查询”。 粘贴以下示例。](./media/app-insights-export-stream-analytics/190.png)
 
 等待作业运行。
 
@@ -218,7 +217,7 @@ ms.lasthandoff: 04/12/2017
 > 
 > 
 
-使用工作或学校帐户打开 Power BI，然后选择已定义为流分析作业输出的数据集和表。
+使用工作或学校帐户打开 Power BI，并选择已定义为流分析作业输出的数据集和表。
 
 ![在 Power BI 中选择数据集和字段。](./media/app-insights-export-stream-analytics/200.png)
 

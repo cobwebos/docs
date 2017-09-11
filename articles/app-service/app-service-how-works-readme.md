@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 02/23/2017
 ms.author: yochayk
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: edb3325414adf876548181243ddfa2d515aeb0b8
 ms.openlocfilehash: 2d830963d3d2adba71a6ca99f79eac0fc8cbfb12
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/24/2017
 
 
@@ -39,7 +40,7 @@ Azure 应用服务是一项云服务，旨在解决工程师目前面临的实�
 
 所有应用类型都依赖于可缩放的、灵活的 Web 应用平台，开发人员可利用该平台优化从应用设计到应用维护的完整生命周期体验。 生命周期功能实现以下功能：
 
-* **快速创建应用**。 从头开始创建，或者从 Azure 应用商店选取运营支持系统 (OSS) 包。
+* **快速创建应用**。 从头开始创建，或者从 Azure Marketplace 中选取运营支持系统 (OSS) 包。
 * **连续部署**。 从常用源代码管理解决方案（例如 TFS、GitHub 和 Bitbucket）自动部署新代码，通过在线存储服务（例如 OneDrive 和 Dropbox）同步内容。
 * **在生产中测试**。 顺利创建预生产环境，管理流向其中的流量。 根据需要在云中进行调试，发现问题时回退即可。
 * **运行异步任务和批处理作业**。 在后台进程中执行代码，或根据事件（例如在 Azure 存储队列中排队的消息）和计划的时间 (CRON) 激活代码。

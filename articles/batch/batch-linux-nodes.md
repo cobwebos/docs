@@ -51,7 +51,7 @@ Batch 服务使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-mac
 | 版本 |最新 |
 
 > [!TIP]
-> 可以在 [Navigate and select Linux virtual machine images in Azure with CLI or PowerShell](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（使用 CLI 或 PowerShell 在 Azure 中导航和选择 Linux 虚拟机映像）中详细了解这些属性，以及如何列出应用商店映像。 请注意，目前并非所有应用商店映像都与 Batch 兼容。 有关详细信息，请参阅[节点代理 SKU](#node-agent-sku)。
+> 可以在 [Navigate and select Linux virtual machine images in Azure with CLI or PowerShell](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（使用 CLI 或 PowerShell 在 Azure 中导航和选择 Linux 虚拟机映像）中详细了解这些属性，以及如何列出 Marketplace 映像。 请注意，目前并非所有 Marketplace 映像都与 Batch 兼容。 有关详细信息，请参阅[节点代理 SKU](#node-agent-sku)。
 >
 >
 
@@ -63,7 +63,7 @@ Batch 节点代理是一个程序，它在池中的每个节点上运行，并�
 * batch.node.windows amd64
 
 > [!IMPORTANT]
-> 并非应用商店中的所有可用虚拟机映像都与当前可用的 Batch 节点代理兼容。 使用 Batch SDK 列出可用的节点代理 SKU 及其兼容的虚拟机映像。 有关详细信息以及如何在运行时检索有效映像列表的示例，请参阅本文后半部分的[虚拟机映像列表](#list-of-virtual-machine-images)。
+> 并非 Marketplace 中的所有可用虚拟机映像都与当前可用的 Batch 节点代理兼容。 使用 Batch SDK 列出可用的节点代理 SKU 及其兼容的虚拟机映像。 有关详细信息以及如何在运行时检索有效映像列表的示例，请参阅本文后半部分的[虚拟机映像列表](#list-of-virtual-machine-images)。
 >
 >
 
@@ -126,7 +126,7 @@ new_pool.virtual_machine_configuration = vmc
 client.pool.add(new_pool)
 ```
 
-如上所述，我们建议不要显式创建 [ImageReference][py_imagereference]，而是使用 [list_node_agent_skus][py_list_skus] 方法从当前支持的节点代理/应用商店映像组合中动态选择。 以下 Python 代码片段演示如何使用此方法。
+如上所述，我们建议不要显式创建 [ImageReference][py_imagereference]，而是使用 [list_node_agent_skus][py_list_skus] 方法从当前支持的节点代理/Marketplace 映像组合中动态选择。 以下 Python 代码片段演示如何使用此方法。
 
 ```python
 # Get the list of node agents from the Batch service
@@ -148,7 +148,7 @@ vmc = batchmodels.VirtualMachineConfiguration(
 ## <a name="create-a-linux-pool-batch-net"></a>创建 Linux 池：Batch .NET
 以下代码片段示范如何使用 [Batch .NET][nuget_batch_net] 客户端库创建 Ubuntu Server 计算节点池。 可以在 MSDN 上找到 [Batch .NET 参考文档][api_net]。
 
-以下代码片段使用 [PoolOperations][net_pool_ops].[ListNodeAgentSkus][net_list_skus] 方法从当前支持的应用商店映像和节点代理 SKU 组合列表中做出选择。 这种做法非常有效，因为支持的组合列表可能随着时间改变。 通常情况下，添加支持的组合。
+以下代码片段使用 [PoolOperations][net_pool_ops].[ListNodeAgentSkus][net_list_skus] 方法从当前支持的 Marketplace 映像和节点代理 SKU 组合列表中做出选择。 这种做法非常有效，因为支持的组合列表可能随着时间改变。 通常情况下，添加支持的组合。
 
 ```csharp
 // Pool settings
@@ -207,7 +207,7 @@ ImageReference imageReference = new ImageReference(
 ```
 
 ## <a name="list-of-virtual-machine-images"></a>虚拟机映像列表
-下表列出了本文上次更新时，与可用 Batch 节点代理兼容的应用商店虚拟机映像。 请务必注意，此列表并非永久不变，因为可能随时会添加或删除映像和节点代理。 建议 Batch 应用程序和服务始终使用 [list_node_agent_skus][py_list_skus] (Python) 和 [ListNodeAgentSkus][net_list_skus] (Batch .NET)，从当前可用的 SKU 中做出决定和选择。
+下表列出了本文上次更新时，与可用 Batch 节点代理兼容的 Marketplace 虚拟机映像。 请务必注意，此列表并非永久不变，因为可能随时会添加或删除映像和节点代理。 建议 Batch 应用程序和服务始终使用 [list_node_agent_skus][py_list_skus] (Python) 和 [ListNodeAgentSkus][net_list_skus] (Batch .NET)，从当前可用的 SKU 中做出决定和选择。
 
 > [!WARNING]
 > 以下列表可随时更改。 请始终使用 Batch API 中提供的列出节点代理 SKU 方法来列出运行 Batch 作业时兼容的虚拟机和节点代理 SKU。

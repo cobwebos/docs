@@ -53,6 +53,7 @@
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [常见问题](iot-suite-faq.md)
+## [连接的工厂常见问题解答](iot-suite-faq-cf.md)
 ## [IoT 套件学习路径](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 

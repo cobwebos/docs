@@ -24,7 +24,7 @@
 2. 在中心菜单中，单击“+ 新建”，然后单击“虚拟机”。
    
     ![Alt 图像文本](./media/virtual-machines-common-classic-configure-availability/ChooseVMImage.png)
-3. 选择要使用的应用商店虚拟机映像。 可以选择创建 Linux 或 Windows 虚拟机。
+3. 选择要使用的 Marketplace 虚拟机映像。 可以选择创建 Linux 或 Windows 虚拟机。
 4. 对于所选的虚拟机，确认部署模型已设置为“经典”，然后单击“创建”
    
     ![Alt 图像文本](./media/virtual-machines-common-classic-configure-availability/ChooseClassicModel.png)

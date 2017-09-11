@@ -1,10 +1,10 @@
 
 
 
-要根据 Oracle 映像创建虚拟机，请登录到 [Azure 门户](https://portal.azure.com/)，单击“应用商店”和“计算”，并在“搜索”框中键入“Oracle”。 选择一个映像，并按照说明设置 Microsoft Azure 上的映像。 请注意，Microsoft 在 [Azure 门户](https://portal.azure.com/)中提供的 Oracle 映像运行在 Windows 上，而 Oracle 提供的 Oracle 映像运行在 Oracle Linux 上。
+要根据 Oracle 映像创建虚拟机，请登录到 [Azure 门户](https://portal.azure.com/)，单击“Marketplace”和“计算”，并在“搜索”框中键入“Oracle”。 选择一个映像，并按照说明设置 Microsoft Azure 上的映像。 请注意，Microsoft 在 [Azure 门户](https://portal.azure.com/)中提供的 Oracle 映像运行在 Windows 上，而 Oracle 提供的 Oracle 映像运行在 Oracle Linux 上。
 
 ## <a name="windows-based-virtual-machine-images"></a>基于 Windows 的虚拟机映像
-以下是在 Azure 的 Windows Server 上运行的可用 Oracle 虚拟机映像的列表。 这些映像可以即用即付，这意味着使用这些映像时需支付 Oracle 许可费。 Microsoft 不再在 Azure 应用商店中发布 Oracle 数据库或 WebLogic 映像。  用户仍可创建自己的自定义映像，并可通过自带许可模型在 Microsoft Azure 上运行 Oracle 软件。 
+以下是在 Azure 的 Windows Server 上运行的可用 Oracle 虚拟机映像的列表。 这些映像可以即用即付，这意味着使用这些映像时需支付 Oracle 许可费。 Microsoft 不再在 Azure Marketplace 中发布 Oracle 数据库或 WebLogic 映像。  用户仍可创建自己的自定义映像，并可通过自带许可模型在 Microsoft Azure 上运行 Oracle 软件。 
 
 ### <a name="java-virtual-machine-images"></a>Java 虚拟机映像
 * Windows Server 2012 R2 上的 JDK 8

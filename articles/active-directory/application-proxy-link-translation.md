@@ -11,30 +11,36 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/30/2017
+ms.date: 08/10/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: d716476deb81f6627cf03401f78ab399ae940e68
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 57218346d236b376d2227e0ffaea6c6dd5ebe855
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理重定向已发布应用的硬编码链接
 
-Azure AD 应用程序代理使本地应用对远程或在自己设备上的用户可用。 但是，某些应用开发时考虑的是本地受众，这通常表示本地链接嵌入在 HTML 中，且在远程使用应用时运行不正常。 如果多个本地应用程序指向彼此，且用户期望使用链接在应用间移动，而不是在每个应用的外部 URL 中输入内容，这种情况最为常见。
+Azure AD 应用程序代理使本地应用对远程或在自己设备上的用户可用。 但是，某些应用已通过嵌入到 HTML 中的本地链接开发。 远程使用应用时，这些链接将无法正常跳转。 如果有多个指向彼此的本地应用程序，你的用户会需要这些链接在他们不在办公室时能继续正常使用。 
 
-应用程序代理链接转换功能就是为解决此问题而开发的。 如果具有直接指向内部终结点或端口的应用，可以将这些内部 URL 映射到已发布的外部应用程序代理服务器 URL 中。 通过 HTML、CSS 启用链接转换和应用程序代理搜索，选择已发布内部链接的 JavaScript 标记，然后进行转换，可让用户获得不间断的体验。
+确保链接在企业网络内部和外部都能够正常工作的最佳方式是，将应用的外部 URL 与其内部 URL 配置为相同的。 使用[自定义域](active-directory-application-proxy-custom-domains.md)来配置你的外部 URL，以获取企业域名，而不是默认的应用程序代理域。
+
+如果不能在租户中使用自定义域，则应用程序代理的链接转换功能将使链接保持正常运作，而不管用户在哪里。 如果具有直接指向内部终结点或端口的应用，可以将这些内部 URL 映射到已发布的外部应用程序代理服务器 URL 中。 启用链接转换时，应用程序代理将通过 HTML、CSS 和选择 JavaScript 标记来搜索已发布的内部链接。 然后应用程序代理服务会对其进行转换，从而让用户获得不间断的体验。
 
 >[!NOTE]
->链接转换功能适用于无论什么原因都无法使用自定义域的租户，以使应用具有相同的内部和外部 URL。 启用此功能之前，请查看 [Azure AD 应用程序代理中的自定义域](active-directory-application-proxy-custom-domains.md)对你是否适用。
+>链接转换功能适用于无论什么原因都无法使用自定义域的租户，以使其应用具有相同的内部和外部 URL。 启用此功能之前，请查看 [Azure AD 应用程序代理中的自定义域](active-directory-application-proxy-custom-domains.md)对你是否适用。
+>
+>或者，如果需要配置链接转换的应用程序是 SharePoint，请参阅[配置 SharePoint 2013 的备用访问映射](https://technet.microsoft.com/library/cc263208.aspx)，以获取映射链接的另一种方法。
 
 ## <a name="how-link-translation-works"></a>链接转换工作原理
 
 身份验证后，如果代理服务器将应用程序数据传递给用户，应用程序代理会扫描应用程序，确定硬编码链接并将其替换为其各自已发布的外部 URL。
+
+应用程序代理假定应用程序采用 UTF-8 编码。 如果不是这种情况，则在 http 响应标头中指定编码类型，如 `Content-Type:text/html;charset=utf-8`。
 
 ### <a name="which-links-are-affected"></a>哪些链接受影响？
 
@@ -60,9 +66,10 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 为了提高性能和安全性，不会转换某些链接：
 
 - 代码标记外的链接。 
+- HTML、CSS 或 JavaScript 外的链接。 
 - 从其他程序打开的内部链接。 不会转换通过电子邮件或即时消息发送或其他文档中包含的链接。 用户需要了解转到外部 URL。
 
-如果需要支持这两个方案之一，可以使用相同的内部和外部 URL，如此便无需转换链接。  
+如果需要支持这两个方案之一，请使用相同的内部和外部 URL，而不是链接转换。  
 
 ## <a name="enable-link-translation"></a>启用链接转换
 
@@ -82,5 +89,7 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 我们希望获得你的帮助，使此功能适用于所有应用。 我们搜索了 HTML 和 CSS 中 30 个以上的标记，并正在考虑支持哪些 JavaScript 用例。 如果有尚未进行转换的生成链接示例，请向[应用程序代理反馈](mailto:aadapfeedback@microsoft.com)发送一个代码片段。 
 
 ## <a name="next-steps"></a>后续步骤
-- [通过 Azure AD 应用程序代理使用自定义域，以便具有相同的内部和外部 URL](active-directory-application-proxy-custom-domains.md)
+[通过 Azure AD 应用程序代理使用自定义域](active-directory-application-proxy-custom-domains.md)，以便具有相同的内部和外部 URL
+
+[配置 SharePoint 2013 的备用访问映射](https://technet.microsoft.com/library/cc263208.aspx)
 

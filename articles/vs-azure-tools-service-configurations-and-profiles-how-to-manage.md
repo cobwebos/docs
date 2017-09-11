@@ -3,8 +3,8 @@ title: "如何管理服务配置和配置文件 | Microsoft Docs"
 description: "了解如何使用服务配置和配置文件，这两种配置文件将存储云服务的部署环境设置和发布设置。"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 7da8c551-fb06-4057-b5c7-c77f4b39d803
 ms.service: multiple
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 8/11/2017
-ms.author: tarcher
+ms.author: kraigb
 ms.translationtype: HT
 ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: b939f2af75723739ffab16d9a75ea8f6484e5e05

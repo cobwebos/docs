@@ -21,6 +21,7 @@
 #### [安装用户门户](multi-factor-authentication-get-started-portal.md)
 #### [高级 VPN 配置](multi-factor-authentication-advanced-vpn-configurations.md)
 #### [移动应用 Web 服务](multi-factor-authentication-get-started-server-webservice.md)
+#### [配置高可用性](mfa-server-high-availability.md)
 #### [Windows 身份验证](multi-factor-authentication-get-started-server-windows.md)
 #### [升级 MFA 服务器](multi-factor-authentication-server-upgrade.md)
 #### [从 PhoneFactor 升级](multi-factor-authentication-get-started-server-upgrade.md)

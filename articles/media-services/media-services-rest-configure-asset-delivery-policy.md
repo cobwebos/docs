@@ -4,7 +4,7 @@ description: "本主题说明如何使用媒体服务 REST API 配置不同的�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 5cb9d32a-e68b-4585-aa82-58dded0691d0
 ms.service: media-services
@@ -12,30 +12,30 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 08/10/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 4bae6dabe5700c487cb3f98498729c9a27de8a44
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 4523efcd733984f4886862f1e0b9370e2082e24d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="configuring-asset-delivery-policies"></a>配置资产传送策略
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
 
-如果你打算传送动态加密的资产，媒体服务内容传送工作流中的步骤之一是为资产配置传送策略。 资产传送策略告知媒体服务你希望如何传送资产：应该将资产动态打包成哪种流式处理协议（例如 MPEG DASH、HLS、平滑流或全部），是否要动态加密资产以及如何加密（信封或常用加密）。
+如果打算传送动态加密的资产，媒体服务内容传送工作流中的步骤之一是为资产配置传送策略。 资产传送策略告知媒体服务希望如何传送资产：应该将资产动态打包成哪种流式处理协议（例如 MPEG DASH、HLS、平滑流或全部），是否要动态加密资产以及如何加密（信封或常用加密）。
 
 本主题介绍为何以及如何创建和配置资产传送策略。
 
 >[!NOTE]
 >创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
 >
->此外，若要使用动态打包和动态加密，你的资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流式处理文件。
+>此外，要使用动态打包和动态加密，资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流式处理文件。
 
-可以将不同的策略应用到同一个资产。 例如，可以将 PlayReady 加密应用到平滑流，将 AES 信封应用到 MPEG DASH 和 HLS。 将阻止流式处理传送策略中未定义的任何协议（例如，添加仅将 HLS 指定为协议的单个策略）。 如果你根本没有定义任何传送策略，则情况不是这样。 此时，将允许所有明文形式的协议。
+可以将不同的策略应用到同一个资产。 例如，可以将 PlayReady 加密应用到平滑流，将 AES 信封应用到 MPEG DASH 和 HLS。 将阻止流式处理传送策略中未定义的任何协议（例如，添加仅将 HLS 指定为协议的单个策略）。 如果根本没有定义任何传送策略，则情况不是这样。 此时，将允许所有明文形式的协议。
 
-如果要传送存储加密资产，则必须配置资产的传送策略。 在流式传输资产之前，流式处理服务器会删除存储加密，然后再使用指定的传送策略流式传输你的内容。 例如，若要传送使用高级加密标准 (AES) 信封加密密钥加密的资产，请将策略类型设为 **DynamicEnvelopeEncryption**。 若要删除存储加密并以明文的形式流式传输资产，请将策略类型设为 **NoDynamicEncryption**。 下面是演示如何配置这些策略类型的示例。
+如果要传送存储加密资产，则必须配置资产的传送策略。 在流式传输资产之前，流式处理服务器会删除存储加密，然后再使用指定的传送策略流式传输内容。 例如，要传送使用高级加密标准 (AES) 信封加密密钥加密的资产，请将策略类型设为 **DynamicEnvelopeEncryption**。 要删除存储加密并以明文的形式流式传输资产，请将策略类型设为 **NoDynamicEncryption**。 下面是演示如何配置这些策略类型的示例。
 
 根据配置资产传送策略的方式，可以动态打包、动态加密和流式传输以下流式传输协议：平滑流式处理、HLS、MPEG DASH 流。
 
@@ -59,17 +59,19 @@ MPEG DASH
 ## <a name="considerations"></a>注意事项
 * 如果某个资产存在 OnDemand（流式处理）定位符，则不能与该资产关联的 AssetDeliveryPolicy。 在删除策略之前，建议先从资产中删除该策略。
 * 如果未设置资产传送策略，则无法在存储加密的资产上创建流式处理定位符。  如果资产未经过存储加密，则即使未设置资产传送策略，系统也可让你顺利地创建定位符和流式处理资产。
-* 可将多个资产传送策略关联到单个资产，但只能指定一种方法来处理给定的 AssetDeliveryProtocol。  也就是说，如果你尝试链接两个指定 AssetDeliveryProtocol.SmoothStreaming 协议的传送策略，则会导致出错，因为当客户端发出平滑流请求时，系统不知道你要应用哪个策略。
-* 如果你的资产包含现有的流式处理定位符，则不能将新策略链接到该资产、取消现有策略与资产的链接，或者更新与该资产关联的传送策略。  必须先删除流式传输定位符，再调整策略，然后重新创建流式传输定位符。  在重新创建流式处理定位符时可以使用同一个 locatorId，但应确保该操作不会导致客户端出现问题，因为内容可能已被来源或下游 CDN 缓存。
+* 可将多个资产传送策略关联到单个资产，但只能指定一种方法来处理给定的 AssetDeliveryProtocol。  也就是说，如果尝试链接两个指定 AssetDeliveryProtocol.SmoothStreaming 协议的传送策略，则会导致出错，因为当客户端发出平滑流请求时，系统不知道要应用哪个策略。
+* 如果资产包含现有的流式处理定位符，则不能将新策略链接到该资产、取消现有策略与资产的链接，或者更新与该资产关联的传送策略。  必须先删除流式传输定位符，再调整策略，然后重新创建流式传输定位符。  在重新创建流式处理定位符时可以使用同一个 locatorId，但应确保该操作不会导致客户端出现问题，因为内容可能已被来源或下游 CDN 缓存。
 
-> [!NOTE]
-> 使用媒体服务 REST API 时，需注意以下事项：
-> 
-> 访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
-> 
-> 成功连接到 https://media.windows.net 后，将收到指定另一个媒体服务 URI 的 301 重定向。 必须按[使用 REST API 连接到媒体服务](media-services-rest-connect-programmatically.md)中所述，对新的 URI 执行后续调用。
-> 
-> 
+>[!NOTE]
+
+>访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
+
+## <a name="connect-to-media-services"></a>连接到媒体服务
+
+若要了解如何连接到 AMS API，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
+
+>[!NOTE]
+>成功连接到 https://media.windows.net 后，将收到指定另一个媒体服务 URI 的 301 重定向。 必须对这个新 URI 进行后续调用。
 
 ## <a name="clear-asset-delivery-policy"></a>清除资产传送策略
 ### <a id="create_asset_delivery_policy"></a>创建资产传送策略
@@ -146,7 +148,7 @@ MPEG DASH
 
 ## <a name="dynamicenvelopeencryption-asset-delivery-policy"></a>DynamicEnvelopeEncryption 资产传送策略
 ### <a name="create-content-key-of-the-envelopeencryption-type-and-link-it-to-the-asset"></a>创建 EnvelopeEncryption 类型的内容密钥，并将其链接到资产
-在指定 DynamicEnvelopeEncryption 传送策略时，需要确保将你的资产链接到 EnvelopeEncryption 类型的内容密钥。 有关详细信息，请参阅：[创建内容密钥](media-services-rest-create-contentkey.md)）。
+在指定 DynamicEnvelopeEncryption 传送策略时，需要确保将资产链接到 EnvelopeEncryption 类型的内容密钥。 有关详细信息，请参阅：[创建内容密钥](media-services-rest-create-contentkey.md)）。
 
 ### <a id="get_delivery_url"></a>获取传送 URL
 获取上一步创建的内容密钥的指定传送方法的传送 URL。 客户端使用返回的 URL 来请求 AES 密钥或 PlayReady 许可证，以播放受保护内容。
@@ -232,7 +234,7 @@ MPEG DASH
 
 ## <a name="dynamiccommonencryption-asset-delivery-policy"></a>DynamicCommonEncryption 资产传送策略
 ### <a name="create-content-key-of-the-commonencryption-type-and-link-it-to-the-asset"></a>创建 CommonEncryption 类型的内容密钥，并将其链接到资产
-在指定 DynamicCommonEncryption 传送策略时，需要确保将你的资产链接到 CommonEncryption 类型的内容密钥。 有关详细信息，请参阅：[创建内容密钥](media-services-rest-create-contentkey.md)）。
+在指定 DynamicCommonEncryption 传送策略时，需要确保将资产链接到 CommonEncryption 类型的内容密钥。 有关详细信息，请参阅：[创建内容密钥](media-services-rest-create-contentkey.md)）。
 
 ### <a name="get-delivery-url"></a>获取传送 URL
 获取上一步创建的内容密钥的 PlayReady 传送方法的传送 URL。 客户端使用返回的 URL 来请求 PlayReady 许可证，以播放受保护内容。 有关详细信息，请参阅[获取传送 URL](#get_delivery_url)。
@@ -259,7 +261,7 @@ MPEG DASH
     {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":1,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":2,\"Value\":\"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\/PlayReady\/"}]"}
 
 
-若要使用 Widevine DRM 保护你的内容，请更新 AssetDeliveryConfiguration 值以使用 WidevineLicenseAcquisitionUrl（其值为 7），并指定许可证交付服务的 URL。 可以通过以下 AMS 合作伙伴来交付 Widevine 许可证：[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)。
+要使用 Widevine DRM 保护内容，请更新 AssetDeliveryConfiguration 值以使用 WidevineLicenseAcquisitionUrl（其值为 7），并指定许可证交付服务的 URL。 可以通过以下 AMS 合作伙伴来交付 Widevine 许可证：[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)。
 
 例如： 
 

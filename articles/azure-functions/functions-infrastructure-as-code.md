@@ -4,7 +4,7 @@ description: "了解如何生成用于部署函数应用的 Azure Resource Manag
 services: Functions
 documtationcenter: na
 author: lindydonna
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "azure functions, functions 无服务体系结构, 基础结构即代码, azure resource manager"

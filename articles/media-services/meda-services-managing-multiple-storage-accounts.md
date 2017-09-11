@@ -4,7 +4,7 @@ description: "本文提供有关如何跨多个存储帐户管理媒体服务资
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 4e4a9ec3-8ddb-4938-aec1-d7172d3db858
 ms.service: media-services

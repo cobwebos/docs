@@ -35,12 +35,12 @@ Azure 支出限制用于限制 Azure 订阅支出额。 如果新客户注册包
 
 ## <a name="things-you-are-charged-for-even-if-you-have-a-spending-limit-enabled"></a>即使启用了支出限制也会收取费用的事项
 
-即使设定了支出限制，某些 Azure 服务和[应用商店购买项](https://azure.microsoft.com/marketplace/)也会在付款方式 (CC) 下产生费用。 例如，Visual Studio 许可证、Azure Active Directory Premium、支持计划以及通过应用商店销售的大多数第三方品牌服务。
+即使设定了支出限制，某些 Azure 服务和 [Marketplace 购买项](https://azure.microsoft.com/marketplace/)也会在付款方式 (CC) 下产生费用。 例如，Visual Studio 许可证、Azure Active Directory Premium、支持计划以及通过 Marketplace 销售的大多数第三方品牌服务。
 
 
 ## <a name="when-not-to-use-the-spending-limit"></a>不使用支出限制的情况
 
-支出限制会阻止你部署或使用某些应用商店和 Microsoft 服务。 有些情况应移除订阅上的支出限制。
+支出限制会阻止你部署或使用某些 Marketplace 和 Microsoft 服务。 有些情况应移除订阅上的支出限制。
 
 - 计划部署第一方映像（如 Oracle）和服务（如 Visual Studio Team Services）。 此方案几乎立马导致你超过支出限制并导致订阅被禁。
 

@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 35d30e90a8a390e21b08b0796f441f0e9154c499
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: fe2b84aac718ff5eddd4d73b5dc2120362952c1e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli-20"></a>通过 Azure CLI 2.0 开始使用 Azure Data Lake Analytics
@@ -41,9 +40,9 @@ azurecli
 az login
 ```
 
-你需要浏览到 URL，然后输入身份验证代码。  然后按说明输入凭据。
+需要浏览到 URL，然后输入身份验证代码。  然后按说明输入凭据。
 
-登录以后，登录命令会列出你的订阅。
+登录以后，登录命令会列出订阅。
 
 若要使用特定订阅，请执行以下命令：
 
@@ -52,7 +51,7 @@ az account set --subscription <subscription id>
 ```
 
 ## <a name="create-data-lake-analytics-account"></a>创建 Data Lake Analytics 帐户
-在运行任何作业之前，你需要一个 Data Lake Analytics 帐户。 若要创建 Data Lake Analytics 帐户，必须指定以下各项：
+在运行任何作业之前，需要一个 Data Lake Analytics 帐户。 若要创建 Data Lake Analytics 帐户，必须指定以下各项：
 
 * **Azure 资源组**。 必须在 Azure 资源组中创建一个 Data Lake Analytics 帐户。 使用 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 能够以组的方式处理应用程序中的资源。 你可以通过一个协调的操作部署、更新或删除应用程序的所有资源。  
 
@@ -98,9 +97,9 @@ az dla account show --account "<Data Lake Analytics Account Name>"
 ```
 
 ## <a name="upload-data-to-data-lake-store"></a>将数据上传到 Data Lake Store
-本教程将处理一些搜索日志。  搜索日志可以存储在 Data Lake Store 或 Azure Blob 存储中。
+本教程会处理一些搜索日志。  搜索日志可以存储在 Data Lake Store 或 Azure Blob 存储中。
 
-Azure 门户提供一个用户界面，可将一些示例数据复制到默认 Data Lake Store 帐户，包括搜索日志文件。 要将数据上传至默认 Data Lake Store 帐户，请参阅 [准备源数据](data-lake-analytics-get-started-portal.md) 。
+Azure 门户提供一个用户界面，可将一些示例数据复制到默认 Data Lake Store 帐户，包括搜索日志文件。 要将数据上传至默认 Data Lake Store 帐户，请参阅 [准备源数据](data-lake-analytics-get-started-portal.md)。
 
 若要使用 CLI 2.0 上传文件，请使用以下命令：
 
@@ -109,7 +108,7 @@ az dls fs upload --account "<Data Lake Store Account Name>" --source-path "<Sour
 az dls fs list --account "<Data Lake Store Account Name>" --path "<Path>"
 ```
 
-Data Lake Analytics 还可以访问 Azure Blob 存储。  有关将数据上传到 Azure Blob 存储的详细信息，请参阅 [将 Azure CLI 用于 Azure 存储](../storage/storage-azure-cli.md)。
+Data Lake Analytics 还可以访问 Azure Blob 存储。  有关将数据上传到 Azure Blob 存储的详细信息，请参阅[将 Azure CLI 用于 Azure 存储](../storage/common/storage-azure-cli.md)。
 
 ## <a name="submit-data-lake-analytics-jobs"></a>提交 Data Lake Analytics 作业
 Data Lake Analytics 作业使用 U-SQL 语言编写而成。 若要了解有关 U-SQL 的详细信息，请参阅 [U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)和 [U-SQL 语言参考](http://go.microsoft.com/fwlink/?LinkId=691348)。
@@ -131,7 +130,7 @@ OUTPUT @a
     USING Outputters.Csv();
 ```
 
-此 U-SQL 脚本通过 **Extractors.Tsv()** 读取源数据文件，然后通过 **Outputters.Csv()** 创建 csv 文件。
+此 U-SQL 脚本通过 **Extractors.Tsv()** 读取源数据文件，并通过 **Outputters.Csv()** 创建 csv 文件。
 
 除非将源文件复制到其他位置，否则不要修改这两条路径。  如果输出文件夹不存在，Data Lake Analytics 将创建一个。
 
@@ -180,7 +179,7 @@ az dla job show --account "<Data Lake Analytics Account Name>" --job-identity "<
 az dla job cancel --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"
 ```
 
-##<a name="retrieve-job-results"></a>检索作业结果
+## <a name="retrieve-job-results"></a>检索作业结果
 
 作业完成后，可以使用以下命令列出输出文件，并下载这些文件：
 
@@ -195,6 +194,26 @@ az dls fs downlod --account "<Data Lake Store Account Name>" --source-path "/Out
 
 ```
 az dls fs downlod --account "myadlsaccount" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destintion-path "C:\DLA\myfile.csv"
+```
+
+## <a name="pipelines-and-recurrences"></a>管道和重复周期
+
+获取关于管道和重复周期的相关信息
+
+使用 `az dla job pipeline` 命令查看先前所提交作业的管道信息。
+
+```
+az dla job pipeline list --account "<Data Lake Analytics Account Name>"
+
+az dla job pipeline show --account "<Data Lake Analytics Account Name>" --pipeline-identity "<Pipeline ID>"
+```
+
+使用 `az dla job recurrence` 命令查看先前所提交作业的重复周期信息。
+
+```
+az dla job recurrence list --account "<Data Lake Analytics Account Name>"
+
+az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
 
 ## <a name="next-steps"></a>后续步骤

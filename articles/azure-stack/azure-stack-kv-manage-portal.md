@@ -15,11 +15,10 @@ ms.topic: article
 ms.date: 07/10/2017
 ms.author: sngun
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 6e70fd8a053a97a4bc4a66ea44d7e92cdec93afb
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: cf250a20dee4c7b2a482f940f8c376e1a2af8600
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 
@@ -29,7 +28,7 @@ You can manage Key Vault in Azure Stack by using the Azure Stack portal. This ar
 
 ## <a name="prerequisites"></a>Prerequisites  
 
-* Azure Stack cloud administrators must have [created an offer](azure-stack-create-offer.md) that includes the Key Vault service.  
+* Azure Stack operators must have [created an offer](azure-stack-create-offer.md) that includes the Key Vault service.  
 * Users must [subscribe to an offer](azure-stack-subscribe-plan-provision-vm.md) that includes the Key Vault service.  
  
 ## <a name="create-a-key-vault"></a>Create a key vault 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/13/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 32b63b667c3db5b000c9066f0ed2609bafb21bf1
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 63b2d20c74df4fd6173994ee1a727594ba8afba3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 
@@ -539,7 +538,7 @@ ORDER BY <sort_specification>
   
  如果两个对象定义了相同的属性，且匹配属性的值也相等，则对象相等。 如果比较任何一对属性值产生未定义，则对象比较的结果也为未定义。  
   
-##  <a name="bk_constants"></a> 常数  
+##  <a name="bk_constants"></a> 常量  
  常数也称为文本值或标量值，是表示特定数据值的符号。 常数的格式取决于它代表的值的数据类型。  
   
  受支持的标量数据类型：  
@@ -641,7 +640,7 @@ ORDER BY <sort_specification>
 |\t|Tab|U+0009|  
 |\uXXXX|由 4 个十六进制数字定义的 Unicode 字符。|U+XXXX|  
   
-##  <a name="bk_query_perf_guidelines"></a> 查询性能指南  
+##  <a name="bk_query_perf_guidelines"></a> 查询性能准则  
  为了能够对大型集合高效地执行查询，应使用可通过由一个或多个索引服务的筛选器。  
   
  以下筛选器将考虑用于索引查找：  
@@ -689,7 +688,7 @@ ORDER BY <sort_specification>
 |函数|说明|  
 |--------------|-----------------|  
 |[数学函数](#bk_mathematical_functions)|每个数学函数均执行一个计算，通常基于作为参数提供的输出值，并返回数值。|  
-|[类型检查函数](#bk_type_checking_functions)|类型检查函数使你能够检查 SQL 查询内表达式的类型。|  
+|[类型检查函数](#bk_type_checking_functions)|通过类型检查函数可以检查 SQL 查询内表达式的类型。|  
 |[字符串函数](#bk_string_functions)|该字符串函数对字符串输入值执行操作，并返回字符串、数值或布尔值。|  
 |[数组函数](#bk_array_functions)|该数组函数对数组输入值执行操作，并返回数值、布尔值或数组值。|  
 |[空间函数](#bk_spatial_functions)|该空间函数对控件对象输入值执行操作，并返回数值或布尔值。|  
@@ -2028,7 +2027,7 @@ SELECT LEFT("abc", 1), LEFT("abc", 2)
  结果集如下。  
   
 ```  
-[{"$1": "ab", "$2": "ab"}]  
+[{"$1": "a", "$2": "ab"}]  
 ```  
   
 ####  <a name="bk_length"></a> LENGTH  
@@ -2521,7 +2520,7 @@ SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"])
 ```  
   
 ####  <a name="bk_array_slice"></a> ARRAY_SLICE  
- 返回一个布尔，它指示数组是否包含指定的值。  
+ 返回部分数组表达式。
   
  **语法**  
   
@@ -2774,3 +2773,4 @@ SELECT ST_ISVALIDDETAILED({
  [Azure Cosmos DB 文档](https://docs.microsoft.com/en-us/azure/cosmos-db/)  
   
   
+

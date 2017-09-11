@@ -12,22 +12,21 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: e76a31a8eaa249ab064d180bfd7ed158ef32c85a
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 27bb185d0243b1e8c0fd7697650eaf7bbd5eefa7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="application-map-in-application-insights"></a>Application Insights 中的应用程序映射
 在 [Azure Application Insights](app-insights-overview.md) 中，应用程序映射是应用程序组件的依赖项关系的可视化布局。 每个组件显示负载、性能、故障和警报等 KPI，有助于发现导致性能问题或故障的任何组件。 可从任何组件单击以获得更详细的诊断，如 Application Insights 事件。 如果应用使用了 Azure 服务，还可以单击获得 Azure 诊断，如 SQL 数据库顾问建议。
 
-与其他图一样，你可以将应用程序映射固定到 Azure 仪表板，该映射可在其中完全正常运行。 
+与其他图一样，可以将应用程序映射固定到 Azure 仪表板，该映射可在其中完全正常运行。 
 
 ## <a name="open-the-application-map"></a>打开应用程序映射
-从你的应用程序的概述边栏选项卡中打开映射：
+从应用程序的概述边栏选项卡中打开映射：
 
 ![打开应用映射](./media/app-insights-app-map/01.png)
 
@@ -75,27 +74,27 @@ ms.lasthandoff: 05/10/2017
 对于在 Azure 中托管的组件，选项包括指向它们的直接链接。
 
 ## <a name="filters-and-time-range"></a>筛选器和时间范围
-默认情况下，映射概括了可用于所选时间范围的所有数据。 但你可以进行筛选，以便仅包含特定操作名称或依赖项。
+默认情况下，映射概括了可用于所选时间范围的所有数据。 但可以进行筛选，以便仅包含特定操作名称或依赖项。
 
 * 操作名称：这包括页面视图和服务器端请求类型。 使用此选项，映射将仅显示所选操作的服务器端/客户端节点上的 KPI。 它显示在这些特定操作的上下文中调用的依赖项。
-* 依赖项基名称：这包括 AJAX 浏览器依赖项和服务器端依赖项。 如果使用 TrackDependency API 报告自定义依赖项遥测，它们也会显示在此处。 你可以选择要显示在映射上的依赖项。 此选择当前不会筛选服务器端请求或客户端页面视图。
+* 依赖项基名称：这包括 AJAX 浏览器依赖项和服务器端依赖项。 如果使用 TrackDependency API 报告自定义依赖项遥测，它们也会显示在此处。 可以选择要显示在映射上的依赖项。 此选择当前不会筛选服务器端请求或客户端页面视图。
 
 ![设置筛选器](./media/app-insights-app-map/11.png)
 
 ## <a name="save-filters"></a>保存筛选器
-若要保存已应用的筛选器，请将筛选的视图固定到[仪表板](app-insights-dashboards.md)。
+要保存已应用的筛选器，请将筛选的视图固定到[仪表板](app-insights-dashboards.md)。
 
 ![固定到仪表板](./media/app-insights-app-map/12.png)
 
 ## <a name="error-pane"></a>错误窗格
-单击映射中的节点，将在右侧显示汇总该节点故障的错误窗格。 故障首先按操作 ID 分组，然后按问题 ID 分组。
+单击映射中的节点，会在右侧显示汇总该节点故障的错误窗格。 故障首先按操作 ID 分组，然后按问题 ID 分组。
 
 ![错误窗格](./media/app-insights-app-map/error-pane.png)
 
 单击故障可转到该故障的最新实例。
 
 ## <a name="resource-health"></a>资源运行状况
-对于某些资源类型，资源运行状况将显示在错误窗格的顶部。 例如，单击 SQL 节点将显示数据库运行状况和触发的任何警报。
+对于某些资源类型，资源运行状况会显示在错误窗格的顶部。 例如，单击 SQL 节点会显示数据库运行状况和触发的任何警报。
 
 ![资源运行状况](./media/app-insights-app-map/resource-health.png)
 
@@ -130,3 +129,4 @@ ms.lasthandoff: 05/10/2017
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 门户](https://portal.azure.com)
+

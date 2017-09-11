@@ -45,7 +45,7 @@ Azure 虚拟网络 (VNet) 是自己的网络在云中的表示形式。 它是�
 
 ### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>是否可以在 VNet 之间或者 VNet 与本地数据中心之间执行 WAN 优化？
 
-是的。 可以通过 Azure 应用商店部署许多供应商提供 [WAN 优化网络虚拟设备](https://azure.microsoft.com/marketplace/?term=wan+optimization)。
+是的。 可以通过 Azure Marketplace 部署许多供应商提供 [WAN 优化网络虚拟设备](https://azure.microsoft.com/marketplace/?term=wan+optimization)。
 
 ## <a name="configuration"></a>配置
 
@@ -201,7 +201,7 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间完�
 是的。 可向 VNet 中的单个子网和/或附加到 VNet 的 NIC 应用[网络安全组](virtual-networks-nsg.md)。
 
 ### <a name="can-i-implement-a-firewall-between-vnet-connected-resources"></a>是否可在与 VNet 连接的资源之间实施防火墙？
-是的。 可以通过 Azure 应用商店部署许多供应商提供[防火墙网络虚拟设备](https://azure.microsoft.com/en-us/marketplace/?term=firewall)。
+是的。 可以通过 Azure Marketplace 部署许多供应商提供[防火墙网络虚拟设备](https://azure.microsoft.com/en-us/marketplace/?term=firewall)。
 
 ### <a name="is-there-information-available-about-securing-vnets"></a>是否有介绍如何保护 VNet 的信息？
 是的。 有关详细信息，请参阅 [Azure 网络安全概述](../security/security-network-overview.md)一文。

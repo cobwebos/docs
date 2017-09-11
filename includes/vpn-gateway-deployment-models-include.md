@@ -1,4 +1,0 @@
-> [!NOTE]
-> Azure 当前使用两种部署模型：Resource Manager 部署模型和经典部署模型。 这两个模型相互不完全兼容。 在开始之前，需要知道所要使用的模型。 有关部署模型的信息，请参阅[了解部署模型](../articles/resource-manager-deployment-model.md)。 如果不熟悉 Azure，建议使用 Resource Manager 部署模型。
->
->

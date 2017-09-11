@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/15/2017
+ms.date: 08/17/2017
 ms.author: sethm
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: cb5ec1a105c632626c5caf39e4fd356177883123
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: a74d767d57eb5ce2b3a716f9ba908a451f25f538
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -54,7 +54,7 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 ## <a name="capture"></a>捕获
 
-使用[事件中心捕获](event-hubs-capture-overview.md)可以自动捕获事件中心的流式处理数据，并将其存档到所选的 Blob 存储帐户。 可以从 Azure 门户启用捕获，并指定大小上限和时间范围以执行捕获。 事件中心捕获可让用户指定自己的 Azure Blob 存储帐户和容器（用于存储捕获的数据）。 捕获的数据用 Apache Avro 格式编写。
+使用[事件中心捕获](event-hubs-capture-overview.md)，可以自动捕获事件中心的流式处理数据，并将其保存到所选 Blob 存储帐户或 Azure Data Lake 服务帐户。 可以从 Azure 门户启用捕获，并指定大小上限和时间范围以执行捕获。 使用事件中心捕获，用户可以指定自己的 Azure Blob 存储帐户和容器或 Azure Data Lake 服务帐户（用于存储已捕获数据）。 捕获的数据用 Apache Avro 格式编写。
 
 ## <a name="partitions"></a>分区
 
@@ -151,7 +151,7 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 * 入口：最高每秒 1 MB 或每秒 1000 个事件（以先达到的限制为准）
 * 出口：最高每秒 2 MB
 
-超出所购吞吐量单位的容量时，入口受限，返回 [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception)。 出口不会生成限制异常，但仍受限于所购吞吐量单位的容量。 如果收到发布速率异常或者预期会看到更高的出口，请务必检查为命名空间购买了多少吞吐量单位。 可以在 [Azure 门户](https://portal.azure.com)的命名空间的“规模”边栏选项卡上管理吞吐量单位。 也可使用[事件中心 API](event-hubs-api-overview.md) 以编程方式管理吞吐量单位。
+超出所购吞吐量单位的容量时，入口受限，返回 [ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)。 出口不会生成限制异常，但仍受限于所购吞吐量单位的容量。 如果收到发布速率异常或者预期会看到更高的出口，请务必检查为命名空间购买了多少吞吐量单位。 可以在 [Azure 门户](https://portal.azure.com)的命名空间的“规模”边栏选项卡上管理吞吐量单位。 也可使用[事件中心 API](event-hubs-api-overview.md) 以编程方式管理吞吐量单位。
 
 吞吐量单位按小时计费，需提前购买。 购买后，吞吐量单位的最短计费时限为一小时。 最多可以为一个事件中心命名空间购买 20 个吞吐量单位，这些单位在命名空间的所有事件中心共享。
 
@@ -169,8 +169,8 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 * [事件中心编程指南](event-hubs-programming-guide.md)
 * [事件中心中的可用性和一致性](event-hubs-availability-and-consistency.md)
 * [事件中心常见问题](event-hubs-faq.md)
-* [使用事件中心的示例应用程序][]
+* [事件中心示例][]
 
 [Event Hubs tutorial]: event-hubs-dotnet-standard-getstarted-send.md
-[使用事件中心的示例应用程序]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+[事件中心示例]: https://github.com/Azure/azure-event-hubs/tree/master/samples
 

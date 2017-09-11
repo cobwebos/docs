@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 07/21/2017
+ms.date: 08/11/2017
 ms.author: markgal;trinadhk
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: e72ccd2efc271956c688e70804cef915c257a2e3
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: ae4a73d12898c62fe2c5cf3683bc7c1c8c845fdf
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="delete-a-recovery-services-vault"></a>删除恢复服务保管库
@@ -34,7 +34,7 @@ Azure 备份服务提供两种类型的保管库：备份保管库和恢复服�
 >
 
 > [!IMPORTANT]
-> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 从 2017 年 11 月 1 日起：
+> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 10 月 15 日之后，将无法使用 PowerShell 创建备份保管库。 <br/> 从 2017 年 11 月 1 日起：
 >- 其余的所有备份保管库都将自动升级到恢复服务保管库。
 >- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
 >

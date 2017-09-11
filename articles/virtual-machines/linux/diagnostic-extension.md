@@ -9,11 +9,11 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jasonzio
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: d1efdf9b6b005852e570491aeb723a5758a4c839
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 525d706bd709ae72f2dca1c21e06db533ccf32b4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展监视指标和日志
@@ -42,7 +42,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM �
 
 Azure 门户不能用于启用或配置 LAD 3.0。 相反，它可用于安装并配置 2.3 版。 Azure 门户图形和警报可处理来自两个扩展版本的数据。
 
-这些安装说明和[可下载示例配置](https://github.com/Azure/azure-linux-extensions/blob/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json)会将 LAD 3.0 配置为：
+这些安装说明和[可下载示例配置](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json)会将 LAD 3.0 配置为：
 
 * 捕获并存储 LAD 2.3 提供的指标；
 * 捕获一组有用的文件系统指标，此为 LAD 3.0 新增功能；
@@ -55,7 +55,8 @@ Azure 门户不能用于启用或配置 LAD 3.0。 相反，它可用于安装�
 
 * Azure Linux 代理 2.2.0 版或更高版本。 大部分 Azure VM Linux 库映像包含 2.2.7 版或更高版本。 运行 `/usr/sbin/waagent -version` 以确认 VM 上安装的版本。 如果 VM 正在运行较早版本的来宾代理，请按照[以下说明](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/update-agent)将其更新。
 * **Azure CLI**。 在计算机上[设置 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) 环境。
-* 用于存储数据的现有存储帐户以及授予所需访问权限的关联 SAS 令牌。
+* wget 命令（如尚无，请运行 `sudo apt-get install wget`）。
+* 现有 Azure 订阅以及其中用于存储数据的现有存储帐户。
 
 ### <a name="sample-installation"></a>示例安装
 
@@ -70,8 +71,11 @@ my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnos
 # Should login to Azure first before anything else
 az login
 
+# Select the subscription containing the storage account
+az account set --subscription <your_azure_subscription_id>
+
 # Download the sample Public settings. (You could also use curl or any web browser)
-wget https://github.com/Azure/azure-linux-extensions/blob/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
+wget https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
 
 # Build the VM resource ID. Replace storage account name and resource ID in the public settings.
 my_vm_resource_id=$(az vm show -g $my_resource_group -n $my_linux_vm --query "id" -o tsv)

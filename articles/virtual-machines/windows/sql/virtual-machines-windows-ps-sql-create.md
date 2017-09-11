@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/17/2017
+ms.date: 08/29/2017
 ms.author: jroth
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a91122759bea12631fb83d631b21728d5a8f7403
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 4b8cc80f2d1ed6f09ec917118dc9495d20394b94
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-resource-manager"></a>使用 Azure PowerShell 预配 SQL Server 虚拟机 (Resource Manager)
@@ -30,103 +30,126 @@ ms.lasthandoff: 04/27/2017
 >
 
 ## <a name="overview"></a>概述
-本教程演示如何使用 Azure PowerShell cmdlet 创建采用 **Azure Resource Manager** 部署模型的单个 Azure 虚拟机。 在本教程中，我们将从 SQL 库中的映像创建使用单个磁盘驱动器的单个虚拟机。 我们将为虚拟机要使用的存储、网络和计算资源创建新的提供程序。 如果上述任何资源存在现有的提供程序，你可以改用这些提供程序。
+本教程演示如何使用 Azure PowerShell cmdlet 创建采用 **Azure Resource Manager** 部署模型的单个 Azure 虚拟机。 在本教程中，我们将从 SQL 库中的映像创建使用单个磁盘驱动器的单个虚拟机。 我们将为虚拟机要使用的存储、网络和计算资源创建新的提供程序。 如果上述任何资源存在现有的提供程序，可以改用这些提供程序。
 
 如果需要阅读本主题的经典版本，请参阅 [Provision a SQL Server virtual machine using Azure PowerShell Classic](../classic/ps-sql-create.md)（使用 Azure PowerShell Classic 预配 SQL Server 虚拟机）。
 
 ## <a name="prerequisites"></a>先决条件
-在本教程中，你需要：
+在本教程中，需要：
 
-* 在开始之前，你需要有 Azure 帐户和订阅。 如果没有订阅，可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* 在开始之前，需要有 Azure 帐户和订阅。 如果没有订阅，可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * [Azure PowerShell](/powershell/azure/overview)，最低版本 1.4.0 或以上（本教程使用 1.5.0 版编写）。
   * 若要检索版本，请键入 **Get-Module Azure -ListAvailable**。
 
 ## <a name="configure-your-subscription"></a>配置订阅
 打开 Windows PowerShell，并通过运行以下 cmdlet 来建立 Azure 帐户的访问权限。 随后将出现一个用于输入凭据的登录屏幕。 使用登录 Azure 门户时所用的相同电子邮件和密码。
 
-    Add-AzureRmAccount
+```PowerShell
+Add-AzureRmAccount
+```
 
-成功登录后，屏幕上会显示一些信息，其中包括用于登录的 SubscriptionId。 除非更改为其他订阅，否则这是本教程中将要在其中创建资源的订阅。 如果有多个 SubscriptionId，请运行以下 cmdlet 返回所有 SubscriptionId 的列表：
+成功登录后，屏幕上会显示一些信息，其中包括默认订阅的订阅名称和 ID。 除非更改为其他订阅，否则这是本教程中将要在其中创建资源的订阅。 如果有多个订阅，请运行以下 cmdlet 返回所有订阅的列表：
 
-    Get-AzureRmSubscription
+```PowerShell
+Get-AzureRmSubscription
+```
+要更改为另一个订阅，请结合目标 SubscriptionName 运行以下 cmdlet。
 
-若要更改为另一个 SubscriptionID，请结合所需的 SubscriptionId 运行以下 cmdlet。
-
-    Select-AzureRmSubscription -SubscriptionId xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```PowerShell
+Select-AzureRmSubscription -SubscriptionName YourTargetSubscriptionName
+```
 
 ## <a name="define-image-variables"></a>定义映像变量
 为了简化可用性和了解本教程中的完整脚本，我们首先要定义几个变量。 根据需要更改参数值，但在修改提供的值时，请注意与名称长度和特殊字符相关的命名限制。
 
 ### <a name="location-and-resource-group"></a>位置和资源组
-使用两个变量来定义数据区域，以及将在其中为虚拟机创建其他资源的资源组。
+使用两个变量来定义数据区域，以及会在其中为虚拟机创建其他资源的资源组。
 
 根据需要修改并执行以下 cmdlet 来初始化这些变量。
 
-    $Location = "SouthCentralUS"
-    $ResourceGroupName = "sqlvm1"
+```PowerShell
+$Location = "SouthCentralUS"
+$ResourceGroupName = "sqlvm1"
+```
 
 ### <a name="storage-properties"></a>存储属性
 使用以下变量来定义存储帐户和虚拟机所要使用的存储类型。
 
-根据需要修改并执行以下 cmdlet 来初始化这些变量。 请注意，在本示例中，我们将使用建议用于生产工作负荷的[高级存储](../../../storage/storage-premium-storage.md)。 有关指导和其他建议的详细信息，请参阅 [Performance best practices for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-performance.md)（Azure 虚拟机中 SQL Server 的性能最佳实践）。
+根据需要修改并执行以下 cmdlet 来初始化这些变量。 请注意，在本示例中，我们将使用建议用于生产工作负荷的[高级存储](../../../storage/common/storage-premium-storage.md)。 有关指导和其他建议的详细信息，请参阅 [Performance best practices for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-performance.md)（Azure 虚拟机中 SQL Server 的性能最佳实践）。
 
-    $StorageName = $ResourceGroupName + "storage"
-    $StorageSku = "Premium_LRS"
+```PowerShell
+$StorageName = $ResourceGroupName + "storage"
+$StorageSku = "Premium_LRS"
+```
 
 ### <a name="network-properties"></a>网络属性
 使用以下变量来定义网络接口、TCP/IP 分配方法、虚拟网络名称、虚拟子网名称、虚拟网络的 IP 地址范围、子网的 IP 地址范围，以及虚拟机中的网络所要使用的公共域名标签。
 
 根据需要修改并执行以下 cmdlet 来初始化这些变量。
 
-    $InterfaceName = $ResourceGroupName + "ServerInterface"
-    $TCPIPAllocationMethod = "Dynamic"
-    $VNetName = $ResourceGroupName + "VNet"
-    $SubnetName = "Default"
-    $VNetAddressPrefix = "10.0.0.0/16"
-    $VNetSubnetAddressPrefix = "10.0.0.0/24"
-    $DomainName = "sqlvm1"
+```PowerShell
+$InterfaceName = $ResourceGroupName + "ServerInterface"
+$TCPIPAllocationMethod = "Dynamic"
+$VNetName = $ResourceGroupName + "VNet"
+$SubnetName = "Default"
+$VNetAddressPrefix = "10.0.0.0/16"
+$VNetSubnetAddressPrefix = "10.0.0.0/24"
+$DomainName = "sqlvm1"
+```
 
 ### <a name="virtual-machine-properties"></a>虚拟机属性
 使用以下变量来定义虚拟机名称、计算机名称、虚拟机大小和虚拟机的操作系统磁盘名称。
 
 根据需要修改并执行以下 cmdlet 来初始化这些变量。
 
-    $VMName = $ResourceGroupName + "VM"
-    $ComputerName = $ResourceGroupName + "Server"
-    $VMSize = "Standard_DS13"
-    $OSDiskName = $VMName + "OSDisk"
+```PowerShell
+$VMName = $ResourceGroupName + "VM"
+$ComputerName = $ResourceGroupName + "Server"
+$VMSize = "Standard_DS13"
+$OSDiskName = $VMName + "OSDisk"
+```
 
 ### <a name="image-properties"></a>映像属性
-使用以下变量来定义要用于虚拟机的映像。 在本示例中，将使用 SQL Server 2016 Enterprise 映像。
+使用以下变量来定义要用于虚拟机的映像。 本示例使用 SQL Server 2016 Developer Edition 映像。 Developer Edition 针对测试和开发自由授权，用户只需支付运行 VM 的成本。
 
 根据需要修改并执行以下 cmdlet 来初始化这些变量。
 
-    $PublisherName = "MicrosoftSQLServer"
-    $OfferName = "SQL2016-WS2016"
-    $Sku = "Enterprise"
-    $Version = "latest"
+```PowerShell
+$PublisherName = "MicrosoftSQLServer"
+$OfferName = "SQL2016-WS2016"
+$Sku = "SQLDEV"
+$Version = "latest"
+```
 
-请注意，你可以使用 Get-AzureRmVMImageOffer 命令来获取 SQL Server 映像产品的完整列表：
+请注意，可以使用 Get-AzureRmVMImageOffer 命令来获取 SQL Server 映像产品的完整列表：
 
-    Get-AzureRmVMImageOffer -Location 'East US' -Publisher 'MicrosoftSQLServer'
+```PowerShell
+Get-AzureRmVMImageOffer -Location 'East US' -Publisher 'MicrosoftSQLServer'
+```
 
-可以使用 Get-AzureRmVMImageSku 来查看产品可用的 SKU。 以下命令显示 **SQL2014SP1-WS2012R2** 产品可用的所有 SKU。
+可以使用 Get-AzureRmVMImageSku 来查看产品可用的 SKU。 以下命令显示 SQL2016SP1-WS2016 产品可用的所有 SKU。
 
-    Get-AzureRmVMImageSku -Location 'East US' -Publisher 'MicrosoftSQLServer' -Offer 'SQL2014SP1-WS2012R2' | Select Skus
+```PowerShell
+Get-AzureRmVMImageSku -Location $Location -Publisher 'MicrosoftSQLServer' -Offer 'SQL2016SP1-WS2016' | Select Skus
+```
 
 ## <a name="create-a-resource-group"></a>创建资源组
 在 Resource Manager 部署模型中，创建的第一个对象是资源组。 我们将使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) cmdlet 以前面初始化的变量所定义的资源组名称和位置来创建 Azure 资源组及其资源。
 
 执行以下 cmdlet 来创建新的资源组。
 
-    New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
+```PowerShell
+New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
+```
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 虚拟机需要使用存储资源来存储操作系统磁盘及 SQL Server 数据和日志文件。 为简单起见，我们将为两者创建单个磁盘。 稍后可以使用 [Add-Azure Disk](/powershell/module/azure/add-azuredisk) cmdlet 来附加其他磁盘，以便将 SQL Server 数据和日志文件放在专用磁盘上。 我们将使用 [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) cmdlet，以前面初始化的变量所定义的存储帐户名、存储 SKU 名称和位置在新资源组中创建一个标准存储帐户。
 
 执行以下 cmdlet 来创建新的存储帐户。
 
-    $StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -SkuName $StorageSku -Kind "Storage" -Location $Location
+```PowerShell
+$StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -SkuName $StorageSku -Kind "Storage" -Location $Location
+```
 
 ## <a name="create-network-resources"></a>创建网络资源
 虚拟机需要使用多个网络资源来建立网络连接。
@@ -139,39 +162,43 @@ ms.lasthandoff: 04/27/2017
 我们首先创建虚拟网络的子网配置。 在本教程中，我们将使用 [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) cmdlet 创建默认子网。 我们将使用前面初始化的变量所定义的子网名称和地址前缀来创建虚拟网络子网配置。
 
 > [!NOTE]
-> 你可以使用此 cmdlet 来定义虚拟网络子网配置的其他属性，但这已超出本教程的范围。
->
->
+> 可以使用此 cmdlet 来定义虚拟网络子网配置的其他属性，但这已超出本教程的范围。
 
 执行以下 cmdlet 来创建虚拟子网配置。
 
-    $SubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $VNetSubnetAddressPrefix
+```PowerShell
+$SubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $VNetSubnetAddressPrefix
+```
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 接下来，我们将使用 [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) cmdlet 创建虚拟网络。 我们将使用前面初始化的变量所定义的名称、位置和地址前缀，以及使用前一步骤中定义的子网配置，在新的资源组中创建虚拟网络。
 
 执行以下 cmdlet 来创建虚拟网络。
 
-    $VNet = New-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName -Location $Location -AddressPrefix $VNetAddressPrefix -Subnet $SubnetConfig
+```PowerShell
+$VNet = New-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName -Location $Location -AddressPrefix $VNetAddressPrefix -Subnet $SubnetConfig
+```
 
 ### <a name="create-the-public-ip-address"></a>创建公共 IP 地址
 我们现已定义虚拟网络，接下来需要配置 IP 地址才能连接到虚拟机。 在本教程中，我们将使用动态 IP 地址来创建公共 IP 地址，以支持 Internet 连接。 我们将使用 [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) cmdlet，以前面初始化的变量所定义的名称、位置、分配方法和 DNS 域名标签，在前面创建的资源组中创建公共 IP 地址。
 
 > [!NOTE]
-> 你可以使用此 cmdlet 来定义公共 IP 地址的其他属性，但这已超出本初步教程的范围。 你也可以创建专用地址或具有静态地址的地址，但这也超出了本教程的范围。
->
->
+> 可以使用此 cmdlet 来定义公共 IP 地址的其他属性，但这已超出本初步教程的范围。 也可以创建专用地址或具有静态地址的地址，但这也超出了本教程的范围。
 
 执行以下 cmdlet 来创建公共 IP 地址。
 
-    $PublicIp = New-AzureRmPublicIpAddress -Name $InterfaceName -ResourceGroupName $ResourceGroupName -Location $Location -AllocationMethod $TCPIPAllocationMethod -DomainNameLabel $DomainName
+```PowerShell
+$PublicIp = New-AzureRmPublicIpAddress -Name $InterfaceName -ResourceGroupName $ResourceGroupName -Location $Location -AllocationMethod $TCPIPAllocationMethod -DomainNameLabel $DomainName
+```
 
 ### <a name="create-the-network-interface"></a>创建网络接口
 我们现在已准备好创建虚拟机将要使用的网络接口。 我们将使用 [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) cmdlet，以前面定义的名称、位置、子网和公共 IP 地址，在前面创建的资源组中创建网络接口。
 
 执行以下 cmdlet 来创建网络接口。
 
-    $Interface = New-AzureRmNetworkInterface -Name $InterfaceName -ResourceGroupName $ResourceGroupName -Location $Location -SubnetId $VNet.Subnets[0].Id -PublicIpAddressId $PublicIp.Id
+```PowerShell
+$Interface = New-AzureRmNetworkInterface -Name $InterfaceName -ResourceGroupName $ResourceGroupName -Location $Location -SubnetId $VNet.Subnets[0].Id -PublicIpAddressId $PublicIp.Id
+```
 
 ## <a name="configure-a-vm-object"></a>配置 VM 对象
 我们现已定义存储和网络资源，接下来可以定义虚拟机的计算资源。 在本教程中，我们将指定虚拟机大小和各种操作系统属性、指定我们前面创建的网络接口、定义 Blob 存储，然后指定操作系统磁盘。
@@ -181,56 +208,72 @@ ms.lasthandoff: 04/27/2017
 
 执行以下 cmdlet 来创建虚拟机对象。
 
-    $VirtualMachine = New-AzureRmVMConfig -VMName $VMName -VMSize $VMSize
+```PowerShell
+$VirtualMachine = New-AzureRmVMConfig -VMName $VMName -VMSize $VMSize
+```
 
 ### <a name="create-a-credential-object-to-hold-the-name-and-password-for-the-local-administrator-credentials"></a>创建一个凭据对象，以保留本地管理员凭据的名称和密码
-我们需要先提供本地管理员帐户的凭据作为安全字符串，然后才可以设置虚拟机的操作系统属性。 为了实现此目的，我们将使用 [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) cmdlet。
+我们需要先提供本地管理员帐户的凭据作为安全字符串，才可以设置虚拟机的操作系统属性。 为了实现此目的，我们将使用 [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) cmdlet。
 
 执行以下 cmdlet，并在 Windows PowerShell 凭据请求窗口中，键入要用于 Windows 虚拟机中本地管理员帐户的名称和密码。
 
-    $Credential = Get-Credential -Message "Type the name and password of the local administrator account."
+```PowerShell
+$Credential = Get-Credential -Message "Type the name and password of the local administrator account."
+```
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>设置虚拟机的操作系统属性
 现在，我们已准备好设置虚拟机的操作系统属性。 我们使用 [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) cmdlet 将操作系统的类型设置为 Windows，要求安装[虚拟机代理](../classic/agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)，指定该 cmdlet 允许使用前面初始化的变量自动更新和设置虚拟机名称、计算机名称和凭据。
 
 执行以下 cmdlet 来设置虚拟机的操作系统属性。
 
-    $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
+```PowerShell
+$VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
+```
 
 ### <a name="add-the-network-interface-to-the-virtual-machine"></a>将网络接口添加到虚拟机
 接下来，我们将前面创建的网络接口添加到虚拟机。 我们将使用 [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface) cmdlet 和前面定义的网络接口变量来添加网络接口。
 
 执行以下 cmdlet 来设置虚拟机的网络接口。
 
-    $VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $Interface.Id
+```PowerShell
+$VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $Interface.Id
+```
 
 ### <a name="set-the-blob-storage-location-for-the-disk-to-be-used-by-the-virtual-machine"></a>设置虚拟机所要使用的磁盘的 Blob 存储位置
 接下来，我们将使用前面定义的变量，设置虚拟机所要使用的磁盘的 Blob 存储位置。
 
 执行以下 cmdlet 来设置 Blob 存储位置。
 
-    $OSDiskUri = $StorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $OSDiskName + ".vhd"
+```PowerShell
+$OSDiskUri = $StorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $OSDiskName + ".vhd"
+```
 
 ### <a name="set-the-operating-system-disk-properties-for-the-virtual-machine"></a>设置虚拟机的操作系统磁盘属性
 接下来，我们将设置虚拟机的操作系统磁盘属性。 我们将使用 [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk) cmdlet 指定虚拟机的操作系统来自某个映像、将缓存设置为只读（因为要在同一磁盘上安装 SQL Server），并使用前面定义的变量来定义虚拟机名称和操作系统磁盘。
 
 执行以下 cmdlet 来设置虚拟机的操作系统磁盘属性。
 
-    $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name $OSDiskName -VhdUri $OSDiskUri -Caching ReadOnly -CreateOption FromImage
+```PowerShell
+$VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name $OSDiskName -VhdUri $OSDiskUri -Caching ReadOnly -CreateOption FromImage
+```
 
 ### <a name="specify-the-platform-image-for-the-virtual-machine"></a>指定虚拟机的平台映像
 最后一个配置步骤是指定虚拟机的平台映像。 在本教程中，我们使用最新的 SQL Server 2016 CTP 映像。 我们将通过 [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage) cmdlet 来使用前面定义的变量所定义的这个映像。
 
 执行以下 cmdlet 来指定虚拟机的平台映像。
 
-    $VirtualMachine = Set-AzureRmVMSourceImage -VM $VirtualMachine -PublisherName $PublisherName -Offer $OfferName -Skus $Sku -Version $Version
+```PowerShell
+$VirtualMachine = Set-AzureRmVMSourceImage -VM $VirtualMachine -PublisherName $PublisherName -Offer $OfferName -Skus $Sku -Version $Version
+```
 
 ## <a name="create-the-sql-vm"></a>创建 SQL VM
-现在你已完成配置步骤，接下来可以创建虚拟机。 我们将通过 [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) cmdlet，使用定义的变量来创建虚拟机。
+现在已完成配置步骤，接下来可以创建虚拟机。 我们将通过 [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) cmdlet，使用定义的变量来创建虚拟机。
 
 执行以下 cmdlet 来创建虚拟机。
 
-    New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
+```PowerShell
+New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
+```
 
 虚拟机已创建。 请注意，由于为虚拟机磁盘指定的存储帐户是高级存储帐户，因此将创建标准存储帐户用于启动诊断。
 
@@ -239,62 +282,65 @@ ms.lasthandoff: 04/27/2017
 ## <a name="example-script"></a>示例脚本
 以下脚本包含本教程的完整 PowerShell 脚本。 其中假设已将 Azure 订阅设置为配合使用 **Add-AzureRmAccount** 和 **Select-AzureRmSubscription** 命令。
 
-    # Variables
-    ## Global
-    $Location = "SouthCentralUS"
-    $ResourceGroupName = "sqlvm1"
-    ## Storage
-    $StorageName = $ResourceGroupName + "storage"
-    $StorageSku = "Premium_LRS"
+```PowerShell
+# Variables
 
-    ## Network
-    $InterfaceName = $ResourceGroupName + "ServerInterface"
-    $VNetName = $ResourceGroupName + "VNet"
-    $SubnetName = "Default"
-    $VNetAddressPrefix = "10.0.0.0/16"
-    $VNetSubnetAddressPrefix = "10.0.0.0/24"
-    $TCPIPAllocationMethod = "Dynamic"
-    $DomainName = "sqlvm1"
+## Global
+$Location = "SouthCentralUS"
+$ResourceGroupName = "sqlvm1"
 
-    ##Compute
-    $VMName = $ResourceGroupName + "VM"
-    $ComputerName = $ResourceGroupName + "Server"
-    $VMSize = "Standard_DS13"
-    $OSDiskName = $VMName + "OSDisk"
+## Storage
+$StorageName = $ResourceGroupName + "storage"
+$StorageSku = "Premium_LRS"
 
-    ##Image
-    $PublisherName = "MicrosoftSQLServer"
-    $OfferName = "SQL2016-WS2016"
-    $Sku = "Enterprise"
-    $Version = "latest"
+## Network
+$InterfaceName = $ResourceGroupName + "ServerInterface"
+$VNetName = $ResourceGroupName + "VNet"
+$SubnetName = "Default"
+$VNetAddressPrefix = "10.0.0.0/16"
+$VNetSubnetAddressPrefix = "10.0.0.0/24"
+$TCPIPAllocationMethod = "Dynamic"
+$DomainName = "sqlvm1"
 
-    # Resource Group
-    New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
+##Compute
+$VMName = $ResourceGroupName + "VM"
+$ComputerName = $ResourceGroupName + "Server"
+$VMSize = "Standard_DS13"
+$OSDiskName = $VMName + "OSDisk"
 
-    # Storage
-    $StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -SkuName $StorageSku -Kind "Storage" -Location $Location
+##Image
+$PublisherName = "MicrosoftSQLServer"
+$OfferName = "SQL2016-WS2016"
+$Sku = "Enterprise"
+$Version = "latest"
 
-    # Network
-    $SubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $VNetSubnetAddressPrefix
-    $VNet = New-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName -Location $Location -AddressPrefix $VNetAddressPrefix -Subnet $SubnetConfig
-    $PublicIp = New-AzureRmPublicIpAddress -Name $InterfaceName -ResourceGroupName $ResourceGroupName -Location $Location -AllocationMethod $TCPIPAllocationMethod -DomainNameLabel $DomainName
-    $Interface = New-AzureRmNetworkInterface -Name $InterfaceName -ResourceGroupName $ResourceGroupName -Location $Location -SubnetId $VNet.Subnets[0].Id -PublicIpAddressId $PublicIp.Id
+# Resource Group
+New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
 
-    # Compute
-    $VirtualMachine = New-AzureRmVMConfig -VMName $VMName -VMSize $VMSize
-    $Credential = Get-Credential -Message "Type the name and password of the local administrator account."
-    $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate #-TimeZone = $TimeZone
-    $VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $Interface.Id
-    $OSDiskUri = $StorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $OSDiskName + ".vhd"
-    $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name $OSDiskName -VhdUri $OSDiskUri -Caching ReadOnly -CreateOption FromImage
+# Storage
+$StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -SkuName $StorageSku -Kind "Storage" -Location $Location
 
-    # Image
-    $VirtualMachine = Set-AzureRmVMSourceImage -VM $VirtualMachine -PublisherName $PublisherName -Offer $OfferName -Skus $Sku -Version $Version
+# Network
+$SubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $VNetSubnetAddressPrefix
+$VNet = New-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName -Location $Location -AddressPrefix $VNetAddressPrefix -Subnet $SubnetConfig
+$PublicIp = New-AzureRmPublicIpAddress -Name $InterfaceName -ResourceGroupName $ResourceGroupName -Location $Location -AllocationMethod $TCPIPAllocationMethod -DomainNameLabel $DomainName
+$Interface = New-AzureRmNetworkInterface -Name $InterfaceName -ResourceGroupName $ResourceGroupName -Location $Location -SubnetId $VNet.Subnets[0].Id -PublicIpAddressId $PublicIp.Id
 
-    ## Create the VM in Azure
-    New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
+# Compute
+$VirtualMachine = New-AzureRmVMConfig -VMName $VMName -VMSize $VMSize
+$Credential = Get-Credential -Message "Type the name and password of the local administrator account."
+$VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate #-TimeZone = $TimeZone
+$VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $Interface.Id
+$OSDiskUri = $StorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $OSDiskName + ".vhd"
+$VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name $OSDiskName -VhdUri $OSDiskUri -Caching ReadOnly -CreateOption FromImage
+
+# Image
+$VirtualMachine = Set-AzureRmVMSourceImage -VM $VirtualMachine -PublisherName $PublisherName -Offer $OfferName -Skus $Sku -Version $Version
+
+## Create the VM in Azure
+New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
+```
 
 ## <a name="next-steps"></a>后续步骤
-创建虚拟机后，你可以使用 RDP 和设置连接来连接虚拟机。 有关详细信息，请参阅 [Connect to a SQL Server Virtual Machine on Azure (Resource Manager)](virtual-machines-windows-sql-connect.md)（连接到 Azure 上的 SQL Server 虚拟机 (Resource Manager)）。
-
+创建虚拟机后，可以使用 RDP 和设置连接来连接虚拟机。 有关详细信息，请参阅 [Connect to a SQL Server Virtual Machine on Azure (Resource Manager)](virtual-machines-windows-sql-connect.md)（连接到 Azure 上的 SQL Server 虚拟机 (Resource Manager)）。
 

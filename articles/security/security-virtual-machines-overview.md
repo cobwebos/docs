@@ -73,7 +73,7 @@ Microsoft 反恶意软件是一个针对应用程序和租户环境所提供的�
 * [在 Azure 虚拟机上部署反恶意软件解决方案](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [如何在 Windows VM 上安装和配置 Trend Micro Deep Security 即服务](../virtual-machines/windows/classic/install-trend.md)
 * [如何在 Windows VM 上安装和配置 Symantec Endpoint Protection](../virtual-machines/windows/classic/install-symantec.md)
-* [Azure 应用商店中的安全解决方案](https://azure.microsoft.com/marketplace/?term=security)
+* [Azure Marketplace 中的安全解决方案](https://azure.microsoft.com/marketplace/?term=security)
 
 ## <a name="hardware-security-module"></a>硬件安全模块
 可通过提高密钥安全性来增强加密和身份验证保护。 通过将关键密码和密钥存储在 Azure 密钥保管库中，可以简化此类密码和密钥的管理和保护。 密钥保管库提供将密钥存储在已通过 FIPS 140-2 Level 2 标准认证的硬件安全模块 (HSM) 中的选项。 用于备份或[透明数据加密](https://msdn.microsoft.com/library/bb934049.aspx)的 SQL Server 加密密钥均可存储在密钥保管库中，此外还可存储应用程序中的任意密钥或密码。 对这些受保护项的权限和访问权限通过 [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) 进行管理。

@@ -3,7 +3,7 @@ title: "使用 Azure 网络观察程序管理网络安全组流日志 - Azure CL
 description: "此页说明如何在 Azure 网络观察程序中使用 Azure CLI 管理网络安全组流日志"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 2dfc3112-8294-4357-b2f8-f81840da67d3
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: d5a8aa0cd274132798a0d8484a950926761dae7f
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
-
 
 ---
 

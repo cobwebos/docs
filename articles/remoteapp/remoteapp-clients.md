@@ -13,9 +13,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: c07773be6e4a2274287920de9420f4c8b96f58e1
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
 
 

@@ -45,7 +45,7 @@ ms.lasthandoff: 08/18/2017
 
 下一步是创建工作区。
 
-1. 在 Azure 门户的应用商店的服务列表中，搜索“Log Analytics”，并选择“Log Analytics”。  
+1. 在 Azure 门户的 Marketplace 的服务列表中，搜索“Log Analytics”，并选择“Log Analytics”。  
     ![Azure 门户](./media/log-analytics-get-started/log-analytics-portal.png)
 2. 单击“创建”，并为以下各项选择选项：
    * **OMS 工作区** - 键入工作区的名称。
@@ -71,7 +71,7 @@ ms.lasthandoff: 08/18/2017
 
 ### <a name="to-add-solutions-and-solution-offerings"></a>添加解决方案和解决方案产品/服务
 
-1. 在 Azure 门户中单击“新建”，在“搜索应用商店”框中键入“活动 Log Analytics”，并按 Enter。
+1. 在 Azure 门户中单击“新建”，在“搜索 Marketplace”框中键入“活动 Log Analytics”，并按 Enter。
 2. 在“全部”边栏选项卡中，选择“活动 Log Analytics”，并单击“创建”。  
     ![活动 Log Analytics](./media/log-analytics-get-started/activity-log-analytics.png)  
 3. 在*管理解决方案名称*边栏选项卡中，选择要与该管理解决方案相关联的工作区。

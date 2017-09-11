@@ -14,19 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/04/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: bf4c327804e0e9d40512adacd7f13db56b799508
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 8cba89e0947646b498af07aa484511bf07bf7b0e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/10/2017
-
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 Azure SQL 数据仓库复制数据/将数据复制到 Azure SQL 数据仓库
 本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出 Azure SQL 数据仓库。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。  
 
 > [!TIP]
-> 若要实现最佳性能，请使用 PolyBase 将数据加载到 Azure SQL 数据仓库。 有关详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)部分。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库](data-factory-load-sql-data-warehouse.md)。
+> 要实现最佳性能，请使用 PolyBase 将数据加载到 Azure SQL 数据仓库。 有关详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)部分。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库](data-factory-load-sql-data-warehouse.md)。
 
 ## <a name="supported-scenarios"></a>支持的方案
 可以将数据**从 Azure SQL 数据仓库**复制到以下数据存储：
@@ -57,7 +56,7 @@ Azure SQL 数据仓库连接器支持基本身份验证。
 3. 创建**数据集**以表示复制操作的输入和输出数据。 在上一个步骤所述的示例中，创建了一个数据集来指定 Blob 容器和包含输入数据的文件夹。 创建了另一个数据集来指定 Azure SQL 数据仓库中用于保存从 Blob 存储复制的数据的表。 有关特定于 Azure SQL 数据仓库的数据集属性，请参阅[数据集属性](#dataset-properties)部分。
 4. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 在前面所述的示例中，对复制活动使用 BlobSource 作为源，SqlDWSink 作为接收器。 同样，如果要从 Azure SQL 数据仓库复制到 Azure Blob 存储，则在复制活动中使用 SqlDWSource 和 BlobSink。 有关特定于 Azure SQL 数据仓库的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。
 
-使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从 Azure SQL 数据仓库复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples-for-copying-data-to-and-from-sql-data-warehouse)部分。
+使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从 Azure SQL 数据仓库复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples-for-copying-data-to-and-from-sql-data-warehouse)部分。
 
 对于特定于 Azure SQL 数据仓库的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息：
 
@@ -147,7 +146,7 @@ GO
 | rejectType |指定将 rejectValue 选项指定为文字值还是百分比。 |值（默认），百分比 |否 |
 | rejectSampleValue |确定在 PolyBase 重新计算被拒绝行的百分比之前要检索的行数。 |1、2 … |如果 **rejectType** 是**百分比**，则为“是” |
 | useTypeDefault |指定 PolyBase 从文本文件检索数据时如何处理分隔文本文件中的缺失值。<br/><br/>有关此属性的详细信息，请参阅[创建外部文件格式 (Transact SQL)](https://msdn.microsoft.com/library/dn935026.aspx) 中的参数部分。 |True、False（默认值） |否 |
-| writeBatchSize |缓冲区大小达到 writeBatchSize 时将数据插入 SQL 表 |整数（行数） |否（默认值：10000） |
+| writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表 |整数（行数） |否（默认值：10000） |
 | writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。 |timespan<br/><br/> 示例：“00:30:00”（30 分钟）。 |否 |
 
 #### <a name="sqldwsink-example"></a>SqlDWSink 示例
@@ -185,9 +184,9 @@ GO
 SQL 数据仓库 PolyBase 直接支持作为源并具有特定文件格式要求的 Azure Blob 和 Azure Data Lake Store（使用服务主体）。 如果源数据满足本节所述的标准，则可使用 PolyBase 从源数据存储直接复制到 Azure SQL 数据仓库。 否则，可改用[使用 PolyBase 的暂存复制](#staged-copy-using-polybase)。
 
 > [!TIP]
-> 若要将数据从 Data Lake Store 有效地复制到 SQL 数据仓库，请从[将 Data Lake Store 与 SQL 数据仓库配合使用时，Azure 数据工厂能够更轻松且方便地观察数据](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/)中了解详细信息。
+> 要将数据从 Data Lake Store 有效地复制到 SQL 数据仓库，请从[将 Data Lake Store 与 SQL 数据仓库配合使用时，Azure 数据工厂能够更轻松且方便地观察数据](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/)中了解详细信息。
 
-如果不满足要求，Azure 数据工厂将检查设置，并自动回退到 BULKINSERT 机制以进行数据移动。
+如果不满足要求，Azure 数据工厂会检查设置，并自动回退到 BULKINSERT 机制以进行数据移动。
 
 1. **源链接服务**的类型为：**AzureStorage** 或**使用服务主体身份验证的 AzureDataLakeStore**。  
 2. **输入数据集**的类型为：**AzureBlob** 或 **AzureDataLakeStore**，`type` 属性下的格式类型为 **OrcFormat** 或 **TextFormat**，其配置如下：
@@ -220,13 +219,13 @@ SQL 数据仓库 PolyBase 直接支持作为源并具有特定文件格式要求
 5. 复制活动的关联内容中没有使用 `columnMapping`。
 
 ### <a name="staged-copy-using-polybase"></a>使用 PolyBase 的暂存复制
-源数据不满足上一部分中介绍的标准时，可通过暂存 Azure Blob 存储（不能是高级存储）启用复制数据。 在这种情况下，Azure 数据工厂将自动转换数据以满足 PolyBase 的数据格式要求，然后使用 PolyBase 将数据加载到 SQL 数据仓库中，并在最后清除 Blob 存储的临时数据。 有关通常如何通过暂存 Azure Blob 复制数据的详细信息，请参阅[暂存复制](data-factory-copy-activity-performance.md#staged-copy)。
+源数据不满足上一部分中介绍的标准时，可通过暂存 Azure Blob 存储（不能是高级存储）启用复制数据。 在这种情况下，Azure 数据工厂会自动转换数据以满足 PolyBase 的数据格式要求，然后使用 PolyBase 将数据加载到 SQL 数据仓库中，并在最后清除 Blob 存储的临时数据。 有关通常如何通过暂存 Azure Blob 复制数据的详细信息，请参阅[暂存复制](data-factory-copy-activity-performance.md#staged-copy)。
 
 > [!NOTE]
 > 使用 PolyBase 和暂存将数据从本地数据存储复制到 Azure SQL 数据仓库时，如果数据管理网关版本低于 2.4，则网关计算机上需要 JRE（Java 运行时环境），其用于将源数据转换为正确格式。 建议将网关升级到最新版本，以避免此类依赖项。
 >
 
-若要使用此功能，请创建 [Azure 存储链接服务](data-factory-azure-blob-connector.md#azure-storage-linked-service)（引用具有临时 blob 存储的 Azure 存储帐户），然后指定复制活动的 `enableStaging` 和 `stagingSettings` 属性，如下方代码所示：
+要使用此功能，请创建 [Azure 存储链接服务](data-factory-azure-blob-connector.md#azure-storage-linked-service)（引用具有临时 blob 存储的 Azure 存储帐户），并指定复制活动的 `enableStaging` 和 `stagingSettings` 属性，如下方代码所示：
 
 ```json
 "activities":[  
@@ -264,7 +263,7 @@ Polybase 加载限制为加载小于 **1 MB** 的行，并且无法加载到 VAR
 如果源数据的行大小大于 1 MB，则需要将源表垂直拆分为几个小的源表，其中每个源表的最大行大小不超过限制。 然后可以使用 PolyBase 加载这些较小的表，并在 Azure SQL 数据仓库中将它们合并在一起。
 
 ### <a name="sql-data-warehouse-resource-class"></a>SQL 数据仓库资源类
-若要实现最佳吞吐量，请考虑向通过 PolyBase 将数据加载到 SQL 数据仓库的用户分配更大的资源类。 请参阅[更改用户资源类示例](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example)，了解如何执行该操作。
+要实现最佳吞吐量，请考虑向通过 PolyBase 将数据加载到 SQL 数据仓库的用户分配更大的资源类。 请参阅[更改用户资源类示例](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example)，了解如何执行该操作。
 
 ### <a name="tablename-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的 tableName
 下表提供了示例，说明如何在数据集 JSON 中为架构和表名的各种组合指定 **tableName** 属性。

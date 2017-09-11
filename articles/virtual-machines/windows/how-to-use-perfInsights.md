@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 99386a92b76d0d58f7f5c94d30d3423559eee685
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: f22bd42302b96118dba0d4e5e387c6798a0b8777
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights 
@@ -82,7 +82,7 @@ PerfInsights 可以收集和分析多种按不同方案分组的信息。
 
 此方案运行特殊的性能计数器捕获和网络跟踪。 捕获包括所有的“SMB 客户端共享”计数器。 以下是一些关键的 SMB 客户端共享性能计数器，属于捕获的一部分：
 
-| **类型**     | SMB 客户端共享计数器 |
+| **类型**     | **SMB 客户端共享计数器** |
 |--------------|-------------------------------|
 | IOPS         | 数据请求/秒             |
 |              | 读取请求/秒             |
@@ -173,13 +173,13 @@ Diskspd IO 工作负荷测试 [OS 磁盘（写入）和池驱动器（读取/写
 
 ### <a name="what-do-i-have-to-know-before-i-run-the-script"></a>在运行此脚本之前，必须了解什么？ 
 
-脚本要求
+**脚本要求**
 
 1.  此脚本必须在有性能问题的 VM 上运行。 
 
 2.  支持以下 OS：Windows Server 2008 R2、2012、2012 R2、2016；Windows 8.1 和 Windows 10。
 
-在生产 VM 上运行脚本时可能存在的问题：
+**在生产 VM 上运行脚本时可能存在的问题：**
 
 1.  此脚本在与通过 XPerf 或 DiskSpd 配置的“基准”或“自定义”方案一起使用时，可能会对 VM 的性能造成负面影响。 在生产环境中运行脚本时要小心。
 
@@ -311,7 +311,7 @@ Diskspd IO 工作负荷测试 [OS 磁盘（写入）和池驱动器（读取/写
 
 如果目标 VM 托管了任何 SQL Server 实例，则会在报告中看到另一名为“SQL Server”的选项卡：
 
-![sal 选项卡](media/how-to-use-perfInsights/sqltab.png)
+![sql 选项卡](media/how-to-use-perfInsights/sqltab.png)
 
 此部分包含“概览”以及其他的子选项卡，对应于托管在 VM 上的每个 SQL Server 实例。
 
@@ -350,3 +350,4 @@ Xperf 是一个命令行工具，用于捕获 Windows 性能工具包中的跟�
 为了增强安全性，需在第一次使用密码时更改密码。
 
 登录到 DTM 以后，将会出现一个对话框，用于上传 PerfInsights 所收集的 CollectedData\_yyyy-MM-dd\_hh\_mm\_ss.zip 文件。
+

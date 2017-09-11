@@ -73,7 +73,7 @@ ms.lasthandoff: 04/03/2017
 
 这意味着，如果采用此类设置，则在授予对 SAP 应用程序和服务的访问权限时，需在 SAP HANA Cloud Platform Identity Authentication 中完成授权（不同于在 Azure Active Directory 中配置授权）。
 
-通过 Azure Active Directory 应用商店将 SAP HANA Cloud Platform Identity Authentication 配置为应用程序以后，将无需配置为 SAP 应用程序生成有效身份验证令牌所必需的各个声明/SAML 断言和转换。
+通过 Azure Active Directory Marketplace 将 SAP HANA Cloud Platform Identity Authentication 配置为应用程序以后，将无需配置为 SAP 应用程序生成有效身份验证令牌所必需的各个声明/SAML 断言和转换。
 
 >[!NOTE] 
 >目前 Web SSO 仅经双方验证。 进行应用到 API 或 API 到 API 通信所需的流应可正常运行，但尚未经过测试。 将在后续活动中对这些流进行测试。

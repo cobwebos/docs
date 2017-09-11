@@ -25,7 +25,7 @@ New-HPCIaaSCluster.ps1 [-ConfigFile] <String> [-AdminUserName]<String> [[-AdminP
 * **ConfigFile**：指定描述 HPC 群集的配置文件的路径。 请参阅本主题中该配置文件的详细信息，也可查看包含脚本的文件夹中的 Manual.rtf 文件。
 * **AdminUserName**：指定用户名。 如果域林是由脚本创建的，则此用户名将成为所有 VM 的本地管理员用户名以及域管理员名称。 如果域林已存在，则此参数会将域用户指定为安装 HPC Pack 的本地管理员用户名。
 * **AdminPassword**：指定管理员的密码。 如果未在命令行中指定密码，脚本将提示输入密码。
-* **HPCImageName**（可选）：指定用于部署 HPC 群集的 HPC Pack VM 映像名称。 它必须是 Microsoft 通过 Azure 应用商店提供的 HPC Pack 映像。 如果未指定（通常不建议指定），脚本将选择最新发布的 [HPC Pack 2012 R2 映像](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)。 最新映像基于装有 HPC Pack 2012 R2 Update 3 的 Windows Server 2012 R2 Datacenter。
+* **HPCImageName**（可选）：指定用于部署 HPC 群集的 HPC Pack VM 映像名称。 它必须是 Microsoft 通过 Azure Marketplace 提供的 HPC Pack 映像。 如果未指定（通常不建议指定），脚本将选择最新发布的 [HPC Pack 2012 R2 映像](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)。 最新映像基于装有 HPC Pack 2012 R2 Update 3 的 Windows Server 2012 R2 Datacenter。
   
   > [!NOTE]
   > 指定无效的 HPC Pack 映像会导致部署失败。

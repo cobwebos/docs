@@ -4,7 +4,7 @@ description: "Azure 媒体分析 OCR（光学字符识别）可让你将视频�
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 307c196e-3a50-4f4b-b982-51585448ffc6
 ms.service: media-services

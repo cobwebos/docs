@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: negat
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: 5de81da3c6b77f1a80876d68def66792b6a21bb9
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ac0bbb4dbfccca3f3fc31526aeff11afe55d44be
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/17/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 07/17/2017
 
 可在[此处](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json)查看最小可行规模集模板，在[此处](https://raw.githubusercontent.com/gatneil/mvss/guest-based-autoscale-linux/azuredeploy.json)查看用于通过基于来宾的自动缩放部署 Linux 规模集的模板。 让我们逐一查看创建此模板 (`git diff minimum-viable-scale-set existing-vnet`) 时使用的差异内容：
 
-首先，添加 `storageAccountName` 和 `storageAccountSasToken` 的参数。 诊断代理将指标数据存储在此存储帐户中的某个[表](../storage/storage-dotnet-how-to-use-tables.md)内。 从 Linux 诊断代理版本 3.0 开始，不再支持使用存储访问密钥。 必须使用 [SAS 令牌](../storage/storage-dotnet-shared-access-signature-part-1.md)。
+首先，添加 `storageAccountName` 和 `storageAccountSasToken` 的参数。 诊断代理将指标数据存储在此存储帐户中的某个[表](../cosmos-db/table-storage-how-to-use-dotnet.md)内。 从 Linux 诊断代理版本 3.0 开始，不再支持使用存储访问密钥。 必须使用 [SAS 令牌](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 
 ```diff
      },

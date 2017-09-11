@@ -4,7 +4,7 @@ description: "本主题简要介绍并比较了 Azure 点播媒体编码器。"
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: e6bfc068-fa46-4d68-b1ce-9092c8f3a3c9
 ms.service: media-services
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
 ms.openlocfilehash: 4d35bdd88998d30435e9e5e916a18b3ce3bc7978
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/14/2017
-
 
 ---
 # <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>概述并比较 Azure 点播媒体编码器

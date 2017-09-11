@@ -4,20 +4,19 @@ description: "Azure Functions SendGrid 绑定参考"
 services: functions
 documentationcenter: na
 author: rachelappel
-manager: erikre
+manager: cfowler
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/16/2017
+ms.date: 08/26/2017
 ms.author: rachelap
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 0cd7e7c55e77863c142800cdc11d6ea144c38293
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: bcdbb6aee49d230a4cb0ba08d836facacb64de7f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/18/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
@@ -26,7 +25,8 @@ ms.lasthandoff: 03/18/2017
 
 此文提供适用于 Azure Functions 开发人员的参考信息。 Azure Functions 的新手请从以下资源入手：
 
-[创建你的第一个 Azure 函数](functions-create-first-azure-function.md)。 
+
+            [创建第一个 Azure 函数](functions-create-first-azure-function.md)。 
 [C#](functions-reference-csharp.md)、[F#](functions-reference-fsharp.md) 或 [Node](functions-reference-node.md) 开发人员参考。
 
 ## <a name="functionjson-for-sendgrid-bindings"></a>适用于 SendGrid 绑定的 function.json
@@ -35,14 +35,16 @@ Azure Functions 为 SendGrid 提供输出绑定。 SendGrid 输出绑定允许�
 
 SendGrid 绑定支持以下属性：
 
-- `name`：必需 - 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 ```$return```。 
-- `type`：必需 - 必须设置为“sendGrid”。
-- `direction`：必需 - 必须设置为“out”。
-- `apiKey`：必需 - 必须设置为存储在 Function App 应用设置中的 API 密钥名称。
-- `to`：收件人的电子邮件地址。
-- `from`：发件人的电子邮件地址。
-- `subject`：电子邮件主题。
-- `text`：电子邮件内容。
+|属性  |说明  |
+|---------|---------|
+|**name**| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 ```$return```。 |
+|**类型**| 必需 - 必须设置为 `sendGrid`。|
+|**direction**| 必需 - 必须设置为 `out`。|
+|**apiKey**| 必需 - 必须设置为存储在 Function App 应用设置中的 API 密钥名称。 |
+|**to**| 收件人的电子邮件地址。 |
+|**from**| 发件人的电子邮件地址。 |
+|**subject**| 电子邮件主题。 |
+|**text**| 电子邮件内容。 |
 
 **function.json** 示例：
 

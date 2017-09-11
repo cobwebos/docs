@@ -2,7 +2,7 @@
 title: "H264 单比特率 720p (Android) | Microsoft Docs"
 description: "本主题概述“H264 单比特率 720p (Android)”任务预设。"
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

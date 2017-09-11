@@ -32,12 +32,12 @@ ms.lasthandoff: 06/20/2017
 
 可通过几种方式在 Azure 上创建 Cloud Foundry 环境：
 
-- 使用 Azure 应用商店中的 [Pivotal Cloud Foundry 产品][pcf-azuremarketplace]创建包括 PCF Ops Manager 和 Azure Service Broker 的标准环境。 可在 Pivotal 文档中找到有关部署应用商店产品的[完整说明][pcf-azuremarketplace-pivotaldocs]。
+- 使用 Azure Marketplace 中的 [Pivotal Cloud Foundry 产品][pcf-azuremarketplace]创建包括 PCF Ops Manager 和 Azure Service Broker 的标准环境。 可在 Pivotal 文档中找到有关部署应用商店产品的[完整说明][pcf-azuremarketplace-pivotaldocs]。
 - 通过[手动部署 Pivotal Cloud Foundry ][pcf-custom]创建自定义环境。
 - 通过设置 [BOSH](http://bosh.io) 控制器（一种协调 Cloud Foundry 环境部署的 VM），[直接部署开源 Cloud Foundry 包][oss-cf-bosh]。
 
 > [!IMPORTANT] 
-> 如果要从 Azure 应用商店部署 PCF，请记下访问 Pivotal 应用管理器所需的 SYSTEMDOMAINURL 和管理员凭据，应用商店部署指南中对两者都有介绍。 完成本教程也需要它们。 在应用商店部署中，SYSTEMDOMAINURL 的形式为 https://system.*ip-address*.cf.pcfazure.com。
+> 如果要从 Azure Marketplace 部署 PCF，请记下访问 Pivotal 应用管理器所需的 SYSTEMDOMAINURL 和管理员凭据，应用商店部署指南中对两者都有介绍。 完成本教程也需要它们。 在应用商店部署中，SYSTEMDOMAINURL 的形式为 https://system.*ip-address*.cf.pcfazure.com。
 
 ## <a name="connect-to-the-cloud-controller"></a>连接到云控制器
 

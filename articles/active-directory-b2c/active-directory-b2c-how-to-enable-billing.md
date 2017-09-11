@@ -37,8 +37,8 @@ https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 ![切换到 Azure AD 租户](./media/active-directory-b2c-how-to-enable-billing/SelectAzureADTenant.png)
 
-## <a name="step-3---create-a-b2c-tenant-resource-in-azure-marketplace"></a>步骤 3 - 在 Azure 应用商店中创建 B2C 租户资源
-单击“应用商店”图标，或者选择仪表板左上角的绿色“+”符号，打开应用商店。  搜索并选择 Azure Active Directory B2C。 选择“创建”。
+## <a name="step-3---create-a-b2c-tenant-resource-in-azure-marketplace"></a>步骤 3 - 在 Azure Marketplace 中创建 B2C 租户资源
+单击“Marketplace”图标，或者选择仪表板左上角的绿色“+”符号，打开 Marketplace。  搜索并选择 Azure Active Directory B2C。 选择“创建”。
 
 ![选择“Marketplace”](./media/active-directory-b2c-how-to-enable-billing/marketplace.png)
 

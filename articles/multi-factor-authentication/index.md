@@ -2,7 +2,7 @@
 title: "Azure 多重身份验证文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用可提供简单登录过程的多种验证方法来部署多重身份验证。 教程、SDK 和其他资源。"
 services: multi-factor-authentication
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: acd9ead9012043bc6db8c32add86bb7797fcf8c9
 ms.openlocfilehash: c4aaa14007bf441f99ef6599bda411bcaed92a92
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/09/2017
 
 ---

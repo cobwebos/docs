@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/02/2016
 ms.author: byvinyal
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: a773e43b28b144dd8341b276eee3fa504d4f1080
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/21/2017
 
 
@@ -41,7 +42,7 @@ ms.lasthandoff: 03/21/2017
 * **具有高可用性的全局缩放** - 以手动或自动方式进行[增大](../app-service-web/web-sites-scale.md)或[扩大](../monitoring-and-diagnostics/insights-how-to-scale.md)。 在 Microsoft 全球数据中心基础结构中的任意位置托管应用，并且应用服务 [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) 承诺高可用性。
 * **到 SaaS 平台和本地数据的连接** - 从适用于企业系统（例如 SAP、Siebel 和 Oracle）的 50 多个 [连接器](../connectors/apis-list.md) 、SaaS 服务（例如 Salesforce 和 Office 365）以及 Internet 服务（例如 Facebook 和 Twitter）中进行选择。 使用[混合连接](../biztalk-services/integration-hybrid-connection-overview.md)和 [Azure 虚拟网络](../app-service-web/web-sites-integrate-with-vnet.md)访问本地数据。
 * **安全性和合规性** - 应用服务符合 [ISO、SOC 和 PCI](https://www.microsoft.com/TrustCenter/)的要求。
-* **应用程序模板** - 从 [Azure 应用商店](https://azure.microsoft.com/marketplace/)的详尽模板列表中进行选择，使用向导安装流行的开源软件，例如 WordPress、Joomla 和 Drupal。
+* **应用程序模板** - 从 [Azure Marketplace](https://azure.microsoft.com/marketplace/) 的详尽模板列表中进行选择，使用向导安装流行的开源软件，例如 WordPress、Joomla 和 Drupal。
 * **Visual Studio 集成** — Visual Studio 中的专用工具可简化创建、部署和调试工作。
 
 ## <a name="app-types-in-app-service"></a>应用服务中的应用类型

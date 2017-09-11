@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 7/27/2017
+ms.date: 8/9/2017
 ms.author: subramar
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: f4899748ee191a64156c0e2fae87c195ae4dbc8c
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: e05d1a3d6111e3bbc34008226bcd1fdf35935450
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="docker-compose-application-support-in-azure-service-fabric-preview"></a>Azure Service Fabric 中的 Docker Compose 应用程序支持（预览版）
@@ -27,10 +27,10 @@ Docker 使用 [docker-compose.yml](https://docs.docker.com/compose) 文件定义
 
 由于这种支持处于预览状态，因此仅支持一部分 Compose 指令。 例如，不支持应用程序升级。 但是，始终可以删除并部署应用程序，而不是对其进行升级。
 
-若要使用此预览版，需要通过 Azure 门户使用预览 SDK（版本 255.255.x.x）创建群集。 
+若要使用此预览版，请通过 Azure 门户以及相应的 SDK 使用 5.7 版本或更高版本的 Service Fabric 运行时创建群集。 
 
 > [!NOTE]
-> 此功能处于预览状态，且不受支持。
+> 此功能处于预览状态，在生产环境中不受支持。
 
 ## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>在 Service Fabric 上部署一个 Docker Compose 文件
 
@@ -56,24 +56,24 @@ Get-ServiceFabricComposeApplicationStatus -ApplicationName fabric:/TestContainer
 Remove-ServiceFabricComposeApplication  -ApplicationName fabric:/TestContainerApp
 ```
 
-### <a name="use-azure-cli-20"></a>使用 Azure CLI 2.0
+### <a name="use-azure-service-fabric-cli-sfctl"></a>使用 Azure Service Fabric CLI (sfctl)
 
-或者，可以使用以下 Azure CLI 命令：
+或者，可以使用以下 Service Fabric CLI 命令：
 
 ```azurecli
-az sf compose create --application-id fabric:/TestContainerApp --compose-file docker-compose.yml [ [ --repo-user --repo-pass --encrypted ] | [ --repo-user ] ] [ --timeout ]
+sfctl compose create --application-id fabric:/TestContainerApp --compose-file docker-compose.yml [ [ --repo-user --repo-pass --encrypted ] | [ --repo-user ] ] [ --timeout ]
 ```
 
 创建应用程序后，可以使用以下命令检查其状态：
 
 ```azurecli
-az sf compose status --application-id TestContainerApp [ --timeout ]
+sfctl compose status --application-id TestContainerApp [ --timeout ]
 ```
 
 若要删除 Compose 应用程序，请使用以下命令：
 
 ```azurecli
-az sf compose remove  --application-id TestContainerApp [ --timeout ]
+sfctl compose remove  --application-id TestContainerApp [ --timeout ]
 ```
 
 ## <a name="supported-compose-directives"></a>支持的 Compose 指令
@@ -116,10 +116,6 @@ docker-compose.yml 文件描述一组包括属性和配置在内的可部署容�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 [Service Fabric 应用程序模型](service-fabric-application-model.md)。
-
-## <a name="related-articles"></a>相关文章
-
-* [Service Fabric 和 Azure CLI 2.0 入门](service-fabric-azure-cli-2-0.md)
-* [Service Fabric XPlat CLI 入门](service-fabric-azure-cli.md)
+* 了解 [Service Fabric 应用程序模型](service-fabric-application-model.md)
+* [Service Fabric CLI 入门](service-fabric-cli.md)
 

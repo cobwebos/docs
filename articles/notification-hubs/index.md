@@ -2,7 +2,7 @@
 title: "Azure 通知中心文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用通知中心从任何后端向任何移动设备发送推送通知。 教程、API 参考和其他文档。"
 services: notification-hubs
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

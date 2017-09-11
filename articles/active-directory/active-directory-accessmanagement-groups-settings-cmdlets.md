@@ -12,23 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
-ms.author: rodejo
+ms.date: 08/09/2017
+ms.author: curtand
+ms.reviewer: kairaz.contractor
+ms.custom: it-pro;
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 7dd4833000e8550b172e0451c48788b1e627a1fb
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 2ee71536257d4349fdf8d80bdcb1899a1d244293
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
 
 > [!IMPORTANT]
-> 此内容仅适用于 Office 365 组。 
+> 此内容仅适用于 Office 365 组。 有关如何允许用户创建安全组的详细信息， 请按照 [Set-MSOLCompanySettings](https://docs.microsoft.com/en-us/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) 中的描述设置 `Set-MSOLCompanySettings -UsersPermissionToCreateGroupsEnabled $True`。 
 
-Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 一开始不会在目录中看到任何 Settings 对象。 这意味着目录配置了默认设置。 若要更改默认设置，必须使用设置模板创建新的设置对象。 设置模板由 Microsoft 定义。 有几个不同的设置模板。 若要配置目录的组设置，将使用名为“Group.Unified”的模板。 若要针对单个组配置组设置，可使用名为“Group.Unified.Guest”的模板。 此模板用于管理对组的来宾访问权限。 
+Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 起初，目录中不会显示任何设置对象，因为目录配置为默认设置。 若要更改默认设置，必须使用设置模板创建新的设置对象。 设置模板由 Microsoft 定义。 有几个不同的设置模板。 若要配置目录的 Office 365 组设置，请使用名为“Group.Unified”的模板。 若要针对单个组配置 Office 365 组设置，请使用名为“Group.Unified.Guest”的模板。 此模板用于管理对 Office 365 组的来宾访问权限。 
 
-这些 Cmdlet 属于 Azure Active Directory PowerShell V2 模块。 有关此模块的详细信息以及有关如何在计算机上下载和安装此模块的说明，请参阅 [Azure Active Directory PowerShell 版本 2](https://docs.microsoft.com/powershell/azuread/)。 可以从[此处](https://www.powershellgallery.com/packages/AzureAD/)安装模块的版本 2 发行版。
+这些 Cmdlet 属于 Azure Active Directory PowerShell V2 模块。 有关如何在计算机上下载和安装模块的说明，请参阅文章 [Azure Active Directory PowerShell Version 2](https://docs.microsoft.com/powershell/azuread/)（Azure Active Directory PowerShell 版本 2）。 可以从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureAD/)安装模块的版本 2 发行版。
 
 ## <a name="retrieve-a-specific-settings-value"></a>检索特定的设置值
 如果知道要检索的设置的名称，可以使用以下 cmdlet 检索当前的设置值。 在此示例中，我们要检索名为“UsageGuidelinesUrl”的设置的值。 可以在本文的后面部分阅读有关目录设置及其名称的详细信息。
@@ -38,9 +40,9 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 ```
 
 ## <a name="create-settings-at-the-directory-level"></a>在目录级别创建设置
-这些步骤在目录级别创建设置，这些设置适用于目录中的所有统一组。
+这些步骤在目录级别创建设置，这些设置适用于目录中的所有 Office 365 组（统一组）。
 
-1. 在 DirectorySettings cmdlet 中，需要指定要使用的 SettingsTemplate 的 ID。 如果不知道此 ID，此 cmdlet 将返回所有设置模板的列表：
+1. 在 DirectorySettings cmdlet 中，必须指定要使用的 SettingsTemplate 的 ID。 如果不知道此 ID，此 cmdlet 将返回所有设置模板的列表：
   
   ```
   PS C:> Get-AzureADDirectorySettingTemplate

@@ -1,7 +1,7 @@
 若要使用 Azure 门户在 Resource Manager 部署模型中创建 VNet，请执行以下步骤。 如果是在教程中使用这些步骤，请使用[示例值](#values)。 如果并非在教程中使用这些步骤，请务必将其中的值替换为自己的值。 有关使用虚拟网络的详细信息，请参阅 [虚拟网络概述](../articles/virtual-network/virtual-networks-overview.md)。
 
 1. 从浏览器导航到 [Azure 门户](http://portal.azure.com)并使用 Azure 帐户登录。
-2. 单击“新建” 。 在“搜索应用商店”字段中，键入“虚拟网络”。 从返回的列表中找到“虚拟网络”，单击打开“虚拟网络”边栏选项卡。
+2. 单击“新建” 。 在“搜索 Marketplace”字段中，键入“虚拟网络”。 从返回的列表中找到“虚拟网络”，单击打开“虚拟网络”边栏选项卡。
 3. 从靠近“虚拟网络”边栏选项卡底部的“选择部署模型”列表中，选择“Resource Manager”，然后单击“创建”。 这会打开“创建虚拟网络”边栏选项卡。
 
     ![创建虚拟网络边栏选项卡](./media/vpn-gateway-basic-vnet-s2s-rm-portal-include/createvnet.png "创建虚拟网络边栏选项卡")

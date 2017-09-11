@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 4a41d9eb8b28aed499bb20e17e3c979962c78bcd
+ms.translationtype: HT
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 1bfaa7b31bfed3ada22c83516839ebd95a351854
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="exchange-x12-messages-for-enterprise-integration-with-logic-apps"></a>使用逻辑应用交换 X12 消息以实现企业集成
@@ -33,7 +32,7 @@ ms.lasthandoff: 07/06/2017
 
 下面是需要准备好的项：
 
-* 已定义的、与你的 Azure 订阅关联的[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)
+* 已定义的、与 Azure 订阅关联的[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)
 * 在集成帐户中至少定义了两个[合作伙伴](../logic-apps/logic-apps-enterprise-integration-partners.md)，并且在“企业标识”下面配置了这些合作伙伴的 X12 标识符    
 * 要上传到[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)的所需[架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)
 
@@ -57,7 +56,7 @@ ms.lasthandoff: 07/06/2017
 
     ![选择要在其中创建协议的集成帐户](./media/logic-apps-enterprise-integration-x12/account-3.png)
 
-4. 选择“概述”，然后选择“协议”磁贴。 如果未添加“协议”磁贴，请先添加该磁贴。 
+4. 选择“概述”，并选择“协议”磁贴。 如果未添加“协议”磁贴，请先添加该磁贴。 
 
     ![选择“协议”磁贴](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
 
@@ -273,6 +272,9 @@ ms.lasthandoff: 07/06/2017
 | 段终止符 |若要指示 EDI 段的结尾，请输入单个字符。 |
 | 后缀 |选择与段标识符一起使用的字符。 如果指定了后缀，则段终止符数据元素可以为空。 如果段终止符保留为空，则必须指定后缀。 |
 
+> [!TIP]
+> 若要提供特殊字符值，请编辑作为 JSON 的协议并提供特殊字符的 ASCII 值。
+
 ### <a name="validation"></a>验证
 
 ![针对发送的消息设置验证属性](./media/logic-apps-enterprise-integration-x12/x12-10.png) 
@@ -294,7 +296,7 @@ ms.lasthandoff: 07/06/2017
 
     新添加的协议随即会出现在“协议”列表中。
 
-2.  还可以在集成帐户概述中查看协议。 在集成帐户边栏选项卡中选择“概述”，然后选择“协议”磁贴。
+2.  还可以在集成帐户概述中查看协议。 在集成帐户边栏选项卡中选择“概述”，并选择“协议”磁贴。
 
     ![选择“协议”磁贴可查看所有协议](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
 

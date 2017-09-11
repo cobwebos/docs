@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2016
 ms.author: drewm
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: d8c8ad96ba0ba55692e80a29b7de74165a2c13bd
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: d1daa01191480eaeb81727416b2134b00c698dc3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="change-the-availability-set-for-a-windows-vm"></a>更改 Windows VM 的可用性集
-以下步骤说明如何使用 Azure PowerShell 来更改 VM 的可用性集。 只能在创建 VM 时将 VM 添加到可用性集。 若要更改可用性集，必须将虚拟机删除，然后重新创建虚拟机。 
+以下步骤说明如何使用 Azure PowerShell 来更改 VM 的可用性集。 只能在创建 VM 时将 VM 添加到可用性集。 要更改可用性集，必须将虚拟机删除，然后重新创建虚拟机。 
 
 ## <a name="change-the-availability-set-using-powershell"></a>使用 PowerShell 更改可用性集
 1. 从要修改的 VM 中捕获以下重要详细信息。
@@ -89,10 +89,10 @@ ms.lasthandoff: 03/31/2017
    
     New-AzureRmVM -ResourceGroupName <resourceGroupName> -Location <location> -VM <vmConfig>
     ``` 
-5. 添加数据磁盘和扩展。 有关详细信息，请参阅 [Attach Data Disk to VM](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（将数据磁盘附加到 VM）和 [Extension Configuration Samples](extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（扩展配置示例）。 可以使用 PowerShell 或 Azure CLI 将数据磁盘和扩展添加到 VM。
+5. 添加数据磁盘和扩展。 有关详细信息，请参阅[将数据磁盘附加到 VM](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 和[资源管理器模板中的扩展](../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#extensions)。 可以使用 PowerShell 或 Azure CLI 将数据磁盘和扩展添加到 VM。
 
 ## <a name="example-script"></a>示例脚本
-以下脚本提供一个示例，该示例收集所需的信息、删除原始 VM，然后在新可用性集中重新创建 VM。
+以下脚本提供一个示例，该示例收集所需的信息、删除原始 VM，并在新可用性集中重新创建 VM。
 
 ```powershell
     #set variables
@@ -147,8 +147,8 @@ ms.lasthandoff: 03/31/2017
     }
 
     #Add NIC(s)
-    foreach ($nic in $OriginalVM.NetworkInterfaceIDs) {
-        Add-AzureRmVMNetworkInterface -VM $NewVM -Id $nic
+    foreach ($nic in $OriginalVM.NetworkProfile.NetworkInterfaces) {
+        Add-AzureRmVMNetworkInterface -VM $NewVM -Id $nic.Id
     }
 
     #Create the VM
@@ -156,6 +156,6 @@ ms.lasthandoff: 03/31/2017
 ```
 
 ## <a name="next-steps"></a>后续步骤
-通过添加附加[数据磁盘](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，向 VM 添加附加存储。
+通过添加附加[数据磁盘](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，向 VM 添加附加存储。
 
 

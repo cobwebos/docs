@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/10/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: c1f5c5014f0aa157d1734cbcc5f9aafcce886b43
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: ebba36a0f6f9a3f2c8980741dd333ffc56a361cc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-certificate-authentication-powershell"></a>使用证书身份验证配置与 VNet 的点到站点连接：PowerShell
@@ -33,7 +33,9 @@ ms.lasthandoff: 08/16/2017
 >
 >
 
-通过点到站点 (P2S) 配置，可以使单台客户端计算机与虚拟网络建立安全的连接。 如果要从远程位置（例如，从家里或会议室）连接到 VNet，或者只有少数几台客户端计算机需要连接到虚拟网络，点到站点连接将非常有用。 P2S VPN 连接通过本机 Windows VPN 客户端从客户端计算机启动。 连接客户端使用证书进行身份验证。 
+点到站点 (P2S) VPN 网关用于创建从单个客户端计算机到虚拟网络的安全连接。 若要从远程位置连接到 VNet，例如从家里或会议室进行远程通信，则可使用点到站点 VPN。 如果只有一些客户端需要连接到 VNet，则可使用 P2S VPN 这种解决方案来代替站点到站点 VPN。
+
+P2S 使用安全套接字层隧道协议 (SSTP)，这是一种基于 SSL 的 VPN 协议。 可通过从客户端计算机启动连接来建立 P2S VPN 连接。
 
 ![将计算机连接到 Azure VNet - 点到站点连接示意图](./media/vpn-gateway-howto-point-to-site-rm-ps/point-to-site-diagram.png)
 
@@ -48,7 +50,7 @@ ms.lasthandoff: 08/16/2017
 
 有关点到站点连接的详细信息，请参阅本文末尾的[点到站点常见问题解答](#faq)。
 
-## <a name="before-beginning"></a>开始之前
+## <a name="before-you-begin"></a>开始之前
 
 * 确保拥有 Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial)。
 * 安装最新版本的 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
@@ -242,6 +244,8 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 请
 
   ![已建立连接](./media/vpn-gateway-howto-point-to-site-rm-ps/connected.png)
 
+#### <a name="troubleshooting-p2s-connections"></a>排查 P2S 连接问题
+
 [!INCLUDE [client certificates](../../includes/vpn-gateway-certificates-verify-client-cert-include.md)]
 
 ## <a name="verify"></a>10.验证连接
@@ -410,7 +414,7 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 请
 
 ## <a name="faq"></a>点到站点常见问题解答
 
-[!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-point-to-site-faq-include.md)]
+[!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-point-to-site-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
 连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。 若要详细了解网络和虚拟机，请参阅 [Azure 和 Linux VM 网络概述](../virtual-machines/linux/azure-vm-network-overview.md)。

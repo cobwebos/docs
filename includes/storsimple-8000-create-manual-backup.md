@@ -3,9 +3,9 @@
 
 #### <a name="to-create-a-manual-backup"></a>创建手动备份
 
-1. 转到 StorSimple Device Manager 服务，然后单击“设备”。 从设备的表格式列表中，选择你的设备。 转到“设置”>“管理”>“备份策略”。
+1. 转到 StorSimple Device Manager 服务，并单击“设备”。 从设备的表格式列表中，选择设备。 转到“设置”>“管理”>“备份策略”。
 
-2. “备份策略”边栏选项卡会以表格形式列出所有备份策略，包括要备份的卷的策略。 选择与你要备份的卷关联的策略，然后单击右键以调用上下菜单。 从下拉列表中，选择“立即备份”。
+2. “备份策略”边栏选项卡会以表格形式列出所有备份策略，包括要备份的卷的策略。 选择与要备份的卷关联的策略，然后单击右键以调用上下菜单。 从下拉列表中，选择“立即备份”。
 
     ![创建手动备份](./media/storsimple-8000-create-manual-backup/createmanualbu1.png)
 
@@ -15,7 +15,7 @@
 
         ![创建手动备份](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
 
-    2. 单击“确定”以启动作业来创建快照。 成功创建作业后，你会在页面底部看到一条通知。
+    2. 单击“确定”以启动作业来创建快照。 成功创建作业后，会在页面底部看到一条通知。
 
         ![创建手动备份](./media/storsimple-8000-create-manual-backup/createmanualbu4.png)
 

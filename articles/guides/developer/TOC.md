@@ -5,10 +5,10 @@
 ## [SDK 和工具](../../index.md#pivot=sdkstools)
 
 # 快速入门
-## [Web 应用](../../app-service-web/web-sites-dotnet-get-started.md)
+## [Web 应用](../../app-service-web/app-service-web-get-started-html.md)
 ## 虚拟机
-### [Linux](../../virtual-machines/virtual-machines-linux-quick-create-portal.md)
-### [Windows](../../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+### [Linux](../../virtual-machines/linux/quick-create-portal.md)
+### [Windows](../../virtual-machines/windows/quick-create-portal.md)
 ## [无服务器](../../azure-functions/functions-create-first-azure-function.md)
 ## 微服务
 ### [Service Fabric](../../service-fabric/service-fabric-create-your-first-application-in-visual-studio.md)
@@ -16,16 +16,16 @@
 
 # 教程
 ## 创建和部署 Web 应用
-### [ASP.NET](../../app-service-web/web-sites-dotnet-get-started.md)
-### [Java](../../app-service-web/web-sites-python-ptvs-django-mysql.md)
-### [Node.js](../../app-service-web/app-service-web-nodejs-get-started.md)
-### [PHP](../../app-service-web/app-service-web-php-get-started.md)
-### [Python](../../app-service-web/web-sites-python-ptvs-django-mysql.md)
+### [ASP.NET](../../app-service-web/app-service-web-get-started-dotnet.md)
+### [Java](../../app-service-web/app-service-web-get-started-java.md)
+### [Node.js](../../app-service-web/app-service-web-get-started-nodejs.md)
+### [PHP](../../app-service-web/app-service-web-get-started-php.md)
+### [Python](../../app-service-web/app-service-web-get-started-python.md)
 ## 部署复杂的 VM 模板
 ### [Linux](../../virtual-machines/virtual-machines-linux-dotnet-core-1-landing.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Windows](../../virtual-machines/virtual-machines-windows-dotnet-core-1-landing.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [创建连接到 Azure 的函数](../../azure-functions/functions-create-an-azure-connected-function.md)
-## [在 Linux 上部署 Docker Web 应用](../../app-service-web/app-service-linux-using-custom-docker-image.md) 
+## [在 Linux 上部署 Docker Web 应用](../../app-service/containers/quickstart-custom-docker-image.md) 
 
 # 示例
 ## Azure CLI
@@ -48,12 +48,11 @@
 
 # 操作方法指南
 ## 计划
-### [Web 应用程序体系结构](../../guidance/guidance-ra-app-service.md)
-### [VM 体系结构](../../guidance/guidance-ra-compute.md)
-### [连接到本地网络](../../guidance/guidance-ra-hybrid-networking.md)
+### [Web 应用程序体系结构](/azure/architecture/reference-architectures/managed-web-app/)
+### [VM 体系结构](/azure/architecture/reference-architectures/virtual-machines-windows/)
+### [连接到本地网络](/azure/architecture/reference-architectures/hybrid-networking/)
 ### [微服务模式/方案](../../service-fabric/service-fabric-patterns-and-scenarios.md)
 ## 开发
-### [WordPress 应用](../../app-service-web/web-sites-php-web-site-gallery.md)
 ### [Linux VM](../../virtual-machines/virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Windows VM](../../virtual-machines/virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [无服务器应用](../../azure-functions/functions-reference.md)
@@ -64,12 +63,12 @@
 ### [来自模板的 Linux VM](../../virtual-machines/virtual-machines-linux-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [来自模板的 Windows VM](../../virtual-machines/virtual-machines-windows-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## 存储数据
-### [Blob](../../storage/storage-dotnet-how-to-use-blobs.md)
-### [文件共享](../../storage/storage-dotnet-how-to-use-files.md)
-### [键-值对](../../storage/storage-dotnet-how-to-use-tables.md)
-### [JSON 文档](../../documentdb/documentdb-get-started.md)
-### [关系表](../../sql-database/sql-database-get-started.md)
-### [消息队列](../../storage/storage-dotnet-how-to-use-queues.md)
+### [Blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)
+### [文件共享](../../storage/files/storage-dotnet-how-to-use-files.md)
+### [键-值对](../../cosmos-db/table-storage-how-to-use-dotnet.md)
+### [JSON 文档](../../cosmos-db/documentdb-get-started.md)
+### [关系表](../../sql-database/sql-database-get-started-portal.md)
+### [消息队列](../../storage/queues/storage-dotnet-how-to-use-queues.md)
 
 ## 缩放
 ### [Web 和移动应用](../../app-service-web/web-sites-scale.md)
@@ -77,7 +76,7 @@
 ### [微服务应用](../../service-fabric/service-fabric-concepts-scalability.md)
 
 ## 安全
-### [Web 和移动应用](../../app-service-web/web-sites-security.md)
+### [Web 和移动应用](../../app-service-web/app-service-web-tutorial-custom-ssl.md)
 
 ## 备份
 ### [Web 和移动应用](../../app-service-web/web-sites-backup.md)
@@ -85,7 +84,7 @@
 
 ## 监视
 ### [Web 和移动应用](../../app-service-web/web-sites-enable-diagnostic-log.md)
-### [Linux VM](../../virtual-machines/virtual-machines-linux-vm-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json.md)
+### [Linux VM](../../virtual-machines/linux/tutorial-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Windows VM](../../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [微服务](../../service-fabric/service-fabric-diagnostics-overview.md)
 ### [计费警报](../../billing/billing-set-up-alerts.md)

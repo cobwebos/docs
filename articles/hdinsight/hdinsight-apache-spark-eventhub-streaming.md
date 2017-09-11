@@ -1,6 +1,6 @@
 ---
 title: "在 Azure HDInsight 中将 Apache Spark 流式处理与事件中心配合使用 | Microsoft Docs"
-description: "构建一个 Apache Spark 流式处理示例，用于演示如何向 Azure 事件中心发送数据流，然后使用 scala 应用程序在 HDInsight Spark 群集中接收这些事件。"
+description: "构建一个 Apache Spark 流式处理示例，用于演示如何向 Azure 事件中心发送数据流，并使用 scala 应用程序在 HDInsight Spark 群集中接收这些事件。"
 keywords: "apache spark 流式处理,spark 流式处理,spark 示例,apache spark 流式处理示例,事件中心 azure 示例,spark 示例"
 services: hdinsight
 documentationcenter: 
@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 41019b4ae022602d2688399d1fc309151174e157
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 175a2ad70b1f554d05846eb62fb685d4f259af7e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/07/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="apache-spark-streaming-process-data-from-azure-event-hubs-with-spark-cluster-on-hdinsight"></a>Apache Spark 流式处理：在 HDInsight 上使用 Spark 群集处理来自 Azure 事件中心的数据
@@ -56,9 +56,9 @@ ms.lasthandoff: 06/07/2017
 
 ## <a name="create-an-azure-event-hub"></a>创建 Azure 事件中心
 
-1. 登录到 [Azure 门户](https://ms.portal.azure.com)，然后单击屏幕左上角的“新建”。
+1. 登录到 [Azure 门户](https://ms.portal.azure.com)，并单击屏幕左上角的“新建”。
 
-2. 单击“物联网”，然后单击“事件中心”。
+2. 单击“物联网”，并单击“事件中心”。
 
     ![为 Spark 流式处理示例创建事件中心](./media/hdinsight-apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "为 Spark 流式处理示例创建事件中心")
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 06/07/2017
 4. 在“事件中心”命名空间列表中，单击新创建的命名空间。      
 
 
-5. 在命名空间边栏选项卡中，单击“事件中心”，然后单击“+ 事件中心”创建新的事件中心。
+5. 在命名空间边栏选项卡中，单击“事件中心”，并单击“+ 事件中心”创建新的事件中心。
    
     ![为 Spark 流式处理示例创建事件中心](./media/hdinsight-apache-spark-eventhub-streaming/hdinsight-open-event-hubs-blade-for-spark-streaming-example.png "为 Spark 流式处理示例创建事件中心")
 
@@ -86,7 +86,7 @@ ms.lasthandoff: 06/07/2017
     
      ![查看 Spark 流式处理示例的事件中心](./media/hdinsight-apache-spark-eventhub-streaming/hdinsight-view-event-hub-for-spark-streaming-example.png "查看 Spark 流式处理示例的事件中心")
 
-8. 返回命名空间边栏选项卡（不是特定的事件中心边栏选项卡），单击“共享访问策略”，然后单击“RootManageSharedAccessKey”。
+8. 返回命名空间边栏选项卡（不是特定的事件中心边栏选项卡），单击“共享访问策略”，并单击“RootManageSharedAccessKey”。
     
      ![设置 Spark 流式处理示例的事件中心策略](./media/hdinsight-apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "设置 Spark 流式处理示例的事件中心策略")
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 06/07/2017
 
 ## <a name="send-messages-to-azure-event-hub-using-a-sample-scala-application"></a>使用 Scala 示例应用程序将消息发送到 Azure 事件中心
 
-本部分使用独立的本地 Scala 应用程序生成事件流并将其发送到前面创建的 Azure 事件中心。 可从 GitHub 获取此应用程序，网址为：[https://github.com/hdinsight/eventhubs-sample-event-producer](https://github.com/hdinsight/eventhubs-sample-event-producer)。 以下步骤假设你已复制此 GitHub 存储库。
+本部分使用独立的本地 Scala 应用程序生成事件流并将其发送到前面创建的 Azure 事件中心。 可从 GitHub 获取此应用程序，网址为：[https://github.com/hdinsight/eventhubs-sample-event-producer](https://github.com/hdinsight/eventhubs-sample-event-producer)。 以下步骤假设已复制此 GitHub 存储库。
 
 1. 确保已在运行此应用程序的计算机上安装以下组件。
 
@@ -221,17 +221,17 @@ ssc.awaitTermination()
 
 [https://github.com/hdinsight/spark-streaming-data-persistence-examples](https://github.com/hdinsight/spark-streaming-data-persistence-examples) 中提供了用于接收事件并将其路由到不同目标的，以 Scala 编写的 Spark 流式处理示例应用程序。 请遵循以下步骤更新应用程序的事件中心配置并创建输出 jar。
 
-1. 启动 IntelliJ IDEA，在启动屏幕中选择“从版本控制签出”，然后单击“Git”。
+1. 启动 IntelliJ IDEA，在启动屏幕中选择“从版本控制签出”，并单击“Git”。
    
     ![Apache Spark 流式处理示例 - 从 Git 获取源](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-get-source-from-git.png "Apache Spark 流式处理示例 - 从 Git 获取源")
 
-2. 在“克隆存储库”对话框中，提供要从中克隆的 Git 存储库的 URL，指定要克隆到的目录，然后单击“克隆”。
+2. 在“克隆存储库”对话框中，提供要从中克隆的 Git 存储库的 URL，指定要克隆到的目录，并单击“克隆”。
    
     ![Apache Spark 流式处理示例 - 从 Git 克隆](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-clone-from-git.png "Apache Spark 流式处理示例 - 从 Git 克隆")
 3. 按照提示操作，直到项目克隆完成。 按 **Alt+1** 打开“项目视图”。 其内容应如下所示。
    
     ![Apache Spark 流式处理示例 - 项目视图](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-project-view.png "Apache Spark 流式处理示例 - 项目视图")
-4. 请确保使用 Java8 编译应用程序代码。 若要确保这点，请单击“文件”、“项目结构”，然后在“项目”选项卡上，确保将项目语言级别设置为“8 - Lambdas，类型批注等”。
+4. 请确保使用 Java8 编译应用程序代码。 要确保这点，请单击“文件”、“项目结构”，然后在“项目”选项卡上，确保将项目语言级别设置为“8 - Lambdas，类型批注等”。
    
     ![Apache Spark 流式处理示例 - 设置编译器](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-java-8-compiler.png "Apache Spark 流式处理示例 - 设置编译器")
 5. 打开 **pom.xml** 并确保 Spark 版本正确。 在 `<properties>` 节点下查找以下代码片段，并检查 Spark 版本。
@@ -244,29 +244,29 @@ ssc.awaitTermination()
 6. 应用程序需要调用一个依赖项 jar **JDBC 驱动程序 jar**。 必须有此 jar，才能将事件中心发来的消息写入 Azure SQL 数据库。 可从[此处](https://msdn.microsoft.com/sqlserver/aa937724.aspx)下载此 jar 文件（v4.1 或更高版本）。 在项目库中添加对此 jar 的引用。 执行以下步骤：
      
      1. 在已打开应用程序的 IntelliJ IDEA 窗口中，依次单击“文件”、“项目结构”和“库”。 
-     2. 单击添加图标（![添加图标](./media/hdinsight-apache-spark-eventhub-streaming/add-icon.png)），单击“Java”，然后导航到 JDBC 驱动程序 jar 所下载到的位置。 按照提示将 jar 文件添加到项目库。
+     2. 单击添加图标（![添加图标](./media/hdinsight-apache-spark-eventhub-streaming/add-icon.png)），单击“Java”，并导航到 JDBC 驱动程序 jar 所下载到的位置。 按照提示将 jar 文件添加到项目库。
 
          ![添加缺少的依赖项](./media/hdinsight-apache-spark-eventhub-streaming/add-missing-dependency-jars.png "添加缺少的依赖项 jar")
      3. 单击“应用” 。
 
 7. 创建输出 jar 文件。 执行以下步骤。
 
-   1. 在“项目结构”对话框中，单击“项目”，然后单击加号。 在弹出的对话框中，单击“JAR”，然后单击“从包含依赖项的模块”。      
+   1. 在“项目结构”对话框中，单击“项目”，并单击加号。 在弹出的对话框中，单击“JAR”，并单击“从包含依赖项的模块”。      
        
        ![Apache Spark 流式处理示例 - 创建 JAR](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-create-jar.png "Apache Spark 流式处理示例 - 创建 JAR")
    2. 在“从模块创建 JAR”对话框中，单击“主类”旁边的省略号 (![ellipsis](./media/hdinsight-apache-spark-eventhub-streaming/ellipsis.png))。
-   3. 在“选择主类”对话框中，选择任何可用的类，然后单击“确定”。
+   3. 在“选择主类”对话框中，选择任何可用的类，并单击“确定”。
       
        ![Apache Spark 流式处理示例 - 选择 jar 的类](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-select-class-for-jar.png "Apache Spark 流式处理示例 - 选择 jar 的类")
-   4. 在“从模块创建 JAR”对话框中，确保已选择“提取到目标 JAR”选项，然后单击“确定”。 这会创建包含所有依赖项的单个 JAR。
+   4. 在“从模块创建 JAR”对话框中，确保已选择“提取到目标 JAR”选项，并单击“确定”。 这会创建包含所有依赖项的单个 JAR。
       
        ![Apache Spark 流式处理示例 - 从模块创建 jar](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-create-jar-from-modules.png "Apache Spark 流式处理示例 - 从模块创建 jar")
-   5. “输出布局”选项卡列出了所有包含为 Maven 项目一部分的 jar。 你可以选择并删除 Scala 应用程序不直接依赖的 jar。 对于此处创建的应用程序，可删除最后一个 jar（**spark-streaming-data-persistence-examples 编译输出**）以外的所有 jar。 选择要删除的 jar，然后单击“删除”图标 (![delete icon](./media/hdinsight-apache-spark-eventhub-streaming/delete-icon.png))。
+   5. “输出布局”选项卡列出了所有包含为 Maven 项目一部分的 jar。 可以选择并删除 Scala 应用程序不直接依赖的 jar。 对于此处创建的应用程序，可删除最后一个 jar（**spark-streaming-data-persistence-examples 编译输出**）以外的所有 jar。 选择要删除的 jar，并单击“删除”图标 (![delete icon](./media/hdinsight-apache-spark-eventhub-streaming/delete-icon.png))。
       
        ![Apache Spark 流式处理示例 - 删除已提取的 jar](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-delete-output-jars.png "Apache Spark 流式处理示例 - 删除已提取的 jar")
       
        请务必选中“在创建时生成”框，以确保每次生成或更新项目时都创建 jar。 单击“应用” 。
-   6. 在“输出布局”选项卡中的“可用元素”框右下角，显示了前面添加到项目库中的 SQL JDBC jar。 必须将此 jar 添加到“输出布局”选项卡。 右键单击该 jar 文件，然后单击“提取到输出根目录中”。
+   6. 在“输出布局”选项卡中的“可用元素”框右下角，显示了前面添加到项目库中的 SQL JDBC jar。 必须将此 jar 添加到“输出布局”选项卡。右键单击该 jar 文件，并单击“提取到输出根目录中”。
       
        ![Apache Spark 流式处理示例 - 提取依赖性 jar](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-extract-dependency-jar.png "Apache Spark 流式处理示例 - 提取依赖性 jar")  
       
@@ -274,8 +274,8 @@ ssc.awaitTermination()
       
        ![Apache Spark 流式处理示例 - 最终输出选项卡](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-final-output-tab.png "Apache Spark 流式处理示例 - 最终输出选项卡")        
       
-       在“项目结构”对话框中，单击“应用”，然后单击“确定”。    
-   7. 在菜单栏中单击“生成”，然后单击“创建项目”。 也可以单击“生成项目”以创建 jar。 输出 jar 将在 **\classes\artifacts** 下创建。
+       在“项目结构”对话框中，单击“应用”，并单击“确定”。    
+   7. 在菜单栏中单击“生成”，并单击“创建项目”。 也可以单击“生成项目”以创建 jar。 输出 jar 会在 **\classes\artifacts** 下创建。
       
        ![Apache Spark 流式处理示例 - 输出 JAR](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-output-jar.png "Apache Spark 流式处理示例 - 输出 JAR")
 
@@ -287,12 +287,12 @@ ssc.awaitTermination()
 
         java -cp com-microsoft-azure-eventhubs-client-example-0.2.0.jar com.microsoft.eventhubs.client.example.EventhubsClientDriver --eventhubs-namespace "mysbnamespace" --eventhubs-name "myeventhub" --policy-name "mysendpolicy" --policy-key "<policy key>" --message-length 32 --thread-count 32 --message-count -1
 
-2. 将流式 jar (**spark-streaming-data-persistence-examples.jar**) 复制到与群集关联的 Azure Blob 存储。 这样，jar 便可供 Livy 访问。 可以使用命令行实用工具 [**AzCopy**](../storage/storage-use-azcopy.md) 来执行此操作。 可以使用其他许多客户端来上传数据。 有关详细信息，请参阅[在 HDInsight 中上传 Hadoop 作业的数据](hdinsight-upload-data.md)。
+2. 将流式 jar (**spark-streaming-data-persistence-examples.jar**) 复制到与群集关联的 Azure Blob 存储。 这样，jar 便可供 Livy 访问。 可以使用命令行实用工具 [**AzCopy**](../storage/common/storage-use-azcopy.md) 来执行此操作。 可以使用其他许多客户端来上传数据。 有关详细信息，请参阅[在 HDInsight 中上传 Hadoop 作业的数据](hdinsight-upload-data.md)。
 3. 将 CURL 安装在要运行这些应用程序的计算机上。 我们将使用 CURL 来调用 Livy 终结点，以远程运行作业。
 
 ### <a name="run-the-spark-streaming-application-to-receive-the-events-into-an-azure-storage-blob-as-text"></a>运行 Spark 流式处理应用程序，将事件以文本形式接收到 Azure 存储 Blob 中
 
-打开命令提示符，导航到安装 CURL 的目录，然后运行以下命令（替换用户名/密码和群集名称）：
+打开命令提示符，导航到安装 CURL 的目录，并运行以下命令（替换用户名/密码和群集名称）：
 
     curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\inputBlob.txt "https://mysparkcluster.azurehdinsight.net/livy/batches"
 
@@ -309,11 +309,11 @@ ssc.awaitTermination()
 * **executorMemory**、**executorCores**、**driverMemory** 是用于将所需资源分配给流式应用程序的参数。
 
 > [!NOTE]
-> 不需要创建用作参数的输出文件夹（EventCheckpoint、EventCount/EventCount10）。 流应用程序将为你创建。
+> 不需要创建用作参数的输出文件夹（EventCheckpoint、EventCount/EventCount10）。 流应用程序将创建。
 >
 >
 
-运行命令时，你应会看到类似于下面的输出：
+运行命令时，应会看到类似于下面的输出：
 
     < HTTP/1.1 201 Created
     < Content-Type: application/json; charset=UTF-8
@@ -333,7 +333,7 @@ Spark 流式处理应用程序将继续运行，直到被终止。 若要终止�
     curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehdinsight.net/livy/batches/1"
 
 ### <a name="run-the-applications-to-receive-the-events-into-an-azure-storage-blob-as-json"></a>运行应用程序以将事件以 JSON 形式接收到 Azure 存储 Blob 中
-打开命令提示符，导航到安装 CURL 的目录，然后运行以下命令（替换用户名/密码和群集名称）：
+打开命令提示符，导航到安装 CURL 的目录，并运行以下命令（替换用户名/密码和群集名称）：
 
     curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\inputJSON.txt "https://mysparkcluster.azurehdinsight.net/livy/batches"
 
@@ -341,12 +341,12 @@ Spark 流式处理应用程序将继续运行，直到被终止。 若要终止�
 
     { "file":"wasb:///example/jars/spark-streaming-data-persistence-examples.jar", "className":"com.microsoft.spark.streaming.examples.workloads.EventhubsToAzureBlobAsJSON", "args":["--eventhubs-namespace", "mysbnamespace", "--eventhubs-name", "myeventhub", "--policy-name", "myreceivepolicy", "--policy-key", "<put-your-key-here>", "--consumer-group", "$default", "--partition-count", 10, "--batch-interval-in-seconds", 20, "--checkpoint-directory", "/EventCheckpoint", "--event-count-folder", "/EventCount/EventCount10", "--event-store-folder", "/EventStore10"], "numExecutors":20, "executorMemory":"1G", "executorCores":1, "driverMemory":"2G" }
 
-这些参数类似于在前一步骤中为文本输出指定的参数。 同样，你不需要创建用作参数的输出文件夹（EventCheckpoint、EventCount/EventCount10）。 流应用程序将为你创建。
+这些参数类似于在前一步骤中为文本输出指定的参数。 同样，不需要创建用作参数的输出文件夹（EventCheckpoint、EventCount/EventCount10）。 流应用程序将创建。
 
  在运行该命令之后，可以查看与群集关联的 Azure 存储帐户，应会看到该处已创建 **/EventStore10** 文件夹。 打开前缀为 **part-** 的任一文件，应会看到以 JSON 格式处理的事件。
 
 ### <a name="run-the-applications-to-receive-the-events-into-a-hive-table"></a>运行应用程序以将事件接收到 Hive 表中
-若要运行将事件流式传输到 Hive 表中的 Spark 流式处理应用程序，需要其他一些组件。 其中包括：
+要运行将事件流式传输到 Hive 表中的 Spark 流式处理应用程序，需要其他一些组件。 其中包括：
 
 * datanucleus-api-jdo-3.2.6.jar
 * datanucleus-rdbms-3.2.9.jar
@@ -365,23 +365,23 @@ Spark 流式处理应用程序将继续运行，直到被终止。 若要终止�
 
     { "file":"wasb:///example/jars/spark-streaming-data-persistence-examples.jar", "className":"com.microsoft.spark.streaming.examples.workloads.EventhubsToHiveTable", "args":["--eventhubs-namespace", "mysbnamespace", "--eventhubs-name", "myeventhub", "--policy-name", "myreceivepolicy", "--policy-key", "<put-your-key-here>", "--consumer-group", "$default", "--partition-count", 10, "--batch-interval-in-seconds", 20, "--checkpoint-directory", "/EventCheckpoint", "--event-count-folder", "/EventCount/EventCount10", "--event-hive-table", "EventHiveTable10" ], "jars":["wasb:///example/jars/datanucleus-api-jdo-3.2.6.jar", "wasb:///example/jars/datanucleus-rdbms-3.2.9.jar", "wasb:///example/jars/datanucleus-core-3.2.10.jar"], "files":["wasb:///example/jars/hive-site.xml"], "numExecutors":20, "executorMemory":"1G", "executorCores":1, "driverMemory":"2G" }
 
-这些参数类似于在前面步骤中为文本输出指定的参数。 同样，你不需要创建用作参数的输出文件夹（EventCheckpoint、EventCount/EventCount10）或输出 Hive 表 (EventHiveTable10)。 流应用程序将为你创建。 请注意，**jars** 和 **files** 选项包含已复制到存储帐户的 .jar 文件和 hive-site.xml 的路径。
+这些参数类似于在前面步骤中为文本输出指定的参数。 同样，不需要创建用作参数的输出文件夹（EventCheckpoint、EventCount/EventCount10）或输出 Hive 表 (EventHiveTable10)。 流应用程序将创建。 请注意，**jars** 和 **files** 选项包含已复制到存储帐户的 .jar 文件和 hive-site.xml 的路径。
 
-若要验证是否已成功创建 Hive 表，可通过 SSH 连接到群集，然后运行 Hive 查询。 有关说明，请参阅[通过 SSH 在 HDInsight 中将 Hive 与 Hadoop 配合使用](hdinsight-hadoop-use-hive-ssh.md)。 当使用 SSH 建立连接后，可以运行以下命令，以验证是否已创建 Hive 表 **EventHiveTable10**。
+要验证是否已成功创建 Hive 表，可通过 SSH 连接到群集，并运行 Hive 查询。 有关说明，请参阅[通过 SSH 在 HDInsight 中将 Hive 与 Hadoop 配合使用](hdinsight-hadoop-use-hive-ssh.md)。 当使用 SSH 建立连接后，可以运行以下命令，以验证是否已创建 Hive 表 **EventHiveTable10**。
 
     show tables;
 
-你应该会看到与下面类似的输出：
+应该会看到与下面类似的输出：
 
     OK
     eventhivetable10
     hivesampletable
 
-你还可以运行 SELECT 查询来查看表的内容。
+还可以运行 SELECT 查询来查看表的内容。
 
     SELECT * FROM eventhivetable10 LIMIT 10;
 
-你应该看到如下输出：
+应该看到如下输出：
 
     ZN90apUSQODDTx7n6Toh6jDbuPngqT4c
     sor2M7xsFwmaRW8W8NDwMneFNMrOVkW1
@@ -399,7 +399,7 @@ Spark 流式处理应用程序将继续运行，直到被终止。 若要终止�
 ### <a name="run-the-applications-to-receive-the-events-into-an-azure-sql-database-table"></a>运行应用程序以将事件接收到 Azure SQL 数据库表中
 在运行此步骤之前，请确保已创建 Azure SQL 数据库。 有关说明，请参阅[快速创建 SQL 数据库](../sql-database/sql-database-get-started.md)。 若要完成本部分，需要指定数据库名称、数据库服务器名称和数据库管理员凭据的值作为参数。 但是，不需要创建数据库表。 Spark 流式处理应用程序将创建该表。
 
-打开命令提示符，导航到安装 CURL 的目录，然后运行以下命令：
+打开命令提示符，导航到安装 CURL 的目录，并运行以下命令：
 
     curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\inputSQL.txt "https://mysparkcluster.azurehdinsight.net/livy/batches"
 
@@ -411,7 +411,7 @@ Spark 流式处理应用程序将继续运行，直到被终止。 若要终止�
 
     SELECT * FROM EventCount
 
-您应该会看到与下面类似的输出：
+应该会看到与下面类似的输出：
 
     00046b0f-2552-4980-9c3f-8bba5647c8ee
     000b7530-12f9-4081-8e19-90acd26f9c0c

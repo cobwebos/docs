@@ -1,6 +1,6 @@
 ---
 title: "使用机器学习 Web 服务与 Web 应用模板 | Microsoft Docs"
-description: "利用 Azure 应用商店中的 web 应用模板来是使用 Azure 机器学习中的预测 web 服务。"
+description: "利用 Azure Marketplace 中的 web 应用模板来是使用 Azure 机器学习中的预测 web 服务。"
 keywords: "web 服务，操作化，REST API，机器学习"
 services: machine-learning
 documentationcenter: 
@@ -34,7 +34,7 @@ ms.lasthandoff: 06/07/2017
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## <a name="the-azure-machine-learning-web-app-templates"></a>Azure 机器学习 Web 应用模板
-Azure 应用商店提供的 web 应用模板可创建自定义 web 应用，该应用了解 web 服务的输入数据及所需结果。 所需操作就是授予 web 应用访问 web 服务和数据的权限，余下操作将由模板完成。
+Azure Marketplace 提供的 web 应用模板可创建自定义 web 应用，该应用了解 web 服务的输入数据及所需结果。 所需操作就是授予 web 应用访问 web 服务和数据的权限，余下操作将由模板完成。
 
 提供了两个模板：
 
@@ -108,7 +108,7 @@ Azure 应用商店提供的 web 应用模板可创建自定义 web 应用，该�
 
 ![使用 BES web 模板的过程][image2]
 
-1. 请按照与 RRS 模板相同的步骤创建 BES Web 应用，不同的是需转到 [Azure ML Batch Execution Service Web App Template](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)（Azure ML 批处理执行服务 Web 应用模板）打开 Azure 应用商店上的 BES 模板，然后单击“创建 Web 应用”。
+1. 请按照与 RRS 模板相同的步骤创建 BES Web 应用，不同的是需转到 [Azure ML Batch Execution Service Web App Template](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)（Azure ML 批处理执行服务 Web 应用模板）打开 Azure Marketplace 上的 BES 模板，然后单击“创建 Web 应用”。
 
 2. 若要指定结果的存储位置，在 web 应用主页输入目标容器的信息。 还需指定 web 应用获取输入值的位置，可以是本地文件或 Azure 存储容器。
    单击“提交”。

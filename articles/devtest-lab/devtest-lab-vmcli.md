@@ -31,7 +31,7 @@ ms.lasthandoff: 05/20/2017
 * [安装 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。 若要开始，请运行 az login，创建与 Azure 的连接。 
 
 ## <a name="create-and-verify-the-virtual-machine"></a>创建并验证虚拟机 
-使用 ssh 身份验证从应用商店映像创建 VM。
+使用 ssh 身份验证从 Marketplace 映像创建 VM。
 ```azurecli
 az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGroup --name sampleVMName --image "Ubuntu Server 16.04 LTS" --image-type gallery --size Standard_DS1_v2 --authentication-type  ssh --generate-ssh-keys --ip-configuration public 
 ```

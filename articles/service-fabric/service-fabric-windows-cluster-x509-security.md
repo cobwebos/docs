@@ -3,7 +3,7 @@ title: "使用证书确保 Windows 上 Azure Service Fabric 群集的安全 | Mi
 description: "本文介绍如何保护独立群集或专用群集内部的通信，以及客户端与群集之间的通信。"
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: dkkapur
 manager: timlt
 editor: 
 ms.assetid: fe0ed74c-9af5-44e9-8d62-faf1849af68c
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
-ms.author: ryanwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 51ed17ab8f036f00b285232500dc9f606f2a7e2f
+ms.author: dekapur
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: ebac24385560377bac27a8b8c425323c57392bd2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="secure-a-standalone-cluster-on-windows-using-x509-certificates"></a>使用 X.509 证书在 Windows 上保护独立群集
@@ -28,7 +27,7 @@ ms.lasthandoff: 04/27/2017
 若要详细了解群集安全性（如节点到节点安全性、客户端到节点安全性和基于角色的访问控制），请参阅[群集安全应用场景](service-fabric-cluster-security.md)。
 
 ## <a name="which-certificates-will-you-need"></a>需要哪些证书？
-首先，[下载独立群集包](service-fabric-cluster-creation-for-windows-server.md#downloadpackage)，将其下载到群集中的一个节点。 在下载的包中，可以找到 **ClusterConfig.X509.MultiMachine.json** 文件。 打开此文件，然后查看 **properties** 部分下的 **security** 部分：
+首先是[下载独立群集包](service-fabric-cluster-creation-for-windows-server.md#downloadpackage)，将其下载到群集中的某个节点。 在下载的包中，可以找到 **ClusterConfig.X509.MultiMachine.json** 文件。 打开文件，并查看 **properties** 部分下面的 **security** 部分：
 
 ```JSON
 "security": {
@@ -40,10 +39,26 @@ ms.lasthandoff: 04/27/2017
             "Thumbprint": "[Thumbprint]",
             "ThumbprintSecondary": "[Thumbprint]",
             "X509StoreName": "My"
+        },        
+        "ClusterCertificateCommonNames": {
+            "CommonNames": [
+            {
+                "CertificateCommonName": "[CertificateCommonName]"
+            }
+            ],
+            "X509StoreName": "My"
         },
         "ServerCertificate": {
             "Thumbprint": "[Thumbprint]",
             "ThumbprintSecondary": "[Thumbprint]",
+            "X509StoreName": "My"
+        },
+        "ServerCertificateCommonNames": {
+            "CommonNames": [
+            {
+                "CertificateCommonName": "[CertificateCommonName]"
+            }
+            ],
             "X509StoreName": "My"
         },
         "ClientCertificateThumbprints": [
@@ -67,6 +82,14 @@ ms.lasthandoff: 04/27/2017
             "Thumbprint": "[Thumbprint]",
             "ThumbprintSecondary": "[Thumbprint]",
             "X509StoreName": "My"
+        },
+        "ReverseProxyCertificateCommonNames": {
+            "CommonNames": [
+                {
+                "CertificateCommonName": "[CertificateCommonName]"
+                }
+            ],
+            "X509StoreName": "My"
         }
     }
 },
@@ -76,7 +99,7 @@ ms.lasthandoff: 04/27/2017
 
 
 > [!NOTE]
-> [指纹](https://en.wikipedia.org/wiki/Public_key_fingerprint)是证书的主要标识。 请阅读[如何检索证书的指纹](https://msdn.microsoft.com/library/ms734695.aspx)，找到你创建的证书的指纹。
+> [指纹](https://en.wikipedia.org/wiki/Public_key_fingerprint)是证书的主要标识。 请阅读[如何检索证书的指纹](https://msdn.microsoft.com/library/ms734695.aspx)，找到创建的证书的指纹。
 > 
 > 
 
@@ -84,13 +107,16 @@ ms.lasthandoff: 04/27/2017
 
 | **CertificateInformation 设置** | **说明** |
 | --- | --- |
-| ClusterCertificate |需要使用此证书来保护群集节点之间的通信。 可以使用两个不同的证书（一个主证书和一个辅助证书）进行升级。 在 **Thumbprint** 部分中设置主证书的指纹，在 **ThumbprintSecondary** 变量中设置辅助证书的指纹。 |
-| ServerCertificate |当客户端尝试连接到此群集时，系统会向客户端提供此证书。 为方便起见，可以选择对 *ClusterCertificate* 和 *ServerCertificate* 使用相同的证书。 可以使用两个不同的服务器证书（一个主证书和一个辅助证书）进行升级。 在 **Thumbprint** 部分中设置主证书的指纹，在 **ThumbprintSecondary** 变量中设置辅助证书的指纹。 |
+| ClusterCertificate |建议用于测试环境。 需要使用此证书来保护群集节点之间的通信。 可以使用两个不同的证书（一个主证书和一个辅助证书）进行升级。 在 **Thumbprint** 部分中设置主证书的指纹，在 **ThumbprintSecondary** 变量中设置辅助证书的指纹。 |
+| ClusterCertificateCommonNames |建议用于生产环境。 需要使用此证书来保护群集节点之间的通信。 可以使用一个或两个群集证书公用名称。 |
+| ServerCertificate |建议用于测试环境。 当客户端尝试连接到此群集时，系统会向客户端提供此证书。 为方便起见，可以选择对 *ClusterCertificate* 和 *ServerCertificate* 使用相同的证书。 可以使用两个不同的服务器证书（一个主证书和一个辅助证书）进行升级。 在 **Thumbprint** 部分中设置主证书的指纹，在 **ThumbprintSecondary** 变量中设置辅助证书的指纹。 |
+| ServerCertificateCommonNames |建议用于生产环境。 当客户端尝试连接到此群集时，系统会向客户端提供此证书。 为方便起见，可以选择对 ClusterCertificateCommonNames 和 ServerCertificateCommonNames 使用相同的证书。 可以使用一个或两个服务器证书公用名称。 |
 | ClientCertificateThumbprints |这是需要在经过身份验证的客户端上安装的一组证书。 可以在想要允许其访问群集的计算机上安装许多不同的客户端证书。 在 **CertificateThumbprint** 变量中设置每个证书的指纹。 如果 **IsAdmin** 设置为 *true*，则安装了此证书的客户端可以在群集上执行管理员管理活动。 如果 **IsAdmin** 设置为 *false*，则使用此证书的客户端只能执行用户有权执行的操作（通常为只读）。 有关角色的详细信息，请阅读[基于角色的访问控制 (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac) |
 | ClientCertificateCommonNames |在 **CertificateCommonName** 中设置第一个客户端证书的公用名称。 **CertificateIssuerThumbprint** 是此证书的颁发者的指纹。 请阅读[使用证书](https://msdn.microsoft.com/library/ms731899.aspx)，详细了解公用名称和颁发者。 |
-| ReverseProxyCertificate |如果想要保护[反向代理](service-fabric-reverseproxy.md)，可以选择指定此证书。 若要使用此证书，请确保已在 nodeTypes 中设置了 reverseProxyEndpointPort。 |
+| ReverseProxyCertificate |建议用于测试环境。 如果想要保护[反向代理](service-fabric-reverseproxy.md)，可以选择指定此证书。 若要使用此证书，请确保已在 nodeTypes 中设置了 reverseProxyEndpointPort。 |
+| ReverseProxyCertificateCommonNames |建议用于生产环境。 如果想要保护[反向代理](service-fabric-reverseproxy.md)，可以选择指定此证书。 若要使用此证书，请确保已在 nodeTypes 中设置了 reverseProxyEndpointPort。 |
 
-下面是群集配置示例，其中提供了群集证书、服务器证书和客户端证书。
+下面是群集配置示例，其中提供了群集证书、服务器证书和客户端证书。 请注意，对于群集/服务器/reverseProxy 证书，不允许将指纹和公用名同时配置为相同的证书类型。
 
  ```JSON
  {
@@ -132,13 +158,21 @@ ms.lasthandoff: 04/27/2017
             "ClusterCredentialType": "X509",
             "ServerCredentialType": "X509",
             "CertificateInformation": {
-                "ClusterCertificate": {
-                    "Thumbprint": "a8 13 67 58 f4 ab 89 62 af 2b f3 f2 79 21 be 1d f6 7f 43 26",
-                    "X509StoreName": "My"
+                "ClusterCertificateCommonNames": {
+                  "CommonNames": [
+                    {
+                      "CertificateCommonName": "myClusterCertCommonName"
+                    }
+                  ],
+                  "X509StoreName": "My"
                 },
-                "ServerCertificate": {
-                    "Thumbprint": "a8 13 67 58 f4 ab 89 62 af 2b f3 f2 79 21 be 1d f6 7f 43 26",
-                    "X509StoreName": "My"
+                "ServerCertificateCommonNames": {
+                  "CommonNames": [
+                    {
+                      "CertificateCommonName": "myServerCertCommonName"
+                    }
+                  ],
+                  "X509StoreName": "My"
                 },
                 "ClientCertificateThumbprints": [{
                     "CertificateThumbprint": "c4 c18 8e aa a8 58 77 98 65 f8 61 4a 0d da 4c 13 c5 a1 37 6e",
@@ -182,6 +216,10 @@ ms.lasthandoff: 04/27/2017
 }
  ```
 
+## <a name="certificate-roll-over"></a>证书滚动更新
+使用证书公用名而不使用指纹时，证书滚动更新不需要群集配置升级。
+如果证书滚动更新涉及证书颁发者滚动更新，请在安装新的颁发者证书后，将旧的颁发者证书在证书存储中至少保存 2 小时。
+
 ## <a name="acquire-the-x509-certificates"></a>获取 X.509 证书
 若要保护群集内部的通信，首先需要获取群集节点的 X.509 证书。 此外，如果只想允许经过授权的计算机/用户连接到此群集，需要获得并安装客户端计算机的证书。
 
@@ -206,13 +244,13 @@ $cert = Get-Item Cert:\LocalMachine\My\<Thumbprint>
 Write-Host $cert.ToString($true)
 ```
 
-或者，如果有 Azure 订阅，请按[将证书添加到密钥保管库](service-fabric-cluster-creation-via-arm.md#add-certificate-to-key-vault)部分中的说明操作。
+或者，如果具有 Azure 订阅，则按照[将证书添加到密钥保管库](service-fabric-cluster-creation-via-arm.md#add-certificate-to-key-vault)部分操作。
 
 ## <a name="install-the-certificates"></a>安装证书
-有了证书以后，即可将其安装在群集节点上。 你的节点上需安装最新版本的 Windows PowerShell 3.x。 需要在每个节点上，针对群集证书和服务器证书以及任何辅助证书重复这些步骤。
+有了证书以后，即可将其安装在群集节点上。 节点上需安装最新版本的 Windows PowerShell 3.x。 需要在每个节点上，针对群集证书和服务器证书以及任何辅助证书重复这些步骤。
 
 1. 将 .pfx 文件复制到节点。
-2. 以管理员身份打开 PowerShell 窗口并输入以下命令。 将 *$pswd* 替换为你在创建此证书时使用的密码。 将 *$PfxFilePath* 替换为复制到此节点的 .pfx 文件的完整路径。
+2. 以管理员身份打开 PowerShell 窗口并输入以下命令。 将 *$pswd* 替换成在创建此证书时使用的密码。 将 *$PfxFilePath* 替换为复制到此节点的 .pfx 文件的完整路径。
    
     ```powershell
     $pswd = "1234"
@@ -256,10 +294,10 @@ Write-Host $cert.ToString($true)
     # Observe the access rights currently assigned to this certificate.
     get-acl $keyFullPath| fl
     ```
-4. 针对每个服务器证书重复上述步骤。 你还可以使用这些步骤在需要让其访问群集的计算机上安装客户端证书。
+4. 针对每个服务器证书重复上述步骤。 还可以使用这些步骤在需要让其访问群集的计算机上安装客户端证书。
 
 ## <a name="create-the-secure-cluster"></a>创建安全群集
-配置 **ClusterConfig.X509.MultiMachine.json** 文件的 **security** 部分后，可以继续阅读[创建群集](service-fabric-cluster-creation-for-windows-server.md#createcluster)部分，配置节点并创建独立群集。 创建群集时，请务必使用 **ClusterConfig.X509.MultiMachine.json** 文件。 例如，你的命令可能如下所示：
+配置 **ClusterConfig.X509.MultiMachine.json** 文件的 **security** 部分后，可以继续阅读[创建群集](service-fabric-cluster-creation-for-windows-server.md#createcluster)部分，配置节点并创建独立群集。 创建群集时，请务必使用 **ClusterConfig.X509.MultiMachine.json** 文件。 例如，命令可能如下所示：
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
@@ -272,10 +310,10 @@ $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $Tru
 Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-然后可运行其他 PowerShell 命令来处理此群集。 例如，运行 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode.md?view=azureservicefabricps) 可显示此安全群集上的节点列表。
+然后可运行其他 PowerShell 命令处理此群集。 例如，运行 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode.md?view=azureservicefabricps) 可显示此安全群集上的节点列表。
 
 
-若要删除群集，请连接到已下载 Service Fabric 程序包的群集上的节点、打开命令行，然后导航到程序包文件夹。 现在，运行以下命令：
+要删除群集，请连接到已下载 Service Fabric 程序包的群集上的节点、打开命令行，并导航到程序包文件夹。 现在，运行以下命令：
 
 ```powershell
 .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json

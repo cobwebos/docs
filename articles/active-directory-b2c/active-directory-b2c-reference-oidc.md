@@ -1,25 +1,24 @@
 ---
-title: "Azure Active Directory B2C：使用 OpenID Connect 进行 Web 登录 | Microsoft Docs"
+title: "通过 OpenID Connect 进行 Web 登录 - Azure AD B2C | Microsoft Docs"
 description: "通过使用 OpenID Connect 身份验证协议的 Azure Active Directory 实现构建 Web 应用程序"
 services: active-directory-b2c
 documentationcenter: 
-author: dstrockis
-manager: mbaldwin
-editor: 
+author: saeedakhter-msft
+manager: krassk
+editor: parakhj
 ms.assetid: 21d420c8-3c10-4319-b681-adf2e89e7ede
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
-ms.author: dastrock
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
-ms.openlocfilehash: 8457865d21bbf4d1c0cc91167a1e75cd82ad8306
+ms.date: 08/16/2017
+ms.author: saeedakhter-msft
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b0c33a47dd0cae79eab32ac578448fae8bf59be5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/24/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Azure Active Directory B2C：使用 OpenID Connect 进行 Web 登录
@@ -27,17 +26,17 @@ OpenID Connect 是构建在 OAuth 2.0 基础之上的身份验证协议，可用
 
 [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) 扩展了 OAuth 2.0 *授权*协议，将其用作*身份验证*协议。 这样可以通过使用 OAuth 执行单一登录。 它引入了 ID 令牌的概念，这是一种安全令牌，可让客户端验证用户的标识，并获取有关用户的基本配置文件信息。
 
-因为 OpenID Connect 扩展了 OAuth 2.0，因此，它还能使应用安全地获取访问令牌。 你可以使用 access_token 访问由[授权服务器](active-directory-b2c-reference-protocols.md#the-basics)保护的资源。 如果要构建的 Web 应用程序托管在服务器中并通过浏览器访问，我们建议使用 OpenID Connect。 如果要使用 Azure AD B2C 向移动或桌面应用程序添加标识管理，则应使用 [OAuth 2.0](active-directory-b2c-reference-oauth-code.md)，而不是 OpenID Connect。
+因为 OpenID Connect 扩展了 OAuth 2.0，因此，它还能使应用安全地获取访问令牌。 可以使用 access_token 访问由[授权服务器](active-directory-b2c-reference-protocols.md#the-basics)保护的资源。 如果要构建的 Web 应用程序托管在服务器中并通过浏览器访问，我们建议使用 OpenID Connect。 如果要使用 Azure AD B2C 向移动或桌面应用程序添加标识管理，则应使用 [OAuth 2.0](active-directory-b2c-reference-oauth-code.md)，而不是 OpenID Connect。
 
 Azure AD B2C 扩展了标准 OpenID Connect 协议，使其功能远远超出了简单的身份验证和授权。 它引入了[策略参数](active-directory-b2c-reference-policies.md)，通过此参数可以使用 OpenID Connect 向应用添加用户体验，例如注册、登录和配置文件管理。 在这里，我们将演示如何使用 OpenID Connect 和策略在 Web 应用中实现每个体验。 我们还将展示如何获取用于访问 Web API 的访问令牌。
 
-下一节中 HTTP 请求示例使用的是示例 B2C 目录 fabrikamb2c.onmicrosoft.com 以及示例应用程序 https://aadb2cplayground.azurewebsites.net 和策略。 你可以随意使用这些值亲自尝试这些请求，或者可以用自己的值替换它们。
+下一节中 HTTP 请求示例使用的是示例 B2C 目录 fabrikamb2c.onmicrosoft.com 以及示例应用程序 https://aadb2cplayground.azurewebsites.net 和策略。 可以随意使用这些值亲自尝试这些请求，或者可以用自己的值替换它们。
 了解如何[获取自己的 B2C 租户、应用程序和策略](#use-your-own-b2c-directory)。
 
 ## <a name="send-authentication-requests"></a>发送身份验证请求
 当 Web 应用需要对用户进行身份验证并执行策略时，它可以将用户定向到 `/authorize` 终结点。 这是流程的交互部分，在此部分中，用户会根据策略执行一些操作。
 
-在此请求中，客户端指示要在 `scope` 参数中需要从用户获取的权限以及要在 `p` 参数中执行的策略。 以下部分中提供了三个示例（带换行符以便阅读），每个示例使用不同的策略。 若要了解每个请求的工作原理，请尝试将请求粘贴到浏览器并运行它。
+在此请求中，客户端指示要在 `scope` 参数中需要从用户获取的权限以及要在 `p` 参数中执行的策略。 以下部分中提供了三个示例（带换行符以便阅读），每个示例使用不同的策略。 要了解每个请求的工作原理，请尝试将请求粘贴到浏览器并运行它。
 
 #### <a name="use-a-sign-in-policy"></a>使用登录策略
 ```
@@ -85,7 +84,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | redirect_uri |建议 |应用的 `redirect_uri` 参数，应用可在此发送及接收身份验证响应。 它必须完全匹配在门户中注册的其中一个 `redirect_uri` 参数，但必须经过 URL 编码。 |
 | 作用域 |必选 |范围的空格分隔列表。 一个范围值，该值向 Azure AD 指示正在请求的两个权限。 `openid` 作用域表示允许使用 ID 令牌的形式使用户登录并获取有关用户的数据（本文稍后对此进行详述）。 `offline_access` 作用域对 Web 应用是可选的。 它表示应用需要刷新令牌才能长期访问资源。 |
 | response_mode |建议 |将生成的授权代码发送回应用所应该使用的方法。 这可以是 `query`、`form_post` 或 `fragment`。  建议使用 `form_post` 响应模式以获得最佳安全性。 |
-| state |建议 |同时随令牌响应返回的请求中所包含的值。 其可以是你想要的任何内容的字符串。 随机生成的唯一值通常用于防止跨站点请求伪造攻击。 该状态也用于在身份验证请求出现之前，在应用程序中编码用户的状态信息，例如用户之前所在的页面。 |
+| state |建议 |同时随令牌响应返回的请求中所包含的值。 它可以是用户想要的任何内容的字符串。 随机生成的唯一值通常用于防止跨站点请求伪造攻击。 该状态也用于在身份验证请求出现之前，在应用程序中编码用户的状态信息，例如用户之前所在的页面。 |
 | nonce |必选 |包含在请求中的值（由应用生成），将以声明方式包含在生成的 ID 令牌中。 应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机的唯一字符串，可用以识别请求的来源。 |
 | p |必选 |将执行的策略。 它是在 B2C 租户中创建的策略的名称。 策略名称值应以 `b2c\_1\_` 开头。 了解有关策略和[可扩展策略框架](active-directory-b2c-reference-policies.md)的详细信息。 |
 | prompt |可选 |需要的用户交互类型。 此时唯一有效的值为 `login`，这会强制用户在该请求上输入其凭据。 单一登录不会生效。 |
@@ -127,7 +126,7 @@ error=access_denied
 ## <a name="validate-the-id-token"></a>验证 ID 令牌
 仅收到一个 ID 令牌并不表示可以对用户进行身份验证。 还必须根据应用的要求验证 ID 令牌的签名和令牌中的声明。 Azure AD B2C 使用 [JSON Web 令牌 (JWT)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) 和公钥加密对令牌进行签名并验证其是否有效。
 
-有许多开放源代码库可用于验证 JWT，具体取决于你的首选语言。 我们建议使用这些库，而不是实施自己的验证逻辑。 此处的信息有助于弄清如何正确使用这些库。
+有许多开放源代码库可用于验证 JWT，具体取决于首选语言。 我们建议使用这些库，而不是实施自己的验证逻辑。 此处的信息有助于弄清如何正确使用这些库。
 
 Azure AD B2C 具有 OpenID Connect 元数据终结点，允许应用程序在运行时提取有关 Azure AD B2C 的信息。 此信息包括终结点、令牌内容和令牌签名密钥。 B2C 租户中的每个策略都有一个 JSON 元数据文档。 例如，`fabrikamb2c.onmicrosoft.com` 中 `b2c_1_sign_in` 策略的元数据文档位于：
 
@@ -137,7 +136,7 @@ Azure AD B2C 具有 OpenID Connect 元数据终结点，允许应用程序在运
 
 `https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in`。
 
-若要确定对 ID 令牌进行签名所使用的策略（以及从何处获取元数据），可以使用两种方法。 首先，策略名称包含在 ID 令牌的 `acr` 声明中。 有关如何从 ID 令牌中解析声明的信息，请参阅 [Azure AD B2C 令牌参考](active-directory-b2c-reference-tokens.md)。 另一个方法是在发出请求时在 `state` 参数的值中对策略进行编码，然后对其进行解码以确定使用的策略。 任意一种方法均有效。
+若要确定对 ID 令牌进行签名所使用的策略（以及从何处获取元数据），可以使用两种方法。 首先，策略名称包含在 ID 令牌的 `acr` 声明中。 有关如何从 ID 令牌中解析声明的信息，请参阅 [Azure AD B2C 令牌参考](active-directory-b2c-reference-tokens.md)。 另一个方法是在发出请求时在 `state` 参数的值中对策略进行编码，并对其进行解码以确定使用的策略。 任意一种方法均有效。
 
 从 OpenID Connect 元数据终结点获取元数据文档后，可以使用 RSA 256 公钥（位于此终结点上）来验证 ID 令牌的签名。 在任何指定的时间点，此终结点上可能列出多个密钥，每个密钥使用 `kid` 声明进行标识。 ID 令牌的标头还包含 `kid` 声明，该声明指示哪个密钥用于对 ID 令牌进行签名。 有关详细信息，请参阅 [Azure AD B2C 令牌参考](active-directory-b2c-reference-tokens.md)（特别是[验证令牌](active-directory-b2c-reference-tokens.md#token-validation)部分）。
 <!--TODO: Improve the information on this-->
@@ -148,7 +147,7 @@ Azure AD B2C 具有 OpenID Connect 元数据终结点，允许应用程序在运
 * 需要验证 `aud` 声明以确保已为应用发出 ID 令牌。 其值应为应用的应用程序 ID。
 * 需要验证 `iat` 和 `exp` 声明以确保 ID 令牌未过期。
 
-此外，还需要执行更多的一些验证。 有关详细信息，请参阅 [OpenID Connect 核心规范](http://openid.net/specs/openid-connect-core-1_0.html)。  根据你的情况，你可能还希望验证其他声明。 一些常见的验证包括：
+此外，还需要执行更多的一些验证。 有关详细信息，请参阅 [OpenID Connect 核心规范](http://openid.net/specs/openid-connect-core-1_0.html)。根据情况，可能还希望验证其他声明。 一些常见的验证包括：
 
 * 确保用户/组织已注册应用。
 * 确保用户拥有正确的授权/权限。
@@ -174,13 +173,13 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 | 参数 | 必需？ | 说明 |
 | --- | --- | --- |
-| p |必选 |用于获取授权代码的策略。 你无法在此请求中使用不同的策略。 请注意，将此参数添加到查询字符串中，而不是添加到 `POST` 正文中。 |
+| p |必选 |用于获取授权代码的策略。 无法在此请求中使用不同的策略。 请注意，将此参数添加到查询字符串中，而不是添加到 `POST` 正文中。 |
 | client_id |必选 |Azure 门户分配给应用的[应用程序 ID](https://portal.azure.com/) 。 |
 | grant_type |必选 |授予类型，该类型必须是授权代码流的 `authorization_code`。 |
 | 作用域 |建议 |范围的空格分隔列表。 一个范围值，该值向 Azure AD 指示正在请求的两个权限。 `openid` 作用域表示允许使用 id_token 参数的形式使用户登录并获取有关用户的数据。 它可以用于为应用的后端 Web API 获取令牌，该令牌使用和客户端相同的应用程序 ID 表示。 `offline_access` 作用域表示应用需要刷新令牌才能获得访问资源的长生存期。 |
 | 代码 |必选 |在流的第一个阶段获取的授权代码。 |
 | redirect_uri |必选 |在其中收到授权代码的应用程序的 `redirect_uri` 参数。 |
-| client_secret |必选 |在 [Azure 门户](https://portal.azure.com/)中生成的应用程序密码。 此应用程序密码是重要的安全项目。 应将其安全地存储在你的服务器上。 你还应定期更新此客户端密码。 |
+| client_secret |必选 |在 [Azure 门户](https://portal.azure.com/)中生成的应用程序密码。 此应用程序密码是重要的安全项目。 应将其安全地存储在服务器上。 你还应定期更新此客户端密码。 |
 
 成功的令牌响应如下所示：
 
@@ -227,7 +226,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 ```
 
 ## <a name="refresh-the-token"></a>刷新令牌
-ID 令牌的生存期较短。 你必须在它们过期后将其刷新才能继续访问资源。 为此，你可以向 `/token` 终结点提交另一个 `POST` 请求。 此时，提供 `refresh_token` 参数而不是 `code` 参数：
+ID 令牌的生存期较短。 必须在它们过期后将其刷新才能继续访问资源。 为此，可以向 `/token` 终结点提交另一个 `POST` 请求。 此时，提供 `refresh_token` 参数而不是 `code` 参数：
 
 ```
 POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
@@ -239,13 +238,13 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 | 参数 | 必选 | 说明 |
 | --- | --- | --- |
-| p |必选 |用于获取原始刷新令牌的策略。 你无法在此请求中使用不同的策略。 请注意，将此参数添加到查询字符串中，而不是添加到 POST 正文中。 |
+| p |必选 |用于获取原始刷新令牌的策略。 无法在此请求中使用不同的策略。 请注意，将此参数添加到查询字符串中，而不是添加到 POST 正文中。 |
 | client_id |必选 |Azure 门户分配给应用的[应用程序 ID](https://portal.azure.com/) 。 |
 | grant_type |必选 |授予类型，该类型必须是这一段授权代码流的刷新令牌。 |
 | 作用域 |建议 |范围的空格分隔列表。 一个范围值，该值向 Azure AD 指示正在请求的两个权限。 `openid` 作用域表示允许使用 ID 令牌的形式使用户登录并获取有关用户的数据。 它可以用于为应用的后端 Web API 获取令牌，该令牌使用和客户端相同的应用程序 ID 表示。 `offline_access` 作用域表示应用需要刷新令牌才能获得访问资源的长生存期。 |
 | redirect_uri |建议 |在其中收到授权代码的应用程序的 `redirect_uri` 参数。 |
 | refresh_token |必选 |在流的第二个阶段获取的原始刷新令牌。 请注意，必须在授权和令牌请求中都使用作用域 `offline_access`，才能接收刷新令牌。 |
-| client_secret |必选 |在 [Azure 门户](https://portal.azure.com/)中生成的应用程序密码。 此应用程序密码是重要的安全项目。 应将其安全地存储在你的服务器上。 你还应定期更新此客户端密码。 |
+| client_secret |必选 |在 [Azure 门户](https://portal.azure.com/)中生成的应用程序密码。 此应用程序密码是重要的安全项目。 应将其安全地存储在服务器上。 你还应定期更新此客户端密码。 |
 
 成功的令牌响应如下所示：
 
@@ -283,7 +282,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 | error_description |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
 
 ## <a name="send-a-sign-out-request"></a>发送注销请求
-如果想要从应用程序中注销用户，只是清除应用程序的 cookie 或者结束与用户的会话是不够的。 还必须将用户重定向到 Azure AD 进行注销。 如果没有这么做，那么用户可能可以在应用程序中重新进行身份验证，且无需再次输入其凭据。 这是因为他们具有和 Azure AD 的有效单一登录会话。
+如果想要从应用程序中注销用户，只是清除应用程序的 cookie 或者结束与用户的会话是不够的。 还必须将用户重定向到 Azure AD 进行注销。如果没有这么做，那么用户可能可以在应用程序中重新进行身份验证，且无需再次输入其凭据。 这是因为他们具有和 Azure AD 的有效单一登录会话。
 
 只需将用户重定向到前面章节“验证 ID 令牌”中所述的 OpenID Connect 元数据文档中列出的 `end_session` 终结点：
 
@@ -296,10 +295,10 @@ p=b2c_1_sign_in
 | 参数 | 必需？ | 说明 |
 | --- | --- | --- |
 | p |必选 |想要用于从应用程序中注销用户的策略。 |
-| post_logout_redirect_uri |建议 |用户在成功注销后应重定向到的 URL。 如果未包含此参数，Azure AD B2C 会向用户显示一条常规消息。 |
+| post_logout_redirect_uri |建议 |用户在成功注销后应重定向到的 URL。如果未包含此参数，Azure AD B2C 会向用户显示一条常规消息。 |
 
 > [!NOTE]
-> 尽管将用户定向到 `end_session` 终结点将清除用户的某些 Azure AD B2C 的单一登录状态，但是不会将用户从其社交标识提供者 (IDP) 会话中注销。 如果用户在后续登录中选择相同的 IDP，他们将重新进行身份验证，且无需输入其凭据。 如果用户想要注销 B2C 应用程序，并不表示他们想要注销其 Facebook 帐户。 但是，如果是本地帐户，则将以正确的方式结束用户的会话。
+> 尽管将用户定向到 `end_session` 终结点将清除用户的某些 Azure AD B2C 的单一登录状态，但是不会将用户从其社交标识提供者 (IDP) 会话中注销。 如果用户在后续登录中选择相同的 IDP，他们将重新进行身份验证，且无需输入其凭据。 如果用户想要注销 B2C 应用程序，并不表示他们想要注销其 Facebook 帐户。 但是，如果是本地帐户，则以正确的方式结束用户的会话。
 > 
 > 
 

@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: 323f69eb2d259a7d98791b5fc9ee24f739da13e6
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 9159960af396e89f373da711e0cc46fdd996ab83
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>使用 Azure CLI 2.0 上传自定义磁盘并从其创建 Linux VM
-本文说明如何使用 Azure CLI 2.0 将虚拟硬盘 (VHD) 上传到 Azure 存储帐户，并从此自定义磁盘创建 Linux VM。 还可以使用 [Azure CLI 1.0](upload-vhd-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 执行这些步骤。 此功能可让你安装并配置 Linux 分发以满足你的需求，然后使用该 VHD 快速创建 Azure 虚拟机 (VM)。
+本文说明如何使用 Azure CLI 2.0 将虚拟硬盘 (VHD) 上传到 Azure 存储帐户，并从此自定义磁盘创建 Linux VM。 还可以使用 [Azure CLI 1.0](upload-vhd-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 执行这些步骤。 此功能可让你安装并配置 Linux 分发以满足需求，然后使用该 VHD 快速创建 Azure 虚拟机 (VM)。
 
 本主题使用存储帐户保存最终 VHD，但也可以使用[托管磁盘](upload-vhd.md)执行这些步骤。 
 
@@ -103,7 +103,7 @@ az vm create --resource-group myResourceGroup --location westus \
 <a id="prepimage"> </a>
 
 ## <a name="prepare-the-disk-to-be-uploaded"></a>准备要上传的磁盘
-Azure 支持各种 Linux 分发（请参阅 [Endorsed Distributions](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（认可的分发））。 以下文章将指导你如何准备 Azure 上支持的各种 Linux 分发：
+Azure 支持各种 Linux 分发（请参阅 [Endorsed Distributions](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（认可的分发））。 以下文章指导如何准备 Azure 上支持的各种 Linux 分发：
 
 * **[基于 CentOS 的分发版](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
@@ -111,7 +111,7 @@ Azure 支持各种 Linux 分发（请参阅 [Endorsed Distributions](endorsed-di
 * **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[SLES 和 openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[其他 - 非认可分发](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[其他 - 非认可分发版](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
 另请参阅 **[Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)**，以获取更多有关如何为 Azure 准备 Linux 映像的一般提示。
 
@@ -141,7 +141,7 @@ az storage account create --resource-group myResourceGroup --location westus \
 ```
 
 ## <a name="list-storage-account-keys"></a>列出存储帐户密钥
-Azure 将为每个存储帐户生成两个 512 位的访问密钥。 在向存储帐户进行身份验证以执行操作（例如执行写入操作）时，将使用这些访问密钥。 从此处了解有关[管理对存储的访问](../../storage/storage-create-storage-account.md#manage-your-storage-account)的详细信息。 可使用 [az storage account keys list](/cli/azure/storage/account/keys#list) 查看访问密钥。
+Azure 将为每个存储帐户生成两个 512 位的访问密钥。 在向存储帐户进行身份验证以执行操作（例如执行写入操作）时，将使用这些访问密钥。 从此处了解有关[管理对存储的访问](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)的详细信息。 可使用 [az storage account keys list](/cli/azure/storage/account/keys#list) 查看访问密钥。
 
 查看创建的存储帐户的访问密钥：
 
@@ -160,7 +160,7 @@ data:    key1  d4XAvZzlGAgWdvhlWfkZ9q4k9bYZkXkuPCJ15NTsQOeDeowCDAdB80r9zA/tUINAp
 data:    key2  Ww0T7g4UyYLaBnLYcxIOTVziGAAHvU+wpwuPvK4ZG0CDFwu/mAxS/YYvAQGHocq1w7/3HcalbnfxtFdqoXOw8g==  Full
 info:    storage account keys list command OK
 ```
-记下 `key1`，因为你将在后续步骤中使用它与存储帐户进行交互。
+记下 `key1`，你会在后续步骤中使用它与存储帐户进行交互。
 
 ## <a name="create-a-storage-container"></a>创建存储容器
 在存储帐户中创建用于整理磁盘的容器的方式，与创建各种目录以便有条理地整理本地文件系统的方式相同。 一个存储帐户可以包含任意数目的容器。 可以使用 [az storage container create](/cli/azure/storage/container#create) 创建容器。
@@ -203,7 +203,7 @@ az vm create --resource-group myResourceGroup --location westus \
 
 
 ## <a name="resource-manager-template"></a>Resource Manager 模板
-Azure Resource Manager 模板是用于定义你希望生成的环境的 JavaScript 对象表示法 (JSON) 文件。 这些模板细分为不同的资源提供程序，如计算或网络。 你可以使用现有模板，也可以编写自己的模板。 阅读有关[使用 Resource Manager 和模板](../../azure-resource-manager/resource-group-overview.md)的详细信息。
+Azure Resource Manager 模板是用于定义希望生成的环境的 JavaScript 对象表示法 (JSON) 文件。 这些模板细分为不同的资源提供程序，如计算或网络。 可以使用现有模板，也可以编写自己的模板。 阅读有关[使用 Resource Manager 和模板](../../azure-resource-manager/resource-group-overview.md)的详细信息。
 
 在模板的 `Microsoft.Compute/virtualMachines` 提供程序中有一个 `storageProfile` 节点，其中包含 VM 的配置详细信息。 需要编辑的两个主要参数为 `image` 和 `vhd` URI，它们指向自定义磁盘和新 VM 的虚拟磁盘。 下面显示了使用自定义磁盘的 JSON 示例：
 

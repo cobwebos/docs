@@ -19,7 +19,7 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 
 * 出现范围较广的 Azure 区域中断时，每个区域对中有一个区域优先级更高，这样可以缩短应用程序的还原时间。 
 * 将逐一对配对的区域进行计划内 Azure 更新，尽量减少停机时间并降低应用程序中断风险。
-* 出于税务和执法管辖权方面的考虑，数据仍将以配对的形式驻留在同一地域内（巴西南部除外）。
+* 出于税务和执法管辖权方面的考虑，数据仍以配对的形式驻留在同一地域内（巴西南部除外）。
 
 区域对的示例包括：
 
@@ -39,11 +39,11 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 
 **Azure 托管磁盘**
 * 本地冗余存储 (LRS)
-  * 在你创建存储帐户时所在的区域复制数据三次。
+  * 在创建存储帐户时所在的区域复制数据三次。
 
 **基于存储帐户的磁盘**
 * 本地冗余存储 (LRS)
-  * 在你创建存储帐户时所在的区域复制数据三次。
+  * 在创建存储帐户时所在的区域复制数据三次。
 * 区域冗余存储 (ZRS)
   * 在两到三个设施之间复制数据三次（在单个区域内或两个区域之间）。
 * 异地冗余存储 (GRS)
@@ -59,7 +59,7 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 | 可以从辅助位置和主位置读取数据。 |否 |否 |否 |是 |
 | 在单独的节点上维护的数据副本数。 |3 |3 |6 |6 |
 
-可以在[此处](../articles/storage/storage-redundancy.md)详细了解 Azure 存储复制选项。 有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../articles/storage/storage-managed-disks-overview.md)。
+可以在[此处](../articles/storage/common/storage-redundancy.md)详细了解 Azure 存储复制选项。 有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../articles/virtual-machines/windows/managed-disks-overview.md)。
 
 ### <a name="storage-costs"></a>存储成本
 价格根据所选存储类型和可用性的不同而异。
@@ -75,7 +75,7 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 有关不同存储类型和可用性选项的定价信息，请参阅 [Azure 存储器定价](https://azure.microsoft.com/pricing/details/storage/)。
 
 ## <a name="availability-sets"></a>可用性集
-可用性集是 VM 的逻辑分组，可让 Azure 了解应用程序的构建方式，以便提供冗余和可用性。 建议在可用性集内创建两个或多个 VM，提供高度可用的应用程序，并满足 [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 的要求。 当单个 VM 使用 [Azure 高级存储](../articles/storage/storage-premium-storage.md)时，Azure SLA 适用于计划外维护事件。 
+可用性集是 VM 的逻辑分组，可让 Azure 了解应用程序的构建方式，以便提供冗余和可用性。 建议在可用性集内创建两个或多个 VM，提供高度可用的应用程序，并满足 [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 的要求。 当单个 VM 使用 [Azure 高级存储](../articles/storage/common/storage-premium-storage.md)时，Azure SLA 适用于计划外维护事件。 
 
 可用性集由可防止硬件故障以及允许安全应用更新的两个额外分组构成 - 容错域 (FD) 和更新域 (UD)。
 
@@ -90,7 +90,7 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 更新域是可以同时维护或重新启动的基础硬件逻辑组。 在可用性集内创建 VM 时，Azure 平台会自动将 VM 分布到这些更新域。 Azure 平台进行定期维护时，此方法可确保至少有一个应用程序实例始终保持运行状态。 在计划内维护期间，更新域的重启顺序可能不会按序进行，但一次只重启一个更新域。
 
 ### <a name="managed-disk-fault-domains"></a>托管磁盘容错域
-对于使用 [Azure 托管磁盘](../articles/storage/storage-faq-for-disks.md)的 VM，在使用托管可用性集时，VM 与托管磁盘容错域一致。 该一致性可确保附加到 VM 的所有托管磁盘都在同一托管磁盘容错域内。 在托管可用性集中，只能创建带托管磁盘的 VM。 托管磁盘容错域的数目因区域而异 - 每个区域两个或三个托管磁盘容错域。
+对于使用 [Azure 托管磁盘](../articles/virtual-machines/windows/faq-for-disks.md)的 VM，在使用托管可用性集时，VM 与托管磁盘容错域一致。 该一致性可确保附加到 VM 的所有托管磁盘都在同一托管磁盘容错域内。 在托管可用性集中，只能创建带托管磁盘的 VM。 托管磁盘容错域的数目因区域而异 - 每个区域两个或三个托管磁盘容错域。
 
 ![托管磁盘 FD](./media/virtual-machines-common-manage-availability/md-fd.png)
 

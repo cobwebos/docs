@@ -4,7 +4,7 @@ description: "了解如何让一组 Azure 服务通过互操作来实现实时�
 keywords: "实时处理, 事件处理, 参考体系结构"
 services: stream-analytics,event-hubs,storage,sql-database
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: 
 ms.assetid: 11af48bc-313c-4527-8c80-91088dc9f3c6
@@ -14,13 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 5160d1c092103f4e7d2bf73c08c2ad5085d7d7a0
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: a5206f74e61c3cfd210ff80654e31f466ce08977
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>参考体系结构：使用 Microsoft Azure 流分析实时处理事件
@@ -53,7 +52,7 @@ Microsoft Azure 提供了各种类别的分析技术，支持一系列不同的�
 **下载：** [使用 Microsoft Azure 流分析实时处理事件](http://download.microsoft.com/download/6/2/3/623924DE-B083-4561-9624-C1AB62B5F82B/real-time-event-processing-with-microsoft-azure-stream-analytics.pdf)
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

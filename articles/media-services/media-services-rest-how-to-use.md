@@ -1,10 +1,10 @@
 ---
-title: "媒体服务操作 REST API 概述 | Microsoft Docs"
+title: "媒体服务操作 REST API 概述 | Microsoft 文档"
 description: "媒体服务 REST API 概述"
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: a5f1c5e7-ec52-4e26-9a44-d9ea699f68d9
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 08/10/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: f4d2fe502e6b6a93c0e455a5369b63deb9074c82
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: a874bc48cc94fff32382ccdb832f0fbd3d08e03f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="media-services-operations-rest-api-overview"></a>媒体服务操作 REST API 概述
@@ -53,7 +53,7 @@ Microsoft Azure 媒体服务是一项服务，该服务接受基于 OData 的 HT
         . . . 
 
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>媒体服务支持的标准 HTTP 请求标头
-每次调用媒体服务时，你必须在请求中包括一组必需标头，还可以根据需要包括一组可选标头。 下表列出了必需的标头：
+每次调用媒体服务时，必须在请求中包括一组必需标头，还可以根据需要包括一组可选标头。 下表列出了必需的标头：
 
 | 标头 | 类型 | 值 |
 | --- | --- | --- |
@@ -78,10 +78,10 @@ Microsoft Azure 媒体服务是一项服务，该服务接受基于 OData 的 HT
 | Accept-Charset |字符集类型，如“UTF-8” |默认值为 UTF-8。 |
 | X-HTTP-Method |HTTP 方法 |允许不支持 HTTP 方法（例如 PUT 或 DELETE）的客户端或防火墙使用这些通过 GET 调用隧道化的方法。 |
 | Content-Type |内容类型 |PUT 或 POST 请求中请求正文的内容类型。 |
-| client-request-id |字符串 |调用方定义的值，用于标识给定请求。 如果指定，将在响应消息中包括此值，作为一种映射请求的方法。 <p><p>**重要说明**<p>值的上限应为 2096b (2k)。 |
+| client-request-id |字符串 |调用方定义的值，用于标识给定请求。 如果指定，会在响应消息中包括此值，作为一种映射请求的方法。 <p><p>**重要说明**<p>值的上限应为 2096b (2k)。 |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>媒体服务支持的标准 HTTP 响应标头
-下面是可以根据你请求的资源以及要执行的操作返回给你的一组标头。
+下面是可以根据你请求的资源以及要执行的操作返回给一组标头。
 
 | 标头 | 类型 | 值 |
 | --- | --- | --- |
@@ -103,13 +103,14 @@ Microsoft Azure 媒体服务是一项服务，该服务接受基于 OData 的 HT
 | MERGE |使用指定的属性更改更新现有对象。 |
 | HEAD |为 GET 响应返回对象的元数据。 |
 
-## <a name="limitation"></a>限制
-查询实体时，一次返回的实体数限制为 1000 个，因为公共 REST v2 将查询结果数限制为 1000 个。 需要使用[此 .NET 示例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)和[此 REST API 示例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)中所述的 **Skip** 和 **Take** (.NET)/ **top** (REST)。 
-
-## <a name="discovering-media-services-model"></a>发现媒体服务模型
-为了使媒体服务实体易于发现，可使用 $metadata 操作。 使用该操作，你可以检索所有有效的实体类型、实体属性、关联、函数、操作等。 以下示例演示了如何构建 URI：https://media.windows.net/API/$metadata。
+## <a name="discover-media-services-model"></a>发现媒体服务模型
+为了使媒体服务实体易于发现，可使用 $metadata 操作。 使用该操作，可以检索所有有效的实体类型、实体属性、关联、函数、操作等。 以下示例演示了如何构建 URI：https://media.windows.net/API/$metadata。
 
 如果希望在浏览器中查看元数据，应在 URI 的末尾追加“?api-version=2.x”，或不要在请求中包括 x-ms-version 标头。
+
+## <a name="connect-to-media-services"></a>连接到媒体服务
+
+若要了解如何连接到 AMS API，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 成功连接到 https://media.windows.net 后，将收到指定另一个媒体服务 URI 的 301 重定向。 必须对这个新 URI 进行后续调用。
 
 ## <a name="next-steps"></a>后续步骤
 

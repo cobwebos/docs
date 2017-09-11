@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 2b277f1fb96f347cc60d1395fafb7e2707883a77
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b7411fa6aba04ffd34f3f4bd03e706ca75afc9c8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="step-5-prepare-azure-resources-for-physical-server-replication-to-azure"></a>第 5 步：准备 Azure 资源以便将物理服务器复制到 Azure
@@ -36,7 +35,7 @@ ms.lasthandoff: 06/29/2017
 ## <a name="set-up-an-azure-account"></a>创建 Azure 帐户
 
 - 获取 [Microsoft Azure 帐户](http://azure.microsoft.com/)。
-- 你可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。
+- 可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。
 - 查看 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)中的“支持的地理位置”下，了解 Site Recovery 支持哪些区域。
 - 了解 [Site Recovery 定价](site-recovery-faq.md#pricing)，并获取[定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)。
 
@@ -54,9 +53,9 @@ ms.lasthandoff: 06/29/2017
 ## <a name="set-up-an-azure-storage-account"></a>设置 Azure 存储帐户
 
 - Site Recovery 将本地服务器复制到 Azure 存储。 发生故障转移后，通过存储创建 Azure VM。
-- 设置用于所复制数据的 [Azure 存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)。
-- Azure 门户中的 Site Recovery 可以使用在 Resource Manager 或经典模式下创建的存储帐户。
-- 存储帐户可以是标准帐户，也可以是[高级](../storage/storage-premium-storage.md)帐户。
+- 设置用于所复制数据的 [Azure 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。
+- Azure 门户中的 Site Recovery 可以使用在 Resource Manager 或经典模式下设置的存储帐户。
+- 存储帐户可以是标准帐户，也可以是[高级](../storage/common/storage-premium-storage.md)帐户。
 - 如果创建的是高级帐户，还需要额外使用标准帐户来记录数据。
 
 

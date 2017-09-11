@@ -3,7 +3,7 @@ title: "Azure Analysis Services 教程第 4 课：创建关系 | Microsoft Docs"
 description: "介绍如何在 Azure Analysis Services 教程项目中创建关系。"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

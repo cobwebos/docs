@@ -10,16 +10,9 @@
 ## [注册 Azure AD Premium](active-directory-get-started-premium.md)
 ## [添加自定义域名](add-custom-domain.md)
 ## [配置公司品牌](customize-branding.md)
+## [将用户添加到 Azure AD](add-users-azure-active-directory.md)
+## [将许可证分配给用户](license-users-groups.md)
 ## [配置自助服务密码重置](active-directory-passwords-getting-started.md)
-## 管理 Azure AD 许可
-### [Azure 门户](active-directory-licensing-get-started-azure-portal.md)
-### [经典门户](active-directory-licensing-what-is.md)
-### [使用组分配许可证](active-directory-licensing-whatis-azure-portal.md)
-#### [将许可证分配到组](active-directory-licensing-group-assignment-azure-portal.md)
-#### [识别和解决组中的许可证问题](active-directory-licensing-group-problem-resolution-azure-portal.md)
-#### [将单个许可用户迁移到基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
-#### [基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
-#### [基于组的许可的 PowerShell 示例](active-directory-licensing-ps-examples.md)
 
 
 # 如何
@@ -44,11 +37,6 @@
 #### [工具比较](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
 
 ## 管理用户
-### 添加用户
-#### [Azure 门户](active-directory-users-create-azure-portal.md)
-#### [经典门户](active-directory-create-users.md)
-
-
 ### [使用组分配许可证](active-directory-licensing-whatis-azure-portal.md)
 #### [将许可证分配到组](active-directory-licensing-group-assignment-azure-portal.md)
 #### [识别和解决组中的许可证问题](active-directory-licensing-group-problem-resolution-azure-portal.md)
@@ -56,7 +44,6 @@
 #### [基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
 #### [基于组的许可的 PowerShell 示例](active-directory-licensing-ps-examples.md)
 ### [从其他目录添加用户（经典门户）](active-directory-create-users-external.md)
-### [删除用户](active-directory-users-delete-user-azure-portal.md)
 ### [管理用户个人资料](active-directory-users-profile-azure-portal.md)
 ### [重置密码](active-directory-users-reset-password-azure-portal.md)
 ### [管理用户工作信息](active-directory-users-work-info-azure-portal.md)
@@ -144,28 +131,18 @@
 
 ## 管理设备
 ### [介绍](device-management-introduction.md)
+### [使用 Azure 门户](device-management-azure-portal.md)
+### [计划 Azure AD 加入](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [常见问题](device-management-faq.md)
 ### 任务
+#### [配置已注册到 Azure AD 的 Windows 10 设备](device-management-azuread-registered-devices-windows10-setup.md)
+#### [配置已加入 Azure AD 的设备](device-management-azuread-joined-devices-setup.md)
 #### [配置加入混合 Azure AD 的设备](device-management-hybrid-azuread-joined-devices-setup.md) 
-#### 故障排除
-##### [加入混合 Azure AD 的 Windows 10 和 Windows Server 2016 设备](device-management-troubleshoot-hybrid-join-windows-current.md)
-##### [加入混合 Azure AD 的旧式 Windows 设备](device-management-troubleshoot-hybrid-join-windows-legacy.md)
-
-### 注册设备
 #### [本地部署](active-directory-device-registration-on-premises-setup.md)
-#### [常见问题](active-directory-device-registration-faq.md)
-#### 故障排除
-##### [对 Windows 10 和 Windows Server 2016 进行故障排除](active-directory-device-registration-troubleshoot-windows.md)
-##### [对 Windows 下层客户端进行故障排除](active-directory-device-registration-troubleshoot-windows-legacy.md)
-### [Azure AD Join](active-directory-azureadjoin-overview.md)
-#### [规划](active-directory-azureadjoin-deployment-aadjoindirect.md)
-#### [设置设备注册](active-directory-azureadjoin-setup.md)
-#### [注册新设备](active-directory-azureadjoin-user-frx.md)
-#### [部署](active-directory-azureadjoin-devices-group-policy.md)
-#### [了解 Windows 10 集成](active-directory-azureadjoin-windows10-devices-overview.md)
-#### [使用 Windows 10 设备](active-directory-azureadjoin-windows10-devices.md)
-#### [加入设备](active-directory-azureadjoin-personal-device.md)
-#### [加入 Windows 10 设备](active-directory-azureadjoin-user-upgrade.md)
+#### [Windows 10 首次运行体验中的 Azure AD 加入](device-management-azuread-joined-devices-frx.md)
+### 故障排除
+#### [加入混合 Azure AD 的 Windows 10 和 Windows Server 2016 设备](device-management-troubleshoot-hybrid-join-windows-current.md)
+#### [加入混合 Azure AD 的旧式 Windows 设备](device-management-troubleshoot-hybrid-join-windows-legacy.md)
 
 ## 管理应用
 ### [概述](active-directory-enable-sso-scenario.md)
@@ -314,15 +291,15 @@
 ### [条件性访问](active-directory-conditional-access-azure-portal.md)
 #### [入门](active-directory-conditional-access-azure-portal-get-started.md)
 #### [最佳实践](active-directory-conditional-access-best-practices.md)
+#### [VPN 连接](active-directory-conditional-access-vpn-connectivity-windows10.md)
+#### [移动应用管理](active-directory-conditional-access-mam.md)
 #### [技术参考](active-directory-conditional-access-technical-reference.md)
-#### [支持的应用](active-directory-conditional-access-supported-apps.md)
 #### [了解设备策略](active-directory-conditional-access-device-policies.md)
 #### [设置对已连接应用的访问权限](active-directory-conditional-access-policy-connected-applications.md)
 #### [补救方法](active-directory-conditional-access-device-remediation.md)
 #### [常见问题](active-directory-conditional-faqs.md)
 #### [经典门户](active-directory-conditional-access.md)
 ##### [入门](active-directory-conditional-access-azuread-connected-apps.md)
-
 
 ### Windows Hello
 #### [无密码身份验证](active-directory-azureadjoin-passport.md)

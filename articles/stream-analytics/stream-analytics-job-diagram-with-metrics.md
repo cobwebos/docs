@@ -4,7 +4,7 @@ description: "使用作业关系图和指标进行流分析作业故障排除。
 keywords: 
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 
@@ -14,19 +14,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 05/01/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 8738b266bd007682459d08698fa13828ff67a1b6
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 5b689c07bf8baa531c7a50ca50ed5140c1787e7b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>使用作业关系图进行数据驱动调试
 
-Azure 门户中“监视”边栏选项卡里的作业关系图可帮助你可视化作业管道。 它显示了输入、输出和查询步骤。 可使用作业关系图检查每个步骤的指标，并且在解决问题时，更快速地隔离问题源。
+使用 Azure 门户中“监视”边栏选项卡里的作业关系图，可以可视化作业管道。 它显示了输入、输出和查询步骤。 可使用作业关系图检查每个步骤的指标，并且在解决问题时，更快速地隔离问题源。
 
 ## <a name="using-the-job-diagram"></a>使用作业关系图
 
@@ -58,7 +57,7 @@ Azure 门户中“监视”边栏选项卡里的作业关系图可帮助你可�
 
 QueryLastProcessedTime 指标指示特定步骤收到数据的时间。 通过查看拓扑，可以从输出处理器开始反向检查，判断哪个步骤未接收数据。 如果一个步骤未收到数据，请转到它之前的查询步骤。 检查前面的查询步骤是否具有时间范围，以及是否经过了充足的、用于输出数据的时间。 （注意：时间范围会对齐到小时。）
  
-如果前一个查询步骤是输入处理器，请使用输入指标帮助解答下列针对性问题。 它们可帮助你判断作业是否正从其输入源获取数据。 如果查询已分区，请检查每个分区。
+如果前一个查询步骤是输入处理器，请使用输入指标帮助解答下列针对性问题。 它们可以帮助判断作业是否正从其输入源获取数据。 如果查询已分区，请检查每个分区。
  
 ### <a name="how-much-data-is-being-read"></a>正在读取的数据量有多少？
 
@@ -89,7 +88,7 @@ QueryLastProcessedTime 指标指示特定步骤收到数据的时间。 通过�
 
 
 ## <a name="get-help"></a>获取帮助
-有关更多帮助，请访问我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
+有关更多帮助，请访问我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [流分析简介](stream-analytics-introduction.md)

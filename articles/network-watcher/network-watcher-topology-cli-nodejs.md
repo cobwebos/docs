@@ -3,7 +3,7 @@ title: "查看 Azure 网络观察程序拓扑 - Azure CLI 1.0 | Microsoft Docs"
 description: "本文将介绍如何使用 Azure CLI 1.0 查询网络拓扑。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 5cd279d7-3ab0-4813-aaa4-6a648bf74e7b
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: 9178c485a92e04564c95dae8073f045b5c639bb7

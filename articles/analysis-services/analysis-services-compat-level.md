@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 08/07/2016
+ms.date: 08/16/2017
 ms.author: owend
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: acb69621babf0f562bfafedfe5547e16e8f2c8af
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: b11ba54c2cdc2675ec535368e7076613a5290212
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 08/09/2017
 
 Azure Analysis Services 支持 1200 和 1400 兼容性级别的表格模型。
 
-最新兼容性级别是 1400 (预览版)。 此级别与 SQL Server 2017 Analysis Services 一致。 1400 兼容性级别中的主要功能包括：
+最新兼容性级别是 1400。 此级别与 SQL Server 2017 Analysis Services 一致。 1400 兼容性级别中的主要功能包括：
 
 *  新的基础结构，用于在 TOM API 和 TMSL 脚本的支持下连接数据和将数据导入表格模型。 此新功能支持 Azure Blob 存储等其他数据源。
 *  通过使用“获取数据”和 M 表达式实现数据转换和数据混合功能。
@@ -37,11 +37,6 @@ Azure Analysis Services 支持 1200 和 1400 兼容性级别的表格模型。
 *  表和列名称，以及其中数据的对象级别安全性。
 *  不规则层次结构的增强支持。
 *  性能和监视改进。
-
-
-
-> [!IMPORTANT]
-> 1400 兼容性级别仍处于预览阶段。 某些功能可能受限。 建议不要在生产环境中使用表格 1400 模型。 
   
 ## <a name="set-compatibility-level"></a>设置兼容性级别 
  在 SSDT 中创建新的表格模型项目时，可以在“表格模型设计器”对话框中指定兼容性级别。 
@@ -63,3 +58,4 @@ Azure Analysis Services 支持 1200 和 1400 兼容性级别的表格模型。
 ## <a name="next-steps"></a>后续步骤
   [在 Azure 门户中创建模型](analysis-services-create-model-portal.md)   
   [管理 Analysis Services](analysis-services-manage.md)  
+

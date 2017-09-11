@@ -16,10 +16,10 @@ ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 8221f34641f2e59bbcaf05c3a17f23411df6b634
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b7bc6fd9921ab0f2374ace33ea5c1ab93a78f860
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="log-events-for-diagnostic-evaluation-and-monitoring-of-batch-solutions"></a>记录事件以用来对 Batch 解决方案进行诊断评估和监视
@@ -33,7 +33,7 @@ ms.lasthandoff: 08/07/2017
 
 ## <a name="prerequisites"></a>先决条件
 * [Azure Batch 帐户](batch-account-create-portal.md)
-* [Azure 存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)
+* [Azure 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)
   
   要暂留 Batch 诊断日志，必须创建一个将用来存储日志的 Azure 存储帐户。 可以在为 Batch 帐户[启用诊断日志记录](#enable-diagnostic-logging)时指定此存储帐户。 启用日志收集时指定的存储帐户与[应用程序包](batch-application-packages.md)和[任务输出暂留](batch-task-output.md)文章中所提到的链接存储帐户不是同一个。
   

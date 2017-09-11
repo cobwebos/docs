@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 08/21/2017
 ms.author: juluk
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: 26428ad0d3acda959235ffa780294154ba61bca5
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 61a8bfcf3704f361432400771d8fcc8b81927b53
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -32,8 +32,8 @@ Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。
 
 使用基本设置并仅选择一个订阅时，Cloud Shell 会在最靠近你的支持区域中代表你创建三个资源：
 * 资源组：`cloud-shell-storage-<region>`
-* 存储帐户：`cs-uniqueGuid`
-* 文件共享：`cs-<user>-<domain>-com-uniqueGuid`
+* 存储帐户：`cs<uniqueGuid>`
+* 文件共享：`cs-<user>-<domain>-com-<uniqueGuid>`
 
 ![订阅设置](media/basic-storage.png)
 
@@ -41,7 +41,7 @@ Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。
 
 ### <a name="use-existing-resources"></a>使用现有资源
 
-通过使用高级选项，可以将现有资源相关联。 出现存储设置的提示时，选择“显示高级设置”查看其他选项。 现有的文件共享收到一个 5 GB 的用户映像，用于持久保存 `$Home` 目录。 从下拉菜单筛选分配的 Cloud Shell 区域、本地冗余存储以及异地冗余存储帐户。
+通过使用高级选项，可以将现有资源相关联。 出现存储设置的提示时，选择“显示高级设置”查看其他选项。 现有的文件共享收到一个 5 GB 的用户映像，用于持久保存 `$Home` 目录。 从下拉菜单筛选 Cloud Shell 区域、本地冗余和异地冗余存储帐户。
 
 ![资源组设置](media/advanced-storage.png)
 
@@ -52,7 +52,7 @@ Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。
 Cloud Shell 通过以下两种方法持久保存文件：
 * 创建 `$Home` 目录的磁盘映像来持久保持目录中所有内容。 磁盘映像将作为 `acc_<User>.img` 保存在指定的文件共享中，位于以下位置：`fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img`，并会自动同步更改。
 
-* 将指定的文件共享装载为 `$Home` 目录中的 `clouddrive` 以便直接进行文件共享交互。 `/Home/<User>/clouddrive` 映射到 `fileshare.storage.windows.net/fileshare`。
+* 将指定的文件共享装载为 `$Home` 目录中的 `clouddrive`，以便直接进行文件共享交互。 `/Home/<User>/clouddrive` 映射到 `fileshare.storage.windows.net/fileshare`。
  
 > [!NOTE]
 > `$Home` 目录中的所有文件（如 SSH 密钥）将持久保存用户磁盘映像（存储于已装载的文件共享中）中。 在 `$Home` 目录和已装载的文件共享中持久保存信息时，请应用最佳做法。
@@ -71,7 +71,7 @@ Cloud Shell 通过以下两种方法持久保存文件：
 * 位于分配的区域中。 在装入时，被分配到的区域将列在资源组名称 `cloud-shell-storage-<region>` 中。
 
 ### <a name="supported-storage-regions"></a>支持的存储区域
-Azure 文件必须与装载到 Cloud Shell 计算机位于同一区域。 Cloud Shell 计算机位于以下区域中：
+Azure 文件必须与装载到 Cloud Shell 计算机位于同一区域。 Cloud Shell 集群目前位于以下区域中：
 |区域|区域|
 |---|---|
 |美洲|美国东部、美国中南部、美国西部|
@@ -94,7 +94,7 @@ clouddrive mount -s mySubscription -g myRG -n storageAccountName -f fileShareNam
 ![运行 `clouddrive mount` 命令](media/mount-h.png)
 
 ## <a name="unmount-clouddrive"></a>卸载 `clouddrive`
-随时可以卸载已装载到 Cloud Shell 的文件共享。 不过，由于 Cloud Shell 需要一个已装载的文件共享，因此，如果删除了已装载的文件共享，则在下次会话时会提示创建并装载一个新的文件共享。
+随时可以卸载已装载到 Cloud Shell 的文件共享。 卸载文件共享后，进行下一个会话前，系统会提示装载新的文件共享。
 
 从 Cloud Shell 中删除文件共享：
 1. 运行 `clouddrive unmount`。
@@ -107,7 +107,7 @@ clouddrive mount -s mySubscription -g myRG -n storageAccountName -f fileShareNam
 ![运行 `clouddrive unmount` 命令](media/unmount-h.png)
 
 > [!WARNING]
-> 虽然运行此命令不会删除任何资源，但手动删除映射到 Cloud Shell 的资源组、存储帐户或文件共享将会清除 `$Home` 目录磁盘映像和文件共享中的任何文件。 此操作不可撤消。
+> 运行此命令不会删除任何资源。 手动删除映射到 Cloud Shell 的资源组、存储帐户或文件共享会永久删除 `$Home` 目录映像以及文件共享中的任何其他文件。 此操作不可撤消。
 
 ## <a name="list-clouddrive-file-shares"></a>列出 `clouddrive` 文件共享
 若要查明哪些文件共享已装载为 `clouddrive`，请执行以下 `df` 命令。 
@@ -116,14 +116,14 @@ clouddrive 的文件路径会在 URL 中显示存储帐户名称和文件共享�
 
 ```
 justin@Azure:~$ df
-Filesystem                                          1K-blocks   Used  Available Use% Mounted on
-overlay                                             29711408 5577940   24117084  19% /
-tmpfs                                                 986716       0     986716   0% /dev
-tmpfs                                                 986716       0     986716   0% /sys/fs/cgroup
-/dev/sda1                                           29711408 5577940   24117084  19% /etc/hosts
-shm                                                    65536       0      65536   0% /dev/shm
-//mystoragename.file.core.windows.net/fileshareName 5368709120    64 5368709056   1% /home/justin/clouddrive
-justin@Azure:~$
+Filesystem                                               1K-blocks     Used Available Use% Mounted on
+overlay                                                   30428648 15585636  14826628  52% /
+tmpfs                                                       986704        0    986704   0% /dev
+tmpfs                                                       986704        0    986704   0% /sys/fs/cgroup
+/dev/sda1                                                 30428648 15585636  14826628  52% /etc/hosts
+shm                                                          65536        0     65536   0% /dev/shm
+//mystoragename.file.core.windows.net/fileshareName        6291456  5242944   1048512  84% /usr/justin/clouddrive
+/dev/loop0                                                 5160576   601652   4296780  13% /home/justin
 ```
 
 ## <a name="transfer-local-files-to-cloud-shell"></a>将本地文件传输到 Cloud Shell

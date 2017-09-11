@@ -5,11 +5,11 @@
 
 1. 使用 Microsoft 帐户凭据登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 在 Azure 门户中，单击 **+**，然后在应用商店中单击“查看所有”。
+2. 在 Azure 门户中，单击 **+**，并在应用商店中单击“查看所有”。
 
     ![创建 StorSimple Device Manager](./media/storsimple-8000-create-new-service/createssdevman1.png)
 
-    搜索“StorSimple 物理”。 选择并单击“StorSimple 物理设备系列”，然后单击“创建”。 或者，在 Azure 门户中，单击 **+**，然后在“存储”下单击“StorSimple 物理设备系列”。
+    搜索“StorSimple 物理”。 选择并单击“StorSimple 物理设备系列”，单击“创建”。 或者，在 Azure 门户中，单击 **+**，并在“存储”下单击“StorSimple 物理设备系列”。
 
     ![创建 StorSimple Device Manager](./media/storsimple-8000-create-new-service/createssdevman11.png)
 
@@ -24,7 +24,7 @@
    4. 为服务提供“位置”  。 一般情况下，请选择离要部署设备的地理区域最近的位置。 还可能需要考虑以下注意事项： 
       
       * 如果 Azure 中还存在希望使用 StorSimple 设备部署的现有工作负荷，应使用该数据中心。
-      * StorSimple Device Manager 服务和 Azure 存储可位于两个不同的位置。 在这种情况下，需要分别创建 StorSimple 设备管理器和 Azure 存储帐户。 若要创建 Azure 存储帐户，请转到 Azure 门户中的 Azure 存储服务，并按照[创建 Azure 存储帐户](../articles/storage/storage-create-storage-account.md#create-a-storage-account)中的步骤操作。 创建此帐户后，按照[针对服务配置新的存储帐户](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#configure-a-new-storage-account-for-the-service)中的步骤，将它添加到 StorSimple 设备管理器服务。
+      * StorSimple Device Manager 服务和 Azure 存储可位于两个不同的位置。 在这种情况下，需要分别创建 StorSimple 设备管理器和 Azure 存储帐户。 若要创建 Azure 存储帐户，请转到 Azure 门户中的 Azure 存储服务，并按照[创建 Azure 存储帐户](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account)中的步骤操作。 创建此帐户后，按照[针对服务配置新的存储帐户](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#configure-a-new-storage-account-for-the-service)中的步骤，将它添加到 StorSimple 设备管理器服务。
 
    5. 选择“新建存储帐户”  自动通过该服务创建存储帐户。 为此存储帐户指定名称。 如果需要将数据存储在不同位置，请取消选中此框。
 

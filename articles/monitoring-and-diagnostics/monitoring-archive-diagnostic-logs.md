@@ -12,37 +12,48 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/26/2016
+ms.date: 08/21/2017
 ms.author: johnkem
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 6ceb95dac5a4037c8f2ff93f8245b36f0842a427
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: dbc5f89001dcb6cd1ab061cb0a9632e4e5d2c1c7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="archive-azure-diagnostic-logs"></a>存档 Azure 诊断日志
 本文介绍如何使用 Azure 门户、PowerShell Cmdlet、CLI 或 REST API 将 [Azure 诊断日志](monitoring-overview-of-diagnostic-logs.md)存档到存储帐户中。 此选项适用于实施可选保留策略的诊断日志，将其保留下来进行审核、静态分析或备份。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，存储帐户就不必与资源发出日志位于同一订阅中。
 
 ## <a name="prerequisites"></a>先决条件
-在开始之前，需要[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)，将诊断日志存档到其中。 强烈建议用户不要使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制监视数据所需的访问权限。 但是，如果还要将活动日志和诊断指标存档到存储帐户，则也可将该存储帐户用于诊断日志，使得所有监视数据都位于一个中心位置。 所使用的存储帐户必须是一个通用存储帐户，而不是一个 blob 存储帐户。
+在开始之前，需要[创建存储帐户](../storage/storage-create-storage-account.md)，将诊断日志存档到其中。 强烈建议用户不要使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制监视数据所需的访问权限。 但是，如果还要将活动日志和诊断指标存档到存储帐户，也可将该存储帐户用于诊断日志，使得所有监视数据都位于一个中心位置。 所使用的存储帐户必须是一个通用存储帐户，而不是一个 blob 存储帐户。
 
 ## <a name="diagnostic-settings"></a>诊断设置
-若要使用下述任意方法存档诊断日志，可针对特定资源设置“诊断设置”。 资源的诊断设置定义已存储或流式传输的日志的类别，以及输出 - 存储帐户和/或事件中心。 它还定义存储在存储帐户中的每个日志类别的事件的保留策略（需保留的天数）。 如果将保留策略设置为零，则会无限期（即永久）存储该日志类别的事件。 如果不需要无限期存储，可将保留策略设置为 1 到 2147483647 之间的任意天数。 [单击此处详细了解诊断设置](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)。 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志
+若要使用下述任意方法存档诊断日志，可针对特定资源设置“诊断设置”。 资源的诊断设置定义发送到目标的日志和指标数据类别（存储帐户、事件中心命名空间或 Log Analytics）。 此外，它还定义存储在存储帐户中的每个日志类别和指标数据的事件保留策略（需保留的天数）。 如果将保留策略设置为零，则会无限期（即永久）存储该日志类别的事件。 如果不需要无限期存储，可将保留策略设置为 1 到 2147483647 之间的任意天数。 [单击此处详细了解诊断设置](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)。 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志
 
 ## <a name="archive-diagnostic-logs-using-the-portal"></a>使用门户存档诊断日志
-1. 在门户中，单击需要启用诊断日志存档功能的资源的资源边栏选项卡。
-2. 在资源设置菜单的“监视”部分，选择“诊断”。
+1. 在门户中，导航到 Azure Monitor 并单击“诊断设置”
+
+    ![Azure Monitor 的“监视”部分](media/monitoring-archive-diagnostic-logs/diagnostic-settings-blade.png)
+
+2. （可选）按资源组或资源类型筛选列表，并单击要为其设置诊断设置的资源。
+
+3. 如果选定的资源上不存在任何设置，系统会提示创建设置。 单击“启用诊断”。
+
+   ![添加诊断设置 - 没有现有的设置](media/monitoring-archive-diagnostic-logs/diagnostic-settings-none.png)
+
+   如果资源上有现有的设置，则会看到已在此资源上配置的设置列表。 单击“添加诊断设置”。
+
+   ![添加诊断设置 - 现有的设置](media/monitoring-archive-diagnostic-logs/diagnostic-settings-multiple.png)
+
+3. 命名设置并选中与“导出到存储帐户”对应的框，然后选择存储帐户。 （可选）使用“保留期(天)”滑块设置这些日志的保留天数。 如果保留期为 0 天，则会无限期存储日志。
    
-    ![资源菜单的“监视”部分](media/monitoring-archive-diagnostic-logs/diag-log-monitoring-sec.png)
-3. 选中与“导出到存储帐户”对应的框，并选择存储帐户。 （可选）使用“保留期(天)”滑块设置这些日志的保留天数。 如果保留期为 0 天，则会无限期存储日志。
-   
-    ![“诊断日志”边栏选项卡](media/monitoring-archive-diagnostic-logs/diag-log-monitoring-blade.png)
+   ![添加诊断设置 - 现有的设置](media/monitoring-archive-diagnostic-logs/diagnostic-settings-configure.png)
+    
 4. 单击“保存” 。
 
-一旦生成新的事件数据，就会将诊断日志存档到该存储帐户。
+稍后，新设置就会显示在此资源的设置列表中，只要生成新的事件数据，就会立即将诊断日志存档到该存储帐户。
 
-## <a name="archive-diagnostic-logs-via-the-powershell-cmdlets"></a>通过 PowerShell Cmdlet 存档诊断日志
+## <a name="archive-diagnostic-logs-via-azure-powershell"></a>通过 Azure PowerShell 存档诊断日志
 ```
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg -StorageAccountId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Categories networksecuritygroupevent,networksecuritygrouprulecounter -Enabled $true -RetentionEnabled $true -RetentionInDays 90
 ```
@@ -50,7 +61,7 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-
 | 属性 | 必选 | 说明 |
 | --- | --- | --- |
 | ResourceId |是 |要设置诊断设置的资源的资源 ID。 |
-| StorageAccountId |否 |应该将诊断日志保存到其中的存储帐户的资源 ID。 |
+| StorageAccountId |否 |应将诊断日志保存到其中的存储帐户的资源 ID。 |
 | Categories |否 |要启用的日志类别的逗号分隔列表。 |
 | Enabled |是 |一个布尔值，表示此资源是启用还是禁用了诊断。 |
 | RetentionEnabled |否 |一个布尔值，表示此资源是否启用了保留策略。 |
@@ -64,12 +75,12 @@ azure insights diagnostic set --resourceId /subscriptions/s1id1234-5679-0123-456
 | 属性 | 必选 | 说明 |
 | --- | --- | --- |
 | resourceId |是 |要设置诊断设置的资源的资源 ID。 |
-| storageId |否 |应该将诊断日志保存到其中的存储帐户的资源 ID。 |
+| storageId |否 |应将诊断日志保存到其中的存储帐户的资源 ID。 |
 | categories |否 |要启用的日志类别的逗号分隔列表。 |
 | 已启用 |是 |一个布尔值，表示此资源是启用还是禁用了诊断。 |
 
 ## <a name="archive-diagnostic-logs-via-the-rest-api"></a>通过 REST API 存档诊断日志
-若要了解如何使用 Azure 监视器 REST API 设置诊断设置，请[参阅此文档](https://msdn.microsoft.com/library/azure/dn931931.aspx)。
+若要了解如何使用 Azure 监视器 REST API 设置诊断设置，请[参阅此文档](https://docs.microsoft.com/rest/api/monitor/servicediagnosticsettings)。
 
 ## <a name="schema-of-diagnostic-logs-in-the-storage-account"></a>存储帐户中诊断日志的架构
 设置存档以后，一旦在某个已启用的日志类别中出现事件，就会在存储帐户中创建存储容器。 在诊断日志和活动日志中，容器中的 blob 遵循相同的格式。 这些 blob 的结构为：
@@ -131,8 +142,7 @@ azure insights diagnostic set --resourceId /subscriptions/s1id1234-5679-0123-456
 > 
 
 ## <a name="next-steps"></a>后续步骤
-* [下载 blob 进行分析](../storage/storage-dotnet-how-to-use-blobs.md#download-blobs)
-* [将诊断日志流式传输到事件中心](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [下载 blob 进行分析](../storage/storage-dotnet-how-to-use-blobs.md)
+* [将诊断日志流式传输到事件中心命名空间](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [详细了解诊断日志](monitoring-overview-of-diagnostic-logs.md)
-
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: byvinyal
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 07d5056fdea9d4975fe91a5b842a9208385e779e
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: f97be571d104e3cc1c6ee732886fa7133ba0dc83
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="azure-app-service-plans-in-depth-overview"></a>Azure 应用服务计划深入概述
@@ -33,7 +33,7 @@ ms.lasthandoff: 07/12/2017
 - 实例大小（小、中、大）
 - SKU（免费、共享、基本、标准、高级）
 
-[Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)中的 Web 应用、移动应用、API 应用、Function App（或 Functions）均在应用服务计划中运行。  同一订阅、区域和资源组中的应用可共享应用服务计划。 
+[Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)中的 Web 应用、移动应用、API 应用、Function App（或 Functions）均在应用服务计划中运行。  同一订阅和区域中的应用可共享应用服务计划。 
 
 分配到**应用服务计划**的所有应用程序将共享该计划定义的资源。 在单个应用服务计划中托管多个应用时，此共享操作可节省成本。
 
@@ -91,13 +91,13 @@ ms.lasthandoff: 07/12/2017
 
  ![创建应用服务计划。][createASP]
 
-若要创建应用服务计划，可单击“[+] 新建”，键入“应用服务计划”名称，然后选择相应的“位置”。 单击“定价层”，然后为服务选择适当的服务定价层。 选择“全部查看”以查看其他定价选项，例如“免费”和“共享”。 选择定价层后，单击“选择”按钮。
+要创建应用服务计划，可单击“[+] 新建”，键入“应用服务计划”名称，并选择相应的“位置”。 单击“定价层”，并为服务选择适当的服务定价层。 选择“全部查看”以查看其他定价选项，例如“免费”和“共享”。 选择定价层后，单击“选择”按钮。
 
 ## <a name="move-an-app-to-a-different-app-service-plan"></a>将应用移到其他应用服务计划
 
 可以在 [Azure 门户](https://portal.azure.com)中将应用移到其他应用服务计划。 只要计划属于同一资源组和同一地理区域，即可在计划之间移动应用。
 
-若要将应用移动到其他计划：
+要将应用移动到其他计划：
 
 - 导航到要移动的应用。
 - 在“菜单”中，查找“应用服务计划”部分。
@@ -120,7 +120,7 @@ ms.lasthandoff: 07/12/2017
 
 ## <a name="clone-an-app-to-a-different-app-service-plan"></a>将应用克隆到其他应用服务计划
 
-若要将应用移到其他区域，也可以使用应用克隆。 不管位于什么区域，克隆都会在新的或现有的应用服务计划中复制应用。
+要将应用移到其他区域，也可以使用应用克隆。 不管位于什么区域，克隆都会在新的或现有的应用服务计划中复制应用。
 
 可以在菜单的“开发工具”部分中找到“克隆应用”。
 

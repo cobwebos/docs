@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: f1524fa83de6ce53f853ed6859de15076e20ea3b
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>向用户授予特定实验室策略的权限
@@ -73,7 +74,7 @@ ms.openlocfilehash: f1524fa83de6ce53f853ed6859de15076e20ea3b
 
 一旦拥有了用户的 **ObjectId** 和自定义角色名称，即可使用 **New-AzureRmRoleAssignment** cmdlet 将该角色分配给用户：
 
-    PS C:\>New-AzureRmRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/policies/AllowedVmSizesInLab
+    PS C:\>New-AzureRmRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/default/policies/AllowedVmSizesInLab
 
 在上一示例中，使用了 **AllowedVmSizesInLab** 策略。 可以使用下方任意策略：
 
@@ -92,10 +93,5 @@ ms.openlocfilehash: f1524fa83de6ce53f853ed6859de15076e20ea3b
 * [创建实验室模板](devtest-lab-create-template.md)。
 * [创建适用于 VM 的自定义项目](devtest-lab-artifact-author.md)。
 * [将含有项目的 VM 添加到实验室](devtest-lab-add-vm-with-artifacts.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

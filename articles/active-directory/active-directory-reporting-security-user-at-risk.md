@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/15/2017
+ms.date: 08/24/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 76413d6e9c619a66ae34f032eb0b8f9d42c27c9d
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 04f15384a7cd0fa03300acdf159d371569ecf9fc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="users-flagged-for-risk-security-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中“标记为风险用户”的用户的安全报告
@@ -62,6 +62,16 @@ Azure Active Directory 免费版和基本版中“标记为风险用户”报告
 对于存在风险的用户，可查看其登录历史记录，并根据需要重置密码。
 
 ![有风险的登录](./media/active-directory-reporting-security-user-at-risk/46.png)
+
+
+此对话框提供的选项用于：
+
+- 下载报告
+
+- 搜索用户
+
+![有风险的登录](./media/active-directory-reporting-security-user-at-risk/16.png)
+
 
 ## <a name="azure-active-directory-premium-editions"></a>Azure Active Directory Premium 版
 

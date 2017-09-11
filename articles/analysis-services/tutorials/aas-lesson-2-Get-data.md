@@ -3,7 +3,7 @@ title: "Azure Analysis Services 教程第 2 课：获取数据 | Microsoft Docs"
 description: "介绍了在 Azure Analysis Services 教程项目中如何获取和导入数据。"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

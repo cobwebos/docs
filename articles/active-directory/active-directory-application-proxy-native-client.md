@@ -5,84 +5,96 @@ services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: 
 ms.assetid: f0cae145-e346-4126-948f-3f699747b96e
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2017
+ms.date: 08/17/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 24396f7c82bcc0fb076c4fceca0ec4b0963d36e8
+ms.reviewer: harshja
+ms.custom: it-pro
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: bdaa5af6ff5331bc310499586615b48a864c3c5e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
+
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>如何使本地客户端应用与代理应用程序交互
-Azure Active Directory 应用程序代理广泛用于发布浏览器应用程序，如 SharePoint、Outlook Web Access 和自定义业务线应用程序。 它还可用于发布本机客户端应用，这有别于 Web 应用，因为此类应用安装在设备上。 通过支持在标准 Authorize HTTP 标头中发送的 Azure AD 颁发令牌实现此操作。
 
-![用户、Azure Active Directory 和已发布应用程序之间的关系](./media/active-directory-application-proxy-native-client/richclientflow.png)
+除了 Web 应用程序以外，还可以使用 Azure Active Directory 应用程序代理来发布本机客户端应用。 本机客户端应用不同于 Web 应用，因为前者安装在设备上，而后者需通过浏览器进行访问。 
 
-发布此类应用程序的建议方法是使用 Azure AD 身份验证库，此库负责所有身份验证事宜，并且支持许多不同的客户端环境。 应用程序代理适合[本机应用程序到 Web API 方案](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)。 完成此目的的过程如下所示：
+应用程序代理接受在标准 Authorize HTTP 标头中发送的、由 Azure AD 颁发的令牌，因此支持本机客户端应用。
+
+![最终用户、Azure Active Directory 和已发布应用程序之间的关系](./media/active-directory-application-proxy-native-client/richclientflow.png)
+
+使用 Azure AD 身份验证库（负责处理身份验证并支持许多客户端环境）来发布本机应用程序。 应用程序代理适合[本机应用程序到 Web API 方案](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)。 本文引导读者完成使用应用程序代理和 Azure AD 身份验证库发布本机应用程序的四个步骤。 
 
 ## <a name="step-1-publish-your-application"></a>步骤 1：发布应用程序
-像任何其他应用程序一样发布代理应用程序、分配用户并为他们提供高级或基本许可证。 有关详细信息，请参阅[使用应用程序代理发布应用程序](active-directory-application-proxy-publish.md)。
+像发布任何其他应用程序一样发布代理应用程序，并分配可访问该应用程序的用户。 有关详细信息，请参阅[使用应用程序代理发布应用程序](active-directory-application-proxy-publish.md)。
 
 ## <a name="step-2-configure-your-application"></a>步骤 2：配置应用程序
 按如下方式配置本机应用程序：
 
-1. 登录到 Azure 经典门户。
-2. 选择左侧菜单上的 Active Directory 图标，然后选择你的目录。
-3. 在顶部菜单中单击“应用程序”。 如果你的目录中尚未添加任何应用，则此页只会显示“添加应用”链接 。 单击该链接，或者单击命令栏上的“添加”按钮。
-4. 在“要执行什么操作”页上，单击“添加我的组织正在开发的应用程序”链接。
-5. 在“向我们说明你的应用程序”页上，指定应用程序名称，然后选择“本机客户端应用程序”。 单击箭头图标继续。
-6. 在“应用程序信息”页上，为本机客户端应用程序提供**重定向 URI**，然后单击复选标记完成。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 导航到“Azure Active Directory” > “应用注册”。
+3. 选择“新建应用程序注册”。
+4. 指定应用程序的名称，选择“本机”作为应用程序类型，并提供应用程序的重定向 URI。 
 
-现已添加你的应用程序，此时你将转到应用程序的“快速启动”页。
+   ![创建新的应用注册](./media/active-directory-application-proxy-native-client/create.png)
+5. 选择“创建” 。
+
+有关创建新应用注册的更多详细信息，请参阅[将应用程序与 Azure Active Directory 集成](.//develop/active-directory-integrating-applications.md)。
+
 
 ## <a name="step-3-grant-access-to-other-applications"></a>步骤 3：向其他应用程序授予访问权限
 使本机应用程序可以向目录中的其他应用程序公开：
 
-1. 在顶部菜单中，单击“应用程序”、选择新的本机应用程序，然后单击“配置”。
-2. 向下滚动到“对其他应用程序的权限”部分。 单击“添加应用程序”按钮并选择要授予本机应用程序访问权限的代理应用程序，然后单击右下角的复选标记。 从“委托的权限”下拉菜单中选择新的权限。
+1. 仍在“应用注册”中，选择刚创建的新本机应用程序。
+2. 选择“所需权限”。
+3. 选择“添加”。
+4. 打开第一个步骤，即“选择 API”。
+5. 使用搜索栏查找在第一部分中发布的应用程序代理应用。 选择该应用并单击“选择”。 
 
-![针对其他应用程序的权限 - 添加应用程序](./media/active-directory-application-proxy-native-client/delegate_native_app.png)
+   ![搜索代理应用](./media/active-directory-application-proxy-native-client/select_api.png)
+6. 打开第二个步骤，即“选择权限”。
+7. 使用复选框授予本机应用程序对代理应用程序的访问权限，并单击“选择”。
+
+   ![授予对代理应用的访问权限](./media/active-directory-application-proxy-native-client/select_perms.png)
+8. 选择“完成”。
+
 
 ## <a name="step-4-edit-the-active-directory-authentication-library"></a>步骤 4：编辑 Active Directory 身份验证库
 在 Active Directory 身份验证库 (ADAL) 的身份验证上下文中编辑本机应用程序代码，以包含以下文本：
 
-        // Acquire Access Token from AAD for Proxy Application
-        AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/<TenantId>");
-        AuthenticationResult result = authContext.AcquireToken("< Frontend Url of Proxy App >",
-                                                        "< Client Id of the Native app>",
-                                                        new Uri("< Redirect Uri of the Native App>"),
-                                                        PromptBehavior.Never);
+```
+// Acquire Access Token from AAD for Proxy Application
+AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/<Tenant ID>");
+AuthenticationResult result = authContext.AcquireToken("< External Url of Proxy App >",
+        "<App ID of the Native app>",
+        new Uri("<Redirect Uri of the Native App>"),
+        PromptBehavior.Never);
 
-        //Use the Access Token to access the Proxy Application
-        HttpClient httpClient = new HttpClient();
-        httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
-        HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >");
+//Use the Access Token to access the Proxy Application
+HttpClient httpClient = new HttpClient();
+httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
+HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >");
+```
 
-应替换变量，如下所示：
+应按如下所示替换示例代码中的变量：
 
-* **TenantId** 位于 应用程序“配置”页的 URL 中的 GIUD 中，紧跟在“/Directory/”之后。
-* **前端 URL** 是在代理应用程序中输入的前端 URL，位于代理应用的“配置”页上。
-* 本机应用的**客户端 Id** 位于本机应用程序的“配置”页上。
-* **本机应用的重定向 URI** 位于本机应用程序的“配置”页上。
+* 可在 Azure 门户中找到“租户 ID”。 导航到“Azure Active Directory” > “属性”并复制目录 ID。 
+* “外部 URL”是在代理应用程序中输入的前端 URL。 若要查找此值，请导航到代理应用的“应用程序代理”部分。
+* 可在本机应用程序的“属性”页上找到本机应用的“应用 ID”。
+* 可在本机应用程序的“重定向 URI”页上找到**本机应用的重定向 URI**。
 
-![新的本机应用程序配置页屏幕截图](./media/active-directory-application-proxy-native-client/new_native_app.png)
-
-有关本机应用程序流的详细信息，请参阅[本机应用程序到 Web API](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)。
 
 ## <a name="see-also"></a>另请参阅
-* [使用你自己的域名发布应用程序](active-directory-application-proxy-custom-domains.md)
-* [启用条件性访问](active-directory-application-proxy-conditional-access.md)
-* [使用声明感知应用程序](active-directory-application-proxy-claims-aware-apps.md)
-* [启用单一登录](active-directory-application-proxy-sso-using-kcd.md)
+
+有关本机应用程序流的详细信息，请参阅[本机应用程序到 Web API](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)
 
 有关最新新闻和更新，请参阅 [应用程序代理博客](http://blogs.technet.com/b/applicationproxyblog/)
 

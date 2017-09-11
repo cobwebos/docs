@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: davidmu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 8192fc3edc35578067c7478811793d3f4fa8734f
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3eb88478b43f8e3a36ae04bf3703f238e8cb1f3e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
 # <a name="download-a-linux-vhd-from-azure"></a>从 Azure 下载 Linux VHD
 
-本文介绍如何使用 Azure CLI 和 Azure 门户从 Azure 下载 [Linux 虚拟硬盘 (VHD)](../../storage/storage-about-disks-and-vhds-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 文件。 
+本文介绍如何使用 Azure CLI 和 Azure 门户从 Azure 下载 [Linux 虚拟硬盘 (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 文件。 
 
-Azure 中的虚拟机 (VM) 将[磁盘](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)用作存储操作系统、应用程序和数据的位置。 所有 Azure VM 都至少有两个磁盘，即 Windows 操作系统磁盘和临时磁盘。 操作系统磁盘最初基于映像创建，操作系统磁盘和该映像都是存储在 Azure 存储帐户中的 VHD。 虚拟机还可以有一个或多个数据磁盘，而这些磁盘也存储为 VHD。
+Azure 中的虚拟机 (VM) 将[磁盘](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)用作存储操作系统、应用程序和数据的位置。 所有 Azure VM 都至少有两个磁盘，即 Windows 操作系统磁盘和临时磁盘。 操作系统磁盘最初基于映像创建，操作系统磁盘和该映像都是存储在 Azure 存储帐户中的 VHD。 虚拟机还可以有一个或多个数据磁盘，而这些磁盘也存储为 VHD。
 
 如果尚未安装 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2)，请安装。
 
@@ -69,7 +69,7 @@ Azure 中的虚拟机 (VM) 将[磁盘](../../storage/storage-managed-disks-overv
 
 ## <a name="generate-sas-url"></a>生成 SAS URL
 
-若要下载 VHD 文件，需要生成[共享访问签名 (SAS)](../../storage/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL。 生成 URL 时，将为 URL 分配到期时间。
+若要下载 VHD 文件，需要生成[共享访问签名 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL。 生成 URL 时，将为 URL 分配到期时间。
 
 1.  在 VM 的边栏选项卡的菜单上，单击“磁盘”。
 2.  为 VM 选择操作系统磁盘，然后单击“导出”。

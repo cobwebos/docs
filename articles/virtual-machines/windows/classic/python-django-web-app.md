@@ -15,27 +15,19 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: huvalo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
-ms.openlocfilehash: a9ccbb3da29670da9a377be2212905c67b3ec7d0
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 283a296fb39863c2801be1093cc4f56904786abd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/22/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="django-hello-world-web-app-on-a-windows-server-vm"></a>Windows Server VM 上的 Django Hello World Web 应用
-> [!div class="op_single_selector"]
-> * [Windows](python-django-web-app.md)
-> * [Mac/Linux](../../linux/python-django-web-app.md)
-> 
-> 
-
-<br>
 
 > [!IMPORTANT] 
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[Azure Resource Manager 和经典部署模型](../../../resource-manager-deployment-model.md)。 本文介绍经典部署模型。 我们建议在大多数新部署中使用 Resource Manager 模型。 有关可用于部署 Django 的 Resource Manager 模板，请参阅[部署 Django 应用](https://azure.microsoft.com/documentation/templates/django-app/)。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[Azure Resource Manager 和经典部署模型](../../../resource-manager-deployment-model.md)。 本文介绍经典部署模型。 我们建议在大多数新部署中使用 Resource Manager 模型。
 
-本教程演示如何在 Azure 虚拟机的 Windows Server 中托管基于 Django 的网站。 本教程假定你以前没有使用过 Azure。 完成本教程之后，你将能够在云中启动和运行基于 Django 的应用程序。
+本教程演示如何在 Azure 虚拟机的 Windows Server 中托管基于 Django 的网站。 本教程假定你以前没有使用过 Azure。 完成本教程之后，将能够在云中启用和运行基于 Django 的应用程序。
 
 了解如何：
 
@@ -56,7 +48,7 @@ ms.lasthandoff: 06/22/2017
 2. 设置 Azure 以将来自 Web 的端口 80 通信定向到虚拟机上的端口 80：
    
    1. 在 Azure 门户中，转到仪表板并选择新创建的虚拟机。
-   2. 单击“终结点”，然后单击“添加”。
+   2. 单击“终结点”，并单击“添加”。
 
      ![添加终结点](./media/python-django-web-app/django-helloworld-add-endpoint-new-portal.png)
 
@@ -110,7 +102,7 @@ ms.lasthandoff: 06/22/2017
    * `helloworld\manage.py` 帮助你开始托管和停止托管你的基于 Django 的网站。
    * `helloworld\helloworld\settings.py` 包含应用程序的 Django 设置。
    * `helloworld\helloworld\urls.py` 包含每个 URL 及其视图之间的映射代码。
-3. 在 C:\inetpub\wwwroot\helloworld\helloworld 目录中创建一个名为 views.py 的新文件。 此文件包含用于呈现“hello world”页面的视图。 在代码编辑器中，输入以下命令：
+3. 在 C:\inetpub\wwwroot\helloworld\helloworld 目录中创建一个名为 views.py 的新文件。 此文件包含用于呈现“hello world”页面的视图。 在代码编辑器中输入以下命令：
    
        from django.http import HttpResponse
        def home(request):

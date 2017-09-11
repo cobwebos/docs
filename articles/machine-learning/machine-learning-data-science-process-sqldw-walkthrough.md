@@ -15,20 +15,19 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;hangzh;weig
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 244684bc875e3917b8fd0d1a6bc1464a7c36a938
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ce7de48af0f2f21576c66a962b88635a0f9f8333
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>团队数据科学过程实务：使用 SQL 数据仓库
-在本教程中，我们将指导你为某个公开提供的数据集（[NYC 出租车车程](http://www.andresmh.com/nyctaxitrips/)数据集）完成以下过程：使用 SQL 数据仓库 (SQL DW) 构建和部署机器学习模型。 构建的二元分类模型可预测是否为某段旅程支付了小费；而且还会讨论用于多类分类和回归的模型，这些模型可预测支付的小费金额的分布。
+在本教程中，我们指导为某个公开提供的数据集（[NYC 出租车车程](http://www.andresmh.com/nyctaxitrips/)数据集）完成以下过程：使用 SQL 数据仓库 (SQL DW) 构建和部署机器学习模型。 构建的二元分类模型可预测是否为某段旅程支付了小费；而且还会讨论用于多类分类和回归的模型，这些模型可预测支付的小费金额的分布。
 
 该过程遵循[团队数据科学过程 (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 工作流。 我们会介绍如何设置数据科学环境，如何将数据载入 SQL DW，以及如何使用 SQL 数据仓库或 IPython Notebook 来浏览要构建的数据和工程功能。 然后，我们会介绍如何使用 Azure 机器学习来构建和部署模型。
 
-## <a name="dataset"></a>NYC 出租车车程数据集
-NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩 CSV 文件，记录了超过 1.73 亿个单独车程及每个车程支付的费用。 每个车程记录都包括上车和下车的位置和时间、匿名出租车司机的驾驶证编号和出租车（出租车的唯一 ID）编号。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
+## <a name="dataset"></a>NYC 出租车行程数据集
+NYC 出租车行程数据包含大约 20 GB（未压缩约为  48 GB）的压缩 CSV 文件，记录了超过 1.73 亿个单独车程及每个车程支付的费用。 每个行程记录都包括上车和下车的位置和时间、匿名出租车司机的驾驶证编号和出租车（出租车的唯一 ID）编号。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
 
 1. **trip_data.csv** 文件包含行程的详细信息，例如乘客编号、上车和下车时间、行程持续时间和行程距离。 下面是一些示例记录：
    
@@ -71,15 +70,16 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 **创建自己的 Azure Blob 存储帐户**
 
-* 当你设置自己的 Azure Blob 存储时，请为你的 Azure Blob 存储选择一个位于**美国中南部**或尽可能靠近美国中南部的地理位置，NYC 出租车数据存储在美国中南部。 将使用 AzCopy 将数据从公共 blob 存储容器复制到你自己的存储中的某个容器。 你的 Azure Blob 存储越接近美国中南部，完成此任务（步骤 4）的速度将越快。
-* 若要创建自己的 Azure 存储帐户，请按照[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)中概述的步骤操作。 请务必记下以下存储帐户凭据的值，因为在此演练中稍后将需要它们。
+* 设置自己的 Azure Blob 存储时，请为 Azure Blob 存储选择一个位于**美国中南部**或尽可能靠近美国中南部的地理位置，NYC 出租车数据存储在美国中南部。 将使用 AzCopy 将数据从公共 blob 存储容器复制到自己的存储中的某个容器。 Azure Blob 存储越接近美国中南部，完成此任务（步骤 4）的速度将越快。
+* 若要创建自己的 Azure 存储帐户，请按照[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)中概述的步骤操作。 请务必记下以下存储帐户凭据的值，因为在此演练中稍后将需要它们。
   
   * **存储帐户名称**
   * **存储帐户密钥**
-  * **容器名称**（你希望在 Azure Blob 存储中存储数据的容器的名称）
+  * 
+            **容器名称**（希望在 Azure Blob 存储中存储数据的容器的名称）
 
 **设置 Azure SQL DW 实例。**
-请按照[创建 SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)处的文档设置 SQL 数据仓库实例。 请务必记下以下 SQL 数据仓库凭据，稍后的步骤中将会使用它们。
+请按照[创建 SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)处的文档设置 SQL 数据仓库实例。 请务必记下以下 SQL 数据仓库凭据，稍后的步骤中会使用它们。
 
 * **服务器名称**：<server Name>.database.windows.net
 * **SQLDW（数据库）名称**
@@ -88,10 +88,10 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 **安装 Visual Studio 和 SQL Server Data Tools。**  有关说明，请参阅[为 SQL 数据仓库安装 Visual Studio 2015 和/或 SSDT (SQL Server Data Tools) ](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)。
 
-**使用 Visual Studio 连接到你的 Azure SQL DW。** 有关说明，请参阅[使用 Visual Studio 连接到 Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-connect-overview.md)中的步骤 1 和 2。
+**使用 Visual Studio 连接到 Azure SQL DW。** 有关说明，请参阅[使用 Visual Studio 连接到 Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-connect-overview.md)中的步骤 1 和 2。
 
 > [!NOTE]
-> 在你在你的 SQL 数据仓库中创建的数据库上运行下面的 SQL 查询（而不是在连接主题的步骤 3 中提供的查询）来**创建一个主密钥**。
+> 在 SQL 数据仓库中创建的数据库上运行下面的 SQL 查询（而不是在连接主题的步骤 3 中提供的查询）来**创建一个主密钥**。
 > 
 > 
 
@@ -103,13 +103,13 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
            --If the master key exists, do nothing
     END CATCH;
 
-**在你的 Azure 订阅下创建一个 Azure 机器学习工作区。** 有关说明，请参阅[创建 Azure 机器学习工作区](machine-learning-create-workspace.md)。
+**在 Azure 订阅下创建一个 Azure 机器学习工作区。** 有关说明，请参阅[创建 Azure 机器学习工作区](machine-learning-create-workspace.md)。
 
 ## <a name="getdata"></a>将数据载入 SQL 数据仓库
-打开 Windows PowerShell 命令控制台。 运行以下 PowerShell 命令将我们在 GitHub 上与你共享的示例 SQL 脚本文件下载到你使用参数 *-DestDir* 指定的本地目录中。 你可以将参数 *-DestDir* 的值更改为任何本地目录。 如果 *-DestDir* 不存在， PowerShell 脚本将创建它。
+打开 Windows PowerShell 命令控制台。 运行以下 PowerShell 命令将我们在 GitHub 上与你共享的示例 SQL 脚本文件下载到使用参数 *-DestDir* 指定的本地目录中。 可以将参数 *-DestDir* 的值更改为任何本地目录。 如果 *-DestDir* 不存在，PowerShell 脚本将创建它。
 
 > [!NOTE]
-> 如果你的 *DestDir* 目录需要管理员权限才能创建或向其中写入数据，那么在执行下面的 PowerShell 脚本时，你可能需要**以管理员身份运行**。
+> 如果 *DestDir* 目录需要管理员权限才能创建或向其中写入数据，那么在执行下面的 PowerShell 脚本时，可能需要**以管理员身份运行**。
 > 
 > 
 
@@ -119,18 +119,18 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
     $wc.DownloadFile($source, $ps1_dest)
     .\Download_Scripts_SQLDW_Walkthrough.ps1 –DestDir 'C:\tempSQLDW'
 
-在成功执行之后，你的当前工作目录会更改为 *-DestDir*。 你应该能够看到类似下面的屏幕︰
+在成功执行之后，当前工作目录会更改为 *-DestDir*。 应该能够看到类似下面的屏幕︰
 
 ![][19]
 
-在你的 *-DestDir* 中，在管理员模式下执行下面的 PowerShell 脚本︰
+在 *-DestDir* 中，在管理员模式下执行下面的 PowerShell 脚本︰
 
     ./SQLDW_Data_Import.ps1
 
-首次运行 PowerShell 脚本时，会要求你输入你的 Azure SQL DW 和你的 Azure Blob 存储帐户中的信息。 此 PowerShell 脚本完成首次运行之后，你输入的凭据那时已经写入到现有工作目录中的一个名为 SQLDW.conf 的配置文件中。 以后运行此 PowerShell 脚本文件时，可以选择从此配置文件中读取所有需要的参数。 如果需要更改某些参数，你可以选择通过删除此配置文件并按提示输入参数值，根据提示在屏幕上输入参数，或者通过编辑你的 *-DestDir* 目录中的 SQLDW.conf 文件更改参数值。
+首次运行 PowerShell 脚本时，会要求输入 Azure SQL DW 和 Azure Blob 存储帐户中的信息。 此 PowerShell 脚本完成首次运行之后，输入的凭据那时已经写入到现有工作目录中的一个名为 SQLDW.conf 的配置文件中。 以后运行此 PowerShell 脚本文件时，可以选择从此配置文件中读取所有需要的参数。 如果需要更改某些参数，可以选择通过删除此配置文件并按提示输入参数值，根据提示在屏幕上输入参数，或者通过编辑 *-DestDir* 目录中的 SQLDW.conf 文件更改参数值。
 
 > [!NOTE]
-> 为了避免架构名称与你的 Azure SQL DW 中的现有名称发生冲突，在直接从 SQLDW.conf 文件读取参数时，会将一个 3 位随机数字添加到 SQLDW.conf 文件中的架构名称，并将其作为每次运行的默认架构名称。 PowerShell 脚本可能会提示你输入架构名称︰该名称可以由用户自行指定。
+> 为了避免架构名称与 Azure SQL DW 中的现有名称发生冲突，在直接从 SQLDW.conf 文件读取参数时，会将一个 3 位随机数字添加到 SQLDW.conf 文件中的架构名称，并将其作为每次运行的默认架构名称。 PowerShell 脚本可能会提示输入架构名称︰该名称可以由用户自行指定。
 > 
 > 
 
@@ -157,7 +157,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
                     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
                     $env_path = $env:Path
                 }
-* 使用 AzCopy **将数据从公共 blob 复制到你的专用 blob 存储帐户**
+* 使用 AzCopy **将数据从公共 blob 复制到专用 blob 存储帐户**
   
         Write-Host "AzCopy is copying data from public blob to yo storage account. It may take a while..." -ForegroundColor "Yellow"
         $start_time = Get-Date
@@ -167,7 +167,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
         $total_seconds = [math]::Round($time_span.TotalSeconds,2)
         Write-Host "AzCopy finished copying data. Please check your storage account to verify." -ForegroundColor "Yellow"
         Write-Host "This step (copying data from public blob to your storage account) takes $total_seconds seconds." -ForegroundColor "Green"
-* 通过使用以下命令**使用 Polybase（通过执行 LoadDataToSQLDW.sql）将数据从你的专用 blob 存储帐户载入你的 Azure SQL DW**。
+* 通过使用以下命令**使用 Polybase（通过执行 LoadDataToSQLDW.sql）将数据从专用 blob 存储帐户载入 Azure SQL DW**。
   
   * 创建架构
     
@@ -311,26 +311,26 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
             )
             ;
 
-你的存储帐户的地理位置会影响加载时间。
+存储帐户的地理位置会影响加载时间。
 
 > [!NOTE]
-> 具体取决于你的专用 blob 存储帐户的地理位置，将数据从公共 blob 复制到你的专用存储帐户的过程可能需要大约 15 分钟，或者甚至更长时间，而将数据从你的存储帐户中载入 Azure SQL 数据仓库的过程可能需要 20 分钟或更长时间。  
+> 具体取决于专用 blob 存储帐户的地理位置，将数据从公共 blob 复制到专用存储帐户的过程可能需要大约 15 分钟，或者甚至更长时间，而将数据从存储帐户中载入 Azure SQL 数据仓库的过程可能需要 20 分钟或更长时间。  
 > 
 > 
 
-你将必须决定有重复的源和目标文件时该怎么办。
+将必须决定有重复的源和目标文件时该怎么办。
 
 > [!NOTE]
-> 如果你的专用 blob 存储帐户中已经有要从公共 blob 存储复制到你的专用 blob 存储帐户的 .csv 文件，那么 AzCopy 将询问你是否要将其覆盖。 如果不希望覆盖它们，请在提示时输入 **n**。 如果你希望覆盖它们**全部**，请在提示时输入 **a**。 也可以输入 **y** 单独覆盖.csv 文件。
+> 如果专用 blob 存储帐户中已经有要从公共 blob 存储复制到专用 blob 存储帐户的 .csv 文件，那么 AzCopy 将询问你是否要将其覆盖。 如果不希望覆盖它们，请在提示时输入 **n**。 如果希望覆盖它们**全部**，请在提示时输入 **a**。 也可以输入 **y** 单独覆盖.csv 文件。
 > 
 > 
 
 ![Plot #21][21]
 
-你可以使用自己的数据。 如果数据位于本地计算机上的实际应用程序中，仍然可以使用 AzCopy 将本地数据上传到专用 Azure blob 存储。 你仅需要将 PowerShell 脚本文件的 AzCopy 命令中的**源**位置 `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"` 更改为包含你的数据的本地目录。
+可以使用自己的数据。 如果数据位于本地计算机上的实际应用程序中，仍然可以使用 AzCopy 将本地数据上传到专用 Azure blob 存储。 仅需要将 PowerShell 脚本文件的 AzCopy 命令中的**源**位置 `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"` 更改为包含数据的本地目录。
 
 > [!TIP]
-> 如果你的数据是现实生活应用程序中的，已经处于你的专用 Azure blob 存储中，那么你可以在 PowerShell 脚本中跳过 AzCopy 步骤，并直接将数据上传到 Azure SQL DW。 这将需要对脚本进行额外的编辑，使其适合你的数据的格式。
+> 如果你的数据是现实生活应用程序中的，已经处于你的专用 Azure blob 存储中，那么你可以在 PowerShell 脚本中跳过 AzCopy 步骤，并直接将数据上传到 Azure SQL DW。 这会需要对脚本进行额外的编辑，使其适合数据的格式。
 > 
 > 
 
@@ -340,13 +340,13 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 ![][20]
 
-## <a name="dbexplore"></a>Azure SQL 数据仓库中的数据浏览和特征工程
-在本部分中，我们会通过直接使用 **Visual Studio Data Tools** 针对 Azure SQL DW 运行 SQL 查询，执行数据浏览和功能生成。 本部分中使用的所有 SQL 查询都可以在名为 *SQLDW_Explorations.sql* 的示例脚本中找到。 此文件已经由 PowerShell 脚本下载到你的本地目录。 也可以从 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql) 检索它。 但 GitHub 中的文件并未插入 Azure SQL DW 信息。
+## <a name="dbexplore"></a>Azure SQL 数据仓库中的数据浏览和功能设计
+在本部分中，我们会通过直接使用 **Visual Studio Data Tools** 针对 Azure SQL DW 运行 SQL 查询，执行数据浏览和功能生成。 本部分中使用的所有 SQL 查询都可以在名为 *SQLDW_Explorations.sql* 的示例脚本中找到。 此文件已经由 PowerShell 脚本下载到本地目录。 也可以从 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql) 检索它。 但 GitHub 中的文件并未插入 Azure SQL DW 信息。
 
-使用 Visual Studio 用 SQL DW 登录名和密码连接到你的 Azure SQL DW，并打开 **SQL 对象资源管理器**以确认已导入数据库和表。 检索 *SQLDW_Explorations.sql* 文件。
+使用 Visual Studio 用 SQL DW 登录名和密码连接到 Azure SQL DW，并打开 **SQL 对象资源管理器**以确认已导入数据库和表。 检索 *SQLDW_Explorations.sql* 文件。
 
 > [!NOTE]
-> 若要打开并行数据仓库 (PDW) 查询编辑器，请使用 **New Query** 命令，同时保持你的 PDW 在 **SQL 对象资源管理器**中处于选中状态。 PDW 不支持标准 SQL 查询编辑器。
+> 要打开并行数据仓库 (PDW) 查询编辑器，请使用 **New Query** 命令，同时保持 PDW 在 **SQL 对象资源管理器**中处于选中状态。 PDW 不支持标准 SQL 查询编辑器。
 > 
 > 
 
@@ -392,7 +392,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 **输出︰**查询应返回一个包含 13,369 行的表，这些行指定在 2013年已完成超过 100 个行程的 13,369 个汽车/驾驶员 ID。 最后一列包含已完成的行程数量的计算。
 
 ### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>数据质量评估：验证含有不正确的经度和/或纬度的记录
-此示例将调查其中任何一个经度和/或纬度字段是否包含无效的值（弧度应介于 -90 到 90 之间），或者具有（0，0）坐标。
+此示例将调查是否有任何一个经度和/或纬度字段包含无效的值（弧度应介于 -90 到 90 之间），或者具有（0，0）坐标。
 
     SELECT COUNT(*) FROM <schemaname>.<nyctaxi_trip>
     WHERE pickup_datetime BETWEEN '20130101' AND '20130331'
@@ -417,7 +417,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 **输出︰**查询应返回 2013 年度的以下小费频率︰90,447,622 个已付小费的和 82,264,709 个未付小费的。
 
 ### <a name="exploration-tip-classrange-distribution"></a>浏览：小费分类/范围分布
-此示例将计算给定的时间段（或如果时间段为全年，则表示完整的数据集）内的小费范围分布。 这是以后将用于多类分类建模的标签类的分布。
+此示例将计算给定的时间段（或如果时间段为全年，则表示完整的数据集）内的小费范围分布。 这是以后用于多类分类建模的标签类的分布。
 
     SELECT tip_class, COUNT(*) AS tip_freq FROM (
         SELECT CASE
@@ -442,7 +442,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 | 4 |85765 |
 
 ### <a name="exploration-compute-and-compare-trip-distance"></a>浏览：计算并比较行程距离
-此示例将上车和下车经度和纬度转换为 SQL 地理位置点，使用 SQL 地理位置点差异计算行程距离，并返回一个随机抽样的结果进行比较。 仅在使用前面介绍的数据质量评估查询时，该示例才将结果限制为有效坐标。
+此示例将上车和下车经度和纬度转换为 SQL 地理位置点，使用 SQL 地理位置点差异计算行程距离，并返回一个随机抽样的结果进行比较。 该示例仅在使用前面介绍的数据质量评估查询，将结果限制为有效坐标。
 
     /****** Object:  UserDefinedFunction [dbo].[fnCalculateDistance] ******/
     SET ANSI_NULLS ON
@@ -524,7 +524,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
     END
     GO
 
-下面是一个示例，显示如何调用此函数以在你的 SQL 查询中生成功能︰
+下面是一个示例，显示如何调用此函数以在 SQL 查询中生成功能︰
 
     -- Sample query to call the function to create features
     SELECT pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude,
@@ -561,10 +561,10 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
     AND   t.pickup_datetime = f.pickup_datetime
     AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 
-准备好进行 Azure 机器学习后，你也可以：  
+准备好进行 Azure 机器学习后，也可以：  
 
 1. 保存最终的 SQL 查询，以提取和采样数据，然后直接将查询复制和粘贴到 Azure 机器学习中的“[导入数据][import-data]”模块，或者
-2. 保留计划用于在新 SQL DW 表中进行建模的抽样和工程数据，然后使用 Azure 机器学习的“[导入数据][import-data]”模块中的新表。 前面步骤中的 PowerShell 脚本已经为你完成此操作。 你可以直接从“导入数据”模块中的此表读取。
+2. 保留计划用于在新 SQL DW 表中进行建模的抽样和工程数据，并使用 Azure 机器学习的“[导入数据][import-data]”模块中的新表。 前面步骤中的 PowerShell 脚本已经完成此操作。 可以直接从“导入数据”模块中的此表读取。
 
 ## <a name="ipnb"></a>IPython Notebook 中的数据浏览和功能设计
 在此部分中，我们将对之前创建的 SQL DW 使用 Python 和 SQL 查询，执行数据浏览和功能生成。 名为 **SQLDW_Explorations.ipynb** 的 IPython Notebook 示例和名为 **SQLDW_Explorations_Scripts.py** 的 Python 脚本文件已下载到本地目录。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW) 上也有提供。 这两个文件在 Python 脚本中相同。 提供 Python 脚本文件用于应对没有 IPython Notebook 服务器的情况。 这两个示例 Python 文件在 **Python 2.7** 下开发。
@@ -573,10 +573,10 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 如果已设置好 AzureML 工作区，可以直接将示例 IPython Notebook 上传到 AzureML IPython Notebook 服务，并开始运行。 下面是上传到 AzureML IPython Notebook 服务的步骤：
 
-1. 登录 AzureML 工作区、单击顶部的“工作室”，然后单击网页左侧的“NOTEBOOKS”。
+1. 登录 AzureML 工作区、单击顶部的“工作室”，并单击网页左侧的“NOTEBOOKS”。
    
     ![图 22][22]
-2. 单击网页左下角的“新建”，然后选择“Python 2”。 然后，为笔记本提供名称，并单击复选标记以创建新的空白 IPython Notebook。
+2. 单击网页左下角的“新建”，并选择“Python 2”。 然后，为笔记本提供名称，并单击复选标记以创建新的空白 IPython Notebook。
    
     ![图 23][23]
 3. 单击新 IPython Notebook 左上角的“Jupyter”符号。
@@ -830,7 +830,7 @@ and
 7. 使用定型数据集训练一个或多个模型。
 8. 使用定型模型对验证数据集评分。
 9. 评估模型来计算针对学习问题的相关指标。
-10. 微调模型，然后选择最佳模型进行部署。
+10. 微调模型，并选择最佳模型进行部署。
 
 在此练习中，我们已经探讨和设计了 SQL 数据仓库中的数据，并确定了要引入 Azure ML 中的样本大小。 下面是构建一个或多个预测模型的过程：
 
@@ -858,7 +858,7 @@ and
 ## <a name="mldeploy"></a>在 Azure 机器学习中部署模型
 模型已就绪时，即可轻松地从实验直接将其部署为 Web 服务。 有关部署 Azure ML Web 服务的详细信息，请参阅[部署 Azure 机器学习 Web 服务](machine-learning-publish-a-machine-learning-web-service.md)。
 
-要部署新 Web 服务，你需要：
+要部署新 Web 服务，需要：
 
 1. 创建评分实验。
 2. 部署 Web 服务。
@@ -880,7 +880,7 @@ Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特�
 ![Azure ML 发布][11]
 
 ## <a name="summary"></a>摘要
-简单概括一下我们在此演练教程中完成的任务，你已创建 Azure 数据科学环境，并使用大型公共数据集，从而将它的用法贯穿整个数据团队科学过程，从数据采集到 Azure 机器学习 Web 服务的模型训练，再到部署等多项工作。
+简单概括一下我们在此演练教程中完成的任务，已创建 Azure 数据科学环境，并使用大型公共数据集，从而将它的用法贯穿整个数据团队科学过程，从数据采集到 Azure 机器学习 Web 服务的模型训练，再到部署等多项工作。
 
 ### <a name="license-information"></a>许可证信息
 此示例演练和及其附带脚本和 IPython notebook 是在 MIT 许可证下由 Microsoft 共享。 如需详细信息，请查看 GitHub 上的示例代码目录中的 LICENSE.txt 文件。

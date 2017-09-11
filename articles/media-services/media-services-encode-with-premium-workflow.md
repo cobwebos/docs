@@ -4,7 +4,7 @@ description: "了解如何使用媒体编码器高级工作流进行编码。 �
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 0f4c87ac-810a-4d42-8df8-923dff2016c6
 ms.service: media-services

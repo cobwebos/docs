@@ -26,18 +26,18 @@ ms.lasthandoff: 05/31/2017
 对于有软件保障的客户，Azure 混合使用权益可让你使用本地 Windows Server 和 Windows 客户端许可证，并以较低的成本在 Azure 中运行Windows 虚拟机。 适用于 Windows Server 的 Azure 混合使用权益包括 Windows Server 2008R2、Windows Server 2012、Windows Server 2012R2 和 Windows Server 2016。 适用于 Windows 客户端的 Azure 混合使用权益包括 Windows 10。 有关详细信息，请参阅 [Azure 混合使用权益许可页](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
 
 >[!IMPORTANT]
->适用于 Windows 客户端的 Azure 混合使用权益目前提供预览，在 Azure 应用商店中使用 Windows 10 映像。 仅适用于：具有按用户分配的 Windows 10 企业版 E3/E5 或按用户分配的 Windows VDA（用户订阅许可证或附加用户订阅许可证，统称为“合格许可证”）的企业客户。
+>适用于 Windows 客户端的 Azure 混合使用权益目前提供预览，在 Azure Marketplace 中使用 Windows 10 映像。 仅适用于：具有按用户分配的 Windows 10 企业版 E3/E5 或按用户分配的 Windows VDA（用户订阅许可证或附加用户订阅许可证，统称为“合格许可证”）的企业客户。
 >
 >
 
 ## <a name="ways-to-use-azure-hybrid-use-benefit"></a>使用 Azure 混合使用权益的方法
 有多种不同方法可使用 Azure 混合使用权益部署 Windows VM：
 
-1. 可以从[特定应用商店映像](#deploy-a-vm-using-the-azure-marketplace)部署 VM，这些映像已通过 Azure 混合使用权益（Windows Server 2016、Windows Server 2012R2、Windows Server 2012 和 Windows Server 2008SP1）进行了预配置。
+1. 可以从[特定 Marketplace 映像](#deploy-a-vm-using-the-azure-marketplace)部署 VM，这些映像已通过 Azure 混合使用权益（Windows Server 2016、Windows Server 2012R2、Windows Server 2012 和 Windows Server 2008SP1）进行了预配置。
 2. 用户可以[上传自定义 VM](#upload-a-windows-vhd)，并[使用 Resource Manager 模板](#deploy-a-vm-via-resource-manager)或 [Azure PowerShell](#detailed-powershell-deployment-walkthrough) 进行部署。
 
-## <a name="deploy-a-vm-using-the-azure-marketplace"></a>使用 Azure 应用商店部署 VM
-以下映像可在应用商店中获取，这些映像已通过以下 Azure 混合使用权益进行了预配置：Windows Server 2016、Windows Server 2012R2、Windows Server 2012 和 Windows Server 2008SP1。 这些映像可以直接从 Azure 门户、Resource Manager 模板或 Azure PowerShell 进行部署。
+## <a name="deploy-a-vm-using-the-azure-marketplace"></a>使用 Azure Marketplace 部署 VM
+以下映像可在 Marketplace 中获取，这些映像已通过以下 Azure 混合使用权益进行了预配置：Windows Server 2016、Windows Server 2012R2、Windows Server 2012 和 Windows Server 2008SP1。 这些映像可以直接从 Azure 门户、Resource Manager 模板或 Azure PowerShell 进行部署。
 
 可直接从 Azure 门户中部署这些映像。 对于在 Resource Manager 模板中使用和与 Azure PowerShell 一起使用，请查看如下映像列表：
 
@@ -89,7 +89,7 @@ Add-AzureRmVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\m
    }
 ```
 
-仅针对与 Azure 应用商店映像配合使用的 Windows 客户端：
+仅针对与 Azure Marketplace 映像配合使用的 Windows 客户端：
 ```json
 "properties": {  
    "licenseType": "Windows_Client",
@@ -106,7 +106,7 @@ Add-AzureRmVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\m
 New-AzureRmVM -ResourceGroupName "myResourceGroup" -Location "West US" -VM $vm -LicenseType "Windows_Server"
 ```
 
-仅针对与 Azure 应用商店映像配合使用的 Windows 客户端：
+仅针对与 Azure Marketplace 映像配合使用的 Windows 客户端：
 ```powershell
 New-AzureRmVM -ResourceGroupName "myResourceGroup" -Location "West US" -VM $vm -LicenseType "Windows_Client"
 ```

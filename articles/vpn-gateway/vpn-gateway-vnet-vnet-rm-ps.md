@@ -463,7 +463,7 @@ ms.lasthandoff: 08/03/2017
 
 ## <a name="faq"></a>VNet 到 VNet 常见问题解答
 
-[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
+[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

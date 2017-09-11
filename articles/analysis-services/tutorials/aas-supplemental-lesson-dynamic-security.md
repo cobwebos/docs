@@ -3,7 +3,7 @@ title: "Azure Analysis Services 教程补充课程：动态安全性 | Microsoft
 description: "介绍如何通过 Azure Analysis Services 教程中的行筛选器来使用动态安全性。"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

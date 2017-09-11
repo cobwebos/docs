@@ -1,25 +1,24 @@
 ---
-title: "Azure Active Directory B2C：授权代码流 | Microsoft Docs"
-description: "了解如何使用 OpenID Connect 身份验证协议的 Azure Active Directory 实现构建 Web 应用。"
+title: "授权代码流 - Azure AD B2C | Microsoft Docs"
+description: "了解如何使用 Azure AD B2C 和 OpenID Connect 身份验证协议生成 Web 应用。"
 services: active-directory-b2c
 documentationcenter: 
-author: dstrockis
-manager: mbaldwin
-editor: 
+author: saeedakhter-msft
+manager: krassk
+editor: parakhj
 ms.assetid: c371aaab-813a-4317-97df-b62e2f53d865
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
-ms.author: dastrock
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 50ac9a0d95a581e696817364e94134abc089bfdf
+ms.date: 08/16/2017
+ms.author: saeedakhter-msft
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: dfc4f2e84704307ccbea6141c0dbc8d089733b22
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C：OAuth 2.0 授权代码流
@@ -36,7 +35,7 @@ ms.lasthandoff: 06/28/2017
 
 Azure AD B2C 扩展了标准 OAuth 2.0 流，使其功能远远超出了简单的身份验证和授权。 它引入了[策略参数](active-directory-b2c-reference-policies.md)。 借助内置策略，可使用 OAuth 2.0 向应用添加用户体验，例如注册、登录和配置文件管理。 本文演示如何使用 OAuth 2.0 和策略在本机应用程序中实现每个体验。 我们还将演示如何获取用于访问 Web API 的访问令牌。
 
-在本文的示例 HTTP 请求中，我们使用示例 Azure AD B2C 目录 **fabrikamb2c.onmicrosoft.com**。 我们还使用示例应用程序和策略。 可使用这些值自行尝试这些请求，或使用自己的值替换它们。
+在本文的示例 HTTP 请求中，我们使用示例 Azure AD B2C 目录 **fabrikamb2c.onmicrosoft.com**。我们还使用示例应用程序和策略。 可使用这些值自行尝试这些请求，或使用自己的值替换它们。
 了解如何[获取自己的 Azure AD B2C 目录、应用程序和策略](#use-your-own-azure-ad-b2c-directory)。
 
 ## <a name="1-get-an-authorization-code"></a>1.获取授权代码
@@ -91,7 +90,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 此时，要求用户完成策略的工作流。 这可能涉及用户输入其用户名和密码、使用社交标识登录、注册目录，或任何其他步骤。 用户操作取决于策略是如何定义的。
 
-用户完成策略后，Azure AD 会在用于 `redirect_uri` 的值中将响应返回应用。 它使用在 `response_mode` 参数中指定的方法。 对于每种用户操作情况，响应完全相同，与执行的策略无关。
+用户完成策略后，Azure AD 会在你用于 `redirect_uri` 的值处将响应返回到应用。 它使用在 `response_mode` 参数中指定的方法。 对于每种用户操作情况，响应完全相同，与执行的策略无关。
 
 使用 `response_mode=query` 的成功响应如下所示：
 
@@ -135,11 +134,11 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 | 参数 | 必需？ | 说明 |
 | --- | --- | --- |
-| p |必选 |用于获取授权代码的策略。 你无法在此请求中使用不同的策略。 请注意，将此参数添加到*查询字符串*中，而不是添加到 POST 正文中。 |
+| p |必选 |用于获取授权代码的策略。 无法在此请求中使用不同的策略。 请注意，将此参数添加到*查询字符串*中，而不是添加到 POST 正文中。 |
 | client_id |必选 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
 | grant_type |必选 |授权的类型。 对于授权代码流，授权类型必须为 `authorization_code`。 |
 | 作用域 |建议 |范围的空格分隔列表。 一个范围值，该值向 Azure AD 指示正在请求的两个权限。 使用客户端 ID 作为范围表示，应用需要可对自己的服务或 Web API（由同一客户端 ID 表示）使用的访问令牌。  `offline_access` 范围表示应用需要刷新令牌才能获取对资源的长生存期访问权限。  还可使用 `openid` 范围从 Azure AD B2C 请求 ID 令牌。 |
-| 代码 |必选 |在授权代码流的第一个阶段获取的授权代码。 |
+| 代码 |必选 |在流的第一个阶段获取的授权代码。 |
 | redirect_uri |必选 |在其中收到授权代码的应用程序的重定向 URI。 |
 
 成功令牌响应如下所示：
@@ -199,7 +198,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 
 | 参数 | 必需？ | 说明 |
 | --- | --- | --- |
-| p |必选 |用于获取原始刷新令牌的策略。 你无法在此请求中使用不同的策略。 请注意，将此参数添加到*查询字符串*中，而不是添加到 POST 正文中。 |
+| p |必选 |用于获取原始刷新令牌的策略。 无法在此请求中使用不同的策略。 请注意，将此参数添加到*查询字符串*中，而不是添加到 POST 正文中。 |
 | client_id |建议 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
 | grant_type |必选 |授权的类型。 对于授权代码流的此阶段，授权类型必须为 `refresh_token`。 |
 | 作用域 |建议 |范围的空格分隔列表。 一个范围值，该值向 Azure AD 指示正在请求的两个权限。 使用客户端 ID 作为范围表示，应用需要可对自己的服务或 Web API（由同一客户端 ID 表示）使用的访问令牌。  `offline_access` 范围表示应用需要刷新令牌才能获取对资源的长生存期访问权限。  还可使用 `openid` 范围从 Azure AD B2C 请求 ID 令牌。 |

@@ -4,7 +4,7 @@ description: "了解流分析警报"
 keywords: "设置警报"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 9952e2cf-b335-4a5c-8f45-8d3e1eda2e20
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/26/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: a0c9c771c273728cf35d9cd727e1570e2a9bff5a
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: cdbd7da36f3eb2795fc4548915ebbf18200ca44d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>为 Azure 流分析作业设置警报
@@ -52,7 +51,7 @@ ms.lasthandoff: 07/06/2017
 
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

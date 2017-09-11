@@ -6,21 +6,21 @@ author: jasonwhowell
 ms.author: jasonh
 manager: jhubbard
 editor: jasonwhowell
-ms.service: postgresql-database
+ms.service: postgresql
 ms.custom: mvc
 ms.devlang: nodejs
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 06/23/2017
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: ddc364f2a0b8a8bb0a4a2c3a563c007470415991
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: f6c98833c73b70bcf1f8ca53596a34f09807b276
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 
 # <a name="azure-database-for-postgresql-use-nodejs-to-connect-and-query-data"></a>Azure Database for PostgreSQL：使用 Node.js 进行连接并查询数据
-本快速入门演示了如何使用 Windows、Ubuntu Linux 和 Mac 平台的 [Node.js](https://nodejs.org/) 连接到 Azure Database for PostgreSQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文中的步骤假定你熟悉如何使用 Node.js 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
+本快速入门演示了如何使用 [Node.js](https://nodejs.org/) 连接到 Azure Database for PostgreSQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文中的步骤假定你熟悉如何使用 Node.js 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
 
 ## <a name="prerequisites"></a>先决条件
 此快速入门使用以下任意指南中创建的资源作为起点：
@@ -31,7 +31,7 @@ ms.lasthandoff: 08/10/2017
 - 安装 [Node.js](https://nodejs.org)
 
 ## <a name="install-pg-client"></a>安装 pg 客户端
-安装 [pg](https://www.npmjs.com/package/pg)，这是 node.js 的纯 JavaScript 非阻止性客户端，适用于连接和查询 PostgreSQL。
+安装 [pg](https://www.npmjs.com/package/pg)，这是 Node.js 的 PostgreSQL 客户端。
 
 为此，请从命令行运行适用于 JavaScript 的节点包管理器 (npm)，以便安装 pg 客户端。
 ```bash
@@ -42,20 +42,13 @@ npm install pg
 ```bash
 npm list
 ```
-列表命令输出确认每个组件的版本。 
-```
-`-- pg@6.2.3
-  +-- buffer-writer@1.0.1
-  +-- packet-reader@0.3.1
-etc...
-```
 
 ## <a name="get-connection-information"></a>获取连接信息
 获取连接到 Azure Database for PostgreSQL 所需的连接信息。 需要完全限定的服务器名称和登录凭据。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在 Azure 门户中的左侧菜单中，单击“所有资源”，并搜索刚创建的服务器 **mypgserver-20170401**。
-3. 单击服务器名称 **mypgserver-20170401**。
+2. 在 Azure 门户中的左侧菜单中，单击“所有资源”，并搜索刚创建的服务器。
+3. 单击服务器名称。
 4. 选择服务器的“概述”页面。 记下“服务器名称”和“服务器管理员登录名”。
  ![Azure Database for PostgreSQL - 服务器管理员登录名](./media/connect-nodejs/1-connection-string.png)
 5. 如果忘了服务器的登录信息，请导航到“概览”页，以查看服务器管理员登录名并重置密码（如果需要）。
@@ -73,10 +66,12 @@ etc...
 const pg = require('pg');
 
 const config = {
-    host: 'mypgserver-20170401.postgres.database.azure.com',
-    user: 'mylogin@mypgserver-20170401',
-    password: '<server_admin_password>',
-    database: '<name_of_database>',
+    host: '<your-db-server-name>.postgres.database.azure.com',
+    // Do not hard code your username and password.
+    // Consider using Node environment variables.
+    user: '<your-db-username>',     
+    password: '<your-password>',
+    database: '<name-of-database>',
     port: 5432,
     ssl: true
 };
@@ -122,10 +117,12 @@ function queryDatabase() {
 const pg = require('pg');
 
 const config = {
-    host: 'mypgserver-20170401.postgres.database.azure.com',
-    user: 'mylogin@mypgserver-20170401',
-    password: '<server_admin_password>',
-    database: '<name_of_database>',
+    host: '<your-db-server-name>.postgres.database.azure.com',
+    // Do not hard code your username and password.
+    // Consider using Node environment variables.
+    user: '<your-db-username>',     
+    password: '<your-password>',
+    database: '<name-of-database>',
     port: 5432,
     ssl: true
 };
@@ -168,10 +165,12 @@ function queryDatabase() {
 const pg = require('pg');
 
 const config = {
-    host: 'mypgserver-20170401.postgres.database.azure.com',
-    user: 'mylogin@mypgserver-20170401',
-    password: '<server_admin_password>',
-    database: '<name_of_database>',
+    host: '<your-db-server-name>.postgres.database.azure.com',
+    // Do not hard code your username and password.
+    // Consider using Node environment variables.
+    user: '<your-db-username>',     
+    password: '<your-password>',
+    database: '<name-of-database>',
     port: 5432,
     ssl: true
 };
@@ -186,19 +185,20 @@ client.connect(err => {
 });
 
 function queryDatabase() {
-    const query = `UPDATE inventory 
-                   SET quantity= 1000 WHERE name='banana';`;
+    const query = `
+        UPDATE inventory 
+        SET quantity= 1000 WHERE name='banana';
+    `;
 
     client
         .query(query)
-        .then(() => {
-            console.log('Update completed succesfully!');
-            client.end(console.log('Closed client connection'));
+        .then(result => {
+            console.log('Update completed');
+            console.log(`Rows affected: ${result.rowCount}`);
         })
-        .catch(err => console.log(err))
-        .then(() => {
-            console.log('Finished execution, exiting now');
-            process.exit();
+        .catch(err => {
+            console.log(err);
+            throw err;
         });
 }
 ```
@@ -212,42 +212,42 @@ function queryDatabase() {
 const pg = require('pg');
 
 const config = {
-  host: '<your-db-server-name>.postgres.database.azure.com',
-  // Do not hard code your username and password.
-  // Consider using Node environment variables.
-  user: '<your-db-username>',     
-  password: '<your-password>',
-  database: '<name-of-database>',
-  port: 5432,
-  ssl: true
+    host: '<your-db-server-name>.postgres.database.azure.com',
+    // Do not hard code your username and password.
+    // Consider using Node environment variables.
+    user: '<your-db-username>',     
+    password: '<your-password>',
+    database: '<name-of-database>',
+    port: 5432,
+    ssl: true
 };
 
 const client = new pg.Client(config);
 
 client.connect(err => {
-  if (err) {
-    throw err;
-  } else {
-    queryDatabase();
-  }
+    if (err) {
+        throw err;
+    } else {
+        queryDatabase();
+    }
 });
 
 function queryDatabase() {
-  const query = `
-    DELETE FROM inventory 
-    WHERE name = 'apple';
-  `;
+    const query = `
+        DELETE FROM inventory 
+        WHERE name = 'apple';
+    `;
 
-  client
-    .query(query)
-    .then(result => {
-      console.log('Delete completed');
-      console.log(`Rows affected: ${result.rowCount}`);
-    })
-    .catch(err => {
-      console.log(err);
-      throw err;
-    });
+    client
+        .query(query)
+        .then(result => {
+            console.log('Delete completed');
+            console.log(`Rows affected: ${result.rowCount}`);
+        })
+        .catch(err => {
+            console.log(err);
+            throw err;
+        });
 }
 ```
 

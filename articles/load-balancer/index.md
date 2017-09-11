@@ -2,7 +2,7 @@
 title: "Azure 负载均衡器文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用负载均衡器提高应用的网络性能。 管理虚拟机、云资源和跨界虚拟网络中的流量。"
 services: load-balancer
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
 ms.openlocfilehash: 96da506c8545a1b863e62133706a2687c2498bbd
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/22/2017
 
 ---

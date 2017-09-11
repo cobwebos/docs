@@ -2,7 +2,7 @@
 title: "Azure Log Analytics 文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用 Log Analytics 收集及分析云与本地环境中的资源生成的数据，不管这些资源的实际位置在哪里。"
 services: log-analytics
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b44e02d3e22722c05adce10c3b527adf9be20f00
 ms.openlocfilehash: 9d5d1ada86a2cb1b6f6f70d9c662708f81b5bcc6
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/23/2017
 
 ---

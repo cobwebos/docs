@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: ce1857395176ef50a16a7291170fb220896fd792
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 5c4bcda308f001572e1c34e991616fc209250a02
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="nosql-tutorial-build-a-documentdb-api-java-console-application"></a>NoSQL 教程：构建 DocumentDB API Java 控制台应用程序
@@ -82,11 +82,11 @@ ms.lasthandoff: 07/25/2017
 ## <a id="Connect"></a>步骤 3：连接到 Azure Cosmos DB 帐户
 接下来，返回到 [Azure 门户](https://portal.azure.com)检索终结点和主密钥。 Azure Cosmos DB 终结点和主密钥是必需的，可让应用程序知道要连接的对象，使 Azure Cosmos DB 信任应用程序的连接。
 
-在 Azure 门户中，导航到 Azure Cosmos DB 帐户，并单击“密钥”。 从门户中复制该 URI 并将它粘贴到 Program.java 文件中的 `<your endpoint URI>`。 然后从门户中复制“主密钥”并将它粘贴到 `<your key>`。
+在 Azure 门户中，导航到 Azure Cosmos DB 帐户，并单击“密钥”。 从门户中复制该 URI 并将它粘贴到 Program.java 文件中的 `https://FILLME.documents.azure.com`。 然后从门户中复制“主密钥”并将它粘贴到 `FILLME`。
 
     this.client = new DocumentClient(
-        "<your endpoint URI>",
-        "<your key>"
+        "https://FILLME.documents.azure.com",
+        "FILLME"
         , new ConnectionPolicy(),
         ConsistencyLevel.Session);
 
@@ -118,7 +118,7 @@ ms.lasthandoff: 07/25/2017
 
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
-## <a id="CreateDoc"></a>步骤 6：创建 JSON 文档
+## <a id="CreateDoc"></a>第 6 步：创建 JSON 文档
 可以使用 **DocumentClient** 类的 [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) 方法创建[文档](documentdb-resources.md#documents)。 文档是用户定义的（任意）JSON 内容。 现在，我们可以插入一个或多个文档。 如果已有要在数据库中存储的数据，则可以使用 Azure Cosmos DB 的[数据迁移工具](import-data.md)将数据导入数据库。
 
     // Insert your Java objects as documents 
@@ -180,7 +180,7 @@ Azure Cosmos DB 支持使用 [replaceDocument](/java/api/com.microsoft.azure.doc
     
     mvn package
 
-运行 `mvn package` 将从 Maven 下载最新的 Azure Cosmos DB 库，并生成 `GetStarted-0.0.1-SNAPSHOT.jar`。 然后执行以下命令运行该应用：
+运行 `mvn package` 将从 Maven 下载最新的 Azure Cosmos DB 库，并生成 `GetStarted-0.0.1-SNAPSHOT.jar`。 然后通过运行以下命令运行该应用：
 
     mvn exec:java -D exec.mainClass=GetStarted.Program
 

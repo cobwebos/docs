@@ -42,8 +42,11 @@
 ## 管理可重用模板
 ### [添加 Git 存储库以存储项目和模板](devtest-lab-add-artifact-repo.md)
 ### [使用 Resource Manager 模板](devtest-lab-use-resource-manager-template.md)
-### [创建自定义项目](devtest-lab-artifact-author.md)
 ### [管理公式](devtest-lab-manage-formulas.md)
+
+## 管理项目
+### [创建自定义项目](devtest-lab-artifact-author.md)
+### [对项目故障进行诊断](devtest-lab-troubleshoot-artifact-failure.md)
 
 ## 管理虚拟网络
 ### [配置虚拟网络](devtest-lab-configure-vnet.md)

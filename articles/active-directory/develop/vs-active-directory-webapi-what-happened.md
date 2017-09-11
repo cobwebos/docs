@@ -3,8 +3,8 @@ title: "连接到 Azure AD 时对 WebApi 项目所做的更改 | Microsoft 文�
 description: "介绍使用 Visual Studio 连接到 Azure AD 时，WebApi 项目会发生什么情况"
 services: active-directory
 documentationcenter: 
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
 ms.service: active-directory
@@ -13,14 +13,13 @@ ms.tgt_pltfrm: vs-what-happened
 ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2017
-ms.author: tarcher
+ms.author: kraigb
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 8ca3234e54d8736aa187195640a103ac6eb145e7
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/21/2017
-
 
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>我的 WebApi 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况

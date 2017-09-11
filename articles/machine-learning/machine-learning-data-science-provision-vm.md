@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/21/2017
 ms.author: bradsev
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: b1b29ba11bc489a6ad67c2d9043cdb8a2dca7ef8
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 76cd54cd234dfe43e8f0d61f0b66f0ed0c09e8b7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="provision-the-microsoft-data-science-virtual-machine"></a>预配 Microsoft 数据科研虚拟机
@@ -47,7 +47,7 @@ Microsoft 数据科学虚拟机是一种 Windows Azure 虚拟机 (VM) 映像，�
 2. 构建和测试模型
 3. 部署模型以在智能应用程序中使用
 
-数据科研人员可使用各种工具来完成这些任务。 找到软件的适当版本然后下载并安装这些版本，是相当耗时的工作。 Microsoft 数据科研虚拟机提供可在 Azure 上预配的现成映像，其中已预装并配置了多个常用工具，有助于减轻工作负担。 
+数据科研人员可使用各种工具来完成这些任务。 找到软件的适当版本然后下载并安装这些版本，是一个相当耗时的工作。 Microsoft 数据科研虚拟机提供可在 Azure 上预配的现成映像，其中已预装并配置了多个常用工具，有助于减轻工作负担。 
 
 Microsoft 数据科研虚拟机可快速启动分析项目。 它支持处理各种语言版本的任务，包括 R、Python、SQL 和 C#。 Visual Studio 提供 IDE，可开发易于使用的代码并对其进行测试。 使用 VM 中包含的 Azure SDK，可在 Microsoft 云平台上使用各种服务来生成应用程序。 
 
@@ -60,7 +60,7 @@ Microsoft 数据科研虚拟机可快速启动分析项目。 它支持处理各
 创建 Microsoft 数据科研虚拟机之前，必须满足以下条件：
 
 * **Azure 订阅**：若要获取订阅，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* **Azure 存储帐户**：若要创建帐户，请参阅[创建 Azure 存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)。 如果不想使用现有帐户，可以在创建 VM 过程中创建存储帐户。
+* **Azure 存储帐户**：若要创建帐户，请参阅[创建 Azure 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。 如果不想使用现有帐户，可以在创建 VM 过程中创建存储帐户。
 
 ## <a name="create-your-microsoft-data-science-virtual-machine"></a>创建 Microsoft 数据科研虚拟机
 下面是创建 Microsoft 数据科研虚拟机实例的步骤：
@@ -76,7 +76,7 @@ Microsoft 数据科研虚拟机可快速启动分析项目。 它支持处理各
       3. **密码**：管理员帐户密码。
       4. **订阅**：如果有多个订阅，请选择要在其上创建虚拟机并对其计费的订阅。
       5. **资源组**：可以创建新组或使用现有组。
-      6. **位置**：选择最适合的数据中心。 通常，最合适的数据中心应拥有大部分数据，或者最接近你的实际位置以实现最快的网络访问。
+      6. **位置**：选择最适合的数据中心。 通常，最合适的数据中心应拥有大部分数据，或者最接近实际位置以实现最快的网络访问。
    2. **大小**：选择能满足功能需求和成本约束的服务器类型。 可以选择“查看全部”获取更多的 VM 大小选项。
    3. **设置**：
       
@@ -84,7 +84,7 @@ Microsoft 数据科研虚拟机可快速启动分析项目。 它支持处理各
       2. **存储帐户**：可以在订阅中创建新的 Azure 存储帐户，或者使用位于与向导的**基本信息**步骤中选择的相同*位置*的现有帐户。
       3. **其他参数**：通常只需使用默认值。 如果考虑使用非默认值，可以将鼠标悬停在特定字段的信息链接上获取帮助。
    4. **摘要**：检查输入的所有信息是否正确。
-   5. **购买**：单击“购买”开始预配。 此时将显示交易条款的链接。 除计算**大小**步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。 
+   5. **购买**：单击“购买”开始预配。 此时会显示交易条款的链接。 除计算**大小**步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。 
 
 > [!NOTE]
 > 预配约需要 10 到 20 分钟。 预配的状态在 Azure 门户上显示。
@@ -117,7 +117,7 @@ VM 上已安装 Microsoft R Server Developer Edition，方便将 R 用于分析�
 为方便使用 Python 进行开发，已安装 Anaconda Python 分发版 2.7 和 3.5。 此分发版包含基本 Python 以及约 300 种最常用的数学、工程和数据分析包。 可以使用 Visual Studio 2015 Community Edition 中安装的用于 Visual Studio 的 Python 工具 (PTVS)，或 Anaconda 随附的 IDE 之一，例如 IDLE 或 Spyder。 可以通过在搜索栏（**Win** + **S** 键）中进行搜索来启动其中的某个工具。
 
 > [!NOTE]
-> 若要将用于 Visual Studio 的 Python 工具指向 Anaconda Python 2.7 和 3.5，需要为每个版本创建自定义环境。 若要在 Visual Studio 2015 Community Edition 中设置这些环境路径，请导航到“工具” -> “Python 工具” -> “Python 环境”，然后单击“+ 自定义”。 
+> 要将用于 Visual Studio 的 Python 工具指向 Anaconda Python 2.7 和 3.5，需要为每个版本创建自定义环境。 要在 Visual Studio 2015 Community Edition 中设置这些环境路径，请导航到“工具” -> “Python 工具” -> “Python 环境”，并单击“+ 自定义”。 
 > 
 > 
 
@@ -131,7 +131,7 @@ Anaconda 分发版还附带 Jupyter 笔记本 - 用于共享代码和分析的�
 > 
 > 
 
-我们已使用 Python 和 R 格式打包了多个笔记本示例。在你登录 Jupyter 之后，Jupyter 笔记本将演示如何使用 Microsoft R Server、SQL Server 2016 R 服务（数据库内部分析）、Python、Microsoft 认知工具包 (CNTK) 进行深度学习，此外，还将演示其他 Azure 技术。 使用在前面步骤中创建的密码向 Jupyter 笔记本进行身份验证后，可以在笔记本主页上看到示例的链接。 
+我们已使用 Python 和 R 格式打包了多个笔记本示例。在登录 Jupyter 之后，Jupyter 笔记本将演示如何使用 Microsoft R Server、SQL Server 2016 R 服务（数据库内部分析）、Python、Microsoft 认知工具包 (CNTK) 进行深度学习，此外，还将演示其他 Azure 技术。 使用在前面步骤中创建的密码向 Jupyter 笔记本进行身份验证后，可以在笔记本主页上看到示例的链接。 
 
 ### <a name="visual-studio-2015-community-edition"></a>Visual Studio 2015 Community Edition
 VM 上安装的 Visual Studio Community Edition。 它是 Microsoft 免费提供的流行 IDE 版本，适合小型团队用来进行评估。 可以在[此处](https://www.visualstudio.com/support/legal/mt171547)查看许可条款。  双击桌面图标或者通过“开始”菜单打开 Visual Studio。 也可以使用 **Win** + **S** 并输入“Visual Studio”来搜索程序。 然后，便可以使用 C#、Python、R 和 node.js 等语言来创建项目。 另外，该版本中还安装了插件，以方便使用 Azure 数据目录、Azure HDInsight（Hadoop、Spark）和 Azure Data Lake 等 Azure 服务。 
@@ -149,7 +149,7 @@ VM 上提供包含 R 服务的 SQL Server 2016 开发人员版本用于运行数
 > 
 > 
 
-可以通过启动 **SQL Server Management Studio** 来访问 SQL Server。 服务器名称中已填充你的 VM 名称。 请在 Windows 上以管理员身份登录时使用 Windows 身份验证。 进入 SQL Server Management Studio 后，可以创建其他用户、创建数据库、导入数据以及运行 SQL 查询。 
+可以通过启动 **SQL Server Management Studio** 来访问 SQL Server。 服务器名称中已填充 VM 名称。 请在 Windows 上以管理员身份登录时使用 Windows 身份验证。 进入 SQL Server Management Studio 后，可以创建其他用户、创建数据库、导入数据以及运行 SQL 查询。 
 
 若要使用 Microsoft R 启用数据库内部分析，请在以服务器管理员身份登录后，在 SQL Server Management Studio 中运行以下命令（一次性操作）。 
 

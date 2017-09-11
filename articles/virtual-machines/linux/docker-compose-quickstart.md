@@ -27,7 +27,7 @@ ms.lasthandoff: 08/09/2017
 
 
 ## <a name="set-up-a-linux-vm-as-a-docker-host"></a>将 Linux VM 设置为 Docker 主机
-可以使用各种 Azure 过程和 Azure 应用商店中提供的映像或 Resource Manager 模板创建 Linux VM，并将其设置为 Docker 主机。 例如，请参阅[使用 Docker VM 扩展部署环境](dockerextension.md)，了解使用[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)通过 Azure Docker VM 扩展快速创建 Ubuntu VM。 
+可以使用各种 Azure 过程和 Azure Marketplace 中提供的映像或 Resource Manager 模板创建 Linux VM，并将其设置为 Docker 主机。 例如，请参阅[使用 Docker VM 扩展部署环境](dockerextension.md)，了解使用[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)通过 Azure Docker VM 扩展快速创建 Ubuntu VM。 
 
 使用 Docker VM 扩展时，VM 会自动设置为 Docker 主机，并且已安装 Compose。
 

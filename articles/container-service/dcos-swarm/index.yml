@@ -28,6 +28,10 @@ sections:
               src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
             text: 创建 DC/OS 群集
             href: /azure/container-service/container-service-dcos-quickstart
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_docker.svg'
+            text: 创建 Docker Swarm 群集
+            href: /azure/container-service/dcos-swarm/container-service-swarm-walkthrough
   - title: 分步教程
     items:
       - type: paragraph
@@ -55,4 +59,4 @@ sections:
           - title: 命令行
             html: <p><a href="/cli/azure/acs">Azure CLI</a></p>
           - title: REST
-            html: <p><a href="/rest/api/compute/containerservices">REST API</a></p>
+            html: <p><a href="/rest/api/container-services">REST API</a></p>

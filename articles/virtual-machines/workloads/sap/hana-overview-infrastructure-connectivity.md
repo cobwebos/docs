@@ -15,10 +15,10 @@ ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: abc3f5ee70130b6be093e63afb495c86b921ba26
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 177627d8f72dbd04fb918ac7ece18321246a9c62
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 07/20/2017
 - **Azure 上的 SAP HANA（大型实例）：**用于在通过 SAP HANA TDI 认证的、部署在不同 Azure 区域中的大型实例模具中的硬件上运行 HANA 实例的产品的官方名称。 本技术部署指南中广泛使用的相关术语“HANA 大型实例”是“Azure 上的 SAP HANA（大型实例）”的简称。
  
 
-在你与 Microsoft 企业帐户团队之间达成“Azure 上的 SAP HANA（大型实例）”的采购协议后，Microsoft 要求提供以下信息来部署 HANA 大型实例单元：
+在你与 Microsoft 企业帐户团队之间达成“Azure 上的 SAP HANA（大型实例）”的采购协议后，Microsoft 会要求提供以下信息来部署 HANA 大型实例单元：
 
 - 客户名称
 - 业务联系人信息（包括电子邮件地址和电话号码）
@@ -133,7 +133,7 @@ ms.lasthandoff: 07/20/2017
 
 - **用于 ER-P2P 连接的地址范围：**这是 SAP HANA 大型实例 ExpressRoute (ER) P2P 连接所需的 IP 范围。 此 IP 地址范围必须是 /29 CIDR IP 地址范围。 此范围不得与本地或其他 Azure IP 地址范围重叠。 此 IP 地址范围用于设置从 Azure VNet ExpressRoute 网关到 SAP HANA 大型实例服务器的 ER 连接。 如何获取此 IP 地址范围？ 企业网络团队或服务提供程序应提供网络内部当前未使用的 IP 地址范围。 这是需要在请求进行初始部署时提交给 Microsoft 的 IP 地址范围
   
-- **服务器 IP 池地址范围：**此 IP 地址范围用于向 HANA 大型实例服务器分配单个 IP 地址。 建议的子网大小为 /24 CIDR 块 - 但如果需要，可将它缩小到提供 64 个 IP 地址的最小规模。 此范围内的前 30 个 IP 地址保留给 Microsoft 使用。 选择范围大小时，请务必考虑到这一事实。 此范围不得与本地或其他 Azure IP 地址重叠。 如何获取此 IP 地址范围？ 你的企业网络团队或服务提供商应会提供你的网络内部当前未使用的 IP 地址范围。 /24（推荐）唯一 CIDR 块，用于为 Azure 上的 SAP HANA（大型实例）分配所需的特定 IP 地址。 这是需要在请求进行初始部署时提交给 Microsoft 的 IP 地址范围
+- **服务器 IP 池地址范围：**此 IP 地址范围用于向 HANA 大型实例服务器分配单个 IP 地址。 建议的子网大小为 /24 CIDR 块 - 但如果需要，可将它缩小到提供 64 个 IP 地址的最小规模。 此范围内的前 30 个 IP 地址保留给 Microsoft 使用。 选择范围大小时，请务必考虑到这一事实。 此范围不得与本地或其他 Azure IP 地址重叠。 如何获取此 IP 地址范围？ 企业网络团队或服务提供商应会提供网络内部当前未使用的 IP 地址范围。 /24（推荐）唯一 CIDR 块，用于为 Azure 上的 SAP HANA（大型实例）分配所需的特定 IP 地址。 这是需要在请求进行初始部署时提交给 Microsoft 的 IP 地址范围
  
 尽管需要定义和规划上述 IP 地址范围，但不需要将它们全部传输到 Microsoft。 概括而言，需要提交到 Microsoft 的 IP 地址范围包括：
 
@@ -160,7 +160,7 @@ ms.lasthandoff: 07/20/2017
 定义 IP 地址范围后，需要执行以下活动：
 
 1. 连同本文档开头部分列出的其他数据一起提交 Azure VNet 地址空间、ER-P2P 连接和服务器 IP 池地址范围的 IP 地址范围。 此时，还可以开始创建 VNet 和 VM 子网。 
-2. Express Route 线路是由 Microsoft 在你的订阅与 HANA 大型实例模具之间创建的。
+2. Express Route 线路是由 Microsoft 在订阅与 HANA 大型实例模具之间创建的。
 3. 租户网络由 Microsoft 在大型实例戳记上创建。
 4. Microsoft 会在 Azure 上的 SAP HANA（大型实例）基础结构中配置网络，以接受要与 HANA 大型实例通信的 Azure VNet 地址空间中的 IP 地址。
 5. Microsoft 会在租户网络中分配计算单元，分配并装载存储，再安装操作系统（SUSE 或 Red Hat Linux），具体视购买的 Azure 上的 SAP HANA（大型实例）SKU 而定。 这些单元的 IP 地址将从提交给 Microsoft 的服务器 IP 池地址范围中排除。
@@ -171,7 +171,7 @@ ms.lasthandoff: 07/20/2017
      - ExpressRoute 对等互连 ID
 - 建立 ExpressRoute 线路和 Azure VNet 后用于访问 HANA 大型实例的数据。
 
-有关 HANA 大型实例的连接顺序，还可以参阅 [SAP HANA 大型实例的端到端设置](https://msdnshared.blob.core.windows.net/media/2017/06/End-to-End-Setup-of-SAP-HANA-Large-Instances.pdf)一文。 这篇文档中的示例部署展示了以下许多步骤。 
+有关 HANA 大型实例的连接顺序，还可以参阅 [SAP HANA 大型实例的端到端设置](https://azure.microsoft.com/resources/sap-hana-on-azure-large-instances-setup/)一文。 这篇文档中的示例部署展示了以下许多步骤。 
 
 
 ## <a name="connecting-a-vnet-to-hana-large-instance-expressroute"></a>将 VNet 连接到 HANA 大型实例 ExpressRoute
@@ -268,7 +268,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $myConnectionName `
 
 ## <a name="increasing-expressroute-circuit-bandwidth"></a>提高 ExpressRoute 线路带宽
 
-咨询 Azure 上的 SAP HANA 服务管理部门。 如果有通知指出需要提高 Azure 上的 SAP HANA（大型实例）ExpressRoute 线路的带宽，请创建 Azure 支持请求。 （可以请求将单条线路的带宽提高到最大 10 Gbps）。完成该操作后，你将会收到通知；不需要采取其他措施即可在 Azure 中提高速度。
+咨询 Azure 上的 SAP HANA 服务管理部门。 如果有通知指出需要提高 Azure 上的 SAP HANA（大型实例）ExpressRoute 线路的带宽，请创建 Azure 支持请求。 （可以请求将单条线路的带宽提高到最大 10 Gbps）。完成该操作后，会收到通知；不需要采取其他措施即可在 Azure 中提高速度。
 
 ## <a name="adding-an-additional-expressroute-circuit"></a>添加其他 ExpressRoute 线路
 
@@ -278,7 +278,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $myConnectionName `
 
 ## <a name="deleting-a-subnet"></a>删除子网
 
-若要删除 VNet 子网，可以使用 Azure 门户、PowerShell 或 CLI。 如果 Azure VNet IP 地址范围/Azure VNet 地址空间在聚合范围内，则你不需要与 Microsoft 协调。 不过，VNet 仍会传播包含已删除的子网的 BGP 路由地址空间。 如果已将 Azure VNet IP 地址范围/Azure VNet 地址空间定义为多个 IP 地址范围，并且其中的某个范围已分配到已删除的子网，则应在 VNet 地址空间中删除该范围，随后告知 Azure 上的 SAP HANA 服务管理部门，让他们从允许 Azure 上的 SAP HANA（大型实例）通信的范围中删除该范围。
+若要删除 VNet 子网，可以使用 Azure 门户、PowerShell 或 CLI。 如果 Azure VNet IP 地址范围/Azure VNet 地址空间在聚合范围内，则不需要与 Microsoft 协调。 不过，VNet 仍会传播包含已删除的子网的 BGP 路由地址空间。 如果已将 Azure VNet IP 地址范围/Azure VNet 地址空间定义为多个 IP 地址范围，并且其中的某个范围已分配到已删除的子网，则应在 VNet 地址空间中删除该范围，随后告知 Azure 上的 SAP HANA 服务管理部门，让他们从允许 Azure 上的 SAP HANA（大型实例）通信的范围中删除该范围。
 
 Azure.com 上有关删除子网的专门指南中所述的过程，就是添加子网的相反过程，不过，尚未提供具体的步骤。 若要详细了解如何创建子网，请参阅[使用 Azure 门户创建虚拟网络](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)一文。
 

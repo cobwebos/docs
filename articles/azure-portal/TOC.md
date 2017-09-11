@@ -1,16 +1,23 @@
-# [概述](../azure-portal-overview.md)
+# 概述
+## [关于 Azure 门户](../azure-portal-overview.md)
+# 教程
+## [将 DevOps 与 Azure 门户配合使用](tutorial-azureportal-devops.md)
+# 概念
 ## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
-
-# 入门
-## [使用 Resource Manager 模板进行部署](../azure-resource-manager/resource-group-template-deploy.md)
-
-# 如何
+## [键盘快捷方式](azure-portal-keyboard-shortcuts.md)
+## [支持的浏览器和设备](../azure-preview-portal-supported-browsers-devices.md)
+## [Azure 仪表板结构](azure-portal-dashboards-structure.md)
+# 操作指南
 ## 部署
 ### [创建 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)
-
+### [使用 Resource Manager 模板进行部署](../azure-resource-manager/resource-group-template-deploy.md)
+### [创建并共享 Azure 仪表板](azure-portal-dashboards.md)
+### [以编程方式创建 Azure 仪表板](azure-portal-dashboards-create-programmatically.md)
 ## 管理
-### [使用预览门户管理资源](../azure-resource-manager/resource-group-portal.md)
-### [使用 RBAC 管理访问权限](../active-directory/role-based-access-control-configure.md)
+### [启用高对比度或更改主题](azure-portal-change-theme-high-contrast.md)
+### [使用门户管理资源](../azure-resource-manager/resource-group-portal.md)
+### [使用基于角色的访问控制管理访问权限](../active-directory/role-based-access-control-configure.md)
+### [使用基于角色的访问控制共享仪表板](azure-portal-dashboard-share-access.md)
 ### [使用标记来组织资源](../azure-resource-manager/resource-group-using-tags.md)
 ### [缩放资源](../monitoring-and-diagnostics/insights-how-to-scale.md)
 ### [创建新的 Azure 服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)
@@ -23,7 +30,7 @@
 ### [接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
 # 相关内容
-## [Azure Resource Manager 模板函数](../azure-resource-manager/resource-group-template-functions.md)
+## [Azure 资源管理器模板函数](../azure-resource-manager/resource-group-template-functions.md)
 ## [自动缩放最佳实践](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
 ## [自动缩放的常用指标](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)
 ## [自动缩放通知 Webhook](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)

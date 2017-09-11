@@ -1,6 +1,6 @@
 ---
 title: "创建和注册发布者帐户 | Microsoft Docs"
-description: "创建 Microsoft 开发人员帐户的说明，同意后，即可在 Azure 应用商店中销售各种产品/服务类型。"
+description: "创建 Microsoft 开发人员帐户的说明，同意后，即可在 Azure Marketplace 中销售各种产品/服务类型。"
 services: Azure Marketplace
 documentationcenter: 
 author: HannibalSII
@@ -14,18 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: hascipio
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 125d4d4bc916883e3bb53b9b3b4bf46bbb4bf139
 ms.openlocfilehash: 642e4a2d11ef5a92f5ab46bc4872414966b04c0d
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/06/2017
 
 
 ---
 # <a name="create-a-microsoft-developer-account"></a>创建 Microsoft 开发人员帐户
-本文介绍成为 Azure 应用商店的批准 Microsoft 开发人员的必要帐户创建和注册过程。
+本文介绍成为 Azure Marketplace 的批准 Microsoft 开发人员的必要帐户创建和注册过程。
 
 ## <a name="1-create-a-microsoft-account"></a>1.创建 Microsoft 帐户
-若要开始发布过程，需要创建 Microsoft 帐户。 此帐户将用于注册 **Microsoft 开发人员中心**和 **Azure 发布门户**。 对于你的 Azure 应用商店产品/服务，你只应具有一个 Microsoft 帐户。 它不应该特定于服务或产品。
+若要开始发布过程，需要创建 Microsoft 帐户。 此帐户将用于注册 **Microsoft 开发人员中心**和 **Azure 发布门户**。 对于你的 Azure Marketplace 产品/服务，你只应具有一个 Microsoft 帐户。 它不应该特定于服务或产品。
 
 组成用户名的地址应位于你的域上，并受你的 IT 团队控制。 所有与发布有关的活动都应通过此帐户完成。
 
@@ -98,7 +99,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
     ![绘制](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_04.png)
 
    > [!WARNING]
-   > **“销售”国家/地区：**若要在 Microsoft Azure 应用商店销售服务，注册实体必须是已批准的上述“销售”国家/地区之一。 此限制是出于付款和税务的原因。 我们正在积极地寻求在不久的将来扩展这一国家/地区列表，敬请关注。 有关详细信息，请参阅[应用商店参与政策](http://go.microsoft.com/fwlink/?LinkID=526833)。
+   > **“销售”国家/地区：**若要在 Microsoft Azure Marketplace 销售服务，注册实体必须是已批准的上述“销售”国家/地区之一。 此限制是出于付款和税务的原因。 我们正在积极地寻求在不久的将来扩展这一国家/地区列表，敬请关注。 有关详细信息，请参阅 [Marketplace 参与政策](http://go.microsoft.com/fwlink/?LinkID=526833)。
    >
    >
 5. 将“帐户类型”选择为“公司”，然后单击“下一步”按钮。
@@ -112,7 +113,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 6. 输入“发布者显示名称”，通常为你的公司名称。
 
    > [!TIP]
-   > 你的优惠列出后，开发人员中心中输入的发布者显示名称不会显示在 Azure 应用商店中。 但若要完成注册过程，必须填写该名称。
+   > 你的优惠列出后，开发人员中心中输入的发布者显示名称不会显示在 Azure Marketplace 中。 但若要完成注册过程，必须填写该名称。
    >
    >
 7. 输入用于帐户验证的“联系人信息”。
@@ -127,9 +128,9 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 9. 输入付款信息，以为你的帐户付款。 如果你有抵扣注册费用的促销代码，可以在此处输入该代码。 否则，请提供信用卡信息（或所在市场支持的 PayPal）。 完成后，单击“下一步”以转到“查看屏幕”。
 
     ![绘制](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_09.png)
-10. 查看你的帐户信息，并确认所有内容都正确无误。 然后，阅读并接受 [Microsoft Azure 应用商店发布者协议](http://go.microsoft.com/fwlink/?LinkID=699560)的条款和条件。 选中该框，即表明你已阅读并接受这些条款。
+10. 查看你的帐户信息，并确认所有内容都正确无误。 然后，阅读并接受 [Microsoft Azure Marketplace 发布者协议](http://go.microsoft.com/fwlink/?LinkID=699560)的条款和条件。 选中该框，即表明你已阅读并接受这些条款。
 11. 单击“完成”，确认你的注册。 我们会向你的电子邮件地址发送一封确认邮件。
-12. 如果你打算仅发布免费的产品/服务，请单击“转到 Azure 应用商店发布门户”，然后可以跳到本文档的第 3 部分（[在发布门户中注册你的帐户](#3-register-your-account-in-the-publishing-portal)）。
+12. 如果你打算仅发布免费的产品/服务，请单击“转到 Azure Marketplace 发布门户”，然后可以跳到本文档的第 3 部分（[在发布门户中注册你的帐户](#3-register-your-account-in-the-publishing-portal)）。
 
 如果你打算发布商业产品/服务（例如，带有每小时计费模型的虚拟机产品），请单击“更新帐户信息”，其中必须在你的开发人员中心帐户中填写税务和银行信息。
 
@@ -151,7 +152,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 2. 单击左侧菜单中的“付款帐户”，在“选择付款方式”下单击“银行帐户”或“PayPal”。
 
    > [!IMPORTANT]
-   > 如果你拥有客户在应用商店购买过的商业产品/服务，该帐户即用于对这些购买进行收款。
+   > 如果你拥有客户在 Marketplace 购买过的商业产品/服务，该帐户即用于对这些购买进行收款。
    >
    >
 3. 输入付款信息，确认无误后单击“保存”。
@@ -231,7 +232,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 现在，你的帐户已完成创建和注册，请确保通过查看[非技术先决条件](marketplace-publishing-pre-requisites.md)，来实现或满足发布你的产品/服务的所有非技术先决条件。
 
 ## <a name="see-also"></a>另请参阅
-* [入门：如何将产品/服务发布到 Azure 应用商店](marketplace-publishing-getting-started.md)
+* [入门：如何将产品/服务发布到 Azure Marketplace](marketplace-publishing-getting-started.md)
 
 [img-msalive]:media/marketplace-publishing-accounts-creation-registration/creating-msa-account-msa-live.jpg
 [img-email]:media/marketplace-publishing-accounts-creation-registration/creating-msa-account-msa-verifyemail.jpg

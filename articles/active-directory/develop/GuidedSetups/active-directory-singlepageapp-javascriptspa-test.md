@@ -1,24 +1,52 @@
+---
+title: "Azure AD v2 JS SPA 设置指南 - 测试 | Microsoft 文档"
+description: "JavaScript SPA 应用程序如何才能通过 Azure Active Directory v2 终结点调用需要访问令牌的 API"
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mbaldwin
+editor: 
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 06/01/2017
+ms.author: andret
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: c559c80781da3631a783d96539622c4c89fe7e17
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/19/2017
 
+---
 ## <a name="test-your-code"></a>测试代码
 
-如果使用的是 Visual Studio，请按 `F5` 运行项目。 浏览器将打开 http://localhost:{port} 并将你重定向到该网址，其中你将看到“调用 Microsoft Graph API”按钮。
+> ### <a name="testing-with-visual-studio"></a>使用 Visual Studio 进行测试
+> 如果你使用的是 Visual Studio，请按 `F5` 运行你的项目：随即会打开浏览器并将你指向 *http://localhost: {port}*，然后你会看到“调用 Microsoft Graph API”按钮。
 
-如果使用的不是 Visual Studio，请确保已启动 Web 服务器，并且已在 Web 服务器中配置了包含 JavaScript Web 应用程序的文件夹。 打开浏览器并键入 http://localhost:{port}/path - 其中 port 对应于 Web 服务器正在侦听的端口，path 是 index.html 的路径。
+<p/><!-- -->
 
-单击“调用 Microsoft Graph API”按钮。 如果是首次执行此操作，将显示弹出窗口，提示用户登录。
+> ### <a name="testing-with-python-or-another-web-server"></a>使用 Python 或另一台 Web 服务器进行测试
+> 如果使用的不是 Visual Studio，请确保已启动 Web 服务器，并且已将其配置为基于包含 *index.html* 文件的文件夹侦听 TCP 端口。 对于 Python，你可以从应用的文件夹中通过在命令提示符处/终端运行项目，开始侦听端口：
+> 
+> ```bash
+> python -m http.server 8080
+> ```
+>  然后，打开浏览器并键入 http://localhost:8080，或者 http://localhost:{port} - 其中 port 对应于 Web 服务器正在侦听的端口。 你会看到其中有“调用 Microsoft Graph API”按钮的 index.html 页面的内容。
+
+## <a name="test-your-application"></a>测试应用程序
+
+浏览器载入你的 *index.html* 页面后，单击“调用 Microsoft Graph API”按钮。 如果这是第一次，浏览器会将你重定向到 Microsoft Azure Active Directory v2 终结点，然后系统会提示你登录。
  
 ![示例屏幕截图](media/active-directory-singlepageapp-javascriptspa-test/javascriptspascreenshot1.png)
 
 
 ### <a name="consent"></a>同意
-首次登录应用程序时，将看到如下所示的许可屏幕，请显式接受：
+用户首次登录应用程序时，将看到如下所示的许可屏幕，用户需要接受：
 
  ![许可屏幕](media/active-directory-singlepageapp-javascriptspa-test/javascriptspaconsent.png)
 
-由于你正在查询 Microsoft Graph API，因此可能会看到另一个许可页面。 这是动态许可导致的 - 应用程序请求的每个作用域都需要一个许可。 本指南生成的示例应用程序已提供 user.read 作用域，因此需要同意此应用程序读取用户的配置文件。
-
-> [!IMPORTANT]
-> 目前，由于 msal javascript 的已知问题，请在浏览器（如 Chrome 和 Firefox）中禁用弹出窗口阻止程序，以便动态许可屏幕能够正常工作。 首次使用 `acquireTokenPopup` 调用 Microsoft Graph API 时，需要禁用弹出窗口阻止程序。
 
 ### <a name="expected-results"></a>预期结果
 将显示 Microsoft Graph API 调用响应返回的用户配置文件信息。
@@ -32,6 +60,7 @@
 
 Microsoft Graph API 需要 `user.read` 作用域来读取用户的配置文件。 默认情况下，在我们的注册门户上注册的每个应用程序中，都会自动添加此作用域。 Microsoft Graph 的某些其他 API 及后端服务器的自定义 API 可能需要其他作用域。 例如，对于 Microsoft Graph，需要作用域 `Calendars.Read` 才能列出用户日历。 若要在应用程序上下文中访问用户的日历，则需将 `Calendars.Read` 委派权限添加到应用程序注册信息，然后将 `Calendars.Read` 作用域添加到 `acquireTokenSilent` 调用。 增加作用域数量时，用户可能收到其他许可的提示。
 
-如果后端 API 不需要作用域（不推荐），则可以将 `clientId` 用作 `acquireTokenSilent` 和/或 `acquireTokenPopup` 调用中的作用域。
+如果后端 API 不需要作用域（不推荐），则可以将 `clientId` 用作 `acquireTokenSilent` 和/或 `acquireTokenRedirect` 调用中的作用域。
 
 <!--end-collapse-->
+

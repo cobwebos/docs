@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 6bb75685a38e261a2a8c12aef1de6629e2bb9008
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: aa0cbba6bdb4cfdfe6ceee50c94f706aa0974924
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>将数据移到 Azure 虚拟机上的 SQL Server
@@ -41,19 +40,19 @@ ms.lasthandoff: 06/08/2017
 请注意，本文档假设你从 SQL Server Management Studio 或 Visual Studio 数据库资源管理器执行 SQL 命令。
 
 > [!TIP]
-> 你也可以使用 [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)来创建和安排会将数据移动到 Azure 上的 SQL Server 虚拟机的管道。 有关更多信息，请参阅[使用 Azure 数据工厂复制数据（复制活动）](../data-factory/data-factory-data-movement-activities.md)。
+> 也可以使用 [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)来创建和安排会将数据移动到 Azure 上的 SQL Server 虚拟机的管道。 有关更多信息，请参阅[使用 Azure 数据工厂复制数据（复制活动）](../data-factory/data-factory-data-movement-activities.md)。
 >
 >
 
 ## <a name="prereqs"></a>先决条件
-本教程假设你具备：
+本教程假设你拥有：
 
 * 一个 **Azure 订阅**。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* 一个 **Azure 存储帐户**。 在本教程中，你将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)一文。 创建存储帐户后，你将需要获取用于访问存储的帐户密钥。 请参阅[管理存储访问密钥](../storage/storage-create-storage-account.md#manage-your-storage-access-keys)。
+* 一个 **Azure 存储帐户**。 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)一文。 创建存储帐户后，需要获取用于访问存储的帐户密钥。 请参阅[管理存储访问密钥](../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys)。
 * 在 **Azure 虚拟机上置备了 SQL Server**。 有关说明，请参阅[将 Azure SQL Server 虚拟机设置为用于高级分析的 IPython Notebook 服务器](machine-learning-data-science-setup-sql-server-virtual-machine.md)。
 * 已在本地安装和配置 **Azure PowerShell**。 有关说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
-## <a name="filesource_to_sqlonazurevm"></a>将数据从平面文件源移动到 Azure 虚拟机上的 SQL Server
+## <a name="filesource_to_sqlonazurevm"></a>将数据从平面文件源移动到 Azure VM 上的 SQL Server
 如果数据位于平面文件中（以行/列格式排列），则可以通过以下方法将它移到 Azure 上的 SQL Server 虚拟机：
 
 1. [命令行大容量复制实用程序 (BCP)](#insert-tables-bcp)
@@ -65,7 +64,7 @@ BCP 是随 SQL Server 一起安装的命令行实用程序，并且是数据移�
 
 > [!NOTE]
 > **对于 BCP 我的数据应在哪里？**  
-> 尽管并非必需，但是将包含源数据的文件置于目标 SQL Server 所在的计算机上可以更快地进行传输（网络速度与本地磁盘 IO 速度）。 可以使用各种文件复制工具（如 [AZCopy](../storage/storage-use-azcopy.md)、[Azure 存储资源管理器](http://storageexplorer.com/)，或者通过远程桌面协议 (RDP) 进行 Windows 复制/粘贴），将包含数据的平面文件移到已安装 SQL Server 的计算机。
+> 尽管并非必需，但是将包含源数据的文件置于目标 SQL Server 所在的计算机上可以更快地进行传输（网络速度与本地磁盘 IO 速度）。 可以使用各种文件复制工具（如 [AZCopy](../storage/common/storage-use-azcopy.md)、[Azure 存储资源管理器](http://storageexplorer.com/)，或者通过远程桌面协议 (RDP) 进行 Windows 复制/粘贴），将包含数据的平面文件移到已安装 SQL Server 的计算机。
 >
 >
 
@@ -90,8 +89,8 @@ BCP 是随 SQL Server 一起安装的命令行实用程序，并且是数据移�
 >
 >
 
-### <a name="insert-tables-bulkquery-parallel"></a>可实现更快数据移动的并行插入
-如果你正在移动的数据很大，你可以通过在 PowerShell 脚本中同时并行执行多个 BCP 命令加快移动速度。
+### <a name="insert-tables-bulkquery-parallel"></a>并行插入可实现更快的数据移动
+如果正在移动的数据很大，可以通过在 PowerShell 脚本中同时并行执行多个 BCP 命令加快移动速度。
 
 > [!NOTE]
 > **大型数据引入**若要优化大型和超大型数据集的数据加载，请使用多个文件组和分区表对逻辑数据库和物理数据库表进行分区。 有关创建并将数据加载到分区表的详细信息，请参阅[并行加载 SQL 分区表](machine-learning-data-science-parallel-load-sql-partitioned-tables.md)。
@@ -140,7 +139,7 @@ BCP 是随 SQL Server 一起安装的命令行实用程序，并且是数据移�
 
 以下是一些用于批量插入的示例命令：  
 
-1. 分析数据并设置任何自定义选项后再导入，以确保 SQL Server 数据库对于任何特殊的字段（例如日期）均假设相同的格式。 以下是如何将日期格式设置为“年-月-日”（如果你的数据包含“年-月-日”格式的日期）的示例：
+1. 分析数据并设置任何自定义选项后再导入，以确保 SQL Server 数据库对于任何特殊的字段（例如日期）均假设相同的格式。 以下是如何将日期格式设置为“年-月-日”（如果数据包含“年-月-日”格式的日期）的示例：
 
         SET DATEFORMAT ymd;    
 2. 使用批量导入语句导入数据：
@@ -162,7 +161,7 @@ SSIS 在两个 Studio 环境中可用。 有关详细信息，请参阅[集成�
 * 有关 SQL Server Data Tools 的详细信息，请参阅 [Microsoft SQL Server Data Tools](https://msdn.microsoft.com/data/tools.aspx)  
 * 有关导入/导出向导的详细信息，请参阅 [SQL Server 导入和导出向导](https://msdn.microsoft.com/library/ms141209.aspx)
 
-## <a name="sqlonprem_to_sqlonazurevm"></a>将数据从本地 SQL Server 移动到 Azure 虚拟机上的 SQL Server
+## <a name="sqlonprem_to_sqlonazurevm"></a>将数据从本地 SQL Server 移动到 Azure VM 上的 SQL Server
 此外，还可以使用以下迁移策略：
 
 1. [将 SQL Server 数据库部署到 Microsoft Azure 虚拟机向导](#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard)
@@ -191,7 +190,7 @@ SSIS 在两个 Studio 环境中可用。 有关详细信息，请参阅[集成�
     对 SQL Server 远程运行 BCP 时生成格式文件
 
         bcp dbname..tablename format nul -c -x -f  exportformatfilename.xml  -U username@servername.database.windows.net -S tcp:servername -P password  --t \t -r \n
-4. 使用[从文件源移动数据](#filesource_to_sqlonazurevm)部分中介绍的任意方法将平面文件中的数据移到 SQL Server。
+4. 使用[从文件源移动数据](#filesource_to_sqlonazurevm)部分中介绍的任意方法将平面文件中的数据移动到 SQL Server。
 
 ### <a name="sql-migration"></a>SQL 数据库迁移向导
 [SQL Server 数据库迁移向导](http://sqlazuremw.codeplex.com/)提供了一种可在两个 SQL Server 实例之间移动数据的用户友好方法。 它允许用户在源表和目标表之间映射数据架构，选择列类型和各种其他功能。 它使用隐式的大容量复制 (BCP)。 SQL 数据库迁移向导的欢迎屏幕的屏幕快照如下所示。  

@@ -2,7 +2,7 @@
 title: "Azure 安全文档 - 教程 | Microsoft 文档"
 description: "了解如何根据服务部署以及云中数据的要求，在 Azure 服务中自定义安全选项。"
 services: security
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

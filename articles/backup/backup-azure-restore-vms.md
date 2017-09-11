@@ -13,14 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2017
+ms.date: 08/11/2017
 ms.author: trinadhk; jimpark;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: c6f00c51456ebf5b2a0c2464272bffcec2959266
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: fc52c909df5e91741ec1fa21fb911487be039fdc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="restore-virtual-machines-in-azure"></a>还原 Azure 中的虚拟机
@@ -33,14 +32,14 @@ ms.lasthandoff: 06/16/2017
 执行以下步骤，通过存储在 Azure 备份保管库中的备份将虚拟机还原到新的 VM。
 
 > [!IMPORTANT]
-> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 从 2017 年 11 月 1 日起：
+> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 10 月 15 日之后，将无法使用 PowerShell 创建备份保管库。 <br/> 从 2017 年 11 月 1 日起：
 >- 其余的所有备份保管库都将自动升级到恢复服务保管库。
 >- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
 >
 
 ## <a name="restore-workflow"></a>还原工作流
 ### <a name="step-1-choose-an-item-to-restore"></a>步骤 1：选择要还原的项
-1. 导航到“受保护的项”选项卡，然后选择要还原到新 VM 中的虚拟机。
+1. 导航到“受保护的项”选项卡，然后选择要还原到新 VM 的虚拟机。
 
     ![受保护的项](./media/backup-azure-restore-vms/protected-items.png)
 
@@ -50,38 +49,38 @@ ms.lasthandoff: 06/16/2017
     ![还原项](./media/backup-azure-restore-vms/restore-item.png)
 
 ### <a name="step-2-pick-a-recovery-point"></a>步骤 2：选择恢复点
-1. 在“选择恢复点”屏幕中，可从最新的恢复点进行恢复，或者从以前的某个时间点进行恢复。 向导打开时默认选择的选项是“最新恢复点”。
+1. 在“选择恢复点”屏幕中，可以从最新的恢复点进行恢复，或者从以前的某个时间点进行恢复。 向导打开时默认选择的选项是“最新恢复点”。
 
     ![选择恢复点](./media/backup-azure-restore-vms/select-recovery-point.png)
 2. 若要选择更早的时间点，请在下拉列表中选择“选择日期”选项，并通过单击“日历图标”，在日历控件中选择一个日期。 在控件中，所有具有恢复点的日期以浅灰色阴影填充，并可供用户选择。
 
     ![选择日期](./media/backup-azure-restore-vms/select-date.png)
 
-    在你单击日历控件中的日期后，该日可用的恢复点将显示在下面的恢复点表中。 “时间”列指示生成快照的时间。 “类型”列显示恢复点的[一致性](https://azure.microsoft.com/documentation/articles/backup-azure-vms/#consistency-of-recovery-points)。 表标题在括号中显示该日期可用的恢复点数目。
+    在单击日历控件中的日期后，该日可用的恢复点会显示在下面的恢复点表中。 “时间”列指示生成快照的时间。 “类型”列显示恢复点的[一致性](https://azure.microsoft.com/documentation/articles/backup-azure-vms/#consistency-of-recovery-points)。 表标题在括号中显示该日期可用的恢复点数目。
 
     ![恢复点](./media/backup-azure-restore-vms/recovery-points.png)
-3. 从“恢复点”表中选择恢复点，然后单击“下一步”箭头转到下一个屏幕。
+3. 从“恢复点”表中选择恢复点，并单击“下一步”箭头转到下一个屏幕。
 
 ### <a name="step-3-specify-a-destination-location"></a>步骤 3：指定目标位置
 1. 在“选择还原实例”屏幕中，指定有关要将虚拟机还原到何处的详细信息。
 
    * 指定虚拟机名称：在指定的云服务中，虚拟机名称应该是唯一的。 不支持覆盖现有 VM。
-   * 选择 VM 的云服务：这是创建 VM 的必要步骤。 你可以选择使用现有的云服务，或创建新的云服务。
+   * 选择 VM 的云服务：这是创建 VM 的必要步骤。 可以选择使用现有的云服务，或创建新的云服务。
 
         选取的任何云服务名称都应是全局唯一的。 通常，云服务名称与面向公众的 URL 相关联，采用 [cloudservice].cloudapp.net 形式。 如果名称已使用，Azure 将不允许创建新的云服务。 如果选择创建新的云服务，它的名称将与虚拟机的名称一样，在这种情况下，选择的 VM 名称应足够唯一，以应用于关联的云服务。
 
         仅显示不与还原实例详细信息中的任何地缘组相关联的云服务和虚拟网络。 [了解详细信息](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)。
-2. 选择 VM 的存储帐户：这是创建 VM 的必要步骤。 你可以选择与 Azure 备份保管库位于相同区域的现有存储帐户。 不支持区域冗余或高级存储类型的存储帐户。
+2. 选择 VM 的存储帐户：这是创建 VM 的必要步骤。 可以选择与 Azure 备份保管库位于相同区域的现有存储帐户。 不支持区域冗余或高级存储类型的存储帐户。
 
     如果没有受支持配置的存储帐户，请在启动还原操作之前创建一个具有受支持配置的存储帐户。
 
     ![选择虚拟网络](./media/backup-azure-restore-vms/restore-sa.png)
-3. 选择虚拟网络：在创建 VM 时应该已经选择了虚拟机的虚拟网络 (VNET)。 还原 UI 将显示在此订阅中可以使用的所有 VNET。 为已还原的 VM 选择 VNET 不是必要步骤 – 即使不应用 VNET，你也可以通过 Internet 连接到已还原的虚拟机。
+3. 选择虚拟网络：在创建 VM 时应该已经选择了虚拟机的虚拟网络 (VNET)。 还原 UI 会显示在此订阅中可以使用的所有 VNET。 为已还原的 VM 选择 VNET 不是必要步骤 – 即使不应用 VNET，也可以通过 Internet 连接到已还原的虚拟机。
 
-    如果选择的云服务与虚拟网络关联，则你无法更改虚拟网络。
+    如果选择的云服务与虚拟网络关联，则无法更改虚拟网络。
 
     ![选择虚拟网络](./media/backup-azure-restore-vms/restore-cs-vnet.png)
-4. 选择子网：如果 VNET 有子网，默认选择的选项为第一个子网。 从下拉选项中选择你想要的子网。 有关子网详细信息，请转到[门户主页](https://manage.windowsazure.com/)中的“网络”扩展，然后转到“虚拟网络”，并在选择虚拟网络后，向下钻取到“配置”以查看子网详细信息。
+4. 选择子网：如果 VNET 有子网，默认选择的选项为第一个子网。 从下拉选项中选择所需子网。 有关子网详细信息，请转到[门户主页](https://manage.windowsazure.com/)中的“网络”扩展，然后转到“虚拟网络”，选择虚拟网络并向下钻取到“配置”以查看子网详细信息。
 
     ![选择子网](./media/backup-azure-restore-vms/select-subnet.png)
 5. 在向导中单击“提交”图标以提交详细信息并创建还原作业。
@@ -91,11 +90,11 @@ ms.lasthandoff: 06/16/2017
 
 ![创建还原作业](./media/backup-azure-restore-vms/create-restore-job.png)
 
-如果成功创建作业，会出现一条 toast 通知，指出作业已创建。 可单击“查看作业”按钮进入“作业”选项卡，以获取更多详细信息。
+如果成功创建作业，会出现一条 toast 通知，指出作业已创建。 可以单击“查看作业”按钮进入“作业”选项卡，以获取更多详细信息。
 
 ![已创建还原作业](./media/backup-azure-restore-vms/restore-job-created.png)
 
-还原操作完成后，系统将在“作业”选项卡中将其标记为已完成。
+还原操作完成后，系统会在“作业”选项卡中将其标记为已完成。
 
 ![还原作业已完成](./media/backup-azure-restore-vms/restore-job-complete.png)
 
@@ -108,7 +107,7 @@ ms.lasthandoff: 06/16/2017
 如果将 VM 还原到的云服务与最初备份 VM 时所在的云服务同名，则还原之后，会继续备份该 VM。 如果将 VM 还原到了不同的云服务或者为还原的 VM 指定了不同的名称，则系统会将此 VM 视为新 VM，因此需为还原的 VM 设置备份。
 
 ## <a name="restoring-a-vm-during-azure-datacenter-disaster"></a>在发生 Azure 数据中心灾难期间还原 VM
-如果运行已备份 VM 的主数据中心遇到灾难性故障，并且你已将备份保管库配置为异地冗余，则 Azure 备份允许将该 VM 还原到配对的数据中心。 在这种情况下，需要选择一个在配对数据中心内存在的存储帐户，而余下的还原过程将保持不变。 Azure 备份使用配对地区中的计算服务来创建还原的虚拟机。 详细了解 [Azure 数据中心复原](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md)
+如果运行已备份 VM 的主数据中心遇到灾难性故障，并且已将备份保管库配置为异地冗余，则 Azure 备份允许将该 VM 还原到配对的数据中心。 在这种情况下，需要选择一个在配对数据中心内存在的存储帐户，而余下的还原过程将保持不变。 Azure 备份使用配对地区中的计算服务来创建还原的虚拟机。 详细了解 [Azure 数据中心复原](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md)
 
 ## <a name="restoring-domain-controller-vms"></a>还原域控制器 VM
 Azure 备份支持对域控制器 (DC) 虚拟机进行备份的方案。 但是，在还原过程中，必须谨慎操作。 还原过程是否正确取决于域的结构。 最简单的情况是单个域中有单个 DC。 对于生产负载，更常见的情况是一个域中包含多个 DC，其中某些 DC 可能位于本地。 最终，你可能拥有一个包含多个域的林。
@@ -150,7 +149,7 @@ Azure 备份支持备份虚拟机的以下特殊网络配置。
 >
 
 ### <a name="restoring-from-the-ui"></a>从 UI 还原：
-从 UI 还原时，请**始终选择新的云服务**。 请注意，由于门户在执行还原流程时只接受强制参数，因此使用 UI 还原的 VM 将会丢失它们拥有的特殊网络配置。 也就是说，还原后的 VM 将会是普通的 VM，而没有负载均衡器配置、多个 NIC 或多个保留 IP。
+从 UI 还原时，请**始终选择新的云服务**。 请注意，由于门户在执行还原流程时只接受强制参数，因此使用 UI 还原的 VM 会丢失它们拥有的特殊网络配置。 也就是说，还原后的 VM 会是普通的 VM，而没有负载均衡器配置、多个 NIC 或多个保留 IP。
 
 ### <a name="restoring-from-powershell"></a>从 PowerShell 还原：
 PowerShell 能够只从备份还原 VM 磁盘，而不建立虚拟机。 当还原需要上述特殊网络配置的虚拟机时，此方法很有用。

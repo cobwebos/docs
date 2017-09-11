@@ -13,37 +13,37 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 08/23/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 194910a3e4cb655b39a64d2540994d90d34a68e4
-ms.openlocfilehash: 90a0cfb7c7cd7d3364ff42559dd7fdc7b2951abf
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 530f3b5c9e90cb45ffb6e12d0d08a35f8d687471
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/16/2017
+ms.lasthandoff: 08/24/2017
 
 ---
-# <a name="create-an-office-data-connection-odc-file"></a>创建 Office 数据连接 (.odc) 文件
+# <a name="create-an-office-data-connection-file"></a>创建 Office 数据连接文件
 
-本文中的信息描述了如何创建 .odc 文件以从 Excel 2016 版本号 16.0.7369.2117 或更早版本或 Excel 2013 连接到 Azure Analysis Services 服务器。 还需要更新的 [MSOLAP.7 提供程序](analysis-services-data-providers.md)。
-
-
-1. 复制下面的示例 .odc 连接文件，并粘贴到文本编辑器中。 
-
-2. 在 **odc:ConnectionString** 中，更改下列属性：
-
-    *   在 **Data Source=asazure://region.asazure.windows.net/servername 中**，将 **region** 更改为 Analysis Services 服务器的区域，并将 servername 更改为服务器的名称。
-
-    *   在 **Initial Catalog=database** 中，**将 database** 更改为你数据库的名称。
-
-3. 在 &lt;odc:CommandText>**Model**&lt;/odc:CommandText> **中，将 Model** 更改为模型或透视图的名称。 
-
-4. 将具有 **.odc** 扩展名的文件保存到 C:\Users\\username\Documents\My Data Sources 文件夹。
-
-5. 右键单击文件，然后单击“在 Excel 中打开”。 或者在 Excel 的“数据”功能区上，单击“现有连接”、选择你的文件，然后单击“打开”。
+本文中的信息描述了如何创建 Office Data Connection 文件，以从 Excel 2016 版本号 16.0.7369.2117 或更早版本或 Excel 2013 连接到 Azure Analysis Services 服务器。 还需要更新的 [MSOLAP.7 提供程序](analysis-services-data-providers.md)。
 
 
+1. 复制下面的示例连接文件，并粘贴到文本编辑器中。 
 
-**示例 .odc 连接文件**
+2. 在 `odc:ConnectionString` 中，更改以下属性：
+
+    *   在 `Data Source=asazure://<region>.asazure.windows.net/<servername>;` 中，将 `<region>` 更改为你 Analysis Services 服务器的区域，将 `<servername>` 更改为你服务器的名称。
+
+    *   在 `Initial Catalog=<database>;` 中，将 `<database>` 更改为你数据库的名称。
+
+3. 在 `<odc:CommandText>Model</odc:CommandText>` 中，将 `Model` 更改为你的模型或者视角的名称。 
+
+4. 将带有 `.odc` 扩展名的文件保存到 C:\Users\\*username*\Documents\My Data Sources 文件夹。
+
+5. 右键单击文件，并单击“在 Excel 中打开”。 或者在 Excel 的“数据”功能区上，单击“现有连接”、选择文件，然后单击“打开”。
+
+
+
+**示例连接文件**
 ```
 <html xmlns:o="urn:schemas-microsoft-com:office:office"
 xmlns="http://www.w3.org/TR/REC-html40">

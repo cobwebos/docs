@@ -1,9 +1,9 @@
 ---
 layout: LandingPage
-description: Learn how to synchronize directories and enable single sign-on. Documentation shows you how to integrate a full suite of identity management capabilities.
+description: "了解如何同步目录和启用单一登录。 文档介绍了如何集成整套标识管理功能。"
 title: "Azure Active Directory 文档 - 教程和 API 参考 | Microsoft 文档"
 services: active-directory
-author: carolz
+author: czeumault
 manager: carolz
 ms.assetid: 
 ms.service: active-directory
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: 8933c77013d7b0d886d3e309dc0b1a72026eb677
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/11/2017
 
 ---

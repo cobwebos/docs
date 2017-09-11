@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 08/07/2017
 ms.author: sethm
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: 45fe7584c8b769113da9d287fea56d68d3d6c55a
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 555759073507219188b59af76a82be74b112c57c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>存储队列和服务总线队列 - 比较与对照
@@ -132,7 +132,7 @@ Azure 支持两种队列机制：**存储队列**和**服务总线队列**。
 
 | 比较条件 | 存储队列 | 服务总线队列 |
 | --- | --- | --- |
-| 最大队列大小 |**500 TB**<br/><br/>（限制为[单个存储帐户容量](../storage/storage-introduction.md#queue-storage)） |**1 GB 到 80 GB**<br/><br/>（在创建队列和[启用分区](service-bus-partitioning.md)时定义 – 请参阅“其他信息”部分） |
+| 最大队列大小 |**500 TB**<br/><br/>（限制为[单个存储帐户容量](../storage/common/storage-introduction.md#queue-storage)） |**1 GB 到 80 GB**<br/><br/>（在创建队列和[启用分区](service-bus-partitioning.md)时定义 – 请参阅“其他信息”部分） |
 | 最大消息大小 |**64 KB**<br/><br/>（使用 **Base64** 编码时为 48 KB）<br/><br/>Azure 可以通过合并队列和 Blob 支持大消息 – 单个项目排队的消息最多达到 200GB。 |**256 KB** 或 **1 MB**<br/><br/>（包含标题和正文，最大标题大小：64 KB）。<br/><br/>取决于[服务层](service-bus-premium-messaging.md)。 |
 | 最大消息 TTL |**7 天** |**`TimeSpan.Max`** |
 | 最大队列数 |**不受限制** |**10,000**<br/><br/>（每个服务命名空间，可以增加） |
@@ -192,7 +192,7 @@ Azure 支持两种队列机制：**存储队列**和**服务总线队列**。
 以下文章提供了有关使用存储队列或服务总线队列的更多指导和信息。
 
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
-* [如何使用队列存储服务](../storage/storage-dotnet-how-to-use-queues.md)
+* [如何使用队列存储服务](../storage/queues/storage-dotnet-how-to-use-queues.md)
 * [使用服务总线中转消息传送改进性能的最佳实践](service-bus-performance-improvements.md)
 * [Introducing Queues and Topics in Azure Service Bus (blog post)](http://www.code-magazine.com/article.aspx?quickid=1112041)（Azure 服务总线中的队列和主题简介 – 博客文章）
 * [The Developer's Guide to Service Bus](http://www.cloudcasts.net/devguide/Default.aspx?id=11030)（服务总线开发人员指南）

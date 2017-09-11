@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: b01a03fa362f8a9677e625945a2864c77d49f1bb
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 08e2988d455cca21726162d9fb128e91fd51f463
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>教程：使用 Hadoop 群集构建用于转换数据的第一个管道
@@ -41,13 +40,13 @@ ms.lasthandoff: 06/14/2017
 
 1. 创建**数据工厂**。 数据工厂可包含用于移动和转换数据的一个或多个数据管道。 
 
-    在本教程中，将在数据工厂中创建一个管道。 
+    在本教程中，会在数据工厂中创建一个管道。 
 2. 创建**管道**。 管道可以具有一个或多个活动（示例：复制活动、HDInsight Hive 活动）。 此示例使用的是 HDInsight Hive 活动，在 HDInsight Hadoop 群集上运行 Hive 脚本。 该脚本首先创建表，以引用存储在 Azure Blob 存储中的原始 Web 日志数据，然后按年和月对原始数据进行分区。
 
     在本教程中，管道通过在 Azure HDInsight Hadoop 群集上运行 Hive 查询使用 Hive 活动转换数据。 
 3. 创建**链接服务**。 创建一个链接服务，将数据存储或计算服务链接到数据工厂。 数据存储（如 Azure 存储）会将输入/输出数据保留在管道中。 计算服务（如 HDInsight Hadoop 群集）会处理/转换数据。
 
-    在本教程中，将创建两个链接服务：**Azure 存储**和 **Azure HDInsight**。 Azure 存储链接服务将保存输入/输出数据的 Azure 存储帐户链接到数据工厂。 Azure HDInsight 链接服务将用于转换数据的 Azure HDInsight 群集链接到数据工厂。 
+    在本教程中，将创建两个链接服务：**Azure 存储**和 **Azure HDInsight**。 Azure 存储链接服务将保存输入/输出数据的 Azure 存储帐户链接到数据工厂。 Azure HDInsight 链接服务用于转换数据的 Azure HDInsight 群集链接到数据工厂。 
 3. 创建输入和输出**数据集**。 输入数据集表示管道中活动的输入，输出数据集表示活动的输出。
 
     在本教程中，输入和输出数据集指定 Azure Blob 存储中输入和输出数据的位置。 Azure 存储链接服务指定使用什么 Azure 存储帐户。 输入数据集指定输入文件所在位置，输出数据集指定输出文件所放置到的位置。 
@@ -82,12 +81,12 @@ adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 开始本教程之前，必须具有以下先决条件：
 
 1. **Azure 订阅** - 如果没有 Azure 订阅，只需几分钟就能创建一个免费试用帐户。 如需了解如何获取免费试用帐户，请参阅[免费试用](https://azure.microsoft.com/pricing/free-trial/)一文。
-2. **Azure 存储** - 在本教程中，你将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)一文。 创建存储帐户后，记下**帐户名称**和**访问密钥**。 请参阅[查看、复制和重新生成存储访问密钥](../storage/storage-create-storage-account.md#view-and-copy-storage-access-keys)。
+2. **Azure 存储** - 本教程使用通用的标准 Azure 存储帐户存储数据。 如果还没有通用的标准 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)一文。 创建存储帐户后，记下**帐户名称**和**访问密钥**。 请参阅[查看、复制和重新生成存储访问密钥](../storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys)。
 3. 下载并查看位于以下网址的 Hive 查询文件 (**HQL**)：[https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql)。 此查询转换输入数据以生成输出数据。 
 4. 下载并查看位于以下网址的示例输入文件 (**input.log**)：[https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
 5. 在 Azure Blob 存储中创建一个名为 **adfgetstarted** 的 blob 容器。 
-6. 将 partitionweblogs.hql 文件上传到 adfgetstarted 容器中的 script 文件夹。 使用 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)等工具。 
-7. 将 input.log 文件上传到 adfgetstarted 容器中的 inputdata 文件夹。 
+6. 将 **partitionweblogs.hql** 文件上传到 **adfgetstarted** 容器中的 **script** 文件夹。 使用 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)等工具。 
+7. 将 **input.log** 文件上传到 **adfgetstarted** 容器中的 **inputdata** 文件夹。 
 
 具备先决条件之后，选择以下工具/SDK 之一完成本教程： 
 

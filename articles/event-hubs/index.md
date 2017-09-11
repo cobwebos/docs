@@ -2,7 +2,7 @@
 title: "Azure 事件中心文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用事件中心从各种平台上已连接的 IoT 设备和应用程序每秒引入数百万个事件。"
 services: event-hubs
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: bb9d08d6164ec01ce1d76fc4a23e782213ecfcd9
-ms.lasthandoff: 03/11/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 8d00882caf5411240c5f0a3533c78c3dbe361ef2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 标识管理安全概述
@@ -27,11 +27,11 @@ Microsoft 标识和访问管理解决方案可帮助 IT 保护对企业数据中
 Azure Active Directory (AD) 在安全方面的益处包括以下能力：
 
 * 为混合企业中的每个用户创建和管理单一 ID，从而保持用户、组和设备同步
-* 提供对你的应用程序（包括数千个预先集成的 SaaS 应用）的单一登录访问
+* 提供对应用程序（包括数千个预先集成的 SaaS 应用）的单一登录访问
 * 通过对本地和云应用强制执行基于规则的多重身份验证，启用应用程序访问安全性
 * 通过 Azure AD 应用程序代理预配对本地 Web 应用程序的安全远程访问
 
-本文旨在概述可帮助进行标识管理的核心 Azure 安全功能。 我们还提供了一些文章链接，其中每篇文章都包含每个功能的详细信息，以便你可以了解更多内容。  
+本文旨在概述可帮助进行标识管理的核心 Azure 安全功能。 我们还提供了一些文章链接，其中每篇文章都包含每个功能的详细信息，以便可以了解更多内容。  
 
 本文重点介绍以下核心 Azure 标识管理功能︰
 
@@ -50,7 +50,7 @@ Azure Active Directory (AD) 在安全方面的益处包括以下能力：
 
 许多组织依赖软件即服务 (SaaS) 应用程序（如 Office 365、Box 和 Salesforce）来提高最终用户生产力。 从历史上看，IT 人员需要在每个 SaaS 应用程序中单独创建和更新用户帐户，而用户需要记住每个 SaaS 应用程序的密码。
 
-Azure AD 将本地 Active Directory 扩展到云，让用户不仅能够使用主要组织帐户登录到已加入域的设备和公司资源，而且还能登录到完成作业所需的全部 Web 和 SaaS 应用程序。
+Azure AD 将本地 Active Directory 环境扩展到云，让用户不仅能够使用主要组织帐户登录到已加入域的设备和公司资源，而且还能登录到完成作业所需的全部 Web 和 SaaS 应用程序。
 
 优势是不仅用户无需管理多组用户名和密码，而且还可根据组织组以及其身为员工的状态，自动预配或取消预配应用程序的访问权限。 Azure AD 引入了安全和访问管理控制，使你能够跨 SaaS 应用程序集中管理用户的访问权限。
 
@@ -61,7 +61,7 @@ Azure AD 将本地 Active Directory 扩展到云，让用户不仅能够使用�
 * [将 Azure Active Directory 单一登录与 SaaS 应用相集成](../active-directory/active-directory-sso-integrate-saas-apps.md)
 
 ## <a name="reverse-proxy"></a>反向代理
-使用 Azure AD 应用程序代理可以在专用网络内部发布本地应用程序（例如 [SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) 站点、[Outlook Web 应用](https://technet.microsoft.com/library/jj657718.aspx)和基于 [IIS](http://www.iis.net/) 的应用），并为你网络之外的用户提供安全访问。 应用程序代理为许多类型的本地 Web 应用程序和 Azure AD 支持的数以千计的 SaaS 应用程序提供远程访问和单一登录 (SSO)。 员工可以从家中他们自己的设备登录到你的应用，并通过此基于云的代理进行身份验证。
+使用 Azure AD 应用程序代理可以在专用网络内部发布本地应用程序（例如 [SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) 站点、[Outlook Web 应用](https://technet.microsoft.com/library/jj657718.aspx)和基于 [IIS](http://www.iis.net/) 的应用），并网络之外的用户提供安全访问。 应用程序代理为许多类型的本地 Web 应用程序和 Azure AD 支持的数以千计的 SaaS 应用程序提供远程访问和单一登录 (SSO)。 员工可以从家中他们自己的设备登录到应用，并通过此基于云的代理进行身份验证。
 
 了解更多：
 
@@ -80,7 +80,7 @@ Azure 多重身份验证 (MFA) 是需要使用多个验证方法的身份验证�
 * [Azure 多重身份验证的工作原理](../multi-factor-authentication/multi-factor-authentication-how-it-works.md)
 
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>安全监控、警报和基于机器学习的报告
-安全监控、警报和基于机器学习的报告（它们识别不一致的访问模式）可以帮助保护你的业务。 你可以使用 Azure Active Directory 的访问和使用情况报告来监控你所在组织的目录的完整性和安全性。 使用此信息，目录管理员可以更好地确定哪里可能存在安全风险，以便制定相应的计划来降低风险。
+安全监控、警报和基于机器学习的报告（它们识别不一致的访问模式）可以帮助保护业务。 可以使用 Azure Active Directory 的访问和使用情况报告来监控你所在组织的目录的完整性和安全性。 使用此信息，目录管理员可以更好地确定哪里可能存在安全风险，以便制定相应的计划来降低风险。
 
 在 Azure 经典门户中，报告按以下方式分类：
 
@@ -97,7 +97,7 @@ Azure 多重身份验证 (MFA) 是需要使用多个验证方法的身份验证�
 * [Azure Active Directory Reporting 指南](../active-directory/active-directory-reporting-guide.md)
 
 ## <a name="consumer-identity-and-access-management"></a>消费者标识和访问管理
-Azure Active Directory B2C 是一个高度可用的全局性标识管理服务，该服务适用于面向用户且可通过伸缩来处理数以亿计标识的应用程序。 它可以跨移动平台和 Web 平台进行集成。 你的用户只需使用现有社交帐户或创建新凭据，即可通过可自定义的体验登录到所有应用程序。
+Azure Active Directory B2C 是一个高度可用的全局性标识管理服务，该服务适用于面向用户且可通过伸缩来处理数以亿计标识的应用程序。 它可以跨移动平台和 Web 平台进行集成。 用户只需使用现有社交帐户或创建新凭据，即可通过可自定义的体验登录到所有应用程序。
 
 过去，想要在自己的应用程序中注册用户并使用户登录的应用程序开发人员编写了自己的代码。 他们使用本地数据库或系统存储用户名和密码。 Azure Active Directory B2C 通过基于标准的安全平台和大量的可扩展策略，向组织提供一种更好的方式将用户标识管理集成到应用程序中。
 
@@ -110,9 +110,9 @@ Azure Active Directory B2C 是一个高度可用的全局性标识管理服务�
 * [Azure Active Directory B2C 预览版：应用程序的类型](../active-directory-b2c/active-directory-b2c-apps.md)
 
 ## <a name="device-registration"></a>设备注册
-Azure AD 设备注册是基于设备的[条件性访问](../active-directory/active-directory-conditional-access-device-registration-overview.md)方案的基础。 在注册设备时，Azure Active Directory 设备注册会为设备提供一个标识，用于在用户登录时对设备进行身份验证。 然后，可以使用已经过身份验证的设备和设备的属性，对云中和本地托管的应用程序实施条件性访问策略。
+Azure AD 设备注册是基于设备的[条件性访问](../active-directory/active-directory-conditional-access-device-registration-overview.md)方案的基础。 在注册设备时，Azure Active Directory 设备注册会为设备提供一个标识，用于在用户登录时对设备进行身份验证。 然后，可以使用已经过身份验证的设备以及该设备的属性，对云中和本地托管的应用程序实施条件访问策略。
 
-当与 Intune 之类的移动设备管理 (MDM) 解决方案结合使用时，Azure Active Directory 中的设备属性将使用关于设备的更多信息进行更新。 这将允许你创建条件性访问规则，用于从设备强制访问满足你的安全和合规性标准。
+当与 Intune 之类的移动设备管理 (MDM) 解决方案结合使用时，Azure Active Directory 中的设备属性将使用关于设备的更多信息进行更新。 这会允许创建条件性访问规则，用于从设备强制访问满足安全和合规性标准。
 
 了解更多：
 
@@ -125,7 +125,7 @@ Azure AD 设备注册是基于设备的[条件性访问](../active-directory/act
 
 用户有时候需要在 Azure 或 Office 365 资源或者其他 SaaS 应用中执行特权操作。 这通常意味着，组织必须授予他们永久的 Azure AD 访问特权。 这会给云中托管的资源不断增大安全风险，因为组织无法充分监视这些用户正在使用管理特权执行哪些操作。 此外，如果有访问特权的用户帐户被泄露，这个缺口可能会影响其总体云安全性。 Azure AD 特权标识管理可帮助解决这一风险。
 
-利用 Azure AD Privileged Identity Management，你可以：
+利用 Azure AD Privileged Identity Management，可以：
 
 * 查看哪些用户是 Azure AD 管理员
 * 按需启用对 Office 365 和 Intune 等 Microsoft Online Services 的“实时”管理访问权限
@@ -139,7 +139,7 @@ Azure AD 设备注册是基于设备的[条件性访问](../active-directory/act
 * [Azure AD Privileged Identity Management：如何添加或删除用户角色](../active-directory/active-directory-privileged-identity-management-how-to-add-role-to-user.md)
 
 ## <a name="identity-protection"></a>标识保护
-Azure AD Identity Protection 是一种安全服务，它提供一个整合的视图来让你查看影响组织标识的风险事件和潜在漏洞。 身份保护利用现有的 Azure Active Directory 异常检测功能（可通过 Azure AD 的异常活动报告得到），并引入了新可以实时检测异常的风险事件类型。
+Azure AD Identity Protection 是一种安全服务，它提供一个综合试图，你可以在其中查看影响组织标识的风险事件和潜在漏洞。 身份保护利用现有的 Azure Active Directory 异常检测功能（可通过 Azure AD 的异常活动报告得到），并引入了新可以实时检测异常的风险事件类型。
 
 了解更多：
 

@@ -17,9 +17,9 @@
 ### [构建和部署 Node.js 应用程序](cloud-services-nodejs-develop-deploy-app.md)
 ### [使用 Express 构建 Node.js Web 应用程序](cloud-services-nodejs-develop-deploy-express-app.md)
 ### 存储和 Visual Studio
-#### [Blob 存储和连接的服务](../storage/vs-storage-cloud-services-getting-started-blobs.md)
-#### [队列存储和连接的服务](../storage/vs-storage-cloud-services-getting-started-queues.md)
-#### [表存储和连接的服务](../storage/vs-storage-cloud-services-getting-started-tables.md)
+#### [Blob 存储和连接的服务](../visual-studio/vs-storage-cloud-services-getting-started-blobs.md)
+#### [队列存储和连接的服务](../visual-studio/vs-storage-cloud-services-getting-started-queues.md)
+#### [表存储和连接的服务](../visual-studio/vs-storage-cloud-services-getting-started-tables.md)
 ### 配置程序包以实现连续构建和部署
 #### [TFS 和 Team Build](cloud-services-dotnet-continuous-delivery.md)
 ### [配置角色的流量规则](cloud-services-enable-communication-role-instances.md)

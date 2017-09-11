@@ -12,19 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/24/2017
+ms.date: 08/25/2017
 ms.author: nberdy
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 22ca1b635f3c5d4d349e883d9953b0c126fc715a
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: b6de5c5df5f9401a41be152bfa06eb994594e83d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="iot-hub-operations-monitoring"></a>IoT 中心操作监视
 
-IoT 中心操作监视可让你实时监视其 IoT 中心上的操作状态。 IoT 中心可以跟踪多个操作类别的事件。 可以选择将一个或多个类别的事件发送到 IoT 中心的终结点进行处理。 你可以监视数据中是否有错误，或根据数据模式设置更复杂的处理行为。
+IoT 中心操作监视可让你实时监视 IoT 中心上的操作状态。 IoT 中心可以跟踪多个操作类别的事件。 可以选择将一个或多个类别的事件发送到 IoT 中心的终结点进行处理。 可以监视数据中是否有错误，或根据数据模式设置更复杂的处理行为。
 
 IoT 中心监视 6 种类别的事件：
 
@@ -32,7 +31,7 @@ IoT 中心监视 6 种类别的事件：
 * 设备遥测
 * 云到设备的消息
 * 连接
-* 文件上载
+* 文件上传
 * 消息路由
 
 ## <a name="how-to-enable-operations-monitoring"></a>如何启用操作监视
@@ -43,7 +42,7 @@ IoT 中心监视 6 种类别的事件：
 
     ![访问门户中的操作监视配置][1]
 
-1. 选择要监视的监视类别，然后单击“**保存**”。 可以从“**监视设置**”中所列的与事件中心兼容的终结点读取事件。 IoT 中心终结点称为 `messages/operationsmonitoringevents`。
+1. 选择要监视的监视类别，并单击“保存”。 可以从“**监视设置**”中所列的与事件中心兼容的终结点读取事件。 IoT 中心终结点称为 `messages/operationsmonitoringevents`。
 
     ![在 IoT 中心配置操作监视][2]
 
@@ -56,7 +55,7 @@ IoT 中心监视 6 种类别的事件：
 
 ### <a name="device-identity-operations"></a>设备标识操作
 
-设备标识操作类别跟踪你尝试在其 IoT 中心的标识注册表中创建、更新或删除条目时所发生的错误。 预配方案就很适合跟踪此类别。
+设备标识操作类别跟踪你尝试在 IoT 中心的标识注册表中创建、更新或删除条目时所发生的错误。 预配方案就很适合跟踪此类别。
 
 ```json
 {
@@ -141,15 +140,15 @@ IoT 中心监视 6 种类别的事件：
 }
 ```
 
-### <a name="file-uploads"></a>文件上载
+### <a name="file-uploads"></a>文件上传
 
-文件上载类别跟踪在 IoT 中心发生的、与文件上载功能相关的错误。 此类别包括：
+文件上传类别跟踪在 IoT 中心发生的、与文件上传功能相关的错误。 此类别包括：
 
-* SAS URI 发生的错误，例如，它在设备向中心通知某个完成的上载前失效。
-* 由设备报告的失败上载。
+* SAS URI 发生的错误，例如，它在设备向中心通知某个完成的上传前失效。
+* 由设备报告的失败上传。
 * 创建 IoT 中心通知消息期间在存储中找不到文件时发生的错误。
 
-此类别不能捕获在设备将文件上载到存储时直接发生的错误。
+此类别不能捕获在设备将文件上传到存储时直接发生的错误。
 
 ```json
 {
@@ -219,7 +218,7 @@ IoT 中心上的监视终结点是与事件中心兼容的终结点。 可使用
 
     ![“与事件中心兼容的终结点”值][img-endpoints]
 
-1. 选择“共享访问策略”，然后选择“服务”。 记下“主密钥”值：
+1. 选择“共享访问策略”，并选择“服务”。 记下“主密钥”值：
 
     ![服务共享访问策略主密钥][img-service-key]
 

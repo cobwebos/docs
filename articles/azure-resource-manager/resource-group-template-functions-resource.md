@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/13/2017
+ms.date: 08/09/2017
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 36d2a8f00f9dcb2e1cef103b33973d2bed754cdc
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 494ade55f21c19d9c68d5cc52756528401d9bb77
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure Resource Manager 模板的资源函数
@@ -72,11 +72,13 @@ ListKeys 返回的对象采用以下格式：
 }
 ```
 
-其他列表函数具有不同的返回格式。 若要查看函数的格式，请将其包含在 outputs 节中，如示例模板所示。 
+其他列表函数具有不同的返回格式。 要查看函数的格式，请将其包含在 outputs 节中，如示例模板所示。 
 
 ### <a name="remarks"></a>备注
 
-以 **list** 开头的任何操作都可用作模板中的函数。 可用操作不仅包括 listKeys，也包括 `list`、`listAdminKeys` 和 `listStatus` 等操作。 若要确定哪些资源类型具有列表操作，请使用以下选项：
+以 **list** 开头的任何操作都可用作模板中的函数。 可用操作不仅包括 listKeys，也包括 `list`、`listAdminKeys` 和 `listStatus` 等操作。 但是，不能使用请求正文中需要值的“list”操作。 例如，[列出帐户 SAS](/rest/api/storagerp/storageaccounts#StorageAccounts_ListAccountSAS) 操作需要 signedExpiry 等请求正文参数，因此不能在模板中使用它。
+
+若要确定哪些资源类型具有列表操作，请使用以下选项：
 
 * 查看资源提供程序的 [REST API 操作](/rest/api/)，并查找列表操作。 例如，存储帐户具有 [listKeys 操作](/rest/api/storagerp/storageaccounts#StorageAccounts_ListKeys)。
 * 使用 [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) PowerShell cmdlet。 以下示例获取存储帐户的所有列表操作：
@@ -280,7 +282,7 @@ reference 函数从运行时状态派生其值，因此不能在 variables 节�
 }
 ```
 
-以下示例引用未部署在此模板中，但存在于同一资源组中的存储帐户。
+以下示例引用未部署到此模板中的存储帐户。 同一资源组内已存在该存储帐户。
 
 ```json
 {
@@ -425,7 +427,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 "[resourceId('otherResourceGroup', 'Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]"
 ```
 
-通常，在替代资源组中使用存储帐户或虚拟网络时，需要使用此函数。 存储帐户或虚拟网络可能用于多个资源组中；因此，你不想要在删除单个资源组时删除它们。 以下示例演示了如何轻松使用外部资源组中的资源：
+通常，在替代资源组中使用存储帐户或虚拟网络时，需要使用此函数。 以下示例演示了如何轻松使用外部资源组中的资源：
 
 ```json
 {
@@ -549,7 +551,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure Resource Manager 模板中各部分的说明，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
-* 若要合并多个模板，请参阅 [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md)（将链接的模板与 Azure Resource Manager 配合使用）。
+* 要合并多个模板，请参阅 [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md)（将链接的模板与 Azure Resource Manager 配合使用）。
 * 若要在创建资源类型时迭代指定的次数，请参阅 [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)（在 Azure Resource Manager 中创建多个资源实例）。
 * 若要查看如何部署已创建的模板，请参阅 [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md)（使用 Azure Resource Manager 模板部署应用程序）。
 

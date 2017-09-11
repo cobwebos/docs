@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 05/03/2017
+ms.date: 08/03/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 361ad3a669370419e1080d3e4b3fc646f7a0a958
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: f48eb610b47820e6d7438520a00a5e6dfe879e01
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure 数据目录开发人员概念
@@ -52,7 +51,7 @@ Azure 数据目录使用 Azure Active Directory 标识和访问管理。 每个�
 
 资产的粒度因数据源而改变。 对于 SQL Server 或 Oracle 数据库，资产可以是表或视图。 对于 SQL Server Analysis Services，资产可以是度量值、维度或关键绩效指标 (KPI)。 对于 SQL Server Reporting Services，资产是报表。
 
-**资产**可从目录添加或删除。 它为你从“搜索”中得到的结果的单位。
+**资产**可从目录添加或删除。 它从“搜索”中得到的结果的单位。
 
 **资产**由名称、位置、类型和批注（进一步描述）构成。
 
@@ -70,7 +69,7 @@ Azure 数据目录的一个重要方面是它如何在系统中支持元数据�
 * 数据专员可能提供有关应用资产的业务流程或已应用业务的分类的信息
 * 财务分析人员可能会提供有关如何在期终报表期间使用数据的信息
 
-若要支持此示例，每个用户（DBA、数据专员和分析师）都可将说明添加到已在目录中注册的单个表中。 所有说明都保留在系统中，并在 Azure 数据目录门户中显示所有的说明。
+要支持此示例，每个用户（DBA、数据专员和分析师）都可将说明添加到已在目录中注册的单个表中。 所有说明都保留在系统中，并在 Azure 数据目录门户中显示所有的说明。
 
 此模式适用于对象模型中的大多数项，因此 JSON 有效负载中的对象类型通常为属性的数值（预期为单一属性）。
 
@@ -134,11 +133,11 @@ Azure 数据目录的一个重要方面是它如何在系统中支持元数据�
 <tr><td>架构</td><td></td><td></td><td>架构描述数据的结构。  它将列出属性（列、属性、字段等）名称、类型以及其他元数据。  此信息全部派生自数据源。  架构是单一批注 - 仅可向一个资产添加一个架构。</td></tr>
 <tr><td></td><td>列</td><td>列[]</td><td>列对象的数组。 它们使用派生自数据源的信息对列进行描述。</td></tr>
 
-<tr><td>ColumnDescription（“columnDescriptions”）</td><td></td><td></td><td>此属性包含列的说明。  系统的每个用户都可为多个列添加自己的说明（最多每列一个说明）。 只有创建了 ColumnDescription 对象的用户可以编辑它们。  （管理员和资产所有者可删除 ColumnDescription 对象，但无法编辑它）。 系统会单独维护用户列说明。  因此每个资产上都有一个 ColumnDescription 对象的数组：为每个对列贡献知识的用户提供的数组（每列）和一个包含派生自数据源的信息的数组（可能具有）。  ColumnDescription 松散绑定到架构，因此可不同步。 ColumnDescription 可能描述不再存在于架构的列。  写入器负责让说明和架构同步。  数据源还可能具有列说明信息且它们为将在运行工具时创建的其他 ColumnDescription 对象。</td></tr>
+<tr><td>ColumnDescription（“columnDescriptions”）</td><td></td><td></td><td>此属性包含列的说明。  系统的每个用户都可为多个列添加自己的说明（最多每列一个说明）。 只有创建了 ColumnDescription 对象的用户可以编辑它们。  （管理员和资产所有者可删除 ColumnDescription 对象，但无法编辑它）。 系统会单独维护用户列说明。  因此每个资产上都有一个 ColumnDescription 对象的数组：为每个对列贡献知识的用户提供的数组（每列）和一个包含派生自数据源的信息的数组（可能具有）。  ColumnDescription 松散绑定到架构，因此可不同步。ColumnDescription 可能描述不再存在于架构的列。  写入器负责让说明和架构同步。数据源还可能具有列说明信息且它们为会在运行工具时创建的其他 ColumnDescription 对象。</td></tr>
 <tr><td></td><td>columnName</td><td>String</td><td>此说明指代的列名称。</td></tr>
 <tr><td></td><td>description</td><td>String</td><td>列的简短说明（2-3 行）</td></tr>
 
-<tr><td>ColumnTag（“columnTags”）</td><td></td><td></td><td>此属性包含列的标记。 系统的每个用户都可为给定列添加多个标记和为多个列添加标记。 只有创建了ColumnTag 对象的用户可以编辑它们。 （管理员和资产所有者可删除 ColumnTag 对象，但无法编辑它）。 系统会单独维护用户的列标记。  这样，每个资产上都会有 ColumnTag 对象的数组。  ColumnTag 松散绑定到架构，因此可不同步。 ColumnTag 可能描述不存在于架构中的列。  写入器负责让列标记和架构同步。</td></tr>
+<tr><td>ColumnTag（“columnTags”）</td><td></td><td></td><td>此属性包含列的标记。 系统的每个用户都可为给定列添加多个标记和为多个列添加标记。 只有创建了ColumnTag 对象的用户可以编辑它们。 （管理员和资产所有者可删除 ColumnTag 对象，但无法编辑它）。 系统会单独维护用户的列标记。  这样，每个资产上都会有 ColumnTag 对象的数组。  ColumnTag 松散绑定到架构，因此可不同步。ColumnTag 可能描述不存在于架构中的列。  写入器负责让列标记和架构同步。</td></tr>
 <tr><td></td><td>columnName</td><td>String</td><td>此标记指代的列名称。</td></tr>
 <tr><td></td><td>标记</td><td>String</td><td>描述列的标记。</td></tr>
 

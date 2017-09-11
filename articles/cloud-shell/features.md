@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 08/21/2017
 ms.author: juluk
 ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
-ms.openlocfilehash: 3414957a67d67603fdb597b3715a902e8cc3c5bd
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 67f03d5857e37b253ac57536e289b5468d69e9b5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -39,7 +39,7 @@ Cloud Shell 按请求预配计算机，因此计算机状态不会在会话之�
 |源代码管理         |git                    |
 |生成工具            |make<br> maven<br> npm<br> pip         |
 |容器             |[Docker CLI](https://github.com/docker/cli)/[Docker 计算机](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Draft](https://github.com/Azure/draft)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
-|数据库              |MySQL 客户端<br> PostgreSql 客户端<br> [sqlcmd 实用工具](https://docs.microsoft.com/sql/tools/sqlcmd-utility)      |
+|数据库              |MySQL 客户端<br> PostgreSql 客户端<br> [sqlcmd 实用工具](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
 |其他                  |iPython 客户端<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli)<br> |
 
 ### <a name="language-support"></a>语言支持
@@ -56,8 +56,8 @@ Cloud Shell 安全并自动地验证帐户对 Azure CLI 2.0 的访问权限。
 
 ## <a name="azure-files-persistence"></a>Azure 文件持久性
 由于 Cloud Shell 使用临时计算机按请求进行分配，因此，$Home 外部的文件和计算机状态不会在会话之间持久保存。
-若要在会话之间保存文件，Cloud Shell 会指导你完成在首次启动时附加 Azure 文件共享。
-完成后，Cloud Shell 将自动为所有将来的会话附加存储。
+要在会话之间保存文件，Cloud Shell 会指导完成在首次启动时附加 Azure 文件共享。
+完成后，Cloud Shell 会自动为所有将来的会话附加存储。
 
 [详细了解如何将 Azure 文件共享附加到 Cloud Shell](persisting-shell-storage.md)。
 

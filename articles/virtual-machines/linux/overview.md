@@ -9,17 +9,17 @@ editor:
 ms.assetid: 7965a80f-ea24-4cc2-bc43-60b574101902
 ms.service: virtual-machines-linux
 ms.devlang: NA
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 84406b3068a6705bf0a4c5f17ace5a586398da4f
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 392ed1b7ac5f543b322024f4b771c73bf865e970
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-and-linux"></a>Azure 和 Linux
@@ -39,7 +39,7 @@ Microsoft Azure 资源分布在世界各地的多个地理区域。  一个“�
 
 托管磁盘为用户在后台处理 Azure 存储帐户的创建和管理，确保用户无需担心存储帐户的可伸缩性限制。 用户只需指定磁盘大小和性能层（标准或高级），Azure 就会为用户创建和管理磁盘。 即使在添加磁盘或者对 VM 进行上下伸缩的时候，也无需担心所使用的存储。 如果要创建新的 VM，请[使用 Azure CLI 2.0](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 Azure 门户，通过托管 OS 和数据磁盘创建 VM。 如果 VM 具有非托管磁盘，则可以[将 VM 转换为由托管磁盘支持](convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-用户还可以按 Azure 区域在一个存储帐户中管理自定义映像，并使用这些映像在同一订阅中创建数百台 VM。 有关托管磁盘的详细信息，请参阅[托管磁盘概述](../../storage/storage-managed-disks-overview.md)。
+用户还可以按 Azure 区域在一个存储帐户中管理自定义映像，并使用这些映像在同一订阅中创建数百台 VM。 有关托管磁盘的详细信息，请参阅[托管磁盘概述](../windows/managed-disks-overview.md)。
 
 ## <a name="azure-virtual-machines--instances"></a>Azure 虚拟机和实例
 Microsoft Azure 支持运行由多家合作伙伴提供和维护的众多热门 Linux 分发版。  可以在 Azure 应用商店中找到 Red Hat Enterprise、CentOS、Debian、Ubuntu、CoreOS、RancherOS 和 FreeBSD 等分发版。 我们积极与各大 Linux 社区合作以便为 [Azure 认可的 Linux 分发版](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)列表添加更多成员。
@@ -60,7 +60,7 @@ Microsoft Azure 支持运行由多家合作伙伴提供和维护的众多热门 
 
 注意：DS 系列和 GS 系列 VM 可以访问高级存储 - 适用于 I/O 密集型工作负荷的以 SSD 为后盾的高性能低延迟存储。 高级存储只在某些区域可用。 有关详细信息，请参阅：
 
-* [高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../../storage/storage-premium-storage.md)
+* [高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../../storage/common/storage-premium-storage.md)
 
 ## <a name="automation"></a>自动化
 若要实现适当的 DevOps 区域性，所有基础结构都必须是代码。  当所有基础结构都存在于代码中时，便可以轻松重新创建它（Phoenix 服务器）。  Azure 可与所有主要自动化工具（如 Ansible、Chef、SaltStack 和 Puppet）配合使用。  Azure 也有自己的自动化工具：
@@ -120,7 +120,7 @@ VM 现在正在 Azure 上运行，用户可以登录。  使用密码通过 SSH 
 
 ## <a name="related-azure-components"></a>相关 Azure 组件
 ## <a name="storage"></a>存储
-* [Microsoft Azure 存储简介](../../storage/storage-introduction.md)
+* [Microsoft Azure 存储简介](../../storage/common/storage-introduction.md)
 * [使用 azure-cli 将磁盘添加到 Linux VM](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [如何在 Azure 门户中将数据磁盘附加到 Linux VM](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

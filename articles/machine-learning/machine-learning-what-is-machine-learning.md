@@ -16,27 +16,28 @@ ms.topic: get-started-article
 ms.date: 07/12/2017
 ms.author: cgronlun
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: a9b47429779417afa664156cd824aa044f7bf04c
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 179a0d3696c6044ffb5b9e377effa30dda54ba7f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="introduction-to-machine-learning-in-the-azure-cloud"></a>Azure 云中的机器学习简介
 
 ## <a name="what-is-machine-learning"></a>什么是机器学习？
-机器学习是一项数据科研技术，可以让计算机根据现有的数据来预测将来的行为、结果和趋势。 使用机器学习，计算机可以在不需显式编程的情况下进行学习。
+机器学习是一项数据科研技术，可以让计算机根据现有的数据来预测将来的行为、结果和趋势。 使用机器学习，计算机可以在不需显式编程的情况下进行学习。 
 
-机器学习的预测可让应用和设备变得更聪明。 在网上购物时，机器学习可根据购买的产品帮助推荐其他产品。 刷信用卡时，机器学习可将这笔交易与交易数据库进行比较，帮助检测诈骗。 当吸尘器机器人打扫房间时，机器学习可帮助它确定作业是否已完成。
+可将机器学习视为人工智能 (AI) 的子类别。 机器学习的预测可让应用和设备变得更聪明。 在网上购物时，机器学习可根据购买的产品帮助推荐其他产品。 刷信用卡时，机器学习可将这笔交易与交易数据库进行比较，帮助检测诈骗。 当吸尘器机器人打扫房间时，机器学习可帮助它确定作业是否已完成。
 
 有关简短概述，请观看 [Data Science for Beginners](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)（适合初学者的数据科研）系列视频。 “Data Science for Beginners”（适合初学者的数据科学）介绍了机器学习，并逐步讲解了一个简单的预测模型，整篇文章未使用行语或数学理论。
 
 ## <a name="what-is-machine-learning-in-the-microsoft-azure-cloud"></a>什么是 Microsoft Azure 云中的机器学习？
-Azure 机器学习是一种云预测分析服务，使用它可以快速创建预测模型，并将其部署为分析解决方案。
-
-你可以从现成可用的算法库开始工作，在连接 Internet 的电脑上使用它们创建模型和快速部署预测解决方案。 可以从 [Cortana Intelligence 库](https://gallery.cortanaintelligence.com/)中的现成示例和解决方案着手。
 
 ![什么是机器学习？ 在 Azure 机器学习中操作预测分析的基本工作流。](./media/machine-learning-what-is-machine-learning/machine-learning-service-parts-and-workflow.png)
+
+Azure 机器学习是一种云预测分析服务，使用它可以快速创建预测模型，并将其部署为分析解决方案。
+
+可以从现成可用的算法库开始工作，在连接 Internet 的电脑上使用它们创建模型和快速部署预测解决方案。 可以从 [Cortana Intelligence 库](https://gallery.cortanaintelligence.com/)中的现成示例和解决方案着手。
 
 Azure 机器学习不仅提供预测分析建模工具，还提供完全托管的服务，可以通过此服务将预测模型部署为随时可用的 Web 服务。
 
@@ -89,7 +90,7 @@ Azure 机器学习具有在云中创建完整的预测分析解决方案所需�
 #### <a name="training-data"></a>训练数据
 通过数据训练模型时，将使用已知数据集，基于数据特征进行模型调整，以求获得最准确的结果。 在 Azure 机器学习中，模型是通过处理训练数据和功能模块（例如评分模块）的算法模块构建的。
 
-在监督式学习中，如果要训练诈骗检测模型，可以使用一组标记为诈骗或有效的交易。 随机拆分数据集，然后使用一部分数据训练模型，使用另一部分测试或评估模型。
+在监督式学习中，如果要训练诈骗检测模型，可以使用一组标记为诈骗或有效的交易。 随机拆分数据集，并使用一部分数据训练模型，使用另一部分测试或评估模型。
 
 #### <a name="evaluation-data"></a>评估数据
 训练模型后，使用剩余测试数据来评估模型。 使用已经知道结果的数据，判断模型的预测是否准确。

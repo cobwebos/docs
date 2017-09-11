@@ -4,7 +4,7 @@ description: "带流分析和实时数据处理的 IoT 传感器标记和数据�
 keywords: "iot 解决方案, iot 入门"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 3e829055-75ed-469f-91f5-f0dc95046bdb
@@ -14,12 +14,12 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 9afd26024d2aa0d3d732ddc6f54e591715afca69
-ms.openlocfilehash: 9624405d8bc454e886e8011c1cb4920fdf7e0640
-ms.lasthandoff: 01/24/2017
-
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 3146604dd2dbc626d8179d5c91e3cf895b9f67da
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>开始使用 Azure 流分析处理来自 IoT 设备的数据
@@ -47,14 +47,14 @@ Contoso 是一家工业自动化公司，该公司已将其制造流程完全自
 
 在实际情况下，其中可能有数百个传感器以流的形式生成事件。 理想情况下，网关设备会运行代码，将这些事件推送到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)或 [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)。 流分析作业将从事件中心引入这些事件，并针对流运行实时分析查询。 然后，可以将结果发送到[支持的输出](stream-analytics-define-outputs.md)之一。
 
-为了方便使用，本入门指南提供从实际 SensorTag 设备中捕获的示例数据文件。 可以对示例数据运行查询并查看结果。 在后续教程中，你将学习如何将你的作业连接到输入和输出并将其部署到 Azure 服务。
+为了方便使用，本入门指南提供从实际 SensorTag 设备中捕获的示例数据文件。 可以对示例数据运行查询并查看结果。 在后续教程中，学习如何将作业连接到输入和输出并将其部署到 Azure 服务。
 
 ## <a name="create-a-stream-analytics-job"></a>创建流分析作业
-1. 在 [Azure 门户中](http://portal.azure.com)单击“加号”，然后在右侧的文本窗口中键入 “流分析”。 然后在结果列表中选择“流分析作业”。
+1. 在 [Azure 门户中](http://portal.azure.com)单击“加号”，并在右侧的文本窗口中键入 “流分析”。 然后在结果列表中选择“流分析作业”。
    
     ![创建新的流分析作业](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
-2. 输入唯一的作业名称并验证订阅是否为用于作业的正确订阅。 然后创建一个新资源组，或从订阅中选择一个现有资源组。
-3. 接下来为你的作业选择位置。 为了获得更快的处理速度，并减少数据传输中的成本，建议选择与资源组和目标存储帐户相同的位置。
+2. 输入唯一的作业名称并验证订阅是否为用于作业的正确订阅。 然后创建新的资源组，或选择订阅上的现有资源组。
+3. 接下来为作业选择位置。 为了获得更快的处理速度，并减少数据传输中的成本，建议选择与资源组和目标存储帐户相同的位置。
    
     ![创建新的流分析作业详细信息](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.png)
    
@@ -65,7 +65,7 @@ Contoso 是一家工业自动化公司，该公司已将其制造流程完全自
 4. 选中复选框以将作业置于仪表板上，然后单击“创建”。
    
     ![正在创建作业](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03a.png)
-5. 你应看到“已启动部署...” 显示在浏览器窗口的右上角。 很快它会变为已完成的窗口，如下所示。
+5. 此时会在浏览器窗口右上角显示“部署已启动...”。 很快它会变为已完成的窗口，如下所示。
    
     ![正在创建作业](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
 
@@ -84,13 +84,13 @@ Contoso 是一家工业自动化公司，该公司已将其制造流程完全自
 1. 从 PassThrough.txt 文件粘贴查询。 
    
     ![测试输入流](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
-2. 单击输入旁边的三个点，然后选择“从文件上载示例数据”框。
+2. 单击输入旁边的三个点，并选择“从文件上载示例数据”框。
    
     ![测试输入流](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06a.png)
 3. 将打开右侧的窗格。请在其中从下载位置选择 HelloWorldASA-InputStream.json 数据文件，然后在窗格底部单击“确定”。
    
     ![测试输入流](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06b.png)
-4. 然后单击窗口左上方的“测试”齿轮，并针对示例数据集处理测试查询。 处理完成后，会在查询下方显示结果窗口。
+4. 然后，在窗口左上区域单击“测试”齿轮，处理针对示例数据集的测试查询。 处理完成后，会在查询下方显示结果窗口。
    
     ![测试结果](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
@@ -104,14 +104,14 @@ Contoso 是一家工业自动化公司，该公司已将其制造流程完全自
 ![执行查询测试后的第二个输出结果](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-09.png)
 
 ### <a name="query-alert-to-trigger-a-business-workflow"></a>查询：触发业务工作流的警报
-让我们创建更详细的查询。 对于每个类型的传感器，我们想要每 30 秒监视一次平均温度，且仅在平均温度高于 100 度的情况下显示结果。 我们会编写以下查询，然后单击“测试”查看结果。 查询在 ThresholdAlerting.txt 文件中。
+让我们创建更详细的查询。 对于每个类型的传感器，我们想要每 30 秒监视一次平均温度，且仅在平均温度高于 100 度的情况下显示结果。 我们会编写以下查询，并单击“测试”查看结果。 查询在 ThresholdAlerting.txt 文件中。
 
 ![30 秒筛选查询](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
 现在，会看到结果只包含 245 行，以及平均温度高于 100 度的传感器的名称。 此查询按 **dspl**（传感器名称）以 30 秒的**轮转窗口**对事件流进行分组。 临时查询必须声明我们所希望的时间进展方式。 通过使用 **TIMESTAMP BY** 子句，我们已指定 **OUTPUTTIME** 列用于将时间与所有临时计算关联。 有关详细信息，请阅读有关 [Time Management](https://msdn.microsoft.com/library/azure/mt582045.aspx)（时间管理）和 [Windowing functions](https://msdn.microsoft.com/library/azure/dn835019.aspx)（窗口化函数）的 MSDN 文章。
 
 ### <a name="query-detect-absence-of-events"></a>查询：检测事件缺失
-如何编写查询来确定是否缺少输入事件？ 让我们找出传感器最后一次发送数据且下一分钟未发送事件的情况。 查询在 AbsenseOfEvent.txt 文件中。
+如何编写查询来确定是否缺少输入事件？ 让我们找出传感器最后一次发送数据且下 5 秒未发送事件的情况。 查询在 AbsenseOfEvent.txt 文件中。
 
 ![检测事件缺失](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 

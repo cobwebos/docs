@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/13/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
-ms.openlocfilehash: 06c09658d09bc05d2f5e2a0f17a9047ee8044486
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: e418cb01e1a9168e3662e8d6242903e052b6047b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/21/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight-preview"></a>使用 MirrorMaker 通过 Kafka on HDInsight（预览版）复制 Apache Kafka 主题
@@ -35,7 +35,7 @@ ms.lasthandoff: 06/21/2017
 
 ## <a name="how-kafka-mirroring-works"></a>Kafka 镜像的工作原理
 
-镜像通过使用 MirrorMaker 工具（Apache Kafka 的一部分）来使用源群集上主题中的记录，然后在目标群集上创建本地副本。 MirrorMaker 使用从源群集进行读取的一个（或多个）使用者，以及会写入本地（目标）群集的一个创建器。
+镜像通过使用 MirrorMaker 工具（Apache Kafka 的一部分）来使用源群集上主题中的记录，并在目标群集上创建本地副本。 MirrorMaker 使用从源群集进行读取的一个（或多个）使用者，以及会写入本地（目标）群集的一个创建器。
 
 下图说明镜像过程：
 
@@ -55,7 +55,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
 * **名称解析**：每个网络中的 Kafka 群集必须能够使用主机名相互连接。 这可能需要每个网络中的域名系统 (DNS) 服务器，这些网络配置为将请求转发到其他网络。
 
-    创建 Azure 虚拟网络时，必须指定自定义 DNS 服务器和服务器的 IP 地址，而不是使用网络提供的自动 DNS。 创建虚拟网络后，必须创建一个使用该 IP 地址的 Azure 虚拟机，然后在其上安装和配置 DNS 软件。
+    创建 Azure 虚拟网络时，必须指定自定义 DNS 服务器和服务器的 IP 地址，而不是使用网络提供的自动 DNS。 创建虚拟网络后，必须创建一个使用该 IP 地址的 Azure 虚拟机，并在其上安装和配置 DNS 软件。
 
     > [!WARNING]
     > 在将 HDInsight 安装到虚拟网络之前，需先创建和配置自定义 DNS 服务器。 HDInsight 不需要再进行其他配置，便可使用为虚拟网络配置的 DNS 服务器。
@@ -66,7 +66,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
 虽然可手动创建 Azure 虚拟网络和 Kafka 群集，但使用 Azure Resource Manager 模板会更简单。 使用以下步骤将 Azure 虚拟网络和两个 Kafka 群集部署到 Azure 订阅。
 
-1. 使用以下按钮登录到 Azure，然后在 Azure 门户中打开模板。
+1. 使用以下按钮登录到 Azure，并在 Azure 门户中打开模板。
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json" target="_blank"><img src="./media/hdinsight-apache-kafka-mirroring/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
@@ -93,9 +93,9 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
     * **SSH 密码**：源和目标 Kafka 群集的 SSH 用户的密码。
 
-3. 阅读“条款和条件”，然后选择“我同意上述条款和条件”。
+3. 阅读“条款和条件”，并选择“我同意上述条款和条件”。
 
-4. 最后，选中“固定到仪表板”，然后选择“购买”。 创建群集大约需要 20 分钟时间。
+4. 最后，选中“固定到仪表板”，并选择“购买”。 创建群集大约需要 20 分钟时间。
 
 创建资源后，会重定向到包含群集和 Web 仪表板的资源组边栏选项卡。
 
@@ -116,10 +116,21 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
     有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-2. 使用以下命令查找 Zookeeper 主机，设置 `SOURCE_ZKHOSTS` 变量，然后创建数个名为 `testtopic` 的新主题：
+2. 使用以下命令查找源群集的 Zookeeper 主机：
 
     ```bash
-    SOURCE_ZKHOSTS=`grep -R zk /etc/hadoop/conf/yarn-site.xml | grep 2181 | grep -oPm1 "(?<=<value>)[^<]+"`
+    # Install jq if it is not installed
+    sudo apt -y install jq
+    # get the zookeeper hosts for the source cluster
+    export SOURCE_ZKHOSTS=`curl -sS -u admin:$PASSWORD -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
+    
+    Replace `$PASSWORD` with the password for the cluster.
+
+    Replace `$CLUSTERNAME` with the name of the source cluster.
+
+3. To create a topic named `testtopic`, use the following command:
+
+    ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $SOURCE_ZKHOSTS
     ```
 
@@ -139,7 +150,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
     这会返回类似于以下文本的信息：
 
-    `zk0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk6-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181`
+    `zk0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181`
 
     请保存此信息。 在下一部分中使用。
 
@@ -172,15 +183,19 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
     此文件描述从源 Kafka 群集读取时要使用的使用者信息。 有关使用者配置的详细信息，请参阅 kafka.apache.org 中的[使用者配置](https://kafka.apache.org/documentation#consumerconfigs)。
 
-    若要保存文件，请使用 **Ctrl + X**、**Y**，然后按 **Enter**。
+    要保存文件，请使用 **Ctrl + X**、**Y**，并按 **Enter**。
 
 3. 配置与目标群集通信的创建器之前，必须找到**目标**群集的中转站主机。 使用以下命令检索此信息：
 
     ```bash
     sudo apt -y install jq
-    DEST_BROKERHOSTS=`sudo bash -c 'ls /var/lib/ambari-agent/data/command-[0-9]*.json' | tail -n 1 | xargs sudo cat | jq -r '["\(.clusterHostInfo.kafka_broker_hosts[]):9092"] | join(",")'`
+    DEST_BROKERHOSTS=`curl -sS -u admin:$PASSWORD -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
     echo $DEST_BROKERHOSTS
     ```
+
+    将 `$PASSWORD` 替换为群集的登录帐户（管理员）密码。
+
+    将 `$CLUSTERNAME` 替换为目标群集的名称。
 
     这些命令返回类似于以下的信息：
 
@@ -221,7 +236,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
     * **--num.streams**：要创建的使用者线程数。
 
-    启动时，MirrorMaker 返回类似于以下文本的信息：
+ 启动时，MirrorMaker 返回类似于以下文本的信息：
 
     ```json
     {metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-3, security.protocol=PLAINTEXT}{metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-0, security.protocol=PLAINTEXT}
@@ -232,22 +247,29 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 2. 从**源**群集的 SSH 连接开始，使用以下命令启动创建器，并将消息发送到主题：
 
     ```bash
-    sudo apt -y install jq
-    SOURCE_BROKERHOSTS=`sudo bash -c 'ls /var/lib/ambari-agent/data/command-[0-9]*.json' | tail -n 1 | xargs sudo cat | jq -r '["\(.clusterHostInfo.kafka_broker_hosts[]):9092"] | join(",")'`
+    SOURCE_BROKERHOSTS=`curl -sS -u admin:$PASSWORD -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $SOURCE_BROKERHOSTS --topic testtopic
     ```
 
- 出现带有光标的空行时，请键入几条文本消息。 这些消息将发送到**源**群集上的主题。 完成后，使用 **Ctrl + C** 结束生成者进程。
+    将 `$PASSWORD` 替换为源群集的登录（管理员）密码。
+
+    将 `$CLUSTERNAME` 替换为源群集的名称。
+
+     出现带有光标的空行时，请键入几条文本消息。 这些消息将发送到**源**群集上的主题。 完成后，使用 **Ctrl + C** 结束生成者进程。
 
 3. 从**目标**群集的 SSH 连接开始，使用 **Ctrl + C** 结束 MirrorMaker 进程。 然后使用以下命令验证是否已创建 `testtopic` 主题，以及该主题中的数据是否已复制到此镜像：
 
     ```bash
-    DEST_ZKHOSTS=`grep -R zk /etc/hadoop/conf/yarn-site.xml | grep 2181 | grep -oPm1 "(?<=<value>)[^<]+"`
+    DEST_ZKHOSTS=`curl -sS -u admin:$PASSWORD -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $DEST_ZKHOSTS
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $DEST_ZKHOSTS --topic testtopic --from-beginning
     ```
 
-  主题列表现包含 `testtopic`，该条目创建于 MirrorMaster 将主题从源群集镜像到目标时。 从主题检索到的消息与在源群集上输入的消息相同。
+    将 `$PASSWORD` 替换为目标群集的登录（管理员）密码。
+
+    将 `$CLUSTERNAME` 替换为目标群集的名称。
+
+    主题列表现包含 `testtopic`，该条目创建于 MirrorMaster 将主题从源群集镜像到目标时。 从主题检索到的消息与在源群集上输入的消息相同。
 
 ## <a name="delete-the-cluster"></a>删除群集
 

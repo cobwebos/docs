@@ -3,7 +3,7 @@ title: "使用 Azure 网络观察程序和开源工具可视化网络流量模�
 description: "本页介绍如何使用网络观察程序数据包捕获与 Capanalysis 来可视化传入和传出 VM 的流量模式。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 936d881b-49f9-4798-8e45-d7185ec9fe89
@@ -13,10 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
-translationtype: Human Translation
+ms.author: jdial
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 50d82847fb629880f298f79f9ab791a13836f01c
 ms.openlocfilehash: e27bb694d0cbcf1ff7c9d8ca4682a79c8b5c5cb1
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/31/2017
 
 ---

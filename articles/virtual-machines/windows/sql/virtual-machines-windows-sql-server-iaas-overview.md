@@ -81,7 +81,7 @@ ms.lasthandoff: 06/28/2017
 | **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2EnterpriseWindowsServer2012R2)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2StandardWindowsServer2012R2)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2WebWindowsServer2012R2)、[Express](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2ExpressWindowsServer2012R2) |
 | **SQL Server 2012 SP3** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3EnterpriseWindowsServer2012R2)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3StandardWindowsServer2012R2)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3WebWindowsServer2012R2)、[Express](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3ExpressWindowsServer2012R2) |
 
-除了此列表，也可使用 SQL Server 版本和操作系统的其他组合。 在 Azure 门户中通过应用商店搜索查找其他映像。 
+除了此列表，也可使用 SQL Server 版本和操作系统的其他组合。 在 Azure 门户中通过 Marketplace 搜索查找其他映像。 
 
 ## <a id="BYOL"></a> 选项 2：使用现有许可创建 SQL VM
 你也可以自带许可 (BYOL)。 在此方案中，你只需支付 VM 费用，SQL Server 许可不需要任何额外的费用。 若要使用自己的许可证，请参考下面的 SQL Server 版本和操作系统对照表。 在门户中，这些映像名称带有 **{BYOL}**前缀。
@@ -95,7 +95,7 @@ ms.lasthandoff: 06/28/2017
 | **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2EnterpriseWindowsServer2012R2)、[Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2StandardWindowsServer2012R2) |
 | **SQL Server 2012 SP2** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP3EnterpriseWindowsServer2012R2)、[Standard  BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP3StandardWindowsServer2012R2) |
 
-除了此列表，也可使用 SQL Server 版本和操作系统的其他组合。 在 Azure 门户中通过应用商店搜索查找其他映像（搜索“{BYOL} SQL Server”）。
+除了此列表，也可使用 SQL Server 版本和操作系统的其他组合。 在 Azure 门户中通过 Marketplace 搜索查找其他映像（搜索“{BYOL} SQL Server”）。
 
 > [!IMPORTANT]
 > 若要使用 BYOL VM 映像，必须具有包含 [Azure 上通过软件保障实现的许可移动性](https://azure.microsoft.com/pricing/license-mobility/)的企业协议。 此外，还需要有所要使用的 SQL Server 版本的有效许可证。 必须在预配 VM 的 [10](http://d36cz9buwru1tt.cloudfront.net/License_Mobility_Customer_Verification_Guide.pdf) 天内 **向 Microsoft 提供必要的 BYOL 信息** 。 

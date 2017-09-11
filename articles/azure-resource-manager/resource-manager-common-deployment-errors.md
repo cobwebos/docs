@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: support-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2017
+ms.date: 08/17/2017
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: aa204efcdc1a3fce5093abd7c9e94566ba6dd259
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 30adc10d01290f14a3e116813b19916fa36ab0bc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure Resource Manager 时的常见 Azure 部署错误
@@ -63,13 +63,31 @@ Message: The requested tier for resource '<resource>' is currently not available
 for subscription '<subscriptionID>'. Please try another tier or deploy to a different location.
 ```
 
-当所选的资源 SKU（如 VM 大小）不可用于所选的位置时，会收到此错误。 要解决此问题，需要确定区域中可用的 SKU。 可使用门户或 REST 操作查找可用的 SKU。
+当所选的资源 SKU（如 VM 大小）不可用于所选的位置时，会收到此错误。 要解决此问题，需要确定区域中可用的 SKU。 可使用 PowerShell、门户或 REST 操作查找可用的 SKU。
+
+- 对于 PowerShell，请使用 [Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) 并按位置进行筛选。 必须拥有最新版本 PowerShell 才能运行此命令。
+
+  ```powershell
+  Get-AzureRmComputeResourceSku | where {$_.Locations.Contains("southcentralus")}
+  ```
+
+  结果包括位置的 SKU 列表以及针对该 SKU 的任何限制。
+
+  ```powershell
+  ResourceType                Name      Locations Restriction                      Capability Value
+  ------------                ----      --------- -----------                      ---------- -----
+  availabilitySets         Classic southcentralus             MaximumPlatformFaultDomainCount     3
+  availabilitySets         Aligned southcentralus             MaximumPlatformFaultDomainCount     3
+  virtualMachines      Standard_A0 southcentralus
+  virtualMachines      Standard_A1 southcentralus
+  virtualMachines      Standard_A2 southcentralus
+  ```
 
 - 若要使用[门户](https://portal.azure.com)，请登录到门户并通过界面添加资源。 设置值时，可看到该资源的可用 SKU。 无需完成该部署。
 
     ![可用的 SKU](./media/resource-manager-common-deployment-errors/view-sku.png)
 
-- 若要将 REST API 用于虚拟机，请发送以下请求：
+- 要将 REST API 用于虚拟机，请发送以下请求：
 
   ```HTTP 
   GET
@@ -116,9 +134,9 @@ Message: The current subscription type is not permitted to perform operations on
 namespace. Please use a different subscription.
 ```
 
-如果收到此错误，则说明你在使用的订阅不允许访问除 Azure Active Directory 之外的任何 Azure 服务。 当你需要访问经典门户但不允许你部署资源时，你可能具有此类型的订阅。 若要解决此问题，必须使用有权部署资源的订阅。  
+如果收到此错误，则说明使用的订阅不允许访问除 Azure Active Directory 之外的任何 Azure 服务。 当需要访问经典门户但不允许部署资源时，可能具有此类型的订阅。 若要解决此问题，必须使用有权部署资源的订阅。  
 
-若要使用 PowerShell 查看你的可用订阅，请使用以下命令：
+要使用 PowerShell 查看可用订阅，请使用以下命令：
 
 ```powershell
 Get-AzureRmSubscription
@@ -130,7 +148,7 @@ Get-AzureRmSubscription
 Set-AzureRmContext -SubscriptionName {subscription-name}
 ```
 
-若要使用 Azure CLI 2.0 查看你的可用订阅，请使用以下命令：
+要使用 Azure CLI 2.0 查看可用订阅，请使用以下命令：
 
 ```azurecli
 az account list
@@ -162,7 +180,7 @@ az account set --subscription {subscription-name}
 
    如果未提供匹配的语法，该模板会生成一个不同于所需的值。
 
-   当你收到此类错误时，请仔细检查表达式语法。 考虑使用 [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) 或 [Visual Studio Code](resource-manager-vs-code.md) 等 JSON 编辑器，此类编辑器在出现语法错误时可以发出警告。
+   收到此类错误时，请仔细检查表达式语法。 考虑使用 [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) 或 [Visual Studio Code](resource-manager-vs-code.md) 等 JSON 编辑器，此类编辑器在出现语法错误时可以发出警告。
 
 - 段长度不正确
 
@@ -238,7 +256,7 @@ az account set --subscription {subscription-name}
   part of the allowed values
   ``` 
 
-   请仔细检查模板中的允许值，然后提供在部署过程中提供这些值之一。
+   请仔细检查模板中的允许值，并提供在部署过程中提供这些值之一。
 
 - 检测到循环依赖项
 
@@ -342,7 +360,7 @@ Message=The storage account named mystorage is already taken.
 <a id="noregisteredproviderfound" />
 
 ## <a name="noregisteredproviderfound-and-missingsubscriptionregistration"></a>NoRegisteredProviderFound 和 MissingSubscriptionRegistration
-部署资源时，你可能会收到以下错误代码和消息：
+部署资源时，可能会收到以下错误代码和消息：
 
 ```
 Code: NoRegisteredProviderFound
@@ -363,13 +381,13 @@ Message: The subscription is not registered to use namespace {resource-provider-
 2. 资源类型不支持该 API 版本
 3. 资源类型不支持该位置
 
-错误消息应提供有关支持的位置和 API 版本的建议。 可以将模板更改为建议的值之一。 Azure 门户或正在使用的命令行接口会自动注册大多数提供程序；但非全部。 如果你以前未使用特定的资源提供程序，则可能需要注册该提供程序。 可以通过 PowerShell 或 Azure CLI 发现更多关于资源提供程序的信息。
+错误消息应提供有关支持的位置和 API 版本的建议。 可以将模板更改为建议的值之一。 Azure 门户或正在使用的命令行接口会自动注册大多数提供程序；但非全部。 如果以前未使用特定的资源提供程序，则可能需要注册该提供程序。 可以通过 PowerShell 或 Azure CLI 发现更多关于资源提供程序的信息。
 
 **门户**
 
 可以通过门户查看注册状态，并注册资源提供程序命名空间。
 
-1. 对于你的订阅，选择“资源提供程序”。
+1. 对于订阅，选择“资源提供程序”。
 
    ![选择资源提供程序](./media/resource-manager-common-deployment-errors/select-resource-provider.png)
 
@@ -479,10 +497,10 @@ Unit         : null
 ...
 ```
 
-在这种情况中，你应前往门户并提交一份支持问题以增加你在要部署区域内的配额。
+在这种情况中，应前往门户并提交一份支持问题以增加你在要部署区域内的配额。
 
 > [!NOTE]
-> 请记住，对于资源组，配额针对每个单独的区域，而不是针对整个订阅。 如果你需要在美国西部部署 30 个核心，则必须在美国西部寻求 30 个 Resource Manager 核心。 如果需要在有权访问的任何区域内部署 30 个核心，则应在所有区域内请求 30 个 Resource Manager 核心。
+> 请记住，对于资源组，配额针对每个单独的区域，而不是针对整个订阅。 如果需要在美国西部部署 30 个核心，则必须在美国西部寻求 30 个 Resource Manager 核心。 如果需要在有权访问的任何区域内部署 30 个核心，则应在所有区域内请求 30 个 Resource Manager 核心。
 >
 >
 
@@ -494,7 +512,7 @@ Code=InvalidContentLink
 Message=Unable to download deployment content from ...
 ```
 
-很可能尝试过链接到不可用的嵌套模板。 再次确认为嵌套模板提供的 URI。 如果模板存在于存储帐户中，请确保 URI 可访问。 可能需要传递 SAS 令牌。 有关详细信息，请参阅 [将链接的模板与 Azure Resource Manager 配合使用](resource-group-linked-templates.md)。
+很可能尝试过链接到不可用的嵌套模板。 再次确认为嵌套模板提供的 URI。 如果模板存在于存储帐户中，请确保 URI 可访问。 可能需要传递 SAS 令牌。 有关详细信息，请参阅[将链接的模板与 Azure Resource Manager 配合使用](resource-group-linked-templates.md)。
 
 ## <a name="requestdisallowedbypolicy"></a>RequestDisallowedByPolicy
 订阅包含阻止尝试在部署期间执行的操作的资源策略时，会收到此错误消息。 请在错误消息中查找策略标识符。
@@ -521,7 +539,7 @@ az policy definition show --name regionPolicyAssignment
 - [使用策略来管理资源和控制访问](resource-manager-policy.md)。
 
 ## <a name="authorization-failed"></a>授权失败
-你可能在部署期间收到错误，因为尝试部署资源的帐户或服务主体没有执行这些操作的访问权限。 Azure Active Directory 可让你或你的系统管理员非常精确地控制哪些标识可以访问哪些资源。 例如，如果帐户分配到“读取者”角色，则无法创建资源。 在此情况下，会看到错误消息，指出授权失败。
+可能在部署期间收到错误，因为尝试部署资源的帐户或服务主体没有执行这些操作的访问权限。 Azure Active Directory 可让你或系统管理员非常精确地控制哪些标识可以访问哪些资源。 例如，如果帐户分配到“读取者”角色，则无法创建资源。 在此情况下，会看到错误消息，指出授权失败。
 
 有关基于角色的访问控制的详细信息，请参阅 [Azure Role-Based Access Control](../active-directory/role-based-access-control-configure.md)（Azure 基于角色的访问控制）。
 

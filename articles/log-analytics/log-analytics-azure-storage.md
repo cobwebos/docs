@@ -16,10 +16,10 @@ ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 79122493a8639dba1c1d6c92072dd682dae040a7
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: b62df3074779559ffab55c52a902e7473753868e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>在 Log Analytics 中收集要使用的 Azure 服务日志和指标
@@ -71,7 +71,7 @@ ms.lasthandoff: 08/07/2017
 支持 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 的 Azure 资源可以直接向 Log Analytics 发送其日志和度量值。
 
 * 有关可用指标的详细信息，请参阅 [Azure 监视器支持的指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md)。
-* 有关可用日志的详细信息，请参阅[诊断日志支持的服务和架构](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-resource-diagnostic-logs)。
+* 有关可用日志的详细信息，请参阅[诊断日志支持的服务和架构](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md)。
 
 ### <a name="enable-diagnostics-with-powershell"></a>使用 PowerShell 启用诊断
 需要 [Azure PowerShell](/powershell/azure/overview) 的 2016 年 11 月版 (v2.3.0) 或更高版本。

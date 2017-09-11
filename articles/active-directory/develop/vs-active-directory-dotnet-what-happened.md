@@ -3,8 +3,8 @@ title: "连接到 Azure AD 时对 MVC 项目所做的更改 | Microsoft 文档"
 description: "描述一下，当你使用 Visual Studio 连接服务连接到 Azure AD 时，你的 MVC 项目会发生什么情况"
 services: active-directory
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 8b24adde-547e-4ffe-824a-2029ba210216
 ms.service: active-directory
@@ -13,14 +13,13 @@ ms.tgt_pltfrm: vs-what-happened
 ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2017
-ms.author: tarcher
+ms.author: kraigb
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 72cd94ba16cb4fe234c898b093c7de6a08f71239
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/21/2017
-
 
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>我的 MVC 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况？

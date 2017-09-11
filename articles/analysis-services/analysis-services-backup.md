@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: db04507d50b6dfe767ede4479fe0b02af2461576
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: bffa481a498b130ef1f2388a5ba856da5d164ee0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
 # <a name="backup-and-restore"></a>备份和还原
 
-在 Azure Analysis Services 中备份表格模型数据库与在本地 Analysis Services 中备份大致相同。 主要区别在于存储备份文件的位置。 必须将备份文件保存到 [Azure 存储帐户](../storage/storage-create-storage-account.md)的容器中。 可以使用已有存储帐户和容器，也可以在为服务器配置存储设置时创建。
+在 Azure Analysis Services 中备份表格模型数据库与在本地 Analysis Services 中备份大致相同。 主要区别在于存储备份文件的位置。 必须将备份文件保存到 [Azure 存储帐户](../storage/common/storage-create-storage-account.md)的容器中。 可以使用已有存储帐户和容器，也可以在为服务器配置存储设置时创建。
 
 > [!NOTE]
 > 创建存储帐户可能会导致新的计费服务。 若要了解详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/blobs/)。
@@ -44,7 +44,7 @@ ms.lasthandoff: 06/03/2017
 
     ![设置中的备份](./media/analysis-services-backup/aas-backup-backups.png)
 
-2.  单击“已启用”，然后单击“存储设置”。
+2.  单击“已启用”，并单击“存储设置”。
 
     ![启用](./media/analysis-services-backup/aas-backup-enable.png)
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 06/03/2017
 
 2. 在“备份数据库” > “备份文件”中，单击“浏览”。
 
-3. 在“文件另存为”对话框中，验证文件夹路径，然后键入备份文件的名称。 
+3. 在“文件另存为”对话框中，验证文件夹路径，并键入备份文件的名称。 
 
 4. 在“备份数据库”对话框中，选择选项。
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 06/03/2017
 使用 [Backup-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet) cmdlet。
 
 ## <a name="restore"></a>还原
-还原时，备份文件必须在已为服务器配置的存储帐户中。 如果需要将备份文件从本地位置移到存储帐户，请使用 [Microsoft Azure 存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)或 [AzCopy](../storage/storage-use-azcopy.md) 命令行实用工具。 
+还原时，备份文件必须在已为服务器配置的存储帐户中。 如果需要将备份文件从本地位置移到存储帐户，请使用 [Microsoft Azure 存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)或 [AzCopy](../storage/common/storage-use-azcopy.md) 命令行实用工具。 
 
 
 
@@ -112,7 +112,7 @@ ms.lasthandoff: 06/03/2017
 
 ## <a name="related-information"></a>相关信息
 
-[Azure 存储帐户](../storage/storage-create-storage-account.md)  
+[Azure 存储帐户](../storage/common/storage-create-storage-account.md)  
 [高可用性](analysis-services-bcdr.md)     
 [管理 Azure Analysis Services](analysis-services-manage.md)
 

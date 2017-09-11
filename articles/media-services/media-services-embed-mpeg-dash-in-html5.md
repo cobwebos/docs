@@ -2,7 +2,7 @@
 title: "使用 DASH.js 在 HTML5 应用程序中嵌入 MPEG-DASH 自适应流式处理视频 | Microsoft Docs"
 description: "本主题演示如何使用 DASH.js 在 HTML5 应用程序中嵌入 MPEG-DASH 自适应流式处理视频。"
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 35ba9161f70a27a215685830d1a9e7c1881cc3bb
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="embedding-a-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>使用 DASH.js 在 HTML5 应用程序中嵌入 MPEG-DASH 自适应流式处理视频
@@ -105,10 +106,5 @@ Dash.js 是用 JavaScript 编写的开源 MPEG-DASH 视频播放器。 其目标
 [开发视频播放器应用程序](media-services-develop-video-players.md)
 
 [GitHub dash.js 存储库](https://github.com/Dash-Industry-Forum/dash.js) 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

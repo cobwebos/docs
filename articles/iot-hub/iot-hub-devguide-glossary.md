@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 0e08557b126620a6c7dbbdb5dece423e7a0c2535
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 5631484bd2106ab5abff79dd3cbbf539c62bb164
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语词汇表
@@ -56,7 +56,7 @@ ms.lasthandoff: 08/09/2017
 通过[服务总线](../service-bus/index.md)，可在云端使用企业消息传递进行通信，也可采用中继进行通信，帮助将本地解决方案与云端连接。 某些 IoT 中心教程使用服务总线[队列](../service-bus-messaging/service-bus-messaging-overview.md)。
 
 ## <a name="azure-storage"></a>Azure 存储
-[Azure 存储](../storage/storage-introduction.md)是一种云存储解决方案。 它包含可用于存储非结构化的对象数据的 Blob 存储服务。 某些 IoT 中心教程使用 blob 存储。
+[Azure 存储](../storage/common/storage-introduction.md)是一种云存储解决方案。 它包含可用于存储非结构化的对象数据的 Blob 存储服务。 某些 IoT 中心教程使用 blob 存储。
 
 ## <a name="back-end-app"></a>后端应用
 在 [IoT 中心](#iot-hub)环境中，后端应用是指连接到 IoT 中心的一个面向服务的终结点的应用。 例如，后端应用可能检索[设备到云](#device-to-cloud)的消息或管理[标识注册表](#identity-registry)。 通常，后端应用在云中运行，但在许多教程中，后端应用是在本地开发计算机上运行的控制台应用。
@@ -139,7 +139,7 @@ ms.lasthandoff: 08/09/2017
 设备孪生同步使用设备孪生中的[所需属性](#desired-properties)配置设备并检索设备中的[报告属性](#reported-properties)，以将其存储在设备孪生中。
 
 ## <a name="direct-method"></a>直接方法
-[直接方法](iot-hub-devguide-direct-methods.md)可让你通过在 IoT 中心上调用 API来触发在设备上执行的方法。
+[直接方法](iot-hub-devguide-direct-methods.md)可让你通过在 IoT 中心调用 API 触发在设备上执行的方法。
 
 ## <a name="endpoint"></a>终结点
 IoT 中心公开了多个[终结点](iot-hub-devguide-endpoints.md)，以便使应用能够连接到 IoT 中心。 有面向设备的终结点，通过此终结点设备可以执行一些操作，例如发送[设备到云](#device-to-cloud)的消息和接收[云到设备](#cloud-to-device)的消息。 有面向服务的管理终结点，通过此终结点[后端应用](#back-end-app)可执行一些操作，如[设备标识](#device-identity)管理和设备孪生管理。 还有面向服务的[内置终结点](#built-in-endpoints)，用于读取设备到云的消息。 可创建[自定义终结点](#custom-endpoints)，接收由[路由规则](#routing-rules)调度的设备到云消息。
@@ -178,7 +178,7 @@ IoT 中心是完全托管的 Azure 服务，用于支持数百万台设备和解
 可以使用 [IoT 中心资源提供程序 REST API](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest) 管理 [Azure 订阅](#subscription)中的 IoT 中心，以便执行一些操作，例如创建、更新和删除中心。
 
 ## <a name="iot-suite"></a>IoT 套件
-Azure IoT 套件将多个 Azure 服务与预配置解决方案打包在一起。 这些预配置解决方案使你能够快速开始使用常用 IoT 方案的端到端实现。 有关详细信息，请参阅[什么是 Azure IoT 套件？](../iot-suite/iot-suite-overview.md)
+Azure IoT 套件将多个 Azure 服务与预配置解决方案打包在一起。 利用这些预配置解决方案，能够快速开始使用常用 IoT 方案的端到端实现。 有关详细信息，请参阅[什么是 Azure IoT 套件？](../iot-suite/iot-suite-overview.md)
 
 ## <a name="iothub-explorer"></a>iothub-explorer
 [iothub-explorer](https://github.com/azure/iothub-explorer) 是跨平台的命令行工具。 使用该工具可以管理[标识注册表](#identity-registry)中的设备、向设备发送消息和文件和接收来自设备的消息和文件，以及监视 IoT 中心的操作。

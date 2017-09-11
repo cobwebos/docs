@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: 61bff8af221b9155dc3fa4def5d9e7cdcff9a6f6
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 43053ce764fdeb88bde574d489fbfecbfcb491eb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>创建、更改或删除虚拟网络对等互连
@@ -33,7 +33,7 @@ ms.lasthandoff: 07/26/2017
 - 查看 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)一文，了解对等互连的限制。
 - 使用 Azure 帐户登录到 Azure 门户、Azure 命令行接口 (CLI) 或 Azure PowerShell。 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
 - 如果使用 PowerShell 命令来完成本文中的任务，请[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保安装最新版本的 Azure PowerShell cmdlet。 若要获取 PowerShell 命令的帮助和示例，请键入 `get-help <command> -full`。
-- 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请[安装和配置 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保安装最新版本的 Azure CLI。 若要获取 CLI 命令的帮助，请键入 `az <command> --help`。 不用安装 CLI 及其必备组件，可以使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 Cloud Shell 预安装有 Azure CLI 并将其配置为与帐户一起使用。 若要使用 Cloud Shell，请单击[门户](https://portal.azure.com)顶部的 Cloud Shell“>_”按钮。 
+- 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请[安装和配置 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保安装最新版本的 Azure CLI。 若要获取 CLI 命令的帮助，请键入 `az <command> --help`。 请勿安装 CLI 及其必备组件，可使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 Cloud Shell 预安装有 Azure CLI 并将其配置为与帐户一起使用。 若要使用 Cloud Shell，请单击[门户](https://portal.azure.com)顶部的 Cloud Shell“>_”按钮。 
 
 ## <a name="create-a-peering"></a>创建对等互连
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 07/26/2017
     - 虚拟网络：选择要进行对等互连的虚拟网络。 可以选择通过 Azure 部署模型创建的虚拟网络，但该虚拟网络必须与从中启动对等互连的虚拟网络位于同一位置。 必须具有对虚拟网络的读取访问权限，才能使其出现在列表中。 如果列出了某个虚拟网络，但显示为灰色，则可能是因为虚拟网络的地址空间与此虚拟网络的地址空间重叠。 如果虚拟网络地址空间重叠，则它们无法进行对等互连。 如果选中“资源 ID”复选框，则此设置不可用。
     - 允许虚拟网络访问：如果要启用两个虚拟网络之间的通信，请选择“启用”（默认）。 启用虚拟网络之间的通信可允许资源连接到任意虚拟网络，并以相同的带宽和延迟互相之间进行通信，就如同它们是连接到同一个虚拟网络一样。 这两个虚拟网络中的资源之间的所有通信都在 Azure 专用网络上进行。 网络安全组的默认标记 **VirtualNetwork** 会包围虚拟网络和已对等互连的虚拟网络。 若要了解网络安全组默认标记的详细信息，请阅读[网络安全组概述](virtual-networks-nsg.md#default-tags)一文。  如果不希望流量流到已对等互连的虚拟网络，请选择“禁用”。 如果已将一个虚拟网络与另一个虚拟网络对等互连，但有时想要禁用这两个虚拟网络之间的流量流动，则可以选择“禁用”。 可发现启用/禁用比删除并重新创建对等互连更加方便。 当禁用此设置时，流量不会在已对等互连的虚拟网络间流动。
     - 允许转发的流量：选中此框以允许转发到已对等互连的虚拟网络的流量（流量不是源自已对等互连的虚拟网络）流动到此虚拟网络。 如果已在进行对等互连的虚拟网络中部署网络虚拟设备，并创建了用户定义的路由以在整个网络虚拟设备中转发流量，则流量转发会变得非常常见。 如果保留此框的未选中状态（默认），从已对等互连的虚拟网络转发的流量将无法流动到此虚拟网络。 虽然启动此功能可允许通过对等互连转发流量，但它并不会创建任何用户定义的路由或网络虚拟设备。 用户自定义的路由和网络虚拟设备是单独创建的。 了解[用户定义的路由](virtual-networks-udr-overview.md)。
-    - 允许网关传输：如果有附加到此虚拟网络的虚拟网络网关并且想要允许来自已对等互连的虚拟网络的流量流经网关，请选中此框。 例如，此虚拟网络有可能通过虚拟网络网关附加到本地网络。 选中此框将允许来自已对等互连的虚拟网络的流量流经附加到此虚拟网络的网关。 如果选中此框，则已对等连接的虚拟网络不能有已配置的网关。 将对等互连从另一个虚拟网络设置至此虚拟网络时，已对等互连的虚拟网络必须已选中复选框“使用远程网关”。 如果保留此框的未选中状态（默认），则来自已对等互连的虚拟网络的流量仍可流动到此虚拟网络，但无法流经附加到此虚拟网络的虚拟网络网关。 了解有关[虚拟网络网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#site-to-site-and-multi-site-ipsecike-vpn-tunnel)的详细信息。 
+    - 允许网关传输：如果有附加到此虚拟网络的虚拟网络网关并且想要允许来自已对等互连的虚拟网络的流量流经网关，请选中此框。 例如，此虚拟网络有可能通过虚拟网络网关附加到本地网络。 选中此框将允许来自已对等互连的虚拟网络的流量流经附加到此虚拟网络的网关。 如果选中此框，则已对等连接的虚拟网络不能有已配置的网关。 将对等互连从另一个虚拟网络设置至此虚拟网络时，已对等互连的虚拟网络必须已选中复选框“使用远程网关”。 如果保留此框的未选中状态（默认），则来自已对等互连的虚拟网络的流量仍可流动到此虚拟网络，但无法流经附加到此虚拟网络的虚拟网络网关。 了解有关[虚拟网络网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti)的详细信息。 
     
     如果正在对等互连一个虚拟网络（资源管理器）与另一个虚拟网络（经典），则无法启用此选项。 虽然流量在这两个虚拟网络之间流动，但虚拟网络（经典）的流量无法流经附加到虚拟网络（资源管理器）的网络网关。
     - 使用远程网关：选中此框可允许来自此虚拟网络的流量流经附加到正与之对等互连的虚拟网络的虚拟网络网关。 例如，正与之对等互连的虚拟网络附加了一个 VPN 网关，可实现与本地网络的通信。  选中此框可允许来自此虚拟网络的流量流经附加到已对等互连的虚拟网络的 VPN 网关。 如果选中此框，已对等互连的虚拟网络必须附加有虚拟网络网关，并且必须已选中“允许网关传输”复选框。 如果保留此框的未选中状态（默认），则来自已对等互连的虚拟网络的流量仍将流动到此虚拟网络，但无法流经附加到此虚拟网络的虚拟网络网关。 

@@ -51,7 +51,7 @@ ms.lasthandoff: 06/17/2017
 ## <a name="fully-managed-paassaas-offerings"></a>完全托管式 (PaaS/SaaS) 产品/服务
 
 ### <a name="citrix-xenapp-essentials-released-april-2017"></a>Citrix XenApp Essentials（发布于 2017 年 4 月）
-Citrix XenApp Essentials 现已在 [ Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Citrix.XenAppEssentials)中推出，它是一种新型应用程序虚拟化服务，融合了 Citrix 云平台的强大功能和灵活特点与 Microsoft Azure RemoteApp 的简单、规范和易于使用的优点。 
+Citrix XenApp Essentials 现已在 [ Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Citrix.XenAppEssentials) 中推出，它是一种新型应用程序虚拟化服务，融合了 Citrix 云平台的强大功能和灵活特点与 Microsoft Azure RemoteApp 的简单、规范和易于使用的优点。 
 
 现有的 Azure RemoteApp 客户可以[注册免费试用版](https://www.citrix.com/products/citrix-cloud/form/xenapp-essentials-msft-trial/)。  注意：仅 Citrix 用户服务免费，Azure 计算和存储不免费
 
@@ -105,7 +105,7 @@ Citrix XenApp Essentials 现已在 [ Azure 应用商店](https://azuremarketplac
 Awingu 提供了一种简单的联机工作区解决方案，用于运行旧应用、SaaS和来自 html5 浏览器的文档。 从而使任何应用程序在任意类型的设备上都能安全使用。 对于 SaaS 服务，提供了多种单一登录选项。 同时，还可将各种（云）文件系统深入集成到工作区。 Awingu 丰富的联机工作区除了能够实现全面的移动性，还能通过精细控制（如下载/上传）、全面审查使用情况、多重身份验证（如 Azure MFA）以及会话录制等功能实现最佳安全性。 现成的 Awingu 可实现文档和应用程序会话共享，以确保协作的优化和安全。
 Awingu 的解决方案面向多租户、多 AD 和开放 API。 大型企业和小型企业、云服务提供商和 [ISV](http://www.isv2saas.com) 都在使用该解决方案。 这些客户特别青睐它使用简单、易于安装和 TCO 低廉等优点。
 
-[Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/awingu.awingu-arm)已推出具有 2 个内置并发用户的 Awingu 一体化。 其他许可证可由[各地的分销商和经销商](http://www.awingu.com/reseller)提供。
+[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/awingu.awingu-arm) 已推出具有 2 个内置并发用户的 Awingu 一体化。 其他许可证可由[各地的分销商和经销商](http://www.awingu.com/reseller)提供。
 
 详细了解[替代 Azure RemoteApp 的 Awingu](http://alternative-for-azure-remoteapp.awingu.com/)。
 

@@ -1,6 +1,6 @@
 ---
 title: "将 Apache Kafka 与 Storm on HDInsight 配合使用 - Azure | Microsoft Docs"
-description: "同时安装 Apache Kafka 和 Apache Storm on HDInsight。 了解如何使用 Storm 附带的 KafkaBolt 和 KafkaSpout 组件写入到 Kafka，然后从中进行读取。 此外，还了解如何使用 Flux 框架来定义和提交 Storm 拓扑。"
+description: "同时安装 Apache Kafka 和 Apache Storm on HDInsight。 了解如何使用 Storm 附带的 KafkaBolt 和 KafkaSpout 组件写入到 Kafka，并从中进行读取。 此外，还了解如何使用 Flux 框架来定义和提交 Storm 拓扑。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 07/21/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: 823ff810ffc0b65ec1bb38e4dc314da1d0f9a64a
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: e8895ef3c11aea48513e4060a20f5f49b11fc961
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="use-apache-kafka-preview-with-storm-on-hdinsight"></a>将 Apache Kafka（预览版）与 Storm on HDInsight 配合使用
@@ -45,7 +45,7 @@ ms.lasthandoff: 07/22/2017
 
 * 文本编辑器或 IDE。
 
-可以在开发工作站上安装 Java 和 JDK 时设置以下环境变量。 不过，你应该检查它们是否存在并且包含系统的正确值。
+可以在开发工作站上安装 Java 和 JDK 时设置以下环境变量。 不过，应该检查它们是否存在并且包含系统的正确值。
 
 * `JAVA_HOME` - 应该指向 JDK 的安装目录。
 * `PATH` - 应该包含以下路径：
@@ -63,13 +63,13 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 > [!NOTE]
 > 通过 Internet 可访问群集上的其他服务，例如 SSH 和 Ambari。 有关可用于 HDInsight 的公共端口的详细信息，请参阅 [HDInsight 使用的端口和 URI](hdinsight-hadoop-port-settings-for-services.md)。
 
-虽然可手动创建 Azure 虚拟网络、Kafka 和 Storm 群集，但使用 Azure Resource Manager 模板会更简单。 使用以下步骤将 Azure 虚拟网络、Kafka 和 Storm 群集部署到你的 Azure 订阅。
+虽然可手动创建 Azure 虚拟网络、Kafka 和 Storm 群集，但使用 Azure Resource Manager 模板会更简单。 使用以下步骤将 Azure 虚拟网络、Kafka 和 Storm 群集部署到 Azure 订阅。
 
-1. 使用以下按钮登录到 Azure，然后在 Azure 门户中打开模板。
+1. 使用以下按钮登录到 Azure，并在 Azure 门户中打开模板。
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-storm-cluster-in-vnet-v2.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
-    Azure 资源管理器模板位于https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-storm-cluster-in-vnet-v1.json。 它创建以下资源：
+    Azure 资源管理器模板位于 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-storm-cluster-in-vnet-v1.json** 。 它创建以下资源：
     
     * Azure 资源组
     * Azure 虚拟网络
@@ -98,9 +98,9 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     
     * **SSH 密码**：Storm 和 Kafka 群集的 SSH 用户的密码。
 
-3. 阅读“条款和条件”，然后选择“我同意上述条款和条件”。
+3. 阅读“条款和条件”，并选择“我同意上述条款和条件”。
 
-4. 最后，选中“固定到仪表板”，然后选择“购买”。 创建群集大约需要 20 分钟时间。
+4. 最后，选中“固定到仪表板”，并选择“购买”。 创建群集大约需要 20 分钟时间。
 
 创建资源后，会显示“资源组”边栏选项卡。
 
@@ -144,7 +144,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
   mvn clean package
   ```
 
-    包过程将在 `target` 目录中创建名为 `KafkaTopology-1.0-SNAPSHOT.jar` 的文件。
+    包过程会在 `target` 目录中创建名为 `KafkaTopology-1.0-SNAPSHOT.jar` 的文件。
 
 3. 使用以下命令将包复制到 Storm on HDInsight 群集。 使用群集的 SSH 用户名替换 **USERNAME**。 用创建群集时使用的基名称替换 **BASENAME**。
 
@@ -164,12 +164,12 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER" `
         -Credential $creds
     $respObj = ConvertFrom-Json $resp.Content
-    $brokerHosts = $respObj.host_components.HostRoles.host_name
+    $brokerHosts = $respObj.host_components.HostRoles.host_name[0..1]
     ($brokerHosts -join ":9092,") + ":9092"
     ```
 
     ```bash
-    curl -su admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")'
+    curl -su admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2
     ```
 
     > [!IMPORTANT]
@@ -177,9 +177,10 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     返回的值类似于下文：
 
-        wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+        wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
 
-    请保存该值，因为稍后会使用它。
+    > [!IMPORTANT]
+    > 虽然群集可能有两个以上的代理主机，但无需向客户端提供所有主机的完整列表。 只需提供一两个就足够了。
 
 2. 使用以下方法之一发现 Kafka Zookeeper 主机：
 
@@ -189,12 +190,12 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" `
         -Credential $creds
     $respObj = ConvertFrom-Json $resp.Content
-    $zookeeperHosts = $respObj.host_components.HostRoles.host_name
+    $zookeeperHosts = $respObj.host_components.HostRoles.host_name[0..1]
     ($zookeeperHosts -join ":2181,") + ":2181"
     ```
 
     ```bash
-    curl -su admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")'
+    curl -su admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2
     ```
 
     > [!IMPORTANT]
@@ -202,14 +203,17 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     返回的值类似于下文：
 
-        zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk3-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+        zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+
+    > [!IMPORTANT]
+    > 虽然有两个以上的 Zookeeper 节点，但无需向客户端提供所有主机的完整列表。 只需提供一两个就足够了。
 
     请保存该值，因为稍后会使用它。
 
 3. 编辑项目根目录中的 `dev.properties` 文件。 将中转站和 Zookeeper 主机信息添加到此文件中的匹配行。 下面的示例使用前面步骤中的示例值进行配置：
 
-        kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk3-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
-        kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+        kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+        kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
         kafka.topic: stormtopic
 
 4. 保存 `dev.properties` 文件，然后使用以下命令将其上传到 Storm 群集：
@@ -288,7 +292,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 1. 与 Storm 群集建立 SSH 会话后，使用以下命令启动读取器拓扑：
 
   ```bash
-  storm jar KafkaTopology-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /reader.yaml -e
+  storm jar KafkaTopology-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /reader.yaml --filter dev.properties
   ```
 
 2. 启动拓扑后，打开 Storm UI。 此 Web UI 位于 https://storm-BASENAME.azurehdinsight.net/stormui。 使用创建群集时使用的基名称替换 __BASENAME__。 

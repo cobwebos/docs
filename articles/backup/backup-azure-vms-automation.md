@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/08/2017
+ms.date: 08/30/2017
 ms.author: markgal;trinadhk
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 80c5eec6b605a9f9b5de13310731bf4f9a46f8a0
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 414fb9adaa1535d82b1bc385ff0864394efb837c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>使用 AzureRM.RecoveryServices.Backup cmdlet 来备份虚拟机
@@ -37,10 +36,10 @@ ms.lasthandoff: 06/08/2017
 >
 >
 
-本文将逐步指导你使用 PowerShell 来保护 VM，以及从恢复点还原数据。
+本文将逐步指导使用 PowerShell 来保护 VM，以及从恢复点还原数据。
 
 ## <a name="concepts"></a>概念
-如果你不熟悉 Azure 备份服务，请查看[什么是 Azure 备份？](backup-introduction-to-azure-backup.md)，即可大致了解该服务。 在开始之前，请确保你已掌握与系统必备组件相关的基础知识（这些必备组件是使用 Azure 备份所必需的），并了解当前 VM 备份解决方案的限制。
+如果不熟悉 Azure 备份服务，请查看[什么是 Azure 备份？](backup-introduction-to-azure-backup.md)，即可大致了解该服务。 在开始之前，请确保已掌握与系统必备组件相关的基础知识（这些必备组件是使用 Azure 备份所必需的），并了解当前 VM 备份解决方案的限制。
 
 若要有效地使用 PowerShell，必须了解对象的层次结构以及从何处开始。
 
@@ -98,14 +97,14 @@ Cmdlet          Wait-AzureRmRecoveryServicesBackupJob              1.4.0      Az
 * 还原 Azure VM
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
-以下步骤引导你创建恢复服务保管库。 恢复服务保管库不同于备份保管库。
+以下步骤引导创建恢复服务保管库。 恢复服务保管库不同于备份保管库。
 
 1. 如果是首次使用 Azure 备份，则必须使用 **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)** cmdlet 将 Azure 恢复服务提供程序注册到订阅。
 
     ```
     PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
-2. 恢复服务保管库是一种 Resource Manager 资源，因此需要将它放在资源组中。 你可以使用现有的资源组，也可以使用 **[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup)** cmdlet 创建资源组。 创建资源组时，请指定资源组的名称和位置。  
+2. 恢复服务保管库是一种 Resource Manager 资源，因此需要将它放在资源组中。 可以使用现有的资源组，也可以使用 **[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup)** cmdlet 创建资源组。 创建资源组时，请指定资源组的名称和位置。  
 
     ```
     PS C:\> New-AzureRmResourceGroup –Name "test-rg" –Location "West US"
@@ -115,7 +114,7 @@ Cmdlet          Wait-AzureRmRecoveryServicesBackupJob              1.4.0      Az
     ```
     PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
-4. 指定要使用的存储冗余类型；你可以使用[本地冗余存储 (LRS)](../storage/storage-redundancy.md#locally-redundant-storage) 或[异地冗余存储 (GRS)](../storage/storage-redundancy.md#geo-redundant-storage)。 以下示例显示，testvault 的 -BackupStorageRedundancy 选项设置为 GeoRedundant。
+4. 指定要使用的存储冗余类型；可以使用[本地冗余存储 (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) 或[异地冗余存储 (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)。 以下示例显示，testvault 的 -BackupStorageRedundancy 选项设置为 GeoRedundant。
 
     ```
     PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault –Name "testvault"
@@ -155,7 +154,7 @@ PS C:\> Get-AzureRmRecoveryServicesVault -Name "testvault" | Set-AzureRmRecovery
 ```
 
 ### <a name="create-a-protection-policy"></a>创建保护策略
-在创建恢复服务保管库时，它附带了默认的保护和保留策略。 默认保护策略在每天的指定时间触发备份作业。 默认保留策略将每日恢复点保留 30 天。 可以使用默认策略快速保护你的 VM，以后再使用不同的详细信息编辑该策略。
+在创建恢复服务保管库时，它附带了默认的保护和保留策略。 默认保护策略在每天的指定时间触发备份作业。 默认保留策略将每日恢复点保留 30 天。 可以使用默认策略快速保护 VM，以后再使用不同的详细信息编辑该策略。
 
 若要查看保管库中的保护策略，请使用 **[Get-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupprotectionpolicy)**。 可以使用此 cmdlet 获取特定策略，或者查看与某个工作负荷类型关联的策略。 以下示例获取适用于工作负荷类型 AzureVM 的策略。
 
@@ -167,11 +166,11 @@ DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 P
 ```
 
 > [!NOTE]
-> PowerShell 中 BackupTime 字段的时区是 UTC。 但是，在 Azure 门户中显示备份时间时，该时间将会根据你的本地时区调整。
+> PowerShell 中 BackupTime 字段的时区是 UTC。 但是，在 Azure 门户中显示备份时间时，该时间会根据本地时区调整。
 >
 >
 
-一个备份保护策略至少与一个保留策略相关联。 保留策略定义了在将恢复点删除之前将其保留多长时间。 可以使用 **[Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupretentionpolicyobject)** 查看默认保留策略。  类似地，可以使用 **[Get-AzureRmRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupschedulepolicyobject)** 获取默认计划策略。 **[New-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy)** cmdlet 创建用于保存备份策略信息的 PowerShell 对象。 计划和保留策略对象将用作 **[New-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy)** cmdlet 的输入。 以下示例将计划策略和保留策略存储在变量中。 此示例使用这些变量来定义在创建保护策略 *NewPolicy* 时要使用的参数。
+一个备份保护策略至少与一个保留策略相关联。 保留策略定义了在将恢复点删除之前将其保留多长时间。 可以使用 **[Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupretentionpolicyobject)** 查看默认保留策略。  类似地，可以使用 **[Get-AzureRmRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupschedulepolicyobject)** 获取默认计划策略。 [New-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy) cmdlet 创建用于保存备份策略信息的 PowerShell 对象。 计划和保留策略对象将用作 **[New-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy)** cmdlet 的输入。 以下示例将计划策略和保留策略存储在变量中。 此示例使用这些变量来定义在创建保护策略 *NewPolicy* 时要使用的参数。
 
 ```
 PS C:\> $schPol = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
@@ -184,7 +183,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 
 
 ### <a name="enable-protection"></a>启用保护
-在定义备份保护策略后，还必须为相应的项启用该策略。 可以使用 **[Enable-AzureRmRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/enable-azurermrecoveryservicesbackupprotection)** 来启用保护。 启用保护需要两个对象 - 项和策略。 将策略与保管库关联之后，将在策略计划中定义的时间触发备份工作流。
+在定义备份保护策略后，还必须为相应的项启用该策略。 可以使用 **[Enable-AzureRmRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/enable-azurermrecoveryservicesbackupprotection)** 来启用保护。 启用保护需要两个对象 - 项和策略。 将策略与保管库关联之后，会在策略计划中定义的时间触发备份工作流。
 
 以下示例使用策略 NewPolicy 为项 V2VM 启用保护。 在未加密型 Resource Manager VM 上启用保护
 
@@ -197,6 +196,14 @@ PS C:\> Enable-AzureRmRecoveryServicesBackupProtection -Policy $pol -Name "V2VM"
 
 ```
 PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName "KeyVaultName" -ResourceGroupName "RGNameOfKeyVault" -PermissionsToKeys backup,get,list -PermissionsToSecrets get,list -ServicePrincipalName 262044b1-e2ce-469f-a196-69ab7ada62d3
+PS C:\> $pol=Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
+PS C:\> Enable-AzureRmRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"
+```
+
+若要在加密型 VM（仅使用 BEK 加密）上启用保护，需要向 Azure 备份服务授予权限来读取密钥保管库中的密码。
+
+```
+PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName "KeyVaultName" -ResourceGroupName "RGNameOfKeyVault" -PermissionsToSecrets backup,get,list -ServicePrincipalName 262044b1-e2ce-469f-a196-69ab7ada62d3
 PS C:\> $pol=Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
 PS C:\> Enable-AzureRmRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"
 ```
@@ -238,7 +245,7 @@ V2VM              Backup               InProgress            4/23/2016 5:00:30 P
 ```
 
 > [!NOTE]
-> PowerShell 中 StartTime 和 EndTime 字段的时区是 UTC。 但是，在 Azure 门户中显示时间时，该时间将会根据你的本地时区调整。
+> PowerShell 中 StartTime 和 EndTime 字段的时区是 UTC。 但是，在 Azure 门户中显示时间时，该时间会根据本地时区调整。
 >
 >
 
@@ -260,7 +267,7 @@ PS C:\> Wait-AzureRmRecoveryServicesBackupJob -Job $joblist[0] -Timeout 43200
 ```
 
 ## <a name="restore-an-azure-vm"></a>还原 Azure VM
-使用 Azure 门户还原 VM 与使用 PowerShell 还原 VM 存在很大区别。 如果使用 PowerShell，则当你从恢复点创建磁盘和配置信息时，还原操作即完成。
+使用 Azure 门户还原 VM 与使用 PowerShell 还原 VM 存在很大区别。 如果使用 PowerShell，则从恢复点创建磁盘和配置信息时，还原操作即完成。
 
 > [!NOTE]
 > 还原操作不会创建虚拟机。
@@ -281,7 +288,7 @@ PS C:\> Wait-AzureRmRecoveryServicesBackupJob -Job $joblist[0] -Timeout 43200
 若要还原备份数据，请确定已备份项目以及保留了时间点数据的恢复点。 使用 **[Restore-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/restore-azurermrecoveryservicesbackupitem)** cmdlet 将数据从保管库还原到客户的帐户。
 
 ### <a name="select-the-vm"></a>选择 VM
-若要获取用于标识正确备份项的 PowerShell 对象，请从保管库中的容器开始，按对象层次结构进行操作。 若要选择代表 VM 的容器，请使用 **[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)** cmdlet，然后通过管道将其传递给 **[Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)** cmdlet。
+若要获取用于标识正确备份项的 PowerShell 对象，请从保管库中的容器开始，按对象层次结构进行操作。 要选择代表 VM 的容器，请使用 **[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)** cmdlet，然后通过管道将其传递给 **[Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)** cmdlet。
 
 ```
 PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" –Status "Registered" -FriendlyName "V2VM"
@@ -289,7 +296,7 @@ PS C:\> $backupitem = Get-AzureRmRecoveryServicesBackupItem –Container $namedC
 ```
 
 ### <a name="choose-a-recovery-point"></a>选择恢复点
-使用 **[Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)** cmdlet 列出备份项的所有恢复点。 然后选择要还原的恢复点。 如果你不确定要使用哪个恢复点，则最好是选择列表中 RecoveryPointType = AppConsistent 的最新恢复点。
+使用 **[Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)** cmdlet 列出备份项的所有恢复点。 然后选择要还原的恢复点。 如果不确定要使用哪个恢复点，则最好是选择列表中 RecoveryPointType = AppConsistent 的最新恢复点。
 
 在以下脚本中，变量 **$rp** 是一个数组，其中包含所选备份项在过去七天的恢复点。 该数组按时间进行反向排序，以最新的恢复点作为索引 0。 使用标准 PowerShell 数组索引选取恢复点。 在示例中，$rp[0] 选择最新的恢复点。
 
@@ -373,7 +380,7 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails -Job $restorejob
    PS C:\> $vm = New-AzureRmVMConfig -VMSize $obj.'properties.hardwareProfile'.vmSize -VMName "testrestore"
     ```
 
-4. 附加 OS 磁盘和数据磁盘。
+4. 附加 OS 磁盘和数据磁盘。 请根据 VM 配置，参阅相关部分内容，查看各自的 cmdlet：
 
     #### <a name="non-managed-non-encrypted-vms"></a>非托管、非加密型 VM
 
@@ -388,9 +395,24 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails -Job $restorejob
     }
     ```
 
-    #### <a name="non-managed-encrypted-vms"></a>非托管、加密型 VM
+    #### <a name="non-managed-encrypted-vms-bek-only"></a>非托管、加密型 VM（仅限 BEK）
 
-    对于非托管的加密 VM，需要先将密钥和密码还原到密钥保管库，然后才能附加磁盘。 有关详细信息，请参阅[从 Azure 备份恢复点还原加密虚拟机](backup-azure-restore-key-secret.md)一文。 以下示例展示了如何为加密的 VM 附加 OS 和数据磁盘。
+    对于非托管的加密 VM（仅使用 BEK 加密），需要先将密码还原到密钥保管库，然后才能附加磁盘。 有关详细信息，请参阅[从 Azure 备份恢复点还原加密虚拟机](backup-azure-restore-key-secret.md)一文。 以下示例展示了如何为加密的 VM 附加 OS 和数据磁盘。
+
+    ```
+    PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+    PS C:\> $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+    PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows
+    PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.'properties.storageProfile'.osDisk.osType
+    PS C:\> foreach($dd in $obj.'properties.storageProfile'.dataDisks)
+     {
+     $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
+     }
+    ```
+
+    #### <a name="non-managed-encrypted-vms-bek-and-kek"></a>非托管、加密型 VM（BEK 和 KEK）
+
+    对于非托管的加密 VM（使用 BEK 和 KEK 加密），需要先将密钥和密码还原到密钥保管库，然后才能附加磁盘。 有关详细信息，请参阅[从 Azure 备份恢复点还原加密虚拟机](backup-azure-restore-key-secret.md)一文。 以下示例展示了如何为加密的 VM 附加 OS 和数据磁盘。
 
     ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -411,6 +433,7 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails -Job $restorejob
     ```
     PS C:\> $storageType = "StandardLRS"
     PS C:\> $osDiskName = $vm.Name + "_osdisk"
+    PS C:\> $osVhdUri = $obj.'properties.storageProfile'.osDisk.vhd.uri
     PS C:\> $diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $osVhdUri
     PS C:\> $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk $diskConfig -ResourceGroupName "test"
     PS C:\> Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -CreateOption "Attach" -Windows
@@ -424,9 +447,9 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails -Job $restorejob
     }
     ```
 
-    #### <a name="managed-encrypted-vms"></a>托管、加密型 VM
+    #### <a name="managed-encrypted-vms-bek-and-kek"></a>托管加密型 VM（BEK 和 KEK）
 
-    对于托管加密 VM，你将需要从 blob 存储创建托管磁盘，然后附加磁盘。 有关详细信息，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md) 一文。 以下示例代码展示了如何为托管加密 VM 附加数据磁盘。
+    对于托管加密 VM（使用 BEK 和 KEK 加密），需要从 Blob 存储创建托管磁盘，然后附加磁盘。 有关详细信息，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md) 一文。 以下示例代码展示了如何为托管加密 VM 附加数据磁盘。
 
      ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -434,6 +457,7 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails -Job $restorejob
     PS C:\> $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
     PS C:\> $storageType = "StandardLRS"
     PS C:\> $osDiskName = $vm.Name + "_osdisk"
+    PS C:\> $osVhdUri = $obj.'properties.storageProfile'.osDisk.vhd.uri
     PS C:\> $diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $osVhdUri
     PS C:\> $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk $diskConfig -ResourceGroupName "test"
     PS C:\> Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows
@@ -463,5 +487,5 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails -Job $restorejob
     ```
 
 ## <a name="next-steps"></a>后续步骤
-如果你更愿意使用 PowerShell 来处理 Azure 资源，请查看 PowerShell 文章：[为 Windows Server 部署和管理备份](backup-client-automation.md)。 如果管理 DPM 备份，请参阅[为 DPM 部署和管理备份](backup-dpm-automation.md)。 这两篇文章都为 Resource Manager 部署和经典部署提供了一个版本。  
+如果更愿意使用 PowerShell 来处理 Azure 资源，请查看 PowerShell 文章：[为 Windows Server 部署和管理备份](backup-client-automation.md)。 如果管理 DPM 备份，请参阅[为 DPM 部署和管理备份](backup-dpm-automation.md)。 这两篇文章都为 Resource Manager 部署和经典部署提供了一个版本。  
 

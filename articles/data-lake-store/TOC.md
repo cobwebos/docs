@@ -39,12 +39,14 @@
 ### [Storm on HDInsight 和 Azure Data Lake Store 性能优化指南](data-lake-store-performance-tuning-storm.md)
 
 ## 与 Azure 服务集成
+### 与 HDInsight 配合使用
+#### [使用门户](data-lake-store-hdinsight-hadoop-use-portal.md)
+#### [使用 PowerShell（默认存储）](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+#### [使用 PowerShell（其他存储）](data-lake-store-hdinsight-hadoop-use-powershell.md)
+#### [使用 Azure 模板](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 ### [从 Azure VNET 中的 VM 访问](data-lake-store-connectivity-from-vnets.md)
 ### [与 Data Lake Analytics 配合使用](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-### [将 HDInsight 与 Data Lake Store 配合使用 - 门户](data-lake-store-hdinsight-hadoop-use-portal.md)
-### [将 HDInsight 与作为默认存储的 Data Lake Store 配合使用 - PowerShell](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
-### [将 HDInsight 与作为附加存储的 Data Lake Store 配合使用 - PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
-### [将 HDInsight 与 Data Lake Store 配合使用 - Azure 模板](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
+### [与 Azure 事件中心配合使用](data-lake-store-archive-eventhub-capture.md)
 ### [与数据工厂配合使用](../data-factory/data-factory-azure-datalake-connector.md)
 ### [与流分析配合使用](data-lake-store-stream-analytics.md)
 ### [与 Power BI 配合使用](data-lake-store-power-bi.md)
@@ -55,7 +57,7 @@
 
 ## 管理
 ### [访问诊断日志](data-lake-store-diagnostic-logs.md)
-### [高可用性规划](data-lake-store-troubleshooting-guidance.md)
+### [高可用性规划](data-lake-store-disaster-recovery-guidance.md)
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=data-lake-store)

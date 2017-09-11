@@ -13,14 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
 ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
 ms.openlocfilehash: 3606df64b619b62f8b9e5aec2abc4efc994c37e3
 ms.contentlocale: zh-cn
 ms.lasthandoff: 01/24/2017
-
 
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>迁移到适用于 HDInsight 群集的基于 Azure Resource Manager 的开发工具

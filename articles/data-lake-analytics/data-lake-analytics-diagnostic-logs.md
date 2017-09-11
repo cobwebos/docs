@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 07/31/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: f5fe6db423f1f2faeaf51e25be9b8f5b551e2a16
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 6c74db1659742aa41306388273bec46800ba7609
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Accessing diagnostic logs for Azure Data Lake Analytics（访问 Azure Data Lake Analytics 的诊断日志）
@@ -78,9 +78,9 @@ ms.lasthandoff: 08/01/2017
 
 3. 单击日志条目的“下载”链接下载该日志。
 
-### <a name="use-the-azure-data-lake-storage-account-that-contains-log-data"></a>使用其中包含日志数据的 Azure Data Lake 存储帐户
+### <a name="use-the-azure-storage-account-that-contains-log-data"></a>使用包含日志数据的 Azure 存储帐户
 
-1. 打开与日志记录的 Data Lake Analytics 关联的 Azure Data Lake 存储帐户边栏选项卡，然后单击“Blob”。 “Blob 服务”边栏选项卡上会列出两个容器。
+1. 打开与日志记录的 Data Lake Analytics 关联的 Azure 存储帐户边栏选项卡，并单击“Blob”。 “Blob 服务”边栏选项卡上会列出两个容器。
 
     ![查看诊断日志记录](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs-storage-account.png "查看诊断日志记录")
 

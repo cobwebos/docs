@@ -13,7 +13,7 @@
 
 3. 在“添加存储帐户凭据”边栏选项卡中，执行以下步骤：
 
-    1. 在你的服务所在的同一 Azure 订阅中添加存储帐户凭据时，请确保选中“当前”。
+    1. 在服务所在的同一 Azure 订阅中添加存储帐户凭据时，请确保选中“当前”。
 
     2. 从“存储帐户”下拉列表中，选择一个现有存储帐户。
 
@@ -23,11 +23,11 @@
 
         ![“添加存储帐户凭据”边栏选项卡](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct3.png)
 
-    5. 单击“添加”为存储帐户凭据启动作业创建。 成功创建存储帐户凭据后，你将收到通知。
+    5. 单击“添加”为存储帐户凭据启动作业创建。 成功创建存储帐户凭据后，将收到通知。
 
         ![存储帐户凭据的成功通知](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct5.png)
 
-新创建的存储帐户凭据将显示在“存储帐户凭据”列表下。
+新创建的存储帐户凭据会显示在“存储帐户凭据”列表下。
 
 ![存储帐户凭据的列表](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct6.png)
 

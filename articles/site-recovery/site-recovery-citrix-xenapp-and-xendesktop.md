@@ -81,7 +81,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 3.  Azure Site Recovery 无法复制和保护现有的本地 MCS 或 PVS 克隆。
 需要使用从传递控制器预配的 Azure RM 重新创建这些克隆。
 
-4. 无法使用 Azure Site Recovery 保护 NetScaler，因为 NetScaler 基于 FreeBSD，而 Azure Site Recovery 不支持保护 FreeBSD OS。 故障转移到 Azure 之后，你需要部署并配置来自 Azure 应用商店的新 NetScaler 设备。
+4. 无法使用 Azure Site Recovery 保护 NetScaler，因为 NetScaler 基于 FreeBSD，而 Azure Site Recovery 不支持保护 FreeBSD OS。 故障转移到 Azure 之后，你需要部署并配置来自 Azure Marketplace 的新 NetScaler 设备。
 
 
 ## <a name="replicating-virtual-machines"></a>复制虚拟机

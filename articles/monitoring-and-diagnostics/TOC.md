@@ -64,6 +64,7 @@
 ## [监视数据源](monitoring-data-sources.md)
 ## [支持的指标列表](monitoring-supported-metrics.md)
 ## [活动日志事件架构](monitoring-activity-log-schema.md)
+## [诊断日志支持的服务、类别和架构](monitoring-diagnostic-logs-schema.md)
 ## [PowerShell](/powershell/module/azurerm.insights)
 ## [.NET](https://msdn.microsoft.com/library/azure/dn802153)
 ## [REST](/rest/api/monitor/)

@@ -2,25 +2,25 @@
 title: "Jenkins 和 Azure"
 description: "在 Azure 上部署 Jenkins 并将其与 Azure 集成"
 services: multiple
-author: mlearned
-manager: douge
+author: czeumault
+manager: carolz
 layout: LandingPage
 ms.service: multiple
 ms.tgt_pltfrm: na
 ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/20/2017
-ms.author: mlearned
+ms.author: carolz
 ms.custom: Jenkins
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: aad1e4839154b552b39258f65e6ed97bf1de90fb
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: e2f5caf8c4d3eab600bb015db5a4403314a4f6e3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 <div class="content">
-    <h1>Azure 上的 Jenkins</h1>
+    <h1>Azure 上的 Jenkins®</h1>
     <div class="introHolder" style="justify-content: space-between;">
        <div class="intro" style="min-width: 200px">
             <img src="media/Jenkins.png" align="right" alt="Jenkins Logo">Jenkins 是一种常用的开放源代码自动化服务器，它与 Azure 无缝集成以支持持续集成 (CI) 和持续交付 (CD)。  使用我们的快速入门、教程和示例，了解如何通过 Azure 工具和服务安装、配置和使用 Jenkins。
@@ -43,5 +43,7 @@ ms.lasthandoff: 08/04/2017
 <a href="https://plugins.jenkins.io/azure-vm-agents">Azure VM 代理插件</a><br/>
 <a href="https://plugins.jenkins.io/windows-azure-storage">Azure 存储插件</a><br/>
 <a href="https://jenkins.io">了解 Jenkins</a><br/>
+<h4>      
+Jenkins® 是 Public Interest, Inc. 的软件注册商标。[Jenkins® 徽标](https://wiki.jenkins.io/display/JENKINS/Logo)已从 [Jenkins 项目](https://jenkins.io)中通过 [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) 获得许可。</h4>
 </div>
 

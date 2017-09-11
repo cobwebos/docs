@@ -2,7 +2,7 @@
 title: "Azure Application Insights 文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用 Application Insights（可扩展的应用程序性能管理服务）来检测、会诊和诊断 Web 应用和服务中的问题。"
 services: application-insights
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: d22dec77ea0fde59a86799cf5f2d13c2c4d6dacd
 ms.openlocfilehash: 1f3fc2431bacd6852c6babc7ebbb07c6a3b74145
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="application-insights-documentation"></a>Application Insights 文档
@@ -163,10 +165,5 @@ ms.openlocfilehash: 1f3fc2431bacd6852c6babc7ebbb07c6a3b74145
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

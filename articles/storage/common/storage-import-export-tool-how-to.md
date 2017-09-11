@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 86073f5d15253d658fcb371e913dd3a543a2b075
-ms.lasthandoff: 03/30/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 20a720833842f9579fd4fccaa39e964def48197e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -26,16 +26,16 @@ ms.lasthandoff: 03/30/2017
 
 使用 Azure 导入/导出工具 (WAImportExport.exe) 可以创建和管理 Azure 导入/导出服务的作业，将大量数据传入或传出 Azure Blob 存储。
 
-本文档适用于最新版本的 Azure 导入/导出工具。 有关该工具的 v1 版本的使用信息，请参阅[使用 Azure 导入/导出工具 v1](storage-import-export-tool-how-to-v1.md)。
+本文档适用于最新版本的 Azure 导入/导出工具。 有关经典部署模型的使用信息，请参阅[使用 Azure 导入/导出工具 v1](storage-import-export-tool-how-to-v1.md)。
 
-以下文章介绍了如何使用该工具实现以下目的：  
+以下文章介绍如何：  
 
-- 安装和设置导入/导出工具。
+- 安装和设置 Azure 导入/导出工具。
 - 为作业准备硬盘驱动器，以便将数据从驱动器导入 Azure Blob 存储。
 - 使用复制日志文件查看作业状态。 
 - 修复导入作业。 
 - 修复导出作业。 
-- 排查在使用 Azure 导入/导出工具的过程中遇到的问题。 
+- 排查 Azure 导入/导出工具问题。 
 
 ## <a name="next-steps"></a>后续步骤
 

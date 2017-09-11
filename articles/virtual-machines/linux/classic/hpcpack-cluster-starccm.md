@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 09/13/2016
 ms.author: xpillons
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 9a2796c66fa49c543e52b654e583ade7625a7f31
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b45fcfb981287035da02fda62eaf5f9436ec2379
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="run-star-ccm-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>在 Azure 中的 Linux RDMA 群集上运行 STAR-CCM+ 和 Microsoft HPC Pack
@@ -88,16 +88,16 @@ Azure PowerShell 是必备组件。 如果未在本地计算机上配置 PowerSh
 
 20 到 30 分钟后，头节点应准备就绪。 可以在 Azure 门户中单击虚拟机的“连接”图标连接到头节点。
 
-最终你可能需要修复 DNS 转发器。 为此，请启动 DNS 管理器。
+最终可能需要修复 DNS 转发器。 为此，请启动 DNS 管理器。
 
-1. 在 DNS 管理器中右键单击服务器名称，选择“属性”，然后单击“转发器”选项卡。
-2. 单击“编辑”按钮删除所有转发器，然后单击“确定”。
-3. 确保已选中“如果没有转发器可用，请使用根提示”复选框，然后单击“确定”。
+1. 在 DNS 管理器中右键单击服务器名称，选择“属性”，并单击“转发器”选项卡。
+2. 单击“编辑”按钮删除所有转发器，并单击“确定”。
+3. 确保已选中“如果没有转发器可用，请使用根提示”复选框，并单击“确定”。
 
 ## <a name="set-up-linux-compute-nodes"></a>设置 Linux 计算节点
 使用用于创建头节点的同一部署模板来部署 Linux 计算节点。
 
-将文件 **MyCluster.xml** 从本地计算机复制到头节点，并使用要部署的节点数 (<=20) 更新 **NodeCount** 标记。 请确保在 Azure 配额中保留足够的可用核心，因为每个 A9 实例将占用订阅中的 16 个核心。 在预算不变的情况下，若要使用更多的 VM，可以使用 A8 实例（8 核心）而不要使用 A9。
+将文件“MyCluster.xml”从本地计算机复制到头节点，并使用要部署的节点数 (<=20) 更新“NodeCount”标记。 请确保在 Azure 配额中保留足够的可用核心，因为每个 A9 实例将占用订阅中的 16 个核心。 在预算不变的情况下，若要使用更多的 VM，可以使用 A8 实例（8 核心）而不要使用 A9。
 
 在头节点上，复制 HPC Pack IaaS 部署脚本。
 
@@ -110,7 +110,7 @@ Azure PowerShell 是必备组件。 如果未在本地计算机上配置 PowerSh
    
    ![头节点部署动态][hndeploy]
 
-打开 HPC Pack 群集管理器工具。 几分钟后，Linux 计算节点将会规则地显示在群集计算节点列表中。 使用经典部署模式可依序创建 IaaS VM。 因此，如果节点数目十分重要，则部署所有节点可能需要很长时间。
+打开 HPC Pack 群集管理器工具。 几分钟后，Linux 计算节点会规则地显示在群集计算节点列表中。 使用经典部署模式可依序创建 IaaS VM。 因此，如果节点数目十分重要，则部署所有节点可能需要很长时间。
 
 ![HPC Pack 群集管理器中的 Linux 节点][clustermanager]
 
@@ -119,7 +119,7 @@ Azure PowerShell 是必备组件。 如果未在本地计算机上配置 PowerSh
 ## <a name="set-up-an-azure-file-share-for-windows-and-linux-nodes"></a>为 Windows 和 Linux 节点设置 Azure 文件共享
 可以使用 Azure 文件服务来存储脚本、应用程序包和数据文件。 Azure 文件在用作持久性存储的 Azure Blob 存储顶层提供 CIFS 功能。 请注意，这不是缩放性最高的解决方案，但它是最简单且不需要专用 VM 的解决方案。
 
-遵循 [Get started with Azure File storage on Windows](../../../storage/storage-dotnet-how-to-use-files.md)（在 Windows 上开始使用 Azure 文件存储）一文中的说明创建 Azure 文件共享。
+遵循 [Get started with Azure File storage on Windows](../../../storage/files/storage-dotnet-how-to-use-files.md)（在 Windows 上开始使用 Azure 文件存储）一文中的说明创建 Azure 文件共享。
 
 将存储帐户名保留为 **saname**，将文件共享名保留为 **sharename**，将存储帐户密钥保留为 **sakey**。
 
@@ -130,7 +130,7 @@ Azure PowerShell 是必备组件。 如果未在本地计算机上配置 PowerSh
     cmdkey /add:<saname>.file.core.windows.net /user:<saname> /pass:<sakey>
 ```
 
-然后，若要装载 Azure 文件共享，请运行：
+然后，要装载 Azure 文件共享，请运行：
 
 ```
     net use Z: \\<saname>.file.core.windows.net\<sharename> /persistent:yes
@@ -165,7 +165,7 @@ CD-adapco STAR-CCM+ 11.x 和更高版本与 Intel MPI 版本5.x 捆绑在一起�
 
 从 [CD-adapco 门户](https://steve.cd-adapco.com)获取 Linux64 STAR-CCM+ 包。 本例使用了混合精度的 11.02.010 版本。
 
-在头节点上的 **/hpcdata** Azure 文件共享中，创建包含以下内容的名为 **setupstarccm.sh** 的 shell 脚本。 此脚本将在每个计算节点上运行，以便在本地设置 STAR-CCM+。
+在头节点上的 **/hpcdata** Azure 文件共享中，创建包含以下内容的名为 **setupstarccm.sh** 的 shell 脚本。 此脚本会在每个计算节点上运行，以便在本地设置 STAR-CCM+。
 
 #### <a name="sample-setupstarcmsh-script"></a>示例 setupstarcm.sh 脚本
 ```
@@ -194,7 +194,7 @@ CD-adapco STAR-CCM+ 11.x 和更高版本与 Intel MPI 版本5.x 捆绑在一起�
     clusrun /nodegroup:LinuxNodes bash /hpcdata/setupstarccm.sh
 ```
 
-运行该命令时，你可以使用群集管理器的热度地图来监视 CPU 使用率。 几分钟后，所有节点应已正确设置。
+运行该命令时，可以使用群集管理器的热度地图来监视 CPU 使用率。 几分钟后，所有节点应已正确设置。
 
 ## <a name="run-star-ccm-jobs"></a>运行 STAR-CCM+ 作业
 将 HPC Pack 与其作业计划程序功能配合使用可以运行 STAR-CCM+ 作业。 为此，我们需要支持几个用于启动作业和运行 STAR-CCM+ 的脚本。 为方便起见，我们首先将输入数据保留在 Azure 文件共享上。
@@ -318,7 +318,7 @@ CD-adapco STAR-CCM+ 11.x 和更高版本与 Intel MPI 版本5.x 捆绑在一起�
 ```
 
 ## <a name="stop-nodes"></a>停止节点
-稍后在你完成测试后，可以使用以下 HPC Pack PowerShell 命令来停止和启动节点：
+稍后在完成测试后，可以使用以下 HPC Pack PowerShell 命令来停止和启动节点：
 
 ```
     Stop-HPCIaaSNode.ps1 -Name <prefix>-00*

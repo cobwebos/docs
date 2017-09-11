@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 08/28/2017
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
+ms.reviewer: piotrci
+ms.custom: H1Hack27Feb2017;it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 0b861bea8948c7022d2ce95a2a7975a5ad7ad8a7
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 780f94f9863f73834ab72e9daf4362bea28242e9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>在 Azure Active Directory 中为动态组成员身份创建基于属性的规则
@@ -28,7 +29,7 @@ ms.lasthandoff: 07/25/2017
 当用户或设备的任何属性发生更改时，系统将评估目录中的所有动态组规则，以查看该更改是否会触发任何组添加或删除。 如果用户或设备满足组的规则，它们将添加为该组的成员。 如果用户或设备不再满足该规则，则会将其删除。
 
 > [!NOTE]
-> - 你可以为安全组或 Office 365 组中的动态成员身份设置规则。
+> - 可以为安全组或 Office 365 组中的动态成员身份设置规则。
 >
 > - 此功能需要将每个用户成员的 Azure AD Premium P1 许可证至少添加到一个动态组。
 >
@@ -37,14 +38,12 @@ ms.lasthandoff: 07/25/2017
 > - 目前不能基于所有者用户的属性创建设备组。 设备成员身份规则只能引用目录中设备对象的直接属性。
 
 ## <a name="to-create-an-advanced-rule"></a>创建高级规则
-1. 使用作为全局管理员或用户帐户管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“更多服务”，在文本框中输入“用户和组”，并选择 **Enter**。
-
-   ![打开“用户管理”](./media/active-directory-groups-dynamic-membership-azure-portal/search-user-management.png)
-3. 在“用户和组”边栏选项卡中，选择“所有组”。
+1. 使用全局管理员或用户帐户管理员的帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
+2. 选择“用户和组”。
+3. 选择“所有组”。
 
    ![打开“组”边栏选项卡](./media/active-directory-groups-dynamic-membership-azure-portal/view-groups-blade.png)
-4. 在“用户和组 - 所有组”边栏选项卡中，选择“添加”命令。
+4. 在“所有组”中，选择“新组”。
 
    ![添加新组](./media/active-directory-groups-dynamic-membership-azure-portal/add-group-type.png)
 5. 在“组”边栏选项卡上，输入新组的名称和说明。 根据是要为用户还是设备创建规则，在“成员身份类型”中选择“动态用户”或“动态设备”，并选择“添加动态查询”。 有关用于设备规则的属性，请参阅[使用属性创建设备对象的规则](#using-attributes-to-create-rules-for-device-objects)。
@@ -54,7 +53,7 @@ ms.lasthandoff: 07/25/2017
 7. 在“组”边栏选项卡中，选择“创建”以创建该组。
 
 ## <a name="constructing-the-body-of-an-advanced-rule"></a>构造高级规则的正文
-你可以为动态组成员身份创建的高级规则，本质上是一种由三部分组成并生成 true 或 false 结果的二进制表达式。 这三部分如下：
+可以为动态组成员身份创建的高级规则，本质上是一种由三部分组成并生成 true 或 false 结果的二进制表达式。 这三部分如下：
 
 * 左侧参数
 * 二进制运算符
@@ -74,8 +73,6 @@ ms.lasthandoff: 07/25/2017
 > [!NOTE]
 > 字符串和正则表达式运算不区分大小写。 还可以执行 Null 检查，使用 $null 作为常量，例如 user.department -eq $null。
 > 应该使用 ` 字符来转义包含引号 " 的字符串，例如，user.department -eq \`"Sales"。
->
->
 
 ## <a name="supported-expression-rule-operators"></a>支持的表达式规则运算符
 下表列出所有要在高级规则正文中使用的支持表达式规则运算符及其语法：
@@ -95,11 +92,15 @@ ms.lasthandoff: 07/25/2017
 
 ## <a name="operator-precedence"></a>运算符优先顺序
 
-下面按从低到高的优先顺序列出了所有运算符，同一行中的运算符具有相同的优先顺序 -any -all -or -and -not -eq -ne -startsWith -notStartsWith -contains -notContains -match -notMatch -in -notIn
-
-所有运算符可以带或不带连字符。
-
-请注意，并非始终需要添加括号；仅当优先顺序不符合要求时，才需要添加括号。
+所有运算符在下面按优先级从低到高列出。 同一行上的运算符都采用相同的优先级：
+````
+-any -all
+-or
+-and
+-not
+-eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch -in -notIn
+````
+所有运算符可以带或不带连字符前缀。 仅当优先级不满足你的要求时，才需要括号。
 例如：
 ```
    user.department –eq "Marketing" –and user.country –eq "US"
@@ -271,25 +272,25 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 3. 保存此规则后，具有指定 Manager ID 值的所有用户都将添加到该组。
 
 ## <a name="using-attributes-to-create-rules-for-device-objects"></a>使用属性创建设备对象的规则
-还可以创建一个规则来为组中的成员身份选择设备对象。 可以使用以下设备属性：
+还可以创建一个规则来为组中的成员身份选择设备对象。 可以使用以下设备属性。
 
-| 属性              | 允许的值                  | 使用情况                                                       |
-|-------------------------|---------------------------------|-------------------------------------------------------------|
-| accountEnabled          | true false                      | (device.accountEnabled -eq true)                            |
-| displayName             | 任意字符串值                | (device.displayName -eq "Rob Iphone”)                       |
-| deviceOSType            | 任意字符串值                | (device.deviceOSType -eq "IOS")                             |
-| deviceOSVersion         | 任意字符串值                | (device.OSVersion -eq "9.1")                                |
-| deviceCategory          | 任意字符串值                | (device.deviceCategory -eq "")                              |
-| deviceManufacturer      | 任意字符串值                | (device.deviceManufacturer -eq "Microsoft")                 |
-| deviceModel             | 任意字符串值                | (device.deviceModel -eq "IPhone 7+")                        |
-| deviceOwnership         | 任意字符串值                | (device.deviceOwnership -eq "")                             |
-| domainName              | 任意字符串值                | (device.domainName -eq "contoso.com")                       |
-| enrollmentProfileName   | 任意字符串值                | (device.enrollmentProfileName -eq "")                       |
-| isRooted                | true false                      | (device.deviceOSType -eq true)                              |
-| managementType          | 任意字符串值                | (device.managementType -eq "")                              |
-| organizationalUnit      | 任意字符串值                | (device.organizationalUnit -eq "")                          |
-| deviceId                | 有效 deviceId                | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d") |
-| objectId                | 有效的 AAD objectId            | (device.objectId -eq "76ad43c9-32c5-45e8-a272-7b58b58f596d") |
+ 设备属性  | 值 | 示例
+ ----- | ----- | ----------------
+ accountEnabled | true false | (device.accountEnabled -eq true)
+ displayName | 任意字符串值 |(device.displayName -eq "Rob Iphone”)
+ deviceOSType | 任意字符串值 | (device.deviceOSType -eq "IOS")
+ deviceOSVersion | 任意字符串值 | (device.OSVersion -eq "9.1")
+ deviceCategory | 有效的设备类别名称 | (device.deviceCategory -eq "BYOD")
+ deviceManufacturer | 任意字符串值 | (device.deviceManufacturer -eq "Samsung")
+ deviceModel | 任意字符串值 | (device.deviceModel -eq "iPad Air")
+ deviceOwnership | 个人、公司、未知 | (device.deviceOwnership -eq "Company")
+ domainName | 任意字符串值 | (device.domainName -eq "contoso.com")
+ enrollmentProfileName | Apple 设备注册配置文件名称 | (device.enrollmentProfileName -eq "DEP iPhones")
+ isRooted | true false | (device.isRooted -eq true)
+ managementType | MDM（适用于移动设备）<br>电脑（适用于由 Intune 电脑代理管理的计算机） | (device.managementType -eq "MDM")
+ organizationalUnit | 由本地 Active Directory 设置的与组织单位名称匹配的任何字符串值 | (device.organizationalUnit -eq "US PCs")
+ deviceId | 有效的 Azure AD 设备 ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
+ objectId | 有效的 Azure AD 对象 ID |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
 
 
 

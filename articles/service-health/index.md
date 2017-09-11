@@ -1,9 +1,9 @@
 ---
 title: "Azure 资源运行状况 - 教程 | Microsoft Docs"
-description: 
+description: "Azure 服务运行状况会在 Azure 服务问题影响你时提供个性化的指导和支持，并且会帮助你为即将到来的计划内维护做好准备。 Azure 服务运行状况将通过具有针对性和灵活性的通知提醒你和你的团队。"
 services: Resource health
-author: bernardm
-manager: bernardm
+author: czeumault
+manager: carolz
 layout: LandingPage
 ms.assetid: 
 ms.service: service-health
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 07/07/2017
-ms.author: bernardm
+ms.author: carolz
 ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: 1452c1dd56829d162d464c4a359fa8c86ce74a6b
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 17f7d334380032eec4be7d0ce3071a62b04fdc62
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="azure-service-health-documentation"></a>Azure 服务运行状况文档

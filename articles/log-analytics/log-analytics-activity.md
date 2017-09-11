@@ -68,7 +68,7 @@ Log Analytics 免费收集活动日志，并将日志免费存储 90 天。 如�
 
 执行以下步骤，为工作区配置 Activity Log Analytics 解决方案。
 
-1. 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview)或者使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Activity Log Analytics 解决方案。
+1. 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) 或者使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Activity Log Analytics 解决方案。
 2. 配置活动日志，以转到 Log Analytics 工作区。
     1. 在 Azure 门户中，选择工作区，然后单击“Azure 活动日志”。
     2. 对于每个订阅，单击订阅名称。  

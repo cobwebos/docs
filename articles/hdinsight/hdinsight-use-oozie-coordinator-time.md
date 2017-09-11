@@ -16,16 +16,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: b43ea48b9b34f3ab6980f7bdc5c21a19d20fd5b6
+ROBOTS: NOINDEX
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 600a70c74a16e2601a874f804ac2e8382c8bfa90
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>将基于时间的 Oozie 协调器与 HDInsight 中的 Hadoop 配合使用以定义工作流和协调作业
-在本文中，你将学习如何定义工作流和协调器，以及如何基于时间触发协调器作业。 阅读本文前，浏览[将 Oozie 与 HDInsight 配合使用][hdinsight-use-oozie]很有帮助。 除了 Oozie，还可以使用 Azure 数据工厂计划作业。 若要了解 Azure 数据工厂，请参阅[将 Pig 和 Hive 用于数据工厂](../data-factory/data-factory-data-transformation-activities.md)。
+在本文中，学习如何定义工作流和协调器，以及如何基于时间触发协调器作业。 阅读本文前，浏览[将 Oozie 与 HDInsight 配合使用][hdinsight-use-oozie]很有帮助。 除了 Oozie，还可以使用 Azure 数据工厂计划作业。 要了解 Azure 数据工厂，请参阅[将 Pig 和 Hive 用于数据工厂](../data-factory/data-factory-data-transformation-activities.md)。
 
 > [!NOTE]
 > 本文需要基于 Windows 的 HDInsight 群集。 有关在基于 Linux 的群集上使用 Oozie 的信息，包括基于时间的作业，请参阅[在基于 Linux 的 HDInsight 上将 Oozie 与 Hadoop 配合使用以定义和运行工作流](hdinsight-use-oozie-linux-mac.md)
@@ -64,16 +64,16 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。 它与 Ha
 >
 
 ## <a name="prerequisites"></a>先决条件
-在开始阅读本教程前，你必须具有：
+在开始阅读本教程前，必须具有：
 
 * **配备 Azure PowerShell 的工作站**。
 
     > [!IMPORTANT]
     > Azure PowerShell 支持使用 Azure Service Manager 管理 HDInsight 资源，但**不建议使用**，而且将于 2017 年 1 月 1 日前删除。 本文档中的步骤使用的是与 Azure Resource Manager 兼容的新 HDInsight cmdlet。
     >
-    > 请按照 [安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中的步骤安装最新版本的 Azure PowerShell。 如果你的脚本需要修改后才能使用与 Azure Resource Manager 兼容的新 cmdlet，请参阅 [迁移到适用于 HDInsight 群集的基于 Azure Resource Manager 的开发工具](hdinsight-hadoop-development-using-azure-resource-manager.md) ，了解详细信息。
+    > 请按照 [安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中的步骤安装最新版本的 Azure PowerShell。 如果脚本需要修改后才能使用与 Azure Resource Manager 兼容的新 cmdlet，请参阅[迁移到适用于 HDInsight 群集的基于 Azure Resource Manager 的开发工具](hdinsight-hadoop-development-using-azure-resource-manager.md)，了解详细信息。
 
-* **一个 HDInsight 群集**。 有关创建 HDInsight 群集的信息，请参阅[创建 HDInsight 群集][hdinsight-provision]或 [HDInsight 入门][hdinsight-get-started]。 你将需要以下数据才能完成本教程：
+* **一个 HDInsight 群集**。 有关创建 HDInsight 群集的信息，请参阅[创建 HDInsight 群集][hdinsight-provision]或 [HDInsight 入门][hdinsight-get-started]。 需要以下数据才能完成本教程：
 
     <table border = "1">
     <tr><th>群集属性</th><th>Windows PowerShell 变量名</th><th>值</th><th>说明</th></tr>
@@ -83,7 +83,7 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。 它与 Ha
     <tr><td>Azure 存储帐户名称</td><td>$storageAccountName</td><td></td><td>可用于 HDInsight 群集的 Azure 存储帐户。 在本教程中，使用在群集设置过程中指定的默认存储帐户。</td></tr>
     <tr><td>Azure Blob 容器名称</td><td>$containerName</td><td></td><td>在此示例中，使用用于默认 HDInsight 群集文件系统的 Azure Blob 存储容器。 默认情况下，该容器与 HDInsight 群集同名。</td></tr>
     </table>
-* **Azure SQL 数据库**。 你必须为 SQL 数据库服务器配置防火墙规则以允许从你的工作站进行访问。 有关创建 Azure SQL 数据库和配置防火墙的说明，请参阅使用 [Azure SQL 数据库入门][sqldatabase-get-started]。 本文提供了用于创建本教程所需的 Azure SQL 数据库表的 Windows PowerShell 脚本。
+* **Azure SQL 数据库**。 必须为 SQL 数据库服务器配置防火墙规则以允许从工作站进行访问。 有关创建 Azure SQL 数据库和配置防火墙的说明，请参阅使用 [Azure SQL 数据库入门][sqldatabase-get-started]。 本文提供了用于创建本教程所需的 Azure SQL 数据库表的 Windows PowerShell 脚本。
 
     <table border = "1">
     <tr><th>SQL 数据库属性</th><th>Windows PowerShell 变量名</th><th>值</th><th>说明</th></tr>
@@ -97,20 +97,20 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。 它与 Ha
   > 默认情况下，可以从 Azure HDInsight 这样的 Azure 服务连接 Azure SQL 数据库。 如果禁用了此防火墙设置，则必须从 Azure 门户启用它。 有关创建 SQL 数据库和配置防火墙规则的说明，请参阅[创建和配置 SQL 数据库][sqldatabase-get-started]。
 
 > [!NOTE]
-> 将值填充到表中。 这将有助于学习本教程。
+> 将值填充到表中。 这会有助于学习本教程。
 
 ## <a name="define-oozie-workflow-and-the-related-hiveql-script"></a>定义 Oozie 工作流及相关 HiveQL 脚本
-Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。 默认的工作流文件名为 *workflow.xml*。  你将在本地保存该工作流文件，并将在本教程后面使用 Azure PowerShell 将它部署到 HDInsight 群集。
+Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。 默认的工作流文件名为 *workflow.xml*。  将在本地保存该工作流文件，并会在本教程后面使用 Azure PowerShell 将它部署到 HDInsight 群集。
 
 该工作流中的 Hive 操作调用 HiveQL 脚本文件。 此脚本文件包含三个 HiveQL 语句：
 
 1. **DROP TABLE 语句**删除 log4j Hive 表（如果存在）。
 2. **CREATE TABLE 语句**创建一个 log4j Hive 外部表，该表指向 log4j 日志文件的位置；
-3. **log4j 日志文件的位置**。 字段分隔符为“,”。 默认分行符为“\n”。 Hive 外部表用于在你想多次运行 Oozie 工作流的情况下避免数据文件从原始位置被删除。
+3. **log4j 日志文件的位置**。 字段分隔符为“,”。 默认分行符为“\n”。 假如需要多次运行 Oozie 工作流，可使用 Hive 外部表避免从原始位置删除数据文件。
 4. **INSERT OVERWRITE 语句**从 log4j Hive 表统计每个日志级类型的次数，并将输出结果保存到 Azure Blob 存储位置。
 
 > [!NOTE]
-> 有一个已知的 Hive 路径问题。 你在提交 Oozie 作业时将会遇到这个问题。 可在 TechNet Wiki 上找到解决此问题的说明：[HDInsight Hive 错误：无法重命名][technetwiki-hive-error]。
+> 有一个已知的 Hive 路径问题。 在提交 Oozie 作业时会遇到这个问题。 可在 TechNet Wiki 上找到解决此问题的说明：[HDInsight Hive 错误：无法重命名][technetwiki-hive-error]。
 
 **将 HiveQL 脚本文件定义为由工作流调用**
 
@@ -127,7 +127,7 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。 
    * ${hiveOutputFolder}
 
      工作流定义文件（本教程中的 workflow.xml）在运行时会将三个值传递到这个 HiveQL 脚本。
-2. 使用 ANSI(ASCII) 编码将文件另存为 **C:\Tutorials\UseOozie\useooziewf.hql**。 （如果你的文本编辑器不提供此选项，则使用记事本。）在本教程的后面，此脚本文件将被部署到 HDInsight 群集。
+2. 使用 ANSI(ASCII) 编码将文件另存为 **C:\Tutorials\UseOozie\useooziewf.hql**。 （如果文本编辑器不提供此选项，则使用记事本。）在本教程的后面，此脚本文件会被部署到 HDInsight 群集。
 
 **定义工作流**
 
@@ -192,14 +192,14 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。 
 
     该工作流中定义了两个操作。 start-to 操作是 *RunHiveScript*。 如果该操作运行*正常OK*，则下一个操作是 *RunSqoopExport*。
 
-    RunHiveScript 有几个变量。 在从工作站使用 Azure PowerShell 提交 Oozie 作业时，将会传递值。
+    RunHiveScript 有几个变量。 在从工作站使用 Azure PowerShell 提交 Oozie 作业时，会传递值。
 
     工作流变量
 
     <table border = "1">
     <tr><th>工作流变量</th><th>说明</th></tr>
     <tr><td>${jobTracker}</td><td>指定 Hadoop 作业跟踪器的 URL。 在 HDInsight 群集版本 2.0 和 3.0 上使用 <strong>jobtrackerhost:9010</strong>。</td></tr>
-    <tr><td>${nameNode}</td><td>指定 Hadoop 名称节点的 URL。 请使用默认的文件系统 wasbs:// 地址，例如 <i>wasbs://&lt;containerName&gt;@&lt;storageAccountName&gt;.blob.core.windows.net</i>。</td></tr>
+    <tr><td>${nameNode}</td><td>指定 Hadoop 名称节点的 URL。 请使用默认的文件系统 wasb:// 地址，例如 <i>wasb://&lt;containerName&gt;@&lt;storageAccountName&gt;.blob.core.windows.net</i>。</td></tr>
     <tr><td>${queueName}</td><td>指定要将作业提交到的队列名称。 使用“默认”<strong></strong>。</td></tr>
     </table>
 
@@ -223,7 +223,7 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。 
 
     有关 Oozie 工作流和使用工作流操作的详细信息，请参阅 [Apache Oozie 4.0 文档][apache-oozie-400]（对于 HDInsight 群集 3.0 版）或 [Apache Oozie 3.3.2 文档][apache-oozie-332]（对于 HDInsight 群集 2.1 版）。
 
-1. 使用 ANSI (ASCII) 编码将文件另存为 **C:\Tutorials\UseOozie\workflow.xml**。 （如果你的文本编辑器不提供此选项，则使用记事本。）
+1. 使用 ANSI (ASCII) 编码将文件另存为 **C:\Tutorials\UseOozie\workflow.xml**。 （如果文本编辑器不提供此选项，则使用记事本。）
 
 **定义协调器**
 
@@ -248,20 +248,20 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。 
    | ${coordEnd} |作业结束时间。 |
    | ${coordTimezone} |Oozie 在没有夏时制的固定时区（通常用 UTC 表示）处理协调器作业。 此时区被称为“Oozie 处理时区”。 |
    | ${wfPath} |workflow.xml 的路径。  如果该工作流文件名不是默认文件名 (workflow.xml)，则必须指定该名称。 |
-2. 使用 ANSI (ASCII) 编码将文件另存为 **C:\Tutorials\UseOozie\coordinator.xml**。 （如果你的文本编辑器不提供此选项，则使用记事本。）
+2. 使用 ANSI (ASCII) 编码将文件另存为 **C:\Tutorials\UseOozie\coordinator.xml**。 （如果文本编辑器不提供此选项，则使用记事本。）
 
 ## <a name="deploy-the-oozie-project-and-prepare-the-tutorial"></a>部署 Oozie 项目并准备教程
-你将运行 Azure PowerShell 脚本来执行以下操作：
+将运行 Azure PowerShell 脚本来执行以下操作：
 
-* 将 HiveQL 脚本 (useoozie.hql) 复制到 Azure Blob 存储 (wasbs:///tutorials/useoozie/useoozie.hql)。
-* 将 workflow.xml 复制到 wasbs:///tutorials/useoozie/workflow.xml。
-* 将 coordinator.xml 复制到 wasbs:///tutorials/useoozie/coordinator.xml。
-* 将数据文件 (/example/data/sample.log) 复制到 wasbs:///tutorials/useoozie/data/sample.log。
+* 将 HiveQL 脚本 (useoozie.hql) 复制到 Azure Blob 存储 (wasb:///tutorials/useoozie/useoozie.hql)。
+* 将 workflow.xml 复制到 wasb:///tutorials/useoozie/workflow.xml。
+* 将 coordinator.xml 复制到 wasb:///tutorials/useoozie/coordinator.xml。
+* 将数据文件 (/example/data/sample.log) 复制到 wasb:///tutorials/useoozie/data/sample.log。
 * 创建用于存储 Sqoop 导出数据的 Azure SQL 数据库表。 表的名称为 *log4jLogCount*。
 
 **了解 HDInsight 存储**
 
-HDInsight 将 Azure Blob 存储用于数据存储。 在 Azure Blob 存储中，wasbs:// 是 Microsoft 的 Hadoop 分布式文件系统 (HDFS) 的实现。 有关详细信息，请参阅将 [Azure Blob 存储与 HDInsight 配合使用][hdinsight-storage]。
+HDInsight 将 Azure Blob 存储用于数据存储。 在 Azure Blob 存储中，wasb:// 是 Microsoft 的 Hadoop 分布式文件系统 (HDFS) 的实现。 有关详细信息，请参阅将 [Azure Blob 存储与 HDInsight 配合使用][hdinsight-storage]。
 
 设置 HDInsight 群集时，请将 Azure Blob 存储帐户和该帐户上的特定容器指定为默认文件系统，就像在 HDFS 中一样。 除了此存储帐户外，在设置过程中，还可以从同一 Azure 订阅或不同 Azure 订阅添加其他存储帐户。 有关添加其他存储帐户的说明，请参阅[设置 HDInsight 群集][hdinsight-provision]。 为了简化本教程中使用的 Azure PowerShell 脚本，所有文件都存储在默认文件系统容器（位于 */tutorials/useoozie*）中。 默认情况下，此容器与 HDInsight 群集同名。
 语法为：
@@ -275,8 +275,8 @@ HDInsight 将 Azure Blob 存储用于数据存储。 在 Azure Blob 存储中，
 
 存储在默认文件系统容器中的文件可以使用以下任一 URI 从 HDInsight 进行访问（以 workflow.xml 为例）：
 
-    wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/workflow.xml
-    wasbs:///tutorials/useoozie/workflow.xml
+    wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/workflow.xml
+    wasb:///tutorials/useoozie/workflow.xml
     /tutorials/useoozie/workflow.xml
 
 如果要从存储帐户直接访问该文件，则请注意，该文件的 Blob 名称是：
@@ -285,7 +285,7 @@ HDInsight 将 Azure Blob 存储用于数据存储。 在 Azure Blob 存储中，
 
 **了解 Hive 内部表和外部表**
 
-以下是你需要了解的有关 Hive 内部表和外部表的一些信息：
+以下是需要了解的有关 Hive 内部表和外部表的一些信息：
 
 * CREATE TABLE 命令创建内部表，也称为托管表。 数据文件必须位于默认容器中。
 * CREATE TABLE 命令将数据文件移动到默认容器中的 /hive/warehouse/<TableName> 文件夹。
@@ -297,19 +297,19 @@ HDInsight 将 Azure Blob 存储用于数据存储。 在 Azure Blob 存储中，
 
 **准备教程**
 
-1. 打开 Windows PowerShell ISE（在 Windows 8“开始”屏幕上，键入 **PowerShell_ISE**，然后单击“Windows PowerShell ISE”。 有关详细信息，请参阅[在 Windows 8 和 Windows 上启动 Windows PowerShell][powershell-start]）。
+1. 打开 Windows PowerShell ISE（在 Windows 8“开始”屏幕上，键入 **PowerShell_ISE**，并单击“Windows PowerShell ISE”。 有关详细信息，请参阅[在 Windows 8 和 Windows 上启动 Windows PowerShell][powershell-start]）。
 2. 在底部窗格中，运行以下命令以连接到 Azure 订阅：
 
     ```powershell
     Add-AzureAccount
     ```
 
-    系统将提示你输入 Azure 帐户凭据。 添加订阅连接的这种方法超时，需要在 12 小时后重新运行该 cmdlet。
+    系统会提示输入 Azure 帐户凭据。 添加订阅连接的这种方法超时，需要在 12 小时后重新运行该 cmdlet。
 
    > [!NOTE]
    > 如果有多个 Azure 订阅，而默认订阅不是想使用的，则请使用 <strong>Select-AzureSubscription</strong> cmdlet 来选择订阅。
 
-3. 将以下脚本复制到脚本窗格，然后设置前六个变量：
+3. 将以下脚本复制到脚本窗格，并设置前六个变量：
 
     ```powershell
     # WASB variables
@@ -390,7 +390,7 @@ HDInsight 将 Azure Blob 存储用于数据存储。 在 Azure Blob 存储中，
     prepareSQLDatabase;
     ```
 
-5. 单击“运行脚本” 或按 **F5** 以运行该脚本。 输出结果将会类似于：
+5. 单击“运行脚本” 或按 **F5** 以运行该脚本。 输出结果会类似于：
 
     ![教程准备的输出结果][img-preparation-output]
 
@@ -399,8 +399,8 @@ Azure PowerShell 目前不提供任何用于定义 Oozie 作业的 cmdlet。 可
 
 **提交 Oozie 作业**
 
-1. 打开 Windows PowerShell ISE（在 Windows 8“开始”屏幕上，键入 **PowerShell_ISE**，然后单击“Windows PowerShell ISE”。 有关详细信息，请参阅[在 Windows 8 和 Windows 上启动 Windows PowerShell][powershell-start]）。
-2. 将以下脚本复制到脚本窗格，然后设置前 14 个变量（不过，请跳过 **$storageUri**）。
+1. 打开 Windows PowerShell ISE（在 Windows 8“开始”屏幕上，键入 **PowerShell_ISE**，并单击“Windows PowerShell ISE”。 有关详细信息，请参阅[在 Windows 8 和 Windows 上启动 Windows PowerShell][powershell-start]）。
+2. 将以下脚本复制到脚本窗格，并设置前 14 个变量（不过，请跳过 **$storageUri**）。
 
     ```powershell
     #HDInsight cluster variables
@@ -411,7 +411,7 @@ Azure PowerShell 目前不提供任何用于定义 Oozie 作业的 cmdlet。 可
     #Azure Blob storage (WASB) variables
     $storageAccountName = "<StorageAccountName>"
     $storageContainerName = "<BlobContainerName>"
-    $storageUri="wasbs://$storageContainerName@$storageAccountName.blob.core.windows.net"
+    $storageUri="wasb://$storageContainerName@$storageAccountName.blob.core.windows.net"
 
     #Azure SQL database variables
     $sqlDatabaseServer = "<SQLDatabaseServerName>"
@@ -444,7 +444,7 @@ Azure PowerShell 目前不提供任何用于定义 Oozie 作业的 cmdlet。 可
 
     有关这些变量的详细说明，请参阅本教程中的[先决条件](#prerequisites)部分。
 
-    $coordstart 和 $coordend 是工作流的开始和结束时间。 若要了解 UTC/GMT 时间，请在 bing.com 上搜索“utc 时间”。 $coordFrequency 是指你想要运行工作流的频率（以分钟为单位）。
+    $coordstart 和 $coordend 是工作流的开始和结束时间。 若要了解 UTC/GMT 时间，请在 bing.com 上搜索“utc 时间”。$coordFrequency 是指要运行工作流的频率（以分钟为单位）。
 3. 将以下内容追加到脚本。 这部分定义 Oozie 负载：
 
     ```powershell
@@ -586,7 +586,7 @@ Azure PowerShell 目前不提供任何用于定义 Oozie 作业的 cmdlet。 可
     ```
 
    > [!NOTE]
-   > 在提交工作流作业时，你必须在创建作业后进行另一次 Web 服务调用以启动该作业。 在这种情况下，该协调器作业会按时间触发。 该作业将自动启动。
+   > 在提交工作流作业时，必须在创建作业后进行另一次 Web 服务调用以启动该作业。 在这种情况下，该协调器作业会按时间触发。 该作业会自动启动。
 
 6. 将以下内容追加到脚本。 这部分检查 Oozie 作业状态：
 
@@ -667,7 +667,7 @@ Azure PowerShell 目前不提供任何用于定义 Oozie 作业的 cmdlet。 可
 
     如果要运行这些附加的功能，请删除这些 # 号。
 9. 如果 HDinsight 群集是 2.1 版的，请将“https://$clusterName.azurehdinsight.net:443/oozie/v2/”替换为“https://$clusterName.azurehdinsight.net:443/oozie/v1/”。 HDInsight 群集版本 2.1 不支持 Web 服务的版本 2。
-10. 单击“运行脚本” 或按 **F5** 以运行该脚本。 输出结果将会类似于：
+10. 单击“运行脚本” 或按 **F5** 以运行该脚本。 输出结果会类似于：
 
      ![教程运行工作流输出][img-runworkflow-output]
 11. 连接到 SQL 数据库以查看导出的数据。
@@ -683,7 +683,7 @@ Azure PowerShell 目前不提供任何用于定义 Oozie 作业的 cmdlet。 可
 * 删除 Hive 脚本输出文件。
 * 删除 log4jLogsCount 表中的数据。
 
-这是你可以使用的一个示例 Windows PowerShell 脚本：
+这是可以使用的一个示例 Windows PowerShell 脚本：
 
 ```powershell
 $storageAccountName = "<AzureStorageAccountName>"
@@ -714,7 +714,7 @@ $conn.close()
 ```
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已经学习了如何定义 Oozie 工作流、Oozie 协调器，以及如何使用 Azure PowerShell 运行 Oozie 协调器作业。 若要了解更多信息，请参阅下列文章：
+在本教程中，已经学习了如何定义 Oozie 工作流、Oozie 协调器，以及如何使用 Azure PowerShell 运行 Oozie 协调器作业。 若要了解更多信息，请参阅下列文章：
 
 * [HDInsight 入门][hdinsight-get-started]
 * [将 Azure Blob 存储与 HDInsight 配合使用][hdinsight-storage]
@@ -745,7 +745,7 @@ $conn.close()
 [sqldatabase-get-started]: ../sql-database/sql-database-get-started.md
 
 [azure-management-portal]: https://portal.azure.com/
-[azure-create-storageaccount]: ../storage-create-storage-account.md
+[azure-create-storageaccount]:../storage/common/storage-create-storage-account.md
 
 [apache-hadoop]: http://hadoop.apache.org/
 [apache-oozie-400]: http://oozie.apache.org/docs/4.0.0/

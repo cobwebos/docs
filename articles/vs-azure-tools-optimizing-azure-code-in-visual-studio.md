@@ -3,8 +3,8 @@ title: "在 Visual Studio 中优化 Azure 代码 | Microsoft Docs"
 description: "了解 Visual Studio 中的 Azure 代码优化工具如何帮助提高代码的可靠性和性能。"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: ed48ee06-e2d2-4322-af22-07200fb16987
 ms.service: multiple
@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
-ms.author: tarcher
-translationtype: Human Translation
+ms.author: kraigb
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 01623fa76175091439d5a571fb8b8f96aee01c4c
 ms.openlocfilehash: a07496a2d5eb52dd3c4092105e45b70b6e9f69cd
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/08/2016
 
 ---
 # <a name="optimizing-your-azure-code"></a>优化 Azure 代码
@@ -466,9 +467,4 @@ public class BlogsController : Controller
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解如何对 Azure 应用进行优化和故障排除，请参阅 [使用 Visual Studio 对 Azure 应用服务中的 Web 应用进行故障排除](app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md)。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

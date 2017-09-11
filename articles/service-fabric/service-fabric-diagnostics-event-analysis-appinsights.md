@@ -30,7 +30,7 @@ Azure Application Insights 是用于应用程序监视和诊断的可扩展平�
 
 ### <a name="creating-an-ai-resource"></a>创建 AI 资源
 
-若要创建 AI 资源，请转到 Azure 应用商店并搜索“Application Insights”。 它应显示为首个解决方案（位于“Web + Mobile”类别下）。 发现相应资源时单击“创建”（请确保路径与以下图像匹配）。
+若要创建 AI 资源，请转到 Azure Marketplace 并搜索“Application Insights”。 它应显示为首个解决方案（位于“Web + Mobile”类别下）。 发现相应资源时单击“创建”（请确保路径与以下图像匹配）。
 
 ![新建 Application Insights 资源](media/service-fabric-diagnostics-event-analysis-appinsights/create-new-ai-resource.png)
 

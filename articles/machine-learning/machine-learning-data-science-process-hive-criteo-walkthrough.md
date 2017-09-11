@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
-ms.openlocfilehash: 8af9c566a267e6e9d332805c5b3e82503c092d22
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 8e6143bca819c9a0484221f8b4feb319aaaa73f5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/19/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team Data Science Process 的工作原理 - 针对 1 TB 数据集使用 Azure HDInsight Hadoop 群集
@@ -64,11 +63,11 @@ Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 T
 
 通过三个步骤设置 Azure Data Science 环境，以构建具有 HDInsight 群集的预测分析解决方案：
 
-1. [创建存储帐户](../storage/storage-create-storage-account.md)：此存储帐户用于在 Azure Blob 存储中存储数据。 HDInsight 群集中使用的数据存储在此处。
+1. [创建存储帐户](../storage/common/storage-create-storage-account.md)：此存储帐户用于在 Azure Blob 存储中存储数据。 HDInsight 群集中使用的数据存储在此处。
 2. [为 Data Science 自定义 Azure HDInsight Hadoop 群集](machine-learning-data-science-customize-hadoop-cluster.md)：此步骤将创建一个在所有节点上安装有 64 位 Anaconda Python 2.7 的 Azure HDInsight Hadoop 群集。 自定义 HDInsight 群集时，要完成两个重要步骤（本主题中有所描述）。
    
-   * 你必须在创建 HDInsight 群集时将其与在步骤 1 中创建的存储帐户相链接。 此存储帐户用于访问可在群集中处理的数据。
-   * 你必须在创建群集的头节点后启用远程访问。 记住在此处指定的远程访问凭据（与创建时为群集指定的远程访问凭据不同）：需要这些凭据才能完成以下过程。
+   * 必须在创建 HDInsight 群集时将其与在步骤 1 中创建的存储帐户相链接。 此存储帐户用于访问可在群集中处理的数据。
+   * 必须在创建群集的头节点后启用远程访问。 记住在此处指定的远程访问凭据（与创建时为群集指定的远程访问凭据不同）：需要这些凭据才能完成以下过程。
 3. [创建 Azure ML 工作区](machine-learning-create-workspace.md)：此 Azure 机器学习工作区用于在 HDInsight 群集上进行初始数据浏览和缩小取样后构建机器学习模型。
 
 ## <a name="getdata"></a>从公共源获取和使用数据
@@ -78,7 +77,7 @@ Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 T
 
 单击“继续下载”，详细了解数据集及其可用性。
 
-数据驻留在公共 [Azure Blob 存储](../storage/storage-dotnet-how-to-use-blobs.md)位置：wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/。 “wasb”表示 Azure Blob 存储位置。 
+数据驻留在公共 [Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)位置：wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/。 “wasb”表示 Azure Blob 存储位置。 
 
 1. 此公共 blob 存储中的数据由已解压缩数据的三个子文件夹组成。
    
@@ -87,10 +86,10 @@ Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 T
    3. 子文件夹 raw/test/ 由两天的数据组成，第\_22 天和第\_23 天
 2. 对于那些想要以原始 gzip 数据开始的用户，也可以在主文件夹 raw/中作为 day_NN.gz 使用这些文件，其中 NN 值从 00 到 23。
 
-另一种访问、浏览和建模不需要任何本地下载的数据的方法将在本演示的后续部分中创建 Hive 表时进行介绍。
+另一种访问、浏览和建模不需要任何本地下载的数据的方法会在本演示的后续部分中创建 Hive 表时进行介绍。
 
 ## <a name="login"></a>登录到群集头节点
-若要登录到集群的头节点，请使用 [Azure 门户](https://ms.portal.azure.com)找到该集群。 单击左侧的 HDInsight 大象图标，然后双击群集名称。 导航到“配置”选项卡，双击页面底部的 CONNECT 图标，并在出现提示时输入远程访问凭据。 转到群集的头节点。
+若要登录到集群的头节点，请使用 [Azure 门户](https://ms.portal.azure.com)找到该集群。 单击左侧的 HDInsight 大象图标，并双击群集名称。 导航到“配置”选项卡，双击页面底部的 CONNECT 图标，并在出现提示时输入远程访问凭据。 转到群集的头节点。
 
 以下是首次登录到群集头节点的典型示例：
 
@@ -101,7 +100,7 @@ Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 T
 现在我们设置并准备开始第一部分的演练：使用 Hive 进行数据挖掘，并为 Azure 机器学习准备数据。
 
 ## <a name="hive-db-tables"></a>创建 Hive 数据库和表
-若要为我们的 Criteo 数据集创建 Hive 表，请在头节点的桌面上打开 ***Hadoop 命令行***，然后通过输入命令输入 Hive 目录
+要为我们的 Criteo 数据集创建 Hive 表，请在头节点的桌面上打开 ***Hadoop 命令行***，并通过输入命令输入 Hive 目录
 
     cd %hive_home%\bin
 
@@ -118,7 +117,7 @@ Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 T
 
 Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行。
 
-以下代码创建一个数据库“criteo”，然后生成 4 个表：
+以下代码创建一个数据库“criteo”，并生成 4 个表：
 
 * 一个用于生成在第\_00 天至第\_20 天构建的计数的表，
 * 一个用于在第\_21 天构建的定型数据集的表，以及
@@ -167,7 +166,7 @@ Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行�
         hive
    
      在 REPL 命令行，剪切并粘贴查询以执行它。
-2. **将查询保存到文件并执行命令**：第二种方法是将查询保存到 .hql 文件 ([ sample_hive_create_criteo_database_and_tables.hql ](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql))，然后发出以下命令以执行查询：
+2. **将查询保存到文件并执行命令**：第二种方法是将查询保存到 .hql 文件 ([ sample_hive_create_criteo_database_and_tables.hql ](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql))，并发出以下命令以执行查询：
    
         hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
 
@@ -176,7 +175,7 @@ Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行�
 
         hive -e "show databases;"
 
-将会得到：
+会得到：
 
         criteo
         default
@@ -204,7 +203,7 @@ Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行�
 
         SELECT COUNT(*) FROM criteo.criteo_train;
 
-这将生成：
+这会生成：
 
         192215183
         Time taken: 264.154 seconds, Fetched: 1 row(s)
@@ -218,7 +217,7 @@ Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行�
 
         SELECT COUNT(*) FROM criteo.criteo_test_day_22;
 
-这将生成：
+这会生成：
 
         189747893
         Time taken: 267.968 seconds, Fetched: 1 row(s)
@@ -233,7 +232,7 @@ Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行�
 
         SELECT COUNT(*) FROM criteo.criteo_test_day_23;
 
-将会得到：
+会得到：
 
         178274637
         Time taken: 253.089 seconds, Fetched: 1 row(s)
@@ -243,7 +242,7 @@ Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行�
 
         SELECT Col1, COUNT(*) AS CT FROM criteo.criteo_train GROUP BY Col1;
 
-这将产生标签分布：
+这会产生标签分布：
 
         1       6292903
         0       185922280
@@ -262,7 +261,7 @@ Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行�
             ) a
             LATERAL VIEW explode(col2_hist) exploded_table as hist;
 
-这将生成以下内容：
+这会生成以下内容：
 
         26      155878415
         2606    92753
@@ -293,7 +292,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
         SELECT MIN(Col2) AS Col2_min, PERCENTILE_APPROX(Col2, 0.1) AS Col2_01, PERCENTILE_APPROX(Col2, 0.3) AS Col2_03, PERCENTILE_APPROX(Col2, 0.5) AS Col2_median, PERCENTILE_APPROX(Col2, 0.8) AS Col2_08, MAX(Col2) AS Col2_max FROM criteo.criteo_train;
 
-这将生成：
+这会生成：
 
         1.0     2.1418600917169246      2.1418600917169246    6.21887086390288 27.53454893115633       65535.0
         Time taken: 564.953 seconds, Fetched: 1 row(s)
@@ -305,7 +304,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
         SELECT COUNT(DISTINCT(Col15)) AS num_uniques FROM criteo.criteo_train;
 
-这将生成：
+这会生成：
 
         19011825
         Time taken: 448.116 seconds, Fetched: 1 row(s)
@@ -318,7 +317,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
         COUNT(DISTINCT(Col18), COUNT(DISTINCT(Col19), COUNT(DISTINCT(Col20))
         FROM criteo.criteo_train;
 
-这将生成：
+这会生成：
 
         30935   15200   7349    20067   3
         Time taken: 1933.883 seconds, Fetched: 1 row(s)
@@ -331,7 +330,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
         SELECT Col15, Col16, COUNT(*) AS paired_count FROM criteo.criteo_train GROUP BY Col15, Col16 ORDER BY paired_count DESC LIMIT 15;
 
-我们按照它们的出现顺序逆序排列，在此情况下查看其中前 15 个。 将会得到：
+我们按照它们的出现顺序逆序排列，在此情况下查看其中前 15 个。 会得到：
 
         ad98e872        cea68cd3        8964458
         ad98e872        3dbb483e        8444762
@@ -350,7 +349,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
         265366bf        6f5c7c41        782142
         Time taken: 560.22 seconds, Fetched: 15 row(s)
 
-## <a name="downsample"></a>取样缩小 Azure 机器学习的数据集
+## <a name="downsample"></a>对 Azure 机器学习的数据集进行下采样
 浏览数据集并演示我们如何对任何变量（包括组合）进行这种类型的浏览，现在对数据集进行取样，以便可以在 Azure 机器学习中生成模型。 回想一下，我们关注的问题是：给定一组示例属性（Col2 - Col40 的特征值），预测 Col1 是 0（未单击）还是 1（单击）。
 
 为了将定型和测试数据集降至原始大小的 1%，我们使用 Hive 的原生 RAND() 函数。 下一个脚本，[sample_hive_criteo_downsample_train_dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_train_dataset.hql) 对定型数据集执行此操作：
@@ -365,7 +364,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
         INSERT OVERWRITE TABLE criteo.criteo_train_downsample_1perc SELECT * FROM criteo.criteo_train WHERE RAND() <= 0.01;
 
-这将生成：
+这会生成：
 
         Time taken: 12.22 seconds
         Time taken: 298.98 seconds
@@ -382,7 +381,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
         INSERT OVERWRITE TABLE criteo.criteo_test_day_22_downsample_1perc SELECT * FROM criteo.criteo_test_day_22 WHERE RAND() <= 0.01;
 
-这将生成：
+这会生成：
 
         Time taken: 1.22 seconds
         Time taken: 317.66 seconds
@@ -399,7 +398,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
         INSERT OVERWRITE TABLE criteo.criteo_test_day_23_downsample_1perc SELECT * FROM criteo.criteo_test_day_23 WHERE RAND() <= 0.01;
 
-这将生成：
+这会生成：
 
         Time taken: 1.86 seconds
         Time taken: 300.02 seconds
@@ -428,18 +427,19 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
 现在我们已准备好在 Azure 机器学习工作室中构建模型。 我们的取样缩小数据将作为 Hive 表保存在群集中。 我们使用 Azure 机器学习的“导入数据”模块来读取此数据。 在下方提供访问此群集的存储帐户的凭据。
 
-### <a name="step1"></a>步骤1：使用导入数据模块将数据从 Hive 表中获取到 Azure 机器学习中，并选择它用于机器学习实验
+### <a name="step1"></a>步骤 1：使用导入数据模块将数据从 Hive 表中导入到 Azure 机器学习中，并选择它用于机器学习实验
 首先，选择“+新建” -> “实验” -> 空白实验。 然后，从左上角的“搜索”框中搜索“导入数据”。 将“导入数据”模块拖放到实验画布（屏幕中间部分），以使用模块进行数据访问。
 
 这是从 Hive 表获取数据时“导入数据”的样子：
 
 ![导入数据获取数据](./media/machine-learning-data-science-process-hive-criteo-walkthrough/i3zRaoj.png)
 
-对于“导入数据”模块，图形中提供的参数值仅是你需要提供的值类型的示例。 以下是有关如何填写“导入数据”模块的参数集的常规指导。
+对于“导入数据”模块，图形中提供的参数值仅是需要提供的值类型的示例。 以下是有关如何填写“导入数据”模块的参数集的常规指导。
 
 1. 为“数据源”选择“Hive 查询”
-2. 在“Hive 数据库查询”框中，一个简单的SELECT * FROM <你的\_数据集\_名称.你的\_表\_名称> - 就足够了。
-3. **Hcatalog 服务器 URI**：如果你的群集是“abc”，则其简化形式为：https://abc.azurehdinsight.net
+2. 在“Hive 数据库查询”框中，一个简单的SELECT * FROM <\_数据集\_名称.\_表\_名称> - 就足够了。
+3. 
+            **Hcatalog 服务器 URI**：如果群集是“abc”，则其简化形式为：https://abc.azurehdinsight.net
 4. **Hadoop 用户帐户名称**：调试群集时选择的用户名。 （不是远程访问用户名！）
 5. **Hadoop 用户帐户密码**：调试群集时为用户名选择的密码。 （不是远程访问密码！）
 6. **输出数据的位置**：选择“Azure”
@@ -447,22 +447,22 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 8. **Azure 存储帐户密钥**：与群集关联的存储帐户的密钥。
 9. **Azure 容器名称**：如果群集名称为“abc”，则通常只是简单的“abc”。
 
-“导入数据”完成获取数据后（你会在模块上看到绿色对勾），（使用你选择的名称）将此数据另存为数据集。 将显示为：
+“导入数据”完成获取数据后（会在模块上看到绿色对勾），（使用选择的名称）将此数据另存为数据集。 将显示为：
 
 ![导入数据保存数据](./media/machine-learning-data-science-process-hive-criteo-walkthrough/oxM73Np.png)
 
-右键单击“导入数据”模块的输出端口。 这会显示“另存为数据集”选项和“可视化”选项。 如果单击“可视化”选项，将显示 100 行数据，以及对某些摘要统计信息有用的右侧面板。 若要保存数据，只需选择“另存为数据集”，然后按照说明操作即可。
+右键单击“导入数据”模块的输出端口。 这会显示“另存为数据集”选项和“可视化”选项。 如果单击“可视化”选项，会显示 100 行数据，以及对某些摘要统计信息有用的右侧面板。 要保存数据，只需选择“另存为数据集”，并按照说明操作即可。
 
 若要选择用于机器学习实验的保存数据集，请使用下图中显示的“搜索”框来定位数据集。 然后只需输入给定数据集的部分名称即可访问该数据集，并将其拖动到主面板上。 将其放在主面板上，并选择用于机器学习建模。
 
 ![将数据集拖放到主面板上](./media/machine-learning-data-science-process-hive-criteo-walkthrough/cl5tpGw.png)
 
 > [!NOTE]
-> 对定型和测试数据集都执行此操作。 此外，请记住使用你为此目的提供的数据库名称和表名称。 图中使用的值仅用于说明目的。**
+> 对定型和测试数据集都执行此操作。 此外，请记住使用为此目的提供的数据库名称和表名称。 图中使用的值仅用于说明目的。**
 > 
 > 
 
-### <a name="step2"></a>步骤2：在 Azure 机器学习中创建简单实验，以预测单击/无单击
+### <a name="step2"></a>步骤 2：在 Azure 机器学习中创建一个简单实验，以预测单击/无单击
 我们的 Azure ML 实验如下所示：
 
 ![机器学习实验](./media/machine-learning-data-science-process-hive-criteo-walkthrough/xRpVfrY.png)
@@ -489,7 +489,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 > 在“计数列”框中，输入要执行计数的列。 通常，要输入是（正如所提到的）高维分类列。 在开始时，我们提到 Criteo 数据集有 26 个分类列：从 Col15 到 Col40。 在这里，我们对所有分类列进行计数，并给出其指数（从 15 到 40，用逗号分隔，如图所示）。
 > 
 
-若要在 MapReduce 模式下使用模块（适用于大型数据集），则需要访问 HDInsight Hadoop 群集（用于功能浏览的群集也可以重复使用于此目的）及其凭据。 前面的图说明了填充值的样式（将为你提供的值替换为与你自己的用例相关的值）。
+若要在 MapReduce 模式下使用模块（适用于大型数据集），则需要访问 HDInsight Hadoop 群集（用于功能浏览的群集也可以重复使用于此目的）及其凭据。 前面的图说明了填充值的样式（将提供的值替换为与自己的用例相关的值）。
 
 ![模块参数](./media/machine-learning-data-science-process-hive-criteo-walkthrough/05IqySf.png)
 
@@ -519,7 +519,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
 在此 R 脚本中，将列重命名为“Col1”到“Col40”。 这是因为计数转换需要此格式的名称。
 
-在第二个 R 脚本中，通过对负类进行缩小取样来平衡正类和负类（分别是类 1和 0）之间的分布。 R 脚本将在此处演示如何执行此操作：
+在第二个 R 脚本中，通过对负类进行缩小取样来平衡正类和负类（分别是类 1和 0）之间的分布。 R 脚本会在此处演示如何执行此操作：
 
 ![第二个 R 脚本](./media/machine-learning-data-science-process-hive-criteo-walkthrough/91wvcwN.png)
 
@@ -563,7 +563,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
 ![评估模块 BDT 模型](./media/machine-learning-data-science-process-hive-criteo-walkthrough/0Tl0cdg.png)
 
-在二进制（或二类）分类问题中，预测准确性的有效度量值是曲线下面积 (AUC)。 接下来，我们使用此模型在测试数据集上显示结果。 为此，右键单击“评估模型”模块的输出端口，然后单击“可视化”。
+在二进制（或二类）分类问题中，预测准确性的有效度量值是曲线下面积 (AUC)。 接下来，我们使用此模型在测试数据集上显示结果。 为此，右键单击“评估模型”模块的输出端口，并单击“可视化”。
 
 ![可视化评估模型模块](./media/machine-learning-data-science-process-hive-criteo-walkthrough/IRfc7fH.png)
 
@@ -608,7 +608,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
 ![发布 Web 服务](./media/machine-learning-data-science-process-hive-criteo-walkthrough/WO0nens.png)
 
-Web 服务发布后，将会重定向到一个如下所示的页面：
+Web 服务发布后，会重定向到一个如下所示的页面：
 
 ![Web 服务仪表板](./media/machine-learning-data-science-process-hive-criteo-walkthrough/YKzxAA5.png)
 

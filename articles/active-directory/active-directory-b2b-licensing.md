@@ -13,26 +13,35 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 06/29/2017
+ms.date: 08/09/2017
 ms.author: curtand
 ms.reviewer: sasubram
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: 972b37e0009b3096691784d785901b0a5585eb4c
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: dfef32c05af157ae8d3a5434016f87f488a35051
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
 
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Azure Active Directory B2B 协作授权指南
 
-使用 B2B 协作可邀请来宾用户加入 Azure AD 租户，向其提供对设为可用服务和资源的 Azure AD 服务和资源的访问权限。  
+可以使用 Azure AD B2B 协作功能，将来宾用户邀请至自己的 Azure AD 租户，允许他们访问你组织中的 Azure AD 服务和其他资源。 如果要提供对 Azure AD 付费功能的访问权限，B2B 协作来宾用户必须使用相应的 Azure AD 许可证获得授权。 
 
-邀请 B2B 用户并将其分配到 Azure AD 中的应用程序不会产生费用。 B2B 协作用户还可免费使用最多 10 个应用（每个来宾用户）和 3 个基本报表。 如果来宾用户在合作伙伴的 Azure AD 租户中分配有任何相关的许可证，那么他们也将在你的租户中获得相应授权。
+具体而言：
+* 来宾用户可使用 Azure AD Free 功能，无需额外授权。
+* 如果想向 B2B 用户提供对 Azure AD 付费功能的访问权限，则必须有足够的许可证来支持这些 B2B 来宾用户。
+* 一个具有 Azure AD 付费许可证的邀请方租户具有其他五个受邀加入租户的 B2B 来宾用户的 B2B 协作使用权限。
+* 拥有邀请方租户的客户必须确定有多少个 B2B 协作用户需要 Azure AD 付费功能。 根据需要为来宾用户提供的 Azure AD 付费功能，必须购买足够数量的 Azure AD 付费许可证才能以相同的 5:1 的比例涵盖 B2B 协作用户。
 
-如果要提供对 Azure AD 付费功能的访问权限，这些 B2B 来宾用户必须使用相应的 Azure AD 许可证获得授权。 一个具有 Azure AD 付费许可证的邀请方租户可向其他五个受邀加入租户的来宾用户分配 B2B 协作用户权限。 
+B2B 协作来宾用户作为来自合作伙伴公司的用户添加，而不是作为你组织的员工或集团组织中不同业务部门的员工添加。 B2B 来宾用户可以使用本文中所述的外部凭据或组织所有的凭据登录。 
+
+换而言之，B2B 授权不是由用户认证的方式而是由用户与你组织的关系而定。 如果这些用户不是合作伙伴，则他们在许可条款中的对待方式会有所不同。 即使他们的 UserType 被标记为“来宾”，也不会将他们视为用于授权目的的 B2B 协作用户。 他们应按正常方式获得许可，每个用户一个许可证。 这些用户包括：
+* 你的员工
+* 使用外部标识登录的员工
+* 你的集团组织中不同业务部门的员工
+
 
 ## <a name="licensing-examples"></a>授权示例
 - 某个客户想要邀请 100 个 B2B 协作用户加入其 Azure AD 租户。 该客户为所有用户分配访问管理和预配，但其中的 50 个用户还需要 MFA 和条件访问。 该客户必须购买 10 个 Azure AD Basic 许可证和 10 个 Azure AD Premium P1 许可证，才能正常涵盖这些 B2B 用户。 如果客户打算对 B2B 用户使用 Identity Protection 功能，则必须购买 Azure AD Premium P2 许可证才能以同样的 5:1 的比例涵盖受邀用户。
@@ -52,7 +61,7 @@ ms.lasthandoff: 06/30/2017
 B2B 来宾用户属于合作伙伴组织，并且被邀请与主机组织进行合作。 通常，其他任何情况都不符合 B2B 的条件，即使使用 B2B 功能也如此。 我们来特别了解以下两种情况：
 
 1. 如果主机邀请员工使用使用者地址
-  1. 这种情况不符合我们的授权策略，不建议这样做。
+  * 这种情况不符合我们的授权策略，不建议这样做。
 
 2. 如果主机组织从其他企业组织中添加用户
   1. 这种情况下，用户受邀使用 B2B API，但这不是传统的 B2B。 理想情况下，应该让这些组织邀请其他组织的用户作为成员（API 允许这样操作）。 在这种情况下，必须向这些成员分配许可证，这样他们才能访问邀请组织中的资源。

@@ -3,7 +3,7 @@ title: "Azure API 管理中的 API 模板 | Microsoft 文档"
 description: "了解如何在 Azure API 管理中自定义开发人员门户中的 API 页面的内容。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 3642fd09-ba98-4358-93a6-c48ab0500431
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: cfd0dcba9572fba6ba75893e1a84fd10cd75290d
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 9055c7fc0b562fa02aa2f2ec8425a4a41b69e600
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API 管理中的 API 模板
@@ -37,9 +39,9 @@ ms.openlocfilehash: cfd0dcba9572fba6ba75893e1a84fd10cd75290d
     -   [Ruby](#Ruby)  
 
 > [!NOTE]
->  示例默认模板包含在后面的文档中，但是会因持续改进而有所更改。 导航到所需单个模板以后，即可在开发人员门户中查看实时的默认模板。 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
+>  示例默认模板包含在后面的文档中，但是会因持续改进而有所更改。 通过导航到所需单个模板，可在开发人员门户中查看实时的默认模板。 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
   
-##  <a name="a-nameapilista-api-list"></a><a name="APIList"></a> API 列表  
+##  <a name="APIList"></a> API 列表  
  **API 列表**模板可用于自定义开发人员门户中 API 列表页的正文。  
   
  ![开发人员门户 API 列表](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM 开发人员门户模板 API 列表")  
@@ -75,7 +77,7 @@ ms.openlocfilehash: cfd0dcba9572fba6ba75893e1a84fd10cd75290d
 ```  
   
 ### <a name="controls"></a>控制  
- `API list` 模板使用以下[页面控件](api-management-page-controls.md)。  
+ `API list` 模板可使用以下[页面控件](api-management-page-controls.md)。  
   
 -   [paging-control](api-management-page-controls.md#paging-control)  
   
@@ -107,7 +109,7 @@ ms.openlocfilehash: cfd0dcba9572fba6ba75893e1a84fd10cd75290d
 }  
 ```  
   
-##  <a name="a-nameproducta-operation"></a><a name="Product"></a> 操作  
+##  <a name="Product"></a> 操作  
  **操作**模板可用于自定义开发人员门户中操作页的正文。  
   
  ![开发人员门户操作页](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM 开发人员门户模板操作页")  
@@ -637,7 +639,7 @@ ms.openlocfilehash: cfd0dcba9572fba6ba75893e1a84fd10cd75290d
 }  
 ```  
   
-##  <a name="a-namecodesamplesa-code-samples"></a><a name="CodeSamples"></a>代码示例  
+##  <a name="CodeSamples"></a> 代码示例  
  以下模板用于在操作页上自定义各个代码示例的正文。  
   
  ![开发人员门户模板代码示例](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM 开发人员门户模板代码示例")  
@@ -658,7 +660,7 @@ ms.openlocfilehash: cfd0dcba9572fba6ba75893e1a84fd10cd75290d
   
 -   [Ruby](#Ruby)  
   
-###  <a name="a-namecurla-curl"></a><a name="Curl"></a> Curl  
+###  <a name="Curl"></a> Curl  
  **DocumentationSamplesCurl** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -711,7 +713,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-###  <a name="a-namecsharpa-c"></a><a name="CSharp"></a> C#  
+###  <a name="CSharp"></a> C#  
  **DocumentationSamplesCsharp** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -890,7 +892,7 @@ namespace CSHttpClientSample
 }  
 ```  
   
-###  <a name="a-namestuba-java"></a><a name="Stub"></a> Java  
+###  <a name="Stub"></a> Java  
  **DocumentationSamplesJava** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -986,7 +988,7 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="a-namejavascripta-javascript"></a><a name="JavaScript"></a> JavaScript  
+###  <a name="JavaScript"></a> JavaScript  
  **DocumentationSamplesJs** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -1075,7 +1077,7 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="a-nameobjectiveca-objective-c"></a><a name="ObjectiveC"></a> Objective C  
+###  <a name="ObjectiveC"></a> Objective C  
  **DocumentationSamplesObjc** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -1187,7 +1189,7 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-###  <a name="a-namephpa-php"></a><a name="PHP"></a> PHP  
+###  <a name="PHP"></a> PHP  
  **DocumentationSamplesPhp** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -1277,7 +1279,7 @@ catch (HttpException $ex)
 }  
 ```  
   
-###  <a name="a-namepythona-python"></a><a name="Python"></a> Python  
+###  <a name="Python"></a> Python  
  **DocumentationSamplesPython** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -1395,7 +1397,7 @@ except Exception as e:
 }  
 ```  
   
-###  <a name="a-namerubya-ruby"></a><a name="Ruby"></a> Ruby  
+###  <a name="Ruby"></a> Ruby  
  **DocumentationSamplesRuby** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -1468,8 +1470,3 @@ puts response.body
 
 ## <a name="next-steps"></a>后续步骤
 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](api-management-developer-portal-templates.md)。
-
-
-<!--HONumber=Jan17_HO2-->
-
-

@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 08/14/2017
 ms.author: bradsev
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 14e2a14c74e00709e18a80325fbdd3cbcd71da37
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 89fa80b3e3409b7cd2f600776fffdeb3a5271b5d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="get-started-using-r-server-on-hdinsight"></a>开始使用 R Server on HDInsight
@@ -342,32 +342,37 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此选项
 
 2. 应该会看到与下面类似的输出：
     
-    R 版本 3.2.2 (2015-08-14) - "Fire Safety" 版权所有 (C) 2015 用于统计计算的 R Foundation 平台: x86_64-pc-linux-gnu（64 位）
+        R version 3.2.2 (2015-08-14) -- "Fire Safety"
+        Copyright (C) 2015 The R Foundation for Statistical Computing
+        Platform: x86_64-pc-linux-gnu (64-bit)
 
-    R 是免费软件，不附带任何保证。
-    可以在某些情况下对其进行重新分发。
-    键入 "license()" 或 "licence()" 了解分发详细信息。
+        R is free software and comes with ABSOLUTELY NO WARRANTY.
+        You are welcome to redistribute it under certain conditions.
+        Type 'license()' or 'licence()' for distribution details.
 
     支持自然语言，但只在英语区域设置中运行
 
-    R 是具有很多参与者的协作项目。
-    键入 "contributors()" 了解详细信息，键入 "citation()" 了解如何在发布中引用 R 或 R 包。
+        R is a collaborative project with many contributors.
+        Type 'contributors()' for more information and
+        'citation()' on how to cite R or R packages in publications.
 
-    键入 "demo()" 获取相关演示，键入 "help()" 获取联机帮助，或键入 "help.start()" 进入 HTML 浏览器界面获取帮助。
-    键入 "q()" 退出 R。
+        Type 'demo()' for some demos, 'help()' for on-line help, or
+        'help.start()' for an HTML browser interface to help.
+        Type 'q()' to quit R.
 
-    Microsoft R Server 8.0 版：R 的增强分发 Microsoft 包版权所有 (C) 2016 Microsoft Corporation
+        Microsoft R Server version 8.0: an enhanced distribution of R
+        Microsoft packages Copyright (C) 2016 Microsoft Corporation
 
     键入 "readme()" 了解发行说明。
     >
 
 3. 可以通过 `>` 提示符输入 R 代码。 R Server 包含可以轻松地与 Hadoop 交互并运行分布式计算的包。 例如，若要查看 HDInsight 群集的默认文件系统根目录，可使用以下命令：
 
-    rxHadoopListFiles("/")
+        rxHadoopListFiles("/")
 
 4. 还可以使用 WASB 样式寻址。
 
-    rxHadoopListFiles("wasb:///")
+        rxHadoopListFiles("wasb:///")
 
 
 ## <a name="using-r-server-on-hdi-from-a-remote-instance-of-microsoft-r-server-or-microsoft-r-client"></a>从 Microsoft R Server 或 Microsoft R Client 的远程实例使用 HDI 上的 R Server

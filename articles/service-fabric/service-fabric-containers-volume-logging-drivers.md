@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 6/28/2017
+ms.date: 8/9/2017
 ms.author: subramar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 868c3051f60c27f15bfd99f66e50b65595951a00
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: b12ef95add6347621f7d4865fac46568f91a1e12
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 
@@ -58,12 +58,21 @@ Service Fabric 支持为容器服务指定 [Docker 卷插件](https://docs.docke
 </ApplicationManifest>
 ```
 
-在前面的示例中，`Volume` 的 `Source` 标记指的是源文件夹。 源文件夹可能是 VM 上托管容器或永久性远程存储的文件夹。 `Destination` 标记是 `Source` 映射到正在运行的容器中的位置。 使用卷插件时，需要制定插件名称（`Driver` 标记），如前面的示例所示。  如果指定了 Docker 日志记录驱动程序，则有必要部署代理（或容器）以处理群集中的日志。 
+在前面的示例中，`Volume` 的 `Source` 标记指的是源文件夹。 源文件夹可能是 VM 上托管容器或永久性远程存储的文件夹。 `Destination` 标记是 `Source` 映射到正在运行的容器中的位置。 
+
+指定卷插件时，Service Fabric 使用指定的参数自动创建卷。 `Source` 标记是该卷的名称，`Driver` 标记指定卷驱动程序插件。 可使用 `DriverOption` 标记指定选项，如以下代码片段所示：
+
+```xml
+<Volume Source="myvolume1" Destination="c:\testmountlocation4" Driver="azurefile" IsReadOnly="true">
+           <DriverOption Name="share" Value="models"/>
+</Volume>
+```
+
+如果指定了 Docker 日志记录驱动程序，则有必要部署代理（或容器）以处理群集中的日志。  `DriverOption` 标记还可用于指定日志驱动程序选项。
 
 请参阅以下文章，将容器部署到 Service Fabric 群集：
 
-[将 Windows 容器部署到 Windows Server 2016 上的 Service Fabric](service-fabric-deploy-container.md)
 
-[将 Docker 容器部署到 Linux 上的 Service Fabric](service-fabric-deploy-container-linux.md)
+[在 Service Fabric 上部署容器](service-fabric-deploy-container.md)
 
 

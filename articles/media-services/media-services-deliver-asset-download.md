@@ -4,7 +4,7 @@ description: "了解如何将资产下载到计算机。 代码示例用 C# 编�
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 8908a1dd-3ffb-4f18-955d-4c8e2d82fc5d
 ms.service: media-services

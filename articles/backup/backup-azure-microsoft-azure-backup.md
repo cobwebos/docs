@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 7/20/2017
 ms.author: masaran;trinadhk;pullabhk;markgal
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 366de49b1cb1d21aca4ef4de1c413a33ac4ae7b0
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c54468d71e0b383916e49847576a98303d659d38
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>准备使用 Azure 备份服务器来备份工作负荷
@@ -81,16 +81,16 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 若要创建恢复服务保管库，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在“中心”菜单中，单击“**浏览**”，然后在资源列表中，键入“**恢复服务**”。 当你开始键入时，会根据你的输入筛选该列表。 单击“**恢复服务保管库**”。
+2. 在“中心”菜单中，单击“**浏览**”，并在资源列表中，键入“**恢复服务**”。 开始键入时，会根据输入筛选该列表。 单击“**恢复服务保管库**”。
 
     ![创建恢复服务保管库步骤 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png) <br/>
 
-    此时将显示恢复服务保管库列表。
+    此时会显示恢复服务保管库列表。
 3. 在“恢复服务保管库”菜单中，单击“添加”。
 
     ![创建恢复服务保管库步骤 2](./media/backup-azure-microsoft-azure-backup/rs-vault-menu.png)
 
-    此时将打开恢复服务保管库边栏选项卡，其中会提示你提供“名称”、“订阅”、“资源组”和“位置”。
+    此时会打开恢复服务保管库边栏选项卡，其中会提示提供“名称”、“订阅”、“资源组”和“位置”。
 
     ![创建恢复服务保管库步骤 5](./media/backup-azure-microsoft-azure-backup/rs-vault-attributes.png)
 4. 对于“名称”，请输入一个友好名称以标识保管库 。 名称对于 Azure 订阅需要是唯一的。 键入包含 2 到 50 个字符的名称。 名称必须以字母开头，只能包含字母、数字和连字符。
@@ -98,14 +98,14 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 6. 单击“资源组”查看可用资源组列表，或单击“新建”创建新的资源组。 有关资源组的完整信息，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)
 7. 单击“位置”，为保管库选择地理区域  。
 8. 单击“创建” 。 创建恢复服务保管库可能需要一段时间。 可以在门户右上区域监视状态通知。
-   创建保管库后，它将在门户中打开。
+   创建保管库后，它会在门户中打开。
 
 ### <a name="set-storage-replication"></a>设置存储复制
-存储复制选项可让你在异地冗余存储与本地冗余存储之间进行选择。 默认情况下，保管库具有异地冗余存储。 如果此保管库是主保管库，请保留异地冗余存储这一存储选项。 如果你想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。 请参阅 [Azure 存储复制概述](../storage/storage-redundancy.md)部分，深入了解[异地冗余](../storage/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/storage-redundancy.md#locally-redundant-storage)存储选项。
+存储复制选项可让用户在异地冗余存储与本地冗余存储之间进行选择。 默认情况下，保管库具有异地冗余存储。 如果此保管库是主保管库，请保留异地冗余存储这一存储选项。 如果想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。 请参阅 [Azure 存储复制概述](../storage/common/storage-redundancy.md)部分，深入了解[异地冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/common/storage-redundancy.md#locally-redundant-storage)存储选项。
 
 若要编辑存储复制设置，请执行以下操作：
 
-1. 选择你的保管库以打开保管库仪表板和“设置”边栏选项卡。 如果“设置”边栏选项卡未打开，请在保管库仪表板中单击“所有设置”。
+1. 选择保管库以打开保管库仪表板和“设置”边栏选项卡。 如果“设置”边栏选项卡未打开，请在保管库仪表板中单击“所有设置”。
 2. 在“设置”边栏选项卡中，单击“备份基础结构” > “备份配置”，打开“备份配置”边栏选项卡。 在“备份配置”边栏选项卡中，选择保管库的存储复制选项。
 
     ![备份保管库列表](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
@@ -118,14 +118,14 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 2. 如果已打开恢复服务保管库，请转到步骤 3。 如果未打开恢复服务保管库，而是位于 Azure 门户中，请在“中心”菜单中单击“浏览”。
 
    * 在资源列表中，键入“恢复服务”。
-   * 当你开始键入时，会根据你的输入筛选该列表。 出现“恢复服务保管库”时，请单击它。
+   * 开始键入时，会根据输入筛选该列表。 出现“恢复服务保管库”时，请单击它。
 
      ![创建恢复服务保管库步骤 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
-     此时将显示恢复服务保管库列表。
+     此时会显示恢复服务保管库列表。
    * 在恢复服务保管库列表中选择一个保管库。
 
-     此时将打开选定的保管库仪表板。
+     此时会打开选定的保管库仪表板。
 
      ![打开保管库边栏选项卡](./media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
 3. 默认情况下会打开“设置”边栏选项卡。 如果“设置”边栏选项卡已关闭，请单击“设置”将它打开。
@@ -135,7 +135,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
     ![备份入门](./media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
 
-    在打开的“开始备份” 边栏选项卡中，将自动选择“备份目标”。
+    在打开的“开始备份”边栏选项卡中，会自动选择“备份目标”。
 
     ![Backup-goals-default-opened](./media/backup-azure-microsoft-azure-backup/getting-started.png)
 
@@ -143,7 +143,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
     ![用作目标的“本地”和“工作负荷”](./media/backup-azure-microsoft-azure-backup/backup-goals-azure-backup-server.png)
 
-    从“希望备份什么内容?”下拉菜单上，选择想要使用 Azure 备份服务器保护的工作负荷，然后单击“确定”。
+    从“希望备份什么内容?”下拉菜单上，选择想要使用 Azure 备份服务器保护的工作负荷，并单击“确定”。
 
     “开始备份”向导可切换“准备基础结构”选项以将工作负荷备份到 Azure。
 
@@ -154,18 +154,18 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
     ![快速启动向导更改](./media/backup-azure-microsoft-azure-backup/getting-started-prep-infra.png)
 
-6. 在打开的“准备基础结构”边栏选项卡中，单击用于安装 Azure 备份服务器和下载保管库凭据的“下载”链接。 在将 Azure 备份服务器注册到恢复服务保管库期间，请使用保管库凭据。 使用此链接，将转到“下载中心”，可以从中下载软件包。
+6. 在打开的“准备基础结构”边栏选项卡中，单击用于安装 Azure 备份服务器和下载保管库凭据的“下载”链接。 在将 Azure 备份服务器注册到恢复服务保管库期间，请使用保管库凭据。 使用此链接，会转到“下载中心”，可以从中下载软件包。
 
     ![为 Azure 备份服务器准备基础结构](./media/backup-azure-microsoft-azure-backup/azure-backup-server-prep-infra.png)
 
-7. 选择所有文件，然后单击“**下一步**”。 下载 Microsoft Azure 备份下载页中的所有文件，并将所有文件放在同一个文件夹中。
+7. 选择所有文件，并单击“**下一步**”。 下载 Microsoft Azure 备份下载页中的所有文件，并将所有文件放在同一个文件夹中。
 
     ![下载中心 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
     由于所有文件的下载大小合计超过了 3G，在 10Mbps 下载链路上可能需要 60 分钟才能完成下载。
 
 ### <a name="extracting-the-software-package"></a>解压缩软件包
-下载所有文件之后，单击 **MicrosoftAzureBackupInstaller.exe**。 这将启动“**Microsoft Azure 备份安装向导**”，并将安装程序文件解压缩到指定的位置。 继续运行向导，然后单击“**解压缩**”按钮开始解压缩过程。
+下载所有文件之后，单击 **MicrosoftAzureBackupInstaller.exe**。 这会启动“**Microsoft Azure 备份安装向导**”，并将安装程序文件解压缩到指定的位置。 继续运行向导，并单击“**解压缩**”按钮开始解压缩过程。
 
 > [!WARNING]
 > 至少需要有 4GB 的可用空间才能解压缩安装程序文件。
@@ -174,34 +174,34 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
 ![Microsoft Azure 备份安装向导](./media/backup-azure-microsoft-azure-backup/extract/03.png)
 
-解压缩过程完成后，请选中相应的框，以启动刚刚解压缩的 *setup.exe* 来开始安装 Microsoft Azure 备份服务器，然后单击“**完成**”按钮。
+解压缩过程完成后，请选中相应的框，以启动刚刚解压缩的 *setup.exe* 来开始安装 Microsoft Azure 备份服务器，并单击“**完成**”按钮。
 
 ### <a name="installing-the-software-package"></a>安装软件包
 1. 单击“**Microsoft Azure 备份**”以启动安装向导。
 
     ![Microsoft Azure 备份安装向导](./media/backup-azure-microsoft-azure-backup/launch-screen2.png)
-2. 在“欢迎”屏幕上单击“**下一步**”按钮。 随后你将转到“*先决条件检查*”部分。 在此屏幕上单击“检查”，以确定是否符合 Azure 备份服务器的硬件和软件先决条件。 如果完全符合所有先决条件，将看到一条指明计算机符合要求的消息。 单击“**下一步**”按钮。
+2. 在“欢迎”屏幕上单击“**下一步**”按钮。 随后将转到“*先决条件检查*”部分。 在此屏幕上单击“检查”，以确定是否符合 Azure 备份服务器的硬件和软件先决条件。 如果完全符合所有先决条件，将看到一条指明计算机符合要求的消息。 单击“**下一步**”按钮。
 
     ![Azure 备份服务器 - 欢迎页和先决条件检查](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
-3. Microsoft Azure 备份服务器需要 SQL Server Standard，而 Azure 备份服务器安装包会根据需要随附相应的 SQL Server 二进制文件。 在开始全新安装 Azure 备份服务器时，应该选择“**在此安装程序中安装新的 SQL Server 实例**”，然后单击“**检查并安装**”按钮。 成功安装必备组件后，单击“**下一步**”。
+3. Microsoft Azure 备份服务器需要 SQL Server Standard，而 Azure 备份服务器安装包会根据需要随附相应的 SQL Server 二进制文件。 在开始全新安装 Azure 备份服务器时，应该选择“**在此安装程序中安装新的 SQL Server 实例**”，并单击“**检查并安装**”按钮。 成功安装必备组件后，单击“**下一步**”。
 
     ![Azure 备份服务器 - SQL 检查](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
-    如果发生故障并且系统建议重新启动计算机，请按说明操作，然后单击“**再次检查**”。
+    如果发生故障并且系统建议重新启动计算机，请按说明操作，并单击“**再次检查**”。
 
    > [!NOTE]
    > Azure 备份服务器不能与远程 SQL Server 实例配合使用。 Azure 备份服务器使用的实例需在本地。
    >
    >
-4. 提供 Microsoft Azure 备份服务器文件的安装位置，然后单击“**下一步**”。
+4. 提供 Microsoft Azure 备份服务器文件的安装位置，并单击“**下一步**”。
 
     ![Microsoft Azure 备份先决条件 2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
     备份到 Azure 需要有暂存位置。 请确保暂存位置的空间至少为要备份到云的数据的 5%。 在磁盘保护方面，安装完成之后需要配置独立的磁盘。 有关存储池的详细信息，请参阅[配置存储池和磁盘存储](https://technet.microsoft.com/library/hh758075.aspx)。
-5. 为受限的本地用户帐户提供强密码，然后单击“**下一步**”。
+5. 为受限的本地用户帐户提供强密码，并单击“**下一步**”。
 
     ![Microsoft Azure 备份先决条件 2](./media/backup-azure-microsoft-azure-backup/security-screen.png)
-6. 选择是否要使用 *Microsoft 更新*来检查更新，然后单击“**下一步**”。
+6. 选择是否要使用 *Microsoft 更新*来检查更新，并单击“**下一步**”。
 
    > [!NOTE]
    > 我们建议让 Windows 更新重定向到 Microsoft 更新，此网站为 Windows 和 Microsoft Azure 备份服务器等其他产品提供了安全更新与重要更新。
@@ -209,12 +209,12 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
    >
 
     ![Microsoft Azure 备份先决条件 2](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
-7. 复查“*设置摘要*”，然后单击“**安装**”。
+7. 复查“*设置摘要*”，并单击“**安装**”。
 
     ![Microsoft Azure 备份先决条件 2](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
-8. 安装将会分阶段进行。 第一个阶段，将在服务器上安装 Microsoft Azure 恢复服务代理。 向导还会检查 Internet 连接。 如果可以连接到 Internet，则你可以继续安装，否则需要提供代理详细信息以连接到 Internet。
+8. 安装会分阶段进行。 第一个阶段，会在服务器上安装 Microsoft Azure 恢复服务代理。 向导还会检查 Internet 连接。 如果可以连接到 Internet，则可以继续安装，否则需要提供代理详细信息以连接到 Internet。
 
-    下一个步骤是配置 Microsoft Azure 恢复服务代理。 在配置过程中，必须提供保管库凭据，以向恢复服务保管库注册计算机。 还需要提供通行短语来加密/解密 Azure 与本地之间发送的数据。 你可以自动生成通行短语，或提供自己的通行短语（最少包含 16 个字符）。 请继续运行向导，直到代理已完成配置。
+    下一个步骤是配置 Microsoft Azure 恢复服务代理。 在配置过程中，必须提供保管库凭据，以向恢复服务保管库注册计算机。 还需要提供通行短语来加密/解密 Azure 与本地之间发送的数据。 可以自动生成通行短语，或提供自己的通行短语（最少包含 16 个字符）。 请继续运行向导，直到代理已完成配置。
 
     ![Azure 备份服务器先决条件 2](./media/backup-azure-microsoft-azure-backup/mars/04.png)
 9. Microsoft Azure 备份服务器注册成功完成后，整个安装向导将继续安装和配置 SQL Server 及 Azure 备份服务器的组件。 SQL Server 组件安装完成后，将安装 Azure 备份服务器组件。
@@ -248,7 +248,7 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 | 连接断开超过 15 天 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>连接断开后进行恢复
-如果你的防火墙或代理导致无法访问 Azure，需要将防火墙/代理配置文件中的以下域地址列入允许列表：
+如果防火墙或代理导致无法访问 Azure，需要将防火墙/代理配置文件中的以下域地址列入允许列表：
 
 * www.msftncsi.com
 * \*.Microsoft.com

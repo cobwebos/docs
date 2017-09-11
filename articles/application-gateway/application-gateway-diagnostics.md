@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: amitsriva
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 2a2d731a8c904f290fcd4bbbd18872d8319b2ff5
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 12c252340b82aba5ee69b12db83353750782e7c5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>应用程序网关的后端运行状况、诊断日志和指标
@@ -122,7 +122,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
     ![门户：存储帐户的资源 ID](./media/application-gateway-diagnostics/diagnostics1.png)
 
-2. 记下要为其启用日志记录的应用程序网关资源 ID。 此值的形式如下：/subscriptions/\<subscriptionId\>/resourceGroups/\<资源组名称\>/providers/Microsoft.Network/applicationGateways/\<应用程序网关名称\>。 可使用门户查找此信息。
+2. 记下为其启用日志记录的应用程序网关的资源 ID。 此值的形式如下：/subscriptions/\<subscriptionId\>/resourceGroups/\<资源组名称\>/providers/Microsoft.Network/applicationGateways/\<应用程序网关名称\>。 可使用门户查找此信息。
 
     ![门户： 应用程序网关的资源 ID](./media/application-gateway-diagnostics/diagnostics2.png)
 

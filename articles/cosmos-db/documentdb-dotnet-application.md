@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/03/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: 86b34c6c44b957009610f20ee0b9d7ed7fc441be
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 3f2950fe25feb8f3ee81cc0a79bf624f0ee33bd5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC 教程：使用 Azure Cosmos DB 开发 Web 应用程序
@@ -43,9 +43,9 @@ ms.lasthandoff: 08/08/2017
 > 
 
 ## <a name="_Toc395637760"></a>本数据库教程的先决条件
-在按照本文中的说明操作之前，你应确保已拥有下列项：
+在按照本文中的说明操作之前，应确保已拥有下列项：
 
-* 有效的 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。 
+* 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。 
 
     或
 
@@ -307,10 +307,7 @@ ms.lasthandoff: 08/08/2017
             }
         }
    
-   > [!TIP]
-   > 创建新的 DocumentCollection 时，可以提供 OfferType 的可选 RequestOptions 参数，此参数可让你指定新集合的性能级别。 如果未传递此参数，系统将使用默认的产品/服务类型。 有关 Azure Cosmos DB 产品/服务类型的详细信息，请参阅 [Azure Cosmos DB 性能级别](performance-levels.md)。
-   > 
-   > 
+    
 3. 我们打算从配置中读取部分值，因此请打开应用程序的 **Web.config** 文件，并在 `<AppSettings>` 节下面添加下列几行。
    
         <add key="endpoint" value="enter the URI from the Keys blade of the Azure Portal"/>

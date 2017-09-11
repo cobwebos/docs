@@ -2,7 +2,7 @@
 title: "Azure Data Lake Store 文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何设置、管理和访问具有超高可伸缩性、与 Hadoop 兼容的 Data Lake 存储库，用于对任何大小、类型和引入速度的数据执行分析。"
 services: data-lake-store
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

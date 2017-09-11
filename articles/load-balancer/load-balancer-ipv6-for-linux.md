@@ -15,24 +15,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: kumud
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: 5c591e7f1838c86ca74caea9dd3a5e8f874fd8a7
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/29/2017
 
 ---
 
 # <a name="configuring-dhcpv6-for-linux-vms"></a>为 Linux VM 配置 DHCPv6
 
-Azure 应用商店中的某些 Linux 虚拟机映像默认未配置 DHCPv6。 若要支持 IPv6，必须在使用的 Linux OS 分发版中配置 DHCPv6。 不同 Linux 分发版的 DHCPv6 配置方式不同，因为它们使用不同的包。
+Azure Marketplace 中的某些 Linux 虚拟机映像默认未配置 DHCPv6。 若要支持 IPv6，必须在使用的 Linux OS 分发版中配置 DHCPv6。 不同 Linux 分发版的 DHCPv6 配置方式不同，因为它们使用不同的包。
 
 > [!NOTE]
-> Azure 应用商店中最新的 SUSE Linux 和 CoreOS 映像已预先配置 DHCPv6。 使用这些映像不需要进行额外的更改。
+> Azure Marketplace 中最新的 SUSE Linux 和 CoreOS 映像已预先配置 DHCPv6。 使用这些映像不需要进行额外的更改。
 
 本文档介绍如何启用 DHCPv6，使 Linux 虚拟机能够获取 IPv6 地址。
 
 > [!WARNING]
-> 不恰当地编辑网络配置文件可能会导致失去 VM 的网络访问权限。 建议先在非生产系统上测试配置更改。 本文中的说明已根据 Azure 应用商店中的最新版 Linux 映像进行测试。 有关所用 Linux 版本的详细说明，请参阅其文档。
+> 不恰当地编辑网络配置文件可能会导致失去 VM 的网络访问权限。 建议先在非生产系统上测试配置更改。 本文中的说明已根据 Azure Marketplace 中的最新版 Linux 映像进行测试。 有关所用 Linux 版本的详细说明，请参阅其文档。
 
 ## <a name="ubuntu"></a>Ubuntu
 

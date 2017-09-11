@@ -2,7 +2,7 @@
 title: "Azure 媒体服务错误代码 | Microsoft Docs"
 description: "本主题概述 Azure 媒体服务错误代码。"
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

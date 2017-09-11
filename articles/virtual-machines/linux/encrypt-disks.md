@@ -16,11 +16,10 @@ ms.workload: infrastructure
 ms.date: 07/05/2017
 ms.author: iainfou
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 3dc48f5dcb50db81d9f461c41570640839fcce26
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 172b4c8f5c098d776cb689543f5d8f163b8895b4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="how-to-encrypt-virtual-disks-on-a-linux-vm"></a>如何加密 Linux VM 上的虚拟磁盘
@@ -83,7 +82,7 @@ az vm create \
     --data-disk-sizes-gb 5
 ```
 
-使用上一命令输出中显示的 `publicIpAddress` 通过 SSH 连接到 VM。 创建分区和文件系统，然后安装数据磁盘。 有关详细信息，请参阅[连接 Linux VM 以安装新磁盘](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#connect-to-the-linux-vm-to-mount-the-new-disk)。 关闭 SSH 会话。
+使用上一命令输出中显示的 `publicIpAddress` 通过 SSH 连接到 VM。 创建分区和文件系统，并安装数据磁盘。 有关详细信息，请参阅[连接 Linux VM 以安装新磁盘](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#connect-to-the-linux-vm-to-mount-the-new-disk)。 关闭 SSH 会话。
 
 使用 [az vm encryption enable](/cli/azure/vm/encryption#enable) 加密 VM。 下面的示例使用之前的 `ad sp create-for-rbac` 命令中的 `$sp_id` 和 `$sp_password` 变量：
 
@@ -104,13 +103,13 @@ az vm encryption enable \
 az vm encryption show --resource-group myResourceGroup --name myVM
 ```
 
-状态显示“EncryptionInProgress”。 请等待，直到 OS 磁盘的状态报告“VMRestartPending”，然后使用 [az vm restart](/cli/azure/vm#restart) 重启 VM：
+状态显示“EncryptionInProgress”。 请等待，直到 OS 磁盘的状态报告“VMRestartPending”，并使用 [az vm restart](/cli/azure/vm#restart) 重启 VM：
 
 ```azurecli
 az vm restart --resource-group myResourceGroup --name myVM
 ```
 
-磁盘加密过程将在启动过程中完成，因此请等待几分钟后再使用 **az vm encryption show** 查看加密状态：
+磁盘加密过程会在启动过程中完成，因此请等待几分钟后再使用 **az vm encryption show** 查看加密状态：
 
 ```azurecli
 az vm encryption show --resource-group myResourceGroup --name myVM
@@ -135,7 +134,7 @@ Linux VM 上的虚拟磁盘是使用 [dm-crypt](https://wikipedia.org/wiki/Dm-cr
 
 * **Azure 密钥保管库** - 用于保护磁盘加密/解密过程中使用的加密密钥和机密。
   * 可以使用现有的 Azure 密钥保管库（如果有）。 不需要专门使用某个密钥保管库来加密磁盘。
-  * 若要将管理边界和密钥可见性隔离开来，可以创建专用的密钥保管库。
+  * 要将管理边界和密钥可见性隔离开来，可以创建专用的密钥保管库。
 * **Azure Active Directory** - 处理所需加密密钥的安全交换，以及对请求的操作执行的身份验证。
   * 通常，可以使用现有的 Azure Active Directory 实例来容装应用程序。
   * 服务主体提供了安全机制，可用于请求和获取相应的加密密钥。 实际并不需要开发与 Azure Active Directory 集成的应用程序。
@@ -177,7 +176,7 @@ az keyvault create \
     --enabled-for-disk-encryption True
 ```
 
-可以使用软件或硬件安全模型 (HSM) 保护来存储加密密钥。 使用 HSM 时需要高级密钥保管库。 与用于存储受软件保护的密钥的标准密钥保管库不同，创建高级密钥保管库会产生额外的费用。 若要创建高级密钥保管库，请在前一步骤中，将 `--sku Premium` 添加到命令。 由于我们创建的是标准密钥保管库，以下示例使用了受软件保护的密钥。
+可以使用软件或硬件安全模型 (HSM) 保护来存储加密密钥。 使用 HSM 时需要高级密钥保管库。 与用于存储受软件保护的密钥的标准密钥保管库不同，创建高级密钥保管库会产生额外的费用。 要创建高级密钥保管库，请在前一步骤中，将 `--sku Premium` 添加到命令。 由于我们创建的是标准密钥保管库，以下示例使用了受软件保护的密钥。
 
 对于这两种保护模型，在启动 VM 解密虚拟磁盘时，都需要向 Azure 平台授予请求加密密钥的访问权限。 使用 [az keyvault key create](/cli/azure/keyvault/key#create) 在 Key Vault 中创建加密密钥。 以下示例创建名为 myKey 的密钥：
 
@@ -197,7 +196,7 @@ read sp_id sp_password <<< $(az ad sp create-for-rbac --query [appId,password] -
 
 只有创建服务主体时，才会显示密码。 如果需要，可查看并记录密码 (`echo $sp_password`)。 可以使用 [az ad sp list](/cli/azure/ad/sp#list) 列出服务主体并使用 [az ad sp show](/cli/azure/ad/sp#show) 查看特定服务主体的详细信息。
 
-若要成功加密或解密虚拟磁盘，必须将 Key Vault 中存储的加密密钥的权限设置为允许 Azure Active Directory 服务主体读取密钥。 使用 [az keyvault set-policy](/cli/azure/keyvault#set-policy) 在 Key Vault 上设置权限。 在以下示例中，服务主体 ID 由上一个命令提供：
+要成功加密或解密虚拟磁盘，必须将 Key Vault 中存储的加密密钥的权限设置为允许 Azure Active Directory 服务主体读取密钥。 使用 [az keyvault set-policy](/cli/azure/keyvault#set-policy) 在 Key Vault 上设置权限。 在以下示例中，服务主体 ID 由上一个命令提供：
 
 ```azurecli
 az keyvault set-policy --name $keyvault_name --spn $sp_id \
@@ -219,11 +218,11 @@ az vm create \
     --data-disk-sizes-gb 5
 ```
 
-使用上一命令输出中显示的 `publicIpAddress` 通过 SSH 连接到 VM。 创建分区和文件系统，然后安装数据磁盘。 有关详细信息，请参阅[连接 Linux VM 以安装新磁盘](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#connect-to-the-linux-vm-to-mount-the-new-disk)。 关闭 SSH 会话。
+使用上一命令输出中显示的 `publicIpAddress` 通过 SSH 连接到 VM。 创建分区和文件系统，并安装数据磁盘。 有关详细信息，请参阅[连接 Linux VM 以安装新磁盘](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#connect-to-the-linux-vm-to-mount-the-new-disk)。 关闭 SSH 会话。
 
 
 ## <a name="encrypt-virtual-machine"></a>加密虚拟机
-若要加密虚拟磁盘，可将前面的所有组件合并在一起：
+要加密虚拟磁盘，可将前面的所有组件合并在一起：
 
 1. 指定 Azure Active Directory 服务主体和密码。
 2. 指定用于存储加密磁盘元数据的密钥保管库。
@@ -258,13 +257,13 @@ az vm encryption show --resource-group myResourceGroup --name myVM
 ]
 ```
 
-请等待，直到 OS 磁盘的状态报告“VMRestartPending”，然后使用 [az vm restart](/cli/azure/vm#restart) 重启 VM：
+请等待，直到 OS 磁盘的状态报告“VMRestartPending”，并使用 [az vm restart](/cli/azure/vm#restart) 重启 VM：
 
 ```azurecli
 az vm restart --resource-group myResourceGroup --name myVM
 ```
 
-磁盘加密过程将在启动过程中完成，因此请等待几分钟后再使用 **az vm encryption show** 查看加密状态：
+磁盘加密过程会在启动过程中完成，因此请等待几分钟后再使用 **az vm encryption show** 查看加密状态：
 
 ```azurecli
 az vm encryption show --resource-group myResourceGroup --name myVM
@@ -274,15 +273,13 @@ az vm encryption show --resource-group myResourceGroup --name myVM
 
 
 ## <a name="add-additional-data-disks"></a>添加更多数据磁盘
-加密数据磁盘后，可将更多的虚拟磁盘添加到 VM 并将其加密。 运行 `az vm encryption enable` 命令时，可以使用 `--sequence-version` 参数递增序列版本。 使用此序列版本参数可以针对同一个 VM 重复执行操作。
-
-例如，按如下所示将另一个虚拟磁盘添加到 VM：
+加密数据磁盘后，可将更多的虚拟磁盘添加到 VM 并将其加密。 例如，按如下所示将另一个虚拟磁盘添加到 VM：
 
 ```azurecli
 az vm disk attach-new --resource-group myResourceGroup --vm-name myVM --size-in-gb 5
 ```
 
-重新运行上述命令来加密虚拟磁盘，不过这次请添加 `--sequence-version` 参数，以便递增第一次运行中使用的值，如下所示：
+重新运行命令以加密虚拟磁盘，如下所示：
 
 ```azurecli
 az vm encryption enable \
@@ -292,8 +289,7 @@ az vm encryption enable \
     --aad-client-secret $sp_password \
     --disk-encryption-keyvault $keyvault_name \
     --key-encryption-key myKey \
-    --volume-type all \
-    --sequence-version 2
+    --volume-type all
 ```
 
 

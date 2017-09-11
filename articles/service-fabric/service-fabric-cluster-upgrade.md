@@ -1,6 +1,6 @@
 ---
 title: "升级 Azure Service Fabric 群集 | Microsoft 文档"
-description: "升级运行 Service Fabric 群集的 Service Fabric 代码和/或配置，包括设置群集更新模式、升级证书、添加应用程序端口、执行操作系统修补，等等。 执行升级时你会预料到哪种结果？"
+description: "升级运行 Service Fabric 群集的 Service Fabric 代码和/或配置，包括设置群集更新模式、升级证书、添加应用程序端口、执行操作系统修补，等等。 执行升级时会预料到哪种结果？"
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/22/2017
+ms.date: 8/10/2017
 ms.author: chackdan
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 6efb5c20140d3ea76a2a9cd1eb495db69f14048d
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 7ea71ab891583c51b3c07a4d0a9f0b4f54e56669
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="upgrade-an-azure-service-fabric-cluster"></a>升级 Azure Service Fabric 群集
@@ -28,10 +28,10 @@ ms.lasthandoff: 07/12/2017
 > 
 > 
 
-对于任何现代系统，设计可升级性都是实现产品长期成功的关键。 Azure Service Fabric 群集是你拥有的，但部分由 Microsoft 管理的资源。 本文说明自动管理的项目以及你可以自行配置的项目。
+对于任何现代系统，设计可升级性都是实现产品长期成功的关键。 Azure Service Fabric 群集是你拥有的，但部分由 Microsoft 管理的资源。 本文说明自动管理的项目以及可以自行配置的项目。
 
 ## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>控制在群集上运行的结构版本
-当 Microsoft 发布新版本时，可以将群集设置为接收自动结构升级，或选择挑选想要群集安装的受支持的结构版本。
+可以将群集设置为 Microsoft 发布结构升级时自动接收该升级，或可以选择想要群集安装的受支持结构版本。
 
 通过在门户设置“upgradeMode”群集配置，或者在创建实时群集时或在这之后使用 Resource Manager，来实现此目的 
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 07/12/2017
 ![ARMUpgradeMode][ARMUpgradeMode]
 
 #### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-a-resource-manager-template"></a>在已通过 Resource Manager 模板设置为手动模式的群集上升级至新版本。
-当群集处于手动模式时，若要升级到新版本，则可将“clusterCodeVersion”更改为支持的版本并部署此版本。 模板的部署启动了结构升级自动被启动。 在升级期间，将遵守群集运行状况策略（节点运行状况和所有在群集中运行的应用程序的运行状况的组合）。
+群集处于手动模式时，若要升级到新版本，则可将“clusterCodeVersion”更改为支持的版本并部署此版本。 模板的部署启动了结构升级自动被启动。 在升级期间，将遵守群集运行状况策略（节点运行状况和所有在群集中运行的应用程序的运行状况的组合）。
 
 如果不符合现行的群集运行状况策略，则回滚升级。 向下滚动本文档，了解有关如何设置这些自定义运行状况策略的更多信息。 
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 07/12/2017
 ### <a name="get-list-of-all-available-version-for-all-environments-for-a-given-subscription"></a>获取适用于指定订阅所有环境的所有可用版本列表
 运行以下命令，应会获得类似于此的输出。
 
-“supportExpiryUtc”告诉你指定版本的过期日期。 最新版本没有有效日期 - 它有一个值为“9999-12-31T23:59:59.9999999”，这表示尚未设置其到期日期。
+“supportExpiryUtc”告知指定版本的过期日期。 最新版本没有有效日期 - 它有一个值为“9999-12-31T23:59:59.9999999”，这表示尚未设置其到期日期。
 
 ```REST
 GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.ServiceFabric/locations/{{location}}/clusterVersions?api-version=2016-09-01
@@ -120,7 +120,7 @@ Output:
 ```
 
 ## <a name="fabric-upgrade-behavior-when-the-cluster-upgrade-mode-is-automatic"></a>群集升级模式为“自动”时的结构升级行为
-Microsoft 将维护 Azure 群集中运行的结构代码和配置。 我们将根据需要，对软件执行受监视的自动升级。 升级的部分可能是代码和/或配置。 为了确保应用程序不受这些升级的影响或者将影响降到最低，我们将分以下阶段执行升级：
+Microsoft 将维护 Azure 群集中运行的结构代码和配置。 我们会根据需要，对软件执行受监视的自动升级。 升级的部分可能是代码和/或配置。 为了确保应用程序不受这些升级的影响或者将影响降到最低，我们将分以下阶段执行升级：
 
 ### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>阶段 1：使用所有群集运行状况策略执行升级
 在此阶段，升级过程将每次升级一个升级域，已在群集中运行的应用程序继续运行，而不会造成任何停机时间。 在升级期间，将遵守群集运行状况策略（节点运行状况和所有在群集中运行的应用程序的运行状况的组合）。
@@ -159,8 +159,8 @@ Microsoft 将维护 Azure 群集中运行的结构代码和配置。 我们将�
 
 如果符合群集运行状况策略，则升级被视为成功并标记为完成。 在此阶段进行初始升级或重新运行任何升级期间，可能发生这种情形。 如果运行成功，将不发送任何电子邮件确认。
 
-## <a name="cluster-configurations-that-you-control"></a>你可以控制的群集配置
-除设置群集升级模式的功能外，下面是你可以在实时群集上更改的配置。
+## <a name="cluster-configurations-that-you-control"></a>可以控制的群集配置
+除设置群集升级模式的功能外，下面是可以在实时群集上更改的配置。
 
 ### <a name="certificates"></a>证书
 通过门户可以轻松为群集新增或删除证书。 请参阅[此文档中的详细说明](service-fabric-cluster-security-update-certs-azure.md)
@@ -209,7 +209,7 @@ Microsoft 将维护 Azure 群集中运行的结构代码和配置。 我们将�
 请参考可部署在群集上的[修补业务流程应用程序](service-fabric-patch-orchestration-application.md)，以便以协调一致的方式从 Windows 更新安装修补程序，从而使服务始终可用。 
 
 ### <a name="os-upgrades-on-the-vms-that-make-up-the-cluster"></a>构成群集的 VM 上的操作系统升级
-如果你必须升级群集虚拟机上的操作系统映像，必须一次升级一个 VM。 你需要自行负责这种升级 - 目前没有自动化的功能用于实现此目的。
+如果必须升级群集虚拟机上的操作系统映像，必须一次升级一个 VM。 需要自行负责这种升级 - 目前没有自动化的功能用于实现此目的。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何自定义 [Service Fabric 群集结构设置](service-fabric-cluster-fabric-settings.md)的部分内容

@@ -12,24 +12,23 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 6bc820657da4a72455d76f38dbdb06fe50b0c895
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 9b5556fabd2ccfc026037a411a2f8e83f97ffb81
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>使用 Application Insights 对 Web 应用和服务进行深度诊断
 ## <a name="why-do-i-need-application-insights"></a>为什么需要 Application Insights？
-Application Insights 可以监视正在运行的 Web 应用。 它可以告知故障和性能方面的问题，帮助分析客户如何使用你的应用。 它适用于许多平台（ASP.NET、J2EE、Node.js ...）上运行的应用，可以托管在云中或本地。 
+Application Insights 可以监视正在运行的 Web 应用。 它可以告知故障和性能方面的问题，帮助分析客户如何使用应用。 它适用于许多平台（ASP.NET、J2EE、Node.js ...）上运行的应用，可以托管在云中或本地。 
 
 ![传递 Web 应用时面临的复杂性](./media/app-insights-devops/010.png)
 
-监视正在运行的现代应用程序至关重要。 最重要的是，我们需要在大多数客户检测到故障之前，先行检测到这些故障。 此外，我们还需要发现并修复性能问题，尽管这些问题不是灾难性的，但也许会使某些任务的速度变慢，或对用户带来不便。 如果你对系统的性能感到满意，可能想要知道用户正使用系统执行哪些操作：他们在使用最新功能吗？ 是否已成功使用？
+监视正在运行的现代应用程序至关重要。 最重要的是，我们需要在大多数客户检测到故障之前，先行检测到这些故障。 此外，我们还需要发现并修复性能问题，尽管这些问题不是灾难性的，但也许会使某些任务的速度变慢，或对用户带来不便。 如果对系统的性能感到满意，可能想要知道用户正使用系统执行哪些操作：他们在使用最新功能吗？ 是否已成功使用？
 
-现代 Web 应用程序是在连续传递周期中开发的：发布新功能或改进功能；观察应用程序对用户的适用程度；根据这种了解规划下一个增量开发。 此周期的关键部分是观察阶段。 Application Insights 提供用于监视 Web 应用程序性能和使用情况的工具。
+现代 Web 应用程序是在持续交付周期中开发的：发布新功能或改进功能；观察应用程序对用户的适用程度；根据这种了解规划下一个增量开发。 此周期的关键部分是观察阶段。 Application Insights 提供用于监视 Web 应用程序性能和使用情况的工具。
 
 此过程的最重要方面是诊断。 如果应用程序失败，将造成业务损失。 因此，监视框架的主要作用是可靠检测故障、立即发出通知，并提供诊断问题所需的信息。 这正是 Application Insights 的作用。
 
@@ -42,7 +41,7 @@ Web 系统中的故障通常由配置问题或系统中许多组件之间的交�
 
 在这种情况下，严格控制 Bug 计数的唯一方法是将单元测试自动化。 无法在每次交付时手动重新测试所有功能。 单元测试现已成功构建过程的常见组成部分。 Xamarin Test Cloud 等工具可通过在多个浏览器版本中提供自动化 UI 测试来提供帮助。 这些测试方案使我们有望将应用中的 Bug 比率降到最低。
 
-典型的 Web 应用程序有许多实时组件。 除了客户端（在浏览器或设备应用程序中）和 Web 服务器以外，还可能是实质的后端处理。 后端相当于组件的管道，或者松散的协作项目集合。 此外，其中的许多组件都不受你的控制 - 它们是所需的外部服务。
+典型的 Web 应用程序有许多实时组件。 除了客户端（在浏览器或设备应用程序中）和 Web 服务器以外，还可能是实质的后端处理。 后端相当于组件的管道，或者松散的协作项目集合。 此外，其中的许多组件都不受控制 - 它们是所需的外部服务。
 
 在此类配置中，除非在实时系统本身内部，否则很难以经济节省的方式测试或预见每种可能的故障模式。 
 
@@ -61,7 +60,7 @@ Web 系统中的故障通常由配置问题或系统中许多组件之间的交�
 ## <a name="what-is-application-insights"></a>什么是 Application Insights？
 ![Application Insights 的基本工作流](./media/app-insights-devops/020.png)
 
-1. Application Insights 可检测应用，并在应用运行时发送相关遥测数据。 可以在应用中构建 Application Insights SDK，或者在运行时应用检测。 前一种方法更有弹性，因为你可以将自己的遥测功能添加到普通模块。
+1. Application Insights 可检测应用，并在应用运行时发送相关遥测数据。 可以在应用中构建 Application Insights SDK，或者在运行时应用检测。 前一种方法更有弹性，因为可以将自己的遥测功能添加到普通模块。
 2. 遥测数据将发送到 Application Insights 门户，并在其中存储和处理。 （尽管 Application Insights 托管在 Microsoft Azure 中，但它可以监视任何 Web 应用，而不只是 Azure 应用）。
 3. 遥测数据以事件图表和表格的形式呈现。
 
@@ -76,7 +75,7 @@ Web 系统中的故障通常由配置问题或系统中许多组件之间的交�
 * 依赖项 - 应用执行的 REST 和 SQL 调用，也包含 URI、响应时间和成功结果
 * 异常，包括堆栈跟踪。
 * 来自用户浏览器的页面视图数据。
-* 性能计数器等指标，以及你自行编写的指标。 
+* 性能计数器等指标，以及自行编写的指标。 
 * 可用于跟踪业务事件的自定义事件
 * 用于调试的日志跟踪。
 
@@ -141,19 +140,19 @@ Web 系统中的故障通常由配置问题或系统中许多组件之间的交�
 ### <a name="configuring-application-insights"></a>配置 Application Insights
 Visual Studio 和 Eclipse 提供相应的工具来为开发中的项目配置正确的 SDK 包。 有一个菜单命令可以添加 Application Insights。
 
-如果你正在使用  Log4N、NLog 或 System.Diagnostics.Trace 等跟踪日志记录框架，可以选择将记录发送到 Application Insights 以及另一个遥测系统，轻松地将跟踪与请求、依赖项调用和异常相关联。
+如果正在使用  Log4N、NLog 或 System.Diagnostics.Trace 等跟踪日志记录框架，可以选择将记录发送到 Application Insights 以及另一个遥测系统，轻松地将跟踪与请求、依赖项调用和异常相关联。
 
 ### <a name="search-telemetry-in-visual-studio"></a>在 Visual Studio 中搜索遥测数据
 开发和调试某个功能时，可以使用 Web 门户中的相同搜索工具在 Visual Studio 中直接查看和搜索遥测数据。
 
-此外，当 Application Insights 记录异常时，你可以在 Visual Studio 中查看数据点，并直接跳转到相关代码。
+此外，当 Application Insights 记录异常时，可以在 Visual Studio 中查看数据点，并直接跳转到相关代码。
 
 ![Visual Studio 搜索](./media/app-insights-devops/060.png)
 
 在调试期间，可以选择将遥测数据保留在开发计算机中，并在 Visual Studio 中查看这些数据，而无需将其发送到门户。 这个本地选项可避免将调试遥测数据与生产遥测数据混合使用。
 
 ### <a name="build-annotations"></a>版本批注
-如果使用 Visual Studio Team Services 构建和部署应用，部署批注将显示在门户中的图表上。 如果最新版本对指标产生了任何影响，这种影响会变得很明显。
+如果使用 Visual Studio Team Services 构建和部署应用，部署批注会显示在门户中的图表上。 如果最新版本对指标产生了任何影响，这种影响会变得很明显。
 
 ![版本批注](./media/app-insights-devops/070.png)
 

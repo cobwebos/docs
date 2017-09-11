@@ -4,7 +4,7 @@ description: "本主题介绍如何使用 Media Encoder Standard (MES) 根据输
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 63ed95da-1b82-44b0-b8ff-eebd535bc5c7
 ms.service: media-services

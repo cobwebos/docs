@@ -1,21 +1,22 @@
 ---
 title: "Azure 移动应用文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用 Azure 应用服务中的移动应用，通过 Xamarin 或 Cordova 构建和托管本机 iOS、Android 或 Windows 应用，或者跨平台应用。"
-services: app-service\mobile
-author: carolz
+services: app-service-mobile
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
-ms.service: app-service\mobile
+ms.service: app-service-mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: 6f1ca5fe5125728b51a6d46e55415afb72405910
-ms.openlocfilehash: f660922fa2f7d5d21b4e6678233792ad6cb84041
-ms.lasthandoff: 02/09/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 0286d0cab7eb774a13066beb838840892dfeeda5
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="mobile-apps-documentation"></a>移动应用文档
@@ -142,7 +143,7 @@ ms.lasthandoff: 02/09/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>开始创建 xamarin.Android 应用</h3>
+                        <h3>开始创建 Xamarin.Android 应用</h3>
                     </div>
                 </div>
             </div>
@@ -160,7 +161,7 @@ ms.lasthandoff: 02/09/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>开始创建 xamarin.Forms 应用</h3>
+                        <h3>开始创建 Xamarin.Forms 应用</h3>
                     </div>
                 </div>
             </div>

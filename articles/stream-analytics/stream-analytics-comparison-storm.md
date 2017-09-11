@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/27/2017
 ms.author: samacha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 4c0c7c185943eb292d816e2047de930245a3e1e1
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 97044cb5d7b0b3fcb3b85328df618a265bc59b61
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="choosing-a-streaming-analytics-platform-comparing-apache-storm-and-azure-stream-analytics"></a>选择流分析平台：Apache Storm 与 Azure 流分析的比较
@@ -231,29 +231,12 @@ Azure 提供了多种用于流数据分析的解决方案：[Azure 流分析](ht
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>对用户定义函数 (UDF) 的支持</strong>
-                </p>
-            </td>
-            <td width="204" valign="top">
-                <p>
-查询支持 JavaScript UDF。 有关详细信息，请参阅 <a href="https://docs.microsoft.com/azure/stream-analytics/stream-analytics-javascript-user-defined-functions">JavaScript UDF 集成</a>。
-                </p>
-            </td>
-            <td width="246" valign="top">
-                <p>
-可使用 C#、Java 或任何其他语言编写 UDF。
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="174" valign="top">
-                <p>
                     <strong>是否支持使用自定义代码的可扩展性？</strong>
                 </p>
             </td>
             <td width="204" valign="top">
                 <p>
-否。 没有在流分析中提供可扩展代码支持。
+部分支持 JavaScript UDF。 有关详细信息，请参阅 <a href="https://docs.microsoft.com/azure/stream-analytics/stream-analytics-javascript-user-defined-functions">JavaScript UDF 集成</a>。
                 </p>
             </td>
             <td width="246" valign="top">
@@ -452,7 +435,7 @@ Azure 门户、PowerShell、Visual Studio 和 REST API。
             </td>
             <td width="204" valign="top">
                 <p>
-停止，然后从上次停止的位置恢复。
+停止，并从上次停止的位置恢复。
                 </p>
             </td>
             <td width="246" valign="top">

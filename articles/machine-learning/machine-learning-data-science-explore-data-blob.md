@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b663a9df7e8cb692f4156f2609fb515265526868
-ms.lasthandoff: 11/17/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e1b33b17270122a38228484a56c8324c5b4505a0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>使用 Pandas 浏览 Azure blob 存储中的数据
@@ -29,13 +29,13 @@ ms.lasthandoff: 11/17/2016
 [!INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 
 ## <a name="prerequisites"></a>先决条件
-本文假设你具备以下条件：
+本文假设用户具备以下条件：
 
-* 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)
-* 将数据存储在 Azure Blob 存储帐户中。 如果需要说明，请参阅[将数据移动到和移出 Azure 存储空间](../storage/storage-moving-data.md)
+* 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)
+* 将数据存储在 Azure Blob 存储帐户中。 如果需要说明，请参阅[将数据移动到和移出 Azure 存储](../storage/common/storage-moving-data.md)
 
 ## <a name="load-the-data-into-a-pandas-dataframe"></a>将数据加载到 Pandas 数据帧
-若要浏览和操作数据集，首先必须从 blob 源下载数据集到本地文件，然后将数据集加载到 Pandas 数据帧。 下面是此过程的所需步骤：
+要浏览和操作数据集，首先必须从 blob 源下载数据集到本地文件，然后将数据集加载到 Pandas 数据帧。 下面是此过程的所需步骤：
 
 1. 通过 blob 服务使用下方 Python 代码示例从 Azure blob 下载数据。 使用特定值替代下方代码中的变量： 
    

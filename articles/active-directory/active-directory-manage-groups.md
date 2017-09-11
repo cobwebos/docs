@@ -1,5 +1,4 @@
 ---
-
 title: "在 Azure Active Directory 中使用组管理对资源的访问权限 | Microsoft 文档"
 description: "如何在 Azure Active Directory 中使用组来管理用户对本地和云应用程序与资源的访问。"
 services: active-directory
@@ -13,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 08/28/2017
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017;it-pro
+ms.reviewer: piotrci
 ms.translationtype: HT
 ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: cd8125eda7643f0b190d35cbb89edf8b7b4eca30
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/11/2017
-
 
 ---
 # <a name="manage-access-to-resources-with-azure-active-directory-groups"></a>使用 Azure Active Directory 组管理对资源的访问权限

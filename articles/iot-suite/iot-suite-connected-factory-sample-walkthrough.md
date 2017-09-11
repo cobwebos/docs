@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 07/27/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 81ecd5771be544e250ea0df31aa274f0850527ad
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 517e908a744734139ed0aeee314a4f3b9eda86cc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>已连接好的工厂预配置解决方案演练
 
 IoT 套件已连接好的工厂[预配置解决方案][lnk-preconfigured-solutions]是端到端工业解决方案的实现，具有以下功能：
 
-* 同时连接到在模拟工厂生产线中运行 OPC UA 服务器的模拟工业设备以及真实的 OPC UA 服务器设备。 有关 OPC UA 的详细信息，请参阅[常见问题解答][lnk-faq]。
+* 同时连接到在模拟工厂生产线中运行 OPC UA 服务器的模拟工业设备以及真实的 OPC UA 服务器设备。 有关 OPC UA 的详细信息，请参阅[连接工厂常见问题解答](iot-suite-faq-cf.md)。
 * 显示那些设备和生产线的运行 KPI 和 OEE。
 * 演示如何使用基于云的应用程序来与 OPC UA 服务器系统进行交互。
 * 允许连接自己的 OPC UA 服务器设备。
@@ -40,6 +40,8 @@ IoT 套件已连接好的工厂[预配置解决方案][lnk-preconfigured-solutio
 * 排查解决方案中的问题。
 * 规划如何根据具体要求自定义该解决方案。
 * 设计自己的 IoT 解决方案，以使用 Azure 服务。
+
+有关详细信息，请参阅[连接工厂常见问题解答](iot-suite-faq-cf.md)。
 
 ## <a name="logical-architecture"></a>逻辑体系结构
 
@@ -128,6 +130,7 @@ TSI 使用一个搜索跨度（Time.From、Time.To）对节点数据进行查询
 可以通过阅读以下文章继续开始使用 IoT 套件：
 
 * [azureiotsuite.com 站点权限][lnk-permissions]
+* [在 Windows 或 Linux 上为连接工厂预配置解决方案部署网关](iot-suite-connected-factory-gateway-deployment.md)
 
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 
@@ -138,4 +141,4 @@ TSI 使用一个搜索跨度（Time.From、Time.To）对节点数据进行查询
 [lnk-OPC-UA-NET-Standard]:https://github.com/OPCFoundation/UA-.NETStandardLibrary
 [lnk-Azure-IoT-Gateway]: https://github.com/azure/iot-edge
 [lnk-permissions]: iot-suite-permissions.md
-[lnk-faq]: iot-suite-faq.md
+

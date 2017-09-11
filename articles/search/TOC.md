@@ -59,7 +59,8 @@
 #### [Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 #### [Lucene 语法查询示例](search-query-lucene-examples.md)
 #### [筛选器表达式语法](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
-### 自定义搜索
+### Azure 搜索中的分析器
+#### [概述](search-analyzers.md)
 #### [语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)
 #### [自定义分析器](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
 ### [分页结果](search-pagination-page-layout.md)

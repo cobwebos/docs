@@ -50,7 +50,7 @@ Windows VM 上的虚拟磁盘使用 Bitlocker 进行静态加密。 加密 Azure
 ## <a name="requirements-and-limitations"></a>要求和限制
 磁盘加密支持的方案和要求
 
-* 在来自 Azure 应用商店映像或自定义 VHD 映像的新 Windows VM 上启用加密。
+* 在来自 Azure Marketplace 映像或自定义 VHD 映像的新 Windows VM 上启用加密。
 * 在现有的 Azure Windows VM 上启用加密。
 * 在使用存储空间配置的 Windows VM 上启用加密。
 * 在 Windows VM 的 OS 和数据驱动器上禁用加密。

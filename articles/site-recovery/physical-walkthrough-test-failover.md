@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: e6ebab3e4d7deeefbab395b0a898fbf441d75b5d
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 94aa3bfc700cad3de9fc5516c0c9a4d86ade3fed
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="step-11-run-a-test-failover-of-physical-servers-to-azure"></a>第 11 步：运行测试故障转移以便将物理服务器复制到 Azure
@@ -35,7 +34,7 @@ ms.lasthandoff: 06/29/2017
 
 ## <a name="managed-disk-considerations"></a>托管磁盘注意事项
 
-[托管磁盘](../storage/storage-managed-disks-overview.md)管理与 VM 磁盘关联的存储帐户，简化了 Azure VM 的磁盘管理工作。 
+[托管磁盘](../virtual-machines/windows/managed-disks-overview.md)管理与 VM 磁盘关联的存储帐户，简化了 Azure VM 的磁盘管理工作。 
 
 - 为服务器启用保护功能后，VM 数据复制到存储帐户中。 只有当故障转移发生时，才会创建托管磁盘，并将它附加到 VM。
 - 只能为使用 Resource Manager 模型部署的 Azure VM 创建托管磁盘。  
@@ -51,7 +50,7 @@ ms.lasthandoff: 06/29/2017
 - 如果未提供地址，故障转移的计算机将使用 DHCP。
 - 如果设置了在故障转移时不可用的地址，故障转移将不会正常工作。
 - 如果地址可用于测试故障转移网络，则同一个目标 IP 地址可用于测试故障转移。
-- 网络适配器数目根据你为目标虚拟机指定的大小来确定：
+- 网络适配器的数目根据你为目标虚拟机指定的大小来确定：
 
      - 如果源计算机上的网络适配器数小于或等于目标计算机大小允许的适配器数，则目标的适配器数将与源相同。
      - 如果源虚拟机的适配器数大于目标大小允许的数目，则将使用目标大小允许的最大数目。
@@ -70,9 +69,9 @@ ms.lasthandoff: 06/29/2017
 2. 在“复制的项”窗格中，可以概览计算机信息、运行状况和最新可用恢复点。 单击“属性”，查看详细信息。
 3. 在“计算和网络”中，可以执行下列操作：
     - 修改 Azure VM 名称。 名称必须符合 [Azure 要求](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。
-    - 指定故障转移后的[资源组](../virtual-machines/windows/infrastructure-resource-groups-guidelines.md)
+    - 指定故障转移后的[资源组]。
     - 指定 Azure VM 的目标大小
-    - 选择[可用性集](../virtual-machines/windows/infrastructure-availability-sets-guidelines.md)。
+    - 选择[可用性集](../virtual-machines/windows/tutorial-availability-sets.md)。
     - 指定是否使用[托管磁盘](#managed-disk-considerations)。 若要将托管磁盘附加到迁移到 Azure 的计算机，请选择“是”。
     - 查看或修改网络设置，包括在运行故障转移后 Azure VM 所在的网络/子网，以及将分配给它的 IP 地址。
 4. 在“磁盘”中，可以查看操作系统和 VM 上数据磁盘的相关信息。

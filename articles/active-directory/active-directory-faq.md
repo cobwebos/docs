@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/12/2017
+ms.date: 08/16/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 899a45d59099dec147c96e4cd175536e859e88f8
+ms.translationtype: HT
+ms.sourcegitcommit: 2d978248c78b84fe4ad37ecf7429e827a25d896f
+ms.openlocfilehash: 8d4460b3059558de2253c6f6a2d2fc8e7564d6d9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 08/18/2017
 
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory 常见问题
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决�
 
 
 ## <a name="access-azure-and-azure-active-directory"></a>访问 Azure 和 Azure Active Directory
-**问：尝试在 Azure 经典门户 \(https://manage.windowsazure.com\) 中访问 Azure AD 时，为何收到“找不到订阅”？**
+问：尝试在 Azure 经典门户中访问 Azure AD 时，为何收到“找不到订阅”？
 
 **答：**若要访问 Azure 经典门户，每个用户都需要 Azure 订阅的权限。 如果订阅为付费型 Office 365 订阅或 Azure AD 订阅，请访问 [http://aka.ms/accessAAD](http://aka.ms/accessAAD)，了解一次性激活步骤。 否则需激活免费型 [Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)或某个付费型订阅。
 
@@ -73,7 +73,7 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 
 **问：如果我已被添加为协作者，该如何离开原来的租户？**
 
-**答：**如果被作为协作者添加到另一组织的租户，可使用右上角的“租户切换器”在租户之间切换。  目前还无法主动离开邀请组织，Microsoft 正致力于提供该功能。  在该功能可用之前，可以要求邀请阻止将你从其租户中删除。
+**答：**如果被作为协作者添加到另一组织的租户，可使用右上角的“租户切换器”在租户之间切换。  目前还无法主动离开邀请组织，Microsoft 正致力于提供该功能。  在该功能可用之前，可以要求邀请阻止你将从其租户中删除。
 - - -
 **问：如何将我的本地目录连接到 Azure AD？**
 
@@ -93,7 +93,7 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 - - -
 **问：Azure AD 是否为组织中的用户提供自助服务门户？**
 
-**答：** 是的，Azure AD 提供 [Azure AD 访问面板](http://myapps.microsoft.com) ，方便用户使用自助服务以及进行应用程序访问。 如果你是 Office 365 客户，可以在 Office 365 门户中找到许多相同的功能。
+**答：** 是的，Azure AD 提供 [Azure AD 访问面板](http://myapps.microsoft.com) ，方便用户使用自助服务以及进行应用程序访问。 如果是 Office 365 客户，可以在 Office 365 门户中找到许多相同的功能。
 
 有关详细信息，请参阅[访问面板简介](active-directory-saas-access-panel-introduction.md)。
 
@@ -158,7 +158,7 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 - - -
 **问：如果 Azure AD 应用商店中没有我需要的应用程序怎么办？**
 
-**答：**使用 Azure AD Premium，可以添加和配置所需的任何应用程序。 你可以根据应用程序的功能和你的喜好来配置 SSO 和自动预配。  
+**答：**使用 Azure AD Premium，可以添加和配置所需的任何应用程序。 可以根据应用程序的功能和喜好来配置 SSO 和自动预配。  
 
 有关详细信息，请参阅：
 
@@ -191,7 +191,7 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 - - -
 **问：是否可以添加本地运行的应用程序？**
 
-**答：** Azure AD 应用程序代理可让你轻松安全地访问所选的本地 Web 应用程序。 可以像访问 Azure AD 中的软件即服务 (SaaS) 应用一样访问这些应用程序。 不需要设置 VPN 或更改网络基础结构。  
+**答：**Azure AD 应用程序代理可让你轻松安全地访问所选的本地 Web 应用程序。 可以像访问 Azure AD 中的软件即服务 (SaaS) 应用一样访问这些应用程序。 不需要设置 VPN 或更改网络基础结构。  
 
 有关详细信息，请参阅[如何提供对本地应用程序的安全远程访问](active-directory-application-proxy-get-started.md)。
 
@@ -212,5 +212,5 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 - - -
 **问：是否可以通过 Azure AD 设置安全的 LDAP 连接？**
 
-**答：**否。  Azure AD 不支持 LDAP 协议。
+**答：**否。 Azure AD 不支持 LDAP 协议。
 

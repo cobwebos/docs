@@ -4,7 +4,7 @@ description: "了解如何为 Microsoft® 平滑流式处理客户端移植工�
 services: media-services
 documentationcenter: 
 author: willzhan
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 7814739b-cea9-4b9b-8370-538702e5c615
 ms.service: media-services

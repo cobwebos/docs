@@ -27,7 +27,7 @@ ms.lasthandoff: 05/10/2017
 本教程将演示如何在 [Azure 门户](https://portal.azure.com)中创建 MySQL 数据库（提供程序是 [ClearDB](http://www.cleardb.com/)），以及如何从 [Azure 应用服务](app-service/app-service-value-prop-what-is.md) 中运行的 PHP Web 应用连接到该数据库。
 
 > [!NOTE]
-> 还可以创建 MySQL 数据库作为[应用商店应用模板](app-service-web/app-service-web-create-web-app-from-marketplace.md)的一部分。
+> 还可以创建 MySQL 数据库作为 [Marketplace 应用模板](app-service-web/app-service-web-create-web-app-from-marketplace.md)的一部分。
 >
 >
 

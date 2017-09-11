@@ -1,12 +1,12 @@
 ---
 title: "Azure 标识管理基础知识 | Microsoft Docs"
-description: 
+description: "基于云的标识现已成为控制和洞察用户如何以及何时访问企业应用程序与数据的最佳方式。"
 keywords: 
 author: jeffgilb
 manager: femila
 ms.reviewr: jsnow
 ms.author: jeffgilb
-ms.date: 7/5/2017
+ms.date: 07/05/2017
 ms.topic: article
 ms.prod: 
 ms.service: azure
@@ -14,18 +14,18 @@ ms.technology:
 ms.assetid: 
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: 4b2e8d17811df58fdc628de7140cdb0a4800476d
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 52f05ee8a5c07fc008da40aef12d1ad8e8136429
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="fundamentals-of-azure-identity-management"></a>Azure 标识管理基础知识
 随着越来越多的公司数字资源驻留在企业网络外部的云中和设备上，采用优越的基于云的标识和访问管理解决方案变得很有必要。 基于云的标识现已成为控制和洞察用户如何以及何时访问企业应用程序与数据的最佳方式。
 
-十多年来，Microsoft 一直在保护基于云的标识的安全，而现在则通过 [Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/active-directory-editions) 为你提供相同的保护系统。 有了 Azure AD，企业管理员就可以轻松地确认用户和管理员的责任，提供比以前更好的安全性和监管。
+十多年来，Microsoft 一直在保护基于云的标识的安全，而现在则通过 [Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/active-directory-editions) 提供相同的保护系统。 有了 Azure AD，企业管理员就可以轻松地确认用户和管理员的责任，提供比以前更好的安全性和监管。
 
-Azure AD Premium 是基于云的标识和访问管理解决方案，提供的高级保护功能支持对所有应用使用一个安全标识、支持标识保护（通过 [Microsoft Intelligence Security Graph](https://www.microsoft.com/en-us/security/intelligence) 增强），以及支持 Privileged Identity Management。 Azure AD Premium 不只是另一个监视或报告工具，它还能实时保护用户的标识，允许你创建基于风险的自适应访问策略来保护组织的数据。
+Azure AD Premium 是基于云的标识和访问管理解决方案，提供的高级保护功能支持对所有应用使用一个安全标识、支持标识保护（通过 [Microsoft Intelligence Security Graph](https://www.microsoft.com/en-us/security/intelligence) 增强），以及支持 Privileged Identity Management。 Azure AD Premium 不只是另一个监视或报告工具，它还能实时保护用户的标识，允许创建基于风险的自适应访问策略来保护组织的数据。
 
 请观看以下短视频，快速了解 Azure AD 标识管理和保护：
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9LGIJ2-FKIM" frameborder="0" allowfullscreen></iframe>
@@ -37,7 +37,7 @@ Microsoft 不仅提供各处通用的标识，而且提供一套可以在组织�
 ## <a name="connect-on-premises-active-directory-with-azure-ad-and-office-365"></a>通过 Azure AD 和 Office 365 连接本地 Active Directory
 对本地 Active Directory 进行了大量投资的组织可以将这些投资扩展到云，只需将其本地目录和 Azure AD 集成到[混合标识管理](https://docs.microsoft.com/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview)中即可。 这样做可以为用户提供一个通用标识，用于访问各个位置的资源，从而提高工作效率。 因此，用户和组织可以使用单一登录 (SSO) 来访问本地资源和云服务（例如 Office 365）。
 
-若要完成集成，只需使用 [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) 工具。 Azure AD Connect 提供满足标识同步需求的功能，并替换旧版标识集成工具（例如 DirSync 和 Azure AD Sync）。 有了 Azure AD Connect，即可通过以下方式进行标识管理并在本地和 Azure AD 之间实现同步：
+若要完成集成，只需使用 [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) 工具。 Azure AD Connect 提供满足标识同步需求的功能，并替换旧版标识集成工具（例如 DirSync 和 Azure AD Sync）。有了 Azure AD Connect，即可通过以下方式进行标识管理并在本地和 Azure AD 之间实现同步：
 
 - 同步 - 此组件负责创建用户、组和其他对象。 它还负责确保本地用户和组的标识信息与云匹配。 也可启用密码写回，这样当用户在 Azure AD 中更新其密码时，就能保持本地目录同步。
 - AD FS - 联合身份验证是 Azure AD Connect 提供的可选功能，可用于通过本地 AD FS 基础结构配置混合环境。 组织可以使用联合身份验证来解决复杂的部署，例如单一登录、实施 AD 登录策略和智能卡或第三方 MFA。

@@ -2,7 +2,7 @@
 title: "Azure 机器学习文档 - 教程和 API 参考 | Microsoft 文档"
 description: "有关机器学习（面向在应用程序中使用预测分析的数据科研人员和开发人员的云服务）的文档、视频和示例模型。"
 services: machine-learning
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f33e230cc32b9da3129a0be720a7be0bb463e096
 ms.openlocfilehash: 241cf0904f1c410575017f586c65f41ee3efc753
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/15/2017
 
 ---

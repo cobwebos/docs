@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 安全中心为存储帐户启用加密 | Microsoft 文档"
-description: "本文档演示如何实现 Azure 安全中心建议**为 Azure 存储帐户启用加密**。"
+description: "本文档演示如何实现 Azure 安全中心建议“为 Azure 存储帐户启用加密”。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -14,20 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2016
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 7b5df25f46a2824acb361401ab90c960b8e5978f
-ms.openlocfilehash: 5b580183002ae5c42cc08343cea7f659c635d590
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b7b2e8a12cbab68da9c8fcc348e8e3c543607007
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="enable-encryption-for-azure-storage-account-in-azure-security-center"></a>在 Azure 安全中心为 Azure 存储帐户启用加密
-Azure 安全中心可能会建议你为静态数据启用 Azure 存储服务加密。
+Azure 安全中心可能会建议为静态数据启用 Azure 存储服务加密。
 
-存储服务加密 (SSE) 的工作原理是，在将数据写入 Azure 存储时对数据进行加密，以及在检索前对数据进行解密。  SSE 当前仅适用于 Azure Blob 服务，并可用于块 blob、页 blob 和追加 blob。  若要了解详细信息，请参阅[静态数据的存储服务加密](../storage/storage-service-encryption.md)。
+存储服务加密 (SSE) 的工作原理是，在将数据写入 Azure 存储时对数据进行加密，以及在检索前对数据进行解密。  SSE 当前仅适用于 Azure Blob 服务，并可用于块 blob、页 blob 和追加 blob。  若要了解详细信息，请参阅[静态数据的存储服务加密](../storage/common/storage-service-encryption.md)。
 
 
 > [!Note]
-> 启用加密后，仅加密新数据。 存储帐户中的所有现有 blob 保持未加密状态。 若要加密现有 blob，请参阅[存储服务加密常见问题解答](../storage/storage-service-encryption.md#frequently-asked-questions-about-storage-service-encryption-for-data-at-rest)。
+> 启用加密后，仅加密新数据。 存储帐户中的所有现有 blob 保持未加密状态。 若要加密现有 blob，请参阅[存储服务加密常见问题解答](../storage/common/storage-service-encryption.md#frequently-asked-questions-about-storage-service-encryption-for-data-at-rest)。
 >
 >
 
@@ -41,9 +42,9 @@ Azure 安全中心可能会建议你为静态数据启用 Azure 存储服务加�
 ## <a name="implement-the-recommendation"></a>实现该建议
 1. 在“建议”边栏选项卡中，选择“为 Azure 存储帐户启用加密”。
    ![为存储帐户启用加密][1]
-2. 此时将打开“启用存储加密”边栏选项卡。 此边栏选项卡列出已禁用存储加密的 Azure 存储帐户。 在此示例中，选择“storageacct1”。
+2. 此时会打开“启用存储加密”边栏选项卡。 此边栏选项卡列出已禁用存储加密的 Azure 存储帐户。 在此示例中，选择“storageacct1”。
    ![启用存储加密][2]
-3. 此时将打开 **storageacct1** 的“加密”边栏选项卡。 选择“启用”。
+3. 此时会打开 **storageacct1** 的“加密”边栏选项卡。 选择“启用”。
    ![“加密”边栏选项卡][3]
 4. 选择“保存”。
 
@@ -53,7 +54,7 @@ Azure 安全中心可能会建议你为静态数据启用 Azure 存储服务加�
 ## <a name="see-also"></a>另请参阅
 本文档演示了如何实现安全中心建议“为 Azure 存储帐户启用加密”。 若要了解有关 Azure 存储服务加密的详细信息，请参阅以下文章：
 
-* [静态数据的 Azure 存储空间服务加密](../storage/storage-service-encryption.md)
+* [静态数据的 Azure 存储服务加密](../storage/common/storage-service-encryption.md)
 
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
@@ -68,9 +69,4 @@ Azure 安全中心可能会建议你为静态数据启用 Azure 存储服务加�
 [1]: ./media/security-center-enable-encryption-for-storage-account/enable-encryption-for-storage-account.png
 [2]: ./media/security-center-enable-encryption-for-storage-account/enable-storage-encryption.png
 [3]: ./media/security-center-enable-encryption-for-storage-account/encryption-blade.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

@@ -12,13 +12,13 @@ ms.devlang: rest-api
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: search
-ms.date: 05/01/2017
+ms.date: 08/10/2017
 ms.author: eugenesh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 333f8320820a1729a14ffc2e29446e7452aa768e
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 2f1791393b1e59721cc5a1030927cd00d74a5f13
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>使用索引器连接 Cosmos DB 和 Azure 搜索
@@ -78,7 +78,7 @@ Azure 搜索支持创建和管理数据源（包括 Cosmos DB）以及针对这�
 * **容器**：
   
   * **名称**：必需。 指定要编制索引的 Cosmos DB 集合的 ID。
-  * **查询**：可选。 你可以指定一个查询来将一个任意 JSON 文档平整成 Azure 搜索可编制索引的平面架构。
+  * **查询**：可选。 可以指定一个查询来将一个任意 JSON 文档平整成 Azure 搜索可编制索引的平面架构。
 * **dataChangeDetectionPolicy**：推荐。 请参阅[为已更改的文档编制索引](#DataChangeDetectionPolicy)部分。
 * **dataDeletionDetectionPolicy**：可选。 请参阅[为已删除的文档编制索引](#DataDeletionDetectionPolicy)部分。
 
@@ -99,25 +99,25 @@ Azure 搜索支持创建和管理数据源（包括 Cosmos DB）以及针对这�
 
 筛选查询：
 
-    SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark
+    SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark ORDER BY c._ts
 
 平展查询：
 
-    SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark
+    SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
     
     
 投影查询：
 
-    SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark
+    SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
 
 
 数组平展查询：
 
-    SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark
+    SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark ORDER BY c._ts
 
 <a name="CreateIndex"></a>
 ## <a name="step-2-create-an-index"></a>步骤 2：创建索引
-如果你还没有目标 Azure 搜索索引，请创建一个。 可使用 [Azure 门户 UI](search-create-index-portal.md)、[创建索引 REST API](/rest/api/searchservice/create-index) 或[索引类](/dotnet/api/microsoft.azure.search.models.index)来创建索引。
+如果还没有目标 Azure 搜索索引，请创建一个。 可使用 [Azure 门户 UI](search-create-index-portal.md)、[创建索引 REST API](/rest/api/searchservice/create-index) 或[索引类](/dotnet/api/microsoft.azure.search.models.index)来创建索引。
 
 下面的示例创建带有 ID 和描述字段的索引：
 
@@ -177,7 +177,7 @@ Azure 搜索支持创建和管理数据源（包括 Cosmos DB）以及针对这�
       "schedule" : { "interval" : "PT2H" }
     }
 
-此索引器每两小时运行一次（已将计划间隔设置为“PT2H”）。 若要每隔 30 分钟运行索引器一次，可将间隔设置为“PT30M”。 支持的最短间隔为 5 分钟。 计划是可选的 - 如果省略，则索引器在创建后只运行一次。 但是，可以随时根据需要运行索引器。   
+此索引器每两小时运行一次（已将计划间隔设置为“PT2H”）。 若要每隔 30 分钟运行一次索引器，可将间隔设置为“PT30M”。 支持的最短间隔为 5 分钟。 计划是可选的 - 如果省略，则索引器在创建后只运行一次。 但是，可以随时根据需要运行索引器。   
 
 有关创建索引器 API 的更多详细信息，请参阅[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 
@@ -191,7 +191,7 @@ Azure 搜索支持创建和管理数据源（包括 Cosmos DB）以及针对这�
 > [!NOTE]
 > “运行 API”成功返回时，已计划索引器调用，但实际处理过程以异步方式发生。 
 
-可在门户中或使用“获取索引器状态 API”（将在接下来的内容中介绍）监视索引器状态。 
+可在门户中或使用“获取索引器状态 API”（会在接下来的内容中介绍）监视索引器状态。 
 
 <a name="GetIndexerStatus"></a>
 ### <a name="getting-indexer-status"></a>获取索引器状态
@@ -241,7 +241,21 @@ Azure 搜索支持创建和管理数据源（包括 Cosmos DB）以及针对这�
 
 强烈建议使用此策略，以确保索引器性能良好。 
 
-如果使用自定义查询，请确保查询投影 `_ts` 属性。 
+如果使用自定义查询，请确保查询投影 `_ts` 属性。
+
+<a name="IncrementalProgress"></a>
+### <a name="incremental-progress-and-custom-queries"></a>增量操作和自定义查询
+索引编制过程中的增量操作可确保由于暂时性故障或执行时间限制而中断索引器执行时，索引器能够在下次运行时从中断位置运行，而不是从头开始重新为整个集合编制索引。 在为大型集合编制索引时，这一点尤其重要。 
+
+要在使用自定义查询时启用增量操作，请确保查询按照 `_ts` 列对结果进行排序。 这会启用定期检查点，在出现故障时，Azure 搜索可以利用检查点提供增量操作。   
+
+在某些情况下，即使查询包含 `ORDER BY [collection alias]._ts` 子句，Azure 搜索也可能不会推断出查询是按照 `_ts` 进行排序的。 可以告知 Azure 搜索，结果是通过使用 `assumeOrderByHighWaterMarkColumn` 配置属性进行排序的。 要指定此提示，请按如下所示创建或更新索引器： 
+
+    {
+     ... other indexer definition properties
+     "parameters" : {
+            "configuration" : { "assumeOrderByHighWaterMarkColumn" : true } }
+    } 
 
 <a name="DataDeletionDetectionPolicy"></a>
 ## <a name="indexing-deleted-documents"></a>为已删除的文档编制索引
@@ -280,7 +294,7 @@ Azure 搜索支持创建和管理数据源（包括 Cosmos DB）以及针对这�
     }
 
 ## <a name="NextSteps"></a>后续步骤
-祝贺你！ 你已学习了如何使用 Azure Cosmos DB 索引器将 Cosmos DB 与 Azure 搜索进行集成。
+祝贺你！ 已学习了如何使用 Azure Cosmos DB 索引器将 Cosmos DB 与 Azure 搜索进行集成。
 
 * 若要了解有关 Azure Cosmos DB 的详细信息，请参阅 [Cosmos DB 服务页](https://azure.microsoft.com/services/documentdb/)。
 * 若要了解有关 Azure 搜索的详细信息，请参阅[搜索服务页](https://azure.microsoft.com/services/search/)。

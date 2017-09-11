@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: adigan;giridham;jimpark;markgal;trinadhk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
-ms.openlocfilehash: 973730bfdd4d13714ce7d0256a32af9eb8183e7a
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3422c8d57bdd786ce5d1a41fbb4c12cc4efffddd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/27/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>使用 DPM 准备将工作负荷备份到 Azure
@@ -31,7 +31,7 @@ ms.lasthandoff: 01/27/2017
 >
 >
 
-本文介绍如何使用 Microsoft Azure 备份来保护 System Center Data Protection Manager (DPM) 服务器和工作负载。 通过阅读本文，你将会了解：
+本文介绍如何使用 Microsoft Azure 备份来保护 System Center Data Protection Manager (DPM) 服务器和工作负载。 通过阅读本文，会了解：
 
 * Azure DPM 服务器备份的工作原理
 * 实现顺畅备份体验的先决条件
@@ -46,12 +46,12 @@ ms.lasthandoff: 01/27/2017
 System Center DPM 备份文件和应用程序数据。 备份到 DPM 的数据可以存储在磁带、磁盘上，或者使用 Microsoft Azure Backup 备份到 Azure。 DPM 可与 Azure 备份交互，如下所述：
 
 * **部署为物理服务器或本地虚拟机的 DPM** - 如果 DPM 部署为物理服务器或本地 Hyper-V 虚拟机，则除了磁盘和磁带备份外，还可以将数据备份到恢复服务保管库。
-* **部署为 Azure 虚拟机的 DPM** — 通过 System Center 2012 R2 Update 3，可以将 DPM 部署为 Azure 虚拟机。 如果 DPM 部署为 Azure 虚拟机部署，则你可以将数据备份到附加到 DPM Azure 虚拟机的 Azure 磁盘，也可以通过将数据备份到恢复服务保管库来卸载数据存储。
+* **部署为 Azure 虚拟机的 DPM** — 通过 System Center 2012 R2 Update 3，可以将 DPM 部署为 Azure 虚拟机。 如果 DPM 部署为 Azure 虚拟机部署，则可以将数据备份到附加到 DPM Azure 虚拟机的 Azure 磁盘，也可以通过将数据备份到恢复服务保管库来卸载数据存储。
 
 ## <a name="why-backup-from-dpm-to-azure"></a>为什么从 DPM 备份到 Azure？
 使用 Azure 备份来备份 DPM 服务器所带来的业务好处包括：
 
-* 对于本地 DPM 部署，你可以使用 Azure 来取代长期的磁带部署。
+* 对于本地 DPM 部署，可以使用 Azure 来取代长期的磁带部署。
 * 对于 Azure 中的 DPM 部署，Azure 备份可让你卸载 Azure 磁盘中的存储，从而通过将较旧的数据存储在恢复服务保管库中，并将较新的数据存储在磁盘上来实现扩展。
 
 ## <a name="prerequisites"></a>先决条件
@@ -66,16 +66,16 @@ System Center DPM 备份文件和应用程序数据。 备份到 DPM 的数据�
 若要创建恢复服务保管库，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在“中心”菜单中，单击“**浏览**”，然后在资源列表中，键入“**恢复服务**”。 当你开始键入时，会根据你的输入筛选该列表。 单击“**恢复服务保管库**”。
+2. 在“中心”菜单中，单击“**浏览**”，并在资源列表中，键入“**恢复服务**”。 开始键入时，会根据输入筛选该列表。 单击“**恢复服务保管库**”。
 
     ![创建恢复服务保管库步骤 1](./media/backup-azure-dpm-introduction/open-recovery-services-vault.png)
 
-    此时将显示恢复服务保管库列表。
+    此时会显示恢复服务保管库列表。
 3. 在“恢复服务保管库”菜单中，单击“添加”。
 
     ![创建恢复服务保管库步骤 2](./media/backup-azure-dpm-introduction/rs-vault-menu.png)
 
-    此时将打开恢复服务保管库边栏选项卡，其中会提示你提供“名称”、“订阅”、“资源组”和“位置”。
+    此时会打开恢复服务保管库边栏选项卡，其中会提示提供“名称”、“订阅”、“资源组”和“位置”。
 
     ![创建恢复服务保管库步骤 5](./media/backup-azure-dpm-introduction/rs-vault-attributes.png)
 4. 对于“名称”，请输入一个友好名称以标识保管库 。 名称对于 Azure 订阅需要是唯一的。 键入包含 2 到 50 个字符的名称。 名称必须以字母开头，只能包含字母、数字和连字符。
@@ -83,14 +83,14 @@ System Center DPM 备份文件和应用程序数据。 备份到 DPM 的数据�
 6. 单击“资源组”查看可用资源组列表，或单击“新建”创建新的资源组。 有关资源组的完整信息，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)
 7. 单击“位置”，为保管库选择地理区域  。
 8. 单击“创建” 。 创建恢复服务保管库可能需要一段时间。 可以在门户右上区域监视状态通知。
-   创建保管库后，它将在门户中打开。
+   创建保管库后，它会在门户中打开。
 
 ### <a name="set-storage-replication"></a>设置存储复制
-存储复制选项可让你在异地冗余存储与本地冗余存储之间进行选择。 默认情况下，保管库具有异地冗余存储。 如果这是你的主要备份，请将选项保持设置为异地冗余存储。 如果你想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。 请参阅 [Azure 存储空间复制概述](../storage/storage-redundancy.md)部分，深入了解[异地冗余](../storage/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/storage-redundancy.md#locally-redundant-storage)存储选项。
+存储复制选项可让用户在异地冗余存储与本地冗余存储之间进行选择。 默认情况下，保管库具有异地冗余存储。 如果这是主要备份，请将选项保持设置为异地冗余存储。 如果想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。 请参阅 [Azure 存储复制概述](../storage/common/storage-redundancy.md)部分，深入了解[异地冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/common/storage-redundancy.md#locally-redundant-storage)存储选项。
 
 若要编辑存储复制设置，请执行以下操作：
 
-1. 选择你的保管库以打开保管库仪表板和“设置”边栏选项卡。 如果“设置”边栏选项卡未打开，请在保管库仪表板中单击“所有设置”。
+1. 选择保管库以打开保管库仪表板和“设置”边栏选项卡。 如果“设置”边栏选项卡未打开，请在保管库仪表板中单击“所有设置”。
 2. 在“设置”边栏选项卡中，单击“备份基础结构” > “备份配置”，打开“备份配置”边栏选项卡。 在“备份配置”边栏选项卡中，选择保管库的存储复制选项。
 
     ![备份保管库列表](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
@@ -98,9 +98,9 @@ System Center DPM 备份文件和应用程序数据。 备份到 DPM 的数据�
     选择好保管库的存储选项后，可以开始将 VM 与保管库相关联。 若要开始关联，请发现及注册 Azure 虚拟机。
 
 ### <a name="2-download-vault-credentials"></a>2.下载保管库凭据
-保管库凭据文件是门户为每个备份保管库生成的证书。 然后，门户会将公钥上载到访问控制服务 (ACS)。 证书的私钥将提供给用户作为工作流的一部分，它被指定为计算机注册工作流的输入。 当计算机向 Azure 备份服务中标识的保管库发送备份数据时，该证书将对计算机进行身份验证。
+保管库凭据文件是门户为每个备份保管库生成的证书。 然后，门户会将公钥上传到访问控制服务 (ACS)。 证书的私钥将提供给用户作为工作流的一部分，它被指定为计算机注册工作流的输入。 当计算机向 Azure 备份服务中标识的保管库发送备份数据时，该证书将对计算机进行身份验证。
 
-保管库凭据仅在注册工作流的过程中使用。 用户需负责确保保管库凭据文件不会泄露。 如果该文件落入恶意用户之手，他们可以使用保管库凭据文件将其他计算机注册到同一个保管库。 但是，但是备份数据已使用属于客户的通行短语加密，因此现有的备份数据不会泄露。 为了消除这种忧虑，保管库凭据设置为 48 小时后过期。 你可以下载恢复服务的保管库凭据任意次数 - 但是，在运行注册工作流期间，只有最新的保管库凭据文件才适用。
+保管库凭据仅在注册工作流的过程中使用。 用户需负责确保保管库凭据文件不会泄露。 如果该文件落入恶意用户之手，他们可以使用保管库凭据文件将其他计算机注册到同一个保管库。 但是，但是备份数据已使用属于客户的通行短语加密，因此现有的备份数据不会泄露。 为了消除这种忧虑，保管库凭据设置为 48 小时后过期。 可以下载恢复服务的保管库凭据任意次数 - 但是，在运行注册工作流期间，只有最新的保管库凭据文件才适用。
 
 从 Azure 门户通过安全通道下载保管库凭据文件。 Azure 备份服务并不知道证书的私钥，并且私钥不会保存在门户或服务中。 使用以下步骤将保管库凭据文件下载到本地计算机。
 
@@ -147,13 +147,13 @@ System Center DPM 备份文件和应用程序数据。 备份到 DPM 的数据�
 
     保管库凭据文件只能生效 48 小时（从门户下载后算起）。 如果此屏幕中显示任何错误（例如“提供的保管库凭据文件已过期”），请登录到 Azure 门户，并再次下载保管库凭据文件。
 
-    确保将保管库凭据文件放置在安装应用程序可访问的位置。 如果你遇到访问相关的错误，请将保管库凭据文件复制到此计算机中的临时位置，然后重试操作。
+    确保将保管库凭据文件放置在安装应用程序可访问的位置。 如果遇到访问相关的错误，请将保管库凭据文件复制到此计算机中的临时位置，然后重试操作。
 
     如果遇到无效的保管库凭据错误（例如“所提供的保管库凭据无效”），则该文件已损坏，或者没有与恢复服务关联的最新凭据。 请在从门户下载新的保管库凭据文件后重试该操作。 如果用户在 Azure 门户中快速连续单击“下载保管库凭据”选项，则通常会出现此错误。 在这种情况下，只有第二个保管库凭据文件有效。
 10. 若要控制工作时间和非工作时间网络带宽的使用情况，可在“限制设置”屏幕中设置带宽使用限制并定义工作时间和非工作时间。
 
     ![限制设置](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Throttling.png)
-11. 在“恢复文件夹设置”屏幕中，浏览到将在其中暂存从 Azure 下载的文件的文件夹。
+11. 在“恢复文件夹设置”屏幕中，浏览到会在其中暂存从 Azure 下载的文件的文件夹。
 
     ![恢复文件夹设置](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_RecoveryFolder.png)
 12. 在“加密设置”屏幕中，可以生成一个通行短语，或者提供一个通行短语（最少包含 16 个字符）。 请记住将通行短语保存在安全位置。
@@ -161,7 +161,7 @@ System Center DPM 备份文件和应用程序数据。 备份到 DPM 的数据�
     ![加密](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Encryption.png)
 
     > [!WARNING]
-    > 如果您丢失或忘记了通行短语，Microsoft 无法帮助您恢复备份的数据。 加密通行短语由最终用户拥有，Microsoft 看不到最终用户所用的通行短语。 请将该文件保存在安全位置，因为在恢复操作期间需要用到它。
+    > 如果丢失或忘记了通行短语，Microsoft 无法帮助你恢复备份的数据。 加密通行短语由最终用户拥有，Microsoft 看不到最终用户所用的通行短语。 请将该文件保存在安全位置，因为在恢复操作期间需要用到它。
     >
     >
 13. 单击“注册”按钮后，计算机即会成功注册到保管库，现在，可以开始备份到 Microsoft Azure。
@@ -169,13 +169,13 @@ System Center DPM 备份文件和应用程序数据。 备份到 DPM 的数据�
 
 ## <a name="requirements-and-limitations"></a>要求和限制
 * DPM 可作为物理服务器或安装在 System Center 2012 SP1 或 System Center 2012 R2 上的 Hyper-V 虚拟机运行。 它也可以作为 System Center 2012 R2（至少包含 DPM 2012 R2 Update Rollup 3）上运行的 Azure 虚拟机，或 System Center 2012 R2（至少包含 Update Rollup 5）上运行的 VMWare 中的 Windows 虚拟机运行。
-* 如果你要运行 System Center 2012 SP1 中的 DPM，则应安装 System Center Data Protection Manager SP1 的 Update Rollup 2。 只有满足此要求，你才能安装 Azure 备份代理。
+* 如果要运行 System Center 2012 SP1 中的 DPM，则应安装 System Center Data Protection Manager SP1 的 Update Rollup 2。 只有满足此要求，才能安装 Azure 备份代理。
 * DPM 服务器上应已安装 Windows PowerShell 和 .NET Framework 4.5。
 * DPM 可将大多数工作负载备份到 Azure 备份。 有关所支持内容的完整列表，请参阅下面的 Azure 备份支持项。
 * 使用“复制到磁带”选项无法恢复存储在 Azure 备份中的数据。
-* 你需要一个启用了 Azure 备份功能的 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 阅读[Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)的相关信息。
-* 若要使用 Azure 备份，应在要备份的服务器上安装 Azure 备份代理。 每台服务器上的可用本地存储空间必须至少为要备份的数据大小的 5%。 例如，如果要备份 100 GB 的数据，则暂存位置至少需要 5 GB 的可用空间。
-* 数据将存储在 Azure 保管库存储中。 你可以备份到 Azure 备份保管库的数据量没有限制，但数据源（例如虚拟机或数据库）的大小不应超过 54400 GB。
+* 需要一个启用了 Azure 备份功能的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 阅读[Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)的相关信息。
+* 若要使用 Azure 备份，应在要备份的服务器上安装 Azure 备份代理。 每台服务器上的可用本地存储必须至少为要备份的数据大小的 5%。 例如，如果要备份 100 GB 的数据，则暂存位置至少需要 5 GB 的可用空间。
+* 数据将存储在 Azure 保管库存储中。 可以备份到 Azure 备份保管库的数据量没有限制，但数据源（例如虚拟机或数据库）的大小不应超过 54400 GB。
 
 支持将以下文件类型备份到 Azure：
 
@@ -195,7 +195,7 @@ System Center DPM 备份文件和应用程序数据。 备份到 DPM 的数据�
 * 稀疏流
 
 > [!NOTE]
-> 从 System Center 2012 DPM SP1 开始，你可以使用 Microsoft Azure 备份将 DPM 保护的工作负载备份到 Azure。
+> 从 System Center 2012 DPM SP1 开始，可以使用 Microsoft Azure 备份将 DPM 保护的工作负载备份到 Azure。
 >
 >
 

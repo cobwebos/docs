@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/21/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: fe67a94a2b56fbc72035582f7ee1625b12b21ead
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 1a30cadaab7e053184f0be133f1da5bfddc1fd91
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 06/23/2017
 ## <a name="set-up-an-azure-account"></a>设置 Azure 帐户
 
 - 获取 [Microsoft Azure 帐户](http://azure.microsoft.com/)。
-- 你可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。
+- 可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。
 - 若要查看 Site Recovery 的受支持区域，请参阅 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)中的“地域可用性”。
 - 了解有关 [Site Recovery 定价](site-recovery-faq.md#pricing)的信息，并获取[定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)。
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 06/23/2017
 
 - 设置 Azure 网络。 在故障转移后创建 Azure VM 时，Azure VM 将置于此网络中。
 - 该网络应位于与恢复服务保管库相同的区域
-- Azure 门户中的 Site Recovery 可以使用在 [Resource Manager](../resource-manager-deployment-model.md) 中或经典模式下设置的网络。
+- Azure 门户中的 Site Recovery 可以使用在[资源管理器](../resource-manager-deployment-model.md)中或经典模式下设置的网络。
 - 建议在开始之前先设置网络。 否则，需要在 Site Recovery 部署期间执行此操作。
 - 了解[虚拟网络定价](https://azure.microsoft.com/pricing/details/virtual-network/)的信息。
 
@@ -52,10 +52,10 @@ ms.lasthandoff: 06/23/2017
 ## <a name="set-up-an-azure-storage-account"></a>设置 Azure 存储帐户
 
 - Site Recovery 将本地计算机复制到 Azure 存储。 发生故障转移后，将从存储中创建 Azure VM。
-- 设置标准/高级 [Azure 存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)来保存复制到 Azure 的数据。
-- [高级存储](../storage/storage-premium-storage.md)通常用于 IO 性能一贯较高且延迟一贯较低、托管 IO 密集型工作负荷的虚拟机。
+- 设置标准/高级 [Azure 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)来保存复制到 Azure 的数据。
+- [高级存储](../storage/common/storage-premium-storage.md)通常用于 IO 性能一贯较高且延迟一贯较低、托管 IO 密集型工作负荷的虚拟机。
 - 如果要将高级帐户用于存储复制的数据，则还需要创建一个标准存储帐户来存储复制日志，这些日志将捕获本地数据正在发生的更改。
-- 根据要用于故障转移 Azure VM 的资源模型，需在 [Resource Manager 模式](../storage/storage-create-storage-account.md)或[经典模式](../storage/storage-create-storage-account-classic-portal.md)下设置帐户。
+- 根据要用于故障转移 Azure VM 的资源模型，需在[资源管理器模式](../storage/common/storage-create-storage-account.md)或[经典模式](../storage/common/storage-create-storage-account.md)下设置帐户。
 - 建议在开始之前先设置存储帐户。 否则，需要在 Site Recovery 部署期间执行此操作。 这些帐户必须位于与恢复服务保管库相同的区域中。
 - 无法在同一订阅中的资源组之间或者在不同的订阅之间移动 Site Recovery 使用的存储帐户。
 

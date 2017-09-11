@@ -3,7 +3,7 @@ title: "Azure API 管理模板数据模型参考 | Microsoft 文档"
 description: "了解数据模型中常用项目的实体和类型表示形式，这些数据模型适用于 Azure API 管理中的开发人员门户模板。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: b0ad7e15-9519-4517-bb73-32e593ed6380
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 080ac72246e62948c3defe329028f27751e8c78d
-ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 72936a4d38f809934ddea74e5ae4a6029450a97c
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API 管理模板数据模型参考
@@ -49,7 +51,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 -   [用户登录](#UseSignIn)  
 -   [用户注册](#UserSignUp)  
   
-##  <a name="a-nameapia-api"></a><a name="API"></a> API  
+##  <a name="API"></a> API  
  `API` 实体具有以下属性。  
   
 |属性|类型|说明|  
@@ -63,7 +65,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |authenticationSettings|[授权服务器身份验证设置](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|此 API 中包含的身份验证设置的集合。|  
 |subscriptionKeyParameterNames|对象|可选属性，可用于指定包含订阅密钥的查询参数和/或标头参数的自定义名称。 如果存在此属性，则其必须包含以下两个属性中的至少一个。<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
-##  <a name="a-nameapisummarya-api-summary"></a><a name="APISummary"></a> API 摘要  
+##  <a name="APISummary"></a> API 摘要  
  `API summary` 实体具有以下属性。  
   
 |属性|类型|说明|  
@@ -72,7 +74,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |name|字符串|API 的名称。 不得为空。 最大长度为 100 个字符。|  
 |description|字符串|API 的说明。 不得为空。 可以包含 HTML 格式标记。 最大长度为 1000 个字符。|  
   
-##  <a name="a-nameapplicationa-application"></a><a name="Application"></a> 应用程序  
+##  <a name="Application"></a> 应用程序  
  `application` 实体具有以下属性。  
   
 |属性|类型|说明|  
@@ -90,7 +92,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |附件|[附件](#Attachment)实体的集合。|应用程序的任何附件，例如屏幕截图或图标。|  
 |图标|[附件](#Attachment)|应用程序的图标。|  
   
-##  <a name="a-nameattachmenta-attachment"></a><a name="Attachment"></a> 附件  
+##  <a name="Attachment"></a> 附件  
  `attachment` 实体具有以下属性。  
   
 |属性|类型|说明|  
@@ -100,7 +102,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |类型|字符串|附件的类型。|  
 |ContentType|字符串|附件的媒体类型。|  
   
-##  <a name="a-namesamplea-code-sample"></a><a name="Sample"></a> 代码示例  
+##  <a name="Sample"></a> 代码示例  
   
 |属性|类型|说明|  
 |--------------|----------|-----------------|  
@@ -117,7 +119,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |headers|[标头](#Header)实体的集合。|此操作的标头。|  
 |参数|[参数](#Parameter)实体的集合。|为此操作定义的参数。|  
   
-##  <a name="a-namecommenta-comment"></a><a name="Comment"></a> 注释  
+##  <a name="Comment"></a> 注释  
  `API` 实体具有以下属性。  
   
 |属性|类型|说明|  
@@ -127,7 +129,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |DeveloperCompany|字符串|开发人员所在公司的名称。|  
 |PostedOn|DateTime|发布注释的日期和时间。|  
   
-##  <a name="a-nameissuea-issue"></a><a name="Issue"></a> 问题  
+##  <a name="Issue"></a> 问题  
  `issue` 实体具有以下属性。  
   
 |属性|类型|说明|  
@@ -143,7 +145,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |附件|[附件](api-management-template-data-model-reference.md#Attachment)实体的集合。|此问题的任何附件。|  
 |服务|[API](#API) 实体的集合。|报告此问题的用户所订阅的 API。|  
   
-##  <a name="a-namefilteringa-filtering"></a><a name="Filtering"></a> 筛选  
+##  <a name="Filtering"></a> 筛选  
  `filtering` 实体具有以下属性。  
   
 |属性|类型|说明|  
@@ -151,7 +153,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |模式|字符串|当前的搜索词；如果没有搜索词，则为 `null`。|  
 |占位符|字符串|没有指定搜索词时，在搜索框中显示的文本。|  
   
-##  <a name="a-nameheadera-header"></a><a name="Header"></a> 标头  
+##  <a name="Header"></a> 标头  
  本部分描述 `parameter` 表示形式。  
   
 |属性|说明|类型|  
@@ -164,7 +166,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |必填|布尔值|标头是否为必需。|  
 |readOnly|布尔值|标头是否为只读。|  
   
-##  <a name="a-namehttprequesta-http-request"></a><a name="HTTPRequest"></a> HTTP 请求  
+##  <a name="HTTPRequest"></a> HTTP 请求  
  本部分描述 `request` 表示形式。  
   
 |属性|类型|说明|  
@@ -174,7 +176,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |参数|[参数](#Parameter)数组|操作请求参数的集合。|  
 |representations|[表示形式](#Representation)数组|操作请求表示形式的集合。|  
   
-##  <a name="a-namehttpresponsea-http-response"></a><a name="HTTPResponse"></a> HTTP 响应  
+##  <a name="HTTPResponse"></a> HTTP 响应  
  本部分描述 `response` 表示形式。  
   
 |属性|类型|说明|  
@@ -183,7 +185,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |description|字符串|操作响应说明。|  
 |representations|[表示形式](#Representation)数组|操作响应表示形式的集合。|  
   
-##  <a name="a-nameoperationa-operation"></a><a name="Operation"></a> 操作  
+##  <a name="Operation"></a> 操作  
  `operation` 实体具有以下属性。  
   
 |属性|类型|说明|  
@@ -198,7 +200,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |请求|[HTTP 请求](#HTTPRequest)|一个实体，包含请求详细信息。|  
 |responses|[HTTP 响应](#HTTPResponse)数组|操作 [HTTP 响应](#HTTPResponse)实体数组。|  
   
-##  <a name="a-namemenua-operation-menu"></a><a name="Menu"></a> 操作菜单  
+##  <a name="Menu"></a> 操作菜单  
  `operation menu` 实体具有以下属性。  
   
 |属性|类型|说明|  
@@ -208,7 +210,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |操作|字符串|菜单类型。|  
 |MenuItems|[操作菜单项](#MenuItem)实体的集合。|当前 API 的操作。|  
   
-##  <a name="a-namemenuitema-operation-menu-item"></a><a name="MenuItem"></a> 操作菜单项  
+##  <a name="MenuItem"></a> 操作菜单项  
  `operation menu item` 实体具有以下属性。  
   
 |属性|类型|说明|  
@@ -217,7 +219,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |标题|字符串|操作说明。|  
 |HttpMethod|字符串|此操作的 Http 方法。|  
   
-##  <a name="a-namepaginga-paging"></a><a name="Paging"></a> 分页  
+##  <a name="Paging"></a> 分页  
  `paging` 实体具有以下属性。  
   
 |属性|类型|说明|  
@@ -228,7 +230,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |ShowAll|布尔值|是否在单页上显示所有结果。|  
 |PageCount|数字|结果的页数。|  
   
-##  <a name="a-nameparametera-parameter"></a><a name="Parameter"></a> 参数  
+##  <a name="Parameter"></a> 参数  
  本部分描述 `parameter` 表示形式。  
   
 |属性|说明|类型|  
@@ -241,7 +243,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |kind|数字|此参数是路径参数 (1)，还是查询字符串参数 (2)。|  
 |typeName|字符串|参数类型。|  
   
-##  <a name="a-nameproducta-product"></a><a name="Product"></a> 产品  
+##  <a name="Product"></a> 产品  
  `product` 实体具有以下属性。  
   
 |属性|类型|说明|  
@@ -254,7 +256,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |AllowMultipleSubscriptions|布尔值|指定用户是否可以同时拥有此产品的多个订阅。|  
 |MultipleSubscriptionsCount|数字|当前用户订阅此产品时的订阅数目。|  
   
-##  <a name="a-nameprovidera-provider"></a><a name="Provider"></a> 提供程序  
+##  <a name="Provider"></a> 提供程序  
  `provider` 实体具有以下属性。  
   
 |属性|类型|说明|  
@@ -263,7 +265,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |AuthenticationType|字符串|提供程序类型。 （Azure Active Directory、Facebook 登录、Google 帐户、Microsoft 帐户、Twitter）。|  
 |Caption|字符串|提供程序的显示名称。|  
   
-##  <a name="a-namerepresentationa-representation"></a><a name="Representation"></a> 表示形式  
+##  <a name="Representation"></a> 表示形式  
  本部分描述 `representation`。  
   
 |属性|类型|说明|  
@@ -271,7 +273,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |contentType|字符串|指定此表示形式的已注册内容类型或自定义内容类型，例如 `application/xml`。|  
 |示例|字符串|表示形式的示例。|  
   
-##  <a name="a-namesubscriptiona-subscription"></a><a name="Subscription"></a> 订阅  
+##  <a name="Subscription"></a> 订阅  
  `subscription` 实体具有以下属性。  
   
 |属性|类型|说明|  
@@ -281,7 +283,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |ProductTitle|字符串|产品的名称。 不得为空。 最大长度为 100 个字符。|  
 |ProductDescription|字符串|产品说明。 不得为空。 可以包含 HTML 格式标记。 最大长度为 1000 个字符。|  
 |ProductDetailsUrl|字符串|指向产品详细信息的相对 URL。|  
-|state|字符串|订阅的状态。 可能的状态包括：<br /><br /> - `0 - suspended` – 订阅被阻止，订阅服务器无法调用产品的任何 API。<br /><br /> - `1 - active` – 订阅处于活动状态。<br /><br /> - `2 - expired` – 订阅已到到期日期，因此已停用。<br /><br /> - `3 - submitted` – 开发人员已提交订阅请求，但管理员尚未批准或拒绝该请求。<br /><br /> - `4 - rejected` – 管理员已拒绝订阅请求。<br /><br /> - `5 - cancelled` – 开发人员或管理员已取消订阅。|  
+|state|字符串|订阅的状态。 可能的状态包括：<br /><br /> - `0 - suspended` – 订阅被阻止，订阅服务器无法调用产品的任何 API。<br /><br /> - `1 - active` – 订阅处于活动状态。<br /><br /> - `2 - expired` – 订阅已达到其到期日期，因此已停用。<br /><br /> - `3 - submitted` – 开发人员已提交订阅请求，但管理员尚未批准或拒绝该请求。<br /><br /> - `4 - rejected` – 管理员已拒绝订阅请求。<br /><br /> - `5 - cancelled` – 开发人员或管理员已取消订阅。|  
 |DisplayName|字符串|订阅的显示名称。|  
 |CreatedDate|dateTime|订阅的创建日期，采用 ISO 8601 格式：`2014-06-24T16:25:00Z`。|  
 |CanBeCancelled|布尔值|当前用户是否可以取消订阅。|  
@@ -297,7 +299,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |CancelUrl|字符串|用于取消订阅的相对 URL。|  
 |RenewUrl|字符串|用于续订订阅的相对 URL。|  
   
-##  <a name="a-namesubscriptionsummarya-subscription-summary"></a><a name="SubscriptionSummary"></a> 订阅摘要  
+##  <a name="SubscriptionSummary"></a> 订阅摘要  
  `subscription summary` 实体具有以下属性。  
   
 |属性|类型|说明|  
@@ -305,7 +307,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |ID|字符串|资源标识符。 唯一标识当前 API 管理服务实例中的订阅。 值是有效的相对 URL，采用 `subscriptions/{sid}` 格式，其中 `{sid}` 是订阅标识符。 此属性为只读。|  
 |DisplayName|字符串|订阅的显示名称|  
   
-##  <a name="a-nameuseraccountinfoa-user-account-info"></a><a name="UserAccountInfo"></a> 用户帐户信息  
+##  <a name="UserAccountInfo"></a> 用户帐户信息  
  `user account info` 实体具有以下属性。  
   
 |属性|类型|说明|  
@@ -318,7 +320,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |ProviderName|字符串|身份验证提供程序名称。|  
 |IsBasicAccount|布尔值|如果此帐户使用电子邮件和密码注册，则为 true；如果此帐户使用提供程序注册，则为 false。|  
   
-##  <a name="a-nameusesignina-user-sign-in"></a><a name="UseSignIn"></a> 用户登录  
+##  <a name="UseSignIn"></a> 用户登录  
  `user sign in` 实体具有以下属性。  
   
 |属性|类型|说明|  
@@ -336,7 +338,7 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 |UserRegistrationTerms|字符串|用户必须在登录之前同意的条款。|  
 |UserRegistrationTermsEnabled|布尔值|是否启用条款。|  
   
-##  <a name="a-nameusersignupa-user-sign-up"></a><a name="UserSignUp"></a> 用户注册  
+##  <a name="UserSignUp"></a> 用户注册  
  `user sign up` 实体具有以下属性。  
   
 |属性|类型|说明|  
@@ -356,9 +358,4 @@ ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 
 ## <a name="next-steps"></a>后续步骤
 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](api-management-developer-portal-templates.md)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

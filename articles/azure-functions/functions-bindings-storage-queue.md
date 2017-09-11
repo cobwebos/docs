@@ -4,7 +4,7 @@ description: "了解如何在 Azure Functions 中使用 Azure 存储触发器和
 services: functions
 documentationcenter: na
 author: lindydonna
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions，函数，事件处理，动态计算，无服务体系结构"

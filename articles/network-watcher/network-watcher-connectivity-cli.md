@@ -3,7 +3,7 @@ title: "使用 Azure 网络观察程序检查连接性 - Azure CLI 2.0 | Microso
 description: "本页说明如何使用 Azure CLI 2.0 通过网络观察程序执行连接性检查"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.service: network-watcher
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 81b0f76538b74edf1ebdfb40ff9190e5072e71c8
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: c1deaa40bfda0bf3858ad56d3d6a90df34351278
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
@@ -30,13 +30,6 @@ ms.lasthandoff: 07/13/2017
 
 了解如何使用连接来验证是否可以建立从虚拟机到给定终结点的直接 TCP 连接。
 
-本文讲解一些连接检查方案。
-
-* [检查与虚拟机的连接](#check-connectivity-to-a-virtual-machine)
-* [验证路由问题](#validate-routing-issues)
-* [检查网站延迟](#check-website-latency)
-* [检查与存储终结点的连接](#check-connectivity-to-a-storage-endpoint)
-
 ## <a name="before-you-begin"></a>开始之前
 
 本文假定你拥有以下资源：
@@ -48,7 +41,7 @@ ms.lasthandoff: 07/13/2017
 [!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 > [!IMPORTANT]
-> 连接检查需要虚拟机扩展 `AzureNetworkWatcherExtension`。 有关在 Windows VM 上安装扩展的信息，请访问[适用于 Windows 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/windows/extensions-nwa.md)；有关 Linux VM 的信息，请访问[适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/linux/extensions-nwa.md)。
+> 连接性检查需要虚拟机扩展 `AzureNetworkWatcherExtension`。 有关在 Windows VM 上安装扩展的信息，请访问[适用于 Windows 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/windows/extensions-nwa.md)；有关 Linux VM 的信息，请访问[适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/linux/extensions-nwa.md)。
 
 ## <a name="register-the-preview-capability"></a>注册预览版功能 
 

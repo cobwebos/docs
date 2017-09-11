@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: saurse;markgal
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 7f758d0730e5e503658a264e1e752d9ab912eb7b
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 6fbd96935f444d8b0c6d068ebd0d28e612f19816
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>备份资源管理器部署中的 Windows 系统状态
@@ -88,7 +88,7 @@ ms.lasthandoff: 08/01/2017
 
     ![存储配置选择](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-    默认情况下，保管库具有异地冗余存储。 如果使用 Azure 作为主要备份存储终结点，请继续使用“异地冗余”。 如果不使用 Azure 作为主要的备份存储终结点，则请选择“本地冗余”，减少 Azure 存储费用。 请在此[存储冗余概述](../storage/storage-redundancy.md)中深入了解[异地冗余](../storage/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/storage-redundancy.md#locally-redundant-storage)存储选项。
+    默认情况下，保管库具有异地冗余存储。 如果使用 Azure 作为主要备份存储终结点，请继续使用“异地冗余”。 如果不使用 Azure 作为主要的备份存储终结点，则请选择“本地冗余”，减少 Azure 存储费用。 请在此[存储冗余概述](../storage/common/storage-redundancy.md)中深入了解[异地冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/common/storage-redundancy.md#locally-redundant-storage)存储选项。
 
 创建保管库之后，即可对其进行配置，以便备份 Windows 系统状态。
 
@@ -235,14 +235,14 @@ ms.lasthandoff: 08/01/2017
 
     ![立即备份 Windows Server](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
 
-3. 在“确认”页上复查“立即备份向导”用于备份计算机的设置。 然后单击“**备份**”。
+3. 在“确认”页上复查“立即备份向导”用于备份计算机的设置。 然后单击“备份”。
 
 4. 单击“**关闭**”以关闭向导。 如果在备份过程完成之前关闭向导，向导将继续在后台运行。
 
 5. 如果在服务器上备份文件和文件夹，除了 Windows Server 系统状态之外，“立即备份”向导将仅备份文件。 若要进行临时的系统状态备份，请执行以下 PowerShell 命令：
 
     ```
-    PS C:\> Start -OBSystemStateBackup
+    PS C:\> Start-OBSystemStateBackup
     ```
 
   完成初始备份后，备份控制台中会显示“**作业已完成**”状态。

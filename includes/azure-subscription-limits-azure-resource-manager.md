@@ -4,7 +4,7 @@
 | 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的 VM 核心总数 |每个区域 20 个<sup>1</sup> | 联系支持人员 |
 | 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的 VM 按系列（Dv2、F 等）核心数 |每个区域 20 个<sup>1</sup> | 联系支持人员 |
 | 每个订阅的[共同管理员数](../articles/billing-add-change-azure-subscription-administrator.md) |不受限制 |不受限制 |
-| 每个订阅的[存储帐户数](../articles/storage/storage-create-storage-account.md) |200 |200<sup>2</sup> |
+| 每个订阅的[存储帐户数](../articles/storage/common/storage-create-storage-account.md) |200 |200<sup>2</sup> |
 | 每个订阅的[资源组数](../articles/azure-resource-manager/resource-group-overview.md) |800 |800 |
 | 每个订阅的[可用性集数](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) |每个区域 2,000 个 |每个区域 2,000 个 |
 | Resource Manager API 读取次数 |每小时 15,000 次 |每小时 15,000 次 |

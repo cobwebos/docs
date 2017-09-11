@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: robb
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: df53e92b877b4790bb700f176a1988d265ec4678
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: a0cb529836b14df71e83616f4f625a002c535b7b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 诊断故障排除
@@ -56,6 +56,34 @@ ms.lasthandoff: 07/13/2017
 | **日志收集实用工具路径** | C:\WindowsAzure\Packages |
 | **MonAgentHost 日志文件** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
+## <a name="metric-data-doesnt-show-in-azure-portal"></a>Azure 门户中不显示指标数据
+Azure 诊断提供了一组指标数据，可以在 Azure 门户中显示。 如果无法在门户中查看这些数据，请检查诊断存储帐户 -> WADMetrics\* 表，以查看是否存在相应的指标记录。 在这里，表的 PartitionKey 是虚拟机或虚拟机规模集的资源 ID，而 RowKey 为指标名称，即性能计数器名称。
+
+如果资源 ID 不正确，请检查诊断配置 -> 指标 -> ResourceId，以查看是否已正确设置资源 ID。
+
+如果没有特定指标数据，请检查诊断配置 -> PerformanceCounter，以查看是否包含指标（性能计数器）。 默认启用以下计数器。
+- \Processor(_Total)\% Processor Time
+- \Memory\Available Bytes
+- \ASP.NET Applications(__Total__)\Requests/Sec
+- \ASP.NET Applications(__Total__)\Errors Total/Sec
+- \ASP.NET\Requests Queued
+- \ASP.NET\Requests Rejected
+- \Processor(w3wp)\% Processor Time
+- \Process(w3wp)\Private Bytes
+- \Process(WaIISHost)\% Processor Time
+- \Process(WaIISHost)\Private Bytes
+- \Process(WaWorkerHost)\% Processor Time
+- \Process(WaWorkerHost)\Private Bytes
+- \Memory\Page Faults/sec
+- \.NET CLR Memory(_Global_)\% Time in GC
+- \LogicalDisk(C:)\Disk Write Bytes/sec
+- \LogicalDisk(C:)\Disk Read Bytes/sec
+- \LogicalDisk(D:)\Disk Write Bytes/sec
+- \LogicalDisk(D:)\Disk Read Bytes/sec
+
+如果已正确设置配置，但仍然无法看到指标数据，请按照下面的指南以进行进一步调查。
+
+
 ## <a name="azure-diagnostics-is-not-starting"></a>Azure Diagnostics 不启动
 从上面提供的日志文件的位置查看“DiagnosticsPluginLauncher.log”和“DiagnosticsPlugin.log”，获取有关诊断未能启动的原因的信息。 
 
@@ -79,15 +107,15 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 
 解决方案：更正诊断配置，然后重新安装 Azure 诊断。
 
-如果存储帐户配置正确，通过远程桌面连接到计算机中并确保 DiagnosticsPlugin.exe 和 MonAgentCore.exe 正在运行。 如果未运行，按 [ Azure 诊断不启动](#azure-diagnostics-is-not-starting)中的说明操作。 如果进程正在运行，请跳转到[数据是否是本地捕获的](#is-data-getting-captured-locally)并按照该指南中的说明操作。
+如果存储帐户配置正确，通过远程桌面连接到计算机中并确保 DiagnosticsPlugin.exe 和 MonAgentCore.exe 正在运行。 如果它们未运行，请按照 [Azure 诊断不启动](#azure-diagnostics-is-not-starting)进行操作。 如果进程正在运行，请跳转到[数据是否是本地捕获的](#is-data-getting-captured-locally)并按照该指南中的说明操作。
 
 ### <a name="part-of-the-data-is-missing"></a>部分数据丢失
-如果得到一些数据，而没有得到其他数据。 这意味着数据收集/传输管道设置正确。 按照此处小节中的说明操作，缩小问题的范围：
+如果得到一些数据，而没有得到其他数据。 这意味着数据收集/传输管道设置正确。 请按照此处的子节说明，以缩小问题范围：
 #### <a name="is-collection-configured"></a>是否配置了集合： 
 诊断配置包含指示收集特定类型数据的部分。 [查看配置](#how-to-check-diagnostics-extension-configuration)确保不查找尚未配置收集的数据。
 #### <a name="is-the-host-generating-data"></a>主机是否生成数据：
 - **性能计数器**：打开 perfmon 并检查计数器。
-- **跟踪日志**：通过远程桌面连接到 VM 并向应用的配置文件添加 TextWriterTraceListener。  请参阅 http://msdn.microsoft.com/en-us/library/sk36c28t.aspx 以设置文本侦听器。  确保 `<trace>` 元素具有 `<trace autoflush="true">`。<br />
+- **跟踪日志**：通过远程桌面连接到 VM 并向应用的配置文件添加 TextWriterTraceListener。  请参阅 http://msdn.microsoft.com/library/sk36c28t.aspx 来设置文本侦听器。  确保 `<trace>` 元素具有 `<trace autoflush="true">`。<br />
 如果没有看到生成跟踪日志，请按照[关于跟踪日志丢失的更多信息](#more-about-trace-logs-missing)中的说明操作。
 - **ETW 跟踪**：通过远程桌面连接到 VM 并安装 PerfView。  在“PerfView”中运行“文件”->“用户命令”->“侦听 etwprovder1、etwprovider2 等”。请注意，侦听命令区分大小写，ETW 提供程序的逗号分隔列表之间不能有空格。  如果命令未能运行，可以单击 Perfview 工具右下角的“日志”按钮，查看尝试运行的内容以及结果。  假设输入正确，将弹出一个新窗口，几秒钟后，你将开始看到 ETW 跟踪。
 - **事件日志**：通过远程桌面连接到 VM。 打开`Event Viewer`并确保事件存在。
@@ -95,7 +123,7 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 接下来，请确保从本地获取数据。
 数据本地存储在[诊断数据本地存储](#log-artifacts-path)中的 `*.tsf` 文件中。 不同类型的日志被收集在不同的 `.tsf` 文件中。 名称与 Azure 存储中的表名相似。 例如，在 `PerformanceCountersTable.tsf` 中收集`Performance Counters`，在 `WindowsEventLogsTable.tsf` 中收集事件日志。 使用[本地日志提取](#local-log-extraction)部分中的说明打开本地收集文件，并确保它们收集在磁盘上。
 
-如果没有看到本地收集的日志，并且已验证主机正在生成数据，则可能是遇到了配置问题。 请仔细查看相应部分的配置。 还应查看为监控代理 [MaConfig.xml](#log-artifacts-path)生成的配置，确保有一些描述相关日志源的部分，并确保它不会在 Azure 诊断配置和监视代理配置之间的转换中丢失。
+如果没有看到本地收集的日志，并且已验证主机正在生成数据，则可能是有配置问题。 请仔细查看相应部分的配置。 还应查看为监控代理 [MaConfig.xml](#log-artifacts-path)生成的配置，确保有一些描述相关日志源的部分，并确保它不会在 Azure 诊断配置和监视代理配置之间的转换中丢失。
 #### <a name="is-data-getting-transferred"></a>是否传输了数据：
 如果已验证数据是本地捕获的，但仍未在存储帐户中看到它： 
 - 首先，确保提供了正确的存储帐户，并且没有为给定的存储帐户滚动更新过密钥等。 对于云服务，有时我们发现人们不更新其 `useDevelopmentStorage=true`。
@@ -122,13 +150,13 @@ Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
 下面是一个示例：
 
 ```XML
-        <EtwEventSourceProviderConfiguration provider=”prov1”>
-          <Event id=”1” />
-          <Event id=”2” eventDestination=”dest1” />
+        <EtwEventSourceProviderConfiguration provider="prov1">
+          <Event id="1" />
+          <Event id="2" eventDestination="dest1" />
           <DefaultEvents />
         </EtwEventSourceProviderConfiguration>
-        <EtwEventSourceProviderConfiguration provider=”prov2”>
-          <DefaultEvents eventDestination=”dest2” />
+        <EtwEventSourceProviderConfiguration provider="prov2">
+          <DefaultEvents eventDestination="dest2" />
         </EtwEventSourceProviderConfiguration>
 ```
 ```JSON
@@ -157,7 +185,7 @@ Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
     }
 ]
 ```
-这将产生 4 个表：
+这会产生 4 个表：
 
 | 事件 | 表名称 |
 | --- | --- |
@@ -218,8 +246,8 @@ Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
 
 **注意：**这主要适用于云服务，除非已在于 IaaS VM 上运行的应用程序上配置了 DiagnosticsMonitorTraceListener。 
 
-- 确保在 web.config 或 app.config 中配置了 DiagnosticMonitorTraceListener。  这是在云服务项目中默认配置的，但有些客户将其注释掉，这将导致诊断不能收集到跟踪语句。 
-- 如果没有从 OnStart 或 Run 方法写入日志，请确保 DiagnosticMonitorTraceListener 位于 app.config 中。  默认情况下，它在 web.config 中，但只适用于在 w3wp.exe 中运行的代码；所以需使它位于 app.config 中才能捕获 WaIISHost.exe 中运行的跟踪。
+- 确保在 web.config 或 app.config 中配置了 DiagnosticMonitorTraceListener。这是在云服务项目中默认配置的，但有些客户将其注释掉，这将导致诊断不能收集到跟踪语句。 
+- 如果没有从 OnStart 或 Run 方法写入日志，请确保 DiagnosticMonitorTraceListener 位于 app.config 中。默认情况下，它在 web.config 中，但只适用于在 w3wp.exe 中运行的代码；所以需使它位于 app.config 中才能捕获 WaIISHost.exe 中运行的跟踪。
 - 确保使用的是 Diagnostics.Trace.TraceXXX，而不是 Diagnostics.Debug.WriteXXX。  将从发布版本中删除 Debug 语句。
 - 确保已编译的代码实际上具有 Diagnostics.Trace 行（使用反射器、ildasm 或 ILSpy 验证）。  从已编译的二进制文件中删除了 Diagnostics.Trace 命令，除非你使用 TRACE 条件编译符号。  如果使用 MSBuild 生成项目，那么这将是一个常见问题。
 
@@ -240,7 +268,8 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 **2.性能计数器数据在存储中可用，但不显示在门户中**
 
 默认情况下，虚拟机门户体验显示某些性能计数器。 如果你没有看到它们，并且知道正在生成数据，因为它在存储中可用。 请检查：
-- 存储中的数据是否有英语计数器名称。 如果计数器名称不是英语，门户指标图表将无法识别它。
+- 存储中的数据是否有英文计数器名称。 如果计数器名称不是英文，门户指标图表将无法识别它。
 - 如果性能计数器名称中使用了通配符(\*)，门户将无法关联配置和收集的计数器。
 
-**缓解措施**：将系统帐户的计算机语言更改为英语。 控制面板->区域->管理->复制设置->取消选中“欢迎屏幕和系统帐户”，从而不向系统帐户应用自定义语言。 如果希望门户为主要消费体验，还要确保不使用通配符。
+缓解措施：将系统帐户的计算机语言更改为英语。 控制面板->区域->管理->复制设置->取消选中“欢迎屏幕和系统帐户”，从而不向系统帐户应用自定义语言。 如果希望门户为主要消费体验，还要确保不使用通配符。
+

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/05/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: db280ff801c6e501e7ab7890f67d22ae16444491
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: ecfe6dab6e4deaa75d073badcb88d536396fe678
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="about-vpn-gateway"></a>关于 VPN 网关
@@ -84,7 +84,11 @@ VPN 网关连接依赖于使用特定设置配置的多个资源。 大多数资
 
 ## <a name="P2S"></a>点到站点（基于 SSTP 的 VPN）
 
-点到站点 (P2S) VPN 网关连接可让用户创建从单个客户端计算机到虚拟网络的安全连接。 P2S 是基于 SSTP（安全套接字隧道协议）的 VPN 连接。 与 S2S 连接不同，P2S 连接不需本地面向公众的 IP 地址或 VPN 设备。 从客户端计算机启动 VPN 连接即可建立 VPN 连接。 如果要从远程位置（例如，从家里或会议室）连接到 VNet，或者只有几个客户端需要连接到 VNet，此解决方案将非常有用。 可以通过同一 VPN 网关将 P2S 连接与 S2S 连接结合使用，前提是这两种连接的所有配置要求都兼容。
+点到站点 (P2S) VPN 网关用于创建从单个客户端计算机到虚拟网络的安全连接。 若要从远程位置连接到 VNet，例如从家里或会议室进行远程通信，则可使用点到站点 VPN。 如果只有一些客户端需要连接到 VNet，则可使用 P2S VPN 这种解决方案来代替站点到站点 VPN。 
+
+与 S2S 连接不同，P2S 连接不需本地面向公众的 IP 地址或 VPN 设备。 可以通过同一 VPN 网关将 P2S 连接与 S2S 连接结合使用，前提是这两种连接的所有配置要求都兼容。
+
+P2S 使用安全套接字层隧道协议 (SSTP)，这是一种基于 SSL 的 VPN 协议。 可通过从客户端计算机启动连接来建立 P2S VPN 连接。
 
 ![Azure VPN 网关点到站点连接示例](./media/vpn-gateway-about-vpngateways/vpngateway-point-to-site-connection-diagram.png)
 

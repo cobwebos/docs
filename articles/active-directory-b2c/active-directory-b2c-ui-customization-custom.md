@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory B2C：使用自定义策略自定义 UI | Microsoft Docs"
+title: "使用自定义策略自定义 UI - Azure AD B2C | Microsoft Docs"
 description: "了解在 Azure AD B2C 中使用自定义策略时自定义用户界面 (UI) 的相关事项。"
 services: active-directory-b2c
 documentationcenter: 
-author: SaeedAkhter-MSFT
+author: saeedakhter-msft
 manager: krassk
-editor: gsacavdm
+editor: parakhj
 ms.assetid: 658c597e-3787-465e-b377-26aebc94e46d
 ms.service: active-directory-b2c
 ms.workload: identity
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
-ms.author: saeeda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
-ms.openlocfilehash: cede72e742bbea7b1d51d42609743ea574af75ed
+ms.author: saeedakhter-msft
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: d5a3c0a323b31696d39e3d2b36317dec3a2337d7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C：在自定义策略中配置 UI 自定义
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-完成本文后，将会生成一个带有你的公司品牌和外观的注册与登录自定义策略。 使用 Azure Active Directory B2C (Azure AD B2C)，几乎可以完全控制呈现给用户的 HTML 和 CSS 内容。 使用自定义策略时，需要以 XML 配置 UI 自定义，而不是使用 Azure 门户中的控件进行配置。 
+完成本文后，会生成一个带有公司品牌和外观的注册与登录自定义策略。 使用 Azure Active Directory B2C (Azure AD B2C)，几乎可以完全控制呈现给用户的 HTML 和 CSS 内容。 使用自定义策略时，需要以 XML 配置 UI 自定义，而不是使用 Azure 门户中的控件进行配置。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -147,7 +147,7 @@ ms.lasthandoff: 07/06/2017
 ## <a name="test-the-custom-policy-by-using-run-now"></a>使用“立即运行”测试自定义策略
 
 1. 在“Azure AD B2C”边栏选项卡上，转到“所有策略”。
-2. 选择上传的自定义策略，然后单击“立即运行”按钮。
+2. 选择上传的自定义策略，并单击“立即运行”按钮。
 3. 现在，应该可以使用电子邮件地址进行注册了。
 
 ## <a name="reference"></a>参考

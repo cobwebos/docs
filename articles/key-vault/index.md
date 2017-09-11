@@ -2,7 +2,7 @@
 title: "Azure Key Vault 文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用密钥保管库来创建及维护用于访问和加密云资源、应用和解决方案的密钥。 教程、API 参考和其他资源。"
 services: key-vault
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

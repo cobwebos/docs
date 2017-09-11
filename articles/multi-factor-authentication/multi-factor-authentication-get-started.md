@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/23/2017
+ms.date: 08/25/2017
 ms.author: kgremban
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 6f8ee3449244b12d2c8b5714e6ad893e2f0b10ee
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: cc5a0a8ff789b878cd5afb62176ae8bcf3f80902
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>选择适合自己的 Azure 多重身份验证解决方案
@@ -78,12 +78,9 @@ ms.lasthandoff: 08/16/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-在确定是要使用云多重身份验证还是本地 MFA 服务器后，接下来可以开始设置并使用 Azure 多重身份验证。 选择代表方案的图标
+了解云中 Azure 多重身份验证和本地 MFA 服务器的差异以后，即可设置和使用 Azure 多重身份验证。 选择代表方案的图标
 
 <center>
 
-
-
-
-[![云](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![服务器](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </center>
+[![云中的 MFA](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![MFA 服务器](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </center>
 

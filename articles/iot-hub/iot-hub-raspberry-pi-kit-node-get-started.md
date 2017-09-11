@@ -17,10 +17,10 @@ ms.date: 5/27/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: e7853892af550ec66fbc48b669a6c9b8ff18df8c
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: f48c4bd27b1df1d02090ed51172f943e50c76c3e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -120,8 +120,8 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
 | -----------------------  | ---------------------- | ------------: |
 | VDD（引脚 5G）             | 3.3 伏 PWR（引脚 1）       | 白线   |
 | GND（引脚 7G）             | GND（引脚 6）            | 棕色电缆   |
-| SCK（引脚 8G）             | I2C1 SDA（引脚 3）       | 橙色电缆  |
-| SDI（引脚 10G）            | I2C1 SCL（引脚 5）       | 红线     |
+| SDI（引脚 10G）            | I2C1 SDA（引脚 3）       | 红线     |
+| SCK（引脚 8G）             | I2C1 SCL（引脚 5）       | 橙色电缆  |
 | LED VDD（引脚 18F）        | GPIO 24（引脚 18）       | 白线   |
 | LED GND（引脚 17F）        | GND（引脚 20）           | 黑线   |
 

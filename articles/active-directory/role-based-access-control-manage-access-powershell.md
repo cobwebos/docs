@@ -3,7 +3,7 @@ title: "使用 Azure PowerShell 管理基于角色的访问控制 (RBAC) | Micro
 description: "如何使用 Azure PowerShell 管理 RBAC，包括列出角色、分配角色和删除角色分配。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: andredm7
 manager: femila
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
 ms.service: active-directory
@@ -12,7 +12,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
-ms.author: kgremban
+ms.author: andredm
 ms.reviewer: rqureshi
 ms.translationtype: HT
 ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148

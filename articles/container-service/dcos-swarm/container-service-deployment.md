@@ -49,9 +49,9 @@ ms.lasthandoff: 07/25/2017
 
 
 ## <a name="create-a-cluster-by-using-the-azure-portal"></a>使用 Azure 门户创建群集
-1. 登录到 Azure 门户，选择“新建”，并在 Azure 应用商店中搜索“Azure 容器服务”。
+1. 登录到 Azure 门户，选择“新建”，并在 Azure Marketplace 中搜索“Azure 容器服务”。
 
-    ![应用商店中的 Azure 容器服务](./media/container-service-deployment/acs-portal1.png)  <br />
+    ![Marketplace 中的 Azure 容器服务](./media/container-service-deployment/acs-portal1.png)  <br />
 
 2. 单击“Azure 容器服务”，并单击“创建”。
 

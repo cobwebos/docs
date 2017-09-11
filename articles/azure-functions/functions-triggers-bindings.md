@@ -4,7 +4,7 @@ description: "了解如何使用 Azure Functions 中的触发器和绑定将代�
 services: functions
 documentationcenter: na
 author: lindydonna
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构"
@@ -21,7 +21,6 @@ ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: cc41debb2523df77be4db05817a4c7ac55604439
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/23/2017
-
 
 ---
 

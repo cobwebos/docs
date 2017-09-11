@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;sachouks
-translationtype: Human Translation
-ms.sourcegitcommit: 9b32c0d9c3bc19a187873eebd6ab21036ee06db8
-ms.openlocfilehash: 1e773a1332d14109e9f50fb7db17528d061a98f2
-ms.lasthandoff: 12/07/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: d9a626cccd3cdfcdc85f000bd3192aef2881e9a6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="move-data-to-and-from-azure-blob-storage"></a>将数据移入和移出 Azure Blob 存储
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/07/2016
 最合适的方法取决于具体的方案。 [用于 Azure 机器学习中高级分析的方案](machine-learning-data-science-plan-sample-scenarios.md)有助于确定用于高级分析过程的各种数据科学工作流所需的资源。
 
 > [!NOTE]
-> 有关 Azure Blob 存储的完整介绍，请参阅 [Azure Blob 基本知识](../storage/storage-dotnet-how-to-use-blobs.md)和 [Azure Blob 服务](https://msdn.microsoft.com/library/azure/dd179376.aspx)。
+> 有关 Azure Blob 存储的完整介绍，请参阅 [Azure Blob 基本知识](../storage/blobs/storage-dotnet-how-to-use-blobs.md)和 [Azure Blob 服务](https://msdn.microsoft.com/library/azure/dd179376.aspx)。
 > 
 > 
 
@@ -45,9 +45,9 @@ ms.lasthandoff: 12/07/2016
 有关详细信息，请参阅[使用 Azure 数据工厂和 Azure 机器学习创建预测管道](../data-factory/data-factory-azure-ml-batch-execution-activity.md)。
 
 ## <a name="prerequisites"></a>先决条件
-本文档假定已有 Azure 订阅、存储帐户，以及该帐户对应的存储密钥。 上载/下载数据之前，必须知道 Azure 存储帐户名和帐户密钥。
+本文档假定已有 Azure 订阅、存储帐户，以及该帐户对应的存储密钥。 上传/下载数据之前，必须知道 Azure 存储帐户名和帐户密钥。
 
 * 若要设置 Azure 订阅，请参阅[免费试用一个月版](https://azure.microsoft.com/pricing/free-trial/)。
-* 有关创建存储帐户的说明和有关获取帐户和密钥的信息，请参阅[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)。
+* 有关创建存储帐户的说明和有关获取帐户和密钥的信息，请参阅[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。
 
 

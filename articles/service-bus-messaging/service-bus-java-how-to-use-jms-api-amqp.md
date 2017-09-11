@@ -12,20 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 04/27/2017
+ms.date: 08/10/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: cfd4822820270dbaf44a25f3e0fe749492765df8
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 0848facd764c4fb0d7f95c1ae89ecb02a32257e1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>如何将 Java 消息服务 (JMS) API 用于服务总线和 AMQP 1.0
 高级消息队列协议 (AMQP) 1.0 是一个高效、可靠的线级消息传送协议，可用于构建可靠的跨平台消息传送应用程序。
 
-在 Service Bus 中支持 AMQP 1.0 意味着可以通过一系列使用有效的二进制协议的平台利用队列和发布/订阅中转消息传送功能。 此外，你还可以生成由结合使用多个语言、框架和操作系统构建的组件组成的应用程序。
+在 Service Bus 中支持 AMQP 1.0 意味着可以通过一系列使用有效的二进制协议的平台利用队列和发布/订阅中转消息传送功能。 此外，还可以生成由结合使用多个语言、框架和操作系统构建的组件组成的应用程序。
 
 本文说明了如何使用采用常用 Java 消息服务 (JMS) API 标准的 Java 应用程序中的服务总线消息传送功能（队列和发布/订阅主题）。 此处的[随附文章](service-bus-amqp-dotnet.md)解释如何使用服务总线 .NET API 来执行相同操作的操作。 使用 AMQP 1.0，可以同时使用以下两个指南来了解跨平台消息。
 
@@ -49,7 +48,7 @@ ms.lasthandoff: 04/28/2017
 
 ## <a name="coding-java-applications"></a>为 Java 应用程序编码
 ### <a name="java-naming-and-directory-interface-jndi"></a>Java 命名和目录接口 (JNDI)
-JMS 使用 Java 命名和目录接口 (JNDI) 创建逻辑名称和物理名称之间的分隔。 将使用 JNDI 解析以下两种类型的 JMS 对象：ConnectionFactory 和 Destination。 JNDI 使用一个提供程序模型，你可以在其中插入不同目录服务来处理名称解析任务。 Apache Qpid JMS AMQP 1.0 库附带一个使用以下格式的属性文件配置的、基于属性文件的简单 JNDI 提供程序。
+JMS 使用 Java 命名和目录接口 (JNDI) 创建逻辑名称和物理名称之间的分隔。 将使用 JNDI 解析以下两种类型的 JMS 对象：ConnectionFactory 和 Destination。 JNDI 使用一个提供程序模型，可以在其中插入不同目录服务来处理名称解析任务。 Apache Qpid JMS AMQP 1.0 库附带一个使用以下格式的属性文件配置的、基于属性文件的简单 JNDI 提供程序。
 
 ```
 # servicebus.properties - sample JNDI configuration
@@ -116,7 +115,7 @@ topic.[jndi_name] = [physical_name]
 > 
 
 ### <a name="write-the-jms-application"></a>编写 JMS 应用程序
-将 JMS 用于服务总线时不需要特殊的 API 或选项。 但是，有一些限制，我们将在后面说明。 与使用任何 JMS 应用程序一样，若要解析 **ConnectionFactory** 和目标，首先需要配置 JNDI 环境。
+将 JMS 用于服务总线时不需要特殊的 API 或选项。 但是，有一些限制，我们会在后面说明。 与使用任何 JMS 应用程序一样，若要解析 **ConnectionFactory** 和目标，首先需要配置 JNDI 环境。
 
 #### <a name="configure-the-jndi-initialcontext"></a>配置 JNDI InitialContext
 JNDI 环境是通过将配置信息的哈希表传入到 javax.naming.InitialContext 类的构造函数中来配置的。 哈希表中的两个必需元素是初始上下文工厂的类名称和提供程序 URL。 以下代码演示了如何配置 JNDI 环境以将基于 Qpid 属性文件的 JNDI 提供程序用于名为 **servicebus.properties** 的属性文件。
@@ -256,7 +255,7 @@ exit
 
 * 启动 .NET 示例应用程序而不使用任何命令行参数。
 * 使用“sendonly”命令行参数启动 Java 示例应用程序。 在此模式下，应用程序不会从队列接收消息，而只会发送消息。
-* 在 Java 应用程序控制台中按 **Enter** 多次，这将导致消息发送。
+* 在 Java 应用程序控制台中按 **Enter** 多次，这会导致消息发送。
 * 这些消息由 .NET 应用程序接收。
 
 #### <a name="output-from-jms-application"></a>从 JMS 应用程序输出
@@ -284,7 +283,7 @@ exit
 
 * 使用“sendonly”命令行参数启动 .NET 示例应用程序。 在此模式下，应用程序不会从队列接收消息，而只会发送消息。
 * 启动 Java 示例应用程序而不使用任何命令行参数。
-* 在 .NET 应用程序控制台中按 **Enter** 多次，这将导致消息发送。
+* 在 .NET 应用程序控制台中按 **Enter** 多次，这会导致消息发送。
 * 这些消息由 Java 应用程序接收。
 
 #### <a name="output-from-net-application"></a>从 .NET 应用程序输出
@@ -313,7 +312,7 @@ exit
 * 每个**会话**只允许一个 **MessageProducer** 或 **MessageConsumer**。 如果需要在应用程序中创建多个 **MessageProducers** 或 **MessageConsumers**，请分别对其创建专用**会话**。
 * 当前不支持易失性主题订阅。
 * 当前不支持 **MessageSelectors**。
-* 当前不支持临时目标（即 **TemporaryQueue** 和 **TemporaryTopic**），包括使用这些目标的 **QueueRequestor** 和 **TopicRequestor** API。
+* 当前不支持临时目标（例如 TemporaryQueue 和 TemporaryTopic），包括使用这些目标的 QueueRequestor 和 TopicRequestor API。
 * 不支持事务处理会话和分布式事务。
 
 ## <a name="summary"></a>摘要

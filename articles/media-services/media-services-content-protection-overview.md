@@ -4,7 +4,7 @@ description: "本文概述了如何使用媒体服务来保护内容。"
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 81bc00e1-dcda-4d69-b9ab-8768b793422b
 ms.service: media-services
@@ -19,7 +19,6 @@ ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
 ms.openlocfilehash: bf2bd9bca8817f64790ac62d2981a51aa36566a3
 ms.contentlocale: zh-cn
 ms.lasthandoff: 01/27/2017
-
 
 ---
 # <a name="protecting-content-overview"></a>保护内容概述

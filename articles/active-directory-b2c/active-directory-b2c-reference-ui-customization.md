@@ -1,86 +1,86 @@
 ---
-title: "Azure Active Directory B2C：用户界面 (UI) 自定义 | Microsoft Docs"
+title: "用户界面 (UI) 自定义 - Azure AD B2C | Microsoft Docs"
 description: "有关 Azure Active Directory B2C 中用户界面 (UI) 自定义功能的主题"
 services: active-directory-b2c
 documentationcenter: 
-author: swkrish
-manager: mbaldwin
-editor: bryanla
+author: saeedakhter-msft
+manager: krassk
+editor: parakhj
 ms.assetid: 99f5a391-5328-471d-a15c-a2fafafe233d
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2017
-ms.author: swkrish
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 8e71a7462a0cbdbd177b088e6757c70eeef31fc7
+ms.date: 08/16/2017
+ms.author: saeedakhter-msft
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 122fa997ea11b369aae3c59edf0043ab19d21aea
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C：自定义 Azure AD B2C 用户界面 (UI)
-用户体验在面向使用者的应用程序中至关重要。 这是良好应用程序和出色应用程序间的区别，也是仅仅活跃的使用者和真正参与的使用者间的区别。 通过 Azure Active Directory (Azure AD) B2C，可以使用完美的像素控制自定义使用者注册、登录（请参阅下方注释）、配置文件编辑和密码重置页面。
+
+用户体验在面向客户的应用程序中至关重要。  通过提升品牌观感的用户体验，可扩大客户群。 通过 Azure Active Directory B2C (Azure AD B2C)，可以使用完美的像素控制自定义注册、登录、配置文件编辑和密码重置页面。
 
 > [!NOTE]
-> 目前，只能通过使用[公司品牌功能](../active-directory/active-directory-add-company-branding.md)来自定义本地帐户登录页面、其附带的密码重置页面和验证电子邮件，而不能通过本文中介绍的机制完成这一操作。
-> 
-> 
+> 本文所述的页面 UI 自定义功能不适用于仅登录策略、其随附的密码重置页面和验证电子邮件。  这些功能使用[公司品牌功能](../active-directory/active-directory-add-company-branding.md)。
+>
 
-在本文中，将了解以下内容：
+本文涵盖以下主题：
 
-* 页面用户界面 (UI) 自定义功能。
-* 一种有助于使用示例内容测试页面 UI 自定义功能的工具。
-* 每种类型页面中的核心 UI 元素。
+* 页面 UI 自定义功能。
+* 用于将 HTML 内容上传到 Azure Blob 存储，以便用于页面 UI 自定义功能的工具。
+* Azure AD B2C 使用的 UI 元素，可使用级联样式表 (CSS) 自定义该元素。
 * 执行此功能时的最佳做法。
 
 ## <a name="the-page-ui-customization-feature"></a>页面 UI 自定义功能
-通过页面 UI 自定义功能，可以（通过配置[策略](active-directory-b2c-reference-policies.md)）自定义使用者注册、登录、密码重置和配置文件编辑页面的外观和风格。 在应用程序和 Azure AD B2C 提供的页面之间导航时，使用者将获得无缝体验。
 
-与 UI 选项受限或仅通过 API 可用的其他服务不同，Azure AD B2C 使用现代（且更简单）的方法来进行页面 UI 自定义。
+可自定义客户注册、登录、密码重置和配置文件编辑页面的外观和风格（通过配置[策略](active-directory-b2c-reference-policies.md)）。 在应用程序和 Azure AD B2C 提供的页面之间导航时，客户会获得无缝体验。
 
-以下是它的工作原理：Azure AD B2C 在使用者的浏览器中运行代码，并使用称为[跨域资源共享 (CORS)](http://www.w3.org/TR/cors/) 的现代方法从策略中指定的 URL 加载内容。 可以为不同的页面指定不同的 URL。 该代码合并 Azure AD B2C 中的 UI 元素与从 URL 加载的内容，并向使用者显示页面。 只需要：
+不同于使用 UI 选项的其他服务，Azure AD B2C 使用简单的新式方法自定义 UI。
 
-1. 使用位于 `<body>` 中某处的 `<div id="api"></div>` 元素（需要为空元素）创建格式正确的 HTML5 内容。 此元素标记插入 Azure AD B2C 内容的位置。
-2. 在 HTTPS 终结点上托管内容（允许 CORS）。 请注意，配置 CORS 时需要启用 GET 和 OPTIONS 请求方法。
-3. 为 Azure AD B2C 插入的 UI 元素设置样式。
+工作原理如下：Azure AD B2C 在客户的浏览器中运行代码，并使用称为[跨域资源共享 (CORS)](http://www.w3.org/TR/cors/) 的现代方法。  在运行时，从在策略中指定的 URL 加载内容。 可以为不同的页面指定不同的 URL。 从 URL 加载的内容与从 Azure AD B2C 插入的 HTML 片段合并后，会向客户显示页面。 只需要：
 
-## <a name="test-out-the-ui-customization-feature"></a>测试 UI 自定义功能
-如果想使用示例 HTML 和 CSS 内容试用 UI 自定义功能，我们为此提供了[一个简单的帮助工具](active-directory-b2c-reference-ui-customization-helper-tool.md)，可在 Azure Blob 存储中上传和配置示例内容。
+1. 使用位于 `<body>` 中某处的空 `<div id="api"></div>` 元素创建格式正确的 HTML5 内容。 此元素标记插入 Azure AD B2C 内容的位置。
+1. 在 HTTPS 终结点上托管内容（允许 CORS）。 请注意，配置 CORS 时必须启用 GET 和 OPTIONS 请求方法。
+1. 使用 CSS 为 Azure AD B2C 插入的 UI 元素设置样式。
 
-> [!NOTE]
-> 可以在任何位置托管 UI 内容：Web 服务器、CDN、AWS S3 和文件共享系统等。只要内容托管在公开可用的 HTTPS 终结点上（允许 CORS）就可以。 使用 Azure Blob 存储只是为了用于说明。
-> 
-> 
+### <a name="a-basic-example-of-customized-html"></a>自定义的 HTML 的一个基本示例
 
-### <a name="the-most-basic-html-content-for-testing"></a>用于测试的最基本 HTML 内容
-下面显示的是可以用来测试此功能的最基本 HTML 内容。 使用先前提供的同一帮助工具在 Azure Blob 存储中上传和配置此内容。 然后，可以验证每个页面上的无样式基本按钮和表单域是否显示且运行正常。
+以下示例是可以用来测试此功能的最基本 HTML 内容。 使用[帮助程序工具](active-directory-b2c-reference-ui-customization-helper-tool.md)在 Azure Blob 存储中上传和配置此内容。 然后，可以验证每个页面上的无样式基本按钮和表单域是否显示且运行正常。
 
 ```HTML
-
 <!DOCTYPE html>
 <html>
     <head>
         <title>!Add your title here!</title>
     </head>
     <body>
-        <div id="api"></div>    <!-- IMP: This element is intentionally empty; don't enter anything here -->
+        <div id="api"></div>   <!-- Leave this element empty because Azure AD B2C will insert content here. -->
     </body>
 </html>
-
 ```
 
-## <a name="the-core-ui-elements-in-each-type-of-page"></a>每种类型页面中的核心 UI 元素
-在以下部分中，将找到 Azure AD B2C 合并到内容中 `<div id="api"></div>` 元素的 HTML5 片段示例。 **请勿在 HTML 5 内容中插入这些片段。** Azure AD B2C 服务将在运行时插入它们。 使用这些示例设计自己的样式表。
+## <a name="test-out-the-ui-customization-feature"></a>测试 UI 自定义功能
 
-### <a name="azure-ad-b2c-content-inserted-into-the-identity-provider-selection-page"></a>插入到“标识提供者选择页”的 Azure AD B2C 内容
-此页面包含有可供用户在注册或登录期间进行选择的标识提供者列表。 这些是社交标识提供者（如 Facebook 和 Google+）或本地帐户（基于电子邮件地址或用户名）。
+想要使用我们的示例 HTML 和 CSS 内容来尝试 UI 自定义功能？  我们提供了[帮助程序工具](active-directory-b2c-reference-ui-customization-helper-tool.md)，它可用于在 Azure Blob 存储中上传和配置示例内容。
+
+> [!NOTE]
+> 可以在任何位置托管 UI 内容：Web 服务器、CDN、AWS S3 和文件共享系统等。只需内容托管在启用了 CORS 的公开可用的 HTTPS 终结点上即可。 使用 Azure Blob 存储只是为了用于说明。
+>
+
+## <a name="the-ui-fragments-embedded-by-azure-ad-b2c"></a>Azure AD B2C 嵌入的 UI 片段
+
+以下部分列出了 Azure AD B2C 合并到内容中 `<div id="api"></div>` 元素的 HTML5 片段。 **请勿在 HTML 5 内容中插入这些片段。** Azure AD B2C 服务会在运行时插入它们。 设计自己的级联样式表 (CSS) 时，请使用这些片段作为参考。
+
+### <a name="fragment-inserted-into-the-identity-provider-selection-page"></a>插入到“标识提供者选择页”的片段
+
+此页面包含有可供用户在注册或登录期间进行选择的标识提供者列表。 这些按钮包括社交标识提供者（如 Facebook 和 Google+）或本地帐户（基于电子邮件地址或用户名）。
 
 ```HTML
-
 <div id="api" data-name="IdpSelections">
     <div class="intro">
          <p>Sign up</p>
@@ -100,14 +100,13 @@ ms.lasthandoff: 05/08/2017
         </ul>
     </div>
 </div>
-
 ```
 
-### <a name="azure-ad-b2c-content-inserted-into-the-local-account-sign-up-page"></a>插入到“本地帐户注册页”的 Azure AD B2C 内容
-此页面包含一个注册窗体，用户在注册基于电子邮件地址或用户名的本地帐户时必须填写此窗体。 该窗体可以包含不同的输入控件，如文本输入框、密码输入框、单选按钮、单选下拉框和多选复选框。
+### <a name="fragment-inserted-into-the-local-account-sign-up-page"></a>插入到“本地帐户注册页”的片段
+
+此页面包含一个窗体，用于基于电子邮件地址或用户名的本地帐户注册。 该窗体可以包含不同的输入控件，如文本输入框、密码输入框、单选按钮、单选下拉框和多选复选框。
 
 ```HTML
-
 <div id="api" data-name="SelfAsserted">
     <div class="intro">
         <p>Create your account by providing the following details</p>
@@ -216,17 +215,17 @@ ms.lasthandoff: 05/08/2017
         <div id="verifying_blurb"></div>
     </div>
 </div>
-
 ```
 
-### <a name="azure-ad-b2c-content-inserted-into-the-social-account-sign-up-page"></a>插入到“社交帐户注册页”的 Azure AD B2C 内容
-此页面包含一个注册窗体，消费者在使用 Facebook 或 Google+ 之类的社交标识提供者的现有帐户进行注册时必须填写此窗体。 除密码输入字段外，此页面类似于本地帐户注册页面（如上一部分所示）。
+### <a name="fragment-inserted-into-the-social-account-sign-up-page"></a>插入到“社交帐户注册页”的片段
 
-### <a name="azure-ad-b2c-content-inserted-into-the-unified-sign-up-or-sign-in-page"></a>插入到“统一注册或登录页”的 Azure AD B2C 内容
-此页面处理使用者的注册和登录，这些使用者可以使用社交标识提供者（Facebook 或 Google+）或本地帐户。
+使用社交标识提供者（如 Facebook 或 Google+）的现有帐户进行注册时，可能会显示此页面。  在必须使用注册窗体收集最终用户的其他信息时使用此页面。 除密码输入字段外，此页面类似于本地帐户注册页面（如上一部分所示）。
+
+### <a name="fragment-inserted-into-the-unified-sign-up-or-sign-in-page"></a>插入到“统一注册或登录页”的片段
+
+此页面处理客户的注册和登录，这些客户可以使用社交标识提供者（Facebook 或 Google+）的帐户或本地帐户。
 
 ```HTML
-
 <div id="api" data-name="Unified">
         <div class="social" role="form">
                <div class="intro">
@@ -273,14 +272,13 @@ ms.lasthandoff: 05/08/2017
                </div>
         </div>
 </div>
-
 ```
 
-### <a name="azure-ad-b2c-content-inserted-into-the-multi-factor-authentication-page"></a>插入到“多重身份验证页”的 Azure AD B2C 内容
+### <a name="fragment-inserted-into-the-multi-factor-authentication-page"></a>插入到“多重身份验证页”的片段
+
 在此页面上，用户可以在注册或登录期间（使用文字或语音）验证其电话号码。
 
 ```HTML
-
 <div id="api" data-name="Phonefactor">
     <div id="phonefactor_initial">
         <div class="intro">
@@ -318,12 +316,11 @@ ms.lasthandoff: 05/08/2017
         <div id="dialing_blurb"></div><div id="dialing_number"></div>
     </div>
 </div>
-
 ```
 
-### <a name="azure-ad-b2c-content-inserted-into-the-error-page"></a>插入到“错误页”的 Azure AD B2C 内容
-```HTML
+### <a name="fragment-inserted-into-the-error-page"></a>插入到“错误页”的片段
 
+```HTML
 <div id="api" class="error-page-content" data-name="GlobalException">
     <h2>Sorry, but we're having trouble signing you in.</h2>
     <div class="error-page-help">We track these errors automatically, but if the problem persists feel free to contact us. In the meantime, please try again.</div>
@@ -334,18 +331,18 @@ ms.lasthandoff: 05/08/2017
         <div class="error-page-detail">AADB2C90065: A B2C client-side error 'Access is denied.' has occurred requesting the remote resource.</div>
     </div>
 </div>
-
 ```
 
 ## <a name="localizing-your-html-content"></a>本地化 HTML 内容
-可通过打开 [语言自定义](active-directory-b2c-reference-language-customization.md) 来本地化 HTML 内容。  启用此选项可让 Azure AD B2C 将 OIDC 参数 `ui-locales` 转发到终结点。  可以使用此选项提供语言特定的自定义 UI 页面。  
+
+可通过启用[语言自定义](active-directory-b2c-reference-language-customization.md)来本地化 HTML 内容。  启用此功能可让 Azure AD B2C 将 OpenID 连接参数 `ui-locales` 转发到终结点。  内容服务器可使用此参数提供特定语言的自定义 HTML 页面。
 
 ## <a name="things-to-remember-when-building-your-own-content"></a>构建自己的内容时要注意的事项
+
 如果打算使用页面 UI 自定义功能，请查看以下最佳做法：
 
 * 请勿复制 Azure AD B2C 的默认内容并尝试修改。 最好从头开始构建 HTML5 内容，将默认内容用作参考。
-* 在登录、注册和配置文件编辑策略提供的所有页面（错误页除外）中，所提供的样式表必须覆盖我们在 <head> 片段中添加到这些页面的默认样式表。 在注册或登录和密码重置策略提供的所有页面中，以及所有策略的错误页上，必须自行提供所有样式。
-* 出于安全考虑，我们不允许你在自己的内容中包含任何 JavaScript。 你所需的大部分功能应该都是现成的。 如果不是，请使用[User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)（用户之声）请求新功能。
+* 出于安全考虑，我们不允许在自己的内容中包含任何 JavaScript。 所需的大部分功能应该都是现成的。 如果不是，请使用[User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)（用户之声）请求新功能。
 * 支持的浏览器版本：
   * Internet Explorer 11、10、Edge
   * 对 Internet Explorer 9 和 8 的支持有限

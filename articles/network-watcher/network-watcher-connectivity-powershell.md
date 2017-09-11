@@ -3,7 +3,7 @@ title: "使用 Azure 网络观察程序检查连接性 - PowerShell | Microsoft 
 description: "此页说明如何使用 PowerShell 通过网络观察程序测试连接性"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.service: network-watcher
@@ -12,30 +12,24 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 036902801189c71eb336900107f07319dfe817f2
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: a8f936cd23838759dc30b04688d3c6544e4895cc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
 # <a name="check-connectivity-with-azure-network-watcher-using-powershell"></a>使用 PowerShell 通过 Azure 网络观察程序检查连接性
 
 > [!div class="op_single_selector"]
+> - [门户](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [CLI 2.0](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
 了解如何使用连接来验证是否可以建立从虚拟机到给定终结点的直接 TCP 连接。
-
-本文将指导你完成一些连接检查方案。
-
-* [检查与虚拟机的连接](#check-connectivity-to-a-virtual-machine)
-* [验证路由问题](#validate-routing-issues)
-* [检查网站延迟](#check-website-latency)
-* [检查与存储终结点的连接](#check-connectivity-to-a-storage-endpoint)
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -97,7 +91,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>响应
 
-以下响应来自前面的示例。  在此响应中，`ConnectionStatus` 为“不可到达”。 可以看到所有探测都发送失败。 由于用户配置的名为“UserRule_Port80”的 `NetworkSecurityRule` 已配置为阻止端口 80 上的传入流量，虚拟设备上的连接失败。 可以使用此信息来了解连接问题。
+以下响应来自前面的示例。  在此响应中，`ConnectionStatus` 为“不可访问”。 可以看到所有探测都发送失败。 由于用户配置的名为 **UserRule_Port80** 的 `NetworkSecurityRule` 已配置为阻止端口 80 上的传入流量，虚拟设备上的连接失败。 可以使用此信息来了解连接问题。
 
 ```
 ConnectionStatus : Unreachable
@@ -190,7 +184,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>响应
 
-在以下示例中，`ConnectionStatus` 显示为“不可到达”。 在 `Hops` 详细信息中，可以在 `Issues` 下看到由于 `UserDefinedRoute` 流量已被阻止。 
+在以下示例中，`ConnectionStatus` 显示为“不可访问”。 在 `Hops` 详细信息中，可以在 `Issues` 下看到由于 `UserDefinedRoute` 流量已被阻止。 
 
 ```
 ConnectionStatus : Unreachable

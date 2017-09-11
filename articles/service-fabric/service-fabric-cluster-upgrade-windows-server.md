@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/30/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: a6f74374582d551e2540d1ebd5e9677c92330e09
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: ac40775ca62362a32184207857a0b965a798e135
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="upgrade-your-standalone-azure-service-fabric-on-windows-server-cluster"></a>升级 Windows Server 群集上的独立 Azure Service Fabric
@@ -32,7 +31,7 @@ ms.lasthandoff: 07/06/2017
 对于任何新式系统而言，升级能力是实现产品长期成功的关键所在。 Azure Service Fabric 群集是你拥有的资源。 本文介绍如何确保群集始终运行受支持的 Service Fabric 代码和配置版本。
 
 ## <a name="control-the-service-fabric-version-that-runs-on-your-cluster"></a>控制群集上运行的 Service Fabric 版本
-若要将群集设置为在 Microsoft 发布新版本时下载 Service Fabric 的更新，可将 **fabricClusterAutoupgradeEnabled** 群集配置设置为 true。 如果希望群集一直使用某个受支持的 Service Fabric 版本，可将 **fabricClusterAutoupgradeEnabled** 群集配置设置为 false。
+要将群集设置为在 Microsoft 发布新版本时下载 Service Fabric 的更新，可将 **fabricClusterAutoupgradeEnabled** 群集配置设置为 true。 如果希望群集一直使用某个受支持的 Service Fabric 版本，可将 **fabricClusterAutoupgradeEnabled** 群集配置设置为 false。
 
 > [!NOTE]
 > 确保群集始终运行受支持的 Service Fabric 版本。 当 Microsoft 宣布推出新版 Service Fabric 时，即标志着自宣布日期起至少 60 天后，将结束对旧版的支持。 新版本将[在 Service Fabric 团队博客](https://blogs.msdn.microsoft.com/azureservicefabric/)中宣布。 从该时间开始，便可以选择使用新版本。
@@ -52,7 +51,7 @@ ms.lasthandoff: 07/06/2017
 
 “当前的群集版本 [版本号] 支持在[日期]结束。”
 
-群集运行最新版本后，警告将会消失。
+群集运行最新版本后，警告会消失。
 
 #### <a name="cluster-upgrade-workflow"></a>群集升级工作流
 看到群及运行状况警告后，请执行以下操作：
@@ -110,7 +109,7 @@ ms.lasthandoff: 07/06/2017
 如果群集节点无法通过 Internet 连接到 [http://download.microsoft.com](http://download.microsoft.com)，请使用以下步骤将群集升级到受支持的版本。
 
 > [!NOTE]
-> 如果运行的群集无法连接到 Internet，则必须关注 Service Fabric 团队博客来了解新版本的信息。 系统不会显示任何群集运行状况警告来提醒你有新版本可用。  
+> 如果运行的群集无法连接到 Internet，则必须关注 Service Fabric 团队博客来了解新版本的信息。 系统不会显示任何群集运行状况警告来提示有新版本可用。  
 >
 >
 
@@ -188,6 +187,23 @@ ms.lasthandoff: 07/06/2017
 
 
 ## <a name="upgrade-the-cluster-configuration"></a>升级群集配置
+启动配置升级前，可通过运行独立程序包中的 powershell 脚本来测试新群集配置 json。
+
+```powershell
+
+    TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File> -OldClusterConfigFilePath <Path to the old Configuration File>
+
+```
+或
+
+```powershell
+
+    TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File> -OldClusterConfigFilePath <Path to the old Configuration File> -FabricRuntimePackagePath <Path to the .cab file which you want to test the configuration against>
+
+```
+
+部分配置不能升级（如终结点、群集名称、节点 IP 等）。这将针对旧配置测试新的群集配置 json ，并在出现问题时在 Powershell 窗口中引发错误。
+
 若要升级群集配置，请运行 **Start-ServiceFabricClusterConfigurationUpgrade**。 配置升级由升级域处理。
 
 ```powershell
@@ -198,10 +214,11 @@ ms.lasthandoff: 07/06/2017
 
 ### <a name="cluster-certificate-config-upgrade"></a>群集证书配置升级  
 群集证书用于群集节点之间的身份验证，因此执行证书滚动时应格外小心，因为出现故障会阻止群集节点之间的通信。  
-从技术上讲，支持两种选择：  
+从技术上讲，支持三种选择：  
 
 1. 单个证书升级：升级路径为“证书 A（主证书）-> 证书 B（主证书）-> 证书 C（主证书）-> ...”。   
 2. 双证书升级：升级路径为“证书 A（主证书）-> 证书 A（主证书）和证书 B（辅助证书）-> 证书 B（主证书）-> 证书 B（主证书）和证书 C（辅助证书）-> 证书 C（主证书）-> ...”。
+3. 证书类型升级：“基于指纹的证书配置 <-> 基于 CommonName 的证书配置”。 例如，“证书指纹 A（主证书）和指纹 B（辅助证书）-> 证书 CommonName C”。
 
 
 ## <a name="next-steps"></a>后续步骤

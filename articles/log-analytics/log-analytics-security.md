@@ -1,6 +1,6 @@
 ---
 title: "Log Analytics 数据安全 | Microsoft 文档"
-description: "了解 Log Analytics 如何保护你的隐私和数据安全。"
+description: "了解 Log Analytics 如何保护隐私和数据安全。"
 services: log-analytics
 documentationcenter: 
 author: MGoedtel
@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
-ms.openlocfilehash: fa33a031a9e05f3079f1ed68d2ac0902b3070fa6
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 9ae1629462d375c1061d9c7b25975c789ee661c9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 数据安全
-Microsoft 致力于保护你的隐私和数据安全，同时提供软件和服务来帮助你管理组织的 IT 基础结构。 我们认识到，当你授信他人访问你的数据时，这种信任需要极高的安全性。 从服务的编码到运营，Microsoft 都严格遵守相关法规与安全准则。
+Microsoft 致力于保护隐私和数据安全，同时提供软件和服务来帮助你管理组织的 IT 基础结构。 我们认识到，授信他人访问数据时，这种信任需要极高的安全性。 从服务的编码到运营，Microsoft 都严格遵守相关法规与安全准则。
 
 保护数据是 Microsoft 的头等大事。 如有任何有关以下任何信息（包括 [Azure 支持选项](http://azure.microsoft.com/support/options/)的安全政策）的疑问、建议或问题，请与我们联系。
 
@@ -42,7 +41,7 @@ Log Analytics 服务使用以下方法安全地管理你基于云的数据：
 客户数据在 OMS 服务的每个组件上都保持逻辑隔离。 所有数据均按组织进行标记。 此标记方式贯穿数据的整个生命周期，在服务的每个层强制实施。 每个用户都具有用于存储长期数据的专用 Azure blob
 
 ## <a name="data-retention"></a>数据保留
-编入索引的日志搜索数据基于你的定价计划进行存储和保留。 有关详细信息，请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)。
+编入索引的日志搜索数据基于定价计划进行存储和保留。 有关详细信息，请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)。
 
 Microsoft 会在 OMS 工作区关闭的 30 天后删除客户数据。 Microsoft 还会删除承载该数据的 Azure 存储帐户。 在删除客户数据时，不会销毁任何物理驱动器。
 
@@ -132,18 +131,18 @@ OMS Log Analytics 满足以下要求：
 ![OMS 数据收集和安全性的图像](./media/log-analytics-security/log-analytics-security-diagram.png)
 
 ## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1.注册 Log Analytics 并收集数据
-若要使组织将数据发送到 Log Analytics，请配置 Windows 代理、在 Azure 虚拟机上运行的代理或 OMS Agent for Linux。 如果使用 Operations Manager 代理，则你将在 Operations 控制台中使用配置向导对代理进行配置。 用户（可能是你、其他个别用户，也可能是一组用户）会创建一个或多个 OMS 帐户（即 OMS 工作区），然后使用以下帐户之一注册代理：
+要使组织将数据发送到 Log Analytics，请配置 Windows 代理、在 Azure 虚拟机上运行的代理或 OMS Agent for Linux。 如果使用 Operations Manager 代理，则在 Operations 控制台中使用配置向导对代理进行配置。 用户（可能是你、其他个别用户，也可能是一组用户）会创建一个或多个 OMS 帐户（即 OMS 工作区），并使用以下帐户之一注册代理：
 
 * [组织 ID](../active-directory/sign-up-organization.md)
 * [Microsoft 帐户 - Outlook、Office Live、MSN](http://www.microsoft.com/account/default.aspx)
 
-在 OMS 工作区中对数据进行收集、聚合、分析和呈现。 工作区主要用作划分数据的一种方式，每个工作区都是唯一的。 例如，可能希望生产数据受一个 OMS 工作区管理，测试数据受另一个工作区管理。 工作区还有助于管理员控制用户对数据的访问。 每个工作区可以有多个与它关联的用户帐户，每个用户帐户可以访问多个 OMS 工作区。 基于数据中心区域创建工作区。 会将每个工作区复制到区域中的其他数据中心，主要用于实现 OMS 服务可用性。
+在 OMS 工作区中对数据进行收集、聚合、分析和呈现。 工作区主要用作划分数据的一种方式，每个工作区都是唯一的。 例如，可能希望生产数据受一个 OMS 工作区管理，测试数据受另一个工作区管理。 工作区还有助于管理员控制用户对数据的访问。 每个工作区可以有多个与它关联的用户帐户，每个用户帐户可以访问多个 OMS 工作区。 基于数据中心区域创建工作区。 会将每个工作区复制到区域中的其他数据中心，主用于实现 OMS 服务可用性。
 
 对于 Operations Manager，配置向导完成后，每个 Operations Manager 管理组会与 Log Analytics 服务建立连接。 然后可以使用“添加计算机”向导选择允许管理组中哪些计算机向该服务发送数据。 对于其他代理类型，每一个都会安全地连接到 OMS 服务。
 
 会对已连接系统与 Log Analytics 服务之间的所有通信进行加密。  TLS (HTTPS) 协议用于加密。  遵循 Microsoft SDL 过程，已确保 Log Analytics 是最新的，加密协议也是最新的。
 
-每种类型的代理都会收集 Log Analytics 的数据。 收集的数据类型取决于所用解决方案的类型。 可以查看[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中的数据收集的摘要。 此外，会针对大多数解决方案提供更详细的收集信息。 解决方案包含一组预定义的视图、日志搜索查询、数据收集规则和处理逻辑。 只有管理员可以使用 Log Analytics 导入解决方案。 解决方案完成导入后，会将它移到 Operations Manager 管理服务器（如果使用），然后再移到你选定的任何代理。 然后，该代理收集数据。
+每种类型的代理都会收集 Log Analytics 的数据。 收集的数据类型取决于所用解决方案的类型。 可以查看[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中的数据收集的摘要。 此外，会针对大多数解决方案提供更详细的收集信息。 解决方案包含一组预定义的视图、日志搜索查询、数据收集规则和处理逻辑。 只有管理员可以使用 Log Analytics 导入解决方案。 解决方案完成导入后，会将它移到 Operations Manager 管理服务器（如果使用），然后再移到选定的任何代理。 然后，该代理收集数据。
 
 ## <a name="2-send-data-from-agents"></a>2.从代理发送数据
 将所有代理类型注册到加密密钥，会在代理和 Log Analytics 之间使用基于证书的身份验证和 SSL 以及端口 443 建立安全连接。 OMS 使用机密存储生成和维护密钥。 私钥每隔 90 天会进行轮换、存储在 Azure 中，并受遵循严格的法规和合规性操作的 Azure Operations 管理。
@@ -152,15 +151,15 @@ OMS Log Analytics 满足以下要求：
 
 对于在 Azure 虚拟机上运行的 Windows 代理，只读存储密钥用于读取 Azure 表中的诊断事件。
 
-如果出于任何原因，任何代理都无法与该服务进行通信，已收集的数据会以本地方式存储在临时缓存中，然后管理服务器会尝试在两小时内每隔八分钟重新发送数据。 代理的缓存数据受操作系统的凭据存储的保护。 如果服务在两小时后无法处理数据，代理会将该数据加入队列。 如果队列已满，OMS 会开始丢弃数据类型，从性能数据开始。 代理队列限制是一个注册表项，因此必要时可以对它进行修改。 向服务发送（不通过本地数据库）已收集的数据时会先对数据进行压缩，因此不会向数据库添加任何负载。 已收集的数据完成发送后，会从缓存中删除它。
+如果出于任何原因，任何代理都无法与该服务进行通信，已收集的数据会以本地方式存储在临时缓存中，管理服务器会尝试在两小时内每隔八分钟重新发送数据。 代理的缓存数据受操作系统的凭据存储的保护。 如果服务在两小时后无法处理数据，代理会将该数据加入队列。 如果队列已满，OMS 会开始丢弃数据类型，从性能数据开始。 代理队列限制是一个注册表项，因此必要时可以对它进行修改。 向服务发送（不通过本地数据库）已收集的数据时会先对数据进行压缩，因此不会向数据库添加任何负载。 已收集的数据完成发送后，会从缓存中删除它。
 
-如上所述，通过 SSL 向 Microsoft Azure 数据中心发送你的代理中的数据。 可以选择使用 ExpressRoute 为数据提供额外的安全性。 借助 ExpressRoute，可以从网络服务提供商提供的现有 WAN 网络（例如多协议标签交换 (MPLS) VPN）直接连接到 Azure。 有关详细信息，请参阅 [ExpressRoute](https://azure.microsoft.com/services/expressroute/)。
+如上所述，通过 SSL 向 Microsoft Azure 数据中心发送代理中的数据。 可以选择使用 ExpressRoute 为数据提供额外的安全性。 借助 ExpressRoute，可以从网络服务提供商提供的现有 WAN 网络（例如多协议标签交换 (MPLS) VPN）直接连接到 Azure。 有关详细信息，请参阅 [ExpressRoute](https://azure.microsoft.com/services/expressroute/)。
 
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3.Log Analytics 服务接收并处理数据
-Log Analytics 服务通过使用 Azure 身份验证对证书和数据完整性进行验证，来确保传入数据来自受信任的源。 将未处理的原始数据作为 blob 存储在 [Microsoft Azure 存储](../storage/storage-introduction.md)中，未对这些数据进行加密。 不过，每个 Azure 存储 blob 都具有一组唯一的密钥集，只允许相应用户进行访问。 存储的数据类型取决于导入的并用于收集数据的解决方案的类型。 然后，Log Analytics 服务处理 Azure 存储 blob 的原始数据。
+Log Analytics 服务通过使用 Azure 身份验证对证书和数据完整性进行验证，来确保传入数据来自受信任的源。 将未处理的原始数据作为 blob 存储在 [Microsoft Azure 存储](../storage/common/storage-introduction.md)中，未对这些数据进行加密。 不过，每个 Azure 存储 blob 都具有一组唯一的密钥集，只允许相应用户进行访问。 存储的数据类型取决于导入的并用于收集数据的解决方案的类型。 然后，Log Analytics 服务处理 Azure 存储 blob 的原始数据。
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4.使用 Log Analytics 访问数据
-可以通过使用组织帐户或先前设置的 Microsoft 帐户登录到 OMS 门户中的 Log Analytics。 OMS 门户和 OMS 中的 Log Analytics 之间的所有通信流量都通过安全 HTTPS 通道进行发送。 使用 OMS 门户时，将在用户客户端（Web 浏览器）上生成会话 ID，会将数据存储在本地缓存中，直到该会话终止。 终止后，会删除该缓存。 不会自动删除不包含个人身份信息的客户端 Cookie。 会话 Cookie 标记为 HTTPOnly，并且受到保护。 在预先确定的空闲期过后，会终止 OMS 门户会话。
+可以通过使用组织帐户或先前设置的 Microsoft 帐户登录到 OMS 门户中的 Log Analytics。 OMS 门户和 OMS 中的 Log Analytics 之间的所有通信流量都通过安全 HTTPS 通道进行发送。 使用 OMS 门户时，会在用户客户端（Web 浏览器）上生成会话 ID，会将数据存储在本地缓存中，直到该会话终止。 终止后，会删除该缓存。 不会自动删除不包含个人身份信息的客户端 Cookie。 会话 Cookie 标记为 HTTPOnly，并且受到保护。 在预先确定的空闲期过后，会终止 OMS 门户会话。
 
 通过使用 OMS 门户，可以将数据导出为 CSV 文件，还可以使用搜索 API 访问数据。 CSV 导出限制为每次导出 50000 行，API 数据限制为每次搜索 5000 行。
 

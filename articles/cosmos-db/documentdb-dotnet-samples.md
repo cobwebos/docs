@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: rnagpal
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: e7b910ae94b178b5370d4938698e8bcce10775ea
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 5f0a7f59c114ab65a19617a62d39dcfa93a25c00
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-documentdb-api"></a>Azure Cosmos DB：DocumentDB API 的 .NET 示例
@@ -137,6 +137,16 @@ IndexManagement 项目示例的 [RunIndexDemo](https://github.com/Azure/azure-do
 | [使用 Order by 针对已分区集合进行查询](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs#L737-L810) |[DocumentQueryable.CreateDocumentQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createdocumentquery.aspx) |
 
 有关编写查询的详细信息，请参阅 [Azure Cosmos DB 中的 SQL 查询](documentdb-sql-query.md)。
+
+## <a name="change-feed-examples"></a>更改源示例 
+更改源示例，[azure-documentdb-dotnet/samples/code-samples/ChangeFeed/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) 演示如何执行以下任务。 
+
+| 任务 | API 参考 |
+| --- | --- |
+| [读取更改源](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L132) |[DocumentClient.CreateDocumentChangeFeedQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) | 
+| [读取分区键范围](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L118) |[DocumentClient.ReadPartitionKeyRangeFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readpartitionkeyrangefeedasync.aspx) | 
+
+更改源处理器示例：[更改源迁移工具](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool)演示如何使用更改源处理器库将数据复制到另一个 Cosmos DB 集合。   
 
 ## <a name="server-side-programming-examples"></a>服务器端编程示例
 服务器端编程文件 [azure-documentdb-dotnet/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) 演示如何执行以下任务。

@@ -2,7 +2,7 @@
 title: "媒体服务 PlayReady 许可证模板概述"
 description: "本主题简要介绍了用于配置 PlayReady 许可证的 PlayReady 许可证模板。"
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -19,7 +19,6 @@ ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: ea0b54a1041c0008071a9b11afc81e1b91f3e409
 ms.contentlocale: zh-cn
 ms.lasthandoff: 02/16/2017
-
 
 ---
 # <a name="media-services-playready-license-template-overview"></a>媒体服务 PlayReady 许可证模板概述

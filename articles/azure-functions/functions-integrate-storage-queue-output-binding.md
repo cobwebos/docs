@@ -1,26 +1,26 @@
 ---
-title: "在 Azure 中创建由队列消息触发的函数 | Microsoft Docs"
+title: "在 Azure 中创建由队列消息触发的函数 | Microsoft 文档"
 description: "使用 Azure Functions 创建由提交到 Azure 存储队列的消息调用的无服务器函数。"
 services: azure-functions
 documentationcenter: na
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.service: functions
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 08/17/2017
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 3eae02f7cf756e8e24d4f1952d12c37f2ad4b400
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 57c59273a9da55f3e357764c522b444ae2d73cb5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>使用 Functions 将消息添加到 Azure 存储队列
@@ -51,7 +51,7 @@ ms.lasthandoff: 08/02/2017
     | ------------ |  ------- | -------------------------------------------------- |
     | **队列名称**   | myqueue-items    | 要连接到存储帐户中的队列的名称。 |
     | **存储帐户连接** | AzureWebJobStorage | 可以使用 Function App 已在使用的存储帐户连接，也可以创建一个新的存储帐户连接。  |
-    | **消息参数名称** | outQueueItem | 输出绑定参数的名称。 | 
+    | **消息参数名称** | outputQueueItem | 输出绑定参数的名称。 | 
 
 4. 单击“保存”添加绑定。
  
@@ -61,11 +61,11 @@ ms.lasthandoff: 08/02/2017
 
 1. 选择函数以在编辑器中显示函数代码。 
 
-2. 对于 C# 函数，按如下所示更新函数定义，添加 **outQueueItem** 存储绑定参数。 对于 JavaScript 函数，跳过此步骤。
+2. 对于 C# 函数，请按如下所示更新函数定义，以添加“outputQueueItem”存储绑定参数。 对于 JavaScript 函数，跳过此步骤。
 
     ```cs   
     public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, 
-        ICollector<string> outQueueItem, TraceWriter log)
+        ICollector<string> outputQueueItem, TraceWriter log)
     {
         ....
     }
@@ -74,12 +74,12 @@ ms.lasthandoff: 08/02/2017
 3. 在方法返回之前，将以下代码添加到函数。 使用与函数的语言对应的代码段。
 
     ```javascript
-    context.bindings.outQueueItem = "Name passed to the function: " + 
+    context.bindings.outputQueueItem = "Name passed to the function: " + 
                 (req.query.name || req.body.name);
     ```
 
     ```cs
-    outQueueItem.Add("Name passed to the function: " + name);     
+    outputQueueItem.Add("Name passed to the function: " + name);     
     ```
 
 4. 选择“保存”以保存更改。
@@ -100,7 +100,7 @@ ms.lasthandoff: 08/02/2017
 
 如果已安装存储资源管理器并已将其连接到存储帐户，请跳过前三个步骤。    
 
-1. 在函数中，选择“集成”和新的“Azure 队列存储”输出绑定，然后展开“文档”。 复制“帐户名称”和“帐户密钥”。 使用这些凭据连接到存储帐户。
+1. 在函数中，选择“集成”和新的“Azure 队列存储”输出绑定，并展开“文档”。 复制“帐户名称”和“帐户密钥”。 使用这些凭据连接到存储帐户。
  
     ![获取存储帐户连接凭据。](./media/functions-integrate-storage-queue-output-binding/function-get-storage-account-credentials.png)
 
@@ -112,7 +112,7 @@ ms.lasthandoff: 08/02/2017
   
     ![粘贴存储凭据，然后进行连接。](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-2.png)
 
-4. 展开附加的存储帐户，右键单击“队列”并验证名为 **myqueue-items** 的队列是否存在。 应看到一条消息已在队列中。  
+4. 展开附加的存储帐户，展开“队列”并验证名为“myqueue-items”的队列是否存在。 应看到一条消息已在队列中。  
  
     ![创建存储队列。](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
  

@@ -3,8 +3,8 @@ title: "从服务器资源管理器访问 Azure 虚拟机 | Microsoft Docs"
 description: "概述如何在 Visual Studio 的服务器资源管理器中查看、创建和管理 Azure 虚拟机 (VM)。"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: eb3afde6-ba90-4308-9ac1-3cc29da4ede0
 ms.service: multiple
@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/18/2016
-ms.author: tarcher
-translationtype: Human Translation
+ms.author: kraigb
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 009b325054737b63d5bdaefbe005d6a613126f52
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="accessing-azure-virtual-machines-from-server-explorer"></a>从服务器资源管理器访问 Azure 虚拟机
@@ -51,10 +52,5 @@ ms.openlocfilehash: 009b325054737b63d5bdaefbe005d6a613126f52
 
 ## <a name="next-steps"></a>后续步骤
 若要了解有关在 Visual Studio 中使用 Azure 角色的详细信息，请参阅[将远程桌面与 Azure 角色一起使用](vs-azure-tools-remote-desktop-roles.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

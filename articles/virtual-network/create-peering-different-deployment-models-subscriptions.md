@@ -67,7 +67,7 @@ ms.lasthandoff: 07/26/2017
 
 ## <a name="portal"></a>创建对等互连 - Azure 门户
 
-本教程为每个订阅使用不同的帐户。 如果使用的帐户可访问这两个订阅，则可使用相同帐户完成所有步骤，跳过注销门户的步骤，及为虚拟网络分配其他用户权限的步骤。 必须先注册预览版，才能完成以下任意步骤。 若要注册，请完成本文](#register)注册预览版[部分的步骤。 请先确保两个订阅已完成预览版注册，再继续执行其余步骤。
+本教程为每个订阅使用不同的帐户。 如果使用的帐户可访问这两个订阅，则可使用相同帐户完成所有步骤，跳过注销门户的步骤，及为虚拟网络分配其他用户权限的步骤。 必须先注册预览版，才能完成以下任意步骤。 若要注册，请完成本文 [注册预览版](#register) 部分的步骤。 请先确保两个订阅已完成预览版注册，再继续执行其余步骤。
  
 1. 以用户 A 的身份登录 [Azure 门户](https://portal.azure.com)。 用于登录的帐户必须拥有创建虚拟网络对等互连的必要权限。 有关详细信息，请参阅本文的[权限](#permissions)部分。
 2. 依次单击“+ 新建”、“网络”、“虚拟网络”。
@@ -124,7 +124,7 @@ ms.lasthandoff: 07/26/2017
 
 本教程为每个订阅使用不同的帐户。 如果使用的帐户可访问这两个订阅，则可使用相同帐户完成所有步骤，可跳过注销 Azure 的步骤，并删除创建用户角色分配的脚本行。 将以下所有脚本中的 UserA@azure.com 和 UserB@azure.com 替换为用户 A 和用户 B 使用的用户名。 
 
-必须先注册预览版，才能完成以下任意步骤。 若要注册，请完成本文](#register)注册预览版[部分的步骤。 请先确保两个订阅已完成预览版注册，再继续执行其余步骤。
+必须先注册预览版，才能完成以下任意步骤。 若要注册，请完成本文 [注册预览版](#register) 部分的步骤。 请先确保两个订阅已完成预览版注册，再继续执行其余步骤。
 
 1. [安装](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Azure CLI 1.0，创建虚拟网络（经典）。
 2. 使用 `azure login` 命令打开 CLI 并以用户 B 的身份登录到 Azure。
@@ -211,7 +211,7 @@ ms.lasthandoff: 07/26/2017
 
 本教程为每个订阅使用不同的帐户。 如果使用的帐户可访问这两个订阅，则可使用相同帐户完成所有步骤，可跳过注销 Azure 的步骤，并删除创建用户角色分配的脚本行。 将以下所有脚本中的 UserA@azure.com 和 UserB@azure.com 替换为用户 A 和用户 B 使用的用户名。 
 
-必须先注册预览版，才能完成以下任意步骤。 若要注册，请完成本文](#register)注册预览版[部分的步骤。 请先确保两个订阅已完成预览版注册，再继续执行其余步骤。
+必须先注册预览版，才能完成以下任意步骤。 若要注册，请完成本文 [注册预览版](#register) 部分的步骤。 请先确保两个订阅已完成预览版注册，再继续执行其余步骤。
 
 1. 安装最新版本的 PowerShell [Azure](https://www.powershellgallery.com/packages/Azure) 和 [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) 模块。 如果不熟悉 Azure PowerShell，请参阅 [Azure PowerShell 概述](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 2. 启动 PowerShell 会话。

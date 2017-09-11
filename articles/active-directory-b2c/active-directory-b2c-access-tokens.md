@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory B2C：请求访问令牌 | Microsoft Docs"
+title: "请求访问令牌 - Azure AD B2C | Microsoft 文档"
 description: "本文介绍如何设置客户端应用程序和获取访问令牌。"
 services: active-directory-b2c
 documentationcenter: android
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/09/2017
 ms.author: parakhj
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 4b361a8e69f885d5b89ac9b2086e2731ee4d8b48
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 7202be4e0e9b8b28b5ec1443d6d248c1738da6fb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C：请求访问令牌
@@ -40,8 +40,8 @@ ms.lasthandoff: 08/09/2017
 
 ### <a name="register-a-web-api"></a>注册 Web API
 
-1. 在 Azure 门户的 B2C 功能边栏选项卡上，单击“ **应用程序**”。
-1. 单击边栏选项卡顶部的“ **+添加** ”。
+1. 在 Azure 门户的 Azure AD B2C 功能菜单上，单击“应用程序”。
+1. 单击菜单顶部的“+添加”。
 1. 输入应用程序的“ **名称** ”，用于向使用者描述应用程序。 例如，可以输入“Contoso API”。
 1. 将“包括 Web 应用/Web API”开关切换到“是”。
 1. 为“回复 URL”输入任意值。 例如，输入 `https://localhost:44316/`。 由于 API 不会直接从 Azure AD B2C 收到令牌，所以该值并不重要。
@@ -53,7 +53,7 @@ ms.lasthandoff: 08/09/2017
 
 作用域类似于权限，应用调用 API 时必须使用作用域。 作用域的一些示例包括“读取”或“写入”。 假设需要 Web 或本机应用从 API 进行“读取”。 应用将调用 Azure AD B2C 并请求允许访问“读取”作用域的访问令牌。 为了使 Azure AD B2C 发出此类访问令牌，需要授予应用从特定 API 进行“读取”的权限。 若要执行此操作，API 首先需要发布“读取”作用域。
 
-1. 在 Azure AD B2C 的“应用程序”边栏选项卡中，打开 Web API 应用程序（“Contoso API”）。
+1. 在 Azure AD B2C 的“应用程序”菜单中，打开 Web API 应用程序（“Contoso API”）。
 1. 单击“已发布范围”。 这是定义授予其他应用程序的权限（作用域）的位置。
 1. 根据需要添加“作用域值”（例如，“读取”）。 默认情况下，将定义“user_impersonation”作用域。 如果愿意，可以忽略此操作。 在“作用域名称”列输入作用域描述。
 1. 单击“保存” 。
@@ -65,7 +65,7 @@ ms.lasthandoff: 08/09/2017
 
 一旦配置 API 发布作用域，客户端应用程序将需要通过 Azure 门户授予这些作用域。
 
-1. 在 B2C 功能边栏选项卡中导航到“应用程序”菜单。
+1. 在 Azure AD B2C 功能菜单中导航到“应用程序”菜单。
 1. 如果没有客户端应用程序，请进行注册（[Web 应用](active-directory-b2c-app-registration.md#register-a-web-app)或[本机客户端](active-directory-b2c-app-registration.md#register-a-mobile-or-native-app)）。 如果按照本指南作为起点，则需要注册客户端应用程序。
 1. 单击“API 访问”。
 1. 单击“添加”。

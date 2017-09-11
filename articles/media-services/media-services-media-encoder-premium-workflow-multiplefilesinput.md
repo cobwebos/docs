@@ -4,7 +4,7 @@ description: "本主题说明如何使用 setRuntimeProperties 来使用多个�
 services: media-services
 documentationcenter: 
 author: xpouyat
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 7fb35bdd-9891-4401-a65b-ef3cc8190e8a
 ms.service: media-services

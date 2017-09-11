@@ -57,7 +57,7 @@ git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 清单文件位于克隆存储库的以下目录中。
 
 ```bash
-/azure-voting-app-redis/kubernetes-manifests/azure-vote-all-in-one-redis.yaml
+/azure-voting-app-redis/kubernetes-manifests/azure-vote-all-in-one-redis.yml
 ```
 
 ## <a name="update-manifest-file"></a>更新清单文件
@@ -83,7 +83,7 @@ containers:
 使用 [kubectl create](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#create) 命令运行该应用程序。 此命令分析清单文件并创建定义的 Kubernetes 对象。
 
 ```azurecli-interactive
-kubectl create -f ./azure-voting-app-redis/kubernetes-manifests/azure-vote-all-in-one-redis.yaml
+kubectl create -f ./azure-voting-app-redis/kubernetes-manifests/azure-vote-all-in-one-redis.yml
 ```
 
 输出：

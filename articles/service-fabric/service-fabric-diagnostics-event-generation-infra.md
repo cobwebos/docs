@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2017
+ms.date: 08/24/2017
 ms.author: dekapur
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: 2e320339f60b593c1cff68ca047c95f9cb7b33e2
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: c5857515ae8357b003f0999c4b11bd666c32bbf9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -31,7 +31,9 @@ ms.lasthandoff: 07/20/2017
 Service Fabric 提供了五个现成的不同日志通道，可以生成以下事件：
 
 * 操作通道：由 Service Fabric 和群集执行的高级操作，包括出现节点事件、部署新应用程序或 SF 升级回滚等。
-* 客户信息渠道：运行状况报告和负载均衡决策
+* 操作通道 - 详细信息：运行状况报告和负载均衡决策
+* 数据和消息通道：消息（当前仅限 ReverseProxy）和数据路径（可靠的服务模型）中生成的关键日志和事件
+* 数据和消息通道 - 详细信息：包含群集中的数据和消息提供的所有非关键日志的详细通道（此通道的事件量非常大）   
 * [Reliable Services 事件](service-fabric-reliable-services-diagnostics.md)：特定于编程模型的事件
 * [Reliable Actors 事件](service-fabric-reliable-actors-diagnostics.md)：特定于编程模型事件和性能计数器
 * 支持日志：Service Fabric 生成的系统日志，仅当我们提供支持时使用
@@ -46,7 +48,7 @@ Service Fabric 具有自身的运行状况模型，以下文章对此做了详�
 - [添加自定义 Service Fabric 运行状况报告](service-fabric-report-health.md)
 - [查看 Service Fabric 运行状况报告](service-fabric-view-entities-aggregated-health.md)
 
-运行状况监视对于运行服务的多个方面至关重要。 当 Service Fabric 执行命名应用程序升级时，运行状况监视尤为重要。 服务的每个升级域都已升级并且提供给客户使用后，升级域必须先通过运行状况检查，然后部署才能转到下一个升级域。 如果无法实现良好的运行状况，部署将会回滚，使应用程序保持一种已知正常的状态。 尽管在回滚服务之前某些客户可能会受到影响，但大多数客户不会遇到问题。 此外，问题的解决速度相对较快，无需等待操作员的人工操作。 在代码中合并的运行状况检查越多，服务应对部署问题的弹性就越高。
+运行状况监视对于运行服务的多个方面至关重要。 当 Service Fabric 执行命名应用程序升级时，运行状况监视尤为重要。 服务的每个升级域都已升级并且提供给客户使用后，升级域必须先通过运行状况检查，部署才能转到下一个升级域。 如果无法实现良好的运行状况，部署会回滚，使应用程序保持一种已知正常的状态。 尽管在回滚服务之前某些客户可能会受到影响，但大多数客户不会遇到问题。 此外，问题的解决速度相对较快，无需等待操作员的人工操作。 在代码中合并的运行状况检查越多，服务应对部署问题的弹性就越高。
 
 服务运行状况的另一个方面是从服务报告指标。 指标在 Service Fabric 中非常重要，因为它们用于均衡资源使用量。 指标还可用作系统运行状况的指示器。 例如，假设某个应用程序包含许多服务，每个实例报告每秒请求数 (RPS) 指标。 如果一个服务使用的资源比另一个服务要多，Service Fabric 会围绕群集移动服务实例，尽量使资源利用率保持均衡。 有关资源利用的工作原理的详细说明，请参阅 [Manage resource consumption and load in Service Fabric with metrics](service-fabric-cluster-resource-manager-metrics.md)（在 Service Fabric 中使用指标管理资源消耗和负载）。
 
@@ -79,9 +81,9 @@ Service Fabric 具有自身的运行状况模型，以下文章对此做了详�
 
 ## <a name="enabling-diagnostics-for-a-cluster"></a>启用群集诊断
 
-为了充分利用这些日志，强烈建议在群集创建过程中启用“诊断”。 如果开启诊断，部署群集时，Microsoft Azure 诊断就可确认运行 Operational、Reliable Services 和 Reliable Actors 通道，并按照此处所述存储数据。
+为了充分利用这些日志，强烈建议在群集创建过程中启用“诊断”。 如果开启诊断，部署群集时，Windows Azure 诊断就可确认运行 Operational、Reliable Services 和 Reliable Actors 通道，并按照[通过 Azure 诊断聚合事件](service-fabric-diagnostics-event-aggregation-wad.md)中所述存储数据。
 
-如上图所示，还存在一个用于添加 Application Insights (AppInsights) 检测密钥的可选字段。 如果选择使用 AppInsights 对所有事件进行分析（阅读此处的详细信息），请在此处添加 AppInsights resource instrumentationKey (GUID)。
+如上图所示，还存在一个用于添加 Application Insights (AI) 检测密钥的可选字段。 如果选择使用 AI 对所有事件进行分析（阅读[通过 Application Insights 进行事件分析](service-fabric-diagnostics-event-analysis-appinsights.md)了解相关详细信息），请在此处添加 AppInsights resource instrumentationKey (GUID)。
 
 
 如果要将容器部署到群集中，通过将此代码添加到“WadCfg > DiagnosticMonitorConfiguration”，启用 WAD 来读取 docker 统计信息：

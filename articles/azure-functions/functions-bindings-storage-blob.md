@@ -4,7 +4,7 @@ description: "了解如何在 Azure Functions 中使用 Azure 存储触发器和
 services: functions
 documentationcenter: na
 author: lindydonna
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions，函数，事件处理，动态计算，无服务体系结构"
@@ -15,13 +15,12 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
-ms.author: donnam, glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: b819bf4461f14033dd2c00331e3c3e4d0fbafde6
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: b123578dbac48018f674f85ec923e4c6e65fb9f8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-functions-blob-storage-bindings"></a>Azure Functions Blob 存储绑定
@@ -32,7 +31,7 @@ ms.lasthandoff: 05/31/2017
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> 不支持[仅 blob 存储帐户](../storage/storage-create-storage-account.md#blob-storage-accounts)。 Blob 存储触发器和绑定需要使用常规用途存储帐户。 
+> 不支持[仅 blob 存储帐户](../storage/common/storage-create-storage-account.md#blob-storage-accounts)。 Blob 存储触发器和绑定需要使用常规用途存储帐户。 
 > 
 
 <a name="trigger"></a>
@@ -140,8 +139,7 @@ Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名
 * ETag（blob 版本标识符，例如："0x8D1DC6E70A277EF"）
 
 ### <a name="blob-polling-for-large-containers"></a>大容器的 blob 轮询
-如果受监视的 blob 容器包含 10,000 多个 blob，则 Functions 运行时将扫描日志文件，监视新的或更改的 blob。 此过程不是实时过程。 创建 blob 之后数分钟或更长时间内可能仍不会触发函数。 此外，[将“尽力”创建存储日志](/rest/api/storageservices/About-Storage-Analytics-Logging)。 并不能保证捕获了所有事件。 在某些情况下可能会遗漏某些日志。 如果需要更快或更可靠的 blob 处理，在创建 blob 时，请考虑创建[队列消息](../storage/storage-dotnet-how-to-use-queues.md) 
-。 然后，使用[队列触发器](functions-bindings-storage-queue.md)而不是 blob 触发器来处理 blob。
+如果受监视的 blob 容器包含 10,000 多个 blob，则 Functions 运行时将扫描日志文件，监视新的或更改的 blob。 此过程不是实时过程。 创建 blob 之后数分钟或更长时间内可能仍不会触发函数。 此外，[将“尽力”创建存储日志](/rest/api/storageservices/About-Storage-Analytics-Logging)。 并不能保证捕获了所有事件。 在某些情况下可能会遗漏某些日志。 如果需要更快或更可靠的 blob 处理，在创建 blob 时，请考虑创建[队列消息](../storage/queues/storage-dotnet-how-to-use-queues.md)。 然后，使用[队列触发器](functions-bindings-storage-queue.md)而不是 blob 触发器来处理 blob。
 
 <a name="triggerusage"></a>
 
@@ -216,7 +214,8 @@ module.exports = function(context) {
     context.done();
 };
 ```
-<a name="outputusage"></a> <a name=storage-blob-output-binding"></a>
+<a name="outputusage"></a>
+<a name="storage-blob-output-binding"></a>
 
 ## <a name="using-a-blob-output-binding"></a>使用 Blob 输出绑定
 

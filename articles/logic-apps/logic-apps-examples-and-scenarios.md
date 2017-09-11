@@ -15,10 +15,10 @@ ms.workload: integration
 ms.date: 08/9/2017
 ms.author: LADocs; jehollan
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 2d45090b09d83a98cc0811dca8d6f2384d1b11ad
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 50df1e3db239a6aa34ac91bfbd582625c5b0041b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="examples-and-common-scenarios-for-azure-logic-apps"></a>Azure 逻辑应用的示例和常见方案
@@ -31,7 +31,7 @@ Azure 逻辑应用为不同服务提供弹性业务流程和集成。 逻辑应�
 
 ## <a name="respond-to-triggers-and-extend-actions"></a>响应触发器和扩展操作
 
-每个逻辑应用均以触发器开头。 例如，工作流可以从计划事件、手动调用或来自外部系统的事件（如“将文件添加到 FTP 服务器时”触发器）开始。 Azure 逻辑应用目前支持 100 多个可以使用的连接器（从本地 SAP 到 Azure 认知服务）。 对于可能未发布连接器的系统和服务，也可以扩展逻辑应用。
+每个逻辑应用均以触发器开头。 例如，工作流可以从计划事件、手动调用或来自外部系统的事件（如“将文件添加到 FTP 服务器时”触发器）开始。 Azure 逻辑应用目前支持 100 多个可以使用的连接器（从本地 SAP 到 Microsoft 认知服务）。 对于可能未发布连接器的系统和服务，也可以扩展逻辑应用。
 
 * [创建自定义触发器或操作](../logic-apps/logic-apps-create-api-app.md)
 * [为工作流运行设置长时间运行的操作](../logic-apps/logic-apps-create-api-app.md)
@@ -75,6 +75,10 @@ Azure 逻辑应用为不同服务提供弹性业务流程和集成。 逻辑应�
 * [从逻辑应用调用 Azure 函数](../logic-apps/logic-apps-azure-functions.md)
 * [方案：使用 Azure Functions 触发逻辑应用](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
 * [博客：从逻辑应用调用 SOAP 终结点](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
+
+## <a name="end-to-end-scenarios"></a>端到端方案
+
+* [白皮书：使用 Azure 服务（如逻辑应用）的企业集成端到端案例管理](https://aka.ms/enterprise-integration-e2e-case-management-utilities-logic-apps)
 
 ## <a name="next-steps"></a>后续步骤
 

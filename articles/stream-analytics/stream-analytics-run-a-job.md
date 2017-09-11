@@ -4,7 +4,7 @@ description: "如何在 Azure 流分析中运行流式处理作业 | 学习路�
 keywords: "流式处理作业"
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 9d46950f-2b69-49ce-a567-df558c5dd820
@@ -14,19 +14,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: cf2a4227ba464b5ccf21f95da9031c83e1d49c27
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 03d43476c1946221538acccd1251c64ed3f02e13
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="how-to-run-a-streaming-job-in-azure-stream-analytics"></a>如何在 Azure 流分析中运行流式处理作业
-当作业的输入、查询和输出均已指定时，你可以启动流分析作业。
+当作业的输入、查询和输出均已指定时，可以启动流分析作业。
 
-若要启动你的作业：
+要启动作业：
 
 1. 在 Azure 经典门户上的作业仪表板中，单击页面底部的“启动”。
    
@@ -40,14 +39,14 @@ ms.lasthandoff: 07/04/2017
    ![启动流式处理作业的时间](./media/stream-analytics-run-a-job/2-stream-analytics-run-a-job.png)  
    
    ![Azure 门户启动流式处理作业时间](./media/stream-analytics-run-a-job/5-stream-analytics-run-a-job.png)  
-3. 确认你的选择。 作业状态将更改为“正在启动”，然后在作业已启动后很快转变为“正在运行”。 可以在“通知中心”中监视“启动”操作的进度：
+3. 确认选择。 作业状态将更改为“正在启动”，然后在作业已启动后很快转变为“正在运行”。 可以在“通知中心”中监视“启动”操作的进度：
    
    ![流式处理作业进度](./media/stream-analytics-run-a-job/3-stream-analytics-run-a-job.png)  
    
    ![Azure 门户流式处理作业进度](./media/stream-analytics-run-a-job/6-stream-analytics-run-a-job.png)  
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

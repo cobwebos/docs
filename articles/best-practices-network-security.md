@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 243c1cd5ebf34f2d8a8fda234fa3875298390336
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/27/2017
 
 
@@ -94,7 +95,7 @@ Microsoft 采取综合性的方案来保护运行超大规模全球服务所需�
 * **跨界连接**：客户可以在虚拟网络和多个本地站点或 Azure 中的其他虚拟网络之间创建跨界连接。 客户可以使用 VNet 对等互连、Azure VPN 网关、第三方网络虚拟设备或 ExpressRoute 来构造连接。 Azure 支持使用标准 IPsec/IKE 协议和 ExpressRoute 专用连接的站点到站点 (S2S) VPN。
 * **NSG** 允许客户根据所需的粒度（网络接口、单个 VM 或虚拟子网）创建规则 (ACL)。 客户可以从客户网络上的系统，通过跨界连接或直接 Internet 通信来允许或拒绝虚拟网络内的工作负荷，以控制访问。
 * **UDR** 和 **IP 转发**允许客户定义虚拟网络中不同层之间的通信路径。 客户可以部署防火墙、IDS/IPS 和其他虚拟设备，并通过这些安全设备来路由网络流量，以实施安全边界策略、审核和检查。
-* Azure 应用商店中的**网络虚拟设备**：Azure 应用商店和 VM 映像库中提供了防火墙、负载均衡器和 IDS/IPS 等安全设备。 客户可将这些设备部署到其虚拟网络，特别是安全边界（包括外围网络子网），以实现多层安全网络环境。
+* Azure Marketplace 中的**网络虚拟设备**：Azure Marketplace 和 VM 映像库中提供了防火墙、负载均衡器和 IDS/IPS 等安全设备。 客户可将这些设备部署到其虚拟网络，特别是安全边界（包括外围网络子网），以实现多层安全网络环境。
 
 下图演示了如何使用这些功能在 Azure 中构造外围网络体系结构：
 

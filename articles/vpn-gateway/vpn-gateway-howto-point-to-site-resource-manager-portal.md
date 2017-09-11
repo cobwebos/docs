@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/10/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: c3911c1435054417f61ba4767d6f622430afcf4b
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 5c8e99f3ba52ef5d6f9f99ac24891c38e8970fff
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-certificate-authentication-azure-portal"></a>使用证书身份验证配置与 VNet 的点到站点连接：Azure 门户
@@ -33,7 +33,9 @@ ms.lasthandoff: 08/15/2017
 >
 >
 
-通过点到站点 (P2S) 配置，可以使单台客户端计算机与虚拟网络建立安全的连接。 如果要从远程位置（例如，从家里或会议室）连接到 VNet，或者只有少数几台客户端计算机需要连接到虚拟网络，点到站点连接将非常有用。 P2S VPN 连接通过本机 Windows VPN 客户端从客户端计算机启动。 连接客户端使用证书进行身份验证。 
+点到站点 (P2S) VPN 网关用于创建从单个客户端计算机到虚拟网络的安全连接。 若要从远程位置连接到 VNet，例如从家里或会议室进行远程通信，则可使用点到站点 VPN。 如果只有一些客户端需要连接到 VNet，则可使用 P2S VPN 这种解决方案来代替站点到站点 VPN。 
+
+P2S 使用安全套接字层隧道协议 (SSTP)，这是一种基于 SSL 的 VPN 协议。 可通过从客户端计算机启动连接来建立 P2S VPN 连接。
 
 ![点到站点连接示意图](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/point-to-site-connection-diagram.png)
 
@@ -164,6 +166,8 @@ Azure 使用证书对通过点到站点 VPN 连接连接到 VNet 的客户端进
 3. 连接已建立。
 
   ![已建立连接](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/connected.png)
+
+#### <a name="troubleshooting-p2s-connections"></a>排查 P2S 连接问题
 
 [!INCLUDE [verifies client certificates](../../includes/vpn-gateway-certificates-verify-client-cert-include.md)]
 

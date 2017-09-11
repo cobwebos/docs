@@ -2,7 +2,7 @@
 title: "Azure Monitor 文档 - 教程和 API 参考 | Microsoft Docs"
 description: "了解如何使用监视和诊断服务来跟踪性能、维护安全性以及识别趋势。 API 参考、最佳实践和其他资源。"
 services: monitoring-and-diagnostics
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

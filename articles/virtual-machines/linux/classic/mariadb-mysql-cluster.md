@@ -15,9 +15,10 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/15/2015
 ms.author: asabbour
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: 53e9bf18b26338212411ea7c4f260eb308486738
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/27/2017
 
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 03/27/2017
 > Azure 提供两个不同的部署模型用于创建和处理资源：[Azure Resource Manager](../../../resource-manager-deployment-model.md) 和经典。 本文介绍经典部署模型。 Microsoft 建议大多数新部署使用 Azure Resource Manager 模型。
 
 > [!NOTE]
-> MariaDB Enterprise 群集现已在 Azure 应用商店中推出。 这款新产品可在 Azure Resource Manager 上自动部署 MariaDB Galera 群集。 应从 [Azure 应用商店](https://azure.microsoft.com/en-us/marketplace/partners/mariadb/cluster-maxscale/)使用这款新产品。
+> MariaDB Enterprise 群集现已在 Azure Marketplace 中推出。 这款新产品可在 Azure Resource Manager 上自动部署 MariaDB Galera 群集。 应从 [Azure Marketplace](https://azure.microsoft.com/en-us/marketplace/partners/mariadb/cluster-maxscale/) 使用这款新产品。
 >
 >
 

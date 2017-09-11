@@ -4,7 +4,7 @@ description: "了解如何使用 PowerShell 创建 Azure Active Directory (Azure
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.service: media-services
 ms.workload: media
@@ -18,7 +18,6 @@ ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
 ms.openlocfilehash: f1d7ad94686d633b6353f39cef91d1cb1efab773
 ms.contentlocale: zh-cn
 ms.lasthandoff: 07/01/2017
-
 
 ---
 

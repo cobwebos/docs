@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: f64c41733f8fa7e34a0b0dfbbff2b565af7cf7db
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 413e72e9a39fcde84f56bfc61a6bc72dbadf1c97
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/25/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 
@@ -30,18 +30,18 @@ ms.lasthandoff: 03/25/2017
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](../vs-azure-tools-remote-desktop-roles.md)
 
-你可以在开发过程中通过在服务定义中加入远程桌面模块来在你的角色中启用远程桌面连接，也可以通过远程桌面扩展选择启用远程桌面。 首选方法是使用远程桌面扩展，因为即使在部署应用程序后，也能启用远程桌面，而不必重新部署你的应用程序。
+可以在开发过程中通过在服务定义中加入远程桌面模块来在角色中启用远程桌面连接，也可以通过远程桌面扩展选择启用远程桌面。 首选方法是使用远程桌面扩展，因为即使在部署应用程序后，也能启用远程桌面，而不必重新部署应用程序。
 
 ## <a name="configure-remote-desktop-from-the-azure-classic-portal"></a>从 Azure 经典门户配置远程桌面
 Azure 经典门户使用远程桌面扩展方法，以便即使在部署应用程序之后，也能启用远程桌面。 使用云服务的“**配置**”页，可以启用远程桌面、更改用于连接虚拟机的本地 Administrator 帐户、身份验证使用的证书，以及设置到期日期。
 
-1. 单击“**云服务**”，单击云服务的名称，然后单击“**配置**”。
+1. 单击“**云服务**”，单击云服务的名称，并单击“**配置**”。
 2. 单击底部的“远程”按钮。
 
     ![云服务远程](./media/cloud-services-role-enable-remote-desktop/CloudServices_Remote.png)
 
    > [!WARNING]
-   > 当首次启用远程桌面并单击“确定”（复选标记）时，所有角色实例会重新启动。 为避免重新启动，必须对于此角色安装用于对密码进行加密的证书。 若要避免重新启动，请[上载云服务的证书](cloud-services-configure-ssl-certificate.md#step-3-upload-a-certificate)，然后返回到此对话框。
+   > 当首次启用远程桌面并单击“确定”（复选标记）时，所有角色实例会重新启动。 为避免重新启动，必须对于此角色安装用于对密码进行加密的证书。 要避免重新启动，请[上载云服务的证书](cloud-services-configure-ssl-certificate.md#step-3-upload-a-certificate)，并返回到此对话框。
 
 3. 在“**角色**”中，选择要更新的角色，或选择“**全部**”以选择所有角色。
 4. 进行以下任何更改：
@@ -49,13 +49,13 @@ Azure 经典门户使用远程桌面扩展方法，以便即使在部署应用�
    * 若要启用远程桌面，请选中“**启用远程桌面**”复选框。 若要禁用远程桌面，请清除该复选框。
    * 创建一个要在与角色实例的远程桌面连接中使用的帐户。
    * 更新现有帐户的密码。
-   * 选择要用于身份验证的已上载证书（使用“**证书**”页上的“**上载**”），或者创建新证书。
+   * **选择要用于身份验证的已上载证书（使用“证书”****页上的“上载”**），或者创建新证书。
    * 更改远程桌面配置的到期日期。
 
-5. 当你完成配置更新时，请单击“**确定**”（复选标记）。
+5. 完成配置更新时，请单击“**确定**”（复选标记）。
 
 ## <a name="remote-into-role-instances"></a>远程到角色实例
-对角色启用远程桌面后，你可以通过各种工具远程连接到角色实例。
+对角色启用远程桌面后，可以通过各种工具远程连接到角色实例。
 
 若要从 Azure 经典门户连接到角色实例，请执行以下操作：
 
@@ -70,7 +70,7 @@ Azure 经典门户使用远程桌面扩展方法，以便即使在部署应用�
 1. 展开“Azure > 云服务 > [云服务名称]”节点。
 2. 展开“**暂存**”或“**生产**”。
 3. 展开各个角色。
-4. 右键单击某一角色实例，单击“**使用远程桌面连接...**”，然后输入用户名和密码。
+4. 右键单击某一角色实例，单击“**使用远程桌面连接...**”，并输入用户名和密码。
 
 ![服务器资源管理器远程桌面](./media/cloud-services-role-enable-remote-desktop/ServerExplorer_RemoteDesktop.png)
 
@@ -81,10 +81,10 @@ Azure 经典门户使用远程桌面扩展方法，以便即使在部署应用�
 可以使用[下载 RDP 文件](https://msdn.microsoft.com/library/jj157183.aspx) REST 操作下载 RDP 文件。
 
 ## <a name="to-configure-remote-desktop-in-the-service-definition-file"></a>在服务定义文件中配置远程访问
-此方法允许你在开发过程中为应用程序启用远程桌面。 此方法需要将加密的密码存储在服务配置文件中，并且如果对远程桌面配置进行了任何更新，将需要重新部署应用程序。 如果你想要避免这些弊端，应使用上面所述的基于远程桌面扩展的方法。  
+此方法允许在开发过程中为应用程序启用远程桌面。 此方法需要将加密的密码存储在服务配置文件中，并且如果对远程桌面配置进行了任何更新，将需要重新部署应用程序。 如果想要避免这些弊端，应使用上面所述的基于远程桌面扩展的方法。  
 
 可以通过服务定义文件方法使用 Visual Studio [启用远程桌面连接](../vs-azure-tools-remote-desktop-roles.md)。  
-下面的步骤介绍了要启用远程桌面需要对服务模型文件进行的更改。 在发布时，Visual Studio 将自动进行这些更改。
+下面的步骤介绍了要启用远程桌面需要对服务模型文件进行的更改。 在发布时，Visual Studio 会自动进行这些更改。
 
 ### <a name="set-up-the-connection-in-the-service-model"></a>在服务模型中设置连接
 使用 **Imports** 元素将 **RemoteAccess** 模块和 **RemoteForwarder** 模块导入到 [ServiceDefinition.csdef](cloud-services-model-and-package.md#csdef) 文件中。
@@ -112,7 +112,7 @@ Azure 经典门户使用远程桌面扩展方法，以便即使在部署应用�
     </WebRole>
 </ServiceDefinition>
 ```
-[ServiceConfiguration.cscfg](cloud-services-model-and-package.md#cscfg) 文件应类似于下面的示例，请注意 `<ConfigurationSettings>` 和 `<Certificates>` 元素。 指定的证书必须[已上载到云服务](cloud-services-how-to-create-deploy.md#how-to-upload-a-certificate-for-a-cloud-service)。
+[ServiceConfiguration.cscfg](cloud-services-model-and-package.md#cscfg) 文件应类似于下面的示例，请注意 `<ConfigurationSettings>` 和 `<Certificates>` 元素。 指定的证书必须已[上传到云服务](cloud-services-how-to-create-deploy.md#how-to-upload-a-certificate-for-a-cloud-service)。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -136,5 +136,5 @@ Azure 经典门户使用远程桌面扩展方法，以便即使在部署应用�
 
 ## <a name="additional-resources"></a>其他资源
 [如何配置云服务](cloud-services-how-to-configure.md)
-[云服务常见问题 - 远程桌面](cloud-services-faq.md#remote-desktop)
+[云服务常见问题 - 远程桌面](cloud-services-faq.md)
 

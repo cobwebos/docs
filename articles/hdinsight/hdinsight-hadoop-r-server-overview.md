@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 0e1812bf867abff1ddd1b0534ceae692fad70484
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c88bf04f904d6784b882f524ac8737ca70003c91
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 #<a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>HDInsight 上的 R Server 和开放源代码 R 功能简介
@@ -29,7 +28,7 @@ ms.lasthandoff: 06/20/2017
 
 可依据手头的项目和任务适当调整群集大小，不再需要群集时将它解除。 由于这些群集属于 Azure HDInsight 的一部分，提供企业级全年无休支持、99.9% 运行时间 SLA，并且能够灵活地与 Azure 生态系统中的其他组件集成。
 
-HDInsight 上的 R Server 提供最新的功能，可针对载入 Azure Blob 或 Data Lake 存储的几乎任何大小的数据集执行基于 R 的分析。 由于 R Server 基于开放源代码的 R 构建，因此你构建的基于 R 的应用程序可以利用超过 8000 个任意开放源代码 R 包。 ScaleR 中的例程（R Server 附带的 Microsoft 的大数据分析包）同样可用。
+HDInsight 上的 R Server 提供最新的功能，可针对载入 Azure Blob 或 Data Lake 存储的几乎任何大小的数据集执行基于 R 的分析。 由于 R Server 基于开放源代码的 R 构建，因此，构建的基于 R 的应用程序可以利用超过 8000 个任意开放源代码 R 包。 ScaleR 中的例程（R Server 附带的 Microsoft 的大数据分析包）同样可用。
 
 群集的边缘节点为连接到群集和运行 R 脚本提供了便捷的位置。 使用边缘节点，可以选择跨边缘节点服务器的各个核心运行 ScaleR 的并行化分布式函数。 还可以选择通过使用 ScaleR 的 Hadoop Map Reduce 或 Spark 计算上下文跨群集的各个节点运行这些函数。
 
@@ -39,11 +38,11 @@ HDInsight 上的 R Server 提供最新的功能，可针对载入 Azure Blob 或
 若要在 HDInsight 群集中包括 R Server，必须在使用 Azure 门户创建 HDInsight 群集时选择 R Server 群集类型。 R Server 群集类型包括群集数据节点以及作为基于 R Server 的分析登录区域的边缘节点上的 R Server。 请参阅 [HDInsight 上的 R Server 入门](hdinsight-hadoop-r-server-get-started.md)了解创建群集的详细演练。
 
 ## <a name="learn-about-data-storage-options"></a>了解数据存储选项
-HDInsight 群集的 HDFS 文件系统的默认存储可以与 Azure 存储帐户或 Azure Data Lake Store 相关联。 这种关联可确保在分析过程中，上传到群集存储的任何数据均会持久保存。 对于所选择的将数据传输到存储的选项有各种工具，包括存储帐户的基于门户的上传工具和 [AzCopy](../storage/storage-use-azcopy.md) 实用程序。
+HDInsight 群集的 HDFS 文件系统的默认存储可以与 Azure 存储帐户或 Azure Data Lake Store 相关联。 这种关联可确保在分析过程中，上传到群集存储的任何数据均会持久保存。 对于所选择的将数据传输到存储的选项有各种工具，包括存储帐户的基于门户的上传工具和 [AzCopy](../storage/common/storage-use-azcopy.md) 实用程序。
 
 无论选择哪个来充当主存储，都可以在群集预配过程中选择添加对附加 Blob 和 Data Lake Store 的访问权限。 有关向额外帐户授予访问权限的信息，请参阅 [HDInsight 上的 R Server 入门](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-get-started)。 要了解关于使用多个存储帐户的详细信息，请参阅[适用于 R Server on HDInsight 的 Azure 存储选项](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage)补充文章。
 
-也可以将 [Azure 文件](../storage/storage-how-to-use-files-linux.md)服务用作边缘节点上的存储选项。 Azure 文件可让你将 Azure 存储中创建的文件共享装载到 Linux 文件系统。 若要深入了解 R Server on HDInsight 群集的数据存储选项，请参阅 [R Server on HDInsight 群集的 Azure 存储选项](hdinsight-hadoop-r-server-storage.md)。
+也可以将 [Azure 文件](../storage/files/storage-how-to-use-files-linux.md)服务用作边缘节点上的存储选项。 Azure 文件可让你将 Azure 存储中创建的文件共享装载到 Linux 文件系统。 若要深入了解 R Server on HDInsight 群集的数据存储选项，请参阅 [R Server on HDInsight 群集的 Azure 存储选项](hdinsight-hadoop-r-server-storage.md)。
 
 ## <a name="access-r-server-on-the-cluster"></a>访问群集上的 R Server
 可以在边缘节点上使用浏览器连接到 R Server，前提是在预配过程中选择包含 RStudio Server。 如果在预配群集时未安装它，可以在稍后添加。 若要深入了解如何在创建群集后安装 RStudio Server，请参阅[在 HDInsight 群集上安装 RStudio Server](hdinsight-hadoop-r-server-install-r-studio.md)。 还可以使用 SSH / PuTTY 连接到 R Server 以访问 R 控制台。 
@@ -58,12 +57,12 @@ HDInsight 群集的 HDFS 文件系统的默认存储可以与 Azure 存储帐户
 若要在 HDInsight 中评分，可以针对已载入存储帐户的新数据文件编写调用模型的 R 函数以进行预测。 然后将预测保存回到存储帐户。 可以根据需要在群集的边缘节点上运行该例程，或使用计划作业来进行。  
 
 ### <a name="score-in-azure-machine-learning-aml"></a>在 Azure 机器学习中评分 (AML)
-若要使用 AML Web 服务进行评分，可以使用名为 [AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html) 的开放源代码 Azure 机器学习 R 包将模型发布为 Azure Web 服务。 为提供方便，此包已预装在边缘节点上。 接下来，使用 Azure 机器学习中的工具创建 Web 服务的用户界面，然后根据需要调用 Web 服务进行评分。
+若要使用 AML Web 服务进行评分，可以使用名为 [AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html) 的开放源代码 Azure 机器学习 R 包将模型发布为 Azure Web 服务。 为提供方便，此包已预装在边缘节点上。 接下来，使用 Azure 机器学习中的工具创建 Web 服务的用户界面，并根据需要调用 Web 服务进行评分。
 
 如果选择此选项，则需要将所有 ScaleR 模型对象转换成对等的开放源代码模型对象，才可配合 Web 服务使用。 使用 ScaleR 强制转换函数，例如适用于装配模型的 `as.randomForest()` 来完成转换。
 
 ### <a name="score-on-premises"></a>本地评分
-若要在创建模型之后进行本地评分，可以在 R 中序列化模型，将其下载，将其反序列化，然后使用它进行新数据评分。 可以使用前面[在 HDInsight 中评分](#scoring-in-hdinsight)所述的方法，或使用 [DeployR](https://deployr.revolutionanalytics.com/) 进行新数据评分。
+要在创建模型之后进行本地评分，可以在 R 中序列化模型，将其下载，将其反序列化，然后使用它进行新数据评分。 可以使用前面[在 HDInsight 中评分](#scoring-in-hdinsight)所述的方法，或使用 [DeployR](https://deployr.revolutionanalytics.com/) 进行新数据评分。
 
 ## <a name="maintain-the-cluster"></a>维护群集
 ### <a name="install-and-maintain-r-packages"></a>安装和维护 R 包
@@ -80,11 +79,11 @@ HDInsight 群集的 HDFS 文件系统的默认存储可以与 Azure 存储帐户
 
     hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"  
 
-### <a name="scale-your-cluster"></a>缩放你的群集
+### <a name="scale-your-cluster"></a>缩放群集
 可以通过门户扩展或缩减现有群集。 通过缩放，可以获得更多的容量来完成较大的处理任务，或者在群集空闲时缩减容量。 有关如何缩放群集的说明，请参阅[管理 HDInsight 群集](hdinsight-administer-use-portal-linux.md)。
 
 ### <a name="maintain-the-system"></a>维护系统
-在非工作时间，系统将在 HDInsight 群集的基础 Linux VM 上执行维护，以应用 OS 修补程序和其他更新。 通常，维护操作将在星期一和星期四凌晨 3:30（基于 VM 的本地时间）完成。 执行更新时，每次应该只有不到四分之一的群集会受影响。  
+在非工作时间，系统将在 HDInsight 群集的基础 Linux VM 上执行维护，以应用 OS 修补程序和其他更新。 通常，维护操作会在星期一和星期四凌晨 3:30（基于 VM 的本地时间）完成。 执行更新时，每次应该只有不到四分之一的群集会受影响。  
 
 由于头节点是冗余的，且并非所有数据节点都受影响，因此在此时间段运行的所有作业可能会变慢。 但是，这些作业应该都可运行完成。 除非发生需要重建群集的灾难性故障，否则任何自定义软件或本地数据在这些维护事件中都将保留。
 

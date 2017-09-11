@@ -2,7 +2,7 @@
 
 ### <a name="to-take-a-backup"></a>执行备份
 
-1. 转到 StorSimple Device Manager 服务。 从设备的表格式列表中，选择并单击你的设备，然后单击“所有设置”。 在“设置”边栏选项卡中，转到“设置”>“管理”>“备份策略”。
+1. 转到 StorSimple Device Manager 服务。 从设备的表格式列表中，选择并单击设备，然后单击“所有设置”。 在“设置”边栏选项卡中，转到“设置”>“管理”>“备份策略”。
 
     ![Add-backup-policy](./media/storsimple-8000-take-backup/step8takebu1.png)
 
@@ -26,11 +26,11 @@
 
         ![Add-backup-policy](./media/storsimple-8000-take-backup/step8takebu5.png) 
 
-6. 单击“创建”以开始创建备份策略。 成功创建备份策略后，你将收到通知。 备份策略的列表也将更新。
+6. 单击“创建”以开始创建备份策略。 成功创建备份策略后，将收到通知。 备份策略的列表也将更新。
       
       ![Add-backup-policy](./media/storsimple-8000-take-backup/step8takebu9.png)
       
-      现在，你已有了一个创建卷数据的计划备份的备份策略。
+      现在，已有了一个创建卷数据的计划备份的备份策略。
 
 
 

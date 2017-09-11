@@ -3,7 +3,7 @@ title: "如何在内部虚拟网络中使用 Azure API 管理 | Microsoft 文档
 description: "了解如何在内部虚拟网络中设置和配置 Azure API 管理。"
 services: api-management
 documentationcenter: 
-author: solankisamir
+author: vladvino
 manager: kjoshi
 editor: 
 ms.assetid: dac28ccf-2550-45a5-89cf-192d87369bc3
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: b9df2c3e7f49a47bfd714f28c5ab53590ca9a719
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: a4c2bda1226ca05c775d011fba7bc59d4dab8998
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="using-azure-api-management-service-with-internal-virtual-network"></a>在内部虚拟网络中使用 Azure API 管理服务
@@ -27,7 +26,7 @@ ms.lasthandoff: 04/27/2017
 * 外部
 * 内部
 
-## <a name="overview"> </a>概述
+## <a name="overview"></a>概述
 在内部虚拟网络模式下部署 API 管理时，所有服务终结点（网关、开发人员门户、发布者门户、直接管理和 GIT）均只在用户可控制其访问权限的虚拟网络中可见。 这些服务终结点均未在公共 DNS 服务器上注册。
 
 在内部模式下使用 API 管理时，可实现以下方案
@@ -63,23 +62,23 @@ ms.lasthandoff: 04/27/2017
 ### <a name="access-on-default-host-names"></a>基于默认主机名的访问权限：
 在公共 Azure 云（例如“contoso”）中创建 API 管理服务时，将会默认配置以下服务终结点。
 
->    网关/代理 - contoso.azure-api.net
+>   网关/代理 - contoso.azure-api.net
 
 > 发布者门户和开发人员门户 - contoso.portal.azure-api.net
 
 > 直接管理终结点 - contoso.management.azure-api.net
 
->    GIT - contoso.scm.azure-api.net
+>   GIT - contoso.scm.azure-api.net
 
 若要访问这些 API 管理服务终结点，可以在连接到虚拟网络（其中部署了 API 管理）的子网中创建虚拟机。 假定服务的内部虚拟 IP 地址为 10.0.0.5，则可执行主机文件映射 (%SystemDrive%\drivers\etc\hosts)，如下所示：
 
-> 10.0.0.5      contoso.azure-api.net
+> 10.0.0.5    contoso.azure-api.net
 
-> 10.0.0.5      contoso.portal.azure-api.net
+> 10.0.0.5    contoso.portal.azure-api.net
 
-> 10.0.0.5      contoso.management.azure-api.net
+> 10.0.0.5    contoso.management.azure-api.net
 
-> 10.0.0.5      contoso.scm.azure-api.net
+> 10.0.0.5    contoso.scm.azure-api.net
 
 然后即可从创建的虚拟机访问所有服务终结点。 如果在虚拟网络中使用自定义 DNS 服务器，则还可创建 DNS 记录并从虚拟网络中的任何位置访问这些终结点。 
 

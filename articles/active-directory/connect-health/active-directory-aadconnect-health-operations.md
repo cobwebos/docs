@@ -139,7 +139,7 @@ Azure AD Connect Health 支持两个级别的访问管理：
    ![Azure AD Connect Health RBAC 固定边栏选项卡的屏幕快照，其中突出显示了固定图标](./media/active-directory-aadconnect-health/RBAC_pin_blade.png)
 
 > [!NOTE]
-> 分配有“读取者”角色的用户无法从 Azure 应用商店获取 Azure AD Connect Health 扩展。 这类用户无法执行实现上述操作所必需的“创建”操作。 但此用户仍可通过转到前一链接来访问边栏选项卡。 为方便后续使用，用户可以将边栏选项卡固定到仪表板。
+> 分配有“读取者”角色的用户无法从 Azure Marketplace 获取 Azure AD Connect Health 扩展。 这类用户无法执行实现上述操作所必需的“创建”操作。 但此用户仍可通过转到前一链接来访问边栏选项卡。 为方便后续使用，用户可以将边栏选项卡固定到仪表板。
 >
 >
 

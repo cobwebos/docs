@@ -1,9 +1,9 @@
 ---
-title: "Azure Active Directory B2C：使用 Application Insights 排查自定义策略问题 | Microsoft Docs"
+title: "使用 Application Insights 排查自定义策略问题 - Azure AD B2C | Microsoft Docs"
 description: "如何设置 Application Insights 来跟踪自定义策略的执行"
 services: active-directory-b2c
 documentationcenter: 
-author: saeeda
+author: saeedakhter-msft
 manager: krassk
 editor: parakhj
 ms.assetid: 658c597e-3787-465e-b377-26aebc94e46d
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.devlang: na
-ms.date: 04/04/2017
-ms.author: saeeda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
-ms.openlocfilehash: db658319637f1a45616091e034a0fc4db44885d4
+ms.date: 08/04/2017
+ms.author: saeda
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 8c79df33cd5f04f490e2cc6372f7e8ac1c4d9bbe
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/22/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -26,18 +26,22 @@ ms.lasthandoff: 05/22/2017
 
 本文提供用于从 Azure AD B2C 收集日志的步骤，以便可以诊断自定义策略存在的问题。
 
+>[!NOTE]
+>目前，此处所述的详细活动日志仅用来帮助开发自定义策略。 请勿在生产中使用开发模式。  日志收集在开发过程中发送到标识提供者以及从中发出的所有声明。  如果在生产中使用，则开发人员对他们所拥有的 App Insights 日志中收集的 PII（私人身份信息）负责。  仅当策略处于“开发模式”时才会收集这些详细日志。
+
+
 ## <a name="use-application-insights"></a>使用 Application Insights
 
 Azure AD B2C 支持将数据发送到 Application Insights 的功能。  Application Insights 提供了一种方法来诊断异常和直观显示应用程序性能问题。
 
 ### <a name="setup-application-insights"></a>设置 Application Insights
 
-1. 转到 [Azure 门户](https://portal.azure.com)。 确保你在具有 Azure 订阅的租户（而不是 Azure AD B2C 租户）中。
+1. 转到 [Azure 门户](https://portal.azure.com)。 确保在具有 Azure 订阅的租户（而不是 Azure AD B2C 租户）中。
 1. 在左侧导航菜单中，单击“+ 新建”。
-1. 搜索并选择“Application Insights”，然后单击“创建”。
-1. 完成表单，然后单击“创建”。 选择“常规”作为“应用程序类型”。
+1. 搜索并选择“Application Insights”，单击“创建”。
+1. 完成表单，并单击“创建”。 选择“常规”作为“应用程序类型”。
 1. 创建资源后，打开 Application Insights 资源。
-1. 在左侧菜单中找到“属性”，然后单击它。
+1. 在左侧菜单中找到“属性”，并单击它。
 1. 复制**检测密钥**并将其保存，以便在下一部分中使用。
 
 ### <a name="set-up-the-custom-policy"></a>设置自定义策略
@@ -60,7 +64,7 @@ Azure AD B2C 支持将数据发送到 Application Insights 的功能。  Applica
   * `DeveloperMode="true"` 告知 ApplicationInsights 通过处理管道加快遥测，这样有利于开发，但在量大时会受到约束。
   * `ClientEnabled="true"` 发送用于跟踪页面视图和客户端错误的 ApplicationInsights 客户端脚本（不需要）。
   * `ServerEnabled="true"` 将现有 UserJourneyRecorder JSON 作为自定义事件发送到 Application Insights。
-  最终的 XML 将如下所示：
+示例：
 
   ```XML
   <TrustFrameworkPolicy
@@ -102,11 +106,16 @@ traces \| where timestamp > ago(1d) | 查看 Azure AD B2C 为前一天生成的�
 可在[此处](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)了解更多有关 Analytics 工具的信息。
 
 >[!NOTE]
->社区已开发一个用户旅程查看器来帮助标识开发人员。  Microsoft 不支持它，严格按原样提供。  它将读取 Application Insights 实例，并提供用户旅程事件的有序视图。  可以获取源代码并将其部署在你自己的解决方案中。
+>社区已开发一个用户旅程查看器来帮助标识开发人员。  Microsoft 不支持它，严格按原样提供。  它将读取 Application Insights 实例，并提供用户旅程事件的有序视图。  可以获取源代码并将其部署在自己的解决方案中。
+
+>[!NOTE]
+>目前，此处所述的详细活动日志仅用来帮助开发自定义策略。 请勿在生产中使用开发模式。  日志收集在开发过程中发送到标识提供者以及从中发出的所有声明。  如果在生产中使用，则开发人员对他们所拥有的 App Insights 日志中收集的 PII（私人身份信息）负责。  仅当策略处于“开发模式”时才会收集这些详细日志。
 
 [不支持的自定义策略示例和相关工具的 Github 存储库](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
 
 
 
+## <a name="next-steps"></a>后续步骤
 
+浏览 Application Insights 中的数据，从而帮助你了解标识体验框架基础 B2C 如何运作来提供你自己的标识体验。
 

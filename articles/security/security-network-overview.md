@@ -95,7 +95,7 @@ Azure 网络支持在 Azure 虚拟网络上为网络流量自定义路由行为�
 * 应用程序访问控制
 * 其他 DDoS 防护（除了 Azure 结构自身提供的 DDoS 防护以外）
 
-你可以使用 Azure 合作伙伴解决方案访问这些增强的网络安全功能。 通过访问 [Azure 应用商店](https://azure.microsoft.com/marketplace/)并搜索“安全”和“网络安全”，可以找到最新的 Azure 合作伙伴网络安全解决方案。
+你可以使用 Azure 合作伙伴解决方案访问这些增强的网络安全功能。 通过访问 [Azure Marketplace](https://azure.microsoft.com/marketplace/) 并搜索“安全”和“网络安全”，可以找到最新的 Azure 合作伙伴网络安全解决方案。
 
 ## <a name="secure-remote-access-and-cross-premises-connectivity"></a>安全远程访问和跨界连接
 安装、配置和管理 Azure 资源需要远程完成。 此外，你可能想要部署在本地和 Azure 公有云中具有组件的[混合 IT](http://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) 解决方案。 这些方案要求安全远程访问。
@@ -215,7 +215,7 @@ Azure 网络支持以下安全远程访问方案：
 对于内部名称解析，你有两个选项：
 
 * Azure 虚拟网络 DNS 服务器 – 在创建新的 Azure 虚拟网络时，为你创建 DNS 服务器。 此 DNS 服务器可以解析位于 Azure 虚拟网络上的计算机的名称。 此 DNS 服务器是不可配置的，而且由 Azure 结构管理器进行管理，从而使其成为安全的名称解析解决方案。
-* 自带 DNS 服务器 – 你可以选择将自己选择的 DNS 服务器放置在 Azure 虚拟网络上。 此 DNS 服务器可能是 Active Directory 集成的 DNS 服务器或由 Azure 合作伙伴提供的专用 DNS 服务器解决方案，两者均可从 Azure 应用商店中获得。
+* 自带 DNS 服务器 – 你可以选择将自己选择的 DNS 服务器放置在 Azure 虚拟网络上。 此 DNS 服务器可能是 Active Directory 集成的 DNS 服务器或由 Azure 合作伙伴提供的专用 DNS 服务器解决方案，两者均可从 Azure Marketplace 中获得。
 
 了解更多：
 

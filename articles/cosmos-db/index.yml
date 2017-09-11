@@ -6,7 +6,7 @@ metadata:
   title: Azure Cosmos DB 文档 - 教程和 API 参考
   description: 了解如何使用 Azure Cosmos DB 生成全局分布式多模型数据库。 教程介绍了如何生成和查询文档、键/值与图形数据库。
   services: cosmos-db
-  author: carolz
+  author: czeumault
   manager: carolz
   ms.service: cosmos-db
   ms.tgt_pltfrm: na

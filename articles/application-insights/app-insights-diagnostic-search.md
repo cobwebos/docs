@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 08390472c6480200751f37028fef594fb055f118
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: aeb27a02ed624106afec5dbd98faacf5f400f89e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="using-search-in-application-insights"></a>使用 Application Insights 中的搜索
@@ -59,10 +58,10 @@ ms.lasthandoff: 04/12/2017
 ## <a name="inspect-individual-items"></a>检查单个项
 选择任一遥测项可查看关键字段和相关的项。 如果想要查看完整的字段集，请单击“...”。 
 
-![单击“新建工作项”、编辑字段，然后单击“确定”。](./media/app-insights-diagnostic-search/10-detail.png)
+![单击“新建工作项”、编辑字段，并单击“确定”。](./media/app-insights-diagnostic-search/10-detail.png)
 
 ## <a name="filter-event-types"></a>筛选事件类型
-打开“筛选”边栏选项卡，然后选择要查看的事件类型。 （如果以后要还原打开边栏选项卡时所用的筛选器，请单击“重置”。）
+打开“筛选”边栏选项卡，并选择要查看的事件类型。 （如果以后要还原打开边栏选项卡时所用的筛选器，请单击“重置”。）
 
 ![选择筛选器并选择遥测类型](./media/app-insights-diagnostic-search/02-filter-req.png)
 
@@ -132,7 +131,7 @@ ms.lasthandoff: 04/12/2017
 
 
 ## <a name="sampling"></a>采样
-如果应用生成大量遥测（且使用的是 ASP.NET SDK 版本 2.0.0-beta3 或更高版本），自适应采样模块将通过仅发送具有代表性的事件部分来自动减少发送到门户的量。 但是，将以组为单位选择或取消选择与同一请求相关的事件，以便可以在相关事件之间浏览。 
+如果应用生成大量遥测（且使用的是 ASP.NET SDK 版本 2.0.0-beta3 或更高版本），自适应采样模块将通过仅发送具有代表性的事件部分来自动减少发送到门户的量。 但是，以组为单位选择或取消选择与同一请求相关的事件，以便可以在相关事件之间浏览。 
 
 [了解采样](app-insights-sampling.md)。
 
@@ -141,24 +140,24 @@ ms.lasthandoff: 04/12/2017
 ## <a name="create-work-item"></a>创建工作项
 可以使用任何遥测项中的详细信息，在 GitHub 或 Visual Studio Team Services 中创建 Bug。 
 
-![单击“新建工作项”、编辑字段，然后单击“确定”。](./media/app-insights-diagnostic-search/42.png)
+![单击“新建工作项”、编辑字段，并单击“确定”。](./media/app-insights-diagnostic-search/42.png)
 
 首次执行此操作时，系统将要求配置 Team Services 帐户和项目的链接。
 
-![请填写 Team Services 服务器的 URL 和项目名称，然后单击“授权”](./media/app-insights-diagnostic-search/41.png)
+![请填写 Team Services 服务器的 URL 和项目名称，并单击“授权”](./media/app-insights-diagnostic-search/41.png)
 
-（你还可以在“工作项”边栏选项卡上配置链接。）
+（还可以在“工作项”边栏选项卡上配置链接。）
 
 ## <a name="save-your-search"></a>保存搜索
 设置所需的所有筛选器后，可以将搜索保存到收藏夹。 如果使用组织帐户，可以选择是否要将此搜索与其他团队成员共享。
 
-![单击“收藏夹”，设置名称，然后单击“保存”](./media/app-insights-diagnostic-search/08-favorite-save.png)
+![单击“收藏夹”，设置名称，并单击“保存”](./media/app-insights-diagnostic-search/08-favorite-save.png)
 
 若要再次查看该搜索，**请转到概览边栏选项卡**并打开“收藏夹”：
 
 ![“收藏夹”磁贴](./media/app-insights-diagnostic-search/09-favorite-get.png)
 
-如果保存时使用了“相对”时间范围，重新打开的边栏选项卡包含最新数据。 如果保存时使用了“绝对”时间范围，则每次看到的数据都是相同的。 （如果在需要保存偏好项时“相对”时间范围不可用，则可单击标头中的“时间范围”，然后设置一个不属自定义范围的时间范围。）
+如果保存时使用了“相对”时间范围，重新打开的边栏选项卡包含最新数据。 如果保存时使用了“绝对”时间范围，则每次看到的数据都是相同的。 （如果在需要保存偏好项时“相对”时间范围不可用，则可单击标头中的“时间范围”，并设置一个不属自定义范围的时间范围。）
 
 ## <a name="send-more-telemetry-to-application-insights"></a>将更多遥测数据发送到 Application Insights
 除了 Application Insights SDK 原本发送的遥测数据以外，可以：
@@ -174,7 +173,7 @@ ms.lasthandoff: 04/12/2017
 请参阅[限制摘要](app-insights-pricing.md#limits-summary)。
 
 ### <a name="how-can-i-see-post-data-in-my-server-requests"></a>如何查看服务器请求中的 POST 数据？
-我们不自动记录 POST 数据，但你可以使用 [TrackTrace 或日志调用](app-insights-asp-net-trace-logs.md)。 POST 数据放在消息参数中。 无法像筛选属性一样筛选消息，但消息的大小限制更大。
+我们不自动记录 POST 数据，但可以使用 [TrackTrace 或日志调用](app-insights-asp-net-trace-logs.md)。 POST 数据放在消息参数中。 无法像筛选属性一样筛选消息，但消息的大小限制更大。
 
 ## <a name="video"></a>视频
 

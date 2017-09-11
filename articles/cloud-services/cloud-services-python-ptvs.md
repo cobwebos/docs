@@ -14,16 +14,16 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 6b21f38ddd64278db26d7042349470805b799203
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 7d2bc89943087323e92cf06981bbacaf4b8ff060
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/18/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>用于 Visual Studio 的 Python 工具中的 Python Web 角色和辅助角色
 
-本文概述了如何在[用于 Visual Studio 的 Python 工具][Python Tools for Visual Studio]中使用 Python Web 角色和辅助角色。 其中介绍了如何使用 Visual Studio 来创建和部署使用 Python 的基本云服务。
+本文概述了如何在[用于 Visual Studio 的 Python 工具][Python Tools for Visual Studio]中使用 Python Web 角色和辅助角色。 介绍如何使用 Visual Studio 来创建和部署使用 Python 的基本云服务。
 
 ## <a name="prerequisites"></a>先决条件
 * [Visual Studio 2013、2015 或 2017](https://www.visualstudio.com/)
@@ -42,7 +42,7 @@ Azure 为运行应用程序提供了三种计算模型：[Azure 应用服务中�
 
 > [!NOTE]
 > *想要构建一个简单的网站？*
-> 如果你的方案只涉及一个简单的网站前端，请考虑使用 Azure App Service 中的轻型 Web Apps 功能。 随着您网站的不断扩大和需求的变化，您可以轻松升级到云服务。 请参阅 <a href="/develop/python/">Python 开发人员中心</a>关于如何在 Azure 应用服务中开发 Web 应用功能的文章。
+> 如果方案只涉及一个简单的网站前端，请考虑使用 Azure 应用服务中的轻型 Web 应用功能。 随着网站的不断扩大和需求的变化，可以轻松升级到云服务。 请参阅 <a href="/develop/python/">Python 开发人员中心</a>关于如何在 Azure 应用服务中开发 Web 应用功能的文章。
 > <br />
 > 
 > 
@@ -60,21 +60,21 @@ Azure 为运行应用程序提供了三种计算模型：[Azure 应用服务中�
 
 ![云服务解决方案](./media/cloud-services-python-ptvs/worker.png)
 
-可以随时将 Web 角色或辅助角色添加到现有的云服务。  您可以选择在解决方案中添加现有项目或创建新项目。
+可以随时将 Web 角色或辅助角色添加到现有的云服务。  可以选择在解决方案中添加现有项目或创建新项目。
 
 ![添加角色命令](./media/cloud-services-python-ptvs/add-new-or-existing-role.png)
 
-您的云服务可以包含用不同语言实现的角色。  例如，可以使用 Django 实现 Python Web 角色，而用使用 Python 或 C# 实现辅助角色。  你可以通过使用服务总线队列或存储队列来轻松地在角色之间进行通信。
+云服务可以包含用不同语言实现的角色。  例如，可以使用 Django 实现 Python Web 角色，而用使用 Python 或 C# 实现辅助角色。  可以通过使用服务总线队列或存储队列来轻松地在角色之间进行通信。
 
 ## <a name="install-python-on-the-cloud-service"></a>在云服务上安装 Python
 > [!WARNING]
-> 在本文上次更新时与 Visual Studio 一起安装的安装脚本无法使用。 本部分将介绍一种解决方法。
+> 在本文上次更新时与 Visual Studio 一起安装的安装脚本无法使用。 本部分介绍一种解决方法。
 > 
 > 
 
 安装脚本的主要问题在于无法安装 Python。 首先，请在 [ServiceDefinition.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) 文件中定义两个[启动任务](cloud-services-startup-tasks.md)。 第一个任务 (**PrepPython.ps1**) 下载并安装 Python 运行时。 第二个任务 (**PipInstaller.ps1**) 运行 pip，安装可能存在的任何依赖项。
 
-以下脚本是针对 Python 3.5 编写的。 若要使用 2.x 版 Python，请针对两个启动任务以及运行时任务将 **PYTHON2** 变量文件设置为 **on**：`<Variable name="PYTHON2" value="<mark>on</mark>" />`。
+以下脚本是针对 Python 3.5 编写的。 要使用 2.x 版 Python，请针对两个启动任务以及运行时任务将 **PYTHON2** 变量文件设置为 **on**：`<Variable name="PYTHON2" value="<mark>on</mark>" />`。
 
 ```xml
 <Startup>
@@ -101,7 +101,7 @@ Azure 为运行应用程序提供了三种计算模型：[Azure 应用服务中�
 </Startup>
 ```
 
-需将 **PYTHON2** 和 **PYPATH** 变量添加到辅助角色启动任务。 仅当 **PYTHON2** 变量设置为 **on** 时，才使用 **PYPATH** 变量。
+必须将 PYTHON2 和 PYPATH 变量添加到辅助角色启动任务。 仅当 **PYTHON2** 变量设置为 **on** 时，才使用 **PYPATH** 变量。
 
 ```xml
 <Runtime>
@@ -303,16 +303,16 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 
 
 ## <a name="run-locally"></a>在本地运行
-如果您将云服务项目设置为启动项目并按 F5，云服务将在本地 Azure 仿真程序中运行。
+如果将云服务项目设置为启动项目并按 F5，云服务会在本地 Azure 模拟器中运行。
 
-虽然 PTVS 支持在仿真程序中启动，但无法进行调试（例如断点）。
+虽然 PTVS 支持在模拟器中启动，调试（例如断点）将无法工作。
 
-若要调试 Web 角色和辅助角色，可以将角色项目设置为启动项目并对其进行调试。  还可以设置多个启动项目。  右键单击解决方案并选择“设置启动项目”。
+要调试 Web 角色和辅助角色，可以将角色项目设置为启动项目并对其进行调试。  还可以设置多个启动项目。  右键单击解决方案并选择“设置启动项目”。
 
 ![解决方案启动项目属性](./media/cloud-services-python-ptvs/startup.png)
 
 ## <a name="publish-to-azure"></a>发布到 Azure
-若要进行发布，请右键单击解决方案中的云服务项目，然后选择“发布”。
+要进行发布，请右键单击解决方案中的云服务项目，并选择“发布”。
 
 ![Microsoft Azure 发布登录](./media/cloud-services-python-ptvs/publish-sign-in.png)
 
@@ -320,11 +320,11 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 
 完成配置设置后，单击 **发布**。
 
-某些进度将显示在输出窗口中，然后您将看到“Microsoft Azure 活动日志”窗口。
+某些进度会显示在输出窗口中，然后会看到“Microsoft Azure 活动日志”窗口。
 
 ![Microsoft  Azure 活动日志窗口](./media/cloud-services-python-ptvs/publish-activity-log.png)
 
-部署将需要几分钟才能完成，然后您的 Web 和/或辅助角色将在 Azure 上运行！
+部署需要几分钟才能完成，然后 Web 和/或辅助角色会在 Azure 上运行！
 
 ### <a name="investigate-logs"></a>查看日志
 云服务虚拟机启动并安装 Python 后，可以查看日志，找出任何失败消息。 这些日志位于 **C:\Resources\Directory\\{role}\LogFiles** 文件夹中。 当脚本尝试检测是否已安装 Python 时，**PrepPython.err.txt** 中至少会包含一个错误，而 **PipInstaller.err.txt** 可能会指出 pip 版本已过时。
@@ -334,7 +334,7 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 
 * [云服务项目][Cloud Service Projects]
 
-有关作为 Web 角色和辅助角色使用 Azure 服务（例如使用 Azure 存储空间或服务总线）的详细信息，请参阅以下文章。
+有关作为 Web 角色和辅助角色使用 Azure 服务（例如使用 Azure 存储或服务总线）的详细信息，请参阅以下文章：
 
 * [Blob 服务][Blob Service]
 * [表服务][Table Service]
@@ -350,9 +350,9 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 [execution model-cloud services]: cloud-services-choose-me.md
 [Python Developer Center]: /develop/python/
 
-[Blob Service]: ../storage/storage-python-how-to-use-blob-storage.md
-[Queue Service]: ../storage/storage-python-how-to-use-queue-storage.md
-[Table Service]: ../storage/storage-python-how-to-use-table-storage.md
+[Blob Service]:../storage/blobs/storage-python-how-to-use-blob-storage.md
+[Queue Service]: ../storage/queues/storage-python-how-to-use-queue-storage.md
+[Table Service]:../cosmos-db/table-storage-how-to-use-python.md
 [Service Bus Queues]: ../service-bus-messaging/service-bus-python-how-to-use-queues.md
 [Service Bus Topics]: ../service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions.md
 

@@ -2,7 +2,7 @@
 title: "Azure 云服务文档 - 教程和 API 参考 | Microsoft 文档"
 description: "教程、API 参考和其他文档介绍了如何使用云服务来托管和运行高度可用、可缩放的云应用程序和 API。"
 services: cloud-services
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c8e0cec964b7c72e45564ff776c55be1b06bfbc1
 ms.openlocfilehash: 16bbb9953db91bfe031e5e87e14aac84d32799b3
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/09/2017
 
 ---

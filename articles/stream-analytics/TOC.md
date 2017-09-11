@@ -13,6 +13,7 @@
 ### [社交媒体](stream-analytics-twitter-sentiment-analysis-trends.md)
 ### [使用机器学习实现实时评分](stream-analytics-machine-learning-integration-tutorial.md)
 ### [实时事件处理](stream-analytics-real-time-event-processing-reference-architecture.md)
+### [Azure 用法指南（预览版）中的异常情况检测](stream-analytics-machine-learning-anomaly-detection.md)
 
 ## 创建作业
 ### [创建输入](stream-analytics-define-inputs.md)
@@ -66,7 +67,7 @@
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [博客](http://blogs.msdn.com/b/streamanalytics/)
 ## [反馈论坛](http://feedback.azure.com/forums/270577-azure-stream-analytics)
-## [论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+## [论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 ## [定价](https://azure.microsoft.com/pricing/details/stream-analytics/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [发行说明](stream-analytics-release-notes.md)

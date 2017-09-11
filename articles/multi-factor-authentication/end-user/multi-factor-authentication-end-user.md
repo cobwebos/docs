@@ -3,7 +3,7 @@ title: "双重验证入门 | Microsoft Docs"
 description: "本 Azure Multi-Factor Authentication 页面将会帮助你的最终用户开始使用 Azure Multi-Factor Authentication。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: barlanmsft
 manager: femila
 ms.assetid: e02cc045-2ac0-41ff-b07f-e9255e320383
 ms.service: multi-factor-authentication
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
-ms.author: kgremban
+ms.author: barlan
 ms.reviewer: yossib
 ms.custom: end-user
 ms.translationtype: Human Translation
@@ -48,5 +48,4 @@ ms.lasthandoff: 06/22/2017
 | [更改设置](multi-factor-authentication-end-user-manage-settings.md) |说明如何更改你的设置，例如电话号码或首选的注册方法。 |
 | [有关应用密码的帮助](multi-factor-authentication-end-user-app-passwords.md) |查找有关创建和使用应用密码的信息。 |
 | [使用移动应用](microsoft-authenticator-app-how-to.md) |Microsoft Authenticator 应用可用于 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072) 和 [IOS](http://go.microsoft.com/fwlink/?Linkid=825073)。 |
-
 

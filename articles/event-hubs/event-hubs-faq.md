@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: sethm;shvija
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: e0e33882acc90130ef93cd66c3d57bb90f78ccee
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: e208e970de58505553802a4ed27d7f9da4070866
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -33,7 +32,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 * 更长的事件保留期
 * 其他中转连接，对于超出包含的数量的部分收取超额费用
 * 多于单个使用者组
-* [捕获](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview)
+* [捕获](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)
 
 有关定价层的详细信息（包括专用事件中心），请参阅[事件中心定价详细信息](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
@@ -53,13 +52,13 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 如果某个命名空间中所有事件中心间的总出口吞吐量或总出口事件率超过了聚合吞吐量单位限额，接收方会受到限制，并会收到指明已超出出口配额的错误信息。 入口和出口配额是分开强制实施的，因此，任何发送方都不会使事件耗用速度减慢，并且接收方也无法阻止事件发送到事件中心。
 
 ### <a name="is-there-a-limit-on-the-number-of-throughput-units-that-can-be-selected"></a>可选择的吞吐量单元的数量有限制吗？
-默认配额为每个命名空间 20 个吞吐量单元。 你可以通过填写支持票证来要求更大的吞吐量单元配额。 超出 20 个吞吐量单元这一限制时，捆绑包将以 20 个和 100 个吞吐量单元的形式提供。 请注意，使用 20 个以上的吞吐量单元会失去在不填写支持票证的情况下更改吞吐量单元数的能力。
+默认配额为每个命名空间 20 个吞吐量单元。 可以通过填写支持票证来要求更大的吞吐量单元配额。 超出 20 个吞吐量单元这一限制时，捆绑包以 20 个和 100 个吞吐量单元的形式提供。 请注意，使用 20 个以上的吞吐量单元会失去在不填写支持票证的情况下更改吞吐量单元数的能力。
 
 ### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>是否可以使用单个 AMQP 连接来与多个事件中心相互收发数据？
 可以，但前提是所有事件中心都在同一个命名空间中。
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>事件的最长保留期有多久？
-事件中心标准目前支持的最长保留期为 7 天。 请注意，事件中心并不是永久性的数据存储区。 大于 24 小时的保留期适用于将事件流重播到相同系统中的情形；例如，为了基于现有数据来培训或验证新计算机学习模型。 如果需要将消息保留 7 天以上，那么启用事件中心的[事件中心捕获](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview)功能，可将数据从事件中心拉取到你选择的存储。 启用捕获功能会基于购买的吞吐量单位进行计价。
+事件中心标准目前支持的最长保留期为 7 天。 请注意，事件中心并不是永久性的数据存储区。 大于 24 小时的保留期适用于将事件流重播到相同系统中的情形；例如，为了基于现有数据来培训或验证新计算机学习模型。 如果需要将消息保留 7 天以上，请启用事件中心的[事件中心捕获](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)功能，将数据从事件中心拉取到选择的存储帐户或 Azure Data Lake 服务帐户。 启用捕获功能会基于购买的吞吐量单位进行计价。
 
 ### <a name="where-is-azure-event-hubs-available"></a>Azure 事件中心在哪些区域可用？
 在所有支持的 Azure 区域中都可使用 Azure 事件中心。 有关列表，请访问 [Azure 区域](https://azure.microsoft.com/regions/)页。  
@@ -69,9 +68,9 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 ### <a name="how-many-partitions-do-i-need"></a>需要多少分区？
 请记住，事件中心的分区数在设置后无法修改。 鉴于这一点，请务必在开始之前考虑需要多少分区。 
 
-事件中心设计用于允许每个用户组使用单个分区读取器。 在大多数用例中，四个分区的默认设置就足够了。 如果你希望扩展事件处理，则可以考虑添加其他分区。 对分区没有特定的吞吐量限制，但是命名空间中的聚合吞吐量受吞吐量单位数限制。 增加命名空间中吞吐量单位的数量时，可能需要添加额外分区来允许并发读取器实现其自身的最大吞吐量。
+事件中心设计用于允许每个用户组使用单个分区读取器。 在大多数用例中，四个分区的默认设置就足够了。 如果希望扩展事件处理，则可以考虑添加其他分区。 对分区没有特定的吞吐量限制，但是命名空间中的聚合吞吐量受吞吐量单位数限制。 增加命名空间中吞吐量单位的数量时，可能需要添加额外分区来允许并发读取器实现其自身的最大吞吐量。
 
-但是，如果你有一个模型，其中应用程序具有到特定分区的关联性，则增加分区数可能对你没有任何益处。 有关详细信息，请参阅[可用性和一致性](event-hubs-availability-and-consistency.md)。
+但是，如果有一个模型，其中应用程序具有到特定分区的关联性，则增加分区数可能对你没有任何益处。 有关详细信息，请参阅[可用性和一致性](event-hubs-availability-and-consistency.md)。
 
 ## <a name="pricing"></a>定价
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: SubramaR
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: ad20216374306d8b5035140f3d8e107c595b623e
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: dddc9f698d9776999d406117b46285a0f90d9620
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="service-fabric-on-linux"></a>Linux 上的 Service Fabric
@@ -40,13 +40,14 @@ Linux 上的 Service Fabric 在概念上等同于 Windows 上的 Service Fabric�
 
 
 ## <a name="supported-tooling"></a>支持的工具
-预览版支持通过 Azure CLI 来与群集交互。 Java 开发人员可以通过 Linux 和 OSX 上支持的 Eclipse 来与 Eclipse 和 Yeoman 集成。 OSX 集成在幕后通过 vagrant 使用 Linux VM。 C# 开发人员可以借助与 Yeoman 的集成来生成应用程序模板。
+预览版支持通过 Service Fabric CLI 来与群集交互。 Java 开发人员可以通过 Linux 和 OSX 上支持的 Eclipse 来与 Eclipse 和 Yeoman 集成。 OSX 集成在幕后通过 vagrant 使用 Linux VM。 C# 开发人员可以借助与 Yeoman 的集成来生成应用程序模板。
 
 ## <a name="next-steps"></a>后续步骤
-1. 熟悉 [Reliable Actors](service-fabric-reliable-actors-introduction.md) 和 [Reliable Services](service-fabric-reliable-services-introduction.md) 编程框架。
-2. [在 Linux 上准备开发环境](service-fabric-get-started-linux.md)
-3. [在 OSX 上准备开发环境](service-fabric-get-started-mac.md)
-4. [在 Linux 上创建第一个 Service Fabric Java 应用程序](service-fabric-create-your-first-linux-application-with-java.md)
-5. [使用 Jenkins 和 GitHub 设置 Service Fabric 持续集成和部署](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
-6. [Service Fabric Windows/Linux 差异](service-fabric-linux-windows-differences.md)
+
+* 熟悉 [Reliable Actors](service-fabric-reliable-actors-introduction.md) 和 [Reliable Services](service-fabric-reliable-services-introduction.md) 编程框架
+* [在 Linux 上准备开发环境](service-fabric-get-started-linux.md)
+* [在 OSX 上准备开发环境](service-fabric-get-started-mac.md)
+* [在 Linux 上创建第一个 Service Fabric Java 应用程序](service-fabric-create-your-first-linux-application-with-java.md)
+* [使用 Jenkins 和 GitHub 设置 Service Fabric 持续集成和部署](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
+* [Service Fabric Windows/Linux 差异](service-fabric-linux-windows-differences.md)
 

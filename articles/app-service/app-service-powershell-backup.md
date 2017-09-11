@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2016
 ms.author: nicking
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0d1c323155aae90e8a92d7a3b92b5ca1482e1ef5
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 34a7e1d025c301ca056753d964bb3c5f4f1a62d8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="use-powershell-to-back-up-and-restore-app-service-apps"></a>使用 PowerShell 备份和还原应用服务应用
@@ -28,12 +28,12 @@ ms.lasthandoff: 04/27/2017
 > 
 > 
 
-了解如何使用 Azure PowerShell 备份和还原[应用服务应用](https://azure.microsoft.com/services/app-service/web/)。 有关 Web 应用备份的详细信息（包括要求和限制），请参阅[在 Azure App Service 中备份 Web 应用](../app-service-web/web-sites-backup.md)。
+了解如何使用 Azure PowerShell 备份和还原[应用服务应用](https://azure.microsoft.com/services/app-service/web/)。 有关 Web 应用备份的详细信息（包括要求和限制），请参阅[在 Azure 应用服务中备份 Web 应用](../app-service-web/web-sites-backup.md)。
 
 ## <a name="prerequisites"></a>先决条件
 若要使用 PowerShell 管理应用备份，需满足以下条件：
 
-* **一个 SAS URL**，允许读写访问 Azure 存储容器。 有关 SAS URL 的说明，请参阅[了解 SAS 模型](../storage/storage-dotnet-shared-access-signature-part-1.md)。 有关使用 PowerShell 管理 Azure 存储的示例，请参阅[结合使用 Azure PowerShell 与 Azure 存储](../storage/storage-powershell-guide-full.md)。
+* **一个 SAS URL**，允许读写访问 Azure 存储容器。 有关 SAS URL 的说明，请参阅[了解 SAS 模型](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 有关使用 PowerShell 管理 Azure 存储的示例，请参阅[结合使用 Azure PowerShell 与 Azure 存储](../storage/common/storage-powershell-guide-full.md)。
 * **一个数据库连接字符串**，用于备份数据库和 Web 应用。
 
 ### <a name="how-to-generate-a-sas-url-to-use-with-the-web-app-backup-cmdlets"></a>如何生成可用于 Web 应用备份 cmdlet 的 SAS URL
@@ -65,7 +65,7 @@ ms.lasthandoff: 04/27/2017
 
         $backup = New-AzureRmWebAppBackup -ResourceGroupName $resourceGroupName -Name $appName -StorageAccountUrl $sasUrl -BackupName MyBackup
 
-若要在备份中包括数据库，请首先使用 New-AzureRmWebAppDatabaseBackupSetting cmdlet 创建数据库备份设置，然后在 New-AzureRmWebAppBackup cmdlet 的 Databases 参数中提供该设置。 Databases 参数接受一组数据库设置，允许用户备份多个数据库。
+要在备份中包括数据库，请首先使用 New-AzureRmWebAppDatabaseBackupSetting cmdlet 创建数据库备份设置，然后在 New-AzureRmWebAppBackup cmdlet 的 Databases 参数中提供该设置。 Databases 参数接受一组数据库设置，允许用户备份多个数据库。
 
         $dbSetting1 = New-AzureRmWebAppDatabaseBackupSetting -Name DB1 -DatabaseType SqlAzure -ConnectionString "<connection_string>"
         $dbSetting2 = New-AzureRmWebAppDatabaseBackupSetting -Name DB2 -DatabaseType SqlAzure -ConnectionString "<connection_string>"

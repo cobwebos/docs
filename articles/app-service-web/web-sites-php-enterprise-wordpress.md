@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 10/24/2016
 ms.author: sumuth
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: b562e8cbc84fc3a1e7e6dab1845022dfcce692a3
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 21281955458a2632d96a91d884cab13803f4d296
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="enterprise-class-wordpress-on-azure"></a>Azure 上的企业级 WordPress
@@ -49,13 +48,13 @@ Azure 应用服务为大规模任务关键型 [WordPress][wordpress] 站点提�
 尽管这允许创建多个站点 Web 应用实例以扩展应用程序，但所有内容都托管在特定地理区域的数据中心内。 如果此区域外的访客使用此站点，响应时间可能较长。 如果此区域的数据中心停机，那么应用程序也会停机。
 
 ### <a name="multi-region-deployment"></a>多区域部署
-通过使用 Azure [流量管理器][trafficmanager]，可在多个地理地区扩展 WordPress 站点，并为所有访客提供同一 URL。 所有访客都通过流量管理器接入，然后基于负载均衡配置被路由到某一区域。
+通过使用 Azure [流量管理器][trafficmanager]，可在多个地理地区扩展 WordPress 站点，并为所有访客提供同一 URL。 所有访客都通过流量管理器接入，并基于负载均衡配置被路由到某一区域。
 
 ![一个托管在多个区域的 Azure Web 应用，使用 CDBR 高可用性路由器跨区域路由到 MySQL][multi-region-diagram]
 
 在每个区域中，WordPress 站点仍会扩展到多个 Web 应用实例，但这种扩展是特定于某个区域的。 高流量区域和低流量区域的扩展方式不同。
 
-若要将流量复制并路由到多个 MySQL 数据库，可使用 [ClearDB 高可用性路由器 (CDBR)][cleardbscale]（左侧所示）或 [MySQL 群集运营商级版本 (CGE)][cge]。
+要将流量复制并路由到多个 MySQL 数据库，可使用 [ClearDB 高可用性路由器 (CDBR)][cleardbscale]（左侧所示）或 [MySQL 群集运营商级版本 (CGE)][cge]。
 
 ### <a name="multi-region-deployment-with-media-storage-and-caching"></a>使用媒体存储和缓存的多区域部署
 如果该站点接受上传或主机媒体文件，请使用 Azure Blob 存储。 如果需要缓存，请考虑使用 [Redis 缓存][rediscache]、[Memcache Cloud](http://azure.microsoft.com/gallery/store/garantiadata/memcached/)、[MemCachier](http://azure.microsoft.com/gallery/store/memcachier/memcachier/) 或 [Azure 应用商店](http://azure.microsoft.com/gallery/store/)中的一款其他缓存产品。
@@ -83,7 +82,7 @@ Azure 应用服务为大规模任务关键型 [WordPress][wordpress] 站点提�
 | **备份和还原** |[在 Azure 应用服务中备份 Web 应用][backup]和[在 Azure 应用服务中还原 Web 应用][restore] |
 
 #### <a name="performance"></a>性能
-云中的性能主要通过缓存和横向扩展实现。 但是，还应考虑托管 Web 应用的内存、带宽和其他属性。
+云中的性能主要通过缓存和横向扩展实现。但是，还应考虑托管 Web 应用的内存、带宽和其他属性。
 
 | 要执行以下操作... | 请使用以下方法... |
 | --- | --- |
@@ -92,9 +91,9 @@ Azure 应用服务为大规模任务关键型 [WordPress][wordpress] 站点提�
 | **缩放应用程序** |[在 Azure 应用服务中扩展 Web 应用][websitescale]和 [ClearDB 高可用性路由][cleardbscale]。 如果选择托管和管理自己的 MySQL 安装，应考虑使用 [MySQL 群集 CGE][cge] 进行向外扩展。 |
 
 #### <a name="migration"></a>迁移
-若要将现有 WordPress 站点迁移到 Azure 应用服务，可使用两种方法：
+要将现有 WordPress 站点迁移到 Azure 应用服务，可使用两种方法：
 
-* **[WordPress 导出][export]**：此方法可导出你的博客内容。 然后可使用 [WordPress 导入程序插件][import]，将该内容导入到 Azure 应用服务上的新 WordPress 站点。
+* **[WordPress 导出][export]**：此方法可导出博客的内容。 然后可使用 [WordPress 导入程序插件][import]，将该内容导入到 Azure 应用服务上的新 WordPress 站点。
 
   > [!NOTE]
   > 尽管此过程允许迁移内容，但不会迁移任何插件、主题或其他自定义内容。 必须再次手动安装这些组件。
@@ -104,8 +103,8 @@ Azure 应用服务为大规模任务关键型 [WordPress][wordpress] 站点提�
 
 ## <a name="step-by-step-instructions"></a>分步说明
 ### <a name="create-a-wordpress-site"></a>创建 WordPress 站点
-1. 在你将托管站点的区域中，使用 [Azure 应用商店][cdbnstore]创建你在[架构与规划](#planning)部分中标识的相应大小的 MySQL 数据库。
-2. 按照[在 Azure 应用服务中创建 WordPress Web 应用][createwordpress]中的步骤，创建一个 WordPress Web 应用。 创建 Web 应用时，选择**使用现有的 MySQL 数据库**，然后选择在步骤 1 中创建的数据库。
+1. 在将托管站点的区域中，使用 [Azure 应用商店][cdbnstore]创建你在[架构与规划](#planning)部分中标识的相应大小的 MySQL 数据库。
+2. 按照[在 Azure 应用服务中创建 WordPress Web 应用][createwordpress]中的步骤，创建一个 WordPress Web 应用。 创建 Web 应用时，选择**使用现有的 MySQL 数据库**，并选择在步骤 1 中创建的数据库。
 
 如果要迁移现有 WordPress 站点，在创建新 Web 应用后，请参阅[将现有 WordPress 站点迁移到 Azure](#Migrate-an-existing-WordPress-site-to-Azure)。
 
@@ -115,25 +114,25 @@ Azure 应用服务为大规模任务关键型 [WordPress][wordpress] 站点提�
 * **使用导出和导入**迁移不含大量自定义内容或只需移动内容的站点。
 * **使用备份和还原**迁移包含大量自定义内容并需要移动所有内容的站点。
 
-使用下列部分中的一个迁移您的网站。
+使用下列部分中的一个迁移网站。
 
 #### <a name="the-export-and-import-method"></a>导出和导入方法
 1. 使用 [WordPress 导出][export]导出现有站点。
 2. 使用[创建 WordPress 站点](#Create-a-new-WordPress-site)部分的步骤，创建 Web 应用。
-3. 在 [Azure 门户][mgmtportal]上登录 WordPress 站点，然后单击“插件” > “新增”。 搜索并安装 **WordPress 导入程序**插件。
-4. 安装 WordPress 导入程序插件后，单击“工具” > “导入”，然后单击“WordPress”使用 WordPress 导入程序插件。
-5. 在“导入 WordPress”页面上，单击“选择文件”。 查找从现有 WordPress 站点导出的 WXR 文件，然后单击“上传文件和导入”。
-6. 单击“提交”。 系统将提示导入成功。
+3. 在 [Azure 门户][mgmtportal]上登录 WordPress 站点，并单击“插件” > “新增”。 搜索并安装 **WordPress 导入程序**插件。
+4. 安装 WordPress 导入程序插件后，单击“工具” > “导入”，并单击“WordPress”使用 WordPress 导入程序插件。
+5. 在“导入 WordPress”页面上，单击“选择文件”。 查找从现有 WordPress 站点导出的 WXR 文件，并单击“上传文件和导入”。
+6. 单击“提交”。 系统会提示导入成功。
 7. 完成所有这些步骤后，从 [Azure 门户][mgmtportal]中的“应用程序服务”边栏选项卡重启站点。
 
 导入站点后，请执行以下步骤，启用导入文件中不包含的设置。
 
-| 如果你在使用... | 请执行以下操作... |
+| 如果在使用... | 请执行以下操作... |
 | --- | --- |
-| **固定链接** |从新站点的 WordPress 仪表板中，单击“设置” > “固定链接”，然后更新固定链接结构。 |
-| **图像/媒体链接** |若要将链接更新到新位置，请使用搜索和替换工具 [Velvet Blues Update URLs 插件][velvet]，或手动更新数据库中的链接。 |
-| **主题** |转到“外观” > “主题”，然后根据需要更新站点主题。 |
-| **菜单** |如果主题支持菜单，那么主页的链接可能仍有嵌入的旧子目录。 转到“外观” > “菜单”，然后对其进行更新。 |
+| **固定链接** |从新站点的 WordPress 仪表板中，单击“设置” > “固定链接”，并更新固定链接结构。 |
+| **图像/媒体链接** |要将链接更新到新位置，请使用搜索和替换工具 [Velvet Blues Update URLs 插件][velvet]，或手动更新数据库中的链接。 |
+| **主题** |转到“外观” > “主题”，并根据需要更新站点主题。 |
+| **菜单** |如果主题支持菜单，那么主页的链接可能仍有嵌入的旧子目录。 转到“外观” > “菜单”，并对其进行更新。 |
 
 #### <a name="the-backup-and-restore-method"></a>备份和还原方法
 1. 使用 [WordPress 备份][wordpressbackup]上的信息，备份现有 WordPress 站点。
@@ -141,7 +140,7 @@ Azure 应用服务为大规模任务关键型 [WordPress][wordpress] 站点提�
 3. 创建数据库并还原备份。
 
    1. 从 [Azure 应用商店][cdbnstore]购买新的数据库，或者在 [Windows][mysqlwindows] 或 [Linux][mysqllinux] 虚拟机上设置 MySQL 数据库。
-   2. 使用 MySQL 客户端（如 [MySQL Workbench][workbench]）连接到新数据库，然后导入 WordPress 数据库。
+   2. 使用 MySQL 客户端（如 [MySQL Workbench][workbench]）连接到新数据库，并导入 WordPress 数据库。
    3. 更新数据库，将域条目更改为新的 Azure 应用服务域（例如 mywordpress.azurewebsites.net）。 使用[搜索和替换为 WordPress 数据库脚本][searchandreplace]，安全地更改所有实例。
 4. 在 Azure 门户中创建 Web 应用并发布 WordPress 备份。
 
@@ -164,7 +163,7 @@ Azure 应用服务为大规模任务关键型 [WordPress][wordpress] 站点提�
 | **设置应用服务计划模式、大小和启用缩放** |[在 Azure 应用服务中缩放 Web 应用][websitescale]。 |
 | **启用持久的数据库连接** |默认情况下，WordPress 不使用持久的数据库连接，这可能导致数据库的连接在多次连接后受到限制。 若要启用持久连接，请安装[持久连接适配器插件](https://wordpress.org/plugins/persistent-database-connection-updater/installation/)。 |
 | **提高性能** |<ul><li><p><a href="https://azure.microsoft.com/en-us/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/">禁用 ARR Cookie</a> 可在多个 Web 应用实例上运行 WordPress 时提高性能。</p></li><li><p>启用缓存。 可将 <a href="http://msdn.microsoft.com/library/azure/dn690470.aspx">Redis 缓存</a>（预览版）与 <a href="https://wordpress.org/plugins/redis-object-cache/">Redis 对象缓存 WordPress 插件</a>配合使用，或可使用 <a href="/gallery/store/">Azure 应用商店</a>中的一款其他缓存产品。</p></li><li><p>[使用 Wincache 加快 WordPress 的速度](https://wordpress.org/plugins/w3-total-cache/)。 默认情况下为 Web 应用启用 Wincache。 配合使用 WinCache 和动态缓存时，请关闭 WinCache 的文件缓存，但让用户和会话缓存处于启用状态。 若要关闭文件缓存，请在系统级 .ini 文件中设置以下值：<br/><code>wincache.fcenabled = 0</code></p></li><li><p>[在 Azure 应用服务中缩放 Web 应用][websitescale]并使用 <a href="http://www.cleardb.com/developers/cdbr/introduction">ClearDB 高可用性路由</a>或 <a href="http://www.mysql.com/products/cluster/">MySQL 群集 CGE</a>。</p></li></ul> |
-| **使用 blob 作为存储** |<ol><li><p>[创建 Azure 存储帐户](../storage/storage-create-storage-account.md)。</p></li><li><p>了解如何[使用内容分发网络 (CDN)](../cdn/cdn-create-new-endpoint.md) 将 blob 中存储的数据分发到各个地区。</p></li><li><p>安装并配置<a href="https://wordpress.org/plugins/windows-azure-storage/">适用于 WordPress 的 Azure 存储插件</a>。</p><p>有关该插件的详细设置和配置信息，请参阅<a href="http://plugins.svn.wordpress.org/windows-azure-storage/trunk/UserGuide.docx">用户指南</a>。</p> </li></ol> |
+| **使用 blob 作为存储** |<ol><li><p>[创建 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。</p></li><li><p>了解如何[使用内容分发网络 (CDN)](../cdn/cdn-create-new-endpoint.md) 将 blob 中存储的数据分发到各个地区。</p></li><li><p>安装并配置<a href="https://wordpress.org/plugins/windows-azure-storage/">适用于 WordPress 的 Azure 存储插件</a>。</p><p>有关该插件的详细设置和配置信息，请参阅<a href="http://plugins.svn.wordpress.org/windows-azure-storage/trunk/UserGuide.docx">用户指南</a>。</p> </li></ol> |
 | **启用电子邮件** |使用 Azure 应用商店启用 <a href="https://azure.microsoft.com/en-us/marketplace/partners/sendgrid/sendgrid-azure/">SendGrid</a>。 安装适用于 WordPress 的 <a href="http://wordpress.org/plugins/sendgrid-email-delivery-simplified">SendGrid 插件</a>。 |
 | **配置自定义域名** |[在 Azure 应用服务中配置自定义域名][customdomain]。 |
 | **为自定义域名启用 HTTPS** |[在 Azure 应用服务中启用 Web 应用的 HTTPS][httpscustomdomain]。 |

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: vvasic
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: 71c286061e214898a7f10fa8dfd6c6d86af8db39
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: bf41aa530c68ea0e94a09d1dab63237c6f42bce7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/10/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录 
@@ -71,7 +70,7 @@ Azure SQL 数据库可发出指标和诊断日志，以便更轻松地监视。 
 
    存储帐户 ID 是需要向其发送日志的存储帐户的资源 ID。
 
-- 若要允许将诊断日志流式传输到事件中心，请使用以下命令：
+- 要允许将诊断日志流式传输到事件中心，请使用以下命令：
 
    ```powershell
    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
@@ -83,19 +82,19 @@ Azure SQL 数据库可发出指标和诊断日志，以便更轻松地监视。 
    {service bus resource ID}/authorizationrules/{key name}
    ``` 
 
-- 若要启用将诊断日志发送到 Log Analytics 工作区，请使用以下命令：
+- 要启用将诊断日志发送到 Log Analytics 工作区，请使用以下命令：
 
    ```powershell
    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
    ```
 
-- 你可以使用以下命令获取 Log Analytics 工作区的资源 ID：
+- 可以使用以下命令获取 Log Analytics 工作区的资源 ID：
 
    ```powershell
    (Get-AzureRmOperationalInsightsWorkspace).ResourceId
    ```
 
-你可以组合这些参数以启用多个输出选项。
+可以组合这些参数以启用多个输出选项。
 
 ### <a name="cli"></a>CLI
 
@@ -109,7 +108,7 @@ Azure SQL 数据库可发出指标和诊断日志，以便更轻松地监视。 
 
    存储帐户 ID 是需要向其发送日志的存储帐户的资源 ID。
 
-- 若要允许将诊断日志流式传输到事件中心，请使用以下命令：
+- 要允许将诊断日志流式传输到事件中心，请使用以下命令：
 
    ```azurecli-interactive
    azure insights diagnostic set --resourceId <resourceId> --serviceBusRuleId <serviceBusRuleId> --enabled true
@@ -121,13 +120,13 @@ Azure SQL 数据库可发出指标和诊断日志，以便更轻松地监视。 
    {service bus resource ID}/authorizationrules/{key name}
    ```
 
-- 若要启用将诊断日志发送到 Log Analytics 工作区，请使用以下命令：
+- 要启用将诊断日志发送到 Log Analytics 工作区，请使用以下命令：
 
    ```azurecli-interactive
    azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
    ```
 
-你可以组合这些参数以启用多个输出选项。
+可以组合这些参数以启用多个输出选项。
 
 ### <a name="rest-api"></a>REST API
 
@@ -223,7 +222,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="download-metrics-and-logs-from-azure-storage"></a>从 Azure 存储下载指标和日志
 
-请参阅[从 Azure 存储下载指标和诊断日志](../storage/storage-dotnet-how-to-use-blobs.md#download-blobs)
+请参阅[从 Azure 存储下载指标和诊断日志](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)
 
 ## <a name="1-minute-metrics"></a>1 分钟指标
 
@@ -240,5 +239,5 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 - 阅读以下文章，了解事件中心：
    - [什么是 Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)？
    - [事件中心入门](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-- 请参阅[从 Azure 存储下载指标和诊断日志](../storage/storage-dotnet-how-to-use-blobs.md#download-blobs)
+- 请参阅[从 Azure 存储下载指标和诊断日志](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)
 

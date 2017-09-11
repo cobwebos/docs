@@ -2,7 +2,7 @@
 title: "Azure VPN 网关文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何配置虚拟专用网络 (VPN) 网关，用于管理云虚拟网络与本地之间或者云 VNet 之间的流量。"
 services: vpn-gateway
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

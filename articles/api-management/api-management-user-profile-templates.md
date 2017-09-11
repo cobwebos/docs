@@ -3,7 +3,7 @@ title: "Azure API 管理中的用户配置文件模板 | Microsoft 文档"
 description: "了解如何在 Azure API 管理中自定义开发人员门户中的用户配置文件页面的内容。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 2e3b73ef-d223-44fe-9280-c3af3fd4a030
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
 ms.openlocfilehash: cd6cfe3fde93624faec844f91ea9193527495df4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Azure API 管理中的用户配置文件模板
@@ -35,7 +37,7 @@ ms.openlocfilehash: cd6cfe3fde93624faec844f91ea9193527495df4
 > [!NOTE]
 >  示例默认模板包含在后面的文档中，但是会因持续改进而有所更改。 导航到所需单个模板以后，即可在开发人员门户中查看实时的默认模板。 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
   
-##  <a name="a-nameprofilea-profile"></a><a name="Profile"></a> 配置文件  
+##  <a name="Profile"></a> 配置文件  
  **配置文件**模板用于自定义开发人员门户中用户配置文件页的用户配置文件部分。  
   
  ![用户配置文件页](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "APIM 用户配置文件页")  
@@ -180,7 +182,7 @@ ms.openlocfilehash: cd6cfe3fde93624faec844f91ea9193527495df4
 }  
 ```  
   
-##  <a name="a-namesubscriptionsa-subscriptions"></a><a name="Subscriptions"></a> 订阅  
+##  <a name="Subscriptions"></a> 订阅  
  **订阅**模板用于自定义开发人员门户中用户配置文件页的订阅部分。  
   
  ![用户订阅页](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "APIM 用户订阅页")  
@@ -401,7 +403,7 @@ ms.openlocfilehash: cd6cfe3fde93624faec844f91ea9193527495df4
 }  
 ```  
   
-##  <a name="a-nameapplicationsa-applications"></a><a name="Applications"></a> 应用程序  
+##  <a name="Applications"></a> 应用程序  
  **应用程序**模板用于自定义开发人员门户中用户配置文件页的订阅部分。  
   
  ![用户帐户应用程序页](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "APIM 用户帐户应用程序页")  
@@ -564,7 +566,7 @@ ms.openlocfilehash: cd6cfe3fde93624faec844f91ea9193527495df4
 }  
 ```  
   
-##  <a name="a-nameupdateaccountinfoa-update-account-info"></a><a name="UpdateAccountInfo"></a> 更新帐户信息  
+##  <a name="UpdateAccountInfo"></a> 更新帐户信息  
  **更新帐户信息**模板用于自定义开发人员门户中的“更新帐户信息”页。  
   
  ![用户帐户信息页开发人员门户模板](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "APIM 用户帐户信息页开发人员门户模板")  
@@ -623,8 +625,3 @@ ms.openlocfilehash: cd6cfe3fde93624faec844f91ea9193527495df4
 
 ## <a name="next-steps"></a>后续步骤
 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](api-management-developer-portal-templates.md)。
-
-
-<!--HONumber=Jan17_HO2-->
-
-

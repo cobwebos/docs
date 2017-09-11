@@ -4,7 +4,7 @@ description: "此文将提供有关在轮转存储访问密钥后如何更新媒
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: a892ebb0-0ea0-4fc8-b715-60347cc5c95b
 ms.service: media-services

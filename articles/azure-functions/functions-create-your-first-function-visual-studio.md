@@ -4,30 +4,31 @@ description: "使用 Azure Functions Tools for Visual Studio 创建一个简单�
 services: functions
 documentationcenter: na
 author: rachelappel
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "azure functions, functions, 事件处理, 计算, 无服务器体系结构"
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.service: functions
 ms.devlang: multiple
-ms.topic: hero-article
+ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 07/05/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: f3aa6740751db9aa979a88f9600f68cf4353643c
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 8291986b123ed98b9c2bd4ec915e1a18b6e0cbb7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>使用 Visual Studio 创建你的第一个函数
 
 Azure Functions 用于在无服务器环境中执行代码，无需先创建 VM 或发布 Web 应用程序。
 
-本主题介绍如何使用 Azure Function Tools for Visual Studio 2017 在本地创建并测试“hello world”函数。 然后将函数代码发布到 Azure。 这些工具包含在 Visual Studio 2017 版本 15.3 或更高版本的 Azure 开发工作负荷中。
+本主题介绍如何使用 Azure Functions 的 Visual Studio 2017 工具在本地创建并测试“hello world”函数。 然后将函数代码发布到 Azure。 这些工具包含在 Visual Studio 2017 版本 15.3 或更高版本的 Azure 开发工作负荷中。
 
 ![Visual Studio 项目中的 Azure Functions 代码](./media/functions-create-your-first-function-visual-studio/functions-vstools-intro.png)
 
@@ -38,6 +39,9 @@ Azure Functions 用于在无服务器环境中执行代码，无需先创建 VM 
 * [Visual Studio 2017 版本 15.3](https://www.visualstudio.com/vs/preview/)，包括 **Azure 开发**工作负荷。
 
     ![使用 Azure 开发工作负荷安装 Visual Studio 2017](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+    
+    >[!NOTE]  
+    安装或升级到 Visual Studio 2017 版本 15.3 后，你可能需要手动更新 Azure Functions 的 Visual Studio 2017 工具。 可以在“扩展和更新...” > “更新” > “Visual Studio Marketplace” > “Azure Functions 和 Web 作业工具” > “更新”下的“工具”中更新工具。 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
@@ -55,6 +59,10 @@ Azure Functions 用于在无服务器环境中执行代码，无需先创建 VM 
 
     ![创建新的 Azure Function](./media/functions-create-your-first-function-visual-studio/functions-vstools-add-new-function-2.png)
 
+    代码文件将添加到项目，其中包含实现函数代码的类。 此代码基于一个模板，该模板会接收名称值并将其回显。 FunctionName 属性设置函数的名称。 HttpTrigger 属性指示触发该函数的消息。 
+
+    ![函数代码文件](./media/functions-create-your-first-function-visual-studio/functions-code-page.png)
+
 创建 HTTP 触发的函数以后，即可在本地计算机上对其进行测试。
 
 ## <a name="test-the-function-locally"></a>在本地测试函数
@@ -67,7 +75,7 @@ Azure Functions Core Tools 允许在本地开发计算机上运行 Azure Functio
 
     ![Azure 本地运行时](./media/functions-create-your-first-function-visual-studio/functions-vstools-f5.png)
 
-3. 将 HTTP 请求的 URL 粘贴到浏览器的地址栏中。 将查询字符串 `&name=<yourname>` 追加到此 URL 并执行请求。 下面演示浏览器中函数返回的对本地 GET 请求的响应： 
+3. 将 HTTP 请求的 URL 粘贴到浏览器的地址栏中。 将查询字符串 `?name=<yourname>` 追加到此 URL 并执行请求。 下面演示浏览器中函数返回的对本地 GET 请求的响应： 
 
     ![浏览器中的函数 localhost 响应](./media/functions-create-your-first-function-visual-studio/functions-test-local-browser.png)
 
@@ -83,7 +91,7 @@ Azure Functions Core Tools 允许在本地开发计算机上运行 Azure Functio
 
 ## <a name="test-your-function-in-azure"></a>在 Azure 中测试函数
 
-1. 从“发布”配置文件页复制函数应用的基 URL。 将 URL 的 `localhost:port` 部分（在本地测试函数时使用）替换为新的基 URL。 与前面一样，请确保将查询字符串 `&name=<yourname>` 追加到此 URL 并执行请求。
+1. 从“发布”配置文件页复制函数应用的基 URL。 将 URL 的 `localhost:port` 部分（在本地测试函数时使用）替换为新的基 URL。 与前面一样，请确保将查询字符串 `?name=<yourname>` 追加到此 URL 并执行请求。
 
     调用 HTTP 触发的函数的 URL 如下所示：
 

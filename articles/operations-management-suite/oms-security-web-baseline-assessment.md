@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/28/2017
+ms.date: 08/18/2017
 ms.author: yurid
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 8be49b182df675fe3235d148b87379e1dff3a384
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 40b0c6ca933ea02ac9f5fe3bfaaf87a310542a8d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="web-baseline-assessment-in-operations-management-suite-security-and-audit-solution"></a>Operations Management Suite 安全和审核解决方案中的 Web 基线评估
@@ -29,6 +29,9 @@ ms.lasthandoff: 08/01/2017
 OMS 安全目前为操作系统提供安全基线评估。 它会每隔 24 小时扫描一次服务器的 OS 设置，帮助用户了解可能有漏洞的设置。 请阅读 [Operations Management Suite 安全和审核解决方案中的基线评估](https://docs.microsoft.com/azure/operations-management-suite/oms-security-baseline)，详细了解此方面的情况。
 
 Web 基线评估的目的是找出可能有漏洞的 Web 服务器设置。 Web 基线配置的三个主要源为：.NET、ASP.NET 和 IIS 配置。  就像操作系统基线评估一样，OMS 安全将每隔 24 小时扫描 Web 服务器一次，帮助用户了解其安全状态。  在 Internet Information Service (IIS) 中，配置的可自定义程度很高，因此可重写各种站点和应用程序级别。 除默认根级别之外，扫描程序还会检查每个应用程序/站点级别的设置。 这有助于确定可能有漏洞的设置，并快速进行补救，同时实施我们提供的针对这些设置的建议。
+
+>[!NOTE] 
+>可以在此[页](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335?redir=0)下载 OMS 安全所使用的常用配置标识符和基线规则。
 
 
 ## <a name="web-security-baseline-assessment"></a>Web 安全基线评估

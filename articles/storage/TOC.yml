@@ -1,0 +1,16 @@
+- name: 概述
+  items:
+    - name: 介绍
+      href: ./common/storage-introduction.md
+    - name: 选择 Blob、文件或磁盘
+      href: ./common/storage-decide-blobs-files-disks.md
+- name: Blob
+  href: ./blobs/storage-blobs-introduction.md
+- name: 文件
+  href: ./files/storage-files-introduction.md
+- name: 队列
+  href: ./queues/storage-queues-introduction.md
+- name: 表
+  href: ../cosmos-db/table-storage-overview.md
+- name: 磁盘
+  href: ../virtual-machines/windows/managed-disks-overview.md

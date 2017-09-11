@@ -18,7 +18,7 @@
 # 示例
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=service-fabric)
 ## [PowerShell](service-fabric-powershell-samples.md)
-## [Azure CLI](samples-cli.md)
+## [Service Fabric CLI](samples-cli.md)
 # 概念
 ## [了解微服务](service-fabric-overview-microservices.md)
 ## [大图](service-fabric-content-roadmap.md)
@@ -113,11 +113,14 @@
 #### [限制](service-fabric-cluster-resource-manager-advanced-throttling.md)
 #### [服务移动](service-fabric-cluster-resource-manager-movement-cost.md)
 
+## [与 API 管理集成](service-fabric-api-management-overview.md)
+
 ## 监视和诊断
 ### [概述](service-fabric-diagnostics-overview.md)
 ### [运行状况模型](service-fabric-health-introduction.md)
 ### [有状态的 Reliable Services 中的诊断](service-fabric-reliable-services-diagnostics.md)
 ### [Reliable Actors 中的诊断](service-fabric-reliable-actors-diagnostics.md)
+### [用于可靠服务远程处理的性能计数器](service-fabric-reliable-serviceremoting-diagnostics.md)
 
 # 操作方法指南
 ## 设置开发环境
@@ -126,6 +129,7 @@
 ### [Mac OS](service-fabric-get-started-mac.md)
 
 ## 构建应用程序
+### [在 Visual Studio 中创建你的第一个 C# 应用](service-fabric-create-your-first-application-in-visual-studio.md)
 ### 生成来宾可执行服务
 #### [在 Windows 上承载 Node.js 应用程序](quickstart-guest-app.md)
 #### [部署来宾可执行文件](service-fabric-deploy-existing-app.md)
@@ -176,11 +180,14 @@
 #### 入门
 ##### [Windows 上的 C#](service-fabric-reliable-actors-get-started.md)
 ##### [Linux 上的 Java](service-fabric-reliable-actors-get-started-java.md)
+##### [Linux 上的 Java Actor](service-fabric-create-your-first-linux-application-with-java.md)
 #### [发送通知](service-fabric-reliable-actors-events.md)
 #### [设置计时器和提醒](service-fabric-reliable-actors-timers-reminders.md)
 #### [配置 KvsActorStateProvider](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
 #### [配置通信设置](service-fabric-reliable-actors-fabrictransportsettings.md)
 #### [配置 ReliableDictionaryActorStateProvider](service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md)
+
+### [迁移旧的 Java 应用程序以支持 Maven](service-fabric-migrate-old-javaapp-to-use-maven.md)
 
 ### [配置反向代理以进行安全通信](service-fabric-reverseproxy-configure-secure-communication.md)
 
@@ -203,9 +210,7 @@
 ### [在 Eclipse 中调试 Java 服务](service-fabric-debugging-your-application-java.md)
 ### [在本地监视和诊断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
 
-## 与 API 管理集成
-### [概述](service-fabric-api-management-overview.md)
-### [快速入门](service-fabric-api-management-quick-start.md)
+## [将 API 管理和 Service Fabric 部署到 Azure](service-fabric-api-management-quick-start.md)
 
 ## 从云服务迁移
 ### [比较云服务和 Service Fabric](service-fabric-cloud-services-migration-differences.md)
@@ -218,7 +223,7 @@
 ### 部署或删除应用程序
 #### [在本地群集上部署应用程序](service-fabric-get-started-with-a-local-cluster.md)
 #### [PowerShell](service-fabric-deploy-remove-applications.md)
-#### [Azure CLI 2.0](service-fabric-application-lifecycle-azure-cli-2-0.md)
+#### [Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
 #### [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
 
@@ -253,6 +258,7 @@
 #### [升级](service-fabric-cluster-upgrade.md)
 #### [设置访问控制](service-fabric-cluster-security-roles.md)
 #### [配置](service-fabric-cluster-fabric-settings.md)
+#### [打开负载均衡器的端口](create-load-balancer-rule.md)
 #### [管理群集证书](service-fabric-cluster-security-update-certs-azure.md)
 #### [删除](service-fabric-cluster-delete.md)
 
@@ -272,8 +278,7 @@
 ### [可视化群集](service-fabric-visualizing-your-cluster.md)
 ### [连接到安全群集](service-fabric-connect-to-secure-cluster.md)
 
-### [使用 XPlat CLI 管理群集](service-fabric-azure-cli.md)
-### [使用 Azure CLI 2.0 命令管理群集](service-fabric-azure-cli-2-0.md)
+### [使用 Service Fabric CLI 管理群集](service-fabric-cli.md)
 ### [修补群集节点](service-fabric-patch-orchestration-application.md)
 
 ### 管理和协调群集资源

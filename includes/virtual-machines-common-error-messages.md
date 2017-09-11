@@ -181,9 +181,9 @@ Azure VM 使用以下 JSON 格式进行错误响应：
 |  VMExtensionProvisioningError  |  VM 在处理扩展“{0}”时报告失败。 错误消息:“{1}”。  |
 |  VMExtensionProvisioningError  |  未能在 VM 上预配多个 VM 扩展。 有关详细信息，请参阅 VM 扩展实例视图。  |
 |  VMExtensionProvisioningTimeout  |  预配 VM 扩展“{0}”超时。 扩展安装可能耗时过长，或无法获得扩展状态。  |
-|  VMMarketplaceInvalidInput  |  从非应用商店映像创建虚拟机无需计划信息，请删除请求中的计划信息。 OS 磁盘名称为 {0}。  |
-|  VMMarketplaceInvalidInput  |  购买信息不匹配。 无法从应用商店映像部署。 OS 磁盘名称为 {0}。  |
-|  VMMarketplaceInvalidInput  |  从应用商店映像创建虚拟机需要请求中的计划信息。 OS 磁盘名称为 {0}。  |
+|  VMMarketplaceInvalidInput  |  从非 Marketplace 映像创建虚拟机无需计划信息，请删除请求中的计划信息。 OS 磁盘名称为 {0}。  |
+|  VMMarketplaceInvalidInput  |  购买信息不匹配。 无法从 Marketplace 映像部署。 OS 磁盘名称为 {0}。  |
+|  VMMarketplaceInvalidInput  |  从 Marketplace 映像创建虚拟机需要请求中的计划信息。 OS 磁盘名称为 {0}。  |
 |  VMNotFound  |  找不到 VM“{0}”。  |
 |  VMRedeploymentFailed  |  VM“{0}”的重新部署因内部错误而失败。 请稍后重试。  |
 |  VMRedeploymentTimedOut  |  VM“{0}”的重新部署未在分配的时间内完成。 不久即可成功完成。 否则，你可以重试该请求。  |

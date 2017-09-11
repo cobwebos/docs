@@ -15,10 +15,10 @@ ms.workload: required
 ms.date: 08/08/2017
 ms.author: bharatn
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: cb37c7209a3449047bad97ce50344e1530f0e222
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 7897458e9e4a0bbe185bd3f7b4c133c1b26769f9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric 中的反向代理
@@ -135,6 +135,15 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 此 HTTP 响应标头指示的是正常的 HTTP 404 情形，即所请求的资源不存在，因此应用程序网关不会尝试重新解析服务地址。
 
 ## <a name="setup-and-configuration"></a>安装和配置
+
+### <a name="enable-reverse-proxy-via-azure-portal"></a>通过 Azure 门户启用反向代理
+
+在创建新的 Service Fabric 群集时，Azure 门户提供了一个启用反向代理的选项。
+选择“创建 Service Fabric 群集”下的“步骤 2：群集配置，节点类型配置”复选框以“启用反向代理”。
+若要配置安全反向代理，可在“步骤 3：安全性，配置群集安全设置”中指定 SSL 证书，选中该复选框以“包含反向代理的 SSL 证书”并输入证书详细信息。
+
+### <a name="enable-reverse-proxy-via-azure-resource-manager-templates"></a>通过 Azure 资源管理器模板启用反向代理
+
 可以使用 [Azure Resource Manager 模板](service-fabric-cluster-creation-via-arm.md)在 Service Fabric 中为群集启用反向代理。
 
 请参阅[在安全群集中配置 HTTPS 反向代理](https://github.com/ChackDan/Service-Fabric/tree/master/ARM Templates/ReverseProxySecureSample#configure-https-reverse-proxy-in-a-secure-cluster)中的 Azure Resource Manager 模板示例，使用证书配置安全反向代理并处理证书滚动更新。

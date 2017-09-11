@@ -11,14 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/08/2017
+ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
 ms.openlocfilehash: 7a7069adab5742a9dae2833c13a1db57337a41a0
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/09/2017
-
 
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-data-lake-store-as-additional-storage"></a>使用 Azure PowerShell 创建具有 Data Lake Store 的 HDInsight 群集（作为其他存储）

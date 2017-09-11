@@ -3,7 +3,7 @@ title: "Azure Analysis Services 教程第 7 课：创建关键绩效指标 | Mic
 description: "介绍了在 Azure Analysis Services 教程项目中如何创建关键绩效指标。"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

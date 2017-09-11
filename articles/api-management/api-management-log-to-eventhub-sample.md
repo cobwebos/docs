@@ -14,16 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 666d0f655a0705423d025b88a1f457b866008ab9
-ms.lasthandoff: 03/29/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 70ee752c5639c90f77dde104ce85eec0a1062300
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>使用 Azure API 管理、事件中心和 Runscope 监视 API
 [API 管理服务](api-management-key-concepts.md)提供许多功能来增强发送到 HTTP API 的 HTTP 请求的处理。 但是，请求和响应都是暂时性存在的。 在请求发出后，将通过 API 管理服务流送到后端 API。 API 将处理该请求，然后，将响应返回给 API 使用者。 API 管理服务保留要在发布者门户仪表板中显示的 API 一些重要统计信息，但除此之外不显示详细信息。
 
-在 API 管理服务中使用 [log-to-eventhub](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub) [策略](api-management-howto-policies.md)可将请求和响应的详细信息发送到 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)。 想要从发送到 API 的 HTTP 消息生成事件的原因包罗万象。 示例包括更新审核线索、使用情况分析、异常警报和第三方集成。   
+在 API 管理服务中使用 [log-to-eventhub](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub) [策略](api-management-howto-policies.md)，可将请求和响应的详细信息发送到 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)。 想要从发送到 API 的 HTTP 消息生成事件的原因包罗万象。 示例包括更新审核线索、使用情况分析、异常警报和第三方集成。   
 
 本文演示如何捕获整个 HTTP 请求和响应消息、将其发送到事件中心，然后将该消息中继到可提供 HTTP 日志记录和监视服务的第三方服务。
 
@@ -37,12 +38,12 @@ ms.lasthandoff: 03/29/2017
 
 Azure 事件中心旨在引入大量数据，它能够处理的事件数目远高于大多数 API 所处理的 HTTP 请求数目。 在某种意义上，事件中心充当 API 管理服务与基础结构之间的高级缓冲区，可存储和处理消息。 这可以确保 API 性能不受日志记录基础结构的影响。  
 
-数据传递到事件中心后，将会持久保存并等待事件中心使用者的处理。 事件中心不在乎其处理方式，只在乎如何确保成功传递消息。     
+数据传递到事件中心后，会持久保存并等待事件中心使用者的处理。 事件中心不在乎其处理方式，只在乎如何确保成功传递消息。     
 
 事件中心可将事件流式传输到多个使用者组。 这样，事件便可由完全不同的系统处理。 此外，可为许多集成方案提供支持，而不会在 API 管理服务中处理 API 请求时造成额外的延迟，因为只需生成一个事件。
 
 ## <a name="a-policy-to-send-applicationhttp-messages"></a>用于发送 application/http 消息的策略
-事件中心接受简单字符串形式的事件数据。 该字符串的内容完全由你确定。 若要打包 HTTP 请求并将其发送到事件中心，需要使用请求或响应信息来格式化字符串。 在此类情况下，如果有可以重复使用的现有格式，则不需要编写自己的分析代码。 最初，我考虑使用 [HAR](http://www.softwareishard.com/blog/har-12-spec/) 来发送 HTTP 请求和响应。 但是，这种格式最适合用于存储 JSON 格式的一连串 HTTP 请求。 其中包含一些必需的元素，使得通过网络传递 HTTP 消息的方案增加了不必要的复杂性。  
+事件中心接受简单字符串形式的事件数据。 该字符串的内容完全由你确定。 要打包 HTTP 请求并将其发送到事件中心，需要使用请求或响应信息来格式化字符串。 在此类情况下，如果有可以重复使用的现有格式，则不需要编写自己的分析代码。 最初，我考虑使用 [HAR](http://www.softwareishard.com/blog/har-12-spec/) 来发送 HTTP 请求和响应。 但是，这种格式最适合用于存储 JSON 格式的一连串 HTTP 请求。 其中包含一些必需的元素，使得通过网络传递 HTTP 消息的方案增加了不必要的复杂性。  
 
 另一个做法是使用 HTTP 规范 [RFC 7230](http://tools.ietf.org/html/rfc7230) 中所述的 `application/http` 媒体类型。 此媒体类型使用的格式与用于通过网络实际发送 HTTP 消息的格式完全相同，但整个消息可以放在另一个 HTTP 请求的正文中。 在本例中，我们将使用该正文作为消息发送到事件中心。 [Microsoft ASP .NET Web API 2.2 客户端](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/)库中有一个分析器可以分析此格式并将其转换为本机 `HttpRequestMessage` 和 `HttpResponseMessage` 对象，相当方便。
 
@@ -81,7 +82,7 @@ Azure 事件中心旨在引入大量数据，它能够处理的事件数目远�
 为了确保消息依次传递给使用者并使用分区的负载分配功能，我已选择将 HTTP 请求消息发送到一个分区，将 HTTP 响应消息发送到另一个分区。 这可以确保负载平均分配，并且按顺序使用所有请求和所有响应。 响应有可能在相应请求之前使用，但这不成问题，因为我们有不同的机制能使请求与响应相互关联，并且我们知道请求始终出现在响应之前。
 
 ### <a name="http-payloads"></a>HTTP 有效负载
-在构建 `requestLine` 之后，请查看是否应截断请求正文。 请求正文被截断成只有 1024 个字符。 可以增大此值，不过单个事件中心消息受限于 256KB，因此有些 HTTP 消息正文可能无法放入单个消息。 执行日志记录和分析时，可以从 HTTP 请求行与标头派生大量信息。 此外，许多 API 请求只返回小型正文，因此相比于降低传输、处理和存储成本来保留所有正文内容，截断大型正文所造成的信息价值损失相当微小。 有关处理正文的最后一个注意事项是需要将 `true` 传递给 As<string>() 方法，因为虽然我们可以读取正文内容，但也希望后端 API 能够读取正文。 将 true 传递给此方法后，正文将会缓冲，以便进行第二次读取。 必须要注意 API 是否上载极大型文件或使用很长的轮询。 在这种情况下，最好完全避免读取正文。   
+在构建 `requestLine` 之后，请查看是否应截断请求正文。 请求正文被截断成只有 1024 个字符。 可以增大此值，不过单个事件中心消息受限于 256KB，因此有些 HTTP 消息正文可能无法放入单个消息。 执行日志记录和分析时，可以从 HTTP 请求行与标头派生大量信息。 此外，许多 API 请求只返回小型正文，因此相比于降低传输、处理和存储成本来保留所有正文内容，截断大型正文所造成的信息价值损失相当微小。 有关处理正文的最后一个注意事项是需要将 `true` 传递给 As<string>() 方法，因为虽然我们可以读取正文内容，但也希望后端 API 能够读取正文。 将 true 传递给此方法后，正文会缓冲，以便进行第二次读取。 必须要注意 API 是否上传极大型文件或使用很长的轮询。 在这种情况下，最好完全避免读取正文。   
 
 ### <a name="http-headers"></a>HTTP 标头
 HTTP 标头可以直接转换为采用简单键/值对格式的消息格式。 我们已选择去除某些安全机密字段，以免不必要地泄漏凭据信息。 API 密钥和其他凭据不太可能用于分析。 如果想要分析用户及其使用的特定产品，可以从 `context` 对象获取这些信息，然后将其添加到消息。     
@@ -262,11 +263,11 @@ public class RunscopeHttpMessageProcessor : IHttpMessageProcessor
 我可以利用 [Runscope 的现有客户端库](http://www.nuget.org/packages/Runscope.net.hapikit/0.9.0-alpha)，因此可以轻松将 `HttpRequestMessage` 和 `HttpResponseMessage` 实例推送到它们的服务。 若要访问 Runscope API，需有一个帐户和 API 密钥。 在 [Creating Applications to Access Runscope API](http://blog.runscope.com/posts/creating-applications-to-access-the-runscope-api)（创建用于访问 Runscope API 的应用程序）屏幕录制视频中，可以找到有关如何获取 API 密钥的说明。
 
 ## <a name="complete-sample"></a>完整示例
-GitHub 上提供了本示例的[源代码](https://github.com/darrelmiller/ApimEventProcessor)和测试。 需要准备好 [API 管理服务](api-management-get-started.md)、[连接的事件中心](api-management-howto-log-event-hubs.md)和[存储帐户](../storage/storage-create-storage-account.md)才能自行运行本示例。   
+GitHub 上提供了本示例的[源代码](https://github.com/darrelmiller/ApimEventProcessor)和测试。 需要准备好 [API 管理服务](api-management-get-started.md)、[连接的事件中心](api-management-howto-log-event-hubs.md)和[存储帐户](../storage/common/storage-create-storage-account.md)才能自行运行本示例。   
 
 本示例只是一个简单的控制台应用程序，可以侦听来自事件中心的事件，将其转换为 `HttpRequestMessage` 和 `HttpResponseMessage` 对象，然后将其转发到 Runscope API。
 
-在下面的动画中，可以看到在开发人员门户对 API 发出的请求，显示正在接收消息、处理和转发消息的控制台应用程序，然后在 Runscope 流量检查器中显示请求和响应。
+在下面的动画中，可以看到在开发人员门户对 API 发出的请求，显示正在接收消息、处理和转发消息的控制台应用程序，并在 Runscope 流量检查器中显示请求和响应。
 
 ![演示如何将请求转发到 Runscope](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
 

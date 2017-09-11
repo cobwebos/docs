@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/13/2017
+ms.date: 08/25/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f68cf75cb8261ddac3fd56a8718f900bedb51c2b
-ms.openlocfilehash: 7e0f7d8fefad539960436a58a254087a4ebd2f78
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 61cf29acac22d546e1b75604f799993ad6ff9042
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/15/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 
 # <a name="advanced-scenarios-with-azure-multi-factor-authentication-and-third-party-vpn-solutions"></a>使用 Azure 多重身份验证和第三方 VPN 解决方案的高级方案
-Azure 多重身份验证可用于与各种第三方 VPN 解决方案无缝连接。 本文重点介绍 Cisco® ASA VPN 设备、Citrix NetScaler SSL VPN 设备和 Juniper Networks Secure Access/Pulse Secure Connect Secure SSL VPN 设备。 我们创建了处理这三个常见设备的配置指南，但多重身份验证服务器可以与将 RADIUS、 LDAP、 IIS 或基于声明的身份验证用于 AD FS 的大多数系统集成。 可以在 [MFA 服务器配置](multi-factor-authentication-get-started-server.md#next-steps)中找到更多详细信息。
+Azure 多重身份验证可用于与各种第三方 VPN 解决方案无缝连接。 本文重点介绍 Cisco® ASA VPN 设备、Citrix NetScaler SSL VPN 设备和 Juniper Networks Secure Access/Pulse Secure Connect Secure SSL VPN 设备。 我们创建了配置指南来处理这三个常用设备。 多重身份验证服务器还可与将 RADIUS、 LDAP、 IIS 或基于声明的身份验证用于 AD FS 的大多数其他系统集成。 可以在 [MFA 服务器配置](multi-factor-authentication-get-started-server.md#next-steps)中找到更多详细信息。
 
 ## <a name="cisco-asa-vpn-appliance-and-azure-multi-factor-authentication"></a>Cisco ASA VPN 设备和 Azure Multi-Factor Authentication
-Azure 多重身份验证可以与 Cisco® ASA VPN 设备集成，以便为 Cisco AnyConnect® VPN 登录和门户访问提供更高的安全性。  可以使用 LDAP 或 RADIUS 协议来实现此目的。  选择下列其中一项以下载详细的分步配置指南。
+Azure 多重身份验证可以与 Cisco® ASA VPN 设备集成，以便为 Cisco AnyConnect® VPN 登录和门户访问提供更高的安全性。  可以使用 LDAP 或 RADIUS 协议。  选择下列其中一项以下载详细的分步配置指南。
 
 | 配置指南 | 说明 |
 | --- | --- |
@@ -34,7 +34,7 @@ Azure 多重身份验证可以与 Cisco® ASA VPN 设备集成，以便为 Cisco
 | [Cisco ASA with Anyconnect VPN 与 Azure MFA Configuration for RADIUS](http://download.microsoft.com/download/4/5/7/4579C1CF-35B0-4FBE-8A1A-B49CB2CC0382/Cisco_ASA_Azure_MFA_RADIUS.docx) | 使用 RADIUS 将 Cisco ASA VPN 设备与 Azure MFA 集成 |
 
 ## <a name="citrix-netscaler-ssl-vpn-and-azure-multi-factor-authentication"></a>Citrix NetScaler SSL VPN 与 Azure Multi-Factor Authentication
-Azure 多重身份验证可以与 Citrix NetScaler SSL VPN 设备集成，以便为 Citrix NetScaler SSL VPN 登录和门户访问提供更高的安全性。  可以使用 LDAP 或 RADIUS 协议来实现此目的。  选择下列其中一项以下载详细的分步配置指南。
+Azure 多重身份验证可以与 Citrix NetScaler SSL VPN 设备集成，以便为 Citrix NetScaler SSL VPN 登录和门户访问提供更高的安全性。  可以使用 LDAP 或 RADIUS 协议。  选择下列其中一项以下载详细的分步配置指南。
 
 | 配置指南 | 说明 |
 | --- | --- |
@@ -42,7 +42,7 @@ Azure 多重身份验证可以与 Citrix NetScaler SSL VPN 设备集成，以便
 | [Citrix NetScaler SSL VPN 与 Azure MFA Configuration for RADIUS](http://download.microsoft.com/download/1/A/4/1A482764-4A63-45C2-A5EC-2B673ACCDD12/Citrix_NS_Azure_MFA_RADIUS.docx) | 使用 RADIUS 将 Citrix NetScaler SSL VPN 设备与 Azure MFA 集成 |
 
 ## <a name="juniperpulse-secure-ssl-vpn-appliance-and-azure-multi-factor-authentication"></a>Juniper/Pulse Secure SSL VPN 设备与 Azure Multi-Factor Authentication
-Azure 多重身份验证可以与 Juniper/Pulse Secure SSL VPN 设备集成，以便为 Juniper/Pulse Secure SSL VPN 登录和门户访问提供更高的安全性。  可以使用 LDAP 或 RADIUS 协议来实现此目的。  选择下列其中一项以下载详细的分步配置指南。
+Azure 多重身份验证可以与 Juniper/Pulse Secure SSL VPN 设备集成，以便为 Juniper/Pulse Secure SSL VPN 登录和门户访问提供更高的安全性。  可以使用 LDAP 或 RADIUS 协议。  选择下列其中一项以下载详细的分步配置指南。
 
 | 配置指南 | 说明 |
 | --- | --- |

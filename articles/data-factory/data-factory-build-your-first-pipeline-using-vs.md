@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 07/10/2017
 ms.author: spelluru
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 6f31b082e47e46f023f593a5fe14ef6027b0d17d
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 77042219cbe698a33ab9447aa952586772897241
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>教程：使用 Visual Studio 创建数据工厂
@@ -30,14 +30,14 @@ ms.lasthandoff: 07/21/2017
 > * [Resource Manager 模板](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
-本教程演示如何使用 Visual Studio 创建 Azure 数据工厂。 你可以使用数据工厂项目模板创建 Visual Studio 项目，以 JSON 格式定义数据工厂实体（链接服务、数据集和管道），然后将这些实体发布/部署到云。 
+本教程演示如何使用 Visual Studio 创建 Azure 数据工厂。 可以使用数据工厂项目模板创建 Visual Studio 项目，以 JSON 格式定义数据工厂实体（链接服务、数据集和管道），然后将这些实体发布/部署到云。 
 
 本教程中的管道有一个活动：**HDInsight Hive 活动**。 该活动在 Azure HDInsight 群集上运行 Hive 脚本，通过转换输入数据来生成输出数据。 管道在指定的开始时间和结束时间范围内每月按计划运行一次。 
 
 > [!NOTE]
 > 本教程不介绍如何通过 Azure 数据工厂复制数据。 有关如何使用 Azure 数据工厂复制数据的教程，请参阅[教程：将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 > 
-> 一个管道可以有多个活动。 而且，你可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
+> 一个管道可以有多个活动。 而且，可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
 
 
 ## <a name="walkthrough-create-and-publish-data-factory-entities"></a>演练：创建和发布数据工厂实体
@@ -45,7 +45,7 @@ ms.lasthandoff: 07/21/2017
 
 1. 创建两个链接服务：**AzureStorageLinkedService1** 和 **HDInsightOnDemandLinkedService1**。 
    
-    在本教程中，Hive 活动的输入和输出数据均位于同一 Azure Blob 存储中。 可以使用按需 HDInsight 群集处理现有的输入数据，以便生成输出数据。 当输入数据已准备就绪，可以进行处理时，Azure 数据工厂就会在运行时自动为你创建按需 HDInsight 群集。 需将数据存储或计算链接到数据工厂，以便数据工厂服务能够在运行时连接到它们。 因此，请使用 AzureStorageLinkedService1 将 Azure 存储帐户链接到数据工厂，并使用 HDInsightOnDemandLinkedService1 链接按需 HDInsight 群集。 发布时，请为要创建的数据工厂指定一个名称，或者指定现有数据工厂的名称。  
+    在本教程中，Hive 活动的输入和输出数据均位于同一 Azure Blob 存储中。 可以使用按需 HDInsight 群集处理现有的输入数据，以便生成输出数据。 当输入数据已准备就绪，可以进行处理时，Azure 数据工厂就会在运行时自动创建按需 HDInsight 群集。 需将数据存储或计算链接到数据工厂，以便数据工厂服务能够在运行时连接到它们。 因此，请使用 AzureStorageLinkedService1 将 Azure 存储帐户链接到数据工厂，并使用 HDInsightOnDemandLinkedService1 链接按需 HDInsight 群集。 发布时，请为要创建的数据工厂指定一个名称，或者指定现有数据工厂的名称。  
 2. 创建两个数据集：**InputDataset** 和 **OutputDataset**，分别代表存储在 Azure Blob 存储中的输入/输出数据。 
    
     这两个数据集定义是指在上一步创建的 Azure 存储链接服务。 对于 InputDataset，请指定 Blob 容器 (adfgetstarted) 和文件夹 (inptutdata)，后者包含 Blob 和输入数据。 对于 OutputDataset，请指定 Blob 容器 (adfgetstarted) 和文件夹 (partitioneddata)，后者包含输出数据。 还可指定其他属性，例如结构、可用性和策略。
@@ -66,11 +66,11 @@ ms.lasthandoff: 07/21/2017
 现在，使用 Visual Studio 创建 Azure 数据工厂。
 
 ### <a name="create-visual-studio-project"></a>创建 Visual Studio 项目
-1. 启动 **Visual Studio 2013** 或 **Visual Studio 2015**。 单击“文件”，指向“新建”并单击“项目”。 将显示“新建项目”  对话框。  
-2. 在“新建项目”对话框中，选择“DataFactory”模板，然后单击“空数据工厂项目”。   
+1. 启动 **Visual Studio 2013** 或 **Visual Studio 2015**。 单击“文件”，指向“新建”并单击“项目”。 将显示“新建项目”对话框。  
+2. 在“新建项目”对话框中，选择“DataFactory”模板，并单击“空数据工厂项目”。   
 
     ![“新建项目”对话框](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
-3. 输入项目的**名称**、**位置**以及**解决方案**的名称，然后单击“确定”。
+3. 输入项目的**名称**、**位置**以及**解决方案**的名称，并单击“确定”。
 
     ![解决方案资源管理器](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
 
@@ -85,16 +85,16 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 > 可以在发布数据工厂解决方案时，通过指定名称和设置来创建数据工厂。
 
 #### <a name="create-azure-storage-linked-service"></a>创建 Azure 存储链接服务
-1. 在解决方案资源管理器中，右键单击“链接服务”，指向“添加”，然后单击“新建项”。      
-2. 在“添加新项”对话框中，从列表中选择“Azure 存储链接服务”，然后单击“添加”。
+1. 在解决方案资源管理器中，右键单击“链接服务”，指向“添加”，并单击“新建项”。      
+2. 在“添加新项”对话框中，从列表中选择“Azure 存储链接服务”，并单击“添加”。
     ![Azure 存储链接服务](./media/data-factory-build-your-first-pipeline-using-vs/new-azure-storage-linked-service.png)
-3. 将 `<accountname>` 和 `<accountkey>` 替换为你的 Azure 存储帐户的名称和密钥。 若要了解如何获取存储访问密钥，请在[管理你的存储帐户](../storage/storage-create-storage-account.md#manage-your-storage-account)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
+3. 将 `<accountname>` 和 `<accountkey>` 替换为 Azure 存储帐户的名称和密钥。 要了解如何获取存储访问密钥，请在[管理存储帐户](../storage/common/storage-create-storage-account.md#manage-your-storage-account)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
     ![Azure 存储链接服务](./media/data-factory-build-your-first-pipeline-using-vs/azure-storage-linked-service.png)
 4. 保存 **AzureStorageLinkedService1.json** 文件。
 
 #### <a name="create-azure-hdinsight-linked-service"></a>创建 Azure HDInsight 链接服务
-1. 在“解决方案资源管理器”中，右键单击“链接服务”，指向“添加”，然后单击“新建项”。
-2. 选择“HDInsight 按需链接服务”，然后单击“添加”。
+1. 在“解决方案资源管理器”中，右键单击“链接服务”，指向“添加”，并单击“新建项”。
+2. 选择“HDInsight 按需链接服务”，并单击“添加”。
 3. 将 **JSON** 替换为以下 JSON：
 
      ```json
@@ -122,7 +122,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
     linkedServiceName | 指定一个存储帐户，用于存储 HDInsight Hadoop 群集生成的日志。 
 
     > [!IMPORTANT]
-    > HDInsight 群集在 Blob 存储 (linkedServiceName) 中创建**默认容器**，该存储是你在 JSON 中指定的。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非存在现有的实时群集 (timeToLive)，否则每次处理切片时，都会创建 HDInsight 群集。 处理完成后将自动删除该群集。
+    > HDInsight 群集在 Blob 存储 (linkedServiceName) 中创建**默认容器**，该存储是你在 JSON 中指定的。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非存在现有的实时群集 (timeToLive)，否则每次处理切片时，都会创建 HDInsight 群集。 处理完成后会自动删除该群集。
     > 
     > 随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adf<yourdatafactoryname>-<linkedservicename>-datetimestamp` 模式。 使用 [Microsoft 存储资源管理器](http://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
 
@@ -133,7 +133,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 此步骤创建数据集来代表 Hive 处理的输入和输出数据。 这些数据集引用前面在本教程中创建的 **AzureStorageLinkedService1** 。 链接服务指向 Azure 存储帐户，数据集指定用于保存输入和输出数据的存储中的容器、文件夹和文件名。   
 
 #### <a name="create-input-dataset"></a>创建输入数据集
-1. 在“解决方案资源管理器”中，右键单击“表”，指向“添加”，然后单击“新建项”。
+1. 在“解决方案资源管理器”中，右键单击“表”，指向“添加”，并单击“新建项”。
 2. 从列表中选择“Azure Blob”，将文件名更改为 **InputDataSet.json**，然后单击“添加”。
 3. 在编辑器中将 **JSON** 替换为以下 JSON 代码片段：
 
@@ -178,7 +178,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 #### <a name="create-output-dataset"></a>创建输出数据集
 现在，请创建一个输出数据集，用来表示 Azure Blob 存储中存储的输出数据。
 
-1. 在“解决方案资源管理器”中，右键单击“表”，指向“添加”，然后单击“新建项”。
+1. 在“解决方案资源管理器”中，右键单击“表”，指向“添加”，并单击“新建项”。
 2. 从列表中选择“Azure Blob”，将文件名更改为 **OutputDataset.json**，然后单击“添加”。
 3. 在编辑器中将 **JSON** 替换为以下 JSON：
     
@@ -212,12 +212,12 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 ### <a name="create-pipeline"></a>创建管道
 目前已创建 Azure 存储链接服务，以及输入和输出数据集。 现在，请创建 **HDInsightHive** 活动的管道。 Hive 活动的“输入”设置为 **AzureBlobInput**，“输出”设置为 **AzureBlobOutput**。 输入数据集的切片每月都会提供（频率：每月，间隔：1），输出切片也是每月都会生成。 
 
-1. 在“解决方案资源管理器”中，右键单击“管道”，指向“添加”，然后单击“新建项”。
-2. 从列表中选择“Hive 转换管道”，然后单击“添加”。
+1. 在“解决方案资源管理器”中，右键单击“管道”，指向“添加”，并单击“新建项”。
+2. 从列表中选择“Hive 转换管道”，并单击“添加”。
 3. 将 **JSON** 替换为以下代码片段：
 
     > [!IMPORTANT]
-    > 将 `<storageaccountname>` 替换为你的存储帐户的名称。
+    > 将 `<storageaccountname>` 替换为存储帐户的名称。
 
     ```json
     {
@@ -265,9 +265,9 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
     ```
 
     > [!IMPORTANT]
-    > 将 `<storageaccountname>` 替换为你的存储帐户的名称。
+    > 将 `<storageaccountname>` 替换为存储帐户的名称。
 
-    JSON 代码片段定义的管道包含单个活动（Hive 活动）。 该活动运行一个 Hive 脚本，用于在按需 HDInsight 群集上处理输入数据，以便生成输出数据。 在管道 JSON 的“活动”部分，你只在数组中看到一个活动，其类型设置为 **HDInsightHive**。 
+    JSON 代码片段定义的管道包含单个活动（Hive 活动）。 该活动运行一个 Hive 脚本，用于在按需 HDInsight 群集上处理输入数据，以便生成输出数据。 在管道 JSON 的“活动”部分，只在数组中看到一个活动，其类型设置为 **HDInsightHive**。 
 
     在特定于 HDInsight Hive 活动的类型属性中，请指定包含 Hive 脚本文件的 Azure 存储链接服务、脚本文件的路径，以及脚本文件的参数。 
 
@@ -275,22 +275,22 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
     `defines` 节用于指定运行时设置，这些设置将作为 Hive 配置值（例如 `${hiveconf:inputtable}`、`${hiveconf:partitionedtable})`）传递给 Hive 脚本。
 
-    管道的 **start** 和 **end** 属性指定管道的活动期限。 你已将数据集配置为按月生成，因此，只能通过管道生成切片一次（因为月的开始和结束日期相同）。
+    管道的 **start** 和 **end** 属性指定管道的活动期限。 已将数据集配置为按月生成，因此，只能通过管道生成切片一次（因为月的开始和结束日期相同）。
 
     在活动 JSON 中，指定 Hive 脚本要在通过 **linkedServiceName** – **HDInsightOnDemandLinkedService** 指定的计算资源上运行。
 4. 保存 **HiveActivity1.json** 文件。
 
 ### <a name="add-partitionweblogshql-and-inputlog-as-a-dependency"></a>将 partitionweblogs.hql 和 input.log 添加为依赖项
-1. 在“解决方案资源管理器”窗口中右键单击“依赖项”，指向“添加”，然后单击“现有项”。  
-2. 导航到 **C:\ADFGettingStarted**，选择 **partitionweblogs.hql** 和 **input.log** 文件，然后单击“添加”。 你已根据[教程概述](data-factory-build-your-first-pipeline.md)的部分先决条件创建上述两个文件。
+1. 在“解决方案资源管理器”窗口中右键单击“依赖项”，指向“添加”，并单击“现有项”。  
+2. 导航到 **C:\ADFGettingStarted**，选择 **partitionweblogs.hql** 和 **input.log** 文件，并单击“添加”。 已根据[教程概述](data-factory-build-your-first-pipeline.md)的部分先决条件创建上述两个文件。
 
-在下一步骤中发布解决方案时，请将 **partitionweblogs.hql** 文件上载到 `adfgetstarted` Blob 容器中的 **script** 文件夹。   
+在下一步骤中发布解决方案时，**partitionweblogs.hql** 文件会上传到 `adfgetstarted` Blob 容器中的 **script** 文件夹。   
 
 ### <a name="publishdeploy-data-factory-entities"></a>发布/部署数据工厂实体
 在此步骤中，请将项目中的数据工厂实体（链接服务、数据集和管道）发布到 Azure 数据工厂服务。 在发布过程中，请指定数据工厂的名称。 
 
 1. 在“解决方案资源管理器”中，右键单击该项目，并单击“发布” 。
-2. 如果显示“登录到 Microsoft 帐户”对话框，请输入拥有 Azure 订阅的帐户凭据，然后单击“登录”。
+2. 如果显示“登录到 Microsoft 帐户”对话框，请输入拥有 Azure 订阅的帐户凭据，并单击“登录”。
 3. 应该会看到以下对话框：
 
    ![“发布”对话框](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
@@ -309,7 +309,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
     > [!IMPORTANT]
     > 如果在发布时收到错误：“数据工厂名称 ‘DataFactoryUsingVS’ 不可用”，请更改名称（例如 yournameDataFactoryUsingVS）。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。   
-1. 在“发布项”页上，确保已选择所有数据工厂实体，然后单击“下一步”切换到“摘要”页。
+1. 在“发布项”页上，确保已选择所有数据工厂实体，并单击“下一步”切换到“摘要”页。
 
     ![发布项页](media/data-factory-build-your-first-pipeline-using-vs/publish-items-page.png)     
 2. 查看摘要，单击“下一步”，启动部署过程并查看“部署状态”。
@@ -329,7 +329,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
         ```PowerShell
         Get-AzureRmResourceProvider
         ```
-    - 使用 Azure 订阅登录到 [Azure 门户](https://portal.azure.com) ，然后导航到“数据工厂”边栏选项卡，或在 Azure 门户中创建数据工厂。 此操作将自动注册提供程序。
+    - 使用 Azure 订阅登录到 [Azure 门户](https://portal.azure.com) ，并导航到“数据工厂”边栏选项卡，或在 Azure 门户中创建数据工厂。 此操作会自动注册提供程序。
 - 数据工厂名称可能在将来被注册为 DNS 名称，因此将变成公开可见。
 - 只有 Azure 订阅的管理员或共同管理员才可以创建数据工厂实例
 
@@ -338,7 +338,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
 #### <a name="monitor-pipeline-using-diagram-view"></a>使用图示视图监视管道
 1. 登录到 [Azure 门户](https://portal.azure.com/)，执行以下步骤：
-   1. 单击“更多服务”，然后单击“数据工厂”。
+   1. 单击“更多服务”，并单击“数据工厂”。
        
         ![浏览数据工厂](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png)
    2. 从数据工厂列表中选择数据工厂的名称（例如： **DataFactoryUsingVS09152016**）。
@@ -350,7 +350,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 3. 在“图示视图”中，可以看到管道的概述，以及本教程中使用的数据集。
 
     ![图示视图](./media/data-factory-build-your-first-pipeline-using-vs/diagram-view-2.png)
-4. 若要查看管道中的所有活动，请右键单击图示中的管道，然后单击“打开管道”。
+4. 要查看管道中的所有活动，请右键单击图示中的管道，并单击“打开管道”。
 
     ![“打开管道”菜单](./media/data-factory-build-your-first-pipeline-using-vs/open-pipeline-menu.png)
 5. 确认管道中显示了 HDInsightHive 活动。
@@ -358,11 +358,11 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
     ![“打开管道”视图](./media/data-factory-build-your-first-pipeline-using-vs/open-pipeline-view.png)
 
     若要导航回到上一个视图，请单击顶部痕迹导航菜单中的“数据工厂”。
-6. 在“图示视图”中，双击数据集 **AzureBlobInput**。  确认切片处于“就绪”状态。 可能需要几分钟时间，切片才显示为“就绪”状态。 如果一段时间后未显示此状态，请检查是否已将输入文件 (input.log) 放置在正确的容器 (`adfgetstarted`) 和文件夹 (`inputdata`) 中。 另外，请确保将输入数据集的 **external** 属性设置为 **true**。 
+6. 在“图示视图”中，双击数据集 **AzureBlobInput**。 确认切片处于“就绪”状态。 可能需要几分钟时间，切片才显示为“就绪”状态。 如果一段时间后未显示此状态，请检查是否已将输入文件 (input.log) 放置在正确的容器 (`adfgetstarted`) 和文件夹 (`inputdata`) 中。 另外，请确保将输入数据集的 **external** 属性设置为 **true**。 
 
    ![输入切片处于就绪状态](./media/data-factory-build-your-first-pipeline-using-vs/input-slice-ready.png)
 7. 单击“X”关闭“AzureBlobInput”边栏选项卡。
-8. 在“图示视图”中，双击数据集 **AzureBlobOutput**。 此时将显示当前正在处理的切片。
+8. 在“图示视图”中，双击数据集 **AzureBlobOutput**。 此时会显示当前正在处理的切片。
 
    ![数据集](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
 9. 处理完成后，可以看到切片处于“就绪”状态。
@@ -391,22 +391,22 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 1. 单击“监视和管理”磁贴。
 
     ![“监视和管理”磁贴](./media/data-factory-build-your-first-pipeline-using-vs/monitor-and-manage-tile.png)
-2. 此时应出现“监视和管理应用程序”。 更改“开始时间”和“结束时间”，使之与管道的开始时间 (04-01-2016 12:00 AM) 和结束时间 (04-02-2016 12:00 AM) 匹配，然后单击“应用”。
+2. 此时应出现“监视和管理应用程序”。 更改“开始时间”和“结束时间”，使之与管道的开始时间 (04-01-2016 12:00 AM) 和结束时间 (04-02-2016 12:00 AM) 匹配，并单击“应用”。
 
     ![“监视和管理”应用](./media/data-factory-build-your-first-pipeline-using-vs/monitor-and-manage-app.png)
-3. 若要查看某个活动窗口的详细信息，请在“活动窗口”列表中选择该窗口，然后即可查看其详细信息。
+3. 要查看某个活动窗口的详细信息，请在“活动窗口”列表中选择该窗口，即可查看其详细信息。
     ![活动窗口详细信息](./media/data-factory-build-your-first-pipeline-using-vs/activity-window-details.png)
 
 > [!IMPORTANT]
-> 成功处理切片后，将会删除输入文件。 因此，如果想要重新运行切片或重新学习本教程，请将输入文件 (input.log) 上载到 `adfgetstarted` 容器的 `inputdata` 文件夹中。
+> 成功处理切片后，会删除输入文件。 因此，如果想要重新运行切片或重新学习本教程，请将输入文件 (input.log) 上传到 `adfgetstarted` 容器的 `inputdata` 文件夹中。
 
 ### <a name="additional-notes"></a>附加说明
 - 数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 例如，将数据从源复制到目标数据存储的复制活动，以及运行 Hive 脚本来转换输入数据的 HDInsight Hive 活动。 有关复制活动支持的所有源和接收器，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 有关数据工厂支持的计算服务列表，请参阅[计算链接的服务](data-factory-compute-linked-services.md)。
-- 链接服务将数据存储或计算服务链接到 Azure 数据工厂。 有关复制活动支持的所有源和接收器，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 请参阅[计算链接服务](data-factory-compute-linked-services.md)，了解数据工厂支持的计算服务的列表，以及可在这些服务上运行的[转换活动](data-factory-data-transformation-activities.md)。
+- 链接服务将数据存储区或计算服务链接到 Azure 数据工厂。 有关复制活动支持的所有源和接收器，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 请参阅[计算链接服务](data-factory-compute-linked-services.md)，了解数据工厂支持的计算服务的列表，以及可在这些服务上运行的[转换活动](data-factory-data-transformation-activities.md)。
 - 请参阅[将数据移出/移入 Azure Blob](data-factory-azure-blob-connector.md#azure-storage-linked-service)，详细了解在 Azure 存储链接服务定义中使用的 JSON 属性。
 - 可以使用自己的 HDInsight 群集，而不使用按需 HDInsight 群集。 有关详细信息，请参阅 [Compute Linked Services](data-factory-compute-linked-services.md) （计算链接服务）。
 -  数据工厂使用前面的 JSON 创建**基于 Linux** 的 HDInsight 群集。 有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
-- HDInsight 群集在 Blob 存储 (linkedServiceName) 中创建**默认容器**，该存储是你在 JSON 中指定的。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非存在现有的实时群集 (timeToLive)，否则每次处理切片时，都会创建 HDInsight 群集。 处理完成后将自动删除该群集。
+- HDInsight 群集在 Blob 存储 (linkedServiceName) 中创建**默认容器**，该存储是你在 JSON 中指定的。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非存在现有的实时群集 (timeToLive)，否则每次处理切片时，都会创建 HDInsight 群集。 处理完成后会自动删除该群集。
     
     随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 模式。 使用 [Microsoft 存储资源管理器](http://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
 - 当前，输出数据集驱动计划，因此即使活动并未生成任何输出，也必须创建输出数据集。 如果活动没有任何输入，可以跳过创建输入数据集。 
@@ -414,8 +414,8 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
 
 ## <a name="use-server-explorer-to-view-data-factories"></a>使用“服务器资源管理器”查看数据工厂
-1. 在 **Visual Studio** 中，在菜单上单击“视图”，然后单击“服务器资源管理器”。
-2. 在“服务器资源管理器”窗口中，依次展开“Azure”和“数据工厂”。 如果看到“登录到 Visual Studio”，请输入与 Azure 订阅关联的**帐户**，然后单击“继续”。 输入**密码**，然后单击“登录”。 Visual Studio 尝试获取有关订阅中所有 Azure 数据工厂的信息。 可在“数据工厂任务列表”窗口中查看此操作的状态。
+1. 在 **Visual Studio** 中，在菜单上单击“视图”，并单击“服务器资源管理器”。
+2. 在“服务器资源管理器”窗口中，依次展开“Azure”和“数据工厂”。 如果看到“登录到 Visual Studio”，请输入与 Azure 订阅关联的**帐户**，并单击“继续”。 输入**密码**，并单击“登录”。 Visual Studio 尝试获取有关订阅中所有 Azure 数据工厂的信息。 可在“数据工厂任务列表”窗口中查看此操作的状态。
 
     ![服务器资源管理器](./media/data-factory-build-your-first-pipeline-using-vs/server-explorer.png)
 3. 可右键单击数据工厂，并选择“将数据工厂导出到新项目”，创建基于现有数据工厂的 Visual Studio 项目。
@@ -425,9 +425,9 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 ## <a name="update-data-factory-tools-for-visual-studio"></a>更新用于 Visual Studio 的数据工厂工具
 若要更新适用于 Visual Studio 的 Azure 数据工厂工具，请执行以下步骤：
 
-1. 在菜单中单击“工具”，然后选择“扩展和更新”。
-2. 在左窗格中选择“更新”，然后选择“Visual Studio 库”。
-3. 选择“用于 Visual Studio 的 Azure 数据工厂工具”，然后单击“更新”。 如果未看到此项，说明你已有此工具的最新版本。
+1. 在菜单中单击“工具”，并选择“扩展和更新”。
+2. 在左窗格中选择“更新”，并选择“Visual Studio 库”。
+3. 选择“用于 Visual Studio 的 Azure 数据工厂工具”，并单击“更新”。 如果未看到此项，说明已有此工具的最新版本。
 
 ## <a name="use-configuration-files"></a>使用配置文件
 可以在 Visual Studio 中使用配置文件，以不同的方式为每个环境配置链接服务/表/管道的属性。
@@ -450,8 +450,8 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 ### <a name="add-a-configuration-file"></a>添加配置文件
 执行以下步骤，为每个环境添加配置文件：   
 
-1. 在 Visual Studio 解决方案中右键单击数据工厂项目，指向“添加”，然后单击“添加项”。
-2. 在左侧的已安装模板列表中选择“配置”，选择“配置文件”，输入配置文件的**名称**，然后单击“添加”。
+1. 在 Visual Studio 解决方案中右键单击数据工厂项目，指向“添加”，并单击“添加项”。
+2. 在左侧的已安装模板列表中选择“配置”，选择“配置文件”，输入配置文件的**名称**，并单击“添加”。
 
     ![添加配置文件](./media/data-factory-build-your-first-pipeline-using-vs/add-config-file.png)
 3. 使用以下格式添加配置参数及其值：
@@ -527,19 +527,19 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
 使用配置文件在 Azure 数据工厂项目中发布实体：   
 
-1. 右键单击数据工厂项目，然后单击“发布”查看“发布项”对话框。
-2. 选择现有的数据工厂，或者在“配置数据工厂”页上指定用于创建数据工厂的值，然后单击“下一步”。   
+1. 右键单击数据工厂项目，并单击“发布”查看“发布项”对话框。
+2. 选择现有的数据工厂，或者在“配置数据工厂”页上指定用于创建数据工厂的值，并单击“下一步”。   
 3. 在“发布项”页上，可以看到一个下拉列表，其中包含“选择部署配置”字段的可用配置。
 
     ![选择配置文件](./media/data-factory-build-your-first-pipeline-using-vs/select-config-file.png)
-4. 选择要使用的**配置文件**，然后单击“下一步”。
-5. 确认在“摘要”页上显示了 JSON 文件的名称，然后单击“下一步”。
+4. 选择要使用的**配置文件**，并单击“下一步”。
+5. 确认在“摘要”页上显示了 JSON 文件的名称，并单击“下一步”。
 6. 部署操作完成后，请单击“完成”。
 
 如果进行部署，则在将实体部署到 Azure 数据工厂服务之前，请使用配置文件中的值设置 JSON 文件中的属性。   
 
 ## <a name="use-azure-key-vault"></a>使用 Azure 密钥保管库
-不建议将敏感数据（例如连接字符串）提交到代码存储库，这样做违反安全策略。 请参阅 GitHub 上的 [ADF Secure Publish](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFSecurePublish) 示例，了解在发布数据工厂实体时，如何将敏感信息存储在 Azure Key Vault 中并进行使用。 使用适用于 Visual Studio 的 Secure Publish 扩展，可以将机密存储在 Key Vault 中，仅在链接的服务/部署配置中指定这些机密的引用。 向 Azure 发布数据工厂实体时，将会对这些引用进行解析。 然后即可将这些文件提交到源存储库，不会公开任何机密。
+不建议将敏感数据（例如连接字符串）提交到代码存储库，这样做违反安全策略。 请参阅 GitHub 上的 [ADF Secure Publish](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFSecurePublish) 示例，了解在发布数据工厂实体时，如何将敏感信息存储在 Azure Key Vault 中并进行使用。 使用适用于 Visual Studio 的 Secure Publish 扩展，可以将机密存储在 Key Vault 中，仅在链接的服务/部署配置中指定这些机密的引用。 向 Azure 发布数据工厂实体时，会对这些引用进行解析。 然后即可将这些文件提交到源存储库，不会公开任何机密。
 
 ## <a name="summary"></a>摘要
 本教程通过在 HDInsight hadoop 群集上运行 Hive 脚本，创建了一个 Azure 数据工厂来处理数据。 在 Azure 门户中使用数据工厂编辑器执行了以下步骤：  

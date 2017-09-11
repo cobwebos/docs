@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 58c5b984c677bf9119db52d5721d5687c00a83fa
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: e7f85aaf2d940f114248d5925a1e97fe0f6bda6c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>在应用服务环境中创建和使用内部负载均衡器 #
@@ -170,24 +170,27 @@ ILB ASE 需要有效的 SSL 证书。 可使用内部证书颁发机构、向外
 
 6. 设置 ASE 域的 DNS。 可以在 DNS 中将通配符与域结合使用。 若要执行一些简单测试，可编辑 VM 上的主机文件，将 Web 应用名称设置为 VIP IP 地址：
 
-    a. 如果 ASE 域名为 _.ilbase.com_，并且创建的 Web 应用名为 _mytestapp_，则它所在的地址为 _mytestapp.ilbase.com_。 然后设置 _mytestapp.ilbase.com_ 以解析为 ILB 地址。 （在 Windows 上，主机文件位于 _C:\Windows\System32\drivers\etc\_。）
+    a. 如果 ASE 域名为 _.ilbase.com_，并且创建的 Web 应用名为 _mytestapp_，则它所在的地址为 _mytestapp.ilbase.com_。然后设置 _mytestapp.ilbase.com_ 以解析为 ILB 地址。 （在 Windows 上，主机文件位于 _C:\Windows\System32\drivers\etc\_。）
 
     b. 若要测试 Web 部署发布或访问高级控制台，请为 _mytestapp.scm.ilbase.com_ 创建一条记录。
 
-7. 在该 VM 上使用浏览器转到 http://mytestapp.ilbase.com。 （或者转到域中的任意 Web 应用名称。）
+7. 在该 VM 上使用浏览器转到 http://mytestapp.ilbase.com。（或者转到域中的任意 Web 应用名称。）
 
-8. 在该 VM 上使用浏览器转到 https://mytestapp.ilbase.com。 如果使用自签名证书，则需接受安全性不足的缺点。
+8. 在该 VM 上使用浏览器转到 https://mytestapp.ilbase.com。如果使用自签名证书，则需接受安全性不足的缺点。
 
     ILB 的 IP 地址在“IP 地址”下列出。 此列表还包含由外部 VIP 用于入站流量管理的 IP 地址。
 
     ![ILB IP 地址][5]
 
-### <a name="functions-and-the-ilb-ase"></a>函数和 ILB ASE
+## <a name="web-jobs-functions-and-the-ilb-ase"></a>Web 作业、函数和 ILB ASE ##
 
-在 ILB ASE 上使用 Azure Functions 时，可能会收到一条错误消息，指示“目前无法检索你的函数。 请稍后再试。” 出现此错误是因为 Functions UI 通过 HTTPS 利用 scm 站点。 如果 ASE 使用在浏览器中不具有根证书的 HTTP 证书，则可能会遇到这种情况。 此外，Internet Explorer\Edge 浏览器不在选项卡之间共享“接受无效证书”设置。 因此，可以执行以下两项操作之一：
+ILB ASE 上同时支持函数和 Web 作业，但对于与其配合使用的门户，必须具有对 SCM 站点的网络访问权限。  这意味着浏览器必须位于在虚拟网络中或已连接虚拟网络的主机上。  
 
-- 将证书添加到受信任的证书存储。 
-- 使用 Chrome。 但需要先转到 scm 站点，接受不受信任的证书。 然后再转到门户。
+在 ILB ASE 上使用 Azure Functions 时，可能会收到一条错误消息，指示“目前无法检索你的函数。 请稍后再试。” 出现此错误的原因是，函数 UI 通过 HTTPS 利用 SCM 站点，并且根证书不在信任的浏览器链中。 Web 作业具有类似的问题。 要避免此问题，可执行下列操作之一：
+
+- 将证书添加到受信任的证书存储。 这样可取消阻止 Microsoft Edge 和 Internet Explorer。
+- 使用 Chrome 并首先转到 SCM 站点，接受不受信任的证书，然后再转到门户。
+- 使用位于信任的浏览器链中的商业证书。  这是最佳选择。  
 
 ## <a name="dns-configuration"></a>DNS 配置 ##
 

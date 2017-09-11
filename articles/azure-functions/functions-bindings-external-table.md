@@ -4,7 +4,7 @@ description: "在 Azure Functions 中使用外部表绑定"
 services: functions
 documentationcenter: 
 author: alexkarcher-msft
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 
 ms.service: functions
@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: alkarche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 716438e5ea490f6716999813112305499dbe61a8
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: e6aa6913bdb2cf8e581b76b7680d0a96c9858bd1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-functions-external-table-binding-preview"></a>Azure Functions 外部表绑定（预览版）
@@ -66,7 +65,7 @@ ms.lasthandoff: 05/02/2017
 1. 选择 SaaS 提供程序 > 选择/创建连接 ![配置 SaaS 连接](./media/functions-bindings-storage-table/authorize-API-connection.jpg)
 1. 选择 API 连接 > 创建函数 ![创建表函数](./media/functions-bindings-storage-table/table-template-options.jpg)
 1. 选择 `Integrate` > `External Table`
-    1. 配置要使用目标表的连接。 这些设置将因 SaaS 提供程序而异。 这些将在下文的[数据源设置](#datasourcesettings)
+    1. 配置要使用目标表的连接。 这些设置将因 SaaS 提供程序而异。 这些会在下文的[数据源设置](#datasourcesettings)
 ![配置表](./media/functions-bindings-storage-table/configure-API-connection.jpg)中概述
 
 ## <a name="usage"></a>使用情况
@@ -97,7 +96,7 @@ ms.lasthandoff: 05/02/2017
 ```
 表绑定的 `entityId` 必须为空。
 
-`ConnectionAppSettingsKey` 标识存储 API 连接字符串的应用设置。 在集成 UI 中添加 API 连接时，将自动创建应用设置。
+`ConnectionAppSettingsKey` 标识存储 API 连接字符串的应用设置。 在集成 UI 中添加 API 连接时，会自动创建应用设置。
 
 表格连接器提供数据集，每个数据集包含表。 默认数据集的名称为“default”。 下面列出了各种 SaaS 提供程序中的数据集和表的标题：
 
@@ -117,7 +116,7 @@ See the language-specific sample that copies the input file to the output file.
 -->
 <a name="incsharp"></a>
 
-### <a name="usage-in-c"></a>C 中的用法# #
+### <a name="usage-in-c"></a>C# 中的用法 #
 
 ```cs
 #r "Microsoft.Azure.ApiHub.Sdk"
@@ -169,7 +168,9 @@ module.exports = function(context) {
 };
 ```
 -->
-<a name="datasourcesettings"></a>
+<a name="datasourcesettings">
+
+</a>
 ## 数据源设置
 
 ### <a name="sql-server"></a>SQL Server

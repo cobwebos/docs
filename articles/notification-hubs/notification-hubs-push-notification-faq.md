@@ -15,12 +15,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/19/2017
 ms.author: yuaxu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
-ms.openlocfilehash: c8592ea38d62213327549583a1e931ea682ee56e
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f3bfda250b7f8ed679d05057682b95683d402535
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/06/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题解答
@@ -63,7 +62,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 转到 **[Azure 门户]** > **通知中心命名空间**或**通知中心**。 选择要更新的资源，转到“定价层”。 请注意以下要求：
 
 * 更新的定价层将应用到正在使用的命名空间中的*所有*中心。
-* 如果设备计数超出所要降级到的层的限制，则你需要删除设备才能降级。
+* 如果设备计数超出所要降级到的层的限制，则需要删除设备才能降级。
 
 
 ## <a name="design-and-development"></a>设计和开发
@@ -74,12 +73,12 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md)、[Android](notification-hubs-android-push-notification-google-gcm-get-started.md)、[Windows 通用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、[Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、[Kindle](notification-hubs-kindle-amazon-adm-push-notification.md)、[Android China（通过百度）](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin（[iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md)和[Android](xamarin-notification-hubs-push-notifications-android-gcm.md)）、[Chrome 应用](notification-hubs-chrome-push-notifications-get-started.md)和 [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari) 支持推送通知。 有关详细信息，请转到[通知中心入门教程]页。
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>是否支持短信、电子邮件或 Web 通知？
-通知中心主要用于将通知发送到移动应用。 它不提供电子邮件或短信功能。 但是，提供这些功能的第三方平台可与通知中心集成，使用[移动应用]发送原生推送通知。
+通知中心主用于将通知发送到移动应用。 它不提供电子邮件或短信功能。 但是，提供这些功能的第三方平台可与通知中心集成，使用[移动应用]发送原生推送通知。
 
 通知中心也不提供现成的浏览器内推送通知传递服务。 客户可以在支持的服务器端平台上使用 SignalR 实现此功能。 如果想要在 Chrome 沙盒中将通知发送到浏览器应用，请参阅 [Chrome 应用教程]。
 
 ### <a name="how-are-mobile-apps-and-azure-notification-hubs-related-and-when-do-i-use-them"></a>移动应用与 Azure 通知中心之间的关系如何？它们各自适用于什么场合？
-如果你有现成的移动应用后端并且只想添加发送推送通知的功能，则可以使用 Azure 通知中心。 如果想要从头开始安装移动应用后端，请考虑使用 Azure 应用服务的移动应用功能。 移动应用会自动预配通知中心，使你能够轻松地从移动应用后端发送推送通知。 移动应用的定价包括通知中心的基本费用。 你只需在超出附送的推送套餐时支付费用。 有关费用的详细信息，请转到[应用服务定价]页。
+如果有现成的移动应用后端并且只想添加发送推送通知的功能，则可以使用 Azure 通知中心。 如果想要从头开始安装移动应用后端，请考虑使用 Azure 应用服务的移动应用功能。 移动应用会自动预配通知中心，方便从移动应用后端发送推送通知。 移动应用的定价包括通知中心的基本费用。 只需在超出附送的推送套餐时支付费用。 有关费用的详细信息，请转到[应用服务定价]页。
 
 ### <a name="how-many-devices-can-i-support-if-i-send-push-notifications-via-notification-hubs"></a>如果通过通知中心发送推送通知，可以支持多少个设备？
 有关支持的设备数目的详细信息，请参阅[通知中心定价]页。
@@ -119,12 +118,12 @@ PNS 对于传递通知不提供任何 SLA 保证。 但是，大多数推送通�
 * 默认情况下，可以通过 Azure 门户或 Visual Studio 中的 Azure 集成组件将测试通知发送到已注册的设备。 阈值设置为从注册池中随机选取的 10 个设备。
 
 > [!NOTE]
-> 如果中心最初的配置使用 Apple 沙盒证书，后来又使用 Apple 生产证书重新配置，则原始设备令牌将会失效。 无效的令牌会导致推送失败。 请将生产和测试环境分开，针对不同的环境使用不同的中心。
+> 如果中心最初的配置使用 Apple 沙盒证书，后来又使用 Apple 生产证书重新配置，则原始设备令牌会失效。 无效的令牌会导致推送失败。 请将生产和测试环境分开，针对不同的环境使用不同的中心。
 > 
 > 
 
 #### <a name="pns-credentials"></a>PNS 凭据
-将移动应用注册到某个平台的开发人员门户（例如 Apple 或 Google）后，将会发送应用标识符和安全令牌。 应用后端将这些令牌提供给平台的 PNS，以便能够将推送通知发送到设备。 安全令牌的形式可以是证书（例如，在 Apple iOS 或 Windows Phone 中）或安全密钥（例如，在 Google Android 或 Windows 中）。 必须在通知中心内配置安全令牌。 配置通常在通知中心级别完成，但是，也可以在多租户方案中的命名空间级别完成。
+将移动应用注册到某个平台的开发人员门户（例如 Apple 或 Google）后，会发送应用标识符和安全令牌。 应用后端将这些令牌提供给平台的 PNS，以便能够将推送通知发送到设备。 安全令牌的形式可以是证书（例如，在 Apple iOS 或 Windows Phone 中）或安全密钥（例如，在 Google Android 或 Windows 中）。 必须在通知中心内配置安全令牌。 配置通常在通知中心级别完成，但是，也可以在多租户方案中的命名空间级别完成。
 
 #### <a name="namespaces"></a>命名空间
 命名空间可用于部署分组。 在多租户方案中，还可以使用命名空间来表示同一应用的所有租户的所有通知中心。
@@ -132,7 +131,7 @@ PNS 对于传递通知不提供任何 SLA 保证。 但是，大多数推送通�
 #### <a name="geo-distribution"></a>地理分布
 在推送通知方案中，地理分布并非总是关键所在。 用于向设备传递推送通知的各个 PNS（例如 APNS 或 GCM）不会均匀分布。
 
-如果你有一个在全球范围内使用的应用程序，可以在全球不同的 Azure 区域使用通知中心服务在命名空间中创建中心。
+如果有一个在全球范围内使用的应用程序，可以在全球不同的 Azure 区域使用通知中心服务在命名空间中创建中心。
 
 > [!NOTE]
 > 我们不建议采用这种做法，因为这会增大管理成本，尤其是注册成本。 仅当确实有需要时，才采用这种做法。
@@ -143,7 +142,7 @@ PNS 对于传递通知不提供任何 SLA 保证。 但是，大多数推送通�
 在创建注册之前，如果必须进行客户端身份验证，从应用后端进行注册很有用。 如果标记必须由应用后端根据应用逻辑创建或修改，这种注册方法也很有用。 有关详细信息，请转到[后端注册指南]和[后端注册指南 2] 页。
 
 ### <a name="what-is-the-push-notification-delivery-security-model"></a>什么是推送通知传递安全模型？
-Azure 通知中心使用基于[共享访问签名](../storage/storage-dotnet-shared-access-signature-part-1.md)的安全模型。 可以在根命名空间级别或细粒度通知中心级别使用共享访问签名令牌。 可以使用不同的授权规则（例如，发送消息权限，或侦听通知权限）设置共享访问签名令牌。 有关详细信息，请参阅[通知中心安全模型]文档。
+Azure 通知中心使用基于[共享访问签名](../storage/common/storage-dotnet-shared-access-signature-part-1.md)的安全模型。 可以在根命名空间级别或细粒度通知中心级别使用共享访问签名令牌。 可以使用不同的授权规则（例如，发送消息权限，或侦听通知权限）设置共享访问签名令牌。 有关详细信息，请参阅[通知中心安全模型]文档。
 
 ### <a name="how-should-i-handle-sensitive-payload-in-push-notifications"></a>如何处理推送通知中的敏感有效负载？
 所有通知都由平台的 PNS 传递到目标设备。 将通知发送到 Azure 通知中心后，系统会对通知进行处理并将其传递到相应的 PNS。
@@ -176,7 +175,7 @@ Azure 通知中心使用基于[共享访问签名](../storage/storage-dotnet-sha
 > 
 > 
 
-如果你没有后端，当应用在目标设备上启动时，它们将在辅助通知中心执行新注册。 辅助通知中心最终将拥有所有已注册的活动设备。
+如果没有后端，当应用在目标设备上启动时，它们会在辅助通知中心执行新注册。 辅助通知中心最终将拥有所有已注册的活动设备。
 
 在一段时间内，包含未打开的应用的设备将收不到通知。
 

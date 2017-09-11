@@ -3,8 +3,8 @@ title: "如何通过 Visual Studio 将 Web 应用程序迁移和发布到 Azure 
 description: "了解如何使用 Visual Studio 将 Web 应用程序迁移和发布到 Azure 云服务。"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 9394adfd-a645-4664-9354-dd5df08e8c91
 ms.service: multiple
@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
-ms.author: tarcher
-translationtype: Human Translation
+ms.author: kraigb
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 01623fa76175091439d5a571fb8b8f96aee01c4c
 ms.openlocfilehash: a30859610aed55c1ffa22e821de3702d265a7fa7
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/08/2016
 
 ---
 # <a name="how-to-migrate-and-publish-a-web-application-to-an-azure-cloud-service-from-visual-studio"></a>如何：通过 Visual Studio 将 Web 应用程序迁移和发布到 Azure 云服务
@@ -201,9 +202,4 @@ ms.openlocfilehash: a30859610aed55c1ffa22e821de3702d265a7fa7
 
 ## <a name="next-steps"></a>后续步骤
 关于发布的详细信息，请参阅[准备从 Visual Studio 发布或部署 Azure 应用程序](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md)。 另请参阅 [Setting Up Named Authentication Credentials](vs-azure-tools-setting-up-named-authentication-credentials.md)（设置命名的身份验证凭据）。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

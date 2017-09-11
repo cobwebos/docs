@@ -43,7 +43,7 @@ ms.lasthandoff: 06/15/2017
 - 用户启动 RDP 连接后，RD 网关开始发挥作用。 RD 网关处理通过 Internet 传入的加密 RDP 流量，并将其转换到用户要连接的本地服务器。 在此方案中，RD 网关接收的流量来自 Azure AD 应用程序代理。
 
 >[!TIP]
->如果你以前尚未部署 RDS，或者在开始之前想要了解详细信息，请了解如何[使用 Azure Resource Manager 和 Azure 应用商店无缝部署 RDS](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)。
+>如果你以前尚未部署 RDS，或者在开始之前想要了解详细信息，请了解如何[使用 Azure 资源管理器和 Azure Marketplace 无缝部署 RDS](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)。
 
 ## <a name="requirements"></a>要求
 

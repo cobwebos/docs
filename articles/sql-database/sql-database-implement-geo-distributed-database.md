@@ -11,7 +11,7 @@ ms.assetid:
 ms.service: sql-database
 ms.custom: mvc,business continuity
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/26/2017
@@ -21,7 +21,6 @@ ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
 ms.openlocfilehash: 9f53f318e20dac9248906bdbe898ba4dacb286ac
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/30/2017
-
 
 ---
 
@@ -387,7 +386,8 @@ sudo apt-get install maven
       -ServerName $mydrservername
    $fileovergroup.ReplicationRole
    ```
-## <a name="next-steps"></a>后续步骤 
+
+## <a name="next-steps"></a>后续步骤
 
 有关详细信息，请参阅[活动异地复制和故障转移组](sql-database-geo-replication-overview.md)。
 

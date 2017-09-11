@@ -46,6 +46,7 @@
 ## [配置令牌](active-directory-b2c-token-session-sso.md)
 ## [启用 MFA](active-directory-b2c-reference-mfa.md)
 ## [使用自定义属性](active-directory-b2c-reference-custom-attr.md)
+## [自定义密码](active-directory-b2c-reference-password-complexity.md)
 ## [自定义 UI](active-directory-b2c-reference-ui-customization.md)
 ### [用于自定义的帮助器工具](active-directory-b2c-reference-ui-customization-helper-tool.md)
 ## [语言自定义](active-directory-b2c-reference-language-customization.md)
@@ -56,9 +57,12 @@
 ## [自定义策略](active-directory-b2c-overview-custom.md)
 ## 指南
 ### [入门](active-directory-b2c-get-started-custom.md)
-### 配置 OIDC 提供程序
+### 配置 OIDC/OAUTH2 提供程序
 #### [Azure AD](active-directory-b2c-setup-aad-custom.md)
+#### [Microsoft 帐户](active-directory-b2c-custom-setup-msa-idp.md)
+#### [Google+](active-directory-b2c-custom-setup-goog-idp.md)
 ### 配置 SAML 提供程序
+#### [ADFS](active-directory-b2c-custom-setup-adfs2016-idp.md)
 #### [Salesforce](active-directory-b2c-setup-sf-app-custom.md)
 ### 集成 RESTful API
 #### [验证用户输入](active-directory-b2c-rest-api-validation-custom.md)
@@ -68,11 +72,12 @@
 #### [自定义属性](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 #### [自定义 UI](active-directory-b2c-ui-customization-custom.md)
 #### [自定义令牌](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
+#### [自定义密码](active-directory-b2c-reference-password-complexity-custom.md)
 ### 故障排除
 #### [使用 Application Insights 收集日志](active-directory-b2c-troubleshoot-custom.md)
 ## 引用
 ### [发行说明](active-directory-b2c-developer-notes-custom.md)
-
+### [信任框架定义](active-directory-b2c-reference-trustframeworks-defined-ief-custom.md) 
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory-b2c)
 ## 术语表

@@ -2,7 +2,7 @@
 title: "Azure CDN 文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用内容交付网络 (CDN) 将全球数据中心的内容传送到任何设备。 教程、API 参考和其他文档。"
 services: cdn
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

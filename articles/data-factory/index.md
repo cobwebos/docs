@@ -2,7 +2,7 @@
 title: "Azure 数据工厂文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用数据工厂来与本地源与云源建立自动化数据管道，以便移动和处理要分析的数据。"
 services: data-factory
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

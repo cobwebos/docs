@@ -3,7 +3,7 @@ title: "Azure 网络观察程序简介 | Microsoft 文档"
 description: "本页面概述可在 Azure 中监视和可视化联网资源的网络观察程序服务"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 31c1bbdd04423d98dba0f8da435930ad3fed52e2
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 18aa9837742082535a115efd47bdc4b8dfda8a6b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 07/21/2017
 
 * **[拓扑](network-watcher-topology-overview.md)** - 提供网络级视图，显示资源组中网络资源之间的各种互连和关联。
 * **[可变数据包捕获](network-watcher-packet-capture-overview.md)** - 捕获传入和传出虚拟机的数据包数据。 高级筛选选项和精细控制（例如设置时间与大小限制）提供了多样性。 数据包数据可以存储在 Blob 存储中，或者以 .cap 格式存储在本地磁盘上。
-* **[IP 流验证](network-watcher-ip-flow-verify-overview.md)** - 根据流信息和 5 元组数据包参数（目标 IP、源 IP、目标端口、源端口和协议）检查数据包是被允许还是被拒绝。 如果数据包被安全组拒绝，则返回拒绝数据包的规则和组。
+* **[IP 流验证](network-watcher-ip-flow-verify-overview.md)** - 根据流信息的 5 元组数据包参数（目标 IP、源 IP、目标端口、源端口和协议）检查数据包是被允许还是被拒绝。 如果数据包被安全组拒绝，则返回拒绝数据包的规则和组。
 * **[下一跃点](network-watcher-next-hop-overview.md)** - 确定 Azure 网络结构中路由的数据包的下一跃点，以便诊断任何错误配置的用户定义路由。
 * **[安全组视图](network-watcher-security-group-view-overview.md)** - 获取在 VM 上应用的有效安全规则。
 * **[NSG 流日志](network-watcher-nsg-flow-logging-overview.md)** - 使用网络安全组的流日志可以捕获被组中的安全规则允许或拒绝的流量的相关日志。 流由 5 元组信息（源 IP、目标 IP、源端口、目标端口和协议）定义。
@@ -54,8 +54,25 @@ ms.lasthandoff: 07/21/2017
 
 网络观察程序使用 [Azure 基于角色的访问控制 (RBAC) 模型](../active-directory/role-based-access-control-what-is.md)。 网络观察程序需要以下权限。 请务必确保用于启动网络观察程序 API 或者在门户中使用网络观察程序的角色具有所需的权限。
 
-|资源| 权限| | |---|---| | |Microsoft.
-|Microsoft.Storage/ |读取| | |Microsoft.Authorization/|读取| | |Microsoft.Resources/subscriptions/resourceGroups/|读取| | |Microsoft.Storage/storageAccounts/listServiceSas/ |操作| | |Microsoft.Storage/storageAccounts/listAccountSas/ |操作| | |Microsoft.Storage/storageAccounts/listKeys/ |操作| | |Microsoft.Compute/virtualMachines/ |读取| | |Microsoft.Compute/virtualMachines/ |写入| | |Microsoft.Compute/virtualMachineScaleSets/ |读取| | |Microsoft.Compute/virtualMachineScaleSets/ |写入| | |Microsoft.Network/networkWatchers/packetCaptures/|读取| | |Microsoft.Network/networkWatchers/packetCaptures/|写入| | |Microsoft.Network/networkWatchers/packetCaptures/|删除| | |Microsoft.Network/networkWatchers/ |写入| | |Microsoft.Network/networkWatchers/|读取| | |Microsoft.Insights/alertRules/ |*| | |Microsoft.Support/| *| |
+|资源| 权限|
+|---|---| 
+|Microsoft.Storage/ |读取|
+|Microsoft.Authorization/| 读取| 
+|Microsoft.Resources/subscriptions/resourceGroups/| 读取|
+|Microsoft.Storage/storageAccounts/listServiceSas/ | 操作|
+|Microsoft.Storage/storageAccounts/listAccountSas/ |操作|
+|Microsoft.Storage/storageAccounts/listKeys/ | 操作|
+|Microsoft.Compute/virtualMachines/ |读取|
+|Microsoft.Compute/virtualMachines/ |写入|
+|Microsoft.Compute/virtualMachineScaleSets/ |读取|
+|Microsoft.Compute/virtualMachineScaleSets/ |写入|
+|Microsoft.Network/networkWatchers/packetCaptures/ |读取|
+|Microsoft.Network/networkWatchers/packetCaptures/| 写入|
+|Microsoft.Network/networkWatchers/packetCaptures/| 删除|
+|Microsoft.Network/networkWatchers/ |写入 |
+|Microsoft.Network/networkWatchers/| 读取 |
+|Microsoft.Insights/alertRules/ |*|
+|Microsoft.Support/ | *|
 
 ### <a name="network-subscription-limits"></a>网络订阅限制
 

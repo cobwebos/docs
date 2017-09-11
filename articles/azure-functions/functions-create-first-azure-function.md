@@ -4,7 +4,7 @@ description: "了解如何使用 Azure 门户创建第一个可无服务器执�
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d

@@ -4,7 +4,7 @@ description: "本主题说明如何实现故障转移流式处理方案。"
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: fc45d849-eb0d-4739-ae91-0ff648113445
 ms.service: media-services

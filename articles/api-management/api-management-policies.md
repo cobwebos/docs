@@ -3,7 +3,7 @@ title: "Azure API 管理策略 | Microsoft Docs"
 description: "了解可在 Azure API 管理中使用的策略。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 1cc460cb-8e67-41aa-bc76-bbafc1892798
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
 ms.openlocfilehash: eea563ccbceab0833fb5e5eaf75e3a4347ef1ea4
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="api-management-policies"></a>API 管理策略
@@ -26,7 +28,7 @@ ms.openlocfilehash: eea563ccbceab0833fb5e5eaf75e3a4347ef1ea4
   
  在任何 API 管理策略中，策略表达式可以用作属性值或文本值，除非该策略另外指定。 某些策略（如[控制流](api-management-advanced-policies.md#choose)和[设置变量](api-management-advanced-policies.md#set-variable)策略）基于策略表达式。 有关详细信息，请参阅[高级策略](api-management-advanced-policies.md#AdvancedPolicies)和[策略表达式](api-management-policy-expressions.md)。  
   
-##  <a name="a-nameproxypoliciesa-policies"></a><a name="ProxyPolicies"></a> 策略  
+##  <a name="ProxyPolicies"></a> 策略  
   
 -   [访问限制策略](api-management-access-restriction-policies.md#AccessRestrictionPolicies)  
   
@@ -120,9 +122,4 @@ ms.openlocfilehash: eea563ccbceab0833fb5e5eaf75e3a4347ef1ea4
   
 ## <a name="next-steps"></a>后续步骤
 有关如何使用策略的详细信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

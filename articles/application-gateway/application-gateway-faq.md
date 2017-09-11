@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/28/2017
+ms.date: 07/19/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: bb3cf81c9b179e520e58a6fe5e455a136b9bb349
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 595d611aac4f57b7ab5b7ab4e46edf1eff796185
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 
@@ -132,7 +132,11 @@ Azure 应用程序网关是服务形式的应用程序传送控制器 (ADC)，�
 
 **问：自定义探测是否支持对响应数据使用通配符/正则表达式？**
 
-自定义探测不支持对响应数据使用通配符或正则表达式。
+自定义探测不支持对响应数据使用通配符或正则表达式。 
+
+**问：如何处理规则？**
+
+按配置规则的顺序处理规则。 建议将多站点规则配置在基本规则之前，以降低将流量路由到错误后端的可能性，因为基本规则会在评估多站点规则之前根据端口匹配流量。
 
 **问：如何处理规则？**
 
@@ -160,7 +164,7 @@ Host 字段指定要将探测数据发送到的名称。 仅在应用程序网�
 
 **问：应用程序网关如何支持高可用性和可伸缩性？**
 
-如果已部署两个或更多个实例，则应用程序网关支持高可用性方案。 Azure 将跨更新域和容错域分配这些实例，确保所有实例不会同时发生故障。 为了支持可伸缩性，应用程序网关将添加同一网关的多个实例来分担负载。
+如果已部署两个或更多个实例，则应用程序网关支持高可用性方案。 Azure 将跨更新域和容错域分配这些实例，确保所有实例不会同时发生故障。 为了支持伸缩性，应用程序网关将添加同一网关的多个实例来分担负载。
 
 **问：如何使用应用程序网关实现跨数据中心的灾难恢复方案？**
 
@@ -186,33 +190,36 @@ Host 字段指定要将探测数据发送到的名称。 仅在应用程序网�
 
 **问：应用程序网关支持哪些最新的加密套件？**
 
-下面按优先顺序列出了支持的最新加密套件。
+应用程序网关当前支持以下密码套件。 请访问[在应用程序网关上配置 SSL 策略版本和密码套件](application-gateway-configure-ssl-policy-powershell.md)，了解如何自定义 SSL 选项。
 
-TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384
-
-TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256
-
-TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256
-
-TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
-
-TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256
-
-TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256
-
-TLS_RSA_WITH_AES_256_GCM_SHA384
-
-TLS_RSA_WITH_AES_128_GCM_SHA256
-
-TLS_RSA_WITH_AES_256_CBC_SHA256
-
-TLS_RSA_WITH_AES_128_CBC_SHA256
-
-TLS_RSA_WITH_AES_256_CBC_SHA
-
-TLS_RSA_WITH_AES_128_CBC_SHA
-
-TLS_RSA_WITH_3DES_EDE_CBC_SHA
+- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+- TLS_DHE_RSA_WITH_AES_128_CBC_SHA
+- TLS_RSA_WITH_AES_256_GCM_SHA384
+- TLS_RSA_WITH_AES_128_GCM_SHA256
+- TLS_RSA_WITH_AES_256_CBC_SHA256
+- TLS_RSA_WITH_AES_128_CBC_SHA256
+- TLS_RSA_WITH_AES_256_CBC_SHA
+- TLS_RSA_WITH_AES_128_CBC_SHA
+- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
+- TLS_DHE_DSS_WITH_AES_256_CBC_SHA256
+- TLS_DHE_DSS_WITH_AES_128_CBC_SHA256
+- TLS_DHE_DSS_WITH_AES_256_CBC_SHA
+- TLS_DHE_DSS_WITH_AES_128_CBC_SHA
+- TLS_RSA_WITH_3DES_EDE_CBC_SHA
+- TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
 
 **问：应用程序网关是否也支持重新加密发往后端的流量？**
 
@@ -222,9 +229,16 @@ TLS_RSA_WITH_3DES_EDE_CBC_SHA
 
 是的，可将应用程序网关配置为拒绝 TLS1.0、TLS1.1 和 TLS1.2。 SSL 2.0 和 3.0 默认已禁用，并且不可配置。
 
-**问：是否可以配置 SSL 策略来控制加密套件？**
+**问：我是否可以配置密码套件和策略顺序？**
 
-目前不可以。
+是，支持[配置密码套件](application-gateway-ssl-policy-overview.md)。 定义自定义策略时，必须至少启用以下其中一个密码套件。 应用程序网关使用 SHA256 进行后端管理。
+
+* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 
+* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+* TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+* TLS_RSA_WITH_AES_128_GCM_SHA256
+* TLS_RSA_WITH_AES_256_CBC_SHA256
+* TLS_RSA_WITH_AES_128_CBC_SHA256
 
 **问：支持多少个 SSL 证书？**
 
@@ -288,7 +302,7 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 
 应用程序网关可以使用三种日志。 有关这些日志和其他诊断功能的详细信息，请访问[应用程序网关的后端运行状况、诊断日志和指标](application-gateway-diagnostics.md)。
 
-- **ApplicationGatewayAccessLog**：访问日志包含提交到应用程序网关前端的每个请求。 数据包括调用方的 IP、请求的 URL、响应延迟、返回代码，以及传入和传出的字节数。 每隔 300 秒会收集一次访问日志。 此日志包含每个应用程序网关实例的一条记录。
+- **ApplicationGatewayAccessLog**：访问日志包含提交到应用程序网关前端的每个请求。 数据包括调用方的 IP、请求的 URL、响应延迟、返回代码，以及传入和传出的字节数。每隔 300 秒会收集一次访问日志。 此日志包含每个应用程序网关实例的一条记录。
 - **ApplicationGatewayPerformanceLog**：性能日志捕获每个实例的性能信息，包括提供的请求总数、吞吐量（以字节为单位）、失败的请求计数、正常和不正常的后端实例计数。
 - **ApplicationGatewayFirewallLog**：防火墙日志包含通过应用程序网关（配置有 Web 应用程序防火墙）的检测或阻止模式记录的请求。
 

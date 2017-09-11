@@ -1,6 +1,6 @@
 ---
 title: "如何配置 Spring Boot Initializer 应用，以使用 Redis 缓存"
-description: "了解如何配置使用 Spring Boot Initializer 创建的应用程序，以使用 Azure Redis 缓存。"
+description: "了解如何配置使用 Spring Initializer 创建的 Spring Boot 应用程序，以使用 Azure Redis 缓存。"
 services: redis-cache
 documentationcenter: java
 author: rmcmurray
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 7/21/2017
 ms.author: robmcm;zhijzhao;yidon
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: ea85a9cfe7079ade33a437987798a165a056dc02
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: fb3fc96a2136b7c326bb0eb291b7204e7acf0190
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
@@ -51,15 +51,15 @@ ms.lasthandoff: 07/28/2017
 
    ![Azure 门户][AZ02]
 
-1. 在“新建 Redis 缓存”边栏选项卡上，为缓存输入 DNS 名称，然后指定订阅、资源组、位置和定价层。 指定这些选项后，单击“创建”以创建缓存。
+1. 在“新建 Redis 缓存”页上，为缓存输入“DNS 名称”，然后指定“订阅”、“资源组”、“位置”和“定价层”。 指定这些选项后，单击“创建”以创建缓存。
 
    ![Azure 门户][AZ03]
 
-1. 创建缓存完成后，会看到其列在 Azure 仪表板上，并显示在“所有资源”和“Redis 缓存”边栏选项卡下。 可在任何上述位置上单击缓存，打开缓存的属性边栏选项卡。
+1. 创建缓存完成后，会看到其列在 Azure“仪表板”上，并显示在“所有资源”和“Redis 缓存”页下。 可在任何上述位置上单击缓存，打开缓存的属性页。
 
    ![Azure 门户][AZ04]
 
-1. 显示包含缓存属性的边栏选项卡后，单击“访问密匙”，然后复制缓存的访问密钥。
+1. 显示包含缓存属性列表的页后，单击“访问密匙”，然后复制缓存的访问密钥。
 
    ![Azure 门户][AZ05]
 
@@ -98,10 +98,13 @@ ms.lasthandoff: 07/28/2017
 
    ```yaml
    # Specify the DNS URI of your Redis cache.
-   spring.redisHost=myspringbootcache.redis.cache.windows.net
+   spring.redis.host=myspringbootcache.redis.cache.windows.net
+
+   # Specify the port for your Redis cache.
+   spring.redis.port=6380
 
    # Specify the access key for your Redis cache.
-   spring.redisPassword=447564652c20426f6220526f636b7321
+   spring.redis.password=57686f6120447564652c2049495320526f636b73=
    ```
 
    ![编辑 application.properties 文件][RE02]
@@ -116,7 +119,7 @@ ms.lasthandoff: 07/28/2017
 
    `/users/example/home/myazuredemo/src/main/java/com/contoso/myazuredemo/controller`
 
-1. 在刚创建的“控制器”文件夹中，创建名为 HelloController.java 的文件，并向其添加以下代码：
+1. 在 controller 文件夹中创建一个名为 HelloController.java 的新文件。 在文本编辑器中打开该文件，然后向其添加以下代码：
 
    ```java
    package com.contoso.myazuredemo;
@@ -131,11 +134,15 @@ ms.lasthandoff: 07/28/2017
    public class HelloController {
    
       // Retrieve the DNS name for your cache.
-      @Value("${spring.redisHost}")
+      @Value("${spring.redis.host}")
       private String redisHost;
 
+      // Retrieve the port for your cache.
+      @Value("${spring.redis.port}")
+      private int redisPort;
+
       // Retrieve the access key for your cache.
-      @Value("${spring.redisPassword}")
+      @Value("${spring.redis.password}")
       private String redisPassword;
 
       @RequestMapping("/")
@@ -143,7 +150,7 @@ ms.lasthandoff: 07/28/2017
       public String hello() {
       
          // Create a JedisShardInfo object to connect to your Redis cache.
-         JedisShardInfo jedisShardInfo = new JedisShardInfo(redisHost, 6380, true);
+         JedisShardInfo jedisShardInfo = new JedisShardInfo(redisHost, redisPort, true);
          // Specify your access key.
          jedisShardInfo.setPassword(redisPassword);
          // Create a Jedis object to store/retrieve information from your cache.
@@ -165,8 +172,8 @@ ms.lasthandoff: 07/28/2017
 1. 使用 Maven 生成 Spring Boot 应用程序，然后运行该程序，例如：
 
    ```shell
-   mvn package
-   java -jar target/myazuredemo-0.0.1-SNAPSHOT.jar
+   mvn clean package
+   mvn spring-boot:run
    ```
 
 1. 使用 Web 浏览器浏览到 http://localhost:8080 以测试 Web 应用，如果有可用的 Curl，也可使用如以下示例所示的语法：

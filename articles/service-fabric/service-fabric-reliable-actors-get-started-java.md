@@ -1,6 +1,6 @@
 ---
 title: "用 Java 创建第一个基于角色的 Azure 微服务 | Microsoft Docs"
-description: "本教程将向你演示使用 Service Fabric Reliable Actors 创建、调试和部署简单的基于执行组件的服务的步骤。"
+description: "本教程会向你演示使用 Service Fabric Reliable Actors 创建、调试和部署简单的基于执行组件的服务的步骤。"
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2017
 ms.author: vturecek
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 450c60abeaaf96c7d82152d425265a6b6714f689
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 288f1ed1016f50031065e66444d2562427194dc7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors 入门
@@ -150,7 +149,7 @@ public class HelloWorldActorImpl extends ReliableActor implements HelloWorldActo
 ```
 
 ### <a name="actor-registration"></a>执行组件注册
-执行组件服务必须使用 Service Fabric 运行时中的服务类型注册。 为了使执行组件服务能够运行执行组件实例，还必须向执行组件服务注册你的执行组件类型。 `ActorRuntime` 注册方法将为执行组件执行此操作。
+执行组件服务必须使用 Service Fabric 运行时中的服务类型注册。 为了使执行组件服务能够运行执行组件实例，还必须向执行组件服务注册执行组件类型。 `ActorRuntime` 注册方法将为执行组件执行此操作。
 
 `HelloWorldActor/src/reliableactor/HelloWorldActorHost`：
 
@@ -188,20 +187,16 @@ $ gradle
 
 这会生成可以使用 Service Fabric CLI 工具部署的 Service Fabric 应用程序包。
 
-### <a name="deploy-with-xplat-cli"></a>使用 XPlat CLI 进行部署
+### <a name="deploy-service-fabric-cli"></a>部署 Service Fabric CLI
 
-如果使用的是 XPlat CLI，则 Install.sh 脚本包含用于部署应用程序包所必需的 Azure CLI 命令。 运行 install.sh 脚本以部署此应用程序。
+Install.sh 脚本包含用于部署应用程序包的 Service Fabric CLI (sfctl) 命令。
+运行 install.sh 脚本以部署此应用程序。
 
 ```bash
 $ ./install.sh
 ```
 
-### <a name="deploy-with-azure-cli-20"></a>使用 Azure CLI 2.0 进行部署
+## <a name="next-steps"></a>后续步骤
 
-如果使用的是 Azure CLI 2.0，请参阅[使用 Azure CLI 2.0 管理应用程序生命周期](service-fabric-application-lifecycle-azure-cli-2-0.md)的参考文档。
-
-## <a name="related-articles"></a>相关文章
-
-* [Service Fabric 和 Azure CLI 2.0 入门](service-fabric-azure-cli-2-0.md)
-* [Service Fabric XPlat CLI 入门](service-fabric-azure-cli.md)
+* [Service Fabric CLI 入门](service-fabric-cli.md)
 

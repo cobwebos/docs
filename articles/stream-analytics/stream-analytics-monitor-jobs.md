@@ -4,7 +4,7 @@ description: "了解如何以编程方式监视通过 REST API、Azure SDK 或 P
 keywords: ".net 监视器, 作业监视器, 监视应用"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 2ec02cc9-4ca5-4a25-ae60-c44be9ad4835
@@ -14,17 +14,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: bfcf1f8c1aeb30df13a82470bb4fa0161204d8ee
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 7e9d2f6f03fd539c59b105108fb46697bcd60f1c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>以编程方式创建流分析作业监视器
 
-本文说明如何为流分析作业启用监视功能。 通过 REST API、Azure SDK 或 PowerShell 创建的流分析作业默认不启用监视功能。 可以在 Azure 门户中手动启用此功能，只需转到作业的“监视”页并单击“启用”按钮即可；也可以按本文中所述步骤自动化此过程。 流分析作业的监视数据将显示在 Azure 门户的“指标”区域。
+本文说明如何为流分析作业启用监视功能。 通过 REST API、Azure SDK 或 PowerShell 创建的流分析作业默认不启用监视功能。 可以在 Azure 门户中手动启用此功能，只需转到作业的“监视”页并单击“启用”按钮即可；也可以按本文中所述步骤自动化此过程。 流分析作业的监视数据会显示在 Azure 门户的“指标”区域。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 07/04/2017
 ## <a name="create-a-project"></a>创建一个项目
 
 1. 创建 Visual Studio C# .NET 控制台应用程序。
-2. 在程序包管理器控制台中运行以下命令以安装 NuGet 包。 第一个是 Azure 流分析管理 .NET SDK。 第二个是 Azure Monitor SDK，将用于启用监视功能。 最后一个是用于进行身份验证的 Azure Active Directory 客户端。
+2. 在程序包管理器控制台中运行以下命令以安装 NuGet 包。 第一个是 Azure 流分析管理 .NET SDK。 第二个是 Azure Monitor SDK，用于启用监视功能。 最后一个是用于进行身份验证的 Azure Active Directory 客户端。
    
    ```
    Install-Package Microsoft.Azure.Management.StreamAnalytics
@@ -61,7 +61,7 @@ ms.lasthandoff: 07/04/2017
      <add key="ActiveDirectoryTenantId" value="YOUR TENANT ID" />
    </appSettings>
    ```
-   将 *SubscriptionId* 和 *ActiveDirectoryTenantId* 的值替换为 Azure 订阅 ID 和租户 ID。 你可以通过运行以下 PowerShell cmdlet 来获取这些值：
+   将 *SubscriptionId* 和 *ActiveDirectoryTenantId* 的值替换为 Azure 订阅 ID 和租户 ID。 可以通过运行以下 PowerShell cmdlet 来获取这些值：
    
    ```
    Get-AzureAccount
@@ -149,7 +149,7 @@ ms.lasthandoff: 07/04/2017
 > 
 > 存储帐户将链接到创建流分析作业时所在的区域，并不特定于作业本身。
 > 
-> 该同一区域中的所有流分析作业（以及所有其他的 Azure 资源）在存储监视数据时将共享此存储帐户。 如果提供其他的存储帐户，则可能会产生意想不到的副作用，这将影响对其他流分析作业或其他 Azure 资源的监视。
+> 该同一区域中的所有流分析作业（以及所有其他的 Azure 资源）在存储监视数据时会共享此存储帐户。 如果提供其他的存储帐户，则可能会产生意想不到的副作用，这会影响对其他流分析作业或其他 Azure 资源的监视。
 > 
 > 用于替换以下代码中的 `<YOUR STORAGE ACCOUNT NAME>` 的存储帐户名称应该是与为其启用监视功能的流分析作业所在的同一订阅中的存储帐户。
 > 
@@ -176,7 +176,7 @@ ms.lasthandoff: 07/04/2017
 
 ## <a name="get-support"></a>获取支持
 
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,7 +4,7 @@ description: "使用自助式密码重置功能重新获取工作用户帐户或
 services: active-directory
 keywords: 
 documentationcenter: 
-author: MicrosoftGuyJFlo
+author: barlanmsft
 manager: femila
 ms.reviewer: gahug
 ms.assetid: 7ba69b18-317a-4a62-afa3-924c4ea8fb49
@@ -13,8 +13,8 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
-ms.author: joflore
+ms.date: 08/28/2017
+ms.author: barlan
 ms.custom: end-user
 ms.translationtype: Human Translation
 ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
@@ -48,9 +48,9 @@ ms.lasthandoff: 07/06/2017
 
    > [!NOTE]
    > 如果 IT 人员尚未启用此功能，则会显示“联系你的管理员”链接，你可以要求 IT 人员通过其电子邮件或 Web 门户提供帮助。
-   > 
+   >
    > 如果需要解锁帐户，此时应选择“我知道密码，但是仍然无法登录”选项。
-   > 
+   >
 
 3. 根据 IT 人员配置 SSPR 的方式，会出现以下一个或多个选项。 使用[注册自助密码重置](active-directory-passwords-reset-register.md)一文之前，你或者 IT 人员已填充了其中一些信息。
 

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: shlo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: a03f097d0106ac153ef45e0c10b677597c76207a
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 4ee4c3a979a3cdd7ec793d12f812e5b126a2ce94
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/30/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="use-case---customer-profiling"></a>用例 - 客户分析
-Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence 套件的许多服务之一。  有关 Cortana Intelligence 的详细信息，请访问 [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics)（Cortana Intelligence 套件）。 此文档将介绍一个简单的用例，帮助你了解 Azure 数据工厂解决常见分析问题的方法。
+Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence 套件的许多服务之一。  有关 Cortana Intelligence 的详细信息，请访问 [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics)（Cortana Intelligence 套件）。 此文档介绍一个简单的用例，帮助你了解 Azure 数据工厂解决常见分析问题的方法。
 
 ## <a name="scenario"></a>方案
 Contoso 是为多个平台（游戏控制台、手持设备和个人计算机 (PC)）创建游戏的游戏公司。 玩家玩这些游戏的过程中将生成大量日志数据，这些日志数据可跟踪使用模式、游戏风格和用户首选项。  与人口、区域和产品数据相结合后，Contoso 可执行分析，以便指导如何改善玩家的体验，以及升级和游戏内购买。 
@@ -32,9 +32,9 @@ Contoso 的目标是基于其玩家的游戏历史记录确定向上销售/交�
 在此解决方案中，Contoso 需要评估其最近启动的市场营销活动的成效。 我们从原始游戏日志着手，对其进行处理并使用地理位置数据将其扩充，加入广告引用数据，最后将其复制到 Azure SQL 数据库，进而分析市场活动的影响。
 
 ## <a name="deploy-solution"></a>部署解决方案
-访问和试用此简单用例所需要的是 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)、[Azure Blob 存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)和 [Azure SQL 数据库](../sql-database/sql-database-get-started.md)。 在数据工厂主页上的“示例管道”磁贴上，部署客户分析管道。
+访问和试用此简单用例所需要的是 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)、[Azure Blob 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)和 [Azure SQL 数据库](../sql-database/sql-database-get-started.md)。 在数据工厂主页上的“示例管道”磁贴上，部署客户分析管道。
 
-1. 创建数据工厂或打开现有数据工厂。 有关创建数据工厂的步骤，请参阅 [使用数据工厂将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+1. 创建数据工厂或打开现有数据工厂。 有关创建数据工厂的步骤，请参阅[使用数据工厂将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 2. 在数据工厂的“数据工厂”边栏选项卡中，单击“示例管道”磁贴。
 
     ![“示例管道”磁贴](./media/data-factory-samples/SamplePipelinesTile.png)
@@ -64,7 +64,7 @@ Contoso 的目标是基于其玩家的游戏历史记录确定向上销售/交�
 2. **EnrichGameLogsPipeline** 联接分区的游戏事件与地区代码参考数据，并通过将 IP 地址映射到相应的地理位置来丰富数据。
 3. **AnalyzeMarketingCampaignPipeline** 管道使用丰富的数据，并通过广告数据对其进行处理，以创建包含营销活动效果的最终输出。
 
-在此示例中，数据工厂将用于安排活动（复制输入数据、转换和处理数据，并将最终数据输出到 Azure SQL 数据库）。  还可以对数据管道的网络进行可视化、对其进行管理，以及从 UI 监视其状态。
+在此示例中，数据工厂用于安排活动（复制输入数据、转换和处理数据，并将最终数据输出到 Azure SQL 数据库）。  还可以对数据管道的网络进行可视化、对其进行管理，以及从 UI 监视其状态。
 
 ## <a name="benefits"></a>优点
 通过优化其用户配置文件分析并将其与业务目标匹配，游戏公司可快速收集使用模式并分析其营销活动的效果。

@@ -15,15 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 05/30/2017
 ms.author: cherylmc,yushwang
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 27e5dbff8d4a9a2ed82ab6691aa82c2668fec958
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 9f7eb8e63f30d0f3450ad913620e59cd461b75bc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="vpn-gateway-faq"></a>VPN 网关常见问题
 
-## <a name="connecting-to-virtual-networks"></a>连接到虚拟网络
+## <a name="connecting"></a>连接到虚拟网络
 
 ### <a name="can-i-connect-virtual-networks-in-different-azure-regions"></a>能否连接不同 Azure 区域中的虚拟网络？
 
@@ -161,11 +161,11 @@ VPN 网关基本上是一个多宿主设备，其中一个 NIC 进入客户专�
 
 ## <a name="P2S"></a>点到站点连接
 
-[!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-point-to-site-faq-include.md)]
+[!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-point-to-site-include.md)]
 
 ## <a name="V2VMulti"></a>VNet 到 VNet 连接和多站点连接
 
-[!INCLUDE [vpn-gateway-vnet-vnet-faq-include](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
+[!INCLUDE [vpn-gateway-vnet-vnet-faq-include](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
 ### <a name="can-i-use-azure-vpn-gateway-to-transit-traffic-between-my-on-premises-sites-or-to-another-virtual-network"></a>能否使用 Azure VPN 网关在我的本地站点之间传输流量或将流量传输到其他虚拟网络？
 
@@ -197,12 +197,12 @@ VPN 网关基本上是一个多宿主设备，其中一个 NIC 进入客户专�
 
 ## <a name="ipsecike"></a>IPsec/IKE 策略
 
-[!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-ipsecikepolicy-faq-include.md)]
+[!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-faq-ipsecikepolicy-include.md)]
 
 
 ## <a name="bgp"></a>BGP
 
-[!INCLUDE [vpn-gateway-bgp-faq-include](../../includes/vpn-gateway-bpg-faq-include.md)]
+[!INCLUDE [vpn-gateway-faq-bgp-include](../../includes/vpn-gateway-faq-bgp-include.md)]
 
 ## <a name="vms"></a>跨界连接和 VM
 
@@ -229,3 +229,4 @@ VPN 网关基本上是一个多宿主设备，其中一个 NIC 进入客户专�
 
 * 有关 VPN 网关的详细信息，请参阅[关于 VPN 网关](vpn-gateway-about-vpngateways.md)。
 * 有关 VPN 网关配置设置的详细信息，请参阅[关于 VPN 网关配置设置](vpn-gateway-about-vpn-gateway-settings.md)。
+

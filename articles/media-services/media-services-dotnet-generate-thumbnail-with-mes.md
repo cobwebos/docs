@@ -4,7 +4,7 @@ description: "本主题介绍如何使用 .NET 通过 Media Encoder Standard 同
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: b8dab73a-1d91-4b6d-9741-a92ad39fc3f7
 ms.service: media-services

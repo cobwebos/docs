@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/29/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 24e0372f024e574d049c63f444b5e8f6b0dfd065
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: beafd2c65b0506844ff9ea152037ed6f2866e650
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 
@@ -30,9 +29,9 @@ ms.lasthandoff: 05/18/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure Data Lake Store 帐户。 遵循[使用 Azure 门户，实现 Azure Data Lake Store 入门](../data-lake-store/data-lake-store-get-started-portal.md)中的说明。
+* Azure Data Lake Store 帐户。 遵照[通过 Azure 门户使用 Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) 中的说明。
 
-* 包含 Data Lake Store（作为存储）的 Azure HDInsight Spark 群集。 按照[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)中的说明进行操作。
+* 包含 Data Lake Store（作为存储）的 Azure HDInsight Spark 群集。 遵照[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)中的说明。
 
     
 ## <a name="prepare-the-data"></a>准备数据
@@ -44,7 +43,7 @@ ms.lasthandoff: 05/18/2017
 
 如果创建了将 Data Lake Store 作为附加存储并将 Azure 存储 Blob 作为默认存储的 HDInsight 群集，则应先将一些示例数据复制到 Data Lake Store 帐户。 可以使用与 HDInsight 群集关联的 Azure 存储 Blob 中的示例数据。 为此，可使用 [ADLCopy 工具](http://aka.ms/downloadadlcopy)。 从此链接下载并安装该工具。
 
-1. 打开命令提示符，然后导航到 AdlCopy 的安装目录（通常是 `%HOMEPATH%\Documents\adlcopy`）。
+1. 打开命令提示符，并导航到 AdlCopy 的安装目录（通常是 `%HOMEPATH%\Documents\adlcopy`）。
 
 2. 运行以下命令从源容器复制特定 blob 到 Data Lake Store：
 
@@ -58,7 +57,7 @@ ms.lasthandoff: 05/18/2017
    > 请确保文件和路径名称采用合适的大小写。
    >
    >
-3. 系统会提示输入 Azure 订阅（其下提供 Data Lake Store 帐户）的凭据。 会显示与下面类似的输出：
+3. 系统会提示输入 Azure 订阅（其下提供 Data Lake Store 帐户）的凭据。 会显示类似于以下代码片段的输出：
 
         Initializing Copy.
         Copy Started.
@@ -71,7 +70,7 @@ ms.lasthandoff: 05/18/2017
 
 1. 在 [Azure 门户](https://portal.azure.com/)上的启动板中，单击 Spark 群集的磁贴（如果已将它固定到启动板）。 也可以单击“全部浏览” > “HDInsight 群集”导航到群集。
 
-2. 在 Spark 群集边栏选项卡中单击“快速链接”，然后在“群集仪表板”边栏选项卡中单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
+2. 在 Spark 群集边栏选项卡中单击“快速链接”，并在“群集仪表板”边栏选项卡中单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
 
    > [!NOTE]
    > 也可以在浏览器中打开以下 URL 来访问群集的 Jupyter 笔记本。 将 **CLUSTERNAME** 替换为群集的名称：
@@ -80,11 +79,11 @@ ms.lasthandoff: 05/18/2017
    >
    >
 
-3. 创建新的笔记本。 单击“新建”，然后单击“PySpark”。
+3. 创建新的笔记本。 单击“新建”，并单击“PySpark”。
 
     ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "创建新的 Jupyter 笔记本")
 
-4. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 当你运行第一个代码单元格时，系统将自动为你创建 Spark 和 Hive 上下文。 首先可以导入此方案所需的类型。 为此，请将以下代码片段粘贴到某个单元中，然后按 **SHIFT + ENTER**。
+4. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 运行第一个代码单元格时，系统会自动创建 Spark 和 Hive 上下文。 首先可以导入此方案所需的类型。 为此，请将以下代码片段粘贴到某个单元中，然后按 **SHIFT + ENTER**。
 
         from pyspark.sql.types import *
 
@@ -132,11 +131,11 @@ ms.lasthandoff: 05/18/2017
 
       ![查询结果的表输出](./media/hdinsight-apache-spark-use-with-data-lake-store/jupyter-tabular-output.png "查询结果的表输出")
 
-     你也可以在其他视觉效果中查看结果。 例如，同一输出的分区图看起来如下所示。
+     也可以在其他视觉效果中查看结果。 例如，同一输出的分区图看起来如下所示。
 
      ![查询结果分区图](./media/hdinsight-apache-spark-use-with-data-lake-store/jupyter-area-output.png "查询结果分区图")
 
-8. 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这将会关闭笔记本。
+8. 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这会关闭笔记本。
 
 
 ## <a name="next-steps"></a>后续步骤

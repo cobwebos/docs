@@ -23,7 +23,7 @@ ms.lasthandoff: 05/05/2017
 
 ---
 # <a name="red-hat-update-infrastructure-rhui-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>用于 Azure 中按需 Red Hat Enterprise Linux VM 的 Red Hat 更新基础结构 (RHUI)
-从 Azure 应用商店中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的虚拟机已注册，以访问 Azure 中部署的 Red Hat 更新基础结构 (RHUI)。  按需 RHEL 实例可以访问区域 yum 存储库，并且能够接收增量更新。
+从 Azure Marketplace 中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的虚拟机已注册，以访问 Azure 中部署的 Red Hat 更新基础结构 (RHUI)。  按需 RHEL 实例可以访问区域 yum 存储库，并且能够接收增量更新。
 
 受 RHUI 管理的 yum 存储库列表是预配时在 RHEL 实例中配置的。 无需执行任何其他配置，只需在 RHEL 实例准备好获取最新更新后运行 `yum update` 即可。
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 05/05/2017
 > 
 
 ## <a name="rhui-azure-infrastructure-update"></a>RHUI Azure 基础结构更新
-自 2016 年 9 月起，Azure 拥有一组新的 Red Hat 更新基础结构 (RHUI) 服务器。 这些服务器使用 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)部署，因此任何 VM 都可以使用单一终结点 (rhui-1.microsoft.com)，而无需考虑区域。 Azure 应用商店中的新 RHEL 即用即付 (PAYG) 映像（日期为 2016 年 9 月的版本或更高版本）指向新的 Azure RHUI 服务器，不需要执行任何其他操作。
+自 2016 年 9 月起，Azure 拥有一组新的 Red Hat 更新基础结构 (RHUI) 服务器。 这些服务器使用 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)部署，因此任何 VM 都可以使用单一终结点 (rhui-1.microsoft.com)，而无需考虑区域。 Azure Marketplace 中的新 RHEL 即用即付 (PAYG) 映像（日期为 2016 年 9 月的版本或更高版本）指向新的 Azure RHUI 服务器，不需要执行任何其他操作。
 
 ### <a name="determine-if-action-is-required"></a>确定是否需要执行操作
 如果从 Azure RHEL PAYG VM 连接到 Azure RHUI 时遇到问题，请按照下列步骤操作
@@ -235,6 +235,6 @@ sudo rpm -U azureclient.rpm
 > 
 
 ## <a name="next-steps"></a>后续步骤
-若要通过 Azure 应用商店的即用即付映像创建 Red Hat Enterprise Linux VM 并利用 Azure 托管的 RHUI，请转到 [Azure 应用商店](https://azure.microsoft.com/marketplace/partners/redhat/)。 能够在 RHEL 实例中使用 `yum update`，而无需任何其他设置。
+若要通过 Azure Marketplace 的即用即付映像创建 Red Hat Enterprise Linux VM 并利用 Azure 托管的 RHUI，请转到 [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/)。 能够在 RHEL 实例中使用 `yum update`，而无需任何其他设置。
 
 

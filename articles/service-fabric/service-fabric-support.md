@@ -15,11 +15,10 @@ ms.workload: NA
 ms.date: 06/15/2017
 ms.author: pkc
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 70b2fefa654a73693a8064654cde1d767bfdd496
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 78e68cff3a757cbbcd8dc6f53120e6a4af54591a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支持选项
@@ -63,7 +62,7 @@ ms.lasthandoff: 07/11/2017
 
 ### <a name="azure-feedback-forum"></a>Azure 反馈论坛
 
-[有关 Service Fabric 的 Azure 反馈论坛][uservoice-forum]最适合提交用户关于产品的大型功能创意，我们可以看到，大多数常见的请求都属于我们的中长期规划。 我们鼓励你在社区内争取大家对你的建议的支持。
+[有关 Service Fabric 的 Azure 反馈论坛][uservoice-forum]最适合提交用户关于产品的大型功能创意，我们可以看到，大多数常见的请求都属于我们的中长期规划。 我们鼓励你在社区内争取大家对建议的支持。
 
 
 <a id="releasesuport"></a>
@@ -84,7 +83,8 @@ ms.lasthandoff: 07/11/2017
 | 5.3.* |低于或等于版本 2.3 |2017 年 2 月 24 日 |
 | 5.4.* |低于或等于版本 2.4 |2017 年 5 月 10 日     |
 | 5.5.* |低于或等于版本 2.5 |2017 年 8 月 10 日    |
-| 5.6.* |低于或等于版本 2.6 |最新版本，因此尚无结束日期
+| 5.6.* |低于或等于版本 2.6 |2017 年 10 月 13 日    |
+| 5.7.* |低于或等于版本 2.7 |最新版本，因此尚无结束日期
 
 <a id="previewversion"></a>
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric 预览版本 - 不支持在生产环境中使用。

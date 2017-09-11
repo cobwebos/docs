@@ -3,7 +3,7 @@ title: "通过警报和 Azure Functions，使用数据包捕获执行主动网�
 description: "本文介绍如何使用 Azure 网络观察程序创建警报触发的数据包捕获"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
@@ -13,22 +13,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 70e78af25c7087aa0eb59697aa9b51d615480085
+ms.author: jdial
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b813172fc1fc1cc683f463f05370c95bfec10f8d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>通过警报和 Azure Functions，使用数据包捕获执行主动网络监视
 
-网络观察程序数据包捕获功能可以创建捕获会话，跟踪传入和传出虚拟机的流量。 可在捕获文件中包含一个定义的筛选器，使其只跟踪要监视的流量。 然后，将此数据存储在存储 Blob 中或来宾计算机本地。
+网络观察程序数据包捕获功能可以创建捕获会话，跟踪传入和传出虚拟机的流量。 可在捕获文件中包含一个定义的筛选器，使其只跟踪要监视的流量。 然后，将此数据存储在存储 Blob 中或本地存储在来宾计算机上。
 
 可以通过 Azure Functions 等其他自动化方案远程启动此功能。 数据包捕获提供基于定义的网络异常运行主动捕获的功能。 其他用途包括收集网络统计信息、获取有关网络入侵的信息、调试客户端通信等等。
 
-Azure 中部署的资源全天候运行。 但你或你的同事无法全天候主动监视所有资源的状态。 例如，如果凌晨 2 点出现问题，会发生什么情况？
+Azure 中部署的资源全天候运行。 但你和你的同事无法全天候主动监视所有资源的状态。 例如，如果凌晨 2 点出现问题，会发生什么情况？
 
 在 Azure 生态系统中使用网络观察程序、警报和函数，可以主动使用数据和工具做出响应，解决网络中的问题。
 
@@ -42,7 +41,7 @@ Azure 中部署的资源全天候运行。 但你或你的同事无法全天候�
 
 ## <a name="scenario"></a>方案
 
-在本示例中，VM 发送的 TCP 段数超过平常，出现问题时你希望能够收到警报。 此处所示的 TCP 段只是用作示例，但你可以使用任何警报条件。
+在本示例中，VM 发送的 TCP 段数比平常多，因此你希望收到相关警报。 此处所示的 TCP 段只是用作示例，但可以使用任何警报条件。
 
 收到警报时，希望收到数据包级别的数据，了解通信量为何提高。 然后，便可以采取措施让虚拟机恢复日常通信。
 
@@ -363,7 +362,7 @@ $Encryptedpassword
 
 如果捕获文件存储在本地，可以通过登录到虚拟机，检索捕获文件。
 
-有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/storage-dotnet-how-to-use-blobs.md)。 另一个可以使用的工具是[存储资源管理器](http://storageexplorer.com/)。
+有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 另一个可以使用的工具是[存储资源管理器](http://storageexplorer.com/)。
 
 下载捕获后，可以使用能够读取 **.cap** 文件的任何工具来查看捕获。 下面提供了其中两个工具的链接：
 
@@ -372,7 +371,8 @@ $Encryptedpassword
 
 ## <a name="next-steps"></a>后续步骤
 
-访问[使用 Wireshark 分析数据包捕获](network-watcher-alert-triggered-packet-capture.md)，了解如何查看数据包捕获
+访问[使用 Wireshark 分析数据包捕获](network-watcher-deep-packet-inspection.md)，了解如何查看数据包捕获
+
 
 [1]: ./media/network-watcher-alert-triggered-packet-capture/figure1.png
 [1-1]: ./media/network-watcher-alert-triggered-packet-capture/figure1-1.png

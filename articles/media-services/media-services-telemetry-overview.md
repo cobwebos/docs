@@ -1,10 +1,10 @@
 ---
-title: "Azure 媒体服务遥测 | Microsoft Docs"
+title: "Azure 媒体服务遥测 | Microsoft 文档"
 description: "本文概述了 Azure 媒体服务遥测。"
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 95c20ec4-c782-4063-8042-b79f95741d28
 ms.service: media-services
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: bc16ef727f0c3942b0be8c633717fd52da246c55
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 25520a447a9f2c459fd073779e4922377b6d1d4d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 07/19/2017
 属性|值|示例/说明
 ---|---|---
 PartitionKey|{account ID}_{entity ID}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>帐户 ID 包括在分区键中，可简化将多个媒体服务帐户写入同一存储帐户的工作流。
-RowKey|{seconds to midnight}_{random value}|01688_00199<br/><br/>行键以距午夜的秒数开头，可允许分区内的前 n 个样式查询。 有关详细信息，请参阅[此](../storage/storage-table-design-guide.md#log-tail-pattern)文章。 
+RowKey|{seconds to midnight}_{random value}|01688_00199<br/><br/>行键以距午夜的秒数开头，可允许分区内的前 n 个样式查询。 有关详细信息，请参阅[此](../cosmos-db/table-storage-design-guide.md#log-tail-pattern)文章。 
 Timestamp|日期/时间|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
 类型|提供遥测数据的实体类型|Channel/StreamingEndpoint/Archive<br/><br/>事件类型只是字符串值。
 名称|遥测事件的名称|ChannelHeartbeat/StreamingEndpointRequestLog

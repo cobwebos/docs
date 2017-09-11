@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.date: 08/16/2017
 ms.author: ganesr;cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 174954a3b4345bc40a509f0078b760a728a7dcfd
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: de3550c20439fa809869d98b8a57ea3be9c03e7c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="configure-route-filters-for-microsoft-peering"></a>配置用于 Microsoft 对等互连的路由筛选器
@@ -143,12 +143,12 @@ $routefilter.Rules.Add($rule)
 Set-AzureRmRouteFilter -RouteFilter $routefilter
 ```
 
-## <a name="attach"></a>步骤 3。 将路由筛选器附加到 ExpressRoute 线路
+## <a name="attach"></a>步骤 3. 将路由筛选器附加到 ExpressRoute 线路
 
-运行以下命令将路由筛选器附加到 ExpressRoute 线路：
+运行以下命令将路由筛选器附加到 ExpressRoute 线路，假设你只有 Microsoft 对等互连：
 
 ```powershell
-Set-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $ckt -Name "MicrosoftPeering" -PeeringType MicrosoftPeering -PeerASN "BGPASNNumber" -PrimaryPeerAddressPrefix "A.A.A.A/30" -SecondaryPeerAddressPrefix "B.B.B.B/30" -VlanId "VLANNumber" -RouteFilter $routefilter
+$ckt.Peerings[0].RouteFilter = $routefilter 
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
@@ -194,3 +194,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```powershell
 Remove-AzureRmRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
 ```
+
+## <a name="next-steps"></a>后续步骤
+
+有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。

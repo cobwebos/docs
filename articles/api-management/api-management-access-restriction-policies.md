@@ -3,7 +3,7 @@ title: "Azure API 管理访问限制策略 | Microsoft 文档"
 description: "了解可在 Azure API 管理中使用的访问限制策略。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 4c9991baf3fbcf3b8ea01f8dd573e2336db88b68
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 70cccd5ac7fbea36f02150e3da319a043c22c677
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="api-management-access-restriction-policies"></a>API 管理访问限制策略
@@ -517,7 +517,7 @@ ms.lasthandoff: 05/02/2017
 |require-expiration-time|布尔值。 指定令牌中是否需要到期声明。|否|true|
 |require-scheme|令牌方案的名称，例如“Bearer”。 设置了此属性时，策略将确保 Authorization 标头值中存在指定的方案。|否|不适用|
 |require-signed-tokens|布尔值。 指定令牌是否需要签名。|否|true|  
-|url|Open ID 配置终结点 URL，可以从其获取 Open ID 配置元数据。 对于 Azure Active Directory，请使用以下 URL：`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`，代之以你的目录租户名称，例如 `contoso.onmicrosoft.com`。|是|不适用|  
+|url|Open ID 配置终结点 URL，可以从其获取 Open ID 配置元数据。 对于 Azure Active Directory，请使用以下 URL：`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`，代之以目录租户名称，例如 `contoso.onmicrosoft.com`。|是|不适用|  
   
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  

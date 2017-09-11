@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/24/2017
+ms.date: 09/08/2017
 ms.author: ramical
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
 ms.openlocfilehash: c1345dcda6e52267a8037ffd7207e6bc3b0d3b31
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/28/2017
-
 
 ---
 # <a name="get-data-using-the-azure-ad-reporting-api-with-certificates"></a>使用证书通过 Azure AD 报告 API 获取数据
@@ -26,10 +26,10 @@ ms.lasthandoff: 03/28/2017
 
 ## <a name="use-the-azure-ad-reporting-api"></a>使用 Azure AD 报告 API 
 Azure AD 报告 API 要求你完成以下步骤：
- *    安装必备组件
- *    在应用中设置证书
- *    获取访问令牌
- *    使用访问令牌调用图形 API
+ *  安装必备组件
+ *  在应用中设置证书
+ *  获取访问令牌
+ *  使用访问令牌调用图形 API
 
 有关源代码的信息，请参阅 [Leverage Report API Module](https://github.com/AzureAD/azure-activedirectory-powershell/tree/gh-pages/Modules/AzureADUtils)（利用报告 API 模块）。 
 

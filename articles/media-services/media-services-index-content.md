@@ -4,7 +4,7 @@ description: "使用 Azure Media Indexer，可以使媒体文件内容可供搜�
 services: media-services
 documentationcenter: 
 author: Asolanki
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 827a56b2-58a5-4044-8d5c-3e5356488271
 ms.service: media-services

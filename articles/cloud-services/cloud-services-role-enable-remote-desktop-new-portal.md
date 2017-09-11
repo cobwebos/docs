@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: mmccrory
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: fc9b84d151144ae9cb49beacdf525fdc356818a6
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 0ff7fde5f3753aa6a24fb0af54d68d0dc0bd96a4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/11/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>为 Azure 云服务中的角色设置远程桌面连接
@@ -31,9 +30,9 @@ ms.lasthandoff: 04/11/2017
 >
 >
 
-你可以通过远程桌面访问在 Azure 中运行的角色的桌面。 你可以使用远程桌面连接，在应用程序正在运行时排查和诊断其问题。
+可以通过远程桌面访问在 Azure 中运行的角色的桌面。 可以使用远程桌面连接，在应用程序正在运行时排查和诊断其问题。
 
-你可以在开发过程中通过在服务定义中加入远程桌面模块来在你的角色中启用远程桌面连接，也可以通过远程桌面扩展选择启用远程桌面。 首选方法是使用远程桌面扩展，因为即使在部署应用程序后，也能启用远程桌面，而不必重新部署你的应用程序。
+可以在开发过程中通过在服务定义中加入远程桌面模块来在角色中启用远程桌面连接，也可以通过远程桌面扩展选择启用远程桌面。 首选方法是使用远程桌面扩展，因为即使在部署应用程序后，也能启用远程桌面，而不必重新部署应用程序。
 
 ## <a name="configure-remote-desktop-from-the-azure-portal"></a>从 Azure 门户配置远程桌面
 Azure 门户使用远程桌面扩展方法，即使在部署应用程序之后，也能启用远程桌面。 使用云服务的“远程桌面”边栏选项卡，可以启用远程桌面，更改用于连接虚拟机的本地 Administrator 帐户、身份验证使用的证书，以及设置到期日期。
@@ -49,7 +48,7 @@ Azure 门户使用远程桌面扩展方法，即使在部署应用程序之后�
     ![云服务远程桌面](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Details.png)
 
    > [!WARNING]
-   > 当首次启用远程桌面并单击“确定”（复选标记）时，所有角色实例会重新启动。 为避免重新启动，必须对于此角色安装用于对密码进行加密的证书。 若要避免重新启动，请[上载云服务的证书](cloud-services-configure-ssl-certificate.md#step-3-upload-a-certificate)，然后返回到此对话框。
+   > 当首次启用远程桌面并单击“确定”（复选标记）时，所有角色实例会重新启动。 为避免重新启动，必须对于此角色安装用于对密码进行加密的证书。 要避免重新启动，请[上载云服务的证书](cloud-services-configure-ssl-certificate.md#step-3-upload-a-certificate)，并返回到此对话框。
    >
    >
 3. 在“**角色**”中，选择要更新的角色，或选择“**全部**”以选择所有角色。
@@ -68,10 +67,10 @@ Azure 门户使用远程桌面扩展方法，即使在部署应用程序之后�
 4. 依次单击“**打开**”和“**连接**”，以启动远程桌面连接。
 
 >[!NOTE]
-> 如果云服务位于 NSG 后，可能需要创建允许端口**3389** 和 **20000** 上的流量的规则。  远程桌面使用端口 **3389**。  云服务实例经过负载均衡，因此无法直接控制要连接到哪个实例。  RemoteForwarder 和 RemoteAccess 代理管理 RDP 流量，允许客户端发送 RDP cookie 和指定要连接到的单个实例。  RemoteForwarder 和 RemoteAccess 代理要求打开端口 **20000***（如果你具有 NSG，此端口可能已被阻止）。
+> 如果云服务位于 NSG 后，可能需要创建允许端口**3389** 和 **20000** 上的流量的规则。  远程桌面使用端口 **3389**。  云服务实例经过负载均衡，因此无法直接控制要连接到哪个实例。  RemoteForwarder 和 RemoteAccess 代理管理 RDP 流量，允许客户端发送 RDP cookie 和指定要连接到的单个实例。  RemoteForwarder 和 RemoteAccess 代理要求打开端口 **20000***（如果具有 NSG，此端口可能已被阻止）。
 
 ## <a name="additional-resources"></a>其他资源
 
 [如何配置云服务](cloud-services-how-to-configure.md)
-[云服务常见问题 - 远程桌面](cloud-services-faq.md#remote-desktop)
+[云服务常见问题 - 远程桌面](cloud-services-faq.md)
 

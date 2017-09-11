@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: bd1b931681331d4de06e227983dfce98b4cc84f2
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 33fa6a8867764975a57b8727e7705529d1d7506a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="troubleshoot-password-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步解决密码同步问题
@@ -165,7 +165,7 @@ ms.lasthandoff: 06/28/2017
 
     ![PowerShell 脚本从密码同步设置中返回的输出](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/psverifyconfig.png)  
 
-3. 如果未在 Azure AD 中启用该功能，或者未启用同步通道状态，请运行 Connect 安装向导。 选择“自定义同步选项”并取消选择密码同步。 此项更改会暂时禁用该功能。 然后再次运行向导并重新启用密码同步。 再次运行脚本，验证配置是否正确。
+3. 如果未在 Azure AD 中启用该功能，或者未启用同步通道状态，请运行 Connect 安装向导。 选择“自定义同步选项”并取消选择密码同步。此项更改会暂时禁用该功能。 然后再次运行向导并重新启用密码同步。再次运行脚本，验证配置是否正确。
 
 4. 查看事件日志，查找错误。 查找以下事件，这些事件将指示问题：
     * 源：“目录同步”ID：0、611、652、655 如果看到这些事件，则表示有连接问题。 事件日志消息包含有问题的林信息。 有关详细信息，请参阅[连接问题](#connectivity problem)。
@@ -205,9 +205,9 @@ ms.lasthandoff: 06/28/2017
  
 8. 在“选择目录分区”中选择域，选中“仅使用首选的域控制器”复选框，然后单击“配置”。 
 
-9. 在列表中，输入应由 Connect 用于密码同步的域控制器。 同一列表也用于导入和导出。 对所有域执行这些步骤。
+9. 在列表中，输入应由 Connect 用于密码同步的域控制器。同一列表也用于导入和导出。 对所有域执行这些步骤。
 
-10. 如果脚本显示没有检测信号，请运行“触发所有密码的完全同步”中的脚本[](#trigger-a-full-sync-of-all-passwords)。
+10. 如果脚本显示没有检测信号，请运行 [“触发所有密码的完全同步”](#trigger-a-full-sync-of-all-passwords) 中的脚本。
 
 ## <a name="one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps"></a>一个对象未同步密码：手动排查问题的步骤
 可以通过检查对象的状态，轻松排查密码同步问题。
@@ -220,9 +220,9 @@ ms.lasthandoff: 06/28/2017
 
 2. 如果 Active Directory 中的密码正确，请在同步引擎中跟踪该用户。 在从本地 Active Directory 到 Azure AD 的路径中跟踪该用户，可以查看该对象是否出现描述性错误。
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 启动 [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md)。
+    a. 启动 [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md)。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“连接器”。
+    b. 单击“连接器”。
 
     c. 选择用户所在的 Active Directory 连接器。
 
@@ -250,11 +250,11 @@ ms.lasthandoff: 06/28/2017
 
     验证 cloudFiltered 属性不存在。 确保域属性（domainFQDN 和 domainNetBios）具有所需值。
 
-    j. 单击“连接器”选项卡。 请确保同时看到本地 Active Directory 和 Azure AD 的连接器。
+    j. 单击“连接器”选项卡。请确保同时看到本地 Active Directory 和 Azure AD 的连接器。
 
     ![Metaverse 信息](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/mvconnectors.png)  
 
-    k. 选择表示 Azure AD 的行，单击“属性”，然后单击“沿袭”选项卡。 连接器空间对象应存在一个“密码同步”列设置为“True”的出站规则。 在默认配置中，同步规则的名称为 **Out to AAD - User Join**。  
+    k. 选择表示 Azure AD 的行，单击“属性”，然后单击“沿袭”选项卡。连接器空间对象应存在一个“密码同步”列设置为“True”的出站规则。 在默认配置中，同步规则的名称为 **Out to AAD - User Join**。  
 
     ![连接器空间对象属性对话框](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/cspasswordsync2.png)  
 
@@ -269,6 +269,10 @@ ms.lasthandoff: 06/28/2017
 | SourceConnectorNotPresent |在本地 Active Directory 连接器空间中找不到任何对象。 |
 | TargetNotExportedToDirectory |尚未导出 Azure AD 连接器空间中的对象。 |
 | MigratedCheckDetailsForMoreInfo |日志条目创建于版本 1.0.9125.0 之前，并且以其旧状态显示。 |
+| 错误 |服务返回未知错误。 |
+| Unknown |尝试处理一批密码哈希时出错。  |
+| MissingAttribute |Azure AD 域服务所需的特定属性（如 Kerberos 哈希）不可用。 |
+| RetryRequestedByTarget |Azure AD 域服务所需的特定属性（如 Kerberos 哈希）以前不可用。 尝试重新同步用户的密码哈希。 |
 
 ## <a name="scripts-to-help-troubleshooting"></a>有助于故障排除的脚本
 

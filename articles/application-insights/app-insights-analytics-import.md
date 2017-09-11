@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: 97db1c51a16fbf62abe8062938beefa16a4f7afd
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 50049b1c66bf93cbed52e30e66385c33a4d97c5b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="import-data-into-analytics"></a>将数据导入到 Analytics 中
@@ -134,7 +134,7 @@ JSON 允许数据的部分映射，因此 JSON 格式的架构定义不必映射
 
 可以手动执行以下过程，或者设置自动系统以定期执行此过程。 需要对每个要导入的数据块执行这些步骤。
 
-1. 将数据上传到 [Azure Blob 存储](../storage/storage-dotnet-how-to-use-blobs.md)。 
+1. 将数据上传到 [Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 
 
  * Blob 可以是任何小于等于 1 GB 的大小（未压缩）。 从性能角度来看，数百 MB 大小的大型 Blob 十分理想。
  * 可以使用 Gzip 进行压缩，缩短上传时间和数据可供查询的延迟。 使用 `.gz` 文件扩展名。
@@ -142,7 +142,7 @@ JSON 允许数据的部分映射，因此 JSON 格式的架构定义不必映射
  * 以高频率（每几秒钟）发送数据时，出于性能原因，建议使用多个存储帐户。
 
  
-2. [为 Blob 创建共享访问签名密钥](../storage/storage-dotnet-shared-access-signature-part-2.md)。 密钥应具有一天的有效期并提供读取访问权限。
+2. [为 Blob 创建共享访问签名密钥](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md)。 密钥应具有一天的有效期并提供读取访问权限。
 3. 执行 REST 调用以向 Application Insights 通知数据正在等待。
 
  * 终结点：`https://dc.services.visualstudio.com/v2/track`

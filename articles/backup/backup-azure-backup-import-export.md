@@ -14,47 +14,47 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 4/20/2017
 ms.author: saurse;nkolli;trinadhk
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 4f5e58713d925d2f7477dc072ecec455dec70792
-ms.lasthandoff: 04/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 074d21269206b243f8b0e8747811544132805229
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 备份中的脱机备份工作流
-Azure 备份有多个可提升效率的内置功能，能在数据初始完整备份到 Azure 期间节省网络和存储成本。 初始完整备份通常传输大量数据，且需要较多网络带宽，相比之下，后续备份只传输增量部分。 Azure 备份可压缩初始备份。 通过脱机种子设定，Azure 备份可以使用磁盘将压缩后的初始备份数据脱机上载到 Azure。  
+Azure 备份有多个可提升效率的内置功能，能在数据初始完整备份到 Azure 期间节省网络和存储成本。 初始完整备份通常传输大量数据，且需要较多网络带宽，相比之下，后续备份只传输增量部分。 Azure 备份可压缩初始备份。 通过脱机种子设定，Azure 备份可以使用磁盘将压缩后的初始备份数据脱机上传到 Azure。  
 
-Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/storage-import-export-service.md)紧密集成，允许使用磁盘将数据传输到 Azure。 如果要通过高延迟、低带宽网络传输 TB 计的初始备份数据，可以使用脱机种子设定工作流将一个或多个硬盘驱动器中的初始备份副本传送到 Azure 数据中心。 本文概述完成此工作流所要执行的步骤。
+Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/common/storage-import-export-service.md)紧密集成，允许使用磁盘将数据传输到 Azure。 如果要通过高延迟、低带宽网络传输 TB 计的初始备份数据，可以使用脱机种子设定工作流将一个或多个硬盘驱动器中的初始备份副本传送到 Azure 数据中心。 本文概述完成此工作流所要执行的步骤。
 
 ## <a name="overview"></a>概述
-借助 Azure 备份的脱机种子设定及 Azure 导入/导出，可以简单直接地通过磁盘将数据脱机上载到 Azure。 不是通过网络传输初始的完整副本，而是将备份数据写入*暂存位置*。 使用 Azure 导入/导出工具完成复制到暂存位置的操作后，此数据将写入一个或多个 SATA 驱动器（取决于数据量）。 这些驱动器最终将寄送到最近的 Azure 数据中心。
+借助 Azure 备份的脱机种子设定及 Azure 导入/导出，可以简单直接地通过磁盘将数据脱机上传到 Azure。 不是通过网络传输初始的完整副本，而是将备份数据写入*暂存位置*。 使用 Azure 导入/导出工具完成复制到暂存位置的操作后，此数据将写入一个或多个 SATA 驱动器（取决于数据量）。 这些驱动器最终将寄送到最近的 Azure 数据中心。
 
 [Azure 备份 2016 年 8 月更新版（和更高版本）](http://go.microsoft.com/fwlink/?LinkID=229525)包含名为 AzureOfflineBackupDiskPrep 的 *Azure 磁盘准备工具*：
 
 * 可帮助使用 Azure 导入/导出工具为驱动器做好运行 Azure 导入的准备。
 * 可在 [Azure 经典门户](https://manage.windowsazure.com)上自动创建 Azure 导入/导出服务的 Azure 导入作业，而不是像旧版 Azure 备份一样通过手动方式创建相同的作业。
 
-将备份数据上载到 Azure 之后，Azure 备份将备份数据复制到备份保管库，并计划增量备份。
+将备份数据上传到 Azure 之后，Azure 备份将备份数据复制到备份保管库，并计划增量备份。
 
 > [!NOTE]
-> 若要使用 Azure 磁盘准备工具，请确保已安装 Azure 备份 2016 年 8 月更新版（或更高版本），然后使用该软件执行工作流的所有步骤。 如果使用旧版 Azure 备份，可以使用本文后续部分详述的 Azure 导入/导出工具来准备 SATA 驱动器。
+> 要使用 Azure 磁盘准备工具，请确保已安装 Azure 备份 2016 年 8 月更新版（或更高版本），并使用该软件执行工作流的所有步骤。 如果使用旧版 Azure 备份，可以使用本文后续部分详述的 Azure 导入/导出工具来准备 SATA 驱动器。
 >
 >
 
 ## <a name="prerequisites"></a>先决条件
-* [熟悉 Azure 导入/导出工作流](../storage/storage-import-export-service.md)。
+* [熟悉 Azure 导入/导出工作流](../storage/common/storage-import-export-service.md)。
 * 在启动工作流之前，请确保已做好以下准备：
   * 已创建 Azure 备份保管库。
   * 已下载保管库凭据。
   * 已在 Windows Server/Windows 客户端或 System Center Data Protection Manager 服务器上安装 Azure 备份代理，并已向 Azure 备份保管库注册计算机。
 * 在打算备份数据的计算机上，[下载 Azure 发布文件设置](https://manage.windowsazure.com/publishsettings)。
-* 准备一个暂存位置，这可能是网络共享或计算机上的其他驱动器。 暂存位置是暂时性的存储，在执行此工作流期间暂时使用。 确保临时位置具有足够的磁盘空间来保存你的初始副本。 例如，如果尝试备份 500 GB 文件服务器，请确保暂存区域至少有 500 GB 空间。 （由于压缩，实际使用量更少。）
-* 确定使用受支持的驱动器。 只支持将 2.5 英寸 SSD 或者 2.5/3.5 英寸 SATA II/III 内部硬盘驱动器用于导入/导出服务。 可以使用容量最高为 10 TB 的硬盘驱动器。 查看 [Azure 导入/导出服务文档](../storage/storage-import-export-service.md#hard-disk-drives)，了解服务支持的最新驱动器集。
+* 准备一个暂存位置，这可能是网络共享或计算机上的其他驱动器。 暂存位置是暂时性的存储，在执行此工作流期间暂时使用。 确保临时位置具有足够的磁盘空间来保存初始副本。 例如，如果尝试备份 500 GB 文件服务器，请确保暂存区域至少有 500 GB 空间。 （由于压缩，实际使用量更少。）
+* 确定使用受支持的驱动器。 只支持将 2.5 英寸 SSD 或者 2.5/3.5 英寸 SATA II/III 内部硬盘驱动器用于导入/导出服务。 可以使用容量最高为 10 TB 的硬盘驱动器。 查看 [Azure 导入/导出服务文档](../storage/common/storage-import-export-service.md#hard-disk-drives)，了解服务支持的最新驱动器集。
 * 在 SATA 驱动器写入器连接到的计算机上启用 BitLocker。
 * 将 [Azure 导入/导出工具下载](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)到 SATA 驱动器写入器连接到的计算机上。 如果已下载并安装 Azure 备份 2016 年 8 月更新版（或更高版本），则不需要执行此步骤。
 
 ## <a name="workflow"></a>工作流
-本部分中的信息可帮助完成脱机备份工作流，将数据传递到 Azure 数据中心，并上载到 Azure 存储。 如有关于导入服务或流程的任何方面的问题，请参阅上面提到的[导入服务概述](../storage/storage-import-export-service.md)文档。
+本部分中的信息可帮助完成脱机备份工作流，将数据传递到 Azure 数据中心，并上传到 Azure 存储。 如有关于导入服务或流程的任何方面的问题，请参阅上面提到的[导入服务概述](../storage/common/storage-import-export-service.md)文档。
 
 ### <a name="initiate-offline-backup"></a>启动脱机备份
 1. 计划备份时，会看到以下屏幕（在 Windows Server、Windows 客户端或 System Center Data Protection Manager 中）。
@@ -79,11 +79,11 @@ Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/stor
     >
 
      请保存所有这些信息，因为在后续步骤中需要再次输入这些信息。 如果使用 Azure 磁盘准备工具来准备磁盘，则只需要*暂存位置*。    
-2. 完成工作流，然后在 Azure 备份管理控制台中选择“**立即备份**”，启动脱机备份复制。 初始备份写入到临时区域作为此步骤的一部分。
+2. 完成工作流，并在 Azure 备份管理控制台中选择“**立即备份**”，启动脱机备份复制。 初始备份写入到临时区域作为此步骤的一部分。
 
     ![立即备份](./media/backup-azure-backup-import-export/backupnow.png)
 
-    若要在 System Center Data Protection Manager 中完成相应的工作流，请右键单击“**保护组**”并选择“**创建恢复点**”选项。 然后选择“**联机保护**”选项。
+    若要在 System Center Data Protection Manager 中完成相应的工作流，请右键单击“**保护组**”并选择“**创建恢复点**”选项。 然后选择“联机保护”选项。
 
     ![立即进行 DPM 备份](./media/backup-azure-backup-import-export/dpmbackupnow.png)
 
@@ -117,7 +117,7 @@ Azure 磁盘准备工具可在恢复服务代理（2016 年 8 月更新版和更
     >
     >
 
-    运行该命令时，该工具将请求选择需要准备的驱动器对应的 Azure 导入作业。 如果只有一个与提供的暂存位置关联的导入作业，将显示如下所示的屏幕。
+    运行该命令时，该工具将请求选择需要准备的驱动器对应的 Azure 导入作业。 如果只有一个与提供的暂存位置关联的导入作业，会显示如下所示的屏幕。
 
     ![Azure 磁盘准备工具输入](./media/backup-azure-backup-import-export/azureDiskPreparationToolDriveInput.png) <br/>
 3. 输入想要准备传输到 Azure 的已装载磁盘的驱动器号（不要包含尾部的冒号）。 出现提示时，请确认格式化驱动器。
@@ -169,7 +169,7 @@ Azure 磁盘准备工具可在恢复服务代理（2016 年 8 月更新版和更
 | /sk:<*StorageAccountKey*> |将数据导入到的存储帐户的帐户密钥。 该密钥应与创建备份策略/保护组期间输入的密钥相同。 |
 | /BlobType |Blob 的类型。 仅当已指定 **PageBlob** 时，此工作流才成功。 这不是默认选项，并应在此命令中所述。 |
 | /t:<*TargetDriveLetter*> |当前复制会话的目标硬盘驱动器的驱动器号（不带尾随冒号）。 |
-| /format |用于格式化驱动器的选项。 在需要格式化驱动器时指定此参数；否则，请将其忽略。 在对驱动器进行格式化之前，该工具将提示通过控制台进行确认。 若不希望显示该确认，请指定 /silentmode 参数。 |
+| /format |用于格式化驱动器的选项。 在需要格式化驱动器时指定此参数；否则，请将其忽略。 在对驱动器进行格式化之前，该工具会提示通过控制台进行确认。 若不希望显示该确认，请指定 /silentmode 参数。 |
 | /encrypt |用于加密驱动器的选项。 在尚未使用 BitLocker 对驱动器进行加密但需要使用此工具进行加密时，指定此参数。 如果已使用 BitLocker 对驱动器进行加密，则忽略此参数并指定 /bk 参数，同时还提供现有 BitLocker 密钥。 如果指定 /format 参数，则还必须指定 /encrypt 参数。 |
 | /srcdir:<*SourceDirectory*> |包含要复制到目标驱动器中的文件的源目录。 确保指定的目录名称包含完整路径而不是相对路径。 |
 | /dstdir:<*DestinationBlobVirtualDirectory*> |Azure 存储帐户中的目标虚拟目录的路径。 在指定目标虚拟目录或 Blob 时，请确保使用有效的容器名称。 请记住，容器名称必须是小写的。  此容器名称应与创建备份策略/保护组期间输入的名称相同。 |
@@ -182,7 +182,7 @@ Azure 磁盘准备工具可在恢复服务代理（2016 年 8 月更新版和更
   ![PowerShell 输出](./media/backup-azure-backup-import-export/psoutput.png)
 
 ### <a name="create-an-import-job-in-the-azure-portal"></a>在 Azure 门户中创建导入作业
-1. 在 [Azure 经典门户](https://manage.windowsazure.com/)中转到存储帐户，单击“**导入/导出**”，然后单击任务窗格中的“**创建导入作业**”。
+1. 在 [Azure 经典门户](https://manage.windowsazure.com/)中转到存储帐户，单击“**导入/导出**”，并单击任务窗格中的“**创建导入作业**”。
 
     ![Azure 门户中的导入/导出选项卡](./media/backup-azure-backup-import-export/azureportal.png)
 
@@ -190,7 +190,7 @@ Azure 磁盘准备工具可在恢复服务代理（2016 年 8 月更新版和更
 
 3. 在向导的步骤 2 中，提供负责该导入作业的人员的联系信息。
 
-4. 在步骤 3 中，上载在上一部分获取的驱动器日记文件。
+4. 在步骤 3 中，上传在上一部分获取的驱动器日记文件。
 
 5. 在步骤 4 中，请为导入作业输入一个描述性的名称，该名称已在创建备份策略/保护组的过程中输入过。 输入的名称只能包含小写字母、数字、连字符和下划线，必须以字母开头并且不得包含空格。 在作业进行中以及作业完成后，将使用所选名称来跟踪作业。
 
@@ -200,7 +200,7 @@ Azure 磁盘准备工具可在恢复服务代理（2016 年 8 月更新版和更
 
 7. 在步骤 5 中，从列表中选择回程快递商，输入承运人帐户号码。 导入作业完成后，Microsoft 将使用此帐户寄回驱动器。
 
-8. 运送磁盘，然后输入要跟踪的发货状态的跟踪号。 磁盘抵达数据中心后，将其复制到存储帐户并更新状态。
+8. 运送磁盘，并输入要跟踪的发货状态的跟踪号。 磁盘抵达数据中心后，将其复制到存储帐户并更新状态。
 
     ![已完成状态](./media/backup-azure-backup-import-export/complete.png)
 
@@ -208,6 +208,6 @@ Azure 磁盘准备工具可在恢复服务代理（2016 年 8 月更新版和更
 存储帐户中提供初始备份数据后，Microsoft Azure 恢复服务代理将此帐户中的数据内容复制到备份保管库或恢复服务保管库（根据何者较合适）。 在下一个计划备份时间，Azure 备份代理针对初始的备份副本来执行增量备份。
 
 ## <a name="next-steps"></a>后续步骤
-* 如有任何关于 Azure 导入/导出工作流的问题，请参阅 [Use the Microsoft Azure Import/Export service to transfer data to Blob storage](../storage/storage-import-export-service.md)（使用 Microsoft Azure 导入/导出服务可将数据传输到 Blob 存储中）。
+* 如有任何关于 Azure 导入/导出工作流的问题，请参阅 [Use the Microsoft Azure Import/Export service to transfer data to Blob storage](../storage/common/storage-import-export-service.md)（使用 Microsoft Azure 导入/导出服务可将数据传输到 Blob 存储中）。
 * 如有工作流方面的任何问题，请参阅 Azure 备份 [FAQ](backup-azure-backup-faq.md)（常见问题）的“脱机备份”部分。
 

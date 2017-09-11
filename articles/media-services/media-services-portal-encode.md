@@ -4,7 +4,7 @@ description: "本教程逐步演示如何通过 Azure 门户使用 Media Encoder
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 107d9e9a-71e9-43e5-b17c-6e00983aceab
 ms.service: media-services

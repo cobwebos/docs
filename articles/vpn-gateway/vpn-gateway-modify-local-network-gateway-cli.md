@@ -15,17 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: cbcb0b626aceccf9c5a29e60e5b0c66e7812dee1
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 7db1ad970ebb93d46d5a861f9a9b27bf121531a3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-cli"></a>使用 Azure CLI 修改本地网络网关设置
 
-有时，本地网络网关的地址前缀或网关 IP 地址的设置会变更。 本文演示如何修改本地网络网关设置。 你还可以使用另一种方法来修改这些设置，该方法是通过从以下列表中选择一个不同的选项：
+有时，本地网络网关的地址前缀或网关 IP 地址的设置会变更。 本文演示如何修改本地网络网关设置。 还可以选择以下列表中的其他选项，使用另一种方法来修改这些设置：
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](vpn-gateway-modify-local-network-gateway-portal.md)
@@ -34,17 +33,17 @@ ms.lasthandoff: 06/20/2017
 >
 >
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before"></a>准备工作
 
 安装最新版本的 CLI 命令（2.0 或更高版本）。 有关安装 CLI 命令的信息，请参阅 [Install Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)（安装 Azure CLI 2.0）。
 
 [!INCLUDE [CLI-login](../../includes/vpn-gateway-cli-login-include.md)]
 
-## <a name="modify-ip-address-prefixes"></a>修改 IP 地址前缀
+## <a name="ipaddprefix"></a>修改 IP 地址前缀
 
 [!INCLUDE [modify-prefix](../../includes/vpn-gateway-modify-ip-prefix-cli-include.md)]
 
-## <a name="modify-the-gateway-ip-address"></a>修改网关 IP 地址
+## <a name="gwip"></a>修改网关 IP 地址
 
 [!INCLUDE [modify-gateway-IP](../../includes/vpn-gateway-modify-lng-gateway-ip-cli-include.md)]
 

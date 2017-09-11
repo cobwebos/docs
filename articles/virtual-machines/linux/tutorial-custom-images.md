@@ -10,7 +10,7 @@ tags: azure-resource-manager
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/21/2017
@@ -26,7 +26,7 @@ ms.lasthandoff: 06/20/2017
 
 # <a name="create-a-custom-image-of-an-azure-vm-using-the-cli"></a>使用 CLI 创建 Azure VM 的自定义映像
 
-自定义映像类似于应用商店映像，不同的是自定义映像的创建者是你自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 在本教程中，将创建自己的 Azure 虚拟机自定义映像。 你将学习如何：
+自定义映像类似于 Marketplace 映像，不同的是自定义映像的创建者是你自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 在本教程中，将创建自己的 Azure 虚拟机自定义映像。 你将学习如何：
 
 > [!div class="checklist"]
 > * 预配和通用化 VM

@@ -12,21 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2017
+ms.date: 08/17/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 5ffc3253cf07018ad6fe9f0112c75c2e1495e5df
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2ebb930e877c5027f4d7b0a316a7f5ebe84471b1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="monitoring-partner-solutions-with-azure-security-center"></a>通过 Azure 安全中心监视合作伙伴解决方案
-本文档指导你完成对 Azure 安全中心中合作伙伴解决方案的运行状态的监视。
+本文档指导完成对 Azure 安全中心中合作伙伴解决方案的运行状态的监视。
 
 > [!NOTE]
-> 本文档将使用示例部署介绍该服务。 这并非一份循序渐进的指南。
+> 本文档将使用示例部署介绍该服务。 本文档不是一份分步指南。
 >
 >
 
@@ -35,7 +34,7 @@ ms.lasthandoff: 05/10/2017
 
 ![“合作伙伴解决方案”磁贴][1]
 
-“合作伙伴解决方案”磁贴显示与订阅集成的合作伙伴解决方案的数量。 如果没有集成的解决方案，磁贴将显示数字 0。
+“合作伙伴解决方案”磁贴显示与订阅集成的合作伙伴解决方案的数量。 如果没有集成的解决方案，磁贴会显示数字 0。
 
 查看合作伙伴解决方案的运行状况：
 
@@ -54,12 +53,12 @@ ms.lasthandoff: 05/10/2017
 2. 选择一个合作伙伴解决方案。 本例中选择 Qualys 解决方案。  会打开一个边栏选项卡，其中显示合作伙伴解决方案和与该解决方案相关联的资源的状态。 选择“解决方案控制台”以打开此解决方案的合作伙伴管理体验。
 
    ![合作伙伴解决方案详细信息][4]
-3. 返回“Qualys”边栏选项卡，然后选择“链接 VM”。 “链接应用程序”边栏选项卡随即打开。 此处，可将资源连接到合作伙伴解决方案。
+3. 返回“Qualys”边栏选项卡，并选择“链接 VM”。 “链接应用程序”边栏选项卡随即打开。 此处，可将资源连接到合作伙伴解决方案。
 
    ![将资源链接到合作伙伴解决方案][5]
 
 ## <a name="next-steps"></a>后续步骤
-在本文档中，已向你介绍安全中心的“合作伙伴解决方案”磁贴。 若要了解有关安全中心的详细信息，请参阅以下文章：
+在本文档中，已向你介绍安全中心的“合作伙伴解决方案”磁贴。 若要详细了解安全中心，请参阅以下文章：
 
 * [在 Azure 安全中心中设置安全策略](security-center-policies.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
 * [在 Azure 安全中心中管理安全建议](security-center-recommendations.md) - 了解建议如何帮助保护 Azure 资源。

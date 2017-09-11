@@ -2,7 +2,7 @@
 title: "Azure HDInsight 文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解 HDInsight 上的 Hadoop。 文档介绍了如何使用 Hadoop、Spark、HBase、R-Server 和其他技术来处理、分析大数据以及从中获得见解。"
 services: hdinsight
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

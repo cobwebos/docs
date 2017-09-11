@@ -72,18 +72,18 @@
 
 ## [存储](azure-operations-guide.md#azure-storage)
 
-### [Azure Blob 存储](../../storage/storage-blob-storage-tiers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [通过 .NET 开始使用 Azure Blob 存储](../../storage/storage-dotnet-how-to-use-blobs.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [在 Windows 上开始使用 Azure 文件存储](../../storage/storage-file-how-to-use-files-windows.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
-### [如何将 Azure 文件存储与 Linux 配合使用](../../storage/storage-how-to-use-files-linux.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Azure 表存储入门](../../storage/storage-dotnet-how-to-use-tables.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Azure 队列存储入门](../../storage/storage-dotnet-how-to-use-queues.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [创建存储帐户](../../storage/storage-create-storage-account.md#create-a-storage-account)
-### [对 Azure 存储空间使用 Azure PowerShell](../../storage/storage-powershell-guide-full.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [将 Azure CLI 用于 Azure 存储](../../storage/storage-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Azure 存储客户端工具](../../storage/storage-explorers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Azure Blob 存储](../../storage/blobs/storage-blob-storage-tiers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [通过 .NET 开始使用 Azure Blob 存储](../../storage/blobs/storage-dotnet-how-to-use-blobs.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [在 Windows 上开始使用 Azure 文件存储](../../storage/files/storage-how-to-use-files-windows.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
+### [如何将 Azure 文件存储与 Linux 配合使用](../../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Azure 表存储入门](../../cosmos-db/table-storage-how-to-use-dotnet.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Azure 队列存储入门](../../storage/queues/storage-dotnet-how-to-use-queues.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [创建存储帐户](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
+### [对 Azure 存储空间使用 Azure PowerShell](../../storage/common/storage-powershell-guide-full.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [将 Azure CLI 用于 Azure 存储](../../storage/common/storage-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Azure 存储客户端工具](../../storage/common/storage-explorers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure 存储器服务 REST API 参考](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference)
-### [使用共享访问签名](../../storage/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [使用共享访问签名](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 
 

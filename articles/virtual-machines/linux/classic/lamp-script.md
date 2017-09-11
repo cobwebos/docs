@@ -15,17 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: guybo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 43175672c81373b5c9cc1bddc8ce27bcaaf5ec14
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: cb1fc9a44dc9e57d9cc9f1c546ad937d67e63c2f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="deploy-a-lamp-app-using-the-azure-customscript-extension-for-linux"></a>使用适用于 Linux 的 Azure CustomScript 扩展部署 LAMP 应用程序
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 有关使用 Resource Manager 模型部署 LAMP 堆栈的信息，请参阅[此处](../create-lamp-stack.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 有关使用 Resource Manager 模型部署 LAMP 堆栈的信息，请参阅[此处](../tutorial-lamp-stack.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 适用于 Linux 的 Microsoft Azure CustomScript 扩展提供了一种方式来通过运行以 VM 支持的任何脚本语言（例如 Python 和 Bash）编写的任意代码来自定义虚拟机 (VM)。 这提供了一种非常灵活的方式来在多台计算机上自动执行应用程序部署。
 
@@ -40,7 +39,7 @@ ms.lasthandoff: 06/03/2017
 
 在 Azure 上创建 Linux VM 时如需帮助，请参阅[创建运行 Linux 的虚拟机](createportal.md)。
 
-安装命令假设使用的是 Ubuntu，不过，你可以针对任何受支持的 Linux 分发版改动安装。
+安装命令假设使用的是 Ubuntu，不过，可以针对任何受支持的 Linux 分发版改动安装。
 
 script-vm VM 需要使用与 Azure 之间的有效连接安装 Azure CLI。 有关这方面的帮助，请参阅 [Install and Configure the Azure Command-Line Interface](../../../cli-install-nodejs.md)（安装和配置 Azure 命令行接口）。
 
@@ -69,11 +68,11 @@ script-vm VM 需要使用与 Azure 之间的有效连接安装 Azure CLI。 有�
     apachectl restart
 
 ### <a name="upload-script"></a>上传脚本
-将脚本另存为文本文件，例如 *install_lamp.sh*，然后将其上传到 Azure 存储。 你可以使用 Azure CLI 轻松执行此操作。 以下示例将文件上传到名为“scripts”的存储容器。 如果该容器不存在，你需要先创建它。
+将脚本另存为文本文件，例如 *install_lamp.sh*，然后将其上传到 Azure 存储。 可以使用 Azure CLI 轻松执行此操作。 以下示例将文件上传到名为“scripts”的存储容器。 如果该容器不存在，需要先创建它。
 
     azure storage blob upload -a <yourStorageAccountName> -k <yourStorageKey> --container scripts ./install_lamp.sh
 
-还要创建一个描述如何从 Azure 存储下载脚本的 JSON 文件。 将该文件另存为 *public_config.json*（使用存储帐户的名称替换“mystorage”）：
+还要创建一个描述如何从 Azure 存储下载脚本的 JSON 文件。 将该文件另存为 public_config.json（使用存储帐户的名称替换“mystorage”）：
 
     {"fileUris":["https://mystorage.blob.core.windows.net/scripts/install_lamp.sh"], "commandToExecute":"sh install_lamp.sh" }
 
@@ -98,14 +97,10 @@ script-vm VM 需要使用与 Azure 之间的有效连接安装 Azure CLI。 有�
 运行 CustomScript 扩展后，可以浏览到创建的 PHP 页获取信息。 本文中的示例 PHP 页是 *http://lamp-vm.cloudapp.net/phpinfo.php*。
 
 ## <a name="additional-resources"></a>其他资源
-你可以使用相同的基本步骤来部署较复杂的应用程序。 在本例中，安装脚本已保存为 Azure 存储中的公共 blob。 比较安全的选择是使用[安全访问签名](https://msdn.microsoft.com/library/azure/ee395415.aspx) (SAS) 将安装脚本存储为安全 Blob。
+可以使用相同的基本步骤来部署较复杂的应用程序。 在本例中，安装脚本已保存为 Azure 存储中的公共 blob。 比较安全的选择是使用[安全访问签名](https://msdn.microsoft.com/library/azure/ee395415.aspx) (SAS) 将安装脚本存储为安全 Blob。
 
 下面列出了 Azure CLI、Linux 和 CustomScript 扩展的其他资源。
 
 [使用 CustomScript 扩展自动执行 Linux VM 自定义任务](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/)
 
 [Azure Linux 扩展 (GitHub)](https://github.com/Azure/azure-linux-extensions)
-
-[Azure 上的 Linux 和开源计算](../opensource-links.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-

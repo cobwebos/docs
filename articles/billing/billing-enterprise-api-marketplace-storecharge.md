@@ -1,5 +1,5 @@
 ---
-title: "Azure 计费企业 API - 应用商店费用 | Microsoft Docs"
+title: "Azure 计费企业 API - Marketplace 费用 | Microsoft Docs"
 description: "了解使企业 Azure 客户能够以编程方式提取消耗数据的报告 API。"
 services: 
 documentationcenter: 
@@ -24,7 +24,7 @@ ms.lasthandoff: 07/31/2017
 ---
 # <a name="reporting-apis-for-enterprise-customers---marketplace-store-charge"></a>适用于企业客户的报告 API - Marketplace 存储费用
 
-应用商店费用 API 会返回基于使用情况的应用商店费用明细（不包括一次性费用），且按指定计费周期或开始和结束日期排列。
+Marketplace 费用 API 会返回基于使用情况的 Marketplace 费用明细（不包括一次性费用），且按指定计费周期或开始和结束日期排列。
 
 ##<a name="request"></a>请求 
 [此处](billing-enterprise-api.md)指定了需要添加的通用标头属性。 如果未指定计费周期，则返回当前计费周期的数据。 可通过指定开始日期参数和结束日期参数（yyyy-MM-dd 格式）自定义时间范围，最大时间范围为 36 个月。  
@@ -77,7 +77,7 @@ ms.lasthandoff: 07/31/2017
 
 |属性名称| 类型| 说明
 |-|-|-|
-|id|字符串|应用商店费用项的唯一 ID|
+|id|字符串|Marketplace 费用项的唯一 ID|
 |subscriptionGuid|Guid|订阅 Guid|
 |subscriptionName|字符串|订阅名称|
 |meterId|字符串|已发出计量的 ID|

@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
-ms.openlocfilehash: 4f6feb844774fba00e3c46438f686e61b52d03d3
-ms.lasthandoff: 01/30/2017
-
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 966100094f98bae41bf90df500d005fa78b31ec3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="load-data-with-polybase-in-sql-data-warehouse"></a>在 SQL 数据仓库中使用 PolyBase 加载数据
@@ -31,7 +30,7 @@ ms.lasthandoff: 01/30/2017
 > 
 > 
 
-本教程说明如何使用 AzCopy 和 PolyBase 将数据载入 SQL 数据仓库。 完成后，你将了解如何：
+本教程说明如何使用 AzCopy 和 PolyBase 将数据载入 SQL 数据仓库。 完成后，将了解如何：
 
 * 使用 AzCopy 将数据复制到 Azure Blob 存储
 * 创建数据库对象以定义数据
@@ -42,13 +41,13 @@ ms.lasthandoff: 01/30/2017
 > 
 
 ## <a name="prerequisites"></a>先决条件
-若要逐步完成本教程中，你需要：
+要逐步完成本教程中，需要：
 
 * 一个 SQL 数据仓库数据库。
 * 一个标准本地冗余存储 (Standard-LRS)、标准异地冗余存储 (Standard-GRS) 或标准读取访问权限异地冗余存储 (Standard-RAGRS) 类型的 Azure 存储帐户。
 * AzCopy 命令行实用程序。 下载并安装 Microsoft Azure 存储工具随附的 [最新版本的 AzCopy][latest version of AzCopy]。
   
-    ![Azure 存储空间工具](./media/sql-data-warehouse-get-started-load-with-polybase/install-azcopy.png)
+    ![Azure 存储工具](./media/sql-data-warehouse-get-started-load-with-polybase/install-azcopy.png)
 
 ## <a name="step-1-add-sample-data-to-azure-blob-storage"></a>步骤 1：将示例数据添加到 Azure Blob 存储
 为了加载数据，我们需要将一些示例数据放入 Azure Blob 存储。 在此步骤中，我们会将示例数据填入 Azure 存储 Blob。 稍后我们会使用 PolyBase 将这些示例数据载入 SQL 数据仓库数据库。
@@ -73,37 +72,37 @@ ms.lasthandoff: 01/30/2017
 20150101,1,3
 ```
 
-### <a name="b-find-your-blob-service-endpoint"></a>B. 查找你的 Blob 服务终结点
-若要查找你的 Blob 服务终结点，请执行以下操作：
+### <a name="b-find-your-blob-service-endpoint"></a>B. 查找 Blob 服务终结点
+要查找 Blob 服务终结点，请执行以下操作：
 
 1. 在 Azure 门户中，选择“浏览” > “存储帐户”。
-2. 单击你要使用的存储帐户。
+2. 单击要使用的存储帐户。
 3. 在“存储帐户”边栏选项卡中，单击“Blob”
    
     ![单击“Blob”](./media/sql-data-warehouse-get-started-load-with-polybase/click-blobs.png)
-4. 保存你的 Blob 服务终结点供稍后使用。
+4. 保存 Blob 服务终结点供稍后使用。
    
     ![Blob 服务终结点](./media/sql-data-warehouse-get-started-load-with-polybase/blob-service.png)
 
-### <a name="c-find-your-azure-storage-key"></a>C. 查找你的 Azure 存储密钥
-若要查找你的 Azure 存储密钥，请执行以下操作：
+### <a name="c-find-your-azure-storage-key"></a>C. 查找 Azure 存储密钥
+要查找 Azure 存储密钥，请执行以下操作：
 
 1. 在 Azure 门户中，选择“浏览” > “存储帐户”。
-2. 单击你要使用的存储帐户。
+2. 单击要使用的存储帐户。
 3. 选择“所有设置” > “访问密钥”。
-4. 单击复制框，将你的访问密钥之一复制到剪贴板。
+4. 单击复制框，将访问密钥之一复制到剪贴板。
    
     ![复制 Azure 存储密钥](./media/sql-data-warehouse-get-started-load-with-polybase/access-key.png)
 
 ### <a name="d-copy-the-sample-file-to-azure-blob-storage"></a>D. 将示例文件复制到 Azure Blob 存储
-若要将数据复制到 Azure Blob 存储，请执行以下操作：
+要将数据复制到 Azure Blob 存储，请执行以下操作：
 
-1. 打开命令提示符，然后将目录切换到 AzCopy 安装目录。 此命令可将你切换到 64 位 Windows 客户端上的默认安装目录。
+1. 打开命令提示符，然后将目录切换到 AzCopy 安装目录。 此命令可你将切换到 64 位 Windows 客户端上的默认安装目录。
    
     ```
     cd /d "%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy"
     ```
-2. 运行以下命令以上载该文件。 指定 <blob service endpoint URL> 的 BLOB 服务终结点 URL，以及 <azure_storage_account_key> 的 Azure 存储帐户密钥。
+2. 运行以下命令以上传该文件。 指定 <blob service endpoint URL> 的 BLOB 服务终结点 URL，以及 <azure_storage_account_key> 的 Azure 存储帐户密钥。
    
     ```
     .\AzCopy.exe /Source:C:\Temp\ /Dest:<blob service endpoint URL> /datacontainer/datedimension/ /DestKey:<azure_storage_account_key> /Pattern:DimDate2.txt
@@ -112,13 +111,13 @@ ms.lasthandoff: 01/30/2017
 另请参阅 [AzCopy 命令行实用工具入门][latest version of AzCopy]。
 
 ### <a name="e-explore-your-blob-storage-container"></a>E. 浏览 Blob 存储容器
-若要查看已上载到 Blob 存储的文件，请执行以下操作：
+若要查看已上传到 Blob 存储的文件，请执行以下操作：
 
-1. 返回你的 Blob 服务边栏选项卡。
+1. 返回 Blob 服务边栏选项卡。
 2. 在“容器”下，双击“datacontainer”。
-3. 若要浏览数据的路径，请单击文件夹 **datedimension**，然后将看到已上传的文件 **DimDate2.txt**。
+3. 要浏览数据的路径，请单击文件夹 **datedimension**，然后将看到已上传的文件 **DimDate2.txt**。
 4. 若要查看属性，请单击“DimDate2.txt”。
-5. 请注意，在 Blob 属性边栏选项卡中，你可以下载或删除该文件。
+5. 请注意，在 Blob 属性边栏选项卡中，可以下载或删除该文件。
    
     ![查看 Azure 存储 Blob](./media/sql-data-warehouse-get-started-load-with-polybase/view-blob.png)
 
@@ -135,7 +134,7 @@ PolyBase 使用外部表来访问 Azure Blob 存储中的数据。 由于数据�
 * [Create External File Format (Transact-SQL)][Create External File Format (Transact-SQL)]：指定数据的格式。
 * [Create External Table (Transact-SQL)][Create External Table (Transact-SQL)]：指定表定义和数据的位置。
 
-请针对你的 SQL 数据仓库数据库运行此查询。 它将在 dbo 架构中创建指向 Azure Blob 存储中 DimDate2.txt 示例数据的、名为 DimDate2External 的外部表。
+请针对 SQL 数据仓库数据库运行此查询。 它会在 dbo 架构中创建指向 Azure Blob 存储中 DimDate2.txt 示例数据的、名为 DimDate2External 的外部表。
 
 ```sql
 -- A: Create a master key.
@@ -206,15 +205,15 @@ SELECT count(*) FROM dbo.DimDate2External;
 ```
 
 
-在 Visual Studio 的 SQL Server 对象资源管理器中，你可以看到外部文件格式、外部数据源和 DimDate2External 表。
+在 Visual Studio 的 SQL Server 对象资源管理器中，可以看到外部文件格式、外部数据源和 DimDate2External 表。
 
 ![查看外部表](./media/sql-data-warehouse-get-started-load-with-polybase/external-table.png)
 
 ## <a name="step-3-load-data-into-sql-data-warehouse"></a>步骤 3：将数据载入 SQL 数据仓库
-创建外部表后，你可以将数据载入新表，或将其插入到现有表。
+创建外部表后，可以将数据载入新表，或将其插入到现有表。
 
-* 若要将数据载入新表，请运行 [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] 语句。 新表将包含查询中指定的列。 列的数据类型将与外部表定义中的数据类型匹配。
-* 若要将数据载入现有表，请使用 [INSERT...SELECT (Transact-SQL)][INSERT...SELECT (Transact-SQL)] 语句。
+* 要将数据载入新表，请运行 [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] 语句。 新表将包含查询中指定的列。 列的数据类型将与外部表定义中的数据类型匹配。
+* 要将数据载入现有表，请使用 [INSERT...SELECT (Transact-SQL)][INSERT...SELECT (Transact-SQL)] 语句。
 
 ```sql
 -- Load the data from Azure blob storage to SQL Data Warehouse
@@ -253,7 +252,7 @@ CREATE STATISTICS [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 [Load data with bcp]: ./sql-data-warehouse-load-with-bcp.md
 [Statistics]: ./sql-data-warehouse-tables-statistics.md
 [PolyBase guide]: ./sql-data-warehouse-load-polybase-guide.md
-[latest version of AzCopy]: ../storage/storage-use-azcopy.md
+[latest version of AzCopy]:../storage/common/storage-use-azcopy.md
 
 <!--External references-->
 [supported source/sink]: https://msdn.microsoft.com/library/dn894007.aspx

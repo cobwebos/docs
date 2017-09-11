@@ -41,7 +41,7 @@ ms.lasthandoff: 05/15/2017
 在本教程中，你将使用以下工具。 由于对工具的讨论并不全面，我将坚持使用端到端方案，并只为你提供每个方案的简要介绍及在哪里可找到它的详细信息。 
 
 ### <a name="azure-resource-manager-templates-json"></a>Azure Resource Manager 模板 (JSON)
-例如，每当在 Azure 应用服务中创建 Web 应用时，Azure Resource Manager 都将使用 JSON 模板来创建具有组件资源的整个资源组。 [Azure 应用商店](/marketplace)中的复杂模板（例如 [Scalable WordPress](/marketplace/partners/wordpress/scalablewordpress/) 应用）可能包含 MySQL 数据库、存储帐户、应用服务计划、Web 应用本身、警报规则、应用设置、自动缩放设置等等，可以通过 PowerShell 使用所有这些模板。 有关如何下载和使用这些模板的信息，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
+例如，每当在 Azure 应用服务中创建 Web 应用时，Azure Resource Manager 都将使用 JSON 模板来创建具有组件资源的整个资源组。 [Azure Marketplace](/marketplace) 中的复杂模板（例如 [Scalable WordPress](/marketplace/partners/wordpress/scalablewordpress/) 应用）可能包含 MySQL 数据库、存储帐户、应用服务计划、Web 应用本身、警报规则、应用设置、自动缩放设置等等，可以通过 PowerShell 使用所有这些模板。 有关如何下载和使用这些模板的信息，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
 
 有关 Azure Resource Manager 模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)
 

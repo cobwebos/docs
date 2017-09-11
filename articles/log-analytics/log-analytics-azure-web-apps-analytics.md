@@ -54,7 +54,7 @@ Azure Web 应用分析（预览版）解决方案通过收集所有 Azure Web �
 
 执行以下步骤，为工作区配置 Azure Web 应用分析解决方案。
 
-1. 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureWebAppsAnalyticsOMS?tab=Overview)或者使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure Web 应用分析解决方案。
+1. 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureWebAppsAnalyticsOMS?tab=Overview) 或者使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure Web 应用分析解决方案。
 2. [Enable Azure resource metrics logging to OMS using PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell)（使用 PowerShell 启用 OMS 的 Azure 资源指标日志记录）。
 
 Azure Web 应用分析解决方案从 Azure 中收集两组指标：

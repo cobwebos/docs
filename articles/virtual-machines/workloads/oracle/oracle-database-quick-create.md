@@ -25,7 +25,7 @@ ms.lasthandoff: 07/20/2017
 
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>在 Azure VM 上创建 Oracle 数据库
 
-本指南详述了如何使用 Azure CLI 通过从 [Oracle 应用商店库映像](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview)部署 Azure 虚拟机来创建 Oracle 12c 数据库。 部署服务器后，若要配置 Oracle 数据库，请先通过 SSH 进行连接。 
+本指南详述了如何使用 Azure CLI 通过从 [Oracle Marketplace 库映像](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview)部署 Azure 虚拟机来创建 Oracle 12c 数据库。 部署服务器后，若要配置 Oracle 数据库，请先通过 SSH 进行连接。 
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
@@ -83,7 +83,7 @@ ssh <publicIpAddress>
 
 ## <a name="create-the-database"></a>创建数据库
 
-该 Oracle 软件已安装在应用商店映像中。 如下所述创建一个示例数据库。 
+该 Oracle 软件已安装在 Marketplace 映像中。 如下所述创建一个示例数据库。 
 
 1.  切换到 *oracle* 超级用户，然后初始化用于日志记录的侦听器：
 

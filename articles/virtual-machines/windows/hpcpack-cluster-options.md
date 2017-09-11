@@ -1,5 +1,5 @@
 ---
-title: "云中的 Windows HPC Pack 群集选项 | Microsoft Docs"
+title: "Azure 中的 Windows HPC Pack 群集选项 | Microsoft Docs"
 description: "了解使用 Microsoft HPC Pack 在 Azure 云中创建和管理 Windows 高性能计算 (HPC) 群集时可用的选项"
 services: virtual-machines-windows,cloud-services,batch
 documentationcenter: 
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 02/06/2017
+ms.date: 08/25/2017
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 96a5520d8440af7d8a880c2675a5d4eb4121e9ab
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: b82cb6cc3724af9306bc3b23125cf7cfa03df8ea
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/29/2017
 
 ---
-# <a name="options-with-hpc-pack-to-create-and-manage-a-windows-hpc-cluster-in-azure"></a>使用 HPC Pack 来创建和管理在 Azure 中的 Windows HPC 群集的选项
+# <a name="options-with-hpc-pack-to-create-and-manage-a-cluster-for-windows-hpc-workloads-in-azure"></a>使用 HPC Pack 为 Azure 中的 Windows HPC 工作负荷创建和管理群集的选项
 [!INCLUDE [virtual-machines-common-hpcpack-cluster-options](../../../includes/virtual-machines-common-hpcpack-cluster-options.md)]
 
 本文重点介绍用于创建 HPC Pack 群集以便运行 Windows 工作负荷的选项。 此外，还介绍用于创建 HPC Pack 群集以运行 [Linux HPC 工作负荷](../linux/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)的选项。
 
 
-## <a name="run-an-hpc-pack-cluster-in-azure-vms"></a>在 Azure VM 中运行 HPC Pack 群集
+## <a name="hpc-pack-cluster-in-azure-vms"></a>Azure VM 中的 HPC Pack 群集
 ### <a name="azure-templates"></a>Azure 模板
 * (GitHub) [HPC Pack 2016 群集模板](https://github.com/MsHpcPack/HPCPack2016)
 * （应用商店）[Windows 工作负荷的 HPC Pack 群集](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/)
@@ -45,7 +45,7 @@ ms.lasthandoff: 04/03/2017
 * [Windows Server 2012 R2 上的 HPC Pack 2012 R2 计算节点](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2computenodeonwindowsserver2012r2/)
 * [Windows Server 2012 R2 上包含 Excel 的 HPC Pack 计算节点](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2computenodewithexcelonwindowsserver2012r2/)
 
-### <a name="powershell-deployment-script"></a>PowerShell 部署脚本
+### <a name="powershell-deployment-script-for-hpc-pack-2012-r2"></a>适用于 HPC Pack 2012 R2 的 PowerShell 部署脚本
 * [使用 HPC Pack IaaS 部署脚本创建 HPC 群集](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ### <a name="tutorials"></a>教程
@@ -60,17 +60,17 @@ ms.lasthandoff: 04/03/2017
 * [增加和减少 HPC Pack 群集中的 Azure 计算资源](classic/hpcpack-cluster-node-autogrowshrink.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 * [将作业提交到 Azure 中的 HPC Pack 群集](hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [HPC Pack 中的作业管理](https://technet.microsoft.com/library/jj899585.aspx)
-* [使用 Azure Active Directory 在 Azure 中管理 HPC Pack 群集](hpcpack-cluster-active-directory.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [使用 Azure Active Directory 在 Azure 中管理 HPC Pack 2016 群集](hpcpack-cluster-active-directory.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-## <a name="add-worker-role-nodes-to-an-hpc-pack-cluster"></a>将辅助角色节点添加到 HPC Pack 群集
+## <a name="burst-with-worker-role-nodes"></a>使用辅助角色节点迸发 
 * [使用 HPC Pack 迸发到 Azure 辅助角色实例](https://technet.microsoft.com/library/gg481749.aspx)
 * [教程：使用 Azure 中的 HPC Pack 设置混合群集](../../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)
-* [将 Azure“突发”节点添加到 Azure 中的 HPC Pack 头节点](classic/hpcpack-cluster-node-burst.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [将 Azure“迸发”节点添加到 Azure 中的 HPC Pack 头节点](classic/hpcpack-cluster-node-burst.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-## <a name="integrate-with-azure-batch"></a>与 Azure 批处理集成
-* [使用 HPC Pack 迸发到 Azure 批处理](https://technet.microsoft.com/library/mt612877.aspx)
+## <a name="burst-with-azure-batch"></a>使用 Azure Batch 迸发
+* [使用 HPC Pack 迸发到 Azure Batch](https://technet.microsoft.com/library/mt612877.aspx)
 
-## <a name="create-rdma-clusters-for-mpi-workloads"></a>为 MPI 工作负荷创建 RDMA 群集
+## <a name="rdma-clusters-for-mpi-workloads"></a>MPI 工作负荷的 RDMA 群集
 * [使用 HPC Pack 设置一个运行 MPI 应用程序的 Windows RDMA 群集](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 

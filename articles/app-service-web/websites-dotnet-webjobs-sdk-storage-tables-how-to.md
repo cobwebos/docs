@@ -14,23 +14,23 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/01/2016
 ms.author: glenga
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 47db68afb8ea938a9861765f9e60c78436569110
-ms.lasthandoff: 11/17/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 13cfc788c14d714df7022ce003d34691cf73d121
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="how-to-use-azure-table-storage-with-the-webjobs-sdk"></a>如何通过 WebJobs SDK 使用 Azure 表存储
 ## <a name="overview"></a>概述
 本指南提供了 C# 代码示例，用于演示如何使用 [WebJobs SDK](websites-dotnet-webjobs-sdk.md) 版本 1.x 读取和写入 Azure 存储表。
 
-本指南假设你了解[如何使用指向存储帐户的连接字符串在 Visual Studio 中创建 WebJob 项目](websites-dotnet-webjobs-sdk-get-started.md)或创建[多个存储帐户](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/MultipleStorageAccountsEndToEndTests.cs)。
+本指南假设你了解[如何使用指向你的存储帐户](websites-dotnet-webjobs-sdk-get-started.md)或[多个存储帐户的连接字符串在 Visual Studio 中创建 WebJob 项目](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/MultipleStorageAccountsEndToEndTests.cs)。
 
 一些代码段显示了[手动调用](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#manual)（即：不是使用触发器属性之一调用）的函数中使用的 `Table` 属性。 
 
-## <a id="ingress"></a>如何向表中添加实体
-若要将实体添加到表中，请使用包含 `ICollector<T>` 或 `IAsyncCollector<T>` 参数的 `Table` 属性，其中 `T` 指定您想要添加的实体的架构。 属性构造函数使用指定表名称的字符串参数。 
+## <a id="ingress"></a> 如何向表中添加实体
+要将实体添加到表中，请使用包含 `ICollector<T>` 或 `IAsyncCollector<T>` 参数的 `Table` 属性，其中 `T` 指定你想要添加的实体的架构。 属性构造函数使用指定表名称的字符串参数。 
 
 下面的代码示例将 `Person` 实体添加到名为 *Ingress* 的表。
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/17/2016
             }
         }
 
-通常您用于 `ICollector` 的类型派生自 `TableEntity` 或实现 `ITableEntity`，但它并不一定要执行这些操作。 以下 `Person` 类之一适用于前面 `Ingress` 方法中所示的代码。
+通常用于 `ICollector` 的类型派生自 `TableEntity` 或实现 `ITableEntity`，但它并不一定要执行这些操作。 以下 `Person` 类之一适用于前面 `Ingress` 方法中所示的代码。
 
         public class Person : TableEntity
         {
@@ -63,9 +63,9 @@ ms.lasthandoff: 11/17/2016
             public string Name { get; set; }
         }
 
-如果您想要直接使用 Azure 存储 API，可以将 `CloudStorageAccount` 参数添加到方法签名。
+如果想要直接使用 Azure 存储 API，可以将 `CloudStorageAccount` 参数添加到方法签名。
 
-## <a id="monitor"></a>实时监视
+## <a id="monitor"></a> 实时监视
 因为数据入口函数通常处理大量数据，WebJobs SDK 仪表板提供了实时监视的数据。 “调用日志”部分将指示函数是否仍在运行。
 
 ![Ingress 函数正在运行](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingressrunning.png)
@@ -78,8 +78,8 @@ ms.lasthandoff: 11/17/2016
 
 ![Ingress 函数已完成](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingresssuccess.png)
 
-## <a id="multiple"></a>如何从表中读取多个实体
-若要读取表，请将 `Table` 属性和 `IQueryable<T>` 参数一起使用，其中类型 `T` 派生自 `TableEntity` 或 实现 `ITableEntity`。
+## <a id="multiple"></a> 如何从表中读取多个实体
+要读取表，请将 `Table` 属性和 `IQueryable<T>` 参数一起使用，其中类型 `T` 派生自 `TableEntity` 或 实现 `ITableEntity`。
 
 下面的代码示例读取并记录 `Ingress` 表中所有行：
 
@@ -95,8 +95,8 @@ ms.lasthandoff: 11/17/2016
             }
         }
 
-### <a id="readone"></a>如何从表中读取单个实体
-通过包含两个其他参数的 `Table` 属性构造函数，您可以在想要绑定到单个表实体时，指定分区键和行键。
+### <a id="readone"></a> 如何从表中读取单个实体
+通过包含两个其他参数的 `Table` 属性构造函数，可以在想要绑定到单个表实体时，指定分区键和行键。
 
 下面的代码示例基于队列消息中接收的分区键和行键值读取 `Person` 实体的表行：  
 
@@ -120,8 +120,8 @@ ms.lasthandoff: 11/17/2016
 
 本示例中的 `Person` 类不必实现 `ITableEntity`。
 
-## <a id="storageapi"></a>如何直接使用.NET 存储 API 处理表
-您还可以将 `Table` 属性和 `CloudTable` 对象一起使用，以便能够更灵活地处理表。
+## <a id="storageapi"></a> 如何直接使用 .NET 存储 API 处理表
+还可以将 `Table` 属性和 `CloudTable` 对象一起使用，以便能够更灵活地处理表。
 
 下面的代码示例使用 `CloudTable` 对象将单个实体添加到 *Ingress* 表中。 
 
@@ -139,7 +139,7 @@ ms.lasthandoff: 11/17/2016
             tableBinding.Execute(insertOperation);
         }
 
-有关如何使用 `CloudTable` 对象的详细信息，请参阅[如何通过 .NET 使用表存储](../storage/storage-dotnet-how-to-use-tables.md)。 
+有关如何使用 `CloudTable` 对象的详细信息，请参阅[如何通过 .NET 使用表存储](../cosmos-db/table-storage-how-to-use-dotnet.md)。 
 
 ## <a id="queues"></a>队列操作指南文章涵盖的相关主题
 有关如何处理队列消息触发的表处理，或者不特定于表处理的 WebJobs SDK 方案的信息，请参阅[如何通过 WebJobs SDK 使用 Azure 队列存储](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)。 

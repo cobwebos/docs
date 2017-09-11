@@ -4,7 +4,7 @@ description: "本主题对 **Media Encoder Standard** 和**媒体编码器高级
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: a79437c0-4832-423a-bca8-82632b2c47cc
 ms.service: media-services

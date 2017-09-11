@@ -21,7 +21,6 @@ ms.openlocfilehash: 312f84fe2aaf3f63fe2b8d818786ef1c570ccfe1
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/11/2017
 
-
 ---
 # <a name="design-and-build-a-management-solution-in-operations-management-suite-oms-preview"></a>在 Operations Management Suite (OMS)（预览版）中设计和生成管理解决方案
 > [!NOTE]
@@ -78,7 +77,7 @@ Log Analytics 中的视图用于可视化 Log Analytics 存储库中的数据。
 完成解决方案并进行测试以后，即可通过以下某种方式将其提供给客户。
 
 - **Azure 快速入门模板**。  [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)是一套 Resource Manager 模板，由社区通过 GitHub 提供。  你可以按[贡献指南](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)中的说明提供解决方案。
-- **Azure 应用商店**。  可以通过 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/)将解决方案分发和销售给其他开发人员、ISV 和 IT 专业人员。  若要了解如何将解决方案发布到 Azure 应用商店，可参阅[如何在 Azure 应用商店中发布和管理产品/服务](../marketplace-publishing/marketplace-publishing-getting-started.md)。
+- **Azure Marketplace**。  可以通过 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) 将解决方案分发和销售给其他开发人员、ISV 和 IT 专业人员。  若要了解如何将解决方案发布到 Azure Marketplace，可参阅[如何在 Azure Marketplace 中发布和管理产品/服务](../marketplace-publishing/marketplace-publishing-getting-started.md)。
 
 
 
@@ -86,4 +85,3 @@ Log Analytics 中的视图用于可视化 Log Analytics 存储库中的数据。
 * 了解如何为管理解决方案[创建解决方案文件](operations-management-suite-solutions-solution-file.md)。
 * 了解[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)的详细信息。
 * 在 [Azure 快速启动模板](https://azure.microsoft.com/documentation/templates)中搜索不同 Resource Manager 模板的示例。
-

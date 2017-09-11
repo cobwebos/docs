@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: bradsev;paulsh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 80e0b0cb5193d5a0c3782e2e6371b91441780347
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 6da9a8e3f9f8ac851c2a8deb861ac1d0b3ec5874
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="data-science-on-the-linux-data-science-virtual-machine"></a>在 Linux 数据科研虚拟机上的数据技术
@@ -26,15 +26,15 @@ ms.lasthandoff: 04/03/2017
 
 在本演练中演示的数据科学任务遵循了 [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/data-science-process/) 中所概述的步骤。 此过程针对数据科学任务提供了系统的方法，允许数据科学家团队在构建智能应用程序的生命周期内有效地协作。 数据科学过程还为数据科学提供了可供个人遵循迭代框架。
 
-在本演练中，我们对 [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) 数据集进行了分析。 这一组电子邮件被标记为 spam 或 ham（即它们不是垃圾邮件），并且还包含电子邮件内容的一些统计信息。 包含的统计信息将在下一节中讨论。
+在本演练中，我们对 [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) 数据集进行了分析。 这一组电子邮件被标记为 spam 或 ham（即它们不是垃圾邮件），并且还包含电子邮件内容的一些统计信息。 包含的统计信息会在下一节中讨论。
 
 ## <a name="prerequisites"></a>先决条件
 在可以使用 Linux 数据科研虚拟机之前，必须具备以下条件：
 
 * **Azure 订阅帐户**。 如果没有，请参阅[立即创建免费的 Azure 帐户](https://azure.microsoft.com/free/)。
-* [**Linux 数据科研 VM**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm)。 有关预配此 VM 的信息，请参阅[预配 Linux 数据科研虚拟机](machine-learning-data-science-linux-dsvm-intro.md)。
+* [**Linux 数据科学 VM**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm)。 有关预配此 VM 的信息，请参阅[预配 Linux 数据科研虚拟机](machine-learning-data-science-linux-dsvm-intro.md)。
 * 计算机上安装了 [X2Go](http://wiki.x2go.org/doku.php) 且 XFCE 会话处于打开状态。 若要深入了解安装和配置 **X2Go 客户端**的方法，请参阅[安装和配置 X2Go 客户端](machine-learning-data-science-linux-dsvm-intro.md#installing-and-configuring-x2go-client)。 
-* **AzureML 帐户**。 如果还没有帐户，请在 [AzureML 主页](https://studio.azureml.net/)中注册一个新帐户。 里面有免费的使用等级可帮助你开始使用。
+* **AzureML 帐户**。 如果还没有帐户，请在 [AzureML 主页](https://studio.azureml.net/)中注册一个新帐户。 里面有免费的使用等级可帮助用户开始使用。
 
 ## <a name="download-the-spambase-dataset"></a>下载 spambase 数据集
 [Spambase](https://archive.ics.uci.edu/ml/datasets/spambase) 数据集是相对较小，仅包含 4601 个示例的一组数据。 在演示数据科学 VM 的一些主要功能时，这是一个很方便的大小，因为它使资源需求保持适中。
@@ -44,7 +44,7 @@ ms.lasthandoff: 04/03/2017
 >
 >
 
-如果需要更多存储空间，可以创建额外的磁盘，然后将它们附加到 VM。 这些磁盘使用 Azure 持久存储，这样即使是在服务器被重新调整大小或关闭的情况下，其数据仍会被保留。 若要添加磁盘并将其附加到 VM，请遵循[将磁盘添加到 Linux VM](../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 中的说明进行操作。 这些步骤使用 Azure 命令行界面 (Azure CLI)，界面已安装在 DSVM 上。 因此完全可以从虚拟机自身完成这些过程。 另一个增加存储的选项是使用 [Azure 文件](../storage/storage-how-to-use-files-linux.md)。
+如果需要更多存储空间，可以创建额外的磁盘，然后将它们附加到 VM。 这些磁盘使用永久性 Azure 存储，这样即使是在服务器被重新调整大小或关闭的情况下，其数据仍会被保留。 要添加磁盘并将其附加到 VM，请遵循[将磁盘添加到 Linux VM](../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 中的说明进行操作。 这些步骤使用 Azure 命令行界面 (Azure CLI)，界面已安装在 DSVM 上。 因此完全可以从虚拟机自身完成这些过程。 另一个增加存储的选项是使用 [Azure 文件](../storage/files/storage-how-to-use-files-linux.md)。
 
 若要下载数据，打开终端窗口并运行以下命令：
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 04/03/2017
 
     str(data)
 
-这将显示数据集中每个变量的类型以及开始的几个值。
+这会显示数据集中每个变量的类型以及开始的几个值。
 
 *spam* 列作为一个整数被读取，但实际上它是一个分类变量 （或系数）。 若要设置其类型：
 
@@ -124,7 +124,7 @@ ms.lasthandoff: 04/03/2017
     ggtitle("Distribution of spam \nby frequency of !") +
     labs(fill="spam", y="Density")
 
-这些示例应使你能够为其他列绘制类似图形来探索它们所包含的数据。
+这些示例应使用户能够为其他列绘制类似图形来探索它们所包含的数据。
 
 ## <a name="train-and-test-an-ml-model"></a>训练和测试 ML 模型
 现在，让我们来对几个机器学习模型进行定型，按照包含垃圾邮件或非垃圾邮件对数据集中的电子邮件进行分类。 在本部分中，我们将训练决策树模型和随机森林模型，然后测试其预测的准确性。
@@ -183,13 +183,13 @@ ms.lasthandoff: 04/03/2017
 ## <a name="deploy-a-model-to-azure-ml"></a>将模型部署到 Azure ML
 [Azure 机器学习工作室](https://studio.azureml.net/) (AzureML) 是一种云服务，可用来轻松地生成和部署预测分析模型。 AzureML 出色的功能之一是能够将任何 R 函数发布为 Web 服务。 AzureML R 程序包使得从 DSVM 上的 R 会话执行部署更加简便直接。
 
-若要部署前一部分中的决策树代码，你需要登录 Azure 机器学习工作室。 需要使用工作区 ID 和授权令牌进行登录。 若要查找这些值并使用它们初始化 AzureML 变量：
+要部署前一部分中的决策树代码，需要登录 Azure 机器学习工作室。 需要使用工作区 ID 和授权令牌进行登录。 若要查找这些值并使用它们初始化 AzureML 变量：
 
-在左侧菜单上选择“**设置**”。 记下你的“**工作区 ID**”。 ![2](./media/machine-learning-data-science-linux-dsvm-walkthrough/workspace-id.png)
+在左侧菜单上选择“**设置**”。 记下“**工作区 ID**”。 ![2](./media/machine-learning-data-science-linux-dsvm-walkthrough/workspace-id.png)
 
 从顶部的菜单选择“**授权令牌**”并记下“**主授权令牌**”。![3](./media/machine-learning-data-science-linux-dsvm-walkthrough/workspace-token.png)
 
-加载 **AzureML** 包，然后使用 DSVM 上 R 会话中的令牌和工作区 ID 设置变量的值：
+加载 **AzureML** 包，并使用 DSVM 上 R 会话中的令牌和工作区 ID 设置变量的值：
 
     require(AzureML)
     wsAuth = "<authorization-token>"
@@ -219,7 +219,7 @@ ms.lasthandoff: 04/03/2017
         list("spam"="int"),
         wsID, wsAuth)
 
-此函数将采用 **predictSpam** 函数创建一个名为 **spamWebService** 并且定义了输入和输出的 web 服务，并返回有关新的终结点的信息。
+此函数会采用 **predictSpam** 函数创建一个名为 **spamWebService** 并且定义了输入和输出的 web 服务，并返回有关新的终结点的信息。
 
 使用以下命令查看已发布的 web 服务的信息，包括其 API 终结点和访问密钥：
 
@@ -231,7 +231,7 @@ ms.lasthandoff: 04/03/2017
 
 
 ## <a name="use-other-tools-available"></a>使用其他可用工具
-其余部分将显示如何使用 Linux 数据科研虚拟机上安装的一些工具。以下是所讨论工具的列表：
+其余部分会显示如何使用 Linux 数据科研虚拟机上安装的一些工具。以下是所讨论工具的列表：
 
 * XGBoost
 * Python
@@ -267,7 +267,7 @@ ms.lasthandoff: 04/03/2017
 >
 >
 
-让我们读入部分 spambase 数据集，然后使用 scikit-learn 中的支持向量机 (support vector machine) 对电子邮件进行分类：
+让我们读入部分 spambase 数据集，并使用 scikit-learn 中的支持向量机 (support vector machine) 对电子邮件进行分类：
 
     import pandas
     from sklearn import svm    
@@ -288,7 +288,7 @@ ms.lasthandoff: 04/03/2017
     clf = svm.SVC()
     clf.fit(X, y)
 
-若要将模型发布到 AzureML：
+要将模型发布到 AzureML：
 
     # Publish the model.
     workspace_id = "<workspace-id>"
@@ -337,7 +337,7 @@ VM 上已安装了几个示例 Notebook：
     rattle()
 
 > [!NOTE]
-> DSVM 不需要安装 Rattle。 但 Rattle 在加载时可能会提示你安装其他程序包。
+> DSVM 不需要安装 Rattle。 但 Rattle 在加载时可能会提示安装其他程序包。
 >
 >
 
@@ -345,28 +345,28 @@ Rattle 使用一个基于选项卡的接口。 大部分选项卡与 [Data Scien
 
 要加载和配置数据集：
 
-* 若要加载文件，选择”**数据**“选项卡，然后
-* 选择 **Filename** 旁边的选择器，然后选择 **spambaseHeaders.data**。
-* 要加载文件， 在按钮的首行中，选择“执行”。 你应看到每列的摘要，包括其标识的数据类型，是输入、目标还是其他类型的变量，以及唯一值的数量。
+* 要加载文件，选择”**数据**“选项卡，然后
+* 选择 **Filename** 旁边的选择器，并选择 **spambaseHeaders.data**。
+* 要加载文件， 在按钮的首行中，选择“执行”。 应看到每列的摘要，包括其标识的数据类型，是输入、目标还是其他类型的变量，以及唯一值的数量。
 * Rattle 已经正确将”**spam**“列作为目标。 选择垃圾邮件列，然后将”**目标数据类型**“设置为 ”**类别**“。
 
 要浏览数据：
 
 * 选择”**浏览**“选项卡。
-* 依次单击“摘要”和“执行”，然后将显示变量类型的相关信息和一些摘要统计信息。
+* 依次单击“摘要”和“执行”，然后会显示变量类型的相关信息和一些摘要统计信息。
 * 若要查看每个变量其他类型的统计信息，请选择其他选项，如“描述”或“基本信息”。
 
 ”**浏览**“选项卡还允许生成多个具有洞察力的图形。 若要绘制数据直方图：
 
 * 选择”**分布**“。
 * 为 **word_freq_remove** 和 **word_freq_you** 勾选“**直方图**”。
-* 选择”**执行**“。 你应看到一个图形窗口中的两个密度图，很显然在电子邮件中 "you"一词的出现比 "remove" 频繁得多。
+* 选择”**执行**“。 应看到一个图形窗口中的两个密度图，很显然在电子邮件中 "you"一词的出现比 "remove" 频繁得多。
 
 ”关联“图形也很有意思。 要创建一个关联图形：
 
-* 选择”**关联**“作为”**类型**“，然后
+* 选择“关联”作为“类型”，然后
 * 选择”**执行**“。
-* Rattle 会警告你建议最多 40 个变量。 选择”**是**“以查看该绘图。
+* Rattle 会发出警告，建议最多使用 40 个变量。 选择”**是**“以查看该绘图。
 
 有一些很有意思的关联性：例如，"technology" 与 "HP" 和 "labs" 密切关联。 它还与 "650" 密切关联，因为数据集捐赠者的区号是 650。
 
@@ -387,7 +387,7 @@ Rattle 还可以执行群集分析。 让我们来排除某些功能，以使输
 * word_freq_business
 * spam
 
-然后返回”**群集**“选项卡，选择”**KMeans**“，设置”*群集数* “为 4。 然后”**执行**“。 结果将显示在输出窗口中。 一个群集具有高频率的 "george" 和 "hp"，可能合法的商业电子邮件。
+然后返回“群集”选项卡，选择“KMeans”，将“群集数”设置为 4。 然后“执行”。 结果会显示在输出窗口中。 一个群集具有高频率的 "george" 和 "hp"，可能合法的商业电子邮件。
 
 构建简单的决策树机器学习模型：
 
@@ -401,7 +401,7 @@ Rattle 的一个不错的功能是它能够运行多个计算机学习方法，�
 * 选择”**所有**“作为”**类型**“。
 * 选择”**执行**“。
 * 完成后，可以单击任意单个”**类型**“（如 **SVM**）并查看结果。
-* 还可以使用“评估”选项卡，在验证集上比较模型的性能。 例如，”**错误矩阵**“选项显示验证集上每个模型的混淆矩阵、整体错误和平均类错误。
+* 还可以使用“评估”选项卡，在验证集上比较模型的性能。例如，”**错误矩阵**“选项显示验证集上每个模型的混淆矩阵、整体错误和平均类错误。
 * 此外还可以绘制 ROC 曲线，执行区分大小写分析，并执行其他类型的模型评估。
 
 成功生成模型后，可选择“日志”选项卡查看会话期间 Rattle 运行的 R 代码。 可选择“导出”按钮来保存它。
@@ -414,7 +414,7 @@ Rattle 的一个不错的功能是它能够运行多个计算机学习方法，�
 ## <a name="postgresql--squirrel-sql"></a>PostgreSQL 和 Squirrel SQL
 DSVM 已预安装 PostgreSQL。 PostgreSQL 是一个复杂的开源关系数据库。 本部分显示如何将垃圾邮件数据集加载到 PostgreSQL，然后对其进行查询。
 
-在可以加载数据之前，你需要允许来自 localhost 的密码身份验证。 在命令提示符：
+在可以加载数据之前，需要允许来自 localhost 的密码身份验证。 在命令提示符：
 
     sudo gedit /var/lib/pgsql/data/pg_hba.conf
 
@@ -447,7 +447,7 @@ DSVM 已预安装 PostgreSQL。 PostgreSQL 是一个复杂的开源关系数据�
     ALTER USER <username> password '<password>';
     \quit
 
-然后作为你的用户登录到 psql：
+然后作为用户登录到 psql：
 
     psql
 
@@ -459,24 +459,24 @@ DSVM 已预安装 PostgreSQL。 PostgreSQL 是一个复杂的开源关系数据�
     \copy data FROM /home/<username>/spambase.data DELIMITER ',' CSV;
     \quit
 
-现在，让我们来浏览数据并使用 **Squirrel SQL** 运行一些查询 - Squirrel SQL 是一种图形工具，允许你通过 JDBC 驱动程序与数据库交互。
+现在，让我们来浏览数据并使用 **Squirrel SQL** 运行一些查询 - Squirrel SQL 是一种图形工具，允许通过 JDBC 驱动程序与数据库交互。
 
 若要开始，从应用程序菜单启动 Squirrel SQL。 若要设置驱动程序：
 
-* 选择”**Windows**“，然后选择”**查看驱动程序**“。
-* 右键单击 **PostgreSQL**，然后选择”**修改驱动程序**“。
-* 选择“额外类路径”，然后选择“添加”。
+* 选择”**Windows**“，并选择”**查看驱动程序**“。
+* 右键单击 **PostgreSQL**，并选择”**修改驱动程序**“。
+* 选择“额外类路径”，并选择“添加”。
 * 在“文件名”中输入 ***/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar***，并
 * 选择“打开”。
-* 选择”列出驱动程序“，在”**类名**“中选择 **org.postgresql.Driver**，然后选择”**确定**“。
+* 选择”列出驱动程序“，在”**类名**“中选择 **org.postgresql.Driver**，并选择”**确定**“。
 
 设置与本地服务器的连接：
 
-* 选择“Windows”，然后选择“查看别名”。
+* 选择“Windows”，并选择“查看别名”。
 * 选择“+”按钮创建新的别名。
-* 将其命名为*垃圾邮件数据库*，然后在“驱动程序”下拉列表中选择“PostgreSQL”。
+* 将其命名为*垃圾邮件数据库*，在“驱动程序”下拉列表中，选择“PostgreSQL”。
 * 将 URL 设置为 *jdbc:postgresql://localhost/spam*。
-* 输入你的*用户名*和*密码*。
+* 输入*用户名*和*密码*。
 * 单击 **“确定”**。
 * 若要打开“连接”窗口，请双击***垃圾邮件数据库***别名。
 * 选择“连接”。

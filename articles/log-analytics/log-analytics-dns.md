@@ -58,7 +58,7 @@ DNS Analytics 可帮助：
 使用以下信息配置解决方案：
 
 - 在要监视的每个 DNS 服务器上，都必须装有 [Windows](log-analytics-windows-agents.md) 或 [Operations Manager](log-analytics-om-agents.md) 代理。
-- 从 [Azure 应用商店](https://aka.ms/dnsanalyticsazuremarketplace)将 DNS Analytics 解决方案添加到 Operations Management Suite 工作区。 也可以使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程。
+- 从 [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace) 将 DNS Analytics 解决方案添加到 Operations Management Suite 工作区。 也可以使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程。
 
 解决方案将开始收集数据，而无需进一步配置。 但是，可使用以下配置自定义数据收集。
 

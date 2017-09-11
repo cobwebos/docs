@@ -12,19 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: b888f3e7fd56aaf8104c1b76264a3753ca37f7c9
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: b0d98688518acd2157905fda6a9a847763e45ae7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/16/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="monitor-docker-applications-in-application-insights"></a>在 Application Insights 中监视 Docker 应用程序
-[Docker](https://www.docker.com/) 容器中的生命周期事件和性能计数器可以在 Application Insights 上绘制成图表。 在主机的容器中安装 [Application Insights](app-insights-overview.md) 映像，该映像将显示主机及其他映像的性能计数器。
+[Docker](https://www.docker.com/) 容器中的生命周期事件和性能计数器可以在 Application Insights 上绘制成图表。 在主机的容器中安装 [Application Insights](app-insights-overview.md) 映像，该映像会显示主机及其他映像的性能计数器。
 
-借助 Docker，可连同所有依赖项在轻量级容器中分配应用。 它们将在运行 Docker 引擎的任何主机计算机上运行。
+借助 Docker，可连同所有依赖项在轻量级容器中分配应用。 它们会在运行 Docker 引擎的任何主机计算机上运行。
 
 在 Docker 主机上运行 [Application Insights 映像](https://hub.docker.com/r/microsoft/applicationinsights/)时，可获得以下优势：
 
@@ -39,13 +38,13 @@ ms.lasthandoff: 03/16/2017
    
     *应该使用哪种资源？* 如果主机上运行的应用由其他人开发，则需要[创建新的 Application Insights 资源](app-insights-create-new-resource.md)。 这是查看和分析遥测数据的位置。 （选择“常规”作为应用类型。）
    
-    但如果你是应用的开发人员，我们建议[将 Application Insights SDK 添加到](app-insights-java-live.md)每个应用。 如果这些应用实际上都是单个业务应用程序的组件，则可以将所有应用配置为向一个资源发送遥测数据，并使用相一资源显示 Docker 生命周期和性能数据。 
+    但如果是应用的开发人员，我们建议[将 Application Insights SDK 添加到](app-insights-java-live.md)每个应用。 如果这些应用实际上都是单个业务应用程序的组件，则可以将所有应用配置为向一个资源发送遥测数据，并使用相一资源显示 Docker 生命周期和性能数据。 
    
-    第三种方案是你开发了大多数应用，但想要使用不同的资源来显示其遥测数据。 此情况下，可能还需要为 Docker 数据创建不同的资源。 
-2. 添加“Docker”磁贴：选择“添加磁贴”，从库中拖出“Docker”磁贴，然后单击“完成”。 
+    第三种情况是你开发了大多数应用，但使用不同的资源来显示其遥测数据。 此情况下，可能还需要为 Docker 数据创建不同的资源。 
+2. 添加“Docker”磁贴：选择“添加磁贴”，从库中拖出“Docker”磁贴，并单击“完成”。 
    
     ![示例](./media/app-insights-docker/03.png)
-3. 单击“概要”下拉列表，然后复制检测密钥。 使用此密钥告知 SDK 要将遥测数据发送到哪个位置。
+3. 单击“概要”下拉列表，并复制检测密钥。 使用此密钥告知 SDK 要将遥测数据发送到哪个位置。
 
     ![示例](./media/app-insights-docker/02-props.png)
 
@@ -55,7 +54,7 @@ ms.lasthandoff: 03/16/2017
 设置一个显示遥测数据的位置后，可以设置用于收集和发送遥测数据的容器化应用。
 
 1. 连接到 Docker 主机。 
-2. 在以下命令中编辑检测密钥，然后运行该命令：
+2. 在以下命令中编辑检测密钥，并运行该命令：
    
    ```
    

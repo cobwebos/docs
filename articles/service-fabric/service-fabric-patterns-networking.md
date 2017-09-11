@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/16/2017
+ms.date: 08/30/2017
 ms.author: ryanwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 0753fb3a4b08b3bda9da1f5a31c577b354197588
+ms.translationtype: HT
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: 535ea21a2c08be5f676ee24269b323a415b92607
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/22/2017
-
+ms.lasthandoff: 09/01/2017
 
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric 网络模式
@@ -75,7 +74,7 @@ DnsSettings              : {
 
 ### <a name="service-fabric-template"></a>Service Fabric 模板
 
-本文中的示例使用 Service Fabric template.json。 在创建群集之前，可以使用标准门户向导下载该模板。 也可以使用[模板库](https://azure.microsoft.com/en-us/documentation/templates/?term=service+fabric)中的模板之一，例如[五节点 Service Fabric 群集](https://azure.microsoft.com/en-us/documentation/templates/service-fabric-unsecure-cluster-5-node-1-nodetype/)。
+本文中的示例使用 Service Fabric template.json。 在创建群集之前，可以使用标准门户向导下载该模板。 也可以使用[模板库](https://azure.microsoft.com/en-us/documentation/templates/?term=service+fabric)中的模板之一，例如[五节点 Service Fabric 群集](https://azure.microsoft.com/en-us/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/)。
 
 <a id="existingvnet"></a>
 ## <a name="existing-virtual-network-or-subnet"></a>现有虚拟网络或子网
@@ -342,7 +341,7 @@ DnsSettings              : {
                 ],
     ```
 
-5. 将负载均衡器的 `frontendIPConfigurations` 设置从使用 `publicIPAddress` 更改为使用子网和 `privateIPAddress`。 `privateIPAddress` 使用预定义的静态内部 IP 地址。 若要使用动态 IP 地址，请删除 `privateIPAddress` 元素，然后将 `privateIPAllocationMethod` 更改为 **Dynamic**。
+5. 将负载均衡器的 `frontendIPConfigurations` 设置从使用 `publicIPAddress` 更改为使用子网和 `privateIPAddress`。 `privateIPAddress` 使用预定义的静态内部 IP 地址。 要使用动态 IP 地址，请删除 `privateIPAddress` 元素，然后将 `privateIPAllocationMethod` 更改为 **Dynamic**。
 
     ```
                 "frontendIPConfigurations": [
@@ -386,7 +385,7 @@ DnsSettings              : {
 
 本方案从现有的单节点类型外部负载均衡器着手，添加一个相同节点类型的内部负载均衡器。 附加到后端地址池的后端端口只能分配给单个负载均衡器。 选择哪个负载均衡器使用应用程序端口，哪个负载均衡器使用管理终结点（端口 19000 和 19080）。 如果将管理终结点放在内部负载均衡器上，请记住前文所述的 Service Fabric 资源提供程序限制。 本示例将管理终结点保留在外部负载均衡器上。 还需要添加一个端口号为 80 的应用程序端口，并将其放在内部负载均衡器上。
 
-在双节点类型的群集中，一个节点类型位于外部负载均衡器上。 另一个节点类型位于内部负载均衡器上。 若要使用双节点类型的群集，请在门户创建的双节点类型模板（附带两个负载均衡器）中，将第二个负载均衡器切换为内部负载均衡器。 有关详细信息，请参阅[仅限内部的负载均衡器](#internallb)部分。
+在双节点类型的群集中，一个节点类型位于外部负载均衡器上。 另一个节点类型位于内部负载均衡器上。 要使用双节点类型的群集，请在门户创建的双节点类型模板（附带两个负载均衡器）中，将第二个负载均衡器切换为内部负载均衡器。 有关详细信息，请参阅[仅限内部的负载均衡器](#internallb)部分。
 
 1. 添加静态内部负载均衡器 IP 地址参数。 （有关使用动态 IP 地址的说明，请参阅本文的前面部分。）
 

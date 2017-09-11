@@ -15,16 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 0691d6730fddbf9b6145d4a39da94a1762516c2c
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 43025adeaf954fedfbcee32e636fb30935f2126b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 进行社交
-生活在大规模互连的社会，这意味着有时候你也会成为**社交网络**中的一部分。 我们使用社交网络与朋友、同事和家人保持联系，有时还会与有共同兴趣的人分享我们的激情。
+生活在大规模互连的社会中，这意味着有时候你也成了社交网络中的一部分。 我们使用社交网络与朋友、同事和家人保持联系，有时还会与有共同兴趣的人分享我们的激情。
 
 作为工程师或开发人员，我们可能想知道这些网络如何存储数据以及如何将这些数据相互联系起来，甚至有可能被要求自行为特定的间隙市场创建或构建新的社交网络。 这时就会产生一个大问题：所有这些数据是如何存储的？
 
@@ -32,7 +31,7 @@ ms.lasthandoff: 05/31/2017
 
 那么，我们如何存储此数据以及存储在何处？
 
-大多数人可能有使用 SQL 数据库的经验，或者至少对[关系建模数据](https://en.wikipedia.org/wiki/Relational_model)有所了解，那么你们可能会忍不住想要开始绘制类似以下图形：
+很多人可能使用过 SQL 数据库，或至少了解[数据的关系建模](https://en.wikipedia.org/wiki/Relational_model)，还可能忍不住开始绘制以下类似图形：
 
 ![说明相对关系模型的关系图](./media/social-media-apps/social-media-apps-sql.png) 
 
@@ -40,7 +39,7 @@ ms.lasthandoff: 05/31/2017
 
 请不要误会我的意思，我的一生都在与 SQL 数据库打交道，它们的确很不错，但就像每一种模式、每一次实践以及每一个软件平台一样，并非对每一种方案都适用。
 
-为什么在此方案中 SQL 不是最佳选择？ 让我们看一下单个 post 结构，如果想要在网站或应用程序中显示文章，可能不得不执行查询... 只加入 8 个表以显示单个 post。现在请想象一下：动态地上传一系列贴子并将其显示在屏幕上。你可能明白我的意思了。
+为什么在此方案中 SQL 不是最佳选择？ 让我们看一下单篇文章的结构，如果想要在网站或应用程序中显示文章，可能不得不执行查询... 只联合 8 个表格以显示单篇文章，现在绘制一连串动态加载且在屏幕上显示的文章。你可能明白我的意思了。
 
 当然，我们也可以使用一个功能足够强大的超大 SQL 实例来解决数以千计的查询，其中可以使用许多这些连接来为我们提供内容，但当已经有一个更简单的解决方案存在时，我们为什么还要选择这种呢？
 
@@ -107,7 +106,7 @@ Azure Cosmos DB 的自动索引功能可确保为所有功能都建立索引，�
 
 我们可以有一个“最新”流（其中帖子按创建日期排序）和一个“最热门”流（其中包括在过去 24 小时内获得了更多赞的帖子），甚至还可以基于逻辑点赞粉丝和兴趣为每个用户实现客户流，且它仍然可以是一个帖子列表。 虽然如何生成这些列表还是一个问题，但读取性能仍然不受阻碍。 在获得其中一个列表之后，使用 [IN 运算符](documentdb-sql-query.md#WhereClause) 向 Cosmos DB 发布单个查询以一次性获取帖子的所有页面。
 
-可以使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/) 的后台进程 - [Web 作业](../app-service-web/web-sites-create-web-jobs.md) - 来构建源流。 创建一个帖子后，可以通过使用 [Azure 存储空间](https://azure.microsoft.com/services/storage/) [队列](../storage/storage-dotnet-how-to-use-queues.md)和 Web 作业（通过 [Azure Webjobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) 触发）触发后台处理，从而根据我们自己的自定义逻辑实现流内的帖子传播。 
+可以使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/) 的后台进程 - [Web 作业](../app-service-web/web-sites-create-web-jobs.md) - 来构建源流。 创建一个帖子后，可以通过使用 [Azure 存储](https://azure.microsoft.com/services/storage/) [队列](../storage/queues/storage-dotnet-how-to-use-queues.md)和 Web 作业（通过 [Azure Webjobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) 触发）触发后台处理，从而根据我们自己的自定义逻辑实现流内的帖子传播。 
 
 通过使用这种相同的技术创建最终一致性环境还可以以延迟方式处理评分和点赞。
 
@@ -141,7 +140,7 @@ Azure Cosmos DB 的自动索引功能可确保为所有功能都建立索引，�
 “用户统计信息”文档仍可用来在 UI 中创建卡或快速个人资料预览。
 
 ## <a name="the-ladder-pattern-and-data-duplication"></a>“阶梯”模式和数据重复
-你可能已注意到，在引用帖子的 JSON 文档中，某个用户出现了多次。 而且你猜得没错，这意味着如果应用此非规范化，则表示用户的这一信息可以显示在多个地方。
+可能已注意到，在引用帖子的 JSON 文档中，某个用户出现了多次。 你猜得没错，这意味着在此非范式下，表示用户的信息可能在多处显示。
 
 为了允许更快速地查询，我们引发了数据重复。 此负面影响的问题在于，如果通过一些操作，用户的数据发生更改，那么我们需要查找该用户曾经执行过的所有活动并对这些活动全部进行更新。 听上去不太实用，对不对？
 
@@ -169,7 +168,7 @@ Azure Cosmos DB 的自动索引功能可确保为所有功能都建立索引，�
 
 最简单的一步称为 UserChunk，这是标识用户的最小信息块并可用于数据重复。 通过减少重复数据的大小直到只留下我们将要“显示”的信息，可以降低大规模更新的可能性。
 
-中间步骤被称为用户，这是将在 Cosmos DB 上的大多数依赖性能查询上使用的完整数据，也是最常访问和最重要的数据。 它包括由 UserChunk 表示的信息。
+中间步骤被称为用户，这是会在 Cosmos DB 上的大多数依赖性能查询上使用的完整数据，也是最常访问和最重要的数据。 它包括由 UserChunk 表示的信息。
 
 最复杂的一步是扩展用户。 它包括所有重要的用户信息以及并不需要快速读取的其他数据，或者它的使用情况就是最终结果（就像登录过程一样）。 此数据可以存储在 Cosmos DB 外、Azure SQL 数据库或 Azure 表存储中。
 
@@ -196,12 +195,12 @@ Azure Cosmos DB 的自动索引功能可确保为所有功能都建立索引，�
         }
     }
 
-在区块的其中一个属性受到影响的情况下进行编辑时，通过使用指向已编制索引的属性 (SELECT * FROM posts p WHERE p.createdBy.id == “edited_user_id”) 的查询，然后更新这些区块，可以很容易找的受影响的文档。
+在区块的其中一个属性受到影响的情况下进行编辑时，通过使用指向已编制索引的属性 (SELECT * FROM posts p WHERE p.createdBy.id == “edited_user_id”) 的查询，并更新这些区块，可以很容易找的受影响的文档。
 
 ## <a name="the-search-box"></a>搜索框
 幸运的是，用户将生成大量内容。 并且我们应能够提供搜索和查找可能在其内容流中不直接显示的内容的能力，也许是由于我们未关注创建者，或者也许是因为我们只是想要尽力找到 6 个月之前我们发布的旧帖子。
 
-好在我们使用的是 Azure DocumentDB，因此，可以使用 [Azure 搜索](https://azure.microsoft.com/services/search/) 在几分钟内轻松实现搜索引擎，而无需键入一行代码（显然，搜索过程和 UI 除外）。
+幸好我们使用的是 Azure Cosmos DB，因此可使用 [Azure 搜索](https://azure.microsoft.com/services/search/) 在几分钟内轻松实现搜索引擎，而无需键入一行代码（显然，搜索进程和 UI 除外）。
 
 为什么会这么简单？
 
@@ -216,28 +215,28 @@ Azure 搜索可实现它们称之为[索引器](https://msdn.microsoft.com/libra
 
 但我们可以学到什么呢？ 一些简单的示例包括 [观点分析](https://en.wikipedia.org/wiki/Sentiment_analysis)、基于用户首选项的内容建议，甚至自动执行的内容审查方，内容审查方可确保通过社交网络发布的所有内容对该系列均安全。
 
-由于想要深入了解，你可能会认为自己需要更多数学科学方面的知识才能提取出简单数据库和文件之外的这些模式和信息，其实不然。
+由于想要深入了解，可能会认为自己需要更多数学科学方面的知识才能提取出简单数据库和文件之外的这些模式和信息，其实不然。
 
-[Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)（[Cortana Intelligence 套件](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx)的一部分）是一个全面托管的云服务，使你可以在简单的拖放界面中使用算法创建工作流、为 [R](https://en.wikipedia.org/wiki/R_\(programming_language\)) 中自己的算法进行编码，或使用部分已生成的或现有的 API（如[文本分析](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2)、[内容审查方器](https://www.microsoft.com/moderator)或[建议](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2)）。
+[Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)（[Cortana Intelligence Suite](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx) 的一部分）是一个全面托管的云服务，使你可以在简单的拖放界面中使用算法创建工作流、为 [R](https://en.wikipedia.org/wiki/R_\(programming_language\)) 中自己的算法编码，或使用一些已生成或现成的 API（如[文本分析](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2)、[内容审查器](https://www.microsoft.com/moderator)或[建议](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2)）。
 
 为了实现上述任何一种机器学习方案，我们可以使用 [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) 引入不同源的信息，并使用 [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) 来处理信息，并生成可由 Azure 机器学习处理的输出。
 
-另一个可用的选项是使用 [Microsoft 认知服务](https://www.microsoft.com/cognitive-services) 分析用户内容：不仅可以更好地理解它们（通过分析使用 [文本分析 API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api)编写的内容），而且还可以检测不需要或不成熟的内容，然后使用[计算机构想 API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api)解决相关问题。 认知服务包括大量不需要使用任何一种机器学习知识的现成的可用解决方案。
+另一个可用的选项是使用 [Microsoft 认知服务](https://www.microsoft.com/cognitive-services) 分析用户内容：不仅可以更好地理解它们（通过分析使用 [文本分析 API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api)编写的内容），而且还可以检测不需要或不成熟的内容，并使用[计算机构想 API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api)解决相关问题。 认知服务包括大量不需要使用任何一种机器学习知识的现成的可用解决方案。
 
 ## <a name="a-planet-scale-social-experience"></a>全球范围内的社交体验
 最后，还必须说明一个非常重要的主题：**可伸缩性**。 在设计体系结构时，因为需要处理更多的数据和/或希望拥有更大的地理覆盖范围，所以每个组件的自行可伸缩性至关重要。 幸运的是，通过使用 Cosmos DB 完成此类复杂任务是一种统包体验。
 
 Cosmos DB 根据给定的分区键（定义为文档中的一个属性）自动创建分区，从而支持现成可用的[动态分区](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/)。 必须在设计时定义正确的分区键，并记住可用的[最佳做法](../cosmos-db/partition-data.md#designing-for-partitioning)；对于社交体验，分区策略必须与查询（需要在同一分区内进行读取）和写入（通过在多个分区上分散写入来避免“热点”）方式保持一致。 一些相关选项是：基于临时键（日/月/周）的分区，按内容类别、地理区域和用户进行划分；这一切都取决于查询数据并将其显示在社交体验中的方式。 
 
-值得一提的有趣的一点是，Cosmos DB 将以透明方式在所有分区中运行查询（包括[聚合](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)），无需在数据增长过程中添加任何逻辑。
+值得一提的有趣的一点是，Cosmos DB 以透明方式在所有分区中运行查询（包括[聚合](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)），无需在数据增长过程中添加任何逻辑。
 
 一段时间后，最终流量会增加，资源消耗（通过 [RU](request-units.md) 即“请求单位”进行度量）也会增加。 随着用户群的增长，读取和写入操作会更加频繁，用户将开始创建和读取更多内容；**缩放吞吐量**的能力至关重要。 增加 RU 非常容易，可以通过在 Azure 门户中单击几次或[通过 API 发出命令](https://docs.microsoft.com/rest/api/documentdb/replace-an-offer)来实现。
 
 ![扩展和定义分区键](./media/social-media-apps/social-media-apps-scaling.png)
 
-如果平台的发展越来越好，来自其他国家/地区或洲的用户注意到你的平台并开始使用它，这是一件多么让人惊喜的事！
+如果平台的发展越来越好，来自其他国家/地区或洲的用户注意到平台并开始使用它，这是一件多么让人惊喜的事！
 
-但是你很快会意识到他们在平台的体验并不理想；他们与运营区域相距太远，延迟问题非常严重，你显然不希望他们因此退出平台。 如果有一种简单的方法可以**扩展全球覆盖范围**就好了······确实有！
+但是你很快会意识到他们在平台的体验并不理想；他们与运营区域相距太远，延迟问题非常严重，显然不希望他们因此退出平台。 如果有一种简单的方法可以**扩展全球覆盖范围**就好了······确实有！
 
 通过 Cosmos DB，只需单击数次即可通过透明方式[全局复制数据](../cosmos-db/tutorial-global-distribution-documentdb.md)，并从[客户端代码](../cosmos-db/tutorial-global-distribution-documentdb.md)中自动选择可用区域。 这也意味着可以拥有[多个故障转移区域](regional-failover.md)。 
 

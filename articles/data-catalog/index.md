@@ -2,7 +2,7 @@
 title: "Azure 数据目录文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何设置组织可在其中查找、了解和使用数据源的数据目录。 教程、API 参考和其他文档。"
 services: data-catalog
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

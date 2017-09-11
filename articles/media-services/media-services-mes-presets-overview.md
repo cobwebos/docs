@@ -2,7 +2,7 @@
 title: "MES (Media Encoder Standard) 的任务预设 | Microsoft Docs"
 description: "本主题概述了 MES (Media Encoder Standard) 的任务预设。"
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

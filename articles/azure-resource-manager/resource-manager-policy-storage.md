@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/05/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 75685a21ce4a212638016be62640badd4870454a
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 6612ee61f5c50e743241b92030660cea7ae7094d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="apply-resource-policies-to-storage-accounts"></a>将资源策略应用于存储帐户
@@ -27,7 +26,7 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="define-permitted-storage-account-types"></a>定义允许的存储帐户类型
 
-以下策略限制可以部署[存储帐户类型](../storage/storage-redundancy.md)：
+以下策略限制可以部署[存储帐户类型](../storage/common/storage-redundancy.md)：
 
 ```json
 {
@@ -58,7 +57,7 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="define-permitted-access-tier"></a>定义允许的访问层
 
-以下策略指定可为存储帐户指定的[访问层](../storage/storage-blob-storage-tiers.md)类型：
+以下策略指定可为存储帐户指定的[访问层](../storage/blobs/storage-blob-storage-tiers.md)类型：
 
 ```json
 {
@@ -88,7 +87,7 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="ensure-encryption-is-enabled"></a>确保已启用加密
 
-以下策略要求所有存储帐户启用[存储服务加密](../storage/storage-service-encryption.md)：
+以下策略要求所有存储帐户启用[存储服务加密](../storage/common/storage-service-encryption.md)：
 
 ```json
 {

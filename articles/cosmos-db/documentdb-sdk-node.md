@@ -1,6 +1,6 @@
 ---
-title: "Azure DocumentDB Node.js API、SDK 和资源 | Microsoft 文档"
-description: "了解有关 Node.js API 和 SDK 的全部信息，包括发布日期、停用日期和 DocumentDB Node.js SDK 各版本之间所做的更改。"
+title: "Azure Cosmos DB Node.js API、SDK 和资源 | Microsoft Docs"
+description: "了解有关 Node.js API 和 SDK 的全部信息，包括发布日期、停用日期和 Azure Cosmos DB Node.js SDK 各版本之间所做的更改。"
 services: cosmos-db
 documentationcenter: nodejs
 author: rnagpal
@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 08/14/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: fd221f624e64e6b1ffcc4d28608b8fa2936400ae
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 4376a5c07b5f00311ce0fe3c0056efdf79c273f9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/15/2017
 
 ---
-# <a name="documentdb-nodejs-sdk-release-notes-and-resources"></a>DocumentDB Node.js SDK：发行说明和资源
+# <a name="azure-cosmos-db-nodejs-sdk-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK：发行说明和资源
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
+> * [.NET 更改源](documentdb-sdk-dotnet-changefeed.md)
 > * [.NET Core](documentdb-sdk-dotnet-core.md)
 > * [Node.js](documentdb-sdk-node.md)
 > * [Java](documentdb-sdk-java.md)
@@ -50,7 +50,7 @@ ms.lasthandoff: 06/20/2017
 
 <tr><td>**入门教程**</td><td>[Node.js SDK 入门](documentdb-nodejs-get-started.md)</td></tr>
 
-<tr><td>**Web 应用教程**</td><td>[使用 DocumentDB 生成 Node.js Web 应用程序](documentdb-nodejs-application.md)</td></tr>
+<tr><td>**Web 应用教程**</td><td>[使用 Azure Cosmos DB 创建 Node.js Web 应用程序](documentdb-nodejs-application.md)</td></tr>
 
 <tr><td>**当前受支持的平台**</td><td> 
 [Node.js v6.x](https://nodejs.org/en/blog/release/v6.10.3/)<br/> 
@@ -62,19 +62,27 @@ ms.lasthandoff: 06/20/2017
 
 ## <a name="release-notes"></a>发行说明
 
+### <a name="1.12.2"/>1.12.2</a>
+*   npm 文档已修复。
+
+### <a name="1.12.1"/>1.12.1</a>
+* 修复了 executeStoredProcedure 中的一个 bug，其中涉及的文档具有特殊 Unicode 字符（LS、PS）。
+* 修复了在分区键中处理含 Unicode 字符的文档时的 bug。
+* 修复使用名称媒体创建集合的支持。 Github 问题 #114。
+* 修复了权限授权令牌的支持。 Github 问题 #178。
+
 ### <a name="1.12.0"/>1.12.0</a>
-* 添加了对[每分钟请求单位 (RU/m)](../cosmos-db/request-units-per-minute.md) 功能的支持。
 * 添加了对名为 ConsistentPrefix 的新[一致性级别](consistency-levels.md)的支持。
 * 添加了对 UriFactory 的支持。
-* 修复了 unicode 支持 bug。 （GitHub 问题 #171）
+* 修复了 Unicode 支持 bug。 GitHub 问题 #171。
 
 ### <a name="1.11.0"/>1.11.0</a>
 * 添加了对聚合查询（COUNT、MIN、MAX、SUM、AVG）的支持。
 * 现可控制跨分区查询的并行度。
-* 现可在对 DocumentDB 模拟器运行时禁用 SSL 验证。
+* Azure Cosmos DB 模拟器运行时，添加了禁用 SSL 验证的选项。
 * 将分区集合上的最小吞吐量从 10,100 RU/s 降低到 2500 RU/s。
-* 修复了针对单分区集合的继续标记 bug (github #107)。
-* 修复了将 0 处理成单个参数时出现的 executeStoredProcedure bug (github #155)。
+* 修复了针对单分区集合的继续标记 bug。 Github 问题 #107。
+* 修复了将 0 处理成单个参数时出现的 executeStoredProcedure bug。 Github 问题 #155。
 
 ### <a name="1.10.2"/>1.10.2</a>
 * 修复了 user-agent 标头，使之包括 SDK 版本。
@@ -89,7 +97,7 @@ ms.lasthandoff: 06/20/2017
 * 已对分区集合添加 TOP/ORDER BY 查询支持。
 
 ### <a name="1.9.0"/>1.9.0</a>
-* 对限制添加了重试策略支持。 （限制请求收到请求速率太大的异常，错误代码 429。）默认情况下，遇到错误代码 429 时，DocumentDB 将针对每个请求重试九次，具体取决于响应标头中的 retryAfter 时间。 如果想要忽略重试之间由服务器返回的 retryAfter 时间，现在可以对 ConnectionPolicy 对象设置固定的重试间隔时间，并将其作为 RetryOptions 属性的一部分。 DocumentDB 现在对每个要中止的请求等待最多 30 秒（不考虑重试计数），并返回错误代码为 429 的响应。 还可以在 ConnectionPolicy 对象的 RetryOptions 属性中替代该时间。
+* 对限制添加了重试策略支持。 （限制请求收到请求速率太大的异常，错误代码 429。）默认情况下，出现错误代码 429 时，Azure Cosmos DB 将针对每个请求重试九次，具体取决于响应标头中的 retryAfter 时间。 如果想要忽略重试之间由服务器返回的 retryAfter 时间，现在可以对 ConnectionPolicy 对象设置固定的重试间隔时间，并将其作为 RetryOptions 属性的一部分。 Azure Cosmos DB 现在对每个要中止的请求等待最多 30 秒（不考虑重试次数），并返回对错误代码 429 作出的响应。 还可以在 ConnectionPolicy 对象的 RetryOptions 属性中替代该时间。
 * Cosmos DB 现在将 x-ms-throttle-retry-count 和 x-ms-throttle-retry-wait-time-ms 作为每个请求的响应标头返回，以表示限制重试计数和重试之间请求所等待的累计时间。
 * 已添加 RetryOptions 类，从而公开了 ConnectionPolicy 类上可用于替代某些默认重试选项的 RetryOptions 属性。
 
@@ -109,7 +117,7 @@ ms.lasthandoff: 06/20/2017
 * 修复了 hashParitionResolver resolveForRead()：这时没有提供的分区键抛出异常，而不是返回所有已注册链接的列表。
 
 ### <a name="1.5.4"/>1.5.4</a>
-* 修复了问题 [#100](https://github.com/Azure/azure-documentdb-node/issues/100) - 专用 HTTPS 代理：避免因 DocumentDB 用途而修改全局代理。 对所有 lib 的请求均使用专用代理。
+* 修复问题 [#100](https://github.com/Azure/azure-documentdb-node/issues/100) - 专用 HTTPS 代理：避免因 Azure Cosmos DB 用途而修改全局代理。 对所有 lib 的请求均使用专用代理。
 
 ### <a name="1.5.3"/>1.5.3</a>
 * 修复了问题 [#81](https://github.com/Azure/azure-documentdb-node/issues/81) - 正确处理媒体 ID 中的短划线。
@@ -160,16 +168,18 @@ ms.lasthandoff: 06/20/2017
 * GA SDK。
 
 ## <a name="release--retirement-dates"></a>发布和停用日期
-Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺利转换到更新的/受支持的版本。
+Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利转换为更高版本/受支持版本。
 
-新特性和功能以及优化仅添加到当前 SDK，因此建议你始终尽早升级到最新 SDK 版本。
+新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新的 SDK 版本。
 
-使用已停用的 SDK 对 Cosmos DB 发出的任何请求都将被服务拒绝。
+使用已停用的 SDK 对 Cosmos DB 发出的任何请求都会被服务拒绝。
 
 <br/>
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.12.2](#1.12.2) |2017 年 8 月 10 日 |--- |
+| [1.12.1](#1.12.1) |2017 年 8 月 10 日 |--- |
 | [1.12.0](#1.12.0) |2017 年 5 月 10 日 |--- |
 | [1.11.0](#1.11.0) |2017 年 3 月 16 日 |--- |
 | [1.10.2](#1.10.2) |2017 年 1 月 27 日 |--- |

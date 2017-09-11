@@ -3,8 +3,8 @@ title: "为 Azure 构建的命令行 | Microsoft Docs"
 description: "为 Azure 构建的命令行"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 94b35d0d-0d35-48b6-b48b-3641377867fd
 ms.service: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/05/2017
-ms.author: tarcher
-translationtype: Human Translation
+ms.author: kraigb
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: 5add8703b7b16ba8d9dc49f42f5e71b195c46653
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/27/2017
-
 
 ---
 # <a name="building-azure-projects-from-the-command-line"></a>通过命令行生成 Azure 项目

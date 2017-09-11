@@ -14,14 +14,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/29/2017
+ms.date: 08/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 8f34fd29fe6c93eb4cd1a05c79bf9b47072451f2
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: e69d96e5f18b4334a63445b08979c457d241e818
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 
@@ -234,14 +234,14 @@ ms.lasthandoff: 08/04/2017
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
 [sap-templates-3-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-3-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-user-image%2Fazuredeploy.json
-[storage-azure-cli]:../../../storage/storage-azure-cli.md
-[storage-azure-cli-copy-blobs]:../../../storage/storage-azure-cli.md#copy-blobs
-[storage-introduction]:../../../storage/storage-introduction.md
-[storage-powershell-guide-full-copy-vhd]:../../../storage/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../../storage/storage-premium-storage.md
-[storage-redundancy]:../../../storage/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/storage-scalability-targets.md
-[storage-use-azcopy]:../../../storage/storage-use-azcopy.md
+[storage-azure-cli]:../../../storage/common/storage-azure-cli.md
+[storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
+[storage-introduction]:../../../storage/common/storage-introduction.md
+[storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
+[storage-premium-storage-preview-portal]:../../../storage/common/storage-premium-storage.md
+[storage-redundancy]:../../../storage/common/storage-redundancy.md
+[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
 [templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
@@ -349,7 +349,7 @@ Azure for SAP HANA 的独特性是使 Azure 在竞争中脱颖而出的独特优
 
 摘要：本指南介绍对于在 Azure 上的 SAP HANA 环境中建立监视很有用的信息，以及其他故障排除信息。 
 
-更新时间：2016 年 12 月
+更新时间：2017 年 8 月
 
 [本文档可在此处找到](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
@@ -477,12 +477,12 @@ Azure for SAP HANA 的独特性是使 Azure 在竞争中脱颖而出的独特优
 
 [可在此处找到此指南][dbms-guide]
 
-### <a name="using-azure-as-dr-site-for-an-sap-on-premise-landscape"></a>使用 Azure 作为 SAP 本地环境的 DR 站点
-标题：SAP NetWeaver：构建基于 Hyper-V 和 Microsoft Azure 的灾难恢复解决方案 
+### <a name="using-azure-site-recovery-for-sap-workload"></a>将 Azure Site Recovery 用于 SAP 工作负载
+标题：SAP NetWeaver：使用 Azure Site Recovery 构建灾难恢复解决方案 
 
-摘要：本文档介绍如何使用 Azure Site Recovery 服务将 Azure 用作本地 SAP 环境的灾难恢复位置。 第一个步骤介绍了 Azure Site Recovery 服务。 第二个步骤记录了使用 Azure Site Recovery 服务将 SAP NetWeaver 系统复制到 Azure 以进行灾难恢复的设计。 
+摘要：本文档介绍了将 Azure Site Recovery 用于处理灾难恢复应用场景的方法。 使用 Azure Site Recovery 服务将 Azure 用作本地 SAP 环境的灾难恢复位置的场景。 本文档介绍的另一个应用场景是 Azure 到 Azure (A2A) 灾难恢复场景，以及如何使用 Azure Site Recovery 对其进行管理。  
 
-更新时间：2016 年 2 月
+更新时间：2017 年 8 月
 
 [可在此处找到此指南](http://aka.ms/asr-sap)
 

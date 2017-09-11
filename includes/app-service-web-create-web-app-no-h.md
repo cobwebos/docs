@@ -5,7 +5,7 @@
 在以下命令中，将 *\<app_name>* 替换为唯一名称（有效字符是 `a-z`、`0-9` 和 `-`）。 如果 `<app_name>` 不是唯一名称，将收到错误消息“具有给定名称 <app_name> 的网站已存在。” Web 应用的默认 URL 为 `https://<app_name>.azurewebsites.net`。 
 
 ```azurecli-interactive
-az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
+az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan --deployment-local-git
 ```
 
 创建 Web 应用后，Azure CLI 将显示类似于以下示例的信息：

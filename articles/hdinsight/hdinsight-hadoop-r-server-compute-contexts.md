@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 09b65ccd77f6e0898f07c4262940e517a8f913fa
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 47f4441612be4f363ba82cc22b09786a6f3bfdc3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="compute-context-options-for-r-server-on-hdinsight"></a>Compute context options for R Server on HDInsight（适用于 HDInsight 上的 R Server 的计算上下文选项）
@@ -30,10 +29,10 @@ Microsoft R Server on Azure HDInsight 通过设置计算上下文来控制执行
 群集的边缘节点为连接到群集和运行 R 脚本提供了便捷的位置。 使用边缘节点，可以选择跨边缘节点服务器的各个核心运行 ScaleR 的并行化分布式函数。 还可以选择通过使用 ScaleR 的 Hadoop Map Reduce 或 Spark 计算上下文跨群集的各个节点运行这些函数。
 
 ## <a name="microsoft-r-server-on-azure-hdinsight"></a>Microsoft R Server on Azure HDInsight
-[Microsoft R Server on Azure HDInsight](hdinsight-hadoop-r-server-overview.md) 提供最新的基于 R 的分析功能。 它可以使用 [Azure Blob](../storage/storage-introduction.md "Azure Blob 存储")存储帐户、Data Lake Store 或本地 Linux 文件系统中 HDFS 容器内的数据。 由于 R Server 基于开放源代码的 R 构建，因此你构建的基于 R 的应用程序可以应用超过 8000 个任意开放源代码 R 包。 这些应用程序还可以利用 [RevoScaleR](https://msdn.microsoft.com/microsoft-r/scaler/scaler)（R Server 附带的 Microsoft 的大数据分析包）中的例程。  
+[Microsoft R Server on Azure HDInsight](hdinsight-hadoop-r-server-overview.md) 提供最新的基于 R 的分析功能。 它可以使用 [Azure Blob](../storage/common/storage-introduction.md "Azure Blob 存储")存储帐户、Data Lake Store 或本地 Linux 文件系统中 HDFS 容器内的数据。 由于 R Server 基于开放源代码的 R 构建，因此你构建的基于 R 的应用程序可以应用超过 8000 个任意开放源代码 R 包。 这些应用程序还可以利用 [RevoScaleR](https://msdn.microsoft.com/microsoft-r/scaler/scaler)（R Server 附带的 Microsoft 的大数据分析包）中的例程。  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>边缘节点的计算上下文
-一般而言，在边缘节点上的 R Server 中运行的 R 脚本将在该节点上的 R 解释程序内运行。 但是，调用 ScaleR 函数的步骤例外。 ScaleR 调用将在计算环境中运行，而计算环境取决于你如何设置 ScaleR 计算上下文。  从边缘节点运行 R 脚本时，计算上下文的值可能有：
+一般而言，在边缘节点上的 R Server 中运行的 R 脚本会在该节点上的 R 解释程序内运行。 但是，调用 ScaleR 函数的步骤例外。 ScaleR 调用会在计算环境中运行，而计算环境取决于如何设置 ScaleR 计算上下文。  从边缘节点运行 R 脚本时，计算上下文的值可能有：
 
 - 本地顺序（“local”）
 - 本地并行（“localpar”）

@@ -12,18 +12,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 08/21/2017
 ms.author: juluk
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 3ac234b27a0675f484018c357a65ab65049ceee0
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e42841b126a9df9240bec3f489589d5ce4a6db80
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的限制
-Azure Cloud Shell 有以下已知限制。
+Azure Cloud Shell 有以下已知限制：
 
 ## <a name="system-state-and-persistence"></a>系统状态和持久性
 提供 Cloud Shell 会话的计算机是暂时性的，在会话处于非活动状态 20 分钟后会被回收。 Cloud Shell 需要装载文件共享。 因此，订阅必须能够设置存储资源才能访问 Cloud Shell。 其他注意事项包括：
@@ -39,12 +39,12 @@ Azure Cloud Shell 有以下已知限制。
 Cloud Shell 支持最新版本的 Microsoft Edge、Microsoft Internet Explorer、Google Chrome、Mozilla Firefox 和 Apple Safari。 不支持专用模式下的 Safari。
 
 ## <a name="copy-and-paste"></a>复制和粘贴
-因为在 Windows 计算机上，“Ctrl+C”和“Ctrl+V”不能作为键盘快捷方式执行复制和粘贴操作，而是使用“Ctrl+Insert”和“Shift+Insert”执行复制和粘贴操作。
+在 Windows 计算机上的 Cloud Shell 中，Ctrl+C 和 Ctrl+V 不能用作复制/粘贴快捷方式，请使用 Ctrl+Insert 和 Shift+Insert 分别执行复制和粘贴操作。
 
-还可以右键单击，选择复制/粘贴选项，但该右键单击功能取决于特定于浏览器的剪贴板访问权限。
+还可以右键单击，选择复制/粘贴选项，但右键单击功能取决于特定于浏览器的剪贴板访问权限。
 
 ## <a name="editing-bashrc"></a>编辑 .bashrc
-编辑 .bashrc 时请格外小心，因为执行这一操作可能导致 Cloud Shell 中出现意外错误。
+编辑 .bashr 时要小心，执行这一操作可能导致 Cloud Shell 出现意外错误。
 
 ## <a name="bashhistory"></a>.bash_history
 由于 Cloud Shell 会话中断或并发会话，bash 命令的历史记录可能不一致。
@@ -53,7 +53,7 @@ Cloud Shell 支持最新版本的 Microsoft Edge、Microsoft Internet Explorer�
 Cloud Shell 适用于交互式用例。 因此，任何长时间运行的非交互式会话都会在没有预警的情况下终止。
 
 ## <a name="network-connectivity"></a>网络连接
-Cloud Shell 中的任何延迟均取决于本地 Internet 连接，且 Cloud Shell 会在发送指示后继续尝试操作。
+Cloud Shell 中的任何延迟均取决于本地 Internet 连接，Cloud Shell 会继续尝试执行发送的任何指令。
 
 ## <a name="next-steps"></a>后续步骤
 [Cloud Shell 快速入门](quickstart.md)

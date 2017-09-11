@@ -3,7 +3,7 @@ title: "连接器版本发行历史记录 | Microsoft Docs"
 description: "本主题列出了 Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接器的所有版本"
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: fimguy
 manager: femila
 editor: 
 ms.assetid: 6a0c66ab-55df-4669-a0c7-1fe1a091a7f9
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
-ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: e9699abe0c1bdb6ea449c99e087ae56adb717b8d
+ms.date: 08/24/2017
+ms.author: fimguy
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 313145f4d8e5faa91fb3504cb0fd0ba87ca2e379
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="connector-version-release-history"></a>连接器版本发行历史记录
 Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接器会经常更新。
 
 > [!NOTE]
-> 本主题仅适用于 FIM 和 MIM。 Azure AD Connect 不支持这些连接器。
+> 本主题仅适用于 FIM 和 MIM。 不支持将这些连接器安装在 Azure AD Connect 上。 升级到指定的版本时，已发布的连接器将预安装在 AADConnect 上。
 
 本主题列出所有已发布的连接器版本。
 
@@ -38,30 +38,43 @@ Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接�
 * [PowerShell 连接器](active-directory-aadconnectsync-connector-powershell.md)参考文档
 * [Lotus Domino 连接器](active-directory-aadconnectsync-connector-domino.md)参考文档
 
+
+## <a name="116040-aadconnect-pending-release"></a>1.1.604.0（AADConnect 等待发布）
+
+
+### <a name="fixed-issues"></a>已解决的问题：
+
+* 泛型 Web 服务：
+  * 解决了存在两个或更多终结点时无法创建 SOAP 项目的问题。
+* 泛型 SQL：
+  * 在导入操作中，GSQL 在保存到连接器空间时未正确转换时间。 GSQL 连接器空间的默认日期和时间格式已从“yyyy-MM-dd hh:mm:ssZ”更改为“yyyy-MM-dd HH:mm:ssZ”。
+
 ## <a name="115510-aadconnect-115530"></a>1.1.551.0 (AADConnect 1.1.553.0)
 
 ### <a name="fixed-issues"></a>已解决的问题：
 
 * 泛型 Web 服务：
-  * Wsconfig 工具未从 REST 服务方法的“示例请求”中正确转换 Json 数组。 因此序列化此 REST 请求的 Json 数组时出现问题。
-  * Web 服务连接器配置工具不支持在 JSON 属性名称中使用空格符号。可将替代模式手动添加到 WSConfigTool.exe.config 文件，例如 ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```
+  * Wsconfig 工具未从 REST 服务方法的“示例请求”中正确转换 Json 数组。 这导致序列化 REST 请求的此 Json 数组时出现问题。
+  * Web 服务连接器配置工具不支持在 JSON 属性名称中使用空间符号 
+    * 可以将替换模式手动添加到 WSConfigTool.exe.config 文件，例如 ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```
 
 * Lotus Notes：
-  * 如果禁用“允许组织/组织单位的自定义认证者”选项，则连接器将在导出（更新）过程中失败。导出流程完成后，所有属性都会导出到 Domino 中，但在导出时，将返回一个 KeyNotFoundException 到同步。 这是因为重命名操作在尝试通过更改以下属性之一来更改 DN（用户名属性）时失败：  
-    - LastName
-    - FirstName
-    - MiddleInitial
-    - AltFullName
-    - AltFullNameLanguage
-    - ou
-    - altcommonname
+  * 如果禁用“允许组织/组织单位的自定义认证者”选项，则连接器将在导出（更新）过程中失败。导出流程完成后，所有属性都会导出到 Domino 中，但在导出时，将返回一个 KeyNotFoundException 到同步。 
+    * 这是因为重命名操作在尝试通过更改以下属性之一来更改 DN（用户名属性）时失败：  
+      - LastName
+      - FirstName
+      - MiddleInitial
+      - AltFullName
+      - AltFullNameLanguage
+      - ou
+      - altcommonname
 
   * 如果启用“允许组织/组织单位的自定义认证者”选项，但所需认证者仍为空，则会出现 KeyNotFoundException 错误。
 
 ### <a name="enhancements"></a>增强功能：
 
 * 泛型 SQL：
-  * 方案：重新实现：“*”功能
+  * **方案：重新设计实现：** "*"功能
   * 解决方案说明：更改用于[多值引用属性处理](active-directory-aadconnectsync-connector-genericsql.md)的方法。
 
 
@@ -103,7 +116,7 @@ Lotus：
 * Lotus Domino：
 
   **情景：**导出期间用于删除人员的 Domino 邮件删除支持。 </br>
-  **解决方法：**导出期间可配置用于删除人员的 Domino 邮件删除支持。
+  **解决方法：**导出期间可配置用于删除人员的邮件删除支持。
 
 ### <a name="fixed-issues"></a>已解决的问题：
 * 泛型 Web 服务：
@@ -129,7 +142,7 @@ Lotus：
  * 对重复认证者错误的修复
  * 如果在包含其他对象的 Lotus Domino 连接器中选择不包含任何数据的对象，在执行完全导入时收到发现错误。
  * 在 Lotus Domino 连接器上结束运行增量导入时，Microsoft.IdentityManagement.MA.LotusDomino.Service.exe 服务有时返回应用程序错误。
- * 组成员身份整体上可以正常工作并且会保留，不过，在运行导出以尝试从成员身份中删除某个用户时，将显示更新成功，该用户实际上并未从 Lotus Notes 的成员身份中删除。
+ * 组成员身份整体上可以正常工作并且会保留，不过，在运行导出以尝试从成员身份中删除某个用户时，会显示更新成功，该用户实际上并未从 Lotus Notes 的成员身份中删除。
  * Lotus MA 的配置 GUI 中添加了一个可将导出模式选择为“在底部追加项”的选项，在导出多值属性期间，可以使用该选项在底部追加新项。
  * 连接器将添加所需的逻辑用于从邮件文件夹和 ID 保管库中删除文件。
  * 删除不适用于跨 NAB 成员的成员身份。
@@ -162,7 +175,7 @@ Lotus：
 * Lotus Domino 连接器：
   * 将 fullName 属性导出到邮件数据库不正常工作。
   * 同时从组中添加和删除成员的导出仅导出了所添加的成员。
-  * 如果 Notes Document 无效（isValid 属性设置为 false），则连接器将失败。
+  * 如果 Notes Document 无效（isValid 属性设置为 false），则连接器会失败。
 
 ## <a name="older-releases"></a>较旧版本
 在 2016 年 3 月之前，连接器已发布为支持主题。

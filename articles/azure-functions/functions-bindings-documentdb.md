@@ -4,7 +4,7 @@ description: "了解如何在 Azure Functions 中使用 Azure Cosmos DB 绑定�
 services: functions
 documentationcenter: na
 author: christopheranderson
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions，函数，事件处理，动态计算，无服务体系结构"
@@ -14,13 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 04/18/2016
+ms.date: 08/26/2017
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 2c0cb8ee1690f9b36b76c87247e3c7223876b269
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: fb79e2ad7514ae2cf48b9a5bd486e54b9b407bee
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-functions-cosmos-db-bindings"></a>Azure Functions Cosmos DB 绑定
@@ -39,20 +39,22 @@ DocumentDB API 输入绑定检索 Cosmos DB 文档，并将其传递给函数的
 
 在 *function.json* 中，DocumentDB API 输入绑定具有以下属性：
 
-- `name`：在文档的函数代码中使用的标识符名称
-- `type`：必须设置为“documentdb”
-- `databaseName`：包含文档的数据库
-- `collectionName`：包含文档的集合
-- `id`：要检索的文档的 ID。 此属性支持绑定参数；请参阅 [Azure Functions 触发器和绑定概念](functions-triggers-bindings.md)一文中的[绑定到绑定表达式中的自定义输入属性](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression)。
-- `sqlQuery`：用于检索多个文档的 Cosmos DB SQL 查询。 该查询支持运行时绑定。 例如： `SELECT * FROM c where c.departmentId = {departmentId}`
-- `connection`：内含 Cosmos DB 连接字符串的应用设置的名称
-- `direction`：必须设置为 `"in"`。
+|属性  |说明  |
+|---------|---------|
+|**name**     | 表示函数中的文档的绑定参数的名称。  |
+|**类型**     | 必须设置为 `documentdb`。        |
+|**databaseName** | 包含文档的数据库。        |
+|**collectionName**  | 包含文档的集合的名称。 |
+|**id**     | 要检索的文档的 ID。 此属性支持绑定参数。 有关详细信息，请参阅[绑定到绑定表达式中的自定义输入属性](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression)。 |
+|**sqlQuery**     | 用于检索多个文档的 Cosmos DB SQL 查询。 该查询支持运行时绑定，如以下示例所示：`SELECT * FROM c where c.departmentId = {departmentId}`。        |
+|**连接**     |内含 Cosmos DB 连接字符串的应用设置的名称。        |
+|**direction**     | 必须设置为 `in`。         |
 
-无法同时指定属性 `id` 和 `sqlQuery`。 如果 `id` 和 `sqlQuery` 均未设置，则检索整个集合。
+不能同时设置 ID 和 sqlQuery 属性。 如果两者均未设置，则检索整个集合。
 
 ## <a name="using-a-documentdb-api-input-binding"></a>使用 DocumentDB API 输入绑定
 
-* 在 C# 函数和 F# 函数中，函数成功退出后，通过命名输入参数对输入文档所做的任何更改都将自动保存。 
+* 在 C# 函数和 F# 函数中，函数成功退出后，通过命名输入参数对输入文档所做的任何更改都会自动保存。 
 * 在 JavaScript 函数中，函数退出时不会自动进行更新。 请改用 `context.bindings.<documentName>In` 和 `context.bindings.<documentName>Out` 进行更新。 请参阅 [JavaScript 示例](#injavascript)。
 
 <a name="inputsample"></a>
@@ -180,18 +182,20 @@ module.exports = function (context, input) {
 ## <a id="docdboutput"></a>DocumentDB API 输出绑定
 DocumentDB API 输出绑定允许将新文档写入 Azure Cosmos DB 数据库。 在 function.json 中，该输出绑定具有以下属性：
 
-- `name`：在新文档的函数代码中使用的标识符
-- `type`：必须设置为 `"documentdb"`
-- `databaseName`：包含将在其中创建新文档的集合的数据库。
-- `collectionName`：将在其中创建新文档的集合。
-- `createIfNotExists`：一个用于指示是否创建集合（如果不存在）的布尔值。 默认值为 *false*。 其原因是新集合使用保留吞吐量进行创建，这会影响定价。 有关详细信息，请访问[定价页](https://azure.microsoft.com/pricing/details/documentdb/)。
-- `connection`：内含 Cosmos DB 连接字符串的应用设置的名称
-- `direction`：必须设置为 `"out"`
+|属性  |说明  |
+|---------|---------|
+|**name**     | 表示函数中的文档的绑定参数的名称。  |
+|**类型**     | 必须设置为 `documentdb`。        |
+|**databaseName** | 包含在其中创建文档的集合的数据库。     |
+|**collectionName**  | 包含在其中创建文档的集合的名称。 |
+|**createIfNotExists**     | 一个用于指示是否创建集合（如果不存在）的布尔值。 默认值为 *false*。 这是因为新集合是使用保留的吞吐量创建的，具有成本方面的隐含意义。 有关详细信息，请访问[定价页](https://azure.microsoft.com/pricing/details/documentdb/)。  |
+|**连接**     |内含 Cosmos DB 连接字符串的应用设置的名称。        |
+|**direction**     | 必须设置为 `out`。         |
 
 ## <a name="using-a-documentdb-api-output-binding"></a>使用 DocumentDB API 输出绑定
 本部分演示如何在函数代码中使用 DocumentDB API 输出绑定。
 
-当写入函数中的输出参数时，默认情况下数据库中将生成一个新文档，并以自动生成的 GUID 作为文档 ID。 可以通过在输出参数中指定 `id` JSON 属性，来指定输出文档的文档 ID。 
+默认情况下，当写入函数中的输出参数时，将在数据库中创建一个文档。 本文档将自动生成的 GUID 作为文档 ID。 可以通过在传递给输出参数的 JSON 对象中指定 `id` 属性来指定输出文档的文档 ID。 
 
 >[!Note]  
 >如果指定现有文档的 ID，它会被新的输出文档覆盖。 

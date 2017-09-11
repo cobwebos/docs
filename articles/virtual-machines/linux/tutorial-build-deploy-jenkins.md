@@ -8,17 +8,17 @@ tags: azure-resource-manager
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/15/2017
 ms.author: ahomer
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 967cd38f0961cd11871c538d753cab9951c2f1f5
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a40e26a8681df31fad664e4d1df4c1513311900d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -255,7 +255,7 @@ Azure 资源组部署任务的默认设置是用于创建或更新资源，并�
 > * 为 Azure 虚拟机创建部署组
 > * 创建对 VM 进行配置并部署应用的发布定义
 
-请访问以下链接查看预先生成的虚拟机脚本示例。
+转到下一教程，详细了解如何部署 LAMP（Linux、Apache、MySQL 和 PHP）堆栈。
 
 > [!div class="nextstepaction"]
-> [Linux 虚拟机脚本示例](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/virtual-machine)
+> [部署 LAMP 堆栈](tutorial-lamp-stack.md)

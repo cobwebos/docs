@@ -12,14 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 05/15/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 945da7ce2ab5f2d479d96a6ed2896a0ba7e0747e
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 59d46990e02c0719d2b4df01e216a97fd649c509
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>如何为高级 Azure Redis 缓存配置虚拟网络支持
@@ -40,16 +39,16 @@ Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和�
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-选择高级定价层后，可以通过选择与缓存相同的订阅和位置的 VNet 来配置 Redis VNet 集成。 若要使用新 VNet，请先创建 VNet，方法是遵循[使用 Azure 门户创建虚拟网络](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)或[使用 Azure 门户创建虚拟网络（经典））](../virtual-network/virtual-networks-create-vnet-classic-portal.md)中的步骤，然后返回“新 Redis 缓存”边栏选项卡来创建和配置高级缓存。
+选择高级定价层后，可以通过选择与缓存相同的订阅和位置的 VNet 来配置 Redis VNet 集成。 要使用新 VNet，请先创建 VNet，方法是遵循[使用 Azure 门户创建虚拟网络](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)或[使用 Azure 门户创建虚拟网络（经典））](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)中的步骤，并返回“新 Redis 缓存”边栏选项卡来创建和配置高级缓存。
 
-若要为新缓存配置 VNet，请单击“新建 Redis 缓存”边栏选项卡上的“虚拟网络”，然后从下拉列表中选择所需的 VNet。
+要为新缓存配置 VNet，请单击“新建 Redis 缓存”边栏选项卡上的“虚拟网络”，并从下拉列表中选择所需的 VNet。
 
 ![虚拟网络][redis-cache-vnet]
 
-从“子网”下拉列表中选择所需的子网，然后指定所需的“静态 IP 地址”。 如果使用经典 VNet，则“静态 IP 地址”字段是可选的；如果未指定任何地址，将从选定的子网中选择一个。
+从“子网”下拉列表中选择所需的子网，并指定所需的“静态 IP 地址”。 如果使用经典 VNet，则“静态 IP 地址”字段是可选的；如果未指定任何地址，将从选定的子网中选择一个。
 
 > [!IMPORTANT]
-> 将 Azure Redis 缓存部署到Resource Manager VNet 时，缓存必须位于专用子网中，其中只能包含 Azure Redis 缓存实例，而不能包含其他任何资源。 如果尝试将 Azure Redis 缓存部署到包含其他资源的Resource Manager VNet 子网，部署将会失败。
+> 将 Azure Redis 缓存部署到Resource Manager VNet 时，缓存必须位于专用子网中，其中只能包含 Azure Redis 缓存实例，而不能包含其他任何资源。 如果尝试将 Azure Redis 缓存部署到包含其他资源的Resource Manager VNet 子网，部署会失败。
 > 
 > 
 
@@ -85,6 +84,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和�
 以下列表包含有关 Azure Redis 缓存缩放的常见问题的解答。
 
 * [Azure Redis 缓存和 VNet 有哪些常见的错误配置问题？](#what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets)
+* [如何验证 VNET 中缓存是否正常工作？](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
 * [是否可以通过标准或基本缓存使用 VNet？](#can-i-use-vnets-with-a-standard-or-basic-cache)
 * [为什么在某些子网中创建 Redis 缓存失败，而在其他子网中不会失败？](#why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others)
 * [子网地址空间有哪些要求？](#what-are-the-subnet-address-space-requirements)
@@ -109,31 +109,31 @@ Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和�
 - 3 个端口将流量路由到服务 Azure 存储和 Azure DNS 的 Azure 终结点。
 - 剩余端口用途不同，针对内部 Redis 子网通信。 内部 Redis 子网通信不需要子网 NSG 规则。
 
-| 端口 | 方向 | 传输协议 | 目的 | 远程 IP |
-| --- | --- | --- | --- | --- |
-| 80、443 |出站 |TCP |Azure 存储/PKI (Internet) 上的 Redis 依赖关系 |* |
-| 53 |出站 |TCP/UDP |DNS (Internet/VNet) 上的 Redis 依赖关系 |* |
-| 8443 |出站 |TCP |Redis 内部通信 | （Redis 子网） |
-| 10221-10231 |出站 |TCP |Redis 内部通信 | （Redis 子网） |
-| 20226 |出站 |TCP |Redis 内部通信 |（Redis 子网） |
-| 13000-13999 |出站 |TCP |Redis 内部通信 |（Redis 子网） |
-| 15000-15999 |出站 |TCP |Redis 内部通信 |（Redis 子网） |
+| 端口 | 方向 | 传输协议 | 目的 | 本地 IP | 远程 IP |
+| --- | --- | --- | --- | --- | --- |
+| 80、443 |出站 |TCP |Azure 存储/PKI (Internet) 上的 Redis 依赖关系 | （Redis 子网） |* |
+| 53 |出站 |TCP/UDP |DNS (Internet/VNet) 上的 Redis 依赖关系 | （Redis 子网） |* |
+| 8443 |出站 |TCP |Redis 内部通信 | （Redis 子网） | （Redis 子网） |
+| 10221-10231 |出站 |TCP |Redis 内部通信 | （Redis 子网） | （Redis 子网） |
+| 20226 |出站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网） |
+| 13000-13999 |出站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网） |
+| 15000-15999 |出站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网） |
 
 
 ### <a name="inbound-port-requirements"></a>入站端口要求
 
 有 8 个入站端口范围要求。 这些范围内的入站请求是指从同一 VNET 上托管的其他服务入站或者来自 Redis 子网通信内部。
 
-| 端口 | 方向 | 传输协议 | 目的 | 远程 IP |
-| --- | --- | --- | --- | --- |
-| 6379、6380 |入站 |TCP |与 Redis 的客户端通信、Azure 负载均衡 |虚拟网络、Azure 负载均衡器 |
-| 8443 |入站 |TCP |Redis 内部通信 |（Redis 子网） |
-| 8500 |入站 |TCP/UDP |Azure 负载均衡 |Azure 负载均衡器 |
-| 10221-10231 |入站 |TCP |Redis 内部通信 |（Redis 子网）、Azure 负载均衡器 |
-| 13000-13999 |入站 |TCP |与 Redis 群集的客户端通信、Azure 负载均衡 |虚拟网络、Azure 负载均衡器 |
-| 15000-15999 |入站 |TCP |与 Redis 群集的客户端通信、Azure 负载均衡 |虚拟网络、Azure 负载均衡器 |
-| 16001 |入站 |TCP/UDP |Azure 负载均衡 |Azure 负载均衡器 |
-| 20226 |入站 |TCP |Redis 内部通信 |（Redis 子网） |
+| 端口 | 方向 | 传输协议 | 目的 | 本地 IP | 远程 IP |
+| --- | --- | --- | --- | --- | --- |
+| 6379、6380 |入站 |TCP |与 Redis 的客户端通信、Azure 负载均衡 | （Redis 子网） |虚拟网络、Azure 负载均衡器 |
+| 8443 |入站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网） |
+| 8500 |入站 |TCP/UDP |Azure 负载均衡 | （Redis 子网） |Azure 负载均衡器 |
+| 10221-10231 |入站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网）、Azure 负载均衡器 |
+| 13000-13999 |入站 |TCP |与 Redis 群集的客户端通信、Azure 负载均衡 | （Redis 子网） |虚拟网络、Azure 负载均衡器 |
+| 15000-15999 |入站 |TCP |与 Redis 群集的客户端通信、Azure 负载均衡 | （Redis 子网） |虚拟网络、Azure 负载均衡器 |
+| 16001 |入站 |TCP/UDP |Azure 负载均衡 | （Redis 子网） |Azure 负载均衡器 |
+| 20226 |入站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网） |
 
 ### <a name="additional-vnet-network-connectivity-requirements"></a>其他 VNET 网络连接要求
 
@@ -144,13 +144,33 @@ Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和�
 * 虚拟网络的 DNS 设置必须能够解析前面几点所提到的所有终结点和域。 确保已针对虚拟网络配置并维护有效的 DNS 基础结构即可符合这些 DNS 要求。
 * 到以下 Azure 监视终结点的出站网络连接，这些终结点在下列 DNS 域下进行解析：shoebox2-black.shoebox2.metrics.nsatc.net、north-prod2.prod2.metrics.nsatc.net、azglobal-black.azglobal.metrics.nsatc.net、shoebox2-red.shoebox2.metrics.nsatc.net、east-prod2.prod2.metrics.nsatc.net、azglobal-red.azglobal.metrics.nsatc.net。
 
+### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>如何验证 VNET 中缓存是否正常工作？
+
+>[!IMPORTANT]
+>连接到 VNET 中托管的 Azure Redis 缓存实例时，缓存客户端必须位于同一 VNET 中，包括任何测试应用程序或诊断 ping 工具。
+>
+>
+
+端口需求按上一部分所述进行配置后，可以通过执行以下步骤验证缓存是否正常运行。
+
+- [重新启动](cache-administration.md#reboot)所有缓存节点。 如果无法访问所有所需的缓存依赖项（如[入站端口需求](cache-how-to-premium-vnet.md#inbound-port-requirements)和[出站端口需求](cache-how-to-premium-vnet.md#outbound-port-requirements)中所述），缓存将无法成功重启。
+- 重启缓存节点后（依据 Azure 门户里的缓存状态），可以执行以下测试：
+  - 使用 [tcping](https://www.elifulkerson.com/projects/tcping.php)，对与缓存位于同一 VNET 中的计算机的缓存终结点（使用 6380 端口）执行 ping 操作。 例如：
+    
+    `tcping.exe contosocache.redis.cache.windows.net 6380`
+    
+    如果 `tcping` 工具报告该端口已打开，则可使用缓存连接 VNET 中的客户端。
+
+  - 进行测试的另一种方法是创建测试缓存客户端（可以是使用 StackExchange.Redis 的简单控制台应用程序），使其连接到缓存，以便添加和检索缓存的某些项。 将示例客户端应用程序安装到与缓存位于同一 VNET 中的 VM 上，并运行以验证与缓存的连接性。
+
+
 ### <a name="can-i-use-vnets-with-a-standard-or-basic-cache"></a>是否可以对标准或基本缓存使用 VNet？
 只能对高级缓存使用 VNet。
 
 ### <a name="why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others"></a>为什么在某些子网中创建 Redis 缓存失败，而在其他子网中不会失败？
-如果要将 Azure Redis 缓存部署到Resource Manager VNet，缓存必须位于不包含任何其他资源类型的专用子网中。 如果尝试将 Azure Redis 缓存部署到包含其他资源的Resource Manager VNet 子网，部署将失败。 必须先删除该子网中的现有资源，然后才能创建新的 Redis 缓存。
+如果要将 Azure Redis 缓存部署到Resource Manager VNet，缓存必须位于不包含任何其他资源类型的专用子网中。 如果尝试将 Azure Redis 缓存部署到包含其他资源的Resource Manager VNet 子网，部署会失败。 必须先删除该子网中的现有资源，才能创建新的 Redis 缓存。
 
-只要你有足够的可用 IP 地址，就可以将多种类型的资源部署到经典 VNet。
+只要有足够的可用 IP 地址，就可以将多种类型的资源部署到经典 VNet。
 
 ### <a name="what-are-the-subnet-address-space-requirements"></a>子网地址空间有哪些要求？
 Azure 会保留每个子网中的某些 IP 地址，但是这些地址不能使用。 子网的第一个和最后一个 IP 地址仅为协议一致性而保留，其他三个地址用于 Azure 服务。 有关详细信息，请参阅[使用这些子网中的 IP 地址是否有任何限制？](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
@@ -165,9 +185,9 @@ Azure 会保留每个子网中的某些 IP 地址，但是这些地址不能使�
 ## <a name="use-expressroute-with-azure-redis-cache"></a>将 ExpressRoute 用于 Azure Redis 缓存
 客户可以将 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 线路连接到虚拟网络基础结构，从而将其本地网络扩展到 Azure。 
 
-默认情况下，新创建的 ExpressRoute 线路将会通告允许出站 Internet 连接的默认路由。 使用此配置，客户端应用程序将能够连接到其他 Azure 终结点（包括 Azure Redis 缓存）。
+默认情况下，新创建的 ExpressRoute 线路不会在 VNET 上执行强制隧道（默认路由播发，0.0.0.0/0）。 因此，允许出站 Internet 连接直接来自 VNET，而且客户端应用程序能够连接到其他 Azure 终结点（包括 Azure Redis 缓存）。
 
-但是，常见的客户配置是定义其自身的默认路由 (0.0.0.0/0)，以强制出站 Internet 流量改为流向本地。 如果出站流量在本地遭到阻止，此流量将断开与 Azure Redis 缓存的连接，这样 Azure Redis 缓存实例将无法与其依赖项通信。
+但是，常见的客户配置是使用强制隧道（播发默认路由），以强制出站 Internet 流量改为流向本地。 如果出站流量在本地遭到阻止，此流量将断开与 Azure Redis 缓存的连接，这样 Azure Redis 缓存实例将无法与其依赖项通信。
 
 解决方法是在包含 Azure Redis 缓存的子网上定义一个或多个用户定义的路由 (UDR)。 UDR 定义了要遵循的子网特定路由，而不是默认路由。
 

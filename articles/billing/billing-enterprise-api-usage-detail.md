@@ -136,7 +136,7 @@ ms.lasthandoff: 07/31/2017
 
 * [余额和摘要 API](billing-enterprise-api-balance-summary.md)
 
-* [应用商店费用 API](billing-enterprise-api-marketplace-storecharge.md) 
+* [Marketplace 费用 API](billing-enterprise-api-marketplace-storecharge.md) 
 
 * [价目表 API](billing-enterprise-api-pricesheet.md)
 

@@ -14,25 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
-ms.openlocfilehash: 65709ef9f6cdd50fb8650a1a11c9321defb9cf5b
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 9defbf7a6a515740fa3b3cb1c67a2f5f9d9baa01
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/21/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="process-large-scale-datasets-using-data-factory-and-batch"></a>使用数据工厂和批处理来处理大规模数据集
 本文介绍示例解决方案的体系结构，该解决方案通过计划的自动方式移动并处理大规模数据集。 它还提供使用 Azure 数据工厂和 Azure Batch 来实现此解决方案的端到端演练。
 
-本文比一般文章更长，因为其中包含了整个示例解决方案的演练。 如果不熟悉 Batch 和数据工厂，可以了解这些服务以及如何将其结合使用。 如果对这些服务有所了解，并打算设计/构建解决方案，可只关注本文的[体系结构部分](#architecture-of-sample-solution)；如果打算开发原型或解决方案，那么可能也需要尝试[演练](#implementation-of-sample-solution)中的分步说明。 欢迎你对此内容进行评论以及说明你的使用情况。
+本文比一般文章更长，因为其中包含了整个示例解决方案的演练。 如果不熟悉 Batch 和数据工厂，可以了解这些服务以及如何将其结合使用。 如果对这些服务有所了解，并打算设计/构建解决方案，可只关注本文的[体系结构部分](#architecture-of-sample-solution)；如果打算开发原型或解决方案，那么可能也需要尝试[演练](#implementation-of-sample-solution)中的分步说明。 欢迎你对此内容进行评论以及说明使用情况。
 
 首先来了解一下数据工厂和 Batch 服务如何帮助用户处理云中的大型数据集。     
 
 ## <a name="why-azure-batch"></a>为什么使用 Azure Batch？
 Azure Batch 可帮助用户在云中有效运行大规模并行的高性能计算 (HPC) 应用程序。 它是一个平台服务，可以计划要在托管的虚拟机集合上运行的计算密集型工作，并且可以缩放计算资源以符合作业的需求。
 
-在使用 Batch 服务时，可以定义用于大规模并行执行应用程序的 Azure 计算资源。 你可以根据需要或按计划运行作业，而不需要手动创建、配置和管理 HPC 群集、各个虚拟机、虚拟网络或复杂的作业和任务计划基础结构。
+在使用 Batch 服务时，可以定义用于大规模并行执行应用程序的 Azure 计算资源。 可以根据需要或按计划运行作业，而不需要手动创建、配置和管理 HPC 群集、各个虚拟机、虚拟网络或复杂的作业和任务计划基础结构。
 
 如果不熟悉 Azure Batch，请参阅以下文章，因为这有助于了解本文所述的解决方案体系结构/实现。   
 
@@ -83,7 +82,7 @@ Azure Batch 可帮助用户在云中有效运行大规模并行的高性能计�
 如果没有 Azure 订阅，只需几分钟即可创建一个免费试用帐户。 请参阅[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 #### <a name="azure-storage-account"></a>Azure 存储帐户
-在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)。 示例解决方案使用 Blob 存储。
+在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。 示例解决方案使用 Blob 存储。
 
 #### <a name="azure-batch-account"></a>Azure Batch 帐户
 使用 [Azure 门户](http://manage.windowsazure.com/)创建 Azure Batch 帐户。 请参阅[创建和管理 Azure Batch 帐户](../batch/batch-account-create-portal.md)。 请注意 Azure Batch 帐户名称和帐户密钥。 还可使用 [New-AzureRmBatchAccount](https://msdn.microsoft.com/library/mt603749.aspx) cmdlet 创建 Azure Batch 帐户。 请参阅 [Azure Batch PowerShell cmdlet 入门](../batch/batch-powershell-cmdlets-get-started.md)，详细了解如何使用此 cmdlet。
@@ -93,7 +92,7 @@ Azure Batch 可帮助用户在云中有效运行大规模并行的高性能计�
 #### <a name="azure-batch-pool-of-virtual-machines-vms"></a>虚拟机 (VM) 的 Azure Batch 池
 创建至少有 2 个计算节点的 **Azure Batch 池**。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，单击左侧菜单中的“浏览”，然后单击“Batch 帐户”。
+1. 在 [Azure 门户](https://portal.azure.com)中，单击左侧菜单中的“浏览”，并单击“Batch 帐户”。
 2. 选择 Azure Batch 帐户，打开“Batch 帐户”边栏选项卡。
 3. 单击“池”磁贴。
 4. 在“池”边栏选项卡中，单击工具栏上的“添加”按钮以添加池。
@@ -158,18 +157,18 @@ public IDictionary<string, string> Execute(
 
    1. 启动 **Visual Studio 2012**/**2013/2015**。
    2. 单击“文件”，指向“新建”并单击“项目”。
-   3. 展开“模板”，然后选择“Visual C\#”。 在此演练中使用的是 C\#，但也可使用任意 .NET 语言开发自定义活动。
+   3. 展开“模板”，并选择“Visual C\#”。 在此演练中使用的是 C\#，但也可使用任意 .NET 语言开发自定义活动。
    4. 从右侧项目类型列表中选择“类库”。
    5. 对于“名称”，输入 **MyDotNetActivity**。
    6. 对于“位置”，选择“C:\\ADFGetStarted”。 如果不存在，则创建 **ADF** 文件夹。
-   7.  。
-2. 单击“工具”，指向“NuGet 包管理器”，然后单击“包管理器控制台”。
+   7. 单击“确定”以创建该项目  。
+2. 单击“工具”，指向“NuGet 包管理器”，并单击“包管理器控制台”。
 3. 在“包管理器控制台”中，执行以下命令，导入 **Microsoft.Azure.Management.DataFactories**。
 
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactories
     ```
-4. 将 **Azure 存储** NuGet 包导入项目。 因为此示例中使用了 Blob 存储 API，因此需要此包。
+4. 将 **Azure 存储**  NuGet 包导入项目。 因为此示例中使用了 Blob 存储 API，因此需要此包。
 
     ```powershell
     Install-Package Azure.Storage
@@ -198,7 +197,7 @@ public IDictionary<string, string> Execute(
     ```csharp
     public class MyDotNetActivity : IDotNetActivity
     ```
-8. 将 **IDotNetActivity** 接口的 **Execute** 方法实现（添加）到 **MyDotNetActivity** 类，并将以下示例代码复制到该方法。 请参阅 [Execute 方法](#execute-method)部分，了解此方法中使用的逻辑。
+8. 将 **IDotNetActivity** 接口的**执行**方法实现（添加）到 **MyDotNetActivity** 类并将以下示例代码复制到该方法。 请参阅 [Execute 方法](#execute-method)部分，了解此方法中使用的逻辑。
 
     ```csharp
     /// <summary>
@@ -364,7 +363,7 @@ public IDictionary<string, string> Execute(
 
     **Calculate** 方法计算输入文件（文件夹中的 blob）中关键字 **Microsoft** 的实例数。 搜索词（“Microsoft”）在代码中是硬编码。
 
-1. 编译该项目。 在菜单中单击“生成”，然后单击“生成解决方案”。
+1. 编译该项目。 在菜单中单击“生成”，并单击“生成解决方案”。
 2. 启动 **Windows 资源管理器**，并根据生成类型导航到 **bin\\debug** 或 **bin\\release** 文件夹。
 3. 在 **\\bin\\Debug** 文件夹内创建包含所有二进制文件的 zip 文件 **MyDotNetActivity.zip**。 可能需要包括 MyDotNetActivity.**pdb** 文件以便获取其他详细信息，例如出现故障时引发问题的源代码中的行号。
 
@@ -374,7 +373,7 @@ public IDictionary<string, string> Execute(
 #### <a name="execute-method"></a>Execute 方法
 本部分提供有关 Excute 方法中代码的更多详细信息和说明。
 
-1. 可在 [Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx) 命名空间中找到循环访问输入集合的成员。 需要使用 **BlobContinuationToken** 类循环访问 blob 集合。 实际上必须使用将标记作为退出循环机制的 do-while 循环。 有关详细信息，请参阅[如何通过 .NET 使用 Blob 存储](../storage/storage-dotnet-how-to-use-blobs.md)。 基本循环如下所示：
+1. 可在 [Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx) 命名空间中找到循环访问输入集合的成员。 需要使用 **BlobContinuationToken** 类循环访问 blob 集合。 实际上必须使用将标记作为退出循环机制的 do-while 循环。 有关详细信息，请参阅[如何通过 .NET 使用 Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 基本循环如下所示：
 
     ```csharp
     // Initialize the continuation token.
@@ -446,7 +445,7 @@ public IDictionary<string, string> Execute(
     ```
 
 ### <a name="create-the-data-factory"></a>创建数据工厂
-在[创建自定义活动](#create-the-custom-activity)部分中，已创建了自定义活动，并已将具有二进制的 zip 文件和 PDB 文件上传到 Azure Blob 容器。 在本部分中，将通过使用**自定义活动**的**管道**创建 Azure **数据工厂**。
+在 [创建自定义活动](#create-the-custom-activity) 部分中，已创建了自定义活动，并已将具有二进制文件和 PDB 文件的的 zip 文件上传到 Azure blob 容器。 在本部分中，将通过使用**自定义活动**的**管道**创建 Azure **数据工厂**。
 
 自定义活动的输入数据集表示 blob 存储内输入文件夹 (`mycontainer\\inputfolder`) 中的 blob（文件）。 自定义活动的输出数据集表示 blob 存储内输出文件夹 (`mycontainer\\outputfolder`) 中的输出 blob。
 
@@ -505,7 +504,7 @@ test custom activity Microsoft test custom activity Microsoft
    ![](./media/data-factory-data-processing-using-batch/image6.png)
 
 #### <a name="step-2-create-linked-services"></a>步骤 2：创建链接服务
-链接服务将数据存储或计算服务链接到 Azure 数据工厂。 在此步骤中，将 **Azure 存储**帐户和 **Azure Batch** 帐户链接到数据工厂。
+链接服务将数据存储区或计算服务链接到 Azure 数据工厂。 在此步骤中，将 **Azure 存储**帐户和 **Azure Batch** 帐户链接到数据工厂。
 
 #### <a name="create-azure-storage-linked-service"></a>创建 Azure 存储链接服务
 1. 在 **CustomActivityFactory** 的“数据工厂”边栏选项卡上，单击“作者和部署”磁贴。 随即显示“数据工厂编辑器”。
@@ -513,7 +512,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    ![](./media/data-factory-data-processing-using-batch/image7.png)
 
-3. 将**帐户名**替换为 Azure 存储帐户名，将**帐户密钥**替换为 Azure 存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请参阅 [View, copy and regenerate storage access keys](../storage/storage-create-storage-account.md#manage-your-storage-account)（查看、复制和重新生成存储访问密钥）。
+3. 将**帐户名**替换为 Azure 存储帐户名，将**帐户密钥**替换为 Azure 存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请参阅 [View, copy and regenerate storage access keys](../storage/common/storage-create-storage-account.md#manage-your-storage-account)（查看、复制和重新生成存储访问密钥）。
 
 4. 单击命令栏上的“部署”，部署链接服务。
 
@@ -531,7 +530,7 @@ test custom activity Microsoft test custom activity Microsoft
    4. 对于 **batchUri** JSON 属性，输入 batch URI。
 
       > [!IMPORTANT]
-      > “Azure Batch 帐户边栏选项卡”中的 **URL** 采用以下格式：\<accountname\>.\<region\>.batch.azure.com。 对于 JSON 中的 **batchUri** 属性，需要在 URL 中**删除“accountname.”** 。 示例：`"batchUri": "https://eastus.batch.azure.com"`。
+      > “Azure Batch 帐户边栏选项卡”中的 **URL** 采用以下格式：\<accountname\>.\<region\>.batch.azure.com。对于 JSON 中的 **batchUri** 属性，需要在 URL 中**删除“accountname.”** 。 示例：`"batchUri": "https://eastus.batch.azure.com"`。
       >
       >
 
@@ -550,7 +549,7 @@ test custom activity Microsoft test custom activity Microsoft
 在此步骤中，创建表示输入和输出数据的数据集。
 
 #### <a name="create-input-dataset"></a>创建输入数据集
-1. 在数据工厂的“编辑器”中，单击工具栏上的“新建数据集”按钮，然后在下拉菜单中单击“Azure Blob 存储”。
+1. 在数据工厂的“编辑器”中，单击工具栏上的“新建数据集”按钮，并在下拉菜单中单击“Azure Blob 存储”。
 2. 将右窗格中的 JSON 替换为以下 JSON 代码片段：
 
     ```json
@@ -638,7 +637,7 @@ test custom activity Microsoft test custom activity Microsoft
 #### <a name="create-output-dataset"></a>创建输出数据集
 在此步骤中，创建 AzureBlob 类型的另一数据集，以表示输出数据。
 
-1. 在数据工厂的“编辑器”中，单击工具栏上的“新建数据集”按钮，然后在下拉菜单中单击“Azure Blob 存储”。
+1. 在数据工厂的“编辑器”中，单击工具栏上的“新建数据集”按钮，并在下拉菜单中单击“Azure Blob 存储”。
 2. 将右窗格中的 JSON 替换为以下 JSON 代码片段：
 
     ```json
@@ -768,7 +767,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    ![](./media/data-factory-data-processing-using-batch/image12.png)
 4. 现在在“关系图视图”中，单击“OutputDataset”。
-5. 如果已生成图示，则将显示 5 个输出切片处于“就绪”状态。
+5. 如果已生成图示，则会显示 5 个输出切片处于“就绪”状态。
 
    ![](./media/data-factory-data-processing-using-batch/image13.png)
 6. 使用 Azure 门户查看与**切片**关联的**任务**，并查看每个切片在哪些 VM 上运行。 请参阅[数据工厂和 Batch 集成](#data-factory-and-batch-integration)部分了解详细信息。
@@ -827,7 +826,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    在“OutputDataset”边栏选项卡中，单击切片以查看该切片的“数据切片”边栏选项卡。 可看到该切片的**活动运行**。 应看到该切片的一个活动运行。 如果在命令栏中单击“运行”，则可为相同切片启动另一个活动运行。
 
-   单击活动运行时，将显示具有日志文件列表的“活动运行详细信息”边栏选项卡。 在 **user\_0.log** 文件中将显示记录的消息。 发生错误后，将显示 3 个活动运行，因为管道/活动 JSON 中的重试计数设置为 3。 单击活动运行时，将显示日志文件，可查看文件解决该错误。
+   单击活动运行时，会显示具有日志文件列表的“活动运行详细信息”边栏选项卡。 在 **user\_0.log** 文件中会显示记录的消息。 发生错误后，会显示 3 个活动运行，因为管道/活动 JSON 中的重试计数设置为 3。 单击活动运行时，会显示日志文件，可查看文件解决该错误。
 
    ![](./media/data-factory-data-processing-using-batch/image18.png)
 
@@ -851,7 +850,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    ![](./media/data-factory-data-processing-using-batch/image20.png)
 5. 确保 **assemblyName** (MyDotNetActivity.dll)、**entryPoint**(MyDotNetActivityNS.MyDotNetActivity)、**packageFile** (customactivitycontainer/MyDotNetActivity.zip) 和 **packageLinkedService**（应指向包含 zip 文件的 Azure Blob 存储）已设置为正确的值。
-6. 如果你解决了错误并想要重新处理切片，请在“OutputDataset”边栏选项卡中右键单击该切片，然后单击“运行”。
+6. 如果解决了错误并想要重新处理切片，请在“OutputDataset”边栏选项卡中右键单击该切片，然后单击“运行”。
 
    ![](./media/data-factory-data-processing-using-batch/image21.png)
 
@@ -861,7 +860,7 @@ test custom activity Microsoft test custom activity Microsoft
    >
 7. 自定义活动不使用包中的 **app.config** 文件。 因此，如果代码从配置文件读取任何连接字符串，其在运行时无效。 使用 Azure Batch 时的最佳做法是在 **Azure KeyVault** 中保存所有密钥，使用基于证书的服务主体来保护 keyvault，并将该证书分发到 Azure Batch 池。 然后，.NET 自定义活动可以在运行时从 KeyVault 访问机密。 此解决方案是一种通用解决方法，可以延伸到任何类型的密钥，而不仅仅是连接字符串。
 
-    有一个更容易的解决方法（但非最佳做法）：可通过连接字符串设置创建 **Azure SQL 链接服务**，再创建使用该链接服务的数据集，并将作为虚拟输入数据集的数据集链接到自定义 .NET 活动。 然后，可访问自定义活动代码中的链接服务连接字符串，并且它应在运行时正常运行。  
+    有一个更容易的解决方法（但非最佳做法）：可通过连接字符串设置创建 **Azure SQL 链接服务**，再创建使用该链接服务的数据集，并将作为虚拟输入数据集的数据集链接到自定义 .NET 活动。 然后，可访问自定义活动代码中的链接服务连接字符串，它应在运行时正常运行。  
 
 #### <a name="extend-the-sample"></a>扩展该示例
 可扩展此示例，深入了解 Azure 数据工厂和 Azure Batch 功能。 例如，若要在不同时间范围处理切片，请执行以下步骤：
@@ -886,7 +885,7 @@ test custom activity Microsoft test custom activity Microsoft
    有关详细信息，请参阅 [Automatically scale compute nodes in an Azure Batch pool](../batch/batch-automatic-scaling.md)（自动缩放 Azure Batch 池中的计算节点）。
 
    如果池使用默认 [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx)，则在运行自定义活动之前，Batch 服务可能需要 15-30 分钟准备 VM。  如果池使用其他 autoScaleEvaluationInterval，则 Batch 服务可能需要 autoScaleEvaluationInterval + 10 分钟。
-5. 在示例解决方案中，**Excute** 方法调用 **Calculate** 方法，后者可处理输入数据切片，产生输出数据切片。 可编写自己的方法来处理输入数据，并将 Excute 方法中的 Calculate 方法调用替换为对你的方法的调用。
+5. 在示例解决方案中，**Excute** 方法调用 **Calculate** 方法，后者可处理输入数据切片，产生输出数据切片。 可编写自己的方法来处理输入数据，并将 Excute 方法中的 Calculate 方法调用替换为对方法的调用。
 
 ### <a name="next-steps-consume-the-data"></a>后续步骤：使用数据
 处理数据后，可通过 **Microsoft Power BI** 等联机工具使用数据。 以下是有助于了解 Power BI 以及如何在 Azure 中使用 Power BI 的链接：

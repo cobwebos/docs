@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;fashah;garye
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2bcc1410410ed70d9d8a18fd5693bf32cab6fb23
-ms.lasthandoff: 11/17/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f0ac2799e2d8f18b2dd5b633555bfca08a44ba27
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>使用 SQL 和 Python 在 SQL Server 中为数据创建功能
@@ -34,13 +34,13 @@ ms.lasthandoff: 11/17/2016
 > 
 
 ## <a name="prerequisites"></a>先决条件
-本文假设你具备以下条件：
+本文假设用户具备以下条件：
 
-* 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)
+* 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)
 * 在 SQL Server 中存储的数据。 如果尚未存储，请参阅[将数据移到 Azure 机器学习 Azure SQL Database](machine-learning-data-science-move-sql-azure.md) 以便获取有关如何移动数据的说明。
 
 ## <a name="sql-featuregen"></a>使用 SQL 生成功能
-在本部分中，将介绍使用 SQL 生成功能的方法：  
+在本部分中，介绍使用 SQL 生成功能的方法：  
 
 1. [生成基于计数的功能](#sql-countfeature)
 2. [生成装箱功能](#sql-binningfeature)
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/17/2016
 > 
 > 
 
-### <a name="sql-countfeature"></a>生成基于计数的功能
+### <a name="sql-countfeature"></a>基于计数生成功能
 本文档演示两种生成计数功能的方法。 第一种方法是使用条件求和，第二种方法是使用 where 子句。 之后这些新表格可与原始表结合（使用主键列），使其具有原始数据的计数功能。
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
@@ -65,7 +65,7 @@ ms.lasthandoff: 11/17/2016
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
 
-### <a name="sql-featurerollout"></a>从单个列推出函数
+### <a name="sql-featurerollout"></a>从单个列推出功能
 在此部分中，将演示如何在表格中推出单列以生成其他功能。 该示例假定用户尝试在其中生成功能的表中，具有一个纬度或经度列。
 
 下面简要介绍纬度/经度位置数据（来自 stackoverflow 的资源`http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`）。 在特征化位置字段之前，了解以上知识会很有用：

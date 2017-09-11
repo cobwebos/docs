@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: hangzh;bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 5a4ca11079ac2a3962d92c7688e8d7337c31389d
-ms.lasthandoff: 03/29/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e027a6ffcb63868be13432870e484c5cbf2eef4b
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-features-for-data-in-an-hadoop-cluster-using-hive-queries"></a>使用 Hive 查询创建用于 Hadoop 群集中数据的功能
@@ -33,15 +33,15 @@ ms.lasthandoff: 03/29/2017
 该**菜单**链接到介绍如何在各种环境中为数据创建特征的主题。 此任务是[团队数据科学过程 (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中的一个步骤。
 
 ## <a name="prerequisites"></a>先决条件
-本文假设你具备以下条件：
+本文假设用户具备以下条件：
 
-* 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)
+* 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)
 * 已预配具有 HDInsight 服务的自定义 Hadoop 群集。  如果需要说明，请参阅[为高级分析自定义 Azure HDInsight Hadoop 群集](machine-learning-data-science-customize-hadoop-cluster.md)。
 * 数据已上传到 Azure HDInsight Hadoop 群集中的 Hive 表。 如果没有，请按照[创建并将数据上传到 Hive 表](machine-learning-data-science-move-hive-tables.md)，先将数据上传到 Hive 表。
 * 已启用群集的远程访问权限。 如果需要说明，请参阅[访问 Hadoop 群集的头节点](machine-learning-data-science-customize-hadoop-cluster.md#headnode)。
 
 ## <a name="hive-featureengineering"></a>功能生成
-在本部分中，将介绍使用 Hive 查询可用其生成功能的方法的几个示例。 如果已生成其他功能，则可将其作为列添加到现有表，或创建具有这些其他功能和主密钥的新表，新表之后可联接到原始表。 以下是显示的示例：
+在本部分中，介绍使用 Hive 查询可用其生成功能的方法的几个示例。 如果已生成其他功能，则可将其作为列添加到现有表，或创建具有这些其他功能和主密钥的新表，新表之后可联接到原始表。 以下是显示的示例：
 
 1. [基于功能生成的频率](#hive-frequencyfeature)
 2. [二元分类中分类变量的风险](#hive-riskfeature)
@@ -49,7 +49,7 @@ ms.lasthandoff: 03/29/2017
 4. [从文本字段中提取功能](#hive-textfeatures)
 5. [计算 GPS 坐标之间的距离](#hive-gpsdistance)
 
-### <a name="hive-frequencyfeature"></a>基于功能生成的频率
+### <a name="hive-frequencyfeature"></a>基于频率生成功能
 通常用于计算分类变量级别的频率，或多个分类变量中某些组合级别的频率。 用户可使用以下脚本计算这些频率：
 
         select
@@ -94,7 +94,7 @@ Hive 附带一组用于处理日期时间字段的 UDF。 在 Hive 中，默认�
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-此 Hive 查询假定 *<日期时间字段>*使用的是默认日期时间格式。
+此 Hive 查询假定 *&lt;日期时间字段&gt;* 使用的是默认日期时间格式。
 
 如果日期时间字段并未使用默认格式，则需要先将日期时间字段转换为 Unix 时间戳，然后将 Unix 时间戳转换为默认格式的日期时间字符串。 如果日期时间使用默认格式，那么用户可以应用嵌入的日期时间 UDF 以提取功能。
 
@@ -106,7 +106,7 @@ Hive 附带一组用于处理日期时间字段的 UDF。 在 Hive 中，默认�
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
 
-预配群集时，此查询中的 *hivesampletable* 将在所有 Azure HDInsight Hadoop 群集上默认预安装。
+预配群集时，此查询中的 *hivesampletable* 会在所有 Azure HDInsight Hadoop 群集上默认预安装。
 
 ### <a name="hive-textfeatures"></a>从文本字段中提取功能
 如果 Hive 表具有包含以空格分隔的单词的字符串的文本字段，那么以下查询将提取字符串的长度和字符串中的单词数。
@@ -141,7 +141,7 @@ Hive 附带一组用于处理日期时间字段的 UDF。 在 Hive 中，默认�
 
 嵌入 UDF 的 Hive 的完整列表可在 <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a> 上的**内置函数**部分中找到）。  
 
-## <a name="tuning"></a>高级主题：优化 Hive 参数以改进查询速度
+## <a name="tuning"></a>高级主题：优化 Hive 参数以加快查询速度
 Hive 群集的默认参数设置可能不适合 Hive 查询以及正在处理查询的数据。 在本部分中，将讨论用户可对其进行优化以改进 Hive 查询性能的某些参数。 用户需要在查询处理数据之前，先添加优化查询参数。
 
 1. **Java 堆空间**：对于涉及联接大数据集或处理长记录的查询，一个常见错误为“堆空间不足”。 可以通过将参数 *mapreduce.map.java.opts* 和 *mapreduce.task.io.sort.mb* 设置为所需的值来对其进行优化。 下面是一个示例：

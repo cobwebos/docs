@@ -14,10 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 04/10/2017
 ms.author: eugenesh
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 7679aa86aa24396d9cd7cf84a8cafe7950ad6d62
-ms.lasthandoff: 04/20/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b167f69f853f6ecdfd56179e6ffb946cdf2f45b8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -75,7 +76,7 @@ ms.lasthandoff: 04/20/2017
 - **存储帐户共享访问签名连接字符串：**`TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl`共享访问签名应具有容器（本例中为表）和对象（表行）的列出和读取权限。
 -  **表共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r`共享访问签名应具有表的查询（读取）权限。
 
-有关存储共享访问签名的详细信息，请参阅[使用共享访问签名](../storage/storage-dotnet-shared-access-signature-part-1.md)。
+有关存储共享访问签名的详细信息，请参阅[使用共享访问签名](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 
 > [!NOTE]
 > 如果使用共享访问签名凭据，则需使用续订的签名定期更新数据源凭据，以防止其过期。 如果共享访问签名凭据过期，索引器会失败并出现类似于“连接字符串中提供的凭据无效或已过期”的错误消息。  
@@ -115,7 +116,7 @@ ms.lasthandoff: 04/20/2017
       "schedule" : { "interval" : "PT2H" }
     }
 
-此索引器每两小时运行一次。 （已将计划间隔设置为“PT2H”）。若要每隔 30 分钟运行索引器一次，可将间隔设置为“PT30M”。 支持的最短间隔为 5 分钟。 计划是可选的；如果省略，则索引器在创建后只运行一次。 但是，可以随时根据需要运行索引器。   
+此索引器每两小时运行一次。 （已将计划间隔设置为“PT2H”）。若要每隔 30 分钟运行一次索引器，可将间隔设置为“PT30M”。 支持的最短间隔为 5 分钟。 计划是可选的；如果省略，则索引器在创建后只运行一次。 但是，可以随时根据需要运行索引器。   
 
 有关创建索引器 API 的详细信息，请参阅[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 

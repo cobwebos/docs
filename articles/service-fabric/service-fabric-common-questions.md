@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/20/2017
+ms.date: 08/18/2017
 ms.author: chackdan
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: ce6debc0832da565d24a3ca82e2fa5bf7b797f8a
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: ee334186dffaa1f88cf05717b6a5ba1e819a8cdc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 
@@ -29,27 +29,34 @@ ms.lasthandoff: 07/12/2017
 
 ## <a name="cluster-setup-and-management"></a>群集设置和管理
 
-### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions"></a>是否可以创建跨越多个 Azure 区域的群集？
+### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>是否可以创建跨越多个 Azure 区域或自己的数据中心的群集？
 
-目前不行，但这是一个常见的请求，我们将继续展开调研。
+是的。 
 
-核心 Service Fabric 群集技术并不区分 Azure 区域，可用于将世界各地运行的计算机集合到一起，前提是它们相互之间已建立网络连接。 但是，如同构建群集的虚拟机规模集一样，Azure 中的 Service Fabric 群集资源也是区域性的。 此外，在远距离分散的计算机之间提供非常一致的数据复制方面，还存在一个固有的难题。 在支持跨区域群集之前，我们希望确保性能可预测且可接受。
+核心 Service Fabric 群集技术可用于将世界各地运行的计算机集合到一起，前提是它们相互之间已建立网络连接。 然而，生成并运行这样的群集可能很复杂。
+
+如果你对此方案有兴趣，建议你通过 [Service Fabric Github 问题列表](https://github.com/azure/service-fabric-issues)或通过支持代表联系我们以获取其他指南。 Service Fabric 团队正在努力针对此方案提供其他解释、指南和建议。 
+
+应考虑的一些事项： 
+
+1. 如同构建群集的虚拟机规模集一样，Azure 中的 Service Fabric 群集资源如今也是区域性的。 这意味着如果出现区域性故障，将可能无法通过 Azure 资源管理器或 Azure 门户管理群集。 即使群集仍在运行，且你能够直接与其交互，也可能发生此情况。 此外，Azure 目前不提供创建跨区域可用的单个虚拟网络的功能。 这意味着 Azure 中的多区域群集需要[适用于 VM 规模集中的每个 VM 的公共 IP 地址](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine)或 [Azure VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)。 这些网络选择对成本、性能以及某种程度上的应用程序设计都有不同的影响，因此需要在选择此类环境前仔细分析和规划。
+2. 维护、管理和监视这些计算机可能会变得很复杂，尤其是在跨多种类型环境时，比如不同云提供程序之间或本地资源和 Azure 之间。 必须格外小心，确保在此类环境中运行生产工作负荷前，已了解群集和应用程序的升级、监视、管理和诊断。 如果你已有在 Azure 或自己的数据中心解决这些问题的丰富经验，则很可能这些相同的解决方案在生成或运行 Service Fabric 群集时均适用。 
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Service Fabric 节点是否自动接收 OS 更新？
 
-目前不是，但这也是一个常见的请求，我们有意推出此功能。
+目前不是，但这也是一个常见的请求，Azure 有意推出此功能。
+
+在此期间，我们已[提供一个应用程序](service-fabric-patch-orchestration-application.md)，Service Fabric 节点下的操作系统不断修补并保持最新状态。
 
 OS 更新的难题在于，它们通常需要重新启动计算机，而这会导致暂时失去可用性。 实现该请求本身不存在问题，因为 Service Fabric 会自动将这些服务的流量重定向到其他节点。 但是，如果不在群集之间协调 OS 更新，多个节点有可能会同时关闭。 这种同时重新启动可能会导致某个服务完全失去可用性，至少特定的分区会失去可用性（对于有状态服务）。
 
 将来，我们计划支持在更新域之间完全自动化的、经过协调的 OS 更新策略，确保即使重新启动或发生其他意外故障，也仍能保持可用性。
 
-在此期间，我们[提供脚本](https://blogs.msdn.microsoft.com/azureservicefabric/2017/01/09/os-patching-for-vms-running-service-fabric/)，群集管理器可使用该脚本，以安全的方式手动启动每个节点的修补程序。
-
 ### <a name="can-i-use-large-virtual-machine-scale-sets-in-my-sf-cluster"></a>是否可以在我的 SF 群集中使用大型虚拟机规模集？ 
 
 **简短解答** - 否。 
 
-详细解答 - 尽管通过大型虚拟机规模集可将虚拟机规模集扩展至多达 1000 个 VM 实例，但这是通过使用放置组 (PG) 实现的。 容错域 (FD) 和升级域 (UD) 仅在使用 FD 和 UD 来为你的服务副本/服务实例做出放置决策的放置组 Service Fabric 中保持一致。 因为 FD 和 UD 仅在放置组中可比较，因此 SF 无法使用它。 例如，如果 PG1 中的 VM1 具有一个 FD=0 的拓扑，并且 PG2 中的 VM9 具有一个 FD=4 的拓扑，这并不意味着 VM1 和 VM2 在两个不同的硬件机架上，因此在这种情况下 SF 无法使用 FD 值做出放置决策。
+详细解答 - 尽管通过大型虚拟机规模集可将虚拟机规模集扩展至多达 1000 个 VM 实例，但这是通过使用放置组 (PG) 实现的。 容错域 (FD) 和升级域 (UD) 仅在使用 FD 和 UD 来为服务副本/服务实例做出放置决策的放置组 Service Fabric 中保持一致。 因为 FD 和 UD 仅在放置组中可比较，因此 SF 无法使用它。 例如，如果 PG1 中的 VM1 具有一个 FD=0 的拓扑，并且 PG2 中的 VM9 具有一个 FD=4 的拓扑，这并不意味着 VM1 和 VM2 在两个不同的硬件机架上，因此在这种情况下 SF 无法使用 FD 值做出放置决策。
 
 当前，大型虚拟机规模集还存在其他问题，例如缺少 level-4 负载均衡支持。 请参考[有关大型规模集的详细信息](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md)
 
@@ -90,7 +97,7 @@ OS 更新的难题在于，它们通常需要重新启动计算机，而这会�
 
 缓解措施：按[此文档](service-fabric-dnsservice.md)中的说明在群集中启用 DNS Service Fabric 服务。
 
-**修复**：升级到支持的群集版本（版本可用时），该版本需高于 5.6.204.9494。 如果群集设置为自动升级，则群集将自动升级到已解决此问题的版本。
+**修复**：升级到支持的群集版本（版本可用时），该版本需高于 5.6.204.9494。 如果群集设置为自动升级，则群集会自动升级到已解决此问题的版本。
 
   
 ## <a name="application-design"></a>应用程序设计
@@ -121,7 +128,7 @@ Reliable Services 通常已分区，因此，可存储的数据量受到群集�
 
 请注意，这种计算还基于以下假设：
 
-- 跨分区的数据分布大致是均匀的，或者可向群集 Resource Manager 报告负载指标。 默认情况下，Service Fabric 会根据副本计数执行负载均衡。 在上述示例中，群集中的每个节点上将会放置 10 个主副本和 20 个辅助副本。 对于均匀分布在分区之间的负载而言，这是没有问题的。 如果负载不均衡，必须报告负载，使 Resource Manager 能够将较小副本打包在一起，增加较大副本在单个节点上占用的内存。
+- 跨分区的数据分布大致是均匀的，或者可向群集资源管理器报告负载指标。 默认情况下，Service Fabric 会根据副本计数执行负载均衡。 在上述示例中，群集中的每个节点上会放置 10 个主副本和 20 个辅助副本。 对于均匀分布在分区之间的负载而言，这是没有问题的。 如果负载不均衡，必须报告负载，使 Resource Manager 能够将较小副本打包在一起，增加较大副本在单个节点上占用的内存。
 
 - 只有在群集中存储状态的 Reliable Service 才受到影响。 由于可将多个服务部署到群集，因此需要注意每个服务所要运行的资源，并管理服务的状态。
 

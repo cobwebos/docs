@@ -2,7 +2,7 @@
 title: "Azure SQL Server Stretch Database 文档 - 教程 | Microsoft 文档"
 description: "了解在不更改查询或应用程序的情况下，如何使用 SQL Server Stretch Database 将冷数据安全迁移到 Azure。 教程和其他文档。"
 services: sql-server-stretch-database
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 91c1cb9713d087982dc68f2511b72ef86a050616
 ms.openlocfilehash: bb5e0fa9981133a77c235a42be369b3bbacb4ac0
+ms.contentlocale: zh-cn
+ms.lasthandoff: 02/09/2017
 
 ---
 #<a name="sql-server-stretch-database-documentation"></a>SQL Server Stretch Database 文档
@@ -99,10 +101,5 @@ ms.openlocfilehash: bb5e0fa9981133a77c235a42be369b3bbacb4ac0
 
 ---
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

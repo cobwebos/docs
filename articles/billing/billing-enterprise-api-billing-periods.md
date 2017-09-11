@@ -32,7 +32,7 @@ ms.lasthandoff: 07/31/2017
 
 |方法 | 请求 URI|
 |-|-|
-|GET| https://consumption.azure.com/v2/enrollments/ {enrollmentNumber} / billingperiods|
+|GET| https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingperiods|
 
 > [!Note]
 > 若要使用预览版 API，请在上述 URL 中将 v2 替换为 v1。
@@ -65,7 +65,7 @@ ms.lasthandoff: 07/31/2017
 |billingEnd| datetime| 表示周期结束日期的 ISO 8601 字符串|
 |balanceSummary| 字符串| 路由到此周期的“余额摘要”数据的 URL 路径|
 |usageDetails| 字符串| 路由到此周期的“使用情况详细信息”数据的 URL 路径|
-|marketplaceCharges| 字符串| 路由到此周期的“应用商店费用”数据的 URL 路径|
+|marketplaceCharges| 字符串| 路由到此周期的“Marketplace 费用”数据的 URL 路径|
 |priceSheet| 字符串| 路由到此周期的“价目表”数据的 URL 路径|
 
 <br/>
@@ -75,6 +75,6 @@ ms.lasthandoff: 07/31/2017
 
 * [使用情况详细信息 API](billing-enterprise-api-usage-detail.md) 
 
-* [应用商店费用 API](billing-enterprise-api-marketplace-storecharge.md) 
+* [Marketplace 费用 API](billing-enterprise-api-marketplace-storecharge.md) 
 
 * [价目表 API](billing-enterprise-api-pricesheet.md)

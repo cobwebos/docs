@@ -4,10 +4,10 @@ hide_bc: true
 title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: c9bb109df050041aaff861adfa8dfcd2947d981d
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: cec37e94b31d08930d7262b2f30dd3e84793af46
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 <div id="main" class="v2">
@@ -699,6 +699,30 @@ ms.lasthandoff: 08/16/2017
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/storage/blobs/storage-blobs-introduction/">
+                                                <img src="media/index/logo_azure-blob-storage.svg" alt="" />
+                                                <p>Blob 存储</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/virtual-machines/disks/">
+                                                <img src="media/index/Disks-color.svg" alt="" />
+                                                <p>磁盘</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/storage/files/storage-files-introduction/">
+                                                <img src="media/index/logo_azure-storage-file.svg" alt="" />
+                                                <p>文件存储</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/storage/queues/storage-queues-introduction/">
+                                                <img src="media/index/logo_azure-storage-q.svg" alt="" />
+                                                <p>队列存储</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/data-lake-store/">
                                                 <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
                                                 <p>Data Lake Store</p>
@@ -721,7 +745,7 @@ ms.lasthandoff: 08/16/2017
                                                 <img src="media/index/SiteRecovery.svg" alt="" />
                                                 <p>Site Recovery</p>
                                             </a>
-                                        </li>
+                                        </li>                                        
                                     </ul>
                                     <h3>数据 + 分析</h3>
                                     <ul>
@@ -1182,7 +1206,7 @@ ms.lasthandoff: 08/16/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>批处理</h3>
-                                                    <p>使用容器运行计算作业</p>
+                                                    <p>云规模的作业计划和计算管理</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1446,6 +1470,82 @@ ms.lasthandoff: 08/16/2017
                                 </a>
                             </li>
                             <li>
+                                <a href="/azure/storage/blobs/storage-blobs-introduction/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/logo_azure-blob-storage.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Blob 存储</h3>
+                                                    <p>高度可缩放的非结构化数据对象存储</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/virtual-machines/windows/managed-disks-overview">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/Disks-color.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>磁盘</h3>
+                                                    <p>VM 的磁盘存储</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/storage/files/storage-files-introduction/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/logo_azure-storage-file.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>文件存储</h3>
+                                                    <p>简单的分布式跨平台文件系统</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/storage/queues/storage-queues-introduction/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/logo_azure-storage-q.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>队列存储</h3>
+                                                    <p>用于大容量云服务的持久队列</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/data-lake-store/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -1520,7 +1620,7 @@ ms.lasthandoff: 08/16/2017
                                         </div>
                                     </div>
                                 </a>
-                            </li>
+                            </li>                            
                         </ul>
                     </li>
                     <li>
@@ -1790,7 +1890,7 @@ ms.lasthandoff: 08/16/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>批处理</h3>
-                                                    <p>使用容器运行计算作业</p>
+                                                    <p>云规模的作业计划和计算管理</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3653,3 +3753,4 @@ ms.lasthandoff: 08/16/2017
         </ul>
     </div>
 </div>
+

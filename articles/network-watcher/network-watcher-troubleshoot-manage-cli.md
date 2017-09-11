@@ -3,7 +3,7 @@ title: "对 Azure 虚拟网络网关和连接进行故障排除 — Azure CLI 2.
 description: "此页说明如何使用 Azure 网络观察程序对 Azure CLI 2.0 进行故障排除"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 2838bc61-b182-4da8-8533-27db8fdbd177
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 09270cf3181476f3ed2c1720b497e707edff880e
+ms.author: jdial
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e1d56317b10fa738a3d7089f6c4f357159fe2c2b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -32,7 +31,7 @@ ms.lasthandoff: 06/20/2017
 > - [CLI 2.0](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
-网络观察程序提供了许多功能，因为它关系到了解 Azure 中的网络资源。 其中一项功能就是资源故障排除。 可以通过门户、PowerShell、CLI 或 REST API 调用资源故障排除。 调用后，网络观察程序将检查虚拟网络网关或连接的运行状况，并返回调查结果。
+网络观察程序提供了许多功能，因为它关系到了解 Azure 中的网络资源。 其中一项功能就是资源故障排除。 可以通过门户、PowerShell、CLI 或 REST API 调用资源故障排除。 调用后，网络观察程序会检查虚拟网络网关或连接的运行状况，并返回调查结果。
 
 本文使用资源管理部署模型的下一代 CLI (Azure CLI 2.0)，它适用于 Windows、Mac 和 Linux。
 
@@ -40,7 +39,7 @@ ms.lasthandoff: 06/20/2017
 
 ## <a name="before-you-begin"></a>开始之前
 
-此方案假定你已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
+此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
 有关支持的网关类型列表，请访问[支持的网关类型](network-watcher-troubleshoot-overview.md#supported-gateway-types)。
 
@@ -64,7 +63,7 @@ az network vpn-connection show --resource-group resourceGroupName --ids vpnConne
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-资源故障排除返回有关资源运行状况的数据，还将日志保存到要查看的存储帐户中。 在此步骤中，我们将创建一个存储帐户（如果存在现有的存储帐户，你可以使用它）。
+资源故障排除返回有关资源运行状况的数据，还将日志保存到要查看的存储帐户中。 在此步骤中，我们将创建一个存储帐户（如果存在现有的存储帐户，可以使用它）。
 
 1. 创建存储帐户
 
@@ -98,7 +97,7 @@ az network watcher troubleshooting start --resource-group resourceGroupName --re
 
 操作文本提供有关如何解决问题的常规指导。 如果可以对问题采取措施，将提供一个包含更多指导的链接。 如果没有更多指导，响应将提供一个用于建立支持案例的 URL。  有关响应的属性及其包含的内容的详细信息，请访问[网络观察程序故障排除概述](network-watcher-troubleshoot-overview.md)
 
-有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/storage-dotnet-how-to-use-blobs.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息可以在此链接中找到：[存储资源管理器](http://storageexplorer.com/)
+有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息可以在此链接中找到：[存储资源管理器](http://storageexplorer.com/)
 
 ## <a name="next-steps"></a>后续步骤
 

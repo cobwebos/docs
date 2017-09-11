@@ -1,8 +1,8 @@
 ---
-title: "Azure 应用商店文档 | Microsoft Docs"
-description: "了解 Azure 应用商店。"
+title: "Azure Marketplace 文档 | Microsoft Docs"
+description: "了解 Azure Marketplace。"
 services: marketplace
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/14/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: 6dca59ddd5fe524b7778abe770b6387f8bb24f01
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/20/2017
 
 ---
-# <a name="azure-marketplace-documentation"></a>Azure 应用商店文档
+# <a name="azure-marketplace-documentation"></a>Azure Marketplace 文档
 
-了解 Azure 应用商店（一个联机应用程序和服务市场，它支持从初创公司到企业的 ISV 向全球客户提供解决方案）。
+了解 Azure Marketplace（一个联机应用程序和服务市场，它支持从初创公司到企业的 ISV 向全球客户提供解决方案）。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -34,7 +35,7 @@ ms.lasthandoff: 04/20/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure 应用商店卖家指南</h3>
+                        <h3>Azure Marketplace 卖家指南</h3>
                     </div>
                 </div>
             </div>

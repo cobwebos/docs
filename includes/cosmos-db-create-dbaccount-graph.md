@@ -1,5 +1,5 @@
 1. 在新窗口中，登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在左侧窗格中，依次单击“新建”、“数据库”、“Azure Cosmos DB”。
+2. 在左侧窗格中，依次单击“新建”、“数据库”，然后在“Azure Cosmos DB”下单击“创建”。
    
    ![“Azure 门户数据库”窗格](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-1.png)
 
@@ -19,8 +19,7 @@
     API|Gremlin（图形）|在本文的后面部分中，我们将针对[图形 API](../articles/cosmos-db/graph-introduction.md) 编程。|
     订阅|用户的订阅|要用于此 Azure Cosmos DB 帐户的 Azure 订阅。 
     资源组|*与 ID 相同的值*|帐户的新资源组名称。 为简单起见，可以使用与 ID 相同的名称。 
-    位置|
-            *离用户最近的区域*|要在其中托管 Azure Cosmos DB 帐户的地理位置。 选择离用户最近的位置，使其能够以最快的速度访问数据。
+    位置|*离用户最近的区域*|要在其中托管 Azure Cosmos DB 帐户的地理位置。 选择离用户最近的位置，使其能够以最快的速度访问数据。
 
 4. 单击“创建”  以创建帐户。
 5. 在顶部工具栏上，单击“通知”图标![通知图标](./media/cosmos-db-create-dbaccount-graph/notification-icon.png)可监视部署过程。

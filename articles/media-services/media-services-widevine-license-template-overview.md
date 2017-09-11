@@ -2,7 +2,7 @@
 title: "Widevine 许可证模板概述 | Microsoft Docs"
 description: "本主题提供了用于配置 Widevine 许可证的 Widevine 许可证模板的概述。"
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -14,17 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 5ef6e368a170816b7000c23cdf686644690fca45
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 667ff16dc7608dab2a5b8b1fd7df715da4620ca1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="widevine-license-template-overview"></a>Widevine 许可证模板概述
 ## <a name="overview"></a>概述
-Azure 媒体服务现在允许你配置和请求 Widevine 许可证。 当最终用户播放器尝试播放受 Widevine 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了该请求，则会颁发该许可证，该许可证将发送到客户端，并可用于解密和播放指定的内容。
+Azure 媒体服务现在允许配置和请求 Widevine 许可证。 当最终用户播放器尝试播放受 Widevine 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了该请求，则会颁发该许可证，该许可证将发送到客户端，并可用于解密和播放指定的内容。
 
 Widevine 许可证请求将格式化为 JSON 消息。  
 
@@ -72,10 +71,10 @@ Widevine 许可证请求将格式化为 JSON 消息。
 | use_policy_overrides_exclusively |boolean。 true 或 false |使用 policy_overrides 所指定的策略属性，并省略以前存储的所有策略。 |
 | policy_overrides |有关 JSON 结构，请参阅下面的**策略重写** |此许可证的策略设置。  如果此资产具有预定义的策略，将使用这些指定的值。 |
 | session_init |有关 JSON 结构，请参阅下面的**会话初始化** |传递给许可证的可选数据。 |
-| parse_only |boolean。 true 或 false |解析许可证请求，但不颁发许可证。 但是，将在响应中返回许可证请求中的值。 |
+| parse_only |boolean。 true 或 false |解析许可证请求，但不颁发许可证。 但是，会在响应中返回许可证请求中的值。 |
 
 ## <a name="content-key-specs"></a>内容密钥规范
-如果有预先存在的策略，则不需要在内容密钥规范中指定任何值。  与此内容关联且预先存在的策略将用于确定输出保护，例如 HDCP 和 CGMS。  如果预先存在的策略未注册到 Widevine 许可证服务器，内容提供者可以在许可证请求中注入值。   
+如果有预先存在的策略，则不需要在内容密钥规范中指定任何值。与此内容关联且预先存在的策略用于确定输出保护，例如 HDCP 和 CGMS。  如果预先存在的策略未注册到 Widevine 许可证服务器，内容提供者可以在许可证请求中注入值。   
 
 无论选项 use_policy_overrides_exclusively 为何，都必须为所有跟踪指定每个 content_key_specs。 
 
@@ -84,7 +83,7 @@ Widevine 许可证请求将格式化为 JSON 消息。
 | content_key_specs。 track_type |字符串 |跟踪类型名称。 如果许可证请求中指定了 content_key_specs，请确保显式指定所有跟踪类型。 否则会导致无法播放过去 10 秒的内容。 |
 | content_key_specs  <br/> security_level |uint32 |定义客户端对播放稳定性的要求。 <br/> 1 - 需要基于软件的白盒加密。 <br/> 2 - 需要软件加密和模糊处理解码器。 <br/> 3 - 密钥材料和加密操作必须在硬件支持的受信任执行环境中执行。 <br/> 4 - 内容加密和解码必须在硬件支持的受信任执行环境中执行。  <br/> 5 - 加密、解码与媒体（压缩和未压缩）的所有处理必须在硬件支持的受信任执行环境中处理。 |
 | content_key_specs <br/> required_output_protection.hdc |字符串 - HDCP_NONE、HDCP_V1 或 HDCP_V2 |指示是否需要 HDCP |
-| content_key_specs <br/>key |Base64 <br/>编码的字符串 |用于此跟踪的内容密钥。 如果指定，则需要 track_type 或 key_id。  此选项可让内容提供者注入此跟踪的内容密钥，而不是让 Widevine 许可证服务器生成或查找密钥。 |
+| content_key_specs <br/>key |Base64 <br/>编码的字符串 |用于此跟踪的内容密钥。如果指定，则需要 track_type 或 key_id。  此选项可让内容提供者注入此跟踪的内容密钥，而不是让 Widevine 许可证服务器生成或查找密钥。 |
 | content_key_specs.key_id |Base64 编码的二进制字符串，16 字节 |密钥的唯一标识符。 |
 
 ## <a name="policy-overrides"></a>策略重写
@@ -106,11 +105,11 @@ Widevine 许可证请求将格式化为 JSON 消息。
 | Name | 值 | 说明 |
 | --- | --- | --- |
 | provider_session_token |Base64 编码的字符串 |此会话令牌将传回到许可证，并存在于后续的续订中。  会话令牌不在会话之外保存。 |
-| provider_client_token |Base64 编码的字符串 |要在许可证响应中返回的客户端令牌。  如果许可证请求包含客户端令牌，则忽略此值。 客户端令牌将在许可证会话之外保存。 |
+| provider_client_token |Base64 编码的字符串 |要在许可证响应中返回的客户端令牌。  如果许可证请求包含客户端令牌，则忽略此值。 客户端令牌会在许可证会话之外保存。 |
 | override_provider_client_token |boolean。 true 或 false |如果为 false 并且许可证请求包含客户端令牌，请使用来自请求的令牌，即使此结构中已指定客户端令牌。  如果为 true，则始终使用此结构中指定的令牌。 |
 
 ## <a name="configure-your-widevine-licenses-using-net-types"></a>使用 .NET 类型配置 Widevine 许可证
-媒体服务提供了可让你配置 Widevine 许可证的 .NET API。 
+媒体服务提供用于配置 Widevine 许可证的 .NET API。 
 
 ### <a name="classes-as-defined-in-the-media-services-net-sdk"></a>媒体服务 .NET SDK 中定义的类
 下面是这些类型的定义。

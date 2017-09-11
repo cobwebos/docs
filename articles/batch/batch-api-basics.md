@@ -16,10 +16,10 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 233965bf54cbca79c7ff059aaccfa5780d672cab
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c2f2a878414e4efd626d674ef9a182ae52eeb1ff
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
@@ -46,7 +46,7 @@ ms.lasthandoff: 08/18/2017
 以下部分介绍上述资源，以及可实现分布式计算方案的其他批处理资源。
 
 > [!NOTE]
-> 需要有[批处理帐户](#account)才能使用批处理服务。 此外，大多数 Batch 解决方案都可以使用 [Azure 存储][azure_storage]帐户存储和检索文件。 Batch 目前仅支持常规用途存储帐户类型，如[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)的[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)中的步骤 5 所述。
+> 需要有[批处理帐户](#account)才能使用批处理服务。 此外，大多数 Batch 解决方案都可以使用 [Azure 存储][azure_storage]帐户存储和检索文件。 Batch 目前仅支持常规用途存储帐户类型，如[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)的[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)中的步骤 5 所述。
 >
 >
 
@@ -114,7 +114,7 @@ ms.lasthandoff: 08/18/2017
 
 大多数 Batch 解决方案使用 Azure 存储来存储资源文件和输出文件。  
 
-Batch 目前仅支持常规用途存储帐户类型，如[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)的[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)中步骤 5 所述。 Batch 任务（包括标准任务、启动任务、作业准备任务和作业释放任务）只能指定位于常规用途存储帐户中的资源文件。
+Batch 目前仅支持常规用途存储帐户类型，如[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)的[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)中步骤 5 所述。 Batch 任务（包括标准任务、启动任务、作业准备任务和作业释放任务）只能指定位于常规用途存储帐户中的资源文件。
 
 
 ## <a name="compute-node"></a>计算节点

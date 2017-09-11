@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 08/18/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 80b58ac0a5a34a9ff573d161ca26dbfd2dba25c7
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 50bd4eb02be8f03baf186255429bec51c036aa43
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 07/25/2017
  
 ## <a name="whats-new-in-azure-cosmos-db-security"></a>Azure Cosmos DB 安全有什么新功能？
 
-现在，静态加密可用于所有 Azure 区域（政府区域、中国区 Azure 和德国区 Azure 除外）的 Azure Cosmos DB 中存储的文档。 下周将启用其余区域，还会备份静态加密。 对于这些区域中的新客户和现有客户，会自动应用静态加密。 无需进行任何配置；可获得与以前（即知道使用静态加密可确保数据安全之前）一样的出色延迟、吞吐量、可用性和功能。
+静态加密现已可用于所有 Azure 区域的 Azure Cosmos DB 中存储的文档和备份。 对于这些区域中的新客户和现有客户，会自动应用静态加密。 无需进行任何配置；可获得与以前（即知道使用静态加密可确保数据安全之前）一样的出色延迟、吞吐量、可用性和功能。
 
 ## <a name="how-do-i-secure-my-database"></a>如何保护我的数据库安全？ 
 

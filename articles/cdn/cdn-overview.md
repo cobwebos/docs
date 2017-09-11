@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 02/08/2017
 ms.author: v-semcev
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 0517f35a43e99181075dc5a6836e406c2c06824e
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 2706f22d2bc3e77a53f0a6a39dcbea8048879d01
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="overview-of-the-azure-content-delivery-network-cdn"></a>Azure 内容交付网络 (CDN) 概述
@@ -52,6 +52,8 @@ Azure 内容交付网络 (CDN) 将静态 Web 内容缓存在按特定策略布�
 | --- | --- | --- | --- |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __性能特色和优化__ |
 | [动态站点加速](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration) | **&#x2713;**  | **&#x2713;** | **&#x2713;** |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[动态站点加速 - 自适应图像压缩](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#adaptive-image-compression-akamai-only) | **&#x2713;**  |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[动态站点加速 - 对象预提取](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#object-prefetch-akamai-only) | **&#x2713;**  |  |  |
 | [视频流式处理优化](https://docs.microsoft.com/azure/cdn/cdn-media-streaming-optimization) | **&#x2713;**  | \* |  \* |
 | [大型文件优化](https://docs.microsoft.com/azure/cdn/cdn-large-file-optimization) | **&#x2713;**  | \* |  \* |
 | [全局服务器负载均衡 (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
@@ -62,7 +64,7 @@ Azure 内容交付网络 (CDN) 将静态 Web 内容缓存在按特定策略布�
 | [HTTP/2 支持](cdn-http2.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __安全性__ |
 | 对 CDN 终结点的 HTTPS 支持 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| 自定义域 HTTPS | |**&#x2713;** |**&#x2713;** |
+| [自定义域 HTTPS](cdn-custom-ssl.md) | |**&#x2713;** |**&#x2713;** |
 | [自定义域名支持](cdn-map-content-to-custom-domain.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [地理筛选](cdn-restrict-access-by-country.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [令牌身份验证](cdn-token-auth.md)|  |  |**&#x2713;**| 

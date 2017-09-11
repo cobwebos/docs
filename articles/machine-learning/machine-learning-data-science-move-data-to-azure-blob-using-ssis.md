@@ -15,11 +15,10 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 303d7b06d259bc42c8093fb20a0e4a55410e28f5
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 575beaea5443919bd9728016bf100b43de8e4aab
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>使用 SSIS 连接器将数据移入或移出 Azure Blob 存储
@@ -34,7 +33,7 @@ ms.lasthandoff: 07/11/2017
 若要深入了解使用 SSIS 完成混合数据集成方案中常见的业务需求的规范方案讨论，请参阅[Doing more with SQL Server Integration Services Feature Pack for Azure](http://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx)（使用用于 Azure 的 SQL Server Integration Services 功能包执行更多操作）博客。
 
 > [!NOTE]
-> 有关 Azure Blob 存储的完整介绍，请参阅 [Azure Blob 基本知识](../storage/storage-dotnet-how-to-use-blobs.md)和 [Azure Blob 服务](https://msdn.microsoft.com/library/azure/dd179376.aspx)。
+> 有关 Azure Blob 存储的完整介绍，请参阅 [Azure Blob 基本知识](../storage/blobs/storage-dotnet-how-to-use-blobs.md)和 [Azure Blob 服务](https://msdn.microsoft.com/library/azure/dd179376.aspx)。
 > 
 > 
 
@@ -42,7 +41,7 @@ ms.lasthandoff: 07/11/2017
 若要执行本文所述任务，必须设置 Azure 订阅和 Azure 存储帐户。 上传或下载数据之前，必须知道 Azure 存储帐户名和帐户密钥。
 
 * 若要设置 **Azure 订阅**，请参阅[免费试用一个月](https://azure.microsoft.com/pricing/free-trial/)。
-* 若要深入了解创建**存储帐户**的说明，以及获取帐户和密钥信息，请参阅[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)。
+* 若要深入了解创建**存储帐户**的说明，以及获取帐户和密钥信息，请参阅[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。
 
 若要使用 **SSIS 连接器**，则必须下载：
 
@@ -62,7 +61,7 @@ ms.lasthandoff: 07/11/2017
 此处所述的示例使用公开发布的数据集 - [NYC 出租车行程](http://www.andresmh.com/nyctaxitrips/)。 此数据集包含 2013 年纽约市内约 1.73 亿次出租车行程。 有两种类型的数据：行程详细信息数据和费用数据。 因为每个月都有一个文件，因此共有 24 个文件，每个未压缩的文件大约有 2GB。
 
 ## <a name="upload-data-to-azure-blob-storage"></a>将数据上传到 Azure Blob 存储
-若要使用 SSIS 功能包将数据从本地移动到 Azure Blob 存储，请使用[**Azure Blob 上传任务**](https://msdn.microsoft.com/library/mt146776.aspx)的实例，如下所示：
+要使用 SSIS 功能包将数据从本地移动到 Azure Blob 存储，使用[**Azure Blob 上传任务**](https://msdn.microsoft.com/library/mt146776.aspx)的实例，如下所示：
 
 ![configure-data-science-vm](./media/machine-learning-data-science-move-data-to-azure-blob-using-ssis/ssis-azure-blob-upload-task.png)
 
@@ -72,7 +71,7 @@ ms.lasthandoff: 07/11/2017
 | --- | --- |
 | **AzureStorageConnection** |指定现有 Azure 存储连接管理器或新建一个 Azure 存储连接管理器，该管理器引用指向 blob 文件的托管位置的 Azure 存储帐户。 |
 | **BlobContainer** |指定将上传的文件保存为 blob 的 blob 容器名称。 |
-| **BlobDirectory** |指定作为块 blob 存储的上传文件所在的 blob 目录。 该 blob 目录是一个虚拟层次结构。 如果 blob 已存在，其将被替代。 |
+| **BlobDirectory** |指定作为块 blob 存储的上传文件所在的 blob 目录。 该 blob 目录是一个虚拟层次结构。 如果 blob 已存在，其会被替代。 |
 | **LocalDirectory** |指定包含要上传的文件的本地目录。 |
 | **FileName** |指定名称筛选器以选择具有指定名称模式的文件。 例如，MySheet\*.xls\* 包括 MySheet001.xls 和 MySheetABC.xlsx 等文件 |
 | **TimeRangeFrom/TimeRangeTo** |指定时间范围筛选器。 包括在 *TimeRangeFrom* 之后且在 *TimeRangeTo* 之前所修改的文件。 |

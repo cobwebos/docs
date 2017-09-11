@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory 基于证书的身份验证 | Microsoft Docs"
-description: "了解如何在你的环境中配置基于证书的身份验证"
+description: "了解如何在环境中配置基于证书的身份验证"
 author: MarkusVi
 documentationcenter: na
 manager: femila
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.date: 08/02/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: c32f2ca2c799332652d38d882a4d6337bade4f93
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 8ebc6f2dd7502fd75ffdd4d5d68338382cb1a46b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory 中基于证书的身份验证入门
 
-如果使用基于证书的身份验证，当你在 Windows、Android 或 iOS 设备上将 Exchange Online 帐户连接到以下对象时，将由 Azure Active Directory 使用客户端证书对你进行身份验证： 
+如果使用基于证书的身份验证，在 Windows、Android 或 iOS 设备上将 Exchange Online 帐户连接到以下对象时，由 Azure Active Directory 使用客户端证书对你进行身份验证： 
 
 - Office 移动应用程序，例如 Microsoft Outlook 和 Microsoft Word   
 
@@ -41,6 +41,8 @@ ms.lasthandoff: 05/18/2017
 
 若要配置基于证书的身份验证，必须满足以下条件：  
 
+- 仅使用新式身份验证 (ADAL) 的浏览器应用程序或本机客户端的联合环境支持基于证书的身份验证 (CBA)。 Exchange Active Sync (EAS) for EXO 除外，其可用于联盟帐户和托管帐户这两者。 
+
 - 必须在 Azure Active Directory 中配置根证书颁发机构和任何中间证书颁发机构。  
 
 - 每个证书颁发机构必须有一个可通过面向 Internet 的 URL 引用的证书吊销列表 (CRL)。  
@@ -51,14 +53,14 @@ ms.lasthandoff: 05/18/2017
 
 - 客户端设备必须至少可以访问一个颁发客户端证书的证书颁发机构。  
 
-- 用于客户端身份验证的客户端证书必须已颁发给你的客户端。  
+- 用于客户端身份验证的客户端证书必须已颁发给客户端。  
 
 
 
 
 ## <a name="step-1-select-your-device-platform"></a>步骤 1：选择设备平台
 
-第一步，对于你关注的设备平台，需了解以下内容：
+第一步，对于关注的设备平台，需了解以下内容：
 
 - Office 移动应用程序支持 
 - 特定的实现要求  
@@ -125,7 +127,7 @@ ms.lasthandoff: 05/18/2017
 
 ### <a name="add"></a>添加
 
-若要创建受信任的证书颁发机构，请使用 [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet，并将 **crlDistributionPoint** 属性设为正确的值： 
+要创建受信任的证书颁发机构，请使用 [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet，并将 **crlDistributionPoint** 属性设为正确的值： 
    
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]" 
     $new_ca=New-Object -TypeName Microsoft.Open.AzureAD.Model.CertificateAuthorityInformation 
@@ -154,11 +156,11 @@ ms.lasthandoff: 05/18/2017
 
 ## <a name="step-3-configure-revocation"></a>步骤 3：配置吊销
 
-若要吊销客户端证书，Azure Active Directory 会从作为证书颁发机构信息的一部分上传的 URL 中提取证书吊销列表 (CRL)，并将其缓存。 CRL 中的上次发布时间戳（“生效日期”属性）用于确保 CRL 仍然有效。 将定期引用 CRL，以撤销对该列表中证书的访问权限。
+要吊销客户端证书，Azure Active Directory 会从作为证书颁发机构信息的一部分上传的 URL 中提取证书吊销列表 (CRL)，并将其缓存。 CRL 中的上次发布时间戳（“生效日期”属性）用于确保 CRL 仍然有效。 将定期引用 CRL，以撤销对该列表中证书的访问权限。
 
 如果需要更即时的吊销（例如，如果用户丢失了设备），可以使用户的授权令牌失效。 若要使授权令牌失效，请使用 Windows PowerShell 为此特定用户设置 **StsRefreshTokenValidFrom** 字段。 必须为要撤销其访问权限的每个用户更新 **StsRefreshTokenValidFrom** 字段。
 
-若要确保撤销仍然有效，必须将 CRL 的**生效日期**设置为晚于 **StsRefreshTokenValidFrom** 所设置的值，并确保相关的证书在 CRL 中。
+要确保撤销仍然有效，必须将 CRL 的**生效日期**设置为晚于 **StsRefreshTokenValidFrom** 所设置的值，并确保相关的证书在 CRL 中。
 
 以下步骤概述了通过设置 **StsRefreshTokenValidFrom** 字段更新授权令牌并使其失效的过程。 
 
@@ -199,9 +201,9 @@ ms.lasthandoff: 05/18/2017
 
 1. 在测试设备上，安装 Office 移动应用程序（例如 OneDrive）。
 3. 启动应用程序。 
-4. 输入用户名，然后选择要使用的用户证书。 
+4. 输入用户名，并选择要使用的用户证书。 
 
-你应可以成功登录。 
+应可以成功登录。 
 
 ### <a name="testing-exchange-activesync-client-applications"></a>测试 Exchange ActiveSync 客户端应用程序
 

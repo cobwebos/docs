@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: nini
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: a9d1b05e8f6740cb7c5ccf15dbe33b15bdbe27b0
+ms.translationtype: HT
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: ca86787e344aa5e9e68934dee6e9e83aeb4cc340
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/14/2017
 
 ---
 # <a name="assess-azure-service-fabric-applications-and-micro-services-with-powershell"></a>使用 PowerShell 评估 Azure Service Fabric 应用程序和微服务
@@ -32,14 +31,21 @@ ms.lasthandoff: 07/06/2017
 
 ![Service Fabric 符号](./media/log-analytics-service-fabric/service-fabric-assessment-symbol.png)
 
-本文介绍了如何通过了解 Service Fabric 节点的执行状况及应用程序和微服务的运行状况来使用 Log Analytics 中的 Service Fabric 解决方案帮助识别和解决 Service Fabric 群集中的问题。
+本文介绍如何使用 Log Analytics 中的 Service Fabric 解决方案帮助识别和解决 Service Fabric 群集中的问题。 它可帮助你了解如何执行 Service Fabric 节点，以及应用程序和微服务的运行方式。
 
-Service Fabric 解决方案通过从 Azure WAD 表中收集相关数据来使用 Service Fabric VM 中的 Azure 诊断数据。 然后，Log Analytics 读取 Service Fabric 框架事件，其中包括“**可靠服务事件**”、“**执行组件事件**”、“**操作事件**”和“**自定义 ETW 事件**”。 Service Fabric 解决方案仪表板显示 Service Fabric 环境中值得注意的问题和相关事件。
+Service Fabric 解决方案通过从 Azure WAD 表中收集相关数据来使用 Service Fabric VM 中的 Azure 诊断数据。 Log Analytics 然后读取以下 Service Fabric 框架事件：
+
+- **可靠服务事件**
+- **执行组件事件**
+- **操作事件**
+- **自定义 ETW 事件**
+
+Service Fabric 解决方案仪表板显示 Service Fabric 环境中值得注意的问题和相关事件。
 
 ## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
 遵循以下三个简单的步骤安装和配置解决方案：
 
-1. 请确保使用的 Log Analytics 工作区和用来创建所有群集资源的 Azure 订阅关联（包括存储帐户）。 请参阅 [Log Analytics 入门](log-analytics-get-started.md)，了解有关创建 Log Analytics 工作区的信息。
+1. 将用于创建所有群集资源（包括存储帐户）的 Azure 订阅与你的工作区关联。 请参阅 [Log Analytics 入门](log-analytics-get-started.md)，了解有关创建 Log Analytics 工作区的信息。
 2. 配置 Log Analytics 以收集和查看 Service Fabric 日志。
 3. 在工作区中启用 Service Fabric 解决方案。
 
@@ -47,11 +53,11 @@ Service Fabric 解决方案通过从 Azure WAD 表中收集相关数据来使用
 在本节中将了解如何配置 Log Analytics 以检索 Service Fabric 日志。 借助日志，你可以使用 OMS 门户查看、分析和解决群集或该群集中运行的应用程序和服务中的问题。
 
 > [!NOTE]
-> 必须将 Azure 诊断扩展配置为将日志上传到与 Log Analytics 搜索目标匹配的存储表。 有关详细信息，请参阅[如何使用 Azure 诊断收集日志](../service-fabric/service-fabric-diagnostics-how-to-setup-wad.md)。 本文中的配置设置示例将显示存储表的名称。 在群集上设置“诊断”且并将日志上传到存储帐户后，下一步是配置 Log Analytics 以收集这些日志。
+> 配置 Azure 诊断扩展，以上传存储表日志。 此表必须与 Log Analytics 寻找的表匹配。 有关详细信息，请参阅[如何使用 Azure 诊断收集日志](../service-fabric/service-fabric-diagnostics-how-to-setup-wad.md)。 本文中的配置设置示例会显示存储表的名称。 在群集上设置“诊断”且并将日志上传到存储帐户后，下一步是配置 Log Analytics 以收集这些日志。
 >
 >
 
-请确保先更新“**template.json**”中的“**EtwEventSourceProviderConfiguration**”部分，以为新的 EventSources 添加条目，然后再通过运行“**deploy.ps1**”应用配置更新。 要上传的表与 (ETWEventTable) 相同。 目前，Log Analytics 只能从 WADETWEventTable 表中读取应用程序 ETW 事件。
+请确保先更新“**template.json**”中的“**EtwEventSourceProviderConfiguration**”部分，以为新的 EventSources 添加条目，再通过运行“**deploy.ps1**”应用配置更新。 要上传的表与 (ETWEventTable) 相同。 目前，Log Analytics 只能从 WADETWEventTable 表中读取应用程序 ETW 事件。
 
 以下工具用于执行本节中的某些操作：
 
@@ -59,7 +65,8 @@ Service Fabric 解决方案通过从 Azure WAD 表中收集相关数据来使用
 * [Operations Management Suite](http://www.microsoft.com/oms)
 
 ### <a name="configure-a-log-analytics-workspace-to-show-the-cluster-logs"></a>配置 Log Analytics 工作区以显示群集日志
-如上所述创建 Log Analytics 工作区之后，接下来请配置工作区，以便从 Azure 存储表中拉取诊断扩展从群集上传的日志。 运行以下 PowerShell 脚本以实现此操作：
+
+创建 Log Analytics 工作区后，配置工作区以从 Azure 存储表中拉取日志。 然后，运行以下 PowerShell 脚本：
 
 ```
 <#
@@ -291,7 +298,7 @@ $workspace = Select-Workspace
 $storageAccount = Select-StorageAccount
 ```
 
-配置 Log Analytics 工作区读取存储帐户中的 Azure 表后，登录 Azure 门户，并在“全部资源”中选择“ Log Analytics 工作区”。 选择后，应看到连接到该 Log Analytics 工作区的存储帐户日志的数量。 选择“存储帐户日志”磁贴，并在存储帐户日志列表中验证存储帐户是否已连接到该 Log Analytics 工作区：
+配置 Log Analytics 工作区读取存储帐户中的 Azure 表后，登录 Azure 门户。 在“全部资源”中选择“Log Analytics 工作区”。 将显示连接到工作区的存储帐户日志数量。 选择“存储帐户日志”磁贴。 查看存储帐户日志列表，以验证你的存储帐户已连接到正确的工作区。
 
 ![存储帐户日志](./media/log-analytics-service-fabric/sf1.png)
 
@@ -347,38 +354,42 @@ $workspace = Select-Workspace
 Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -IntelligencePackName "ServiceFabric" -Enabled $true
 ```
 
-启用解决方案后，Service Fabric 磁贴将添加到 Log Analytics 的“概述”页面，并附带值得注意的问题视图，例如 runAsync 故障和最近 24 小时内发生的取消等。
+在启用解决方案后，将 Service Fabric 磁贴添加到 Log Analytics 概述页。 该页面会显示值得注意的问题，例如过去 24 小时内出现的 runAsync 故障和取消。
 
 ![Service Fabric 磁贴](./media/log-analytics-service-fabric/sf2.png)
 
 ### <a name="view-service-fabric-events"></a>查看 Service Fabric 事件
-单击“**Service Fabric**”磁贴打开 Service Fabric 仪表板。 仪表板包含下表中的列。 每个列按照指定时间范围内符合该列条件的计数列出了前 10 个事件。 可以通过在每一列右下方单击“查看全部”或单击列标题来运行提供整个列表的日志搜索。
+单击“**Service Fabric**”磁贴打开 Service Fabric 仪表板。 该仪表板包含下表中的列。 每个列按照指定时间范围内符合该列条件的计数列出了前 10 个事件。 可以通过在每一列右下方单击“查看全部”或单击列标题来运行提供整个列表的日志搜索。
 
 | **Service Fabric 事件** | **说明** |
 | --- | --- |
-| 值得注意的问题 |显示 RunAsyncFailures RunAsynCancellations 和 Node Down 等问题。 |
-| 操作事件 |应用程序升级和部署等值得注意的操作事件。 |
-| 可靠服务事件 |Runasyncinvocations 等值得注意的可靠服务事件。 |
-| 执行组件事件 |由微服务生成的值得注意的执行组件事件，例如执行组件方法产生的异常、执行组件激活和停用等。 |
-| 应用程序事件 |由应用程序生成的所有自定义 ETW 事件。 |
+| 值得注意的问题 | 显示 RunAsyncFailures、RunAsynCancellations 和 Node Downs 等问题。 |
+| 操作事件 | 显示应用程序升级和部署等值得注意的操作事件。 |
+| 可靠服务事件 | 显示 Runasyncinvocations 等值得注意的可靠服务事件。 |
+| 执行组件事件 | 显示微服务生成的值得注意的执行组件事件。 事件包括由执行组件方法、执行组件激活和停用等引发的异常。 |
+| 应用程序事件 | 显示由应用程序生成的所有自定义 ETW 事件。 |
 
 ![Service Fabric 仪表板](./media/log-analytics-service-fabric/sf3.png)
 
 ![Service Fabric 仪表板](./media/log-analytics-service-fabric/sf4.png)
 
-下表显示了数据收集方法和有关如何为 Service Fabric 收集数据的其他详细信息。
+下表显示了数据收集方法和有关如何为 Service Fabric 收集数据的其他详细信息：
 
 | 平台 | 直接代理 | Operations Manager 代理 | Azure 存储 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |![否](./media/log-analytics-malware/oms-bullet-red.png) |![否](./media/log-analytics-malware/oms-bullet-red.png) |![是](./media/log-analytics-malware/oms-bullet-green.png) |![否](./media/log-analytics-malware/oms-bullet-red.png) |![否](./media/log-analytics-malware/oms-bullet-red.png) |10 分钟 |
+| Windows |  |  | &#8226; |  |  |10 分钟 |
 
 > [!NOTE]
-> 可以通过单击仪表板顶部的“**基于最近 7 天的数据**”，更改这些事件在 Service Fabric 解决方案中的作用域。 还可以显示最近 7 天、1 天或 6 小时内生成的事件。 或者，可以选择“**自定义**”来指定自定义的日期范围。
+> 在仪表板顶部，使用“基于最后七天的数据”更改事件的范围。 还可以显示最近 7 天、1 天或 6 小时内生成的事件。 或者，可以选择“**自定义**”来指定自定义的日期范围。
 >
 >
 
 ## <a name="troubleshoot-your-service-fabric-and-log-analytics-configuration"></a>Service Fabric 和 Log Analytics 配置故障排除
-如果因无法在 Log Analytics 中查看事件数据而需要检查 Log Analytics 配置，请使用以下脚本。 该脚本读取 Service Fabric 诊断配置，检查要写入表中的数据，并验证是否将 Log Analytics 配置为从表中读取。
+如果因无法在 Log Analytics 中查看事件数据而需要检查 Log Analytics 配置，请使用以下脚本。 它将执行以下操作：
+
+1. 读取 Service Fabric 诊断配置
+2. 检查写入表的数据
+3. 验证 Log Analytics 配置为从表中读取
 
 ```
 <#

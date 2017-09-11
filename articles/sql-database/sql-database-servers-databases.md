@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 07/05/2017
+ms.date: 07/19/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: ef61aa610957024d85f4231d957869858fd545c5
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 8a44f10eda396aec72e05e87e406ff80834294d8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 
@@ -31,8 +31,8 @@ Azure SQL 数据库是 Microsoft Azure 中的托管数据库，通过一组定�
 
 Azure SQL 数据库可以是：
 
-- 具有其[自己的一组资源](sql-database-what-is-a-dtu.md#what-are-database-transaction-units-dtus) (DTU) 的单一数据库
-- 属于[共享一组资源](sql-database-what-is-a-dtu.md#what-are-elastic-database-transaction-units-edtus)的 [SQL 弹性池](sql-database-elastic-pool.md) (eDTU)
+- 具有其[自己的一组资源](sql-database-single-database-resources.md)的单一数据库
+- 共享一组资源的[弹性池](sql-database-elastic-pool.md)的一部分
 - [向外扩展的一组共享数据库](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling)的一部分，可以是单一数据库，也可以是入池数据库
 - 参与[多租户 SaaS 设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)的一组数据库的一部分，数据库可以是单一数据库或入池数据库（或两者） 
 
@@ -46,11 +46,11 @@ Azure SQL 数据库可以是：
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>什么是 Aure SQL 逻辑服务器？
 
-逻辑服务器用作多个数据库的中心管理点，包括 [SQL 弹性池](sql-database-elastic-pool.md)、[登录名](sql-database-manage-logins.md)、[防火墙规则](sql-database-firewall-configure.md)、[审核规则](sql-database-auditing.md)、[威胁检测策略](sql-database-threat-detection.md)和[故障转移组](sql-database-geo-replication-overview.md)。 逻辑服务器可以与其资源组位于不同的区域。 必须先创建逻辑服务器，然后才能创建 Azure SQL 数据库。 服务器上的所有数据库都在逻辑服务器所在的同一区域内创建而成。 
+逻辑服务器用作多个数据库的中心管理点，包括[弹性池](sql-database-elastic-pool.md)、[登录名](sql-database-manage-logins.md)、[防火墙规则](sql-database-firewall-configure.md)、[审核规则](sql-database-auditing.md)、[威胁检测策略](sql-database-threat-detection.md)和[故障转移组](sql-database-geo-replication-overview.md)。 逻辑服务器可以与其资源组位于不同的区域。 必须先创建逻辑服务器，然后才能创建 Azure SQL 数据库。 服务器上的所有数据库都在逻辑服务器所在的同一区域内创建而成。 
 
 
 > [!IMPORTANT]
-> 在 SQL 数据库中，服务器是一个逻辑构造，它不同于你在本地环境中可能已熟悉的 SQL Server 实例。 具体而言，SQL 数据库服务不保证数据库相对于其逻辑服务器的位置，并且不公开实例级访问权限或功能。
+> 在 SQL 数据库中，服务器是一个逻辑构造，它不同于在本地环境中可能已熟悉的 SQL Server 实例。 具体而言，SQL 数据库服务不保证数据库相对于其逻辑服务器的位置，并且不公开实例级访问权限或功能。
 > 
 
 创建逻辑服务器时，提供服务器登录帐户和密码，此凭据有权管理服务器上的 master 数据库及其上创建的所有数据库。 这一初始帐户就是 SQL 登录帐户。 Azure SQL 数据库支持结合使用 SQL 身份验证和 Azure Active Directory 身份验证以进行身份验证。 若要详细了解登录名和身份验证，请参阅[在 Azure SQL 数据库中管理数据库和登录名](sql-database-manage-logins.md)。 不支持 Windows 身份验证。 
@@ -79,7 +79,7 @@ Azure 数据库逻辑服务器：
 
 ## <a name="azure-sql-databases-protected-by-sql-database-firewall"></a>Azure SQL 数据库受 SQL 数据库防火墙保护
 
-为了帮助保数据，[SQL 数据库防火墙](sql-database-firewall-configure.md)会阻止通过以下方式访问数据库服务器或其所有数据库：不是直接通过 Azure 订阅连接与服务器相连。 若要启用其他连接方案，必须[创建一个或多个防火墙规则](sql-database-firewall-configure.md#creating-and-managing-firewall-rules)。 若要创建并管理 SQL 弹性池，请参阅[弹性池](sql-database-elastic-pool.md)。
+为了帮助保数据，[SQL 数据库防火墙](sql-database-firewall-configure.md)会阻止通过以下方式访问数据库服务器或其所有数据库：不是直接通过 Azure 订阅连接与服务器相连。 若要启用其他连接方案，必须[创建一个或多个防火墙规则](sql-database-firewall-configure.md#creating-and-managing-firewall-rules)。 若要创建并管理弹性池，请参阅[弹性池](sql-database-elastic-pool.md)。
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-portal"></a>使用 Azure 门户管理 Azure SQL 服务器、数据库和防火墙
 
@@ -99,7 +99,8 @@ Azure 数据库逻辑服务器：
 
   ![创建数据库 - 1](./media/sql-database-get-started-portal/create-database-1.png)
 
-> [重要说明] 若要了解如何选择数据库定价层，请参阅[服务层](sql-database-service-tiers.md)。
+> [!IMPORTANT]
+> 有关如何选择数据库定价层的信息，请参阅[服务层](sql-database-service-tiers.md)。
 >
 
 ### <a name="manage-an-existing-sql-server"></a>管理现有 SQL 服务器
@@ -122,7 +123,7 @@ Azure 数据库逻辑服务器：
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-powershell"></a>使用 PowerShell 管理 Azure SQL 服务器、数据库和防火墙
 
-若要使用 Azure PowerShell 创建并管理 Azure SQL 服务器、数据库和防火墙，请运行以下 PowerShell cmdlet。 如果需要安装或升级 PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 若要创建并管理 SQL 弹性池，请参阅[弹性池](sql-database-elastic-pool.md)。
+若要使用 Azure PowerShell 创建并管理 Azure SQL 服务器、数据库和防火墙，请运行以下 PowerShell cmdlet。 如果需要安装或升级 PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 若要创建并管理弹性池，请参阅[弹性池](sql-database-elastic-pool.md)。
 
 | Cmdlet | 说明 |
 | --- | --- |
@@ -146,7 +147,7 @@ Azure 数据库逻辑服务器：
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-cli"></a>使用 Azure CLI 管理 Azure SQL 服务器、数据库和防火墙
 
-若要使用 [Azure CLI](/cli/azure/overview) 创建并管理 Azure SQL 服务器、数据库和防火墙，请运行 [Azure CLI SQL 数据库](/cli/azure/sql/db)命令。 使用 [Cloud Shell](/azure/cloud-shell/overview) 在浏览器中运行 CLI，或者在 macOS、Linux 或 Windows 上[安装](/cli/azure/install-azure-cli)它。 若要创建并管理 SQL 弹性池，请参阅[弹性池](sql-database-elastic-pool.md)。
+若要使用 [Azure CLI](/cli/azure/overview) 创建并管理 Azure SQL 服务器、数据库和防火墙，请运行 [Azure CLI SQL 数据库](/cli/azure/sql/db)命令。 使用 [Cloud Shell](/azure/cloud-shell/overview) 在浏览器中运行 CLI，或者在 macOS、Linux 或 Windows 上[安装](/cli/azure/install-azure-cli)它。 若要创建并管理弹性池，请参阅[弹性池](sql-database-elastic-pool.md)。
 
 | Cmdlet | 说明 |
 | --- | --- |
@@ -176,7 +177,7 @@ Azure 数据库逻辑服务器：
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-transact-sql"></a>使用 Transact-SQL 管理 Azure SQL 服务器、数据库和防火墙
 
-若要使用 Transact-SQL 创建并管理 Azure SQL 服务器、数据库和防火墙，请运行以下 T-SQL 命令。 可以使用 Azure 门户、[SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、[Visual Studio Code](https://code.visualstudio.com/docs) 或可以连接到 Azure SQL 数据库服务器并传递 Transact-SQL 命令的其他任何程序，发出这些命令。 若要了解如何管理 SQL 弹性池，请参阅[弹性池](sql-database-elastic-pool.md)。
+若要使用 Transact-SQL 创建并管理 Azure SQL 服务器、数据库和防火墙，请运行以下 T-SQL 命令。 可以使用 Azure 门户、[SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、[Visual Studio Code](https://code.visualstudio.com/docs) 或可以连接到 Azure SQL 数据库服务器并传递 Transact-SQL 命令的其他任何程序，发出这些命令。 若要管理弹性池，请参阅[弹性池](sql-database-elastic-pool.md)。
 
 > [!IMPORTANT]
 > 无法使用 Transact-SQL 创建或删除服务器。
@@ -206,11 +207,33 @@ Azure 数据库逻辑服务器：
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-rest-api"></a>使用 REST API 管理 Azure SQL 服务器、数据库和防火墙
 
-若要使用 REST API 创建并管理 Azure SQL 服务器、数据库和防火墙，请参阅 [Azure SQL 数据库 REST API](/rest/api/sql/)。
+若要创建并管理 Azure SQL 服务器、数据库和防火墙，请使用以下 REST API 请求。
+
+| 命令 | 说明 |
+| --- | --- |
+|[Servers - Create Or Update](/rest/api/sql/servers/createorupdate)|创建或更新新服务器。|
+|[Servers - Delete](/rest/api/sql/servers/delete)|删除 SQL Server。|
+|[Servers - Get](/rest/api/sql/servers/get)|获取服务器。|
+|[Servers - List](/rest/api/sql/servers/list)|返回服务器的列表。|
+|[Servers - List By Resource Group](/rest/api/sql/servers/listbyresourcegroup)|返回资源组中服务器的列表。|
+|[Servers - Update](/rest/api/sql/servers/update)|更新现有服务器。|
+|[Servers - Sql](/rest/api/sql/servers%20-%20sql)|判断是否能使用指定名称创建资源。|
+|[Databases - Create Or Update](/rest/api/sql/databases/createorupdate)|创建新数据库或更新现有数据库。|
+|[Databases - Get](/rest/api/sql/databases/get)|获取数据库。|
+|[Databases - Get By Elastic Pool](/rest/api/sql/databases/getbyelasticpool)|获取弹性池内的数据库。|
+|[Databases - Get By Recommended Elastic Pool](/rest/api/sql/databases/getbyrecommendedelasticpool)|获取推荐弹性池内的数据库。|
+|[Databases - List By Elastic Pool](/rest/api/sql/databases/listbyelasticpool)|返回弹性池中数据库的列表。|
+|[Databases - List By Recommended Elastic Pool](/rest/api/sql/databases/listbyrecommendedelasticpool)|返回推荐弹性池内的数据库列表。|
+|[Databases - List By Server](/rest/api/sql/databases/listbyserver)|返回服务器中的数据库列表。|
+|[Databases - Update](/api/sql/databases/update)|更新现有的数据库。|
+|[Firewall Rules - Create Or Update](/rest/api/sql/firewallrules/createorupdate)|创建或更新防火墙规则。|
+|[Firewall Rules - Delete](/rest/api/sql/firewallrules/delete)|删除防火墙规则。|
+|[Firewall Rules - Get](/rest/api/sql/firewallrules/get)|获取防火墙规则。|
+|[Firewall Rules - List By Server](/rest/api/sql/firewallrules/listbyserver)|返回防火墙规则的列表。|
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何使用 SQL 弹性池来共用数据库，请参阅[弹性池](sql-database-elastic-pool.md)。
+- 若要了解如何使用弹性池来共用数据库，请参阅[弹性池](sql-database-elastic-pool.md)。
 - 若要了解 Azure SQL 数据库服务，请参阅[什么是 SQL 数据库？](sql-database-technical-overview.md)。
 - 若要详细了解如何将 SQL Server 数据库迁移到 Azure，请参阅[迁移到 Azure SQL 数据库](sql-database-cloud-migrate.md)。
 - 有关支持的功能的信息，请参阅[功能](sql-database-features.md)。

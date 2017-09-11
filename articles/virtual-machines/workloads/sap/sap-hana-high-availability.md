@@ -74,7 +74,7 @@ ms.lasthandoff: 07/31/2017
 ## <a name="deploying-linux"></a>部署 Linux
 
 SUSE Linux Enterprise Server for SAP Applications 中已随附 SAP HANA 的资源代理。
-Azure 应用商店中包含 SUSE Linux Enterprise Server for SAP Applications 12 的映像，可以使用该映像中的 BYOS（自带订阅）部署新的虚拟机。
+Azure Marketplace 中包含 SUSE Linux Enterprise Server for SAP Applications 12 的映像，可以使用该映像中的 BYOS（自带订阅）部署新的虚拟机。
 
 ### <a name="manual-deployment"></a>手动部署
 

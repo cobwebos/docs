@@ -6,6 +6,14 @@
 ### [概述](data-science-process-overview.md)
 ### [生命周期](data-science-process-lifecycle.md)
 ### [演练](data-science-process-walkthroughs.md)
+####[将 Spark 与 PySpark 和 Scala 配合使用](data-science-process-walkthroughs-spark.md)
+##### [浏览数据](machine-learning-data-science-spark-data-exploration-modeling.md)
+##### [评分模型](machine-learning-data-science-spark-model-consumption.md)
+##### [高级数据浏览](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)
+####[将 Hive 与 HDInsight Hadoop 配合使用](data-science-process-walkthroughs-hdinsight-hadoop.md)
+####[将 U-SQL 与 Azure Data Lake 配合使用](data-science-process-walkthroughs-azure-data-lake.md)
+####[将 R、Python 和 T-SQL 与 SQL Server 配合使用](data-science-process-walkthroughs-sql-server.md)
+####[将 T-SQL 和 Python 与 SQL DW 配合使用](data-science-process-walkthroughs-sql-data-warehouse.md)
 ### [使用 Azure ML](http://aka.ms/datascienceprocess)
 
 ## 机器学习工作室
@@ -100,12 +108,6 @@
 ##### [使用 Azure Data Lake](machine-learning-data-science-process-data-lake-walkthrough.md)
 ##### [使用 SQL VM](machine-learning-data-science-process-sql-server-virtual-machine.md)
 ##### [使用数据管道](machine-learning-automated-data-pipeline-cheat-sheet.md)
-#### 使用 Spark 处理数据
-##### [概述](machine-learning-data-science-spark-overview.md)
-##### [浏览数据](machine-learning-data-science-spark-data-exploration-modeling.md)
-##### [评分模型](machine-learning-data-science-spark-model-consumption.md)
-##### [高级数据浏览](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)
-##### [使用 Scala 和 Spark](machine-learning-data-science-process-scala-walkthrough.md)
 
 ## 开发模型
 ### 设计和选择功能
@@ -166,11 +168,7 @@
 ### [示例试验](machine-learning-sample-experiments.md)
 ### [示例数据集](machine-learning-use-sample-datasets.md)
 ### [客户流失示例](machine-learning-azure-ml-customer-churn-scenario.md)
-### 端到端方案
-#### [使用 Hadoop 群集](machine-learning-data-science-process-hive-walkthrough.md)
-#### [将 Hadoop 与 1TB 配合使用](machine-learning-data-science-process-hive-criteo-walkthrough.md)
-#### [使用 SQL Server](machine-learning-data-science-process-sql-walkthrough.md)
-#### [使用 SQL 数据仓库](machine-learning-data-science-process-sqldw-walkthrough.md)
+
 
 # 引用
 

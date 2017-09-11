@@ -18,10 +18,10 @@ ms.date: 07/25/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 851ce819b9a1a0d917981223cc54e959b3306709
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: f02ee61ef1cd3b3dfaa051cfabe52866e3e7e838
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 
@@ -62,10 +62,10 @@ git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 
 使用 [Docker Compose](https://docs.docker.com/compose/)，可自动根据容器映像生成并部署多容器应用程序。
 
-运行 docker compose.yaml 文件，以创建容器映像、下载 Redis 映像和启动应用程序。
+运行 docker compose.yml 文件，创建容器映像、下载 Redis 映像和启动应用程序。
 
 ```bash
-docker-compose -f ./azure-voting-app-redis/docker-compose.yaml up -d
+docker-compose -f ./azure-voting-app-redis/docker-compose.yml up -d
 ```
 
 完成后，使用 [docker images](https://docs.docker.com/engine/reference/commandline/images/) 命令查看创建的映像。
@@ -110,13 +110,13 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 运行以下命令，停止正在运行的容器。
 
 ```bash
-docker-compose -f ./azure-voting-app-redis/docker-compose.yaml stop
+docker-compose -f ./azure-voting-app-redis/docker-compose.yml stop
 ```
 
 使用以下命令删除已停止的容器。
 
 ```bash
-docker-compose -f ./azure-voting-app-redis/docker-compose.yaml rm
+docker-compose -f ./azure-voting-app-redis/docker-compose.yml rm
 ```
 
 完成后，便拥有包含 Azure Vote 应用程序的容器映像。

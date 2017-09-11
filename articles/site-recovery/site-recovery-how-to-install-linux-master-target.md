@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 02/13/2017
+ms.date: 08/11/2017
 ms.author: ruturajd
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 9c057534ae8168146d389a1d76213d48e24ae9cb
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 5341e3e56e0c366079958dd9a885f6ee3e8436cb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="install-a-linux-master-target-server"></a>安装 Linux 主目标服务器
@@ -50,6 +50,15 @@ ms.lasthandoff: 07/24/2017
 - OS 磁盘大小：100GB 或更多（用于安装 CentOS6.6）
 - 保留驱动器的附加磁盘大小：1TB
 - CPU 内核数：4 个内核或更多
+
+支持以下受支持的 Ubuntu 内核。
+
+
+|内核系列  |最高支持  |
+|---------|---------|
+|4.4      |4.4.0-81-generic         |
+|4.8      |4.8.0-56-generic         |
+|4.10     |4.10.0-24-generic        |
 
 
 ## <a name="deploy-the-master-target-server"></a>部署主目标服务器
@@ -198,9 +207,9 @@ ms.lasthandoff: 07/24/2017
 
 #### <a name="disable-kernel-upgrades"></a>禁用内核升级
 
-由于 Azure Site Recovery 主目标服务器需要非常特定的 Ubuntu 版本，因此请确保已为虚拟机禁用内核升级。
+Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保已为虚拟机禁用内核升级。
 
- 如果启用，则任意常规升级都会导致主目标服务器无法正常工作。
+如果启用，则任意常规升级都会导致主目标服务器无法正常工作。
 
 #### <a name="download-and-install-additional-packages"></a>下载并安装其他包
 

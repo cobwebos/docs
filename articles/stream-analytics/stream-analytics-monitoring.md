@@ -4,7 +4,7 @@ description: "了解流分析作业监视"
 keywords: "查询监视器"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 5f5cc00f-4a7b-491e-89e1-dbafea46d399
@@ -14,19 +14,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: cb736d60f4a22eb3fd1e4659e913886dfcc5b9aa
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: cbefaaaf63607e9d9483500e48d8f1735f8c0b60
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>了解流分析作业监视以及如何监视查询
 
 ## <a name="introduction-the-monitor-page"></a>简介：“监视”页
-Azure 门户提供了可用于监视和排查查询和作业性能问题的关键性能指标。 若要查看这些指标，请浏览到你感兴趣的想要查看其指标的流分析作业，并查看“概览”页面上的“监视”部分。  
+Azure 门户提供了可用于监视和排查查询和作业性能问题的关键性能指标。 要查看这些指标，请浏览到感兴趣的想要查看其指标的流分析作业，并查看“概览”页面上的“监视”部分。  
 
 ![监视链接](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
 
@@ -57,7 +56,7 @@ Azure 门户提供了可用于监视和排查查询和作业性能问题的关�
 
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/28/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 35b7e0a730d73f646462b9cde3c8bbabac4d7c67
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 8355478cb2fff3a63bc4a9b359ec8e2b132c80f6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -33,6 +33,7 @@ ms.lasthandoff: 08/16/2017
 * 一台运行以下软件的开发计算机：
   * [Service Fabric SDK 和工具](service-fabric-get-started-linux.md)。
   * [适用于 Linux 的 Docker CE](https://docs.docker.com/engine/installation/#prior-releases)。 
+  * [Service Fabric CLI](service-fabric-cli.md)
 
 * 一个位于 Azure 容器注册表中的注册表 - 在 Azure 订阅中[创建容器注册表](../container-registry/container-registry-get-started-portal.md)。 
 
@@ -201,12 +202,12 @@ gradle
 ```
 
 ## <a name="deploy-the-application"></a>部署应用程序
-生成应用程序后，可以使用 Azure CLI 将其部署到本地群集。
+生成应用程序后，可以使用 Service Fabric CLI 将其部署到本地群集。
 
 连接到本地 Service Fabric 群集。
 
 ```bash
-azure servicefabric cluster connect
+sfctl cluster select --endpoint http://localhost:19080
 ```
 
 使用模板中提供的安装脚本可将应用程序包复制到群集的映像存储、注册应用程序类型和创建应用程序的实例。

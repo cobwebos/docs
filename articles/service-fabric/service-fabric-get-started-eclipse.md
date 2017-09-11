@@ -12,14 +12,13 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/29/2016
+ms.date: 08/21/2016
 ms.author: saysa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 9cc621380a6b22a6b1da617d76c56e4773bb3dde
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 98c1b99972b9ad7a396d72b98e727286f6822e42
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -39,29 +38,29 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
   2.    单击 **“添加”**。
 
          ![适用于 Eclipse Neon 的 Service Fabric 插件][sf-eclipse-plugin-install]
-  3.    选择 Service Fabric 插件，然后单击“下一步”。
-  4.    完成安装步骤，然后接受 Microsoft 软件许可条款。
+  3.    选择 Service Fabric 插件，并单击“下一步”。
+  4.    完成安装步骤，并接受 Microsoft 软件许可条款。
 
-如果已安装 Service Fabric 插件，请确保使用最新版本。 若要检查可用的更新，请转到“帮助” > “安装详细信息”。 在已安装的插件列表中选择“Service Fabric”，然后单击“更新”。 随后将安装可用的更新。
+如果已安装 Service Fabric 插件，请确保使用最新版本。 若要检查可用的更新，请转到“帮助” > “安装详细信息”。 在已安装的插件列表中选择“Service Fabric”，并单击“更新”。 随后将安装可用的更新。
 
 > [!NOTE]
 > 如果安装或更新 Service Fabric 插件时运行缓慢，原因可能是 Eclipse 设置有问题。 Eclipse 将收集有关所有更改的元数据，以更新已注册到 Eclipse 实例的站点。 若要加速 Service Fabric 插件更新的检查和安装过程，请转到“可用软件站点”。 清除所有站点对应的复选框，但指向 Service Fabric 插件位置 (http://dl.microsoft.com/eclipse/azure/servicefabric) 的站点除外。
 
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>在 Eclipse 中创建 Service Fabric 应用程序
 
-1.  在 Eclipse Neon 中，转到“文件” > “新建” > “其他”。 选择“Service Fabric 项目”，然后单击“下一步”。
+1.  在 Eclipse Neon 中，转到“文件” > “新建” > “其他”。 选择“Service Fabric 项目”，并单击“下一步”。
 
     ![Service Fabric 新建项目第 1 页][create-application/p1]
 
-2.  输入项目的名称，然后单击“下一步”。
+2.  输入项目的名称，并单击“下一步”。
 
     ![Service Fabric 新建项目第 2 页][create-application/p2]
 
-3.  从模板列表中，选择“服务模板”。 选择服务模板的类型（“执行组件”、“无状态”、“容器”或“来宾二进制”），然后单击“下一步”。
+3.  从模板列表中，选择“服务模板”。 选择服务模板的类型（“执行组件”、“无状态”、“容器”或“来宾二进制”），并单击“下一步”。
 
     ![Service Fabric 新建项目第 3 页][create-application/p3]
 
-4.  输入服务名称和服务详细信息，然后单击“完成”。
+4.  输入服务名称和服务详细信息，并单击“完成”。
 
     ![Service Fabric 新建项目第 4 页][create-application/p4]
 
@@ -75,7 +74,7 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
 
 ## <a name="build-and-deploy-a-service-fabric-application-in-eclipse"></a>在 Eclipse 中生成和部署 Service Fabric 应用程序
 
-1.  右键单击新建的 Service Fabric 应用程序，然后选择“Service Fabric”。
+1.  右键单击新建的 Service Fabric 应用程序，并选择“Service Fabric”。
 
     ![Service Fabric 右键菜单][publish/RightClick]
 
@@ -100,25 +99,25 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
   2.    在“Gradle 项目”下面，选择“ServiceFabricDeployer”运行配置。
   3.    在右窗格中的“参数”选项卡上，请为“publishProfile”选择“local”或“cloud”。  默认值为 **local**。 若要部署到远程群集或云群集，请选择“cloud”。
   4.    为了确保在发布配置文件中填充正确的信息，请根据需要编辑 **Local.json** 或 **Cloud.json**。 可以添加或更新终结点详细信息和安全凭据。
-  5.    确保“工作目录”指向要部署的应用程序。 若要更改应用程序，请单击“工作区”按钮，然后选择所需的应用程序。
-  6.    单击“应用”，然后单击“运行”。
+  5.    确保“工作目录”指向要部署的应用程序。 要更改应用程序，请单击“工作区”按钮，并选择所需的应用程序。
+  6.    单击“应用”，并单击“运行”。
 
-应用程序将在片刻之后生成和部署。 可在 Service Fabric Explorer 中监视部署状态。  
+应用程序会在片刻之后生成和部署。 可在 Service Fabric Explorer 中监视部署状态。  
 
 ## <a name="add-a-service-fabric-service-to-your-service-fabric-application"></a>将 Service Fabric 服务添加到 Service Fabric 应用程序
 
-若要将 Service Fabric 服务添加到现有的 Service Fabric 应用程序，请执行以下步骤：
+要将 Service Fabric 服务添加到现有的 Service Fabric 应用程序，请执行以下步骤：
 
 1.  右键单击要将该服务添加到的项目，然后单击“Service Fabric”。
 
     ![Service Fabric 添加服务第 1 页][add-service/p1]
 
 2.  单击“添加 Service Fabric 服务”，完成将服务添加到项目的一系列步骤。
-3.  选择要添加到项目的服务模板，然后单击“下一步”。
+3.  选择要添加到项目的服务模板，并单击“下一步”。
 
     ![Service Fabric 添加服务第 2 页][add-service/p2]
 
-4.  输入服务名称（根据需要输入其他详细信息），然后单击“添加服务”按钮。  
+4.  输入服务名称（根据需要输入其他详细信息），并单击“添加服务”按钮。  
 
     ![Service Fabric 添加服务第 3 页][add-service/p3]
 
@@ -128,25 +127,28 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
 
 ## <a name="edit-manifest-versions-of-your-service-fabric-java-application"></a>编辑 Service Fabric Java 应用程序的清单版本
 
-若要编辑清单版本，请右键单击项目，转到“Service Fabric”，然后从下拉菜单中选择“编辑清单版本...”。 在向导中，可以更新应用程序清单和服务清单的清单版本，以及“编码”、“配置”和“数据”包的版本。
+要编辑清单版本，请右键单击项目，转到“Service Fabric”，并从下拉菜单中选择“编辑清单版本...”。 在向导中，可以更新应用程序清单和服务清单的清单版本，以及“编码”、“配置”和“数据”包的版本。
 
-如果选择“自动更新应用程序和服务的版本”选项，然后更新了一个版本，则会自动更新清单版本。 举例来说，你首先选择了该复选框，然后将“代码”版本从 0.0.0 更新为 0.0.1，最后再单击“完成”，然后服务清单版本和应用程序清单版本就会自动更新为 0.0.1。
+如果选择“自动更新应用程序和服务的版本”选项，并更新了一个版本，则会自动更新清单版本。 举例来说，首先选择了该复选框，然后将“代码”版本从 0.0.0 更新为 0.0.1，最后再单击“完成”，然后服务清单版本和应用程序清单版本就会自动更新为 0.0.1。
 
 ## <a name="upgrade-your-service-fabric-java-application"></a>升级 Service Fabric Java 应用程序
 
-假设你在升级方案中使用 Service Fabric 插件在 Eclipse 中创建了 **App1** 项目。 你已使用该插件部署了该项目，以创建名为 **fabric:/App1Application** 的应用程序。 该应用程序的类型为 **App1AppicationType**，应用程序版本为 1.0。 现在，你想要在不影响可用性的情况下升级该应用程序。
+假设你在升级方案中使用 Service Fabric 插件在 Eclipse 中创建了 **App1** 项目。 已使用该插件部署了该项目，以创建名为 **fabric:/App1Application** 的应用程序。 该应用程序的类型为 **App1AppicationType**，应用程序版本为 1.0。 现在，你想要在不影响可用性的情况下升级该应用程序。
 
 首先，请对应用程序进行任何更改，然后重新生成已修改的服务。 使用服务的更新版本（以及相关的代码、配置或数据）更新已修改服务的清单文件 (ServiceManifest.xml)。 此外，使用应用程序和已修改服务的更新版本号修改应用程序的清单 (ApplicationManifest.xml)。  
 
 若要使用 Eclipse Neon 升级应用程序，可以创建重复的运行配置文件。 然后，根据需要使用该文件升级应用程序。
 
 1.  转到“运行” > “运行配置”。 在左窗格中，单击“Gradle 项目”左侧的小箭头。
-2.  右键单击“ServiceFabricDeployer”，然后选择“复制”。 输入此配置的新名称，例如 **ServiceFabricUpgrader**。
+2.  右键单击“ServiceFabricDeployer”，并选择“复制”。 输入此配置的新名称，例如 **ServiceFabricUpgrader**。
 3.  在右侧面板中的“参数”选项卡上，将 **-Pconfig='deploy'** 更改为 **-Pconfig='upgrade'**，然后单击“应用”。
 
 此过程将创建并保存随时可用于升级应用程序的运行配置配置文件。 此过程还会从应用程序清单文件中获取最近更新的应用程序类型版本。
 
 应用程序升级需要几分钟时间。 可在 Service Fabric Explorer 中监视应用程序升级状态。
+
+## <a name="migrating-old-service-fabric-java-applications-to-be-used-with-maven"></a>迁移要与 Maven 配合使用的旧式 Service Fabric Java 应用程序
+我们最近已将 Service Fabric Java 库从 Service Fabric Java SDK 移至 Maven 存储库。 虽然使用 Eclipse 生成的新应用程序会生成最近更新的项目（会兼容 Maven），但你可以对现有的 Service Fabric 无状态或执行组件 Java 应用程序（此前使用 Service Fabric Java SDK）进行更新，使之能够使用 Maven 提供的 Service Fabric Java 依赖项。 请按[此处](service-fabric-migrate-old-javaapp-to-use-maven.md)提及的步骤操作，确保旧版应用程序兼容 Maven。
 
 <!-- Images -->
 

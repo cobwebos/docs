@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: f173111fb827a1f25fad857596fef13447bcca38
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2a2801e5c506dcc8aa9ca2ecd275b52c72d5fbbf
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="using-azure-data-lake-store-for-big-data-requirements"></a>使用 Azure Data Lake Store 满足大数据要求
@@ -71,7 +70,7 @@ ms.lasthandoff: 07/11/2017
 对于上传 web 服务器日志数据和上传其他类型的数据（例如社会情绪数据），编写自定义脚本/应用程序是一个非常不错的方式，因为这可灵活地将数据上传组件作为更大的大数据应用程序的一部分而包含在内。 某些情况下，此代码的形式可能是脚本或简单的命令行实用工具。 其他情况下，此代码可用于将大数据处理集成到业务应用程序或解决方案中。
 
 ### <a name="data-associated-with-azure-hdinsight-clusters"></a>与 Azure HDInsight 群集关联的数据
-大多数 HDInsight 群集类型（Hadoop、HBase、Storm）支持将 Data Lake Store 作为数据存储库。 HDInsight 群集从 Azure 存储 Blob (WASB)访问数据。 若要提高性能，可从 WASB 将数据复制到关联此群集的 Data Lake Store 帐户。 可使用以下工具复制数据。
+大多数 HDInsight 群集类型（Hadoop、HBase、Storm）支持将 Data Lake Store 作为数据存储库。 HDInsight 群集从 Azure 存储 Blob (WASB)访问数据。 要提高性能，可从 WASB 将数据复制到关联此群集的 Data Lake Store 帐户。 可使用以下工具复制数据。
 
 * [Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)
 * [AdlCopy 服务](data-lake-store-copy-data-azure-storage-blob.md)
@@ -90,7 +89,7 @@ ms.lasthandoff: 07/11/2017
 对于上传兆兆字节范围内的数据集，使用上述方法可能有时速度慢且成本高。 这种情况下，可使用以下选项。
 
 * **使用 Azure ExpressRoute**。 Azure ExpressRoute 可允许在 Azure 数据中心与本地中的基础结构之间创建专有连接。 这对传输大量数据提供了可靠的选项。 有关详细信息，请参阅[ Azure ExpressRoute 文档](../expressroute/expressroute-introduction.md)。
-* **数据“离线上传”**。 如果由于任何原因而导致使用 Azure ExpressRoute 不可行，可使用 [Azure 导入/导出服务](../storage/storage-import-export-service.md)将包含数据的硬盘驱动器发送到 Azure 数据中心。 数据会首先上传到 Azure 存储 Blob。 然后可使用 [Azure 数据工厂](../data-factory/data-factory-azure-datalake-connector.md)或 [AdlCopy 工具](data-lake-store-copy-data-azure-storage-blob.md)从 Azure 存储 Blob 复制数据到 Data Lake Store。
+* **数据“离线上传”**。 如果由于任何原因而导致使用 Azure ExpressRoute 不可行，可使用 [Azure 导入/导出服务](../storage/common/storage-import-export-service.md)将包含数据的硬盘驱动器发送到 Azure 数据中心。 数据会首先上传到 Azure 存储 Blob。 然后可使用 [Azure 数据工厂](../data-factory/data-factory-azure-datalake-connector.md)或 [AdlCopy 工具](data-lake-store-copy-data-azure-storage-blob.md)将数据从 Azure 存储 Blob 复制到 Data Lake Store。
 
   > [!NOTE]
   > 使用此导入/导出服务时，发送到 Azure 数据中心的磁盘上的文件大小不可大于 195 GB。

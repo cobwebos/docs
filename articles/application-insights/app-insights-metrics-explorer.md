@@ -12,17 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 9457b4628414400849198222d361d1b51c682ec0
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 749ae20a8f9f7247268bd27714b03f7c0dd5b735
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/13/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="exploring-metrics-in-application-insights"></a>在 Application Insights 中浏览指标
-[Application Insights][start] 中的指标是从应用程序遥测功能发送的度量值和事件计数。 它们可帮助检测性能问题，观察应用程序的用法趋势。 标准指标的范围很广泛，你也可以创建自己的自定义指标和事件。
+[Application Insights][start] 中的指标是从应用程序遥测功能发送的度量值和事件计数。 它们可帮助检测性能问题，观察应用程序的用法趋势。 标准指标的范围很广泛，也可以创建自己的自定义指标和事件。
 
 指标和事件计数显示在聚合值图表（例如总和、平均值或计数）中。
 
@@ -30,7 +29,7 @@ ms.lasthandoff: 04/13/2017
 
 ![](./media/app-insights-metrics-explorer/01-overview.png)
 
-可在 Application Insights 门户中的任何位置找到指标图表。 在大多数情况下，它们可以进行自定义，你可以向边栏选项卡添加更多图表。 在“概览”边栏选项卡中，单击“浏览更详细的图表”（它们具有诸如“服务器”这类的标题），或单击“指标资源管理器”以打开新边栏选项卡，可以在其中创建自定义图表。
+可在 Application Insights 门户中的任何位置找到指标图表。 在大多数情况下，它们可以进行自定义，可以向边栏选项卡添加更多图表。 在“概览”边栏选项卡中，单击“浏览更详细的图表”（它们具有诸如“服务器”这类的标题），或单击“指标资源管理器”以打开新边栏选项卡，可以在其中创建自定义图表。
 
 ## <a name="time-range"></a>时间范围
 可以在任何边栏选项卡上更改图表或网格覆盖的时间范围。
@@ -81,7 +80,7 @@ ms.lasthandoff: 04/13/2017
 
 选择图表或网格，将分组切换为打开，然后选择用作分组依据的属性：
 
-![选择“打开分组”，然后在“分组依据”中选择属性](./media/app-insights-metrics-explorer/15-segment.png)
+![选择“打开分组”，并在“分组依据”中选择属性](./media/app-insights-metrics-explorer/15-segment.png)
 
 > [!NOTE]
 > 使用分组时，“分区图”和“条形图”类型提供堆积视图。 这适用于“聚合”方法为“求和”的情况。 但如果聚合类型为“平均”，请选择“线条图”或“网格图”显示类型。
@@ -95,7 +94,7 @@ ms.lasthandoff: 04/13/2017
 ![调整滑块](./media/app-insights-metrics-explorer/18-height.png)
 
 ## <a name="aggregation-types"></a>聚合类型
-旁边的图例通常默认显示图表在这段期间的聚合值。 如果将鼠标悬停在图表上，将显示该点的值。
+旁边的图例通常默认显示图表在这段期间的聚合值。 如果将鼠标悬停在图表上，会显示该点的值。
 
 图表上的每个数据点是在以前采样间隔或“粒度”中所收到的数据值聚合。 粒度显示在边栏选项卡顶部，随着图表的时幅而有所不同。
 
@@ -111,7 +110,7 @@ ms.lasthandoff: 04/13/2017
 
 ### <a name="change-the-aggregation-type"></a>更改聚合类型
 
-![编辑图表，然后选择聚合](./media/app-insights-metrics-explorer/05-aggregation.png)
+![编辑图表，并选择聚合](./media/app-insights-metrics-explorer/05-aggregation.png)
 
 创建新图表或取消选择所有指标时，系统会显示每个指标的默认方法：
 
@@ -121,12 +120,12 @@ ms.lasthandoff: 04/13/2017
 默认情况下，图表显示的 Y 轴值从零开始一直到数据范围中的最大值，通过可视化方式表现值的份额。 但在某些情况下，除了份额外，通过可视化方式检查值的细微变化可能也很有趣。 为了达到此类自定义效果，请使用 Y 轴范围编辑功能将 Y 轴的最小值或最大值固定在所需位置。
 单击“高级设置”复选框，显示 Y 轴范围设置
 
-![单击“高级设置”，选择“自定义范围”，然后指定最值](./media/app-insights-metrics-explorer/y-axis-range.png)
+![单击“高级设置”，选择“自定义范围”，并指定最值](./media/app-insights-metrics-explorer/y-axis-range.png)
 
 ## <a name="filter-your-data"></a>筛选数据
 若只要查看选定的一组属性值的指标：
 
-![单击“筛选”，展开某个属性，然后检查一些值](./media/app-insights-metrics-explorer/19-filter.png)
+![单击“筛选”，展开某个属性，并检查一些值](./media/app-insights-metrics-explorer/19-filter.png)
 
 如果未为特定属性选择任何值，就相当于将它们全部选中：不对该属性使用筛选。
 
@@ -147,7 +146,7 @@ ms.lasthandoff: 04/13/2017
 ## <a name="edit-the-chart-type"></a>编辑图表类型
 请注意，可以在网格与图形之间切换：
 
-![选择网格或图形，然后选择图表类型](./media/app-insights-metrics-explorer/16-chart-grid.png)
+![选择网格或图形，并选择图表类型](./media/app-insights-metrics-explorer/16-chart-grid.png)
 
 ## <a name="save-your-metrics-blade"></a>保存指标边栏选项卡
 创建一些图表后，可将它们保存到收藏夹。 如果使用组织帐户，可以选择是否要将图表与其他团队成员共享。
@@ -172,7 +171,7 @@ ms.lasthandoff: 04/13/2017
 ## <a name="set-alerts"></a>设置警报
 若要收到任意指标异常值的电子邮件通知，请添加警报。 可选择将电子邮件发送给帐户管理员或特定电子邮件地址。
 
-![在指标资源管理器中选择“警报规则”，然后选择“添加警报”](./media/app-insights-metrics-explorer/appinsights-413setMetricAlert.png)
+![在指标资源管理器中选择“警报规则”，并选择“添加警报”](./media/app-insights-metrics-explorer/appinsights-413setMetricAlert.png)
 
 [详细了解警报][alerts]。
 

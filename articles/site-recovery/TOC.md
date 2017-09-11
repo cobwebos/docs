@@ -13,7 +13,7 @@
 ## [观看简介](https://azure.microsoft.com/resources/videos/index/?services=site-recovery)
 
 # 入门
-## [复制 Azure VM（预览）](site-recovery-azure-to-azure.md)
+## [将 Azure VM 复制到 Azure（预览版）](site-recovery-azure-to-azure.md)
 ## [将 VMware VM 复制到 Azure](vmware-walkthrough-overview.md)
 ### [步骤 1：查看体系结构](vmware-walkthrough-architecture.md)
 ### [步骤 2：查看先决条件和限制](vmware-walkthrough-prerequisites.md)
@@ -140,6 +140,8 @@
 ## 监视和故障排除
 ### [Azure 到 Azure 复制问题](site-recovery-azure-to-azure-troubleshoot-errors.md)
 ### [本地到 Azure 的复制问题](site-recovery-vmware-to-azure-protection-troubleshoot.md)
+### [移动服务安装问题](site-recovery-vmware-to-azure-push-install-error-codes.md)
+### [故障转移到 Azure 的问题](site-recovery-failover-to-azure-troubleshoot.md)
 ### [收集日志并解决本地问题](site-recovery-monitoring-and-troubleshooting.md)
 
 # 引用

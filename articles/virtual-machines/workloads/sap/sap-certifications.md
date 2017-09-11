@@ -17,16 +17,16 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: rclaus
 ms.custom: 
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 8925de446b9dc7e17a2f2033426eb380329c8249
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: e4d5c78299903659a18aa9b8d04495e215bcca0d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>在 Microsoft Azure 上运行的 SAP 认证和配置
 
-SAP 和 Microsoft 具有悠久的合作历史，建立了强大的合作伙伴关系，使其客户可以互惠互利。 Microsoft 在不断更新其平台并向 SAP 提交新认证详细信息，以便确保 Microsoft Azure 是在其上运行 SAP 工作负荷的最佳平台。 下表概述了我们支持的配置以及不断增加的认证的列表。 
+SAP 和 Microsoft 具有悠久的合作历史，建立了强大的合作伙伴关系，使其客户可以互惠互利。 Microsoft 会不断更新其平台并向 SAP 提交新认证详细信息，确保 Microsoft Azure 是运行 SAP 工作负荷的最佳平台。 下表概述了我们支持的配置以及不断增加的认证的列表。 
 
 ## <a name="sap-hana-certifications"></a>SAP HANA 认证
 
@@ -44,8 +44,8 @@ SAP 和 Microsoft 具有悠久的合作历史，建立了强大的合作伙伴�
 
 | SAP 产品 | 来宾 OS | RDBMS | 虚拟机类型 |
 | --- | --- | --- | --- |
-| SAP 业务套件软件 |Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux |SQL Server、Oracle（仅限 Windows）、DB2、SAP ASE |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5 |
-| 多合一 SAP 业务软件 |Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux |SQL Server、Oracle（仅限 Windows）、DB2、SAP ASE |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5 |
+| SAP 业务套件软件 |Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle（仅限 Windows 和 Oracle Linux）、DB2、SAP ASE |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5 |
+| 多合一 SAP 业务软件 |Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux |SQL Server、Oracle（仅限 Windows 和 Oracle Linux）、DB2、SAP ASE |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5 |
 | SAP BusinessObjects BI |Windows |不适用 |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5 |
-| SAP NetWeaver |Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux |SQL Server、Oracle（仅限 Windows）、DB2、SAP ASE |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5 |
+| SAP NetWeaver |Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux |SQL Server、Oracle（仅限 Windows 和 Oracle Linux）、DB2、SAP ASE |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5 |
 

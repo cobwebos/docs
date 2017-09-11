@@ -11,17 +11,17 @@ keywords:
 ms.assetid: 8da267e8-2aeb-4c24-9a7a-65bdca3a82d6
 ms.service: container-service
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/01/2017
+ms.date: 08/21/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 718240ec0d83f879ea153649d7a737394fa015c8
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 5a2131659903e79b28f4d1b795d25a31d8d4ce8d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 
@@ -45,10 +45,10 @@ ms.lasthandoff: 08/18/2017
 
 使用 [az group create](/cli/azure/group#create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑组。 
 
-以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
+以下示例在“westeurope”位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli-interactive 
-az group create --name myResourceGroup --location eastus
+az group create --name myResourceGroup --location westeurope
 ```
 
 输出：
@@ -56,7 +56,7 @@ az group create --name myResourceGroup --location eastus
 ```json
 {
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup",
-  "location": "eastus",
+  "location": "westeurope",
   "managedBy": null,
   "name": "myResourceGroup",
   "properties": {
@@ -108,7 +108,7 @@ k8s-master-14ad53a1-0   Ready,SchedulingDisabled   10m       v1.6.6
 
 Kubernetes 清单文件用于定义群集的所需状态，例如，应该运行什么容器图像。 就此示例来说，清单用于创建运行 Azure Vote 应用程序所需的所有对象。 
 
-创建名为 `azure-vote.yaml` 的文件，并将以下 YAML 复制到其中。 如果在 Azure Cloud Shell 中操作，则可使用 vi 或 Nano 来创建此文件，就像在虚拟或物理系统中操作一样。
+创建名为 `azure-vote.yml` 的文件，并将以下 YAML 复制到其中。 如果在 Azure Cloud Shell 中操作，则可使用 vi 或 Nano 来创建此文件，就像在虚拟或物理系统中操作一样。
 
 ```yaml
 apiVersion: apps/v1beta1
@@ -174,7 +174,7 @@ spec:
 使用 [kubectl create](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#create) 命令运行该应用程序。
 
 ```azurecli-interactive
-kubectl create -f azure-vote.yaml
+kubectl create -f azure-vote.yml
 ```
 
 输出：

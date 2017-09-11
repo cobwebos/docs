@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 06/23/2017
 ms.author: iainfou
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: f7ba456a0d23560ee70f14ecb61c0d016e24e7e1
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 94f8e3330fb2d6547811315fcfdb8ced338e0247
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>将 Linux 虚拟机从非托管磁盘转换为托管磁盘
 
-如果有使用非托管磁盘的现有 Linux 虚拟机 (VM)，可通过 [Azure 托管磁盘](../../storage/storage-managed-disks-overview.md)服务转换 VM 以使用托管磁盘。 此过程将同时转换 OS 磁盘和任何附加的数据磁盘。
+如果有使用非托管磁盘的现有 Linux 虚拟机 (VM)，可通过 [Azure 托管磁盘](../windows/managed-disks-overview.md)服务转换 VM 以使用托管磁盘。 此过程将同时转换 OS 磁盘和任何附加的数据磁盘。
 
 本文介绍如何使用 Azure CLI 转换 VM。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 
 
@@ -98,5 +98,5 @@ ms.lasthandoff: 08/10/2017
     ```
 
 ## <a name="next-steps"></a>后续步骤
-有关存储选项的详细信息，请参阅 [Azure 托管磁盘概述](../../storage/storage-managed-disks-overview.md)。
+有关存储选项的详细信息，请参阅 [Azure 托管磁盘概述](../windows/managed-disks-overview.md)。
 

@@ -12,14 +12,14 @@ ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: HT
 ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
 ms.openlocfilehash: 9bb863261da64c97f99757d4a0cb3474a7755591
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-cosmos-db-build-a-documentdb-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB：使用 .NET 和 Azure 门户生成 DocumentDB API Web 应用
@@ -130,7 +130,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
     `<add key="endpoint" value="FILLME" />`
 
-4. 然后从门户复制 PRIMARY KEY 值，并在 web.config 中将其设为 authKey 的值。 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
+4. 然后从门户复制 PRIMARY KEY 值，并在 web.config 中将其设为 authKey 的值。现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
 
     `<add key="authKey" value="FILLME" />`
     

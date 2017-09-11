@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: f6722365e5a5e4c58d91dd178de264a403d53c02
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 17ddb30c87d757176ce9428264135252c02bf713
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 08/01/2017
 - 查看 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)一文，了解对公共和专用 IP 地址的限制。
 - 使用 Azure 帐户登录到 Azure [门户](https://portal.azure.com)、Azure 命令行接口 (CLI) 或 Azure PowerShell。 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
 - 如果使用 PowerShell 命令来完成本文中的任务，请[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保已安装最新版本的 Azure PowerShell commandlet。 若要获取 PowerShell 命令的帮助和示例，请键入 `get-help <command> -full`。
-- 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请[安装并配置 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保已安装最新版本的 Azure CLI。 若要获取 CLI 命令的帮助，请键入 `az <command> --help`。 不用安装 CLI 及其必备组件，可以使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置与你的帐户一起使用。 若要使用 Cloud Shell，请单击[门户](https://portal.azure.com)顶部的 Cloud Shell“>_”按钮。
+- 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请[安装和配置 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保已安装最新版本的 Azure CLI。 若要获取 CLI 命令的帮助，请键入 `az <command> --help`。 请勿安装 CLI 及其必备组件，可使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置与你的帐户一起使用。 若要使用 Cloud Shell，请单击[门户](https://portal.azure.com)顶部的 Cloud Shell“>_”按钮。
 
 ## <a name="add-ip-addresses"></a>添加 IP 地址
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 08/01/2017
 |工具|命令|
 |---|---|
 |CLI|[az network nic ip-config create](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
-|PowerShell|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/add-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|PowerShell|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/add-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="change-ip-address-settings"></a>更改 IP 地址设置
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 08/01/2017
 |工具|命令|
 |---|---|
 |CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|PowerShell|[Set-AzureRMNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/set-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|PowerShell|[Set-AzureRMNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="remove-ip-addresses"></a>删除 IP 地址
 
@@ -102,7 +102,7 @@ ms.lasthandoff: 08/01/2017
 |工具|命令|
 |---|---|
 |CLI|[az network nic ip-config delete](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
-|PowerShell|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/remove-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|PowerShell|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/remove-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="ip-configurations"></a>IP 配置
 
@@ -148,7 +148,7 @@ ms.lasthandoff: 08/01/2017
 4. 启动虚拟机。
 5. 在操作系统中[手动配置](virtual-network-multiple-ip-addresses-portal.md#os-config)辅助 IP 地址（在 Windows 内还需要配置主要 IP 地址）以配置在 Azure.
  
-通过遵循上述步骤，在 Azure 中分配给网络接口的专用 IP 地址与在虚拟机操作系统中分配的地址将不会不同。 若要记录你在操作系统中为订阅中的哪些虚拟机手动设置了 IP 地址，请考虑向虚拟机添加一个 Azure [标记](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags)。 例如，你可以使用“IP 地址分配：静态”。 这样，可以轻松找到你的订阅中你在操作系统中手动为其设置了 IP 地址的虚拟机。
+通过遵循上述步骤，在 Azure 中分配给网络接口的专用 IP 地址与在虚拟机操作系统中分配的地址将保持相同。 若要记录你在操作系统中为订阅中的哪些虚拟机手动设置了 IP 地址，请考虑向虚拟机添加一个 Azure [标记](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags)。 例如，你可以使用“IP 地址分配：静态”。 这样，可以轻松找到你的订阅中你在操作系统中手动为其设置了 IP 地址的虚拟机。
 
 通过专用 IP 地址，虚拟机除了能够与同一网络中的或所连接的虚拟网络中的其他资源进行通信外，还能够进行到 Internet 的出站通信。 出站连接是由 Azure 转换为不可预测的公共 IP 地址的源网络地址。 若要了解 Azure 出站 Internet 连接的详细信息，请阅读 [Azure 出站 Internet 连接](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。 不能从 Internet 进行到虚拟机的专用 IP 地址的入站通信。
 
@@ -183,21 +183,19 @@ ms.lasthandoff: 08/01/2017
 
 ### <a name="ipv6"></a>IPv6
 
-可以为网络接口的辅助 IP 配置分配零个或一个专用 [IPv6](#ipv6) 地址。 网络接口不能具有任何现有的辅助 IP 配置。 无法使用门户添加具有 IPv6 地址的 IP 配置。 若要向现有网络接口添加具有专用 IPv6 地址的 IP 配置，必须使用 PowerShell 或 CLI。 该网络接口无法附加到现有 VM。
+可以为网络接口的辅助 IP 配置分配零个或一个专用 [IPv6](#ipv6) 地址。 网络接口不能具有任何现有的辅助 IP 配置。 无法使用门户添加具有 IPv6 地址的 IP 配置。 使用 PowerShell 或 CLI 向现有网络接口添加具有专用 IPv6 地址的 IP 配置。 该网络接口无法附加到现有 VM。
 
 > [!NOTE]
-> 虽然可以使用门户创建具有 IPv6 地址的网络接口，但是，在使用门户创建虚拟机时，无法创建具有专用 IPv6 地址的虚拟机，也无法附加网络接口。 必须使用 PowerShell 或 Azure CLI 2.0 创建具有专用 IPv6 地址的网络接口，然后在创建虚拟机时附加该网络接口。 无法将分配有专用 IPv6 地址的网络接口附加到现有虚拟机。 对于附加到虚拟机的任何网络接口，无法使用任何工具（门户、CLI 或 PowerShell）为 IP 配置添加专用 IPv6 地址。
+> 虽然可使用门户创建具有 IPv6 地址的网络接口，但不能使用门户将现有网络接口添加到新的或现有的虚拟机。 使用 PowerShell 或 Azure CLI 2.0 创建具有专用 IPv6 地址的网络接口，然后在创建虚拟机时附加该网络接口。 无法将分配有专用 IPv6 地址的网络接口附加到现有虚拟机。 对于附加到虚拟机的任何网络接口，无法使用任何工具（门户、CLI 或 PowerShell）为 IP 配置添加专用 IPv6 地址。
 
 无法为主要或辅助 IP 配置分配公共 IPv6 地址。
 
 ## <a name="next-steps"></a>后续步骤
 若要创建具有不同 IP 配置的虚拟机，请阅读以下文章：
 
-**命令**
-
 |任务|工具|
 |---|---|
 |创建具有多个 NIC 的 VM|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 |创建具有多个 IPv4 地址的单 NIC VM|[CLI](virtual-network-multiple-ip-addresses-cli.md)、[PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
-|创建具有专用 IPv6 地址的单 NIC VM（在 Azure 负载均衡器后面）|[CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[Azure 资源管理器模板](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|创建具有专用 IPv6 地址的单 NIC VM（在 Azure 负载均衡器后）|[CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[Azure 资源管理器模板](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 

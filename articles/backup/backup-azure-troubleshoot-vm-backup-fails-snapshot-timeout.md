@@ -13,50 +13,103 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 08/17/2017
 ms.author: genli;markgal;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: dd4ac14a703663175bb477de587da8f4ad510c7c
+ms.translationtype: HT
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 6ed651bb8caafd18cec93e68ac70e27f92133e5c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/14/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
-# <a name="troubleshoot-azure-backup-failure-vm-agent-unable-to-communicate-with-azure-backup"></a>Azure 备份故障排除：VM 代理无法与 Azure 备份进行通信
-## <a name="summary"></a>摘要
-注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 任意四个条件都可能阻止快照的触发，这反过来会导致备份失败。 本文提供故障排查步骤，可帮助解决与 VM 代理和扩展通信相关的备份故障。
+# <a name="troubleshoot-azure-backup-failure-issues-with-agent-andor-extension"></a>Azure 备份故障排除：代理和/或扩展的问题
+
+本文提供故障排查步骤，可帮助解决与 VM 代理和扩展通信相关的备份故障。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="symptom"></a>症状
-基础架构即服务 (IaaS) VM 的 Azure 备份失败，在 [Azure 门户](https://portal.azure.com/)中的作业错误详细信息中返回以下错误消息：“ VM 代理无法与 Azure 备份服务通信。”，“由于虚拟机上无网络连接，快照操作失败。”
+## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>VM 代理无法与 Azure 备份进行通信
+注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 代理进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发，这反过来会导致备份失败。 请依序执行以下故障排除步骤，然后重试操作。
+##### <a name="cause-1-the-vm-has-no-internet-accessthe-vm-has-no-internet-access"></a>原因 1：[VM 不具备 Internet 访问权限](#the-vm-has-no-internet-access)
+##### <a name="cause-2-the-agent-is-installed-in-the-vm-but-is-unresponsive-for-windows-vmsthe-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>原因 2：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
+##### <a name="cause-3-the-agent-installed-in-the-vm-is-out-of-date-for-linux-vmsthe-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>原因 3：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
+##### <a name="cause-4-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-takenthe-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>原因 4：[无法检索快照状态或无法拍摄快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)
+##### <a name="cause-5-the-backup-extension-fails-to-update-or-loadthe-backup-extension-fails-to-update-or-load"></a>原因 5：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)
 
-## <a name="cause-1-the-vm-has-no-internet-access"></a>原因 1：VM 不具备 Internet 访问权限
+## <a name="snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>由于虚拟机上无网络连接，快照操作失败
+注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发，这反过来会导致备份失败。 请依序执行以下故障排除步骤，然后重试操作。
+##### <a name="cause-1-the-vm-has-no-internet-accessthe-vm-has-no-internet-access"></a>原因 1：[VM 不具备 Internet 访问权限](#the-vm-has-no-internet-access)
+##### <a name="cause-2-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-takenthe-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>原因 2：[无法检索快照状态或无法拍摄快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)
+##### <a name="cause-3-the-backup-extension-fails-to-update-or-loadthe-backup-extension-fails-to-update-or-load"></a>原因 3：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)
+
+## <a name="vmsnapshot-extension-operation-failed"></a>VMSnapshot 扩展操作失败
+
+注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发，这反过来会导致备份失败。 请依序执行以下故障排除步骤，然后重试操作。
+##### <a name="cause-1-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-takenthe-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>原因 1：[无法检索快照状态或无法拍摄快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)
+##### <a name="cause-2-the-backup-extension-fails-to-update-or-loadthe-backup-extension-fails-to-update-or-load"></a>原因 2：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)
+##### <a name="cause-3-the-vm-has-no-internet-accessthe-vm-has-no-internet-access"></a>原因 3：[VM 不具备 Internet 访问权限](#the-vm-has-no-internet-access)
+##### <a name="cause-4-the-agent-is-installed-in-the-vm-but-is-unresponsive-for-windows-vmsthe-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>原因 4：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
+##### <a name="cause-5-the-agent-installed-in-the-vm-is-out-of-date-for-linux-vmsthe-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>原因 5：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
+
+## <a name="unable-to-perform-the-operation-as-the-vm-agent-is-not-responsive"></a>无法执行操作，因为 VM 代理没有响应
+
+注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发，这反过来会导致备份失败。 请依序执行以下故障排除步骤，然后重试操作。
+##### <a name="cause-1-the-agent-is-installed-in-the-vm-but-is-unresponsive-for-windows-vmsthe-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>原因 1：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
+##### <a name="cause-2-the-agent-installed-in-the-vm-is-out-of-date-for-linux-vmsthe-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>原因 2：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
+##### <a name="cause-3-the-vm-has-no-internet-accessthe-vm-has-no-internet-access"></a>原因 3：[VM 不具备 Internet 访问权限](#the-vm-has-no-internet-access)
+
+## <a name="backup-failed-with-an-internal-error---please-retry-the-operation-in-a-few-minutes"></a>发生内部错误，备份失败 - 请在几分钟后重试操作
+
+注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发，这反过来会导致备份失败。 请依序执行以下故障排除步骤，然后重试操作。
+##### <a name="cause-1-the-vm-has-no-internet-accessthe-vm-has-no-internet-access"></a>原因 1：[VM 不具备 Internet 访问权限](#the-vm-has-no-internet-access)
+##### <a name="cause-2-the-agent-installed-in-the-vm-but-unresponsive-for-windows-vmsthe-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>原因 2：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
+##### <a name="cause-3-the-agent-installed-in-the-vm-is-out-of-date-for-linux-vmsthe-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>原因 3：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
+##### <a name="cause-4-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-takenthe-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>原因 4：[无法检索快照状态或无法拍摄快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)
+##### <a name="cause-5-the-backup-extension-fails-to-update-or-loadthe-backup-extension-fails-to-update-or-load"></a>原因 5：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)
+
+
+## <a name="causes-and-solutions"></a>原因和解决方案
+
+### <a name="the-vm-has-no-internet-access"></a>VM 不具备 Internet 访问权限
 VM 无法根据部署要求访问 Internet，或者现有的限制阻止访问 Azure 基础结构。
 
 若要正常工作，备份扩展需要连接到 Azure 公共 IP 地址。 该扩展会将命令发送到 Azure 存储终结点 (HTTP URL) 来管理 VM 的快照。 如果扩展无法访问公共 Internet，则备份最终会失败。
 
-### <a name="solution"></a>解决方案
+####  <a name="solution"></a>解决方案
 若要解决此问题，请尝试此处列出的方法之一。
-#### <a name="allow-access-to-the-azure-datacenter-ip-ranges"></a>允许访问 Azure 数据中心 IP 范围
+##### <a name="allow-access-to-the-azure-datacenter-ip-ranges"></a>允许访问 Azure 数据中心 IP 范围
 
 1. 获取允许访问的 [Azure 数据中心 IP 列表](https://www.microsoft.com/download/details.aspx?id=41653)。
 2. 通过在 Azure VM 的提升 PowerShell 窗口中运行 **New-NetRoute** cmdlet，取消阻止 IP。 以管理员身份运行该 cmdlet。
-3. 若要允许访问 IP，如果你有规则，请将其添加到网络安全组。
+3. 要允许访问 IP，如果有规则，请将其添加到网络安全组。
 
-#### <a name="create-a-path-for-http-traffic-to-flow"></a>为 HTTP 流量创建路径
+##### <a name="create-a-path-for-http-traffic-to-flow"></a>为 HTTP 流量创建路径
 
-1. 如果你指定了网络限制（例如网络安全组），请部署 HTTP 代理服务器来路由流量。
-2. 若要允许从 HTTP 代理服务器访问 Internet，如果你有规则，请将其添加到网络安全组。
+1. 如果指定了网络限制（例如网络安全组），请部署 HTTP 代理服务器来路由流量。
+2. 要允许从 HTTP 代理服务器访问 Internet，如果有规则，请将其添加到网络安全组。
 
 若要了解如何设置 HTTP 代理进行 VM 备份，请参阅[进行备份 Azure 虚拟机所需的环境准备](backup-azure-vms-prepare.md#using-an-http-proxy-for-vm-backups)。
 
 如果使用托管磁盘，可能需要在防火墙上打开另一个端口 (8443)。
 
-## <a name="cause-2-the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>原因 2：VM 中安装的代理已过时（适用于 Linux VM）
+### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>代理安装在 VM 中，但无响应（针对 Windows VM）
 
-### <a name="solution"></a>解决方案
+#### <a name="solution"></a>解决方案
+VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理能够获取最新版本并重新启动通信。
+
+1. 验证 Windows 来宾代理服务是否正在虚拟机的服务 (services.msc) 中运行。 尝试重启 Windows 来宾代理服务并启动备份<br>
+2. 如果在服务中看不到，请验证是否在程序和功能中安装了 Windows 来宾代理服务。
+4. 如果在程序和功能中可查看到，请卸载 Windows 来宾代理。
+5. 下载并安装[最新版本的代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 需要有管理员权限才能完成安装。
+6. 然后可以在服务中查看 Windows 来宾代理服务
+7. 尝试在门户中单击“立即备份”来运行按需/临时备份。
+
+还需验证在虚拟机[在系统中安装了 .NET 4.5](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)。 VM 代理需要与服务进行通信
+
+### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>VM 中安装的代理已过时（针对 Linux VM）
+
+#### <a name="solution"></a>解决方案
 对于 Linux VM，与代理或扩展相关的大多数失败都是由于影响过时的 VM 代理的问题所造成的。 若要解决此问题，请遵循以下一般性指导：
 
 1. 按照[更新 Linux VM 代理](../virtual-machines/linux/update-agent.md)的说明进行操作。
@@ -82,34 +135,31 @@ VM 无法根据部署要求访问 Internet，或者现有的限制阻止访问 A
 
 1. 在 /etc/waagent.conf 文件中，找到以下行：**Enable verbose logging (y|n)**
 2. 将 Logs.Verbose 值从 n 更改为 *y*。
-3. 保存更改，然后遵循本部分前面的步骤重新启动 waagent。
+3. 保存更改，并遵循本部分前面的步骤重新启动 waagent。
 
-## <a name="cause-3-the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>原因 3：客户端安装在 VM 中，但无响应（对于 Windows VM）
+### <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>无法检索快照状态或无法拍摄快照
+VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原因可能是它无法访问存储帐户，也可能是快照任务的执行被延迟。
 
-### <a name="solution"></a>解决方案
-VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理能够获取最新版本并重新启动通信。
+#### <a name="solution"></a>解决方案
+以下状态可能会导致快照任务失败：
 
-1. 验证是否可以在计算机 (services.msc) 的服务中查看 Windows 来宾代理服务
-2. 如果看不到，请验证是否在程序和功能中安装了 Windows 来宾代理服务。
-3. 如果在程序和功能中可查看到，请卸载 Windows 来宾代理。
-4. 下载并安装 [代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 你需要有管理员权限才能完成安装。
-5. 然后可以在服务中查看 Windows 来宾代理服务
-6. 尝试在门户中单击“立即备份”来运行按需/临时备份。
+| 原因 | 解决方案 |
+| --- | --- |
+| VM 具有已配置的 SQL Server 备份。 | 默认情况下，VM 备份在 Windows VM 上运行 VSS 完整备份。 在运行基于 SQL Server 的服务器并配置了 SQL Server 备份的 VM 上，快照执行可能发生延迟。<br><br>如果由于快照问题而导致备份失败，请设置以下注册表项：<br><br>**[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT] "USEVSSCOPYBACKUP"="TRUE"** |
+| 由于在 RDP 中关闭了 VM，VM 状态报告不正确。 | 如果在远程桌面协议 (RDP) 中关闭了 VM，请检查门户，以确定 VM 状态是否正确。 如果不正确，请在门户中使用 VM 仪表板上的“关闭”选项来关闭 VM。 |
+| 同一个云服务中的许多 VM 配置为同时备份。 | 最佳做法是将备份计划分给同一云服务中的 VM。 |
+| VM 在运行时使用了很高的 CPU 或内存。 | 如果 VM 在运行时使用了很高的 CPU 使用率（超过 90%）或内存使用率，快照任务将排入队列、延迟并最终超时。 在这种情况下，请尝试进行按需备份。 |
+| VM 无法从 DHCP 获取主机/结构地址。 | 必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。  如果 VM 无法从 DHCP 响应 245 获取主机/结构地址，则无法下载或运行任何扩展。 如果需要静态专用 IP 地址，应该通过平台配置该 IP。 VM 内的 DHCP 选项应保持启用。 有关详细信息，请参阅[设置静态内部专用 IP](../virtual-network/virtual-networks-reserved-private-ip.md)。 |
 
-还需验证是否**在系统中安装有 .NET 4.5**。 VM 代理需要与服务进行通信
-
-## <a name="cause-4-the-backup-extension-fails-to-update-or-load"></a>原因 4：备份扩展无法更新或加载
+### <a name="the-backup-extension-fails-to-update-or-load"></a>无法更新或加载备份扩展
 如果无法加载扩展，则会由于无法创建快照而导致备份失败。
 
-### <a name="solution"></a>解决方案
+#### <a name="solution"></a>解决方案
 
-对于 Windows 来宾：
+**对于 Windows 来宾：**确认 iaasvmprovider 服务已启用，并且启动类型为自动。 如果该服务的配置并非如此，请启用该服务以确定下一次备份是否成功。
 
-确认 iaasvmprovider 服务已启用，并且启动类型为自动。 如果该服务的配置并非如此，请启用该服务以确定下一次备份是否成功。
+**对于 Linux 来宾：**确认 VMSnapshot for Linux（备份使用的扩展）的最新版本是 1.0.91.0。<br>
 
-对于 Linux 来宾：
-
-VMSnapshot for Linux（备份使用的扩展）的最新版本是 1.0.91.0。
 
 如果还是无法更新或加载备份扩展，可以通过卸载扩展来强制重新加载 VMSnapshot 扩展。 下一次备份尝试将重新加载扩展。
 
@@ -120,21 +170,8 @@ VMSnapshot for Linux（备份使用的扩展）的最新版本是 1.0.91.0。
 3. 单击“设置”。
 4. 单击“扩展”。
 5. 单击“Vmsnapshot 扩展”。
-6. 单击“卸载”。  
+6. 单击“卸载”。
 
 此过程会导致在下一次备份期间重新安装扩展。
 
-## <a name="cause-5-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>原因 5：无法检索快照状态或无法拍摄快照
-VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原因可能是它无法访问存储帐户，也可能是快照任务的执行被延迟。
-
-### <a name="solution"></a>解决方案
-以下状态可能会导致快照任务失败：
-
-| 原因 | 解决方案 |
-| --- | --- |
-| VM 具有已配置的 SQL Server 备份。 | 默认情况下，VM 备份在 Windows VM 上运行 VSS 完整备份。 在运行基于 SQL Server 的服务器并配置了 SQL Server 备份的 VM 上，快照执行可能发生延迟。<br><br>如果由于快照问题而导致备份失败，请设置以下注册表项：<br><br>**[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT] "USEVSSCOPYBACKUP"="TRUE"** |
-| 由于在 RDP 中关闭了 VM，VM 状态报告不正确。 | 如果在远程桌面协议 (RDP) 中关闭了 VM，请检查门户，以确定 VM 状态是否正确。 如果不正确，请在门户中使用 VM 仪表板上的“关闭”选项来关闭 VM。 |
-| 同一个云服务中的许多 VM 配置为同时备份。 | 最佳做法是将备份计划分给同一云服务中的 VM。 |
-| VM 在运行时使用了很高的 CPU 或内存。 | 如果 VM 在运行时使用了很高的 CPU 使用率（超过 90%）或内存使用率，快照任务将排入队列、延迟并最终超时。 在这种情况下，请尝试进行按需备份。 |
-| VM 无法从 DHCP 获取主机/结构地址。 | 必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。  如果 VM 无法从 DHCP 响应 245 获取主机/结构地址，则无法下载或运行任何扩展。 如果需要静态专用 IP 地址，你应该通过平台配置该 IP。 VM 内的 DHCP 选项应保持启用。 有关详细信息，请参阅[设置静态内部专用 IP](../virtual-network/virtual-networks-reserved-private-ip.md)。 |
 

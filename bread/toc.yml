@@ -201,10 +201,10 @@
     - name: 机器学习
       tocHref: /azure/machine-learning/
       topicHref: /azure/machine-learning/
-    - name: 应用商店消费者
+    - name: Marketplace 消费者
       tocHref: /azure/marketplace-consumer/
       topicHref: /azure/marketplace-consumer/
-    - name: 应用商店发布
+    - name: Marketplace 发布
       tocHref: /azure/marketplace-publishing/
       topicHref: /azure/marketplace-publishing/
     - name: 媒体服务
@@ -298,6 +298,16 @@
     - name: 存储
       tocHref: /azure/storage/
       topicHref: /azure/storage/
+      items:
+        - name: Blob
+          tocHref: /azure/storage/blobs/
+          topicHref: /azure/storage/blobs/storage-blobs-introduction
+        - name: 文件
+          tocHref: /azure/storage/files/
+          topicHref: /azure/storage/files/storage-files-introduction
+        - name: 队列
+          tocHref: /azure/storage/queues/
+          topicHref: /azure/storage/queues/storage-queues-introduction
     - name: StorSimple
       tocHref: /azure/storsimple/
       topicHref: /azure/storsimple/

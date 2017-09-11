@@ -8,7 +8,7 @@ author: venkatgct
 manager: almineev
 editor: cgronlun
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -23,13 +23,11 @@ ms.lasthandoff: 07/04/2017
 
 ---
 
-# 使用 Ibiza 门户为时序见解环境创建引用数据集
-<a id="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-ibiza-portal" class="xliff"></a>
+# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-ibiza-portal"></a>使用 Ibiza 门户为时序见解环境创建引用数据集
 
 引用数据集是各种项的集合，这些项已使用事件源中的事件进行了增强。 时序见解入口引擎将事件源中的事件与引用数据集中的项联接到一起。 然后即可使用此增强的事件进行查询。 该联接基于在引用数据集中定义的密钥。
 
-## 向环境添加引用数据集的步骤
-<a id="steps-to-add-a-reference-data-set-to-your-environment" class="xliff"></a>
+## <a name="steps-to-add-a-reference-data-set-to-your-environment"></a>向环境添加引用数据集的步骤
 
 1. 登录到 [Ibiza 门户](https://portal.azure.com)。
 2. 在 Ibiza 门户左侧的菜单中，单击“所有资源”。
@@ -48,8 +46,7 @@ ms.lasthandoff: 07/04/2017
 
 7. 单击“创建”。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 
 * 以编程方式[管理引用数据](time-series-insights-manage-reference-data-csharp.md)。
 * 如需完整的 API 引用，请参阅[引用数据 API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api)文档。

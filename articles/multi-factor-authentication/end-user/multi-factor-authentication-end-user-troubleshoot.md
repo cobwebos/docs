@@ -4,7 +4,7 @@ description: "本文档向用户提供有关如何解决 Azure 多重身份验�
 services: multi-factor-authentication
 keywords: "多重身份验证客户端, 身份验证问题, 相关性 ID"
 documentationcenter: 
-author: kgremban
+author: barlanmsft
 manager: femila
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
 ms.service: multi-factor-authentication
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
-ms.author: kgremban
+ms.author: barlan
 ms.reviewer: yossib
 ms.custom: end-user
 ms.translationtype: Human Translation
@@ -24,15 +24,15 @@ ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="get-help-with-two-step-verification"></a>获取有关双重验证的帮助
-本文解答有关双重验证的最常见问题。 
+本文解答有关双重验证的最常见问题。
 
 ## <a name="why-do-i-have-to-perform-two-step-verification-can-i-turn-it-off"></a>为何需要执行双重验证？ 是否可以关闭它？
 
-双重验证是组织选择用来保护帐户的一项安全功能。 它比单纯使用密码更安全，因为它依赖于两种形式的身份验证：你知道的事情和拥有的物品。 你知道的事情就是你的密码。 你拥有的物品就是你经常携带的手机或设备。 如果使用双重验证保护帐户，则意味着，即使恶意黑客获取了密码，他们也无法以你的身份登录，因为他们无法访问你的手机。 
+双重验证是组织选择用来保护帐户的一项安全功能。 它比单纯使用密码更安全，因为它依赖于两种形式的身份验证：你知道的事情和拥有的物品。 你知道的事情就是你的密码。 你拥有的物品就是你经常携带的手机或设备。 如果使用双重验证保护帐户，则意味着，即使恶意黑客获取了密码，他们也无法以你的身份登录，因为他们无法访问你的手机。
 
-Microsoft 提供双重验证，但组织可以选择性地使用该功能。 如果 IT 部门要求使用该功能，则你就不能放弃使用，就好像不能放弃使用密码来保护帐户一样。 
+Microsoft 提供双重验证，但组织可以选择性地使用该功能。 如果 IT 部门要求使用该功能，则你就不能放弃使用，就好像不能放弃使用密码来保护帐户一样。
 
-如果为个人 Microsoft 帐户启用了双重验证，但想要更改设置，请参阅[关于双重验证](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification)。 
+如果为个人 Microsoft 帐户启用了双重验证，但想要更改设置，请参阅[关于双重验证](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification)。
 
 ## <a name="i-dont-have-my-phone-with-me-today"></a>我今天没有带手机
 
@@ -46,14 +46,14 @@ Microsoft 提供双重验证，但组织可以选择性地使用该功能。 如
 3. 选择要使用的验证选项。
 4. 继续执行双重验证。
 
-如果看不到“使用其他验证选项”链接，则意味着首次注册双重验证时未设置替代方法。 请联系 IT 部门，请求帮忙登录到帐户。 登录后，请确保[管理设置](multi-factor-authentication-end-user-manage-settings.md)以添加其他验证方法供下一次使用。 
+如果看不到“使用其他验证选项”链接，则意味着首次注册双重验证时未设置替代方法。 请联系 IT 部门，请求帮忙登录到帐户。 登录后，请确保[管理设置](multi-factor-authentication-end-user-manage-settings.md)以添加其他验证方法供下一次使用。
 
-如果看到了“使用其他验证选项”链接，但无法访问任何一种替代验证方法，请联系 IT 部门，请求帮忙登录到帐户。 
+如果看到了“使用其他验证选项”链接，但无法访问任何一种替代验证方法，请联系 IT 部门，请求帮忙登录到帐户。
 
 ## <a name="i-lost-my-phone-or-got-a-new-number"></a>手机遗失或换了号码
 有两种方法可以恢复帐户。 第一种方法是使用备用身份验证电话号码登录（前提是已设置此号码）。 第二种方法是请求 IT 部门清除设置。
 
-如果手机遗失或被盗，我们还建议告知 IT 部门，让他们重置应用密码并清除所有已记住的设备。 
+如果手机遗失或被盗，我们还建议告知 IT 部门，让他们重置应用密码并清除所有已记住的设备。
 
 ### <a name="use-an-alternate-phone-number"></a>使用备用手机号码
 如果已在其他设备上设置多个验证选项（包括辅助电话号码或身份验证应用），可以使用其中一种登录。
@@ -62,7 +62,7 @@ Microsoft 提供双重验证，但组织可以选择性地使用该功能。 如
 
 1. 如往常一样登录。
 2. 当系统提示你进一步验证帐户时，选择“使用其他验证选项”。
-   
+
    ![其他验证方法](./media/multi-factor-authentication-end-user-troubleshoot/diff_option.png)
 
 3. 选择可以访问的电话号码或设备。
@@ -72,15 +72,15 @@ Microsoft 提供双重验证，但组织可以选择性地使用该功能。 如
 如果未配置辅助身份验证电话号码，则需要联系 IT 部门获取帮助。 请他们清除设置，以便在下次登录时重新收到[注册双重验证](multi-factor-authentication-end-user-first-time.md)的提示。
 
 ## <a name="i-am-not-receiving-a-text-or-call-on-my-phone"></a>我的手机上未收到短信或来电
-尝试登录时未收到短信或来电的原因有多种。 如果过去在手机上成功收到短信或来电，则可能是手机提供商的问题，而不是帐户出现问题。 请确保手机信号良好，如果尝试接收短信，请确保能够收到短信。 请求好友给你拨打电话或发送短信，以测试接收状况。 
+尝试登录时未收到短信或来电的原因有多种。 如果过去在手机上成功收到短信或来电，则可能是手机提供商的问题，而不是帐户出现问题。 请确保手机信号良好，如果尝试接收短信，请确保能够收到短信。 请求好友给你拨打电话或发送短信，以测试接收状况。
 
 如果在等待几分钟后仍未收到短信或来电，进入帐户的最快方式是尝试其他选项。
 
 1. 在等待验证的页面上选择“使用其他验证方法”
-   
+
     ![其他验证方法](./media/multi-factor-authentication-end-user-troubleshoot/diff_option.png)
 2. 选择要使用的电话号码或传递方法。
-   
+
     如果收到多个验证码，请使用最新的一个。
 
 如果未配置其他方法，请联系 IT 部门清除设置。 下次登录时，系统将重新提示[设置多重身份验证](multi-factor-authentication-end-user-first-time.md)。
@@ -96,5 +96,4 @@ Microsoft 提供双重验证，但组织可以选择性地使用该功能。 如
 ## <a name="related-topics"></a>相关主题
 * [管理双重验证设置](multi-factor-authentication-end-user-manage-settings.md)  
 * [Microsoft Authenticator 应用程序常见问题](microsoft-authenticator-app-faq.md)
-
 

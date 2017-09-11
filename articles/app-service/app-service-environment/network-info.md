@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/08/2017
 ms.author: ccompy
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 891ed3f496ca394c9139ad9f94986a19d8cef769
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 3be0d7a202ff53f5532fd7169a50a04cfaf88832
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
@@ -48,7 +48,7 @@ ms.lasthandoff: 08/03/2017
 
 普通的应用访问端口为：
 
-| 使用 | 从 | 到 |
+| 使用 | 发件人 | 到 |
 |----------|---------|-------------|
 |  HTTP/HTTPS  | 用户可配置 |  80、443 |
 |  FTP/FTPS    | 用户可配置 |  21, 990, 10001-10020 |
@@ -62,11 +62,18 @@ ASE 入站访问依赖项如下：
 
 | 使用 | 发件人 | 收件人 |
 |-----|------|----|
-| 管理 | Internet | ASE 子网：454、455 |
+| 管理 | 应用服务管理地址 | ASE 子网：454、455 |
 |  ASE 内部通信 | ASE 子网：所有端口 | ASE 子网：所有端口
-|  允许 Azure 负载均衡器入站流量 | Azure 负载均衡器 | 任意
+|  允许 Azure 负载均衡器入站流量 | Azure 负载均衡器 | ASE 子网：所有端口
+|  应用分配的 IP 地址 | 应用分配的地址 | ASE 子网：所有端口
 
-除系统监视以外，入站流量还提供对 ASE 的指挥与控制。 此流量的源 IP 可能有变。 网络安全配置需要允许通过端口 454 和 455 上的所有 IP 进行访问。
+除系统监视以外，入站流量还提供对 ASE 的指挥与控制。 [ASE 管理地址][ASEManagement]文档中列出了此流量的源 IP。 网络安全配置需要允许通过端口 454 和 455 上的所有 IP 进行访问。
+
+在 ASE 子网内，有多个用于内部组件通信的端口，并且可以更改。  这要求 ASE 子网中的所有端口均可从 ASE 子网访问。 
+
+对于 Azure 负载均衡器和 ASE 子网间的通信，需要开放的最小端口是 454、455 和 16001。 端口 16001 用于使负载均衡器和 ASE 之间的流量保持活动状态。 如果使用 ILB ASE，则可将流量锁定为仅 454、455 和 16001 端口。  如果使用外部 ASE，则需要考虑常规的应用访问端口。  如果使用应用分配的地址，则需要向所有端口开放。  如果地址分配给特定应用，则负载均衡器将使用未知的端口提前向 ASE 发送 HTTP 和 HTTPS 流量。
+
+如果使用应用分配的 IP 地址，则需要允许从分配给应用的 IP 到 ASE 子网的流量。
 
 对于出站访问，ASE 依赖于多个外部系统。 这些系统依赖项是使用 DNS 名称定义的，不会映射到一组固定的 IP 地址。 因此，ASE 需要从 ASE 子网跨各种端口对所有外部 IP 进行出站访问。 ASE 具有以下出站依赖项：
 
@@ -97,13 +104,13 @@ ASE 入站访问依赖项如下：
 
 -   Web 作业
 -   函数
--   Logstream
+-   日志流式处理
 -   Kudu
 -   扩展
 -   进程资源管理器
 -   控制台
 
-使用 ILB ASE 时，无法从 VNet 外部通过 Internet 访问 SCM 站点。 当应用托管在 ILB ASE 上时，无法访问 SCM 站点的功能将在 Azure 门户中灰显。
+使用 ILB ASE 时，无法从 VNet 外部通过 Internet 访问 SCM 站点。 在 ILB ASE 上托管应用时，无法从门户使用某些功能。  
 
 其中许多依赖于 SCM 站点的功能也可以直接在 Kudu 控制台中使用。 可直接连接到该站点，无需使用门户。 如果将应用托管在 ILB ASE 中，需使用发布凭据登录。 用于访问 ILB ASE 中托管的应用的 SCM 站点的 URL 采用以下格式： 
 
@@ -113,9 +120,13 @@ ASE 入站访问依赖项如下：
 
 如果 ILB ASE 的域名是 contoso.net，应用名称是 testapp，则将在 testapp.contoso.net 中访问此应用。 在 testapp.scm.contoso.net 中访问其随附的 SCM 站点。
 
+## <a name="functions-and-web-jobs"></a>函数和 Web 作业 ##
+
+函数和 Web 作业依赖于 SCM 站点，但支持在门户中使用，即使应用位于 ILB ASE 中，但前提是浏览器可以访问 SCM 站点。  如果在 ILB ASE 上使用自签名证书，需要让浏览器信任该证书。  对于 IE 和 Edge 而言，这意味着该证书必须在计算机信任存储中。  如果使用的是 Chrome，则意味着已提前接受浏览器中的证书，因为假设直接访问了 SCM 站点。  最佳解决方法是使用浏览器信任链中的商业证书。  
+
 ## <a name="ase-ip-addresses"></a>ASE IP 地址 ##
 
-ASE 具有许多需要注意的 IP 地址。 它们具有以下特点：
+ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 
 - 公共入站 IP 地址：用于外部 ASE 中的应用流量，以及外部 ASE 和 ILB ASE 中的管理流量。
 - 出站公共 IP：用作 ASE 发出、离开 VNet 且不经过 VPN 的出站连接的“来源”IP。
@@ -180,8 +191,7 @@ ASE 管理系统时所用的 Azure SQL 数据库配有防火墙。 它要求通�
 > [!IMPORTANT]
 > UDR 中定义的路由必须足够明确，以便优先于 ExpressRoute 配置所播发的任何路由。 上述示例使用了广泛的 0.0.0.0/0 地址范围。 因此很困意外地被使用更具体地址范围的路由播发重写。
 >
-
-若 ExpressRoute 配置交叉播发从公共对等路径到专用对等路径的路由，则这些配置不支持 ASE。 已配置公共对等互连的 ExpressRoute 配置将收到来自 Microsoft 的路由播发。 这些播发包含大量的 Microsoft Azure IP 地址范围。 如果这些地址范围在专用对等路径上交叉播发，则来自 ASE 子网的所有出站网络数据包均强制通过隧道发送至客户的本地网络基础结构。 ASE 目前不支持此网络流。 一个解决方法是停止公共对等路径到专用对等路径的交叉播发路由。
+> 若 ExpressRoute 配置交叉播发从公共对等路径到专用对等路径的路由，则这些配置不支持 ASE。 已配置公共对等互连的 ExpressRoute 配置将收到来自 Microsoft 的路由播发。 这些播发包含大量的 Microsoft Azure IP 地址范围。 如果这些地址范围在专用对等路径上交叉播发，则来自 ASE 子网的所有出站网络数据包均强制通过隧道发送至客户的本地网络基础结构。 ASE 目前不支持此网络流。 一个解决方法是停止公共对等路径到专用对等路径的交叉播发路由。
 
 若要创建 UDR，请遵循下列步骤：
 
@@ -245,4 +255,5 @@ ASE 管理系统时所用的 Azure SQL 数据库配有防火墙。 它要求通�
 [AppDeploy]: ../../app-service-web/web-sites-deploy.md
 [ASEWAF]: ../../app-service-web/app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[ASEManagement]: ./management-addresses.md
 

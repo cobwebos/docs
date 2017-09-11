@@ -2,7 +2,7 @@
 title: "Azure 自动化文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用自动化服务将过程和配置管理自动化，以节省时间，提高例行管理任务的可靠性。"
 services: automation
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: 00c4fe633a7ef76b20d2a9d1c704bb09da6b19a0
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/20/2017
 
 ---

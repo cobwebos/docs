@@ -9,10 +9,10 @@ ms.topic: get-started-article
 ms.date: 03/08/2017
 ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: c11f0c0a6cdc89449b7aa515319bbe6b6bdf1a4a
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c8c76944f4a95d3c8181454a7103ea0a3022189a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 08/18/2017
 
 * **Azure 帐户和订阅** - 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益][msdn_benefits]或注册 [Azure 免费帐户][free_account]。 创建帐户时，系统为用户创建默认订阅。
 * **批处理帐户** - Azure Batch 资源（包括池、计算节点、作业和任务）与 Azure Batch 帐户相关联。 当应用程序针对批处理服务提出请求时，会使用 Azure Batch 帐户名称、帐户的 URL 以及访问密钥对请求进行身份验证。 可以在 Azure 门户中 [创建 Batch 帐户](batch-account-create-portal.md) 。
-* **存储帐户** - 批处理提供的内置支持允许处理 [Azure 存储][azure_storage]中的文件。 几乎每个批处理方案都使用 Azure Blob 存储来暂存任务所运行的程序及其处理的数据，以及存储任务生成的输出数据。 若要创建存储帐户，请参阅 [关于 Azure 存储帐户](../storage/storage-create-storage-account.md)。
+* **存储帐户** - 批处理提供的内置支持允许处理 [Azure 存储][azure_storage]中的文件。 几乎每个批处理方案都使用 Azure Blob 存储来暂存任务所运行的程序及其处理的数据，以及存储任务生成的输出数据。 若要创建存储帐户，请参阅 [关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。
 
 ## <a name="batch-service-apis"></a>批处理服务 API
 

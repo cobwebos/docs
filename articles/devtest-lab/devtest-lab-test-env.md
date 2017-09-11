@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: tarcher
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: a556cee9d7b665cd7df23c97e7e2c8c2afabbe58
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 6926fe1be44c078482dd5073788e36d7ae77efef
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="use-azure-devtest-labs-for-vm-and-paas-test-environments"></a>将 Azure 开发测试实验室用于 VM 和 PaaS 测试环境
@@ -113,7 +113,7 @@ Azure 开发测试实验室可用于实现许多关键方案，但其中一个�
    | 任务 | 学习内容 |
    | --- | --- |
    | [定义实验室策略](devtest-lab-set-lab-policy.md) |通过在实验室中设置策略来控制成本。 |
-   | [使用 PowerShell 脚本删除所有实验室 VM](devtest-lab-faq.md#how-can-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |测试完成后，通过一次性操作删除所有实验室。|
+   | [使用 PowerShell 脚本删除所有实验室 VM](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |测试完成后，通过一次性操作删除所有实验室。|
 
 1. **将虚拟网络添加到实验室** 
    
@@ -147,7 +147,7 @@ Azure 开发测试实验室可用于实现许多关键方案，但其中一个�
    
    | 任务 | 学习内容 |
    | --- | --- |
-   | [使用 Resource Manager 模板创建实验室](devtest-lab-faq.md#how-do-i-create-a-lab-from-an-azure-resource-manager-template) |使用 Resource Manager 模板在 Azure 开发测试实验室中创建实验室。 |
+   | [使用 Resource Manager 模板创建实验室](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |使用 Resource Manager 模板在 Azure 开发测试实验室中创建实验室。 |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

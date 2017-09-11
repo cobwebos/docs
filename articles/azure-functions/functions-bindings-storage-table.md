@@ -4,7 +4,7 @@ description: "了解如何在 Azure Functions 中使用 Azure 存储绑定。"
 services: functions
 documentationcenter: na
 author: christopheranderson
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions，函数，事件处理，动态计算，无服务体系结构"
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/28/2016
 ms.author: chrande
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: bb01be3ee044f60376e0c9c2de7b3dd34f3b7aca
-ms.lasthandoff: 04/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 486b7c31c914ba7bb2d75e3f83ccf346a09104e8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-functions-storage-table-bindings"></a>Azure Functions 存储表绑定
@@ -61,7 +61,7 @@ ms.lasthandoff: 04/25/2017
 注意以下事项： 
 
 * 协同使用 `partitionKey` 和 `rowKey` 读取单个实体。 这些属性是可选的。 
-* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 还可以[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md#settings)。  
+* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会配置此应用设置。 还可以[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md#settings)。  
 
 <a name="inputusage"></a>
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 04/25/2017
 
 可以在 Node.js 或 C# 函数中反序列化输入数据。 反序列化的对象具有 `RowKey` 和 `PartitionKey` 属性。
 
-在 C# 函数中，还可绑定到以下任意类型，Functions 运行时将尝试使用此类型反序列化此表数据：
+在 C# 函数中，还可绑定到以下任意类型，Functions 运行时会尝试使用此类型反序列化此表数据：
 
 * 实现 `ITableEntity` 的任何类型
 * `IQueryable<T>`
@@ -114,7 +114,7 @@ ms.lasthandoff: 04/25/2017
 
 <a name="inputcsharp"></a>
 
-### <a name="input-sample-in-c"></a>C 中的输入示例# #
+### <a name="input-sample-in-c"></a>C# 中的输入示例 #
 ```csharp
 public static void Run(string myQueueItem, Person personEntity, TraceWriter log)
 {
@@ -132,7 +132,7 @@ public class Person
 
 <a name="inputfsharp"></a>
 
-### <a name="input-sample-in-f"></a>F 中的输入示例# #
+### <a name="input-sample-in-f"></a>F# 中的输入示例 #
 ```fsharp
 [<CLIMutable>]
 type Person = {
@@ -179,7 +179,7 @@ module.exports = function (context, myQueueItem) {
 注意以下事项： 
 
 * 协同使用 `partitionKey` 和 `rowKey` 写入单个实体。 这些属性是可选的。 当在函数代码中创建实体对象时还可以指定 `PartitionKey` 和 `RowKey`。
-* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 还可以[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md#settings)。 
+* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会配置此应用设置。 还可以[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md#settings)。 
 
 <a name="outputusage"></a>
 
@@ -226,7 +226,7 @@ module.exports = function (context, myQueueItem) {
 
 <a name="outcsharp"></a>
 
-### <a name="output-sample-in-c"></a>C 中的输出示例# #
+### <a name="output-sample-in-c"></a>C# 中的输出示例 #
 ```csharp
 public static void Run(string input, ICollector<Person> tableBinding, TraceWriter log)
 {
@@ -253,7 +253,7 @@ public class Person
 ```
 <a name="outfsharp"></a>
 
-### <a name="output-sample-in-f"></a>F 中的输出示例# #
+### <a name="output-sample-in-f"></a>F# 中的输出示例 #
 ```fsharp
 [<CLIMutable>]
 type Person = {
@@ -293,7 +293,7 @@ module.exports = function (context) {
 
 <a name="readmulti"></a>
 
-## <a name="sample-read-multiple-table-entities-in-c"></a>示例：在 C 中读取多个表实体#  #
+## <a name="sample-read-multiple-table-entities-in-c"></a>示例：在 C# 中读取多个表实体  #
 以下 function.json 和 C# 代码示例读取在队列消息中指定的分区键的实体。
 
 ```json

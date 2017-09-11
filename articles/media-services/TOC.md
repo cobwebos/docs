@@ -25,9 +25,6 @@
 
 # 如何
 ## 管理
-### 帐户
-#### [PowerShell](media-services-manage-with-powershell.md)
-#### [REST](/rest/api/media/mediaservice)
 ### 实体
 #### [.NET](media-services-dotnet-manage-entities.md)
 #### [REST](media-services-rest-manage-entities.md)
@@ -111,7 +108,6 @@
 ### [本地编码器](media-services-live-streaming-with-onprem-encoders.md)
 #### [门户](media-services-portal-live-passthrough-get-started.md)
 #### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-#### [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 ### [使用云编码器实时传送视频流](media-services-manage-live-encoder-enabled-channels.md)
 #### [门户](media-services-portal-creating-live-encoder-enabled-channel.md)
 #### [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -147,6 +143,8 @@
 #### [门户](media-services-portal-configure-content-key-auth-policy.md)
 #### [.NET](media-services-dotnet-configure-content-key-auth-policy.md)
 #### [REST](media-services-rest-configure-content-key-auth-policy.md)
+### [在 Safari 中播放 AES 加密的 HLS](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)
+### [传递身份验证令牌](http://mingfeiy.com/how-client-pass-tokens-to-azure-media-services-key-delivery-services)
 
 ## [分析](media-services-analytics-overview.md)
 ### [使用门户分析媒体](media-services-portal-analyze.md)
@@ -169,7 +167,6 @@
 ### [媒体处理](media-services-scale-media-processing-overview.md)
 #### [门户](media-services-portal-scale-media-processing.md)
 #### [.NET](media-services-dotnet-encoding-units.md)
-#### [REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
 ### 流式处理终结点
 #### [门户](media-services-portal-scale-streaming-endpoints.md)
 

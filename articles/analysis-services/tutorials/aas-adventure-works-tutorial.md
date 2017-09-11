@@ -3,7 +3,7 @@ title: "Azure Analysis Services Adventure Works 教程 | Microsoft Docs"
 description: "介绍了 Azure Analysis Services 的 Adventure Works 教程"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 06/01/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: a613bbe84a3834ab4fb237779248c7ad8d75b563
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 257e0bc442f29bfe6683fb0511deac50d92c1720
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services - Adventure Works 教程
@@ -49,13 +49,13 @@ ms.lasthandoff: 06/03/2017
 -   如何将表格模型部署到 **Azure Analysis Services** 服务器或本地 SQL Server 2017 Analysis Services 服务器。  
   
 ## <a name="prerequisites"></a>先决条件  
-若要完成本教程，你需要：  
+要完成本教程，需要：  
   
 -   要将模型部署到的 Azure Analysis Services 或 SQL Server 2017 Analysis Services 实例。 注册免费的 [Azure Analysis Services 试用版](https://azure.microsoft.com/services/analysis-services/)并[创建服务器](../analysis-services-create-server.md)。 或者，注册并下载 [SQL Server 2017 社区技术预览版](https://www.microsoft.com/evalcenter/evaluate-sql-server-vnext-ctp)。 
 
--   包含 [AdventureWorksDW2014 示例数据库](http://go.microsoft.com/fwlink/?LinkID=335807)的 SQL Server 或 Azure SQL 数据库。 此示例数据库包含完成本教程所需的数据。 下载 [SQL Server 免费版](https://www.microsoft.com/sql-server/sql-server-downloads)。 或则，注册免费的 [Azure SQL 数据库试用版](https://azure.microsoft.com/services/sql-database/)。 
+-   包含 [AdventureWorksDW2014 示例数据库](http://go.microsoft.com/fwlink/?LinkID=335807)的 SQL Server 数据仓库或 Azure SQL 数据仓库。 此示例数据库包含完成本教程所需的数据。 下载 [SQL Server 免费版](https://www.microsoft.com/sql-server/sql-server-downloads)。 或则，注册免费的 [Azure SQL 数据库试用版](https://azure.microsoft.com/services/sql-database/)。 
 
-    **重要说明：**如果你在本地 SQL Server 上安装示例数据库，并且将模型部署到 Azure Analysis Services 服务器，则需要[本地数据网关](../analysis-services-gateway.md)。
+    **重要说明：**如果在本地 SQL Server 上安装示例数据库，并且将模型部署到 Azure Analysis Services 服务器，则需要[本地数据网关](../analysis-services-gateway.md)。
 
 -   最新版本的 [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)。
 
@@ -64,11 +64,11 @@ ms.lasthandoff: 06/03/2017
 -   客户端应用程序，例如 [Power BI Desktop](https://powerbi.microsoft.com/desktop/) 或 Excel。 
 
 ## <a name="scenario"></a>方案  
-本教程基于 Adventure Works Cycles（一家虚构的公司）。 Adventure Works 是一家大型的跨国制造公司，生产金属和复合材料的自行车并面向北美、欧洲和亚洲的商业市场销售。 公司雇佣了 500 名员工。 另外，Adventure Works 还雇用了遍布其市场群的多个区域销售团队。 项目内容是为销售和营销用户创建表格模型来分析 AdventureWorksDW 数据库中的 Internet 销售数据。  
+本教程基于 Adventure Works Cycles（一家虚构的公司）。 Adventure Works 是一家大型的跨国制造公司，生产自行车及其零配件并面向北美、欧洲和亚洲的商业市场销售。 公司雇佣了 500 名员工。 另外，Adventure Works 还雇用了遍布其市场群的多个区域销售团队。 项目内容是为销售和营销用户创建表格模型来分析 AdventureWorksDW 数据库中的 Internet 销售数据。  
   
 若要完成本教程，必须完成多个课程。 在每个课程中，需执行一些任务。 若要完成本课程，必须按序完成每个任务。 特定课程中可能有几个任务会实现类似的结果，但完成每个任务的方式略有不同。 此方法说明通常可通过多种方法来完成某个任务，并提供机会练习使用在之前的课程和任务中学习的技能。  
   
-各个课程的目的是指导你使用 SSDT 中包括的许多功能创作基本的表格模型运行。 因为每一课程都以上一课程为基础，因此必须按顺序完成各个课程。
+各个课程的目的是指导使用 SSDT 中包括的许多功能创作基本的表格模型。 因为每一课程都以上一课程为基础，因此必须按顺序完成各个课程。
   
 本教程不提供有关后列内容的课程：在 Azure 门户中管理服务器、通过使用 SSMS 或通过使用客户端应用程序浏览模型数据来管理服务器或数据库。 
 
@@ -78,19 +78,19 @@ ms.lasthandoff: 06/03/2017
   
 |课程|估计完成时间|  
 |----------|------------------------------|  
-|[第 1 课：创建新的表格模型项目](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)|10 分钟|  
-|[第 2 课：获取数据](../tutorials/aas-lesson-2-get-data.md)|10 分钟|  
-|[第 3 课：标记为日期表](../tutorials/aas-lesson-3-mark-as-date-table.md)|3 分钟|  
-|[第 4 课：创建关系](../tutorials/aas-lesson-4-create-relationships.md)|10 分钟|  
-|[第 5 课：创建计算列](../tutorials/aas-lesson-5-create-calculated-columns.md)|15 分钟|
-|[第 6 课：创建度量值](../tutorials/aas-lesson-6-create-measures.md)|30 分钟|  
-|[第 7 课：创建关键绩效指标](../tutorials/aas-lesson-7-create-key-performance-indicators.md)|15 分钟|  
-|[第 8 课：创建透视](../tutorials/aas-lesson-8-create-perspectives.md)|5 分钟|  
-|[第 9 课：创建层次结构](../tutorials/aas-lesson-9-create-hierarchies.md)|20 分钟|  
-|[第 10 课：创建分区](../tutorials/aas-lesson-10-create-partitions.md)|15 分钟|  
-|[第 11 课：创建角色](../tutorials/aas-lesson-11-create-roles.md)|15 分钟|  
-|[第 12 课：在 Excel 中分析](../tutorials/aas-lesson-12-analyze-in-excel.md)|5 分钟| 
-|[第 13 课：部署](../tutorials/aas-lesson-13-deploy.md)|5 分钟|  
+|[1 - 创建新的表格模型项目](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)|10 分钟|  
+|[2 - 获取数据](../tutorials/aas-lesson-2-get-data.md)|10 分钟|  
+|[3 - 标记为日期表](../tutorials/aas-lesson-3-mark-as-date-table.md)|3 分钟|  
+|[4 - 创建关系](../tutorials/aas-lesson-4-create-relationships.md)|10 分钟|  
+|[5 - 创建计算列](../tutorials/aas-lesson-5-create-calculated-columns.md)|15 分钟|
+|[6 - 创建度量值](../tutorials/aas-lesson-6-create-measures.md)|30 分钟|  
+|[7 - 创建关键绩效指标 (KPI)](../tutorials/aas-lesson-7-create-key-performance-indicators.md)|15 分钟|  
+|[8 - 创建透视](../tutorials/aas-lesson-8-create-perspectives.md)|5 分钟|  
+|[9 - 创建层次结构](../tutorials/aas-lesson-9-create-hierarchies.md)|20 分钟|  
+|[10 - 创建分区](../tutorials/aas-lesson-10-create-partitions.md)|15 分钟|  
+|[11 - 创建角色](../tutorials/aas-lesson-11-create-roles.md)|15 分钟|  
+|[12 - 在 Excel 中分析](../tutorials/aas-lesson-12-analyze-in-excel.md)|5 分钟| 
+|[13 - 部署](../tutorials/aas-lesson-13-deploy.md)|5 分钟|  
   
 ## <a name="supplemental-lessons"></a>补充课程  
 这些课程不是完成本教程所必需的，但可以帮助你更好地理解高级表格模型创作功能。  

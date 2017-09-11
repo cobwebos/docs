@@ -32,7 +32,9 @@
 ### [Azure 门户](expressroute-howto-add-gateway-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 ## [配置 ExpressRoute 和站点到站点并存连接](expressroute-howto-coexist-resource-manager.md)
-## [配置用于 Microsoft 对等互连的路由筛选器](how-to-routefilter-powershell.md)
+## 配置用于 Microsoft 对等互连的路由筛选器
+### [Azure 门户](how-to-routefilter-portal.md)
+### [PowerShell](how-to-routefilter-powershell.md)
 ## [将线路从经典部署转移到 Resource Manager 部署](expressroute-howto-move-arm.md)
 ## [将关联的虚拟网络从经典部署迁移到 Resource Manager 部署](expressroute-migration-classic-resource-manager.md)
 ## 为 ExpressRoute 配置路由器

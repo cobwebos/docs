@@ -12,33 +12,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 4/10/2017
+ms.date: 08/15/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: a9023448c4ced1edf54c84bb103454cbd76fbfba
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 0d659cb860a6c98342b548212820efe046decfcc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 
-<a id="event-hubs-management-libraries" class="xliff"></a>
-
-# 事件中心管理库
+# <a name="event-hubs-management-libraries"></a>事件中心管理库
 
 事件中心管理库可以动态设置事件中心命名空间和实体。 这样可以实现复杂的部署和消息传递方案，以便能够以编程方式确定要设置的实体。 这些库目前可用于 .NET。
 
-<a id="supported-functionality" class="xliff"></a>
-
-## 支持的功能
+## <a name="supported-functionality"></a>支持的功能
 
 * 命名空间创建、更新、删除
 * 事件中心创建、更新、删除
 * 使用者组创建、更新、删除
 
-<a id="prerequisites" class="xliff"></a>
-
-## 先决条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始使用事件中心管理库，必须使用 Azure Active Directory (AAD) 进行身份验证。 AAD 要求身份验证为服务主体，且该主体提供对 Azure 资源的访问权限。 有关创建服务主体的信息，请参阅以下文章之一：  
 
@@ -46,15 +40,13 @@ ms.lasthandoff: 04/12/2017
 * [使用 Azure PowerShell 创建服务主体来访问资源](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 * [使用 Azure CLI 创建服务主体来访问资源](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)
 
-这些教程将提供 `AppId`（客户端 ID）、`TenantId` 和 `ClientSecret`（身份验证密钥），这些都将用于管理库进行的身份验证。 对于要在其上运行的资源组，必须具有“所有者”权限。
+这些教程提供 `AppId`（客户端 ID）、`TenantId` 和 `ClientSecret`（身份验证密钥），这些都用于管理库进行的身份验证。 若要对资源组运行命令，必须拥有“所有者”权限。
 
-<a id="programming-pattern" class="xliff"></a>
-
-## 编程模式
+## <a name="programming-pattern"></a>编程模式
 
 操作任何事件中心资源的模式都遵循通用协议：
 
-1. 使用 `Microsoft.IdentityModel.Clients.ActiveDirectory` 库从 Azure Active Directory 获取令牌。
+1. 使用 `Microsoft.IdentityModel.Clients.ActiveDirectory` 库从 AAD 获取令牌。
     ```csharp
     var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
@@ -86,9 +78,7 @@ ms.lasthandoff: 04/12/2017
     await ehClient.EventHubs.CreateOrUpdateAsync(resourceGroupName, namespaceName, EventHubName, ehParams);
     ```
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 * [.NET 管理示例](https://github.com/Azure-Samples/event-hubs-dotnet-management/)
 * [Microsoft.Azure.Management.EventHub 引用](/dotnet/api/Microsoft.Azure.Management.EventHub) 
 

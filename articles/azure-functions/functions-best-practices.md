@@ -4,7 +4,7 @@ description: "了解 Azure Functions 的最佳做法和模式。"
 services: functions
 documentationcenter: na
 author: wesmc7777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 模式, 最佳做法, Functions, 事件处理, webhook, 动态计算, 无服务体系结构"
@@ -17,12 +17,11 @@ ms.workload: na
 ms.date: 06/13/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 5408bf986b67d420d4d1359961ec83510c97cd05
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 645a5dd16e72619e7c2470ab8f03098f0fa6c7f8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -88,9 +87,9 @@ Function App 中的各函数共享资源。 例如，共享内存。 如果生�
 
 
 
-## <a name="use-async-code-but-avoid-taskresult"></a>使用异步代码，但避免使用 Task.Result
+## <a name="use-async-code-but-avoid-blocking-calls"></a>使用异步代码，但避免阻止调用
 
-异步编程是推荐的最佳做法。 但请始终避免引用 `Task.Result` 属性。 这种方法会导致线程耗尽。
+异步编程是推荐的最佳做法。 但是，请始终避免引用 `Result` 属性或在 `Task` 实例上调用 `Wait` 方法。 这种方法会导致线程耗尽。
 
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]

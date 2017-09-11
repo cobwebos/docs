@@ -10,13 +10,13 @@ ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/31/2017
+ms.date: 06/30/2017
 ms.author: sergkanz
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 0c4ddfe4533dc232047f0b1a0af270e7f9372c84
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b31d38fe2f7060597956a1ee9c66f43ce39d7240
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -203,7 +203,7 @@ public async Task Process(BrokeredMessage message)
 ```
 
 ### <a name="azure-storage-queue"></a>Azure 存储队列
-以下示例显示如何跟踪 [Azure 存储队列](../storage/storage-dotnet-how-to-use-queues.md)操作，并将生成者、使用者和 Azure 存储之间的遥测相关联。 
+以下示例显示如何跟踪 [Azure 存储队列](../storage/queues/storage-dotnet-how-to-use-queues.md)操作，并将生成者、使用者和 Azure 存储之间的遥测相关联。 
 
 存储队列具有一个 HTTP API。 用于 HTTP 请求的 Application Insights Dependency Collector 会跟踪对该队列的所有调用。
 请确保在 `applicationInsights.config` 中有 `Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer`。 如果没有，则按 [Azure Application Insights SDK 中的筛选和预处理](app-insights-api-filtering-sampling.md)中所述以编程方式添加。
@@ -221,7 +221,7 @@ module.Initialize(TelemetryConfiguration.Active);
 // Do not forget to dispose of the module during application shutdown.
 ```
 
-用户可能还想将 Application Insights 操作 ID 与存储请求 ID 相关联。 有关如何设置与获取存储请求客户端和服务器请求 ID 的信息，请参阅[对 Azure 存储进行监视、诊断和故障排除](../storage/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing)。
+用户可能还想将 Application Insights 操作 ID 与存储请求 ID 相关联。 有关如何设置与获取存储请求客户端和服务器请求 ID 的信息，请参阅[对 Azure 存储进行监视、诊断和故障排除](../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing)。
 
 #### <a name="enqueue"></a>排队
 由于存储队列支持 HTTP API，因此 Application Insights 会自动跟踪队列的所有操作。 在多数情况下，此检测已足够。 但是，为了将使用者跟踪与生成者跟踪相关联，必须传递某些关联上下文，方法类似于 HTTP 关联协议中所执行的操作。 

@@ -14,9 +14,10 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
 ms.openlocfilehash: 0ca35a3d634db8eb5c63afacba046a35b8a3e7ed
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/01/2017
 
 

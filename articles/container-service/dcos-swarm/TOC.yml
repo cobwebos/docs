@@ -27,6 +27,8 @@
       href: container-service-security.md
 - name: 操作指南
   items:
+    - name: 创建 ACS 群集
+      href: container-service-create-acs-cluster-cli.md
     - name: 与 ACS 群集连接
       href: container-service-connect.md
     - name: 缩放 ACS 群集
@@ -59,18 +61,20 @@
               href: container-service-monitoring-dynatrace.md
     - name: Docker Swarm
       items:
-        - name: Swarm 模式快速入门
+        - name: Docker CE 快速入门
           href: container-service-swarm-mode-walkthrough.md
         - name: Docker 和 Docker Compose
           href: container-service-docker-swarm.md
         - name: 将 CI/CD 与 Docker Swarm 和 VSTS 配合使用
           href: container-service-docker-swarm-setup-ci-cd.md
+        - name: 将 CI/CD 与 Docker Swarm（ACS 引擎）和 VSTS 配合使用
+          href: container-service-docker-swarm-mode-setup-ci-cd-acs-engine.md
 - name: 引用
   items:
     - name: Azure CLI 2.0
       href: /cli/azure/acs
     - name: REST
-      href: /rest/api/compute/containerservices
+      href: /rest/api/container-services
 - name: 资源
   items:
     - name: Azure 路线图

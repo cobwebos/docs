@@ -8,18 +8,18 @@ author: sandshadow
 manager: almineev
 editor: cgronlun
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: how-to-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/19/2017
 ms.author: edett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 216c2146371e2b88d4a3d7aa4f08ae8186e89443
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: f6a993b3858cfb94dd9795f5e55f15fa6ec7dcb2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/01/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="how-to-add-an-event-hub-event-source"></a>如何添加事件中心事件源
@@ -51,7 +51,7 @@ ms.lasthandoff: 05/01/2017
 | 订阅 ID | 选择其中创建有此事件中心的订阅。
 | 服务总线命名空间 | 选择包含事件中心的服务总线命名空间。
 | 事件中心名称 | 选择事件中心的名称。
-| 事件中心策略名称 | 选择共享访问策略，可在事件中心配置选项卡中创建此策略。 每个共享访问策略具有名称、所设权限以及访问密钥。 事件源的共享访问策略必须具有“读取”权限。
+| 事件中心策略名称 | 选择共享访问策略，可在事件中心配置选项卡中创建此策略。每个共享访问策略具有名称、所设权限以及访问密钥。 事件源的共享访问策略必须具有“读取”权限。
 | 事件中心使用者组 | 从事件中心读取事件的使用者组。 强烈建议为事件源使用专用的使用者组。
 
 ### <a name="provide-event-hub-settings-manually"></a>手动提供事件中心设置
@@ -64,9 +64,9 @@ ms.lasthandoff: 05/01/2017
 | 源 | 选择“事件中心”以创建事件中心事件源。
 | 订阅 ID | 其中创建有此事件中心的订阅。
 | 资源组 | 其中创建有此事件中心的订阅。
-| 服务总线命名空间 | 服务总线命名空间是包含一组消息传递实体的容器。 当你创建新的事件中心后，你还创建了 Service Bus 命名空间。
+| 服务总线命名空间 | 服务总线命名空间是包含一组消息传递实体的容器。 创建新的事件中心后，还创建了 Service Bus 命名空间。
 | 事件中心名称 | 事件中心的名称。 创建事件中心时，还为它提供了一个特定的名称
-| 事件中心策略名称 | 可以在事件中心的“配置”选项卡上创建的共享访问策略。 每个共享访问策略具有名称、所设权限以及访问密钥。 事件源的共享访问策略必须具有“读取”权限。
+| 事件中心策略名称 | 可以在事件中心的“配置”选项卡上创建的共享访问策略。每个共享访问策略具有名称、所设权限以及访问密钥。 事件源的共享访问策略必须具有“读取”权限。
 | 事件中心策略密钥 | 用于验证对服务总线命名空间的访问权限的共享访问密钥。 在此处键入主密钥或辅助密钥。
 | 事件中心使用者组 | 从事件中心读取事件的使用者组。 强烈建议为事件源使用专用的使用者组。
 

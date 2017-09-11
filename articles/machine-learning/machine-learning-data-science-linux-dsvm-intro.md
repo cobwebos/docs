@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/21/2017
 ms.author: bradsev
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: 3c7db401442c41bbe1343b1adc48f4f1b7d88b49
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: bc6f293db0d537990d7fb1238fe4a19c704f57a1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="provision-the-linux-data-science-virtual-machine"></a>预配 Linux 数据科研虚拟机
@@ -49,7 +49,7 @@ Linux 数据科学虚拟机是基于 CentOS 的 Azure 虚拟机，附带一组�
 2. 构建和测试模型
 3. 部署模型以在智能应用程序中使用
 
-数据科学家使用各种工具完成这些任务。 找到软件的适当版本，然后下载、编译和安装这些版本，这一过程可能耗时较长。
+数据科学家使用各种工具完成这些任务。 找到软件的适当版本，并下载、编译和安装这些版本，这一过程可能耗时较长。
 
 Linux 数据科学虚拟机可大大减轻这种负担。 使用它快速开始分析项目。 它支持处理各种语言版本的任务，包括 R、Python、SQL、Java 和 C++。 Eclipse 提供 IDE，可开发易于使用的代码并对其进行测试。 使用 VM 中包含的 Azure SDK，可在适用于 Microsoft 云平台的 Linux 上使用各种服务来生成应用程序。 此外，还可以访问其他预安装语言，如 Ruby、Perl、PHP 和 node.js。
 
@@ -62,7 +62,7 @@ Linux 数据科学虚拟机可大大减轻这种负担。 使用它快速开始�
 创建 Linux 数据科学虚拟机之前，必须具备以下条件：
 
 * **Azure 订阅**：若要获取订阅，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/free/)。
-* **Azure 存储帐户**：若要创建帐户，请参阅[创建 Azure 存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)。 或者，如果不想使用现有帐户，则可以在创建 VM 过程中创建存储帐户。
+* **Azure 存储帐户**：若要创建帐户，请参阅[创建 Azure 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。 或者，如果不想使用现有帐户，则可以在创建 VM 过程中创建存储帐户。
 
 ## <a name="create-your-linux-data-science-virtual-machine"></a>创建 Linux 数据科学虚拟机
 以下是创建 Linux 数据科学虚拟机实例的步骤：
@@ -71,16 +71,16 @@ Linux 数据科学虚拟机可大大减轻这种负担。 使用它快速开始�
 2. 单击底部的“创建”打开向导。![configure-data-science-vm](./media/machine-learning-data-science-linux-dsvm-intro/configure-linux-data-science-virtual-machine.png)
 3. 以下部分提供用于创建 Microsoft 数据科学虚拟机的向导中每个步骤的输入（在上一图片的右侧枚举）。 以下是配置每个步骤所需的输入：
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **基本信息**：
+   a. **基本信息**：
    
    * **名称**：待创建的数据科学服务器的名称。
    * **用户名称**：第一个帐户登录 ID。
    * **密码**：第一个帐户密码（可以使用 SSH 公钥代替密码）。
    * **订阅**：如果有多个订阅，请选择要在其上创建虚拟机并对其计费的订阅。 必须具有此订阅的资源创建权限。
    * **资源组**：可以创建新组或使用现有组。
-   * **位置**：选择最适合的数据中心。 通常，最合适的数据中心应拥有大部分数据，或者最接近你的物理位置以实现最快的网络访问。
+   * **位置**：选择最适合的数据中心。 通常，最合适的数据中心应拥有大部分数据，或者最接近物理位置以实现最快的网络访问。
    
-   b.保留“数据库类型”设置，即设置为“共享”。 **大小**：
+   b. **大小**：
    
    * 选择能满足功能需求和成本约束的服务器类型。 选择“查看全部”查看 VM 大小的更多选择。
    
@@ -94,7 +94,7 @@ Linux 数据科学虚拟机可大大减轻这种负担。 使用它快速开始�
    
    * 验证输入的所有信息是否正确。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 **购买**：
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 **购买**：
    
    * 若要开始预配，请单击“购买”。 提供交易条款的链接。 除计算**大小**步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。
 
@@ -127,7 +127,7 @@ Linux VM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 �
 ### <a name="microsoft-r-server"></a>Microsoft R Server
 R 是数据分析和机器学习的最常用语言之一。 如果要使用 R 进行分析，则 VM 需具有带 Microsoft R Open (MRO) 和数学内核库 (MKL) 的 Microsoft R Server (MRS)。 MKL 优化分析算法中常用的数学运算。 MRO 与 CRAN-R 100％ 兼容，在 CRAN 中发布的任何 R 库都可以安装在 MRO 上。 使用 MRS 可将 R 模型缩放和实施为 Web 服务。 可以在其中一个默认编辑器（如 RStudio、vi、Emacs 或 gedit）中编辑 R 程序。 如果使用 Emacs 编辑器，请注意，确保已预安装了 Emacs 包 ESS (Emacs Speaks Statistics)，其可简化 Emacs 编辑器中处理 R 文件的工作。
 
-若要启动 R 控制台，只需在 shell 中键入 **R**。 执行该操作将进入交互式环境。 若要开发 R 程序，通常使用 Emacs、vi 或 gedit 等编辑器，然后在 R 中运行脚本。使用 RStudio，便拥有一个完整的图形 IDE 环境来开发 R 程序。
+若要启动 R 控制台，只需在 shell 中键入 **R**。 执行该操作将进入交互式环境。 要开发 R 程序，通常使用 Emacs、vi 或 gedit 等编辑器，并在 R 中运行脚本。使用 RStudio，便拥有一个完整的图形 IDE 环境来开发 R 程序。
 
 还提供一个 R 脚本，可用于安装[前 20 个 R 程序包](http://www.kdnuggets.com/2015/06/top-20-r-packages.html)（如果需要）。 此脚本可以在 R 交互式界面中运行，可以通过在 shell 中键入 **R** 来输入此脚本（如前所述）。  
 
@@ -177,7 +177,7 @@ Anaconda 分发版还附带 Jupyter 笔记本 - 用于共享代码和分析的�
 我们已经打包了两个示例笔记本（分别在 Python 和 R 中）。通过使用本地 Linux 用户名和密码向 Jupyter 笔记本进行身份验证后，可以在笔记本主页上看到示例链接。 通过选择“新建”并选择相应的语言内核，可创建新笔记本。 如果没有看到“新建”按钮，请点击左上角的“Jupyter”图标转到笔记本服务器的主页。
 
 ### <a name="apache-spark-standalone"></a>Apache Spark Standalone 
-Apache Spark 的独立实例预安装在 Linux DSVM 上，帮助你先在本地开发 Spark 应用程序，然后再在大型群集上进行测试和部署。 可以通过 Jupyter 内核运行 PySpark 程序。 打开 Jupyter 并单击“新建”按钮时，应该能够看到可用内核列表。 “Spark - Python”是 PySpark 内核。借助它，可以使用 Python 语言生成 Spark 应用程序。 还可以使用 Python IDE（如 PyCharm 或 Spyder）生成 Spark 程序。 由于这是独立实例，因此 Spark 堆栈将在调用方客户端程序中运行。 与在 Spark 群集上开发相比，这样可以更快、更轻松地排查问题。 
+Apache Spark 的独立实例预安装在 Linux DSVM 上，帮助用户先在本地开发 Spark 应用程序，再在大型群集上进行测试和部署。 可以通过 Jupyter 内核运行 PySpark 程序。 打开 Jupyter 并单击“新建”按钮时，应该能够看到可用内核列表。 “Spark - Python”是 PySpark 内核。借助它，可以使用 Python 语言生成 Spark 应用程序。 还可以使用 Python IDE（如 PyCharm 或 Spyder）生成 Spark 程序。 由于这是独立实例，因此 Spark 堆栈会在调用方客户端程序中运行。 与在 Spark 群集上开发相比，这样可以更快、更轻松地排查问题。 
 
 Jupyter 上提供了一个示例 PySpark 笔记本，该笔记本可以在 Jupyter 主目录下的“SparkML”目录 ($HOME/notebooks/SparkML/pySpark) 中找到。 
 
@@ -209,7 +209,7 @@ Jupyter 上提供了一个示例 PySpark 笔记本，该笔记本可以在 Jupyt
 在服务运行时且 initdb 已完成的情况下，开放源数据库 **Postgres** 在VM上可用。 仍需要创建数据库和用户。 有关详细信息，请参阅 [Postgres 文档](https://www.postgresql.org/docs/)。  
 
 #### <a name="graphical-sql-client"></a>图形化 SQL 客户端
-**SQuirrel SQL** 是一个图形化 SQL 客户端，用于连接到不同的数据库（如 Microsoft SQL Server、Postgres 和 MySQL）和运行 SQL 查询。 可从图形桌面会话运行（例如使用 X2Go 客户端）。 若要调用 SQuirrel SQL，可通过桌面上的图标将其启动，或者在 shell 上运行以下命令。
+**SQuirrel SQL** 是一个图形化 SQL 客户端，用于连接到不同的数据库（如 Microsoft SQL Server、Postgres 和 MySQL）和运行 SQL 查询。 可从图形桌面会话运行（例如使用 X2Go 客户端）。 要调用 SQuirrel SQL，可通过桌面上的图标将其启动，或者在 shell 上运行以下命令。
 
     /usr/local/squirrel-sql-3.7/squirrel-sql.sh
 
@@ -222,7 +222,7 @@ Jupyter 上提供了一个示例 PySpark 笔记本，该笔记本可以在 Jupyt
 #### <a name="command-line-tools-for-accessing-microsoft-sql-server"></a>用于访问 Microsoft SQL Server 的命令行工具
 SQL Server 的 ODBC 驱动程序包还附带两个命令行工具：
 
-**bcp**：bcp 实用工具在 Microsoft SQL Server 实例与用户指定格式的数据文件之间批量复制数据。 bcp 实用工具可用于将大量新行导入 SQL Server 表，或将表中的数据导出到数据文件。 若要将数据导入表，必须使用为该表创建的格式文件，或了解表的结构以及对其列有效的数据类型。
+**bcp**：bcp 实用工具在 Microsoft SQL Server 实例与用户指定格式的数据文件之间批量复制数据。 bcp 实用工具可用于将大量新行导入 SQL Server 表，或将表中的数据导出到数据文件。 要将数据导入表，必须使用为该表创建的格式文件，或了解表的结构以及对其列有效的数据类型。
 
 有关详细信息，请参阅[使用 bcp 连接](https://msdn.microsoft.com/library/hh568446.aspx)。
 
@@ -264,9 +264,9 @@ Azure 机器学习是完全托管的云服务，允许构建、部署和共享�
 
 登录 Azure 机器学习工作室后，可以访问实验画布，可在其中生成机器学习算法的逻辑流。 还可以访问在 Azure 机器学习上托管的 Jupyter 笔记本，并且可以无缝使用机器学习工作室中的实验。 通过将已构建的机器学习模型包装在 Web 服务接口中，来对它们执行操作。 这使得以任何语言编写的客户端都能从机器学习模型中调用预测。 有关详细信息，请参阅[机器学习文档](https://azure.microsoft.com/documentation/services/machine-learning/)。
 
-还可以在 VM 上的 R 或 Python 中构建模型，然后在 Azure 机器学习上将其部署到生产中。 我们已在 R (**AzureML**) 和 Python (**azureml**) 中分别安装了库以启用此功能。
+还可以在 VM 上的 R 或 Python 中构建模型，并在 Azure 机器学习上将其部署到生产中。 我们已在 R (**AzureML**) 和 Python (**azureml**) 中分别安装了库以启用此功能。
 
-若要深入了解如何将 R 和 Python 中的模型部署到 Azure 机器学习，请参阅[可在数据科学虚拟机上执行的十项操作](machine-learning-data-science-vm-do-ten-things.md)（特别是“使用 R 或 Python 构建模型并使用 Azure 机器学习对其进行操作”部分）。
+要深入了解如何将 R 和 Python 中的模型部署到 Azure 机器学习，请参阅[可在数据科学虚拟机上执行的十项操作](machine-learning-data-science-vm-do-ten-things.md)（特别是“使用 R 或 Python 构建模型并使用 Azure 机器学习对其进行操作”部分）。
 
 > [!NOTE]
 > 这些说明专为 Windows 版本的数据科学 VM 编写。 但是其中提供的有关将模型部署到 Azure 机器学习的信息也适用于 Linux VM。
@@ -312,7 +312,7 @@ Vowpal Wabbit 是一种使用在线、哈希、allreduce、缩减、learning2sea
 
 它作为命令行及 R 库提供。
 
-若要在 R 中使用此库，可以启动交互式 R 会话（只需在 shell 中键入**R**），然后加载库。
+要在 R 中使用此库，可以启动交互式 R 会话（只需在 shell 中键入**R**），并加载库。
 
 下面是可以在 R 提示符中运行的一个简单示例：
 
@@ -345,7 +345,7 @@ Rattle (**R** **A**nalytical **T**ool **T**o **L**earn **E**asily) 使用基于 
     library(rattle)
     rattle()
 
-现在，将打开具有一组选项卡的图形界面。 下面是 Rattle 中使用示例天气数据集并构建模型所需的快速入门步骤。 以下某些步骤中，系统将提示自动安装并加载尚未安装在系统上的某些必需 R 包。
+现在，将打开具有一组选项卡的图形界面。 下面是 Rattle 中使用示例天气数据集并构建模型所需的快速入门步骤。 以下某些步骤中，系统会提示自动安装并加载尚未安装在系统上的某些必需 R 包。
 
 > [!NOTE]
 > 如果无权在系统目录（默认）中安装包，可能会在 R 控制台窗口中看到一个提示，提醒将包安装到个人库中。 如果看到这些提示，请回复 y。
@@ -353,13 +353,13 @@ Rattle (**R** **A**nalytical **T**ool **T**o **L**earn **E**asily) 使用基于 
 > 
 
 1. 单击“执行” 。
-2. 这将弹出一个对话框，询问是否要使用示例气象数据集。 单击“是”加载示例。
+2. 这会弹出一个对话框，询问是否要使用示例气象数据集。 单击“是”加载示例。
 3. 单击“模型”选项卡。
 4. 单击“执行”生成决策树。
 5. 单击“绘制”显示决策树。
-6. 单击“林”单选按钮，然后单击“执行”生成随机林。
+6. 单击“林”单选按钮，并单击“执行”生成随机林。
 7. 单击“评估”选项卡。
-8. 单击“风险”单选按钮，然后单击“执行”，以显示两个风险（累积）性能绘图。
+8. 单击“风险”单选按钮，并单击“执行”，以显示两个风险（累积）性能绘图。
 9. 单击“日志”选项卡，显示上述操作生成的 R 代码。
    （由于当前版本 Rattle 中的 bug，需在日志文本中的“导出此日志...”前插入 *#* 字符。）
 10. 单击“导出”按钮，将名为 *weather_script.R* 的 R 脚本文件保存到主文件夹。

@@ -37,13 +37,13 @@
       href: container-service-kubernetes-service-principal.md
 - name: 操作指南
   items:
-    - name: “将 Kubernetes 与 Windows 配合使用”快速入门
+    - name: 将 Kubernetes 与 Windows 配合使用
       href: container-service-kubernetes-windows-walkthrough.md
-    - name: 容器管理 - Kubernetes UI
+    - name: Kubernetes Web 界面
       href: container-service-kubernetes-ui.md
     - name: 部署 Helm 图表
       href: container-service-kubernetes-helm.md
-    - name: 将 CI/CD 与 Kubernetes 和 Jenkins 配合使用
+    - name: Jenkins 和 ACS Kubernetes
       href: container-service-kubernetes-jenkins.md
     - name: 将“草稿”与 ACR 和 ACS 配合使用
       href: container-service-draft-up.md
@@ -51,8 +51,12 @@
       href: container-service-connect.md
     - name: 缩放 ACS 群集
       href: container-service-scale.md
+    - name: 对 Kubernetes ACS 群集进行负载均衡
+      href: container-service-kubernetes-load-balancing.md
     - name: 监视
       items:
+        - name: 使用 OMS 进行监视
+          href: container-service-kubernetes-oms.md
         - name: 使用 Datadog 进行监视
           href: container-service-kubernetes-datadog.md
         - name: 使用 Sysdig 进行监视
@@ -70,7 +74,7 @@
     - name: Azure CLI 2.0
       href: /cli/azure/acs
     - name: REST
-      href: /rest/api/compute/containerservices
+      href: /rest/api/container-services
 - name: 资源
   items:
     - name: Azure 路线图

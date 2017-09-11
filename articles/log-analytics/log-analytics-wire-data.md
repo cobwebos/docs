@@ -1,6 +1,6 @@
 ---
 title: "Log Analytics 中的 Wire Data 解决方案| Microsoft Docs"
-description: "线路数据是通过 OMS 代理（包括 Operations Manager 和 Windows 连接的代理）从计算机收集的网络和性能整合数据。 网络数据与日志数据结合在一起，可帮助你将数据相关联。"
+description: "线路数据是通过 OMS 代理（包括 Operations Manager 和 Windows 连接的代理）从计算机收集的网络和性能整合数据。 网络数据与日志数据结合在一起，可帮助将数据相关联。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: banders
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: a552bbce2c6a1b60ab73e3e945985ff3dccbc93a
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: ce8065d777bb315d4f9589d1b24a5152296facfe
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -371,7 +371,7 @@ rpm -e dependency-agent dependency-agent-connector
 使用以下信息安装和配置解决方案。
 
 - Wire Data 解决方案从运行 Windows Server 2012 R2、Windows 8.1 和更高版本操作系统的计算机获取数据。
-- 你想要获取线路数据的计算机上需要安装 Microsoft.NET Framework 4.0 或更高版本。
+- 想要获取线路数据的计算机上需要安装 Microsoft.NET Framework 4.0 或更高版本。
 - 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的流程，将 Wire Data 解决方案添加到 Log Analytics 工作区。 无需进一步的配置。
 - 如果想要查看特定解决方案的线路数据，需要先将该解决方案添加到工作区。
 
@@ -400,7 +400,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 ![日志搜索示例](./media/log-analytics-wire-data/log-search-example01.png)
 
-类似地，可以使用“本地子网”边栏选项卡确定有多少网络流量正在通过各个子网移动。 用户通常围绕其应用的关键领域定义子网。 可以通过此边栏选项卡查看这些领域。
+类似地，可以使用“本地子网”边栏选项卡确定有多少网络流量正在通过各个子网移动。 用户通常围绕其应用程序的关键领域定义子网。 可以通过此边栏选项卡查看这些领域。
 
 ![日志搜索示例](./media/log-analytics-wire-data/log-search-example02.png)
 

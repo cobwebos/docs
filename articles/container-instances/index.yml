@@ -5,7 +5,7 @@ metadata:
   title: Azure 容器实例文档 - 教程 | Microsoft Docs
   description: Azure 容器实例提供了在 Azure 中运行容器的最简捷方式，既无需预配任何虚拟机，也不必采用更高级的服务。
   services: container-instances
-  author: carolz
+  author: czeumault
   manager: carolz
   ms.service: container-instances
   ms.tgt_pltfrm: na
@@ -24,7 +24,7 @@ sections:
         style: icon48
         items:
           - image:
-              src: /azure/container-instances/media/container-instances.png
+              src: /azure/container-instances/media/container-instances.svg
             text: 创建容器实例
             href: /azure/container-instances/container-instances-quickstart
   - title: 分步教程

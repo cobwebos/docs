@@ -3,7 +3,7 @@ title: "Azure 网络观察程序中的安全组视图简介 | Microsoft 文档"
 description: "此页概述了网络观察程序安全视图功能"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: ad27ab85-9d84-4759-b2b9-e861ef8ea8d8
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: Human Translation
 ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
 ms.openlocfilehash: 2c581a2d152a6d3f16de8f249e27a426aa9f844f

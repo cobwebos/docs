@@ -4,7 +4,7 @@ description: "Azure CLI 脚本示例 - 将自定义域映射到 Azure 中的 Fun
 services: functions
 documentationcenter: 
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: azure-service-management
 ms.assetid: d127e347-7581-47d7-b289-e0f51f2fbfbc
@@ -16,11 +16,11 @@ ms.topic: sample
 ms.date: 06/01/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 6fcea6d32f9dd25b0fafb4f895f60d8320ac9df8
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 5a17830ad3b879382b7e82d435f1286c7ecdf7c5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="map-a-custom-domain-to-a-function-app"></a>将自定义域映射到 Function App
@@ -31,18 +31,18 @@ ms.lasthandoff: 06/20/2017
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+如果选择本地安装和使用 CLI，必须使用 Azure CLI 版本 2.0 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli-interactive[主要](../../../cli_scripts/azure-functions/configure-custom-domain/configure-custom-domain.sh?highlight=3 "将自定义域映射到 Function App")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/configure-custom-domain/configure-custom-domain.sh?highlight=3 "将自定义域映射到 Function App")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令：表中的每条命令均链接到特定于命令的文档。
 
 | 命令 | 说明 |
 |---|---|

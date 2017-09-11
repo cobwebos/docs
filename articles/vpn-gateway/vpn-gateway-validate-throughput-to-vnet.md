@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2017
 ms.author: radwiv;chadmat;genli
-translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: 7dfc5160a0ede19b4317a39187f0f864b037141b
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2e0347854b5d30c955a50a01d6f7ba08e24f94b6
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>如何验证到达虚拟网络的 VPN 吞吐量
@@ -48,11 +48,11 @@ VPN 网关连接涉及以下组件：
 
 ## <a name="calculate-the-maximum-expected-ingressegress"></a>计算最大的预期流入/流出量
 
-1.    确定应用程序的基准吞吐量需求。
-2.    确定 Azure VPN 网关的吞吐量限制。 有关帮助，请参阅[规划和设计 VPN 网关](vpn-gateway-plan-design.md)的“按 SKU 和 VPN 类型估计的吞吐量”部分。
-3.    确定与 VM 大小相应的 [Azure VM 吞吐量指南](../virtual-machines/virtual-machines-windows-sizes.md)。
-4.    确定 Internet 服务提供商 (ISP) 的带宽。
-5.    计算预期吞吐量 -（VM、网关、ISP）的最小带宽 * 0.8。
+1.  确定应用程序的基准吞吐量需求。
+2.  确定 Azure VPN 网关的吞吐量限制。 有关帮助，请参阅[规划和设计 VPN 网关](vpn-gateway-plan-design.md)的“按 SKU 和 VPN 类型估计的吞吐量”部分。
+3.  确定与 VM 大小相应的 [Azure VM 吞吐量指南](../virtual-machines/virtual-machines-windows-sizes.md)。
+4.  确定 Internet 服务提供商 (ISP) 的带宽。
+5.  计算预期吞吐量 -（VM、网关、ISP）的最小带宽 * 0.8。
 
 如果计算得出的吞吐量无法满足应用程序的基准吞吐量需求，则需提高已被标识为瓶颈的资源的带宽。 若要调整 Azure VPN 网关的大小，请参阅[更改网关 SKU](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku)。 若要调整虚拟机的大小，请参阅[调整 VM 的大小](../virtual-machines/virtual-machines-windows-resize-vm.md)。 如果 Internet 的带宽不及预期，可能还需要联系 ISP。
 
@@ -62,7 +62,7 @@ VPN 网关连接涉及以下组件：
 
 此测试将使用 iPerf 工具来实施，此工具在 Windows 和 Linux 上均可使用，并且有“客户端”和“服务器”两种模式。 对于 Windows VM，其限速为 3 Gbps。
 
-此工具不会对磁盘执行任何读/写操作。 它只会生成从一端至另一端的自生成 TCP 流量。 它已生成的统计信息基于各种旨在测量客户端和服务器节点间可用带宽的试验。 在两个节点间进行测试时，一个节点充当服务器，另一个则充当客户端。 完成此测试后，建议对调两个节点的角色，以测试它们的上载和下载吞吐量。
+此工具不会对磁盘执行任何读/写操作。 它只会生成从一端至另一端的自生成 TCP 流量。 它已生成的统计信息基于各种旨在测量客户端和服务器节点间可用带宽的试验。 在两个节点间进行测试时，一个节点充当服务器，另一个则充当客户端。 完成此测试后，建议对调两个节点的角色，以测试它们的上传和下载吞吐量。
 
 ### <a name="download-iperf"></a>下载 iPerf
 下载 [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip)。 有关详情，请参阅 [iPerf 文档](https://iperf.fr/iperf-doc.php)。
@@ -99,7 +99,7 @@ VPN 网关连接涉及以下组件：
      iperf3.exe -s -p 5001
      ```
 
-4. 在客户端节点上，更改为从中提取 iperf 工具的目录，然后运行以下命令：
+4. 在客户端节点上，更改为从中提取 iperf 工具的目录，并运行以下命令：
 
     ```CMD
     iperf3.exe -c <IP of the iperf Server> -t 30 -p 5001 -P 32
@@ -117,14 +117,14 @@ VPN 网关连接涉及以下组件：
     iperf3.exe -c IPofTheServerToReach -t 30 -p 5001 -P 32  >> output.txt
     ```
 
-6. 完成上述步骤后，请调换角色以使服务器节点变为客户端节点（反之亦然），然后执行相同的步骤。
+6. 完成上述步骤后，请调换角色以使服务器节点变为客户端节点（反之亦然），并执行相同的步骤。
 
 ## <a name="address-slow-file-copy-issues"></a>解决文件复制速度缓慢问题
 在使用 Windows 资源管理器或通过 RDP 会话拖放时，文件的复制速度可能会很缓慢。 此问题通常是由以下的一个或两个因素造成的：
 
 - 文件复制应用程序（如 Windows 资源管理器和 RDP）在复制文件时没有使用多个线程。 为了提高性能，请通过多线程文件复制应用程序（如 [Richcopy](https://technet.microsoft.com/en-us/magazine/2009.04.utilityspotlight.aspx)）使用 16 或 32 个线程来复制文件。 若要更改 Richcopy 中的文件复制线程数目，请单击“操作” > “复制选项” > “文件复制”。<br><br>
 ![文件复制速度缓慢问题](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
-- VM 磁盘读/写速度不够快。 有关详细信息，请参阅 [Azure 存储器故障排除](../storage/storage-e2e-troubleshooting.md)。
+- VM 磁盘读/写速度不够快。 有关详细信息，请参阅 [Azure 存储器故障排除](../storage/common/storage-e2e-troubleshooting.md)。
 
 ## <a name="on-premises-device-external-facing-interface"></a>本地设备上的对外接口
 如果 Azure 中的[本地网络](vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)定义中包含本地 VPN 设备面向 Internet 的 IP 地址，则可能会出现 VPN 无法显示、偶发性断连或性能问题。

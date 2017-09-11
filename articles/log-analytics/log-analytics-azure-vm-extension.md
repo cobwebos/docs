@@ -15,19 +15,18 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: richrund
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 1cab9d2f814e0c36dadcdd7bbc3cdc736de0af49
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: cdae291b546fef4d7fdb8b067c8e4f4c9708d43f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="connect-azure-virtual-machines-to-log-analytics-with-a-log-analytics-agent"></a>使用 Log Analytics 代理将 Azure 虚拟机连接到 Log Analytics
 
 对于 Windows 和 Linux 计算机，建议使用的收集日志和指标的方法是安装 Log Analytics 代理。
 
-在 Azure 虚拟机上安装 Log Analytics 代理的最简单的方法是通过 Log Analytics VM 扩展。  使用扩展可简化安装流程，并可自动配置代理，以将数据发送至指定的 Log Analytics 工作区。 代理还会自动升级，以确保拥有最新的功能和修补程序。
+在 Azure 虚拟机上安装 Log Analytics 代理最简单的方法是通过 Log Analytics VM 扩展安装。  使用扩展可简化安装流程，并可自动配置代理，以将数据发送至指定的 Log Analytics 工作区。 代理还会自动升级，以确保拥有最新的功能和修补程序。
 
 对于 Windows 虚拟机，要启用 *Microsoft Monitoring Agent* 虚拟机扩展。
 对于 Linux 虚拟机，要启用 *OMS Agent For Linux* 虚拟机扩展。
@@ -52,16 +51,16 @@ ms.lasthandoff: 04/28/2017
 
 ### <a name="to-install-the-log-analytics-agent-and-connect-the-virtual-machine-to-a-log-analytics-workspace"></a>安装 Log Analytics 代理并将虚拟机连接到 Log Analytics 工作区
 1. 登录到 [Azure 门户](http://portal.azure.com)。
-2. 在门户左侧选择“**浏览**”，然后转到 **Log Analytics (OMS)** 并选中。
+2. 在门户左侧选择“**浏览**”，转到 **Log Analytics (OMS)** 并选中。
 3. 在 Log Analytics 工作区列表中，选择要和 Azure VM 一起使用的工作区。  
    ![OMS 工作区](./media/log-analytics-azure-vm-extension/oms-connect-azure-01.png)
-4. 在“**Log Analytics 管理**”下，选择“**虚拟机**”。  
+4. 在“Log Analytics 管理”下，选择“虚拟机”。  
    ![虚拟机](./media/log-analytics-azure-vm-extension/oms-connect-azure-02.png)
-5. 在“**虚拟机**”列表中，选择想要在其中安装代理的虚拟机。 VM 的“**OMS 连接状态**”指示其“**未连接**”。  
+5. 在“虚拟机”列表中，选择想要在其中安装代理的虚拟机。 VM 的“OMS 连接状态”指示其“未连接”。  
    ![VM 未连接](./media/log-analytics-azure-vm-extension/oms-connect-azure-03.png)
-6. 在虚拟机的详细信息中，选择“**连接**”。 则自动会为 Log Analytics 工作区安装并配置代理。 此过程需要几分钟的时间，在此期间，“OMS 连接”状态为“*正在连接...*”  
+6. 在虚拟机的详细信息中，选择“连接”。 则自动会为 Log Analytics 工作区安装并配置代理。 此过程需要几分钟的时间，在此期间，“OMS 连接”状态为“正在连接...”  
    ![连接 VM](./media/log-analytics-azure-vm-extension/oms-connect-azure-04.png)
-7. 安装并连接代理后，将会更新“**OMS 连接**”状态以显示“**此工作区**”。  
+7. 安装并连接代理后，会更新“OMS 连接”状态以显示“此工作区”。  
    ![已连接](./media/log-analytics-azure-vm-extension/oms-connect-azure-05.png)
 
 ## <a name="enable-the-vm-extension-using-powershell"></a>使用 PowerShell 启用 VM 扩展
@@ -71,7 +70,7 @@ ms.lasthandoff: 04/28/2017
 
 ![工作区 ID 和主键](./media/log-analytics-azure-vm-extension/oms-analyze-azure-sources.png)
 
-存在各种用于 Azure 经典虚拟机和资源管理器虚拟机的命令。 以下是用于经典和资源管理器虚拟机的示例。
+存在各种用于 Azure 经典虚拟机和 Resource Manager 虚拟机的命令。 以下是用于经典和 Resource Manager 虚拟机的示例。
 
 对于经典虚拟机，使用以下 PowerShell 示例：
 
@@ -96,7 +95,7 @@ $vm = Get-AzureVM –ServiceName $hostedService
 az vm extension set --resource-group myRGMonitor --vm-name myMonitorVM --name OmsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --version 1.3 --protected-settings ‘{"workspaceKey": "<workspace-key>"}’ --settings ‘{"workspaceId": "<workspace-id>"}’ 
 ```
 
-对于资源管理器虚拟机，使用以下 PowerShell 示例：
+对于 Resource Manager 虚拟机，使用以下 PowerShell 示例：
 
 ```PowerShell
 Login-AzureRMAccount
@@ -132,11 +131,11 @@ $location = $vm.Location
 ## <a name="deploy-the-vm-extension-using-a-template"></a>使用模板部署 VM 扩展
 使用 Azure Resource Manager 可以创建一个模板（采用 JSON 格式），用于定义应用程序的部署和配置。 此模板称为资源管理器模板，让你以声明性方式定义部署。 使用模板可以在整个应用程序生命周期内反复部署该应用程序，并确保以一致的状态部署资源。
 
-通过将 Log Analytics 代理作为资源管理器模板的一部分，可以确保将每个虚拟机预配置为向 Log Analytics 工作区报告。
+通过将 Log Analytics 代理作为 Resource Manager 模板的一部分，可以确保将每个虚拟机预配置为向 Log Analytics 工作区报告。
 
-有关资源管理器模板的详细信息，请参阅 [创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)。
+有关 Resource Manager 模板的详细信息，请参阅 [创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 
-以下是用于部署已安装 Microsoft Monitoring Agent 扩展并运行 Windows 的虚拟机的资源管理器模板示例。 该模板是典型的虚拟机模板，具有以下添加件：
+以下是用于部署已安装 Microsoft Monitoring Agent 扩展并运行 Windows 的虚拟机的 Resource Manager 模板示例。 该模板是典型的虚拟机模板，具有以下添加件：
 
 * workspaceId 和 workspaceName 参数
 * Microsoft.EnterpriseCloud.Monitoring 资源扩展部分
@@ -415,14 +414,12 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Templa
 2. 对于其他不正常状态，请查看 `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` 和 `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log` 中的 OMS Agent for Linux VM 扩展日志文件
 3. 如果扩展状态正常，但是未上载数据，则查看 `/var/opt/microsoft/omsagent/log/omsagent.log` 中的 OMS Agent for Linux 日志文件
 
-有关详细信息，请参阅 [Linux 扩展故障排除](../virtual-machines/linux/extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-
 ## <a name="next-steps"></a>后续步骤
-* 配置 [Log Analytics 中的数据源](log-analytics-data-sources.md) 指定要收集的日志和指标。
-* [从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md) 以从虚拟机中收集数据。
+* 配置 [Log Analytics 中的数据源](log-analytics-data-sources.md)以指定要收集的日志和指标。
+* 要从虚拟机中收集数据，请[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)。
 * 对于 Azure 中运行的其他资源，[使用 Azure 诊断收集数据](log-analytics-azure-storage.md)。
 
-对于未处于 Azure 中的计算机，可以使用下文中描述的方法安装 Log Analytics 代理：
+对于不在 Azure 中的计算机，可以使用下文中介绍的方法安装 Log Analytics 代理：
 
 * [将 Windows 计算机连接到 Log Analytics](log-analytics-windows-agents.md)
 * [将 Linux 计算机连接到 Log Analytics](log-analytics-linux-agents.md)

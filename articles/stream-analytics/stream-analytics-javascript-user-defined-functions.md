@@ -3,7 +3,7 @@ title: "Azure 流分析 JavaScript 用户定义的函数 | Microsoft 文档"
 description: "使用 JavaScript 用户定义的函数执行高级查询机制"
 keywords: "javascript, 用户定义的函数, udf"
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 3dfe8571114d936cc07d887392ec294ec8a67120
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: e8c1c784a598416b478d1430258201053185fdee
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 
@@ -44,11 +44,11 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
 ## <a name="add-a-javascript-user-defined-function-in-the-azure-portal"></a>在 Azure 门户中添加 JavaScript 用户定义的函数
 若要在现有的流分析作业中创建一个简单的 JavaScript 用户定义的函数，请执行以下步骤：
 
-1.  在 Azure 门户中找到你的流分析作业。
-2.  在“作业拓扑”下面选择你的函数。 此时将显示一个空白的函数列表。
+1.  在 Azure 门户中找到流分析作业。
+2.  在“作业拓扑”下面选择函数。 此时会显示一个空白的函数列表。
 3.  若要新建用户的定义函数，请选择“添加”。
-4.  在“新建函数”边栏选项卡中，为“函数类型”选择“JavaScript”。 编辑器中将显示默认函数模板。
-5.  为“UDF 别名”输入 **hex2Int**，然后按如下所示更改函数实现：
+4.  在“新建函数”边栏选项卡中，为“函数类型”选择“JavaScript”。 编辑器中会显示默认函数模板。
+5.  为“UDF 别名”输入 **hex2Int**，并按如下所示更改函数实现：
 
     ```
     // Convert Hex value to integer.
@@ -63,7 +63,7 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>在查询中调用 JavaScript 用户定义的函数
 
 1. 在查询编辑器中的“作业拓扑”下面选择“查询”。
-2.  编辑查询，然后调用该用户定义的函数，如下所示：
+2.  编辑查询，并调用该用户定义的函数，如下所示：
 
     ```
     SELECT
@@ -111,7 +111,7 @@ Null、Undefined | Null
 其他任何类型（例如函数或错误） | 不支持（导致运行时错误）
 
 ## <a name="troubleshooting"></a>故障排除
-JavaScript 运行时错误被视为严重错误，可通过活动日志查看。 若要检索日志，请在 Azure 门户中转到你的作业，然后选择“活动日志”。
+JavaScript 运行时错误被视为严重错误，可通过活动日志查看。 要检索日志，请在 Azure 门户中转到作业，然后选择“活动日志”。
 
 
 ## <a name="other-javascript-user-defined-function-patterns"></a>JavaScript 用户定义的函数的其他模式
@@ -141,7 +141,7 @@ FROM
 ```
 
 ## <a name="get-help"></a>获取帮助
-如需更多帮助，请访问我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
+如需更多帮助，请访问我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

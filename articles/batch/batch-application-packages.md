@@ -16,10 +16,10 @@ ms.date: 07/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: fcca9c9bb0aca96d740feb9450458a7c3b8de379
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: afcc04c80ec15872a22de5d5969a7ef6a583562f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>使用 Batch 应用程序包将应用程序部署到计算节点
@@ -78,7 +78,7 @@ Batch 中的应用程序包含一个或多个应用程序包，指定应用程�
 ### <a name="benefits-of-application-packages"></a>应用程序包的优点
 应用程序包可以简化 Batch 解决方案中的代码，也能降低管理任务运行的应用程序所需的开销。
 
-有了应用程序包，池的启动任务不需要指定在节点上安装一长串的单个资源文件。 不需要在 Azure 存储中或在节点上手动管理应用程序的多个版本。 而且，也不必费心生成 [SAS URL](../storage/storage-dotnet-shared-access-signature-part-1.md) 来提供这些文件在存储帐户中的访问权限。 Batch 在后台与 Azure 存储协作来存储应用程序包，并将其部署到计算节点。
+有了应用程序包，池的启动任务不需要指定在节点上安装一长串的单个资源文件。 不需要在 Azure 存储中或在节点上手动管理应用程序的多个版本。 而且，也不必费心生成 [SAS URL](../storage/common/storage-dotnet-shared-access-signature-part-1.md) 来提供这些文件在存储帐户中的访问权限。 Batch 在后台与 Azure 存储协作来存储应用程序包，并将其部署到计算节点。
 
 > [!NOTE] 
 > 启动任务的总大小必须小于或等于 32768 个字符，其中包括资源文件和环境变量。 如果启动任务超出此限制，备选方案就是使用应用程序包。 还可以创建一个包含资源文件的压缩存档，将此存档作为 blob 上传到 Azure 存储，再从启动任务的命令行中解压缩该存档。 
@@ -89,10 +89,10 @@ Batch 中的应用程序包含一个或多个应用程序包，指定应用程�
 可以使用 [Azure 门户][portal]或 [Batch 管理 .NET](batch-management-dotnet.md) 库来管理批处理帐户中的应用程序包。 在后面几个部分中，将先介绍如何链接存储帐户，再介绍如何使用门户来添加应用程序和包以及管理它们。
 
 ### <a name="link-a-storage-account"></a>链接存储帐户
-若要使用应用程序包，必须先将 Azure 存储帐户链接到 Batch 帐户。 如果尚未配置存储帐户，第一次单击“批处理帐户”边栏选项卡中的“应用程序”磁贴时，Azure 门户会显示警告。
+要使用应用程序包，必须先将 Azure 存储帐户链接到 Batch 帐户。 如果尚未配置存储帐户，第一次单击“批处理帐户”边栏选项卡中的“应用程序”磁贴时，Azure 门户会显示警告。
 
 > [!IMPORTANT]
-> 批处理目前仅支持“常规用途”存储帐户类型，如[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)的[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)中的步骤 5 所述。 将某个 Azure 存储帐户链接到批处理帐户时，只会链接“常规用途”的存储帐户。
+> 批处理目前仅支持“常规用途”存储帐户类型，如[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)的[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)中的步骤 5 所述。 将某个 Azure 存储帐户链接到批处理帐户时，只会链接“常规用途”的存储帐户。
 > 
 > 
 
@@ -102,7 +102,7 @@ Batch 服务使用关联的存储帐户存储应用程序包。 链接两个帐�
 
 ![在 Azure 门户中选择存储帐户边栏选项卡][10]
 
-建议专门创建一个存储帐户用作批处理帐户，并在此处选择该帐户。 有关如何创建存储帐户的详细信息，请参阅[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)中的“创建存储帐户”。 创建存储帐户后，可以使用“存储帐户”边栏选项卡将其链接到 Batch 帐户。
+建议专门创建一个存储帐户用作批处理帐户，并在此处选择该帐户。 有关如何创建存储帐户的详细信息，请参阅[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)中的“创建存储帐户”。 创建存储帐户后，可以使用“存储帐户”边栏选项卡将其链接到 Batch 帐户。
 
 > [!WARNING]
 > Batch 服务使用 Azure 存储将应用程序包存储为块 blob。 块 blob 数据按 [正常收费][storage_pricing] 。 请务必考虑应用程序包的大小和数目，并定期删除过时的包以降低成本。
@@ -181,7 +181,7 @@ Batch 服务使用关联的存储帐户存储应用程序包。 链接两个帐�
 可以看到，除了“应用程序 ID”文本框已禁用之外，字段与“新建应用程序”边栏选项卡中的字段匹配。 如前面创建新应用程序一样，指定新包的“版本”，浏览到“应用程序包”.zip 文件，并单击“确定”上传包。
 
 ### <a name="update-or-delete-an-application-package"></a>更新或删除应用程序包
-若要更新或删除现有的应用程序包，请打开应用程序的详细信息边栏选项卡，单击“包”以打开“包”边栏选项卡，单击要修改的应用程序包数据列中的**省略号**，然后选择要执行的操作。
+要更新或删除现有的应用程序包，请打开应用程序的详细信息边栏选项卡，单击“包”以打开“包”边栏选项卡，单击要修改的应用程序包数据列中的**省略号**，并选择要执行的操作。
 
 ![在 Azure 门户中更新或删除包][7]
 
@@ -201,7 +201,7 @@ Batch 服务使用关联的存储帐户存储应用程序包。 链接两个帐�
 了解如何使用 Azure 门户管理应用程序包之后，接下来介绍如何使用批处理任务将它们部署到计算节点并运行它们。
 
 ### <a name="install-pool-application-packages"></a>安装池应用程序包
-若要将应用程序包安装在池中的所有计算节点上，需要为池指定一个或多个应用程序包引用。 将每个计算节点加入池以及该节点重新启动或重置映像时，为池指定的应用程序包将安装在该节点上。
+要将应用程序包安装在池中的所有计算节点上，需要为池指定一个或多个应用程序包引用。 将每个计算节点加入池以及该节点重新启动或重置映像时，为池指定的应用程序包将安装在该节点上。
 
 在 Batch .NET 中，可以在创建新池时指定一个或多个 [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref]，或将它们添加到现有池。 [ApplicationPackageReference][net_pkgref] 类指定要安装在池的计算节点上的应用程序 ID 和版本。
 
@@ -305,13 +305,13 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 > 
 
 ## <a name="update-a-pools-application-packages"></a>更新池的应用程序包
-如果已配置现有池的应用程序包，你可以指定池的新包。 如果为池指定新的包引用，请遵循以下规则：
+如果已配置现有池的应用程序包，可以指定池的新包。 如果为池指定新的包引用，请遵循以下规则：
 
 * Batch 服务在联接池的所有新节点上以及任何重新启动或重置映像的现有节点上都会安装新指定的包。
 * 在更新包引用时已存在池中的计算节点不自动安装新应用程序包。 这些计算节点必须重新启动或重置映像才能接收新包。
 * 部署新包后，创建的环境变量将反映新的应用程序包引用。
 
-在此示例中，现有池已将应用程序 blender 的 2.7 版设置为其中一个 [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref]。 若要将池的节点更新为 2.76b 版，请将 [ApplicationPackageReference][net_pkgref] 指定为新版本并提交更改。
+在此示例中，现有池已将应用程序 blender 的 2.7 版设置为其中一个 [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref]。 要将池的节点更新为 2.76b 版，请将 [ApplicationPackageReference][net_pkgref] 指定为新版本并提交更改。
 
 ```csharp
 string newVersion = "2.76b";
@@ -325,7 +325,7 @@ boundPool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 await boundPool.CommitAsync();
 ```
 
-配置新版本后，Batch 服务将在任何联接池的新节点上安装 2.76b 版。 若要将 2.76b 安装到已在池中的节点上，请重新启动或重置映像这些节点。 请注意，重新启动的节点会保留前面的包部署中的文件。
+配置新版本后，Batch 服务将在任何联接池的新节点上安装 2.76b 版。 要将 2.76b 安装到已在池中的节点上，请重新启动或重置映像这些节点。 请注意，重新启动的节点会保留前面的包部署中的文件。
 
 ## <a name="list-the-applications-in-a-batch-account"></a>列出 Batch 帐户中的应用程序
 可以使用 [ApplicationOperations][net_appops].[ListApplicationSummaries][net_appops_listappsummaries] 方法列出批处理帐户中的应用程序和应用程序包。

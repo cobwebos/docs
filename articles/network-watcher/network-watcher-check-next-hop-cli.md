@@ -4,7 +4,7 @@ description: "本文将介绍如何使用 Azure CLI 通过“下一跃点”功�
 services: network-watcher
 documentationcenter: na
 author: georgewallace
-manager: timlt
+manager: jimdial
 editor: 
 ms.assetid: 0700c274-3e0d-4dca-acfa-3ceac8990613
 ms.service: network-watcher
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: d1ee6870ba0188ff2c473e4cca12a5bdc1f97d3d
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/26/2017
-
 
 ---
 

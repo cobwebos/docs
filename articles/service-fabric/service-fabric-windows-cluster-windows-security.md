@@ -3,7 +3,7 @@ title: "使用 Windows 安全性保护 Windows 上运行的群集 | Microsoft �
 description: "了解如何使用 Windows 安全性在 Windows 上运行的独立群集中配置节点到节点安全性和客户端到节点安全性。"
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: dkkapur
 manager: timlt
 editor: 
 ms.assetid: ce3bf686-ffc4-452f-b15a-3c812aa9e672
@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/28/2017
-ms.author: ryanwi
+ms.date: 08/24/2017
+ms.author: dekapur
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
 ms.openlocfilehash: b8842047351da6fdb547e0b09492b89fad962bee
 ms.contentlocale: zh-cn
 ms.lasthandoff: 03/30/2017
-
 
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>使用 Windows 安全性保护 Windows 上的独立群集

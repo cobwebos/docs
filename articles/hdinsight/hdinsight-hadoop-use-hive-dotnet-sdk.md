@@ -14,20 +14,19 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/03/2017
+ms.date: 08/15/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: c3eac45065bad80fd7b1fd29ac77a162eef3fa28
+ms.translationtype: HT
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 7b1a5f7ea3b2bda438727dc75a85557ea7930280
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/10/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="run-hive-queries-using-hdinsight-net-sdk"></a>使用 HDInsight .NET SDK 运行 Hive 查询
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
-了解如何使用 HDInsight .NET SDK 提交 Hive 查询。
+了解如何使用 HDInsight .NET SDK 提交 Hive 查询。 编写 C# 程序来提交 Hive 查询以列出 Hive 表，并显示结果。
 
 > [!NOTE]
 > 必须从 Windows 客户端执行本文中的步骤。 有关使用 Linux、OS X 或 Unix 客户端来使用 Hive 的信息，请使用本文顶部显示的选项卡选择器。
@@ -37,7 +36,7 @@ ms.lasthandoff: 06/10/2017
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，必须具有以下项目：
 
-* **HDInsight 中的 Hadoop 群集**。 请参阅[在 HDInsight 中使用基于 Linux 的 Hadoop](hdinsight-use-sqoop.md#create-cluster-and-sql-database)。
+* **HDInsight 中的 Hadoop 群集**。 请参阅[在 HDInsight 中使用基于 Linux 的 Hadoop](./hdinsight-hadoop-linux-tutorial-get-started.md)。
 * **Visual Studio 2013/2015/2017**。
 
 ## <a name="submit-hive-queries-using-hdinsight-net-sdk"></a>使用 HDInsight .NET SDK 提交 Hive 查询
@@ -140,7 +139,7 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 ![HDInsight Hadoop Hive 作业输出](./media/hdinsight-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png)
 
 ## <a name="next-steps"></a>后续步骤
-在本文中，你已经学习了几种创建 HDInsight 群集的方法。 若要了解更多信息，请参阅下列文章：
+在本文中，已经学习了几种创建 HDInsight 群集的方法。 若要了解更多信息，请参阅下列文章：
 
 * [Azure HDInsight 入门][hdinsight-get-started]
 * [在 HDInsight 中创建 Hadoop 群集][hdinsight-provision]

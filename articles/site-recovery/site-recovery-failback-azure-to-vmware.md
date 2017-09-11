@@ -101,7 +101,7 @@ ms.lasthandoff: 07/14/2017
 3. 选择像“在 Azure 中部署故障回复进程服务器”一样部署进程服务器。
 4. 选择已将 VM 恢复到的订阅。
 5. 选择已将 VM 恢复到的 Azure 网络。 进程服务器需要位于同一网络中，以使已恢复的 VM 和进程服务器可以通信。
-6. 如果选择了经典部署模型网络，则通过 Azure 应用商店创建 VM 并将进程服务器安装于其中。
+6. 如果选择了经典部署模型网络，则通过 Azure Marketplace 创建 VM 并将进程服务器安装于其中。
 
  ![“添加进程服务器”窗口](./media/site-recovery-failback-azure-to-vmware-classic/add-classic.png)
 

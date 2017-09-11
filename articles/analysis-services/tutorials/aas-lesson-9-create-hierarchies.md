@@ -3,7 +3,7 @@ title: "Azure Analysis Services 教程第 9 课：创建层次结构 | Microsoft
 description: 
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

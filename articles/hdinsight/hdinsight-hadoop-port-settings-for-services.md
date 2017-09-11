@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/02/2017
+ms.date: 08/23/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: b1a4ca17a53a6d337d704bc4eef6d441de1f32d8
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: f4e42ca177ac6c11111d4ffc0d772cafc13f8657
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="ports-used-by-hadoop-services-on-hdinsight"></a>HDInsight 上的 Hadoop 服务所使用的端口
@@ -30,13 +30,13 @@ ms.lasthandoff: 07/14/2017
 
 基于 Linux 的 HDInsight 群集只在 Internet 上公开三个端口：22、23 和 443。 使用这些端口可以通过 SSH 安全访问群集，以及访问通过安全 HTTPS 协议公开的服务。
 
-在内部，HDInsight 由在 Azure 虚拟网络上运行的多个 Azure 虚拟机（群集内的节点）实现。 从虚拟网络内部可以访问不是通过 Internet 公开的端口。 例如，如果你使用 SSH 连接到某个头节点，则可以从该头节点直接访问群集节点上运行的服务。
+在内部，HDInsight 由在 Azure 虚拟网络上运行的多个 Azure 虚拟机（群集内的节点）实现。 从虚拟网络内部可以访问不是通过 Internet 公开的端口。 例如，如果使用 SSH 连接到某个头节点，则可以从该头节点直接访问群集节点上运行的服务。
 
 > [!IMPORTANT]
-> 如果尚未指定某个 Azure 虚拟网络作为 HDInsight 的配置选项，系统将自动创建一个 Azure 虚拟网络。 但无法将其他计算机（例如其他 Azure 虚拟机或客户端开发计算机）加入到此虚拟网络中。
+> 如果尚未指定某个 Azure 虚拟网络作为 HDInsight 的配置选项，系统会自动创建一个 Azure 虚拟网络。 但无法将其他计算机（例如其他 Azure 虚拟机或客户端开发计算机）加入到此虚拟网络中。
 
 
-若要将其他计算机添加到虚拟网络，必须先创建虚拟网络，然后在创建 HDInsight 群集时指定该网络。 有关详细信息，请参阅[使用 Azure 虚拟网络扩展 HDInsight 功能](hdinsight-extend-hadoop-virtual-network.md)
+要将其他计算机添加到虚拟网络，必须先创建虚拟网络，然后在创建 HDInsight 群集时指定该网络。 有关详细信息，请参阅[使用 Azure 虚拟网络扩展 HDInsight 功能](hdinsight-extend-hadoop-virtual-network.md)
 
 ## <a name="public-ports"></a>公共端口
 
@@ -75,13 +75,19 @@ HDInsight 群集中的所有节点都在 Azure 虚拟网络中，无法直接从
 > [!NOTE]
 > 某些服务仅适用于特定的群集类型。 例如，HBase 仅适用于 HBase 群集类型。
 
+> [!IMPORTANT]
+> 某些服务仅在一个头节点上运行一次。 如果尝试连接到主头节点上的服务并收到 404 错误，请重试使用辅助头节点。
+
 ### <a name="ambari"></a>Ambari
 
-| 服务 | Nodes | 端口 | 路径 | 协议 | 
+| 服务 | Nodes | 端口 | URL 路径 | 协议 | 
 | --- | --- | --- | --- | --- |
 | Ambari Web UI | 头节点 | 8080 | / | HTTP |
 | Ambari REST API | 头节点 | 8080 | /api/v1 | HTTP |
 
+示例:
+
+* Ambari REST API：`curl -u admin "http://10.0.0.11:8080/api/v1/clusters"`
 
 ### <a name="hdfs-ports"></a>HDFS 端口
 
@@ -161,6 +167,11 @@ HDInsight 群集中的所有节点都在 Azure 虚拟网络中，无法直接从
 
 ### <a name="spark-ports"></a>Spark 端口
 
-| 服务 | Nodes | 端口 | 协议 | 说明 |
-| --- | --- | --- | --- | --- |
-| Spark Thrift 服务器 |头节点 |10002 |Thrift |用于连接到 Spark SQL 的服务 (Thrift/JDBC) |
+| 服务 | Nodes | 端口 | 协议 | URL 路径 | 说明 |
+| --- | --- | --- | --- | --- | --- |
+| Spark Thrift 服务器 |头节点 |10002 |Thrift | &nbsp; | 用于连接到 Spark SQL 的服务 (Thrift/JDBC) |
+| Livy 服务器 | 头节点 | 8998 | HTTP | /batches | 用于运行语句、作业和应用程序的服务 |
+
+示例:
+
+* Livy：`curl "http://10.0.0.11:8998/batches"`。 在此示例中，`10.0.0.11` 是托管 Livy 服务的头节点的 IP 地址。

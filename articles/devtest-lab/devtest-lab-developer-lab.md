@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: c187819e9392908c8979556f80e8c94739eb14d5
+ms.translationtype: HT
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: b829ebd90034031721dfe2e97427e624306da1e9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>使用面向开发人员的 Azure 开发测试实验室
@@ -84,7 +83,7 @@ ms.lasthandoff: 05/26/2017
    | 任务 | 学习内容 |
    | --- | --- |
    | [为开发测试实验室 VM 创建自定义项目](devtest-lab-artifact-author.md) |在实验室中为虚拟机创建自己的自定义项目。|
-   | [添加 Git 存储库来存储自定义项目和 Azure Resource Manager 模板以供在 Azure 开发测试实验室中使用](devtest-lab-add-artifact-repo.md) |了解如何在自己专用的 Git 存储库中存储自定义项目。|
+   | [添加 Git 存储库来存储自定义项目和 Azure 资源管理器模板以供在 Azure 开发测试实验室中使用](devtest-lab-add-artifact-repo.md) |了解如何在自己专用的 Git 存储库中存储自定义项目。|
 
 5. **控制成本**
    
@@ -99,7 +98,7 @@ ms.lasthandoff: 05/26/2017
    | 任务 | 学习内容 |
    | --- | --- |
    | [定义实验室策略](devtest-lab-set-lab-policy.md) |通过在实验室中设置策略来控制成本。 |
-   | [使用 PowerShell 脚本删除所有实验室 VM](devtest-lab-faq.md#how-can-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |开发完成后，在一次操作中删除所有实验室。|
+   | [使用 PowerShell 脚本删除所有实验室 VM](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |开发完成后，在一次操作中删除所有实验室。|
 
 1. 将虚拟网络添加到 VM 
    
@@ -133,7 +132,7 @@ ms.lasthandoff: 05/26/2017
    
    | 任务 | 学习内容 |
    | --- | --- |
-   | [使用 Resource Manager 模板创建实验室](devtest-lab-faq.md#how-do-i-create-a-lab-from-an-azure-resource-manager-template) |使用 Resource Manager 模板在 Azure 开发测试实验室中创建实验室。 |
+   | [使用 Resource Manager 模板创建实验室](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |使用 Resource Manager 模板在 Azure 开发测试实验室中创建实验室。 |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

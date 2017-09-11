@@ -3,7 +3,7 @@ title: "Azure Analysis Services 教程第 6 课：创建度量值 | Microsoft Do
 description: "介绍了在 Azure Analysis Services 教程项目中如何创建度量值。"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

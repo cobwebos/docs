@@ -4,7 +4,7 @@ description: "了解有关设定流分析数据输出选项（包括 Power BI）
 keywords: "数据转换、分析结果、数据存储选项"
 services: stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: ba6697ac-e90f-4be3-bafd-5cfcf4bd8f1f
@@ -14,25 +14,24 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: fdecfe8b63d56983846f1601971ed680d624118d
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 91ee74f01b2e84244245dbe43408589f04af6338
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="stream-analytics-outputs-options-for-storage-analysis"></a>流分析输出：存储、分析选项
 创作流分析作业时，需考虑如何使用生成的数据。 如何查看流分析作业的结果？流分析作业的结果存储在何处？
 
-为了启用多种应用程序模式，Azure 流分析提供了不同的选项来存储输出和查看分析结果。 这样可以轻松地查看作业输出，并可灵活地使用和存储作业输出，以便进行数据仓库操作和其他操作。 必须先存在作业中配置的输出，然后才能启动作业并开始事件的流动。 例如，如果你使用 Blob 存储作为输出，该作业将不会自动创建存储帐户。 在启动 ASA 作业之前，需要由用户创建该存储帐户。
+为了启用多种应用程序模式，Azure 流分析提供了不同的选项来存储输出和查看分析结果。 这样可以轻松地查看作业输出，并可灵活地使用和存储作业输出，以便进行数据仓库操作和其他操作。 必须先存在作业中配置的输出，才能启动作业并开始事件的流动。 例如，如果使用 Blob 存储作为输出，该作业将不会自动创建存储帐户。 在启动 ASA 作业之前，需要由用户创建该存储帐户。
 
 ## <a name="azure-data-lake-store"></a>Azure Data Lake Store
 流分析支持 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)。 此存储可让你存储任何大小、类型和引入速度的数据，以便进行运行和探索分析。 此外，流分析需要经过授权，才能访问 Data Lake Store。 [Data Lake 输出一文](stream-analytics-data-lake-output.md)讨论了有关授权以及如何注册 Data Lake Store（如果需要）的详细信息。
 
 ### <a name="authorize-an-azure-data-lake-store"></a>授权 Azure Data Lake Store
-当选择 Data Lake Storage 作为 Azure 管理门户的输出时，系统将提示你对现有 Data Lake Store 的连接进行授权。  
+当选择 Data Lake Storage 作为 Azure 门户的输出时，系统会提示对现有 Data Lake Store 的连接进行授权。  
 
 ![Azure Data Lake Store](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
 
@@ -54,19 +53,19 @@ ms.lasthandoff: 07/04/2017
 </tr>
 <tr>
 <td>帐户名</td>
-<td>Data Lake 存储帐户的名称（你正在向该存储帐户发送输出）。 你将看到 Data Lake Store 帐户的下拉列表，登录门户的用户可访问该下拉列表。</td>
+<td>Data Lake 存储帐户的名称（正在向该存储帐户发送输出）。 会看到 Data Lake Store 帐户的下拉列表，登录门户的用户可访问该下拉列表。</td>
 </tr>
 <tr>
-<td>路径前缀模式 [<I>可选</I>]</td>
+<td>路径前缀模式</td>
 <td>用于对指定 Data Lake Store 帐户中的文件进行编写的文件路径。 <BR>{date}、{time}<BR>示例 1：folder1/logs/{date}/{time}<BR>示例 2：folder1/logs/{date}</td>
 </tr>
 <tr>
 <td>日期格式 [<I>可选</I>]</td>
-<td>如果在前缀路径中使用日期令牌，你可以选择组织文件所采用的日期格式。 示例：YYYY/MM/DD</td>
+<td>如果在前缀路径中使用日期令牌，可以选择组织文件所采用的日期格式。 示例：YYYY/MM/DD</td>
 </tr>
 <tr>
 <td>时间格式 [<I>可选</I>]</td>
-<td>如果在前缀路径中使用时间令牌，你可以选择组织文件所采用的时间格式。 目前唯一支持的值是 HH。</td>
+<td>如果在前缀路径中使用时间令牌，可以选择组织文件所采用的时间格式。 目前唯一支持的值是 HH。</td>
 </tr>
 <tr>
 <td>事件序列化格式</td>
@@ -82,7 +81,7 @@ ms.lasthandoff: 07/04/2017
 </tr>
 <tr>
 <td>格式</td>
-<td>仅适用于 JSON 序列化。 分隔行指定了通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出将被格式化为 JSON 对象的数组。</td>
+<td>仅适用于 JSON 序列化。 分隔行指定了通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出会被格式化为 JSON 对象的数组。</td>
 </tr>
 </tbody>
 </table>
@@ -98,7 +97,7 @@ ms.lasthandoff: 07/04/2017
 | 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 |该名称是在查询中使用的友好名称，用于将查询输出定向到此数据库。 |
-| 数据库 |数据库的名称（你正在向该数据库发送输出） |
+| 数据库 |数据库的名称（正在向该数据库发送输出） |
 | 服务器名称 |SQL 数据库服务器名称 |
 | 用户名 |有权写入到数据库的用户名 |
 | 密码 |用于连接到数据库的密码 |
@@ -110,7 +109,7 @@ ms.lasthandoff: 07/04/2017
 > 
 
 ## <a name="blob-storage"></a>Blob 存储
-Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在云中存储大量非结构化数据。  有关 Azure Blob 存储及其用法的简介，请参阅[如何使用 Blob](../storage/storage-dotnet-how-to-use-blobs.md) 处的文档。
+Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在云中存储大量非结构化数据。  有关 Azure Blob 存储及其用法的简介，请参阅[如何使用 Blob](../storage/blobs/storage-dotnet-how-to-use-blobs.md) 处的文档。
 
 下表列出了属性名称和用于创建 blob 输出的属性说明。
 
@@ -126,7 +125,7 @@ Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在
 </tr>
 <tr>
 <td>存储帐户</td>
-<td>存储帐户的名称（你正在向该存储帐户发送输出）。</td>
+<td>存储帐户的名称（正在向该存储帐户发送输出）。</td>
 </tr>
 <tr>
 <td>存储帐户密钥</td>
@@ -138,15 +137,15 @@ Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在
 </tr>
 <tr>
 <td>路径前缀模式 [可选]</td>
-<td>用于对指定容器中的 blob 进行编写的文件路径。<BR>在路径中，你可以选择使用以下 2 个变量的一个或多个实例指定 blob 写入的频率：<BR>{date}、{time}<BR>示例 1：cluster1/logs/{date}/{time}<BR>示例 2：cluster1/logs/{date}</td>
+<td>用于对指定容器中的 blob 进行编写的文件路径。<BR>在路径中，可以选择使用以下 2 个变量的一个或多个实例指定 blob 写入的频率：<BR>{date}、{time}<BR>示例 1：cluster1/logs/{date}/{time}<BR>示例 2：cluster1/logs/{date}</td>
 </tr>
 <tr>
 <td>日期格式 [可选]</td>
-<td>如果在前缀路径中使用日期令牌，你可以选择组织文件所采用的日期格式。 示例：YYYY/MM/DD</td>
+<td>如果在前缀路径中使用日期令牌，可以选择组织文件所采用的日期格式。 示例：YYYY/MM/DD</td>
 </tr>
 <tr>
 <td>时间格式 [可选]</td>
-<td>如果在前缀路径中使用时间令牌，你可以选择组织文件所采用的时间格式。 目前唯一支持的值是 HH。</td>
+<td>如果在前缀路径中使用时间令牌，可以选择组织文件所采用的时间格式。 目前唯一支持的值是 HH。</td>
 </tr>
 <tr>
 <td>事件序列化格式</td>
@@ -162,7 +161,7 @@ Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在
 </tr>
 <tr>
 <td>格式</td>
-<td>仅适用于 JSON 序列化。 分隔行指定了通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出将被格式化为 JSON 对象的数组。</td>
+<td>仅适用于 JSON 序列化。 分隔行指定了通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出会被格式化为 JSON 对象的数组。 仅当作业停止或流分析移动到下个时间段时，才关闭此数组。 一般而言，最好使用分隔行 JSON，因为在继续写入输出文件时，无需任何特殊处理。</td>
 </tr>
 </tbody>
 </table>
@@ -175,30 +174,30 @@ Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在
 | 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 |该名称是在查询中使用的友好名称，用于将查询输出定向到此事件中心。 |
-| 服务总线命名空间 |服务总线命名空间是包含一组消息传递实体的容器。 当你创建新的事件中心后，你还创建了服务总线命名空间 |
+| 服务总线命名空间 |服务总线命名空间是包含一组消息传递实体的容器。 创建新的事件中心后，还创建了服务总线命名空间 |
 | 事件中心 |事件中心输出的名称 |
-| 事件中心策略名称 |可以在事件中心的“配置”选项卡上创建的共享访问策略。 每个共享访问策略都会有名称、所设权限以及访问密钥 |
+| 事件中心策略名称 |可以在事件中心的“配置”选项卡上创建的共享访问策略。每个共享访问策略都会有名称、所设权限以及访问密钥 |
 | 事件中心策略密钥 |用于验证访问服务总线命名空间的共享访问密钥 |
 | 分区键列 [可选] |此列包含事件中心输出的分区键。 |
 | 事件序列化格式 |输出数据的序列化格式。  支持 JSON、CSV 和 Avro。 |
 | 编码 |对于 CSV 和 JSON，目前只支持 UTF-8 这种编码格式 |
 | 分隔符 |仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
-| 格式 |仅适用于 JSON 类型。 分隔行指定了通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出将被格式化为 JSON 对象的数组。 |
+| 格式 |仅适用于 JSON 类型。 分隔行指定了通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出会被格式化为 JSON 对象的数组。 |
 
 ## <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com/) 可以用作流分析作业的输出，以便提供丰富的分析结果可视化体验。 此功能可用于操作仪表板、生成报告以及进行指标驱动型报告。
 
 ### <a name="authorize-a-power-bi-account"></a>向 Power BI 帐户授权
-1. 当 Power BI 被选为 Azure 管理门户中的输出时，会提示你向现有的 Power BI 用户授权或创建新的 Power BI 帐户。  
+1. 当 Power BI 被选为 Azure 门户中的输出时，会提示向现有的 Power BI 用户授权或创建新的 Power BI 帐户。  
    
    ![向 Power BI 用户授权](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)  
-2. 如果你还没有帐户，请创建一个新帐户，然后单击“立即授权”。  将显示如下所示的屏幕。  
+2. 如果还没有帐户，请创建一个新帐户，并单击“立即授权”。  将显示如下所示的屏幕。  
    
    ![Azure 帐户的 Power BI](./media/stream-analytics-define-outputs/02-stream-analytics-define-outputs.png)  
-3. 在此步骤中，提供用于授权 Power BI 输出的工作或学校帐户。 如果你还没有注册 Power BI，请选择“立即注册”。 用于 Power BI 的工作或学校帐户可能不同于你当前登录时所用的 Azure 订阅帐户。
+3. 在此步骤中，提供用于授权 Power BI 输出的工作或学校帐户。 如果还没有注册 Power BI，请选择“立即注册”。 用于 Power BI 的工作或学校帐户可能不同于当前登录时所用的 Azure 订阅帐户。
 
 ### <a name="configure-the-power-bi-output-properties"></a>配置 Power BI 输出属性
-Power BI 帐户身份验证完成后，你可以为自己的 Power BI 输出配置属性。 下表列出了属性名称以及配置 Power BI 输出的说明。
+Power BI 帐户身份验证完成后，可以为自己的 Power BI 输出配置属性。 下表列出了属性名称以及配置 Power BI 输出的说明。
 
 | 属性名称 | 说明 |
 | --- | --- |
@@ -246,23 +245,23 @@ Datetime | String | String |  Datetime | String
 
 
 ### <a name="renew-power-bi-authorization"></a>续订 Power BI 授权
-如果自作业创建后或上次身份验证后更改了密码，你需要重新对 Power BI 帐户进行身份验证。 如果在 Azure Active Directory (AAD) 租户上配置了 Multi-Factor Authentication (MFA)，还需要每 2 周续订一次 Power BI 授权。 此问题的症状是没有作业输出，并且操作日志存在“验证用户错误”：
+如果自作业创建后或上次身份验证后更改了密码，需要重新对 Power BI 帐户进行身份验证。 如果在 Azure Active Directory (AAD) 租户上配置了 Multi-Factor Authentication (MFA)，还需要每 2 周续订一次 Power BI 授权。 此问题的症状是没有作业输出，并且操作日志存在“验证用户错误”：
 
   ![Power BI 刷新令牌错误](./media/stream-analytics-define-outputs/03-stream-analytics-define-outputs.png)  
 
-要解决此问题，请停止正在运行的作业并转到你的 Power BI 输出。  单击“续订授权”链接，并在“上次停止时间”重新启动你的工作以避免数据丢失。
+要解决此问题，请停止正在运行的作业并转到 Power BI 输出。  单击“续订授权”链接，并在“上次停止时间”重新启动工作以避免数据丢失。
 
   ![Power BI 续订授权](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)  
 
 ## <a name="table-storage"></a>表存储
-[Azure 表存储](../storage/storage-introduction.md)提供了具有高可用性且可大规模缩放的存储，因此应用程序可以自动缩放以满足用户需求。 表存储是 Microsoft 推出的 NoSQL 键/属性存储，适用于对架构的约束性较少的结构化数据。 Azure 表存储可用于持久地存储数据，方便进行高效的检索。
+[Azure 表存储](../storage/common/storage-introduction.md)提供了具有高可用性且可大规模缩放的存储，因此应用程序可以自动缩放以满足用户需求。 表存储是 Microsoft 推出的 NoSQL 键/属性存储，适用于对架构的约束性较少的结构化数据。 Azure 表存储可用于持久地存储数据，方便进行高效的检索。
 
 下表列出了属性名称和用于创建表输出的属性说明。
 
 | 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 |该名称是在查询中使用的友好名称，用于将查询输出定向到此表存储。 |
-| 存储帐户 |存储帐户的名称（你正在向该存储帐户发送输出）。 |
+| 存储帐户 |存储帐户的名称（正在向该存储帐户发送输出）。 |
 | 存储帐户密钥 |与存储帐户关联的访问密钥。 |
 | 表名称 |表的名称。 如果表不存在，则会创建表。 |
 | 分区键 |包含分区键的输出列的名称。 分区键是给某个定表中分区的唯一标识，分区键构成了实体主键的第一部分。 分区键是一个最大为 1 KB 的字符串值。 |
@@ -279,12 +278,12 @@ Datetime | String | String |  Datetime | String
 | 输出别名 |该名称是在查询中使用的友好名称，用于将查询输出定向到此服务总线队列。 |
 | 服务总线命名空间 |服务总线命名空间是包含一组消息传递实体的容器。 |
 | 队列名称 |服务总线队列的名称。 |
-| 队列策略名称 |在创建队列时，你还可以在“队列配置”选项卡上创建共享的访问策略。 每个共享访问策略都会有名称、所设权限以及访问密钥。 |
+| 队列策略名称 |在创建队列时，还可以在“队列配置”选项卡上创建共享的访问策略。每个共享访问策略都会有名称、所设权限以及访问密钥。 |
 | 队列策略密钥 |用于验证访问服务总线命名空间的共享访问密钥 |
 | 事件序列化格式 |输出数据的序列化格式。  支持 JSON、CSV 和 Avro。 |
 | 编码 |对于 CSV 和 JSON，目前只支持 UTF-8 这种编码格式 |
 | 分隔符 |仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
-| 格式 |仅适用于 JSON 类型。 分隔行指定了通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出将被格式化为 JSON 对象的数组。 |
+| 格式 |仅适用于 JSON 类型。 分隔行指定了通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出会被格式化为 JSON 对象的数组。 |
 
 ## <a name="service-bus-topics"></a>服务总线主题
 服务总线队列提供的是从发送方到接收方的一对一通信方法，而[服务总线主题](https://msdn.microsoft.com/library/azure/hh367516.aspx)提供的则是一对多形式的通信。
@@ -294,9 +293,9 @@ Datetime | String | String |  Datetime | String
 | 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 |这个名称是在查询中使用的友好名称，用于将查询输出定向到此服务总线主题。 |
-| 服务总线命名空间 |服务总线命名空间是包含一组消息传递实体的容器。 当你创建新的事件中心后，你还创建了服务总线命名空间 |
+| 服务总线命名空间 |服务总线命名空间是包含一组消息传递实体的容器。 创建新的事件中心后，还创建了服务总线命名空间 |
 | 主题名称 |主题是消息传送实体，类似于事件中心和队列。 之所以设计队列，是为了从多个不同的设备和服务收集事件流。 在创建主题时，还会为其提供特定的名称。 发送到主题的消息在创建订阅后才会提供给用户，因此请确保主题下存在一个或多个订阅 |
-| 主题策略名称 |创建主题时，还可以在“主题配置”选项卡上创建共享的访问策略。 每个共享访问策略都会有名称、所设权限以及访问密钥 |
+| 主题策略名称 |创建主题时，还可以在“主题配置”选项卡上创建共享的访问策略。每个共享访问策略都会有名称、所设权限以及访问密钥 |
 | 主题策略密钥 |用于验证访问服务总线命名空间的共享访问密钥 |
 | 事件序列化格式 |输出数据的序列化格式。  支持 JSON、CSV 和 Avro。 |
 | 编码 |如果是 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式 |
@@ -319,7 +318,7 @@ Datetime | String | String |  Datetime | String
 
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 我们已经向你介绍了流分析，这是一种托管服务，适用于对物联网的数据进行流式分析。 若要了解有关此服务的详细信息，请参阅：

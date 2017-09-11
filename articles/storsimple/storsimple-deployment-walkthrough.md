@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a14be6bf8135cdfc7e5b9eb3b6d7af3bdd4561a7
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2063acbafd6766d00dee9509ee7def73bdc5b982
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="deploy-your-on-premises-storsimple-device"></a>部署本地 StorSimple 设备
@@ -33,7 +34,7 @@ ms.openlocfilehash: a14be6bf8135cdfc7e5b9eb3b6d7af3bdd4561a7
 
 这些教程中的信息假设读者已阅读安全预防措施，并已打开 StorSimple 设备包、安装机架，并连接好电缆。 如果仍然需要执行这些任务，请先阅读 [安全预防措施](storsimple-safety.md)。 根据具体的设备型号，可以遵循以下说明打开包装、安装机架和连接电缆：
 
-* [解包、安装机架，将电缆连接到 8100](storsimple-8100-hardware-installation.md)
+* [解包、装载机架，并将电缆接到 8100](storsimple-8100-hardware-installation.md)
 * [解包、安装机架，将电缆连接到 8600](storsimple-8600-hardware-installation.md)
 
 需要有管理员权限才能完成安装和配置过程。 建议在开始之前查看配置清单。 部署和配置过程可能需要一些时间才能完成。
@@ -50,7 +51,7 @@ ms.openlocfilehash: a14be6bf8135cdfc7e5b9eb3b6d7af3bdd4561a7
 | --- | --- |
 | **先决条件** |这些是针对即将进行的部署需要做好准备。 |
 | 部署配置清单。 |使用此清单来收集和记录部署之前或期间的信息。 |
-| 部署先决条件。 |这些项将验证环境是否已准备就绪以进行部署。 |
+| 部署先决条件。 |这些项会验证环境是否已准备就绪以进行部署。 |
 |  | |
 | **逐步部署** |需要完成以下步骤在生产环境中部署 StorSimple 设备。 |
 | 步骤 1：创建新服务。 |设置 StorSimple 设备的云管理和存储。 如果其他 StorSimple 设备有现有服务，请跳过此步骤。 |
@@ -79,7 +80,7 @@ ms.openlocfilehash: a14be6bf8135cdfc7e5b9eb3b6d7af3bdd4561a7
 | &nbsp; |设备管理员密码 |密码必须介于 8 和 15 个字符之间，包含小写字母、大写字母、数字和特殊字符。 | |
 | &nbsp; |StorSimple 快照管理器密码 |密码必须是 14 或 15 个字符，包含小写字母、大写字母、数字和特殊字符。 | |
 | &nbsp; |服务注册密钥 |此密钥从 Azure 经典门户生成。 | |
-| &nbsp; |服务数据加密密钥 |当设备通过 Windows PowerShell for StorSimple 注册管理服务时将创建此密钥。 复制此密钥并将其保存到一个安全位置。 | |
+| &nbsp; |服务数据加密密钥 |当设备通过 Windows PowerShell for StorSimple 注册管理服务时会创建此密钥。 复制此密钥并将其保存到一个安全位置。 | |
 |  | | | |
 | **完成最低版本的设备安装** |设备的友好名称 |这是设备的描述性名称。 | |
 | &nbsp; |时区 |设备将此时区用于所有计划操作。 | |
@@ -162,7 +163,7 @@ StorSimple Manager 服务可以管理多个 StorSimple 设备。 部署第一个
 [!INCLUDE [storsimple-create-new-service](../../includes/storsimple-create-new-service.md)]
 
 > [!IMPORTANT]
-> 如果未启用服务的自动创建存储帐户，则在成功创建服务后，需要创建至少一个存储帐户。 在创建卷容器时将会使用此帐户。
+> 如果未启用服务的自动创建存储帐户，则在成功创建服务后，需要创建至少一个存储帐户。 在创建卷容器时会使用此帐户。
 > 
 > 如果未自动创建存储帐户，请转到 [针对服务配置新的存储帐户](#configure-a-new-storage-account-for-the-service) 了解详细说明。
 > 如果启用了自动创建存储帐户，请转到 [步骤 2：获取服务注册密钥](#step-2:-get-the-service-registration-key)。
@@ -239,7 +240,7 @@ StorSimple Manager 服务可以管理多个 StorSimple 设备。 部署第一个
 ## <a name="configure-a-new-storage-account-for-the-service"></a>针对服务配置新的存储帐户
 这是一个可选步骤，只有当未启用服务自动创建存储帐户时，才需要执行。 必须要具有 Microsoft Azure 存储帐户才可以创建 StorSimple 卷容器。
 
-如果需要在不同的区域创建 Azure 存储帐户，请参阅 [关于 Azure 存储帐户](../storage/storage-create-storage-account.md) 了解逐步说明。
+如果需要在不同的区域创建 Azure 存储帐户，请参阅 [关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md) 了解逐步说明。
 
 在 Azure 经典门户中的“StorSimple Manager 服务”页上执行以下步骤。
 
@@ -259,8 +260,8 @@ StorSimple Manager 服务可以管理多个 StorSimple 设备。 部署第一个
 > 
 
 #### <a name="to-update-your-device"></a>更新设备
-1. 在设备“快速启动”页上，单击“设备”。 选择物理设备，单击“维护”，然后单击“扫描更新”。  
-2. 已创建一个用于扫描可用更新的作业。 如果更新可用，“扫描更新”将更改为“安装更新”。 单击“安装更新”。 系统可能要求在安装更新之前禁用 Data 2 和 Data 3。 必须禁用这些网络接口，否则更新会失败。
+1. 在设备“快速启动”页上，单击“设备”。 选择物理设备，单击“维护”，并单击“扫描更新”。  
+2. 已创建一个用于扫描可用更新的作业。 如果更新可用，“扫描更新”将更改为“安装更新”。 单击“ **安装更新**”。 系统可能要求在安装更新之前禁用 Data 2 和 Data 3。 必须禁用这些网络接口，否则更新会失败。
 3. 将创建更新作业。 通过导航到 **作业**监视更新状态。
    
    > [!NOTE]
@@ -282,10 +283,5 @@ StorSimple Manager 服务可以管理多个 StorSimple 设备。 部署第一个
 ## <a name="next-steps"></a>后续步骤
 * 配置 [虚拟设备](storsimple-virtual-device-u2.md)。
 * 使用 [StorSimple Manager 服务](https://msdn.microsoft.com/library/azure/dn772396.aspx) 管理 StorSimple 设备。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

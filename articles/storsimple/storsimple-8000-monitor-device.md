@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: ac11c6c8532007ee40db128dd9933c99a32a9420
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: c8f731502d6589bfa908aa26cf418a65b18be635
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>使用 StorSimple 设备管理器服务监视 StorSimple 设备
 ## <a name="overview"></a>概述
-可以使用 StorSimple 设备管理器服务监视 StorSimple 解决方案中的特定设备。 可以基于 I/O 性能、容量使用情况、网络吞吐量和设备性能指标创建自定义图表并将它们固定到仪表板。 有关详细信息，请转到[自定义门户仪表板](/articles/azure-portal/azure-portal-dashboards.md)。
+可以使用 StorSimple 设备管理器服务监视 StorSimple 解决方案中的特定设备。 可以基于 I/O 性能、容量使用情况、网络吞吐量和设备性能指标创建自定义图表并将它们固定到仪表板。 有关详细信息，请转到[自定义门户仪表板](../azure-portal/azure-portal-dashboards.md)。
 
 若要查看特定设备的监视信息，请在 Azure 门户中选择 StorSimple 设备管理器服务。 从设备列表中，选择设备并转到“监视”。 然后，可以看到所选设备的“容量”、“使用情况”和“性能”图表。
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 08/03/2017
 
 
 ## <a name="usage"></a>使用情况
-“使用情况”跟踪与卷、卷容器或设备使用的数据存储空间量相关的指标。 可以基于主存储、云存储或设备存储的容量使用量创建报表。 可以针对特定的卷、特定的卷容器或者所有卷容器测量容量使用量。
+“使用情况”跟踪与数据存储空间量相关的指标（这些数据存储空间量由卷、卷容器或设备使用）。 可以基于主存储、云存储或设备存储的容量使用量创建报表。 可以针对特定的卷、特定的卷容器或者所有卷容器测量容量使用量。
 默认情况下，将报告过去 24 小时的使用情况。 可以编辑图表来更改要报告使用情况的持续时间，可以从以下项中进行选择：
 * 过去 24 小时
 * 过去 7 天
@@ -90,7 +90,7 @@ ms.lasthandoff: 08/03/2017
 
 
 ### <a name="local-storage-usage"></a>本地存储使用情况
-这些图表显示设备的总使用量，这将大于主存储使用量，因为它包括 SSD 线性层。 该层包含也存在于设备的其他层上的许多数据。 SSD 线性层中的容量是循环利用的，以便新数据可以进来，并且旧数据将移动到 HDD 层（彼时将删除重复数据项并对数据进行压缩），随后将移动到云。
+这些图表说明了设备的总使用情况，由于其中包含了 SSD 线性层，因此其使用率将比主存储使用率高。 该层包含也存在于设备的其他层上的许多数据。 SSD 线性层中的容量是循环利用的，以便新数据可以进来，并且旧数据将移动到 HDD 层（彼时会删除重复数据项并对数据进行压缩），随后将移动到云。
 
 随着时间的推移，使用的主存储和本地存储很可能会一起增加，直到数据开始分层存储到云。 那时，使用的本地存储将可能开始达到平稳状态，但使用的主存储将随着更多数据的写入而增加。
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 08/03/2017
 ![创建云快照后的本地存储使用量](./media/storsimple-8000-monitor-device/device-local-storage-after-cloudsnapshot.png)
 
 ## <a name="performance"></a>性能
-“性能”跟踪与在下列对象之间发生的读取和写入操作的数目相关的指标：主机服务器上的 iSCSI 发起程序接口与设备之间，或者设备与云之间。 可以针对特定的卷、特定的卷容器或者所有卷容器测量此性能。 “性能”还包括 CPU 使用率以及设备上各种网络接口的网络吞吐量。
+“性能”跟踪主机服务器的 iSCSI 发起程序接口和设备，或者设备和云之间与读取和写入操作数相关的指标。 可以针对特定的卷、特定的卷容器或者所有卷容器测量此性能。 “性能”还包括 CPU 使用率以及设备上各种网络接口的网络吞吐量。
 
 ### <a name="io-performance-for-initiator-to-device"></a>从发起程序到设备的 I/O 性能
 下面的图表针对某个生产设备的所有卷显示了从发起程序到设备的 I/O。 绘制的指标为每秒的读取和写入字节数。 还可以在图表中绘制读取、写入和未完成的 IO，或者绘制读取和写入延迟。
@@ -114,7 +114,7 @@ ms.lasthandoff: 08/03/2017
 ![在创建云快照期间从设备到云的 IO](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
 
 ### <a name="network-throughput-for-device-network-interfaces"></a>设备网络接口的网络吞吐量
-“网络吞吐量”跟踪从主机服务器和设备上的 iSCSI 发起程序网络接口传输的数据量以及在设备与云之间传输的数据量。 可以针对设备上的每个 iSCSI 网络接口监视此指标。
+“网络吞吐量”跟踪来自主机服务器的 iSCSI 发起程序网络接口和设备，以及设备和云之间，与所传输的数据量相关的指标。 可以针对设备上的每个 iSCSI 网络接口监视此指标。
 
 下面的图表显示了 Data 0（设备上的一个 1 GbE 网络）的网络吞吐量，该网络同时启用了云（默认设置）和 iSCSI。 在此设备上，在 6 月 14 日晚上 9 点左右，数据被分层写入到云（那时没有创建云快照，这指示分层成为将数据移动到云中的机制），这导致发生了到云的 IO。 在网络吞吐量图中，针对同一时间没有对应的峰值，并且大部分流量都传出到云。
 

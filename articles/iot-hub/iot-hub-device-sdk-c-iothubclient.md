@@ -12,14 +12,13 @@ ms.devlang: cpp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2016
+ms.date: 08/29/2017
 ms.author: obloch
 ms.translationtype: Human Translation
 ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
 ms.openlocfilehash: 2f1689a2f59b779c83b6be746edda915fd67a3db
 ms.contentlocale: zh-cn
 ms.lasthandoff: 05/16/2017
-
 
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>适用于 C 语言的 Azure IoT 设备 SDK - 有关 IoTHubClient 的详细信息

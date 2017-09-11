@@ -16,10 +16,10 @@ ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: 96553e9d2faac08ef861bc1f277b286b798bde0b
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 149af1f68e574f78127a9c2de8a0e79ed8774d29
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/31/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 07/31/2017
 #### <a name="connector-and-application-server-in-the-same-domain"></a>连接器和应用程序服务器位于同一域中
 1. 在 Active Directory 中，转到“工具” > “用户和计算机”。
 2. 选择运行连接器的服务器。
-3. 单击右键，然后选择“属性” > “委托”。
+3. 单击右键，并选择“属性” > “委托”。
 4. 选择“仅信任此计算机来委派指定的服务”。 
 5. 在“可以由此帐户提供委托凭据的服务”下面，添加应用程序服务器的 SPN 标识值。 这样，应用程序代理连接器便可以针对列表中定义的应用程序在 AD 中模拟用户。
 
@@ -90,10 +90,10 @@ Azure AD 应用程序代理的 Kerberos 委托流程从 Azure AD 在云中验证
 
 有关 Kerberos 的详细信息，请参阅[全面了解 Kerberos 约束委派 (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd)。
 
-非 Windows 应用通常使用用户名或 SAM 帐户名而非域电子邮件地址。 如果你的应用程序是这种情况，则需要配置指定的登录标识字段来将云标识连接到应用程序标识。 
+非 Windows 应用通常使用用户名或 SAM 帐户名而非域电子邮件地址。 如果你的应用程序是这种情况，则需要配置委托的登录标识字段来将云标识连接到应用程序标识。 
 
 ## <a name="working-with-different-on-premises-and-cloud-identities"></a>使用不同的本地标识和云标识
-应用程序代理假设用户在云中与本地具有完全相同的标识。 如果不是这样，仍然可以使用 KCD 进行单一登录。 可以为每个应用程序配置**指定的登录标识**来指定在执行单一登录时要使用的标识。  
+应用程序代理假设用户在云中与本地具有完全相同的标识。 如果不是这样，仍然可以使用 KCD 进行单一登录。 可以为每个应用程序配置委托的登录标识来指定在执行单一登录时要使用的标识。  
 
 此功能可让许多具有不同本地标识与云标识的组织从云单一登录到本地应用程序，而不需要用户输入不同的用户名与密码。 这包括如下所述的组织：
 
@@ -121,7 +121,7 @@ Azure AD 应用程序代理的 Kerberos 委托流程从 Azure AD 在云中验证
 
 ### <a name="troubleshooting-sso-for-different-identities"></a>排查不同标识的 SSO 问题
 如果在 SSO 过程中发生错误，连接器计算机事件日志中会显示该错误，如[故障排除](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)中所述。
-但在某些情况下，请求将成功发送到后端应用程序，同时此应用程序将以其他各种 HTTP 响应做出回复。 排查这些问题时，应该先检查连接器计算机上应用程序代理会话事件日志中的事件编号 24029。 用于委托的用户标识出现在事件详细信息的“user”字段中。 若要打开会话记录，请在事件查看器视图菜单中选择“显示分析和调试日志”。
+但在某些情况下，请求将成功发送到后端应用程序，同时此应用程序以其他各种 HTTP 响应做出回复。 排查这些问题时，应该先检查连接器计算机上应用程序代理会话事件日志中的事件编号 24029。 用于委托的用户标识出现在事件详细信息的“user”字段中。 若要打开会话记录，请在事件查看器视图菜单中选择“显示分析和调试日志”。
 
 ## <a name="next-steps"></a>后续步骤
 

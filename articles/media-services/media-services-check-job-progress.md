@@ -4,7 +4,7 @@ description: "了解如何使用事件处理程序代码来跟踪作业进度并
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: ee720ed6-8ce5-4434-b6d6-4df71fca224e
 ms.service: media-services

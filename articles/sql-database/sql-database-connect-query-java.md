@@ -12,7 +12,7 @@ ms.custom: mvc,develop apps
 ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: java
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 07/10/2017
 ms.author: andrela
 ms.translationtype: HT
@@ -135,7 +135,8 @@ ms.lasthandoff: 07/13/2017
                                System.out.println(resultSet.getString(1) + " "
                                    + resultSet.getString(2));
                            }
-                   }
+                    connection.close();
+                   }                   
            }
            catch (Exception e) {
                    e.printStackTrace();

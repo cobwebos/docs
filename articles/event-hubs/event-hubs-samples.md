@@ -12,20 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/01/2017
+ms.date: 08/15/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 89049688ab60842910f1bab8e56c349029dd17a7
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: ae9fbd97a1747d8f14c561f247a0973bb11fd039
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 
 # <a name="event-hubs-samples"></a>事件中心示例 
 
-Azure 事件中心示例演示了 [Azure 事件中心](/azure/event-hubs/)内的主要功能。 本文分类并介绍了可用的示例，每个示例均具有链接。
+Azure 事件中心集示例集演示了 [Azure 事件中心](/azure/event-hubs/)内的主要功能。 本文分类并介绍了可用的示例，每个示例均具有链接。
 
 在撰写本文时，事件中心示例位于多个不同的位置：
 
@@ -46,11 +45,11 @@ Azure 事件中心示例演示了 [Azure 事件中心](/azure/event-hubs/)内的
 
 ### <a name="receive-events"></a>接收事件 
 
-[使用事件处理器主机接收入门](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver)示例是一个使用 `Event Processor Host` 从事件中心接收消息的 .NET Core 控制台应用程序。
+[使用事件处理器主机接收入门](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver)示例是一个使用事件处理器主机从事件中心接收消息的 .NET Core 控制台应用程序。
 
-## <a name="net-framework"></a>.NET framework    
+## <a name="net-framework"></a>.NET framework   
 
-这些示例针对 [.NET Framework 库](https://msdn.microsoft.com/library/w0x726c2.aspx)演示 Azure 事件中心的各种其他功能。
+这些示例针对 [.NET Framework 库](/dotnet/framework/index)演示 Azure 事件中心的各种其他功能。
  
 ### <a name="notify-users-of-events-received"></a>通知用户已收到的事件
 
@@ -77,7 +76,7 @@ Azure 事件中心示例演示了 [Azure 事件中心](/azure/event-hubs/)内的
 访问以下链接了解有关 .NET Framework 版本的详细信息：
 
 - [框架和目标](/dotnet/articles/standard/frameworks)
-- [.NET Framework 4.6 和 4.5](https://msdn.microsoft.com/library/w0x726c2.aspx)
+- [.NET Framework 4.6 和 4.5](/dotnet/framework/index)
 
 参阅以下文章可以了解有关事件中心的详细信息：
 

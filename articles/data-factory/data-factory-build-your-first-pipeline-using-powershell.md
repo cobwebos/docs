@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 07/10/2017
 ms.author: spelluru
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: eea78b6616248aaf24053081ec99701c187111cc
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 40a63339be90d0c5d972605c7f6fa029ca1e2ba4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>教程：使用 Azure PowerShell 构建第一个 Azure 数据工厂
@@ -39,7 +39,7 @@ ms.lasthandoff: 07/21/2017
 > [!NOTE]
 > 本教程中的数据管道可以转换输入数据，以便生成输出数据。 它不是将数据从源数据存储复制到目标数据存储。 有关如何使用 Azure 数据工厂复制数据的教程，请参阅[教程：将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 > 
-> 一个管道可以有多个活动。 而且，你可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
+> 一个管道可以有多个活动。 而且，可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
 
 ## <a name="prerequisites"></a>先决条件
 * 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。
@@ -90,7 +90,7 @@ ms.lasthandoff: 07/21/2017
     ```PowerShell
     Get-AzureRmResourceProvider
     ```
-  * 使用 Azure 订阅登录到 [Azure 门户](https://portal.azure.com) ，然后导航到“数据工厂”边栏选项卡，或在 Azure 门户中创建数据工厂。 此操作将自动注册提供程序。
+  * 使用 Azure 订阅登录到 [Azure 门户](https://portal.azure.com) ，并导航到“数据工厂”边栏选项卡，或在 Azure 门户中创建数据工厂。 此操作会自动注册提供程序。
 
 在创建管道之前，需要创建一些数据工厂项。 首先创建链接服务用于将数据存储/计算机链接到数据存储，然后定义输入和输出数据集来表示链接的数据存储中的输入/输出数据，接下来创建管道，其中的某个活动使用这些数据集。
 
@@ -114,7 +114,7 @@ ms.lasthandoff: 07/21/2017
         }
     }
     ```
-    将**帐户名**替换为 Azure 存储帐户名，将**帐户密钥**替换为 Azure 存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请在[管理你的存储帐户](../storage/storage-create-storage-account.md#manage-your-storage-account)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
+    将**帐户名**替换为 Azure 存储帐户名，将**帐户密钥**替换为 Azure 存储帐户的访问密钥。 要了解如何获取存储访问密钥，请在[管理存储帐户](../storage/common/storage-create-storage-account.md#manage-your-storage-account)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
 2. 在 Azure PowerShell 中，切换到 ADFGetStarted 文件夹。
 3. 可以使用 **New-AzureRmDataFactoryLinkedService** cmdlet 创建链接服务。 此 cmdlet 以及本教程中使用的其他数据工厂 cmdlet 要求传递 *ResourceGroupName* 和 *DataFactoryName* 参数的值。 或者，可以使用 **Get-AzureRmDataFactory** 获取 **DataFactory** 对象并传递该对象，这样就不需要在每次运行 cmdlet 时键入 *ResourceGroupName* 和 *DataFactoryName*。 运行以下命令，将 **Get-AzureRmDataFactory** cmdlet 的输出分配给 **$df** 变量。
 
@@ -165,7 +165,7 @@ ms.lasthandoff: 07/21/2017
 
    * 数据工厂使用 JSON 创建**基于 Linux** 的 HDInsight 群集。 有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
    * 可以使用 **自己的 HDInsight 群集** ，而不使用按需 HDInsight 群集。 有关详细信息，请参阅 [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) （HDInsight 链接服务）。
-   * HDInsight 群集在 JSON 中指定的 Blob 存储 (**linkedServiceName**).内创建**默认容器**。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非有现有的实时群集 (**timeToLive**)，否则每当需要处理切片时，都会创建 HDInsight 群集。 处理完成后将自动删除该群集。
+   * HDInsight 群集在 JSON 中指定的 Blob 存储 (**linkedServiceName**).内创建**默认容器**。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非有现有的实时群集 (**timeToLive**)，否则每当需要处理切片时，都会创建 HDInsight 群集。 处理完成后会自动删除该群集。
 
        随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循模式：“adf**yourdatafactoryname**-**linkedservicename**-datetimestamp”。 使用 [Microsoft 存储资源管理器](http://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
 
@@ -323,7 +323,7 @@ ms.lasthandoff: 07/21/2017
    > [!NOTE]
    > 有关本示例中使用的 JSON 属性的详细信息，请参阅 [Pipelines and activities in Azure Data Factory](data-factory-create-pipelines.md)（Azure 数据工厂中的管道和活动）中的“Pipeline JSON”（管道 JSON）。
 
-2. 确认在 Azure Blob 存储的 **adfgetstarted/inputdata** 文件夹中看到了**input.log** 文件，然后运行以下命令部署管道。 由于 **start** 和 **end** 时间设置为过去的时间，**isPaused** 设置为 false，因此管道（管道中的活动）在部署后立即运行。
+2. 确认在 Azure Blob 存储的 **adfgetstarted/inputdata** 文件夹中看到了**input.log** 文件，并运行以下命令部署管道。 由于 **start** 和 **end** 时间设置为过去的时间，**isPaused** 设置为 false，因此管道（管道中的活动）在部署后立即运行。
 
     ```PowerShell
     New-AzureRmDataFactoryPipeline $df -File .\MyFirstPipelinePSH.json
@@ -391,7 +391,7 @@ ms.lasthandoff: 07/21/2017
 > [!IMPORTANT]
 > 创建按需 HDInsight 群集通常需要一段时间（大约 20 分钟）。 因此，预期管道需要花费 **大约 30 分钟** 来处理切片。
 >
-> 成功处理切片后，将会删除输入文件。 因此，如果想要重新运行切片或重新学习本教程，请将输入文件 (input.log) 上载到 adfgetstarted 容器的 inputdata 文件夹中。
+> 成功处理切片后，会删除输入文件。 因此，如果想要重新运行切片或重新学习本教程，请将输入文件 (input.log) 上传到 adfgetstarted 容器的 inputdata 文件夹中。
 >
 >
 
@@ -406,7 +406,7 @@ ms.lasthandoff: 07/21/2017
 4. 创建了包含 **HDInsight Hive** 活动的**管道**。
 
 ## <a name="next-steps"></a>后续步骤
-本文创建了可在按需 Azure HDInsight 群集上运行 Hive 脚本、包含转换活动（HDInsight 活动）的管道。 若要了解如何使用复制活动将数据从 Azure Blob 复制到 Azure SQL，请参阅 [Tutorial: Copy data from an Azure Blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)（教程：将数据从 Azure Blob 复制到 Azure SQL）。
+本文创建了可在按需 Azure HDInsight 群集上运行 Hive 脚本、包含转换活动（HDInsight 活动）的管道。 要了解如何使用复制活动将数据从 Azure Blob 复制到 Azure SQL，请参阅 [Tutorial: Copy data from an Azure Blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)（教程：将数据从 Azure Blob 复制到 Azure SQL）。
 
 ## <a name="see-also"></a>另请参阅
 | 主题 | 说明 |

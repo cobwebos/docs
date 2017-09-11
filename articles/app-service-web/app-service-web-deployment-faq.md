@@ -13,14 +13,13 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 7/10/2017
+ms.date: 07/10/2017
 ms.author: genli
 ms.translationtype: Human Translation
 ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
 ms.openlocfilehash: 0a184d21a2c5ed1166aa9011ad7f077bcacc0d94
 ms.contentlocale: zh-cn
 ms.lasthandoff: 06/15/2017
-
 
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的部署常见问题解答

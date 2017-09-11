@@ -1,5 +1,4 @@
 ---
-
 title: "Azure 中的监管 | Microsoft Docs"
 description: "了解基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动增加或减少。"
 services: security
@@ -15,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/01/2017
 ms.author: TomSh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 91fb3c70d95cca46dd68e3f15ad67c914cfbfa5b
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: f3fbca281dbbfca7ff9392d003429719c589afbd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
-
+ms.lasthandoff: 08/10/2017
 
 ---
 
@@ -151,7 +149,7 @@ Azure 在最初发布时，对订阅的访问控制非常直接：只允许管�
 
 现在不再需要衍生订阅。 使用基于角色的访问控制，可将用户分配到标准角色（例如常见的“读取者”和“写入者”角色类型）。 还可以自定义角色。
 
-[Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) 可用于对 Azure 进行细致的访问管理。 使用 RBAC，你可以仅授予用户执行其作业所需的访问次数。 面向安全的公司应侧重于向员工提供他们所需的确切权限。 权限过多，攻击者可轻松威胁帐户。 权限太少，员工无法有效完成其工作。 Azure 基于角色的访问控制 (RBAC) 通过对 Azure 提供细致的访问管理帮助解决此问题。 RBAC 帮助你在团队中对职责进行分隔，仅向用户授予执行作业所需的访问权限。 而不是向每个人提供对你的 Azure 订阅或资源的无限权限，你可以仅允许某些操作。
+[Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) 可用于对 Azure 进行细致的访问管理。 使用 RBAC，可以仅授予用户执行其作业所需的访问次数。 面向安全的公司应侧重于向员工提供他们所需的确切权限。 权限过多，攻击者可轻松威胁帐户。 权限太少，员工无法有效完成其工作。 Azure 基于角色的访问控制 (RBAC) 通过对 Azure 提供细致的访问管理帮助解决此问题。 RBAC 帮助你在团队中对职责进行分隔，仅向用户授予执行作业所需的访问权限。 而不是向每个人提供对 Azure 订阅或资源的无限权限，可以仅允许某些操作。
 
 例如，使用 RBAC 允许一个员工管理订阅中的虚拟机，而允许另一个员工管理同一订阅中的 SQL 数据库。
 
@@ -171,13 +169,13 @@ Azure 中的其他 RBAC 角色允许对特定的 Azure 资源进行管理。 例
 
 例如，具有对资源组访问权限的用户可以管理其包含的所有资源，如网站、虚拟机和子网。
 
-Azure RBAC 仅支持 Azure 门户和 Azure Resource Manager API 中的 Azure 资源的管理操作。 它不能授权 Azure 资源的所有数据级别操作。 例如，你可以授权某人管理存储帐户，但该用户不能管理存储帐户内的 blob 或表。 同样，可以管理SQL 数据库，但是不能管理其中的表。
+Azure RBAC 仅支持 Azure 门户和 Azure Resource Manager API 中的 Azure 资源的管理操作。 它不能授权 Azure 资源的所有数据级别操作。 例如，可以授权某人管理存储帐户，但该用户不能管理存储帐户内的 blob 或表。 同样，可以管理SQL 数据库，但是不能管理其中的表。
 
-如果想要解有关 RBAC 如何帮助你管理访问权限的详细信息，请参阅 [什么是基于角色的访问控制](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)。
+如果想要了解有关 RBAC 如何帮助你管理访问权限的详细信息，请参阅[什么是基于角色的访问控制](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)。
 
 如果没有符合你特定访问需求的内置角色，也可以在 Azure 基于角色的访问控制 (RBAC) 中[创建自定义角色](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles)。 可以使用 [Azure PowerShell](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell)、[Azure 命令行接口](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-azure-cli) (CLI) 和 [REST API](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-rest) 创建自定义角色。 与内置角色一样，可以将自定义角色分配到订阅、资源组和资源范围内的用户、组和应用程序。
 
-在每个订阅中，你最多可以授予 2000 个角色分配。
+在每个订阅中，最多可以授予 2000 个角色分配。
 
 ## <a name="resource-management"></a>资源管理
 
@@ -197,7 +195,7 @@ Azure 在 2014 年引入了 Resource Manager，增加了资源组这一概念。
 
 - 可以使用 JavaScript 对象表示法 (JSON) 来定义解决方案的基础结构。 JSON 文件称为 Resource Manager 模板。
 
-- 您可以定义各资源之间的依赖关系，以便按正确的顺序进行部署。
+- 可以定义各资源之间的依赖关系，使其按正确的顺序进行部署。
 
 ![资源管理](./media/governance-in-azure/security-governance-in-azure-fig4.png)
 
@@ -220,11 +218,11 @@ Azure Resource Manager 会分析依赖关系，以确保按正确的顺序创建
 
 随着组织中的用户不断地在订阅中添加资源，将资源与相应的部门、客户和环境相关联就变得越发重要。 可以通过标记将元数据附加到资源。 使用[标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)提供有关资源或所有者的信息。 标记不仅能让你通过多种方式聚合和分组资源，还能让你将该数据用于退款目的。
 
-如果有一系列复杂的资源组和资源，并想要以最有利的方式可视化这些资产，则可以使用标记。 例如，你可以标记组织中充当类似角色或者属于同一部门的资源。
+如果有一系列复杂的资源组和资源，并想要以最有利的方式可视化这些资产，则可以使用标记。 例如，可以标记组织中充当类似角色或者属于同一部门的资源。
 
 如果不使用标记，组织中的用户可以创建多个资源，这可能会使将来的标识和管理变得十分困难。 例如，你可能想要删除某个项目的所有资源。 如未对项目的这些资源使用标记，则需要手动查找它们。 标记是降低不必要的订阅成本的重要方法。
 
-资源不需要驻留在同一个资源组中就能共享一个标记。 你可以创建自己的标记分类，以确保组织中的所有用户使用公用的标记，避免用户无意中应用稍有不同的标记（如“dept”而不是“department”）。
+资源不需要驻留在同一个资源组中就能共享一个标记。 可以创建自己的标记分类，以确保组织中的所有用户使用公用的标记，避免用户无意中应用稍有不同的标记（如“dept”而不是“department”）。
 
 通过资源策略，可为组织创建标准规则。 可创建相应策略，确保使用适当的值标记资源。
 
@@ -248,11 +246,11 @@ Azure Resource Manager 会分析依赖关系，以确保按正确的顺序创建
 
 - 应用于资源组的标记不会被该资源组中的资源继承。
 
-如果你有超过 15 个需要与资源关联的值，请将 JSON 字符串用于标记值。 JSON 字符串可以包含多个应用于单个标记键的值。
+如果有超过 15 个需要与资源关联的值，请将 JSON 字符串用于标记值。 JSON 字符串可以包含多个应用于单个标记键的值。
 
 ### <a name="tags-and-billing"></a>标记和计费
 
-使用标记可对计费数据进行分组。 例如，如果针对不同组织运行多个虚拟机，可以使用标记根据成本中心对使用情况进行分组。 您还可以使用标记根据运行时环境对成本进行分类；例如，在生产环境中运行的虚拟机的计费使用情况。
+使用标记可对计费数据进行分组。 例如，如果针对不同组织运行多个虚拟机，可以使用标记根据成本中心对使用情况进行分组。 还可以使用标记根据运行时环境对成本进行分类；例如，在生产环境中运行的虚拟机的计费使用情况。
 
 可以通过 [Azure 资源使用情况与费率卡 API](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview) 或者使用情况逗号分隔值 (CSV) 文件检索有关标记的信息。 可以从 [Azure 帐户门户](https://account.windowsazure.com/)或 [EA 门户](https://ea.azure.com/)下载使用情况文件。
 
@@ -275,7 +273,7 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 
 另举一例，在应用服务资源上放置 ReadOnly 锁将阻止 Visual Studio 服务器资源管理器显示资源文件，因为该交互需要写入访问权限。
 
-与基于角色的访问控制不同，你可以使用管理锁来对所有用户和角色应用限制。 若要了解如何为用户和角色设置权限，请参阅 [Azure 基于角色的访问控制](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)。
+与基于角色的访问控制不同，可以使用管理锁来对所有用户和角色应用限制。 若要了解如何为用户和角色设置权限，请参阅 [Azure 基于角色的访问控制](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)。
 
 在父范围应用锁时，该范围内所有资源都将继承相同的锁。 即使是之后添加的资源也会从父作用域继承该锁。 继承中限制性最强的锁优先执行。
 
@@ -293,9 +291,9 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 
 - **每小时或每日聚合** - 调用方可以指定 Azure 使用状况数据是以每小时存储桶为单位，还是以每日存储桶为单位。 默认值为每日聚合。
 
-- 实例元数据（包括资源标记）- 获取实例级详细信息，例如完全限定的资源 URI (/subscriptions/{subscription-id}/..)，以及资源组信息和资源标记。 此元数据可帮助你明确以编程方式按标记分配用量。
+- 实例元数据（包括资源标记）- 获取实例级详细信息，例如完全限定的资源 URI (/subscriptions/{subscription-id}/..)，以及资源组信息和资源标记。 对于交叉费用等用例，此元数据可帮助你明确以编程方式按标记分配使用状况。
 
-- **资源元数据** - 资源详细信息（如测定仪名称、测定仪类别、测定仪子类别、计价单位和区域）让调用方更好地了解消耗量。 我们还致力于在跨 Azure 门户、Azure 使用状况 CSV、EA 计费 CSV 和其他面向公众的体验的情况下保持资源元数据术语的一致性，从而让你能够跨体验关联数据。
+- **资源元数据** - 资源详细信息（如测定仪名称、测定仪类别、测定仪子类别、计价单位和区域）让调用方更好地了解消耗量。 此外，我们还将致力于跨 Azure 门户、Azure 使用状况 CSV、EA 计费 CSV 和其他面向公众体验的情况下保持资源元数据术语的一致性，从而让你能够在不同体验间关联数据。
 
 - **所有产品类型的用量** - 提供所有产品类型的用量数据，例如即用即付、MSDN、货币承诺、货币信用额和 EA。
 
@@ -313,11 +311,11 @@ Azure 资源 RateCard API（预览）
 
 - **预测帐单** - 可以估计消耗量和云支出，应用机器学习算法来预测计费周期结束时的帐单。
 
-- **消耗费用分析** - 如果要将工作负荷转移到 Azure，可以使用 RateCard API 来预测帐单（通过提供的所需用量数据）。 如果你在其他云或私有云中拥有现有的工作负荷，则还可以将用量与 Azure 费率进行映射，以便更好地估计 Azure 支出。 通过这种估计可以根据产品生成透视图，在不同的产品类型之间进行比较（不仅仅局限于即用即付产品，还包括货币承诺和货币信用额支付的产品）。 此外，API 还能够按区域查看费用差异，使你能够执行假设成本分析类型，帮助做出部署决策。
+- **消耗费用分析** - 如果要将工作负荷转移到 Azure，可以使用 RateCard API 来预测帐单（通过提供的所需用量数据）。 如果在其他云或私有云中拥有现有的工作负荷，则还可以将用量与 Azure 费率进行映射，以便更好地估计 Azure 支出。 通过这种估计可以根据产品生成透视图，在不同的产品类型之间进行比较（不仅仅局限于即用即付产品，还包括货币承诺和货币信用额支付的产品）。 此外，API 还能够按区域查看费用差异，使你能够做假设性成本分析，帮助做出部署决策。
 
 - 假设分析 - 可以确定在其他区域或 Azure 资源的其他配置上运行工作负荷是否会更具成本效益。 Azure 资源费用根据所用的 Azure 区域而异。
 
-- 你还可以确定其他 Azure 产品/服务类型是否提供更优惠的 Azure 资源费率。
+- 还可以确定其他 Azure 产品/服务类型是否提供更优惠的 Azure 资源费率。
 
 ## <a name="networking-controls"></a>网络控制
 
@@ -331,21 +329,21 @@ Azure 资源 RateCard API（预览）
 
 [虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)是子网的容器对象。 尽管严格意义上没有必要，但将应用程序连接到内部企业资源时往往要用到它。 通过 Azure 虚拟网络服务可安全地将 Azure 资源连接到具有虚拟网络 (VNet) 的各个资源。
 
-VNet 是你自己的网络在云中的表示形式。 VNet 是对专用于你的订阅的 Azure 云进行的逻辑隔离。 也可将 VNet 连接到本地网络。
+VNet 是自己的网络在云中的表示形式。 VNet 是对专用于订阅的 Azure 云进行的逻辑隔离。 也可将 VNet 连接到本地网络。
 
 以下是 Azure 虚拟网络的功能：
 
-- 隔离：VNet 之间彼此隔离。 你可以为使用相同 CIDR 地址块的开发、测试和生产创建单独的 VNet。 相反地，你也可以创建使用不同 CIDR 地址的多个 VNet 并将网络连接在一起。 可将一个 VNet 分为多个子网。 Azure 为连接到 VNet 的 VM 和云服务角色实例提供内部名称解析。 可选择配置 VNet 来使用自己的 DNS 服务器，而不使用 Azure 内部名称解析。
+- 隔离：VNet 之间彼此隔离。 可以为使用相同 CIDR 地址块的开发、测试和生产创建单独的 VNet。 相反地，也可以创建使用不同 CIDR 地址的多个 VNet 并将网络连接在一起。 可将一个 VNet 分为多个子网。 Azure 为连接到 VNet 的 VM 和云服务角色实例提供内部名称解析。 可选择配置 VNet 来使用自己的 DNS 服务器，而不使用 Azure 内部名称解析。
 
 - Internet 连接：默认情况下，所有 Azure 虚拟机 (VM) 和连接到 VNet 的云服务角色实例都具有 Internet 访问权限。 根据需要，还可对特定资源启用入站访问。
 
 - Azure 资源连接：云服务和 VM 等 Azure 资源可连接到同一 VNet。 即使资源在不同的子网中，也可使用专用 IP 地址连接彼此。 Azure 提供子网、VNet 和本地网络之间的默认路由，因此无需配置和管理路由。
 
-- VNet 连接性：VNet 可相互之间进行连接，从而使连接到任何 VNet 的资源与任何其他 VNet 上的所有资源进行通信。
+- VNet 连接性：VNet 之间可相互进行连接，从而使连接到任何 VNet 的资源可与任何其他 VNet 上的所有资源进行通信。
 
 - 本地连接性：可通过网络和 Azure 间的专用网络连接或基于 Internet 的站点到站点 VPN 连接将 VNet 连接到本地网络。
 
-- 流量筛选：按源 IP 地址和端口、目标 IP 地址和端口以及协议对 VM 和云服务角色实例网络流量进行入站和出站筛选。
+- 流量筛选：按源 IP 地址和端口、目标 IP 地址和端口以及协议，可对 VM 和云服务角色实例网络流量进行入站和出站筛选。
 
 - 路由：可选择通过配置自己的路由或通过网关使用 BGP 路由来替代 Azure 默认路由。
 
@@ -377,7 +375,7 @@ VNet 是你自己的网络在云中的表示形式。 VNet 是对专用于你的
 
 Azure 订阅者可从多种设备管理其云环境，这些设备包括管理工作站、开发人员电脑，甚至是具有任务特定权限的特权最终用户设备。 在某些情况下，可通过基于 Web 的控制台（例如 Azure 门户）来执行管理功能。 有其他情况下，可以从本地系统通过虚拟专用网络 (VPN)、终端服务、客户端应用程序协议或 Azure 服务管理 API (SMAPI)（以编程方式）直接连接到 Azure。 此外，客户端终结点（例如平板电脑或智能手机）可以加入域或者受到隔离且不受管理。
 
-尽管这么多种的访问和管理功能可提供丰富的选项，但选项太多也可能会让云部署承受巨大风险。 它可能变得难以管理、跟踪和审核管理操作。 这种差异还可能由于用于管理云服务的客户端终结点进行的访问不受管制而带来安全威胁。 使用普通工作站或专用工作站开发和管理基础结构将会打开诸如 Web 浏览（例如水坑攻击）或电子邮件（例如社交工程和网络钓鱼）等不可预测的威胁媒介。
+尽管这么多种的访问和管理功能可提供丰富的选项，但选项太多也可能会让云部署承受巨大风险。 它可能变得难以管理、跟踪和审核管理操作。 这种差异还可能由于用于管理云服务的客户端终结点进行的访问不受管制而带来安全威胁。 使用普通工作站或专用工作站开发和管理基础结构会打开诸如 Web 浏览（例如水坑攻击）或电子邮件（例如社交工程和网络钓鱼）等不可预测的威胁媒介。
 
 监视、日志记录和审核可为跟踪和了解管理活动提供基础，但受限于所生成的数据量，它不一定都能巨细无遗地审核所有操作。 但是，审核管理策略的效果是最佳做法。
 
@@ -400,7 +398,7 @@ Azure 安全中心结合了 Azure 订阅中所有资源的最佳做法分析和�
 >[!Note]
 > 如需详细了解如何应用建议，请参阅[在 Azure 安全中心实施安全建议](https://docs.microsoft.com/azure/security-center/security-center-recommendations)。
 
-安全中心会收集来自虚拟机的数据，进而评估其安全状态、提供安全建议并发出威胁警报。 初次访问安全中心时，将在订阅中的所有虚拟机上启用数据收集。 建议使用数据收集，但可通过安全中心策略中[禁用数据收集](https://docs.microsoft.com/azure/security-center/security-center-faq)来选择退出。
+安全中心会收集来自虚拟机的数据，进而评估其安全状态、提供安全建议并发出威胁警报。 初次访问安全中心时，会在订阅中的所有虚拟机上启用数据收集。 建议使用数据收集，但可通过安全中心策略中[禁用数据收集](https://docs.microsoft.com/azure/security-center/security-center-faq)来选择退出。
 
 最后，Azure 安全中心是一个开放式平台，允许 Microsoft 合作伙伴和独立软件供应商创建可与 Azure 安全中心对接的软件来增强其功能。
 
@@ -424,17 +422,17 @@ Microsoft 有安全性和合规性团队，负责对 Microsoft 中所有服务�
 
 Operations Management Suite（简称为 OMS）是在云中从无到有设计出的管理服务集合。 OMS 组件完全在 Azure 中托管，而不是在本地资源上部署和管理。 配置工作极少，基本上在几分钟内就能将它启动并运行。
 
-![Operation Manager Suite](./media/governance-in-azure/security-governance-in-azure-fig8.png)
+![Operations Manager Suite](./media/governance-in-azure/security-governance-in-azure-fig8.png)
 
 不能仅仅因为 OMS 服务在云中运行，就认为它们无法有效管理本地环境。
 
 在数据中心内的任意 Windows 或 Linux 计算机上安装一个代理，就能将数据发送到 Log Analytics，可在其中连同从云或本地服务收集的其他所有数据一起进行分析。 使用 Azure 备份和 Azure Site Recovery 可以利用云来实现本地资源的备份和高可用性。
 
-云中的 Runbook 通常无法访问本地资源，但你也可以在数据中心内托管 Runbook 的一台或多台计算机上安装代理。 启动 Runbook 时，只需指定是要让它在云中还是本地辅助角色上运行即可。
+云中的 Runbook 通常无法访问本地资源，但你可以在数据中心内托管 Runbook 的一台或多台计算机上安装代理。 启动 Runbook 时，只需指定是要让它在云中还是本地辅助角色上运行即可。
 
 OMS 的核心功能由 Azure 中运行的一组服务提供。 每个服务提供特定的管理功能，可以组合这些服务来实现不同的管理方案。
 
-![Operation Manager Suite](./media/governance-in-azure/security-governance-in-azure-fig9.JPG)
+![Operations Manager Suite](./media/governance-in-azure/security-governance-in-azure-fig9.JPG)
 
 Azure 操作管理器通过提供管理解决方案扩展其功能。 [管理解决方案](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)是预先打包的逻辑集，可以实现利用一个或多个 OMS 服务的管理方案。
 
@@ -442,7 +440,7 @@ Azure 操作管理器通过提供管理解决方案扩展其功能。 [管理解
 
 Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 订阅，提高 OMS 投资的价值。
 
-合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure 应用商店或快速启动模板将它们提供给用户。
+合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure Marketplace 或快速启动模板将它们提供给用户。
 
 ## <a name="performance-alerting-and-monitoring"></a>性能警报和监视
 
@@ -471,7 +469,7 @@ Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 
 
 ### <a name="monitoring"></a>监视
 
-云应用中的性能问题可能会影响业务。 使用多个互连的组件和频繁发布版本时，性能随时可能会下降。 开发一款应用后，你的用户通常会发现其中的问题，而你在测试时却找不到这样的问题。 你应该立即知道这些问题，并使用工具来诊断和解决问题。 Microsoft Azure 提供一系列的工具用于识别这些问题。
+云应用中的性能问题可能会影响业务。 使用多个互连的组件和频繁发布版本时，性能随时可能会下降。 开发一款应用后，你的用户通常会发现其中的一些问题，而你在测试时却发现不了这样的问题。 应该立即知道这些问题，并使用工具来诊断和解决问题。 Microsoft Azure 提供一系列的工具用于识别这些问题。
 
 **如何监视 Azure 云应用？**
 
@@ -479,13 +477,13 @@ Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 
 
 下面是主要工具：
 
-- **Azure Monitor** 是用于监视 Azure 中运行的服务的基本工具。 它可以提供有关服务吞吐量和周边环境的基础结构级数据。 如果你在 Azure 中管理所有应用，并想要确定是否需要扩展或缩减资源，则 Azure Monitor 可以提供初始信息。
+- **Azure Monitor** 是用于监视 Azure 中运行的服务的基本工具。 它可以提供有关服务吞吐量和周边环境的基础结构级数据。 如果在 Azure 中管理所有应用，并想要确定是否需要扩展或缩减资源，则 Azure Monitor 可以提供初始信息。
 
-- **Application Insights** 可用于开发，并且可充当生产监视解决方案。 它的工作方式是在应用中安装一个包，提供更内在的动态视图。 其数据包括依赖项的响应时间、异常跟踪、调试快照和执行配置文件。 它提供强大的智能工具用于分析所有这些遥测数据，既能帮助你调试应用，也能帮助你了解用户将它用于哪种目的。 你可以判断响应时间出现尖峰的原因是应用中出现某种问题，还是存在某种外部资源调配问题。 如果你使用 Visual Studio，而应用出现错误，你可以直接找到有问题的代码行，然后修复错误。
+- **Application Insights** 可用于开发，并且可充当生产监视解决方案。 它的工作方式是在应用中安装一个包，提供更内在的动态视图。 其数据包括依赖项的响应时间、异常跟踪、调试快照和执行配置文件。 它提供强大的智能工具用于分析所有这些遥测数据，既能帮助你调试应用，也能帮助你了解用户将它用于哪种目的。 可以判断响应时间出现尖峰的原因是应用中出现某种问题，还是存在某种外部资源调配问题。 如果使用 Visual Studio，而应用出现错误，可以直接找到有问题的代码行，并修复错误。
 
-- **Log Analytics** 面向需要优化性能，并针对生产环境中运行的应用程序规划维护的用户。 此服务驻留在 Azure 中。 它可以从许多源收集和聚合数据，不过会出现 10 到 15 分钟的延迟。 它为 Azure、本地基础结构和第三方基于云的基础结构（例如 Amazon Web Services）提供整体 IT 管理解决方案。 它提供更丰富的工具来跨更多的源分析数据，允许针对所有日志运行复杂的查询，并可以根据指定的条件主动发出警报。 你甚至可以将自定义数据收集到它的中心存储库，以便查询和可视化这些数据。
+- **Log Analytics** 面向需要优化性能，并针对生产环境中运行的应用程序规划维护的用户。 此服务驻留在 Azure 中。 它可以从许多源收集和聚合数据，不过会出现 10 到 15 分钟的延迟。 它为 Azure、本地基础结构和第三方基于云的基础结构（例如 Amazon Web Services）提供整体 IT 管理解决方案。 它提供更丰富的工具来跨更多的源分析数据，允许针对所有日志运行复杂的查询，并可以根据指定的条件主动发出警报。 甚至可以将自定义数据收集到它的中心存储库，以便查询和可视化这些数据。
 
-- **System Center Operations Manager (SCOM)** 用于管理和监视大型云安装。 作为本地 Windows Sever 和基于云的 Hyper-V 计算机的管理工具，你可能已经对它有所了解，但它还能集成和管理 Azure 应用。 除此之外，它还能在现有的实时应用中安装 Application Insights。 如果某个应用出现故障，它会即时发出通知。
+- **System Center Operations Manager (SCOM)** 用于管理和监视大型云安装。 作为本地 Windows Sever 和基于云的 Hyper-V 计算机的管理工具，可能已经对它有所了解，但它还能集成和管理 Azure 应用。 除此之外，它还能在现有的实时应用中安装 Application Insights。 如果某个应用出现故障，它会即时发出通知。
 
 
 ## <a name="next-steps"></a>后续步骤

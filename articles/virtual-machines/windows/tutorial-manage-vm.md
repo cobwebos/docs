@@ -70,7 +70,7 @@ $vnet = New-AzureRmVirtualNetwork `
   -ResourceGroupName myResourceGroupVM `
   -Location EastUS `
   -Name myVnet `
-  -AddressPrefix 192.168.0.0/16 ` 
+  -AddressPrefix 192.168.0.0/16 `
   -Subnet $subnetConfig
 ```
 ### <a name="create-public-ip-address"></a>创建公共 IP 地址
@@ -78,9 +78,9 @@ $vnet = New-AzureRmVirtualNetwork `
 使用 [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) 创建一个公共 IP 地址：
 
 ```powershell
-$pip = New-AzureRmPublicIpAddress ` 
+$pip = New-AzureRmPublicIpAddress `
   -ResourceGroupName myResourceGroupVM `
-  -Location EastUS ` 
+  -Location EastUS `
   -AllocationMethod Static `
   -Name myPublicIPAddress
 ```
@@ -222,7 +222,7 @@ mstsc /v:<publicIpAddress>
 
 ## <a name="understand-vm-images"></a>了解 VM 映像
 
-Azure 应用商店包括许多可用于新建虚拟机的虚拟机映像。 在之前的步骤中，使用 Windows Server 2016 Datacenter 映像创建了虚拟机。 在此步骤中，使用 PowerShell 模块在应用商店搜索其他 Windows 映像，这些映像也可充当新 VM 的基础。 此过程包括查找发布者、产品/服务和映像名称 (Sku)。 
+Azure Marketplace 包括许多可用于新建虚拟机的虚拟机映像。 在之前的步骤中，使用 Windows Server 2016 Datacenter 映像创建了虚拟机。 在此步骤中，使用 PowerShell 模块在 Marketplace 搜索其他 Windows 映像，这些映像也可充当新 VM 的基础。 此过程包括查找发布者、产品/服务和映像名称 (Sku)。 
 
 使用 [Get AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher) 命令返回映像发布者的列表。  
 
@@ -251,18 +251,22 @@ Get-AzureRmVMImageSku -Location "EastUS" -PublisherName "MicrosoftWindowsServer"
 ```
 
 ```powershell
-Skus                            Offer         PublisherName          Location
-----                            -----         -------------          --------
-2008-R2-SP1                     WindowsServer MicrosoftWindowsServer EastUS  
-2008-R2-SP1-BYOL                WindowsServer MicrosoftWindowsServer EastUS  
-2012-Datacenter                 WindowsServer MicrosoftWindowsServer EastUS  
-2012-Datacenter-BYOL            WindowsServer MicrosoftWindowsServer EastUS  
-2012-R2-Datacenter              WindowsServer MicrosoftWindowsServer EastUS  
-2012-R2-Datacenter-BYOL         WindowsServer MicrosoftWindowsServer EastUS  
-2016-Datacenter                 WindowsServer MicrosoftWindowsServer EastUS  
-2016-Datacenter-Server-Core     WindowsServer MicrosoftWindowsServer EastUS  
-2016-Datacenter-with-Containers WindowsServer MicrosoftWindowsServer EastUS  
-2016-Nano-Server                WindowsServer MicrosoftWindowsServer EastUS
+Skus                                      Offer         PublisherName          Location
+----                                      -----         -------------          --------
+2008-R2-SP1                               WindowsServer MicrosoftWindowsServer EastUS  
+2008-R2-SP1-smalldisk                     WindowsServer MicrosoftWindowsServer EastUS  
+2012-Datacenter                           WindowsServer MicrosoftWindowsServer EastUS  
+2012-Datacenter-smalldisk                 WindowsServer MicrosoftWindowsServer EastUS  
+2012-R2-Datacenter                        WindowsServer MicrosoftWindowsServer EastUS  
+2012-R2-Datacenter-smalldisk              WindowsServer MicrosoftWindowsServer EastUS  
+2016-Datacenter                           WindowsServer MicrosoftWindowsServer EastUS  
+2016-Datacenter-Server-Core               WindowsServer MicrosoftWindowsServer EastUS  
+2016-Datacenter-Server-Core-smalldisk     WindowsServer MicrosoftWindowsServer EastUS
+2016-Datacenter-smalldisk                 WindowsServer MicrosoftWindowsServer EastUS
+2016-Datacenter-with-Containers           WindowsServer MicrosoftWindowsServer EastUS
+2016-Datacenter-with-Containers-smalldisk WindowsServer MicrosoftWindowsServer EastUS
+2016-Datacenter-with-RDSH                 WindowsServer MicrosoftWindowsServer EastUS
+2016-Nano-Server                          WindowsServer MicrosoftWindowsServer EastUS
 ```
 
 此信息可用于部署具有特定映像的 VM。 此示例为 VM 对象设置映像名称。 请参阅本教程前面的示例，了解完整的部署步骤。
@@ -352,7 +356,7 @@ Azure VM 可能会处于多种电源状态之一。 从虚拟机监控程序的�
 
 ```powershell
 Get-AzureRmVM `
-    -ResourceGroupName myResourceGroup `
+    -ResourceGroupName myResourceGroupVM `
     -Name myVM `
     -Status | Select @{n="Status"; e={$_.Statuses[1].Code}}
 ```

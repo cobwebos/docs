@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/19/2017
+ms.date: 08/29/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: b5a1edd08819e82437c5b22d8eb131665d7c9645
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 11f2f72073fd23c0a7c61dedb270f64d42b98025
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>执行 Azure Cosmos DB 缩放和性能测试
@@ -35,76 +35,73 @@ ms.lasthandoff: 07/25/2017
 若要开始处理代码，请从 [Azure Cosmos DB 性能测试示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)下载项目。 
 
 > [!NOTE]
-> 此应用程序的目标是演示使用少数客户端计算机从 Cosmos DB 中提取更好性能的最佳做法。 生成此应用程序的目的不是为了演示服务的峰值容量如何可以无限扩展。
+> 此应用程序的目标是演示如何使用少量的客户端计算机从 Azure Cosmos DB 中获得更佳性能。 此示例的目标不是实现 Azure Cosmos DB 的峰值吞吐量容量（可以不受限制地缩放）。
 > 
 > 
 
 如果正在寻找用于提高 Cosmos DB 性能的客户端配置选项，请参阅 [Azure Cosmos DB 性能提示](performance-tips.md)。
 
 ## <a name="run-the-performance-testing-application"></a>运行性能测试应用程序
-最快的入门方法是根据以下步骤中所述，编译并运行下面的 .NET 示例。 也可以查看源代码，然后在自己的客户端应用程序中实施类似的配置。
+最快的入门方法是根据以下步骤中所述，编译并运行 .NET 示例：还可以查看源代码，并在自己的客户端应用程序中实施类似的配置。
 
 **步骤 1：**从 [Azure Cosmos DB 性能测试示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)下载项目，或创建 GitHub 存储库分支。
 
 **步骤 2：**在 App.config 中修改 EndpointUrl、AuthorizationKey、CollectionThroughput 和 DocumentTemplate（可选）的设置。
 
 > [!NOTE]
-> 为集合预配高吞吐量之前，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)以估算每个集合的成本。 Azure Cosmos DB 根据存储和吞吐量单独按小时计费，因此可通过在测试后消除或减少 Azure Cosmos DB 集合的吞吐量来节省成本。
+> 为集合预配高吞吐量之前，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)估算每个集合的成本。 Azure Cosmos DB 根据存储和吞吐量单独按小时计费，因此可通过在测试后消除或减少 Azure Cosmos DB 集合的吞吐量来节省成本。
 > 
 > 
 
 **步骤 3：**从命令行编译并运行控制台应用。 应会看到如下输出：
 
+    C:\Users\documentdb\Desktop\Benchmark>DocumentDBBenchmark.exe
     Summary:
     ---------------------------------------------------------------------
-    Endpoint: https://docdb-scale-demo.documents.azure.com:443/
-    Collection : db.testdata at 50000 request units per second
+    Endpoint: https://arramacquerymetrics.documents.azure.com:443/
+    Collection : db.data at 100000 request units per second
     Document Template*: Player.json
-    Degree of parallelism*: 500
+    Degree of parallelism*: -1
     ---------------------------------------------------------------------
 
     DocumentDBBenchmark starting...
-    Creating database db
-    Creating collection testdata
-    Creating metric collection metrics
-    Retrying after sleeping for 00:03:34.1720000
-    Starting Inserts with 500 tasks
-    Inserted 661 docs @ 656 writes/s, 6860 RU/s (18B max monthly 1KB reads)
-    Inserted 6505 docs @ 2668 writes/s, 27962 RU/s (72B max monthly 1KB reads)
-    Inserted 11756 docs @ 3240 writes/s, 33957 RU/s (88B max monthly 1KB reads)
-    Inserted 17076 docs @ 3590 writes/s, 37627 RU/s (98B max monthly 1KB reads)
-    Inserted 22106 docs @ 3748 writes/s, 39281 RU/s (102B max monthly 1KB reads)
-    Inserted 28430 docs @ 3902 writes/s, 40897 RU/s (106B max monthly 1KB reads)
-    Inserted 33492 docs @ 3928 writes/s, 41168 RU/s (107B max monthly 1KB reads)
-    Inserted 38392 docs @ 3963 writes/s, 41528 RU/s (108B max monthly 1KB reads)
-    Inserted 43371 docs @ 4012 writes/s, 42051 RU/s (109B max monthly 1KB reads)
-    Inserted 48477 docs @ 4035 writes/s, 42282 RU/s (110B max monthly 1KB reads)
-    Inserted 53845 docs @ 4088 writes/s, 42845 RU/s (111B max monthly 1KB reads)
-    Inserted 59267 docs @ 4138 writes/s, 43364 RU/s (112B max monthly 1KB reads)
-    Inserted 64703 docs @ 4197 writes/s, 43981 RU/s (114B max monthly 1KB reads)
-    Inserted 70428 docs @ 4216 writes/s, 44181 RU/s (115B max monthly 1KB reads)
-    Inserted 75868 docs @ 4247 writes/s, 44505 RU/s (115B max monthly 1KB reads)
-    Inserted 81571 docs @ 4280 writes/s, 44852 RU/s (116B max monthly 1KB reads)
-    Inserted 86271 docs @ 4273 writes/s, 44783 RU/s (116B max monthly 1KB reads)
-    Inserted 91993 docs @ 4299 writes/s, 45056 RU/s (117B max monthly 1KB reads)
-    Inserted 97469 docs @ 4292 writes/s, 44984 RU/s (117B max monthly 1KB reads)
-    Inserted 99736 docs @ 4192 writes/s, 43930 RU/s (114B max monthly 1KB reads)
-    Inserted 99997 docs @ 4013 writes/s, 42051 RU/s (109B max monthly 1KB reads)
-    Inserted 100000 docs @ 3846 writes/s, 40304 RU/s (104B max monthly 1KB reads)
+    Found collection data with 100000 RU/s
+    Starting Inserts with 100 tasks
+    Inserted 4503 docs @ 4491 writes/s, 47070 RU/s (122B max monthly 1KB reads)
+    Inserted 17910 docs @ 8862 writes/s, 92878 RU/s (241B max monthly 1KB reads)
+    Inserted 32339 docs @ 10531 writes/s, 110366 RU/s (286B max monthly 1KB reads)
+    Inserted 47848 docs @ 11675 writes/s, 122357 RU/s (317B max monthly 1KB reads)
+    Inserted 58857 docs @ 11545 writes/s, 120992 RU/s (314B max monthly 1KB reads)
+    Inserted 69547 docs @ 11378 writes/s, 119237 RU/s (309B max monthly 1KB reads)
+    Inserted 80687 docs @ 11345 writes/s, 118896 RU/s (308B max monthly 1KB reads)
+    Inserted 91455 docs @ 11272 writes/s, 118131 RU/s (306B max monthly 1KB reads)
+    Inserted 102129 docs @ 11208 writes/s, 117461 RU/s (304B max monthly 1KB reads)
+    Inserted 112444 docs @ 11120 writes/s, 116538 RU/s (302B max monthly 1KB reads)
+    Inserted 122927 docs @ 11063 writes/s, 115936 RU/s (301B max monthly 1KB reads)
+    Inserted 133157 docs @ 10993 writes/s, 115208 RU/s (299B max monthly 1KB reads)
+    Inserted 144078 docs @ 10988 writes/s, 115159 RU/s (298B max monthly 1KB reads)
+    Inserted 155415 docs @ 11013 writes/s, 115415 RU/s (299B max monthly 1KB reads)
+    Inserted 166126 docs @ 10992 writes/s, 115198 RU/s (299B max monthly 1KB reads)
+    Inserted 173051 docs @ 10739 writes/s, 112544 RU/s (292B max monthly 1KB reads)
+    Inserted 180169 docs @ 10527 writes/s, 110324 RU/s (286B max monthly 1KB reads)
+    Inserted 192469 docs @ 10616 writes/s, 111256 RU/s (288B max monthly 1KB reads)
+    Inserted 199107 docs @ 10406 writes/s, 109054 RU/s (283B max monthly 1KB reads)
+    Inserted 200000 docs @ 9930 writes/s, 104065 RU/s (270B max monthly 1KB reads)
 
     Summary:
     ---------------------------------------------------------------------
-    Inserted 100000 docs @ 3834 writes/s, 40180 RU/s (104B max monthly 1KB reads)
+    Inserted 200000 docs @ 9928 writes/s, 104063 RU/s (270B max monthly 1KB reads)
     ---------------------------------------------------------------------
     DocumentDBBenchmark completed successfully.
+    Press any key to exit...
 
 
-**步骤 4（如有必要）：**工具报告的吞吐量（RU/秒）应该等于或大于预配的集合吞吐量。 如果情况并非如此，以较小的增量提高 DegreeOfParallelism 可帮助达到该限制。 如果客户端应用的吞吐量达到持平状态，则在相同或不同计算机上启动多个应用程序实例可帮助在各个不同的实例中达到预配的限制。 如果需要此步骤的帮助，请撰写电子邮件并将其发送到 askcosmosdb@microsoft.com 或填写来自 [Azure 门户](https://portal.azure.com)的支持票证。
+**步骤 4（如有必要）：**工具报告的吞吐量（RU/秒）应该等于或大于预配的集合吞吐量。 如果情况并非如此，以较小的增量提高 DegreeOfParallelism 可帮助达到该限制。 如果客户端应用的吞吐量达到持平状态，请在其他客户端计算机上启动多个应用实例。 如需此步骤的帮助，请向 askcosmosdb@microsoft.com 发送电子邮件，或通过 [Azure 门户](https://portal.azure.com)开具支持票证。
 
 应用处于运行状态后，可以尝试不同的[编制索引策略](indexing-policies.md)和[一致性级别](consistency-levels.md)，以了解它们对吞吐量和延迟的影响。 也可以查看源代码，然后在自己的测试套件或生产应用程序中实施类似的配置。
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何使用 .NET 控制台应用对 Cosmos DB 执行性能和缩放测试。 有关使用 Azure Cosmos DB 的其他信息，请参阅下面的链接。
+本文介绍了如何使用 .NET 控制台应用对 Cosmos DB 执行性能和缩放测试。 有关详细信息，请参阅以下文章。
 
 * [Azure Cosmos DB 性能测试示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
 * [用于提高 Azure Cosmos DB 性能的客户端配置选项](performance-tips.md)

@@ -9,17 +9,17 @@ editor:
 tags: azure-resource-manager
 ms.assetid: 
 ms.service: virtual-network
-ms.devlang: na
+ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/04/2017
+ms.date: 07/25/2017
 ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
-ms.openlocfilehash: 4273a8ec344c83d36d3383f991d1764d2285beeb
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 57f95b765b1b116814683a6643db16091c3041f6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 
@@ -27,16 +27,16 @@ ms.lasthandoff: 07/18/2017
 
 了解如何在创建 VM 时添加现有的网络接口，或者在处于“已停止”（“已解除分配”）状态的现有 VM 中添加或删除网络接口。 Azure 虚拟机 (VM) 通过网络接口与 Internet、Azure 及本地资源进行通信。 一台 VM 可以有一个或多个网络接口。 
 
-如果需要为网络接口添加、更改或删除 IP 地址，请阅读[添加、更改或删除 IP 地址](virtual-network-network-interface-addresses.md)一文。 如果需要创建、更改或删除网络接口，请阅读[管理网络接口](virtual-network-network-interface.md)一文。
+如果需要为网络接口添加、更改或删除 IP 地址，请阅读[管理网络接口 IP 地址](virtual-network-network-interface-addresses.md)一文。 如果需要创建、更改或删除网络接口，请阅读[管理网络接口](virtual-network-network-interface.md)一文。
 
 ## <a name="before"></a>准备工作
 
 在完成本文的任何部分中的任何步骤之前完成以下任务：
 
 - 参阅有关 [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Windows](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM 大小的文章，了解每种 Linux 和 Windows VM 大小支持的网络接口数量。
-- 使用 Azure 帐户登录到 Azure 门户、Azure 命令行接口 (CLI) 或 Azure PowerShell。 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
-- 如果使用 PowerShell 命令完成本文中的任务，请按[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json) 一文中的步骤安装和配置 Azure PowerShell。 确保已安装最新版本的 Azure PowerShell commandlet。 若要获取 PowerShell 命令的帮助和示例，请键入 `get-help <command> -full`。
-- 如果使用 Azure 命令行接口 (CLI) 命令完成本文中的任务，请按[如何安装和配置 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) 一文中的步骤安装和配置 Azure CLI。 确保已安装最新版本的 Azure CLI。 若要获取 CLI 命令的帮助，请键入 `az <command> --help`。
+- 使用 Azure 帐户登录到 Azure [门户](https://portal.azure.com)、Azure 命令行接口 (CLI) 或 Azure PowerShell。 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
+- 如果使用 PowerShell 命令来完成本文中的任务，请[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保已安装最新版本的 Azure PowerShell commandlet。 若要获取 PowerShell 命令的帮助和示例，请键入 `get-help <command> -full`。
+- 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请[安装和配置 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保已安装最新版本的 Azure CLI。 若要获取 CLI 命令的帮助，请键入 `az <command> --help`。 请勿安装 CLI 及其必备组件，可使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置与你的帐户一起使用。 若要使用 Cloud Shell，请单击[门户](https://portal.azure.com)顶部的 Cloud Shell >_ 按钮。
 
 ## <a name="about"></a>关于网络接口和 VM
 
@@ -57,54 +57,68 @@ ms.lasthandoff: 07/18/2017
 - 尽管同一 VM 中的网络接口可以连接到 VNet 中的不同子网，但这些网络接口必须全部连接到同一个 VNet。
 - 可将任何主要或辅助网络接口的任何 IP 配置的任何 IP 地址添加到 Azure 负载均衡器后端池。 过去，只能将主要网络接口的主要 IP 地址添加到后端池。 若要详细了解 IP 地址和配置，请阅读[添加、更改或删除 IP 地址](virtual-network-network-interface-addresses.md)一文。
 - 删除 VM 不会删除附加到其中的网络接口。 删除 VM 时，网络接口将从此 VM 中分离。 可将网络接口添加到不同的 VM，也可将其删除。
+- 如果网络接口分配有专用 IPv6 地址，则在创建 VM 时可将其附加到 VM。 创建 VM 后，无法将分配有 IPv6 地址的网络接口附加到 VM。 如果在创建虚拟机时附加分配有专用 IPv6 地址的网络接口，则无论该 VM 大小支持多少个网络接口，仅可将该网络接口附加到虚拟机。 若要深入了解如何将 IP 地址分配给网络接口，请参阅[网络接口 IP 地址](virtual-network-network-interface-addresses.md)。
 
 ## <a name="vm-create"></a>将现有网络接口添加到新 VM
-通过门户创建 VM 时，门户会使用默认设置创建一个网络接口，并将其附加到 VM。 无法使用 Azure 门户将现有网络接口添加到新的 VM，或创建具有多个网络接口的 VM。 可以使用 CLI 或 PowerShell 执行这两项操作。 可以向 VM 添加任意数目的网络接口，只要所创建的 VM 大小支持。 若要详细了解每种 VM 大小支持的网络接口数量，请阅读有关 [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Windows](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM 大小的文章。 目前，添加到一个 VM 的网络接口不能附加到另一个 VM。 若要了解有关创建网络接口的详细信息，请阅读[管理网络接口](virtual-network-network-interface.md#create-nic)一文。
+
+通过门户创建 VM 时，门户会使用默认设置创建一个网络接口，并将其附加到 VM。 无法使用 Azure 门户将现有网络接口添加到新的 VM，或创建具有多个网络接口的 VM。 可以使用 CLI 或 PowerShell 执行这两项操作。 可以向 VM 添加任意数目的网络接口，只要所创建的 VM 大小支持。 若要详细了解每种 VM 大小支持的网络接口数量，请阅读有关 [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Windows](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM 大小的文章。 目前，添加到一个 VM 的网络接口不能附加到另一个 VM。 若要了解有关创建网络接口的详细信息，请阅读[管理网络接口](virtual-network-network-interface.md#create-a-network-interface)一文。
+
+> [!WARNING]
+> 如果网络接口分配有专用 IPv6 地址，则在创建虚拟机时，仅可将该网络接口添加到虚拟机。 只要 IPv6 地址分配到附加到虚拟机的网络接口，则在创建虚拟机时或创建虚拟机后，都无法向虚拟机附加多个网络接口。 若要深入了解如何将 IP 地址分配给网络接口，请参阅[网络接口 IP 地址](virtual-network-network-interface-addresses.md)。
 
 **命令**
 
 |工具|命令|
 |---|---|
 |CLI|[az vm create](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
-|PowerShell|[New-AzureRmVM](/powershell/resourcemanager/azurerm.compute/v2.5.0/new-azurermvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|PowerShell|[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="vm-add-nic"></a>将现有网络接口添加到现有 VM
 
-可以向 VM 添加任意数目的网络接口，只要你向其中添加网络接口的 VM 大小支持即可。 若要了解每种 VM 大小支持的网络接口数量，请阅读有关 [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Windows](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM 大小的文章。 要将网络接口添加到其中的 VM 必须支持多个网络接口并处于“已停止”（“已解除分配”）状态。 目前，要添加的网络接口不能附加到另一个 VM。 无法使用 Azure 门户向现有 VM 添加网络接口。 必须使用 CLI 或 PowerShell 才能将网络接口添加到现有 VM。
+可以向 VM 添加任意数目的网络接口，只要你向其中添加网络接口的 VM 大小支持即可。 若要了解每种 VM 大小支持的网络接口数量，请阅读有关 [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Windows](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM 大小的文章。 要将网络接口添加到的 VM 必须支持需添加的网络接口数并处于“已停止”（“已解除分配”）状态。 目前，要添加的网络接口不能附加到另一个 VM。 无法使用 Azure 门户向现有 VM 添加网络接口。 若要将网络接口添加到现有 VM，必须使用 CLI 或 PowerShell。 
+
+> [!WARNING]
+> 如果网络接口分配有专用 IPv6 地址，则无法将它添加到现有虚拟机。 创建虚拟机时，只可将分配有专用 IPv6 地址的网络接口添加到虚拟机。 若要深入了解如何将 IP 地址分配给网络接口，请参阅[网络接口 IP 地址](virtual-network-network-interface-addresses.md)。
 
 |工具|命令|
 |---|---|
-|CLI|[az vm nic add](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#add)|
-|PowerShell|[Add-AzureRmVMNetworkInterface](/powershell/resourcemanager/azurerm.compute/v2.5.0/add-azurermvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-|[向 VM 添加 NIC](../virtual-machines/windows/multiple-nics.md#add-a-nic-to-an-existing-vm) 的详细步骤|
+|CLI|[az vm nic add](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#add)（引用）或[详细步骤](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-a-vm)|
+|PowerShell|[Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)（引用）或[详细步骤](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-an-existing-vm)|
 
 ## <a name="vm-view-nic"></a> 查看 VM 的网络接口
 
 可以查看当前附加到 VM 的网络接口，了解每个网络接口的配置，以及分配给每个网络接口的 IP 地址。 
 
-1. 使用分配有订阅“所有者”、“参与者”或“网络参与者”角色的帐户登录到 [Azure 门户](https://portal.azure.com)。 请参阅[用于 Azure 基于角色的访问控制的内置角色](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)一文，详细了解如何将角色分配给帐户。
+1. 使用分配有订阅“所有者”、“参与者”或“网络参与者”角色的帐户登录到 [Azure 门户](https://portal.azure.com)。 若要详细了解如何向帐户分配角色，请参阅[针对 Azure 基于角色的访问控制的内置角色](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)。
 2. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“虚拟机”。 当“虚拟机”出现在搜索结果中时，请单击它。
 3. 在出现的“虚拟机”边栏选项卡中，单击要查看其网络接口的 VM 的名称。
-4. 在针对所选 VM 显示的“虚拟机”边栏选项卡的“设置”部分，单击“网络接口”。 若要了解网络接口设置以及如何更改它们，请阅读[管理网络接口](virtual-network-network-interface.md)一文。 若要了解如何添加、更改或删除分配给网络接口的 IP 地址，请阅读[添加、更改或删除 IP 地址](virtual-network-network-interface-addresses.md)一文。
+4. 在针对所选 VM 显示的“虚拟机”边栏选项卡的“设置”部分，单击“网络接口”。 若要了解网络接口设置以及如何更改它们，请阅读[管理网络接口](virtual-network-network-interface.md)一文。 若要了解如何添加、更改或删除分配给网络接口的 IP 地址，请阅读[管理 IP 地址](virtual-network-network-interface-addresses.md)。
 
 **命令**
 
 |工具|命令|
 |---|---|
 |CLI|[az vm show](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json#show)|
-|PowerShell|[Get-AzureRmVM](/powershell/resourcemanager/azurerm.compute/v1.3.4/get-azurermvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|PowerShell|[Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
-## <a name="vm-remove-nic"></a> 从 VM 中删除网络接口
+## <a name="vm-remove-nic"></a>从 VM 中删除网络接口
 
-要从中删除网络接口的 VM 必须处于“已停止”（“已解除分配”）状态，并且当前必须至少有两个附加到其中的网络接口。 可以删除任何网络接口，但 VM 必须始终至少有一个附加到其中的网络接口。 如果删除主网络接口，Azure 会将主属性分配给附加到 VM 时间最长的网络接口。 可以自行将任何网络接口指定为主网络接口。 无法使用 Azure 门户从 VM 中删除网络接口或者设置网络接口的主属性，但可以使用 CLI 或 PowerShell 完成这两项操作。 
+要从中删除（或拆离）网络接口的 VM 必须处于“已停止”（“已解除分配”）状态，并且当前必须至少有两个附加到其中的网络接口。 可以删除任何网络接口，但 VM 必须始终至少有一个附加到其中的网络接口。 如果删除主网络接口，Azure 会将主属性分配给附加到 VM 时间最长的网络接口。 
+
+1. 使用分配有订阅“所有者”、“参与者”或“网络参与者”角色的帐户登录到 [Azure 门户](https://portal.azure.com)。 若要详细了解如何向帐户分配角色，请参阅[针对 Azure 基于角色的访问控制的内置角色](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)。
+2. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“虚拟机”。 当“虚拟机”出现在搜索结果中时，请单击它。
+3. 在出现的“虚拟机”边栏选项卡中，单击要删除其网络接口的 VM 的名称。
+4. 在针对所选 VM 显示的“虚拟机”边栏选项卡的“设置”部分，单击“网络接口”。 若要了解网络接口设置以及如何更改它们，请阅读[管理网络接口](virtual-network-network-interface.md)一文。 若要了解如何添加、更改或删除分配给网络接口的 IP 地址，请阅读[管理 IP 地址](virtual-network-network-interface-addresses.md)。
+5. 在显示的“网络接口”边栏选项卡中，单击想要拆离的网络接口右侧的“...”。
+6. 单击“拆离”。 如果只有一个网络接口连接到虚拟机，则“拆离”选项不可用。 在出现的确认框中单击“是”。
 
 **命令**
 
 |工具|命令|
 |---|---|
-|CLI|[az vm nic remove](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#remove)|
-|PowerShell|[Remove-AzureRMVMNetworkInterface](/powershell/resourcemanager/azurerm.compute/v2.5.0/remove-azurermvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-|[删除 VM 的 NIC](../virtual-machines/windows/multiple-nics.md#remove-a-nic-from-an-existing-vm) 的详细步骤|
+|CLI|[az vm nic remove](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#remove)（引用）或[详细步骤](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-a-vm)|
+|PowerShell|[Remove-AzureRMVMNetworkInterface](/powershell/module/azurerm.compute/remove-azurermvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)（引用）或[详细步骤](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-an-existing-vm)|
+
 ## <a name="next-steps"></a>后续步骤
 若要创建具有多个网络接口或 IP 地址的 VM，请阅读以下文章：
 
@@ -112,8 +126,7 @@ ms.lasthandoff: 07/18/2017
 
 |任务|工具|
 |---|---|
-|创建具有多个 NIC 的 VM|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-||[PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-|创建具有多个 IP 地址的单 NIC VM|[CLI](virtual-network-multiple-ip-addresses-cli.md)|
-||[PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
+|创建具有多个 NIC 的 VM|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|创建具有多个 IPv4 地址的单 NIC VM|[CLI](virtual-network-multiple-ip-addresses-cli.md)、[PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
+|创建具有专用 IPv6 地址的单 NIC VM（在 Azure 负载均衡器后）|[CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[Azure 资源管理器模板](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 

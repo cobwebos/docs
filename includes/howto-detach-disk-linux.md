@@ -1,10 +1,10 @@
-当你不再需要附加到虚拟机 (VM) 的数据磁盘时，你可以轻松地分离它。 从 VM 中分离磁盘时，不会从存储中删除该磁盘。 若果你希望再次使用磁盘上的现有数据，可以将其重新附加到相同的 VM 或另一个 VM。  
+不再需要附加到虚拟机 (VM) 的数据磁盘时，可以轻松地分离它。 从 VM 中分离磁盘时，不会从存储中删除该磁盘。 如果希望再次使用磁盘上的现有数据，可以将其重新附加到相同的 VM 或另一个 VM。  
 
 > [!NOTE]
-> Azure 中的 VM 使用不同类型的磁盘 - 操作系统磁盘、本地临时磁盘和可选数据磁盘。 有关详细信息，请参阅[关于虚拟机的磁盘和 VHD](../articles/storage/storage-about-disks-and-vhds-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 除非同时也删除 VM，否则无法分离操作系统磁盘。
+> Azure 中的 VM 使用不同类型的磁盘 - 操作系统磁盘、本地临时磁盘和可选数据磁盘。 有关详细信息，请参阅[关于虚拟机的磁盘和 VHD](../articles/virtual-machines/linux/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 除非同时也删除 VM，否则无法分离操作系统磁盘。
 
 ## <a name="find-the-disk"></a>找到磁盘
-在从 VM 中分离磁盘之前，你需要先确定 LUN 号（要分离的磁盘的标识符）。 为此，请执行以下步骤：
+在从 VM 中分离磁盘之前，需要先确定 LUN 号（要分离的磁盘的标识符）。 为此，请执行以下步骤：
 
 1. 打开 Azure CLI 并[连接到 Azure 订阅](../articles/xplat-cli-connect.md)。 确保是在 Azure 服务管理模式 (`azure config mode asm`) 下。
 2. 找出哪些磁盘已附加到 VM。 以下示例列出名为 `myVM` 的 VM 的磁盘：

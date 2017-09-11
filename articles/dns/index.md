@@ -2,7 +2,7 @@
 title: "Azure DNS 文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用 Azure 域名系统管理 DNS 记录。 文档介绍了如何设置及管理域名的 DNS 区域和记录。"
 services: dns
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
 ms.openlocfilehash: 659e0989e3a1f7114796c2211606e5d629cf68fd
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/22/2017
 
 ---

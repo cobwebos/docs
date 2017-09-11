@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: b25e2d5738a5d8a0f98470678ff03950b0aa4e36
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 40abff72278c9f8d9f701023fd473fe52c17b421
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="step-5-prepare-azure-resources-for-vmware-replication-to-azure"></a>步骤 5：准备好 Azure 资源以便将 VMWare 复制到 Azure
@@ -36,9 +35,9 @@ ms.lasthandoff: 06/29/2017
 ## <a name="set-up-an-azure-account"></a>设置 Azure 帐户
 
 - 获取 [Microsoft Azure 帐户](http://azure.microsoft.com/)。
-- 你可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。
-- 要查看 Site Recovery 支持的区域，请参阅 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)中的“地域可用性”。
-- 了解 [Site Recovery 定价](site-recovery-faq.md#pricing)，并获取[定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)。
+- 可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。
+- 若要查看 Site Recovery 的受支持区域，请参阅 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)中的“地域可用性”。
+- 了解有关 [Site Recovery 定价](site-recovery-faq.md#pricing)的信息，并获取[定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)。
 
 
 
@@ -54,10 +53,10 @@ ms.lasthandoff: 06/29/2017
 ## <a name="set-up-an-azure-storage-account"></a>设置 Azure 存储帐户
 
 - Site Recovery 将本地计算机复制到 Azure 存储。 发生故障转移后，通过存储创建 Azure VM。
-- 设置用于所复制数据的 [Azure 存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)。
+- 设置用于所复制数据的 [Azure 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。
 - Azure 门户中的 Site Recovery 可以使用在 Resource Manager 或经典模式下设置的存储帐户。
-- 存储帐户可以是标准帐户或[高级](../storage/storage-premium-storage.md)帐户。
-- 如果设置了高级帐户，还需要额外的标准帐户来记录数据。
+- 存储帐户可以是标准帐户，也可以是[高级](../storage/common/storage-premium-storage.md)帐户。
+- 如果创建的是高级帐户，还需要额外使用标准帐户来记录数据。
 
 
 ## <a name="next-steps"></a>后续步骤

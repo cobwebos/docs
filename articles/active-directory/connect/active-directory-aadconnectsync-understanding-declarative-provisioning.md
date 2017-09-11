@@ -14,19 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
-ms.openlocfilehash: 5b715ec247183fc1b8cb3fa485612bb0f992b5cf
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 7497ec2ca658c3790227c56ef1755d9a1cb74e0a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/27/2017
+ms.lasthandoff: 08/22/2017
 
 ---
-# Azure AD Connect 同步：了解声明性预配
-<a id="azure-ad-connect-sync-understanding-declarative-provisioning" class="xliff"></a>
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect 同步：了解声明性预配
 本主题介绍 Azure AD Connect 中的配置模型。 该模型称为声明性预配，让用户能够轻松地更改配置。 本主题介绍的许多内容都是高级内容，在大部分客户方案中并非必要。
 
-## 概述
-<a id="overview" class="xliff"></a>
+## <a name="overview"></a>概述
 声明性预配处理源连接目录传入的对象，并确定如何将对象和属性从源转换到目标。 对象在同步管道中进行处理，入站和出站规则的管道相同。 入站规则是从连接器空间到 metaverse，而出站规则是从 metaverse 到连接器空间。
 
 ![同步管道](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/sync1.png)  
@@ -42,8 +40,7 @@ ms.lasthandoff: 01/27/2017
 * [优先级](#precedence)：解决冲突的属性提供问题
 * 目标：目标对象
 
-## 范围
-<a id="scope" class="xliff"></a>
+## <a name="scope"></a>范围
 范围模块会计算对象，并确定在范围内且应纳入处理的规则。 根据对象的属性值，不同同步规则的计算结果都是在范围内。 例如，没有 Exchange 邮箱的已禁用用户拥有与具有邮箱的已启用用户不同的规则。  
 ![范围](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/scope1.png)  
 
@@ -67,13 +64,12 @@ ms.lasthandoff: 01/27/2017
 | ISBITSET、ISNOTBITSET |计算是否已设置特定的位。 例如，可用于计算 userAccountControl 中的位，查看用户是处于启用状态还是禁用状态。 |
 | ISMEMBEROF、ISNOTMEMBEROF |值应该包含连接器空间中组的 DN。 如果对象是指定组的成员，则规则在范围内。 |
 
-## Join
-<a id="join" class="xliff"></a>
+## <a name="join"></a>Join
 同步管道中的联接模块负责查找源中的对象和目标中的对象之间的关系。 在入站规则中，此关系是指连接器空间中的对象找到与 metaverse 中对象的关系。  
 ![在 cs 和 mv 之间联接](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/join1.png)  
 目标在于查看 metaverse 中是否已经有应该与之关联的对象（由另一个连接器创建）。 例如，在帐户-资源林中，帐户林中的用户应与资源林中的用户联接。
 
-联接主要用于入站规则，以将连接器空间对象与同一 metaverse 对象联接在一起。
+联接主用于入站规则，以将连接器空间对象与同一 metaverse 对象联接在一起。
 
 联接定义为一个或多个组。 在组内，用户拥有子句。 逻辑 AND 用于组中的所有子句之间。 逻辑 OR 用于组之间。 组的处理顺序为从上到下。 一个组在目标中恰好找到一个对象匹配项时，不会计算任何其他联接规则。 如果找到零个或多个对象，则会继续处理下一组规则。 出于此原因，应首先创建最明确的规则，最后创建比较模糊的规则。  
 ![联接定义](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/join2.png)  
@@ -88,34 +84,30 @@ ms.lasthandoff: 01/27/2017
 
 新的同步规则进入范围时，只会计算联接模块一次。 如果对象已联接，即使不再满足联接条件，也不会取消联接。 如果想要取消对象的联接，则联接对象的同步规则必须超出范围。
 
-### Metaverse 删除
-<a id="metaverse-delete" class="xliff"></a>
+### <a name="metaverse-delete"></a>Metaverse 删除
 只要有一个在范围内的同步规则，metaverse 对象的“链接类型”就会维持设置为“预配”或“StickyJoin”。 StickyJoin 用于不允许连接器将新对象预配到 metaverse 的情况，但如果已联接，则必须先在源中删除该对象，然后才能删除 metaverse 对象。
 
 删除 metaverse 对象后，所有与标记为“预配”的出站同步规则关联的对象都将标记为要删除。
 
-## 转换
-<a id="transformations" class="xliff"></a>
+## <a name="transformations"></a>转换
 转换用于定义属性应该如何从源流动到目标。 流可以是以下**流类型**之一：直接、常数或表达式。 直接流会按原样流动属性值，而不进行其他转换。 常数值会设置指定的值。 表达式会使用声明性预配表达式语言来表达应该如何转换。 有关表达式语言的详细信息，请参阅[了解声明性预配表达式语言](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)主题。
 
 ![预配或联接](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/transformations1.png)  
 
 “应用一次”复选框定义只应在最初创建对象时设置的属性。 例如，此配置可用于设置新用户对象的初始密码。
 
-### 合并属性值
-<a id="merging-attribute-values" class="xliff"></a>
+### <a name="merging-attribute-values"></a>合并属性值
 在属性流中，有一个设置可用于确定是否应从多个不同的连接器合并多值属性。 默认值为“Update”，表示应采用具有最高优先级的同步规则。
 
 ![合并类型](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/mergetype.png)  
 
 此外，还有“Merge”和“MergeCaseInsensitive”。 这些选项让用户能够合并来自不同源的值。 例如，它可用于合并来自多个不同林的成员或 proxyAddresses 属性。 使用此选项时，对象范围内的所有同步规则都必须使用相同的合并类型。 不能定义从一个连接器“Update”，从另一个连接器“Merge”。 如果尝试此操作，将收到错误。
 
-“Merge”和“MergeCaseInsensitive”之间的差异在于处理重复属性值的方式。 同步引擎可确保不会将重复的值插入目标属性。 使用“MergeCaseInsensitive”可防止出现只有大小写差异的重复值。 例如，不应该在目标属性中同时看到 "SMTP:bob@contoso.com" 和 "smtp:bob@contoso.com"。 “Merge”只会查看仅可能存在大小写差异的确切值和多个值。
+“Merge”和“MergeCaseInsensitive”之间的差异在于处理重复属性值的方式。 同步引擎可确保不会将重复的值插入目标属性。 使用“MergeCaseInsensitive”可防止出现只有大小写差异的重复值。 例如，不应该在目标属性中同时看到“SMTP:bob@contoso.com”和“smtp:bob@contoso.com”。 “Merge”只会查看仅可能存在大小写差异的确切值和多个值。
 
 “Replace”选项与“Update”选项相同，但未使用该选项。
 
-### 控制属性流动过程
-<a id="control-the-attribute-flow-process" class="xliff"></a>
+### <a name="control-the-attribute-flow-process"></a>控制属性流动过程
 多个入站同步规则配置为向同一 metaverse 属性提供值时，会使用优先级确定获得采用的规则。 具有最高优先级（最小数值）的同步规则会提供值。 出站规则的情况一样。 具有最高优先级的同步规则会获得采用，并向已连接的目录提供值。
 
 在某些情况下，同步规则应确定其他规则的行为方式，而不是提供值。 在这种情况下会使用一些特殊文本。
@@ -132,8 +124,7 @@ ms.lasthandoff: 01/27/2017
 `IIF([cloudSOAExchMailbox] = True,[cloudMSExchSafeSendersHash],IgnoreThisFlow)`  
 此表达式的意思是：如果用户邮箱位于 Azure AD 中，则将属性从 Azure AD 流动到 AD。 如果并非如此，则不将任何内容流回 Active Directory。 在此情况下，会在 AD 中保留现有值。
 
-### ImportedValue
-<a id="importedvalue" class="xliff"></a>
+### <a name="importedvalue"></a>ImportedValue
 函数 ImportedValue 不同于其他所有函数，因为其属性名称必须放在引号内，而不是放在方括号中：  
 `ImportedValue("proxyAddresses")`。
 
@@ -142,9 +133,8 @@ ms.lasthandoff: 01/27/2017
 在现成同步规则 *In from AD – User Common from Exchange* 中可找到此函数的示例。 在混合 Exchange 中，只应在确认已成功导出由 Exchange Online 添加的值的情况下才能对其进行同步：  
 `proxyAddresses` <- `RemoveDuplicates(Trim(ImportedValue("proxyAddresses")))`
 
-## 优先级
-<a id="precedence" class="xliff"></a>
-多个同步规则尝试向目标提供相同的属性值时，会使用优先级值来确定获得采用的规则。 具有最高优先级（最小数值）的规则将会在冲突中提供属性。
+## <a name="precedence"></a>优先级
+多个同步规则尝试向目标提供相同的属性值时，会使用优先级值来确定获得采用的规则。 具有最高优先级（最小数值）的规则会在冲突中提供属性。
 
 ![合并类型](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/precedence1.png)  
 
@@ -152,16 +142,14 @@ ms.lasthandoff: 01/27/2017
 
 可定义连接器之间的优先级。 这样一来，具有更好的数据的连接器可以先提供值。
 
-### 相同连接器空间中的多个对象
-<a id="multiple-objects-from-the-same-connector-space" class="xliff"></a>
+### <a name="multiple-objects-from-the-same-connector-space"></a>相同连接器空间中的多个对象
 如果在联接到同一 metaverse 对象的同一连接器空间中有多个对象，则必须调整优先级。 如果多个对象都在同一同步规则的范围内，则同步引擎无法确定优先级。 应该向 metaverse 提供值的源对象不明确。 即使源中的属性具有相同的值，此配置仍会报告为不明确。  
 ![多个对象联接到同一 mv 对象](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/multiple1.png)  
 
 对于此方案，需要更改同步规则的范围，让源对象在范围内具有不同的同步规则。 这样可以定义不同的优先级。  
 ![多个对象联接到同一 mv 对象](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/multiple2.png)  
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 * 在 [Understanding Declarative Provisioning Expressions](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)（了解声明性预配表达式）中了解有关表达式语言的详细信息。
 * 在 [Understanding the default configuration](active-directory-aadconnectsync-understanding-default-configuration.md)（了解默认配置）中了解如何现成地使用声明式预配。
 * 在 [How to make a change to the default configuration](active-directory-aadconnectsync-change-the-configuration.md)（如何对默认配置进行更改）中了解如何使用声明性预配进行实际更改。

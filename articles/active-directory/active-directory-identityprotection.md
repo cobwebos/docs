@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory Identity Protection | Microsoft 文档"
-description: "了解 Azure AD Identity Protection 如何使你能够限制攻击者利用已泄露标识或设备的能力，以及保护之前可疑或已知受到威胁的标识或设备。"
+description: "了解如何使用 Azure AD Identity Protection 来限制攻击者利用已泄露标识或设备的能力，以及保护之前怀疑或已知受到威胁的标识或设备。"
 services: active-directory
 keywords: "Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略"
 documentationcenter: 
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/24/2017
+ms.date: 08/15/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: 8132b4844260a997e62effd167f2f1206f3edbcd
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 0c7a8d68c0df729441e3f7faa5cd06066db1261d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/26/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory 标识保护
@@ -122,7 +122,8 @@ Identity Protection 的使用通常从 Identity Protection 仪表板开始。
 
 ## <a name="risky-sign-ins"></a>有风险的登录
 
-Aure Active Directory 可实时检测某些[风险事件类型](active-directory-reporting-risk-events.md#risk-event-types)。 用户登录期间检测到的所有实时风险事件组成名为*风险登录*的逻辑概念。 风险登录是指可能不是由用户帐户合法拥有者进行的登录尝试。 用户注销时风险登录的生命周期也随之结束。
+Aure Active Directory 可实时和离线检测[风险事件类型](active-directory-reporting-risk-events.md#risk-event-types)。 用户登录时检测到的各项风险事件组成名为风险登录的逻辑概念。 风险登录是指可能不是由用户帐户合法拥有者进行的登录尝试。
+
 
 ### <a name="sign-in-risk-level"></a>登录风险级别
 
@@ -162,7 +163,7 @@ Azure AD Identity Protection 允许执行以下操作，帮助管理有风险登
 
 ![登录风险策略](./media/active-directory-identityprotection/1017.png "登录风险策略")
 
-但是，出于安全原因，此设置仅适用于已注册多重身份验证的用户。 如果尚未注册多重身份验证的用户满足要求多重身份验证的条件，该用户将被阻止。
+但是，出于安全原因，此设置仅适用于已注册多重身份验证的用户。 如果尚未注册多重身份验证的用户满足要求多重身份验证的条件，该用户会被阻止。
 
 如果想要针对有风险的登录要求执行多重身份验证，最佳实践之一是：
 
@@ -212,7 +213,7 @@ Identity Protection 控制台中的“风险事件”页列出了所有事件：
 
 ## <a name="users-flagged-for-risk"></a>已标记为存在风险的用户
 
-Azure Active Directory 针对用户检测到的所有[风险事件](active-directory-identity-protection-risk-events.md)组成名为*已标记为存在风险的用户*的逻辑概念。 *已标记为存在风险的用户*或*风险用户*是指可能已遭到入侵的用户帐户。   
+Azure Active Directory 针对用户检测到的所有活动[风险事件](active-directory-identity-protection-risk-events.md)组成名为存在风险的用户的逻辑概念。 已标记为存在风险的用户是指可能已泄露的用户帐户。
 
 ![已标记为存在风险的用户](./media/active-directory-identityprotection/1200.png)
 
@@ -241,7 +242,7 @@ Azure Active Directory 针对用户检测到的所有[风险事件](active-direc
 * 已删除具有活动风险事件的用户
 * 调查显示合法的用户执行了报告的风险事件
 
-由于用户风险计算考虑到“活动”的风险事件，因此你可能需要通过手动关闭风险事件来手动降低风险级别。  
+由于用户风险计算考虑到“活动”的风险事件，因此，可能需要通过手动关闭风险事件来手动降低风险级别。  
 在调查过程中，可以选择采取以下任何措施更改风险事件的状态：
 
 ![措施](./media/active-directory-identityprotection/34.png "措施")
@@ -360,7 +361,7 @@ Azure AD Identity Protection 允许执行以下操作，帮助管理标记为有
 
 
 ## <a name="multi-factor-authentication-registration-policy"></a>多重身份验证注册策略
-Azure 多重身份验证是要求使用多种方式（而不仅仅是用户名和密码）对你的身份进行验证的一种方法。 它为用户登录和事务提供了附加的安全层。  
+Azure 多重身份验证是要求使用多种方式（而不仅仅是用户名和密码）对身份进行验证的一种方法。 它为用户登录和事务提供了附加的安全层。  
 建议要求对用户登录执行 Azure 多重身份验证，因为这种身份验证方法可以：
 
 * 提供强式身份验证和一系列简单的验证选项

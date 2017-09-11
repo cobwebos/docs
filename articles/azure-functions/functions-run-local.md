@@ -4,7 +4,7 @@ description: "了解如何在本地计算机上对 Azure 函数进行编码和�
 services: functions
 documentationcenter: na
 author: lindydonna
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: functions
@@ -76,7 +76,7 @@ Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
   "IsEncrypted": false,   
   "Values": {
     "AzureWebJobsStorage": "<connection string>", 
-    "AzureWebJobsDashboard": "<connection string>", 
+    "AzureWebJobsDashboard": "<connection string>" 
   },
   "Host": {
     "LocalHttpPort": 7071, 

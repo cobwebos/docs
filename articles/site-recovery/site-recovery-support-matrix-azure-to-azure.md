@@ -15,11 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/10/2017
 ms.author: sujayt
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 89b12ce7af1e810f72e14f67ec5b11390ac3e72f
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 5a81dbf6a088e824277275ef13067bdba006d3a9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>用于在 Azure 之间进行复制的 Azure Site Recovery 支持矩阵
@@ -74,12 +73,15 @@ ms.lasthandoff: 07/11/2017
 
 #### <a name="linux"></a>Linux
 
-- Red Hat Enterprise Linux 6.7、6.8、7.0、7.1、7.2、7.3
-- CentOS 6.5、6.6、6.7、6.8、7.0、7.1、7.2、7.3
+- Red Hat Enterprise Linux 6.7、6.8、6.9、7.0、7.1、7.2、7.3
+- CentOS 6.5、6.6、6.7、6.8、6.9、7.0、7.1、7.2、7.3
 - Ubuntu 14.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Ubuntu 16.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Oracle Enterprise Linux 6.4、6.5（运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3 (UEK3)）
 - SUSE Linux Enterprise Server 11 SP3
+- SUSE Linux Enterprise Server 11 SP4
+
+（不支持复制计算机从 SLES 11 SP3 升级到 SLES 11 SP4。 如果已将复制计算机从 SLES 11SP3 升级到 SLES 11 SP4，则需要禁用复制，并在升级后再次对计算机启用保护。）
 
 >[!NOTE]
 >
@@ -91,7 +93,9 @@ ms.lasthandoff: 07/11/2017
 --- | --- | --- |
 14.04 LTS | 9.9 | 3.13.0-24-generic 到 3.13.0-117-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-75-generic |
 14.04 LTS | 9.10 | 3.13.0-24-generic 到 3.13.0-121-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-81-generic |
+14.04 LTS | 9.11 | 3.13.0-24-generic 到 3.13.0-125-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-83-generic |
 16.04 LTS | 9.10 | 4.4.0-21-generic 到 4.4.0-81-generic、<br/>4.8.0-34-generic 到 4.8.0-56-generic、<br/>4.10.0-14-generic 到 4.10.0-24-generic |
+16.04 LTS | 9.11 | 4.4.0-21-generic 到 4.4.0-83-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-27-generic |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-azure-virtual-machines-running-linux-os"></a>运行 Linux OS 的 Azure 虚拟机上支持的文件系统和来宾存储配置
 
@@ -107,7 +111,7 @@ ms.lasthandoff: 07/11/2017
 -- | --
 美洲 | 加拿大东部、加拿大中部、美国中南部、美国中西部、美国东部、美国东部 2、美国西部、美国西部 2、美国中部、美国中北部
 欧洲 | 英国西部、英国南部、北欧、西欧
-亚洲 | 印度南部、印度中部、东南亚、东亚、日本东部、日本西部
+亚洲 | 印度南部、印度中部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部
 澳大利亚   | 澳大利亚东部、澳大利亚东南部
 
 >[!NOTE]
@@ -132,10 +136,10 @@ Azure 库映像 — 由第三方发布 | 支持 | 只要 VM 在 Site Recovery �
 
 **配置** | **支持/不支持** | **备注**
 --- | --- | ---
-最大 OS 磁盘大小 | 1023 GB | 请参阅 [VM 使用的磁盘](../storage/storage-about-disks-and-vhds-windows.md#disks-used-by-vms)。
-最大数据磁盘大小 | 1023 GB | 请参阅 [VM 使用的磁盘](../storage/storage-about-disks-and-vhds-windows.md#disks-used-by-vms)。
+最大 OS 磁盘大小 | 1023 GB | 请参阅 [VM 使用的磁盘](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)。
+最大数据磁盘大小 | 1023 GB | 请参阅 [VM 使用的磁盘](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)。
 数据磁盘数 | 特定 Azure VM 大小最多支持 64 个 | 请参阅 [Azure 虚拟机大小](../virtual-machines/windows/sizes.md)
-临时磁盘 | 始终从复制中排除 | 临时磁盘始终从复制中排除。 按照 Azure 指南，不能将任何永久数据放在临时磁盘上。 有关更多详细信息，请参阅 [Azure VM 上的临时磁盘](../storage/storage-about-disks-and-vhds-windows.md#temporary-disk)。
+临时磁盘 | 始终从复制中排除 | 临时磁盘始终从复制中排除。 按照 Azure 指南，不能将任何永久数据放在临时磁盘上。 有关更多详细信息，请参阅 [Azure VM 上的临时磁盘](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk)。
 磁盘上的数据更改率 | 每个磁盘最大 6 MBps | 如果磁盘上的平均数据更改率连续超过 6 MBps，复制将不同步。 但是，如果只是偶尔出现数据迸发，数据更改率间或高于 6 MBps，但随后又降下来，则复制可同步。 在此情况下，可能会看到恢复点稍有延迟。
 标准存储帐户上的磁盘 | 支持 |
 高级存储帐户上的磁盘 | 支持 | 如果 VM 将磁盘分散在高级和标准存储帐户上，则可以为每个磁盘选择不同的目标存储帐户，以确保在目标区域中具有相同的存储配置
@@ -149,11 +153,11 @@ Azure 磁盘加密 (ADE) | 不支持 |
 LRS | 支持 |
 GRS | 支持 |
 RA-GRS | 支持 |
-ZRS | 支持 |  
+ZRS | 不支持 |  
 冷存储和热存储 | 不支持 | 冷存储和热存储不支持虚拟机磁盘
 
 >[!IMPORTANT]
-> 确保按照[存储指南](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)配置源 Azure 虚拟机，以免产生任何性能问题。 如果遵从默认设置，Site Recovery 将基于源配置创建所需的存储帐户。 如果自定义和选择自己的设置，请确保按照 (../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) 配置源 VM。
+> 确保按照[存储指南](../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)配置源 Azure 虚拟机，以免产生任何性能问题。 如果遵从默认设置，Site Recovery 将基于源配置创建所需的存储帐户。 如果自定义和选择自己的设置，请确保按照 (../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) 配置源 VM。
 
 ## <a name="support-for-network-configuration"></a>网络配置支持
 **配置** | **支持/不支持** | **备注**

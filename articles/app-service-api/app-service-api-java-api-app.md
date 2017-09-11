@@ -14,12 +14,11 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.date: 04/25/2017
 ms.author: rachelap;robmcm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 26011d72644f8b13a711d847d83175ce384f2053
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e38c540071cb49b0177e79178566d72ecb5f8886
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="build-and-deploy-a-java-api-app-in-azure-app-service"></a>在 Azure 应用服务中生成和部署 Java API 应用
@@ -214,7 +213,7 @@ ms.lasthandoff: 06/17/2017
             }
         }
 5. 打开命令提示符，将目录切换到应用程序的根文件夹。
-6. 执行以下 Maven 命令生成代码，然后在本地使用 Jetty 应用服务器运行该代码。 
+6. 执行以下 Maven 命令生成代码，并在本地使用 Jetty 应用服务器运行该代码。 
    
         mvn package jetty:run
 7. 应会在命令窗口中看到 Jetty 已经在端口 8080 上启动代码。 
@@ -242,16 +241,16 @@ ms.lasthandoff: 06/17/2017
 ## <a name="publish-the-output-to-azure-app-service"></a>将输出发布到 Azure 应用服务
 本部分介绍如何使用 Azure 门户创建新的 API 应用、准备该 API 应用以托管 Java 应用程序，然后将新建的 WAR 文件部署到 Azure 应用服务以运行新 API 应用。 
 
-1. 在 [Azure 门户]中创建新的 API 应用：单击“新建”->“Web + 移动”->“API 应用”菜单项，输入应用详细信息，然后单击“创建”。
+1. 在 [Azure 门户]中创建新的 API 应用：单击“新建”->“Web + 移动”->“API 应用”菜单项，输入应用详细信息，并单击“创建”。
    
     ![创建新的 API 应用][create-api-app]
-2. 创建 API 应用后，打开应用的“设置”边栏选项卡，然后单击“应用程序设置”菜单项。 在可用选项中选择最新的 Java 版本，在“Web 容器”菜单中选择最新的 Tomcat，然后单击“保存”。
+2. 创建 API 应用后，打开应用的“设置”边栏选项卡，并单击“应用程序设置”菜单项。 在可用选项中选择最新的 Java 版本，在“Web 容器”菜单中选择最新的 Tomcat，并单击“保存”。
    
     ![在 API 应用边栏选项卡中设置 Java][set-up-java]
 3. 单击“部署凭据”设置菜单项，提供用于将文件发布到 API 应用的用户名和密码。 
    
     ![设置部署凭据][deployment-credentials]
-4. 单击“部署源”设置菜单项。 在该位置，单击“选择源”按钮，选择“本地 Git 存储库”选项，然后单击“确定”。 随后将创建在 Azure 中运行的、与 API 应用关联的 Git 存储库。 每次将代码提交到 Git 存储库的 *master* 分支时，代码就会发布到实时运行的 API 应用实例。 
+4. 单击“部署源”设置菜单项。 在该位置，单击“选择源”按钮，选择“本地 Git 存储库”选项，并单击“确定”。 随后将创建在 Azure 中运行的、与 API 应用关联的 Git 存储库。 每次将代码提交到 Git 存储库的 *master* 分支时，代码就会发布到实时运行的 API 应用实例。 
    
     ![设置新的本地 Git 存储库][select-git-repo]
 5. 将新的 Git 存储库 URL 复制到剪贴板。 请保存此 URL，因为稍后它很重要。 
@@ -278,7 +277,7 @@ ms.lasthandoff: 06/17/2017
 <a name="see-also"></a>
 
 ## <a name="see-also"></a>另请参阅
-有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心]。
+有关如何将 Azure 与 Java 配合使用的详细信息，请访问[面向 Java 开发人员的 Azure](/java/azure)。
 
 <!-- URL List -->
 
@@ -287,14 +286,14 @@ ms.lasthandoff: 06/17/2017
 [Document DB Java SDK]: ../documentdb/documentdb-java-application.md
 [免费试用版]: https://azure.microsoft.com/pricing/free-trial/
 [Git]: http://www.git-scm.com/
-[Azure Java 开发人员中心]: /develop/java/
+[Azure Java Developer Center]: /develop/java/
 [Java 开发人员工具包 8]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 [Jax-RS]: https://jax-rs-spec.java.net/
 [Maven]: https://maven.apache.org/
 [Microsoft Azure]: https://azure.microsoft.com/
 [在线 Swagger 编辑器]: http://editor2.swagger.io/
 [Postman]: https://www.getpostman.com/
-[用于 Java 的存储 SDK]: ../storage/storage-java-how-to-use-blob-storage.md
+[用于 Java 的存储 SDK]:../storage/blobs/storage-java-how-to-use-blob-storage.md
 [Swagger]: http://swagger.io/
 [Swagger 编辑器]: http://editor.swagger.io/
 [Visual Studio Code]: https://code.visualstudio.com

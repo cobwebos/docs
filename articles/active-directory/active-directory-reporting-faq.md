@@ -11,18 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/15/2017
+ms.date: 08/22/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e6dcd3f6f9c7c8765409c3b0d50e4b3843bab5c6
-ms.openlocfilehash: e39ee63d190308b87ebeb43adeb8b3e5db86df57
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: accf292f70bf0eafdefc00c3feeaf8e346605401
 ms.contentlocale: zh-cn
-ms.lasthandoff: 02/22/2017
+ms.lasthandoff: 08/23/2017
 
 ---
-# Azure Active Directory 报告常见问题
-<a id="azure-active-directory-reporting-faq" class="xliff"></a>
+# <a name="azure-active-directory-reporting-faq"></a>Azure Active Directory 报告常见问题
 
 本文包括对 Azure Active Directory 报告常见问题 (FAQ) 的解答。  
 有关详细信息，请参阅 [Azure Active Directory 报告](active-directory-reporting-azure-portal.md)。 
@@ -84,9 +83,31 @@ ms.lasthandoff: 02/22/2017
 
 **问：获得 Azure AD Premium 许可证后是否能查看上个月的数据？**
 
-**答：**如果最近刚切换到高级版本（包括试用版），则最初最多能看到 7 天的数据。 随着数据累积，将最多可看到 30 天的数据。
+答：如果最近刚切换到高级版本（包括试用版），则最初最多能看到 7 天的数据。 随着数据累积，将最多可看到 30 天的数据。
 
- 
 ---
 
+**问：标识保护存在风险事件，但未在所有登录中看到对应登录。**这是正常情况吗？
+
+答：是的，标识保护会评估所有身份验证流的风险，无论其为交互式还是非交互式。 但是，所有登录报告仅显示交互式登录。
+
+---
+
+问：如何在 Azure 门户中下载“已标记为存在风险的用户”报告？
+
+答：将尽快添加下载“已标记为存在风险的用户”报告的选项。
+
+---
+
+问：如何了解 Azure 门户中被标记为存在风险的用户或登录的原因？
+
+答：Premium Edition 客户可以通过单击“已标记为存在风险的用户”中的用户或单击“有风险的登录”来了解潜在风险事件的详细信息。 免费和基本版客户可以看到有风险的用户和登录，但看不到潜在风险事件的信息。
+
+---
+
+问：如何在登录和有风险的登录报表中计算 IP 地址？
+
+答：IP 地址的发布方式是，在 IP 地址和使用该地址的计算机所在的物理位置之间没有确定的连接。 出于某些因素这一点非常复杂，例如，从中央池发布 IP 地址的移动运营商和 VPN 通常与实际使用客户端设备的位置距离很远。 鉴于上述原因，最好是基于跟踪、注册表数据、反向查看和其他信息将 IP 地址转换为物理位置。 
+
+---
 

@@ -389,14 +389,14 @@ ms.lasthandoff: 08/03/2017
 有多个选项可用于在 Azure 中部署 VM 和关联的磁盘。 了解这些部署选项之间的区别非常重要，你可能需要根据所选的部署类型采取不同的步骤为部署准备 VM。
 
 ### <a name="db477013-9060-4602-9ad4-b0316f8bb281"></a>方案 1：从 Azure Marketplace 为 SAP 部署 VM
-可以使用 Azure 应用商店中由 Microsoft 或第三方提供的映像来部署 VM。 应用商店提供了 Windows Server 和各种 Linux 分发的一些标准 OS 映像。 还可以部署包括数据库管理系统 (DBMS) SKU（例如 Microsoft SQL Server）的映像。 有关使用包含 DBMS SKU 的映像的详细信息，请参阅[适用于 SAP NetWeaver 的 Azure 虚拟机 DBMS 部署][dbms-guide]。
+可以使用 Azure Marketplace 中由 Microsoft 或第三方提供的映像来部署 VM。 Marketplace 提供了 Windows Server 和各种 Linux 分发的一些标准 OS 映像。 还可以部署包括数据库管理系统 (DBMS) SKU（例如 Microsoft SQL Server）的映像。 有关使用包含 DBMS SKU 的映像的详细信息，请参阅[适用于 SAP NetWeaver 的 Azure 虚拟机 DBMS 部署][dbms-guide]。
 
-下面的流程图显示了从 Azure 应用商店部署 VM 时特定于 SAP 的步骤序列：
+下面的流程图显示了从 Azure Marketplace 部署 VM 时特定于 SAP 的步骤序列：
 
-![使用 Azure 应用商店中的 VM 映像为 SAP 系统部署 VM 的流程图][deployment-guide-figure-100]
+![使用 Azure Marketplace 中的 VM 映像为 SAP 系统部署 VM 的流程图][deployment-guide-figure-100]
 
 #### <a name="create-a-virtual-machine-by-using-the-azure-portal"></a>使用 Azure 门户创建虚拟机
-使用 Azure 应用商店中的映像创建新虚拟机的最简单方式是使用 Azure 门户。
+使用 Azure Marketplace 中的映像创建新虚拟机的最简单方式是使用 Azure 门户。
 
 1.  转到 <https://portal.azure.com/#create/hub>。  或者，在 Azure 门户菜单中，选择“+ 新建”。
 2.  选择“计算”，并选择要部署的操作系统的类型。 例如，Windows Server 2012 R2、SUSE Linux Enterprise Server 12 (SLES 12)、Red Hat Enterprise Linux 7.2 (RHEL 7.2) 或 Oracle Linux 7.2。 默认列表视图并未显示所有受支持的操作系统。 若要查看完整列表，请选择“查看所有”。 有关 SAP 软件部署支持的操作系统的详细信息，请参阅 SAP 说明 [1928533]。
@@ -489,7 +489,7 @@ ms.lasthandoff: 08/03/2017
 
 4.  选择“购买”。
 
-使用 Azure 应用商店中的映像时，默认情况下会部署 Azure VM 代理。
+使用 Azure Marketplace 中的映像时，默认情况下会部署 Azure VM 代理。
 
 #### <a name="configure-proxy-settings"></a>配置代理设置
 可能需要在 VM 上设置代理，具体取决于本地网络的配置情况。 如果 VM 通过 VPN 或 ExpressRoute 连接到本地网络，则 VM 可能无法访问 Internet，并且无法下载所需的扩展或收集监视数据。 有关详细信息，请参阅[配置代理][deployment-guide-configure-proxy]。
@@ -509,7 +509,7 @@ ms.lasthandoff: 08/03/2017
 将 VM 部署到 Azure 中之后，需要像在本地环境中一样，遵照相同的准则并使用相同的工具在 VM 上安装 SAP 软件。 若要在 Azure VM 上安装 SAP 软件，SAP 和 Microsoft 都建议将 SAP 安装媒体上传并存储到 Azure VHD 或托管磁盘中，或者创建一个充当文件服务器并包含所有必需 SAP 安装媒体的 Azure VM。
 
 ### <a name="54a1fc6d-24fd-4feb-9c57-ac588a55dff2"></a>方案 2：使用自定义映像为 SAP 部署 VM
-因为不同版本的操作系统或 DBMS 具有不同的修补程序要求，因此，在 Azure 应用商店中找到的映像不一定能满足需求。 可能需要使用自己的 OS/DBMS VM 映像创建一个 VM，而且以后可以再次部署该 VM。
+因为不同版本的操作系统或 DBMS 具有不同的修补程序要求，因此，在 Azure Marketplace 中找到的映像不一定能满足需求。 可能需要使用自己的 OS/DBMS VM 映像创建一个 VM，而且以后可以再次部署该 VM。
 为 Linux 创建专用映像时使用的步骤不同于为 Windows 创建专用映像时使用的步骤。
 
 - - -
@@ -528,7 +528,7 @@ ms.lasthandoff: 08/03/2017
 
 下面的流程图显示了从自定义映像部署 VM 时特定于 SAP 的步骤序列：
 
-![使用专用应用商店中的 VM 映像为 SAP 系统部署 VM 的流程图][deployment-guide-figure-300]
+![使用专用 Marketplace 中的 VM 映像为 SAP 系统部署 VM 的流程图][deployment-guide-figure-300]
 
 #### <a name="create-a-virtual-machine-by-using-the-azure-portal"></a>使用 Azure 门户创建虚拟机
 通过托管磁盘映像创建新虚拟机的最简单方式是使用 Azure 门户。 有关如何创建托管磁盘映像的详细信息，请阅读[在 Azure 中捕获通用 VM 的托管映像](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)
@@ -795,7 +795,7 @@ azure --version
 ### <a name="c7cbb0dc-52a4-49db-8e03-83e7edc2927d"></a>下载、安装并启用 Azure VM 代理
 对于从非通用化的 OS 映像（例如，非来自 Windows 系统准备（或 sysprep）工具的映像）部署的虚拟机，需要手动下载、安装并启用 Azure VM 代理。
 
-如果从 Azure 应用商店部署 VM，则此步骤不是必需的。 来自 Azure 应用商店的映像已经包含 Azure VM 代理。
+如果从 Azure Marketplace 部署 VM，则此步骤不是必需的。 来自 Azure Marketplace 的映像已经包含 Azure VM 代理。
 
 #### <a name="b2db5c9a-a076-42c6-9835-16945868e866"></a>Windows
 1.  下载 Azure VM 代理：

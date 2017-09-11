@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 07/10/2017
 ms.author: spelluru
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 51f24bf75631206d7480eec8b871dee95726b0a8
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 9c958aecb841fa02349c6b9e5e1984f6ba4fb611
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 07/21/2017
 > [!NOTE]
 > 本教程中的数据管道可以转换输入数据，以便生成输出数据。 有关如何使用 Azure 数据工厂复制数据的教程，请参阅[教程：将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 > 
-> 一个管道可以有多个活动。 而且，你可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
+> 一个管道可以有多个活动。 而且，可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
 
 ## <a name="prerequisites"></a>先决条件
 1. 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。
@@ -49,7 +49,7 @@ ms.lasthandoff: 07/21/2017
 数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 例如，将数据从源复制到目标数据存储的复制活动，以及运行 Hive 脚本来将输入数据转换为产品输出数据的 HDInsight Hive 活动。 首先，在此步骤中创建数据工厂。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在左侧菜单中单击“新建”，然后依次单击“数据 + 分析”、“数据工厂”。
+2. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。
 
    ![“创建”边栏选项卡](./media/data-factory-build-your-first-pipeline-using-editor/create-blade.png)
 3. 在“新建数据工厂”边栏选项卡中，输入 **GetStartedDF** 作为名称。
@@ -57,7 +57,7 @@ ms.lasthandoff: 07/21/2017
    ![“新建数据工厂”边栏选项卡](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
 
    > [!IMPORTANT]
-   > Azure 数据工厂的名称必须 **全局唯一**。 如果收到错误：“数据工厂名称 ‘GetStartedDF’ 不可用。” 请更改数据工厂名称（例如 yournameGetStartedDF），然后尝试重新创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
+   > Azure 数据工厂的名称必须 **全局唯一**。 如果收到错误：“数据工厂名称 ‘GetStartedDF’ 不可用。” 请更改数据工厂名称（例如 yournameGetStartedDF），并尝试重新创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
    >
    > 数据工厂名称可能在将来被注册为 **DNS** 名称，因此将变成公开可见。
    >
@@ -72,7 +72,7 @@ ms.lasthandoff: 07/21/2017
    > 只有订阅/资源组级别的 [数据工厂参与者](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) 角色成员才能创建数据工厂实例。
    >
    >
-7. 在仪表板上，将会看到状态为“正在部署数据工厂”的以下磁贴。    
+7. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。    
 
    ![正在创建数据工厂状态](./media/data-factory-build-your-first-pipeline-using-editor/creating-data-factory-image.png)
 8. 祝贺你！ 现已成功创建第一个数据工厂。 成功创建数据工厂后，将看到数据工厂页，其中显示了数据工厂的内容。     
@@ -87,7 +87,7 @@ ms.lasthandoff: 07/21/2017
 ### <a name="create-azure-storage-linked-service"></a>创建 Azure 存储链接服务
 在此步骤中，将 Azure 存储帐户链接到数据工厂。 本教程使用相同的 Azure 存储帐户来存储输入/输出数据和 HQL 脚本文件。
 
-1. 在 **GetStartedDF** 的“数据工厂”边栏选项卡中，单击“编写和部署”。 此时将显示“数据工厂编辑器”。
+1. 在 **GetStartedDF** 的“数据工厂”边栏选项卡中，单击“编写和部署”。 此时会显示“数据工厂编辑器”。
 
    ![“编写和部署”磁贴](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-author-deploy.png)
 2. 单击“新建数据存储”并选择“Azure 存储”。
@@ -96,7 +96,7 @@ ms.lasthandoff: 07/21/2017
 3. 在编辑器中，应会看到用于创建 Azure 存储链接服务的 JSON 脚本。
 
    ![Azure 存储链接服务](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
-4. 将**帐户名**替换为 Azure 存储帐户名，将**帐户密钥**替换为 Azure 存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请在[管理你的存储帐户](../storage/storage-create-storage-account.md#manage-your-storage-account)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
+4. 将**帐户名**替换为 Azure 存储帐户名，将**帐户密钥**替换为 Azure 存储帐户的访问密钥。 要了解如何获取存储访问密钥，请在[管理存储帐户](../storage/common/storage-create-storage-account.md#manage-your-storage-account)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
 5. 单击命令栏上的“部署”，部署链接服务。
 
     ![部署按钮](./media/data-factory-build-your-first-pipeline-using-editor/deploy-button.png)
@@ -108,7 +108,7 @@ ms.lasthandoff: 07/21/2017
 ### <a name="create-azure-hdinsight-linked-service"></a>创建 Azure HDInsight 链接服务
 在此步骤中，将按需 HDInsight 群集链接到数据工厂。 HDInsight 群集在运行时自动创建，在处理完成之后删除，并且会空闲指定的一段时间。
 
-1. 在“数据工厂编辑器”中，单击“...更多”，单击“新建计算”，然后选择“按需 HDInsight 群集”。
+1. 在“数据工厂编辑器”中，单击“...更多”，单击“新建计算”，并选择“按需 HDInsight 群集”。
 
     ![新建计算](./media/data-factory-build-your-first-pipeline-using-editor/new-compute-menu.png)
 2. 将以下代码片段复制并粘贴到“草稿 1”窗口。 该 JSON 代码片段描述用于创建按需 HDInsight 群集的属性。
@@ -141,7 +141,7 @@ ms.lasthandoff: 07/21/2017
 
    * 数据工厂使用 JSON 创建**基于 Linux** 的 HDInsight 群集。 有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
    * 可以使用 **自己的 HDInsight 群集** ，而不使用按需 HDInsight 群集。 有关详细信息，请参阅 [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) （HDInsight 链接服务）。
-   * HDInsight 群集在 JSON 中指定的 Blob 存储 (**linkedServiceName**).内创建**默认容器**。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非有现有的实时群集 (**timeToLive**)，否则每当需要处理切片时，都会创建 HDInsight 群集。 处理完成后将自动删除该群集。
+   * HDInsight 群集在 JSON 中指定的 Blob 存储 (**linkedServiceName**).内创建**默认容器**。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非有现有的实时群集 (**timeToLive**)，否则每当需要处理切片时，都会创建 HDInsight 群集。 处理完成后会自动删除该群集。
 
        随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循模式：“adf**yourdatafactoryname**-**linkedservicename**-datetimestamp”。 使用 [Microsoft 存储资源管理器](http://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
 
@@ -157,7 +157,7 @@ ms.lasthandoff: 07/21/2017
 此步骤创建数据集来代表 Hive 处理的输入和输出数据。 这些数据集引用前面在本教程中创建的 **AzureStorageLinkedService** 。 链接服务指向 Azure 存储帐户，数据集指定用于保存输入和输出数据的存储中的容器、文件夹和文件名。   
 
 ### <a name="create-input-dataset"></a>创建输入数据集
-1. 在“数据工厂编辑器”中，单击“...更多”（在命令栏上），单击“新建数据集”，然后选择“Azure Blob 存储”。
+1. 在“数据工厂编辑器”中，单击“...更多”（在命令栏上），单击“新建数据集”，并选择“Azure Blob 存储”。
 
     ![新建数据集](./media/data-factory-build-your-first-pipeline-using-editor/new-data-set.png)
 2. 将以下代码片段复制并粘贴到“草稿 1”窗口。 在 JSON 代码片段中，创建名为 **AzureBlobInput** 的数据集，表示管道中活动的输入数据。 此外，指定将输入数据放在名为 **adfgetstarted** 的 Blob 容器及名为 **inputdata** 的文件夹中
@@ -204,7 +204,7 @@ ms.lasthandoff: 07/21/2017
 ### <a name="create-output-dataset"></a>创建输出数据集
 现在，创建输出数据集来表示 Azure Blob 存储中存储的输出数据。
 
-1. 在“数据工厂编辑器”中，单击“...更多”（在命令栏上），单击“新建数据集”，然后选择“Azure Blob 存储”。  
+1. 在“数据工厂编辑器”中，单击“...更多”（在命令栏上），单击“新建数据集”，并选择“Azure Blob 存储”。  
 2. 将以下代码片段复制并粘贴到“草稿 1”窗口。 在 JSON 代码片段中，创建名为 **AzureBlobOutput**的数据集，指定 Hive 脚本生成的数据结构。 此外，指定将结果存储在名为 **adfgetstarted** 的 Blob 容器及名为 **partitioneddata** 的文件夹中。 **availability** 节指定每月生成输出数据集一次。
 
     ```JSON
@@ -236,7 +236,7 @@ ms.lasthandoff: 07/21/2017
 ## <a name="create-pipeline"></a>创建管道
 此步骤创建第一个具有 **HDInsightHive** 活动的管道。 每月获取输入切片（frequency：Month；interval：1），每月生成输出切片，活动的计划程序属性也设置为每月。 输出数据集的设置必须与活动计划程序匹配。 当前，输出数据集驱动计划，因此即使活动并未生成任何输出，也必须创建输出数据集。 如果活动没有任何输入，可以跳过创建输入数据集。 本部分结尾说明以下 JSON 中使用的属性。
 
-1. 在“数据工厂编辑器”中，单击**省略号** (…)（更多命令），然后单击“新建管道”。
+1. 在“数据工厂编辑器”中，单击**省略号** (…)（更多命令），并单击“新建管道”。
 
     ![新建管道按钮](./media/data-factory-build-your-first-pipeline-using-editor/new-pipeline-button.png)
 2. 将以下代码片段复制并粘贴到“草稿 1”窗口。
@@ -318,13 +318,13 @@ ms.lasthandoff: 07/21/2017
 
 ## <a name="monitor-pipeline"></a>监视管道
 ### <a name="monitor-pipeline-using-diagram-view"></a>使用图示视图监视管道
-1. 单击“X”关闭“数据工厂编辑器”边栏选项卡，导航回到“数据工厂”边栏选项卡，然后单击“图示”。
+1. 单击“X”关闭“数据工厂编辑器”边栏选项卡，导航回到“数据工厂”边栏选项卡，并单击“图示”。
 
     ![图示磁贴](./media/data-factory-build-your-first-pipeline-using-editor/diagram-tile.png)
 2. 在“图示视图”中，可以看到管道的概述，以及本教程中使用的数据集。
 
     ![图示视图](./media/data-factory-build-your-first-pipeline-using-editor/diagram-view-2.png)
-3. 若要查看管道中的所有活动，请右键单击图示中的管道，然后单击“打开管道”。
+3. 要查看管道中的所有活动，请右键单击图示中的管道，并单击“打开管道”。
 
     ![“打开管道”菜单](./media/data-factory-build-your-first-pipeline-using-editor/open-pipeline-menu.png)
 4. 确认管道中显示了 HDInsightHive 活动。
@@ -332,11 +332,11 @@ ms.lasthandoff: 07/21/2017
     ![“打开管道”视图](./media/data-factory-build-your-first-pipeline-using-editor/open-pipeline-view.png)
 
     若要导航回到上一个视图，请单击顶部痕迹导航菜单中的“数据工厂”。
-5. 在“图示视图”中，双击数据集 **AzureBlobInput**。  确认切片处于“就绪”状态。 可能需要几分钟时间，切片才显示为“就绪”状态。 如果一段时间后未显示此状态，请检查是否已将输入文件 (input.log) 放置在正确的容器 (adfgetstarted) 和文件夹 (inputdata) 中。
+5. 在“图示视图”中，双击数据集 **AzureBlobInput**。 确认切片处于“就绪”状态。 可能需要几分钟时间，切片才显示为“就绪”状态。 如果一段时间后未显示此状态，请检查是否已将输入文件 (input.log) 放置在正确的容器 (adfgetstarted) 和文件夹 (inputdata) 中。
 
    ![输入切片处于就绪状态](./media/data-factory-build-your-first-pipeline-using-editor/input-slice-ready.png)
 6. 单击“X”关闭“AzureBlobInput”边栏选项卡。
-7. 在“图示视图”中，双击数据集 **AzureBlobOutput**。 此时将显示当前正在处理的切片。
+7. 在“图示视图”中，双击数据集 **AzureBlobOutput**。 此时会显示当前正在处理的切片。
 
    ![数据集](./media/data-factory-build-your-first-pipeline-using-editor/dataset-blade.png)
 8. 处理完成后，可以看到切片处于“就绪”状态。
@@ -362,7 +362,7 @@ ms.lasthandoff: 07/21/2017
    有关详细信息，请参阅 [Monitor and manage pipelines using Azure portal blades](data-factory-monitor-manage-pipelines.md) （使用 Azure 门户边栏选项卡监视和管理管道）。
 
 > [!IMPORTANT]
-> 成功处理切片后，将会删除输入文件。 因此，如果想要重新运行切片或重新学习本教程，请将输入文件 (input.log) 上传到 adfgetstarted 容器的 inputdata 文件夹中。
+> 成功处理切片后，会删除输入文件。 因此，如果想要重新运行切片或重新学习本教程，请将输入文件 (input.log) 上传到 adfgetstarted 容器的 inputdata 文件夹中。
 >
 >
 

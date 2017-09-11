@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 6/01/2017
 ms.author: negat
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: 8ec9709bfb553f6ee89611e92330dedb6129055d
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3ab1d432a2f90db57b99f0e7d419d85e2958c308
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-vm-scale-sets-and-managed-disks"></a>Azure VM 规模集和托管磁盘
@@ -45,7 +45,7 @@ az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --dat
 
 ## <a name="next-steps"></a>后续步骤
 
-有关托管磁盘的一般性详细信息，请参阅[此文](../storage/storage-managed-disks-overview.md)。
+有关托管磁盘的一般性详细信息，请参阅[此文](../virtual-machines/windows/managed-disks-overview.md)。
 
 若要了解如何转换 Resource Manager 模板以预配使用托管磁盘的规模集，请参阅[本文](./virtual-machine-scale-sets-convert-template-to-md.md)。 对 Resource Manager 模板的修改也适用于 Azure REST API。
 

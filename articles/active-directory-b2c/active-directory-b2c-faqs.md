@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory B2C：常见问题 | Microsoft Docs"
+title: "常见问题解答 (FAQ) - Azure AD B2C | Microsoft Docs"
 description: "有关 Azure Active Directory B2C 的常见问题"
 services: active-directory-b2c
 documentationcenter: 
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/03/2017
+ms.date: 08/16/2017
 ms.author: saeeda
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: f06e02cb15532a4e0f6660ca3a88a7031d498632
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: e8b28bc9ccc12b280b1746272519bd4c9ea9e4a4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/17/2017
 
 ---
-# <a name="azure-active-directory-b2c-faqs"></a>Azure Active Directory B2C：常见问题
+# <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题解答 (FAQ) 
 此页面解答了有关 Azure Active Directory (Azure AD) B2C 的常见问题。 请随时返回查看更新信息。
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>我可以在基于员工的现有 Azure AD 租户中使用 Azure AD B2C 功能吗？
@@ -36,7 +36,11 @@ Azure AD B2C 不用于 Microsoft Office 365 用户的身份验证。  Azure AD �
 在 Azure AD B2C 租户中，大多数应用都希望用户使用任意电子邮件地址（例如 joe@comcast.net、bob@gmail.com、sarah@contoso.com 或 jim@live.com）登录。 此类型的帐户是本地帐户。  我们还支持任意用户名作为本地帐户（例如，joe、bob、sarah 或 jim）。 可以通过在 Azure 门户中配置 Azure AD B2C，选择这两种本地帐户类型中的一种。
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>现在支持哪些社交标识提供者？ 计划在未来支持哪些？
-我们当前支持 Facebook、Google+、LinkedIn、Microsoft 帐户、 Amazon、Twitter （预览版）、微信（预览版）、微博（预览版）和 QQ（预览版）。  我们将根据客户需求继续添加对其他流行社交标识提供者的支持。
+我们当前支持 Facebook、Google+、LinkedIn、Amazon、Twitter（预览版）、微信（预览版）、微博（预览版）和 QQ（预览版）。 我们会根据客户需求添加对其他流行社交标志提供者的支持。
+
+Azure AD B2C 还增加了对[自定义策略](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-overview-custom)的支持。  这些[自定义策略](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-overview-custom)允许开发人员使用支持 [OpenID 连接](http://openid.net/specs/openid-connect-core-1_0.html)或 SAML 的任何标识提供者创建自己的策略。 
+
+查看我们的[自定义策略初学者包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)，开始使用自定义策略。
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>我可以配置范围，从各种社交标识提供者收集更多使用者的相关信息吗？
 不可以，但此功能在我们的计划之中。 一组受支持的社交标识提供者使用的默认范围是：
@@ -51,7 +55,7 @@ Azure AD B2C 不用于 Microsoft Office 365 用户的身份验证。  Azure AD �
 不，可以在任何位置（在云中或本地）托管应用程序。 只要能在公共可访问的端点上发送和接收 HTTP 请求，它就可以与 Azure AD B2C 进行交互。
 
 ### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>我有多个 Azure AD B2C 租户。 如何在 Azure 门户上管理它们？
-每个 Azure AD B2C 租户在 Azure 门户上都有其自己的 B2C 边栏选项卡。 请参阅 [Azure AD B2C：注册应用程序](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)，了解如何导航到 Azure 门户上特定租户的 B2C 功能边栏选项卡。 在大多数浏览器中，在 Azure 门户上的 Azure AD B2C 目录之间进行切换不能保持 B2C 功能边栏选项卡始终开启。
+在 Azure 门户的左侧菜单中打开“Azure AD B2C”之前，必须切换到要管理的目录。  通过单击 Azure 门户右上方的标识切换目录，然后在出现的下拉列表中选择目录。  有关带有图像的分步说明，请参阅[导航到 Azure AD B2C 设置](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 
 ### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>如何自定义 Azure AD B2C 发送的验证电子邮件（内容和“发件人:”字段）？
 可以使用[公司品牌功能](../active-directory/active-directory-add-company-branding.md)来自定义验证电子邮件的内容。 具体来说，可以自定义电子邮件的下列两个元素：
@@ -84,7 +88,7 @@ Azure AD B2C 不用于 Microsoft Office 365 用户的身份验证。  Azure AD �
 不可以，出于安全的考虑，无法在 iFrame 中打开 Azure AD B2C 页。  我们的服务将与浏览器通信以禁止 iFrame。  由于点击劫持的风险，安全社区和 OAUTH2 规范一般建议不要使用 iFrame 进行标识体验。
 
 ### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Azure AD B2C 是否可以与 Microsoft Dynamics 之类的 CRM 系统一起使用？
-即将推出与 Microsoft Dynamics 365 门户的基本集成。
+与 Microsoft Dynamics 365 门户的集成可用。  请参阅[配置 Dynamics 365 门户以使用 Azure AD B2C 进行身份验证](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/portals/azure-ad-b2c)。
 
 ### <a name="does-azure-ad-b2c-work-with-sharepoint-on-premises-2016-or-earlier"></a>Azure AD B2C 是否可以与 SharePoint 本地 2016 或更早版本一起使用？
 Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改为参阅 [Azure AD B2B](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx)。
@@ -108,8 +112,8 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>如何删除 Azure AD B2C 租户？
 请按照以下步骤删除 Azure AD B2C 租户：
 
-1. 请按照以下步骤在 Azure 门户上[导航到 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
-1. 导航到“应用程序”、“标识提供者”、“所有策略”边栏选项卡，然后删除其中的所有条目。
+1. 请按照以下步骤在 Azure 门户上[导航到 Azure AD B2C 设置](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
+1. 导航到“应用程序”、“标识提供者”、“所有策略”，并删除其中的所有条目。
 1. 现在，以订阅管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.com/) 。 （使用在注册 Azure 时使用的同一工作或学校帐户，或同一 Microsoft 帐户。）
 1. 导航到左侧的 Active Directory 扩展，并单击 B2C 租户。
 1. 单击“用户”选项卡。

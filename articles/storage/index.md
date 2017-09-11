@@ -2,7 +2,7 @@
 title: "Azure 存储文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用云中的 Azure 存储 - Blob、表、队列、文件和虚拟机磁盘存储。 教程、API 参考和其他文档。"
 services: storage
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/25/2017
 ms.author: shlo
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 66d3b5532e602ef3ef160740c0f6752ebbdff7a2
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: da7110614e684656da3ef9830780606e1576684d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
@@ -27,8 +27,7 @@ ms.lasthandoff: 07/26/2017
 
 | 计算环境 | 活动 |
 | --- | --- |
-| 
-            [按需 HDInsight 群集](#azure-hdinsight-on-demand-linked-service)或[自己的 HDInsight 群集](#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md)、[Hive](data-factory-hive-activity.md)、[Pig](data-factory-pig-activity.md)、[MapReduce](data-factory-map-reduce.md)、[Hadoop 流式处理](data-factory-hadoop-streaming-activity.md) |
+| [按需 HDInsight 群集](#azure-hdinsight-on-demand-linked-service)或[自己的 HDInsight 群集](#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md)、[Hive](data-factory-hive-activity.md)、[Pig](data-factory-pig-activity.md)、[MapReduce](data-factory-map-reduce.md)、[Hadoop 流式处理](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
 | [Azure 机器学习](#azure-machine-learning-linked-service) |[机器学习活动：批处理执行和更新资源](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
@@ -100,7 +99,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 > 
 
 ## <a name="azure-hdinsight-on-demand-linked-service"></a>Azure HDInsight 按需链接服务
-Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 群集，以处理数据。 群集创建在与该群集相关联的存储帐户（JSON 中的 linkedServiceName 属性）所在的同一区域中。
+Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 群集，以处理数据。 群集创建在与该群集相关联的存储帐户（JSON 中的 linkedServiceName 属性）所在的同一区域中。 存储帐户必须是通用的标准 Azure 存储帐户。 
 
 请注意以下关于按需 HDInsight 链接服务的**重要**事项：
 
@@ -114,7 +113,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 > 
 
 ### <a name="example"></a>示例
-以下 JSON 定义基于 Linux 的按需 HDInsight 链接服务。 处理数据切片时，数据工厂服务将自动创建**基于 Linux 的** HDInsight 群集。 
+以下 JSON 定义基于 Linux 的按需 HDInsight 链接服务。 处理数据切片时，数据工厂服务会自动创建**基于 Linux 的** HDInsight 群集。 
 
 ```json
 {
@@ -460,9 +459,9 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 创建 Azure SQL 链接服务，并将其与[存储过程活动](data-factory-stored-proc-activity.md)配合使用，以从数据工厂管道调用存储过程。 请参阅 [Azure SQL 连接器](data-factory-azure-sql-connector.md#linked-service-properties)一文，以了解此链接服务的详细信息。
 
 ## <a name="azure-sql-data-warehouse-linked-service"></a>Azure SQL 数据仓库链接服务
-创建 Azure SQL 数据仓库链接服务，并将其与[存储过程活动](data-factory-stored-proc-activity.md)配合使用，以从数据工厂管道调用存储过程。 请参阅[Azure SQL 数据仓库连接器](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties)一文，以了解此链接服务的详细信息。
+创建 Azure SQL 数据仓库链接服务，并将其与[存储的过程活动](data-factory-stored-proc-activity.md)配合使用，以从数据工厂管道调用存储的过程。 请参阅[Azure SQL 数据仓库连接器](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties)一文，以了解此链接服务的详细信息。
 
 ## <a name="sql-server-linked-service"></a>SQL Server 链接服务
-创建 SQL Server 链接服务，并将其与[存储过程活动](data-factory-stored-proc-activity.md)配合使用，以从数据工厂管道调用存储过程。 请参阅 [SQL Server 连接器](data-factory-sqlserver-connector.md#linked-service-properties)一文，以了解此链接服务的详细信息。
+创建 SQL Server 链接服务，并将其与[存储的过程活动](data-factory-stored-proc-activity.md)配合使用，以从数据工厂管道调用存储的过程。 请参阅 [SQL Server 连接器](data-factory-sqlserver-connector.md#linked-service-properties)一文，以了解此链接服务的详细信息。
 
 

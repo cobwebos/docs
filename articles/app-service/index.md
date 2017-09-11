@@ -2,7 +2,7 @@
 title: "Azure 应用服务文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何借助教程、视频、API 参考和其他文档，使用应用服务为任何平台或设备创建 Web 应用和移动应用。"
 services: app-service
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ebcde75ba7d5ed155fb7ec822ba037de5141c31c
 ms.openlocfilehash: a9b7cb3492fa71b33c4aa6b2c0ecda9eaac9ea4b
+ms.contentlocale: zh-cn
 ms.lasthandoff: 02/09/2017
 
 ---

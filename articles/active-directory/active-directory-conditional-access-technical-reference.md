@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory 条件性访问技术参考 | Microsoft 文档"
-description: "借助条件性访问控制，Azure Active Directory 会在验证用户身份时先检查你选取的特定条件，然后才允许访问应用程序。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。"
+description: "借助条件性访问控制，Azure Active Directory 会在验证用户身份时先检查选取的特定条件，然后才允许访问应用程序。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。"
 services: active-directory.
 documentationcenter: 
 author: MarkusVi
@@ -11,83 +11,158 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/22/2017
+ms.date: 08/28/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: db7d8b6b2cbe1604fc1b02cc36780ddd83a4d350
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: f96189735512090f993f61c0d64a249f650ea2a2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Azure Active Directory 条件性访问技术参考
 
-## <a name="services-enabled-with-conditional-access"></a>通过条件性访问启用的服务
+使用 [Azure Active Directory (Azure AD) 条件访问](active-directory-conditional-access-azure-portal.md)，可以精细控制经授权的用户如何访问资源。  
+本主题提供了有关以下条件性访问策略各项的支持信息： 
 
-各种 Azure AD 应用程序类型支持条件性访问规则。 这些应用程序包括：
+- 云应用分配
 
-
-* 向 Azure 应用程序代理注册的应用程序
-* Azure 远程应用
-* 向 Azure AD 注册的开发业务应用程序和多租户应用程序
-* Dynamics CRM
-* Azure AD 应用程序库中的联合应用程序
-* Microsoft Office 365 Yammer
-* Microsoft Office 365 Exchange Online
-* Microsoft Office 365 SharePoint Online（包括 OneDrive for Business）
-* Microsoft Power BI 
-* Azure AD 应用程序库中的密码 SSO 应用程序
-* Visual Studio Team Services
-* Microsoft Teams
+- 客户端应用条件
 
 
 
+## <a name="cloud-apps-assignments"></a>云应用分配
+
+在配置条件性访问策略时，需要[选择要向其应用策略的云应用](active-directory-conditional-access-azure-portal.md#who)。 
+
+![控制](./media/active-directory-conditional-access-technical-reference/09.png)
+
+
+### <a name="microsoft-cloud-apps"></a>Microsoft 云应用
+
+可以从 Microsoft 为以下云应用分配条件性访问策略：
+
+- Azure 远程应用
+
+- Dynamics CRM
+
+- Microsoft Office 365 Yammer
+
+- Microsoft Office 365 Exchange Online
+
+- Microsoft Office 365 SharePoint Online（包括 OneDrive for Business）
+
+- Microsoft Power BI 
+
+- Visual Studio Team Services
+
+- Microsoft Teams
+
+
+### <a name="other-apps"></a>其他应用 
+
+除了 Microsoft 云应用程序，可以将条件性访问策略分配给以下类型的云应用：
+
+- Azure Active Directory (Azure AD) 连接的应用程序
+
+- 预先集成的联合服务型软件 (SaaS) 应用程序
+
+- 使用密码单一登录 (SSO) 的应用程序
+
+- 业务线应用程序
+
+- 使用 Azure AD 应用程序代理的应用程序。 
+
+
+## <a name="client-apps-conditions"></a>客户端应用条件 
+
+当配置条件性访问策略时，可以设置[客户端应用条件](active-directory-conditional-access-azure-portal.md#client-apps)。 客户端应用条件允许你在用户尝试从这些类型的客户端应用进行访问时授予其访问权限或阻止访问：
+
+- 浏览器
+- 移动应用和桌面应用
+
+![控制](./media/active-directory-conditional-access-technical-reference/03.png)
+
+
+### <a name="supported-browsers"></a>支持的浏览器 
+
+如果你在条件性访问策略中选择“浏览器”来授予对资源的访问权限，那么仅在使用支持的浏览器尝试访问时才会授予访问权限。 当尝试使用不受支持的浏览器访问时，此尝试操作将受阻。
+
+![支持的浏览器](./media/active-directory-conditional-access-technical-reference/05.png)
+
+在条件性访问策略中，支持以下浏览器： 
+
+
+| 操作系统                     | 浏览器                 | 支持     |
+| :--                    | :--                      | :-:         |
+| Win 10                 | IE、Edge                 | ![勾选标记][1] |
+| Win 10                 | Chrome                   | 预览     |
+| Win 8/8.1            | IE、Chrome               | ![勾选标记][1] |
+| Win 7                  | IE、Chrome               | ![勾选标记][1] |
+| iOS                    | Safari                   | ![勾选标记][1] |
+| Android                | Chrome                   | ![勾选标记][1] |
+| Windows Phone          | IE、Edge                 | ![勾选标记][1] |
+| Windows Server 2016    | IE、Edge                 | ![勾选标记][1] |
+| Windows Server 2016    | Chrome                   | 即将支持 |
+| Windows Server 2012 R2 | IE、Chrome               | ![勾选标记][1] |
+| Windows Server 2008 R2 | IE、Chrome               | ![勾选标记][1] |
+| Mac OS                 | Safari                   | ![勾选标记][1] |
+| Mac OS                 | Chrome                   | 即将支持 |
+
+> [!NOTE]
+> 对于 Chrome 支持，必须使用 Windows 10 创建者更新并安装位于[此处](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)的扩展。
+
+
+### <a name="supported-mobile-apps-and-desktop-clients"></a>支持的移动应用和桌面客户端
+
+如果在条件性访问策略中选择“移动应用和桌面客户端”来授予对资源的访问权限，那么仅在使用受支持的移动应用或桌面客户端尝试访问时才会授予访问权限。 当尝试使用不受支持的移动应用或桌面客户端访问时，此尝试操作将受阻。
+
+![控制](./media/active-directory-conditional-access-technical-reference/06.png)
+
+以下移动应用和桌面客户端支持对 Office 365 及其他连接了 Azure AD 的服务应用程序的条件性访问：
+
+
+| 客户端应用| 目标服务| 平台 |
+| :-- | --- | --- |
+| 用于应用的 MFA 和位置策略。 不支持基于设备的策略。| 任何“我的应用”应用服务| Android 和 iOS|
+| Azure 远程应用| Azure 远程应用服务| Windows 10、Windows 8.1、Windows 7、iOS、Android 和 Mac OS X|
+| Dynamics CRM 应用| Dynamics CRM| Windows 10、Windows 8.1、Windows 7、iOS 和 Android|
+| Microsoft Teams 服务 - 这控制支持 Microsoft Teams 及其所有客户端应用（Windows 桌面、MAC OS X、iOS、Android、WP 和 Web 客户端）的所有服务| Microsoft Teams| Windows 10、Windows 8.1、Windows 7、iOS/Android 和 MAC OSX|
+| 邮件/日历/人脉应用、Outlook 2016、Outlook 2013（采用新式身份验证）、Skype for Business（采用新式身份验证）| Office 365 Exchange Online| Windows 10|
+| Outlook 2016、Outlook 2013（采用新式身份验证）、Skype for Business（采用新式身份验证）| Office 365 Exchange Online| Windows 8.1、Windows 7|
+| Outlook 移动应用| Office 365 Exchange Online| iOS|
+| Outlook 2016 (Office for macOS)| Office 365 Exchange Online| Mac OS X|
+| Office 2016 应用、通用 Office 应用、Office 2013（采用新式身份验证）、OneDrive 同步客户端（参见[说明](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)）、计划将来提供的 Office 组支持、计划将来提供的 SharePoint 应用支持| Office 365 SharePoint Online| Windows 10|
+| Office 2016 应用、Office 2013（采用新式身份验证）、OneDrive 同步客户端（参见[说明](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)）| Office 365 SharePoint Online| Windows 8.1、Windows 7|
+| Office 移动应用| Office 365 SharePoint Online| iOS、Android|
+| Office 2016 for macOS（只有 Word、Excel、PowerPoint、OneNote）。 将来计划提供 OneDrive for Business 支持| Office 365 SharePoint Online| Mac OS X|
+| Office Yammer 应用| Office 365 Yammer| Windows 10、iOS、Android|
+| PowerBI 应用。 适用于 Android 的 Power BI 应用当前不支持基于设备的条件访问。| PowerBI 服务| Windows 10、Windows 8.1、Windows 7 和 iOS|
+| Visual Studio Team Services 应用| Visual Studio Team Services| Windows 10、Windows 8.1、Windows 7、iOS 和 Android|
 
 
 
 
 
 
-## <a name="enable-access-rules"></a>启用访问规则
-可以对每个应用程序启用或禁用每个规则。 当规则处于“启用”状态时，可以对访问应用程序的用户启用并执行规则。 当规则处于“禁用”状态时，则不使用规则，并且规则不会影响用户的登录体验。
-
-## <a name="applying-rules-to-specific-users"></a>将规则应用于特定用户
-通过设置“应用于”可将规则应用于基于安全组的特定用户集。 可将“应用于”设置为“所有用户”或“组”。 当设置为“所有用户”时，规则应用于有权访问应用程序的任何用户。 “组”选项允许选择特定安全组和通讯组，将仅对这些组执行规则。
-
-部署规则时，通常首先将它应用于有限的一组用户，这些用户是试验组的成员。 一旦完成后，可以将规则应用到**所有用户**。 此操作可对组织中的所有用户执行规则。
-
-使用“排除”选项也可以将选择的组从策略中免除。 这些组的任何成员将被免除，即使他们出现在包含的组中也是如此。
-
-## <a name="at-work-networks"></a>“工作”网络
-使用“工作”网络的条件性访问规则依赖于在 Azure AD 中配置的受信任的 IP 地址范围或 AD FS 中“内部公司网络”声明的使用。 这些规则包括：
-
-* 不工作时要求多重身份验证
-* 不工作时阻止访问
-
-用于指定“工作”网络的选项
-
-1. 在[多重身份验证配置页](../multi-factor-authentication/multi-factor-authentication-whats-next.md)上配置受信任的 IP 地址范围。 条件性访问策略在每个身份验证请求和令牌颁发中使用此配置的范围来计算规则。 
-2. 配置内部公司网络声明的使用，此选项可以通过 AD FS 用于联合目录。 若要了解有关内部公司网络声明的详细信息，请参阅[受信任的 IP](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips)。
 
 
-## <a name="rules-based-on-application-sensitivity"></a>基于应用程序敏感性的规则
-对每个应用程序配置规则，可以保护高价值的服务且不会影响访问其他服务。 可以在应用程序的“配置”选项卡上配置条件性访问规则。 
 
-当前提供的规则：
 
-* **需要多重身份验证**
-  
-  * 此策略应用到的所有用户需要至少一次通过多重身份验证进行验证。
-* **不在工作网络时要求多重身份验证**
-  
-  * 如果应用此策略，那么用户从非工作的远程位置访问服务时，要求所有用户已执行至少一次多重身份验证。 如果用户从工作网络移至远程位置，那么当他们访问服务时需要执行多重身份验证。
-* **不在工作网络时阻止访问** 
-  
-  * 如果将“不在工作网络时阻止访问”策略应用于用户，那么当用户从工作网络移到远程位置时，将阻止他们访问。  当用户位于工作网络时将重新允许他们访问。
 
-## <a name="related-topics"></a>相关主题
-* [保护对 Office 365 和其他连接到 Azure Active Directory 的应用的访问](active-directory-conditional-access.md)
-* [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
+
+
+
+## <a name="next-steps"></a>后续步骤
+
+- 有关条件性访问的概述，请参阅 [Azure Active Directory 中的条件性访问](active-directory-conditional-access-azure-portal.md)
+- 如果已准备好在环境中配置条件性访问策略，请参阅 [Azure Active Directory 中条件性访问的最佳做法](active-directory-conditional-access-best-practices.md)
+
+
+
+<!--Image references-->
+[1]: ./media/active-directory-conditional-access-technical-reference/01.png
+
 
 
