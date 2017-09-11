@@ -32,10 +32,9 @@
 
 ## 规划和设计
 ### [Azure 应用服务最佳实践](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service%2ftoc.json)
-### [Azure 应用服务和现有的 Azure 服务](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [应用服务计划深度介绍](azure-web-sites-web-hosting-plans-in-depth-overview.md)
 ### [高密度托管](app-service-high-density-hosting.md)
-### [Linux 上的应用服务](app-service-linux-readme.md)
+### [Linux 上的应用服务](containers/app-service-linux-intro.md)
 ### [在 Azure 应用服务中使用 WebJobs](app-service-webjobs-readme.md)
 ### [应用服务环境](../app-service-web/app-service-app-service-environment-intro.md?toc=%2fazure%2fapp-service%2ftoc.json)
 #### [应用服务环境文档](app-service-app-service-environments-readme.md)
@@ -78,7 +77,6 @@
 #### [在流量管理器中使用自定义域](../app-service-web/web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
 ### [克隆现有应用](../app-service-web/app-service-web-app-cloning-portal.md?toc=%2fazure%2fapp-service%2ftoc.json)
-### [混合连接](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [混合连接 v2](app-service-hybrid-connections.md)
 ### [Azure 虚拟网络](../app-service-web/web-sites-integrate-with-vnet.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [高级配置](../app-service-web/web-sites-transform-extend.md?toc=%2fazure%2fapp-service%2ftoc.json)
@@ -94,7 +92,6 @@
 #### [使用 ExpressRoute 时的网络配置详细信息](../app-service-web/app-service-app-service-environment-network-configuration-expressroute.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
 ## [安全](app-service-security-readme.md)
-### [在 Azure 应用服务中保护应用安全](../app-service-web/web-sites-security.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [身份验证和授权](app-service-authentication-overview.md)
 ### 使用标识提供者进行身份验证
 #### [Azure Active Directory 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service%2ftoc.json)
@@ -117,7 +114,6 @@
 ## 备份
 ### [在 Azure 中备份应用](../app-service-web/web-sites-backup.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [在 Azure 中还原应用](../app-service-web/web-sites-restore.md?toc=%2fazure%2fapp-service%2ftoc.json)
-### [使用 REST 备份和还原应用服务应用](../app-service-web/websites-csm-backup.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
 ## [监视](../app-service-web/web-sites-monitor.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [启用诊断日志记录](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service%2ftoc.json)
@@ -126,18 +122,12 @@
 ## 自动化
 ### [敏捷开发](../app-service-web/app-service-agile-software-development.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [Azure Resource Manager 部署](../app-service-web/app-service-deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service%2ftoc.json)
-#### [Web + GitHub](../app-service-web/app-service-web-arm-from-github-provision.md?toc=%2fazure%2fapp-service%2ftoc.json)
-#### [Web + SQL ](../app-service-web/app-service-web-arm-with-sql-database-provision.md?toc=%2fazure%2fapp-service%2ftoc.json)
-#### [使用自定义主机名和 SSL 证书的 MSDeploy](../app-service-web/app-service-web-arm-with-msdeploy-provision.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### Powershell
 #### [自动备份和还原](app-service-powershell-backup.md)
 #### [应用克隆](../app-service-web/app-service-web-app-cloning.md?toc=%2fazure%2fapp-service%2ftoc.json)
 #### [SSL 证书绑定](../app-service-web/app-service-web-app-powershell-ssl-binding.md?toc=%2fazure%2fapp-service%2ftoc.json)
-#### [将 Azure Resource Manager 与 PowerShell 配合使用](../app-service-web/app-service-web-app-azure-resource-manager-powershell.md?toc=%2fazure%2fapp-service%2ftoc.json)
-### [使用 Azure 自动化管理应用](../app-service-web/automation-manage-web-app.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
 ## 集成
-### [使用混合连接访问本地资源](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [在 Azure 中使用 SendGrid 发送电子邮件](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [导出到 PowerApps 和 Microsoft Flow](app-service-export-api-to-powerapps-and-flow.md)
 
@@ -150,8 +140,6 @@
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=app-service)
 
 # 资源
-## [应用服务参考](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service%2ftoc.json)
-## [Azure 门户](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [最佳实践](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=windowsazurewebsitespreview)  
