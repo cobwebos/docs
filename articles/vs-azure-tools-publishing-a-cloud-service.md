@@ -115,7 +115,7 @@ ms.lasthandoff: 08/16/2017
    1. 要连接到正在运行 Web 角色的虚拟机，请单击“云资源管理器”或“服务器资源管理器”中的 Web 角色实例，并选择“使用远程桌面连接”。 有关如何连接到虚拟机的详细步骤，请参阅 [Using Remote Desktop with Azure Roles](vs-azure-tools-remote-desktop-roles.md)（对 Azure 角色使用远程连接）。
       
       浏览器会提示下载 .RDP 文件。
-   2. 若要添加 SSL 证书，请在 IIS 管理器中打开管理服务。 在 IIS 管理器中，通过在“操作”窗格中打开“绑定”链接来启用 SSL。 此时会显示“添加站点绑定”对话框。 选择“添加”，并在“类型”下拉列表中选择“HTTPS”。 在 SSL 证书列表中，选择已上传到 Azure 经典门户并已由 CA 签名的 SSL 证书。[](http://go.microsoft.com/fwlink/?LinkID=213885) 有关详细信息，请参阅 [Configure Connection Settings for the Management Service](http://go.microsoft.com/fwlink/?LinkId=215824)（配置管理服务的连接设置）。
+   2. 若要添加 SSL 证书，请在 IIS 管理器中打开管理服务。 在 IIS 管理器中，通过在“操作”窗格中打开“绑定”链接来启用 SSL。 此时会显示“添加站点绑定”对话框。 选择“添加”，并在“类型”下拉列表中选择“HTTPS”。 在 SSL 证书列表中，选择已上传到 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885) 并已由 CA 签名的 SSL 证书。 有关详细信息，请参阅 [Configure Connection Settings for the Management Service](http://go.microsoft.com/fwlink/?LinkId=215824)（配置管理服务的连接设置）。
       
       > [!NOTE]
       > 如果添加了受信任的 SSL 证书，“发布向导”中不再显示黄色警告三角形。
