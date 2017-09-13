@@ -17,10 +17,10 @@ ms.date: 07/15/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: 31ac18add9c3fd956e0d37b1e0c1a510265c22e6
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: 98ed23b8031c56ba642427e817e48a4e7a5830fc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 07/18/2017
 
 可以通过 Azure 门户创建 Azure 虚拟机。 此方法提供一个基于浏览器的用户界面，用于创建和配置虚拟机和所有相关的资源。 本快速入门介绍了如何创建虚拟机并在 VM 上安装 webserver。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
@@ -48,11 +48,11 @@ ms.lasthandoff: 07/18/2017
 
     ![显示 VM 大小的屏幕截图](./media/quick-create-portal/create-windows-vm-portal-sizes.png)  
 
-5. 在设置边栏选项卡中保留默认值，然后单击“确定”。
+5. 在“设置”下保留默认值，然后单击“确定”。 
 
 6. 在摘要页上，单击“确定”以开始虚拟机部署。
 
-7. VM 将固定到 Azure 门户仪表板。 完成部署后，VM 摘要边栏选项卡将自动打开。
+7. VM 将固定到 Azure 门户仪表板。 完成部署后，VM 摘要会自动打开。
 
 
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机
@@ -63,9 +63,9 @@ ms.lasthandoff: 07/18/2017
 
     ![门户 9](./media/quick-create-portal/quick-create-portal/portal-quick-start-9.png) 
 
-2. 若要连接到 VM，请打开下载的 RDP 文件。 出现提示时，请单击“连接”。 在 Mac 上，你需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)。
+2. 若要连接到 VM，请打开下载的 RDP 文件。 出现提示时，请单击“连接”。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)。
 
-3. 输入在创建虚拟机时指定的用户名和密码，然后单击“确定”。
+3. 输入在创建虚拟机时指定的用户名和密码，单击“确定”。
 
 4. 你可能会在登录过程中收到证书警告。 单击“是”或“继续”继续进行连接。
 
@@ -82,7 +82,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="open-port-80-for-web-traffic"></a>为 Web 流量打开端口 80 
 
-网络安全组 (NSG) 保护入站和出站流量的安全。 从 Azure 门户创建 VM 后，将会在进行 RDP 连接的端口 3389 上创建入站规则。 由于此 VM 托管 webserver，需为端口 80 创建 NSG 规则。
+网络安全组 (NSG) 保护入站和出站流量的安全。 从 Azure 门户创建 VM 后，会在进行 RDP 连接的端口 3389 上创建入站规则。 由于此 VM 托管 webserver，需为端口 80 创建 NSG 规则。
 
 1. 在虚拟机上，单击**资源组**的名称。
 2. 选择“网络安全组”。 可以通过“类型”列来标识 NSG。 
@@ -94,17 +94,17 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="view-the-iis-welcome-page"></a>查看 IIS 欢迎页
 
-安装 IIS 并向 VM 打开端口 80 以后，即可通过 Internet 访问 webserver。 打开 Web 浏览器，输入 VM 的公共 IP 地址。 该公共 IP 地址可以在 Azure 门户的 VM 边栏选项卡上找到。
+安装 IIS 并向 VM 打开端口 80 以后，即可通过 Internet 访问 webserver。 打开 Web 浏览器，输入 VM 的公共 IP 地址。 该公共 IP 地址可以在 Azure 门户的“虚拟机”下找到。
 
 ![IIS 默认站点](./media/quick-create-powershell/default-iis-website.png) 
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组、虚拟机和所有相关的资源时，可将其删除。 为此，请从虚拟机边栏选项卡中选择该资源组，然后单击“删除”。
+不再需要资源组、虚拟机和所有相关的资源时，可将其删除。 为此，请选择适用于 VM 的资源组，然后单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你部署了一台简单的虚拟机、一条网络安全组规则，并安装了一台 Web 服务器。 若要详细了解 Azure 虚拟机，请继续学习 Windows VM 的教程。
+在本快速入门中，部署了一台简单的虚拟机、一条网络安全组规则，并安装了一台 Web 服务器。 若要详细了解 Azure 虚拟机，请继续学习 Windows VM 的教程。
 
 > [!div class="nextstepaction"]
 > [Azure Windows 虚拟机教程](./tutorial-manage-vm.md)

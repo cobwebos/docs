@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 05/27/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 67b8e2e0039c8bc63f50f177e3c0d18b07df45e6
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: a8e4900bee81763300d976f0c966d7d20662ca27
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -27,16 +27,19 @@ ms.lasthandoff: 08/22/2017
 
 若要将 Azure 文件共享装载到其被托管时所在的 Azure 区域之外（例如本地或其他 Azure 区域），OS 必须支持 SMB 3.0。 
 
-Azure 文件共享可以装载在 Windows 计算机上，不管是在本地还是在 Azure VM 中，具体取决于 OS 版本。 下表说明了： 
+可以将 Azure 文件共享装载到在 Azure VM 中或本地运行的 Windows 安装。 下表说明了哪些 OS 版本支持在哪个环境中装载文件共享：
 
-| Windows 版本        | SMB 版本 |可以在 Azure VM 上装载|可以在本地装载|
-|------------------------|-------------|---------------------|---------------------|
-| Windows 7              | SMB 2.1     | 是                 | 否                  |
-| Windows Server 2008 R2 | SMB 2.1     | 是                 | 否                  |
-| Windows 8              | SMB 3.0     | 是                 | 是                 |
-| Windows Server 2012    | SMB 3.0     | 是                 | 是                 |
-| Windows Server 2012 R2 | SMB 3.0     | 是                 | 是                 |
-| Windows 10             | SMB 3.0     | 是                 | 是                 |
+| Windows 版本        | SMB 版本 | 可以在 Azure VM 中装载 | 可以在本地装载 |
+|------------------------|-------------|-----------------------|----------------------|
+| Windows 10<sup>1</sup>  | SMB 3.0 | 是 | 是 |
+| Windows Server 2016    | SMB 3.0     | 是                   | 是                  |
+| Windows 8.1            | SMB 3.0     | 是                   | 是                  |
+| Windows Server 2012 R2 | SMB 3.0     | 是                   | 是                  |
+| Windows Server 2012    | SMB 3.0     | 是                   | 是                  |
+| Windows 7              | SMB 2.1     | 是                   | 否                   |
+| Windows Server 2008 R2 | SMB 2.1     | 是                   | 否                   |
+
+<sup>1</sup>Windows 10 版本 1507、1511、1607、1703
 
 > [!Note]  
 > 我们始终建议你使用相对于 Windows 版本来说最新的 KB。

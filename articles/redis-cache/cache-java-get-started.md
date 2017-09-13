@@ -12,13 +12,13 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 04/13/2017
+ms.date: 08/31/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: 5369dcd6ad1ec93c63eb442db9fc5ffdcca37375
-ms.openlocfilehash: b95f37db90b105962c01545e25c8e14c53257ebc
-ms.lasthandoff: 02/11/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: b433eecb0424db85b616c40c5f0cdfc88692cef1
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="how-to-use-azure-redis-cache-with-java"></a>如何将 Azure Redis 缓存与 Java 配合使用
@@ -31,14 +31,14 @@ ms.lasthandoff: 02/11/2017
 > 
 > 
 
-Azure Redis 缓存可让你访问 Microsoft 管理的专用 Redis 缓存。 可从 Microsoft Azure 内部的任何应用程序访问你的缓存。
+Azure Redis 缓存用于访问 Microsoft 管理的专用 Redis 缓存。 可从 Microsoft Azure 内部的任何应用程序访问缓存。
 
 本主题说明如何将Azure Redis 缓存与 Java 配合使用。
 
 ## <a name="prerequisites"></a>先决条件
 [Jedis](https://github.com/xetorthio/jedis) - Redis 的 Java 客户端
 
-本教程使用 Jedis，但你可以使用 [http://redis.io/clients](http://redis.io/clients)中列出的任何 Java 客户端。
+本教程使用 Jedis，但可以使用 [http://redis.io/clients](http://redis.io/clients)中列出的任何 Java 客户端。
 
 ## <a name="create-a-redis-cache-on-azure"></a>在 Azure 上创建 Redis 缓存
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -82,4 +82,4 @@ Azure Redis 缓存可让你访问 Microsoft 管理的专用 Redis 缓存。 可�
 ## <a name="next-steps"></a>后续步骤
 * [启用缓存诊断](https://msdn.microsoft.com/library/azure/dn763945.aspx#EnableDiagnostics)，以便可以[监视](https://msdn.microsoft.com/library/azure/dn763945.aspx)缓存的运行状况。
 * 阅读官方 [Redis 文档](http://redis.io/documentation)。
-
+* 了解[如何配置 Spring Initializr 应用，以使用 Redis 缓存](cache-java-spring-boot-initializer-with-redis-cache.md)。

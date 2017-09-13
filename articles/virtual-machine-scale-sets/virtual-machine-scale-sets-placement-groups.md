@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/7/2017
+ms.date: 9/1/2017
 ms.author: guybo
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: 9e9eae1623e55c1c05e97aa0b836819ce5dc16f9
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 12303e4283de3d179590e599d4d2fe8f14167eda
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>使用大型虚拟机规模集
@@ -36,8 +36,8 @@ _大型_ 规模集之所以特别，不是因为 VM 数，而是因为其包含�
 若要确定应用程序能否有效使用大型规模集，请考虑以下要求：
 
 - 大型规模集需要 Azure 托管磁盘。 不通过托管磁盘创建的规模集需要多个存储帐户（每 20 台 VM 需要一个）。 根据设计，大型规模集专用于托管磁盘，其目的是减少存储管理开销，避免遇到存储帐户订阅限制的风险。 如果不使用托管磁盘，规模集仅限 100 台 VM。
-- 从 Azure Marketplace 映像创建的规模集的最大规模可以是 1,000 台 VM。
-- 从自定义映像（用户自己创建和上传的 VM 映射）创建的规模集目前的最大规模可以是 100 台 VM。
+- 从 Azure 应用商店映像创建的规模集的最大规模可以是 1,000 台 VM。
+- 从自定义映像（用户自己创建和上传的 VM 映射）创建的规模集目前的最大规模可以是 300 台 VM。
 - 对于由多个放置组组成的规模集，目前不支持通过 Azure 负载均衡器进行的第 4 层负载均衡。 若需使用 Azure 负载均衡器，请确保将规模集配置为使用单个放置组，这是默认设置。
 - 所有规模集均支持通过 Azure 应用程序网关进行的第 7 层负载均衡。
 - 规模集按定义使用单个子网 - 请确保子网的地址空间能够容纳所需的所有 VM。 默认情况下，规模集会进行过度预配（在部署或扩展时创建额外的 VM，免费），目的是提高部署可靠性和性能。 请额外预留 20% 的地址空间（相对于计划扩展的目标 VM 数）。
@@ -81,7 +81,7 @@ az vmss create --help
 如需大型规模集模板的完整示例，请参阅 [https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json)。
 
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>将现有的规模集转换为跨多个放置组
-若要使现有的 VM 规模集能够扩展到 100 台以上的 VM，需在规模集模型中将 _singplePlacementGroup_ 属性更改为 _false_。 可以使用 [Azure 资源浏览器](https://resources.azure.com/)对该属性进行测试性更改。 找到现有的规模集，选择“编辑”，然后更改 _singlePlacementGroup_ 属性。 如果看不到该属性，则可能是在使用旧版 Microsoft.Compute API 查看规模集。
+要使现有的 VM 规模集能够扩展到 100 台以上的 VM，需在规模集模型中将 _singplePlacementGroup_ 属性更改为 _false_。 可以使用 [Azure 资源浏览器](https://resources.azure.com/)对该属性进行测试性更改。 找到现有的规模集，选择“编辑”，并更改 _singlePlacementGroup_ 属性。 如果看不到该属性，则可能是在使用旧版 Microsoft.Compute API 查看规模集。
 
 >[!NOTE] 
 可以将规模集从仅支持单个放置组（默认行为）更改为支持多个放置组，但不能反过来进行转换。 因此，请确保在进行转换之前了解大型规模集的属性。 具体说来，请确保不需使用 Azure 负载均衡器进行第 4 层负载均衡操作。
