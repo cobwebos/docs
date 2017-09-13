@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: adegeo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cca4d126a5c5f012af6afb9a31d0aedc0f7eb155
 ms.openlocfilehash: edb9aaf6dae11c9b8a171b22bc8a17003f80d86b
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 12/16/2016
 
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>在 Azure 中为应用程序配置 SSL
@@ -37,8 +38,6 @@ ms.openlocfilehash: edb9aaf6dae11c9b8a171b22bc8a17003f80d86b
 此任务使用生产部署。 本主题的末尾提供了有关如何使用过渡部署的信息。
 
 如果尚未创建云服务，请首先阅读[此文章](cloud-services-how-to-create-deploy.md)。
-
-[!INCLUDE [websites-cloud-services-css-guided-walkthrough](../../includes/websites-cloud-services-css-guided-walkthrough.md)]
 
 ## <a name="step-1-get-an-ssl-certificate"></a>步骤 1：获取 SSL 证书
 若要为应用程序配置 SSL，你首先需要获取已由证书颁发机构 (CA)（出于此目的颁发证书的受信任的第三方）签署的 SSL 证书。 如果你尚未获取 SSL 证书，将需要从销售 SSL 证书的公司购买一个 SSL 证书。
@@ -187,9 +186,4 @@ ms.openlocfilehash: edb9aaf6dae11c9b8a171b22bc8a17003f80d86b
 [2]: ./media/cloud-services-configure-ssl-certificate/CopyURL.png
 [3]: ./media/cloud-services-configure-ssl-certificate/SSLCloudService.png
 [4]: ./media/cloud-services-configure-ssl-certificate/AddCertificateComplete.png  
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 
