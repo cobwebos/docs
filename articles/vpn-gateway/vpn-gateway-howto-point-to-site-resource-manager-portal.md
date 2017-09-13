@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/10/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 5c8e99f3ba52ef5d6f9f99ac24891c38e8970fff
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: cc9018d95ffce3b5b4a5ee20d5c78a2122e0223e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-certificate-authentication-azure-portal"></a>使用证书身份验证配置与 VNet 的点到站点连接：Azure 门户
@@ -134,7 +134,7 @@ Azure 使用证书对通过点到站点 VPN 连接连接到 VNet 的客户端进
 
 只要版本与客户端的体系结构匹配，就可以在每台客户端计算机上使用相同的 VPN 客户端配置包。 有关支持的客户端操作系统列表，请参阅本文末尾的[点到站点连接常见问题解答](#faq)。
 
-### <a name="step-1---generate-and-download-the-client-configuration-package"></a>步骤 1 - 生成和下载客户端配置包
+### <a name="1-generate-and-download-the-client-configuration-package"></a>1.生成和下载客户端配置包
 
 1. 在“点到站点配置”页上，单击“下载 VPN 客户端”可打开“下载 VPN 客户端”页。 生成包需要一到两分钟。
 
@@ -143,7 +143,7 @@ Azure 使用证书对通过点到站点 VPN 连接连接到 VNet 的客户端进
 
   ![VPN 客户端下载 2](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/vpnclient.png)
 
-### <a name="step-2---install-the-client-configuration-package"></a>步骤 2 - 安装客户端配置包
+### <a name="2-install-the-client-configuration-package"></a>2.安装客户端配置包
 
 1. 将配置文件通过本地方式复制到要连接到虚拟网络的计算机上。 
 2. 双击 .exe 文件，在客户端计算机上安装包。 配置包是你创建的，因此未签名，并可能会显示警告。 如果显示 Windows SmartScreen 弹出窗口，请单击“更多信息”（左侧），并单击“仍要运行”以安装该包。
@@ -227,7 +227,7 @@ Azure 使用证书对通过点到站点 VPN 连接连接到 VNet 的客户端进
 
 ## <a name="faq"></a>点到站点常见问题解答
 
-[!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-point-to-site-faq-include.md)]
+[!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-point-to-site-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
 连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。 若要详细了解网络和虚拟机，请参阅 [Azure 和 Linux VM 网络概述](../virtual-machines/linux/azure-vm-network-overview.md)。

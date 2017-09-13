@@ -10,21 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/27/2017
+ms.date: 09/03/2017
 ms.topic: get-started-article
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: 49086b51e2db1aebed45746306ae14b6f1feb631
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: d07b2354906994ef7842a64d9f58bcbcc18f96e7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/31/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 
 # <a name="create-and-deploy-your-first-azure-resource-manager-template"></a>创建和部署第一个 Azure 资源管理器模板
 本主题介绍如何通过相关步骤创建第一个 Azure Resource Manager 模板。 Resource Manager 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案相关联的概念，请参阅 [Azure Resource Manager 概述](resource-group-overview.md)。 如果有现成的资源，需要为这些资源获取模板，请参阅[从现有资源导出 Azure Resource Manager 模板](resource-manager-export-template.md)。
 
-若要创建和修改模板，需要 JSON 编辑器。 [Visual Studio Code](https://code.visualstudio.com/) 是轻量型开源跨平台代码编辑器。 强烈建议使用 Visual Studio Code 来创建资源管理器模板。 本主题假定你使用 VS Code；但是，如果有其他 JSON 编辑器（例如 Visual Studio），可以使用该编辑器。
+若要创建和修改模板，需要 JSON 编辑器。 [Visual Studio Code](https://code.visualstudio.com/) 是轻量型开源跨平台代码编辑器。 强烈建议使用 Visual Studio Code 来创建资源管理器模板。 本文假定你使用 VS Code。 如果有其他 JSON 编辑器（例如 Visual Studio），可以使用该编辑器。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -131,7 +131,7 @@ ms.lasthandoff: 07/31/2017
 
    ![选择目录](./media/resource-manager-create-first-template/select-templates.png)
 
-9. 选择**上传**。
+9. 选择“上传”。
 
    ![选择“上传”](./media/resource-manager-create-first-template/select-upload.png)
 
@@ -216,7 +216,7 @@ ms.lasthandoff: 07/31/2017
 
 保存文件。 
 
-完成本文中的步骤以后，模板将如下所示：
+模板现在如下所示：
 
 ```json
 {
@@ -289,6 +289,141 @@ az group deployment create --resource-group examplegroup --template-file azurede
 az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
 ```
 
+## <a name="use-autocomplete"></a>使用自动完成功能
+
+目前为止，你在模板上所做的工作只是从本文复制并粘贴 JSON。 但在开发自己的模板时，需查找并指定适用于资源类型的属性和值。 VS Code 读取资源类型的架构，并建议属性和值。 若要查看自动完成功能，请转到模板的属性元素处，然后添加新的一行。 键入一个引号，此时你会注意到，VS Code 立即建议可以在属性元素中使用的名称。
+
+![显示可用属性](./media/resource-manager-create-first-template/show-properties.png)
+
+选择“加密”。 键入冒号 (:)，VS Code 会建议添加新对象。
+
+![添加对象](./media/resource-manager-create-first-template/add-object.png)
+
+若要添加对象，请按 Tab 或 Enter。
+
+再次键入引号，此时会看到 VS Code 建议适用于加密的属性。
+
+![显示加密属性](./media/resource-manager-create-first-template/show-encryption-properties.png)
+
+选择“服务”，然后根据 VS Code 扩展继续添加值，直到：
+
+```json
+"properties": {
+    "encryption":{
+        "services":{
+            "blob":{
+              "enabled":true
+            }
+        }
+    }
+}
+```
+
+为存储帐户启用 Blob 加密。 但是，VS Code 发现了一个问题。 请注意，加密有一个警告。
+
+![加密警告](./media/resource-manager-create-first-template/encryption-warning.png)
+
+若要查看警告，请将鼠标悬停在绿线上。
+
+![缺少属性](./media/resource-manager-create-first-template/missing-property.png)
+
+可以看到，加密元素需要 keySource 属性。 在服务对象后添加一个逗号，然后添加 keySource 属性。 VS Code 建议使用 "Microsoft.Storage" 作为有效值。 完成后，属性元素为：
+
+```json
+"properties": {
+    "encryption":{
+        "services":{
+            "blob":{
+              "enabled":true
+            }
+        },
+        "keySource":"Microsoft.Storage"
+    }
+}
+```
+
+最终模板为：
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageSKU": {
+      "type": "string",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_ZRS",
+        "Standard_GRS",
+        "Standard_RAGRS",
+        "Premium_LRS"
+      ],
+      "defaultValue": "Standard_LRS",
+      "metadata": {
+        "description": "The type of replication to use for the storage account."
+      }
+    },   
+    "storageNamePrefix": {
+      "type": "string",
+      "maxLength": 11,
+      "defaultValue": "storage",
+      "metadata": {
+        "description": "The value to use for starting the storage account name. Use only lowercase letters and numbers."
+      }
+    }
+  },
+  "variables": {
+    "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "name": "[variables('storageName')]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
+      "sku": {
+        "name": "[parameters('storageSKU')]"
+      },
+      "kind": "Storage",
+      "location": "[resourceGroup().location]",
+      "tags": {},
+      "properties": {
+        "encryption":{
+          "services":{
+            "blob":{
+              "enabled":true
+            }
+          },
+          "keySource":"Microsoft.Storage"
+        }
+      }
+    }
+  ],
+  "outputs": {}
+}
+```
+
+## <a name="deploy-encrypted-storage"></a>部署加密的存储
+
+再次部署模板并提供新的存储帐户名称。
+
+对于 PowerShell，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile azuredeploy.json -storageNamePrefix storesecure
+```
+
+对于 Azure CLI，请使用：
+
+```azurecli
+az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageNamePrefix=storesecure
+```
+
+对于 Cloud Shell，请将更改的模板上传到文件共享。 覆盖现有文件。 然后，使用以下命令：
+
+```azurecli
+az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageNamePrefix=storesecure
+```
+
 ## <a name="clean-up-resources"></a>清理资源
 
 不再需要时，请通过删除资源组来清理部署的资源。
@@ -306,6 +441,7 @@ az group delete --name examplegroup
 ```
 
 ## <a name="next-steps"></a>后续步骤
+* 若要获得模板开发方面的更大帮助，可以安装 VS Code 扩展。 有关详细信息，请参阅[使用 Visual Studio Code 扩展创建 Azure 资源管理器模板](resource-manager-vscode-extension.md)
 * 若要详细了解模板的结构，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
 * 若要了解存储帐户的属性，请查看[存储帐户模板参考](/azure/templates/microsoft.storage/storageaccounts)。
 * 若要查看许多不同类型的解决方案的完整模型，请参阅 [Azure Quickstart Templates](https://azure.microsoft.com/documentation/templates/)（Azure 快速入门模板）。

@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 6/13/2017
 ms.author: parakhj
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: 3d4fe2fa10d848c8b29e4d22d284c0d378f07ae0
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: 0e91d249116d39675d6e4bdf429442b6bc8af391
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 # <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C：注册应用程序
@@ -31,6 +31,8 @@ ms.lasthandoff: 08/18/2017
 
 从 Azure 门户中的 Azure AD B2C 边栏选项卡创建的应用程序必须从同一位置进行管理。 如果使用 PowerShell 或另一个门户编辑 B2C 应用程序，则应用程序不受支持且不适用于 Azure AD B2C。 有关详细信息，请参阅[出错的应用](#faulted-apps)部分。 
 
+本文所用示例有助于示例入门。 可以在后续文章中详细了解这些示例。
+
 ## <a name="navigate-to-b2c-settings"></a>导航到 B2C 设置
 
 以 B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。 
@@ -39,13 +41,13 @@ ms.lasthandoff: 08/18/2017
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](../../includes/active-directory-b2c-portal-navigate-b2c-service.md)]
 
-根据要注册的应用程序类型，选择后续步骤：
+## <a name="choose-next-steps-based-on-your-application-type"></a>根据应用程序类型选择后续步骤
 
 * [注册 Web 应用程序](#register-a-web-app)
 * [注册 Web API](#register-a-web-api)
 * [注册移动或本机应用程序](#register-a-mobile-or-native-app)
  
-## <a name="register-a-web-app"></a>注册 Web 应用
+### <a name="register-a-web-app"></a>注册 Web 应用
 
 [!INCLUDE [active-directory-b2c-register-web-app](../../includes/active-directory-b2c-register-web-app.md)]
 
@@ -59,7 +61,7 @@ ms.lasthandoff: 08/18/2017
 
 [跳转到“后续步骤”](#next-steps)
 
-## <a name="register-a-web-api"></a>注册 Web API
+### <a name="register-a-web-api"></a>注册 Web API
 
 [!INCLUDE [active-directory-b2c-register-web-api](../../includes/active-directory-b2c-register-web-api.md)]
 
@@ -67,7 +69,7 @@ ms.lasthandoff: 08/18/2017
 
 [跳转到“后续步骤”](#next-steps)
 
-## <a name="register-a-mobile-or-native-app"></a>注册移动或本机应用
+### <a name="register-a-mobile-or-native-app"></a>注册移动或本机应用
 
 [!INCLUDE [active-directory-b2c-register-mobile-native-app](../../includes/active-directory-b2c-register-mobile-native-app.md)]
 

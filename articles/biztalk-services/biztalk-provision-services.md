@@ -152,7 +152,7 @@ Access Control 值可用于任何应用程序。 创建 Azure BizTalk 服务时�
 Access Control 服务标识是一组凭据，这些凭据允许应用程序或客户端使用 Access Control 直接进行身份验证并接收令牌。
 
 > [!IMPORTANT]
-> BizTalk 服务将“所有者”用于默认服务标识以及“密码”值。 如果使用“对称密钥”值而不是“密码”值，则可能会发生以下错误。<br/><br/>*无法使用指定的凭据连接到 Access Control 管理服务帐户*
+> BizTalk 服务将“所有者”用于默认服务标识以及“密码”值。 如果使用“对称密钥”值而不是“密码”值，则可能会发生以下错误。<br/><br/>*Could not connect to the Access Control Management Service account with the specified credentials*
 > 
 > 
 

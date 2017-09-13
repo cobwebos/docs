@@ -24,6 +24,8 @@ Azure 容器服务是支持 SLA 的 Azure 服务，具有 Azure 门户、Azure �
 
 [ACS 引擎](http://github.com/Azure/acs-engine)是一个开源项目，适用于高级用户在所有级别自定义群集配置。 可以更改基础结构和软件的配置意味着，我们不提供针对 ACS 引擎的 SLA。 支持问题是通过 GitHub 上的开源项目处理的，不通过官方的 Microsoft 渠道。 
 
+如需其他详细信息，请参阅[适用于容器的支持策略](https://support.microsoft.com/en-us/help/4035670/support-policy-for-containers)。
+
 ## <a name="cluster-management"></a>群集管理
 
 ### <a name="how-do-i-create-ssh-keys-for-my-cluster"></a>如何为群集创建 SSH 密钥？
