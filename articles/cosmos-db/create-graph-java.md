@@ -110,7 +110,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
     设置|建议的值|说明
     ---|---|---
-    主机|[***.graphs.azure.com]|请参看此表后面的屏幕截图。 此值是 Azure 门户“概览”页上的“Gremlin URI”值，方括号中已删除尾部的 :443/。<br><br>也可以在“密钥”选项卡中使用“URI”值来检索此值：删除 https://，将 documents 更改为 graphs 并删除尾部的 :443/ 即可。
+    主机|[***.graphs.azure.com]|请参看此表后面的屏幕截图。 此值是 Azure 门户“概览”页上的“Gremlin URI”值，方括号中已删除尾部的 :443/。<br><br>也可以在“密钥”选项卡中使用“URI”值来检索此值：删除 https:// ，将 documents 更改为 graphs 并删除尾部的 :443/ 即可。
     用户名|/dbs/sample-database/colls/sample-graph|采用 `/dbs/<db>/colls/<coll>` 格式的资源，其中，`<db>` 是现有数据库名称，`<coll>` 是现有集合名称。
     密码|*主密钥*|请参看此表后面的第二个屏幕截图。 此值是主键，可以从 Azure 门户的“键”页上的“主键”框中检索到。 使用该框右侧的复制按钮复制该值。
 

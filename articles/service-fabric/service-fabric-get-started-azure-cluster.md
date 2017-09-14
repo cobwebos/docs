@@ -42,7 +42,7 @@ ms.lasthandoff: 08/28/2017
 
 4. 填充“群集配置”表单。  对于“节点类型计数”，请输入“1”。
 
-5. 选择“节点类型 1 (主)”并填充“节点类型配置”表单。  输入节点类型名称，将“耐久性层”设置为“Bronze”。[](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)  选择 VM 大小。
+5. 选择“节点类型 1 (主)”并填充“节点类型配置”表单。  输入节点类型名称，将 [耐久性层](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) 设置为“Bronze”。  选择 VM 大小。
 
     节点类型定义 VM 大小、VM 数、自定义终结点，以及该类型 VM 的其他设置。 定义的每个节点类型均作为独立的虚拟机规模集设置，用于以集的形式部署和管理虚拟机。 每个节点类型可以独立扩展或缩减、打开不同的端口集，并且可以有不同的容量指标。  第一个节点类型（主节点类型）用于托管 Service Fabric 系统服务，必须包含至少五个 VM。
 
