@@ -128,7 +128,7 @@ ms.lasthandoff: 08/29/2017
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-versal-tutorial/tutorial_general_400.png)
     
-7. 若要在“Versal”端配置单一登录，需要将下载的元数据 XML 和 SAML 签名证书发送到 Versal 支持团队[](https://support.versal.com/hc/)。 他们将对 Versal 组织进行配置，以使 SAML SSO 连接在两端均正确设置。
+7. 若要在“Versal”端配置单一登录，需要将下载的元数据 XML 和 SAML 签名证书 [发送到 Versal 支持团队](https://support.versal.com/hc/) 。 他们将对 Versal 组织进行配置，以使 SAML SSO 连接在两端均正确设置。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
