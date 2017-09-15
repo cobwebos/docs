@@ -4,6 +4,8 @@
 
 # 快速入门
 ## [创建 .NET 应用程序](service-fabric-quickstart-dotnet.md)
+## [部署 Windows 容器应用程序](service-fabric-quickstart-containers.md)
+## [部署 Linux 容器应用程序](service-fabric-quickstart-containers-linux.md)
 
 # 教程
 ## 部署 .NET 应用
@@ -122,7 +124,7 @@
 ### [Reliable Actors 中的诊断](service-fabric-reliable-actors-diagnostics.md)
 ### [用于可靠服务远程处理的性能计数器](service-fabric-reliable-serviceremoting-diagnostics.md)
 
-# 操作方法指南
+# 操作指南
 ## 设置开发环境
 ### [Windows](service-fabric-get-started.md)
 ### [Linux](service-fabric-get-started-linux.md)
@@ -278,7 +280,7 @@
 ### [可视化群集](service-fabric-visualizing-your-cluster.md)
 ### [连接到安全群集](service-fabric-connect-to-secure-cluster.md)
 
-### [使用 Service Fabric CLI 管理群集](service-fabric-cli.md)
+### [Service Fabric CLI 入门](service-fabric-cli.md)
 ### [修补群集节点](service-fabric-patch-orchestration-application.md)
 
 ### 管理和协调群集资源
