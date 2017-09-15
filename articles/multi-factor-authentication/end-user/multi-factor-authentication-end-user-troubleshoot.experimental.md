@@ -4,7 +4,7 @@ description: "本文档向用户提供有关如何解决 Azure 多重身份验�
 services: multi-factor-authentication
 keywords: "多重身份验证客户端, 身份验证问题, 相关性 ID"
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
 ms.service: multi-factor-authentication
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
-ms.author: kgremban
+ms.author: joflore
 ms.reviewer: yossib
 ms.custom: end-user
 ms.translationtype: HT

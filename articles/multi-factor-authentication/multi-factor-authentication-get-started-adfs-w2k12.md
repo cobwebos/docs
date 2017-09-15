@@ -3,7 +3,7 @@ title: "将 MFA 服务器与 Windows Server 中的 AD FS 配合使用 | Microsof
 description: "本文介绍如何开始将 Azure 多重身份验证与 Windows Server 2012 R2 和 2016 中的 AD FS 配合使用。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 ms.assetid: 57208068-1e55-45b6-840f-fdcd13723074
 ms.service: multi-factor-authentication
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/25/2017
-ms.author: kgremban
+ms.author: joflore
 ms.reviewer: 
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT

@@ -3,7 +3,7 @@ title: "根据 Azure MFA NPS 扩展的错误代码进行故障排除 | Microsoft
 description: "本文可以帮助解决 Azure 多重身份验证的 NPS 扩展问题，并提供常见错误消息的具体解决方法"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 ms.assetid: 
 ms.service: multi-factor-authentication
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
-ms.author: kgremban
+ms.author: joflore
 ms.reviewer: yossib
 ms.custom: it-pro
 ms.translationtype: HT

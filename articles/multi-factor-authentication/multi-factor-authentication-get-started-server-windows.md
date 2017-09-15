@@ -3,7 +3,7 @@ title: "Windows 身份验证和 Azure MFA 服务器 | Microsoft 文档"
 description: "本 Azure Multi-Factor Authentication 页面将会帮助你部署 Windows 身份验证和 Azure Multi-Factor Authentication 服务器。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 ms.assetid: 19a4043f-c4ce-43c0-80e7-2548ee92cb74
 ms.service: multi-factor-authentication
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/06/2017
-ms.author: kgremban
+ms.author: joflore
 ms.reviewer: yossib
 ms.custom: it-pro
 ms.translationtype: Human Translation

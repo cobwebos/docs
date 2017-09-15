@@ -3,7 +3,7 @@ title: "使用现有的 NPS 服务器提供 Azure MFA 功能 | Microsoft 文档"
 description: "适用于 Azure 多重身份验证的网络策略服务器扩展是一个简单的解决方案，可将基于云的双步验证功能添加到现有的身份验证基础结构。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 ms.assetid: 
 ms.service: multi-factor-authentication
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
-ms.author: kgremban
+ms.author: joflore
 ms.reviewer: yossib
 ms.custom: H1Hack27Feb2017; it-pro
 ms.translationtype: HT
