@@ -10,7 +10,7 @@
 * [如何使用 Visual Studio 部署 Azure WebJobs](../articles/app-service-web/websites-dotnet-deploy-webjobs.md)
 * [如何使用 Azure 管理门户部署 WebJobs](../articles/app-service-web/web-sites-create-web-jobs.md)
 * [添加 Azure WebJob 对话框](../articles/app-service-web/websites-dotnet-deploy-webjobs.md#configure)
-* [在 Azure 管理门户中创建计划的 WebJob](../articles/app-service-web/web-sites-create-web-jobs.md#CreateScheduled)
+* [在 Azure 管理门户中创建计划的 WebJob](../articles/app-service-web/web-sites-create-web-jobs.md#CreateScheduledCRON)
 * [通过 cron 表达式计划 Azure WebJobs](http://blog.amitapple.com/post/2015/06/scheduling-azure-webjobs/)
 * [查看 WebJobs 仪表板](../articles/app-service-web/websites-dotnet-webjobs-sdk-get-started.md#view-the-webjobs-sdk-dashboard)
 * [如何使用 WebJobs SDK 写入日志并在仪表板中查看日志](../articles/app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#logs)
