@@ -60,6 +60,7 @@
 ### 配置自动缩放
 #### [门户](cloud-services-how-to-scale-portal.md)
 #### [经典门户](cloud-services-how-to-scale.md)
+#### [PowerShell](cloud-services-how-to-scale-powershell.md)
 ### [使用 Python 管理 Azure 资源](cloud-services-python-how-to-use-service-management.md)
 
 ### [来宾 OS 修补程序](cloud-services-guestos-msrc-releases.md)

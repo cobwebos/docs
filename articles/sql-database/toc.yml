@@ -261,10 +261,6 @@
           href: sql-database-long-term-backup-retention-configure.md
         - name: 异地复制 - 门户
           href: sql-database-geo-replication-portal.md
-        - name: 异地复制 - T-SQL - 配置
-          href: sql-database-geo-replication-transact-sql.md
-        - name: 异地复制 - T-SQL - 故障转移
-          href: sql-database-geo-replication-failover-transact-sql.md
         - name: 恢复单个表
           href: sql-database-cloud-migrate-restore-single-table-azure-backup.md
     - name: 加载和移动数据
@@ -299,8 +295,6 @@
           href: sql-database-troubleshoot-common-connection-issues.md
         - name: Azure 自动化
           href: sql-database-manage-automation.md
-        - name: Azure RemoteApp
-          href: sql-database-ssms-remoteapp.md
     - name: 向外扩展
       items:
         - name: 创建分片应用
