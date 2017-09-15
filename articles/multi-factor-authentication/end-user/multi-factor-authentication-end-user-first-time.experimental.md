@@ -4,7 +4,7 @@ description: "如果公司已配置 Azure 多重身份验证，系统会提示�
 services: multi-factor-authentication
 keywords: "如何使用 azure 目录, 云中的 active directory, active directory 教程"
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 editor: pblachar
 ms.assetid: 46f83a6a-dbdd-4375-8dc4-e7ea77c16357
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
-ms.author: kgremban
+ms.author: joflore
 ms.custom: end-user
 ms.translationtype: HT
 ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992

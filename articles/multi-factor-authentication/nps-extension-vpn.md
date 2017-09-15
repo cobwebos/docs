@@ -4,7 +4,7 @@ description: "本文将讨论如何使用 Microsoft Azure 的网络策略服务�
 services: active-directory
 keywords: "Azure MFA 集成了 VPN、Azure Active Directory、网络策略服务器扩展"
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 ms.assetid: 
 ms.service: active-directory
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
-ms.author: kgremban
+ms.author: joflore
 ms.reviewer: jsnow
 ms.custom: it-pro
 ms.translationtype: HT

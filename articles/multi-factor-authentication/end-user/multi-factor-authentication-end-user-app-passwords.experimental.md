@@ -3,7 +3,7 @@ title: "如何使用 Azure MFA 中的应用密码？ | Microsoft 文档"
 description: "此页面将帮助用户了解什么是应用密码，以及在 Azure MFA 中，应用密码有什么作用。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 editor: yossib
 ms.assetid: 345b757b-5a2b-48eb-953f-d363313be9e5
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
-ms.author: kgremban
+ms.author: joflore
 ms.custom: end-user
 ms.translationtype: HT
 ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992

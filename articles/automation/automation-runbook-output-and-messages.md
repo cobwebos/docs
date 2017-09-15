@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/11/2016
 ms.author: magoedte;bwren
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 505834d7354fb920e7ebd931e3bb31d837a79077
 ms.openlocfilehash: 6f01f97e38aa271034741c8a5e2f8057ab61fcd7
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure 自动化中的 Runbook 输出和消息
@@ -187,6 +188,11 @@ Windows PowerShell 使用[首选项变量](http://technet.microsoft.com/library/
 
     Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
     –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Output
+    
+    # For more detailed job output, pipe the output of Get-AzureRmAutomationJobOutput to Get-AzureRmAutomationJobOutputRecord
+    Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
+    –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Any | Get-AzureRmAutomationJobOutputRecord
+    
 
 ### <a name="graphical-authoring"></a>图形创作
 对于图形 Runbook，以活动级别跟踪形式提供了额外的日志记录。  有两个级别的跟踪：基本和详细。  在基本跟踪中，你可以看到 Runbook 中每个活动的开始和结束时间，以及与任何活动重试相关的信息，例如尝试次数和活动开始时间。  在详细跟踪中，可获取基本跟踪以及每个活动的输入和输出数据。  请注意，目前跟踪记录是使用详细流写入的，因此你必须在启用跟踪时启用详细日志记录。  对于启用了跟踪的图形 Runbook，无需记录进度记录，因为基本跟踪起着相同作用，并且信息更丰富。
@@ -220,10 +226,5 @@ Windows PowerShell 使用[首选项变量](http://technet.microsoft.com/library/
 ## <a name="next-steps"></a>后续步骤
 * 若要详细了解 Runbook 执行方式、如何监视 Runbook 作业和其他技术详细信息，请参阅 [Track a runbook job](automation-runbook-execution.md)（跟踪 Runbook 作业）
 * 若要了解如何设计和使用子 Runbook，请参阅 [Azure 自动化中的子 Runbook](automation-child-runbooks.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
