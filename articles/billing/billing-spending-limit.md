@@ -12,62 +12,74 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 09/08/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: a2743ef34bde0faabb3afd2ace27acddd59d3d70
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: 0c9825f11733127a547e06e159172a08cef736eb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>了解 Azure 支出限制以及移除方式
 
-Azure 支出限制用于限制 Azure 订阅支出额。 如果新客户注册包括几个月信用额度的试用版产品/服务，则这些客户都将默认开启支出限制。 支出限制为 $0。 无法进行更改。 支出限制不可用于即用即付订阅和承诺计划等订阅类型。 请参阅 [Azure 产品/服务以及支出限制可用性的完整列表](https://azure.microsoft.com/support/legal/offer-details/)。
+Azure 中的支出限制是为了防止支出超过信用额度。 如果注册使用试用版的新客户或具有几个月信用额度的产品/服务，将默认开启支出限制。 支出限制为 $0。 无法进行更改。 支出限制不可用于即用即付订阅和承诺计划等订阅类型。 请参阅 [Azure 产品/服务以及支出限制可用性的完整列表](https://azure.microsoft.com/support/legal/offer-details/)。
+
+**想查找计费警报？** 请参阅[为 Azure 订阅设置计费或信用额度警报](billing-set-up-alerts.md)。
 
 ## <a name="what-happens-when-i-reach-the-spending-limit"></a>达到支出限制后会发生什么情况？
 
-因使用而产生的费用已经用完了产品/服务中包括的每月额度时，部署的服务会在该计费月的剩余时间中被禁用。 例如，部署的云服务会从生产中移除，Azure 虚拟机会被停止并取消分配。 要阻止服务被禁用，可以选择删除支出限制。 当服务被禁用时，只能以只读模式向管理员提供存储帐户和数据库中的数据。 在下一计费月开始时，如果产品/服务包含多个月的额度，则将重新启用订阅。 然后就可重新部署云服务，并可完全访问存储帐户和数据库。
+因使用而产生的费用已经用完了订阅中包括的每月额度时，部署的服务会在该计费月的剩余时间中被禁用。 
 
-在免费试用版订阅达到支出限制后，可重新启用订阅，并使其在 90 天内自动[升级到标准的即用即付产品/服务](billing-upgrade-azure-subscription.md)。
+例如，用完订阅中所含信用额度后，部署的云服务会从生产中移除，Azure 虚拟机会被停止并取消分配。 你的存储帐户和数据库中的数据将只能通过只读方式访问。
 
-点击产品/服务的支出限制时，即会收到通知。 登录 [Azure 帐户中心](https://account.windowsazure.com)，选择“帐户”，并选择“订阅”。 会看到已达到支出限制的订阅的相关通知。
+在下一计费周期开始时，如果订阅产品/服务包含多个月的额度，则将自动重新启用订阅。 然后就可重新部署云服务，并可完全访问存储帐户和数据库。
 
-## <a name="things-you-are-charged-for-even-if-you-have-a-spending-limit-enabled"></a>即使启用了支出限制也会收取费用的事项
+达到订阅的支出限制时，我们会发送电子邮件通知。 登录到[帐户中心](https://account.windowsazure.com/Subscriptions)，会看到已达到支出限制的订阅的相关通知。
 
-即使设定了支出限制，某些 Azure 服务和 [Marketplace 购买项](https://azure.microsoft.com/marketplace/)也会在付款方式 (CC) 下产生费用。 例如，Visual Studio 许可证、Azure Active Directory Premium、支持计划以及通过 Marketplace 销售的大多数第三方品牌服务。
+如果使用的是免费试用版并达到支出限制，可以[升级到即用即付](billing-upgrade-azure-subscription.md)以取消支出限制并自动重新启用订阅。
 
+<a id="remove"></a>
 
-## <a name="when-not-to-use-the-spending-limit"></a>不使用支出限制的情况
-
-支出限制会阻止你部署或使用某些 Marketplace 和 Microsoft 服务。 有些情况应移除订阅上的支出限制。
-
-- 计划部署第一方映像（如 Oracle）和服务（如 Visual Studio Team Services）。 此方案几乎立马导致你超过支出限制并导致订阅被禁。
-
-- 拥有不可中断的服务。
-
-- 服务和资源包含希望保留的设置，如虚拟 IP 地址。 这些设置会在取消分配服务和资源时丢失。
-
-
-## <a name="remove-the-spending-limit"></a>移除支出限制
+## <a name="remove-the-spending-limit-in-account-center"></a>在帐户中心消除支出限制
 
 只要订阅关联了有效的付款方法，即可随时移除支出限制。 对于具有几个月信用额度的产品/服务，可以在下个计费周期开始时重新启用支出限制。
 
 若要移除支出限制，请按照以下步骤操作：
 
-1. 登录到 [Azure 帐户中心](https://account.windowsazure.com)。
-
-2. 选择一个订阅。
-
-3. 如果订阅因达到支出限制而被禁用，请单击此通知：“订阅达到了支出限制，且已被禁用以免产生费用”。 否则，请单击“订阅状态”区域中的“移除支出限制”。
-
-4. 选择适合选项。
+1. 登录到[帐户中心](https://account.windowsazure.com/Subscriptions)。
+1. 选择一个订阅。
+1. 如果订阅因达到支出限制而被禁用，请单击此通知：“订阅达到了支出限制，且已被禁用以免产生费用。” 否则，请单击“订阅状态”区域中的“移除支出限制”。
+1. 选择适合选项。
 
 |选项|效果|
 |-------|-----|
 |永久性移除支出限制|移除支出限制，且在下次计费期开始不自动打开此限制。|
 |移除当前计费期间的支出限制|移除支出限制，使其在下次计费期开始时自动重新打开。|
 
+## <a name="frequently-asked-questions"></a>常见问题
+
+### <a name="why-would-i-want-to-remove-the-spending-limit"></a>为什么要移除支出限制？
+
+支出限制会阻止你部署或使用某些第三方和 Microsoft 服务。 有些情况应移除订阅上的支出限制。
+
+* 计划部署第一方映像（如 Oracle）和服务（如 Visual Studio Team Services）。 此方案几乎立马导致你超过支出限制并导致订阅被禁。
+* 拥有不可中断的服务。
+* 服务和资源包含希望保留的设置，如虚拟 IP 地址。 这些设置会在取消分配服务和资源时丢失。
+
+### <a name="how-do-i-turn-on-the-spending-limit-after-removing-it"></a>取消支出限制后如何重新启用？
+
+支出限制只采用自动启用的方式。 很遗憾，取消支出限制后无法手动开启。 如果担心以后无法再启用限制，请确保选中“取消当前计费周期的支出限制”选项。
+
+### <a name="how-do-i-set-a-custom-spending-limit"></a>如何设置自定义支出限制？
+
+目前无法设置。 但可以选择[使用计费警报控制支出](billing-set-up-alerts.md)。
+
+### <a name="does-the-spending-limit-prevent-all-charges-from-azure"></a>支出限制是否可防止产生任何 Azure 费用？
+
+即使设定了支出限制，某些 [Microsoft 服务和第三方品牌服务](billing-understand-your-azure-marketplace-charges.md)也会在付款方式下产生费用。 例如，Visual Studio 许可证、Azure Active Directory Premium、支持计划以及通过 [Azure Marketplace](https://azure.microsoft.com/marketplace/) 销售的大多数第三方品牌服务。
+
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
+
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
 
