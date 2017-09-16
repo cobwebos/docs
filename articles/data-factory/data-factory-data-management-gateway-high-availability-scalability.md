@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: abnarain
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: b6bf353a2bad28b0db3a88e971e5c6b209b7ab2b
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: fe78e2ef31695d443123664a83e9f753ccfc0be8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>数据管理网关 - 高可用性和可伸缩性（预览）
@@ -50,7 +50,7 @@ ms.lasthandoff: 08/10/2017
 
 通常以一个节点开始，然后随现有节点无力处理数据移动负载而逐渐扩展添加更多节点。 还可通过增加节点上允许运行的并发作业数来增强网关节点的数据移动能力。 此功能也适用于单节点网关（即便未启用可伸缩性和可用性功能）。 
 
-包含多个节点的网关可在所有节点间使数据存储凭据保持同步。 如果出现节点到节点的连接问题，则凭据可能不同步。 为使用网关的本地数据存储设置凭据时，将凭据保存于调度程序/辅助角色节点中。 调度程序节点与其他辅助角色节点同步。 这个过程称为凭据同步。 节点间的信道可通过公共 SSL/TLS 证书进行加密。 
+包含多个节点的网关可在所有节点间使数据存储凭据保持同步。 如果出现节点到节点的连接问题，则凭据可能不同步。为使用网关的本地数据存储设置凭据时，将凭据保存于调度程序/辅助角色节点中。 调度程序节点与其他辅助角色节点同步。 这个过程称为凭据同步。节点间的信道可通过公共 SSL/TLS 证书进行加密。 
 
 ## <a name="set-up-a-multi-node-gateway"></a>设置多节点网关
 本部分假定你已浏览下面两篇文章或熟悉这些文章中的概念： 
@@ -101,7 +101,7 @@ ms.lasthandoff: 08/10/2017
         ![数据管理网关 - 安装成功](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
 
         > [!NOTE]
-        > 如果要在 Azure VM 上预配网关，可以使用 [GitHub 的这个 Azure 资源管理器模板](https://github.com/xiaoyingLJ/vms-with-multiple-data-management-gateway)。 此脚本创建逻辑网关，设置安装有数据管理网关软件的 VM，并将它们注册到逻辑网关。 
+        > 如果要在 Azure VM 上预配网关，可以使用[此 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-mutiple-vms-with-data-management-gateway)。 此脚本创建逻辑网关，设置安装有数据管理网关软件的 VM，并将它们注册到逻辑网关。 
 6. 在 Azure 门户中启动“网关”页： 
     1. 在门户的数据工厂主页上单击“链接的服务”。
     
@@ -181,7 +181,7 @@ ms.lasthandoff: 08/10/2017
 可用内存 | 网关节点上的可用内存。 此值为近实时快照。 
 CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。 
 网络（进/出） | 网关节点的网络利用率。 此值为近实时快照。 
-并发作业数（运行中/上限） | 每个节点上运行的作业或任务数。 此值为近实时快照。 上限表示每个节点的最大并发作业数。 此值根据计算机大小定义而来。 在 CPU/内存/网络未充分利用，但活动即将超时的高级方案中，可提高上限来增强并发作业执行。 此功能也适用于单节点网关（即便未启用可伸缩性和可用性功能）。 有关详细信息，请参阅[扩展注意事项](#scale-considerations)部分。 
+并发作业数（运行中/上限） | 每个节点上运行的作业或任务数。 此值为近实时快照。 上限表示每个节点的最大并发作业数。 此值根据计算机大小定义而来。 在 CPU/内存/网络未充分利用，但活动即将超时的高级方案中，可提高上限来增强并发作业执行。此功能也适用于单节点网关（即便未启用可伸缩性和可用性功能）。 有关详细信息，请参阅[扩展注意事项](#scale-considerations)部分。 
 角色 | 角色有两种类型：调度程序和辅助角色。 所有节点均为辅助角色，表示它们可用于执行作业。 只有一个调度程序节点，用于从云服务中请求任务/作业，并分派到其他辅助节点（包括其本身）。 
 
 ![数据管理网关 - 高级多节点监视](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring-advanced.png)
@@ -230,7 +230,7 @@ Azure 门户提供具有粒度节点级别详情的管道监视体验。 例如�
 
 - 目前，单个逻辑网关最多可有 4 个物理网关节点。 如果出于性能原因需要 4 个以上节点，请发送电子邮件至 [DMGHelp@microsoft.com](mailto:DMGHelp@microsoft.com)。
 - 不能使用其他逻辑网关中的身份验证密钥重新注册网关节点以从当前逻辑网关进行切换。 若要重新注册，请从节点中卸载网关，重新安装网关，并使用适用于其他逻辑网关的身份验证密钥进行注册。 
-- 如果所有网关节点均需 HTTP 代理，请在 diahost.exe.config 和 diawp.exe.config 中设置代理，并使用服务器管理器确保所有节点具有相同的 diahost.exe.config 和 diawip.exe.config。 有关详细信息，请参阅[配置代理设置](data-factory-data-management-gateway.md#configure-proxy-server-settings)部分。 
+- 如果所有网关节点均需 HTTP 代理，请在 diahost.exe.config 和 diawp.exe.config 中设置代理，并使用服务器管理器确保所有节点具有相同的 diahost.exe.config 和 diawip.exe.config。有关详细信息，请参阅[配置代理设置](data-factory-data-management-gateway.md#configure-proxy-server-settings)部分。 
 - 若要在网关配置管理器中更改节点到节点通信的加密模式，请在门户中保留一个节点并删除其他所有节点。 然后，在更改加密模式后重新添加节点。
 - 如果选择加密节点到节点信道，请使用正式的 SSL 证书。 自签名证书可能导致连接问题，因为相同的证书在其他计算机上的证书验证机构中可能不受信任。 
 - 如果节点版本低于逻辑网关版本，则不能向逻辑网关注册网关节点。 从门户中删除逻辑网关的所有节点，以便可以注册较低版本节点（降级）。 如果删除逻辑网关的所有节点，请向该逻辑网关手动安装并注册新节点。 在这种情况下，不支持快速安装。

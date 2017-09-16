@@ -14,22 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: dc279718cbb360e611d7e4cfb6961a087159fb01
-ms.openlocfilehash: 7637e6419d17a2d75904fbe63df5f27d4be4bbe3
-ms.lasthandoff: 02/24/2017
+ms.translationtype: HT
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 2fa5c021d9f493004a5beab02529c70b600b9a0d
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/02/2017
 
 ---
+
+> [!WARNING]
+> 仅在[开发人员和高级](https://azure.microsoft.com/en-us/pricing/details/api-management/)层提供 Azure Active Directory 集成。
+
 # <a name="how-to-authorize-developer-accounts-using-azure-active-directory-in-azure-api-management"></a>如何在 Azure API 管理中使用 Azure Active Directory 授权开发人员帐户
 ## <a name="overview"></a>概述
 本指南介绍如何为 Azure Active Directory 中的用户启用对开发人员门户的访问。 本指南还介绍如何通过添加包含 Azure Active Directory 用户的外部组管理 Azure Active Directory 用户组。
 
 > 若要完成本指南中的步骤，必须先有一个 Azure Active Directory，用于在其中创建应用程序。
 > 
-> 
 
 ## <a name="how-to-authorize-developer-accounts-using-azure-active-directory"></a>如何使用 Azure Active Directory 授权开发人员帐户
-若要开始，请单击 API 管理服务的 Azure 门户中的“发布者门户”。 这将转到 API 管理发布者门户。
+若要开始，请单击 API 管理服务的 Azure 门户中的“发布者门户”。 这会转到 API 管理发布者门户。
 
 ![发布者门户][api-management-management-console]
 
@@ -37,7 +41,7 @@ ms.lasthandoff: 02/24/2017
 > 
 > 
 
-单击左侧“API 管理”菜单中的“安全”，然后单击“外部标识”。
+单击左侧“API 管理”菜单中的“安全”，并单击“外部标识”。
 
 ![外部标识][api-management-security-external-identities]
 
@@ -45,17 +49,17 @@ ms.lasthandoff: 02/24/2017
 
 ![外部标识][api-management-security-aad-new]
 
-单击“添加”按钮创建新的 Azure Active Directory 应用程序，然后选择“添加我的组织正在开发的应用程序”。
+单击“添加”按钮创建新的 Azure Active Directory 应用程序，并选择“添加我的组织正在开发的应用程序”。
 
 ![添加新的 Azure Active Directory 应用程序][api-management-new-aad-application-menu]
 
-为应用程序输入一个名称，选择“Web 应用程序”和/或“Web API”，然后单击“下一步”按钮。
+为应用程序输入一个名称，选择“Web 应用程序”和/或“Web API”，并单击“下一步”按钮。
 
 ![新的 Azure Active Directory 应用程序][api-management-new-aad-application-1]
 
 对于“登录 URL”，输入开发人员门户的登录 URL。 在此示例中，“登录 URL”为 `https://aad03.portal.current.int-azure-api.net/signin`。 
 
-对于“应用 ID URL”，输入 Azure Active Directory 的默认域或自定义域，然后向其追加一个唯一字符串。 在此示例中，**https://contoso5api.onmicrosoft.com** 的默认域与指定的 **/api** 的后缀一起使用。
+对于“应用 ID URL”，输入 Azure Active Directory 的默认域或自定义域，并向其追加一个唯一字符串。 在此示例中，**https://contoso5api.onmicrosoft.com** 的默认域与指定的 **/api** 的后缀一起使用。
 
 ![新的 Azure Active Directory 应用程序属性][api-management-new-aad-application-2]
 
@@ -71,11 +75,11 @@ ms.lasthandoff: 02/24/2017
 
 ![回复 URL][api-management-aad-reply-url]
 
-滚动到配置选项卡的底部、选择“应用程序权限”下拉列表，然后选中“读取目录数据”。
+滚动到配置选项卡的底部、选择“应用程序权限”下拉列表，并选中“读取目录数据”。
 
 ![应用程序权限][api-management-aad-app-permissions]
 
-选择“委派权限”下拉菜单，然后选中“启用登录并读取用户配置文件”。
+选择“委派权限”下拉菜单，并选中“启用登录并读取用户配置文件”。
 
 ![委派的权限][api-management-aad-delegated-permissions]
 
@@ -91,7 +95,7 @@ ms.lasthandoff: 02/24/2017
 
 ![客户端 ID][api-management-client-id]
 
-切换回 Azure Active Directory 配置，然后单击“密钥”部分中的“选择持续时间”下拉列表并指定间隔。 在此示例中使用“1 年”。
+切换回 Azure Active Directory 配置，并单击“密钥”部分中的“选择持续时间”下拉列表并指定间隔。 在此示例中使用“1 年”。
 
 ![密钥][api-management-aad-key-before-save]
 
@@ -118,15 +122,15 @@ ms.lasthandoff: 02/24/2017
 
 保存更改后，指定的 Azure Active Directory 中的用户可按照[使用 Azure Active Directory 帐户登录开发人员门户][Log in to the Developer portal using an Azure Active Directory account]中的步骤登录到开发人员门户中。
 
-可在“允许的租户”部分中指定多个域。 在任何用户可以从注册应用程序的原始域以外的其他域登录之前，不同域的全局管理员必须先授予权限以使应用程序访问目录数据。 若要授予权限，全局管理员应转到 `https://<URL of your developer portal>/aadadminconsent`（例如，https://contoso.portal.azure-api.net/aadadminconsent），键入他们要授予访问权限的 Active Directory 租户的域名，然后单击“提交”。 在以下示例中，`miaoaad.onmicrosoft.com` 中的全局管理员想要授予对此特定开发人员门户的权限。 
+可在“允许的租户”部分中指定多个域。 在任何用户可以从注册应用程序的原始域以外的其他域登录之前，不同域的全局管理员必须先授予权限以使应用程序访问目录数据。 要授予权限，全局管理员应转到 `https://<URL of your developer portal>/aadadminconsent`（例如，https://contoso.portal.azure-api.net/aadadminconsent），键入他们要授予访问权限的 Active Directory 租户的域名，并单击“提交”。 在以下示例中，`miaoaad.onmicrosoft.com` 中的全局管理员想要授予对此特定开发人员门户的权限。 
 
 ![权限][api-management-aad-consent]
 
-在下一个屏幕中，将提示全局管理员确认授予权限。 
+在下一个屏幕中，会提示全局管理员确认授予权限。 
 
 ![权限][api-management-permissions-form]
 
-> 如果非全局管理员在得到全局管理员授权之前尝试登录，登录尝试将失败，并显示错误屏幕。
+> 如果非全局管理员在得到全局管理员授权之前尝试登录，登录尝试会失败，并显示错误屏幕。
 > 
 > 
 
@@ -137,15 +141,15 @@ ms.lasthandoff: 02/24/2017
 > 
 > 
 
-从希望授予外部 Azure Active Directory 组访问权限的产品的“可见性”选项卡中添加该组。 单击“属性”，然后单击所需产品的名称。
+从希望授予外部 Azure Active Directory 组访问权限的产品的“可见性”选项卡中添加该组。 单击“属性”，并单击所需产品的名称。
 
 ![配置产品][api-management-configure-product]
 
-切换到“可见性”选项卡，然后单击“从 Azure Active Directory 添加组”。
+切换到“可见性”选项卡，并单击“从 Azure Active Directory 添加组”。
 
 ![添加组][api-management-add-groups]
 
-从下拉列表中选择“Azure Active Directory 租户”，然后在“要添加的组”文本框中键入所需组的名称。
+从下拉列表中选择“Azure Active Directory 租户”，并在“要添加的组”文本框中键入所需组的名称。
 
 ![选择组][api-management-select-group]
 
@@ -172,11 +176,11 @@ ms.lasthandoff: 02/24/2017
 来自已配置 Azure Active Directory 的用户可按照以下部分中的说明登录开发人员门户并查看和订阅任何他们拥有可见性的组。
 
 ## <a name="how-to-log-in-to-the-developer-portal-using-an-azure-active-directory-account"></a>如何使用 Azure Active Directory 帐户登录开发人员门户
-若要使用之前部分中配置的 Azure Active Directory 帐户登录开发人员门户，请使用来自 Active Directory 应用程序配置的“登录 URL”打开新浏览器，然后单击“Azure Active Directory”。
+要使用之前部分中配置的 Azure Active Directory 帐户登录开发人员门户，请使用来自 Active Directory 应用程序配置的“登录 URL”打开新浏览器，并单击“Azure Active Directory”。
 
 ![开发人员门户][api-management-dev-portal-signin]
 
-在 Azure Active Directory 中输入用户之一的凭据，然后单击“登录”。
+在 Azure Active Directory 中输入用户之一的凭据，并单击“登录”。
 
 ![登录][api-management-aad-signin]
 
