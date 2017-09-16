@@ -13,6 +13,7 @@
 # 如何
 ## 规划和设计
 ### [身份验证和安全性](relay-authentication-and-authorization.md)
+#### [从 ACS 迁移到 SAS](relay-migrate-acs-sas.md)
 ### [混合连接协议](relay-hybrid-connections-protocol.md)
 ## 开发
 ### [可用 API](relay-api-overview.md)

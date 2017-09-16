@@ -34,6 +34,9 @@
       tocHref: /azure/app-service/
       topicHref: /azure/app-service/
       items:
+        - name: 用于容器的 Web 应用
+          tocHref: /azure/app-service/containers/
+          topicHref: /azure/app-service/containers/
         - name: Web 应用
           tocHref: /azure/app-service-web/
           topicHref: /azure/app-service-web/
@@ -125,6 +128,9 @@
         - name: 语言理解智能服务 (LUIS)
           tocHref: /azure/cognitive-services/LUIS/
           topicHref: /azure/cognitive-services/LUIS/
+        - name: 文本分析
+          tocHref: /azure/cognitive-services/text-analytics/
+          topicHref: /azure/cognitive-services/text-analytics/overview
         - name: 视频索引器
           tocHref: /azure/cognitive-services/video-indexer/video-indexer-overview
           topicHref: /azure/cognitive-services/video-indexer/video-indexer-overview
@@ -201,10 +207,10 @@
     - name: 机器学习
       tocHref: /azure/machine-learning/
       topicHref: /azure/machine-learning/
-    - name: Marketplace 消费者
+    - name: 应用商店消费者
       tocHref: /azure/marketplace-consumer/
       topicHref: /azure/marketplace-consumer/
-    - name: Marketplace 发布
+    - name: 应用商店发布
       tocHref: /azure/marketplace-publishing/
       topicHref: /azure/marketplace-publishing/
     - name: 媒体服务

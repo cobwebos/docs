@@ -10,7 +10,7 @@
 ## [入门教程](sql-data-warehouse-get-started-tutorial.md)
 ## [最佳实践](sql-data-warehouse-best-practices.md)
 ## [管理](sql-data-warehouse-overview-manage.md)
-## [获取支持](sql-data-warehouse-get-started-create-support-ticket.md)
+
 
 
 # 如何
@@ -139,18 +139,22 @@
 # 引用
 
 ## [容量限制](sql-data-warehouse-service-capacity-limits.md)
-## [T-SQL 语言元素](sql-data-warehouse-reference-tsql-language-elements.md)
-## [T-SQL 语句](sql-data-warehouse-reference-tsql-statements.md)
-## [T-SQL 系统视图](sql-data-warehouse-reference-tsql-system-views.md)
+## T-SQL
+### [完整参考信息](https://docs.microsoft.com/sql/t-sql/language-reference/)
+### [SQL DW 语言元素](sql-data-warehouse-reference-tsql-language-elements.md)
+### [SQL DW 语句](sql-data-warehouse-reference-tsql-statements.md)
+## [系统视图](sql-data-warehouse-reference-tsql-system-views.md)
 ## [PowerShell cmdlets](sql-data-warehouse-reference-powershell-cmdlets.md)
 
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=databases)
-## [论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
+## [论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSQLDataWarehouse)
 ## [定价](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
+## [功能请求](https://feedback.azure.com/forums/307516-sql-data-warehouse/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=sql-data-warehouse)
 ## [堆栈溢出](https://stackoverflow.com/questions/tagged/azure-sqldw/)
+## [支持](sql-data-warehouse-get-started-create-support-ticket.md)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 
 ## 合作伙伴
