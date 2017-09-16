@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 09/06/2017
 ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 1e0568bc58e8879cabe409cf8e9b5866f922e7c9
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: b69bbd00b85fdf093ac1ccf021515d9b44ea7f55
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>用于 Visual Studio 的 Azure Functions 工具  
@@ -39,6 +39,9 @@ Azure Functions 工具提供以下优势：
 Azure Functions 工具包含在 [Visual Studio 2017 版本 15.3](https://www.visualstudio.com/vs/) 或更高版本的 Azure 开发工作负荷中。 请确保在 Visual Studio 2017 版本 15.3 安装中包含 Azure 开发工作负荷：
 
 ![使用 Azure 开发工作负荷安装 Visual Studio 2017](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+
+>[!NOTE]  
+>安装或升级到 Visual Studio 2017 15.3 版后，必须手动更新用于 Azure Functions 的 Visual Studio 2017 工具。 可以在“扩展和更新...” > “更新” > “Visual Studio Marketplace” > “Azure Functions 和 Web 作业工具” > “更新”下的“工具”中更新工具。 
 
 若要创建和部署函数，还需要：
 

@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
+ms.date: 09/01/2017
 ms.author: byvinyal
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: a76acd67e9ba7822f2837b3c08e2ede389047f11
+ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
+ms.openlocfilehash: 035150d5a1da49f89d0058692b016596d8881d9c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
@@ -68,7 +68,8 @@ ms.lasthandoff: 08/22/2017
 * [DNS](#dns-limits)
 * [事件中心](#event-hubs-limits)
 * [IoT 中心](#iot-hub-limits)
-* [密钥保管库](#key-vault-limits)
+* [IoT 中心设备预配服务](#iot-hub-device-provisioning-service-limits)
+* [Key Vault](#key-vault-limits)
 * [Log Analytics/操作见解](#log-analytics-limits)
 * [媒体服务](#media-services-limits)
 * [Mobile Engagement](#mobile-engagement-limits)
@@ -229,6 +230,9 @@ Azure Cosmos DB 是全局缩放数据库，可对吞吐量和存储进行缩放�
 
 ### <a name="iot-hub-limits"></a>IoT 中心限制
 [!INCLUDE [azure-iothub-limits](../includes/iot-hub-limits.md)]
+
+### <a name="iot-hub-device-provisioning-service-limits"></a>IoT 中心设备预配服务限制
+[!INCLUDE [azure-iotdps-limits](../includes/iot-dps-limits.md)]
 
 ### <a name="data-factory-limits"></a>数据工厂限制
 [!INCLUDE [azure-data-factory-limits](../includes/azure-data-factory-limits.md)]

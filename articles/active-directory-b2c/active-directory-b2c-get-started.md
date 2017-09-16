@@ -15,15 +15,15 @@ ms.devlang: na
 ms.date: 06/07/2017
 ms.author: swkrish
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: 8a1d4935397f59e5813afc6f04559e471187a779
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: 213d532f484056f3833c743d25c5e6faa5b732e6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 # <a name="create-an-azure-active-directory-b2c-tenant-in-the-azure-portal"></a>在 Azure 门户中创建 Azure Active Directory B2C 租户
 
-此快速入门可帮助在数分钟内创建一个 Microsoft Azure Active Directory (Azure AD) B2C 租户。 创建完成后，便拥有了一个可用于注册 B2C 应用程序的 B2C 租户。
+此快速入门可帮助在数分钟内创建一个 Microsoft Azure Active Directory (Azure AD) B2C 租户。 创建完成后，便拥有了一个可用于注册 B2C 应用程序的 B2C 租户（也称为目录）。
 
 ## <a name="prerequisites"></a>先决条件
 

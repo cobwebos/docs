@@ -12,14 +12,14 @@ ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 07/28/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: a973b81ea5b06c5826cc31c399aae9dec43f5b72
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 12c9bf626de8738fac95bd41965b0a2bf8758ed2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="azure-cosmos-db-build-a-net-application-using-the-graph-api"></a>Azure Cosmos DB：使用图形 API 生成 .NET 应用程序
@@ -109,7 +109,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
     ![在 Azure 门户中的“密钥”页上查看和复制主密钥](./media/create-graph-dotnet/keys.png)
 
-3. 从门户中复制“URI”值，并在 App.config 中将其设置为终结点密钥的值。 可以使用前一屏幕截图中显示的复制按钮来复制值。
+3. 从门户中复制“URI”值，并在 App.config 中将其设置为终结点密钥的值。可以使用前一屏幕截图中显示的复制按钮来复制值。
 
     `<add key="Endpoint" value="https://FILLME.documents.azure.com:443" />`
 
@@ -137,7 +137,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现在可以返回到 Azure 门户中的数据资源管理器，浏览和查询新的图形数据。
 
-1. 在数据资源管理器中，新数据库会显示在“图形”窗格中。 依次展开 **graphdb**、**graphcoll**，然后单击“图形”。
+1. 在数据资源管理器中，新数据库会显示在“图形”窗格中。 依次展开 graphdb、graphcoll，然后单击“图形”。
 
 2. 单击“应用筛选器”按钮，使用默认查询来查看图形中的所有顶点。 示例应用生成的数据会显示在“图形”窗格中。
 
@@ -154,7 +154,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 如果不打算继续使用此应用，请删除本快速入门教程在 Azure 门户中创建的所有资源，步骤如下： 
 
 1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。 
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，然后单击“删除”。
+2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

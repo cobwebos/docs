@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/01/2017
+ms.date: 08/31/2017
 ms.author: seanmck
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 4248a3769ba8a0fb067b3904d55d487fe67e5778
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: c68f0239bcb95aa5e9d8194f7b358f30588ea600
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 08/12/2017
 
 ## <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
 
-必须先创建 Azure 文件共享，才能将其用于 Azure 容器实例。 运行以下脚本来创建存储帐户，以托管文件共享和共享其本身。 请注意，存储帐户名必须是全局唯一的，因此该脚本会向基础字符串添加一个随机值。
+必须先创建 Azure 文件共享，才能将其用于 Azure 容器实例。 运行以下脚本来创建存储帐户，以托管文件共享和共享其本身。 存储帐户名必须是全局唯一的，因此该脚本会向基础字符串添加一个随机值。
 
 ```azurecli-interactive
 # Change these four parameters
@@ -52,7 +52,7 @@ az storage share create -n $ACI_PERS_SHARE_NAME
 
 ## <a name="acquire-storage-account-access-details"></a>获取存储帐户访问详细信息
 
-若要在 Azure 容器实例中将 Azure 文件共享装载为卷，需要 3 个值：存储帐户名、共享名和存储访问密钥。 
+若要在 Azure 容器实例中将 Azure 文件共享装载为卷，需要 3 个值：存储帐户名、共享名和存储访问密钥。
 
 如果使用上述脚本，则创建的存储帐户名末尾会带有一个随机值。 若要查询最终字符串（包括随机部分），请使用以下命令：
 
@@ -64,13 +64,13 @@ echo $STORAGE_ACCOUNT
 共享名已知（即上述脚本中的 acishare），因此剩下的就是找到存储帐户密钥，可使用以下命令：
 
 ```azurecli-interactive
-$STORAGE_KEY=$(az storage account keys list --resource-group myResourceGroup --account-name $STORAGE_ACCOUNT --query "[0].value" -o tsv)
+STORAGE_KEY=$(az storage account keys list --resource-group myResourceGroup --account-name $STORAGE_ACCOUNT --query "[0].value" -o tsv)
 echo $STORAGE_KEY
 ```
 
 ## <a name="store-storage-account-access-details-with-azure-key-vault"></a>使用 Azure Key Vault 存储存储帐户访问详细信息
 
-存储帐户密钥会保护数据访问，因此建议将其存储在 Azure Key Vault 中。 
+存储帐户密钥会保护数据访问，因此建议将其存储在 Azure Key Vault 中。
 
 使用 Azure CLI 创建密钥保管库：
 
@@ -129,7 +129,7 @@ az keyvault secret set --vault-name $KEYVAULT_NAME --name $KEYVAULT_SECRET_NAME 
             "name": "myvolume",
             "mountPath": "/aci/logs/"
           }]
-        }  
+        }
       }],
       "osType": "Linux",
       "ipAddress": {
@@ -169,7 +169,7 @@ az keyvault show --name $KEYVAULT_NAME --query [id] -o tsv
   "parameters": {
     "storageaccountname": {
       "value": "<my_storage_account_name>"
-    },    
+    },
    "storageaccountkey": {
       "reference": {
         "keyVault": {

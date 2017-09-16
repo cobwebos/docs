@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/13/2017
+ms.date: 09/05/2017
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: ae0261134b8d4a934048f58d6c679a48a904950b
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: 316bb96f06140c651f410411e3ce2e9eebf1d64d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>用于 Azure Resource Manager 模板的数值函数
@@ -30,8 +30,8 @@ Resource Manager 提供以下用于处理整数的函数：
 * [div](#div)
 * [float](#float)
 * [int](#int)
-* [min](#min)
 * [max](#max)
+* [min](#min)
 * [mod](#mod)
 * [mul](#mul)
 * [sub](#sub)
@@ -56,7 +56,7 @@ Resource Manager 提供以下用于处理整数的函数：
 
 ### <a name="example"></a>示例
 
-以下示例将添加两个参数。
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/add.json)将添加两个参数。
 
 ```json
 {
@@ -94,6 +94,18 @@ Resource Manager 提供以下用于处理整数的函数：
 | 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | addResult | int | 8 |
+
+要使用 Azure CLI 部署此示例模板，请使用：
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json 
+```
 
 <a id="copyindex" />
 
@@ -159,7 +171,7 @@ Resource Manager 提供以下用于处理整数的函数：
 
 ### <a name="example"></a>示例
 
-以下示例将一个参数除以另一个参数。
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/div.json)将一个参数除以另一个参数。
 
 ```json
 {
@@ -197,6 +209,18 @@ Resource Manager 提供以下用于处理整数的函数：
 | 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | divResult | int | 2 |
+
+要使用 Azure CLI 部署此示例模板，请使用：
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json 
+```
 
 <a id="float" />
 
@@ -251,7 +275,7 @@ Resource Manager 提供以下用于处理整数的函数：
 
 ### <a name="example"></a>示例
 
-以下示例将用户提供的参数值转换为整数。
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json)将用户提供的参数值转换为整数。
 
 ```json
 {
@@ -280,58 +304,17 @@ Resource Manager 提供以下用于处理整数的函数：
 | ---- | ---- | ----- |
 | intResult | int | 4 |
 
+要使用 Azure CLI 部署此示例模板，请使用：
 
-<a id="min" />
-
-## <a name="min"></a>min
-`min (arg1)`
-
-返回整数数组或逗号分隔的整数列表中的最小值。
-
-### <a name="parameters"></a>parameters
-
-| 参数 | 必选 | 类型 | 说明 |
-|:--- |:--- |:--- |:--- |
-| arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最小值的集合。 |
-
-### <a name="return-value"></a>返回值
-
-一个整数，表示集合中的最小值。
-
-### <a name="example"></a>示例
-
-以下示例演示如何对整数数组和整数列表使用 min：
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "arrayToTest": {
-            "type": "array",
-            "defaultValue": [0,3,2,5,4]
-        }
-    },
-    "resources": [],
-    "outputs": {
-        "arrayOutput": {
-            "type": "int",
-            "value": "[min(parameters('arrayToTest'))]"
-        },
-        "intOutput": {
-            "type": "int",
-            "value": "[min(0,3,2,5,4)]"
-        }
-    }
-}
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
 ```
 
-上面具有默认值的示例的输出为：
+要使用 PowerShell 部署此示例模板，请使用：
 
-| 名称 | 类型 | 值 |
-| ---- | ---- | ----- |
-| arrayOutput | int | 0 |
-| intOutput | int | 0 |
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
+```
 
 <a id="max" />
 
@@ -352,7 +335,7 @@ Resource Manager 提供以下用于处理整数的函数：
 
 ### <a name="example"></a>示例
 
-以下示例演示如何对整数数组和整数列表使用 max：
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json)演示如何对整数数组和整数列表使用 max：
 
 ```json
 {
@@ -385,6 +368,82 @@ Resource Manager 提供以下用于处理整数的函数：
 | arrayOutput | int | 5 |
 | intOutput | int | 5 |
 
+要使用 Azure CLI 部署此示例模板，请使用：
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
+```
+
+<a id="min" />
+
+## <a name="min"></a>min
+`min (arg1)`
+
+返回整数数组或逗号分隔的整数列表中的最小值。
+
+### <a name="parameters"></a>parameters
+
+| 参数 | 必选 | 类型 | 说明 |
+|:--- |:--- |:--- |:--- |
+| arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最小值的集合。 |
+
+### <a name="return-value"></a>返回值
+
+一个整数，表示集合中的最小值。
+
+### <a name="example"></a>示例
+
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json)演示如何对整数数组和整数列表使用 min：
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "arrayToTest": {
+            "type": "array",
+            "defaultValue": [0,3,2,5,4]
+        }
+    },
+    "resources": [],
+    "outputs": {
+        "arrayOutput": {
+            "type": "int",
+            "value": "[min(parameters('arrayToTest'))]"
+        },
+        "intOutput": {
+            "type": "int",
+            "value": "[min(0,3,2,5,4)]"
+        }
+    }
+}
+```
+
+上面具有默认值的示例的输出为：
+
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| arrayOutput | int | 0 |
+| intOutput | int | 0 |
+
+要使用 Azure CLI 部署此示例模板，请使用：
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
+```
+
 <a id="mod" />
 
 ## <a name="mod"></a>mod
@@ -404,7 +463,7 @@ Resource Manager 提供以下用于处理整数的函数：
 
 ### <a name="example"></a>示例
 
-以下示例将返回一个参数除以另一个参数后所得的余数。
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json)将返回一个参数除以另一个参数后所得的余数。
 
 ```json
 {
@@ -443,6 +502,18 @@ Resource Manager 提供以下用于处理整数的函数：
 | ---- | ---- | ----- |
 | modResult | int | 1 |
 
+要使用 Azure CLI 部署此示例模板，请使用：
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
+```
+
 <a id="mul" />
 
 ## <a name="mul"></a>mul
@@ -463,7 +534,7 @@ Resource Manager 提供以下用于处理整数的函数：
 
 ### <a name="example"></a>示例
 
-以下示例将一个参数乘以另一个参数。
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mul.json)将一个参数乘以另一个参数。
 
 ```json
 {
@@ -502,6 +573,18 @@ Resource Manager 提供以下用于处理整数的函数：
 | ---- | ---- | ----- |
 | mulResult | int | 15 |
 
+要使用 Azure CLI 部署此示例模板，请使用：
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
+```
+
 <a id="sub" />
 
 ## <a name="sub"></a>sub
@@ -521,7 +604,7 @@ Resource Manager 提供以下用于处理整数的函数：
 
 ### <a name="example"></a>示例
 
-以下示例将一个参数减另一个参数。
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json)将一个参数与另一个参数相减。
 
 ```json
 {
@@ -560,9 +643,21 @@ Resource Manager 提供以下用于处理整数的函数：
 | ---- | ---- | ----- |
 | subResult | int | 4 |
 
+要使用 Azure CLI 部署此示例模板，请使用：
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
+```
+
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure Resource Manager 模板中各部分的说明，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
-* 若要合并多个模板，请参阅 [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md)（将链接的模板与 Azure Resource Manager 配合使用）。
+* 要合并多个模板，请参阅 [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md)（将链接的模板与 Azure Resource Manager 配合使用）。
 * 若要在创建资源类型时迭代指定的次数，请参阅 [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)（在 Azure Resource Manager 中创建多个资源实例）。
 * 若要查看如何部署已创建的模板，请参阅 [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md)（使用 Azure Resource Manager 模板部署应用程序）。
 

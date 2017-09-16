@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: dfe0de1bc4cdfcbc0d175f1a3268601bde4da21a
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: 06d65878d84fb845cf0c4c333a1e2d12b0aaec2f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>均衡 Service Fabric 群集
@@ -175,6 +175,10 @@ ClusterManifest.xml
 ```
 
 均衡阈值和活动阈值都与特定的指标绑定，只有在同时超过同一个指标的均衡阙值和活动阈值时，才触发均衡。
+
+> [!NOTE]
+> 如未指定，则指标的均衡阈值为 1，活动阈值为 0。 这表示对于任何给定的负载，群集资源管理器将尝试使该指标保持完美平衡。 如果正在使用自定义指标，则建议显式定义指标的均衡和活动阈值。 
+>
 
 ## <a name="balancing-services-together"></a>一起平衡服务
 群集是否非均衡是从整个群集来看。 但是我们对其进行修复的方式是移动单个服务副本和实例。 这种说法很合理，是吗？ 如果内存叠加在一个节点上，这种情况可能是由多个副本或实例造成的。 修复这种不均衡可能需要移动使用不均衡指标的任何有状态副本或无状态实例。

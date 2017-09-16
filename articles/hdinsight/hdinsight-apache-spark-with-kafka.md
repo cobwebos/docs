@@ -14,13 +14,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/13/2017
+ms.date: 09/06/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 81fa319f6fb94bdabacd8f68d14b9a1063a9749a
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 788ba828d1380b17913cabf18827c1abcc83c725
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="apache-spark-streaming-dstream-example-with-kafka-preview-on-hdinsight"></a>Kafka on HDInsight（预览版）的 Apache Spark 流式处理 (DStream) 示例
@@ -42,7 +42,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 尽管可手动创建 Azure 虚拟网络、Kafka 和 Spark 群集，但使用 Azure Resource Manager 模板更简单。 使用以下步骤将 Azure 虚拟网络、Kafka 和 Spark 群集部署到 Azure 订阅。
 
-1. 使用以下按钮登录到 Azure，然后在 Azure 门户中打开模板。
+1. 使用以下按钮登录到 Azure，并在 Azure 门户中打开模板。
     
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v2.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
@@ -53,7 +53,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     此模板为 Kafka 和 Spark 创建 HDInsight 3.6 群集。
 
-2. 使用以下信息来填充“自定义部署”边栏选项卡上的项：
+2. 使用以下信息填充“自定义部署”部分中的条目：
    
     ![HDInsight 自定义部署](./media/hdinsight-apache-spark-with-kafka/parameters.png)
    
@@ -71,13 +71,13 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     * **SSH 密码**：Spark 和 Kafka 群集的 SSH 用户密码。
 
-3. 阅读“条款和条件”，然后选择“我同意上述条款和条件”。
+3. 阅读“条款和条件”，并选择“我同意上述条款和条件”。
 
-4. 最后，选中“固定到仪表板”，然后选择“购买”。 创建群集大约需要 20 分钟时间。
+4. 最后，选中“固定到仪表板”，并选择“购买”。 创建群集大约需要 20 分钟时间。
 
-创建资源后，会重定向到包含群集和 Web 仪表板的资源组边栏选项卡。
+创建资源后，会显示摘要页面。
 
-![虚拟网络和群集的“资源组”边栏选项卡](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
+![VNet 和群集的资源组摘要](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
 
 > [!IMPORTANT]
 > 请注意，HDInsight 群集的名称为 **spark-BASENAME** 和 **kafka-BASENAME**，其中 BASENAME 是为模板提供的名称。 在连接到群集的后续步骤中，会用到这些名称。
@@ -86,7 +86,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 本文档中描述的示例代码位于 [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka)。
 
-按照 `README.md` 文件中的步骤完成本示例。
+要完成本示例，请按照 `README.md` 中的步骤进行操作。
 
 ## <a name="delete-the-cluster"></a>删除群集
 

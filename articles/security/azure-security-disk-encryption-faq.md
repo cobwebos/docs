@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/11/2017
 ms.author: devtiw
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: c28604e3b7058f830c69eedc5d7f25d65e2448a8
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: f66eabcbb386d5e7b31268a7b04063ff2cefbaf2
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="azure-disk-encryption-faq"></a>Azure 磁盘加密 FAQ
@@ -111,6 +111,16 @@ ms.lasthandoff: 08/30/2017
 问：是否可以向使用 yum 更新的 Linux Red Hat VM 应用更新？
 
 答：是的，可以对 Red Hat Linux VM 执行更新或修补。 有关详细信息，请参阅[通过使用 yum 更新将更新应用于加密的 Azure IaaS Red Hat VM](https://blogs.msdn.microsoft.com/azuresecurity/2017/07/13/applying-updates-to-a-encrypted-azure-iaas-red-hat-vm-using-yum-update/)。
+
+**问：**对于 Linux，应使用哪种 Azure 磁盘加密工作流？
+
+**答：**为在 Linux 上获得最佳结果，建议使用以下工作流：
+* 从与所需的 OS 发行版和版本相对应的未修改存储库映像启动
+* 备份要加密的任何已装载的驱动器。  这是为了可在失败时进行恢复，例如 VM 在加密完成前重启。
+* 加密（可能需要多个小时或甚至几天时间，具体取决于 VM 的特征和任何附加数据磁盘的大小）
+* 根据需要自定义软件，并将其添加到映像。
+
+如果此工作流不可用，可在平台存储帐户层使用[存储服务加密](https://docs.microsoft.com/en-us/azure/storage/common/storage-service-encryption) (SSE)，作为通过 dm-crypt 实现完整磁盘加密的一个替代方法。
 
 问：在何处可以提问或提供反馈？
 

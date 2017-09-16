@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/16/2017
+ms.date: 09/06/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 28904b07609ffb40a8195278fd1afd3957896733
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: ce088b22ca45bc40252c909697153ce9e847592e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a>使用 Azure PowerShell 通过 HDInsight 运行 Pig 作业
@@ -49,11 +49,11 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Pig 作业�
 
 在远程 HDInsight 群集上运行 Pig 作业时，将使用以下 Cmdlet：
 
-* **Login-AzureRmAccount**：在 Azure 订阅中进行 Azure PowerShell 身份验证
-* **New-AzureRmHDInsightPigJobDefinition**：使用指定的 Pig Latin 语句创建*作业定义*
-* **Start-AzureRmHDInsightJob**：将作业定义发送到 HDInsight，启动作业，然后返回可用来检查作业状态的*作业*对象
+* **Login-AzureRmAccount**：在 Azure 订阅中进行 Azure PowerShell 身份验证。
+* **New-AzureRmHDInsightPigJobDefinition**：使用指定的 Pig Latin 语句创建“作业定义”。
+* **Start-AzureRmHDInsightJob**：将作业定义发送到 HDInsight 并启动作业。 将返回作业对象。
 * **Wait-AzureRmHDInsightJob**：使用作业对象来检查作业的状态。 它将等到作业完成或超出等待时间。
-* **Get-AzureRmHDInsightJobOutput**：用于检索作业的输出
+* **Get-AzureRmHDInsightJobOutput**：用于检索作业的输出。
 
 以下步骤演示了如何使用这些 Cmdlet 在 HDInsight 群集上运行作业。
 
@@ -65,7 +65,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Pig 作业�
 
         .\pigjob.ps1
 
-    系统将提示用户登录到 Azure 订阅。 然后，要求输入 HDInsight 群集的 HTTPs/Admin 帐户名和密码。
+    系统会提示用户登录到 Azure 订阅。 然后，需要输入 HDInsight 群集的 HTTPs/Admin 帐户名和密码。
 
 2. 在作业完成时，它应返回类似于以下文本的信息：
 
@@ -81,7 +81,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Pig 作业�
 
 ## <a id="troubleshooting"></a>故障排除
 
-如果在作业完成时未返回任何信息，则可能表示处理期间发生错误。 若要查看此作业的错误信息，请将以下命令添加到 **pigjob.ps1** 文件的末尾，保存，然后重新运行该文件。
+如果作业完成时未返回任何信息，请查看错误日志。 要查看此作业的错误信息，请将以下命令添加到 **pigjob.ps1** 文件的末尾，保存，然后重新运行该文件。
 
     # Print the output of the Pig job.
     Write-Host "Display the standard error output ..." -ForegroundColor Green
@@ -91,10 +91,10 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Pig 作业�
             -HttpCredential $creds `
             -DisplayOutputType StandardError
 
-在运行作业时，这将返回写入到服务器上的 STDERR 的信息，它可帮助确定该作业失败的原因。
+作业处理期间，此 cmdlet 返回写入到 STDERR 中的信息。
 
 ## <a id="summary"></a>摘要
-如你所见，Azure PowerShell 提供了简单的方法让你在 HDInsight 群集上运行 Pig 作业、监视作业状态，以及检索输出。
+如你所见，Azure PowerShell 提供了简单的方法，可在 HDInsight 群集上运行 Pig 作业、监视作业状态，以及检索输出。
 
 ## <a id="nextsteps"></a>后续步骤
 有关 HDInsight 中的 Pig 的一般信息：

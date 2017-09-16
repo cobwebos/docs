@@ -11,14 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/04/2017
+ms.date: 08/31/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 37594924f9474d225421d2b2d783a19d9295fcf8
+ms.translationtype: HT
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: 08faa2bdb06c0616eeaad7415019ba97b60aac5d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/30/2017
-
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP HANA 移动数据
@@ -34,7 +33,7 @@ ms.lasthandoff: 03/30/2017
 - 网关计算机上的 **SAP HANA ODBC 驱动程序**。 可以从 [SAP 软件下载中心](https://support.sap.com/swdc)下载 SAP HANA ODBC 驱动程序。 使用关键字 **SAP HANA CLIENT for Windows** 进行搜索。 
 
 ## <a name="getting-started"></a>入门
-可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
+可使用不同的工具/API 创建包含复制活动的管道，以从本地 SAP HANA 数据存储移动数据。 
 
 - 创建管道的最简单方法是使用**复制向导**。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
 - 也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager 模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
@@ -45,7 +44,7 @@ ms.lasthandoff: 03/30/2017
 2. 创建**数据集**以表示复制操作的输入和输出数据。 
 3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 
 
-使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从本地 SAP HANA 复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 SAP HANA 复制到 Azure Blob](#json-example-copy-data-from-sap-hana-to-azure-blob) 部分。 
+使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从本地 SAP HANA 复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 SAP HANA 复制到 Azure Blob](#json-example-copy-data-from-sap-hana-to-azure-blob) 部分。 
 
 对于特定于 SAP HANA 数据存储的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息：
 
@@ -305,7 +304,7 @@ SECONDDATE | DateTime
 - 有效日期在 1899/12/30 和 9999/12/31 之间
 
 ## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
-若要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
+要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
 ## <a name="repeatable-read-from-relational-sources"></a>从关系源进行可重复读取
 从关系数据源复制数据时，请注意可重复性，以免发生意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试策略，以便在出现故障时重新运行切片。 无论以哪种方式重新运行切片，都需要确保读取相同的数据，而与运行切片的次数无关。 请参阅[从关系源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)

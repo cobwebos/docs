@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/10/2017
+ms.date: 9/3/2017
 ms.author: markgal;trinadhk;
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 8d701f4a459da2e08510e8001adca0847b08e924
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 3fa6f4f850fc67d41f619d46bd61a19fe890b0fb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>准备环境以备份 Resource Manager 部署的虚拟机
@@ -59,7 +59,7 @@ Azure 备份服务提供两种类型的保管库（备份保管库和恢复服�
 * 不支持备份数据磁盘大小超过 1023GB 的虚拟机。
 * 不支持备份使用保留 IP 地址且未定义终结点的虚拟机。
 * 不支持备份仅使用 BEK 加密的 VM。 不支持备份使用 LUKS 加密加密的 Linux VM。
-* 不建议使用“在横向扩展文件服务器上备份 VM”配置。
+* 不建议备份包含群集共享卷 (CSV) 或具有横向扩展文件服务器配置的 VM，因为需要涉及快照任务执行期间群集配置中包含的所有 VM。 Azure 备份不支持多 VM 一致性。 
 * 备份数据不包括连接到 VM 的网络挂载驱动器。
 * 不支持在恢复过程中替换现有虚拟机。 如果在 VM 存在时尝试还原 VM，还原操作会失败。
 * 不支持跨区域备份和还原。

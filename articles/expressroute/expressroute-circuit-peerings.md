@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/03/2017
-ms.author: cherylmc
+ms.date: 09/01/2017
+ms.author: ganesr,cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 3742fb37016db5e6230bc2b7ce11f0270d9d58b3
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: d98b08a93d9d620971cfc8402a0cf12f10f488b1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>ExpressRoute 线路和路由域
@@ -51,7 +51,7 @@ ExpressRoute 线路最多可以有三个独立的对等互连：Azure 公共、A
 ### <a name="public-peering"></a>公共对等互连
 Azure 存储、SQL 数据库和网站等服务是使用公共 IP 地址提供的。 可以通过公共对等路由域私下连接到公共 IP 地址（包括云服务的 VIP）上托管的服务。 可以将公共对等域连接到外围网络，并从 WAN 连接到公共 IP 地址上的所有 Azure 服务，而无需通过 Internet 连接。 
 
-始终会从 WAN 发起到 Microsoft Azure 服务的连接。 Microsoft Azure 服务无法通过此路由域发起到网络的连接。 启用公共对等互连后，能够连接到所有 Azure 服务。 我们不允许选择要将路由播发到的服务。 可以在 [Microsoft Azure 数据中心 IP 范围](http://www.microsoft.com/download/details.aspx?id=41653)页上查看我们通过此对等互连播发给用户的前缀列表。 该页每周更新。
+始终会从 WAN 发起到 Microsoft Azure 服务的连接。 Microsoft Azure 服务无法通过此路由域发起到网络的连接。 启用公共对等互连后，能够连接到所有 Azure 服务。 我们不允许选择要将路由播发到的服务。
 
 可以在网络中定义自定义路由筛选器，以只使用所需的路由。 有关路由配置的详细信息，请参阅[路由](expressroute-routing.md)页。 
 

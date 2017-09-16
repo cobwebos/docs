@@ -13,15 +13,15 @@ ms.topic: article
 ms.date: 07/03/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: bb6c93557ea26bed721315dc82da917e4727b5f9
+ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
+ms.openlocfilehash: cb0c74e7a3e3a2044262f94275110d0a55ccc19b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 应用中发生异常时的调试快照
 
-发生异常时，可自动从实时 Web 应用程序收集调试快照。 快照显示发生异常时源代码和变量的状态。 [Azure Application Insights](app-insights-overview.md) 中的快照调试程序（预览版）可监视来自 Web 应用的异常遥测数据。 它可收集常出现的异常的调试快照，为诊断生产中的问题提供所需信息。 请将[快照收集器 NuGet 包](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)添加到应用程序，并按需在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 中配置收集参数。 快照显示在 Application Insights 门户中的[异常](app-insights-asp-net-exceptions.md)区域中。
+发生异常时，可自动从实时 Web 应用程序收集调试快照。 快照显示发生异常时源代码和变量的状态。 [Azure Application Insights](app-insights-overview.md) 中的快照调试程序（预览版）可监视来自 Web 应用的异常遥测数据。 它可收集常出现的异常的调试快照，为诊断生产中的问题提供所需信息。 请将[快照收集器 NuGet 包](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)添加到应用程序，并按需在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 中配置收集参数。快照显示在 Application Insights 门户中的[异常](app-insights-asp-net-exceptions.md)区域中。
 
 可在门户中查看调试快照，查看调用堆栈并检查每个调用堆栈帧中的变量。 若要获取更强大的调试体验与源代码，请[下载用于 Visual Studio 的快照调试程序扩展](https://aka.ms/snapshotdebugger)，在 Visual Studio 2017 Enterprise 中打开快照。
 
@@ -175,7 +175,7 @@ Azure 订阅的所有者可以检查快照。 其他用户必须获得所有者�
 
 ## <a name="how-snapshots-work"></a>快照的工作原理
 
-启动应用程序时，将创建一个可在应用程序中监视快照请求的独立快照上传程序进程。 请求快照时，会在大约 10 到 20 分钟内创建运行中进程的影子副本。 然后，将分析该影子进程并创建快照，同时，主进程会继续运行并向用户提供流量。 接下来，将快照连同查看快照所需的任何相关符号文件 (.pdb) 一起上传到 Application Insights。
+启动应用程序时，将创建一个可在应用程序中监视快照请求的独立快照上传程序进程。 请求快照时，会在大约 10 到 20 毫秒内创建运行中进程的影子副本。 然后，将分析该影子进程并创建快照，同时，主进程会继续运行并向用户提供流量。 接下来，将快照连同查看快照所需的任何相关符号文件 (.pdb) 一起上传到 Application Insights。
 
 ## <a name="current-limitations"></a>当前限制
 

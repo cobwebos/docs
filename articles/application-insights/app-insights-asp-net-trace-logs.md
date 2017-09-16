@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/3/2017
+ms.date: 05/03/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 93808e617f33a5c78e5c89f4dac4680d44724d1c
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 91ffe6fa182f0d5e4294031787b853c33ea460df
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>在 Application Insights 中查看日志浏览 .NET 跟踪日志
@@ -185,9 +185,9 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 ### <a name="no-log-adapter-option-in-the-configuration-tool"></a>配置工具中没有日志适配器选项
 * 需要先安装记录框架。
 * 如果使用的是 System.Diagnostics.Trace，请确保[已在 `web.config` 中配置它](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx)。
-* 是否已获得最新版本的 Application Insights？ 在 Visual Studio“工具”菜单中，选择“扩展和更新”，并打开“更新”选项卡。 如果开发人员分析工具在此处，请单击以更新它。
+* 是否已获得最新版本的 Application Insights？ 在 Visual Studio“工具”菜单中，选择“扩展和更新”，并打开“更新”选项卡。如果开发人员分析工具在此处，请单击以更新它。
 
-### <a name="emptykey"></a>我遇到错误“检测密钥不能为空”
+### <a name="emptykey"></a>遇到错误“检测密钥不能为空”
 看起来你在未安装 Application Insights 的情况下安装了日志记录适配器 Nuget 包。
 
 在解决方案资源管理器中，右键单击 `ApplicationInsights.config` 并选择“更新 Application Insights”。 将得到一个对话框，邀请你登录 Azure 并创建 Application Insights 资源或重复使用现有资源。 这应当解决此问题。

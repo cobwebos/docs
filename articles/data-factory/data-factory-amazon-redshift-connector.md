@@ -12,19 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2017
+ms.date: 09/06/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: e3079b55036a514b31249e5930f40ab4346f437a
+ms.translationtype: HT
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: 2e7b6a7c33e1f86133383f116df2fc2256133012
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/07/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 移动数据
 本文介绍如何使用 Azure 数据工厂中的复制活动从 Amazon Redshift 移动数据。 本文基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。 
 
 可以将数据从 Amazon Redshift 复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 数据工厂当前支持将数据从 Amazon Redshift 移至其他数据存储，但不支持将数据从其他数据存储移至 Amazon Redshift。
+
+> [!TIP]
+> 若要在从 Redshift 复制大量数据时获得最佳性能，请考虑通过 Amazon S3 使用内置的 Redshift UNLOAD。 有关详细信息，请参阅[使用 UNLOAD 从Amazon Redshift 复制数据](#use-unload-to-copy-data-from-amazon-redshift)部分。
 
 ## <a name="prerequisites"></a>先决条件
 * 如果要将数据移到本地数据存储，请在本地计算机上安装[数据管理网关](data-factory-data-management-gateway.md)。 然后，请向数据管理网关（使用计算机的 IP 地址）授予对 Amazon Redshift 群集的访问权限。 有关说明，请参阅[授予对群集的访问权限](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html)。
@@ -43,11 +46,12 @@ ms.lasthandoff: 06/07/2017
 2. 创建**数据集**以表示复制操作的输入和输出数据。 
 3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 
 
-使用向导时，将自动为你创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从 Amazon Redshift 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 Amazon Redshift 复制到 Azure Blob](#json-example-copy-data-from-amazon-redshift-to-azure-blob) 部分。 
+使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从 Amazon Redshift 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 Amazon Redshift 复制到 Azure Blob](#json-example-copy-data-from-amazon-redshift-to-azure-blob) 部分。 
 
 对于特定于 Amazon Redshift 的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息： 
 
 ## <a name="linked-service-properties"></a>链接服务属性
+
 下表描述了专属于 Amazon Redshift 链接服务的 JSON 元素。
 
 | 属性 | 说明 | 必选 |
@@ -60,6 +64,7 @@ ms.lasthandoff: 06/07/2017
 | password |用户帐户密码。 |是 |
 
 ## <a name="dataset-properties"></a>数据集属性
+
 有关可用于定义数据集的节和属性的完整列表，请参阅 [Creating datasets](data-factory-create-datasets.md)（创建数据集）一文。 所有数据集类型（Azure SQL、Azure blob、Azure 表等）的结构、可用性和策略等部分类似。
 
 每个数据集类型的 **typeProperties** 节都不同。 它提供数据存储中数据位置的相关信息。 **RelationalTable** 类型数据集（包括 Amazon Redshift 数据集）的 typeProperties 部分具有以下属性
@@ -69,15 +74,63 @@ ms.lasthandoff: 06/07/2017
 | tableName |Amazon Redshift 数据库中链接服务引用的表的名称。 |否（如果指定了 **RelationalSource** 的**query**） |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
+
 有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
 
 但是，可用于此活动的 **typeProperties** 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
 
-复制活动的源是类型 **RelationalSource**（包括 Amazon Redshift）时，以下属性可用于 typeProperties 部分：
+复制活动源的类型为 AmazonRedshiftSource 时，则可在 typeProperties 节中使用以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
-| --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如，select * from MyTable。 |否（如果指定了**数据集**的 **tableName**） |
+| 属性 | 说明 | 必选 |
+| --- | --- | --- |
+| query | 使用自定义查询读取数据。 |否（如果指定了**数据集**的 **tableName**） |
+| redshiftUnloadSettings | 使用 Amazon Redshift UNLOAD 时的属性组。 | 否 |
+| s3LinkedServiceName | 表示通过指定 AwsAccessKey 类型的 ADF 链接服务名称，将用作临时存储的 Amazon S3。 | 在“redshiftUnloadSettings”下为必需 |
+| bucketName | 指示 S3 Bucket 以存储临时数据。 如果未提供，复制活动会自动生成 Bucket。 | 在“redshiftUnloadSettings”下为必需 |
+
+或者，也可以将类型 RelationalSource（包括 Amazon Redshift）与 typeProperties 部分中的以下属性配合使用。 请注意，此源类型不支持 Redshift UNLOAD。
+
+| 属性 | 说明 | 必选 |
+| --- | --- | --- |
+| query |使用自定义查询读取数据。 | 否（如果指定了**数据集**的 **tableName**） |
+
+## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>使用 UNLOAD 从Amazon Redshift 复制数据
+
+[UNLOAD](http://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) 是 Amazon Redshift 提供的一种机制，可将查询结果卸载到 Amazon 简单存储服务 (Amazon S3) 上的一个或多个文件中。 Amazon 推荐使用此方式从 Redshift 复制大数据集。
+
+**示例：使用UNLOAD、暂存复制和 PolyBase 将数据从 Amazon Redshift 复制到 Azure SQL 数据仓库**
+
+对于此用例，复制活动首先按“redshiftUnloadSettings”中的配置将数据从 Amazon Redshift 卸载到 Amazon S3，然后按“stagingSettings”中指定的内容将数据从 Amazon S3 复制到 Azure Blob，最后使用 PolyBase 将数据载入 SQL 数据仓库。 所有临时格式均由复制活动正确处理。
+
+![Redshift 到 SQL DW 复制工作流](media\data-factory-amazon-redshift-connector\redshift-to-sql-dw-copy-workflow.png)
+
+```json
+{
+    "name": "CopyFromRedshiftToSQLDW",
+    "type": "Copy",
+    "typeProperties": {
+        "source": {
+            "type": "AmazonRedshiftSource",
+            "query": "select * from MyTable",
+            "redshiftUnloadSettings": {
+                "s3LinkedServiceName":"MyAmazonS3StorageLinkedService",
+                "bucketName": "bucketForUnload"
+            }
+        },
+        "sink": {
+            "type": "SqlDWSink",
+            "allowPolyBase": true
+        },
+        "enableStaging": true,
+        "stagingSettings": {
+            "linkedServiceName": "MyAzureStorageLinkedService",
+            "path": "adfstagingcopydata"
+        },
+        "cloudDataMovementUnits": 32
+        .....
+    }
+}
+```
 
 ## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob"></a>JSON 示例：将数据从 Amazon Redshift 复制到 Azure Blob
 此示例演示如何将数据从 Amazon Redshift 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动，**直接**将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。  
@@ -221,14 +274,19 @@ ms.lasthandoff: 06/07/2017
                 "type": "Copy",
                 "typeProperties": {
                     "source": {
-                        "type": "RelationalSource",
-                        "query": "$$Text.Format('select * from MyTable where timestamp >= \\'{0:yyyy-MM-ddTHH:mm:ss}\\' AND timestamp < \\'{1:yyyy-MM-ddTHH:mm:ss}\\'', WindowStart, WindowEnd)"
+                        "type": "AmazonRedshiftSource",
+                        "query": "$$Text.Format('select * from MyTable where timestamp >= \\'{0:yyyy-MM-ddTHH:mm:ss}\\' AND timestamp < \\'{1:yyyy-MM-ddTHH:mm:ss}\\'', WindowStart, WindowEnd)",
+                        "redshiftUnloadSettings": {
+                            "s3LinkedServiceName":"myS3Storage",
+                            "bucketName": "bucketForUnload"
+                        }
                     },
                     "sink": {
                         "type": "BlobSink",
                         "writeBatchSize": 0,
                         "writeBatchTimeout": "00:00:00"
-                    }
+                    },
+                    "cloudDataMovementUnits": 32
                 },
                 "inputs": [
                     {
@@ -280,7 +338,7 @@ ms.lasthandoff: 06/07/2017
 | TEXT |String |
 
 ## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
-若要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
+要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
 ## <a name="repeatable-read-from-relational-sources"></a>从关系源进行可重复读取
 从关系数据源复制数据时，请注意可重复性，以免发生意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试策略，以便在出现故障时重新运行切片。 无论以哪种方式重新运行切片，都需要确保读取相同的数据，而与运行切片的次数无关。 请参阅[从关系源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)

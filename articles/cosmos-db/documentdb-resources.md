@@ -17,25 +17,25 @@ ms.date: 05/24/2017
 ms.author: anhoh
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 8051742c7c368d1ed84bcd90ab75b20f62105e2f
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: a8037dfbd799209e453b84374f28b881864d3799
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Azure Cosmos DB 分层资源模型和核心概念
-Azure Cosmos DB 管理的数据库实体被称为**资源**。 每个资源都通过逻辑 URI 进行唯一标识。 你可以使用标准 HTTP 谓词、请求/响应标头和状态代码与资源进行交互。 
+Azure Cosmos DB 管理的数据库实体被称为**资源**。 每个资源都通过逻辑 URI 进行唯一标识。 可以使用标准 HTTP 谓词、请求/响应标头和状态代码与资源进行交互。 
 
-通过阅读本文，你将能够回答以下问题：
+通过阅读本文，能够回答以下问题：
 
-* Cosmos DB 资源模型是什么？
+* Azure Cosmos DB 资源模型是什么？
 * 对照用户定义的资源，什么是系统定义的资源？
 * 如何对资源进行寻址？
 * 如何使用集合？
 * 如何使用存储过程、触发器和用户自定义函数 (UDF)？
 
 ## <a name="hierarchical-resource-model"></a>分层资源模型
-如下面的关系图所示，Cosmos DB 分层**资源模型**由一个数据库帐户下的多组资源构成，每个资源可通过一个稳定的逻辑 URI 进行寻址。 本文将一组资源称为一个**源**。 
+如下面的关系图所示，Azure Cosmos DB 分层资源模型由一个数据库帐户下的多组资源构成，每个资源可通过一个稳定的逻辑 URI 进行寻址。 本文将一组资源称为一个**源**。 
 
 > [!NOTE]
 > Azure Cosmos DB 提供高效的 TCP 协议，该协议在其通信模型中也是 RESTful，可通过 [DocumentDB .NET 客户端 API](documentdb-sdk-dotnet.md) 获得。
@@ -49,7 +49,7 @@ Azure Cosmos DB 管理的数据库实体被称为**资源**。 每个资源都�
 
 | 资源 | 说明 |
 | --- | --- |
-| 数据库帐户 |每个数据库帐户都与一组数据库和一个固定大小的附件 blob 存储相关联。 你可以使用 Microsoft Azure 订阅创建一个或多个数据库帐户。 有关详细信息，请访问[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。 |
+| 数据库帐户 |每个数据库帐户都与一组数据库和一个固定大小的附件 blob 存储相关联。 可以使用 Microsoft Azure 订阅创建一个或多个数据库帐户。 有关详细信息，请访问[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。 |
 | 数据库 |数据库是跨集合分区的文档存储的逻辑容器。 它也是一个用户容器。 |
 | 用户 |范围权限的逻辑命名空间。 |
 | 权限 |与用户关联用于访问特定资源的授权令牌。 |
@@ -122,7 +122,7 @@ Cosmos DB 不强制对 JSON 标准或特殊编码进行任何专有扩展；它�
 | /dbs/{dbName}/users/{userId}/permissions |用户下的权限的源 |
 | /dbs/{dbName}/users/{userId}/permissions/{permissionId} |其 ID 与值 {permission} 匹配的权限 |
 
-每个资源都具有唯一的用户定义的名称，通过 ID 属性公开。 请注意：对于文档，如果用户未指定 ID，受支持的 SDK 将自动生成文档的唯一 ID。 该 ID 是用户定义的字符串，长度为最多 256 个字符，且在特定父资源的上下文中是唯一的。 
+每个资源都具有唯一的用户定义的名称，通过 ID 属性公开。 请注意：对于文档，如果用户未指定 ID，受支持的 SDK 会自动生成文档的唯一 ID。 该 ID 是用户定义的字符串，长度为最多 256 个字符，且在特定父资源的上下文中是唯一的。 
 
 每个资源还具有系统生成的分层资源标识符（也称为 RID），可通过 _rid 属性获得。 RID 可对给定资源的整个层次结构进行编码，它是一种简便的内部表示形式，用于以分布式方式强制引用完整性。 在数据库帐户内 RID 是唯一的，且由 Cosmos DB 在内部使用，用于进行有效路由，而无需跨分区查找。 _self 和 _rid 属性的值都是交替且规范的资源表示形式。 
 
@@ -131,10 +131,10 @@ REST API 支持资源寻址和由 ID 和 _rid 属性提出的请求路由。
 ## <a name="database-accounts"></a>数据库帐户
 可以使用 Azure 订阅预配一个或多个 Cosmos DB 数据库帐户。
 
-可以通过 Azure 门户 ([http://portal.azure.com/](https://portal.azure.com/)) 创建和管理 Cosmos DB 数据库帐户。 创建和管理数据库帐户需要具有管理访问权限，并且只能在你的 Azure 订阅下执行。 
+可以通过 Azure 门户 ([http://portal.azure.com/](https://portal.azure.com/)) 创建和管理 Cosmos DB 数据库帐户。 创建和管理数据库帐户需要具有管理访问权限，并且只能在 Azure 订阅下执行。 
 
 ### <a name="database-account-properties"></a>数据库帐户属性
-作为设置和管理数据库帐户的一部分，你可以配置并读取以下属性：  
+作为设置和管理数据库帐户的一部分，可以配置并读取以下属性：  
 
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>
@@ -144,7 +144,7 @@ REST API 支持资源寻址和由 ID 和 _rid 属性提出的请求路由。
         </tr>
         <tr>
             <td valign="top"><p>一致性策略</p></td>
-            <td valign="top"><p>设置此属性来配置数据库帐户下的所有集合的默认一致性级别。 你可以使用 [x-ms-consistency-level] 请求标头重写基于每个请求的一致性级别。 <p><p>请注意，此属性仅适用于<i>用户定义的资源</i>。 所有系统定义的资源都配置为支持具有高度一致性的读取/查询。</p></td>
+            <td valign="top"><p>设置此属性来配置数据库帐户下的所有集合的默认一致性级别。 可以使用 [x-ms-consistency-level] 请求标头重写基于每个请求的一致性级别。 <p><p>请注意，此属性仅适用于<i>用户定义的资源</i>。 所有系统定义的资源都配置为支持具有高度一致性的读取/查询。</p></td>
         </tr>
         <tr>
             <td valign="top"><p>授权密钥</p></td>
@@ -163,32 +163,32 @@ Cosmos DB 数据库是一个或多个集合和用户的逻辑容器，如下面�
 
 数据库可以包含集合中分布的几乎无限的文档存储。
 
-### <a name="elastic-scale-of-a-cosmos-db-database"></a>弹性缩放的 Cosmos DB 数据库
+### <a name="elastic-scale-of-a-azure-cosmos-db-database"></a>弹性缩放的 Azure Cosmos DB 数据库
 Cosmos DB 数据库默认情况下具有弹性：从几个 GB 到几个 PB 的受 SSD 支持的文档存储和预配吞吐量。 
 
-与传统的 RDBMS 中的数据库不同，Cosmos DB 中的数据库范围不限于单台计算机。 使用 Cosmos DB，随着应用程序的缩放需求的不断增长，可以创建更多集合和/或数据库。 实际上，在 Microsoft 内部，各种第一方应用程序已在以使用者规模使用 Cosmos DB，其方式是通过创建非常大的 Cosmos DB 数据库，每个数据库均包含 TB 级文档存储的数千个集合。 你可以通过添加或删除的集合来满足应用程序的缩放要求，从而扩大或收缩数据库。 
+与传统的 RDBMS 中的数据库不同，Cosmos DB 中的数据库范围不限于单台计算机。 使用 Cosmos DB，随着应用程序的缩放需求的不断增长，可以创建更多集合和/或数据库。 实际上，在 Microsoft 内部，各种第一方应用程序已在以使用者规模使用 Azure Cosmos DB，其方式是通过创建非常大的 Azure Cosmos DB 数据库，每个数据库均包含 TB 级文档存储的数千个集合。 可以通过添加或删除的集合来满足应用程序的缩放要求，从而扩大或收缩数据库。 
 
-你可以根据产品/服务在数据库内创建任意数量的集合。 每个集合都具有 SSD 支持的存储和为你设置的吞吐量，具体取决于所选的性能层。
+可以根据产品/服务在数据库内创建任意数量的集合。 每个集合都具有 SSD 支持的存储和设置的吞吐量，具体取决于所选的性能层。
 
-Cosmos DB 数据库也是用户的容器。 反过来，用户是一组权限的逻辑命名空间，可提供对集合、文档和附件的精细授权和访问权限。  
+Azure Cosmos DB 数据库也是用户的容器。 反过来，用户是一组权限的逻辑命名空间，可提供对集合、文档和附件的精细授权和访问权限。  
 
-与 Cosmos DB 资源模型中的其他资源一样，可以使用 [REST API](/rest/api/documentdb/) 或任一[客户端 SDK](documentdb-sdk-dotnet.md) 轻松创建、替换、删除、读取或枚举数据库。 Cosmos DB 确保数据库资源的元数据读取或查询操作的高度一致性。 自动删除数据库，确保你不能访问任何集合或它所包含的用户。   
+与 Azure Cosmos DB 资源模型中的其他资源一样，可以使用 [REST API](/rest/api/documentdb/) 或任一[客户端 SDK](documentdb-sdk-dotnet.md) 轻松创建、替换、删除、读取或枚举数据库。 Azure Cosmos DB 确保数据库资源的元数据读取或查询操作的高度一致性。 自动删除数据库，确保不能访问任何集合或它所包含的用户。   
 
 ## <a name="collections"></a>集合
 Cosmos DB 集合是 JSON 文档的容器。 
 
 ### <a name="elastic-ssd-backed-document-storage"></a>SSD 支持的弹性文档存储
-集合本质上是弹性的 - 当你添加或删除文档时，它会自动扩展或收缩。 集合是逻辑资源，并且可以跨一个或多个物理分区或服务器。 Cosmos DB 基于存储大小和集合预配吞吐量确定集合中的分区数。 Cosmos DB 中的每个分区都关联了一个大小固定且受 SSD 支持的存储，并且会复制分区以实现高可用性。 分区完全由 Azure Cosmos DB 进行管理，因此，无需编写复杂的代码或亲自管理分区。 Cosmos DB 集合在存储和吞吐量方面**几乎无限制**。 
+集合本质上是弹性的 - 添加或删除文档时，它会自动扩展或收缩。 集合是逻辑资源，并且可以跨一个或多个物理分区或服务器。 Cosmos DB 基于存储大小和集合预配吞吐量确定集合中的分区数。 Cosmos DB 中的每个分区都关联了一个大小固定且受 SSD 支持的存储，并且会复制分区以实现高可用性。 分区完全由 Azure Cosmos DB 进行管理，因此，无需编写复杂的代码或亲自管理分区。 Cosmos DB 集合在存储和吞吐量方面**几乎无限制**。 
 
 ### <a name="automatic-indexing-of-collections"></a>自动编制集合索引
-Cosmos DB 是真正无架构的数据库系统。 无需为 JSON 文档假设或要求任何架构。 将文档添加到集合时，Cosmos DB 会自动编制索引，以供查询时使用。 自动编制文档索引而无需架构或辅助索引是 Cosmos DB 的关键功能，通过写优化、无锁定的日志结构化索引维护技术实现。 Cosmos DB 支持持续大量的极快速写入，同时仍然保障一致的查询。 文档和索引存储都可用于计算每个集合使用的存储。 你可以控制存储和性能权衡，这些权衡与通过配置集合的索引编制策略进行的索引相关联。 
+Azure Cosmos DB 是真正无架构的数据库系统。 无需为 JSON 文档假设或要求任何架构。 将文档添加到集合时，Azure Cosmos DB 会自动编制索引，以供查询时使用。 自动编制文档索引而无需架构或辅助索引是 Azure Cosmos DB 的关键功能，通过写优化、无锁定的日志结构化索引维护技术实现。 Azure Cosmos DB 支持持续大量的极快速写入，同时仍然保障一致的查询。 文档和索引存储都可用于计算每个集合使用的存储。 可以控制存储和性能权衡，这些权衡与通过配置集合的索引编制策略进行的索引相关联。 
 
 ### <a name="configuring-the-indexing-policy-of-a-collection"></a>配置集合的索引编制策略
-每个集合的索引编制策略都可以使你将性能和存储权衡与编制索引关联起来。 你可以使用以下选项进行索引编制配置：  
+每个集合的索引编制策略都可以用于将性能和存储权衡与编制索引关联起来。 可以使用以下选项进行索引编制配置：  
 
-* 选择是否让集合自动为所有文档编制索引。 默认情况下，为所有文档自动编制索引。 你可以选择关闭自动索引，并选择性地只将特定的文档添加到索引中。 反过来，你也可以选择只排除特定的文档。 可以通过将集合的 indexingPolicy 上的自动属性设置为 true 或 false，并在插入、替换或删除文档的同时使用 [x-ms-indexingdirective] 请求标头，从而实现此目的。  
-* 选择是否要在索引中包括特定的路径或文档中的模式或从索引中将其排除。 你可以通过分别设置集合中的 indexingPolicy 上的 includedPaths 和 excludedPaths 来实现这一点。 你还可以配置用于特定路径模式的存储和性能权衡的范围和哈希查询。 
-* 在同步（一致）和异步（延迟）索引更新之间进行选择。 默认情况下，每次在集合中插入、替换或删除文档时同步更新索引。 这个行为让查询能够使用与文档读取相同的一致性级别。 虽然 Cosmos DB 针对写入进行了优化，支持文档持续写入和同步索引维护，并且保障一致的查询，你还是可以配置某些集合，使其索引延迟更新。 延迟索引编制可大大提高写入性能，非常适合主要具有大量读取操作的集合的批量引入方案。
+* 选择是否让集合自动为所有文档编制索引。 默认情况下，为所有文档自动编制索引。 可以选择关闭自动索引，并选择性地只将特定的文档添加到索引中。 反过来，也可以选择只排除特定的文档。 可以通过将集合的 indexingPolicy 上的自动属性设置为 true 或 false，并在插入、替换或删除文档的同时使用 [x-ms-indexingdirective] 请求标头，从而实现此目的。  
+* 选择是否要在索引中包括特定的路径或文档中的模式或从索引中将其排除。 可以通过分别设置集合中的 indexingPolicy 上的 includedPaths 和 excludedPaths 来实现这一点。 还可以配置用于特定路径模式的存储和性能权衡的范围和哈希查询。 
+* 在同步（一致）和异步（延迟）索引更新之间进行选择。 默认情况下，每次在集合中插入、替换或删除文档时同步更新索引。 这个行为让查询能够使用与文档读取相同的一致性级别。 虽然 Azure Cosmos DB 针对写入进行了优化，支持文档持续写入和同步索引维护，并且保障一致的查询，还是可以配置某些集合，使其索引延迟更新。 延迟索引编制可大大提高写入性能，非常适合主要具有大量读取操作的集合的批量引入方案。
 
 可以通过对集合执行 PUT 更改索引策略。 这可以通过[客户端 SDK](documentdb-sdk-dotnet.md)、[Azure 门户](https://portal.azure.com)或 [REST API](/rest/api/documentdb/) 来实现。
 
@@ -199,7 +199,7 @@ Cosmos DB 是真正无架构的数据库系统。 无需为 JSON 文档假设或
 2. 一小部分关系操作，包括组合、筛选、投影、聚合和自联接。 
 3. 基于纯 JavaScript 且结合 (1) 和 (2) 使用的 UDF。  
 
-Cosmos DB 查询模型尝试在功能、效率和简单性之间取得平衡。 Cosmos DB 数据库引擎在本机上编译和执行 SQL 查询语句。 可以使用 [REST API](/rest/api/documentdb/) 或任一[客户端 SDK](documentdb-sdk-dotnet.md) 查询集合。 .NET SDK 附带了 LINQ 提供程序。
+Azure Cosmos DB 查询模型尝试在功能、效率和简单性之间取得平衡。 Azure Cosmos DB 数据库引擎在本机上编译和执行 SQL 查询语句。 可以使用 [REST API](/rest/api/documentdb/) 或任一[客户端 SDK](documentdb-sdk-dotnet.md) 查询集合。 .NET SDK 附带了 LINQ 提供程序。
 
 > [!TIP]
 > 可以在[查询板块](https://www.documentdb.com/sql/demo)中尝试 DocumentDB API 并对数据集运行 SQL 查询。
@@ -212,16 +212,16 @@ Cosmos DB 查询模型尝试在功能、效率和简单性之间取得平衡。 
 * （非事务性）应用程序编程语言（例如 JavaScript、Python、C#、Java 等。）
 * 数据库在本机上执行的事务性编程语言 T-SQL
 
-由于 Cosmos DB 致力于直接在数据库引擎中使用 JavaScript 和 JSON，因此，在存储过程和触发器方面，它为在集合上直接执行基于 JavaScript 的应用程序逻辑提供了直观编程模型。 这样就可以实现以下两点：
+由于 Azure Cosmos DB 致力于直接在数据库引擎中使用 JavaScript 和 JSON，因此，在存储过程和触发器方面，它为在集合上直接执行基于 JavaScript 的应用程序逻辑提供了直观编程模型。 这样就可以实现以下两点：
 
 * 有效实现直接在数据库引擎中对 JSON 对象图进行并发控制、恢复、自动编制索引
 * 直接使用 JavaScript 编程语言方面的数据库事务自然表达控制流、变量作用域、异常处理基元的分配和集成
 
-在集合级别上注册的 JavaScript 逻辑稍后可以在给定集合的文档中发出数据库操作。 Cosmos DB 跨集合中的文档使用快照隔离在周围 ACID 事务中隐式地包装基于 JavaScript 的存储过程和触发器。 在其执行过程中，如果 JavaScript 引发异常，则整个事务将被中止。 生成的编程模型非常简单但功能强大。 JavaScript 开发人员在继续使用其自己熟悉的语言构造和库基元的同时，可以获得“持久”的编程模型。   
+在集合级别上注册的 JavaScript 逻辑稍后可以在给定集合的文档中发出数据库操作。 Azure Cosmos DB 跨集合中的文档使用快照隔离在周围 ACID 事务中隐式包装基于 JavaScript 的存储过程和触发器。 在其执行过程中，如果 JavaScript 引发异常，则整个事务会被中止。 生成的编程模型非常简单但功能强大。 JavaScript 开发人员在继续使用其自己熟悉的语言构造和库基元的同时，可以获得“持久”的编程模型。   
 
 直接在与缓冲池位于相同地址空间内的数据库引擎中执行 JavaScript 的能力可实现针对集合的文档的数据库操作的高性能和事务性执行。 此外，Cosmos DB 数据库引擎还致力于针对 JSON 和 JavaScript 消除应用程序和数据库类型系统之间的任何阻抗失配。   
 
-创建集合之后即可使用 [REST API](/rest/api/documentdb/)或任一[客户端 SDK](documentdb-sdk-dotnet.md) 向集合注册存储过程、触发器和 UDF。 注册后，你可以引用并执行它们。 请考虑完全以 JavaScript 编写的存储过程，下面的代码采用两个参数（书名和作者姓名）创建一个新文档，对文档进行查询后再对其进行更新 – 所有这一切都是在一个隐式的 ACID 事务内完成。 在执行期间的任何时刻，如果引发 JavaScript 异常，则中止整个事务。
+创建集合之后即可使用 [REST API](/rest/api/documentdb/)或任一[客户端 SDK](documentdb-sdk-dotnet.md) 向集合注册存储过程、触发器和 UDF。 注册后，可以引用并执行它们。 请考虑完全以 JavaScript 编写的存储过程，下面的代码采用两个参数（书名和作者姓名）创建一个新文档，对文档进行查询后再对其进行更新 – 所有这一切都是在一个隐式的 ACID 事务内完成。 在执行期间的任何时刻，如果引发 JavaScript 异常，则中止整个事务。
 
     function businessLogic(name, author) {
         var context = getContext();
@@ -254,7 +254,7 @@ Cosmos DB 查询模型尝试在功能、效率和简单性之间取得平衡。 
             })
     };
 
-客户端可以将以上 JavaScript 逻辑“运送”到用于通过 HTTP POST 进行的事务性执行的数据库。 有关使用 HTTP 方法的详细信息，请参阅[与 Azure Cosmos DB 资源的 RESTful 交互](https://msdn.microsoft.com/library/azure/mt622086.aspx)。 
+客户端可以以上 JavaScript 逻辑“运送”到用于通过 HTTP POST 进行的事务性执行的数据库。 有关使用 HTTP 方法的详细信息，请参阅[与 Azure Cosmos DB 资源的 RESTful 交互](https://msdn.microsoft.com/library/azure/mt622086.aspx)。 
 
     client.createStoredProcedureAsync(collection._self, {id: "CRUDProc", body: businessLogic})
        .then(function(createdStoredProcedure) {
@@ -274,10 +274,10 @@ Cosmos DB 查询模型尝试在功能、效率和简单性之间取得平衡。 
 
 存储过程和触发器与集合和集合中的文档通过一个明确定义的对象模型进行交互，该模型可公开当前集合的上下文。  
 
-可以使用 [REST API](/rest/api/documentdb/) 或任一[客户端 SDK](documentdb-sdk-dotnet.md) 轻松创建、删除、读取或枚举 DocumentDB API 中的集合。 DocumentDB API 始终为集合元数据的读取或查询操作提供高度一致性。 自动删除数据库，确保你不能访问任何文档、附件、存储过程、触发器和其中包含的 UDF。   
+可以使用 [REST API](/rest/api/documentdb/) 或任一[客户端 SDK](documentdb-sdk-dotnet.md) 轻松创建、删除、读取或枚举 DocumentDB API 中的集合。 DocumentDB API 始终为集合元数据的读取或查询操作提供高度一致性。 自动删除数据库，确保不能访问任何文档、附件、存储过程、触发器和其中包含的 UDF。   
 
 ## <a name="stored-procedures-triggers-and-user-defined-functions-udf"></a>存储过程、触发器和用户自定义函数 (UDF)
-如前一节中所述，你可以编写应用程序逻辑以直接在数据库引擎内部的某个事务中运行。 应用程序逻辑可以完全用 JavaScript 编写，并且可以作为存储过程、触发器或 UDF 来建模。 存储过程或触发器内的 JavaScript 代码可以插入、替换、删除、读取或查询集合中的文档。 但是，UDF 中的 JavaScript 却无法插入、替换或删除文档。 UDF 可以枚举查询的结果集的文档，并生成另一个结果集。 对于多租户，Cosmos DB 将强制实施严格的基于保留项的资源调控。 每个存储过程、触发器或 UDF 都可以获取固定量的操作系统资源来完成其工作。 此外，存储过程、触发器或 UDF 不能针对外部 JavaScript 库进行链接，并且如果它们超出了分配给它们的资源预算，则将被列入方块列表。 你可以通过使用 REST API 为集合注册存储过程、触发器或 UDF，也可以取消注册。  注册时将预编译存储过程、触发器或 UDF，并将其存储为字节代码，以供以后执行。 下一节说明如何使用 Cosmos DB JavaScript SDK 注册、执行和注销存储过程、触发器和 UDF。 JavaScript SDK 是一个比 [REST API](/rest/api/documentdb/) 更简单的包装器。 
+如前一节中所述，可以编写应用程序逻辑以直接在数据库引擎内部的某个事务中运行。 应用程序逻辑可以完全用 JavaScript 编写，并且可以作为存储过程、触发器或 UDF 来建模。 存储过程或触发器内的 JavaScript 代码可以插入、替换、删除、读取或查询集合中的文档。 但是，UDF 中的 JavaScript 却无法插入、替换或删除文档。 UDF 可以枚举查询的结果集的文档，并生成另一个结果集。 对于多租户，Azure Cosmos DB 将强制实施严格的基于保留项的资源调控。 每个存储过程、触发器或 UDF 都可以获取固定量的操作系统资源来完成其工作。 此外，存储过程、触发器或 UDF 不能针对外部 JavaScript 库进行链接，并且如果它们超出了分配给它们的资源预算，则会被列入方块列表。 可以通过使用 REST API 为集合注册存储过程、触发器或 UDF，也可以取消注册。  注册时会预编译存储过程、触发器或 UDF，并将其存储为字节代码，以供以后执行。 下一节说明如何使用 Azure Cosmos DB JavaScript SDK 注册、执行和注销存储过程、触发器和 UDF。 JavaScript SDK 是一个比 [REST API](/rest/api/documentdb/) 更简单的包装器。 
 
 ### <a name="registering-a-stored-procedure"></a>注册存储过程
 注册存储过程将通过 HTTP POST 在集合上创建新的存储过程资源。  
@@ -328,7 +328,7 @@ Cosmos DB 查询模型尝试在功能、效率和简单性之间取得平衡。 
 
 
 ### <a name="registering-a-pre-trigger"></a>注册预触发器
-注册触发器将通过 HTTP POST 在集合上创建新的触发器资源。 你可以指定触发器是前触发还是后触发，也可以指定与之关联的操作类型（例如创建、替换、删除或全部）。   
+注册触发器将通过 HTTP POST 在集合上创建新的触发器资源。 可以指定触发器是前触发还是后触发，也可以指定与之关联的操作类型（例如创建、替换、删除或全部）。   
 
     var preTrigger = {
         id: "upperCaseId",
@@ -408,32 +408,32 @@ Cosmos DB 查询模型尝试在功能、效率和简单性之间取得平衡。 
 尽管上面的代码段演示了通过 [JavaScript SDK](https://github.com/Azure/azure-documentdb-js) 注册 (POST)、取消注册 (PUT)、读取/列出 (GET) 和执行 (POST)，但也可以使用 [REST API](/rest/api/documentdb/) 或其他[客户端 SDK](documentdb-sdk-dotnet.md)。 
 
 ## <a name="documents"></a>文档
-你可以插入、替换、删除、读取、枚举和查询集合中的任意 JSON 文档。 Cosmos DB 不强制要求任何架构，并且对集合中的文档进行查询也不需要辅助索引的支持。 文档的最大大小为 2 MB。   
+可以插入、替换、删除、读取、枚举和查询集合中的任意 JSON 文档。 Azure Cosmos DB 不强制要求任何架构，并且对集合中的文档进行查询也不需要辅助索引的支持。 文档的最大大小为 2 MB。   
 
-作为一种真正的开放式数据库服务，Cosmos DB 不创建任何专用的数据类型（例如日期时间）或用于 JSON 文档的特定编码。 请注意，Cosmos DB 不需要任何特殊的 JSON 约定来对各种文档之间的关系进行编码；Cosmos DB 的 SQL 语法提供非常强大的分层和关系查询运算符以查询和投影文档，而无需任何特殊的注释，也不需要使用可分辨属性对文档间的关系进行编码。  
+作为一种真正的开放式数据库服务，Azure Cosmos DB 不创建任何专用的数据类型（例如日期时间）或用于 JSON 文档的特定编码。 请注意，Azure Cosmos DB 不需要任何特殊的 JSON 约定来对各种文档之间的关系进行编码；Azure Cosmos DB 的 SQL 语法提供非常强大的分层和关系查询运算符以查询和投影文档，而无需任何特殊的注释，也不需要使用可分辨属性对文档间的关系进行编码。  
 
-与所有其他资源一样，可以使用 REST API 或任一[客户端 SDK](documentdb-sdk-dotnet.md) 轻松创建、替换、删除、读取、枚举和查询文档。 删除文档将立即释放与所有嵌套附件相对应的配额。 文档的读取一致性级别遵守数据库帐户中的一致性策略。 可以根据你的应用程序的数据一致性要求在每个请求中重写此策略。 查询文档时，读取一致性遵循集合上的索引编制模式设置。 对于“一致性”，将遵循帐户的一致性策略。 
+与所有其他资源一样，可以使用 REST API 或任一[客户端 SDK](documentdb-sdk-dotnet.md) 轻松创建、替换、删除、读取、枚举和查询文档。 删除文档将立即释放与所有嵌套附件相对应的配额。 文档的读取一致性级别遵守数据库帐户中的一致性策略。 可以根据应用程序的数据一致性要求在每个请求中重写此策略。 查询文档时，读取一致性遵循集合上的索引编制模式设置。 对于“一致性”，将遵循帐户的一致性策略。 
 
 ## <a name="attachments-and-media"></a>附件和媒体
-Cosmos DB 可通过 Cosmos DB 存储二进制 Blob/媒体（每个帐户最大 2 GB），或将其存储到远程媒体存储中。 对于被称为附件的特殊文档而言，它还可以用于表示媒体的元数据。 Cosmos DB 中的附件是引用存储在其他位置的媒体/Blob 的特殊 (JSON) 文档。 附件只是捕获存储在远程媒体存储中的媒体的元数据（例如位置、作者等）的特殊文档。 
+Azure Cosmos DB 可通过 Azure Cosmos DB 存储二进制 Blob/媒体（每个帐户最大 2 GB），或将其存储到远程媒体存储中。 对于被称为附件的特殊文档而言，它还可以用于表示媒体的元数据。 Azure Cosmos DB 中的附件是引用存储在其他位置的媒体/Blob 的特殊 (JSON) 文档。 附件只是捕获存储在远程媒体存储中的媒体的元数据（例如位置、作者等）的特殊文档。 
 
-以一款社交阅读应用程序为例，它使用 Cosmos DB 来存储某位用户的电子书的墨迹注释和相关元数据（包括评论、热点、书签、评分、喜欢/不喜欢，等等）。   
+以一款社交阅读应用程序为例，它使用 Azure Cosmos DB 来存储某位用户的电子书的墨迹注释和相关元数据（包括评论、热点、书签、评分、喜欢/不喜欢，等等）。   
 
-* 此电子书本身的内容存储在媒体存储中：既可以是作为 Cosmos DB 数据库帐户一部分的媒体存储，也可以是远程媒体存储。 
+* 此电子书本身的内容存储在媒体存储中：既可以是作为 Azure Cosmos DB 数据库帐户一部分的媒体存储，也可以是远程媒体存储。 
 * 应用程序可能会将每个用户的元数据存储为不同的文档 - 例如 book1 的 Joe 的元数据存储在由 /colls/joe/docs/book1 引用的文档中。 
 * 指向用户的特定书的内容页面的附件存储在对应的文档中，如 /colls/joe/docs/book1/chapter1、/colls/joe/docs/book1/chapter2，等等。 
 
 请注意，上面列出的示例使用易于理解的 ID 来表示资源层次结构。 通过唯一的资源 ID 和 REST API 访问资源。 
 
-对于由 Cosmos DB 管理的媒体，附件的 _media 属性将通过 URI 引用媒体。 Cosmos DB 确保在删除所有未完成的引用时对媒体进行垃圾回收。 当你上传新的媒体并填充 _media 以指向新添加的媒体时，Cosmos DB 会自动生成附件。 如果你选择将媒体存储在由你（例如 OneDrive、Azure 存储、DropBox 等）管理的远程 blob 存储区，你仍可以使用附件以引用媒体。 在这种情况下，你将自行创建附件并填充其 _media 属性。   
+对于由 Azure Cosmos DB 管理的媒体，附件的 _media 属性将通过 URI 引用媒体。 Azure Cosmos DB 确保在删除所有未完成的引用时对媒体进行垃圾回收。 上传新的媒体并填充 _media 以指向新添加的媒体时，Azure Cosmos DB 会自动生成附件。 如果选择将媒体存储在由你（例如 OneDrive、Azure 存储空间、DropBox 等）管理的远程 blob 存储区，仍可以使用附件以引用媒体。 在这种情况下，将自行创建附件并填充其 _media 属性。   
 
-至于所有其他资源，可以创建、替换、删除、读取、枚举附件，也可以轻松地使用 REST API 或任一客户端 SDK 查询附件。 至于文档，附件的读取一致性级别遵守数据库帐户中的一致性策略。 可以根据你的应用程序的数据一致性要求在每个请求中重写此策略。 查询附件时，读取一致性遵循集合上的索引编制模式设置。 对于“一致性”，将遵循帐户的一致性策略。 
+至于所有其他资源，可以创建、替换、删除、读取、枚举附件，也可以轻松地使用 REST API 或任一客户端 SDK 查询附件。 至于文档，附件的读取一致性级别遵守数据库帐户中的一致性策略。 可以根据应用程序的数据一致性要求在每个请求中重写此策略。 查询附件时，读取一致性遵循集合上的索引编制模式设置。 对于“一致性”，将遵循帐户的一致性策略。 
  
 
 ## <a name="users"></a>用户
-Cosmos DB 用户是指对权限进行分组的逻辑命名空间。 Cosmos DB 用户可能与标识管理系统或预定义应用程序角色中的用户相对应。 对于 Cosmos DB，用户只是抽象地用来表示在数据库下对一组权限进行分组。   
+Azure Cosmos DB 用户是指对权限进行分组的逻辑命名空间。 Azure Cosmos DB 用户可能与标识管理系统或预定义应用程序角色中的用户相对应。 对于 Azure Cosmos DB，用户只是抽象地用来表示在数据库下对一组权限进行分组。   
 
-为了在应用程序中实现多租户，可以在 Cosmos DB 中创建与实际用户或应用程序租户对应的用户。 然后，你可以为对应针对多个集合、文档、附件等内容的访问控制的给定用户创建权限。   
+为了在应用程序中实现多租户，可在 Azure Cosmos DB 中创建与实际用户或应用程序租户对应的用户。 然后，可以为对应针对多个集合、文档、附件等内容的访问控制的给定用户创建权限。   
 
 由于应用程序需要随用户增加而进行扩展，因此可以采用多种方法对数据进行分片。 可以按照如下方法对每个用户进行建模：   
 
@@ -442,22 +442,22 @@ Cosmos DB 用户是指对权限进行分组的逻辑命名空间。 Cosmos DB �
 * 将对应于多个用户的文档转到专用的集合。 
 * 将对应于多个用户的文档转到一组集合。   
 
-无论所选择的特定分片策略是什么，都可以将实际用户建模为 Cosmos DB 数据库中的用户并将细化的权限和每个用户关联起来。  
+无论所选择的特定分片策略是什么，都可以将实际用户建模为 Azure Cosmos DB 数据库中的用户并将细化的权限和每个用户关联起来。  
 
 ![用户集合][3]  
 **分片策略和为用户建模**
 
-和所有其他资源一样，可以使用 REST API 或任一客户端 SDK 轻松创建、替换、删除、读取或枚举 Cosmos DB 中的用户。 Cosmos DB 始终为用户资源的元数据读取或查询操作提供高度一致性。 需要指出的是，自动删除用户可确保你不能访问其中所包含的任何权限。 即使 Cosmos DB 在后台将权限配额作为已删除用户的一部分进行了回收，你也仍然可以立即恢复并使用已删除的权限。  
+和所有其他资源一样，可以使用 REST API 或任一客户端 SDK 轻松创建、替换、删除、读取或枚举 Azure Cosmos DB 中的用户。 Azure Cosmos DB 始终为用户资源的元数据读取或查询操作提供高度一致性。 需要指出的是，自动删除用户可确保不能访问其中所包含的任何权限。 即使 Azure Cosmos DB 在后台将权限配额作为已删除用户的一部分进行了回收，也仍然可以立即恢复并使用已删除的权限。  
 
 ## <a name="permissions"></a>权限
 由于数据库帐户、数据库、用户和权限等资源需要管理权限，因此从访问控制方面而言，它们都被视为*管理*资源。 另一方面，集合、文档、附件、存储过程、触发器和 UDF 等资源都只局限在某个给定的数据库内，因此被视为*应用程序资源*。 授权模型定义了两种类型的*访问密钥*：*主密钥*和*资源密钥*以对应这两种类型的资源和访问它们的角色（即管理员和用户）。 主密钥是数据库帐户的一部分，并且提供给设置数据库帐户的开发人员（或管理员）。 此主密钥具有管理员语义，因为它可用于向管理和应用程序资源授予访问权限。 与此相反，资源密钥是允许访问*特定*应用程序资源的精细访问密钥。 因此，它会为特定资源（例如集合、文档、附件、存储过程、触发器或 UDF）捕获数据库的用户和用户权限之间的关系。   
 
 获取资源密钥的唯一方法是通过创建给定用户下的权限资源。 请注意，若要创建或检索某个权限，主密钥必须呈现在授权标头中。 权限资源与资源及其访问权限和用户密切相关。 创建权限资源后，用户只需要提供关联的资源密钥就能获得相关资源的访问权限。 因此，可以将资源密钥看作权限资源的逻辑和紧凑表示形式。  
 
-就像所有其他资源一样，可以使用 REST API 或任一客户端 SDK 轻松创建、替换、删除、读取或枚举 Cosmos DB 中的权限。 Cosmos DB 始终为权限元数据的读取或查询操作提供高度一致性。 
+就像所有其他资源一样，可以使用 REST API 或任一客户端 SDK 轻松创建、替换、删除、读取或枚举 Azure Cosmos DB 中的权限。 Azure Cosmos DB 始终为权限元数据的读取或查询操作提供高度一致性。 
 
 ## <a name="next-steps"></a>后续步骤
-有关通过 HTTP 命令使用资源的详细信息，请参阅[与 Cosmos DB 资源的 RESTful 交互](https://msdn.microsoft.com/library/azure/mt622086.aspx)。
+有关通过 HTTP 命令使用资源的详细信息，请参阅[与 Azure Cosmos DB 资源的 RESTful 交互](https://msdn.microsoft.com/library/azure/mt622086.aspx)。
 
 [1]: media/documentdb-resources/resources1.png
 [2]: media/documentdb-resources/resources2.png

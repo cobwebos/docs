@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 11/18/2016
+ms.date: 8/31/2017
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 009b325054737b63d5bdaefbe005d6a613126f52
+ms.translationtype: HT
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: 75dcc603327b50718b279f3ce055663ec0bc2596
 ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 09/01/2017
 
 ---
 # <a name="accessing-azure-virtual-machines-from-server-explorer"></a>从服务器资源管理器访问 Azure 虚拟机
@@ -28,20 +28,20 @@ ms.lasthandoff: 11/17/2016
 如果有 Azure 托管的虚拟机，可以在服务器资源管理器中访问它们。 必须首先登录到 Azure 订阅才能查看移动服务。 若要登录，请在服务器资源管理器中打开“Azure”节点的快捷菜单，并选择“连接到 Microsoft Azure”。
 
 ### <a name="to-get-information-about-your-virtual-machines"></a>获取有关虚拟机的信息
-1. 在服务器资源管理器中选择虚拟机，然后选择 F4 键显示其属性窗口。
+1. 在 Cloud Explorer 中选择虚拟机，并选择 F4 键显示其属性窗口。
    
-    下表显示了可用的属性，但这些属性都是只读的。 若要更改它们，请使用 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)。
+    下表显示了可用的属性，但这些属性都是只读的。 若要更改这些属性，请使用 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
    
    | 属性 | 说明 |
    | --- | --- |
    | DNS 名称 |包含虚拟机 Internet 地址的 URL。 |
    | 环境 |对于虚拟机，此属性的值始终为“生产”。 |
    | 名称 |虚拟机的名称。 |
-   | 大小 |虚拟机的大小，此值反映可用的内存和磁盘空间量。 有关详细信息，请参阅“How To: Configure Virtual Machine Sizes”（如何：配置虚拟机大小）。 |
-   | 状态 |值包括“正在启动”、“已启动”、“正在停止”、“已停止”和“正在检索状态”。 如果出现“正在检索状态”，则表示当前状态未知。 此属性的值不同于 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)上使用的值。 |
-   | 订阅 ID |Azure 帐户的订阅 ID。 可以通过在 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)上查看订阅的属性来显示此信息。 |
-2. 选择一个终结点节点，然后查看“属性”窗口。
-3. 下表描述了可用的终结点属性，但这些属性都是只读的。 若要添加或编辑虚拟机的终结点，请使用 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)。 
+   | 大小 |虚拟机的大小，此值反映可用的内存和磁盘空间量。 有关详细信息，请参阅[虚拟机大小](https://docs.microsoft.com/azure/cloud-services/cloud-services-sizes-specs)。 |
+   | 状态 |值包括“正在启动”、“已启动”、“正在停止”、“已停止”和“正在检索状态”。 如果出现“正在检索状态”，则表示当前状态未知。 此属性的值不同于 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)上使用的值。 |
+   | 订阅 ID |Azure 帐户的订阅 ID。 可以通过在 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)上查看订阅的属性来显示此信息。 |
+2. 选择一个终结点节点，并查看“属性”窗口。
+3. 下表描述了可用的终结点属性，但这些属性都是只读的。 若要添加或编辑虚拟机的终结点，请使用 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。 
    
    | 属性 | 说明 |
    | --- | --- |
@@ -51,6 +51,6 @@ ms.lasthandoff: 11/17/2016
    | 公用端口 |用于公开访问应用程序的端口。 |
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关在 Visual Studio 中使用 Azure 角色的详细信息，请参阅[将远程桌面与 Azure 角色一起使用](vs-azure-tools-remote-desktop-roles.md)。
+要了解有关在 Visual Studio 中使用 Azure 角色的详细信息，请参阅[将远程桌面与 Azure 角色一起使用](vs-azure-tools-remote-desktop-roles.md)。
 
 

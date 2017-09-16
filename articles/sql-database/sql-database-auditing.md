@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: giladm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
-ms.openlocfilehash: f4324a59b5fa4c2e1ab5b1d7fc7e5fe986ea80f8
+ms.translationtype: HT
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: ea45fe72a499daa363dc9e43f82c94af38bf6e85
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/22/2017
-
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
@@ -28,7 +27,7 @@ Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储
 
 * 帮助保持合规性、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
 
-* 实现并促进遵从合规标准，但不能保证合规性。 有关可帮助你遵从标准的 Azure 计划的详细信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/compliance/)。
+* 实现并促进遵从合规标准，但不能保证合规性。 有关可帮助遵从标准 Azure 计划的详细信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/compliance/)。
 
 
 ## <a id="subheading-1"></a>Azure SQL 数据库审核概述
@@ -68,8 +67,7 @@ Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储
 1. 转到 [Azure 门户](https://portal.azure.com)。
 2. 转到要审核的 SQL 数据库/SQL Server 的“设置”边栏选项卡。 在“设置”边栏选项卡中，选择“审核和威胁检测”。
 
-    <a id="auditing-screenshot"></a>
-    ![导航窗格][1]
+    <a id="auditing-screenshot"></a> ![导航窗格][1]
 3. 如果想要设置服务器审核策略（将应用于此服务器上的所有现有数据库和新建数据库），可选择数据库审核边栏选项卡中的“查看服务器设置”链接。 然后，可查看或修改服务器审核设置。
 
     ![导航窗格][2]
@@ -78,12 +76,11 @@ Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储
     如果启用了服务器 blob 审核，数据库配置的审核会与服务器 blob 审核并存。  
 
     ![导航窗格][3]
-5. 若要打开“审核日志存储”边栏选项卡，请选择“存储详细信息”。 选择要在其中保存日志的 Azure 存储帐户，然后选择保留期（超过此期限的旧日志会被删除）。 。 
+5. 若要打开“审核日志存储”边栏选项卡，请选择“存储详细信息”。 选择要在其中保存日志的 Azure 存储帐户，然后选择保留期（超过此期限的旧日志会被删除）。 然后单击“确定”。 
    >[!TIP] 
    >若要充分利用审核报告模板，请为所有审核的数据库使用相同的存储帐户。 
 
-    <a id="storage-screenshot"></a>
-    ![导航窗格][4]
+    <a id="storage-screenshot"></a> ![导航窗格][4]
 6. 若要自定义已审核的事件，可通过 PowerShell 或 REST API 执行此操作。 有关更多详细信息，请参阅[自动化 (PowerShell/REST API)](#subheading-7) 部分。
 7. 配置审核设置后，可打开新威胁检测功能，并配置电子邮件用于接收安全警报。 使用威胁检测时，会接收针对异常数据库活动（可能表示潜在的安全威胁）发出的前瞻性警报。 有关更多详细信息，请参阅[威胁检测入门](sql-database-threat-detection-get-started.md)。
 8. 单击“保存” 。
@@ -93,7 +90,7 @@ Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储
 
 
 ## <a id="subheading-3"></a>分析审核日志和报告
-审核日志将在安装期间选择的 Azure 存储帐户中进行聚合。 可使用 [Azure 存储资源管理器](http://storageexplorer.com/)等工具浏览审核日志。
+审核日志会在安装期间选择的 Azure 存储帐户中进行聚合。 可使用 [Azure 存储资源管理器](http://storageexplorer.com/)等工具浏览审核日志。
 
 Blob 审核日志以 blob 文件集合的形式保存在名为 **sqldbauditlogs** 的容器中。
 
@@ -148,17 +145,16 @@ Blob 审核日志以 blob 文件集合的形式保存在名为 **sqldbauditlogs*
 <!--The description in this section refers to preceding screen captures.-->
 
 ### <a id="subheading-6">审核异地复制的数据库</a>
-使用异地复制的数据库时，可以根据审核类型，针对主数据库、辅助数据库或同时针对两者设置审核。
+使用异地复制数据库时，可以通过在辅助服务器上启用审核，或在主数据库上启用审核（在这种情况下，辅助数据库与主数据库具有相同的审核策略），在辅助数据库上设置审核。
 
-请按照这些说明操作（记住，仅可通过主数据库审核设置打开或关闭 blob 审核）：
+* 服务器级（推荐）：同时在主服务器和辅助服务器上启用审核 - 基于各自的服务器级策略，将分别对主数据库和辅助数据库进行审核。
 
-* **主数据库**。 根据[为数据库设置审核](#subheading-2)部分中所述，在服务器或数据库上打开 blob 审核。
-* **辅助数据库**。 根据[为数据库设置审核](#subheading-2)部分中所述，在主数据库上打开 blob 审核。 
+* 数据库级：辅助数据库的数据库级审核只能从主数据库审核设置进行配置。
    * 必须在主数据库本身上启用 blob 审核，而不要在服务器上启用。
    * 在主数据库上启用 blob 审核后，也会在辅助数据库上启用 blob 审核。
 
      >[!IMPORTANT]
-     >默认情况下，辅助数据库的存储设置与主数据库相同，因而会导致生成跨区域流量。 可通过在辅助服务器上启用 blob 审核，并在辅助服务器存储设置中配置本地存储来避免出现这种情况。 此操作会替代辅助数据库的存储位置，并让每个数据库将其审核日志保存到本地存储中。  
+     >在数据库级审核中，辅助数据库的存储设置与主数据库相同，因而会导致生成跨区域流量。 除非要求数据库级审核，否则建议仅对主服务器和辅助服务器启用服务器级审核，并对所有数据库禁用数据库级审核。
 <br>
 
 ### <a id="subheading-6">重新生成存储密钥</a>
@@ -184,7 +180,6 @@ Blob 审核日志以 blob 文件集合的形式保存在名为 **sqldbauditlogs*
    * [Remove-AzureRMSqlServerAuditing][104]
    * [Set-AzureRMSqlDatabaseAuditingPolicy][105]
    * [Set-AzureRMSqlServerAuditingPolicy][106]
-   * [Use-AzureRMSqlServerAuditingPolicy][107]
 
    有关脚本示例，请参阅[使用 PowerShell 配置审核和威胁检测](scripts/sql-database-auditing-and-threat-detection-powershell.md)。
 
@@ -218,11 +213,10 @@ Blob 审核日志以 blob 文件集合的形式保存在名为 **sqldbauditlogs*
 [9]: ./media/sql-database-auditing-get-started/9_auditing_get_started_ssms_1.png
 [10]: ./media/sql-database-auditing-get-started/10_auditing_get_started_ssms_2.png
 
-[101]: /powershell/module/azurerm.sql/get-azurermsqldatabaseauditingpolicy
-[102]: /powershell/module/azurerm.sql/Get-AzureRMSqlServerAuditingPolicy
+[101]: /powershell/module/azurerm.sql/get-azurermsqldatabaseauditing
+[102]: /powershell/module/azurerm.sql/Get-AzureRMSqlServerAuditing
 [103]: /powershell/module/azurerm.sql/Remove-AzureRMSqlDatabaseAuditing
 [104]: /powershell/module/azurerm.sql/Remove-AzureRMSqlServerAuditing
-[105]: /powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditingPolicy
-[106]: /powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditingPolicy
-[107]: /powershell/module/azurerm.sql/Use-AzureRMSqlServerAuditingPolicy
+[105]: /powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditing
+[106]: /powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditing
 

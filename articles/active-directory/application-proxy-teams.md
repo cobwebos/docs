@@ -11,34 +11,34 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 09/05/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
-ms.openlocfilehash: 24e22d7314de536714a825cd7035d2cec2112278
+ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
+ms.openlocfilehash: df2ffb8958a7d4b881f0a6904fb9ca13c3614040
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>通过 Microsoft Teams 访问本地应用程序
 
-无论身在何处，使用 Azure Active Directory 应用程序代理可单一登录到本地应用程序，Microsoft Teams 将这些功能集为一体，可简化协作。 将两者集成意味着用户可在任何情况下与队友高效合作。 
+无论身在何处，都可使用 Azure Active Directory 应用程序代理单一登录到本地应用程序。 Microsoft Teams 通过单一位置简化了用户的协作过程。 将两者集成意味着用户可在任何情况下与队友高效合作。 
 
-用户可以[使用标记](https://support.office.com/article/Video-Using-Tabs-7350a03e-017a-4a00-a6ae-1c9fe8c497b3?ui=en-US&rs=en-US&ad=US)将云应用添加到其 Teams 通道，但如果他们所使用的 SharePoint 站点或规划工具在本地托管会发生什么情况？ 可以使用应用程序代理来解决该问题。 用户可以使用一直以来远程访问其应用所使用的相同外部 URL，通过应用程序代理将发布的应用添加到其通道。 并且应用程序代理通过 Azure Active Directory 进行身份验证，所以具有相同的单一登录体验。
+用户可以[使用标记](https://support.office.com/article/Video-Using-Tabs-7350a03e-017a-4a00-a6ae-1c9fe8c497b3?ui=en-US&rs=en-US&ad=US)将云应用添加到其 Teams 通道，但如果 SharePoint 站点或规划工具在本地托管会发生什么情况？ 可以使用应用程序代理来解决该问题。 用户可以使用一直以来远程访问其应用所使用的相同外部 URL，通过应用程序代理将发布的应用添加到其通道。 并且应用程序代理通过 Azure Active Directory 进行身份验证，所以用户会获得单一登录体验。
 
 
 ## <a name="install-the-application-proxy-connector-and-publish-your-app"></a>安装应用程序代理连接器并发布应用
 
-如果尚未执行，请[为租户配置应用程序代理并安装连接器](active-directory-application-proxy-enable.md)。 然后[发布进行远程访问的本地应用程序](application-proxy-publish-azure-portal.md)。 发布应用时，请记下外部 URL，因为最终用户将应用添加到 Teams 时需要该信息。
+如果尚未执行，请[为租户配置应用程序代理并安装连接器](active-directory-application-proxy-enable.md)。 然后[发布进行远程访问的本地应用程序](application-proxy-publish-azure-portal.md)。 发布应用时，请记下外部 URL，用于将应用添加到 Teams。
 
 如果已发布应用，但忘记了其外部 URL，请在 [Azure 门户](https://portal.azure.com)中查找。 登录，然后导航到“Azure Active Directory” > “企业应用程序” > “所有应用程序”>选择应用>“应用程序代理”。
 
 ## <a name="add-your-app-to-teams"></a>将应用添加到 Teams 中
 
-通过应用程序代理发布应用后，让用户知道他们可以直接在 Teams 通道中将该应用添加为选项卡。 让用户按照以下三个步骤进行操作：
+通过应用程序代理发布应用后，让用户知道他们可以直接在 Teams 通道中将该应用添加为选项卡，然后团队中的所有人便都可以使用该应用。 让用户按照以下三个步骤进行操作：
 
 1. 导航到想要添加此应用的 Teams 通道，并选择“+”添加选项卡。
 

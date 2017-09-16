@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
+ms.date: 08/30/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: d55cecf20abdf1637f0537e63a3dba5992a68741
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: 6e2a7c5eafee78d342f735b543624d041b9b3fe5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
@@ -34,6 +34,53 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 从 Azure AD Connect 升级的步骤 | [从旧版升级到最新版](active-directory-aadconnect-upgrade-previous-version.md) Azure AD Connect 的不同方法。
 所需的权限 | 有关应用更新时所需的权限，请参阅[帐户和权限](./active-directory-aadconnect-accounts-permissions.md#upgrade)。
 下载| [下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)。
+
+## <a name="116140"></a>1.1.614.0
+状态：2017 年 9 月 5 日
+
+### <a name="azure-ad-connect"></a>Azure AD Connect
+
+#### <a name="known-issues"></a>已知问题
+* Azure AD Connect 升级存在已知问题，会对已启用[无缝单一登录](active-directory-aadconnect-sso.md)的客户造成影响。 升级 Azure AD Connect 后，功能会在向导中显示为已禁用，即使功能为启用状态也是如此。 未来的发布中将提供对此问题的修复。 担心此显示问题的客户可以手动修复此问题，方法是在向导中启用无缝单一登录。
+
+#### <a name="fixed-issues"></a>修复的问题
+* 修复了本地 AD 林禁用 NTLM 后导致 Azure AD Connect 无法安装的问题。 此问题的起因是：创建 Kerberos 身份验证所需的安全上下文时，Azure AD Connect 向导未提供完全限定的凭据。 这将导致 Kerberos 身份验证失败并且 Azure AD Connect 向导将回退到使用 NTLM。
+
+### <a name="azure-ad-connect-sync"></a>Azure AD Connect Sync
+#### <a name="fixed-issues"></a>修复的问题
+* 修复了未填充标记属性时无法创建新同步规则的问题。
+* 修复了即使 Kerberos 可用时，仍导致 Azure AD Connect 使用 NTLM 连接到本地 AD 进行密码同步的问题。 如果本地 AD 拓扑具有一个或多个从备份还原的域控制器，则会出现此问题。
+* 修复了导致升级后出现不必要完整同步步骤的问题。 一般情况下，如果现成的同步规则发生了更改，则升级后需要运行完整同步步骤。 此问题的起因是：更改检测逻辑中出现错误，当遇到具有换行字符的同步规则表达式时，此错误导致错误地检测到更改。 已向同步规则表达式中插入了换行符来提升可读性。
+* 修复了可能导致自动升级后 Azure AD Connect 服务器无法正常工作的问题。 此问题会影响 1.1.443.0 版本（或更早版本）的 Azure AD Connect 服务器。 有关此问题的详细信息，请参阅文章[自动升级后 Azure AD Connect 无法正常工作](https://support.microsoft.com/help/4038479/azure-ad-connect-is-not-working-correctly-after-an-automatic-upgrade)。
+* 修复了遇到错误后导致每 5 分钟重试自动升级的问题。 通过此次修复，遇到错误时，自动升级重试次数将指数式下降。
+* 修复了密码同步事件 611 在 Windows 应用程序事件日志中显示不正确（显示为“信息”而不是“错误”）的问题。 只要密码同步出现问题，便会生成事件 611。 
+* 修复了 Azure AD Connect 向导中允许在未选择组写回所需的 OU 的情况下启用组写回功能的问题。
+
+#### <a name="new-features-and-improvements"></a>新增功能和改进
+* 在 Azure AD Connect 向导中的其他任务下添加了故障排除任务。 客户可以利用此任务解决与密码同步相关的问题并收集常规诊断信息。 未来，故障排除任务将扩展到能处理与目录同步相关的其他问题。
+* Azure AD Connect 现在支持名为“使用现有数据库”的新安装模式。 在此安装模式下，客户可以安装指定现有 ADSync 数据库的 Azure AD Connect。 有关此功能的详细信息，请参阅文章[使用现有数据库](active-directory-aadconnect-existing-database.md)。
+* 为了提高安全性，Azure AD Connect 现在默认为使用 TLS1.2 连接到 Azure AD 进行目录同步。 以前默认使用 TLS1.0。
+* Azure AD Connect 密码同步代理启动时，它将尝试连接到 Azure AD 的已知终结点进行密码同步。 成功连接后，它会重定向到特定于区域的终结点。 以前，除非重新启动，否则密码同步代理将一直缓存区域特定的终结点。 现在，当遇到特定于区域的终结点的连接问题时，代理将清除缓存并重试连接已知终结点。 此更改可确保已缓存的区域特定的终结点不再可用时，密码同步可以故障转移到其他区域特定的终结点。
+* 若要同步本地 AD 林中的更改，需要 AD DS 帐户。 可以 (i) 自行创建 AD DS 帐户并将其凭据提供给 Azure AD Connect，或者 (ii) 提供企业管理员凭据，让 Azure AD Connect 为你创建 AD DS 帐户。 以前，(i) 是 Azure AD Connect 向导中的默认选项。 现在，(ii) 是默认选项。
+
+### <a name="azure-ad-connect-health"></a>Azure AD Connect Health
+
+#### <a name="new-features-and-improvements"></a>新增功能和改进
+* 添加了对 Microsoft Azure 政府云和 Microsoft 云德国的支持。
+
+### <a name="ad-fs-management"></a>AD FS 管理
+#### <a name="fixed-issues"></a>修复的问题
+* AD 准备 powershell 模块中的 Initialize-ADSyncNGCKeysWriteBack cmdlet 对设备注册容器错误地执行了 ACL，因此只会继承现有权限。  已对此情况进行更新，以便同步服务帐户具有正确的权限。
+
+#### <a name="new-features-and-improvements"></a>新增功能和改进
+* 已更新 AAD Connect 验证 ADFS 登录任务，以便它能验证针对 Microsoft Online 的登录名而不只是验证从 ADFS 检索到的令牌。
+* 使用 AAD Connect 设置新 ADFS 场时，请求 ADFS 凭据的页面已经移动，现在此页面在要求用户提供 ADFS 和 WAP 服务器之前出现。  通过此更改，AAD Connect 可以检查指定帐户是否具有正确的权限。
+* AAD Connect 升级期间，如果 ADFS AAD 信任无法更新，升级将不会失败。  如果发生此情况，用户将看到相应警告消息，并应通过其他 AAD Connect 任务继续重置信任。
+
+### <a name="seamless-single-sign-on"></a>无缝单一登录
+#### <a name="fixed-issues"></a>修复的问题
+* 修复了尝试启用[无缝单一登录](active-directory-aadconnect-sso.md)导致 Azure AD Connect 向导返回错误的问题。 错误消息为“Microsoft Azure AD Connect 身份验证代理的配置失败”。 此问题会影响以下现有用户：基于此[文章](active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md)介绍的步骤，手动升级预览版身份验证代理以进行[传递身份验证](active-directory-aadconnect-sso.md)的客户。
+
 
 ## <a name="115610"></a>1.1.561.0
 状态：2017 年 7 月 23 日
@@ -138,7 +185,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect Sync
 
 #### <a name="known-issue"></a>已知问题
-* 有一个问题会影响将[基于 OU 的筛选](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)与 Azure AD Connect 同步一起使用的客户。 当导航到 Azure AD Connect 向导中的“[域和 OU 筛选](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)”页面时，预期会发生以下行为：
+* 有一个问题会影响将[基于 OU 的筛选](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)与 Azure AD Connect 同步一起使用的客户。当导航到 Azure AD Connect 向导中的“[域和 OU 筛选](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)”页面时，预期会发生以下行为：
   * 如果启用了基于 OU 的筛选，则会选中“同步选定的域和 OU”选项。
   * 否则会选中“同步所有域和 OU”选项。
 

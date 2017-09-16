@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: jingwang
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: 0cefbe1303de1cfa46cc4b771c0cd3aa7819597c
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: 26fb0914de571aa0e398f0e2a2f8e439d3d27680
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="move-data-by-using-copy-activity"></a>使用复制活动移动数据
@@ -109,20 +109,22 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 | &nbsp; | 东亚 | 东南亚 |
 | 澳大利亚 | 澳大利亚东部 | 澳大利亚东部 |
 | &nbsp; | 澳大利亚东南部 | 澳大利亚东南部 |
-| 日本 | 日本东部 | 日本东部 |
-| &nbsp; | 日本西部 | 日本东部 |
 | 印度 | 印度中部 | 印度中部 |
 | &nbsp; | 印度西部 | 印度中部 |
 | &nbsp; | 印度南部 | 印度中部 |
+| 日本 | 日本东部 | 日本东部 |
+| &nbsp; | 日本西部 | 日本东部 |
+| 韩国 | 韩国中部 | 韩国中部 |
+| &nbsp; | 韩国南部 | 韩国中部 |
 
 或者可以通过指定复制活动 `typeProperties` 下的 `executionLocation` 属性，明确指示要用于执行复制的数据工厂服务的区域。 上述**用于数据移动的区域**列中列举了此属性支持的值。 请注意复制过程中数据将通过网络经过该区域。 例如，若要在韩国的 Azure 存储间进行复制，可以指定 `"executionLocation": "Japan East"`，以便经过日本区域（请参阅[示例 JSON](#by-using-json-scripts) 作为参考）。
 
 > [!NOTE]
-> 如果目标数据存储的区域不在上方列表中或未找到该区域，默认情况下，复制活动将失败，而不会通过其他区域完成，除非指定了 `executionLocation`。 以后支持的区域列表还将扩大。
+> 如果目标数据存储的区域不在上方列表中或未找到该区域，默认情况下，复制活动会失败，而不会通过其他区域完成，除非指定了 `executionLocation`。 以后支持的区域列表还将扩大。
 >
 
 ### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>在本地数据存储和云数据存储之间复制数据
-在本地（或 Azure 虚拟机/IaaS）和云存储之间复制数据时，[数据管理网关](data-factory-data-management-gateway.md)会在本地计算机或虚拟机上执行数据移动。 数据不会通过此服务在云中流动，除非使用[暂存复制](data-factory-copy-activity-performance.md#staged-copy)功能。 在此情况下，数据先流经此暂存 Azure Blob 存储，然后写入接收器数据存储。
+在本地（或 Azure 虚拟机/IaaS）和云存储之间复制数据时，[数据管理网关](data-factory-data-management-gateway.md)会在本地计算机或虚拟机上执行数据移动。 数据不会通过此服务在云中流动，除非使用[暂存复制](data-factory-copy-activity-performance.md#staged-copy)功能。 在这种情况下，数据先流经暂存 Azure Blob 存储，然后写入接收器数据存储。
 
 ## <a name="create-a-pipeline-with-copy-activity"></a>创建包含复制活动的管道
 可通过以下几种方法创建包含复制活动的管道：
@@ -205,6 +207,6 @@ JSON 属性（例如名称、说明、输入和输出表，以及策略）可用
 各数据存储文章中介绍了从本机类型系统到 .NET 类型的数据存储映射。 （单击[支持的数据存储](#supported-data-stores)表中的特定链接）。 可在创建表时使用这些映射确定适当的类型，以便复制活动执行正确转换。
 
 ## <a name="next-steps"></a>后续步骤
-* 若要详细了解复制活动，请参阅[将数据从 Azure Blob 存储复制到 Azure SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
-* 若要了解如何将数据从本地数据存储移动到云数据存储，请参阅[在本地和云数据存储之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)。
+* 要详细了解复制活动，请参阅[将数据从 Azure Blob 存储复制到 Azure SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+* 要了解如何将数据从本地数据存储移动到云数据存储，请参阅[在本地和云数据存储之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)。
 

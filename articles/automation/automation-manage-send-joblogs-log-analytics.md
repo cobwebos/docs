@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/02/2017
+ms.date: 08/31/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 2c0ca7fc332963e5a5db3c20c400ed877ae0cc54
+ms.translationtype: HT
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 878149521edc969dc3e15e198ff3b2ead978cf86
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
-
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics-oms"></a>将作业状态和作业流从自动化转发到 Log Analytics (OMS)
@@ -32,7 +31,7 @@ ms.lasthandoff: 06/03/2017
 * 可视化不同时间段的作业历史记录     
 
 ## <a name="prerequisites-and-deployment-considerations"></a>先决条件和部署注意事项
-要开始将自动化日志发送到 Log Analytics，需要准备：
+要开始会自动化日志发送到 Log Analytics，需要准备：
 
 1. 2016 年 11 月或之后发布的 [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) (v2.3.0) 版本。
 2. Log Analytics 工作区。 有关详细信息，请参阅 [Log Analytics 入门](../log-analytics/log-analytics-get-started.md)。 
@@ -50,7 +49,7 @@ Find-AzureRmResource -ResourceType "Microsoft.OperationalInsights/workspaces"
 
 如果有多个自动化帐户或工作区，请在上述命令的输出中找到需要配置的名称，并复制 ResourceId 的值。
 
-若要查找自动化帐户的名称，请在 Azure 门户中，从“自动化帐户”边栏选项卡选择自动化帐户，然后选择“所有设置”。  在“所有设置”边栏选项卡中，选择“帐户设置”下面的“属性”。  在“属性”边栏选项卡中，可以记下这些值。<br> ![自动化帐户属性](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png)。
+要查找自动化帐户的名称，请在 Azure 门户中，从“自动化帐户”边栏选项卡选择自动化帐户，并选择“所有设置”。  在“所有设置”边栏选项卡中，选择“帐户设置”下面的“属性”。  在“属性”边栏选项卡中，可以记下这些值。<br> ![自动化帐户属性](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png)。
 
 ## <a name="set-up-integration-with-log-analytics"></a>设置与 Log Analytics 的集成
 1. 在计算机上，从“开始”屏幕启动 **Windows PowerShell**。  
@@ -75,18 +74,18 @@ Switch ($Environment)
 # if you have one Log Analytics workspace you can use the following command to get the resource id of the workspace
 $workspaceId = (Get-AzureRmOperationalInsightsWorkspace).ResourceId
 
-$automationAccountId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
+$automationAccountId = "/SUBSCRIPTIONS/ec11ca67-1234-421e-5678-c25/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
 
 Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled $true
 
 ```
 
-运行此脚本后，将在写入新 JobLogs 或 JobStreams 的 10 分钟内在 Log Analytics 中看到记录。
+运行此脚本后，会在写入新 JobLogs 或 JobStreams 的 10 分钟内在 Log Analytics 中看到记录。
 
 若要查看日志，在 Log Analytics 日志搜索中运行以下查询：`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>验证配置
-若要确认自动化帐户是否会将日志发送到 Log Analytics 工作空间，请使用以下 PowerShell 检查自动化帐户上的诊断是否设置正确：
+要确认自动化帐户是否会将日志发送到 Log Analytics 工作空间，请使用以下 PowerShell 检查自动化帐户上的诊断是否设置正确：
 
 ```powershell
 [cmdletBinding()]
@@ -106,7 +105,7 @@ Switch ($Environment)
 # if you have one Log Analytics workspace you can use the following command to get the resource id of the workspace
 $workspaceId = (Get-AzureRmOperationalInsightsWorkspace).ResourceId
 
-$automationAccountId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
+$automationAccountId = "/SUBSCRIPTIONS/ec11ca67-1234-421e-5678-c25/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
 
 Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 ```
@@ -127,7 +126,7 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 | Caller_s |谁启动了该操作。  可能的值为电子邮件地址或计划作业的系统。 |
 | Tenant_g | GUID，用于为 Caller 标识租户。 |
 | JobId_g |用作 Runbook 作业 ID 的 GUID。 |
-| ResultType |Runbook 作业的状态。  可能的值包括：<br>- Started（已启动）<br>- Stopped（已停止）<br>- Suspended（已暂停）<br>- Failed（失败）<br>- Completed（已完成） |
+| ResultType |Runbook 作业的状态。  可能的值包括：<br>- New（新）<br>- Started（已启动）<br>- Stopped（已停止）<br>- Suspended（已暂停）<br>- Failed（失败）<br>- Completed（已完成） |
 | 类别 | 数据类型的分类。  对于自动化，该值为 JobLogs。 |
 | OperationName | 指定在 Azure 中执行的操作类型。  对于自动化，该值为 Job。 |
 | 资源 | 自动化帐户的名称 |
@@ -164,7 +163,7 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 | ResourceType | AUTOMATIONACCOUNTS |
 
 ## <a name="viewing-automation-logs-in-log-analytics"></a>在 Log Analytics 中查看自动化日志
-既然已开始将自动化作业日志发送到 Log Analytics，来看看可以在 Log Analytics 中对这些日志执行哪些操作。
+既然已开始会自动化作业日志发送到 Log Analytics，来看看可以在 Log Analytics 中对这些日志执行哪些操作。
 
 若要查看日志，请运行以下查询：`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION"`
 
@@ -183,15 +182,15 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 除了在失败时发出警报外，还可以发现 Runbook 作业何时发生非终止错误。 在这些情况下，PowerShell 会生成错误流，但非终止错误不会导致作业暂停或失败。    
 
 1. 在 Log Analytics 工作区中，单击“日志搜索”。
-2. 在“查询”字段中键入 `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobStreams StreamType_s=Error | measure count() by JobId_g`，然后单击“**搜索**”。
+2. 在“查询”字段中键入 `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobStreams StreamType_s=Error | measure count() by JobId_g`，并单击“**搜索**”。
 
 ### <a name="view-job-streams-for-a-job"></a>查看作业的作业流
-当你调试作业时，可能想要深入查看作业流。  以下查询将显示 GUID 为 2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0 的单个作业的所有流：   
+调试作业时，可能想要深入查看作业流。  以下查询会显示 GUID 为 2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0 的单个作业的所有流：   
 
 `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobStreams JobId_g="2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0" | sort TimeGenerated | select ResultDescription`
 
 ### <a name="view-historical-job-status"></a>查看历史作业状态
-最后，你可能想要可视化不同时间段的作业历史记录。  你可以使用此查询来搜索作业在不同时间段的状态。
+最后，可能需要随时间对作业历史记录进行可视化。  可以使用此查询来搜索作业在不同时间段的状态。
 
 `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobLogs NOT(ResultType="started") | measure Count() by ResultType interval 1hour`  
 <br> ![OMS 历史作业状态图表](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>

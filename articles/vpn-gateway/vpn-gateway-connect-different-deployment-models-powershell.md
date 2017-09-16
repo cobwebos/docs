@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0e5ca582714a80da8c0f63e1b06f6c3019efe849
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: da5bddba3a1fad74b2ee08fd2f34d1b01c7345c8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>使用 PowerShell 从不同的部署模型连接虚拟网络
@@ -34,15 +34,15 @@ ms.lasthandoff: 04/27/2017
 > 
 > 
 
-将经典 VNet 连接到 Resource Manager VNet 类似于将 VNet 连接到本地站点位置。 这两种连接类型都使用 VPN 网关来提供使用 IPsec/IKE 的安全隧道。 可以在位于不同订阅、不同区域中的 VNet 之间创建连接。 您还可以连接已连接到本地网络的 VNet，只要它们配置的网关是动态或基于路由的。 有关 VNet 到 VNet 连接的详细信息，请参阅本文末尾的 [VNet 到 VNet常见问题解答](#faq)。 
+将经典 VNet 连接到 Resource Manager VNet 类似于将 VNet 连接到本地站点位置。 这两种连接类型都使用 VPN 网关来提供使用 IPsec/IKE 的安全隧道。 可以在位于不同订阅、不同区域中的 VNet 之间创建连接。 还可以连接已连接到本地网络的 VNet，只要它们配置的网关是动态或基于路由的。 有关 VNet 到 VNet 连接的详细信息，请参阅本文末尾的 [VNet 到 VNet常见问题解答](#faq)。 
 
 如果 VNet 位于同一区域中，可能需考虑改为使用 VNet 对等互连进行连接。 VNet 对等互连不使用 VPN 网关。 有关详细信息，请参阅 [VNet 对等互连](../virtual-network/virtual-network-peering-overview.md)。 
 
-## <a name="before-beginning"></a>开始之前
+## <a name="before"></a>准备工作
 
-以下步骤将指导您完成为每个 VNet 配置动态或基于路由的网关以及在网关之间创建 VPN 连接所需的设置。 此配置不支持静态或基于策略的网关。
+以下步骤指导完成为每个 VNet 配置动态或基于路由的网关以及在网关之间创建 VPN 连接所需的设置。 此配置不支持静态或基于策略的网关。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="pre"></a>先决条件
 
 * 已创建了两个 VNet。
 * 两个 VNet 的地址范围不相互重叠，也不与网关可能连接到的其他连接的任何范围重叠。
@@ -75,9 +75,9 @@ VNet 名称 = RMVNet <br>
 虚拟网络网关名称 = RMGateway <br>
 网关 IP 地址配置 = gwipconfig
 
-## <a name="createsmgw"></a>第 1 节 — 配置经典 VNet
-### <a name="part-1---download-your-network-configuration-file"></a>第 1 部分 — 下载网络配置文件。
-1. 在 PowerShell 控制台中，使用提升的权限登录到 Azure 帐户。 以下 cmdlet 将提示您提供 Azure 帐户的登录凭据。 登录后它会下载你的帐户设置，以便这些信息可供 Azure PowerShell 使用。 SM PowerShell cmdlet 将用于完成这部分配置。
+## <a name="createsmgw"></a>第 1 节 - 配置经典 VNet
+### <a name="1-download-your-network-configuration-file"></a>1.下载网络配置文件
+1. 在 PowerShell 控制台中，使用提升的权限登录到 Azure 帐户。 以下 cmdlet 会提示提供 Azure 帐户的登录凭据。 登录后它会下载帐户设置，以便这些信息可供 Azure PowerShell 使用。 SM PowerShell cmdlet 用于完成这部分配置。
 
   ```powershell
   Add-AzureAccount
@@ -89,8 +89,8 @@ VNet 名称 = RMVNet <br>
   ```
 3. 打开下载的 .xml 文件进行编辑。 有关网络配置文件的示例，请参阅[网络配置架构](https://msdn.microsoft.com/library/jj157100.aspx)。
 
-### <a name="part-2--verify-the-gateway-subnet"></a>第 2 部分 — 验证网关子网
-在 **VirtualNetworkSites** 元素中，向 VNet 添加一个网关子网（如果尚未创建）。 在使用网络配置文件时，网关子网必须命名为“GatewaySubnet”，否则 Azure 无法识别并将其用作网关子网。
+### <a name="2-verify-the-gateway-subnet"></a>2.验证网关子网
+在 **VirtualNetworkSites** 元素中，向 VNet 添加一个网关子网（如果尚未创建）。 使用网络配置文件时，网关子网必须命名为“GatewaySubnet”，否则 Azure 无法识别并将其用作网关子网。
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
@@ -112,7 +112,7 @@ VNet 名称 = RMVNet <br>
       </VirtualNetworkSite>
     </VirtualNetworkSites>
 
-### <a name="part-3---add-the-local-network-site"></a>第 3 部分 — 添加本地网络站点
+### <a name="3-add-the-local-network-site"></a>3.添加本地网络站点
 所添加的本地网络站点表示要连接到的 RM VNet。 如果文件中尚不存在 **LocalNetworkSites** 元素，请进行添加。 此时，在配置中，VPNGatewayAddress 可以是任何有效的公共 IP 地址，因为我们尚未针对 Resource Manager VNet 创建网关。 一旦创建网关，便会将此占位符 IP 地址替换为已分配给 RM 网关的正确公共 IP 地址。
 
     <LocalNetworkSites>
@@ -124,8 +124,8 @@ VNet 名称 = RMVNet <br>
       </LocalNetworkSite>
     </LocalNetworkSites>
 
-### <a name="part-4---associate-the-vnet-with-the-local-network-site"></a>第 4 部分 — 将 VNet 与本地网络站点关联
-在此部分中，我们将指定您要将 VNet 连接到的本地网络站点。 在本例中，该站点即前面提到的 Resource Manager VNet。 请确保名称相匹配。 此步骤不会创建网关。 它指定网关将连接到的本地网络。
+### <a name="4-associate-the-vnet-with-the-local-network-site"></a>4.将 VNet 与本地网络站点关联
+在此部分中，我们将指定要将 VNet 连接到的本地网络站点。 在本例中，该站点即前面提到的 Resource Manager VNet。 请确保名称相匹配。 此步骤不会创建网关。 它指定网关将连接到的本地网络。
 
         <Gateway>
           <ConnectionsToLocalNetwork>
@@ -135,20 +135,20 @@ VNet 名称 = RMVNet <br>
           </ConnectionsToLocalNetwork>
         </Gateway>
 
-### <a name="part-5---save-the-file-and-upload"></a>第 5 部分 — 保存文件并上传
+### <a name="5-save-the-file-and-upload"></a>5.保存文件并上传
 保存文件，然后运行以下命令以将其导入到 Azure。 确保根据环境需要更改文件路径。
 
 ```powershell
 Set-AzureVNetConfig -ConfigurationPath C:\AzureNet\NetworkConfig.xml
 ```
 
-表明导入成功的类似结果将会随即显示。
+表明导入成功的类似结果会随即显示。
 
         OperationDescription        OperationId                      OperationStatus                                                
         --------------------        -----------                      ---------------                                                
         Set-AzureVNetConfig        e0ee6e66-9167-cfa7-a746-7casb9    Succeeded 
 
-### <a name="part-6---create-the-gateway"></a>第 6 部分 - 创建网关
+### <a name="6-create-the-gateway"></a>6.创建网关
 
 运行此示例之前，请参阅所下载的网络配置文件，了解 Azure 所需要的确切名称。 网络配置文件包含了经典虚拟网络的值。 在 Azure 门户中创建经典 VNet 设置时，由于部署模型的不同，有时经典 Vnet 的名称在网络配置文件中会发生变化。 例如，如果使用 Azure 门户创建一个名为“Classic VNet”的经典 VNet，并在资源组中创建一个名为“ClassicRG”的经典 VNet，则网络配置文件中的名称将变为“Group ClassicRG Classic VNet”。 指定包含空格的 VNet 的名称时，请使用引号将值引起来。
 
@@ -161,16 +161,16 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 
 可以使用 **Get-AzureVNetGateway** cmdlet 检查网关状态。
 
-## <a name="creatermgw"></a>第 2 节：配置 RM VNet 网关
+## <a name="creatermgw"></a>第 2 节 - 配置 RM VNet 网关
 若要为 RM VNet 创建 VPN 网关，请遵循以下说明。 请务必在检索到经典 VNet 的网关的公共 IP 地址之后再开始执行以下步骤。 
 
-1. 在 PowerShell 控制台中，登录到您的 Azure 帐户。 以下 cmdlet 将提示您提供 Azure 帐户的登录凭据。 登录后将下载您的帐户设置，以便 Azure PowerShell 使用这些设置。
+1. 在 PowerShell 控制台中，登录到 Azure 帐户。 以下 cmdlet 会提示提供 Azure 帐户的登录凭据。 登录后将下载帐户设置，以便 Azure PowerShell 使用这些设置。
 
   ```powershell
   Login-AzureRmAccount
   ``` 
    
-  如果您有多个订阅，则获取您的 Azure 订阅的列表。
+  如果有多个订阅，则获取 Azure 订阅的列表。
 
   ```powershell
   Get-AzureRmSubscription
@@ -181,11 +181,11 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
   ```powershell
   Select-AzureRmSubscription -SubscriptionName "Name of subscription"
   ```
-2. 创建本地网络网关。 在虚拟网络中，局域网网关通常指你的本地位置。 在本例中，本地网络网关是指经典 VNet。 指定该网关的名称以供 Azure 引用，同时指定地址空间前缀。 Azure 使用指定的 IP 地址前缀来识别要发送到本地位置的流量。 如果稍后需要在创建网关之前调整此处的信息，可以修改这些值并再次运行该示例。
+2. 创建本地网络网关。 在虚拟网络中，局域网网关通常指本地位置。 在本例中，本地网络网关是指经典 VNet。 指定该网关的名称以供 Azure 引用，同时指定地址空间前缀。 Azure 使用指定的 IP 地址前缀来识别要发送到本地位置的流量。 如果稍后需要在创建网关之前调整此处的信息，可以修改这些值并再次运行该示例。
    
    **-Name** 是要分配以指代本地网络网关的名称。<br>
-   **-AddressPrefix** 是经典 VNet 的地址空间。<br>
-   **-GatewayIpAddress** 是经典 VNet 网关的公共 IP 地址。 请务必更改下面的示例以反映正确的 IP 地址。<br>
+   -AddressPrefix 是经典 VNet 的地址空间。<br>
+   -GatewayIpAddress 是经典 VNet 网关的公共 IP 地址。 请务必更改下面的示例以反映正确的 IP 地址。<br>
 
   ```powershell
   New-AzureRmLocalNetworkGateway -Name ClassicVNetLocal `
@@ -206,7 +206,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 5. 通过运行以下命令，检索用于网关的子网。 在此步骤中，我们还将设置一个要在下一步使用的变量。
    
    **-Name** 是 Resource Manager VNet 的名称。<br>
-   **-ResourceGroupName** 是 VNet 所关联的资源组。 此 VNet 必须已经存在网关子网，并且该子网必须命名为 *GatewaySubnet* 才能正常工作。<br>
+   -ResourceGroupName 是 VNet 所关联的资源组。 此 VNet 必须已经存在网关子网，并且该子网必须命名为 *GatewaySubnet* 才能正常工作。<br>
 
   ```powershell
   $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name GatewaySubnet `
@@ -236,9 +236,9 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
   Get-AzureRmPublicIpAddress -Name gwpip -ResourceGroupName RG1
   ```
 
-## <a name="section-3-modify-the-classic-vnet-local-site-settings"></a>第 3 节：修改经典 VNet 本地站点设置
+## <a name="localsite"></a>第 3 节 - 修改经典 VNet 本地站点设置
 
-本节涉及经典 VNet。 在指定用于连接到 Resource Manager VNet 网关的本地站点设置时所指定的占位符 IP 地址将被替换。 
+本节涉及经典 VNet。 在指定用于连接到 Resource Manager VNet 网关的本地站点设置时所指定的占位符 IP 地址会被替换。 
 
 1. 导出网络配置文件。
 
@@ -256,10 +256,10 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
   Set-AzureVNetConfig -ConfigurationPath C:\AzureNet\NetworkConfig.xml
   ```
 
-## <a name="connect"></a>第 4 节：在网关之间创建连接
+## <a name="connect"></a>第 4 节 - 在网关之间创建连接
 在网关之间创建连接需要用到 PowerShell。 可能需要添加 Azure 帐户才能使用经典版 PowerShell cmdlet。 为此，请使用 **Add-AzureAccount**。
 
-1. 在 PowerShell 控制台中设置共享密钥。 运行 cmdlet 之前，请参阅已下载的网络配置文件，了解 Azure 所需要的确切名称。 指定包含空格的 VNet 的名称时，请使用单引号将值引起来。<br><br>在以下示例中，**-VNetName** 是经典 VNet 的名称，**-LocalNetworkSiteName** 是为本地网络站点指定的名称。 **-SharedKey** 是生成并指定的值。 在示例中，我们使用的是“abc123”，但你可以生成和使用更复杂的。 重要的是，此处指定的值必须与下一步中创建连接时指定的值相同。 返回结果应显示“状态：成功”。
+1. 在 PowerShell 控制台中设置共享密钥。 运行 cmdlet 之前，请参阅已下载的网络配置文件，了解 Azure 所需要的确切名称。 指定包含空格的 VNet 的名称时，请使用单引号将值引起来。<br><br>在以下示例中，**-VNetName** 是经典 VNet 的名称，**-LocalNetworkSiteName** 是为本地网络站点指定的名称。 **-SharedKey** 是生成并指定的值。 在示例中，我们使用的是“abc123”，但可以生成和使用更复杂的。 重要的是，此处指定的值必须与下一步中创建连接时指定的值相同。 返回结果应显示“状态：成功”。
 
   ```powershell
   Set-AzureVNetGatewayKey -VNetName ClassicVNet `
@@ -283,7 +283,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
   $vnet01gateway -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
   ```
 
-## <a name="section-5-verify-your-connections"></a>第 5 节：验证连接
+## <a name="verify"></a>第 5 节 - 验证连接
 
 ### <a name="to-verify-the-connection-from-your-classic-vnet-to-your-resource-manager-vnet"></a>验证从经典 VNet 到 Resource Manager VNet 的连接
 
@@ -308,6 +308,6 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 
 ## <a name="faq"></a>VNet 到 VNet 常见问题解答
 
-[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
+[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
 
