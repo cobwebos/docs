@@ -197,7 +197,7 @@ Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
 ## <a name="references"></a>参考
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>如何检查诊断扩展配置
-检查扩展配置的最简方法是导航到 http://resources.azure.com、再导航到 Azure 诊断扩展 (IaaSDiagnostics/PaaDiagnostics) 有问题的虚拟机或云服务。
+检查扩展配置的最简方法是导航到 http://resources.azure.com 、再导航到 Azure 诊断扩展 (IaaSDiagnostics/PaaDiagnostics) 有问题的虚拟机或云服务。
 
 或者，通过远程桌面连接到计算机并查看[此处](#log-artifacts-path)相应部分中所述的 Azure 诊断配置文件。
 
