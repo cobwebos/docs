@@ -37,6 +37,7 @@
 ### [使用队列的应用](service-bus-create-queues.md)
 ### [使用主题/订阅的应用](service-bus-create-topics-subscriptions.md)
 ### [身份验证和授权](service-bus-authentication-and-authorization.md)
+#### [从 ACS 迁移到 SAS](service-bus-migrate-acs-sas.md)
 #### [使用共享访问签名进行的身份验证](service-bus-sas.md)
 ### [分区的队列和主题](service-bus-partitioning.md)
 ### [死信队列](service-bus-dead-letter-queues.md)
