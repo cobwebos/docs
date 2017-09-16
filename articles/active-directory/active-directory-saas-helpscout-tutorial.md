@@ -61,7 +61,7 @@ ms.lasthandoff: 08/28/2017
 
 从库中添加 Help Scout：
 
-1. 在“Azure 门户”[](https://portal.azure.com)的左侧菜单中，选择“Azure Active Directory”。 
+1. 在 [Azure 门户](https://portal.azure.com) 的左侧菜单中，选择“Azure Active Directory”。 
 
     ![“Azure Active Directory”按钮][1]
 
