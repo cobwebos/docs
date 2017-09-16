@@ -123,8 +123,7 @@ ms.lasthandoff: 08/29/2017
   >
 * **问：如何将密码重置直接集成到用户的桌面登录体验中？**
 
-  > 
-            **答：**如果是 Azure AD Premium 客户，可以在无需额外付费的情况下安装 Microsoft 标识管理器并部署本地密码重置解决方案来满足此要求。
+  > **答：**如果是 Azure AD Premium 客户，可以在无需额外付费的情况下安装 Microsoft 标识管理器并部署本地密码重置解决方案来满足此要求。
   >
   >
 * **问：我能否针对不同的区域设置设定不同的安全问题？**
@@ -192,8 +191,7 @@ ms.lasthandoff: 08/29/2017
   >
 * **问：当用户的本地密码过期时，他们是否可以在 Office 门户中收到通知？**
 
-  > 
-            **答：**如果根据[使用 ADFS 发送密码策略声明](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396)中的说明使用 ADFS，则目前这是可以的。 如果使用密码哈希同步，则目前这不可以。 这是因为我们不从本地同步密码策略，因此我们无法将过期通知发布到云体验。 在任一情况下，都还可以[使用 PowerShell 向其密码即将过期的用户发送通知](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx)。
+  > **答：**如果根据[使用 ADFS 发送密码策略声明](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396)中的说明使用 ADFS，则目前这是可以的。 如果使用密码哈希同步，则目前这不可以。 这是因为我们不从本地同步密码策略，因此我们无法将过期通知发布到云体验。 在任一情况下，都还可以[使用 PowerShell 向其密码即将过期的用户发送通知](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx)。
   >
   >
 
@@ -244,8 +242,7 @@ ms.lasthandoff: 08/29/2017
   >
 * **问：如果我的本地帐户被禁用，我的云帐户/访问权限会受到怎样的影响？**
 
-  > 
-            **答：**如果本地 ID 被禁用，则在下一个同步间隔（默认情况下，此间隔为 30 分钟），也会通过 AAD Connect 禁用云 ID/访问权限。
+  > **答：**如果本地 ID 被禁用，则在下一个同步间隔（默认情况下，此间隔为 30 分钟），也会通过 AAD Connect 禁用云 ID/访问权限。
   >
   >
 * **问：如果我的本地帐户受到本地 Active Directory 密码策略的约束，当我更改密码时，SSPR 是否遵循此策略？**
