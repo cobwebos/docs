@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 09/06/2017
 ms.author: curtand
 ms.reviewer: asmalser
 ms.custom: oldportal;it-pro;
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 7872d5229cdc053bfb9dc8ddba01785b0f8e5a9a
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: 39c62461c9659b0cb4422de88686283ba462c53b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="self-service-application-access-and-delegated-management-with-azure-active-directory"></a>Azure Active Directory 的自助应用程序访问和委派管理
@@ -37,7 +37,7 @@ ms.lasthandoff: 07/28/2017
 * 设置谁应该审批请求以及管理对每个应用程序的访问
 
 现在，[Azure Active Directory 应用程序库](https://azure.microsoft.com/marketplace/active-directory/all/)中所有预先集成的应用程序，以及支持联合或基于密码的单一登录的自定义应用程序（包括 Salesforce、Dropbox、Google Apps 等应用程序）都支持此功能。
-本文将介绍如何：
+本文介绍如何：
 
 * 为最终用户配置自助应用程序访问，包括配置可选的审批工作流 
 * 将特定应用程序的访问管理权限委派给组织中最适当的人员，使他们能够使用 Azure AD 访问面板来审批访问请求，直接将访问权限分配给选定的用户，或者（可选）在配置基于密码的单一登录时设置用于访问应用程序的凭据
@@ -51,9 +51,9 @@ ms.lasthandoff: 07/28/2017
 
 3. 选择“添加”按钮，然后使用库选项选择和添加应用程序。
 
-4. 添加应用之后，会显示“快速启动”页。 单击“配置单一登录”，选择所需的单一登录模式，然后保存配置。 
+4. 添加应用之后，会显示“快速启动”页。 单击“配置单一登录”，选择所需的单一登录模式，并保存配置。 
 
-5. 接下来，选择“配置”选项卡。 若要允许用户请求从 Azure AD 访问面板访问此应用，请将“允许自助应用程序访问”设置为“是”。
+5. 接下来，选择“配置”选项卡。要允许用户请求从 Azure AD 访问面板访问此应用，请将“允许自助应用程序访问”设置为“是”。
   
   ![][1]
 
@@ -100,7 +100,7 @@ ms.lasthandoff: 07/28/2017
 
 * **用户使用其自己的密码登录** – 在此模式下，分配的用户知道其应用程序的用户名和密码，并且他们在首次登录应用程序时，系统会提示输入这些信息。 该方案相当于[用户管理凭据](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)的密码 SSO 方案。
 * **用户使用我管理的独立帐户自动登录** – 在此模式下，分配的用户在登录应用程序时不需要输入或知道其应用特定的凭据。 而是由审批人在使用“添加用户”磁贴分配访问权限之后为每个用户设置凭据。 用户单击其访问面板或 Office 365 中的应用程序时，系统会使用审批者设置的凭据将他们自动登录。 该方案相当于[管理员管理凭据](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)的密码 SSO 方案。
-* **用户使用我管理的单个帐户自动登录** - 这是一种特殊方案，此方案适用于所有分配的用户有权使用单个共享帐户进行访问的情况。 此功能的最常见用例就是社交媒体应用程序，其中，组织有单个“公司”帐户，多个用户需要对该帐户进行更新。 该方案也相当于[管理员管理凭据](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)的密码 SSO 方案。 不过，选择此选项后，系统将提示审批人输入单个共享帐户的用户名和密码。 完成后，所有分配的用户在单击 Azure AD 访问面板或 Office 365 中的应用程序时，会使用此帐户登录。
+* **用户使用我管理的单个帐户自动登录** - 这是一种特殊方案，此方案适用于所有分配的用户有权使用单个共享帐户进行访问的情况。 此功能的最常见用例就是社交媒体应用程序，其中，组织有单个“公司”帐户，多个用户需要对该帐户进行更新。 该方案也相当于[管理员管理凭据](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)的密码 SSO 方案。 不过，选择此选项后，系统会提示审批人输入单个共享帐户的用户名和密码。 完成后，所有分配的用户在单击 Azure AD 访问面板或 Office 365 中的应用程序时，会使用此帐户登录。
 
 ## <a name="additional-resources"></a>其他资源
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)

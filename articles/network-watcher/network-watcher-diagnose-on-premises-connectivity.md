@@ -3,7 +3,7 @@ title: "使用 Azure 网络观察程序通过 VPN 网关诊断本地连接 | Mic
 description: "本文介绍如何使用 Azure 网络观察程序资源故障排除功能通过 VPN 网关诊断本地连接。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: aeffbf3d-fd19-4d61-831d-a7114f7534f9
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: 8f5534c83adf2ee4a696131afb45a658c89dd298
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 94658dfcf93e821e24cabb1f010f8dce0c014700
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 08/08/2017
 
 1. 虚拟网络网关 - Azure 上的 VPN 网关
 1. 本地网络网关 - Azure 云中的[本地 (FortiGate) VPN 网关](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)表示形式
-1. 站点到站点连接（基于策略）- [VPN 网关与本地路由器之间的连接](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#createconnection)
+1. 站点到站点连接（基于路由）- [VPN 网关与本地路由器之间的连接](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#createconnection)
 1. [配置 FortiGate](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
 有关站点到站点配置的详细分步指南，请访问：[使用 Azure 门户创建具有站点到站点连接的 VNet](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)。

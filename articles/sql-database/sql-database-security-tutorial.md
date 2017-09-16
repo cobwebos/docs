@@ -17,10 +17,10 @@ ms.workload:
 ms.date: 06/28/2017
 ms.author: daredis
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: 4bc09ad13ed0c9dc9257e9c75ec6f9ff3d689a0b
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 4ae3145daa4968ae619f965f3346ef03bccb0109
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/31/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="secure-your-azure-sql-database"></a>保护 Azure SQL 数据库
@@ -240,7 +240,7 @@ Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储
 
 
 ## <a name="next-steps"></a>后续步骤
-只需几个简单的步骤，即可大大提升数据库抵御恶意用户或未经授权的访问的能力。 在本教程中，学习： 
+学习本教程后，只需几个简单的步骤，即可大大提升数据库抵御恶意用户或未经授权的访问的能力。  你已了解如何： 
 
 > [!div class="checklist"]
 > * 为服务器和/或数据库设置防火墙规则
@@ -250,7 +250,9 @@ Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储
 > * 启用 SQL 数据库审核
 > * 启用 SQL 数据库威胁检测
 
+请转到下一教程，了解如何实施分布式数据库。
+
 > [!div class="nextstepaction"]
->[提高 SQL 数据库性能](sql-database-performance-tutorial.md)
+>[实现地理分散的数据库](sql-database-implement-geo-distributed-database.md)
 
 

@@ -15,18 +15,20 @@ ms.workload: na
 ms.date: 08/09/2017
 ms.author: sethm
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 28fb41499c919e5006f1be7daa97610c2a0583af
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: b4b9d5d272bdb172f1d40db379a519a4f617550a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="service-bus-authentication-and-authorization"></a>服务总线身份验证和授权
 
-应用程序可以使用共享访问签名 (SAS) 身份验证对 Azure 服务总线进行身份验证。 通过共享访问签名身份验证，应用程序能够使用在命名空间或在关联了特定权限的实体上配置的访问密钥向服务总线进行身份验证。 然后可以使用此密钥生成共享访问签名令牌，客户端可用它向服务总线进行身份验证。
+应用程序使用共享访问签名 (SAS) 令牌身份验证获取对 Azure 服务总线功能的访问权限。 通过 SAS，应用程序向服务总线提供一个由对称密钥签名的令牌，该对称密钥对令牌颁发者和服务总线是已知的（“共享的”），且直接与授予特定访问权限的规则相关联（例如接收/侦听/发送消息的权限）。 SAS 规则既可在命名空间中配置，也可直接在队列或主题等实体中配置，从而支持细化的访问控制。
+
+SAS 令牌既可由服务总线客户端直接生成，也可由某些颁发与客户端进行交互的终结点的中间令牌生成。 例如，系统可能要求客户端调用受 Active Directory 授权保护的 Web 服务终结点，以证明其标识和系统访问权限，Web 服务随之返回相应的服务总线令牌。 可使用 SDK 中的服务总线令牌提供程序轻松生成此 SAS 令牌。 
 
 > [!IMPORTANT]
-> 应使用 SAS 而非 Azure Active Directory 访问控制（又被称为访问控制服务或 ACS），因为 ACS 将被弃用。 SAS 为服务总线提供了一种简单、灵活且易于使用的身份验证方案。 当应用程序不需要管理授权“用户”这一概念时，可以使用 SAS。 有关详细信息，请参阅[此博客文章](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/)。
+> 如果结合使用 Azure Active Directory 访问控制（又称为访问控制服务或 ACS）与服务总线，请注意当前提供给此方法的支持有限，应将应用程序迁移至使用 SAS。 有关详细信息，请参阅[此博客文章](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/)。
 
 ## <a name="shared-access-signature-authentication"></a>共享访问签名身份验证
 

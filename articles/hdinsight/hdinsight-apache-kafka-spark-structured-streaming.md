@@ -12,13 +12,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/09/2017
+ms.date: 09/06/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 02b49e13e8f54c3d55310f4d2b21c7e09c91fe81
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 34c8e18e918221f0287b1078df750d8016e2529a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -46,7 +46,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 尽管可手动创建 Azure 虚拟网络、Kafka 和 Spark 群集，但使用 Azure Resource Manager 模板更简单。 使用以下步骤将 Azure 虚拟网络、Kafka 和 Spark 群集部署到 Azure 订阅。
 
-1. 使用以下按钮登录到 Azure，然后在 Azure 门户中打开模板。
+1. 使用以下按钮登录到 Azure，并在 Azure 门户中打开模板。
     
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
@@ -61,7 +61,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     > [!IMPORTANT]
     > 本示例使用的结构化流式处理笔记本需要 Spark on HDInsight 3.6。 如果使用早期版本的 Spark on HDInsight，则使用笔记本时会收到错误消息。
 
-2. 使用以下信息来填充“自定义部署”边栏选项卡上的项：
+2. 使用以下信息填充“自定义部署”部分中的条目：
    
     ![HDInsight 自定义部署](./media/hdinsight-apache-spark-with-kafka/parameters.png)
    
@@ -79,20 +79,20 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     * **SSH 密码**：Spark 和 Kafka 群集的 SSH 用户密码。
 
-3. 阅读“条款和条件”，然后选择“我同意上述条款和条件”。
+3. 阅读“条款和条件”，并选择“我同意上述条款和条件”。
 
-4. 最后，选中“固定到仪表板”，然后选择“购买”。 创建群集大约需要 20 分钟时间。
+4. 最后，选中“固定到仪表板”，并选择“购买”。 创建群集大约需要 20 分钟时间。
 
-创建资源后，将重定向到“资源组”边栏选项卡。
+创建资源后，会显示摘要页面。
 
-![虚拟网络和群集的“资源组”边栏选项卡](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
+![VNet 和群集的资源组信息](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
 
 > [!IMPORTANT]
 > 请注意，HDInsight 群集的名称为 **spark-BASENAME** 和 **kafka-BASENAME**，其中 BASENAME 是为模板提供的名称。 在连接到群集的后续步骤中，会用到这些名称。
 
 ## <a name="get-the-kafka-brokers"></a>获取 Kafka 中转站
 
-本示例中的代码将连接到 Kafka 群集中的 Kafka 中转站主机。 若要查找 Kafka 中转站主机，请使用以下 PowerShell 或 Bash 示例：
+本示例中的代码连接到 Kafka 群集中的 Kafka 中转站主机。 若要查找两个 Kafka 中转站主机的地址，请使用以下 PowerShell 或 Bash 示例：
 
 ```powershell
 $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
@@ -100,22 +100,24 @@ $clusterName = Read-Host -Prompt "Enter the Kafka cluster name"
 $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER" `
     -Credential $creds
 $respObj = ConvertFrom-Json $resp.Content
-$brokerHosts = $respObj.host_components.HostRoles.host_name
+$brokerHosts = $respObj.host_components.HostRoles.host_name[0..1]
 ($brokerHosts -join ":9092,") + ":9092"
 ```
 
 ```bash
-curl -u admin:$PASSWORD -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")'
+curl -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2
 ```
 
+出现提示时，输入群集登录（管理员）帐户的密码
+
 > [!NOTE]
-> 本示例需要 `$PASSWORD` 以包括群集登录密码，还需要 `$CLUSTERNAME` 以包括 Kafka 群集名。
+> 此示例需要 `$CLUSTERNAME` 包含 Kafka 群集的名称。
 >
 > 本示例使用 [jq](https://stedolan.github.io/jq/) 实用工具来分析 JSON 文档外的数据。
 
 输出与以下文本类似：
 
-`wn0-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn1-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn2-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn3-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092`
+`wn0-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn1-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092`
 
 保存此信息，因为本文档的后面部分还将用到此信息。
 
@@ -141,7 +143,7 @@ curl -u admin:$PASSWORD -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clust
 
 3. 在笔记本列表中找到“Stream-Tweets-To_Kafka.ipynb”项，然后选择其旁边的“上传”按钮。
 
-    ![使用 KafkaStreaming.ipynb 项旁边的“上传”按钮，将其上传到笔记本服务器](./media/hdinsight-apache-kafka-spark-structured-streaming/upload-notebook.png)
+    ![若要上传笔记本，请使用 KafkaStreaming.ipynb 项的“上传”按钮](./media/hdinsight-apache-kafka-spark-structured-streaming/upload-notebook.png)
 
 4. 重复步骤 1-3，加载“Spark-Structured-Streaming-From-Kafka.ipynb”笔记本。
 

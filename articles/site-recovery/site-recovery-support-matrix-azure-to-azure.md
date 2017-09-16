@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/10/2017
+ms.date: 08/31/2017
 ms.author: sujayt
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 5a81dbf6a088e824277275ef13067bdba006d3a9
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: 144078bbee8e9633fac12231daa07da6c295f46e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>用于在 Azure 之间进行复制的 Azure Site Recovery 支持矩阵
@@ -49,12 +49,20 @@ ms.lasthandoff: 08/30/2017
 **跨资源组移动计算、存储和网络** | 不支持 |如果在启用复制后移动虚拟机（或其相关组件，如存储和网络），则需为虚拟机禁用复制后重新启用复制。
 
 
+
 ## <a name="support-for-deployment-models"></a>部署模型支持
 
 **部署模型** | **支持/不支持** | **备注**  
 --- | --- | ---
 **经典** | 支持 | 只能在复制经典虚拟机后将其恢复为经典虚拟机。 不能将其恢复为 Resource Manager 虚拟机。 如果直接向 Azure 区域部署不带虚拟网络的经典 VM，将不受支持。
 **Resource Manager** | 支持 |
+
+>[!NOTE]
+>
+> 1. 不支持将 Azure 虚拟机从一个订阅复制到另一个订阅的灾难恢复方案。
+> 2. 不支持在多个订阅之间迁移 Azure 虚拟机。
+> 3. 不支持在同一区域内迁移 Azure 虚拟机。
+> 4. 不支持将 Azure 虚拟机从经典部署模型迁移到资源管理器部署模型。
 
 ## <a name="support-for-replicated-machine-os-versions"></a>已复制的计算机操作系统版本支持
 

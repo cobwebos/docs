@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 09/15/2017
 ms.author: bwren
 ms.translationtype: HT
 ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
@@ -57,7 +57,7 @@ Log Analytics 中的计算机组允许为一组特定的计算机设定[日志�
 >[!NOTE]
 > 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则会对该流程做出以下更改以创建新计算机组。
 >  
-> - 创建计算机组的查询必须包括 `distinct Computer`。  下面是创建计算机组的查询示例。<br>`Heartbeat | where Computer contains "srv" `
+> - 创建计算机组的查询必须包括 `distinct Computer`。  下面是创建计算机组的查询示例。<br>`Heartbeat | where Computer contains "srv" | distinct Computer `
 > - 创建新的计算机组时，必须指定一个除名称外的别名。  在如下所述的查询中使用计算机组时使用别名。  
 
 ### <a name="log-search-api"></a>日志搜索 API
@@ -104,7 +104,7 @@ Log Analytics 中的计算机组允许为一组特定的计算机设定[日志�
 >[!NOTE]
 > 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，通过将计算机的别名视为函数以在查询中使用计算机组，如以下示例所示：
 > 
->  `UpdateSummary | where Computer IN (MyComputerGroup)`
+>  `UpdateSummary | where Computer in (mycomputergroup)`
 
 ## <a name="computer-group-records"></a>计算机组记录
 会在通过 Active Directory 或 WSUS 创建的每个计算机组成员身份的 OMS 存储库中创建记录。  这些记录的类型为 **ComputerGroup**，并且具有下表中的属性。  不会基于日志搜索为计算机组创建记录。

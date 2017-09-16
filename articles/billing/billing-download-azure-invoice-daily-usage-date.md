@@ -17,21 +17,23 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: ae3f3343cf10a6b2f3aa49dccae6d0ac906dba5c
+ms.translationtype: HT
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: f6fc297790b8a8b3ae8edea2e37bb7daf40ed3bb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/26/2017
-
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>下载或查看 Azure 帐单发票和每日使用数据
 可以从 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)下载发票，也可通过电子邮件发送发票。 若要下载每日使用情况，请转到 [Azure 帐户中心](https://account.windowsazure.com)。 只有特定角色有权获取帐单发票和使用情况信息，如帐户管理员。 若要详细了解如何获取计费信息，请参阅[使用角色管理对 Azure 计费的访问](billing-manage-access.md)。
 
+>[!NOTE]
+>本文不适用于企业协议 (EA) 客户。 对于 EA 客户，发票将直接发送给注册管理员。
+
 ## <a name="get-your-invoice-in-email-pdf"></a>通过电子邮件获取发票 (.pdf)
 可以选择加入并配置其他收件人来通过电子邮件接收 Azure 发票。 此功能可能不适用于某些订阅，例如支持提供、企业协议或 Azure 开放许可。
 
-1. 从[“订阅”边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中选择订阅。 为拥有的每个订阅执行选择加入操作。 依次单击“发票”、“通过电子邮件发送我的发票”。 
+1. 从[订阅页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中选择你的订阅。 为拥有的每个订阅执行选择加入操作。 依次单击“发票”、“通过电子邮件发送我的发票”。 
 
     ![显示了“选择加入”流的屏幕截图](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
     
@@ -47,7 +49,7 @@ ms.lasthandoff: 04/26/2017
 
 ## <a name="download-invoice-from-azure-portal-pdf"></a>从 Azure 门户下载发票 (.pdf)
 
-1. [作为有权访问发票的用户](billing-manage-access.md)，从 Azure 门户中的[“订阅”边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)选择订阅。
+1. [作为有权访问发票的用户](billing-manage-access.md)，从 Azure 门户中的[“订阅”页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)选择订阅。
 
 2. 选择“发票”。 
 
@@ -89,7 +91,7 @@ ms.lasthandoff: 04/26/2017
 
 有关每日使用情况的详细信息，请参阅[了解 Microsoft Azure 帐单](billing-understand-your-bill.md)。 有关帮助管理成本的信息，请参阅[通过 Azure 计费和成本管理来防止意外成本](billing-getting-started.md)。
 
-## <a name="noinvoice"></a> 为何看不到最后一个计费周期的发票。
+## <a name="noinvoice"></a> 为何看不到最后一个计费周期的发票？
 
 看不到发票的几个可能原因：
 
@@ -99,7 +101,7 @@ ms.lasthandoff: 04/26/2017
 
 - 尚未生成发票。 请等到计费周期结束。
 
-- 如果你不是帐户管理员，可能无法向你提供较旧的发票。
+- 如果不是帐户管理员，可能无法向你提供较旧的发票。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 如果仍有疑问，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。

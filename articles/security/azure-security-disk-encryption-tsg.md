@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/27/2017
 ms.author: devtiw
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: 83821ed2f7db1c7dea88a1b4424d405959a206db
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: f2b9aad02a1ae3d5117ffd59b448eabe65a936fc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁盘加密故障排除指南
@@ -41,7 +41,7 @@ ms.lasthandoff: 08/30/2017
 
 ## <a name="unable-to-encrypt"></a>无法加密
 
-在某些情况下，Linux 磁盘加密看上去停滞在“OS 磁盘加密已启动”状态，同时 SSH 处于禁用状态。 加密过程可能需要 3-16 小时才能完成存储库映像。 如果添加了多 TB 大小的数据磁盘，此过程可能需要数天才能完成。 
+在某些情况下，Linux 磁盘加密看上去停滞在“OS 磁盘加密已启动”状态，同时 SSH 处于禁用状态。 加密过程可能需要 3-16 小时才能完成存储库映像。 如果添加了多 TB 大小的数据磁盘，此过程可能需要数天才能完成。
 
 Linux OS 磁盘加密序列暂时卸载 OS 驱动器。 然后，它将对整个 OS 磁盘进行逐块加密，然后再将其重新安装为加密状态。 与 Windows 上的 Azure 磁盘加密不同，Linux 磁盘加密不允许在加密的同时并发使用 VM。 VM 的性能特点会在完成加密所需的时间上产生显著差异。 这些特点包括磁盘大小以及存储帐户为标准还是高级 (SSD) 存储。
 
@@ -85,15 +85,15 @@ VM 必须能够访问 Key Vault。 请参阅有关从 [Azure Key Vault](https://
 
 ## <a name="troubleshooting-windows-server-2016-server-core"></a>Windows Server 2016 Server Core 疑难解答
 
-在 Windows Server 2016 Server Core 上，bdehdcfg 组件默认不可用。 Azure 磁盘加密需要此组件。 通过执行以下步骤添加“bdehdcfg”组件：
+在 Windows Server 2016 Server core 上，bdehdcfg 组件默认不可用。 Azure 磁盘加密需要此组件。 它用于从 OS 卷拆分系统卷，该操作在虚拟机生命期内只进行一次。 在后面的加密操作中，不需要这些二进制文件。
 
-   1. 请将下面 Windows Server 2016 Datacenter VM 中的 4 个文件复制到 Server Core 映像的 c:\windows\system32 文件夹：
+若要暂时避开此问题，请将下面 Windows Server 2016 Data Center VM 中的 4 个文件复制到 Server Core 上的同一位置中：
 
    ```
-   bdehdcfg.exe
-   bdehdcfglib.dll
-   bdehdcfglib.dll.mui
-   bdehdcfg.exe.mui
+   \windows\system32\bdehdcfg.exe
+   \windows\system32\bdehdcfglib.dll
+   \windows\system32\en-US\bdehdcfglib.dll.mui
+   \windows\system32\en-US\bdehdcfg.exe.mui
    ```
 
    2. 输入以下命令：
@@ -102,8 +102,8 @@ VM 必须能够访问 Key Vault。 请参阅有关从 [Azure Key Vault](https://
    bdehdcfg.exe -target default
    ```
 
-   3. 此命令将创建一个 550 MB 系统分区。 重新启动系统。 
-   
+   3. 此命令将创建一个 550 MB 系统分区。 重新启动系统。
+
    4. 使用 DiskPart 检查卷，然后继续。  
 
 例如：

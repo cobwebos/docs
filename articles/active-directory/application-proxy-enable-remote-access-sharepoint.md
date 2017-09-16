@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 09/06/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 97eeec3b3936bcbef6ac3966b890332901bcb153
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 2b4ad3e7bda1346e606b2c185c204154b8f19f87
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -35,15 +35,13 @@ ms.lasthandoff: 07/24/2017
 
 * SharePoint 包含本机 Kerberos 支持。 因此，通过 Azure AD 应用程序代理远程访问内部站点的用户预期可以获得单一登录 (SSO) 体验。
 
-* 需要对 SharePoint 服务器进行少量的配置更改。 建议使用过渡环境。 这样，便可以先对过渡服务器进行更新，在转到生产环境之前简化测试周期。
+* 此方案包括对 SharePoint 服务器进行配置更改。 建议使用过渡环境。 这样，便可以先对过渡服务器进行更新，在转到生产环境之前简化测试周期。
 
-* 假设已经为 SharePoint 设置了 SSL，因为需要对发布的 URL 使用 SSL。 需要在内部站点上启用 SSL，确保正确发送/映射链接。 如果尚未配置 SSL，请参阅 [Configure SSL for SharePoint 2013](https://blogs.msdn.microsoft.com/fabdulwahab/2013/01/20/configure-ssl-for-sharepoint-2013)（为 SharePoint 2013 配置 SSL）以获取说明。 此外，请确保连接器计算机信任颁发的证书。 （证书不需要公开颁发。）
+* 我们要求在已发布的 URL 上使用 SSL。 需要在内部站点上启用 SSL，确保正确发送/映射链接。 如果尚未配置 SSL，请参阅 [Configure SSL for SharePoint 2013](https://blogs.msdn.microsoft.com/fabdulwahab/2013/01/20/configure-ssl-for-sharepoint-2013)（为 SharePoint 2013 配置 SSL）以获取说明。 此外，请确保连接器计算机信任颁发的证书。 （证书不需要公开颁发。）
 
 ## <a name="step-1-set-up-single-sign-on-to-sharepoint"></a>步骤 1：设置 SharePoint 的单一登录
 
-我们的客户希望在其后端应用程序（在本例中为 SharePoint 服务器）中获得最佳的 SSO 体验。 在这种常见的 Azure AD 方案中，用户只需执行身份验证一次，因为系统不会再次提示身份验证。
-
-对于需要或者使用 Windows 身份验证的本地应用程序，可以通过 Kerberos 身份验证协议以及一项称为 Kerberos 约束委派 (KCD) 的功能来实现 SSO。 KCD 在经过配置后，可让应用程序代理连接器获取用户的 Windows 票证/令牌，即使该用户尚未直接登录到 Windows。 若要了解有关 KCD 的详细信息，请参阅 [Kerberos 约束委派概述](https://technet.microsoft.com/library/jj553400.aspx)。
+对于使用 Windows 身份验证的本地应用程序，可以通过 Kerberos 身份验证协议以及一项称为 Kerberos 约束委派 (KCD) 的功能来实现单一登录 SSO。 KCD 在经过配置后，可让应用程序代理连接器获取用户的 Windows 令牌，即使该用户尚未直接登录到 Windows。 若要了解有关 KCD 的详细信息，请参阅 [Kerberos 约束委派概述](https://technet.microsoft.com/library/jj553400.aspx)。
 
 若要为 SharePoint 服务器设置 KCD，请完成后面按顺序标记的部分中的步骤：
 
@@ -51,43 +49,43 @@ ms.lasthandoff: 07/24/2017
 
 首先，请确保 SharePoint 在定义的服务帐户下运行，而不是在本地系统、本地服务或网络服务下运行。 这样做是为了能够将服务主体名称 (SPN) 附加到有效的帐户。 Kerberos 协议使用 SPN 来识别不同的服务。 稍后需要使用该帐户来配置 KCD。
 
+> [!NOTE]
+需要为服务预先创建一个 Azure AD 帐户。 建议允许自动密码更改。 有关整套步骤和排查问题的详细信息，请参阅 [Configure automatic password change in SharePoint 2013](https://technet.microsoft.com/library/ff724280.aspx)（在 SharePoint 2013 中配置自动密码更改）。
+
 若要确保站点在定义的服务帐户下运行，请执行以下步骤：
 
 1. 打开“SharePoint 2013 管理中心”站点。
 2. 转到“安全”并选择“配置服务帐户”。
 3. 选择“Web 应用程序池 - SharePoint - 80”。 这些选项可能因 Web 池名称的不同或者 Web 池是否默认使用 SSL 而略有不同。
 
-  ![用于配置服务帐户的选项](./media/application-proxy-remote-sharepoint/remote-sharepoint-service-web-application.png)
+  ![用于配置服务帐户的选项](./media/application-proxy-remote-sharepoint/service-web-application.png)
 
-4. 如果“为该组件选择帐户”为“本地服务”或“网络服务”，则需创建一个帐户。 否则，此步骤即告完成，可以转到下一部分。
+4. 如果“为该组件选择帐户”字段设置为“本地服务”或“网络服务”，则需创建一个帐户。 否则，此步骤即告完成，可以转到下一部分。
 5. 选择“注册新的托管帐户”。 创建帐户后，必须先设置“Web 应用程序池”，才能使用该帐户。
-
-> [!NOTE]
-需要为服务预先创建一个 Azure AD 帐户。 建议允许自动密码更改。 有关整套步骤和排查问题的详细信息，请参阅 [Configure automatic password change in SharePoint 2013](https://technet.microsoft.com/library/ff724280.aspx)（在 SharePoint 2013 中配置自动密码更改）。
 
 ### <a name="configure-sharepoint-for-kerberos"></a>为 Kerberos 配置 SharePoint
 
-用户使用 KCD 在 SharePoint 服务器上执行单一登录，而这只能配合使用 Kerberos 来实现。
+用户使用 KCD 在 SharePoint 服务器上执行单一登录。
 
 若要在 SharePoint 站点中配置 Kerberos 身份验证，请执行以下操作：
 
 1. 打开“SharePoint 2013 管理中心”站点。
 2. 转到“应用程序管理”，选择“管理 Web 应用程序”，并选择 SharePoint 站点。 在本示例中，此站点为 **SharePoint - 80**。
 
-  ![选择 SharePoint 站点](./media/application-proxy-remote-sharepoint/remote-sharepoint-manage-web-applications.png)
+  ![选择 SharePoint 站点](./media/application-proxy-remote-sharepoint/manage-web-applications.png)
 
 3. 在工具栏中单击“身份验证提供程序”。
 4. 在“身份验证提供程序”框中，单击“默认区域”查看设置。
-5. 在“编辑身份验证”对话框中向下滚动，直到出现“声明身份验证类型”，确保“启用 Windows 身份验证”和“Windows 集成身份验证”均已选中。
-6. 在下拉框中，确保“协商(Kerberos)”已选中。
+5. 在“编辑身份验证”对话框中，向下滚动，直到看到“声明身份验证类型”。 确保同时选中“启用 Windows 身份验证”和“集成 Windows 身份验证”。
+6. 在“集成 Windows 身份验证”字段下拉框中，确保选中“协商 (Kerberos)”。
 
-  ![“编辑身份验证”对话框](./media/application-proxy-remote-sharepoint/remote-sharepoint-service-edit-authentication.png)
+  ![“编辑身份验证”对话框](./media/application-proxy-remote-sharepoint/service-edit-authentication.png)
 
 7. 在“编辑身份验证”对话框的底部，单击“保存”。
 
 ### <a name="set-a-service-principal-name-for-the-sharepoint-service-account"></a>为 SharePoint 服务帐户设置服务主体名称
 
-在配置 KCD 之前，需要识别以配置的服务帐户运行的 SharePoint 服务。 为此，需设置 SPN。 有关详细信息，请参阅 [Service Principal Names](https://technet.microsoft.com/library/cc961723.aspx)（服务主体名称）。
+在配置 KCD 之前，需要识别以配置的服务帐户运行的 SharePoint 服务。 通过设置 SPN 标识服务。 有关详细信息，请参阅 [Service Principal Names](https://technet.microsoft.com/library/cc961723.aspx)（服务主体名称）。
 
 SPN 格式为：
 
@@ -112,7 +110,7 @@ sharepoint.demo.o365identity.us
 则 SPN 为：
 
 ```
-HTTP/ sharepoint.demo.o365identity.us demo
+HTTP/sharepoint.demo.o365identity.us demo
 ```
 
 可能还需要为服务器上的特定站点设置 SPN。 有关详细信息，请参阅 [Configure Kerberos authentication](https://technet.microsoft.com/library/cc263449(v=office.12).aspx)（配置 Kerberos 身份验证）。 请重点查看“使用 Kerberos 身份验证为 Web 应用程序创建服务主体名称”部分。
@@ -130,7 +128,7 @@ Klist
 
   ![Klist 结果示例](./media/application-proxy-remote-sharepoint/remote-sharepoint-target-service.png)
 
-4. 设置 SPN 后，需确保在前面针对 Web 应用程序设置的服务帐户中正确配置该 SPN。 请在命令提示符下以域管理员的身份运行以下命令：
+4. 设置 SPN 后，请确保在前面针对 Web 应用程序设置的服务帐户中正确配置该 SPN。 请在命令提示符下以域管理员的身份运行以下命令：
 
  ```
  setspn -S http/sharepoint.demo.o365identity.us demo\sp_svc
@@ -144,83 +142,71 @@ Klist
 
 ### <a name="ensure-that-the-connector-is-set-as-a-trusted-delegate-to-sharepoint"></a>确保连接器已设置为 SharePoint 的受信任委派
 
-配置 KCD，使 Azure AD 应用程序代理服务能够向 SharePoint 服务委派用户标识。 为此，可让应用程序代理连接器检索已在 Azure AD 中进行身份验证的用户的 Kerberos 票证。 然后，该服务器会将上下文传递给目标应用程序（在本例中为 SharePoint）。
+配置 KCD，使 Azure AD 应用程序代理服务能够向 SharePoint 服务委派用户标识。 可通过让应用程序代理连接器检索已在 Azure AD 中进行身份验证的用户的 Kerberos 票证，配置 KCD。 然后，该服务器会将上下文传递给目标应用程序（在本例中为 SharePoint）。
 
 若要配置 KCD，请针对每个连接器计算机重复以下步骤：
 
 1. 以域管理员的身份登录到 DC，并打开“Active Directory 用户和计算机”。
 2. 找到运行连接器的计算机。 在本示例中，它是同一台 SharePoint 服务器。
 3. 双击该计算机，并单击“委派”选项卡。
-4. 确保委派设置指定为“仅信任此计算机来委派指定的服务”，并选择“使用任何身份验证协议”。
+4. 确保委派设置指定为“仅信任此计算机来委派指定的服务”。 然后，选择“使用任意身份验证协议”。
 
-  ![委派设置](./media/application-proxy-remote-sharepoint/remote-sharepoint-delegation-box.png)
+  ![委派设置](./media/application-proxy-remote-sharepoint/delegation-box.png)
 
 5. 单击“添加”按钮，然后单击“用户或计算机”并找到服务帐户。
 
-  ![添加服务帐户的 SPN](./media/application-proxy-remote-sharepoint/remote-sharepoint-users-computers.png)
+  ![添加服务帐户的 SPN](./media/application-proxy-remote-sharepoint/users-computers.png)
 
 6. 在 SPN 列表中，选择此前为服务帐户创建的 SPN。
 7. 单击 **“确定”**。 再次单击“确定”保存更改。
 
 ## <a name="step-2-enable-remote-access-to-sharepoint"></a>步骤 2：启用对 SharePoint 的远程访问
 
-在 SharePoint 中启用 Kerberos 并配置 KCD 后，接下来可以设置 SharePoint 的单一登录。 然后，可以使用连接器通过 Azure AD 应用程序代理发布 SharePoint 场，以便进行远程访问。
+由于已启用了适用于 Kerberos 的 SharePoint 并配置了 KCD，现在便可通过 Azure AD 应用程序代理发布 SharePoint 场以进行远程访问。
 
-若要执行以下步骤，用户需是组织的 Azure Active Directory 帐户中全局管理员角色的成员。
+1. 使用以下设置发布 SharePoint 网站。 有关分步说明，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)。 
+   - 内部 URL：SharePoint 站点内部使用的 URL，例如 https://SharePoint/。 在本示例中，请务必使用 https
+   - 预身份验证方法：Azure Active Directory
+   - 转换标头中的 URL：否
 
-1. 登录到 [Azure 门户](https://manage.windowsazure.com)并查找 Azure AD 租户。
-2. 单击“应用程序”，并单击“添加”。
-3. 选择“ **发布可从网络外部访问的应用程序**”。 如果未看到此选项，请确保已在租户中设置了 Azure AD Basic 或 Premium。
-4. 按如下所示完成每个选项：
- * **名称**：可以根据需要使用任何值，例如 **SharePoint**。
- * **内部 URL**：SharePoint 站点内部使用的 URL，例如 **https://SharePoint/**。 在本示例中，请务必使用 **https**。
- * **预身份验证方法**：选择“Azure Active Directory”。
+   >[!TIP]
+   >SharePoint 使用_主机标头_ 值来查找站点， 并根据该值生成链接。 这样做的实质影响是 SharePoint 生成的任何链接是已正确设置为使用外部 URL 的已发布 URL。 将此值设置为“是”还能让连接器将请求转发到后端应用程序。 但是，将此值设置为“否”意味着连接器不会向后端应用程序发送内部主机名， 而是发送主机标头充当已发布 URL。
 
-  ![添加应用程序的选项](./media/application-proxy-remote-sharepoint/remote-sharepoint-add-application.png)
+   ![发布 SharePoint 应用程序](./media/application-proxy-remote-sharepoint/publish-app.png)
 
-5. 发布应用后，单击“配置”选项卡。
-6. 向下滚动到“转换标头中的 URL”选项。 默认值为“是”。 将其更改为“否”。
+2. 发布应用后，请执行以下步骤来配置单一登录设置：
 
- SharePoint 使用_主机标头_ 值来查找站点， 并根据该值生成链接。 这样做的实质影响是可以确保 SharePoint 生成的任何链接是已正确设置为使用外部 URL 的已发布 URL。 将此值设置为“是”还能让连接器将请求转发到后端应用程序。 但是，将此值设置为“否”意味着连接器不会向后端应用程序发送内部主机名， 而是发送主机标头充当已发布 URL。
+   1. 在门户中的应用程序页上，选择“单一登录”。
+   2. 对于单一登录模式，选择“集成 Windows 身份验证”。
+   3. 将“内部应用程序 SPN”设置为此前设置的值。 此示例中为 http/sharepoint.demo.o365identity.us。
 
- 此外，为了确保 SharePoint 接受此 URL，还需要在 SharePoint 服务器上完成一项配置。 将在下一部分执行该操作。
+   ![为 SSO 配置集成 Windows 身份验证](./media/application-proxy-remote-sharepoint/configure-iwa.png)
 
-7. 将“内部身份验证方法”更改为“Windows 集成身份验证”。 如果 Azure AD 租户在云中与在本地使用的 UPN 不同，请记得同时更新“委派的登录标识”。
-8. 将“内部应用程序 SPN”设置为此前设置的值。 例如，可使用 **http/sharepoint.demo.o365identity.us**。
-9. 将应用程序分配给目标用户。
-
-应用程序应如以下示例所示：
-
-  ![已完成的应用程序](./media/application-proxy-remote-sharepoint/remote-sharepoint-internal-application-spn.png)
+3. 要完成应用程序设置，请转到“用户和组”部分，分配要访问此应用程序的用户。 
 
 ## <a name="step-3-ensure-that-sharepoint-knows-about-the-external-url"></a>步骤 3：确保 SharePoint 识别外部 URL
 
 最后一个步骤是确保 SharePoint 能够根据外部 URL 找到站点，以便根据该外部 URL 呈现链接。 为此，请为 SharePoint 站点配置备用访问映射。
 
 1. 打开“SharePoint 2013 管理中心”站点。
-2. 在“系统设置”下，选择“配置备用访问映射”。
+2. 在“系统设置”下，选择“配置备用访问映射”。 将打开“备用访问映射”框。
 
- 此时会打开“备用访问映射”框。
-
-  ![“备用访问映射”框](./media/application-proxy-remote-sharepoint/remote-sharepoint-alternate-access1.png)
+  ![“备用访问映射”框](./media/application-proxy-remote-sharepoint/alternate-access1.png)
 
 3. 在“备用访问映射集合”旁边的下拉列表中，选中“更改备用访问映射集合”。
 4. 选择站点，例如 **SharePoint - 80**。
-
-  ![选择站点](./media/application-proxy-remote-sharepoint/remote-sharepoint-alternate-access2.png)
-
 5. 可以选择将已发布的 URL 添加为内部 URL 或公共 URL。 本示例使用一个公共 URL 作为 Extranet。
-6. 在“Extranet”路径中单击“编辑公共 URL”，并输入已发布应用程序的路径，如上一步骤所示。 例如，可输入 **https://sharepoint-iddemo.msappproxy.net**。
+6. 在“Extranet”路径中单击“编辑公共 URL”，然后输入发布应用程序时创建的外部 URL。 例如，可输入 **https://sharepoint-iddemo.msappproxy.net**。
 
-  ![输入路径](./media/application-proxy-remote-sharepoint/remote-sharepoint-alternate-access3.png)
+  ![输入路径](./media/application-proxy-remote-sharepoint/alternate-access3.png)
 
 7. 单击“保存” 。
 
- 现在，可以通过 Azure AD 应用程序代理从外部访问 SharePoint 站点。
+现在，可以通过 Azure AD 应用程序代理从外部访问 SharePoint 站点。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [如何提供对本地应用程序的安全远程访问](active-directory-application-proxy-get-started.md)
+- [使用 Azure AD 应用程序代理中的自定义域](active-directory-application-proxy-custom-domains.md)
 - [了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md)
-- [使用 Azure AD 应用程序代理发布 SharePoint 2016 和 Office Online Server](https://blogs.technet.microsoft.com/dawiese/2016/06/09/publishing-sharepoint-2016-and-office-online-server-with-azure-ad-application-proxy/)
+
 

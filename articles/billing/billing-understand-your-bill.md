@@ -16,14 +16,17 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
 ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
-ms.openlocfilehash: 2bf75dc55d190522597eb8958d378aa1469027b7
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: 668b32e99ba9a3bdf8e8f16ac51c35c609444cd9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>了解 Microsoft Azure 帐单
 要了解 Azure 帐单，请在 Azure 门户中将发票与每日使用情况明细文件和成本管理报表进行比较。
+
+>[!NOTE]
+>本文不适用于企业协议 (EA) 客户。 对于 EA 客户，[可在企业门户找到发票文档。](https://ea.azure.com/helpdocs/understandingYourInvoice)  
 
 若要获取发票 PDF 并下载每日使用情况明细文件 CSV 副本，请参阅[获取 Azure 帐单和每日使用情况数据](billing-download-azure-invoice-daily-usage-date.md)。 
 
@@ -48,7 +51,7 @@ ms.lasthandoff: 08/31/2017
  | --- | --- |
 |计费周期 | 计费周期 |
  |名称 |测定仪类别 |
- |类型 |计量子类别 |
+ |类型 |测定仪子类别 |
  |资源 |测定仪名称 |
  |区域 |测定仪区域 |
  |已耗用 |已耗用数量 |

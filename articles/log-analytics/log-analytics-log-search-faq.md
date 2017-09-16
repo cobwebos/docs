@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/27/2017
+ms.date: 09/06/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: d7bd0d780c265cc15ad09a73ede8c5a886005e37
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 507136beef9718dc6a7f42a4b84f8030d4a60563
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 08/28/2017
 ## <a name="log-search-api"></a>日志搜索 API
 
 ### <a name="question-does-the-log-search-api-get-updated-after-i-upgrade"></a>问：升级后，日志搜索 API 是否会更新？
-[日志搜索 API](log-analytics-log-search-api.md) 尚未升级到新的搜索语言。  请继续通过此 API 使用旧的查询语言，即使工作区已经升级。  日志搜索 API 的更新文档将在其更新后可用。
+升级工作区时，旧的[日志搜索 API](log-analytics-log-search-api.md) 将不再工作。  有关新 API 的详细信息，请参阅 [Azure Log Analytics REST API](https://dev.loganalytics.io/)。
 
 
 ## <a name="portals"></a>门户

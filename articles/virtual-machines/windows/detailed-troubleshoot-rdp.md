@@ -14,26 +14,26 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 07/25/2017
+ms.date: 09/06/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 7a9d994e10ec79437d6ccf60531cb12b86f34151
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: 81713fae3f856cad6251e43eecfd7b1e82858aed
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure 中 Windows VM 远程桌面连接问题的详细故障排除步骤
 本文提供详细的故障排除步骤，用于为基于 Windows 的 Azure 虚拟机诊断和修复复杂的远程桌面错误。
 
 > [!IMPORTANT]
-> 若要消除更常见的远程桌面错误，请务必先阅读[远程桌面的基本故障排除文章](troubleshoot-rdp-connection.md)，然后再继续。
+> 要消除更常见的远程桌面错误，请务必先阅读[远程桌面的基本故障排除文章](troubleshoot-rdp-connection.md)，再继续。
 
-你可能遇到不像[基本远程桌面故障排除指南](troubleshoot-rdp-connection.md)中所述的任何特定错误消息的远程桌面错误消息。 请遵循以下步骤来确定远程桌面 (RDP) 客户端为何无法连接到 Azure VM 上的 RDP 服务。
+可能遇到不像[基本远程桌面故障排除指南](troubleshoot-rdp-connection.md)中所述的任何特定错误消息的远程桌面错误消息。 请遵循以下步骤来确定远程桌面 (RDP) 客户端为何无法连接到 Azure VM 上的 RDP 服务。
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-如果你对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并单击“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并单击“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="components-of-a-remote-desktop-connection"></a>远程桌面连接的组件
 RDP 连接涉及以下组件：
@@ -50,6 +50,8 @@ RDP 连接涉及以下组件：
 
 * 在 Azure 门户中检查虚拟机的状态，查看是否存在任何明显问题。
 * 按照[基本故障排除指南中常见 RDP 错误的快速修复步骤](troubleshoot-rdp-connection.md#quick-troubleshooting-steps)操作
+* 对于自定义图像，请确保 VHD 在上传之前已准备就绪。 有关详细信息，请参阅[准备好要上传到 Azure 的 Windows VHD 或 VHDX](prepare-for-upload-vhd-image.md)。
+
 
 在执行这些步骤后，尝试通过远程桌面重新连接到 VM。
 
@@ -63,18 +65,18 @@ RDP 连接涉及以下组件：
 * [基于 Windows 的 Azure VM](#source-5-windows-based-azure-vm)
 
 ## <a name="source-1-remote-desktop-client-computer"></a>来源 1：远程桌面客户端计算机
-验证你的计算机是否可以与本地另一台基于 Windows 的计算机建立远程桌面连接。
+验证计算机是否可以与本地另一台基于 Windows 的计算机建立远程桌面连接。
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_1.png)
 
-如果不能，请检查你的计算机上是否有以下设置：
+如果不能，请检查计算机上是否有以下设置：
 
 * 阻止远程桌面流量的本地防火墙设置。
 * 本地安装的阻止远程桌面连接的客户端代理软件。
 * 本地安装的阻止远程桌面连接的网络监视软件。
 * 其他类型的阻止远程桌面连接的安全软件，该软件监视流量或允许/禁止特定类型的流量。
 
-对于所有这些情况，请暂时禁用可疑软件，然后尝试通过远程桌面连接到本地计算机。 如果你可以通过这种方式找出实际原因，请与网络管理员协作，更正软件设置，以允许远程桌面连接。
+对于所有这些情况，请暂时禁用可疑软件，并尝试通过远程桌面连接到本地计算机。 如果可以通过这种方式找出实际原因，请与网络管理员协作，更正软件设置，以允许远程桌面连接。
 
 ## <a name="source-2-organization-intranet-edge-device"></a>来源 2：组织 Intranet 边缘设备
 验证直接连接到 Internet 的计算机是否可以与 Azure 虚拟机建立远程桌面连接。
@@ -83,7 +85,7 @@ RDP 连接涉及以下组件：
 
 如果没有直接连接到 Internet 的计算机，则可以在资源组或云服务中创建新的 Azure 虚拟机并使用它进行测试。 有关详细信息，请参阅[在 Azure 中创建运行 Windows 的虚拟机](../virtual-machines-windows-hero-tutorial.md)。 在测试后，可以删除该虚拟机和资源组或云服务。
 
-如果你可以创建与直接连接到 Internet 的计算机的远程桌面连接，请检查你组织的 Intranet 边缘设备中是否有以下项：
+如果可以创建与直接连接到 Internet 的计算机的远程桌面连接，请检查组织的 Intranet 边缘设备中是否有以下项：
 
 * 阻止与 Internet 的 HTTPS 连接的内部防火墙。
 * 阻止远程桌面连接的代理服务器。
@@ -104,12 +106,12 @@ RDP 连接涉及以下组件：
 如果可以通过远程桌面连接到同一云服务或虚拟网络中的虚拟机，请检查以下设置：
 
 * 目标 VM 上远程桌面通信的终结点配置：终结点的专用 TCP 端口必须与 VM 的远程桌面服务正在侦听的 TCP 端口（默认值为 3389）匹配。
-* 目标 VM 上远程桌面通信终结点的 ACL：ACL 允许你指定基于源 IP 地址允许或拒绝从 Internet 传入的流量。 错误配置 ACL 可能会阻止传入远程桌面流量到达终结点。 检查你的 ACL 以确保允许从你的代理服务器或其他边缘服务器的公共 IP 地址传入的流量。 有关详细信息，请参阅[什么是网络访问控制列表 (ACL)？](../../virtual-network/virtual-networks-acl.md)
+* 目标 VM 上远程桌面通信终结点的 ACL：ACL 允许指定基于源 IP 地址允许或拒绝从 Internet 传入的流量。 错误配置 ACL 可能会阻止传入远程桌面流量到达终结点。 检查 ACL 以确保允许从代理服务器或其他边缘服务器的公共 IP 地址传入的流量。 有关详细信息，请参阅[什么是网络访问控制列表 (ACL)？](../../virtual-network/virtual-networks-acl.md)
 
-若要检查终结点是否是问题的源，请删除当前终结点，然后创建一个新终结点，并选择范围 49152-65535 中的随机端口作为外部端口号。 有关详细信息，请参阅[如何对虚拟机设置终结点](classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+要检查终结点是否是问题的源，请删除当前终结点，创建一个新终结点，并选择范围 49152-65535 中的随机端口作为外部端口号。 有关详细信息，请参阅[如何对虚拟机设置终结点](classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="source-4-network-security-groups"></a>来源 4：网络安全组
-使用网络安全组可以对允许的入站和出站流量进行更精细的控制。 你可以创建跨 Azure 虚拟网络中的子网和云服务的规则。
+使用网络安全组可以对允许的入站和出站流量进行更精细的控制。 可以创建跨 Azure 虚拟网络中的子网和云服务的规则。
 
 使用 [IP 流验证](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md)来确认网络安全组中的规则是否阻止了传入或传出虚拟机的流量。 还可以查看有效的安全组规则，确保入站“允许”NSG 规则存在并已针对 RDP 端口（默认值 3389）进行优化。 有关详细信息，请参阅[使用有效的安全规则排查 VM 流量流问题](../../virtual-network/virtual-network-nsg-troubleshoot-portal.md#using-effective-security-rules-to-troubleshoot-vm-traffic-flow)。
 
@@ -121,7 +123,7 @@ RDP 连接涉及以下组件：
 * 启用“远程桌面”Windows 防火墙默认规则（TCP 端口 3389）。
 * 通过将 HKLM\System\CurrentControlSet\Control\Terminal Server\fDenyTSConnections 注册表值设置为 0，启用远程桌面连接。
 
-从你的计算机重试连接。 如果仍无法通过远程桌面连接，请检查是否存在以下可能问题：
+从计算机重试连接。 如果仍无法通过远程桌面连接，请检查是否存在以下可能问题：
 
 * “远程桌面”服务未在目标 VM 上运行。
 * “远程桌面”服务未侦听 TCP 端口 3389。
@@ -134,7 +136,7 @@ RDP 连接涉及以下组件：
 
 接下来，打开 Azure PowerShell 命令提示符，将当前文件夹更改为 **InstallWinRMCertAzureVM.ps1** 脚本文件所在的位置。 若要运行 Azure PowerShell 脚本，必须设置正确的执行策略。 运行 **Get-ExecutionPolicy** 命令，确定当前的策略级别。 有关设置相应级别的信息，请参阅 [Set-ExecutionPolicy](https://technet.microsoft.com/library/hh849812.aspx)。
 
-接下来，填写你的 Azure 订阅名称、云服务名称和虚拟机名称（删除 < 和 > 字符），然后运行这些命令。
+接下来，填写 Azure 订阅名称、云服务名称和虚拟机名称（删除 < 和 > 字符），并运行这些命令。
 
 ```powershell
 $subscr="<Name of your Azure subscription>"
@@ -145,7 +147,7 @@ $vmName="<Name of the target virtual machine>"
 
 可以从 **Get-AzureSubscription** 命令显示的 *SubscriptionName* 属性获取正确的订阅名称。 可以从 **Get-AzureVM** 命令显示的 *ServiceName* 列中获取虚拟机的云服务名称。
 
-检查是否有新证书。 打开当前用户的“证书”管理单元，然后在“受信任的根证书颁发机构\证书”文件夹中查找。 你应看到在“颁发给”列中具有你的云服务的 DNS 名称的证书（示例：cloudservice4testing.cloudapp.net）。
+检查是否有新证书。 打开当前用户的“证书”管理单元，并在“受信任的根证书颁发机构\证书”文件夹中查找。 应看到在“颁发给”列中具有云服务的 DNS 名称的证书（示例：cloudservice4testing.cloudapp.net）。
 
 接下来，使用以下命令启动远程 Azure PowerShell 会话。
 

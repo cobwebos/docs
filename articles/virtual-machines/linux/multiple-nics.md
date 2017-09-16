@@ -14,12 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 8a2931e462079c101c91497d459d7d3126234244
+ms.translationtype: HT
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: ff3e3121102eedaa1f439e517570d0a97cf07c22
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>如何在 Azure 中创建具有多个网络接口卡的 Linux 虚拟机
@@ -116,7 +115,8 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-若要将 NIC 添加到现有 VM，请先使用 [az vm deallocate](/cli/azure/vm#deallocate) 解除分配 VM。 以下示例解除分配名为 myVM 的 VM ：
+要将 NIC 添加到现有 VM，请先使用 [az vm deallocate](/cli/azure/vm#deallocate) 解除分配 VM。 以下示例解除分配名为 myVM 的 VM ：
+
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
@@ -161,7 +161,7 @@ az vm start --resource-group myResourceGroup --name myVM
 
 
 ## <a name="create-multiple-nics-using-resource-manager-templates"></a>使用 Resource Manager 模板创建多个 NIC
-Azure Resource Manager 模板使用声明性 JSON 文件来定义环境。 可以阅读 [Azure Resource Manager 概述](../../azure-resource-manager/resource-group-overview.md)。 Resource Manager 模板可让你在部署期间创建资源的多个实例，例如，创建多个 NIC。 使用 *copy* 指定要创建的实例数：
+Azure Resource Manager 模板使用声明性 JSON 文件来定义环境。 可以阅读 [Azure Resource Manager 概述](../../azure-resource-manager/resource-group-overview.md)。 资源管理器模板可让你在部署期间创建资源的多个实例，例如，创建多个 NIC。 使用 *copy* 指定要创建的实例数：
 
 ```json
 "copy": {
@@ -180,5 +180,75 @@ Azure Resource Manager 模板使用声明性 JSON 文件来定义环境。 可�
 
 可以阅读[使用 Resource Manager 模板创建多个 NIC](../../virtual-network/virtual-network-deploy-multinic-arm-template.md) 的完整示例。
 
+## <a name="configure-guest-os-for-multiple-nics"></a>为多个 NIC 配置来宾 OS
+
+当为基于 Linux Guest-OS 的 VM 创建多个 NIC 时，需要创建额外的路由规则，仅限发送和接收属于特定 NIC 的流量。 否则，由于定义的默认路由，将无法正确处理属于 eth1 的流量。  
+
+
+### <a name="solution"></a>解决方案
+
+首先将两个路由表添加到文件 /etc/iproute2/rt_tables
+
+```bash
+echo "200 eth0-rt" >> /etc/iproute2/rt_tables
+echo "201 eth1-rt" >> /etc/iproute2/rt_tables
+```
+
+要使更改长久有效并在网络堆栈激活期间应用，需要更改 /etc/sysconfig/network-scipts/ifcfg-eth0 和 /etc/sysconfig/network-scipts/ifcfg-eth1 文件。
+将行“NM_CONTROLLED=yes”更改为“NM_CONTROLLED=no”。
+如果不执行此步骤，则添加的其他规则/路由将无法生效。
+ 
+下一步是扩展路由表。 为了使后续步骤更直观，我们假设进行了如下设置
+
+*路由*
+
+```bash
+default via 10.0.1.1 dev eth0 proto static metric 100
+10.0.1.0/24 dev eth0 proto kernel scope link src 10.0.1.4 metric 100
+10.0.1.0/24 dev eth1 proto kernel scope link src 10.0.1.5 metric 101
+168.63.129.16 via 10.0.1.1 dev eth0 proto dhcp metric 100
+169.254.169.254 via 10.0.1.1 dev eth0 proto dhcp metric 100
+```
+    
+*接口*
+
+```bash
+lo: inet 127.0.0.1/8 scope host lo
+eth0: inet 10.0.1.4/24 brd 10.0.1.255 scope global eth0    
+eth1: inet 10.0.1.5/24 brd 10.0.1.255 scope global eth1
+```
+    
+    
+使用上述信息，即可以 root 身份创建下列附加文件
+
+*   /etc/sysconfig/network-scripts/rule-eth0
+*   /etc/sysconfig/network-scripts/route-eth0
+*   /etc/sysconfig/network-scripts/rule-eth1
+*   /etc/sysconfig/network-scripts/route-eth1
+
+每个文件的内容如下所示
+```bash
+cat /etc/sysconfig/network-scripts/rule-eth0
+from 10.0.1.4/32 table eth0-rt
+to 10.0.1.4/32 table eth0-rt
+
+cat /etc/sysconfig/network-scripts/route-eth0
+10.0.1.0/24 dev eth0 table eth0-rt
+default via 10.0.1.1 dev eth0 table eth0-rt
+
+cat /etc/sysconfig/network-scripts/rule-eth1
+from 10.0.1.5/32 table eth1-rt
+to 10.0.1.5/32 table eth1-rt
+
+cat /etc/sysconfig/network-scripts/route-eth1
+10.0.1.0/24 dev eth1 table eth1-rt
+default via 10.0.1.1 dev eth1 table eth1-rt
+```
+
+创建并填充文件后，需要重启网络服务 `systemctl restart network`
+
+现在即可从外部连接 eth0 或 eth1
+
 ## <a name="next-steps"></a>后续步骤
 尝试创建具有多个 NIC 的 VM 时，请查看 [Lnux VM 大小](sizes.md)。 注意每个 VM 大小支持的 NIC 数目上限。 
+

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 9e40eba285aeb1cce6b77311d1b69a6b96967a0b
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: f1f57404734ad6dc77250b180a9c334de60f0af3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="data-management-gateway"></a>数据管理网关
@@ -281,7 +281,7 @@ ms.lasthandoff: 08/22/2017
     ```PowerShell
     .\GatewayAutoUpdateToggle.ps1  -on  
     ```
-[[适用于多节点高度可用的可扩展网关（预览）](data-factory-data-management-gateway-high-availability-scalability.md)]
+[对于多节点高度可用且可伸缩的网关（预览）](data-factory-data-management-gateway-high-availability-scalability.md)
 1. 在网关计算机上启动 Windows PowerShell。
 2. 切换到 C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript 文件夹。
 3. 运行以下命令以关闭自动更新功能（禁用）。   
@@ -294,154 +294,154 @@ ms.lasthandoff: 08/22/2017
 
     ```PowerShell
     .\GatewayAutoUpdateToggle.ps1  -on -AuthKey <your auth key> 
+    ```
 
+## <a name="configuration-manager"></a>配置管理器
+安装网关后，可以通过以下方式之一来启动数据管理网关配置管理器：
 
-## Configuration Manager
-Once you install the gateway, you can launch Data Management Gateway Configuration Manager in one of the following ways:
+1. 在“搜索”窗口中，键入“数据管理网关”，以访问此实用程序。
+2. 在文件夹 **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** 中查找可执行文件 **ConfigManager.exe**
 
-1. In the **Search** window, type **Data Management Gateway** to access this utility.
-2. Run the executable **ConfigManager.exe** in the folder: **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared**
+### <a name="home-page"></a>主页
+在主页中可执行以下操作：
 
-### Home page
-The Home page allows you to do the following actions:
+* 查看网关状态（连接到云服务等）。
+* 从门户中使用密钥进行**注册**。
+* **停止**和启动网关计算机上的“数据管理网关主机服务”。
+* **计划更新**发生在一天中的某个特定时间。
+* 查看网关的**上次更新日期**。
 
-* View status of the gateway (connected to the cloud service etc.).
-* **Register** using a key from the portal.
-* **Stop** and start the **Data Management Gateway Host service** on the gateway machine.
-* **Schedule updates** at a specific time of the days.
-* View the date when the gateway was **last updated**.
+### <a name="settings-page"></a>“设置”页
+在“设置”页中可执行以下操作：
 
-### Settings page
-The Settings page allows you to do the following actions:
+* 查看、更改和导出网关所用的**证书**。 此证书用于加密数据源凭据。
+* 更改终结点的 **HTTPS 端口**。 网关打开一个端口，用于设置数据源凭据。
+* 终结点的**状态**
+* “SSL 证书”视图可用于门户与网关之间的 SSL 通信，从而为数据源设置凭据。  
 
-* View, change, and export **certificate** used by the gateway. This certificate is used to encrypt data source credentials.
-* Change **HTTPS port** for the endpoint. The gateway opens a port for setting the data source credentials.
-* **Status** of the endpoint
-* View **SSL certificate** is used for SSL communication between portal and the gateway to set credentials for data sources.  
+### <a name="diagnostics-page"></a>“诊断”页
+在“诊断”页中可执行以下操作：
 
-### Diagnostics page
-The Diagnostics page allows you to do the following actions:
+* 启用详细“日志记录”、在事件查看器中查看日志，并在出现故障时会日志发送给 Microsoft。
+* **测试连接**到数据源。  
 
-* Enable verbose **logging**, view logs in event viewer, and send logs to Microsoft if there was a failure.
-* **Test connection** to a data source.  
+### <a name="help-page"></a>帮助页
+“帮助”页显示以下信息：  
 
-### Help page
-The Help page displays the following information:  
+* 网关的简短描述
+* 版本号
+* 联机帮助、隐私声明以及许可证协议的链接。  
 
-* Brief description of the gateway
-* Version number
-* Links to online help, privacy statement, and license agreement.  
+## <a name="monitor-gateway-in-the-portal"></a>在门户中监视网关
+在 Azure 门户中，可以查看网关计算机的资源使用率（CPU、内存、网络（进/出）等）近乎实时的快照。  
 
-## Monitor gateway in the portal
-In the Azure portal, you can view near-real time snapshot of resource utilization (CPU, memory, network(in/out), etc.) on a gateway machine.  
+1. 在 Azure 门户中，导航到“数据工厂”主页，并单击“链接服务”磁贴。 
 
-1. In Azure portal, navigate to the home page for your data factory, and click **Linked services** tile. 
+    ![数据工厂主页](./media/data-factory-data-management-gateway/monitor-data-factory-home-page.png) 
+2. 在“链接服务”页中选择“网关”。
 
-    ![Data factory home page](./media/data-factory-data-management-gateway/monitor-data-factory-home-page.png) 
-2. Select the **gateway** in the **Linked services** page.
+    ![“链接服务”页](./media/data-factory-data-management-gateway/monitor-linked-services-blade.png)
+3. 在“网关”页中，可查看网关的内存和 CPU 使用情况。
 
-    ![Linked services page](./media/data-factory-data-management-gateway/monitor-linked-services-blade.png)
-3. In the **Gateway** page, you can see the memory and CPU usage of the gateway.
-
-    ![CPU and memory usage of gateway](./media/data-factory-data-management-gateway/gateway-simple-monitoring.png) 
-4. Enable **Advanced settings** to see more details such as network usage.
+    ![网关的 CPU 和内存使用情况](./media/data-factory-data-management-gateway/gateway-simple-monitoring.png) 
+4. 启用“高级设置”以查看网络使用情况等更多详细信息。
     
-    ![Advanced monitoring of gateway](./media/data-factory-data-management-gateway/gateway-advanced-monitoring.png)
+    ![网关的高级监视](./media/data-factory-data-management-gateway/gateway-advanced-monitoring.png)
 
-The following table provides descriptions of columns in the **Gateway Nodes** list:  
+下表介绍“网关节点”列表中的列：  
 
-Monitoring Property | Description
+监视属性 | 说明
 :------------------ | :---------- 
-Name | Name of the logical gateway and nodes associated with the gateway. Node is an on-premises Windows machine that has the gateway installed on it. For information on having more than one node (up to four nodes) in a single logical gateway, see [Data Management Gateway - high availability and scalability](data-factory-data-management-gateway-high-availability-scalability.md).    
-Status | Status of the logical gateway and the gateway nodes. Example: Online/Offline/Limited/etc. For information about these statuses, See [Gateway status](#gateway-status) section. 
-Version | Shows the version of the logical gateway and each gateway node. The version of the logical gateway is determined based on version of majority of nodes in the group. If there are nodes with different versions in the logical gateway setup, only the nodes with the same version number as the logical gateway function properly. Others are in the limited mode and need to be manually updated (only in case auto-update fails). 
-Available memory | Available memory on a gateway node. This value is a near real-time snapshot. 
-CPU utilization | CPU utilization of a gateway node. This value is a near real-time snapshot. 
-Networking (In/Out) | Network utilization of a gateway node. This value is a near real-time snapshot. 
-Concurrent Jobs (Running/ Limit) | Number of jobs or tasks running on each node. This value is a near real-time snapshot. Limit signifies the maximum concurrent jobs for each node. This value is defined based on the machine size. You can increase the limit to scale up concurrent job execution in advanced scenarios, where CPU/memory/network is under-utilized, but activities are timing out. This capability is also available with a single-node gateway (even when the scalability and availability feature is not enabled).  
-Role | There are two types of roles in a multi-node gateway – Dispatcher and worker. All nodes are workers, which means they can all be used to execute jobs. There is only one dispatcher node, which is used to pull tasks/jobs from cloud services and dispatch them to different worker nodes (including itself).
+名称 | 逻辑网关和与网关关联的节点的名称。 节点是已在其上安装网关的本地 Windows 计算机。 有关在单个逻辑网关中采用多个节点（最多 4 个）的信息，请参阅[数据管理网关 - 高可用性和可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)。    
+状态 | 逻辑网关和网关节点的状态。 示例：联机/脱机/受限等。有关这些状态的信息，请参阅[网关状态](#gateway-status)部分。 
+版本 | 显示逻辑网关和每个网关节点的版本。 逻辑网关的版本根据组中多数节点的版本而决定。 如果逻辑网关安装程序中的节点版本不同，只有与逻辑网关的版本号相同的节点能正常运行。 其他节点将处于受限模式，需要手动进行更新（仅当自动更新失败时）。 
+可用内存 | 网关节点上的可用内存。 此值为近实时快照。 
+CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。 
+网络（进/出） | 网关节点的网络利用率。 此值为近实时快照。 
+并发作业数（运行中/上限） | 每个节点上运行的作业或任务数。 此值为近实时快照。 上限表示每个节点的最大并发作业数。 此值根据计算机大小定义而来。 在 CPU/内存/网络未充分利用，但活动即将超时的高级方案中，可提高上限来增强并发作业执行。此功能也适用于单节点网关（即便未启用可伸缩性和可用性功能）。  
+角色 | 多节点网关中有两种角色 – 调度程序和辅助角色。 所有节点均为辅助角色，表示它们可用于执行作业。 只有一个调度程序节点，用于从云服务中请求任务/作业，并分派到其他辅助节点（包括其本身）。
 
-In this page, you see some settings that make more sense when there are two or more nodes (scale out scenario) in the gateway. See [Data Management Gateway - high availability and scalability](data-factory-data-management-gateway-high-availability-scalability.md) for details about setting up a multi-node gateway.
+在此页面，你将发现当网关中存在两个或以上节点（扩展方案）时，某些设置更为好用。 有关如何设置多节点网关的详细信息，请参阅[数据管理网关 - 高可用性和可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)。
 
-### Gateway status
-The following table provides possible statuses of a **gateway node**: 
+### <a name="gateway-status"></a>网关状态
+下表提供网关节点可能的状态： 
 
-Status  | Comments/Scenarios
+状态  | 注释/方案
 :------- | :------------------
-Online | Node connected to Data Factory service.
-Offline | Node is offline.
-Upgrading | The node is being auto-updated.
-Limited | Due to Connectivity issue. May be due to HTTP port 8050 issue, service bus connectivity issue, or credential sync issue. 
-Inactive | Node is in a configuration different from the configuration of other majority nodes.<br/><br/> A node can be inactive when it cannot connect to other nodes. 
+联机 | 节点连接到数据工厂服务。
+脱机 | 节点处于脱机状态。
+正在升级 | 节点正在进行自动更新。
+受限制 | 由于连接问题而受限。 可能由于 HTTP 端口 8050 问题、服务总线连接问题或凭据同步问题而受限。 
+非活动 | 节点的配置与其他多数节点的配置不同。<br/><br/> 节点在无法与其他节点连接时可能处于非活动状态。 
 
 
-The following table provides possible statuses of a **logical gateway**. The gateway status depends on statuses of the gateway nodes. 
+下表提供逻辑网关可能的状态。 网关状态取决于网关节点的状态。 
 
-Status | Comments
+状态 | 注释
 :----- | :-------
-Needs Registration | No node is yet registered to this logical gateway
-Online | Gateway Nodes are online
-Offline | No node in online status.
-Limited | Not all nodes in this gateway are in healthy state. This status is a warning that some node might be down! <br/><br/>Could be due to credential sync issue on dispatcher/worker node. 
+需注册 | 尚未向此逻辑网关注册任何节点
+联机 | 网关节点处于联机状态
+脱机 | 没有节点处于联机状态。
+受限制 | 此网关中并非所有节点都处于运行正常状态。 此状态是部分节点可能出现故障的警告！ <br/><br/>可能是由于调度程序/辅助角色节点上的凭据同步问题所导致。 
 
-## Scale up gateway
-You can configure the number of **concurrent data movement jobs** that can run on a node to scale up the capability of moving data between on-premises and cloud data stores. 
+## <a name="scale-up-gateway"></a>向上扩展网关
+可配置可在单个节点上运行的并发数据移动作业数，提升在本地与云数据存储之间移动数据的能力。 
 
-When the available memory and CPU are not utilized well, but the idle capacity is 0, you should scale up by increasing the number of concurrent jobs that can run on a node. You may also want to scale up when activities are timing out because the gateway is overloaded. In the advanced settings of a gateway node, you can increase the maximum capacity for a node. 
+如果可用内存和 CPU 未充分利用，但空闲容量为 0，应通过增加节点上可运行的并发作业数进行纵向扩展。 此外，活动因网关重载而超时时，也建议向上扩展。 在网关节点的高级设置中，可以增加节点的最大容量。 
   
 
-## Troubleshooting gateway issues
-See [Troubleshooting gateway issues](data-factory-troubleshoot-gateway-issues.md) article for information/tips for troubleshooting issues with using the data management gateway.  
+## <a name="troubleshooting-gateway-issues"></a>网关问题疑难解答
+请参阅[网关问题疑难解答](data-factory-troubleshoot-gateway-issues.md)一文，了解在解决使用数据管理网关时遇到的问题的相关信息/提示。  
 
-## Move gateway from one machine to another
-This section provides steps for moving gateway client from one machine to another machine.
+## <a name="move-gateway-from-one-machine-to-another"></a>将网关从一台计算机移动到另一台计算机
+本部分提供将网关客户端从一台计算机移动到另一台计算机的步骤。
 
-1. In the portal, navigate to the **Data Factory home page**, and click the **Linked Services** tile.
+1. 在门户中，导航到“数据工厂主页”，并单击“链接服务”磁贴。
 
-    ![Data Gateways Link](./media/data-factory-data-management-gateway/DataGatewaysLink.png)
-2. Select your gateway in the **DATA GATEWAYS** section of the **Linked Services** page.
+    ![数据网关链接](./media/data-factory-data-management-gateway/DataGatewaysLink.png)
+2. 在“链接服务”页的“数据网关”部分选择网关。
 
-    ![Linked Services page with gateway selected](./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png)
-3. In the **Data gateway** page, click **Download and install data gateway**.
+    ![已选定网关的“链接服务”页](./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png)
+3. 在“数据网关”页中，单击“下载并安装数据网关”。
 
-    ![Download gateway link](./media/data-factory-data-management-gateway/DownloadGatewayLink.png)
-4. In the **Configure** page, click **Download and install data gateway**, and follow instructions to install the data gateway on the machine.
+    ![下载网关链接](./media/data-factory-data-management-gateway/DownloadGatewayLink.png)
+4. 在“配置”页中，单击“下载并安装数据网关”，并按照说明在计算机上安装数据网关。
 
-    ![Configure page](./media/data-factory-data-management-gateway/ConfigureBlade.png)
-5. Keep the **Microsoft Data Management Gateway Configuration Manager** open.
+    ![“配置”页](./media/data-factory-data-management-gateway/ConfigureBlade.png)
+5. 将“Microsoft 数据管理网关配置管理器”保持为打开状态。
 
-    ![Configuration Manager](./media/data-factory-data-management-gateway/ConfigurationManager.png)    
-6. In the **Configure** page in the portal, click **Recreate key** on the command bar, and click **Yes** for the warning message. Click **copy button** next to key text that copies the key to the clipboard. The gateway on the old machine stops functioning as soon you recreate the key.  
+    ![配置管理器](./media/data-factory-data-management-gateway/ConfigurationManager.png)    
+6. 在门户中的“配置”页中，单击命令栏上的“重新创建密钥”，并对警告消息单击“是”。 单击密钥文本旁边的“复制”按钮，将密钥复制到剪贴板。 重新创建密钥后，旧计算机上的网关立即停止工作。  
 
-    ![Recreate key](./media/data-factory-data-management-gateway/RecreateKey.png)
-7. Paste the **key** into text box in the **Register Gateway** page of the **Data Management Gateway Configuration Manager** on your machine. (optional) Click **Show gateway key** check box to see the key text.
+    ![重新创建密钥](./media/data-factory-data-management-gateway/RecreateKey.png)
+7. 在计算机上，将“密钥”粘贴到“数据管理网关配置管理器”的“注册网关”页的文本框中。 （可选）单击“显示网关密钥”复选框，以查看密钥文本。
 
-    ![Copy key and Register](./media/data-factory-data-management-gateway/CopyKeyAndRegister.png)
-8. Click **Register** to register the gateway with the cloud service.
-9. On the **Settings** tab, click **Change** to select the same certificate that was used with the old gateway, enter the **password**, and click **Finish**.
+    ![复制密钥和注册](./media/data-factory-data-management-gateway/CopyKeyAndRegister.png)
+8. 单击“注册”，以通过云服务注册网关。
+9. 在“设置”选项卡上，单击“更改”选择与旧网关一起使用的相同证书，输入**密码**，并单击“完成”。
 
-   ![Specify Certificate](./media/data-factory-data-management-gateway/SpecifyCertificate.png)
+   ![指定证书](./media/data-factory-data-management-gateway/SpecifyCertificate.png)
 
-   You can export a certificate from the old gateway by doing the following steps: launch Data Management Gateway Configuration Manager on the old machine, switch to the **Certificate** tab, click **Export** button and follow the instructions.
-10. After successful registration of the gateway, you should see the **Registration** set to **Registered** and **Status** set to **Started** on the Home page of the Gateway Configuration Manager.
+   可以通过以下步骤从旧网关导出证书：在旧计算机上启动数据管理网关配置管理器，切换到“证书”选项卡，单击“导出”按钮，并按照说明进行操作。
+10. 成功注册网关后，在网关配置管理器的主页上可看到“注册”设置为“已注册”且“状态”设置为“已启动”。
 
-## Encrypting credentials
-To encrypt credentials in the Data Factory Editor, do the following steps:
+## <a name="encrypting-credentials"></a>加密凭据
+若要在数据工厂编辑器中加密凭据，请执行以下步骤：
 
-1. Launch web browser on the **gateway machine**, navigate to [Azure portal](http://portal.azure.com). Search for your data factory if needed, open data factory in the **DATA FACTORY** page and then click **Author & Deploy** to launch Data Factory Editor.   
-2. Click an existing **linked service** in the tree view to see its JSON definition or create a linked service that requires a data management gateway (for example: SQL Server or Oracle).
-3. In the JSON editor, for the **gatewayName** property, enter the name of the gateway.
-4. Enter server name for the **Data Source** property in the **connectionString**.
-5. Enter database name for the **Initial Catalog** property in the **connectionString**.    
-6. Click **Encrypt** button on the command bar that launches the click-once **Credential Manager** application. You should see the **Setting Credentials** dialog box.
+1. 在“网关计算机”上启动 Web 浏览器，导航到 [Azure 门户](http://portal.azure.com)。 根据需要搜索数据工厂，打开“数据工厂”页中的数据工厂，并单击“作者和部署”，以启动数据工厂编辑器。   
+2. 单击树状视图中的某个现有“链接服务”以查看其 JSON 定义或创建需要数据管理网关的链接服务（例如：SQL Server 或 Oracle）。
+3. 在 JSON 编辑器中，对 **gatewayName** 属性输入网关名称。
+4. 在 **connectionString** 中，对“数据源”属性输入服务器名称。
+5. 在 **connectionString** 中，对“初始目录”属性输入数据库名称。    
+6. 单击单击命令栏上的“加密”按钮，启动只需单击一次的“凭据管理器”应用程序。 将显示“设置凭据”对话框。
 
-    ![Setting credentials dialog](./media/data-factory-data-management-gateway/setting-credentials-dialog.png)
-7. In the **Setting Credentials** dialog box, do the following steps:
-   1. Select **authentication** that you want the Data Factory service to use to connect to the database.
-   2. Enter name of the user who has access to the database for the **USERNAME** setting.
-   3. Enter password for the user for the **PASSWORD** setting.  
-   4. Click **OK** to encrypt credentials and close the dialog box.
-8. You should see a **encryptedCredential** property in the **connectionString** now.
+    ![“设置凭据”对话框](./media/data-factory-data-management-gateway/setting-credentials-dialog.png)
+7. 在“设置凭据”对话框框中，执行以下步骤：
+   1. 选择数据工厂服务连接数据库时所需的“身份验证”。
+   2. 对于“用户名”设置，输入有权访问数据库的用户的名称。
+   3. 对于“密码”设置，输入用户密码。  
+   4. 单击“确定”加密凭据并关闭对话框。
+8. 现在可以在 **connectionString** 中看到 **encryptedCredential** 属性。
 
     ```JSON
     {

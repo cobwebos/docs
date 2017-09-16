@@ -15,14 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 09/06/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: c95641fc6d20e2911e007d1974b9e2c2398b3133
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 737cfd5d1bbd3d55968d7fc0e67d94aff6ada5ea
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="run-sqoop-jobs-using-net-sdk-for-hadoop-in-hdinsight"></a>使用 HDInsight 中的 .NET SDK for Hadoop 运行 Sqoop 作业
@@ -46,7 +45,7 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 ## <a name="submit-a-sqoop-job"></a>提交 Sqoop 作业
 
 1. 在 Visual Studio 中创建 C# 控制台应用程序。
-2. 在 Visual Studio 包管理器控制台中，运行以下 Nuget 命令将包导入。
+2. 在 Visual Studio 包管理器控制台中，运行以下 NuGet 命令将包导入。
    
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 3. 在 Program.cs 文件中使用以下代码：
@@ -119,7 +118,7 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 * 批处理 - 在基于 Linux 的 HDInsight 上，如果在执行插入时使用 `-batch` 开关，Sqoop 将执行多次插入而不是批处理插入操作。
 
 ## <a name="next-steps"></a>后续步骤
-现在你已经学习了如何使用 Sqoop。 若要了解更多信息，请参阅以下文章：
+现在已经学习了如何使用 Sqoop。 若要了解更多信息，请参阅以下文章：
 
 * [将 Oozie 与 HDInsight 配合使用](hdinsight-use-oozie.md)：在 Oozie 工作流中使用 Sqoop 操作。
 * [使用 HDInsight 分析航班延误数据](hdinsight-analyze-flight-delay-data.md)：使用 Hive 分析航班延误数据，然后使用 Sqoop 将数据导出到 Azure SQL 数据库。

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/01/2017
+ms.date: 09/05/2017
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 521e5ed06c138bcd374913588f06a2e6c1e99963
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: 3291d545bc7a66ffa9b4845acd890a714cf84ef8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>用于 Azure Resource Manager 模板的比较函数
@@ -68,7 +68,7 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 
 ### <a name="example"></a>示例
 
-示例模板检查不同类型的值是否相等。 所有默认值都返回 True。
+下列[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/equals.json)检查不同类型的值是否相等。 所有默认值都返回 True。
 
 ```json
 {
@@ -140,8 +140,19 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 | checkArrays | Bool | True |
 | checkObjects | Bool | True |
 
+要使用 Azure CLI 部署此示例模板，请使用：
 
-以下示例结合使用 [not](resource-group-template-functions-logical.md#not) 和 equals。
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/equals.json
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/equals.json 
+```
+
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json)结合使用 [not](resource-group-template-functions-logical.md#not) 和 equals。
 
 ```json
 {
@@ -155,6 +166,7 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
             "value": "[not(equals(1, 2))]"
         }
     }
+}
 ```
 
 前述示例的输出为：
@@ -163,6 +175,17 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
+要使用 Azure CLI 部署此示例模板，请使用：
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json 
+```
 
 ## <a name="greater"></a>greater
 `greater(arg1, arg2)`
@@ -182,7 +205,7 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 
 ### <a name="example"></a>示例
 
-示例模板检查一个值是否大于另一个值。
+下列[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greater.json)检查一个值是否大于另一个值。
 
 ```json
 {
@@ -228,6 +251,17 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 | checkInts | Bool | False |
 | checkStrings | Bool | True |
 
+要使用 Azure CLI 部署此示例模板，请使用：
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greater.json
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greater.json 
+```
 
 ## <a name="greaterorequals"></a>greaterOrEquals
 `greaterOrEquals(arg1, arg2)`
@@ -247,7 +281,7 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 
 ### <a name="example"></a>示例
 
-示例模板检查一个值是否大于或等于另一个值。
+下列[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greaterorequals.json)检查一个值是否大于等于另一个值。
 
 ```json
 {
@@ -293,7 +327,17 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 | checkInts | Bool | False |
 | checkStrings | Bool | True |
 
+要使用 Azure CLI 部署此示例模板，请使用：
 
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json 
+```
 
 ## <a name="less"></a>less
 `less(arg1, arg2)`
@@ -313,7 +357,7 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 
 ### <a name="example"></a>示例
 
-示例模板检查一个值是否小于另一个值。
+下列[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/less.json)检查一个值是否小于另一个值。
 
 ```json
 {
@@ -359,6 +403,17 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 | checkInts | Bool | True |
 | checkStrings | Bool | False |
 
+要使用 Azure CLI 部署此示例模板，请使用：
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/less.json
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/less.json 
+```
 
 ## <a name="lessorequals"></a>lessOrEquals
 `lessOrEquals(arg1, arg2)`
@@ -378,7 +433,7 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 
 ### <a name="example"></a>示例
 
-示例模板检查一个值是否小于或等于另一个值。
+下列[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/lessorequals.json)检查一个值是否小于等于另一个值。
 
 ```json
 {
@@ -424,7 +479,17 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 | checkInts | Bool | True |
 | checkStrings | Bool | False |
 
+要使用 Azure CLI 部署此示例模板，请使用：
 
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json
+```
+
+要使用 PowerShell 部署此示例模板，请使用：
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json 
+```
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure Resource Manager 模板中各部分的说明，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。

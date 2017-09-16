@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: ad9174c47e1af8d5dba080ec82f2a56fbbf78782
+ms.translationtype: HT
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: cc8655e0bc65007cacf223ce6d7709291c609327
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="profiling-live-azure-web-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure Web 应用
@@ -25,12 +25,12 @@ ms.lasthandoff: 06/29/2017
 
 使用 [Azure Application Insights](app-insights-overview.md) 的探查工具确定实时 Web 应用程序中的每个方法花费了多长时间。 该工具会显示应用提供的实时请求的详细探查信息，并突出显示占用最多时间的“热路径”。 该工具会自动选择具有不同响应时间的示例。 该探查器使用多种技术来尽量降低开销。
 
-该探查器目前适用于 Azure 应用服务上运行的、至少处于基本定价层的 ASP.NET Web 应用。 
+该探查器目前适用于 Azure 应用服务上运行的、至少处于基本定价层的 ASP.NET Web 应用。
 
 <a id="installation"></a>
 ## <a name="enable-the-profiler"></a>启用探查器
 
-在代码中[安装 Application Insights](app-insights-asp-net.md)。 如果已安装，请确保使用的是最新版本。 （为此，请在解决方案资源管理器中，右键单击你的项目，然后选择“管理 NuGet 包”。 选择“更新”并更新所有包。）重新部署应用。
+在代码中[安装 Application Insights](app-insights-asp-net.md)。 如果已安装，请确保使用的是最新版本。 （为此，请在解决方案资源管理器中，右键单击项目，并选择“管理 NuGet 包”。 选择“更新”并更新所有包。）重新部署应用。
 
 *使用的是 ASP.NET Core？[请查看此文](#aspnetcore)。*
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 06/29/2017
 
 ![在“性能”边栏选项卡中，单击“配置”][performance-blade]
 
-配置有 Application Insights 的 Web 应用将在“配置”边栏选项卡中列出。 如果需要，根据说明来安装探查器代理。 如果尚无 Web 应用配置有 Application Insights，请单击“添加链接应用”。
+配置有 Application Insights 的 Web 应用会在“配置”边栏选项卡中列出。 如果需要，根据说明来安装探查器代理。 如果尚无 Web 应用配置有 Application Insights，请单击“添加链接应用”。
 
 使用“配置”边栏选项卡中的“启用探查器”或“禁用探查器”按钮控制所链接的所有 Web 应用上的探查器。
 
@@ -54,13 +54,13 @@ ms.lasthandoff: 06/29/2017
 
 ![为 Web 作业禁用探查器][disable-profiler-webjob]
 
-建议你在所有 Web 应用上都启用探查器以便尽快发现任何性能问题。
+建议在所有 Web 应用上都启用探查器以便尽快发现任何性能问题。
 
 如果使用 WebDeploy 将更改部署到 Web 应用程序，请确保排除 **App_Data** 文件夹，以防在部署期间将它删除。 否则，下一次将 Web 应用程序部署到 Azure 时，会删除探查器扩展文件。
 
 ### <a name="using-profiler-with-azure-vms-and-compute-resources-preview"></a>将探查器与 Azure VM 和计算资源一起使用（预览版）
 
-[在运行时为 Azure 应用服务启用 Application Insights](app-insights-azure-web-apps.md#run-time-instrumentation-with-application-insights) 后，该探查器将自动可用。 （如果已经为资源启用了 Application Insights，则可能需要通过“配置”向导更新到最新版本。）
+[在运行时为 Azure 应用服务启用 Application Insights](app-insights-azure-web-apps.md#run-time-instrumentation-with-application-insights) 后，该探查器会自动可用。 （如果已经为资源启用了 Application Insights，则可能需要通过“配置”向导更新到最新版本。）
 
 目前提供了[用于 Azure 计算资源的探查器的预览版本](https://go.microsoft.com/fwlink/?linkid=848155)。
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 06/29/2017
 
 默认的数据保留期为 5 天。 每天最多可以引入 10 GB。
 
-探查器服务不收取费用。 你的 Web 应用必须至少托管在应用服务的基本层中。
+探查器服务不收取费用。 Web 应用必须至少托管在应用服务的基本层中。
 
 ## <a name="viewing-profiler-data"></a>查看探查器数据
 
@@ -110,12 +110,12 @@ Microsoft 服务探查器结合使用采样方法和检测来分析应用程序�
 时间线视图中显示的调用堆栈是上述采样和检测的结果。 由于每个样本会捕获线程的整个调用堆栈，因此包含 .NET Framework 中的代码，以及引用的其他框架。
 
 ### <a id="jitnewobj"></a>对象分配 (`clr!JIT\_New or clr!JIT\_Newarr1`)
-`clr!JIT\_New and clr!JIT\_Newarr1` 是 .NET Framework 中的帮助器函数，用于从托管堆分配内存。 分配对象时，将调用 `clr!JIT\_New`。 分配对象数组时，将调用 `clr!JIT\_Newarr1`。 这两个函数通常速度很快，花费的时间相对较短。 如果你发现时间线中的 `clr!JIT\_New` 或 `clr!JIT\_Newarr1` 花费了很长时间，则可能表示代码分配了很多对象，从而消耗了大量的内存。
+`clr!JIT\_New and clr!JIT\_Newarr1` 是 .NET Framework 中的帮助器函数，用于从托管堆分配内存。 分配对象时，将调用 `clr!JIT\_New`。 分配对象数组时，将调用 `clr!JIT\_Newarr1`。 这两个函数通常速度很快，花费的时间相对较短。 如果发现时间线中的 `clr!JIT\_New` 或 `clr!JIT\_Newarr1` 花费了很长时间，则可能表示代码分配了很多对象，从而消耗了大量的内存。
 
 ### <a id="theprestub"></a>加载代码 (`clr!ThePreStub`)
 `clr!ThePreStub` 是 .NET Framework 中的帮助器函数，用于准备首次执行的代码。 这通常包括但不是限于 JIT（适时）编译。 对于每个 C# 方法，在进程的生存期内，最多只应调用 `clr!ThePreStub` 一次。
 
-如果你发现 `clr!ThePreStub` 针对某个请求花费了很长的时间，则表示该请求是该方法执行的第一个请求，因此 .NET Framework 运行时加载该方法所花费的时间很长。 可以考虑在用户访问该代码部分之前预热执行该代码部分的进程，或者考虑在程序集中运行 NGen。
+如果发现 `clr!ThePreStub` 针对某个请求花费了很长的时间，则表示该请求是该方法执行的第一个请求，因此 .NET Framework 运行时加载该方法所花费的时间很长。 可以考虑在用户访问该代码部分之前预热执行该代码部分的进程，或者考虑在程序集中运行 NGen。
 
 ### <a id="lockcontention"></a>锁争用（`clr!JITutil\_MonContention` 或 `clr!JITutil\_MonEnterWorker`）
 `clr!JITutil\_MonContention` 或 `clr!JITutil\_MonEnterWorker` 指示当前线程正在等待释放某个锁。 执行 C# 锁语句、调用 Monitor.Enter 方法或者结合 MethodImplOptions.Synchronized 属性调用某个方法时，通常会显示这种状态。 如果线程 A 获取了某个锁，而线程 B 在线程 A 释放该锁之前尝试获取同一个锁，则通常就会发生锁争用。
@@ -132,7 +132,7 @@ Microsoft 服务探查器结合使用采样方法和检测来分析应用程序�
 SqlCommand.Execute 等方法指示代码正在等待某个数据库操作完成。
 
 ### <a id="await"></a>等待 (`AWAIT\_TIME`)
-`AWAIT\_TIME` 指示代码正在等待另一个任务完成。 这种情况通常发生在 C# 'await' 语句上。 当代码执行 C# 'await' 时，线程将会回退并将控制权返回给线程池，此时，不会有任何阻塞的线程等待 'await' 完成。 但是，从逻辑上讲，执行 await 的线程将被“阻塞”，等待该操作完成。 `AWAIT\_TIME` 指示等待任务完成的阻塞时间。
+`AWAIT\_TIME` 指示代码正在等待另一个任务完成。 这种情况通常发生在 C# 'await' 语句上。 当代码执行 C# 'await' 时，线程会回退并将控制权返回给线程池，此时，不会有任何阻塞的线程等待 'await' 完成。 但是，从逻辑上讲，执行 await 的线程会被“阻塞”，等待该操作完成。 `AWAIT\_TIME` 指示等待任务完成的阻塞时间。
 
 ### <a id="block"></a>阻塞时间
 `BLOCKED_TIME` 指示代码正在等待另一个资源可用，例如，等待某个同步对象、等待线程可用，或等待某个请求完成。
@@ -154,7 +154,7 @@ CPU 正忙于执行指令。
 
 ### <a name="how-can-i-know-whether-application-insights-profiler-is-running"></a>如何确定 Application Insights 探查器是否正在运行？
 
-探查器在 Web 应用中以连续 Web 作业的形式运行。 可以在 https://portal.azure.com 中打开 Web 应用资源，然后在“Web 作业”边栏选项卡中查看“ApplicationInsightsProfiler”状态。 如果探查器未运行，请打开“日志”查看详细信息。
+探查器在 Web 应用中以连续 Web 作业的形式运行。 可以在 https://portal.azure.com 中打开 Web 应用资源，并在“Web 作业”边栏选项卡中查看“ApplicationInsightsProfiler”状态。 如果探查器未运行，请打开“日志”查看详细信息。
 
 ### <a name="why-cant-i-find-any-stack-examples-even-though-the-profiler-is-running"></a>为何即使运行了探查器，也找不到任何堆栈示例？
 
@@ -172,13 +172,13 @@ CPU 正忙于执行指令。
 
 启用 Application Insights 探查器时，会禁用 Azure 服务探查器代理。
 
-### <a id="double-counting"></a>并行线程的重复计数
+### <a id="double-counting"></a>并行线程的重复计算
 
 在某些情况下，堆栈查看器中的总时间指标大于请求的实际持续时间。
 
 如果与请求关联的两个或更多个线程并行运行，则可能会发生这种情况。 这样，总线程时间就会超过已用时间。 在许多情况下，一个线程可能会等待另一个线程完成。 查看器会尝试检测此数据并省略不相关的等待时间，但是，与其省略关键的信息，不如显示过多的信息。  
 
-如果你看到跟踪中出现并行线程，需要确定哪些线程处于等待状态，以便可以确定请求的关键路径。 在大多数情况下，快速进入等待状态的线程只是在等待其他线程完成。 可以专注于其他线程，忽略等待中线程花费的时间。
+如果看到跟踪中出现并行线程，需要确定哪些线程处于等待状态，以便可以确定请求的关键路径。 在大多数情况下，快速进入等待状态的线程只是在等待其他线程完成。 可以专注于其他线程，忽略等待中线程花费的时间。
 
 ### <a id="issue-loading-trace-in-viewer"></a>无探查数据
 

@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/25/2017
+ms.date: 09/06/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: c49f185db5a035f70a711bf309b973182d94a2b0
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 5c42b3e519781fa25fe92b286fa65898a7aac173
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>将用于 IntelliJ 的 HDInsight 工具与 Hortonworks 沙盒配合使用
@@ -40,9 +40,9 @@ ms.lasthandoff: 08/22/2017
 
 - [Java 开发人员工具包 (JDK) 1.8 或更高版本](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。 JDK 是用于 IntelliJ 的 Azure 工具包所必需的。
 
-- [IntelliJ IDEA 社区版](https://www.jetbrains.com/idea/download)，带 [Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) 插件和[用于 IntelliJ 的 Azure 工具包](../azure-toolkit-for-intellij.md)插件。 用于 IntelliJ 的 HDInsight 工具作为 Azure Toolkit for IntelliJ 的一部分提供。 
+- [IntelliJ IDEA 社区版](https://www.jetbrains.com/idea/download)，带 [Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) 插件和[用于 IntelliJ 的 Azure 工具包](../azure-toolkit-for-intellij.md)插件。 用于 IntelliJ 的 Azure 工具包随附了用于 IntelliJ 的 HDInsight 工具。 
 
-  若要安装插件，请执行以下操作：
+  若要安装插件，请执行以下各项操作：
 
   1. 打开 IntelliJ IDEA。
   2. 在“欢迎”屏幕上，依次选择“配置”、“插件”。
@@ -55,7 +55,7 @@ ms.lasthandoff: 08/22/2017
 
 本部分使用 IntelliJ IDEA 创建示例 Scala 项目。 在下一部分，用户在提交项目之前，需将 IntelliJ IDEA 链接到 Hortonworks 沙盒（仿真程序）。
 
-1. 从工作站打开 IntelliJ IDEA。 在“新建项目”对话框中执行以下操作：
+1. 从工作站打开 IntelliJ IDEA。 在“新建项目”对话框中执行以下步骤：
 
    a. 选择“HDInsight” > “Spark on HDInsight (Scala)”
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 08/22/2017
 
 2. 选择“下一步”。
 
-3. 在接下来显示的“新建项目”对话框中执行以下操作：
+3. 在接下来显示的“新建项目”对话框中执行以下步骤：
 
     ![创建 IntelliJ Scala 项目属性](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
 
@@ -135,7 +135,7 @@ ms.lasthandoff: 08/22/2017
 
 必须先有 IntelliJ 应用程序，才能链接到 Hortonworks 沙盒（仿真器）。
 
-若要链接到仿真器，请执行以下操作：
+若要链接到仿真器，请执行以下步骤：
 
 1. 在 IntelliJ 中打开项目。
 

@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/26/2017
+ms.date: 09/06/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: 13d17083bbe26fa9745ce4c5fef9f56859243c2e
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 342e29b009f51f7d1e9c3134a69cab6e30726bcd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/10/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="use-apache-phoenix-with-linux-based-hbase-clusters-in-hdinsight"></a>将 Apache Phoenix 与 HDinsight 中基于 Linux 的 HBase 群集配合使用
@@ -35,7 +34,7 @@ ms.lasthandoff: 06/10/2017
 [SQLLine](http://sqlline.sourceforge.net/) 是用于执行 SQL 的命令行实用工具。
 
 ### <a name="prerequisites"></a>先决条件
-在使用 SQLLine 之前，必须先准备好以下各项：
+使用 SQLLine 之前，必须先准备好以下各项：
 
 * **HDInsight 中的 HBase 群集**。 有关预配 HBase 群集的信息，请参阅 [HDInsight 中的 Apache HBase 入门][hdinsight-hbase-get-started]。
 * **通过远程桌面协议连接到 HBase 群集**。 有关说明，请参阅[使用 Azure 门户在 HDInsight 中管理 Hadoop 群集][hdinsight-manage-portal]。
@@ -45,7 +44,7 @@ ms.lasthandoff: 06/10/2017
 **找出 Zookeeper 主机名**
 
 1. 通过浏览到 **https://<ClusterName>.azurehdinsight.net** 打开 Ambari。
-2. 输入 HTTP（群集）用户名和密码以登录。
+2. 输入 HTTP（群集）用户名和密码进行登录。
 3. 单击左侧菜单中的 **ZooKeeper**。 随即列出三个 **ZooKeeper 服务器**。
 4. 单击列出的其中一个 **ZooKeeper 服务器**。 在“摘要”窗格中，找到**主机名**。 它类似于 *zk1 jdolehb.3lnng4rcvp5uzokyktxs4a5dhd.bx.internal.cloudapp.net*。
 
@@ -72,7 +71,7 @@ ms.lasthandoff: 06/10/2017
 有关详细信息，请参阅 [SQLLine 手册](http://sqlline.sourceforge.net/#manual)和 [Phoenix 语法](http://phoenix.apache.org/language/index.html)。
 
 ## <a name="next-steps"></a>后续步骤
-在本文中，你已了解如何在 HDInsight 中使用 Apache Phoenix。  若要了解更多信息，请参阅以下文章：
+在本文中，已了解如何在 HDInsight 中使用 Apache Phoenix。  若要了解更多信息，请参阅以下文章：
 
 * [HDInsight HBase 概述][hdinsight-hbase-overview]：HBase 是构建于 Hadoop 上的 Apache 开源 NoSQL 数据库，用于为大量非结构化和半结构化数据提供随机访问和高度一致性。
 * [在 Azure 虚拟网络上设置 HBase 群集][hdinsight-hbase-provision-vnet]：通过虚拟网络集成，可将 HBase 群集部署到应用程序所在的虚拟网络，以便应用程序直接与 HBase 进行通信。

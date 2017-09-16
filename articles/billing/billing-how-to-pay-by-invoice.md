@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/14/2017
+ms.date: 08/30/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: edbeba95898a41e645b61aeaaec1fd897afadd61
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: 9742187d2739b2d2d3b2073646dd6d7002898009
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>提交用发票为 Azure 订阅付款的请求
@@ -35,17 +35,20 @@ ms.lasthandoff: 07/18/2017
 1. 登录到 [Azure 门户](https://portal.azure.com/)。 选择“帮助+支持” > “新建支持请求”。
 
     ![“帮助和支持”按钮](./media/billing-how-to-pay-by-invoice/helpandsupport.png)
+
 1. 选择“计费”作为问题类型，选择要用发票付款的订阅，选择支持计划，并选择“下一步”。
-1. 在“问题”边栏选项卡的“问题类型”框中，选择“用发票付款”。
-1. 在“详细信息”框中输入以下信息，然后选择“下一步”。
+
+1. 在“问题类型”框中选择“通过发票付款”。
+
+1. 在“详细信息”框中输入以下信息，并选择“下一步”。
 
     * 公司名称
     * 帐单地址
     * [帐户管理员的电子邮件地址](billing-add-change-azure-subscription-administrator.md#check-the-account-administrator-of-the-subscription)
 
-1. 验证联系人信息和首选联系方法，然后单击“创建”。
+1. 验证联系人信息和首选联系方法，并单击“创建”。
 
-如果由于你所需的信用额度，我们需要运行信用检查，我们会发送给你信用检查应用程序。 提交该应用程序后，信用应用程序可能需要 5-7 天的时间进行处理。
+如果由于所需的信用额度，我们需要运行信用检查，我们会发送给你信用检查应用程序。 提交该应用程序后，信用应用程序可能需要 5-7 天的时间进行处理。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 

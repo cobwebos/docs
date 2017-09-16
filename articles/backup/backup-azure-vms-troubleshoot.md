@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: trinadhk;markgal;jpallavi;
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: dbd70bdbb17d99c5025018e76ea756b1b1528a3e
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 2f74637fe9887a9a1afbb32647d3fa98b9f88761
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 虚拟机备份疑难解答
@@ -33,6 +33,7 @@ ms.lasthandoff: 08/23/2017
 ## <a name="backup"></a>备份
 | 错误详细信息 | 解决方法 |
 | --- | --- |
+| 不支持指定的磁盘配置。请按照 http://go.microsoft.com/fwlink/?LinkId=808978 中的步骤解决警报，或联系 Microsoft 支持部门以获得帮助。| 当前 Azure 备份不支持大于 1023 GB 的磁盘大小。 请拆分磁盘，确保磁盘大小小于此限制。 要拆分磁盘，需要将数据从大于 1023 GB 的磁盘复制到新创建的小于 1023 GB 的磁盘。 |
 | 无法执行该操作，因为 VM 不再存在。 - 停止保护虚拟机，无需删除备份数据。 在 http://go.microsoft.com/fwlink/?LinkId=808124 获取更多详细信息 |当主 VM 已删除，而备份策略仍继续查找用于备份的 VM 时，会发生这种情况。 若要修复此错误，请执行以下操作： <ol><li> 使用相同的名称和相同的资源组名称 [云服务名称] 重新创建虚拟机，<br>（或者）</li><li> 停止保护虚拟机，删除或不删除备份数据。 [更多详细信息](http://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |
 | 由于虚拟机上无网络连接，快照操作失败 - 请确保 VM 具有网络访问权限。 要成功进行快照操作，请将 Azure 数据中心 IP 范围加入允许列表，或设置代理服务器用于网络访问。 有关更多详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=800034。 如果已经在使用代理服务器，请确保代理服务器设置配置正确 | 拒绝虚拟机上的出站 Internet 连接时，会引发此错误。 VM 快照扩展需要 Internet 连接才可拍摄虚拟机基础磁盘的快照。 [详细了解](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine)如何解决由阻止网络访问引起的快照操作问题。 |
 | VM 代理无法与 Azure 备份服务进行通信。 - 确保 VM 具有网络连接、VM 代理为最新版且正常运行。 有关更多详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=800034 |如果 VM 代理出现问题，或以某种方式阻止了对 Azure 基础结构的网络访问，则会引发此错误。 [详细了解](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vm-agent-unable-to-communicate-with-azure-backup)如何调试 VM 快照问题。<br> 如果 VM 代理未导致任何问题，则重启 VM。 有时，VM 状态不正确可能会导致问题，而重启 VM 则会重置此“错误状态”。 |

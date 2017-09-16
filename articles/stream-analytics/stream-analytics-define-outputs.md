@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 91ee74f01b2e84244245dbe43408589f04af6338
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 52d131384c61b57d31873530304c644d6e9c11f1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="stream-analytics-outputs-options-for-storage-analysis"></a>流分析输出：存储、分析选项
@@ -302,7 +302,7 @@ Datetime | String | String |  Datetime | String
 | 分隔符 |仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
-[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 是一种完全托管的 NoSQL 文档数据库服务，提供针对无架构数据的查询和事务、可预测且可靠的性能，实现快速开发。
+[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 是一种分布全球的多模型数据库服务，它提供全球范围内不设限的弹性缩放、丰富查询和自动索引（经由与构架无关的数据模型）、可靠的低延迟及行业领先的综合 SLA。
 
 以下列表详细介绍了用于创建 Azure Cosmos DB 输出的属性名称和属性。
 

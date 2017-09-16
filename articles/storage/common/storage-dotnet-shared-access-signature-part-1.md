@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/18/2017
 ms.author: marsma
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: a753fd481c9f91d94b6a2bd3633142e2dddedaec
+ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
+ms.openlocfilehash: 1c80229e2e5ec0c4ddf1f66099fa00ef145ec2ce
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS)

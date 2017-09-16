@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 181ed544ae4697753490642fea8eef636322a114
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 3365bc81b17e0225652504a71d3aff42a399ce67
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="reprotect-from-azure-to-an-on-premises-site"></a>在本地站点中重新保护 Azure 上的虚拟机
@@ -226,4 +226,36 @@ To replicate back to on-premises, you will need a failback policy. This policy g
 * 如果尝试故障回复到备用 vCenter，请确保已发现新 vCenter 和主目标服务器。 一种典型的症状是，“重新保护”对话框中显示数据存储不可访问/不可见。
 
 * 作为物理本地服务器保护的 Windows Server 2008 R2 SP1 服务器无法从 Azure 故障回复到本地站点。
+
+### <a name="common-error-codes"></a>常见错误代码
+
+#### <a name="error-code-95226"></a>错误代码 95226
+
+重新保护失败，因为 Azure 虚拟机无法访问本地配置服务器。
+
+发生条件 
+1. Azure 虚拟机无法访问本地配置服务器，因此无法发现，也无法向配置服务器注册。 
+2. 需要在 Azure 虚拟机上运行以与本地配置服务器通信的 InMage Scout 应用程序服务，可能在故障转移之后未能运行。
+
+解决方法
+1. 需要确保已配置 Azure 虚拟机网络，以便虚拟机能与本地配置服务器通信。 要执行此操作，请将站点到站点 VPN 设置回本地数据中心，或在 Azure 虚拟机的虚拟网络上配置具有私有对等的 ExpressRoute 连接。 
+2. 如果已配置网络以允许 Azure 虚拟机与本地配置服务器通信，请登录虚拟机，然后检查“InMage Scout 应用程序服务”。 如果发现 InMage Scout 应用程序服务未运行，请手动启动该服务，并确保服务启动类型设置为“自动”。
+
+### <a name="error-code-78052"></a>错误代码 78052
+重新保护失败，出现错误消息：“无法完成对虚拟机的保护”。
+
+发生此错误的原因有两个
+1. 要重新保护的虚拟机为 Windows Server 2016。 故障回复当前不支持此操作系统，但很快将给予支持。
+2. 故障回复到的主目标服务器上已有同名虚拟机。
+
+要解决此问题，可在另一台主机上选择另一个主目标服务器，以便重新保护在该主机上创建计算机，从而确保名称不发生冲突。 还可以将主目标 vMotion 到另一台主机，这样就不会发生名称冲突。
+
+### <a name="error-code-78093"></a>错误代码 78093
+
+VM 未运行，它处于挂起状态或无法访问。
+
+要将故障转移的虚拟机重新保护回本地，需运行 Azure 虚拟机。 这样做的目的是向本地配置服务器注册移动服务，并通过与进程服务器通信来启动复制。 如果计算机位于错误的网络中或者未运行（处于挂起或关闭状态），则配置服务器无法访问虚拟机中的移动服务，无法开始重新保护。 可以重启虚拟机，使其重新与本地通信。 启动 Azure 虚拟机后，重启重新保护作业
+
+
+
 

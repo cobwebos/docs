@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.date: 08/31/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 207c53924863eb51ee369fe46d5ad12fb1905c53
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: cc8a3e7f2a907b1eea4ecf39df2b291b0fb8b207
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>使用 Azure 资源管理器部署模型配置强制隧道
@@ -52,11 +52,11 @@ ms.lasthandoff: 08/03/2017
 
 * 每个虚拟网络子网具有内置的系统路由表。 系统路由表具有以下三组路由：
   
-  * **本地 VNet 路由：**直接路由到同一个虚拟网络中的目标 VM。
-  * **本地路由：**路由到 Azure VPN 网关。
+  * 本地 VNet 路由：直接路由到同一个虚拟网络中的目标 VM。
+  * 本地路由：路由到 Azure VPN 网关。
   * **默认路由：**直接路由到 Internet。 如果要将数据包发送到不包含在前面两个路由中的专用 IP 地址，数据包会被删除。
 * 此过程使用用户定义路由 (UDR) 来创建路由表以添加默认路由，并将路由表关联到 VNet 子网，在这些子网中启用强制隧道。
-* 强制隧道必须关联到具有基于路由的 VPN 网关的 VNet。 您需要在连接到虚拟网络的跨界本地站点中，设置一个“默认站点”。 此外，必须使用 0.0.0.0/0 作为流量选择器配置本地 VPN 设备。 
+* 强制隧道必须关联到具有基于路由的 VPN 网关的 VNet。 需要在连接到虚拟网络的跨界本地站点中，设置一个“默认站点”。 此外，必须使用 0.0.0.0/0 作为流量选择器配置本地 VPN 设备。 
 * ExpressRoute 强制隧道不是通过此机制配置的，而是通过 ExpressRoute BGP 对等会话播发默认路由来启用的。 有关详细信息，请参阅 [ExpressRoute 文档](https://azure.microsoft.com/documentation/services/expressroute/)。
 
 ## <a name="configuration-overview"></a>配置概述
@@ -65,15 +65,26 @@ ms.lasthandoff: 08/03/2017
 
 以下过程步骤将“DefaultSiteHQ”设置为使用强制隧道的默认站点连接，并将“Midtier”和“Backend”子网配置为使用强制隧道。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before"></a>准备工作
 
-安装最新版本的 Azure 资源管理器 PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview) 。
+安装最新版本的 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview) 。
+
+> [!IMPORTANT]
+> 需要安装 PowerShell cmdlet 的最新版本。 否则，运行某些 cmdlet 时可能会收到验证错误。
+>
+>
 
 ### <a name="to-log-in"></a>登录
 
 [!INCLUDE [To log in](../../includes/vpn-gateway-ps-login-include.md)]
 
 ## <a name="configure-forced-tunneling"></a>配置强制隧道
+
+> [!NOTE]
+> 可能会看到警告“将在未来发布中修改此 cmdlet 的输出对象类型”。 这是预期行为，可以放心地忽略这些警告。
+>
+>
+
 
 1. 创建资源组。
 
@@ -113,7 +124,7 @@ ms.lasthandoff: 08/03/2017
   Set-AzureRmVirtualNetworkSubnetConfig -Name "Backend" -VirtualNetwork $vnet -AddressPrefix "10.1.2.0/24" -RouteTable $rt
   Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
-6. 创建默认站点的网关。 此步骤需要一些时间才能完成，有时需要 45 分钟或更长时间，你需要创建和配置网关。<br> **-GatewayDefaultSite** 是允许强制路由配置进行工作的 cmdlet 参数，因此请注意正确配置此设置。 此参数仅在 PowerShell 1.0 或更高版本中可用。
+6. 创建默认站点的网关。 此步骤需要一些时间才能完成，有时需要 45 分钟或更长时间，你需要创建和配置网关。<br> **-GatewayDefaultSite** 是允许强制路由配置进行工作的 cmdlet 参数，因此请注意正确配置此设置。 如果看到与 GatewaySKU 值相关的 ValidateSet 问题，请验证是否已安装[最新版本的 PowerShell cmdlet](#before)。 最新版本的 PowerShell cmdlet 包含最新网关 SKU 的新验证值。
 
   ```powershell
   $pip = New-AzureRmPublicIpAddress -Name "GatewayIP" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -AllocationMethod Dynamic
@@ -137,3 +148,4 @@ ms.lasthandoff: 08/03/2017
     
   Get-AzureRmVirtualNetworkGatewayConnection -Name "Connection1" -ResourceGroupName "ForcedTunneling"
   ```
+

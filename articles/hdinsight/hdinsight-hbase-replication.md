@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/25/2017
+ms.date: 09/06/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: 7a6a473b6db745563b3667da1013a8e78db8593c
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: c885dae8a13c789ccb3c22532e6a2cea2c920752
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/10/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="configure-hbase-cluster-replication-within-virtual-networks"></a>在虚拟网络中配置 HBase 群集复制
@@ -28,7 +27,7 @@ ms.lasthandoff: 06/10/2017
 
 群集复制使用源推送方法。 HBase 群集可以是一个源或一个目标，也可以同时充当这两个角色。 复制是异步的，复制的目标是保持最终一致性。 当源接收到对列系列的编辑并启用复制时，该编辑将传播到所有目标群集。 当数据从一个群集复制到另一个群集，会跟踪源群集和所有已使用数据的群集，防止复制循环。
 
-在本教程中，你将要配置源-目标复制。 对于其他群集拓扑，请参阅 [Apache HBase 参考指南](http://hbase.apache.org/book.html#_cluster_replication)。
+在本教程中，需要配置源-目标复制。 对于其他群集拓扑，请参阅 [Apache HBase 参考指南](http://hbase.apache.org/book.html#_cluster_replication)。
 
 单个虚拟网络的 HBase 复制用例：
 
@@ -46,7 +45,7 @@ ms.lasthandoff: 06/10/2017
 通过 [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication) 上的[脚本操作](hdinsight-hadoop-customize-cluster-linux.md)脚本复制群集。
 
 ## <a name="prerequisites"></a>先决条件
-在开始学习本教程之前，你必须有一个 Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+在开始学习本教程之前，必须有一个 Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 ## <a name="configure-the-environments"></a>配置环境
 
@@ -110,7 +109,7 @@ HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper
 
 ## <a name="load-test-data"></a>加载测试数据
 
-复制群集时，必须指定要复制的表。 在本部分中，要将一些数据载入源群集。 在下一部分，将在两个群集之间启用复制。
+复制群集时，必须指定要复制的表。 在本节中，要将一些数据载入源群集。 在下一部分，会在两个群集之间启用复制。
 
 遵照 [HBase 教程：开始在 HDInsight 中将 Apache HBase 与基于 Linux 的 Hadoop 配合使用](hdinsight-hbase-tutorial-get-started-linux.md)中的说明，创建一个“联系人”表并在其中插入一些数据。
 

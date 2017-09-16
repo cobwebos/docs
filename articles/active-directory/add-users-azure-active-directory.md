@@ -3,7 +3,7 @@ title: "向 Azure Active Directory 添加新用户 | Microsoft Docs"
 description: "介绍如何在 Azure Active Directory 中添加新用户。"
 services: active-directory
 documentationcenter: 
-author: jeffgilb
+author: curtand
 manager: femila
 ms.assetid: 
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
-ms.author: jeffgilb
-ms.reviewer: jsnow
+ms.author: curtand
+ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 13a7d2d3b991206c45e66872b590bc27a224eead
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: 9b6a48220132bb8ea18ae5efca46ea2faf825806
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="quickstart-add-new-users-to-azure-active-directory"></a>快速入门：将新用户添加到 Azure Active Directory
@@ -28,12 +28,12 @@ ms.lasthandoff: 08/24/2017
 ## <a name="add-cloud-based-users"></a>添加基于云的用户
 1. 使用属于目录全局管理员的帐户登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
 2. 选择“Azure Active Directory”，然后选择“用户和组”。
-3. 在“用户和组”边栏选项卡中，选择“所有用户”，然后选择“新增用户”。
+3. 在“用户和组”中，选择“所有用户”，然后选择“新建用户”。
    ![选择“添加”命令](./media/add-users-azure-active-directory/add-user.png)
 4. 输入用户的详细信息，如**名称**和**用户名**。 用户名的域名部分必须是初始默认域名“[domain name].onmicrosoft.com”，或已验证的非联合[自定义域名](add-custom-domain.md)（例如“contoso.com”）。
 5. 复制或以其他方式记下生成的用户密码，以便在此过程完成后可以提供给用户。
-6. （可选）可以打开“个人资料”边栏选项卡、“组”边栏选项卡或“目录角色”边栏选项卡并在其中填写用户信息。 有关用户和管理员角色的详细信息，请参阅[在 Azure AD 中分配管理员角色](active-directory-assign-admin-roles.md)。
-7. 在“用户”边栏选项卡中，选择“创建”。
+6. （可选）可以打开“个人资料”、“组”或“目录角色”并在其中填写用户信息。 有关用户和管理员角色的详细信息，请参阅[在 Azure AD 中分配管理员角色](active-directory-assign-admin-roles.md)。
+7. 在“用户”上，选择“创建”。
 8. 以安全方式将生成的密码分发给新用户，以便用户可以登录。
 
 > [!TIP]

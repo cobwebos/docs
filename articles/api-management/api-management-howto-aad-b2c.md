@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: eb7deb1a79d9db9ac5cfbea69b8d3c564eb55577
+ms.translationtype: HT
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: d99dbbd834cb8f067b88b765ccddcd7f4eb44a1f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/09/2017
+ms.lasthandoff: 09/02/2017
 
 ---
+
+> [!WARNING]
+> 仅在[开发人员和高级](https://azure.microsoft.com/en-us/pricing/details/api-management/)层提供 Azure Active Directory B2C 集成。
+
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>如何在 Azure API 管理中使用 Azure Active Directory B2C 为开发人员帐户授权
 ## <a name="overview"></a>概述
 Azure Active Directory B2C 是一种云标识管理解决方案，适用于消费型 Web 和移动应用程序。 可以使用它来管理对开发人员门户的访问。 本指南说明为了与 Azure Active Directory B2C 集成，需要在 API 管理中完成哪些配置。 有关使用经典 Azure Active Directory 启用对开发人员门户的访问的信息，请参阅[如何使用 Azure Active Directory 为开发人员帐户授权]。
@@ -30,7 +34,7 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于消�
 
 ## <a name="authorize-developer-accounts-by-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 为开发人员帐户授权
 
-1. 若要开始，请单击 API 管理服务的 Azure 门户中的“发布者门户”。 这将转到 API 管理发布者门户。
+1. 若要开始，请单击 API 管理服务的 Azure 门户中的“发布者门户”。 这会转到 API 管理发布者门户。
 
    ![发布者门户][api-management-management-console]
 
@@ -41,7 +45,7 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于消�
 
   ![外部标识 1][api-management-howto-aad-b2c-security-tab]
 
-3. 记下“重定向 URL”，然后在 Azure 门户中切换到 Azure Active Directory B2C。
+3. 记下“重定向 URL”，并在 Azure 门户中切换到 Azure Active Directory B2C。
 
   ![外部标识 2][api-management-howto-aad-b2c-security-tab-reply-url]
 
@@ -69,7 +73,7 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于消�
 
   ![应用程序 ID 2][api-management-howto-aad-b2c-client-id]
 
-10. 切换回 Azure 门户，单击“密钥”按钮，然后单击“生成密钥”。 单击“保存”保存配置并显示“应用密钥”。 将该密钥复制到剪贴板。
+10. 切换回 Azure 门户，单击“密钥”按钮，并单击“生成密钥”。 单击“保存”保存配置并显示“应用密钥”。 将该密钥复制到剪贴板。
 
   ![应用密钥 1][api-management-howto-aad-b2c-app-key]
 
@@ -102,14 +106,14 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于消�
 
    ![开发人员门户 2][api-management-howto-aad-b2c-dev-portal-b2c-button]
 
-3. 你将重定向到在上一部分中配置的注册策略。 选择使用电子邮件地址或现有的某个社交帐户注册。
+3. 将重定向到在上一部分中配置的注册策略。 选择使用电子邮件地址或现有的某个社交帐户注册。
 
    > [!NOTE]
-   > 如果“Azure Active Directory B2C”是发布者门户上“标识”选项卡中启用的唯一选项，你将直接重定向到注册策略。
+   > 如果“Azure Active Directory B2C”是发布者门户上“标识”选项卡中启用的唯一选项，将直接重定向到注册策略。
 
    ![开发人员门户][api-management-howto-aad-b2c-dev-portal-b2c-options]
 
-   注册完成后，你将重定向回到开发人员门户。 现已登录到 API 管理服务实例的开发人员门户。
+   注册完成后，将重定向回到开发人员门户。 现已登录到 API 管理服务实例的开发人员门户。
 
     ![注册完成][api-management-registration-complete]
 

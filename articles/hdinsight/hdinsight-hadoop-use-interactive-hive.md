@@ -15,14 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 09/06/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: e7874b55fc72f14d8e2c801872359e823cb2ba34
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: fa8b4126865788549217d89f19627f20739f8540
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/10/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="use-interactive-hive-in-hdinsight-preview"></a>在 HDInsight（预览版）中使用交互式 Hive
@@ -31,7 +30,7 @@ ms.lasthandoff: 06/10/2017
 交互式 Hive 群集与 Hadoop 群集有所不同。 交互式 Hive 群集只包含 Hive 服务。 
 
 > [!NOTE]
-> MapReduce、Pig、Sqoop、Oozie，以及其他服务很快将从此群集类型中删除。
+> MapReduce、Pig、Sqoop、Oozie 以及其他服务很快将从此群集类型中删除。
 > 只能通过 Ambari Hive 视图、Beeline 和 Hive ODBC 访问交互式 Hive 群集中的 Hive 服务。 不能通过 Hive 控制台、Templeton、Azure CLI 和 Azure PowerShell 访问。 
 > 
 > 

@@ -1,13 +1,13 @@
 ---
-title: "Azure Functions 消耗计划和应用服务计划 | Microsoft Docs"
-description: "了解 Azure Functions 如何进行扩展，满足事件驱动工作负荷的需求。"
+title: "Azure Functions 托管计划比较 | Microsoft Docs"
+description: "了解如何在 Azure Functions 消耗量计划和应用服务计划之间进行选择。"
 services: functions
 documentationcenter: na
 author: lindydonna
 manager: cfowler
 editor: 
 tags: 
-keywords: "Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构"
+keywords: "Azure Functions, Functions, 消耗量计划, 应用服务计划, 事件处理, webhook, 动态计算, 无服务体系结构"
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: functions
 ms.devlang: multiple
@@ -18,13 +18,13 @@ ms.date: 06/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 0e677fb35279d155241a95cd5f33b63e8294fad2
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 8778dcfdb5859d212a2a3eb28a5ed297b5f07460
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/02/2017
 
 ---
-# <a name="azure-functions-consumption-and-app-service-plans"></a>Azure Functions 消耗计划和应用服务计划 
+# <a name="azure-functions-hosting-plans-comparison"></a>Azure Functions 托管计划比较
 
 ## <a name="introduction"></a>介绍
 

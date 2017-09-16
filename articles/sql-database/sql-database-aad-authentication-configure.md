@@ -17,10 +17,10 @@ ms.workload: data-management
 ms.date: 07/10/2017
 ms.author: rickbyh
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: 61a52813769891aa63373437e9300d4f8f47fab2
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 16ddee29c7629861764ddaadf2dcc574a866ae8a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-or-sql-data-warehouse"></a>使用 SQL 数据库或 SQL 数据仓库配置和管理 Azure Active Directory 身份验证
@@ -31,7 +31,7 @@ ms.lasthandoff: 08/08/2017
 >  不支持使用 Azure Active Directory 帐户连接到 Azure VM 上运行的 SQL Server。 请改用域 Active Directory 帐户。
 
 ## <a name="create-and-populate-an-azure-ad"></a>创建并填充 Azure AD
-创建 Azure AD 并在其中填充用户和组。 创建初始域 Azure AD 托管的域。 Azure AD 也可以是本地 Active Directory 域服务，该服务可以与 Azure AD 联合。
+创建 Azure AD 并在其中填充用户和组。 Azure AD 可以是初始 Azure AD 托管域。 Azure AD 也可以是本地 Active Directory 域服务，该服务可以与 Azure AD 联合。
 
 有关详细信息，请参阅[将本地标识与 Azure Active Directory 集成](../active-directory/active-directory-aadconnect.md)、[将自己的域名添加到 Azure AD](../active-directory/active-directory-add-domain.md)、[Microsoft Azure 现在支持与 Windows Server Active Directory 联合](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)、[管理 Azure AD 目录](https://msdn.microsoft.com/library/azure/hh967611.aspx)、[使用 Windows PowerShell 管理 Azure AD](/powershell/azure/overview?view=azureadps-2.0) 和[混合标识所需端口和协议](../active-directory/active-directory-aadconnect-ports.md)。
 
@@ -223,8 +223,8 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 >  如果收到 **Connection Timeout Expired** 消息，则可能需要将连接字符串的 `TransparentNetworkIPResolution` 参数设置为 false。 有关详细信息，请参阅 [.NET Framework 4.6.1 的连接超时问题 - TransparentNetworkIPResolution](https://blogs.msdn.microsoft.com/dataaccesstechnologies/2016/05/07/connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/)。   
 
    
-创建数据库用户时，该用户会收到 **CONNECT** 权限，并能够以 **PUBLIC** 角色的成员身份连接到该数据库。 最初，仅供用户使用的权限是授予 **PUBLIC** 角色的任何权限，或者授予其所属任何 Windows 组的任何权限。 预配基于 Azure AD 的包含的数据库用户后，可以授予用户其他权限，方法与向任何其他类型的用户授予权限相同。 通常，将权限授予数据库角色，并将用户添加到角色。 有关详细信息，请参阅[数据库引擎权限基础知识](http://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx)。 有关特殊 SQL 数据库角色的详细信息，请参阅[在 Azure SQL 数据库中管理数据库和登录名](sql-database-manage-logins.md)。
-如果将联合域用户导入到管理域，则此用户必须使用托管域标识。
+创建数据库用户时，该用户会收到 **CONNECT** 权限，并能够以 **PUBLIC** 角色的成员身份连接到该数据库。 最初，仅供用户使用的权限是授予 PUBLIC 角色的任何权限，或者授予其所属任何 Azure AD 组的任何权限。 预配基于 Azure AD 的包含的数据库用户后，可以授予用户其他权限，方法与向任何其他类型的用户授予权限相同。 通常，将权限授予数据库角色，并将用户添加到角色。 有关详细信息，请参阅[数据库引擎权限基础知识](http://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx)。 有关特殊 SQL 数据库角色的详细信息，请参阅[在 Azure SQL 数据库中管理数据库和登录名](sql-database-manage-logins.md)。
+如果将联合域用户帐户作为外部用户导入到托管域，则此用户必须使用托管域标识。
 
 > [!NOTE]
 > Azure AD 用户在数据库元数据中均标记为类型 E (EXTERNAL_USER)，而组则标记为类型 X (EXTERNAL_GROUPS)。 有关详细信息，请参阅 [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx)。 
@@ -259,7 +259,7 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 如果从未与 Azure 联合的域中使用凭证登录到 Windows，或者基于初始域或客户端域通过 Azure AD 使用 Azure AD 身份验证，请使用此方法。
 
 1. 启动 Management Studio 或 Data Tools 后，在“连接到服务器”（或“连接到数据库引擎”）对话框的“身份验证”框中，选择“Active Directory - 密码”。
-2. 在“用户名”框中，以 **username@domain.com** 格式键入 Azure Active Directory 用户名。 这必须是来自 Azure Active Directory 的帐户或来自与 Azure Active Directory 联合的域的帐户。
+2. 在“用户名”框中，以 **username@domain.com** 格式键入 Azure Active Directory 用户名。这必须是来自 Azure Active Directory 的帐户或来自与 Azure Active Directory 联合的域的帐户。
 3. 在“密码”框中，为 Azure Active Directory 帐户或联合域帐户键入用户密码。
 
     ![选择 AD 密码身份验证][12]

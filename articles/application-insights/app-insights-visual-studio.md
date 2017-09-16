@@ -11,23 +11,23 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 07/7/2017
+ms.date: 07/07/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 93e97cbc5d9bf55334a481183f40083a6f3b99a4
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: e26186f7dfc81563d72478bf3cf1d306f0203fa5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>在 Visual Studio 中使用 Azure Application Insights 调试应用程序
 在 Visual Studio（2015 和更高版本）中，可以使用来自 [Azure Application Insights](app-insights-overview.md) 的遥测，在调试和生产环境中分析 ASP.NET Web 应用中的性能和诊断问题。
 
-如果你使用 Visual Studio 2017 或更高版本创建了 ASP.NET Web 应用，则其中已包含 Application Insights SDK。 否则，如果尚未执行此操作，请[向应用添加 Application Insights](app-insights-asp-net.md)。
+如果使用 Visual Studio 2017 或更高版本创建了 ASP.NET Web 应用，则其中已包含 Application Insights SDK。 否则，如果尚未执行此操作，请[向应用添加 Application Insights](app-insights-asp-net.md)。
 
 若要在应用处于实时生产环境中时对其进行监视，通常可以在 [Azure 门户](https://portal.azure.com)中查看 Application Insights 遥测，可以在该门户中设置警报并应用强大的监视工具。 但是对于调试，也可在 Visual Studio 中搜索和分析遥测。 可使用 Visual Studio 来分析遥测，不管是从生产站点还是从开发计算机上的调试运行均可执行该操作。 如果是后一种情况，则可分析调试运行，即使尚未将 SDK 配置为将遥测发送到 Azure 门户。 
 
-## <a name="run"></a> 调试项目
+## <a name="run"></a>调试项目
 使用 F5 在本地调试模式下运行 Web 应用。 打开不同的页以生成一些遥测数据。
 
 在 Visual Studio 中会看到事件计数，这些事件是由项目中的 Application Insights 模块记录的。
@@ -39,7 +39,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="application-insights-search"></a>Application Insights 搜索
 Application Insights 的“搜索”窗口显示已记录的事件。 （如果在设置 Application Insights 时登录 Azure，则可在 Azure 门户中搜索相同的事件。）
 
-![右键单击项目，然后依次选择“Application Insights”、“搜索”](./media/app-insights-visual-studio/34.png)
+![右键单击项目，并依次选择“Application Insights”、“搜索”](./media/app-insights-visual-studio/34.png)
 
 > [!NOTE] 
 > 选择或取消选择筛选器后，单击文本搜索字段末尾的“搜索”按钮。
@@ -70,7 +70,7 @@ Application Insights 的“搜索”窗口显示已记录的事件。 （如果�
 ![异常堆栈跟踪](./media/app-insights-visual-studio/21.png)
 
 > [!NOTE] 
-> Code Lens 显示 Application Insights 数据的前提是，你已[将应用配置为将遥测发送到 Application Insights 门户](app-insights-asp-net.md)。
+> Code Lens 显示 Application Insights 数据的前提是，已[将应用配置为将遥测发送到 Application Insights 门户](app-insights-asp-net.md)。
 >
 
 [Code Lens 中的 Application Insights 的详细信息](app-insights-visual-studio-codelens.md)
@@ -89,14 +89,14 @@ Application Insights 的“搜索”窗口显示已记录的事件。 （如果�
 ## <a name="local-monitoring"></a>本地监视
 （从 Visual Studio 2015 Update 2 开始）如果未将 SDK 配置为将遥测发送到 Application Insights 门户（从而 ApplicationInsights.config 中没有检测密钥），“诊断”窗口会显示来自最新调试会话的遥测。 
 
-如果已发布过应用的以前版本，这会是比较好的做法。 你不会希望来自调试会话的遥测与 Application Insights 门户中来自已发布应用的遥测混在一起。
+如果已发布过应用的以前版本，这会是比较好的做法。 不会希望来自调试会话的遥测与 Application Insights 门户中来自已发布应用的遥测混在一起。
 
-如果在将遥测发送到门户之前有一些想要调试的 [自定义遥测](app-insights-api-custom-events-metrics.md) ，它会很有用。
+如果在将遥测发送到门户之前有一些想要调试的 [自定义遥测](app-insights-api-custom-events-metrics.md)，它会很有用。
 
 * *最初，将 Application Insights 完全配置为将遥测发送到门户。但现在只想查看 Visual Studio 中的遥测。*
   
   * 在“搜索”窗口的“设置”中，即使应用将遥测发送到门户，也有选项可供搜索本地诊断。
-  * 若要停止将遥测发送到门户，请注释禁止 ApplicationInsights.config 的 `<instrumentationkey>...` 行。 准备好再次将遥测发送到门户时，请取消注释。
+  * 要停止将遥测发送到门户，请注释禁止 ApplicationInsights.config 的 `<instrumentationkey>...` 行。准备好再次将遥测发送到门户时，请取消注释。
 
 
 ## <a name="next-steps"></a>后续步骤
