@@ -135,9 +135,9 @@
 ### [计划 Azure AD 加入](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [常见问题](device-management-faq.md)
 ### 任务
-#### [配置已注册到 Azure AD 的 Windows 10 设备](device-management-azuread-registered-devices-windows10-setup.md)
-#### [配置已加入 Azure AD 的设备](device-management-azuread-joined-devices-setup.md)
-#### [配置加入混合 Azure AD 的设备](device-management-hybrid-azuread-joined-devices-setup.md) 
+#### [设置已注册到 Azure AD 的 Windows 10 设备](device-management-azuread-registered-devices-windows10-setup.md)
+#### [设置已加入 Azure AD 的设备](device-management-azuread-joined-devices-setup.md)
+#### [设置已加入混合 Azure AD 的设备](device-management-hybrid-azuread-joined-devices-setup.md) 
 #### [本地部署](active-directory-device-registration-on-premises-setup.md)
 #### [Windows 10 首次运行体验中的 Azure AD 加入](device-management-azuread-joined-devices-frx.md)
 ### 故障排除
@@ -266,34 +266,21 @@
 
 ### [使用 Azure AD Connect 集成本地标识](./connect/active-directory-aadconnect.md)
 
+## [管理对 Azure 的访问权限](toc.yml)
+
 ## 委托对资源的访问权限
 ### [管理员角色](active-directory-assign-admin-roles.md)
 #### [分配管理员角色](active-directory-users-assign-role-azure-portal.md)
 ### [管理单元](active-directory-administrative-units-management.md)
-### [Azure 中的资源访问权限](active-directory-understanding-resource-access.md)
-### [基于角色的访问控制](role-based-access-control-what-is.md)
-#### 管理访问权限分配
-##### [按用户](role-based-access-control-manage-assignments.md)
-##### [按资源](role-based-access-control-configure.md)
-#### [内置角色](role-based-access-built-in-roles.md)
-#### [自定义角色](role-based-access-control-custom-roles.md)
-#### [为内部用户和外部用户分配自定义角色](role-based-access-control-create-custom-roles-for-internal-external-users.md)
-#### [报告](role-based-access-control-access-change-history-report.md)
-#### 管理角色的更多方式
-##### [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
-##### [PowerShell](role-based-access-control-manage-access-powershell.md)
-##### [REST](role-based-access-control-manage-access-rest.md)
-#### [提升租户管理员访问权限](role-based-access-control-tenant-admin-access.md)
-#### [故障排除](role-based-access-control-troubleshooting.md)
-#### [资源提供程序操作](role-based-access-control-resource-provider-operations.md)
 ### [配置令牌生存期](active-directory-configurable-token-lifetimes.md)
 
 ## 保护标识
 ### [条件性访问](active-directory-conditional-access-azure-portal.md)
+#### [控制](active-directory-conditional-access-controls.md)
 #### [入门](active-directory-conditional-access-azure-portal-get-started.md)
 #### [最佳实践](active-directory-conditional-access-best-practices.md)
 #### [了解 Office 365 服务的设备策略](active-directory-conditional-access-device-policies.md)
-#### [任务]
+#### 任务
 ##### [设置基于设备的条件访问](active-directory-conditional-access-policy-connected-applications.md)
 ##### [设置基于应用的条件访问](active-directory-conditional-access-mam.md)
 ##### [设置 VPN 连接](active-directory-conditional-access-vpn-connectivity-windows10.md)

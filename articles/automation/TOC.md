@@ -5,6 +5,7 @@
 ## Runbook 教程
 ### [创建图形 runbook](automation-first-runbook-graphical.md)
 ### [创建 PowerShell Runbook](automation-first-runbook-textual-powershell.md)
+### [我的第一个 Python runbook](automation-first-runbook-textual-python2.md)
 ### [创建 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)
 # 如何
 ## 身份验证和安全性
@@ -37,7 +38,10 @@
 ### [将 JSON 对象传递到 Azure 自动化 runbook](automation-pass-json-string.md)
 ## 混合 Runbook 辅助角色
 ### [部署混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)
+### [Azure 自动化 Windows 混合 Runbook 辅助角色](automation-windows-hrw-install.md)
+### [Azure 自动化 Linux 混合 Runbook 辅助角色](automation-linux-hrw-install.md)
 ### [在辅助角色上运行 runbook](automation-hrw-run-runbooks.md)
+### [删除 Azure 自动化混合 Runbook 辅助角色](automation-remove-hrw.md)
 ## 部署配置管理 (DSC)
 ### [所需状态配置 (DSC) 概述](automation-dsc-overview.md)
 ### [入门](automation-dsc-getting-started.md)

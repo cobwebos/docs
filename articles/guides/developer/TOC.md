@@ -1,98 +1,98 @@
 # 概述
 ## [开发人员指南](azure-developer-guide.md) 
-## [Azure 服务概述](../../fundamentals-introduction-to-azure.md?toc=%2fazure%2fdeveloper-guide%2ftoc.json)
-## [门户概述](../../azure-portal-overview.md?toc=%2fazure%2fdeveloper-guide%2ftoc.json)
-## [SDK 和工具](../../index.md#pivot=sdkstools)
+
+## [Azure 服务概述](https://docs.microsoft.com/azure/fundamentals-introduction-to-azure)
+## [门户概述](https://docs.microsoft.com/azure/azure-portal-overview)
+## [SDK 和工具](https://docs.microsoft.com/azure/index#pivot=sdkstools)
 
 # 快速入门
-## [Web 应用](../../app-service-web/app-service-web-get-started-html.md)
+## [Web 应用](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-html)
 ## 虚拟机
-### [Linux](../../virtual-machines/linux/quick-create-portal.md)
-### [Windows](../../virtual-machines/windows/quick-create-portal.md)
-## [无服务器](../../azure-functions/functions-create-first-azure-function.md)
+### [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal)
+### [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
+## [无服务器](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function)
 ## 微服务
-### [Service Fabric](../../service-fabric/service-fabric-create-your-first-application-in-visual-studio.md)
-### [容器服务](../../container-service/dcos-swarm/container-service-deployment.md) 
+### [Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-create-your-first-application-in-visual-studio)
+### [容器服务](https://docs.microsoft.com/azure/container-service/dcos-swarm/container-service-deployment) 
 
 # 教程
 ## 创建和部署 Web 应用
-### [ASP.NET](../../app-service-web/app-service-web-get-started-dotnet.md)
-### [Java](../../app-service-web/app-service-web-get-started-java.md)
-### [Node.js](../../app-service-web/app-service-web-get-started-nodejs.md)
-### [PHP](../../app-service-web/app-service-web-get-started-php.md)
-### [Python](../../app-service-web/app-service-web-get-started-python.md)
+### [将 .NET 与 SQL DB 配合使用](https://docs.microsoft.com/azure/app-service-web/app-service-web-tutorial-dotnet-sqldatabase)
+### [将 Node.js 与 Mongo DB 配合使用](https://docs.microsoft.com/azure/app-service-web/app-service-web-tutorial-nodejs-mongodb-app)
+### [将 PHP 与 MySQL 配合使用](https://docs.microsoft.com/azure/app-service-web/app-service-web-tutorial-php-mysql)
+### [将 Java 与 MySQL 配合使用](https://docs.microsoft.com/azure/app-service-web/app-service-web-tutorial-java-mysql)
 ## 部署复杂的 VM 模板
-### [Linux](../../virtual-machines/virtual-machines-linux-dotnet-core-1-landing.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [Windows](../../virtual-machines/virtual-machines-windows-dotnet-core-1-landing.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-## [创建连接到 Azure 的函数](../../azure-functions/functions-create-an-azure-connected-function.md)
-## [在 Linux 上部署 Docker Web 应用](../../app-service/containers/quickstart-custom-docker-image.md) 
+### [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
+### [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
+## [创建连接到 Azure 的函数](https://docs.microsoft.com/azure/azure-functions/functions-create-an-azure-connected-function)
+## [在 Linux 上部署 Docker Web 应用](https://docs.microsoft.com/azure/app-service/containers/quickstart-custom-docker-image) 
 
 # 示例
 ## Azure CLI
-### [Web 应用](../../app-service-web/app-service-cli-samples.md)
-### [Linux VM](../../virtual-machines/linux/cli-samples.md)
-### [Windows VM](../../virtual-machines/windows/cli-samples.md)
+### [Web 应用](https://docs.microsoft.com/azure/app-service-web/app-service-cli-samples)
+### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
+### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
 ## PowerShell
-### [Web 应用](../../app-service-web/app-service-powershell-samples.md)
-### [Linux VM](../../virtual-machines/linux/powershell-samples.md)
-### [Windows VM](../../virtual-machines/windows/powershell-samples.md)
+### [Web 应用](https://docs.microsoft.com/azure/app-service-web/app-service-powershell-samples)
+### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
+### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/powershell-samples)
 
 # 概念
-## [计费和订阅](../../billing/billing-getting-started.md)
-## [宿主比较](../../app-service-web/choose-web-site-cloud-service-vm.md)
-## [什么是应用服务？](../../app-service/app-service-value-prop-what-is.md)
+## [计费和订阅](https://docs.microsoft.com/azure/billing/billing-getting-started)
+## [宿主比较](https://docs.microsoft.com/azure/app-service-web/choose-web-site-cloud-service-vm)
+## [什么是应用服务？](https://docs.microsoft.com/azure/app-service/app-service-value-prop-what-is)
 ## 虚拟机
-### [Linux VM](../../virtual-machines/virtual-machines-linux-azure-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [Windows VM](../../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-## [Service Fabric 概述](../../service-fabric/service-fabric-overview.md)
+### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
+### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/overview)
+## [Service Fabric 概述](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview)
 
 # 操作方法指南
-## 计划
-### [Web 应用程序体系结构](/azure/architecture/reference-architectures/managed-web-app/)
-### [VM 体系结构](/azure/architecture/reference-architectures/virtual-machines-windows/)
-### [连接到本地网络](/azure/architecture/reference-architectures/hybrid-networking/)
-### [微服务模式/方案](../../service-fabric/service-fabric-patterns-and-scenarios.md)
+## [规划](https://docs.microsoft.com/azure/architecture/guide/)
+### [Web 应用程序体系结构](https://docs.microsoft.com/azure/architecture/reference-architectures/managed-web-app/)
+### [VM 体系结构](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/)
+### [连接到本地网络](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)
+### [微服务模式/方案](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-and-scenarios)
 ## 开发
-### [Linux VM](../../virtual-machines/virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [Windows VM](../../virtual-machines/virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [无服务器应用](../../azure-functions/functions-reference.md)
-### [微服务群集](../../service-fabric/service-fabric-cluster-creation-via-portal.md)
+### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-secured-vm-from-template)
+### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
+### [无服务器应用](https://docs.microsoft.com/azure/azure-functions/functions-reference)
+### [微服务群集](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)
 ## 部署
-### [来自源控件的 Web 和移动应用](../../app-service-web/app-service-continuous-deployment.md)
-### [本地微服务](../../service-fabric/service-fabric-get-started-with-a-local-cluster.md)
-### [来自模板的 Linux VM](../../virtual-machines/virtual-machines-linux-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [来自模板的 Windows VM](../../virtual-machines/virtual-machines-windows-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### [来自源控件的 Web 和移动应用](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment)
+### [本地微服务](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-with-a-local-cluster)
+### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
+### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
 ## 存储数据
-### [Blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)
-### [文件共享](../../storage/files/storage-dotnet-how-to-use-files.md)
-### [键-值对](../../cosmos-db/table-storage-how-to-use-dotnet.md)
-### [JSON 文档](../../cosmos-db/documentdb-get-started.md)
-### [关系表](../../sql-database/sql-database-get-started-portal.md)
-### [消息队列](../../storage/queues/storage-dotnet-how-to-use-queues.md)
+### [Blob](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs)
+### [文件共享](https://docs.microsoft.com/azure/storage/files/storage-dotnet-how-to-use-files)
+### [键-值对](https://docs.microsoft.com/azure/cosmos-db/table-storage-how-to-use-dotnet)
+### [JSON 文档](https://docs.microsoft.com/azure/cosmos-db/documentdb-get-started)
+### [关系表](https://docs.microsoft.com/azure/sql-database/sql-database-get-started)
+### [消息队列](https://docs.microsoft.com/azure/storage/queues/storage-dotnet-how-to-use-queues)
 
 ## 缩放
-### [Web 和移动应用](../../app-service-web/web-sites-scale.md)
-### [虚拟机](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)
-### [微服务应用](../../service-fabric/service-fabric-concepts-scalability.md)
+### [Web 和移动应用](https://docs.microsoft.com/azure/app-service-web/web-sites-scale)
+### [虚拟机](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview)
+### [微服务应用](https://docs.microsoft.com/azure/service-fabric/service-fabric-concepts-scalability)
 
 ## 安全
-### [Web 和移动应用](../../app-service-web/app-service-web-tutorial-custom-ssl.md)
+### [Web 和移动应用](https://docs.microsoft.com/azure/app-service-web/app-service-web-tutorial-custom-ssl)
 
 ## 备份
-### [Web 和移动应用](../../app-service-web/web-sites-backup.md)
-### [虚拟机](../../backup/backup-azure-vms-introduction.md)
+### [Web 和移动应用](https://docs.microsoft.com/azure/app-service-web/web-sites-backup)
+### [虚拟机](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
 
 ## 监视
-### [Web 和移动应用](../../app-service-web/web-sites-enable-diagnostic-log.md)
-### [Linux VM](../../virtual-machines/linux/tutorial-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [Windows VM](../../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [微服务](../../service-fabric/service-fabric-diagnostics-overview.md)
-### [计费警报](../../billing/billing-set-up-alerts.md)
+### [Web 和移动应用](https://docs.microsoft.com/azure/app-service-web/web-sites-enable-diagnostic-log)
+### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitoring)
+### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-monitoring)
+### [微服务](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-overview)
+### [计费警报](https://docs.microsoft.com/azure/billing/billing-set-up-alerts)
 
 ## 自动化
-### [敏捷式 Web 应用开发](../../app-service-web/app-service-agile-software-development.md)
-### [缩放 Linux VM](../../virtual-machines/virtual-machines-linux-vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [使用 Chef 的 Windows VM](../../virtual-machines/virtual-machines-windows-chef-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### [敏捷式 Web 应用开发](https://docs.microsoft.com/azure/app-service-web/app-service-agile-software-development)
+### [缩放 Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-create-vmss)
+### [缩放 Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-create-vmss)
 
 # 引用
 ## [REST](https://docs.microsoft.com/rest/api/)
@@ -100,13 +100,13 @@
 ### [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
 ### [Java](https://docs.microsoft.com/java/api/)
 ### [Node.js](http://azure.github.io/azure-sdk-for-node/)
-### [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
+### [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README)
 ### [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/)
-### [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)
+### [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README)
 ## 命令行界面
 ### [Azure CLI2.0](https://docs.microsoft.com/cli/azure/)
 ### [PowerShell](https://docs.microsoft.com/powershell/)
-## [计费](../../billing/billing-usage-rate-card-overview.md)
+## [计费](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview)
 
 # 资源
 ## [Azure 区域](https://azure.microsoft.com/regions/)

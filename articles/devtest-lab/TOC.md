@@ -28,6 +28,7 @@
 ### [设置策略和计划](devtest-lab-set-lab-policy.md)
 ### [配置成本管理](devtest-lab-configure-cost-management.md)
 ### [配置应用商店映像](devtest-lab-configure-marketplace-images.md)
+### [将标记添加到实验室](devtest-lab-add-tag.md)
 
 ## [选择自定义映像或公式](devtest-lab-comparing-vm-base-image-types.md)
 
