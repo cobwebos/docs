@@ -52,7 +52,7 @@ Azure 容器注册表是用于 Docker 容器映像的基于 Azure 的专用注�
 az group create --name myResourceGroup --location eastus
 ```
 
-使用“az acr create”[](/cli/azure/acr#create)命令创建 Azure 容器注册表。 容器注册表的名称必须唯一。 以下示例中使用名称 mycontainerregistry082。
+使用 [az acr create](/cli/azure/acr#create) 命令创建 Azure 容器注册表。 容器注册表的名称必须唯一。 以下示例中使用名称 mycontainerregistry082。
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name mycontainerregistry082 --sku Basic --admin-enabled true
