@@ -49,56 +49,33 @@
       href: cli-samples.md
 - name: 概念
   items:
+    - name: Azure 资源管理器
+      href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: 区域和可用性
       href: regions-and-availability.md
+    - name: VM 类型和大小
+      href: sizes.md
+    - name: 维护和更新
+      href: maintenance-and-updates.md
     - name: 存储
       href: about-disks-and-vhds.md
-    - name: 网络
+    - name: 联网
       href: network-overview.md
-    - name: VM 规模集
-      href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: 容器
-      href: containers.md
-    - name: Resource Manager
-      href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-      items:
-        - name: 部署模型
-          href: ../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: 用于 VM 的模板
-          href: template-description.md
-    - name: Azure Windows 代理
-      href: agent-user-guide.md
-    - name: Azure 安全中心
-      href: ../../security-center/security-center-virtual-machine.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: 灾难恢复
-      href: ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: 计划内维护
-      href: planned-maintenance.md
-    - name: VM 大小
-      href: sizes.md
-      items:
-        - name: 常规用途
-          href: sizes-general.md
-        - name: 计算优化
-          href: sizes-compute.md
-        - name: 内存优化
-          href: sizes-memory.md
-        - name: 存储优化
-          href: sizes-storage.md
-        - name: GPU 优化
-          href: sizes-gpu.md
-          items:
-            - name: GPU 驱动程序
-              href: n-series-driver-setup.md
-        - name: 高性能计算
-          href: sizes-hpc.md
-        - name: Azure 计算单元 (ACU)
-          href: acu.md
-        - name: 计算基准评分
-          href: compute-benchmark-scores.md
+    - name: 自动缩放应用程序
+      href: autoscale.md
+    - name: 基础结构自动化
+      href: infrastructure-automation.md
+    - name: 安全和策略
+      href: security-policy.md
+    - name: 监视
+      href: monitor.md
+    - name: 备份和恢复
+      href: backup-recovery.md
+    - name: 高性能计算
+      href: high-performance-computing.md
     - name: 部署注意事项
       items:
-        - name: 示例基本部署
+        - name: 基础结构指南
           href: infrastructure-example.md
 - name: 操作指南
   items:

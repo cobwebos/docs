@@ -162,6 +162,7 @@
 ##### [创建支持包](storsimple-8000-create-manage-support-package.md)
 
 ### 迁移
+#### [订阅和存储帐户](storsimple-8000-migrate-classic-azure-portal.md)
 #### [从其他存储设备](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### 更新

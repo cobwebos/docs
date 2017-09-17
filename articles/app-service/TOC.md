@@ -130,6 +130,7 @@
 ## 集成
 ### [在 Azure 中使用 SendGrid 发送电子邮件](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [导出到 PowerApps 和 Microsoft Flow](app-service-export-api-to-powerapps-and-flow.md)
+### [使用托管服务标识](app-service-managed-service-identity.md)
 
 ## 故障排除
 ### [启用诊断日志记录](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service%2ftoc.json)
