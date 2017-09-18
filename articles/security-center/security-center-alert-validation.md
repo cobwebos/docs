@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/11/2017
+ms.date: 09/07/2017
 ms.author: yurid
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 121b5d8f023a9b663d0e7af26dce8f81db27672c
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: d7aa8544f50b42bacfa1e1f16fdce468d8fc81ef
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="alerts-validation-in-azure-security-center"></a>Azure 安全中心的警报验证
@@ -35,12 +35,15 @@ ms.lasthandoff: 08/12/2017
 3. 打开命令提示符，使用一个参数（假参数名称即可）执行该文件，例如：ASC_AlertTest_662jfi039N.exe -foo
 4. 等待 5 到 10 分钟，然后打开安全中心警报。 其中会显示类似以下内容的警报：
 
-    ![警报验证](./media/security-center-alert-validation/security-center-alert-validation-fig1.png)
+    ![警报验证](./media/security-center-alert-validation/security-center-alert-validation-fig2.png)
 
 查看此警报时，请确保“启用参数审核”字段显示为 true。 如果显示 false，则需启用命令行参数审核。 可以使用以下命令行启用该选项：
 
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"
 
+
+> [!NOTE]
+> 观看 [Azure 安全中心内的警报验证](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Alert-Validation-in-Azure-Security-Center)视频，查看此功能的演示。 
 
 ## <a name="see-also"></a>另请参阅
 本文介绍了警报验证过程。 熟悉该验证以后，请尝试阅读以下文章：

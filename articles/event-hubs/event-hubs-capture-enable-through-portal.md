@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 08/28/2017
 ms.author: sethm
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 5420c1cdefa99ff30320dd757e04aa0cafc792bc
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 4a4ab1ee022b6b33d35217df916d01f32e04d3a4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -44,24 +44,8 @@ Azure [事件中心捕获][capture-overview]用于自动将事件中心的流式
 
 ### <a name="create-an-azure-data-lake-store-account-and-folders"></a>创建 Azure Data Lake Store 帐户和文件夹
 
-1. 创建 Data Lake Store 帐户，遵循 [Azure Data Lake Store 入门（使用 Azure 门户）](../data-lake-store/data-lake-store-get-started-portal.md)中的说明。 
-2. 在此帐户下创建一个文件夹，遵循[在 Azure Data Lake Store 帐户中创建文件夹](../data-lake-store/data-lake-store-get-started-portal.md#createfolder)部分的说明。
-3. 在 Data Lake Store 帐户页中，单击“数据资源管理器”。
-4. 单击“访问权限”。
-5. 单击“添加”。
-6. 在“按名称或电子邮件地址搜素”框中键入“Microsoft.EventHubs”，然后选择此选项。 
-7. 此时会显示“权限”选项卡。 设置权限，如下图所示：
-
-    ![][6]
-
-8. 单击 **“确定”**。
-9. 现在，请浏览到目标文件夹并单击文件夹名称，以便在根文件夹中创建一个文件夹。
-10. 单击“访问权限”。
-11. 单击“添加”。
-12. 在“按名称或电子邮件地址搜素”框中键入“Microsoft.EventHubs”，然后选择此选项。
-13. 此时会再次显示“权限”选项卡。 设置权限，如下图所示：
-
-    ![][5]
+1. 创建 Data Lake Store 帐户，遵循 [Azure Data Lake Store 入门（使用 Azure 门户）](../data-lake-store/data-lake-store-get-started-portal.md)中的说明。
+2. 按照[为事件中心分配权限](../data-lake-store/data-lake-store-archive-eventhub-capture.md#assign-permissions-to-event-hubs)部分中的说明，在 Data Lake Store 帐户中创建一个文件夹（要在其中捕获事件中心的数据），为事件中心分配权限，以便它可以将数据写入到 Data Lake Store 帐户。  
 
 ### <a name="create-an-event-hub"></a>创建事件中心
 
@@ -87,12 +71,11 @@ Azure [事件中心捕获][capture-overview]用于自动将事件中心的流式
 [2]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture2.png
 [3]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture3.png
 [4]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture4.png
-[5]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture5.png
-[6]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture6.png
 
 ## <a name="next-steps"></a>后续步骤
 
 - 阅读[事件中心捕获概述][capture-overview]，详细了解事件中心捕获。
 - 还可以通过 Azure Resource Manager 模板配置事件中心捕获。 有关详细信息，请参阅[通过 Azure Resource Manager 模板启用捕获](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)。
+- [Azure Data Lake Store 入门（使用 Azure 门户）](../data-lake-store/data-lake-store-get-started-portal.md)
 
 [capture-overview]: event-hubs-capture-overview.md

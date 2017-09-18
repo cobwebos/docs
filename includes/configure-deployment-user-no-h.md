@@ -1,4 +1,4 @@
-使用 [az webapp deployment user set](/cli/azure/webapp/deployment/user#set) 命令创建部署凭据。
+在 Cloud Shell 中，使用 [az webapp deployment user set](/cli/azure/webapp/deployment/user#set) 命令创建部署凭据。
 
 对 Web 应用进行 FTP 和本地 Git 部署时需要一个部署用户。 用户名和密码都为帐户级别。 它们与 Azure 订阅凭据不同。
 

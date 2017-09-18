@@ -14,10 +14,11 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 02/10/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: 5369dcd6ad1ec93c63eb442db9fc5ffdcca37375
-ms.openlocfilehash: 530191637b1aa91ee1d7fe5b5bb032c60983f7dc
-
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: f2c448af24e180db58f3ef3d39e90036dda3f7eb
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="how-to-use-azure-redis-cache-with-nodejs"></a>如何将 Azure Redis 缓存与 Node.js 配合使用
@@ -30,9 +31,9 @@ ms.openlocfilehash: 530191637b1aa91ee1d7fe5b5bb032c60983f7dc
 > 
 > 
 
-Azure Redis 缓存可让你访问 Microsoft 管理的、专用安全的 Redis 缓存。 可从 Microsoft Azure 内部的任何应用程序访问你的缓存。
+Azure Redis 缓存用于访问 Microsoft 管理的安全专用的 Redis 缓存。 可从 Microsoft Azure 内部的任何应用程序访问缓存。
 
-本主题说明如何将Azure Redis 缓存与 Node.js 配合使用。 有关将 Azure Redis 缓存与 Node.js 配合使用的另一个示例，请参阅 [在 Azure 网站中使用 Socket.IO 生成 Node.js 聊天应用程序](../app-service-web/web-sites-nodejs-chat-app-socketio.md)。
+本主题说明如何将Azure Redis 缓存与 Node.js 配合使用。 
 
 ## <a name="prerequisites"></a>先决条件
 安装 [node_redis](https://github.com/mranney/node_redis)：
@@ -85,10 +86,5 @@ Azure Redis 缓存可让你访问 Microsoft 管理的、专用安全的 Redis �
 ## <a name="next-steps"></a>后续步骤
 * [启用缓存诊断](cache-how-to-monitor.md#enable-cache-diagnostics)，以便可以[监视](cache-how-to-monitor.md)缓存的运行状况。
 * 阅读官方 [Redis 文档](http://redis.io/documentation)。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

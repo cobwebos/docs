@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/15/2017
+ms.date: 09/07/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 1976c52bd7fa56bb07104e205ab3699b2dfa4c50
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 39234ca792983178cfd4304e001271ea30e28ae6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="introducing-apache-kafka-on-hdinsight-preview"></a>Apache Kafka on HDInsight（预览版）简介
@@ -42,7 +42,7 @@ Kafka 提供以下功能：
 
 * 与 Azure 托管磁盘集成：托管磁盘为 HDInsight 群集中虚拟机使用的磁盘提供更高的规模和吞吐量。
 
-    默认情况下针对 Kafka on HDInsight 启用托管磁盘，并且可以在创建 HDInsight 的过程中配置每个节点使用的磁盘数。 有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘](../virtual-machines/windows/managed-disks-overview.md)。
+    默认情况下，已为 Kafka on HDInsight 启用托管磁盘。 可以在 HDInsight 创建过程中配置每个节点使用的磁盘数。 有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘](../virtual-machines/windows/managed-disks-overview.md)。
 
     有关为 Kafka on HDInsight 配置托管磁盘的信息，请参阅[提高 Kafka on HDInsight 的可伸缩性](hdinsight-apache-kafka-scalability.md)。
 
@@ -55,6 +55,15 @@ Kafka 提供以下功能：
 * **聚合**：使用流处理可从不同的流中聚合信息，将信息合并和集中到操作数据中。
 
 * **转换**：使用流处理可将多个输入主题中的数据合并到一个或多个输出主题中，丰富其内容。
+
+## <a name="architecture"></a>体系结构
+
+![Kafka 群集配置](./media/hdinsight-apache-kafka-introduction/kafka-cluster.png)
+
+下图显示了一个典型 Kafka 配置，该配置利用使用者组、分区和复制提供带容错功能的事件并行读取。 Apache ZooKeeper 专为并发、能恢复和低延迟的事务构建，因为它管理 Kafka 群集的状态。 Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使用。 生成者从 Kafka 代理检索记录。 HDInsight 群集中的每个辅助角色节点都是 Kafka 代理。 将为每个使用者创建一个分区，从而允许对流数据进行并行处理。 利用复制功能将分区分布到各个节点上，以防止发生节点（中转站）服务中断。 用 *(L)* 表示的分区是给定分区的前导者。 生成方流量将根据由 ZooKeeper 管理的状态路由到每个节点的前导者。
+
+> [!IMPORTANT]
+> Kafka 无法识别 Azure 数据中心内的基础硬件（机架）。 若要确保基础硬件上的所有分区都正确地进行平衡，请参阅[配置数据的高可用性 (Kafka)](hdinsight-apache-kafka-high-availability.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
