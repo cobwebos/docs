@@ -4,7 +4,7 @@ description: "有关多重身份验证客户端以及可用的方法和版本的
 keywords: 
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 editor: yossib
 ms.assetid: 
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
-ms.author: kgremban
+ms.author: joflore
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: c47ca818bd77291338de6e90e5dd27465475e868
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 525ca7733d509b6831e6c5ab7a6f3a5ce5250156
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>如何获取 Azure 多重身份验证
@@ -66,7 +66,6 @@ ms.lasthandoff: 08/29/2017
 | 记住受信任的设备的 MFA |● |● |● |
 | MFA SDK | | |●（需要多重身份验证提供程序和完整的 Azure 订阅） |
 | 适用于本地应用程序的 MFA | | |● |
-| 条件访问策略 | | | ● |
 
 ## <a name="how-to-get-azure-multi-factor-authentication"></a>如何获取 Azure 多重身份验证
 如果想要获取 Azure 多重身份验证提供的完整功能，可通过多种方法实现：
