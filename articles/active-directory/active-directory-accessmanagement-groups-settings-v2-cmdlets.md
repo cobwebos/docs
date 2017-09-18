@@ -172,7 +172,7 @@ ms.lasthandoff: 09/15/2017
 
     PS C:\Windows\system32> Add-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 
-#NAME?
+ObjectId 参数是要将成员添加到的组的 ObjectID，-RefObjectId 是要作为成员添加到组的用户的 ObjectID。
 
 若要获取组的现有成员，请使用 Get-AzureADGroupMember cmdlet，如以下示例所示：
 
