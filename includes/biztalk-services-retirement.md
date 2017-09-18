@@ -7,4 +7,4 @@
 > 
 > - [创建你的第一个逻辑应用](../articles/logic-apps/logic-apps-create-a-logic-app.md)，或者通过[预置模板](../articles/logic-apps/logic-apps-use-logic-app-templates.md)快速入门  
 > 
-> - [查看所有可用连接器](../articles/connectors/apis-list.md)，以便在逻辑应用中使用
+> - [查看所有可用的连接器](../articles/connectors/apis-list.md)（可在逻辑应用中使用）
