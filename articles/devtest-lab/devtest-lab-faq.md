@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/22/2017
 ms.author: tarcher
 ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
-ms.openlocfilehash: 17ad81945deef8d4803898cfe4fc9ddbd88a2a54
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 1f261f97bbd9233d47eadc7e902e00ee87af9e34
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure 开发测试实验室常见问题
@@ -136,7 +136,7 @@ Azure 开发测试实验室可为团队节省时间和金钱。 开发人员可�
 ## <a name="how-do-i-automate-the-process-of-uploading-vhd-files-to-create-custom-images"></a>如何自动上传 VHD 文件以创建自定义映像？
 可通过两种方式自动上传 VHD 文件以创建自定义映像：
 
-* 使用 [AzCopy](../storage/common/storage-use-azcopy.md#blob-upload) 将 VHD 文件复制或上传到与实验室关联的存储帐户。
+* 使用 [AzCopy](../storage/common/storage-use-azcopy.md#upload-blobs-to-blob-storage) 将 VHD 文件复制或上传到与实验室关联的存储帐户。
 * 使用 [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)。 存储资源管理器是在 Windows、OS X 和 Linux 上运行的独立应用。   
 
 查找与实验室关联的目标存储帐户：
@@ -222,7 +222,7 @@ Microsoft 帐户可用于通过 Microsoft 设备和服务执行的几乎所有�
 要了解如何获取失败项目的日志，请参阅[如何诊断开发测试实验室中的项目失败](devtest-lab-troubleshoot-artifact-failure.md)。
 
 ## <a name="why-isnt-my-existing-virtual-network-saving-properly"></a>为什么我的虚拟网络没有正确保存？
-一种可能是虚拟网络名称包含句号。 如果包含句号，请尝试将其删除，或将其替换为连字符。 然后再次尝试保存虚拟网络。
+一种可能是虚拟网络名称包含具句号。 如果包含句号，请尝试将其删除，或将其替换为连字符。 然后再次尝试保存虚拟网络。
 
 ## <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>从 PowerShell 预配 VM 时，为什么会收到“找不到父资源”错误？
 若一个资源是另一个资源的父资源，则该父资源必须存在才可创建子资源。 如果父资源不存在，则会看到 ParentResourceNotFound 消息。 如果未指定与父资源的依赖关系，子资源可能会在父资源之前部署。

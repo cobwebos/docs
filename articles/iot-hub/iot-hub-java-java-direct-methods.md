@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 5fa42c4fe7ad04bc74f70b023715bb61f81806ab
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 4fb759ecd7767c126bc22165494652039ba1caa4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="use-direct-methods-java"></a>使用直接方法 (Java)
@@ -33,7 +33,7 @@ ms.lasthandoff: 08/09/2017
 > [!NOTE]
 > 有关 SDK 的信息（可以使用这些 SDK 构建在设备和解决方案后端上运行的应用程序），请参阅 [Azure IoT SDK][lnk-hub-sdks]。
 
-若要完成本教程，你需要：
+要完成本教程，需要：
 
 * Java SE 8。 <br/> [准备开发环境][lnk-dev-setup]介绍了如何在 Windows 或 Linux 上安装本教程所用的 Java。
 * Maven 3。  <br/> [准备开发环境][lnk-dev-setup]介绍如何在 Windows 或 Linux 上安装本教程所用的 [Maven][lnk-maven]。
@@ -111,7 +111,7 @@ ms.lasthandoff: 08/09/2017
     private static final int METHOD_NOT_DEFINED = 404;
     ```
 
-    本示例应用在实例化 **DeviceClient** 对象时使用 **protocol** 变量。 目前，若要使用直接方法，必须使用 MQTT 协议。
+    本示例应用在实例化 **DeviceClient** 对象时使用 **protocol** 变量。 
 
 1. 若要向 IoT 中心返回状态代码，向 App 类添加以下嵌套类：
 
@@ -315,7 +315,7 @@ ms.lasthandoff: 08/09/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，然后在 IoT 中心的标识注册表中创建了设备标识。 已通过此设备标识启用模拟设备应用的相关功能，使之能够响应通过云调用的方法。 还创建了一个应用，用于调用设备上的方法并显示来自设备的响应。
+在本教程中，已在 Azure 门户中配置了新的 IoT 中心，然后在 IoT 中心的标识注册表中创建了设备标识。 已通过此设备标识启用模拟设备应用的相关功能，使之能够响应通过云调用的方法。 还创建了一个应用，用于调用设备上的方法并显示来自设备的响应。
 
 若要探索其他 IoT 方案，请参阅[在多个设备上计划作业][lnk-devguide-jobs]。
 

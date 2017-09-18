@@ -18,7 +18,7 @@ ms.translationtype: HT
 ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: eca4ecd8f639bb9816903f4b1d1f999755da819c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>从 Blob 存储创建 Hive 表和加载数据
@@ -29,7 +29,7 @@ ms.lasthandoff: 08/22/2017
 [!INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
 ## <a name="prerequisites"></a>先决条件
-本文假设你具备以下条件：
+本文假设用户具备以下条件：
 
 * 已创建 Azure 存储帐户。 有关说明，请参阅[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。
 * 已预配具有 HDInsight 服务的自定义 Hadoop 群集。  有关说明，请参阅[为高级分析自定义 Azure HDInsight Hadoop 群集](machine-learning-data-science-customize-hadoop-cluster.md)。

@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure App Service 进行敏捷软件开发"
-description: "学习如何使用支持敏捷软件开发的方式，通过 Azure App Service 创建高缩放性的复杂应用程序。"
+title: "使用 Azure 应用服务进行敏捷软件开发"
+description: "学习如何使用支持敏捷软件开发的方式，通过 Azure 应用服务创建高缩放性的复杂应用程序。"
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 5ed888cbb422766cf2094f5980dfd1c599bd431c
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: ff71194d701fd5de6ffe616c03f7214275f3bc62
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 09/07/2017
 
 ---
-# <a name="agile-software-development-with-azure-app-service"></a>使用 Azure App Service 进行敏捷软件开发
-本教程介绍如何以支持[敏捷软件开发](https://en.wikipedia.org/wiki/Agile_software_development)的方式，通过 [](/azure/app-service/) 创建高缩放性的复杂应用程序。 假设用户已知道了如何[通过可预测方式在 Azure 中部署复杂应用程序](app-service-deploy-complex-application-predictably.md)。
+# <a name="agile-software-development-with-azure-app-service"></a>使用 Azure 应用服务进行敏捷软件开发
+本教程介绍如何以支持[敏捷软件开发](https://en.wikipedia.org/wiki/Agile_software_development)的方式，通过 [Azure 应用服务](/azure/app-service/) 创建高缩放性的复杂应用程序。 假设用户已知道了如何[通过可预测方式在 Azure 中部署复杂应用程序](app-service-deploy-complex-application-predictably.md)。
 
-技术流程限制通常会妨碍成功的实施灵便方法。 如果在 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 中合理地将部署的协调与管理结合起来，则具有[连续发布](app-service-continuous-deployment.md)、[过渡环境](web-sites-staged-publishing.md)（槽）和[监视](web-sites-monitor.md)等功能的 Azure App Service 是非常适合采用敏捷软件开发的开发人员的解决方案。
+技术流程限制通常会妨碍成功的实施灵便方法。 如果在 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 中合理地将部署的协调与管理结合起来，则具有[连续发布](app-service-continuous-deployment.md)、[过渡环境](web-sites-staged-publishing.md)（槽）和[监视](web-sites-monitor.md)等功能的 Azure 应用服务是非常适合采用敏捷软件开发的开发人员的解决方案。
 
 下表是敏捷开发的相关要求以及 Azure 服务如何启用它们的简短列表。
 
 | 要求 | Azure 如何实现 |
 | --- | --- |
-| - 每次提交时生成<br>- 自动快速生成 |配置连续部署后，Azure App Service 可以根据开发分支充当实时运行的构建版本。 每次将代码推送到分支时，Azure 中会自动构建和实时运行代码。 |
+| - 每次提交时生成<br>- 自动快速生成 |配置连续部署后，Azure 应用服务可以根据开发分支充当实时运行的构建版本。 每次将代码推送到分支时，Azure 中会自动构建和实时运行代码。 |
 | - 对构建进行自测试 |负载测试、Web 测试等可以使用 Azure Resource Manager 模板进行部署。 |
 | - 在生产环境的复本中运行测试 |Azure Resource Manager 模板可以用来创建 Azure 生产环境的复本（包括应用设置、连接字符串模板、缩放等）以通过快速且可预测的方式测试。 |
 | - 轻松查看最新构建版本的结果 |从存储库连续部署到 Azure，意味着可以在提交更改后，立即在实时应用程序中测试新代码。 |
@@ -74,7 +74,7 @@ ms.lasthandoff: 08/15/2017
 > * 可以 [免费建立一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)：获取可用来试用付费版 Azure 服务的信用额度，甚至在用完信用额度后，仍可以保留帐户和使用免费的 Azure 服务（如 Web 应用）。
 > * 可以[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)：Visual Studio 订阅每月为用户提供可用来试用付费版 Azure 服务的信用额度。
 > 
-> 如果要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
+> 如果要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
@@ -264,7 +264,9 @@ ms.lasthandoff: 08/15/2017
     Remove-AzureRmResourceGroup -Name ToDoApp<unique_string>newupdate-group -Force -Verbose
 
 ## <a name="summary"></a>摘要
-对于许多想要采用 Azure 作为其应用程序平台的公司而言，敏捷软件开发是必不可少的。 在本教程中，已学习如何轻松创建和删除生产环境的确切副本或近似副本，即使对于复杂应用程序也是一样。 还学习了如何利用此功能创建开发过程，以便在 Azure 中构建和测试每项提交。 本教程旨在演示如何最恰当地将 Azure App Service 和 Azure Resource Manager 配合使用，以创建提供灵便方法的 DevOps 解决方案。 接下来，可以通过执行高级 DevOps 技术（例如[在生产环境中测试](app-service-web-test-in-production-get-start.md)），基于此方案生成项目。 有关常用的生产中测试方案，请参阅 [Azure App Service 中的外部测试部署（Beta 测试）](app-service-web-test-in-production-controlled-test-flight.md)。
+对于许多想要采用 Azure 作为其应用程序平台的公司而言，敏捷软件开发是必不可少的。 在本教程中，已学习如何轻松创建和删除生产环境的确切副本或近似副本，即使对于复杂应用程序也是一样。 还学习了如何利用此功能创建开发过程，以便在 Azure 中构建和测试每项提交。 本教程旨在演示如何最恰当地将 Azure 应用服务和 Azure Resource Manager 配合使用，以创建提供灵便方法的 DevOps 解决方案。 
+
+<!-- Next, you can build on this scenario by performing advanced DevOps techniques such as testing in production. For a common testing-in-production scenario, see [Flighting deployment (beta testing) in Azure App Service](app-service-web-test-in-production-controlled-test-flight.md). -->
 
 ## <a name="more-resources"></a>更多资源
 * [通过可预测的方式在 Azure 中部署复杂应用程序](app-service-deploy-complex-application-predictably.md)

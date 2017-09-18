@@ -14,21 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2016
 ms.author: aelnably
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e238f804d4a96e10101e7aa2e2a1bcb78a44e967
-ms.lasthandoff: 11/17/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 3b82f352f89a7857bfb42be6cee136f245fbd5fa
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>使用 PowerShell 克隆 Azure 应用服务应用
 在发行的 Microsoft Azure PowerShell 版本 1.1.0 中，为 New-AzureRMWebApp 添加了新选项，可让用户将现有的 Web 应用克隆到不同区域或相同区域中新建的应用。 这样，客户就可以跨不同区域部署许多应用。
 
-应用克隆目前仅支持高级层 App Service 计划。 新功能使用与 Web 应用备份功能相同的限制，具体请参阅[在 Azure 应用服务中备份 Web 应用](web-sites-backup.md)。
+应用克隆目前仅支持高级层应用服务计划。 新功能使用与 Web 应用备份功能相同的限制，具体请参阅[在 Azure 应用服务中备份 Web 应用](web-sites-backup.md)。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
-
-若要了解如何使用基于 Azure Resource Manager 的 Azure PowerShell cmdlet 来管理 Web 应用，请查看[适用于 Azure Web 应用的基于 Azure Resource Manager 的 PowerShell 命令](app-service-web-app-azure-resource-manager-powershell.md)
 
 ## <a name="cloning-an-existing-app"></a>克隆现有应用
 场景：用户想要将位于美国中南部区域的现有 Web 应用内容克隆到位于美国中北部区域的新 Web 应用。 结合 -SourceWebApp 选项使用 Azure Resource Manager 版本的 PowerShell cmdlet 来创建新的 Web 应用，即可实现此目的。
@@ -37,7 +35,7 @@ ms.lasthandoff: 11/17/2016
 
     $srcapp = Get-AzureRmWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-webapp
 
-若要创建新的 App Service 计划，我们可以按以下示例中所示使用 New-AzureRmAppServicePlan 命令
+若要创建新的应用服务计划，我们可以按以下示例中所示使用 New-AzureRmAppServicePlan 命令
 
     New-AzureRmAppServicePlan -Location "South Central US" -ResourceGroupName DestinationAzureResourceGroup -Name NewAppServicePlan -Tier Premium
 
@@ -49,7 +47,7 @@ ms.lasthandoff: 11/17/2016
 
     $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -IncludeSourceWebAppSlots
 
-若要在同一区域中克隆现有的 Web 应用，用户必须在同一区域中创建新资源组和新的 App Service 计划，然后使用以下 PowerShell 命令来克隆 Web 应用
+要在同一区域中克隆现有的 Web 应用，用户必须在同一区域中创建新资源组和新的应用服务计划，并使用以下 PowerShell 命令来克隆 Web 应用
 
     $destapp = New-AzureRmWebApp -ResourceGroupName NewAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan NewAppServicePlan -SourceWebApp $srcap
 
@@ -78,7 +76,7 @@ ms.lasthandoff: 11/17/2016
     $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcappslot
 
 ## <a name="configuring-traffic-manager-while-cloning-a-app"></a>在克隆应用时配置流量管理器
-创建多区域 Web 应用并配置 Azure 流量管理器以将流量路由到所有这些 Web 应用是一种确保客户应用高可用性的重要方案，当克隆现有的 Web 应用时，你可以选择将两个 Web 应用连接到新的流量管理器配置文件或现有的配置文件 — 请注意，仅支持 Azure Resource Manager 版本的流量管理器。
+创建多区域 Web 应用并配置 Azure 流量管理器以将流量路由到所有这些 Web 应用是一种确保客户应用高可用性的重要方案，当克隆现有的 Web 应用时，可以选择将两个 Web 应用连接到新的流量管理器配置文件或现有的配置文件 — 请注意，仅支持 Azure Resource Manager 版本的流量管理器。
 
 ### <a name="creating-a-new-traffic-manager-profile-while-cloning-a-app"></a>在克隆应用时创建新的流量管理器配置文件
 方案：用户想要将 Web 应用克隆到另一个区域，同时配置包含两个 Web 应用的 Azure Resource Manager 流量管理器配置文件。 下面演示了如何在新 Web 应用中创建源 Web 应用的克隆，同时配置新的流量管理器配置文件：
@@ -107,11 +105,10 @@ ms.lasthandoff: 11/17/2016
 * 将不会克隆数据库内容
 
 ### <a name="references"></a>参考
-* [适用于 Azure Web 应用的基于 Azure Resource Manager 的 PowerShell 命令](app-service-web-app-azure-resource-manager-powershell.md)
 * [使用 Azure 门户克隆 Web 应用](app-service-web-app-cloning-portal.md)
 * [在 Azure 应用服务中备份 Web 应用](web-sites-backup.md)
 * [Azure 流量管理器预览版对 Azure Resource Manager 的支持](../traffic-manager/traffic-manager-powershell-arm.md)
 * [应用服务环境简介](app-service-app-service-environment-intro.md)
-* [将 Azure PowerShell 与 Azure Resource Manager 配合使用](../powershell-azure-resource-manager.md)
+* [将 Azure PowerShell 与 Azure Resource Manager 配合使用](../azure-resource-manager/powershell-azure-resource-manager.md)
 
 

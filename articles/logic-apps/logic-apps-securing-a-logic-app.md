@@ -15,10 +15,10 @@ ms.workload: integration
 ms.date: 11/22/2016
 ms.author: LADocs; jehollan
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 0528d660f590e106f61729f10f8f68da3fe58cb7
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 45a4e476f930e0f5f6633dc5b3b35b66dc6dfa20
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -269,10 +269,6 @@ POST
 #### <a name="azure-api-management"></a>Azure API 管理
 
 [Azure API 管理](https://azure.microsoft.com/services/api-management/)提供本地连接选项，包括站点到站点 VPN 和 ExpressRoute 集成，可以保护代理与本地系统的通信。 在逻辑应用设计器中，可以快速选择工作流中通过 Azure API 管理公开的 API，从而快速访问本地系统。
-
-#### <a name="hybrid-connections-from-azure-app-service"></a>来自 Azure 应用服务的混合连接
-
-可以使用 Azure API 和 Web 应用的本地混合连接功能在本地通信。  [此文](../app-service-web/web-sites-hybrid-connection-get-started.md)提供了有关混合连接及其配置方式的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 [创建部署模板](logic-apps-create-deploy-template.md)  

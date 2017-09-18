@@ -17,8 +17,8 @@ ms.date: 05/24/2017
 ms.author: anhoh
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: a8037dfbd799209e453b84374f28b881864d3799
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 7326dce288996f0690be3b66882b8b4c21a35348
 ms.contentlocale: zh-cn
 ms.lasthandoff: 09/07/2017
 
@@ -97,7 +97,7 @@ Azure Cosmos DB 管理的数据库实体被称为**资源**。 每个资源都�
         </tr>
         <tr>
             <td valign="top"><p>id</p></td>
-            <td valign="top"><p>系统生成的</p></td>
+            <td valign="top"><p>任一个</p></td>
             <td valign="top"><p>资源的用户定义的唯一名称（具有相同分区键值）。 如果用户未指定 ID，系统将生成 ID</p></td>
         </tr>
     </tbody>

@@ -1,6 +1,6 @@
 ---
-title: "为 Azure App Service 中的 Web 应用设置过渡环境 | Microsoft Docs"
-description: "了解如何对 Azure App Service 中的 Web 应用使用分阶段发布。"
+title: "为 Azure 应用服务中的 Web 应用设置过渡环境 | Microsoft Docs"
+description: "了解如何对 Azure 应用服务中的 Web 应用使用分阶段发布。"
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: bc6c77deb02b145cd412e18ba31d724f2b71e4d1
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 2d74331ec1625a53d1af5ab5058b733651271f37
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/07/2017
 
 ---
-# <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure App Service 中的过渡环境
+# <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
 
 将 Web 应用、Linux 上的 Web 应用、移动后端和 API 应用部署到 [应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)时，如果应用在“标准”或“高级”应用服务计划模式下运行，则可以部署到单独的部署槽而不是默认的生产槽。 部署槽实际上是具有自身主机名的实时应用。 两个部署槽（包括生产槽）之间的应用内容与配置元素可以交换。 将应用程序部署到部署槽具有以下优点：
@@ -191,7 +191,7 @@ ms.lasthandoff: 08/17/2017
 <a name="PowerShell"></a>
 
 ## <a name="azure-powershell-cmdlets-for-deployment-slots"></a>适用于部署槽的 Azure PowerShell cmdlet
-Azure PowerShell 是一个模块，可提供通过 Windows PowerShell 管理 Azure 的 cmdlet，包括对管理 Azure App Service 的部署槽的支持。
+Azure PowerShell 是一个模块，可提供通过 Windows PowerShell 管理 Azure 的 cmdlet，包括对管理 Azure 应用服务的部署槽的支持。
 
 * 有关安装和配置 Azure PowerShell 的信息以及使用 Azure 订阅对 Azure PowerShell 进行身份验证的信息，请参阅[如何安装和配置 Microsoft Azure PowerShell](/powershell/azure/overview)。  
 
@@ -242,7 +242,7 @@ Remove-AzureRmResource -ResourceGroupName [resource group name] -ResourceType Mi
 Azure CLI 提供了适用于 Azure 的跨平台命令，包括对管理应用服务部署槽的支持。
 
 * 有关安装和配置 Azure CLI 的说明（包括有关如何将 Azure CLI 连接到 Azure 订阅的信息），请参阅[安装和配置 Azure CLI](../cli-install-nodejs.md)。
-* 若要在 Azure CLI 中列出可用于 Azure App Service 的命令，请调用 `azure site -h`。
+* 若要在 Azure CLI 中列出可用于 Azure 应用服务的命令，请调用 `azure site -h`。
 
 > [!NOTE] 
 > 若要了解部署槽的 [Azure CLI 2.0](https://github.com/Azure/azure-cli) 命令，请参阅 [az appservice web 部署槽](/cli/azure/appservice/web/deployment/slot)。
@@ -282,8 +282,8 @@ Azure CLI 提供了适用于 Azure 的跨平台命令，包括对管理应用服
 > 
 
 ## <a name="next-steps"></a>后续步骤
-[Azure Web App – block web access to non-production deployment slots](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)（Azure App Service Web 应用 – 阻止对非生产部署槽进行 Web 访问）
-[Linux 上的应用服务简介](./app-service-linux-intro.md)
+[Azure Web App – block web access to non-production deployment slots](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)（Azure 应用服务 Web 应用 – 阻止对非生产部署槽进行 Web 访问）
+[Linux 上的 应用服务简介](../app-service/containers/app-service-linux-intro.md)
 [Microsoft Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)
 
 <!-- IMAGES -->

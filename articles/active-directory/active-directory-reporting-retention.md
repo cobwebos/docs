@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: aa7a69c933abfda3bf4d1ac1a298c4ba684efd7e
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 047f18acf192c75ac5904d7cfe10f19ad18e2888
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Azure Active Directory 报告保留策略
@@ -47,7 +47,7 @@ ms.lasthandoff: 04/06/2017
 ---
 **问：如何开始收集安全信号？**  
 
-**答：**当用户选择使用标识防护中心时，收集安全信号的过程将会开始。 
+**答：**当用户选择使用标识防护中心时，收集安全信号的过程会开始。 
 
 
 ---
@@ -60,7 +60,7 @@ ms.lasthandoff: 04/06/2017
 | 报表                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--                 | :--                 |
 | 目录审核        | 7 天        | 30 天             | 30 天             |
-| 登录活动       | 7 天        | 30 天             | 30 天             |
+| 登录活动       | 不适用           | 30 天             | 30 天             |
 
 **安全信号**
 
@@ -70,3 +70,4 @@ ms.lasthandoff: 04/06/2017
 | 有风险的登录 | 7 天        | 30 天             | 90 天             |
 
 ---
+

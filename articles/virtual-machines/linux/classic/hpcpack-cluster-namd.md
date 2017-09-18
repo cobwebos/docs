@@ -16,10 +16,10 @@ ms.workload: big-compute
 ms.date: 10/13/2016
 ms.author: danlep
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: e31845f3d7aa08357b0e8a1b3b77d97302442ac3
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 0c0b9875b4153edcc0ec0096577d041d394a842f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="run-namd-with-microsoft-hpc-pack-on-linux-compute-nodes-in-azure"></a>在 Azure 中的 Linux 计算节点上使用 Microsoft HPC Pack 运行 NAMD
@@ -29,8 +29,6 @@ ms.lasthandoff: 08/22/2017
 
 * **NAMD**（用于纳米级分子动力学程序）是并行分子动力学软件包，设计用于包含数百万个原子的大型生物分子系统的高性能仿真。 这些系统的例子包括病毒、细胞结构和大蛋白。 NAMD 扩展至数百个核心进行典型仿真，扩展至 500,000 个核心进行最大型仿真。
 * **Microsoft HPC Pack** 可提供在本地计算机或 Azure 虚拟机群集上运行大型 HPC 和并行应用程序的功能。 HPC Pack 最初是针对 Windows HPC 工作负荷开发的一种解决方案，现在支持在 HPC Pack 群集中部署的 Linux 计算节点 VM 上运行 Linux HPC 应用程序。 有关简介，请参阅 [Get started with Linux compute nodes in an HPC Pack cluster in Azure](hpcpack-cluster.md)（Azure 的 HPC Pack 群集中的 Linux 计算节点入门）。
-
-有关在 Azure 中运行 Linux HPC 工作负荷的其他选项，请参阅 [Technical resources for batch and high-performance computing](../../../batch/batch-hpc-solutions.md)（适用于批处理和高性能计算的技术资源）。
 
 ## <a name="prerequisites"></a>先决条件
 * **包含 Linux 计算节点的 HPC Pack 群集** - 使用 [Azure Resource Manager 模板](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)或 [Azure PowerShell 脚本](hpcpack-cluster-powershell-script.md)，在 Azure 上部署包含 Linux 计算节点的 HPC Pack 群集。 有关任一选项的先决条件和步骤，请参阅 [Get started with Linux compute nodes in an HPC Pack cluster in Azure](hpcpack-cluster.md)（Azure 的 HPC Pack 群集中的 Linux 计算节点入门）。 如果选择 PowerShell 脚本部署选项，请参阅本文末尾的示例文件中的示例配置文件。 此文件配置一个基于 Azure 的 HPC Pack 群集，其中包含 1 个 Windows Server 2012 R2 头节点和 4 个大型 CentOS 6.6 计算节点。 请根据环境的需要自定义此文件。

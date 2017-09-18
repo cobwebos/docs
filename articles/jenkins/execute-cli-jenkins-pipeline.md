@@ -16,10 +16,10 @@ ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 5ca8338d4bf343f08fe70081cff755fa76a126a9
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: a1f5329e4e33ae20541e2fdaa09f4609296bddd5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -184,7 +184,7 @@ withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
 
 Linux 上的 Web 应用支持用另一种方式执行部署，即，使用 Docker。 若要进行部署，需提供 Dockerfile，以便使用服务运行时将 Web 应用打包到 Docker 映像中。 该插件随后生成映像，将其推送到 Docker 注册表，并将映像部署到 Web 应用。
 
-* 按照[此处](/azure/app-service-web/app-service-linux-how-to-create-web-app)的步骤操作，创建在 Linux 上运行的 Azure Web 应用。
+* 按照[此处](../app-service/containers/quickstart-nodejs.md)的步骤操作，创建在 Linux 上运行的 Azure Web 应用。
 * 按照[此文章](https://docs.docker.com/engine/installation/linux/ubuntu/)中的说明在 Jenkins 实例上安装 Docker。
 * 通过执行[此处](/azure/container-registry/container-registry-get-started-azure-cli)的步骤，在 Azure 门户中创建容器注册表。
 * 在同一个已分叉的[适用于 Azure 的简单 Java Web 应用](https://github.com/azure-devops/javawebappsample)存储库中，编辑 **Jenkinsfile2** 文件：

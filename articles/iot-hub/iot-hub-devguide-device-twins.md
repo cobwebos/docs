@@ -16,10 +16,10 @@ ms.date: 08/24/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: b316aa419d558547f90a914a22fb29935076de21
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 257f661dbc5ff23db53591a1b2db59a8dbeac2dc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解并在 IoT 中心内使用设备孪生
@@ -29,12 +29,8 @@ ms.lasthandoff: 08/28/2017
 * 设备孪生的结构：*标记*、*所需的属性*和*报告的属性*，以及
 * 设备应用和后端可在设备孪生上执行的操作。
 
-> [!NOTE]
-> 当前，只能从使用 MQTT 协议连接到 IoT 中心的设备访问设备克隆。 有关如何转换现有设备应用以使用 MQTT 的说明，请参阅 [MQTT 支持][lnk-devguide-mqtt]一文。
-> 
-> 
 
-### <a name="when-to-use"></a>使用时机
+### <a name="when-to-use"></a>何时使用
 使用设备克隆可以：
 
 * 将设备特定的元数据存储在云中。 例如，存储在自动售货机的部署位置。
@@ -219,10 +215,6 @@ ms.lasthandoff: 08/28/2017
 
 借助 [Azure IoT 设备 SDK][lnk-sdks]，可通过多种语言和平台轻松使用上述操作。 有关 IoT 中心内用于同步所需属性的基元详细信息，可在[设备重新连接流][lnk-reconnection]中找到。
 
-> [!NOTE]
-> 当前，只能从使用 MQTT 协议连接到 IoT 中心的设备访问设备克隆。
-> 
-> 
 
 ## <a name="reference-topics"></a>参考主题：
 以下参考主题提供有关控制对 IoT 中心的访问的详细信息。

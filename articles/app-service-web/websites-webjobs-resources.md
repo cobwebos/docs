@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/25/2017
 ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 05062d7396bdbb3e589d2ab5f0443d1dca54342a
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 5050b442540632086eda80bd7fecaf2beb8ddb50
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="azure-webjobs-documentation-resources"></a>Azure Web 作业文档资源
@@ -69,7 +69,7 @@ Azure 门户中的 WebJobs 仪表板提供了强大的管理功能，可让你�
 
 ## <a name="schedule"></a>计划 WebJobs
 * [添加 Azure Web 作业对话框](websites-dotnet-deploy-webjobs.md#configure)
-* [在 Azure 门户中创建计划的 Web 作业](web-sites-create-web-jobs.md#CreateScheduled)
+* [在 Azure 门户中创建计划的 Web 作业](web-sites-create-web-jobs.md#CreateScheduledCRON)
 * [将计划程序作业挂接到 Web 作业](http://blog.davidebbo.com/2015/05/scheduled-webjob.html)
 * [通过 cron 表达式计划 Azure Web 作业](http://blog.amitapple.com/post/2015/06/scheduling-azure-webjobs/)
 * [使用 WebJobs SDK TimerTrigger 计划单个 Web 作业函数](websites-dotnet-webjobs-sdk.md#schedule)

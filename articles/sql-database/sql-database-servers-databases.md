@@ -16,10 +16,10 @@ ms.workload: data-management
 ms.date: 07/19/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: 8a44f10eda396aec72e05e87e406ff80834294d8
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 4585be186554d5d7aa9bc79029b6f8506b278701
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 
@@ -87,11 +87,7 @@ Azure 数据库逻辑服务器：
 
 ### <a name="create-a-blank-sql-server-logical-server"></a>创建空白 SQL 服务器（逻辑服务器）
 
-若要使用 [Azure 门户](https://portal.azure.com)创建 Azure SQL 数据库服务器（不含数据库），请转到空白 SQL 服务器（逻辑服务器）表单。 下面的屏幕截图展示了一种打开用于创建空白逻辑 SQL 服务器的表单的方法。 
-
-   ![创建逻辑服务器完成窗体](./media/sql-database-migrate-your-sql-server-database/logical-server-create-completed.png)
-
-如果使用其他方法转到此表单，表单上的信息完全相同。
+若要使用 [Azure 门户](https://portal.azure.com)创建 Azure SQL 数据库服务器（不含数据库），请转到空白 SQL 服务器（逻辑服务器）表单。  
 
 ### <a name="create-a-blank-or-sample-sql-database"></a>创建空白或示例 SQL 数据库
 
@@ -105,9 +101,7 @@ Azure 数据库逻辑服务器：
 
 ### <a name="manage-an-existing-sql-server"></a>管理现有 SQL 服务器
 
-若要管理现有服务器，请使用多种方法转到服务器，如通过特定 SQL 数据库网页、“SQL 服务器”页或“所有资源”页。 下面的屏幕截图展示了如何通过服务器的“概述”页开始设置服务器级防火墙。 
-
-   ![逻辑服务器概述](./media/sql-database-migrate-your-sql-server-database/logical-server-overview.png)
+若要管理现有服务器，请使用多种方法转到服务器，如通过特定 SQL 数据库网页、“SQL 服务器”页或“所有资源”页。 
 
 若要管理现有数据库，请转到“SQL 数据库”页，再单击要管理的数据库。 下面的屏幕截图展示了如何通过数据库的“概述”页开始为数据库设置服务器级防火墙。 
 
@@ -219,13 +213,13 @@ Azure 数据库逻辑服务器：
 |[Servers - Update](/rest/api/sql/servers/update)|更新现有服务器。|
 |[Servers - Sql](/rest/api/sql/servers%20-%20sql)|判断是否能使用指定名称创建资源。|
 |[Databases - Create Or Update](/rest/api/sql/databases/createorupdate)|创建新数据库或更新现有数据库。|
-|[Databases - Get](/rest/api/sql/databases/get)|获取数据库。|
-|[Databases - Get By Elastic Pool](/rest/api/sql/databases/getbyelasticpool)|获取弹性池内的数据库。|
-|[Databases - Get By Recommended Elastic Pool](/rest/api/sql/databases/getbyrecommendedelasticpool)|获取推荐弹性池内的数据库。|
-|[Databases - List By Elastic Pool](/rest/api/sql/databases/listbyelasticpool)|返回弹性池中数据库的列表。|
-|[Databases - List By Recommended Elastic Pool](/rest/api/sql/databases/listbyrecommendedelasticpool)|返回推荐弹性池内的数据库列表。|
-|[Databases - List By Server](/rest/api/sql/databases/listbyserver)|返回服务器中的数据库列表。|
-|[Databases - Update](/api/sql/databases/update)|更新现有的数据库。|
+|[数据库 - 获取](/rest/api/sql/databases/get)|获取数据库。|
+|[数据库 - 按弹性池获取](/rest/api/sql/databases/getbyelasticpool)|获取弹性池内的数据库。|
+|[数据库 - 按推荐的弹性池获取](/rest/api/sql/databases/getbyrecommendedelasticpool)|获取推荐弹性池内的数据库。|
+|[数据库 - 按弹性池列出](/rest/api/sql/databases/listbyelasticpool)|返回弹性池中数据库的列表。|
+|[数据库 - 按推荐的弹性池列出](/rest/api/sql/databases/listbyrecommendedelasticpool)|返回推荐弹性池内的数据库列表。|
+|[数据库 - 按服务器列出](/rest/api/sql/databases/listbyserver)|返回服务器中的数据库列表。|
+|[数据库 - 更新](/api/sql/databases/update)|更新现有的数据库。|
 |[Firewall Rules - Create Or Update](/rest/api/sql/firewallrules/createorupdate)|创建或更新防火墙规则。|
 |[Firewall Rules - Delete](/rest/api/sql/firewallrules/delete)|删除防火墙规则。|
 |[Firewall Rules - Get](/rest/api/sql/firewallrules/get)|获取防火墙规则。|

@@ -16,10 +16,10 @@ ms.date: 7/24/2017
 ms.author: mlearned
 ms.custom: Jenkins
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: dfb1abd4eefdb2baea8cdbd497bc8fcc95d200e6
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: b2035d6bc0d323f2497a1db9b88d3ed015235b16
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -142,7 +142,7 @@ Linux 版 Web 应用还支持 Git 和 FTP 等传统方式，但仅限内置语�
 
 在 Jenkins 中设置作业前，首先需要 Linux 版 Azure App Service。 还需容器注册表来存储与管理专用 Docker 容器映像。 可以使用 DockerHub，而此示例使用 Azure 容器注册表。
 
-* 可按照[此处](/azure/app-service-web/app-service-linux-how-to-create-web-app)的步骤进行操作，创建 Linux 版 Web 应用 
+* 可按照[此处](../app-service/containers/quickstart-nodejs.md)的步骤进行操作，创建 Linux 版 Web 应用 
 * Azure 容器注册表是基于开源 Docker 注册表 2.0 的托管 [Docker 注册表] (https://docs.docker.com/registry/) 服务。 有关如何执行此操作的更多指导，请按照 [此处] (/azure/container-registry/container-registry-get-started-azure-cli) 的步骤进行操作。 还可使用 DockerHub。
 
 ### <a name="to-deploy-using-docker"></a>使用 Docker 进行部署：
@@ -165,7 +165,7 @@ az acr update -n <yourRegistry> --admin-enabled true
 az acr credential show -n <yourRegistry>
 ```
 
-9. “高级”选项卡中的 Docker 映像名称和标记是可选的。 默认情况下，映像名称即为 Azure 门户中配置的映像名称（在 Docker 容器设置中）。标志从 $BUILD_NUMBER 生成。 请确保在 Azure 门户中指定映像名称，或在“高级”选项卡中为 Docker 映像提供一个值。 对于此示例，请将“&lt;yourRegistry>.azurecr.io/calculator”作为 Docker 映像并将“Docker 映像标记”留空。
+9. “高级”选项卡中的 Docker 映像名称和标记是可选的。 默认情况下，映像名称即为 Azure 门户中配置的映像名称（在 Docker 容器设置中）。标志从 $BUILD_NUMBER 生成。 请确保在 Azure 门户中指定映像名称，或在“高级”选项卡中为 Docker 映像提供一个值。对于此示例，请将“&lt;yourRegistry>.azurecr.io/calculator”作为 Docker 映像并将“Docker 映像标记”留空。
 10. 请注意，如果使用内置 Docker 映像设置，则部署将失败。 请确保更改 Docker 配置，以在 Azure 门户的 Docker 容器设置中使用自定义映像。 对于内置映像，请使用文件上传方法进行部署。
 11. 与文件上传方法类似，可以选择其他非生产槽。
 12. 保存并生成项目。 可以发现容器映像已推送到注册表，且 Web 应用已部署。

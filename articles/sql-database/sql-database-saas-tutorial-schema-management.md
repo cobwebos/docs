@@ -5,7 +5,7 @@ keywords: "sql 数据库教程"
 services: sql-database
 documentationcenter: 
 author: stevestein
-manager: jhubbard
+manager: craigg
 editor: 
 ms.assetid: 
 ms.service: sql-database
@@ -17,19 +17,19 @@ ms.topic: article
 ms.date: 07/28/2017
 ms.author: billgib; sstein
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: 78d76efb88bf11fa18a416b59e6f881539141232
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 461da2528d515072bf04a82bb8ba64a853443f98
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/31/2017
+ms.lasthandoff: 09/13/2017
 
 ---
-# <a name="manage-schema-for-multiple-tenants-in-the-wingtip-saas-application"></a>在 Wingtip SaaS 应用程序中管理多个租户的架构
+# <a name="manage-schema-for-multiple-tenants-in-a-multi-tenant-application-that-uses-azure-sql-database"></a>在使用 Azure SQL 数据库的多租户应用程序中为多个租户管理架构
 
 [第一个 Wingtip SaaS 教程](sql-database-saas-tutorial.md)介绍该应用如何预配租户数据库并将其注册到编录中。 与任何应用程序一样，Wingtip SaaS 应用也会随时间而改进，并且会不时需要对数据库进行更改。 更改可能包括新的或更改的架构、新的或更改的引用数据，以及常规数据库维护任务，目的是确保应用的最佳性能。 使用 SaaS 应用程序时，需要跨数量可能很多的租户数据库以协调的方式部署这些更改。 要使这些更改出现在未来租户数据库中，需要将这些更改合并到预配过程中。
 
 本教程探讨两个方案 - 为所有租户部署引用数据更新，以及返回包含引用数据的表的索引。 [弹性作业](sql-database-elastic-jobs-overview.md)功能用于跨所有租户执行这些操作，golden 租户数据库用作新数据库的模板。
 
-本教程将介绍如何执行下列操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 
