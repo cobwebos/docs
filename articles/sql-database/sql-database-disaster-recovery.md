@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/14/2017
 ms.author: sashan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: e33f69bf04b32a31aae3c311c41aa44e4da5016a
+ms.translationtype: HT
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: e5242b5f76866ca382b31005deca07cd722af423
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>还原 Azure SQL 数据库或故障转移到辅助数据库
@@ -43,7 +42,7 @@ Azure SQL 数据库提供以下功能，以便在服务中断后进行恢复：
 * 执行[灾难恢复演练](sql-database-disaster-recovery-drills.md)。 若要模拟中断情况进行异地还原，可删除或重命名源数据库以引发应用程序连接失败。 若要模拟中断进行活动异地复制，可禁用连接到数据库的 Web 应用程序或虚拟机，或者故障转移数据库以引发应用程序连接失败。
 
 ## <a name="when-to-initiate-recovery"></a>何时启动恢复
-恢复操作会影响应用程序。 需更改 SQL 连接字符串或使用 DNS 重定向，可能导致参数数据丢失。 因此，仅当中断的持续时间可能超过应用程序的恢复时间目标时，才应执行此操作。 如果应用程序已部署到生产环境，你应该定期监视应用程序的运行状况，并使用以下数据点来声明有必要进行恢复：
+恢复操作会影响应用程序。 需更改 SQL 连接字符串或使用 DNS 重定向，可能导致参数数据丢失。 因此，仅当中断的持续时间可能超过应用程序的恢复时间目标时，才应执行此操作。 如果应用程序已部署到生产环境，应该定期监视应用程序的运行状况，并使用以下数据点来声明有必要进行恢复：
 
 1. 应用程序层与数据库之间的连接发生永久性故障。
 2. Azure 门户显示了警报，指出区域中的某个事件造成广泛影响。
@@ -54,7 +53,7 @@ Azure SQL 数据库提供以下功能，以便在服务中断后进行恢复：
 使用[获取可恢复数据库](https://msdn.microsoft.com/library/dn800985.aspx) (*LastAvailableBackupDate*) 获取最新的异地复制还原点。
 
 ## <a name="wait-for-service-recovery"></a>等待服务恢复
-Azure 团队会努力尽快还原服务可用性，但视根本原因而定，有可能需要数小时或数天的时间。  如果你的应用程序可以容忍长时间停机，则可以等待恢复完成。 在此情况下，你不需要采取任何操作。 可在 [Azure 服务运行状况仪表板](https://azure.microsoft.com/status/)上查看当前服务状态。 在区域恢复后，应用程序的可用性将会还原。
+Azure 团队会努力尽快还原服务可用性，但视根本原因而定，有可能需要数小时或数天的时间。  如果应用程序可以容忍长时间停机，则可以等待恢复完成。 在此情况下，不需要采取任何操作。 可在 [Azure 服务运行状况仪表板](https://azure.microsoft.com/status/)上查看当前服务状态。 在区域恢复后，应用程序的可用性会还原。
 
 ## <a name="fail-over-to-geo-replicated-secondary-database"></a>故障转移到异地复制的辅助数据库
 如果应用程序停机可能会带来业务责任，则应当在应用程序中使用异地复制的数据库。 这样，应用程序在发生中断时，就可以快速还原其他区域的可用性。 了解如何[配置异地复制](sql-database-geo-replication-portal.md)。
@@ -65,13 +64,13 @@ Azure 团队会努力尽快还原服务可用性，但视根本原因而定，�
 
 * [使用 Azure 门户故障转移到异地复制的辅助数据库](sql-database-geo-replication-portal.md)
 * [使用 PowerShell 故障转移到异地复制的辅助数据库](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-* [使用 T-SQL 故障转移到异地复制的辅助数据库](sql-database-geo-replication-transact-sql.md)
+* [使用 T-SQL 故障转移到异地复制的辅助数据库](/sql/t-sql/statements/alter-database-azure-sql-database.md)
 
 ## <a name="recover-using-geo-restore"></a>使用异地还原进行恢复
 如果应用程序停机不会带来业务责任，则可以使用[异地还原](sql-database-recovery-using-backups.md)作为恢复应用程序数据库的方法。 它会从其最新的异地冗余备份创建数据库的副本。
 
 ## <a name="configure-your-database-after-recovery"></a>恢复后配置数据库
-在服务中断后，如果你使用异地复制进行故障转移或使用异地还原进行恢复，则必须确保已正确配置与新数据库的连接，以便恢复正常的应用程序功能。 以下任务清单可帮助你准备好将恢复的数据库投入生产。
+在服务中断后，如果使用异地复制进行故障转移或使用异地还原进行恢复，则必须确保已正确配置与新数据库的连接，以便恢复正常的应用程序功能。 以下任务清单可帮助你准备好将恢复的数据库投入生产。
 
 ### <a name="update-connection-strings"></a>更新连接字符串
 因为恢复的数据库将位于不同的服务器中，所以必须更新应用程序的连接字符串以指向该服务器。
@@ -95,7 +94,7 @@ Azure 团队会努力尽快还原服务可用性，但视根本原因而定，�
 有关数据库警报规则的详细信息，请参阅[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)和[跟踪服务运行状况](../monitoring-and-diagnostics/insights-service-health.md)。
 
 ### <a name="enable-auditing"></a>启用审核
-如果需要通过审核来访问数据库，你需要在恢复数据库后启用审核。 有关详细信息，请参阅[数据库审核](sql-database-auditing.md)。
+如果需要通过审核来访问数据库，需要在恢复数据库后启用审核。 有关详细信息，请参阅[数据库审核](sql-database-auditing.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 若要了解 Azure SQL 数据库的自动备份，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)

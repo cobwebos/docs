@@ -2,7 +2,7 @@
 title: "Azure 监视器指标 - 每种资源类型支持的指标 | Microsoft 文档"
 description: "可在 Azure 监视器中为每种资源类型使用的指标的列表。"
 author: anirudhcavale
-manager: orenr
+manager: ashwink
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 8/31/2017
+ms.date: 9/6/2017
 ms.author: ancav
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 83a32dba7b74a303b7fd2167b5fc41212087f8ca
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 6f40f0cdb998bda9d936ecf87089e85713ed9e1b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure 监视器支持的指标
@@ -295,18 +295,6 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |percentProcessorTime9|CPU (分片 9)|百分比|最大值||
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.ClassicCompute/virtualMachines
-
-|指标|指标显示名称|计价单位|聚合类型|说明|
-|---|---|---|---|---|
-|CPU 百分比|CPU 百分比|百分比|平均值|当前虚拟机正在使用的已分配计算单元百分比。|
-|网络传入|网络传入|字节|总计|虚拟机在所有网络接口上收到的字节数（传入流量）。|
-|网络传出|网络传出|字节|总计|虚拟机在所有网络接口上发出的字节数（传出流量）。|
-|磁盘读取字节数/秒|磁盘读取|每秒字节数|平均值|监视期间从磁盘读取的平均字节数。|
-|磁盘写入字节数/秒|磁盘写入|每秒字节数|平均值|监视期间向磁盘写入的平均字节数。|
-|磁盘读取操作次数/秒|磁盘读取操作次数/秒|每秒计数|平均值|磁盘读取 IOPS。|
-|磁盘写入操作次数/秒|磁盘写入操作次数/秒|每秒计数|平均值|磁盘写入 IOPS。|
-
-## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft.ClassicCompute/domainNames/slots/roles
 
 |指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|

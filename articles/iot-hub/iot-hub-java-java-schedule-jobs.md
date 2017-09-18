@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/10/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 003a548ef2da2921a699df1aa9f7aee366d341ab
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 9009afc83b40064c6dbf10100f514c681af9b96b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>计划和广播作业 (Java)
@@ -349,7 +349,7 @@ schedule-jobs：使用作业来调用 lockDoor 直接方法，并在多个设备
     private static final int METHOD_NOT_DEFINED = 404;
     ```
 
-    本示例应用在实例化 **DeviceClient** 对象时使用 **protocol** 变量。 目前，若要使用设备孪生功能，必须使用 MQTT 协议。
+    本示例应用在实例化 **DeviceClient** 对象时使用 **protocol** 变量。
 
 1. 若要在控制台中列显设备孪生通知，请向 App 类添加以下嵌套类：
 

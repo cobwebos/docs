@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 4475baf3632c9e6870ff90244b773993a66b768c
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 1180001c9fe74aab6b51c5b5969b80a8c7e1302f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -89,8 +89,6 @@ Azure 在其云计算平台中提供多种服务。 这些服务包括：
 -   应用服务（Web 应用、移动应用、逻辑应用、API 应用和 Function App）
 
 -   Azure Batch（用于大规模并行批量计算作业）
-
--   Azure RemoteApp
 
 -   Azure Service Fabric
 

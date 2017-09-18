@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: bfc69712a1ddcd4a225fd35cfcceb7fa0616887d
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 2c90272a9d33795dca7839292bba38fa16fec3da
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -158,7 +158,7 @@ Azure 提供了多种方式以便在应用程序中使用容器。
 
     >何时使用：在 Linux 上将 Web 应用部署到 Docker 映像时使用。
 
-    >开始使用：[在 Linux 上使用应用服务的自定义 Docker 映像](../../app-service-web/app-service-linux-using-custom-docker-image.md)。
+    >开始使用：[在 Linux 上使用应用服务的自定义 Docker 映像](../../app-service/containers/quickstart-custom-docker-image.md)。
 
 ### <a name="authentication"></a>身份验证
 
@@ -168,7 +168,7 @@ Azure 提供了多种方式以便在应用程序中使用容器。
 
     >何时使用：当想要提供 SSO 体验、使用基于图形的数据，或者对基于域的用户进行身份验证时使用。
 
-    >开始使用：若要了解详细信息，请参阅 [Azure Active Directory 开发人员指南](../../active-directory/active-directory-developers-guide.md)。
+    >开始使用：若要了解详细信息，请参阅 [Azure Active Directory 开发人员指南](../../active-directory/develop/active-directory-developers-guide.md)。
 
 -   应用服务身份验证：当选择应用服务来托管应用时，还将获得对 Azure AD 以及社交标识提供程序（包括 Facebook、Google、Microsoft 和 Twitter）的内置身份验证支持。
 

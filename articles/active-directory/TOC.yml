@@ -44,6 +44,14 @@
           href: msi-qs-configure-cli-windows-vm.md
         - name: 使用 Azure 资源管理器模板
           href: msi-qs-configure-template-windows-vm.md
+    - name: 将 MSI 访问权限分配给 Azure 资源
+      items:
+        - name: 使用 Azure 门户
+          href: msi-howto-assign-access-portal.md
+        - name: 使用 PowerShell
+          href: msi-howto-assign-access-powershell.md
+        - name: 使用 Azure CLI
+          href: msi-howto-assign-access-cli.md
     - name: 使用 MSI 访问 Azure 资源管理器
       items:
         - name: 在 Windows VM 上
@@ -62,13 +70,5 @@
           href: msi-tutorial-windows-vm-access-nonaad.md
         - name: 在 Linux VM 上
           href: msi-tutorial-linux-vm-access-nonaad.md
-    - name: 将 MSI 访问权限分配给 Azure 资源
-      items:
-        - name: 使用 Azure 门户
-          href: msi-howto-assign-access-portal.md
-        - name: 使用 PowerShell
-          href: msi-howto-assign-access-powershell.md
-        - name: 使用 Azure CLI
-          href: msi-howto-assign-access-cli.md
     - name: 已知问题
       href: msi-known-issues.md

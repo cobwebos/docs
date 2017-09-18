@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 5a6e4431ef25c66e1863a679f0db1363a83f4769
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 96f7bda79fd83bffa4ca1d64275a784004547c6d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -58,15 +58,15 @@ ms.lasthandoff: 06/20/2017
 
 ### <a name="connect-to-mysql-server"></a>连接到 MySQL 服务器
 
-在终端窗口中连接到你的本地 MySQL 服务器。 可使用此终端窗口运行本教程中的所有命令。
+在终端窗口中连接到本地 MySQL 服务器。 可使用此终端窗口运行本教程中的所有命令。
 
 ```bash
 mysql -u root -p
 ```
 
-当系统提示输入密码时，请输入 `root` 帐户的密码。 如果你不记得自己的 root 帐户密码，请参阅 [MySQL：如何重置 Root 密码](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html)。
+当系统提示输入密码时，请输入 `root` 帐户的密码。 如果不记得自己的 root 帐户密码，请参阅 [MySQL：如何重置 Root 密码](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html)。
 
-如果命令成功运行，则表示你的 MySQL 服务器已在运行。 否则，请确保遵循 [MySQL 安装后步骤](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html)启动本地 MySQL 服务器。
+如果命令成功运行，则表示 MySQL 服务器已在运行。 否则，请确保遵循 [MySQL 安装后步骤](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html)启动本地 MySQL 服务器。
 
 ### <a name="create-a-database"></a>创建数据库 
 
@@ -145,7 +145,7 @@ az group create --name myResourceGroup --location "North Europe"
 ### <a name="create-a-mysql-server"></a>创建 MySQL 服务器
 
 使用 [az mysql server create](/cli/azure/mysql/server#create) 命令在用于 MySQL 的 Azure 数据库（预览版）中创建一个服务器。    
-将出现的 `<mysql_server_name>` 占位符替换为你自己的唯一 MySQL 服务器名称。 此名称是 MySQL 服务器主机名 `<mysql_server_name>.mysql.database.azure.com` 的一部分，因此必须全局唯一。 此外，请将 `<admin_user>` 和 `<admin_password>` 替换为你自己的值。
+将出现的 `<mysql_server_name>` 占位符替换成自己的唯一 MySQL 服务器名称。 此名称是 MySQL 服务器主机名 `<mysql_server_name>.mysql.database.azure.com` 的一部分，因此必须全局唯一。 此外，请将 `<admin_user>` 和 `<admin_password>` 替换成自己的值。
 
 ```azurecli-interactive
 az mysql server create --name <mysql_server_name> \ 
@@ -155,7 +155,7 @@ az mysql server create --name <mysql_server_name> \
     --admin-password <admin_password>
 ```
 
-创建 MySQL 服务器后，Azure CLI 将显示类似于以下示例的信息：
+创建 MySQL 服务器后，Azure CLI 会显示类似于以下示例的信息：
 
 ```json
 {
@@ -205,7 +205,7 @@ CREATE DATABASE tododb;
 
 ### <a name="create-a-user-with-permissions"></a>创建具有权限的用户
 
-创建一个数据库用户并向其授予 `tododb` 数据库中的所有特权。 将占位符 `<Javaapp_user>` 和 `<Javaapp_password>` 替换为你自己的唯一应用名称。
+创建一个数据库用户并向其授予 `tododb` 数据库中的所有特权。 将占位符 `<Javaapp_user>` 和 `<Javaapp_password>` 替换成自己的唯一应用名称。
 
 ```sql
 CREATE USER '<Javaapp_user>' IDENTIFIED BY '<Javaapp_password>'; 
@@ -322,7 +322,7 @@ az webapp config appsettings set \
 ### <a name="get-ftp-deployment-credentials"></a>获取 FTP 部署凭据 
 可以通过不同的方法将应用程序部署到 Azure appservice，包括 FTP、本地 Git、 GitHub、Visual Studio Team Services 和 BitBucket。 就本示例来说，请通过 FTP 将此前在本地计算机上生成的 .WAR 文件部署到 Azure 应用服务。
 
-若要确定需在 ftp 命令中将哪些凭据传递给 Web 应用，请使用 [az appservice web deployment list-publishing-profiles](https://docs.microsoft.com/cli/azure/appservice/web/deployment#list-publishing-profiles) 命令： 
+若要确定需在 ftp 命令中将哪些凭据传递给 Web 应用，请使用 [az appservice web deployment list-publishing-profiles](https://docs.microsoft.com/cli/azure/appservice/web/deployment#az_appservice_web_deployment_list_publishing_profiles) 命令： 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles \ 
@@ -454,7 +454,7 @@ az webapp log tail \
 
 为此，请登录到 [https://portal.azure.com](https://portal.azure.com)。
 
-从左侧菜单中单击“应用服务”，然后单击 Azure Web 应用的名称。
+从左侧菜单中单击“应用服务”，并单击 Azure Web 应用的名称。
 
 ![在门户中导航到 Azure Web 应用](./media/app-service-web-tutorial-java-mysql/access-portal.png)
 

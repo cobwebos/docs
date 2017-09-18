@@ -13,10 +13,10 @@ manager: timlt
 ms.devlang: na
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
-ms.openlocfilehash: c0ef886a8c51f43cba875d532835acb194e994d9
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: c99279413b50e7bf1e6058a4151890e3a8f83892
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 09/06/2017
 
 ## <a name="select-a-hardware-security-module"></a>选择硬件安全模块
 
-[设备预配服务客户端 SDK](https://github.com/Azure/azure-iot-device-auth/tree/master/dps_client) 支持两种类型的硬件安全模块（或称为 HSM）： 
+[设备预配服务客户端 SDK](https://github.com/Azure/azure-iot-sdk-c/tree/master/dps_client) 支持两种类型的硬件安全模块（或称为 HSM）： 
 
 - [受信任的平台模块 (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module)。
     - TPM 是适用于大多数基于 Windows 的设备平台和几种基于 Linux/Ubuntu 的设备的标准模块。 对于设备制造商，如果其设备上运行以上任一种 OS，并且正在寻找标准 HSM，则可以选择此 HSM。 使用 TPM 芯片可以向设备预配服务单独注册每台设备。 出于开发目的，可以在 Windows 或 Linux 开发计算机上使用 TPM 模拟器。
@@ -79,8 +79,8 @@ ms.lasthandoff: 09/06/2017
 ### <a name="develop-your-custom-repository"></a>开发自定义存储库
 
 1. 开发 GitHub 存储库以访问 HSM。 此项目需要生成可供设备预配 SDK 使用的静态库。
-1. 库必须实现以下标头文件中定义的函数：a. 对于自定义 TPM，需实现 `\azure-iot-device-auth\dps_client\adapters\custom_hsm_tpm_impl.h` 中定义的函数。
-    b. 对于自定义 X.509，需实现 `\azure-iot-device-auth\dps_client\adapters\custom_hsm_x509_impl.h` 中定义的函数。 
+1. 库必须实现以下标头文件中定义的函数：a. 对于自定义 TPM，需实现 `\azure-iot-sdk-c\dps_client\adapters\custom_hsm_tpm_impl.h` 中定义的函数。
+    b. 对于自定义 X.509，需实现 `\azure-iot-sdk-c\dps_client\adapters\custom_hsm_x509_impl.h` 中定义的函数。 
 1. HSM 存储库还必须在应生成的存储库根目录中包含 `CMakeLists.txt` 文件。
 
 ### <a name="integrate-with-the-device-provisioning-service-client"></a>与设备预配服务客户端集成
@@ -98,7 +98,7 @@ ms.lasthandoff: 09/06/2017
     - 生成过程将克隆自定义存储库并生成库。
     - SDK 将尝试链接到 cmake 命令中定义的自定义 HSM。
 
-1. 运行 `\azure-iot-device-auth\dps_client\samples\dps_client_sample\dps_client_sample.c` 示例，验证 HSM 是否已正确实现。
+1. 运行 `\azure-iot-sdk-c\dps_client\samples\dps_client_sample\dps_client_sample.c` 示例，验证 HSM 是否已正确实现。
 
 <a id="extractsecurity"></a>
 ## <a name="extract-the-security-artifacts"></a>提取安全项目
