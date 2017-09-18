@@ -15,28 +15,28 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/21/2017
+ms.date: 09/07/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: ad4330a1fc7f8de154d9aaa8df3acc2ab59b9dc1
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 78051b9df15c62d4caf56d800c9a5f4421ea2254
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="create-an-apache-spark-cluster-in-azure-hdinsight"></a>在 Azure HDInsight 中创建 Apache Spark 群集
 
-本文介绍如何在 Azure HDInsight 中创建 Apache Spark 群集。 有关 Spark on HDInsight 的信息，请参阅[概述：Azure HDInsight 上的 Apache Spark](hdinsight-apache-spark-overview.md)。
+本文介绍如何在 Azure HDInsight 中创建 Apache Spark 群集，然后针对 Hive 表运行 Spark SQL 查询。 有关 Spark on HDInsight 的信息，请参阅[概述：Azure HDInsight 上的 Apache Spark](hdinsight-apache-spark-overview.md)。
 
    ![快速入门示意图，其中描述了在 Azure HDInsight 上创建 Apache Spark 群集的步骤](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-quickstart-interactive-spark-query-flow.png "有关在 HDInsight 中使用 Apache Spark 的 Spark 快速入门。示意图中的步骤：创建群集；运行 Spark 交互式查询")
 
 ## <a name="prerequisites"></a>先决条件
 
-* **一个 Azure 订阅**。 在开始学习本教程之前，你必须有一个 Azure 订阅。 请参阅[立即创建免费 Azure 帐户](https://azure.microsoft.com/free)。
+* **一个 Azure 订阅**。 在开始学习本教程之前，必须有一个 Azure 订阅。 请参阅[立即创建免费 Azure 帐户](https://azure.microsoft.com/free)。
 
 ## <a name="create-hdinsight-spark-cluster"></a>创建 HDInsight Spark 群集
 
-在本部分中，你将使用 [Azure Resource Manager 模板](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/)创建 HDInsight Spark 群集。 有关其他群集创建方法，请参阅 [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md)（创建 HDInsight 群集）。
+在本部分中，会使用 [Azure Resource Manager 模板](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/)创建 HDInsight Spark 群集。 有关其他群集创建方法，请参阅 [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md)（创建 HDInsight 群集）。
 
 1. 单击下面的图像即可在 Azure 门户中打开该模板。         
 
@@ -46,7 +46,8 @@ ms.lasthandoff: 07/24/2017
 
     ![使用 Azure Resource Manager 模板创建 HDInsight Spark 群集](./media/hdinsight-apache-spark-jupyter-spark-sql/create-spark-cluster-in-hdinsight-using-azure-resource-manager-template.png "使用 Azure Resource Manager 模板在 HDInsight 中创建 Spark 群集")
 
-    * **订阅**：为此群集选择你的 Azure 订阅。
+    * 
+            **订阅**：为此群集选择 Azure 订阅。
     * **资源组**：创建资源组，或选择现有的资源组。 资源组用于管理项目的 Azure 资源。
     * **位置**：选择资源组的位置。 模板将此位置用于创建群集，以及用于默认群集存储。
     * ClusterName：为要创建的 HDInsight 群集输入名称。
@@ -56,7 +57,7 @@ ms.lasthandoff: 07/24/2017
 
    记下这些值。  本教程后面会用到它们。
 
-3. 选择“我同意上述条款和条件”，选择“固定到仪表板”，然后单击“购买”。 此时会出现一个标题为“为模板部署提交部署”的新磁贴。 创建群集大约需要 20 分钟时间。
+3. 选择“我同意上述条款和条件”，选择“固定到仪表板”，并单击“购买”。 此时会出现一个标题为“为模板部署提交部署”的新磁贴。 创建群集大约需要 20 分钟时间。
 
 如果在创建 HDInsight 群集时遇到问题，可能是因为没有这样做的适当权限。 有关详细信息，请参阅[访问控制要求](hdinsight-administer-use-portal-linux.md#create-clusters)。
 
@@ -65,17 +66,23 @@ ms.lasthandoff: 07/24/2017
 >
 >
 
-## <a name="run-a-hive-query-using-spark-sql"></a>使用 Spark SQL 运行 Hive 查询
+## <a name="run-spark-sql-statements-on-a-hive-table"></a>针对 Hive 表运行 Spark SQL 语句
 
-使用为 HDInsight Spark 群集配置的 Jupyter Notebook 时，会获得一个预设的 `sqlContext`，可以使用它通过 Spark SQL 来运行 Hive 查询。 本部分介绍如何启动 Jupyter Notebook 并运行基本的 Hive 查询。
+SQL（结构化查询语言）是用于查询和定义数据的最常见、最广泛使用的语言。 Spark 的创建者试图利用此知识，向更多想要处理 Hadoop 分布式文件系统 (HDFS) 中数据的分析人员受众，开放已知的数据查询语言。 Spark SQL 便是该产品。 它作为 Apache Spark 的扩展使用，可使用熟悉的 SQL 语法处理结构化数据。
+
+Spark SQL 同时支持将 SQL 和 HiveQL 作为查询语言。 其功能包括在 Python、Scala 和 Java 中绑定。 使用它，可以查询存储在多个位置的数据，例如外部数据库、结构化数据文件（示例：JSON）和 Hive 表。
+
+### <a name="running-spark-sql-on-an-hdinsight-cluster"></a>在 HDInsight 群集中运行 Spark SQL
+
+使用为 HDInsight Spark 群集配置的 Jupyter Notebook 时，会获得一个预设的 `sqlContext`，可以使用它通过 Spark SQL 来运行 Hive 查询。 本部分介绍如何启动 Jupyter notebook，然后针对在所有 HDInsight 群集上都可用的现有 Hive 表 (**hivesampletable**) 运行基本 Spark SQL 查询。
 
 1. 打开 [Azure 门户](https://portal.azure.com/)。
 
 2. 如果已选择将群集固定到仪表板，请单击仪表板中的群集磁贴，启动群集边栏选项卡。
 
-    如果未将群集固定到仪表板，则请单击左窗格中的“HDInsight 群集”，然后单击已创建的群集。
+    如果未将群集固定到仪表板，则请单击左窗格中的“HDInsight 群集”，并单击已创建的群集。
 
-3. 在“快速链接”中，单击“群集仪表板”，然后单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
+3. 在“快速链接”中，单击“群集仪表板”，并单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
 
    ![打开 Jupyter notebook 来运行交互式 Spark SQL 查询](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "打开 Jupyter notebook 来运行交互式 Spark SQL 查询")
 
@@ -85,17 +92,17 @@ ms.lasthandoff: 07/24/2017
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    >
    >
-3. 创建笔记本。 单击“新建”，然后单击“PySpark”。
+3. 创建笔记本。 单击“新建”，并单击“PySpark”。
 
-   ![创建 Jupyter notebook 来运行交互式 Spark SQL 查询](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-Spark-SQL-query.png "创建 Jupyter notebook 来运行交互式 Spark SQL 查询")
+   ![创建 Jupyter notebook 来运行交互式 Spark SQL 查询](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "创建 Jupyter notebook 来运行交互式 Spark SQL 查询")
 
    新笔记本随即已创建，并以 Untitled(Untitled.pynb) 名称打开。
 
-4. 在顶部单击笔记本名称，然后根据需要输入友好名称。
+4. 在顶部单击笔记本名称，并根据需要输入友好名称。
 
-    ![为要从中运行交互式 Spark 查询的 Jupter notebook 提供一个名称](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-jupyter-notebook-name.png "为要从中运行交互式 Spark 查询的 Jupter notebook 提供一个名称")
+    ![为要从中运行交互式 Spark 查询的 Jupyter notebook 提供一个名称](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-jupyter-notebook-name.png "为要从中运行交互式 Spark 查询的 Jupyter notebook 提供一个名称")
 
-5.  将以下代码粘贴到一个空单元格中，然后按 **SHIFT + ENTER** 来运行这些代码。 在下面的代码中，`%%sql`（称为 sql magic）指示 Jupyter Notebook 使用预设的 `sqlContext` 来运行 Hive 查询。 该查询从默认情况下可以在所有 HDInsight 群集上使用的 Hive 表 (hivesampletable) 中检索前 10 行。
+5.  将以下代码粘贴到一个空单元格中，然后按 **SHIFT + ENTER** 来运行这些代码。 在下面的代码中，`%%sql`（称为 sql magic）指示 Jupyter Notebook 使用预设 `sqlContext` 运行 Hive 查询。 该查询从默认情况下可以在所有 HDInsight 群集上使用的 Hive 表 (hivesampletable) 中检索前 10 行。
 
         %%sql
         SELECT * FROM hivesampletable LIMIT 10
@@ -117,7 +124,7 @@ ms.lasthandoff: 07/24/2017
 
 8. 如果计划稍后再完成后续步骤，请确保删除在本文中创建的 HDInsight 群集。 
 
-    [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="next-step"></a>后续步骤 
 

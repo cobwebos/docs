@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/28/2017
+ms.date: 09/07/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: b8955acc83b0fbb0612e7042d62170ae8078b9ad
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 6da4f2527e480b621f4d3a2d74ed3107c970d1b9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="introduction-to-spark-on-hdinsight"></a>HDInsight 上的 Spark 简介
@@ -30,8 +30,17 @@ ms.lasthandoff: 08/29/2017
 
 在 HDInsight 上创建 Spark 群集时，会创建已安装并配置了 Spark 的 Azure 计算资源。 在 HDInsight 中创建 Spark 群集只需要约 10 分钟。 系统将要处理的数据存储在 Azure 存储或 Azure Data Lake Store 中。 请参阅[将 Azure 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md)。
 
-**若要在 HDInsight 上创建 Spark 群集**，请参阅[快速入门：在 HDInsight 上使用 Jupyter 创建 Spark 群集并运行交互式查询](hdinsight-apache-spark-jupyter-spark-sql.md)。
+![Spark：一种统一框架](./media/hdinsight-apache-spark-overview/hdinsight-spark-overview.png)
 
+## <a name="spark-vs-traditional-mapreduce"></a>Spark 与传统 MapReduce
+
+什么使 Spark 运行快速？ Apache Spark 的体系结构与传统 MapReduce 有哪些不同，使其能够为数据共享提供更佳性能？
+
+![传统 MapReduce 与Spark](./media/hdinsight-apache-spark-overview/mapreduce-vs-spark.png)
+
+Spark 提供了用于内存中群集计算的基元。 Spark 作业可以将数据加载和缓存到内存中并重复地对其进行查询，比基于磁盘的系统更快速。 Spark 还集成到 Scala 编程语言中，让你可以像处理本地集合一样处理分布式数据集。 无需将所有内容构造为映射和化简操作。
+
+在 Spark 中，操作之间的数据共享更快捷，因为数据在内存中。 相比之下，Hadoop 通过 HDFS 共享数据，所需处理时间更长。
 
 ## <a name="what-is-apache-spark-on-azure-hdinsight"></a>什么是 Azure HDInsight 上的 Apache Spark？
 HDInsight 上的 Spark 群集提供完全托管的 Spark 服务。 下面列出了在 HDInsight 上创建 Spark 群集的优势。
@@ -52,8 +61,22 @@ HDInsight 上的 Spark 群集提供完全托管的 Spark 服务。 下面列出�
 | 可伸缩性 |虽然可以在创建过程中指定群集中的节点数，但可能需要根据工作负荷来扩大或收缩群集。 所有 HDInsight 群集允许更改群集中的节点数。 此外，由于所有数据都存储在 Azure 存储或 Data Lake Store 中，因此可以在不丢失数据的情况下删除 Spark 群集。 |
 | 全天候支持 |HDInsight 上的 Spark 群集附有企业级的全天候支持和保证正常运行时间达 99.9% 的 SLA。 |
 
+## <a name="spark-cluster-architecture"></a>Spark 群集体系结构
+
+下面是 Spark 群集的体系结构和工作原理：
+
+![Spark 群集体系结构](./media/hdinsight-apache-spark-overview/spark-architecture.png)
+
+头节点包含 Spark 主服务器（用于管理应用程序数），应用将映射到 Spark 驱动程序。 每个应用由 Spark 主服务器以各种方式进行管理。 可以将 Spark 部署在 Mesos、YARN 或 Spark 群集管理器上，以便将工作节点资源分配给应用程序。 在 HDInsight 中，Spark 使用 YARN 群集管理器运行。 由 HDInsight 中的 Spark 主服务器管理群集中的资源。 这意味着 Spark 主服务器可以了解哪些资源（如内存）在工作节点上占用或可用。
+
+驱动程序在工作节点上运行用户的主函数，并执行各种并行操作。 然后，驱动程序收集操作的结果。 工作节点从 Hadoop 分布式文件系统 (HDFS) 读取数据并将数据写入其中。 工作节点还将已转换数据作为弹性分布式数据集 (RDD) 缓存在内存中。
+
+在 Spark 主服务器中创建应用后，Spark 主服务器将为应用分配资源，创建称为 Spark 驱动程序的执行程序。 Spark 驱动程序还会创建 SparkContext 并开始创建 RDD。 RDD 的元数据存储在 Spark 驱动程序中。
+
+Spark 驱动程序连接到 Spark 主服务器，并负责将应用程序转换为单个任务的有向图 (DAG)，这些任务在工作节点上的执行程序进程中执行。 每个应用程序获取自己的执行程序进程，这些进程在整个应用程序持续时间内保留，并以多个线程运行任务。
+
 ## <a name="what-are-the-use-cases-for-spark-on-hdinsight"></a>HDInsight 上的 Spark 有哪些用例？
-HDInsight 中的 Spark 群集适用于以下主要方案。
+HDInsight 中的 Spark 群集适用于以下主要方案：
 
 ### <a name="interactive-data-analysis-and-bi"></a>交互式数据分析和 BI
 [观看教程](hdinsight-apache-spark-use-bi-tools.md)

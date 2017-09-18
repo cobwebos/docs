@@ -13,10 +13,10 @@ manager: timlt
 ms.devlang: na
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: d4eeb7a77d6336e241c196e4ad48af52d57af1d4
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: d8d8ff77f0099185707a0207c4ba6aed190a102e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 09/07/2017
 5. 在该 GitHub 存储库的本地副本中创建一个用于 CMake 生成过程的文件夹。 
 
     ```cmd/sh
-    cd azure-iot-device-auth
+    cd azure-iot-sdk-c
     mkdir cmake
     cd cmake
     ```
@@ -58,7 +58,7 @@ ms.lasthandoff: 09/07/2017
 7. 在单独的命令提示符处，导航到 GitHub 根文件夹，然后运行 [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) 模拟器。 该模拟器通过套接字在端口 2321 和 2322 上进行侦听。 请勿关闭此命令窗口；本快速入门指南自始至终都需让该模拟器保持运行状态。 
 
     ```cmd/sh
-    .\azure-iot-device-auth\dps_client\deps\utpm\tools\tpm_simulator\Simulator.exe
+    .\azure-iot-sdk-c\dps_client\deps\utpm\tools\tpm_simulator\Simulator.exe
     ```
 
 ## <a name="create-a-device-enrollment-entry-in-the-device-provisioning-service"></a>在设备预配服务中创建设备注册条目
@@ -69,11 +69,20 @@ ms.lasthandoff: 09/07/2017
 
 3. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开设备预配服务。
 
-4. 在设备预配服务摘要边栏选项卡上，选择“管理注册”。 选择“单个注册”选项卡，单击顶部的“添加”按钮。 选择“TPM”作为标识证明“机制”，并根据边栏选项卡的要求输入“注册 ID”和“认可密钥”。 完成后，单击“保存”按钮。 
+4. 在设备预配服务摘要边栏选项卡上，选择“管理注册”。 选择“单个注册”选项卡，单击顶部的“添加”按钮。 
+
+5. 在“添加注册列表项”下，输入以下信息：
+    - 选择“TPM”作为标识证明*机制*。
+    - 输入 TPM 设备的*注册 ID* 和*认可密钥*。 
+    - 选择与预配服务链接的 IoT 中心。
+    - 输入唯一设备 ID。 为设备命名时，请确保避免使用敏感数据。
+    - 使用设备所需的初始配置更新“初始设备孪生状态”。
+    - 完成后，单击“保存”按钮。 
 
     ![在门户边栏选项卡中输入设备注册信息](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
    成功注册以后，设备的“注册 ID”会显示在“单个注册”选项卡下的列表中。 
+
 
 <a id="firstbootsequence"></a>
 ## <a name="simulate-first-boot-sequence-for-the-device"></a>模拟设备的首次启动顺序
@@ -94,6 +103,8 @@ ms.lasthandoff: 09/07/2017
 4. 右键单击“dps_client_sample”项目，然后选择“设为启动项目”。 运行示例。 请注意相关消息，这些消息模拟设备启动后连接到设备预配服务以获取 IoT 中心信息的情况。 将模拟设备成功预配到与预配服务链接的 IoT 中心以后，设备 ID 会显示在该中心的“Device Explorer”边栏选项卡上。 
 
     ![设备注册到 IoT 中心](./media/quick-create-simulated-device/hub-registration.png) 
+
+    如果从设备的注册项中的默认值更改了“初始设备孪生状态”，则它会从中心拉取所需的孪生状态，并执行相应的操作。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)
 
 
 ## <a name="clean-up-resources"></a>清理资源

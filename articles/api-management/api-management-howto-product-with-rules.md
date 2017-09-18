@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 5553bcb8f9fd38630f694151dc644a684266387c
+ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
+ms.openlocfilehash: 300b1d762a61c810dbffde5aaacd8a85f12c9fca
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="protect-your-api-with-rate-limits-using-azure-api-management"></a>使用 Azure API 管理借助速率限制保护 API
@@ -148,7 +148,7 @@ ms.lasthandoff: 08/28/2017
 </quota>
 ```
 
-“设置每个订阅的使用配额”策略类似于“限制每个订阅的调用速率”策略，允许对产品的 API 和操作进行设置限制。 在本教程中，我们将使用该功能，因此请从 **quota** 元素中删除 **api** 和 **operation** 元素，如以下示例所示。
+与“限制每个订阅的调用速率”策略类似，“设置每个订阅的使用配额”策略也允许对产品的 API 和操作进行设置限制。 在本教程中，我们将使用该功能，因此请从 **quota** 元素中删除 **api** 和 **operation** 元素，如以下示例所示。
 
 ```xml
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">

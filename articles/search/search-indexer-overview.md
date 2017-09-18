@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: heidist
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 52b154895fca9fc465a9c6cc2fb6bf2d5384b057
+ms.translationtype: HT
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 1ea9dfcaec188bac2e92909f4811568b589357d4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 
@@ -59,7 +59,7 @@ Azure 搜索中的 **索引器** 是一种爬网程序，它从外部数据源�
 
 * [Azure SQL 数据库或 Azure 虚拟机上的 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-documentdb.md)
-* [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)，用于提取 PDF、Office 文档、HTML 或 XML 中的文本
+* 适用于所选内容类型的 [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
 * [Azure 表存储](search-howto-indexing-azure-tables.md)
 
 数据源的配置和管理独立于使用数据源的索引器，这意味着多个索引器可使用一个数据源，同时加载多个索引。
@@ -72,7 +72,7 @@ Azure 搜索中的 **索引器** 是一种爬网程序，它从外部数据源�
 
 * [Azure SQL 数据库或 Azure 虚拟机上的 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-documentdb.md)
-* [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)，用于提取 PDF、Office 文档、HTML 或 XML 中的文本
+* [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
 * [Azure 表存储](search-howto-indexing-azure-tables.md)
 * [使用 Azure 搜索 Blob 索引器为 CSV blob 编制索引](search-howto-index-csv-blobs.md)
 * [使用 Azure 搜索 Blob 索引器为 JSON blob 编制索引](search-howto-index-json-blobs.md)
