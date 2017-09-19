@@ -16,6 +16,7 @@
 ## [管理服务器](analysis-services-manage.md)
 ## [管理数据库用户](analysis-services-database-users.md)
 ## [管理服务器管理员](analysis-services-server-admins.md)
+## [监视服务器指标](analysis-services-monitor.md)
 ## [安装并配置本地数据网关](analysis-services-gateway-install.md)
 ## [获取客户端库](analysis-services-data-providers.md)
 ## [备份和还原](analysis-services-backup.md)
