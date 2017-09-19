@@ -3,7 +3,7 @@ title: "搭配使用 Azure 应用程序网关和内部负载均衡器 | Microsof
 description: "本页说明如何配置具有内部负载平衡终结点的 Azure 应用程序网关"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 ms.assetid: 7403d28e-909f-46a2-b282-43a8e942f53c
@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
-ms.author: gwallace
-translationtype: Human Translation
+ms.author: davidmu
+ms.translationtype: Human Translation
 ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
 ms.openlocfilehash: d6f3af61934c8c645be1f2c6b4c056fc7ee2e3aa
-
+ms.contentlocale: zh-cn
+ms.lasthandoff: 01/24/2017
 
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>创建具有内部负载平衡器 (ILB) 的应用程序网关
@@ -222,10 +223,5 @@ DnsName       : appgw-b2a11563-2b3a-4172-a4aa-226ee4c23eed.cloudapp.net
 
 * [Azure 负载平衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure 流量管理器](https://azure.microsoft.com/documentation/services/traffic-manager/)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

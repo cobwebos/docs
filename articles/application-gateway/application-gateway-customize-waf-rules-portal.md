@@ -3,7 +3,7 @@ title: "自定义 Azure 应用程序网关的 Web 应用程序防火墙规则 - 
 description: "本文将介绍如何使用 Azure 门户自定义应用程序网关的 Web 应用程序防火墙规则。"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 ms.assetid: 1159500b-17ba-41e7-88d6-b96986795084
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.custom: 
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
-ms.author: gwallace
+ms.author: davidmu
 ms.translationtype: HT
 ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: cdcbadbc3765dfc583c26e1b1453863d421c9a72

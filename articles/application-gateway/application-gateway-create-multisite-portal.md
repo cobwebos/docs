@@ -3,7 +3,7 @@ title: "使用 Azure 应用程序网关托管多个站点 | Microsoft Docs"
 description: "此页说明了如何通过 Azure 门户配置现有的 Azure 应用程序网关，以便在同一网关托管多个 Web 应用程序。"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 ms.assetid: 95f892f6-fa27-47ee-b980-7abf4f2c66a9
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
-ms.author: gwallace
-translationtype: Human Translation
+ms.author: davidmu
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: 84bd62ae17b7f7ba4cd815ef1f9880679607ebce
+ms.contentlocale: zh-cn
 ms.lasthandoff: 04/20/2017
-
 
 ---
 # <a name="configure-an-existing-application-gateway-for-hosting-multiple-web-applications"></a>配置托管多个 Web 应用程序的现有应用程序网关
