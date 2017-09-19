@@ -3,7 +3,7 @@ title: "Azure 应用程序网关 Web 应用程序防火墙 CRS 规则组和规�
 description: "本页提供有关 Web 应用程序防火墙 CRS 规则组和规则的信息。"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 ms.assetid: e5ea5cf9-3b41-4b85-a12c-e758bff7f3ec
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.custom: 
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
-ms.author: gwallace
-translationtype: Human Translation
+ms.author: davidmu
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
 ms.openlocfilehash: 9f4445b7ceb5b39c7907b1ca4c7bf0ad52ba8212
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/30/2017
-
 
 ---
 

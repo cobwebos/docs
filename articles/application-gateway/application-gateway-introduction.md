@@ -3,7 +3,7 @@ title: "Azure 应用程序网关简介 | Microsoft Docs"
 description: "此页提供第 7 层负载均衡的应用程序网关服务概述，包括网关的大小、HTTP 负载均衡、基于 cookie 的会话相关性和 SSL 卸载。"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 ms.assetid: b37a2473-4f0e-496b-95e7-c0594e96f83e
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
-ms.author: gwallace
+ms.author: davidmu
 ms.translationtype: HT
 ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: c8f54c81481ebced16ed259f07736b0a4bc80567

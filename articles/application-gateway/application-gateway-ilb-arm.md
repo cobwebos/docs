@@ -3,7 +3,7 @@ title: "搭配使用 Azure 应用程序网关和内部负载均衡器 - PowerShe
 description: "本页提供有关使用 Azure Resource Manager 创建、配置、启动和删除具有内部负载均衡器 (ILB) 的 Azure 应用程序网关的说明"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 ms.assetid: 75cfd5a2-e378-4365-99ee-a2b2abda2e0d
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
-ms.author: gwallace
+ms.author: davidmu
 ms.translationtype: HT
 ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
 ms.openlocfilehash: d218eab7e9f124e4825a8a781b4eeb0dcca58b4a

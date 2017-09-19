@@ -3,7 +3,7 @@ title: "创建 Azure 应用程序网关 - 模板 | Microsoft Docs"
 description: "本页提供有关使用 Azure Resource Manager 模板创建 Azure 应用程序网关的说明"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 ms.service: application-gateway
@@ -12,7 +12,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
-ms.author: gwallace
+ms.author: davidmu
 ms.translationtype: HT
 ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: f44e33ef722cd30787a9d2942ec55ceb73174978
