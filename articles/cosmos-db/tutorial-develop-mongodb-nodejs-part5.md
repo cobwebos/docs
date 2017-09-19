@@ -223,7 +223,7 @@ ms.lasthandoff: 09/06/2017
 
 1. 现在，请再次运行该应用。 在 Visual Studio Code 中，保存所有更改，单击左侧的“调试”按钮 ![Visual Studio Code 中的“调试”图标](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png)，然后单击“开始调试”按钮 ![Visual Studio Code 中的“开始调试”图标](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png)。
 
-3. 现在请转到浏览器，打开开发人员工具和“网络”选项卡，然后导航到 http://localhost:3000，其中有我们的应用程序。
+3. 现在请转到浏览器，打开开发人员工具和“网络”选项卡，然后导航到 http://localhost:3000 ，其中有我们的应用程序。
 
     ![Azure 门户中的新 Azure Cosmos DB 帐户](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
 
