@@ -232,7 +232,7 @@ ms.lasthandoff: 05/17/2017
 ## <a name="delete-a-listed-offer-from-the-marketplace"></a>从 Marketplace 中删除已列出的产品
 请求删除实时产品时，需要注意多个方面。 若要从支持团队获取有关从 Marketplace 中删除已列出的产品的指南，请执行以下步骤：
 
-1. 在“创建事件”页中提出支持票证。[](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=15635&ccsid=635993707583706681)
+1. 在 [创建事件](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=15635&ccsid=635993707583706681) 页中提出支持票证。
 
 2. 选择“管理产品”作为问题类型，并选择“修改已在生产中的产品和/或 SKU”作为类别。
 3. 提交请求。
