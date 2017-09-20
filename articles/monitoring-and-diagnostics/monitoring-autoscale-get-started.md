@@ -128,7 +128,7 @@ Azure Monitor 自动缩放功能仅适用于虚拟机规模集、云服务、Azu
 [1]:https://portal.azure.com
 [2]: ./media/monitoring-autoscale-get-started/azure-monitor-launch.png
 [3]: ./media/monitoring-autoscale-get-started/discover-autoscale-azure-monitor.png
-[4]: https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-get-started-dotnet
+[4]: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-dotnet
 [5]: ./media/monitoring-autoscale-get-started/scale-setting-new-web-app.png
 [6]: ./media/monitoring-autoscale-get-started/create-scale-setting-web-app.png
 [7]: ./media/monitoring-autoscale-get-started/scale-in-recommendation.png

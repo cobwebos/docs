@@ -3,7 +3,7 @@ title: "配置 Azure MFA NPS 扩展 | Microsoft Docs"
 description: "在安装 NPS 扩展后，通过下列步骤来进行高级配置，如 IP 白名单和 UPN 替换。"
 services: multi-factor-authentication
 documentationcenter: 
-author: MicrosoftGuyJFlo
+author: kgremban
 manager: femila
 ms.assetid: 
 ms.service: multi-factor-authentication
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
-ms.author: joflore
+ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
 ms.translationtype: HT

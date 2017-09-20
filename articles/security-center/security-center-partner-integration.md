@@ -12,7 +12,7 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/13/2017
+ms.date: 09/12/2017
 ms.author: yurid
 ms.translationtype: HT
 ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
@@ -71,7 +71,7 @@ ms.lasthandoff: 09/14/2017
 
 “已连接解决方案”部分显示当前与安全中心连接的所有安全解决方案。 
 
-![已连接解决方案](./media/security-center-partner-integration/security-center-partner-integration-fig10.png)
+![已连接解决方案](./media/security-center-partner-integration/security-center-partner-integration-fig4.png)
 
 在每一项上看到的信息可能会因解决方案而异。 在每个磁贴上提供的信息可能包括：
 
@@ -106,7 +106,7 @@ Azure AD Identity Protection 警报将通过安全中心的检测管道，此管
 
 可以添加要与安全中心集成的 Azure 和非 Azure 计算机。  添加非 Azure 计算机意味着可以添加本地计算机或支持 CEF 的设备。 
 
-![数据源](./media/security-center-partner-integration/security-center-partner-integration-fig11.png)
+![数据源](./media/security-center-partner-integration/security-center-partner-integration-fig7.png)
 
 
 ## <a name="see-also"></a>另请参阅

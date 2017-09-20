@@ -183,9 +183,9 @@
 ### [通过下载传送](media-services-deliver-asset-download.md)
 ### [故障转移流式处理方案](media-services-implement-failover.md)
 
-## 播放
+## 使用
 ### [使用现有播放器播放媒体](media-services-playback-content-with-existing-players.md)
-### [使用 Media Player 播放媒体](media-services-develop-video-players.md)
+### [使用媒体播放器播放媒体](media-services-develop-video-players.md)
 ### 其他播放选项
 #### [平滑流式处理 Windows 应用商店应用程序](media-services-build-smooth-streaming-apps.md)
 #### [使用 DASH.js 的 HTML5 应用程序](media-services-embed-mpeg-dash-in-html5.md)

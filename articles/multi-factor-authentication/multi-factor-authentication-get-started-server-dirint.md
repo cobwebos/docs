@@ -3,7 +3,7 @@ title: "Azure Multi-Factor Authentication 与 Active Directory 之间的目录�
 description: "这是与 Multi-Factor Authentication 相关的页面，介绍如何将 Multi-Factor Authentication 服务器与 Active Directory 集成以便可以同步目录。"
 services: multi-factor-authentication
 documentationcenter: 
-author: MicrosoftGuyJFlo
+author: kgremban
 manager: femila
 ms.assetid: def7a534-cfb2-492a-9124-87fb1148ab1f
 ms.service: multi-factor-authentication
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/16/2017
-ms.author: joflore
+ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
 ms.translationtype: HT

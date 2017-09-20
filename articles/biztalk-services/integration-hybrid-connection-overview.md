@@ -92,8 +92,6 @@ ms.lasthandoff: 09/07/2017
 
 ## <a name="next-steps"></a>后续步骤
 [Create and manage Hybrid Connections](integration-hybrid-connection-create-manage.md)<br/>
-<!-- [Connect Azure Web Apps to an On-Premises Resource](../app-service-web/web-sites-hybrid-connection-get-started.md)<br/>
-[Connect to on-premises SQL Server from an Azure web app](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)<br/> -->
 
 ## <a name="see-also"></a>另请参阅
 [REST API for Managing BizTalk Services on Microsoft Azure](http://msdn.microsoft.com/library/azure/dn232347.aspx)（用于在 Microsoft Azure 上管理 BizTalk 服务的 REST API）
@@ -102,7 +100,4 @@ ms.lasthandoff: 09/07/2017
 [Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](biztalk-dashboard-monitor-scale-tabs.md)<br/>
 
 [HCImage]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionImage.png
-[HybridConnectionTab]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionTab.png
-[HCOnPremSetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png
-[HCManageConnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
 
