@@ -3,7 +3,7 @@ title: "管理员管理用户和设备 - Azure MFA | Microsoft Docs"
 description: "本文介绍如何更改用户设置，例如，强制用户再次完成验证过程。"
 documentationcenter: 
 services: multi-factor-authentication
-author: MicrosoftGuyJFlo
+author: kgremban
 manager: femila
 ms.assetid: aac3b922-7cc1-428c-9044-273579aa7b5a
 ms.service: multi-factor-authentication
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
-ms.author: joflore
+ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: e9b8504d4a59cf0fae69a4e975d6f834028066d5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>管理云中 Azure 多重身份验证的用户设置

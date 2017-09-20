@@ -3,7 +3,7 @@ title: "配置 Azure MFA | Microsoft 文档"
 description: "这个有关 Azure 多重身份验证的页面介绍了使用 MFA 可以执行的后续步骤。  其中包括报告、欺诈警报、一次性跳过、自定义语音消息、缓存，受信任的 IP 和应用密码。"
 services: multi-factor-authentication
 documentationcenter: 
-author: MicrosoftGuyJFlo
+author: kgremban
 manager: femila
 editor: yossib
 ms.assetid: 75af734e-4b12-40de-aba4-b68d91064ae8
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
-ms.author: joflore
+ms.author: kgremban
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 9d77b9329116afcf2fdde48d672c95020738138c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置

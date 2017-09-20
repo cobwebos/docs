@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: wpickett
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
 ms.openlocfilehash: 74d2d3ca914b649b41e03fb3c2351ce6263ff9db
+ms.contentlocale: zh-cn
 ms.lasthandoff: 03/07/2017
-
 
 ---
 # <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>在 Azure 中使用 Twilio for Voice、VoIP 和 SMS 消息传递
@@ -247,7 +247,7 @@ app.post('/sms', (request, response) => {
 [purchase_phone]: https://www.twilio.com/console/phone-numbers/search
 [twiml]: https://www.twilio.com/docs/api/twiml
 [signup]: http://ahoy.twilio.com/azure
-[azure_new_site]: app-service-web/app-service-web-get-started-nodejs.md
+[azure_new_site]: app-service/app-service-web-get-started-nodejs.md
 [twilio_console]: https://www.twilio.com/console
 [npm]: http://npmjs.org
 [express]: http://expressjs.com

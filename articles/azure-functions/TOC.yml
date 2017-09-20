@@ -100,7 +100,7 @@
         - name: 创建 Open API 2.0 定义
           href: functions-api-definition-getting-started.md
         - name: 导出到 PowerApps 和 Microsoft Flow
-          href: ../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fazure-functions%2ftoc.json
+          href: app-service-export-api-to-powerapps-and-flow.md
         - name: 从 PowerApps 调用函数
           href: functions-powerapps-scenario.md
         - name: 使用托管服务标识

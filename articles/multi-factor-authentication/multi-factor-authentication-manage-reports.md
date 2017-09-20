@@ -3,7 +3,7 @@ title: "用于 Azure MFA 的访问和使用情况报告 | Microsoft Docs"
 description: "介绍如何使用 Azure 多重身份验证功能 - 报告。"
 services: multi-factor-authentication
 documentationcenter: 
-author: MicrosoftGuyJFlo
+author: kgremban
 manager: femila
 editor: curtand
 ms.assetid: 3f6b33c4-04c8-47d4-aecb-aa39a61c4189
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
-ms.author: joflore
+ms.author: kgremban
 ms.translationtype: HT
 ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
 ms.openlocfilehash: 42a87adef740cc2c1d77c9f02eef8aaa5f207258

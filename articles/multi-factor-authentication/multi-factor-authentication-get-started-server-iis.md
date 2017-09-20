@@ -3,7 +3,7 @@ title: "IIS 身份验证和 Azure MFA 服务器 | Microsoft Docs"
 description: "本 Azure Multi-Factor Authentication 页面会帮助你部署 IIS 身份验证和 Azure Multi-Factor Authentication 服务器。"
 services: multi-factor-authentication
 documentationcenter: 
-author: MicrosoftGuyJFlo
+author: kgremban
 manager: femila
 ms.assetid: d1bf1c8a-2c10-4ae6-9f4b-75f0c3df43eb
 ms.service: multi-factor-authentication
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/16/2017
-ms.author: joflore
+ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: H1Hack27Feb2017,it-pro
 ms.translationtype: HT

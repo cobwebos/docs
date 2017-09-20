@@ -3,7 +3,7 @@ title: "用于自定义应用的 MFA 软件开发工具包 |Microsoft 文档"
 description: "本文介绍如何下载和使用 Azure MFA SDK，为自定义应用启用双重验证。"
 services: multi-factor-authentication
 documentationcenter: 
-author: MicrosoftGuyJFlo
+author: kgremban
 manager: femila
 editor: yossib
 ms.assetid: 1c152f67-be02-42a5-a0c7-246fb6b34377
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
-ms.author: joflore
+ms.author: kgremban
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 281f9c61a30a20027f69808600373aa272255ef6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>将 Multi-Factor Authentication 构建到自定义应用程序中 (SDK)
