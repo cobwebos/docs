@@ -3,7 +3,7 @@ title: "StorSimple 8000 系列安全性 | Microsoft 文档"
 description: "介绍保护 StorSimple 服务、设备以及本地数据和云中数据的安全和隐私功能。"
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: alkohli
 manager: carmonm
 editor: 
 ms.assetid: a21d19c6-83b4-418c-9380-323bb9f76612
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 05/03/2016
-ms.author: v-sharos
-translationtype: Human Translation
+ms.date: 09/19/2017
+ms.author: alkohli
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
 ms.openlocfilehash: 7e526816f1a564ab80113c30d5c9671cb2b7e104
+ms.contentlocale: zh-cn
 ms.lasthandoff: 01/26/2017
-
 
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple 安全性和数据保护
