@@ -3,7 +3,7 @@
 ## [磁盘和 VHD](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [虚拟网络](../../../virtual-network/virtual-networks-overview.md)
 ## [常见问题](faq.md)
-## [VM、网站和云服务对比](../../../app-service-web/choose-web-site-cloud-service-vm.md)
+## [VM、网站和云服务对比](../../../app-service/choose-web-site-cloud-service-vm.md)
 ## [容器](../../virtual-machines-windows-containers.md)
 
 # 入门
@@ -66,7 +66,7 @@
 #### [创建群集](hpcpack-cluster-powershell-script.md)
 #### [设置用于运行 MPI 应用程序的群集](hpcpack-rdma-cluster.md)
 #### [运行 Excel 和 SOA 工作负荷](../../virtual-machines-windows-excel-cluster-hpcpack.md)
-#### [使用 Marketplace 映像创建头节点](../../virtual-machines-windows-hpcpack-cluster-headnode.md)
+#### [使用应用商店映像创建头节点](../../virtual-machines-windows-hpcpack-cluster-headnode.md)
 #### [将作业从本地提交到 Azure](../../virtual-machines-windows-hpcpack-cluster-submit-jobs.md)
 ### [MongoDB](install-mongodb.md)
 ### [MySQL](mysql-2008r2.md)
