@@ -257,14 +257,6 @@
           href: sql-database-ssms-mfa-authentication-configure.md
     - name: 业务连续性
       items:
-        - name: 配置保管库 - 备份
-          href: sql-database-long-term-backup-retention-configure.md
-        - name: 异地复制 - 门户
-          href: sql-database-geo-replication-portal.md
-        - name: 恢复单个表
-          href: sql-database-cloud-migrate-restore-single-table-azure-backup.md
-    - name: 加载和移动数据
-      items:
         - name: 使用 BCP 加载数据
           href: sql-database-load-from-csv-with-bcp.md
         - name: 使用 ADF 加载数据

@@ -7,16 +7,15 @@
 ## [兼容的第三方软件](active-directory-ds-compatible-software.md)
 
 # 入门
-## Azure 门户（预览版）
-### [任务 1：配置基本设置](active-directory-ds-getting-started.md)
-### [任务 2：配置网络设置](active-directory-ds-getting-started-network.md)
-### [任务 3：配置管理员组并启用 Azure AD 域服务](active-directory-ds-getting-started-admingroup.md)
-### [任务 4：更新虚拟网络的 DNS 设置](active-directory-ds-getting-started-dns.md)
-### [任务 5：启用密码同步](active-directory-ds-getting-started-password-sync.md)
+## [任务 1：配置基本设置](active-directory-ds-getting-started.md)
+## [任务 2：配置网络设置](active-directory-ds-getting-started-network.md)
+## [任务 3：配置管理员组并启用 Azure AD 域服务](active-directory-ds-getting-started-admingroup.md)
+## [任务 4：更新虚拟网络的 DNS 设置](active-directory-ds-getting-started-dns.md)
+## [任务 5：启用密码同步](active-directory-ds-getting-started-password-sync.md)
 
 # 如何
 ## 加入托管域
-### [加入 Windows Server VM](active-directory-ds-admin-guide-join-windows-vm.md)
+### [加入 Windows Server VM](active-directory-ds-admin-guide-join-windows-vm-portal.md)
 ### [使用 PowerShell 加入 Windows Server VM](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
 ### [加入 Linux VM](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
 ## 管理托管域

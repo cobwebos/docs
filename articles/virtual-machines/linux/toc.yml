@@ -143,6 +143,8 @@
               href: agent-user-guide.md
             - name: 代理更新
               href: update-agent.md
+        - name: 计划内维护
+          href: maintenance-notifications.md
         - name: 计划事件
           href: scheduled-events.md
         - name: 监视元数据
