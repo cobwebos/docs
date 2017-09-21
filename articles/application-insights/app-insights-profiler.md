@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: cc8655e0bc65007cacf223ce6d7709291c609327
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 252e1fb070bcdc11494f6f37a9a1ee03fa50509e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="profiling-live-azure-web-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure Web 应用
@@ -65,11 +65,17 @@ ms.lasthandoff: 09/05/2017
 目前提供了[用于 Azure 计算资源的探查器的预览版本](https://go.microsoft.com/fwlink/?linkid=848155)。
 
 
-## <a name="limits"></a>限制
+## <a name="limitations"></a>限制
 
 默认的数据保留期为 5 天。 每天最多可以引入 10 GB。
 
 探查器服务不收取费用。 Web 应用必须至少托管在应用服务的基本层中。
+
+## <a name="overhead-and-sampling-algorithm"></a>开销和采样算法
+
+在托管已启用 Profiler 的应用程序的每个虚拟机上，Profiler 每小时随机运行 2 分钟以捕获跟踪。 当 Profiler 运行时，它将为服务器添加 5% 到 15% 的 CPU 开销。
+可用于托管应用程序的服务器越多，Profiler 对总体应用程序性能的影响越小。 这是因为采样算法会导致探查器在任何给定时间仅在 5% 的服务器上运行，更多服务器将可用于处理 Web 请求，从而抵消了对探查器产生开销的服务器的影响。
+
 
 ## <a name="viewing-profiler-data"></a>查看探查器数据
 
@@ -191,6 +197,21 @@ CPU 正忙于执行指令。
 ### <a name="error-report-in-the-profiling-viewer"></a>探查查看器中的错误报告
 
 通过门户开具支持票证。 请包含错误消息中的相关性 ID。
+
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>部署错误：目录不为空“D:\\home\\site\\wwwroot\\App_Data\\jobs”
+
+在已启用 Profiler 的情况下，如果将 Web 应用重新部署到应用程序服务资源，可能会遇到如下错误：目录不为空“D:\\home\\site\\wwwroot\\App_Data\\jobs”；如果从脚本或 在 VSTS 部署管道上运行 Web 部署，将会发生此错误。
+此问题的解决方案是将以下附加部署参数添加到 Web 部署任务：
+
+```
+-skip:skipaction='Delete',objectname='filePath',absolutepath='\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler\\.*' 
+-skip:skipaction='Delete',objectname='dirPath',absolutepath='\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler\\.*'
+-skip:skipaction='Delete',objectname='filePath',absolutepath='\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler2\\.*'
+-skip:skipaction='Delete',objectname='dirPath',absolutepath='\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler2\\.*'
+```
+
+这将删除 App Insights Profiler 所用的文件夹，并取消阻止重新部署进程。 它不会影响当前正在运行的 Profiler 实例。
+
 
 ## <a name="manual-installation"></a>手动安装
 

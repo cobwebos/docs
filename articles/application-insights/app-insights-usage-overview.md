@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/03/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 80142d9f27abed181bca6f5f536b950198e66e20
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 12876bff2de5738068f033ecc4ef14b81a68f0f6
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -44,7 +44,7 @@ Web 应用有哪些最热门的功能？ 用户是否使用应用实现了其目
 ## <a name="include-user-and-session-id-in-your-telemetry"></a>在遥测中包括用户和会话 ID
 若要持续跟踪用户，Application Insights 需要识别用户的方法。 事件工具是唯一不需要用户 ID 或会话 ID 的使用情况工具。
 
-按照[此处](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context)的描述开始发送这些 ID。
+开始使用[此过程](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context)发送用户 ID 和会话 ID。
 
 ## <a name="explore-usage-demographics-and-statistics"></a>浏览用户人口和统计信息
 查明人们何时使用应用，他们对哪些页面最感兴趣，用户在哪里以及他们使用什么浏览器和操作系统。 
