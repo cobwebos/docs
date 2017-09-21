@@ -11,25 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 09/07/2017
 ms.author: curtand
 ms.custom: oldportal;it-pro;
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: f1fda3c4192d0dae4fa60788f4d88fb72ddba4ad
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: e5ac068e37d921530272e5eb3dc76d976a86a742
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="understanding-resource-access-in-azure"></a>了解 Azure 中的资源访问权限
-> [!IMPORTANT]
-> Microsoft 建议使用 Azure 门户而不是本文中引用的 Azure 经典门户通过 [Azure AD 管理中心](https://aad.portal.azure.com)管理 Azure AD。 Azure 门户提供了[基于角色的访问控制](role-based-access-control-configure.md)，以便可以更准确地管理 Azure 资源。
-> 
-> 
 
-为了针对改进用户的 Azure 资源访问管理体验奠定基础，Azure 经典门户和服务管理 API 已在 2013 年 10 月与 Azure Active Directory 进行集成。 Azure Active Directory 已经提供了出色的功能，例如用户管理、本地目录同步、多重身份验证和应用程序访问控制。 自然，这些功能也可用于全面管理 Azure 资源。
-
-Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者（可通过访问 [Azure 帐户中心](https://account.windowsazure.com/subscriptions)进行访问）是帐户管理员 (AA)。 订阅是计费容器，但它们也可充当安全边界：每个订阅都有一个服务管理员 (SA)，此管理员可以使用 [Azure 经典门户](https://manage.windowsazure.com/)来添加、删除和修改该订阅中的 Azure 资源。 新订阅的默认 SA 是 AA，但 AA 可以在 Azure 帐户中心更改 SA。
+Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者（可通过访问 [Azure 帐户中心](https://account.windowsazure.com/subscriptions)进行访问）是帐户管理员 (AA)。 订阅是计费容器，但它们也可充当安全边界：每个订阅都有一个服务管理员 (SA)，此管理员可以使用 [Azure 门户](https://portal.azure.com/)在该订阅中添加、删除和修改 Azure 资源。 新订阅的默认 SA 是 AA，但 AA 可以在 Azure 帐户中心更改 SA。
 
 <br><br>![Azure 帐户][1]
 

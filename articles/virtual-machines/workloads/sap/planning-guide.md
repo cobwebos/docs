@@ -18,10 +18,10 @@ ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 718bb3f890a246fb1688481efdaa9109b49ccad3
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: eabe7f667aab866b8513661110fa416a61988824
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
@@ -980,7 +980,7 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 * 使用 az login 登录到订阅
 * 使用 az account set --subscription `<subscription name or id`> 选择订阅
 * 使用 az storage blob upload 上传 VHD - 请参阅 [结合使用 Azure CLI 与 Azure 存储][storage-azure-cli]
-* （可选）使用 az disk create 从 VHD 创建托管磁盘 - 请参阅 https://docs.microsoft.com/cli/azure/disk#create
+* （可选）使用 az disk create 从 VHD 创建托管磁盘 - 请参阅 https://docs.microsoft.com/cli/azure/disk#az_disk_create
 * 使用 az vm create 和参数 --attach-os-disk 创建新的 VM，并将上传的 VHD 或托管磁盘指定为 OS 磁盘
 * 使用 az vm disk attach 和参数 --new 将数据磁盘添加到新 VM
 
@@ -1009,7 +1009,7 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 * 使用 az login 登录到订阅
 * 使用 az account set --subscription `<subscription name or id`> 选择订阅
 * 使用 az storage blob upload 上传 VHD - 请参阅 [结合使用 Azure CLI 与 Azure 存储][storage-azure-cli]
-* （可选）使用 az image create 从 VHD 创建托管磁盘映像 - 请参阅 https://docs.microsoft.com/cli/azure/image#create
+* （可选）使用 az image create 从 VHD 创建托管磁盘映像 - 请参阅 https://docs.microsoft.com/cli/azure/image#az_image_create
 * 使用 az vm create 和参数 --image 创建新的 VM，并将上传的 VHD 或托管磁盘映像指定为 OS 磁盘
 
 **模板**

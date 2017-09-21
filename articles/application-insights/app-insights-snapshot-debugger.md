@@ -3,7 +3,7 @@ title: "适用于 .NET 应用的 Azure Application Insights 快照调试器 | Mi
 description: "生产 .NET 应用中出现异常时会自动收集调试快照"
 services: application-insights
 documentationcenter: 
-author: qubitron
+author: pharring
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/03/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
-ms.openlocfilehash: cb0c74e7a3e3a2044262f94275110d0a55ccc19b
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 0761339dfdaaaed418a1414472393ce8e0f37b9c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 应用中发生异常时的调试快照
@@ -68,26 +68,13 @@ ms.lasthandoff: 09/06/2017
 
 1. 如果尚未启用，请[在 ASP.NET Core Web 应用中启用 Application Insights](app-insights-asp-net-core.md)。
 
+> [!NOTE]
+> 请确保应用程序引用 2.1.1 版或更新版本的 Microsoft.ApplicationInsights.AspNetCore 包。
+
 2. 将 [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包添加到应用。
 
-3. 修改应用程序 `Startup` 类中的 `ConfigureServices` 方法，添加快照收集器的遥测处理器。 应添加的代码取决于 Microsoft.ApplicationInsights.ASPNETCore NuGet 包的引用版本。
+3. 修改应用程序 `Startup` 类中的 `ConfigureServices` 方法，添加快照收集器的遥测处理器。
 
-   对于 Microsoft.ApplicationInsights.AspNetCore 2.1.0，添加：
-   ```C#
-   using Microsoft.ApplicationInsights.SnapshotCollector;
-   ...
-   class Startup
-   {
-       // This method is called by the runtime. Use it to add services to the container.
-       public void ConfigureServices(IServiceCollection services)
-       {
-           services.AddSingleton<Func<ITelemetryProcessor, ITelemetryProcessor>>(next => new SnapshotCollectorTelemetryProcessor(next));
-           // TODO: Add any other services your application needs here.
-       }
-   }
-   ```
-
-   对于 Microsoft.ApplicationInsights.AspNetCore 2.1.1，添加：
    ```C#
    using Microsoft.ApplicationInsights.SnapshotCollector;
    ...

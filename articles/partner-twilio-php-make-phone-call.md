@@ -14,23 +14,24 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
-translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: f35450ace02727ddf392dbbe857b934a45ee022a
-ms.lasthandoff: 03/07/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: eeecec0d879b60e90d1a3bf2043e68a41d7145a8
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>如何在 Azure 的 PHP 应用程序中使用 Twilio 发起电话呼叫
-以下示例演示了如何使用 Twilio 从 Azure 中托管的 PHP 网页发起呼叫。 生成的应用程序将提示用户输入电话呼叫值，如以下屏幕截图中所示。
+以下示例演示了如何使用 Twilio 从 Azure 中托管的 PHP 网页发起呼叫。 生成的应用程序会提示用户输入电话呼叫值，如以下屏幕截图中所示。
 
 ![使用 Twilio 和 PHP 的 Azure 呼叫窗体][twilio_php]
 
-你将需要执行以下操作来使用本主题中的代码：
+需要执行以下操作来使用本主题中的代码：
 
 1. 从 [Twilio 控制台][twilio_console]获取 Twilio 帐户和身份验证令牌。 若要开始使用 Twilio，请在 [http://www.twilio.com/pricing][twilio_pricing] 上评估定价。 可以在 [https://www.twilio.com/try-twilio][try_twilio] 上注册试用帐户。
 2. 获取[用于 PHP 的 Twilio 库](https://github.com/twilio/twilio-php)，或将其作为 PEAR 包安装。 有关详细信息，请参阅[自述文件](https://github.com/twilio/twilio-php/blob/master/README.md)。
-3. 安装 Azure SDK for PHP。 有关该 SDK 的概述及其安装说明，请参阅[设置 Azure SDK for PHP](app-service-web/web-sites-php-mysql-deploy-use-git.md)
+3. 安装 Azure SDK for PHP。 
+<!-- For an overview of the SDK and instructions on installing it, see [Set up the Azure SDK for PHP](app-service-web/web-sites-php-mysql-deploy-use-git.md) -->
 
 ## <a name="create-a-web-form-for-making-a-call"></a>创建用于发起呼叫的 Web 窗体
 以下 HTML 代码演示了如何生成检索用于发起呼叫的用户数据的网页 (**callform.html**)：
@@ -106,16 +107,13 @@ echo "URI resource: " . $call->uri . "<br />";
 ![使用 Twilio 和 PHP 的 Azure 呼叫响应][twilio_php_response]
 
 ## <a name="run-the-application"></a>运行应用程序
-下一步是将应用程序部署到 Azure 网站。 下列文章包含创建网站以及使用 Git、FTP 或 WebMatrix 部署代码的信息（尽管并非每篇文章中的所有信息都是相关的）：
-
-* [创建 PHP-MySQL Azure 网站并使用 Git 进行部署](app-service-web/web-sites-php-mysql-deploy-use-git.md)
-* [创建 PHP-MySQL Azure 网站并使用 FTP 进行部署](app-service-web/web-sites-php-mysql-deploy-use-ftp.md)
+下一步是[使用 Git 将应用程序部署到 Azure Web 应用](app-service-web/app-service-web-get-started-php.md)（尽管并非该文的所有这些信息都相关）。 
 
 ## <a name="next-steps"></a>后续步骤
-提供此代码是为了向你演示在 Azure 上通过 PHP 使用 Twilio 的基本功能。 在生产中部署到 Azure 之前，你可能希望添加更多错误处理功能或其他功能。 例如：
+提供此代码是为了演示通过 Azure 上的 PHP 使用 Twilio 的基本功能。 在生产中部署到 Azure 之前，可能希望添加更多错误处理或其他功能。 例如：
 
-* 你可以使用 Azure 存储 Blob 或 SQL 数据库存储电话号码和呼叫文本，而不使用 Web 窗体。 有关通过 PHP 使用 Azure 存储 Blob 的信息，请参阅[在 PHP 应用程序中使用 Azure 存储][howto_blob_storage_php]。 有关通过 PHP 使用 SQL 数据库的信息，请参阅[在 PHP 应用程序中使用 SQL 数据库][howto_sql_azure_php]。
-* **makecall.php** 代码使用 Twilio 提供的 URL ([http://twimlets.com/message][twimlet_message_url]) 提供了一个 Twilio 标记语言 (TwiML) 响应，指示 Twilio 如何继续进行呼叫。 例如，返回的 TwiML 可能包含 `<Say>` 谓词，该谓词生成了与呼叫接收人的谈话的文本。 你可以构建自己的服务来响应 Twilio 的请求，而不使用 Twilio 提供的 URL；有关详细信息，请参阅[如何通过 PHP 使用 Twilio 实现语音和短信功能][howto_twilio_voice_sms_php]。 有关 TwiML 的详细信息可在 [http://www.twilio.com/docs/api/twiml][twiml] 上找到，有关 `<Say>` 和其他 Twilio 谓词的信息可在 [http://www.twilio.com/docs/api/twiml/say][twilio_say] 上找到。
+* 可以使用 Azure 存储 Blob 或 SQL 数据库存储电话号码和呼叫文本，而不使用 Web 窗体。 有关通过 PHP 使用 Azure 存储 Blob 的信息，请参阅[在 PHP 应用程序中使用 Azure 存储][howto_blob_storage_php]。 有关通过 PHP 使用 SQL 数据库的信息，请参阅[在 PHP 应用程序中使用 SQL 数据库][howto_sql_azure_php]。
+* **makecall.php** 代码使用 Twilio 提供的 URL ([http://twimlets.com/message][twimlet_message_url]) 提供了一个 Twilio 标记语言 (TwiML) 响应，指示 Twilio 如何继续进行呼叫。 例如，返回的 TwiML 可能包含 `<Say>` 谓词，该谓词生成了与呼叫接收人的谈话的文本。 可以构建自己的服务来响应 Twilio 的请求，而不使用 Twilio 提供的 URL；有关详细信息，请参阅[如何通过 PHP 使用 Twilio 实现语音和短信功能][howto_twilio_voice_sms_php]。 有关 TwiML 的详细信息可在 [http://www.twilio.com/docs/api/twiml][twiml] 上找到，有关 `<Say>` 和其他 Twilio 谓词的信息可在 [http://www.twilio.com/docs/api/twiml/say][twilio_say] 上找到。
 * 阅读 [https://www.twilio.com/docs/security][twilio_docs_security] 上的 Twilio 安全准则。
 
 有关 Twilio 的更多信息，请参阅 [https://www.twilio.com/docs][twilio_docs]。
@@ -142,7 +140,5 @@ echo "URI resource: " . $call->uri . "<br />";
 [ssl_validation]: http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html
 [twilio_php]: ./media/partner-twilio-php-make-phone-call/WA_TwilioPHPCallForm.jpg
 [twilio_php_response]: ./media/partner-twilio-php-make-phone-call/WA_TwilioPHPMakeCall.jpg
-[website-git]: ./web-sites/web-sites-php-mysql-deploy-use-git.md
-[website-ftp]: ./web-sites/web-sites-php-mysql-deploy-use-ftp.md
 [twilio_php_github]: https://github.com/twilio/twilio-php
 

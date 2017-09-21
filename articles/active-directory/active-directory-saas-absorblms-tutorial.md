@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 08/15/2017
 ms.author: jeedes
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 3c68c3ac7d6be593476d419f8c015931b206eead
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: f5f20fee648cf26b4db49b9a8f5f5e5bcecd453e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>教程：Azure Active Directory 与 Absorb LMS 的集成
@@ -89,7 +89,7 @@ ms.lasthandoff: 08/05/2017
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. [创建 Absorb LMS 测试用户](#create-an-absorb-lms-test-user) - 在 Absorb LMS 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)**：验证配置是否正常工作。
+5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -116,7 +116,7 @@ ms.lasthandoff: 08/05/2017
     > [!NOTE] 
     > 这些不是实际值。 使用实际标识符和回复 URL 更新这些值。 请联系 [Absorb LMS 客户端支持团队](https://www.absorblms.com/support)获取这些值。 
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/active-directory-saas-absorblms-tutorial/tutorial_absorblms_certificate.png) 
 
@@ -124,7 +124,7 @@ ms.lasthandoff: 08/05/2017
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-absorblms-tutorial/tutorial_general_400.png)
     
-7. 在“Absorb LMS 配置”部分，单击“配置 Absorb LMS”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL 和 SAML 单一登录服务 URL”。
+7. 在“Absorb LMS 配置”部分，单击“配置 Absorb LMS”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”。
 
     ![Absorb LMS 配置](./media/active-directory-saas-absorblms-tutorial/tutorial_absorblms_configure.png) 
 
@@ -146,13 +146,13 @@ ms.lasthandoff: 08/05/2017
 
     ![配置单一登录](./media/active-directory-saas-absorblms-tutorial/4.png)
 
-    a. 选择适当的**模式**。
+    a. 选择“发起的标识提供者”。
 
     b. 在记事本中打开通过 Azure 门户下载的证书，删除 **---BEGIN CERTIFICATE---** 和 **---END CERTIFICATE---** 标记，并在“密钥”文本框中粘贴剩余的内容。
     
     c. 在“Id 属性”中，选择已在 Azure AD 中配置为用户标识符的相应属性（例如，如果在 Azure AD 中选择了 userprinciplename，则此处会选择“用户名”。）
 
-    d.单击“下一步”。 在“登录 URL”中，粘贴从 Azure 门户的“配置登录”窗口中复制的“SAML 单一登录服务 URL”值。
+    d.单击“下一步”。 在“登录 URL”中，粘贴 Azure 门户应用程序的“属性”页中的“用户访问 URL”。
 
     e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在“注销 URL”中，粘贴从 Azure 门户的“配置登录”窗口中复制的“注销 URL”值。
 
@@ -276,6 +276,7 @@ ms.lasthandoff: 08/05/2017
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+
 
 
 <!--Image references-->

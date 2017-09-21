@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2017
+ms.date: 09/12/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: db5966c920eb29742b2ee0fbd9386319eaaf1c77
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 29fee079bd8b2775d7b45fa37cadb73635a2eb60
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="add-or-change-azure-administrator-roles-that-manage-the-subscription-or-services"></a>添加或更改管理订阅或服务的 Azure 管理员角色
@@ -44,7 +44,7 @@ ms.lasthandoff: 08/31/2017
 仅所有者可添加为协同管理员。 无法将具有参与者、读者等角色的其他用户添加为协同管理员。
 
 1. 如果尚未添加所有者，请按照上述说明将某人添加为所有者。
-1. 右键单击刚添加的所有者用户，然后选择“添加为协同管理员”。 
+2. 右键单击刚添加的所有者用户，然后选择“添加为协同管理员”。 如果看不到“添加为协同管理员”选项，请刷新页面或尝试其他 Internet 浏览器。 
 
      ![添加协同管理员的屏幕截图](./media/billing-add-change-azure-subscription-administrator/add-coadmin.png)
 

@@ -18,17 +18,17 @@ ms.topic: article
 ms.date: 08/25/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 5c352fd29c32b381d754b491ec46b3b250bd66ae
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 5c862dbf46a30dd6811faeea447d559dca493991
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中上传 Hadoop 作业的数据
 
 Azure HDInsight 提供一个基于 Azure 存储和 Azure Data Lake Store 的功能完备的 Hadoop 分布式文件系统 (HDFS)。 Azure 存储和 Data Lake Store 设计为一个 HDFS 扩展，为客户提供无缝体验。 它们通过启用 Hadoop 生态系统中的整套组件以直接操作其管理的数据。 Azure 存储和 Data Lake Store 是独立的文件系统，并且已针对数据的存储和计算进行了优化。 有关使用 Azure Blob 存储的益处，请参阅[将 Azure 存储与 HDInsight 配合使用][hdinsight-storage]和[将 Data Lake Store 与 HDInsight 配合使用](hdinsight-hadoop-use-data-lake-store.md)。
 
-##<a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 
 在开始下一步之前，请注意以下要求：
 
@@ -159,7 +159,7 @@ AzCopy on Linux 预览版已推出。  请参阅[宣布推出 AzCopy on Linux �
 若要使用 Hadoop 命令，必须先使用以下方法之一连接到头节点：
 
 * **基于 Windows 的 HDInsight**：[使用远程桌面连接](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
-* **基于 Linux 的 HDInsight**：使用 SSH（[SSH 命令](hdinsight-hadoop-linux-use-ssh-unix.md) 或 [PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md)）连接
+* **基于 Linux 的 HDInsight**：使用 [SSH 或 PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md) 进行连接。
 
 连接之后，可以使用以下语法将文件上传到存储。
 

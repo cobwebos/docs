@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: a63d758570b09b37b8e51c639267f729521d9ae0
-ms.lasthandoff: 04/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: fe0446b986ff73cce66a961c1c8aa1b01ef493a3
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>使用 Azure CLI 将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager 部署模型
-以下步骤演示如何使用 Azure 命令行接口 (CLI) 命令将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Azure Resource Manager 部署模型。 本文中的操作需要 [Azure CLI](../../cli-install-nodejs.md)。
+以下步骤演示如何使用 Azure 命令行接口 (CLI) 命令将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Azure Resource Manager 部署模型。 本文中的操作需要 [Azure CLI 1.0](../../cli-install-nodejs.md)。 由于 Azure CLI 2.0 仅适用于 Azure 资源管理器资源，因此它不能用于此迁移。
 
 > [!NOTE]
-> 此处描述的所有操作都是幂等的。 如果你遇到功能不受支持或配置错误以外的问题，建议你重试准备、中止或提交操作。 然后平台将重试操作。
+> 此处描述的所有操作都是幂等的。 如果遇到功能不受支持或配置错误以外的问题，建议重试准备、中止或提交操作。 然后平台将重试操作。
 > 
 > 
 
@@ -36,13 +36,13 @@ ms.lasthandoff: 04/06/2017
 ![Screenshot that shows the migration steps](../windows/media/migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="step-1-prepare-for-migration"></a>步骤 1：准备迁移
-下面是建议你在将 IaaS 资源从经典部署模型迁移到 Resource Manager 部署模型时遵循的一些最佳实践：
+下面是建议在将 IaaS 资源从经典部署模型迁移到 Resource Manager 部署模型时遵循的一些最佳实践：
 
-* 请参阅[不受支持的配置或功能的列表](../windows/migration-classic-resource-manager-overview.md)。 如果虚拟机使用不受支持的配置或功能，建议你等到我们宣布支持该功能/配置时再进行迁移。 或者，可以删除该功能或移出该配置，以利迁移进行（如果这样做符合要求）。
-* 如果你通过自动化脚本来部署目前的基础结构和应用程序，则可尝试使用这些脚本进行迁移，以便创建类似的测试性设置。 也可以使用 Azure 门户设置示例环境。
+* 请参阅[不受支持的配置或功能的列表](../windows/migration-classic-resource-manager-overview.md)。 如果虚拟机使用不受支持的配置或功能，建议等到我们宣布支持该功能/配置时再进行迁移。 或者，可以删除该功能或移出该配置，以利迁移进行（如果这样做符合要求）。
+* 如果通过自动化脚本来部署目前的基础结构和应用程序，则可尝试使用这些脚本进行迁移，以便创建类似的测试性设置。 也可以使用 Azure 门户设置示例环境。
 
 > [!IMPORTANT]
-> 目前不支持将应用程序网关从经典部署迁移到 Resource Manager。 若要迁移带应用程序网关的经典虚拟网络，请先删除该网关，然后运行准备操作来移动网络。 完成迁移后，在 Azure Resource Manager 中重新连接该网关。 
+> 目前不支持将应用程序网关从经典部署迁移到 Resource Manager。 要迁移带应用程序网关的经典虚拟网络，请先删除该网关，然后运行准备操作来移动网络。 完成迁移后，在 Azure Resource Manager 中重新连接该网关。 
 >
 >无法自动迁移其他订阅中连接到 ExpressRoute 线路的 ExpressRoute 网关。 此类情况下，请删除 ExpressRoute 网关、迁移虚拟网络并重新创建网关。 有关详细信息，请参阅[将 ExpressRoute 线路和关联的虚拟网络从经典部署模型迁移到 Resource Manager 部署模型](../../expressroute/expressroute-migration-classic-resource-manager.md)。
 > 
@@ -60,13 +60,13 @@ ms.lasthandoff: 04/06/2017
     azure account set "<azure-subscription-name>"
 
 > [!NOTE]
-> 注册是一次性步骤，但必须在尝试迁移之前完成。 如果不注册，你会看到以下错误消息 
+> 注册是一次性步骤，但必须在尝试迁移之前完成。 如果不注册，会看到以下错误消息 
 > 
 > *BadRequest : Subscription is not registered for migration.* 
 > 
 > 
 
-使用以下命令向迁移资源提供程序注册。 请注意，在某些情况下，此命令会超时。 但是，注册会成功。
+使用以下命令向迁移资源提供程序注册。 请注意，在某些情况下，此命令会超时。但是，注册会成功。
 
     azure provider register Microsoft.ClassicInfrastructureMigrate
 
@@ -97,7 +97,7 @@ azure vm list-usage -l "<Your VNET or Deployment's Azure region"
 
 
 ## <a name="step-4-option-1---migrate-virtual-machines-in-a-cloud-service"></a>步骤 4：选项 1 - 迁移云服务中的虚拟机
-使用以下命令获取云服务列表，然后选取要迁移的云服务。 请注意，如果云服务中的 VM 在虚拟网络中或者具有 Web/辅助角色，你将收到错误消息。
+使用以下命令获取云服务列表，并选取要迁移的云服务。 请注意，如果云服务中的 VM 在虚拟网络中或者具有 Web/辅助角色，将收到错误消息。
 
     azure service list
 
@@ -113,11 +113,11 @@ azure service deployment validate-migration <serviceName> <deploymentName> new "
 
 准备迁移云服务中的虚拟机。 可以从两个选项中进行选择。
 
-如果你想要将 VM 迁移到平台所创建的虚拟网络上，请使用以下命令。
+如果想要将 VM 迁移到平台所创建的虚拟网络上，请使用以下命令。
 
     azure service deployment prepare-migration <serviceName> <deploymentName> new "" "" ""
 
-如果你想要迁移到 Resource Manager 部署模型中的现有虚拟网络，请使用以下命令。
+如果想要迁移到 Resource Manager 部署模型中的现有虚拟网络，请使用以下命令。
 
     azure service deployment prepare-migration <serviceName> <deploymentName> existing <destinationVNETResourceGroupName> <subnetName> <vnetName>
 
@@ -125,7 +125,7 @@ azure service deployment validate-migration <serviceName> <deploymentName> new "
 
     azure vm show <vmName> -vv
 
-使用 CLI 或 Azure 门户查看准备好的资源的配置。 如果你尚未做好迁移准备，因此想要回到旧的状态，请使用以下命令。
+使用 CLI 或 Azure 门户查看准备好的资源的配置。 如果尚未做好迁移准备，因此想要回到旧的状态，请使用以下命令。
 
     azure service deployment abort-migration <serviceName> <deploymentName>
 
@@ -136,7 +136,7 @@ azure service deployment validate-migration <serviceName> <deploymentName> new "
 
 
 ## <a name="step-4-option-2----migrate-virtual-machines-in-a-virtual-network"></a>步骤 4：选项 2 - 迁移虚拟网络中的虚拟机
-选取要迁移的虚拟网络。 请注意，如果虚拟网络包含的 Web/辅助角色或 VM 的配置不受支持，你将收到验证错误消息。
+选取要迁移的虚拟网络。 请注意，如果虚拟网络包含的 Web/辅助角色或 VM 的配置不受支持，将收到验证错误消息。
 
 使用以下命令获取订阅中的所有虚拟网络。
 
@@ -158,7 +158,7 @@ azure network vnet validate-migration <virtualNetworkName>
 
     azure network vnet prepare-migration <virtualNetworkName>
 
-使用 CLI 或 Azure 门户查看准备好的虚拟机的配置。 如果你尚未做好迁移准备，因此想要回到旧的状态，请使用以下命令。
+使用 CLI 或 Azure 门户查看准备好的虚拟机的配置。 如果尚未做好迁移准备，因此想要回到旧的状态，请使用以下命令。
 
     azure network vnet abort-migration <virtualNetworkName>
 
@@ -167,13 +167,13 @@ azure network vnet validate-migration <virtualNetworkName>
     azure network vnet commit-migration <virtualNetworkName>
 
 ## <a name="step-5-migrate-a-storage-account"></a>步骤 5：迁移存储帐户
-完成虚拟机迁移之后，建议你迁移存储帐户。
+完成虚拟机迁移之后，建议迁移存储帐户。
 
 使用以下命令来准备要迁移的存储帐户
 
     azure storage account prepare-migration <storageAccountName>
 
-使用 CLI 或 Azure 门户查看准备就绪的存储帐户的配置。 如果你尚未做好迁移准备，因此想要回到旧的状态，请使用以下命令。
+使用 CLI 或 Azure 门户查看准备就绪的存储帐户的配置。 如果尚未做好迁移准备，因此想要回到旧的状态，请使用以下命令。
 
     azure storage account abort-migration <storageAccountName>
 
