@@ -42,6 +42,7 @@
 #### [识别和解决组中的许可证问题](active-directory-licensing-group-problem-resolution-azure-portal.md)
 #### [将单个许可用户迁移到基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
 #### [基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
+#### [为用户和应用提供使用条款](active-directory-tou.md)
 #### [基于组的许可的 PowerShell 示例](active-directory-licensing-ps-examples.md)
 ### [从其他目录添加用户（经典门户）](active-directory-create-users-external.md)
 ### [管理用户个人资料](active-directory-users-profile-azure-portal.md)
@@ -197,6 +198,7 @@
 #### [查看所有应用](active-directory-coreapps-view-azure-portal.md)
 #### [管理用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
 #### [管理适用于企业应用的单一登录](active-directory-enterprise-apps-manage-sso.md)
+#### [SAML 应用的高级证书签名](active-directory-enterprise-apps-advance-certificate-options.md)
 
 ### [管理对应用的访问权限](active-directory-managing-access-to-apps.md)
 #### [自助服务访问权限](active-directory-self-service-application-access.md)
@@ -273,6 +275,17 @@
 #### [分配管理员角色](active-directory-users-assign-role-azure-portal.md)
 ### [管理单元](active-directory-administrative-units-management.md)
 ### [配置令牌生存期](active-directory-configurable-token-lifetimes.md)
+
+## 访问评审
+### [访问评审概述](active-directory-azure-ad-controls-access-reviews-overview.md)
+### [完成访问评审](active-directory-azure-ad-controls-complete-access-review.md)
+### [创建访问评审](active-directory-azure-ad-controls-create-access-review.md)
+### [如何执行访问评审](active-directory-azure-ad-controls-perform-access-review.md)
+### [如何评审访问权限](active-directory-azure-ad-controls-how-to-review-your-access.md)
+### [使用访问评审的来宾访问](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
+### [通过评审管理用于访问](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
+### [管理计划和控件](active-directory-azure-ad-controls-manage-programs-controls.md)
+
 
 ## 保护标识
 ### [条件性访问](active-directory-conditional-access-azure-portal.md)

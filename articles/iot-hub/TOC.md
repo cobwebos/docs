@@ -32,6 +32,7 @@
 ##### [将 Intel NUC 设置为网关](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
 ##### [将网关连接到 IoT 中心](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 ##### [使用网关进行数据转换](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
+##### [故障排除](iot-hub-gateway-kit-c-troubleshooting.md)
 
 ## 扩展的 IoT 方案
 ### [使用 iothub-explorer 管理云设备消息传送](iot-hub-explorer-cloud-device-messaging.md)
@@ -82,7 +83,9 @@
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
 #### [Java](iot-hub-java-java-c2d.md)
 #### [Node.js](iot-hub-node-node-c2d.md)
-### [从设备上传文件](iot-hub-csharp-csharp-file-upload.md)
+### [从设备上传文件]
+#### [.NET](iot-hub-csharp-csharp-file-upload.md)
+#### [Java](iot-hub-java-java-file-upload.md)
 ### 设备孪生入门
 #### [Node.js 后端/Node.js 设备](iot-hub-node-node-twin-getstarted.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-twin-getstarted.md)
@@ -96,11 +99,13 @@
 ### 设备管理入门
 #### [Node.js 后端/Node.js 设备](iot-hub-node-node-device-management-get-started.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-device-management-get-started.md)
+#### [.NET 后端/.NET 设备](iot-hub-csharp-csharp-device-management-get-started.md)
 #### [Java 后端/Java 设备](iot-hub-java-java-device-management-getstarted.md)
 ### 如何使用克隆属性
 #### [Node.js 后端/Node.js 设备](iot-hub-node-node-twin-how-to-configure.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-twin-how-to-configure.md)
 #### [.NET 后端/.NET 设备](iot-hub-csharp-csharp-twin-how-to-configure.md)
+#### [Java 后端/Java 设备](iot-hub-java-java-twin-how-to-configure.md)
 ### 使用设备作业更新设备固件
 #### [Node 后端/Node 设备](iot-hub-node-node-firmware-update.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-firmware-update.md)

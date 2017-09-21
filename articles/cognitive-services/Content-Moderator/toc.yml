@@ -4,6 +4,30 @@
   items:
     - name: 关于内容审查器
       href: overview.md
+- name: 快速入门
+  items:
+    - name: 审阅工具
+      href: quick-start.md
+    - name: 审查 API
+      items:
+        - name: 图像 API
+          href: try-image-api.md
+        - name: 图像列表 API
+          href: try-image-list-api.md
+        - name: 文本 API
+          href: try-text-api.md
+        - name: 术语列表 API
+          href: try-terms-list-api.md
+    - name: 查看 API
+      items:
+        - name: 作业
+          href: try-review-api-job.md
+        - name: 审阅
+          href: try-review-api-review.md
+        - name: 工作流
+          href: try-review-api-workflow.md
+- name: 概念
+  items:
     - name: 图像审查
       href: image-moderation-api.md
     - name: 文本审查
@@ -14,31 +38,9 @@
       href: video-moderation-api.md
     - name: 查看 API
       href: review-api.md
-- name: 入门
+- name: 操作指南
   items:
     - name: 审阅工具
-      href: quick-start.md
-    - name: 试用审查 API
-      items:
-        - name: 图像
-          href: try-image-api.md
-        - name: 图像列表
-          href: try-image-list-api.md
-        - name: 文本
-          href: try-text-api.md
-        - name: 术语列表
-          href: try-terms-list-api.md
-    - name: 试用审阅工具
-      items:
-        - name: 作业
-          href: try-review-api-job.md
-        - name: 审阅
-          href: try-review-api-review.md
-        - name: 工作流
-          href: try-review-api-workflow.md
-- name: 如何
-  items:
-    - name: 使用审阅工具
       items:
         - name: 人机共生
           href: Review-Tool-User-Guide/human-in-the-loop.md
