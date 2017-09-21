@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: seguler
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 441227d84b9c1ec721ae36fdc423ba797654f128
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: b080e323c4195f640a256c4726916dbf40ef2698
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>使用 AzCopy on Linux 传输数据
@@ -29,6 +29,8 @@ AzCopy on Linux 是一个命令行实用工具，专用于使用具有优化性�
 ## <a name="download-and-install-azcopy"></a>下载并安装 AzCopy
 ### <a name="installation-on-linux"></a>在 Linux 上安装
 
+本文包括各种版本 Ubuntu 的命令。  使用 `lsb_release -a` 命令确认分发版本和代码名称。 
+
 AzCopy on Linux 要求在平台上安装 .NET Core 框架。 请参阅 [.NET Core](https://www.microsoft.com/net/core#linuxubuntu) 页上的安装说明。
 
 例如，让我们在 Ubuntu 16.10 上安装 .NET Core。 有关最新的安装指南，请访问 [Linux 上的 .NET Core](https://www.microsoft.com/net/core#linuxubuntu) 安装页。
@@ -38,7 +40,7 @@ AzCopy on Linux 要求在平台上安装 .NET Core 框架。 请参阅 [.NET Cor
 sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ yakkety main" > /etc/apt/sources.list.d/dotnetdev.list' 
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
 sudo apt-get update
-sudo apt-get install dotnet-dev-1.0.3
+sudo apt-get install dotnet-sdk-2.0.0
 ```
 
 安装 .NET Core 后，请下载并安装 AzCopy。
@@ -598,7 +600,7 @@ azcopy --config-file "azcopy-config.ini"
     --recursive
     --quiet
 
-如果将参数拆分到两行（如此处所示的 `--source-key` 参数），AzCopy 将会失败：
+如果将参数拆分到两行（如此处所示的 `--source-key` 参数），AzCopy 会失败：
 
     http://myaccount.blob.core.windows.net/mycontainer
     /mnt/myfiles
@@ -632,7 +634,7 @@ azcopy \
 ### <a name="journal-file-folder"></a>日志文件文件夹
 每次向 AzCopy 发出命令时，它都会检查默认文件夹中是否存在日志文件，或者通过此选项指定的文件夹中是否存在日志文件。 如果这两个位置中都不存在日志文件，AzCopy 则会将操作视为新操作并生成一个新的日志文件。
 
-如果存在日志文件，AzCopy 则将检查输入的命令行是否与该日志文件中的命令行相匹配。 如果两个命令行相匹配，AzCopy 则将恢复未完成的操作。 如果它们不匹配，AzCopy 将提示用户是选择覆盖该日志文件以启动新操作，还是取消当前操作。
+如果存在日志文件，AzCopy 会检查输入的命令行是否与该日志文件中的命令行相匹配。 如果两个命令行相匹配，AzCopy 则将恢复未完成的操作。 如果它们不匹配，AzCopy 将提示用户是选择覆盖该日志文件以启动新操作，还是取消当前操作。
 
 如果想要为日志文件使用默认位置：
 
@@ -728,7 +730,7 @@ cd azcopy
 ```
 
 ### <a name="limit-concurrent-writes-while-copying-data"></a>限制复制数据时的并发写入
-在使用 AzCopy 复制 blob 或文件时，请记住，在复制数据时其他应用程序可能正在修改该数据。 如果可能，请确保要复制的数据在复制操作期间不会被修改。 例如，当复制与 Azure 虚拟机关联的 VHD 时，请确保当前没有其他应用程序正在向该 VHD 进行写入。 执行此操作的一个好方法是租用要复制的资源。 另外，还可以先创建 VHD 的快照，然后复制该快照。
+在使用 AzCopy 复制 blob 或文件时，请记住，在复制数据时其他应用程序可能正在修改该数据。 如果可能，请确保要复制的数据在复制操作期间不会被修改。 例如，当复制与 Azure 虚拟机关联的 VHD 时，请确保当前没有其他应用程序正在向该 VHD 进行写入。 执行此操作的一个好方法是租用要复制的资源。 另外，还可以先创建 VHD 的快照，并复制该快照。
 
 如果在复制 blob 或文件时无法阻止其他应用程序向其进行写入，请记住，在作业完成时，复制的资源可能不再与源资源完全相同。
 

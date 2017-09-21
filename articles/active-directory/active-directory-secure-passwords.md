@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: barlan
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: de9d41cfb157c71f324f5662c1c037ff515e7108
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 50b24466bcbd399de19934f7ec5ed096e308eaf3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>Azure AD 密码安全性多层方法
@@ -51,7 +51,7 @@ Azure AD 和 Microsoft 帐户系统利用行业认可的方法，保证安全保
 
 ### <a name="dynamically-banned-passwords"></a>动态阻止的密码
 
-Azure AD 和 Microsoft 帐户通过动态阻止常用密码来保护密码。 Azure ID 标识保护团队将定期分析阻止的密码列表，防止用户选择常用的密码。 此服务适用于 Azure AD 和 Microsoft 帐户服务客户。
+Azure AD 和 Microsoft 帐户通过动态阻止常用密码来保护密码。 Azure AD Identity Protection 团队将定期分析阻止的密码列表，防止用户选择常用的密码。 此服务适用于 Azure AD 和 Microsoft 帐户服务客户。
 
 创建密码时，管理员有必要鼓励用户选择包含字母、数字、字符或单词的唯一组合的密码短语。 这样，用户密码基本上不可能遭到破解，同时便于记忆。
 

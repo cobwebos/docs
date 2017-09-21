@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: lmazuel
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: c9df4e1f7677b2ed10684f6f3c981f2abf64f171
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 523ee51c79fe09d71fa3cd3e202cf155b511956f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="installing-python-and-the-sdk"></a>安装 Python 和 SDK
@@ -98,7 +98,7 @@ Azure SDK for Python 包括允许针对 Azure 开发、部署和管理 Python �
 
 可以选择是否使用 PTVS，但建议使用，因为它能够提供 Python 和 Web 项目/解决方案支持、调试、分析、交互式窗口、模板编辑和智能感知。
 
-PTVS 还可以轻松实现部署到 Microsoft Azure，同时支持部署到[云服务](cloud-services/cloud-services-python-ptvs.md)和[网站](app-service-web/web-sites-python-ptvs-django-mysql.md)。
+PTVS 还可以轻松实现部署到 Microsoft Azure，同时支持部署到[云服务](cloud-services/cloud-services-python-ptvs.md)和[网站](app-service-web/app-service-web-overview.md)。
 
 PTVS 适用于现有的 Visual Studio 2013、2015 或 2017 版本的安装。  有关文档、下载和讨论的信息，请参阅 [Python Tools for Visual Studio]（用于 Visual Studio 的 Python 工具）。  
 
@@ -117,7 +117,7 @@ PTVS 适用于现有的 Visual Studio 2013、2015 或 2017 版本的安装。  �
 
 使用 Git 部署，可以从任何操作系统开发 Python web 应用程序并将其发布到 Azure 网站。  当将存储库推送到 Azure 时，它会自动创建虚拟环境和 pip 安装所需的包。
 
-有关开发和发布 Azure 网站的详细信息，请参阅有关教程：[Creating Websites with Django](app-service-web/web-sites-python-create-deploy-django-app.md)（使用 Django 创建网站）、[Creating Websites with Bottle](app-service-web/web-sites-python-create-deploy-bottle-app.md)（使用 Bottle 创建网站）和 [Creating Websites with Flask](app-service-web/web-sites-python-create-deploy-flask-app.md)（使用 Flask 创建网站）。 有关使用任何 WSGI 合规框架的更多常规信息，请参阅 [Configuring Python with Azure Websites](app-service-web/web-sites-python-configure.md)（使用 Azure 网站配置 Python）。
+有关使用任何符合 WSGI 的框架的详细信息，请参阅 [Configuring Python with Azure Websites](app-service-web/web-sites-python-configure.md)（使用 Azure 网站配置 Python）。
 
 ## <a name="additional-software-and-resources"></a>其他软件和资源：
 * [Azure SDK for Python ReadTheDocs](http://azure-sdk-for-python.readthedocs.io/en/latest/)
@@ -145,22 +145,10 @@ PTVS 适用于现有的 Visual Studio 2013、2015 或 2017 版本的安装。  �
 [Django Project - A mature web framework/CMS]: http://www.djangoproject.com
 [IPython - an advanced REPL/Notebook for Python]: http://ipython.org
 [IPython]: http://ipython.org
-[IPython Notebook on Azure]: virtual-machines-linux-jupyter-notebook.md
-[Cloud Services]: cloud-services-python-ptvs.md
-[Websites]: web-sites-python-ptvs-django-mysql.md
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 [Python Tools for Visual Studio on GitHub]: https://github.com/microsoft/ptvs
 [Python Package Index]: http://pypi.python.org/pypi
 [Microsoft Azure SDK for Python 2.7]: http://go.microsoft.com/fwlink/?LinkId=254281
 [Microsoft Azure SDK for Python 3.4]: http://go.microsoft.com/fwlink/?LinkID=516990
-[Setting up a Linux VM via the Azure portal]: create-and-configure-opensuse-vm-in-portal.md
-[How to use the Azure Command-Line Interface]: crossplat-cmd-tools.md
-[Create a Virtual Machine Running Linux]: virtual-machines-linux-quick-create-cli.md
-[Creating Websites with Django]: web-sites-python-create-deploy-django-app.md
-[Creating Websites with Bottle]: web-sites-python-create-deploy-bottle-app.md
-[Creating Websites with Flask]: web-sites-python-create-deploy-flask-app.md
-[Configuring Python with Azure Websites]: web-sites-python-configure.md
-[table storage]: storage-python-how-to-use-table-storage.md
-[queue storage]: storage-python-how-to-use-queue-storage.md
 [blob storage]:storage/blobs/storage-python-how-to-use-blob-storage.md
 

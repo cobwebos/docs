@@ -1,25 +1,10 @@
----
-title: "发送用户上下文以启用 Azure Application Insights 中的使用体验 | Microsoft Docs"
-description: "在 Application Insights 中向每位用户分配一个唯一的永久性 ID，然后跟踪其如何使用服务。"
-services: application-insights
-documentationcenter: 
-author: abgreg
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
-ms.devlang: csharp
-ms.topic: article
-ms.date: 08/02/2017
-ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 7d0da5fb0b2c59764b36becd826d8c4cc6efc4ad
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
+title: 发送用户上下文 ID 以启用 Azure Application Insights 中的使用体验 | Microsoft Docs description: 通过在 Application Insights 中为每个用户分配一个唯一且持久的 ID 字符串跟踪用户如何在服务中移动。
+services: application-insights documentationcenter: '' author: abgreg manager: carmonm
+
+ms.service: application-insights ms.workload: tbd ms.tgt_pltfrm: ibiza ms.devlang: csharp ms.topic: article ms.date: 08/02/2017 ms.author: bwren
 
 ---
-#  <a name="sending-user-context-to-enable-usage-experiences-in-azure-application-insights"></a>发送用户上下文以启用 Azure Application Insights 中的使用体验
+#  <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>发送用户上下文 ID 以启用 Azure Application Insights 中的使用体验
 
 ## <a name="tracking-users"></a>跟踪用户
 
@@ -30,7 +15,7 @@ Application Insights 通过一套产品使用工具监视并跟踪用户：
 * 队列
 * [工作簿](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
 
-为了跟踪用户在各个时间进行的操作，Application Insights 需要每个用户或会话的 ID。 在每个自定义事件或页面视图中包含这些 ID。
+为了跟踪用户在各个时间进行的操作，Application Insights 需要每个用户或会话的 ID。 在每个自定义事件或页面视图中包含以下 ID。
 - 用户、漏斗图、保留和队列：包括用户 ID。
 - 会话：包括会话 ID。
 
@@ -47,13 +32,11 @@ ID 必须是 GUID 或另一个复杂程度足以唯一地标识每个用户的�
 
 如果 ID 包含用户的个人标识信息，则不适合将该值作为用户 ID 发送到 Application Insights。 可以将该 ID 作为[已经过身份验证的用户 ID](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users) 进行发送，但是这不满足使用方案的用户 ID 要求。
 
-## <a name="aspnet-apps-set-user-context-in-an-itelemetryinitializer"></a>ASP.NET 应用：在 ITelemetryInitializer 中设置用户上下文
+## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET 应用：在 ITelemetryInitializer 中设置用户上下文
 
 按照[此处](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer)的详细信息进行操作，创建遥测初始值设定项，并设置 Context.User.Id 和 Context.Session.Id。
 
 此示例将用户 ID 设置为在会话后过期的标识符。 如果可能，请使用在各会话中保留的用户 ID。
-
-*C#*
 
 ```C#
 
@@ -98,4 +81,3 @@ ID 必须是 GUID 或另一个复杂程度足以唯一地标识每个用户的�
     * [漏斗图](usage-funnels.md)
     * [保留](app-insights-usage-retention.md)
     * [工作簿](app-insights-usage-workbooks.md)
-

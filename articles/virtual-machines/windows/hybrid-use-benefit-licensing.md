@@ -12,17 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 5/26/2017
+ms.date: 9/13/2017
 ms.author: xujing
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: a986ddf22f059dc55bb9bff5c6eaf27324b716cd
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: f34f65eb1d5375caae8831aedaed8a4b6a9cd098
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="azure-hybrid-use-benefit-for-windows-server"></a>适用于 Windows Server 的 Azure Hybrid Use Benefit
 对于有软件保障的客户，Azure 混合使用权益可让你使用本地 Windows Server 和 Windows 客户端许可证，并以较低成本在 Azure 中运行 Windows 虚拟机。 适用于 Windows Server 的 Azure 混合使用权益包括 Windows Server 2008R2、Windows Server 2012、Windows Server 2012R2 和 Windows Server 2016。 有关详细信息，请参阅 [Azure 混合使用权益许可页](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
+
+> [!IMPORTANT]
+> 为 Azure Marketplace 上具有企业协议的客户发布的“[HUB]”Windows Server 映像已从 2017 年 9 月 11 日开始停用，请将标准 Windows Server 与 Azure 混合使用权益的“节约资金”选项结合使用。 有关详细信息，请参阅[此文](https://support.microsoft.com/en-us/help/4036360/retirement-azure-hybrid-use-benefit-images-for-ea-subscriptions)。
+>
 
 > [!NOTE]
 > 本文演示如何实现 Windows Server 映像的许可权益。 还可以对 [Windows 10 桌面版映像](#windows-desktop-multitenant-hosting-deployment)执行这些步骤。

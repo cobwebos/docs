@@ -13,23 +13,24 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 08/11/2017
+ms.date: 09/08/2017
 ms.author: iainfou
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 2b8d519e11f70eda164bd8f6e131a3989f242ab0
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 1f54bb04023ad61f4eae51389c6a902a029e9399
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 
 # <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux"></a>在 Linux 上创建虚拟机规模集和部署高度可用的应用
-利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据 CPU 使用率、内存需求或网络流量进行自动缩放。 在本教程中，会在 Azure 中部署虚拟机规模集。 学习如何：
+利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据资源使用情况（如 CPU 使用率、内存需求或网络流量）进行自动缩放。 在本教程中，会在 Azure 中部署虚拟机规模集。 学习如何：
 
 > [!div class="checklist"]
 > * 使用 cloud-init 创建用于缩放的应用
 > * 创建虚拟机规模集
 > * 增加或减少规模集中的实例数
+> * 创建自动缩放规则
 > * 查看规模集实例的连接信息
 > * 在规模集中使用数据磁盘
 
@@ -39,11 +40,11 @@ ms.lasthandoff: 08/12/2017
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 ## <a name="scale-set-overview"></a>规模集概述
-利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 规模集使用的组件与前一教程[创建高度可用的 VM](tutorial-availability-sets.md) 中介绍的相同。 规模集中的 VM 在可用性集中创建，分布在逻辑容错域和更新域之间。
+利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 规模集中的 VM 将分布在逻辑容错域和更新域的一个或多个*放置组*中。 这些放置组由配置类似的 VM 组成，与[可用性集](tutorial-availability-sets.md)相似。
 
 可以根据需要在规模集中创建 VM。 定义自动缩放规则，以控制如何以及何时在规模集中添加或删除 VM。 这些根据 CPU 负载、内存用量或网络流量等指标触发这些规则。
 
-使用 Azure 平台映像时，规模集最多支持 1,000 个 VM。 对于生产工作负荷，可能需要[创建自定义 VM 映像](tutorial-custom-images.md)。 使用自定义映像时，在规模集中最多可以创建 100 个 VM。
+使用 Azure 平台映像时，规模集最多支持 1,000 个 VM。 对于有重要安装或 VM 自定义要求的工作负荷，可能需要[创建自定义 VM 映像](tutorial-custom-images.md)。 使用自定义映像时，在规模集中最多可以创建 300 个 VM。
 
 
 ## <a name="create-an-app-to-scale"></a>创建用于缩放的应用
@@ -113,7 +114,7 @@ az vmss create \
   --upgrade-policy-mode automatic \
   --custom-data cloud-init.txt \
   --admin-username azureuser \
-  --generate-ssh-keys      
+  --generate-ssh-keys
 ```
 
 创建和配置所有的规模集资源和 VM 需要几分钟时间。 在 Azure CLI 向你返回提示之后，仍然存在继续运行的后台任务。 可能还需等待几分钟才能访问应用。
@@ -197,7 +198,79 @@ az vmss scale \
     --new-capacity 5
 ```
 
-利用自动缩放规则，可以定义如何根据网络流量或 CPU 使用率等需求，增加或减少规模集中 VM 的数目。 目前，不能在 Azure CLI 2.0 中设置这些规则。 使用 [Azure 门户](https://portal.azure.com)配置自动缩放。
+
+### <a name="configure-autoscale-rules"></a>配置自动缩放规则
+可以定义自动缩放规则，而不是手动缩放规模集中的实例数。 这些规则监视规模集中的实例，并根据所定义的指标和阈值做出相应响应。 如果在 5 分钟内平均 CPU 负载高于 60%，以下示例将增加一个实例。 如果在 5 分钟内平均 CPU 负载低于 30%，则将减少一个实例。 订阅 ID 用于为各种规模集组件生成资源 URI。 若要使用 [az monitor autoscale-settings create](/cli/azure/monitor/autoscale-settings#create) 创建这些规则，请复制并粘贴以下自动缩放命令配置文件：
+
+```azurecli-interactive 
+sub=$(az account show --query id -o tsv)
+
+az monitor autoscale-settings create \
+    --resource-group myResourceGroupScaleSet \
+    --name autoscale \
+    --parameters '{"autoscale_setting_resource_name": "autoscale",
+      "enabled": true,
+      "location": "East US",
+      "notifications": [],
+      "profiles": [
+        {
+          "name": "Auto created scale condition",
+          "capacity": {
+            "minimum": "2",
+            "maximum": "10",
+            "default": "2"
+          },
+          "rules": [
+            {
+              "metricTrigger": {
+                "metricName": "Percentage CPU",
+                "metricNamespace": "",
+                "metricResourceUri": "/subscriptions/'$sub'/resourceGroups/myResourceGroupScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet",
+                "metricResourceLocation": "eastus",
+                "timeGrain": "PT1M",
+                "statistic": "Average",
+                "timeWindow": "PT5M",
+                "timeAggregation": "Average",
+                "operator": "GreaterThan",
+                "threshold": 70
+              },
+              "scaleAction": {
+                "direction": "Increase",
+                "type": "ChangeCount",
+                "value": "1",
+                "cooldown": "PT5M"
+              }
+            },
+            {
+              "metricTrigger": {
+                "metricName": "Percentage CPU",
+                "metricNamespace": "",
+                "metricResourceUri": "/subscriptions/'$sub'/resourceGroups/myResourceGroupScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet",
+                "metricResourceLocation": "eastus",
+                "timeGrain": "PT1M",
+                "statistic": "Average",
+                "timeWindow": "PT5M",
+                "timeAggregation": "Average",
+                "operator": "LessThan",
+                "threshold": 30
+              },
+              "scaleAction": {
+                "direction": "Decrease",
+                "type": "ChangeCount",
+                "value": "1",
+                "cooldown": "PT5M"
+              }
+            }
+          ]
+        }
+      ],
+      "tags": {},
+      "target_resource_uri": "/subscriptions/'$sub'/resourceGroups/myResourceGroupScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet"
+    }'
+```
+
+若要重用自动缩放配置文件，可以创建一个 JSON（JavaScript 对象表示法）文件，并使用 `--parameters @autoscale.json` 参数将该文件传递给 `az monitor autoscale-settings create` 命令。 有关使用自动缩放的详细设计信息，请参阅[自动缩放最佳做法](/azure/architecture/best-practices/auto-scaling)。
+
 
 ### <a name="get-connection-info"></a>获取连接信息
 若要获取有关规模集中 VM 的连接信息，请使用 [az vmss list-instance-connection-info](/cli/azure/vmss#list-instance-connection-info)。 此命令为每个允许采用 SSH 进行连接的 VM 输出公共 IP 地址和端口：
@@ -258,6 +331,7 @@ az vmss disk detach \
 > * 使用 cloud-init 创建用于缩放的应用
 > * 创建虚拟机规模集
 > * 增加或减少规模集中的实例数
+> * 创建自动缩放规则
 > * 查看规模集实例的连接信息
 > * 在规模集中使用数据磁盘
 
@@ -265,3 +339,4 @@ az vmss disk detach \
 
 > [!div class="nextstepaction"]
 > [均衡虚拟机的负载](tutorial-load-balancer.md)
+

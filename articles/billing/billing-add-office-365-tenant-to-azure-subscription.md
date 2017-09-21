@@ -13,19 +13,21 @@ ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 09/13/2017
 ms.author: cjiang
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: ff1cc44c01061aa924917e082d582bdebfb40c21
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: b7b3e4539110f68e1e6ef4a75110924a27b40c49
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/14/2017
 
 ---
-# <a name="associate-an-office-365-tenant-to-an-azure-subscription"></a>将 Office 365 租户与 Azure 订阅关联
-链接独立的 Azure 和 Office 365 订阅，以便可从 Azure 订阅访问 Office 365 租户。 要链接订阅，请使用 Azure 服务管理员帐户登录 Azure，添加一个目录，然后将 Office 365 组织帐户添加到 Azure Active Directory 租户。
+# <a name="link-an-office-365-tenant-to-an-azure-subscription"></a>将 Office 365 租户链接到 Azure 订阅
+链接独立的 Azure 和 Office 365 订阅，以便可从 Azure 订阅访问 Office 365 租户。 若要链接订阅，请使用 Azure 服务管理员帐户登录 Azure，添加一个目录，然后将 Office 365 工作或学校帐户添加到 Azure Active Directory 租户。
 
-如果希望 Azure Active Directory 实例中有面向用户的 Office 365 订阅或已安装 Office 365 帐户但未安装 Azure 帐户，请参阅[使用 Office 365 帐户注册 Azure](billing-use-existing-office-365-account-azure-subscription.md)。 
+**想要将现有 Azure 订阅移到 Office 365 工作或学校帐户？** 如果已使用个人 Microsoft 帐户注册了 Azure，并且想要通过 Office 365 帐户使用它或登录，我们强烈建议转让订阅。 请参阅[将 Azure 订阅所有权转让给其他帐户](billing-subscription-transfer.md)。 
+
+**想要使用 Office 365 注册 Azure？** 请参阅[使用 Office 365 帐户注册 Azure](billing-use-existing-office-365-account-azure-subscription.md)。 
 
 ## <a name="before-you-begin"></a>开始之前
 * 必须具有 Azure 订阅服务管理员凭据。 共同管理员帐户无法执行本文中的某些步骤。 若要更改服务管理员，请参阅[如何添加或更改 Azure 管理员角色](billing-add-change-azure-subscription-administrator.md#change-service-administrator-for-a-subscription)。
@@ -92,6 +94,5 @@ ms.lasthandoff: 08/31/2017
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
-
 
 

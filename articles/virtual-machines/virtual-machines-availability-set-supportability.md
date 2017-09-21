@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 7/15/2017
 ms.author: delhan
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: f07108f5d7a792dcc9aae8a4fe889878db168bc6
+ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
+ms.openlocfilehash: 786c5fa4a72abac4dfcbce2c0b987ff622e96ed3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>将 Azure VM 添加到现有可用性集的可支持性
@@ -37,3 +37,6 @@ ms.lasthandoff: 07/21/2017
 |Dv3||OK|OK|OK|OK|OK|
 
 所有其他系列都不能在同一可用性集中，因为它们需要特定的硬件。
+
+由于专用 RDMA 后端网络的要求，A8/A9 VM 大小不能混合。
+

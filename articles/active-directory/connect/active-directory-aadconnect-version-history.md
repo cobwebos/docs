@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 08/30/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
-ms.openlocfilehash: 6e2a7c5eafee78d342f735b543624d041b9b3fe5
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 895b538680230170cd29817997a7739b1ba89cfc
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
@@ -44,6 +44,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 * Azure AD Connect 升级存在已知问题，会对已启用[无缝单一登录](active-directory-aadconnect-sso.md)的客户造成影响。 升级 Azure AD Connect 后，功能会在向导中显示为已禁用，即使功能为启用状态也是如此。 未来的发布中将提供对此问题的修复。 担心此显示问题的客户可以手动修复此问题，方法是在向导中启用无缝单一登录。
 
 #### <a name="fixed-issues"></a>修复的问题
+* 修复了启用[作为源定位点的 msDS-ConsistencyGuid](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-msds-consistencyguid-as-sourceanchor) 功能时阻止 Azure AD Connect 更新本地 ADFS 中的声明规则的问题。 如果尝试为现有 Azure AD Connect 部署启用将 ADFS 配置为登录方法的功能，则会发生此问题。 之所以会发生此问题是因为，向导在尝试更新 ADFS 中的声明规则之前不提示输入 ADFS 凭据。
 * 修复了本地 AD 林禁用 NTLM 后导致 Azure AD Connect 无法安装的问题。 此问题的起因是：创建 Kerberos 身份验证所需的安全上下文时，Azure AD Connect 向导未提供完全限定的凭据。 这将导致 Kerberos 身份验证失败并且 Azure AD Connect 向导将回退到使用 NTLM。
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect Sync

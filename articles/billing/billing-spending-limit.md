@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/08/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: 0c9825f11733127a547e06e159172a08cef736eb
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 311a1af35b7fecb5f0d4fac7f38af705c945d714
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>了解 Azure 支出限制以及移除方式
@@ -69,7 +69,11 @@ Azure 中的支出限制是为了防止支出超过信用额度。 如果注册�
 
 ### <a name="how-do-i-turn-on-the-spending-limit-after-removing-it"></a>取消支出限制后如何重新启用？
 
-支出限制只采用自动启用的方式。 很遗憾，取消支出限制后无法手动开启。 如果担心以后无法再启用限制，请确保选中“取消当前计费周期的支出限制”选项。
+仅当已无限期移除支出限制时，此功能才可用。 将其更改为在下一计费周期开始时自动启用。
+
+1. 登录到[帐户中心](https://account.windowsazure.com/Subscriptions)。
+1. 单击黄色横幅更改支出限制选项。
+1. 选择“在下一计费周期的\<计费周期的开始日期\>启用支出限制”
 
 ### <a name="how-do-i-set-a-custom-spending-limit"></a>如何设置自定义支出限制？
 

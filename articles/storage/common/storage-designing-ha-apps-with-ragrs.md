@@ -3,7 +3,7 @@ title: "使用 Azure 读取访问异地冗余存储 (RA-GRS) 设计高度可用�
 description: "如何使用 Azure RA-GRS 存储构建足以灵活处理中断的高度可用的应用程序。"
 services: storage
 documentationcenter: .net
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 8f040b0f-8926-4831-ac07-79f646f31926
@@ -12,28 +12,35 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 1/19/2017
-ms.author: robinsh
+ms.date: 9/06/2017
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: adc7e23d8c9f869f2951490020e3d0f1a2b2e81c
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: 2889faf7bfa86f40eb38c50f146bd59ecfb6001f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>使用 RA-GRS 设计高度可用的应用程序
 
-基于云的基础结构的一个常见功能是提供用于承载应用程序的高度可用平台。 基于云的应用程序开发人员必须仔细考虑如何利用此平台为其用户提供高度可用的应用程序。 本文重点介绍开发人员如何使用 Azure 存储读取访问权限异地冗余存储 (RA-GRS) 使应用程序可用性更高。
+基于云的基础结构（如 Azure 存储）的一个常见功能是提供用于托管应用程序的高度可用平台。 基于云的应用程序开发人员必须仔细考虑如何利用此平台为其用户提供高度可用的应用程序。 本文重点介绍开发人员如何使用读取访问异地冗余存储 (RA-GRS) 确保其 Azure 存储应用程序高度可用。
 
-有四个冗余选项 - LRS（本地冗余存储）、ZRS（区域冗余存储）、GRS（异地冗余存储）和 RA-GRS（读取访问异地冗余存储）。 本文中将讨论 GRS 和 RA-GRS。 使用 GRS 选项，设置存储帐户时，数据的三个副本将保留在你所选的主要区域。 其他三个副本将异步保留在 Azure 指定的次要区域中。 RA-GRS 与 GRS 相同，但前者具有对次要副本的读取权限。 有关不同 Azure 存储冗余选项的详细信息，请参阅 [Azure 存储复制](https://docs.microsoft.com/en-us/azure/storage/storage-redundancy)。 复制文章还显示配对的主要和次要区域。
+Azure 存储为存储帐户中的数据冗余提供四个选项：
+
+– LRS（本地冗余存储）
+- ZRS（区域冗余存储空间） 
+- GRS（异地冗余存储）
+- RA-GRS（读取访问异地冗余存储）。 
+
+本文重点介绍 GRS 和 RA-GRS。 使用 GRS 选项，设置存储帐户时，数据的三个副本将保留在你所选的主要区域。 其他三个副本将异步保留在 Azure 指定的次要区域中。 RA-GRS 与 GRS 相同，但前者具有对次要副本的读取权限。 有关不同 Azure 存储冗余选项的详细信息，请参阅 [Azure 存储复制](https://docs.microsoft.com/azure/storage/storage-redundancy)。 复制文章还显示配对的主要和次要区域。
 
 本文包含代码片段，末尾有完成示例的链接，可以下载并运行。
 
 ## <a name="key-features-of-ra-grs"></a>RA-GRS 的主要功能
 
-在讨论如何使用 RA-GRS 存储之前，首先讨论其属性和行为。
+针对 RA-GRS 设计应用程序时，请记住以下要点：
 
-* Azure 存储将在主要区域中存储的数据的只读副本保留在次要区域中；如上文所述，存储服务确定次要区域的位置。
+* Azure 存储在次要区域中保留主要区域中存储的数据的只读副本。 如上所述，存储服务确定次要区域的位置。
 
 * 只读副本与主要区域中的数据[最终一致](https://en.wikipedia.org/wiki/Eventual_consistency)。
 
@@ -43,23 +50,25 @@ ms.lasthandoff: 07/12/2017
 
 * 如果存在影响主要区域中的数据可访问性的主要问题，Azure 团队可能会触发异地故障转移，此时指向主要区域的 DNS 条目将更改为指向次要区域。
 
-* 如果发生异地故障转移，Azure 将选择新的次要位置并将数据复制到该位置，然后将次要 DNS 条目指向该位置。 存储帐户复制完成之前，辅助终结点都不可用。 有关详细信息，请参阅 [What to do if an Azure Storage outage occurs](https://docs.microsoft.com/en-us/azure/storage/storage-disaster-recovery-guidance)（Azure 存储中断时应采取什么操作）。
+* 如果发生异地故障转移，Azure 将选择新的次要位置并将数据复制到该位置，然后将次要 DNS 条目指向该位置。 存储帐户复制完成之前，辅助终结点都不可用。 有关详细信息，请参阅 [What to do if an Azure Storage outage occurs](https://docs.microsoft.com/azure/storage/storage-disaster-recovery-guidance)（Azure 存储中断时应采取什么操作）。
 
 ## <a name="application-design-considerations-when-using-ra-grs"></a>使用 RA-GRS 时的应用程序设计注意事项
 
-本文旨在介绍：如何设计在主数据中心出现重大灾难时仍可继续使用（有限功能）的应用程序。 可通过下述方法执行此操作：出现问题时，通过从次要区域转换到读取来使应用程序处理暂时或长期问题，并在主要区域可用时再次切换回去。
+本文旨在介绍：如何设计在主数据中心发生重大灾难时仍可继续使用（有限功能）的应用程序。 可以将应用程序设计为在出现问题无法从主要区域读取时，通过从次要区域读取来处理暂时性或长时间运行的问题。 当主要区域重新变为可用时，应用程序可恢复为从主要区域读取。
 
 ### <a name="using-eventually-consistent-data"></a>使用最终一致的数据
 
-此建议的解决方案假定可以返回调用应用程序的过时数据。 由于次要数据是最终一致的，所以有可能数据已写入到主要区域，但到辅助区域的更新尚未完成复制，此时主要区域不可访问。
+此建议的解决方案假定可以向调用方应用程序返回可能过时的数据。 由于次要区域中的数据是最终一致的，因此在对次要区域的更新完成复制前，主要区域可能会变为不可访问。
 
-例如，客户可以提交成功的更新，然后主要区域可在更新传播到次要区域前关闭。 在这种情况下，如果客户之后要求读取数据，则将收到过时的数据而非更新后的数据。 必须确定数据是否可访问，如果可访问，则需确定如何向客户发送。 本文的后面部分将介绍如何在次要数据中查看“上次同步时间”，以了解次要区域是否为最新状态。
+例如，假设客户提交更新成功，但在更新传播到次要区域前主要区域发生故障。 当客户要求读取数据时，将从次要区域收到过时的数据而非更新后的数据。 在设计应用程序时，必须确定这是否可接受，如果可接受，如何告知客户。 
+
+本文的后面部分介绍如何查看次要数据的“上次同步时间”，以了解次要区域是否为最新状态。
 
 ### <a name="handling-services-separately-or-all-together"></a>单独或整体处理服务
 
-尽管可能性不大，但当其他服务完全可用时，某一个服务可能不可用。 可单独为每个服务（blob、队列、表）处理重试操作或只读模式，或者以一般方式为所有存储服务统一处理重试操作。
+尽管可能性不大，但当其他服务仍然完全可用时，某一个服务可能不可用。 可单独为每个服务（blob、队列、表）处理重试操作或只读模式，或者以一般方式为所有存储服务统一处理重试操作。
 
-例如，如果在应用程序中使用队列和 blob，可以使用单独的代码处理每个队列或 blob 的重试错误。 然后如果从 blob 服务中重试，但队列服务仍在工作，那么只有应用程序处理 blob 的部分会受到影响。 如果决定以一般方式处理所有存储服务重试操作，并使对 blob 服务的调用返回可重试错误，则对 blob 服务和队列服务的请求将受到影响。
+例如，如果在应用程序中使用队列和 blob，可以使用单独的代码处理每个队列或 blob 的重试错误。 然后如果从 blob 服务中重试，但队列服务仍在工作，那么只有处理 blob 的应用程序部分会受到影响。 如果决定以一般方式处理所有存储服务重试操作，并使对 blob 服务的调用返回可重试错误，则对 blob 服务和队列服务的请求将受到影响。
 
 从根本上讲，这取决于应用程序的复杂程度。 当检测到主要区域中的任何存储服务存在问题时，可以不按服务处理失败，而改为将对所有存储服务的读取请求重定向到次要区域，并在只读模式下运行应用程序。
 
@@ -75,11 +84,11 @@ ms.lasthandoff: 07/12/2017
 
 ## <a name="running-your-application-in-read-only-mode"></a>在只读模式下运行应用程序
 
-若要使用 RA-GRS 存储，必须能够处理失败的读取请求和失败的更新请求（此时的更新指插入、更新和删除）。 如果主数据中心发生故障，读取请求将重定向到备用数据中心，但更新请求不能重定向，因为备用数据中心是只读的。 因此需要使用其他方式在只读模式下运行应用程序。
+若要使用 RA-GRS 存储，必须能够处理失败的读取请求和失败的更新请求（此时的更新指插入、更新和删除）。 如果主数据中心发生故障，读取请求将重定向到备用数据中心， 但更新请求不能重定向到备用数据中心，因为备用数据中心是只读的。 因此，需要将应用程序设计为在只读模式下运行。
 
-例如，可以设置一个标志，在向存储服务提交任何更新前需检查此标志。 当其中一个更新请求成功时，可以跳过它，并向客户返回适当的响应。 在问题解决前，你甚至可能想要禁用某些功能，并通知用户这些功能是暂时不可用。
+例如，可以设置一个标志，在向 Azure 存储提交任何更新请求前需检查此标志。 当其中一个更新请求成功时，可以跳过它，并向客户返回适当的响应。 在问题解决前，甚至可能想要禁用某些功能，并通知用户这些功能是暂时不可用。
 
-如果决定分别处理每个服务的错误，则还需要处理在只读模式下按服务运行应用程序的能力。 可以为可以启用和禁用的每个服务设置只读标志，并在代码中的适当位置处理相应的标志。
+如果决定分别处理每个服务的错误，则还需要处理在只读模式下按服务运行应用程序的能力。 例如，可以为每个可启用和禁用的服务设置只读标志。 然后可以在代码中的适当位置处理该标志。
 
 无法在只读模式下运行应用程序具有另一个连带好处 - 可在主要应用程序升级期间确保有限的功能。 可以触发应用程序在只读模式下运行并指向备用数据中心，确保在升级时没有任何用户访问主要区域中的数据。
 
@@ -109,7 +118,7 @@ ms.lasthandoff: 07/12/2017
 
 *   **SecondaryThenPrimary**
 
-将 **LocationMode** 设置为 **PrimaryThenSecondary** 时，如果对主终结点的初始读取请求失败且为可重试错误，则客户端将自动向辅助终结点发起另一次读取请求。 如果错误是服务器超时，则客户端需要等待超时到期，然后才能收到来自服务的可重试错误。
+将 **LocationMode** 设置为 **PrimaryThenSecondary** 时，如果对主终结点的初始读取请求失败且为可重试错误，则客户端会自动向辅助终结点发起另一次读取请求。 如果错误是服务器超时，则客户端需要等待超时到期，才能收到来自服务的可重试错误。
 
 确定如何响应可重试错误时，基本上可考虑两种方案：
 
@@ -125,7 +134,7 @@ ms.lasthandoff: 07/12/2017
 
 ### <a name="update-requests"></a>更新请求
 
-断路器模式还可应用于更新请求。 但是，更新请求不能重定向到辅助存储，因为辅助存储是只读的。 对于这些请求，应将 **LocationMode** 属性设置为 **PrimaryOnly**（默认值）。 若要处理这些错误，可将指标应用于这些请求 - 例如一行中 10 个故障 - 并在达到阈值时，将应用程序转换为只读模式。 对于返回到更新模式，可以使用下一部分中描述的关于断路器模式的相同方法。
+断路器模式还可应用于更新请求。 但是，更新请求不能重定向到辅助存储，因为辅助存储是只读的。 对于这些请求，应将 **LocationMode** 属性设置为 **PrimaryOnly**（默认值）。 要处理这些错误，可将指标应用于这些请求 - 例如一行中 10 个故障 - 并在达到阈值时，将应用程序转换为只读模式。 对于返回到更新模式，可以使用下一部分中描述的关于断路器模式的相同方法。
 
 ## <a name="circuit-breaker-pattern"></a>断路器模式
 
@@ -135,7 +144,7 @@ ms.lasthandoff: 07/12/2017
 
 若要确定主终结点存在持续性问题，可以监视客户端遇到可重试错误的频率。 由于每种情况都不同，因此需要确定切换到辅助终结点并在只读模式下运行应用程序时使用的阈值。 例如，可决定在一行中存在 10 次失败且没有成功记录时执行转换。 另一个示例是在 2 分钟内存在 90% 失败请求时切换。
 
-对于第一个方案，只需保留失败的计数，并且如果在达到最大值前成功，则将计数重新设置为零。 对于第二种方案，一种实现方法是使用 MemoryCache 对象（在 .NET 中）。 对于每个请求，将 CacheItem 添加到缓存，将值设置为成功 (1) 或失败 (0)，并将过期时间设置为从现在起 2 分钟（或任意时间约束）。 当达到条目的过期时间时，将会自动删除该条目。 这将为你提供 2 分钟的滚动窗口。 每次向存储服务发起请求时，首先使用跨 MemoryCache 对象的 Linq 查询通过对值进行求和并除以计数来计算成功的百分比。 当成功百分比低于某个阈值（如 10%）时，将读取权限的 **LocationMode** 属性设置为 **SecondaryOnly**，并在继续前将应用程序切换到只读模式。
+对于第一个方案，只需保留失败的计数，并且如果在达到最大值前成功，则将计数重新设置为零。 对于第二种方案，一种实现方法是使用 MemoryCache 对象（在 .NET 中）。 对于每个请求，将 CacheItem 添加到缓存，将值设置为成功 (1) 或失败 (0)，并将过期时间设置为从现在起 2 分钟（或任意时间约束）。 当达到条目的过期时间时，会自动删除该条目。 这会提供 2 分钟的滚动窗口。 每次向存储服务发起请求时，首先使用跨 MemoryCache 对象的 Linq 查询通过对值进行求和并除以计数来计算成功的百分比。 当成功百分比低于某个阈值（如 10%）时，将读取权限的 **LocationMode** 属性设置为 **SecondaryOnly**，并在继续前将应用程序切换到只读模式。
 
 用于确定何时切换的错误的阈值根据应用程序中的不同服务而有所差异，因此应考虑将它们设置为可配置参数。 此时还应确定分别还是整体处理可重试错误，如前文所述。
 
@@ -145,7 +154,7 @@ ms.lasthandoff: 07/12/2017
 
 可使用三个主要选项监视主要区域中的重试频率，以便确定何时切换到次要区域并将应用程序更改为在只读模式下运行。
 
-*   为传递到存储请求的 [**OperationContext**](http://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.operationcontext.aspx) 对象上的[**重试**](http://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.operationcontext.retrying.aspx)事件添加处理程序 - 这是本文演示的方法，且在随附的示例中使用了该方法。 每当客户端重试请求时都将触发这些事件，以便跟踪客户端在主终结点上遇到可重试错误的频率。
+*   为传递到存储请求的 [**OperationContext**](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.aspx) 对象上的[**重试**](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.retrying.aspx)事件添加处理程序 - 这是本文演示的方法，且在随附的示例中使用了该方法。 每当客户端重试请求时都将触发这些事件，以便跟踪客户端在主终结点上遇到可重试错误的频率。
 
     ```csharp 
     operationContext.Retrying += (sender, arguments) =>
@@ -156,7 +165,7 @@ ms.lasthandoff: 07/12/2017
     };
     ```
 
-*   在自定义重试策略的 [**Evaluate**](http://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.retrypolicies.iextendedretrypolicy.evaluate.aspx) 方法中，每次重试时均可运行自定义代码。 除了在重试时进行记录外，还可利用此操作修改重试行为。
+*   在自定义重试策略的 [**Evaluate**](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.retrypolicies.iextendedretrypolicy.evaluate.aspx) 方法中，每次重试时均可运行自定义代码。 除了在重试时进行记录外，还可利用此操作修改重试行为。
 
     ```csharp 
     public RetryInfo Evaluate(RetryContext retryContext,
@@ -164,12 +173,12 @@ ms.lasthandoff: 07/12/2017
     {
         var statusCode = retryContext.LastRequestResult.HttpStatusCode;
         if (retryContext.CurrentRetryCount >= this.maximumAttempts
-        || ((statusCode &gt;= 300 && statusCode &lt; 500 && statusCode != 408)
-        || statusCode == 501 // Not Implemented
-        || statusCode == 505 // Version Not Supported
+            || ((statusCode >= 300 && statusCode < 500 && statusCode != 408)
+            || statusCode == 501 // Not Implemented
+            || statusCode == 505 // Version Not Supported
             ))
         {
-        // Do not retry
+            // Do not retry
             return null;
         }
 
@@ -186,7 +195,7 @@ ms.lasthandoff: 07/12/2017
 
 *   第三种方法是在应用程序中实现自定义监视组件，应用程序对具有虚拟读取请求（如读取小型 blob）的主存储终结点持续执行 ping 操作，以确定其运行状况。 这会占用一些资源，但占用量不大。 发现达到阈值的问题时，则切换到 **SecondaryOnly** 和只读模式。
 
-有时，可能想切换回使用主终结点或允许更新。 如果使用上文列出的前两种方法，则只需在任意选择时间长度或操作数量后切换回主终结点并启用更新模式。 可以再次执行重试逻辑操作。 如果问题得到解决，它将继续使用主终结点，并允许更新。 如果仍然有问题，它将在无法满足设置的标准后再次重新切换到辅助终结点和只读模式。
+有时，可能想切换回使用主终结点或允许更新。 如果使用上文列出的前两种方法，则只需在任意选择时间长度或操作数量后切换回主终结点并启用更新模式。 可以再次执行重试逻辑操作。 如果问题得到解决，它将继续使用主终结点，并允许更新。 如果仍然有问题，它会在无法满足设置的标准后再次重新切换到辅助终结点和只读模式。
 
 对于第三个方案，当再次对主存储终结点成功执行 ping 操作时，可触发切换回 **PrimaryOnly** 并继续允许更新。
 
@@ -208,7 +217,7 @@ RA-GRS 的工作方式是将事务从主要区域复制到次要区域。 此复
 
 在此示例中，假定客户端在 T5 从次要区域切换到读取。 它此时能够成功读取**管理员角色**实体，但该实体包含的管理员数量值与次要区域中此时标记的**员工**数量不一致。 客户端只需显示此值，并且具有信息不一致的风险。 或者，客户端可能会尝试确定**管理员角色**可能是不一致的状态，因为更新是无序进行的，并随后告知用户这一事实。
 
-若要识别它可能具有不一致的数据，客户端可以使用你通过随时查询存储服务获取的上次同步时间的值。 借此可了解次要区域中的数据上一次一致的时间，以及服务在该时间点前应用所有事务的时间。 在上述示例中，服务在次要区域中插入**员工**实体后，上次同步时间将设置为 *T1*。 当服务更新次要区域中的**员工**实体前，它仍然保持为 *T1*，之后则设置为 *T6*。 如果客户端在其读取 *T5* 处的实体时检索上次同步时间，它会将其与实体上的时间戳进行对比。 如果实体上的时间戳晚于上次同步时间，则实体可能处于不一致状态，可对应用程序采取任何适当操作。 使用此字段要求了解到主要区域上次更新的时间。
+要识别它可能具有不一致的数据，客户端可以使用通过随时查询存储服务获取的上次同步时间的值。 借此可了解次要区域中的数据上一次一致的时间，以及服务在该时间点前应用所有事务的时间。 在上述示例中，服务在次要区域中插入**员工**实体后，上次同步时间将设置为 *T1*。 当服务更新次要区域中的**员工**实体前，它仍然保持为 *T1*，之后则设置为 *T6*。 如果客户端在其读取 *T5* 处的实体时检索上次同步时间，它会将其与实体上的时间戳进行对比。 如果实体上的时间戳晚于上次同步时间，则实体可能处于不一致状态，可对应用程序采取任何适当操作。 使用此字段要求了解到主要区域上次更新的时间。
 
 ## <a name="testing"></a>测试
 
@@ -228,11 +237,11 @@ static function OnBeforeResponse(oSession: Session) {
 
 可使用此示例对范围更广的请求进行截获，并更改其中一些请求的 **responseCode** 以更好地模拟真实方案。 有关自定义 Fiddler 脚本的详细信息，请参阅 Fiddler 文档中的 [Modifying a Request or Response](http://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse)（修改请求或响应）。
 
-如果已将用于将应用程序切换到只读模式的阈值设置为可配置，则可轻松使用非生产事务量测试行为。
+如果已用于将应用程序切换到只读模式的阈值设置为可配置，则可轻松使用非生产事务量测试行为。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关读取访问权限异地冗余的详细信息及设置 LastSyncTime 的另一示例，请参阅 [Windows Azure Storage Redundancy Options and Read Access Geo Redundant Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)（Microsoft Azure 存储冗余选项和读取访问权限异地冗余存储）。
+* 有关读取访问异地冗余的详细信息及如何设置 LastSyncTime 的另一示例，请参阅 [Windows Azure Storage Redundancy Options and Read Access Geo-Redundant Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)（Windows Azure 存储冗余选项和读取访问异地冗余存储）。
 
 * 有关如何在主终结点和辅助终结点之间来回切换的完整示例，请参阅 [Azure 示例 - 搭配使用断路器模式和 RA-GRS 存储](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs)。
 
