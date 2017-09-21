@@ -12,8 +12,9 @@
 ### [1 - 生成 .NET 应用程序](service-fabric-tutorial-create-dotnet-app.md)
 ### [2 - 部署应用程序](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 ### [3 - 配置 CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+### [4 - 监视和诊断](service-fabric-tutorial-monitoring-aspnet.md)
 
-## 直接迁移应用
+## 将现有 .NET 应用容器化
 ### [1 - 在 Azure 上创建安全群集](service-fabric-tutorial-create-cluster-azure-ps.md)
 ### [2 - 使用 Docker Compose 部署 .NET 应用](service-fabric-host-app-in-a-container.md)
 

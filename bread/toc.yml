@@ -34,18 +34,18 @@
       tocHref: /azure/app-service/
       topicHref: /azure/app-service/
       items:
-        - name: 用于容器的 Web 应用
+        - name: 容器的 Web 应用
           tocHref: /azure/app-service/containers/
           topicHref: /azure/app-service/containers/
+        - name: 应用服务环境
+          tocHref: /azure/app-service/environment/
+          topicHref: /azure/app-service/environment/
         - name: Web 应用
-          tocHref: /azure/app-service-web/
-          topicHref: /azure/app-service-web/
+          tocHref: /azure/app-service/
+          topicHref: /azure/app-service/
         - name: 移动应用
           tocHref: /azure/app-service-mobile/
           topicHref: /azure/app-service-mobile/
-        - name: API 应用
-          tocHref: /azure/app-service-api/
-          topicHref: /azure/app-service-api/
     - name: 顾问
       tocHref: /azure/advisor/
       topicHref: /azure/advisor/
