@@ -1,6 +1,6 @@
 ---
-title: "Azure 监视器指标 - 每种资源类型支持的指标 | Microsoft 文档"
-description: "可在 Azure 监视器中为每种资源类型使用的指标的列表。"
+title: "Azure Monitor 指标 - 每种资源类型支持的指标 | Microsoft Docs"
+description: "可在 Azure Monitor 中为每种资源类型使用的指标的列表。"
 author: anirudhcavale
 manager: ashwink
 editor: 
@@ -21,11 +21,11 @@ ms.contentlocale: zh-cn
 ms.lasthandoff: 09/08/2017
 
 ---
-# <a name="supported-metrics-with-azure-monitor"></a>Azure 监视器支持的指标
-Azure 监视器提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 下面是目前可在 Azure 监视器的指标管道中使用的完整指标列表。
+# <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor 支持的指标
+Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 下面是目前可在 Azure Monitor 的指标管道中使用的完整指标列表。
 
 > [!NOTE]
-> 其他指标可在门户或旧版 API 中使用。 此列表仅包含可以通过合并的 Azure 监视器指标管道公共预览版使用的公共预览版指标。
+> 其他指标可在门户或旧版 API 中使用。 此列表仅包含可以通过合并的 Azure Monitor 指标管道公共预览版使用的公共预览版指标。
 >
 >
 
@@ -79,15 +79,15 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |TotalRequests|网关请求总数|计数|总计|网关请求数|
 |SuccessfulRequests|成功的网关请求数|计数|总计|成功的网关请求数|
 |UnauthorizedRequests|未经授权的网关请求数|计数|总计|未经授权的网关请求数|
 |FailedRequests|失败的网关请求数|计数|总计|失败的网关请求数|
 |OtherRequests|其他网关请求数|计数|总计|其他网关请求数|
-|持续时间|网关请求的总持续时间|毫秒|平均值、最大值|网关请求的总持续时间，以毫秒为单位|
-|容量|容量（预览）|百分比|平均值、最大值|ApiManagement 服务的利用率指标|
+|Duration|网关请求的总持续时间|毫秒|平均值、最大值|网关请求的总持续时间，以毫秒为单位|
+|Capacity|容量（预览）|百分比|平均值、最大值|ApiManagement 服务的利用率指标|
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
 
@@ -97,7 +97,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |CoreCount|专用核心计数|计数|总计|批处理帐户中的专用核心总数|
 |TotalNodeCount|专用节点计数|计数|总计|批处理帐户中的专用节点总数|
@@ -126,7 +126,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsoftcacheredis"></a>Microsoft.Cache/redis
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |connectedclients|连接的客户端数|计数|最大值||
 |totalcommandsprocessed|总操作数|计数|总计||
@@ -298,17 +298,17 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 |指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
-|CPU 百分比|CPU 百分比|百分比|平均值|当前虚拟机正在使用的已分配计算单元百分比。|
-|网络传入|网络传入|字节|总计|虚拟机在所有网络接口上收到的字节数（传入流量）。|
-|网络传出|网络传出|字节|总计|虚拟机在所有网络接口上发出的字节数（传出流量）。|
-|磁盘读取字节数/秒|磁盘读取|每秒字节数|平均值|监视期间从磁盘读取的平均字节数。|
-|磁盘写入字节数/秒|磁盘写入|每秒字节数|平均值|监视期间向磁盘写入的平均字节数。|
-|磁盘读取操作次数/秒|磁盘读取操作次数/秒|每秒计数|平均值|磁盘读取 IOPS。|
-|磁盘写入操作次数/秒|磁盘写入操作次数/秒|每秒计数|平均值|磁盘写入 IOPS。|
+|Percentage CPU|CPU 百分比|百分比|平均值|当前虚拟机正在使用的已分配计算单元百分比。|
+|Network In|网络传入|字节|总计|虚拟机在所有网络接口上收到的字节数（传入流量）。|
+|Network Out|网络传出|字节|总计|虚拟机在所有网络接口上发出的字节数（传出流量）。|
+|Disk Read Bytes/Sec|磁盘读取|每秒字节数|平均值|监视期间从磁盘读取的平均字节数。|
+|Disk Write Bytes/Sec|磁盘写入|每秒字节数|平均值|监视期间向磁盘写入的平均字节数。|
+|Disk Read Operations/Sec|磁盘读取操作次数/秒|每秒计数|平均值|磁盘读取 IOPS。|
+|Disk Write Operations/Sec|磁盘写入操作次数/秒|每秒计数|平均值|磁盘写入 IOPS。|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |TotalCalls|总调用数|计数|总计|调用总数。|
 |SuccessfulCalls|成功调用数|计数|总计|成功调用数。|
@@ -318,47 +318,47 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |ClientErrors|客户端错误数|计数|总计|引发客户端错误（HTTP 响应代码 4xx）的调用数。|
 |DataIn|数据输入|字节|总计|传入数据的大小（字节）。|
 |DataOut|数据输出|字节|总计|传出数据的大小（字节）。|
-|延迟|延迟|毫秒|平均值|延迟（毫秒）。|
+|Latency|延迟|毫秒|平均值|延迟（毫秒）。|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
-|CPU 百分比|CPU 百分比|百分比|平均值|当前虚拟机正在使用的已分配计算单元百分比|
-|网络传入|网络传入|字节|总计|虚拟机在所有网络接口上收到的字节数（传入流量）|
-|网络传出|网络传出|字节|总计|虚拟机在所有网络接口上发出的字节数（传出流量）|
-|磁盘读取字节数|磁盘读取字节数|字节|总计|监视期间从磁盘读取的字节总数|
-|磁盘写入字节数|磁盘写入字节数|字节|总计|监视期间向磁盘写入的字节总数|
-|磁盘读取操作次数/秒|磁盘读取操作次数/秒|每秒计数|平均值|磁盘读取 IOPS|
-|磁盘写入操作次数/秒|磁盘写入操作次数/秒|每秒计数|平均值|磁盘写入 IOPS|
+|Percentage CPU|CPU 百分比|百分比|平均值|当前虚拟机正在使用的已分配计算单元百分比|
+|Network In|网络传入|字节|总计|虚拟机在所有网络接口上收到的字节数（传入流量）|
+|Network Out|网络传出|字节|总计|虚拟机在所有网络接口上发出的字节数（传出流量）|
+|Disk Read Bytes|磁盘读取字节数|字节|总计|监视期间从磁盘读取的字节总数|
+|Disk Write Bytes|磁盘写入字节数|字节|总计|监视期间向磁盘写入的字节总数|
+|Disk Read Operations/Sec|磁盘读取操作次数/秒|每秒计数|平均值|磁盘读取 IOPS|
+|Disk Write Operations/Sec|磁盘写入操作次数/秒|每秒计数|平均值|磁盘写入 IOPS|
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
-|CPU 百分比|CPU 百分比|百分比|平均值|当前虚拟机正在使用的已分配计算单元百分比|
-|网络传入|网络传入|字节|总计|虚拟机在所有网络接口上收到的字节数（传入流量）|
-|网络传出|网络传出|字节|总计|虚拟机在所有网络接口上发出的字节数（传出流量）|
-|磁盘读取字节数|磁盘读取字节数|字节|总计|监视期间从磁盘读取的字节总数|
-|磁盘写入字节数|磁盘写入字节数|字节|总计|监视期间向磁盘写入的字节总数|
-|磁盘读取操作次数/秒|磁盘读取操作次数/秒|每秒计数|平均值|磁盘读取 IOPS|
-|磁盘写入操作次数/秒|磁盘写入操作次数/秒|每秒计数|平均值|磁盘写入 IOPS|
+|Percentage CPU|CPU 百分比|百分比|平均值|当前虚拟机正在使用的已分配计算单元百分比|
+|Network In|网络传入|字节|总计|虚拟机在所有网络接口上收到的字节数（传入流量）|
+|Network Out|网络传出|字节|总计|虚拟机在所有网络接口上发出的字节数（传出流量）|
+|Disk Read Bytes|磁盘读取字节数|字节|总计|监视期间从磁盘读取的字节总数|
+|Disk Write Bytes|磁盘写入字节数|字节|总计|监视期间向磁盘写入的字节总数|
+|Disk Read Operations/Sec|磁盘读取操作次数/秒|每秒计数|平均值|磁盘读取 IOPS|
+|Disk Write Operations/Sec|磁盘写入操作次数/秒|每秒计数|平均值|磁盘写入 IOPS|
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft.Compute/virtualMachineScaleSets/virtualMachines
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
-|CPU 百分比|CPU 百分比|百分比|平均值|当前虚拟机正在使用的已分配计算单元百分比|
-|网络传入|网络传入|字节|总计|虚拟机在所有网络接口上收到的字节数（传入流量）|
-|网络传出|网络传出|字节|总计|虚拟机在所有网络接口上发出的字节数（传出流量）|
-|磁盘读取字节数|磁盘读取字节数|字节|总计|监视期间从磁盘读取的字节总数|
-|磁盘写入字节数|磁盘写入字节数|字节|总计|监视期间向磁盘写入的字节总数|
-|磁盘读取操作次数/秒|磁盘读取操作次数/秒|每秒计数|平均值|磁盘读取 IOPS|
-|磁盘写入操作次数/秒|磁盘写入操作次数/秒|每秒计数|平均值|磁盘写入 IOPS|
+|Percentage CPU|CPU 百分比|百分比|平均值|当前虚拟机正在使用的已分配计算单元百分比|
+|Network In|网络传入|字节|总计|虚拟机在所有网络接口上收到的字节数（传入流量）|
+|Network Out|网络传出|字节|总计|虚拟机在所有网络接口上发出的字节数（传出流量）|
+|Disk Read Bytes|磁盘读取字节数|字节|总计|监视期间从磁盘读取的字节总数|
+|Disk Write Bytes|磁盘写入字节数|字节|总计|监视期间向磁盘写入的字节总数|
+|Disk Read Operations/Sec|磁盘读取操作次数/秒|每秒计数|平均值|磁盘读取 IOPS|
+|Disk Write Operations/Sec|磁盘写入操作次数/秒|每秒计数|平均值|磁盘写入 IOPS|
 
 ## <a name="microsoftcustomerinsightshubs"></a>Microsoft.CustomerInsights/hubs
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |DCIApiCalls|Customer Insights API 调用数|计数|总计||
 |DCIMappingImportOperationSuccessfulLines|映射导入操作成功行数|计数|总计||
@@ -387,7 +387,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.DataLakeAnalytics/accounts
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |JobEndedSuccess|成功作业数|计数|总计|成功作业计数。|
 |JobEndedFailure|失败作业数|计数|总计|失败作业计数。|
@@ -408,7 +408,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|
 |compute_limit|计算单位限制|计数|平均值|计算单位限制|
@@ -423,7 +423,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|
 |compute_limit|计算单位限制|计数|平均值|计算单位限制|
@@ -438,7 +438,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |d2c.telemetry.ingress.allProtocol|遥测消息发送尝试次数|计数|总计|尝试发送到 IoT 中心的、设备到云的遥测消息数|
 |d2c.telemetry.ingress.success|已发送的遥测消息数|计数|总计|成功发送到 IoT 中心的、设备到云的遥测消息数|
@@ -500,7 +500,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |INREQS|传入的发送请求数|计数|总计|通知中心的传入的发送请求数总计|
 |SUCCREQ|成功的请求数|计数|总计|命名空间的成功请求总数|
@@ -518,7 +518,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |RunsStarted|已启动的运行数|计数|总计|已启动的工作流运行数目。|
 |RunsCompleted|已完成的运行数|计数|总计|已完成的工作流运行数目。|
@@ -553,20 +553,20 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
-|吞吐量|吞吐量|每秒字节数|平均值|应用程序网关每秒提供的字节数|
+|Throughput|吞吐量|每秒字节数|平均值|应用程序网关每秒提供的字节数|
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |BytesIn|BytesIn|计数|总计|传入 Azure 的字节数|
 |BytesOut|BytesOut|计数|总计|传出 Azure 的字节数|
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |registration.all|注册操作|计数|总计|所有成功的注册操作（创建、更新、查询和删除）的计数。 |
 |registration.create|注册创建操作数|计数|总计|所有成功的注册创建操作的计数。|
@@ -633,7 +633,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |SearchLatency|搜索延迟|秒|平均值|搜索服务的平均搜索延迟|
 |SearchQueriesPerSecond|每秒搜索查询数|每秒计数|平均值|搜索服务的每秒搜索查询数|
@@ -641,14 +641,14 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |CPUXNS|每个命名空间的 CPU 使用率|百分比|最大值|服务总线高级命名空间 CPU 使用率指标|
 |WSXNS|每个命名空间的内存使用量|百分比|最大值|服务总线高级命名空间内存使用率指标|
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|
 |physical_data_read_percent|数据 IO 百分比|百分比|平均值|数据 IO 百分比|
@@ -671,7 +671,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|
 |database_cpu_percent|CPU 百分比|百分比|平均值|CPU 百分比|
@@ -695,7 +695,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsoftsqlservers"></a>Microsoft.Sql/servers
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |dtu_consumption_percent|DTU 百分比|百分比|平均值|DTU 百分比|
 |database_dtu_consumption_percent|DTU 百分比|百分比|平均值|DTU 百分比|
@@ -704,7 +704,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |ResourceUtilization|流单元利用率 %|百分比|最大值|流单元利用率 %|
 |InputEvents|输入事件数|计数|总计|输入事件数|
@@ -712,7 +712,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |LateInputEvents|延迟输入事件数|计数|总计|延迟输入事件数|
 |OutputEvents|输出事件数|计数|总计|输出事件数|
 |ConversionErrors|数据转换错误数|计数|总计|数据转换错误数|
-|错误|运行时错误|计数|总计|运行时错误|
+|Errors|运行时错误|计数|总计|运行时错误|
 |DroppedOrAdjustedEvents|失序事件数|计数|总计|失序事件数|
 |AMLCalloutRequests|函数请求数|计数|总计|函数请求数|
 |AMLCalloutFailedRequests|失败的函数请求数|计数|总计|失败的函数请求数|
@@ -720,7 +720,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsoftwebserverfarms"></a>Microsoft.Web/serverfarms
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |CpuPercentage|CPU 百分比|百分比|平均值|CPU 百分比|
 |MemoryPercentage|内存百分比|百分比|平均值|内存百分比|
@@ -731,10 +731,10 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsoftwebsites-excluding-functions"></a>Microsoft.Web/sites（不包括 Functions）
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |CpuTime|CPU 时间|秒|总计|CPU 时间|
-|请求|请求|计数|总计|请求|
+|Requests|请求|计数|总计|请求|
 |BytesReceived|数据输入|字节|总计|数据输入|
 |BytesSent|数据输出|字节|总计|数据输出|
 |Http101|Http 101|计数|总计|Http 101|
@@ -752,7 +752,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (Functions)
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |BytesReceived|数据输入|字节|总计|数据输入|
 |BytesSent|数据输出|字节|总计|数据输出|
@@ -764,10 +764,10 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |CpuTime|CPU 时间|秒|总计|CPU 时间|
-|请求|请求|计数|总计|请求|
+|Requests|请求|计数|总计|请求|
 |BytesReceived|数据输入|字节|总计|数据输入|
 |BytesSent|数据输出|字节|总计|数据输出|
 |Http101|Http 101|计数|总计|Http 101|
@@ -789,7 +789,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 |指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
-|请求|请求|计数|总计|请求|
+|Requests|请求|计数|总计|请求|
 |BytesReceived|数据输入|字节|总计|数据输入|
 |BytesSent|数据输出|字节|总计|数据输出|
 |Http101|Http 101|计数|总计|Http 101|
@@ -821,7 +821,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |WorkersUsed|使用的工作线程数|计数|平均值|使用的工作线程数|
 
 ## <a name="next-steps"></a>后续步骤
-* [了解 Azure 监视器中的指标](monitoring-overview-metrics.md)
+* [了解 Azure Monitor 中的指标](monitoring-overview-metrics.md)
 * [针对指标创建警报](insights-receive-alert-notifications.md)
 * [将指标导出到存储、事件中心或 Log Analytics](monitoring-overview-of-diagnostic-logs.md)
 
