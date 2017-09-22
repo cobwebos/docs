@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory 中的移动应用管理条件访问 | Microsoft Docs"
-description: "了解 Azure Active Directory 中的移动应用管理条件访问的工作原理。"
+title: "Azure Active Directory 基于应用程序的条件访问 | Microsoft Docs"
+description: "了解 Azure Active Directory 基于应用程序的条件访问的工作原理。"
 services: active-directory
 keywords: "对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略"
 documentationcenter: 
@@ -13,66 +13,66 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/01/2017
+ms.date: 09/07/2017
 ms.author: markvi
 ms.reviewer: spunukol
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: c6bc39dc151c80ffe1306464da60a029e54cc6b1
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: 48c9f55e2296b88acc697ab818f13787695643a5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/08/2017
 
 ---
-# <a name="conditional-access-with-mobile-app-management-in-azure-active-directory"></a>Azure Active Directory 中的移动应用管理条件访问  
+# <a name="azure-active-directory-app-based-conditional-access"></a>Azure Active Directory 基于应用程序的条件访问  
 
-将 Azure 门户中基于应用的 Azure Active Directory (Azure AD) 条件访问与 Intune 应用保护策略结合后，有助于限制云应用对支持 Intune 应用保护的移动应用的访问，例如限制 Exchange Online 对 Outlook 应用的访问。 这使得未注册 Intune MDM 管理的设备仍可保护公司数据。   
+员工使用移动设备执行个人和工作任务。 既要确保提高员工的工作效率，也要防止数据丢失。 借助 Azure Active Directory (Azure AD) 基于应用程序的条件访问，可以限制为只有可以保护公司数据的客户端应用程序，才能访问云应用程序。  
 
-可将移动应用管理条件访问与其他策略（例如基于设备的条件访问策略）结合使用，以更灵活的方式保护个人设备和公司设备的数据。 
+本主题介绍了如何配置 Azure AD 基于应用程序的条件访问。
+
+## <a name="overview"></a>概述
+
+借助 [Azure AD 条件访问](active-directory-conditional-access-azure-portal.md)，可以微调授权用户访问资源的方式。 例如，可以限制为只允许受信任的设备访问云应用程序。
+
+可以使用 [Intune 应用程序保护策略](https://docs.microsoft.com/intune/app-protection-policy)，帮助保护公司数据。 Intune 应用程序保护策略不要求使用移动设备管理 (MDM) 解决方案，即无论是否在设备管理解决方案中注册设备，都可以帮助保护公司数据。
+
+借助 Azure Active Directory 基于应用程序的条件访问，可限制为只有支持 Intune 应用程序保护策略的客户端应用程序，才能访问云应用程序。 例如，可以限制为只有 Outlook 应用程序，才能访问 Exchange Online。
+
+在条件访问这一术语范畴内，这些客户端应用程序被称为“核准客户端应用程序”。  
+
+
+![条件性访问](./media/active-directory-conditional-access-mam/05.png)
+
+
+有关核准客户端应用程序的列表，请参阅[核准客户端应用程序要求](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)。
+
+
+可以将基于应用程序的条件访问策略与其他策略（如[基于设备的条件访问策略](active-directory-conditional-access-policy-connected-applications.md)）结合使用，从而更灵活地保护个人和公司设备数据。
+
+ 
+
 
 ##<a name="before-you-begin"></a>开始之前
 
 本主题假定你熟悉以下内容：
 
+- [核准客户端应用程序要求](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)技术参考。
+
+
 - [Azure Active Directory 中的条件访问](active-directory-conditional-access-azure-portal.md)的基本概念。
 
 - 如何[配置条件访问策略](active-directory-conditional-access-azure-portal-get-started.md)。
 
-
-此外，你可能还希望查看 [Azure Active Directory 中的条件访问的最佳做法](active-directory-conditional-access-best-practices.md)。  
-
-
+- [迁移条件访问策略](active-directory-conditional-access-best-practices.md#policy-migration)。
+ 
 
 ## <a name="prerequisites"></a>先决条件
 
-1.  创建基于应用的条件访问策略前，必须先订阅企业移动性 + 安全性或 Azure Active Directory 高级版，且用户必须获得 EMS 或 Azure AD 许可。 
-2.  创建提供移动应用管理策略的条件访问前，必须先查看方案和迁移注意事项
-
-## <a name="supported-platforms"></a>支持的平台
-
--   iOS
-
--   Android
-
-## <a name="approved-client-applications"></a>批准的客户端应用程序 
-
-- Microsoft Outlook
-
-- Microsoft SharePoint
-
-- Microsoft OneDrive
-
-- Microsoft Teams
-
-- Microsoft Word
-
-- Microsoft Excel
-
-- Microsoft PowerPoint
+若要创建基于应用程序的条件访问策略，必须先订阅企业移动性 + 安全性或 Azure Active Directory Premium，且用户必须获得 EMS 或 Azure AD 许可。 
 
 
 ## <a name="exchange-online-policy"></a>Exchange Online 策略 
 
-此方案包括提供移动应用管理策略的条件访问，适用于使用批准的应用访问 Exchange Online。
+此方案包含的基于应用程序的条件访问策略旨在访问 Exchange Online。
 
 
 ### <a name="scenario-playbook"></a>方案演练
@@ -246,9 +246,9 @@ ms.lasthandoff: 09/05/2017
 请参阅[使用 Microsoft Intune 保护应用和数据](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune)了解详细信息。
 
 
-## <a name="mobile-application-management-or-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>Exchange Online 和 SharePoint Online 的移动应用程序管理或合规设备策略
+## <a name="app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>用于访问 Exchange Online 和 SharePoint Online 的基于应用程序或相容设备策略
 
-此方案包括提供移动应用管理或合规设备策略的条件访问，适用于使用批准的应用访问 Exchange Online。
+此方案包含的基于应用程序或相容设备条件访问策略旨在访问 Exchange Online。
 
 
 ### <a name="scenario-playbook"></a>方案演练
@@ -338,9 +338,10 @@ ms.lasthandoff: 09/05/2017
 
 
 
-## <a name="mobile-application-management-and-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>Exchange Online 和 SharePoint Online 的移动应用程序管理和合规设备策略
+## <a name="app-based-and-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>用于访问 Exchange Online 和 SharePoint Online 的基于应用程序和相容设备策略
 
-此方案包括提供移动应用管理和合规设备策略的条件访问，适用于使用批准的应用访问 Exchange Online。
+此方案包含的基于应用程序和相容设备条件访问策略旨在访问 Exchange Online。
+
 
 ### <a name="scenario-playbook"></a>方案演练
 
@@ -436,87 +437,6 @@ ms.lasthandoff: 09/05/2017
 请参阅[使用 Microsoft Intune 保护应用和数据](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune)了解详细信息。
 
 
-
-## <a name="migration-considerations"></a>迁移注意事项
-
-如果已在 Azure 经典门户配置了策略，则应将其迁移到 Azure 门户，因为：
-
-
-- 采用 Azure 经典门户策略和 Azure 门户策略的用户需同时满足两种策略的要求 
-
-- 如果不迁移现有策略，则无法实施授予访问权限的策略
-
-
-## <a name="migration-from-the-azure-classic-portal"></a>从 Azure 经典门户进行迁移
-
-在本方案中： 
-
-- 在 [Azure 经典门户](https://manage.windowsazure.com)，用户已配置：
-
-    - SharePoint Online
-
-    ![条件性访问](./media/active-directory-conditional-access-mam/14.png)
-
-    - 基于设备的条件访问策略
-
-    ![条件性访问](./media/active-directory-conditional-access-mam/15.png)
-
-- 希望在 Azure 门户中配置移动应用程序管理条件访问策略 
- 
-
-### <a name="configuration"></a>配置 
-
-- 查看基于设备的条件访问策略
-
-- 将其迁移到 Azure 门户 
-
-- 添加移动应用程序管理条件访问策略
-
-
-## <a name="migrating-from-intune"></a>从 Intune 进行迁移 
-
-在本方案中：
-
-- 用户在 [Intune](https://portal.azure.com/#blade/Microsoft_Intune/SummaryBlade ) 中为 Exchange Online 或 SharePoint Online 配置了移动应用管理条件访问策略
-
-    ![条件性访问](./media/active-directory-conditional-access-mam/15.png)
-
-- 希望迁移到在 Azure 门户中使用移动应用程序管理条件访问
-
-
-### <a name="configuration"></a>配置 
- 
-- 查看基于设备的条件访问策略
-
-- 将其迁移到 Azure 门户 
-
-- 查看在 Intune 中为 Exchange Online 或 SharePoint Online 配置的移动应用管理条件访问策略
-
-- 除基于设备的控制外，添加对“需要批准的应用程序”的控制 
- 
-
-## <a name="migrating-from-the-azure-classic-portal-and-intune"></a>从 Azure 经典门户和 Intune 进行迁移
-
-在本方案中：
-
-- 已配置以下内容：
-
-    - **Azure 经典门户：**基于设备的条件访问 
-
-    - **Intune：**移动应用程序管理条件访问策略 
-    
-- 希望将两个策略都迁移到在 Azure 门户中使用移动应用程序管理条件访问策略
-
-
-### <a name="configuration"></a>配置
-
-- 查看基于设备的条件访问策略
-
-- 将其迁移到 Azure 门户 
-
-- 查看在 Intune 中为 Exchange Online 或 SharePoint Online 配置的移动应用管理条件访问策略
-
-- 除基于设备的控制外，添加对“需批准的应用程序”的控制 
 
 
 

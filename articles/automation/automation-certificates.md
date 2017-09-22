@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/19/2016
+ms.date: 09/14/2017
 ms.author: magoedte;bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 89e5486f3302098f3a1d49e4390ec5b21617d778
-ms.openlocfilehash: fd1737a420c132dace9307436bfea98a9bde94a0
-ms.lasthandoff: 02/11/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
+ms.openlocfilehash: 7082f0c4b1a4cf0f67da5254b4ebb019c7299683
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/14/2017
 
 ---
 
 # <a name="certificate-assets-in-azure-automation"></a>Azure 自动化中的证书资产
 
-可以安全地将证书存储在 Azure 自动化中，以便可以使用 Azure Resource Manager 资源的 **Get-AzureRmAutomationRmCertificate** 活动通过 Runbook 或 DSC 配置访问这些证书。 这样，你便可以创建使用证书进行身份验证的 Runbook 和 DSC 配置，或者将证书添加到 Azure 或第三方资源。
+可以安全地将证书存储在 Azure 自动化中，以便可以使用 Azure Resource Manager 资源的 Get-AzureRmAutomationCertificate 活动通过 Runbook 或 DSC 配置访问这些证书。 这样，便可以创建使用证书进行身份验证的 Runbook 和 DSC 配置，或者将证书添加到 Azure 或第三方资源。
 
 > [!NOTE] 
 > Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥加密并存储在 Azure 自动化中。 此密钥由主证书加密，并存储在 Azure 自动化中。 在存储安全资产之前，会先使用主证书来解密自动化帐户的密钥，然后使用该密钥来加密资产。
@@ -35,16 +36,28 @@ ms.lasthandoff: 02/11/2017
 
 |Cmdlet|说明|
 |:---|:---|
-|[Get-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603765.aspx)|检索有关要在 Runbook 或 DSC 配置中使用的证书的信息。 只能从 Get-AutomationCertificate 活动中检索证书本身。|
-|[New-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603604.aspx)|将新证书创建到 Azure 自动化中。|
-[Remove-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603529.aspx)|从 Azure自动化中删除证书。|将新证书创建到 Azure 自动化中。
-|[Set-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603760.aspx)|设置现有证书的属性，包括上载证书文件和设置 .pfx 的密码。|
-|[Add-AzureCertificate](https://msdn.microsoft.com/library/azure/dn495214.aspx)|为指定的云服务上载服务证书。|
+|[Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate?view=azurermps-4.3.1)|检索有关要在 Runbook 或 DSC 配置中使用的证书的信息。 只能从 Get-AutomationCertificate 活动中检索证书本身。|
+|[New-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/new-azurermautomationcertificate?view=azurermps-4.3.1)|将新证书创建到 Azure 自动化中。|
+[Remove-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationcertificate?view=azurermps-4.3.1)|从 Azure自动化中删除证书。|将新证书创建到 Azure 自动化中。
+|[Set-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/set-azurermautomationcertificate?view=azurermps-4.3.1)|设置现有证书的属性，包括上传证书文件和设置 .pfx 的密码。|
+|[Add-AzureCertificate](https://msdn.microsoft.com/library/azure/dn495214.aspx)|为指定的云服务上传服务证书。|
+
+
+## <a name="python2-functions"></a>Python2 函数
+
+下表中的函数用于在 Python2 Runbook 中访问证书。
+
+| 函数 | 说明 |
+|:---|:---|
+| automationassets.get_automation_certificate | 检索有关证书资产的信息。 |
+
+> [!NOTE]
+> 必须在 Python Runbook 开头部分导入 automationassets 模块才能访问资产函数。
 
 
 ## <a name="creating-a-new-certificate"></a>创建新证书
 
-创建新证书时，需要将 .cer 或 .pfx 文件上载到 Azure 自动化。 将证书标记为可导出后，你可以将其转出 Azure 自动化证书存储区。 如果证书不可导出，则它只可用于在 Runbook 或 DSC 配置中签名。
+创建新证书时，需要将 .cer 或 .pfx 文件上传到 Azure 自动化。 将证书标记为可导出后，可以将其转出 Azure 自动化证书存储区。 如果证书不可导出，则它只可用于在 Runbook 或 DSC 配置中签名。
 
 
 ### <a name="to-create-a-new-certificate-with-the-azure-portal"></a>使用 Azure 门户创建新证书
@@ -59,7 +72,7 @@ ms.lasthandoff: 02/11/2017
 
 ### <a name="to-create-a-new-certificate-with-windows-powershell"></a>使用 Windows PowerShell 创建新证书
 
-以下示例演示了如何创建新的自动化证书并将其标记为可导出。 这将导入现有的 .pfx 文件。
+以下示例演示了如何创建新的自动化证书并将其标记为可导出。 这会导入现有的 .pfx 文件。
 
     $certName = 'MyCertificate'
     $certPath = '.\MyCert.pfx'
@@ -92,6 +105,14 @@ ms.lasthandoff: 02/11/2017
 
 ![示例图形创作 ](media/automation-certificates/graphical-runbook-add-certificate.png)
 
+### <a name="python2-sample"></a>Python2 示例
+以下示例演示了如何在 Python2 Runbook 中访问证书。
+
+    # get a reference to the Azure Automation certificate
+    cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
+    
+    # returns the binary cert content  
+    print cert 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 09/11/2017
 ms.author: seanmck
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: cc96ba9f5abd45a7503ba3327b30e1f809391384
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 7ac85bffb9593923808c77f2240e6f0e841e74cd
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -40,7 +40,7 @@ Azure 容器注册表是用于 Docker 容器映像的基于 Azure 的专用注�
 
 ## <a name="before-you-begin"></a>开始之前
 
-本教程需要运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+本教程要求运行 Azure CLI 2.0.12 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
 
 ## <a name="deploy-azure-container-registry"></a>部署 Azure 容器注册表
 
@@ -52,7 +52,7 @@ Azure 容器注册表是用于 Docker 容器映像的基于 Azure 的专用注�
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az acr create](/cli/azure/acr#create) 命令创建 Azure 容器注册表。 容器注册表的名称必须唯一。 以下示例中使用名称 mycontainerregistry082。
+使用“az acr create”[](/cli/azure/acr#create)命令创建 Azure 容器注册表。 容器注册表的名称必须唯一。 以下示例中使用名称 mycontainerregistry082。
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name mycontainerregistry082 --sku Basic --admin-enabled true
@@ -62,7 +62,7 @@ az acr create --resource-group myResourceGroup --name mycontainerregistry082 --s
 
 ## <a name="container-registry-login"></a>容器注册表登录
 
-在将映像推送到 ACR 实例之前必须先登录 ACR 实例。 使用 [az acr login](https://docs.microsoft.com/en-us/cli/azure/acr#login) 命令完成此操作。 需要提供创建容器注册表时所使用的唯一名称。
+在将映像推送到 ACR 实例之前必须先登录 ACR 实例。 使用 [az acr login](https://docs.microsoft.com/en-us/cli/azure/acr#az_acr_login) 命令完成此操作。 需要提供创建容器注册表时所使用的唯一名称。
 
 ```azurecli
 az acr login --name <acrName>
@@ -125,7 +125,7 @@ docker push <acrLoginServer>/aci-tutorial-app:v1
 
 ## <a name="list-images-in-azure-container-registry"></a>列出 Azure 容器注册表中的映像
 
-若要返回已推送到 Azure 容器注册表的映像列表，请使用 [az acr repository list](/cli/azure/acr/repository#list) 命令。 使用容器注册表名称更新命令。
+若要返回已推送到 Azure 容器注册表的映像列表，请运行 [az acr repository list](/cli/azure/acr/repository#list) 命令。 使用容器注册表名称更新命令。
 
 ```azurecli
 az acr repository list --name <acrName> --output table

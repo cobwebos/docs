@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 09/14/2017
 ms.author: terrylan
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 2ffbaca614d667db565197f3c13b1658fffc2a7c
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 4b88b5015fcf44e8979b8b1a3aa1eb26f0fbb704
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="security-center-platform-migration-faq"></a>安全中心平台迁移常见问题解答
@@ -53,7 +53,7 @@ ms.lasthandoff: 08/16/2017
 >
 
 ### <a name="am-i-billed-for-log-analytics-or-oms-on-the-workspaces-created-by-security-center"></a>安全中心创建的工作区中的 Log Analytics 或 OMS 是否会产生费用？
-否。 OMS 配置为按节点计费时，安全中心创建的工作区不会产生 OMS 费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
+不会。 OMS 配置为按节点计费时，安全中心创建的工作区不会产生 OMS 费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
 
 - 免费层 – 安全中心在默认工作区中安装“SecurityCenterFree”解决方案。 免费层不会产生费用。
 - 标准层 – 安全中心在默认工作区中安装“SecurityCenterFree”和“Security”解决方案。
@@ -70,24 +70,58 @@ ms.lasthandoff: 08/16/2017
 
 若要恢复，请删除连接到已删除工作区的 VM 上的 Microsoft Monitoring Agent。 安全中心会重新安装代理并创建新的默认工作区。
 
+### <a name="how-can-i-use-my-existing-log-analytics-workspace"></a>我如何使用现有的 Log Analytics 工作区？
+
+可以选择现有 Log Analytics 工作区，用于存储安全中心收集的数据。 使用现有 Log Analytics 工作区的先决条件：
+
+- 工作区必须与选定 Azure 订阅相关联。
+- 至少必须拥有读取权限，才能访问工作区。
+
+选择现有 Log Analytics 工作区的具体步骤：
+
+1. 在“安全策略 - 数据收集”下，选择“使用另一个工作区”。
+
+   ![使用另一个工作区][5]
+
+2. 从下拉菜单中，选择一个工作区，用于存储所收集的数据。
+
+   > [!NOTE]
+   > 下拉菜单中只显示用户有权访问且 Azure 订阅包含的工作区。
+   >
+   >
+
+3. 选择“保存”。
+4. 选择“保存”后，系统就会询问是否要重新配置受监视的 VM。
+
+   - 如果只希望在新 VM 上应用新的工作区设置，请选择“否”。 新的工作区设置只会应用于新的代理安装；新发现的 VM 没有安装 Microsoft Monitoring Agent。
+   - 如果希望在所有 VM 上应用新的工作区设置，请选择“是”。 此外，所有连接到安全中心创建的工作区的 VM 也都会重新连接到新的目标工作区。
+
+   > [!NOTE]
+   > 如果选择“是”，不得删除安全中心创建的工作区，除非所有 VM 已重新连接到新的目标工作区。 如果过早删除工作区，此操作将会失败。
+   >
+   >
+
+   - 选择“取消”，以取消此操作。
+
+      ![重新配置受监视的 VM][6]
+
 ### <a name="what-if-the-microsoft-monitoring-agent-was-already-installed-as-an-extension-on-the-vm"></a>如果 Microsoft Monitoring Agent 已作为扩展安装到 VM 上，会怎样？
 安全中心不会覆盖用户工作区的现有连接。 安全中心会在已连接的工作区中存储 VM 的安全数据。
 
 ### <a name="what-if-i-had-a-microsoft-monitoring-agent-installed-on-the-machine-but-not-as-an-extension"></a>如果已在计算机上安装 Microsoft Monitoring Agent，但不是作为扩展安装，会怎样？
-如果 Microsoft Monitoring Agent 是直接安装到 VM 上的（而不是作为 Azure 扩展安装的），则安全中心不会安装 Microsoft Monitoring Agent，并且会限制安全监视。
+如果 Microsoft Monitoring Agent 是直接安装到 VM 上（而不是作为 Azure 扩展进行安装），那么安全中心不会安装 Microsoft Monitoring Agent，并且安全监视也会受限。
 
 ### <a name="what-is-the-impact-of-removing-these-extensions"></a>删除这些扩展会有什么影响？
 删除 Microsoft 监视扩展后，安全中心无法从 VM 收集安全数据，因此无法提供某些安全建议和提示。 安全中心会在 24 小时内确定 VM 缺少扩展并重新安装扩展。
 
 ### <a name="how-do-i-stop-the-automatic-agent-installation-and-workspace-creation"></a>如何停止自动安装代理和创建工作区？
-可以关闭安全策略中订阅的数据收集，但不建议这样操作。 关闭数据收集会限制安全中心的建议和提示。 标准定价层上的订阅要求启用数据收集。 启用数据收集：
+可以在安全策略中为订阅禁用自动预配，但不建议这样做。 禁用自动预配会限制安全中心的建议和警报。 标准定价层的订阅必须启用自动预配。 禁用自动预配的具体步骤：
 
 1. 如果订阅配置为标准层，则打开该订阅的安全策略，并选择“免费”层。
 
    ![定价层][1]
 
-2. 接下来，通过在“安全策略 - 数据收集”边栏选项卡上选择“关”，关闭数据收集。
-
+2. 接下来，在“安全策略 - 数据收集”边栏选项卡上选择“关”，禁用自动预配。
    ![数据收集][2]
 
 ### <a name="how-do-i-remove-oms-extensions-installed-by-security-center"></a>如何删除由安全中心安装的 OMS 扩展？
@@ -118,7 +152,7 @@ ms.lasthandoff: 08/16/2017
 
 如果没有安全中心解决方案，则会在工作区安装，并且此解决方案仅适用于相关的 VM。 添加解决方案时，默认情况下会自动将它部署到连接到 Log Analytics 工作区的所有 Windows 和 Linux 代理。 借助 [解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)这一 OMS 功能，可以限定解决方案的范围。
 
-如果 Microsoft Monitoring Agent 是直接安装到 VM 上的（而不是作为 Azure 扩展安装的），则安全中心不会安装 Microsoft Monitoring Agent，并且会限制安全监视。
+如果 Microsoft Monitoring Agent 是直接安装到 VM 上（而不是作为 Azure 扩展进行安装），那么安全中心不会安装 Microsoft Monitoring Agent，并且安全监视也会受限。
 
 ### <a name="what-should-i-do-if-i-suspect-that-the-data-platform-migration-broke-the-connection-between-one-of-my-vms-and-my-workspace"></a>如果怀疑数据平台迁移中断了其中一个 VM 与工作区之间的连接，该怎么办？
 应该不会发生这种情况。 如果确实发生了，则[创建一个 Azure 支持请求](../azure-supportability/how-to-create-azure-support-request.md)并在其中包括以下详细信息：
@@ -159,4 +193,6 @@ ms.lasthandoff: 08/16/2017
 [2]: ./media/security-center-platform-migration-faq/data-collection.png
 [3]: ./media/security-center-platform-migration-faq/remove-the-agent.png
 [4]: ./media/security-center-platform-migration-faq/solutions.png
+[5]: ./media/security-center-platform-migration-faq/use-another-workspace.png
+[6]: ./media/security-center-platform-migration-faq/reconfigure-monitored-vm.png
 

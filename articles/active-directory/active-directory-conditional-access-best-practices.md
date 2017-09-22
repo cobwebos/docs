@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
+ms.date: 09/07/2017
 ms.author: markvi
 ms.reviewer: calebb
 ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: 3e524c116479c1af6eb6a601c9b57d27a697c5a2
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: fedc72f8fe1ada9a991d417cc77b8ca659589f55
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中条件性访问的最佳实践
@@ -77,25 +77,118 @@ ms.lasthandoff: 07/19/2017
 适用，可以在条件访问策略中使用 Exchange ActiveSync。
 
 
-## <a name="what-you-should-avoid-doing"></a>你应避免的操作
+## <a name="what-you-should-avoid-doing"></a>应避免的操作
 
-条件访问框架为你提供了极大的配置灵活性。 但是，极大的灵活性也意味着在发布之前你应该仔细检查每个配置策略，以避免产生不理想的结果。 在这种情况下，你应该特别注意影响完整集的任务，例如**所有用户/组/云应用**。
+条件访问框架提供了极大的配置灵活性。 不过，极大的灵活性也意味着应先仔细检查每个配置策略，然后才能发布，以免产生不良结果。 在这种情况下，应该特别注意影响完整集的任务，例如**所有用户/组/云应用**。
 
-在你的环境中，应避免以下配置：
+在环境中，应避免以下配置：
 
 
 **对于所有用户、所有云应用：**
 
-- **阻止访问** - 此配置将阻止你的整个组织（这绝对不是一个好的选项）。
+- **阻止访问** - 此配置将阻止整个组织（这绝对不是一个好的选项）。
 
-- **需要符合的设备** - 对于尚未注册其设备的用户，此策略将阻止所有访问权限（包括对 Intune 门户的访问权限）。 如果你是不具有注册设备的管理员，则此策略会阻止你回到 Azure 门户更改策略。
+- **需要符合的设备** - 对于尚未注册其设备的用户，此策略将阻止所有访问权限（包括对 Intune 门户的访问权限）。 如果是不具有注册设备的管理员，则此策略会阻止你回到 Azure 门户更改策略。
 
-- **需要加入域** - 如果你不具有加入域的设备，此阻止访问权限的策略还可能会阻止你组织中所有用户的访问权限。
+- **需要加入域** - 如果不具有加入域的设备，此阻止访问权限的策略还可能会阻止组织中所有用户的访问权限。
 
 
 **对于所有用户、所有云应用、所有设备平台：**
 
-- **阻止访问** - 此配置将阻止你的整个组织（这绝对不是一个好的选项）。
+- **阻止访问** - 此配置将阻止整个组织（这绝对不是一个好的选项）。
+
+
+
+## <a name="policy-migration"></a>策略迁移
+
+如果已在 Azure 经典门户配置了策略，则应将其迁移到 Azure 门户，因为：
+
+
+- 采用 Azure 经典门户策略和 Azure 门户策略的用户需同时满足两种策略的要求 
+
+- 如果不迁移现有策略，则无法实施授予访问权限的策略
+
+
+### <a name="migration-from-the-azure-classic-portal"></a>从 Azure 经典门户进行迁移
+
+在本方案中： 
+
+- 在 [Azure 经典门户](https://manage.windowsazure.com)，用户已配置：
+
+    - SharePoint Online
+
+    ![条件性访问](./media/active-directory-conditional-access-best-practices/14.png)
+
+    - 基于设备的条件访问策略
+
+    ![条件性访问](./media/active-directory-conditional-access-best-practices/15.png)
+
+- 希望在 Azure 门户中配置移动应用程序管理条件访问策略 
+ 
+
+#### <a name="configuration"></a>配置 
+
+- 查看基于设备的条件访问策略
+
+- 将其迁移到 Azure 门户 
+
+- 添加移动应用程序管理条件访问策略
+
+
+### <a name="migrating-from-intune"></a>从 Intune 进行迁移 
+
+在本方案中：
+
+- 用户在 [Intune](https://portal.azure.com/#blade/Microsoft_Intune/SummaryBlade ) 中为 Exchange Online 或 SharePoint Online 配置了移动应用管理条件访问策略
+
+    ![条件性访问](./media/active-directory-conditional-access-best-practices/15.png)
+
+- 希望迁移到在 Azure 门户中使用移动应用程序管理条件访问
+
+
+#### <a name="configuration"></a>配置 
+ 
+- 查看基于设备的条件访问策略
+
+- 将其迁移到 Azure 门户 
+
+- 查看在 Intune 中为 Exchange Online 或 SharePoint Online 配置的移动应用管理条件访问策略
+
+- 除基于设备的控制外，添加对“需要批准的应用程序”的控制 
+ 
+
+### <a name="migrating-from-the-azure-classic-portal-and-intune"></a>从 Azure 经典门户和 Intune 进行迁移
+
+在本方案中：
+
+- 已配置以下内容：
+
+    - **Azure 经典门户：**基于设备的条件访问 
+
+    - **Intune：**移动应用程序管理条件访问策略 
+    
+- 希望将两个策略都迁移到在 Azure 门户中使用移动应用程序管理条件访问策略
+
+
+#### <a name="configuration"></a>配置
+
+- 查看基于设备的条件访问策略
+
+- 将其迁移到 Azure 门户 
+
+- 查看在 Intune 中为 Exchange Online 或 SharePoint Online 配置的移动应用管理条件访问策略
+
+- 除基于设备的控制外，添加对“需批准的应用程序”的控制 
+
+
+
+
+
+
+
+
+
+
 
 
 ## <a name="common-scenarios"></a>常见方案
@@ -112,7 +205,7 @@ ms.lasthandoff: 07/19/2017
 此方案与前一种方案类似，两者都提出了多重身份验证的要求。
 但是，主要区别在于此项要求的条件。  
 前一种方案的重心是有权访问敏感数据的应用，而本方案的重心则是受信任的位置。  
-换而言之，如果用户通过不受信任的网络访问应用，则你可能要求执行多重身份验证。
+换而言之，如果用户通过不受信任的网络访问应用，可以要求其进行多重身份验证。
 
 
 ### <a name="only-trusted-devices-can-access-office-365-services"></a>只允许受信任的设备访问 Office 365 服务

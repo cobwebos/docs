@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: a7dbe54ffb4daa941c19b51ba263dd3d23b7a98b
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: fb58a01828e13f9605e4788ee7e064162a7a31d9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -38,7 +38,7 @@ Operations Management Suite 服务映射可自动发现 Windows 和 Linux 系统
 * 与 Operations Management Suite 工作区关联的、具有 Azure 订阅访问权限的服务主体。 有关详细信息，请参阅[创建服务主体](#creating-a-service-principal)。
 
 ## <a name="install-the-service-map-management-pack"></a>安装服务映射管理包
-导入 Microsoft.SystemCenter.ServiceMap 管理捆绑包 (Microsoft.SystemCenter.ServiceMap.mpb) 可以启用 Operations Manager 与服务映射之间的集成。 该捆绑包包含以下管理包：
+导入 Microsoft.SystemCenter.ServiceMap 管理捆绑包 (Microsoft.SystemCenter.ServiceMap.mpb) 可以启用 Operations Manager 与服务映射之间的集成。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=55763)下载管理捆绑包。 该捆绑包包含以下管理包：
 * Microsoft Service Map Application Views
 * Microsoft System Center Service Map Internal
 * Microsoft System Center Service Map Overrides
@@ -92,7 +92,7 @@ Operations Management Suite 服务映射可自动发现 Windows 和 Linux 系统
 “服务映射”文件夹包含四个节点：
 * 活动警报：列出 Operations Manager 与服务映射之间通信相关的所有活动警报。  注意，这些警报不是要同步到 Operations Manager 的 Operations Management Suite 警报。 
 
-* 服务器：列出配置为从服务映射同步的受监视服务器。
+* **服务器**：列出配置为从服务映射同步的受监视服务器。
 
     ![Operations Manager 的“监视服务器”窗格](media/oms-service-map/scom-monitoring-servers.png)
 

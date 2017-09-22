@@ -1,5 +1,5 @@
 ---
-title: "安全中心定价 | Microsoft 文档"
+title: "Azure 安全中心定价 | Microsoft Docs"
 description: "本文提供有关 Azure 安全中心定价的信息。"
 services: security-center
 documentationcenter: na
@@ -12,83 +12,60 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/11/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 367b8f38cb9fcf3dc36db83641cb1696710608ef
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: cd4001a3280c83875f30b04d5d38caec26f4f0b1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="azure-security-center-pricing"></a>Azure 安全中心定价
-Azure 安全中心有助于预防、检测和响应威胁，同时增加 Azure 资源的可见性和安全可控性。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
+Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供统一的安全管理和高级威胁防护功能。 它可以提供针对混合云工作负载的可见性和可控性、可减小在威胁下的曝光面的积极防御功能以及有助于随时响应快速演变的网络攻击的智能检测功能。
 
 ## <a name="pricing-tiers"></a>定价层
 安全中心分两个层提供：
 
-* **免费层**在所有 Azure 订阅上自动启用。 免费层可查看 Azure 资源、基本安全策略、安全建议和与合作伙伴的安全产品和服务的集成的安全状态。
-* **标准层**增添了高级威胁检测功能，其中包括威胁情报、行为分析、异常检测、安全事件和安全评估报告。 标准层在前 60 天免费提供。
+- 免费层在所有 Azure 订阅上自动启用，并提供安全策略、持续的安全评估和切实可行的安全建议来帮助你保护 Azure 资源
+- 标准层将免费层的功能扩展到私有云和其他公有云中运行的工作负载，并在混合云工作负载中提供了统一的安全管理和威胁防护。 标准层还增加了高级威胁检测功能，它使用内置行为分析和机器学习识别攻击和零时差攻击，并使用访问和应用程序控件减小在网络攻击和恶意软件下的曝光面，此外还有更多其他操作。 标准层在前 60 天免费。
 
 有关详细信息，请参阅安全中心[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 
 ## <a name="try-standard-free-for-60-days"></a>免费试用标准层 60 天
-标准层在前 60 天免费提供。 60 天后，如果选择继续使用服务，将自动开始收取使用费用。
+标准层在前 60 天免费提供。 60 天后，如果选择继续使用服务，会自动开始收取使用费用。
+
+可以将整个 Azure 订阅升级到标准层，这样此订阅中的所有资源均将继承此层，或者可以定义唯一的策略来仅升级特定的资源组。
 
 若要获取标准层，请执行以下操作：
 
-1. 在“安全中心”边栏选项卡上选择“策略”磁贴。
+1. 在“安全中心”主菜单下，选择“安全策略”。
 2. 选择要升级到标准的订阅。
 3. 在“安全策略”边栏选项卡上，选择“定价层”。
-4. 在“选择定价层”边栏选项卡上，选择“标准”。
-5. 单击“选择”。
+4. 选择“标准层”以进行升级。
+5. 单击“保存” 。
 
-
-## <a name="why-upgrade-to-standard"></a>为什么要升级到标准？
-安全中心标准层提供免费层所有功能以及高级威胁检测。 高级威胁检测有助于识别攻击 Azure 资源的活动威胁，并提供快速响应所需的见解。
-
-安全中心使用各种高级安全分析，远不止几种基于攻击特征的方法。 可利用大数据和机器学习技术的突破跨整个云结构对事件进行评估，检测那些使用手动方式不可能发现的威胁，并预测攻击的发展方式。
-
-标准层附带的安全分析包括：
-
-* **威胁情报** - 充分利用 Microsoft 产品和服务、Microsoft 数字犯罪部门、Microsoft 安全响应中心以及外部源提供的全球威胁情报，搜寻已知的行为不端的攻击者
-* **行为分析** - 运用已知模式发现恶意行为
-* **异常检测** - 使用统计分析生成历史基线。 如果出现与已知基线偏离的情况，并且这些情况符合潜在攻击载体的行为，则会发出警报
-
-在“安全警报”边栏选项卡中，安全中心已检测到一个安全**事件**。 安全事件是对资源的所有警报汇总，与网络攻击链模式保持一致。 选择安全事件会显示关于此事件的更多详细信息以及列出相关警报。 选择警报会提供该事件的详细信息。
-
-![安全事件][2]
-
-下面的“网络通信”警报提供了该警报的详细信息。 详细信息包括其完整说明、严重性、当前状态（本例中已解除，标识用户采取操作将其解除）、受攻击资源以及补救措施。 此外，还有一列 Microsoft 威胁情报报告的链接。 这些报告可用作安全补救和防御用途。
-
-![安全警报详细信息][3]
-
-## <a name="enable-data-collection"></a>启用数据收集
-若要启用虚拟机行为分析，必须启用数据收集。
-
-若要验证是否已启用数据收集，请执行以下操作：
-
-1. 选择“策略”磁贴。 “安全策略”边栏选项卡展开，列出 Azure 订阅。
-2. 选择一个订阅。
-3. 如果“数据收集”处于关闭状态，将其更改为开启并保存更改。
+![安全事件][1]
 
 > [!NOTE]
-> 如果使用 Azure 安全中心免费版，可以在“安全策略”中从虚拟机禁用数据收集。 标准层上的订阅需启用数据收集。
+> 若要启用所有的安全中心功能，必须将标准定价层应用到包含适用虚拟机的订阅或资源组。 为工作区配置定价层不会为 Azure 资源启用实时 VM 访问、自适应应用程序控件和网络检测功能。
 >
 >
 
-有关详细信息，请参阅[在 Azure 安全中心内启用数据收集](security-center-enable-data-collection.md)。
+## <a name="why-upgrade-to-standard"></a>为什么要升级到标准？
+安全中心可为混合云工作负载提供增强的安全和威胁防护功能，其中包括：
+
+- 混合安全 – 在所有本地和云工作负载上获得统一的安全视图。 应用安全策略并持续评估混合云工作负载的安全性，确保符合安全标准。 收集、搜索并分析来自各种来源（包括防火墙和其他合作伙伴解决方案）的安全数据。
+- 高级威胁检测 - 使用高级分析和 Microsoft Intelligent Security Graph，获得针对不断演变的网络攻击的优势。  利用内置行为分析和机器学习来识别攻击和零时差攻击。 监视网络、计算机和云服务是否出现有即将来袭的攻击和攻破后活动。 使用交互工具和上下文威胁智能简化调查。
+- 访问和应用程序控件 - 通过应用适合特定工作负载且由机器学习提供支持的白名单建议，阻止恶意软件和其他不需要的应用程序。 通过对 Azure VM 上管理端口的实时控制访问减小网络攻击面，显著减小在暴力和其他网络攻击下的曝光面。
+
 
 ## <a name="next-steps"></a>后续步骤
-* 本文档介绍安全中心定价。 有关其他定价信息，请参阅安全中心[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
-* 若要了解安全中心高级检测功能的详细信息，请参阅 [Azure 安全中心检测功能](security-center-detection-capabilities.md)。
-* 若要了解如何在安全中心管理数据和确保数据安全性的详细信息，请参阅 [Azure 安全中心的数据安全](security-center-data-security.md)。
-* 如果存在使用安全中心方面的问题，请参阅 [Azure 安全中心常见问题解答](security-center-faq.md)。
-* 如果使用安全中心方面仍存在问题，请访问 [Azure 论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureSecurityCenter&filter=alltypes&sort=lastpostdesc)。
+本文介绍了安全中心定价。 若要详细了解标准层增强的安全性和高级威胁防护功能，请参阅：
+
+- [高级威胁检测](security-center-threat-report.md)
+- [实时 VM 访问控制](security-center-just-in-time.md)
 
 <!--Image references-->
-[1]: ./media/security-center-pricing/standard.png
-[2]: ./media/security-center-pricing/incident.png
-[3]: ./media/security-center-pricing/network-alert.png
+[1]: ./media/security-center-pricing/get-standard.png
 

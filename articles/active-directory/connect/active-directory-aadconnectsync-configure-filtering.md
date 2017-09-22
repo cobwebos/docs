@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 064642ebb9cafb0c6e1b3ff306241182a95215cc
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: baa3ac6473f180e220ec4973ced51369467bf158
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -35,20 +35,20 @@ ms.lasthandoff: 07/25/2017
 本文介绍如何配置不同的筛选方法。
 
 > [!IMPORTANT]
-> Microsoft 不支持在正式记录的这些操作之外修改或操作 Azure AD Connect 同步。 其中的任何操作都可能会导致 Azure AD Connect 同步出现不一致或不受支持状态。 因此，Microsoft 无法提供这种部署的技术支持。
+> Microsoft 不支持在正式记录的这些操作之外修改或操作 Azure AD Connect 同步。 其中的任何操作都可能会导致 Azure AD Connect 同步出现不一致或不受支持状态。因此，Microsoft 无法提供这种部署的技术支持。
 
 ## <a name="basics-and-important-notes"></a>基础知识和重要说明
 在 Azure AD Connect 同步中，可以随时启用筛选。 如果从目录同步的默认配置开始并在此后配置了筛选，则筛选出的对象不再同步到 Azure AD。 由于这种变化，Azure AD 中前面已同步，但之后进行筛选的任何对象会在 Azure AD 中进行删除。
 
 在开始更改筛选之前，请确保[禁用计划的任务](#disable-scheduled-task)，以免意外导出尚未确认是否正确的更改。
 
-由于筛选操作可能会同时删除很多的对象，因此请先确保新的筛选器正确无误，再开始将更改导出到 Azure AD。 在完成配置步骤后，强烈建议先执行[验证步骤](#apply-and-verify-changes)，然后才对 Azure AD 进行导出和更改操作。
+由于筛选操作可能会同时删除很多的对象，因此请先确保新的筛选器正确无误，再开始将更改导出到 Azure AD。 强烈建议，在完成配置步骤后，先执行[验证步骤](#apply-and-verify-changes)，然后再向 Azure AD 导出更改。
 
 为了防止意外删除许多对象，默认情况下已打开[防止意外删除](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)功能。 如果由于筛选而删除了许多对象（默认为 500 个），则需要遵循本文中的步骤来允许将删除结果传播到 Azure AD。
 
 如果使用 2015 年 11 月 ([1.0.9125](active-directory-aadconnect-version-history.md#1091250)) 之前的内部版本、更改筛选器配置或使用密码同步，则在完成配置之后，需要触发所有密码的完全同步。 有关如何触发密码完全同步的步骤，请参阅[触发所有密码的完全同步](active-directory-aadconnectsync-troubleshoot-password-synchronization.md#trigger-a-full-sync-of-all-passwords)。 如果使用内部版本 1.0.9125 或更高版本，则常规的**完全同步**操作也会计算是否应同步密码，因此不再需要执行这个额外的步骤。
 
-如果在 Azure AD 中由于筛选错误导致**用户**对象被无意中删除，可以通过删除筛选配置，在 Azure AD 中重新创建用户对象。 然后再次同步目录。 此操作可以从 Azure AD 的回收站中还原用户。 但是，无法取消删除其他对象类型。 例如，如果意外删除了某个安全组，而该组用于将资源加入 ACL，则无法恢复该组及其 ACL。
+如果在 Azure AD 中由于筛选错误导致**用户**对象被无意中删除，可以通过删除筛选配置，在 Azure AD 中重新创建用户对象。 然后，可以再次同步目录。 此操作可以从 Azure AD 的回收站中还原用户。 但是，无法取消删除其他对象类型。 例如，如果意外删除了某个安全组，而该组用于将资源加入 ACL，则无法恢复该组及其 ACL。
 
 Azure AD Connect 只删除其曾经认为在范围中的对象。 如果 Azure AD 中的对象由另一个同步引擎创建且不在范围内，则添加筛选并不会删除这些对象。 例如，如果一开始使用 DirSync 服务器，而该服务器在 Azure AD 中创建了整个目录的完整副本，并在从一开始便启用筛选的情况下并行安装了新的 Azure AD Connect 同步服务器，则 Azure AD Connect 不会删除 DirSync 所创建的额外对象。
 
@@ -77,10 +77,10 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。 如果 Azure A
 ## <a name="filtering-options"></a>筛选选项
 可将以下筛选配置类型应用到目录同步工具：
 
-* [**基于组**](#group-based-filtering)：初始安装时只能使用安装向导配置基于单个组的筛选。
-* [**基于域**](#domain-based-filtering)：使用此选项可以选择要将哪些域同步到 Azure AD。 在安装 Azure AD Connect 同步之后对本地基础结构进行更改时，还可以在同步引擎配置中添加和删除域。
-* [**基于组织单位(OU)**](#organizational-unitbased-filtering)：使用此选项可以选择要将哪些 OU 同步到 Azure AD。 将对所选 OU 中的所有对象类型应用此选项。
-* [**基于属性**](#attribute-based-filtering)：使用此选项可以根据对象属性值筛选对象。 也可以对不同的对象类型使用不同的筛选器。
+* [**基于组**](#group-based-filtering)：只能在初始安装时使用安装向导配置基于单个组的筛选。
+* [**基于域**](#domain-based-filtering)：使用此选项，可以选择要同步到 Azure AD 的域。 在安装 Azure AD Connect 同步之后对本地基础结构进行更改时，还可以在同步引擎配置中添加和删除域。
+* [**基于组织单位(OU)**](#organizational-unitbased-filtering)：使用此选项，可以选择要同步到 Azure AD 的 OU。 将对所选 OU 中的所有对象类型应用此选项。
+* [**基于属性**](#attribute-based-filtering)：使用此选项，可以根据对象属性值筛选对象。 也可以对不同的对象类型使用不同的筛选器。
 
 可以同时使用多个筛选选项。 例如，可以使用基于 OU 的筛选以便只包含某个 OU 中的对象。 同时，可以使用基于属性的筛选进一步筛选这些对象。 使用多个筛选方法时，筛选器之间使用逻辑“AND”。
 
@@ -137,7 +137,7 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。 如果 Azure A
         ![连接器运行配置文件 4](./media/active-directory-aadconnectsync-configure-filtering/runprofilesdeletestep.png)  
     3. 验证所做的更改。 想要同步的每个域都已列为每个运行配置文件中的步骤。
 4. 若要关闭“配置运行配置文件”对话框，请单击“确定”。
-5.  若要完成配置，需要运行**完全导入**和**增量同步**。 继续阅读[应用并验证更改](#apply-and-verify-changes)部分。
+5.  若要完成配置，需要运行**完全导入**和**增量同步**。继续阅读[应用并验证更改](#apply-and-verify-changes)部分。
 
 ## <a name="organizational-unitbased-filtering"></a>基于组织单位的筛选
 更改基于 OU 的筛选的首选方法是运行安装向导并更改[域和 OU 筛选](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)。 使用安装向导可以自动完成本主题中所述的所有任务。
@@ -161,7 +161,7 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。 如果 Azure A
    * 如果使用基于组的筛选，则必须包括组所在的 OU。
    * 请注意，可以配置在完成筛选配置后添加的新 OU 是否应该同步。 有关详细信息，请参阅下一节。
 7. 完成后，请单击“确定”关闭“属性”对话框。
-8. 若要完成配置，需要运行**完全导入**和**增量同步**。 继续阅读[应用并验证更改](#apply-and-verify-changes)部分。
+8. 若要完成配置，需要运行**完全导入**和**增量同步**。继续阅读[应用并验证更改](#apply-and-verify-changes)部分。
 
 ### <a name="synchronize-new-ous"></a>同步新 OU
 默认情况下，将同步配置完筛选之后创建的新 OU。 选中的复选框指示了此状态。 可以取消选中某些子 OU。 为此，请单击该框，直到该框变为白色，复选标记为蓝色（这是其默认状态）。 然后，取消选中不需要同步的子 OU。
@@ -216,7 +216,7 @@ Azure AD Connect 安装向导将始终创建此配置。
 6. 将“联接”规则留空，并单击“下一步”。
 7. 单击“添加转换”，为“FlowType”选择“Constant”，为“目标属性”选择“cloudFiltered”。 在“源”文本框中键入 **True**。 单击“添加”保存规则。  
    ![入站 3 转换](./media/active-directory-aadconnectsync-configure-filtering/inbound3.png)
-8. 若要完成配置，需要运行**完全同步**。 继续阅读[应用并验证更改](#apply-and-verify-changes)部分。
+8. 若要完成配置，需要运行**完全同步**。继续阅读[应用并验证更改](#apply-and-verify-changes)部分。
 
 #### <a name="positive-filtering-only-sync-these"></a>正筛选：“只同步这些项目”
 表达正筛选更加复杂，因为必须同时考虑不是明显需要同步的对象，例如会议室。 还要替代现成规则 **In from AD - User Join** 中的默认筛选器。 创建自定义筛选器时，请确保不包括 Azure AD Connect 的关键系统对象、复制冲突对象、特殊邮箱和服务帐户。
@@ -242,7 +242,7 @@ Azure AD Connect 安装向导将始终创建此配置。
 10. 将“联接”规则留空，并单击“下一步”。
 11. 单击“添加转换”，为“FlowType”选择“Constant”，为“目标属性”选择“cloudFiltered”。 在“源”框中键入 **True**。 单击“添加”保存规则。  
     ![入站 3 转换](./media/active-directory-aadconnectsync-configure-filtering/inbound3.png)  
-12. 若要完成配置，需要运行**完全同步**。 继续阅读[应用并验证更改](#apply-and-verify-changes)部分。
+12. 若要完成配置，需要运行**完全同步**。继续阅读[应用并验证更改](#apply-and-verify-changes)部分。
 
 如果需要，可以创建更多第一种类型的规则，以便在同步中包含更多的对象。
 
@@ -254,12 +254,12 @@ Azure AD Connect 安装向导将始终创建此配置。
 1. 通过使用属于 **ADSyncAdmins** 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
 2. 从开始菜单启动“同步规则编辑器”。
 3. 在“规则类型”下，单击“出站”。
-4. 查找名为 Out to AAD – User Join 的规则，然后单击“编辑”。
+4. 查找名为“同步到 AAD - 用户加入”或“同步到 AAD - 用户加入 SOAInAD”的规则（具体视使用的 Connect 版本而定），再单击“编辑”。
 5. 在弹出窗口中，回答“是”创建规则的副本。
 6. 在“说明”页上，将“优先顺序”更改为某个尚未使用的值，例如 50。
 7. 单击左侧导航栏中的“范围筛选器”，并单击“添加子句”。 在“属性”中选择“mail”。 在“运算符”中选择“ENDSWITH”。 在“值”中键入 **@contoso.com**，并单击“添加子句”。 在“属性”中选择“userPrincipalName”。 在“运算符”中选择“ENDSWITH”。 在“值”中键入 **@contoso.com**。
 8. 单击“保存” 。
-9. 若要完成配置，需要运行**完全同步**。 继续阅读[应用并验证更改](#apply-and-verify-changes)部分。
+9. 若要完成配置，需要运行**完全同步**。继续阅读[应用并验证更改](#apply-and-verify-changes)部分。
 
 ## <a name="apply-and-verify-changes"></a>应用并验证更改
 更改配置后，必须将这些更改应用到系统中现有的对象。 也可能需要处理同步引擎中当前不存在的对象，因此同步引擎需要再次读取源系统来验证其内容。

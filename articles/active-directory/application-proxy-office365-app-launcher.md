@@ -11,29 +11,29 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
+ms.date: 09/08/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 9069166259265f5d2b43043b75039e239f397f6c
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 811adc81424b8e53a740ec34f77a7610fc2a72a8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理为发布的应用设置自定义主页
 
-本文讨论如何配置应用以将用户定向到自定义主页。 当你使用应用程序代理发布应用程序时，你需要设置内部 URL，但有时不是你的用户首先看到的页面。 设置自定义主页，以便你的用户通过 Azure Active Directory 访问面板或 Office 365 应用启动程序访问应用时转到相应页面。
+本文讨论如何配置应用以将用户定向到自定义主页。 当你使用应用程序代理发布应用程序时，你需要设置内部 URL，但有时不是你的用户首先看到的页面。 请设置自定义主页，以便用户可以在访问应用程序时转到正确的页面。 无论用户是通过 Azure Active Directory 访问面板，还是通过 Office 365 应用启动器访问应用程序，都会看到设置的自定义主页。
 
-当用户启动应用时，他们默认会定向到已发布应用的根域 URL。 登录页通常设置为主页 URL。 如果希望应用用户登录到应用中的特定页面，请使用 Azure AD PowerShell 模块来定义自定义主页 URL。 
+当用户启动应用时，他们默认会定向到已发布应用的根域 URL。 登陆页通常设置为主页 URL。 如果希望应用用户登录到应用中的特定页面，请使用 Azure AD PowerShell 模块来定义自定义主页 URL。 
 
-例如：
+下面通过一个示例解释了公司为什么要设置自定义主页：
 - 在公司网络内，用户转到 *https://ExpenseApp/login/login.aspx* 来登录并访问你的应用。
 - 因为你有其他资产（如应用程序代理需要在文件夹结构顶层访问的映像），因此，你需要使用 https://ExpenseApp 作为内部 URL 发布应用。
-- 默认外部 URL 是 https://ExpenseApp-contoso.msappproxy.net，不会将你的用户定向至登录页面。  
-- 将 https://ExpenseApp-contoso.msappproxy.net/login/login.aspx 设置为主页 URL，以为你的用户提供无缝体验。 
+- 默认外部 URL 是 https://ExpenseApp-contoso.msappproxy.net，无法将用户转到登录页。  
+- 将 https://ExpenseApp-contoso.msappproxy.net/login/login.aspx 设置为主页 URL。 
 
 >[!NOTE]
 >向用户提供对已发布应用的访问权限时，会在 [Azure AD 访问面板](active-directory-saas-access-panel-introduction.md)和 [Office 365 应用启动器](https://blogs.office.com/2016/09/27/introducing-the-new-office-365-app-launcher)中显示这些应用。
@@ -79,7 +79,7 @@ ms.lasthandoff: 08/24/2017
 
 获取应用的 ObjectID，并按主页搜索该应用。
 
-1. 打开 PowerShell 并导入 Azure AD 模块。
+1. 在同一 PowerShell 窗口中，导入 Azure AD 模块。
 
     ```
     Import-Module AzureAD
@@ -105,9 +105,9 @@ ms.lasthandoff: 08/24/2017
 
 ### <a name="update-the-home-page-url"></a>更新主页 URL
 
-在步骤 1 所使用的同一 PowerShell 模块中，执行以下步骤：
+创建主页 URL，并在应用程序中更新此值。 继续使用同一 PowerShell 窗口运行这些命令。 或者，若要使用新 PowerShell 窗口，请运行 `Connect-AzureAD` 再次登录 Azure AD 模块。 
 
-1. 确认应用正确，将 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4 替换为在前一步骤中复制的 ObjectID。
+1. 确认应用程序是否正确，再将 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4 替换为在上一部分中复制的 ObjectID。
 
     ```
     Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4.
@@ -138,7 +138,7 @@ ms.lasthandoff: 08/24/2017
     ```
 
 >[!NOTE]
->对应用进行任何更改都可能会重置主页 URL。 如果你主页的 URL 重置，请重复步骤 2。
+>对应用进行任何更改都可能会重置主页 URL。 如果主页网址重置，请重复执行此部分中的步骤，重置主页网址。
 
 ## <a name="next-steps"></a>后续步骤
 

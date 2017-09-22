@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 00fec675bed0137473f7e3c5ddfe9c3c0e8344c6
-ms.lasthandoff: 03/29/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 293042a6ccfc39bd1cca181d058a25211904740e
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>操作 Spark 构建的机器学习模型
@@ -33,12 +33,12 @@ ms.lasthandoff: 03/29/2017
 [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)：Jupyter 笔记本演示如何在 HDInsight 群集上使用 Python 操作已保存的模型。 
 
 ### <a name="notebook-for-spark-20"></a>适用于 Spark 2.0 的笔记本
-若要修改适用于 Spark 1.6 的 Jupyter 笔记本以用于 HDInsight Spark 2.0 群集，请将 Python 代码文件替换为[此文件](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)。 此代码演示如何使用在 Spark 2.0 中创建的模型。
+要修改适用于 Spark 1.6 的 Jupyter 笔记本以用于 HDInsight Spark 2.0 群集，请将 Python 代码文件替换为[此文件](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)。 此代码演示如何使用在 Spark 2.0 中创建的模型。
 
 
 ## <a name="prerequisites"></a>先决条件
 
-1. 你需要一个 Azure 帐户和一个 Spark 1.6（或 Spark 2.0）HDInsight 群集来完成本演练。 有关如何满足这些要求的说明，请参阅[在 Azure HDInsight 上使用 Spark 的数据科学的概述](machine-learning-data-science-spark-overview.md)。 该主题还包含此处使用的 NYC 2013 出租车数据的说明以及有关如何在 Spark 群集上执行来自 Jupyter 笔记本的代码的说明。 
+1. 需要一个 Azure 帐户和一个 Spark 1.6（或 Spark 2.0）HDInsight 群集来完成本演练。 有关如何满足这些要求的说明，请参阅[在 Azure HDInsight 上使用 Spark 的数据科学的概述](machine-learning-data-science-spark-overview.md)。 该主题还包含此处使用的 NYC 2013 出租车数据的说明以及有关如何在 Spark 群集上执行来自 Jupyter 笔记本的代码的说明。 
 2. 还必须在此处通过演练针对 Spark 1.6 群集或 Spark 2.0 笔记本的[使用 Spark 进行数据探索和建模](machine-learning-data-science-spark-data-exploration-modeling.md)主题，来创建要评分的机器学习模型。 
 3. Spark 2.0 笔记本将其他数据集用于分类任务（从 2011 年到 2012 年的已知航班准时出发数据集）。 包含这些笔记本的 GitHub 存储库的 [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) 中提供了这些笔记本的说明和链接。 而且，此处和位于链接笔记本中的代码是泛型代码，应适用于任何 Spark 群集。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与此处所示内容稍有不同。 
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 03/29/2017
 ## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>设置：存储位置、库和预设 Spark 上下文
 Spark 能够读取和写入 Azure 存储 Blob (WASB)。 因此，存储在该处的任何现有数据都可以使用 Spark 处理，并将结果再次存储在 WASB 中。
 
-若要在 WASB 中保存模型或文件，需要正确指定路径。 可使用以以下内容开头的路径引用附加到 Spark 群集的默认容器：*"wasb//"*。 以下代码示例指定要读取的数据的位置和模型输出要保存到的模型存储目录的路径。 
+若要在 WASB 中保存模型或文件，需要正确指定路径。 可使用开头为“wasb///”的路径，引用附加到 Spark 群集的默认容器。 以下代码示例指定要读取的数据的位置和模型输出要保存到的模型存储目录的路径。 
 
 ### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>在 WASB 中为存储位置设置目录路径
 模型保存在：“wasb:///user/remoteuser/NYCTaxi/Models”。 如果未正确设置此路径，则不加载模型用于评分。
@@ -117,12 +117,12 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 * **%%local** 已指定后续行中的代码在本地执行。 代码必须是有效的 Python 代码。
 * **%%sql -o <variable name>** 
-* 针对 sqlContext 执行 Hive 查询。 如果传递了 -o 参数，则查询的结果将以 Pandas 数据帧的形式保存在 %%local Python 上下文中。
+* 针对 sqlContext 执行 Hive 查询。 如果传递了 -o 参数，则查询的结果以 Pandas 数据帧的形式保存在 %%local Python 上下文中。
 
 有关 Jupyter 笔记本内核和它们提供的预定义“magic”的详细信息，请参阅[适用于装有 HDInsight 上的 HDInsight Spark Linux 群集的 Jupyter 笔记本的内核](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md)。
 
 ## <a name="ingest-data-and-create-a-cleaned-data-frame"></a>引入数据并创建已清理的数据帧
-本部分包含引入要评分的数据所需的一系列任务的代码。 读入出租车行程和车费文件（存储为 .tsv 文件）的已加入的 0.1% 样本，然后创建干净的数据帧。
+本部分包含引入要评分的数据所需的一系列任务的代码。 读入出租车行程和车费文件（存储为 .tsv 文件）的已加入的 0.1% 样本，并创建干净的数据帧。
 
 基于以下主题中提供的过程加入了出租车行程和车费文件：[运行中的 Team Data Science Process：使用 HDInsight Hadoop 群集](machine-learning-data-science-process-hive-walkthrough.md)主题。
 
@@ -530,8 +530,8 @@ BoostedTreeRegressionFileLoc：GradientBoostingTreeRegression_2016-05-0317_23_56
 ## <a name="consume-spark-models-through-a-web-interface"></a>通过 Web 界面使用 Spark 模型
 Spark 提供使用名为 Livy 的组件通过 REST 界面远程提交批处理作业或交互式查询的机制。 Livy 在 HDInsight Spark 群集上默认处于启用状态。 有关 Livy 的详细信息，请参阅：[使用 Livy 远程提交 Spark 作业](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md)。 
 
-可使用 Livy 远程提交一个作业，该作业批处理评分存储在 Azure Blob 中的文件，然后将结果写入另一个 blob。 若要执行此操作，将 Python 脚本从  
-[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) 上载到 Spark 群集的 blob。 可使用 **Microsoft Azure 存储资源管理器**或 **AzCopy** 将脚本复制到群集 blob。 在本例中，我们将脚本上载到了 ***wasb:///example/python/ConsumeGBNYCReg.py***。   
+可使用 Livy 远程提交一个作业，该作业批处理评分存储在 Azure Blob 中的文件，然后将结果写入另一个 blob。 要执行此操作，将 Python 脚本从  
+[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) 上载到 Spark 群集的 blob。 可使用 **Microsoft Azure 存储资源管理器**或 **AzCopy** 将脚本复制到群集 blob。 在本例中，我们将脚本上传到了 ***wasb:///example/python/ConsumeGBNYCReg.py***。   
 
 > [!NOTE]
 > 可在与 Spark 群集相关联的存储帐户的门户上找到所需的访问密钥。 
@@ -549,7 +549,7 @@ Spark 提供使用名为 Livy 的组件通过 REST 界面远程提交批处理�
 通过使用基本身份验证发出简单的 HTTPS 调用，可通过 Livy 在远程系统上使用任意语言调用 Spark 作业。   
 
 > [!NOTE]
-> 进行此 HTTP 调用时使用 Python 请求库将会很方便，但它当前未默认安装在 Azure Functions 中。 因此改为使用较早的 HTTP 库。   
+> 进行此 HTTP 调用时使用 Python 请求库会很方便，但它当前未默认安装在 Azure Functions 中。 因此改为使用较早的 HTTP 库。   
 > 
 > 
 

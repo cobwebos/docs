@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 32b5e5a8025be3381e20aad0b22289b2c641f74e
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 786cba7402d8a7e7ecf4667d30c4c393c8d6de5d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同步：与 Azure Active Directory 同步的属性
@@ -29,7 +29,7 @@ ms.lasthandoff: 06/17/2017
 常见的问题是：*必须要同步的属性的列表是什么*。 默认的（也是建议的）方法是保留默认属性，以便可以在云中构造完整的 GAL（全局地址列表），并获取 Office 365 工作负荷中的所有功能。 在某些情况下，组织并不想要将某些属性同步到云中，因为这些属性包含敏感数据或 PII（个人身份信息），如以下示例中所示：  
 ![错误的属性](./media/active-directory-aadconnectsync-attributes-synchronized/badextensionattribute.png)
 
-在此情况下，请从本主题中的属性列表着手，并识别包含敏感数据或 PII 数据、因而不能同步的属性。 然后在安装期间使用 [Azure AD 应用程序和属性筛选](active-directory-aadconnect-get-started-custom.md#azure-ad-app-and-attribute-filtering)取消选择这些属性。
+在此情况下，请从本主题中的属性列表着手，并识别包含敏感数据或 PII 数据、因而不能同步的属性。 然后，在安装期间，使用 [Azure AD 应用程序和属性筛选](active-directory-aadconnect-get-started-custom.md#azure-ad-app-and-attribute-filtering)，取消选择这些属性。
 
 > [!WARNING]
 > 取消选择属性时，应该小心，只取消选择那些绝对不能同步的属性。 取消选择其他属性可能会对功能造成负面影响。
@@ -232,7 +232,7 @@ ms.lasthandoff: 06/17/2017
 | pager |X |X | | |
 | physicalDeliveryOfficeName |X |X | | |
 | postalCode |X |X | | |
-| postOfficeBox |X |X | | |
+| postOfficeBox |X |X | |SharePoint Online 当前不使用此属性。 |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码同步和联合使用。 |
@@ -254,7 +254,7 @@ ms.lasthandoff: 06/17/2017
 | userPrincipalName |X | | |UPN 是用户的登录 ID。 大多数情况下与 [mail] 值相同。 |
 | wWWHomePage |X |X | | |
 
-## <a name="lync-online"></a>Lync Online
+## <a name="lync-online-subsequently-known-as-skype-for-business"></a>Lync Online（后来称为“Skype for Business”）
 | 属性名称 | 用户 | 联系人 | 组 | 注释 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |如果启用了帐户，则进行定义。 |
@@ -398,7 +398,7 @@ ms.lasthandoff: 06/17/2017
 | userPrincipalName |X | | |UPN 是用户的登录 ID。 大多数情况下与 [mail] 值相同。 |
 
 ## <a name="windows-10"></a>Windows 10
-已加入 Windows 10 域的计算机（设备）会将某些属性同步到 Azure AD。 有关方案的详细信息，请参阅[体验 Windows 10 时将已加入域的设备连接到 Azure AD](../active-directory-azureadjoin-devices-group-policy.md)。 这些属性始终同步，Windows 10 不会显示为可以取消选择的应用。 通过填充 userCertificate 属性来标识已加入 Windows 10 域的计算机。
+已加入 Windows 10 域的计算机（设备）会将某些属性同步到 Azure AD。 有关方案的详细信息，请参阅[体验 Windows 10 时会已加入域的设备连接到 Azure AD](../active-directory-azureadjoin-devices-group-policy.md)。 这些属性始终同步，Windows 10 不会显示为可以取消选择的应用。 通过填充 userCertificate 属性来标识已加入 Windows 10 域的计算机。
 
 | 属性名称 | 设备 | 注释 |
 | --- |:---:| --- |
@@ -420,7 +420,7 @@ ms.lasthandoff: 06/17/2017
 | domainNetBios |X |也称为 netBiosName。 例如 CONTOSO。 |
 
 ## <a name="exchange-hybrid-writeback"></a>Exchange 混合写回
-选择启用 **Exchange 混合**部署时，这些属性将从 Azure AD 写回到本地 Active Directory。 根据你的 Exchange 版本，可能会同步更少的属性。
+选择启用 **Exchange 混合**部署时，这些属性将从 Azure AD 写回到本地 Active Directory。 根据 Exchange 版本，可能会同步更少的属性。
 
 | 属性名称 | 用户 | 联系人 | 组 | 注释 |
 | --- |:---:|:---:|:---:| --- |

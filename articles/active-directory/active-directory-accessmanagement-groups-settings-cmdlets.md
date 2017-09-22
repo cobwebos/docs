@@ -17,10 +17,10 @@ ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro;
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: 2ee71536257d4349fdf8d80bdcb1899a1d244293
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: 28054e91e91933b939f4ba700e317d63a614e1d9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
@@ -90,7 +90,7 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 
 | **设置** | **说明** |
 | --- | --- |
-|  <ul><li>EnableGroupCreation<li>类型：布尔值<li>默认值：True |一个标志，指示是否允许在目录中创建统一组。 |
+|  <ul><li>EnableGroupCreation<li>类型：布尔值<li>默认值：True |指明是否允许非管理员用户在目录中创建统一组的标志。 |
 |  <ul><li>GroupCreationAllowedGroupId<li>类型：字符串<li>默认值：“” |安全组的 GUID，允许该组的成员创建统一组，即使 EnableGroupCreation == false。 |
 |  <ul><li>UsageGuidelinesUrl<li>类型：字符串<li>默认值：“” |组使用准则链接。 |
 |  <ul><li>ClassificationDescriptions<li>类型：字符串<li>默认值：“” | 以逗号分隔的分类说明列表。 |
@@ -101,7 +101,6 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 |  <ul><li>GuestUsageGuidelinesUrl<li>类型：字符串<li>默认值：“” | 指向来宾使用指南的链接的 URL。 |
 |  <ul><li>AllowToAddGuests<li>类型：布尔值<li>默认值：True | 一个布尔值，该值指示是否允许将来宾添加到此目录。|
 |  <ul><li>ClassificationList<li>类型：字符串<li>默认值：“” |一个逗号分隔列表，其中包含的有效分类值可以应用到统一组。 |
-|  <ul><li>EnableGroupCreation<li>类型：布尔值<li>默认值：True | 一个布尔值，该值指示非管理员用户是否可以创建新的统一组。 |
 
 
 ## <a name="read-settings-at-the-directory-level"></a>在目录级别读取设置
