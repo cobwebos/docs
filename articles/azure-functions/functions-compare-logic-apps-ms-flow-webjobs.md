@@ -17,10 +17,10 @@ ms.date: 09/07/2017
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: d8edabe1198f37513fc292e0bffc5c83e7e566e7
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 1c39b2d9943532c8ccf0a11d3cf4bc8896669cfb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>在流、逻辑应用、函数和 WebJobs 之间进行选择
@@ -46,7 +46,7 @@ Microsoft Flow 和 Azure 逻辑应用可以一起讨论，这是因为它们都�
 
 下表有助于确定流或逻辑应用是否最适合给定的集成。
 
-|  | 流向 | Logic Apps |
+|  | 流向 | 逻辑应用 |
 | --- | --- | --- |
 | 目标受众 |办公室工作人员、业务用户 |IT 专业人士、开发人员 |
 | 方案 |自助服务 |关键任务 |
@@ -60,7 +60,7 @@ Microsoft Flow 和 Azure 逻辑应用可以一起讨论，这是因为它们都�
 ## <a name="functions-vs-webjobs"></a>函数 vs.Web 作业
 我们可以一起讨论 Azure Functions 和 Azure 应用服务 WebJobs，因为它们都是代码优先的集成服务，且是为开发人员设计的。 它们使你能够运行脚本或一段代码以响应各种事件，如[新存储 Blob](functions-bindings-storage.md) 或 [WebHook 请求](functions-bindings-http-webhook.md)。 以下是它们的相似之处： 
 
-* 二者都是在 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md) 上构建的，并享有[源控件](../app-service-web/app-service-continuous-deployment.md)[身份验证](../app-service/app-service-authentication-overview.md) 和 [监视](../app-service-web/web-sites-monitor.md)。
+* 二者都是在 [Azure 应用服务](../app-service/app-service-web-overview.md) 上构建的，并享有[源控件](../app-service/app-service-continuous-deployment.md)[身份验证](../app-service/app-service-authentication-overview.md) 和 [监视](../app-service/web-sites-monitor.md)。
 * 二者均是专门针对开发人员的服务。
 * 二者均支持标准的脚本和编程语言。
 * 二者均具有 NuGet 和 NPM 支持。
@@ -81,7 +81,7 @@ Microsoft Flow 和 Azure 逻辑应用可以一起讨论，这是因为它们都�
 | 扩展 |无配置缩放 |应用服务计划的缩放 |
 | 定价 |按使用或作为应用服务计划的部分付费 |应用服务计划的部分 |
 | 运行类型 |触发、计划（通过计时器触发器） |触发的、连续的、计划的 |
-| 触发事件 |[计时器](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-documentdb.md)、[Azure 事件中心](functions-bindings-event-hubs.md)、[HTTP/WebHook（GitHub、Slack）](functions-bindings-http-webhook.md)、[Azure 应用服务移动应用](functions-bindings-mobile-apps.md)、[Azure 通知中心](functions-bindings-notification-hubs.md)、[Azure 服务总线](functions-bindings-service-bus.md)、[Azure 存储](functions-bindings-storage.md) |[Azure 存储](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)、[Azure 服务总线](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md) |
+| 触发事件 |[计时器](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-documentdb.md)、[Azure 事件中心](functions-bindings-event-hubs.md)、[HTTP/WebHook（GitHub、Slack）](functions-bindings-http-webhook.md)、[Azure 应用服务移动应用](functions-bindings-mobile-apps.md)、[Azure 通知中心](functions-bindings-notification-hubs.md)、[Azure 服务总线](functions-bindings-service-bus.md)、[Azure 存储](functions-bindings-storage-blob.md) |[Azure 存储](functions-bindings-storage-blob.md)、[Azure 服务总线](functions-bindings-service-bus.md) |
 | 浏览器开发 |受支持 | 不支持 |
 | Windows 脚本（.cmd、.bat） |实验 |受支持 |
 | PowerShell |实验 |受支持 |
@@ -115,7 +115,7 @@ Microsoft Flow 和 Azure 逻辑应用可以一起讨论，这是因为它们都�
 * [开始使用 Microsoft Flow](https://flow.microsoft.com/en-us/documentation/getting-started/)
 * [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
 * [创建第一个 Azure 函数](functions-create-first-azure-function.md)
-* [使用 Visual Studio 部署 WebJobs](../app-service-web/websites-dotnet-deploy-webjobs.md)
+* [使用 Visual Studio 部署 WebJobs](../app-service/websites-dotnet-deploy-webjobs.md)
 
 或者，通过以下链接获取有关这些集成服务的详细信息：
 
@@ -123,6 +123,5 @@ Microsoft Flow 和 Azure 逻辑应用可以一起讨论，这是因为它们都�
 * [集成简化，来自 Charles Lamanna](http://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/)
 * [逻辑应用实时网络广播](http://aka.ms/logicappslive)
 * [Microsoft Flow 的常见问题](https://flow.microsoft.com/documentation/frequently-asked-questions/)
-* [Azure WebJobs 文档资源](../app-service-web/websites-webjobs-resources.md)
 
 

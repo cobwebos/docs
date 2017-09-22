@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 08/29/2017
 ms.author: cfowler
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 007f9232e2c09f128ea39f9a2e3c78ab92ad5f69
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 7b3620d3674ea3783af72af37f80db0ea357d325
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="create-a-ruby-app-with-web-apps-on-linux"></a>使用 Linux 上的 Web 应用创建 Ruby 应用
 
-[Azure Web 应用](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview)提供高度可缩放、自修补的 Web 托管服务。 本快速入门将介绍如何创建一个基本的 Ruby on Rails 应用程序并将其部署到 Azure 上，以作为 Linux 上的一个 Web 应用程序。
+[Azure Web 应用](../app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。 本快速入门将介绍如何创建一个基本的 Ruby on Rails 应用程序并将其部署到 Azure 上，以作为 Linux 上的一个 Web 应用程序。
 
 ![Hello-world](./media/quickstart-ruby/hello-world-updated.png)
 

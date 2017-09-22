@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: bfd970a78becfe3f29518b71c4ece24ada2861b2
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 32d4b4a7db134975158e53fc964c24b52b14a1e1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="_Toc395783175"></a>使用 Azure Cosmos DB 生成 Node.js Web 应用程序
@@ -419,7 +419,7 @@ ms.lasthandoff: 09/13/2017
         app.post('/addtask', taskList.addTask.bind(taskList));
         app.post('/completetask', taskList.completeTask.bind(taskList));
         app.set('view engine', 'jade');
-5. 这些行（使用从 **config.js** 中读取的值）定义 **TaskDao** 对象的新实例以及与 Azure Cosmos DB 的新连接，初始化该任务对象，然后将窗体操作与 **TaskList** 控制器上的方法绑定。 
+5. 这些行（使用从 **config.js** 中读取的值）定义 **TaskDao** 对象的新实例以及与 Azure Cosmos DB 的新连接，初始化该任务对象，并将窗体操作与 **TaskList** 控制器上的方法绑定。 
 6. 最后，保存并关闭 **app.js** 文件，我们就快完成了。
 
 ## <a name="_Toc395783181"></a>步骤 5：生成用户界面
@@ -517,7 +517,7 @@ ms.lasthandoff: 09/13/2017
 5. 若要停止应用程序，可在终端窗口中按 CTRL+C 并单击“Y”终止批处理作业。
 
 ## <a name="_Toc395783182"></a>步骤 7：将应用程序开发项目部署到 Azure 网站
-1. 如果尚未部署，则启用 Azure 网站的 git 存储库。 可以在 [Local Git Deployment to Azure 应用服务](../app-service-web/app-service-deploy-local-git.md) （从本地 GIT 部署到 Azure 应用服务）主题中找到如何执行此操作的说明。
+1. 如果尚未部署，则启用 Azure 网站的 git 存储库。 可以在 [Local Git Deployment to Azure 应用服务](../app-service/app-service-deploy-local-git.md) （从本地 GIT 部署到 Azure 应用服务）主题中找到如何执行此操作的说明。
 2. 将 Azure 网站添加为 git 远程。
    
         git remote add azure https://username@your-azure-website.scm.azurewebsites.net:443/your-azure-website.git

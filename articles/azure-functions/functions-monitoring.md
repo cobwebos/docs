@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 11/03/2016
 ms.author: wesmc
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 3ab6123b6acfdec57f1ca71b404c9e1123d1ff6d
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 278fd4a811afac240b6ad3c2eb7f0a23cb686382
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -112,7 +112,7 @@ ms.lasthandoff: 08/29/2017
 
     PS C:\> Get-AzureWebSiteLog -Name MyFunctionApp -Tail
 
-有关详细信息，请参阅[如何：流式传输 Web 应用的日志](../app-service-web/web-sites-enable-diagnostic-log.md#streamlogs)。 
+有关详细信息，请参阅[如何：流式传输 Web 应用的日志](../app-service/web-sites-enable-diagnostic-log.md#streamlogs)。 
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅以下资源：

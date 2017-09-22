@@ -15,14 +15,14 @@ ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 2516c0eb8ce470577731db9b844d5b9038465477
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: d3c85cde864d599871e195df2e81548180e647ba
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="configuring-diagnostics-for-azure-cloud-services-and-virtual-machines"></a>为 Azure 云服务和虚拟机配置诊断
-如果需要对 Azure 云服务或 Azure 虚拟机进行故障排除，使用 Visual Studio 可以更轻松地配置 Azure 诊断。 Azure 诊断可以在运行云服务的虚拟机和虚拟机实例上捕获系统数据和日志记录数据，并将这些数据传输到所选的存储帐户中。 有关 Azure 中诊断日志记录的详细信息，请参阅[为 Azure 应用服务中的 Web 应用启用诊断日志记录](app-service-web/web-sites-enable-diagnostic-log.md)。
+如果需要对 Azure 云服务或 Azure 虚拟机进行故障排除，使用 Visual Studio 可以更轻松地配置 Azure 诊断。 Azure 诊断可以在运行云服务的虚拟机和虚拟机实例上捕获系统数据和日志记录数据，并将这些数据传输到所选的存储帐户中。 有关 Azure 中诊断日志记录的详细信息，请参阅[为 Azure 应用服务中的 Web 应用启用诊断日志记录](app-service/web-sites-enable-diagnostic-log.md)。
 
 本主题演示如何在部署前后在 Visual Studio 和 Azure 虚拟机中启用和配置 Azure 诊断。 它还演示如何选择要收集的诊断信息的类型以及如何在收集信息后查看这些信息。
 
@@ -137,7 +137,7 @@ Azure 诊断的配置方法有如下数种：
 
   ![应用程序日志](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758145.png)
 
-  有关应用程序日志的详细信息，请参阅[在 Azure 应用服务中启用 Web 应用的诊断日志记录](app-service-web/web-sites-enable-diagnostic-log.md)。
+  有关应用程序日志的详细信息，请参阅[在 Azure 应用服务中启用 Web 应用的诊断日志记录](app-service/web-sites-enable-diagnostic-log.md)。
 
 ### <a name="windows-event-logs"></a>Windows 事件日志
 如果要捕获 Windows 事件日志，请选中“启用 Windows 事件日志的传输”复选框。 可以增加或减少将事件日志传输至存储帐户的分钟数，方法是更改“传输周期(分钟)”值。 选中与要跟踪的事件类型对应的复选框。
@@ -301,6 +301,6 @@ RoleEntryPoint 的方法在 WAIISHost.exe 上下文中调用，而非 IIS。 因
 现在，请在“属性”窗口中，将“复制到输出目录”属性设置为“始终复制”。
 
 ## <a name="next-steps"></a>后续步骤
-若要详细了解 Azure 中的诊断日志记录，请参阅[在 Azure 云服务和虚拟机中启用诊断](cloud-services/cloud-services-dotnet-diagnostics.md)和[在 Azure 应用服务中启用 Web 应用的诊断日志记录](app-service-web/web-sites-enable-diagnostic-log.md)。
+若要详细了解 Azure 中的诊断日志记录，请参阅[在 Azure 云服务和虚拟机中启用诊断](cloud-services/cloud-services-dotnet-diagnostics.md)和[在 Azure 应用服务中启用 Web 应用的诊断日志记录](app-service/web-sites-enable-diagnostic-log.md)。
 
 

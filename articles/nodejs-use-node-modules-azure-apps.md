@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: tarcher
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 94ddae4473b2d9d212e05d3df089eb6b2b87cbd8
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 13feb95a24add7823feae9fe0abd89e59934255c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>将 Node.js 模块与 Azure 应用程序一起使用
@@ -84,7 +84,7 @@ package.json 文件的一个潜在问题是它仅指定顶级依赖项的版本�
 > 
 
 ## <a name="next-steps"></a>后续步骤
-了解如何将 Node.js 模块与 Azure 一起使用后，请学习如何[指定 Node.js 版本]、[生成和部署 Node.js Web 应用](app-service-web/app-service-web-get-started-nodejs.md)，以及[如何使用适用于 Mac 和 Linux 的 Azure 命令行接口]。
+了解如何将 Node.js 模块与 Azure 一起使用后，请学习如何[指定 Node.js 版本]、[生成和部署 Node.js Web 应用](app-service/app-service-web-get-started-nodejs.md)，以及[如何使用适用于 Mac 和 Linux 的 Azure 命令行接口]。
 
 有关详细信息，请参阅 [Node.js 开发人员中心](/nodejs/azure/)。
 

@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 07/12/2017
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 59da1ab9e76685d7ed0c4415ef99578c982e956c
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 92c34e7ac074ded1702e0df96298d33c60227ab3
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/14/2017
 - [使用 Azure CLI 创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
 ## <a name="install-php"></a>安装 PHP
-在自己的服务器上安装 PHP，或者创建包括 PHP 的 Azure [Web 应用](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-overview)。
+在自己的服务器上安装 PHP，或者创建包括 PHP 的 Azure [Web 应用](../app-service/app-service-web-overview.md)。
 
 ### <a name="macos"></a>MacOS
 - 下载 [PHP 7.1.4 版](http://php.net/downloads.php)
@@ -233,5 +233,5 @@ mysqli_close($conn);
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
-> [在 Azure 中构建 PHP 和 MySQL Web 应用](../app-service-web/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json)
+> [在 Azure 中构建 PHP 和 MySQL Web 应用](../app-service/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json)
 

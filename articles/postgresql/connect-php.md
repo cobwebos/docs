@@ -11,11 +11,11 @@ ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 06/29/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: 009cc7941dc5d60153f1ab27adb9b86866b9a3f2
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 9beb92895056b51f40988fc6c47dfa6f80ca3294
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 06/30/2017
 - [创建 DB - Azure CLI](quickstart-create-server-database-azure-cli.md)
 
 ## <a name="install-php"></a>安装 PHP
-在自己的服务器上安装 PHP，或者创建包括 PHP 的 Azure [Web 应用](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-overview)。
+在自己的服务器上安装 PHP，或者创建包括 PHP 的 Azure [Web 应用](../app-service/app-service-web-overview.md)。
 
 ### <a name="windows"></a>Windows
 - 下载 [PHP 7.1.4 非线程安全 (x64) 版本](http://windows.php.net/download#php-7.1)

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: v-jysur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: e4f2e0a23aa52a0e02e7047916b77fb15107defa
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: cf9963be162df3bd886b6fd44535c3d09e06284b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector-preview"></a>将 ITSM 产品/服务与 IT Service Management Connector（预览版）相连接
@@ -53,7 +53,7 @@ ms.lasthandoff: 06/16/2017
 2. 选择“ITSM Connector”，单击“添加新连接”。
 
     ![Service Manager ](./media/log-analytics-itsmc/itsmc-service-manager-connection.png)
-3. 提供下表中所述的信息，然后单击“保存”创建连接：
+3. 提供下表中所述的信息，并单击“保存”创建连接：
 
 > [!NOTE]
 > 所有这些参数都是必需的。
@@ -67,7 +67,7 @@ ms.lasthandoff: 06/16/2017
 | **客户端机密**   | 键入为此 ID 生成的客户端机密。   |
 | **数据同步范围**   | 选择要通过 IT Service Management Connector 同步的 Service Manager 工作项。  这些工作项将导入到 Log Analytics。 **选项：**“事件”、“更改请求”。|
 | **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天 |
-| **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，OMS 将在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。 |
+| **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，OMS 会在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。 |
 
 成功连接并同步后：
 
@@ -83,11 +83,11 @@ ms.lasthandoff: 06/16/2017
 
 若要为 Service Manager 设置 ITSM Web 应用，请执行以下操作：
 
-- **部署 Web 应用** – 部署 Web 应用，设置属性，然后在 Azure AD 上进行身份验证。 可以使用 Microsoft 提供的[自动化脚本](log-analytics-itsmc-service-manager-script.md)部署 Web 应用。
+- **部署 Web 应用** – 部署 Web 应用，设置属性，并在 Azure AD 上进行身份验证。 可以使用 Microsoft 提供的[自动化脚本](log-analytics-itsmc-service-manager-script.md)部署 Web 应用。
 - 手动**配置混合连接** - [配置此连接](#configure-the-hybrid-connection)。
 
 #### <a name="deploy-the-web-app"></a>部署 Web 应用
-使用自动化[脚本](log-analytics-itsmc-service-manager-script.md)部署 Web 应用，设置属性，然后在 Azure AD 上进行身份验证。
+使用自动化[脚本](log-analytics-itsmc-service-manager-script.md)部署 Web 应用，设置属性，并在 Azure AD 上进行身份验证。
 
 通过提供以下所需详细信息来运行脚本：
 
@@ -105,7 +105,7 @@ ms.lasthandoff: 06/16/2017
 **检查 Web 应用安装**
 
 1. 转到“Azure 门户” > “资源”。
-2. 选择 Web 应用，然后单击“设置” > “应用程序设置”。
+2. 选择 Web 应用，并单击“设置” > “应用程序设置”。
 3. 确认有关通过脚本部署应用时提供的 Service Manager 实例的信息。
 
 ### <a name="configure-the-hybrid-connection"></a>配置混合连接
@@ -137,9 +137,9 @@ ms.lasthandoff: 06/16/2017
     ![混合连接值](./media/log-analytics-itsmc/itsmc-new-hybrid-connection-values.png)
 6. 单击“确定”关闭“创建混合连接”边栏选项卡并开始创建混合连接。
 
-    创建混合连接后，它将显示在边栏选项卡下面。
+    创建混合连接后，它会显示在边栏选项卡下面。
 
-7. 创建混合连接后，请选择该连接，然后单击“添加所选混合连接”。
+7. 创建混合连接后，请选择该连接，并单击“添加所选混合连接”。
 
     ![新建混合连接](./media/log-analytics-itsmc/itsmc-new-hybrid-connection-added.png)
 
@@ -151,9 +151,9 @@ ms.lasthandoff: 06/16/2017
 
     安装完成后，“开始”菜单下会出现“混合连接管理器 UI”选项。
 
-2. 单击“混合连接管理器 UI”。系统将提示你提供 Azure 凭据。
+2. 单击“混合连接管理器 UI”。系统会提示提供 Azure 凭据。
 
-3. 请使用 Azure 凭据登录，然后选择在其中创建了混合连接的订阅。
+3. 请使用 Azure 凭据登录，并选择在其中创建了混合连接的订阅。
 
 4. 单击“保存” 。
 
@@ -194,7 +194,7 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
 
     ![ServiceNow 连接](./media/log-analytics-itsmc/itsmc-servicenow-connection.png)
 
-3. 提供下表中所述的信息，然后单击“保存”创建连接：
+3. 提供下表中所述的信息，并单击“保存”创建连接：
 
 > [!NOTE]
 > 所有这些参数都是必需的。
@@ -210,7 +210,7 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
 | **客户端机密**   | 键入为此 ID 生成的客户端机密。   |
 | **数据同步范围**   | 选择要通过 IT Service Management Connector 同步到 OMS 的 ServiceNow 工作项。  选定的值将导入到 Log Analytics。   **选项：**“事件”和“更改请求”。|
 | **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天 |
-| **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，OMS 将在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。 |
+| **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，OMS 会在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。 |
 
 
 成功连接并同步后：
@@ -226,13 +226,13 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
 使用以下过程：
 
 1.  访问 [ServiceNow 应用商店](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.0)，并在 ServiceNow 实例中安装**用于 ServiceNow 和 Microsoft OMS 集成的用户应用**。
-2.  安装后，请访问 ServiceNow 实例的左侧导航栏，然后搜索并选择 Microsoft OMS 集成器。  
+2.  安装后，请访问 ServiceNow 实例的左侧导航栏，搜索并选择 Microsoft OMS 集成器。  
 3.  单击“安装清单”。
 
-    如果用户角色尚未创建，状态将显示为“未完成”。
+    如果用户角色尚未创建，状态会显示为“未完成”。
 
 4.  在“创建集成用户”旁边的文本框中，输入可连接到 OMS 中的 IT Service Management Connector 的用户的用户名。
-5.  输入此用户的密码，然后单击“确定”。  
+5.  输入此用户的密码，并单击“确定”。  
 
 >[!NOTE]
 
@@ -270,7 +270,7 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
 请确保满足以下先决条件：
 
 - 已安装 IT Service Management Connector。 详细信息：[配置](log-analytics-itsmc-overview.md#configuration)。
-- Provance 应用应已注册到 Azure AD，并且可提供客户端 ID。 有关详细信息，请参阅[如何配置 Active Directory 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)。
+- Provance 应用应已注册到 Azure AD，并且可提供客户端 ID。 有关详细信息，请参阅[如何配置 Active Directory 身份验证](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md)。
 - 用户角色：管理员。
 
 ### <a name="connection-procedure"></a>连接过程
@@ -281,7 +281,7 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
 2. 选择“ITSM Connector”，单击“添加新连接”。  
 
     ![Provance 连接](./media/log-analytics-itsmc/itsmc-provance-connection.png)
-3. 提供下表中所述的信息，然后单击“保存”创建连接。
+3. 提供下表中所述的信息，并单击“保存”创建连接。
 
 > [!NOTE]
 > 所有这些参数都是必需的。
@@ -293,10 +293,10 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
 | **用户名**   | 键入可连接到 IT Service Management Connector 的用户名。    |
 | **密码**   | 键入此用户名的关联密码。 **注意**：用户名和密码仅用于生成身份验证令牌，不会存储在 OMS 服务中的任何位置。|
 | **服务器 URL**   | 键入要连接到 IT Service Management Connector 的 Provance 实例的 URL。 |
-| **客户端 ID**   | 键入在 Provance 实例中生成的、用于对此连接进行身份验证的客户端 ID。  有关客户端 ID 的详细信息，请参阅[如何配置 Active Directory 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)。 |
+| **客户端 ID**   | 键入在 Provance 实例中生成的、用于对此连接进行身份验证的客户端 ID。  有关客户端 ID 的详细信息，请参阅[如何配置 Active Directory 身份验证](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md)。 |
 | **数据同步范围**   | 选择要通过 IT Service Management Connector 同步到 OMS 的 Provance 工作项。  这些工作项将导入到 Log Analytics。   **选项：**“事件”、“更改请求”。|
 | **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天 |
-| **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，OMS 将在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。|
+| **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，OMS 会在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。|
 
 成功连接并同步后：
 
@@ -326,7 +326,7 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
 
     ![Cherwell 用户 ID](./media/log-analytics-itsmc/itsmc-cherwell-connection.png)
 
-3. 提供下表中所述的信息，然后单击“保存”创建连接。
+3. 提供下表中所述的信息，并单击“保存”创建连接。
 
 > [!NOTE]
 > 所有这些参数都是必需的。
@@ -341,7 +341,7 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
 | **客户端 ID**   | 键入在 Cherwell 实例中生成的、用于对此连接进行身份验证的客户端 ID。   |
 | **数据同步范围**   | 选择要通过 IT Service Management Connector 同步的 Cherwell 工作项。  这些工作项将导入到 Log Analytics。   **选项：**“事件”、“更改请求”。 |
 | **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天 |
-| **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，OMS 将在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。 |
+| **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，OMS 会在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。 |
 
 成功连接并同步后：
 

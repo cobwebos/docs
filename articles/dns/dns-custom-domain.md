@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: e0e7144c38c36f1583e0bcb7dfffba26e9a8bdad
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 41c1649bfff035bc641d7c1f5d7803cd105e8297
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -136,9 +136,9 @@ Azure IoT 没有任何需要在服务本身上指定的自定义项。 若要对
 
 ![图 1](./media/dns-custom-domain/finalnslookup.png)
 
-若要详细了解如何将自定义域映射到应用服务，请访问[将现有的自定义 DNS 名称映射到 Azure Web 应用](../app-service-web/app-service-web-tutorial-custom-domain.md?toc=%dns%2ftoc.json)。
+若要详细了解如何将自定义域映射到应用服务，请访问[将现有的自定义 DNS 名称映射到 Azure Web 应用](../app-service/app-service-web-tutorial-custom-domain.md?toc=%dns%2ftoc.json)。
 
-如果需要购买自定义域，请访问[购买 Azure Web 应用的自定义域名](../app-service-web/custom-dns-web-site-buydomains-web-app.md)来详细了解应用服务域。
+如果需要购买自定义域，请访问[购买 Azure Web 应用的自定义域名](../app-service/custom-dns-web-site-buydomains-web-app.md)来详细了解应用服务域。
 
 ## <a name="blob-storage"></a>Blob 存储
 

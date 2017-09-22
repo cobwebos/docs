@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 8/22/2017
 ms.author: kraigb
 ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
-ms.openlocfilehash: b75d190724da284324b0337e95a50a64902e19d8
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 953b1aa459ddf5b7be00b9d32432e6dda97143e1
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="set-up-named-authentication-credentials"></a>设置命名的身份验证凭据
@@ -77,7 +77,7 @@ Visual Studio 使用订阅 ID 和证书数据作为凭据。 订阅文件（.pub
    d.单击“下一步”。 选择 Azure 订阅，粘贴刚刚创建的 .cer 文件的完整路径，并选择“上传”。
 
 ## <a name="next-steps"></a>后续步骤
-* [Web 应用一般概述](https://docs.microsoft.com/azure/app-service-web/)
-* [将应用部署到 Azure 应用服务](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-deploy?toc=%2fazure%2fapp-service-api%2ftoc.json) 
-* [使用 Visual Studio 部署 WebJobs](https://docs.microsoft.com/en-us/azure/app-service-web/websites-dotnet-deploy-webjobs)
+* [Web 应用一般概述](https://docs.microsoft.com/azure/app-service/)
+* [将应用部署到 Azure 应用服务](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-local-git) 
+* [使用 Visual Studio 部署 WebJobs](https://docs.microsoft.com/en-us/azure/app-service/websites-dotnet-deploy-webjobs)
 * [创建和部署云服务](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy-portal)

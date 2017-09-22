@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: TomSh
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: b0749847af81521e0ffe6b5f1e115fff558df5cd
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 54bbd7dd1d0ecad79f86e0ab16be3a48854093ac
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -81,7 +81,7 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 此外，检测到特定事件时，可以将 OMS 安全性和符合性配置为[自动执行特定操作](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/)。
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
-可以使用 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) 以组的方式处理解决方案中的资源。 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用 [Azure Resource Manager 模板](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/)来完成部署，该模板适用于测试、过渡和生产等不同环境。 资源管理器提供安全、审核和标记功能，以帮助你在部署后管理资源。
+可以使用 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) 以组的方式处理解决方案中的资源。 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用 [Azure Resource Manager 模板](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/)来完成部署，该模板适用于测试、过渡和生产等不同环境。 Resource Manager 提供安全、审核和标记功能，以帮助你在部署后管理资源。
 
 基于 Azure Resource Manager 模板的部署因其标准的安全控制设置，有助于提高 Azure 中部署的解决方案的安全性，并且还可以集成到基于标准化模板的部署中。 这样可以降低手动部署期间可能发生的安全配置错误风险。
 
@@ -111,7 +111,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 本部分提供了关于应用程序安全中主要特性的其他信息以及有关这些功能的摘要信息。
 
 ### <a name="web-application-vulnerability-scanning"></a>Web 应用程序漏洞扫描
-开始对[应用服务应用](https://docs.microsoft.com/azure/app-service/app-service-value-prop-what-is)进行漏洞测试最简单的一种方法是使用[与 Tinfoil Security 的集成](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)对应用执行一键式漏洞扫描。 可以查看易于理解的报告中的测试结果，并了解如何按照分步说明修复每个安全漏洞。
+开始对[应用服务应用](https://docs.microsoft.com/azure/app-service/app-service-web-overview)进行漏洞测试最简单的一种方法是使用[与 Tinfoil Security 的集成](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)对应用执行一键式漏洞扫描。 可以查看易于理解的报告中的测试结果，并了解如何按照分步说明修复每个安全漏洞。
 
 ### <a name="penetration-testing"></a>渗透测试
 如果想要执行自己的渗透测试，或者想要使用其他扫描程序套件或提供程序，则必须按照 [Azure 渗透测试审批流程](https://security-forms.azure.com/penetration-testing/terms)来进行并获得事先批准才能执行所需的渗透测试。
@@ -123,10 +123,10 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 [应用服务身份验证/授权](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)是一项功能，方便应用程序登录用户，避免在应用后端更改代码。 该功能可以方便地保护应用程序和处理每个用户的数据。
 
 ### <a name="layered-security-architecture"></a>分层安全体系结构
-由于[应用服务环境](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-intro)提供部署到 [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)的隔离运行时环境，因此开发人员能够创建分层安全体系结构，针对每个应用层提供不同级别的网络访问权限。 常见的需求之一是要隐藏对 API 后端的常规 Internet 访问，而只允许由上游 Web 应用调用 API。 可以在包含应用服务环境的 Azure 虚拟网络子网上使用[网络安全组 (NSG)](https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/)，限制对 API 应用程序的公共访问。
+由于[应用服务环境](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-intro)提供部署到 [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)的隔离运行时环境，因此开发人员能够创建分层安全体系结构，针对每个应用层提供不同级别的网络访问权限。 常见的需求之一是要隐藏对 API 后端的常规 Internet 访问，而只允许由上游 Web 应用调用 API。 可以在包含应用服务环境的 Azure 虚拟网络子网上使用[网络安全组 (NSG)](https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/)，限制对 API 应用程序的公共访问。
 
 ### <a name="web-server-diagnostics-and-application-diagnostics"></a>Web 服务器诊断和应用程序诊断
-应用服务 Web 应用为 Web 服务器和 Web 应用程序中的日志记录信息提供诊断功能。 这些诊断功能按逻辑分为 [Web 服务器诊断](https://docs.microsoft.com/azure/app-service-web/web-sites-enable-diagnostic-log)和[应用程序诊断](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx)。 Web 服务器包括诊断和排查站点和应用程序这两大改进方面。
+应用服务 Web 应用为 Web 服务器和 Web 应用程序中的日志记录信息提供诊断功能。 这些诊断功能按逻辑分为 [Web 服务器诊断](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log)和[应用程序诊断](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx)。 Web 服务器包括诊断和排查站点和应用程序这两大改进方面。
 
 第一个新特点是有关应用程序池、工作进程、站点、应用程序域和运行请求的实时状态信息。 第二个新特点是在整个请求和响应过程中跟踪请求的详细跟踪事件。
 
@@ -142,7 +142,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 -   Web 服务器日志记录 - 使用 W3C 扩展日志文件格式的 HTTP 事务信息。 这在确定整体站点度量值（如处理的请求数量或来自特定 IP 地址的请求数）时非常有用。
 
 #### <a name="application-diagnostics"></a>应用程序诊断
-[应用程序诊断](https://docs.microsoft.com/azure/app-service-web/web-sites-enable-diagnostic-log)可以捕获由 Web 应用程序生成的信息。 ASP.NET 应用程序可使用 [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) 类将信息记录到应用程序诊断日志。 在应用程序诊断中，有两种主要类型的事件，即与应用程序性能相关的事件以及与应用程序故障和错误相关的事件。 故障和错误可以进一步分为连接性、安全性和故障问题。 故障问题通常与应用程序代码问题相关。
+[应用程序诊断](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log)可以捕获由 Web 应用程序生成的信息。 ASP.NET 应用程序可使用 [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) 类将信息记录到应用程序诊断日志。 在应用程序诊断中，有两种主要类型的事件，即与应用程序性能相关的事件以及与应用程序故障和错误相关的事件。 故障和错误可以进一步分为连接性、安全性和故障问题。 故障问题通常与应用程序代码问题相关。
 
 在应用程序诊断中，可以查看按以下方式分组的事件：
 
