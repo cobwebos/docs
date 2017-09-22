@@ -16,11 +16,11 @@ ms.workload: web
 ms.date: 04/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 37046967bd5ab0d797d1c66690db7200fb4805e2
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: d3244fe97464acdea162ef65ba1a473dcdf0219d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 06/20/2017
 
 此脚本使用[消耗计划](../functions-scale.md#consumption-plan)创建 Azure Function app。
 
-[!code-azurecli-interactive[主要](../../../cli_scripts/azure-functions/create-function-app-consumption/create-function-app-consumption.sh "基于消耗计划创建 Azure Function")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-consumption/create-function-app-consumption.sh "根据消耗计划创建 Azure Function")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -48,9 +48,9 @@ ms.lasthandoff: 06/20/2017
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
 | [az storage account create](/cli/azure/storage/account#create) | 创建 Azure 存储帐户。 |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#create) | 创建 Azure Function。 |
+| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az_functionapp_create) | 创建 Azure Function。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: hkanna
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 613fd0c1164ac34d36d5f21d07dfdf00c8aad614
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 4d5acd0be4a237f46d79800a44124b8c4269c5b9
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -59,7 +59,7 @@ StorSimple 旨在为处理妥善定义的工作数据集（热数据）的应用
 **StorSimple 分层**
 ![StorSimple 分层示意图](./media/storsimple-configure-backup-target-using-netbackup/image1.jpg)
 
-知道这种体系结构后，将会发现 StorSimple 非常适合用作备份目标。 使用 StorSimple 可以：
+知道这种体系结构后，会发现 StorSimple 非常适合用作备份目标。 使用 StorSimple 可以：
 -   通过本地工作数据集执行最常见的还原。
 -   使用云实现场外灾难恢复，存储不经常还原的陈旧数据。
 
@@ -114,7 +114,7 @@ StorSimple 提供以下优势：
 
 1.  备份服务器与目标备份代理通信，备份代理将数据传输到备份服务器。
 2.  备份服务器将数据写入 StorSimple 分层卷。
-3.  备份服务器更新目录数据库，然后完成备份作业。
+3.  备份服务器更新目录数据库，并完成备份作业。
 4.  快照脚本触发 StorSimple 快照管理器（启动或删除）。
 5.  备份服务器根据保留策略删除过期的备份。
 
@@ -138,7 +138,7 @@ StorSimple 提供以下优势：
 
 1.  备份服务器与目标备份代理通信，备份代理将数据传输到备份服务器。
 2.  备份服务器将数据写入高性能存储。
-3.  备份服务器更新目录数据库，然后完成备份作业。
+3.  备份服务器更新目录数据库，并完成备份作业。
 4.  备份服务器根据保留策略将备份复制到 StorSimple。
 5.  快照脚本触发 StorSimple 快照管理器（启动或删除）。
 6.  备份服务器根据保留策略删除过期的备份。
@@ -264,11 +264,11 @@ StorSimple 提供以下优势：
 
 ### <a name="to-set-up-netbackup-storage"></a>设置 NetBackup 存储
 
-1.  在 NetBackup 管理控制台中，选择“媒体和设备存储” > “设备” > “磁盘池”。 在磁盘池配置向导中，选择存储服务器类型“AdvancedDisk”，然后选择“下一步”。
+1.  在 NetBackup 管理控制台中，选择“媒体和设备存储” > “设备” > “磁盘池”。 在磁盘池配置向导中，选择存储服务器类型“AdvancedDisk”，并选择“下一步”。
 
     ![NetBackup 管理控制台，磁盘池配置向导](./media/storsimple-configure-backup-target-using-netbackup/nbimage1.png)
 
-2.  选择服务器，然后选择“下一步”。
+2.  选择服务器，并选择“下一步”。
 
     ![NetBackup 管理控制台，选择服务器](./media/storsimple-configure-backup-target-using-netbackup/nbimage2.png)
 
@@ -276,9 +276,9 @@ StorSimple 提供以下优势：
 
     ![NetBackup 管理控制台，选择 StorSimple 卷磁盘](./media/storsimple-configure-backup-target-using-netbackup/nbimage3.png)
 
-4.  输入备份目标的名称，然后选择“下一步” > “下一步”完成向导中的操作。
+4.  输入备份目标的名称，并选择“下一步” > “下一步”完成向导中的操作。
 
-5.  检查设置，然后选择“完成”。
+5.  检查设置，并选择“完成”。
 
 6.  每次分配卷结束时，请根据 [StorSimple 和 NetBackup 的最佳实践](#best-practices-for-storsimple-and-netbackup)中的建议更改存储设备设置。
 
@@ -289,7 +289,7 @@ StorSimple 提供以下优势：
 ## <a name="set-up-storsimple-as-a-primary-backup-target"></a>将 StorSimple 设置为主备份目标
 
 > [!NOTE]
-> 从云中分层的备份还原数据将以云的速度进行。
+> 从云中分层的备份还原数据以云的速度进行。
 
 下图显示了典型卷到备份作业的映射。 在本例中，所有每周备份映射到星期六完整备份磁盘，增量备份映射到星期一至星期五增量备份磁盘。 所有备份和还原操作从 StorSimple 分层卷发生。
 
@@ -311,23 +311,23 @@ StorSimple 提供以下优势：
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-backup-job"></a>将 StorSimple 卷分配到 NetBackup 备份作业
 
-1.  在 NetBackup 管理控制台中，选择“NetBackup 管理”，右键单击“策略”，然后选择“新建策略”。
+1.  在 NetBackup 管理控制台中，选择“NetBackup 管理”，右键单击“策略”，并选择“新建策略”。
 
     ![NetBackup 管理控制台，创建新策略](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
 
-2.  在“添加新策略”对话框中，输入策略的名称，然后选中“使用策略配置向导”复选框。 选择“确定”。
+2.  在“添加新策略”对话框中，输入策略的名称，并选中“使用策略配置向导”复选框。 选择“确定”。
 
     ![NetBackup 管理控制台，“添加新策略”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage7.png)
 
-3.  在备份策略配置向导中，选择所需的备份类型，然后选择“下一步”。
+3.  在备份策略配置向导中，选择所需的备份类型，并选择“下一步”。
 
     ![NetBackup 管理控制台，选择备份类型](./media/storsimple-configure-backup-target-using-netbackup/nbimage8.png)
 
-4.  若要设置策略类型，请选择“标准”，然后选择“下一步”。
+4.  要设置策略类型，请选择“标准”，并选择“下一步”。
 
     ![NetBackup 管理控制台，选择策略类型](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
-5.  选择主机，选中“检测客户端操作系统”复选框，，然后选择“添加”。 选择“**下一步**”。
+5.  选择主机，选中“检测客户端操作系统”复选框，，并选择“添加”。 选择“**下一步**”。
 
     ![NetBackup 管理控制台，在新策略中列出客户端](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
 
@@ -345,13 +345,13 @@ StorSimple 提供以下优势：
 
     ![NetBackup 管理控制台，新策略的计划](./media/storsimple-configure-backup-target-using-netbackup/nbimage13.png)
 
-10.  右键单击“Differential-Inc”，选择“复制到新计划”，然后选择“确定”。
+10.  右键单击“Differential-Inc”，选择“复制到新计划”，并选择“确定”。
 
     ![NetBackup 管理控制台，将计划复制到新策略](./media/storsimple-configure-backup-target-using-netbackup/nbimage14.png)
 
-11.  右键单击新建的计划，然后选择“更改”。
+11.  右键单击新建的计划，并选择“更改”。
 
-12.  在“属性”选项卡中，选中“覆盖策略存储选择”复选框，然后选择星期一增量备份要存储到的卷。
+12.  在“属性”选项卡中，选中“覆盖策略存储选择”复选框，并选择星期一增量备份要存储到的卷。
 
     ![NetBackup 管理控制台，更改计划](./media/storsimple-configure-backup-target-using-netbackup/nbimage15.png)
 
@@ -380,7 +380,7 @@ StorSimple 提供以下优势：
 ## <a name="set-up-storsimple-as-a-secondary-backup-target"></a>将 StorSimple 设置为辅助备份目标
 
 > [!NOTE]
->从云中分层的备份还原数据将以云的速度进行。
+>从云中分层的备份还原数据以云的速度进行。
 
 在此模型中，必须使用一个存储媒体（不是 StorSimple）充当临时缓存。 例如，可以使用独立磁盘冗余阵列 (RAID) 卷来满足空间、输入/输出 (I/O) 和带宽要求。 建议使用 RAID 5、50 和 10。
 
@@ -432,7 +432,7 @@ StorSimple 提供以下优势：
 
     ![NetBackup 管理控制台，新建存储生命周期策略](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
 
-2.  输入快照的名称，然后选择“添加”。
+2.  输入快照的名称，并选择“添加”。
 
 3.  在“新建操作”对话框中的“属性”选项卡上，为“操作”选择“备份”。 为“目标存储”、“保留类型”和“保留期”选择所需的值。 选择“确定”。
 
@@ -454,15 +454,15 @@ StorSimple 提供以下优势：
 
 7.  定义完 SLP 保留策略后，请在“策略”下面，根据[将 StorSimple 卷分配到 NetBackup 备份作业](#assigning-storsimple-volumes-to-a-netbackup-backup-job)中详述的步骤定义备份策略。
 
-8.  在“更改计划”对话框中的“计划”下面，右键单击“完整”，然后选择“更改”。
+8.  在“更改计划”对话框中的“计划”下面，右键单击“完整”，并选择“更改”。
 
     ![NetBackup 管理控制台，“更改计划”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage26.png)
 
-9.  选择“覆盖策略存储选择”，然后选择在步骤 1-6 中创建的 SLP 保留策略。
+9.  选择“覆盖策略存储选择”，并选择在步骤 1-6 中创建的 SLP 保留策略。
 
     ![NetBackup 管理控制台，覆盖策略存储选择](./media/storsimple-configure-backup-target-using-netbackup/nbimage27.png)
 
-10.  选择“确定”，然后针对增量备份计划重复上述步骤。
+10.  选择“确定”，并针对增量备份计划重复上述步骤。
 
     ![NetBackup 管理控制台，增量备份的“更改计划”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage28.png)
 
@@ -505,55 +505,19 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>启动或删除云快照
 
 1.  [安装 Azure PowerShell](/powershell/azure/overview)。
-2.  [下载并导入发布设置和订阅信息](https://msdn.microsoft.com/library/dn385850.aspx)。
-3.  在 Azure 经典门户中获取资源名称和 [StorSimple Manager 服务的注册密钥](storsimple-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key)。
-4.  在运行脚本的服务器上，以管理员身份运行 PowerShell。 键入以下命令：
-
-    `Get-AzureStorSimpleDeviceBackupPolicy –DeviceName <device name>`
-
-    记下备份策略 ID。
-5.  在记事本中，使用以下代码创建新的 PowerShell 脚本。
-
-    复制并粘贴以下代码片段：
-    ```powershell
-    Import-AzurePublishSettingsFile "c:\\CloudSnapshot Snapshot\\myAzureSettings.publishsettings"
-    Disable-AzureDataCollection
-    $ApplianceName = <myStorSimpleApplianceName>
-    $RetentionInDays = 20
-    $RetentionInDays = -$RetentionInDays
-    $Today = Get-Date
-    $ExpirationDate = $Today.AddDays($RetentionInDays)
-    Select-AzureStorSimpleResource -ResourceName "myResource" –RegistrationKey
-    Start-AzureStorSimpleDeviceBackupJob –DeviceName $ApplianceName -BackupType CloudSnapshot -BackupPolicyId <BackupId> -Verbose
-    $CompletedSnapshots =@()
-    $CompletedSnapshots = Get-AzureStorSimpleDeviceBackup -DeviceName $ApplianceName
-    Write-Host "The Expiration date is " $ExpirationDate
-    Write-Host
-
-    ForEach ($SnapShot in $CompletedSnapshots)
-    {
-        $SnapshotStartTimeStamp = $Snapshot.CreatedOn
-        if ($SnapshotStartTimeStamp -lt $ExpirationDate)
-
-        {
-            $SnapShotInstanceID = $SnapShot.InstanceId
-            Write-Host "This snpashotdate was created on " $SnapshotStartTimeStamp.Date.ToShortDateString()
-            Write-Host "Instance ID " $SnapShotInstanceID
-            Write-Host "This snpashotdate is older and needs to be deleted"
-            Write-host "\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#"
-            Remove-AzureStorSimpleDeviceBackup -DeviceName $ApplianceName -BackupId $SnapShotInstanceID -Force -Verbose
-        }
-    }
-    ```
-      将该 PowerShell 脚本保存到 Azure 发布设置所在的同一位置。 例如，另存为 C:\CloudSnapshot\StorSimpleCloudSnapshot.ps1。
-6.  将该脚本添加到 NetBackup 中的备份作业。 为此，请编辑 NetBackup 作业选项的前处理和后处理命令。
+2. 下载和安装 [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell 脚本。
+3. 在运行脚本的服务器上，以管理员身份运行 PowerShell。 确保通过 `-WhatIf $true` 来运行脚本，以查看该脚本将带来哪些更改。 在完成验证后，将传递 `-WhatIf $false`。 运行下列命令：
+```powershell
+.\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
+```
+4.  将该脚本添加到 NetBackup 中的备份作业。 为此，请编辑 NetBackup 作业选项的前处理和后处理命令。
 
 > [!NOTE]
 > 建议在每日备份作业结束时，以后处理脚本的形式运行 StorSimple 云快照备份策略。 有关如何备份和还原备份应用程序环境以帮助满足 RPO 和 RTO 要求的详细信息，请咨询备份架构师。
 
 ## <a name="storsimple-as-a-restore-source"></a>用作还原源的 StorSimple
 
-从 StorSimple 设备还原的过程类似于从任何块存储设备还原。 还原已在云中分层的数据将以云的速度进行。 对于本地数据，还原将以设备本地磁盘的速度进行。 有关如何执行还原的信息，请参阅 [NetBackup 文档](http://www.veritas.com/docs/000094423)。 我们建议遵循 NetBackup 还原最佳实践。
+从 StorSimple 设备还原的过程类似于从任何块存储设备还原。 还原已在云中分层的数据以云的速度进行。 对于本地数据，还原以设备本地磁盘的速度进行。 有关如何执行还原的信息，请参阅 [NetBackup 文档](http://www.veritas.com/docs/000094423)。 我们建议遵循 NetBackup 还原最佳实践。
 
 ## <a name="storsimple-failover-and-disaster-recovery"></a>StorSimple 故障转移和灾难恢复
 
@@ -564,9 +528,9 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 
 | 方案 | 影响 | 如何恢复 | 说明 |
 |---|---|---|---|
-| StorSimple 设备故障 | 备份和还原操作将会中断。 | 更换有故障的设备，然后执行 [StorSimple 故障转移和灾难恢复](storsimple-device-failover-disaster-recovery.md)。 | 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层，因此可能非常耗时。 |
-| NetBackup 服务器故障 | 备份和还原操作将会中断。 | 重新构建备份服务器并执行数据库还原。 | 必须在灾难恢复站点重建或还原 NetBackup 服务器。 将数据库还原到最近的时间点。 如果还原的 NetBackup 数据库未与最新的备份作业同步，则需要编制索引和目录。 这种索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层。 这会进一步消耗时间。 |
-| 站点发生故障，导致备份服务器和 StorSimple 丢失 | 备份和还原操作将会中断。 | 首先还原 StorSimple，然后还原 NetBackup。 | 首先还原 StorSimple，然后还原 NetBackup。 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 |
+| StorSimple 设备故障 | 备份和还原操作会中断。 | 更换有故障的设备，并执行 [StorSimple 故障转移和灾难恢复](storsimple-device-failover-disaster-recovery.md)。 | 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层，因此可能非常耗时。 |
+| NetBackup 服务器故障 | 备份和还原操作会中断。 | 重新构建备份服务器并执行数据库还原。 | 必须在灾难恢复站点重建或还原 NetBackup 服务器。 将数据库还原到最近的时间点。 如果还原的 NetBackup 数据库未与最新的备份作业同步，则需要编制索引和目录。 这种索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层。 这会进一步消耗时间。 |
+| 站点发生故障，导致备份服务器和 StorSimple 丢失 | 备份和还原操作会中断。 | 首先还原 StorSimple，然后还原 NetBackup。 | 首先还原 StorSimple，然后还原 NetBackup。 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 |
 
 ## <a name="references"></a>参考
 

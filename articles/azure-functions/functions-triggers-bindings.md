@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: donnam
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: cc41debb2523df77be4db05817a4c7ac55604439
+ms.translationtype: HT
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: fc3fc337a305434745e1e5e716ae7bf2096c2b33
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 06/23/2017
 
 输入和输出“绑定”提供从代码内连接到数据的声明性方式。 与触发器类似，可在函数配置中指定连接字符串和其他属性。 绑定是可选项，一个函数可以有多个输入和输出绑定。 
 
-使用触发器和绑定，可以编写更通用的代码，不会对与代码交互的服务细节进行硬编码。 服务提供的数据只是函数代码的输入值。 若要将数据输出到其他服务（例如在 Azure 表存储中创建新行），可使用该方法的返回值。 或者，如果需要输出多个值，可使用帮助器对象。 触发器和绑定有 **name** 属性，该属性是代码中用于访问绑定的标识符。
+使用触发器和绑定，可以编写更通用的代码，不会对与代码交互的服务细节进行硬编码。 服务提供的数据只是函数代码的输入值。 要将数据输出到其他服务（例如在 Azure 表存储中创建新行），可使用该方法的返回值。 或者，如果需要输出多个值，可使用帮助器对象。 触发器和绑定有 **name** 属性，该属性是代码中用于访问绑定的标识符。
 
 可以在 Azure Functions 门户的“集成”选项卡中配置触发器和绑定。 实际上，UI 会修改函数目录中名为“function.json”的文件。 可以通过转到“高级编辑器”来编辑此文件。
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 06/23/2017
 
 ### <a name="example-queue-trigger-and-table-output-binding"></a>示例：队列触发器和表输出绑定
 
-假设你希望在 Azure 队列存储中显示一条新消息时就将一个新行写入 Azure 表存储。 使用 Azure 队列触发器和表输出绑定接口即可实现此方案。 
+假设希望在 Azure 队列存储中显示一条新消息时就将一个新行写入 Azure 表存储。 使用 Azure 队列触发器和表输出绑定接口即可实现此方案。 
 
 队列触发器需要“集成”选项卡中的以下信息：
 
@@ -367,7 +367,7 @@ Azure Functions 为在绑定中通过 `{rand-guid}` 绑定表达式生成 GUID �
 }
 ```
 
-若要在 C# 和 F# 中实现此目的，必须定义 POCO，它用于定义将在触发器负载中执行反序列化的字段。
+要在 C# 和 F# 中实现此目的，必须定义 POCO，它用于定义会在触发器负载中执行反序列化的字段。
 
 ```csharp
 using System.Net;
@@ -389,7 +389,7 @@ public static HttpResponseMessage Run(HttpRequestMessage req, BlobInfo info, str
 }
 ```
 
-在 JavaScript 中，将自动执行 JSON 反序列化，然后可以直接使用属性。
+在 JavaScript 中，会自动执行 JSON 反序列化，然后可以直接使用属性。
 
 ```javascript
 module.exports = function (context, info) {
@@ -421,7 +421,7 @@ module.exports = function (context, info) {
 - [表存储](functions-bindings-storage-table.md)
 - [事件中心](functions-bindings-event-hubs.md)
 - [服务总线](functions-bindings-service-bus.md)
-- [Cosmos DB](functions-bindings-documentdb.md)
+- [Azure Cosmos DB](functions-bindings-documentdb.md)
 - [SendGrid](functions-bindings-sendgrid.md)
 - [Twilio](functions-bindings-twilio.md)
 - [通知中心](functions-bindings-notification-hubs.md)

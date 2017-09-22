@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: d4a0dfbfab052e98e0dd641e8cab8fc143c2ff41
-ms.lasthandoff: 04/27/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 38cc3ae906f75e75c9e44ac7e4b7098935a56cf2
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -59,7 +60,7 @@ StorSimple 旨在为处理妥善定义的工作数据集（热数据）的应用
 **StorSimple 分层**
 ![StorSimple 分层示意图](./media/storsimple-configure-backup-target-using-veeam/image1.jpg)
 
-知道这种体系结构后，将会发现 StorSimple 非常适合用作备份目标。 使用 StorSimple 可以：
+知道这种体系结构后，会发现 StorSimple 非常适合用作备份目标。 使用 StorSimple 可以：
 
 -   通过本地工作数据集执行最常见的还原。
 -   使用云实现场外灾难恢复，存储不经常还原的陈旧数据。
@@ -116,7 +117,7 @@ StorSimple 提供以下优势：
 
 1.  备份服务器与目标备份代理通信，备份代理将数据传输到备份服务器。
 2.  备份服务器将数据写入 StorSimple 分层卷。
-3.  备份服务器更新目录数据库，然后完成备份作业。
+3.  备份服务器更新目录数据库，并完成备份作业。
 4.  快照脚本触发 StorSimple 云快照管理器（启动或删除）。
 5.  备份服务器根据保留策略删除过期的备份。
 
@@ -140,7 +141,7 @@ StorSimple 提供以下优势：
 
 1.  备份服务器与目标备份代理通信，备份代理将数据传输到备份服务器。
 2.  备份服务器将数据写入高性能存储。
-3.  备份服务器更新目录数据库，然后完成备份作业。
+3.  备份服务器更新目录数据库，并完成备份作业。
 4.  备份服务器根据保留策略将备份复制到 StorSimple。
 5.  快照脚本触发 StorSimple 云快照管理器（启动或删除）。
 6.  备份服务器根据保留策略删除过期的备份。
@@ -240,7 +241,7 @@ StorSimple 提供以下优势：
 -   将优化选项设置为“LAN 目标”。
 -   打开“创建活动的完整备份”（每隔 2 周）。
 -   在备份存储库中，设置“使用每个 VM 的备份文件”。
--   将“为每个作业使用多个上载流”设置为 **8**（最多允许 16 个）。 根据 StorSimple 设备上的 CPU 利用率调大或调小此数字。
+-   将“为每个作业使用多个上传流”设置为 **8**（最多允许 16 个）。 根据 StorSimple 设备上的 CPU 利用率调大或调小此数字。
 
 ## <a name="retention-policies"></a>保留策略
 
@@ -271,7 +272,7 @@ StorSimple 提供以下优势：
 
 ### <a name="to-set-up-veeam-storage"></a>设置 Veeam 存储
 
-1.  在 Veeam 备份和复制控制台上的“存储库工具”中，转到“备份基础结构”。 右键单击“备份存储库”，然后选择“添加备份存储库”。
+1.  在 Veeam 备份和复制控制台上的“存储库工具”中，转到“备份基础结构”。 右键单击“备份存储库”，并选择“添加备份存储库”。
 
     ![Veeam 管理控制台，备份存储库页](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
@@ -283,7 +284,7 @@ StorSimple 提供以下优势：
 
     ![Veeam 管理控制台，选择备份存储库的类型](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
-4.  若要指定“位置”，请浏览到所需的卷并将其选中。 选中“将最大并发任务数限制为:”复选框，并将值设置为 **4**。 这可以确保在处理每个虚拟机 (VM) 时，只会并行处理四个虚拟磁盘。 选择“高级”按钮。
+4.  要指定“位置”，请浏览到所需的卷并将其选中。 选中“将最大并发任务数限制为:”复选框，并将值设置为 **4**。 这可以确保在处理每个虚拟机 (VM) 时，只会并行处理四个虚拟磁盘。 选择“高级”按钮。
 
     ![Veeam 管理控制台，选择卷](./media/storsimple-configure-backup-target-using-veeam/veeamimage4.png)
 
@@ -296,7 +297,7 @@ StorSimple 提供以下优势：
 
     ![Veeam 管理控制台，备份存储库页](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
-7.  检查设置，然后选择“下一步”。
+7.  检查设置，并选择“下一步”。
 
     ![Veeam 管理控制台，备份存储库页](./media/storsimple-configure-backup-target-using-veeam/veeamimage7.png)
 
@@ -305,7 +306,7 @@ StorSimple 提供以下优势：
 ## <a name="set-up-storsimple-as-a-primary-backup-target"></a>将 StorSimple 设置为主备份目标
 
 > [!IMPORTANT]
-> 从云中分层的备份还原数据将以云的速度进行。
+> 从云中分层的备份还原数据以云的速度进行。
 
 下图显示了典型卷到备份作业的映射。 在本例中，所有每周备份映射到星期六完整备份磁盘，增量备份映射到星期一至星期五增量备份磁盘。 所有备份和还原操作从 StorSimple 分层卷发生。
 
@@ -328,7 +329,7 @@ StorSimple 提供以下优势：
 
 #### <a name="to-assign-storsimple-volumes-to-a-veeam-backup-job"></a>将 StorSimple 卷分配到 Veeam 备份作业
 
-1.  在 Veeam 备份和复制控制台中，选择“备份和复制”。 单击右键“备份”，然后根据环境选择“VMware”或“Hyper-V”。
+1.  在 Veeam 备份和复制控制台中，选择“备份和复制”。 单击右键“备份”，并根据环境选择“VMware”或“Hyper-V”。
 
     ![Veeam 管理控制台，新建备份作业](./media/storsimple-configure-backup-target-using-veeam/veeamimage8.png)
 
@@ -348,7 +349,7 @@ StorSimple 提供以下优势：
 
     ![Veeam 管理控制台，新建备份作业 - 高级设置页](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
 
-6. 在“存储”选项卡中，确保已清除“启用内联重复数据删除”复选框。 选中“排除交换文件块”复选框，然后选中“排除已删除的文件块”复选框。 将“压缩级别”设置为“无”。 为实现性能均衡并删除重复数据，请将“存储优化”设置为“LAN 目标”。 选择“确定”。
+6. 在“存储”选项卡中，确保已清除“启用内联重复数据删除”复选框。 选中“排除交换文件块”复选框，并选中“排除已删除的文件块”复选框。 将“压缩级别”设置为“无”。 为实现性能均衡并删除重复数据，请将“存储优化”设置为“LAN 目标”。 选择“确定”。
 
     ![Veeam 管理控制台，新建备份作业 - 高级设置页](./media/storsimple-configure-backup-target-using-veeam/veeamimage13.png)
 
@@ -365,7 +366,7 @@ StorSimple 提供以下优势：
 ## <a name="set-up-storsimple-as-a-secondary-backup-target"></a>将 StorSimple 设置为辅助备份目标
 
 > [!NOTE]
-> 从云中分层的备份还原数据将以云的速度进行。
+> 从云中分层的备份还原数据以云的速度进行。
 
 在此模型中，必须使用一个存储媒体（不是 StorSimple）充当临时缓存。 例如，可以使用独立磁盘冗余阵列 (RAID) 卷来满足空间、输入/输出 (I/O) 和带宽要求。 建议使用 RAID 5、50 和 10。
 
@@ -404,7 +405,7 @@ StorSimple 提供以下优势：
 
 #### <a name="to-assign-storsimple-volumes-to-a-veeam-copy-job"></a>将 StorSimple 卷分配到 Veeam 复制作业
 
-1.  在 Veeam 备份和复制控制台中，选择“备份和复制”。 单击右键“备份”，然后根据环境选择“VMware”或“Hyper-V”。
+1.  在 Veeam 备份和复制控制台中，选择“备份和复制”。 单击右键“备份”，并根据环境选择“VMware”或“Hyper-V”。
 
     ![Veeam 管理控制台，新建备份复制作业页](./media/storsimple-configure-backup-target-using-veeam/veeamimage16.png)
 
@@ -412,13 +413,13 @@ StorSimple 提供以下优势：
 
     ![Veeam 管理控制台，新建备份复制作业页](./media/storsimple-configure-backup-target-using-veeam/veeamimage17.png)
 
-3.  选择要处理的 VM。 从备份中选择，然后选择前面创建的每日备份。
+3.  选择要处理的 VM。 从备份中选择，并选择前面创建的每日备份。
 
     ![Veeam 管理控制台，新建备份复制作业页](./media/storsimple-configure-backup-target-using-veeam/veeamimage18.png)
 
 4.  根据需要，从备份复制作业中排除对象。
 
-5.  选择备份存储库，然后设置“要保留的还原点”的值。 请务必选中“保留以下还原点用于存档”复选框。 定义备份频率，然后选择“高级”。
+5.  选择备份存储库，并设置“要保留的还原点”的值。 请务必选中“保留以下还原点用于存档”复选框。 定义备份频率，并选择“高级”。
 
     ![Veeam 管理控制台，新建备份复制作业页](./media/storsimple-configure-backup-target-using-veeam/veeamimage19.png)
 
@@ -434,7 +435,7 @@ StorSimple 提供以下优势：
 
 7.  将数据传输指定为直接。
 
-8.  根据需要定义备份复制时段计划，然后完成向导中的操作。
+8.  根据需要定义备份复制时段计划，并完成向导中的操作。
 
 有关详细信息，请参阅[创建备份复制作业](https://helpcenter.veeam.com/backup/hyperv/backup_copy_create.html)。
 
@@ -467,47 +468,12 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>启动或删除云快照
 
 1. [安装 Azure PowerShell](/powershell/azure/overview)。
-2. [下载并导入发布设置和订阅信息](https://msdn.microsoft.com/library/dn385850.aspx)。
-3. 在 Azure 经典门户中获取资源名称和 [StorSimple Manager 服务的注册密钥](storsimple-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key)。
-4. 在运行脚本的服务器上，以管理员身份运行 PowerShell。 键入以下命令：
-
-    `Get-AzureStorSimpleDeviceBackupPolicy –DeviceName <device name>`
-
-    记下备份策略 ID。
-5. 在记事本中，使用以下代码创建新的 PowerShell 脚本。
-
-    复制并粘贴以下代码片段：
-    ```powershell
-    Import-AzurePublishSettingsFile "c:\\CloudSnapshot Snapshot\\myAzureSettings.publishsettings"
-    Disable-AzureDataCollection
-    $ApplianceName = <myStorSimpleApplianceName>
-    $RetentionInDays = 20
-    $RetentionInDays = -$RetentionInDays
-    $Today = Get-Date
-    $ExpirationDate = $Today.AddDays($RetentionInDays)
-    Select-AzureStorSimpleResource -ResourceName "myResource" –RegistrationKey
-    Start-AzureStorSimpleDeviceBackupJob –DeviceName $ApplianceName -BackupType CloudSnapshot -BackupPolicyId <BackupId> -Verbose
-    $CompletedSnapshots =@()
-    $CompletedSnapshots = Get-AzureStorSimpleDeviceBackup -DeviceName $ApplianceName
-    Write-Host "The Expiration date is " $ExpirationDate
-    Write-Host
-
-    ForEach ($SnapShot in $CompletedSnapshots)
-    {
-        $SnapshotStartTimeStamp = $Snapshot.CreatedOn
-        if ($SnapshotStartTimeStamp -lt $ExpirationDate)
-
-        {
-            $SnapShotInstanceID = $SnapShot.InstanceId
-            Write-Host "This snpashotdate was created on " $SnapshotStartTimeStamp.Date.ToShortDateString()
-            Write-Host "Instance ID " $SnapShotInstanceID
-            Write-Host "This snpashotdate is older and needs to be deleted"
-            Write-host "\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#"
-            Remove-AzureStorSimpleDeviceBackup -DeviceName $ApplianceName -BackupId $SnapShotInstanceID -Force -Verbose
-        }
-    }
-    ```
-6. 若要将脚本添加到备份作业，请编辑 Veeam 作业高级选项。
+2. 下载和安装 [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell 脚本。
+3. 在运行脚本的服务器上，以管理员身份运行 PowerShell。 确保运行脚本时使用 `-WhatIf $true`，以查看该脚本会导致哪些变化。 完成验证后，立即传递 `-WhatIf $false`。 运行下列命令：
+```powershell
+.\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
+```
+4. 要将脚本添加到备份作业，请编辑 Veeam 作业高级选项。
 
     ![Veeam 备份高级设置脚本选项卡](./media/storsimple-configure-backup-target-using-veeam/veeamimage22.png)
 
@@ -515,7 +481,7 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 
 ## <a name="storsimple-as-a-restore-source"></a>用作还原源的 StorSimple
 
-从 StorSimple 设备还原的过程类似于从任何块存储设备还原。 还原已在云中分层的数据将以云的速度进行。 对于本地数据，还原将以设备本地磁盘的速度进行。
+从 StorSimple 设备还原的过程类似于从任何块存储设备还原。 还原已在云中分层的数据以云的速度进行。 对于本地数据，还原以设备本地磁盘的速度进行。
 
 使用 Veeam 时，可在 Veeam 控制台中使用内置的资源管理器视图通过 StorSimple 执行文件级别的精细快速恢复。 使用 Veeam 资源管理器可从备份中恢复单个项，例如电子邮件、Active Directory 对象和 SharePoint 项。 无需中断本地 VM 即可完成恢复。 还可以针对 Azure SQL 数据库和 Oracle 数据库实现时间点恢复。 使用 Veeam 和 StorSimple 能够快速轻松地从 Azure 完成项级恢复过程。 有关如何执行还原的信息，请参阅 Veeam 文档：
 
@@ -535,9 +501,9 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 
 | 方案 | 影响 | 如何恢复 | 说明 |
 |---|---|---|---|
-| StorSimple 设备故障 | 备份和还原操作将会中断。 | 更换有故障的设备，然后执行 [StorSimple 故障转移和灾难恢复](storsimple-device-failover-disaster-recovery.md)。 | 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层，因此可能非常耗时。 |
-| Veeam 服务器故障 | 备份和还原操作将会中断。 | 重新构建备份服务器，然后根据 [Veeam 帮助中心（技术文档）](https://www.veeam.com/documentation-guides-datasheets.html)中的详述执行数据库还原。  | 必须在灾难恢复站点重建或还原 Veeam 服务器。 将数据库还原到最近的时间点。 如果还原的 Veeam 数据库未与最新的备份作业同步，则需要编制索引和目录。 这种索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层。 这会进一步消耗时间。 |
-| 站点发生故障，导致备份服务器和 StorSimple 丢失 | 备份和还原操作将会中断。 | 首先还原 StorSimple，然后还原 Veeam。 | 首先还原 StorSimple，然后还原 Veeam。 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 |
+| StorSimple 设备故障 | 备份和还原操作会中断。 | 更换有故障的设备，并执行 [StorSimple 故障转移和灾难恢复](storsimple-device-failover-disaster-recovery.md)。 | 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层，因此可能非常耗时。 |
+| Veeam 服务器故障 | 备份和还原操作会中断。 | 重新构建备份服务器，并根据 [Veeam 帮助中心（技术文档）](https://www.veeam.com/documentation-guides-datasheets.html)中的详述执行数据库还原。  | 必须在灾难恢复站点重建或还原 Veeam 服务器。 将数据库还原到最近的时间点。 如果还原的 Veeam 数据库未与最新的备份作业同步，则需要编制索引和目录。 这种索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层。 这会进一步消耗时间。 |
+| 站点发生故障，导致备份服务器和 StorSimple 丢失 | 备份和还原操作会中断。 | 首先还原 StorSimple，然后还原 Veeam。 | 首先还原 StorSimple，然后还原 Veeam。 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 |
 
 
 ## <a name="references"></a>参考

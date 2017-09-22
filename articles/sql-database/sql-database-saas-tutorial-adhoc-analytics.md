@@ -1,11 +1,11 @@
 ---
 title: "针对多个 Azure SQL 数据库运行即席分析查询 | Microsoft Docs"
-description: "在 Wingtip SaaS 多租户应用中对多个 SQL 数据库运行即席分析查询。"
+description: "在多租户应用示例中针对多个 SQL 数据库运行即席分析查询。"
 keywords: "sql 数据库教程"
 services: sql-database
 documentationcenter: 
 author: stevestein
-manager: jhubbard
+manager: craigg
 editor: 
 ms.assetid: 
 ms.service: sql-database
@@ -16,24 +16,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: billgib; sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: c287fe5d6b333c749b0580b5253e7e46ac27232b
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: a27a65627fecf35b59122110250a40c6fe8077b5
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 09/13/2017
 
 ---
-# <a name="run-ad-hoc-analytics-queries-across-all-wingtip-saas-tenants"></a>对所有 Wingtip SaaS 租户运行即席分析查询
+# <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>针对多个 Azure SQL 数据库运行即席分析查询
 
-在本教程中，可以在一组完整的租户数据库中运行分布式查询，以启用即席分析。 弹性查询用于启用分布式查询，这要求部署一个额外的分析数据库（到编录服务器）。 这些查询可以提取隐藏在 Wingtip SaaS 应用的日常操作数据中的信息。
+在本教程中，可以在一组完整的多租户数据库中运行分布式查询，以启用即席分析。 弹性查询用于启用分布式查询，这要求部署一个额外的分析数据库（到编录服务器）。 这些查询可以提取隐藏在 Wingtip SaaS 应用的日常操作数据中的信息。
 
 
 本教程介绍以下内容：
 
 > [!div class="checklist"]
 
-> * 每个数据库中用于跨租户进行有效查询的全局视图
+> * 每个数据库中每个数据库中用于跨租户进行有效查询的全局视图
 > * 如何部署即席分析数据库
 > * 如何对所有租户数据库运行分布式查询
 
@@ -48,11 +47,11 @@ ms.lasthandoff: 06/28/2017
 
 ## <a name="ad-hoc-analytics-pattern"></a>即席分析模式
 
-SaaS 应用程序提供的大好机会之一是使用集中存储在云中的大量租户数据。 使用此数据来深入了解应用程序的操作和使用情况、租户、租户的用户及其首选项和行为等。这些见解可指导应用和服务的功能开发、可用性改进和其他投资。
+SaaS 应用程序提供的大好机会之一是使用集中存储在云中的大量租户数据。 利用该数据了解应用程序的运行和使用情况。 这些见解可指导应用和服务的功能开发、可用性改进和其他投资。
 
 在单个多租户数据库中访问此数据很简单，但当数据大规模分布在可能数千个数据库中时便不那么容易了。 一种方法是使用[弹性查询](sql-database-elastic-query-overview.md)，这样可以对具有常见架构的一组分布式数据库进行查询。 弹性查询使用单个头数据库，其中定义的外部表会镜像分布式（租户）数据库中的表或视图。 提交到此头数据库的查询将进行编译以生成分布式查询计划，其中的部分查询将根据需要向下推送到租户数据库。 弹性查询在目录数据库中使用分片映射提供租户数据库的位置。 设置和查询直接使用标准 [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference) 进行，并支持从 Power BI 和 Excel 等工具进行即席查询。
 
-通过跨租户数据库的分布式查询，弹性查询可以即时了解实时生产数据。 但是，由于弹性查询从潜在的许多数据库中拉取数据，因此查询延迟有时可能高于提交到单个多租户数据库的等效查询的延迟。 设计查询以最小化返回的数据时应小心谨慎。 弹性查询通常最适合查询少量实时数据，而不是构建频繁使用的或复杂的分析查询或报告。 如果查询效果不佳，请查看[执行计划](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan)，了解将查询的哪部分推送到远程数据库以及返回多少数据。 在某些情况下，可以将租户数据提取到专用数据库或针对分析查询进行优化的数据仓库中，从而使需要进行复杂分析处理的查询获取到更好的服务。 这种模式在[租户分析教程](sql-database-saas-tutorial-tenant-analytics.md)中进行了介绍。 
+通过跨租户数据库的分布式查询，弹性查询可以即时了解实时生产数据。 但是，由于弹性查询从潜在的许多数据库中拉取数据，因此查询延迟有时可能高于提交到单个多租户数据库的等效查询的延迟。 请确保设计查询以最小化返回的数据。 弹性查询通常最适合查询少量实时数据，而不是构建频繁使用的或复杂的分析查询或报告。 如果查询效果不佳，请查看[执行计划](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan)，了解将查询的哪部分推送到远程数据库以及返回多少数据。 在某些情况下，可以将租户数据提取到专用数据库或针对分析查询进行优化的数据仓库中，从而使需要进行复杂分析处理的查询获取到更好的服务。 这种模式在[租户分析教程](sql-database-saas-tutorial-tenant-analytics.md)中进行了介绍。 
 
 ## <a name="get-the-wingtip-application-scripts"></a>获取 Wingtip 应用程序脚本
 
@@ -64,13 +63,13 @@ Wingtip SaaS 脚本和应用程序源代码可在 [WingtipSaaS](https://github.c
 
 1. 在 PowerShell ISE 中，打开 ...\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\*Demo-AdhocAnalytics.ps1* 脚本并设置以下值：
    * $DemoScenario = 1，购买在所有地点举行的活动的票证。
-2. 按 F5 运行脚本并生成票证销售。 脚本运行时，请继续执行本教程中的步骤。 在“运行即席分布式查询”部分查询票证数据，如果你在执行该操作时，票证生成器仍在运行，请等待它完成。
+2. 按 F5 运行脚本并生成票证销售。 脚本运行时，请继续执行本教程中的步骤。 票据数据在“运行即席分布式查询”部分中查询，所以请等待票据生成器完成。
 
 ## <a name="explore-the-global-views"></a>浏览全局视图
 
 Wingtip SaaS 应用程序使用“一数据库一租户”模型生成，因此租户数据库架构是从单租户角度定义的。 特定于租户的信息存在于名为“Venue”的单个表中，该表始终只有一行，并且被实现为堆，没有主键。 架构中的其他表不需与 Venue 表相关联，因为在正常使用时，数据属于哪个租户是没有任何疑问的。
 
-然而，当查询所有数据库时，请注意，弹性查询可以将数据视为由租户划分的单个逻辑数据库分片的一部分。 为实现这一点，将一组“全局”视图添加到租户数据库中，该租户数据库将租户 ID 投射到全局查询的每个表中。 例如，VenueEvents 视图将计算出的 VenueId 添加到从 Events 表投射的列中。 通过在 VenueEvents（而不是基础 Events 表）中的头数据库中定义外部表，弹性查询能够根据 VenueId 推送联接，这样它们就可以在每个远程数据库（而不是头数据库）上并行执行。 这大大减少了要返回的数据量，从而使许多查询的性能大幅提高。 这些全局视图已经在所有租户数据库（和 basetenantdb）中预先创建。
+然而，当查询所有数据库时，请注意，弹性查询可以将数据视为由租户划分的单个逻辑数据库分片的一部分。 若要模拟此模式，将一组“全局”视图添加到租户数据库中，该租户数据库将租户 ID 投射到全局查询的每个表中。 例如，VenueEvents 视图将计算出的 VenueId 添加到从 Events 表投射的列中。 通过在 VenueEvents（而不是基础 Events 表）中的头数据库中定义外部表，弹性查询能够根据 VenueId 推送联接，这样它们就可以在每个远程数据库（而不是头数据库）上并行执行。 这大大减少了要返回的数据量，从而使许多查询的性能大幅提高。 这些全局视图已经在所有租户数据库（和 basetenantdb）中预先创建。
 
 1. 打开 SSMS 并[连接到 tenants1-&lt;USER&gt; 服务器](sql-database-wtp-overview.md#explore-database-schema-and-execute-sql-queries-using-ssms)。
 2. 展开“数据库”，右键单击“contosoconcerthall”，然后选择“新建查询”。

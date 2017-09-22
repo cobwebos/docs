@@ -18,10 +18,10 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 175a2ad70b1f554d05846eb62fb685d4f259af7e
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 14d969ecaf1f24a0bb34da4abe78d83f08627796
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="apache-spark-streaming-process-data-from-azure-event-hubs-with-spark-cluster-on-hdinsight"></a>Apache Spark 流式处理：在 HDInsight 上使用 Spark 群集处理来自 Azure 事件中心的数据
@@ -367,17 +367,7 @@ Spark 流式处理应用程序将继续运行，直到被终止。 若要终止�
 
 这些参数类似于在前面步骤中为文本输出指定的参数。 同样，不需要创建用作参数的输出文件夹（EventCheckpoint、EventCount/EventCount10）或输出 Hive 表 (EventHiveTable10)。 流应用程序将创建。 请注意，**jars** 和 **files** 选项包含已复制到存储帐户的 .jar 文件和 hive-site.xml 的路径。
 
-要验证是否已成功创建 Hive 表，可通过 SSH 连接到群集，并运行 Hive 查询。 有关说明，请参阅[通过 SSH 在 HDInsight 中将 Hive 与 Hadoop 配合使用](hdinsight-hadoop-use-hive-ssh.md)。 当使用 SSH 建立连接后，可以运行以下命令，以验证是否已创建 Hive 表 **EventHiveTable10**。
-
-    show tables;
-
-应该会看到与下面类似的输出：
-
-    OK
-    eventhivetable10
-    hivesampletable
-
-还可以运行 SELECT 查询来查看表的内容。
+若要验证是否已成功创建 hive 表，请使用 [Ambari Hive 视图](hdinsight-hadoop-use-hive-ambari-view.md)。 可以在该处运行 SELECT 查询来查看表的内容。
 
     SELECT * FROM eventhivetable10 LIMIT 10;
 

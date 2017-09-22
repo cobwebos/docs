@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/03/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
-ms.openlocfilehash: 096f54b23a8223da89785b2e7f00c9b8a10c2906
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: e8cad53d95186f4f7679d1f19f339ad4149059a8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="develop-azure-functions-with-media-services"></a>开发使用媒体服务的 Azure Functions
@@ -32,10 +32,6 @@ ms.lasthandoff: 09/06/2017
 - 必须先具有有效的 Azure 帐户，然后才能创建第一个函数。 如果还没有 Azure 帐户， [可以使用免费帐户](https://azure.microsoft.com/free/)。
 - 若要创建针对 Azure 媒体服务 (AMS) 帐户执行操作或者侦听媒体服务发送的事件的 Azure Functions，应该根据[此文](media-services-portal-create-account.md)中所述创建一个 AMS 帐户。
     
-## <a name="considerations"></a>注意事项
-
--  消耗量计划下运行的 Azure Functions 具有 5 分钟超时限制。
-
 ## <a name="create-a-function-app"></a>创建 Function App
 
 1. 转到 [Azure 门户](http://portal.azure.com)，然后使用 Azure 帐户登录。
@@ -47,10 +43,6 @@ ms.lasthandoff: 09/06/2017
 ## <a name="configure-function-app-settings"></a>配置 Function App 设置
 
 开发媒体服务函数时，可随时添加要在整个函数中使用的环境变量。 若要配置应用设置，请单击“配置应用设置”链接。 有关详细信息，请参阅[如何配置 Azure Function App 设置](../azure-functions/functions-how-to-use-azure-function-app-settings.md)。 
-
-例如：
-
-![设置](./media/media-services-azure-functions/media-services-azure-functions001.png)
 
 本文中定义的函数假定应用设置中具备以下环境变量：
 
@@ -344,6 +336,9 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 2. 单击“Blob”。
 3. 单击“+ 容器”。 将容器命名为 input。
 4. 按“上传”并浏览到要上传的 .mp4 文件。
+
+>[!NOTE]
+> 在消耗计划中使用 Blob 触发器时，函数应用处于空闲状态后，处理新 Blob 的过程中可能会出现长达 10 分钟的延迟。 函数应用运行后，就会立即处理 Blob。 有关详细信息，请参阅 [Blob 存储触发器和绑定](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob#blob-storage-triggers-and-bindings)。
 
 ## <a name="next-steps"></a>后续步骤
 

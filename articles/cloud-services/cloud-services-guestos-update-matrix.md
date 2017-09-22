@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/24/2017
+ms.date: 9/14/2017
 ms.author: raiye
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: be0092e62033da249015b211db148da57bb82765
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: dbbf529dc7a7c30daa78d92f210385d20e139d41
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure 来宾 OS 版本和 SDK 兼容性对照表
@@ -38,6 +38,8 @@ ms.lasthandoff: 08/28/2017
 不太确定什么是来宾 OS 或者来宾 OS 的工作原理？ 请阅读[此部分](#how-it-works)。
 
 ## <a name="news-updates"></a>新闻更新
+###### <a name="september-14-2017"></a>2017 年 9 月 14 日
+9 月版来宾 OS 在 9 月 14 日开始推出，预计于 10 月 9 日正式发行。
 
 ###### <a name="august-24-2017"></a>**2017 年 8 月 24 日**
 8 月版来宾 OS 已发布。
@@ -65,12 +67,6 @@ ms.lasthandoff: 08/28/2017
 
 ###### <a name="april-18-2017"></a>**2017 年 4 月 18 日**
 4 月版来宾 OS 将从 4 月 18 日开始推出，预计于 5 月 9 日正式发行。
-
-###### <a name="april-10-2017"></a>**2017 年 4 月 10 日**
-3 月版来宾 OS 已于 2017 年 3 月 14 日开始推出，已于 2017 年 4 月 10 日发行。
-
-###### <a name="january-10-2017"></a>**2017 年 1 月 10 日**
-1 月来宾 OS 包含仅影响 OS 系列 2 (Windows 2008 Server R2) 的修补程序。 因此，本月仅发布了 OS 系列 2 映像 (WA-GUEST-OS-2.59_201701-01)。 对于所有其他 OS 系列，12 月版 OS (201612-01) 仍为最新版。
 
 
 ## <a name="releases"></a>发行版本

@@ -16,10 +16,10 @@ ms.tgt_pltfrm: na
 ms.date: 07/21/2017
 ms.author: liamca
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: bfd044f333087d8e3e9526820196be6eaec2f18f
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 1faed621039ecd04064cb074e6b9011418e6ec47
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 
@@ -124,7 +124,7 @@ ms.lasthandoff: 07/22/2017
 ## <a name="wildcard-search-example"></a>通配符搜索示例
 可将通常可识别的语法用于多个 (\*) 或单个 (?) 字符通配符搜索。 请注意，Lucene 查询分析器支持将这些符号与单个术语一起使用，但不能与短语一起使用。
 
-**示例 9** -- 右键单击查询。 搜索包含前缀“prog”的作业，这将包含带有术语“编程”和“程序员”的 business title。
+**示例 9** -- 右键单击查询。 搜索包含前缀“prog”的作业，这会包含带有术语“编程”和“程序员”的 business title。
 
 * [&queryType=full&$select=business_title&search=business_title:prog*](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26queryType=full%26$select=business_title%26search=business_title:prog*)
 

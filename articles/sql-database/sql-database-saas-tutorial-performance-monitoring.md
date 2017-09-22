@@ -1,6 +1,6 @@
 ---
 title: "在多租户 SaaS 应用中监视多个 Azure SQL 数据库的性能 | Microsoft Docs"
-description: "监视和管理 Azure SQL 数据库 Wingtip SaaS 应用中数据库和池的性能"
+description: "在多租户 SaaS 应用中监视和管理 Azure SQL 数据库和池的性能"
 keywords: "sql 数据库教程"
 services: sql-database
 documentationcenter: 
@@ -17,19 +17,19 @@ ms.topic: article
 ms.date: 07/26/2017
 ms.author: sstein
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 42f727aa40e744916b1a8adf634c10d55880bef0
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 115aa01ee6e3bd539086d80df1dcd94b3b7e2723
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/13/2017
 
 ---
-# <a name="monitor-performance-of-the-wingtip-saas-application"></a>监视 Wingtip SaaS 应用程序的性能
+# <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理 Azure SQL 数据库和池的性能
 
 本教程将探讨 SaaS 应用程序中使用的几个关键性能管理方案。 使用负载生成器来模拟所有租户数据库中的活动，演示 SQL 数据库和弹性池内置的监视和警报功能。
 
 Wingtip SaaS 应用使用单租户数据模型，在该模型中，每个地点（租户）都有其自己的数据库。 与许多 SaaS 应用程序一样，预期的租户工作负荷模式为不可预测的偶发型。 换言之，票证销售可能会发生在任意时刻。 为了充分利用此典型的数据库使用模式，可将租户数据库部署到弹性数据库池中。 弹性池可以在多个数据库之间共享资源，从而优化解决方案的成本。 使用此类模式时，必须监视数据库和池的资源使用情况，确保实现合理的跨池负载均衡。 此外还需确保各个数据库有足够的资源，且池没有达到其 [eDTU](sql-database-what-is-a-dtu.md) 限制。 本教程探讨如何通过多种方式来监视和管理数据库和池，以及如何采取纠正措施来响应工作负荷的变化。
 
-本教程将介绍如何执行下列操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 
@@ -232,7 +232,7 @@ Wingtip 是一个 SaaS 应用，而 SaaS 应用上的实际负载通常是偶发
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程将介绍如何执行下列操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 通过运行提供的负载生成器，模拟租户数据库上的使用情况

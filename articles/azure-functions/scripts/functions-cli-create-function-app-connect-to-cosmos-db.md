@@ -16,11 +16,11 @@ ms.workload:
 ms.date: 04/20/2017
 ms.author: rachelap
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: ba7e934f71824493f29b001cea6dd1c567ef3414
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: c2c3530df62a1f291be51739a7918f7b8ab08487
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>创建用于连接到 Azure Cosmos DB 的 Azure Function
@@ -37,7 +37,7 @@ ms.lasthandoff: 06/20/2017
 
 此示例创建 Azure Function app，并将 Cosmos DB 终结点和访问密钥添加到应用设置。
 
-[!code-azurecli-interactive[主要](../../../cli_scripts/azure-functions/create-function-app-connect-to-cosmos-db/create-function-app-connect-to-cosmos-db.sh "创建用于连接到 Azure Cosmos DB 的 Azure Function")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-connect-to-cosmos-db/create-function-app-connect-to-cosmos-db.sh "创建用于连接到 Azure Cosmos DB 的 Azure Function")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 
@@ -52,11 +52,11 @@ ms.lasthandoff: 06/20/2017
 | 命令 | 说明 |
 |---|---|
 | [az login](https://docs.microsoft.com/cli/azure/#login) | 登录到 Azure。 |
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | 使用相关位置创建资源组 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 使用相关位置创建资源组 |
 | [az storage account create](https://docs.microsoft.com/cli/azure/storage/account) | 创建存储帐户 |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#create) | 创建一个新的 Function App |
-| [az documentdb create](https://docs.microsoft.com/cli/azure/documentdb#create) | 创建 documentdb 数据库 |
-| [az group delete](https://docs.microsoft.com/cli/azure/group#delete) | 清理 |
+| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az_functionapp_create) | 创建一个新的 Function App |
+| [az documentdb create](https://docs.microsoft.com/cli/azure/documentdb#az_documentdb_create) | 创建 documentdb 数据库 |
+| [az group delete](https://docs.microsoft.com/cli/azure/group#az_group_delete) | 清理 |
 
 ## <a name="next-steps"></a>后续步骤
 

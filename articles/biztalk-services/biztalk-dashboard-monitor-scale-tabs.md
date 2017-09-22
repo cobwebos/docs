@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: ec1c54c8520170cd19095bf8d752c79c2fd812d8
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 62bef0ee0141f6a7a92146ef230f0766a85aee5e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 03/15/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="review-the-dashboard-monitor-scale-configure-and-hybrid-connection-tabs"></a>查看“仪表板”、“监视”、“缩放”、“配置”和“混合连接”选项卡
@@ -28,24 +27,24 @@ ms.lasthandoff: 03/15/2017
 
 创建 BizTalk 服务和部署应用程序后，可以更改某些 BizTalk 服务设置和监视应用程序性能。 
 
-打开 Azure 经典门户时，系统会自动为你打开“所有项目”选项卡。 若要查看 BizTalk 服务，请在“所有项目”选项卡上选择你的 BizTalk 服务，或者选择“BIZTALK 服务”选项卡，然后选择你的 BizTalk 服务名称。
+打开 Azure 经典门户时，系统会自动打开“所有项目”选项卡。要查看 BizTalk 服务，请在“所有项目”选项卡上选择你的 BizTalk 服务，或者选择“BIZTALK 服务”选项卡，并选择你的 BizTalk 服务名称。
 
 此时会打开一个新窗口，其中包含以下选项卡： 本主题介绍这些选项卡。
 
 ## <a name="quickstart-quickstartquickstart"></a>快速入门 (![快速入门][Quickstart])
-你不一定能够使用列出的所有选项，这取决于所用的 BizTalk 服务版本。 
+不一定能够使用列出的所有选项，这取决于所用的 BizTalk 服务版本。 
 
 <table border="1">
     <tr>
         <td><strong>获取工具</strong></td>
-        <td>下载 BizTalk 服务 SDK，以便在本地开发计算机上安装 Visual Studio 项目模板。 这些模板可创建 <strong>BizTalk 服务</strong>（桥接）和 <strong>BizTalk 服务项目</strong>（转换）Visual Studio 项目，而这些项目将部署到你的 BizTalk 服务中。
+        <td>下载 BizTalk 服务 SDK，以便在本地开发计算机上安装 Visual Studio 项目模板。 这些模板可创建 <strong>BizTalk 服务</strong>（桥接）和 <strong>BizTalk 服务项目</strong>（转换）Visual Studio 项目，而这些项目将部署到 BizTalk 服务中。
         <br/><br/>
         <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302335">如何开始使用 Azure BizTalk 服务 SDK</a> 和<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=241589">安装 Azure BizTalk 服务 SDK</a> 列出了入门步骤。
         </td>
     </tr>
     <tr>
         <td><strong>创建合作伙伴协议</strong></td>
-        <td>打开在 Azure 上托管的 Azure BizTalk 服务门户，你可在其中添加合作伙伴以及创建 X12、AS2 和 EDIFACT EDI 协议。
+        <td>打开在 Azure 上托管的 Azure BizTalk 服务门户，可在其中添加合作伙伴以及创建 X12、AS2 和 EDIFACT EDI 协议。
         <br/><br/>
         <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">在 BizTalk 服务门户上配置 EDI 消息传递的组件</a>列出了入门步骤。
         </td>
@@ -58,7 +57,7 @@ ms.lasthandoff: 03/15/2017
 </table>
 
 
-在底部的任务栏中，你可以：
+在底部的任务栏中，可以：
 
 <table border="1">
 
@@ -73,21 +72,21 @@ ms.lasthandoff: 03/15/2017
 
 <tr>
 <td>访问控制命名空间的<strong>连接信息</strong></td>
-<td>选择“连接信息”时，将显示“访问控制命名空间”、“默认颁发者”和“默认密钥”。 你可以复制这些值。
+<td>选择“连接信息”时，会显示“访问控制命名空间”、“默认颁发者”和“默认密钥”。 可以复制这些值。
 <br/><br/>
 还可打开访问控制门户。 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285670">创建访问控制命名空间</a>提供与访问控制门户有关的详细信息。</td>
 </tr>
 
 <tr>
 <td><strong>同步存储帐户中的密钥</strong></td>
-<td>当你创建存储帐户时，将自动创建主密钥和辅助密钥。 这些加密密钥可控制对存储帐户的访问。 BizTalk 服务自动使用主密钥。 “同步密钥”<strong></strong>使用户可以在主密钥与辅助密钥之间切换，而不会中断 BizTalk 服务。
+<td>创建存储帐户时，会自动创建主密钥和辅助密钥。 这些加密密钥可控制对存储帐户的访问。 BizTalk 服务自动使用主密钥。 “同步密钥”<strong></strong>使用户可以在主密钥与辅助密钥之间切换，而不会中断 BizTalk 服务。
 <br/><br/>
-例如，你希望 BizTalk 服务为存储帐户使用新的主密钥。 为此，请按以下步骤操作：
+例如，希望 BizTalk 服务为存储帐户使用新的主密钥。 为此，请按以下步骤操作：
 <br/><br/>
 <ol>
-<li>依次选择你的 BizTalk 服务和“同步密钥”<strong></strong>。 选择“辅助密钥”。 当你执行此操作时，BizTalk 服务开始使用辅助密钥。</li>
-<li>在 Azure 经典门户中，选择“存储帐户”和“重新生成主密钥”。 请记住，你的 BizTalk 服务正在使用辅助密钥。</li>
-<li>依次选择你的 BizTalk 服务和“同步密钥”<strong></strong>。 现在，选择“主密钥”。 这是你重新生成的新主密钥。</li>
+<li>依次选择 BizTalk 服务和“同步密钥”<strong></strong>。 选择“辅助密钥”。 执行此操作时，BizTalk 服务开始使用辅助密钥。</li>
+<li>在 Azure 经典门户中，选择“存储帐户”和“重新生成主密钥”。 请记住，BizTalk 服务正在使用辅助密钥。</li>
+<li>依次选择 BizTalk 服务和“同步密钥”<strong></strong>。 现在，选择“主密钥”。 这是重新生成的新主密钥。</li>
 <li>在 Azure 经典门户中，选择“存储帐户”和“重新生成辅助密钥”。</li>
 </ol>
 <br/>
@@ -96,21 +95,21 @@ ms.lasthandoff: 03/15/2017
 
 <tr>
 <td><strong>删除</strong>应用程序</td>
-<td>当你选择“删除”时，将删除你的 BizTalk 服务和部署到此服务的所有项目。</td>
+<td>选择“删除”时，将删除 BizTalk 服务和部署到此服务的所有项目。</td>
 </tr>
 </table>
 
 
 ## <a name="dashboard"></a>仪表板
-你不一定能够使用列出的所有选项，这取决于所用的 BizTalk 服务版本。 
+不一定能够使用列出的所有选项，这取决于所用的 BizTalk 服务版本。 
 
-当你选择 BizTalk 服务名称时，将显示“仪表板”选项卡。 在仪表板中，可以：
+选择 BizTalk 服务名称时，会显示“仪表板”选项卡。 在仪表板中，可以：
 
 ##### <a name="usage-overview-shows-the-number-of-used-hybrid-connections"></a>使用情况概述：显示使用的混合连接数
 另外还显示数据用量（以 GB 为单位）。 
 
 ##### <a name="metric-graph-shows-a-fixed-list-of-performance-metrics"></a>度量值图表：显示性能度量值的固定列表
-这些度量值提供有关 BizTalk 服务的运行状况的实时值。 你还可以为图表中显示的度量值选择“相对”或“绝对”值，以及时间范围“间隔”。 
+这些度量值提供有关 BizTalk 服务的运行状况的实时值。 还可以为图表中显示的度量值选择“相对”或“绝对”值，以及时间范围“间隔”。 
 
 有关这些性能度量值的说明，请转到本主题中的[可用度量值](#Metrics)。
 
@@ -123,7 +122,7 @@ ms.lasthandoff: 03/15/2017
 </tr>
 <tr>
 <td><strong>更新 SSL 证书</strong></td>
-<td>可以更新 BizTalk 服务以使用不同的 SSL 证书。 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302280">创建 BizTalk 服务时</a>，系统将自动创建一个自签名 SSL 证书。</td>
+<td>可以更新 BizTalk 服务以使用不同的 SSL 证书。 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302280">创建 BizTalk 服务时</a>，系统会自动创建一个自签名 SSL 证书。</td>
 </tr>
 <tr>
 <td><strong>下载证书</strong></td>
@@ -135,11 +134,11 @@ ms.lasthandoff: 03/15/2017
 </tr>
 <tr>
 <td><strong>服务 URL</strong></td>
-<td>BizTalk 服务的 URL。 这与你在创建 BizTalk 服务时输入的“域 URL”<strong></strong>相同。</td>
+<td>BizTalk 服务的 URL。 这与在创建 BizTalk 服务时输入的“域 URL”<strong></strong>相同。</td>
 </tr>
 <tr>
 <td><strong>公共虚拟 IP (VIP) 地址</strong></td>
-<td>分配给 BizTalk 服务的 IP 地址。 它用于所有输入终结点，并且是出站流量的源地址。 只要创建了 BizTalk 服务，此 IP 地址就属于你的 BizTalk 服务。 如果你删除 BizTalk 服务，则会将该 IP 地址分配给其他 BizTalk 服务。</td>
+<td>分配给 BizTalk 服务的 IP 地址。 它用于所有输入终结点，并且是出站流量的源地址。 只要创建了 BizTalk 服务，此 IP 地址就属于 BizTalk 服务。 如果删除 BizTalk 服务，则会将该 IP 地址分配给其他 BizTalk 服务。</td>
 </tr>
 <tr>
 <td><strong>ACS 命名空间</strong></td>
@@ -147,7 +146,7 @@ ms.lasthandoff: 03/15/2017
 </tr>
 <tr>
 <td><strong>版本</strong></td>
-<td>列出你在创建 BizTalk 服务时输入的版本。</td>
+<td>列出在创建 BizTalk 服务时输入的版本。</td>
 </tr>
 <tr>
 <td><strong>位置</strong></td>
@@ -159,7 +158,7 @@ ms.lasthandoff: 03/15/2017
 </tr>
 <tr>
 <td><strong>跟踪数据库</strong></td>
-<td>存储你的 BizTalk 服务所使用的跟踪表的 Azure SQL 数据库名称。 
+<td>存储 BizTalk 服务所使用的跟踪表的 Azure SQL 数据库名称。 
 <br/><br/>
 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302280">要求说明</a>提供有关跟踪数据库的详细信息。</td>
 </tr>
@@ -175,7 +174,7 @@ ms.lasthandoff: 03/15/2017
 </tr>
 <tr>
 <td><strong>订阅 ID</strong></td>
-<td>当创建订阅时，将自动生成一个订阅 ID。 当使用 REST API 时，你可能需要输入“订阅 ID”。</td>
+<td>当创建订阅时，会自动生成一个订阅 ID。 当使用 REST API 时，可能需要输入“订阅 ID”。</td>
 </tr>
 </table>
 
@@ -202,14 +201,14 @@ ms.lasthandoff: 03/15/2017
 </tr>
 <tr>
 <td><strong>同步存储帐户中的密钥</strong></td>
-<td>当你创建存储帐户时，将自动创建主密钥和辅助密钥。 这些加密密钥可控制对存储帐户的访问。 BizTalk 服务自动使用主密钥。 “同步密钥”<strong></strong>使用户可以在主密钥与辅助密钥之间切换，而不会中断 BizTalk 服务。
+<td>创建存储帐户时，会自动创建主密钥和辅助密钥。 这些加密密钥可控制对存储帐户的访问。 BizTalk 服务自动使用主密钥。 “同步密钥”<strong></strong>使用户可以在主密钥与辅助密钥之间切换，而不会中断 BizTalk 服务。
 <br/><br/>
-例如，你希望 BizTalk 服务为存储帐户使用新的主密钥。 为此，请按以下步骤操作：
+例如，希望 BizTalk 服务为存储帐户使用新的主密钥。 为此，请按以下步骤操作：
 <br/><br/>
 <ol>
-<li>依次选择你的 BizTalk 服务和“同步密钥”<strong></strong>。 选择“辅助密钥”。 当你执行此操作时，BizTalk 服务开始使用辅助密钥。</li>
-<li>在 Azure 经典门户中，选择“存储帐户”和“重新生成主密钥”。 请记住，你的 BizTalk 服务正在使用辅助密钥。</li>
-<li>依次选择你的 BizTalk 服务和“同步密钥”<strong></strong>。 现在，选择“主密钥”。 这是你重新生成的新主密钥。</li>
+<li>依次选择 BizTalk 服务和“同步密钥”<strong></strong>。 选择“辅助密钥”。 执行此操作时，BizTalk 服务开始使用辅助密钥。</li>
+<li>在 Azure 经典门户中，选择“存储帐户”和“重新生成主密钥”。 请记住，BizTalk 服务正在使用辅助密钥。</li>
+<li>依次选择 BizTalk 服务和“同步密钥”<strong></strong>。 现在，选择“主密钥”。 这是重新生成的新主密钥。</li>
 <li>在 Azure 经典门户中，选择“存储帐户”和“重新生成辅助密钥”。</li>
 </ol>
 <br/>
@@ -218,7 +217,7 @@ ms.lasthandoff: 03/15/2017
 
 <tr>
 <td><strong>删除</strong>应用程序</td>
-<td>删除你的 BizTalk 服务和部署到此服务的所有项目。</td>
+<td>删除 BizTalk 服务和部署到此服务的所有项目。</td>
 </tr>
 </table>
 
@@ -226,12 +225,12 @@ ms.lasthandoff: 03/15/2017
 ## <a name="monitor"></a>监视
 本部分的内容不适用于免费版。
 
-选择 BizTalk 服务名称时，将会出现“监视”选项卡，其中显示了以下信息：
+选择 BizTalk 服务名称时，会出现“监视”选项卡，其中显示了以下信息：
 
 ##### <a name="metric-graph-displays-the-selected-performance-metrics"></a>度量值图表：显示选定的性能度量值
-这些度量值提供有关 BizTalk 服务的运行状况的实时值。 你可以选择要显示哪些性能度量值。 最多可同时显示六个性能度量值。 
+这些度量值提供有关 BizTalk 服务的运行状况的实时值。 可以选择要显示哪些性能度量值。 最多可同时显示六个性能度量值。 
 
-你还可以为显示的度量值选择“相对”或“绝对”值，以及时间范围“间隔”。 
+还可以为显示的度量值选择“相对”或“绝对”值，以及时间范围“间隔”。 
 
 ##### <a name="to-remove-or-display-metrics-in-the-graph"></a>在图表中删除或显示度量值：
 1. 选择“监视”选项卡。
@@ -246,7 +245,7 @@ ms.lasthandoff: 03/15/2017
    
     选择灰显的圆圈可启用“CPU 使用率”度量值，以便在图表中显示其输出：  
    ![CPU 使用率度量值已启用][EnabledMetric]
-6. 若要从显示图表和列表中删除度量值，请选择任务栏中的“删除度量值”。 若要将此度量值重新添回到列表，请在任务栏中选择“添加度量值”，检查此度量值，并选择复选标记以返回到“监视”选项卡。 选择灰显的圆圈可启用该度量值。
+6. 若要从显示图表和列表中删除度量值，请选择任务栏中的“删除度量值”。 要将此度量值重新添回到列表，请在任务栏中选择“添加度量值”，检查此度量值，并选择复选标记以返回到“监视”选项卡。选择灰显的圆圈可启用该度量值。
 
 ## <a name="Metrics"></a>可用度量值
 提供以下性能计数器/度量值：
@@ -315,11 +314,11 @@ ms.lasthandoff: 03/15/2017
 
 
 ## <a name="scale"></a>缩放
-在“缩放”选项卡上，你可以添加或减少 BizTalk 服务使用的单位数量。 默认情况下配置了一个单位。 可以添加额外的单位以扩展 BizTalk 服务。 如果你扩大规模，则你是要增加吞吐量。 资源量也增加，包括部署的桥数量、协议、LOB 连接和处理能力。 例如，可以将规模从 1 个单位扩展到 2 个单位。 在此情况下，你可以部署双倍的桥数、双倍的协议、双倍的 LOB 连接和双倍的处理能力。
+在“缩放”选项卡上，可以添加或减少 BizTalk 服务使用的单位数量。 默认情况下配置了一个单位。 可以添加额外的单位以扩展 BizTalk 服务。 如果扩大规模，则你是要增加吞吐量。 资源量也增加，包括部署的桥数量、协议、LOB 连接和处理能力。 例如，可以将规模从 1 个单位扩展到 2 个单位。 在此情况下，可以部署双倍的桥数、双倍的协议、双倍的 LOB 连接和双倍的处理能力。
 
 某些 BizTalk 版本未提供“缩放”选项。 在此情况下，允许一个“单位”。 若要确定所用版本可以扩展多少个单位，请参阅 [BizTalk 服务：版本图表](biztalk-editions-feature-chart.md)。
 
-增大单位数可能影响定价。 如果增加单位数，选择“保存”将显示一条消息，告诉你结算是否受影响。 然后，你可以进行选择以继续操作。 当你增大单位数后，BizTalk 服务的状态将从“有效”变为“正在更新”。 在“正在更新”状态下，BizTalk 服务继续运行。
+增大单位数可能影响定价。 如果增加单位数，选择“保存”将显示一条消息，告诉你结算是否受影响。 然后，可以进行选择以继续操作。 增大单位数后，BizTalk 服务的状态将从“有效”变为“正在更新”。 在“正在更新”状态下，BizTalk 服务继续运行。
 
 [BizTalk 服务：版本图表](biztalk-editions-feature-chart.md)定义了“单位”。
 
@@ -333,12 +332,10 @@ ms.lasthandoff: 03/15/2017
 ## <a name="HybridConnections"></a>混合连接
 混合连接可将 Web 应用或 Azure 应用服务中的移动应用等 Azure 应用程序连接到使用静态 TCP 端口的本地资源，例如 SQL Server、MySQL、HTTP Web API 和大多数自定义 Web 服务。 可以在 Azure 经典门户中的 BizTalk 服务内管理混合连接。
 
-若要在 Azure 应用服务中创建混合连接，请参阅[在 Azure 应用服务中使用混合连接访问本地资源](../app-service-web/web-sites-hybrid-connection-get-started.md)。
-
 若要在 Azure BizTalk 服务中创建或管理混合连接，请参阅[混合连接](integration-hybrid-connection-overview.md)。
 
 ## <a name="next"></a>下一步
-在熟悉不同的选项卡后，你可以了解有关 Azure BizTalk 服务功能的详细信息：
+在熟悉不同的选项卡后，可以了解有关 Azure BizTalk 服务功能的详细信息：
 
 * [BizTalk 服务：限制](biztalk-throttling-thresholds.md)  
 * [BizTalk 服务：颁发者名称和颁发者密钥](biztalk-issuer-name-issuer-key.md)  

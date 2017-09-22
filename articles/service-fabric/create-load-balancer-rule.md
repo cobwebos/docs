@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/22/2017
 ms.author: adegeo
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 8496bd61d0133a428ce8e522faef5b538f19d4fc
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: d152444f38e7a09b97ce7cb9778d8c67a0a5a421
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -44,13 +44,14 @@ Service Fabric 应用程序 ServiceManifest.xml 配置文件定义应用程序�
 - 内部端口。
 
 ## <a name="azure-cli"></a>Azure CLI
+使用单个命令即可使用 Azure CLI 创建负载均衡器规则。 你只需知道用于创建新规则的负载均衡器和资源组的名称。
+
 >[!NOTE]
 >如果需要确定负载均衡器的名称，可使用此命令来快速获取所有负载均衡器和关联资源组的列表。
 >
 >`az network lb list --query "[].{ResourceGroup: resourceGroup, Name: name}"`
 >
 
-使用单个命令即可使用 Azure CLI 创建负载均衡器规则。 你只需知道用于创建新规则的负载均衡器和资源组的名称。
 
 ```azurecli
 az network lb rule create --backend-port 40000 --frontend-port 39999 --protocol Tcp --lb-name LB-svcfab3 -g svcfab_cli -n my-app-rule
@@ -64,7 +65,7 @@ Azure CLI 命令具有下表中所述的几个参数：
 | `--frontend-port` | 负载均衡器针对外部连接公开的端口。 |
 | `-lb-name` | 要更改的负载均衡器的名称。 |
 | `-g`       | 同时包含负载均衡器与 Service Fabric 群集的资源组。 |
-| `-n`       | 选定的规则名称。 |
+| `-n`       | 所需的规则名称。 |
 
 
 >[!NOTE]
@@ -72,17 +73,17 @@ Azure CLI 命令具有下表中所述的几个参数：
 
 ## <a name="powershell"></a>PowerShell
 
->[!NOTE]
->如果需要确定负载均衡器的名称，可使用此命令来快速获取所有负载均衡器和关联资源组的列表。
->
->`Get-AzureRmLoadBalancer | Select Name, ResourceGroupName`
-
-PowerShell 比 Azure CLI 稍显复杂。 从概念上讲，可执行以下步骤创建规则。
+PowerShell 比 Azure CLI 稍显复杂。 请按照这些概念步骤操作，创建规则：
 
 1. 从 Azure 中获取负载均衡器。
 2. 创建规则。
 3. 将规则添加到负载均衡器。
 4. 更新负载均衡器。
+
+>[!NOTE]
+>如果需要确定负载均衡器的名称，可使用此命令来快速获取所有负载均衡器和关联资源组的列表。
+>
+>`Get-AzureRmLoadBalancer | Select Name, ResourceGroupName`
 
 ```powershell
 # Get the load balancer
@@ -106,4 +107,6 @@ $lb | Set-AzureRmLoadBalancer
 >[!NOTE]
 >有关如何使用 PowerShell 创建负载均衡器的详细信息，请参阅[使用 PowerShell 创建负载均衡器](..\load-balancer\load-balancer-get-started-internet-arm-ps.md)。
 
+## <a name="next-steps"></a>后续步骤
 
+详细了解 [Service Fabric 中的网络](service-fabric-patterns-networking.md)。

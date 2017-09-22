@@ -16,17 +16,17 @@ ms.topic: quickstart
 ms.date: 08/29/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 60cb187cf40f72fce86c421891bea02d3d6d708a
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: 228d739ac4505d9f16c43bb484dd8050631f084e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB：使用图形 API 生成 Node.js 应用程序
 
-Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快速创建和查询文档、键/值，及图形数据库，它们均受益于 Azure Cosmos DB 最核心的全球分布和水平缩放功能。 
+Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，它们都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
 
-本快速入门文章演示如何使用 Azure 门户创建用于图形 API（预览版）的 Azure Cosmos DB 帐户、数据库和图形。 然后使用开放源 [Gremlin Node.js](https://www.npmjs.com/package/gremlin) 驱动程序生成并运行控制台应用。  
+本快速入门文章演示如何使用 Azure 门户创建用于图形 API（预览版）的 Azure Cosmos DB 帐户、数据库和图形。 然后使用开放源 [Gremlin Node.js](https://www.npmjs.com/package/gremlin) 驱动程序生成并运行控制台应用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -48,9 +48,9 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 
 现在从 GitHub 克隆图形 API 应用，设置连接字符串，并运行应用。 会看到以编程方式处理数据是多么容易。 
 
-1. 打开 Git 终端窗口（例如 Git Bash）并更改（通过 `cd` 命令）为工作目录。  
+1. 打开 Git 终端窗口（例如 Git Bash）并更改（通过 `cd` 命令）为工作目录。
 
-2. 运行下列命令以克隆示例存储库。 
+2. 运行下列命令以克隆示例存储库： 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started.git
@@ -60,7 +60,7 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 
 ## <a name="review-the-code"></a>查看代码
 
-快速查看应用中发生的情况。 打开 `app.js` 文件，会发现以下代码行。 
+快速查看应用中发生的情况。 打开 `app.js` 文件，会看到以下代码行。 
 
 * 将创建 Gremlin 客户端。
 
@@ -99,11 +99,11 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 
     ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-graph-nodejs/gremlin-uri.png)
 
-   如果“Gremlin URI”值为空，可以通过门户中的“密钥”页生成该值：使用“URI”值，删除 https:// 并将 documents 更改为 graphs 即可。
+   如果“Gremlin URI”值为空，可从门户中的“密钥”页生成值。 使用“URI”值，删除 https:// 并将文档更改为图形。
 
    Gremlin 终结点只能是没有协议/端口号的主机名，例如 `mygraphdb.graphs.azure.com`（不能是 `https://mygraphdb.graphs.azure.com` 或 `mygraphdb.graphs.azure.com:433`）。
 
-3. 在 config.js 中，使用 Azure 门户的“密钥”页中的“主密钥”值填写 config.primaryKey 值。 
+3. 在 config.js 中，使用 Azure 门户“密钥”页中的“主密钥”值填充 config.primaryKey 值。 
 
     `config.primaryKey = "PRIMARYKEY";`
 
@@ -127,7 +127,7 @@ module.exports = config;
 
 ## <a name="run-the-console-app"></a>运行控制台应用
 
-1. 打开终端窗口，更改（通过 `cd` 命令）为项目中包括的 package.json 文件的安装目录。  
+1. 打开终端窗口，更改（通过 `cd` 命令）为项目中包括的 package.json 文件的安装目录。
 
 2. 运行 `npm install`，安装所需的 npm 模块，包括 `gremlin`。
 
@@ -137,9 +137,9 @@ module.exports = config;
 
 现在可以返回到 Azure 门户中的数据资源管理器，查看、查询、修改以及使用新的图形数据。
 
-在数据资源管理器中，新数据库会显示在“图形”窗格中。 展开数据库（后跟集合），然后单击“图形”。
+在数据资源管理器中，新数据库会显示在“图形”窗格中。 展开数据库（后跟集合），然后选择“图形”。
 
-单击“应用筛选器”时，由示例应用生成的数据会显示在“图形”选项卡的下一窗格中。
+选择“应用筛选器”时，由示例应用生成的数据会显示在“图形”选项卡的下一窗格中。
 
 尝试使用 `.has('firstName', 'Thomas')` 来完成 `g.V()`，对筛选器进行测试。 请注意，值区分大小写。
 
@@ -151,8 +151,9 @@ module.exports = config;
 
 如果不打算继续使用此应用，可通过执行以下操作删除本文中创建的所有资源： 
 
-1. 在 Azure 门户的左侧导航菜单中，单击“资源组”，然后单击创建的资源的名称。 
-2. 在资源组页上单击“删除”，键入要删除的资源的名称，然后单击“删除”。
+1. 在 Azure 门户的左侧导航菜单中，选择“资源组”。 然后选择所创建的资源名称。 
+
+2. 在资源组页上，选择“删除”。 键入要删除的资源名称，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

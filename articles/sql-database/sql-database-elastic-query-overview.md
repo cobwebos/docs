@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/27/2016
 ms.author: mlandzic
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 9b3151248a1d036117bbdc9af03a98dff71ca535
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 0130b1d4f3ee7b27786764a275ce4e3c0ee93b2d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL 数据库弹性查询概述（预览版）
@@ -142,7 +142,7 @@ ms.lasthandoff: 08/17/2017
 * 当前不支持外部表上的列统计信息。 支持表统计信息，但需要手动创建。
 
 ## <a name="feedback"></a>反馈
-请在下面的 Disqus、MSDN 论坛或 Stackoverflow 上与我们共享有关你使用弹性查询的体验的反馈。 我们对有关该服务的所有类型反馈（缺陷、未完善处、功能差距）感兴趣。
+请在下面的 Livefyre、MSDN 论坛或 Stackoverflow 上与我们共享有关你使用弹性查询的体验的反馈。 我们对有关该服务的所有类型反馈（缺陷、未完善处、功能差距）感兴趣。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/30/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 87d0fe4c3eaa8f7b75343a36a069ecdac8241d74
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 45b2a500751830f6ca19fe8450a7781cb0fcb618
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/15/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -41,8 +41,8 @@ ms.lasthandoff: 04/15/2017
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
-| [az redis create](https://docs.microsoft.com/cli/azure/redis#create) | 创建 Redis 缓存实例。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az redis create](https://docs.microsoft.com/cli/azure/redis#az_redis_create) | 创建 Redis 缓存实例。 |
 
 
 ## <a name="next-steps"></a>后续步骤

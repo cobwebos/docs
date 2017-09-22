@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: allclark
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: fec7a2738c3b8e74ac335f62189f3d9b1dd346ab
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: ea114f484c774573b7d219cff9102a7308af356e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 05/15/2017
 az vm restart --ids $(az vm list --resource-group myResourceGroup --query "[].id" -o tsv)
 ```
 
-第二种方法使用 `az resouce list` 获取带标记的 VM，并筛选出是 VM 的资源，然后重新启动那些 VM。
+第二种方法使用 `az resouce list` 获取带标记的 VM，筛选出是 VM 的资源，并重新启动那些 VM。
 
 ```bash
 az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)
@@ -53,11 +53,11 @@ az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Mic
 第一个脚本用来预配虚拟机。
 它使用了 no-wait 选项，因此，命令不会等待每个 VM 完成部署便会返回。
 第二个脚本等到 VM 完全部署后才会返回。
-第三个脚本重新启动已部署的所有 VM，然后仅重新启动带标记的 VM。
+第三个脚本重新启动已预配的所有 VM，然后仅重新启动带标记的 VM。
 
 ### <a name="provision-the-vms"></a>预配 VM
 
-此脚本创建一个资源组，然后它创建三个 VM 并重新启动。
+此脚本创建一个资源组，它创建三个 VM 并重新启动。
 其中的两个带有标记。
 
 [!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/restart-by-tag/provision.sh "预配 VM")]
@@ -70,7 +70,7 @@ az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Mic
 
 ### <a name="restart-the-vms"></a>重新启动 VM
 
-此脚本重新启动资源组中的所有 VM，然后它仅重新启动带标记的 VM。
+此脚本重新启动资源组中的所有 VM，它仅重新启动带标记的 VM。
 
 [!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/restart-by-tag/restart.sh "按标记重新启动 VM")]
 
@@ -88,12 +88,12 @@ az group delete -n myResourceGroup --no-wait --yes
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#create) | 创建虚拟机。  |
-| [az vm list](https://docs.microsoft.com/cli/azure/vm#list) | 与 `--query` 一起使用，用来确保在重新启动 VM 之前已对其进行了预配，然后获取这些 VM 的 ID 以将其重新启动。 |
-| [az resource list](https://docs.microsoft.com/cli/azure/vm#list) | 与 `--query` 一起使用来获取使用该标记的 VM 的 ID。 |
-| [az vm restart](https://docs.microsoft.com/cli/azure/vm#list) | 重新启动 VM。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#set) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#az_vm_availability_set_create) | 创建虚拟机。  |
+| [az vm list](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | 与 `--query` 一起使用，用来确保在重新启动 VM 之前已对其进行了预配，然后获取这些 VM 的 ID 以将其重新启动。 |
+| [az resource list](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | 与 `--query` 一起使用来获取使用该标记的 VM 的 ID。 |
+| [az vm restart](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | 重新启动 VM。 |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 
