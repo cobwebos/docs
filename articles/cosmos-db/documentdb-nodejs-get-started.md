@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: anhoh
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 6510e0270bb2efa252a2b2ad40014c5d26b74a81
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 02e98aadc6a001c7275266d89a196a57bb366b3c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="nodejs-tutorial-use-the-documentdb-api-in-azure-cosmos-db-to-create-a-nodejs-console-application"></a>Node.js 教程：在 Azure Cosmos DB 中使用 DocumentDB API 创建 Node.js 控制台应用程序
@@ -56,8 +56,10 @@ ms.lasthandoff: 08/16/2017
 ## <a name="prerequisites-for-the-nodejs-tutorial"></a>Node.js 教程的先决条件
 请确保具有以下内容：
 
-* 有效的 Azure 帐户。 如果没有，可以注册 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-    * 另外，对于本教程，也可以使用 [Azure Cosmos DB 模拟器](local-emulator.md)。
+* 有效的 Azure 帐户。 如果没有，可以注册 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。 
+
+  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+
 * [Node.js](https://nodejs.org/) 版本 v0.10.29 或更高版本。
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>步骤 1：创建 Azure Cosmos DB 帐户
@@ -93,7 +95,7 @@ ms.lasthandoff: 08/16/2017
     config.endpoint = "~your Azure Cosmos DB endpoint uri here~";
     config.primaryKey = "~your primary key here~";
 
-复制 ```database id```、```collection id``` 和 ```JSON documents``` 并将其粘贴到在其中设置了 ```config.endpoint``` 和 ```config.authKey``` 属性的 ```config``` 对象下面。 如果已有要在数据库中存储的数据，则可以使用 Azure Cosmos DB 的[数据迁移工具](import-data.md)而不是添加文档定义。
+复制 ```database id```、```collection id``` 和 ```JSON documents``` 并将其粘贴到在其中设置了 ```config.endpoint``` 和 ```config.primaryKey``` 属性的 ```config``` 对象下面。 如果已有要在数据库中存储的数据，则可以使用 Azure Cosmos DB 的[数据迁移工具](import-data.md)而不是添加文档定义。
 
     config.endpoint = "~your Azure Cosmos DB endpoint uri here~";
     config.primaryKey = "~your primary key here~";
@@ -263,7 +265,7 @@ ms.lasthandoff: 08/16/2017
 
 ## <a id="CreateColl"></a>步骤 6：创建集合
 > [!WARNING]
-> **CreateDocumentCollectionAsync** 将创建新的集合，它牵涉定价。 有关详细信息，请访问 [定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。
+> createCollection 将创建新的集合，它牵涉定价。 有关详细信息，请访问 [定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。
 > 
 > 
 
@@ -615,7 +617,7 @@ Azure Cosmos DB 支持删除 JSON 文档。
 
 * ```npm install documentdb --save```
 
-如[步骤 3：设置应用的配置](#Config)中所述，接下来在 ```config.js``` 文件中更新 config.endpoint 和 config.authKey 的值。 
+接下来如[步骤 3：设置应用的配置](#Config)中所述，在 ```config.js``` 文件中更新 config.endpoint 和 config.primaryKey 的值。 
 
 然后在终端中找到 ```app.js``` 文件并运行命令 ```node app.js```。
 

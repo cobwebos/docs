@@ -13,16 +13,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 09/10/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80ba024cd219b10bce8d88c9f11fd2d14d4ed34f
-ms.openlocfilehash: 223fee8930b1aebff94eddaeb82b5c0e364e067c
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 89b4f7cee6d00b5bbbca4799eeca74a280147fc7
 ms.contentlocale: zh-cn
-ms.lasthandoff: 01/11/2017
+ms.lasthandoff: 09/13/2017
 
 ---
-
 
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>使用 Azure 门户管理流式处理终结点
 
@@ -71,6 +70,9 @@ ms.lasthandoff: 01/11/2017
 
 有关这些属性的详细信息，请参阅 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)。
 
+>[!NOTE]
+>如果启用了 CDN，则无法访问 IP 访问。 仅当不具有 CDN 时，IP 访问才适用。
+
 可通过执行以下操作配置流式处理终结点：
 
 1. 选择要配置的流式处理终结点。
@@ -105,7 +107,7 @@ ms.lasthandoff: 01/11/2017
 
 * 为流式处理终结点启用 CDN 时，客户端不能从原点直接请求内容。 如果需要能够分别使用或不使用 CDN 测试内容，则可以创建另一个不启用 CDN 的流式处理终结点。
 * 流式处理终结点主机名在启用 CDN 后仍保持不变。 启用 CDN 后，不需要对媒体服务工作流进行任何更改。 例如，如果流式处理终结点主机名是 strasbourg.streaming.mediaservices.windows.net，则启用 CDN 后使用完全相同的主机名。
-* 对于新的流式处理终结点，只需通过创建新的终结点即可启用 CDN；对于现有流式处理终结点，则需要首先停止该终结点，然后再启用/禁用 CDN。
+* 对于新的流式处理终结点，只需通过创建新的终结点即可启用 CDN；对于现有流式处理终结点，则需要首先停止该终结点，再启用/禁用 CDN。
 * 只能通过 Azure 管理门户使用 **Verizon 标准 CDN 提供程序**配置标准流式处理终结点。 但是，可以使用 REST API 启用其他 Azure CDN 提供程序。
 
 ## <a name="configure-cdn-profile"></a>配置 CDN 配置文件

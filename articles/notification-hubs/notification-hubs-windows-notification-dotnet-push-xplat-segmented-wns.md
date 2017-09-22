@@ -1,6 +1,6 @@
 ---
-title: "使用通知中心发送突发新闻 (Windows Universal)"
-description: "结合注册中的标记使用 Azure 通知中心将突发新闻发送到通用 Windows 应用。"
+title: "使用 Azure 通知中心发送突发新闻（通用 Windows 平台）"
+description: "将 Azure 通知中心与注册中的标记配合使用，将突发新闻发送到通用 Windows 平台应用。"
 services: notification-hubs
 documentationcenter: windows
 author: ysxu
@@ -15,30 +15,32 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 0e945b5626a08fcb428131f2abb465c2c141011a
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: d510e7e665adec9607aeee80802c466b363d5d5b
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="use-notification-hubs-to-send-breaking-news"></a>使用通知中心发送突发新闻
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 ## <a name="overview"></a>概述
-本主题演示如何使用 Azure 通知中心将突发新闻通知广播到 Windows 应用商店或 Windows Phone 8.1（非 Silverlight）应用。 如果要以 Windows Phone 8.1 Silverlight 为目标，请参阅 [Windows Phone](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) 版本。 完成时，可以注册感兴趣的突发新闻类别并仅接收这些类别的推送通知。 此方案对于很多应用程序来说是常见模式，在其中必须将通知发送到以前声明过对它们感兴趣的一组用户，这样的应用程序有 RSS 阅读器、针对音乐迷的应用程序等。 
+本主题演示如何使用 Azure 通知中心将突发新闻通知广播到 Windows 应用商店或 Windows Phone 8.1（非 Silverlight）应用。 如果要以 Windows Phone 8.1 Silverlight 为目标，请参阅 [Windows Phone](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) 版本。 
 
-在通知中心创建注册时，通过加入一个或多个*标记*来启用广播方案。 将通知发送到标签时，已注册该标签的所有设备将接收通知。 因为标签是简单的字符串，它们不必提前设置。 有关标记的详细信息，请参阅[通知中心路由和标记表达式](notification-hubs-tags-segment-push-message.md)。
+完成此过程后，可注册感兴趣的突发新闻类别，之后你仅会收到这些类别的推送通知。 这对于许多应用（例如 RSS 阅读器或针对乐迷的应用）很常见，在此方案中，必须将通知发送给以前声明过对其感兴趣的用户组。 
+
+在通知中心创建注册时，可通过加入一个或多个标记来启用广播方案。 将通知发送到标记时，已注册该标记的所有设备将接收通知。 标记只是一些字符串，因此不必提前设置。 有关标记的详细信息，请参阅[通知中心路由和标记表达式](notification-hubs-tags-segment-push-message.md)。
 
 > [!NOTE]
-> Visual Studio 2017 中不支持 Windows 应用商店和 Windows Phone 项目 8.1 及更早的版本。  有关详细信息，请参阅 [Visual Studio 2017 平台目标以及兼容性](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs)。 
+> Visual Studio 2017 中不支持 Windows 应用商店和 Windows Phone 项目 8.1 及更早的版本。 有关详细信息，请参阅 [Visual Studio 2017 平台目标以及兼容性](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs)。 
 
 ## <a name="prerequisites"></a>先决条件
-本主题以你在[通知中心入门][get-started]中创建的应用为基础。 在开始本教程之前，必须先完成[通知中心入门][get-started]教程的学习。
+本主题以你在[通知中心入门][get-started]中创建的应用为基础。 开始本教程之前，必须先完成[通知中心入门][get-started]中的内容。
 
 ## <a name="add-category-selection-to-the-app"></a>向应用程序中添加类别选择
-第一步是向现有主页添加 UI 元素，这些元素允许用户选择要注册的类别。 用户选择的类别存储在设备上。 应用程序启动时，使用所选类别作为标签在通知中心创建设备注册。
+第一步是向现有主页添加 UI 元素，以便用户选择要注册的类别。 所选类别会存储在设备上。 应用启动时，系统会将所选类别当做标记在通知中心创建设备注册。
 
-1. 打开 MainPage.xaml 项目文件，并在 **Grid** 元素中复制以下代码：
+1. 打开 MainPage.xaml 项目文件，并复制 Grid 元素中的以下代码：
    
         <Grid>
             <Grid.RowDefinitions>
@@ -61,13 +63,15 @@ ms.lasthandoff: 08/16/2017
             <ToggleSwitch Header="Sports" Name="SportsToggle" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center"/>
             <Button Name="SubscribeButton" Content="Subscribe" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click"/>
         </Grid>
-2. 右键单击“**共享**”项目，添加名为 **Notifications** 的新类，向类定义添加 **public** 修饰符，然后将以下 **using** 语句添加到新的代码文件：
+
+2. 右键单击“共享”项目，添加名为 Notifications 的新类，向类定义添加 public 修饰符，然后将以下 using 语句添加到新的代码文件：
    
         using Windows.Networking.PushNotifications;
         using Microsoft.WindowsAzure.Messaging;
         using Windows.Storage;
         using System.Threading.Tasks;
-3. 将以下代码添加到新的 **Notifications** 类：
+
+3. 将以下代码复制到新的 Notifications 类中：
    
         private NotificationHub hub;
    
@@ -107,28 +111,31 @@ ms.lasthandoff: 08/16/2017
                     categories);
         }
    
-    此类使用本地存储区存储此设备必须接收的新闻类别。 请注意，我们没有调用 *RegisterNativeAsync* 方法，而是调用了 *RegisterTemplateAsync*，以使用模板注册来注册类别。 
+    此类使用本地存储区存储此设备必须接收的新闻类别。 使用模板注册来注册类别时，应调用 RegisterTemplateAsync，而不能调用 RegisterNativeAsync。 
    
-    我们还提供模板的名称（“simpleWNSTemplateExample”），因为我们可能要注册多个模板（例如一个用于 toast 通知，一个用于磁贴），需要命名它们以便可以更新或删除它们。
+    由于你可能需要注册多个模板（例如一个模板针对 toast 通知，一个模板针对磁贴），因此请提供模板名称（例如“simpleWNSTemplateExample”）。 为模板命名以便更新或删除模板。
    
-    请注意，如果一个设备使用同一标签注册多个模板，针对该标签的传入消息将导致多个通知发送到设备（每个通知对应一个模板）。 当同一逻辑消息必须导致多个可视通知时，此行为很有用，例如在 Windows 应用商店应用程序显示徽章和 toast。
+    >[!NOTE]
+    >如果一个设备使用同一标记注册多个模板，针对该标记的传入消息会导致系统向该设备发送多个通知（每个通知对应一个模板）。 当同一逻辑消息必定导致多个可视化通知时（例如，在 Windows 应用商店应用程序中同时显示徽章和 toast），此行为很有用。
    
-    有关模板的详细信息，请参阅[模板](notification-hubs-templates-cross-platform-push-messages.md)。
+    有关详细信息，请参阅[模板](notification-hubs-templates-cross-platform-push-messages.md)。
+
 4. 在 App.xaml.cs 项目文件中，将以下属性添加到 **App** 类：
    
         public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
    
-    此属性用于创建和访问 **Notifications** 实例。
+    使用此属性创建和访问 Notifications 实例。
    
-    在上面的代码中，将 `<hub name>` 和 `<connection string with listen access>` 占位符替换为通知中心的名称和之前获取的 *DefaultListenSharedAccessSignature* 的连接字符串。
+    在代码中，将 `<hub name>` 和 `<connection string with listen access>` 占位符替换为通知中心的名称和之前获取的 *DefaultListenSharedAccessSignature* 的连接字符串。
    
    > [!NOTE]
-   > 由于使用客户端应用程序分发的凭据通常是不安全的，只应使用客户端应用程序分发具有侦听访问权限的密钥。 侦听访问权限允许应用程序注册通知，但是无法修改现有注册，也无法发送通知。 在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
+   > 使用客户端应用分发的凭据通常不安全，因此请使用客户端应用仅分发具有侦听访问权限的密钥。 拥有侦听访问权限后，应用可注册通知，但是无法修改现有注册，也无法发送通知。 在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
    > 
    > 
-5. 在 MainPage.xaml.cs 中，添加以下行：
+5. 在 MainPage.xaml.cs 项目文件中添加以下行：
    
         using Windows.UI.Popups;
+
 6. 在 MainPage.xaml.cs 项目文件中，添加以下方法：
    
         private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
@@ -148,19 +155,19 @@ ms.lasthandoff: 08/16/2017
             await dialog.ShowAsync();
         }
    
-    此方法创建一个类别列表并使用 **Notifications** 类将该列表存储在本地存储区中，将相应的标签注册到通知中心。 更改类别时，使用新类别重新创建注册。
+    此方法创建一个类别列表并使用 Notifications 类将该列表存储在本地存储中。 它还会向通知中心注册相应的标记。 类别有更改时，会使用新类别重新创建注册。
 
-应用程序现在可以将一组类别存储在设备的本地存储区中了，每当用户更改所选类别时，会将这些类别注册到通知中心。
+现在，应用可在设备的本地存储中存储一组类别。 每当用户更改类别选择时，应用都会向通知中心注册。
 
 ## <a name="register-for-notifications"></a>注册通知
-这些步骤用于在启动时会在本地存储区中存储的类别注册到通知中心。
+本部分中将使用存储在本地存储中的类别，在启动时向通知中心注册。
 
 > [!NOTE]
-> 由于 Windows 通知服务 (WNS) 分配的通道 URI 随时可能更改，因此，应该经常注册通知以避免通知失败。 此示例在每次应用程序启动时注册通知。 对于经常运行（一天一次以上）的应用程序，如果每次注册间隔时间不到一天，可以跳过注册来节省带宽。
+> 由于 Windows 通知服务 (WNS) 分配的通道 URI 随时可能更改，因此应该经常注册通知以避免通知失败。 此示例在每次应用程序启动时注册通知。 对于经常运行（一天一次以上）的应用，如果距上次注册时间不到一天，可以跳过注册，以节省带宽。
 > 
 > 
 
-1. 打开 App.xaml.cs 文件，并将 **InitNotificationsAsync** 方法更新为使用 `notifications` 类来基于类别订阅。
+1. 若要使用 `notifications` 类基于类别订阅，请打开 App.xaml.cs 文件，然后更新 InitNotificationsAsync 方法。
    
         // *** Remove or comment out these lines *** 
         //var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
@@ -169,7 +176,8 @@ ms.lasthandoff: 08/16/2017
    
         var result = await notifications.SubscribeToCategories();
    
-    这确保每次应用程序启动时，它从本地存储区检索类别并请求注册这些类别。 **InitNotificationsAsync** 方法是在学习[通知中心入门][get-started]教程中创建的。
+    此过程可确保应用启动时会从本地存储区检索类别并请求注册这些类别。 可在[通知中心入门][get-started]教程中创建 InitNotificationsAsync 方法。
+
 2. 在 MainPage.xaml.cs 项目文件的 *OnNavigatedTo* 方法中添加以下代码：
    
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -184,39 +192,38 @@ ms.lasthandoff: 08/16/2017
             if (categories.Contains("Sports")) SportsToggle.IsOn = true;
         }
    
-    这基于以前保存的类别状态更新主页。
+    此代码基于以前保存的类别状态更新主页。
 
-应用程序现在已完成，可以在设备的本地存储区中存储一组类别了，每当用户更改所选类别时会使用这些类别注册到通知中心。 接下来，我们将定义一个后端，它可将类别通知发送到此应用程序。
+应用现已完成。 它可以在设备的本地存储中存储一组类别，当用户更改类别选择时，使用它向通知中心注册。 下一部分将定义一个后端，该后端可将类别通知发送到此应用。
 
-## <a name="sending-tagged-notifications"></a>发送带标记的通知
+## <a name="send-tagged-notifications"></a>发送带标记的通知
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
 ## <a name="run-the-app-and-generate-notifications"></a>运行应用并生成通知
-1. 在 Visual Studio 中，按 F5 编译并启动应用程序。
+1. 在 Visual Studio 中，选择 F5 编译并启动应用。  
+    应用 UI 提供了一组开关，可以使用它们选择要订阅的类别。 
    
-    ![][1]
-   
-    请注意，应用程序 UI 提供了一组开关，可以使用它们选择要订阅的类别。
-2. 启用一个或多个类别开关，并单击“**订阅**”。
+    ![突发新闻应用][1]
+
+2. 启用一个或多个类别切换，然后单击“订阅”。
    
     应用程序将所选类别转换为标签并针对所选标签从通知中心请求注册新设备。 返回注册的类别并显示在对话框中。
    
-    ![][19]
+    ![类别切换和订阅按钮][19]
+
 3. 使用以下方式之一从后端发送新通知：
-   
-   * **控制台应用：**启动控制台应用。
-   * **Java/PHP：**运行应用/脚本。
+
+   * 控制台应用：启动控制台应用。
+   * Java/PHP：运行应用或脚本。
      
      所选类别的通知作为 toast 通知显示。
      
-     ![][14]
+     ![Toast 通知][14]
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，我们了解了如何按类别广播突发消息。 请考虑学习侧重说明其他高级通知中心方案的以下教程之一：
+我们已通过本文了解了如何按类别广播突发新闻。 建议完成以下教程，该教程侧重介绍其他高级通知中心方案：
 
-* [使用通知中心广播本地化的突发新闻]
-  
-    了解如何扩展突发新闻应用程序以允许发送本地化的通知。
+* [使用通知中心广播本地化的突发新闻]此教程介绍如何将突发新闻应用扩展为允许发送本地化的通知。
 
 <!-- Anchors. -->
 [Add category selection to the app]: #adding-categories

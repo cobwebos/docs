@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/10/2016
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dc7b51cd0d015770b1100e895da633e8bde4b8da
-
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 357e58665f5cdf6ea9a3fcaee4a390f2b0d2045f
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="azure-sdk-for-net-251-release-notes"></a>用于 .NET 2.5.1 的 Azure SDK 发行说明
@@ -28,8 +29,8 @@ ms.openlocfilehash: dc7b51cd0d015770b1100e895da633e8bde4b8da
 
 * 与 **Web 工具扩展**相关的新功能\方案。 
   
-  * Azure 网站已重命名为 Azure 应用服务。 有关详细信息，请参阅 [Azure App Service 和现有的 Azure 服务](../app-service-web/app-service-changes-existing-services.md)。
-  * 增加了 Azure API 应用（预览版）支持，因此客户可以将 ASP.NET 项目作为 API 应用发布，然后在 C# 项目中使用“添加”>“Azure API 应用客户端”手势根据已部署 API 应用的结构生成代码。 
+  * Azure 网站已重命名为 Azure 应用服务。 
+  * 增加了 Azure API 应用（预览版）支持，因此客户可以将 ASP.NET 项目作为 API 应用发布，并在 C# 项目中使用“添加”>“Azure API 应用客户端”手势根据已部署 API 应用的结构生成代码。 
   * 已弃用服务器资源管理器中的“网站”节点，代之以“Azure 应用服务”节点，该节点支持对 Azure API 应用、移动应用和 Web 应用进行以资源组为基础的分组。
   * 增加了 Azure 移动应用（预览版）支持，因此客户可以创建新的移动应用项目、添加移动应用控制器、发布项目，以及对应用程序进行远程调试。
   * “添加”>“Azure API 应用客户端”手势现在支持本地 Swagger JSON 文件，因此 Web API 开发人员可以使用第三方 NuGet（例如 Swashbuckle）生成 Swagger，或者进行手动创作。 客户端开发人员可以借助这种方式通过代码生成功能在 C# 项目中使用任何 Swagger 终结点。 
@@ -46,7 +47,7 @@ ms.openlocfilehash: dc7b51cd0d015770b1100e895da633e8bde4b8da
     
     有关详细信息，请参阅[用于 Visual Studio 的 HDInsight Hadoop 工具入门](../hdinsight/hdinsight-hadoop-visual-studio-tools-get-started.md)。
 
-## <a name="a-idknownissues251aazure-sdk-for-net-251-known-issues-and-limitations"></a><a id="known_issues_2_5_1"></a> 用于 .NET 2.5.1 的 Azure SDK 的已知问题和限制
+## <a id="known_issues_2_5_1"></a>Azure SDK for .NET 2.5.1 已知问题和限制
 * Azure API 应用以移动应用部署目标的方式呈现。 在后续版本发布之前，Web 应用应该是移动应用的唯一目标。 
 * Azure API 应用预配可能会成功，但偶尔会无法更新“Azure 应用服务活动”窗口中的进度。 解决办法是在 Azure 门户中查看新的 Azure API 应用的状态。 
 * 单击“文件”>“新建项目”>“API 应用”>“F5”时出现 HTTP 错误，因为没有 default/index.html。 解决办法是手动浏览到 /api/values URL。 
@@ -62,10 +63,5 @@ ms.openlocfilehash: dc7b51cd0d015770b1100e895da633e8bde4b8da
 * API 应用项目不能与云服务项目一起使用。
 * 仅 C# 提供 API 应用项目模板。
 * 仅 C# 支持通过“添加 Azure API 应用客户端”上下文菜单使用 API 应用。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

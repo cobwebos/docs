@@ -5,7 +5,7 @@ keywords: "数据库防火墙"
 services: sql-database
 documentationcenter: 
 author: BYHAM
-manager: jhubbard
+manager: craigg
 editor: cgronlun
 tags: 
 ms.assetid: ac57f84c-35c3-4975-9903-241c8059011e
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 04/10/2017
+ms.date: 09/12/2017
 ms.author: rickbyh
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 71c7eaf2272245bd681387947812f7d5c0f58094
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 6ba04cd62aff587e56308bb332e31b2da75398cb
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="azure-sql-database-server-level-and-database-level-firewall-rules"></a>Azure SQL 数据库服务器级和数据库级防火墙规则 
@@ -67,7 +67,7 @@ Microsoft Azure SQL 数据库为 Azure 和其他基于 Internet 的应用程序�
 > 
 
 ## <a name="creating-and-managing-firewall-rules"></a>创建和管理防火墙规则
-第一个服务器级防火墙设置可以使用 [Azure 门户](https://portal.azure.com/)进行创建，也可以使用 [Azure PowerShell](https://msdn.microsoft.com/library/azure/dn546724.aspx)、[Azure CLI](/cli/azure/sql/server/firewall-rule#create) 或 [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx) 通过编程方式创建。 后续的服务器级防火墙规则可以使用这些方法或通过 Transact-SQL 创建和管理。 
+第一个服务器级防火墙设置可以使用 [Azure 门户](https://portal.azure.com/)进行创建，也可以使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql)、[Azure CLI](/cli/azure/sql/server/firewall-rule#create) 或 [REST API](https://docs.microsoft.com/rest/api/sql/firewallrules) 通过编程方式创建。 后续的服务器级防火墙规则可以使用这些方法或通过 Transact-SQL 创建和管理。 
 
 > [!IMPORTANT]
 > 只能使用 Transact-SQL 创建和管理数据库级防火墙规则。 
@@ -79,7 +79,7 @@ Microsoft Azure SQL 数据库为 Azure 和其他基于 Internet 的应用程序�
 > 可以使用[SQL 数据库审核](sql-database-auditing.md)来审核服务器级别和数据库级别防火墙的更改。
 >
 
-### <a name="azure-portal"></a>Azure 门户
+## <a name="manage-firewall-rules-using-the-azure-portal"></a>使用 Azure 门户管理防火墙规则
 
 若要在 Azure 门户中设置服务器级防火墙规则，可以转到 Azure SQL 数据库的“概述”页面或 Azure 数据库逻辑服务器的“概述”页面。
 
@@ -101,15 +101,11 @@ Microsoft Azure SQL 数据库为 Azure 和其他基于 Internet 的应用程序�
 
 此时会打开服务器的概述页，其中显示了完全限定的服务器名称（例如 **mynewserver20170403.database.windows.net**），并提供了其他配置的选项。
 
-1. 若要从服务器概述页设置服务器级规则，请在“设置”下方单击左侧菜单中的“防火墙”，如下图所示： 
-
-     ![逻辑服务器概述](./media/sql-database-migrate-your-sql-server-database/logical-server-overview.png)
+1. 若要从服务器概述页设置服务器级规则，请在“设置”下方单击左侧菜单中的“防火墙”： 
 
 2. 单击工具栏上的“添加客户端 IP”以添加当前使用的计算机的 IP 地址，并单击“保存”。 此时会针对当前的 IP 地址创建服务器级防火墙规则。
 
-     ![设置服务器防火墙规则](./media/sql-database-migrate-your-sql-server-database/server-firewall-rule-set.png)
-
-### <a name="transact-sql"></a>Transact-SQL
+## <a name="manage-firewall-rules-using-transact-sql"></a>使用 Transact-SQL 管理防火墙规则
 | 目录视图或存储过程 | 级别 | 说明 |
 | --- | --- | --- |
 | [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |服务器 |显示当前的服务器级防火墙规则 |
@@ -139,13 +135,13 @@ EXECUTE sp_set_firewall_rule @name = N'ContosoFirewallRule',
 EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 ```   
 
-### <a name="azure-powershell"></a>Azure PowerShell
+## <a name="manage-firewall-rules-using-azure-powershell"></a>使用 Azure PowerShell 管理防火墙规则
 | Cmdlet | 级别 | 说明 |
 | --- | --- | --- |
-| [Get-AzureSqlDatabaseServerFirewallRule](https://msdn.microsoft.com/library/azure/dn546731.aspx) |服务器 |返回当前的服务器级防火墙规则 |
-| [New-AzureSqlDatabaseServerFirewallRule](https://msdn.microsoft.com/library/azure/dn546724.aspx) |服务器 |新建服务器级防火墙规则 |
-| [Set-AzureSqlDatabaseServerFirewallRule](https://msdn.microsoft.com/library/azure/dn546739.aspx) |服务器 |更新现有服务器级防火墙规则的属性 |
-| [Remove-AzureSqlDatabaseServerFirewallRule](https://msdn.microsoft.com/library/azure/dn546727.aspx) |服务器 |删除服务器级防火墙规则 |
+| [Get-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/get-azurermsqlserverfirewallrule) |服务器 |返回当前的服务器级防火墙规则 |
+| [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) |服务器 |新建服务器级防火墙规则 |
+| [Set-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/set-azurermsqlserverfirewallrule) |服务器 |更新现有服务器级防火墙规则的属性 |
+| [Remove-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/remove-azurermsqlserverfirewallrule) |服务器 |删除服务器级防火墙规则 |
 
 
 以下示例使用 PowerShell 设置服务器级防火墙规则：
@@ -160,7 +156,7 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 > 对于快速入门上下文中的 PowerShell 示例，请参阅[创建 DB - PowerShell](sql-database-get-started-powershell.md) 和[使用 PowerShell 创建单一数据库并配置防火墙规则](scripts/sql-database-create-and-configure-database-powershell.md)
 >
 
-### <a name="azure-cli"></a>Azure CLI
+## <a name="manage-firewall-rules-using-azure-cli"></a>使用 Azure CLI 管理防火墙规则
 | Cmdlet | 级别 | 说明 |
 | --- | --- | --- |
 | [az sql server firewall create](/cli/azure/sql/server/firewall-rule#create) | 创建一个防火墙规则，以允许从输入的 IP 地址范围访问服务器上的所有 SQL 数据库。|
@@ -180,13 +176,12 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 > 对于快速入门上下文中的 Azure CLI 示例，请参阅[创建 DDB - Azure CLI](sql-database-get-started-cli.md) 和[使用 Azure CLI 创建单一数据库并配置防火墙规则](scripts/sql-database-create-and-configure-database-cli.md)
 >
 
-### <a name="rest-api"></a>REST API
+## <a name="manage-firewall-rules-using-rest-api"></a>使用 REST API 管理防火墙规则
 | API | 级别 | 说明 |
 | --- | --- | --- |
-| [列出防火墙规则](https://msdn.microsoft.com/library/azure/dn505715.aspx) |服务器 |显示当前的服务器级防火墙规则 |
-| [创建防火墙规则](https://msdn.microsoft.com/library/azure/dn505712.aspx) |服务器 |创建或更新服务器级防火墙规则 |
-| [设置防火墙规则](https://msdn.microsoft.com/library/azure/dn505707.aspx) |服务器 |更新现有服务器级防火墙规则的属性 |
-| [删除防火墙规则](https://msdn.microsoft.com/library/azure/dn505706.aspx) |服务器 |删除服务器级防火墙规则 |
+| [列出防火墙规则](https://docs.microsoft.com/rest/api/sql/FirewallRules/ListByServer) |服务器 |显示当前的服务器级防火墙规则 |
+| [创建或更新防火墙规则](https://docs.microsoft.com/rest/api/sql/FirewallRules/CreateOrUpdate) |服务器 |创建或更新服务器级防火墙规则 |
+| [删除防火墙规则](https://docs.microsoft.com/rest/api/sql/FirewallRules/Delete) |服务器 |删除服务器级防火墙规则 |
 
 ## <a name="server-level-firewall-rule-versus-a-database-level-firewall-rule"></a>服务器级防火墙规则与数据库级防火墙规则
 问： 是否应将一个数据库的用户与另一个数据库完全隔离？   

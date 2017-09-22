@@ -17,10 +17,10 @@ ms.date: 07/31/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
-ms.openlocfilehash: d0bd690edcf7dba85cbc316e254d4617bf0ebcb4
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: f333354311b16c00a0d43a691f139f5f80383d1a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上使用 Hive 分析航班延误数据
@@ -267,7 +267,7 @@ ms.lasthandoff: 09/01/2017
 
     此命令会返回数据库列表，其中包括此前创建的 delays 表所在的数据库。
 
-2. 使用以下命令将 hivesampletable 中的数据导出到 mobiledata 表：
+2. 使用以下命令将 hivesampletable 中的数据导出到 delays 表：
 
     ```
     sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=<databaseName>' --username <adminLogin> --password <adminPassword> --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
@@ -275,13 +275,13 @@ ms.lasthandoff: 09/01/2017
 
     Sqoop 连接到包含 delays 表的数据库，并将数据从 `/tutorials/flightdelays/output` 目录导出到 delays 表。
 
-3. 该命令完成后，使用以下命令通过 tsql 实用程序连接到数据库：
+3. Sqoop 命令完成后，使用 tsql 实用工具连接到数据库：
 
     ```
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D <databaseName>
     ```
 
-    使用以下语句验证数据是否已导出到 mobiledata 表：
+    使用以下语句验证数据是否已导出到 delays 表：
 
     ```
     SELECT * FROM delays
@@ -290,7 +290,7 @@ ms.lasthandoff: 09/01/2017
 
     会在表中看到一系列数据。 键入 `exit` 退出 tsql 实用程序。
 
-## <a id="nextsteps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 若要了解使用 HDInsight 中的数据的更多方式，请参阅以下文章：
 

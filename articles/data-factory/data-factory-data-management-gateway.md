@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
 ms.translationtype: HT
-ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
-ms.openlocfilehash: f1f57404734ad6dc77250b180a9c334de60f0af3
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: d032dd38655ef5c7763602739773f9c589cd65a8
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="data-management-gateway"></a>数据管理网关
@@ -139,6 +139,7 @@ ms.lasthandoff: 09/06/2017
 | *.servicebus.windows.net |443, 80 |用于与数据移动服务后端进行通信 |
 | *.core.windows.net |443 |用于使用 Azure Blob 的暂存复制（如果已配置）|
 | *.frontend.clouddatahub.net |443 |用于与数据移动服务后端进行通信 |
+| *.servicebus.windows.net |9350-9354, 5671 |复制向导使用的通过 TCP 的可选服务总线中继 |
 
 
 在 Windows 防火墙级别下，通常已启用这些出站端口。 如果没有，可以在网关计算机上相应地配置域和端口。

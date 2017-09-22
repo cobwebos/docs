@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.date: 04/06/2017
 ms.author: jlembicz
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: 510f8abd839c3c025e955aecfdd787ce85540caf
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: a016438070d13c22f309c5f32b940256069f2ee0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 
@@ -238,7 +238,13 @@ Spacious,||air-condition*+"Ocean view"
 
 了解索引的一些基本知识有助于理解检索。 存储的单位是一个倒排索引，每个可搜索字段对应一个索引。 在倒排索引中，有一个来自所有文档的所有字词的排序列表。 每个字词映射到出现该字词的文档列表，以下示例清晰演示了这种映射。
 
-要在倒排索引中生成字词，搜索引擎将针对文档内容执行词法分析，这类似于查询处理期间执行的操作。 根据分析器的配置，执行将文本输入传递给分析器、转换为小写、去除标点等操作。 我们经常（但不是非要这样做）使用相同的分析器来执行搜索和索引编制操作，使查询词看上去更像是索引中的字词。
+要在倒排索引中生成字词，搜索引擎将针对文档内容执行词法分析，这类似于查询处理期间执行的操作：
+
+1. 根据分析器的配置，执行将文本输入传递给分析器、转换为小写、去除标点等操作。 
+2. 令牌是文本分析的输出。
+3. 将词语添加到索引。
+
+我们经常（但不是非要这样做）使用相同的分析器来执行搜索和索引编制操作，使查询词看上去更像是索引中的字词。
 
 > [!Note]
 > Azure 搜索允许通过附加的 `indexAnalyzer` 和 `searchAnalyzer` 字段参数来指定使用不同的分析器执行索引和搜索。 如果未指定，使用设置分析器`analyzer`属性用于索引编制和搜索。  

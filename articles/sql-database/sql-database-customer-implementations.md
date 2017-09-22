@@ -16,10 +16,10 @@ ms.workload: NA
 ms.date: 03/03/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: 3db5be35b3087bbbe87e623a623e7a10156b932f
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 74b04cb7737011423556cbd956ecef770ac82ad4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="azure-sql-database-customer-implementation-technical-studies"></a>Azure SQL 数据库客户实现技术研究
@@ -37,4 +37,6 @@ ms.lasthandoff: 07/18/2017
 - [Quest](https://customers.microsoft.com/en-US/story/quest)：Quest 通过 SQL Server Enterprise 服务提供其 Spotlight，并且心中有一个目标：向数据库专业人员提供可用来保护数据、四处移动该数据以及监视数据库操作的最佳工具。 有了 Spotlight，SQL Server 数据库管理员无论是坐在办公桌前还是在家中工作，他们都可以使用 Microsoft Azure 和 Azure SQL 数据库监视、检测和诊断 SQL Server 中的性能问题并提供方法来解决这些问题。
 
 - [Microsoft Dynamics](https://customers.microsoft.com/story/dynamics365operationsproductteam)：此简短的案例研究重点介绍了在 Dynamics 365 for Operations 产品团队迁移到 Azure SQL 数据库以向客户提供完全托管的软件即服务 (SaaS) 产品/服务的经历中学到的最佳做法和吸取的教训。 使用 Azure SQL 数据库，Dynamics 365 for Operations 团队能够以显著减少的人员来管理和操作该服务，并能够使用现成的可管理性功能（例如自动数据库备份、数据库备份保留、高可用性和灾难恢复功能）轻松进行缩放。 上述功能连同使用细微自动化预配数据库的能力使得 Azure SQL 数据库成为一个可用于打造大型服务的伟大平台。
+
+- [Microsoft OneDrive 和 SharePoint Online](https://customers.microsoft.com/story/microsoft-azure-sql-database-dicrete-manufacturing-united-states)：这是一个关于将 Microsoft OneDrive 和 SharePoint Online 移至 Azure SQL 数据库的简短案例分析，其中介绍此迁移如何实现近乎无限制的弹性容量管理，同时又能大幅降低运营成本和基础结构开支。
 

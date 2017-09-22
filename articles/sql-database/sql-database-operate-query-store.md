@@ -16,12 +16,11 @@ ms.tgt_pltfrm: sqldb-performance
 ms.workload: data-management
 ms.date: 11/08/2016
 ms.author: bonova
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 46d33a7b2dbaeb447452d8c94e897e59ec915dcc
-ms.openlocfilehash: 104a2d91ee9ca657fcc431d947d6a4be5d57a056
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: c76934d96530889f529eb887469e05d5a6a45e1e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>在 Azure SQL 数据库中操作 Query Store
@@ -48,7 +47,7 @@ Azure 中的 Query Store 是完全托管的数据库功能，可持续收集和�
 |  | | | |
 
 > [!IMPORTANT]
-> 在 Query Store 的最终激活阶段，将在所有 Azure SQL 数据库中自动应用这些默认值（请参阅上面的重要说明）。 激活后，Azure SQL 数据库不会更改客户设置的配置值，除非这些值对主要工作负荷或 Query Store 的可靠运行造成负面影响。
+> 在 Query Store 的最终激活阶段，会在所有 Azure SQL 数据库中自动应用这些默认值（请参阅上面的重要说明）。 激活后，Azure SQL 数据库不会更改客户设置的配置值，除非这些值对主要工作负荷或 Query Store 的可靠运行造成负面影响。
 > 
 > 
 

@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/03/2017
+ms.date: 09/03/2017
 ms.author: rli; juliako;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: b34502aa75d94da1abcda880bb1a251a8455f3f8
+ms.translationtype: HT
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: 0bd385ba78028a722c52cdf1508f3348ff90f05f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>使用 Azure 媒体分析进行面部修订演练
@@ -30,8 +30,6 @@ ms.lasthandoff: 04/03/2017
 有关 **Azure Media Redactor** 的详细信息，请参阅[面部修正概述](media-services-face-redaction.md)主题。
 
 本主题提供分步指导，引导用户使用 Azure 媒体服务资源管理器 (AMSE) 和 Azure Media Redactor Visualizer（开源工具）运行完整修正工作流。
-
-**Azure 媒体修订器** MP 目前提供预览版。 它在所有公共 Azure 区域以及美国政府和中国数据中心中可用。 当前，此预览版免费。 在当前版本中，已处理视频长度的限制为 10 分钟。
 
 有关详细信息，请参阅[此](https://azure.microsoft.com/en-us/blog/redaction-preview-available-globally)博客。
 
@@ -51,7 +49,7 @@ ms.lasthandoff: 04/03/2017
 ### <a name="first-pass--analyze-mode"></a>第一步 – 分析模式
 
 1. 通过“资产”–>“上传”或拖放上传媒体文件。 
-1. 右键单击，然后使用“媒体分析”–>“Azure Media Redactor”–>“分析模式”处理媒体文件。 
+1. 右键单击，并使用“媒体分析”–>“Azure Media Redactor”–>“分析模式”处理媒体文件。 
 
 
 ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough002.png)

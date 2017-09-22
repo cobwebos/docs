@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 57894bbdd9208f8c32eb65e29f04e2ae723780ca
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: 859035598831c1019304973a435de8f9276c9002
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>从 Azure 数据工厂管道调用 Spark 程序
@@ -230,7 +230,7 @@ Spark 活动是 Azure 数据工厂支持的[数据转换活动](data-factory-dat
 
     ![Jupyter 查询结果](media/data-factory-spark/jupyter-notebook-results.png)
 
-有关详细说明，请参阅[运行 Spark SQL 查询](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md#run-a-hive-query-using-spark-sql)部分。 
+有关详细说明，请参阅[运行 Spark SQL 查询](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md)。 
 
 ### <a name="troubleshooting"></a>故障排除
 你将 **getDebugInfo** 设置为 **Always**，所以你会在 Azure Blob 容器的 **pyFiles** 文件夹中看到一个 **log** 子文件夹。 日志文件夹中的日志文件提供了更多详细信息。 当发生错误时，此日志文件尤其有用。 在生产环境中，建议将其设置为 **Failure**。

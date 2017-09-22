@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: 93ada731fe70cf7d294537241f8104c0b89940ed
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: a5753df2ff6874d9574e268953792cac9765cc54
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="reference---iot-hub-endpoints"></a>参考 - IoT 中心终结点
@@ -50,8 +50,6 @@ Azure IoT 中心属于多租户服务，向各种执行组件公开功能。 下
   * *接收直接方法请求*。 设备使用此终结点侦听[直接方法][lnk-methods]的请求。
 
     这些终结点使用 [MQTT v3.1.1][lnk-mqtt]、HTTP 1.1 和 [AMQP 1.0][lnk-amqp] 协议进行公开。 还可通过端口 443 上的 [WebSocket][lnk-websockets] 来实现 AMQP。
-
-    仅当在使用 [MQTT v3.1.1][lnk-mqtt] 协议时，设备孪生终结点和方法终结点才可用。
 
 * **服务终结点**。 每个 IoT 中心公开一组终结点，供解决方案后端用于与设备通信。 除了一个例外，这些终结点只使用 [AMQP][lnk-amqp] 协议进行公开。 方法调用终结点通过 HTTP 协议进行公开。
   

@@ -8,17 +8,17 @@ editor: jasonwhowell
 manager: jhubbard
 ms.service: mysql-database
 ms.topic: article
-ms.date: 05/23/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 2488a28353f3cfe76dc5aa9f9a9159a37ee9901b
+ms.date: 09/15/2017
+ms.translationtype: HT
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 0028b0c918b573f6884e6f63fa82dbe23079882a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>将现有的 Azure App Service 连接到 Azure Database for MySQL 服务器
-本文档将说明如何将现有的 Azure App Service 连接到 Azure Database for MySQL 服务器。
+本主题将说明如何将现有的 Azure App Service 连接到 Azure Database for MySQL 服务器。
 
 ## <a name="before-you-begin"></a>开始之前
 登录到 [Azure 门户](https://portal.azure.com)。 创建 Azure Database for MySQL 服务器。 有关详细信息，请参阅[如何在门户中创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)或[如何使用 CLI 创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-cli.md)。
@@ -37,7 +37,7 @@ Azure Database for MySQL 通过使用防火墙保护数据来确保访问安全�
 
    ![Azure 门户 - 单击连接安全性](./media/howto-manage-firewall-using-portal/1-connection-security.png)
 
-2. 输入“规则名称”、“起始 IP”和“结束 IP”。 。
+2. 输入“规则名称”、“起始 IP”和“结束 IP”，然后单击“保存”。
    - 规则名称：Allow-All-IPs
    - 起始 IP：0.0.0.0
    - 结束 IP：255.255.255.255

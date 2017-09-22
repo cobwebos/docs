@@ -1,11 +1,11 @@
 ---
-title: "还原多租户应用中的 Azure SQL 数据库 | Microsoft Docs"
+title: "还原多租户 SaaS 应用中的 Azure SQL 数据库 | Microsoft Docs"
 description: "了解如何在意外删除数据后还原单个租户 SQL 数据库"
 keywords: "sql 数据库教程"
 services: sql-database
 documentationcenter: 
 author: stevestein
-manager: jhubbard
+manager: craigg
 editor: 
 ms.assetid: 
 ms.service: sql-database
@@ -16,19 +16,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: billgib;sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 547851972f13ec69a8f65d01290874ad7d07f192
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 792476849e796695dde3f2ec80b56431a17e8fc0
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 09/13/2017
 
 ---
-# <a name="restore-a-wingtip-saas-tenants-sql-database"></a>还原 Wingtip SaaS 租户 SQL 数据库
+# <a name="restore-a-single-tenants-azure-sql-database-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中还原单个租户 Azure SQL 数据库
 
 Wingtip SaaS 应用是使用租户各有数据库的模型生成的，其中每个租户有自己的数据库。 此模型的好处之一是在不影响其他租户的情况下能轻松地单独还原单个租户的数据。
 
-本教程将介绍两种数据恢复模式：
+本教程介绍两种数据恢复模式：
 
 > [!div class="checklist"]
 
@@ -39,7 +38,7 @@ Wingtip SaaS 应用是使用租户各有数据库的模型生成的，其中每�
 |||
 |:--|:--|
 | 将租户还原到之前的时间点并还原为并行数据库 | 租户可使用此模式进行查看、审核以及符合性检测等等。原始数据库将保持联机状态且保持不变。 |
-| 就地还原租户 | 此模式通常用于在租户意外删除数据后，将租户恢复到之前的时间点。 原始数据库将处于脱机状态，并且将被替换为还原的数据库。 |
+| 就地还原租户 | 此模式通常用于在租户意外删除数据后，将租户恢复到之前的时间点。 原始数据库将处于脱机状态，并且会被替换为还原的数据库。 |
 |||
 
 若要完成本教程，请确保已完成了以下先决条件：
@@ -51,9 +50,9 @@ Wingtip SaaS 应用是使用租户各有数据库的模型生成的，其中每�
 
 对于租户还原模式，有两种用于还原单个租户的数据的简单模式。 由于租户数据库彼此相互隔离，因此还原某个租户不会对其他租户的数据造成任何影响。
 
-在第一种模式中，数据将被还原到新数据库中。 然后将授予租户访问此数据库及其生产数据的权限。 此模式允许租户管理员查看还原的数据，并可以使用该数据选择性地覆盖当前数据值。 数据恢复选项的复杂程度由 SaaS 应用设计器决定。 在某些方案中，可能仅需要能够查看在某个给定时间点时当前状态的数据即可。 如果数据库使用[异地复制](sql-database-geo-replication-overview.md)，建议从还原的副本将所需数据复制到原始数据库中。 如果将原始数据库替换为还原的数据库，则需要重新配置并重新同步异地复制。
+在第一种模式中，数据会被还原到新数据库中。 然后将授予租户访问此数据库及其生产数据的权限。 此模式允许租户管理员查看还原的数据，并可以使用该数据选择性地覆盖当前数据值。 数据恢复选项的复杂程度由 SaaS 应用设计器决定。 在某些方案中，可能仅需要能够查看在某个给定时间点时当前状态的数据即可。 如果数据库使用[异地复制](sql-database-geo-replication-overview.md)，建议从还原的副本将所需数据复制到原始数据库中。 如果将原始数据库替换为还原的数据库，则需要重新配置并重新同步异地复制。
 
-在第二种模式中（假定租户出现数据丢失或损坏的情况下），租户的生产数据库将被还原到之前的某个时间点。 在就地还原模式中，数据库进行还原时，租户将在短时间内处于脱机状态，直到完成后才重新回到联机状态。 原始数据库会被删除，但如有需要，仍可以从更早的时间点将其还原。 尽管此模式的变体能够重命名数据库，而不是将其删除，但就数据安全方面而言，重命名的数据库没有特别的优势。
+在第二种模式中（假定租户出现数据丢失或损坏的情况下），租户的生产数据库会被还原到之前的某个时间点。 在就地还原模式中，数据库进行还原时，租户会在短时间内处于脱机状态，直到完成后才重新回到联机状态。 原始数据库会被删除，但如有需要，仍可以从更早的时间点将其还原。 尽管此模式的变体能够重命名数据库，而不是将其删除，但就数据安全方面而言，重命名的数据库没有特别的优势。
 
 ## <a name="get-the-wingtip-application-scripts"></a>获取 Wingtip 应用程序脚本
 
@@ -109,7 +108,7 @@ Wingtip SaaS 脚本和应用程序源代码可在 [WingtipSaaS](https://github.c
 
 该脚本将租户数据库还原（到并行数据库）到在上一部分中删除该事件之前的某个时间点。 它将创建第二个数据库，删除此数据库中存在的任何现有目录元数据，并将数据库添加到 ContosoConcertHall\_old 条目下的目录。
 
-演示脚本将在浏览器中打开事件页面。 从 URL ```http://events.wtp.&lt;user&gt;.trafficmanager.net/contosoconcerthall_old``` 中可以看到：它从还原的数据库中显示数据，其中，在名称里添加了 _old。
+演示脚本会在浏览器中打开事件页面。 从 URL ```http://events.wtp.&lt;user&gt;.trafficmanager.net/contosoconcerthall_old``` 中可以看到：它从还原的数据库中显示数据，其中，在名称里添加了 _old。
 
 滚动浏览器中列出的事件，确认在上一部分中删除的事件已还原。
 
@@ -130,7 +129,7 @@ Wingtip SaaS 脚本和应用程序源代码可在 [WingtipSaaS](https://github.c
 1. 将 $DemoScenario 设置为“5”，以选择“就地还原租户方案”。
 1. 使用“F5”执行此操作。
 
-该脚本将租户数据库还原到删除该事件前五分钟的时间点。 这将通过首先让 Contoso Concert Hall 租户脱机，使数据不会进一步更新来进行。 然后，通过从还原点进行还原创建并行数据库，并以时间戳命名，确保该数据库名称不与现有租户数据库名称冲突。 接着，删除旧租户数据库，并将还原的数据库重命名为原始数据库名称。 最后，将 Contoso Concert Hall 联机，使应用能够访问还原的数据库。
+该脚本将租户数据库还原到删除该事件前五分钟的时间点。 这会通过首先让 Contoso Concert Hall 租户脱机，使数据不会进一步更新来进行。 然后，通过从还原点进行还原创建并行数据库，并以时间戳命名，确保该数据库名称不与现有租户数据库名称冲突。 接着，删除旧租户数据库，并将还原的数据库重命名为原始数据库名称。 最后，将 Contoso Concert Hall 联机，使应用能够访问还原的数据库。
 
 已成功将数据库还原到删除事件之前的某个时间点。 “事件”页面将打开，确认最后一个事件已还原。
 

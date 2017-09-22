@@ -16,11 +16,11 @@ ms.workload:
 ms.date: 04/20/2017
 ms.author: rachelap
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 36dbc2c181c9991a27163e3194800f63c6c0e01e
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: af90702601d1bd05836dbf2b20cd3e318832b07c
 ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="integrate-function-app-into-azure-storage-account"></a>将 Function App 集成到 Azure 存储帐户中
@@ -37,7 +37,7 @@ ms.lasthandoff: 06/20/2017
 
 此示例创建 Azure Function app，并将存储连接字符串添加到应用设置。
 
-[!code-azurecli-interactive[主要](../../../cli_scripts/azure-functions/create-function-app-connect-to-storage/create-function-app-connect-to-storage-account.sh "将 Function App 集成到 Azure 存储帐户中")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-connect-to-storage/create-function-app-connect-to-storage-account.sh "将 Function App 集成到 Azure 存储帐户中")]
 
 
 ## <a name="clean-up-deployment"></a>清理部署
@@ -53,10 +53,10 @@ ms.lasthandoff: 06/20/2017
 | 命令 | 说明 |
 |---|---|
 | [az login](https://docs.microsoft.com/cli/azure/#login) | 登录到 Azure。 |
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | 使用相关位置创建资源组 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 使用相关位置创建资源组 |
 | [az storage account create](https://docs.microsoft.com/cli/azure/storage/account) | 创建存储帐户 |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#create) | 创建一个新的 Function App |
-| [az group delete](https://docs.microsoft.com/cli/azure/group#delete) | 清理 |
+| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az_functionapp_create) | 创建一个新的 Function App |
+| [az group delete](https://docs.microsoft.com/cli/azure/group#az_group_delete) | 清理 |
 
 ## <a name="next-steps"></a>后续步骤
 

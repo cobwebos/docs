@@ -12,11 +12,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 08/30/2017
 ms.author: eugenesh
-translationtype: Human Translation
-ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
-ms.openlocfilehash: 57e91f070d9a42882a56e708f12b1ce238ed9191
+ms.translationtype: HT
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 3f2ead208ea1525489a40d1fb637da47cd8a9b24
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/14/2017
 
 ---
 
@@ -26,7 +28,7 @@ ms.openlocfilehash: 57e91f070d9a42882a56e708f12b1ce238ed9191
 在某些情况下，字段映射会很有用：
 
 * 数据源具有字段 `_id`，但 Azure 搜索不允许字段名称以下划线开头。 字段映射允许“重命名”字段。
-* 例如，你想要使用相同的数据来源数据填充索引中的多个字段，因为想要将不同的分析器应用于这些字段。 字段映射让你可以“分叉”数据源字段。
+* 例如，你想要使用相同的数据来源数据填充索引中的多个字段，因为想要将不同的分析器应用于这些字段。 字段映射让可以“分叉”数据源字段。
 * 需要对数据进行 Base64 编码或解码。 字段映射支持多个**映射函数**，包括用于 Base64 编码和解码的函数。   
 
 ## <a name="setting-up-field-mappings"></a>设置字段映射
@@ -81,30 +83,46 @@ api-key: [admin key]
 
 <a name="base64EncodeFunction"></a>
 
-### <a name="base64encode"></a>base64Encode
+## <a name="base64encode"></a>base64Encode
 执行输入字符串的 *URL 安全* Base64 编码。 假定输入采用 UTF-8 进行编码。
 
-#### <a name="sample-use-case"></a>示例用例
-Azure 搜索服务文档索引密钥中仅显示 URL 安全字符（例如，由于客户必须能够使用查找 API 处理文档）。 如果数据包含 URL 不安全的字符，但你希望使用它来填充搜索索引中的密钥字段，可使用此函数。   
+### <a name="sample-use-case---document-key-lookup"></a>示例用例 - 查找文档密钥
+Azure 搜索文档密钥中只能使用 URL 安全字符（因为客户必须要能够使用[查找 API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) 等来查找文档）。 如果数据包含 URL 不安全的字符，但希望使用它来填充搜索索引中的密钥字段，可使用此函数。 对密钥编码后，可以使用 base64 解码以检索原始值。 有关详细信息，请参阅 [base64 编码和解码](#base64details)部分。
 
 #### <a name="example"></a>示例
 ```JSON
 
 "fieldMappings" : [
   {
-    "sourceFieldName" : "Path",
-    "targetFieldName" : "UrlSafePath",
+    "sourceFieldName" : "SourceKey",
+    "targetFieldName" : "IndexKey",
     "mappingFunction" : { "name" : "base64Encode" }
   }]
 ```
 
+### <a name="sample-use-case---retrieve-original-key"></a>示例用例 - 检索原始密钥
+Blob 索引器将 blob 路径元数据用作文档密钥来索引 blob。 检索已编码文档密钥后，需要解码该路径并下载 blob。
+
+#### <a name="example"></a>示例
+```JSON
+
+"fieldMappings" : [
+  {
+    "sourceFieldName" : "SourceKey",
+    "targetFieldName" : "IndexKey",
+    "mappingFunction" : { "name" : "base64Encode", "parameters" : { "useHttpServerUtilityUrlTokenEncode" : false } }
+  }]
+```
+
+如果无需根据密钥查找文档，也无需对已编码内容进行解码，则可以忽略映射函数的 `parameters`（`useHttpServerUtilityUrlTokenEncode` 默认设置为 `true`）。 否则，请参阅 [base64 详细信息](#base64details)部分，确定要使用哪些设置。
+
 <a name="base64DecodeFunction"></a>
 
-### <a name="base64decode"></a>base64Decode
+## <a name="base64decode"></a>base64Decode
 执行输入字符串的 Base64 解码。 输入假定为 *URL 安全* Base64 编码的字符串。
 
-#### <a name="sample-use-case"></a>示例用例
-Blob 自定义元数据值必须以 ASCII 进行编码。 可以使用 Base64 编码来表示 blob 自定义元数据中的任意 Unicode 字符串。 但是，为了使搜索有意义，可以在填充搜索索引时，使用此函数将编码的数据转换回“常规”字符串。  
+### <a name="sample-use-case"></a>示例用例
+Blob 自定义元数据值必须以 ASCII 进行编码。 可以使用 Base64 编码来表示 blob 自定义元数据中的任意 UTF-8 字符串。 但是，为了使搜索有意义，可以在填充搜索索引时，使用此函数将编码的数据转换回“常规”字符串。
 
 #### <a name="example"></a>示例
 ```JSON
@@ -113,25 +131,45 @@ Blob 自定义元数据值必须以 ASCII 进行编码。 可以使用 Base64 �
   {
     "sourceFieldName" : "Base64EncodedMetadata",
     "targetFieldName" : "SearchableMetadata",
-    "mappingFunction" : { "name" : "base64Decode" }
+    "mappingFunction" : { "name" : "base64Decode", "parameters" : { "useHttpServerUtilityUrlTokenDecode" : false } }
   }]
 ```
 
+如果不指定任何 `parameters`，则 `useHttpServerUtilityUrlTokenDecode` 的默认值为 `true`。 请参阅 [base64 详细信息](#base64details)部分，确定要使用哪些设置。
+
+<a name="base64details"></a>
+
+### <a name="details-of-base64-encoding-and-decoding"></a>base64 编码和解码详细信息
+Azure 搜索支持两种 base64 编码：HttpServerUtility URL 令牌和无填充 URL 安全 base64 编码。 如果想对文档密钥编码以便查找、对值编码以供索引器解码或解码由索引器编码的字段，需要使用相同的编码作为映射函数。
+
+如果使用 .NET Framework 进行编码和解码，可以分别将 `useHttpServerUtilityUrlTokenEncode` 和 `useHttpServerUtilityUrlTokenDecode` 设置为 `true`。 然后 `base64Encode` 会发挥 [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) 的作用，`base64Decode` 会发挥 [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx) 的作用。
+
+如果未使用 .NET Framework，则应将 `useHttpServerUtilityUrlTokenEncode` 和 `useHttpServerUtilityUrlTokenDecode` 设置为 `false`。 Base64 编码和解码实用工具函数可能与 Azure 搜索不同，具体取决于所使用的库。
+
+下表比较了对字符串 `00>00?00` 进行不同的 base64 编码的结果。 若要确定 base64 函数所需的其他处理（如有），请对字符串 `00>00?00` 应用库编码函数，然后比较输出和预期的输出 `MDA-MDA_MDA`。
+
+| 编码 | Base64 编码输出 | 库编码后的其他处理 | 库解码前的其他处理 |
+| --- | --- | --- | --- |
+| 带填充的 Base64 | `MDA+MDA/MDA=` | 使用 URL 安全字符并删除填充 | 使用标准 base64 字符并添加填充 |
+| 不带填充的 Base64 | `MDA+MDA/MDA` | 使用 URL 安全字符 | 使用标准 base64 字符 |
+| 带填充的 URL 安全 Base64 | `MDA-MDA_MDA=` | 删除填充 | 添加填充 |
+| 不带填充的 URL 安全 Base64 | `MDA-MDA_MDA` | 无 | 无 |
+
 <a name="extractTokenAtPositionFunction"></a>
 
-### <a name="extracttokenatposition"></a>extractTokenAtPosition
+## <a name="extracttokenatposition"></a>extractTokenAtPosition
 使用指定的分隔符拆分字符串字段，并在所生成拆分的指定位置处选取令牌。
 
-例如，如果输入是 `Jane Doe`，`delimiter` 是 `" "`（空格）并且 `position` 是 0，则结果为 `Jane`；如果 `position` 是 1，则结果是 `Doe`。 如果位置引用的令牌不存在，将返回错误。
+例如，如果输入是 `Jane Doe`，`delimiter` 是 `" "`（空格）并且 `position` 是 0，则结果为 `Jane`；如果 `position` 是 1，则结果是 `Doe`。 如果位置引用的令牌不存在，则会返回错误。
 
-#### <a name="sample-use-case"></a>示例用例
+### <a name="sample-use-case"></a>示例用例
 数据源包含 `PersonName` 字段，并且想要为其编制索引作为两个单独的 `FirstName` 和 `LastName` 字段。 可以使用此函数来拆分将空格字符用作分隔符的输入。
 
-#### <a name="parameters"></a>parameters
+### <a name="parameters"></a>parameters
 * `delimiter`：在拆分输入字符串时，用作分隔符的字符串。
 * `position`：在拆分输入字段串后要选取的位置，以零为底的整数。    
 
-#### <a name="example"></a>示例
+### <a name="example"></a>示例
 ```JSON
 
 "fieldMappings" : [
@@ -149,15 +187,15 @@ Blob 自定义元数据值必须以 ASCII 进行编码。 可以使用 Base64 �
 
 <a name="jsonArrayToStringCollectionFunction"></a>
 
-### <a name="jsonarraytostringcollection"></a>jsonArrayToStringCollection
+## <a name="jsonarraytostringcollection"></a>jsonArrayToStringCollection
 将已格式化为 JSON 字符串数组的字符串转换为可用于填充索引中 `Collection(Edm.String)` 字段的字符串数组。
 
-例如，如果输入字符串是 `["red", "white", "blue"]`，类型 `Collection(Edm.String)` 的目标字段将由 `red`、`white` 和 `blue` 这三个值填充。 对于无法分析为 JSON 字符串数组的输入值，将返回错误。
+例如，如果输入字符串是 `["red", "white", "blue"]`，类型 `Collection(Edm.String)` 的目标字段由 `red`、`white` 和 `blue` 这三个值填充。 对于无法分析为 JSON 字符串数组的输入值，则会返回错误。
 
-#### <a name="sample-use-case"></a>示例用例
-Azure SQL 数据库不具有能自然映射到 Azure 搜索中 `Collection(Edm.String)` 字段的内置数据类型。 若要填充字符串集合字段，请将源数据格式为 JSON 字符串数组，并使用此函数。
+### <a name="sample-use-case"></a>示例用例
+Azure SQL 数据库不具有能自然映射到 Azure 搜索中 `Collection(Edm.String)` 字段的内置数据类型。 要填充字符串集合字段，请将源数据格式为 JSON 字符串数组，并使用此函数。
 
-#### <a name="example"></a>示例
+### <a name="example"></a>示例
 ```JSON
 
 "fieldMappings" : [
@@ -165,11 +203,7 @@ Azure SQL 数据库不具有能自然映射到 Azure 搜索中 `Collection(Edm.S
 ]
 ```
 
+
 ## <a name="help-us-make-azure-search-better"></a>帮助我们改进 Azure 搜索
-如果你有功能请求或改进建议，请通过我们的 [UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search/)与我们联系。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+如果有功能请求或改进建议，请通过我们的 [UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search/)与我们联系。
 

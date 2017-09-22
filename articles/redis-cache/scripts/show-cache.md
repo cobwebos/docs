@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/30/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 9f4eb32227bd8a68837eabd58b9d058bc4995d17
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 0927508117bda67b62a188f89a2d2e151fe02a5a
 ms.contentlocale: zh-cn
-ms.lasthandoff: 04/15/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
 # <a name="get-details-of-an-azure-redis-cache"></a>获取 Azure Redis 缓存的详细信息
 
-在此方案中，你将了解如何检索 Azure Redis 缓存实例的详细信息，包括其预配状态。
+在此方案中，将了解如何检索 Azure Redis 缓存实例的详细信息，包括其预配状态。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli[主要](../../../cli_scripts/redis-cache/show-cache/show-cache.sh "Azure Redis 缓存")]
+[!code-azurecli[main](../../../cli_scripts/redis-cache/show-cache/show-cache.sh "Azure Redis 缓存")]
 
 ## <a name="script-explanation"></a>脚本说明
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 04/15/2017
 
 | 命令 | 说明 |
 |---|---|
-| [az redis show](https://docs.microsoft.com/cli/azure/redis#show) | 检索 Azure Redis 缓存实例的详细信息。 |
+| [az redis show](https://docs.microsoft.com/cli/azure/redis#az_redis_show) | 检索 Azure Redis 缓存实例的详细信息。 |
 
 
 ## <a name="next-steps"></a>后续步骤
