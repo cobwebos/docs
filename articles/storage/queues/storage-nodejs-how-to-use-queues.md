@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: a76770c7a2101675f7cbf953ce9c3b1750656477
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: aec5eb551ef438015d4f6a3d1578d0fa890d737e
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>如何通过 Node.js 使用队列存储
@@ -34,7 +34,7 @@ ms.lasthandoff: 09/07/2017
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
-创建一个空的 Node.js 应用程序。 有关创建 Node.js 应用程序的说明，请参阅[在 Azure 应用服务中创建 Node.js Web 应用](../../app-service-web/app-service-web-get-started-nodejs.md)、[生成 Node.js 应用程序并将其部署到 Azure 云服务](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)或[使用 Web Matrix 构建 Node.js Web 应用并将其部署到 Azure](https://www.microsoft.com/web/webmatrix/)。
+创建一个空的 Node.js 应用程序。 有关创建 Node.js 应用程序的说明，请参阅[在 Azure 应用服务中创建 Node.js Web 应用](../../app-service/app-service-web-get-started-nodejs.md)、[生成 Node.js 应用程序并将其部署到 Azure 云服务](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)或[使用 Web Matrix 构建 Node.js Web 应用并将其部署到 Azure](https://www.microsoft.com/web/webmatrix/)。
 
 ## <a name="configure-your-application-to-access-storage"></a>配置应用程序以访问存储
 若要使用 Azure 存储，需要 Azure Storage SDK for Node.js，其中包括一组便于与存储 REST 服务进行通信的库。
@@ -335,12 +335,12 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 现在，已了解有关队列存储的基础知识，可单击下面的链接来了解更复杂的存储任务。
 
 * 请访问 [Azure 存储团队博客][Azure 存储团队博客]。
-* 访问 GitHub 上的 [Azure Storage SDK for Node][Azure Storage SDK for Node] 存储库。
+* 访问 GitHub 上[用于 Node 的 Azure 存储 SDK][Azure Storage SDK for Node] 存储库。
 
 [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
 [using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
 [Azure Portal]: https://portal.azure.com
-[在 Azure 应用服务中创建 Node.js Web 应用](../../app-service-web/app-service-web-get-started-nodejs.md)
+[在 Azure 应用服务中创建 Node.js Web 应用](../../app-service/app-service-web-get-started-nodejs.md)
    
 
 

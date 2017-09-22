@@ -3,7 +3,7 @@ title: "使用现有的 NPS 服务器提供 Azure MFA 功能 | Microsoft 文档"
 description: "适用于 Azure 多重身份验证的网络策略服务器扩展是一个简单的解决方案，可将基于云的双步验证功能添加到现有的身份验证基础结构。"
 services: multi-factor-authentication
 documentationcenter: 
-author: MicrosoftGuyJFlo
+author: kgremban
 manager: femila
 ms.assetid: 
 ms.service: multi-factor-authentication
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
-ms.author: joflore
+ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: H1Hack27Feb2017; it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: b9061283952ae6b14431f5e88295eefac173ae01
+ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
+ms.openlocfilehash: 42b0bda033b1721ba5c0f575ea2ce6b0933f0f45
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/21/2017
 
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
@@ -62,8 +62,11 @@ Windows Server 2008 R2 SP1 或更高版本。
 ### <a name="libraries"></a>库
 
 这些库将自动随扩展一同安装。
+
 -   [Visual C++ Redistributable Packages for Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
 -   [用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块版本 1.1.166.0](https://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)
+
+已安装用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块，如果尚未安装，可以通过配置脚本，作为安装过程的一部分运行。 如果尚未安装此模块，则无需提前安装。
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -158,8 +161,8 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
    `.\AzureMfaNpsExtnConfigSetup.ps1`
 
-4. PowerShell 会提示输入租户 ID。 使用在先决条件部分中从 Azure 门户复制的目录 ID GUID。
-5. 以管理员身份登录到 Azure AD。
+4. 以管理员身份登录到 Azure AD。
+5. PowerShell 会提示输入租户 ID。 使用在先决条件部分中从 Azure 门户复制的目录 ID GUID。
 6. 脚本完成后，PowerShell 会显示一条成功消息。  
 
 在要针对负载均衡设置的任何其他 NPS 服务器上重复这些步骤。

@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/14/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: be02ad0d7752cb08f092deeb5a86dcd126403237
-ms.lasthandoff: 04/19/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 0ac4aa10db43fb84119ab97cf78b2d5592cfd277
+ms.contentlocale: zh-cn
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -47,7 +48,7 @@ Azure 命令行接口 (CLI) 提供的命令行和脚本编写环境用于创建�
 
 ## <a name="docker-image"></a>Docker 映像
 
-使用 Docker for Windows 时，可以启动包含 Azure CLI 的 Docker 映像。 此映像基于 Linux，并且提供本机 Bash 体验。  使用 Docker for Windows 和 Azure CLI 映像时，将在 macOS、Linux 和 Windows 之间共享脚本。 
+使用 Docker for Windows 时，可以启动包含 Azure CLI 的 Docker 映像。 此映像基于 Linux，并且提供本机 Bash 体验。  使用 Docker for Windows 和 Azure CLI 映像时，会在 macOS、Linux 和 Windows 之间共享脚本。 
 
 若要在 Docker for Windows 上使用 Azure CLI，请确保 Docker for Windows 正在运行，并运行以下命令。
 
@@ -61,7 +62,7 @@ docker run -it azuresdk/azure-cli-python:latest bash
 
 [用于 Azure 虚拟机的 CLI 示例](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[用于 Azure Web 应用的 CLI 示例](../../app-service-web/app-service-cli-samples.md)
+[用于 Azure Web 应用的 CLI 示例](../../app-service/app-service-cli-samples.md)
 
 [用于 Azure SQL 的 CLI 示例](../../sql-database/sql-database-cli-samples.md)
 

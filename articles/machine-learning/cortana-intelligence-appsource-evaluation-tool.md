@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: anupams;v-bruham;garye
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: e79ca131bddc9e65dd24da109b9e8a08606f7bc6
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 264bd9ecb413d2685dca351d7f4090efcadf4988
 ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 09/20/2017
 
 --- 
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Cortana Intelligence 解决方案评估工具
@@ -99,7 +99,7 @@ ms.lasthandoff: 07/08/2017
 | 结合使用 AAD 与 SQL 数据库和 SQL 数据仓库 | [将 Azure Active Directory 身份验证与 SQL 数据库或 SQL 数据仓库结合使用](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication) |
 | 配置和管理 AAD | [使用 SQL 数据库或 SQL 数据仓库配置和管理 Azure Active Directory 身份验证](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication-configure) |
 | Azure WebApps 身份验证 | [Azure 应用服务中的身份验证和授权](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-overview) |
-| 通过 AAD 配置 WebApps | [如何将应用服务应用程序配置为使用 Azure Active Directory 登录](https://docs.microsoft.com/en-us/azure/app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication)|
+| 通过 AAD 配置 WebApps | [如何将应用服务应用程序配置为使用 Azure Active Directory 登录](https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication)|
 
 ### <a name="datasets-accessible-to-end-users-should-support-role-based-access-control"></a>最终用户可访问的数据集应支持基于角色的访问控制
 在执行评估工具时，系统会要求你指定任何报告或发布资源。 假定这些资源计划由最终用户（而不是开发者）访问。 这些资源应提供基于角色的访问控制 (RBAC)，以确保最终用户只能访问授权的数据。
@@ -129,12 +129,12 @@ Azure SQL 和 Azure SQL DW 均支持透明数据加密 (TDE)，它提供数据�
 
 除 TDE 之外，Azure SQL 还支持 Always Encrypted，这是一种新的数据加密技术，在服务器上执行命令时，它可以确保不仅在静态时以及在客户端和服务器之间移动时加密数据，还可在使用数据时进行加密。
 
-### <a name="any-virtual-machines-must-be-deployed-from-the-azure-marketplace"></a>必须从 Azure Marketplace 部署任何虚拟机
+### <a name="any-virtual-machines-must-be-deployed-from-the-azure-marketplace"></a>必须从 Azure 应用商店部署任何虚拟机
 为了在 AppSource 中提供一致的安全级别，请在 Azure Marketplace 中认证和发布任何作为 Cortana Intelligence 解决方案一部分部署的虚拟机。
 
-要搜索 Azure Marketplace 映像的当前列表，请参阅 [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute)。
+要搜索 Azure 应用商店映像的当前列表，请参阅 [Microsoft Azure 应用商店](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute)。
 
-有关如何发布 Azure Marketplace 的虚拟机映像的信息，请参阅[为 Azure Marketplace 创建虚拟机映像的指南](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation)。
+有关如何发布 Azure 应用商店的虚拟机映像的信息，请参阅[为 Azure 应用商店创建虚拟机映像的指南](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation)。
 
 ## <a name="scalability-evaluation-considerations"></a>可伸缩性评估注意事项
 ### <a name="cortana-intelligence-solutions-should-include-a-scalable-big-data-platform"></a>Cortana Intelligence 解决方案应包括可缩放的大数据平台

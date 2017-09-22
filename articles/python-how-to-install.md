@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: lmazuel
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 523ee51c79fe09d71fa3cd3e202cf155b511956f
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: e69fff29be5b12c3c0004b4101eba69c7da87d3d
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="installing-python-and-the-sdk"></a>安装 Python 和 SDK
@@ -98,7 +98,7 @@ Azure SDK for Python 包括允许针对 Azure 开发、部署和管理 Python �
 
 可以选择是否使用 PTVS，但建议使用，因为它能够提供 Python 和 Web 项目/解决方案支持、调试、分析、交互式窗口、模板编辑和智能感知。
 
-PTVS 还可以轻松实现部署到 Microsoft Azure，同时支持部署到[云服务](cloud-services/cloud-services-python-ptvs.md)和[网站](app-service-web/app-service-web-overview.md)。
+PTVS 还可以轻松实现部署到 Microsoft Azure，同时支持部署到[云服务](cloud-services/cloud-services-python-ptvs.md)和[网站](app-service/app-service-web-overview.md)。
 
 PTVS 适用于现有的 Visual Studio 2013、2015 或 2017 版本的安装。  有关文档、下载和讨论的信息，请参阅 [Python Tools for Visual Studio]（用于 Visual Studio 的 Python 工具）。  
 
@@ -117,7 +117,7 @@ PTVS 适用于现有的 Visual Studio 2013、2015 或 2017 版本的安装。  �
 
 使用 Git 部署，可以从任何操作系统开发 Python web 应用程序并将其发布到 Azure 网站。  当将存储库推送到 Azure 时，它会自动创建虚拟环境和 pip 安装所需的包。
 
-有关使用任何符合 WSGI 的框架的详细信息，请参阅 [Configuring Python with Azure Websites](app-service-web/web-sites-python-configure.md)（使用 Azure 网站配置 Python）。
+有关使用任何符合 WSGI 的框架的详细信息，请参阅 [Configuring Python with Azure Websites](app-service/web-sites-python-configure.md)（使用 Azure 网站配置 Python）。
 
 ## <a name="additional-software-and-resources"></a>其他软件和资源：
 * [Azure SDK for Python ReadTheDocs](http://azure-sdk-for-python.readthedocs.io/en/latest/)
@@ -145,7 +145,7 @@ PTVS 适用于现有的 Visual Studio 2013、2015 或 2017 版本的安装。  �
 [Django Project - A mature web framework/CMS]: http://www.djangoproject.com
 [IPython - an advanced REPL/Notebook for Python]: http://ipython.org
 [IPython]: http://ipython.org
-[Python Tools for Visual Studio]: http://aka.ms/ptvs
+[用于 Visual Studio 的 Python 工具]: http://aka.ms/ptvs
 [Python Tools for Visual Studio on GitHub]: https://github.com/microsoft/ptvs
 [Python Package Index]: http://pypi.python.org/pypi
 [Microsoft Azure SDK for Python 2.7]: http://go.microsoft.com/fwlink/?LinkId=254281

@@ -16,15 +16,15 @@ ms.date: 05/03/2017
 ms.author: beverst
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 7757ecf442314d294432266750502e384e39bde0
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 36cf3c0bb4a28a4ccfd5fc94b72fba023516a9ce
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>在 Azure 中构建 Docker Python 和 PostgreSQL Web 应用
 
-Azure Web 应用提供高度可缩放的自修补 Web 托管服务。 本教程介绍如何在 Azure 中创建一个基本的 Docker Python Web 应用。 将此应用连接到 PostgreSQL 数据库。 完成此步骤后，[将在 Azure 应用服务 Web 应用](../../app-service-web/app-service-web-overview.md)上的 Docker 容器中运行 Python Flask 应用程序。
+Azure Web 应用提供高度可缩放的自修补 Web 托管服务。 本教程介绍如何在 Azure 中创建一个基本的 Docker Python Web 应用。 将此应用连接到 PostgreSQL 数据库。 完成此步骤后，[将在 Azure 应用服务 Web 应用](../app-service-web-overview.md)上的 Docker 容器中运行 Python Flask 应用程序。
 
 ![Azure 应用服务中的 Docker Python Flask 应用](./media/tutorial-docker-python-postgresql-app/docker-flask-in-azure.png)
 
@@ -111,7 +111,7 @@ INFO  [alembic.runtime.migration] Running upgrade  -> 791cd7d80402, empty messag
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
 
-在浏览器中导航至 http://127.0.0.1:5000。 单击“注册!” 创建一个测试用户。
+在浏览器中导航至 `http://127.0.0.1:5000`。 单击“注册!” 创建一个测试用户。
 
 ![在本地运行的 Python Flask 应用程序](./media/tutorial-docker-python-postgresql-app/local-app.png)
 
@@ -149,7 +149,7 @@ az group create --name myResourceGroup --location "West US"
 
 使用 [az postgres server create](/cli/azure/documentdb#create) 命令创建 PostgreSQL 服务器。
 
-在下列命令中，用唯一的服务器名称替换 *\<postgresql_name >* 占位符，并用用户名替换 *\<admin_username >* 占位符。 此服务器名称将用作 PostgreSQL 终结点 (`https://<postgresql_name>.postgres.database.azure.com`) 的一部分，因此需要在 Azure 中的所有服务器之间保持唯一。 此用户名用于初始数据库管理员用户帐户。 系统会提示选择此用户的密码。
+在下列命令中，用唯一的服务器名称替换* \<postgresql_name >* 占位符，并用用户名替换* \<admin_username >* 占位符。 此服务器名称将用作 PostgreSQL 终结点 (`https://<postgresql_name>.postgres.database.azure.com`) 的一部分，因此需要在 Azure 中的所有服务器之间保持唯一。 此用户名用于初始数据库管理员用户帐户。 系统会提示选择此用户的密码。
 
 ```azurecli-interactive
 az postgres server create --resource-group myResourceGroup --name <postgresql_name> --admin-user <admin_username>
@@ -298,7 +298,7 @@ INFO  [alembic.runtime.migration] Will assume transactional DDL.
 
 ### <a name="create-an-azure-container-registry"></a>创建 Azure 容器注册表
 
-在以下用以创建容器注册表的命令中，使用所选的唯一的 Azure 容器注册表名称替换  *\<registry_name >*。
+在以下用以创建容器注册表的命令中，使用所选的唯一的 Azure 容器注册表名称替换 * \<registry_name >*。
 
 ```azurecli-interactive
 az acr create --name <registry_name> --resource-group myResourceGroup --location "West US" --sku Basic
@@ -554,5 +554,5 @@ http://<app_name>.azurewebsites.net
 转到下一教程，了解如何向 Web 应用映射自定义 DNS 名称。
 
 > [!div class="nextstepaction"] 
-> [将现有的自定义 DNS 名称映射到 Azure Web 应用](../../app-service-web/app-service-web-tutorial-custom-domain.md)
+> [将现有的自定义 DNS 名称映射到 Azure Web 应用](../app-service-web-tutorial-custom-domain.md)
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/26/2017
 ms.author: TomSh
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 268299d82ce79b10eb8061467f4bad61194457f8
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: a32693a274c2615a515838306d72dbe64a5d1763
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
@@ -136,7 +136,7 @@ Azure Active Directory (AD) 在安全方面的益处包括以下能力：
 
 设备注册
 
-[Azure AD 设备注册](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-registration-overview)是基于设备的[条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-registration-overview)方案的基础。 在注册设备时，Azure Active Directory 设备注册会为设备提供一个标识，用于在用户登录时对设备进行身份验证。 然后，可以使用已经过身份验证的设备以及该设备的属性，对云中和本地托管的应用程序实施条件访问策略。
+[Azure AD 设备注册](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-registration-overview)是基于设备的[条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-registration-overview)方案的基础。 在注册设备时，Azure Active Directory 设备注册会为设备提供一个标识，用于在用户登录时对设备进行身份验证。 然后，可以使用已经过身份验证的设备和设备的属性，对云中和本地托管的应用程序实施条件性访问策略。
 
 当与 Intune 之类的[移动设备管理 (MDM)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) 解决方案结合使用时，Azure Active Directory 中的设备属性会使用关于设备的更多信息进行更新。 这会允许创建条件性访问规则，用于从设备强制访问满足安全和合规性标准。
 
@@ -318,12 +318,10 @@ Web 应用程序防火墙防范的某些常见 Web 安全漏洞包括：
 
 Azure 还提供多种易用的功能，帮助保护应用的入站和出站流量。 此外，Azure 还提供外部来源的功能来扫描 Web 应用程序的漏洞，帮助客户保护其应用程序代码。
 
-- [使用各种身份验证和授权方法保护 Web 应用](https://docs.microsoft.com/azure/app-service-web/web-sites-authentication-authorization)
-
-    - [为应用设置 Azure Active Directory 身份验证](https://azure.microsoft.com/blog/azure-websites-authentication-authorization/)
+- [为应用设置 Azure Active Directory 身份验证](https://azure.microsoft.com/blog/azure-websites-authentication-authorization/)
 
 
-- [启用传输层安全性 (TLS/SSL) - HTTPS 保护应用流量安全](https://docs.microsoft.com/azure/app-service-web/web-sites-configure-ssl-certificate)
+- [启用传输层安全性 (TLS/SSL) - HTTPS 保护应用流量安全](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl)
 
     - [强制所有传入流量通过 HTTPS 连接](http://microsoftazurewebsitescheatsheet.info/)
 
@@ -336,13 +334,13 @@ Azure 还提供多种易用的功能，帮助保护应用的入站和出站流�
 
 - [使用 Tinfoil 安全性扫描对 Web 应用代码进行扫描以确定是否存在漏洞](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)
 
-- [配置 TLS 相互身份验证来要求将客户端证书连接到 Web 应用](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth)
+- [配置 TLS 相互身份验证来要求将客户端证书连接到 Web 应用](https://docs.microsoft.com/azure/app-service/app-service-web-configure-tls-mutual-auth)
 
 - [配置从应用中使用的客户端证书以安全连接到外部资源](https://azure.microsoft.com/blog/using-certificates-in-azure-websites-applications/)
 
 - [删除标准服务器标头以避免工具对应用进行指纹识别](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)
 
-- [使用点到站点 VPN 安全连接应用与专用网络资源](https://docs.microsoft.com/azure/app-service-web/web-sites-integrate-with-vnet)
+- [使用点到站点 VPN 安全连接应用与专用网络资源](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
 
 - [使用混合连接安全连接应用与专用网络资源](https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections)
 
@@ -355,7 +353,7 @@ Microsoft Azure 包括可靠的网络基础结构以支持应用程序和服务�
 
 ![保护网络（保护）](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig6.png)
 
-如果需要基本的网络级别访问控制（基于 IP 地址和 TCP 或 UDP 协议），则可以使用[网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)。 网络安全组 (NSG) 是基本的静态数据包筛选防火墙，通过它可基于 [5 元组](https://www.techopedia.com/definition/28190/5-tuple)控制访问。
+如果需要基本的网络级别访问控制（基于 IP 地址和 TCP 或 UDP 协议），则可以使用[网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)。 网络安全组 (NSG) 是基本的静态数据包筛选防火墙，它使你能够基于 [5 元组](https://www.techopedia.com/definition/28190/5-tuple)控制访问。
 
 Azure 网络支持在 Azure 虚拟网络上为网络流量自定义路由行为的功能。 可以通过在 Azure 中配置[用户定义路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)实现此操作。
 
@@ -493,7 +491,7 @@ Azure 操作安全性建立在一个框架上，该框架融合了通过 Microso
 - 在客户端或服务器代码中自行编写的**自定义事件和指标**，用于跟踪业务事件（例如销售的商品或赢得的游戏）。
 应用程序的体系结构通常由许多组件构成 – 其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不会以独立的实体出现，而是以单个实体的相关部件和依赖部件出现。 如果希望以组的方式部署、管理和监视这些这些组件， 可以使用 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 以组的方式处理解决方案中的资源。
 
-可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 资源管理器提供安全、审核和标记功能，以帮助你在部署后管理资源。
+可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 Resource Manager 提供安全、审核和标记功能，以帮助你在部署后管理资源。
 
 **使用 Resource Manager 的优势**
 

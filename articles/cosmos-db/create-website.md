@@ -1,6 +1,6 @@
 ---
 title: "使用模板部署 Web 应用 - Azure Cosmos DB | Microsoft Docs"
-description: "了解如何使用 Azure Resource Manager 模板部署 Azure Cosmos DB 帐户、Azure 应用服务 Web 应用以及示例 Web 应用程序。"
+description: "了解如何使用 Azure 资源管理器模板部署 Azure Cosmos DB 帐户、Azure 应用服务 Web 应用以及示例 Web 应用程序。"
 services: cosmos-db, app-service\web
 author: mimig1
 manager: jhubbard
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 42146cdc20bcff84d54110c8fba6d00951558bd0
+ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
+ms.openlocfilehash: 633b88761de4d2c99cfd196cfac8e664fc83c546
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/20/2017
 
 ---
-# <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板部署 Azure Cosmos DB 和 Azure 应用服务 Web 应用
-本教程说明如何使用 Azure Resource Manager 模板来部署和集成 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web 应用以及示例 Web 应用程序。
+# <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署 Azure Cosmos DB 和 Azure 应用服务 Web 应用
+本教程说明如何使用 Azure 资源管理器模板来部署和集成 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714) Web 应用以及示例 Web 应用程序。
 
 使用 Azure Resource Manager 模板，可以轻松自动化 Azure 资源的部署和配置。  本教程演示如何部署 Web 应用程序，以及自动配置 Azure Cosmos DB 帐户的连接信息。
 
 完成本教程后，能够回答以下问题：  
 
 * 如何使用 Azure Resource Manager 模板部署和集成 Azure Cosmos DB 帐户与 Azure 应用服务中的 Web 应用？
-* 如何使用 Azure Resource Manager 模板部署和集成 Azure Cosmos DB 帐户、应用服务 Web 应用中的 Web 应用以及 Webdeploy 应用程序？
+* 如何使用 Azure 资源管理器模板部署和集成 Azure Cosmos DB 帐户、应用服务 Web 应用中的 Web 应用以及 Webdeploy 应用程序？
 
 <a id="Prerequisites"></a>
 
@@ -130,9 +130,13 @@ ms.lasthandoff: 09/14/2017
 ## <a name="next-steps"></a>后续步骤
 祝贺你！ 已使用 Azure Resource Manager 模板部署了 Azure Cosmos DB、应用服务 Web 应用以及示例 Web 应用程序。
 
-* 若要详细了解 Azure Cosmos DB，请参阅 [Azure Cosmos DB 服务页](https://azure.microsoft.com/services/cosmos-db/)。
-* 若要详细了解 Azure 应用服务 Web 应用，请参阅 [Web 应用文档](http://go.microsoft.com/fwlink/?LinkId=325362)。
-* 若要详细了解 Azure 资源管理器模板，请参阅[资源管理器 REST API：部署](https://docs.microsoft.com/rest/api/resources/deployments)。
+* 若要了解有关 Azure Cosmos DB 的详细信息，请单击[此处](http://azure.com/docdb)。
+* 若要了解有关 Azure 应用服务 Web 应用的详细信息，请单击[此处](http://go.microsoft.com/fwlink/?LinkId=325362)。
+* 若要了解有关 Azure Resource Manager 模板的详细信息，请单击[此处](https://msdn.microsoft.com/library/azure/dn790549.aspx)。
+
+## <a name="whats-changed"></a>发生的更改
+* 有关从网站更改为应用服务的指南，请参阅 [Azure 应用服务及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 有关从旧门户更改为新门户的指南，请参阅：[有关在 Azure 经典门户中导航的参考](http://go.microsoft.com/fwlink/?LinkId=529715)
 
 > [!NOTE]
 > 如果要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](http://go.microsoft.com/fwlink/?LinkId=523751)，可以在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。

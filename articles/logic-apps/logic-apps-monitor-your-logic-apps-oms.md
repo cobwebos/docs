@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/9/2017
 ms.author: LADocs; divswa
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 0e9f0ef3c87b5c0da1cc4ad16d37178c8f5c9625
+ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
+ms.openlocfilehash: 5afe01e713516277abc3c2dfcccfc6d36cfc70d4
 ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 08/16/2017
      ![查看逻辑应用运行的操作和详细信息](media/logic-apps-monitor-your-logic-apps-oms/log-search-page.png)
 
      在 Azure Log Analytics 页上，可以更新查询并查看表中的结果。 
-     此查询使用 [Kusto 查询语言](https://docs.loganalytics.io/learn/tutorials/getting_started_with_queries.html)，如果希望查看不同的结果，可对其进行编辑。 
+     此查询使用 [Kusto 查询语言](https://docs.loganalytics.io/docs/Language-Reference)，如果希望查看不同的结果，可对其进行编辑。 
 
      ![Azure Log Analytics - 查询视图](media/logic-apps-monitor-your-logic-apps-oms/query.png)
 

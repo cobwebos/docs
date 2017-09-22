@@ -12,10 +12,10 @@ ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 1b4ef5dc0af6bea8af02ad63843acc91713666ad
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: e4fe86b80d8a786da15cdea37619e54e55102e3f
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 09/07/2017
 
 代理可以指向任何 HTTP 资源，例如：
 - Azure Functions 
-- [Azure 应用服务](https://docs.microsoft.com/azure/app-service/app-service-value-prop-what-is)中的 API 应用
+- [Azure 应用服务](https://docs.microsoft.com/azure/app-service/app-service-web-overview)中的 API 应用
 - [Linux 上的应用服务](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)中的 Docker 容器
 - 其他任何托管 API
 

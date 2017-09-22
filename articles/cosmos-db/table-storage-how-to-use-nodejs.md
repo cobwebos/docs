@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 8cc23d5c284123c7c04dda4b71fdb6275d32bf8d
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: e8b22dad84e89be6051041e60ca9d72ec4aa3c56
 ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="how-to-use-azure-table-storage-from-nodejs"></a>如何通过 Node.js 使用 Azure 表存储
@@ -30,8 +30,7 @@ ms.lasthandoff: 09/07/2017
 
 本主题中的代码示例假定用户已拥有 Node.js 应用程序。 有关如何在 Azure 中创建 Node.js 应用程序的信息，请参阅以下任何主题：
 
-* [在 Azure 应用服务中创建 Node.js Web 应用](../app-service-web/app-service-web-get-started-nodejs.md)
-* [使用 WebMatrix 构建 Node.js Web 应用并将其部署到 Azure](../app-service-web/web-sites-nodejs-use-webmatrix.md)
+* [在 Azure 应用服务中创建 Node.js Web 应用](../app-service/app-service-web-get-started-nodejs.md)
 * [生成 Node.js 应用程序并将其部署到 Azure 云服务](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)（使用 Windows PowerShell）
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
@@ -449,6 +448,6 @@ tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 有关详细信息，请参阅以下资源。
 
 * [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)是 Microsoft 免费提供的独立应用，适用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。
-* GitHub 上的 [Azure Storage SDK for Node](https://github.com/Azure/azure-storage-node)存储库。
+* GitHub 上[用于 Node 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-node) 存储库。
 * [Node.js 开发人员中心](/develop/nodejs/)
-* [创建 Node.js 应用程序并将其部署到 Azure 网站](../app-service-web/app-service-web-get-started-nodejs.md)
+* [创建 Node.js 应用程序并将其部署到 Azure 网站](../app-service/app-service-web-get-started-nodejs.md)
